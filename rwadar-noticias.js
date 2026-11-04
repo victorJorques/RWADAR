@@ -5,7 +5,8 @@
    se publicó en redes, el enlace a esa publicación). Este script lo
    comprueba y escribe:
 
-     rwadar-site/index.html                 el bloque de noticias de Inicio
+     rwadar-site/index.html                 la franja de novedades de Inicio
+                                            (la última noticia, en una línea)
      rwadar-movil/lib/noticias-contenido.js las mismas noticias para la app
 
    Uso:  node rwadar-noticias.js              genera
@@ -65,7 +66,7 @@ function cargarNoticias(hoy = new Date().toISOString().slice(0, 10)) {
   const noticias = datos.noticias.map((n, i) => {
     const donde = `noticia ${i + 1}${n && n.id ? ` (${n.id})` : ''}`;
     if (!n || typeof n !== 'object') falla(donde, 'no es un objeto');
-    const permitidos = new Set(['id', 'fecha', 'etiqueta', 'titulo', 'texto', 'destino', 'red']);
+    const permitidos = new Set(['id', 'fecha', 'etiqueta', 'titulo', 'texto', 'resumen', 'destino', 'red']);
     for (const clave of Object.keys(n)) if (!permitidos.has(clave)) falla(donde, `campo desconocido «${clave}»`);
     if (typeof n.id !== 'string' || !/^[a-z0-9][a-z0-9-]{2,60}$/.test(n.id)) falla(donde, 'id no válido (minúsculas, números y guiones)');
     if (vistos.has(n.id)) falla(donde, 'id repetido');
@@ -78,6 +79,9 @@ function cargarNoticias(hoy = new Date().toISOString().slice(0, 10)) {
       titulo: texto(n.titulo, donde, 'titulo', 90),
       texto: texto(n.texto, donde, 'texto', 320),
     };
+    /* «resumen»: la línea de la franja de Inicio en la web (sin cifras del
+       catálogo, que caducan). Si falta, la franja usa el título. */
+    if (n.resumen !== undefined) salida.resumen = texto(n.resumen, donde, 'resumen', 140);
     if (n.destino !== undefined) {
       if (!DESTINOS[n.destino]) falla(donde, `destino desconocido «${n.destino}» (${Object.keys(DESTINOS).join(', ')})`);
       salida.destino = n.destino;
@@ -96,25 +100,17 @@ function cargarNoticias(hoy = new Date().toISOString().slice(0, 10)) {
   return noticias.slice(0, MAX_NOTICIAS);
 }
 
+/* Inicio cuenta una historia (HISTORIA-v2, ESPEC-INICIO §2.7): de las noticias
+   solo enseña la última, en una línea y con su fecha. Sin llamadas [n]
+   (decisión de Víctor, 04/11/2026): la página de novedades tiene todas. */
+function fechaBarras(iso) { const [a, m, d] = iso.split('-'); return `${d}/${m}/${a}`; }
 function bloqueWeb(noticias) {
-  const items = noticias.map(n => {
-    const d = n.destino && DESTINOS[n.destino];
-    const enlaces = [
-      d ? `<a class="inicio-noticia-enlace" href="${d.href}"${d.movilIr ? ` data-movil-ir="${d.movilIr}"` : ''}>${esc(d.texto)} <span aria-hidden="true">→</span></a>` : '',
-      n.red ? `<a class="inicio-noticia-red" href="${esc(n.red.url)}" target="_blank" rel="noopener">Ver en ${esc(n.red.nombre)} <span aria-hidden="true">↗</span></a>` : '',
-    ].filter(Boolean).join('\n          ');
-    return `      <li>
-        <article class="inicio-noticia" aria-labelledby="noticia-${n.id}">
-          <p class="inicio-noticia-meta"><span class="inicio-etiqueta">${esc(n.etiqueta)}</span><time datetime="${n.fecha}">${n.fechaTexto}</time></p>
-          <h4 id="noticia-${n.id}">${esc(n.titulo)}</h4>
-          <p>${esc(n.texto)}</p>${enlaces ? `\n          ${enlaces}` : ''}
-        </article>
-      </li>`;
-  }).join('\n');
+  const n = noticias[0];
+  const linea = n ? `      <p><time datetime="${n.fecha}">${fechaBarras(n.fecha)}</time><span aria-hidden="true"> · </span><span>${esc(n.resumen || n.titulo)}.</span></p>\n` : '';
   return `    <!--noticias:ini-->
-    <ol class="inicio-noticias" aria-label="Noticias de RWAdar">
-${items}
-    </ol>
+    <section class="rel-novedades" aria-label="Novedades">
+${linea}      <a class="b3 rel-novedades-todas" href="/cambios">Todas las novedades<span class="rel-flecha" aria-hidden="true"></span></a>
+    </section>
     <!--noticias:fin-->`;
 }
 
@@ -125,7 +121,7 @@ function moduloApp(noticias) {
 export const DESTINOS_NOTICIAS = ${JSON.stringify(destinos)};
 
 export const NOTICIAS = [
-${noticias.map(n => `  ${JSON.stringify(n)},`).join('\n')}
+${noticias.map(({ resumen, ...n }) => `  ${JSON.stringify(n)},`).join('\n')}
 ];
 `;
 }

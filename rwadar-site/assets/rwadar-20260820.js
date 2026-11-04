@@ -1831,14 +1831,13 @@ function pintarFiltrosEmision(){
 })();
 
 /* =================================================================
-   INICIO EN EL MÓVIL · «RADAR VIVO»
+   INICIO EN EL MÓVIL · LA HISTORIA (HISTORIA-v2, ESPEC-INICIO, 04/11/2026)
    -----------------------------------------------------------------
-   La portada es el radar real del registro (los mismos puntos que el de
-   Buscar) con cuatro lecturas en sus esquinas. Todo sale de P, EMI y
-   FUERA al pintar: ni una cifra escrita a mano. Si la revisión ha vencido
-   o no se pudo comprobar, se quitan las cifras y queda la fecha. Las
-   ofertas que se enseñan son las principales, por fecha de revisión y
-   nombre, y la pantalla lo dice. Sin rentabilidades ni precios.
+   Arriba, el radar real del registro con cuatro lecturas en sus esquinas;
+   debajo, seis capítulos, la Selección y las fuentes. Todo lo que es cifra
+   del catálogo sale de P, EMI, FUERA y transparencia.json al pintar: ni una
+   cifra escrita a mano. Si la revisión ha vencido o no se pudo comprobar, se
+   quitan las cifras y la Selección, y queda la fecha. Sin rentabilidades.
    ================================================================= */
 let huellaInicio='';
 function fechaBarras(iso){const p=String(iso||'').split('-');return p.length===3&&/^\d{4}$/.test(p[0])?p[2]+'/'+p[1]+'/'+p[0]:''}
@@ -1910,25 +1909,51 @@ function radarMiniSvg(){
  return s+puntosRadar(200,200,136).map(({x,y,col})=>'<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="9" fill="'+col+'"/>').join('');
 }
 function fechaRevisionOferta(o){const d=documentacionOfertaLocal(o);return d&&d.revisadaEl||o.verificadaEl||''}
-/* Tarjeta de los carruseles: foto limpia, título en dos líneas, proveedor y,
-   según el carrusel, hasta dos puntos fuertes o la fecha de alta. El aviso
-   crítico (tono stop), si existe, va entero también aquí. */
-function tarjetaInicioHtml(o,modo){
- const imagen=imagenOfertaLocal(o),e=transparenciaOferta(o),bloqueo=avisoBloqueoOferta(o);
- const id='inicio-'+modo+'-'+escHtml(o.slug),cat=Object.hasOwn(CATMETA,o.categoria)?catClase({cat:o.categoria}):'';
- const pie=modo==='sel'?puntosFuertesOferta(o).slice(0,2).map(x=>'<span class="inicio-punto">'+escHtml(x.texto)+'</span>').join(''):
-  e&&fechaLocalValida(e.anadidaEl)?'Añadida el <time datetime="'+escHtml(e.anadidaEl)+'">'+escHtml(fechaBarras(e.anadidaEl))+'</time>':'';
- return '<li><button type="button" class="inicio-oferta'+cat+'" data-perfil-oferta="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+
-  escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'"'+(pie||bloqueo?' aria-describedby="'+[bloqueo?id+'-aviso':'',pie?id:''].filter(Boolean).join(' ')+'"':'')+'>'+
-  '<span class="inicio-oferta-img"><img data-src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+
-  ' loading="lazy" decoding="async" width="640" height="440"></span>'+
-  '<span class="inicio-oferta-txt"><b class="inicio-oferta-tit">'+escHtml(o.titulo)+'</b><span class="inicio-oferta-prov">'+escHtml(o.plataformaNombre)+'</span></span>'+
-  (bloqueo?'<span class="inicio-oferta-aviso escaparate-aviso-bloqueo" id="'+id+'-aviso"><b>Importante</b> · '+escHtml(textoLocal(bloqueo.texto))+'</span>':'')+
-  (pie?'<span class="inicio-oferta-pie" id="'+id+'">'+pie+'</span>':'')+'</button></li>';
+/* Selección de Inicio: la letra pequeña de cada oferta es texto editorial de
+   RWAdar (HISTORIA-v2 §2.7); título, mínimo y foto salen del catálogo. Una
+   oferta que entre nueva lleva, al menos, la línea de riesgo. */
+const NOTAS_SELECCION={
+ 'robinhood-classic-stock-tokens':'Es un derivado, un contrato que sigue el precio de la acción. No eres dueño de ella ni votas, y puedes perder hasta todo lo que inviertas.',
+ 'spiko-letras-del-tesoro-euro':'Es un fondo monetario, no una letra del Tesoro. No es un depósito ni está garantizado, y puedes perder parte de lo que inviertas.',
+ 'spiko-letras-del-tesoro-dolar':'Es un fondo monetario en dólares, no una letra del Tesoro. No es un depósito ni está garantizado, y puedes perder parte de lo que inviertas. Si el dólar baja frente al euro, pierdes valor en euros.'};
+/* Las 5 comprobaciones en llano, a la vista en Inicio (HISTORIA-v2 §2.7). */
+const CRITERIOS_INICIO={contratable:'Se puede contratar hoy desde España.',supervisada:'La entidad que la ofrece está supervisada y registrada en la CNMV.',
+ documentoEspana:'Tiene un documento oficial para su venta en España: el folleto o el KID (el documento de datos fundamentales).',
+ minimoSalida:'Están documentados el mínimo y cómo salir (vender o pedir el reembolso).',vigente:'La hemos revisado esta semana y sus fuentes no se contradicen.'};
+const minimoCortoInicio=o=>{const e=transparenciaOferta(o);return e?textoLocal(e.minimoCorto).replace(/^(\d+(?:,\d+)?) USD$/,'$1 $'):''};
+const idiomaInicio=()=>{try{return typeof RWAdarIdioma!=='undefined'&&RWAdarIdioma.obtenerIdioma()==='en'?'en':'es'}catch(e){return 'es'}};
+/* Todas las cifras del relato salen de aquí: catálogo, transparencia.json y la
+   Selección. Ninguna va escrita en el HTML. */
+function cifrasInicio(){
+ const ofertas=ofertasCatalogoInicio(),orden=Object.keys(NOTAS_SELECCION);
+ const iso=P[0]&&fechaLocalValida(P[0].verificado_lote_el)?P[0].verificado_lote_el:'';
+ const dias=P[0]&&Number.isInteger(P[0].vigencia_lote_dias)?P[0].vigencia_lote_dias:0;
+ const minimos=ofertas.filter(o=>/^1 [€$]$/.test(minimoCortoInicio(o)));
+ return {sin:inicioSinCifras(),ofertas:ofertas.length,plataformas:P.length,descartadas:FUERA.length,revisado:iso,
+  hasta:iso&&dias>0?new Date(Date.parse(iso+'T00:00:00Z')+dias*86400000).toISOString().slice(0,10):'',
+  minimos:minimos.length,usd:minimos.filter(o=>/\$$/.test(minimoCortoInicio(o))).length,
+  seleccion:ofertas.filter(o=>o.coleccion==='principales'&&enSeleccionOferta(o)).sort((a,b)=>((orden.indexOf(a.slug)+1)||99)-((orden.indexOf(b.slug)+1)||99)||
+   String(a.plataformaNombre).localeCompare(String(b.plataformaNombre),'es')||String(a.titulo).localeCompare(String(b.titulo),'es'))};
 }
-/* Las fotos de los carruseles se piden al acercarse a la pantalla: con solo
-   loading=lazy el navegador las adelanta 1250 px y la primera pantalla de
-   Inicio cargaba unos 380 KB de imágenes que no se ven. */
+/* Una frase con cifra: su plantilla en castellano o en inglés, o null si falta
+   alguna cifra (entonces se queda la frase sin número del HTML). */
+function plantillaInicio(p,c,en){
+ const v={ofertas:c.ofertas,plataformas:c.plataformas,seleccion:c.seleccion.length,minimos:c.minimos,revisado:fechaBarras(c.revisado),hasta:fechaBarras(c.hasta),
+  usd:!c.usd?'':en?' ('+(c.usd===1?'one of them':c.usd+' of them')+', $1)':' ('+(c.usd===1?'una de ellas':c.usd+' de ellas')+', de 1 $)'};
+ const claves=[...String(p||'').matchAll(/\{(\w+)\}/g)].map(m=>m[1]);
+ return !p||c.sin||claves.some(k=>!(k in v)||(k!=='usd'&&!v[k]))?null:p.replace(/\{(\w+)\}/g,(_,k)=>String(v[k]));
+}
+function tarjetaSeleccionHtml(o,i){
+ const img=imagenOfertaLocal(o),min=minimoCortoInicio(o),id='relTarjeta'+i,t=String(o.titulo||'');
+ return '<li class="rel-tarjeta"><article aria-labelledby="'+id+'">'+
+  (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
+  '<div class="rel-tarjeta-cuerpo">'+(o.plataformaNombre&&t.indexOf(o.plataformaNombre)!==0?'<p class="rel-tarjeta-plat" translate="no">'+escHtml(o.plataformaNombre)+'</p>':'')+
+  '<h3 id="'+id+'" lang="es" translate="no">'+escHtml(t)+'</h3><p class="rel-tarjeta-nota">'+escHtml(NOTAS_SELECCION[o.slug]||'Puedes perder parte o todo lo que inviertas.')+'</p>'+
+  (min?'<p class="rel-tarjeta-min"><span>Mínimo documentado:</span> <span translate="no">'+escHtml(min)+'</span></p>':'')+
+  '<button class="b3 rel-tarjeta-ver" type="button" data-perfil-oferta="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(t)+'">Ver ficha<span class="rel-flecha" aria-hidden="true"></span></button></div></article></li>';
+}
+/* Las fotos de la Selección se piden al acercarse a la pantalla: con solo
+   loading=lazy el navegador las adelanta 1250 px. */
 let observadorFotosInicio=null;
 function diferirFotosInicio(){
  if(typeof document==='undefined'||typeof document.querySelectorAll!=='function')return;
@@ -1939,75 +1964,42 @@ function diferirFotosInicio(){
   if(e.isIntersecting){observadorFotosInicio.unobserve(e.target);cargar(e.target);}}),{rootMargin:'48px 160px'});
  fotos.forEach(img=>observadorFotosInicio.observe(img));
 }
-/* Altas de los últimos 30 días según transparencia.json (falla cerrado: sin
-   entrada vigente, la oferta no sale), de la más nueva a la más antigua. */
-function ofertasRecientesInicio(ofertas,max=6){
- const h=new Date(),hoy=Date.UTC(h.getUTCFullYear(),h.getUTCMonth(),h.getUTCDate());
- return ofertas.map(o=>({o,e:transparenciaOferta(o)})).filter(({e})=>e&&fechaLocalValida(e.anadidaEl)&&
-   hoy-Date.parse(e.anadidaEl+'T00:00:00Z')>=0&&hoy-Date.parse(e.anadidaEl+'T00:00:00Z')<=30*86400000)
-  .sort((a,b)=>b.e.anadidaEl.localeCompare(a.e.anadidaEl)||String(a.o.titulo).localeCompare(String(b.o.titulo),'es')).slice(0,max).map(x=>x.o);
-}
 function pintarInicio(){
  const panel=document.getElementById('movilPanelInicio');
  if(!panel)return;
- const ofertas=ofertasCatalogoInicio(),sin=inicioSinCifras();
- const iso=P[0]&&fechaLocalValida(P[0].verificado_lote_el)?P[0].verificado_lote_el:'';
- const fecha=fechaBarras(iso)||ultimaRevision().replace(/\./g,'/');
- /* Selección: principales con las cinco comprobaciones, por empresa y nombre. */
- const seleccion=ofertas.filter(o=>o.coleccion==='principales'&&enSeleccionOferta(o)).sort((a,b)=>
-  String(a.plataformaNombre).localeCompare(String(b.plataformaNombre),'es')||String(a.titulo).localeCompare(String(b.titulo),'es'));
- const recientes=ofertasRecientesInicio(ofertas);
- const huella=[P.length,FUERA.length,sin,CATALOGO_EMBEBIDO_BLOQUEADO,iso,
-  P.map(p=>p.slug+p.cat).join(),ofertas.map(o=>o.slug+o.coleccion+o.categoria+o.estadoRevision+fechaRevisionOferta(o)).join(),
-  seleccion.map(o=>o.slug).join(),recientes.map(o=>o.slug).join()].join('|');
+ const c=cifrasInicio(),sin=c.sin,en=idiomaInicio()==='en';
+ const huella=[P.length,FUERA.length,sin,CATALOGO_EMBEBIDO_BLOQUEADO,c.revisado,c.hasta,en,c.ofertas,c.minimos,c.usd,
+  P.map(p=>p.slug+p.cat).join(),c.seleccion.map(o=>o.slug+fechaRevisionOferta(o)).join()].join('|');
  if(huella===huellaInicio)return;
  huellaInicio=huella;
  const pon=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html;return el;};
  const ocultar=(id,si)=>{const el=document.getElementById(id);if(el)el.hidden=si;};
  pon('inicioRadar',P.length?radarInicioSvg(sin):'');
  pon('movilRadarMini',P.length?radarMiniSvg():'');
- ocultar('inicioLeyenda',sin||!P.length);
  /* Los recuentos del radar, también para el lector de pantalla (el SVG va oculto). */
  ocultar('inicioRadarLista',sin||!P.length);
- pon('inicioRadarLista',sin?'':Object.keys(CATMETA).map(c=>{const n=P.filter(p=>p.cat===c).length;
-  return n?'<li><span>'+escHtml(catCorta(c))+'</span> <span>'+n+(n===1?' plataforma':' plataformas')+'</span></li>':''}).join(''));
- const cuenta=c=>ofertas.filter(o=>o.coleccion===c).length;
- const t=iso?'<time datetime="'+escHtml(iso)+'">'+escHtml(fecha)+'</time>':escHtml(fecha);
+ pon('inicioRadarLista',sin?'':Object.keys(CATMETA).map(k=>{const n=P.filter(p=>p.cat===k).length;
+  return n?'<li><span>'+escHtml(catCorta(k))+'</span> <span>'+n+(n===1?' plataforma':' plataformas')+'</span></li>':''}).join(''));
+ const fecha=fechaBarras(c.revisado)||ultimaRevision().replace(/\./g,'/');
+ const t=c.revisado?'<time datetime="'+escHtml(c.revisado)+'">'+escHtml(fecha)+'</time>':escHtml(fecha);
  pon('inicioCifras',CATALOGO_EMBEBIDO_BLOQUEADO?'<li class="inicio-hud-1 inicio-hud-aviso"><b>Catálogo no disponible</b> <span>Volverá en cuanto se publique de nuevo</span></li>':
   sin?'<li class="inicio-hud-1 inicio-hud-aviso"><b>Revisión pendiente</b> <span>Sin cifras hasta renovarla</span></li><li class="inicio-hud-4"><span>última revisión</span> <b>'+t+'</b></li>':
-  (ofertas.length?'<li class="inicio-hud-1"><b>'+ofertas.length+'</b> <span>ofertas</span></li>':'')+
-  '<li class="inicio-hud-2"><b>'+P.length+'</b> <span>plataformas</span></li>'+
-  '<li class="inicio-hud-3"><b>'+FUERA.length+'</b> <span>fuera del radar</span></li>'+
+  (c.ofertas?'<li class="inicio-hud-1"><b>'+c.ofertas+'</b> <span>ofertas</span></li>':'')+
+  '<li class="inicio-hud-2"><b>'+c.plataformas+'</b> <span>plataformas</span></li>'+
+  '<li class="inicio-hud-3"><b>'+c.descartadas+'</b> <span>descartadas</span></li>'+
   '<li class="inicio-hud-4"><span>revisado el</span> <b>'+t+'</b></li>');
- /* Vigencia del catálogo: hasta cuándo valen las cifras, con su pastilla. */
- const dias=P[0]&&Number.isInteger(P[0].vigencia_lote_dias)?P[0].vigencia_lote_dias:0;
- const hasta=iso&&dias>0?new Date(Date.parse(iso+'T00:00:00Z')+dias*86400000).toISOString().slice(0,10):'';
- pon('inicioVigencia',CATALOGO_EMBEBIDO_BLOQUEADO?'<span class="inicio-pastilla pendiente">Catálogo no disponible</span>':
-  sin?'<span class="inicio-pastilla pendiente">Revisión pendiente</span> <span><span>Revisado el</span> '+t+'</span> <span>· pendiente de renovar</span>':
-  iso?'<span class="inicio-pastilla vigente">Vigente</span> <span><span>Revisado el</span> '+t+'</span>'+(hasta?' <span><span>· vigente hasta el</span> <time datetime="'+hasta+'">'+escHtml(fechaBarras(hasta))+'</time></span>':''):'');
- ocultar('inicioSeleccion',!seleccion.length);
- pon('inicioCriterios',criteriosTransparencia().map(c=>'<li>'+escHtml(c.texto)+'</li>').join(''));
- pon('inicioSeleccionLista',seleccion.map(o=>tarjetaInicioHtml(o,'sel')).join(''));
- ocultar('inicioRecientes',!recientes.length);
- pon('inicioRecientesLista',recientes.map(o=>tarjetaInicioHtml(o,'alta')).join(''));
+ if(typeof panel.querySelectorAll==='function')[...panel.querySelectorAll('[data-rel-plantilla]')].forEach(el=>{
+  if(el.dataset.relInicial===undefined)el.dataset.relInicial=el.textContent;
+  const texto=plantillaInicio(el.getAttribute(en&&el.hasAttribute('data-rel-plantilla-en')?'data-rel-plantilla-en':'data-rel-plantilla'),c,en)??el.dataset.relInicial;
+  if(el.textContent!==texto)el.textContent=texto;
+ });
+ ocultar('relMinimos',sin||!c.minimos||!c.ofertas);
+ ocultar('relVigencia',sin||!c.revisado||!c.hasta);
+ ocultar('relEscaparate',sin||!c.seleccion.length);
+ pon('inicioCriterios',criteriosTransparencia().map(k=>'<li>'+escHtml(CRITERIOS_INICIO[k.id]||k.texto)+'</li>').join(''));
+ pon('relTarjetas',sin?'':c.seleccion.map(tarjetaSeleccionHtml).join(''));
  diferirFotosInicio();
- /* Accesos por tipo de activo: el orden fijo de CATMETA y su recuento real. */
- const cats=Object.keys(CATMETA).filter(c=>ofertas.some(o=>o.categoria===c));
- ocultar('inicioPorTipo',!cats.length);
- pon('inicioCategorias',(cats.length?['',...cats]:[]).map(c=>{
-  const n=c?ofertas.filter(o=>o.categoria===c).length:ofertas.length;
-  return '<button type="button" class="inicio-cat'+(c?catClase({cat:c}):' inicio-cat-todas')+'" data-inicio-cat="'+escHtml(c)+'">'+
-   '<svg viewBox="0 0 24 24" aria-hidden="true">'+(c?CATMETA[c].ic:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l6-6"/>')+'</svg>'+
-   '<b>'+escHtml(c?catCorta(c):'Todas')+'</b>'+(sin?'':'<span>'+n+(n===1?' oferta':' ofertas')+'</span>')+'</button>';
- }).join(''));
- const colecciones=[['principales','Principales','Condiciones documentadas'],['secundario','Reventa','Liquidez no confirmada'],['en_camino','Próximas','Apertura no confirmada']]
-  .filter(([c])=>cuenta(c)>0);
- ocultar('inicioColeccionesSeccion',!colecciones.length);
- pon('inicioColecciones',colecciones.map(([c,nombre,nota])=>'<button type="button" class="inicio-col inicio-col-'+c+'" data-inicio-coleccion="'+c+'">'+
-  (sin?'':'<b>'+cuenta(c)+'</b> ')+'<span>'+nombre+'</span><small>'+nota+'</small></button>').join(''));
- ocultar('inicioFueraSeccion',!FUERA.length);
- pon('inicioFuera',FUERA.map(f=>'<li><button type="button" data-movil-ir="fuera"><span translate="no">'+escHtml(f.n)+'</span>'+
-  (f.badge?'<em translate="no">'+escHtml(f.badge)+'</em>':'')+'</button></li>').join(''));
+ if(relatoInicio)relatoInicio.repintar();
 }
 /* Plataformas en el móvil: el radar grande vive en Inicio; en Buscar se
    pliega para que la galería se vea antes, y se despliega con un toque. */
@@ -2018,39 +2010,113 @@ function sincronizarRadarPlegado(){
  b.setAttribute('aria-expanded',abierto?'true':'false');
  b.textContent=abierto?'Ocultar el radar':'Ver el radar';
 }
-(function mandosInicio(){
- const b=document.getElementById('movilRadarAlternar');
+/* El relato: aparecer al bajar (quieto con «reducir movimiento»), el carrusel
+   «Quién más se ha movido», los 458 avisos, «Fuentes de este apartado», la
+   portada a la altura de la pantalla y la barra de progreso de lectura. */
+var relatoInicio=(function(){
+ const $=id=>document.getElementById(id),panel=$('movilPanelInicio'),raiz=document.documentElement;
+ const b=$('movilRadarAlternar');
  if(b&&typeof b.addEventListener==='function')b.addEventListener('click',()=>{
-  const panel=document.getElementById('movilPanelRadar');
-  if(panel&&panel.classList){panel.classList.toggle('movil-radar-abierto');sincronizarRadarPlegado();}
+  const radar=$('movilPanelRadar');
+  if(radar&&radar.classList){radar.classList.toggle('movil-radar-abierto');sincronizarRadarPlegado();}
  });
  try{const mq=typeof window!=='undefined'&&typeof window.matchMedia==='function'?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
-  if(mq&&typeof mq.addEventListener==='function')mq.addEventListener('change',()=>{const r=document.getElementById('inicioRadar');
+  if(mq&&typeof mq.addEventListener==='function')mq.addEventListener('change',()=>{const r=$('inicioRadar');
    if(r&&typeof P!=='undefined'&&P.length)r.innerHTML=radarInicioSvg(inicioSinCifras());});}catch(e){}
- const panel=document.getElementById('movilPanelInicio');
- if(!panel||typeof panel.addEventListener!=='function')return;
- /* Con el teclado, la tarjeta que recibe el foco entra entera en su carrusel. */
- panel.addEventListener('focusin',e=>{const li=e.target&&e.target.closest&&e.target.closest('.inicio-carrusel>li');
-  if(li&&typeof li.scrollIntoView==='function')li.scrollIntoView({block:'nearest',inline:'nearest',behavior:movimientoReducido()?'auto':'smooth'});});
+ if(!panel||typeof panel.addEventListener!=='function'||!raiz||!raiz.classList||typeof panel.querySelectorAll!=='function')return null;
+ const quieto=movimientoReducido,todos=s=>[...panel.querySelectorAll(s)];
+ let io=null,origen=null;
+ if(!quieto()&&typeof IntersectionObserver==='function'){
+  raiz.classList.add('rel-anim');
+  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target);}}),{rootMargin:'0px 0px -6% 0px'});
+ }
+ const revelar=()=>todos('.rel-revela:not(.visto)').forEach(n=>io?io.observe(n):n.classList.add('visto'));
+ /* 458 avisos: un punto por aviso. */
+ const svg=$('relAvisosSvg');
+ if(svg&&!svg.firstChild&&typeof document.createElementNS==='function'){
+  const NS='http://www.w3.org/2000/svg',cols=46,filas=10,paso=358/cols;
+  for(let i=0;i<458;i++){const p=document.createElementNS(NS,'circle');
+   p.setAttribute('cx',(paso*Math.floor(i/filas)+paso/2).toFixed(2));p.setAttribute('cy',(paso*(i%filas)+paso/2).toFixed(2));
+   p.setAttribute('r','2.5');p.setAttribute('class','on');svg.appendChild(p);}
+  svg.setAttribute('viewBox','0 0 358 '+(paso*filas).toFixed(1));
+ }
+ /* «Quién más se ha movido»: sin tamaño (Inicio oculto) se supone el principio,
+    y un ResizeObserver repinta en cuanto lo hay. */
+ const lista=$('relQuienLista'),items=lista?[...lista.children]:[],pos=$('relQuienPos'),ant=panel.querySelector('.rel-quien-ant'),sig=panel.querySelector('.rel-quien-sig');
+ if($('relQuienTotal'))$('relQuienTotal').textContent=String(items.length);
+ const paso=()=>items.length>1?items[1].offsetLeft-items[0].offsetLeft:lista.clientWidth;
+ const actual=()=>{const p=paso();return p>0?Math.max(0,Math.min(items.length-1,Math.round(lista.scrollLeft/p))):0;};
+ function quien(){
+  if(!lista)return;
+  const ancho=lista.clientWidth;
+  if(pos)pos.textContent=String(ancho?actual()+1:1);
+  if(ant)ant.disabled=!ancho||lista.scrollLeft<4;
+  if(sig)sig.disabled=ancho?lista.scrollLeft+ancho>=lista.scrollWidth-4:items.length<2;
+ }
+ const ir=d=>lista.scrollTo({left:Math.max(0,actual()+d)*paso(),behavior:quieto()?'auto':'smooth'});
+ if(lista){
+  let raf=0;lista.addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;quien();});},{passive:true});
+  if(ant)ant.addEventListener('click',()=>ir(-1));
+  if(sig)sig.addEventListener('click',()=>ir(1));
+  lista.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();ir(e.key==='ArrowRight'?1:-1);}});
+  if(typeof ResizeObserver==='function')new ResizeObserver(quien).observe(lista);
+ }
+ /* Rótulos del radar a 12 px en pantalla (11 por debajo de 380 px) aunque el SVG se escale. */
+ function rotulos(){
+  const r=$('inicioRadar');if(!r||typeof r.getScreenCTM!=='function'||!r.style)return;
+  const m=r.getScreenCTM();if(!m||!m.a)return;
+  const fs=Math.max(12,(window.innerWidth<380?11:12)/m.a);
+  r.style.setProperty('--ir-fs',fs.toFixed(2)+'px');
+  r.querySelectorAll('text.ir-et').forEach(t=>{const ts=t.querySelectorAll('tspan[dy]');if(!ts.length)return;
+   if(!t.dataset.y0)t.dataset.y0=t.getAttribute('y');const y0=parseFloat(t.dataset.y0),salto=fs*1.2;
+   ts.forEach(s=>s.setAttribute('dy',salto.toFixed(1)));if(y0<200)t.setAttribute('y',(y0+15*ts.length-salto*ts.length).toFixed(1));});
+ }
+ /* «Fuentes de este apartado»: abre la lista en su grupo; «Volver al texto» regresa. */
+ const refs=$('relRefs');
+ const llevar=(n,centro)=>{n.scrollIntoView({block:centro?'center':'start',behavior:quieto()?'auto':'smooth'});n.focus({preventScroll:true});};
  panel.addEventListener('click',e=>{
-  const b=e.target&&e.target.closest&&e.target.closest('[data-inicio-cat],[data-inicio-coleccion],[data-inicio-radar]');
-  if(!b||typeof Movil==='undefined'||!Movil.ir||!Movil.verEnBuscar)return;
-  e.preventDefault();
-  if(b.hasAttribute('data-inicio-radar')){
-   const radar=document.getElementById('movilPanelRadar');
-   if(radar&&radar.classList)radar.classList.add('movil-radar-abierto');
-   sincronizarRadarPlegado();Movil.ir('movilRadarIntro',b);return;
+  /* Tocar el radar o «Explorar el radar» abre el radar de Plataformas. */
+  const r=e.target.closest&&e.target.closest('[data-inicio-radar]');
+  if(r&&typeof Movil!=='undefined'&&Movil.ir){e.preventDefault();const radar=$('movilPanelRadar');
+   if(radar)radar.classList.add('movil-radar-abierto');sincronizarRadarPlegado();Movil.ir('movilRadarIntro',r);return;}
+  const a=e.target.closest&&e.target.closest('a[data-rel-fuentes]');
+  if(a){
+   const g=$('fuentes-'+a.dataset.relFuentes);if(!g||!refs)return;
+   e.preventDefault();e.stopPropagation();refs.open=true;origen=a;
+   todos('.rel-refs-grupo').forEach(x=>{const on=x===g;x.classList.toggle('activa',on);x.querySelector('.rel-refs-volver').hidden=!on;});
+   llevar(g,false);return;
   }
-  const campo=document.getElementById('emiBuscar');
-  emiBusquedaLocal='';if(campo)campo.value='';
-  if(b.hasAttribute('data-inicio-cat')){
-   emiCat=b.getAttribute('data-inicio-cat')||'';
-   const l=ofertasCatalogoInicio();
-   emiColeccion=['principales','secundario','en_camino'].find(c=>l.some(o=>o.coleccion===c&&(!emiCat||o.categoria===emiCat)))||'principales';
-  }else{emiCat='';emiColeccion=b.getAttribute('data-inicio-coleccion')||'principales';}
-  pintarFiltrosEmision();pintarEmisiones();
-  Movil.verEnBuscar('ofertas');Movil.ir('emiColecciones',b);
+  const v=e.target.closest&&e.target.closest('.rel-refs-volver');
+  if(v&&origen&&origen.isConnected){e.preventDefault();v.hidden=true;llevar(origen,true);}
  });
+ /* Con el teclado, la tarjeta que recibe el foco entra entera en su carrusel. */
+ panel.addEventListener('focusin',e=>{const li=e.target&&e.target.closest&&e.target.closest('.rel-tarjetas>li');
+  if(li)li.scrollIntoView({block:'nearest',inline:'nearest',behavior:quieto()?'auto':'smooth'});});
+ /* La portada ocupa la pantalla y solo se recalcula si cambia el ancho (la barra
+    de direcciones del móvil cambia el alto al bajar). */
+ const portada=$('relPortada'),barra=$('relProgreso'),relleno=barra&&barra.querySelector('span');
+ let ancho=0,pendiente=false;
+ function alto(){
+  if(!portada||window.innerWidth===ancho)return;ancho=window.innerWidth;
+  const cab=$('movilCabecera'),nav=$('movilNav'),arriba=cab?cab.offsetHeight:0;
+  portada.style.setProperty('--rel-alto',Math.max(320,window.innerHeight-arriba-(nav?nav.offsetHeight:0))+'px');
+  if(barra)barra.style.setProperty('--rel-arriba',arriba+'px');
+ }
+ function progreso(){
+  if(!relleno||panel.hidden)return;
+  const total=panel.offsetHeight-window.innerHeight,y=-panel.getBoundingClientRect().top;
+  relleno.style.transform='scaleX('+(total>0?Math.min(1,Math.max(0,y/total)):0).toFixed(4)+')';
+  barra.classList.toggle('on',!!portada&&window.scrollY>portada.offsetHeight*.6);
+ }
+ window.addEventListener('scroll',()=>{if(pendiente)return;pendiente=true;requestAnimationFrame(()=>{pendiente=false;progreso();});},{passive:true});
+ window.addEventListener('resize',()=>{alto();rotulos();quien();progreso();},{passive:true});
+ try{if(typeof RWAdarIdioma!=='undefined')RWAdarIdioma.suscribirIdioma(()=>{huellaInicio='';pintarInicio();});}catch(e){}
+ const repintar=()=>{alto();rotulos();quien();revelar();progreso();};
+ /* Al volver a Inicio, el radar y el carrusel ya tienen tamaño: se miden otra vez. */
+ if(typeof MutationObserver==='function'&&document.body)new MutationObserver(()=>{if(document.body.dataset.movilPestana==='inicio')requestAnimationFrame(repintar);})
+  .observe(document.body,{attributes:true,attributeFilter:['data-movil-pestana']});
+ repintar();
+ return {repintar};
 })();
 
 /* ---- escaparate de revisión local ---------------------------------
@@ -4469,7 +4535,7 @@ const Cuenta = (function(){
      : '<p class="perfil-nota perfil-ayuda">Solo lo ves tú. Las opiniones llegarán próximamente.</p>')+ 
    (MANUAL_BIENVENIDA
      ? '<div class="perfil-sec">Manual de uso</div>'+
-       '<p class="perfil-nota">Cómo verificamos, cómo leer una ficha, los filtros, el comparador y por qué conviene mirar «Fuera del radar» primero.</p>'+
+       '<p class="perfil-nota">Cómo verificamos, cómo leer una ficha, los filtros, el comparador y por qué conviene mirar «Descartadas» primero.</p>'+
        '<a class="perfil-manual" id="pfManual" href="'+esc(MANUAL_BIENVENIDA)+'" target="_blank" rel="noopener">Descargar el manual (PDF, 10 páginas)</a>'
      : '')+
    '<div class="perfil-sec">Lo que vigilas</div>'+
@@ -4853,7 +4919,7 @@ const Comunidad=(function(){
   const caja=$('comunidad'),proxima=$('comunidadProximamente');
   if(!caja)return;
   caja.hidden=false;if(proxima)proxima.hidden=true;
-  const seccionComunidad=$('inicioComunidad');if(seccionComunidad)seccionComunidad.hidden=false;
+  const seccionComunidad=$('perfilComunidad');if(seccionComunidad)seccionComunidad.hidden=false;
   $('comunidadForm').addEventListener('submit',publicar);
   $('comunidadTexto').addEventListener('input',e=>{$('comunidadCuenta').textContent=String(e.target.value.length);});
   $('comunidadLista').addEventListener('click',async e=>{
@@ -4884,8 +4950,9 @@ const Comunidad=(function(){
 /* =================================================================
    SHELL MÓVIL / PWA
    -----------------------------------------------------------------
-   Cuatro pestañas comunes a iPhone y Android (Inicio, Buscar, Academy y
-   Perfil), sin convertir la web de escritorio en otra cosa. La composición móvil cambia de jerarquía,
+   Cinco botones comunes a iPhone y Android (Inicio, Ofertas, Plataformas,
+   Academy y Perfil; Ofertas y Plataformas son las dos vistas de Buscar),
+   sin convertir la web de escritorio en otra cosa. La composición móvil cambia de jerarquía,
    pero comparte el mismo DOM y estado: no duplica datos, filtros, 3D ni
    lógica de cuenta.
    ================================================================= */
@@ -4916,8 +4983,7 @@ const Movil = (function(){
  const detalles=new Map([
   ['presentacion',portadaTexto],['metodo',metodo],['fuera',fuera]
  ].filter(([,nodo])=>Boolean(nodo)));
- const selectorBuscar=document.getElementById('movilBuscarSelector');
- const ordenMovil=[selectorBuscar,emisiones,herramienta,barra,radarIntro,radarPortada,marcador,resultados,transparencia,academia,portadaTexto,portada].filter(Boolean);
+ const ordenMovil=[emisiones,herramienta,barra,radarIntro,radarPortada,marcador,resultados,transparencia,academia,portadaTexto,portada].filter(Boolean);
  const ordenEscritorio=[portada,emisiones,herramienta,barra,resultados,metodo,fuera,academia].filter(Boolean);
  const movibles=[...ordenMovil,explicador,leccionesAcademy].filter(Boolean);
  const anclas=new Map();
@@ -4931,10 +4997,11 @@ const Movil = (function(){
  const cabSub=document.getElementById('movilCabeceraSub');
  const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||'26';
  const textos={
-  inicio:['RWADAR','Inicio','Noticias, novedades y por dónde empezar'],
-  buscar:['Explorar RWAdar','Buscar','Ofertas y '+total+' plataformas contrastadas'],
-  academy:['Aprende a tu ritmo','Academy','Lecciones por niveles, con test y revisión legal'],
-  cuenta:['Tu espacio','Perfil','Lo que guardas, avisos y privacidad']
+  inicio:['RWAdar','Inicio','Novedades y por dónde empezar'],
+  buscar:['Explorar RWAdar','Ofertas','Cada una con su fuente y su fecha'],
+  plataformas:['Explorar RWAdar','Plataformas',total+' plataformas revisadas'],
+  academy:['Lecciones gratuitas','Academy','Lecciones por niveles, con test y revisión legal'],
+  cuenta:['Tu cuenta','Perfil','Lo que guardas, avisos y privacidad']
  };
  /* La app abre en Inicio. Un enlace con ancla (#emisiones, #fuera…) va a
     Buscar, que es donde está ese contenido. */
@@ -4972,7 +5039,7 @@ const Movil = (function(){
   requestAnimationFrame(()=>requestAnimationFrame(()=>window.dispatchEvent(new Event('resize'))));
  }
  function cabecera(id){
-  const t=textos[id]||textos.buscar;
+  const t=id==='buscar'&&document.body.dataset.movilBuscar==='plataformas'?textos.plataformas:textos[id]||textos.buscar;
   if(cabEtiqueta)cabEtiqueta.textContent=t[0];
   if(cabTitulo)cabTitulo.textContent=t[1];
   if(cabSub)cabSub.textContent=t[2];
@@ -5012,7 +5079,7 @@ const Movil = (function(){
   }
  }
  function cabeceraAcademy(){
-  if(cabEtiqueta)cabEtiqueta.textContent='Aprende a tu ritmo';
+  if(cabEtiqueta)cabEtiqueta.textContent='Lecciones gratuitas';
   if(cabTitulo)cabTitulo.textContent='Academy';
   if(cabSub)cabSub.textContent='Lecciones por niveles, con test y revisión legal';
  }
@@ -5079,7 +5146,7 @@ const Movil = (function(){
  const textosDetalle={
   presentacion:['Qué incluye el radar','Qué analiza RWAdar','Alcance, límites y lectura del registro'],
   metodo:['Criterios contrastados','Método de selección','Cómo decidimos qué plataformas entran'],
-  fuera:['Transparencia','Fuera del radar','Descartes publicados con su motivo y sus fuentes']
+  fuera:['Transparencia','Descartadas','Descartes publicados con su motivo y sus fuentes']
  };
  function cabeceraDetalle(id){
   const t=textosDetalle[id]||textos.buscar;
@@ -5225,11 +5292,7 @@ const Movil = (function(){
   activa=id;
   document.body.dataset.movilPestana=id;
   paneles.forEach((panel,nombre)=>{panel.hidden=nombre!==id;});
-  tabs.forEach(tab=>{
-   const elegida=tab.dataset.movilTab===id;
-   tab.setAttribute('aria-selected',elegida?'true':'false');
-   tab.tabIndex=elegida?0:-1;
-  });
+  marcarTabs();
   cabecera(id);
   if(id==='cuenta')pintarPerfil();
   if(id==='academy')pintarAcademy();
@@ -5237,6 +5300,15 @@ const Movil = (function(){
    window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
   }
   if(id==='buscar')geometria();
+ }
+ /* Una sola pestaña marcada: en Buscar, la de su vista (Ofertas o Plataformas). */
+ function marcarTabs(){
+  const vista=document.body.dataset.movilBuscar||'ofertas';
+  tabs.forEach(tab=>{
+   const elegida=tab.dataset.movilTab===activa&&(!tab.dataset.navVista||tab.dataset.navVista===vista);
+   tab.setAttribute('aria-selected',elegida?'true':'false');
+   tab.tabIndex=elegida?0:-1;
+  });
  }
  function adaptar(){
   const esMovil=media.matches;
@@ -5256,21 +5328,18 @@ const Movil = (function(){
    geometria();
   }
  }
- /* Ofertas o plataformas dentro de Buscar (solo en el móvil). */
+ /* Ofertas o Plataformas: las dos vistas de Buscar, cada una con su botón en
+    la barra (solo en el móvil). La vista se guarda en body[data-movil-buscar]. */
  const DE_PLATAFORMAS=new Set(['tool','plataformasResultados','movilRadarIntro']);
  function verEnBuscar(que){
   document.body.dataset.movilBuscar=que;
-  if(selectorBuscar)selectorBuscar.querySelectorAll('[data-movil-buscar]').forEach(b=>{
-   const on=b.dataset.movilBuscar===que;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1;
-  });
+  marcarTabs();
+  if(activa==='buscar'&&!detalleAbierto&&!academyAbierta)cabecera('buscar');
  }
- if(selectorBuscar)selectorBuscar.addEventListener('click',e=>{
-  const b=e.target.closest&&e.target.closest('[data-movil-buscar]');
-  if(!b)return;
-  verEnBuscar(b.dataset.movilBuscar);
-  window.scrollTo({top:0,behavior:'auto'});
-  geometria();
- });
+ function elegirTab(tab){
+  if(tab.dataset.navVista)verEnBuscar(tab.dataset.navVista);
+  cambiar(tab.dataset.movilTab);
+ }
  verEnBuscar(typeof location!=='undefined'&&DE_PLATAFORMAS.has((location.hash||'').slice(1))?'plataformas':'ofertas');
  function ir(destino,origen=null){
   if(destino==='explain'){abrirAcademyDesde(origen);return;}
@@ -5297,7 +5366,7 @@ const Movil = (function(){
  }
 
  tabs.forEach((tab,indice)=>{
-  tab.addEventListener('click',()=>cambiar(tab.dataset.movilTab));
+  tab.addEventListener('click',()=>elegirTab(tab));
   tab.addEventListener('keydown',e=>{
    let siguiente=null;
    if(e.key==='ArrowRight')siguiente=(indice+1)%tabs.length;
@@ -5305,7 +5374,7 @@ const Movil = (function(){
    if(e.key==='Home')siguiente=0;
    if(e.key==='End')siguiente=tabs.length-1;
    if(siguiente==null)return;
-   e.preventDefault();cambiar(tabs[siguiente].dataset.movilTab);
+   e.preventDefault();elegirTab(tabs[siguiente]);
    tabs[siguiente].focus({preventScroll:true});
   });
  });

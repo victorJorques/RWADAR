@@ -5,6 +5,7 @@ import crypto from 'node:crypto';
 import { request as solicitarHttp } from 'node:http';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
+import { pruebaActivacionCache, pruebaActivacionSinMigracion, pruebaRedConCacheRota, pruebaActualizacionPWACliente } from './probar-web-pwa.mjs';
 import { spawn, spawnSync } from 'node:child_process';
 
 const raiz = path.dirname(fileURLToPath(import.meta.url));
@@ -525,165 +526,6 @@ function declaracionesCSS(codigo, selectorBuscado) {
     .map(m => m[2]);
 }
 
-async function pruebaActivacionCache(codigo) {
-  const escuchas = {};
-  const version = (codigo.match(/const VERSION\s*=\s*'([^']+)'/) || [])[1];
-  const borradas = [];
-  const navegadas = [];
-  const consultas = [];
-  let reclamos = 0;
-  const clienteAnterior = {
-    id:'documento-antiguo', url:'https://rwadar.example/',
-    async navigate(url){ navegadas.push(url); },
-  };
-  const contexto = {
-    self: {
-      location:{ origin:'https://rwadar.example' },
-      clients:{
-        async claim(){ reclamos++; },
-        async matchAll(opciones){ consultas.push(opciones); return [clienteAnterior]; },
-      },
-      addEventListener(tipo, fn){ escuchas[tipo] = fn; },
-      async skipWaiting(){},
-    },
-    caches: {
-      async open(){ return { async addAll(){}, async match(){}, async put(){} }; },
-      async keys(){ return [version, 'rwadar-v-antigua', 'otra-cache-antigua']; },
-      async delete(nombre){ borradas.push(nombre); return true; },
-    },
-    URL, Response, fetch, Set,
-    setTimeout(fn){ fn(); },
-  };
-  vm.createContext(contexto);
-  vm.runInContext(codigo, contexto);
-  let activacion;
-  escuchas.activate({ waitUntil(promesa){ activacion = promesa; } });
-  await activacion;
-  return version && reclamos === 1 && !borradas.includes(version) &&
-    borradas.length === 2 && borradas.includes('rwadar-v-antigua') && borradas.includes('otra-cache-antigua') &&
-    consultas.length === 2 && consultas.every(x => x.type === 'window' && x.includeUncontrolled === true) &&
-    navegadas.length === 1 && navegadas[0] === clienteAnterior.url;
-}
-
-async function pruebaActivacionSinMigracion(codigo, clienteYaRecargado) {
-  const escuchas = {};
-  const version = (codigo.match(/const VERSION\s*=\s*'([^']+)'/) || [])[1];
-  let consultas = 0;
-  let navegaciones = 0;
-  const contexto = {
-    self: {
-      location:{ origin:'https://rwadar.example' },
-      clients:{
-        async claim(){},
-        async matchAll(){
-          consultas++;
-          const id = clienteYaRecargado && consultas > 1 ? 'documento-nuevo' : 'documento-antiguo';
-          return [{ id, url:'https://rwadar.example/', async navigate(){ navegaciones++; } }];
-        },
-      },
-      addEventListener(tipo, fn){ escuchas[tipo] = fn; },
-      async skipWaiting(){},
-    },
-    caches: {
-      async open(){ return { async addAll(){}, async match(){}, async put(){} }; },
-      async keys(){ return clienteYaRecargado ? [version, 'rwadar-v-anterior'] : [version, 'otra-cache']; },
-      async delete(){ return true; },
-    },
-    URL, Response, fetch, Set,
-    setTimeout(fn){ fn(); },
-  };
-  vm.createContext(contexto);
-  vm.runInContext(codigo, contexto);
-  let activacion;
-  escuchas.activate({ waitUntil(promesa){ activacion = promesa; } });
-  await activacion;
-  return { consultas, navegaciones };
-}
-
-async function pruebaRedConCacheRota(codigo) {
-  const escuchas = {};
-  const respuestasRed = new Map();
-  let escrituras = 0;
-  const contexto = {
-    self: {
-      location:{ origin:'https://rwadar.example' },
-      clients:{ async claim(){} },
-      addEventListener(tipo, fn){ escuchas[tipo] = fn; },
-      async skipWaiting(){},
-    },
-    caches: {
-      async open(){ return {
-        async addAll(){}, async match(){ return null; },
-        async put(){ escrituras++; throw new Error('cuota de caché agotada'); },
-      }; },
-      async keys(){ return []; }, async delete(){ return true; },
-    },
-    async fetch(peticion){ return respuestasRed.get(peticion.url); },
-    URL, Response,
-  };
-  vm.createContext(contexto);
-  vm.runInContext(codigo, contexto);
-  try {
-    for (const peticion of [
-      { method:'GET', mode:'navigate', url:'https://rwadar.example/radar' },
-      { method:'GET', mode:'same-origin', url:'https://rwadar.example/assets/interfaz.css' },
-    ]) {
-      const recibida = { status:200, type:'basic', clone(){ return this; } };
-      respuestasRed.set(peticion.url, recibida);
-      let respuesta;
-      escuchas.fetch({ request:peticion, respondWith(promesa){ respuesta = promesa; } });
-      if (await respuesta !== recibida) return false;
-    }
-    return escrituras === 2;
-  }
-  catch { return false; }
-}
-
-async function pruebaActualizacionPWACliente(codigo, controlada) {
-  const marca = '/* El trabajador solo se registra en HTTP(S)';
-  const inicio = codigo.indexOf(marca);
-  if (inicio < 0) throw new Error('no se encuentra el registro del service worker');
-  const bloque = codigo.slice(inicio);
-  const escuchasVentana = {};
-  const escuchasDocumento = {};
-  const escuchasTrabajador = {};
-  let recargas = 0;
-  let actualizaciones = 0;
-  let registro = null;
-  const registroSW = {
-    async update(){ actualizaciones++; },
-  };
-  const contexto = {
-    navigator: {
-      serviceWorker: {
-        controller: controlada ? {} : null,
-        addEventListener(tipo, fn){ escuchasTrabajador[tipo] = fn; },
-        async register(ruta, opciones){ registro = { ruta, opciones }; return registroSW; },
-      },
-    },
-    location: { protocol:'https:', reload(){ recargas++; } },
-    window: { addEventListener(tipo, fn){ escuchasVentana[tipo] = fn; } },
-    document: {
-      visibilityState:'visible',
-      addEventListener(tipo, fn){ escuchasDocumento[tipo] = fn; },
-    },
-  };
-  vm.createContext(contexto);
-  vm.runInContext(bloque, contexto);
-  await escuchasVentana.load();
-  escuchasVentana.pageshow({ persisted:true });
-  escuchasDocumento.visibilitychange();
-  escuchasTrabajador.controllerchange();
-  escuchasTrabajador.controllerchange();
-  await Promise.resolve();
-  return {
-    registro,
-    actualizaciones,
-    recargas,
-    escuchaCambio:typeof escuchasTrabajador.controllerchange === 'function',
-  };
-}
-
 function renderEmisionHostil(codigo) {
   const dato = [{
     s:'prueba', t:'<img src=x onerror=alert(1)>', res:'</script><script>alert(2)</script>',
@@ -736,23 +578,24 @@ function renderEmisionHostil(codigo) {
 function reparentadoEmisionesEsReversible(codigo) {
   const limpio = sinComentariosJS(codigo);
   return /function ordenarBuscar\(esMovil\)/.test(limpio) &&
-    /const ordenMovil=\[selectorBuscar,emisiones,herramienta,barra,radarIntro,radarPortada,marcador,resultados,transparencia,academia,portadaTexto,portada\]/.test(limpio) &&
+    /const ordenMovil=\[emisiones,herramienta,barra,radarIntro,radarPortada,marcador,resultados,transparencia,academia,portadaTexto,portada\]/.test(limpio) &&
     /ordenMovil\.forEach\(nodo=>panelBuscar\.insertBefore\(nodo,referencia\)\)/.test(limpio) &&
     /function restaurarEscritorio\(\)/.test(limpio) &&
     /ancla\.parentNode\.insertBefore\(nodo,ancla\.nextSibling\)/.test(limpio) &&
     /academyLeccion\.appendChild\(explicador\)/.test(limpio);
 }
 
+// Barra de 5 (decisión de Víctor, 04/11/2026; ESPEC-INICIO §4): Ofertas y
+// Plataformas son dos vistas de Buscar y nunca salen marcadas a la vez.
 function cambioTabsMovilEsCoherente(codigo) {
   const inicio = codigo.indexOf('function cambiar(id,opciones){');
   const fin = codigo.indexOf('function adaptar(){', inicio);
   if (inicio < 0 || fin < 0) return false;
   const fuente = codigo.slice(inicio, fin);
-  const nombres = ['inicio','buscar','academy','cuenta'];
+  const nombres = ['inicio','buscar','academy','cuenta'],pasos=[['inicio'],['buscar','ofertas'],['buscar','plataformas'],['academy'],['cuenta']];
   const paneles = new Map(nombres.map(nombre => [nombre, { hidden:nombre !== 'buscar' }]));
-  const tabs = nombres.map(nombre => ({
-    dataset:{ movilTab:nombre }, tabIndex:nombre === 'buscar' ? 0 : -1,
-    atributos:new Map([['aria-selected', nombre === 'buscar' ? 'true' : 'false']]),
+  const tabs = pasos.map(([nombre,vista]) => ({
+    dataset:vista?{ movilTab:nombre, navVista:vista }:{ movilTab:nombre }, tabIndex:-1, atributos:new Map(),
     setAttribute(clave, valor){ this.atributos.set(clave, String(valor)); },
     getAttribute(clave){ return this.atributos.get(clave) ?? null; },
   }));
@@ -769,21 +612,18 @@ function cambioTabsMovilEsCoherente(codigo) {
   const api = fabrica({matches:true}, paneles, tabs, document, {scrollTo(){}}, ()=>true,
     ()=>{ cierresAvisos++; }, id=>{ cabeceraActual=id; }, ()=>{ mediciones++; },
     ()=>{ perfiles++; }, ()=>{ academias++; });
-  for (const nombre of nombres) {
+  for (const [nombre,vista] of pasos) {
+    if (vista) document.body.dataset.movilBuscar = vista;
     api.cambiar(nombre, { arriba:false });
-    if (api.activa() !== nombre || document.body.dataset.movilPestana !== nombre || cabeceraActual !== nombre)
-      return false;
-    for (const otro of nombres) {
-      const indice = nombres.indexOf(otro);
-      const elegida = otro === nombre;
-      if (paneles.get(otro).hidden === elegida ||
-          tabs[indice].getAttribute('aria-selected') !== (elegida ? 'true' : 'false') ||
-          tabs[indice].tabIndex !== (elegida ? 0 : -1)) return false;
-    }
+    const marcadas = tabs.filter(t => t.getAttribute('aria-selected') === 'true');
+    if (api.activa() !== nombre || document.body.dataset.movilPestana !== nombre || cabeceraActual !== nombre ||
+      nombres.some(otro => paneles.get(otro).hidden === (otro === nombre)) || marcadas.length !== 1 ||
+      marcadas[0] !== tabs[pasos.findIndex(x => x[0] === nombre && x[1] === vista)] ||
+      tabs.some(t => t.tabIndex !== (t === marcadas[0] ? 0 : -1))) return false;
   }
   api.cambiar('sistema-operativo-inventado', { arriba:false });
   return api.activa() === 'cuenta' && document.body.dataset.movilPestana === 'cuenta' &&
-    mediciones === 1 && cierresAvisos >= 3 && perfiles === 1 && academias === 1;
+    mediciones === 2 && cierresAvisos >= 3 && perfiles === 1 && academias === 1;
 }
 
 function subvistaAvisosConservaEstadoYFoco(codigo) {
@@ -1206,9 +1046,12 @@ prueba('la emisión renderizada no genera style ni manejadores inline',
   !/<[^>]*\s(?:style|on[a-z]+)\s*=/i.test(hostil));
 
 console.log('\n=== ADAPTACIÓN MÓVIL Y ACCESIBILIDAD ===');
+// Barra de 5 (decisión de Víctor, 04/11/2026; ESPEC-INICIO §4): Ofertas y
+// Plataformas son las dos vistas de Buscar; los valores de data-movil-tab no cambian.
 const contratoTabs = [
   { valor:'inicio', id:'movilTabInicio', panel:'movilPanelInicio', etiqueta:'Inicio' },
-  { valor:'buscar', id:'movilTabRadar', panel:'movilPanelRadar', etiqueta:'Buscar' },
+  { valor:'buscar', vista:'ofertas', id:'movilTabRadar', panel:'movilPanelRadar', etiqueta:'Ofertas' },
+  { valor:'buscar', vista:'plataformas', id:'movilTabPlataformas', panel:'movilPanelRadar', etiqueta:'Plataformas' },
   { valor:'academy', id:'movilTabAcademy', panel:'movilPanelAcademy', etiqueta:'Academy' },
   { valor:'cuenta', id:'movilTabMas', panel:'movilPanelMas', etiqueta:'Perfil' },
 ];
@@ -1224,10 +1067,10 @@ const botonesNavMovil = navMovil
   ? [...navMovil[2].matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/gi)]
       .filter(b => atributoHTML(b[1], 'class')?.split(/\s+/).includes('movil-nav-item'))
   : [];
-prueba('la barra móvil tiene exactamente cuatro pestañas y ningún control improvisado',
-  botonesNavMovil.length === 4 &&
+prueba('la barra móvil tiene exactamente cinco botones y ningún control improvisado',
+  botonesNavMovil.length === 5 &&
   !/<a\b[^>]*\bclass=["'][^"']*\bmovil-nav-item\b/i.test(navMovil?.[2] || ''));
-prueba('las cuatro pestañas conservan orden, destino y nombre accesible',
+prueba('los cinco botones conservan orden, destino, vista y nombre accesible',
   contratoTabs.every((esperada, i) => {
     const boton = botonesNavMovil[i];
     if (!boton) return false;
@@ -1236,15 +1079,16 @@ prueba('las cuatro pestañas conservan orden, destino y nombre accesible',
       atributoHTML(boton[1], 'id') === esperada.id &&
       atributoHTML(boton[1], 'data-movil-tab') === esperada.valor &&
       atributoHTML(boton[1], 'aria-controls') === esperada.panel &&
+      atributoHTML(boton[1], 'data-nav-vista') === (esperada.vista || null) &&
       textoHTML(boton[2]).includes(esperada.etiqueta);
   }));
 /* Sin JavaScript se ve Buscar (es el contenido de <main> y el escritorio);
    con JavaScript, el móvil abre Inicio salvo que la URL traiga un ancla. */
-prueba('en el HTML solo Buscar empieza seleccionada y el foco sigue el patrón roving-tabindex',
+prueba('en el HTML solo Ofertas (Buscar) empieza seleccionada y el foco sigue el patrón roving-tabindex',
   botonesNavMovil.filter(b => atributoHTML(b[1], 'aria-selected') === 'true').length === 1 &&
   contratoTabs.every((esperada, i) =>
-    atributoHTML(botonesNavMovil[i]?.[1] || '', 'aria-selected') === (esperada.valor === 'buscar' ? 'true' : 'false') &&
-    atributoHTML(botonesNavMovil[i]?.[1] || '', 'tabindex') === (esperada.valor === 'buscar' ? '0' : '-1')));
+    atributoHTML(botonesNavMovil[i]?.[1] || '', 'aria-selected') === (esperada.vista === 'ofertas' ? 'true' : 'false') &&
+    atributoHTML(botonesNavMovil[i]?.[1] || '', 'tabindex') === (esperada.vista === 'ofertas' ? '0' : '-1')));
 prueba('en el móvil la app abre en Inicio, y un enlace con ancla abre Buscar',
   /const destinoInicial=typeof location!=='undefined'&&location\.hash&&location\.hash\.length>1\?'buscar':'inicio';/.test(js) &&
   /let activa=destinoInicial,/.test(js));
@@ -1256,10 +1100,10 @@ prueba('cada pestaña controla un panel accesible y los paneles inactivos nacen 
     const panel = panelesMoviles.find(p => atributoHTML(p[2], 'id') === esperada.panel);
     return panel && atributoHTML(panel[2], 'data-movil-panel') === esperada.valor &&
       atributoHTML(panel[2], 'role') === 'tabpanel' &&
-      atributoHTML(panel[2], 'aria-labelledby') === esperada.id &&
+      atributoHTML(panel[2], 'aria-labelledby') === (esperada.vista ? 'movilTabRadar' : esperada.id) &&
       (esperada.valor === 'buscar' ? atributoHTML(panel[2], 'hidden') === null : atributoHTML(panel[2], 'hidden') !== null);
   }));
-prueba('Inicio, Buscar, Academy y Perfil son las únicas rutas de primer nivel',
+prueba('Inicio, Buscar (Ofertas y Plataformas), Academy y Perfil son las únicas rutas de primer nivel',
   new Set(botonesNavMovil.map(b => atributoHTML(b[1], 'data-movil-tab'))).size === 4 &&
   contratoTabs.every(esperada => botonesNavMovil.some(b =>
     atributoHTML(b[1], 'data-movil-tab') === esperada.valor)) &&
@@ -1325,9 +1169,9 @@ prueba('320, 375, 390 y 430 px comparten el mismo shell fluido sin ancho mínimo
   /--movil-margen\s*:\s*12px/i.test(cssMuyEstrecho) &&
   /grid-template-columns\s*:\s*minmax\(\s*0\s*,\s*1fr\s*\)\s+52px/i
     .test(declaracionesCSS(cssMuyEstrecho, '#movilPanelRadar .barra-in').join(';')));
-prueba('la barra es inferior, tiene cuatro columnas y reserva el safe-area',
+prueba('la barra es inferior, tiene cinco columnas y reserva el safe-area',
   /position\s*:\s*fixed/i.test(navEnMovil) && /bottom\s*:\s*0/i.test(navEnMovil) &&
-  (/grid-template-columns\s*:\s*repeat\(\s*4\s*,/i.test(navEnMovil) ||
+  (/grid-template-columns\s*:\s*repeat\(\s*5\s*,/i.test(navEnMovil) ||
     (/display\s*:\s*flex/i.test(navEnMovil) && /flex\s*:\s*1(?:\s|;|$)/i.test(itemEnMovil))) &&
   /padding(?:-bottom)?\s*:[^;{}]*env\(\s*safe-area-inset-bottom/i.test(navEnMovil));
 prueba('las pestañas ofrecen dianas táctiles de al menos 48 px y foco visible',
@@ -1720,15 +1564,43 @@ const panelHTML = id => {
 const panelInicioHTML = panelHTML('movilPanelInicio');
 const panelAcademyHTML = panelHTML('movilPanelAcademy');
 const panelPerfilHTML = panelHTML('movilPanelMas');
-prueba('Inicio trae noticias y accesos al catálogo sin repetir el menú de aprendizaje y transparencia',
-  /<!--noticias:ini-->[\s\S]*class="inicio-noticias"[\s\S]*<!--noticias:fin-->/.test(panelInicioHTML) &&
-  (panelInicioHTML.match(/class="inicio-noticia"/g) || []).length >= 1 &&
-  /Cuando se abran las cuentas, cada cuenta podrá compartir aquí una publicación al día/.test(panelInicioHTML) &&
-  /* El único formulario es el de la comunidad, oculto hasta encenderla. */
-  !/<(?:textarea|input|form)\b/i.test(panelInicioHTML.replace(/<div class="comunidad" id="comunidad" hidden>[\s\S]*?<ol class="comunidad-lista"/, '')) &&
-  !/inicioEmpezarTit|data-movil-action="academy"|data-movil-ir="metodo"/.test(panelInicioHTML) &&
-  /<section class="inicio-seccion" id="inicioComunidad"[^>]*\shidden>/.test(panelInicioHTML) &&
-  /data-movil-ir="emisiones">Ver ofertas</.test(panelInicioHTML) && /data-movil-ir="tool">Ver plataformas</.test(panelInicioHTML));
+// Inicio cuenta una historia (decisión de Víctor, 04/11/2026; ESPEC-INICIO §1 y §8):
+// la franja de novedades, la nota legal, las fuentes y los botones al catálogo; la comunidad pasa a Perfil.
+prueba('Inicio trae la historia, la franja de novedades, las fuentes, la nota legal y los botones al catálogo, sin buscador',
+  /<!--noticias:ini-->\s*<section class="rel-novedades"[\s\S]*?href="\/cambios"[\s\S]*?<!--noticias:fin-->/.test(panelInicioHTML) &&
+  ['relPortada','relCap1','relCap2','relCap3','relCap4','relCap5','relCap6','relEscaparate','relRefs'].every(id=>panelInicioHTML.includes(`id="${id}"`)) &&
+  /Nota legal y advertencia de riesgo/.test(panelInicioHTML) && !/<(?:textarea|input|form|select)\b/i.test(panelInicioHTML) &&
+  /data-movil-ir="emisiones" data-rel-plantilla="Ver las \{ofertas\} ofertas"/.test(panelInicioHTML) &&
+  /data-movil-ir="tool" data-rel-plantilla="Ver las \{plataformas\} plataformas"/.test(panelInicioHTML) &&
+  !/inicioEmpezarTit|data-movil-action="academy"|data-movil-ir="metodo"|inicioComunidad/.test(panelInicioHTML) &&
+  /<section class="movil-menu-grupo" id="perfilComunidad"[^>]*\shidden>/.test(panelPerfilHTML) &&
+  /Cuando se abran las cuentas, cada cuenta podrá compartir aquí una publicación al día/.test(panelPerfilHTML));
+// Inicio como historia (decisión de Víctor, 04/11/2026): texto limpio, sin llamadas [n]; cada apartado
+// lleva «Fuentes de este apartado ›» a su grupo y la lista tiene todas las fuentes de HISTORIA-v2 §4.
+{
+  const f=JSON.parse(fs.readFileSync(path.join(raiz,'rwadar-editorial-source/inicio/fuentes.json'),'utf8'));
+  const vis=textoHTML(panelInicioHTML.replace(/<!--fuentes:ini-->[\s\S]*<!--fuentes:fin-->/,'')),notas=(js.match(/const NOTAS_SELECCION=\{[\s\S]*?\};/)||[''])[0];
+  const ir=[...panelInicioHTML.matchAll(/<a class="b3 rel-fuentes" href="#fuentes-(\w+)" data-rel-fuentes="\1">([^<]+)</g)];
+  const grupos=new Set([...panelInicioHTML.matchAll(/<section class="rel-refs-grupo" id="fuentes-(\w+)"/g)].map(m=>m[1]));
+  const enlaces=[...panelInicioHTML.matchAll(/<a class="rel-refs-url"([^>]*)>/g)].map(m=>m[1]);
+  prueba('Inicio: sin llamadas [n]; cada apartado lleva a su grupo de fuentes y están todas las de HISTORIA-v2 §4, con enlace',
+    !/\[\d+\]/.test(vis+notas)&&f.fuentes.length===38&&['portada','cap1','cap2','cap3','cap4','cap5','cap6','seleccion','legal'].every(g=>ir.some(m=>m[1]===g))&&
+    ir.every(m=>grupos.has(m[1])&&/^Fuentes(?: de este apartado)?$/.test(m[2]))&&f.fuentes.every(x=>panelInicioHTML.includes(`data-fuente="${x.n}"`))&&
+    enlaces.length>=f.fuentes.length&&enlaces.every(a=>/href="https:\/\//.test(a)&&/target="_blank"/.test(a)&&/rel="noopener nofollow"/.test(a))&&
+    (panelInicioHTML.match(/class="b3 rel-refs-volver" type="button" hidden>Volver al texto</g)||[]).length===grupos.size);
+  const prohibida=/cambiando de vías|oportunidad de inversión|rentabilidad|sin riesgo|subirse al tren ahora|revoluci[oó]n/i;
+  prueba('Inicio: ninguna frase prohibida (vías, revolución fuera de cita, oportunidad, rentabilidad, garantía prometida, sin riesgo, el tren)',
+    ![vis,notas].some(t=>prohibida.test(t.replace(/«[^»]*»/g,''))||/garantiz/i.test(t.replace(/n[oi] está garantizad[oa]/gi,''))));
+  prueba('los enlaces de siempre siguen: emisiones, tool, fuera, el radar, los hash, la barra y las fichas',
+    ['data-movil-ir="emisiones"','data-movil-ir="tool"','data-movil-ir="fuera"','data-inicio-radar'].every(x=>panelInicioHTML.includes(x))&&
+    /if\(destino==='emisiones'\)verEnBuscar\('ofertas'\);\s*else if\(DE_PLATAFORMAS\.has\(destino\)\)verEnBuscar\('plataformas'\);/.test(codigoShellMovil)&&
+    /verEnBuscar\(typeof location!=='undefined'&&DE_PLATAFORMAS\.has\(\(location\.hash\|\|''\)\.slice\(1\)\)\?'plataformas':'ofertas'\)/.test(codigoShellMovil)&&
+    /function elegirTab\(tab\)\{\s*if\(tab\.dataset\.navVista\)verEnBuscar\(tab\.dataset\.navVista\);\s*cambiar\(tab\.dataset\.movilTab\);/.test(codigoShellMovil)&&
+    /closest\('\[data-perfil-oferta\]'\)/.test(codigoShellMovil)&&/Movil\.ir\('movilRadarIntro',r\)/.test(js));
+  prueba('Inicio: sin style= ni on…=, avisos con la letra del texto y quieto con «reducir movimiento»',
+    !/<[^>]*\s(?:style|on[a-z]+)\s*=/i.test(panelInicioHTML)&&/font:400 1rem\/1\.55/.test(declaracionesCSS(css,'.rel-aviso').join(';'))&&
+    /\.rel-anim \.rel-revela,\.rel-anim \.rel-barra-rel\{opacity:1;transform:none\}/.test(css)&&/\.panel\[inert\]\{box-shadow:none\}/.test(css));
+}
 prueba('Academy mueve el bloque real de lecciones y cuenta solo el progreso local de la cuenta',
   /id="movilAcademyLecciones"/.test(panelAcademyHTML) &&
   !/class="academia-lecciones"/.test(panelAcademyHTML) &&
@@ -2304,20 +2176,21 @@ for(const [nombre,alterar] of [
       o.estadoRevision==='actual'&&!r.vencida;};
   const esperadas=emi.filter(cinco).map(o=>o.slug).sort();
   vm.runInContext("huellaInicio='';emiColeccion='principales';emiCat='';emiBusquedaLocal='';pintarEmisiones()",c);
-  const inicioSel=[...p.obtiene('inicioSeleccionLista').innerHTML.matchAll(/data-perfil-oferta="([^"]+)"/g)].map(m=>m[1]).sort();
+  const inicioSel=[...p.obtiene('relTarjetas').innerHTML.matchAll(/data-perfil-oferta="([^"]+)"/g)].map(m=>m[1]).sort();
   const lista=p.obtiene('emiLista').innerHTML;
   const bloqueSel=lista.slice(lista.indexOf('catalogo-seleccion'),lista.indexOf('emiRestoTit'));
   const buscarSel=[...bloqueSel.matchAll(/data-oferta-detalle="([^"]+)"/g)].map(m=>m[1]).sort();
   prueba('la Selección son las ofertas con las 5 comprobaciones, en Inicio y en Principales, con «No es una recomendación de inversión»',
     esperadas.length>0&&JSON.stringify(inicioSel)===JSON.stringify(esperadas)&&JSON.stringify(buscarSel)===JSON.stringify(esperadas)&&
-    p.obtiene('inicioSeleccion').hidden===false&&
-    /<section class="inicio-seccion" id="inicioSeleccion"[\s\S]*?No es una recomendación de inversión\.[\s\S]*?<\/section>/.test(html)&&
+    p.obtiene('relEscaparate').hidden===false&&
+    /<section class="rel-escaparate" id="relEscaparate"[\s\S]*?No es una recomendación de inversión\.[\s\S]*?<\/section>/.test(html)&&
     /Selección RWAdar <span>· la documentación más completa<\/span>[\s\S]*?No es una recomendación de inversión\./.test(bloqueSel)&&
     lista.indexOf('catalogo-seleccion')<lista.indexOf('Resto de principales'));
   const criterios=p.obtiene('inicioCriterios').innerHTML;
-  prueba('«Cómo elegimos» enseña los cinco criterios del archivo de transparencia',
-    transparencia.criterios.length===5&&transparencia.criterios.every(k=>criterios.includes('<li>'+k.texto+'</li>'))&&
-    /<details class="inicio-como">\s*<summary>Cómo elegimos<\/summary>/.test(html));
+  // ESPEC-INICIO §2.8: las 5 comprobaciones van abiertas y en llano, en el orden del archivo.
+  prueba('Inicio enseña las 5 comprobaciones abiertas, en llano y en el orden de transparencia.json',
+    (criterios.match(/<li>/g)||[]).length===5&&transparencia.criterios.every((k,i)=>vm.runInContext('CRITERIOS_INICIO',c)[k.id]===(criterios.match(/<li>([^<]+)<\/li>/g)||[])[i]?.slice(4,-5))&&
+    /<ol class="rel-cinco rel-revela" id="inicioCriterios"/.test(html)&&!/Cómo elegimos<\/summary>/.test(html));
   // Falla cerrado: con otra verificadaEl la oferta pierde sus puntos fuertes y sale de la Selección.
   const sacada=esperadas[0];
   const cerrado=vm.runInContext(`(()=>{const e=TRANSPARENCIA_POR_SLUG['${sacada}'],antes=e.verificadaEl;e.verificadaEl='2000-01-01';
@@ -2346,31 +2219,32 @@ for(const [nombre,alterar] of [
   const resumenAvisos=vm.runInContext(`tarjetaOfertaLocal(EMI.find(x=>x.slug==='${sacada}'))`,c);
   prueba('los avisos ordinarios se resumen en «Revisa · N avisos en la ficha» junto a la fecha',
     /<p class="escaparate-avisos-n"><b>Revisa<\/b> · <span>\d+ avisos? en la ficha<\/span><\/p><div class="emi-revision"><time /.test(resumenAvisos));
-  // Inicio sale del catálogo y sin cifras cuando caduca.
-  const cifras=p.obtiene('inicioCifras').innerHTML,vigencia=p.obtiene('inicioVigencia').innerHTML;
-  const n=JSON.parse(vm.runInContext('JSON.stringify([EMI.length,P.length,FUERA.length])',c));
+  // Inicio sale del catálogo y sin cifras cuando caduca (ESPEC-INICIO §2 y §2.10).
+  const cifras=p.obtiene('inicioCifras').innerHTML,ci=JSON.parse(vm.runInContext('JSON.stringify(cifrasInicio())',c));
+  const n=JSON.parse(vm.runInContext('JSON.stringify([EMI.length,P.length,FUERA.length])',c)),pl=(t,en)=>vm.runInContext(`plantillaInicio(${JSON.stringify(t)},cifrasInicio(),${en})`,c);
   const htmlInicio=panelInicioHTML.replace(/<!--noticias:ini-->[\s\S]*<!--noticias:fin-->/,'');
-  prueba('Inicio calcula sus cifras y su vigencia del catálogo, sin números escritos en el HTML',
+  const minimos=emi.filter(o=>['1 €','1 USD'].includes(transparencia.ofertas[o.slug]?.minimoCorto));
+  prueba('Inicio calcula sus cifras, mínimos y vigencia del catálogo, sin números escritos en el HTML',
     cifras.includes('<b>'+n[0]+'</b> <span>ofertas</span>')&&cifras.includes('<b>'+n[1]+'</b> <span>plataformas</span>')&&
-    cifras.includes('<b>'+n[2]+'</b> <span>fuera del radar</span>')&&/inicio-pastilla vigente">Vigente</.test(vigencia)&&
-    /· vigente hasta el<\/span> <time datetime="\d{4}-\d{2}-\d{2}">/.test(vigencia)&&
+    cifras.includes('<b>'+n[2]+'</b> <span>descartadas</span>')&&ci.minimos===minimos.length&&ci.usd===minimos.filter(o=>/USD/.test(transparencia.ofertas[o.slug].minimoCorto)).length&&
+    pl('Ver las {ofertas} ofertas',false)==='Ver las '+n[0]+' ofertas'&&pl('See the {plataformas} platforms',true)==='See the '+n[1]+' platforms'&&
+    /^Catálogo revisado el \d\d\/\d\d\/\d{4}\. Próxima revisión: \d\d\/\d\d\/\d{4}\.$/.test(pl('Catálogo revisado el {revisado}. Próxima revisión: {hasta}.',false))&&
+    (htmlInicio.match(/data-rel-plantilla="/g)||[]).length>=8&&p.obtiene('relMinimos').hidden===false&&p.obtiene('relVigencia').hidden===false&&
     /<ul class="inicio-hud" id="inicioCifras" aria-label="El registro en cifras"><\/ul>/.test(htmlInicio)&&
-    /<p class="inicio-leyenda" id="inicioLeyenda">Plataformas por tipo de activo<\/p>/.test(htmlInicio)&&
-    !/\b(?:24|26) (?:ofertas|plataformas)\b/.test(texto(htmlInicio)));
+    !new RegExp(`\\b(?:${n.join('|')}) (?:ofertas|plataformas|descartadas)\\b`).test(texto(htmlInicio)));
   vm.runInContext("CATALOGO_CADUCADO=true;huellaInicio='';pintarInicio()",c);
-  const sinCifras=['inicioCifras','inicioRadar','inicioCategorias','inicioColecciones'].map(id=>p.obtiene(id).innerHTML);
-  prueba('con el catálogo caducado Inicio no enseña ninguna cifra y la pastilla pasa a «Revisión pendiente»',
-    !/<b>\d+<\/b>/.test(sinCifras[0])&&/Revisión pendiente/.test(sinCifras[0])&&!/ir-et-n/.test(sinCifras[1])&&
-    !/\d+ ofertas?</.test(sinCifras[2])&&!/<b>\d+<\/b>/.test(sinCifras[3])&&
-    /inicio-pastilla pendiente">Revisión pendiente</.test(p.obtiene('inicioVigencia').innerHTML)&&
-    p.obtiene('inicioSeleccion').hidden===true&&p.obtiene('inicioLeyenda').hidden===true);
+  const sinCifras=['inicioCifras','inicioRadar','relTarjetas'].map(id=>p.obtiene(id).innerHTML);
+  prueba('con el catálogo caducado Inicio no enseña cifras ni Selección y la línea de riesgo se queda',
+    !/<b>\d+<\/b>/.test(sinCifras[0])&&/Revisión pendiente/.test(sinCifras[0])&&!/ir-et-n/.test(sinCifras[1])&&!sinCifras[2]&&
+    ['relEscaparate','relMinimos','relVigencia'].every(id=>p.obtiene(id).hidden===true)&&pl('Ver las {ofertas} ofertas',false)===null&&
+    /<\/span> <span>Invertir tiene riesgos: puedes perder parte o todo lo que inviertas\.<\/span>/.test(htmlInicio));
   vm.runInContext("CATALOGO_CADUCADO=false;huellaInicio='';pintarInicio()",c);
   // Sin notas «x/5» en ningún sitio.
   vm.runInContext(`abrirDetalleOfertaLocal('${sacada}')`,c);
   const detalle=p.obtiene('escaparateDetalleLocal').innerHTML;
   const nota=/(?<![\d,.])[0-5]\s*\/\s*5(?!\d)/;
   prueba('ninguna nota «x/5» visible en filas, carruseles, Inicio ni la ficha',
-    ![lista,p.obtiene('inicioSeleccionLista').innerHTML,p.obtiene('inicioRecientesLista').innerHTML,detalle,htmlInicio].some(h=>nota.test(texto(h))));
+    ![lista,p.obtiene('relTarjetas').innerHTML,detalle,htmlInicio].some(h=>nota.test(texto(h))));
   prueba('la ficha enseña «Transparencia: lo que hemos comprobado» con los cinco criterios, su motivo y su fuente',
     /<h3 id="detalleTransparenciaTit">Transparencia: lo que hemos comprobado<\/h3><p class="escaparate-transparencia-aviso">Es una comprobación de la documentación, no una recomendación de inversión\.<\/p>/.test(detalle)&&
     (detalle.match(/<li class="(?:cumple|no-cumple)">/g)||[]).length===5&&
@@ -2380,8 +2254,7 @@ for(const [nombre,alterar] of [
       atributoHTML(m[1],'target')==='_blank'&&/\bnoopener\b/.test(atributoHTML(m[1],'rel')||'')));
   // Ninguna etiqueta encima de las imágenes y la línea de honestidad a la vista.
   const cajasFila=[...lista.matchAll(/<div class="escaparate-imagen">([\s\S]*?)<\/div>/g)].map(m=>m[1]);
-  const cajasInicio=[...(p.obtiene('inicioSeleccionLista').innerHTML+p.obtiene('inicioRecientesLista').innerHTML)
-    .matchAll(/<span class="inicio-oferta-img">([\s\S]*?)<\/span>/g)].map(m=>m[1]);
+  const cajasInicio=[...p.obtiene('relTarjetas').innerHTML.matchAll(/<div class="rel-tarjeta-img">([\s\S]*?)<\/div>/g)].map(m=>m[1]);
   const cajaDetalle=(detalle.match(/<div class="escaparate-dialogo-imagen">([\s\S]*?)<\/div>/)||['',''])[1];
   prueba('ninguna etiqueta encima de las imágenes y la línea «Imágenes ilustrativas…» presente',
     cajasFila.length>0&&cajasFila.every(h=>/^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*>(?:<button [^>]*data-guardar-oferta[^>]*>[^<]*<\/button>)?$/.test(h))&&
@@ -2389,7 +2262,7 @@ for(const [nombre,alterar] of [
     /^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*>$/.test(cajaDetalle)&&
     lista.includes('<p class="nota-ilustrativa catalogo-nota-imagenes">Imágenes ilustrativas, no fotos del activo</p>')&&
     detalle.includes('<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>')&&
-    (htmlInicio.match(/<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo<\/p>/g)||[]).length===2&&
+    (htmlInicio.match(/<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo<\/p>/g)||[]).length===1&&
     !/Ilustración(?: editorial)?<\/span>/.test(p.obtiene('grid').innerHTML+lista)&&
     !/(?:font-size|font)\s*:[^;]*\.[0-6]\d*rem/.test(declaracionesCSS(css,'.nota-ilustrativa').join(';')));
   // Chips de categoría: orden fijo, nombre corto y sin cortar; recuentos en Plataformas.
@@ -2410,18 +2283,15 @@ for(const [nombre,alterar] of [
     cortos.every(nombre=>radar.includes('>'+nombre+(nombre==='Inmobiliario'||nombre==='Acciones'?' ':'<')))&&
     !/Inmuebles|>Infra<|>Materias</i.test(radar)&&
     /matchMedia\('\(prefers-reduced-motion: reduce\)'\)[\s\S]{0,40}addEventListener==='function'\)mq\.addEventListener\('change'/.test(js));
-  // Corrección (03/11): carruseles, aviso crítico y radar para el lector.
+  // Corrección (03/11), con el Inicio nuevo (04/11): Selección, aviso crítico y radar para el lector.
   const dc=s=>declaracionesCSS(css,s).join(';'),stop=vm.runInContext(`(()=>{const o={...EMI.find(x=>x.slug==='${sacada}')};
-    o.avisos=[...(o.avisos||[]),{tono:'stop',texto:'AVISO_STOP'}];return {sel:enSeleccionOferta(o),t:tarjetaInicioHtml(o,'alta')}})()`,c);
-  prueba('carruseles: tarjetas del mismo ancho aunque el proveedor sea largo',
-    /flex:0 0 [^;]+;min-width:0/.test(dc('.inicio-carrusel>li'))&&/min-width:0/.test(dc('.inicio-oferta'))&&/min-width:0/.test(dc('.inicio-oferta-txt'))&&
-    /overflow:hidden.*text-overflow:ellipsis;white-space:nowrap/.test(dc('.inicio-oferta-prov')));
-  prueba('aviso crítico: fuera de la Selección y entero en la tarjeta de Inicio',
-    !stop.sel&&/<span class="inicio-oferta-aviso escaparate-aviso-bloqueo" id="[^"]+-aviso"><b>Importante<\/b> · AVISO_STOP<\/span>/.test(stop.t)&&
-    /aria-describedby="[^"]*-aviso/.test(stop.t)&&vm.runInContext(`enSeleccionOferta(EMI.find(x=>x.slug==='${sacada}'))`,c)===true&&!/display/.test(dc('.inicio-oferta-aviso')));
-  prueba('radar: recuentos para el lector y leyenda oculta de verdad',
+    o.avisos=[...(o.avisos||[]),{tono:'stop',texto:'AVISO_STOP'}];return {sel:enSeleccionOferta(o)}})()`,c);
+  prueba('Selección de Inicio: tarjetas que encogen, letra pequeña con su riesgo y nunca una oferta con aviso crítico',
+    /min-width:0/.test(dc('.rel-tarjeta'))&&!stop.sel&&vm.runInContext(`enSeleccionOferta(EMI.find(x=>x.slug==='${sacada}'))`,c)===true&&
+    (p.obtiene('relTarjetas').innerHTML.match(/<p class="rel-tarjeta-nota">[^<]*puedes perder/gi)||[]).length===esperadas.length);
+  prueba('radar: recuentos para el lector',
     /<li><span>(?:Inmobiliario|Crédito|Tesoro|Acciones|Materias primas|Infraestructura)<\/span> <span>\d+ plataformas?<\/span><\/li>/.test(p.obtiene('inicioRadarLista').innerHTML)&&
-    /<ul class="solo-lector" id="inicioRadarLista" aria-labelledby="inicioLeyenda"><\/ul>/.test(htmlInicio)&&/display:none/.test(dc('.inicio-leyenda[hidden]'))&&!/data-inicio-buscar/.test(htmlInicio));
+    /<ul class="solo-lector" id="inicioRadarLista" aria-label="Plataformas por tipo de activo"><\/ul>/.test(htmlInicio)&&!/data-inicio-buscar/.test(htmlInicio));
 }
 {
   const p=pestanaCatalogo(),c=p.contexto,ampliado=snapshotLocalV2(c);
