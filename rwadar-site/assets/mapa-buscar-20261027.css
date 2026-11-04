@@ -1,46 +1,226 @@
+/* Mapa de Ofertas (GUIA-ACABADOS). El mapa va claro, con las teselas de
+   OpenStreetMap tal cual y apenas menos saturadas para que los puntos se
+   lean; lo que flota encima (ficha, zoom, avisos) es blanco con texto oscuro.
+   Los ajustes de Leaflet van con #mapaLienzo: su hoja se carga después. */
 .buscar-vistas{margin:16px 0 12px;width:max-content}
 .buscar-vistas button{min-width:94px}
 .buscar-mapa[hidden],#emiLista[hidden],#emiColecciones[hidden],.buscar-mapa [hidden]{display:none!important}
-.buscar-mapa{margin:0 0 24px;border:var(--bd);border-radius:var(--r-l);background:var(--sup);overflow:hidden}
-.mapa-permiso{padding:28px;max-width:780px}
-.mapa-permiso h3{font-size:1.35rem;margin:0 0 10px}
-.mapa-permiso p{color:var(--tx-2);line-height:1.65;margin:0 0 16px}
-.mapa-permiso a,.mapa-fuente{color:var(--senal)}
-.mapa-mandos{padding:16px;display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;border-bottom:var(--bd)}
-.mapa-coleccion-selector label{display:block;font-size:.85rem;color:var(--tx-2);margin-bottom:6px}
-.mapa-coleccion-selector select{max-width:100%;min-height:48px;padding:0 12px;border:0;border-radius:var(--r-m);background:var(--ton);color:var(--tx);font:inherit}
-.mapa-coleccion{display:inline-block;margin:0 0 5px;padding:2px 8px;border-radius:var(--r-s);background:var(--senal-t);color:var(--senal);font:600 .75rem/1.5 var(--body)}
-.mapa-popup .mapa-coleccion{background:#e3f3ea;color:#086944}
-.mapa-zona{flex:1 1 270px;display:flex;gap:8px;align-items:flex-end}
-.mapa-zona>div{flex:1;min-width:120px}
-.mapa-zona label{display:block;font-size:.85rem;color:var(--tx-2);margin-bottom:6px}
-.mapa-zona input{width:100%;min-height:48px;border-radius:var(--r-m);border:0;background:var(--ton);color:var(--tx);padding:0 12px;font:inherit}
-.buscar-mapa button:not(.leaflet-control-zoom-in):not(.leaflet-control-zoom-out){font-family:inherit}
-.mapa-boton:disabled{opacity:.5;cursor:wait}
-.mapa-instruccion,.mapa-estado{padding:0 16px;color:var(--tx-2);font-size:.88rem;line-height:1.55}
-.mapa-estado{min-height:1.55em;margin:12px 0}
-.mapa-cuerpo{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(260px,1fr);border-top:var(--bd)}
-.mapa-lienzo{height:560px;min-width:0;background:#d9e6df;z-index:0;color:#15281d}
-.mapa-lateral{max-height:560px;overflow:auto;border-left:var(--bd);padding:18px;overscroll-behavior:contain}
-.mapa-lateral h3{font-size:1.05rem;margin:0 0 8px}
-.mapa-cuenta{font-size:.87rem;color:var(--tx-2);line-height:1.55;margin:0 0 16px}
-.mapa-resultados{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.mapa-ficha{padding:14px;border:var(--bd);border-radius:var(--r-m);line-height:1.5;overflow-wrap:anywhere}
-.mapa-ficha h4{font-size:1rem;line-height:1.4;margin:0 0 6px;color:var(--tx,#f3f5f0)}
-.mapa-ficha p{margin:5px 0;font-size:.88rem;color:var(--tx-2)}
-.mapa-ficha .mapa-distancia{color:var(--senal);font-weight:600}
-.mapa-ficha .mapa-ficha-enlace{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;color:var(--senal);font-weight:600}
-.mapa-precision{display:inline-block;padding:2px 8px;border-radius:var(--r-s);margin:5px 0;background:var(--ton);color:var(--tx-2);font:600 .75rem/1.5 var(--body)}
-.mapa-pie{padding:12px 16px;color:var(--tx-2);font-size:.82rem;line-height:1.55;border-top:var(--bd)}
-.mapa-marcador{display:flex;align-items:center;justify-content:center;border-radius:50%;border:3px solid #fff;background:#08734e;color:#fff;font-family:Geist,Arial,sans-serif;font-size:13px;font-weight:750;box-shadow:0 2px 7px #0007}
-.mapa-marcador.aproximado{background:#8b5906;border-style:dashed}
-.mapa-lienzo .leaflet-popup-content{margin:15px;min-width:185px;max-height:280px;overflow:auto;line-height:1.5}
-.mapa-popup+.mapa-popup{border-top:1px solid #d1d8d3;margin-top:12px;padding-top:12px}
-.mapa-popup h4{margin:0 0 5px;font:700 16px/1.4 Geist,Arial,sans-serif}
-.mapa-popup p{margin:4px 0;font:14px/1.5 Geist,Arial,sans-serif}
-.mapa-popup a{display:inline-flex;align-items:center;min-height:32px;color:#086944;text-decoration:underline;font-weight:600}
-.mapa-lienzo .leaflet-control-attribution{font-size:11px;color:#24422e;background:#fffffff0}
-.mapa-lienzo .leaflet-control-attribution a{color:#075e41}
-.mapa-lienzo .leaflet-control-zoom a{width:38px;height:38px;line-height:38px;color:#123d29}
-@media(max-width:900px){.mapa-cuerpo{grid-template-columns:1fr}.mapa-lienzo{height:420px}.mapa-lateral{max-height:420px;border-left:0;border-top:var(--bd)}}
-@media(max-width:540px){.mapa-permiso{padding:20px}.mapa-mandos{padding:12px;gap:8px}.mapa-mandos>.mapa-boton{flex:1}.mapa-zona{flex-basis:100%}.mapa-lienzo{height:360px}.mapa-lateral{padding:14px}.buscar-vistas{width:100%}.buscar-vistas button{flex:1}.mapa-estado,.mapa-instruccion{padding:0 12px}}
+.buscar-mapa{margin:0 0 24px;min-width:0}
+
+/* Antes de cargar: titular, cuántas, privacidad en una línea y el botón. */
+.mapa-permiso{display:grid;justify-items:start;max-width:640px;padding:20px;border:var(--bd);border-radius:var(--r-l);background:var(--s1)}
+.mapa-permiso-icono{display:grid;place-items:center;width:40px;height:40px;margin:0 0 14px;border-radius:var(--r-m);background:var(--ton);color:var(--tx-2)}
+.mapa-permiso-icono svg{width:20px;height:20px}
+.mapa-permiso h3{margin:0;font:600 1.25rem/1.25 var(--display);letter-spacing:-.01em}
+.mapa-permiso-cuenta{margin:6px 0 0;color:var(--tx-2);font-size:.9375rem;line-height:1.45}
+.mapa-permiso-nota{margin:12px 0 16px;color:var(--tx-3);font-size:.8125rem;line-height:1.45}
+.mapa-cargar{width:100%}
+.mapa-mas{width:100%;margin:6px 0 -10px}
+.mapa-mas>summary{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-left:-8px;padding:0 8px;border-radius:var(--r-m);color:var(--senal);font:600 .8125rem/1 var(--body);list-style:none;cursor:pointer;transition:var(--tr)}
+.mapa-mas>summary::-webkit-details-marker{display:none}
+.mapa-mas>summary::after{content:'';width:6px;height:6px;margin-top:-3px;border:solid currentColor;border-width:0 1.75px 1.75px 0;rotate:45deg;transition:rotate var(--t-2) var(--ease)}
+.mapa-mas[open]>summary::after{margin-top:3px;rotate:225deg}
+.mapa-mas>summary:active{background:var(--senal-t)}
+.mapa-mas p{margin:0 0 10px;color:var(--tx-2);font-size:.8125rem;line-height:1.55}
+.mapa-mas-enlaces{display:flex;flex-wrap:wrap;gap:0 16px}
+.mapa-mas-enlaces a{display:inline-flex;align-items:center;min-height:44px;color:var(--senal);font-weight:600}
+
+/* Avisos: lo rutinario solo lo oye el lector de pantalla. */
+.mapa-estado{margin:0 0 10px;padding:10px 12px;border-radius:var(--r-m);background:var(--ton);color:var(--tx-2);font-size:.8125rem;line-height:1.45}
+.mapa-estado:not([data-visible="si"]){position:absolute;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#mapaPermiso:not([hidden])+.mapa-estado{margin:10px 0 0}
+
+/* Mandos: buscador y ubicación en una fila; chips cortos en la segunda. */
+.mapa-mandos{display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:center;gap:8px;margin:0 0 12px}
+.mapa-zona{display:flex;align-items:center;min-width:0;height:44px;padding-left:12px;border-radius:var(--r-m);background:var(--ton);color:var(--tx-3);transition:var(--tr)}
+.mapa-zona:has(input:focus-visible){background:var(--ton-2);outline:2px solid var(--senal);outline-offset:2px}
+.mapa-zona-lupa{flex:none;width:18px;height:18px}
+.mapa-zona input{flex:1;min-width:0;height:44px;margin:0;padding:0 4px 0 8px;border:0;border-radius:0;background:none;color:var(--tx);font:400 1rem/1 var(--body);outline:0}
+.mapa-zona input:focus{background:none}
+.mapa-zona input::placeholder{color:var(--tx-3)}
+.mapa-zona-ir{display:grid;place-items:center;flex:none;width:44px;height:44px;padding:0;border:0;border-radius:var(--r-m);background:none;color:var(--tx);cursor:pointer;transition:var(--tr)}
+.mapa-zona-ir:active{background:var(--ton-2)}
+.mapa-zona-ir svg,.mapa-ubicacion svg{width:20px;height:20px}
+.mapa-ubicacion:disabled{color:var(--tx-3);cursor:not-allowed;scale:none}
+.mapa-ubicacion[data-activa="si"]{background:var(--senal-t);color:var(--senal)}
+/* Si no caben, bajan a otra línea: nunca quedan cortados ni fuera de la vista. */
+.mapa-chips{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}
+.mapa-chips>.f,.mapa-quitar{position:relative;flex:none;white-space:nowrap}
+.mapa-chips>.f::before,.mapa-quitar::before{content:'';position:absolute;inset:-4px 0}
+#mapaColeccion{width:auto;height:36px;min-height:36px;margin:0;padding:0 30px 0 12px;appearance:none;-webkit-appearance:none;color-scheme:dark;
+  background:var(--ton) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23BBB5AB' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E") no-repeat right 10px center/16px;
+  color:var(--tx);font:500 .8125rem/1 var(--body)}
+#mapaColeccion option{background:var(--s2);color:var(--tx)}
+@media (hover:hover){#mapaColeccion:hover{background-color:var(--ton-2)}}
+/* iOS amplía la página al abrir un campo de menos de 16 px. */
+@supports (-webkit-touch-callout:none){#mapaColeccion{font-size:1rem}}
+.mapa-quitar{margin:10px 0 2px}
+.mapa-quitar::after{content:'';width:12px;height:12px;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* El mapa: claro, a todo el ancho y con el radio de las tarjetas. */
+.mapa-cuerpo{display:grid;min-width:0}
+.mapa-principal{min-width:0}
+.mapa-marco{position:relative;overflow:hidden;border-radius:var(--r-l);background:#EEF0EA;box-shadow:0 0 0 1px var(--linea)}
+#mapaLienzo{z-index:0;height:60vh;height:60svh;min-height:300px;max-height:640px;background:#EEF0EA;color:#161A18;font:400 .8125rem/1.45 var(--body)}
+#mapaLienzo:focus-visible{outline:2px solid var(--senal);outline-offset:-2px}
+#mapaLienzo .leaflet-tile-pane{filter:saturate(.72)}
+/* Leaflet suma las teselas (plus-lighter) para tapar huecos sobre fondo
+   oscuro; con el lienzo en una fracción de píxel eso deja una raya blanca
+   en cada junta. Sobre este fondo claro, la mezcla normal no deja marca. */
+#mapaLienzo .leaflet-tile{mix-blend-mode:normal}
+#mapaLienzo a{color:#0B6B47}
+
+/* Zoom y atribución, blancos, abajo a la derecha: no tapan la ficha. */
+#mapaLienzo .leaflet-bottom .leaflet-control{margin-bottom:12px}
+#mapaLienzo .leaflet-right .leaflet-control{margin-right:12px}
+#mapaLienzo .leaflet-bar{overflow:hidden;border:0;border-radius:var(--r-m);background:#fff;box-shadow:0 1px 2px rgba(16,24,20,.16),0 6px 16px -6px rgba(16,24,20,.28)}
+#mapaLienzo .leaflet-bar a{display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:0;background:#fff;color:#161A18;font:500 1.375rem/1 var(--body);text-indent:0;transition:background-color var(--t-2) var(--ease)}
+#mapaLienzo .leaflet-bar a+a{border-top:1px solid #E3E7E4}
+#mapaLienzo .leaflet-bar a:active{background:#E9EDEA}
+#mapaLienzo .leaflet-bar a.leaflet-disabled{background:#fff;color:#A9B0AB;cursor:default}
+#mapaLienzo .leaflet-bar a:focus-visible{outline:2px solid #0B7A50;outline-offset:-3px}
+@media (hover:hover){#mapaLienzo .leaflet-bar a:not(.leaflet-disabled):hover{background:#F2F4F2}}
+#mapaLienzo .leaflet-control-attribution{margin:0!important;padding:2px 8px;border-radius:8px 0 0 0;background:rgba(255,255,255,.88);color:#4A524D;font:400 .6875rem/1.5 var(--body)}
+
+/* Marcadores: el color de su tipo de activo, como en el radar; 44 px de
+   toque; el número centrado si hay varias ofertas en el mismo punto o tan
+   cerca que en pantalla se taparían. */
+.mapa-marcador{display:grid;place-items:center;background:none;border:0;outline:0}
+/* El aro oscuro fuera del blanco da al borde más de 3:1 sobre el mapa claro
+   (los colores del radar se pensaron para fondo oscuro). */
+.mapa-pin{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cc,#6B7570);color:#14110D;
+  box-shadow:0 0 0 2px #fff,0 0 0 3.5px rgba(22,26,24,.75),0 2px 6px rgba(16,24,20,.35);transition:transform var(--t-1) var(--ease),box-shadow var(--t-2) var(--ease)}
+.mapa-pin svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mapa-pin b{font:700 .8125rem/1 var(--body);font-variant-numeric:tabular-nums}
+.mapa-pin.mixto{--cc:#2A2927;color:#fff}
+.mapa-pin.aproximado{box-shadow:0 0 0 2px #fff,0 0 0 3.5px rgba(22,26,24,.75),0 0 0 9px color-mix(in srgb,var(--cc,#6B7570) 40%,transparent),0 2px 6px rgba(16,24,20,.35)}
+.mapa-marcador.activo .mapa-pin,.mapa-marcador:focus-visible .mapa-pin{transform:scale(1.15);box-shadow:0 0 0 2px #fff,0 0 0 4px #161A18,0 4px 10px rgba(16,24,20,.35)}
+@media (hover:hover){.mapa-marcador:hover .mapa-pin{transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.mapa-pin{transition:none}.mapa-marcador .mapa-pin{transform:none!important}}
+
+/* Ficha emergente: tarjeta blanca con texto oscuro. */
+#mapaLienzo .leaflet-popup-content-wrapper{padding:0;border-radius:var(--r-l);background:#fff;color:#161A18;box-shadow:0 16px 40px -12px rgba(16,24,20,.4),0 2px 8px rgba(16,24,20,.14)}
+#mapaLienzo .leaflet-popup-content{margin:0;font:400 .8125rem/1.45 var(--body)}
+#mapaLienzo .leaflet-popup-content p{margin:0}
+#mapaLienzo .leaflet-popup-tip{background:#fff;box-shadow:none}
+.mapa-popup{position:relative}
+.mapa-popup-cerrar{position:absolute;top:2px;right:2px;z-index:1;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:none;color:#4A524D;cursor:pointer;transition:background-color var(--t-2) var(--ease)}
+.mapa-popup-cerrar::before{content:'';width:16px;height:16px;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center/contain no-repeat}
+.mapa-popup-cerrar:active{background:#EEF1EE}
+.mapa-popup-cerrar:focus-visible{outline:2px solid #0B7A50;outline-offset:-4px}
+.mapa-popup-oferta{padding:14px 16px 4px}
+.mapa-popup-oferta+.mapa-popup-oferta{border-top:1px solid #E3E7E4}
+.mapa-popup-oferta:first-of-type h4{margin-right:30px}
+.mapa-popup-grupo~.mapa-popup-oferta h4{margin-right:0}
+.mapa-popup h4:focus{outline:0}
+.mapa-popup h4:focus-visible{outline:2px solid #0B7A50;outline-offset:2px;border-radius:4px}
+/* Grupo de ofertas cercanas: cuántas y «Acercar» para separarlas. */
+.mapa-popup-grupo{display:flex;align-items:center;gap:8px;min-height:48px;margin-right:44px;padding:2px 0 0 16px;border-bottom:1px solid #E3E7E4}
+.mapa-popup-grupo p{flex:1;color:#4A524D;font:600 .75rem/1.3 var(--body)}
+.mapa-acercar{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;border:0;border-radius:var(--r-m);background:none;color:#0B7A50;font:600 .8125rem/1 var(--body);white-space:nowrap;cursor:pointer;transition:background-color var(--t-2) var(--ease)}
+.mapa-acercar:active{background:#E3F3EA}
+.mapa-acercar:focus-visible{outline:2px solid #0B7A50;outline-offset:-2px}
+.mapa-popup h4{display:-webkit-box;margin:0 0 6px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;color:#161A18;font:600 .9375rem/1.3 var(--body);letter-spacing:-.01em}
+.mapa-popup .mapa-tipo,.mapa-popup .mapa-lugar{color:#4A524D}
+.mapa-popup .mapa-precision{margin-top:2px;color:#5E6661;font-size:.75rem}
+.mapa-popup-pie{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px}
+#mapaLienzo .mapa-popup .mapa-fuente{color:#5E6661}
+.mapa-popup .mapa-ver{margin-right:-8px;color:#0B7A50}
+.mapa-popup .mapa-ver:active{background:#E3F3EA}
+.mapa-popup .mapa-ver:focus-visible,.mapa-popup .mapa-fuente:focus-visible{outline:2px solid #0B7A50;outline-offset:-2px}
+
+/* Piezas comunes de la ficha y de las filas. */
+.mapa-tipo{display:flex;flex-wrap:wrap;align-items:center;margin:0;font-size:.8125rem;line-height:1.4}
+.mapa-tipo .mapa-punto{margin-right:6px}
+.mapa-sep{white-space:pre}
+.mapa-distancia{font-weight:600;font-variant-numeric:tabular-nums}
+.mapa-lugar{display:flex;gap:5px;margin:2px 0 0;font-size:.8125rem;line-height:1.4;overflow-wrap:anywhere}
+.mapa-lugar::before{content:'';flex:none;width:12px;height:12px;margin-top:2px;background:currentColor;opacity:.8;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z'/%3E%3Ccircle cx='12' cy='9.5' r='2.5'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z'/%3E%3Ccircle cx='12' cy='9.5' r='2.5'/%3E%3C/svg%3E") center/contain no-repeat}
+.mapa-precision{display:flex;align-items:center;gap:6px;margin:0;font-size:.75rem;line-height:1.4}
+.mapa-precision::before{content:'';flex:none;width:6px;height:6px;margin:0 3px;border-radius:50%;background:currentColor}
+.mapa-precision.ciudad::before{width:10px;height:10px;margin:0 1px;border:1.5px dashed currentColor;background:none}
+.mapa-fuente>span,.mapa-ver>span{white-space:pre}
+.mapa-fuente{display:inline-flex;align-items:center;min-height:44px;font-size:.75rem;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+.mapa-ver{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;border:0;border-radius:var(--r-m);background:none;font:600 .875rem/1 var(--body);white-space:nowrap;cursor:pointer;transition:background-color var(--t-2) var(--ease)}
+.mapa-punto{display:inline-grid;place-items:center;flex:none;width:10px;height:10px;border-radius:50%;background:var(--cc,#9AA6BF)}
+.mapa-punto.neutro{--cc:#9AA6BF}
+.mapa-punto.aproximado{width:8px;height:8px;margin-inline:1px;box-shadow:0 0 0 3px color-mix(in srgb,var(--cc) 40%,transparent)}
+.mapa-punto.numero{width:16px;height:16px;background:#2A2927;box-shadow:0 0 0 1.5px var(--tx-3);color:#fff;font:700 .625rem/1 var(--body)}
+
+/* Leyenda, bajo el mapa: solo los tipos que hay en él. */
+.mapa-leyenda{display:flex;flex-wrap:wrap;gap:6px 16px;margin:10px 0 0;padding:0;list-style:none;color:var(--tx-2);font:500 .75rem/1.4 var(--body)}
+.mapa-leyenda li{display:inline-flex;align-items:center;gap:6px;min-height:20px}
+
+/* Avisos sobre el mapa, en una franja arriba: fuera del lienzo de Leaflet
+   (z-index 0), así quedan siempre por encima de puntos y fichas, que se
+   abren por debajo (ver margen('arriba')). Ni arrastran ni amplían. */
+.mapa-avisos{position:absolute;top:12px;right:12px;left:12px;z-index:1;display:grid;justify-items:center;gap:8px;pointer-events:none}
+.mapa-avisos>*{width:100%;max-width:520px;pointer-events:auto}
+.mapa-sin-teselas,.mapa-aviso{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:10px;border-radius:var(--r-m);background:#fff;color:#4A524D;font-size:.8125rem;line-height:1.4;box-shadow:0 1px 2px rgba(16,24,20,.16),0 8px 20px -8px rgba(16,24,20,.32)}
+.mapa-sin-teselas{padding:8px 8px 8px 14px}
+.mapa-sin-teselas p,.mapa-aviso p{grid-column:1;margin:0}
+.mapa-sin-teselas p:first-child{color:#161A18;font:600 .875rem/1.3 var(--body)}
+.mapa-reintentar{grid-column:2;grid-row:1/3;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:0;border-radius:var(--r-m);background:#161A18;color:#fff;font:600 .875rem/1 var(--body);cursor:pointer;transition:var(--tr)}
+.mapa-reintentar:active{background:#2A2F2C;scale:calc(1 - var(--pm)*.02)}
+.mapa-reintentar:focus-visible{outline:2px solid #0B7A50;outline-offset:2px}
+.mapa-aviso{padding:4px 4px 4px 14px;color:#161A18}
+.mapa-aviso-cerrar{grid-column:2;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:none;color:#4A524D;cursor:pointer;transition:background-color var(--t-2) var(--ease)}
+.mapa-aviso-cerrar::before{content:'';width:14px;height:14px;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center/contain no-repeat}
+.mapa-aviso-cerrar:active{background:#EEF1EE}
+.mapa-aviso-cerrar:focus-visible{outline:2px solid #0B7A50;outline-offset:-4px}
+
+/* Debajo del mapa: cuántas hay en la zona y sus filas, como en Ofertas. */
+.mapa-lateral{min-width:0;margin-top:20px}
+.mapa-lateral h3{margin:0;font:600 1.25rem/1.25 var(--display);letter-spacing:-.01em}
+.mapa-origen{margin:4px 0 0;color:var(--tx-3);font-size:.8125rem;line-height:1.45}
+.mapa-margen{white-space:nowrap;font-variant-numeric:tabular-nums}
+.mapa-resultados{margin:8px 0 0;padding:0;list-style:none}
+.mapa-fila{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr) auto;grid-template-areas:"img tit tit" "img tipo tipo" "img lugar lugar" "img prec prec" "pie pie ver";column-gap:12px;align-items:start;padding:12px 0 4px;border-bottom:var(--bd);transition:var(--tr)}
+.mapa-fila:active{background:var(--ton)}
+.mapa-fila-img{grid-area:img;grid-row:1/5;display:block;width:64px;height:64px;object-fit:cover;border-radius:var(--r-m);background:var(--ton)}
+.mapa-fila h4{grid-area:tit;display:-webkit-box;margin:0 0 2px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font:600 .9375rem/1.3 var(--body);letter-spacing:-.01em}
+.mapa-fila .mapa-tipo{grid-area:tipo;color:var(--tx-2)}
+.mapa-fila .mapa-lugar{grid-area:lugar;color:var(--tx-3)}
+.mapa-fila .mapa-precision{grid-area:prec;margin-top:2px;color:var(--tx-3)}
+.mapa-fila-pie{grid-area:pie;margin:0;align-self:center}
+.mapa-fila .mapa-fuente{position:relative;z-index:2;color:var(--tx-3)}
+.mapa-fila .mapa-ver{grid-area:ver;align-self:center;margin-right:-8px;color:var(--senal);font-size:.8125rem}
+.mapa-fila .mapa-ver::after{content:'';position:absolute;inset:0;z-index:1}
+.mapa-fila .mapa-ver:focus-visible{outline:0}
+.mapa-fila .mapa-ver:focus-visible::after{outline:2px solid var(--senal);outline-offset:-2px;border-radius:var(--r-m)}
+.mapa-vacio{margin:12px 0 0;padding:16px;border-radius:var(--r-l);background:var(--s1);color:var(--tx-3);font-size:.875rem;line-height:1.5}
+.mapa-cuenta{margin:12px 0 0;color:var(--tx-3);font-size:.8125rem;line-height:1.5}
+#mapaVolverLista{margin:4px 0 0 -8px}
+.mapa-pie{margin:20px 0 0;padding-top:12px;border-top:var(--bd);color:var(--tx-3);font-size:.75rem;line-height:1.5}
+.mapa-pie p{margin:0 0 6px}
+#mapaNotas>span+span::before{content:' '}
+
+/* Móviles muy estrechos (320 px): chips algo más compactos, en una línea. */
+@media (max-width:350px){
+  .mapa-chips{gap:6px}
+  .mapa-chips>.f{padding-inline:10px;font-size:.75rem}
+  #mapaColeccion{padding-left:10px;padding-right:28px;background-position:right 8px center}
+}
+@media (min-width:900px){
+  .mapa-permiso{padding:28px}
+  .mapa-cargar{width:auto}
+  .mapa-mandos{grid-template-columns:minmax(240px,360px) 44px minmax(0,1fr)}
+  .mapa-chips{grid-column:auto}
+  .mapa-cuerpo{grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:24px;align-items:start}
+  #mapaLienzo{height:min(620px,68vh);max-height:none}
+  .mapa-lateral{max-height:calc(min(620px,68vh) + 30px);margin:0;padding-right:8px;overflow:auto;overscroll-behavior:contain}
+}
+@media (hover:hover){
+  .mapa-popup-cerrar:hover,.mapa-aviso-cerrar:hover{background:#F2F4F2}
+  .mapa-acercar:hover{background:#EEF7F2}
+  .mapa-popup .mapa-ver:hover{background:#EEF7F2}
+  .mapa-zona-ir:hover{background:var(--ton-2)}
+}
