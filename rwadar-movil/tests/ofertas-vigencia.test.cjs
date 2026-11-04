@@ -113,7 +113,8 @@ test('web y móvil conservan el último día completo y retiran cifras al siguie
     assert.equal(movil.cifrasOfertaVigentes(dato, ultimoDia), true);
     assert.equal(movil.cifrasOfertaVigentes(dato, caducada), false);
     assert.doesNotMatch(webVigente.tarjetaOfertaLocal(dato), centinelas);
-    assert.match(webVigente.tarjetaOfertaLocal(dato), /cifras vigentes hasta hoy/);
+    // «cifras válidas hasta hoy» (LISTA-FINAL fila 14, 04/11/2026).
+    assert.match(webVigente.tarjetaOfertaLocal(dato), /cifras válidas hasta hoy/);
     assert.match(webVigente.tarjetaOfertaLocal(dato), /aria-label="Ver ficha de Oferta de prueba en Proveedor"/);
     assert.doesNotMatch(webCaducada.tarjetaOfertaLocal(dato), centinelas);
     assert.match(webCaducada.tarjetaOfertaLocal(dato), /escaparate-estado-linea caducado/);
@@ -184,7 +185,7 @@ test('una web abierta revisa las cifras a medianoche sin depender de una respues
     assert.ok(inicio > 0 && fin > inicio);
     vm.runInContext(codigo.slice(inicio, fin), contexto);
     contexto.refrescarVigenciaOfertas();
-    assert.match(html, /cifras vigentes hasta hoy/);
+    assert.match(html, /cifras válidas hasta hoy/);
     contexto.abrirDetalleOfertaLocal(oferta.slug);
     assert.match(contexto.document.getElementById().innerHTML, /97,13/);
     contexto.programarRevisionVigenciaOfertas();

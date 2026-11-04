@@ -56,7 +56,9 @@
       // Frases con cifra o fecha de LISTA-FINAL.md (04/11/2026), solo de la web.
       for(const [re,en] of [[/^Ver sus (\d+) ofertas$/,'View its $1 offers'],[/^Fuente revisada el (.+)$/,'Source checked on $1'],
         [/^Fuentes consultadas · (.+)$/,'Sources checked · $1'],[/^Ver oferta en (.+) ↗$/,'See the offer on $1 ↗'],[/^Ir a la web de (.+) ↗$/,"Go to $1's website ↗"],
-        [/^Ver los (\d+) datos consultados y sus fechas$/,'View the $1 data points checked and their dates']])
+        [/^Ver los (\d+) datos consultados y sus fechas$/,'View the $1 data points checked and their dates'],
+        [/^Revisadas el (.+)$/,'Reviewed $1'],[/^válidas 1 día más$/,'valid for 1 more day'],[/^válidas (\d+) días más$/,'valid for $1 more days'],
+        [/^válidas hasta hoy$/,'valid until today'],[/^Última revisión del registro: (.+)$/,'Latest register review: $1']])
         if(re.test(limpio))return origen.replace(limpio,limpio.replace(re,en));
     }
     return idioma.traducir(origen);

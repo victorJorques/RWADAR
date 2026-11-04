@@ -206,23 +206,33 @@ function paginaOferta(o,catalogo,imagen) {
   const d = o.documentacion || {};
   const refs = (d.referencias || []).filter(r=>enlace(r.fuente) && fecha(r.fechaConsulta));
   const p = catalogo.plataformas.find(p=>p.slug===o.plataformaSlug);
+  /* Supervisión: si la comprobación «supervisada» se cumple, su motivo y su fuente
+     (transparencia.json); si no, lo que diga la plataforma del radar. */
+  const t = TRANSPARENCIA.ofertas[o.slug], sup = t && t.verificadaEl===o.verificadaEl && t.supervisada && t.supervisada.cumple===true ? t.supervisada : null;
+  const supervision = sup ? esc(sup.motivo)+(enlace(sup.fuente && sup.fuente.url) ? ' <a href="'+esc(enlace(sup.fuente.url))+'" target="_blank" rel="noopener noreferrer">Fuente ↗</a>' : '') :
+    esc(p?.verificacionLocal?.licenciaRegistro?.detalle || 'Todavía no hemos evaluado esta plataforma. Que publiquemos esta oferta no significa que hayamos revisado al proveedor.');
+  /* Los avisos de la oferta, tal cual y arriba; el genérico ya lo dice la línea del botón. */
+  const avisos = (o.avisos || []).map(a=>typeof a==='string' ? a : a && a.tono!=='ok' && (!a.esAntiguedad || a.tono==='stop') ? a.texto : '')
+    .filter(x=>x && !/^Referencia editorial gratuita\b/.test(x));
   const fichaImagen = imagen ? '<figure><img src="/'+esc(imagen.salida)+'" alt="'+esc(imagen.alt)+'" width="960" height="660"><figcaption>Ilustración editorial generada con IA. No es una fotografía del activo real.</figcaption></figure>' : '';
   const contenido = '<p class="intro"'+ORIGINAL+'>'+esc(d.descripcion || o.resumen)+'</p>'+fichaImagen+
     '<p class="estado" role="status" data-campo="estado">Referencia documental: confirma las condiciones actuales en las fuentes.</p>'+
+    (avisos.length ? '<section aria-labelledby="avisos"><h2 id="avisos">Avisos de esta oferta</h2><ul class="riesgos"'+ORIGINAL+'>'+avisos.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></section>' : '')+
     '<section aria-labelledby="que"><h2 id="que">Qué es y quién lo ofrece</h2><dl><div><dt>Proveedor</dt><dd'+ORIGINAL+'>'+esc(o.plataformaNombre)+'</dd></div>' +
-    '<div><dt>Tipo de activo</dt><dd'+ORIGINAL+'>'+esc(o.categoria)+'</dd></div><div><dt>Supervisión de la plataforma</dt><dd'+ORIGINAL+'>'+esc(p?.verificacionLocal?.licenciaRegistro?.detalle || 'Todavía no hemos evaluado esta plataforma. Que publiquemos esta oferta no significa que hayamos revisado al proveedor.')+'</dd></div></dl>'+
+    '<div><dt>Tipo de activo</dt><dd'+ORIGINAL+'>'+esc(o.categoria)+'</dd></div><div><dt>Supervisión de la plataforma</dt><dd'+ORIGINAL+'>'+supervision+'</dd></div></dl>'+
     (p ? '<p><a href="'+rutaPlataforma(p)+'">Consultar ficha de plataforma</a></p>' : '')+'</section>' +
     '<section aria-labelledby="acceso"><h2 id="acceso">Acceso y condiciones</h2><p>La admisión depende de tu residencia, categoría de inversor y de las condiciones del proveedor.</p><dl>'+
     '<div><dt>Mínimo en euros</dt><dd data-campo="minimo"'+ORIGINAL+'>Consulta la fuente; no se presupone un mínimo vigente.</dd></div>'+
     '<div><dt>Acceso desde España</dt><dd data-campo="accesoEspana"'+ORIGINAL+'>Sin comprobar desde España.</dd></div>'+
     '<div><dt>Costes</dt><dd data-campo="costes"'+ORIGINAL+'>Confirma los costes actuales con el proveedor.</dd></div></dl></section>'+
-    '<section aria-labelledby="salida"><h2 id="salida">Cómo se recupera el dinero</h2><p data-campo="salida"'+ORIGINAL+'>La salida no se da por garantizada; consulta la documentación del proveedor.</p></section>'+transparenciaOferta(o,catalogo)+riesgos+
+    '<section aria-labelledby="salida"><h2 id="salida">Cómo se recupera el dinero</h2><p data-campo="salida"'+ORIGINAL+'>La salida no se da por garantizada; consulta la documentación del proveedor.</p></section>'+riesgos+
+    /* El botón, con su línea, justo después de los riesgos (como en la ficha de la web). */
+    '<p class="aviso">No es una recomendación de inversión. RWAdar no vende ni recibe tu dinero: confirma las condiciones con el proveedor.</p>'+
+    '<p><a class="boton" href="'+esc(enlace(o.url))+'" target="_blank" rel="noopener noreferrer">Ver oferta en '+esc(o.plataformaNombre)+' ↗</a></p>'+transparenciaOferta(o,catalogo)+
     '<section aria-labelledby="fuentes"><h2 id="fuentes">Fuentes y fechas</h2><p>Revisamos esta ficha el <time datetime="'+esc(o.verificadaEl)+'">'+esc(corta(o.verificadaEl))+'</time>. Esa fecha no garantiza que las cifras sigan igual ni que la oferta siga abierta.</p>'+
     '<p>Cada fuente lleva el día en que la consultamos. El dato puede ser más antiguo, y algunas fuentes no dicen de qué fecha es.</p>'+
     (refs.length ? '<details><summary>Ver los '+refs.length+' datos consultados y sus fechas</summary><ul class="referencias"'+ORIGINAL+'>'+refs.map(r=>'<li><strong>'+esc(r.etiqueta)+'</strong><br>Dato fechado: '+esc(corta(r.fechaDato))+' · Consulta: '+esc(corta(r.fechaConsulta))+'<br><a href="'+esc(enlace(r.fuente))+'" target="_blank" rel="noopener noreferrer">Abrir fuente ↗</a><p>'+esc(r.alcance || '')+'</p></li>').join('')+'</ul></details>' : '')+
     fuentes([...(d.fuentes || []),...(o.fuentesActuales || [])])+'</section>'+
-    '<p class="aviso">Consulta documentación, admisión, riesgos y condiciones actuales antes de decidir. RWAdar no tramita inversiones ni recibe tu dinero.</p>'+
-    '<p><a class="boton" href="'+esc(enlace(o.url))+'" target="_blank" rel="noopener noreferrer">Ver oferta en '+esc(o.plataformaNombre)+' ↗</a></p>'+
     '<p><a href="mailto:RWAdar@protonmail.com?subject='+encodeURIComponent('Corrección de ficha: '+o.titulo)+'">¿Ves un error en esta ficha?</a></p>';
   return pagina({titulo:o.titulo,descripcion:o.resumen,ruta:rutaOferta(o),contenido,revision:o.verificadaEl,
     imagen:imagen ? '/'+imagen.salida : '/og.png',organizacion:{nombre:o.plataformaNombre,url:o.url},oferta:o});

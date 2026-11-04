@@ -41,6 +41,8 @@
           [/^(\d+) de (\d+) (principales|en reventa|próximas)$/,(m,n,total,c)=>n+' of '+total+' '+({principales:'main offers','en reventa':'on resale','próximas':'upcoming'}[c])],
           [/^cifras vigentes (\d+) d$/,(m,n)=>'figures valid for '+n+' d'],
           [/^cifras vigentes hasta hoy$/,()=>'figures valid until today'],
+          [/^cifras válidas (\d+) días? más$/,(m,n)=>'figures valid for '+n+(n==='1'?' more day':' more days')],
+          [/^cifras válidas hasta hoy$/,()=>'figures valid until today'],
           [/^(\d+) avisos? en la ficha$/,(m,n)=>n+(n==='1'?' warning':' warnings')+' in the details'],
           [/^Desde (\d+(?:,\d+)?) € en reventa \((\d{2}\/\d{2})\)$/,(m,n,f)=>'From €'+n+' on resale ('+f+')'],
           [/^· consultada el (.+)$/,(m,f)=>'· checked on '+f],

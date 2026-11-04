@@ -727,7 +727,8 @@ prueba('la inversión se paga al proveedor y no a RWAdar',
   /La inversión y el pago se realizan directamente con la\s+empresa/.test(html) &&
   html.includes('no recibimos ni custodiamos el dinero de tu inversión'));
 const ultimaVerificacion = arrayDe(jsCatalogo, 'P').map(p=>p.verificacionLocal?.verificadoEl || p.ver).filter(Boolean).sort().at(-1);
-const fechaPie = ultimaVerificacion.split('-').reverse().join('.');
+// Fechas en dd/mm/aaaa en toda la web (revisión de lectura, 04/11/2026).
+const fechaPie = ultimaVerificacion.split('-').reverse().join('/');
 prueba('el HTML sin JavaScript contiene la revisión real derivada de los datos',
   html.includes(`<p id="pieRevision">Última revisión del registro: ${fechaPie}</p>`));
 
@@ -2040,7 +2041,7 @@ for(const fallo of ['incompleto','transporte']){
   const costes=vm.runInContext('datosClaveOfertaHtml(resumenPrueba,true)',p.contexto);
   prueba('varios costes mantienen cada fuente y consulta propias sin atribuirlos a un solo origen',
     costes.includes('Gestión: 0,6 %; Éxito: 0 %')&&costes.includes('https://gestor.example/gestion')&&costes.includes('https://emisor.example/exito')&&
-    costes.includes('Consultada el 21.10.2026 · Dato del 20.10.2026')&&costes.includes('Consultada el 22.10.2026'));
+    costes.includes('Consultada el 21/10/2026 · Dato del 20/10/2026')&&costes.includes('Consultada el 22/10/2026'));
 }
 {
   const p=pestanaCatalogo(), c=p.contexto, llamadas=[];
@@ -2123,7 +2124,7 @@ for(const [nombre,alterar] of [
   prueba('inglés: se traduce lo que escribe RWAdar; solo transparencia.json va como fuente',
     r.m.length>=8&&r.m.every(m=>ingles(m)!==m)&&!iw.includes("'.escaparate-comprobaciones p'")&&iw.includes("'.escaparate-comprobacion-motivo-fuente'")&&
     !/superficies='[^']*#inicio(?:Seleccion|Recientes)/.test(iw)&&ingles('cnmv.es · fuente de: Se contrata hoy desde España')==='cnmv.es · source for: Can be bought from Spain today'&&
-    ingles('Revisada el 03.11.2026; cifras vigentes 7 d.')==='Reviewed on 03.11.2026; figures valid for 7 d.'&&ingles('· consultada el 03.11.2026')==='· checked on 03.11.2026');
+    ingles('Revisada el 03/11/2026; cifras válidas 7 días más.')==='Reviewed on 03/11/2026; figures valid for 7 more days.'&&ingles('· consultada el 03/11/2026')==='· checked on 03/11/2026');
   prueba('caducado: «se contrata hoy» y «mínimo y salida» en ✗, pendientes de revalidar',
     r.antes.every(Boolean)&&!r.k.contratable[0]&&/^Pendiente de revalidar: la revisión semanal ha vencido\.$/.test(r.k.contratable[1])&&
     !r.k.minimoSalida[0]&&/pendiente de revalidar/.test(r.k.minimoSalida[1])&&!/sin documentar/i.test(r.k.minimoSalida[1])&&!r.k.vigente[0]);
@@ -2525,9 +2526,9 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     js.indexOf('function refrescarDetalleOfertaAbierto('));
   prueba('la ficha conserva el enlace al mercado secundario y distingue su ficha oficial',
     /urlFicha=urlHttps\(o\.url\),urlMercado=urlHttps\(o\.urlMercado\)/.test(detalleOfertaParaPruebas) &&
-    detalleOfertaParaPruebas.includes("secundario&&urlMercado?'<a class=\"emi-ir\" href=\"'+escHtml(urlMercado)") &&
-    /Abrir mercado ↗/.test(detalleOfertaParaPruebas) &&
-    /secundario\?'Ficha oficial':'Consultar fuente'/.test(detalleOfertaParaPruebas));
+    /secundario&&urlMercado\?enlace\(urlMercado,'Abrir mercado'/.test(detalleOfertaParaPruebas) &&
+    // El enlace final dice «Ver oferta en <proveedor> ↗», como la página aparte (NOTAS 3 del coordinador, 04/11/2026).
+    /secundario\?'Ficha oficial':'Ver oferta en '\+o\.plataformaNombre/.test(detalleOfertaParaPruebas));
 }
 // REGRESION_TARJETAS_EDITORIALES: fixtures sintéticos, sin consultar ni editar
 // el catálogo real. Se comprueba el HTML generado, no solo CSS que lo esconda.
@@ -2575,8 +2576,9 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     },
   };
   const casos = [
-    {nombre:'rendimiento vigente', cambios:{}, estado:'cifras vigentes 7 d'},
-    {nombre:'valor vigente', cambios:{slug:'regresion-valor', tipo:'valor'}, estado:'cifras vigentes 7 d'},
+    // «cifras válidas N días más» (LISTA-FINAL fila 14, 04/11/2026).
+    {nombre:'rendimiento vigente', cambios:{}, estado:'cifras válidas 7 días más'},
+    {nombre:'valor vigente', cambios:{slug:'regresion-valor', tipo:'valor'}, estado:'cifras válidas 7 días más'},
     {nombre:'caducada con documentación reciente', cambios:{slug:'regresion-caducada', verificadaEl:'2026-09-01', vigenciaDias:1}, estado:'cifras por actualizar'},
     {nombre:'apertura no confirmada', cambios:{slug:'regresion-apertura', estadoRevision:'no_verificable'}, estado:'apertura no confirmada'},
     {nombre:'fuentes en conflicto', cambios:{slug:'regresion-conflicto', estadoRevision:'fuentes_en_conflicto'}, estado:'fuentes en conflicto'},
@@ -2647,7 +2649,7 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
       /data-cerrar-detalle aria-label="Cerrar detalle"/.test(detalle) &&
       detalle.includes(descripcion) && detalle.includes(oferta.documentacion.caracteristicas[0].valor) &&
       oferta.documentacion.referencias.every(r => [r.etiqueta,r.valor,r.alcance].every(v=>detalle.includes(v))) &&
-      [dia(-2), dia(-1)].every(f => detalle.includes(f.split('-').reverse().join('.'))) &&
+      [dia(-2), dia(-1)].every(f => detalle.includes(f.split('-').reverse().join('/'))) &&
       detalle.includes(avisoAmpliado) && detalle.includes(avisoCritico) &&
       render.avisos.every(aviso => detalle.includes(aviso)) &&
       render.metricas.every(m => detalle.includes(m.etiqueta) && detalle.includes(m.valor)) &&
