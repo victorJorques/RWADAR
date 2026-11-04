@@ -1269,13 +1269,14 @@ const inicioPaneles = jsSinComentarios.indexOf('const fondo=');
 const finPaneles = jsSinComentarios.indexOf('const milesES=', inicioPaneles);
 const codigoPaneles = inicioPaneles >= 0 && finPaneles > inicioPaneles
   ? jsSinComentarios.slice(inicioPaneles, finPaneles) : '';
+// Rótulos en llano: LISTA-FINAL.md (revisión de frases que pidió Víctor, 04/11/2026), filas 42, 48, 7, 24, 25, 26 y 55.
 const camposDetalle = [
-  ['Tipo de actor', 'p.tipo'],
+  ['Tipo de empresa', 'p.tipo'],
   ['Quién puede entrar', 'p.acceso'],
   ['Importe de entrada', 'p.ticket'],
   ['Tipo de activo', 'p.cat'],
-  ['Región / marco', 'p.reg'],
-  ['Cadenas', 'p.cadenas'],
+  ['Región y normativa', 'p.reg'],
+  ['Blockchains', 'p.cadenas'],
   ['Última verificación', 'fLarga(p.ver)'],
 ];
 prueba('el detalle ordena la información en resumen, verificación, datos, seguimiento y opiniones',
@@ -1301,7 +1302,7 @@ prueba('la acción oficial y el cierre quedan disponibles al pie sin duplicar es
 prueba('cada empresa abre desde el principio y conserva el aviso de verificar la fuente',
   /const cuerpo=document\.getElementById\(['"]dwBody['"]\);if\(cuerpo\)cuerpo\.scrollTop=0/.test(codigoDetalle) &&
   codigoDetalle.includes('pn-web-movil-nota') &&
-  codigoDetalle.includes('Verifica siempre los datos en origen') &&
+  codigoDetalle.includes('Comprueba siempre los datos en la web oficial') &&
   /display\s*:\s*block/i.test(declaracionesCSS(cssMovil, '#drawer .pn-web-movil-nota').join(';')));
 prueba('Escape, velo y ambos botones cierran la ficha y restauran el foco',
   /id=["']ovl["'][^>]*data-accion=["']cerrar-panel["']/.test(html) &&
@@ -1634,7 +1635,7 @@ prueba('guardar solo existe en el móvil, donde está Perfil',
   /display\s*:\s*inline-flex/i.test(declaracionesCSS(cssMovil, '.escaparate-guardar.fav-local').join(';')) &&
   /function ir\(destino,origen=null\)\{\s*if\(destino==='explain'\)\{abrirAcademyDesde\(origen\);return;\}\s*cambiar\(['"]buscar['"]/.test(codigoShellMovil));
 prueba('Avisos se anuncia en Perfil como próximamente y nunca es una pestaña',
-  /Los avisos llegarán próximamente a la app con las nuevas actualizaciones\./.test(panelPerfilHTML) &&
+  /Los avisos llegarán a la app en una próxima actualización\./.test(panelPerfilHTML) &&
   !/id=["']movilVistaAvisos["']/.test(html) &&
   !botonesNavMovil.some(b => /Avisos/i.test(textoHTML(b[2]))));
 prueba('abrir y cerrar Avisos sincroniza hidden, aria-expanded y devuelve el foco',
@@ -1654,8 +1655,8 @@ const emisionesHTML = inicioEmisionesHTML >= 0 && finEmisionesHTML > inicioEmisi
 const emisionesFuente = arrayDe(jsCatalogo, 'EMI');
 // GUIA-ACABADOS.md §12.4
 prueba('Buscar presenta emisiones comprobadas, no anuncios ni recomendaciones inventadas',
-  /Ofertas específicas/.test(emisionesHTML) && /Referencias revisadas/.test(emisionesHTML) &&
-  /Con origen, fecha y límites de la revisión/.test(emisionesHTML) &&
+  /Ofertas específicas/.test(emisionesHTML) && /Ofertas revisadas/.test(emisionesHTML) &&
+  /Cada una con su fuente, su fecha y lo que no hemos podido comprobar/.test(emisionesHTML) &&
   /RWAdar no intermedia, no custodia dinero y no recomienda/.test(emisionesHTML) &&
   !/(?:recomendada para ti|rentabilidad garantizada|oferta exclusiva)/i.test(textoHTML(emisionesHTML)));
 prueba('cero emisiones mantiene un vacío explícito y oculta filtros inútiles',
@@ -2116,8 +2117,8 @@ for(const [nombre,alterar] of [
     "l.forEach(o=>{g[o.plataformaSlug]=(g[o.plataformaSlug]||0)+1});return JSON.stringify({n:l.length,g:Object.values(g).filter(x=>x>1)})})()",c));
   prueba('agrupar proveedores conserva cada referencia individual y el nombre común sin escoger un ticker',
     (todo.match(/data-oferta-detalle=/g)||[]).length===esperado.n&&esperado.g.length>0&&
-    esperado.g.every(k=>new RegExp('Ver '+k+' referencias').test(todo))&&
-    /<summary><b>[^<]+<\/b>/.test(todo)&&/Cada una conserva su fuente/.test(todo));
+    esperado.g.every(k=>new RegExp('Ver sus '+k+' ofertas').test(todo))&&
+    /<summary><b>[^<]+<\/b>/.test(todo)&&/Cada una tiene su fuente/.test(todo));
   vm.runInContext("emiBusquedaLocal='Klagenfurt'",c);
   const filtrado=vm.runInContext("tarjetasPorProveedorHtml(EMI.filter(o=>o.coleccion==='secundario'&&coincideBusquedaOfertaLocal(o)))",c);
   prueba('una búsqueda exacta recupera fichas individuales sin encerrarlas en la agrupación',
@@ -2193,7 +2194,7 @@ for(const [nombre,alterar] of [
     p.obtiene('relEscaparate').hidden===false&&
     /<section class="rel-escaparate" id="relEscaparate"[\s\S]*?No es una recomendación de inversión\.[\s\S]*?<\/section>/.test(html)&&
     /Selección RWAdar <span>· la documentación más completa<\/span>[\s\S]*?No es una recomendación de inversión\./.test(bloqueSel)&&
-    lista.indexOf('catalogo-seleccion')<lista.indexOf('Resto de principales'));
+    lista.indexOf('catalogo-seleccion')<lista.indexOf('Otras ofertas principales'));
   const criterios=p.obtiene('inicioCriterios').innerHTML;
   // ESPEC-INICIO §2.8: las 5 comprobaciones van abiertas y en llano, en el orden del archivo.
   prueba('Inicio enseña las 5 comprobaciones abiertas, en llano y en el orden de transparencia.json',
@@ -2396,8 +2397,8 @@ for (const vacia of ['plataformas','ofertas']) {
     vm.runInContext('!CATALOGO_EMBEBIDO_BLOQUEADO&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas',c));
 }
 prueba('las etiquetas públicas de ordenación describen los comparadores documentales reales',
-  /value="cierra">Fuente y fecha/.test(html) && /value="rent">Cifra publicada por la plataforma/.test(html) &&
-  /value="min">Mínimo documentado en euros/.test(html) && /value="az">Empresa y nombre/.test(html) &&
+  /value="cierra">Las más al día primero/.test(html) && /value="rent">Rentabilidad publicada \(mayor primero\)/.test(html) &&
+  /value="min">Mínimo en euros \(menor primero\)/.test(html) && /value="az">Empresa \(A-Z\)/.test(html) &&
   !/Lo que cierra antes|Más avanzada/.test(html));
 prueba('el publicador usa ComSpec en Windows y evita el EINVAL de ejecutar npx.cmd directamente',
   /process\.env\.ComSpec \|\| 'cmd\.exe'/.test(publicador) &&

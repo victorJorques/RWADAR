@@ -53,6 +53,11 @@
       if(limpio==='Todas')return origen.replace(limpio,idioma.traducir('Todos'));
       if(Object.hasOwn(uiConsulta,limpio))return origen.replace(limpio,uiConsulta[limpio]);
       if(m)return origen.replace(limpio,'View documentary references and dates ('+m[1]+')');
+      // Frases con cifra o fecha de LISTA-FINAL.md (04/11/2026), solo de la web.
+      for(const [re,en] of [[/^Ver sus (\d+) ofertas$/,'View its $1 offers'],[/^Fuente revisada el (.+)$/,'Source checked on $1'],
+        [/^Fuentes consultadas · (.+)$/,'Sources checked · $1'],[/^Ver oferta en (.+) ↗$/,'See the offer on $1 ↗'],[/^Ir a la web de (.+) ↗$/,"Go to $1's website ↗"],
+        [/^Ver los (\d+) datos consultados y sus fechas$/,'View the $1 data points checked and their dates']])
+        if(re.test(limpio))return origen.replace(limpio,limpio.replace(re,en));
     }
     return idioma.traducir(origen);
   }
