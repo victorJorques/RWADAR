@@ -239,8 +239,9 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
   );
 }
 
-/* La fila compacta de la web (03/11/2026): miniatura, título de dos líneas
-   como mucho, proveedor y lugar; hasta dos puntos fuertes ✓ en texto;
+/* La fila compacta de la web (03/11/2026, final del 04/11): miniatura y, en
+   la columna del texto, título de dos líneas como mucho, proveedor y lugar,
+   «Cifras válidas N días más», hasta dos puntos fuertes ✓ en texto y
    Mínimo · España · Salida en forma corta; y al pie «Revisa · N avisos en la
    ficha», la fecha y «Ver ficha». El aviso crítico (tono stop) se lee entero
    siempre; el ordinario se resume en su número y sigue entero para el lector
@@ -273,7 +274,7 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
   const vigenteOk = !catalogoCaducado && resumen.cifrasVigentes &&
     ['vigente', 'proxima', 'permanente-vigente', 'permanente-proxima'].includes(vigencia.estado);
   const estadoTexto = vigenteOk ? vigencia.etiqueta : resumen.estado.texto;
-  // «Cifras vigentes N d» empieza en mayúscula; el diccionario lo tiene en minúscula.
+  // «Cifras válidas N días más» empieza en mayúscula; el patrón del idioma va en minúscula.
   const estadoTraducido = (() => {
     const directo = traducir(estadoTexto);
     if (directo !== estadoTexto) return directo;
@@ -321,22 +322,24 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
             {!catalogoCaducado && resumen.cifrasVigentes && oferta.disponibleEs === false
               ? <Text style={e.noDisponible}>No disponible en España</Text> : null}
           </View>
-        </View>
-      </View>
-      {puntos.length ? (
-        <View style={e.puntos} accessibilityLabel={traducir('Puntos fuertes')}>
-          {puntos.map((punto) => (
-            <Text key={punto.texto} style={e.punto}><Text style={e.puntoMarca}>✓ </Text>{punto.texto}</Text>
-          ))}
-        </View>
-      ) : null}
-      <View style={e.decisionTarjeta}>
-        {datosCortos.map(([etiqueta, valor]) => (
-          <View key={etiqueta} style={e.decisionFila}>
-            <Text style={e.decisionEtiqueta}>{etiqueta}</Text>
-            <Text style={e.decisionValor}>{valor}</Text>
+          {/* Como la web: los puntos fuertes y Mínimo · España · Salida van en la
+              columna del texto, junto a la miniatura; el pie ocupa todo el ancho. */}
+          {puntos.length ? (
+            <View style={e.puntos} accessibilityLabel={traducir('Puntos fuertes')}>
+              {puntos.map((punto) => (
+                <Text key={punto.texto} style={e.punto}><Text style={e.puntoMarca}>✓ </Text>{punto.texto}</Text>
+              ))}
+            </View>
+          ) : null}
+          <View style={e.decisionTarjeta}>
+            {datosCortos.map(([etiqueta, valor]) => (
+              <View key={etiqueta} style={e.decisionFila}>
+                <Text style={e.decisionEtiqueta}>{etiqueta}</Text>
+                <Text style={e.decisionValor}>{valor}</Text>
+              </View>
+            ))}
           </View>
-        ))}
+        </View>
       </View>
       {bloqueo ? (
         <View style={[e.avisoFicha, e.avisoFichaStop]}>
@@ -482,7 +485,7 @@ export function DetalleOferta({
                     ? 'No hay cifras con fecha y vigencia válidas. Consulta las condiciones actuales con el emisor.'
                   : oferta.permanente
                     ? 'Estas cifras conservan su fecha de revisión. Su vigencia no garantiza la disponibilidad actual ni que puedas contratar el producto.'
-                    : `Información comprobada el ${oferta.verificadaEl || 'día indicado en la fuente'}.`}
+                    : `Información comprobada el ${fechaES(oferta.verificadaEl) || 'día indicado en la fuente'}.`}
               </Text>
             </View>
             {documentacion?.descripcion ? (
@@ -734,9 +737,9 @@ const e = StyleSheet.create({
   imagenFallback: { alignItems: 'center', justifyContent: 'center' },
   imagenFallbackTxt: { fontFamily: F.negrita, fontSize: 34, color: C.noche },
   imagenFallbackTxtPeq: { fontSize: 20 },
-  estadoFicha: { ...T.menor, fontFamily: F.semi, color: C.tx2, fontSize: 12, lineHeight: 17 },
-  estadoOk: { color: C.senal, backgroundColor: C.senalT, borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 2, overflow: 'hidden' },
-  metaFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginTop: 6 },
+  estadoFicha: { ...T.menor, fontFamily: F.semi, color: C.tx2, fontSize: 13, lineHeight: 18 },
+  estadoOk: { color: C.senal },
+  metaFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginTop: 3 },
   noDisponible: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.alarma },
   vigenciaOk: { color: C.senal, borderColor: C.senal34 },
   vigenciaProxima: { color: C.aviso },
@@ -754,13 +757,13 @@ const e = StyleSheet.create({
   lugarTxt: { color: C.tx3 },
   titulo: { ...T.ficha, color: C.tx, fontSize: 16, lineHeight: 20, letterSpacing: -0.16 },
   decisionTarjeta: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12, rowGap: 2, marginTop: 6 },
-  puntos: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12, rowGap: 2, marginTop: 10 },
+  puntos: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12, rowGap: 2, marginTop: 6 },
   punto: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx2 },
   puntoMarca: { fontFamily: F.semi, color: C.senal },
   decisionFila: { flexDirection: 'row', alignItems: 'baseline', gap: 4, flexShrink: 1, maxWidth: '100%' },
   decisionEtiqueta: { ...T.menor, fontFamily: F.media, fontSize: 12, lineHeight: 18, color: C.tx3 },
   decisionValor: { ...T.menor, fontFamily: F.semi, fontSize: 13, lineHeight: 18, color: C.tx, flexShrink: 1 },
-  pieFicha: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 6 },
+  pieFicha: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 8 },
   avisosN: { ...T.menor, flex: 1, fontSize: 12, lineHeight: 17, color: C.aviso },
   avisosNMarca: { fontFamily: F.semi },
   avisosHueco: { flex: 1 },

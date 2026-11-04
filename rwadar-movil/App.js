@@ -254,7 +254,7 @@ export default function App() {
       }
       if (catalogo.caducado) {
         const [a, m, d] = String(catalogo.fecha).split('-');
-        mensajes.push(`Revisión pendiente: estos datos se revisaron el ${d}.${m}.${a} y su revisión semanal ha vencido. ` +
+        mensajes.push(`Revisión pendiente: estos datos se revisaron el ${d}/${m}/${a} y su revisión semanal ha vencido. ` +
           'Las cifras caducadas se ocultan; comprueba cada dato en la web del emisor.');
       }
       if (f.error) mensajes.push('No se pudieron actualizar los descartes documentados.');
@@ -1418,7 +1418,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
       accessible={compacta}
       accessibilityLabel={compacta ? etiquetaAccesible : undefined}
     >
-      <Text style={e.verLocalFecha}>Revisión de fuentes · {verificacion.verificadoEl}</Text>
+      <Text style={e.verLocalFecha}>Revisión de fuentes · <Text noTraducir>{fecha}</Text></Text>
       <View style={e.verLocalCampos}>
         {campos.map(([nombre, campo]) => {
           const atencion = campo.estado === 'no_verificable' ||

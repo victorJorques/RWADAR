@@ -474,11 +474,12 @@ test('las ofertas se normalizan sin perder métricas y calculan su TTL', () => {
     { texto: 'Ventana vencida', tono: 'stop' },
   ]);
   assert.deepEqual(datos.vigenciaOferta(oferta, new Date('2026-08-30T12:00:00Z')), {
-    estado: 'proxima', etiqueta: 'Cifras vigentes 2 d',
+    // «Cifras válidas N días más», como la web (LISTA-FINAL fila 14, 04/11/2026).
+    estado: 'proxima', etiqueta: 'Cifras válidas 2 días más',
     venceEl: '2026-09-01T00:00:00.000Z', dias: 2,
   });
   assert.deepEqual(datos.vigenciaOferta(oferta, new Date('2026-09-01T18:00:00Z')), {
-    estado: 'proxima', etiqueta: 'Cifras vigentes hasta hoy',
+    estado: 'proxima', etiqueta: 'Cifras válidas hasta hoy',
     venceEl: '2026-09-01T00:00:00.000Z', dias: 0,
   });
   const comercial = datos.normalizarOferta({

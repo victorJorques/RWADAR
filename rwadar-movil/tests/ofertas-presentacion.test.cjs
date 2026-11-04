@@ -401,7 +401,7 @@ test('estado documental conserva incertidumbre y nunca hereda apertura del sello
     const estado = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && textoVisible(nodo).includes(esperado));
     assert.ok(estado);
     assert.equal(estado.props.numberOfLines, undefined);
-    assert.doesNotMatch(textoVisible(tarjeta), /Cifras vigentes/);
+    assert.doesNotMatch(textoVisible(tarjeta), /Cifras válidas|Cifras vigentes/);
   }
 });
 

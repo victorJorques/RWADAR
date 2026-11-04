@@ -263,7 +263,8 @@ test('una app abierta retira las cifras al cambiar de día y al volver de suspen
       setTimeout(fn, espera) { assert.ok(espera > 0 && espera <= 86400100); temporizador = fn; return 1; },
     });
     // Fila compacta de la web (03/11/2026): una principal vigente enseña su vigencia.
-    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /Cifras vigentes/);
+    // «Cifras válidas N días más» desde el 04/11/2026 (LISTA-FINAL fila 14).
+    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /Cifras válidas/);
     assert.match(textoRenderizado(componentes.DetalleOferta({ oferta })), /97,13/);
     reloj.setTime(caducada.getTime());
     if (evento === 'medianoche') temporizador(); else reactivar('active');

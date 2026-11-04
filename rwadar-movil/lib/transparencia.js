@@ -42,7 +42,7 @@ export function nombreFuente(url) {
 
 const TEXTOS = [
   ['contratable', 'Se contrata hoy desde España'],
-  ['supervisada', 'Quien la vende está supervisado y registrado en la CNMV'],
+  ['supervisada', 'La entidad que la ofrece está autorizada por un supervisor de la UE e inscrita en la CNMV'],
   ['documentoEspana', 'Hay un documento oficial (KID o folleto) que cubre su venta en España'],
   ['minimoSalida', 'El mínimo y la forma de salir están documentados'],
   ['vigente', 'Revisada esta semana y sin fuentes en conflicto'],
@@ -70,19 +70,20 @@ export function estadoVigencia(oferta, ahora = new Date()) {
   const o = oferta || {};
   if (o.coleccion != null && o.coleccion !== 'principales') {
     return { caducado: true, texto: o.coleccion === 'en_camino'
-      ? 'anuncio documentado · apertura no confirmada' : 'referencia documental · liquidez no confirmada' };
+      ? 'anunciada · sin confirmar que abra' : 'reventa · sin confirmar que se pueda operar' };
   }
   if (o.estadoRevision === 'no_verificable') return { caducado: true, texto: 'apertura no confirmada' };
   if (o.estadoRevision === 'fuentes_en_conflicto') return { caducado: true, texto: 'fuentes en conflicto' };
   const base = Date.parse(`${o.verificadaEl}T00:00:00Z`), ttl = Number(o.vigenciaDias);
   const reloj = new Date(ahora);
   if (!fechaValida(o.verificadaEl) || !Number.isInteger(ttl) || ttl < 1 || !Number.isFinite(reloj.getTime()) ||
-      (o.estadoRevision != null && o.estadoRevision !== 'actual')) return { caducado: true, texto: 'vigencia sin definir' };
+      (o.estadoRevision != null && o.estadoRevision !== 'actual')) return { caducado: true, texto: 'sin fecha de validez' };
   const hoy = Date.UTC(reloj.getUTCFullYear(), reloj.getUTCMonth(), reloj.getUTCDate());
-  if (base > hoy) return { caducado: true, texto: 'revisión futura no válida' };
+  if (base > hoy) return { caducado: true, texto: 'fecha de revisión errónea' };
   const resta = Math.floor((base + ttl * 86400000 - hoy) / 86400000);
   if (resta < 0) return { caducado: true, texto: 'cifras por actualizar' };
-  return { caducado: false, texto: resta === 0 ? 'cifras vigentes hasta hoy' : `cifras vigentes ${resta} d` };
+  /* Dicen hasta cuándo valen las cifras, en días enteros (LISTA-FINAL fila 14). */
+  return { caducado: false, texto: resta === 0 ? 'cifras válidas hasta hoy' : `cifras válidas ${resta} ${resta === 1 ? 'día' : 'días'} más` };
 }
 
 export function minimoDocumentado(r) {
