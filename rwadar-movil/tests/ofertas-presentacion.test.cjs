@@ -360,7 +360,7 @@ test('datos vencidos y colecciones documentales no regresan al simplificar la ta
     // Fila compacta de la web (03/11/2026): al pie, solo la fecha.
     assert.ok(textoVisible(tarjeta).includes('30/09/2026'));
     assert.ok(tarjeta.props.accessibilityLabel.includes('Fuente consultada 30/09/2026'));
-    assert.match(textoVisible(tarjeta), /cifras ocultas|disponibilidad sin confirmar|apertura sin confirmar/);
+    assert.match(textoVisible(tarjeta), /Cifras por actualizar|Liquidez no confirmada|Apertura no confirmada/);
     assert.deepEqual(oferta, original);
   }
 });
@@ -400,7 +400,7 @@ test('un warning relevante no desaparece si no hay stop y tampoco se trunca', ()
 });
 
 test('estado documental conserva incertidumbre y nunca hereda apertura del sello documental', () => {
-  for (const [coleccion, esperado] of [['secundario', 'disponibilidad sin confirmar'], ['en_camino', 'apertura sin confirmar']]) {
+  for (const [coleccion, esperado] of [['secundario', 'Liquidez no confirmada'], ['en_camino', 'Apertura no confirmada']]) {
     const tarjeta = componentes().FichaOferta({ oferta: dato({ coleccion }) });
     const estado = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && textoVisible(nodo).includes(esperado));
     assert.ok(estado);

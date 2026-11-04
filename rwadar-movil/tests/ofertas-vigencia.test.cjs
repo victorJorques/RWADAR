@@ -240,7 +240,7 @@ test('tarjeta, accesibilidad y detalle móvil ocultan precio/yield vencidos sin 
     for (const render of [componentes.FichaOferta, componentes.DetalleOferta]) {
       const texto = textoRenderizado(render({ oferta: dato }));
       assert.doesNotMatch(texto, centinelas);
-      assert.match(texto, render === componentes.FichaOferta ? /cifras ocultas/ : /Consultar emisor/);
+      assert.match(texto, render === componentes.FichaOferta ? /Cifras por actualizar/ : /Consultar emisor/);
       assert.doesNotMatch(texto, /Pendiente de revisión|Producto activo/);
     }
   }
@@ -269,7 +269,7 @@ test('una app abierta retira las cifras al cambiar de día y al volver de suspen
     reloj.setTime(caducada.getTime());
     if (evento === 'medianoche') temporizador(); else reactivar('active');
     assert.doesNotMatch(textoRenderizado(componentes.FichaOferta({ oferta })), centinelas);
-    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /cifras ocultas/);
+    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /Cifras por actualizar/);
     assert.doesNotMatch(textoRenderizado(componentes.DetalleOferta({ oferta })), centinelas);
     limpiar();
     assert.equal(retiroEscucha, true);
@@ -337,7 +337,7 @@ test('una referencia del 27 de septiembre conserva su revisión documental el d�
       const texto = textoRenderizado(render({ oferta: dato }));
       assert.match(texto, /(?:Revisión documental|Revisión del catálogo:)\s*27\/09\/2026/);
       assert.match(texto, render === componentes.FichaOferta
-        ? estadoRevision === 'fuentes_en_conflicto' ? /Las fuentes no coinciden/ : /cifras ocultas/
+        ? { actual: /Cifras por actualizar/, no_verificable: /Apertura no confirmada/, fuentes_en_conflicto: /Fuentes en conflicto/ }[estadoRevision]
         : /Consultar emisor/);
       assert.match(texto, /La inversión puede perder valor/);
       assert.doesNotMatch(texto, /Pendiente de revisión|Producto activo|Disponible desde España/);
@@ -387,7 +387,7 @@ test('la ficha documental y sus referencias históricas sobreviven al TTL sin pr
   const tarjeta = textoRenderizado(componentes.FichaOferta({ oferta: dato }));
   assert.match(tarjeta, /Fuente consultada 27\/09\/2026/);
   assert.doesNotMatch(tarjeta, /Fuente consultada 30\/09\/2026/);
-  assert.match(tarjeta, /cifras ocultas/);
+  assert.match(tarjeta, /Cifras por actualizar/);
   assert.doesNotMatch(tarjeta, /54,20|97,13|9876|1234|4455/);
   const detalle = textoRenderizado(componentes.DetalleOferta({ oferta: dato }));
   assert.match(detalle, /Revisión del catálogo:\s*30\/09\/2026/);
@@ -631,7 +631,7 @@ test('V2 recorre REST y normalizadores hasta tres grupos web y detalles document
     assert.equal(dialogo.open, true); assert.match(dialogo.innerHTML, /9043 CHF/);
     assert.match(dialogo.innerHTML, /2026-09-20/); assert.match(dialogo.innerHTML, /2026-09-27/);
     const tarjeta = textoRenderizado(componentes.FichaOferta({ oferta: o }));
-    assert.match(tarjeta, o.coleccion === 'secundario' ? /Referencia de reventa · disponibilidad sin confirmar/ : /Anuncio documentado · apertura sin confirmar/); assert.doesNotMatch(tarjeta, /9043 CHF/);
+    assert.match(tarjeta, o.coleccion === 'secundario' ? /Liquidez no confirmada/ : /Apertura no confirmada/); assert.doesNotMatch(tarjeta, /9043 CHF/);
     assert.match(textoRenderizado(componentes.DetalleOferta({ oferta: o })), /9043 CHF/);
   }
 });

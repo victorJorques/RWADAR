@@ -63,7 +63,7 @@ test('el rediseño conserva radar, ofertas, 3D, detalle, descartes, avisos y pri
   assert.match(codigo, /accessibilityLabel=\{sigue \? `Dejar de seguir/);
   assert.match(codigo, /accessibilityLiveRegion="polite"/);
   assert.match(codigo, /INTERNO · datos locales · sin conexión a Supabase de producción/);
-  assert.match(codigo, /Buscar ofertas por nombre, proveedor, país o métrica/);
+  assert.match(codigo, /Buscar por oferta, empresa, país o activo/);
   assert.match(codigo, /no hay comisiones ni enlaces remunerados activos/);
   assert.match(codigo, /Una relación comercial debe identificarse y no altera el ranking editorial/);
   assert.match(codigo, /oferta\.plataformaSlug !== proveedorOferta/);
@@ -168,9 +168,8 @@ test('las 52 imágenes originales se conservan y la interfaz usa la ilustración
   assert.match(componente, /accessibilityLabel=\{decorativa \? undefined : editorial\.alt\}/);
   assert.doesNotMatch(componente, /oferta\.imagenAlt/);
   // La ficha de la web final (04/11/2026) ya no dice si el proveedor está en el radar.
-  assert.match(componente, /La referencia sigue documentada; ha vencido la actualización de sus cifras/);
   assert.doesNotMatch(componente, /Producto activo/);
-  assert.match(componente, /permanente-vencida/);
+  assert.match(componente, /permanente-vigente/);
   assert.match(componente, /accessibilityLabel=\{etiquetaAccesible\}/);
   assert.match(componente, /avisosCriticos\(oferta\)/);
   assert.match(componente, /aviso\.tono === 'stop'/);

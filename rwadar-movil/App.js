@@ -832,12 +832,12 @@ export default function App() {
                       <Icono nombre="buscar" color={C.tx2} tamano={23} />
                       <TextInput
                         style={e.buscador}
-                        placeholder="Oferta, proveedor, país o métrica"
+                        placeholder="Ej.: Spiko, Suiza…"
                         placeholderTextColor={C.tx3}
                         value={busquedaOfertas}
                         onChangeText={setBusquedaOfertas}
                         returnKeyType="search"
-                        accessibilityLabel="Buscar ofertas por nombre, proveedor, país o métrica"
+                        accessibilityLabel="Buscar por oferta, empresa, país o activo"
                       />
                       {hayRestriccionesOfertas ? (
                         <Pressable
@@ -928,7 +928,7 @@ export default function App() {
                       {item.seleccion ? <>
                         <Text style={e.bloqueOfertasTit}><Text style={e.bloqueOfertasMarca}>Selección RWAdar</Text> · pasan nuestras 5 comprobaciones</Text>
                         <Text style={e.bloqueOfertasSub}>No es una recomendación de inversión.</Text>
-                      </> : <Text style={e.bloqueOfertasTit}>Resto de principales</Text>}
+                      </> : <Text style={e.bloqueOfertasTit}>Otras ofertas principales</Text>}
                     </View>
                   ) : item.tipo === 'grupo'
                     ? <FichaGrupoOfertas grupo={item} onAbrir={() => {

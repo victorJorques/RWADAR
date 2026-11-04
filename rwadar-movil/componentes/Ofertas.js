@@ -59,6 +59,22 @@ function datoDestacado(oferta) {
     original: Boolean(oferta.precio?.mostrado), referencia: oferta.precio?.unidad || '' };
 }
 
+/* La web no marca «cifras pendientes» en reventa ni en próximas: su mínimo, su
+   acceso y su salida documentados salen mientras la ficha está vigente
+   (ficha-editorial.js ya mira la fecha y la colección; 03/11/2026, Víctor). */
+function ofertaParaResumen(oferta) {
+  return oferta && oferta.coleccion != null && oferta.coleccion !== 'principales'
+    ? { ...oferta, cifrasPendientes: false } : oferta;
+}
+
+/* El estado de la fila con las palabras de la web (estadoCompacto). */
+function estadoCompactoOferta(oferta, ahora, catalogoCaducado) {
+  if (oferta?.coleccion === 'en_camino') return 'Apertura no confirmada';
+  if (oferta?.coleccion === 'secundario') return 'Liquidez no confirmada';
+  const estado = estadoVigencia(oferta, ahora);
+  return mayuscula(catalogoCaducado && !estado.caducado ? 'cifras por actualizar' : estado.texto);
+}
+
 function rentabilidadSecundaria(oferta) {
   if (oferta?.tipo !== 'secundario') return '';
   return [...new Set([
@@ -149,14 +165,6 @@ function registroProveedor(plataforma, ahora) {
       })) return null;
   return {texto:etiquetaEstadoVerificacionLocal(registro.estado),detalle:registro.detalle,
     fecha,fuentes:registro.fuentes.map(f => f.url)};
-}
-
-function tonoVigencia(estado) {
-  if (estado === 'vencida' || estado === 'permanente-vencida' ||
-    estado === 'bloqueada' || estado === 'conflicto') return e.vigenciaVencida;
-  if (estado === 'proxima' || estado === 'permanente-proxima') return e.vigenciaProxima;
-  if (estado === 'vigente' || estado === 'permanente-vigente') return e.vigenciaOk;
-  return null;
 }
 
 export function imagenesParaOferta(oferta) {
@@ -254,19 +262,20 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
   const primerCritico = criticos[0];
   const bloqueo = primerCritico?.tono === 'stop' ? primerCritico : null;
   const contables = avisosContables(oferta);
-  const resumen = resumenOferta(ofertaOriginal, [], ahora);
+  const resumen = resumenOferta(ofertaParaResumen(ofertaOriginal), [], ahora);
   const datosCortos = datosCortosOferta(ofertaOriginal, resumen, { catalogoCaducado });
   const puntos = puntosFuertesOferta(ofertaOriginal).slice(0, 2);
   const fechaProcedencia = resumen.fechas.comprobadaEl
     ? `Fuente consultada ${fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)}`
     : documentacion ? `Revisión documental ${fechaVerificacionLocalVisible(documentacion.fecha)}`
       : 'Sin consulta de fuente fechada';
-  const fechaCorta = resumen.fechas.comprobadaEl ? fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)
-    : documentacion ? fechaVerificacionLocalVisible(documentacion.fecha) : '';
-  // Una principal vigente enseña su vigencia; lo demás, el estado que da resumenOferta.
+  // La fecha visible es la de la revisión, como la web (documentación o, si no hay, la ficha).
+  const fechaRevision = documentacion ? documentacion.fecha : ofertaOriginal.verificadaEl;
+  const fechaCorta = fechaRevision ? fechaVerificacionLocalVisible(fechaRevision) : '';
+  // Una principal vigente enseña su vigencia; lo demás, el estado corto de la web.
   const vigenteOk = !catalogoCaducado && resumen.cifrasVigentes &&
     ['vigente', 'proxima', 'permanente-vigente', 'permanente-proxima'].includes(vigencia.estado);
-  const estadoTexto = vigenteOk ? vigencia.etiqueta : resumen.estado.texto;
+  const estadoTexto = vigenteOk ? vigencia.etiqueta : estadoCompactoOferta(ofertaOriginal, ahora, catalogoCaducado);
   // «Cifras válidas N días más» empieza en mayúscula; el patrón del idioma va en minúscula.
   const estadoTraducido = (() => {
     const directo = traducir(estadoTexto);
@@ -311,7 +320,7 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
           </Text>
           <View style={e.metaFicha}>
             <Text noTraducir idiomaOriginal={idiomaActual === 'en' ? 'en-US' : 'es-ES'}
-              style={[e.estadoFicha, vigenteOk ? e.estadoOk : tonoVigencia(vigencia.estado)]}>{estadoTraducido}</Text>
+              style={[e.estadoFicha, vigenteOk ? e.estadoOk : e.estadoCaducado]}>{estadoTraducido}</Text>
             {!catalogoCaducado && resumen.cifrasVigentes && oferta.disponibleEs === false
               ? <Text style={e.noDisponible}>No disponible en España</Text> : null}
           </View>
@@ -409,8 +418,7 @@ export function DetalleOferta({
   if (!ofertaOriginal) return null;
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
   const documentacion = documentacionOferta(ofertaOriginal, ahora);
-  const vigencia = vigenciaOferta(oferta, ahora);
-  const resumen = resumenOferta(ofertaOriginal, [], ahora);
+  const resumen = resumenOferta(ofertaParaResumen(ofertaOriginal), [], ahora);
   const registro = registroProveedor(plataforma, ahora);
   const estadoCifras = estadoVigencia(ofertaOriginal, ahora);
   const vigente = !catalogoCaducado && !estadoCifras.caducado && !oferta.cifrasPendientes;
@@ -428,16 +436,9 @@ export function DetalleOferta({
   // «válidas 6 días más» tras «Revisadas el …», como la web; en inglés, el patrón común.
   const validez = idiomaActual === 'en'
     ? traducir(estadoCifras.texto).replace(/^figures /, '') : estadoCifras.texto.replace(/^cifras /, '');
+  // Sin cifras vigentes, la fila «Cifras» dice solo el estado, como la web.
   const estadoCaducado = mayuscula(traducir(catalogoCaducado && !estadoCifras.caducado
     ? 'cifras por actualizar' : estadoCifras.texto));
-  const explicacionEstado = vigencia.estado === 'bloqueada'
-    ? 'No está confirmada la admisión de nuevas inversiones. Consulta la apertura y las condiciones actuales con el emisor.'
-    : vigencia.estado === 'conflicto'
-      ? 'Las fuentes consultadas se contradicen. Conservamos la referencia y sus avisos, pero ocultamos las cifras hasta poder contrastarlas.'
-      : vigencia.estado === 'permanente-vencida' || vigencia.estado === 'vencida'
-        ? `${documentacion ? 'La referencia sigue documentada; ha vencido la actualización de sus cifras.' : 'Ha vencido la actualización de las cifras.'} Consulta precio, rentabilidad y disponibilidad actuales con el emisor.`
-        : oferta.cifrasPendientes
-          ? 'No hay cifras con fecha y vigencia válidas. Consulta las condiciones actuales con el emisor.' : '';
   // Todos los avisos del catálogo, tal cual; el genérico ya lo dice la línea del botón.
   const avisos = (oferta.avisos || []).filter((aviso) => aviso && String(aviso.texto || '').trim() &&
     aviso.tono !== 'ok' && (!aviso.esAntiguedad || aviso.tono === 'stop') && !AVISO_GENERAL.test(String(aviso.texto)));
@@ -447,6 +448,10 @@ export function DetalleOferta({
     ['Salida', resumen.salida],
     ['Costes', resumen.costes],
   ];
+  /* Como la web (datosClaveOfertaHtml): «Salida» no repite «Salida:», y los
+     costes van con la métrica en castellano del catálogo y la cita debajo. */
+  const sinTildes = (valor) => String(valor || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const metricaCoste = (oferta.metricas || []).find((m) => /comisi|coste|gasto|tarifa/.test(sinTildes(m?.etiqueta)));
   // Reventa con mercado propio: «Abrir mercado» y la ficha oficial, como la web.
   const urlMercado = oferta.tipo === 'secundario' && oferta.urlMercado ? oferta.urlMercado : '';
   const enlacePrincipal = urlMercado || oferta.url;
@@ -523,10 +528,7 @@ export function DetalleOferta({
                 <Text style={e.esencialValor}>
                   Revisadas el <Text noTraducir>{fechaES(oferta.verificadaEl)}</Text> · <Text noTraducir>{validez}</Text>
                 </Text>
-              ) : <View>
-                <Text noTraducir style={[e.esencialValor, tonoVigencia(vigencia.estado)]}>{estadoCaducado}</Text>
-                {explicacionEstado ? <Text style={e.esencialNota}>{explicacionEstado}</Text> : null}
-              </View>)}
+              ) : <Text noTraducir style={[e.esencialValor, e.estadoCaducado]}>{estadoCaducado}</Text>)}
             </View>
 
             {avisos.length ? (
@@ -609,7 +611,14 @@ export function DetalleOferta({
                   {datosConFuente.map(([etiqueta, dato]) => (
                     <View key={etiqueta} style={e.filaMetrica}>
                       <Text style={e.metricaEtiqueta}>{etiqueta}</Text>
-                      <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length)} idiomaOriginal="es-ES" style={e.metricaValor}>{dato.texto}</Text>
+                      {etiqueta === 'Costes' && metricaCoste ? <>
+                        <Text noTraducir idiomaOriginal="es-ES" style={e.metricaValor}>{metricaCoste.valor}</Text>
+                        <Text noTraducir idiomaOriginal="es-ES" style={e.referencia}>{dato.texto}</Text>
+                      </> : (
+                        <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length)} idiomaOriginal="es-ES" style={e.metricaValor}>
+                          {etiqueta === 'Salida' ? String(dato.texto || '').replace(/^Salida:\s*/i, '') : dato.texto}
+                        </Text>
+                      )}
                       {dato.unidadDocumentada ? <Text style={e.referencia}>Unidad publicada: <Text noTraducir idiomaOriginal="es-ES">{dato.unidadDocumentada}</Text>; no se ha convertido a euros.</Text> : null}
                       {dato.referencias?.length ? dato.referencias.map((ref, indice) => (
                         <Text key={`${ref.fuente}-${indice}`} style={e.referencia}>{ref.etiqueta}: fuente consultada el {fechaVerificacionLocalVisible(ref.fechaConsulta)} · {dominioFuente(ref.fuente)}{ref.fechaDato ? ` · dato del ${fechaVerificacionLocalVisible(ref.fechaDato)}` : ''}</Text>
@@ -819,9 +828,8 @@ const e = StyleSheet.create({
   estadoOk: { color: C.senal },
   metaFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginTop: 3 },
   noDisponible: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.alarma },
-  vigenciaOk: { color: C.senal, borderColor: C.senal34 },
-  vigenciaProxima: { color: C.aviso },
-  vigenciaVencida: { color: C.coral, borderColor: C.coral32 },
+  // Sin cifras vigentes, en ámbar en la fila y en la ficha, como la web (.caducado).
+  estadoCaducado: { color: C.aviso },
   cuerpoFicha: { flex: 1, minWidth: 0 },
   cuerpoGrupo: { padding: 18, gap: 10 },
   grupoNumero: { ...T.dato, fontSize: 20, lineHeight: 27, color: C.tx },
