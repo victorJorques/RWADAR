@@ -19,7 +19,7 @@
         const fuente=document.createElement('a'); fuente.href=referencia.fuente;
         fuente.target='_blank'; fuente.rel='noopener noreferrer';
         fuente.textContent=' · '+(referencia.etiqueta || 'Fuente')+
-          (referencia.consultadaEl ? ' · consulta '+referencia.consultadaEl.split('-').reverse().join('/') : '')+' ↗';
+          (referencia.consultadaEl ? ' · consultada el '+referencia.consultadaEl.split('-').reverse().join('/') : '')+' ↗';
         nodo.appendChild(fuente);
       }
     }

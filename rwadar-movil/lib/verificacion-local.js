@@ -138,7 +138,7 @@ export function documentacionOferta(oferta, ahora = new Date()) {
     descripcion: documento?.descripcion || '',
     caracteristicas: (documento?.caracteristicas || []).map(c => ({ ...c })),
     referencias: (documento?.referencias || []).map(r => ({ ...r })),
-    etiqueta: `Referencia documentada · ${fechaVerificacionLocalVisible(fecha)}` };
+    etiqueta: `Fuente revisada el ${fechaVerificacionLocalVisible(fecha)}` };
 }
 
 /* El TTL pertenece a la oferta, no al lote del catálogo. Se evalúa al pintar,

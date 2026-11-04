@@ -119,7 +119,7 @@ test('tarjeta móvil prioriza nombre/proveedor, tres datos y la consulta de fuen
   // consultada …» sigue entero en la etiqueta accesible.
   for (const esperado of [oferta.titulo, oferta.plataformaNombre, '30/09/2026',
     'Mínimo', 'España', 'Salida', 'Ver ficha →']) assert.ok(visible.includes(esperado), esperado);
-  for (const fuera of ['7,50 %', oferta.rentabilidad.literal, oferta.documentacion.descripcion, 'Referencia documentada', '999 EUR', '123 CHF', oferta.resumen, 'RENT. AJUSTADA']) {
+  for (const fuera of ['7,50 %', oferta.rentabilidad.literal, oferta.documentacion.descripcion, 'Fuente revisada el', '999 EUR', '123 CHF', oferta.resumen, 'RENT. AJUSTADA']) {
     assert.ok(!visible.includes(fuera), `bloque largo reapareció en la tarjeta: ${fuera}`);
   }
   assert.ok(tarjeta.props.accessibilityLabel.includes('Fuente consultada 30/09/2026'));

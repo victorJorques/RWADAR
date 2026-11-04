@@ -216,7 +216,7 @@ function paginaOferta(o,catalogo,imagen) {
     .filter(x=>x && !/^Referencia editorial gratuita\b/.test(x));
   const fichaImagen = imagen ? '<figure><img src="/'+esc(imagen.salida)+'" alt="'+esc(imagen.alt)+'" width="960" height="660"><figcaption>Ilustración editorial generada con IA. No es una fotografía del activo real.</figcaption></figure>' : '';
   const contenido = '<p class="intro"'+ORIGINAL+'>'+esc(d.descripcion || o.resumen)+'</p>'+fichaImagen+
-    '<p class="estado" role="status" data-campo="estado">Referencia documental: confirma las condiciones actuales en las fuentes.</p>'+
+    '<p class="estado" role="status" data-campo="estado">Confirma las condiciones actuales en las fuentes.</p>'+
     (avisos.length ? '<section aria-labelledby="avisos"><h2 id="avisos">Avisos de esta oferta</h2><ul class="riesgos"'+ORIGINAL+'>'+avisos.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></section>' : '')+
     '<section aria-labelledby="que"><h2 id="que">Qué es y quién lo ofrece</h2><dl><div><dt>Proveedor</dt><dd'+ORIGINAL+'>'+esc(o.plataformaNombre)+'</dd></div>' +
     '<div><dt>Tipo de activo</dt><dd'+ORIGINAL+'>'+esc(o.categoria)+'</dd></div><div><dt>Supervisión de la plataforma</dt><dd'+ORIGINAL+'>'+supervision+'</dd></div></dl>'+
