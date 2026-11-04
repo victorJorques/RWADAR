@@ -2228,6 +2228,11 @@ for(const [nombre,alterar] of [
   prueba('con el catálogo caducado Inicio no enseña cifras ni Selección y la línea de riesgo se queda',
     !/<b>\d+<\/b>/.test(sinCifras[0])&&/Revisión pendiente/.test(sinCifras[0])&&!/ir-et-n/.test(sinCifras[1])&&!sinCifras[2]&&
     ['relEscaparate','relMinimos','relVigencia'].every(id=>p.obtiene(id).hidden===true)&&pl('Ver las {ofertas} ofertas',false)===null);
+  // Sin cifras, cada frase vuelve a su texto en castellano del HTML (data-rel-sin), no al que hubiera en pantalla
+  // (si la web arrancó en inglés, ese texto ya estaba traducido y se quedaba en inglés al pasar a castellano).
+  const conPlantilla=[...htmlInicio.matchAll(/<[^>]*\sdata-rel-plantilla="[^>]*>/g)].map(m=>m[0]);
+  prueba('sin cifras, las frases con plantilla vuelven a su texto en castellano y el idioma lo traduce',
+    conPlantilla.length>=8&&conPlantilla.every(t=>/\sdata-rel-sin="/.test(t))&&/\?\?el\.getAttribute\('data-rel-sin'\)/.test(js)&&!/relInicial/.test(js));
   vm.runInContext("CATALOGO_CADUCADO=false;huellaInicio='';pintarInicio()",c);
   // La prueba de notas «x/5» y la del título exacto fijaban redacción: fuera (decisión de Víctor, 04/11/2026).
   vm.runInContext(`abrirDetalleOfertaLocal('${sacada}')`,c);

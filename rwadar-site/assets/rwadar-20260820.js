@@ -1913,13 +1913,14 @@ function fechaRevisionOferta(o){const d=documentacionOfertaLocal(o);return d&&d.
    RWAdar (HISTORIA-v2 §2.7); título, mínimo y foto salen del catálogo. Una
    oferta que entre nueva lleva, al menos, la línea de riesgo. */
 const NOTAS_SELECCION={
- 'robinhood-classic-stock-tokens':'Es un derivado, un contrato que sigue el precio de la acción. No eres dueño de ella ni votas, y puedes perder hasta todo lo que inviertas.',
- 'spiko-letras-del-tesoro-euro':'Es un fondo monetario, no una letra del Tesoro. No es un depósito ni está garantizado, y puedes perder parte de lo que inviertas.',
- 'spiko-letras-del-tesoro-dolar':'Es un fondo monetario en dólares, no una letra del Tesoro. No es un depósito ni está garantizado, y puedes perder parte de lo que inviertas. Si el dólar baja frente al euro, pierdes valor en euros.'};
-/* Las 5 comprobaciones en llano, a la vista en Inicio (HISTORIA-v2 §2.7). */
-const CRITERIOS_INICIO={contratable:'Se puede contratar hoy desde España.',supervisada:'La entidad que la ofrece está supervisada y registrada en la CNMV.',
- documentoEspana:'Tiene un documento oficial para su venta en España: el folleto o el KID (el documento de datos fundamentales).',
- minimoSalida:'Están documentados el mínimo y cómo salir (vender o pedir el reembolso).',vigente:'La hemos revisado esta semana y sus fuentes no se contradicen.'};
+ 'robinhood-classic-stock-tokens':'Es un derivado que sigue el precio de la acción. No eres su dueño ni votas, y puedes perder todo lo invertido.',
+ 'spiko-letras-del-tesoro-euro':'Es un fondo monetario, no una letra del Tesoro ni un depósito. No está garantizado: puedes perder parte de lo invertido.',
+ 'spiko-letras-del-tesoro-dolar':'Es un fondo monetario en dólares, no una letra del Tesoro ni un depósito. No está garantizado: puedes perder parte de lo invertido, también si baja el dólar.'};
+/* Las 5 comprobaciones en llano, a la vista en Inicio (HISTORIA-v2 §2.7).
+   La 2 dice quién autoriza: un supervisor de la UE; la CNMV las inscribe. */
+const CRITERIOS_INICIO={contratable:'Se contrata hoy desde España.',supervisada:'La entidad que la ofrece está autorizada por un supervisor de la UE e inscrita en la CNMV.',
+ documentoEspana:'Tiene un documento oficial para su venta en España: folleto o KID.',
+ minimoSalida:'Están documentados el mínimo y cómo salir.',vigente:'La revisamos esta semana y sus fuentes coinciden.'};
 const minimoCortoInicio=o=>{const e=transparenciaOferta(o);return e?textoLocal(e.minimoCorto).replace(/^(\d+(?:,\d+)?) USD$/,'$1 $'):''};
 const idiomaInicio=()=>{try{return typeof RWAdarIdioma!=='undefined'&&RWAdarIdioma.obtenerIdioma()==='en'?'en':'es'}catch(e){return 'es'}};
 /* Todas las cifras del relato salen de aquí: catálogo, transparencia.json y la
@@ -1989,11 +1990,13 @@ function pintarInicio(){
   '<li class="inicio-hud-3"><b>'+c.descartadas+'</b> <span>descartadas</span></li>'+
   '<li class="inicio-hud-4"><span>revisado el</span> <b>'+t+'</b></li>');
  if(typeof panel.querySelectorAll==='function')[...panel.querySelectorAll('[data-rel-plantilla]')].forEach(el=>{
-  if(el.dataset.relInicial===undefined)el.dataset.relInicial=el.textContent;
-  const texto=plantillaInicio(el.getAttribute(en&&el.hasAttribute('data-rel-plantilla-en')?'data-rel-plantilla-en':'data-rel-plantilla'),c,en)??el.dataset.relInicial;
+  /* Sin cifras, la frase en castellano de data-rel-sin (el idioma la traduce
+     si hace falta): no la que hubiera en pantalla, que puede estar en inglés. */
+  const texto=plantillaInicio(el.getAttribute(en&&el.hasAttribute('data-rel-plantilla-en')?'data-rel-plantilla-en':'data-rel-plantilla'),c,en)??el.getAttribute('data-rel-sin')??'';
   if(el.textContent!==texto)el.textContent=texto;
  });
  ocultar('relMinimos',sin||!c.minimos||!c.ofertas);
+ ocultar('relMinimosAviso',sin||!c.minimos||!c.ofertas);
  ocultar('relVigencia',sin||!c.revisado||!c.hasta);
  ocultar('relEscaparate',sin||!c.seleccion.length);
  pon('inicioCriterios',criteriosTransparencia().map(k=>'<li>'+escHtml(CRITERIOS_INICIO[k.id]||k.texto)+'</li>').join(''));
@@ -2011,7 +2014,7 @@ function sincronizarRadarPlegado(){
  b.textContent=abierto?'Ocultar el radar':'Ver el radar';
 }
 /* El relato: aparecer al bajar (quieto con «reducir movimiento»), el carrusel
-   «Quién más se ha movido», los 458 avisos, «Fuentes de este apartado», la
+   «Quién más se ha movido», «Fuentes de este apartado», la
    portada a la altura de la pantalla y la barra de progreso de lectura. */
 var relatoInicio=(function(){
  const $=id=>document.getElementById(id),panel=$('movilPanelInicio'),raiz=document.documentElement;
@@ -2031,15 +2034,6 @@ var relatoInicio=(function(){
   io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target);}}),{rootMargin:'0px 0px -6% 0px'});
  }
  const revelar=()=>todos('.rel-revela:not(.visto)').forEach(n=>io?io.observe(n):n.classList.add('visto'));
- /* 458 avisos: un punto por aviso. */
- const svg=$('relAvisosSvg');
- if(svg&&!svg.firstChild&&typeof document.createElementNS==='function'){
-  const NS='http://www.w3.org/2000/svg',cols=46,filas=10,paso=358/cols;
-  for(let i=0;i<458;i++){const p=document.createElementNS(NS,'circle');
-   p.setAttribute('cx',(paso*Math.floor(i/filas)+paso/2).toFixed(2));p.setAttribute('cy',(paso*(i%filas)+paso/2).toFixed(2));
-   p.setAttribute('r','2.5');p.setAttribute('class','on');svg.appendChild(p);}
-  svg.setAttribute('viewBox','0 0 358 '+(paso*filas).toFixed(1));
- }
  /* «Quién más se ha movido»: sin tamaño (Inicio oculto) se supone el principio,
     y un ResizeObserver repinta en cuanto lo hay. */
  const lista=$('relQuienLista'),items=lista?[...lista.children]:[],pos=$('relQuienPos'),ant=panel.querySelector('.rel-quien-ant'),sig=panel.querySelector('.rel-quien-sig');
