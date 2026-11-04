@@ -386,8 +386,12 @@ h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3vw,2.
 .tool{scroll-margin-top:74px;padding-top:70px}
 .tool-cab{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px}
 .tool-cab p{color:var(--tx-2);margin:6px 0 0;font-size:.94rem}
-.barra{position:sticky;top:60px;z-index:40;background:rgba(7,9,16,.9);
+/* Se pega bajo la cabecera real (--alto-cabecera la mide el JS: una o dos
+   filas) y, al acabar la lista de plataformas, la empuja hacia arriba
+   (--barra-empuje): no tapa Descartadas ni el pie (QA 04/11/2026, n.º 8). */
+.barra{position:sticky;top:var(--alto-cabecera,60px);z-index:40;background:rgba(7,9,16,.9);
   padding-block:15px;border-block:var(--bd);margin-bottom:26px}
+.barra.barra-empujada{transform:translateY(var(--barra-empuje,0px))}
 .barra-in{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .buscar{position:relative;flex:1 1 240px;max-width:340px}
 .buscar svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--tx-3)}

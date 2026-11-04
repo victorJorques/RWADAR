@@ -3092,6 +3092,32 @@ function contarHasta(el,fin){
  io.observe(m);
 })();
 
+/* La barra de filtros del radar (.barra, sticky) se pega bajo la cabecera
+   real: su alto cambia (una o dos filas, idioma, zoom), así que se mide con
+   ResizeObserver y se publica en --alto-cabecera. Al terminar la lista de
+   plataformas, el final de la lista la empuja hacia arriba, como un sticky
+   dentro de su propio contenedor; así no se queda fija sobre Descartadas,
+   Academy ni el pie (QA 04/11/2026, n.º 8). En el móvil no es sticky. */
+(function barraFiltros(){
+ const hdr=document.querySelector('.hdr'),barra=document.querySelector('.barra');
+ const raiz=document.documentElement;
+ if(!hdr||!barra||!raiz||!raiz.style||typeof raiz.style.setProperty!=='function'||typeof getComputedStyle!=='function')return;
+ let pendiente=false;
+ function empujar(){
+  pendiente=false;
+  const lista=document.getElementById('plataformasResultados');
+  if(!lista||getComputedStyle(barra).position!=='sticky'){barra.classList.remove('barra-empujada');return;}
+  const empuje=Math.min(0,Math.round(lista.getBoundingClientRect().bottom-(hdr.offsetHeight||0)-barra.offsetHeight));
+  barra.style.setProperty('--barra-empuje',empuje+'px');
+  barra.classList.toggle('barra-empujada',empuje<0);
+ }
+ function medir(){raiz.style.setProperty('--alto-cabecera',(hdr.offsetHeight||0)+'px');empujar();}
+ if(typeof ResizeObserver==='function')new ResizeObserver(medir).observe(hdr);
+ window.addEventListener('scroll',()=>{if(!pendiente){pendiente=true;requestAnimationFrame(empujar);}},{passive:true});
+ window.addEventListener('resize',medir,{passive:true});
+ medir();
+})();
+
 (function cabeceraElevada(){
  const h=document.querySelector('.hdr'); if(!h) return;
  let ultimo=null;
