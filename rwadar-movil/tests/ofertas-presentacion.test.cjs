@@ -58,7 +58,7 @@ function componentes(ahora = AHORA, opciones = {}) {
       Animated: { View: 'AnimatedView' },
       AppState: {}, StyleSheet: { hairlineWidth: 1, create(valor) { Object.assign(estilos, valor); return valor; } } },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
-    '../fixtures/imagenes-editoriales': opciones.imagenes || { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null,
+    '../fixtures/imagenes-editoriales': opciones.imagenes || { ETIQUETA_EDITORIAL: 'Ilustración editorial', PIE_EDITORIAL: 'Imágenes ilustrativas, no fotos del activo', imagenEditorial: () => null,
       imagenEditorialOferta: () => null },
     '../lib/datos': datos,
     '../lib/verificacion-local': verificacion,

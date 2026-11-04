@@ -6,11 +6,12 @@ const path = require('path');
 
 const DIRECTORIO_RELATIVO = 'rwadar-movil/assets/ofertas-editoriales';
 const RUTA_PUBLICA_BASE = 'ofertas-editoriales';
-/* Obligatoria al principio del texto alternativo. Desde el 03/11/2026 la web ya
-   no la pinta encima de la imagen: la honestidad va en el alt y en una línea
-   visible bajo la lista, el carrusel y el detalle («Imágenes ilustrativas, no
-   fotos del activo»). El manifiesto la conserva para la app. */
+/* Obligatoria al principio del texto alternativo. Ni la web (03/11/2026) ni la
+   app (04/11/2026) la pintan encima de la imagen: la honestidad va en el alt y
+   en el pie visible bajo la lista, el carrusel y el detalle, que también exige
+   el manifiesto («pieVisibleObligatorio»). */
 const ETIQUETA_OBLIGATORIA = 'Ilustración editorial';
+const PIE_OBLIGATORIO = 'Imágenes ilustrativas, no fotos del activo';
 const CATEGORIAS_OBLIGATORIAS = Object.freeze([
   'Inmobiliario',
   'Tesoro y fondos',
@@ -92,6 +93,7 @@ function cargarActivosEditoriales(raiz = __dirname) {
 
   if (!manifiesto || manifiesto.versionEsquema !== 2 ||
       manifiesto.etiquetaVisibleObligatoria !== ETIQUETA_OBLIGATORIA ||
+      manifiesto.pieVisibleObligatorio !== PIE_OBLIGATORIO ||
       !Array.isArray(manifiesto.archivos) || manifiesto.archivos.length !== 4 ||
       !Array.isArray(manifiesto.fichas)) {
     throw new Error('manifest.json editorial no cumple el contrato v2');

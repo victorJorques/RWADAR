@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Animated, AppState, Modal, StyleSheet } from 'react-native';
+import { Animated, AppState, Modal, Share, StyleSheet } from 'react-native';
 import { Image, Pressable, ScrollView, Text, View, FuenteOriginal, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { ETIQUETA_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
+import { ETIQUETA_EDITORIAL, PIE_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { proveedoresDeOfertas, vigenciaOferta } from '../lib/datos';
 import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
 import { resumenOferta } from '../lib/ficha-editorial';
@@ -204,9 +204,6 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
         accessibilityLabel={decorativa ? undefined : `Sin ${ETIQUETA_EDITORIAL.toLocaleLowerCase('es')} disponible para ${oferta.titulo}`}
       >
         <Text style={[e.imagenFallbackTxt, !grande && e.imagenFallbackTxtPeq]}>{iniciales(oferta.plataformaNombre || oferta.titulo)}</Text>
-        {grande ? <Text style={e.etiquetaEditorial} accessible={false} importantForAccessibility="no">
-          {ETIQUETA_EDITORIAL}
-        </Text> : null}
       </View>
     );
   }
@@ -227,15 +224,8 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
         accessible={false}
         importantForAccessibility="no"
       />
-      {/* En la miniatura no va ninguna etiqueta encima de la foto (como en la
-          web); el aviso «Imágenes ilustrativas» va bajo la lista. */}
-      {grande ? <Text
-        style={e.etiquetaEditorial}
-        accessible={false}
-        importantForAccessibility="no"
-      >
-        {editorial.etiqueta}
-      </Text> : null}
+      {/* Ninguna etiqueta encima de la foto, como en la web: el pie «Imágenes
+          ilustrativas, no fotos del activo» va debajo (lista, carrusel y ficha). */}
     </View>
   );
 }
@@ -288,7 +278,7 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
   const etiquetaAccesible = [
     `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar,
     traducir(ETIQUETA_EDITORIAL),
-    oferta.patrocinada ? traducir('Contenido patrocinado; no altera el ranking') : null,
+    oferta.patrocinada ? traducir('Contenido patrocinado; no cambia el orden editorial') : null,
     ...puntos.map((punto) => `✓ ${traducir(punto.texto)}`),
     ...datosCortos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
     traducir(fechaProcedencia),
@@ -408,6 +398,21 @@ const ANTES_DE_INVERTIR = [
    «No es una recomendación de inversión…» y «Ver oferta en <proveedor> ↗»;
    lo demás, plegado. Sin «Consultar fuente» en grande donde va el precio: una
    cifra solo sale si es publicable y, si no, una línea dice dónde mirar. */
+/* «Ficha completa» y «Compartir», como la web: la página fija /ofertas/<slug>
+   existe para cada oferta del catálogo publicado, así que solo se ofrece para
+   ofertas del catálogo con un slug válido. */
+const ORIGEN_WEB = 'https://rwadar.pages.dev';
+export function urlFichaPublica(oferta) {
+  const slug = oferta?.slug;
+  return oferta?.catalogo === true && typeof slug === 'string' && slug.length <= 160
+    && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) ? `${ORIGEN_WEB}/ofertas/${slug}` : '';
+}
+async function compartirFicha(oferta, url) {
+  try {
+    await Share.share({ title: oferta.titulo, message: `${oferta.titulo} · RWAdar\n${url}`, url });
+  } catch { /* Cerrar el diálogo o no poder compartir no es un error que haya que enseñar. */ }
+}
+
 export function DetalleOferta({
   oferta: ofertaOriginal, onCerrar, onAbrirEnlace, plataforma, guardada = false, onGuardar,
   onRegistrarInversion, catalogoCaducado = false,
@@ -417,6 +422,7 @@ export function DetalleOferta({
   const transicion = useTransicionFicha(Boolean(ofertaOriginal), onCerrar);
   if (!ofertaOriginal) return null;
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
+  const fichaPublica = urlFichaPublica(ofertaOriginal);
   const documentacion = documentacionOferta(ofertaOriginal, ahora);
   const resumen = resumenOferta(ofertaParaResumen(ofertaOriginal), [], ahora);
   const registro = registroProveedor(plataforma, ahora);
@@ -504,7 +510,7 @@ export function DetalleOferta({
             <Text noTraducir idiomaOriginal="es-ES" style={e.modalTitulo} accessibilityRole="header">{oferta.titulo}</Text>
             {oferta.patrocinada ? (
               <Text style={e.patrocinioAviso}>
-                Patrocinada. Consulta la relación comercial en la ficha; no altera el ranking ni implica recomendación.
+                Patrocinada. Consulta la relación comercial en la ficha; no cambia el orden editorial ni implica recomendación.
               </Text>
             ) : null}
 
@@ -551,6 +557,7 @@ export function DetalleOferta({
             ) : null}
 
             <View style={e.imagenDetalle}><ImagenOferta oferta={oferta} grande /></View>
+            <Text style={e.notaImagen}>{PIE_EDITORIAL}</Text>
 
             <View style={e.antesCaja}>
               <Text style={e.antesTitulo} accessibilityRole="header">Antes de invertir</Text>
@@ -581,6 +588,20 @@ export function DetalleOferta({
                   </Text>
                 )}
               </Pressable>
+              {fichaPublica ? (
+                <View style={e.fichaPermanente}>
+                  <Pressable onPress={() => onAbrirEnlace(fichaPublica)}
+                    style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
+                    accessibilityRole="link" noTraducir accessibilityLabel={`${traducir('Ficha completa')}: ${fichaPublica}`}>
+                    <Text style={e.enlaceSecundarioTxt}>{'Ficha completa'} ↗</Text>
+                  </Pressable>
+                  <Pressable onPress={() => compartirFicha(oferta, fichaPublica)}
+                    style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
+                    accessibilityRole="button" accessibilityLabel="Compartir">
+                    <Text style={e.enlaceSecundarioTxt}>Compartir</Text>
+                  </Pressable>
+                </View>
+              ) : null}
               {fichaOficial ? (
                 <Pressable onPress={() => onAbrirEnlace(fichaOficial)}
                   style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
@@ -812,12 +833,6 @@ const e = StyleSheet.create({
   imagen: { width: '100%', backgroundColor: C.sup3 },
   imagenEditorialMarco: { position: 'relative', overflow: 'hidden' },
   imagenEditorial: { width: '100%', height: '100%' },
-  etiquetaEditorial: {
-    position: 'absolute', left: 10, bottom: 8, zIndex: 2,
-    paddingHorizontal: 8, paddingVertical: 4, borderRadius: R.s,
-    backgroundColor: 'rgba(11,10,10,0.86)',
-    color: C.tx, fontFamily: F.semi, fontSize: 12, lineHeight: 16,
-  },
   imagenFicha: { width: 88, aspectRatio: 1, borderRadius: R.m, overflow: 'hidden', backgroundColor: C.sup3 },
   imagenEnFicha: { height: '100%' },
   imagenGrande: { aspectRatio: 960 / 660, borderRadius: R.l },
@@ -945,6 +960,8 @@ const e = StyleSheet.create({
   esencialCifra: { fontFamily: F.semi },
   esencialNota: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx2, marginTop: 4 },
   imagenDetalle: { marginTop: 22 },
+  notaImagen: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, marginTop: 8 },
+  fichaPermanente: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12 },
   antesCaja: { backgroundColor: C.ton, borderRadius: R.l, padding: 14, marginTop: 16, gap: 6 },
   antesTitulo: { ...T.ficha, fontSize: 17, lineHeight: 23, color: C.tx, marginBottom: 2 },
   antesFila: { flexDirection: 'row', gap: 8 },
