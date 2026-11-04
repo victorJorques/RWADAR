@@ -22,7 +22,8 @@
         : campo.fuente ? [campo] : [];
       for (const referencia of referencias) {
         const fecha=referencia.consultadaEl ? referencia.consultadaEl.split('-').reverse().join('/') : '';
-        const rotulo=globalThis.RWAdarFichaEditorial.rotuloReferencia(referencia.etiqueta);
+        const rotular=globalThis.RWAdarFichaEditorial.rotuloReferencia;
+        const rotulo=typeof rotular==='function' ? rotular(referencia.etiqueta) : String(referencia.etiqueta || '');
         // Una API o una respuesta JSON no es una página para personas: no se enlaza (QA 04/11/2026, n.º 12).
         if (consultaTecnica(referencia.fuente)) {
           const tecnica=document.createElement('span'); tecnica.className='consulta-tecnica';
