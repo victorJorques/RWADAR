@@ -2137,6 +2137,9 @@ Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
 @media (max-width:359px){.rel{--rel-d1:1.75rem}.rel-cadena{column-gap:12px;padding:12px}}
 /* Barra de 5 botones: rótulos de 11 px con puntos suspensivos si no caben. */
 .movil-ui .movil-nav-item>span:last-child{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* A 320 px «Plataformas» cabe entero: sin relleno lateral y letras algo más juntas (11 px). */
+@media (max-width:340px){.movil-ui .movil-nav-item{padding-inline:0;letter-spacing:-.03em}
+  .rel-portada-tit{font-size:1.5rem}.rel-portada{grid-template-rows:minmax(120px,1fr) auto}}
 .movil-ui #movilPanelRadar{padding-top:12px}
 /* El idioma sale de la primera pantalla: en el móvil solo se ve arriba de Perfil. */
 .movil-ui body:not([data-movil-pestana="cuenta"])>[data-selector-idioma]{display:none}

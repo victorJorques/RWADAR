@@ -1090,8 +1090,10 @@ prueba('en el HTML solo Ofertas (Buscar) empieza seleccionada y el foco sigue el
   contratoTabs.every((esperada, i) =>
     atributoHTML(botonesNavMovil[i]?.[1] || '', 'aria-selected') === (esperada.vista === 'ofertas' ? 'true' : 'false') &&
     atributoHTML(botonesNavMovil[i]?.[1] || '', 'tabindex') === (esperada.vista === 'ofertas' ? '0' : '-1')));
-prueba('en el móvil la app abre en Inicio, y un enlace con ancla abre Buscar',
-  /const destinoInicial=typeof location!=='undefined'&&location\.hash&&location\.hash\.length>1\?'buscar':'inicio';/.test(js) &&
+// Un ancla que vive en Inicio (#fuentes-cap3) se queda en Inicio (revisión técnica, 04/11/2026).
+prueba('en el móvil la app abre en Inicio, y un enlace con ancla abre Buscar salvo que el ancla sea de Inicio',
+  /const destinoInicial=typeof location!=='undefined'&&location\.hash&&location\.hash\.length>1\?\(anclaEnInicio\(\)\?'inicio':'buscar'\):'inicio';/.test(js) &&
+  /n\.closest\('#movilPanelInicio'\)/.test(js) &&
   /let activa=destinoInicial,/.test(js));
 
 const etiquetasInicio = [...html.matchAll(/<([a-z][\w:-]*)\b([^>]*)>/gi)];

@@ -106,7 +106,7 @@ function cargarNoticias(hoy = new Date().toISOString().slice(0, 10)) {
 function fechaBarras(iso) { const [a, m, d] = iso.split('-'); return `${d}/${m}/${a}`; }
 function bloqueWeb(noticias) {
   const n = noticias[0];
-  const linea = n ? `      <p><time datetime="${n.fecha}">${fechaBarras(n.fecha)}</time><span aria-hidden="true"> · </span><span>${esc(n.resumen || n.titulo)}.</span></p>\n` : '';
+  const linea = n ? `      <p><time datetime="${n.fecha}">${fechaBarras(n.fecha)}</time><span aria-hidden="true"> · </span><span>${esc(n.resumen || n.titulo)}${/[.!?…]$/.test(n.resumen || n.titulo) ? '' : '.'}</span></p>\n` : '';
   return `    <!--noticias:ini-->
     <section class="rel-novedades" aria-label="Novedades">
 ${linea}      <a class="b3 rel-novedades-todas" href="/cambios">Todas las novedades<span class="rel-flecha" aria-hidden="true"></span></a>

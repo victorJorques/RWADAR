@@ -1945,7 +1945,9 @@ function plantillaInicio(p,c,en){
  return !p||c.sin||claves.some(k=>!(k in v)||(k!=='usd'&&!v[k]))?null:p.replace(/\{(\w+)\}/g,(_,k)=>String(v[k]));
 }
 function tarjetaSeleccionHtml(o,i){
- const img=imagenOfertaLocal(o),min=minimoCortoInicio(o),id='relTarjeta'+i,t=String(o.titulo||'');
+ /* En inglés, la moneda delante: «€1», «$1». */
+ const corto=minimoCortoInicio(o),min=idiomaInicio()==='en'?corto.replace(/^(\d+(?:,\d+)?) ([€$])$/,(_,n,m)=>m+n.replace(',','.')):corto;
+ const img=imagenOfertaLocal(o),id='relTarjeta'+i,t=String(o.titulo||'');
  return '<li class="rel-tarjeta"><article aria-labelledby="'+id+'">'+
   (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
   '<div class="rel-tarjeta-cuerpo">'+(o.plataformaNombre&&t.indexOf(o.plataformaNombre)!==0?'<p class="rel-tarjeta-plat" translate="no">'+escHtml(o.plataformaNombre)+'</p>':'')+
@@ -2083,6 +2085,10 @@ var relatoInicio=(function(){
   const v=e.target.closest&&e.target.closest('.rel-refs-volver');
   if(v&&origen&&origen.isConnected){e.preventDefault();v.hidden=true;llevar(origen,true);}
  });
+ /* Un enlace directo a «#fuentes-…» abre la lista en su grupo. */
+ if(typeof location!=='undefined'&&refs){const m=/^#fuentes-(\w+)$/.exec(location.hash||''),g=m&&$('fuentes-'+m[1]);
+  if(g){refs.open=true;todos('.rel-refs-grupo').forEach(x=>x.classList.toggle('activa',x===g));
+   setTimeout(()=>requestAnimationFrame(()=>llevar(g,false)),120);}}
  /* Con el teclado, la tarjeta que recibe el foco entra entera en su carrusel. */
  panel.addEventListener('focusin',e=>{const li=e.target&&e.target.closest&&e.target.closest('.rel-tarjetas>li');
   if(li)li.scrollIntoView({block:'nearest',inline:'nearest',behavior:quieto()?'auto':'smooth'});});
@@ -2615,6 +2621,12 @@ function dialogoOfertaLocal(){
  d.addEventListener('close',()=>{
   document.body.classList.remove('detalle-local-abierto');
   restaurarFocoOfertaLocal(d);
+  /* Cerrada con ×, Escape o el fondo: se retira su paso del historial. */
+  if(d.rwadarHistorial){d.rwadarHistorial=false;if(history.state&&history.state.rwadarOferta)history.back();}
+ });
+ /* Atrás cierra la ficha y deja la página donde estaba, sin salir de la web. */
+ if(typeof window!=='undefined'&&typeof window.addEventListener==='function')window.addEventListener('popstate',()=>{
+  if(d.open&&d.rwadarHistorial&&!(history.state&&history.state.rwadarOferta)){d.rwadarHistorial=false;d.close();}
  });
  document.body.appendChild(d);return d;
 }
@@ -2682,7 +2694,10 @@ function abrirDetalleOfertaLocal(slug){
    metricas.map(x=>'<div><b>'+escHtml(x.valor)+'</b><span>'+escHtml(x.etiqueta)+'</span></div>').join('')+'</div></details>':'')+
   doc.fuentes+
   '</div></div>';
- if(!d.open){if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');}
+ if(!d.open){if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');
+  if(typeof history!=='undefined'&&typeof history.pushState==='function'&&typeof location!=='undefined'){
+   const previo=history.state&&typeof history.state==='object'?history.state:{};
+   history.pushState({...previo,rwadarOferta:o.slug},'',location.href);d.rwadarHistorial=true;}}
  document.body.classList.add('detalle-local-abierto');
  d.scrollTop=0;
  const cuerpo=d.querySelector('.escaparate-dialogo-cuerpo');if(cuerpo)cuerpo.scrollTop=desplazamiento;
@@ -5023,8 +5038,10 @@ const Movil = (function(){
   cuenta:['Tu cuenta','Perfil','Lo que guardas, avisos y privacidad']
  };
  /* La app abre en Inicio. Un enlace con ancla (#emisiones, #fuera…) va a
-    Buscar, que es donde está ese contenido. */
- const destinoInicial=typeof location!=='undefined'&&location.hash&&location.hash.length>1?'buscar':'inicio';
+    Buscar, que es donde está ese contenido; si el ancla es de Inicio
+    (#fuentes-cap3), se queda en Inicio. */
+ const anclaEnInicio=()=>{try{const n=document.getElementById(decodeURIComponent(location.hash.slice(1)));return !!(n&&n.closest&&n.closest('#movilPanelInicio'))}catch(e){return false}};
+ const destinoInicial=typeof location!=='undefined'&&location.hash&&location.hash.length>1?(anclaEnInicio()?'inicio':'buscar'):'inicio';
  let activa=destinoInicial,academyAbierta=false,academyOrigen=null,academyHistorial=false,avisosHistorial=false;
  let detalleAbierto=null,detalleOrigen=null,detalleHistorial=false;
  let modoMovilPrevio=media.matches;
@@ -5182,8 +5199,11 @@ const Movil = (function(){
   document.querySelectorAll('[data-movil-action="detalle"]').forEach(b=>
    b.setAttribute('aria-expanded','false'));
   cabecera('buscar');
-  window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
   const origen=detalleOrigen;detalleOrigen=null;
+  /* Abierto desde Inicio (el caso RealT): Atrás o «Volver» regresan a Inicio,
+     junto al enlace, en vez de dejar al lector en Buscar. */
+  if(enfocar&&origen&&origen.closest&&origen.closest('#movilPanelInicio'))cambiar('inicio',{arriba:false});
+  else window.scrollTo({top:0,behavior:reduce()?'auto':'smooth'});
   const alternativo=document.getElementById('q')||document.getElementById('movilTabRadar');
   if(enfocar)devolverFoco(origen,alternativo);
   return anterior;
@@ -5349,9 +5369,11 @@ const Movil = (function(){
  }
  /* Ofertas o Plataformas: las dos vistas de Buscar, cada una con su botón en
     la barra (solo en el móvil). La vista se guarda en body[data-movil-buscar]. */
- const DE_PLATAFORMAS=new Set(['tool','plataformasResultados','movilRadarIntro']);
+ const DE_PLATAFORMAS=new Set(['tool','plataformasResultados','movilRadarIntro','fuera']);
  function verEnBuscar(que){
   document.body.dataset.movilBuscar=que;
+  const panelBuscar=document.getElementById('movilPanelRadar');
+  if(panelBuscar&&typeof panelBuscar.setAttribute==='function')panelBuscar.setAttribute('aria-labelledby',que==='plataformas'?'movilTabPlataformas':'movilTabRadar');
   marcarTabs();
   if(activa==='buscar'&&!detalleAbierto&&!academyAbierta)cabecera('buscar');
  }
@@ -5513,7 +5535,11 @@ const Movil = (function(){
      breakpoint mientras la página estaba aparcada. */
   if(!e.persisted||media.matches!==modoMovilPrevio)adaptar();
   if(media.matches){reconciliarEstadoSubvista(false);if(activa==='buscar')geometria();}
+  /* /#fuera y /#metodo abren su detalle, como un toque en su enlace. Va tras
+     adaptar(), que si no lo cerraría al cargar. */
+  if(detalleDeAncla&&media.matches){const d=detalleDeAncla;detalleDeAncla='';ir(d);}
  });
+ let detalleDeAncla=typeof location!=='undefined'&&detalles.has((location.hash||'').slice(1))?location.hash.slice(1):'';
  adaptar();
  if(typeof location!=='undefined'&&location.hash==='#explain')abrirAcademyDesde(document.getElementById('movilTabAcademy'));
  window.addEventListener('hashchange',()=>{if(location.hash==='#explain')abrirAcademyDesde(document.activeElement);});
