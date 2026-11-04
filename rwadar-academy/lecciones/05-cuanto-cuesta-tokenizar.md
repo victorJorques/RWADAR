@@ -6,7 +6,7 @@ modulo: 5
 categoria: Economía del proyecto
 tiempo_lectura: 15
 fecha_publicacion: 2026-08-21
-ultima_revision_legal: 2026-11-04
+ultima_revision_legal: 2026-10-02
 jurisdiccion_referencia: España / Unión Europea
 quiz: true
 cta: radar-comparador
@@ -18,13 +18,13 @@ leccion_siguiente: liquidez-como-evaluarla
 ## Cuánto cuesta y cuánto tarda: las partidas de un presupuesto de tokenización
 
 **Nivel:** Intermedio · **Lectura:** 15 min · **Categoría:** Economía del proyecto
-**Última revisión legal:** 4 de noviembre de 2026 · **Jurisdicción de referencia:** España / UE
+**Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE
 
 ---
 
 ### En 30 segundos (TL;DR)
 
-1. **No existe una tarifa única, y quien te da un precio antes de saber qué emites y a quién no te está haciendo un presupuesto: está intentando captarte como cliente.**
+1. **No hay una tarifa única. Quien te da precio sin saber qué emites ni a quién no te está presupuestando: quiere captarte como cliente.**
 2. **El coste se reparte en siete partidas y la mayoría son fijas.** Por eso pesan desproporcionadamente en las emisiones pequeñas, tal y como viste en la Lección 3.
 3. **La partida que más proyectos complica no es la de emitir. Es la del segundo año:** el mantenimiento recurrente que casi nadie incluye en la conversación inicial.
 
@@ -75,7 +75,7 @@ Ya viste en la Lección 3 qué hace utilizable una valoración. Aquí lo relevan
 Constituir o adaptar la sociedad que va a poseer el activo tiene un coste societario modesto y previsible. El que sorprende es otro: **aportar un activo a una sociedad es una operación con consecuencias fiscales**, que varían según el tipo de bien, la forma de la aportación y el régimen aplicable.
 
 **Tipo de coste:** variable, y potencialmente la más alta de todas si se planifica mal.
-**Qué la encarece:** segregar un inmueble de un patrimonio mayor, plusvalías latentes (lo que ha ganado valor el bien desde que lo compraste), reorganizaciones societarias.
+**Qué la encarece:** segregar un inmueble de un patrimonio mayor, plusvalías latentes (lo que ha subido de valor el bien desde que lo compraste), reorganizaciones societarias.
 
 > **Aviso: la sorpresa más cara del proceso**
 > Muchos propietarios descubren esta partida cuando la estructura ya está diseñada. Consulta el impacto fiscal de la aportación con un asesor fiscal **al principio**, no al final: en algunos casos condiciona la estructura entera, e incluso la decisión de seguir adelante.
@@ -281,4 +281,4 @@ RWAdar no presta servicios de asesoramiento financiero regulado, no emite recome
 
 La normativa aplicable varía según la jurisdicción y evoluciona con el tiempo. Antes de tomar cualquier decisión, consulta con un profesional habilitado e independiente.
 
-*Contenido revisado el 4 de noviembre de 2026. Jurisdicción de referencia: España / Unión Europea.*
+*Contenido revisado el 2 de octubre de 2026. Jurisdicción de referencia: España / Unión Europea.*

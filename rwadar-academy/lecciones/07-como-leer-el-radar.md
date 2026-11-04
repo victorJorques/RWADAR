@@ -6,7 +6,7 @@ modulo: 7
 categoria: Selección de proveedor
 tiempo_lectura: 13
 fecha_publicacion: 2026-08-21
-ultima_revision_legal: 2026-11-04
+ultima_revision_legal: 2026-10-02
 jurisdiccion_referencia: España / Unión Europea
 quiz: true
 cta: radar-comparador
@@ -18,7 +18,7 @@ leccion_siguiente: expediente-de-tokenizacion
 ## Cómo usar RWAdar para comparar proveedores con criterio
 
 **Nivel:** Avanzado · **Lectura:** 13 min · **Categoría:** Selección de proveedor
-**Última revisión legal:** 4 de noviembre de 2026 · **Jurisdicción de referencia:** España / UE
+**Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE
 
 ---
 
@@ -225,7 +225,7 @@ Las autorizaciones se conceden a personas jurídicas determinadas, no a marcas n
 
 > ### Aplica los tres filtros ahora
 >
-> **Empieza por *Descartadas*.** Lee los casos descartados, su motivo y su fuente: verás qué señales llevaron a descartarlos antes de mirar a ningún candidato.
+> **Empieza por *Descartadas*.** Antes de mirar a ningún candidato, lee los casos descartados, su motivo y su fuente: verás qué señales llevaron a descartarlos.
 >
 > **Después aplica el filtro 1** en el radar —región, tipo de activo y nivel de acceso; el filtro por categoría llegará próximamente— hasta quedarte con tres o cuatro nombres.
 >
@@ -253,4 +253,4 @@ RWAdar no presta servicios de asesoramiento financiero regulado ni emite recomen
 
 La normativa aplicable varía según la jurisdicción y evoluciona con el tiempo. Antes de tomar cualquier decisión, consulta con un profesional habilitado e independiente.
 
-*Contenido revisado el 4 de noviembre de 2026. Jurisdicción de referencia: España / Unión Europea.*
+*Contenido revisado el 2 de octubre de 2026. Jurisdicción de referencia: España / Unión Europea.*

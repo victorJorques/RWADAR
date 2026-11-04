@@ -6,7 +6,7 @@ modulo: 3
 categoria: Diagnóstico
 tiempo_lectura: 15
 fecha_publicacion: 2026-08-21
-ultima_revision_legal: 2026-11-04
+ultima_revision_legal: 2026-10-02
 jurisdiccion_referencia: España / Unión Europea
 quiz: true
 cta: evaluador-viabilidad
@@ -18,7 +18,7 @@ leccion_siguiente: marco-legal-cuando-tu-token-es-un-valor
 ## ¿Es tu activo tokenizable? Las cinco condiciones previas
 
 **Nivel:** Principiante · **Lectura:** 15 min · **Categoría:** Diagnóstico
-**Última revisión legal:** 4 de noviembre de 2026 · **Jurisdicción de referencia:** España / UE
+**Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE
 
 ---
 
@@ -73,7 +73,7 @@ Una carga no impide tokenizar. Lo que impide tokenizar es **una carga que no sab
 Lo que hay que sacar a la luz antes de empezar:
 
 - **Cargas registrales:** hipotecas, embargos, servidumbres, usufructos, condiciones resolutorias.
-- **Derechos de terceros:** opciones de compra, derechos de tanteo y retracto (el derecho de otro a comprar antes que nadie si vendes), arrendamientos con derechos legales asociados.
+- **Derechos de terceros:** opciones de compra, derechos de tanteo y retracto (el derecho de otro a comprar con preferencia si vendes o, si ya has vendido, a quedarse la compra en lugar del comprador), arrendamientos con derechos legales asociados.
 - **Restricciones contractuales:** pactos de socios con derechos de adquisición preferente o cláusulas de arrastre y acompañamiento (las que obligan a vender, o permiten vender, junto con otros socios).
 - **Cláusulas de cambio de control** en la financiación existente.
 
@@ -92,7 +92,7 @@ Una valoración utilizable tiene cuatro atributos: **es independiente** (la firm
 
 - **Inmobiliario:** tasación por sociedad homologada, con comparables, estado de conservación y si está alquilado y en qué condiciones. Atención a la vigencia: las tasaciones caducan.
 - **Deuda:** calidad crediticia del deudor, garantías, histórico de impago de la cartera y plazo residual.
-- **Pymes:** beneficio de explotación (EBITDA) sin partidas extraordinarias, múltiplos del sector (cuánto se paga en ese sector por cada euro de beneficio), dependencia de clientes o de personas clave, y deuda real.
+- **Pymes:** resultado bruto de explotación (EBITDA: beneficio antes de intereses, impuestos y amortizaciones), sin partidas extraordinarias, múltiplos del sector (cuánto se paga en ese sector por cada euro de beneficio), dependencia de clientes o de personas clave, y deuda real.
 - **Arte:** autenticidad acreditada, comparables de subasta reales —no precios de galería—, estado de conservación y liquidez histórica de ese artista y formato.
 
 > **Aviso**
@@ -262,4 +262,4 @@ RWAdar no presta servicios de asesoramiento financiero regulado, no emite recome
 
 La normativa aplicable varía según la jurisdicción y evoluciona con el tiempo. Antes de tomar cualquier decisión, consulta con un profesional habilitado e independiente.
 
-*Contenido revisado el 4 de noviembre de 2026. Jurisdicción de referencia: España / Unión Europea.*
+*Contenido revisado el 2 de octubre de 2026. Jurisdicción de referencia: España / Unión Europea.*

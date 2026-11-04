@@ -6,7 +6,7 @@ modulo: 6
 categoria: Gestión de riesgos
 tiempo_lectura: 13
 fecha_publicacion: 2026-08-21
-ultima_revision_legal: 2026-11-04
+ultima_revision_legal: 2026-10-02
 jurisdiccion_referencia: España / Unión Europea
 quiz: true
 cta: radar-nivel-acceso
@@ -18,7 +18,7 @@ leccion_siguiente: como-leer-el-radar
 ## Liquidez: cómo comprobar si de verdad podrás vender
 
 **Nivel:** Intermedio · **Lectura:** 13 min · **Categoría:** Gestión de riesgos
-**Última revisión legal:** 4 de noviembre de 2026 · **Jurisdicción de referencia:** España / UE
+**Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE
 
 ---
 
@@ -90,15 +90,15 @@ Es decir: **la tecnología hace más barato y más rápido operar un mercado que
 
 ---
 
-### Cuatro cosas que parecen liquidez y no lo son
+### Cuatro espejismos de liquidez
 
-Ninguna es necesariamente irregular; todas exigen preguntas concretas.
+Un espejismo, aquí, es algo que parece liquidez y no lo es. Ninguno es necesariamente irregular; todos exigen preguntas concretas.
 
 **1 · El mercado interno de la propia plataforma.**
 *«Podrás vender tus participaciones a otros usuarios cuando quieras.»* Podrás **ofrecerlas**. Que se vendan depende de que exista un usuario interesado en ese activo concreto en ese momento. La profundidad real está limitada a los usuarios de esa plataforma: pregunta cuántos son, cuántos operan y cuántas transmisiones se han cerrado realmente en los últimos doce meses. Y añade una pregunta incómoda: *si esta plataforma dejara de operar, ¿qué ocurre con el mercado?*
 
 **2 · El compromiso de recompra del emisor o del promotor.**
-Es una promesa de pago de quien la ofrece, no liquidez. Su valor depende íntegramente de la solvencia de quien la ofrece **en el momento de ejecutarla**, que suele coincidir con el momento en que muchos quieren salir a la vez, es decir, cuando más le cuesta pagar. Pregunta si el compromiso está garantizado, con qué, y quién responde si el obligado no puede.
+Es una promesa de pago, no liquidez. Su valor depende íntegramente de la solvencia de quien la ofrece **en el momento de ejecutarla**, que suele coincidir con el momento en que muchos quieren salir a la vez, es decir, cuando más le cuesta pagar. Pregunta si el compromiso está garantizado, con qué, y quién responde si el obligado no puede.
 
 **3 · El creador de mercado contratado** (una entidad que se compromete a comprar y vender).
 Puede ser una solución seria. También puede ser un contrato que se cancela con un preaviso corto. Pregunta si existe obligación contractual de cotizar, con qué volumen mínimo, con qué diferencial máximo entre precio de compra y de venta, durante cuánto tiempo y en qué supuestos puede suspenderse.
@@ -156,7 +156,7 @@ La iliquidez solo se convierte en problema cuando se ha vendido lo contrario. Un
 
 Has terminado el **Nivel Intermedio**. Sabes qué régimen te aplica, cuánto cuesta el proceso y qué esperar razonablemente de la liquidez.
 
-El **Nivel Avanzado** trata de cómo ponerlo en marcha. En la **Lección 7** verás cómo usar RWAdar para comparar proveedores: qué significan para tu caso los cuatro criterios que RWAdar documenta en cada ficha, qué comparar entre plataformas y cómo descartar las que no te encajan antes de pedir ninguna reunión.
+El **Nivel Avanzado** trata de cómo ponerlo en marcha. En la **Lección 7** verás cómo usar RWAdar para comparar proveedores: qué significan para tu caso los cuatro criterios que documenta en cada ficha, qué comparar entre plataformas y cómo descartar las que no te encajan antes de pedir ninguna reunión.
 
 ---
 
@@ -251,4 +251,4 @@ RWAdar no presta servicios de asesoramiento financiero regulado, no emite recome
 
 La normativa aplicable varía según la jurisdicción y evoluciona con el tiempo. Antes de tomar cualquier decisión, consulta con un profesional habilitado e independiente.
 
-*Contenido revisado el 4 de noviembre de 2026. Jurisdicción de referencia: España / Unión Europea.*
+*Contenido revisado el 2 de octubre de 2026. Jurisdicción de referencia: España / Unión Europea.*

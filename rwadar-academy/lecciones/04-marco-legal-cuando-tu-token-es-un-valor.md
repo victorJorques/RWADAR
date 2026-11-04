@@ -6,7 +6,7 @@ modulo: 4
 categoria: Marco regulatorio
 tiempo_lectura: 16
 fecha_publicacion: 2026-08-21
-ultima_revision_legal: 2026-11-04
+ultima_revision_legal: 2026-10-02
 jurisdiccion_referencia: España / Unión Europea
 quiz: true
 cta: radar-capacidad-regulatoria
@@ -18,7 +18,7 @@ leccion_siguiente: cuanto-cuesta-tokenizar
 ## El marco legal, explicado en llano: cuándo tu token es un valor y cuándo no
 
 **Nivel:** Intermedio · **Lectura:** 16 min · **Categoría:** Marco regulatorio
-**Última revisión legal:** 4 de noviembre de 2026 · **Jurisdicción de referencia:** España / UE
+**Última revisión legal:** 2 de octubre de 2026 · **Jurisdicción de referencia:** España / UE
 
 > **Antes de empezar**
 > Esta es la lección con más normativa de toda la Academy y la que antes se queda desactualizada. Te explicamos **cómo funciona el mecanismo de calificación**, no cómo calificar tu caso. La calificación concreta de una emisión solo puede hacerla un profesional habilitado con la documentación delante. Comprueba siempre la fecha de revisión que figura arriba.
@@ -260,4 +260,4 @@ RWAdar no presta servicios de asesoramiento financiero regulado, no emite recome
 
 La normativa aplicable varía según la jurisdicción y evoluciona con el tiempo. Antes de tomar cualquier decisión, consulta con un profesional habilitado e independiente y verifica la información vigente en las fuentes oficiales de los supervisores competentes.
 
-*Contenido revisado el 4 de noviembre de 2026. Jurisdicción de referencia: España / Unión Europea.*
+*Contenido revisado el 2 de octubre de 2026. Jurisdicción de referencia: España / Unión Europea.*
