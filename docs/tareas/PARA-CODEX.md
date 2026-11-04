@@ -6,6 +6,67 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 · Claude · mapa de Ofertas claro (sin publicar)
+
+Rama local `claude/mapa-ofertas` (sale de `claude/inicio-historia`), commits
+25a3a14 y c341f0e. **Nada publicado, nada en `main`, Supabase sin tocar, app
+sin tocar** (salvo el diccionario común `rwadar-movil/lib/idioma-en.js`).
+Decisión de Víctor del 04/11: «Oscuro no me gusta el mapa, mejóralo».
+
+- **Solo** `mapa-buscar-20261027.js`, `mapa-buscar-20261027.css`, el bloque
+  `#buscarMapa` de `index.html` y 69 entradas de inglés junto a «Lista» y
+  «Mapa» en `idioma-en.js` (copiadas con `copiar-idiomas-web.cjs`).
+  `mapa-buscar-util-20261027.js` no cambia.
+- **Antes de cargar:** «Dónde están los activos», «12 de 24 ofertas tienen
+  ubicación documentada» (sale del JSON local de ubicaciones, que ahora se
+  pide al abrir Mapa; es del propio sitio y no contacta con OpenStreetMap),
+  una línea de privacidad, «Cargar mapa» y el detalle en «Más información».
+- **Mandos:** buscador con botón de icono y «Usar mi ubicación» como botón de
+  icono en una fila; selector «Todas», «Ver todo» y «Buscar en esta zona»
+  como chips de 36 px en la segunda (caben enteros a 390 px). La instrucción
+  queda para el lector de pantalla. Los avisos rutinarios solo se anuncian;
+  los que piden hacer algo (permiso denegado, fallo) también se ven.
+- **Mapa claro:** teselas estándar de OpenStreetMap sin filtro oscuro, solo
+  `saturate(.72)`; 60 vh en el móvil, a todo el ancho y con radio de 16 px.
+  Zoom blanco de 44 px abajo a la derecha. Si no llega ninguna tesela, aviso
+  blanco «No se ha podido cargar el mapa base» con «Reintentar», bajo los
+  puntos y la ficha. Las teselas se piden ya con la vista ajustada a las
+  ofertas (antes se pedía primero el mundo entero). Fuera el
+  `mix-blend-mode: plus-lighter` de Leaflet en las teselas: con el lienzo en
+  fracción de píxel dejaba una raya blanca en cada junta.
+- **Marcadores:** `divIcon` con el color de su tipo (clases `cat-N` del
+  radar), icono del tipo o el número centrado si hay varias en el mismo
+  punto, 44 px de toque; «ciudad aproximada» con halo. Leyenda bajo el mapa
+  con los tipos presentes.
+- **Ficha emergente blanca:** título en dos líneas que no tapa nada, tipo y
+  colección, lugar, precisión en una línea («Punto indicado por el proveedor»
+  o «Ciudad aproximada»), «Ver ficha» (abre la misma ficha que la lista:
+  botón con `data-oferta-detalle`; Leaflet 1.9 deja subir el clic) y la fuente
+  con su fecha. AutoPan con margen calculado al abrir: cabecera fija, barra
+  inferior y zoom.
+- **Debajo del mapa** (al lado en escritorio): «N ofertas en el mapa / en
+  esta zona / por distancia a tu ubicación» y filas compactas con miniatura,
+  como las de Ofertas; toda la fila abre la ficha, la fuente abre su pestaña.
+  Las notas de precisión del JSON van una sola vez en el pie.
+- **Privacidad igual:** teselas solo tras «Cargar mapa» (comprobado: 0
+  teselas y 0 Leaflet antes), aviso de IP, ubicación con permiso, una vez y
+  sin guardar, atribución de OpenStreetMap.
+- **Pruebas:** `probar-web.mjs` sin cambios (578 correctas). `npm test`
+  completo en verde. Ojo: `rwadar-app/probar-mapa-buscar.test.cjs` no está en
+  `npm test` y ya fallaba 5 de 10 antes de este cambio (espera el catálogo de
+  49 y hoy hay 24). Ahora fallan además, a propósito, dos comprobaciones: que
+  abrir Mapa no pida nada (pide el JSON local para la cuenta) y que «140 m»
+  esté en `#mapaOrigen` (el margen va en `#mapaMargen` para que la frase se
+  traduzca). Siguen bien la del publicador, la de Leaflet y la de cabeceras.
+- Capturas con teselas reales (30 descargadas con curl a una caché, de un
+  máximo de 80) a 390 × 844 y 1366 × 900 en el scratchpad de la sesión
+  (`mapa/`), con `medidas.json`; inglés comprobado sin restos en castellano.
+
+**Pendiente:** actualizar `probar-mapa-buscar.test.cjs` al catálogo de 24 y
+meterlo en `npm test`, si Víctor quiere. Publicar necesita su permiso.
+
+---
+
 ## 4 de noviembre de 2026 · Claude · Inicio como historia, barra de 5 y «Descartadas» (sin publicar)
 
 Rama local `claude/inicio-historia` (sale de `claude/acabados`), commits
