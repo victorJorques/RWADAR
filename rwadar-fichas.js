@@ -173,9 +173,8 @@ function transparenciaOferta(o,catalogo) {
   const texto = Object.fromEntries(TRANSPARENCIA.criterios.map(c=>[c.id,c.texto]));
   const minimo = Number.isFinite(r.minimo.euros) || Boolean(r.minimo.unidadDocumentada);
   const salida = !['Salida no documentada','Salida por volver a comprobar'].includes(r.salida.texto);
-  const conPuntos = v => v.split('-').reverse().join('.');
   const fuente = f => f && enlace(f.url) ? '<p><a href="'+esc(enlace(f.url))+'" target="_blank" rel="noopener noreferrer"><span'+ORIGINAL+'>'+esc(f.titulo || new URL(f.url).hostname.replace(/^www\./,''))+'</span> ↗</a>'+
-    (fecha(f.fecha) ? ' <span>· consultada el '+esc(conPuntos(f.fecha))+'</span>' : '')+'</p>' : '';
+    (fecha(f.fecha) ? ' <span>· consultada el '+esc(corta(f.fecha))+'</span>' : '')+'</p>' : '';
   const fila = (id,cumple,motivo,f,{campo='',original=false}={}) => '<li data-cumple="'+(cumple?'si':'no')+'"><strong><span class="comprobacion-marca">'+(cumple?'✓ Sí':'✗ No')+'</span> '+esc(texto[id])+'</strong>'+
     '<p'+(campo ? ' data-campo="'+campo+'"' : '')+(original ? ORIGINAL : ' class="ui"')+'>'+motivo+'</p>'+fuente(f)+'</li>';
   const editorial = id => e ? fila(id,e[id].cumple===true,esc(e[id].motivo),{...e[id].fuente,fecha:e[id].consultadaEl},{original:true}) :

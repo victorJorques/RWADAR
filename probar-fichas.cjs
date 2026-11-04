@@ -207,7 +207,7 @@ verificar('la transparencia de la página fija lleva su fuente fechada y separa 
   const pagina=salidas.get('ofertas/robinhood-classic-stock-tokens.html');
   const filas=[...pagina.matchAll(/<li data-cumple="(si|no)">([\s\S]*?)<\/li>/g)].map(m=>m[2]);
   assert.equal(filas.length,5);
-  for(const i of [0,1,2,3])assert(/<a href="https:[^"]+" target="_blank" rel="noopener noreferrer"><span data-idioma-fuente="es"[^>]*>[^<]+<\/span> ↗<\/a> <span>· consultada el \d{2}\.\d{2}\.\d{4}<\/span>/.test(filas[i]),'fuente de la fila '+(i+1));
+  for(const i of [0,1,2,3])assert(/<a href="https:[^"]+" target="_blank" rel="noopener noreferrer"><span data-idioma-fuente="es"[^>]*>[^<]+<\/span> ↗<\/a> <span>· consultada el \d{2}\/\d{2}\/\d{4}<\/span>/.test(filas[i]),'fuente de la fila '+(i+1));
   assert(/<p data-campo="contratable" class="ui">Es una oferta principal y la fuente dice que se contrata desde España\.<\/p>/.test(filas[0]));
   assert(/<p data-idioma-fuente="es"[^>]*>[^<]+<\/p>/.test(filas[1]));
   assert(/<p data-campo="minimoSalida" class="ui"><span>Mínimo:<\/span> <span data-idioma-fuente="es"[^>]*>1 €<\/span>\. <span>Salida:<\/span> <span data-idioma-fuente="es"[^>]*>[^<]+<\/span>\.<\/p>/.test(filas[3]));
