@@ -6,6 +6,62 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 · Claude · corrector del Inicio: menos reglas, más fácil de leer (sin publicar)
+
+Rama local `claude/inicio-historia`, commits c6a5475…0004444 (encima de
+61cf23e). **Nada publicado, nada en `main`, Supabase sin tocar, sin push.**
+
+- **Pruebas de frases, fuera** (decisión de Víctor del 04/11: «ese tipo de
+  reglas quítalas… hay que tener en cuenta la legalidad y ya está»). Se
+  quitan de `probar-web.mjs` la lista de frases prohibidas, la de llamadas
+  [n], la de «Descartadas»/«Fuera del radar», la del tamaño de los avisos, la
+  de notas x/5 y las frases exactas de Inicio, Perfil, Avisos, Buscar, la
+  Selección y la ficha; en `probar-para-empresas.mjs`, «no es una oferta
+  comercial» (y se aplica la fila 83). Se quedan las funcionales. Los avisos
+  legales siguen en la web: los cuida la revisión editorial.
+- **Inicio más corto** (textos del revisor de lectura, con su inglés): de
+  1.833 a 1.118 palabras visibles y de 10.215 a 7.873 px a 390. Capítulo 03 con
+  dos frases y un carrusel de 5 («1 de 5»); lo que sale de la vista va al
+  «Saber más» de su capítulo, con las mismas fuentes. Aviso de riesgo junto a
+  «Mira, compara y decide tú»; nota legal corta con la completa plegada;
+  «Ver las 24 ofertas» junto a «Explorar el radar» en el 06.
+- **Ficha de oferta:** «Lo esencial» y «Avisos de esta oferta» arriba;
+  luego foto, «Antes de invertir», «No es una recomendación de inversión…»
+  y «Ver oferta en <proveedor> ↗»; lo demás plegado. Robinhood: de 3.891 a
+  1.978 px y los avisos a 641 px (antes, 3.241). El pie era un `<footer>` y la
+  regla global lo ocultaba en el móvil. Página fija: supervisión con el
+  motivo de la comprobación, los avisos arriba y el botón tras los riesgos.
+- **Legal:** la comprobación 2 dice «autorizada por un supervisor de la UE e
+  inscrita en la CNMV» y la cápsula «Inscrita en la CNMV (UE)»
+  (`transparencia.json`, regenerado para web y app).
+- **Otros:** «cifras válidas 6 días más»; fechas dd/mm/aaaa en la web
+  dinámica (y el pie); Plataformas con la foto limpia y el texto debajo; el
+  orden de Ofertas cabe entero; «Descartadas» en Academy, la noticia del
+  28/09, /cambios y el RSS (regenera `academy-contenido.js` y
+  `noticias-contenido.js` de la app); «Excluded» en inglés; Atrás cierra la
+  ficha sin salir de la web y, desde Inicio, vuelve a Inicio; /#fuera y
+  /#metodo abren su detalle y /#fuentes-cap3 se queda en Inicio; con el
+  catálogo caducado, pasar de inglés a castellano ya no deja la portada en
+  inglés (`data-rel-sin`); 320 px sin cortes; Academy y páginas legales sin
+  mayúsculas de máquina ni borde verde.
+- **Pruebas:** `npm test` completo en verde (web 579, fichas 68, precarga 32,
+  móvil 394 + 2 omitidas, acceso 144, base de datos sin fallos).
+  `probar-orden.mjs` solo avisa de `App.js`, como antes. CSS 165 279 B,
+  `probar-web.mjs` 238 362 B. Capturas y `medidas.json` en el scratchpad de
+  la sesión (`inicio-real/`), 0 errores y 0 peticiones externas.
+
+**Pendiente:**
+- **Víctor:** la línea de posiciones propias de la nota legal (MAR art. 20;
+  no se ha escrito nada sin su respuesta), el relato en escritorio, el acceso
+  a Academy desde Inicio (ya no lo frena ninguna prueba), el subtítulo
+  «Registro de tokenización».
+- **Ciclo de catálogo (con su permiso):** RealT («la mayor demanda…», «En
+  liquidación» → «Liquidación anunciada», «unos 700»), la categoría de los
+  derivados y la métrica de costes en castellano donde no exista.
+- **Sin hacer por tamaño:** las 38 descripciones de fuentes en inglés
+  (`texto_en` en `fuentes.json`), el texto del enlace de cada fuente, la
+  página fija con todo plegado como la ficha y la app (otro agente).
+
 ## 4 de noviembre de 2026 · Claude · Inicio como historia, barra de 5 y «Descartadas» (sin publicar)
 
 Rama local `claude/inicio-historia` (sale de `claude/acabados`), commits
