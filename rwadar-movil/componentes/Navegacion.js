@@ -3,14 +3,14 @@ import { StyleSheet } from 'react-native';
 import { Pressable, Text, View } from './Idioma';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Line, Path, Rect } from 'react-native-svg';
-import { C, F, UI } from '../lib/tema';
+import { C, F, R, UI } from '../lib/tema';
 
 /* Iconos geométricos propios de RWAdar. Comparten el lenguaje de línea
    del logotipo, pero no reproducen el juego de iconos de ninguna app de
    referencia. Al estar en SVG se ven igual de nítidos en Android e iOS. */
 export function Icono({ nombre, color = C.tx2, tamano = UI.icono }) {
   const comun = {
-    fill: 'none', stroke: color, strokeWidth: 1.9,
+    fill: 'none', stroke: color, strokeWidth: 1.75,
     strokeLinecap: 'round', strokeLinejoin: 'round',
   };
 
@@ -133,15 +133,31 @@ export function Icono({ nombre, color = C.tx2, tamano = UI.icono }) {
         <Path d="M12 3.6l2.5 5.2 5.7.8-4.1 4 1 5.7L12 16.6l-5.1 2.7 1-5.7-4.1-4 5.7-.8z" {...comun} fill={color} />
       ) : null}
       {nombre === 'flecha' ? <Path d="m9 5 7 7-7 7" {...comun} /> : null}
+      {/* Etiqueta (Ofertas) y diana (Plataformas), como en la barra de la web. */}
+      {nombre === 'etiqueta' ? (
+        <>
+          <Path d="M3.5 12.2V4.8a1.3 1.3 0 0 1 1.3-1.3h7.4l8.3 8.3a1.3 1.3 0 0 1 0 1.8l-7.3 7.3a1.3 1.3 0 0 1-1.8 0z" {...comun} />
+          <Circle cx="8.2" cy="8.2" r="1.5" {...comun} />
+        </>
+      ) : null}
+      {nombre === 'diana' ? (
+        <>
+          <Circle cx="12" cy="12" r="8.5" {...comun} />
+          <Circle cx="12" cy="12" r="4.5" {...comun} />
+          <Path d="M12 12l6.5-6.5" {...comun} />
+        </>
+      ) : null}
     </Svg>
   );
 }
 
-/* Inicio (noticias y novedades), Buscar (empresas y ofertas), Academy y
-   Perfil (lo guardado, avisos y privacidad). */
+/* Cinco botones (ESPEC-INICIO §4, decisión de Víctor del 04/11/2026):
+   Inicio (la historia), Ofertas y Plataformas (las dos vistas de Buscar,
+   que ya no lleva selector dentro), Academy y Perfil. */
 const DESTINOS = [
   ['inicio', 'Inicio', 'inicio'],
-  ['buscar', 'Buscar', 'buscar'],
+  ['ofertas', 'Ofertas', 'etiqueta'],
+  ['plataformas', 'Plataformas', 'diana'],
   ['academy', 'Academy', 'academy'],
   ['perfil', 'Perfil', 'perfil'],
 ];
@@ -188,22 +204,23 @@ export default function Navegacion({ activa, guardados = 0, novedades = 0, onCam
 }
 
 const e = StyleSheet.create({
+  /* Opaca, sobre el fondo, con una línea de 1 px (GUIA-ACABADOS §6). */
   barra: {
     minHeight: UI.nav, flexDirection: 'row', alignItems: 'flex-start',
-    backgroundColor: C.noche2, borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: C.linea2, paddingTop: 8,
+    backgroundColor: C.s0, borderTopWidth: 1,
+    borderTopColor: C.bd, paddingTop: 6,
   },
   destino: {
-    flex: 1, minHeight: 52, alignItems: 'center', justifyContent: 'center', gap: 3,
+    flex: 1, minHeight: 53, alignItems: 'center', justifyContent: 'center', gap: 3, borderRadius: R.m,
   },
-  pulsado: { opacity: 0.66, transform: [{ scale: 0.98 }] },
-  iconoCaja: { width: 32, height: 27, alignItems: 'center', justifyContent: 'center' },
+  pulsado: { backgroundColor: C.ton },
+  iconoCaja: { width: 32, height: 26, alignItems: 'center', justifyContent: 'center' },
   insignia: {
     position: 'absolute', right: -5, top: -4, minWidth: 17, height: 17,
-    paddingHorizontal: 4, borderRadius: 9, backgroundColor: C.coral,
-    borderWidth: 1.5, borderColor: C.noche2, alignItems: 'center', justifyContent: 'center',
+    paddingHorizontal: 4, borderRadius: R.p, backgroundColor: C.coral,
+    borderWidth: 1, borderColor: C.s0, alignItems: 'center', justifyContent: 'center',
   },
-  insigniaTxt: { color: C.tx, fontFamily: F.negrita, fontSize: 8.5, lineHeight: 11 },
-  etiqueta: { color: C.tx3, fontFamily: F.media, fontSize: 13, lineHeight: 18, textAlign: 'center', paddingHorizontal: 3 },
+  insigniaTxt: { color: C.tx, fontFamily: F.semi, fontSize: 11, lineHeight: 13 },
+  etiqueta: { color: C.tx3, fontFamily: F.media, fontSize: 11, lineHeight: 15, textAlign: 'center', paddingHorizontal: 2 },
   etiquetaOn: { color: C.senal, fontFamily: F.semi },
 });
