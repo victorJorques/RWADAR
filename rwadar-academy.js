@@ -664,6 +664,7 @@ function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg
 <meta property="og:image:height" content="630">
 ${extraMeta}<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${ICONO}">
+<script src="/assets/idioma-previo-20261104.js"></script>
 <link rel="stylesheet" href="${CSS}">
 <link rel="stylesheet" href="/assets/idioma-20261022.css">
 <script type="application/ld+json">
