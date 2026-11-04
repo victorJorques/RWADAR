@@ -2265,6 +2265,7 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
 .escritorio-relato .rel-portada-tit{font-size:clamp(2.25rem,3.6vw,3.25rem)}
 .escritorio-relato .rel-portada-sub{margin-top:16px;font-size:1.0625rem}
 .escritorio-relato .rel-portada{padding:24px 0 32px}
+}
 /* Zonas de toque de 44 px en pantallas táctiles (QA móvil 04/11/2026). Los
    chips y la estrella ya llegan a 44 px con su ::before invisible. */
 @media (pointer:coarse){
