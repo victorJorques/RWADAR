@@ -76,7 +76,7 @@ test('las cifras del catálogo no se escriben a mano y faltan si no hay catálog
   assert.equal(es.portada.boton(0), 'Ver las ofertas');
   assert.equal(en.portada.boton(0), 'See the offers');
   assert.match(es.portada.subtitulo(0), /Aquí ves las ofertas del radar/);
-  assert.equal(es.capitulos.cap4.minimos(5, 24, 1), 'En el radar, 5 de las 24 ofertas tienen un mínimo documentado de 1 € (una de ellas, de 1 $).');
+  assert.equal(es.capitulos.cap4.minimos(5, 24, 1), 'En el radar, 5 de las 24 ofertas tienen un mínimo documentado de 1 € o de 1 $.');
   assert.equal(es.capitulos.cap4.minimos(5, 24, 0), 'En el radar, 5 de las 24 ofertas tienen un mínimo documentado de 1 €.');
   for (const t of cadenas({ a: es.portada.antetitulo, b: es.portada.titular, c: es.capitulos.cap6, d: es.seleccion.criterios })) {
     assert.doesNotMatch(t, /\b(?:24|26) (?:ofertas|plataformas)\b/, t);

@@ -12,13 +12,20 @@
    ===================================================================== */
 (async () => {
   'use strict';
-  let cuenta;
-  try { cuenta=await window.RWADAR_ACCESO.verificar(); } catch (_) { return; }
-  const CLAVE = 'rwadar.academy.v1:' + cuenta.id;
+  /* Sin cuenta (las cuentas están en pausa) la lección y el test funcionan
+     igual; solo no se guarda el progreso. El test no espera a la cuenta. */
+  let CLAVE = '';
+  const cuentaLista = (async () => {
+    try {
+      const cuenta = await window.RWADAR_ACCESO.verificar();
+      if (cuenta && cuenta.id) CLAVE = 'rwadar.academy.v1:' + cuenta.id;
+    } catch (_) { CLAVE = ''; }
+  })();
   const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
   const vacio = () => ({ leidas: [], tests: {} });
 
   function leer() {
+    if (!CLAVE) return vacio();
     try {
       const valor = JSON.parse(localStorage.getItem(CLAVE) || 'null');
       if (!valor || typeof valor !== 'object' || Array.isArray(valor)) return vacio();
@@ -38,11 +45,13 @@
   }
 
   function guardar(estado) {
+    if (!CLAVE) return false;
     try { localStorage.setItem(CLAVE, JSON.stringify(estado)); return true; }
     catch (_) { return false; }
   }
 
   function sePuedeGuardar() {
+    if (!CLAVE) return false;
     try {
       const prueba = CLAVE + '.prueba';
       localStorage.setItem(prueba, '1');
@@ -55,7 +64,7 @@
   const leccion = document.querySelector('[data-academy-leccion]');
   if (leccion) {
     const slug = leccion.getAttribute('data-academy-leccion');
-    const guardable = SLUG.test(slug) && sePuedeGuardar();
+    const guardable = () => SLUG.test(slug) && sePuedeGuardar();
 
     const caja = document.querySelector('[data-academy-marcar-caja]');
     const boton = document.querySelector('[data-academy-marcar]');
@@ -66,7 +75,8 @@
       boton.textContent = leida ? '✓ Leída · quitar la marca' : 'Marcar como leída';
       aviso.hidden = !leida;
     };
-    if (guardable && caja && boton && aviso) {
+    cuentaLista.then(() => {
+      if (!guardable() || !caja || !boton || !aviso) return;
       caja.hidden = false;
       pintarLeida();
       boton.addEventListener('click', () => {
@@ -76,7 +86,7 @@
         guardar(estado);
         pintarLeida();
       });
-    }
+    });
 
     /* Test: al elegir una opción se corrige, se bloquea la pregunta y se
        abre siempre la explicación, aciertes o no. El test enseña. */
@@ -114,7 +124,7 @@
           textoAciertos.textContent = `Has acertado ${aciertos} de ${preguntas.length}.` +
             (aciertos === preguntas.length ? ' Lección dominada.' : ' Repasa las explicaciones de las que fallaste.');
           resumen.hidden = false;
-          if (guardable) {
+          if (guardable()) {
             const estado = leer();
             estado.tests[slug] = { aciertos, total: preguntas.length };
             guardar(estado);
@@ -149,6 +159,7 @@
 
   /* ---- índice de la Academy ---- */
   const portada = document.querySelector('[data-academy-indice-pagina]');
+  if (portada) await cuentaLista;
   if (portada && sePuedeGuardar()) {
     const estado = leer();
     const tarjetas = [...document.querySelectorAll('[data-academy-tarjeta]')];

@@ -224,3 +224,5 @@
   .mapa-popup .mapa-ver:hover{background:#EEF7F2}
   .mapa-zona-ir:hover{background:var(--ton-2)}
 }
+/* 44 px de alto en pantallas táctiles (QA móvil 04/11/2026). */
+@media (pointer:coarse){#mapaColeccion{height:44px;min-height:44px}#mapaVerTodas,#mapaBuscarZona{min-height:44px}}

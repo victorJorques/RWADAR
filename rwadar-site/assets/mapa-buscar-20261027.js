@@ -92,7 +92,9 @@
    b.append(texto('span','Ver ficha'),decorativo(texto('span',' →')));
    return b;
   }
-  const lugar=p=>original(texto('p',p.lugar,'mapa-lugar'));
+  // La dirección viene del proveedor («…, Österreich»): al pintar, el país se
+  // escribe como en el resto de la web (campo pais). Los datos no cambian.
+  const lugar=p=>original(texto('p',String(p.lugar).replace(/, (Österreich|Deutschland|Schweiz|Suisse|Svizzera)$/,(m,x)=>p.pais&&p.pais!==x?', '+p.pais:m),'mapa-lugar'));
   const precision=p=>texto('p',PRECISIONES[p.precision],'mapa-precision '+p.precision);
   const puntos=conjunto=>conjunto.map(f=>[f.ubicacion.lat,f.ubicacion.lng]);
   function contenidoPopup(conjunto,separables){

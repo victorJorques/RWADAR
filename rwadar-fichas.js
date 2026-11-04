@@ -11,7 +11,7 @@ const { validarLotePublicoV2, MANIFIESTO_CATALOGO_V2 } = require('./rwadar-movil
 const permitidas = require('./rwadar-fichas-manifiesto');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
 const { paginasAcademy } = require('./rwadar-academy');
-const { resumenOferta } = require('./rwadar-movil/lib/ficha-editorial');
+const { resumenOferta, rotuloReferencia } = require('./rwadar-movil/lib/ficha-editorial');
 // Transparencia de cada oferta (validada por rwadar-editorial-source/ofertas/transparencia.mjs).
 const TRANSPARENCIA = JSON.parse(fs.readFileSync(path.join(__dirname,'rwadar-editorial-source/ofertas/transparencia.json'),'utf8'));
 const RAIZ = __dirname;
@@ -233,7 +233,7 @@ function paginaOferta(o,catalogo,imagen) {
     '<p><a class="boton" href="'+esc(enlace(o.url))+'" target="_blank" rel="noopener noreferrer">Ver oferta en '+esc(o.plataformaNombre)+' ↗</a></p>'+transparenciaOferta(o,catalogo)+
     '<section aria-labelledby="fuentes"><h2 id="fuentes">Fuentes y fechas</h2><p>Revisamos esta ficha el <time datetime="'+esc(o.verificadaEl)+'">'+esc(corta(o.verificadaEl))+'</time>. Esa fecha no garantiza que las cifras sigan igual ni que la oferta siga abierta.</p>'+
     '<p>Cada fuente lleva el día en que la consultamos. El dato puede ser más antiguo, y algunas fuentes no dicen de qué fecha es.</p>'+
-    (refs.length ? '<details><summary>Ver los '+refs.length+' datos consultados y sus fechas</summary><ul class="referencias"'+ORIGINAL+'>'+refs.map(r=>'<li><strong>'+esc(r.etiqueta)+'</strong><br>Dato fechado: '+esc(corta(r.fechaDato))+' · Consulta: '+esc(corta(r.fechaConsulta))+'<br><a href="'+esc(enlace(r.fuente))+'" target="_blank" rel="noopener noreferrer">Abrir fuente ↗</a><p>'+esc(r.alcance || '')+'</p></li>').join('')+'</ul></details>' : '')+
+    (refs.length ? '<details><summary>Ver los '+refs.length+' datos consultados y sus fechas</summary><ul class="referencias"'+ORIGINAL+'>'+refs.map(r=>'<li><strong>'+esc(rotuloReferencia(r.etiqueta))+'</strong><br>Dato fechado: '+esc(corta(r.fechaDato))+' · Consulta: '+esc(corta(r.fechaConsulta))+'<br><a href="'+esc(enlace(r.fuente))+'" target="_blank" rel="noopener noreferrer">Abrir fuente ↗</a><p>'+esc(r.alcance || '')+'</p></li>').join('')+'</ul></details>' : '')+
     fuentes([...(d.fuentes || []),...(o.fuentesActuales || [])])+'</section>'+
     '<p><a href="mailto:RWAdar@protonmail.com?subject='+encodeURIComponent('Corrección de ficha: '+o.titulo)+'">¿Ves un error en esta ficha?</a></p>';
   return pagina({titulo:o.titulo,descripcion:o.resumen,ruta:rutaOferta(o),contenido,revision:o.verificadaEl,

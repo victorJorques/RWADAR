@@ -6,13 +6,20 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ETIQUETA_EDITORIAL, PIE_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { proveedoresDeOfertas, vigenciaOferta } from '../lib/datos';
 import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
-import { resumenOferta } from '../lib/ficha-editorial';
+import { idiomaCita, resumenOferta, rotuloReferencia, rotuloTraducible } from '../lib/ficha-editorial';
 import {
   comprobacionesOferta, datosCortosOferta, estadoVigencia, fechaES, puntosFuertesOferta,
 } from '../lib/transparencia';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
 import { Icono } from './Navegacion';
 import useTransicionFicha from './useTransicionFicha';
+
+const IDIOMA_CITA = { en: 'en-US', fr: 'fr-FR', de: 'de-DE' };
+const NOTA_CITA = {
+  en: 'Cita literal de la fuente, en inglés.',
+  fr: 'Cita literal de la fuente, en francés.',
+  de: 'Cita literal de la fuente, en alemán.',
+};
 
 function useFechaOferta() {
   const [ahora, setAhora] = useState(() => new Date());
@@ -473,7 +480,10 @@ export function DetalleOferta({
   const descripcion = (() => {
     const texto = documentacion?.descripcion || '';
     const corto = vigente ? String(oferta.resumen || '').trim() : '';
-    return corto && texto.startsWith(corto) ? texto.slice(corto.length).trim() : texto;
+    const resto = corto && texto.startsWith(corto) ? texto.slice(corto.length).trim() : texto;
+    // «Qué se adquiere: …» ya sale en Características: no se repite arriba (como la web).
+    return (documentacion?.caracteristicas || []).some((c) =>
+      resto === `${String(c.etiqueta || '').trim()}: ${String(c.valor || '').trim()}`) ? '' : resto;
   })();
   const fila = (etiqueta, contenido) => (
     <View key={etiqueta} style={e.esencialFila}>
@@ -644,7 +654,7 @@ export function DetalleOferta({
                       )}
                       {dato.unidadDocumentada ? <Text style={e.referencia}>Unidad publicada: <Text noTraducir idiomaOriginal="es-ES">{dato.unidadDocumentada}</Text>; no se ha convertido a euros.</Text> : null}
                       {dato.referencias?.length ? dato.referencias.map((ref, indice) => (
-                        <Text key={`${ref.fuente}-${indice}`} style={e.referencia}>{ref.etiqueta}: fuente consultada el {fechaVerificacionLocalVisible(ref.fechaConsulta)} · {dominioFuente(ref.fuente)}{ref.fechaDato ? ` · dato del ${fechaVerificacionLocalVisible(ref.fechaDato)}` : ''}</Text>
+                        <Text key={`${ref.fuente}-${indice}`} style={e.referencia}>{rotuloReferencia(ref.etiqueta)}: fuente consultada el {fechaVerificacionLocalVisible(ref.fechaConsulta)} · {dominioFuente(ref.fuente)}{ref.fechaDato ? ` · dato del ${fechaVerificacionLocalVisible(ref.fechaDato)}` : ''}</Text>
                       )) : dato.consultadaEl ? <Text style={e.referencia}>Fuente consultada el {fechaVerificacionLocalVisible(dato.consultadaEl)} · {dominioFuente(dato.fuente)}</Text> : null}
                     </View>
                   ))}
@@ -672,10 +682,15 @@ export function DetalleOferta({
                   <Text style={e.estadoTexto}>
                     Datos publicados en las fechas indicadas. No son precios actuales ni garantizan rentabilidad, apertura o disponibilidad para contratar.
                   </Text>
-                  {documentacion.referencias.map((referencia, indice) => (
+                  {documentacion.referencias.map((referencia, indice) => {
+                    // Rótulo legible en vez de la clave interna; la cita, en su idioma (QA móvil 04/11/2026).
+                    const rotulo = rotuloReferencia(referencia.etiqueta);
+                    const cita = idiomaCita(referencia.valor);
+                    return (
                     <View style={e.referenciaDocumental} key={`referencia-${indice}`}>
-                      <Text noTraducir idiomaOriginal="es-ES" style={e.datoEtiqueta}>{referencia.etiqueta}</Text>
-                      <Text noTraducir idiomaOriginal="es-ES" style={e.datoValor}>{referencia.valor}</Text>
+                      <Text noTraducir={!rotuloTraducible(referencia.etiqueta)} idiomaOriginal="es-ES" style={e.datoEtiqueta}>{rotulo}</Text>
+                      <Text noTraducir idiomaOriginal={IDIOMA_CITA[cita] || 'es-ES'} style={e.datoValor}>{referencia.valor}</Text>
+                      {NOTA_CITA[cita] ? <Text style={e.referencia}>{NOTA_CITA[cita]}</Text> : null}
                       <Text style={e.referencia}>
                         Fecha del dato: {referencia.fechaDato ? fechaVerificacionLocalVisible(referencia.fechaDato) : 'no indicada en la fuente'}
                       </Text>
@@ -683,7 +698,8 @@ export function DetalleOferta({
                       <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.referencia}>{referencia.alcance}</FuenteOriginal>
                       <Text style={e.referencia}>Fuente: {dominioFuente(referencia.fuente)} · enlace al final de la ficha</Text>
                     </View>
-                  ))}
+                    );
+                  })}
                 </Plegable>
               ) : null}
 
