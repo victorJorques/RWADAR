@@ -1058,21 +1058,23 @@ function resumenVerificacionLocalHtml(verificacion){
  if(!verificacion)return'';
  const campos=[['Actividad',verificacion.estadoOperativo],
   ['Licencia o registro',verificacion.licenciaRegistro],['Acceso',verificacion.acceso]];
- return '<div class="verificacion-local-resumen" aria-label="Revisión editorial '+escHtml(verificacion.verificadoEl)+'">'+
-  '<div class="verificacion-local-fecha">Revisión editorial · '+escHtml(verificacion.verificadoEl)+'</div><div class="verificacion-local-estados">'+
+ return '<div class="verificacion-local-resumen" aria-label="Revisión editorial '+escHtml(fechaES(verificacion.verificadoEl))+'">'+
+  '<div class="verificacion-local-fecha">Revisión editorial · '+escHtml(fechaES(verificacion.verificadoEl))+'</div><div class="verificacion-local-estados">'+
   campos.map(([nombre,campo])=>'<span class="verificacion-local-estado '+
    ((campo.estado==='no_verificable'||campo.estado==='sin_registro_declarado')?'atencion':'')+'"><b>'+escHtml(nombre)+'</b>'+escHtml(etiquetaVerificacionLocal(campo.estado))+'</span>').join('')+
   '</div>'+verificacion.alertasCriticas.map(alerta=>'<p class="verificacion-local-alerta"><b>Importante</b>'+escHtml(alerta.detalle)+'</p>').join('')+'</div>';
 }
-function detalleVerificacionLocalHtml(verificacion){
+function detalleVerificacionLocalHtml(verificacion,resumen=''){
+ /* Si el detalle repite el resumen de la ficha, no se vuelve a escribir. */
+ const repite=t=>!!textoLocal(resumen)&&textoLocal(t)===textoLocal(resumen);
  if(!verificacion)return'';
  const campos=[['Actividad',verificacion.estadoOperativo],
   ['Licencia o registro',verificacion.licenciaRegistro],['Acceso',verificacion.acceso]];
  return '<section class="pn-seccion pn-verificacion-local" aria-labelledby="dwVerificacionLocalTit">'+
   '<div class="pn-verificacion-local-cab"><h4 id="dwVerificacionLocalTit">Revisión editorial</h4><time datetime="'+
-  escHtml(verificacion.verificadoEl)+'">'+escHtml(verificacion.verificadoEl)+'</time></div><div class="pn-verificacion-local-campos">'+
+  escHtml(verificacion.verificadoEl)+'">'+escHtml(fechaES(verificacion.verificadoEl))+'</time></div><div class="pn-verificacion-local-campos">'+
   campos.map(([nombre,campo])=>'<article class="pn-verificacion-local-campo '+
-   ((campo.estado==='no_verificable'||campo.estado==='sin_registro_declarado')?'atencion':'')+'"><div><b>'+escHtml(nombre)+'</b><span>'+escHtml(etiquetaVerificacionLocal(campo.estado))+'</span></div><p>'+escHtml(campo.detalle)+'</p></article>').join('')+
+   ((campo.estado==='no_verificable'||campo.estado==='sin_registro_declarado')?'atencion':'')+'"><div><b>'+escHtml(nombre)+'</b><span>'+escHtml(etiquetaVerificacionLocal(campo.estado))+'</span></div>'+(repite(campo.detalle)?'':'<p>'+escHtml(campo.detalle)+'</p>')+'</article>').join('')+
   '</div><div class="pn-verificacion-local-alertas"><h5>Avisos importantes</h5><ul>'+
   verificacion.alertasCriticas.map(alerta=>'<li>'+escHtml(alerta.detalle)+'</li>').join('')+
   '</ul></div>'+fuentesVerificacionHtml(verificacion)+'<p class="pn-nota">Que una plataforma tenga registro, documentos o una web que funciona no significa que esté avalada, que tenga licencia para todo ni que se pueda contratar desde España.</p></section>';
@@ -1487,7 +1489,7 @@ function openDrawer(i){
    </div>
   </section>
   ${origenVisual}
-  ${v?detalleVerificacionLocalHtml(v):`<section class="pn-seccion pn-verificacion" aria-labelledby="dwVerificacionTit">
+  ${v?detalleVerificacionLocalHtml(v,p.nota):`<section class="pn-seccion pn-verificacion" aria-labelledby="dwVerificacionTit">
    <h4 id="dwVerificacionTit">Verificación RWAdar</h4>
    <div class="aval aval-detalle">${escudoSVG}<span>${escHtml(p.aval)}</span></div>
   </section>`}
@@ -1529,7 +1531,7 @@ function openDrawer(i){
   const accesoLocal=filas.find(fila=>fila.querySelector('dt')&&fila.querySelector('dt').textContent==='Quién puede entrar');
   if(accesoLocal){accesoLocal.querySelector('dt').textContent='Estado de acceso';accesoLocal.querySelector('dd').textContent=accesoVisible(p);}
   const revisionLocal=filas.find(fila=>fila.querySelector('dt')&&fila.querySelector('dt').textContent==='Última verificación');
-  if(revisionLocal){revisionLocal.querySelector('dt').textContent='Revisión editorial';revisionLocal.querySelector('dd').textContent=v.verificadoEl;}
+  if(revisionLocal){revisionLocal.querySelector('dt').textContent='Revisión editorial';revisionLocal.querySelector('dd').textContent=fechaES(v.verificadoEl);}
  }
  const acciones=document.getElementById('dwAcciones');
  acciones.classList.toggle('sin-web',!web);
@@ -1726,7 +1728,10 @@ function pintarEmisiones(){
   /* Móvil: primero la Selección (las que cumplen las cinco comprobaciones) y
      después el resto, cada bloque en el orden del selector. Con «Más nuevas
      primero», una sola lista: la más nueva arriba. */
-  const filas=!visibles.length?'<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>':
+  /* Sin resultados por la búsqueda: lo dice y ofrece borrarla (QA móvil 04/11/2026). */
+  const filas=!visibles.length?(emiBusquedaLocal?'<div class="emis-vacio"><h3>Ninguna oferta coincide con «'+escHtml(emiBusquedaLocal)+'»</h3><p>Prueba con otra palabra o borra la búsqueda.</p>'+
+   '<button type="button" class="b3" data-emi-borrar-busqueda>Borrar búsqueda</button></div>':
+   '<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver todas las ofertas.</p></div>'):
    elegidas.length?'<div class="catalogo-bloque catalogo-seleccion" role="group" aria-labelledby="emiSeleccionTit"><header class="catalogo-bloque-cab"><h3 id="emiSeleccionTit">Selección RWAdar <span>· pasan nuestras 5 comprobaciones</span></h3>'+
     '<p>No es una recomendación de inversión.</p></header>'+elegidas.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>'+
     (resto.length?'<div class="catalogo-bloque" role="group" aria-labelledby="emiRestoTit"><header class="catalogo-bloque-cab"><h3 id="emiRestoTit">Otras ofertas principales</h3></header>'+resto.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>':''):
@@ -1948,7 +1953,8 @@ function cifrasInicio(){
    alguna cifra (entonces se queda la frase sin número del HTML). */
 function plantillaInicio(p,c,en){
  const v={ofertas:c.ofertas,plataformas:c.plataformas,seleccion:c.seleccion.length,minimos:c.minimos,revisado:fechaBarras(c.revisado),hasta:fechaBarras(c.hasta),
-  usd:!c.usd?'':en?' ('+(c.usd===1?'one of them':c.usd+' of them')+', $1)':' ('+(c.usd===1?'una de ellas':c.usd+' de ellas')+', de 1 $)'};
+  /* «de 1 € o de 1 $», no «de 1 € (una de ellas, de 1 $)», que se contradice. */
+  usd:!c.usd?'':en?' or $1':' o de 1 $'};
  const claves=[...String(p||'').matchAll(/\{(\w+)\}/g)].map(m=>m[1]);
  return !p||c.sin||claves.some(k=>!(k in v)||(k!=='usd'&&!v[k]))?null:p.replace(/\{(\w+)\}/g,(_,k)=>String(v[k]));
 }
@@ -2163,6 +2169,11 @@ var relatoInicio=(function(){
    Los datos no se incrustan en el sitio. El servidor loopback los sirve
    desde rwadar-movil/fixtures y esta capa los valida antes de pintar. */
 let emiTipoLocal='todos',emiBusquedaLocal='';
+if(typeof document!=='undefined'&&document.addEventListener)document.addEventListener('click',e=>{
+ if(!(e.target.closest&&e.target.closest('[data-emi-borrar-busqueda]')))return;
+ emiBusquedaLocal='';const b=document.getElementById('emiBuscar');if(b){b.value='';b.focus();}
+ pintarEmisiones();
+});
 const textoLocal=v=>typeof v==='string'?v.trim():'';
 const fechaLocalValida=v=>typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&
  Number.isFinite(Date.parse(v+'T00:00:00Z'))&&new Date(v+'T00:00:00Z').toISOString().slice(0,10)===v;
@@ -2275,7 +2286,9 @@ function documentacionOfertaHtml(d,opciones){const x=partesDocumentacionOferta(d
 function partesDocumentacionOferta(d,{resumen='',ultima=''}={}){
  if(!d)return null;
  const fecha=v=>escHtml(fechaES(v));
- const r=textoLocal(resumen),desc=r&&d.descripcion.startsWith(r)?d.descripcion.slice(r.length).trim():d.descripcion;
+ const r=textoLocal(resumen),resto=r&&d.descripcion.startsWith(r)?d.descripcion.slice(r.length).trim():d.descripcion;
+ /* «Qué se adquiere: …» ya sale en Características: no se repite arriba. */
+ const desc=d.caracteristicas.some(c=>resto===textoLocal(c.etiqueta)+': '+textoLocal(c.valor))?'':resto;
  const ficha=d.descripcion?'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Sobre esta oferta</summary>'+
   (desc?'<p class="escaparate-dialogo-resumen">'+escHtml(desc)+'</p>':'')+'<h4>Características</h4><dl class="escaparate-documentacion-caracteristicas">'+
   d.caracteristicas.map(c=>'<div><dt>'+escHtml(c.etiqueta)+'</dt><dd>'+escHtml(c.valor)+'</dd></div>').join('')+'</dl></details>':'';

@@ -1095,6 +1095,12 @@
   "No es asesoramiento financiero": "Not financial advice",
   ": tokenizar no elimina el riesgo de perder el dinero.": ": tokenisation does not remove the risk of losing your money.",
   "Descargar los datos (CSV)": "Download data (CSV)",
+  // Pie (CSV) y búsqueda sin resultados (QA móvil 04/11/2026)
+  "Para uso personal. Para reutilizarlos o redistribuirlos, pide permiso.": "For personal use. To reuse or redistribute the data, ask for permission.",
+  "Ninguna oferta coincide": "No offer matches",
+  "Cambia los filtros para volver a ver todas las ofertas.": "Change the filters to see all the offers again.",
+  "Prueba con otra palabra o borra la búsqueda.": "Try another word or clear the search.",
+  "Borrar búsqueda": "Clear search",
   "Secciones": "Sections",
   "Qué es tokenizar": "What tokenisation means",
   "Qué comprobamos": "What we check",

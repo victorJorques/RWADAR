@@ -2175,3 +2175,11 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
 @media (pointer:coarse){
  #movilPanelRadar>.marcador a.l{padding-block:7px;margin-block:2px -7px}
 }
+/* Títulos y lugares sin cortar a 360 px (QA móvil 04/11/2026): tres líneas
+   para el título de las ofertas y de «Recién añadidas», y en la galería de
+   Plataformas el tipo y la región en dos líneas en vez de cortar la región. */
+#emiLista .escaparate-oferta .emi-tit,.rel-nueva h3 span{-webkit-line-clamp:3}
+@media (max-width:767px){
+ #movilPanelRadar .empresa-visual__texto small{font-size:0}
+ #movilPanelRadar .empresa-visual__texto small>span{display:block;overflow:hidden;font-size:.75rem;text-overflow:ellipsis;white-space:nowrap}
+}

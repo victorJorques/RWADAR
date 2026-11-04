@@ -40,6 +40,7 @@
           [/^Fuente (\d+) · (.+?) de (.+)$/,(m,n,r,d)=>'Source '+n+' · '+t(r)+' for '+t(d)],
           [/^Fuente (\d+) · (.+) ↗$/,(m,n,r)=>'Source '+n+' · '+t(r)+' ↗'],
           [/^Fuente de (.+)$/,(m,x)=>{const y=t(x);return y===x?m:'Source for '+y;}],
+          [/^Ninguna oferta coincide con «(.+)»$/,(m,q)=>'No offer matches «'+q+'»'],
           [/^Ver (\d+) más$/,(m,n)=>'Show '+n+' more'],
           [/^Mostrar solo (\d+)$/,(m,n)=>'Show only '+n],
           [/^(\d+) de (\d+) lecciones leídas$/,(m,n,total)=>n+' of '+total+' lessons read'],

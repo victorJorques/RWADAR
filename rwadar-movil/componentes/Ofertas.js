@@ -480,7 +480,10 @@ export function DetalleOferta({
   const descripcion = (() => {
     const texto = documentacion?.descripcion || '';
     const corto = vigente ? String(oferta.resumen || '').trim() : '';
-    return corto && texto.startsWith(corto) ? texto.slice(corto.length).trim() : texto;
+    const resto = corto && texto.startsWith(corto) ? texto.slice(corto.length).trim() : texto;
+    // «Qué se adquiere: …» ya sale en Características: no se repite arriba (como la web).
+    return (documentacion?.caracteristicas || []).some((c) =>
+      resto === `${String(c.etiqueta || '').trim()}: ${String(c.valor || '').trim()}`) ? '' : resto;
   })();
   const fila = (etiqueta, contenido) => (
     <View key={etiqueta} style={e.esencialFila}>
