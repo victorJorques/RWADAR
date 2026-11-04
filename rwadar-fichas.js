@@ -179,7 +179,7 @@ function pagina({titulo,descripcion,ruta,contenido,revision,imagen='/og.png',org
     '<script src="/assets/idioma-en-20261022.js" defer></script><script src="/assets/idioma-20261022.js" defer></script><script src="/assets/idioma-web-20261022.js" defer></script>\n'+
     (oferta ? '<script src="/'+JS+'" defer></script>\n' : '') +
     '</head><body><a class="saltar" href="#contenido">Saltar al contenido</a><header class="cabecera"><a class="marca" href="/" aria-label="RWAdar · Inicio">RWA<span>dar</span></a>' +
-    '<nav aria-label="Principal"><a href="/#emisiones" data-volver="ofertas">Ofertas</a><a href="/#tool">Plataformas</a><a href="/academy/">Academy</a><a href="/cambios">Noticias de RWAdar</a></nav></header>' +
+    '<nav aria-label="Principal"><a href="/#emisiones" data-volver="ofertas">Ofertas</a><a href="/#tool">Plataformas</a><a href="/academy/">Academy</a><a href="/cambios">Novedades</a></nav></header>' +
     '<div data-selector-idioma></div><main id="contenido"'+(organizacion ? ' data-ficha-consulta' : ' data-idioma-documental="es"')+(oferta ? ' data-oferta="'+esc(json(oferta))+'"' : '')+'><p class="migas"><a href="/">Inicio</a> / <span'+ORIGINAL+'>'+esc(titulo)+'</span></p>' +
     '<h1'+(organizacion ? ORIGINAL : '')+'>'+esc(titulo)+'</h1>'+contenido+'</main><footer><p>RWAdar es un catálogo gratuito con información propia. Que algo aparezca aquí no es una recomendación ni una garantía. Si inviertes, lo haces directamente con el proveedor.</p>' +
     '<nav aria-label="Información"><a href="/metodologia">Cómo verificamos</a><a href="/transparencia-comercial">Transparencia comercial</a><a href="/privacidad">Privacidad y aviso legal</a>' +
