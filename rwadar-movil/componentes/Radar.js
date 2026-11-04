@@ -337,10 +337,13 @@ const e = StyleSheet.create({
   lecturaSub: { ...T.dato, fontSize: 12, color: C.tx2, marginTop: 2 },
   lecturaVacia: { ...T.menor, fontSize: 12, color: C.tx3, textAlign: 'center', lineHeight: 17 },
 
+  // Cada nombre de la leyenda filtra: diana de 44 px de alto (antes medía
+  // 18 px; prueba en móvil, 04/11/2026). Sin hueco entre filas para que la
+  // leyenda no crezca más de lo necesario.
   leyenda: {
     flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center',
-    gap: 10, paddingHorizontal: 16, paddingTop: 12,
+    columnGap: 6, rowGap: 0, paddingHorizontal: 16, paddingTop: 2,
   },
-  leyendaItem: { flexDirection: 'row', alignItems: 'center', gap: 5 },
+  leyendaItem: { flexDirection: 'row', alignItems: 'center', gap: 5, minHeight: 44, paddingHorizontal: 4 },
   leyendaTxt: { ...T.dato, fontSize: 12, color: C.tx3 },
 });
