@@ -9,8 +9,37 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 ## 4 de noviembre de 2026 (noche, 4) · Claude · remates 3: Inicio sin salto, tableta, leyenda en inglés y «Qué se adquiere» (sin publicar)
 
 Rama local `claude/remates-3` (worktree `remates-3`, sale de `main` 857ef73,
-que es lo publicado), commits 09fe24f, a43cd81 y 43c00e7. **Sin push, nada
-publicado, Supabase sin tocar, sin OTA ni EAS.** Sin textos nuevos.
+que es lo publicado), commits 09fe24f, a43cd81 y 43c00e7, y tras la
+revisión 663b309 y 484f977. **Sin push, nada publicado, Supabase sin tocar,
+sin OTA ni EAS.** Sin textos nuevos.
+
+- **Corrección tras la revisión (663b309 y 484f977):**
+  - **Se une limpio con `claude/subida-3`.** Antes chocaba justo en
+    `idioma-previo`. Ahora el bloque que marca `escritorio-relato` va aparte,
+    al final del archivo, y el bloque del idioma queda como en `main`: los
+    `return` que añade subida-3 no lo cortan. La prueba nueva se movió lejos
+    de las de subida-3. `git merge-tree claude/subida-3 claude/remates-3`:
+    solo choca este `PARA-CODEX.md` (dos entradas arriba; se quedan las dos).
+    En una copia unida: web 593/0 y CLS 0 en castellano e inglés a 1024×768,
+    1366×860, 820, 768, 390 y 360 (1920: 0,0015 en castellano); con el JS
+    retrasado 1,5 s, inglés a 1024 y 1366: 0,007 y 0,018 (`main`: 0,84 y 0,85).
+  - **Móvil con el JS tarde: 0,063 → 0.** Con el JS principal retrasado
+    (primera visita con datos móviles), la página pintaba Ofertas con el hueco
+    del selector de idioma y luego saltaba a Inicio (`<main>` subía 57 px).
+    Ahora `idioma-previo` marca `html.movil-relato` en «/» sin ancla (misma
+    consulta que `Movil`) y el CSS enseña ya Inicio, oculta Ofertas y el
+    selector y marca la pestaña Inicio. La clase se quita en
+    `DOMContentLoaded`; si el JS no llega, vuelve el catálogo sin JS de
+    siempre. Con ancla (`/#emisiones`) sigue como en `main` (0,063 si el JS
+    tarda). Castellano a 390 y 360, retrasos de 600 y 1500 ms: 0. Inglés con
+    subida-3 (que en el móvil ya no oculta): 0,031 y 0,035 por el cambio de
+    castellano a inglés (subida-3 sola: 0,105 y 0,065). Las posiciones finales
+    de las 5 pestañas a 390 y 360 son las de `main`.
+  - **«Recién añadidas» con el catálogo caducado: aceptado.** Con el lote
+    vencido (reloj el 12/11) nace visible y se oculta: 0,011 (1024×768) y
+    0,0065 (1366×860); en el móvil con el JS tarde, 0,020. Muy por debajo de
+    0,1 (`main` daba 0,874 en escritorio). Evitarlo exige repetir en `<head>`
+    la vigencia del lote y la ventana de 30 días de altas; no compensa.
 
 - **Inicio ya no salta al cargar (09fe24f).** Medido con el reloj fijo
   (04/11 12:00 UTC) y el mismo catálogo, `main` local frente a la rama, en
@@ -45,15 +74,18 @@ publicado, Supabase sin tocar, sin OTA ni EAS.** Sin textos nuevos.
   comprobaciones, 30 SQL y 11 del mapa; web 592; fichas 71; precarga 32;
   móvil 411 con 409 bien y 2 omitidas; acceso 145; herramientas sin
   diferencias). Pruebas nuevas funcionales, sin frases: `probar-web-escritorio.mjs`
-  (clase en `<head>`, panel primero en `<main>`, precarga de la letra) y
-  `probar-fichas.cjs`. Guardián OTA `ok` (1.4.1(23)). CSS 177 911 B.
+  (clases en `<head>` para escritorio y móvil, panel primero en `<main>`,
+  precarga de la letra) y
+  `probar-fichas.cjs`. Guardián OTA `ok` (1.4.1(23)). CSS 178 462 B.
   `probar-orden.mjs` solo avisa de `rwadar-movil/App.js`, como en `main`.
 - **Al unir:** el panel de Inicio se ha movido de sitio en `index.html`
   (430 líneas): si otra rama cambió algo dentro de ese panel, el conflicto se
   resuelve aplicando su cambio en la nueva posición y regenerando con
-  `npm test`. `idioma-web` solo cambia la línea de `superficies`.
-- **Capturas y medidas:** `scratchpad/remates-3/` (`medidas.json`,
-  `capturas/antes-*` y `despues-*`).
+  `npm test`. `idioma-web` solo cambia la línea de `superficies`. Con
+  `claude/subida-3` el código se une solo; choca únicamente este archivo.
+- **Capturas y medidas:** `scratchpad/remates-3/` (`medidas.json`, con la
+  corrección en `correccion_tras_revision`; `capturas/antes-*`, `despues-*`,
+  `*-movil-primera-pintura` y `unida-subida3-*`).
 
 ## 4 de noviembre de 2026 (noche, 2) · Claude · entrega 2026-11-04: arreglos de datos del catálogo (sin aplicar)
 
