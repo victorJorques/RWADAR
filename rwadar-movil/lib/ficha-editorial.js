@@ -47,6 +47,10 @@
     const palabras = m[1].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
     return palabras.charAt(0).toUpperCase() + palabras.slice(1);
   }
+  // El rótulo es de la interfaz (se puede traducir) si viene de una clave
+  // interna o coincide con uno de los rótulos de arriba; si no, es texto del catálogo.
+  const ROTULOS_VISIBLES = new Set(Object.values(ROTULOS));
+  const rotuloTraducible = etiqueta => ROTULOS_VISIBLES.has(rotuloReferencia(etiqueta));
   // Idioma de una cita literal de la fuente, solo si se ve claro (si no, '').
   const PALABRAS = {
     es:['el','los','las','y','que','en','por','con','para','del','una','se','es','su','al','como','más'],
@@ -172,7 +176,7 @@
       comprobadaEl:ultimo?.fechaConsulta || null,fechaDato:ultimo?.fechaDato || null},estado,
       cifrasVigentes:actual,vencida};
   }
-  const api = {resumenOferta, rotuloReferencia, idiomaCita};
+  const api = {resumenOferta, rotuloReferencia, rotuloTraducible, idiomaCita};
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (raiz) raiz.RWAdarFichaEditorial = api;
 })(typeof globalThis === 'object' ? globalThis : this);

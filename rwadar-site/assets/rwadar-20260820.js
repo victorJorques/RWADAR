@@ -1087,7 +1087,7 @@ function fuentesVerificacionHtml(verificacion){
  if(!fuentes.length)return'';
  return '<div class="fuentes"><span class="fuentes-t">Fuentes consultadas</span>'+fuentes.map(f=>
   '<a href="'+escHtml(urlHttps(f.url))+'" target="_blank" rel="noopener nofollow">'+escHtml(f.titulo||f.url)+
-  (f.consultadaEl?' · '+escHtml(f.consultadaEl):'')+' ↗</a>').join('')+'</div>';
+  (f.consultadaEl?' · '+escHtml(fechaES(f.consultadaEl)):'')+' ↗</a>').join('')+'</div>';
 }
 const colOf=p=>(CATMETA[p.cat]||{c:'#7C8699'}).c;
 const catClase=p=>' cat-'+Math.max(0,Object.keys(CATMETA).indexOf(p.cat));
@@ -1489,7 +1489,7 @@ function openDrawer(i){
    </div>
   </section>
   ${origenVisual}
-  ${v?detalleVerificacionLocalHtml(v,p.nota):`<section class="pn-seccion pn-verificacion" aria-labelledby="dwVerificacionTit">
+  ${v?detalleVerificacionLocalHtml(v,resumen):`<section class="pn-seccion pn-verificacion" aria-labelledby="dwVerificacionTit">
    <h4 id="dwVerificacionTit">Verificación RWAdar</h4>
    <div class="aval aval-detalle">${escudoSVG}<span>${escHtml(p.aval)}</span></div>
   </section>`}
@@ -2276,6 +2276,7 @@ function documentacionOfertaLocal(o,ahora=new Date()){
 /* Rótulo legible de una referencia («accesoEspana · consulta …» → «Acceso
    desde España») e idioma de su cita; la lógica vive en ficha-editorial.js. */
 function rotuloRefLocal(e){const api=typeof globalThis!=='undefined'&&globalThis.RWAdarFichaEditorial;return api&&api.rotuloReferencia?api.rotuloReferencia(e):textoLocal(e)}
+function rotuloTraducibleLocal(e){const api=typeof globalThis!=='undefined'&&globalThis.RWAdarFichaEditorial;return !!(api&&api.rotuloTraducible&&api.rotuloTraducible(e))}
 function idiomaCitaLocal(v){const api=typeof globalThis!=='undefined'&&globalThis.RWAdarFichaEditorial;return api&&api.idiomaCita?api.idiomaCita(v):''}
 const NOMBRE_IDIOMA_CITA={en:'inglés',fr:'francés',de:'alemán'};
 function nombreFuenteLocal(url){
@@ -2296,8 +2297,8 @@ function partesDocumentacionOferta(d,{resumen='',ultima=''}={}){
   '<p class="escaparate-documentacion-aviso">Datos publicados en las fechas indicadas. No son precios actuales ni garantizan rentabilidad, apertura o disponibilidad para contratar.</p>'+
   '<div class="escaparate-referencias-fechadas">'+d.referencias.map(r=>{
     /* El rótulo es de la interfaz (se traduce); el valor y el alcance, citas de la fuente. */
-    const rotulo=rotuloRefLocal(r.etiqueta),interno=rotulo!==textoLocal(r.etiqueta),idioma=idiomaCitaLocal(r.valor);
-    return '<article><h4'+(interno?'':' class="ref-etiqueta-original"')+'>'+escHtml(rotulo)+'</h4><p class="ref-valor"'+(idioma?' lang="'+idioma+'"':'')+'><b>'+escHtml(r.valor)+'</b></p>'+
+    const rotulo=rotuloRefLocal(r.etiqueta),interno=rotuloTraducibleLocal(r.etiqueta),idioma=idiomaCitaLocal(r.valor);
+    return '<article><h4'+(interno?'':' class="ref-etiqueta-original"')+'>'+escHtml(rotulo)+'</h4><p class="ref-valor"><b'+(idioma?' lang="'+idioma+'"':'')+'>'+escHtml(r.valor)+'</b></p>'+
     (NOMBRE_IDIOMA_CITA[idioma]?'<p class="ref-nota-idioma">Cita literal de la fuente, en '+NOMBRE_IDIOMA_CITA[idioma]+'.</p>':'')+
     '<p>Fecha del dato: '+(r.fechaDato?fecha(r.fechaDato):'no indicada en la fuente')+' · Consultado el '+fecha(r.fechaConsulta)+'</p>'+
     '<p class="ref-alcance">'+escHtml(r.alcance)+'</p><a href="'+escHtml(r.fuente)+'" target="_blank" rel="noopener nofollow" aria-label="'+escHtml('Ver fuente · '+nombreFuenteLocal(r.fuente)+' de '+rotulo+': '+r.fuente)+'">Ver fuente · '+escHtml(nombreFuenteLocal(r.fuente))+' ↗</a></article>'}).join('')+'</div></details>':'';

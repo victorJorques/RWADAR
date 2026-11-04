@@ -6,7 +6,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ETIQUETA_EDITORIAL, PIE_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { proveedoresDeOfertas, vigenciaOferta } from '../lib/datos';
 import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
-import { idiomaCita, resumenOferta, rotuloReferencia } from '../lib/ficha-editorial';
+import { idiomaCita, resumenOferta, rotuloReferencia, rotuloTraducible } from '../lib/ficha-editorial';
 import {
   comprobacionesOferta, datosCortosOferta, estadoVigencia, fechaES, puntosFuertesOferta,
 } from '../lib/transparencia';
@@ -688,7 +688,7 @@ export function DetalleOferta({
                     const cita = idiomaCita(referencia.valor);
                     return (
                     <View style={e.referenciaDocumental} key={`referencia-${indice}`}>
-                      <Text noTraducir={rotulo === String(referencia.etiqueta || '').trim()} idiomaOriginal="es-ES" style={e.datoEtiqueta}>{rotulo}</Text>
+                      <Text noTraducir={!rotuloTraducible(referencia.etiqueta)} idiomaOriginal="es-ES" style={e.datoEtiqueta}>{rotulo}</Text>
                       <Text noTraducir idiomaOriginal={IDIOMA_CITA[cita] || 'es-ES'} style={e.datoValor}>{referencia.valor}</Text>
                       {NOTA_CITA[cita] ? <Text style={e.referencia}>{NOTA_CITA[cita]}</Text> : null}
                       <Text style={e.referencia}>
