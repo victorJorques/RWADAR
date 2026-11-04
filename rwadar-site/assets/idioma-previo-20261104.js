@@ -22,15 +22,24 @@
   setTimeout(mostrar, 1500);
 })();
 // Inicio sin salto al cargar (remates 04/11/2026). Va aparte, después del
-// bloque del idioma, para que sus `return` no la corten. Solo en Inicio («/»):
-// en tableta y escritorio (768 px o más, salvo un móvil apaisado) marca
-// html.escritorio-relato y la historia va arriba desde la primera pintura.
+// bloque del idioma, para que sus `return` no la corten. Solo en Inicio («/»).
+// - Tableta y escritorio (768 px o más, salvo un móvil apaisado): marca
+//   html.escritorio-relato y la historia va arriba desde la primera pintura.
+// - Móvil sin ancla: marca html.movil-relato y el CSS enseña ya Inicio, que es
+//   la pestaña con la que abre. Se quita en DOMContentLoaded, cuando el JS ya ha
+//   elegido pestaña; si el JS no llega, vuelve el catálogo sin JS.
 // La consulta del móvil es la misma de Movil en rwadar-20260820.js, que luego
-// mantiene la clase al cambiar el tamaño.
+// mantiene escritorio-relato al cambiar el tamaño.
 (() => {
   try {
     if (typeof location === 'undefined' || location.pathname !== '/' || typeof globalThis.matchMedia !== 'function') return;
-    if (!globalThis.matchMedia('(max-width: 767px), (max-width: 960px) and (max-height: 540px) and (hover: none) and (pointer: coarse)').matches &&
-      globalThis.matchMedia('(min-width: 768px)').matches) document.documentElement.classList.add('escritorio-relato');
+    const raiz = document.documentElement;
+    if (!globalThis.matchMedia('(max-width: 767px), (max-width: 960px) and (max-height: 540px) and (hover: none) and (pointer: coarse)').matches) {
+      if (globalThis.matchMedia('(min-width: 768px)').matches) raiz.classList.add('escritorio-relato');
+      return;
+    }
+    if (location.hash && location.hash.length > 1) return;
+    raiz.classList.add('movil-relato');
+    document.addEventListener('DOMContentLoaded', () => raiz.classList.remove('movil-relato'), { once: true });
   } catch {}
 })();

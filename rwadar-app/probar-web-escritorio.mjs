@@ -110,7 +110,8 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
   }
   // Remates 04/11/2026: Inicio sin salto al cargar (CLS). idioma-previo marca en
   // <head>, con la misma consulta que Movil, html.escritorio-relato (768 px o más,
-  // salvo móvil apaisado). El panel va el primero en <main> y se ve aunque nazca con [hidden].
+  // salvo móvil apaisado) o html.movil-relato (móvil sin ancla, hasta que el JS
+  // elige pestaña). El panel va el primero en <main> y se ve aunque nazca con [hidden].
   {
     const codigoPrevio = lee('assets/idioma-previo-20261104.js'), css = lee('assets/rwadar-20260820.css');
     const movil = (js.match(/const media=window\.matchMedia\('([^']+)'\)/) || [])[1] || '';
@@ -139,19 +140,21 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
     const telefono = ensayo({ ancho: 390, alto: 844, tactil: true }), apaisado = ensayo({ ancho: 900, alto: 400, tactil: true });
     const otras = [ensayo({ ancho: 390, alto: 844, tactil: true, hash: '#emisiones' }), ensayo({ ruta: '/academy/', ancho: 1366 }),
       ensayo({ ruta: '/academy/', ancho: 390, tactil: true })];
-    prueba('Inicio nace como historia desde <head>: desde 768 px salvo móvil apaisado, solo en «/» y aunque falle el almacenamiento',
+    prueba('Inicio nace como historia desde <head>: desde 768 px salvo móvil apaisado y, en el móvil sin ancla, hasta que carga el JS; solo en «/»',
       movil.includes('max-height: 540px') && codigoPrevio.includes(`'${movil}'`) &&
       /const ancho=window\.matchMedia\('\(min-width: 768px\)'\)/.test(js) && !/insertBefore\(panelInicio/.test(js) &&
       tableta.inicial === 'escritorio-relato' && tableta.cargada === 'escritorio-relato' && escritorio.inicial === 'escritorio-relato' &&
-      telefono.inicial === '' && apaisado.inicial === '' &&
+      telefono.inicial === 'movil-relato' && telefono.cargada === '' && apaisado.inicial === 'movil-relato' &&
       otras.every(r => r.inicial === ''));
     const principal = html.slice(html.indexOf('<main id="top">'), html.indexOf('</main>'));
     const portada = (html.match(/<section class="rel-nuevas" id="relNuevas"[^>]*>/) || [''])[0];
     const letra = (css.match(/font-family:'Geist';font-style:normal;[^}]*src:url\(([^)]+)\)/) || [])[1];
-    prueba('el panel de Inicio va el primero en <main>, se ve con [hidden] y «Recién añadidas» no aparece de golpe',
+    prueba('el panel de Inicio va el primero en <main>, se ve con [hidden] (también en el móvil antes del JS) y «Recién añadidas» no aparece de golpe',
       /^<main id="top">\s*(?:<!--[\s\S]*?-->\s*)?<section class="movil-panel" id="movilPanelInicio"/.test(principal) &&
       principal.indexOf('id="movilPanelInicio"') < principal.indexOf('id="movilPanelRadar"') &&
       /@media \(min-width:768px\)\{\s*\.escritorio-relato #movilPanelInicio\{display:block\}/.test(css) &&
+      /\.movil-relato:not\(\.movil-ui\) #movilPanelInicio\{display:block!important\}/.test(css) &&
+      /\.movil-relato:not\(\.movil-ui\) :is\(#movilPanelRadar,body>\[data-selector-idioma\]\)\{display:none\}/.test(css) &&
       portada && !/\shidden\b/.test(portada));
     prueba('la letra principal se precarga en <head> con el mismo archivo que usa el CSS',
       Boolean(letra) && html.slice(0, html.indexOf('</head>')).includes(`<link rel="preload" href="${letra}" as="font" type="font/woff2" crossorigin>`));

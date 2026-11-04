@@ -2186,6 +2186,13 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
 .movil-ui #movilPanelRadar{padding-top:12px}
 /* El idioma sale de la primera pantalla: en el móvil solo se ve arriba de Perfil. */
 .movil-ui body:not([data-movil-pestana="cuenta"])>[data-selector-idioma]{display:none}
+/* Móvil antes del JS: en «/» sin ancla, idioma-previo marca html.movil-relato y
+   ya se ve Inicio, la pestaña con la que abre (aunque lleve [hidden], que en el
+   móvil va con !important). Así nada salta al cargar. */
+.movil-relato:not(.movil-ui) #movilPanelInicio{display:block!important}
+.movil-relato:not(.movil-ui) :is(#movilPanelRadar,body>[data-selector-idioma]){display:none}
+.movil-relato:not(.movil-ui) #movilTabInicio{color:var(--senal);font-weight:600}
+.movil-relato:not(.movil-ui) #movilTabRadar{color:var(--tx-3);font-weight:500}
 /* La hoja de ficha cerrada (fuera de pantalla) no oscurece el borde derecho. */
 .panel[inert]{box-shadow:none}
 
