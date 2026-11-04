@@ -52,6 +52,8 @@ th{font-family:inherit;font-size:.8125rem;letter-spacing:0;text-transform:none;
  color:var(--senal);font-weight:400}
 td:first-child{color:var(--tx);font-weight:600;white-space:nowrap}
 .tabla-caja{overflow-x:auto;-webkit-overflow-scrolling:touch}
+/* En el móvil, menos relleno: las tablas de tres columnas caben sin desplazarse de lado. */
+@media (max-width:420px){th,td{padding:10px 8px}}
 
 /* Página B2B. Comparte la tipografía y las reglas de lectura de las
    políticas, pero da al piloto una jerarquía propia sin scripts ni fuentes
