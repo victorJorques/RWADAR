@@ -1034,7 +1034,7 @@ function bloquePortada(academy) {
 function bloqueInicio(academy) {
   const n = publicadas(academy).length;
   return `      <!--academy-inicio:ini-->
-      <a class="b3 rel-academia rel-revela" href="/academy/" data-movil-cambiar="academy"><span>¿Empiezas de cero?</span> <span>${n} ${n === 1 ? 'lección gratis' : 'lecciones gratis'} en Academy</span><span class="rel-flecha" aria-hidden="true"></span></a>
+      <a class="b3 rel-academia rel-revela" href="/academy/" data-movil-cambiar="academy"><span><span>¿Empiezas de cero?</span> <span>${n} ${n === 1 ? 'lección gratis' : 'lecciones gratis'} en Academy</span></span><span class="rel-flecha" aria-hidden="true"></span></a>
       <!--academy-inicio:fin-->`;
 }
 
