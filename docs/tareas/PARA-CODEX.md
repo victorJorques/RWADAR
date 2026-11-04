@@ -6,6 +6,54 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (tarde, 2) · Claude · «Recién añadidas» en Inicio y «Nueva» en Ofertas, web y app (sin publicar)
+
+Víctor: «pondría las más nuevas o las recién añadidas, algo así que venda».
+Rama local `claude/recien-anadidas` (sale de `claude/remates`, 38cf6f1),
+commits 574bb9a (web), 1872c68 (inglés) y 43cd0d5 (app). **Nada publicado,
+sin push, Supabase y EAS sin tocar, sin OTA.** La novedad es un hecho: la
+fecha de alta en el radar (`anadidaEl` de `transparencia.json`, que ya
+llevaban la web y la app); sin «oportunidad», urgencia ni rentabilidades.
+
+- **Inicio** (web y app): carrusel «Recién añadidas» justo bajo la portada y
+  antes del 01, con las tarjetas de la Selección: foto, título en 2 líneas,
+  proveedor y lugar, «Nueva» y «Añadida el 03/11/2026»; la tarjeta entera abre
+  su ficha (los avisos siguen en ella). Altas de los últimos 30 días, de la
+  más nueva a la más antigua y 6 como mucho: hoy Kraken xStocks y Spiko Smart
+  Cash (03/11), Robinhood y Spiko Dólar (02/11). Sin ninguna, o con el
+  catálogo caducado, no sale. Debajo, «Imágenes ilustrativas…» y «Ver todas
+  las ofertas nuevas ›», que abre Principales con «Más nuevas primero».
+- **Ofertas:** etiqueta de estado «Nueva» (verde suave, sin borde) en las
+  filas de menos de 14 días y la opción «Más nuevas primero» (en la web, en
+  el selector; en la app, nuevo «Ordenar por» con «Las más al día primero» y
+  «Más nuevas primero»). Con ese orden la lista va seguida, sin separar la
+  Selección, para que la más nueva quede arriba.
+- **Código:** web en `rwadar-20260820.js` (`altaOferta`, `ofertaNueva`,
+  `masNuevasPrimero` junto a `transparenciaOferta`; `ofertasRecienAnadidas` y
+  `tarjetaNuevaHtml` junto a la Selección), `index.html` y 17 líneas de CSS;
+  app en `lib/recien-anadidas.js` (la misma lógica),
+  `componentes/RecienAnadidas.js`, y pocas líneas en `Inicio.js`,
+  `Ofertas.js` (prop `nueva`) y `App.js`. El `index.html` se sube con el
+  pre-renderizado de antes: lo rehace `rwadar-publicar.js` al publicar.
+- **Inglés:** bloque «// Recién añadidas (04/11)» en `lib/idioma-en.js`, antes
+  de las entradas del mapa («Just added», «New», «Added on…», «See all new
+  offers», «Newest first»…); fuera dos entradas viejas sin uso. Copiado a la
+  web con `copiar-idiomas-web.cjs`.
+- **Pruebas** (sin fijar textos): `rwadar-movil/tests/recien-anadidas.test.cjs`
+  (3) y una en `probar-web.mjs` (altas de 30 días, ordenadas, oculto sin
+  ninguna); la de «Imágenes ilustrativas…» en Inicio cuenta ahora 2.
+  `npm test` completo en verde (web 580, fichas 68, precarga 32, móvil 411:
+  409 + 2 omitidas, acceso 144, base de datos sin fallos; `probar-orden.mjs`
+  solo avisa de `App.js`, como antes). OTA compatible con c1f7106 (`ok: true`).
+- **Capturas** (390 × 844, dsf 2, sin red) en el scratchpad de la sesión,
+  `recien/`: `web-inicio-carrusel`, `web-ofertas-nuevas`,
+  `app-inicio-carrusel` y `app-ofertas-nuevas`.
+- **Al mezclar con `claude/remates`:** el bloque de inglés va aparte para no
+  chocar; después, `node rwadar-movil/scripts/copiar-idiomas-web.cjs`.
+  `probar-web.mjs` queda en 239,7 KB (presupuesto 240 KB).
+- **Pendiente:** publicar web y OTA, solo con permiso de Víctor; probarlo en
+  un Android real.
+
 ## 4 de noviembre de 2026 (tarde) · Claude · rediseño publicado en web y app
 
 Víctor: «súbelo todo en cuanto esté». PR #47 (rediseño) y #48 (arreglo de la
