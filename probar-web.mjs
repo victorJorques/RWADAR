@@ -2862,7 +2862,7 @@ prueba('los redirects usan sintaxis portable de Cloudflare Pages',
   /^\/index\.html\s+\/\s+301$/m.test(redirecciones) &&
   /^\/privacidad\.html\s+\/privacidad\s+301$/m.test(redirecciones) &&
   /^\/transparencia-comercial\.html\s+\/transparencia-comercial\s+301$/m.test(redirecciones) &&
-  /^\/para-empresas\.html\s+\/para-empresas\s+301$/m.test(redirecciones) &&
+  /^\/para-empresas\.html\s+\/\s+302$/m.test(redirecciones) && /^\/para-empresas\s+\/\s+302$/m.test(redirecciones) &&
   !/301!/.test(redirecciones));
 prueba('security.txt tiene contacto, canonical, política de reporte y caducidad futura',
   /Contact: mailto:RWAdar@protonmail\.com/.test(lee('.well-known/security.txt')) &&
@@ -3257,9 +3257,11 @@ try {
   prueba('la URL limpia de privacidad funciona localmente', politica.status===200);
   const transparencia = await fetch(`http://127.0.0.1:${puerto}/transparencia-comercial`);
   prueba('la URL limpia de transparencia comercial funciona localmente', transparencia.status===200);
-  const empresas = await fetch(`http://127.0.0.1:${puerto}/para-empresas`);
-  prueba('la URL limpia para empresas funciona localmente', empresas.status===200 &&
-    (await empresas.text()).includes('data-partner-status="interest-only"'));
+  // «Para empresas» queda pendiente (Víctor, 04/11/2026): su dirección lleva a Inicio.
+  const empresas = await fetch(`http://127.0.0.1:${puerto}/para-empresas`, { redirect:'manual' });
+  const empresasHtml = await fetch(`http://127.0.0.1:${puerto}/para-empresas.html`, { redirect:'manual' });
+  prueba('/para-empresas lleva a Inicio localmente', empresas.status===302 && empresas.headers.get('location')==='/' &&
+    empresasHtml.status===302 && empresasHtml.headers.get('location')==='/');
   const post = await fetch(`http://127.0.0.1:${puerto}/guardar?n=prueba.png`, {
     method:'POST',headers:{Origin:`http://127.0.0.1:${puerto}`,'Content-Type':'image/png'},body:new Uint8Array([1,2,3]),
   });
