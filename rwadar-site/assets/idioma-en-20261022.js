@@ -1105,6 +1105,7 @@
   "Añadida el": "Added on",
   "Ver todas las ofertas nuevas": "See all new offers",
   "Más nuevas primero": "Newest first",
+  "Primero, las que hemos añadido al radar más recientemente. El orden no depende de pagos ni de rentabilidades.": "First, the ones we added to the radar most recently. The order does not depend on payments or returns.",
   "Mapa de activos documentados": "Map of documented assets",
   "Dónde están los activos": "Where the assets are",
   "Al cargarlo, OpenStreetMap recibe tu IP. RWAdar no guarda tu ubicación.": "When it loads, OpenStreetMap receives your IP address. RWAdar does not store your location.",
