@@ -146,6 +146,57 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
     prueba('sin sesión, el botón de la cabecera dice «Entrar» y está activo',
       inicio > 0 && fin > inicio && boton.textContent === 'Entrar' && boton.disabled === false && /^Entrar /.test(boton.atributos['aria-label']));
   }
+  // Remates 04/11/2026: Inicio sin salto al cargar (CLS). idioma-previo marca en
+  // <head>, con la misma consulta que Movil, html.escritorio-relato (768 px o más,
+  // salvo móvil apaisado) o html.movil-relato (móvil sin ancla, hasta que el JS
+  // elige pestaña). El panel va el primero en <main> y se ve aunque nazca con [hidden].
+  {
+    const codigoPrevio = lee('assets/idioma-previo-20261104.js'), css = lee('assets/rwadar-20260820.css');
+    const movil = (js.match(/const media=window\.matchMedia\('([^']+)'\)/) || [])[1] || '';
+    const cumple = (q, { ancho, alto, tactil }) => q.split(/\s*,\s*/).some(parte => parte.split(/\s+and\s+/).every(c => {
+      const [, k, v] = c.match(/^\(([a-z-]+):\s*([a-z0-9]+)\)$/) || [], n = parseInt(v, 10);
+      return k === 'min-width' ? ancho >= n : k === 'max-width' ? ancho <= n : k === 'max-height' ? alto <= n :
+        k === 'hover' ? (v === 'none') === tactil : k === 'pointer' ? (v === 'coarse') === tactil : false;
+    }));
+    const ensayo = ({ ruta = '/', hash = '', ancho, alto = 900, tactil = false, almacen = null }) => {
+      const clases = new Set(), eventos = {};
+      const contexto = vm.createContext({
+        location: { pathname: ruta, hash },
+        matchMedia: q => ({ matches: cumple(q, { ancho, alto, tactil }) }),
+        localStorage: { getItem: () => { if (almacen) throw almacen; return null; } },
+        document: { documentElement: { lang: 'es', classList: { add: c => clases.add(c), remove: c => clases.delete(c), contains: c => clases.has(c) } },
+          addEventListener: (t, fn) => { (eventos[t] = eventos[t] || []).push(fn); } },
+        setTimeout: () => {},
+      });
+      contexto.globalThis = contexto;
+      vm.runInContext(codigoPrevio, contexto);
+      const inicial = [...clases].join(' ');
+      (eventos.DOMContentLoaded || []).forEach(fn => fn());
+      return { inicial, cargada: [...clases].join(' ') };
+    };
+    const tableta = ensayo({ ancho: 820, alto: 1180 }), escritorio = ensayo({ ancho: 1366, alto: 860, almacen: new Error('bloqueado') });
+    const telefono = ensayo({ ancho: 390, alto: 844, tactil: true }), apaisado = ensayo({ ancho: 900, alto: 400, tactil: true });
+    const otras = [ensayo({ ancho: 390, alto: 844, tactil: true, hash: '#emisiones' }), ensayo({ ruta: '/academy/', ancho: 1366 }),
+      ensayo({ ruta: '/academy/', ancho: 390, tactil: true })];
+    prueba('Inicio nace como historia desde <head>: desde 768 px salvo móvil apaisado y, en el móvil sin ancla, hasta que carga el JS; solo en «/»',
+      movil.includes('max-height: 540px') && codigoPrevio.includes(`'${movil}'`) &&
+      /const ancho=window\.matchMedia\('\(min-width: 768px\)'\)/.test(js) && !/insertBefore\(panelInicio/.test(js) &&
+      tableta.inicial === 'escritorio-relato' && tableta.cargada === 'escritorio-relato' && escritorio.inicial === 'escritorio-relato' &&
+      telefono.inicial === 'movil-relato' && telefono.cargada === '' && apaisado.inicial === 'movil-relato' &&
+      otras.every(r => r.inicial === ''));
+    const principal = html.slice(html.indexOf('<main id="top">'), html.indexOf('</main>'));
+    const portada = (html.match(/<section class="rel-nuevas" id="relNuevas"[^>]*>/) || [''])[0];
+    const letra = (css.match(/font-family:'Geist';font-style:normal;[^}]*src:url\(([^)]+)\)/) || [])[1];
+    prueba('el panel de Inicio va el primero en <main>, se ve con [hidden] (también en el móvil antes del JS) y «Recién añadidas» no aparece de golpe',
+      /^<main id="top">\s*(?:<!--[\s\S]*?-->\s*)?<section class="movil-panel" id="movilPanelInicio"/.test(principal) &&
+      principal.indexOf('id="movilPanelInicio"') < principal.indexOf('id="movilPanelRadar"') &&
+      /@media \(min-width:768px\)\{\s*\.escritorio-relato #movilPanelInicio\{display:block\}/.test(css) &&
+      /\.movil-relato:not\(\.movil-ui\) #movilPanelInicio\{display:block!important\}/.test(css) &&
+      /\.movil-relato:not\(\.movil-ui\) :is\(#movilPanelRadar,body>\[data-selector-idioma\]\)\{display:none\}/.test(css) &&
+      portada && !/\shidden\b/.test(portada));
+    prueba('la letra principal se precarga en <head> con el mismo archivo que usa el CSS',
+      Boolean(letra) && html.slice(0, html.indexOf('</head>')).includes(`<link rel="preload" href="${letra}" as="font" type="font/woff2" crossorigin>`));
+  }
   // QA escritorio 04/11/2026, n.º 29: privacidad, transparencia comercial y para
   // empresas se comparten con og:* y twitter:card. /para-empresas sigue sin indexar
   // (decisión pendiente de Víctor).

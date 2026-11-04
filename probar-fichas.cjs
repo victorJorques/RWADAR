@@ -286,4 +286,17 @@ verificar('RSS enlaza noticias estables y el sitemap contiene todas las fichas',
   assert(guids.length>=3);assert.equal(guids.length,new Set(guids).size);
   for(const p of permitidas.filter(n=>n.endsWith('.html')))assert(mapa.includes('<loc>https://rwadar.pages.dev/'+p.slice(0,-5)+'</loc>'));
 });
+// Remates 04/11/2026 (QA n.º 17): «Qué se adquiere» sale una sola vez en la ficha fija,
+// en su fila y con punto final, y ya no al final del párrafo inicial.
+verificar('la característica «Qué se adquiere» sale una vez: en su fila con punto final o, si difiere, en el párrafo',()=>{
+  let filas=0;
+  for(const o of catalogo.ofertas){
+    const html=salidas.get('ofertas/'+o.slug+'.html');
+    const intro=(html.match(/<p class="intro"[^>]*>([\s\S]*?)<\/p>/)||[])[1]||'';
+    const fila=[...html.matchAll(/<dt>Qué se adquiere<\/dt><dd[^>]*>([\s\S]*?)<\/dd>/g)].map(m=>m[1]);
+    assert((intro.match(/Qué se adquiere:/g)||[]).length+fila.length<=1,o.slug);
+    if(fila.length){filas++;assert(/[.!?…]$/.test(fila[0]),o.slug);assert(intro.trim(),o.slug);}
+  }
+  assert(filas>=catalogo.ofertas.length/2);
+});
 console.log(pruebas+' verificaciones de páginas y RSS correctas');

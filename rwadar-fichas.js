@@ -234,8 +234,20 @@ function transparenciaOferta(o,catalogo) {
     '</section>';
 }
 
+/* «Qué se adquiere: …» va en su fila de «Qué es y quién lo ofrece» y no también
+   al final del párrafo inicial (QA 04/11/2026, n.º 17). Solo se separa si es la
+   misma frase que la característica; si la descripción cuenta otra cosa, se queda. */
+function separarAdquiere(d) {
+  const texto = String(d.descripcion || ''), i = texto.lastIndexOf('Qué se adquiere:');
+  const c = (d.caracteristicas || []).find(x=>x && x.etiqueta==='Qué se adquiere');
+  const norma = v => String(v || '').trim().replace(/\.$/,'').replace(/^./,x=>x.toLowerCase());
+  if (!c || i<0 || !norma(c.valor) || norma(texto.slice(i+16))!==norma(c.valor)) return {intro:texto, adquiere:''};
+  const valor = String(c.valor).trim();
+  return {intro:texto.slice(0,i).trim(), adquiere:/[.!?…]$/.test(valor) ? valor : valor+'.'};
+}
+
 function paginaOferta(o,catalogo,imagen) {
-  const d = o.documentacion || {};
+  const d = o.documentacion || {}, {intro, adquiere} = separarAdquiere(d);
   const refs = (d.referencias || []).filter(r=>enlace(r.fuente) && fecha(r.fechaConsulta));
   const p = catalogo.plataformas.find(p=>p.slug===o.plataformaSlug);
   /* Supervisión: si la comprobación «supervisada» se cumple, su motivo y su fuente
@@ -247,11 +259,12 @@ function paginaOferta(o,catalogo,imagen) {
   const avisos = (o.avisos || []).map(a=>typeof a==='string' ? a : a && a.tono!=='ok' && (!a.esAntiguedad || a.tono==='stop') ? a.texto : '')
     .filter(x=>x && !/^Referencia editorial gratuita\b/.test(x));
   const fichaImagen = imagen ? '<figure><img src="/'+esc(imagen.salida)+'" alt="'+esc(imagen.alt)+'" width="960" height="660"><figcaption>Ilustración editorial generada con IA. No es una fotografía del activo real.</figcaption></figure>' : '';
-  const contenido = '<p class="intro"'+ORIGINAL+'>'+esc(d.descripcion || o.resumen)+'</p>'+fichaImagen+
+  const contenido = '<p class="intro"'+ORIGINAL+'>'+esc(intro || o.resumen)+'</p>'+fichaImagen+
     '<p class="estado" role="status" data-campo="estado">Confirma las condiciones actuales en las fuentes.</p>'+
     (avisos.length ? '<section aria-labelledby="avisos"><h2 id="avisos">Avisos de esta oferta</h2><ul class="riesgos"'+ORIGINAL+'>'+avisos.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></section>' : '')+
     '<section aria-labelledby="que"><h2 id="que">Qué es y quién lo ofrece</h2><dl><div><dt>Proveedor</dt><dd'+ORIGINAL+'>'+esc(o.plataformaNombre)+'</dd></div>' +
-    '<div><dt>Tipo de activo</dt><dd'+ORIGINAL+'>'+esc(o.categoria)+'</dd></div><div><dt>Supervisión de la plataforma</dt><dd'+ORIGINAL+'>'+supervision+'</dd></div></dl>'+
+    '<div><dt>Tipo de activo</dt><dd'+ORIGINAL+'>'+esc(o.categoria)+'</dd></div>'+
+    (adquiere ? '<div><dt>Qué se adquiere</dt><dd'+ORIGINAL+'>'+esc(adquiere)+'</dd></div>' : '')+'<div><dt>Supervisión de la plataforma</dt><dd'+ORIGINAL+'>'+supervision+'</dd></div></dl>'+
     (p ? '<p><a href="'+rutaPlataforma(p)+'">Consultar ficha de plataforma</a></p>' : '')+'</section>' +
     '<section aria-labelledby="acceso"><h2 id="acceso">Acceso y condiciones</h2><p>La admisión depende de tu residencia, categoría de inversor y de las condiciones del proveedor.</p><dl>'+
     '<div><dt>Mínimo en euros</dt><dd data-campo="minimo"'+ORIGINAL+'>Consulta la fuente; no se presupone un mínimo vigente.</dd></div>'+
