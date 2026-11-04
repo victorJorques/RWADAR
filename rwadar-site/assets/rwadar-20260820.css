@@ -1597,7 +1597,8 @@ body.detalle-local-abierto{overflow:hidden}
   #movilPanelRadar .recuento{margin:8px 0 13px;font-family:var(--body);font-size:.78rem}
   #movilPanelRadar .rejilla{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-bottom:0;
     overflow:visible;border:0;border-radius:0;background:transparent}
-  #movilPanelRadar .ficha{display:block;min-width:0;min-height:0;aspect-ratio:1;padding:0;overflow:hidden;background:var(--noche-2);gap:0;isolation:isolate;transition:var(--tr);border-radius:var(--r-l)}
+  /* La foto limpia arriba y el texto debajo, como en las tarjetas de oferta (NOTAS 1, 04/11/2026). */
+  #movilPanelRadar .ficha{position:relative;display:block;min-width:0;min-height:0;padding:0;overflow:hidden;background:var(--s1);gap:0;isolation:isolate;transition:var(--tr);border-radius:var(--r-l)}
   #movilPanelRadar .ficha:hover{background:var(--noche-2)}
   #movilPanelRadar .ficha:active{scale:calc(1 - var(--pm)*.02)}
   #movilPanelRadar .ficha.sel{border-color:var(--senal);box-shadow:0 0 0 1px var(--senal-30),var(--e-1)}
@@ -1607,27 +1608,24 @@ body.detalle-local-abierto{overflow:hidden}
   #movilPanelRadar .ficha>.aval,
   #movilPanelRadar .ficha>.marcas,
   #movilPanelRadar .ficha>.ficha-pie{display:none!important}
-  #movilPanelRadar .empresa-visual__abrir{position:relative;display:block;width:100%;height:100%;min-height:0;padding:0;
-    overflow:hidden;border:0;border-radius:inherit;background:var(--noche-2);color:#fff;text-align:left;cursor:pointer}
+  #movilPanelRadar .empresa-visual__abrir{position:relative;display:block;width:100%;height:100%;min-height:0;padding:0 0 10px;
+    overflow:hidden;border:0;border-radius:inherit;background:none;color:var(--tx);text-align:left;cursor:pointer}
   #movilPanelRadar .empresa-visual__abrir:focus-visible{outline:2px solid var(--senal);outline-offset:-2px}
-  #movilPanelRadar .empresa-visual__imagen{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  #movilPanelRadar .empresa-visual__imagen{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
     object-position:center;filter:saturate(1.06) contrast(1.035) brightness(.97);transform:scale(1.002);
     transition:transform var(--t-3) var(--ease),filter var(--t-3) var(--ease)}
   #movilPanelRadar .empresa-visual__abrir:active .empresa-visual__imagen{filter:saturate(1.1) contrast(1.04) brightness(.88)}
-  #movilPanelRadar .empresa-visual__sombra{position:absolute;inset:0;background:
-    linear-gradient(180deg,rgba(3,5,9,.42) 0%,rgba(3,5,9,.015) 42%,rgba(3,5,9,.92) 100%),
-    linear-gradient(90deg,rgba(3,5,9,.14),transparent 58%);pointer-events:none}
-  #movilPanelRadar .empresa-visual__categoria{position:absolute;z-index:1;top:10px;left:10px;max-width:calc(100% - 64px);
-    padding:2px 8px;overflow:hidden;border-radius:var(--r-s);background:rgba(11,10,10,.66);
-    color:var(--tx);font:600 .6875rem/1.5 var(--body);text-overflow:ellipsis;white-space:nowrap}
-  #movilPanelRadar .empresa-visual__texto{position:absolute;z-index:1;left:10px;right:10px;bottom:30px;display:block}
+  #movilPanelRadar .empresa-visual__sombra{display:none}
+  #movilPanelRadar .empresa-visual__categoria{display:block;margin:10px 10px 0;color:var(--tx-3);font:600 .75rem/1.3 var(--body);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #movilPanelRadar .empresa-visual__texto{display:block;margin:2px 10px 0}
   #movilPanelRadar .empresa-visual__texto strong,#movilPanelRadar .empresa-visual__texto small{display:block}
   #movilPanelRadar .empresa-visual__texto strong{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;
-    color:#fff;font:700 clamp(.79rem,3.4vw,.98rem)/1.08 var(--display);letter-spacing:-.02em;text-shadow:0 1px 8px rgba(0,0,0,.7)}
-  #movilPanelRadar .empresa-visual__texto small{margin-top:4px;overflow:hidden;color:rgba(255,255,255,.75);
-    font:500 .6875rem/1.2 var(--body);text-overflow:ellipsis;white-space:nowrap}
-  #movilPanelRadar .empresa-visual__verificada{position:absolute;z-index:1;left:8px;bottom:9px;display:flex;align-items:center;
-    right:8px;gap:4px;color:var(--senal-cl);font:500 clamp(.625rem,2.85vw,.6875rem)/1 var(--body);text-shadow:0 1px 7px rgba(0,0,0,.8)}
+    color:var(--tx);font:600 .9375rem/1.25 var(--body);letter-spacing:-.01em}
+  #movilPanelRadar .empresa-visual__texto small{margin-top:2px;overflow:hidden;color:var(--tx-2);
+    font:400 .75rem/1.3 var(--body);text-overflow:ellipsis;white-space:nowrap}
+  #movilPanelRadar .empresa-visual__verificada{display:flex;align-items:center;margin:6px 10px 0;
+    gap:4px;color:var(--tx-3);font:500 .75rem/1.2 var(--body)}
   #movilPanelRadar .empresa-visual__verificada>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   #movilPanelRadar .empresa-visual__verificada svg{width:11px;height:11px}
   /* La tarjeta entera abre la ficha: sin chevrón, la fecha cabe entera a 11 px. */
@@ -1830,9 +1828,12 @@ body.detalle-local-abierto{overflow:hidden}
 #movilPanelRadar>.emis>.emis-criterio-orden{grid-row:2;grid-column:2;position:relative;margin:0}
 #movilPanelRadar>.emis>.escaparate-busqueda{grid-row:3;grid-column:1;margin:6px 0 0}
 #movilPanelRadar>.emis>.buscar-vistas{grid-row:3;grid-column:2;margin:6px 0 0}
-#movilPanelRadar .emis-orden{display:flex;flex-direction:row;align-items:center;gap:6px}
-#movilPanelRadar .emis-orden label{flex:0 1 auto;margin:0}
-#movilPanelRadar .emis-orden select{flex:1 1 0;min-width:9em;padding:0 2px 0 8px}
+/* «Ordenar por» encima y el select a todo el ancho de su columna: así cabe
+   «Las más al día primero» entero a 390 px (revisión de producto, 04/11/2026). */
+#movilPanelRadar .emis-orden{display:flex;flex-direction:column;align-items:stretch;gap:4px}
+#movilPanelRadar .emis-orden label{margin:0}
+#movilPanelRadar .emis-orden select{width:100%;min-width:0;padding:0 2px 0 8px}
+#movilPanelRadar>.emis>.emis-criterio-orden{align-self:end}
 #movilPanelRadar .emis-criterio-orden>summary{min-height:48px;padding:0 2px;list-style:none;font-size:.8125rem;white-space:nowrap}
 #movilPanelRadar .emis-criterio-orden>summary::-webkit-details-marker{display:none}
 #movilPanelRadar .emis-criterio-orden>p{position:absolute;z-index:8;top:calc(100% + 4px);right:0;width:min(330px,calc(100vw - 32px));margin:0;padding:12px 14px;border-radius:var(--r-m);background:var(--s2);color:var(--tx-2);font-size:.8rem;line-height:1.5;box-shadow:var(--e-2)}

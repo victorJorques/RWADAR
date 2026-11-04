@@ -32,7 +32,7 @@
       "fecha": "2026-09-28",
       "etiqueta": "Radar",
       "titulo": "Radar revisado: 26 plataformas y 4 descartes",
-      "texto": "Cada ficha lleva la fecha de su comprobación. Las plataformas descartadas se publican con su motivo y su fuente en «Fuera del radar».",
+      "texto": "Cada ficha lleva la fecha de su comprobación. Las plataformas descartadas se publican con su motivo y su fuente en «Descartadas».",
       "destino": "fuera"
     }
   ]

@@ -16,14 +16,14 @@ header{border-bottom:1px solid var(--linea);background:var(--noche-2);padding:22
 .wm{font-weight:800;font-size:1.3rem;letter-spacing:-.03em;line-height:1}
 .wm span{color:var(--senal)}
 main{padding:56px 0 72px}
-.volver{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
- text-transform:uppercase;color:var(--senal);text-decoration:none;padding:12px 0;margin:-12px 0 14px}
+.volver{display:inline-block;font-family:inherit;font-size:.8125rem;letter-spacing:0;
+ text-transform:none;color:var(--senal);text-decoration:none;padding:12px 0;margin:-12px 0 14px;font-weight:600}
 .volver:hover{text-decoration:underline;text-underline-offset:3px}
 h1{font-weight:800;font-size:clamp(2rem,5vw,2.7rem);letter-spacing:-.04em;line-height:1.06;
  margin-bottom:14px;text-wrap:balance}
-.fecha{font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
- color:var(--tx-3);margin-bottom:34px}
-.resumen{background:var(--sup);border:1px solid var(--linea);border-left:3px solid var(--senal);
+.fecha{font-family:inherit;font-size:.8125rem;letter-spacing:0;text-transform:none;
+ color:var(--tx-3);margin-bottom:34px;font-weight:600}
+.resumen{background:var(--sup);border:1px solid var(--linea);
  border-radius:12px;padding:20px 22px;margin-bottom:44px}
 .resumen p{color:var(--tx-2);font-size:.95rem;margin-bottom:9px;max-width:64ch}
 .resumen p:last-child{margin-bottom:0}
@@ -48,7 +48,7 @@ a:focus-visible{outline:2px solid var(--senal-cl);outline-offset:3px;border-radi
 table{width:100%;border-collapse:collapse;margin:6px 0 20px;font-size:.9rem}
 th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--linea);
  vertical-align:top;color:var(--tx-2)}
-th{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+th{font-family:inherit;font-size:.8125rem;letter-spacing:0;text-transform:none;
  color:var(--senal);font-weight:400}
 td:first-child{color:var(--tx);font-weight:600;white-space:nowrap}
 .tabla-caja{overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -56,8 +56,8 @@ td:first-child{color:var(--tx);font-weight:600;white-space:nowrap}
 /* Página B2B. Comparte la tipografía y las reglas de lectura de las
    políticas, pero da al piloto una jerarquía propia sin scripts ni fuentes
    externas. */
-.sobrelinea{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;
- color:var(--senal);margin-bottom:12px}
+.sobrelinea{font-family:inherit;font-size:.8125rem;letter-spacing:0;text-transform:none;
+ color:var(--senal);margin-bottom:12px;font-weight:600}
 .entradilla{font-size:1.08rem;line-height:1.65;color:var(--tx-2);max-width:62ch;margin-bottom:28px}
 .estado-piloto{display:flex;align-items:flex-start;gap:12px;background:rgba(255,170,64,.08);
  border:1px solid rgba(255,170,64,.32);border-radius:12px;padding:17px 18px;margin:0 0 28px}
@@ -69,13 +69,13 @@ td:first-child{color:var(--tx);font-weight:600;white-space:nowrap}
  list-style:none;padding:0;margin:0 0 44px}
 .principios li{background:var(--sup);border:1px solid var(--linea);border-radius:12px;
  padding:17px;margin:0}
-.principios span{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;
- text-transform:uppercase;color:var(--tx-3);margin-bottom:7px}
+.principios span{display:block;font-family:inherit;font-size:.8125rem;letter-spacing:0;
+ text-transform:none;color:var(--tx-3);margin-bottom:7px;font-weight:600}
 .principios strong{display:block;font-size:.98rem;line-height:1.25;color:var(--tx);margin-bottom:8px}
 .principios p{font-size:.8rem;line-height:1.5;margin:0;color:var(--tx-3)}
 .lista-control{list-style:none;padding:0;display:grid;gap:9px}
 .lista-control li{position:relative;background:var(--sup);border:1px solid var(--linea);
- border-radius:10px;padding:13px 15px 13px 42px;margin:0}
+ border-radius:12px;padding:13px 15px 13px 42px;margin:0}
 .lista-control li::before{content:'✓';position:absolute;left:15px;top:13px;color:var(--senal);
  font-family:var(--mono);font-weight:700}
 .dos-columnas{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 18px}
@@ -92,16 +92,16 @@ td:first-child{color:var(--tx);font-weight:600;white-space:nowrap}
 .pasos b{display:block;margin:2px 0 3px}
 .pasos p{font-size:.86rem;margin:0;color:var(--tx-3)}
 .contacto-comercial{margin-top:46px;padding:25px;background:linear-gradient(145deg,rgba(37,227,154,.1),var(--sup) 62%);
- border:1px solid rgba(37,227,154,.28);border-radius:14px}
+ border:1px solid rgba(37,227,154,.28);border-radius:16px}
 .contacto-comercial h2{border:0;padding:0;margin:0 0 10px;font-size:1.45rem}
 .contacto-comercial p{margin-bottom:18px}
 .correo-copiable{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.correo-copiable span{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;
- text-transform:uppercase;color:var(--tx-3)}
+.correo-copiable span{font-family:inherit;font-size:.8125rem;letter-spacing:0;
+ text-transform:none;color:var(--tx-3);font-weight:600}
 .correo-copiable a{font-family:var(--mono);font-size:.88rem;overflow-wrap:anywhere;
  user-select:all;-webkit-user-select:all}
 .boton-correo{display:inline-flex;align-items:center;justify-content:center;min-height:46px;
- border-radius:9px;background:var(--senal);color:#06150F;text-decoration:none;font-weight:750;
+ border-radius:12px;background:var(--senal);color:#06150F;text-decoration:none;font-weight:750;
  padding:11px 18px;margin-bottom:12px}
 .boton-correo:hover{background:var(--senal-cl)}
 .contacto-comercial small{display:block;color:var(--tx-3);font-size:.75rem;line-height:1.5;max-width:62ch}

@@ -58,7 +58,7 @@
         [/^Fuentes consultadas · (.+)$/,'Sources checked · $1'],[/^Ver oferta en (.+) ↗$/,'See the offer on $1 ↗'],[/^Ir a la web de (.+) ↗$/,"Go to $1's website ↗"],
         [/^Ver los (\d+) datos consultados y sus fechas$/,'View the $1 data points checked and their dates'],
         [/^Revisadas el (.+)$/,'Reviewed $1'],[/^válidas 1 día más$/,'valid for 1 more day'],[/^válidas (\d+) días más$/,'valid for $1 more days'],
-        [/^válidas hasta hoy$/,'valid until today'],[/^Última revisión del registro: (.+)$/,'Latest register review: $1']])
+        [/^válidas hasta hoy$/,'valid until today'],[/^Revisión editorial: (.+)$/,'Editorial review: $1'],[/^Última revisión del registro: (.+)$/,'Latest register review: $1']])
         if(re.test(limpio))return origen.replace(limpio,limpio.replace(re,en));
     }
     return idioma.traducir(origen);

@@ -257,7 +257,7 @@ El cese de un proveedor no extingue la emisión ni los derechos de los titulares
 >
 > Casi toda la información comercial del sector describe el proceso hasta emitir. Lo que decide tu experiencia de los próximos años es lo que viene después: qué reporting ofrece cada proveedor, qué coste recurrente tiene y qué plan de salida deja por escrito.
 >
-> En el **comparador del radar de RWAdar** puedes poner hasta tres candidatos uno al lado de otro como punto de partida; lo que sus fichas no recogen —reporting, coste recurrente y plan de salida— pídeselo por escrito a cada uno. Consulta también la sección **Fuera del radar**, donde publicamos con motivo y fuente las plataformas que hemos descartado.
+> En el **comparador del radar de RWAdar** puedes poner hasta tres candidatos uno al lado de otro como punto de partida; lo que sus fichas no recogen —reporting, coste recurrente y plan de salida— pídeselo por escrito a cada uno. Consulta también la sección **Descartadas**, donde publicamos con motivo y fuente las plataformas que hemos descartado.
 >
 > **[Abrir el comparador del radar →]**
 >

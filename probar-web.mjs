@@ -2440,10 +2440,12 @@ prueba('las portadas generadas pierden metadatos y nunca reutilizan la vía de d
   /if \(esGenerada\) \{[\s\S]{0,900}?rwadar-editorial-source/.test(capturadorPortadas) &&
   /-map_metadata/.test(capturadorPortadas) &&
   capturadorPortadas.indexOf('if (esGenerada) {') < capturadorPortadas.indexOf('const recursoLocal = RECURSOS_LOCALES.get(p.n)'));
-prueba('las fotografías móviles se muestran vivas sin perder legibilidad en la capa de texto',
+// La foto va limpia y el texto debajo, como en las ofertas (NOTAS 1 del coordinador, confirmada por los revisores, 04/11/2026).
+prueba('las fotografías móviles se muestran vivas y sin texto encima',
   /saturate\(1\.06\)/.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__imagen').join(';')) &&
   /contrast\(1\.035\)/.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__imagen').join(';')) &&
-  /rgba\(3,5,9,\.92\)/.test(declaracionesCSS(cssMovil, '#movilPanelRadar .empresa-visual__sombra').join(';')));
+  ['.empresa-visual__texto','.empresa-visual__categoria','.empresa-visual__verificada'].every(x=>
+    !/position\s*:\s*absolute/.test(declaracionesCSS(cssMovil, '#movilPanelRadar '+x).join(';'))));
 prueba('el publicador genera y valida JS/CSS adelgazados',
   /adelgazarJS/.test(publicador) && /adelgazarCSS/.test(publicador) && /new Function\(reducido\)/.test(publicador));
 prueba('no existe promoción ni despliegue alternativo tras un fallo',

@@ -97,7 +97,7 @@
     },
     "fuera-del-radar": {
       "estado": "disponible",
-      "etiqueta": "Ver «Fuera del radar»",
+      "etiqueta": "Ver «Descartadas»",
       "web": "/#fuera",
       "app": "radar"
     },

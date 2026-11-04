@@ -246,7 +246,7 @@ La calificación depende de qué derecho se representa —participación en el c
 >
 > Próximamente, el directorio de RWAdar permitirá filtrar a los proveedores **por categoría —marketplace, emisor, infraestructura—** precisamente por lo que acabas de leer: ningún actor cubre todo el mapa, y presentarlos como si fueran intercambiables sería engañarte. Mientras llega ese filtro, cada ficha del radar indica qué entidad figura y para qué actividad tiene permisos.
 >
-> **[Abrir el radar y filtrar por categoría →]** — y consulta también la sección *Fuera del radar*, donde publicamos las plataformas que hemos descartado, con el motivo y la fuente.
+> **[Abrir el radar y filtrar por categoría →]** — y consulta también la sección *Descartadas*, donde publicamos las plataformas que hemos descartado, con el motivo y la fuente.
 >
 > ¿Prefieres empezar por tu propio activo? Próximamente, el **Evaluador de Viabilidad** te dirá en qué punto estás y qué te falta. Podrás completarlo de forma anónima: no tendrás que identificar tu activo ni facilitar datos personales para ver el resultado.
 >

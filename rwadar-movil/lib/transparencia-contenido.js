@@ -13,7 +13,7 @@ export const CRITERIOS_TRANSPARENCIA = [
   },
   {
     "id": "supervisada",
-    "texto": "Quien la vende está supervisado y registrado en la CNMV"
+    "texto": "La entidad que la ofrece está autorizada por un supervisor de la UE e inscrita en la CNMV"
   },
   {
     "id": "documentoEspana",
@@ -318,7 +318,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     "salidaCorta": "Venta a Kraken, 24/5",
     "puntos": [
       {
-        "texto": "Registrada en la CNMV",
+        "texto": "Inscrita en la CNMV (UE)",
         "fuente": {
           "titulo": "CNMV · Payward Europe Digital Solutions (CY) Limited, ESI del EEE en libre prestación n.º 4474",
           "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=4474"
@@ -497,7 +497,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     "salidaCorta": "Cierre con Robinhood, 24/5",
     "puntos": [
       {
-        "texto": "Registrada en la CNMV",
+        "texto": "Inscrita en la CNMV (UE)",
         "fuente": {
           "titulo": "CNMV · Robinhood Europe, UAB, ESI del EEE en libre prestación n.º 5299",
           "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5299"
@@ -537,7 +537,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     "salidaCorta": "Reembolso diario",
     "puntos": [
       {
-        "texto": "Registrada en la CNMV",
+        "texto": "Inscrita en la CNMV (UE)",
         "fuente": {
           "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
           "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
@@ -577,7 +577,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     "salidaCorta": "Reembolso diario",
     "puntos": [
       {
-        "texto": "Registrada en la CNMV",
+        "texto": "Inscrita en la CNMV (UE)",
         "fuente": {
           "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
           "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
@@ -617,7 +617,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     "salidaCorta": "Reembolso diario, con límites",
     "puntos": [
       {
-        "texto": "Registrada en la CNMV",
+        "texto": "Inscrita en la CNMV (UE)",
         "fuente": {
           "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
           "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"

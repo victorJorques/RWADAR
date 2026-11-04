@@ -130,7 +130,7 @@ Tres reglas, y son suficientes:
 
 ---
 
-### Lee «Fuera del radar» antes que el radar
+### Lee «Descartadas» antes que el radar
 
 Puede sonar contraintuitivo, pero es el mejor consejo de esta lección.
 
@@ -225,7 +225,7 @@ Las autorizaciones se conceden a personas jurídicas determinadas, no a marcas n
 
 > ### Aplica los tres filtros ahora
 >
-> **Empieza por *Fuera del radar*.** Lee los casos excluidos, su motivo y su fuente: aprenderás a reconocer patrones antes de mirar a ningún candidato.
+> **Empieza por *Descartadas*.** Lee los casos excluidos, su motivo y su fuente: aprenderás a reconocer patrones antes de mirar a ningún candidato.
 >
 > **Después aplica el filtro 1** en el radar —región, tipo de activo y nivel de acceso; el filtro por categoría llegará próximamente— hasta quedarte con tres o cuatro nombres.
 >
