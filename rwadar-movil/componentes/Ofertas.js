@@ -249,6 +249,15 @@ export function avisosContables(oferta) {
     aviso.tono !== 'ok' && (!aviso.esAntiguedad || aviso.tono === 'stop'));
 }
 
+/* El lugar de la tarjeta, como en la web (lugarTarjetaHtml): la ciudad tal
+   cual y el país en el idioma elegido («Limasol · Cyprus»). */
+export function lugarConPais(lugar) {
+  const partes = String(lugar || '').split(' · ').filter(Boolean);
+  if (!partes.length) return '';
+  const pais = partes.pop();
+  return [...partes, traducir(pais)].join(' · ');
+}
+
 export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catalogoCaducado = false, nueva = false }) {
   const idiomaActual = useIdioma();
   const ahora = useFechaOferta();
@@ -281,7 +290,7 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
     return minuscula.charAt(0).toUpperCase() + minuscula.slice(1);
   })();
   // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
-  const lugar = imagenEditorialOferta(oferta)?.lugar || '';
+  const lugar = lugarConPais(imagenEditorialOferta(oferta)?.lugar);
   const etiquetaAccesible = [
     `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar, nueva && !catalogoCaducado ? traducir('Nueva') : null,
     traducir(ETIQUETA_EDITORIAL),

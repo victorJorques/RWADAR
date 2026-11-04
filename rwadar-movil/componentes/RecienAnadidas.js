@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, useWindowDimensions } from 'react-native';
 import { Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
-import { ImagenOferta, avisosContables, avisosCriticos } from './Ofertas';
+import { ImagenOferta, avisosContables, avisosCriticos, lugarConPais } from './Ofertas';
 import { imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { esNueva, fechaAlta } from '../lib/recien-anadidas';
 import { textosInicio } from '../lib/inicio-contenido';
@@ -34,7 +34,7 @@ export default function RecienAnadidas({ ofertas = [], onAbrirOferta, onVerTodas
       <ScrollView horizontal showsHorizontalScrollIndicator={false} decelerationRate="fast"
         snapToInterval={ancho + 12} snapToAlignment="start" style={e.pista} contentContainerStyle={e.pistaContenido}>
         {ofertas.map((o) => {
-          const lugar = imagenEditorialOferta(o)?.lugar || '';
+          const lugar = lugarConPais(imagenEditorialOferta(o)?.lugar);
           const fecha = fechaES(fechaAlta(o));
           const procedencia = [o.plataformaNombre, lugar].filter(Boolean).join(' · ');
           const letra = t.seleccion.letraPequena[o.slug] || t.seleccion.letraRespaldo;
