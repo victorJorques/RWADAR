@@ -6,6 +6,49 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 · Claude · acabados de la web (sin publicar)
+
+Rama local `claude/acabados` (sale de 1b0e1e3), commits 53bb826…8a6afdb.
+**Nada publicado, nada en `main`, Supabase sin tocar.** Aplica la guía de
+acabados del diseñador (botones, bordes y rótulos que «se veían baratos»)
+al CSS real, sustituyendo reglas, sin una capa encima.
+
+- **Tokens** en `:root`: superficies, relleno tonal, una sola línea al 8 %,
+  radios 8 · 12 · 16 · 24 · píldora, dos elevaciones, escala de letra y
+  movimiento de 120-200 ms sin rebote. Los tokens viejos apuntan a los nuevos.
+- **Botones:** tres (verde relleno, tonal y de texto) y uno de icono
+  redondo de 44 px, cada uno en una sola regla; al pulsar se oscurecen y
+  encogen (nada con «reducir movimiento»). «Ver ficha» no encoge (su
+  `::after` abre la fila). Segmentados: la opción elegida en relieve, nunca
+  en verde; el idioma, con la misma paleta y foco verde.
+- **Chips, etiquetas y ✓:** píldora tonal sin borde (la elegida, blanca);
+  etiquetas de estado en un rectángulo de 8 px y frase normal; el punto
+  fuerte es texto con ✓ verde, sin cápsula.
+- **Cajas:** una línea tenue y un solo nivel de caja (Academy, Perfil,
+  ficha); vacíos sin discontinuas; campos tonales; fuera todo el cristal
+  y las sombras sueltas; cabecera y barra opacas, también en escritorio.
+- **Rótulos:** de mayúsculas de máquina a frase normal de 12 px; la mono
+  solo en el radar. 16 textos del HTML/JS pasan a frase normal y sus claves
+  de `idioma-en.js` también (el motor sigue traduciendo la versión en
+  mayúsculas que usa la app); copiado a la web.
+- **Iconos:** un solo trazo de 1,75; SVG en el menú de Perfil y en la
+  estrella; chevrones de trazo. **Pesos** 400-700 e interletraje −.02em.
+- **Pruebas cambiadas** (`probar-web.mjs`, comentario que cita la guía):
+  la barra inferior sobre `--noche` (§6), «Ofertas específicas» en frase
+  normal (§12.4) y el microtexto del secundario a 12 px (§5).
+- **Medidas** (`medidas.json` y capturas antes/después en el scratchpad de
+  la sesión): CSS 177 610 → 155 166 B; radios 35 → 15, bordes 33 → 20,
+  sombras 29 → 7, cristal 14 → 0, mayúsculas 45 → 5; 4 filas enteras en
+  Ofertas y Reventa a 390 px; CLS de Inicio en escritorio 0,039 → 0,000
+  (el selector de idioma tiene su hueco reservado).
+- `npm test` completo en verde; `probar-orden.mjs` solo avisa de `App.js`.
+- **Pendiente:** la escala de letra completa (quedan 79 tamaños; solo se
+  subieron los de menos de 11 px y los rótulos); las páginas sueltas con
+  su propia hoja (lecciones de Academy, privacidad, 404); la app (§13 de la
+  guía); los chips de Plataformas en una fila desplazable. Inicio, el
+  cambio a «Descartadas» y la barra de 5 botones van en el paso de Inicio.
+  Publicar necesita el permiso de Víctor.
+
 ## 3 de noviembre de 2026 (noche, 2) · Claude · corrección de la versión final de Inicio y Buscar (sin publicar)
 
 Misma rama local `claude/rediseno-final-wf1`, seis commits sobre la entrada
