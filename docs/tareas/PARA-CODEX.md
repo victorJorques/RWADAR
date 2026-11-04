@@ -6,6 +6,35 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (tarde, 5) · Claude · corrector de Academy y Privacidad (sin publicar)
+
+Misma rama `claude/academy-pulido`, encima de la entrada de abajo. **Sin push,
+Supabase sin tocar, nada publicado, sin OTA.**
+
+- **Fecha de revisión legal:** vuelve a **2026-10-02** en las lecciones 1-7
+  (frontmatter, cabecera, pie, JSON-LD y sitemap). El pulido fue de estilo, no
+  una revisión legal; la última que consta es la de Víctor del 2/10. Si Víctor
+  revisa de nuevo, se cambia la fecha (y en la 04, «A 21 de agosto de 2026»
+  con lo que haya hoy sobre el umbral de 12 millones).
+- **Lección 6:** el título vuelve a «Cuatro espejismos de liquidez» y una
+  línea explica la palabra, para que el aviso reforzado («Las condiciones,
+  espejismos y preguntas…») siga remitiendo a algo que está en la lección.
+  El aviso no se toca.
+- **Lección 5:** primer punto del resumen acortado; la tarjeta vuelve a caber
+  en 3 líneas a 390 px en castellano y en inglés (clave nueva en
+  `idioma-en.js` y `copiar-idiomas-web.cjs`).
+- **Hechos:** EBITDA = resultado bruto de explotación (no «beneficio de
+  explotación», que es el EBIT); tanteo y retracto explicados los dos.
+  Retoques de redacción en 02, 05, 06 y 07.
+- **Privacidad:** espacio tras cada etiqueta de celda (al copiar ya no sale
+  «Por qué ocurreEs lo mínimo…»). Visualmente igual.
+- **Caché del CSS y del diccionario:** no se renombran. `rwadar-publicar.js`
+  ya pone una huella del contenido en el nombre al publicar
+  (`privacidad-20260820.<hash>.css`), así que el `immutable` nunca sirve bytes
+  viejos con un nombre nuevo.
+- **Pruebas:** `npm test` en verde; `comprobar-ota-compatible.cjs --base
+  c1f7106` en ok.
+
 ## 4 de noviembre de 2026 (tarde, 4) · Claude · lecciones de Academy en llano y tablas de Privacidad en el móvil (sin publicar)
 
 Rama local `claude/academy-pulido` (worktree `.claude/worktrees/academy-pulido`),
