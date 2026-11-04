@@ -2272,8 +2272,9 @@ for(const [nombre,alterar] of [
   prueba('Buscar: el foco sigue el orden de la vista y la barra fija no lo tapa',
     pos.every((x,i)=>x>0&&(!i||x>pos[i-1]))&&['.emis-cab','.emis-criterio-orden','.escaparate-busqueda','.buscar-vistas'].map(fila).join()==='2,2,3,3'&&
     /scroll-padding-bottom:calc\(var\(--movil-nav-alto\)/.test(cssMovil));
+  // GUIA-ACABADOS.md §6: barra sobre --s0 (--noche).
   prueba('cabecera y barra inferior opacas, sin cristal',
-    /background:var\(--noche\)/.test(cab)&&/background:var\(--noche-2\)/.test(barra)&&!/backdrop-filter/.test(cab+barra));
+    /background:var\(--noche\)/.test(cab)&&/background:var\(--noche\)/.test(barra)&&!/backdrop-filter/.test(cab+barra));
   vm.runInContext("emiColeccion='principales';emiCat='Tesoro y fondos';emiBusquedaLocal='';pintarEmisiones()",c);
   const filtrada=p.obtiene('emiLista').innerHTML,anuncio=p.obtiene('movilOfertasEstado').textContent;
   vm.runInContext("emiCat='';pintarEmisiones()",c);

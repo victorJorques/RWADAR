@@ -1089,8 +1089,8 @@ const colOf=p=>(CATMETA[p.cat]||{c:'#7C8699'}).c;
 const catClase=p=>' cat-'+Math.max(0,Object.keys(CATMETA).indexOf(p.cat));
 const aplicaCat=(el,p)=>{if(!el)return;for(let i=0;i<6;i++)el.classList.remove('cat-'+i);el.classList.add(catClase(p).trim())};
 const siglaEl=(p,cls='sigla')=>`<span class="${escHtml(cls)} ${catClase(p)}">${escHtml(initials(String(p.n||'')))}</span>`;
-const okSVG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg>`;
-const escudoSVG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg>`;
+const okSVG=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3FD69B" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"/></svg>`;
+const escudoSVG=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.4-3 7.8-7.5 9-4.5-1.2-7.5-4.6-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round"/></svg>`;
 
 /* =================================================================
    EL RADAR DE PORTADA
@@ -2261,11 +2261,11 @@ function clavesOfertaLocal(o,secundario){
  return {destacado,auxiliares:preferidas.slice(0,2)};
 }
 /* Como en los buscadores de viajes: dónde está el activo, con su chincheta. */
-const ICONO_LUGAR='<svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
+const ICONO_LUGAR='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
 const AVISO_GENERAL_OFERTA=/^Referencia editorial gratuita\b/;
 /* Lo primero que piden los usuarios en una tarjeta: quién supervisa la
    plataforma. Sale del radar; sin promesas ni sellos que no consten. */
-const ICONO_SUPERVISOR='<svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"/></svg>';
+const ICONO_SUPERVISOR='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"/></svg>';
 function supervisionOferta(o){
  const p=(typeof P!=='undefined'&&Array.isArray(P)?P:[]).find(x=>x&&x.slug===o.plataformaSlug);
  const estado=p&&p.verificacionLocal&&p.verificacionLocal.licenciaRegistro&&p.verificacionLocal.licenciaRegistro.estado;
