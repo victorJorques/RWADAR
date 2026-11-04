@@ -305,8 +305,8 @@ export default function Inicio({
           <Text noTraducir style={e.b3Txt}>{t.portada.explorar} ›</Text>
         </Pressable>
         <Pressable onPress={() => irAFuentes('portada')} style={({ pressed }) => [e.fuentesApartado, pressed && pulsado('b3')]}
-          accessibilityRole="link" noTraducir accessibilityLabel={`${t.fuentesApartado}: ${GRUPOS_FUENTES_INICIO[0][idioma === 'en' ? 'en' : 'es']}`}>
-          <Text noTraducir style={e.fuentesApartadoTxt}>{t.fuentesApartado} ›</Text>
+          accessibilityRole="link" noTraducir accessibilityLabel={`${t.portada.fuentes}: ${GRUPOS_FUENTES_INICIO[0][idioma === 'en' ? 'en' : 'es']}`}>
+          <Text noTraducir style={e.fuentesApartadoTxt}>{t.portada.fuentes} ›</Text>
         </Pressable>
       </View>
 

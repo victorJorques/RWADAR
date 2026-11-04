@@ -32,6 +32,8 @@ const es = {
     boton: (n) => (n ? `Ver las ${n} ofertas` : 'Ver las ofertas'),
     aviso: 'Invertir tiene riesgos: puedes perder parte o todo lo que inviertas. RWAdar informa, no asesora ni vende.',
     explorar: 'Explorar el radar',
+    // En la portada, como la web, el enlace dice solo «Fuentes».
+    fuentes: 'Fuentes',
   },
   fuentesApartado: 'Fuentes de este apartado',
   saberMas: 'Saber más',
@@ -268,6 +270,7 @@ const en = {
     boton: (n) => (n ? `See the ${n} offers` : 'See the offers'),
     aviso: 'Investing carries risk: you can lose some or all of what you invest. RWAdar informs, but doesn\'t advise or sell.',
     explorar: 'Explore the radar',
+    fuentes: 'Sources',
   },
   fuentesApartado: 'Sources for this section',
   saberMas: 'Learn more',
