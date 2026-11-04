@@ -6,6 +6,67 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (2) · Claude · la app con el rediseño de la web (sin publicar)
+
+Rama local `claude/app-rediseno` (sale de `claude/acabados`, 2bcbd20), commits
+d73ccc4…e4521db, solo en `rwadar-movil/`. **Nada publicado, sin OTA ni EAS,
+Supabase sin tocar, sin dependencias ni código nativo** (todo cabe en una OTA).
+Ni `package.json`, ni `app.json`, ni `eas.json`, ni `scripts/`, ni la web.
+
+- **Acabados** (`lib/tema.js`, GUIA-ACABADOS §13): superficies s0-s3,
+  relleno tonal, una sola línea al 8 %, radios 8 · 12 · 16 · 24 · píldora,
+  dos elevaciones, tres botones con su pulsado (sin encoger con «reducir
+  movimiento»), chips tonales sin borde, ✓ en texto, rótulos en frase normal
+  y sin mono (la mono queda en las cifras del radar). Cabecera y barra opacas.
+- **Barra de 5:** Inicio · Ofertas · Plataformas · Academy · Perfil. Fuera
+  el selector de Buscar; Ofertas y Plataformas son sus dos vistas, así que
+  los avisos, Academy, «fuera» y Perfil siguen llevando a donde iban. Las
+  fichas se cierran con Atrás como antes (`onRequestClose`). El idioma, solo
+  arriba de Perfil.
+- **Ofertas:** fila compacta de la web (miniatura, 2 líneas, proveedor y
+  lugar, 2 puntos fuertes ✓, Mínimo · España · Salida cortos, «Revisa · N
+  avisos en la ficha», fecha y «Ver ficha»). Arriba, «Selección RWAdar · la
+  documentación más completa» con «No es una recomendación de inversión» y
+  luego «Resto de principales». `lib/transparencia.js` copia la lógica de la
+  web y falla cerrado; con el catálogo de hoy salen las mismas 3.
+- **Ficha:** «Transparencia: lo que hemos comprobado», con ✓/✗, el motivo y
+  la fuente con su fecha, y los puntos fuertes con su fuente.
+- **Inicio como historia** (ESPEC-INICIO y HISTORIA-v2, titular n.º 1):
+  radar vivo sin buscador y con sus 4 cifras, «Ver las 24 ofertas» con el
+  aviso pegado (antes del botón por debajo de 700 px), seis capítulos,
+  novedad, Selección con las 5 comprobaciones a la vista, «Mira, compara y
+  decide tú», fuentes y nota legal. **Sin llamadas [n]** (decisión de
+  Víctor): cada apartado acaba en «Fuentes de este apartado», que abre la
+  lista agrupada y baja a su grupo. Las cifras salen del catálogo y sin
+  catálogo vigente no hay Selección, mínimos ni vigencia.
+- **«Descartadas»** en la app; en inglés, «Discarded» (como ya dice la web en
+  «…look at “Discarded” first»). ESPEC-INICIO §2.11 decía «Excluded»: si
+  Víctor prefiere esa, es cambiar una entrada de `lib/idioma-en.js` y dos
+  de `lib/inicio-contenido.js`.
+- **Inglés:** 54 entradas nuevas al final de `lib/idioma-en.js`; el texto
+  de Inicio va en `lib/inicio-contenido.js` en los dos idiomas.
+- **Pruebas:** `npm --prefix rwadar-movil test` 406, 404 bien y 2 omitidas.
+  Nuevas: `transparencia.test.cjs` (5) e `inicio-historia.test.cjs` (5).
+  Cambiadas con comentario: barra de 5 y sin `SelectorBuscar`
+  (`navegacion`), rótulo de barra a 11 px (`radar-geometria`), fila compacta
+  (`ofertas-presentacion`, `ofertas-vigencia`) y rótulos en frase normal
+  (`academy`, `cuentas-ui`, `verificacion-local`, `navegacion`).
+- **Capturas** (Expo web en local, sin red, 390 × 844 y dsf 2) en el
+  scratchpad de la sesión, `app-rediseno/01-inicio.png` a `07-ingles.png`,
+  más `01b-inicio-375x667.png` y `02b-fuentes-del-apartado.png`. La cuenta se
+  simula con el catálogo publicado (`app-rediseno/scripts/preparar.sh`).
+- **Al mezclar con la web:** las dos ramas añaden entradas al final de
+  `rwadar-movil/lib/idioma-en.js` (choque trivial: quedarse con las dos).
+  Después, `node rwadar-movil/scripts/copiar-idiomas-web.cjs`, porque el
+  `test:tools` de la raíz exige la copia idéntica en la web.
+- **Pendiente:** regenerar `lib/academy-contenido.js` y
+  `lib/noticias-contenido.js` cuando la web cambie «Fuera del radar» en
+  `rwadar-academy/` y `rwadar-noticias/` (son generados); que
+  `rwadar-editorial-source/inicio/fuentes.mjs` escriba también
+  `lib/inicio-fuentes.js`; la etiqueta sobre la foto grande de la ficha
+  (la web ya la quitó); probarlo en un Android real; y la OTA, solo con el
+  permiso expreso de Víctor.
+
 ## 4 de noviembre de 2026 · Claude · acabados de la web (sin publicar)
 
 Rama local `claude/acabados` (sale de 1b0e1e3), commits 53bb826…8a6afdb.
