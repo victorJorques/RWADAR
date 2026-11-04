@@ -233,6 +233,9 @@ export default function Inicio({
   const [novedadesAbiertas, setNovedadesAbiertas] = useState(false);
   const cap = t.capitulos;
   const ultima = NOTICIAS[0];
+  // La misma línea que la web: el resumen corto (o el título) con su punto final.
+  const baseNovedad = ultima ? (ultima.resumen || ultima.titulo) : '';
+  const lineaNovedad = baseNovedad && !/[.!?…]$/.test(baseNovedad) ? `${baseNovedad}.` : baseNovedad;
 
   const bajarA = (y) => desplazamiento.current?.scrollTo?.({ y: Math.max(0, y - 8), animated: true });
   const guardar = (clave) => (ev) => { posiciones.current[clave] = ev.nativeEvent.layout.y; };
@@ -431,7 +434,7 @@ export default function Inicio({
           al tocar, todas. */}
       {ultima ? (
         <View style={e.novedades}>
-          <Text style={e.novedadTxt}><Text noTraducir style={e.novedadFecha}>{fechaES(ultima.fecha) || ultima.fechaTexto}</Text> · {ultima.titulo}</Text>
+          <Text style={e.novedadTxt}><Text noTraducir style={e.novedadFecha}>{fechaES(ultima.fecha) || ultima.fechaTexto}</Text> · {lineaNovedad}</Text>
           <Pressable onPress={() => { tacto.eleccion(); setNovedadesAbiertas((v) => !v); }}
             style={({ pressed }) => [e.b3, pressed && pulsado('b3')]} accessibilityRole="button"
             accessibilityState={{ expanded: novedadesAbiertas }} noTraducir accessibilityLabel={t.novedades}>
