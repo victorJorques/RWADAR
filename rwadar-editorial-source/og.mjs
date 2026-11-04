@@ -15,13 +15,18 @@ const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
 const sharp = require('sharp');
 const { ORIGEN_PUBLICO } = require('../rwadar-publicacion-segura.js');
-const FUENTES = (fs.readFileSync(path.join(RAIZ, 'rwadar-site', 'assets', 'rwadar-20260820.css'), 'utf8').match(/@font-face\{[^}]*\}/g) || []).join('\n');
+// Las fuentes de la hoja de la web apuntan a /assets/fuentes/: aquí no hay
+// servidor, así que se incrustan en base64 (si no, sale una letra de sustitución).
+const FUENTES = (fs.readFileSync(path.join(RAIZ, 'rwadar-site', 'assets', 'rwadar-20260820.css'), 'utf8').match(/@font-face\{[^}]*\}/g) || [])
+  .map((regla) => regla.replace(/url\((\/assets\/fuentes\/[^)]+\.woff2)\)/g, (_, ruta) =>
+    `url(data:font/woff2;base64,${fs.readFileSync(path.join(RAIZ, 'rwadar-site', ruta)).toString('base64')})`))
+  .join('\n');
 if (!/Geist/.test(FUENTES)) throw new Error('no encuentro las fuentes Geist en la hoja de estilos de la web');
 
 const W = 1200, H = 630, CX = 935, CY = 322, R = 150;
 const SECTORES = [
-  ['INMUEBLES', '#F2B23C', -90], ['CRÉDITO', '#5B8CFF', -30], ['TESORO', '#32C9F5', 30],
-  ['ACCIONES', '#B583FF', 90], ['MATERIAS', '#FF8A5B', 150], ['INFRA', '#9AA6BF', 210],
+  ['INMUEBLES', '#F2B23C', -90], ['CRÉDITO', '#5B8CFF', -30], ['DEUDA\nPÚBLICA', '#32C9F5', 30],
+  ['ACCIONES', '#B583FF', 90], ['MATERIAS\nPRIMAS', '#FF8A5B', 150], ['INFRAESTRUCTURA', '#9AA6BF', 210],
 ];
 // Puntos fijos (sector, ángulo dentro del sector, radio relativo): decoración, no datos.
 const PUNTOS = [[0, -14, .95], [0, 8, .62], [0, -3, .34], [1, -12, .9], [1, 10, .74], [1, 2, .45], [2, -16, .82], [2, 4, .58],
@@ -34,7 +39,11 @@ const radar = [
   `<path d="M${CX} ${CY} L${pol(-60, R).join(' ')} A${R} ${R} 0 0 1 ${pol(0, R).join(' ')} Z" fill="url(#barrido)"/>`,
   `<line x1="${CX}" y1="${CY}" x2="${pol(0, R)[0]}" y2="${pol(0, R)[1]}" stroke="#25E39A" stroke-width="2" stroke-opacity=".8"/>`,
   ...PUNTOS.map(([s, d, k]) => { const [, c, a] = SECTORES[s]; const [x, y] = pol(a + d, R * k); return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.5" fill="${c}" stroke="#0B0A0A" stroke-width="2"/>`; }),
-  ...SECTORES.map(([t, c, a]) => { const [x, y] = pol(a, R + 34); return `<text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" fill="${c}" fill-opacity=".9" font-family="Geist Mono" font-size="12" letter-spacing="1.5" text-anchor="middle">${t}</text>`; }),
+  // Los nombres largos van en dos líneas para no tapar los puntos del borde.
+  ...SECTORES.map(([t, c, a]) => {
+    const [x, y] = pol(a, R + 34); const lineas = t.split('\n'); const y0 = y + 4 - (lineas.length - 1) * 7.5;
+    return `<text fill="${c}" fill-opacity=".9" font-family="Geist Mono" font-size="12" letter-spacing="1.5" text-anchor="middle">${lineas.map((l, i) => `<tspan x="${x.toFixed(1)}" y="${(y0 + i * 15).toFixed(1)}">${l}</tspan>`).join('')}</text>`;
+  }),
   `<circle cx="${CX}" cy="${CY}" r="3.5" fill="#25E39A"/>`,
 ].join('');
 
@@ -58,10 +67,10 @@ p{margin-top:26px;width:560px;font-size:21px;line-height:1.45;color:#B9B3A8}
 svg.r{position:absolute;inset:0}
 </style></head><body>
 <svg class="r" width="${W}" height="${H}"><defs><radialGradient id="barrido" cx="${CX}" cy="${CY}" r="${R}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#25E39A" stop-opacity=".05"/><stop offset="1" stop-color="#25E39A" stop-opacity=".32"/></radialGradient></defs>${radar}</svg>
-<div class="marca">${MARCA}<div class="wm">RWA<span>dar</span><small>REGISTRO DE TOKENIZACIÓN</small></div></div>
-<div class="texto"><h1>Plataformas de activos tokenizados. <em>Fuentes y riesgos,<br>a la vista.</em></h1>
-<p>Quién opera, qué permisos constan y qué condiciones publica cada plataforma, con la fuente al lado.</p></div>
-<div class="pie"><b>${dominio}</b><span>REGISTRO INDEPENDIENTE · NO ES ASESORAMIENTO FINANCIERO</span></div>
+<div class="marca">${MARCA}<div class="wm">RWA<span>dar</span><small>OFERTAS Y PLATAFORMAS TOKENIZADAS</small></div></div>
+<div class="texto"><h1>Plataformas de activos tokenizados, <em>con sus fuentes<br>y sus riesgos.</em></h1>
+<p>Quién opera, qué permisos constan y qué condiciones publica cada plataforma, y de dónde sale cada dato.</p></div>
+<div class="pie"><b>${dominio}</b><span>CATÁLOGO INDEPENDIENTE · NO ES ASESORAMIENTO FINANCIERO</span></div>
 </body></html>`;
 
 function cargarPlaywright() {
