@@ -139,6 +139,8 @@
   "Usa la huella, el reconocimiento facial o el PIN que ya tengas en el móvil. RWAdar no crea ni guarda un PIN.": "Use the fingerprint, face recognition or PIN already set up on your phone. RWAdar does not create or store a PIN.",
   "No se pudo comprobar tu sesión guardada. Reinténtalo cuando tengas conexión.": "Your saved session could not be verified. Try again when you have a connection.",
   "Preparando tu acceso…": "Preparing your sign-in…",
+  "Tu radar, con tu cuenta": "Your radar, with your account",
+  "Preparando el acceso…": "Preparing sign-in…",
   "Comprueba tu conexión": "Check your connection",
   "Reintentar sesión guardada": "Retry saved session",
   "Cerrar sesión guardada": "Sign out of saved session",

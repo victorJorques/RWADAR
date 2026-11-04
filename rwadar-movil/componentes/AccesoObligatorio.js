@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ScrollView, Text, View } from './Idioma';
+import { ScrollView, SelectorIdioma, Text, View } from './Idioma';
 import Cuenta from './Cuenta';
 import { C, F } from '../lib/tema';
 
@@ -9,6 +9,9 @@ export default function AccesoObligatorio({ controlador, estado, onAbrirEnlace, 
   // «aviso»: una versión nueva puede ser justo la que arregla el acceso.
   return <SafeAreaView style={s.pagina} edges={['top', 'right', 'bottom', 'left']}>
     {aviso}
+    {/* Sin cuenta no se llega a Perfil: el idioma se elige también aquí
+        (prueba en móvil, 04/11/2026). */}
+    <SelectorIdioma />
     <ScrollView contentContainerStyle={s.contenido} keyboardShouldPersistTaps="handled">
       <Text style={s.marca}>RWAdar</Text>
       <Text accessibilityRole="header" style={s.titulo}>Tu radar, con tu cuenta</Text>
