@@ -1714,10 +1714,11 @@ function pintarEmisiones(){
   if(pestanas){pestanas.hidden=false;pestanas.innerHTML=
    [['principales','Principales'],['secundario','Reventa'],['en_camino','Próximas']].map(([c,t])=>
     '<button type="button" role="tab" data-emi-coleccion="'+c+'" class="'+(emiColeccion===c?'on':'')+'" aria-selected="'+(emiColeccion===c)+'">'+t+' <em>'+cuantas(c)+'</em></button>').join('');}
-  const movil=vistaMovilOfertas(),elegidas=movil?visibles.filter(enSeleccionOferta):[];
+  const movil=vistaMovilOfertas(),elegidas=movil&&emiOrden!=='nuevas'?visibles.filter(enSeleccionOferta):[];
   const resto=visibles.filter(o=>!elegidas.includes(o));
   /* Móvil: primero la Selección (las que cumplen las cinco comprobaciones) y
-     después el resto, cada bloque en el orden del selector. */
+     después el resto, cada bloque en el orden del selector. Con «Más nuevas
+     primero», una sola lista: la más nueva arriba. */
   const filas=!visibles.length?'<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>':
    elegidas.length?'<div class="catalogo-bloque catalogo-seleccion" role="group" aria-labelledby="emiSeleccionTit"><header class="catalogo-bloque-cab"><h3 id="emiSeleccionTit">Selección RWAdar <span>· pasan nuestras 5 comprobaciones</span></h3>'+
     '<p>No es una recomendación de inversión.</p></header>'+elegidas.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>'+
@@ -1797,7 +1798,7 @@ function pintarEmisiones(){
 function seccionReferenciasCatalogo(catalogo,coleccion){
  const todas=catalogo.filter(o=>o.coleccion===coleccion);
  const visibles=todas.filter(o=>(!emiCat||o.categoria===emiCat)&&coincideBusquedaOfertaLocal(o))
-  .sort((a,b)=>a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||a.titulo.localeCompare(b.titulo,'es'));
+  .sort(emiOrden==='nuevas'?masNuevasPrimero:(a,b)=>a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||a.titulo.localeCompare(b.titulo,'es'));
  const titulo=coleccion==='secundario'?'Reventa entre inversores':'Próximas ofertas';
  const alcance=coleccion==='secundario'
   ?'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
@@ -1955,6 +1956,17 @@ function tarjetaSeleccionHtml(o,i){
   (min?'<p class="rel-tarjeta-min"><span>Mínimo documentado:</span> <span translate="no">'+escHtml(min)+'</span></p>':'')+
   '<button class="b3 rel-tarjeta-ver" type="button" data-perfil-oferta="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(t)+'">Ver ficha<span class="rel-flecha" aria-hidden="true"></span></button></div></article></li>';
 }
+/* «Recién añadidas» de Inicio (04/11/2026): altaOferta, ofertaNueva y
+   masNuevasPrimero van junto a transparenciaOferta. */
+const ofertasRecienAnadidas=()=>ofertasCatalogoInicio().filter(o=>ofertaNueva(o,30)).sort(masNuevasPrimero).slice(0,6);
+function tarjetaNuevaHtml(o,i){
+ const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=altaOferta(o);
+ return '<li class="rel-tarjeta rel-nueva"><article aria-labelledby="'+id+'">'+
+  (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
+  '<div class="rel-tarjeta-cuerpo"><h3 id="'+id+'" lang="es" translate="no"><button class="rel-nueva-abrir" type="button" data-perfil-oferta="'+escHtml(o.slug)+'"><span>'+escHtml(t)+'</span></button></h3>'+
+  '<p class="rel-tarjeta-plat" translate="no">'+escHtml(o.plataformaNombre||'')+(img&&img.lugar?' · '+escHtml(img.lugar):'')+'</p>'+
+  '<p class="rel-nueva-meta"><span class="etq etq-ok">Nueva</span> <span><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></span></p></div></article></li>';
+}
 /* Las fotos de la Selección se piden al acercarse a la pantalla: con solo
    loading=lazy el navegador las adelanta 1250 px. */
 let observadorFotosInicio=null;
@@ -1970,9 +1982,9 @@ function diferirFotosInicio(){
 function pintarInicio(){
  const panel=document.getElementById('movilPanelInicio');
  if(!panel)return;
- const c=cifrasInicio(),sin=c.sin,en=idiomaInicio()==='en';
+ const c=cifrasInicio(),sin=c.sin,en=idiomaInicio()==='en',nuevas=sin?[]:ofertasRecienAnadidas();
  const huella=[P.length,FUERA.length,sin,CATALOGO_EMBEBIDO_BLOQUEADO,c.revisado,c.hasta,en,c.ofertas,c.minimos,c.usd,
-  P.map(p=>p.slug+p.cat).join(),c.seleccion.map(o=>o.slug+fechaRevisionOferta(o)).join()].join('|');
+  P.map(p=>p.slug+p.cat).join(),c.seleccion.map(o=>o.slug+fechaRevisionOferta(o)).join(),nuevas.map(o=>o.slug).join()].join('|');
  if(huella===huellaInicio)return;
  huellaInicio=huella;
  const pon=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html;return el;};
@@ -2003,6 +2015,8 @@ function pintarInicio(){
  ocultar('relEscaparate',sin||!c.seleccion.length);
  pon('inicioCriterios',criteriosTransparencia().map(k=>'<li>'+escHtml(CRITERIOS_INICIO[k.id]||k.texto)+'</li>').join(''));
  pon('relTarjetas',sin?'':c.seleccion.map(tarjetaSeleccionHtml).join(''));
+ ocultar('relNuevas',!nuevas.length);
+ pon('relNuevasLista',nuevas.map(tarjetaNuevaHtml).join(''));
  diferirFotosInicio();
  if(relatoInicio)relatoInicio.repintar();
 }
@@ -2071,6 +2085,10 @@ var relatoInicio=(function(){
  const refs=$('relRefs');
  const llevar=(n,centro)=>{n.scrollIntoView({block:centro?'center':'start',behavior:quieto()?'auto':'smooth'});n.focus({preventScroll:true});};
  panel.addEventListener('click',e=>{
+  /* «Ver todas las ofertas nuevas»: Principales con «Más nuevas primero»
+     (data-movil-ir hace el resto). */
+  const o=e.target.closest&&e.target.closest('[data-emi-orden]');
+  if(o){emiOrden=o.dataset.emiOrden;emiColeccion='principales';const s=$('emiOrden');if(s)s.value=emiOrden;pintarEmisiones();}
   /* Tocar el radar o «Explorar el radar» abre el radar de Plataformas. */
   const r=e.target.closest&&e.target.closest('[data-inicio-radar]');
   if(r&&typeof Movil!=='undefined'&&Movil.ir){e.preventDefault();const radar=$('movilPanelRadar');
@@ -2296,6 +2314,7 @@ function ordenarOfertasLocales(lista){
   min:(a,b)=>entrada(a)-entrada(b)||estado(a)-estado(b),
   az:(a,b)=>String(a.plataformaNombre||'').localeCompare(String(b.plataformaNombre||''),'es')||
    String(a.titulo||'').localeCompare(String(b.titulo||''),'es'),
+  nuevas:masNuevasPrimero,
  }[emiOrden]||(()=>0);
  return lista.slice().sort(orden);
 }
@@ -2421,6 +2440,17 @@ function transparenciaOferta(o){
  const e=t&&o&&typeof o.slug==='string'&&Object.hasOwn(t,o.slug)?t[o.slug]:null;
  return e&&fechaLocalValida(o.verificadaEl)&&e.verificadaEl===o.verificadaEl?e:null;
 }
+/* Recién añadidas (04/11/2026). La fecha de alta en el radar es un hecho
+   (anadidaEl de transparencia.json), no una nota: en Inicio, las altas de los
+   últimos 30 días, de la más nueva a la más antigua y 6 como mucho; en
+   Ofertas, «Nueva» durante 14 días y el orden «Más nuevas primero». Con el
+   catálogo caducado no sale nada. La app copia esto en lib/recien-anadidas.js. */
+function altaOferta(o){const t=typeof TRANSPARENCIA_POR_SLUG!=='undefined'&&TRANSPARENCIA_POR_SLUG,e=t&&o&&typeof o.slug==='string'&&Object.hasOwn(t,o.slug)?t[o.slug]:null;
+ return e&&fechaLocalValida(e.anadidaEl)?e.anadidaEl:''}
+function ofertaNueva(o,dias=14){const f=altaOferta(o),h=new Date();if(!f||catalogoSinCifrasLocal())return false;
+ const d=Math.round((Date.UTC(h.getFullYear(),h.getMonth(),h.getDate())-Date.parse(f+'T00:00:00Z'))/86400000);return d>=0&&d<dias}
+function masNuevasPrimero(a,b){return altaOferta(b).localeCompare(altaOferta(a))||String(a.plataformaNombre||'').localeCompare(String(b.plataformaNombre||''),'es')||
+ String(a.titulo||'').localeCompare(String(b.titulo||''),'es')}
 function catalogoSinCifrasLocal(){
  return [typeof CATALOGO_CADUCADO!=='undefined'&&CATALOGO_CADUCADO,typeof CATALOGO_SIN_COMPROBAR!=='undefined'&&CATALOGO_SIN_COMPROBAR,
   typeof CATALOGO_EMBEBIDO_BLOQUEADO!=='undefined'&&CATALOGO_EMBEBIDO_BLOQUEADO].some(Boolean);
@@ -2535,7 +2565,7 @@ function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
    '<h'+nivel+' class="emi-tit" title="'+escHtml(o.titulo)+'">'+escHtml(o.titulo)+'</h'+nivel+'><div class="escaparate-procedencia"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
    (imagen&&imagen.lugar?'<p class="emi-lugar">'+ICONO_LUGAR+escHtml(imagen.lugar)+'</p>':'')+'</div>'+
    puntosFuertesHtml(o)+(vistaMovilOfertas()?datosTarjetaOfertaHtml(o,resumen):datosClaveOfertaHtml(resumen))+
-   '<div class="escaparate-meta"><span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+
+   '<div class="escaparate-meta">'+(ofertaNueva(o)?'<span class="etq etq-ok emi-nueva">Nueva</span>':'')+'<span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+
    (estado.clase!=='caducado'&&o.disponibleEs===false?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+'</div>'+
    (avisoPrincipal?'<p class="escaparate-aviso-compacto'+(bloqueo?' escaparate-aviso-bloqueo':'')+'"><b>'+(bloqueo?'Importante':'Revisa')+'</b> · '+escHtml(avisoPrincipal)+(avisos.length>1?'<span> · '+(avisos.length-1)+' más en la ficha</span>':'')+'</p>':'')+
    /* En la fila compacta del móvil el aviso ordinario se resume en su

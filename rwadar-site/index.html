@@ -218,6 +218,7 @@
       <label for="emiOrden">Ordenar por</label>
       <select id="emiOrden">
         <option value="cierra">Las más al día primero</option>
+        <option value="nuevas">Más nuevas primero</option>
         <option value="rent">Rentabilidad publicada (mayor primero)</option>
         <option value="min">Mínimo en euros (menor primero)</option>
         <option value="az">Empresa (A-Z)</option>
@@ -1105,6 +1106,18 @@
           <a class="b3 rel-fuentes" href="#fuentes-portada" data-rel-fuentes="portada">Fuentes<span class="rel-flecha" aria-hidden="true"></span></a>
         </div>
       </div>
+    </section>
+
+    <!-- Recién añadidas (04/11/2026): las altas del radar de los últimos 30
+         días, de la más nueva a la más antigua y 6 como mucho. La fecha de
+         alta es un hecho (anadidaEl de transparencia.json); las pinta
+         pintarInicio(). Sin ninguna, o con el catálogo caducado, no sale. -->
+    <section class="rel-nuevas" id="relNuevas" aria-labelledby="relNuevasTit" hidden>
+      <h2 class="rel-nuevas-tit" id="relNuevasTit">Recién añadidas</h2>
+      <p class="rel-nuevas-sub">Las últimas ofertas que hemos revisado y añadido al radar</p>
+      <ul class="rel-tarjetas" id="relNuevasLista" aria-label="Recién añadidas"></ul>
+      <p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>
+      <button class="b3 rel-nuevas-todas" type="button" data-emi-orden="nuevas" data-movil-ir="emisiones">Ver todas las ofertas nuevas<span class="rel-flecha" aria-hidden="true"></span></button>
     </section>
 
     <!-- 01 · De dónde viene. El titular y, justo debajo, qué es. -->
