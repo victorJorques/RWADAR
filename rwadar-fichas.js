@@ -173,6 +173,8 @@ function pagina({titulo,descripcion,ruta,contenido,revision,imagen='/og.png',org
     '<meta property="og:type" content="article"><meta property="og:title" content="'+esc(titulo)+'">\n' +
     '<meta property="og:description" content="'+esc(descripcionMeta)+'"><meta property="og:url" content="'+ORIGEN+ruta+'">\n' +
     '<meta property="og:image" content="'+ORIGEN+imagen+'"><meta name="theme-color" content="#10100e">\n' +
+    // Vista previa grande también en X y apps que solo leen twitter:card (QA 04/11/2026, n.º 29).
+    '<meta name="twitter:card" content="summary_large_image">\n' +
     '<link rel="alternate" type="application/rss+xml" title="Novedades de RWAdar" href="/novedades.xml">\n' +
     '<script src="/assets/idioma-previo-20261104.js"></script><link rel="stylesheet" href="/'+CSS+'"><link rel="stylesheet" href="/assets/idioma-20261022.css">\n<script type="application/ld+json">'+json(datos)+'</script>\n' +
     (oferta ? '<script src="/'+COMPARTIDO+'" defer></script>\n' : '') +

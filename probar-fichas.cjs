@@ -266,6 +266,17 @@ verificar('las consultas técnicas (API o JSON) no se enlazan en las páginas fi
     ['span','consulta-tecnica','',' · Precio · Consulta técnica · 03/11/2026'],
     ['a','','https://x.com/folleto.pdf',' · Folleto · consultada el 02/11/2026 ↗']]);
 });
+// QA escritorio 04/11/2026, n.º 29: cada página fija se comparte con imagen grande
+// (og:* y twitter:card) y carga idioma-previo en <head> antes de pintar.
+verificar('las páginas fijas llevan og:*, twitter:card e idioma-previo en head',()=>{
+  for(const [nombre,contenido] of salidas){
+    if(!nombre.endsWith('.html'))continue;
+    const cabeza=contenido.slice(0,contenido.indexOf('</head>'));
+    for(const meta of ['og:title','og:description','og:url','og:image'])assert(cabeza.includes('<meta property="'+meta+'" content="'),nombre+' '+meta);
+    assert(cabeza.includes('<meta name="twitter:card" content="summary_large_image">'),nombre+' twitter:card');
+    assert(/<script src="\/assets\/idioma-previo-20261104\.js"><\/script>/.test(cabeza),nombre+' idioma-previo');
+  }
+});
 verificar('RSS enlaza noticias estables y el sitemap contiene todas las fichas',()=>{
   const rss=salidas.get('novedades.xml'),mapa=salidas.get('sitemap.xml');
   assert(rss.startsWith('<?xml'));assert(rss.includes('<rss version="2.0">'));

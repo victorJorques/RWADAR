@@ -794,6 +794,19 @@ prueba('el pre-render contiene los 4 descartes', (html.match(/class="fila"/g) ||
   prueba('sin sesión, el botón de la cabecera dice «Entrar» y está activo',
     inicio > 0 && fin > inicio && boton.textContent === 'Entrar' && boton.disabled === false && /^Entrar /.test(boton.atributos['aria-label']));
 }
+// QA escritorio 04/11/2026, n.º 29: privacidad, transparencia comercial y para
+// empresas se comparten con og:* y twitter:card. /para-empresas sigue sin indexar
+// (decisión pendiente de Víctor).
+prueba('privacidad, transparencia comercial y para empresas llevan og:* y twitter:card; para empresas sigue en noindex',
+  [privacidad, transparenciaComercial, paraEmpresas].every(pagina => {
+    const cabeza = pagina.slice(0, pagina.indexOf('</head>'));
+    const canonica = (cabeza.match(/<link rel="canonical" href="([^"]+)">/) || [])[1];
+    return canonica && cabeza.includes('<meta property="og:url" content="' + canonica + '">') &&
+      ['og:title', 'og:description', 'og:type', 'og:site_name'].every(m => cabeza.includes('<meta property="' + m + '" content="')) &&
+      cabeza.includes('<meta property="og:image" content="https://rwadar.pages.dev/og.png">') &&
+      cabeza.includes('<meta name="twitter:card" content="summary_large_image">') &&
+      cabeza.includes('<script src="/assets/idioma-previo-20261104.js"></script>');
+  }) && /<meta name="robots" content="noindex,nofollow">/.test(paraEmpresas));
 prueba('todos los formularios fallan cerrados bajo form-action none',
   [...html.matchAll(/<form\b([^>]*)>/gi)].every(m => !/\baction\s*=/i.test(m[1])));
 
