@@ -6,6 +6,269 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (tarde, 3) · Claude · correcciones de la revisión a la entrega 2026-11-03.7 (sin aplicar)
+
+Misma rama local `claude/catalogo-2026-11-04`, commits dd1cef2, 8caf488,
+c72b09b, 37fc303, ca59546 y el de este traspaso. **Sin push, Supabase sin
+tocar, nada publicado, sin OTA.** La entrada de abajo queda superada en lo
+que diga distinto.
+
+- **Revisión nueva `bd1f873b`** (la 89e88b04 no vale; sigue exigiendo la
+  344a86aa publicada). 58 textos en vez de 51: además, el acceso de Spiko,
+  Maple y Fireblocks (los vio la revisión) y, con la misma regla, Courtyard,
+  OpenEden, Swarm y Reental. ARTEX ya no se contradice; retoques de
+  castellano; la nota de RealT explica bien por qué se quita «la mayor
+  demanda» (Outlier lo atribuye a la ciudad). Nada más cambia.
+  `aplicar-y-aprobar.sql` d57b5dbc… (con `--con-textos-plataformas`,
+  d2fecfef…).
+- **App:** quitado el cambio a «Importante» (chocaba con `claude/remates`,
+  que ya lo hace). La OTA tiene que salir después de unir remates.
+- **Fila 19 hecha en el código:** «Marketplace» se lee «Mercado de
+  compraventa» en la web, las fichas fijas y la app (en inglés,
+  «Marketplace»); el valor de la base no cambia. La línea de tipo y región
+  de la tarjeta móvil ocupa hasta dos líneas para no cortar la región.
+- **Informe y revisión en el repositorio:**
+  `rwadar-app/data/verificaciones/2026-11-03.7-v2/INFORME-ENTREGA.md` (pasos
+  exactos en su §7) y `REVISION-ENTREGA.md`.
+- **Pruebas:** ensayo PGlite correcto en las dos variantes; `npm test`
+  completo en verde (web 579, fichas 68, precarga 32, móvil 406 + 2
+  omitidas, acceso 144, base de datos sin fallos); guardián de la OTA ok;
+  visto en Chrome sin red externa.
+- **Unir con remates:** el código y los datos se unen sin conflictos; solo
+  choca este archivo (las dos ramas añaden su entrada arriba): conservar las
+  dos.
+- **Pendiente (coordinador):** revisar los 15 textos marcados
+  «(corrección)» y la fila 19; decidir `public.plataformas`; unir a `main`;
+  leer como visitante que la publicada es la 344a86aa (compuerta, con hora);
+  «Aplicar catálogo» con `2026-11-03.7`; sincronizar, regenerar y sellar;
+  «Publicar web»; «OTA Android» después de remates.
+
+## 4 de noviembre de 2026 (tarde, 2) · Claude · textos del catálogo para el lector (entrega 2026-11-03.7, sin aplicar)
+
+Víctor: «hasta que no esté todo no has acabado». Rama local
+`claude/catalogo-2026-11-04`, commits 7900819 (entrega) y 141812b (app).
+**Sin push, Supabase sin tocar, nada publicado, sin OTA.**
+
+- **Entrega `2026-11-03.7`** (revisión 89e88b04; exige que la publicada sea
+  la 344a86aa). Solo cambian textos que ve el lector: los 26 avisos de
+  plataforma (anexo A de la lista de frases), 22 notas de estado (anexo B) y
+  tres detalles con «onboarding» o «ya se leen» (Ondo, Taurus, Blocksquare).
+  Cifras, fechas, fuentes, colecciones y las 24 ofertas, idénticas a la .6.
+  Cada texto, antes y después, en `textos-lector.json`; donde me aparto de
+  la lista para no cambiar un hecho (ARTEX, INX, Lofty, Securitize, Swarm,
+  Superstate, tZERO), lo explica su nota.
+- **Por qué `.7` del 03/11 y no `2026-11-04`:** los datos son del 03/11 y el
+  cargador exige esa fecha; fecharla el 04/11 alargaría la vigencia un día sin
+  releer fuentes. No se usa `npm run catalogo` porque relee fuentes y renueva
+  cifras; se hace como la .6, con `preparar-entrega.mjs`.
+- **Reental (fila 18), Toucan (fila 75) y RealT** están en
+  `public.plataformas` y `public.fuentes`, que el lote diario solo lee
+  (CICLO-DIARIO §5). Van aparte en `textos-plataformas.sql`, con guarda e
+  idempotente. Si se acepta tocar esas tablas,
+  `preparar-entrega.mjs --con-textos-plataformas` los mete en el aplicador.
+  RealT: sin «la mayor demanda…» (no está en las fuentes legibles; la de la
+  ciudad da 403), «Liquidación anunciada», «unos 700» y una fuente nueva
+  (Outlier Media, 16/07/2026) para la liquidación y la venta, que no tenían.
+- **No se puede como dato (fila 19, «Marketplace»):** es un valor del tipo
+  enumerado `rwa_actor`; cambiarlo es cambiar el esquema. Hay que hacerlo en
+  el código de web y app, en lo que se enseña.
+- **App:** el aviso de plataforma dice «Importante», como la web (antes
+  «Alerta crítica»). El inglés ya existía.
+- **Pruebas:** ensayo PGlite de la entrega correcto en las dos variantes;
+  `npm test` completo en verde; `comprobar-ota-compatible.cjs` ok.
+- **Pendiente (coordinador):** revisión independiente; decidir los textos de
+  `public.plataformas`; unir a `main`; «Aplicar catálogo» con `2026-11-03.7`;
+  sincronizar, regenerar fichas y sellar; «Publicar web» y «OTA Android».
+  Si se aplican los textos de `public.plataformas`, `node rwadar-app/volcar-seed.js`
+  para que `02_seed.sql` no se quede con los viejos.
+
+## 4 de noviembre de 2026 (tarde, 3) · Claude · arreglos de la revisión de «Recién añadidas» (sin publicar)
+
+Rama `claude/recien-anadidas`, commits 90b92c6 (web), 78ed069 (inglés) y
+14c9510 (app); nada publicado, sin push ni OTA. Las
+tarjetas del carrusel llevan su línea de riesgo (la de la Selección) y
+«Revisa · N avisos en la ficha», o el aviso crítico entero, como la fila de
+Ofertas; «Nueva» solo si tiene menos de 14 días; solo Principales.
+«Ver todas las ofertas nuevas» quita filtros y búsqueda; con «Más nuevas
+primero» no hay grupos por proveedor (escritorio y tableta). App: chips de
+«Ordenar por» con diana de 48 px y «¿Cómo ordenamos?» propio para ese orden
+(su inglés en el bloque «Recién añadidas (04/11)»). Web: una sola raya bajo
+la portada, también con el carrusel oculto. Fuera dos pruebas que miraban el
+texto del código. `npm test` en verde y OTA compatible con c1f7106.
+
+## 4 de noviembre de 2026 (tarde, 2) · Claude · «Recién añadidas» en Inicio y «Nueva» en Ofertas, web y app (sin publicar)
+
+Víctor: «pondría las más nuevas o las recién añadidas, algo así que venda».
+Rama local `claude/recien-anadidas` (sale de `claude/remates`, 38cf6f1),
+commits 574bb9a (web), 1872c68 (inglés) y 43cd0d5 (app). **Nada publicado,
+sin push, Supabase y EAS sin tocar, sin OTA.** La novedad es un hecho: la
+fecha de alta en el radar (`anadidaEl` de `transparencia.json`, que ya
+llevaban la web y la app); sin «oportunidad», urgencia ni rentabilidades.
+
+- **Inicio** (web y app): carrusel «Recién añadidas» justo bajo la portada y
+  antes del 01, con las tarjetas de la Selección: foto, título en 2 líneas,
+  proveedor y lugar, «Nueva» y «Añadida el 03/11/2026»; la tarjeta entera abre
+  su ficha (los avisos siguen en ella). Altas de los últimos 30 días, de la
+  más nueva a la más antigua y 6 como mucho: hoy Kraken xStocks y Spiko Smart
+  Cash (03/11), Robinhood y Spiko Dólar (02/11). Sin ninguna, o con el
+  catálogo caducado, no sale. Debajo, «Imágenes ilustrativas…» y «Ver todas
+  las ofertas nuevas ›», que abre Principales con «Más nuevas primero».
+- **Ofertas:** etiqueta de estado «Nueva» (verde suave, sin borde) en las
+  filas de menos de 14 días y la opción «Más nuevas primero» (en la web, en
+  el selector; en la app, nuevo «Ordenar por» con «Las más al día primero» y
+  «Más nuevas primero»). Con ese orden la lista va seguida, sin separar la
+  Selección, para que la más nueva quede arriba.
+- **Código:** web en `rwadar-20260820.js` (`altaOferta`, `ofertaNueva`,
+  `masNuevasPrimero` junto a `transparenciaOferta`; `ofertasRecienAnadidas` y
+  `tarjetaNuevaHtml` junto a la Selección), `index.html` y 17 líneas de CSS;
+  app en `lib/recien-anadidas.js` (la misma lógica),
+  `componentes/RecienAnadidas.js`, y pocas líneas en `Inicio.js`,
+  `Ofertas.js` (prop `nueva`) y `App.js`. El `index.html` se sube con el
+  pre-renderizado de antes: lo rehace `rwadar-publicar.js` al publicar.
+- **Inglés:** bloque «// Recién añadidas (04/11)» en `lib/idioma-en.js`, antes
+  de las entradas del mapa («Just added», «New», «Added on…», «See all new
+  offers», «Newest first»…); fuera dos entradas viejas sin uso. Copiado a la
+  web con `copiar-idiomas-web.cjs`.
+- **Pruebas** (sin fijar textos): `rwadar-movil/tests/recien-anadidas.test.cjs`
+  (3) y una en `probar-web.mjs` (altas de 30 días, ordenadas, oculto sin
+  ninguna); la de «Imágenes ilustrativas…» en Inicio cuenta ahora 2.
+  `npm test` completo en verde (web 580, fichas 68, precarga 32, móvil 411:
+  409 + 2 omitidas, acceso 144, base de datos sin fallos; `probar-orden.mjs`
+  solo avisa de `App.js`, como antes). OTA compatible con c1f7106 (`ok: true`).
+- **Capturas** (390 × 844, dsf 2, sin red) en el scratchpad de la sesión,
+  `recien/`: `web-inicio-carrusel`, `web-ofertas-nuevas`,
+  `app-inicio-carrusel` y `app-ofertas-nuevas`.
+- **Al mezclar con `claude/remates`:** el bloque de inglés va aparte para no
+  chocar; después, `node rwadar-movil/scripts/copiar-idiomas-web.cjs`.
+  `probar-web.mjs` queda en 239,7 KB (presupuesto 240 KB).
+- **Pendiente:** publicar web y OTA, solo con permiso de Víctor; probarlo en
+  un Android real.
+
+## 4 de noviembre de 2026 (noche, 2) · Claude · corrector de los remates (sin publicar)
+
+Sigue la rama local `claude/remates`, sin push. **Nada publicado, Supabase y
+EAS sin tocar, sin OTA.** `comprobar-ota-compatible.cjs --base c1f7106…` da
+ok; el `package.json` raíz y los archivos protegidos de `rwadar-movil` no
+cambian.
+
+- **Fila 17 completa:** quedaban cinco «ha vencido» (aviso del catálogo, fila
+  «Revisada esta semana» de la ficha, página fija y app). Ahora todo dice «la
+  revisión semanal ha caducado». Comprobado con el reloj en el 12/11/2026.
+- **Inglés que faltaba** (web y app comparten diccionario y motor):
+  Academy (progreso, niveles, rótulos y resúmenes de las tarjetas, migas,
+  fechas, índice, paginación y test de las lecciones, y las etiquetas
+  accesibles de la app), Plataformas (recuento, «Show 20 more», filtros,
+  regiones, radar, comparación, ficha), cabeceras de las colecciones de
+  Ofertas, avisos del catálogo caducado y las filas del menú de Perfil de la
+  app. Las dos etiquetas de filtros que la rama había dejado a medias
+  («Filter by tipo de inversor») ya salen enteras. Un barrido en inglés de la
+  web (390 y 1366 px) ya solo encuentra en castellano datos del catálogo
+  (nombres, tipo · región de las plataformas, avisos de la fila 11) y el
+  cuerpo de las lecciones.
+- **Cuerpo de las lecciones y aviso legal de Academy:** siguen en castellano,
+  ahora marcados como «Original source text (Spanish)» también en la app y en
+  el índice de la web. **Lo decide Víctor** si el aviso legal se traduce.
+- **«Registro» → «catálogo»** donde es interfaz: pie («Última revisión del
+  catálogo»), «Explorar el catálogo», «Alcance del catálogo…», «El catálogo en
+  cifras», el radar, el aviso de «Nada abierto con ese filtro» y el pie de
+  Academy. **Quedan para Víctor** las frases legales que usan «registro»: «RWAdar
+  es un registro editorial independiente…» (Inicio y app), «El registro y su
+  selección no pueden reproducirse…» (pie) y la de Privacidad.
+- **Aviso de correo** al aceptar los avisos: ya no habla de Brevo ni de la
+  prueba «de extremo a extremo».
+- **Tablas legales en el móvil:** letra un punto menor y menos relleno; por
+  debajo de 380 px, guiones en las palabras largas. Las cuatro de Privacidad,
+  la de Transparencia comercial y la de Para empresas caben en su caja a 390,
+  360 y 320 px. El texto legal no cambia.
+- **Corrección a la entrada anterior:** el enlace a Academy de Inicio solo se
+  ve por debajo de 768 px. En escritorio no aparece; Academy sigue en el menú
+  de arriba y en su sección de la portada.
+- **Pruebas:** `npm test` completo en verde: rwadar-app sin fallos (27
+  bloques, 30 comprobaciones SQL y el mapa, 11 de 11), web 579, fichas 68,
+  precarga 32, QR, móvil 406 + 2 omitidas, herramientas al día, acceso 144.
+  Gitleaks sin hallazgos en cada commit.
+- **Capturas** a 390 × 844, dsf 2, en el scratchpad de la sesión
+  (`corr-remates/capturas/`): Academy, Plataformas y ficha en inglés (web),
+  índice de Academy en inglés con el aviso legal, tabla de Privacidad, ficha
+  fija con la revisión caducada (12/11) y, en la app en inglés, Perfil,
+  Academy y una lección con su aviso legal.
+
+**Pendiente:** lo mismo que en la entrada anterior (catálogo, cuerpo de las
+lecciones) y las decisiones de Víctor de arriba. En la ficha de plataforma,
+los valores de la tabla de datos (acceso, tipo de activo, región) siguen en
+castellano a propósito: se tratan como dato de la fuente.
+
+---
+
+## 4 de noviembre de 2026 (noche) · Claude · remates de web y app (sin publicar)
+
+Víctor: «hasta que no esté todo no has acabado». Rama local `claude/remates`
+(sale de `main` 2f9348d), commits f8f10a8…dae1ded. **Nada publicado, sin
+push, Supabase y EAS sin tocar, sin OTA.** El `package.json` raíz y
+`rwadar-movil/package.json`, `package-lock.json`, `app.json`, `eas.json` y
+`scripts/` no cambian; `comprobar-ota-compatible.cjs --base c1f7106…` da ok.
+
+- **Marca** (decisión de Víctor, fila 10): «Ofertas y plataformas
+  tokenizadas» bajo el logo (cabecera y pie), en el título, el JSON-LD, el
+  nombre al instalar y `og.png`; «Catálogo independiente» en vez de «Registro
+  independiente». Inglés: «Tokenised offers and platforms». `og.mjs` incrusta
+  ya las fuentes (antes salía con letra de sustitución), lleva el titular de la
+  web y los sectores sin abreviar (filas 2, 71 y 92). La app no enseña
+  subtítulo bajo el logo: no había dónde cambiarlo.
+- **Academy desde Inicio** (decisión de Víctor): «¿Empiezas de cero? 7
+  lecciones gratis en Academy ›» junto a «Mira, compara y decide tú», en la web
+  (lo escribe `rwadar-academy.js` con el número real; solo se ve por
+  debajo de 768 px, donde abre la pestaña Academy) y en la app (cuenta las lecciones
+  publicadas y abre Academy). Inglés incluido.
+- **Lista de frases, todo lo que vive en el código:** cuentas y seguimiento
+  (49-51, 53, 54: «Seguir» y «lista de seguimiento» también en la app y en
+  Privacidad; el aviso de correo sin Brevo ni «de extremo a extremo»), Academy
+  (59-62, 64-69; solo títulos y rótulos, el cuerpo y las fechas de revisión
+  legal de las lecciones no cambian), legales y comerciales (77, 78, 84, 85,
+  88 y 89, sin cambiar ningún hecho; el ancla `#consultas-b2b` se queda), las
+  partes que faltaban de 20, 23 y 39, y 6, 11, 13, 15, 16, 17, 21, 22, 26, 32,
+  35, 37, 38, 42, 43, 44, 47 y 55 donde quedaban (sobre todo en la app). El
+  texto centinela «Salida por volver a comprobar» cambia a la vez en web,
+  fichas, `ficha-editorial` (web y app) y app.
+- **App igual que la web:** la foto de la ficha sin etiqueta encima y con el
+  pie «Imágenes ilustrativas, no fotos del activo» (el manifiesto exige ahora
+  `pieVisibleObligatorio`; el alt sigue empezando por «Ilustración
+  editorial»); «Ficha completa ↗» (abre /ofertas/<slug> con Linking) y
+  «Compartir» (Share de react-native); la línea de novedades con el resumen
+  corto (`rwadar-noticias.js` lo copia a la app); inglés que faltaba
+  (categorías y niveles de Academy, chips con recuento, «Comprobado en»,
+  etiquetas accesibles…).
+- **Fuentes de Inicio en inglés:** `texto_en` en las 38 y `titulo_en` en los
+  grupos; `fuentes.mjs` pinta las dos en la web (se ve la del idioma elegido) y
+  genera `rwadar-movil/lib/inicio-fuentes.js`, que era copia a mano.
+- **Fechas** de las fichas generadas en dd/mm/aaaa.
+- **Prueba del mapa** al día: cuenta del catálogo (hoy 12 de 24 ofertas con
+  ubicación), recoge el mapa nuevo (JSON local al abrir Mapa, `#mapaMargen`,
+  marcadores agrupados por zoom, aviso sin teselas) y entra en la cadena
+  `test` de `rwadar-app/package.json`.
+- **Otros:** «Consúltalo en su web» no sale en grande donde va el precio; las
+  tablas de las páginas legales caben a 390 px en Transparencia comercial.
+- **Pruebas:** `npm test` completo en verde (rwadar-app con el mapa, 11
+  pruebas; web 579; fichas 68; precarga 32; QR; móvil 406 + 2 omitidas;
+  herramientas; acceso 144). Gitleaks sin hallazgos en cada commit.
+- **Capturas** a 390 × 844, dsf 2, en el scratchpad de la sesión
+  (`remates/`): cabecera (móvil y escritorio), Inicio con el enlace a Academy
+  (web y app), ficha de la app, Academy (web y app), Transparencia comercial y
+  Privacidad, y `og.png`.
+
+**Pendiente:**
+- **Ciclo de catálogo (otro agente, con permiso):** filas 11 (textos), 12, 18,
+  19 y 75, anexos A y B y RealT. Esos textos siguen en castellano también en
+  inglés: son datos.
+- Las lecciones citan en su cuerpo «aprenderás a leer el radar» (lección 06),
+  «Trazabilidad» (03) y «Mercado secundario»: cambiarlas obliga a renovar su
+  fecha de revisión legal, así que no se han tocado.
+- Las tablas de Privacidad siguen con desplazamiento lateral dentro de su caja
+  a 390 px (como antes).
+- Publicar web y OTA: lo hace el coordinador.
+
+---
+
 ## 4 de noviembre de 2026 (tarde) · Claude · rediseño publicado en web y app
 
 Víctor: «súbelo todo en cuanto esté». PR #47 (rediseño) y #48 (arreglo de la

@@ -1,0 +1,23 @@
+{
+  "versionEsquema": 2,
+  "revisionId": "f2732257-206d-48ce-2067-c7e19fa33002",
+  "hash": "f2732257206d48ce2067c7e19fa3300202a22060ffcda457d2aea8f6d20da7a9",
+  "revisionAnterior": "344a86aa-2c53-d2f0-fed4-5fdaadda33ad",
+  "revisionAnteriorComprobadaEnRemoto": false,
+  "etiqueta": "2026-11-03.7",
+  "fechaRadar": "2026-11-03",
+  "plataformas": 26,
+  "ofertas": 24,
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 3
+  },
+  "vigenciaDias": 7,
+  "nuevasAltas": 0,
+  "retiradas": 0,
+  "textosPlataformasEnAplicador": false,
+  "estado": "borrador",
+  "aplicadoEnRemoto": false,
+  "publicacionWeb": false
+}

@@ -43,10 +43,12 @@
     '#perfilCuerpo .quien','#perfilCuerpo .correo','#perfilCuerpo .perfil-ini','#perfilCuerpo input[name="name"]',
     '#perfilOfertas .perfil-oferta h3','#perfilOfertas .perfil-oferta p','#perfilEmpresas .movil-seguida h3','#perfilEmpresas .movil-seguida p','#cuentaIdentidad','#cuentaEstadoCorreo',
     '.comunidad-autor','.comunidad-texto','.ac-articulo','.ac-tldr ol','.ac-glosario dl','.ac-leccion-cab h1',
-    '.ac-pregunta legend','.ac-opcion-texto','.ac-explicacion','.ac-aviso-legal','main[data-idioma-documental]',
+    '.ac-pregunta legend','.ac-opcion-texto','.ac-explicacion','.ac-aviso-legal',
+    // Contenido de las lecciones que sigue en castellano: índice de secciones, «Da el siguiente paso» y aviso legal.
+    '.ac-indice ol','#siguiente-paso>:not(.ac-sobrelinea)','.ac-legal>p','.ac-legal-propio','main[data-idioma-documental]',
     'main[data-ficha-consulta] p:not(.migas):not(.ui):not(:has(a))','main[data-ficha-consulta] .riesgos','main[data-ficha-consulta] .fuentes:not(.puntos)','main[data-ficha-consulta] figure'
   ].join(',');
-  const superficies='#emiLista,#grid,#matrix,#radarLee,#dwBody,#modalBody,.escaparate-dialogo-cuerpo,#outlist,#perfilCuerpo,.ac-texto,main[data-idioma-documental],main[data-ficha-consulta]';
+  const superficies='.ac-legal,#emiLista,#grid,#matrix,#radarLee,#dwBody,#modalBody,.escaparate-dialogo-cuerpo,#outlist,#perfilCuerpo,.ac-texto,main[data-idioma-documental],main[data-ficha-consulta]';
   function traducir(origen){
     if(idioma.obtenerIdioma()==='en'){
       const limpio=origen.trim(),m=limpio.match(/^Ver las referencias documentales y sus fechas \((\d+)\)$/);
@@ -58,7 +60,7 @@
         [/^Fuentes consultadas · (.+)$/,'Sources checked · $1'],[/^Ver oferta en (.+) ↗$/,'See the offer on $1 ↗'],[/^Ir a la web de (.+) ↗$/,"Go to $1's website ↗"],
         [/^Ver los (\d+) datos consultados y sus fechas$/,'View the $1 data points checked and their dates'],
         [/^Revisadas el (.+)$/,'Reviewed $1'],[/^válidas 1 día más$/,'valid for 1 more day'],[/^válidas (\d+) días más$/,'valid for $1 more days'],
-        [/^válidas hasta hoy$/,'valid until today'],[/^Revisión editorial: (.+)$/,'Editorial review: $1'],[/^Última revisión del registro: (.+)$/,'Latest register review: $1']])
+        [/^válidas hasta hoy$/,'valid until today'],[/^1 lección gratis en Academy$/,'1 free lesson on Academy'],[/^Dato del (.+)$/,'Data from $1'],[/^Consultamos la fuente por última vez el (.+?); el dato es del (.+?)\. Cada dato lleva su propia fecha\.$/,'We last checked the source on $1; the data is from $2. Each data point has its own date.'],[/^Consultamos la fuente por última vez el (.+?)\. Cada dato lleva su propia fecha\.$/,'We last checked the source on $1. Each data point has its own date.'],[/^(\d+) lecciones gratis en Academy$/,'$1 free lessons on Academy'],[/^Revisión editorial: (.+)$/,'Editorial review: $1'],[/^Última revisión del registro: (.+)$/,'Latest register review: $1']])
         if(re.test(limpio))return origen.replace(limpio,limpio.replace(re,en));
     }
     return idioma.traducir(origen);

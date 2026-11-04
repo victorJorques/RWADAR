@@ -183,6 +183,8 @@ const catCorta=c=>CAT_CORTA[c]||c;
 const nombreCatHtml=c=>catCorta(c)===c?escHtml(c):
  '<span class="f-largo">'+escHtml(c)+'</span><span class="f-corto">'+escHtml(catCorta(c))+'</span>';
 const ACCESOS=["Minorista","Acreditado","Institucional","Empresas"];
+/* «Acreditado» sigue siendo el valor del filtro; solo cambia lo que se lee. */
+const etiquetaAcceso=a=>a==="Acreditado"?"Inversor acreditado":a;
 const TICKETS=["Bajo","Medio","Alto","No aplica"];
 
 /* ---- logotipo inline (CSS puede animarlo; <use> no) ----
@@ -916,7 +918,7 @@ let escenaVisible=false;
 })();
 
 /* ---- el paso a paso ---- */
-const ROTULOS=["1 · Entero","2 · Partido en 3.000","3 · Cada trozo, un dueño","4 · Cambiando de mano"];
+const ROTULOS=["1 · Entero","2 · Partido en 3.000","3 · Cada trozo, un dueño","4 · Cambian de dueño"];
 const VENTAJAS_POR_PASO=[[],[0],[0,1],[0,1,2,3]];
 let paso=0, reloj=null;
 const menos=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1375,8 +1377,8 @@ function rellenaRegiones(){
  if(!s.value)S2.reg='';
 }
 rellenaRegiones();
-ACCESOS.forEach(a=>document.getElementById('fAcc').add(new Option(a,a)));
-TICKETS.forEach(t=>document.getElementById('fTic').add(new Option(t==="No aplica"?"Entrada: no aplica":"Entrada "+t.toLowerCase(),t)));
+ACCESOS.forEach(a=>document.getElementById('fAcc').add(new Option(etiquetaAcceso(a),a)));
+TICKETS.forEach(t=>document.getElementById('fTic').add(new Option(t==="No aplica"?"Mínimo: no aplica":"Mínimo "+t.toLowerCase(),t)));
 document.getElementById('fReg').onchange=e=>{S2.reg=e.target.value;Sonido.filtro();render();llevaAResultados({soloMovil:true})};
 document.getElementById('fAcc').onchange=e=>{S2.acc=e.target.value;Sonido.filtro();render();llevaAResultados({soloMovil:true})};
 document.getElementById('fTic').onchange=e=>{S2.tic=e.target.value;Sonido.filtro();render();llevaAResultados({soloMovil:true})};
@@ -1430,7 +1432,7 @@ function renderGrid(f){
   const aval=v?v.licenciaRegistro.detalle:p.aval;
   const marcaRevision=v?'Revisión editorial: '+fLarga(v.verificadoEl):'Ficha verificada';
   const marcas=v?resumenVerificacionLocalHtml(v):
-   `<div class="marcas"><span class="m acc">${escHtml(p.acceso)}</span><span class="m">Entrada: ${escHtml(String(p.ticket).toLowerCase())}</span><span class="m">${escHtml(p.cadenas)}</span></div>`;
+   `<div class="marcas"><span class="m acc">${escHtml(etiquetaAcceso(p.acceso))}</span><span class="m">Mínimo: ${escHtml(String(p.ticket).toLowerCase())}</span><span class="m">${escHtml(p.cadenas)}</span></div>`;
   return `<div class="ficha ${on?'sel':''} ${catClase(p)}">
    <button type="button" class="empresa-visual__abrir" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}${ilustrativa?'; portada ilustrativa':''}">
     <img class="empresa-visual__imagen" src="/plataformas/${portada}.webp" alt="" width="720" height="720" loading="lazy" decoding="async" draggable="false">
@@ -1489,7 +1491,7 @@ function openDrawer(i){
     <h4 id="dwAccesoTit">Acceso e inversión</h4>
     <dl class="datos">
      <div><dt>Tipo de empresa</dt><dd>${escHtml(p.tipo)}</dd></div>
-     <div><dt>Quién puede entrar</dt><dd>${escHtml(p.acceso)}</dd></div>
+     <div><dt>Quién puede entrar</dt><dd>${escHtml(etiquetaAcceso(p.acceso))}</dd></div>
      <div><dt>Importe de entrada</dt><dd>${escHtml(p.ticket)}</dd></div>
     </dl>
    </section>
@@ -1562,7 +1564,7 @@ function openCompare(){
   ?`<span class="comp-estado">${escHtml(etiquetaVerificacionLocal(p.verificacionLocal[campo].estado))}</span><span class="comp-nota">${escHtml(p.verificacionLocal[campo].detalle)}</span>`
   :null;
  const rows=[['Tipo de activo',p=>escHtml(p.cat)],['Tipo de empresa',p=>escHtml(p.tipo)],['Región y normativa',p=>escHtml(p.reg)],
-  ['Estado de acceso',p=>datoLocal(p,'acceso')||`<span class="m acc">${escHtml(p.acceso)}</span>`],['Mínimo',p=>escHtml(p.ticket)],['Blockchains',p=>escHtml(p.cadenas)],
+  ['Estado de acceso',p=>datoLocal(p,'acceso')||`<span class="m acc">${escHtml(etiquetaAcceso(p.acceso))}</span>`],['Mínimo',p=>escHtml(p.ticket)],['Blockchains',p=>escHtml(p.cadenas)],
   ['Licencia o registro',p=>datoLocal(p,'licenciaRegistro')||`<span class="comp-aval">${escHtml(p.aval)}</span>`],
   ['Actividad',p=>datoLocal(p,'estadoOperativo')||`<span class="comp-nota">${escHtml(p.nota)}</span>`],
   ['Avisos importantes',p=>p.verificacionLocal?`<span class="comp-alerta">${p.verificacionLocal.alertasCriticas.map(a=>escHtml(a.detalle)).join('<br>')}</span>`:'—'],
@@ -1659,12 +1661,12 @@ function textoAvisoCatalogo(){
  if(CATALOGO_SIN_COMPROBAR)return 'No hemos podido comprobar la revisión más reciente. Mostramos la última revisión completa, del '+
   fecha+'. Comprueba cada dato en la web del emisor antes de decidir.';
  if(CATALOGO_CADUCADO)return 'Revisión pendiente. Estos datos se revisaron el '+fecha+
-  ' y su revisión semanal ha vencido. Las cifras caducadas se ocultan; comprueba cada dato en la web del emisor antes de decidir.';
+  ' y su revisión semanal ha caducado. Las cifras caducadas se ocultan; comprueba cada dato en la web del emisor antes de decidir.';
  return '';
 }
 function textoPieRevision(){
  if(CATALOGO_EMBEBIDO_BLOQUEADO)return 'Catálogo no disponible temporalmente';
- return 'Última revisión del registro: '+ultimaRevision()+(CATALOGO_CADUCADO||CATALOGO_SIN_COMPROBAR?' · pendiente de renovar':'');
+ return 'Última revisión del catálogo: '+ultimaRevision()+(CATALOGO_CADUCADO||CATALOGO_SIN_COMPROBAR?' · pendiente de renovar':'');
 }
 function pintarAvisoCatalogo(){
  const texto=textoAvisoCatalogo();
@@ -1714,10 +1716,11 @@ function pintarEmisiones(){
   if(pestanas){pestanas.hidden=false;pestanas.innerHTML=
    [['principales','Principales'],['secundario','Reventa'],['en_camino','Próximas']].map(([c,t])=>
     '<button type="button" role="tab" data-emi-coleccion="'+c+'" class="'+(emiColeccion===c?'on':'')+'" aria-selected="'+(emiColeccion===c)+'">'+t+' <em>'+cuantas(c)+'</em></button>').join('');}
-  const movil=vistaMovilOfertas(),elegidas=movil?visibles.filter(enSeleccionOferta):[];
+  const movil=vistaMovilOfertas(),elegidas=movil&&emiOrden!=='nuevas'?visibles.filter(enSeleccionOferta):[];
   const resto=visibles.filter(o=>!elegidas.includes(o));
   /* Móvil: primero la Selección (las que cumplen las cinco comprobaciones) y
-     después el resto, cada bloque en el orden del selector. */
+     después el resto, cada bloque en el orden del selector. Con «Más nuevas
+     primero», una sola lista: la más nueva arriba. */
   const filas=!visibles.length?'<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver el catálogo verificado.</p></div>':
    elegidas.length?'<div class="catalogo-bloque catalogo-seleccion" role="group" aria-labelledby="emiSeleccionTit"><header class="catalogo-bloque-cab"><h3 id="emiSeleccionTit">Selección RWAdar <span>· pasan nuestras 5 comprobaciones</span></h3>'+
     '<p>No es una recomendación de inversión.</p></header>'+elegidas.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>'+
@@ -1749,7 +1752,7 @@ function pintarEmisiones(){
  if(informacion)informacion.open=hayPublicadas||!movilUI;
  if(!v.length){
   caja.innerHTML=hayPublicadas
-   ?'<div class="emis-vacio"><h3>Nada abierto con ese filtro</h3><p>Prueba con otra categoría o vuelve en unos días: el registro cambia cuando verificamos novedades.</p></div>'
+   ?'<div class="emis-vacio"><h3>Nada abierto con ese filtro</h3><p>Prueba con otra categoría o vuelve en unos días: el catálogo cambia cuando verificamos novedades.</p></div>'
    :'<div class="emis-vacio"><h3>Sin emisiones abiertas</h3><p>Publicaremos aquí las primeras cuando su origen y sus cifras estén comprobados.</p></div>';
   return;
  }
@@ -1797,12 +1800,12 @@ function pintarEmisiones(){
 function seccionReferenciasCatalogo(catalogo,coleccion){
  const todas=catalogo.filter(o=>o.coleccion===coleccion);
  const visibles=todas.filter(o=>(!emiCat||o.categoria===emiCat)&&coincideBusquedaOfertaLocal(o))
-  .sort((a,b)=>a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||a.titulo.localeCompare(b.titulo,'es'));
+  .sort(emiOrden==='nuevas'?masNuevasPrimero:(a,b)=>a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||a.titulo.localeCompare(b.titulo,'es'));
  const titulo=coleccion==='secundario'?'Reventa entre inversores':'Próximas ofertas';
  const alcance=coleccion==='secundario'
-  ?'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
-  :'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.';
- return '<details class="catalogo-referencias" data-coleccion="'+coleccion+'"'+(emiColeccion===coleccion?' open':'')+'><summary><h3>'+titulo+'</h3><span>'+visibles.length+' de '+todas.length+' referencias</span></summary>'+
+  ?'Ofertas de reventa entre inversores, tal como aparecen en su fuente. No confirman el precio de hoy, que se pueda comprar o vender ni que sigan disponibles.'
+  :'Ofertas anunciadas en su fuente. No confirman que vayan a abrir, cuándo lo harán ni que puedas invertir.';
+ return '<details class="catalogo-referencias" data-coleccion="'+coleccion+'"'+(emiColeccion===coleccion?' open':'')+'><summary><h3>'+titulo+'</h3><span>'+visibles.length+' de '+todas.length+' ofertas</span></summary>'+
   '<p>'+alcance+' Ordenar por rentabilidad o por mínimo solo cambia el orden de las ofertas principales.</p><div class="emis-rejilla">'+
   (visibles.length?tarjetasPorProveedorHtml(visibles):'<p>Ninguna referencia coincide con la búsqueda y la categoría.</p>')+'</div></details>';
 }
@@ -1955,6 +1958,24 @@ function tarjetaSeleccionHtml(o,i){
   (min?'<p class="rel-tarjeta-min"><span>Mínimo documentado:</span> <span translate="no">'+escHtml(min)+'</span></p>':'')+
   '<button class="b3 rel-tarjeta-ver" type="button" data-perfil-oferta="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(t)+'">Ver ficha<span class="rel-flecha" aria-hidden="true"></span></button></div></article></li>';
 }
+/* «Recién añadidas» de Inicio (04/11/2026): altaOferta, ofertaNueva y
+   masNuevasPrimero van junto a transparenciaOferta. Solo Principales: es la
+   lista que abre «Ver todas las ofertas nuevas». */
+const ofertasRecienAnadidas=()=>ofertasCatalogoInicio().filter(o=>o.coleccion==='principales'&&ofertaNueva(o,30)).sort(masNuevasPrimero).slice(0,6);
+function tarjetaNuevaHtml(o,i){
+ const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=altaOferta(o);
+ /* Su línea de riesgo, como la Selección; y, como la fila de Ofertas en el
+    móvil, «Revisa · N avisos en la ficha» o el aviso crítico entero. */
+ const todos=avisosOfertaLocal(o),bloqueo=avisoBloqueoOferta(o),propios=todos.filter(x=>!AVISO_GENERAL_OFERTA.test(x)).length;
+ return '<li class="rel-tarjeta rel-nueva"><article aria-labelledby="'+id+'">'+
+  (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
+  '<div class="rel-tarjeta-cuerpo"><h3 id="'+id+'" lang="es" translate="no"><button class="rel-nueva-abrir" type="button" data-perfil-oferta="'+escHtml(o.slug)+'"><span>'+escHtml(t)+'</span></button></h3>'+
+  '<p class="rel-tarjeta-plat" translate="no">'+escHtml(o.plataformaNombre||'')+(img&&img.lugar?' · '+escHtml(img.lugar):'')+'</p>'+
+  '<p class="rel-tarjeta-nota">'+escHtml(NOTAS_SELECCION[o.slug]||'Puedes perder parte o todo lo que inviertas.')+'</p>'+
+  (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · '+escHtml(textoLocal(bloqueo.texto))+(propios>1?'<span> · '+(propios-1)+' más en la ficha</span>':'')+'</p>':
+   todos.length?'<p class="rel-nueva-aviso"><b>Revisa</b> · <span>'+todos.length+(todos.length===1?' aviso en la ficha':' avisos en la ficha')+'</span></p>':'')+
+  '<p class="rel-nueva-meta">'+(ofertaNueva(o)?'<span class="etq etq-ok">Nueva</span> ':'')+'<span><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></span></p></div></article></li>';
+}
 /* Las fotos de la Selección se piden al acercarse a la pantalla: con solo
    loading=lazy el navegador las adelanta 1250 px. */
 let observadorFotosInicio=null;
@@ -1970,9 +1991,9 @@ function diferirFotosInicio(){
 function pintarInicio(){
  const panel=document.getElementById('movilPanelInicio');
  if(!panel)return;
- const c=cifrasInicio(),sin=c.sin,en=idiomaInicio()==='en';
+ const c=cifrasInicio(),sin=c.sin,en=idiomaInicio()==='en',nuevas=sin?[]:ofertasRecienAnadidas();
  const huella=[P.length,FUERA.length,sin,CATALOGO_EMBEBIDO_BLOQUEADO,c.revisado,c.hasta,en,c.ofertas,c.minimos,c.usd,
-  P.map(p=>p.slug+p.cat).join(),c.seleccion.map(o=>o.slug+fechaRevisionOferta(o)).join()].join('|');
+  P.map(p=>p.slug+p.cat).join(),c.seleccion.map(o=>o.slug+fechaRevisionOferta(o)).join(),nuevas.map(o=>o.slug).join()].join('|');
  if(huella===huellaInicio)return;
  huellaInicio=huella;
  const pon=(id,html)=>{const el=document.getElementById(id);if(el)el.innerHTML=html;return el;};
@@ -2003,6 +2024,8 @@ function pintarInicio(){
  ocultar('relEscaparate',sin||!c.seleccion.length);
  pon('inicioCriterios',criteriosTransparencia().map(k=>'<li>'+escHtml(CRITERIOS_INICIO[k.id]||k.texto)+'</li>').join(''));
  pon('relTarjetas',sin?'':c.seleccion.map(tarjetaSeleccionHtml).join(''));
+ ocultar('relNuevas',!nuevas.length);
+ pon('relNuevasLista',nuevas.map(tarjetaNuevaHtml).join(''));
  diferirFotosInicio();
  if(relatoInicio)relatoInicio.repintar();
 }
@@ -2071,6 +2094,13 @@ var relatoInicio=(function(){
  const refs=$('relRefs');
  const llevar=(n,centro)=>{n.scrollIntoView({block:centro?'center':'start',behavior:quieto()?'auto':'smooth'});n.focus({preventScroll:true});};
  panel.addEventListener('click',e=>{
+  /* «Ver todas las ofertas nuevas»: Principales con «Más nuevas primero»
+     (data-movil-ir hace el resto). */
+  const o=e.target.closest&&e.target.closest('[data-emi-orden]');
+  if(o){emiOrden=o.dataset.emiOrden;emiColeccion='principales';const s=$('emiOrden');if(s)s.value=emiOrden;
+   /* Sin los filtros ni la búsqueda de antes, para que se vean todas las nuevas. */
+   emiCat='';emiTipoLocal='todos';emiBusquedaLocal='';const b=$('emiBuscar');if(b)b.value='';
+   pintarFiltrosEmision();pintarTiposOfertaLocal();pintarEmisiones();}
   /* Tocar el radar o «Explorar el radar» abre el radar de Plataformas. */
   const r=e.target.closest&&e.target.closest('[data-inicio-radar]');
   if(r&&typeof Movil!=='undefined'&&Movil.ir){e.preventDefault();const radar=$('movilPanelRadar');
@@ -2246,7 +2276,7 @@ function etiquetaMetricaLocal(valor,indice){
  const v=normalizaBuscaLocal(valor);
  if(/meses|sin plazo|perpetuo|emision primaria|en euros/.test(v))return 'Estructura';
  if(/reparto|vencimiento|acumulacion|retirada/.test(v))return 'Cobro / salida';
- if(/^desde /.test(v))return 'Entrada';
+ if(/^desde /.test(v))return 'Mínimo';
  if(/tvl| en el fondo/.test(v))return 'Tamaño';
  if(/financiad|colocado/.test(v))return 'Financiación';
  if(/pagas |prima|descuento/.test(v))return 'Precio relativo';
@@ -2296,19 +2326,20 @@ function ordenarOfertasLocales(lista){
   min:(a,b)=>entrada(a)-entrada(b)||estado(a)-estado(b),
   az:(a,b)=>String(a.plataformaNombre||'').localeCompare(String(b.plataformaNombre||''),'es')||
    String(a.titulo||'').localeCompare(String(b.titulo||''),'es'),
+  nuevas:masNuevasPrimero,
  }[emiOrden]||(()=>0);
  return lista.slice().sort(orden);
 }
 function clavesOfertaLocal(o,secundario){
  if(o.coleccion==='secundario'||o.coleccion==='en_camino')return {
-  destacado:{etiqueta:'Referencia documental',valor:'Consultar fuente'},auxiliares:[]};
+  destacado:{etiqueta:'Precio y condiciones',valor:'Consúltalos en su web'},auxiliares:[]};
  if(estadoVigenciaLocal(o).clase==='caducado')return {
   destacado:{etiqueta:'Condiciones actuales',valor:'Consultar emisor'},auxiliares:[]};
  const tipo=tipoOfertaLocal(o),rentabilidad=valorLocal(o.rentabilidad),precio=valorLocal(o.precio);
  const destacado=secundario
   ? {etiqueta:'Precio observado',valor:precio||'Consultar mercado'}
   : tipo==='valor'
-   ? {etiqueta:'Precio de referencia',valor:precio||'Consultar fuente'}
+   ? {etiqueta:'Precio de referencia',valor:precio||'Consúltalo en su web'}
    : {etiqueta:'Rentabilidad publicada',valor:rentabilidad||'No publicada'};
  const metricas=metricasOfertaLocal(o).filter(x=>
   !/rentabilidad publicada|precio \/ entrada/i.test(normalizaBuscaLocal(x.etiqueta)));
@@ -2347,7 +2378,7 @@ function resumenEditorialOferta(o){
  const api=typeof globalThis!=='undefined'&&globalThis.RWAdarFichaEditorial;
  if(api&&typeof api.resumenOferta==='function')return api.resumenOferta(o,typeof P!=='undefined'?P:[]);
  /* Si no carga el helper, el catálogo sigue accesible sin inventar condiciones. */
- return {minimo:{texto:'No documentado en euros'},accesoEspana:{texto:'Sin comprobar desde España'},
+ return {minimo:{texto:'No documentado en euros'},accesoEspana:{texto:'Sin comprobar si se puede contratar desde España'},
   salida:{texto:'Salida no documentada'},costes:{texto:'Costes no documentados'},fechas:{revisadaEl:o.verificadaEl}};
 }
 /* El snapshot del arranque y sus páginas pasan la misma lista cerrada durante
@@ -2379,7 +2410,7 @@ function textoBreveDatoTarjetaLocal(campo){
     enseña tal cual en vez de «No verificado»: está comprobado, solo que no en euros. */
  if(campo&&campo.texto==='No documentado en euros'&&textoLocal(campo.unidadDocumentada))return textoLocal(campo.unidadDocumentada);
  return ({'No documentado en euros':'No verificado','Sin mínimo vigente en euros':'No verificado',
-  'Sin comprobar desde España':'Sin confirmar','Salida no documentada':'Sin documentar',
+  'Sin comprobar si se puede contratar desde España':'Sin confirmar','Salida no documentada':'Sin documentar',
   /* La fila ya dice «España»: no se repite dentro del dato. */
   'Disponible desde España según la fuente':'Disponible',
   'No disponible desde España según la fuente':'No disponible'})[campo.texto]||campo.texto;
@@ -2421,14 +2452,25 @@ function transparenciaOferta(o){
  const e=t&&o&&typeof o.slug==='string'&&Object.hasOwn(t,o.slug)?t[o.slug]:null;
  return e&&fechaLocalValida(o.verificadaEl)&&e.verificadaEl===o.verificadaEl?e:null;
 }
+/* Recién añadidas (04/11/2026). La fecha de alta en el radar es un hecho
+   (anadidaEl de transparencia.json), no una nota: en Inicio, las altas de los
+   últimos 30 días, de la más nueva a la más antigua y 6 como mucho; en
+   Ofertas, «Nueva» durante 14 días y el orden «Más nuevas primero». Con el
+   catálogo caducado no sale nada. La app copia esto en lib/recien-anadidas.js. */
+function altaOferta(o){const t=typeof TRANSPARENCIA_POR_SLUG!=='undefined'&&TRANSPARENCIA_POR_SLUG,e=t&&o&&typeof o.slug==='string'&&Object.hasOwn(t,o.slug)?t[o.slug]:null;
+ return e&&fechaLocalValida(e.anadidaEl)?e.anadidaEl:''}
+function ofertaNueva(o,dias=14){const f=altaOferta(o),h=new Date();if(!f||catalogoSinCifrasLocal())return false;
+ const d=Math.round((Date.UTC(h.getFullYear(),h.getMonth(),h.getDate())-Date.parse(f+'T00:00:00Z'))/86400000);return d>=0&&d<dias}
+function masNuevasPrimero(a,b){return altaOferta(b).localeCompare(altaOferta(a))||String(a.plataformaNombre||'').localeCompare(String(b.plataformaNombre||''),'es')||
+ String(a.titulo||'').localeCompare(String(b.titulo||''),'es')}
 function catalogoSinCifrasLocal(){
  return [typeof CATALOGO_CADUCADO!=='undefined'&&CATALOGO_CADUCADO,typeof CATALOGO_SIN_COMPROBAR!=='undefined'&&CATALOGO_SIN_COMPROBAR,
   typeof CATALOGO_EMBEBIDO_BLOQUEADO!=='undefined'&&CATALOGO_EMBEBIDO_BLOQUEADO].some(Boolean);
 }
 function minimoDocumentadoLocal(r){return !!(r&&r.minimo&&(Number.isFinite(r.minimo.euros)||textoLocal(r.minimo.unidadDocumentada)))}
-function salidaDocumentadaLocal(r){return !!(r&&r.salida&&textoLocal(r.salida.texto)&&!['Salida no documentada','Salida pendiente de revalidar'].includes(r.salida.texto))}
+function salidaDocumentadaLocal(r){return !!(r&&r.salida&&textoLocal(r.salida.texto)&&!['Salida no documentada','Salida por volver a comprobar'].includes(r.salida.texto))}
 /* Con la revisión vencida el dato existe pero falta revalidarlo: no es «sin documentar». */
-function pendienteRevalidarLocal(r){return !!(r&&(r.vencida===true||catalogoSinCifrasLocal()||r.salida&&r.salida.texto==='Salida pendiente de revalidar'))}
+function pendienteRevalidarLocal(r){return !!(r&&(r.vencida===true||catalogoSinCifrasLocal()||r.salida&&r.salida.texto==='Salida por volver a comprobar'))}
 function comprobacionesOferta(o,resumen=resumenEditorialOferta(o)){
  const e=transparenciaOferta(o),estado=estadoVigenciaLocal(o),textos=criteriosTransparencia();
  const cita=c=>c&&urlHttps(c.fuente)?{url:urlHttps(c.fuente),titulo:nombreFuenteLocal(c.fuente),fecha:fechaLocalValida(c.consultadaEl)?c.consultadaEl:''}:null;
@@ -2443,10 +2485,10 @@ function comprobacionesOferta(o,resumen=resumenEditorialOferta(o)){
  const contratable=o.coleccion==='principales'&&o.disponibleEs===true&&!caducado&&!!(resumen.accesoEspana&&resumen.accesoEspana.estado==='si'&&cita(resumen.accesoEspana));
  const pendiente=caducado||pendienteRevalidarLocal(resumen),minimo=!pendiente&&minimoDocumentadoLocal(resumen),salida=!pendiente&&salidaDocumentadaLocal(resumen);
  const vigente=o.estadoRevision==='actual'&&!caducado;
- const vencida='Pendiente de revalidar: la revisión semanal ha vencido.';
+ const vencida='Pendiente de volver a comprobar: la revisión semanal ha caducado.';
  /* Mínimo y salida: la etiqueta es de la interfaz y el dato, de la fuente. */
- const partes=[minimo?['Mínimo:',textoBreveDatoTarjetaLocal(resumen.minimo).replace(/\.$/,'')]:[pendiente?'Mínimo pendiente de revalidar.':'Mínimo sin documentar.'],
-  salida?['Salida:',textoLocal(resumen.salida.texto).replace(/^Salida:\s*/,'').replace(/\.$/,'')]:[pendiente?'Salida pendiente de revalidar.':'Salida sin documentar.']];
+ const partes=[minimo?['Mínimo:',textoBreveDatoTarjetaLocal(resumen.minimo).replace(/\.$/,'')]:[pendiente?'Mínimo por volver a comprobar.':'Mínimo sin documentar.'],
+  salida?['Salida:',textoLocal(resumen.salida.texto).replace(/^Salida:\s*/,'').replace(/\.$/,'')]:[pendiente?'Salida por volver a comprobar.':'Salida sin documentar.']];
  const lista={
   contratable:{cumple:contratable,fuente:cita(resumen.accesoEspana),motivo:contratable?'Es una oferta principal y la fuente dice que se contrata desde España.':
    o.coleccion==='secundario'?'Es una referencia de reventa entre inversores, no una oferta abierta.':
@@ -2457,7 +2499,7 @@ function comprobacionesOferta(o,resumen=resumenEditorialOferta(o)){
    motivo:partes.map(x=>x.length>1?x[0]+' '+x[1]+'.':x[0]).join(' ')},
   vigente:{cumple:vigente,fuente:null,motivo:vigente?'Revisada el '+fechaES(o.verificadaEl)+'; '+estado.texto+'.':
    o.estadoRevision==='fuentes_en_conflicto'?'Las fuentes no coinciden.':
-   o.estadoRevision==='no_verificable'?'No se pudo confirmar en la revisión.':'La revisión semanal ha vencido.'},
+   o.estadoRevision==='no_verificable'?'No se pudo confirmar en la revisión.':'La revisión semanal ha caducado.'},
  };
  return textos.map(c=>({...c,...lista[c.id]}));
 }
@@ -2480,7 +2522,7 @@ function datosCortosOferta(o,resumen){
  const minimo=minimoDocumentadoLocal(resumen)?e&&textoLocal(e.minimoCorto)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.minimo)):
   textoBreveDatoTarjetaLocal(resumen.minimo);
  const salida=salidaDocumentadaLocal(resumen)?e&&textoLocal(e.salidaCorta)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.salida).replace(/^Salida:\s*/,'')):
-  pendienteRevalidarLocal(resumen)?'Pendiente de revalidar':'Sin documentar';
+  pendienteRevalidarLocal(resumen)?'Pendiente de volver a comprobar':'Sin documentar';
  const espana=acceso==='si'?'Sí, según la fuente':acceso==='no'?'No, según la fuente':'Sin confirmar';
  return {minimo,espana,salida};
 }
@@ -2535,15 +2577,15 @@ function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
    '<h'+nivel+' class="emi-tit" title="'+escHtml(o.titulo)+'">'+escHtml(o.titulo)+'</h'+nivel+'><div class="escaparate-procedencia"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
    (imagen&&imagen.lugar?'<p class="emi-lugar">'+ICONO_LUGAR+escHtml(imagen.lugar)+'</p>':'')+'</div>'+
    puntosFuertesHtml(o)+(vistaMovilOfertas()?datosTarjetaOfertaHtml(o,resumen):datosClaveOfertaHtml(resumen))+
-   '<div class="escaparate-meta"><span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+
+   '<div class="escaparate-meta">'+(ofertaNueva(o)?'<span class="etq etq-ok emi-nueva">Nueva</span>':'')+'<span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+
    (estado.clase!=='caducado'&&o.disponibleEs===false?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+'</div>'+
    (avisoPrincipal?'<p class="escaparate-aviso-compacto'+(bloqueo?' escaparate-aviso-bloqueo':'')+'"><b>'+(bloqueo?'Importante':'Revisa')+'</b> · '+escHtml(avisoPrincipal)+(avisos.length>1?'<span> · '+(avisos.length-1)+' más en la ficha</span>':'')+'</p>':'')+
    /* En la fila compacta del móvil el aviso ordinario se resume en su
       número, junto a la fecha; el crítico (tono stop) se lee entero siempre. */
    '<div class="emi-pie">'+(!bloqueo&&todos.length?'<p class="escaparate-avisos-n"><b>Revisa</b> · <span>'+todos.length+(todos.length===1?' aviso en la ficha':' avisos en la ficha')+'</span></p>':'')+
     '<div class="emi-revision"><time class="emi-ver" datetime="'+escHtml(fechaRevision)+'"><span class="emi-ver-pre">'+
-    (documentacion?'Doc.':'Revisado')+' </span>'+escHtml(fechaES(fechaRevision))+'</time>'+
-    (resumen.fechas.fechaDato&&resumen.fechas.fechaDato!==fechaRevision?'<span class="emi-fecha-dato">Dato: '+escHtml(fechaES(resumen.fechas.fechaDato))+'</span>':'')+'</div>'+
+    (documentacion?'Fuente revisada el':'Revisado')+' </span>'+escHtml(fechaES(fechaRevision))+'</time>'+
+    (resumen.fechas.fechaDato&&resumen.fechas.fechaDato!==fechaRevision?'<span class="emi-fecha-dato">Dato del '+escHtml(fechaES(resumen.fechas.fechaDato))+'</span>':'')+'</div>'+
     '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Ver ficha <span aria-hidden="true">→</span></button>'+
    '</div></div></article>';
 }
@@ -2558,7 +2600,8 @@ function vistaMovilOfertas(){
 }
 function tarjetasPorProveedorHtml(ofertas){
  gruposPintadosMovil=vistaMovilOfertas();
- if(gruposPintadosMovil||emiBusquedaLocal||emiCat||emiTipoLocal!=='todos')return ofertas.map(o=>tarjetaOfertaLocal(o)).join('');
+ /* Con «Más nuevas primero», sin grupos: la más nueva arriba también en escritorio. */
+ if(gruposPintadosMovil||emiBusquedaLocal||emiCat||emiTipoLocal!=='todos'||emiOrden==='nuevas')return ofertas.map(o=>tarjetaOfertaLocal(o)).join('');
  const grupos=new Map();
  ofertas.forEach(o=>{const clave=o.plataformaSlug||o.plataformaNombre;
   if(!grupos.has(clave))grupos.set(clave,[]);grupos.get(clave).push(o);});
@@ -2657,7 +2700,7 @@ function abrirDetalleOfertaLocal(slug){
  const enlaces=(secundario&&urlMercado?enlace(urlMercado,'Abrir mercado','Abrir mercado de '+o.titulo+' en '+o.plataformaNombre):'')+
   (urlFicha?enlace(urlFicha,secundario?'Ficha oficial':'Ver oferta en '+o.plataformaNombre,(secundario?'Ficha oficial':'Ver oferta en '+o.plataformaNombre)+': '+o.titulo):'');
  /* Un precio o una rentabilidad solo salen si hay cifra publicable (nunca «Consultar fuente» en grande). */
- const cifra=vigente&&claves.destacado&&!/^(?:Consultar|No publicada)/.test(claves.destacado.valor)?claves.destacado:null;
+ const cifra=vigente&&claves.destacado&&!/^(?:Consultar|Consúlta|No publicada)/.test(claves.destacado.valor)?claves.destacado:null;
  /* Sin cifra, una línea normal que dice dónde mirar. */
  const sinCifra=cifra?null:o.coleccion==='secundario'||o.coleccion==='en_camino'||secundario?['Precio y condiciones','Consúltalos en su web']:
   !vigente?['Condiciones actuales','Consultar emisor']:tipoOfertaLocal(o)==='valor'?['Precio','En la web del proveedor']:null;
@@ -2672,8 +2715,8 @@ function abrirDetalleOfertaLocal(slug){
    sinCifra?fila(sinCifra[0],escHtml(sinCifra[1])):'')+
   fila('Mínimo','<span class="escaparate-esencial-dato">'+escHtml(cortos.minimo)+'</span>')+fila('España',escHtml(cortos.espana))+
   fila('Salida','<span class="escaparate-esencial-dato">'+escHtml(cortos.salida)+'</span>')+fila('Cifras',revision)+'</dl></section>';
- const ultima=resumen.fechas.comprobadaEl?'<p class="escaparate-fechas">Última consulta citada: '+escHtml(fechaES(resumen.fechas.comprobadaEl))+
-  (resumen.fechas.fechaDato?' · Fecha de ese dato: '+escHtml(fechaES(resumen.fechas.fechaDato)):'')+'. Cada referencia conserva su fecha propia.</p>':'';
+ const ultima=resumen.fechas.comprobadaEl?'<p class="escaparate-fechas">Consultamos la fuente por última vez el '+escHtml(fechaES(resumen.fechas.comprobadaEl))+
+  (resumen.fechas.fechaDato?'; el dato es del '+escHtml(fechaES(resumen.fechas.fechaDato)):'')+'. Cada dato lleva su propia fecha.</p>':'';
  const doc=partesDocumentacionOferta(documentacion,{resumen:vigente?o.resumen:'',ultima})||{ficha:'',referencias:'',fuentes:ultima};
  d.innerHTML='<div class="escaparate-dialogo-marco"><header class="escaparate-dialogo-cab">'+
   '<div><span>'+(o.coleccion==='en_camino'?'Próxima':o.coleccion==='secundario'||secundario?'Reventa entre inversores':'Oferta principal')+'</span><h2 id="escaparateDetalleTitulo">'+escHtml(o.titulo)+'</h2></div>'+
@@ -2759,7 +2802,7 @@ function activaControlesEscaparateLocal(v2=false){
  activarDetallesOfertas();
  if(v2)return;
  const orden=document.getElementById('emiOrden');
- if(orden)orden.innerHTML='<option value="cierra">Fuente y fecha</option><option value="rent">Cifra publicada por la plataforma</option><option value="min">Mínimo documentado en euros</option><option value="az">Empresa y nombre</option>';
+ if(orden)orden.innerHTML='<option value="cierra">Las más al día primero</option><option value="rent">Rentabilidad publicada (mayor primero)</option><option value="min">Mínimo en euros (menor primero)</option><option value="az">Empresa (A-Z)</option>';
  const fechaOferta=ESCAPARATE_LOCAL&&ESCAPARATE_LOCAL.fuente&&ESCAPARATE_LOCAL.fuente.actualizacionLocal
   ?ESCAPARATE_LOCAL.fuente.actualizacionLocal.verificadoEl:'';
  const tit=document.getElementById('emiTitulo');if(tit)tit.textContent='Ofertas observadas'+
@@ -3075,9 +3118,12 @@ function textoDato(v,nombre,max){
  if(typeof v!=='string')throw new Error(nombre+' no es texto');
  const s=v.trim();if(!s||s.length>max)throw new Error(nombre+' no válido');return s;
 }
+/* El tipo de empresa es un valor fijo del catálogo (rwa_actor). «Marketplace» se
+   lee «Mercado de compraventa» (LISTA-FINAL fila 19); el valor de la base no cambia. */
+function tipoEmpresaVisible(t){return t==='Marketplace'?'Mercado de compraventa':t}
 function plataformaRemota(p){
  const x={n:textoDato(p.nombre,'nombre',120),cat:textoDato(p.categoria,'categoría',80),
-  tipo:textoDato(p.actor,'actor',80),reg:textoDato(p.region,'región',100),
+  tipo:tipoEmpresaVisible(textoDato(p.actor,'actor',80)),reg:textoDato(p.region,'región',100),
   cadenas:textoDato(p.cadenas,'cadenas',160),ticket:textoDato(p.ticket,'entrada',40),
   acceso:textoDato(p.acceso,'acceso',40),web:urlHttps(p.web),
   aval:textoDato(p.aval,'aval',2000),nota:textoDato(p.nota,'descripción',3000),
@@ -3377,6 +3423,8 @@ function comprobarCatalogoEmbebido(){
    throw new Error('oferta embebida fuera de contrato');
   CATALOGO_CADUCADO=edad>P[0].vigencia_lote_dias;
   recordarManifiestoCatalogoV2(P);
+  /* El snapshot trae el valor de la base; se enseña como el lote remoto. */
+  P.forEach(p=>{p.tipo=tipoEmpresaVisible(p.tipo)});
   return true;
  }catch(_){
   P.length=0;EMI.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true;
@@ -3386,7 +3434,7 @@ function comprobarCatalogoEmbebido(){
 
 function plataformaDesdeEscaparate(p){
  const x={n:textoDato(p.nombre,'nombre local',120),cat:textoDato(p.categoria,'categoría local',80),
-  tipo:textoDato(p.actor,'actor local',80),reg:textoDato(p.region,'región local',100),
+  tipo:tipoEmpresaVisible(textoDato(p.actor,'actor local',80)),reg:textoDato(p.region,'región local',100),
   cadenas:textoDato(p.cadenas,'cadenas locales',160),ticket:textoDato(p.ticket,'entrada local',40),
   acceso:textoDato(p.acceso,'acceso local',40),web:urlHttps(p.web),
   aval:textoDato(p.aval,'aval local',2000),nota:textoDato(p.nota,'descripción local',3000),
@@ -3782,7 +3830,7 @@ const Opiniones=(function(){
   let formulario;
   if(!Cuenta.hay()){
    formulario='<div class="op-cuenta">Para dejar tu nota y contar tu experiencia hace falta una cuenta. '+
-     'Es gratis y también permite guardar las plataformas que quieres vigilar. '+
+     'Es gratis y también permite guardar las plataformas que quieres seguir. '+
      '<button type="button" id="opEntrar">Crear cuenta o entrar</button></div>';
   }else if(!propiaDisponible){
    formulario='<p class="op-cargando">Tu editor de opiniones no está disponible ahora. Vuelve a intentarlo más tarde.</p>';
@@ -4041,7 +4089,7 @@ const Cuenta = (function(){
   if(t.includes('captcha')) return 'No hemos podido comprobar que no eres un robot. Vuelve a intentarlo.';
   if(t.includes('sending confirmation email')||t.includes('sending recovery email')||t.includes('smtp')||
      t.includes('application-specific password')||t.includes('username and password not accepted'))
-   return 'No se ha podido enviar el correo. No damos la entrega por confirmada. Prueba más tarde; si continúa, contacta con RWAdar.';
+   return 'No se ha podido enviar el correo. Prueba más tarde; si sigue fallando, contacta con RWAdar.';
   return 'No se ha podido completar la operación. Vuelve a intentarlo; si continúa, contacta con RWAdar.';
  }
 
@@ -4211,7 +4259,7 @@ const Cuenta = (function(){
  }
  async function alternar(nombre){
   if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('El seguimiento está en pausa. Puedes consultar las fichas sin cuenta.');return;}
-  if(!identidadConfirmada){abrir('registro','Crea una cuenta para guardar '+nombre+' en tu lista de vigilancia.');return;}
+  if(!identidadConfirmada){abrir('registro','Crea una cuenta para guardar '+nombre+' en tu lista de seguimiento.');return;}
   const cuenta=versionCuenta,uid=ses.uid;
   const b=$('btnVig'); if(b) b.disabled=true;
   try{
@@ -4219,15 +4267,15 @@ const Cuenta = (function(){
     const id=vigiladas.get(nombre);
     const filas=await rest('/vigilancia?plataforma_id=eq.'+id,{method:'DELETE'},cuenta);
     if(!Array.isArray(filas)||filas.length!==1||filas[0].plataforma_id!==id)
-     throw new Error('No se ha podido confirmar el cambio de vigilancia.');
-    vigiladas.delete(nombre); aviso(nombre+': ya no la vigilas');
+     throw new Error('No se ha podido confirmar el cambio en tu lista.');
+    vigiladas.delete(nombre); aviso(nombre+': ya no la sigues');
    }else{
     const id=await idDe(nombre); if(!id) throw new Error('no encuentro esa plataforma');
     if(!vigente(cuenta))return;
     const filas=await rest('/vigilancia',{method:'POST',body:JSON.stringify({usuario_id:uid,plataforma_id:id})},cuenta);
     if(!Array.isArray(filas)||filas.length!==1||filas[0].plataforma_id!==id)
-     throw new Error('No se ha podido confirmar el cambio de vigilancia.');
-    vigiladas.set(nombre,id); aviso('Vigilando '+nombre+'. La entrega por correo aún no está activa.');
+     throw new Error('No se ha podido confirmar el cambio en tu lista.');
+    vigiladas.set(nombre,id); aviso('Sigues '+nombre+'. Todavía no enviamos avisos por correo.');
    }
   }catch(e){ if(vigente(cuenta))aviso('No se ha podido guardar: '+e.message); }
   if(!vigente(cuenta))return;
@@ -4253,20 +4301,20 @@ const Cuenta = (function(){
   }
   const on=vigiladas.has(nombre);
   c.innerHTML='<button class="btn-vigilar'+(on?' on':'')+'" id="btnVig">'+
-   (on?'✓ La estás vigilando':'+ Vigilar esta plataforma')+'</button>'+
+   (on?'✓ La sigues':'+ Seguir esta plataforma')+'</button>'+
    '<p class="pn-nota pn-nota-separada">'+
-   (identidadConfirmada?'La vigilancia queda guardada. La entrega por correo aún no está activa.'
-       :'Necesita una cuenta para guardar la vigilancia entre visitas.')+'</p>';
+   (identidadConfirmada?'Guardada en tu lista. Todavía no enviamos avisos por correo.'
+       :'Necesitas una cuenta para que tu lista se guarde entre visitas.')+'</p>';
   const b=$('btnVig'); if(b) b.addEventListener('click',()=>alternar(nombre));
  }
 
  /* --- la ventana de entrar / registro / recuperar ------------------ */
  const TEXTOS={
-  entrar:{t:'Entrar',s:OPINIONES_DISPONIBLES?'Para guardar vigilancia y gestionar tus opiniones.':'Para guardar tu lista de vigilancia entre visitas y dispositivos.',b:'Entrar',otro:'Crear una cuenta'},
+  entrar:{t:'Entrar',s:OPINIONES_DISPONIBLES?'Para guardar tu lista de seguimiento y gestionar tus opiniones.':'Para guardar tu lista de seguimiento entre visitas y dispositivos.',b:'Entrar',otro:'Crear una cuenta'},
   registro:{t:'Crear cuenta',s:'Es opcional y gratis. Tendrás que confirmar el correo antes de entrar.',b:'Crear cuenta',otro:'Ya tengo cuenta'},
   recuperar:{t:'Recuperar el acceso',s:'Solicita un enlace para poner una contraseña nueva.',b:'Solicitar el enlace',otro:'Volver a entrar'},
   nueva_clave:{t:'Elige una contraseña nueva',s:'El enlace ya ha verificado tu solicitud. Escribe la contraseña que usarás desde ahora.',b:'Guardar contraseña',otro:''},
-  borrar_cuenta:{t:'Borrar mi cuenta',s:'Se borrarán tu cuenta, perfil y vigilancia. No se puede deshacer. Confirma con tu contraseña actual y escribe BORRAR.',b:'Borrar definitivamente',otro:''},
+  borrar_cuenta:{t:'Borrar mi cuenta',s:'Se borrarán tu cuenta, tu perfil y tu lista de seguimiento. No se puede deshacer. Confirma con tu contraseña actual y escribe BORRAR.',b:'Borrar definitivamente',otro:''},
   registro_pausado:{t:'Alta temporalmente en pausa',s:'Puedes consultar todo RWAdar sin crear una cuenta.'},
   recuperar_pausado:{t:'Recuperación temporalmente en pausa',s:'Las cuentas existentes siguen pudiendo entrar.'},
   confirmacion_pendiente:{t:'Confirma tu correo para entrar',s:'La solicitud se ha recibido.'},
@@ -4293,11 +4341,11 @@ const Cuenta = (function(){
    $('cuentaEstadoCorreo').hidden=true;$('cuentaEstadoCorreo').textContent='';
    $('cuentaPaso1').textContent='Puedes usar todo el radar sin cuenta.';
    $('cuentaPaso2').textContent='Las cuentas que ya funcionan pueden seguir entrando.';
-   $('cuentaPaso3').textContent='Reabriremos este paso cuando el correo se haya comprobado de extremo a extremo.';
+   $('cuentaPaso3').textContent='Reabriremos este paso cuando hayamos comprobado que el correo funciona de principio a fin.';
   }else{
    $('cuentaEstadoTexto').textContent=registro
-    ?'La solicitud fue aceptada. Abre el enlace del correo si lo recibes; la aceptación no demuestra que el mensaje haya sido entregado.'
-    :'La solicitud fue aceptada. Abre el enlace del correo si lo recibes para elegir una contraseña nueva.';
+    ?'Hemos pedido que te envíen el correo, pero no podemos confirmar que te llegue. Si lo recibes, abre su enlace.'
+    :'Hemos pedido que te envíen el correo, pero no podemos confirmar que te llegue. Si lo recibes, abre su enlace para elegir una contraseña nueva.';
    $('cuentaEstadoCorreo').hidden=!correoPendiente;
    $('cuentaEstadoCorreo').textContent=correoPendiente;
    $('cuentaPaso1').textContent='Solicitud aceptada.';
@@ -4473,7 +4521,7 @@ const Cuenta = (function(){
     else if(j&&typeof j.id==='string'&&j.id&&typeof j.email==='string'){
      correoPendiente=correo;$('cNombre').value='';$('cCorreo').value='';
      abrir('confirmacion_pendiente');
-    }else throw new Error('La respuesta del alta no es válida. No damos la cuenta por creada.');
+    }else throw new Error('Algo ha fallado al crear la cuenta y no podemos confirmar que se haya creado. Inténtalo de nuevo.');
    }else{
     const j=await auth('/token?grant_type=password',await conAntiRobots({email:correo,password:clave}));
     if(operacion!==operacionCuenta||modo!==modoEnvio)return;
@@ -4499,7 +4547,7 @@ const Cuenta = (function(){
     await auth('/recover?redirect_to='+vuelta,await conAntiRobots({email:correoPendiente}));
    else return;
    if(operacion!==operacionCuenta||modo!==modoEnvio)return;
-   msj('La solicitud de reenvío fue aceptada. Esto no confirma la entrega del mensaje.',true);
+   msj('Hemos pedido el reenvío, pero no podemos confirmar que el correo te llegue.',true);
    bot.textContent='Espera un minuto para reintentar';
    temporizadorReenvio=setTimeout(()=>{
     if(modo===modoEnvio){bot.disabled=false;bot.textContent='Reintentar correo';}
@@ -4553,11 +4601,11 @@ const Cuenta = (function(){
    '<div><div class="quien" translate="no">'+esc(nom)+'</div><div class="correo" translate="no">'+esc(ses.correo||'')+'</div></div></div>'+
    (datosCuentaError?'<p class="perfil-nota" role="status">No se pudieron cargar los datos de tu cuenta. Tu sesión sigue abierta. <button id="pfReintentarCuenta" type="button">Reintentar datos de cuenta</button></p>':'')+
    '<div id="pfInversiones"></div>'+
-   '<details class="perfil-opciones"><summary>Cuenta y plataformas vigiladas</summary>'+
+   '<details class="perfil-opciones"><summary>Cuenta y plataformas que sigues</summary>'+
    '<div class="perfil-cifras">'+
     '<div><span class="n">'+dias+'</span><span class="l">Días<br>de miembro</span></div>'+
-    '<div><span class="n">'+lista.length+'</span><span class="l">Plataformas<br>vigiladas</span></div>'+
-    '<div><span class="n">'+avisosRecibidos+'</span><span class="l">Alertas<br>generadas</span></div>'+
+    '<div><span class="n">'+lista.length+'</span><span class="l">Plataformas<br>que sigues</span></div>'+
+    '<div><span class="n">'+avisosRecibidos+'</span><span class="l">Avisos<br>recibidos</span></div>'+
    '</div>'+
    '<p class="perfil-nota">Miembro desde el '+desde+'.</p>'+ 
    '<div class="perfil-sec">'+(OPINIONES_DISPONIBLES?'Identidad pública':'Tu nombre')+'</div>'+
@@ -4572,16 +4620,16 @@ const Cuenta = (function(){
        '<p class="perfil-nota">Cómo verificamos, cómo leer una ficha, los filtros, el comparador y por qué conviene mirar «Descartadas» primero.</p>'+
        '<a class="perfil-manual" id="pfManual" href="'+esc(MANUAL_BIENVENIDA)+'" target="_blank" rel="noopener">Descargar el manual (PDF, 10 páginas)</a>'
      : '')+
-   '<div class="perfil-sec">Lo que vigilas</div>'+
+   '<div class="perfil-sec">Las que sigues</div>'+
    (lista.length
      ? '<ul class="vig-lista">'+lista.map(n=>'<li><span>'+esc(n)+'</span><button data-q="'+esc(n)+'">quitar</button></li>').join('')+'</ul>'
-     : '<p class="perfil-nota">Todavía no vigilas ninguna. Abre la ficha de cualquier plataforma del radar y pulsa «Vigilar» para guardarla aquí.</p>')+
+     : '<p class="perfil-nota">Todavía no sigues ninguna. Abre la ficha de cualquier plataforma del radar y pulsa «Seguir» para guardarla aquí.</p>')+
    '<div class="perfil-sec">Avisos</div>'+
    (AVISOS_CORREO_DISPONIBLES
      ? '<label class="fila-opcion"><input type="checkbox" id="optAvisos" aria-describedby="optAvisosAyuda"'+(correoConsentido?' checked':'')+'>'+
-       '<span><b>Quiero recibir por correo avisos de cambios</b> en las plataformas que vigilo. Al marcarlo doy mi consentimiento explícito, que puedo retirar aquí cuando quiera.</span></label>'+
-       '<p class="perfil-nota perfil-ayuda" id="optAvisosAyuda">Está desactivado por defecto. Aunque lo aceptes, el envío todavía no está activo: faltan configurar Brevo y verificar la entrega de extremo a extremo. Consulta la <a href="/privacidad">política de privacidad</a>.</p>'
-     : '<p class="perfil-nota">Próximamente: avisos por correo cuando cambie una plataforma que vigilas. Se activarán solo si tú lo pides. Mientras tanto, tu lista queda guardada en tu cuenta.</p>')+
+       '<span><b>Quiero recibir por correo avisos de cambios</b> en las plataformas que sigo. Al marcarlo doy mi consentimiento explícito, que puedo retirar aquí cuando quiera.</span></label>'+
+       '<p class="perfil-nota perfil-ayuda" id="optAvisosAyuda">Está desactivado por defecto. Aunque lo aceptes, todavía no enviamos estos avisos: falta configurar el servicio de correo y probar que los mensajes llegan. Consulta la <a href="/privacidad">política de privacidad</a>.</p>'
+     : '<p class="perfil-nota">Próximamente: avisos por correo cuando cambie una plataforma que sigues. Se activarán solo si tú lo pides. Mientras tanto, tu lista queda guardada en tu cuenta.</p>')+
    '</details><div class="perfil-pie">'+
     '<button id="pfSalir">Cerrar sesión</button>'+
     '<button class="peligro" id="pfBorrar">Borrar mi cuenta</button>'+
@@ -4620,7 +4668,7 @@ const Cuenta = (function(){
     perfil=perfilDesdeRespuestaCorreo(perfil,filas&&filas[0],deseado);
     o.checked=consentimientoCorreoVigente(perfil);
     aviso(deseado
-     ? 'Consentimiento guardado. El correo aún no está activo: faltan Brevo y la prueba de extremo a extremo.'
+     ? 'Consentimiento guardado. Todavía no enviamos estos avisos: falta configurar el servicio de correo y probar que los mensajes llegan.'
      : 'Consentimiento retirado. No se enviarán nuevos avisos de cambios por correo.');
    }catch(e){
     if(!vigente(cuenta))return;
@@ -4710,7 +4758,7 @@ const Cuenta = (function(){
    if(tk)await auth('/logout?scope=local',null,{token:tk});
    if(cuenta===versionCuenta)aviso('Sesión cerrada.');
   }catch(e){
-   if(cuenta===versionCuenta)aviso('Has salido de esta pestaña, pero no hemos podido confirmar el cierre en el servidor. La sesión remota podría seguir activa. Contacta con RWAdar si necesitas revocar todas las sesiones.');
+   if(cuenta===versionCuenta)aviso('Has salido de esta pestaña, pero no hemos podido confirmar el cierre en el servidor. Puede que la sesión siga abierta en otros dispositivos. Si quieres cerrarla en todos, contacta con RWAdar.');
   }
  }
  function borrar(){

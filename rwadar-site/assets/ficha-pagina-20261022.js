@@ -19,13 +19,13 @@
         const fuente=document.createElement('a'); fuente.href=referencia.fuente;
         fuente.target='_blank'; fuente.rel='noopener noreferrer';
         fuente.textContent=' · '+(referencia.etiqueta || 'Fuente')+
-          (referencia.consultadaEl ? ' · consulta '+referencia.consultadaEl.split('-').reverse().join('/') : '')+' ↗';
+          (referencia.consultadaEl ? ' · consultada el '+referencia.consultadaEl.split('-').reverse().join('/') : '')+' ↗';
         nodo.appendChild(fuente);
       }
     }
     // Contratable y mínimo/salida: con la revisión vencida no se afirma nada sobre «hoy» (falla cerrado).
-    for (const [campo,motivo] of [['contratable','Pendiente de revalidar: la revisión semanal ha vencido.'],
-      ['minimoSalida','Mínimo y salida pendientes de revalidar: la revisión semanal ha vencido.']]) {
+    for (const [campo,motivo] of [['contratable','Pendiente de volver a comprobar: la revisión semanal ha caducado.'],
+      ['minimoSalida','Mínimo y salida por volver a comprobar: la revisión semanal ha caducado.']]) {
       const nodo=pagina.querySelector('[data-campo="'+campo+'"]'), fila=nodo && nodo.parentElement;
       const caduca=resumen.vencida===true || campo==='contratable' && !(resumen.accesoEspana && resumen.accesoEspana.estado==='si');
       if (!nodo || !fila || !fila.dataset || fila.dataset.cumple!=='si' || !caduca) continue;
@@ -38,7 +38,7 @@
     if (vigencia) {
       const vigente=!resumen.vencida && oferta.estadoRevision==='actual';
       vigencia.textContent=vigente ? 'Sí: la revisión está vigente y las fuentes coinciden.' :
-        'No: la revisión semanal ha vencido o no se pudo confirmar; consulta las condiciones en la fuente.';
+        'No: la revisión semanal ha caducado o no se pudo confirmar; consulta las condiciones en la fuente.';
       const fila=vigencia.parentElement, marca=fila && fila.querySelector('.comprobacion-marca');
       if (fila && fila.dataset) fila.dataset.cumple=vigente ? 'si' : 'no';
       if (marca) marca.textContent=vigente ? '✓ Sí' : '✗ No';

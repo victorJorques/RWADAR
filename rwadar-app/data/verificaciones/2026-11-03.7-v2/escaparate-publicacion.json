@@ -1,0 +1,4341 @@
+{
+  "versionEsquema": 2,
+  "fuente": {
+    "notaOrigen": "Revisión del 03/11/2026 (investigación del mismo día iniciada por Víctor): las 23 fichas y 12 candidatas investigadas con expediente por oferta y revisión independiente (Spiko Smart Cash Euro, rechazada y después incluida por decisión editorial; Kraken xStocks, rechazada y después incluida por decisión editorial). Las cifras se publican solo donde se leyeron en la fuente oficial. Alta de Kraken xStocks por decisión editorial de Víctor (03/11/2026), con aviso de que las condiciones finales no ofrecen el producto en España. Alta de Spiko Smart Cash Euro por decisión editorial de Víctor (03/11/2026), con aviso de que no consta en ningún supervisor su notificación a España. Retirada de mF-ONE (03/11/2026): solo para inversores cualificados o desde 150.000 USD, con lista blanca. Textos para el lector (04/11/2026, entrega 2026-11-03.7): los 26 avisos y 22 notas de estado de plataforma, y diez detalles de acceso o licencia, reescritos sin cambiar hechos, cifras, fechas ni fuentes.",
+    "actualizacionLocal": {
+      "verificadoEl": "2026-11-03",
+      "archivo": "rwadar-app/data/verificaciones/2026-11-03.7-v2/contraste-2026-11-03.7.json",
+      "publicable": false,
+      "derechosImagenVerificados": false,
+      "nota": "Lote del 03/11/2026 (entrega 2026-11-03.7, textos para el lector del 04/11/2026): 24 fichas (8 principales, 13 de reventa y 3 en camino)."
+    },
+    "actualizacionRadarLocal": {
+      "verificadoEl": "2026-11-03",
+      "archivo": "rwadar-app/data/verificaciones/2026-11-03.7-v2/radar-canonico-26.json",
+      "publicable": false,
+      "plataformas": 26,
+      "fuentesPrimarias": 69
+    }
+  },
+  "plataformas": [
+    {
+      "slug": "addx",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web sigue ofreciendo el alta y muestra su catálogo de oportunidades.",
+          "fuentes": [
+            {
+              "id": "addx-web",
+              "tipo": "empresa",
+              "titulo": "ADDX",
+              "url": "https://addx.co/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "ADDX Pte. Ltd. figura en el directorio de MAS como CMS licensee y recognised market operator.",
+          "fuentes": [
+            {
+              "id": "addx-mas",
+              "tipo": "regulador",
+              "titulo": "MAS Financial Institutions Directory — ADDX Pte. Ltd.",
+              "url": "https://eservices.mas.gov.sg/fid/institution/detail/246926-ADDX-PTE-LTD",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "La propia empresa limita el alta a inversores acreditados o institucionales no estadounidenses.",
+          "fuentes": [
+            {
+              "id": "addx-acceso",
+              "tipo": "empresa",
+              "titulo": "Inside ADDX",
+              "url": "https://www.addx.co/en/inside-addx/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "no_minorista",
+            "detalle": "No está abierta a cualquier inversor minorista, y no puedes dar por hecho que se pueda contratar desde España.",
+            "fuentes": [
+              {
+                "id": "addx-acceso",
+                "tipo": "empresa",
+                "titulo": "Inside ADDX",
+                "url": "https://www.addx.co/en/inside-addx/",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "archax",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "no_verificable",
+          "detalle": "El grupo dice que opera a través de sociedades en Reino Unido y España. Su web europea marca como «pre-launch» (aún sin lanzar) el sistema multilateral de negociación (MTF), la intermediación, la custodia y la tokenización. No hemos podido confirmar actividad comercial en la UE.",
+          "fuentes": [
+            {
+              "id": "archax-web",
+              "tipo": "empresa",
+              "titulo": "Archax",
+              "url": "https://archax.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "archax-eu",
+              "tipo": "empresa",
+              "titulo": "Archax Markets Europe",
+              "url": "https://eu.archax.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "Archax Markets Europe, S.V., S.A. figura en CNMV con registro 289 de 08/08/2019. Este registro no se extiende a otras entidades del grupo.",
+          "fuentes": [
+            {
+              "id": "archax-cnmv",
+              "tipo": "regulador",
+              "titulo": "CNMV — Archax Markets Europe, S.V., S.A.",
+              "url": "https://www.cnmv.es/portal/consultas/listadoentidad?id=1&tipoent=0",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "La web europea dirige sus servicios solo a clientes profesionales e institucionales del EEE y los presenta como previos al lanzamiento; por ahora solo permite registrar interés. No hay alta abierta para particulares.",
+          "fuentes": [
+            {
+              "id": "archax-eu",
+              "tipo": "empresa",
+              "titulo": "Archax Markets Europe",
+              "url": "https://eu.archax.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "entidad_y_servicio",
+            "detalle": "Que su sociedad europea esté registrada no confirma que un producto esté abierto ni que tú puedas invertir.",
+            "fuentes": [
+              {
+                "id": "archax-cnmv",
+                "tipo": "regulador",
+                "titulo": "CNMV — Archax Markets Europe, S.V., S.A.",
+                "url": "https://www.cnmv.es/portal/consultas/listadoentidad?id=1&tipoent=0",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              },
+              {
+                "id": "archax-eu",
+                "tipo": "empresa",
+                "titulo": "Archax Markets Europe",
+                "url": "https://eu.archax.com/",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "artex-global-markets",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "no_verificable",
+          "detalle": "ARTEX se presenta como un sistema multilateral de negociación (MTF) de arte regulado por la FMA de Liechtenstein. Su página de valores muestra una sola cotización (un tríptico de Francis Bacon) con un último precio de 67 € y un volumen de 4, pero sin mejor precio de compra ni de venta ni fecha de la operación. Por eso no podemos confirmar que haya negociación activa.",
+          "fuentes": [
+            {
+              "id": "artex-web",
+              "tipo": "empresa",
+              "titulo": "ARTEX Global Markets",
+              "url": "https://www.artexgm.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "El Banco de Lituania mantiene ARTEX Global Markets AG, de Liechtenstein, en su lista de empresas de inversión del EEE que prestan servicios sin sucursal. No prueba actividad comercial actual.",
+          "fuentes": [
+            {
+              "id": "artex-lb",
+              "tipo": "regulador",
+              "titulo": "Bank of Lithuania — ARTEX Global Markets AG",
+              "url": "https://www.lb.lt/en/sfi-financial-market-participants/artex-global-markets-ag",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "No hay alta directa en la web. Se opera a través de los miembros y brokers de ejecución regulados que ARTEX publica en artexgm.com/trading-participants. Elegibilidad, países y condiciones dependen de cada intermediario.",
+          "fuentes": [
+            {
+              "id": "artex-web",
+              "tipo": "empresa",
+              "titulo": "ARTEX Global Markets",
+              "url": "https://www.artexgm.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "artex-lb",
+              "tipo": "regulador",
+              "titulo": "Bank of Lithuania — ARTEX Global Markets AG",
+              "url": "https://www.lb.lt/en/sfi-financial-market-participants/artex-global-markets-ag",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "registro_no_equivale_operacion",
+            "detalle": "No hemos podido confirmar que haya un instrumento que se negocie de verdad; hasta que lo confirmemos, su actividad figura como no verificable.",
+            "fuentes": [
+              {
+                "id": "artex-lb",
+                "tipo": "regulador",
+                "titulo": "Bank of Lithuania — ARTEX Global Markets AG",
+                "url": "https://www.lb.lt/en/sfi-financial-market-participants/artex-global-markets-ag",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "backed-finance",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web muestra los xStocks y su documentación de producto en vigor.",
+          "fuentes": [
+            {
+              "id": "backed-web",
+              "tipo": "empresa",
+              "titulo": "Backed Finance",
+              "url": "https://backed.fi/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "xstocks-legal",
+              "tipo": "documento_legal",
+              "titulo": "xStocks product legal overview",
+              "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_documento_producto",
+          "detalle": "La documentación de xStocks describe certificados de Backed Assets (JE) Limited emitidos bajo un folleto base aprobado por la FMA de Liechtenstein y pasaportable en el EEE; no acredita que Backed sea una plataforma de inversión licenciada en España.",
+          "fuentes": [
+            {
+              "id": "xstocks-legal",
+              "tipo": "documento_legal",
+              "titulo": "xStocks product legal overview",
+              "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "La distribución minorista en el EEE depende de distribuidores autorizados y términos finales; Estados Unidos está excluido.",
+          "fuentes": [
+            {
+              "id": "xstocks-legal",
+              "tipo": "documento_legal",
+              "titulo": "xStocks product legal overview",
+              "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "distribuidor_y_producto",
+            "detalle": "Que el folleto esté aprobado no significa que cualquier inversor minorista pueda comprar ni que el supervisor avale el producto.",
+            "fuentes": [
+              {
+                "id": "xstocks-legal",
+                "tipo": "documento_legal",
+                "titulo": "xStocks product legal overview",
+                "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "blocksquare",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "no_verificable",
+          "detalle": "Su web se dirige a empresas: ofrece un protocolo de tokenización inmobiliaria y una plataforma de marca blanca, con contacto comercial. Sus noticias no tienen fecha, así que no podemos confirmar que siga activa ni que haya portales en funcionamiento.",
+          "fuentes": [
+            {
+              "id": "blocksquare-web",
+              "tipo": "empresa",
+              "titulo": "Blocksquare",
+              "url": "https://blocksquare.io/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_verificable",
+          "detalle": "Ya se pueden leer sus condiciones de uso. Son una plantilla para socios certificados (operador 'CP_COMPANY') que declara que el operador no presta servicios financieros licenciados ni regulados. No identifican entidad ni registro, y la web marca 'Regulation' como 'Available soon'.",
+          "fuentes": [
+            {
+              "id": "blocksquare-terms",
+              "tipo": "documento_legal",
+              "titulo": "Blocksquare certified partner terms template",
+              "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "Los términos son una plantilla para operadores de portales: exigen KYC y control de sanciones (ONU, UE, Reino Unido, OFAC) y dejan en blanco la jurisdicción. El acceso real debe confirmarse con el operador de cada portal y activo.",
+          "fuentes": [
+            {
+              "id": "blocksquare-terms",
+              "tipo": "documento_legal",
+              "titulo": "Blocksquare certified partner terms template",
+              "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "operador_y_activo",
+            "detalle": "Que un portal use su tecnología de tokenización no significa que tenga licencia ni que esté inscrito en un registro. Revisa quién emite el activo, el contrato y su jurisdicción.",
+            "fuentes": [
+              {
+                "id": "blocksquare-web",
+                "tipo": "empresa",
+                "titulo": "Blocksquare",
+                "url": "https://blocksquare.io/",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              },
+              {
+                "id": "blocksquare-terms",
+                "tipo": "documento_legal",
+                "titulo": "Blocksquare certified partner terms template",
+                "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "centrifuge",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web sigue ofreciendo infraestructura para gestionar activos en blockchain.",
+          "fuentes": [
+            {
+              "id": "centrifuge-web",
+              "tipo": "empresa",
+              "titulo": "Centrifuge",
+              "url": "https://centrifuge.io/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_aplica_plataforma",
+          "detalle": "Centrifuge es protocolo/infraestructura; sus términos dicen que ni Centrifuge ni afiliadas se licencian en cada jurisdicción y que los productos pueden ser no regulados.",
+          "fuentes": [
+            {
+              "id": "centrifuge-terms",
+              "tipo": "documento_legal",
+              "titulo": "Centrifuge website terms",
+              "url": "https://centrifuge.io/terms",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "La disponibilidad es por fondo y puede limitarse a inversores sofisticados, acreditados o cualificados.",
+          "fuentes": [
+            {
+              "id": "centrifuge-terms",
+              "tipo": "documento_legal",
+              "titulo": "Centrifuge website terms",
+              "url": "https://centrifuge.io/terms",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "protocolo_no_emisor",
+            "detalle": "Centrifuge es el protocolo, no el emisor: la licencia que pueda tener el vehículo de un fondo no es de Centrifuge. Revisa en cada fondo el emisor, la jurisdicción y el documento de la oferta.",
+            "fuentes": [
+              {
+                "id": "centrifuge-terms",
+                "tipo": "documento_legal",
+                "titulo": "Centrifuge website terms",
+                "url": "https://centrifuge.io/terms",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "courtyard",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web muestra packs y coleccionables tokenizados con custodia física.",
+          "fuentes": [
+            {
+              "id": "courtyard-web",
+              "tipo": "empresa",
+              "titulo": "Courtyard",
+              "url": "https://courtyard.io/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_aplica_plataforma",
+          "detalle": "La documentación revisada describe un mercado de NFT y coleccionables, no una licencia de mercado de valores.",
+          "fuentes": [
+            {
+              "id": "courtyard-terms",
+              "tipo": "documento_legal",
+              "titulo": "Courtyard terms of service",
+              "url": "https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "Los términos contienen restricciones de sanciones, pero no se confirmó admisión operativa desde España.",
+          "fuentes": [
+            {
+              "id": "courtyard-terms",
+              "tipo": "documento_legal",
+              "titulo": "Courtyard terms of service",
+              "url": "https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "coleccionable_no_valor",
+            "detalle": "Los coleccionables, la recompra y su mercado de reventa no son una inversión regulada ni garantizan que puedas vender.",
+            "fuentes": [
+              {
+                "id": "courtyard-terms",
+                "tipo": "documento_legal",
+                "titulo": "Courtyard terms of service",
+                "url": "https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "figure",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "Figure.com sigue ofreciendo servicios de crédito y enlaces a OPEN y Figure Markets; eso no demuestra que haya una oferta de inversión concreta abierta.",
+          "fuentes": [
+            {
+              "id": "figure-web",
+              "tipo": "empresa",
+              "titulo": "Figure",
+              "url": "https://figure.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "El informe oficial FINRA de Figure Securities, Inc., CRD 307093, confirma registro SEC y operación de ATS. No se extiende a otras entidades Figure.",
+          "fuentes": [
+            {
+              "id": "figure-finra",
+              "tipo": "regulador",
+              "titulo": "FINRA BrokerCheck — Figure Securities, Inc.",
+              "url": "https://files.brokercheck.finra.org/firm/firm_307093.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "El registro del broker y su actividad ATS no bastan para confirmar condiciones de alta ni elegibilidad desde España.",
+          "fuentes": [
+            {
+              "id": "figure-finra",
+              "tipo": "regulador",
+              "titulo": "FINRA BrokerCheck — Figure Securities, Inc.",
+              "url": "https://files.brokercheck.finra.org/firm/firm_307093.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "figure-open",
+              "tipo": "empresa",
+              "titulo": "Figure Markets OPEN disclosures",
+              "url": "https://www.figuremarkets.com/disclosures/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "marca_multi_entidad",
+            "detalle": "Figure Securities es una empresa distinta de los servicios de crédito y de las demás empresas de la marca. Comprueba el contrato del producto concreto.",
+            "fuentes": [
+              {
+                "id": "figure-finra",
+                "tipo": "regulador",
+                "titulo": "FINRA BrokerCheck — Figure Securities, Inc.",
+                "url": "https://files.brokercheck.finra.org/firm/firm_307093.pdf",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              },
+              {
+                "id": "figure-web",
+                "tipo": "empresa",
+                "titulo": "Figure",
+                "url": "https://figure.com/",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "fireblocks",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web ofrece infraestructura de activos digitales y stablecoins.",
+          "fuentes": [
+            {
+              "id": "fireblocks-web",
+              "tipo": "empresa",
+              "titulo": "Fireblocks",
+              "url": "https://fireblocks.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "Fireblocks Trust Company, LLC figura como trust de propósito limitado en NYDFS; la licencia pertenece a esa entidad, no al software completo.",
+          "fuentes": [
+            {
+              "id": "fireblocks-trust",
+              "tipo": "empresa",
+              "titulo": "Fireblocks Trust Company",
+              "url": "https://www.fireblocks.com/trustco",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "nydfs-virtual",
+              "tipo": "regulador",
+              "titulo": "NYDFS virtual currency businesses",
+              "url": "https://www.dfs.ny.gov/apps_and_licensing/virtual_currency_businesses",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_aplica_plataforma",
+          "detalle": "Su oferta principal se dirige a empresas e instituciones; no es un mercado en el que los minoristas inviertan directamente.",
+          "fuentes": [
+            {
+              "id": "fireblocks-web",
+              "tipo": "empresa",
+              "titulo": "Fireblocks",
+              "url": "https://fireblocks.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "fireblocks-trust",
+              "tipo": "empresa",
+              "titulo": "Fireblocks Trust Company",
+              "url": "https://www.fireblocks.com/trustco",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "licencia_entidad_especifica",
+            "detalle": "No todos los servicios de Fireblocks son custodia regulada: su Trust Company, su software y los custodios externos son cosas distintas.",
+            "fuentes": [
+              {
+                "id": "fireblocks-trust",
+                "tipo": "empresa",
+                "titulo": "Fireblocks Trust Company",
+                "url": "https://www.fireblocks.com/trustco",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              },
+              {
+                "id": "nydfs-virtual",
+                "tipo": "regulador",
+                "titulo": "NYDFS virtual currency businesses",
+                "url": "https://www.dfs.ny.gov/apps_and_licensing/virtual_currency_businesses",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "franklin-templeton",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "Las páginas de Benji y del Franklin OnChain U.S. Government Money Fund, y su folleto, siguen publicadas.",
+          "fuentes": [
+            {
+              "id": "franklin-benji",
+              "tipo": "empresa",
+              "titulo": "Franklin Templeton Benji",
+              "url": "https://digitalassets.franklintempleton.com/benji/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "franklin-prospectus",
+              "tipo": "folleto_regulatorio",
+              "titulo": "Franklin OnChain U.S. Government Money Fund prospectus",
+              "url": "https://www.franklintempleton.com/forms-literature/download-preview/9001-P",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_documento_producto",
+          "detalle": "El folleto de 1 de agosto de 2026 (9001 P 08/26) identifica Franklin OnChain U.S. Government Money Fund (FOBXX), de Franklin Templeton Trust, y advierte que la SEC no ha aprobado ni desaprobado los valores. No confirma distribución en España.",
+          "fuentes": [
+            {
+              "id": "franklin-prospectus",
+              "tipo": "folleto_regulatorio",
+              "titulo": "Franklin OnChain U.S. Government Money Fund prospectus",
+              "url": "https://www.franklintempleton.com/forms-literature/download-preview/9001-P",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "El folleto de 1/08/2026 contempla la app Benji para particulares y un portal web institucional, con KYC/AML, un mínimo inicial de 20 USD en Stellar y mínimos mayores en otras redes, sujetos a elegibilidad. Indica que el fondo se dirige a residentes en EE. UU. y que no está registrado ni autorizado para distribución en ningún país de la UE/EEE, España incluida.",
+          "fuentes": [
+            {
+              "id": "franklin-prospectus",
+              "tipo": "folleto_regulatorio",
+              "titulo": "Franklin OnChain U.S. Government Money Fund prospectus",
+              "url": "https://www.franklintempleton.com/forms-literature/download-preview/9001-P",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "producto_y_geografia",
+            "detalle": "Que un fondo estadounidense se pueda contratar a través de Benji no lo convierte en una oferta abierta a minoristas de cualquier país.",
+            "fuentes": [
+              {
+                "id": "franklin-prospectus",
+                "tipo": "folleto_regulatorio",
+                "titulo": "Franklin OnChain U.S. Government Money Fund prospectus",
+                "url": "https://www.franklintempleton.com/forms-literature/download-preview/9001-P",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "inx",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "INX One sigue activo y aparece integrado con el ecosistema Republic.",
+          "fuentes": [
+            {
+              "id": "inx-web",
+              "tipo": "empresa",
+              "titulo": "INX One",
+              "url": "https://inx.co/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "INX Securities, LLC figura en FINRA como broker-dealer registrado y opera un ATS.",
+          "fuentes": [
+            {
+              "id": "inx-finra",
+              "tipo": "regulador",
+              "titulo": "FINRA BrokerCheck — INX Securities, LLC",
+              "url": "https://files.brokercheck.finra.org/firm/firm_162182.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "inx-disclosure",
+              "tipo": "documento_legal",
+              "titulo": "INX funds availability disclosure",
+              "url": "https://inx.co/funds-availability-disclosure",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "La documentación describe financiación en USD para usuarios estadounidenses y no estadounidenses, pero no acredita admisión desde España ni elegibilidad para cada valor.",
+          "fuentes": [
+            {
+              "id": "inx-disclosure",
+              "tipo": "documento_legal",
+              "titulo": "INX funds availability disclosure",
+              "url": "https://inx.co/funds-availability-disclosure",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "no_nasdaq",
+            "detalle": "Lo que hemos revisado confirma su bróker y su sistema alternativo de negociación (ATS), pero no que INX cotice en Nasdaq.",
+            "fuentes": [
+              {
+                "id": "inx-finra",
+                "tipo": "regulador",
+                "titulo": "FINRA BrokerCheck — INX Securities, LLC",
+                "url": "https://files.brokercheck.finra.org/firm/firm_162182.pdf",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "lofty",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web y su mercado de participaciones inmobiliarias siguen activos.",
+          "fuentes": [
+            {
+              "id": "lofty-web",
+              "tipo": "empresa",
+              "titulo": "Lofty",
+              "url": "https://lofty.ai/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "sin_registro_declarado",
+          "detalle": "Sus términos declaran que Lofty no está registrada ante la SEC como bolsa de valores ni en otra capacidad.",
+          "fuentes": [
+            {
+              "id": "lofty-terms",
+              "tipo": "documento_legal",
+              "titulo": "Lofty terms and conditions",
+              "url": "https://www.lofty.ai/terms",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "Las páginas revisadas no traen información específica para inversores no estadounidenses: los términos solo advierten que los productos pueden no estar disponibles en cada jurisdicción y excluyen territorios sancionados por la OFAC. No se confirmó base legal, elegibilidad ni comercialización en España.",
+          "fuentes": [
+            {
+              "id": "lofty-web",
+              "tipo": "empresa",
+              "titulo": "Lofty",
+              "url": "https://lofty.ai/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "lofty-terms",
+              "tipo": "documento_legal",
+              "titulo": "Lofty terms and conditions",
+              "url": "https://www.lofty.ai/terms",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "sin_registro_y_liquidez",
+            "detalle": "Su mercado no es una oferta registrada y no garantiza que puedas vender al momento. Las operaciones se hacen en redes públicas y no se garantiza que se ejecuten en las mejores condiciones.",
+            "fuentes": [
+              {
+                "id": "lofty-terms",
+                "tipo": "documento_legal",
+                "titulo": "Lofty terms and conditions",
+                "url": "https://www.lofty.ai/terms",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "maple-finance",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web sigue ofreciendo productos de crédito para instituciones y syrup.",
+          "fuentes": [
+            {
+              "id": "maple-web",
+              "tipo": "empresa",
+              "titulo": "Maple Finance",
+              "url": "https://maple.finance/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "maple-institutional",
+              "tipo": "empresa",
+              "titulo": "Maple Institutional",
+              "url": "https://maple.finance/earn/maple-institutional",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "sin_registro_declarado",
+          "detalle": "Los términos de la interfaz syrup declaran que la operadora no está registrada ante ningún regulador.",
+          "fuentes": [
+            {
+              "id": "maple-terms",
+              "tipo": "documento_legal",
+              "titulo": "Maple interface terms — syrupUSDC and syrupUSDT",
+              "url": "https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "La interfaz syrup excluye varias jurisdicciones, entre ellas EE. UU. Con la página institucional no hemos podido confirmar, en esta revisión, todos los requisitos de alta; comprueba los del producto concreto.",
+          "fuentes": [
+            {
+              "id": "maple-terms",
+              "tipo": "documento_legal",
+              "titulo": "Maple interface terms — syrupUSDC and syrupUSDT",
+              "url": "https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "maple-institutional",
+              "tipo": "empresa",
+              "titulo": "Maple Institutional",
+              "url": "https://maple.finance/earn/maple-institutional",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "producto_a_producto",
+            "detalle": "La licencia o los requisitos de un fondo (pool) no valen para todo Maple: el protocolo, la interfaz, el emisor y el vehículo son piezas distintas.",
+            "fuentes": [
+              {
+                "id": "maple-terms",
+                "tipo": "documento_legal",
+                "titulo": "Maple interface terms — syrupUSDC and syrupUSDT",
+                "url": "https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "midas",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La lista oficial de productos de midas.app sigue incluyendo mTBILL, mF-ONE, mGLO, mGLOBAL y mGLOeuro, y el folleto base del 17/07/2026 sigue incluyendo mTBILL. La web y las páginas de cada producto no se dejan leer con herramientas automáticas, así que no hemos comprobado cada emisión.",
+          "fuentes": [
+            {
+              "id": "midas-mtbill",
+              "tipo": "folleto_regulatorio",
+              "titulo": "Folleto base de Midas Software GmbH aprobado por la FMA de Liechtenstein el 17/07/2026 (copia publicada por la MFSA)",
+              "url": "https://www.mfsa.mt/wp-content/uploads/2026/07/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2026.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "midas-web",
+              "tipo": "empresa",
+              "titulo": "Midas · índice oficial de productos (llms.txt)",
+              "url": "https://midas.app/llms.txt",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_documento_producto",
+          "detalle": "La FMA de Liechtenstein aprobó el 17/07/2026 un nuevo folleto base de Midas Software GmbH, válido hasta el 17/07/2027 y notificado a la CNMV. Incluye mTBILL (ISIN CH1371002986) entre los productos que se siguen ofreciendo. Aprobar el folleto no es una licencia: el propio folleto dice que el emisor no está regulado por la FMA. No se obtuvieron los términos finales vigentes de mTBILL.",
+          "fuentes": [
+            {
+              "id": "midas-mtbill",
+              "tipo": "folleto_regulatorio",
+              "titulo": "Folleto base de Midas Software GmbH aprobado por la FMA de Liechtenstein el 17/07/2026 (copia publicada por la MFSA)",
+              "url": "https://www.mfsa.mt/wp-content/uploads/2026/07/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2026.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "midas-old-prospectus",
+              "tipo": "regulador",
+              "titulo": "MFSA copy of 2024 Midas base prospectus",
+              "url": "https://www.mfsa.mt/wp-content/uploads/2024/11/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2024.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "No se obtuvieron términos finales vigentes que permitan confirmar acceso minorista, mínimo de inversión o elegibilidad desde España.",
+          "fuentes": [
+            {
+              "id": "midas-mtbill",
+              "tipo": "folleto_regulatorio",
+              "titulo": "Folleto base de Midas Software GmbH aprobado por la FMA de Liechtenstein el 17/07/2026 (copia publicada por la MFSA)",
+              "url": "https://www.mfsa.mt/wp-content/uploads/2026/07/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2026.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "terminos_finales_no_confirmados",
+            "detalle": "Que el folleto esté «aprobado por la FMA» no es un aval ni una licencia de Midas: según el folleto base del 17/07/2026, la FMA solo revisa que esté completo, se entienda y sea coherente, y el emisor no queda regulado por ella. Si pueden entrar minoristas del EEE lo deciden los términos finales vigentes de mTBILL, que no hemos podido obtener.",
+            "fuentes": [
+              {
+                "id": "midas-mtbill",
+                "tipo": "folleto_regulatorio",
+                "titulo": "Folleto base de Midas Software GmbH aprobado por la FMA de Liechtenstein el 17/07/2026 (copia publicada por la MFSA)",
+                "url": "https://www.mfsa.mt/wp-content/uploads/2026/07/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2026.pdf",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              },
+              {
+                "id": "midas-old-prospectus",
+                "tipo": "regulador",
+                "titulo": "MFSA copy of 2024 Midas base prospectus",
+                "url": "https://www.mfsa.mt/wp-content/uploads/2024/11/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2024.pdf",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "ondo-finance",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web sigue ofreciendo USDY, OUSG y Ondo Stocks.",
+          "fuentes": [
+            {
+              "id": "ondo-web",
+              "tipo": "empresa",
+              "titulo": "Ondo Finance",
+              "url": "https://ondo.finance/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_verificable",
+          "detalle": "No se confirmó una licencia única aplicable a la marca; emisor, producto y jurisdicción deben revisarse por separado.",
+          "fuentes": [
+            {
+              "id": "ondo-web",
+              "tipo": "empresa",
+              "titulo": "Ondo Finance",
+              "url": "https://ondo.finance/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "ondo-usdy-access",
+              "tipo": "documento_legal",
+              "titulo": "Ondo USDY eligibility",
+              "url": "https://docs.ondo.finance/general-access-products/usdy/eligibility",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "Para residentes del EEE, USDY exige cliente profesional o inversor cualificado, además del alta con el emisor.",
+          "fuentes": [
+            {
+              "id": "ondo-usdy-access",
+              "tipo": "documento_legal",
+              "titulo": "Ondo USDY eligibility",
+              "url": "https://docs.ondo.finance/general-access-products/usdy/eligibility",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "no_acceso_general",
+            "detalle": "Ondo no está abierta a minoristas de todo el mundo: incluso los productos que llama «de acceso general» tienen restricciones según la jurisdicción.",
+            "fuentes": [
+              {
+                "id": "ondo-usdy-access",
+                "tipo": "documento_legal",
+                "titulo": "Ondo USDY eligibility",
+                "url": "https://docs.ondo.finance/general-access-products/usdy/eligibility",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "openeden",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La portada muestra TBILL, USDO y HYBOND con sus volúmenes, y se puede leer la documentación oficial de TBILL y de su proceso de alta.",
+          "fuentes": [
+            {
+              "id": "openeden-web",
+              "tipo": "empresa",
+              "titulo": "OpenEden",
+              "url": "https://openeden.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "openeden-intro",
+              "tipo": "documento_legal",
+              "titulo": "OpenEden TBILL introduction",
+              "url": "https://docs.openeden.com/tbill/introduction",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "openeden-onboarding",
+              "tipo": "documento_legal",
+              "titulo": "OpenEden investor onboarding",
+              "url": "https://docs.openeden.com/tbill/investor-onboarding",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_documento_producto",
+          "detalle": "La documentación identifica al emisor TBILL como fondo profesional BVI; no convierte a toda OpenEden en entidad regulada para cada servicio.",
+          "fuentes": [
+            {
+              "id": "openeden-intro",
+              "tipo": "documento_legal",
+              "titulo": "OpenEden TBILL introduction",
+              "url": "https://docs.openeden.com/tbill/introduction",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "TBILL es de acceso restringido y se limita a inversores profesionales BVI o acreditados de EE. UU., tras pasar los controles KYC/KYT.",
+          "fuentes": [
+            {
+              "id": "openeden-onboarding",
+              "tipo": "documento_legal",
+              "titulo": "OpenEden investor onboarding",
+              "url": "https://docs.openeden.com/tbill/investor-onboarding",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "solo_profesional",
+            "detalle": "TBILL no está abierto a inversores minoristas, y la calificación (rating) del fondo no garantiza tu capital.",
+            "fuentes": [
+              {
+                "id": "openeden-intro",
+                "tipo": "documento_legal",
+                "titulo": "OpenEden TBILL introduction",
+                "url": "https://docs.openeden.com/tbill/introduction",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              },
+              {
+                "id": "openeden-onboarding",
+                "tipo": "documento_legal",
+                "titulo": "OpenEden investor onboarding",
+                "url": "https://docs.openeden.com/tbill/investor-onboarding",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "pax-gold",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "Paxos sigue publicando la ficha de PAXG, su custodia y las opciones de canje.",
+          "fuentes": [
+            {
+              "id": "paxg-web",
+              "tipo": "empresa",
+              "titulo": "Pax Gold",
+              "url": "https://paxos.com/paxgold",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "Paxos Trust Company, National Association figura en la lista OCC de trust banks activos a 30/09/2026 (charter 25379). La autorización NYDFS de PAX Gold es un antecedente de 2019, no la única evidencia del estado actual.",
+          "fuentes": [
+            {
+              "id": "paxg-occ",
+              "tipo": "regulador",
+              "titulo": "OCC — active national trust banks",
+              "url": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "paxg-nydfs",
+              "tipo": "regulador",
+              "titulo": "NYDFS approval of PAX Gold",
+              "url": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1909051",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "paxg-web",
+              "tipo": "empresa",
+              "titulo": "Pax Gold",
+              "url": "https://paxos.com/paxgold",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "La ficha oficial de Paxos indica que PAXG no está disponible actualmente en la UE ('PAXG is currently unavailable in the EU'), así que no consta acceso desde España. Fuera de la UE se dirige a particulares, sobre todo a través de exchanges, y a instituciones mediante contacto comercial directo.",
+          "fuentes": [
+            {
+              "id": "paxg-web",
+              "tipo": "empresa",
+              "titulo": "Pax Gold",
+              "url": "https://paxos.com/paxgold",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "oro_tokenizado",
+            "detalle": "Que esté respaldado por oro y se pueda canjear no significa que no tenga riesgo. Comprueba el custodio, las comisiones, el mínimo y cómo se canjea.",
+            "fuentes": [
+              {
+                "id": "paxg-web",
+                "tipo": "empresa",
+                "titulo": "Pax Gold",
+                "url": "https://paxos.com/paxgold",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              },
+              {
+                "id": "paxg-nydfs",
+                "tipo": "regulador",
+                "titulo": "NYDFS approval of PAX Gold",
+                "url": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1909051",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "reental",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "Sus preguntas frecuentes oficiales explican el registro, la verificación de identidad y los controles contra el blanqueo (KYC/AML), y la firma del contrato. No hemos comprobado si ahora hay una emisión concreta abierta.",
+          "fuentes": [
+            {
+              "id": "reental-faq",
+              "tipo": "empresa",
+              "titulo": "Reental FAQ",
+              "url": "https://www.reental.co/en/faqs",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_verificable",
+          "detalle": "La fuente primaria localizada acredita una emisión española concreta con ERIR; no acredita una autorización general de Reental como empresa de servicios de inversión.",
+          "fuentes": [
+            {
+              "id": "reental-emision",
+              "tipo": "empresa",
+              "titulo": "Reental — emisión concreta y ERIR",
+              "url": "https://www.reental.co/en/corporate/reental-lanza-la-primera-emision-de-un-security-token-inmobiliario-en-espana-autorizado-por-la-cnmv",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "Sus preguntas frecuentes dicen que pueden darse de alta los adultos, tras la verificación de identidad y los controles contra el blanqueo (KYC/AML), y que a los residentes fiscales en EE. UU. se les exige ser inversores acreditados. Cada emisión tiene sus propios términos.",
+          "fuentes": [
+            {
+              "id": "reental-faq",
+              "tipo": "empresa",
+              "titulo": "Reental FAQ",
+              "url": "https://www.reental.co/en/faqs",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "emision_no_licencia_plataforma",
+            "detalle": "Que una emisión esté inscrita (ERIR) no es una licencia para toda la plataforma, y una oportunidad sin ficha actual no hay que darla por abierta.",
+            "fuentes": [
+              {
+                "id": "reental-emision",
+                "tipo": "empresa",
+                "titulo": "Reental — emisión concreta y ERIR",
+                "url": "https://www.reental.co/en/corporate/reental-lanza-la-primera-emision-de-un-security-token-inmobiliario-en-espana-autorizado-por-la-cnmv",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "republic",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "republic.com no deja leer su web con herramientas automáticas. El centro de ayuda oficial de Republic Europe sigue explicando cómo darse de alta, ver oportunidades e invertir en campañas.",
+          "fuentes": [
+            {
+              "id": "republic-web",
+              "tipo": "empresa",
+              "titulo": "Republic Europe · centro de ayuda",
+              "url": "https://help.republic.com/en/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "FINRA mantiene a OpenDeal Broker LLC (CRD 291387) registrada y sin suspensión, y a OpenDeal Portal LLC (nombre comercial Republic) en su lista de funding portals (SEC 7-167). Cada registro corresponde a una entidad concreta del grupo.",
+          "fuentes": [
+            {
+              "id": "republic-finra",
+              "tipo": "regulador",
+              "titulo": "FINRA BrokerCheck — OpenDeal Broker LLC",
+              "url": "https://files.brokercheck.finra.org/firm/firm_291387.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "republic-entities",
+              "tipo": "regulador",
+              "titulo": "FINRA · Funding portals we regulate (OpenDeal Portal LLC)",
+              "url": "https://www.finra.org/about/entities-we-regulate/funding-portals-we-regulate",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "Las páginas consultadas no permiten confirmar la elegibilidad vigente para cada oferta ni acceso desde España; debe revisarse la documentación de la emisión.",
+          "fuentes": [
+            {
+              "id": "republic-web",
+              "tipo": "empresa",
+              "titulo": "Republic Europe · centro de ayuda",
+              "url": "https://help.republic.com/en/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "republic-entities",
+              "tipo": "regulador",
+              "titulo": "FINRA · Funding portals we regulate (OpenDeal Portal LLC)",
+              "url": "https://www.finra.org/about/entities-we-regulate/funding-portals-we-regulate",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "grupo_multi_entidad",
+            "detalle": "El registro de una filial no cubre a todo Republic, y cada oferta tiene sus propias reglas.",
+            "fuentes": [
+              {
+                "id": "republic-entities",
+                "tipo": "regulador",
+                "titulo": "FINRA · Funding portals we regulate (OpenDeal Portal LLC)",
+                "url": "https://www.finra.org/about/entities-we-regulate/funding-portals-we-regulate",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              },
+              {
+                "id": "republic-finra",
+                "tipo": "regulador",
+                "titulo": "FINRA BrokerCheck — OpenDeal Broker LLC",
+                "url": "https://files.brokercheck.finra.org/firm/firm_291387.pdf",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "securitize",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La portada presenta inversiones tokenizadas (acciones de EE. UU. en blockchain y fondos como ARK Venture Fund), con la opción de darse de alta e invertir. No hemos comprobado una oferta concreta abierta; el registro de Securitize Markets se revisa aparte.",
+          "fuentes": [
+            {
+              "id": "securitize-web",
+              "tipo": "empresa",
+              "titulo": "Securitize",
+              "url": "https://securitize.io/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "securitize-finra",
+              "tipo": "regulador",
+              "titulo": "FINRA BrokerCheck — Securitize Markets, LLC",
+              "url": "https://files.brokercheck.finra.org/firm/firm_283256.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "Securitize Markets, LLC figura como broker-dealer SEC/FINRA y ATS; otras funciones pertenecen a otras filiales.",
+          "fuentes": [
+            {
+              "id": "securitize-finra",
+              "tipo": "regulador",
+              "titulo": "FINRA BrokerCheck — Securitize Markets, LLC",
+              "url": "https://files.brokercheck.finra.org/firm/firm_283256.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "El informe del broker/ATS no acredita alta disponible ni elegibilidad concreta del inversor para cada activo.",
+          "fuentes": [
+            {
+              "id": "securitize-finra",
+              "tipo": "regulador",
+              "titulo": "FINRA BrokerCheck — Securitize Markets, LLC",
+              "url": "https://files.brokercheck.finra.org/firm/firm_283256.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "securitize-web",
+              "tipo": "empresa",
+              "titulo": "Securitize",
+              "url": "https://securitize.io/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "entidades_separadas",
+            "detalle": "El permiso es de una filial concreta, Securitize Markets, LLC (bróker registrado ante la SEC y la FINRA, y ATS), y no cubre la tokenización, la administración ni el asesoramiento del resto del grupo.",
+            "fuentes": [
+              {
+                "id": "securitize-finra",
+                "tipo": "regulador",
+                "titulo": "FINRA BrokerCheck — Securitize Markets, LLC",
+                "url": "https://files.brokercheck.finra.org/firm/firm_283256.pdf",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "spiko",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "Su página oficial Web3 sigue mostrando productos de tesorería, con suscripción y reembolso. No llegamos a darnos de alta.",
+          "fuentes": [
+            {
+              "id": "spiko-access",
+              "tipo": "empresa",
+              "titulo": "Spiko Web3 use case and UCITS access",
+              "url": "https://www.spiko.io/use-cases/web3",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "La AMF (GECO) registra SPIKO EU T-BILLS MONEY MARKET FUND (ISIN FR001400ODL1), compartimento de SPIKO SICAV: OPCVM vivo, autorizado (agrément) el 05/04/2024 y abierto a todo suscriptor. Su gestora es Twenty First Capital, no Spiko, y el depositario es CACEIS Bank. El registro REGAFI de la ACPR recoge a Spiko Finance como empresa de inversión autorizada (CIB 19183) desde el 15/12/2025. Solo se verificó ese compartimento; los demás fondos Spiko deben comprobarse uno a uno.",
+          "fuentes": [
+            {
+              "id": "spiko-amf",
+              "tipo": "regulador",
+              "titulo": "AMF GECO — fondo Spiko",
+              "url": "https://geco.amf-france.org/back-office/funds/compartment/c79399",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "spiko-regafi",
+              "tipo": "regulador",
+              "titulo": "REGAFI (ACPR) · Spiko Finance, empresa de inversión autorizada",
+              "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=siren%3D%22980659585%22",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. No hemos comprobado en la CNMV que el fondo se comercialice en España, ni llegamos a darnos de alta.",
+          "fuentes": [
+            {
+              "id": "spiko-web",
+              "tipo": "empresa",
+              "titulo": "Spiko",
+              "url": "https://spiko.io/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "spiko-amf",
+              "tipo": "regulador",
+              "titulo": "AMF GECO — fondo Spiko",
+              "url": "https://geco.amf-france.org/back-office/funds/compartment/c79399",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "spiko-regafi-pasaporte-es",
+              "tipo": "regulador",
+              "titulo": "REGAFI (ACPR) · Pasaporte de Spiko Finance hacia España",
+              "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "distribucion_espana",
+            "detalle": "Ser un fondo UCITS no basta, por sí solo, para poder contratarlo desde España: hay que comprobar el pasaporte, el distribuidor y la clase de participación.",
+            "fuentes": [
+              {
+                "id": "spiko-amf",
+                "tipo": "regulador",
+                "titulo": "AMF GECO — fondo Spiko",
+                "url": "https://geco.amf-france.org/back-office/funds/compartment/c79399",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "superstate",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web sigue ofreciendo fondos tokenizados y FundOS.",
+          "fuentes": [
+            {
+              "id": "superstate-web",
+              "tipo": "empresa",
+              "titulo": "Superstate",
+              "url": "https://superstate.co/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "superstate-ustb",
+              "tipo": "empresa",
+              "titulo": "Superstate USTB",
+              "url": "https://superstate.com/assets/ustb",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_documento_producto",
+          "detalle": "La ficha actual identifica USTB como Invesco Short Duration US Government Securities Fund, con Invesco Advisers como gestor y Superstate Services como agente de transferencias, y dice que el fondo no está registrado como sociedad de inversión. No hay aprobación ni aval de un regulador.",
+          "fuentes": [
+            {
+              "id": "superstate-ustb",
+              "tipo": "empresa",
+              "titulo": "Superstate USTB",
+              "url": "https://superstate.com/assets/ustb",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "USTB exige acreditado y qualified purchaser; no es oferta minorista general.",
+          "fuentes": [
+            {
+              "id": "superstate-ustb",
+              "tipo": "empresa",
+              "titulo": "Superstate USTB",
+              "url": "https://superstate.com/assets/ustb",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "solo_cualificados",
+            "detalle": "Para USTB hay que cumplir dos requisitos a la vez: ser inversor acreditado y «qualified purchaser». Presentar documentos o estar inscrito ante un supervisor no es una aprobación ni una garantía.",
+            "fuentes": [
+              {
+                "id": "superstate-ustb",
+                "tipo": "empresa",
+                "titulo": "Superstate USTB",
+                "url": "https://superstate.com/assets/ustb",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "swarm",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "no_verificable",
+          "detalle": "La web lleva a una aplicación de la que no se puede leer el contenido; no hemos confirmado que haya operaciones ni una oferta abierta.",
+          "fuentes": [
+            {
+              "id": "swarm-web",
+              "tipo": "empresa",
+              "titulo": "Swarm",
+              "url": "https://docs.swarm.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_verificable",
+          "detalle": "El aviso legal de docs.swarm.com (actualizado el 28/05/2026) identifica a Swarm Capital GmbH (Vaduz, Liechtenstein) y sus términos la designan como contraparte, pero ninguna fuente primaria consultada indica licencia ni regulador. No se reutiliza la etiqueta genérica 'regulada por BaFin'.",
+          "fuentes": [
+            {
+              "id": "swarm-web",
+              "tipo": "empresa",
+              "titulo": "Swarm",
+              "url": "https://docs.swarm.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "swarm-terms",
+              "tipo": "documento_legal",
+              "titulo": "Swarm Markets terms",
+              "url": "https://docs.swarm.com/about/terms/tos",
+              "primaria": true,
+              "publicadaEl": "2022-05-18",
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "Los términos que se pueden leer en docs.swarm.com (Swarm Capital GmbH, versión del 22/04/2024) y sus preguntas frecuentes (03/07/2024) exigen KYC/AML y excluyen a las personas estadounidenses, pero no hay condiciones de alta de 2026 por jurisdicción y no se puede leer el contenido de la aplicación.",
+          "fuentes": [
+            {
+              "id": "swarm-terms",
+              "tipo": "documento_legal",
+              "titulo": "Swarm Markets terms",
+              "url": "https://docs.swarm.com/about/terms/tos",
+              "primaria": true,
+              "publicadaEl": "2022-05-18",
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "acceso_no_confirmado",
+            "detalle": "No está confirmado que un inversor minorista pueda entrar: no hemos podido comprobar unas condiciones de alta actuales que digan con qué empresa se contrata y desde qué jurisdicciones.",
+            "fuentes": [
+              {
+                "id": "swarm-web",
+                "tipo": "empresa",
+                "titulo": "Swarm",
+                "url": "https://docs.swarm.com/",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              },
+              {
+                "id": "swarm-terms",
+                "tipo": "documento_legal",
+                "titulo": "Swarm Markets terms",
+                "url": "https://docs.swarm.com/about/terms/tos",
+                "primaria": true,
+                "publicadaEl": "2022-05-18",
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "taurus",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web presenta custodia, tokenización y trading para instituciones. Su pie indica que Taurus SA tiene licencia de securities firm de FINMA, que Taurus Europe tiene licencia MiFID de la CySEC (465/26) y que TDX es una OTF operada por Taurus SA, no una bolsa.",
+          "fuentes": [
+            {
+              "id": "taurus-web",
+              "tipo": "empresa",
+              "titulo": "Taurus",
+              "url": "https://taurushq.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "Taurus SA figura en FINMA como securities firm y declara operar T-DX como OTF.",
+          "fuentes": [
+            {
+              "id": "taurus-finma",
+              "tipo": "regulador",
+              "titulo": "FINMA authorised banks and securities firms",
+              "url": "https://www.finma.ch/en/~/media/finma/dokumente/bewilligungstraeger/pdf/beh.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "taurus-disclosure",
+              "tipo": "documento_legal",
+              "titulo": "Taurus regulatory disclosure",
+              "url": "https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "confirmado_condicionado",
+          "detalle": "La documentación contempla clientes minoristas, profesionales e institucionales, en régimen de solo ejecución, sin asesoramiento; no está confirmado que se pueda dar de alta desde España.",
+          "fuentes": [
+            {
+              "id": "taurus-disclosure",
+              "tipo": "documento_legal",
+              "titulo": "Taurus regulatory disclosure",
+              "url": "https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "execution_only",
+            "detalle": "Que Taurus clasifique a sus clientes (minoristas, profesionales o institucionales) no significa que el servicio esté abierto a todos, ni que te asesoren o comprueben si te conviene.",
+            "fuentes": [
+              {
+                "id": "taurus-disclosure",
+                "tipo": "documento_legal",
+                "titulo": "Taurus regulatory disclosure",
+                "url": "https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "tokeny",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web sigue ofreciendo software para emitir tokens y cumplir la normativa en blockchain.",
+          "fuentes": [
+            {
+              "id": "tokeny-web",
+              "tipo": "empresa",
+              "titulo": "Tokeny",
+              "url": "https://tokeny.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "no_aplica_plataforma",
+          "detalle": "Sus términos definen a Tokeny como proveedor tecnológico; el cliente/emisor conserva las obligaciones financieras y regulatorias.",
+          "fuentes": [
+            {
+              "id": "tokeny-terms",
+              "tipo": "documento_legal",
+              "titulo": "Tokeny general terms of service",
+              "url": "https://tokeny.com/general-terms-of-service/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_aplica_plataforma",
+          "detalle": "Los servicios son para clientes profesionales; Tokeny no es el punto de acceso inversor a una oferta única.",
+          "fuentes": [
+            {
+              "id": "tokeny-terms",
+              "tipo": "documento_legal",
+              "titulo": "Tokeny general terms of service",
+              "url": "https://tokeny.com/general-terms-of-service/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "proveedor_no_emisor",
+            "detalle": "Tokeny es el proveedor del software: la licencia, la custodia, la solvencia y los requisitos de acceso son del emisor que lo usa, no de Tokeny.",
+            "fuentes": [
+              {
+                "id": "tokeny-terms",
+                "tipo": "documento_legal",
+                "titulo": "Tokeny general terms of service",
+                "url": "https://tokeny.com/general-terms-of-service/",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "tzero",
+      "verificacionLocal": {
+        "verificadoEl": "2026-11-03",
+        "conservaFechaCanonica": true,
+        "estadoOperativo": {
+          "estado": "observada",
+          "detalle": "La web sigue ofreciendo infraestructura de emisión, negociación y custodia.",
+          "fuentes": [
+            {
+              "id": "tzero-web",
+              "tipo": "empresa",
+              "titulo": "tZERO",
+              "url": "https://tzero.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "tzero-company",
+              "tipo": "empresa",
+              "titulo": "tZERO company and regulatory entities",
+              "url": "https://tzero.com/company",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "licenciaRegistro": {
+          "estado": "confirmada_regulador",
+          "detalle": "tZERO Securities, LLC figura en FINRA como broker-dealer y opera ATS; otras funciones pertenecen a entidades separadas.",
+          "fuentes": [
+            {
+              "id": "tzero-finra",
+              "tipo": "regulador",
+              "titulo": "FINRA BrokerCheck — tZERO Securities, LLC",
+              "url": "https://files.brokercheck.finra.org/firm/firm_123421.pdf",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "tzero-company",
+              "tipo": "empresa",
+              "titulo": "tZERO company and regulatory entities",
+              "url": "https://tzero.com/company",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "acceso": {
+          "estado": "no_verificable",
+          "detalle": "La web contempla negociación y servicios para inversores, pero no se comprobaron las condiciones de alta y admisión desde España para cada activo.",
+          "fuentes": [
+            {
+              "id": "tzero-web",
+              "tipo": "empresa",
+              "titulo": "tZERO",
+              "url": "https://tzero.com/",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            },
+            {
+              "id": "tzero-company",
+              "tipo": "empresa",
+              "titulo": "tZERO company and regulatory entities",
+              "url": "https://tzero.com/company",
+              "primaria": true,
+              "consultadaEl": "2026-11-03"
+            }
+          ]
+        },
+        "alertasCriticas": [
+          {
+            "codigo": "entidad_y_activo",
+            "detalle": "Su registro ante la SEC y la FINRA no cubre a todo el grupo, y no hay que dar por hecho que cada activo de su sistema de negociación (ATS) esté abierto a minoristas.",
+            "fuentes": [
+              {
+                "id": "tzero-finra",
+                "tipo": "regulador",
+                "titulo": "FINRA BrokerCheck — tZERO Securities, LLC",
+                "url": "https://files.brokercheck.finra.org/firm/firm_123421.pdf",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              },
+              {
+                "id": "tzero-company",
+                "tipo": "empresa",
+                "titulo": "tZERO company and regulatory entities",
+                "url": "https://tzero.com/company",
+                "primaria": true,
+                "consultadaEl": "2026-11-03"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "ofertas": [
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "tipo": "rendimiento",
+      "titulo": "Spiko Letras del Tesoro Euro",
+      "plataformaSlug": "spiko",
+      "plataformaNombre": "Spiko",
+      "categoria": "Tesoro y fondos",
+      "pais": "FR",
+      "resumen": "Fondo monetario UCITS en euros que invierte en letras del Tesoro de la zona euro, con acciones registradas en blockchain. Valor liquidativo variable y capital no garantizado.",
+      "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+      "cta": "Ver fuente",
+      "imagenAlt": "Spiko Letras del Tesoro Euro",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": true,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": {
+        "mostrada": "2,34 %",
+        "literal": "Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 02/11/2026; consultado el 03/11/2026. Variable y no garantizado."
+      },
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "1 EUR"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        },
+        {
+          "etiqueta": "Supervisor",
+          "valor": "AMF (fondo) · inscrito en la CNMV para su comercialización, n.º 2380"
+        },
+        {
+          "etiqueta": "Gastos corrientes (KID)",
+          "valor": "0,25 % anual"
+        },
+        {
+          "etiqueta": "Entrada / salida",
+          "valor": "0 % / 0 %"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Diario, corte 11:30 (París)"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "1 de 7"
+        },
+        {
+          "etiqueta": "Rentabilidad publicada · 31 días · 02/11/2026",
+          "valor": "2,34 %"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Capital no garantizado; la rentabilidad cambia a diario con los tipos de interés.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El reembolso puede limitarse si las solicitudes superan el 10 % del patrimonio del fondo.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "actual",
+      "fuentesActuales": [
+        "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+        "https://data.spiko.io/eutbl/",
+        "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+        "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf",
+        "https://docs.spiko.io/documentation/product_overview/fund_availability",
+        "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
+      ],
+      "coleccion": "principales",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "tipo": "rendimiento",
+      "titulo": "Spiko Letras del Tesoro Dólar",
+      "plataformaSlug": "spiko",
+      "plataformaNombre": "Spiko",
+      "categoria": "Tesoro y fondos",
+      "pais": "FR",
+      "resumen": "Fondo monetario UCITS en dólares que invierte en letras del Tesoro de Estados Unidos, con acciones registradas en blockchain. Para quien invierte en euros, el resultado depende también del tipo de cambio.",
+      "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+      "cta": "Ver fuente",
+      "imagenAlt": "Spiko Letras del Tesoro Dólar",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": true,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": {
+        "mostrada": "3,95 %",
+        "literal": "Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 02/11/2026; consultado el 03/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
+      },
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "1 USD"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "USD (depósito en EUR con conversión)"
+        },
+        {
+          "etiqueta": "Supervisor",
+          "valor": "AMF (fondo) · inscrito en la CNMV para su comercialización, n.º 2380"
+        },
+        {
+          "etiqueta": "Gastos corrientes (KID)",
+          "valor": "0,25 % anual"
+        },
+        {
+          "etiqueta": "Entrada / salida",
+          "valor": "0 % / 0 %"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Diario en días hábiles (Francia y EE. UU.), corte 11:30 París"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "1 de 7, más riesgo de cambio"
+        },
+        {
+          "etiqueta": "Rentabilidad publicada · 31 días · 02/11/2026 · en USD",
+          "valor": "3,95 %"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo de cambio: si inviertes en euros, una bajada del dólar puede producir pérdidas aunque el fondo suba.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Capital no garantizado; el reembolso puede limitarse si las solicitudes superan el 10 % del patrimonio.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "actual",
+      "fuentesActuales": [
+        "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+        "https://data.spiko.io/ustbl/",
+        "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+        "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf",
+        "https://docs.spiko.io/documentation/product_overview/fund_availability",
+        "https://geco.amf-france.org/produit-d-epargne/c79398"
+      ],
+      "coleccion": "principales",
+      "moneda": "USD",
+      "patrocinada": false
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "tipo": "rendimiento",
+      "titulo": "Spiko Euro (Smart Cash): fondo en euros ligado al €STR",
+      "plataformaSlug": "spiko",
+      "plataformaNombre": "Spiko",
+      "categoria": "Tesoro y fondos",
+      "pais": "FR",
+      "resumen": "Fondo de inversión UCITS en euros de Spiko que busca el €STR (el tipo a un día del euro) más un margen mediante permutas (swaps) con bancos; no es un fondo monetario ni un depósito. Su valor cambia cada día y el capital no está garantizado.",
+      "url": "https://www.spiko.io/es/spiko-euro",
+      "cta": "Ver fuente",
+      "imagenAlt": "Spiko Euro (Smart Cash): fondo en euros ligado al €STR",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": true,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "precio": null,
+      "estadoRevision": "actual",
+      "coleccion": "principales",
+      "moneda": "EUR",
+      "patrocinada": false,
+      "rentabilidad": {
+        "mostrada": "2,84 %",
+        "literal": "Cifra que publica Spiko, ya descontadas sus comisiones: lo que creció el fondo en su último día de cálculo, pasado a un año (valor liquidativo del 02/11/2026; consultado el 03/11/2026). Variable: sigue al €STR; no es un tipo fijo ni está garantizado."
+      },
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "1 EUR"
+        },
+        {
+          "etiqueta": "Qué es",
+          "valor": "Fondo de inversión europeo (UCITS) que invierte en acciones, bonos y otros títulos y cambia lo que rinden con bancos por el €STR más un margen; no es un fondo monetario"
+        },
+        {
+          "etiqueta": "Supervisor",
+          "valor": "AMF (Francia): n.º SCV20260075, aún sin ficha pública en su base GECO · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España"
+        },
+        {
+          "etiqueta": "Gestora",
+          "valor": "Twenty First Capital (gestión de las inversiones delegada en Amundi)"
+        },
+        {
+          "etiqueta": "Comisiones",
+          "valor": "0,25 % anual de gestión y hasta 0,10 % de gastos de funcionamiento; 0 % de entrada y de salida"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Diario; puede limitarse si un día las salidas netas llegan al 25 % del fondo. Orden antes de las 15:00 (hora de París) y pago al día hábil siguiente"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "1 de 7, sin contar el riesgo de contraparte (el KID lo deja fuera); plazo recomendado: 3 meses"
+        },
+        {
+          "etiqueta": "Rentabilidad publicada · neta y variable · 02/11/2026",
+          "valor": "2,84 %"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Spiko dice que se puede contratar desde España, pero no hemos podido confirmar en ningún registro público de la CNMV ni de la AMF (Francia) que este fondo esté dado de alta para venderse aquí: la CNMV solo muestra la sociedad Spiko SICAV, no sus fondos uno a uno.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "No es una cuenta ni un depósito. La web de Spiko dice «Interés a tipo fijo» y «Garantizado por contrapartes», pero el KID dice que no hay rentabilidad mínima garantizada y que puedes perder parte o toda la inversión: el rendimiento depende del €STR, que cambia cada día.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "No es un fondo monetario: invierte en acciones, bonos y otros títulos y cede lo que rinden a uno o varios bancos, que a cambio le pagan el €STR más un margen. Si un banco falla, el fondo podría quedar expuesto a esos títulos, que pueden bajar, y las garantías podrían no cubrir la pérdida. El riesgo 1 de 7 del KID no tiene en cuenta este riesgo.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Si un mismo día los inversores piden sacar, entre todos y descontado lo que entra, el 25 % del fondo o más, la gestora puede pagar solo una parte y pasar el resto al siguiente día hábil (como mucho 20 días en 3 meses), aunque la página de Spiko para particulares diga «No existen límites de retirada».",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La web de Spiko presenta a Amundi Asset Management como «Sociedad gestora», pero la gestora es Twenty First Capital, según el KID y el certificado de la AMF; el folleto dice que delega en Amundi la gestión de las inversiones. Las reclamaciones se dirigen a Twenty First Capital.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El enlace de la web de Spiko para «Verificar la autorización» lleva a la base pública de la AMF (GECO), pero allí este fondo todavía no tiene ficha publicada. Su autorización consta en el folleto que publica la AMF y en un certificado de la AMF que aloja Spiko.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "fuentesActuales": [
+        "https://www.spiko.io/es/spiko-euro",
+        "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+        "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+        "https://geco.amf-france.org/back-office/document/download/438274",
+        "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+        "https://docs.spiko.io/documentation/product_overview/fund_availability",
+        "https://www.spiko.io/es/usos-principales/particulares",
+        "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
+      ]
+    },
+    {
+      "slug": "robinhood-classic-stock-tokens",
+      "tipo": "valor",
+      "titulo": "Classic Stock Tokens: derivados sobre acciones de EE. UU.",
+      "plataformaSlug": "robinhood",
+      "plataformaNombre": "Robinhood Europe",
+      "categoria": "Acciones y capital privado",
+      "pais": "LT",
+      "resumen": "Derivados sobre más de 2.000 acciones y ETP de EE. UU. representados por un token no transferible; sigues el precio del subyacente sin ser su propietario.",
+      "url": "https://robinhood.com/eu/es/invest",
+      "cta": "Ver fuente",
+      "imagenAlt": "Classic Stock Tokens: derivados sobre acciones de EE. UU.",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": true,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "Desde 1 €"
+        },
+        {
+          "etiqueta": "Supervisor",
+          "valor": "Banco de Lituania · CNMV libre prestación nº 5299"
+        },
+        {
+          "etiqueta": "Comisión",
+          "valor": "0,10 % de cambio por operación; sin gestión"
+        },
+        {
+          "etiqueta": "Salida",
+          "valor": "Cierre con la contraparte en días de mercado de EE. UU.; puede suspenderse"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "7 de 7"
+        },
+        {
+          "etiqueta": "Plazo recomendado (KID)",
+          "valor": "1 año"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Es un derivado: no eres dueño de la acción ni votas.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Contraparte única Robinhood Europe; sin fondo de garantía de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Precio en USD: riesgo de cambio.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El token no se puede enviar a otra wallet.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La contraparte puede suspender el cierre de posiciones (KID).",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "actual",
+      "fuentesActuales": [
+        "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+        "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+        "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299",
+        "https://www.lb.lt/en/sfi-financial-market-participants/robinhood-europe-uab",
+        "https://robinhood.com/eu/es/invest"
+      ],
+      "coleccion": "principales",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "mtbill",
+      "tipo": "rendimiento",
+      "titulo": "mTBILL",
+      "plataformaSlug": "midas",
+      "plataformaNombre": "Midas",
+      "categoria": "Tesoro y fondos",
+      "pais": "DE",
+      "resumen": "Certificado tokenizado de Midas Software GmbH que replica letras del Tesoro de EE. UU. a corto plazo. Oferta pública en España con folleto aprobado por la FMA de Liechtenstein y KID en español.",
+      "url": "https://midas.app/mtbill",
+      "cta": "Ver fuente",
+      "imagenAlt": "mTBILL",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": true,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "Sin mínimo (Condiciones Finales)"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "USD · se paga y cobra en USDC"
+        },
+        {
+          "etiqueta": "Folleto",
+          "valor": "Aprobado por la FMA de Liechtenstein y notificado a España"
+        },
+        {
+          "etiqueta": "KID",
+          "valor": "En español · riesgo 7 de 7"
+        },
+        {
+          "etiqueta": "Comisiones (KID)",
+          "valor": "Gestión 0 % · éxito 5 % del rendimiento positivo · reembolso inmediato 0,07 % (KID)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Cualquier día hábil, valor tras 1 día hábil, con límites diarios"
+        },
+        {
+          "etiqueta": "Valor por token · 02/11/2026",
+          "valor": "1,0769 USD (oráculo del emisor)"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El emisor no está supervisado: la FMA aprobó el folleto, no la entidad. Tu derecho es un crédito subordinado frente a Midas Software GmbH, no letras del Tesoro.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los límites de reembolso no coinciden: las Condiciones Finales dicen 25 % diario y retención de hasta el 5 %; el KID en español, 15 % diario y retención de hasta el 50 %.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Se opera en USDC con una wallet propia; hay riesgo de cambio euro/dólar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El emisor cerró 2025 con patrimonio negativo (5,78 M€ de déficit) y se financia con préstamos de su matriz. Si no puede pagar, puedes perder toda la inversión (riesgo 7 de 7 en el KID).",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "No hay mercado secundario: solo puedes salir reembolsando al emisor o transmitiendo a otra wallet autorizada.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "fuentes_en_conflicto",
+      "fuentesActuales": [
+        "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+        "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
+        "https://docs.midas.app/llms-full.txt",
+        "https://midas.app/mtbill"
+      ],
+      "coleccion": "principales",
+      "moneda": "USD",
+      "patrocinada": false
+    },
+    {
+      "slug": "prosegur-digital-gold",
+      "tipo": "valor",
+      "titulo": "Prosegur Digital Gold",
+      "plataformaSlug": "prosegur-crypto",
+      "plataformaNombre": "Prosegur Crypto",
+      "categoria": "Materias primas",
+      "pais": "ES",
+      "resumen": "Tokens que representan gramos de oro físico custodiado por Prosegur en España. El valor sigue al precio del oro y solo se pueden revender a Prosegur Crypto.",
+      "url": "https://www.prosegurcrypto.com/digital-gold",
+      "cta": "Ver fuente",
+      "imagenAlt": "Prosegur Digital Gold",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": true,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "1 gramo"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        },
+        {
+          "etiqueta": "Compra / venta",
+          "valor": "LBMA +4 % / LBMA −6 %"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Solo recompra por Prosegur · 1–7 días hábiles aprox. en condiciones normales"
+        },
+        {
+          "etiqueta": "Custodia",
+          "valor": "Oro en inventario común custodiado por Prosegur (sin lingote asignado)"
+        },
+        {
+          "etiqueta": "Supervisión",
+          "valor": "Producto no supervisado (según su contrato)"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El precio del oro puede bajar; el proveedor no garantiza rentabilidad ni valor fijo.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Según su contrato, el token de oro no es un producto financiero ni está supervisado por un regulador financiero.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Comprar y vender cuesta en total unos 10 puntos sobre el precio LBMA; la recompra tarda de 1 a 7 días hábiles y puede suspenderse.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Prosegur Crypto está autorizada por la CNMV (MiCA, 30/06/2026) para custodiar y transferir criptoactivos; esa autorización no cubre este token de oro.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Si el oro no se mueve, comprar y revender te cuesta cerca de un 10 % (compras a LBMA +4 %, vendes a LBMA −6 %). Las comisiones pueden cambiar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "actual",
+      "fuentesActuales": [
+        "https://www.prosegurcrypto.com/digital-gold",
+        "https://app.prosegurdigitalgold.com/#/terms-service",
+        "https://prosegurdigitalgold.com/transparency",
+        "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv"
+      ],
+      "coleccion": "principales",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "aktionariat",
+      "tipo": "valor",
+      "titulo": "Aktionariat",
+      "plataformaSlug": "aktionariat",
+      "plataformaNombre": "Aktionariat · DAKS",
+      "categoria": "Acciones y capital privado",
+      "pais": "CH",
+      "resumen": "Acciones tokenizadas de Aktionariat AG, empresa suiza de software para tokenizar acciones, vendidas directamente por el emisor a precio fijo. La recompra por el emisor está cerrada: para vender hay que encontrar comprador entre accionistas.",
+      "url": "https://shares.aktionariat.com/invest",
+      "cta": "Ver fuente",
+      "imagenAlt": "Aktionariat",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": true,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio del emisor · 03/11/2026",
+          "valor": "7,25 CHF por acción (fijo)"
+        },
+        {
+          "etiqueta": "Mínimo",
+          "valor": "500 CHF por transferencia"
+        },
+        {
+          "etiqueta": "Acceso",
+          "valor": "Residentes en Suiza o EEE; tope EEE 100.000 € en total"
+        },
+        {
+          "etiqueta": "Supervisor",
+          "valor": "Sin supervisión prudencial: no figura en el registro de FINMA (03/11/2026)"
+        },
+        {
+          "etiqueta": "Venta",
+          "valor": "Solo a otros accionistas; el emisor no recompra"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "CHF / ZCHF"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Sin folleto ni KID: la oferta se acoge a umbrales de exención y el emisor no está supervisado.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El emisor no recompra acciones; la salida depende de que otro accionista compre, con muy poca demanda visible.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El mercado secundario se liquida en Frankencoin (ZCHF) con monedero propio, sin transferencia bancaria.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 03/11/2026).",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "No se publica cuánto queda del tope de 100.000 € para el EEE.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "actual",
+      "fuentesActuales": [
+        "https://shares.aktionariat.com/invest",
+        "https://shares.aktionariat.com/trade",
+        "https://www.aktionariat.com/disclaimer",
+        "https://shares.aktionariat.com/investor-page-terms"
+      ],
+      "coleccion": "principales",
+      "moneda": "CHF",
+      "patrocinada": false
+    },
+    {
+      "slug": "kraken-xstocks",
+      "tipo": "valor",
+      "titulo": "xStocks: certificados tokenizados que siguen el precio de acciones de EE. UU.",
+      "plataformaSlug": "kraken",
+      "plataformaNombre": "Kraken (Payward Europe Digital Solutions)",
+      "categoria": "Acciones y capital privado",
+      "pais": "CY",
+      "resumen": "Certificados de deuda de Backed Assets (JE), sociedad de Jersey del grupo de Kraken, que siguen el precio de más de 130 acciones y ETF de EE. UU. No son las acciones: dependen de la solvencia del emisor. Los vende Kraken UE desde Chipre.",
+      "url": "https://eu.kraken.com/xstocks",
+      "cta": "Ver fuente",
+      "imagenAlt": "xStocks: certificados tokenizados que siguen el precio de acciones de EE. UU.",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": true,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "estadoRevision": "actual",
+      "coleccion": "principales",
+      "moneda": "USD",
+      "patrocinada": false,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "Desde 1 €"
+        },
+        {
+          "etiqueta": "Qué compras",
+          "valor": "Certificado de deuda de Backed Assets (JE), no la acción"
+        },
+        {
+          "etiqueta": "Vendedor y supervisor",
+          "valor": "Payward Europe Digital Solutions (CY) · CySEC 342/17 · CNMV n.º 4474"
+        },
+        {
+          "etiqueta": "Folleto",
+          "valor": "Aprobado por la FMA de Liechtenstein y notificado a la CNMV (11/05/2026); no cubre su venta en España"
+        },
+        {
+          "etiqueta": "Condiciones finales",
+          "valor": "Solo ofrecen el producto en Liechtenstein y Suiza (en Suiza, solo a profesionales); España no figura como país de oferta"
+        },
+        {
+          "etiqueta": "Compra con euros",
+          "valor": "1 % por compra instantánea, o hasta 2 USD en compras pequeñas según la versión inglesa de la tabla, más un diferencial que Kraken no publica"
+        },
+        {
+          "etiqueta": "Salida",
+          "valor": "Venta a Kraken en USD (24/5) o retirada a wallet"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Kraken UE lo vende a particulares en España, pero las condiciones finales del emisor solo ofrecen el producto en Liechtenstein y Suiza: el folleto no cubre su venta en España.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "RWAdar no ha encontrado ningún documento oficial que explique en qué se basa la venta en España.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "No compras la acción: es un certificado de deuda de Backed Assets (JE), sin voto ni dividendos en efectivo.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo de contraparte: si el emisor o Kraken fallan, puedes perder parte o todo. El emisor no es rentable y depende de su grupo.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Emisor y vendedor son del mismo grupo (Payward/Kraken), aunque la web de Kraken diga que no está afiliado.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Producto complejo: puedes perder toda la inversión.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El folleto advierte que solo es adecuado para quien pueda soportar cualquier pérdida y tenga conocimientos financieros.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Precio y venta en USD: si el dólar baja frente al euro, pierdes aunque la acción no se mueva.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los dividendos no se cobran: se suman al saldo, netos de una retención del 30 % en EE. UU.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "fuentesActuales": [
+        "https://eu.kraken.com/xstocks",
+        "https://eu.kraken.com/legal/risk-disclosure",
+        "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
+        "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+        "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+        "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+        "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"
+      ]
+    },
+    {
+      "slug": "boss-info",
+      "tipo": "valor",
+      "titulo": "Boss Info",
+      "plataformaSlug": "aktionariat",
+      "plataformaNombre": "Aktionariat · BOSS",
+      "categoria": "Acciones y capital privado",
+      "pais": "CH",
+      "resumen": "Acciones tokenizadas de Boss Info AG, integrador informático suizo. El emisor vende a 8,50 por acción, pero la última operación fue en el mercado entre accionistas a 6,70 el 28/09/2026.",
+      "url": "https://shares.bossinfo.com/",
+      "cta": "Ver fuente",
+      "imagenAlt": "Boss Info",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "100 CHF por transferencia"
+        },
+        {
+          "etiqueta": "Supervisor",
+          "valor": "Sin supervisión prudencial: no figura en el registro de FINMA (03/11/2026)"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Acceso desde España no confirmado: el emisor solo publica una lista de países vetados (EE. UU., China y otros), sin España, pero no dice que la oferta se dirija al EEE.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El emisor no recompra («ventana de mantenimiento», sin fecha).",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El precio del emisor está por encima de la mejor oferta de venta entre accionistas.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El precio del emisor y las ofertas entre accionistas cambian: compruébalos en el portal antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://shares.bossinfo.com/invest",
+        "https://shares.bossinfo.com/trade",
+        "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+        "https://shares.bossinfo.com/"
+      ],
+      "coleccion": "secundario",
+      "moneda": "CHF",
+      "patrocinada": false
+    },
+    {
+      "slug": "switzerlend",
+      "tipo": "valor",
+      "titulo": "Switzerlend",
+      "plataformaSlug": "aktionariat",
+      "plataformaNombre": "Aktionariat · LENDS",
+      "categoria": "Acciones y capital privado",
+      "pais": "CH",
+      "resumen": "Acciones preferentes C1 tokenizadas de Switzerlend AG, operadora de la plataforma de préstamos LEND. El emisor las vende a precio fijado por él; no las recompra.",
+      "url": "https://shares.lend.ch/",
+      "cta": "Ver fuente",
+      "imagenAlt": "Switzerlend",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Clase",
+          "valor": "Preferente C1 (preferencia en liquidación)"
+        },
+        {
+          "etiqueta": "Supervisor",
+          "valor": "Sin supervisión prudencial: no figura en el registro de FINMA (03/11/2026); afiliada a PolyReg solo a efectos de blanqueo"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Acceso desde España no confirmado: el portal no publica países admitidos.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Es capital de la empresa, no una inversión en los préstamos de LEND.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La salida depende de compradores en un secundario en cripto con muy poca demanda.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el 03/11/2026 el contrato de compra tenía la recompra desactivada y casi sin fondos.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El precio del emisor y las ofertas entre accionistas cambian: compruébalos en el portal antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://shares.lend.ch/invest",
+        "https://shares.lend.ch/trade",
+        "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+        "https://shares.lend.ch/"
+      ],
+      "coleccion": "secundario",
+      "moneda": "CHF",
+      "patrocinada": false
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "tipo": "rendimiento",
+      "titulo": "Vivienda Plüddemanngasse 101 · Graz",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Inmobiliario",
+      "pais": "AT",
+      "resumen": "Participaciones tokenizadas (Genussscheine) de BrickOne GmbH & Co KG ligadas a las rentas de un inmueble en Graz. Hoy solo se compran a otros inversores en el mercado de la app.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Vivienda Plüddemanngasse 101 · Graz",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": false,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio de emisión original",
+          "valor": "103,37 €"
+        },
+        {
+          "etiqueta": "Comisión por operación",
+          "valor": "1,5 % comprador y 1,5 % vendedor"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Sin reembolso ordinario; solo reventa"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La base de alquiler de la API cita un contrato ya vencido; la rentabilidad no se muestra.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+        "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf"
+      ],
+      "coleccion": "secundario",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "tipo": "rendimiento",
+      "titulo": "Vivienda Sonnleithnergasse 2 · Viena",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Inmobiliario",
+      "pais": "AT",
+      "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Sagarmatha GmbH & Co KG ligadas a las rentas de un inmueble en Viena. Hoy solo se compran a otros inversores en el mercado de la app.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Vivienda Sonnleithnergasse 2 · Viena",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": false,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio de emisión original",
+          "valor": "101,37 €"
+        },
+        {
+          "etiqueta": "Comisión por operación",
+          "valor": "1,5 % comprador y 1,5 % vendedor"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Sin reembolso ordinario; solo reventa"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El contrato de alquiler que figura vence el 2026-11-29; la rentabilidad no se muestra.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+        "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf"
+      ],
+      "coleccion": "secundario",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "tipo": "rendimiento",
+      "titulo": "Local de estanco · Klagenfurt",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Inmobiliario",
+      "pais": "AT",
+      "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Qogir GmbH & Co KG ligadas a las rentas de un inmueble en Klagenfurt. Hoy solo se compran a otros inversores en el mercado de la app.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Local de estanco · Klagenfurt",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": false,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio de emisión original",
+          "valor": "100,02 €"
+        },
+        {
+          "etiqueta": "Comisión por operación",
+          "valor": "1,5 % comprador y 1,5 % vendedor"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Sin reembolso ordinario; solo reventa"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+        "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf"
+      ],
+      "coleccion": "secundario",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "tipo": "rendimiento",
+      "titulo": "Vivienda Stallhofstraße 28 · Gratwein",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Inmobiliario",
+      "pais": "AT",
+      "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Qogir GmbH & Co KG ligadas a las rentas de un inmueble en Gratwein. Hoy solo se compran a otros inversores en el mercado de la app.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Vivienda Stallhofstraße 28 · Gratwein",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": false,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio de emisión original",
+          "valor": "100,10 €"
+        },
+        {
+          "etiqueta": "Comisión por operación",
+          "valor": "1,5 % comprador y 1,5 % vendedor"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Sin reembolso ordinario; solo reventa"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La API da dos fechas de fin del alquiler (02/02/2022 y 31/03/2027); la rentabilidad no se muestra.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+        "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf"
+      ],
+      "coleccion": "secundario",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "tipo": "rendimiento",
+      "titulo": "Vivienda Schwarzer Weg 18 · Graz",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Inmobiliario",
+      "pais": "AT",
+      "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Qogir GmbH & Co KG ligadas a las rentas de un inmueble en Graz. Hoy solo se compran a otros inversores en el mercado de la app.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Vivienda Schwarzer Weg 18 · Graz",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": false,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio de emisión original",
+          "valor": "100,14 €"
+        },
+        {
+          "etiqueta": "Comisión por operación",
+          "valor": "1,5 % comprador y 1,5 % vendedor"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Sin reembolso ordinario; solo reventa"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La base de alquiler de la API cita un contrato ya vencido; la rentabilidad no se muestra.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+        "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf"
+      ],
+      "coleccion": "secundario",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "tipo": "rendimiento",
+      "titulo": "Drautalresidenz · Paternion",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Inmobiliario",
+      "pais": "AT",
+      "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Sagarmatha GmbH & Co KG ligadas a las rentas de un inmueble en Paternion. Hoy solo se compran a otros inversores en el mercado de la app.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Drautalresidenz · Paternion",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": false,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio de emisión original",
+          "valor": "100,05 €"
+        },
+        {
+          "etiqueta": "Comisión por operación",
+          "valor": "1,5 % comprador y 1,5 % vendedor"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Sin reembolso ordinario; solo reventa"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+        "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf"
+      ],
+      "coleccion": "secundario",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "tipo": "rendimiento",
+      "titulo": "Inmueble Randhartingergasse 9 · Viena",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Inmobiliario",
+      "pais": "AT",
+      "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Sagarmatha GmbH & Co KG ligadas a las rentas de un inmueble en Viena. Hoy solo se compran a otros inversores en el mercado de la app.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Inmueble Randhartingergasse 9 · Viena",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": false,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio de emisión original",
+          "valor": "100,24 €"
+        },
+        {
+          "etiqueta": "Comisión por operación",
+          "valor": "1,5 % comprador y 1,5 % vendedor"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Sin reembolso ordinario; solo reventa"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Según la API, el inquilino se fue el 28/02/2026 y se busca otro; la rentabilidad no se muestra.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+        "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf"
+      ],
+      "coleccion": "secundario",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "tipo": "rendimiento",
+      "titulo": "Apartamento vacacional Hinterstoder 50",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Inmobiliario",
+      "pais": "AT",
+      "resumen": "Participaciones tokenizadas (Genussscheine) de Brick Qogir GmbH & Co KG ligadas a las rentas de un inmueble en Hinterstoder. Hoy solo se compran a otros inversores en el mercado de la app.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Apartamento vacacional Hinterstoder 50",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": false,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio de emisión original",
+          "valor": "100,20 €"
+        },
+        {
+          "etiqueta": "Comisión por operación",
+          "valor": "1,5 % comprador y 1,5 % vendedor"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Sin reembolso ordinario; solo reventa"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+        "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf"
+      ],
+      "coleccion": "secundario",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "tipo": "rendimiento",
+      "titulo": "Vivienda Pottendorfer Straße 62 · Wiener Neustadt",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Inmobiliario",
+      "pais": "AT",
+      "resumen": "Participaciones tokenizadas (Genussscheine) de Green-Point 62 GmbH ligadas a las rentas de un inmueble en Wiener Neustadt. Hoy solo se compran a otros inversores en el mercado de la app.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Vivienda Pottendorfer Straße 62 · Wiener Neustadt",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": false,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio de emisión original",
+          "valor": "100,44 €"
+        },
+        {
+          "etiqueta": "Comisión por operación",
+          "valor": "1,5 % comprador y 1,5 % vendedor"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Primera cancelación a los 15 años"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La base de alquiler de la API cita un contrato ya vencido; la rentabilidad no se muestra.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La garantía hipotecaria sigue pendiente de inscripción según la API.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+        "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf"
+      ],
+      "coleccion": "secundario",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "tipo": "rendimiento",
+      "titulo": "Fotovoltaica GreenPoint · Wiener Neustadt",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Infraestructura",
+      "pais": "AT",
+      "resumen": "Participaciones tokenizadas (Genussscheine) de Green-Point 62 GmbH ligadas a los ingresos de una instalación fotovoltaica en Wiener Neustadt. Hoy solo se compran a otros inversores en el mercado de la app.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Fotovoltaica GreenPoint · Wiener Neustadt",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio de emisión original",
+          "valor": "100,32 €"
+        },
+        {
+          "etiqueta": "Comisión por operación",
+          "valor": "1,5 % comprador y 1,5 % vendedor"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Nominal al vencimiento (2038), subordinado"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Reembolso subordinado a los acreedores financieros del emisor.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+        "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf"
+      ],
+      "coleccion": "secundario",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "tipo": "rendimiento",
+      "titulo": "Fotovoltaica Cohotel · Steyregg",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Infraestructura",
+      "pais": "AT",
+      "resumen": "Participaciones tokenizadas (Genussscheine) de COHOTEL Hotelbetriebsgesellschaft m.b.H. ligadas a los ingresos de una instalación fotovoltaica en Steyregg. Hoy solo se compran a otros inversores en el mercado de la app.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Fotovoltaica Cohotel · Steyregg",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Precio de emisión original",
+          "valor": "100,85 €"
+        },
+        {
+          "etiqueta": "Comisión por operación",
+          "valor": "1,5 % comprador y 1,5 % vendedor"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Nominal al vencimiento (2038), subordinado"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Reembolso subordinado a los acreedores financieros del emisor.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+        "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf"
+      ],
+      "coleccion": "secundario",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "casa-de-outeiro",
+      "tipo": "valor",
+      "titulo": "Casa de Outeiro",
+      "plataformaSlug": "alius-capital",
+      "plataformaNombre": "Alius Capital",
+      "categoria": "Acciones y capital privado",
+      "pais": "ES",
+      "resumen": "Ampliación de capital con acciones tokenizadas de una bodega y proyecto de enoturismo en la Ribeira Sacra, canalizada por Alius Capital. El 01/11/2026 llevaba 1.121.000 € de un mínimo de 2.000.000 €.",
+      "url": "https://aliuscap.com/projects/casa-de-outeiro",
+      "cta": "Ver fuente",
+      "imagenAlt": "Casa de Outeiro",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": true,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "2.000 € (80 acciones de 25 €)"
+        },
+        {
+          "etiqueta": "Supervisor",
+          "valor": "Plataforma registrada en la CNMV (PSFP nº 11)"
+        },
+        {
+          "etiqueta": "Plazo de la oferta",
+          "valor": "Hasta el 31/03/2027 según la ficha del 30/10/2026"
+        },
+        {
+          "etiqueta": "Coste para el inversor",
+          "valor": "Sin coste del proyecto (ficha de datos §6)"
+        },
+        {
+          "etiqueta": "Salida",
+          "valor": "Bloqueo inicial; de 2027 a 2030 solo puedes transmitir un 2,5 % de tus acciones al año (ficha de datos)"
+        },
+        {
+          "etiqueta": "Recaudado · 03/11/2026",
+          "valor": "1.121.000 € de un mínimo de 2.000.000 €"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La campaña en Alius tenía fin el 31/10/2026 y el 03/11/2026 no mostraba días restantes ni ampliación, aunque la ficha de datos del 30/10 cita el 31/03/2027. Confirma en Alius si sigue abierta antes de invertir.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Si no se alcanzan 2.000.000 € antes de la fecha límite, la ampliación se cancela y se devuelve el dinero sin gastos.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La sociedad está en constitución y los tokens se entregan tras inscribir la entidad de registro en la CNMV. La venta de las acciones está limitada durante años y depende de encontrar comprador.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Inversión de capital: puede perderse todo. Las recompras y dividendos citados por el emisor son previsiones, no derechos.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La CNMV no ha verificado ni aprobado esta oferta; el registro de la CNMV es de la plataforma, no del proyecto.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://aliuscap.com/projects/casa-de-outeiro",
+        "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+        "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+        "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"
+      ],
+      "coleccion": "en_camino",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "terreno-con-arrendamiento-billa",
+      "tipo": "rendimiento",
+      "titulo": "Terreno con supermercado BILLA · Brückl",
+      "plataformaSlug": "brickwise",
+      "plataformaNombre": "Brickwise",
+      "categoria": "Inmobiliario",
+      "pais": "AT",
+      "resumen": "Genussscheine tokenizados de Brick Qogir GmbH & Co KG sobre las rentas de un terreno con supermercado alquilado a BILLA hasta 2057 en Brückl (Carintia). Emisión primaria a 100 € por participación, pendiente de alcanzar su umbral mínimo.",
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "cta": "Ver fuente",
+      "imagenAlt": "Terreno con supermercado BILLA · Brückl",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": false,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Mínimo",
+          "valor": "1.000 € (tramos de 100 €)"
+        },
+        {
+          "etiqueta": "Precio por participación",
+          "valor": "100 €"
+        },
+        {
+          "etiqueta": "Reembolso",
+          "valor": "Cancelable a los 5 años y luego cada año; o reventa"
+        },
+        {
+          "etiqueta": "Comisión",
+          "valor": "1,5 % al invertir y 1,5 % al vender"
+        },
+        {
+          "etiqueta": "Intermediario",
+          "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+        },
+        {
+          "etiqueta": "Riesgo KID",
+          "valor": "6 de 7"
+        },
+        {
+          "etiqueta": "Moneda",
+          "valor": "EUR"
+        },
+        {
+          "etiqueta": "Suscrito / umbral",
+          "valor": "82 de 5.000 participaciones necesarias (API 03/11/2026)"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La emisión solo se ejecuta si alcanza 500.000 €; el 03/11/2026 la API mostraba 82 participaciones suscritas (1,64 %). Si no se alcanza, se devuelve el dinero sin intereses.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El plazo publicado terminó el 16/05/2026; el contrato permite prorrogarlo, pero no se publica la nueva fecha.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El emisor tenía fondos propios negativos a 31/12/2024 y la garantía en el registro aún no está inscrita.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Cuenta para residentes del EEE; distribución en España no confirmada; documentos en alemán. Riesgo 6 de 7.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "El reparto que prevé el emisor no está garantizado y todavía no se ha pagado ninguno.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Puedes desistir de la suscripción en 14 días, salvo que antes te entreguen los tokens; es un derecho que da el emisor y no existe en la reventa.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://app.brickwise.at/desktopWeb/marketplace",
+        "https://api.app.brickwise.at/api/v2/assets",
+        "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+        "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+        "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf"
+      ],
+      "coleccion": "en_camino",
+      "moneda": "EUR",
+      "patrocinada": false
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "tipo": "rendimiento",
+      "titulo": "Hausera · próximas ofertas",
+      "plataformaSlug": "hausera",
+      "plataformaNombre": "Hausera",
+      "categoria": "Inmobiliario",
+      "pais": "ES",
+      "resumen": "Seguimiento de las operaciones inmobiliarias de Hausera. El 02/11/2026 anunciaba Alicante 2 con preventa desde el 04/11 y oferta pública desde el 11/11/2026; sin documento de emisión publicado.",
+      "url": "https://hausera.io/oportunidades/",
+      "cta": "Ver fuente",
+      "imagenAlt": "Hausera · próximas ofertas",
+      "verificadaEl": "2026-11-03",
+      "vigenciaDias": 7,
+      "permanente": false,
+      "disponibleEs": null,
+      "eu": null,
+      "fueraLadrillo": false,
+      "puntuacion": null,
+      "rentabilidad": null,
+      "precio": null,
+      "metricas": [
+        {
+          "etiqueta": "Próxima operación",
+          "valor": "Alicante 2 · preventa 04/11/2026, oferta 11/11/2026"
+        },
+        {
+          "etiqueta": "Supervisor",
+          "valor": "No registrada en la CNMV (sus términos dicen que no es empresa de servicios de inversión)"
+        },
+        {
+          "etiqueta": "Coste de Hausera",
+          "valor": "Sin comisión por invertir (FAQ)"
+        }
+      ],
+      "avisos": [
+        {
+          "texto": "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Hausera (HOLDTX SPAIN, S.L.) declara no ser una empresa de servicios de inversión; la inversión se firma con la sociedad de cada proyecto.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "La preventa es una reserva sin compromiso; las condiciones de Alicante 2 dependen de su documento de emisión, aún no publicado.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Las rentabilidades anunciadas son previsiones del promotor; la devolución depende de vender el inmueble.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        },
+        {
+          "texto": "Puedes perder todo o parte del dinero; no hay mercado secundario garantizado.",
+          "tono": "warn",
+          "esAntiguedad": false,
+          "verificadaEl": "2026-11-03"
+        }
+      ],
+      "estadoRevision": "no_verificable",
+      "fuentesActuales": [
+        "https://hausera.io/oportunidades/",
+        "https://hausera.io/terms/"
+      ],
+      "coleccion": "en_camino",
+      "moneda": "EUR",
+      "patrocinada": false
+    }
+  ]
+}

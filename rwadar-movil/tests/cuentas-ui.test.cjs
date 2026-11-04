@@ -201,8 +201,8 @@ test('lista remota, abrir ficha, selector y quitar no confunden los favoritos lo
   assert.doesNotMatch(p.texto(), /token|monedero/);
   await p.pulsar('Ver Empresa Uno'); assert.ok(p.llamadas.some(([n, dato]) => n === 'abrir' && dato === 'uno'));
   await p.pulsar('Añadir una empresa');
-  assert.ok(p.boton('Vigilar Empresa Dos')); assert.equal(p.boton('Vigilar Empresa Uno'), undefined);
-  await p.pulsar('Vigilar Empresa Dos');
+  assert.ok(p.boton('Seguir Empresa Dos')); assert.equal(p.boton('Seguir Empresa Uno'), undefined);
+  await p.pulsar('Seguir Empresa Dos');
   await p.pulsar('Quitar Empresa Uno');
   assert.deepEqual(p.llamadas.filter(([n]) => n === 'alternarVigilancia').map(([, datos]) => datos), ['Empresa Dos', 'Empresa Uno']);
   assert.equal(p.llamadas.some(([n]) => ['alternarSeguimiento', 'borrarDatosDispositivo', 'registrarParaAvisos'].includes(n)), false);
@@ -290,7 +290,7 @@ test('el componente nativo se renderiza también con react-native-web, sin Auth 
     assert.match(html, /Cuentas en preparación|Entra en tu cuenta|Tu perfil/);
     assert.doesNotMatch(html, /undefined|access_token|refresh_token/);
     if (estado.estado === 'sin-sesion') assert.match(html, /type="password"/);
-    if (estado.estado === 'autenticada') assert.match(html, /Lista de vigilancia/);
+    if (estado.estado === 'autenticada') assert.match(html, /Lista de seguimiento/);
   }
 });
 

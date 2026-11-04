@@ -42,6 +42,8 @@ const FUENTES_POR_FICHA = Object.freeze({
 // fichas-editoriales:fin
 
 const ETIQUETA_EDITORIAL = 'Ilustración editorial';
+// El pie que va visible bajo la imagen (la etiqueta solo abre el texto alternativo).
+const PIE_EDITORIAL = 'Imágenes ilustrativas, no fotos del activo';
 const CATEGORIAS_EDITORIALES = Object.freeze([
   'Inmobiliario',
   'Tesoro y fondos',
@@ -51,6 +53,7 @@ const CATEGORIAS_EDITORIALES = Object.freeze([
 
 if (MANIFIESTO_EDITORIAL?.versionEsquema !== 2 ||
     MANIFIESTO_EDITORIAL?.etiquetaVisibleObligatoria !== ETIQUETA_EDITORIAL ||
+    MANIFIESTO_EDITORIAL?.pieVisibleObligatorio !== PIE_EDITORIAL ||
     !Array.isArray(MANIFIESTO_EDITORIAL?.archivos) ||
     MANIFIESTO_EDITORIAL.archivos.length !== 4 ||
     !Array.isArray(MANIFIESTO_EDITORIAL?.fichas)) {
@@ -108,7 +111,7 @@ if (EDITORIALES_POR_FICHA.size !== MANIFIESTO_EDITORIAL.fichas.length ||
   throw new Error('El manifiesto editorial y las ilustraciones por ficha no coinciden');
 }
 
-export { ETIQUETA_EDITORIAL, MANIFIESTO_EDITORIAL };
+export { ETIQUETA_EDITORIAL, MANIFIESTO_EDITORIAL, PIE_EDITORIAL };
 
 export function imagenEditorial(categoria) {
   // Reutilización del activo propio; no añade una foto ni otro origen al manifiesto.

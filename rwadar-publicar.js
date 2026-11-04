@@ -441,8 +441,8 @@ const pieRevision = capturadoTexto.pieRevision;
 // Con el catálogo caducado la web añade «· pendiente de renovar» y lo sigue
 // mostrando (catálogo siempre disponible). El HTML estático dice lo mismo.
 // Fechas en dd/mm/aaaa en toda la web (revisión de lectura, 04/11/2026).
-if (!/^Última revisión del registro: \d{2}\/\d{2}\/\d{4}( · pendiente de renovar)?$/.test(pieRevision)) {
-  console.error('ERROR: no se pudo derivar la fecha de revisión del registro.');
+if (!/^Última revisión del catálogo: \d{2}\/\d{2}\/\d{4}( · pendiente de renovar)?$/.test(pieRevision)) {
+  console.error('ERROR: no se pudo derivar la fecha de revisión del catálogo.');
   process.exit(1);
 }
 const escapaTexto = texto => texto.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

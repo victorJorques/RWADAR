@@ -106,7 +106,7 @@ test('sesion segura: vigilancia no bloquea login ni admite filas ajenas; 401 sig
     {data:[{usuario_id:'otro',plataforma_id:UID,plataformas:null}],error:null}]) {
     const e=entorno();e.fallos.vigilancia=fallo;const a=e.controlador();
     assert.equal((await a.entrar({correo,clave})).ok,true);assert.deepEqual(a.estado().vigiladas,[]);
-    assert.match(a.estado().mensaje,/no se pudo cargar tu vigilancia/);a.destruir();
+    assert.match(a.estado().mensaje,/no se pudo cargar tu lista de seguimiento/);a.destruir();
   }
   const e=entorno();e.fallos.vigilancia={data:null,error:{status:401}};const a=e.controlador();
   assert.equal((await a.entrar({correo,clave})).ok,false);assert.equal(a.estado().usuario,null);a.destruir();

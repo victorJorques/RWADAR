@@ -206,7 +206,7 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
           </View> : null}
 
           <View style={s.divisor} />
-          <Text style={s.subtitulo} accessibilityRole="header">Lista de vigilancia · {vigiladas.length}</Text>
+          <Text style={s.subtitulo} accessibilityRole="header">Lista de seguimiento · {vigiladas.length}</Text>
           <Text style={s.nota}>Estas empresas se sincronizan con tu cuenta. No son inversiones ni activan avisos por correo.</Text>
           {vigiladas.length ? vigiladas.map((p) => {
             const empresa = plataformas.find((item) => item.nombre === p.nombre);
@@ -227,10 +227,10 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
             onPress={() => { setSelectorAbierto(!selectorAbierto); setBusqueda(''); }} />
           {selectorAbierto ? (
             <View style={s.bloque}>
-              <Campo etiqueta="Buscar empresa para vigilar" value={busqueda} onChangeText={setBusqueda}
+              <Campo etiqueta="Buscar empresa para seguir" value={busqueda} onChangeText={setBusqueda}
                 autoCapitalize="none" returnKeyType="search" maxLength={100} editable={!bloqueado} />
               {disponibles.length ? disponibles.slice(0, 8).map((p) => (
-                <Boton key={p.slug || p.nombre} texto={`Vigilar ${p.nombre}`} secundario deshabilitado={bloqueado}
+                <Boton key={p.slug || p.nombre} texto={`Seguir ${p.nombre}`} secundario deshabilitado={bloqueado}
                   onPress={() => ejecutar('alternarVigilancia', p.nombre)} />
               )) : <Text style={s.nota}>No hay empresas nuevas que coincidan con esa búsqueda.</Text>}
               {disponibles.length > 8 ? <Text style={s.nota}>Mostramos 8 de {disponibles.length}. Escribe un nombre para filtrar la lista.</Text> : null}
@@ -245,7 +245,7 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
         </>
       ) : autenticada && vista === 'borrar' ? (
         <>
-          <Text style={s.parrafo}>La baja elimina tu perfil y tu lista de vigilancia de la cuenta. No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.</Text>
+          <Text style={s.parrafo}>La baja elimina tu perfil y tu lista de seguimiento de la cuenta. No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.</Text>
           <Campo etiqueta="Contraseña actual" referencia={claveInput} value={clave} onChangeText={setClave}
             secureTextEntry autoCapitalize="none" autoCorrect={false} autoComplete="current-password"
             textContentType="password" editable={!bloqueado} maxLength={256} />
@@ -274,7 +274,7 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
       ) : (
         <>
           <Text style={s.parrafo}>{vista === 'alta'
-            ? 'Tu cuenta es gratuita. Confirma el correo para entrar en RWAdar y guardar tu lista de vigilancia.'
+            ? 'Tu cuenta es gratuita. Confirma el correo para entrar en RWAdar y guardar tu lista de seguimiento.'
             : vista === 'recuperar'
               ? 'Te enviaremos un enlace para elegir una contraseña nueva en la web. Después vuelve y entra en la app.'
               : 'Entra con el mismo correo y contraseña que en la web para acceder a RWAdar.'}</Text>

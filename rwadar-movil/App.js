@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { ActivityIndicator, Animated, AppState, FlatList, Linking, Modal, RefreshControl, StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
 import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal, useIdioma } from './componentes/Idioma';
+import { traducir } from './lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
   useFonts, Geist_400Regular, Geist_400Regular_Italic, Geist_500Medium, Geist_600SemiBold,
@@ -50,6 +51,7 @@ import {
 } from './componentes/Ofertas';
 import { resumenOferta } from './lib/ficha-editorial';
 import { enSeleccionOferta } from './lib/transparencia';
+import { esNueva, ordenarMasNuevas } from './lib/recien-anadidas';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
 const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
@@ -120,6 +122,8 @@ export default function App() {
   const [categoria, setCategoria] = useState('');
   const [busquedaOfertas, setBusquedaOfertas] = useState('');
   const [grupoOfertas, setGrupoOfertas] = useState('principales');
+  // Orden de Ofertas, como el selector de la web: «aldia» o «nuevas».
+  const [ordenOfertas, setOrdenOfertas] = useState('aldia');
   const [tipoOferta, setTipoOferta] = useState('');
   const [proveedorOferta, setProveedorOferta] = useState('');
   const [grupoProveedorAbierto, setGrupoProveedorAbierto] = useState('');
@@ -254,7 +258,7 @@ export default function App() {
       }
       if (catalogo.caducado) {
         const [a, m, d] = String(catalogo.fecha).split('-');
-        mensajes.push(`Revisión pendiente: estos datos se revisaron el ${d}/${m}/${a} y su revisión semanal ha vencido. ` +
+        mensajes.push(`Revisión pendiente: estos datos se revisaron el ${d}/${m}/${a} y su revisión semanal ha caducado. ` +
           'Las cifras caducadas se ocultan; comprueba cada dato en la web del emisor.');
       }
       if (f.error) mensajes.push('No se pudieron actualizar los descartes documentados.');
@@ -371,7 +375,7 @@ export default function App() {
     ? MODO_LOCAL
       ? 'No se pudo leer el radar incluido en esta copia. Desliza hacia abajo para reintentar la carga local.'
       : 'No se ha podido traer el radar y todavía no hay copia guardada. Desliza hacia abajo para reintentar cuando tengas cobertura.'
-    : 'El radar no detecta nada con esos filtros.';
+    : 'Nada cumple esos filtros.';
 
   const visibles = useMemo(() => {
     const q = busqueda.trim().toLowerCase();
@@ -400,12 +404,13 @@ export default function App() {
   ), [ofertasDelGrupo]);
   const ofertasVisibles = useMemo(() => {
     const q = busquedaOfertas.trim().toLocaleLowerCase('es');
-    return ordenarOfertasLectura(ofertasDelGrupo.filter((oferta) => {
+    const lista = ordenarOfertasLectura(ofertasDelGrupo.filter((oferta) => {
       if (tipoOferta && oferta.tipo !== tipoOferta) return false;
       if (proveedorOferta && oferta.plataformaSlug !== proveedorOferta) return false;
       return !q || textoBusquedaOferta(oferta).includes(q);
     }));
-  }, [ofertasDelGrupo, busquedaOfertas, tipoOferta, proveedorOferta]);
+    return ordenOfertas === 'nuevas' ? ordenarMasNuevas(lista) : lista;
+  }, [ofertasDelGrupo, busquedaOfertas, tipoOferta, proveedorOferta, ordenOfertas]);
   const columnasOfertas = anchoPantalla >= 1120 ? 3 : anchoPantalla >= 720 ? 2 : 1;
   const separacionOfertas = 12;
   const anchoCeldaOferta = (anchoPantalla - (UI.margen * 2)
@@ -417,8 +422,9 @@ export default function App() {
      arriba la Selección RWAdar (las que pasan las cinco comprobaciones de
      transparencia; falla cerrado). Con dos o tres columnas siguen los grupos. */
   const filasOfertas = useMemo(() => {
-    const filas = agruparOfertasLectura(ofertasVisibles, !hayRestriccionesOfertas && columnasOfertas > 1);
-    const conSeleccion = columnasOfertas === 1 && (grupoOfertas === 'principales' || grupoOfertas === 'todo');
+    const filas = agruparOfertasLectura(ofertasVisibles, !hayRestriccionesOfertas && columnasOfertas > 1 && ordenOfertas !== 'nuevas');
+    // Con «Más nuevas primero», una sola lista: la más nueva arriba (como la web).
+    const conSeleccion = columnasOfertas === 1 && ordenOfertas !== 'nuevas' && (grupoOfertas === 'principales' || grupoOfertas === 'todo');
     if (!conSeleccion) return filas;
     const ahora = new Date();
     const elegidas = filas.filter((fila) => fila.tipo === 'oferta' &&
@@ -427,7 +433,7 @@ export default function App() {
     const resto = filas.filter((fila) => !elegidas.includes(fila));
     return [{ tipo: 'cabecera', slug: 'cabecera:seleccion', seleccion: true }, ...elegidas,
       ...(resto.length ? [{ tipo: 'cabecera', slug: 'cabecera:resto' }, ...resto] : [])];
-  }, [ofertasVisibles, hayRestriccionesOfertas, columnasOfertas, grupoOfertas, catalogoCaducado]);
+  }, [ofertasVisibles, hayRestriccionesOfertas, columnasOfertas, grupoOfertas, catalogoCaducado, ordenOfertas]);
 
   const seleccionarGrupoOfertas = (grupo) => {
     tacto.eleccion();
@@ -560,10 +566,16 @@ export default function App() {
   const irA = (destino, url) => {
     if (destino === 'academy') abrirAcademy();
     else if (destino === 'web' && url) abrirEnlace(url);
-    else if (destino === 'buscar' || destino === 'ofertas' || destino === 'fuera' || destino === 'plataformas') {
+    else if (destino === 'buscar' || destino === 'ofertas' || destino === 'ofertas-nuevas' || destino === 'fuera' || destino === 'plataformas') {
       tacto.eleccion();
       irADescartadas.current = destino === 'fuera' && fuera.length > 0;
-      setVistaBuscar(destino === 'ofertas' ? 'ofertas' : 'empresas');
+      // «Ver todas las ofertas nuevas»: Principales con «Más nuevas primero».
+      // Sin los filtros ni la búsqueda de antes, para que se vean todas las nuevas.
+      if (destino === 'ofertas-nuevas') {
+        setOrdenOfertas('nuevas'); setGrupoOfertas('principales');
+        setTipoOferta(''); setProveedorOferta(''); setGrupoProveedorAbierto(''); setBusquedaOfertas('');
+      }
+      setVistaBuscar(destino === 'ofertas' || destino === 'ofertas-nuevas' ? 'ofertas' : 'empresas');
       setPestana('buscar');
       if (irADescartadas.current && pestana === 'buscar' && vistaBuscar === 'empresas') bajarADescartadas();
     }
@@ -871,8 +883,27 @@ export default function App() {
                         </Text>
                       </Pressable>
                     </View>
+                    {/* Ordenar por, como el selector de la web. La diana de cada chip
+                        mide 48 px; el chip se ve de 36, como los demás. */}
+                    <View style={e.ordenOfertas} accessibilityRole="radiogroup" accessibilityLabel="Ordenar por">
+                      <Text style={e.ordenOfertasEtiqueta}>Ordenar por</Text>
+                      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={e.ordenOfertasChips}>
+                        {[['aldia', 'Las más al día primero'], ['nuevas', 'Más nuevas primero']].map(([valor, texto]) => (
+                          <Pressable key={valor} onPress={() => { tacto.eleccion(); setOrdenOfertas(valor); }} style={e.chipOrden}
+                            accessibilityRole="radio" accessibilityState={{ checked: ordenOfertas === valor }} accessibilityLabel={texto}>
+                            {({ pressed }) => (
+                              <View style={[e.chip, e.chipOrdenCara, ordenOfertas === valor && e.chipOn, pressed && e.pulsado]}>
+                                <Text style={[e.chipTxt, ordenOfertas === valor && e.chipTxtOn]} numberOfLines={1}>{texto}</Text>
+                              </View>
+                            )}
+                          </Pressable>
+                        ))}
+                      </ScrollView>
+                    </View>
                     {/* La frase de la Selección, solo cuando la lista la lleva arriba. */}
-                    {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>{filasOfertas[0]?.seleccion
+                    {criteriosOfertasAbiertos ? <Text style={e.resultadoCompacto}>{ordenOfertas === 'nuevas'
+                      ? 'Primero, las que hemos añadido al radar más recientemente. El orden no depende de pagos ni de rentabilidades.'
+                      : filasOfertas[0]?.seleccion
                       ? 'Arriba, la Selección RWAdar: las que pasan las 5 comprobaciones de transparencia. Después, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.'
                       : 'Primero, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.'}</Text> : null}
                     <Text style={e.resultadoCompacto} accessibilityLiveRegion="polite">
@@ -880,9 +911,9 @@ export default function App() {
                     </Text>
                     {/* Un solo aviso para todo el grupo, en vez de repetirlo en cada tarjeta. */}
                     <Text style={e.resultadoCompacto}>{grupoOfertas === 'secundario'
-                      ? 'Referencias documentadas de mercado secundario. No confirman precio, liquidez ni disponibilidad actuales.'
+                      ? 'Ofertas de reventa entre inversores, tal como aparecen en su fuente. No confirman el precio de hoy, que se pueda comprar o vender ni que sigan disponibles.'
                       : grupoOfertas === 'en_camino'
-                        ? 'Anuncios documentados. No confirman apertura, fecha de lanzamiento ni acceso a la inversión.'
+                        ? 'Ofertas anunciadas en su fuente. No confirman que vayan a abrir, cuándo lo harán ni que puedas invertir.'
                         : 'RWAdar no recibe dinero de las inversiones.'}</Text>
                   </View>
                   {filtrosOfertasAbiertos ? (
@@ -935,7 +966,7 @@ export default function App() {
                       tacto.abrir(); setProveedorOferta(item.proveedorSlug); setGrupoProveedorAbierto(item.proveedorSlug);
                     }} />
                     : <FichaOferta oferta={item.oferta} plataforma={radar.find(p => p.slug === item.oferta.plataformaSlug)}
-                      catalogoCaducado={catalogoCaducado}
+                      catalogoCaducado={catalogoCaducado} nueva={esNueva(item.oferta, { catalogoCaducado })}
                       onAbrir={() => { tacto.abrir(); setOfertaAbierta(item.oferta); }} />}
                 </View>
               )}
@@ -1200,7 +1231,7 @@ function PantallaPerfil({
             {MODO_LOCAL
               ? 'Copia interna: lo guardado vive solo en su espacio local y nunca se sincroniza.'
               : USUARIO_LOCAL
-                ? 'Las cuentas llegarán próximamente a la app con las nuevas actualizaciones. Lo que guardas se queda en este dispositivo.'
+                ? 'Las cuentas llegarán a la app en una próxima actualización. Lo que guardas se queda en este dispositivo.'
                 : 'Lo que guardas se sincroniza con esta instalación.'}
           </Text>
         </View>
@@ -1212,7 +1243,7 @@ function PantallaPerfil({
       )}
 
       {estadoCuenta?.disponible ? <Text style={e.notaFavoritosLocales}>
-        Los siguientes favoritos se guardan solo en este dispositivo. Son distintos de la lista de vigilancia de tu cuenta.
+        Los siguientes favoritos se guardan solo en este dispositivo. Son distintos de la lista de seguimiento de tu cuenta.
       </Text> : null}
 
       <GrupoMenu titulo={`Plataformas guardadas · ${seguidas.length}`}>
@@ -1251,7 +1282,7 @@ function PantallaPerfil({
             <View style={{ flex: 1 }}>
               <Text style={e.resumenEtiqueta}>Próximamente</Text>
               <Text style={e.avisoProximoTit}>Avisos de cambios</Text>
-              <Text style={e.resumenTexto}>Los avisos llegarán próximamente a la app con las nuevas actualizaciones.</Text>
+              <Text style={e.resumenTexto}>Los avisos llegarán a la app en una próxima actualización.</Text>
             </View>
           </View>
         ) : (
@@ -1340,6 +1371,7 @@ function GrupoMenu({ titulo, children }) {
 }
 
 function FilaMenu({ icono, titulo, subtitulo, onPress, ultima, peligro, cargando }) {
+  useIdioma();
   const color = peligro ? C.coral : C.tx;
   return (
     <Pressable
@@ -1347,7 +1379,7 @@ function FilaMenu({ icono, titulo, subtitulo, onPress, ultima, peligro, cargando
       disabled={cargando}
       style={({ pressed }) => [e.filaMenu, !ultima && e.filaMenuBorde, pressed && e.pulsadoSuave, cargando && e.deshabilitado]}
       accessibilityRole="button"
-      accessibilityLabel={`${titulo}. ${subtitulo}`}
+      accessibilityLabel={`${traducir(titulo)}. ${traducir(subtitulo)}`}
       accessibilityState={{ disabled: !!cargando, busy: !!cargando }}
     >
       <View style={[e.filaIcono, peligro && e.filaIconoPeligro]}>
@@ -1396,10 +1428,11 @@ function SegmentoOferta({ texto, activo, onPress }) {
 }
 
 function PanelVerificacionLocal({ verificacion, compacta = false }) {
+  useIdioma(); // la etiqueta accesible se compone en el idioma elegido
   if (!verificacion) return null;
   const campos = [
-    ['Estado operativo', verificacion.estadoOperativo],
-    ['Licencia / registro', verificacion.licenciaRegistro],
+    ['Actividad', verificacion.estadoOperativo],
+    ['Licencia o registro', verificacion.licenciaRegistro],
     ['Acceso', verificacion.acceso],
   ];
   const fecha = fechaVerificacionLocalVisible(verificacion.verificadoEl);
@@ -1407,13 +1440,14 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
     ...campos.flatMap(([, campo]) => campo.fuentes || []),
     ...(verificacion.alertasCriticas || []).flatMap(alerta => alerta.fuentes || []),
   ].map(fuente => [fuente.url, fuente])).values()];
+  // Rótulos en el idioma elegido; los detalles son datos del catálogo y van tal cual.
   const etiquetaAccesible = [
-    `Revisión de fuentes del ${fecha}`,
+    `${traducir('Revisión de fuentes del')} ${fecha}`,
     ...campos.flatMap(([nombre, campo]) => [
-      `${nombre}: ${etiquetaEstadoVerificacionLocal(campo.estado)}`,
+      `${traducir(nombre)}: ${traducir(etiquetaEstadoVerificacionLocal(campo.estado))}`,
       campo.detalle,
     ]),
-    ...(verificacion.alertasCriticas || []).map((alerta) => `Alerta crítica: ${alerta.detalle}`),
+    ...(verificacion.alertasCriticas || []).map((alerta) => `${traducir('Importante')}: ${alerta.detalle}`),
   ].join('. ');
 
   return (
@@ -1441,7 +1475,7 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
       <View style={e.verLocalAlertas}>
         {(verificacion.alertasCriticas || []).map((alerta) => (
           <View key={alerta.codigo} style={e.verLocalAlerta}>
-            <Text style={e.verLocalAlertaTitulo}>Alerta crítica</Text>
+            <Text style={e.verLocalAlertaTitulo}>Importante</Text>
             <Text noTraducir idiomaOriginal="es-ES" style={e.verLocalAlertaTexto} numberOfLines={compacta ? 3 : undefined}>
               {alerta.detalle}
             </Text>
@@ -1493,8 +1527,8 @@ function Ficha({ p, sigue, onAbrir, onSeguir, deshabilitado }) {
         <PanelVerificacionLocal verificacion={verificacion} compacta />
       ) : (
         <View style={e.etiquetas}>
-          <Text style={[e.etiqueta, e.etiquetaAcento]}>{p.acceso}</Text>
-          <Text style={e.etiqueta}>Entrada: {(p.ticket || '').toLowerCase()}</Text>
+          <Text style={[e.etiqueta, e.etiquetaAcento]}>{p.acceso === 'Acreditado' ? 'Inversor acreditado' : p.acceso}</Text>
+          <Text style={e.etiqueta}>{`Mínimo: ${(p.ticket || '').toLowerCase()}`}</Text>
         </View>
       )}
       <Pressable onPress={onSeguir} disabled={deshabilitado}
@@ -1648,7 +1682,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                   Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. RWAdar no guarda la contraseña en el dispositivo.
                 </Text>
                 <Text style={e.privacidadParrafo}>
-                  Tu lista de vigilancia y tu registro manual de inversiones se guardan de forma privada en Supabase, asociados a tu cuenta, para consultarlos y modificarlos desde la web y la app con cartera sincronizada. El registro incluye los nombres y proveedores que escribas, moneda, compras, ventas, cobros, gastos y valoraciones con sus cantidades, precios, comisiones y fechas. RWAdar no conecta con tus proveedores ni importa compras o precios automáticamente. No se envían los favoritos locales ni el progreso de Academy.
+                  Tu lista de seguimiento y tu registro manual de inversiones se guardan de forma privada en Supabase, asociados a tu cuenta, para consultarlos y modificarlos desde la web y la app con cartera sincronizada. El registro incluye los nombres y proveedores que escribas, moneda, compras, ventas, cobros, gastos y valoraciones con sus cantidades, precios, comisiones y fechas. RWAdar no conecta con tus proveedores ni importa compras o precios automáticamente. No se envían los favoritos locales ni el progreso de Academy.
                 </Text>
                 <Text style={e.privacidadParrafo}>
                   La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. No se activan opiniones, publicidad, avisos por correo ni push al registrarte.
@@ -1657,7 +1691,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                   La copia de inversiones de una versión anterior se conserva en este dispositivo. No se sube automáticamente: solo puedes importarla con tu confirmación cuando el registro de la cuenta está vacío. Importarla no borra la copia local ni combina o sustituye inversiones que ya estén en tu cuenta.
                 </Text>
                 <Text style={e.privacidadParrafo}>
-                  Desde Perfil puedes cerrar sesión o borrar la cuenta, confirmando tu contraseña y escribiendo BORRAR. La baja elimina el perfil, la lista de vigilancia y el registro remoto de inversiones. Borrar una inversión desde la cartera guarda el registro de cuenta sin ella. Los favoritos, las copias locales anteriores de inversiones de todas las cuentas y el progreso local se eliminan por separado con «Borrar datos del dispositivo»; ese botón no elimina inversiones de tu cuenta.
+                  Desde Perfil puedes cerrar sesión o borrar la cuenta, confirmando tu contraseña y escribiendo BORRAR. La baja elimina el perfil, la lista de seguimiento y el registro remoto de inversiones. Borrar una inversión desde la cartera guarda el registro de cuenta sin ella. Los favoritos, las copias locales anteriores de inversiones de todas las cuentas y el progreso local se eliminan por separado con «Borrar datos del dispositivo»; ese botón no elimina inversiones de tu cuenta.
                 </Text>
               </>
             ) : null}
@@ -1746,7 +1780,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
 
             <Text style={e.privacidadTit}>Transparencia comercial</Text>
             <Text style={e.privacidadParrafo}>
-              RWAdar no cobra comisión al inversor ni cobra ahora a las empresas por inversiones. Las fichas editoriales son gratuitas; no hay comisiones ni enlaces remunerados activos. Las comisiones por venta quedan para una fase futura, con revisión legal y acuerdo previo, nunca retroactivas. Una relación comercial debe identificarse y no altera el ranking editorial. El dinero de la inversión nunca pasa por RWAdar.
+              RWAdar no cobra comisión al inversor ni cobra ahora a las empresas por inversiones. Las fichas editoriales son gratuitas; no hay comisiones ni enlaces remunerados activos. Las comisiones por venta quedan para una fase futura, con revisión legal y acuerdo previo, nunca retroactivas. Una relación comercial debe identificarse y no cambia el orden editorial. El dinero de la inversión nunca pasa por RWAdar.
             </Text>
             <Text style={e.privacidadParrafo}>
               La vía inicial de ingresos prevista es publicidad dentro de la app: una red publicitaria pagaría a RWAdar por los anuncios, en espacios separados y marcados como «Publicidad». No depende de invertir en un token. No hay campañas activas ni redes de anuncios integradas en esta versión.
@@ -1817,10 +1851,10 @@ function Detalle({ p, sigue, onCerrar, onSeguir, deshabilitado }) {
   if (!p) return null;
   const verificacion = p.verificacionLocal;
   const filasFicha = verificacion
-    ? [['Tipo de actor', p.actor], ['Región / marco', p.region], ['Cadenas', p.cadenas]]
-    : [['Tipo de actor', p.actor], ['Región / marco', p.region],
-      ['Quién puede entrar', p.acceso], ['Importe de entrada', p.ticket],
-      ['Cadenas', p.cadenas]];
+    ? [['Tipo de empresa', p.actor], ['Región y normativa', p.region], ['Blockchains', p.cadenas]]
+    : [['Tipo de empresa', p.actor], ['Región y normativa', p.region],
+      ['Quién puede entrar', p.acceso === 'Acreditado' ? 'Inversor acreditado' : p.acceso], ['Importe de entrada', p.ticket],
+      ['Blockchains', p.cadenas]];
   return (
     <Modal visible animationType="none" presentationStyle="fullScreen"
       statusBarTranslucent={false} navigationBarTranslucent={false} onRequestClose={transicion.cerrar}>
@@ -2016,6 +2050,11 @@ const e = StyleSheet.create({
   filtroGrupoEtiqueta: { ...T.etiqueta, color: C.tx3, marginTop: 4, marginBottom: 2 },
   chipsOfertas: { maxHeight: 50 },
   chipsContenidoCompacto: { paddingTop: 5, paddingBottom: 7 },
+  ordenOfertas: { marginTop: 4 },
+  ordenOfertasEtiqueta: { ...T.etiqueta, color: C.tx3, marginBottom: 2 },
+  ordenOfertasChips: { maxHeight: 50 },
+  chipOrden: { minHeight: UI.tactil, justifyContent: 'center', marginRight: 8 },
+  chipOrdenCara: { marginRight: 0 },
 
   ficha: {
     backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,

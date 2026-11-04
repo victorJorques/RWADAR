@@ -158,7 +158,7 @@ for(const [nombre,contenido] of salidas){
 verificar('importes no aparecen como condiciones vigentes sin ejecutar la guarda actual',()=>{
   const pagina=salidas.get('ofertas/spiko-letras-del-tesoro-euro.html');
   assert(/data-campo="minimo"[^>]*>Consulta la fuente/.test(pagina));
-  assert(/data-campo="accesoEspana"[^>]*>Sin comprobar desde España/.test(pagina));
+  assert(/data-campo="accesoEspana"[^>]*>Sin comprobar si se puede contratar desde España/.test(pagina));
   for(const campo of ['minimo','accesoEspana','costes','salida']){
     const atributos=pagina.match(new RegExp('<(?:dd|p)\\b([^>]*data-campo="'+campo+'"[^>]*)>'))?.[1] || '';
     assert(atributos.includes('data-idioma-fuente="es"'));
@@ -207,7 +207,7 @@ verificar('la transparencia de la página fija lleva su fuente fechada y separa 
   const pagina=salidas.get('ofertas/robinhood-classic-stock-tokens.html');
   const filas=[...pagina.matchAll(/<li data-cumple="(si|no)">([\s\S]*?)<\/li>/g)].map(m=>m[2]);
   assert.equal(filas.length,5);
-  for(const i of [0,1,2,3])assert(/<a href="https:[^"]+" target="_blank" rel="noopener noreferrer"><span data-idioma-fuente="es"[^>]*>[^<]+<\/span> ↗<\/a> <span>· consultada el \d{2}\.\d{2}\.\d{4}<\/span>/.test(filas[i]),'fuente de la fila '+(i+1));
+  for(const i of [0,1,2,3])assert(/<a href="https:[^"]+" target="_blank" rel="noopener noreferrer"><span data-idioma-fuente="es"[^>]*>[^<]+<\/span> ↗<\/a> <span>· consultada el \d{2}\/\d{2}\/\d{4}<\/span>/.test(filas[i]),'fuente de la fila '+(i+1));
   assert(/<p data-campo="contratable" class="ui">Es una oferta principal y la fuente dice que se contrata desde España\.<\/p>/.test(filas[0]));
   assert(/<p data-idioma-fuente="es"[^>]*>[^<]+<\/p>/.test(filas[1]));
   assert(/<p data-campo="minimoSalida" class="ui"><span>Mínimo:<\/span> <span data-idioma-fuente="es"[^>]*>1 €<\/span>\. <span>Salida:<\/span> <span data-idioma-fuente="es"[^>]*>[^<]+<\/span>\.<\/p>/.test(filas[3]));
@@ -230,8 +230,8 @@ verificar('con la revisión vencida la página fija deja de afirmar que se contr
   assert.equal(filas.contratable.dataset.cumple,'si');assert.equal(filas.minimoSalida.dataset.cumple,'si');assert.equal(filas.vigencia.dataset.cumple,'si');
   reloj=new Date(Date.parse(oferta.verificadaEl+'T12:00:00Z')+9*864e5);volver();
   for(const n of ['contratable','minimoSalida','vigencia']){assert.equal(filas[n].dataset.cumple,'no',n);assert.equal(filas[n].marca.textContent,'✗ No',n);}
-  assert.match(campos.contratable.textContent,/^Pendiente de revalidar: la revisión semanal ha vencido\.$/);
-  assert.match(campos.minimoSalida.textContent,/pendientes de revalidar/);
+  assert.match(campos.contratable.textContent,/^Pendiente de volver a comprobar: la revisión semanal ha caducado\.$/);
+  assert.match(campos.minimoSalida.textContent,/por volver a comprobar/);
 });
 verificar('RSS enlaza noticias estables y el sitemap contiene todas las fichas',()=>{
   const rss=salidas.get('novedades.xml'),mapa=salidas.get('sitemap.xml');

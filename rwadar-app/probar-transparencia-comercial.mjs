@@ -33,14 +33,14 @@ paso('prioriza anuncios pendientes y deja las comisiones para una fase futura',
   /data-commercial-model="in-app-advertising-pending"/.test(pagina)
   && /data-commercial-status="inactive"/.test(pagina)
   && /data-investor-commission="0"/.test(pagina)
-  && texto.includes('comision por conversion pagada por la')
+  && texto.includes('comision por contratacion pagada por la')
   && texto.includes('no hay comisiones ni enlaces remunerados activos')
   && texto.includes('no tiene comision para el inversor'));
 
-paso('exige contrato, revisión jurídica y conversión válida sin tratar clics como ventas',
+paso('exige contrato, revisión jurídica y contratación válida sin tratar clics como ventas',
   texto.includes('revision juridica favorable, contrato')
   && texto.includes('un clic, una visita o un registro no bastan')
-  && texto.includes('sin conversion valida no habria cobro')
+  && texto.includes('sin una contratacion valida no habria cobro')
   && texto.includes('base, el porcentaje y los ajustes')
   && texto.includes('sin la estructura autorizada exigible'));
 
@@ -49,9 +49,9 @@ paso('delimita asesoramiento, órdenes y custodia',
   && texto.includes('no recibe ni transmite ordenes')
   && texto.includes('no custodia dinero'));
 
-paso('protege el ranking editorial frente al patrocinio',
-  texto.includes('el ranking editorial no se vende')
-  && texto.includes('no compra una posicion en el ranking')
+paso('protege el orden editorial frente al patrocinio',
+  texto.includes('el orden editorial no se vende')
+  && texto.includes('no compra un puesto en el orden editorial')
   && texto.includes('no puede pagar para borrar advertencias'));
 
 paso('obliga a identificar el patrocinio de forma visible',
@@ -73,7 +73,7 @@ paso('la página no activa el modelo porcentual 3–5 %',
 paso('privacidad y transparencia describen el mismo modelo comercial',
   privacidad.includes('href="/transparencia-comercial"')
   && normaliza(privacidad).includes('no cobra comision al inversor')
-  && normaliza(privacidad).includes('comision por conversion pagada por la empresa')
+  && normaliza(privacidad).includes('comision por contratacion pagada por la empresa')
   && normaliza(privacidad).includes('no hay atribucion comercial activa')
   && !normaliza(privacidad).includes('no hay publicidad ni espacios vendidos a terceros'));
 

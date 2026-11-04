@@ -72,11 +72,13 @@ test('las fichas móviles priorizan la verificación local sobre claims canónic
   assert.match(ficha, /<PanelVerificacionLocal verificacion=\{verificacion\} compacta \/>/);
   assert.match(ficha, /verificacion \? verificacion\.estadoOperativo\.detalle : p\.nota/);
   assert.match(detalle, /<PanelVerificacionLocal verificacion=\{verificacion\} \/>/);
-  assert.match(detalle, /\['Quién puede entrar', p\.acceso\]/);
-  assert.match(detalle, /const filasFicha = verificacion[\s\S]*?\? \[\['Tipo de actor',[\s\S]*?: \[\['Tipo de actor'/);
+  // «Acreditado» se lee «Inversor acreditado» (LISTA-FINAL fila 21); el valor del catálogo no cambia.
+  assert.match(detalle, /\['Quién puede entrar', p\.acceso === 'Acreditado' \? 'Inversor acreditado' : p\.acceso\]/);
+  assert.match(detalle, /const filasFicha = verificacion[\s\S]*?\? \[\['Tipo de empresa',[\s\S]*?: \[\['Tipo de empresa'/);
   // La fecha, en dd/mm/aaaa como en toda la app (04/11/2026).
   assert.match(app, /Revisión de fuentes · <Text noTraducir>\{fecha\}<\/Text>/);
-  assert.match(app, /Alerta crítica/);
+  // Rótulo «Importante», como la web (LISTA-FINAL fila 11).
+  assert.match(app, /verLocalAlertaTitulo\}>Importante</);
   assert.match(app, /fuentes\.map\(fuente =>/);
   assert.match(app, /abrirEnlace\(fuente\.url\)/);
 });

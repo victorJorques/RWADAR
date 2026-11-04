@@ -6,9 +6,10 @@
   "usoPrevisto": "Fallback editorial para fichas sin autorizacion escrita de fotografia o marca",
   "estadoUso": "aprobado-para-publicacion",
   "etiquetaVisibleObligatoria": "Ilustración editorial",
+  "pieVisibleObligatorio": "Imágenes ilustrativas, no fotos del activo",
   "restriccionesGlobales": [
     "No presentar la ilustracion como fotografia del activo o del proveedor",
-    "No ocultar la etiqueta visible Ilustración editorial",
+    "Junto a la imagen va visible el pie «Imágenes ilustrativas, no fotos del activo», y su texto alternativo empieza por «Ilustración editorial»",
     "No incorporar logos, marcas, personas, cifras ni promesas de rentabilidad",
     "Las ilustraciones por categoria no llevan texto; las de cada ficha solo llevan el lugar y tres pasos que explican la inversion, comprobados contra su fuente",
     "Sustituir por material autorizado si el proveedor aporta licencia escrita"

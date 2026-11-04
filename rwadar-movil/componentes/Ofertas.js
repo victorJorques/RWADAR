@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Animated, AppState, Modal, StyleSheet } from 'react-native';
+import { Animated, AppState, Modal, Share, StyleSheet } from 'react-native';
 import { Image, Pressable, ScrollView, Text, View, FuenteOriginal, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { ETIQUETA_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
+import { ETIQUETA_EDITORIAL, PIE_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { proveedoresDeOfertas, vigenciaOferta } from '../lib/datos';
 import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
 import { resumenOferta } from '../lib/ficha-editorial';
@@ -37,7 +37,7 @@ function useFechaOferta() {
 
 function datoDestacado(oferta) {
   if (oferta.coleccion === 'secundario' || oferta.coleccion === 'en_camino') {
-    return { etiqueta: 'Referencia documental', valor: 'Consultar fuente' };
+    return { etiqueta: 'Precio y condiciones', valor: 'Consúltalos en su web' };
   }
   if (oferta.cifrasPendientes) {
     return { etiqueta: 'Condiciones actuales', valor: 'Consultar emisor' };
@@ -51,7 +51,7 @@ function datoDestacado(oferta) {
     };
   }
   if (oferta.tipo === 'valor') {
-    return { etiqueta: 'Precio de referencia', valor: oferta.precio?.mostrado || 'Consultar fuente', original: Boolean(oferta.precio?.mostrado),
+    return { etiqueta: 'Precio de referencia', valor: oferta.precio?.mostrado || 'Consúltalo en su web', original: Boolean(oferta.precio?.mostrado),
       referencia: oferta.precio?.unidad || '' };
   }
   // Reventa: «Precio observado», como clavesOfertaLocal de la web; la unidad va debajo.
@@ -86,7 +86,7 @@ function rentabilidadSecundaria(oferta) {
 // El aviso general (igual en todas las fichas) no ocupa la tarjeta: va una vez
 // encima de la lista y entero en el detalle.
 const AVISO_GENERAL = /^Referencia editorial gratuita\b/;
-function avisosCriticos(oferta) {
+export function avisosCriticos(oferta) {
   return (oferta?.avisos || [])
     .filter((aviso) => !AVISO_GENERAL.test(String(aviso?.texto || '')))
     .filter((aviso) => (aviso.tono === 'warn' || aviso.tono === 'stop')
@@ -139,14 +139,14 @@ export function FichaGrupoOfertas({grupo, onAbrir}) {
   const n = grupo.ofertas.length;
   return (
     <Pressable onPress={onAbrir} style={({pressed}) => [e.ficha, pressed && e.pulsado]}
-      accessibilityRole="button" accessibilityLabel={`${grupo.proveedorNombre}: ver ${n} referencias`}
+      accessibilityRole="button" accessibilityLabel={`${grupo.proveedorNombre}: ver sus ${n} ofertas`}
       accessibilityHint="Abre todas las fichas del proveedor dentro de esta colección">
       <View style={e.cuerpoGrupo}>
-        <Text style={e.datoEtiqueta}>Referencias del mismo proveedor</Text>
+        <Text style={e.datoEtiqueta}>Ofertas de la misma empresa</Text>
         <Text noTraducir idiomaOriginal="es-ES" style={e.titulo}>{grupo.proveedorNombre}</Text>
-        <Text style={e.grupoNumero}>{n} referencias</Text>
+        <Text style={e.grupoNumero}>{`${n} ofertas`}</Text>
         <Text style={e.referencia}>Cada ficha conserva su fuente, fecha, mínimo publicado, acceso desde España y condiciones de salida. No se ha confirmado que puedas contratar todas.</Text>
-        <Text style={e.abrirGrupo}>Ver {n} referencias →</Text>
+        <Text style={e.abrirGrupo}>{`Ver sus ${n} ofertas →`}</Text>
       </View>
     </Pressable>
   );
@@ -204,9 +204,6 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
         accessibilityLabel={decorativa ? undefined : `Sin ${ETIQUETA_EDITORIAL.toLocaleLowerCase('es')} disponible para ${oferta.titulo}`}
       >
         <Text style={[e.imagenFallbackTxt, !grande && e.imagenFallbackTxtPeq]}>{iniciales(oferta.plataformaNombre || oferta.titulo)}</Text>
-        {grande ? <Text style={e.etiquetaEditorial} accessible={false} importantForAccessibility="no">
-          {ETIQUETA_EDITORIAL}
-        </Text> : null}
       </View>
     );
   }
@@ -227,15 +224,8 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
         accessible={false}
         importantForAccessibility="no"
       />
-      {/* En la miniatura no va ninguna etiqueta encima de la foto (como en la
-          web); el aviso «Imágenes ilustrativas» va bajo la lista. */}
-      {grande ? <Text
-        style={e.etiquetaEditorial}
-        accessible={false}
-        importantForAccessibility="no"
-      >
-        {editorial.etiqueta}
-      </Text> : null}
+      {/* Ninguna etiqueta encima de la foto, como en la web: el pie «Imágenes
+          ilustrativas, no fotos del activo» va debajo (lista, carrusel y ficha). */}
     </View>
   );
 }
@@ -247,12 +237,12 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
    ficha», la fecha y «Ver ficha». El aviso crítico (tono stop) se lee entero
    siempre; el ordinario se resume en su número y sigue entero para el lector
    de pantalla y en la ficha. */
-function avisosContables(oferta) {
+export function avisosContables(oferta) {
   return (oferta?.avisos || []).filter((aviso) => aviso && String(aviso.texto || '').trim() &&
     aviso.tono !== 'ok' && (!aviso.esAntiguedad || aviso.tono === 'stop'));
 }
 
-export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catalogoCaducado = false }) {
+export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catalogoCaducado = false, nueva = false }) {
   const idiomaActual = useIdioma();
   const ahora = useFechaOferta();
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
@@ -286,9 +276,9 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
   // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
   const lugar = imagenEditorialOferta(oferta)?.lugar || '';
   const etiquetaAccesible = [
-    `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar,
+    `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar, nueva && !catalogoCaducado ? traducir('Nueva') : null,
     traducir(ETIQUETA_EDITORIAL),
-    oferta.patrocinada ? traducir('Contenido patrocinado; no altera el ranking') : null,
+    oferta.patrocinada ? traducir('Contenido patrocinado; no cambia el orden editorial') : null,
     ...puntos.map((punto) => `✓ ${traducir(punto.texto)}`),
     ...datosCortos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
     traducir(fechaProcedencia),
@@ -319,6 +309,8 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
             {lugar ? <Text noTraducir idiomaOriginal="es-ES" style={e.lugarTxt}>{` · ${lugar}`}</Text> : null}
           </Text>
           <View style={e.metaFicha}>
+            {/* «Nueva»: añadida al radar hace menos de 14 días (lib/recien-anadidas.js, desde App.js). */}
+            {nueva && !catalogoCaducado ? <Text style={e.etiquetaNueva}>Nueva</Text> : null}
             <Text noTraducir idiomaOriginal={idiomaActual === 'en' ? 'en-US' : 'es-ES'}
               style={[e.estadoFicha, vigenteOk ? e.estadoOk : e.estadoCaducado]}>{estadoTraducido}</Text>
             {!catalogoCaducado && resumen.cifrasVigentes && oferta.disponibleEs === false
@@ -408,6 +400,21 @@ const ANTES_DE_INVERTIR = [
    «No es una recomendación de inversión…» y «Ver oferta en <proveedor> ↗»;
    lo demás, plegado. Sin «Consultar fuente» en grande donde va el precio: una
    cifra solo sale si es publicable y, si no, una línea dice dónde mirar. */
+/* «Ficha completa» y «Compartir», como la web: la página fija /ofertas/<slug>
+   existe para cada oferta del catálogo publicado, así que solo se ofrece para
+   ofertas del catálogo con un slug válido. */
+const ORIGEN_WEB = 'https://rwadar.pages.dev';
+export function urlFichaPublica(oferta) {
+  const slug = oferta?.slug;
+  return oferta?.catalogo === true && typeof slug === 'string' && slug.length <= 160
+    && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) ? `${ORIGEN_WEB}/ofertas/${slug}` : '';
+}
+async function compartirFicha(oferta, url) {
+  try {
+    await Share.share({ title: oferta.titulo, message: `${oferta.titulo} · RWAdar\n${url}`, url });
+  } catch { /* Cerrar el diálogo o no poder compartir no es un error que haya que enseñar. */ }
+}
+
 export function DetalleOferta({
   oferta: ofertaOriginal, onCerrar, onAbrirEnlace, plataforma, guardada = false, onGuardar,
   onRegistrarInversion, catalogoCaducado = false,
@@ -417,6 +424,7 @@ export function DetalleOferta({
   const transicion = useTransicionFicha(Boolean(ofertaOriginal), onCerrar);
   if (!ofertaOriginal) return null;
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
+  const fichaPublica = urlFichaPublica(ofertaOriginal);
   const documentacion = documentacionOferta(ofertaOriginal, ahora);
   const resumen = resumenOferta(ofertaParaResumen(ofertaOriginal), [], ahora);
   const registro = registroProveedor(plataforma, ahora);
@@ -424,7 +432,7 @@ export function DetalleOferta({
   const vigente = !catalogoCaducado && !estadoCifras.caducado && !oferta.cifrasPendientes;
   const documental = oferta.coleccion === 'secundario' || oferta.coleccion === 'en_camino';
   const destacado = datoDestacado(oferta);
-  const cifra = vigente && !documental && !/^(?:Consultar|No publicada)/.test(destacado.valor) ? destacado : null;
+  const cifra = vigente && !documental && !/^(?:Consultar|Consúlta|No publicada)/.test(destacado.valor) ? destacado : null;
   const sinCifra = cifra ? null : documental ? ['Precio y condiciones', 'Consúltalos en su web']
     : !vigente ? ['Condiciones actuales', 'Consultar emisor']
       : oferta.tipo === 'secundario' ? ['Precio y condiciones', 'Consúltalos en su web']
@@ -504,7 +512,7 @@ export function DetalleOferta({
             <Text noTraducir idiomaOriginal="es-ES" style={e.modalTitulo} accessibilityRole="header">{oferta.titulo}</Text>
             {oferta.patrocinada ? (
               <Text style={e.patrocinioAviso}>
-                Patrocinada. Consulta la relación comercial en la ficha; no altera el ranking ni implica recomendación.
+                Patrocinada. Consulta la relación comercial en la ficha; no cambia el orden editorial ni implica recomendación.
               </Text>
             ) : null}
 
@@ -551,6 +559,7 @@ export function DetalleOferta({
             ) : null}
 
             <View style={e.imagenDetalle}><ImagenOferta oferta={oferta} grande /></View>
+            <Text style={e.notaImagen}>{PIE_EDITORIAL}</Text>
 
             <View style={e.antesCaja}>
               <Text style={e.antesTitulo} accessibilityRole="header">Antes de invertir</Text>
@@ -581,6 +590,20 @@ export function DetalleOferta({
                   </Text>
                 )}
               </Pressable>
+              {fichaPublica ? (
+                <View style={e.fichaPermanente}>
+                  <Pressable onPress={() => onAbrirEnlace(fichaPublica)}
+                    style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
+                    accessibilityRole="link" noTraducir accessibilityLabel={`${traducir('Ficha completa')}: ${fichaPublica}`}>
+                    <Text style={e.enlaceSecundarioTxt}>{'Ficha completa'} ↗</Text>
+                  </Pressable>
+                  <Pressable onPress={() => compartirFicha(oferta, fichaPublica)}
+                    style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
+                    accessibilityRole="button" accessibilityLabel="Compartir">
+                    <Text style={e.enlaceSecundarioTxt}>Compartir</Text>
+                  </Pressable>
+                </View>
+              ) : null}
               {fichaOficial ? (
                 <Pressable onPress={() => onAbrirEnlace(fichaOficial)}
                   style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
@@ -677,9 +700,9 @@ export function DetalleOferta({
 
               <Plegable titulo="Fuentes consultadas" detalle={fechaFuentes ? `· ${fechaFuentes}` : ''}>
                 <Text style={e.referencia}>Revisión del catálogo: {resumen.fechas.revisadaEl ? fechaVerificacionLocalVisible(resumen.fechas.revisadaEl) : 'sin fecha válida'}</Text>
-                <Text style={e.referencia}>Última consulta citada: {resumen.fechas.comprobadaEl ? fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl) : 'no documentada'}</Text>
-                <Text style={e.referencia}>Fecha del dato en esa referencia: {resumen.fechas.fechaDato ? fechaVerificacionLocalVisible(resumen.fechas.fechaDato) : 'no indicada por la fuente'}</Text>
-                <Text style={e.referencia}>Revisar el catálogo no vuelve a comprobar las cifras antiguas. Cada referencia conserva su consulta original debajo.</Text>
+                <Text style={e.referencia}>{resumen.fechas.comprobadaEl ? `Consultamos la fuente por última vez el ${fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)}` : 'No consta cuándo consultamos la fuente'}</Text>
+                <Text style={e.referencia}>{resumen.fechas.fechaDato ? `El dato es del ${fechaVerificacionLocalVisible(resumen.fechas.fechaDato)}` : 'La fuente no dice de qué fecha es el dato'}</Text>
+                <Text style={e.referencia}>Revisar el catálogo no vuelve a comprobar las cifras antiguas. Cada dato lleva su propia fecha.</Text>
                 {fuentesAdicionales.map((url, indice) => (
                   <Pressable key={url} onPress={() => onAbrirEnlace(url)}
                     style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
@@ -812,12 +835,6 @@ const e = StyleSheet.create({
   imagen: { width: '100%', backgroundColor: C.sup3 },
   imagenEditorialMarco: { position: 'relative', overflow: 'hidden' },
   imagenEditorial: { width: '100%', height: '100%' },
-  etiquetaEditorial: {
-    position: 'absolute', left: 10, bottom: 8, zIndex: 2,
-    paddingHorizontal: 8, paddingVertical: 4, borderRadius: R.s,
-    backgroundColor: 'rgba(11,10,10,0.86)',
-    color: C.tx, fontFamily: F.semi, fontSize: 12, lineHeight: 16,
-  },
   imagenFicha: { width: 88, aspectRatio: 1, borderRadius: R.m, overflow: 'hidden', backgroundColor: C.sup3 },
   imagenEnFicha: { height: '100%' },
   imagenGrande: { aspectRatio: 960 / 660, borderRadius: R.l },
@@ -827,6 +844,7 @@ const e = StyleSheet.create({
   estadoFicha: { ...T.menor, fontFamily: F.semi, color: C.tx2, fontSize: 13, lineHeight: 18 },
   estadoOk: { color: C.senal },
   metaFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginTop: 3 },
+  etiquetaNueva: { ...T.etiqueta, color: C.senal, backgroundColor: C.senalT, borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 2, overflow: 'hidden' },
   noDisponible: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.alarma },
   // Sin cifras vigentes, en ámbar en la fila y en la ficha, como la web (.caducado).
   estadoCaducado: { color: C.aviso },
@@ -945,6 +963,8 @@ const e = StyleSheet.create({
   esencialCifra: { fontFamily: F.semi },
   esencialNota: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx2, marginTop: 4 },
   imagenDetalle: { marginTop: 22 },
+  notaImagen: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, marginTop: 8 },
+  fichaPermanente: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12 },
   antesCaja: { backgroundColor: C.ton, borderRadius: R.l, padding: 14, marginTop: 16, gap: 6 },
   antesTitulo: { ...T.ficha, fontSize: 17, lineHeight: 23, color: C.tx, marginBottom: 2 },
   antesFila: { flexDirection: 'row', gap: 8 },
