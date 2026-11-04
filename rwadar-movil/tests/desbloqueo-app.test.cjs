@@ -142,7 +142,8 @@ test('pantalla real tiene desbloqueo explícito, salida y error accesible sin PI
   const commonjs=require.resolve('@babel/plugin-transform-modules-commonjs',{paths:[raiz]});
   const react={createElement(tipo,props,...children){return typeof tipo==='function'?tipo({...props,children}):{tipo,props:props||{},children};}};
   const m=new Module(origen,module);m.filename=origen;m.paths=module.paths;
-  m.require=pedido=>pedido==='react'?react:pedido==='react-native'?{ActivityIndicator:'ActivityIndicator',StyleSheet:{create:x=>x}}:pedido==='react-native-safe-area-context'?{SafeAreaView:'SafeAreaView'}:pedido==='./Idioma'?Object.fromEntries(['Pressable','ScrollView','Text'].map(k=>[k,k])):pedido==='../lib/tema'?{C:{},F:{},T:{}}:require(pedido);
+  // BloqueoApp toma el radio de la guía (R.m) desde el 04/11: el simulador de tema lo trae vacío.
+  m.require=pedido=>pedido==='react'?react:pedido==='react-native'?{ActivityIndicator:'ActivityIndicator',StyleSheet:{create:x=>x}}:pedido==='react-native-safe-area-context'?{SafeAreaView:'SafeAreaView'}:pedido==='./Idioma'?Object.fromEntries(['Pressable','ScrollView','Text'].map(k=>[k,k])):pedido==='../lib/tema'?{C:{},F:{},R:{},T:{}}:require(pedido);
   m._compile(babel.transformSync(fs.readFileSync(origen,'utf8'),{filename:origen,babelrc:false,configFile:false,plugins:[jsx,commonjs]}).code,origen);
   const nodos=arbol=>arbol&&typeof arbol==='object'?[arbol,...(arbol.children||[]).flat(Infinity).flatMap(nodos)]:[];
   let entradas=0,salidas=0;const props={mensaje:'Prueba de error',onDesbloquear:()=>entradas++,onSalir:()=>salidas++};

@@ -349,7 +349,7 @@ const s = StyleSheet.create({
   pulsado: { opacity: 0.8 },
   aceptacion: { minHeight: UI.tactil, flexDirection: 'row', alignItems: 'center', gap: 12 },
   aceptacionTexto: { ...T.menor, color: C.tx2, flex: 1 },
-  casilla: { width: 25, height: 25, borderRadius: 6, borderWidth: 1, borderColor: C.tx3, alignItems: 'center', justifyContent: 'center' },
+  casilla: { width: 25, height: 25, borderRadius: R.s, borderWidth: 1, borderColor: C.tx3, alignItems: 'center', justifyContent: 'center' },
   casillaMarcada: { backgroundColor: C.senal, borderColor: C.senal },
   marca: { color: C.noche, fontSize: 18, fontFamily: F.negrita },
   error: { ...T.cuerpo, color: C.coral, backgroundColor: C.coral10, borderRadius: R.m, padding: 12 },

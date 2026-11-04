@@ -627,7 +627,7 @@ function Transparencia({ oferta, resumen, ahora, catalogoCaducado, onAbrirEnlace
           accessibilityRole="link" noTraducir accessibilityLabel={`${titulo} · ${traducir('fuente de:')} ${traducir(de)}`}>
           <Text noTraducir idiomaOriginal="es-ES" style={e.enlaceFuenteTxt}>{titulo} ↗</Text>
         </Pressable>
-        {fuente.fecha ? <Text style={e.referencia}>Consultada el {fechaES(fuente.fecha)}</Text> : null}
+        {fuente.fecha ? <Text style={[e.referencia, e.referenciaFila]}>Consultada el {fechaES(fuente.fecha)}</Text> : null}
       </View>
     );
   };
@@ -854,7 +854,9 @@ const e = StyleSheet.create({
   comprobacionTit: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 15, lineHeight: 21, color: C.tx },
   comprobacionMotivo: { ...T.menor, color: C.tx2, marginTop: 3 },
   comprobacionDato: { fontFamily: F.semi, color: C.tx },
-  comprobacionFuente: { marginTop: 4 },
+  /* Enlace y fecha en la misma fila si caben: sin huecos de 44 px apilados. */
+  comprobacionFuente: { marginTop: 2, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', columnGap: 10 },
+  referenciaFila: { marginTop: 0 },
   enlaceFuente: { minHeight: UI.tactil, justifyContent: 'center', alignSelf: 'flex-start', borderRadius: R.m },
   enlaceFuentePulsado: { backgroundColor: C.senalT },
   enlaceFuenteTxt: { ...T.menor, fontFamily: F.semi, color: C.senal },
