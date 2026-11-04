@@ -2796,7 +2796,7 @@ prueba('la privacidad describe favoritos locales y push cerrado sin prometer bor
   /no obtiene ni registra tokens push/.test(privacidadLineal) &&
   /no quedan revocados por esta pausa/.test(privacidadLineal) &&
   /entrega automática está desactivada/.test(privacidadLineal) &&
-  /no se ha verificado de extremo a extremo/.test(privacidadLineal) &&
+  /no se ha probado entera, de principio a fin/.test(privacidadLineal) &&
   /Los avisos de nuevas emisiones tampoco están conectados/.test(privacidadLineal));
 prueba('la privacidad tampoco promete correos de cambio del radar',
   /entrega de correos por cambios del radar[\s\S]*todavía no está activa/.test(privacidadLineal));
