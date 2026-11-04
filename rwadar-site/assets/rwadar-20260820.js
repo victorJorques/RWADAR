@@ -2339,8 +2339,9 @@ function partesDocumentacionOferta(d,{resumen='',ultima=''}={}){
  if(!d)return null;
  const fecha=v=>escHtml(fechaES(v));
  const r=textoLocal(resumen),resto=r&&d.descripcion.startsWith(r)?d.descripcion.slice(r.length).trim():d.descripcion;
- /* «Qué se adquiere: …» ya sale en Características: no se repite arriba. */
- const desc=d.caracteristicas.some(c=>resto===textoLocal(c.etiqueta)+': '+textoLocal(c.valor))?'':resto;
+ /* «Qué se adquiere: …» ya sale en Características: no se repite arriba, tampoco
+    al final de una descripción que no empieza por el resumen (remates 04/11/2026). */
+ const desc=d.caracteristicas.reduce((t,c)=>{const f=textoLocal(c.etiqueta)+': '+textoLocal(c.valor);return f.length>2&&t.endsWith(f)?t.slice(0,-f.length).trim():t},resto);
  const ficha=d.descripcion?'<details class="escaparate-dialogo-seccion escaparate-detalle-ampliable"><summary>Sobre esta oferta</summary>'+
   (desc?'<p class="escaparate-dialogo-resumen">'+escHtml(desc)+'</p>':'')+'<h4>Características</h4><dl class="escaparate-documentacion-caracteristicas">'+
   d.caracteristicas.map(c=>'<div><dt>'+escHtml(c.etiqueta)+'</dt><dd>'+escHtml(c.valor)+'</dd></div>').join('')+'</dl></details>':'';
