@@ -6,6 +6,55 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 2) · Claude · arreglos del barrido de calidad de la web en el móvil
+
+Rama local `claude/qa-movil` (sale de `main`, 081fc27). **Sin push, nada
+publicado, Supabase sin tocar, sin OTA ni workflows.** Los datos del catálogo
+no cambian: todo es de cómo se pinta. Hallazgos en
+`scratchpad/qa-prod/movil.json` (20).
+
+- **Graves:**
+  - **Ficha de oferta:** «accesoEspana · consulta 01/11/2026» pasa a
+    «Acceso desde España» (y «Mínimo de inversión», «Qué se adquiere»,
+    «Comisiones»…) en la web (panel y fichas fijas) y en la app, con
+    `rotuloReferencia()` en `rwadar-movil/lib/ficha-editorial.js`. Las
+    búsquedas internas por etiqueta siguen con la clave. La cita de la fuente
+    lleva su `lang` y, si está en inglés, francés o alemán, la nota «Cita
+    literal de la fuente, en inglés.». En inglés se traducen rótulos, «Fecha
+    del dato», «Ver fuente» y «Fuente N». **Pendiente para el próximo ciclo
+    del catálogo:** que `preparar-lote.mjs` escriba ya el rótulo legible.
+  - **Academy:** el test funciona sin cuenta y no espera a la sesión; solo
+    «Marcar como leída» y el progreso necesitan cuenta.
+- **Importantes:** «Registro actualizado» ya no sale al cargar (solo si el
+  catálogo cambia con la página abierta, y en inglés); «Saltar al
+  contenido» lleva al contenido de la pestaña visible; inglés de Perfil,
+  Descartadas, avisos flotantes, tipo y región de las plataformas y países de
+  «Recién añadidas»; sin sondeos de sesión sin cuenta (queda **un** 401 al
+  cargar; quitarlo exige que el servidor responda 200 sin sesión, que es
+  Auth y no lo he tocado); «Lección 1 de 7» (web y app); toque de 44 px en
+  radar (diana en pantalla), rótulos del radar, controles del mapa,
+  «Descartadas, con su motivo» y enlaces de las fichas fijas (chips y
+  estrella ya llegaban a 44 con su `::before`).
+- **Menores:** fechas dd/mm/aaaa en la ficha de plataforma; sin «Actividad»
+  repetida ni «Qué se adquiere» repetido (web y app); búsqueda vacía con
+  «Borrar búsqueda»; «de 1 € o de 1 $» (web y app); «Austria» en el popup
+  del mapa (al pintar); redirecciones de `/fuera-del-radar`, `/plataformas/`
+  y `/ofertas/`; nota de uso personal bajo el CSV; títulos a tres líneas y
+  tipo/región en dos líneas en la galería.
+- **No hecho:** frases del capítulo 04, «mF-ONE» y advertencia repetida en
+  Inicio (las toca el otro agente en `index.html`); barra de 5 botones en
+  Academy y fichas fijas (plantillas de otro agente); fuentes externas que
+  no responden a curl (abrir a mano); alt de las imágenes por oferta (texto
+  editorial del catálogo, ya marcado como castellano).
+- **Pruebas:** `npm test` completo en verde; guardián OTA `ok` (runtime
+  1.4.1(23)); sin cambios en package.json, app.json, eas.json ni scripts/.
+  Ajustadas tres comprobaciones de código existentes (radar, Academy,
+  fuentes de plataforma) y la frase de mínimos de la app; sin pruebas
+  nuevas de textos. Capturas antes/después en `scratchpad/qa-movil/`.
+- **Pendiente (coordinador):** revisión, unir a `main` (choques posibles en
+  `rwadar-20260820.js` e `index.html` pre-renderizado: regenerar con
+  `npm test`), publicar web y OTA (la app cambia: rótulos, «de 7», mínimos).
+
 ## 4 de noviembre de 2026 (noche) · Claude · entrega 2026-11-03.8: textos de Reental, Toucan y RealT (sin aplicar)
 
 Víctor: «hasta que no esté todo no has acabado». Rama local
