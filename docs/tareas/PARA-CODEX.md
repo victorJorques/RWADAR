@@ -6,6 +6,75 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche) · Claude · remates de web y app (sin publicar)
+
+Víctor: «hasta que no esté todo no has acabado». Rama local `claude/remates`
+(sale de `main` 2f9348d), commits f8f10a8…dae1ded. **Nada publicado, sin
+push, Supabase y EAS sin tocar, sin OTA.** El `package.json` raíz y
+`rwadar-movil/package.json`, `package-lock.json`, `app.json`, `eas.json` y
+`scripts/` no cambian; `comprobar-ota-compatible.cjs --base c1f7106…` da ok.
+
+- **Marca** (decisión de Víctor, fila 10): «Ofertas y plataformas
+  tokenizadas» bajo el logo (cabecera y pie), en el título, el JSON-LD, el
+  nombre al instalar y `og.png`; «Catálogo independiente» en vez de «Registro
+  independiente». Inglés: «Tokenised offers and platforms». `og.mjs` incrusta
+  ya las fuentes (antes salía con letra de sustitución), lleva el titular de la
+  web y los sectores sin abreviar (filas 2, 71 y 92). La app no enseña
+  subtítulo bajo el logo: no había dónde cambiarlo.
+- **Academy desde Inicio** (decisión de Víctor): «¿Empiezas de cero? 7
+  lecciones gratis en Academy ›» junto a «Mira, compara y decide tú», en la web
+  (lo escribe `rwadar-academy.js` con el número real; en el móvil abre la
+  pestaña Academy y en escritorio /academy/) y en la app (cuenta las lecciones
+  publicadas y abre Academy). Inglés incluido.
+- **Lista de frases, todo lo que vive en el código:** cuentas y seguimiento
+  (49-51, 53, 54: «Seguir» y «lista de seguimiento» también en la app y en
+  Privacidad; el aviso de correo sin Brevo ni «de extremo a extremo»), Academy
+  (59-62, 64-69; solo títulos y rótulos, el cuerpo y las fechas de revisión
+  legal de las lecciones no cambian), legales y comerciales (77, 78, 84, 85,
+  88 y 89, sin cambiar ningún hecho; el ancla `#consultas-b2b` se queda), las
+  partes que faltaban de 20, 23 y 39, y 6, 11, 13, 15, 16, 17, 21, 22, 26, 32,
+  35, 37, 38, 42, 43, 44, 47 y 55 donde quedaban (sobre todo en la app). El
+  texto centinela «Salida por volver a comprobar» cambia a la vez en web,
+  fichas, `ficha-editorial` (web y app) y app.
+- **App igual que la web:** la foto de la ficha sin etiqueta encima y con el
+  pie «Imágenes ilustrativas, no fotos del activo» (el manifiesto exige ahora
+  `pieVisibleObligatorio`; el alt sigue empezando por «Ilustración
+  editorial»); «Ficha completa ↗» (abre /ofertas/<slug> con Linking) y
+  «Compartir» (Share de react-native); la línea de novedades con el resumen
+  corto (`rwadar-noticias.js` lo copia a la app); inglés que faltaba
+  (categorías y niveles de Academy, chips con recuento, «Comprobado en»,
+  etiquetas accesibles…).
+- **Fuentes de Inicio en inglés:** `texto_en` en las 38 y `titulo_en` en los
+  grupos; `fuentes.mjs` pinta las dos en la web (se ve la del idioma elegido) y
+  genera `rwadar-movil/lib/inicio-fuentes.js`, que era copia a mano.
+- **Fechas** de las fichas generadas en dd/mm/aaaa.
+- **Prueba del mapa** al día: cuenta del catálogo (hoy 12 de 24 ofertas con
+  ubicación), recoge el mapa nuevo (JSON local al abrir Mapa, `#mapaMargen`,
+  marcadores agrupados por zoom, aviso sin teselas) y entra en la cadena
+  `test` de `rwadar-app/package.json`.
+- **Otros:** «Consúltalo en su web» no sale en grande donde va el precio; las
+  tablas de las páginas legales caben a 390 px en Transparencia comercial.
+- **Pruebas:** `npm test` completo en verde (rwadar-app con el mapa, 11
+  pruebas; web 579; fichas 68; precarga 32; QR; móvil 406 + 2 omitidas;
+  herramientas; acceso 144). Gitleaks sin hallazgos en cada commit.
+- **Capturas** a 390 × 844, dsf 2, en el scratchpad de la sesión
+  (`remates/`): cabecera (móvil y escritorio), Inicio con el enlace a Academy
+  (web y app), ficha de la app, Academy (web y app), Transparencia comercial y
+  Privacidad, y `og.png`.
+
+**Pendiente:**
+- **Ciclo de catálogo (otro agente, con permiso):** filas 11 (textos), 12, 18,
+  19 y 75, anexos A y B y RealT. Esos textos siguen en castellano también en
+  inglés: son datos.
+- Las lecciones citan en su cuerpo «aprenderás a leer el radar» (lección 06),
+  «Trazabilidad» (03) y «Mercado secundario»: cambiarlas obliga a renovar su
+  fecha de revisión legal, así que no se han tocado.
+- Las tablas de Privacidad siguen con desplazamiento lateral dentro de su caja
+  a 390 px (como antes).
+- Publicar web y OTA: lo hace el coordinador.
+
+---
+
 ## 4 de noviembre de 2026 (tarde) · Claude · rediseño publicado en web y app
 
 Víctor: «súbelo todo en cuanto esté». PR #47 (rediseño) y #48 (arreglo de la
