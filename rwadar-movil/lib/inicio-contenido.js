@@ -79,6 +79,7 @@ const es = {
       cifraUnidad: 'veces más grande',
       cifraPie: 'es hoy el mercado de letras del Tesoro de EE. UU. tokenizadas que en enero de 2023: de 114 millones de dólares a unos 14.230 millones (03/11/2026). En los últimos 30 días, −3,9 %. Es el tamaño del mercado, no lo que rinde.',
       barras: [['Enero de 2023', '114 millones', 114], ['03/11/2026', '14.230 millones', 14230]],
+      sinCifra: 'Nuestra última cifra del mercado de letras del Tesoro de EE. UU. tokenizadas tiene más de 7 días, así que la hemos quitado. La de hoy está en su fuente, rwa.xyz.',
       nota: 'Ninguna de estas entidades tiene relación con RWAdar.',
       carrusel: 'Quién más se ha movido',
       carruselNota: 'Ninguna de estas entidades tiene relación con RWAdar, ni figura en nuestro catálogo, ni paga por aparecer.',
@@ -174,6 +175,8 @@ const es = {
       'spiko-letras-del-tesoro-euro': 'Es un fondo monetario, no una letra del Tesoro. No es un depósito ni está garantizado, y puedes perder parte de lo que inviertas.',
       'spiko-letras-del-tesoro-dolar': 'Es un fondo monetario en dólares, no una letra del Tesoro. No es un depósito ni está garantizado, y puedes perder parte de lo que inviertas. Si el dólar baja frente al euro, pierdes valor en euros.',
     },
+    // Sin nota propia, la de la web (rwadar-20260820.js): nunca una tarjeta sin riesgo.
+    letraRespaldo: 'Puedes perder parte o todo lo que inviertas.',
     minimo: 'Mínimo documentado:',
     verFicha: 'Ver ficha',
     aviso: 'Pasar las 5 comprobaciones no hace a una oferta más segura ni más rentable. No es una recomendación de inversión.',
@@ -264,6 +267,7 @@ const en = {
       cifraUnidad: 'times larger',
       cifraPie: 'is the market for tokenized US Treasuries today than in January 2023: from $114 million to about $14,230 million (03/11/2026). Down 3.9% over the last 30 days. It measures the size of the market, not a return.',
       barras: [['January 2023', '114 million', 114], ['03/11/2026', '14,230 million', 14230]],
+      sinCifra: 'Our latest figure for the tokenized US Treasuries market is more than 7 days old, so we have removed it. Today\'s figure is at its source, rwa.xyz.',
       nota: 'None of these organisations is related to RWAdar.',
       carrusel: 'Who else has moved',
       carruselNota: 'None of these organisations is related to RWAdar, listed in our catalogue or paying to appear.',
@@ -359,6 +363,7 @@ const en = {
       'spiko-letras-del-tesoro-euro': 'A money market fund, not a Treasury bill. It is not a deposit and is not guaranteed, and you can lose part of what you invest.',
       'spiko-letras-del-tesoro-dolar': 'A money market fund in dollars, not a Treasury bill. It is not a deposit and is not guaranteed, and you can lose part of what you invest. If the dollar falls against the euro, you lose value in euros.',
     },
+    letraRespaldo: 'You can lose some or all of what you invest.',
     minimo: 'Documented minimum:',
     verFicha: 'View details',
     aviso: "Passing the 5 checks doesn't make an offer safer or more profitable. It is not an investment recommendation.",
@@ -386,5 +391,10 @@ const en = {
 };
 
 export const INICIO = Object.freeze({ es, en });
+/* Día en que se consultaron las cifras de mercado del 03 (125 veces, 14.230
+   millones, −3,9 %), las de rwa.xyz. Pasados 7 días se quitan y queda la frase
+   sin cifra (ESPEC-INICIO §9): la app no se publica en cada ciclo como la web,
+   así que lo comprueba ella al enseñarlas. Se cambia a la vez que el texto. */
+export const CIFRAS_MERCADO_EL = '2026-11-03';
 export const CAPITULOS_INICIO = Object.freeze(['cap1', 'cap2', 'cap3', 'cap4', 'cap5', 'cap6']);
 export const textosInicio = (idioma) => (idioma === 'en' ? en : es);

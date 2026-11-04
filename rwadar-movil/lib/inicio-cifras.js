@@ -24,7 +24,18 @@ function minimoDeUno(resumen) {
   return /^1\s*(?:USD|US\$|\$)$/i.test(unidad) || /^\$\s*1$/.test(unidad) ? 'usd' : null;
 }
 
-export function cifrasInicio({ ofertas = [], plataformas = [], descartadas = [], fechaCatalogo = null, ahora = new Date() } = {}) {
+/* Las cifras de mercado del 03 valen 7 días desde su consulta, contados en el
+   día del teléfono (ESPEC-INICIO §9). Sin fecha válida, no se enseñan. */
+export function mercadoAlDia(fechaIso, ahora = new Date(), dias = 7) {
+  const limite = sumarDias(fechaIso, dias);
+  if (!limite || !(ahora instanceof Date) || Number.isNaN(ahora.getTime())) return false;
+  const hoy = new Date(ahora.getTime() - ahora.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  return hoy <= limite;
+}
+
+/* `orden`: los slugs con nota propia, en el orden de la web (ESPEC §2.8); los
+   demás detrás, por plataforma y título. Solo entran las principales. */
+export function cifrasInicio({ ofertas = [], plataformas = [], descartadas = [], fechaCatalogo = null, ahora = new Date(), orden = [] } = {}) {
   const revisadoIso = fechaValida(fechaCatalogo?.fecha) ? fechaCatalogo.fecha : '';
   const vigente = Boolean(revisadoIso) && fechaCatalogo?.caducado !== true && ofertas.length > 0;
   const base = {
@@ -37,7 +48,13 @@ export function cifrasInicio({ ofertas = [], plataformas = [], descartadas = [],
   };
   if (!vigente) return base;
   const resumenes = ofertas.map((o) => [o, resumenOferta(o, [], ahora)]);
-  const seleccion = resumenes.filter(([o, r]) => enSeleccionOferta(o, r, { ahora })).map(([o]) => o);
+  const puesto = (o) => (orden.indexOf(o.slug) + 1) || 99;
+  const seleccion = resumenes
+    .filter(([o, r]) => o.coleccion === 'principales' && enSeleccionOferta(o, r, { ahora }))
+    .map(([o]) => o)
+    .sort((a, b) => puesto(a) - puesto(b)
+      || String(a.plataformaNombre).localeCompare(String(b.plataformaNombre), 'es')
+      || String(a.titulo).localeCompare(String(b.titulo), 'es'));
   const unos = resumenes.map(([, r]) => minimoDeUno(r)).filter(Boolean);
   return {
     ...base,

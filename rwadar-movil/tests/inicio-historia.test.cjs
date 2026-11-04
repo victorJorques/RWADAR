@@ -121,10 +121,49 @@ test('cada capítulo acaba en «Fuentes de este apartado» y las 38 fuentes van 
 
 test('el aviso de riesgo va pegado al botón de la portada y, en pantallas bajas, antes', () => {
   const inicio = leer('componentes', 'Inicio.js');
-  const portada = inicio.slice(inicio.indexOf('<View style={e.accionPortada}>'), inicio.indexOf('{/* 01 · De dónde viene */}'));
+  const portada = inicio.slice(inicio.indexOf('<View style={[e.accionPortada'), inicio.indexOf('{/* 01 · De dónde viene */}'));
   assert.match(portada, /avisoPrimero \? <Text noTraducir style=\{e\.avisoPortada\}>\{t\.portada\.aviso\}<\/Text> : null/);
   assert.match(portada, /onDestino\('ofertas'\)/);
-  assert.match(inicio, /const avisoPrimero = altoPantalla < 700;/);
+  // Revisión del 04/11 (ESPEC-INICIO §3, «si se ve el botón, se ve el aviso»):
+  // ya no basta el alto de la pantalla. A 360 × 780, con «Revisión pendiente»
+  // o con letra grande el aviso quedaba bajo la barra; ahora se mide.
+  assert.match(inicio, /const compacta = altoPantalla < 700;/);
+  assert.match(inicio, /const avisoPrimero = compacta \|\| \(altoVisible > 0 && finAccion > altoVisible\);/);
+  assert.match(portada, /onLayout=\{medirAccion\}/);
+  assert.match(inicio, /onLayout=\{\(ev\) => setAltoVisible\(/);
   assert.equal(contenido.INICIO.es.portada.aviso,
     'Invertir tiene riesgos: puedes perder parte o todo lo que inviertas. RWAdar informa, no asesora ni vende.');
+});
+
+test('la Selección sale en el orden de la web, siempre con nota de riesgo y con «1 $»', () => {
+  const { es, en } = contenido.INICIO;
+  const src = fs.readFileSync(path.join(RAIZ, '..', 'rwadar-site', 'assets', 'catalogo-publico-20261022.js'), 'utf8');
+  const { P, FUERA, EMI } = new Function(`${src};return {P,FUERA,EMI};`)();
+  const lote = EMI[0].verificado_lote_el;
+  const vivo = cifras.cifrasInicio({ ofertas: EMI, plataformas: P, descartadas: FUERA, ahora: new Date(`${lote}T12:00:00Z`),
+    fechaCatalogo: { fecha: lote, vigenciaDias: EMI[0].vigencia_lote_dias, caducado: false }, orden: Object.keys(es.seleccion.letraPequena) });
+  const orden = Object.keys(es.seleccion.letraPequena);
+  const puestos = vivo.seleccion.map((o) => (orden.indexOf(o.slug) + 1) || 99);
+  assert.deepEqual(puestos, [...puestos].sort((a, b) => a - b), 'Robinhood, Euro y Dólar, como la web (ESPEC §2.8)');
+  assert.equal(es.seleccion.letraRespaldo, 'Puedes perder parte o todo lo que inviertas.');
+  assert.equal(en.seleccion.letraRespaldo, 'You can lose some or all of what you invest.');
+  const inicio = leer('componentes', 'Inicio.js');
+  assert.match(inicio, /t\.seleccion\.letraPequena\[o\.slug\] \|\| t\.seleccion\.letraRespaldo/);
+  assert.match(inicio, /\.replace\(\/\^\(\\d\+\(\?:,\\d\+\)\?\) USD\$\/, '\$1 \$'\)/);
+});
+
+test('las cifras de mercado del 03 se quitan pasados 7 días aunque no haya OTA (ESPEC §9)', () => {
+  const { es, en } = contenido.INICIO;
+  assert.equal(contenido.CIFRAS_MERCADO_EL, '2026-11-03');
+  const [a, m, d] = contenido.CIFRAS_MERCADO_EL.split('-');
+  for (const t of [es, en]) assert.ok(t.capitulos.cap3.cifraPie.includes(`${d}/${m}/${a}`), 'la fecha va también en el texto');
+  const dia = (iso) => new Date(`${iso}T12:00:00`);
+  assert.equal(cifras.mercadoAlDia('2026-11-03', dia('2026-11-03')), true);
+  assert.equal(cifras.mercadoAlDia('2026-11-03', dia('2026-11-10')), true);
+  assert.equal(cifras.mercadoAlDia('2026-11-03', dia('2026-11-11')), false);
+  assert.equal(cifras.mercadoAlDia('', dia('2026-11-04')), false, 'sin fecha, falla cerrado');
+  for (const t of [es, en]) assert.doesNotMatch(t.capitulos.cap3.sinCifra, /\d{3}|%|125/);
+  const inicio = leer('componentes', 'Inicio.js');
+  assert.match(inicio, /const mercado = mercadoAlDia\(CIFRAS_MERCADO_EL\);/);
+  assert.match(inicio, /\{mercado \? \(/);
 });

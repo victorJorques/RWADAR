@@ -7,9 +7,9 @@ import { Icono } from './Navegacion';
 import Radar from './Radar';
 import { ImagenOferta } from './Ofertas';
 import { DESTINOS_NOTICIAS, NOTICIAS } from '../lib/noticias-contenido';
-import { CAPITULOS_INICIO, textosInicio } from '../lib/inicio-contenido';
+import { CAPITULOS_INICIO, CIFRAS_MERCADO_EL, textosInicio } from '../lib/inicio-contenido';
 import { FUENTES_INICIO, GRUPOS_FUENTES_INICIO } from '../lib/inicio-fuentes';
-import { cifrasInicio } from '../lib/inicio-cifras';
+import { cifrasInicio, mercadoAlDia } from '../lib/inicio-cifras';
 import { datosCortosOferta } from '../lib/transparencia';
 import { resumenOferta } from '../lib/ficha-editorial';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
@@ -197,7 +197,7 @@ function CampoPuntos({ n = 458 }) {
   );
 }
 
-function Bloque({ n, c, t, onFuentes, onLayout, children }) {
+function Bloque({ n, c, t, onFuentes, onLayout, children, pie = null }) {
   return (
     <View style={e.capitulo} onLayout={onLayout}>
       <Rotulo n={n} texto={c.rotulo} />
@@ -207,6 +207,7 @@ function Bloque({ n, c, t, onFuentes, onLayout, children }) {
         accessibilityRole="link" noTraducir accessibilityLabel={`${t.fuentesApartado}: ${c.rotulo}`}>
         <Text noTraducir style={e.fuentesApartadoTxt}>{t.fuentesApartado} ›</Text>
       </Pressable>
+      {pie}
     </View>
   );
 }
@@ -217,12 +218,21 @@ export default function Inicio({
 }) {
   const idioma = useIdioma();
   const t = textosInicio(idioma);
-  // Por debajo de 700 px de alto el aviso va antes del botón: si se ve el
-  // botón, se ve el aviso (ESPEC-INICIO §3, juez de normas).
+  // Si se ve el botón, se ve el aviso (ESPEC-INICIO §3, juez de normas). Por
+  // debajo de 700 px de alto el radar se encoge sin rótulos. Y el aviso va
+  // antes del botón si, después, quedaría bajo la barra: se decide midiendo
+  // (letra grande de Android, «Revisión pendiente» arriba, 360 × 780…). El
+  // bloque mide lo mismo en los dos órdenes, así que no oscila.
   const { height: altoPantalla } = useWindowDimensions();
-  const avisoPrimero = altoPantalla < 700;
+  const compacta = altoPantalla < 700;
+  const [altoVisible, setAltoVisible] = useState(0);
+  const [finAccion, setFinAccion] = useState(0);
+  const avisoPrimero = compacta || (altoVisible > 0 && finAccion > altoVisible);
   const lengua = idioma === 'en' ? 'en-US' : 'es-ES';
-  const cifras = cifrasInicio({ ofertas, plataformas, descartadas: fuera, fechaCatalogo });
+  const cifras = cifrasInicio({ ofertas, plataformas, descartadas: fuera, fechaCatalogo,
+    orden: Object.keys(t.seleccion.letraPequena) });
+  // Las cifras de mercado del 03 caducan a los 7 días aunque no haya OTA (§9).
+  const mercado = mercadoAlDia(CIFRAS_MERCADO_EL);
   const n = cifras.vigente ? cifras.ofertas : 0;
   const desplazamiento = useRef(null);
   const posiciones = useRef({});
@@ -234,6 +244,14 @@ export default function Inicio({
 
   const bajarA = (y) => desplazamiento.current?.scrollTo?.({ y: Math.max(0, y - 8), animated: true });
   const guardar = (clave) => (ev) => { posiciones.current[clave] = ev.nativeEvent.layout.y; };
+  // El fin del bloque botón + aviso, en el contenido (portada + bloque).
+  const accion = useRef(null);
+  const calcularFin = () => {
+    if (!accion.current || posiciones.current.portada == null) return;
+    const fin = Math.round(posiciones.current.portada + accion.current.y + accion.current.height);
+    setFinAccion((antes) => (antes === fin ? antes : fin));
+  };
+  const medirAccion = (ev) => { accion.current = ev.nativeEvent.layout; calcularFin(); };
   const guardarGrupo = (id) => (ev) => {
     posiciones.current[`grupo:${id}`] = ev.nativeEvent.layout.y;
     if (pendiente.current === id && posiciones.current.fuentes != null) {
@@ -253,14 +271,15 @@ export default function Inicio({
   return (
     <ScrollView
       ref={desplazamiento}
+      onLayout={(ev) => setAltoVisible(Math.round(ev.nativeEvent.layout.height))}
       contentContainerStyle={e.cuerpo}
       refreshControl={<RefreshControl refreshing={refrescando} onRefresh={onActualizar} tintColor={C.senal} />}
     >
       {/* 0 · Portada: el radar vivo, sin caja de búsqueda. */}
-      <View style={e.portada} onLayout={guardar('portada')}>
-        <View style={[e.radarCaja, avisoPrimero && e.radarCajaBaja]}>
+      <View style={e.portada} onLayout={(ev) => { guardar('portada')(ev); calcularFin(); }}>
+        <View style={[e.radarCaja, compacta && e.radarCajaBaja]}>
           {/* En pantallas bajas (iPhone SE) el dibujo se encoge sin rótulos, como la web. */}
-          <Radar datos={plataformas} portada tamano={avisoPrimero ? 150 : 264} sinRotulos={avisoPrimero}
+          <Radar datos={plataformas} portada tamano={compacta ? 132 : 264} sinRotulos={compacta}
             onAbrir={(p) => onAbrirPlataforma?.(p)} onFiltrar={() => {}} />
           <View style={[e.esquina, e.esquinaSupIzq]} pointerEvents="none">
             <Text noTraducir style={e.esquinaCifra}>{cifras.vigente ? cifras.ofertas : '—'}</Text>
@@ -276,14 +295,14 @@ export default function Inicio({
           </View>
           <View style={[e.esquina, e.esquinaInfDer]} pointerEvents="none">
             <Text noTraducir style={[e.esquinaTxt, e.derecha]}>{cifras.vigente ? t.portada.radar.revisado : ''}</Text>
-            <Text noTraducir style={[e.esquinaFecha, e.derecha]}>{cifras.vigente ? cifras.revisado : (idioma === 'en' ? 'Review pending' : 'Revisión pendiente')}</Text>
+            <Text noTraducir style={[e.esquinaFecha, !cifras.vigente && e.esquinaPendiente, e.derecha]}>{cifras.vigente ? cifras.revisado : (idioma === 'en' ? 'Review pending' : 'Revisión pendiente')}</Text>
           </View>
         </View>
-        <Text noTraducir style={e.antetitulo}>{t.portada.antetitulo}</Text>
+        <Text noTraducir style={[e.antetitulo, compacta && e.antetituloBaja]}>{t.portada.antetitulo}</Text>
         <Text noTraducir idiomaOriginal={lengua} style={e.titularPortada} accessibilityRole="header">{t.portada.titular}</Text>
-        <Text noTraducir style={e.subtitulo}>{t.portada.subtitulo(n)}</Text>
+        <Text noTraducir style={[e.subtitulo, compacta && e.subtituloBaja]}>{t.portada.subtitulo(n)}</Text>
         {/* El aviso va pegado al botón: si se ve el botón, se ve el aviso. */}
-        <View style={e.accionPortada}>
+        <View style={[e.accionPortada, compacta && e.accionPortadaBaja]} onLayout={medirAccion}>
           {avisoPrimero ? <Text noTraducir style={e.avisoPortada}>{t.portada.aviso}</Text> : null}
           <Pressable onPress={() => { tacto.abrir(); onDestino('ofertas'); }}
             style={({ pressed }) => [e.b1, pressed && pulsado('b1')]} accessibilityRole="button" noTraducir
@@ -344,14 +363,16 @@ export default function Inicio({
         <Text noTraducir style={e.titular} accessibilityRole="header">{cap.cap3.titular}</Text>
         <Text noTraducir style={e.texto}>{cap.cap3.texto1}</Text>
         <Text noTraducir style={e.texto}>{cap.cap3.texto2}</Text>
-        <View style={e.cifraBloque}>
-          <Text noTraducir style={e.cifra64}>{cap.cap3.cifra}</Text>
-          <Text noTraducir style={e.cifra36}>{cap.cap3.cifraUnidad}</Text>
-          <Text noTraducir style={e.texto}>{cap.cap3.cifraPie}</Text>
-          {cap.cap3.barras.map(([etiqueta, valor, v], i) => (
-            <Barra key={etiqueta} etiqueta={etiqueta} valor={valor} fraccion={v / cap.cap3.barras[1][2]} destacada={i === 1} />
-          ))}
-        </View>
+        {mercado ? (
+          <View style={e.cifraBloque}>
+            <Text noTraducir style={e.cifra64}>{cap.cap3.cifra}</Text>
+            <Text noTraducir style={e.cifra36}>{cap.cap3.cifraUnidad}</Text>
+            <Text noTraducir style={e.texto}>{cap.cap3.cifraPie}</Text>
+            {cap.cap3.barras.map(([etiqueta, valor, v], i) => (
+              <Barra key={etiqueta} etiqueta={etiqueta} valor={valor} fraccion={v / cap.cap3.barras[1][2]} destacada={i === 1} />
+            ))}
+          </View>
+        ) : <Text noTraducir style={e.texto}>{cap.cap3.sinCifra}</Text>}
         <Text noTraducir style={e.nota}>{cap.cap3.nota}</Text>
         <Carrusel c={cap.cap3} />
       </Bloque>
@@ -377,7 +398,8 @@ export default function Inicio({
       </Bloque>
 
       {/* 05 · Los riesgos */}
-      <Bloque n={5} c={{ ...cap.cap5, saberMas: null }} t={t} onFuentes={() => irAFuentes('cap5')} onLayout={guardar('cap5')}>
+      <Bloque n={5} c={{ ...cap.cap5, saberMas: null }} t={t} onFuentes={() => irAFuentes('cap5')} onLayout={guardar('cap5')}
+        pie={<Text noTraducir style={e.puente} accessibilityRole="header">{cap.cap5.puente}</Text>}>
         <Text noTraducir style={e.titular} accessibilityRole="header">{cap.cap5.titular}</Text>
         <View style={e.tablaRiesgos}>
           <View style={e.tablaFila}>
@@ -405,7 +427,6 @@ export default function Inicio({
           </Pressable>
         </View>
         <SaberMas t={t} puntos={cap.cap5.saberMas} />
-        <Text noTraducir style={e.puente} accessibilityRole="header">{cap.cap5.puente}</Text>
       </Bloque>
 
       {/* 06 · Para qué sirve: el único tren, como titular. */}
@@ -472,16 +493,17 @@ export default function Inicio({
             ))}
           </View>
           {cifras.seleccion.map((o) => {
-            const minimo = datosCortosOferta(o, resumenOferta(o, [], new Date()))[0][1];
-            const letra = t.seleccion.letraPequena[o.slug];
+            const minimo = String(datosCortosOferta(o, resumenOferta(o, [], new Date()))[0][1] || '')
+              .replace(/^(\d+(?:,\d+)?) USD$/, '$1 $');
+            const letra = t.seleccion.letraPequena[o.slug] || t.seleccion.letraRespaldo;
             return (
               <View key={o.slug} style={e.tarjetaSel}>
                 <ImagenOferta oferta={o} decorativa estilo={e.tarjetaSelImagen} />
                 <View style={e.tarjetaSelCuerpo}>
                   <Text noTraducir style={e.tarjetaSelProveedor}>{o.plataformaNombre}</Text>
                   <Text noTraducir idiomaOriginal="es-ES" style={e.tarjetaSelTit}>{o.titulo}</Text>
-                  {letra ? <Text noTraducir style={e.tarjetaSelLetra}>{letra}</Text> : null}
-                  <Text noTraducir style={e.tarjetaSelMinimo}>{t.seleccion.minimo} <Text noTraducir style={e.tarjetaSelMinimoDato}>{minimo}</Text></Text>
+                  <Text noTraducir style={e.tarjetaSelLetra}>{letra}</Text>
+                  {minimo ? <Text noTraducir style={e.tarjetaSelMinimo}>{t.seleccion.minimo} <Text noTraducir style={e.tarjetaSelMinimoDato}>{minimo}</Text></Text> : null}
                   <Pressable onPress={() => { tacto.abrir(); onAbrirOferta?.(o); }}
                     style={({ pressed }) => [e.b3, pressed && pulsado('b3')]} accessibilityRole="button" noTraducir
                     accessibilityLabel={`${t.seleccion.verFicha}: ${o.titulo}`}>
@@ -551,12 +573,14 @@ export default function Inicio({
                 {g.fuentes.map((num) => porNumero.get(num)).filter(Boolean).map((f) => (
                   <View key={`${g.id}-${f.n}`} style={e.fuenteFila}>
                     <Text noTraducir idiomaOriginal="es-ES" style={e.fuenteTxt}>{f.texto}</Text>
+                    <View style={e.fuenteEnlaces}>
                     {f.urls.map((url) => (
                       <Pressable key={url} onPress={() => onAbrirEnlace?.(url)} style={({ pressed }) => [e.fuenteEnlace, pressed && pulsado('b3')]}
                         accessibilityRole="link" noTraducir accessibilityLabel={`${f.texto}: ${url}`}>
                         <Text noTraducir style={e.fuenteEnlaceTxt} numberOfLines={1}>{enlaceCorto(url)} ↗</Text>
                       </Pressable>
                     ))}
+                    </View>
                   </View>
                 ))}
                 {posiciones.current[g.id] != null ? (
@@ -599,7 +623,7 @@ const e = StyleSheet.create({
   /* Portada */
   portada: { paddingBottom: 8 },
   radarCaja: { position: 'relative', alignItems: 'center', justifyContent: 'center', minHeight: 290, paddingVertical: 4 },
-  radarCajaBaja: { minHeight: 160 },
+  radarCajaBaja: { minHeight: 136, paddingVertical: 0 },
   esquina: { position: 'absolute', maxWidth: 120 },
   esquinaSupIzq: { left: 0, top: 0 },
   esquinaSupDer: { right: 0, top: 0, alignItems: 'flex-end' },
@@ -610,10 +634,14 @@ const e = StyleSheet.create({
   esquinaCifraDescartadas: { color: C.alarma },
   esquinaTxt: { ...T.menor, fontSize: 13, lineHeight: 17, color: C.tx3 },
   esquinaFecha: { ...T.instrumento, fontSize: 15, lineHeight: 20, color: C.tx },
+  esquinaPendiente: { ...T.dato, fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.tx },
   antetitulo: { ...T.etiqueta, fontSize: 13, lineHeight: 18, color: C.tx3, marginTop: 10 },
+  antetituloBaja: { marginTop: 4 },
   titularPortada: { ...T.titular, color: C.tx, marginTop: 6 },
   subtitulo: { ...T.cuerpo, color: C.tx2, marginTop: 10 },
+  subtituloBaja: { marginTop: 6 },
   accionPortada: { marginTop: 16, gap: 10 },
+  accionPortadaBaja: { marginTop: 10, gap: 8 },
   avisoPortada: { ...T.cuerpo, color: C.tx2 },
 
   /* Capítulos */
@@ -628,7 +656,7 @@ const e = StyleSheet.create({
   texto: { ...T.cuerpo, color: C.tx2, marginTop: 10 },
   nota: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx3, marginTop: 10 },
   cita20: { fontFamily: F.media, fontSize: 20, lineHeight: 28, letterSpacing: -0.2, color: C.tx, marginTop: 20 },
-  cita28: { fontFamily: F.semi, fontSize: 26, lineHeight: 33, letterSpacing: -0.5, color: C.tx, marginTop: 24 },
+  cita28: { fontFamily: F.semi, fontSize: 28, lineHeight: 35, letterSpacing: -0.56, color: C.tx, marginTop: 24 },
   citaAutor: { ...T.menor, color: C.tx3, marginTop: 8 },
   genesis: { marginTop: 16, padding: 16, borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1 },
   cadena: { flexDirection: 'row', gap: 6, marginBottom: 12 },
@@ -669,7 +697,7 @@ const e = StyleSheet.create({
   /* Cifras */
   cifraBloque: { marginTop: 22 },
   cifra64: { fontFamily: F.negrita, fontSize: 64, lineHeight: 68, letterSpacing: -1.3, color: C.tx, fontVariant: ['tabular-nums'] },
-  cifra36: { fontFamily: F.negrita, fontSize: 34, lineHeight: 40, letterSpacing: -0.7, color: C.tx, fontVariant: ['tabular-nums'] },
+  cifra36: { fontFamily: F.negrita, fontSize: 36, lineHeight: 42, letterSpacing: -0.72, color: C.tx, fontVariant: ['tabular-nums'] },
   barraFila: { marginTop: 14 },
   barraTextos: { flexDirection: 'row', justifyContent: 'space-between', gap: 8 },
   barraEtiqueta: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx3 },
@@ -747,7 +775,8 @@ const e = StyleSheet.create({
   grupoFuentesTit: { ...T.etiqueta, fontSize: 13, color: C.tx3, marginBottom: 4 },
   fuenteFila: { paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: C.bd },
   fuenteTxt: { ...T.menor, fontSize: 14, lineHeight: 20, color: C.tx2 },
-  fuenteEnlace: { minHeight: UI.tactil, justifyContent: 'center', alignSelf: 'flex-start', borderRadius: R.m, paddingHorizontal: 8, marginHorizontal: -8, maxWidth: '100%' },
+  fuenteEnlaces: { flexDirection: 'row', flexWrap: 'wrap', marginLeft: -8 },
+  fuenteEnlace: { minHeight: UI.tactil, justifyContent: 'center', borderRadius: R.m, paddingHorizontal: 8, maxWidth: '100%' },
   fuenteEnlaceTxt: { ...T.menor, fontSize: 14, lineHeight: 20, fontFamily: F.semi, color: C.senal },
 
   /* Nota legal */
