@@ -252,7 +252,9 @@ verificar('las consultas técnicas (API o JSON) no se enlazan en las páginas fi
     const tecnicos=[...contenido.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map(m=>m[1].replace(/&amp;/g,'&')).filter(consultaTecnica);
     assert.deepEqual(tecnicos,[],nombre+' enlaza una consulta técnica');
   }
-  for(const nombre of ['ofertas/aktionariat.html','ofertas/boss-info.html','ofertas/switzerlend.html','plataformas/spiko.html'])
+  // SwitzerLend y Spiko ya no citan ninguna API: la entrega 2026-11-04 las cambió por la página
+  // para personas (/trade y la ficha del REGAFI). Aktionariat y BOSS Info conservan la de su mínimo.
+  for(const nombre of ['ofertas/aktionariat.html','ofertas/boss-info.html'])
     assert(/<span class="consulta-tecnica">[^<]*<span>Consulta técnica<\/span> · \d{2}\/\d{2}\/\d{4}<\/span>/.test(salidas.get(nombre)),nombre);
   // ficha-pagina (al abrir la página): la referencia que es una API sale como texto, la otra como enlace.
   const codigo=fs.readFileSync(path.join(raiz,'rwadar-site/assets/ficha-pagina-20261022.js'),'utf8');
