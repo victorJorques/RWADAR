@@ -7,6 +7,9 @@ import { ETIQUETA_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../f
 import { proveedoresDeOfertas, vigenciaOferta } from '../lib/datos';
 import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
 import { resumenOferta } from '../lib/ficha-editorial';
+import {
+  comprobacionesOferta, datosCortosOferta, fechaES, puntosFuertesOferta,
+} from '../lib/transparencia';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
 import { Icono } from './Navegacion';
 import useTransicionFicha from './useTransicionFicha';
@@ -34,25 +37,25 @@ function useFechaOferta() {
 
 function datoDestacado(oferta) {
   if (oferta.coleccion === 'secundario' || oferta.coleccion === 'en_camino') {
-    return { etiqueta: 'REFERENCIA DOCUMENTAL', valor: 'Consultar fuente' };
+    return { etiqueta: 'Referencia documental', valor: 'Consultar fuente' };
   }
   if (oferta.cifrasPendientes) {
-    return { etiqueta: 'CONDICIONES ACTUALES', valor: 'Consultar emisor' };
+    return { etiqueta: 'Condiciones actuales', valor: 'Consultar emisor' };
   }
   if (oferta.tipo === 'rendimiento') {
     return {
-      etiqueta: 'RENTABILIDAD PUBLICADA',
+      etiqueta: 'Rentabilidad publicada',
       valor: oferta.rentabilidad?.mostrada || oferta.rentabilidad?.literal || 'No publicada',
       original: Boolean(oferta.rentabilidad?.mostrada || oferta.rentabilidad?.literal),
       referencia: oferta.rentabilidad?.literal || '',
     };
   }
   if (oferta.tipo === 'valor') {
-    return { etiqueta: 'PRECIO DE REFERENCIA', valor: oferta.precio?.mostrado || 'Consultar fuente', original: Boolean(oferta.precio?.mostrado),
+    return { etiqueta: 'Precio de referencia', valor: oferta.precio?.mostrado || 'Consultar fuente', original: Boolean(oferta.precio?.mostrado),
       referencia: oferta.precio?.unidad || '' };
   }
   const valor = [oferta.precio?.mostrado, oferta.precio?.unidad].filter(Boolean).join(' / ');
-  return { etiqueta: 'PRECIO EN SECUNDARIO', valor: valor || 'Consultar mercado', original:Boolean(valor) };
+  return { etiqueta: 'Precio en secundario', valor: valor || 'Consultar mercado', original:Boolean(valor) };
 }
 
 function rentabilidadSecundaria(oferta) {
@@ -83,11 +86,11 @@ function dominioFuente(url) {
 }
 
 function tipoVisible(tipo, coleccion) {
-  if (coleccion === 'en_camino') return 'EN CAMINO';
-  if (coleccion === 'secundario') return 'SECUNDARIO';
-  if (tipo === 'secundario') return 'SECUNDARIO';
-  if (tipo === 'valor') return 'VALOR';
-  return 'RENDIMIENTO';
+  if (coleccion === 'en_camino') return 'En camino';
+  if (coleccion === 'secundario') return 'Secundario';
+  if (tipo === 'secundario') return 'Secundario';
+  if (tipo === 'valor') return 'Valor';
+  return 'Rendimiento';
 }
 
 // El orden nunca usa importe, rentabilidad, patrocinio ni un perfil personal.
@@ -130,7 +133,7 @@ export function FichaGrupoOfertas({grupo, onAbrir}) {
       accessibilityRole="button" accessibilityLabel={`${grupo.proveedorNombre}: ver ${n} referencias`}
       accessibilityHint="Abre todas las fichas del proveedor dentro de esta colección">
       <View style={e.cuerpoGrupo}>
-        <Text style={e.datoEtiqueta}>REFERENCIAS DEL MISMO PROVEEDOR</Text>
+        <Text style={e.datoEtiqueta}>Referencias del mismo proveedor</Text>
         <Text noTraducir idiomaOriginal="es-ES" style={e.titulo}>{grupo.proveedorNombre}</Text>
         <Text style={e.grupoNumero}>{n} referencias</Text>
         <Text style={e.referencia}>Cada ficha conserva su fuente, fecha, mínimo publicado, acceso desde España y condiciones de salida. No se ha confirmado que puedas contratar todas.</Text>
@@ -153,12 +156,6 @@ function registroProveedor(plataforma, ahora) {
       })) return null;
   return {texto:etiquetaEstadoVerificacionLocal(registro.estado),detalle:registro.detalle,
     fecha,fuentes:registro.fuentes.map(f => f.url)};
-}
-
-function etiquetaDatoCompacta(tipo) {
-  if (tipo === 'secundario') return 'PRECIO';
-  if (tipo === 'valor') return 'PRECIO REF.';
-  return 'RENTABILIDAD';
 }
 
 function tonoVigencia(estado) {
@@ -205,10 +202,10 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
         noTraducir idiomaOriginal="es-ES"
         accessibilityLabel={decorativa ? undefined : `Sin ${ETIQUETA_EDITORIAL.toLocaleLowerCase('es')} disponible para ${oferta.titulo}`}
       >
-        <Text style={e.imagenFallbackTxt}>{iniciales(oferta.plataformaNombre || oferta.titulo)}</Text>
-        <Text style={e.etiquetaEditorial} accessible={false} importantForAccessibility="no">
+        <Text style={[e.imagenFallbackTxt, !grande && e.imagenFallbackTxtPeq]}>{iniciales(oferta.plataformaNombre || oferta.titulo)}</Text>
+        {grande ? <Text style={e.etiquetaEditorial} accessible={false} importantForAccessibility="no">
           {ETIQUETA_EDITORIAL}
-        </Text>
+        </Text> : null}
       </View>
     );
   }
@@ -229,27 +226,31 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
         accessible={false}
         importantForAccessibility="no"
       />
-      <Text
+      {/* En la miniatura no va ninguna etiqueta encima de la foto (como en la
+          web); el aviso «Imágenes ilustrativas» va bajo la lista. */}
+      {grande ? <Text
         style={e.etiquetaEditorial}
         accessible={false}
         importantForAccessibility="no"
       >
         {editorial.etiqueta}
-      </Text>
+      </Text> : null}
     </View>
   );
 }
 
-function datoBreveTarjeta(campo) {
-  // Un mínimo documentado en otra moneda o unidad se enseña tal cual (como en la web).
-  if (campo?.texto === 'No documentado en euros' && typeof campo.unidadDocumentada === 'string' &&
-    campo.unidadDocumentada.trim()) return { ...campo, texto: campo.unidadDocumentada.trim() };
-  const breve = { 'No documentado en euros': 'No verificado', 'Sin mínimo vigente en euros': 'No verificado',
-    'Sin comprobar desde España': 'Sin confirmar', 'Salida no documentada': 'Sin documentar' };
-  return { ...campo, texto: breve[campo.texto] || campo.texto };
+/* La fila compacta de la web (03/11/2026): miniatura, título de dos líneas
+   como mucho, proveedor y lugar; hasta dos puntos fuertes ✓ en texto;
+   Mínimo · España · Salida en forma corta; y al pie «Revisa · N avisos en la
+   ficha», la fecha y «Ver ficha». El aviso crítico (tono stop) se lee entero
+   siempre; el ordinario se resume en su número y sigue entero para el lector
+   de pantalla y en la ficha. */
+function avisosContables(oferta) {
+  return (oferta?.avisos || []).filter((aviso) => aviso && String(aviso.texto || '').trim() &&
+    aviso.tono !== 'ok' && (!aviso.esAntiguedad || aviso.tono === 'stop'));
 }
 
-export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir }) {
+export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catalogoCaducado = false }) {
   const idiomaActual = useIdioma();
   const ahora = useFechaOferta();
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
@@ -257,30 +258,38 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir }) {
   const vigencia = vigenciaOferta(oferta, ahora);
   const criticos = avisosCriticos(oferta);
   const primerCritico = criticos[0];
+  const bloqueo = primerCritico?.tono === 'stop' ? primerCritico : null;
+  const contables = avisosContables(oferta);
   const resumen = resumenOferta(ofertaOriginal, [], ahora);
-  // Si el mínimo está en otra moneda o unidad, la fila no dice «(EUR)»; la
-  // fila «Salida» no repite «Salida:» (como en la web).
-  const minimoBreve = datoBreveTarjeta(resumen.minimo);
-  const salidaBreve = datoBreveTarjeta(resumen.salida);
-  const datosParaDecidir = [
-    [resumen.minimo?.texto === 'No documentado en euros' && typeof resumen.minimo.unidadDocumentada === 'string' &&
-      resumen.minimo.unidadDocumentada.trim() ? 'Mínimo' : 'Mínimo (EUR)', minimoBreve],
-    ['España', datoBreveTarjeta(resumen.accesoEspana)],
-    ['Salida', { ...salidaBreve, texto: String(salidaBreve.texto || '').replace(/^Salida:\s*/, '') }],
-  ];
+  const datosCortos = datosCortosOferta(ofertaOriginal, resumen, { catalogoCaducado });
+  const puntos = puntosFuertesOferta(ofertaOriginal).slice(0, 2);
   const fechaProcedencia = resumen.fechas.comprobadaEl
     ? `Fuente consultada ${fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)}`
     : documentacion ? `Revisión documental ${fechaVerificacionLocalVisible(documentacion.fecha)}`
       : 'Sin consulta de fuente fechada';
+  const fechaCorta = resumen.fechas.comprobadaEl ? fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)
+    : documentacion ? fechaVerificacionLocalVisible(documentacion.fecha) : '';
+  // Una principal vigente enseña su vigencia; lo demás, el estado que da resumenOferta.
+  const vigenteOk = !catalogoCaducado && resumen.cifrasVigentes &&
+    ['vigente', 'proxima', 'permanente-vigente', 'permanente-proxima'].includes(vigencia.estado);
+  const estadoTexto = vigenteOk ? vigencia.etiqueta : resumen.estado.texto;
+  // «Cifras vigentes N d» empieza en mayúscula; el diccionario lo tiene en minúscula.
+  const estadoTraducido = (() => {
+    const directo = traducir(estadoTexto);
+    if (directo !== estadoTexto) return directo;
+    const minuscula = traducir(estadoTexto.charAt(0).toLowerCase() + estadoTexto.slice(1));
+    return minuscula.charAt(0).toUpperCase() + minuscula.slice(1);
+  })();
   // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
   const lugar = imagenEditorialOferta(oferta)?.lugar || '';
   const etiquetaAccesible = [
     `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar,
     traducir(ETIQUETA_EDITORIAL),
     oferta.patrocinada ? traducir('Contenido patrocinado; no altera el ranking') : null,
-    ...datosParaDecidir.map(([etiqueta, dato]) => `${traducir(etiqueta)}: ${dato.fuente || dato.referencias?.length ? dato.texto : traducir(dato.texto)}`),
+    ...puntos.map((punto) => `✓ ${traducir(punto.texto)}`),
+    ...datosCortos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
     traducir(fechaProcedencia),
-    traducir(resumen.estado.texto),
+    estadoTraducido,
     primerCritico
       ? `${traducir(primerCritico.tono === 'stop' ? 'Aviso bloqueante' : 'Precaución')}: ${primerCritico.texto}`
       : null,
@@ -289,58 +298,62 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir }) {
   return (
     <Pressable
       onPress={onAbrir}
-      style={({ pressed }) => [e.ficha, pressed && e.pulsado]}
+      style={({ pressed }) => [e.ficha, pressed && e.fichaPulsada]}
       accessibilityRole="button"
       noTraducir idiomaOriginal={idiomaActual==='en'?'en-US':'es-ES'}
       accessibilityLabel={etiquetaAccesible}
       accessibilityHint={traducir('Abre la ficha completa de la oferta')}
     >
-      <View style={e.imagenFicha}>
-        <ImagenOferta oferta={oferta} decorativa estilo={e.imagenEnFicha} />
-        <View style={e.tipoPastilla}>
-          <Text style={e.tipoPastillaTxt}>{tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
+      <View style={e.filaSuperior}>
+        <View style={e.imagenFicha}>
+          <ImagenOferta oferta={oferta} decorativa estilo={e.imagenEnFicha} />
+        </View>
+        <View style={e.cuerpoFicha}>
+          {oferta.patrocinada ? <Text style={e.patrocinada}>Patrocinada</Text> : null}
+          <Text noTraducir idiomaOriginal="es-ES" style={e.titulo} numberOfLines={2}>{oferta.titulo}</Text>
+          <Text style={e.plataforma} numberOfLines={1}>
+            <Text noTraducir idiomaOriginal="es-ES" style={e.plataformaNombre}>{oferta.plataformaNombre}</Text>
+            {lugar ? <Text noTraducir idiomaOriginal="es-ES" style={e.lugarTxt}>{` · ${lugar}`}</Text> : null}
+          </Text>
+          <View style={e.metaFicha}>
+            <Text noTraducir idiomaOriginal={idiomaActual === 'en' ? 'en-US' : 'es-ES'}
+              style={[e.estadoFicha, vigenteOk ? e.estadoOk : tonoVigencia(vigencia.estado)]}>{estadoTraducido}</Text>
+            {!catalogoCaducado && resumen.cifrasVigentes && oferta.disponibleEs === false
+              ? <Text style={e.noDisponible}>No disponible en España</Text> : null}
+          </View>
         </View>
       </View>
-      <View style={e.cuerpoFicha}>
-        {oferta.patrocinada ? <Text style={e.patrocinada}>PATROCINADA</Text> : null}
-        <Text noTraducir idiomaOriginal="es-ES" style={e.titulo} numberOfLines={2}>{oferta.titulo}</Text>
-        <Text noTraducir idiomaOriginal="es-ES" style={e.plataforma} numberOfLines={1}>{oferta.plataformaNombre}</Text>
-        {lugar ? (
-          <View style={e.lugarFila}>
-            <Icono nombre="lugar" color={COLOR_CATEGORIA[oferta.categoria] || C.senal} tamano={14} />
-            <Text noTraducir idiomaOriginal="es-ES" style={e.lugarTxt} numberOfLines={1}>{lugar}</Text>
-          </View>
-        ) : null}
-        <View style={e.decisionTarjeta}>
-          {datosParaDecidir.map(([etiqueta, dato]) => (
-            <View key={etiqueta} style={e.decisionFila}>
-              <Text style={e.decisionEtiqueta}>{etiqueta}</Text>
-              <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length)} idiomaOriginal="es-ES" style={e.decisionValor}>{dato.texto}</Text>
-              {dato.unidadDocumentada ? <Text style={e.referencia}>Unidad en la fuente: <Text noTraducir idiomaOriginal="es-ES">{dato.unidadDocumentada}</Text></Text> : null}
-            </View>
+      {puntos.length ? (
+        <View style={e.puntos} accessibilityLabel={traducir('Puntos fuertes')}>
+          {puntos.map((punto) => (
+            <Text key={punto.texto} style={e.punto}><Text style={e.puntoMarca}>✓ </Text>{punto.texto}</Text>
           ))}
         </View>
-        <Text style={[e.estadoFicha, tonoVigencia(vigencia.estado)]}>{resumen.estado.texto}</Text>
-        {primerCritico ? (
-          <View style={[
-            e.avisoFicha,
-            primerCritico.tono === 'stop' ? e.avisoFichaStop : e.avisoFichaWarn,
-          ]}>
-            <Text style={[
-              e.avisoFichaTxt,
-              primerCritico.tono === 'stop' ? e.avisoTxtStop : e.avisoTxtWarn,
-            ]}>
-              {primerCritico.tono === 'stop' ? 'IMPORTANTE' : 'ATENCIÓN'} · <Text noTraducir idiomaOriginal="es-ES">{primerCritico.texto}</Text>
-              {criticos.length > 1 ? ` · ${criticos.length - 1} más en la ficha` : ''}
-            </Text>
+      ) : null}
+      <View style={e.decisionTarjeta}>
+        {datosCortos.map(([etiqueta, valor]) => (
+          <View key={etiqueta} style={e.decisionFila}>
+            <Text style={e.decisionEtiqueta}>{etiqueta}</Text>
+            <Text style={e.decisionValor}>{valor}</Text>
           </View>
-        ) : null}
-        <View style={e.pieFicha}>
-          <Text style={e.fechaFicha}>
-            {fechaProcedencia}
+        ))}
+      </View>
+      {bloqueo ? (
+        <View style={[e.avisoFicha, e.avisoFichaStop]}>
+          <Text style={[e.avisoFichaTxt, e.avisoTxtStop]}>
+            Importante · <Text noTraducir idiomaOriginal="es-ES">{bloqueo.texto}</Text>
+            {criticos.length > 1 ? ` · ${criticos.length - 1} más en la ficha` : ''}
           </Text>
-          <Text style={e.abrirFicha}>Ver ficha →</Text>
         </View>
+      ) : null}
+      <View style={e.pieFicha}>
+        {!bloqueo && contables.length ? (
+          <Text style={e.avisosN}>
+            <Text style={e.avisosNMarca}>Revisa</Text> · {contables.length === 1 ? '1 aviso en la ficha' : `${contables.length} avisos en la ficha`}
+          </Text>
+        ) : <View style={e.avisosHueco} />}
+        {fechaCorta ? <Text style={e.fechaFicha}>{fechaCorta}</Text> : null}
+        <Text style={e.abrirFicha}>Ver ficha →</Text>
       </View>
     </Pressable>
   );
@@ -357,7 +370,7 @@ function FilaMetrica({ etiqueta, valor, original=false, etiquetaOriginal=false }
 
 export function DetalleOferta({
   oferta: ofertaOriginal, onCerrar, onAbrirEnlace, plataformaCanonica, plataforma, guardada = false, onGuardar,
-  onRegistrarInversion,
+  onRegistrarInversion, catalogoCaducado = false,
 }) {
   const idiomaActual=useIdioma();
   const ahora = useFechaOferta();
@@ -408,7 +421,7 @@ export function DetalleOferta({
           </View>
           <ScrollView key={oferta.slug} style={e.modalDesplazamiento}
             contentContainerStyle={e.modalCuerpo} contentInsetAdjustmentBehavior="never">
-            <Text style={e.supra}>{oferta.coleccion && oferta.coleccion !== 'principales' ? 'REFERENCIA' : 'OFERTA'} · {tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
+            <Text style={e.supra}>{oferta.coleccion && oferta.coleccion !== 'principales' ? 'Referencia' : 'Oferta'} · {tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
             <FuenteOriginal idiomaOriginal="es-ES" />
             <Text noTraducir idiomaOriginal="es-ES" style={e.modalTitulo} accessibilityRole="header">{oferta.titulo}</Text>
             <ImagenOferta oferta={oferta} grande />
@@ -428,9 +441,8 @@ export function DetalleOferta({
                 </Text>
               ) : null}
             </View>
-
             <Text style={e.riesgoSalida}>Puedes perder dinero. RWAdar no vende ni asesora.</Text>
-            <Text style={e.avisosTitulo}>¿QUIÉN PUEDE ACCEDER Y EN QUÉ CONDICIONES?</Text>
+            <Text style={e.avisosTitulo}>¿Quién puede acceder y en qué condiciones?</Text>
             <View style={e.tabla}>
               {datosParaDecidir.map(([etiqueta, dato]) => (
                 <View key={etiqueta} style={e.filaMetrica}>
@@ -443,9 +455,10 @@ export function DetalleOferta({
                 </View>
               ))}
             </View>
-
+            <Transparencia oferta={ofertaOriginal} resumen={resumen} ahora={ahora}
+              catalogoCaducado={catalogoCaducado} onAbrirEnlace={onAbrirEnlace} />
             <View style={e.documentacion}>
-              <Text style={e.avisosTitulo}>EN TRES FRASES</Text>
+              <Text style={e.avisosTitulo}>En tres frases</Text>
               {documentacion?.descripcion || oferta.resumen ? <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{documentacion?.descripcion || oferta.resumen}</FuenteOriginal> : <Text style={e.estadoTexto}>La fuente no aporta una descripción comprobable en esta ficha.</Text>}
               <Text style={e.referencia}>La disponibilidad de salida no está garantizada.</Text>
             </View>
@@ -454,7 +467,6 @@ export function DetalleOferta({
               <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{registro.detalle}</FuenteOriginal>
               <Text style={e.referencia}>Este registro no acredita la supervisión ni la apertura de esta oferta. Fuentes al final de la ficha.</Text>
             </View> : null}
-
             <View style={[e.estadoCaja, cifraVencida && e.estadoCajaVencida]}>
               <Text style={[e.estadoTitulo, tonoVigencia(vigencia.estado)]}>{vigencia.etiqueta}</Text>
               <Text style={e.estadoTexto}>
@@ -473,10 +485,9 @@ export function DetalleOferta({
                     : `Información comprobada el ${oferta.verificadaEl || 'día indicado en la fuente'}.`}
               </Text>
             </View>
-
             {documentacion?.descripcion ? (
               <View style={e.documentacion}>
-                <Text style={e.avisosTitulo}>CARACTERÍSTICAS DOCUMENTADAS</Text>
+                <Text style={e.avisosTitulo}>Características documentadas</Text>
                 {documentacion.caracteristicas.length ? (
                   <View style={[e.tabla, e.tablaDocumental]}>
                     {documentacion.caracteristicas.map((caracteristica, indice) => (
@@ -486,9 +497,8 @@ export function DetalleOferta({
                 ) : null}
               </View>
             ) : null}
-
             <View style={e.documentacion}>
-              <Text style={e.avisosTitulo}>FECHAS DE ESTA FICHA</Text>
+              <Text style={e.avisosTitulo}>Fechas de esta ficha</Text>
               <Text style={e.referencia}>Revisión del catálogo: {resumen.fechas.revisadaEl ? fechaVerificacionLocalVisible(resumen.fechas.revisadaEl) : 'sin fecha válida'}</Text>
               <Text style={e.referencia}>Última consulta citada: {resumen.fechas.comprobadaEl ? fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl) : 'no documentada'}</Text>
               <Text style={e.referencia}>Fecha del dato en esa referencia: {resumen.fechas.fechaDato ? fechaVerificacionLocalVisible(resumen.fechas.fechaDato) : 'no indicada por la fuente'}</Text>
@@ -501,11 +511,10 @@ export function DetalleOferta({
             </View>
             {rentabilidadSec ? (
               <View style={e.destacadoSecundario}>
-                <Text style={e.datoEtiqueta}>RENTABILIDAD AJUSTADA / PUBLICADA</Text>
+                <Text style={e.datoEtiqueta}>Rentabilidad ajustada / publicada</Text>
                 <Text noTraducir idiomaOriginal="es-ES" style={e.destacadoValor}>{rentabilidadSec}</Text>
               </View>
             ) : null}
-
             {oferta.metricas.length ? (
               <View style={e.tabla}>
                 {oferta.metricas.map((metrica, indice) => (
@@ -513,10 +522,9 @@ export function DetalleOferta({
                 ))}
               </View>
             ) : null}
-
             {documentacion?.referencias.length ? (
               <View style={e.documentacion}>
-                <Text style={e.avisosTitulo}>REFERENCIAS FECHADAS</Text>
+                <Text style={e.avisosTitulo}>Referencias fechadas</Text>
                 <Text style={e.estadoTexto}>
                   Datos publicados en las fechas indicadas. No son precios actuales ni garantizan rentabilidad, apertura o disponibilidad para contratar.
                 </Text>
@@ -534,10 +542,9 @@ export function DetalleOferta({
                 ))}
               </View>
             ) : null}
-
             {oferta.avisos.length ? (
               <View style={e.avisos}>
-                <Text style={e.avisosTitulo}>ANTES DE ABRIR EL ENLACE</Text>
+                <Text style={e.avisosTitulo}>Antes de abrir el enlace</Text>
                 {oferta.avisos.map((aviso, indice) => (
                   <View key={`${aviso.texto}-${indice}`} style={[
                     e.avisoFila,
@@ -555,9 +562,8 @@ export function DetalleOferta({
                 ))}
               </View>
             ) : null}
-
             <View style={e.avisos}>
-              <Text style={e.avisosTitulo}>ANTES DE IR A LA FUENTE</Text>
+              <Text style={e.avisosTitulo}>Antes de ir a la fuente</Text>
               <FilaMetrica etiqueta="¿Puedo perder dinero?" valor="Sí. Puedes perder parte o toda la inversión; una cifra publicada no garantiza el resultado." />
               <FilaMetrica etiqueta="¿Puedo vender cuando quiera?" valor={resumen.salida.texto} original={Boolean(resumen.salida.fuente)} />
               <FilaMetrica etiqueta="¿Quién custodia el activo?" original={Boolean(documentacion?.caracteristicas.find(c => /custodio|responsable de custodia/i.test(c.etiqueta))?.valor)} valor={documentacion?.caracteristicas.find(c => /custodio|responsable de custodia/i.test(c.etiqueta))?.valor || 'No consta en esta ficha. Compruébalo en la fuente.'} />
@@ -583,7 +589,7 @@ export function DetalleOferta({
             </Pressable> : null}
             {fuentesAdicionales.length ? (
               <View>
-                <Text style={e.avisosTitulo}>OTRAS FUENTES CONSULTADAS</Text>
+                <Text style={e.avisosTitulo}>Otras fuentes consultadas</Text>
                 {fuentesAdicionales.map((url, indice) => (
                   <Pressable key={url} onPress={() => onAbrirEnlace(url)}
                     style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
@@ -601,6 +607,65 @@ export function DetalleOferta({
         </Animated.View>
       </SafeAreaProvider>
     </Modal>
+  );
+}
+
+/* «Transparencia: lo que hemos comprobado» (como transparenciaDetalleHtml de
+   la web): las cinco comprobaciones con ✓/✗, su motivo y la fuente con su
+   fecha, y todos los puntos fuertes con su fuente. Solo el texto de
+   transparencia.json y el nombre de cada fuente quedan como texto original;
+   lo que escribe RWAdar se traduce. */
+function Transparencia({ oferta, resumen, ahora, catalogoCaducado, onAbrirEnlace }) {
+  const lista = comprobacionesOferta(oferta, resumen, { ahora, catalogoCaducado });
+  const puntos = puntosFuertesOferta(oferta);
+  const Fuente = ({ fuente, de }) => {
+    if (!fuente?.url) return null;
+    const titulo = fuente.titulo || fuente.url;
+    return (
+      <View style={e.comprobacionFuente}>
+        <Pressable onPress={() => onAbrirEnlace(fuente.url)} style={({ pressed }) => [e.enlaceFuente, pressed && e.enlaceFuentePulsado]}
+          accessibilityRole="link" noTraducir accessibilityLabel={`${titulo} · ${traducir('fuente de:')} ${traducir(de)}`}>
+          <Text noTraducir idiomaOriginal="es-ES" style={e.enlaceFuenteTxt}>{titulo} ↗</Text>
+        </Pressable>
+        {fuente.fecha ? <Text style={[e.referencia, e.referenciaFila]}>Consultada el {fechaES(fuente.fecha)}</Text> : null}
+      </View>
+    );
+  };
+  return (
+    <View style={e.transparencia}>
+      <Text style={e.seccionDetalle} accessibilityRole="header">Transparencia: lo que hemos comprobado</Text>
+      <Text style={e.referencia}>Es una comprobación de la documentación, no una recomendación de inversión.</Text>
+      {lista.map((c) => (
+        <View key={c.id} style={e.comprobacion}>
+          <Text style={[e.comprobacionMarca, c.cumple ? e.comprobacionSi : e.comprobacionNo]}
+            accessible={false} importantForAccessibility="no">{c.cumple ? '✓' : '✗'}</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={e.comprobacionTit} accessibilityLabel={`${traducir(c.texto)}: ${traducir(c.cumple ? 'sí' : 'no')}`}>{c.texto}</Text>
+            {c.partes ? (
+              <Text style={e.comprobacionMotivo}>
+                {c.partes.map((x, i) => x.length > 1
+                  ? <Text key={i}>{i ? ' ' : ''}{x[0]} <Text noTraducir idiomaOriginal="es-ES" style={e.comprobacionDato}>{x[1]}</Text>.</Text>
+                  : <Text key={i}>{i ? ' ' : ''}{x[0]}</Text>)}
+              </Text>
+            ) : (
+              <Text noTraducir={Boolean(c.deFuente)} idiomaOriginal="es-ES" style={e.comprobacionMotivo}>{c.motivo}</Text>
+            )}
+            <Fuente fuente={c.fuente} de={c.texto} />
+          </View>
+        </View>
+      ))}
+      {puntos.length ? (
+        <View style={e.puntosDetalle}>
+          <Text style={e.comprobacionTit}>Puntos fuertes, con su fuente</Text>
+          {puntos.map((punto) => (
+            <View key={punto.texto} style={e.puntoDetalle}>
+              <Text style={e.punto}><Text style={e.puntoMarca}>✓ </Text>{punto.texto}</Text>
+              <Fuente fuente={punto.fuente?.url ? { url: punto.fuente.url, titulo: punto.fuente.titulo } : null} de={punto.texto} />
+            </View>
+          ))}
+        </View>
+      ) : null}
+    </View>
   );
 }
 
@@ -649,83 +714,82 @@ export function ExclusionesOfertas({ datos, onAbrirEnlace }) {
 
 const e = StyleSheet.create({
   ficha: {
-    backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea, borderRadius: R.ficha,
-    overflow: 'hidden', marginBottom: 10,
+    paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: C.bd,
   },
-  pulsado: { opacity: 0.72, transform: [{ scale: 0.992 }] },
+  fichaPulsada: { backgroundColor: C.ton },
+  filaSuperior: { flexDirection: 'row', alignItems: 'flex-start', gap: 12 },
+  pulsado: { backgroundColor: C.ton2 },
   imagen: { width: '100%', backgroundColor: C.sup3 },
   imagenEditorialMarco: { position: 'relative', overflow: 'hidden' },
   imagenEditorial: { width: '100%', height: '100%' },
   etiquetaEditorial: {
     position: 'absolute', left: 10, bottom: 8, zIndex: 2,
-    paddingHorizontal: 8, paddingVertical: 5, borderRadius: 999,
-    backgroundColor: 'rgba(8,10,13,0.86)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.22)',
-    color: '#FFFFFF', fontFamily: F.mono, fontSize: 10, fontWeight: '700',
-    letterSpacing: 0.5,
+    paddingHorizontal: 8, paddingVertical: 4, borderRadius: R.s,
+    backgroundColor: 'rgba(11,10,10,0.86)',
+    color: C.tx, fontFamily: F.semi, fontSize: 12, lineHeight: 16,
   },
-  imagenFicha: { width: '100%', aspectRatio: 2, position: 'relative', backgroundColor: C.sup3 },
+  imagenFicha: { width: 88, aspectRatio: 1, borderRadius: R.m, overflow: 'hidden', backgroundColor: C.sup3 },
   imagenEnFicha: { height: '100%' },
-  imagenGrande: { aspectRatio: 960 / 660, borderRadius: R.ficha },
+  imagenGrande: { aspectRatio: 960 / 660, borderRadius: R.l },
   imagenFallback: { alignItems: 'center', justifyContent: 'center' },
-  imagenFallbackTxt: { fontFamily: F.extra, fontSize: 34, color: C.noche },
-  tipoPastilla: {
-    position: 'absolute', left: 8, top: 8, backgroundColor: 'rgba(8, 18, 17, 0.88)',
-    borderWidth: 1, borderColor: C.linea2, borderRadius: R.pastilla,
-    paddingHorizontal: 7, paddingVertical: 4,
-  },
-  tipoPastillaTxt: { ...T.etiqueta, color: C.tx, fontSize: 11 },
-  estadoFicha: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 14, lineHeight: 21, marginTop: 8 },
+  imagenFallbackTxt: { fontFamily: F.negrita, fontSize: 34, color: C.noche },
+  imagenFallbackTxtPeq: { fontSize: 20 },
+  estadoFicha: { ...T.menor, fontFamily: F.semi, color: C.tx2, fontSize: 12, lineHeight: 17 },
+  estadoOk: { color: C.senal, backgroundColor: C.senalT, borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 2, overflow: 'hidden' },
+  metaFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginTop: 6 },
+  noDisponible: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.alarma },
   vigenciaOk: { color: C.senal, borderColor: C.senal34 },
-  vigenciaProxima: { color: '#F2B23C', borderColor: '#665126' },
+  vigenciaProxima: { color: C.aviso },
   vigenciaVencida: { color: C.coral, borderColor: C.coral32 },
-  cuerpoFicha: { padding: 12 },
+  cuerpoFicha: { flex: 1, minWidth: 0 },
   cuerpoGrupo: { padding: 18, gap: 10 },
   grupoNumero: { ...T.dato, fontSize: 20, lineHeight: 27, color: C.tx },
   abrirGrupo: { ...T.menor, fontFamily: F.semi, color: C.senal, fontSize: 14, lineHeight: 20, marginTop: 8 },
   patrocinada: {
-    ...T.etiqueta, alignSelf: 'flex-start', color: C.noche, backgroundColor: C.senal,
-    borderRadius: R.pastilla, paddingHorizontal: 7, paddingVertical: 3, marginBottom: 7,
+    ...T.etiqueta, alignSelf: 'flex-start', color: C.tx2, backgroundColor: C.ton,
+    borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 2, marginBottom: 4, overflow: 'hidden',
   },
-  plataforma: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 14, lineHeight: 21, marginTop: 3 },
-  lugarFila: { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 4 },
-  lugarTxt: { ...T.menor, fontFamily: F.media, color: C.tx2, fontSize: 14, lineHeight: 21, flexShrink: 1 },
-  titulo: { ...T.ficha, color: C.tx, fontSize: 20, lineHeight: 26 },
-  datosCompactos: {
-    flexDirection: 'row', gap: 9, marginTop: 9, paddingTop: 8,
-    borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2,
-  },
-  datoCompacto: { flex: 1, minWidth: 0 },
-  decisionTarjeta: { marginTop: 10, gap: 8 },
-  decisionFila: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2, paddingTop: 8 },
-  decisionEtiqueta: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx2 },
-  decisionValor: { ...T.menor, fontFamily: F.semi, fontSize: 16, lineHeight: 24, color: C.tx },
-  pieFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginTop: 10 },
-  fechaFicha: { ...T.menor, color: C.tx2, fontSize: 13, lineHeight: 20 },
-  abrirFicha: { ...T.menor, fontFamily: F.semi, color: C.senal, fontSize: 14, lineHeight: 21 },
+  plataforma: { ...T.menor, fontFamily: F.regular, color: C.tx3, fontSize: 13, lineHeight: 18, marginTop: 3 },
+  plataformaNombre: { fontFamily: F.semi, color: C.tx2 },
+  lugarTxt: { color: C.tx3 },
+  titulo: { ...T.ficha, color: C.tx, fontSize: 16, lineHeight: 20, letterSpacing: -0.16 },
+  decisionTarjeta: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12, rowGap: 2, marginTop: 6 },
+  puntos: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12, rowGap: 2, marginTop: 10 },
+  punto: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx2 },
+  puntoMarca: { fontFamily: F.semi, color: C.senal },
+  decisionFila: { flexDirection: 'row', alignItems: 'baseline', gap: 4, flexShrink: 1, maxWidth: '100%' },
+  decisionEtiqueta: { ...T.menor, fontFamily: F.media, fontSize: 12, lineHeight: 18, color: C.tx3 },
+  decisionValor: { ...T.menor, fontFamily: F.semi, fontSize: 13, lineHeight: 18, color: C.tx, flexShrink: 1 },
+  pieFicha: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 6 },
+  avisosN: { ...T.menor, flex: 1, fontSize: 12, lineHeight: 17, color: C.aviso },
+  avisosNMarca: { fontFamily: F.semi },
+  avisosHueco: { flex: 1 },
+  fechaFicha: { ...T.dato, color: C.tx3, fontSize: 12, lineHeight: 17 },
+  abrirFicha: { ...T.menor, fontFamily: F.semi, color: C.senal, fontSize: 14, lineHeight: 20, paddingVertical: 12, marginVertical: -12 },
   avisoFicha: {
-    borderWidth: 1, borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 5, marginTop: 8,
+    borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 4, marginTop: 8,
   },
-  avisoFichaStop: { backgroundColor: C.coral10, borderColor: C.coral32 },
-  avisoFichaWarn: { backgroundColor: '#2B2416', borderColor: '#6F592B' },
-  avisoFichaTxt: { ...T.menor, fontFamily: F.media, fontSize: 14, lineHeight: 21 },
-  avisoTxtStop: { color: C.coral },
-  avisoTxtWarn: { color: '#F2B23C' },
+  avisoFichaStop: { backgroundColor: C.alarmaT },
+  avisoFichaWarn: { backgroundColor: C.avisoT },
+  avisoFichaTxt: { ...T.menor, fontFamily: F.media, fontSize: 13, lineHeight: 19 },
+  avisoTxtStop: { color: C.alarma },
+  avisoTxtWarn: { color: C.aviso },
   avisoTxtOk: { color: C.senal },
-  datoEtiqueta: { ...T.etiqueta, color: C.tx2, fontSize: 11.5, lineHeight: 16, marginBottom: 4 },
+  datoEtiqueta: { ...T.etiqueta, color: C.tx2, lineHeight: 16, marginBottom: 4 },
   datoValor: { ...T.dato, color: C.tx, fontSize: 20, lineHeight: 27 },
   modal: { flex: 1, backgroundColor: C.noche },
-  registrarInversion: { minHeight: UI.tactil, justifyContent: 'center', alignItems: 'center', marginTop: 10, padding: 12, borderWidth: 1, borderColor: C.linea2, borderRadius: R.s },
+  registrarInversion: { minHeight: UI.tactil, justifyContent: 'center', alignItems: 'center', marginTop: 10, paddingHorizontal: 20, backgroundColor: C.ton, borderRadius: R.m },
   cabeceraModal: {
     flexDirection: 'row', alignItems: 'center', flexShrink: 0, gap: 12, paddingHorizontal: 16,
-    paddingVertical: 14, backgroundColor: C.noche2, borderBottomWidth: 1, borderBottomColor: C.linea,
+    paddingVertical: 10, backgroundColor: C.s1, borderBottomWidth: 1, borderBottomColor: C.bd,
   },
   cabeceraEtiqueta: { ...T.menor, color: C.tx2, flex: 1, minWidth: 0 },
-  supra: { ...T.etiqueta, color: C.senal, marginBottom: 5 },
+  supra: { ...T.etiqueta, color: C.tx3, marginBottom: 5 },
   modalTitulo: { ...T.ficha, color: C.tx, fontSize: 22, lineHeight: 29, marginBottom: 16 },
-  guardarOn: { backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34 },
+  guardarOn: { backgroundColor: C.senalT },
   cerrar: {
     width: UI.tactil, height: UI.tactil, flexShrink: 0, alignItems: 'center', justifyContent: 'center',
-    borderRadius: R.pastilla, backgroundColor: C.sup2,
+    borderRadius: R.p, backgroundColor: C.ton,
   },
   cerrarTxt: { color: C.tx, fontSize: 18 },
   modalDesplazamiento: { flex: 1, minHeight: 0 },
@@ -733,73 +797,88 @@ const e = StyleSheet.create({
   proveedorCaja: { paddingVertical: 16, borderBottomWidth: 1, borderBottomColor: C.linea },
   proveedorNombre: { ...T.ficha, color: C.tx },
   proveedorMeta: { ...T.menor, color: C.tx2, marginTop: 3 },
-  proveedorEstado: { ...T.dato, color: C.senal, marginTop: 8 },
-  proveedorSolo: { color: '#F2B23C' },
+  proveedorEstado: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.senal, marginTop: 8 },
+  proveedorSolo: { color: C.aviso },
   disponibilidad: { ...T.menor, color: C.tx2, marginTop: 5 },
   disponibilidadNo: { color: C.coral },
-  patrocinioAviso: { ...T.menor, color: C.senal, marginTop: 7 },
-  estadoCaja: { backgroundColor: C.senal10, borderRadius: R.m, padding: 13, marginTop: 16 },
-  estadoCajaVencida: { backgroundColor: C.coral10 },
+  patrocinioAviso: { ...T.menor, color: C.tx2, marginTop: 7 },
+  estadoCaja: { backgroundColor: C.ton, borderRadius: R.m, padding: 13, marginTop: 16 },
+  estadoCajaVencida: { backgroundColor: C.avisoT },
   estadoTitulo: { ...T.etiqueta, color: C.tx, marginBottom: 6 },
   estadoTexto: { ...T.menor, color: C.tx2 },
   documentacion: { marginVertical: 14 },
   tablaDocumental: { marginTop: 12 },
-  referenciaDocumental: { backgroundColor: C.sup2, borderRadius: R.m, padding: 13, marginTop: 12 },
+  referenciaDocumental: { backgroundColor: C.ton, borderRadius: R.m, padding: 13, marginTop: 12 },
   parrafo: { ...T.cuerpo, color: C.tx, marginVertical: 18 },
-  destacado: { backgroundColor: C.sup2, borderRadius: R.m, padding: 15, marginBottom: 14 },
+  destacado: { backgroundColor: C.ton, borderRadius: R.m, padding: 15, marginBottom: 14 },
   referencia: { ...T.menor, color: C.tx2, fontSize: 14, lineHeight: 21, marginTop: 5 },
   destacadoSecundario: {
-    backgroundColor: C.senal10, borderWidth: 1, borderColor: C.senal34,
-    borderRadius: R.m, padding: 15, marginBottom: 14,
+    backgroundColor: C.ton, borderRadius: R.m, padding: 15, marginBottom: 14,
   },
-  destacadoValor: { ...T.ficha, color: C.tx, fontSize: 21 },
-  tabla: { borderWidth: 1, borderColor: C.linea, borderRadius: R.m, overflow: 'hidden' },
+  destacadoValor: { ...T.ficha, color: C.tx, fontSize: 20 },
+  tabla: { borderWidth: 1, borderColor: C.bd, borderRadius: R.l, overflow: 'hidden' },
   filaMetrica: {
     gap: 5, paddingHorizontal: 13, paddingVertical: 12,
-    borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.linea2,
+    borderBottomWidth: 1, borderBottomColor: C.linea2,
   },
   metricaEtiqueta: { ...T.menor, fontFamily: F.media, color: C.tx2 },
   metricaValor: { ...T.cuerpo, color: C.tx, lineHeight: 21 },
-  avisos: { backgroundColor: C.sup, borderRadius: R.m, padding: 14, marginTop: 14 },
-  riesgoSalida: { ...T.menor, color: '#F2B23C', fontSize: 13, lineHeight: 19, marginTop: 18 },
-  avisosTitulo: { ...T.etiqueta, color: '#F2B23C', marginBottom: 8 },
+  avisos: { backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd, borderRadius: R.l, padding: 14, marginTop: 14 },
+  riesgoSalida: { ...T.menor, color: C.aviso, fontSize: 13, lineHeight: 19, marginTop: 18 },
+  avisosTitulo: { ...T.etiqueta, color: C.tx3, marginBottom: 8 },
   avisoFila: {
-    borderWidth: 1, borderColor: C.linea2, borderRadius: R.s,
-    backgroundColor: C.sup2, paddingHorizontal: 10, paddingVertical: 8, marginTop: 6,
+    borderRadius: R.s, backgroundColor: C.ton, paddingHorizontal: 10, paddingVertical: 8, marginTop: 6,
   },
-  avisoFilaStop: { backgroundColor: C.coral10, borderColor: C.coral32 },
-  avisoFilaWarn: { backgroundColor: '#2B2416', borderColor: '#6F592B' },
-  avisoFilaOk: { backgroundColor: C.senal10, borderColor: C.senal34 },
+  avisoFilaStop: { backgroundColor: C.alarmaT },
+  avisoFilaWarn: { backgroundColor: C.avisoT },
+  avisoFilaOk: { backgroundColor: C.senalT },
   aviso: { ...T.menor, color: C.tx2 },
   enlace: {
-    minHeight: UI.boton, backgroundColor: C.senal, borderRadius: R.m, marginTop: 18,
-    alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16,
+    minHeight: 48, backgroundColor: C.ton, borderRadius: R.m, marginTop: 18,
+    alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20,
   },
-  enlaceTxt: { fontFamily: F.negrita, color: C.noche, fontSize: 15 },
+  enlaceTxt: { fontFamily: F.semi, color: C.tx, fontSize: 15, lineHeight: 20 },
   enlaceSecundario: {
-    minHeight: UI.boton, borderWidth: 1, borderColor: C.linea2, borderRadius: R.m,
-    marginTop: 10, paddingHorizontal: 12, paddingVertical: 10, alignItems: 'center', justifyContent: 'center',
+    minHeight: 44, borderRadius: R.m,
+    marginTop: 6, paddingHorizontal: 8, paddingVertical: 10, alignItems: 'flex-start', justifyContent: 'center',
   },
-  enlaceSecundarioTxt: { fontFamily: F.semi, color: C.tx, fontSize: 14 },
+  enlaceSecundarioTxt: { fontFamily: F.semi, color: C.senal, fontSize: 14 },
   deshabilitado: { opacity: 0.45 },
   notaLegal: { ...T.menor, color: C.tx3, textAlign: 'center', marginTop: 16 },
+  transparencia: { marginTop: 20, paddingTop: 16, borderTopWidth: 1, borderTopColor: C.bd },
+  seccionDetalle: { ...T.seccion, color: C.tx, marginBottom: 4 },
+  comprobacion: { flexDirection: 'row', gap: 10, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: C.bd },
+  comprobacionMarca: { width: 20, fontFamily: F.semi, fontSize: 16, lineHeight: 22, textAlign: 'center' },
+  comprobacionSi: { color: C.senal },
+  comprobacionNo: { color: C.alarma },
+  comprobacionTit: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 15, lineHeight: 21, color: C.tx },
+  comprobacionMotivo: { ...T.menor, color: C.tx2, marginTop: 3 },
+  comprobacionDato: { fontFamily: F.semi, color: C.tx },
+  /* Enlace y fecha en la misma fila si caben: sin huecos de 44 px apilados. */
+  comprobacionFuente: { marginTop: 2, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', columnGap: 10 },
+  referenciaFila: { marginTop: 0 },
+  enlaceFuente: { minHeight: UI.tactil, justifyContent: 'center', alignSelf: 'flex-start', borderRadius: R.m, maxWidth: '100%', flexShrink: 1 },
+  enlaceFuentePulsado: { backgroundColor: C.senalT },
+  enlaceFuenteTxt: { ...T.menor, fontFamily: F.semi, color: C.senal },
+  puntosDetalle: { marginTop: 14, gap: 6 },
+  puntoDetalle: { gap: 0 },
   exclusiones: {
-    backgroundColor: C.noche2, borderWidth: 1, borderColor: C.linea,
-    borderRadius: R.panel, padding: 10, marginTop: 6, marginBottom: 16,
+    backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
+    borderRadius: R.l, padding: 10, marginTop: 6, marginBottom: 16,
   },
   exclusionesBoton: {
     minHeight: UI.tactil, flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 5,
   },
   exclusionesTitulo: { ...T.ficha, color: C.tx },
-  exclusionesResumen: { ...T.dato, color: C.tx3, marginTop: 2 },
-  exclusionesFlecha: { ...T.ficha, color: C.senal, paddingHorizontal: 6 },
+  exclusionesResumen: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx3, marginTop: 2 },
+  exclusionesFlecha: { ...T.ficha, color: C.tx3, paddingHorizontal: 6 },
   exclusionesContenido: {
-    borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2, marginTop: 7, paddingHorizontal: 5,
+    borderTopWidth: 1, borderTopColor: C.linea2, marginTop: 7, paddingHorizontal: 5,
   },
   exclusionesIntro: { ...T.menor, color: C.tx2, marginTop: 12, marginBottom: 12 },
-  exclusionFila: { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: C.linea2, paddingVertical: 10 },
+  exclusionFila: { borderTopWidth: 1, borderTopColor: C.linea2, paddingVertical: 10 },
   exclusionNombre: { ...T.cuerpoFte, color: C.tx },
-  exclusionAlcance: { ...T.dato, color: C.senal, marginTop: 3 },
+  exclusionAlcance: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx3, marginTop: 3 },
   exclusionMotivo: { ...T.menor, color: C.tx2, marginTop: 3 },
   exclusionFuente: { minHeight: 38, justifyContent: 'center', alignSelf: 'flex-start', marginTop: 5 },
   exclusionFuenteTxt: { ...T.menor, fontFamily: F.semi, color: C.senal },

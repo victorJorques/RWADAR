@@ -139,7 +139,7 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
   if (!estado?.disponible) {
     return (
       <View style={s.tarjeta}>
-        <Text style={s.kicker}>TU CUENTA</Text>
+        <Text style={s.kicker}>Tu cuenta</Text>
         <Text style={s.titulo} accessibilityRole="header">Cuentas en preparación</Text>
         <Text style={s.parrafo}>
           El acceso requiere una cuenta confirmada. Ahora no podemos preparar la conexión: inténtalo de nuevo más tarde.
@@ -158,7 +158,7 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={s.tarjeta}>
-      <Text style={s.kicker}>{autenticada ? 'TU CUENTA · WEB Y APP' : 'TU ESPACIO EN RWADAR'}</Text>
+      <Text style={s.kicker}>{autenticada ? 'Tu cuenta · web y app' : 'Tu espacio en RWAdar'}</Text>
       <Text style={s.titulo} accessibilityRole="header">
         {autenticada ? (vista === 'borrar' ? 'Borrar mi cuenta' : 'Tu perfil')
           : confirmando ? 'Confirma tu correo'
@@ -325,8 +325,8 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
 }
 
 const s = StyleSheet.create({
-  tarjeta: { borderRadius: R.ficha, backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea2, padding: 18, gap: 12 },
-  kicker: { ...T.etiqueta, color: C.senal, lineHeight: 17 },
+  tarjeta: { borderRadius: R.l, backgroundColor: C.sup, borderWidth: 1, borderColor: C.linea2, padding: 18, gap: 12 },
+  kicker: { ...T.etiqueta, color: C.tx3, lineHeight: 17 },
   titulo: { ...T.seccion, color: C.tx },
   subtitulo: { ...T.ficha, color: C.tx },
   parrafo: { ...T.cuerpo, color: C.tx2 },
@@ -334,10 +334,10 @@ const s = StyleSheet.create({
   nombre: { ...T.ficha, color: C.tx },
   campo: { gap: 7 },
   etiquetaCampo: { ...T.cuerpoFte, color: C.tx },
-  entrada: { minHeight: UI.boton, borderWidth: 1, borderColor: C.linea2, borderRadius: R.s,
+  entrada: { minHeight: UI.boton, borderWidth: 1, borderColor: C.linea2, borderRadius: R.m,
     backgroundColor: C.noche2, color: C.tx, paddingHorizontal: 13, paddingVertical: 13,
     fontFamily: F.regular, fontSize: 16 },
-  boton: { minHeight: UI.tactil, borderRadius: R.s, backgroundColor: C.senal,
+  boton: { minHeight: UI.tactil, borderRadius: R.m, backgroundColor: C.senal,
     paddingVertical: 12, paddingHorizontal: 14, alignItems: 'center', justifyContent: 'center',
     flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   botonSecundario: { backgroundColor: C.sup2, borderWidth: 1, borderColor: C.linea2 },
@@ -349,11 +349,11 @@ const s = StyleSheet.create({
   pulsado: { opacity: 0.8 },
   aceptacion: { minHeight: UI.tactil, flexDirection: 'row', alignItems: 'center', gap: 12 },
   aceptacionTexto: { ...T.menor, color: C.tx2, flex: 1 },
-  casilla: { width: 25, height: 25, borderRadius: 6, borderWidth: 1, borderColor: C.tx3, alignItems: 'center', justifyContent: 'center' },
+  casilla: { width: 25, height: 25, borderRadius: R.s, borderWidth: 1, borderColor: C.tx3, alignItems: 'center', justifyContent: 'center' },
   casillaMarcada: { backgroundColor: C.senal, borderColor: C.senal },
   marca: { color: C.noche, fontSize: 18, fontFamily: F.negrita },
-  error: { ...T.cuerpo, color: C.coral, backgroundColor: C.coral10, borderRadius: R.s, padding: 12 },
-  mensaje: { ...T.cuerpo, color: C.senalCl, backgroundColor: C.senal10, borderRadius: R.s, padding: 12 },
+  error: { ...T.cuerpo, color: C.coral, backgroundColor: C.coral10, borderRadius: R.m, padding: 12 },
+  mensaje: { ...T.cuerpo, color: C.senalCl, backgroundColor: C.senal10, borderRadius: R.m, padding: 12 },
   divisor: { height: 1, backgroundColor: C.linea2, marginVertical: 3 },
   bloque: { gap: 10 },
   enlaces: { gap: 8 },

@@ -120,6 +120,7 @@ test('la escala de lectura crece sin bloquear fuente del sistema ni fijar altura
     assert.doesNotMatch(source,/allowFontScaling=\{false\}|maxFontSizeMultiplier/);
   }
   const nav=fs.readFileSync(path.join(ROOT,'componentes/Navegacion.js'),'utf8');
-  assert.match(nav,/fontSize: 13, lineHeight: 18/);
+  // Cinco botones: el rótulo baja a 11 px (GUIA-ACABADOS §6; ESPEC-INICIO §4) y sigue sin altura fija.
+  assert.match(nav,/fontSize: 11, lineHeight: 15/);
   assert.doesNotMatch(nav,/e\.etiqueta[^\n]*numberOfLines/);
 });

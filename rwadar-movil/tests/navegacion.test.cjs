@@ -1,3 +1,4 @@
+// Rótulos en frase normal, sin mayúsculas (GUIA-ACABADOS §5, aplicada a la web el 04/11/2026).
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -6,16 +7,19 @@ const path = require('node:path');
 const RAIZ = path.resolve(__dirname, '..');
 const leer = (...partes) => fs.readFileSync(path.join(RAIZ, ...partes), 'utf8');
 
-test('la navegación inferior ofrece Inicio, Buscar, Academy y Perfil y respeta el safe area', () => {
+// Barra de cinco botones (ESPEC-INICIO §4, decisión de Víctor del 04/11/2026):
+// Ofertas y Plataformas sustituyen a «Buscar» y su selector interno.
+test('la navegación inferior ofrece Inicio, Ofertas, Plataformas, Academy y Perfil y respeta el safe area', () => {
   const codigo = leer('componentes', 'Navegacion.js');
 
   for (const destino of [
     "['inicio', 'Inicio', 'inicio']",
-    "['buscar', 'Buscar', 'buscar']",
+    "['ofertas', 'Ofertas', 'etiqueta']",
+    "['plataformas', 'Plataformas', 'diana']",
     "['academy', 'Academy', 'academy']",
     "['perfil', 'Perfil', 'perfil']",
   ]) assert.ok(codigo.includes(destino), `falta el destino ${destino}`);
-  for (const antiguo of ["'Siguiendo'", "'Avisos'", "'Más'", "'Radar'", "'Ofertas'"]) {
+  for (const antiguo of ["'Siguiendo'", "'Avisos'", "'Más'", "'Radar'", "'Buscar'"]) {
     assert.ok(!codigo.includes(`, ${antiguo}, `), `sigue el destino antiguo ${antiguo}`);
   }
   assert.match(codigo, /const insignia = id === 'perfil' \? guardados : id === 'inicio' \? novedades : 0;/);
@@ -24,7 +28,7 @@ test('la navegación inferior ofrece Inicio, Buscar, Academy y Perfil y respeta 
   assert.match(codigo, /accessibilityRole="tablist"/);
   assert.match(codigo, /accessibilityRole="tab"/);
   assert.match(codigo, /accessibilityState=\{\{ selected: seleccionada \}\}/);
-  for (const icono of ['inicio', 'perfil', 'comunidad', 'guardar', 'guardada']) {
+  for (const icono of ['inicio', 'etiqueta', 'diana', 'perfil', 'comunidad', 'guardar', 'guardada']) {
     assert.match(codigo, new RegExp(`nombre === '${icono}'`), `falta el icono ${icono}`);
   }
 });
@@ -38,13 +42,17 @@ test('el rediseño conserva radar, ofertas, 3D, detalle, descartes, avisos y pri
   }
   assert.ok(codigo.includes("pestana === 'buscar' && vistaBuscar === 'empresas'"), 'Buscar perdió las empresas');
   assert.ok(codigo.includes("pestana === 'buscar' && vistaBuscar === 'ofertas'"), 'Buscar perdió las ofertas');
+  // Sin selector dentro de Buscar: la barra elige la vista (ESPEC-INICIO §4).
+  assert.ok(!codigo.includes('SelectorBuscar'), 'vuelve el selector Ofertas/Plataformas de Buscar');
+  assert.match(codigo, /const destinoBarra = pestana === 'buscar' \? \(vistaBuscar === 'ofertas' \? 'ofertas' : 'plataformas'\) : pestana;/);
+  assert.match(codigo, /activa=\{destinoBarra\}/);
   for (const viejo of ["pestana === 'sigo'", "pestana === 'avisos'", "pestana === 'mas'", 'PantallaMas']) {
     assert.ok(!codigo.includes(viejo), `queda la pantalla antigua ${viejo}`);
   }
 
   for (const pieza of [
     '<Radar', '<Detalle', '<FichaOferta', '<DetalleOferta', '<ExclusionesOfertas',
-    '<Descartadas', '<PanelAvisos', '<Explicador', '<Privacidad', '<Inicio', '<SelectorBuscar',
+    '<Descartadas', '<PanelAvisos', '<Explicador', '<Privacidad', '<Inicio',
     '<PantallaPerfil', '<Academy',
     'alternarSeguimiento', 'sincronizarSeguimientoPendiente', 'borrarDatosDispositivo',
     'alternarOfertaGuardada', 'ofertasGuardadas',
@@ -167,8 +175,9 @@ test('las 52 imágenes originales se conservan y la interfaz usa la ilustración
   assert.match(componente, /avisosCriticos\(oferta\)/);
   assert.match(componente, /aviso\.tono === 'stop'/);
   assert.match(componente, /aviso\.tono === 'warn'/);
-  assert.match(componente, /RENTABILIDAD AJUSTADA \/ PUBLICADA/);
-  assert.match(componente, /PATROCINADA/);
+  assert.match(componente, /Rentabilidad ajustada \/ publicada/);
+  // Rótulos en frase normal (GUIA-ACABADOS §5, aplicada a la web el 04/11).
+  assert.match(componente, /Patrocinada/);
   assert.match(componente, /Patrocinada\. Consulta la relación comercial en la ficha; no altera el ranking/);
   assert.match(componente, /Ver en la fuente · <Text noTraducir idiomaOriginal="es-ES">\{oferta\.plataformaNombre\}/);
   assert.match(componente, /RWAdar no cobra comisión al inversor/);

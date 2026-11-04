@@ -145,7 +145,7 @@ export default function Explicador({ onCerrar, obtenerAcceso, onPrimeraLeccion }
     <View style={e.pantalla}>
       <View style={e.cabecera}>
         <View style={{ flex: 1 }}>
-          <Text style={e.arriba}>ACADEMY · TUTORIAL 3D</Text>
+          <Text style={e.arriba}>Academy · tutorial 3D</Text>
           <Text style={e.titulo}>Aprende a tokenizar un activo</Text>
         </View>
         <Pressable onPress={onCerrar} hitSlop={12}
@@ -214,7 +214,7 @@ const e = StyleSheet.create({
     flexDirection: 'row', alignItems: 'flex-start', gap: 12,
     paddingHorizontal: 22, paddingTop: 18, paddingBottom: 10,
   },
-  arriba: { ...T.etiqueta, color: C.senal, marginBottom: 8 },
+  arriba: { ...T.etiqueta, color: C.tx3, marginBottom: 8 },
   titulo: { ...T.titular, color: C.tx },
   cerrar: {
     width: 34, height: 34, borderRadius: 17, backgroundColor: C.sup2,

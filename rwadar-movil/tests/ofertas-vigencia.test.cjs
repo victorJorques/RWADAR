@@ -1,3 +1,4 @@
+// Rótulos en frase normal, sin mayúsculas (GUIA-ACABADOS §5, aplicada a la web el 04/11/2026).
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -209,6 +210,10 @@ function componentesMoviles(ahora, simulacion = {}) {
     'react-native': { ...Object.fromEntries(['Image', 'Modal', 'Pressable', 'ScrollView', 'Text', 'View'].map((n) => [n, n])), Animated: {View:'AnimatedView'}, StyleSheet: { create: (v) => v }, AppState: simulacion.AppState },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
     '../lib/ficha-editorial': require('../lib/ficha-editorial'),
+    // La transparencia de la web (03/11/2026): puntos fuertes y forma corta.
+    '../lib/transparencia': cargarModulo('lib/transparencia.js', {
+      './transparencia-contenido': cargarModulo('lib/transparencia-contenido.js'),
+    }),
     '../fixtures/imagenes-editoriales': { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null,
       imagenEditorialOferta: () => null },
     '../lib/datos': datosMoviles,
@@ -257,7 +262,8 @@ test('una app abierta retira las cifras al cambiar de día y al volver de suspen
       AppState: { addEventListener(nombre, fn) { assert.equal(nombre, 'change'); reactivar = fn; return { remove() { retiroEscucha = true; } }; } },
       setTimeout(fn, espera) { assert.ok(espera > 0 && espera <= 86400100); temporizador = fn; return 1; },
     });
-    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /Datos con fuente y fecha/);
+    // Fila compacta de la web (03/11/2026): una principal vigente enseña su vigencia.
+    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /Cifras vigentes/);
     assert.match(textoRenderizado(componentes.DetalleOferta({ oferta })), /97,13/);
     reloj.setTime(caducada.getTime());
     if (evento === 'medianoche') temporizador(); else reactivar('active');
@@ -300,7 +306,7 @@ test('el detalle conserva acceso a fuentes fechadas cuando retira las cifras', (
   const fuente = 'https://example.test/fuente-oficial';
   const detalle = componentes.DetalleOferta({ oferta: { ...oferta, fuentesActuales: [fuente] } });
   const texto = textoRenderizado(detalle);
-  assert.match(texto, /OTRAS FUENTES CONSULTADAS/);
+  assert.match(texto, /Otras fuentes consultadas/);
   assert.match(texto, /Revisión del catálogo:\s*21\/09\/2026/);
   assert.ok(texto.includes(fuente));
   assert.match(texto, /contratación y el pago se realizan directamente con el proveedor/);
@@ -382,8 +388,8 @@ test('la ficha documental y sus referencias históricas sobreviven al TTL sin pr
   assert.doesNotMatch(tarjeta, /54,20|97,13|9876|1234|4455/);
   const detalle = textoRenderizado(componentes.DetalleOferta({ oferta: dato }));
   assert.match(detalle, /Revisión del catálogo:\s*30\/09\/2026/);
-  for (const esperado of ['CARACTERÍSTICAS DOCUMENTADAS', documentacion.descripcion, 'Inmobiliario residencial',
-    'REFERENCIAS FECHADAS', 'No son precios actuales', '54,20 CHF', '26/09/2026',
+  for (const esperado of ['Características documentadas', documentacion.descripcion, 'Inmobiliario residencial',
+    'Referencias fechadas', 'No son precios actuales', '54,20 CHF', '26/09/2026',
     '27/09/2026', documentacion.referencias[0].alcance, fuente]) assert.ok(detalle.includes(esperado), esperado);
   assert.doesNotMatch(detalle, centinelas);
   assert.deepEqual(dato, original);

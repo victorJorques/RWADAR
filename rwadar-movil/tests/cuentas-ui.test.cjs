@@ -1,3 +1,4 @@
+// Rótulos en frase normal, sin mayúsculas (GUIA-ACABADOS §5, aplicada a la web el 04/11/2026).
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -195,7 +196,7 @@ test('entrar no conserva la contraseña escrita mientras se procesa ni al cambia
 
 test('lista remota, abrir ficha, selector y quitar no confunden los favoritos locales', async () => {
   const p = pantalla(autenticada);
-  assert.match(p.texto(), /TU CUENTA · WEB Y APP/);
+  assert.match(p.texto(), /Tu cuenta · web y app/);
   assert.match(p.texto(), /Estas empresas se sincronizan con tu cuenta/);
   assert.doesNotMatch(p.texto(), /token|monedero/);
   await p.pulsar('Ver Empresa Uno'); assert.ok(p.llamadas.some(([n, dato]) => n === 'abrir' && dato === 'uno'));

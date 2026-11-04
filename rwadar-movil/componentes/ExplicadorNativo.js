@@ -118,7 +118,7 @@ export default function ExplicadorNativo({ onCerrar }) {
     <View style={e.pantalla}>
       <View style={e.cabecera}>
         <View style={{ flex: 1 }}>
-          <Text style={e.arriba}>ACADEMY · TUTORIAL GUIADO</Text>
+          <Text style={e.arriba}>Academy · tutorial guiado</Text>
           <Text style={e.titulo}>¿Qué es tokenizar{'\n'}un activo?</Text>
         </View>
         <Pressable onPress={() => { tacto.eleccion(); onCerrar(); }} style={e.cerrar} hitSlop={10}
@@ -146,7 +146,7 @@ export default function ExplicadorNativo({ onCerrar }) {
       </View>
 
       <View style={e.texto}>
-        <Text style={e.pasoNum} accessibilityLiveRegion="polite">PASO {paso + 1} DE {PASOS.length}</Text>
+        <Text style={e.pasoNum} accessibilityLiveRegion="polite">Paso {paso + 1} de {PASOS.length}</Text>
         <Text style={e.pasoTit}>{p.t}</Text>
         <Text style={e.pasoDes}>{p.d}</Text>
         <View style={e.mandos}>
@@ -179,7 +179,7 @@ const e = StyleSheet.create({
   mandoTexto: { ...T.cuerpo, color: C.senal },
   deshabilitado: { opacity: 0.4 },
   cabecera: { flexDirection: 'row', alignItems: 'flex-start', gap: 12, padding: 22, paddingBottom: 8 },
-  arriba: { ...T.etiqueta, color: C.senal, marginBottom: 8 },
+  arriba: { ...T.etiqueta, color: C.tx3, marginBottom: 8 },
   titulo: { ...T.titular, color: C.tx },
   cerrar: {
     width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center',
@@ -192,20 +192,20 @@ const e = StyleSheet.create({
      y los bloques salen del gris cálido de las superficies: así el único
      color de la pantalla lo pone el dueño de cada participación. */
   escena: {
-    height: 330, marginHorizontal: 18, borderRadius: R.panel, overflow: 'hidden',
+    height: 330, marginHorizontal: 18, borderRadius: R.xl, overflow: 'hidden',
     backgroundColor: C.noche2, borderWidth: 1, borderColor: C.linea,
     alignItems: 'center', justifyContent: 'center',
   },
   lienzo: { width: 1, height: 1, alignItems: 'center', justifyContent: 'center' },
   bloque: {
     position: 'absolute', width: LADO, height: LADO, borderRadius: 3,
-    backgroundColor: C.sup3, borderWidth: StyleSheet.hairlineWidth,
+    backgroundColor: C.sup3, borderWidth: 1,
     borderColor: C.linea2,
   },
 
   pasos: { flexDirection: 'row', flexWrap: 'wrap', gap: 7, paddingHorizontal: 18, paddingTop: 18 },
   pastilla: {
-    borderWidth: 1, borderColor: C.linea2, borderRadius: R.pastilla,
+    borderWidth: 1, borderColor: C.linea2, borderRadius: R.p,
     paddingHorizontal: 13, paddingVertical: 7, overflow: 'hidden',
   },
   pastillaOn: { backgroundColor: C.senal, borderColor: C.senal },
@@ -217,7 +217,7 @@ const e = StyleSheet.create({
   pastillaTxtOn: { color: C.noche, fontFamily: F.semi },
 
   texto: { padding: 22, paddingTop: 18 },
-  pasoNum: { ...T.etiqueta, color: C.senal, marginBottom: 7 },
+  pasoNum: { ...T.etiqueta, color: C.tx3, marginBottom: 7 },
   pasoTit: { ...T.seccion, color: C.tx, marginBottom: 9 },
   pasoDes: { ...T.cuerpo, color: C.tx2 },
   nota: { ...T.menor, color: C.tx3, marginTop: 22 },
