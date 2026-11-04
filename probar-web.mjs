@@ -2287,6 +2287,22 @@ for(const [nombre,alterar] of [
     /^(?:Sí, según la fuente|No, según la fuente|Sin confirmar)$/.test(datos[1][1])&&
     datos[2][1]===transparencia.ofertas[sacada].salidaCorta&&ocultaDatos.length===0&&
     /title="[^"]+"/.test((fila.match(/<h3 class="emi-tit"[^>]*>/)||[''])[0]));
+  // QA escritorio 04/11/2026, n.º 18: la tarjeta de escritorio dice España y
+  // Salida igual que «Lo esencial» de la ficha (una sola función).
+  const mismaFila=vm.runInContext(`(()=>{const antes=window.matchMedia;window.matchMedia=()=>({matches:false});
+    try{return EMI.map(o=>{const d=datosCortosOferta(o,resumenEditorialOferta(o)),t=tarjetaOfertaLocal(o);
+      return [t.includes('<dt>España</dt><dd>'+escHtml(d.espana)+'</dd>'),t.includes('<dt>Salida</dt><dd>'+escHtml(d.salida)+'</dd>'),vistaMovilOfertas()];});}
+    finally{window.matchMedia=antes;}})()`,c);
+  prueba('en escritorio la tarjeta y la ficha escriben España y Salida con la misma función',
+    mismaFila.length>0&&mismaFila.every(([espana,salida,movil])=>espana&&salida&&movil===false));
+  // El comparador enseña el mínimo real (o «Sin documentar»), no el nivel de entrada.
+  const minimosComparador=vm.runInContext(`P.map(p=>[p.slug,p.ticket,minimoPlataformaTexto(p),EMI.some(o=>o.plataformaSlug===p.slug)])`,c);
+  vm.runInContext(`compare=[P.findIndex(p=>p.slug==='spiko'),P.findIndex(p=>p.slug==='addx')];openCompare()`,c);
+  const tablaComparador=c.document.getElementById('modalBody').innerHTML;
+  prueba('el comparador muestra el mínimo documentado o «Sin documentar», nunca «Bajo», «Medio» o «Alto»',
+    minimosComparador.every(([,ticket,texto,ofertas])=>texto!==ticket&&!/^(?:Bajo|Medio|Alto|No aplica)$/.test(texto)&&(ofertas||texto==='Sin documentar'))&&
+    /€/.test(minimosComparador.find(m=>m[0]==='spiko')[2])&&
+    /<th>Mínimo<\/th><td>[^<]*€[^<]*<\/td><td>Sin documentar<\/td>/.test(tablaComparador));
   // El aviso crítico nunca se resume ni se esconde en el móvil.
   const conBloqueo=vm.runInContext(`tarjetaOfertaLocal({...EMI.find(x=>x.slug==='${sacada}'),avisos:[{tono:'stop',texto:'AVISO_CRITICO_ENTERO_EN_LA_FILA'},{tono:'warn',texto:'Otro aviso.'}]})`,c);
   const reglasAviso=[...cssMovil.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(m=>/escaparate-aviso/.test(m[1]));

@@ -1581,13 +1581,24 @@ function renderCmpBar(){
  document.getElementById('cmpTxt').textContent=compare.length===1?'1 seleccionada · elige otra':`${compare.length} seleccionadas`;
  document.getElementById('cmpGo').disabled=compare.length<2;
 }
+/* Mínimo real de una plataforma en el comparador: el más bajo documentado en
+   euros entre sus ofertas del catálogo con la revisión vigente; si no hay
+   ninguno, «Sin documentar». «Bajo», «Medio» y «Alto» son niveles de entrada,
+   no importes: antes salía «Mínimo: Alto» en todas (QA 04/11/2026, n.º 18). */
+function minimoPlataformaTexto(p){
+ const resumenes=(typeof EMI!=='undefined'&&Array.isArray(EMI)?EMI:[]).filter(o=>o&&o.plataformaSlug===p.slug)
+  .map(o=>resumenEditorialOferta(o)).filter(r=>r&&!pendienteRevalidarLocal(r)&&r.minimo&&Number.isFinite(r.minimo.euros));
+ if(!resumenes.length)return 'Sin documentar';
+ const menor=resumenes.reduce((a,b)=>b.minimo.euros<a.minimo.euros?b:a);
+ return (resumenes.length>1?'Desde ':'')+textoLocal(menor.minimo.texto);
+}
 function openCompare(){
  const sel=compare.map(i=>P[i]);
  const datoLocal=(p,campo)=>p.verificacionLocal
   ?`<span class="comp-estado">${escHtml(etiquetaVerificacionLocal(p.verificacionLocal[campo].estado))}</span><span class="comp-nota">${escHtml(p.verificacionLocal[campo].detalle)}</span>`
   :null;
  const rows=[['Tipo de activo',p=>escHtml(p.cat)],['Tipo de empresa',p=>escHtml(p.tipo)],['Región y normativa',p=>escHtml(p.reg)],
-  ['Estado de acceso',p=>datoLocal(p,'acceso')||`<span class="m acc">${escHtml(etiquetaAcceso(p.acceso))}</span>`],['Mínimo',p=>escHtml(p.ticket)],['Blockchains',p=>escHtml(p.cadenas)],
+  ['Estado de acceso',p=>datoLocal(p,'acceso')||`<span class="m acc">${escHtml(etiquetaAcceso(p.acceso))}</span>`],['Mínimo',p=>escHtml(minimoPlataformaTexto(p))],['Blockchains',p=>escHtml(p.cadenas)],
   ['Licencia o registro',p=>datoLocal(p,'licenciaRegistro')||`<span class="comp-aval">${escHtml(p.aval)}</span>`],
   ['Actividad',p=>datoLocal(p,'estadoOperativo')||`<span class="comp-nota">${escHtml(p.nota)}</span>`],
   ['Avisos importantes',p=>p.verificacionLocal?`<span class="comp-alerta">${p.verificacionLocal.alertasCriticas.map(a=>escHtml(a.detalle)).join('<br>')}</span>`:'—'],
@@ -2540,14 +2551,23 @@ function textoCortoLocal(v,max=40){
 }
 /* Mínimo · España · Salida en forma corta (decisión de Víctor del 03/11). Sin
    revisión vigente no hay cifras: manda lo que calcula resumenOferta. */
+/* España y Salida se escriben con UNA función para la tarjeta (escritorio y
+   móvil) y para «Lo esencial» de la ficha: antes la tarjeta de escritorio
+   decía «Disponible» y la ficha «Sí, según la fuente» (QA 04/11/2026, n.º 18). */
+function textoEspanaOferta(resumen){
+ const acceso=resumen&&resumen.accesoEspana&&resumen.accesoEspana.estado;
+ return acceso==='si'?'Sí, según la fuente':acceso==='no'?'No, según la fuente':'Sin confirmar';
+}
+function textoSalidaOferta(o,resumen){
+ const e=transparenciaOferta(o);
+ return salidaDocumentadaLocal(resumen)?e&&textoLocal(e.salidaCorta)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.salida).replace(/^Salida:\s*/,'')):
+  pendienteRevalidarLocal(resumen)?'Pendiente de volver a comprobar':'Sin documentar';
+}
 function datosCortosOferta(o,resumen){
- const e=transparenciaOferta(o),acceso=resumen.accesoEspana&&resumen.accesoEspana.estado;
+ const e=transparenciaOferta(o);
  const minimo=minimoDocumentadoLocal(resumen)?e&&textoLocal(e.minimoCorto)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.minimo)):
   textoBreveDatoTarjetaLocal(resumen.minimo);
- const salida=salidaDocumentadaLocal(resumen)?e&&textoLocal(e.salidaCorta)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.salida).replace(/^Salida:\s*/,'')):
-  pendienteRevalidarLocal(resumen)?'Pendiente de volver a comprobar':'Sin documentar';
- const espana=acceso==='si'?'Sí, según la fuente':acceso==='no'?'No, según la fuente':'Sin confirmar';
- return {minimo,espana,salida};
+ return {minimo,espana:textoEspanaOferta(resumen),salida:textoSalidaOferta(o,resumen)};
 }
 function datosTarjetaOfertaHtml(o,resumen){
  const d=datosCortosOferta(o,resumen);
@@ -2599,7 +2619,7 @@ function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
    (o.patrocinada?'<span class="escaparate-patrocinada">Patrocinada</span>':'')+
    '<h'+nivel+' class="emi-tit" title="'+escHtml(o.titulo)+'">'+escHtml(o.titulo)+'</h'+nivel+'><div class="escaparate-procedencia"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
    (imagen&&imagen.lugar?'<p class="emi-lugar">'+ICONO_LUGAR+escHtml(imagen.lugar)+'</p>':'')+'</div>'+
-   puntosFuertesHtml(o)+(vistaMovilOfertas()?datosTarjetaOfertaHtml(o,resumen):datosClaveOfertaHtml(resumen))+
+   puntosFuertesHtml(o)+datosTarjetaOfertaHtml(o,resumen)+
    '<div class="escaparate-meta">'+(ofertaNueva(o)?'<span class="etq etq-ok emi-nueva">Nueva</span>':'')+'<span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+
    (estado.clase!=='caducado'&&o.disponibleEs===false?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+'</div>'+
    (avisoPrincipal?'<p class="escaparate-aviso-compacto'+(bloqueo?' escaparate-aviso-bloqueo':'')+'"><b>'+(bloqueo?'Importante':'Revisa')+'</b> · '+escHtml(avisoPrincipal)+(avisos.length>1?'<span> · '+(avisos.length-1)+' más en la ficha</span>':'')+'</p>':'')+
