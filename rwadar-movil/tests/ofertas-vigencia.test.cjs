@@ -602,7 +602,7 @@ function webV2Cliente(lote, ahora = new Date('2026-09-27T12:00:00Z')) {
     'ESTADOS_VERIFICACION_LOCAL', 'fuenteVerificacionLocal', 'campoVerificacionLocal', 'validarVerificacionLocal',
     'MANIFIESTO_CATALOGO_V2_ACEPTADO', 'metadatosCatalogoV2', 'validarManifiestoCatalogoV2',
     'recordarManifiestoCatalogoV2', 'edadLoteDias', 'validarRevisionCatalogo',
-    'fechaOfertaPublicaValida', 'ofertaCatalogoRemota', 'plataformaRemota', 'plataformaCatalogoRemota',
+    'fechaOfertaPublicaValida', 'ofertaCatalogoRemota', 'tipoEmpresaVisible', 'plataformaRemota', 'plataformaCatalogoRemota',
     'validarLoteCatalogoRemotoV2', 'comprobarCatalogoEmbebido', 'textoAvisoCatalogo', 'textoPieRevision',
     'pintarAvisoCatalogo', 'pintarEmisiones', 'seccionReferenciasCatalogo']);
   const fecha = contexto.validarLoteCatalogoRemotoV2(lote.plataformas, lote.ofertas);
