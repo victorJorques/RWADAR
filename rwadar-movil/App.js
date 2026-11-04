@@ -49,6 +49,7 @@ import {
   DetalleOferta, ExclusionesOfertas, FichaOferta, FichaGrupoOfertas,
   agruparOfertasLectura, ordenarOfertasLectura,
 } from './componentes/Ofertas';
+import { imagenEditorialOferta } from './fixtures/imagenes-editoriales';
 import { resumenOferta } from './lib/ficha-editorial';
 import { enSeleccionOferta } from './lib/transparencia';
 import { esNueva, ordenarMasNuevas } from './lib/recien-anadidas';
@@ -392,7 +393,10 @@ export default function App() {
         verificacion.acceso?.estado, verificacion.acceso?.detalle,
         ...(verificacion.alertasCriticas || []).flatMap((alerta) => [alerta.codigo, alerta.detalle]),
       ] : [p.nota, p.aval, p.acceso];
-      return [p.nombre, p.categoria, p.region, p.cadenas, ...textoVerificado]
+      // También por el nombre en inglés de la región y la categoría, que es
+      // lo que enseña la tarjeta en inglés («Switzerland», «Treasury»).
+      return [p.nombre, p.categoria, p.region, p.cadenas, ...textoVerificado,
+        traducir(p.region, 'en'), traducir(p.categoria, 'en'), traducir(p.actor, 'en')]
         .join(' ').toLowerCase().includes(q);
     });
   }, [radar, busqueda, categoria]);
@@ -410,7 +414,10 @@ export default function App() {
     const lista = ordenarOfertasLectura(ofertasDelGrupo.filter((oferta) => {
       if (tipoOferta && oferta.tipo !== tipoOferta) return false;
       if (proveedorOferta && oferta.plataformaSlug !== proveedorOferta) return false;
-      return !q || textoBusquedaOferta(oferta).includes(q);
+      // El ejemplo del buscador en inglés es «Switzerland»: se busca también
+      // por el país y la categoría en inglés (prueba en móvil, 04/11/2026).
+      return !q || textoBusquedaOferta(oferta).includes(q) ||
+        [paisInglesOferta(oferta), traducir(oferta.categoria, 'en')].join(' ').toLocaleLowerCase('es').includes(q);
     }));
     return ordenOfertas === 'nuevas' ? ordenarMasNuevas(lista) : lista;
   }, [ofertasDelGrupo, busquedaOfertas, tipoOferta, proveedorOferta, ordenOfertas]);
@@ -1125,6 +1132,13 @@ function Cabecera({ pestana, vistaBuscar, total, ofertas, secundario, enCamino, 
       {actual.subtitulo ? <Text style={e.cabeceraSub}>{actual.subtitulo}</Text> : null}
     </View>
   );
+}
+
+// El país del lugar de la tarjeta, en inglés: con el idioma en inglés la
+// tarjeta dice «Switzerland» y el buscador lo pone de ejemplo.
+function paisInglesOferta(oferta) {
+  const partes = String(imagenEditorialOferta(oferta)?.lugar || '').split(' · ');
+  return traducir(partes[partes.length - 1] || '', 'en');
 }
 
 function BannerModoLocal() {
