@@ -1666,7 +1666,7 @@ function textoAvisoCatalogo(){
 }
 function textoPieRevision(){
  if(CATALOGO_EMBEBIDO_BLOQUEADO)return 'Catálogo no disponible temporalmente';
- return 'Última revisión del registro: '+ultimaRevision()+(CATALOGO_CADUCADO||CATALOGO_SIN_COMPROBAR?' · pendiente de renovar':'');
+ return 'Última revisión del catálogo: '+ultimaRevision()+(CATALOGO_CADUCADO||CATALOGO_SIN_COMPROBAR?' · pendiente de renovar':'');
 }
 function pintarAvisoCatalogo(){
  const texto=textoAvisoCatalogo();
@@ -1751,7 +1751,7 @@ function pintarEmisiones(){
  if(informacion)informacion.open=hayPublicadas||!movilUI;
  if(!v.length){
   caja.innerHTML=hayPublicadas
-   ?'<div class="emis-vacio"><h3>Nada abierto con ese filtro</h3><p>Prueba con otra categoría o vuelve en unos días: el registro cambia cuando verificamos novedades.</p></div>'
+   ?'<div class="emis-vacio"><h3>Nada abierto con ese filtro</h3><p>Prueba con otra categoría o vuelve en unos días: el catálogo cambia cuando verificamos novedades.</p></div>'
    :'<div class="emis-vacio"><h3>Sin emisiones abiertas</h3><p>Publicaremos aquí las primeras cuando su origen y sus cifras estén comprobados.</p></div>';
   return;
  }
@@ -4622,7 +4622,7 @@ const Cuenta = (function(){
     perfil=perfilDesdeRespuestaCorreo(perfil,filas&&filas[0],deseado);
     o.checked=consentimientoCorreoVigente(perfil);
     aviso(deseado
-     ? 'Consentimiento guardado. El correo aún no está activo: faltan Brevo y la prueba de extremo a extremo.'
+     ? 'Consentimiento guardado. Todavía no enviamos estos avisos: falta configurar el servicio de correo y probar que los mensajes llegan.'
      : 'Consentimiento retirado. No se enviarán nuevos avisos de cambios por correo.');
    }catch(e){
     if(!vigente(cuenta))return;

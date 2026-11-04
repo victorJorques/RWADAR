@@ -730,7 +730,7 @@ const ultimaVerificacion = arrayDe(jsCatalogo, 'P').map(p=>p.verificacionLocal?.
 // Fechas en dd/mm/aaaa en toda la web (revisión de lectura, 04/11/2026).
 const fechaPie = ultimaVerificacion.split('-').reverse().join('/');
 prueba('el HTML sin JavaScript contiene la revisión real derivada de los datos',
-  html.includes(`<p id="pieRevision">Última revisión del registro: ${fechaPie}</p>`));
+  html.includes(`<p id="pieRevision">Última revisión del catálogo: ${fechaPie}</p>`));
 
 console.log('\n=== CSP, SESIÓN Y CONTRATOS ===');
 prueba('la CSP no permite unsafe-inline ni eval', !/unsafe-inline|unsafe-eval/i.test(headers));
@@ -2225,7 +2225,7 @@ for(const [nombre,alterar] of [
     pl('Ver las {ofertas} ofertas',false)==='Ver las '+n[0]+' ofertas'&&pl('See the {plataformas} platforms',true)==='See the '+n[1]+' platforms'&&
     /^Catálogo revisado el \d\d\/\d\d\/\d{4}\. Próxima revisión: \d\d\/\d\d\/\d{4}\.$/.test(pl('Catálogo revisado el {revisado}. Próxima revisión: {hasta}.',false))&&
     (htmlInicio.match(/data-rel-plantilla="/g)||[]).length>=8&&p.obtiene('relMinimos').hidden===false&&p.obtiene('relVigencia').hidden===false&&
-    /<ul class="inicio-hud" id="inicioCifras" aria-label="El registro en cifras"><\/ul>/.test(htmlInicio)&&
+    /<ul class="inicio-hud" id="inicioCifras" aria-label="El catálogo en cifras"><\/ul>/.test(htmlInicio)&&
     !new RegExp(`\\b(?:${n.join('|')}) (?:ofertas|plataformas|descartadas)\\b`).test(texto(htmlInicio)));
   vm.runInContext("CATALOGO_CADUCADO=true;huellaInicio='';pintarInicio()",c);
   const sinCifras=['inicioCifras','inicioRadar','relTarjetas'].map(id=>p.obtiene(id).innerHTML);
