@@ -99,6 +99,7 @@ const bloqueFuentes = web.slice(web.indexOf('function fuentesVerificacionHtml(')
 const contexto = vm.createContext({
   escHtml: s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),
   urlHttps: s => typeof s === 'string' && /^https:\/\/[^\s<>"']+$/.test(s) ? s : '',
+  fechaES: iso => String(iso).split('-').reverse().join('/'),
 });
 vm.runInContext(bloqueFuentes, contexto);
 const fuente = {url:'https://example.com/fuente', titulo:'Informe <b>regulatorio</b>', consultadaEl:'2026-09-28'};
@@ -109,7 +110,7 @@ const fuentesHtml = contexto.fuentesVerificacionHtml({
 });
 paso('el detalle permite consultar las fuentes sin duplicarlas ni ejecutar HTML',
   (fuentesHtml.match(/href=/g)||[]).length===1 && fuentesHtml.includes('&lt;b&gt;regulatorio&lt;/b&gt;') &&
-  fuentesHtml.includes('2026-09-28') && !fuentesHtml.includes('javascript:') &&
+  fuentesHtml.includes('28/09/2026') && !fuentesHtml.includes('javascript:') &&
   web.includes("'</ul></div>'+fuentesVerificacionHtml(verificacion)"));
 paso('el escaparate público no afirma que todas las referencias estén abiertas',
   indice.includes('Activos y ofertas documentados') && !indice.includes('Abierto ahora mismo'));
