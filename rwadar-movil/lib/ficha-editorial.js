@@ -27,6 +27,54 @@
         (b.fechaDato || '').localeCompare(a.fechaDato || '') ||
         a.etiqueta.localeCompare(b.etiqueta, 'es') || a.fuente.localeCompare(b.fuente));
   }
+  // Rótulos legibles para las claves internas que trae el catálogo en las
+  // referencias («accesoEspana · consulta 01/11/2026»). Solo cambia lo que se
+  // pinta: los datos del catálogo y las búsquedas por etiqueta no se tocan.
+  const ROTULOS = {
+    precio:'Precio', minimo:'Mínimo de inversión', salida:'Salida', salida_instantanea:'Salida inmediata',
+    accesoEspana:'Acceso desde España', accesoEspana_particulares:'Acceso desde España (particulares)',
+    derecho:'Qué se adquiere', comisiones:'Comisiones', riesgos:'Riesgos', custodia:'Custodia',
+    estado:'Estado de la oferta', entidad:'Entidad que comercializa', rentabilidad:'Rentabilidad', supervision:'Supervisión',
+    patrimonio:'Patrimonio', actividad:'Operaciones recientes', umbral:'Umbral de financiación', regimen:'Régimen legal',
+    recaudado:'Importe recaudado', kyc:'Verificación de identidad', folleto:'Folleto', fiscalidad:'Fiscalidad',
+    divisa:'Moneda y tipo de cambio', documentos:'Documentos',
+  };
+  // Desde la entrega 2026-11-04 el catálogo ya trae el rótulo legible
+  // («Acceso desde España · consulta 01/11/2026», mismos nombres que
+  // rwadar-app/rotulos-referencias.js): se quita la fecha, que se pinta aparte.
+  function rotuloReferencia(etiqueta) {
+    const limpio = texto(etiqueta);
+    const m = /^(.+?)\s*·\s*consulta\s+\d{2}\/\d{2}\/\d{4}$/.exec(limpio);
+    if (!m) return limpio;
+    const base = m[1].trim();
+    if (Object.prototype.hasOwnProperty.call(ROTULOS, base)) return ROTULOS[base];
+    if (!/^[a-z][A-Za-z0-9_]*$/.test(base)) return base;
+    const palabras = base.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+    return palabras.charAt(0).toUpperCase() + palabras.slice(1);
+  }
+  // El rótulo es de la interfaz (se puede traducir) si viene de una clave
+  // interna o coincide con uno de los rótulos de arriba; si no, es texto del catálogo.
+  const ROTULOS_VISIBLES = new Set(Object.values(ROTULOS));
+  const rotuloTraducible = etiqueta => ROTULOS_VISIBLES.has(rotuloReferencia(etiqueta));
+  // Idioma de una cita literal de la fuente, solo si se ve claro (si no, '').
+  const PALABRAS = {
+    es:['el','los','las','y','que','en','por','con','para','del','una','se','es','su','al','como','más'],
+    en:['the','of','and','to','is','are','for','with','you','your','by','on','be','this','that','from','may','will','an','in','all','at','which','it','or','not','has','have','its','as'],
+    fr:['le','les','des','du','et','est','pour','une','sur','au','aux','avec','vous','souscripteurs','tous'],
+    de:['der','die','das','und','ist','für','mit','von','den','dem','nicht','wird','wurde','auf','zu','gemäß',
+      'ein','eine','einer','einem','eines','jeder','jedem','jede','bei','werden','sind','im','sich','auch','als','oder','nach','zum','zur','über'],
+  };
+  function idiomaCita(valor) {
+    // «Investor:in», «Käufer:innen»: la forma de género alemana no cuenta como «in» inglés.
+    const palabras = texto(valor).toLowerCase().replace(/([a-zäöüß])[:*_](?:in|innen)\b/g, '$1')
+      .match(/[a-záéíóúüñàâçèêëîïôûßäö]+/g) || [];
+    const cuenta = Object.fromEntries(Object.keys(PALABRAS).map(id => [id, palabras.filter(p => PALABRAS[id].includes(p)).length]));
+    // «an» o «in» también son alemán: ä, ö, ü o ß inclinan hacia el alemán.
+    if (/[äöüß]/.test(palabras.join(' '))) cuenta.de += 1;
+    const orden = Object.entries(cuenta).sort((a, b) => b[1] - a[1]);
+    return (orden[0][1] >= 2 && orden[0][1] >= 2 * orden[1][1]) || (orden[0][1] === 1 && !orden[1][1] && palabras.length >= 6)
+      ? orden[0][0] : '';
+  }
   const campo = (ref, valor) => ref ? {texto:valor ?? texto(ref.valor),fuente:ref.fuente,
     consultadaEl:ref.fechaConsulta,fechaDato:ref.fechaDato || null} : {texto:valor};
   function importeEuros(valor) {
@@ -105,7 +153,7 @@
     const salidaRef = referencias.filter(paraTarjeta).find(r => /reembols|devolucion|salida|liquidacion|plazo/.test(normal(r.etiqueta)) &&
       !/emision|campana|suscripcion|captacion|cierre/.test(normal(r.etiqueta)));
     let salida = {texto:'Salida no documentada'};
-    if (conDatos && salidaRef) salida = campo(salidaRef, texto(salidaRef.etiqueta).replace(/\s*·.*$/,'') + ': ' + texto(salidaRef.valor));
+    if (conDatos && salidaRef) salida = campo(salidaRef, rotuloReferencia(salidaRef.etiqueta).replace(/\s*·.*$/,'') + ': ' + texto(salidaRef.valor));
     else if (oferta.coleccion === 'secundario' && referencias.length &&
         Array.isArray(oferta.documentacion?.fuentes) && oferta.documentacion.fuentes.some(fuente)) {
       salida = campo(ultimo,'Reventa entre inversores; depende de que haya compradores');
@@ -125,7 +173,7 @@
     const gastos = [...ultimaPorConcepto.values()];
     let costes = {texto:vencida && gastos.length ? 'Costes por volver a comprobar' : 'Costes no documentados',referencias:[]};
     if (actual && gastos.length) {
-      costes = {texto:gastos.map(r => texto(r.etiqueta).replace(/\s*·\s*\d{2}\/\d{2}\/\d{4}\s*$/,'') + ': ' + texto(r.valor)).join('; '),
+      costes = {texto:gastos.map(r => rotuloReferencia(r.etiqueta).replace(/\s*·\s*\d{2}\/\d{2}\/\d{4}\s*$/,'') + ': ' + texto(r.valor)).join('; '),
         referencias:gastos.map(r=>({...r}))};
       const fuentes = new Set(gastos.map(r=>r.fuente)), consultas = new Set(gastos.map(r=>r.fechaConsulta));
       if (fuentes.size === 1) costes.fuente = gastos[0].fuente;
@@ -138,7 +186,7 @@
       comprobadaEl:ultimo?.fechaConsulta || null,fechaDato:ultimo?.fechaDato || null},estado,
       cifrasVigentes:actual,vencida};
   }
-  const api = {resumenOferta};
+  const api = {resumenOferta, rotuloReferencia, rotuloTraducible, idiomaCita};
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (raiz) raiz.RWAdarFichaEditorial = api;
 })(typeof globalThis === 'object' ? globalThis : this);

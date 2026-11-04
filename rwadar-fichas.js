@@ -11,7 +11,7 @@ const { validarLotePublicoV2, MANIFIESTO_CATALOGO_V2 } = require('./rwadar-movil
 const permitidas = require('./rwadar-fichas-manifiesto');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
 const { paginasAcademy } = require('./rwadar-academy');
-const { resumenOferta } = require('./rwadar-movil/lib/ficha-editorial');
+const { resumenOferta, rotuloReferencia } = require('./rwadar-movil/lib/ficha-editorial');
 // Transparencia de cada oferta (validada por rwadar-editorial-source/ofertas/transparencia.mjs).
 const TRANSPARENCIA = JSON.parse(fs.readFileSync(path.join(__dirname,'rwadar-editorial-source/ofertas/transparencia.json'),'utf8'));
 const RAIZ = __dirname;
@@ -41,6 +41,30 @@ const rutaPlataforma = p => '/plataformas/' + p.slug;
 // «Marketplace» es un valor fijo del catálogo (rwa_actor); se lee «Mercado de compraventa»
 // (LISTA-FINAL fila 19), como en la web. El valor de la base no cambia.
 const tipoEmpresaVisible = t => t === 'Marketplace' ? 'Mercado de compraventa' : t;
+/* Una consulta técnica (una API o una respuesta en JSON) sirve para comprobar
+   un dato, pero no es una página para personas: abrirla da un error o datos en
+   bruto. No se enlaza; se lee «Consulta técnica» con su fecha (QA 04/11/2026,
+   n.º 12). La misma regla está en la web (rwadar-20260820.js) y en ficha-pagina. */
+function consultaTecnica(url) {
+  try {
+    const u = new URL(String(url));
+    return /(?:^|\/)api(?:\/|$)/i.test(u.pathname) || /\.json$/i.test(u.pathname) ||
+      /(?:^|&)(?:format|output)=json(?:&|$)/i.test(u.search.slice(1));
+  } catch { return false; }
+}
+const desescapa = t => String(t).replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+function sinEnlacesTecnicos(html, fechaDe = () => null) {
+  return String(html).replace(/<a href="([^"]+)"[^>]*>([\s\S]*?)<\/a>(?: <span>· consultada el (\d{2}\/\d{2}\/\d{4})<\/span>)?/g,
+    (todo, href, interior, consultada) => {
+      const url = desescapa(href);
+      if (!consultaTecnica(url)) return todo;
+      // El título (ya escapado) se conserva; «Abrir fuente», «Fuente ↗» y la flecha, no.
+      const titulo = interior.replace(/<[^>]*>/g, '').replace(/\s*↗\s*$/, '').trim()
+        .replace(/^(?:Abrir fuente|Ver fuente|Fuente)(?:\s·\s|$)/, '').trim();
+      const f = consultada || (fecha(fechaDe(url)) ? corta(fechaDe(url)) : '');
+      return '<span class="consulta-tecnica">' + (titulo ? titulo + ' · ' : '') + '<span>Consulta técnica</span>' + (f ? ' · ' + f : '') + '</span>';
+    });
+}
 
 function leerBloquesCatalogo(codigo) {
   const ast = parse(codigo, {ecmaVersion:'latest'});
@@ -130,6 +154,10 @@ function fuentes(lista) {
 function pagina({titulo,descripcion,ruta,contenido,revision,imagen='/og.png',organizacion,oferta}) {
   const tituloPestana = (titulo.length > 55 ? titulo.slice(0,54).trimEnd() + '…' : titulo) + ' · RWAdar';
   const descripcionMeta = descripcion.replace(/\s+/g,' ').slice(0,159);
+  // n.º 12: las consultas técnicas no se enlazan; su fecha es la de la consulta.
+  const refsFuente = (oferta && oferta.documentacion && oferta.documentacion.referencias) || [];
+  contenido = sinEnlacesTecnicos(contenido, url => refsFuente.filter(r => enlace(r.fuente) === url)
+    .map(r => r.fechaConsulta).filter(fecha).sort().at(-1) || oferta?.documentacion?.revisadaEl || revision);
   const datos = { '@context':'https://schema.org','@type':'WebPage',url:ORIGEN+ruta,
     name:titulo,description:descripcionMeta,inLanguage:'es',dateModified:revision,
     isPartOf:{'@type':'WebSite',name:'RWAdar',url:ORIGEN+'/'},
@@ -145,13 +173,15 @@ function pagina({titulo,descripcion,ruta,contenido,revision,imagen='/og.png',org
     '<meta property="og:type" content="article"><meta property="og:title" content="'+esc(titulo)+'">\n' +
     '<meta property="og:description" content="'+esc(descripcionMeta)+'"><meta property="og:url" content="'+ORIGEN+ruta+'">\n' +
     '<meta property="og:image" content="'+ORIGEN+imagen+'"><meta name="theme-color" content="#10100e">\n' +
+    // Vista previa grande también en X y apps que solo leen twitter:card (QA 04/11/2026, n.º 29).
+    '<meta name="twitter:card" content="summary_large_image">\n' +
     '<link rel="alternate" type="application/rss+xml" title="Novedades de RWAdar" href="/novedades.xml">\n' +
-    '<link rel="stylesheet" href="/'+CSS+'"><link rel="stylesheet" href="/assets/idioma-20261022.css">\n<script type="application/ld+json">'+json(datos)+'</script>\n' +
+    '<script src="/assets/idioma-previo-20261104.js"></script><link rel="stylesheet" href="/'+CSS+'"><link rel="stylesheet" href="/assets/idioma-20261022.css">\n<script type="application/ld+json">'+json(datos)+'</script>\n' +
     (oferta ? '<script src="/'+COMPARTIDO+'" defer></script>\n' : '') +
     '<script src="/assets/idioma-en-20261022.js" defer></script><script src="/assets/idioma-20261022.js" defer></script><script src="/assets/idioma-web-20261022.js" defer></script>\n'+
     (oferta ? '<script src="/'+JS+'" defer></script>\n' : '') +
     '</head><body><a class="saltar" href="#contenido">Saltar al contenido</a><header class="cabecera"><a class="marca" href="/" aria-label="RWAdar · Inicio">RWA<span>dar</span></a>' +
-    '<nav aria-label="Principal"><a href="/#emisiones" data-volver="ofertas">Ofertas</a><a href="/#tool">Plataformas</a><a href="/academy/">Academy</a><a href="/cambios">Noticias de RWAdar</a></nav></header>' +
+    '<nav aria-label="Principal"><a href="/#emisiones" data-volver="ofertas">Ofertas</a><a href="/#tool">Plataformas</a><a href="/academy/">Academy</a><a href="/cambios">Novedades</a></nav></header>' +
     '<div data-selector-idioma></div><main id="contenido"'+(organizacion ? ' data-ficha-consulta' : ' data-idioma-documental="es"')+(oferta ? ' data-oferta="'+esc(json(oferta))+'"' : '')+'><p class="migas"><a href="/">Inicio</a> / <span'+ORIGINAL+'>'+esc(titulo)+'</span></p>' +
     '<h1'+(organizacion ? ORIGINAL : '')+'>'+esc(titulo)+'</h1>'+contenido+'</main><footer><p>RWAdar es un catálogo gratuito con información propia. Que algo aparezca aquí no es una recomendación ni una garantía. Si inviertes, lo haces directamente con el proveedor.</p>' +
     '<nav aria-label="Información"><a href="/metodologia">Cómo verificamos</a><a href="/transparencia-comercial">Transparencia comercial</a><a href="/privacidad">Privacidad y aviso legal</a>' +
@@ -233,7 +263,7 @@ function paginaOferta(o,catalogo,imagen) {
     '<p><a class="boton" href="'+esc(enlace(o.url))+'" target="_blank" rel="noopener noreferrer">Ver oferta en '+esc(o.plataformaNombre)+' ↗</a></p>'+transparenciaOferta(o,catalogo)+
     '<section aria-labelledby="fuentes"><h2 id="fuentes">Fuentes y fechas</h2><p>Revisamos esta ficha el <time datetime="'+esc(o.verificadaEl)+'">'+esc(corta(o.verificadaEl))+'</time>. Esa fecha no garantiza que las cifras sigan igual ni que la oferta siga abierta.</p>'+
     '<p>Cada fuente lleva el día en que la consultamos. El dato puede ser más antiguo, y algunas fuentes no dicen de qué fecha es.</p>'+
-    (refs.length ? '<details><summary>Ver los '+refs.length+' datos consultados y sus fechas</summary><ul class="referencias"'+ORIGINAL+'>'+refs.map(r=>'<li><strong>'+esc(r.etiqueta)+'</strong><br>Dato fechado: '+esc(corta(r.fechaDato))+' · Consulta: '+esc(corta(r.fechaConsulta))+'<br><a href="'+esc(enlace(r.fuente))+'" target="_blank" rel="noopener noreferrer">Abrir fuente ↗</a><p>'+esc(r.alcance || '')+'</p></li>').join('')+'</ul></details>' : '')+
+    (refs.length ? '<details><summary>Ver los '+refs.length+' datos consultados y sus fechas</summary><ul class="referencias"'+ORIGINAL+'>'+refs.map(r=>'<li><strong>'+esc(rotuloReferencia(r.etiqueta))+'</strong><br>Dato fechado: '+esc(corta(r.fechaDato))+' · Consulta: '+esc(corta(r.fechaConsulta))+'<br><a href="'+esc(enlace(r.fuente))+'" target="_blank" rel="noopener noreferrer">Abrir fuente ↗</a><p>'+esc(r.alcance || '')+'</p></li>').join('')+'</ul></details>' : '')+
     fuentes([...(d.fuentes || []),...(o.fuentesActuales || [])])+'</section>'+
     '<p><a href="mailto:RWAdar@protonmail.com?subject='+encodeURIComponent('Corrección de ficha: '+o.titulo)+'">¿Ves un error en esta ficha?</a></p>';
   return pagina({titulo:o.titulo,descripcion:o.resumen,ruta:rutaOferta(o),contenido,revision:o.verificadaEl,
@@ -305,7 +335,7 @@ function generar() {
   return cambiados;
 }
 module.exports={leerBloquesCatalogo,validarCatalogoSnapshot,validarRutasCatalogo,leerCatalogo,
-  construirSalidas,comprobar,generar,rutaOferta,rutaPlataforma,esc,enlace};
+  construirSalidas,comprobar,generar,rutaOferta,rutaPlataforma,esc,enlace,consultaTecnica,sinEnlacesTecnicos};
 if (require.main===module) {
   const pendientes=process.argv.includes('--comprobar') ? comprobar() : generar();
   console.log((process.argv.includes('--comprobar') ? 'Diferencias: ' : 'Archivos actualizados: ')+pendientes.length);

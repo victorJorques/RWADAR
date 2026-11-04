@@ -93,7 +93,7 @@ export default function Academy({ slug, onAbrirLeccion, onVolver, onCerrar, onAc
         <View style={{ flex: 1 }}>
           <Text style={e.cabEtiqueta}>RWAdar Academy</Text>
           <Text style={e.cabTitulo} numberOfLines={1} accessibilityRole="header">
-            {leccion ? `Lección ${leccion.modulo} de ${LECCIONES.length}` : 'Lecciones'}
+            {leccion ? `Lección ${leccion.modulo} de ${PUBLICADAS.length}` : 'Lecciones'}
           </Text>
         </View>
         {/* Como pestaña no se cierra: se cambia de pestaña. */}
@@ -136,7 +136,7 @@ function Indice({ progreso, onAbrirLeccion, onExplicar }) {
   const leidas = PUBLICADAS.filter((l) => progreso.leidas.includes(l.slug)).length;
   return (
     <View>
-      <Text style={e.sobrelinea}>{LECCIONES.length} LECCIONES · {NIVELES.length} NIVELES</Text>
+      <Text style={e.sobrelinea}>{PUBLICADAS.length} LECCIONES · {NIVELES.length} NIVELES</Text>
       <Text style={e.titular}>Entiende la tokenización antes de decidir</Text>
       <Text style={e.entradilla}>
         Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida.

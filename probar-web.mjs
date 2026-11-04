@@ -6,6 +6,7 @@ import { request as solicitarHttp } from 'node:http';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
 import { pruebaActivacionCache, pruebaActivacionSinMigracion, pruebaRedConCacheRota, pruebaActualizacionPWACliente } from './probar-web-pwa.mjs';
+import { probarEscritorio, probarTarjetaYComparador } from './rwadar-app/probar-web-escritorio.mjs';
 import { spawn, spawnSync } from 'node:child_process';
 
 const raiz = path.dirname(fileURLToPath(import.meta.url));
@@ -678,11 +679,7 @@ const estilos = [...html.matchAll(/<link\b[^>]*\brel=["']stylesheet["'][^>]*\bhr
 const rutaScriptApp = '/assets/rwadar-20260820.js';
 const rutaAnalitica = '/assets/analitica-20260927.js';
 const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
-prueba('acceso, analítica, mapa, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
-  JSON.stringify(scripts.map(s=>s[1])) === JSON.stringify([rutaAnalitica, '/assets/acceso-privado.js',
-    '/assets/mapa-buscar-util-20261027.js','/assets/mapa-buscar-20261027.js',rutaCatalogo,
-    '/assets/ficha-editorial-20261022.js','/assets/idioma-en-20261022.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js','/assets/cartera-modelo-20261028.js','/assets/cartera-cuenta-20261028.js','/assets/cartera-cuenta-ui-20261028.js',rutaScriptApp]) &&
-  scripts.every(script => /\bdefer\b/.test(script[0]) && !/\basync\b/.test(script[0])));
+// El orden de los scripts (con idioma-previo en <head>) se prueba en rwadar-app/probar-web-escritorio.mjs.
 prueba('las cuatro hojas propias versionadas cargan en el orden declarado',
   JSON.stringify(estilos.map(estilo=>estilo[1])) === JSON.stringify([
     '/assets/rwadar-20260820.css','/assets/cartera-cuenta-ui-20261028.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css']));
@@ -701,6 +698,7 @@ new Function(js);
 prueba('el JavaScript externo compila', true);
 prueba('el pre-render contiene las 26 fichas', (html.match(/class="abrir"/g) || []).length === 26);
 prueba('el pre-render contiene los 4 descartes', (html.match(/class="fila"/g) || []).length === 4);
+probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, privacidad, transparenciaComercial, paraEmpresas });
 prueba('todos los formularios fallan cerrados bajo form-action none',
   [...html.matchAll(/<form\b([^>]*)>/gi)].every(m => !/\baction\s*=/i.test(m[1])));
 
@@ -1191,7 +1189,7 @@ prueba('el radar resuelve zonas solapadas por el punto geométricamente más cer
   /class="zona"[^>]*pointer-events="none"/.test(js) &&
   /function masCercano\(e\)/.test(js) &&
   /getScreenCTM/.test(js) && /matriz\.inverse\(\)/.test(js) &&
-  /let mejor=null,distancia=22\*22/.test(js) &&
+  /radio=Math\.max\(22,22\/escala\)/.test(js) && /let mejor=null,distancia=radio\*radio/.test(js) &&
   /const i=masCercano\(e\);if\(i!=null\)openDrawer\(i\)/.test(js));
 prueba('ofertas, menús y vuelta de Avisos conservan dianas móviles utilizables',
   Number((ofertasOrdenEnMovil.match(/min-height\s*:\s*([\d.]+)px/i) || [])[1] || 0) >= 48 &&
@@ -2043,7 +2041,7 @@ for(const fallo of ['incompleto','transporte']){
       {etiqueta:'Éxito',valor:'0 %',fuente:'https://emisor.example/exito',fechaConsulta:'2026-10-22'}]}};
   const costes=vm.runInContext('datosClaveOfertaHtml(resumenPrueba,true)',p.contexto);
   prueba('varios costes mantienen cada fuente y consulta propias sin atribuirlos a un solo origen',
-    costes.includes('Gestión: 0,6 %; Éxito: 0 %')&&costes.includes('https://gestor.example/gestion')&&costes.includes('https://emisor.example/exito')&&
+    costes.replace(/<[^>]+>/g,'').includes('Gestión: 0,6 %; Éxito: 0 %')&&costes.includes('https://gestor.example/gestion')&&costes.includes('https://emisor.example/exito')&&
     costes.includes('Consultada el 21/10/2026 · Dato del 20/10/2026')&&costes.includes('Consultada el 22/10/2026'));
 }
 {
@@ -2203,6 +2201,7 @@ for(const [nombre,alterar] of [
     /^(?:Sí, según la fuente|No, según la fuente|Sin confirmar)$/.test(datos[1][1])&&
     datos[2][1]===transparencia.ofertas[sacada].salidaCorta&&ocultaDatos.length===0&&
     /title="[^"]+"/.test((fila.match(/<h3 class="emi-tit"[^>]*>/)||[''])[0]));
+  probarTarjetaYComparador({ c, prueba });
   // El aviso crítico nunca se resume ni se esconde en el móvil.
   const conBloqueo=vm.runInContext(`tarjetaOfertaLocal({...EMI.find(x=>x.slug==='${sacada}'),avisos:[{tono:'stop',texto:'AVISO_CRITICO_ENTERO_EN_LA_FILA'},{tono:'warn',texto:'Otro aviso.'}]})`,c);
   const reglasAviso=[...cssMovil.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(m=>/escaparate-aviso/.test(m[1]));
@@ -3127,7 +3126,7 @@ console.log('\n=== RWADAR ACADEMY ===');
     /\/academy\/\*\n\s+Cache-Control: public, max-age=0, must-revalidate/.test(headers));
   const codigoAcademy = lee('assets/academy-20261002.js');
   prueba('el progreso es local y separado por cuenta tras verificar la sesión, sin enviar resultados',
-    /const CLAVE = 'rwadar\.academy\.v1:' \+ cuenta\.id/.test(codigoAcademy) &&
+    /CLAVE = 'rwadar\.academy\.v1:' \+ cuenta\.id/.test(codigoAcademy) && /if \(!CLAVE\) return vacio\(\)/.test(codigoAcademy) &&
     /await window\.RWADAR_ACCESO\.verificar\(\)/.test(codigoAcademy) &&
     (codigoAcademy.match(/try \{/g) || []).length >= 3 &&
     !/innerHTML|fetch\(|XMLHttpRequest|sendBeacon|document\.cookie/.test(codigoAcademy));

@@ -6,6 +6,224 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 2) · Claude · entrega 2026-11-04: arreglos de datos del catálogo (sin aplicar)
+
+Rama local `claude/catalogo-2026-11-04` (worktree `catalogo-1104`, sale de
+`main` 081fc27), dos commits (preparación y corrección tras la revisión
+independiente). **Sin push, Supabase solo leído como visitante,
+nada publicado, sin OTA ni workflows.** Solo datos; la web va en otras ramas.
+
+- **Parte de la publicada:** lectura como visitante a las 19:07:11 UTC del 04/11:
+  `f2732257` (la .7 con los textos de la .8), 26 plataformas, 24 ofertas
+  (8/13/3). Guardada en `verificaciones/2026-11-04-v2/lectura-publica/`; el
+  preparador comprueba que coincide con la base local.
+- **Etiqueta `2026-11-04`**, revisión nueva `cf79e4a4…`, `aplicar-y-aprobar.sql`
+  SHA `85e848edc433efa6d1a240a16438e9ccfbce5061ef9be53444f81a4e081df464`.
+  Entrega documental: radar, cifras y vigencia siguen del 03/11 (vence el 11/11).
+- **Qué cambia:**
+  - «Datos con su fecha»: 228 rótulos internos («accesoEspana · consulta …»)
+    pasan a castellano («Acceso desde España · consulta …») en 21 ofertas;
+    valores, fuentes y fechas iguales.
+  - 39 referencias en 18 ofertas y 2 fuentes del radar (REGAFI de Spiko) dejan
+    la dirección de API por la página para personas (Aktionariat, BOSS Info y
+    SwitzerLend `/trade` e `/invest`; Spiko `data.spiko.io`; Brickwise
+    `www.brickwise.at/assets/<isin>` o el mercado de la app; Alius Capital;
+    buscador de ESMA; ficha del REGAFI). Comprobadas hoy con curl y Chrome sin
+    interfaz. **Se decide por referencia:** si la página no enseña ese mismo
+    dato, la referencia conserva la API (`seQuedan[].referencias`).
+  - ARTEX «Blockchains»: «Mercado regulado (MTF)» → «No usa blockchain» (su FAQ).
+  - Toucan: fuente nueva del ACR (30/05/2022) y motivo fechado en mayo de 2022.
+- **Generador arreglado:** diccionario de los 67 campos en
+  `rwadar-app/rotulos-referencias.js`; lo usan `2026-11-02-v2/preparar-lote.mjs`
+  y `montar-revision.mjs` (que falla si llega un campo sin rótulo).
+- **Lo que no se pudo:** el libro de órdenes de Brickwise
+  (`api.app.brickwise.at/api/v1/assets`, 11 fichas) no tiene página pública y
+  se queda; también se quedan 14 referencias de Brickwise (precio de emisión,
+  disponibles en emisión, etapa, condiciones; y precio y rentabilidad de
+  Cohotel y GreenPoint, que el mercado da con otra medida) y las 6 del mínimo
+  y la salida de Aktionariat y BOSS Info (solo en la configuración que carga
+  `/invest`, no en pantalla); el JS de Midas (mTBILL) no tiene equivalente; el
+  estado de hoy de Verra/ACR no se pudo leer (Verra da 403). Detalle en el
+  informe, §3.
+- **Corrección tras la revisión independiente** (informe §7): Brickwise 15
+  referencias (12 conservan la API; las 3 de «Precio más bajo en mercado
+  secundario» enlazan el mercado, que enseña «Preis pro Anteil ab») y, con el
+  mismo criterio, 2 más («disponibles en emisión» de Pottendorfer y
+  Sonnleithnergasse); Aktionariat y BOSS Info 6 referencias con la API; Toucan
+  «que la permitiría» → «que permitiría tokenizarlos». Tras corregir: PGlite correcto
+  (27 + 16 fallos), preparador reproducible y `npm test` completo, salida 0.
+- **Pruebas:** `comprobar-entrega.mjs` correcto (27 comprobaciones, 16 casos de
+  fallo que no dejan nada); `preparar-entrega.mjs` reproducible; `npm test`
+  completo en verde.
+- **Pendiente (coordinador):** revisión independiente; unir a `main`; releer
+  como visitante (con hora); «Aplicar catálogo» con `2026-11-04`; sincronizar,
+  fichas, `volcar-seed.js`, `transparencia.json`, sello y «Publicar web». Sin OTA.
+  Pasos en `rwadar-app/data/verificaciones/2026-11-04-v2/INFORME-ENTREGA.md` §6.
+
+## 4 de noviembre de 2026 (noche, 2) · Claude · QA de escritorio: 9 arreglos de la web publicada (sin publicar)
+
+Rama local `claude/qa-escritorio` (sale de `main`, 081fc27). **Sin push, sin
+publicar, Supabase sin tocar, sin OTA ni EAS.** Los números son los de la
+tabla del barrido de calidad (HALLAZGOS.md del coordinador). Va en paralelo
+con `claude/qa-movil` y `claude/escritorio-inicio`; se unirán después.
+
+- **n.º 1 · «0 €» → «NaN»** (94feb93): la franja de cifras anima solo el
+  número y conserva prefijo y sufijo; sin cifra o con 0 no anima, y si otra
+  parte de la página reescribe la cifra, se retira. Antes: «NaN» en inglés y
+  «0» en castellano; ahora «€0» y «0 €».
+- **n.º 7 · el inglés saltaba** (8570810, 1f8e32e): nuevo
+  `assets/idioma-previo-20261104.js` (en `ARCHIVOS_PUBLICABLES`), externo y
+  sin defer en `<head>` porque la CSP no admite scripts en línea. Si la
+  preferencia guardada es inglés pone `lang="en"` y la clase `idioma-previo`
+  (`body{visibility:hidden}` en idioma-20261022.css) hasta que idioma-web
+  avisa de que ha traducido y ha llegado DOMContentLoaded; tope de 1,5 s.
+  Va en Inicio, las páginas de rwadar-fichas.js, Academy, 404, privacidad,
+  transparencia comercial y para empresas. CLS en inglés: **0,22 → 0** a
+  1366 y **0,067 → 0** a 820; la primera pintura en inglés pasa de ~0,25 s a
+  ~0,6 s (espera a la traducción), en castellano no cambia.
+- **n.º 8 · barra de filtros** (b315a15): `.barra` usa `top:var(--alto-cabecera)`
+  (ResizeObserver sobre `.hdr`) y al acabar `#plataformasResultados` se
+  empuja hacia arriba (`--barra-empuje`); no se mueven nodos del DOM, así que
+  el orden móvil/escritorio de `Movil` no cambia. Tapado: 57 → 0 px a 1024 y
+  820; ya no queda fija sobre Descartadas ni el pie.
+- **n.º 9 · cabecera de tableta** (38eb8f7): por debajo de 1280 px «Sonido y
+  vibración» solo con icono (aria-label y title), enlaces y botones más
+  juntos; por debajo de 1024 px salen el lema de la marca y «Ver ofertas →»
+  (repite «Ofertas»). Una fila (69 px) de 768 a 1366, ES y EN, también con
+  «Mis inversiones» e inicial. No toca la estructura de Inicio.
+- **n.º 12 · fuentes que son API** (c6ece17): una URL con `/api/`, que acaba
+  en `.json` o pide `format=json` no se enlaza; se cita «Consulta técnica ·
+  fecha» (con su título si lo tiene). En rwadar-fichas.js
+  (`sinEnlacesTecnicos` sobre el contenido de cada página, sin tocar las
+  plantillas de secciones), ficha-pagina y la web (ficha de oferta y panel de
+  plataforma; fbd7d91 la llama con guarda `typeof`, porque las pruebas de
+  rwadar-movil ejecutan un trozo del script sin el ayudante). Cero enlaces a
+  API en /ofertas/aktionariat, /boss-info, /switzerlend y /plataformas/spiko.
+  Si al lado ya pone «consultada el …», no repite la fecha (bebc45d).
+- **n.º 18 · comparador** (daf08ca): «Mínimo» es el mínimo más bajo
+  documentado en euros entre las ofertas de esa plataforma («Desde 1 €» en
+  Spiko) o «Sin documentar», no «Alto». `textoEspanaOferta` y
+  `textoSalidaOferta`: una sola función para la tarjeta (escritorio y móvil)
+  y «Lo esencial» de la ficha. **No hecho:** el campo «Blockchains» de ARTEX
+  («Mercado regulado (MTF)») es un dato de Supabase; corregirlo va en una
+  entrega del catálogo.
+- **n.º 27 · «Mis inversiones» sin sesión** (df52b2e): rotula «Entrar»; en
+  /acceso el botón de la vista abierta se oculta («Ya tengo cuenta» ya no
+  repite «Entrar»).
+- **n.º 28 · «Noticias de RWAdar»** (77a773a): el menú de las páginas fijas
+  dice «Novedades» («Updates»). og.png regenerado con
+  `rwadar-editorial-source/og.mjs`: sectores como en el radar (Inmobiliario,
+  Crédito, Tesoro…) y un punto por plataforma del catálogo (26).
+- **n.º 29 · compartir** (8570810, 141ad06): og:* y `twitter:card` en
+  privacidad, transparencia comercial y para empresas, y `twitter:card` en
+  todas las páginas de rwadar-fichas.js. Sin imágenes nuevas (las ofertas
+  siguen con su .webp). **Decisión de Víctor:** /para-empresas sigue con
+  `noindex,nofollow`; no se ha cambiado.
+- **Pruebas** (1a90a20): funcionales nuevas en
+  `rwadar-app/probar-web-escritorio.mjs` (las llama probar-web.mjs, que así
+  no pasa su presupuesto de 240 000 B), `probar-fichas.cjs` y
+  `rwadar-acceso/acceso-sin-duplicados.test.mjs`. Ninguna fija frases
+  legales. `npm test` completo en verde (base de datos: 27 scripts con 886
+  comprobaciones, 30 SQL y 11 del mapa; web 589, fichas 70, precarga 32, móvil 409 + 2 omitidas, acceso 145,
+  herramientas y `copiar-idiomas-web --comprobar` sin diferencias). OTA:
+  `comprobar-ota-compatible.cjs --base c1f7106…` da `ok`; no se tocan
+  archivos protegidos. CSS 168 389 B. `probar-orden.mjs` solo avisa de
+  `rwadar-movil/App.js` (119 KB > 110 KB), que ya pasaba en `main`.
+- **Al unir con `claude/qa-movil`:** el código se une sin conflictos; chocan
+  solo las páginas generadas de ofertas, plataformas y Descartadas (una
+  línea cada una). Se resuelven regenerando con `node rwadar-fichas.js` y
+  `node rwadar-academy.js` tras la unión. Con `claude/escritorio-inicio`, sin
+  conflictos.
+- **Pendiente:** publicar (con la sincronización completa) y comprobar en
+  producción; la tarjeta de plataforma y el panel siguen diciendo «Mínimo:
+  alto» / «Importe de entrada: Alto» (nivel de entrada; el barrido solo
+  pedía el comparador). En inglés, «Sin documentar» y «Desde 1 €» del
+  comparador siguen en castellano: idioma-web protege entera la celda
+  `#modal tbody td` (frente de inglés de `claude/qa-movil`).
+
+## 4 de noviembre de 2026 (noche, 3) · Claude · QA móvil: arreglos de la revisión
+
+Misma rama local `claude/qa-movil`, 6 commits más sobre ee25496 (de 0595f79
+a 7b28852, y este traspaso). **Sin push, nada publicado, Supabase sin tocar, sin OTA ni
+workflows.** Solo cambia cómo se pinta; los datos del catálogo, igual.
+
+- **Importante (arreglado):** 5 fichas fijas `/ofertas/<slug>` (aktionariat,
+  prosegur-digital-gold, robinhood-classic-stock-tokens y las dos de Spiko)
+  enseñaban «· comisiones · consulta 01/11/2026» en Costes. Ahora el enlace
+  usa `rotuloReferencia()`: «· Comisiones · consultada el 01/11/2026 ↗».
+  Comprobado en navegador: 0 de 24 fichas con claves internas.
+- **Menores (arreglados):**
+  - **Costes (web y app):** «Comisiones» va aparte y se traduce («Fees»); la
+    cita lleva `lang` y la nota «Cita literal de la fuente, en inglés.», como
+    en «Datos con su fecha».
+  - **Idioma de la cita:** las 12 de Brickwise («Vermittlungsgebühr…») salen
+    como alemán (más palabras alemanas, ä/ö/ü/ß y «Investor:in» no cuenta
+    como «in»); «Start with as little as €1», como inglés. Sobre las 476
+    referencias del catálogo de hoy solo cambian esas 17, todas a mejor.
+  - **A 360 px:** «Mercado de compraventa» en dos líneas sin cortar; títulos
+    de «Recién añadidas» a cuatro líneas, sin cortes; rótulos del radar a
+    44 px (65-70×44); chips cortos («All», 37 px) con diana de 44×46.
+  - **Inglés:** «+ Follow this platform» y su nota en la ficha de plataforma.
+  - **App Academy:** «7 LECCIONES · 3 NIVELES» (antes 9, junto a «de 7»).
+- **No hecho:** la página no vuelve a preguntar por la sesión tras el primer
+  401 (`acceso-privado.js`). Vale mientras las cuentas sigan en pausa; al
+  reabrirlas, comprobar al volver a la pestaña o con un evento `storage`.
+- **Pruebas:** `npm test` en verde (1.466 correctas, 0 fallidas; node --test
+  11/11, 409/411 con 2 omitidas, 144/144). Guardián OTA `ok` (1.4.1(23)).
+  Ajustadas dos comprobaciones existentes de costes (web y app) al nuevo
+  marcado; sin pruebas nuevas de textos. Medidas y capturas en
+  `scratchpad/qa-movil-fix2/` (`resultados.json`, `capturas/`).
+- **Al publicar:** web y OTA (la app cambia en Costes y Academy).
+
+## 4 de noviembre de 2026 (noche, 2) · Claude · arreglos del barrido de calidad de la web en el móvil
+
+Rama local `claude/qa-movil` (sale de `main`, 081fc27). **Sin push, nada
+publicado, Supabase sin tocar, sin OTA ni workflows.** Los datos del catálogo
+no cambian: todo es de cómo se pinta. Hallazgos en
+`scratchpad/qa-prod/movil.json` (20).
+
+- **Graves:**
+  - **Ficha de oferta:** «accesoEspana · consulta 01/11/2026» pasa a
+    «Acceso desde España» (y «Mínimo de inversión», «Qué se adquiere»,
+    «Comisiones»…) en la web (panel y fichas fijas) y en la app, con
+    `rotuloReferencia()` en `rwadar-movil/lib/ficha-editorial.js`. Las
+    búsquedas internas por etiqueta siguen con la clave. La cita de la fuente
+    lleva su `lang` y, si está en inglés, francés o alemán, la nota «Cita
+    literal de la fuente, en inglés.». En inglés se traducen rótulos, «Fecha
+    del dato», «Ver fuente» y «Fuente N». **Pendiente para el próximo ciclo
+    del catálogo:** que `preparar-lote.mjs` escriba ya el rótulo legible.
+  - **Academy:** el test funciona sin cuenta y no espera a la sesión; solo
+    «Marcar como leída» y el progreso necesitan cuenta.
+- **Importantes:** «Registro actualizado» ya no sale al cargar (solo si el
+  catálogo cambia con la página abierta, y en inglés); «Saltar al
+  contenido» lleva al contenido de la pestaña visible; inglés de Perfil,
+  Descartadas, avisos flotantes, tipo y región de las plataformas y países de
+  «Recién añadidas»; sin sondeos de sesión sin cuenta (queda **un** 401 al
+  cargar; quitarlo exige que el servidor responda 200 sin sesión, que es
+  Auth y no lo he tocado); «Lección 1 de 7» (web y app); toque de 44 px en
+  radar (diana en pantalla), rótulos del radar, controles del mapa,
+  «Descartadas, con su motivo» y enlaces de las fichas fijas (chips y
+  estrella ya llegaban a 44 con su `::before`).
+- **Menores:** fechas dd/mm/aaaa en la ficha de plataforma; sin «Actividad»
+  repetida ni «Qué se adquiere» repetido (web y app); búsqueda vacía con
+  «Borrar búsqueda»; «de 1 € o de 1 $» (web y app); «Austria» en el popup
+  del mapa (al pintar); redirecciones de `/fuera-del-radar`, `/plataformas/`
+  y `/ofertas/`; nota de uso personal bajo el CSV; títulos a tres líneas y
+  tipo/región en dos líneas en la galería.
+- **No hecho:** frases del capítulo 04, «mF-ONE» y advertencia repetida en
+  Inicio (las toca el otro agente en `index.html`); barra de 5 botones en
+  Academy y fichas fijas (plantillas de otro agente); fuentes externas que
+  no responden a curl (abrir a mano); alt de las imágenes por oferta (texto
+  editorial del catálogo, ya marcado como castellano).
+- **Pruebas:** `npm test` completo en verde; guardián OTA `ok` (runtime
+  1.4.1(23)); sin cambios en package.json, app.json, eas.json ni scripts/.
+  Ajustadas tres comprobaciones de código existentes (radar, Academy,
+  fuentes de plataforma) y la frase de mínimos de la app; sin pruebas
+  nuevas de textos. Capturas antes/después en `scratchpad/qa-movil/`.
+- **Pendiente (coordinador):** revisión, unir a `main` (choques posibles en
+  `rwadar-20260820.js` e `index.html` pre-renderizado: regenerar con
+  `npm test`), publicar web y OTA (la app cambia: rótulos, «de 7», mínimos).
+
 ## 4 de noviembre de 2026 (noche, 3) · Claude · Inicio en escritorio: arreglos de la revisión (sin publicar)
 
 Misma rama `claude/escritorio-inicio`, commits 800b2d2 (CSS) y 1bdb505 (JS).

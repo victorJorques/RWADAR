@@ -3,7 +3,10 @@
   if (/(?:^|[#&])(?:access_token|error|error_code|error_description)=/.test(location.hash)) {
     location.replace('/acceso' + location.hash); return;
   }
-  let usuario = null, comprobando = null;
+  // sinSesion: el servidor ya dijo «sin sesión» en esta carga. Con las cuentas en
+  // pausa casi nadie tiene sesión: no se vuelve a preguntar (ni cada 60 s) para
+  // no llenar la consola de 401; entrar siempre pasa por /acceso y recarga.
+  let usuario = null, comprobando = null, sinSesion = false;
   function entrar() {
     location.assign('/acceso?volver=' + encodeURIComponent(location.pathname));
   }
@@ -23,13 +26,14 @@
   }
   async function verificar() {
     if (comprobando) return comprobando;
+    if (sinSesion && !usuario) throw new Error('Entra para gestionar tu cuenta.');
     comprobando = (async () => {
       if (sessionStorage.getItem('rwadar.cierre.pendiente') === 'si') throw new Error('Confirma el cierre antes de entrar.');
       let response;
       try { response = await fetch('/api/acceso/sesion', { credentials: 'same-origin', cache: 'no-store', redirect: 'error' }); }
       catch (_) { throw errorTemporal(); }
       if (!response.ok) {
-        if (response.status === 401 || response.status === 403) throw new Error('Entra para gestionar tu cuenta.');
+        if (response.status === 401 || response.status === 403) { sinSesion = true; throw new Error('Entra para gestionar tu cuenta.'); }
         throw errorTemporal(response.status);
       }
       let estado;
@@ -42,7 +46,7 @@
       if (usuario && usuario.id !== estado.usuario.id) {
         throw new Error('La cuenta ha cambiado. Vuelve a entrar.');
       }
-      usuario = estado.usuario; return { ...usuario };
+      usuario = estado.usuario; sinSesion = false; return { ...usuario };
     })().catch(error => {
       // A failed verification blocks the pending operation without discarding
       // the last confirmed identity. Definitive rejection still erases it.
@@ -106,9 +110,13 @@
   // El tutorial nativo es publico; los metodos privados siguen verificando al usarse.
   const tutorialNativoPublico = !!window.ReactNativeWebView && location.pathname === '/' && location.hash === '#explain';
   if (!tutorialNativoPublico) {
-    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') verificar().catch(() => {}); });
-    window.addEventListener('pageshow', () => verificar().catch(() => {}));
-    setInterval(() => verificar().catch(() => {}), 60000);
+    // Las comprobaciones periódicas solo tienen sentido con una cuenta abierta.
+    document.addEventListener('visibilitychange', () => { if (usuario && document.visibilityState === 'visible') verificar().catch(() => {}); });
+    window.addEventListener('pageshow', evento => {
+      if (evento && evento.persisted) sinSesion = false; // vuelta desde la caché del navegador: preguntar de nuevo
+      if (usuario || (evento && evento.persisted)) verificar().catch(() => {});
+    });
+    setInterval(() => { if (usuario) verificar().catch(() => {}); }, 60000);
     if (sessionStorage.getItem('rwadar.cierre.pendiente') === 'si') salir().catch(() => {});
     else verificar().catch(() => {});
   }

@@ -33,15 +33,16 @@
     '#emiLista .emi-tit','#emiLista .emi-donde','#emiLista .emi-lugar',
     '#movilPanelInicio .inicio-oferta-tit','#movilPanelInicio .inicio-oferta-prov','#movilPanelInicio .inicio-oferta-aviso','.escaparate-comprobacion-motivo-fuente','.escaparate-comprobacion-dato','.escaparate-fuente-titulo',
     '#emiLista .escaparate-dato-principal b','#emiLista .escaparate-referencia','#emiLista .escaparate-aviso-compacto',
-    '.escaparate-datos-clave dd:has(a)','#emiLista time','.escaparate-dialogo-cab h2','.escaparate-dialogo-imagen img',
+    '.escaparate-datos-clave dd:has(a)>.dato-fuente','.escaparate-datos-clave dd:has(a)>.escaparate-cita-original','#emiLista time','.escaparate-dialogo-cab h2','.escaparate-dialogo-imagen img',
     '.escaparate-dialogo-identidad','.escaparate-dialogo-resumen','.escaparate-documentacion-caracteristicas',
-    '.escaparate-referencias-fechadas','.escaparate-fuentes-documentales','.escaparate-dialogo-metricas','.escaparate-dialogo-avisos',
-    '#grid .empresa-visual__texto strong','#grid .empresa-visual__imagen','#grid .ficha-nom h3','#grid .sub','#grid .nota','#grid .aval',
+    // De las referencias fechadas solo son de la fuente el rótulo original, el valor y el alcance.
+    '.escaparate-referencias-fechadas .ref-etiqueta-original','.escaparate-referencias-fechadas .ref-valor','.escaparate-referencias-fechadas .ref-alcance','.escaparate-dialogo-metricas','.escaparate-dialogo-avisos',
+    '#grid .empresa-visual__texto strong','#grid .empresa-visual__imagen','#grid .ficha-nom h3','#grid .nota','#grid .aval',
     '#matrix .mm','#rlNom','#rlMeta','#dwId h3','#dwBody .pn-resumen>p','#dwBody .pn-claves','#dwBody .pn-origen-visual>span',
     '#dwBody .pn-verificacion-local-campo>p','#dwBody .pn-verificacion-local-alertas ul','#dwBody .pn-datos-grid dd','#dwBody .pn-fuentes',
     '#modal thead strong','#modal tbody td','#outlist .fn','#outlist .por','#outlist .fuentes',
     '#perfilCuerpo .quien','#perfilCuerpo .correo','#perfilCuerpo .perfil-ini','#perfilCuerpo input[name="name"]',
-    '#perfilOfertas .perfil-oferta h3','#perfilOfertas .perfil-oferta p','#perfilEmpresas .movil-seguida h3','#perfilEmpresas .movil-seguida p','#cuentaIdentidad','#cuentaEstadoCorreo',
+    '#perfilOfertas .perfil-oferta h3','#perfilOfertas .perfil-oferta p','#perfilEmpresas .movil-seguida h3','#cuentaIdentidad','#cuentaEstadoCorreo',
     '.comunidad-autor','.comunidad-texto','.ac-articulo','.ac-tldr ol','.ac-glosario dl','.ac-leccion-cab h1',
     '.ac-pregunta legend','.ac-opcion-texto','.ac-explicacion','.ac-aviso-legal',
     // Contenido de las lecciones que sigue en castellano: índice de secciones, «Da el siguiente paso» y aviso legal.
@@ -160,7 +161,8 @@
     observado.observe(document.documentElement,{subtree:true,characterData:true,childList:true,attributes:true,attributeFilter:[...traducibles,'data-idioma-fuente']});
     let almacenamiento;
     try{almacenamiento={getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v)};}catch{almacenamiento={getItem:()=>null,setItem:()=>{throw Error('storage unavailable');}};}
-    idioma.cargarIdioma(almacenamiento).then(actualizar);
+    // Avisa a idioma-previo (en <head>) de que ya está traducida y se puede enseñar.
+    idioma.cargarIdioma(almacenamiento).then(()=>{actualizar();if(typeof globalThis.RWAdarIdiomaListo==='function')globalThis.RWAdarIdiomaListo();});
     actualizar();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',iniciar,{once:true});else iniciar();

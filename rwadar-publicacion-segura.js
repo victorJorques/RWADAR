@@ -151,6 +151,7 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'assets/idioma-en-20261022.js',
   'assets/idioma-20261022.js',
   'assets/idioma-web-20261022.js',
+  'assets/idioma-previo-20261104.js',
   'assets/idioma-20261022.css',
   'assets/cartera-modelo-20261028.js',
   'assets/cartera-cuenta-20261028.js',

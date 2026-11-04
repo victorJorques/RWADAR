@@ -233,6 +233,50 @@ verificar('con la revisión vencida la página fija deja de afirmar que se contr
   assert.match(campos.contratable.textContent,/^Pendiente de volver a comprobar: la revisión semanal ha caducado\.$/);
   assert.match(campos.minimoSalida.textContent,/por volver a comprobar/);
 });
+// QA escritorio 04/11/2026, n.º 12: una API o una respuesta JSON no es una
+// página para personas. No se enlaza en ninguna página fija; se cita con su fecha.
+verificar('las consultas técnicas (API o JSON) no se enlazan en las páginas fijas ni en ficha-pagina',()=>{
+  const {consultaTecnica,sinEnlacesTecnicos}=require('./rwadar-fichas');
+  assert(consultaTecnica('https://shares.aktionariat.com/api/secondarymarkets/getTrades'));
+  assert(consultaTecnica('https://www.regafi.fr/api/explore/v2.1/catalog/datasets/x/records?where=a'));
+  assert(consultaTecnica('https://example.com/datos.json')&&consultaTecnica('https://example.com/x?format=json'));
+  assert(!consultaTecnica('https://shares.aktionariat.com/invest')&&!consultaTecnica('https://api-docs.example.com/guia')&&!consultaTecnica('no es url'));
+  const html=sinEnlacesTecnicos('<a href="https://x.com/api/a?b=1&amp;c=2" target="_blank">Abrir fuente ↗</a>'+
+    '<a href="https://x.com/doc">Documento ↗</a> <span>· consultada el 02/11/2026</span>'+
+    '<a href="https://x.com/api/b" target="_blank">Registro · X ↗</a> <span>· consultada el 03/11/2026</span>',()=>'2026-11-01');
+  assert.equal(html,'<span class="consulta-tecnica"><span>Consulta técnica</span> · 01/11/2026</span>'+
+    '<a href="https://x.com/doc">Documento ↗</a> <span>· consultada el 02/11/2026</span>'+
+    '<span class="consulta-tecnica">Registro · X · <span>Consulta técnica</span> · 03/11/2026</span>');
+  for(const [nombre,contenido] of salidas){
+    if(!nombre.endsWith('.html'))continue;
+    const tecnicos=[...contenido.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map(m=>m[1].replace(/&amp;/g,'&')).filter(consultaTecnica);
+    assert.deepEqual(tecnicos,[],nombre+' enlaza una consulta técnica');
+  }
+  for(const nombre of ['ofertas/aktionariat.html','ofertas/boss-info.html','ofertas/switzerlend.html','plataformas/spiko.html'])
+    assert(/<span class="consulta-tecnica">[^<]*<span>Consulta técnica<\/span> · \d{2}\/\d{2}\/\d{4}<\/span>/.test(salidas.get(nombre)),nombre);
+  // ficha-pagina (al abrir la página): la referencia que es una API sale como texto, la otra como enlace.
+  const codigo=fs.readFileSync(path.join(raiz,'rwadar-site/assets/ficha-pagina-20261022.js'),'utf8');
+  const hijos=[],campos={minimo:{textContent:'',appendChild:n=>hijos.push(n)}};
+  const pagina={dataset:{oferta:'{}'},querySelector:selector=>campos[selector.match(/"([^"]+)"/)[1]]};
+  const resumen={minimo:{texto:'1 €',referencias:[{fuente:'https://x.com/api/precio',fechaConsulta:'2026-11-03',etiqueta:'Precio'},
+    {fuente:'https://x.com/folleto.pdf',fechaConsulta:'2026-11-02',etiqueta:'Folleto'}]}};
+  vm.runInNewContext(codigo,{URL,globalThis:{RWAdarFichaEditorial:{resumenOferta:()=>resumen}},
+    document:{hidden:false,querySelector:()=>pagina,createElement:tag=>({tag}),addEventListener(){}},window:{setInterval(){}}},{timeout:1000});
+  assert.deepEqual(hijos.map(n=>[n.tag,n.className||'',n.href||'',n.textContent]),[
+    ['span','consulta-tecnica','',' · Precio · Consulta técnica · 03/11/2026'],
+    ['a','','https://x.com/folleto.pdf',' · Folleto · consultada el 02/11/2026 ↗']]);
+});
+// QA escritorio 04/11/2026, n.º 29: cada página fija se comparte con imagen grande
+// (og:* y twitter:card) y carga idioma-previo en <head> antes de pintar.
+verificar('las páginas fijas llevan og:*, twitter:card e idioma-previo en head',()=>{
+  for(const [nombre,contenido] of salidas){
+    if(!nombre.endsWith('.html'))continue;
+    const cabeza=contenido.slice(0,contenido.indexOf('</head>'));
+    for(const meta of ['og:title','og:description','og:url','og:image'])assert(cabeza.includes('<meta property="'+meta+'" content="'),nombre+' '+meta);
+    assert(cabeza.includes('<meta name="twitter:card" content="summary_large_image">'),nombre+' twitter:card');
+    assert(/<script src="\/assets\/idioma-previo-20261104\.js"><\/script>/.test(cabeza),nombre+' idioma-previo');
+  }
+});
 verificar('RSS enlaza noticias estables y el sitemap contiene todas las fichas',()=>{
   const rss=salidas.get('novedades.xml'),mapa=salidas.get('sitemap.xml');
   assert(rss.startsWith('<?xml'));assert(rss.includes('<rss version="2.0">'));

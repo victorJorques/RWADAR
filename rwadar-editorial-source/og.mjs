@@ -24,13 +24,24 @@ const FUENTES = (fs.readFileSync(path.join(RAIZ, 'rwadar-site', 'assets', 'rwada
 if (!/Geist/.test(FUENTES)) throw new Error('no encuentro las fuentes Geist en la hoja de estilos de la web');
 
 const W = 1200, H = 630, CX = 935, CY = 322, R = 150;
+// Las categorías y sus nombres cortos, como el radar de la web (CATMETA y
+// catCorta de rwadar-20260820.js); antes decía «Inmuebles» y «Deuda pública».
 const SECTORES = [
-  ['INMUEBLES', '#F2B23C', -90], ['CRÉDITO', '#5B8CFF', -30], ['DEUDA\nPÚBLICA', '#32C9F5', 30],
-  ['ACCIONES', '#B583FF', 90], ['MATERIAS\nPRIMAS', '#FF8A5B', 150], ['INFRAESTRUCTURA', '#9AA6BF', 210],
+  ['INMOBILIARIO', '#F2B23C', -90, 'Inmobiliario'], ['CRÉDITO', '#5B8CFF', -30, 'Crédito privado'],
+  ['TESORO', '#32C9F5', 30, 'Tesoro y fondos'], ['ACCIONES', '#B583FF', 90, 'Acciones y capital privado'],
+  ['MATERIAS\nPRIMAS', '#FF8A5B', 150, 'Materias primas'], ['INFRAESTRUCTURA', '#9AA6BF', 210, 'Infraestructura'],
 ];
-// Puntos fijos (sector, ángulo dentro del sector, radio relativo): decoración, no datos.
-const PUNTOS = [[0, -14, .95], [0, 8, .62], [0, -3, .34], [1, -12, .9], [1, 10, .74], [1, 2, .45], [2, -16, .82], [2, 4, .58],
-  [2, 14, .92], [2, -5, .3], [3, -18, .88], [3, 6, .66], [3, 16, .4], [3, -2, .8], [4, -10, .86], [4, 12, .55], [5, -8, .9], [5, 14, .7]];
+// Un punto por plataforma del catálogo publicado, en el sector de su
+// categoría (antes eran 18 puntos fijos de adorno). La posición dentro del
+// sector es determinista: la misma lista da siempre la misma imagen.
+const { leerCatalogo } = require('../rwadar-fichas.js');
+const PLATAFORMAS = leerCatalogo(RAIZ).plataformas;
+const sinSector = PLATAFORMAS.filter((p) => !SECTORES.some(([, , , cat]) => cat === p.cat));
+if (sinSector.length) throw new Error('categoría sin sector en og.png: ' + sinSector.map((p) => p.cat).join(', '));
+const PUNTOS = SECTORES.flatMap(([, , , cat], s) => {
+  const n = PLATAFORMAS.filter((p) => p.cat === cat).length;
+  return Array.from({ length: n }, (_, k) => [s, -22 + 44 * (k + .5) / n, .32 + .62 * ((k * .618034 + s * .37) % 1)]);
+});
 const pol = (a, r) => [CX + Math.cos(a * Math.PI / 180) * r, CY + Math.sin(a * Math.PI / 180) * r];
 
 const radar = [
