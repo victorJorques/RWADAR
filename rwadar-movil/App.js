@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { ActivityIndicator, Animated, AppState, FlatList, Linking, Modal, RefreshControl, StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
 import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal, useIdioma } from './componentes/Idioma';
+import { traducir } from './lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
   useFonts, Geist_400Regular, Geist_400Regular_Italic, Geist_500Medium, Geist_600SemiBold,
@@ -1396,6 +1397,7 @@ function SegmentoOferta({ texto, activo, onPress }) {
 }
 
 function PanelVerificacionLocal({ verificacion, compacta = false }) {
+  useIdioma(); // la etiqueta accesible se compone en el idioma elegido
   if (!verificacion) return null;
   const campos = [
     ['Actividad', verificacion.estadoOperativo],
@@ -1407,13 +1409,14 @@ function PanelVerificacionLocal({ verificacion, compacta = false }) {
     ...campos.flatMap(([, campo]) => campo.fuentes || []),
     ...(verificacion.alertasCriticas || []).flatMap(alerta => alerta.fuentes || []),
   ].map(fuente => [fuente.url, fuente])).values()];
+  // Rótulos en el idioma elegido; los detalles son datos del catálogo y van tal cual.
   const etiquetaAccesible = [
-    `Revisión de fuentes del ${fecha}`,
+    `${traducir('Revisión de fuentes del')} ${fecha}`,
     ...campos.flatMap(([nombre, campo]) => [
-      `${nombre}: ${etiquetaEstadoVerificacionLocal(campo.estado)}`,
+      `${traducir(nombre)}: ${traducir(etiquetaEstadoVerificacionLocal(campo.estado))}`,
       campo.detalle,
     ]),
-    ...(verificacion.alertasCriticas || []).map((alerta) => `Importante: ${alerta.detalle}`),
+    ...(verificacion.alertasCriticas || []).map((alerta) => `${traducir('Importante')}: ${alerta.detalle}`),
   ].join('. ');
 
   return (

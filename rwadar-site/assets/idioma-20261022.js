@@ -72,14 +72,18 @@
           [/^Ver (\d+) referencias de (.+)$/,(m,n,p)=>'View '+n+' references from '+p],
           [/^Ver (\d+) referencias$/,(m,n)=>'View '+n+' references'],
           [/^(.+): ver (\d+) referencias$/,(m,n,total)=>n+': view '+total+' references'],
-          [/^Mostrar (principales|secundario|en camino|en_camino) (\d+)$/,(m,g,n)=>'Show '+({principales:'main offers',secundario:'secondary market','en camino':'upcoming',en_camino:'upcoming'}[g])+' '+n],
+          [/^Mostrar (principales|secundario|en camino|en_camino|próximas) (\d+)$/,(m,g,n)=>'Show '+({principales:'main offers',secundario:'secondary market','en camino':'upcoming',en_camino:'upcoming','próximas':'upcoming'}[g])+' '+n],
+          [/^Registrar inversión en (.+)$/,(m,n)=>'Record investment in '+n],
           [/^(\d+) de (\d+) (fichas?|plataformas?|ofertas?)(.*)$/,(m,n,total,tipo,resto)=>n+' of '+total+' '+({ficha:'entry',fichas:'entries',plataforma:'platform',plataformas:'platforms',oferta:'offer',ofertas:'offers'}[tipo])+t(resto)],
           [/^(\d+) (fichas?|plataformas?|ofertas?|referencias|días?|lecciones)(.*)$/,(m,n,tipo,resto)=>n+' '+({ficha:'entry',fichas:'entries',plataforma:'platform',plataformas:'platforms',oferta:'offer',ofertas:'offers',referencias:'references','día':'day','días':'days',lecciones:'lessons'}[tipo])+t(resto)],
           [/^(Consultada|Consultado|Comprobada|Comprobado|Revisada|Revisado) (?:el )?(.+)$/,(m,tipo,fecha)=>(/^Consult/.test(tipo)?'Checked on ':/^Comprob/.test(tipo)?'Verified on ':'Reviewed on ')+fecha],
           [/^(.+?)\. (?:Estado de acceso|Acceso): (.+?)\. Abrir ficha\.$/,(m,n,a)=>t(n)+'. Access: '+t(a)+'. Open details.'],
           [/^(.+?)\. Filtro activo\. Quitar filtro\.$/,(m,n)=>t(n)+'. Filter active. Clear filter.'],
+          [/^(.+)\. Abrir ficha\.$/,(m,n)=>n+'. Open details.'],
           [/^(.+?)\. Filtrar plataformas de esta categoría\.$/,(m,n)=>t(n)+'. Filter platforms by this category.'],
           [/^(\d+) seleccionadas?$/,(m,n)=>n+' selected'],
+          // Chips con su recuento («Inmobiliario 8», «Todas 26»): solo si el nombre entero tiene traducción.
+          [/^(.+?) (\d+)$/,(m,n,k)=>{const x=t(n);return x===n?m:x+' '+k;}],
         ];
         for(const [patron,reemplazo]of patrones)if(patron.test(literal)){resultado=literal.replace(patron,reemplazo);break;}
       }
