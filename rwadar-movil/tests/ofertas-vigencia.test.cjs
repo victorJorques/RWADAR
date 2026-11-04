@@ -208,6 +208,10 @@ function componentesMoviles(ahora, simulacion = {}) {
     'react-native': { ...Object.fromEntries(['Image', 'Modal', 'Pressable', 'ScrollView', 'Text', 'View'].map((n) => [n, n])), Animated: {View:'AnimatedView'}, StyleSheet: { create: (v) => v }, AppState: simulacion.AppState },
     'react-native-safe-area-context': { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' },
     '../lib/ficha-editorial': require('../lib/ficha-editorial'),
+    // La transparencia de la web (03/11/2026): puntos fuertes y forma corta.
+    '../lib/transparencia': cargarModulo('lib/transparencia.js', {
+      './transparencia-contenido': cargarModulo('lib/transparencia-contenido.js'),
+    }),
     '../fixtures/imagenes-editoriales': { ETIQUETA_EDITORIAL: 'Ilustración editorial', imagenEditorial: () => null,
       imagenEditorialOferta: () => null },
     '../lib/datos': datosMoviles,
