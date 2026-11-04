@@ -857,7 +857,7 @@ const e = StyleSheet.create({
   /* Enlace y fecha en la misma fila si caben: sin huecos de 44 px apilados. */
   comprobacionFuente: { marginTop: 2, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', columnGap: 10 },
   referenciaFila: { marginTop: 0 },
-  enlaceFuente: { minHeight: UI.tactil, justifyContent: 'center', alignSelf: 'flex-start', borderRadius: R.m },
+  enlaceFuente: { minHeight: UI.tactil, justifyContent: 'center', alignSelf: 'flex-start', borderRadius: R.m, maxWidth: '100%', flexShrink: 1 },
   enlaceFuentePulsado: { backgroundColor: C.senalT },
   enlaceFuenteTxt: { ...T.menor, fontFamily: F.semi, color: C.senal },
   puntosDetalle: { marginTop: 14, gap: 6 },
