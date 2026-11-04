@@ -65,11 +65,13 @@ paso('una revisión local incompleta conserva la copia completa sin contactar pr
   && !/fetch\((?:API|SUPABASE)/.test(cargaLocal)
   && !web.includes('Se mantiene el radar incluido en la fuente'));
 
+// Rótulos en llano: «Actividad» y «Licencia o registro» (LISTA-FINAL.md fila 13,
+// revisión de frases que pidió Víctor, 04/11/2026).
 paso('las fichas y el detalle muestran fecha, tres estados y alertas críticas',
   web.includes('resumenVerificacionLocalHtml(v)')
   && web.includes('detalleVerificacionLocalHtml(v)')
-  && web.includes("['Estado operativo',verificacion.estadoOperativo]")
-  && web.includes("['Licencia / registro',verificacion.licenciaRegistro]")
+  && web.includes("['Actividad',verificacion.estadoOperativo]")
+  && web.includes("['Licencia o registro',verificacion.licenciaRegistro]")
   && web.includes("['Acceso',verificacion.acceso]")
   && web.includes('verificacion.alertasCriticas.map')
   && css.includes('.verificacion-local-fecha')
