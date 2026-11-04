@@ -2239,7 +2239,7 @@ for(const [nombre,alterar] of [
   vm.runInContext("CATALOGO_CADUCADO=false;huellaInicio='';pintarInicio()",c);
   // Recién añadidas (04/11): altas de los últimos 30 días, de la más nueva a la más antigua y 6 como mucho; sin ninguna, oculto.
   const alta=o=>transparencia.ofertas[o.slug]?.anadidaEl||'',dA=o=>Math.round((Date.UTC(ahora.getFullYear(),ahora.getMonth(),ahora.getDate())-Date.parse(alta(o)+'T00:00:00Z'))/864e5);
-  const altas=emi.filter(o=>alta(o)&&dA(o)>=0&&dA(o)<30).sort((a,b)=>alta(b).localeCompare(alta(a))||a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||
+  const altas=emi.filter(o=>o.coleccion==='principales'&&alta(o)&&dA(o)>=0&&dA(o)<30).sort((a,b)=>alta(b).localeCompare(alta(a))||a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||
     a.titulo.localeCompare(b.titulo,'es')).slice(0,6).map(o=>o.slug),carrusel=()=>[...p.obtiene('relNuevasLista').innerHTML.matchAll(/data-perfil-oferta="([^"]+)"/g)].map(m=>m[1]);
   const conAltas=carrusel(),oculto=p.obtiene('relNuevas').hidden;
   vm.runInContext("var _a=Object.values(TRANSPARENCIA_POR_SLUG).map(e=>[e,e.anadidaEl]);_a.forEach(([e])=>e.anadidaEl='2000-01-01');huellaInicio='';pintarInicio()",c);

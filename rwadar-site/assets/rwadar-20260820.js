@@ -1957,15 +1957,22 @@ function tarjetaSeleccionHtml(o,i){
   '<button class="b3 rel-tarjeta-ver" type="button" data-perfil-oferta="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(t)+'">Ver ficha<span class="rel-flecha" aria-hidden="true"></span></button></div></article></li>';
 }
 /* «Recién añadidas» de Inicio (04/11/2026): altaOferta, ofertaNueva y
-   masNuevasPrimero van junto a transparenciaOferta. */
-const ofertasRecienAnadidas=()=>ofertasCatalogoInicio().filter(o=>ofertaNueva(o,30)).sort(masNuevasPrimero).slice(0,6);
+   masNuevasPrimero van junto a transparenciaOferta. Solo Principales: es la
+   lista que abre «Ver todas las ofertas nuevas». */
+const ofertasRecienAnadidas=()=>ofertasCatalogoInicio().filter(o=>o.coleccion==='principales'&&ofertaNueva(o,30)).sort(masNuevasPrimero).slice(0,6);
 function tarjetaNuevaHtml(o,i){
  const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=altaOferta(o);
+ /* Su línea de riesgo, como la Selección; y, como la fila de Ofertas en el
+    móvil, «Revisa · N avisos en la ficha» o el aviso crítico entero. */
+ const todos=avisosOfertaLocal(o),bloqueo=avisoBloqueoOferta(o),propios=todos.filter(x=>!AVISO_GENERAL_OFERTA.test(x)).length;
  return '<li class="rel-tarjeta rel-nueva"><article aria-labelledby="'+id+'">'+
   (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
   '<div class="rel-tarjeta-cuerpo"><h3 id="'+id+'" lang="es" translate="no"><button class="rel-nueva-abrir" type="button" data-perfil-oferta="'+escHtml(o.slug)+'"><span>'+escHtml(t)+'</span></button></h3>'+
   '<p class="rel-tarjeta-plat" translate="no">'+escHtml(o.plataformaNombre||'')+(img&&img.lugar?' · '+escHtml(img.lugar):'')+'</p>'+
-  '<p class="rel-nueva-meta"><span class="etq etq-ok">Nueva</span> <span><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></span></p></div></article></li>';
+  '<p class="rel-tarjeta-nota">'+escHtml(NOTAS_SELECCION[o.slug]||'Puedes perder parte o todo lo que inviertas.')+'</p>'+
+  (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · '+escHtml(textoLocal(bloqueo.texto))+(propios>1?'<span> · '+(propios-1)+' más en la ficha</span>':'')+'</p>':
+   todos.length?'<p class="rel-nueva-aviso"><b>Revisa</b> · <span>'+todos.length+(todos.length===1?' aviso en la ficha':' avisos en la ficha')+'</span></p>':'')+
+  '<p class="rel-nueva-meta">'+(ofertaNueva(o)?'<span class="etq etq-ok">Nueva</span> ':'')+'<span><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></span></p></div></article></li>';
 }
 /* Las fotos de la Selección se piden al acercarse a la pantalla: con solo
    loading=lazy el navegador las adelanta 1250 px. */
@@ -2088,7 +2095,10 @@ var relatoInicio=(function(){
   /* «Ver todas las ofertas nuevas»: Principales con «Más nuevas primero»
      (data-movil-ir hace el resto). */
   const o=e.target.closest&&e.target.closest('[data-emi-orden]');
-  if(o){emiOrden=o.dataset.emiOrden;emiColeccion='principales';const s=$('emiOrden');if(s)s.value=emiOrden;pintarEmisiones();}
+  if(o){emiOrden=o.dataset.emiOrden;emiColeccion='principales';const s=$('emiOrden');if(s)s.value=emiOrden;
+   /* Sin los filtros ni la búsqueda de antes, para que se vean todas las nuevas. */
+   emiCat='';emiTipoLocal='todos';emiBusquedaLocal='';const b=$('emiBuscar');if(b)b.value='';
+   pintarFiltrosEmision();pintarTiposOfertaLocal();pintarEmisiones();}
   /* Tocar el radar o «Explorar el radar» abre el radar de Plataformas. */
   const r=e.target.closest&&e.target.closest('[data-inicio-radar]');
   if(r&&typeof Movil!=='undefined'&&Movil.ir){e.preventDefault();const radar=$('movilPanelRadar');
@@ -2588,7 +2598,8 @@ function vistaMovilOfertas(){
 }
 function tarjetasPorProveedorHtml(ofertas){
  gruposPintadosMovil=vistaMovilOfertas();
- if(gruposPintadosMovil||emiBusquedaLocal||emiCat||emiTipoLocal!=='todos')return ofertas.map(o=>tarjetaOfertaLocal(o)).join('');
+ /* Con «Más nuevas primero», sin grupos: la más nueva arriba también en escritorio. */
+ if(gruposPintadosMovil||emiBusquedaLocal||emiCat||emiTipoLocal!=='todos'||emiOrden==='nuevas')return ofertas.map(o=>tarjetaOfertaLocal(o)).join('');
  const grupos=new Map();
  ofertas.forEach(o=>{const clave=o.plataformaSlug||o.plataformaNombre;
   if(!grupos.has(clave))grupos.set(clave,[]);grupos.get(clave).push(o);});
