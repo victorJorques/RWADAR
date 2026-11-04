@@ -2247,6 +2247,20 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
 .escritorio-relato .rel-botones{display:flex;gap:16px}
 .escritorio-relato .rel-botones>*{width:auto;min-height:56px;padding:0 32px}
 .escritorio-relato .rel-legal{padding-top:48px}
-.escritorio-relato .rel-refs-grupo{scroll-margin-top:84px}
+.escritorio-relato .rel-refs-grupo{scroll-margin-top:calc(var(--rel-arriba,68px) + 16px)}
 .escritorio-relato .rel .movil-nota-final{color:var(--tx-3);font-size:.8125rem}
+/* Los títulos de «Recién añadidas» salen enteros: aquí hay sitio debajo. */
+.escritorio-relato .rel-nueva h3 span{-webkit-line-clamp:none}
+/* El logo (#top) lleva al principio de la página, sin tapar la portada. */
+.escritorio-relato main#top{scroll-margin-top:100vh}
+}
+/* Escritorio bajo: si se ve el botón, se ve el aviso (va antes) y la portada encoge. */
+@media (min-width:1024px) and (max-height:760px){
+.escritorio-relato .rel-portada-txt{display:flex;flex-direction:column;align-items:flex-start}
+.escritorio-relato .rel-portada .rel-aviso{order:1;margin-top:16px}
+.escritorio-relato .rel-cta{order:2;margin-top:20px}
+.escritorio-relato .rel-portada-pie{order:3;margin-top:16px}
+.escritorio-relato .rel-portada-tit{font-size:clamp(2.25rem,3.6vw,3.25rem)}
+.escritorio-relato .rel-portada-sub{margin-top:16px;font-size:1.0625rem}
+.escritorio-relato .rel-portada{padding:24px 0 32px}
 }
