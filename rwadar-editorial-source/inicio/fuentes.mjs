@@ -2,7 +2,11 @@
 //
 // Por decisión de Víctor (04/11/2026) el texto de Inicio va sin llamadas [n]:
 // cada apartado acaba en «Fuentes de este apartado ›», que abre esta lista en
-// su grupo. Cada fuente lleva su nombre, su fecha y su enlace.
+// su grupo. Cada fuente lleva su nombre, su fecha y su enlace, con su
+// descripción en castellano («texto») y en inglés («texto_en»).
+//
+// Escribe la lista de la web (index.html, entre las marcas) y la misma lista
+// para la app (rwadar-movil/lib/inicio-fuentes.js).
 //
 //   node rwadar-editorial-source/inicio/fuentes.mjs             escribe
 //   node rwadar-editorial-source/inicio/fuentes.mjs --comprobar solo comprueba
@@ -16,6 +20,7 @@ const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const RAIZ = path.resolve(AQUI, '..', '..');
 export const FUENTE = path.join(AQUI, 'fuentes.json');
 export const INDEX = path.join(RAIZ, 'rwadar-site', 'index.html');
+export const APP = path.join(RAIZ, 'rwadar-movil', 'lib', 'inicio-fuentes.js');
 const INI = '<!--fuentes:ini-->', FIN = '<!--fuentes:fin-->';
 const TIPOS = new Set(['catalogo', 'mercado', 'fechado']);
 
@@ -41,8 +46,10 @@ export function cargarFuentes() {
   d.fuentes.forEach((f, i) => {
     const donde = `fuente ${i + 1}`;
     if (f.n !== i + 1) falla(`${donde}: «n» debe ser ${i + 1}`);
-    if (typeof f.texto !== 'string' || !f.texto.trim() || /[<>]/.test(f.texto)) falla(`${donde}: texto no válido`);
-    if (/\[\d+\]/.test(f.texto)) falla(`${donde}: sin llamadas [n]`);
+    for (const campo of ['texto', 'texto_en']) {
+      if (typeof f[campo] !== 'string' || !f[campo].trim() || /[<>]/.test(f[campo])) falla(`${donde}: «${campo}» no válido`);
+      if (/\[\d+\]/.test(f[campo])) falla(`${donde}: sin llamadas [n]`);
+    }
     if (!TIPOS.has(f.tipo)) falla(`${donde}: tipo desconocido`);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(f.consultadaEl || '')) falla(`${donde}: falta consultadaEl`);
     if (!Array.isArray(f.urls) || !f.urls.length || f.urls.some(u => !/^https:\/\//.test(u))) falla(`${donde}: hace falta al menos un enlace https`);
@@ -53,7 +60,8 @@ export function cargarFuentes() {
   for (const g of d.grupos) {
     if (!/^[a-z0-9]+$/.test(g.id || '') || ids.has(g.id)) falla(`grupo «${g.id}»: id no válido o repetido`);
     ids.add(g.id);
-    if (!g.titulo || /[<>]/.test(g.titulo) || !Array.isArray(g.fuentes) || !g.fuentes.length) falla(`grupo ${g.id}: incompleto`);
+    if (!g.titulo || /[<>]/.test(g.titulo) || !g.titulo_en || /[<>]/.test(g.titulo_en) ||
+      !Array.isArray(g.fuentes) || !g.fuentes.length) falla(`grupo ${g.id}: incompleto`);
     for (const n of g.fuentes) { if (!porN.has(n)) falla(`grupo ${g.id}: no existe la fuente ${n}`); usadas.add(n); }
   }
   const sueltas = [...porN.keys()].filter(n => !usadas.has(n));
@@ -61,14 +69,36 @@ export function cargarFuentes() {
   return d;
 }
 
+const fechaConsulta = d => d.fuentes.filter(f => f.tipo === 'mercado').map(f => f.consultadaEl).sort()[0] || d.fuentes[0].consultadaEl;
+
+/* La misma lista para la app, con sus dos idiomas. */
+export function moduloApp(d = cargarFuentes()) {
+  const json = v => JSON.stringify(v, null, 1);
+  const grupos = d.grupos.map(g => ({ id: g.id, es: g.titulo, en: g.titulo_en, fuentes: g.fuentes }));
+  const fuentes = d.fuentes.map(f => ({ n: f.n, texto: f.texto, texto_en: f.texto_en, urls: f.urls, consultadaEl: f.consultadaEl }));
+  return `/* GENERADO por rwadar-editorial-source/inicio/fuentes.mjs a partir de
+   fuentes.json, la misma lista que enseña la web. No se edita a mano.
+   DECISIÓN DE VÍCTOR (04/11/2026): el texto va sin llamadas [n]; cada
+   apartado acaba con «Fuentes de este apartado», que lleva a su grupo de esta
+   lista. Las de tipo «mercado» se vuelven a consultar y a fechar en cada
+   ciclo del catálogo. */
+export const FUENTES_INICIO_CONSULTADAS_EL = ${JSON.stringify(fechaConsulta(d))};
+
+export const GRUPOS_FUENTES_INICIO = ${json(grupos)};
+
+export const FUENTES_INICIO = ${json(fuentes)};
+`;
+}
+
 export function bloque(d = cargarFuentes()) {
-  const consulta = d.fuentes.filter(f => f.tipo === 'mercado').map(f => f.consultadaEl).sort()[0] || d.fuentes[0].consultadaEl;
+  const consulta = fechaConsulta(d);
   const porN = new Map(d.fuentes.map(f => [f.n, f]));
   const grupos = d.grupos.map(g => {
     const items = g.fuentes.map(n => {
       const f = porN.get(n);
       const enlaces = f.urls.map(u => `<a class="rel-refs-url" href="${esc(u)}" target="_blank" rel="noopener nofollow" translate="no">${esc(corto(u))}</a>`).join('');
-      return `            <li data-fuente="${n}"><p lang="es" translate="no">${esc(f.texto)}.</p>${enlaces}</li>`;
+      // Las dos descripciones; la hoja de estilos enseña la del idioma elegido (html[lang]).
+      return `            <li data-fuente="${n}"><p lang="es" translate="no" data-fuente-es>${esc(f.texto)}.</p><p lang="en" translate="no" data-fuente-en>${esc(f.texto_en)}.</p>${enlaces}</li>`;
     }).join('\n');
     return `        <section class="rel-refs-grupo" id="fuentes-${g.id}" tabindex="-1" aria-labelledby="fuentes-${g.id}-tit">
           <h3 id="fuentes-${g.id}-tit">${esc(g.titulo)}</h3>
@@ -93,12 +123,14 @@ export function aplicar(html, nuevo) {
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     const d = cargarFuentes(), html = fs.readFileSync(INDEX, 'utf8'), salida = aplicar(html, bloque(d));
+    const app = fs.existsSync(APP) ? fs.readFileSync(APP, 'utf8') : '', salidaApp = moduloApp(d);
     if (process.argv.includes('--comprobar')) {
-      if (salida !== html) { console.error('Fuentes de Inicio desactualizadas: ejecuta node rwadar-editorial-source/inicio/fuentes.mjs'); process.exit(1); }
+      if (salida !== html || salidaApp !== app) { console.error('Fuentes de Inicio desactualizadas: ejecuta node rwadar-editorial-source/inicio/fuentes.mjs'); process.exit(1); }
       console.log(`Fuentes de Inicio al día: ${d.fuentes.length} fuentes en ${d.grupos.length} grupos.`);
     } else {
       fs.writeFileSync(INDEX, salida);
-      console.log(`Fuentes de Inicio escritas: ${d.fuentes.length} fuentes en ${d.grupos.length} grupos.`);
+      fs.writeFileSync(APP, salidaApp);
+      console.log(`Fuentes de Inicio escritas: ${d.fuentes.length} fuentes en ${d.grupos.length} grupos (web y app).`);
     }
   } catch (e) {
     if (e instanceof ErrorFuentes) { console.error(`Fuentes no válidas · ${e.message}`); process.exit(1); }
