@@ -6,6 +6,44 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 6) · Claude · publicadas la tercera y la cuarta subida: todo el barrido de calidad en producción
+
+Cierra lo que quedaba pendiente en la entrada «(noche, 4)».
+
+- **Tercera subida** (PR #59, merge `27d0cff`; sello `c65b0f4`): corrección de
+  la revisión de `claude/qa-escritorio`. `idioma-previo` solo oculta en
+  escritorio, con el tope contado desde la navegación y sin tocar `lang`; así
+  desaparece la pantalla en blanco de 2–3 s en inglés en móviles lentos. También
+  incluye la barra de filtros al filtrar, «No aplica» en el comparador y los
+  botones de /acceso. Publicar web: runs 41913445850 (preview) y 41913969673
+  (producción).
+- **Cuarta subida** (PR #60, merge `6abdf94`; sello `9d06bca`): `claude/remates-3`,
+  revisada y corregida.
+  - Inicio sin salto al cargar: `escritorio-relato` y `movil-relato` desde
+    `<head>`, el panel ya en su sitio en el HTML, Geist precargada y
+    «Recién añadidas» visible desde el principio.
+  - Inicio como historia también en tableta.
+  - Sin la marca «Original source text» en la leyenda del radar.
+  - «Qué se adquiere» una sola vez.
+
+  Publicar web: runs 41926176848 (preview) y 41926601445 (producción). La app
+  no cambia, así que no hubo OTA.
+- **CLS medido en la web de prueba** (Playwright a través de curl, 3,5 s tras
+  cargar): 1024 ES 0,874 → 0; 1366 EN 0,887 → 0,027; 820 ES/EN 0; 390 ES/EN 0.
+  Sin «NaN», sin claves internas y sin aviso al cargar.
+
+**Queda anotado** (no bloquea):
+- Con el catálogo caducado, «Recién añadidas» nace visible y se oculta, lo que
+  da un salto pequeño.
+- Kraken xStocks y Spiko Smart Cash Euro conservan «Qué se adquiere» en el
+  párrafo, porque su texto es distinto y más completo.
+- La web hace una consulta 401 de sesión por carga: necesita tocar el worker de
+  acceso.
+- mTBILL necesita otra fuente de acceso desde España.
+- Toucan: sin confirmar el estado de hoy.
+- ARTEX no usa blockchain: decisión editorial de Víctor.
+- /para-empresas sigue en noindex: decisión de Víctor.
+
 ## 4 de noviembre de 2026 (noche, 4) · Claude · remates 3: Inicio sin salto, tableta, leyenda en inglés y «Qué se adquiere» (sin publicar)
 
 Rama local `claude/remates-3` (worktree `remates-3`, sale de `main` 857ef73,
