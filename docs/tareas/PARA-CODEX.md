@@ -6,6 +6,30 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (tarde) · Claude · rediseño publicado en web y app
+
+Víctor: «súbelo todo en cuanto esté». PR #47 (rediseño) y #48 (arreglo de la
+OTA), unidas a `main` con merge commit.
+
+- **Web:** preview y producción publicadas desde `main` (7df24f3) con
+  `publicar.yml`; la comprobación automática pasa en las dos. Comprobado
+  también con curl en producción: el nuevo Inicio, la barra de 5 y
+  «Descartadas»; las fichas dan 200 y `/ofertas/mf-one` sigue en 404.
+- **App:** OTA `ota-android.yml` al canal production, runtime `1.4.1(23)`,
+  desde 8118886. La primera se paró en «Compatibilidad con el APK instalado»
+  porque el `package.json` raíz había cambiado (solo `test:tools`). Ahora
+  vuelve a ser el del APK y `generar.mjs --comprobar` lanza también
+  `transparencia.mjs` y `fuentes.mjs` (PR #48). No comprobada en un móvil.
+- **Sello:** `estado.json` sobre 031ac44, auditoría «LISTO PARA CORTE FINAL».
+- **Las entradas de abajo marcadas «sin publicar» ya están publicadas.**
+- **Pendiente:**
+  - textos del catálogo en Supabase (alertas y notas de plataformas, Reental,
+    RealT): necesitan un ciclo de catálogo con permiso de Víctor;
+  - decisiones de Víctor sobre el subtítulo «Registro de tokenización» y sobre
+    el acceso a Academy desde Inicio;
+  - `rwadar-app/probar-mapa-buscar.test.cjs` está fuera de `npm test` y espera
+    49 ofertas: hay que ponerlo al día.
+
 ## 4 de noviembre de 2026 (5) · Claude · revisión app frente a web final y arreglos pequeños (sin publicar)
 
 - Rama local `claude/inicio-historia`, commits 8f2332b y 3e36d1d (**nada publicado, sin push, Supabase y EAS sin tocar, sin OTA**; `package.json`, `app.json`, `eas.json` y `scripts/` sin cambios desde 6b008ca). Comparado el texto visible de Inicio, Ofertas (las tres pestañas), la ficha (Robinhood, mTBILL, Boss Info) y el inglés en Expo web y en la web local: portada con «Fuentes» como la web; fila con el estado de la web («Cifras por actualizar», «Fuentes en conflicto», «Liquidez no confirmada», «Apertura no confirmada») en ámbar y la fecha de la revisión; reventa y próximas enseñan su mínimo y su salida documentados (antes «No verificado» en todas, porque el catálogo remoto las marca `cifrasPendientes`); «Otras ofertas principales» y buscador «Ej.: Spiko, Suiza…»; en la ficha, «Cifras» solo con el estado, la salida sin «Salida:» y los costes con la métrica. Zonas de toque ≥ 44 px. `npm test` completo en verde (móvil 406 + 2 omitidas). Pendiente (fuera de `rwadar-movil/`): la línea de novedades de la app usa el `titulo` y no el `resumen` porque `rwadar-noticias.js` no copia `resumen` a la app.
