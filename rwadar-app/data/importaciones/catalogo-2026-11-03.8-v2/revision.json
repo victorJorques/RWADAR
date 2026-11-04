@@ -18,6 +18,13 @@
     "realt.etiqueta_descarte",
     "realt.motivo_descarte"
   ],
+  "titulosFuentes": [
+    {
+      "url": "https://www.bridgedetroit.com/real-token-detroit-rent-repairs/",
+      "antes": "BridgeDetroit · un juez prohíbe a Real Token cobrar alquileres y ordena reparar",
+      "despues": "BridgeDetroit · una jueza prohíbe a Real Token cobrar alquileres y ordena reparar"
+    }
+  ],
   "fuentesNuevas": [
     "https://outliermedia.org/realt-crypto-real-estate-detroit-properties/"
   ],

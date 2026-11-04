@@ -4,10 +4,10 @@
   "etiqueta": "2026-11-03.8",
   "revisionPublicadaExigida": "f2732257-206d-48ce-2067-c7e19fa33002",
   "decision": "Víctor, 04/11/2026: «hasta que no esté todo no has acabado». Quedaban fuera de la entrega 2026-11-03.7 los textos de public.plataformas y public.fuentes de Reental, Toucan y RealT; la segunda revisión independiente pidió que el motivo de RealT dijera solo lo que dicen sus fuentes.",
-  "alcance": "Solo public.plataformas (la nota de Reental, el motivo de Toucan y la etiqueta y el motivo de RealT) y public.fuentes (RealT conserva sus 3 fuentes y gana la de Outlier Media). No crea ninguna revisión del catálogo: la publicada sigue siendo la f2732257. No cambia ningún estado, así que no registra cambios de estado ni avisos.",
+  "alcance": "Solo public.plataformas (la nota de Reental, el motivo de Toucan y la etiqueta y el motivo de RealT) y public.fuentes (RealT conserva sus 3 fuentes, en una se corrige el título «un juez» → «una jueza», y gana la de Outlier Media). No crea ninguna revisión del catálogo: la publicada sigue siendo la f2732257. No cambia ningún estado, así que no registra cambios de estado ni avisos.",
   "textos": {
     "archivo": "textos-plataformas.json",
-    "sha256": "0e8ead20748a085fefee4d4180a8e38765538f39af9a9a10d4ca05a9f45d3535"
+    "sha256": "dcf8dd92adca009956d3f7b6b3a17adabcb2025df2ecef75ccf5bc2e8c048570"
   },
   "cambios": [
     {
@@ -21,7 +21,7 @@
       "slug": "toucan-protocol",
       "columna": "motivo_descarte",
       "antes": "El bloqueo no es suyo sino del registro: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudia un estado «inmovilizado» que la permitiría, todavía sin resolver. Toucan respaldó públicamente la decisión.",
-      "despues": "El bloqueo no viene de Toucan, sino de los registros de carbono: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudia un estado «inmovilizado» que la permitiría, todavía sin resolver. Toucan respaldó públicamente la decisión.",
+      "despues": "El bloqueo no viene de Toucan, sino de los registros de carbono: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudiaba entonces un estado «inmovilizado» que la permitiría. Toucan respaldó públicamente la decisión.",
       "fuentes": [
         {
           "url": "https://www.spglobal.com/commodity-insights/en/news-research/latest-news/energy-transition/052522-as-verra-halts-tokenization-of-carbon-credits-toucan-vows-to-keep-web3-ethos-alive",
@@ -53,7 +53,7 @@
         },
         {
           "url": "https://www.bridgedetroit.com/real-token-detroit-rent-repairs/",
-          "titulo": "BridgeDetroit · un juez prohíbe a Real Token cobrar alquileres y ordena reparar"
+          "titulo": "BridgeDetroit · una jueza prohíbe a Real Token cobrar alquileres y ordena reparar"
         },
         {
           "url": "https://outliermedia.org/realt-crypto-real-estate-detroit-properties/",
@@ -65,7 +65,7 @@
       "slug": "realt",
       "columna": "motivo_descarte",
       "antes": "Detroit la demandó junto a sus 165 sociedades por más de 400 viviendas con infracciones, en la mayor demanda por insalubridad de la historia de la ciudad. Un juez le prohibió cobrar alquileres en las no conformes y le ordenó reparar. En julio de 2026 la propia empresa anunció liquidación voluntaria y la venta de sus más de 700 inmuebles en Detroit.",
-      "despues": "En julio de 2025, Detroit demandó a RealT, a sus dos cofundadores y a 165 sociedades vinculadas por más de 400 inmuebles residenciales que, según la demanda, incumplían las normas de construcción, salud y seguridad. Ese mismo mes, una orden judicial provisional le prohibió cobrar alquileres en sus inmuebles hasta que tuvieran certificado de cumplimiento y le ordenó corregir las infracciones. En julio de 2026, su cofundador Jean-Marc Jacobson dijo a los inversores que la empresa entraba en liquidación voluntaria y que iban a vender todos sus activos. RealT había vendido en tokens participaciones de unos 700 inmuebles de Detroit.",
+      "despues": "En julio de 2025, Detroit demandó a RealT, a sus dos cofundadores y a 165 sociedades vinculadas por más de 400 inmuebles residenciales que, según la demanda, incumplían las normas de construcción, salud y seguridad. Ese mismo mes, una orden judicial provisional le prohibió cobrar alquileres en sus inmuebles hasta que tuvieran certificado de cumplimiento y le ordenó hacer reparaciones. En julio de 2026, su cofundador Jean-Marc Jacobson dijo a los inversores que la empresa entraba en liquidación voluntaria y que iban a vender todos sus activos. RealT había vendido en tokens participaciones de unos 700 inmuebles de Detroit.",
       "fuentes": [
         {
           "url": "https://detroitmi.gov/news/city-scores-major-win-tenants-living-troubled-real-token-properties-are-subject-sweeping-lawsuit",
@@ -77,13 +77,20 @@
         },
         {
           "url": "https://www.bridgedetroit.com/real-token-detroit-rent-repairs/",
-          "titulo": "BridgeDetroit · un juez prohíbe a Real Token cobrar alquileres y ordena reparar"
+          "titulo": "BridgeDetroit · una jueza prohíbe a Real Token cobrar alquileres y ordena reparar"
         },
         {
           "url": "https://outliermedia.org/realt-crypto-real-estate-detroit-properties/",
           "titulo": "Outlier Media · RealT planea vender sus inmuebles de Detroit"
         }
       ]
+    }
+  ],
+  "titulosFuentes": [
+    {
+      "url": "https://www.bridgedetroit.com/real-token-detroit-rent-repairs/",
+      "antes": "BridgeDetroit · un juez prohíbe a Real Token cobrar alquileres y ordena reparar",
+      "despues": "BridgeDetroit · una jueza prohíbe a Real Token cobrar alquileres y ordena reparar"
     }
   ],
   "fuentesNuevas": [
@@ -98,7 +105,7 @@
   "sinCambios": [
     "rwadar_catalogo (ninguna revisión nueva; la publicada sigue siendo la .7)",
     "estados y fechas de verificación de las plataformas",
-    "las 3 fuentes que RealT ya tenía y las 3 de Toucan",
+    "las direcciones y fechas de las 3 fuentes que RealT ya tenía (de una solo cambia el título) y las 3 de Toucan",
     "Domoblock, Goldfinch y las otras 25 plataformas del radar",
     "24 ofertas"
   ]

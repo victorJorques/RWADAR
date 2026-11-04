@@ -5,7 +5,8 @@
 //
 // No es un lote del catálogo: no crea ninguna revisión en rwadar_catalogo. Exige que la
 // publicada sea exactamente la f2732257 (entrega 2026-11-03.7) y, en una sola transacción
-// serializable, cambia solo cuatro textos y añade una fuente a RealT. Las guardas comprueban
+// serializable, cambia solo cuatro textos, corrige el título de una fuente de RealT («un juez» →
+// «una jueza») y le añade una fuente nueva. Las guardas comprueban
 // antes que producción está exactamente como se espera (los textos, los estados, las fuentes
 // con su dirección Y su título, la revisión publicada y su identidad) o ya como quedaría
 // (idempotente); cualquier otra cosa lo deshace todo. Después comprueba el resultado.
@@ -66,7 +67,15 @@ for (const [slug, , columna, c] of filas) {
   if (columna === 'motivo_descarte') assert.ok(c.despues.length >= 40, `${slug}: motivo demasiado breve`);
 }
 // El motivo de RealT es exactamente sus frases, y cada frase tiene su fuente entre las de RealT.
+// RealT conserva sus fuentes (misma dirección); a las que llevan «tituloAntes» se les corrige el
+// título. fuentesRealtAntes es lo que hay hoy; fuentesRealt, lo que queda.
 const fuentesRealt = [...realt.fuentesQueSeConservan, ...realt.fuentesNuevas];
+const fuentesRealtAntes = realt.fuentesQueSeConservan.map(f => ({ url: f.url, titulo: f.tituloAntes ?? f.titulo }));
+const titulosCorregidos = realt.fuentesQueSeConservan.filter(f => f.tituloAntes !== undefined);
+for (const f of titulosCorregidos) {
+  assert.ok(typeof f.tituloAntes === 'string' && f.tituloAntes.trim() && f.tituloAntes !== f.titulo, `${f.url}: título sin cambio`);
+  assert.equal(f.titulo, f.titulo.trim().replace(/\s+/g, ' '), `${f.url}: espacios sobrantes en el título`);
+}
 assert.equal(realt.motivo_descarte.frases.map(f => f.texto).join(' '), realt.motivo_descarte.despues, 'el motivo de RealT son sus frases');
 for (const f of realt.motivo_descarte.frases) {
   assert.ok(fuentesRealt.some(x => x.url === f.fuente), `RealT: «${f.texto.slice(0, 40)}…» sin fuente de la ficha`);
@@ -87,7 +96,7 @@ assert.equal(fueraPor['Toucan Protocol']?.why, toucan.motivo_descarte.antes, 'To
 assert.equal(fueraPor.RealT?.badge, realt.etiqueta_descarte.antes, 'RealT: etiqueta publicada');
 assert.equal(fueraPor.RealT?.why, realt.motivo_descarte.antes, 'RealT: motivo publicado');
 const parUrlTitulo = l => l.map(f => `${f.url}\n${f.titulo}`).sort();
-assert.deepEqual(parUrlTitulo(fueraPor.RealT.fuentes), parUrlTitulo(realt.fuentesQueSeConservan), 'RealT: fuentes publicadas (dirección y título)');
+assert.deepEqual(parUrlTitulo(fueraPor.RealT.fuentes), parUrlTitulo(fuentesRealtAntes), 'RealT: fuentes publicadas (dirección y título)');
 assert.deepEqual(parUrlTitulo(fueraPor['Toucan Protocol'].fuentes), parUrlTitulo(toucan.fuentes), 'Toucan: fuentes publicadas (dirección y título)');
 assert.ok(!fueraPor.RealT.fuentes.some(f => realt.fuentesNuevas.some(n => n.url === f.url)), 'RealT: la fuente nueva no está publicada todavía');
 
@@ -101,7 +110,10 @@ const fuentesIguales = (slug, lista) => `(select count(*) from public.fuentes f 
 const nuevasConFechas = realt.fuentesNuevas.map(f => `exists (select 1 from public.fuentes f join public.plataformas p on p.id = f.plataforma_id
         where p.slug = 'realt' and f.url = ${q(f.url)} and f.titulo = ${q(f.titulo)}
           and f.publicada_el = ${q(f.publicada_el)}::date and f.consultada_el = ${q(f.consultada_el)}::date)`).join('\n      and ');
-const realtAntes = fuentesIguales('realt', realt.fuentesQueSeConservan);
+const realtAntes = fuentesIguales('realt', fuentesRealtAntes);
+// La fuente nueva no puede estar ya colgada de otra plataforma.
+const nuevasSoloEnRealt = `not exists (select 1 from public.fuentes f join public.plataformas p on p.id = f.plataforma_id
+        where p.slug <> 'realt' and f.url in (${realt.fuentesNuevas.map(f => q(f.url)).join(', ')}))`;
 const realtDespues = `${fuentesIguales('realt', fuentesRealt)}
       and ${nuevasConFechas}`;
 const texto = (slug, columna, v) => `(select ${columna} from public.plataformas where slug = ${q(slug)}) = ${q(v)}`;
@@ -143,6 +155,9 @@ ${filas.map(([slug, estado, columna, c]) => `  if (select count(*) from public.p
       or (${realtDespues})) then
     raise exception 'Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.';
   end if;
+  if not (${nuevasSoloEnRealt}) then
+    raise exception 'La fuente nueva ya está en otra plataforma: no aplicar.';
+  end if;
   if (select count(*) from public.plataformas where estado = 'descartada') <> ${textos.descartadas} then
     raise exception 'Tiene que haber exactamente ${textos.descartadas} descartadas: no aplicar.';
   end if;
@@ -154,6 +169,7 @@ ${filas.map(([slug, estado, columna, c]) => `  if (select count(*) from public.p
   end if;
 end $guarda$;
 ${filas.map(([slug, , columna, c]) => `update public.plataformas set ${columna} = ${q(c.despues)} where slug = ${q(slug)} and ${columna} = ${q(c.antes)};`).join('\n')}
+${titulosCorregidos.map(f => `update public.fuentes set titulo = ${q(f.titulo)} where url = ${q(f.url)} and titulo = ${q(f.tituloAntes)} and plataforma_id = (select id from public.plataformas where slug = 'realt');`).join('\n')}
 ${realt.fuentesNuevas.map(f => `insert into public.fuentes (plataforma_id,url,titulo,publicada_el,consultada_el) select id,${q(f.url)},${q(f.titulo)},${q(f.publicada_el)}::date,${q(f.consultada_el)}::date from public.plataformas where slug = 'realt' on conflict (plataforma_id,url) do nothing;`).join('\n')}
 do $comprobar$
 begin
@@ -162,6 +178,9 @@ ${filas.map(([slug, , columna, c]) => `  if (select ${columna} from public.plata
   end if;`).join('\n')}
   if not (${realtDespues}) then
     raise exception 'RealT no quedó con sus ${fuentesRealt.length} fuentes previstas.';
+  end if;
+  if not (${nuevasSoloEnRealt}) then
+    raise exception 'La fuente nueva quedó en otra plataforma.';
   end if;
   if not (${fuentesIguales('toucan-protocol', toucan.fuentes)}) then
     raise exception 'Las fuentes de Toucan cambiaron.';
@@ -182,7 +201,9 @@ escribir(path.join(destino, 'revision.json'), { versionEsquema: 2, tipo: 'textos
   revisionId: null, revisionNueva: false, revisionPublicadaExigida: PREVIA, hashRevisionPublicadaExigida: HASH_PREVIA,
   revisionPublicadaComprobadaEnRemoto: false, desde: DESDE,
   tablas: ['public.plataformas', 'public.fuentes'],
-  cambios: filas.map(([slug, , columna]) => `${slug}.${columna}`), fuentesNuevas: realt.fuentesNuevas.map(f => f.url),
+  cambios: filas.map(([slug, , columna]) => `${slug}.${columna}`),
+  titulosFuentes: titulosCorregidos.map(f => ({ url: f.url, antes: f.tituloAntes, despues: f.titulo })),
+  fuentesNuevas: realt.fuentesNuevas.map(f => f.url),
   estado: 'preparada', aplicadoEnRemoto: false, publicacionWeb: false });
 escribir(path.join(DIR, `contraste-${ETIQUETA}.json`), { tipo: 'textos_plataformas', preparadaEl: '2026-11-04', etiqueta: ETIQUETA,
   revisionPublicadaExigida: PREVIA, decision: textos.decision, alcance: textos.alcance,
@@ -190,8 +211,10 @@ escribir(path.join(DIR, `contraste-${ETIQUETA}.json`), { tipo: 'textos_plataform
   cambios: filas.map(([slug, , columna, c]) => ({ slug, columna, antes: c.antes, despues: c.despues,
     fuentes: slug === 'realt' ? fuentesRealt.map(f => ({ url: f.url, titulo: f.titulo }))
       : slug === 'toucan-protocol' ? toucan.fuentes : [] })),
+  titulosFuentes: titulosCorregidos.map(f => ({ url: f.url, antes: f.tituloAntes, despues: f.titulo })),
   fuentesNuevas: realt.fuentesNuevas, sinCambios: ['rwadar_catalogo (ninguna revisión nueva; la publicada sigue siendo la .7)',
-    'estados y fechas de verificación de las plataformas', 'las 3 fuentes que RealT ya tenía y las 3 de Toucan',
+    'estados y fechas de verificación de las plataformas',
+    'las direcciones y fechas de las 3 fuentes que RealT ya tenía (de una solo cambia el título) y las 3 de Toucan',
     'Domoblock, Goldfinch y las otras 25 plataformas del radar', '24 ofertas'] });
 console.log(JSON.stringify({ etiqueta: ETIQUETA, previa: PREVIA, sha256: sha(archivo), cambios: filas.length,
-  fuentesNuevas: realt.fuentesNuevas.length }));
+  titulosFuentes: titulosCorregidos.length, fuentesNuevas: realt.fuentesNuevas.length }));

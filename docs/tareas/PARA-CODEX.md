@@ -15,7 +15,7 @@ Víctor: «hasta que no esté todo no has acabado». Rama local
 - **Qué es:** solo los textos de `public.plataformas` y `public.fuentes` que
   quedaron fuera de la .7. No crea revisión del catálogo: exige que la
   publicada sea la `f2732257` (aprobada y con su huella) y la deja publicada.
-  `aplicar-y-aprobar.sql` SHA `20d876b2e28b5bd02a3001913fc8c8dd2d103eeb07952c5af183cdb08313c49e`.
+  `aplicar-y-aprobar.sql` SHA `c353e6d901f730b31b7be791c1d08e127c1c232b734c40d930bbe7f1847ea772`.
   - **Reental:** la nota sin «La opción más accesible…».
   - **Toucan:** «El bloqueo no viene de Toucan, sino de los registros de
     carbono: …» (el resto, igual).

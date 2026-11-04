@@ -1,17 +1,17 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-04T17:40:22.525Z",
+  "ejecutadoEl": "2026-11-04T18:24:20.205Z",
   "etiqueta": "2026-11-03.8",
   "revisionPublicadaExigida": "f2732257-206d-48ce-2067-c7e19fa33002",
-  "sha256AplicarYAprobar": "20d876b2e28b5bd02a3001913fc8c8dd2d103eeb07952c5af183cdb08313c49e",
+  "sha256AplicarYAprobar": "c353e6d901f730b31b7be791c1d08e127c1c232b734c40d930bbe7f1847ea772",
   "pruebas": [
-    "inventario: una transacción serializable con guarda, 4 update de public.plataformas (nota, motivo_descarte y etiqueta_descarte), 1 insert en public.fuentes y comprobación final; nada en rwadar_catalogo, sin estados, sin esquema ni permisos",
+    "inventario: una transacción serializable con guarda, 4 update de public.plataformas (nota, motivo_descarte y etiqueta_descarte), 1 update del título de una fuente de RealT, 1 insert en public.fuentes y comprobación final; nada en rwadar_catalogo, sin estados, sin esquema ni permisos",
     "la publicada sigue siendo la f2732257; rwadar_catalogo sin cambios; sin cambios de estado ni avisos",
     "public.plataformas: cambian solo la nota de Reental, el motivo de Toucan y la etiqueta y el motivo de RealT; estados y fechas de verificación iguales",
-    "public.fuentes: las 10 de antes intactas y solo una nueva, Outlier Media en RealT, con su título y sus fechas",
+    "public.fuentes: las 10 de antes intactas salvo el título de la de BridgeDetroit 24/07/2025 («un juez» → «una jueza»), y solo una nueva, Outlier Media en RealT, con su título y sus fechas",
     "idempotente: aplicarla dos veces da lo mismo (ni siquiera cambia actualizada_el la segunda vez)",
     "como visitante: 26 plataformas y 24 ofertas de la f2732257; solo cambia la nota de Reental; el lector de la web lo acepta",
-    "descartes como los lee sincronizar.js: 4; RealT con su etiqueta, su motivo y 4 fuentes; Toucan con su motivo y sus 3 fuentes; Domoblock y Goldfinch iguales",
+    "descartes como los lee sincronizar.js: 4; RealT con su etiqueta, su motivo y 4 fuentes (la de la jueza con el título corregido); Toucan con su motivo y sus 3 fuentes; Domoblock y Goldfinch iguales",
     "las fichas fijas se generan con los textos nuevos (/fuera-del-radar/realt con Outlier, /fuera-del-radar/toucan-protocol, /plataformas/reental)",
     "con todo ya como quedaría, pasa la guarda y no cambia nada",
     "falla y no deja nada: la publicada no es la f2732257 → Publicación distinta de la revisión prevista (2026-11-03.7): 344a86aa-2c53-d2f0-fed4-5fdaadda33ad. No aplicar esta entrega.",
@@ -21,18 +21,23 @@
     "falla y no deja nada: motivo de Toucan distinto → Texto de toucan-protocol (motivo_descarte) distinto del previsto: no aplicar.",
     "falla y no deja nada: etiqueta de RealT distinta → Texto de realt (etiqueta_descarte) distinto del previsto: no aplicar.",
     "falla y no deja nada: motivo de RealT distinto → Texto de realt (motivo_descarte) distinto del previsto: no aplicar.",
-    "falla y no deja nada: se aplicó antes el textos-plataformas.sql de la 2026-11-03.7 → Texto de realt (motivo_descarte) distinto del previsto: no aplicar.",
+    "falla y no deja nada: se aplicó antes el textos-plataformas.sql de la 2026-11-03.7 → Texto de toucan-protocol (motivo_descarte) distinto del previsto: no aplicar.",
     "falla y no deja nada: RealT con una fuente de más → Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
     "falla y no deja nada: RealT sin una de sus 3 fuentes → Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
     "falla y no deja nada: una fuente de RealT con otro título (misma dirección) → Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
     "falla y no deja nada: una fuente de RealT sin título → Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
     "falla y no deja nada: Outlier ya presente con otro título → Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
+    "falla y no deja nada: Outlier ya colgada de otra plataforma (Reental) → La fuente nueva ya está en otra plataforma: no aplicar.",
+    "falla y no deja nada: la fuente de la jueza con un título que no es ni el de antes ni el nuevo → Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
     "falla y no deja nada: Outlier ya presente con el título previsto pero otras fechas → Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
     "falla y no deja nada: una fuente de Toucan con otro título (misma dirección) → Fuentes de Toucan (dirección o título) distintas de las previstas: no aplicar.",
     "falla y no deja nada: una quinta descartada → Tiene que haber exactamente 4 descartadas: no aplicar.",
     "falla y no deja nada: a medias: solo Reental ya cambiado → Textos y fuentes a medias entre lo anterior y lo nuevo: no aplicar.",
-    "falla y no deja nada: a medias: los textos ya nuevos pero sin Outlier → Textos y fuentes a medias entre lo anterior y lo nuevo: no aplicar.",
-    "falla y no deja nada: a medias: Outlier ya puesto y los textos como antes → Textos y fuentes a medias entre lo anterior y lo nuevo: no aplicar.",
+    "falla y no deja nada: a medias: los textos ya nuevos pero sin Outlier (y la jueza con el título de antes) → Textos y fuentes a medias entre lo anterior y lo nuevo: no aplicar.",
+    "falla y no deja nada: a medias: Outlier ya puesto y los textos como antes → Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
+    "falla y no deja nada: a medias: solo el título de la jueza ya corregido → Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
+    "falla y no deja nada: a medias: todo ya nuevo salvo el título de la jueza → Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
+    "falla y no deja nada: a medias: los textos ya nuevos y la jueza corregida, sin Outlier → Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
     "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar esta entrega."
   ],
   "casos": [
@@ -103,7 +108,7 @@
     {
       "caso": "se aplicó antes el textos-plataformas.sql de la 2026-11-03.7",
       "falla": true,
-      "error": "Texto de realt (motivo_descarte) distinto del previsto: no aplicar.",
+      "error": "Texto de toucan-protocol (motivo_descarte) distinto del previsto: no aplicar.",
       "todoIgual": true
     },
     {
@@ -137,6 +142,18 @@
       "todoIgual": true
     },
     {
+      "caso": "Outlier ya colgada de otra plataforma (Reental)",
+      "falla": true,
+      "error": "La fuente nueva ya está en otra plataforma: no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la fuente de la jueza con un título que no es ni el de antes ni el nuevo",
+      "falla": true,
+      "error": "Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
+      "todoIgual": true
+    },
+    {
       "caso": "Outlier ya presente con el título previsto pero otras fechas",
       "falla": true,
       "error": "Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
@@ -161,7 +178,7 @@
       "todoIgual": true
     },
     {
-      "caso": "a medias: los textos ya nuevos pero sin Outlier",
+      "caso": "a medias: los textos ya nuevos pero sin Outlier (y la jueza con el título de antes)",
       "falla": true,
       "error": "Textos y fuentes a medias entre lo anterior y lo nuevo: no aplicar.",
       "todoIgual": true
@@ -169,7 +186,25 @@
     {
       "caso": "a medias: Outlier ya puesto y los textos como antes",
       "falla": true,
-      "error": "Textos y fuentes a medias entre lo anterior y lo nuevo: no aplicar.",
+      "error": "Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "a medias: solo el título de la jueza ya corregido",
+      "falla": true,
+      "error": "Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "a medias: todo ya nuevo salvo el título de la jueza",
+      "falla": true,
+      "error": "Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "a medias: los textos ya nuevos y la jueza corregida, sin Outlier",
+      "falla": true,
+      "error": "Fuentes de RealT (dirección, título o fechas de la nueva) distintas de las previstas: no aplicar.",
       "todoIgual": true
     },
     {
@@ -213,7 +248,7 @@
     {
       "nombre": "RealT",
       "etiqueta_descarte": "Liquidación anunciada",
-      "motivo_descarte": "En julio de 2025, Detroit demandó a RealT, a sus dos cofundadores y a 165 sociedades vinculadas por más de 400 inmuebles residenciales que, según la demanda, incumplían las normas de construcción, salud y seguridad. Ese mismo mes, una orden judicial provisional le prohibió cobrar alquileres en sus inmuebles hasta que tuvieran certificado de cumplimiento y le ordenó corregir las infracciones. En julio de 2026, su cofundador Jean-Marc Jacobson dijo a los inversores que la empresa entraba en liquidación voluntaria y que iban a vender todos sus activos. RealT había vendido en tokens participaciones de unos 700 inmuebles de Detroit.",
+      "motivo_descarte": "En julio de 2025, Detroit demandó a RealT, a sus dos cofundadores y a 165 sociedades vinculadas por más de 400 inmuebles residenciales que, según la demanda, incumplían las normas de construcción, salud y seguridad. Ese mismo mes, una orden judicial provisional le prohibió cobrar alquileres en sus inmuebles hasta que tuvieran certificado de cumplimiento y le ordenó hacer reparaciones. En julio de 2026, su cofundador Jean-Marc Jacobson dijo a los inversores que la empresa entraba en liquidación voluntaria y que iban a vender todos sus activos. RealT había vendido en tokens participaciones de unos 700 inmuebles de Detroit.",
       "fuentes": [
         {
           "url": "https://detroitmi.gov/news/city-scores-major-win-tenants-living-troubled-real-token-properties-are-subject-sweeping-lawsuit",
@@ -229,14 +264,14 @@
         },
         {
           "url": "https://www.bridgedetroit.com/real-token-detroit-rent-repairs/",
-          "titulo": "BridgeDetroit · un juez prohíbe a Real Token cobrar alquileres y ordena reparar"
+          "titulo": "BridgeDetroit · una jueza prohíbe a Real Token cobrar alquileres y ordena reparar"
         }
       ]
     },
     {
       "nombre": "Toucan Protocol",
       "etiqueta_descarte": "Registro bloqueado",
-      "motivo_descarte": "El bloqueo no viene de Toucan, sino de los registros de carbono: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudia un estado «inmovilizado» que la permitiría, todavía sin resolver. Toucan respaldó públicamente la decisión.",
+      "motivo_descarte": "El bloqueo no viene de Toucan, sino de los registros de carbono: Verra prohibió en 2022 tokenizar créditos ya retirados, y tanto Verra como el American Carbon Registry suspendieron la tokenización desde sus registros. Verra estudiaba entonces un estado «inmovilizado» que la permitiría. Toucan respaldó públicamente la decisión.",
       "fuentes": [
         {
           "url": "https://blog.toucan.earth/response-to-verras-announcement/",

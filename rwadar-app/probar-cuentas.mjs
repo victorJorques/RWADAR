@@ -106,8 +106,10 @@ paso('el radar baja a 24 tras los dos descartes de la prueba',
   (await n('select count(*)::int c from radar_publico'))[0].c === 24);
 paso('el guardián detecta las 2 descartadas sin fuente que crea la prueba',
   (await n('select count(*)::int c from descartadas_sin_fuente'))[0].c === 2);
-paso('las 4 descartadas reales conservan sus 10 fuentes',
-  (await n('select count(*)::int c from fuentes'))[0].c === 10);
+/* Las fuentes de 02_seed.sql (el volcado de producción), sin fijar un número. */
+const fuentesSeed = (fs.readFileSync('db/02_seed.sql', 'utf8').match(/^insert into fuentes /gm) || []).length;
+paso(`las 4 descartadas reales conservan sus ${fuentesSeed} fuentes de 02_seed.sql`,
+  fuentesSeed > 0 && (await n('select count(*)::int c from fuentes'))[0].c === fuentesSeed);
 
 console.log('=== PRUEBAS DE CUENTAS ===');
 ok.forEach(t => console.log('  OK   ', t));

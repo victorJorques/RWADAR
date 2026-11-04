@@ -2,11 +2,13 @@
 // Reental, Toucan y RealT) en PGlite, sin red, sobre la misma cadena que producción
 // (22/10 → 03/11.7, con la f2732257 publicada):
 //   1. qué sentencias lleva el SQL y qué tablas toca;
-//   2. con producción como se espera: cambian solo los cuatro textos y se añade la fuente de
-//      Outlier; el catálogo (rwadar_catalogo), los estados, las fechas, las demás fuentes, los
-//      cambios de estado y los avisos no se mueven; idempotente; lo que leen la web y la app;
-//   3. con producción distinta en cualquier punto (también una fuente con otro título, o la de
-//      Outlier ya presente con otro título u otras fechas, o a medias), falla y no deja nada.
+//   2. con producción como se espera: cambian solo los cuatro textos, el título de la fuente de
+//      BridgeDetroit del 24/07/2025 («un juez» → «una jueza») y se añade la fuente de Outlier; el
+//      catálogo (rwadar_catalogo), los estados, las fechas, las demás fuentes, los cambios de
+//      estado y los avisos no se mueven; idempotente; lo que leen la web y la app;
+//   3. con producción distinta en cualquier punto (también una fuente con otro título, la de
+//      Outlier ya presente con otro título u otras fechas o en otra plataforma, o a medias),
+//      falla y no deja nada.
 //
 //   node rwadar-app/data/verificaciones/2026-11-03.8-v2/comprobar-entrega.mjs
 import assert from 'node:assert/strict';
@@ -37,6 +39,8 @@ assert.equal(revision.revisionPublicadaExigida, PREVIA);
 assert.equal(revision.revisionNueva, false);
 const pp = textos.plataformas, realt = pp.realt, toucan = pp['toucan-protocol'];
 const OUTLIER = realt.fuentesNuevas[0];
+const JUEZA = realt.fuentesQueSeConservan.filter(f => f.tituloAntes !== undefined);
+assert.equal(JUEZA.length, 1, 'una fuente de RealT cambia de título');
 const esperado = { reental: { nota: pp.reental.nota.despues },
   'toucan-protocol': { motivo_descarte: toucan.motivo_descarte.despues },
   realt: { etiqueta_descarte: realt.etiqueta_descarte.despues, motivo_descarte: realt.motivo_descarte.despues } };
@@ -56,17 +60,20 @@ const sinComentarios = SQL.replace(/^--.*$/gm, '').replace(/^do \$(\w+)\$\n[\s\S
 const sentencias = sinComentarios.match(/^(begin|do|update|insert|delete|commit|alter|create|drop|grant|revoke|truncate|select)\b[^\n]*/gim)
   .map(s => s.split(/\s+/).slice(0, 3).join(' ').replace(/\$\w+\$$/, '').trim());
 assert.deepEqual(sentencias, ['begin isolation level', 'do', 'update public.plataformas set', 'update public.plataformas set',
-  'update public.plataformas set', 'update public.plataformas set', 'insert into public.fuentes', 'do', 'commit;']);
+  'update public.plataformas set', 'update public.plataformas set', 'update public.fuentes set', 'insert into public.fuentes', 'do', 'commit;']);
 assert.deepEqual(SQL.match(/^update public\.plataformas set (\w+) = /gm).map(s => s.split(' ')[3]),
   ['nota', 'motivo_descarte', 'etiqueta_descarte', 'motivo_descarte'], 'columnas que cambia');
 assert.doesNotMatch(SQL, /\b(delete\s+from|truncate|alter\s+(?:table|role|type)|drop\s|create\s|grant\s|revoke\s)\b/i);
 assert.doesNotMatch(SQL, /\b(?:update|insert\s+into|delete\s+from)\s+rwadar_catalogo\./i, 'no escribe en rwadar_catalogo');
-assert.equal((SQL.match(/\bupdate\s+public\./gi) || []).length, 4);
+assert.equal((SQL.match(/\bupdate\s+public\.plataformas\b/gi) || []).length, 4);
+assert.deepEqual(SQL.match(/^update public\.fuentes set [^\n]*$/gm), [`update public.fuentes set titulo = '${JUEZA[0].titulo}' where url = '${JUEZA[0].url}' and titulo = '${JUEZA[0].tituloAntes}' and plataforma_id = (select id from public.plataformas where slug = 'realt');`],
+  'el único cambio en una fuente existente: el título de una de RealT, solo si sigue con el de antes');
+assert.equal((SQL.match(/\bupdate\s+public\./gi) || []).length, 5);
 assert.equal((SQL.match(/\binsert\s+into\s/gi) || []).length, 1);
 assert.equal((SQL.match(/\bset\s+estado\b/gi) || []).length, 0, 'no cambia ningún estado');
 assert.match(SQL, /^begin isolation level serializable;$/m);
 assert.ok(SQL.endsWith('end $comprobar$;\ncommit;\n'));
-ok('inventario: una transacción serializable con guarda, 4 update de public.plataformas (nota, motivo_descarte y etiqueta_descarte), 1 insert en public.fuentes y comprobación final; nada en rwadar_catalogo, sin estados, sin esquema ni permisos');
+ok('inventario: una transacción serializable con guarda, 4 update de public.plataformas (nota, motivo_descarte y etiqueta_descarte), 1 update del título de una fuente de RealT, 1 insert en public.fuentes y comprobación final; nada en rwadar_catalogo, sin estados, sin esquema ni permisos');
 
 // ---------------------------------------------------------------- base como producción
 async function base() {
@@ -110,7 +117,9 @@ async function foto(db) {
 const set = (slug, col, v) => `update public.plataformas set ${col} = '${v.replace(/'/g, "''")}' where slug = '${slug}';`;
 const fuenteRealt = (url, titulo, extra = '') => `insert into public.fuentes (plataforma_id,url,titulo${extra ? ',publicada_el,consultada_el' : ''})
   select id,'${url}','${titulo.replace(/'/g, "''")}'${extra} from public.plataformas where slug='realt';`;
-const ya = Object.entries(esperado).flatMap(([slug, cols]) => Object.entries(cols).map(([c, v]) => set(slug, c, v))).join('\n');
+const tituloJueza = JUEZA.map(f => `update public.fuentes set titulo = '${f.titulo}' where url = '${f.url}';`).join('\n');
+const yaTextos = Object.entries(esperado).flatMap(([slug, cols]) => Object.entries(cols).map(([c, v]) => set(slug, c, v))).join('\n');
+const ya = `${yaTextos}\n${tituloJueza}`;
 const outlierBien = fuenteRealt(OUTLIER.url, OUTLIER.titulo, `,'${OUTLIER.publicada_el}'::date,'${OUTLIER.consultada_el}'::date`);
 
 async function caso(nombre, preparar, esperaFallo, extra) {
@@ -151,15 +160,18 @@ await caso('producción como la prevista', null, false, async (db, antes, despue
   for (const [slug, cols] of Object.entries(esperado)) for (const [c, v] of Object.entries(cols))
     assert.equal(JSON.parse(despues.plataformas).find(x => x.slug === slug)[c], v, `${slug}.${c}`);
   ok('public.plataformas: cambian solo la nota de Reental, el motivo de Toucan y la etiqueta y el motivo de RealT; estados y fechas de verificación iguales');
-  // public.fuentes: las de antes intactas y una más, la de Outlier, con su título y sus fechas.
+  // public.fuentes: las de antes intactas salvo el título de la de la jueza, y una más, la de
+  // Outlier, con su título y sus fechas.
   const fA = JSON.parse(antes.fuentes), fD = JSON.parse(despues.fuentes);
-  assert.deepEqual(fD.filter(f => fA.some(x => x.id === f.id)), fA, 'las fuentes de antes, intactas');
+  const corregir = f => { const j = JUEZA.find(x => x.url === f.url && x.tituloAntes === f.titulo); return j ? { ...f, titulo: j.titulo } : f; };
+  assert.equal(fA.filter(f => JUEZA.some(x => x.url === f.url && x.tituloAntes === f.titulo)).length, JUEZA.length, 'la de la jueza estaba con el título de antes');
+  assert.deepEqual(fD.filter(f => fA.some(x => x.id === f.id)), fA.map(corregir), 'las fuentes de antes, intactas salvo ese título');
   const nuevas = fD.filter(f => !fA.some(x => x.id === f.id));
   assert.equal(nuevas.length, 1);
   const { id, plataforma_id, ...nueva } = nuevas[0];
   assert.equal(plataforma_id, JSON.parse(despues.plataformas).find(x => x.slug === 'realt').id);
   assert.deepEqual(nueva, { url: OUTLIER.url, titulo: OUTLIER.titulo, publicada_el: OUTLIER.publicada_el, consultada_el: OUTLIER.consultada_el });
-  ok(`public.fuentes: las ${fA.length} de antes intactas y solo una nueva, Outlier Media en RealT, con su título y sus fechas`);
+  ok(`public.fuentes: las ${fA.length} de antes intactas salvo el título de la de BridgeDetroit 24/07/2025 («un juez» → «una jueza»), y solo una nueva, Outlier Media en RealT, con su título y sus fechas`);
   return { cambiadas, fuenteNueva: { url: nuevas[0].url, titulo: nuevas[0].titulo } };
 });
 
@@ -192,7 +204,8 @@ await caso('producción como la prevista', null, false, async (db, antes, despue
     assert.equal(d1.RealT.motivo_descarte, esperado.realt.motivo_descarte);
     assert.deepEqual(d1.RealT.fuentes, [...realt.fuentesQueSeConservan, ...realt.fuentesNuevas]
       .map(f => ({ url: f.url, titulo: f.titulo })).sort((x, y) => x.url < y.url ? -1 : 1));
-    ok('descartes como los lee sincronizar.js: 4; RealT con su etiqueta, su motivo y 4 fuentes; Toucan con su motivo y sus 3 fuentes; Domoblock y Goldfinch iguales');
+    assert.ok(d1.RealT.fuentes.some(f => f.titulo === JUEZA[0].titulo) && !d1.RealT.fuentes.some(f => f.titulo === JUEZA[0].tituloAntes));
+    ok('descartes como los lee sincronizar.js: 4; RealT con su etiqueta, su motivo y 4 fuentes (la de la jueza con el título corregido); Toucan con su motivo y sus 3 fuentes; Domoblock y Goldfinch iguales');
     // Lo que publicaría la web tras sincronizar: el snapshot de hoy con lo que devuelve la base.
     const snap = fichas.leerBloquesCatalogo(fs.readFileSync(path.join(ROOT, 'rwadar-site/assets/catalogo-publico-20261022.js'), 'utf8'));
     snap.plataformas = snap.plataformas.map(p => p.slug === 'reental' ? { ...p, nota: esperado.reental.nota } : p);
@@ -201,6 +214,7 @@ await caso('producción como la prevista', null, false, async (db, antes, despue
     const pagina = n => salidas.get(n);
     assert.ok(pagina('fuera-del-radar/realt.html').includes(fichas.esc(esperado.realt.motivo_descarte)));
     assert.ok(pagina('fuera-del-radar/realt.html').includes(OUTLIER.url));
+    assert.ok(pagina('fuera-del-radar/realt.html').includes(fichas.esc(JUEZA[0].titulo)));
     assert.ok(pagina('fuera-del-radar/toucan-protocol.html').includes(fichas.esc(esperado['toucan-protocol'].motivo_descarte)));
     assert.ok(!pagina('plataformas/reental.html').includes(fichas.esc(pp.reental.nota.antes)));
     for (const [n, html] of salidas) if (/\.html$/.test(n))
@@ -228,21 +242,29 @@ await caso('etiqueta de RealT distinta', set('realt', 'etiqueta_descarte', 'Cerr
 await caso('motivo de RealT distinto', set('realt', 'motivo_descarte', 'Otro motivo cualquiera para el descarte de RealT, bastante largo.'), /realt \(motivo_descarte\)/);
 // Si alguien hubiera aplicado el textos-plataformas.sql de la .7 (no aprobado), tampoco.
 await caso('se aplicó antes el textos-plataformas.sql de la 2026-11-03.7',
-  fs.readFileSync('data/importaciones/catalogo-2026-11-03.7-v2/textos-plataformas.sql', 'utf8'), /realt \(motivo_descarte\)/);
+  fs.readFileSync('data/importaciones/catalogo-2026-11-03.7-v2/textos-plataformas.sql', 'utf8'), /Texto de .* distinto del previsto/);
 await caso('RealT con una fuente de más', fuenteRealt('https://example.org/otra', 'Otra'), /Fuentes de RealT/);
 await caso('RealT sin una de sus 3 fuentes', `delete from public.fuentes where url = '${realt.fuentesQueSeConservan[2].url}';`, /Fuentes de RealT/);
 await caso('una fuente de RealT con otro título (misma dirección)',
   `update public.fuentes set titulo = 'Otro título' where url = '${realt.fuentesQueSeConservan[1].url}';`, /Fuentes de RealT/);
 await caso('una fuente de RealT sin título', `update public.fuentes set titulo = null where url = '${realt.fuentesQueSeConservan[0].url}';`, /Fuentes de RealT/);
 await caso('Outlier ya presente con otro título', fuenteRealt(OUTLIER.url, 'Título distinto'), /Fuentes de RealT/);
+await caso('Outlier ya colgada de otra plataforma (Reental)', `insert into public.fuentes (plataforma_id,url,titulo,publicada_el,consultada_el)
+  select id,'${OUTLIER.url}','${OUTLIER.titulo}','${OUTLIER.publicada_el}'::date,'${OUTLIER.consultada_el}'::date from public.plataformas where slug='reental';`,
+  /fuente nueva ya está en otra plataforma/);
+await caso('la fuente de la jueza con un título que no es ni el de antes ni el nuevo',
+  `update public.fuentes set titulo = 'BridgeDetroit · otro título' where url = '${JUEZA[0].url}';`, /Fuentes de RealT/);
 await caso('Outlier ya presente con el título previsto pero otras fechas',
   fuenteRealt(OUTLIER.url, OUTLIER.titulo, `,'2026-07-15'::date,'${OUTLIER.consultada_el}'::date`), /Fuentes de RealT/);
 await caso('una fuente de Toucan con otro título (misma dirección)',
   `update public.fuentes set titulo = 'Otro título' where url = '${toucan.fuentes[0].url}';`, /Fuentes de Toucan/);
 await caso('una quinta descartada', `update public.plataformas set estado = 'descartada', etiqueta_descarte = 'Prueba', motivo_descarte = 'Motivo de prueba suficientemente largo para la fila.' where slug = 'addx';`, /exactamente 4 descartadas/);
 await caso('a medias: solo Reental ya cambiado', set('reental', 'nota', esperado.reental.nota), /a medias/);
-await caso('a medias: los textos ya nuevos pero sin Outlier', ya, /a medias/);
-await caso('a medias: Outlier ya puesto y los textos como antes', outlierBien, /a medias/);
+await caso('a medias: los textos ya nuevos pero sin Outlier (y la jueza con el título de antes)', yaTextos, /a medias/);
+await caso('a medias: Outlier ya puesto y los textos como antes', outlierBien, /a medias|Fuentes de RealT/);
+await caso('a medias: solo el título de la jueza ya corregido', tituloJueza, /Fuentes de RealT/);
+await caso('a medias: todo ya nuevo salvo el título de la jueza', `${yaTextos}\n${outlierBien}`, /Fuentes de RealT/);
+await caso('a medias: los textos ya nuevos y la jueza corregida, sin Outlier', ya, /Fuentes de RealT/);
 // La revisión publicada con otra identidad (no debería poder pasar; se fuerza sin disparadores).
 await caso('la revisión publicada con otra huella',
   `set session_replication_role = replica; update rwadar_catalogo.revisiones set contenido_sha256 = repeat('0', 64) where id = '${PREVIA}'; set session_replication_role = origin;`,

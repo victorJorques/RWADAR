@@ -22,7 +22,11 @@ console.log('El núcleo 01-06 se aplica sin error.\n');
 
 paso('26 en el radar',(await n("select count(*)::int c from plataformas where estado='en_radar'"))[0].c===26);
 paso('4 descartadas',(await n("select count(*)::int c from plataformas where estado='descartada'"))[0].c===4);
-paso('10 fuentes documentales',(await n('select count(*)::int c from fuentes'))[0].c===10);
+/* Tantas fuentes como líneas «insert into fuentes» tenga 02_seed.sql, que es el volcado de
+   producción (volcar-seed.js): así la cuenta sigue al catálogo sin fijar un número. */
+const fuentesSeed=(fs.readFileSync('db/02_seed.sql','utf8').match(/^insert into fuentes /gm)||[]).length;
+paso(`las ${fuentesSeed} fuentes documentales de 02_seed.sql`,
+  fuentesSeed>0&&(await n('select count(*)::int c from fuentes'))[0].c===fuentesSeed);
 /* La regla editorial que cierra el riesgo legal: ninguna empresa señalada
    por su nombre sin una fuente que lo respalde. */
 paso('ninguna descartada sin fuente',(await n('select count(*)::int c from descartadas_sin_fuente'))[0].c===0);

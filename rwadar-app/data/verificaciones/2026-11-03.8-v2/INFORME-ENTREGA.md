@@ -11,7 +11,7 @@ agente).
 
 - **Etiqueta: `2026-11-03.8`.**
 - **SHA-256 de `rwadar-app/data/importaciones/catalogo-2026-11-03.8-v2/aplicar-y-aprobar.sql`:
-  `20d876b2e28b5bd02a3001913fc8c8dd2d103eeb07952c5af183cdb08313c49e`.**
+  `c353e6d901f730b31b7be791c1d08e127c1c232b734c40d930bbe7f1847ea772`.**
 - Exige que la publicada sea la `f2732257-206d-48ce-2067-c7e19fa33002`
   (entrega 2026-11-03.7), aprobada y con su huella
   `f2732257206d48ce2067c7e19fa3300202a22060ffcda457d2aea8f6d20da7a9`, y la
@@ -134,7 +134,7 @@ esquema, permisos ni funciones.
     más o de menos, **una fuente de RealT con otro título o sin título,
     Outlier ya puesta con otro título u otras fechas, una fuente de Toucan con
     otro título**, una quinta descartada y tres estados a medias.
-- `preparar-entrega.mjs` dos veces: mismos bytes (SHA 20d876b2…).
+- `preparar-entrega.mjs` dos veces: mismos bytes (SHA c353e6d9…).
 - `npm test` completo (raíz, con los `node_modules` enlazados): **en verde, código 0**. Base de
   datos: todas las baterías con 0 fallidas y 30 comprobaciones SQL; web: `probar-web.mjs` 580
   correctas, fichas 68, precarga 32; QR correcto; móvil 409 correctas y 2 omitidas, 0 fallos;
@@ -148,7 +148,7 @@ esquema, permisos ni funciones.
   `comprobar-entrega.mjs`, `contraste-2026-11-03.8.json`,
   `pruebas-locales.json`, `INFORME-ENTREGA.md` (este informe).
 - `rwadar-app/data/importaciones/catalogo-2026-11-03.8-v2/`:
-  `aplicar-y-aprobar.sql` (20d876b2…) y `revision.json`
+  `aplicar-y-aprobar.sql` (c353e6d9…) y `revision.json`
   (`tipo: textos_plataformas`, `revisionNueva: false`).
 - `rwadar-app/comprobar-revision.mjs`: una entrega sin revisión nueva no entra
   en la cadena de PGlite de las entregas siguientes (su guarda depende del
@@ -165,7 +165,7 @@ fallo para el ciclo en ese paso.
 1. **Revisión independiente** (otro agente): los textos de §2 contra sus
    fuentes (BridgeDetroit ×2 y Outlier; la ciudad de Detroit y S&P dan 403);
    el SQL (inventario y guardas); `preparar-entrega.mjs` en una copia → SHA
-   `20d876b2…`; `comprobar-entrega.mjs` correcto. Anotarla en la carpeta.
+   `c353e6d9…`; `comprobar-entrega.mjs` correcto. Anotarla en la carpeta.
 2. **Unir a `main`** (PR con merge commit) y push.
 3. **Releer como visitante** justo antes de aplicar (compuerta, con hora): la
    publicada es la `f2732257`; RealT «En liquidación» con sus 3 fuentes y
