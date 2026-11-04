@@ -156,7 +156,7 @@ La iliquidez solo se convierte en problema cuando se ha vendido lo contrario. Un
 
 Has terminado el **Nivel Intermedio**. Sabes qué régimen te aplica, cuánto cuesta el proceso y qué esperar razonablemente de la liquidez.
 
-El **Nivel Avanzado** trata de cómo ponerlo en marcha. En la **Lección 7** verás cómo usar RWAdar para comparar proveedores: qué significan para tu caso los cuatro criterios que RWAdar documenta en cada ficha, qué comparar entre plataformas y cómo descartar las que no encajan con tu caso antes de pedir ninguna reunión.
+El **Nivel Avanzado** trata de cómo ponerlo en marcha. En la **Lección 7** verás cómo usar RWAdar para comparar proveedores: qué significan para tu caso los cuatro criterios que RWAdar documenta en cada ficha, qué comparar entre plataformas y cómo descartar las que no te encajan antes de pedir ninguna reunión.
 
 ---
 
