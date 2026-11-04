@@ -54,5 +54,21 @@
    if(!grupos.has(clave))grupos.set(clave,[]);grupos.get(clave).push(f);}
   return [...grupos.values()];
  }
- return Object.freeze({normalizar,coordenadas,validar,unir,distancia,buscar,ordenar,agrupar});
+ // Agrupa lo que se taparía en pantalla: «proyectar» pasa cada punto a
+ // píxeles del zoom actual y quedan juntos los que están a menos de «radio».
+ function agruparCerca(filas,proyectar,radio=36){
+  const grupos=[],cerca=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y)<radio;
+  const sumar=(g,x,y,n)=>{const total=g.n+n;g.x=(g.x*g.n+x*n)/total;g.y=(g.y*g.n+y*n)/total;g.n=total;};
+  for(const f of filas){
+   const p=proyectar(f.ubicacion);let mejor=null;
+   for(const g of grupos)if(cerca(g,p)&&(!mejor||Math.hypot(g.x-p.x,g.y-p.y)<Math.hypot(mejor.x-p.x,mejor.y-p.y)))mejor=g;
+   if(mejor){mejor.filas.push(f);sumar(mejor,p.x,p.y,1);}else grupos.push({x:p.x,y:p.y,n:1,filas:[f]});
+  }
+  // Al moverse el centro de un grupo puede quedar encima de otro: se unen.
+  for(let i=0;i<grupos.length;i++)for(let j=i+1;j<grupos.length;j++)if(cerca(grupos[i],grupos[j])){
+   const b=grupos.splice(j,1)[0];grupos[i].filas.push(...b.filas);sumar(grupos[i],b.x,b.y,b.n);i=-1;break;
+  }
+  return grupos.map(g=>g.filas);
+ }
+ return Object.freeze({normalizar,coordenadas,validar,unir,distancia,buscar,ordenar,agrupar,agruparCerca});
 });
