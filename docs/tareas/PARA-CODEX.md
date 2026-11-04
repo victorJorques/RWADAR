@@ -6,6 +6,62 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (noche, 2) · Claude · corrector de los remates (sin publicar)
+
+Sigue la rama local `claude/remates`, sin push. **Nada publicado, Supabase y
+EAS sin tocar, sin OTA.** `comprobar-ota-compatible.cjs --base c1f7106…` da
+ok; el `package.json` raíz y los archivos protegidos de `rwadar-movil` no
+cambian.
+
+- **Fila 17 completa:** quedaban cinco «ha vencido» (aviso del catálogo, fila
+  «Revisada esta semana» de la ficha, página fija y app). Ahora todo dice «la
+  revisión semanal ha caducado». Comprobado con el reloj en el 12/11/2026.
+- **Inglés que faltaba** (web y app comparten diccionario y motor):
+  Academy (progreso, niveles, rótulos y resúmenes de las tarjetas, migas,
+  fechas, índice, paginación y test de las lecciones, y las etiquetas
+  accesibles de la app), Plataformas (recuento, «Show 20 more», filtros,
+  regiones, radar, comparación, ficha), cabeceras de las colecciones de
+  Ofertas, avisos del catálogo caducado y las filas del menú de Perfil de la
+  app. Las dos etiquetas de filtros que la rama había dejado a medias
+  («Filter by tipo de inversor») ya salen enteras. Un barrido en inglés de la
+  web (390 y 1366 px) ya solo encuentra en castellano datos del catálogo
+  (nombres, tipo · región de las plataformas, avisos de la fila 11) y el
+  cuerpo de las lecciones.
+- **Cuerpo de las lecciones y aviso legal de Academy:** siguen en castellano,
+  ahora marcados como «Original source text (Spanish)» también en la app y en
+  el índice de la web. **Lo decide Víctor** si el aviso legal se traduce.
+- **«Registro» → «catálogo»** donde es interfaz: pie («Última revisión del
+  catálogo»), «Explorar el catálogo», «Alcance del catálogo…», «El catálogo en
+  cifras», el radar, el aviso de «Nada abierto con ese filtro» y el pie de
+  Academy. **Quedan para Víctor** las frases legales que usan «registro»: «RWAdar
+  es un registro editorial independiente…» (Inicio y app), «El registro y su
+  selección no pueden reproducirse…» (pie) y la de Privacidad.
+- **Aviso de correo** al aceptar los avisos: ya no habla de Brevo ni de la
+  prueba «de extremo a extremo».
+- **Tablas legales en el móvil:** letra un punto menor y menos relleno; por
+  debajo de 380 px, guiones en las palabras largas. Las cuatro de Privacidad,
+  la de Transparencia comercial y la de Para empresas caben en su caja a 390,
+  360 y 320 px. El texto legal no cambia.
+- **Corrección a la entrada anterior:** el enlace a Academy de Inicio solo se
+  ve por debajo de 768 px. En escritorio no aparece; Academy sigue en el menú
+  de arriba y en su sección de la portada.
+- **Pruebas:** `npm test` completo en verde: rwadar-app sin fallos (27
+  bloques, 30 comprobaciones SQL y el mapa, 11 de 11), web 579, fichas 68,
+  precarga 32, QR, móvil 406 + 2 omitidas, herramientas al día, acceso 144.
+  Gitleaks sin hallazgos en cada commit.
+- **Capturas** a 390 × 844, dsf 2, en el scratchpad de la sesión
+  (`corr-remates/capturas/`): Academy, Plataformas y ficha en inglés (web),
+  índice de Academy en inglés con el aviso legal, tabla de Privacidad, ficha
+  fija con la revisión caducada (12/11) y, en la app en inglés, Perfil,
+  Academy y una lección con su aviso legal.
+
+**Pendiente:** lo mismo que en la entrada anterior (catálogo, cuerpo de las
+lecciones) y las decisiones de Víctor de arriba. En la ficha de plataforma,
+los valores de la tabla de datos (acceso, tipo de activo, región) siguen en
+castellano a propósito: se tratan como dato de la fuente.
+
+---
+
 ## 4 de noviembre de 2026 (noche) · Claude · remates de web y app (sin publicar)
 
 Víctor: «hasta que no esté todo no has acabado». Rama local `claude/remates`
@@ -23,8 +79,8 @@ push, Supabase y EAS sin tocar, sin OTA.** El `package.json` raíz y
   subtítulo bajo el logo: no había dónde cambiarlo.
 - **Academy desde Inicio** (decisión de Víctor): «¿Empiezas de cero? 7
   lecciones gratis en Academy ›» junto a «Mira, compara y decide tú», en la web
-  (lo escribe `rwadar-academy.js` con el número real; en el móvil abre la
-  pestaña Academy y en escritorio /academy/) y en la app (cuenta las lecciones
+  (lo escribe `rwadar-academy.js` con el número real; solo se ve por
+  debajo de 768 px, donde abre la pestaña Academy) y en la app (cuenta las lecciones
   publicadas y abre Academy). Inglés incluido.
 - **Lista de frases, todo lo que vive en el código:** cuentas y seguimiento
   (49-51, 53, 54: «Seguir» y «lista de seguimiento» también en la app y en
