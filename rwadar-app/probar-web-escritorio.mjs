@@ -175,8 +175,11 @@ export function probarTarjetaYComparador({ c, prueba }) {
   const minimosComparador=vm.runInContext(`P.map(p=>[p.slug,p.ticket,minimoPlataformaTexto(p),EMI.some(o=>o.plataformaSlug===p.slug)])`,c);
   vm.runInContext(`compare=[P.findIndex(p=>p.slug==='spiko'),P.findIndex(p=>p.slug==='addx')];openCompare()`,c);
   const tablaComparador=c.document.getElementById('modalBody').innerHTML;
-  prueba('el comparador muestra el mínimo documentado o «Sin documentar», nunca «Bajo», «Medio» o «Alto»',
-    minimosComparador.every(([,ticket,texto,ofertas])=>texto!==ticket&&!/^(?:Bajo|Medio|Alto|No aplica)$/.test(texto)&&(ofertas||texto==='Sin documentar'))&&
+  // Los proveedores de infraestructura (ticket «No aplica») siguen diciendo «No aplica».
+  prueba('el comparador muestra el mínimo documentado, «Sin documentar» o «No aplica», nunca «Bajo», «Medio» o «Alto»',
+    minimosComparador.some(([,ticket])=>ticket==='No aplica')&&
+    minimosComparador.every(([,ticket,texto,ofertas])=>ticket==='No aplica'?texto==='No aplica':
+      texto!==ticket&&!/^(?:Bajo|Medio|Alto|No aplica)$/.test(texto)&&(ofertas||texto==='Sin documentar'))&&
     /€/.test(minimosComparador.find(m=>m[0]==='spiko')[2])&&
     /<th>Mínimo<\/th><td>[^<]*€[^<]*<\/td><td>Sin documentar<\/td>/.test(tablaComparador));
 }

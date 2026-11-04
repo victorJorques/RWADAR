@@ -1586,8 +1586,10 @@ function renderCmpBar(){
 /* Mínimo real de una plataforma en el comparador: el más bajo documentado en
    euros entre sus ofertas del catálogo con la revisión vigente; si no hay
    ninguno, «Sin documentar». «Bajo», «Medio» y «Alto» son niveles de entrada,
-   no importes: antes salía «Mínimo: Alto» en todas (QA 04/11/2026, n.º 18). */
+   no importes: antes salía «Mínimo: Alto» en todas (QA 04/11/2026, n.º 18).
+   Los proveedores de infraestructura no venden inversiones: «No aplica». */
 function minimoPlataformaTexto(p){
+ if(p&&p.ticket==='No aplica')return 'No aplica';
  const resumenes=(typeof EMI!=='undefined'&&Array.isArray(EMI)?EMI:[]).filter(o=>o&&o.plataformaSlug===p.slug)
   .map(o=>resumenEditorialOferta(o)).filter(r=>r&&!pendienteRevalidarLocal(r)&&r.minimo&&Number.isFinite(r.minimo.euros));
  if(!resumenes.length)return 'Sin documentar';
