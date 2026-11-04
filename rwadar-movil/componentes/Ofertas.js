@@ -8,7 +8,7 @@ import { proveedoresDeOfertas, vigenciaOferta } from '../lib/datos';
 import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
 import { resumenOferta } from '../lib/ficha-editorial';
 import {
-  comprobacionesOferta, datosCortosOferta, fechaES, puntosFuertesOferta,
+  comprobacionesOferta, datosCortosOferta, estadoVigencia, fechaES, puntosFuertesOferta,
 } from '../lib/transparencia';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
 import { Icono } from './Navegacion';
@@ -54,8 +54,9 @@ function datoDestacado(oferta) {
     return { etiqueta: 'Precio de referencia', valor: oferta.precio?.mostrado || 'Consultar fuente', original: Boolean(oferta.precio?.mostrado),
       referencia: oferta.precio?.unidad || '' };
   }
-  const valor = [oferta.precio?.mostrado, oferta.precio?.unidad].filter(Boolean).join(' / ');
-  return { etiqueta: 'Precio en secundario', valor: valor || 'Consultar mercado', original:Boolean(valor) };
+  // Reventa: «Precio observado», como clavesOfertaLocal de la web; la unidad va debajo.
+  return { etiqueta: 'Precio observado', valor: oferta.precio?.mostrado || 'Consultar mercado',
+    original: Boolean(oferta.precio?.mostrado), referencia: oferta.precio?.unidad || '' };
 }
 
 function rentabilidadSecundaria(oferta) {
@@ -83,14 +84,6 @@ function dominioFuente(url) {
     if (fuente.protocol !== 'https:' || fuente.username || fuente.password) return 'fuente oficial';
     return fuente.hostname.replace(/^www\./, '');
   } catch { return 'fuente oficial'; }
-}
-
-function tipoVisible(tipo, coleccion) {
-  if (coleccion === 'en_camino') return 'En camino';
-  if (coleccion === 'secundario') return 'Secundario';
-  if (tipo === 'secundario') return 'Secundario';
-  if (tipo === 'valor') return 'Valor';
-  return 'Rendimiento';
 }
 
 // El orden nunca usa importe, rentabilidad, patrocinio ni un perfil personal.
@@ -371,8 +364,43 @@ function FilaMetrica({ etiqueta, valor, original=false, etiquetaOriginal=false }
   );
 }
 
+/* Lo que no es esencial va plegado, como los <details> de la web (ficha
+   final del 04/11/2026). Cada bloque guarda su propio estado. */
+function Plegable({ titulo, detalle = '', children }) {
+  const [abierto, setAbierto] = useState(false);
+  return (
+    <View style={e.plegable}>
+      <Pressable onPress={() => setAbierto((valor) => !valor)}
+        style={({ pressed }) => [e.plegableBoton, pressed && e.pulsado]}
+        accessibilityRole="button" accessibilityState={{ expanded: abierto }}>
+        <Text style={e.plegableTit}>
+          {titulo}
+          {detalle ? <Text noTraducir style={e.plegableDetalle}>{` ${detalle}`}</Text> : null}
+        </Text>
+        <Text style={e.plegableSigno} accessible={false} importantForAccessibility="no">{abierto ? '−' : '+'}</Text>
+      </Pressable>
+      {abierto ? <View style={e.plegableCuerpo}>{children}</View> : null}
+    </View>
+  );
+}
+
+const mayuscula = (texto) => (texto ? texto.charAt(0).toUpperCase() + texto.slice(1) : texto);
+
+/* Los riesgos de siempre, en cuatro frases (como «Antes de invertir» de la web). */
+const ANTES_DE_INVERTIR = [
+  'Puedes perder parte o todo lo que inviertas.',
+  'La salida depende del contrato y puede requerir compradores.',
+  'Comprueba quién custodia el activo y quién responde.',
+  'El registro de una empresa no cubre todos sus productos.',
+];
+
+/* La ficha de la web final (abrirDetalleOfertaLocal, 04/11/2026): arriba «Lo
+   esencial» y los avisos de la oferta; luego la imagen, «Antes de invertir»,
+   «No es una recomendación de inversión…» y «Ver oferta en <proveedor> ↗»;
+   lo demás, plegado. Sin «Consultar fuente» en grande donde va el precio: una
+   cifra solo sale si es publicable y, si no, una línea dice dónde mirar. */
 export function DetalleOferta({
-  oferta: ofertaOriginal, onCerrar, onAbrirEnlace, plataformaCanonica, plataforma, guardada = false, onGuardar,
+  oferta: ofertaOriginal, onCerrar, onAbrirEnlace, plataforma, guardada = false, onGuardar,
   onRegistrarInversion, catalogoCaducado = false,
 }) {
   const idiomaActual=useIdioma();
@@ -382,23 +410,64 @@ export function DetalleOferta({
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
   const documentacion = documentacionOferta(ofertaOriginal, ahora);
   const vigencia = vigenciaOferta(oferta, ahora);
-  const destacado = datoDestacado(oferta);
-  const rentabilidadSec = rentabilidadSecundaria(oferta);
-  const cifraVencida = oferta.cifrasPendientes;
   const resumen = resumenOferta(ofertaOriginal, [], ahora);
   const registro = registroProveedor(plataforma, ahora);
-  const datosParaDecidir = [
-    ['Mínimo publicado en euros', resumen.minimo],
-    ['Acceso desde España', resumen.accesoEspana],
-    ['Cómo recuperar el dinero', resumen.salida],
-    ['Costes publicados', resumen.costes],
+  const estadoCifras = estadoVigencia(ofertaOriginal, ahora);
+  const vigente = !catalogoCaducado && !estadoCifras.caducado && !oferta.cifrasPendientes;
+  const documental = oferta.coleccion === 'secundario' || oferta.coleccion === 'en_camino';
+  const destacado = datoDestacado(oferta);
+  const cifra = vigente && !documental && !/^(?:Consultar|No publicada)/.test(destacado.valor) ? destacado : null;
+  const sinCifra = cifra ? null : documental ? ['Precio y condiciones', 'Consúltalos en su web']
+    : !vigente ? ['Condiciones actuales', 'Consultar emisor']
+      : oferta.tipo === 'secundario' ? ['Precio y condiciones', 'Consúltalos en su web']
+        : oferta.tipo === 'valor' ? ['Precio', 'En la web del proveedor'] : null;
+  const rentabilidadSec = rentabilidadSecundaria(oferta);
+  const supervisada = comprobacionesOferta(ofertaOriginal, resumen, { ahora, catalogoCaducado })
+    .find((c) => c.id === 'supervisada');
+  const cortos = Object.fromEntries(datosCortosOferta(ofertaOriginal, resumen, { catalogoCaducado }));
+  // «válidas 6 días más» tras «Revisadas el …», como la web; en inglés, el patrón común.
+  const validez = idiomaActual === 'en'
+    ? traducir(estadoCifras.texto).replace(/^figures /, '') : estadoCifras.texto.replace(/^cifras /, '');
+  const estadoCaducado = mayuscula(traducir(catalogoCaducado && !estadoCifras.caducado
+    ? 'cifras por actualizar' : estadoCifras.texto));
+  const explicacionEstado = vigencia.estado === 'bloqueada'
+    ? 'No está confirmada la admisión de nuevas inversiones. Consulta la apertura y las condiciones actuales con el emisor.'
+    : vigencia.estado === 'conflicto'
+      ? 'Las fuentes consultadas se contradicen. Conservamos la referencia y sus avisos, pero ocultamos las cifras hasta poder contrastarlas.'
+      : vigencia.estado === 'permanente-vencida' || vigencia.estado === 'vencida'
+        ? `${documentacion ? 'La referencia sigue documentada; ha vencido la actualización de sus cifras.' : 'Ha vencido la actualización de las cifras.'} Consulta precio, rentabilidad y disponibilidad actuales con el emisor.`
+        : oferta.cifrasPendientes
+          ? 'No hay cifras con fecha y vigencia válidas. Consulta las condiciones actuales con el emisor.' : '';
+  // Todos los avisos del catálogo, tal cual; el genérico ya lo dice la línea del botón.
+  const avisos = (oferta.avisos || []).filter((aviso) => aviso && String(aviso.texto || '').trim() &&
+    aviso.tono !== 'ok' && (!aviso.esAntiguedad || aviso.tono === 'stop') && !AVISO_GENERAL.test(String(aviso.texto)));
+  const datosConFuente = [
+    ['Mínimo en euros', resumen.minimo],
+    ['Desde España', resumen.accesoEspana],
+    ['Salida', resumen.salida],
+    ['Costes', resumen.costes],
   ];
-  const enlacePrincipal = oferta.tipo === 'secundario'
-    ? (oferta.urlMercado || oferta.url) : oferta.url;
-  const fuentesAdicionales = documentacion
+  // Reventa con mercado propio: «Abrir mercado» y la ficha oficial, como la web.
+  const urlMercado = oferta.tipo === 'secundario' && oferta.urlMercado ? oferta.urlMercado : '';
+  const enlacePrincipal = urlMercado || oferta.url;
+  const fichaOficial = urlMercado && oferta.url && oferta.url !== urlMercado ? oferta.url : '';
+  const textoEnlace = urlMercado ? traducir('Abrir mercado') : `${traducir('Ver oferta en')} ${oferta.plataformaNombre}`;
+  const fuentesAdicionales = (documentacion
     ? [...new Set([...documentacion.fuentes, ...documentacion.referencias.map(r => r.fuente),
-      ...(registro?.fuentes || []), oferta.url].filter(Boolean))].filter(url => url !== enlacePrincipal)
-    : registro?.fuentes || [];
+      ...(registro?.fuentes || []), oferta.url].filter(Boolean))]
+    : registro?.fuentes || []).filter(url => url !== enlacePrincipal && url !== fichaOficial);
+  const fechaFuentes = fechaES(documentacion?.fecha) || fechaES(resumen.fechas.revisadaEl);
+  const descripcion = (() => {
+    const texto = documentacion?.descripcion || '';
+    const corto = vigente ? String(oferta.resumen || '').trim() : '';
+    return corto && texto.startsWith(corto) ? texto.slice(corto.length).trim() : texto;
+  })();
+  const fila = (etiqueta, contenido) => (
+    <View key={etiqueta} style={e.esencialFila}>
+      <Text style={e.esencialEtiqueta}>{etiqueta}</Text>
+      <View style={e.esencialDato}>{contenido}</View>
+    </View>
+  );
   return (
     <Modal visible animationType="none" presentationStyle="fullScreen"
       statusBarTranslucent={false} navigationBarTranslucent={false} onRequestClose={transicion.cerrar}>
@@ -424,175 +493,184 @@ export function DetalleOferta({
           </View>
           <ScrollView key={oferta.slug} style={e.modalDesplazamiento}
             contentContainerStyle={e.modalCuerpo} contentInsetAdjustmentBehavior="never">
-            <Text style={e.supra}>{oferta.coleccion && oferta.coleccion !== 'principales' ? 'Referencia' : 'Oferta'} · {tipoVisible(oferta.tipo, oferta.coleccion)}</Text>
+            <Text style={e.supra}>{oferta.coleccion === 'en_camino' ? 'Próxima'
+              : oferta.coleccion === 'secundario' || oferta.tipo === 'secundario' ? 'Reventa entre inversores' : 'Oferta principal'}</Text>
             <FuenteOriginal idiomaOriginal="es-ES" />
             <Text noTraducir idiomaOriginal="es-ES" style={e.modalTitulo} accessibilityRole="header">{oferta.titulo}</Text>
-            <ImagenOferta oferta={oferta} grande />
-            <View style={e.proveedorCaja}>
-              <Text noTraducir idiomaOriginal="es-ES" style={e.proveedorNombre}>{oferta.plataformaNombre}</Text>
-              <Text style={e.proveedorMeta}>
-                {oferta.categoria}<Text noTraducir idiomaOriginal="es-ES">{oferta.pais ? ` · ${oferta.pais}` : ''}</Text>
+            {oferta.patrocinada ? (
+              <Text style={e.patrocinioAviso}>
+                Patrocinada. Consulta la relación comercial en la ficha; no altera el ranking ni implica recomendación.
               </Text>
-              <Text style={[e.proveedorEstado, !plataformaCanonica && e.proveedorSolo]}>
-                {plataformaCanonica
-                  ? 'Proveedor incluido también en el radar'
-                  : 'Proveedor de esta referencia · no está en el radar'}
-              </Text>
-              {oferta.patrocinada ? (
-                <Text style={e.patrocinioAviso}>
-                  Patrocinada. Consulta la relación comercial en la ficha; no altera el ranking ni implica recomendación.
+            ) : null}
+
+            <Text style={e.seccionFicha} accessibilityRole="header">Lo esencial</Text>
+            <View style={e.esencial}>
+              {oferta.resumen && vigente ? fila('Qué es',
+                <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.esencialValor}>{oferta.resumen}</FuenteOriginal>) : null}
+              {fila('Quién la vende', <View>
+                <Text noTraducir idiomaOriginal="es-ES" style={e.esencialValor}>{oferta.plataformaNombre}</Text>
+                {supervisada?.cumple && supervisada.motivo
+                  ? <Text noTraducir idiomaOriginal="es-ES" style={e.esencialNota}>{supervisada.motivo}</Text> : null}
+              </View>)}
+              {cifra ? fila(cifra.etiqueta, <View>
+                <Text noTraducir={Boolean(cifra.original)} idiomaOriginal="es-ES" style={[e.esencialValor, e.esencialCifra]}>{cifra.valor}</Text>
+                {cifra.referencia ? <Text noTraducir idiomaOriginal="es-ES" style={e.esencialNota}>{cifra.referencia}</Text> : null}
+              </View>) : sinCifra ? fila(sinCifra[0], <Text style={e.esencialValor}>{sinCifra[1]}</Text>) : null}
+              {fila('Mínimo', <Text style={e.esencialValor}>{cortos['Mínimo']}</Text>)}
+              {fila('España', <Text style={e.esencialValor}>{cortos['España']}</Text>)}
+              {fila('Salida', <Text style={e.esencialValor}>{cortos['Salida']}</Text>)}
+              {fila('Cifras', vigente ? (
+                <Text style={e.esencialValor}>
+                  Revisadas el <Text noTraducir>{fechaES(oferta.verificadaEl)}</Text> · <Text noTraducir>{validez}</Text>
                 </Text>
-              ) : null}
+              ) : <View>
+                <Text noTraducir style={[e.esencialValor, tonoVigencia(vigencia.estado)]}>{estadoCaducado}</Text>
+                {explicacionEstado ? <Text style={e.esencialNota}>{explicacionEstado}</Text> : null}
+              </View>)}
             </View>
-            <Text style={e.riesgoSalida}>Puedes perder dinero. RWAdar no vende ni asesora.</Text>
-            <Text style={e.avisosTitulo}>¿Quién puede acceder y en qué condiciones?</Text>
-            <View style={e.tabla}>
-              {datosParaDecidir.map(([etiqueta, dato]) => (
-                <View key={etiqueta} style={e.filaMetrica}>
-                  <Text style={e.metricaEtiqueta}>{etiqueta}</Text>
-                  <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length)} idiomaOriginal="es-ES" style={e.metricaValor}>{dato.texto}</Text>
-                  {dato.unidadDocumentada ? <Text style={e.referencia}>Unidad publicada: <Text noTraducir idiomaOriginal="es-ES">{dato.unidadDocumentada}</Text>; no se ha convertido a euros.</Text> : null}
-                  {dato.referencias?.length ? dato.referencias.map((ref, indice) => (
-                    <Text key={`${ref.fuente}-${indice}`} style={e.referencia}>{ref.etiqueta}: fuente consultada el {fechaVerificacionLocalVisible(ref.fechaConsulta)} · {dominioFuente(ref.fuente)}{ref.fechaDato ? ` · dato del ${fechaVerificacionLocalVisible(ref.fechaDato)}` : ''}</Text>
-                  )) : dato.consultadaEl ? <Text style={e.referencia}>Fuente consultada el {fechaVerificacionLocalVisible(dato.consultadaEl)} · {dominioFuente(dato.fuente)}</Text> : null}
-                </View>
-              ))}
-            </View>
-            <Transparencia oferta={ofertaOriginal} resumen={resumen} ahora={ahora}
-              catalogoCaducado={catalogoCaducado} onAbrirEnlace={onAbrirEnlace} />
-            <View style={e.documentacion}>
-              <Text style={e.avisosTitulo}>En tres frases</Text>
-              {documentacion?.descripcion || oferta.resumen ? <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{documentacion?.descripcion || oferta.resumen}</FuenteOriginal> : <Text style={e.estadoTexto}>La fuente no aporta una descripción comprobable en esta ficha.</Text>}
-              <Text style={e.referencia}>La disponibilidad de salida no está garantizada.</Text>
-            </View>
-            {registro ? <View style={e.documentacion}>
-              <Text style={e.avisosTitulo}>Registro del proveedor · {registro.texto} · revisión {fechaVerificacionLocalVisible(registro.fecha)}</Text>
-              <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{registro.detalle}</FuenteOriginal>
-              <Text style={e.referencia}>Este registro no acredita la supervisión ni la apertura de esta oferta. Fuentes al final de la ficha.</Text>
-            </View> : null}
-            <View style={[e.estadoCaja, cifraVencida && e.estadoCajaVencida]}>
-              <Text style={[e.estadoTitulo, tonoVigencia(vigencia.estado)]}>{vigencia.etiqueta}</Text>
-              <Text style={e.estadoTexto}>
-                {vigencia.estado === 'bloqueada'
-                  ? 'No está confirmada la admisión de nuevas inversiones. Consulta la apertura y las condiciones actuales con el emisor.'
-                  : vigencia.estado === 'conflicto'
-                    ? 'Las fuentes consultadas se contradicen. Conservamos la referencia y sus avisos, pero ocultamos las cifras hasta poder contrastarlas.'
-                    : vigencia.estado === 'permanente-vencida'
-                  ? `${documentacion ? 'La referencia sigue documentada; ha vencido la actualización de sus cifras.' : 'Ha vencido la actualización de las cifras.'} Consulta precio, rentabilidad y disponibilidad actuales con el emisor.`
-                  : vigencia.estado === 'vencida'
-                    ? `${documentacion ? 'La referencia sigue documentada; ha vencido la actualización de sus cifras.' : 'Ha vencido la actualización de las cifras.'} Consulta precio, rentabilidad y disponibilidad actuales con el emisor.`
-                  : cifraVencida
-                    ? 'No hay cifras con fecha y vigencia válidas. Consulta las condiciones actuales con el emisor.'
-                  : oferta.permanente
-                    ? 'Estas cifras conservan su fecha de revisión. Su vigencia no garantiza la disponibilidad actual ni que puedas contratar el producto.'
-                    : `Información comprobada el ${fechaES(oferta.verificadaEl) || 'día indicado en la fuente'}.`}
-              </Text>
-            </View>
-            {documentacion?.descripcion ? (
-              <View style={e.documentacion}>
-                <Text style={e.avisosTitulo}>Características documentadas</Text>
-                {documentacion.caracteristicas.length ? (
-                  <View style={[e.tabla, e.tablaDocumental]}>
-                    {documentacion.caracteristicas.map((caracteristica, indice) => (
-                      <FilaMetrica key={`documentacion-${indice}`} {...caracteristica} original etiquetaOriginal />
-                    ))}
-                  </View>
-                ) : null}
-              </View>
-            ) : null}
-            <View style={e.documentacion}>
-              <Text style={e.avisosTitulo}>Fechas de esta ficha</Text>
-              <Text style={e.referencia}>Revisión del catálogo: {resumen.fechas.revisadaEl ? fechaVerificacionLocalVisible(resumen.fechas.revisadaEl) : 'sin fecha válida'}</Text>
-              <Text style={e.referencia}>Última consulta citada: {resumen.fechas.comprobadaEl ? fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl) : 'no documentada'}</Text>
-              <Text style={e.referencia}>Fecha del dato en esa referencia: {resumen.fechas.fechaDato ? fechaVerificacionLocalVisible(resumen.fechas.fechaDato) : 'no indicada por la fuente'}</Text>
-              <Text style={e.referencia}>Revisar el catálogo no vuelve a comprobar las cifras antiguas. Cada referencia conserva su consulta original debajo.</Text>
-            </View>
-            <View style={e.destacado}>
-              <Text style={e.datoEtiqueta}>{destacado.etiqueta}</Text>
-              <Text noTraducir={Boolean(destacado.original)} idiomaOriginal="es-ES" style={e.destacadoValor}>{destacado.valor}</Text>
-              {destacado.referencia ? <Text noTraducir idiomaOriginal="es-ES" style={e.referencia}>{destacado.referencia}</Text> : null}
-            </View>
-            {rentabilidadSec ? (
-              <View style={e.destacadoSecundario}>
-                <Text style={e.datoEtiqueta}>Rentabilidad ajustada / publicada</Text>
-                <Text noTraducir idiomaOriginal="es-ES" style={e.destacadoValor}>{rentabilidadSec}</Text>
-              </View>
-            ) : null}
-            {oferta.metricas.length ? (
-              <View style={e.tabla}>
-                {oferta.metricas.map((metrica, indice) => (
-                  <FilaMetrica key={`${metrica.etiqueta}-${indice}`} {...metrica} original etiquetaOriginal />
-                ))}
-              </View>
-            ) : null}
-            {documentacion?.referencias.length ? (
-              <View style={e.documentacion}>
-                <Text style={e.avisosTitulo}>Referencias fechadas</Text>
-                <Text style={e.estadoTexto}>
-                  Datos publicados en las fechas indicadas. No son precios actuales ni garantizan rentabilidad, apertura o disponibilidad para contratar.
-                </Text>
-                {documentacion.referencias.map((referencia, indice) => (
-                  <View style={e.referenciaDocumental} key={`referencia-${indice}`}>
-                    <Text noTraducir idiomaOriginal="es-ES" style={e.datoEtiqueta}>{referencia.etiqueta}</Text>
-                    <Text noTraducir idiomaOriginal="es-ES" style={e.datoValor}>{referencia.valor}</Text>
-                    <Text style={e.referencia}>
-                      Fecha del dato: {referencia.fechaDato ? fechaVerificacionLocalVisible(referencia.fechaDato) : 'no indicada en la fuente'}
-                    </Text>
-                    <Text style={e.referencia}>Consultado el {fechaVerificacionLocalVisible(referencia.fechaConsulta)}</Text>
-                    <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.referencia}>{referencia.alcance}</FuenteOriginal>
-                    <Text style={e.referencia}>Fuente: {dominioFuente(referencia.fuente)} · enlace al final de la ficha</Text>
-                  </View>
-                ))}
-              </View>
-            ) : null}
-            {oferta.avisos.length ? (
-              <View style={e.avisos}>
-                <Text style={e.avisosTitulo}>Antes de abrir el enlace</Text>
-                {oferta.avisos.map((aviso, indice) => (
+
+            {avisos.length ? (
+              <View>
+                <Text style={e.seccionFicha} accessibilityRole="header">Avisos de esta oferta</Text>
+                {avisos.map((aviso, indice) => (
                   <View key={`${aviso.texto}-${indice}`} style={[
                     e.avisoFila,
                     aviso.tono === 'stop' && e.avisoFilaStop,
                     aviso.tono === 'warn' && e.avisoFilaWarn,
-                    aviso.tono === 'ok' && e.avisoFilaOk,
                   ]}>
                     <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={[
                       e.aviso,
                       aviso.tono === 'stop' && e.avisoTxtStop,
                       aviso.tono === 'warn' && e.avisoTxtWarn,
-                      aviso.tono === 'ok' && e.avisoTxtOk,
-                    ]}>• {aviso.texto}</FuenteOriginal>
+                    ]}>{aviso.texto}</FuenteOriginal>
                   </View>
                 ))}
               </View>
             ) : null}
-            <View style={e.avisos}>
-              <Text style={e.avisosTitulo}>Antes de ir a la fuente</Text>
-              <FilaMetrica etiqueta="¿Puedo perder dinero?" valor="Sí. Puedes perder parte o toda la inversión; una cifra publicada no garantiza el resultado." />
-              <FilaMetrica etiqueta="¿Puedo vender cuando quiera?" valor={resumen.salida.texto} original={Boolean(resumen.salida.fuente)} />
-              <FilaMetrica etiqueta="¿Quién custodia el activo?" original={Boolean(documentacion?.caracteristicas.find(c => /custodio|responsable de custodia/i.test(c.etiqueta))?.valor)} valor={documentacion?.caracteristicas.find(c => /custodio|responsable de custodia/i.test(c.etiqueta))?.valor || 'No consta en esta ficha. Compruébalo en la fuente.'} />
-              <FilaMetrica etiqueta="¿Quién supervisa esta oferta?" original={Boolean(documentacion?.caracteristicas.find(c => /supervisor|regulador/i.test(c.etiqueta))?.valor)} valor={documentacion?.caracteristicas.find(c => /supervisor|regulador/i.test(c.etiqueta))?.valor || 'No consta en esta ficha. Un registro de la plataforma no acredita cada oferta.'} />
+
+            <View style={e.imagenDetalle}><ImagenOferta oferta={oferta} grande /></View>
+
+            <View style={e.antesCaja}>
+              <Text style={e.antesTitulo} accessibilityRole="header">Antes de invertir</Text>
+              {ANTES_DE_INVERTIR.map((frase) => (
+                <View key={frase} style={e.antesFila}>
+                  <Text style={e.antesMarca} accessible={false} importantForAccessibility="no">•</Text>
+                  <Text style={e.antesTxt}>{frase}</Text>
+                </View>
+              ))}
             </View>
-            <Text style={e.riesgoSalida}>Puedes perder dinero. RWAdar no vende ni asesora.</Text>
-            <Pressable
-              onPress={() => enlacePrincipal && onAbrirEnlace(enlacePrincipal)}
-              disabled={!enlacePrincipal}
-              style={({ pressed }) => [e.enlace, !enlacePrincipal && e.deshabilitado, pressed && e.pulsado]}
-              accessibilityRole="link"
-              noTraducir idiomaOriginal={idiomaActual==='en'?'en-US':'es-ES'} accessibilityLabel={`${traducir('Ver en la fuente ·')} ${oferta.plataformaNombre}: ${enlacePrincipal || traducir('enlace no documentado')}`}
-              accessibilityState={{ disabled: !enlacePrincipal }}
-            >
-              <Text style={e.enlaceTxt}>
-                Ver en la fuente · <Text noTraducir idiomaOriginal="es-ES">{oferta.plataformaNombre}</Text> ↗
+
+            <View style={e.pieDetalle}>
+              <Text style={e.pieDetalleTxt}>
+                No es una recomendación de inversión. RWAdar no vende ni recibe tu dinero: confirma las condiciones con el proveedor.
               </Text>
-            </Pressable>
-            {onRegistrarInversion ? <Pressable onPress={onRegistrarInversion}
-              style={({ pressed }) => [e.registrarInversion, pressed && e.pulsado]}
-              accessibilityRole="button" accessibilityLabel={`Registrar inversión en ${oferta.titulo}`}>
-              <Text style={e.enlaceSecundarioTxt}>Registrar inversión</Text>
-            </Pressable> : null}
-            {fuentesAdicionales.length ? (
-              <View>
-                <Text style={e.avisosTitulo}>Otras fuentes consultadas</Text>
+              <Pressable
+                onPress={() => enlacePrincipal && onAbrirEnlace(enlacePrincipal)}
+                disabled={!enlacePrincipal}
+                style={({ pressed }) => [e.enlace, !enlacePrincipal && e.deshabilitado, pressed && e.pulsado]}
+                accessibilityRole="link"
+                noTraducir idiomaOriginal={idiomaActual==='en'?'en-US':'es-ES'}
+                accessibilityLabel={`${textoEnlace}: ${enlacePrincipal || traducir('enlace no documentado')}`}
+                accessibilityState={{ disabled: !enlacePrincipal }}
+              >
+                {urlMercado ? <Text style={e.enlaceTxt}>{'Abrir mercado'} ↗</Text> : (
+                  <Text style={e.enlaceTxt}>
+                    Ver oferta en <Text noTraducir idiomaOriginal="es-ES">{oferta.plataformaNombre}</Text> ↗
+                  </Text>
+                )}
+              </Pressable>
+              {fichaOficial ? (
+                <Pressable onPress={() => onAbrirEnlace(fichaOficial)}
+                  style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
+                  accessibilityRole="link" noTraducir accessibilityLabel={`${traducir('Ficha oficial')}: ${fichaOficial}`}>
+                  <Text style={e.enlaceSecundarioTxt}>{'Ficha oficial'} ↗</Text>
+                </Pressable>
+              ) : null}
+              {onRegistrarInversion ? <Pressable onPress={onRegistrarInversion}
+                style={({ pressed }) => [e.registrarInversion, pressed && e.pulsado]}
+                accessibilityRole="button" accessibilityLabel={`Registrar inversión en ${oferta.titulo}`}>
+                <Text style={e.enlaceSecundarioTxt}>Registrar inversión</Text>
+              </Pressable> : null}
+            </View>
+
+            <View style={e.plegables}>
+              <Plegable titulo="Lo que hemos comprobado">
+                <Transparencia oferta={ofertaOriginal} resumen={resumen} ahora={ahora}
+                  catalogoCaducado={catalogoCaducado} onAbrirEnlace={onAbrirEnlace} />
+                {registro ? <View style={e.documentacion}>
+                  <Text style={e.avisosTitulo}>Registro del proveedor · {registro.texto} · revisión {fechaVerificacionLocalVisible(registro.fecha)}</Text>
+                  <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{registro.detalle}</FuenteOriginal>
+                  <Text style={e.referencia}>Este registro no acredita la supervisión ni la apertura de esta oferta. Fuentes al final de la ficha.</Text>
+                </View> : null}
+              </Plegable>
+
+              <Plegable titulo="Acceso, salida y costes, con su fuente">
+                <View style={e.tabla}>
+                  {datosConFuente.map(([etiqueta, dato]) => (
+                    <View key={etiqueta} style={e.filaMetrica}>
+                      <Text style={e.metricaEtiqueta}>{etiqueta}</Text>
+                      <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length)} idiomaOriginal="es-ES" style={e.metricaValor}>{dato.texto}</Text>
+                      {dato.unidadDocumentada ? <Text style={e.referencia}>Unidad publicada: <Text noTraducir idiomaOriginal="es-ES">{dato.unidadDocumentada}</Text>; no se ha convertido a euros.</Text> : null}
+                      {dato.referencias?.length ? dato.referencias.map((ref, indice) => (
+                        <Text key={`${ref.fuente}-${indice}`} style={e.referencia}>{ref.etiqueta}: fuente consultada el {fechaVerificacionLocalVisible(ref.fechaConsulta)} · {dominioFuente(ref.fuente)}{ref.fechaDato ? ` · dato del ${fechaVerificacionLocalVisible(ref.fechaDato)}` : ''}</Text>
+                      )) : dato.consultadaEl ? <Text style={e.referencia}>Fuente consultada el {fechaVerificacionLocalVisible(dato.consultadaEl)} · {dominioFuente(dato.fuente)}</Text> : null}
+                    </View>
+                  ))}
+                </View>
+              </Plegable>
+
+              {documentacion?.descripcion ? (
+                <Plegable titulo="Sobre esta oferta">
+                  {descripcion ? <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.estadoTexto}>{descripcion}</FuenteOriginal> : null}
+                  {documentacion.caracteristicas.length ? (
+                    <View>
+                      <Text style={e.subtituloPlegable}>Características</Text>
+                      <View style={e.tabla}>
+                        {documentacion.caracteristicas.map((caracteristica, indice) => (
+                          <FilaMetrica key={`documentacion-${indice}`} {...caracteristica} original etiquetaOriginal />
+                        ))}
+                      </View>
+                    </View>
+                  ) : null}
+                </Plegable>
+              ) : null}
+
+              {documentacion?.referencias.length ? (
+                <Plegable titulo="Datos con su fecha" detalle={String(documentacion.referencias.length)}>
+                  <Text style={e.estadoTexto}>
+                    Datos publicados en las fechas indicadas. No son precios actuales ni garantizan rentabilidad, apertura o disponibilidad para contratar.
+                  </Text>
+                  {documentacion.referencias.map((referencia, indice) => (
+                    <View style={e.referenciaDocumental} key={`referencia-${indice}`}>
+                      <Text noTraducir idiomaOriginal="es-ES" style={e.datoEtiqueta}>{referencia.etiqueta}</Text>
+                      <Text noTraducir idiomaOriginal="es-ES" style={e.datoValor}>{referencia.valor}</Text>
+                      <Text style={e.referencia}>
+                        Fecha del dato: {referencia.fechaDato ? fechaVerificacionLocalVisible(referencia.fechaDato) : 'no indicada en la fuente'}
+                      </Text>
+                      <Text style={e.referencia}>Consultado el {fechaVerificacionLocalVisible(referencia.fechaConsulta)}</Text>
+                      <FuenteOriginal aviso={false} idiomaOriginal="es-ES" style={e.referencia}>{referencia.alcance}</FuenteOriginal>
+                      <Text style={e.referencia}>Fuente: {dominioFuente(referencia.fuente)} · enlace al final de la ficha</Text>
+                    </View>
+                  ))}
+                </Plegable>
+              ) : null}
+
+              {oferta.metricas.length || rentabilidadSec ? (
+                <Plegable titulo="Datos publicados" detalle={String(oferta.metricas.length + (rentabilidadSec ? 1 : 0))}>
+                  <View style={e.tabla}>
+                    {rentabilidadSec ? <FilaMetrica etiqueta="Rentabilidad ajustada / publicada" valor={rentabilidadSec} original /> : null}
+                    {oferta.metricas.map((metrica, indice) => (
+                      <FilaMetrica key={`${metrica.etiqueta}-${indice}`} {...metrica} original etiquetaOriginal />
+                    ))}
+                  </View>
+                </Plegable>
+              ) : null}
+
+              <Plegable titulo="Fuentes consultadas" detalle={fechaFuentes ? `· ${fechaFuentes}` : ''}>
+                <Text style={e.referencia}>Revisión del catálogo: {resumen.fechas.revisadaEl ? fechaVerificacionLocalVisible(resumen.fechas.revisadaEl) : 'sin fecha válida'}</Text>
+                <Text style={e.referencia}>Última consulta citada: {resumen.fechas.comprobadaEl ? fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl) : 'no documentada'}</Text>
+                <Text style={e.referencia}>Fecha del dato en esa referencia: {resumen.fechas.fechaDato ? fechaVerificacionLocalVisible(resumen.fechas.fechaDato) : 'no indicada por la fuente'}</Text>
+                <Text style={e.referencia}>Revisar el catálogo no vuelve a comprobar las cifras antiguas. Cada referencia conserva su consulta original debajo.</Text>
                 {fuentesAdicionales.map((url, indice) => (
                   <Pressable key={url} onPress={() => onAbrirEnlace(url)}
                     style={({ pressed }) => [e.enlaceSecundario, pressed && e.pulsado]}
@@ -600,8 +678,9 @@ export function DetalleOferta({
                     <Text style={e.enlaceSecundarioTxt}>Ver fuente {indice + 1} · {dominioFuente(url)} ↗</Text>
                   </Pressable>
                 ))}
-              </View>
-            ) : null}
+              </Plegable>
+            </View>
+
             <Text style={e.notaLegal}>
               RWAdar no cobra comisión al inversor. La contratación y el pago se realizan directamente con el proveedor; RWAdar no recibe ni custodia tu inversión. Información editorial, no asesoramiento financiero. Una cifra publicada no es una rentabilidad garantizada ni una recomendación de inversión.
             </Text>
@@ -636,7 +715,6 @@ function Transparencia({ oferta, resumen, ahora, catalogoCaducado, onAbrirEnlace
   };
   return (
     <View style={e.transparencia}>
-      <Text style={e.seccionDetalle} accessibilityRole="header">Transparencia: lo que hemos comprobado</Text>
       <Text style={e.referencia}>Es una comprobación de la documentación, no una recomendación de inversión.</Text>
       {lista.map((c) => (
         <View key={c.id} style={e.comprobacion}>
@@ -848,7 +926,33 @@ const e = StyleSheet.create({
   enlaceSecundarioTxt: { fontFamily: F.semi, color: C.senal, fontSize: 14 },
   deshabilitado: { opacity: 0.45 },
   notaLegal: { ...T.menor, color: C.tx3, textAlign: 'center', marginTop: 16 },
-  transparencia: { marginTop: 20, paddingTop: 16, borderTopWidth: 1, borderTopColor: C.bd },
+  /* La ficha de la web final (04/11/2026): «Lo esencial» como tabla de dos
+     columnas, avisos, «Antes de invertir», el pie con el botón y los plegables. */
+  seccionFicha: { ...T.seccion, color: C.tx, marginTop: 22, marginBottom: 6 },
+  esencial: { borderBottomWidth: 1, borderBottomColor: C.linea2 },
+  esencialFila: { flexDirection: 'row', gap: 14, paddingVertical: 11, borderTopWidth: 1, borderTopColor: C.linea2 },
+  esencialEtiqueta: { ...T.menor, color: C.tx3, width: '32%', flexShrink: 0 },
+  esencialDato: { flex: 1, minWidth: 0 },
+  esencialValor: { ...T.menor, fontSize: 15, lineHeight: 22, color: C.tx },
+  esencialCifra: { fontFamily: F.semi },
+  esencialNota: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx2, marginTop: 4 },
+  imagenDetalle: { marginTop: 22 },
+  antesCaja: { backgroundColor: C.ton, borderRadius: R.l, padding: 14, marginTop: 16, gap: 6 },
+  antesTitulo: { ...T.ficha, fontSize: 17, lineHeight: 23, color: C.tx, marginBottom: 2 },
+  antesFila: { flexDirection: 'row', gap: 8 },
+  antesMarca: { ...T.menor, color: C.tx3 },
+  antesTxt: { ...T.menor, color: C.tx2, flex: 1 },
+  pieDetalle: { marginTop: 18, paddingTop: 16, borderTopWidth: 1, borderTopColor: C.bd },
+  pieDetalleTxt: { ...T.menor, fontSize: 15, lineHeight: 22, color: C.tx2 },
+  plegables: { marginTop: 18, gap: 10 },
+  plegable: { borderWidth: 1, borderColor: C.bd, borderRadius: R.l, overflow: 'hidden' },
+  plegableBoton: { minHeight: UI.tactil, flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 14, paddingVertical: 12 },
+  plegableTit: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 15, lineHeight: 21, color: C.tx, flex: 1 },
+  plegableDetalle: { fontFamily: F.regular, color: C.tx3 },
+  plegableSigno: { fontFamily: F.semi, fontSize: 20, lineHeight: 22, color: C.senal },
+  plegableCuerpo: { paddingHorizontal: 14, paddingBottom: 14 },
+  subtituloPlegable: { ...T.etiqueta, color: C.tx3, marginTop: 14, marginBottom: 8 },
+  transparencia: { marginTop: 2 },
   seccionDetalle: { ...T.seccion, color: C.tx, marginBottom: 4 },
   comprobacion: { flexDirection: 'row', gap: 10, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: C.bd },
   comprobacionMarca: { width: 20, fontFamily: F.semi, fontSize: 16, lineHeight: 22, textAlign: 'center' },

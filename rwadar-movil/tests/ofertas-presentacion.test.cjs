@@ -268,6 +268,9 @@ test('registro del proveedor conserva fuente y fecha sin acreditar la oferta ni 
   assert.doesNotMatch(textoVisible(ui.DetalleOferta({oferta:dato(),plataforma})),/Registro confirmado/);
 });
 
+// Ficha de la web final (04/11/2026): «Lo esencial» y los avisos arriba, luego
+// los riesgos y el botón; las cuatro condiciones con su fuente y el registro van
+// después, plegados (el árbol de prueba incluye lo plegado).
 test('el detalle muestra las cuatro condiciones antes de la explicación larga y conserva riesgos y fuentes', () => {
   const ui = componentes();
   const oferta = dato();
@@ -278,13 +281,14 @@ test('el detalle muestra las cuatro condiciones antes de la explicación larga y
   } } };
   const detalle = ui.DetalleOferta({ oferta, plataforma });
   const texto = textoVisible(detalle);
-  for (const condicion of ['Mínimo publicado en euros', 'Acceso desde España', 'Cómo recuperar el dinero', 'Costes publicados']) {
-    assert.ok(texto.indexOf(condicion) >= 0 && texto.indexOf(condicion) < texto.indexOf(registro), condicion);
-    assert.ok(texto.indexOf(condicion) < texto.indexOf('En tres frases'), condicion);
+  const esencial = texto.indexOf('Mínimo'), riesgo = texto.indexOf('Puedes perder parte o todo');
+  const enlace = texto.indexOf('Ver oferta en');
+  assert.ok(esencial >= 0 && esencial < riesgo && riesgo < enlace);
+  for (const condicion of ['Mínimo en euros', 'Desde España', 'Costes']) {
+    assert.ok(texto.indexOf(condicion) > enlace && texto.indexOf(condicion) < texto.indexOf(oferta.documentacion.descripcion), condicion);
   }
   assert.ok(texto.includes(registro));
-  assert.ok(texto.indexOf('Puedes perder dinero') < texto.indexOf('Mínimo publicado en euros'));
-  assert.ok(texto.includes('No consta en esta ficha. Un registro de la plataforma no acredita cada oferta.'));
+  assert.ok(texto.indexOf(registro) > enlace);
   assert.ok(nodos(detalle).some(n => n.props?.accessibilityLabel?.includes('https://regulador.example/registro')));
 });
 
@@ -296,7 +300,7 @@ test('registrar inversión es una acción manual secundaria y mantiene una sola 
   assert.equal(registros, 0, 'abrir la ficha no registra una inversión');
   registrar.props.onPress(); assert.equal(registros, 1);
   const principales = nodos(detalle).filter(n => n.props?.accessibilityRole === 'link'
-    && n.props.accessibilityLabel?.startsWith('Ver en la fuente ·'));
+    && n.props.accessibilityLabel?.startsWith('Ver oferta en '));
   assert.equal(principales.length, 1);
 });
 
@@ -414,8 +418,8 @@ test('detalle conserva documentación, importes históricos contextualizados, ri
     'No son precios actuales', '28/09/2026', '30/09/2026', oferta.documentacion.referencias[0].alcance,
     'La inversión puede perder valor.', '999 EUR', oferta.rentabilidad.literal, 'no recibe ni custodia']) assert.ok(visible.includes(esperado), esperado);
   assert.ok(!visible.includes(FUENTE));
-  assert.match(visible, /Ver en la fuente\s*·\s*Proveedor/);
-  assert.doesNotMatch(visible, /Otras fuentes consultadas/);
+  assert.match(visible, /Ver oferta en\s*Proveedor/);
+  assert.doesNotMatch(visible, /Ver fuente 1 ·/);
   const enlaces = nodos(detalle).filter(nodo => nodo.tipo === 'Pressable' && nodo.props.accessibilityLabel?.includes(FUENTE));
   assert.equal(enlaces.length, 1, 'cada destino tiene una sola acción, sin repetir el CTA principal en las referencias');
   for (const enlace of enlaces) {

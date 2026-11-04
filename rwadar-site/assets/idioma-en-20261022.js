@@ -1072,7 +1072,6 @@
   "Explorar el radar": "Explore the radar",
   "El registro en cifras": "The register in figures",
   "fuera del radar": "outside the radar",
-  "revisado el": "reviewed on",
   "última revisión": "last review",
   "Revisión pendiente": "Review pending",
   "Sin cifras hasta renovarla": "No figures until it is renewed",
@@ -1523,7 +1522,13 @@
   "Aviso reforzado para esta lección": "Additional notice for this lesson",
   "Sobre esta lección": "About this lesson",
   "min": "min",
-  "Primero, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.": "First, the references with verifiable figures, followed by those pending or in conflict. The order does not depend on payments or returns."
+  "Primero, las referencias con cifras comprobables y luego las pendientes o con conflicto. El orden no depende de pagos ni de rentabilidades.": "First, the references with verifiable figures, followed by those pending or in conflict. The order does not depend on payments or returns.",
+  // Ficha de oferta de la app como la web final (04/11/2026), con el inglés de idioma-web.
+  "Oferta principal": "Primary offer",
+  "Ver oferta en": "See the offer on",
+  "Abrir mercado": "Open market",
+  "Fuentes consultadas": "Sources checked",
+  "cifras por actualizar": "figures due for update"
 };
 if(typeof module==='object'&&module.exports)module.exports=Object.freeze(diccionario);else raiz.RWAdarEnglish=Object.freeze(diccionario);
 })(typeof globalThis==='object'?globalThis:this);

@@ -167,7 +167,7 @@ test('las 52 imágenes originales se conservan y la interfaz usa la ilustración
   assert.match(componente, /\{editorial\.etiqueta\}/);
   assert.match(componente, /accessibilityLabel=\{decorativa \? undefined : editorial\.alt\}/);
   assert.doesNotMatch(componente, /oferta\.imagenAlt/);
-  assert.match(componente, /Proveedor de esta referencia · no está en el radar/);
+  // La ficha de la web final (04/11/2026) ya no dice si el proveedor está en el radar.
   assert.match(componente, /La referencia sigue documentada; ha vencido la actualización de sus cifras/);
   assert.doesNotMatch(componente, /Producto activo/);
   assert.match(componente, /permanente-vencida/);
@@ -179,9 +179,10 @@ test('las 52 imágenes originales se conservan y la interfaz usa la ilustración
   // Rótulos en frase normal (GUIA-ACABADOS §5, aplicada a la web el 04/11).
   assert.match(componente, /Patrocinada/);
   assert.match(componente, /Patrocinada\. Consulta la relación comercial en la ficha; no altera el ranking/);
-  assert.match(componente, /Ver en la fuente · <Text noTraducir idiomaOriginal="es-ES">\{oferta\.plataformaNombre\}/);
+  // El botón de la ficha se nombra «Ver oferta en <proveedor> ↗», como la web (04/11/2026).
+  assert.match(componente, /Ver oferta en <Text noTraducir idiomaOriginal="es-ES">\{oferta\.plataformaNombre\}/);
   assert.match(componente, /RWAdar no cobra comisión al inversor/);
-  assert.match(componente, /\['Acceso desde España', resumen\.accesoEspana\]/);
+  assert.match(componente, /\['Desde España', resumen\.accesoEspana\]/);
   assert.match(componente, /item\.alcance/);
   assert.doesNotMatch(componente, /alternarSeguimiento|onSeguir|Seguir esta plataforma/);
 });

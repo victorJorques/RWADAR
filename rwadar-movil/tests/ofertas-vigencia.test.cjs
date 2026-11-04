@@ -307,7 +307,8 @@ test('el detalle conserva acceso a fuentes fechadas cuando retira las cifras', (
   const fuente = 'https://example.test/fuente-oficial';
   const detalle = componentes.DetalleOferta({ oferta: { ...oferta, fuentesActuales: [fuente] } });
   const texto = textoRenderizado(detalle);
-  assert.match(texto, /Otras fuentes consultadas/);
+  // Las fuentes van plegadas en «Fuentes consultadas», como la web (04/11/2026).
+  assert.match(texto, /Ver fuente 1 ·/);
   assert.match(texto, /Revisión del catálogo:\s*21\/09\/2026/);
   assert.ok(texto.includes(fuente));
   assert.match(texto, /contratación y el pago se realizan directamente con el proveedor/);
@@ -346,7 +347,8 @@ test('una referencia del 27 de septiembre conserva su revisión documental el d�
     assert.ok(detalle.includes(fuente));
     assert.match(detalle, /Sin comprobar desde España/);
     if (estadoRevision === 'no_verificable') assert.match(detalle, /Apertura no confirmada/);
-    if (estadoRevision === 'fuentes_en_conflicto') assert.match(detalle, /Fuentes oficiales en conflicto/);
+    // El estado con las palabras de la web (estadoVigenciaLocal, 04/11/2026).
+    if (estadoRevision === 'fuentes_en_conflicto') assert.match(detalle, /Fuentes en conflicto/);
     assert.deepEqual(dato, original);
   }
 });
@@ -389,8 +391,8 @@ test('la ficha documental y sus referencias históricas sobreviven al TTL sin pr
   assert.doesNotMatch(tarjeta, /54,20|97,13|9876|1234|4455/);
   const detalle = textoRenderizado(componentes.DetalleOferta({ oferta: dato }));
   assert.match(detalle, /Revisión del catálogo:\s*30\/09\/2026/);
-  for (const esperado of ['Características documentadas', documentacion.descripcion, 'Inmobiliario residencial',
-    'Referencias fechadas', 'No son precios actuales', '54,20 CHF', '26/09/2026',
+  for (const esperado of ['Características', documentacion.descripcion, 'Inmobiliario residencial',
+    'No son precios actuales', '54,20 CHF', '26/09/2026',
     '27/09/2026', documentacion.referencias[0].alcance, fuente]) assert.ok(detalle.includes(esperado), esperado);
   assert.doesNotMatch(detalle, centinelas);
   assert.deepEqual(dato, original);
