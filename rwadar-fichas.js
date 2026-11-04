@@ -38,6 +38,9 @@ const enlace = valor => { try {
 } catch { return null; } };
 const rutaOferta = o => '/ofertas/' + o.slug;
 const rutaPlataforma = p => '/plataformas/' + p.slug;
+// «Marketplace» es un valor fijo del catálogo (rwa_actor); se lee «Mercado de compraventa»
+// (LISTA-FINAL fila 19), como en la web. El valor de la base no cambia.
+const tipoEmpresaVisible = t => t === 'Marketplace' ? 'Mercado de compraventa' : t;
 
 function leerBloquesCatalogo(codigo) {
   const ast = parse(codigo, {ecmaVersion:'latest'});
@@ -241,7 +244,7 @@ function paginaOferta(o,catalogo,imagen) {
 function paginaPlataforma(p,catalogo) {
   const v = p.verificacionLocal || {};
   const asociadas = catalogo.ofertas.filter(o=>o.plataformaSlug===p.slug);
-  const contenido = '<p class="intro"'+ORIGINAL+'>'+esc(p.nota)+'</p><section><h2>Quién es</h2><p'+ORIGINAL+'>'+esc(p.tipo)+' · '+esc(p.cat)+' · '+esc(p.reg)+'</p><p'+ORIGINAL+'>'+esc(v.estadoOperativo?.detalle || '')+'</p></section>'+
+  const contenido = '<p class="intro"'+ORIGINAL+'>'+esc(p.nota)+'</p><section><h2>Quién es</h2><p'+ORIGINAL+'>'+esc(tipoEmpresaVisible(p.tipo))+' · '+esc(p.cat)+' · '+esc(p.reg)+'</p><p'+ORIGINAL+'>'+esc(v.estadoOperativo?.detalle || '')+'</p></section>'+
     '<section><h2>Cómo funciona y qué se ha comprobado</h2><p'+ORIGINAL+'>'+esc(p.aval)+'</p><h3>Supervisión y alcance</h3><p'+ORIGINAL+'>'+esc(v.licenciaRegistro?.detalle || 'Consulta el alcance del registro en la fuente.')+'</p>'+fuentes(v.licenciaRegistro?.fuentes || [])+'</section>'+
     '<section><h2>Quién puede acceder</h2><p'+ORIGINAL+'>'+esc(v.acceso?.detalle || p.acceso)+'</p><p>La presencia en el radar no confirma acceso desde España ni aprobación de un producto concreto.</p>'+fuentes(v.acceso?.fuentes || [])+'</section>'+riesgos+
     '<section><h2>Fuentes y fechas</h2><p>Revisión editorial: '+esc(corta(v.verificadoEl || p.ver))+'. Cada fuente mantiene su propia fecha de consulta.</p>'+fuentes([...(v.estadoOperativo?.fuentes || []),...(v.alertasCriticas || []).flatMap(a=>a.fuentes || [])])+'</section>'+

@@ -420,6 +420,7 @@
   "Cadenas": "Blockchains",
   "Quién puede entrar": "Who can access",
   "Importe de entrada": "Entry amount",
+  "Mercado de compraventa": "Marketplace",
   "Ficha de la plataforma": "Platform details",
   "POR QUÉ ESTÁ EN EL RADAR": "WHY IT IS ON THE RADAR",
   "QUÉ HACE": "WHAT IT DOES",

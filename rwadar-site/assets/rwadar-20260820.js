@@ -3075,9 +3075,12 @@ function textoDato(v,nombre,max){
  if(typeof v!=='string')throw new Error(nombre+' no es texto');
  const s=v.trim();if(!s||s.length>max)throw new Error(nombre+' no válido');return s;
 }
+/* El tipo de empresa es un valor fijo del catálogo (rwa_actor). «Marketplace» se
+   lee «Mercado de compraventa» (LISTA-FINAL fila 19); el valor de la base no cambia. */
+function tipoEmpresaVisible(t){return t==='Marketplace'?'Mercado de compraventa':t}
 function plataformaRemota(p){
  const x={n:textoDato(p.nombre,'nombre',120),cat:textoDato(p.categoria,'categoría',80),
-  tipo:textoDato(p.actor,'actor',80),reg:textoDato(p.region,'región',100),
+  tipo:tipoEmpresaVisible(textoDato(p.actor,'actor',80)),reg:textoDato(p.region,'región',100),
   cadenas:textoDato(p.cadenas,'cadenas',160),ticket:textoDato(p.ticket,'entrada',40),
   acceso:textoDato(p.acceso,'acceso',40),web:urlHttps(p.web),
   aval:textoDato(p.aval,'aval',2000),nota:textoDato(p.nota,'descripción',3000),
@@ -3377,6 +3380,8 @@ function comprobarCatalogoEmbebido(){
    throw new Error('oferta embebida fuera de contrato');
   CATALOGO_CADUCADO=edad>P[0].vigencia_lote_dias;
   recordarManifiestoCatalogoV2(P);
+  /* El snapshot trae el valor de la base; se enseña como el lote remoto. */
+  P.forEach(p=>{p.tipo=tipoEmpresaVisible(p.tipo)});
   return true;
  }catch(_){
   P.length=0;EMI.length=0;CATALOGO_EMBEBIDO_BLOQUEADO=true;
@@ -3386,7 +3391,7 @@ function comprobarCatalogoEmbebido(){
 
 function plataformaDesdeEscaparate(p){
  const x={n:textoDato(p.nombre,'nombre local',120),cat:textoDato(p.categoria,'categoría local',80),
-  tipo:textoDato(p.actor,'actor local',80),reg:textoDato(p.region,'región local',100),
+  tipo:tipoEmpresaVisible(textoDato(p.actor,'actor local',80)),reg:textoDato(p.region,'región local',100),
   cadenas:textoDato(p.cadenas,'cadenas locales',160),ticket:textoDato(p.ticket,'entrada local',40),
   acceso:textoDato(p.acceso,'acceso local',40),web:urlHttps(p.web),
   aval:textoDato(p.aval,'aval local',2000),nota:textoDato(p.nota,'descripción local',3000),

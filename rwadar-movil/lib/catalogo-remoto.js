@@ -6,6 +6,10 @@ const { validarLotePublico, validarLotePublicoV2, MANIFIESTO_CATALOGO_V2, MAX_VI
 // Una sola entrada: nunca combinar el radar antiguo con ofertas de otra revisión.
 const CACHE_CATALOGO = 'rwadar.cache.catalogo.v2';
 const texto = valor => typeof valor === 'string' ? valor.trim() : '';
+// «Marketplace» es un valor fijo del catálogo (rwa_actor); se lee «Mercado de
+// compraventa» (LISTA-FINAL fila 19), como en la web. La caché guarda el lote tal
+// cual, así que el valor de la base no cambia.
+const tipoEmpresaVisible = t => t === 'Marketplace' ? 'Mercado de compraventa' : t;
 
 function adaptarCatalogo(lote, ahora) {
   if (lote?.version !== 1) throw new Error('Versión de caché de catálogo no válida');
@@ -33,7 +37,7 @@ function adaptarFilas(lote, revision, ahora) {
     return {
       revisionId: p.revision_id, slug: p.slug, nombre: p.nombre,
       plataforma_id: p.plataforma_id, categoria: texto(p.categoria),
-      color: texto(p.color), actor: texto(p.actor), region: texto(p.region),
+      color: texto(p.color), actor: tipoEmpresaVisible(texto(p.actor)), region: texto(p.region),
       cadenas: texto(p.cadenas), ticket: texto(p.ticket), acceso: texto(p.acceso),
       web: p.web, aval: texto(p.aval), nota: texto(p.nota),
       verificada_el: texto(p.verificada_el), verificacionLocal: p.verificacion_local,
