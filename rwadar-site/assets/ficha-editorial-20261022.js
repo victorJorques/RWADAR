@@ -32,19 +32,24 @@
   // pinta: los datos del catálogo y las búsquedas por etiqueta no se tocan.
   const ROTULOS = {
     precio:'Precio', minimo:'Mínimo de inversión', salida:'Salida', salida_instantanea:'Salida inmediata',
-    accesoEspana:'Acceso desde España', accesoEspana_particulares:'Acceso desde España para particulares',
+    accesoEspana:'Acceso desde España', accesoEspana_particulares:'Acceso desde España (particulares)',
     derecho:'Qué se adquiere', comisiones:'Comisiones', riesgos:'Riesgos', custodia:'Custodia',
-    estado:'Estado de la oferta', entidad:'Entidad', rentabilidad:'Rentabilidad', supervision:'Supervisión',
-    patrimonio:'Patrimonio', actividad:'Actividad', umbral:'Umbral de financiación', regimen:'Régimen legal',
+    estado:'Estado de la oferta', entidad:'Entidad que comercializa', rentabilidad:'Rentabilidad', supervision:'Supervisión',
+    patrimonio:'Patrimonio', actividad:'Operaciones recientes', umbral:'Umbral de financiación', regimen:'Régimen legal',
     recaudado:'Importe recaudado', kyc:'Verificación de identidad', folleto:'Folleto', fiscalidad:'Fiscalidad',
-    divisa:'Divisa', documentos:'Documentos',
+    divisa:'Moneda y tipo de cambio', documentos:'Documentos',
   };
+  // Desde la entrega 2026-11-04 el catálogo ya trae el rótulo legible
+  // («Acceso desde España · consulta 01/11/2026», mismos nombres que
+  // rwadar-app/rotulos-referencias.js): se quita la fecha, que se pinta aparte.
   function rotuloReferencia(etiqueta) {
     const limpio = texto(etiqueta);
-    const m = /^([A-Za-z][A-Za-z0-9_]*)\s*·\s*consulta\s+\d{2}\/\d{2}\/\d{4}$/.exec(limpio);
+    const m = /^(.+?)\s*·\s*consulta\s+\d{2}\/\d{2}\/\d{4}$/.exec(limpio);
     if (!m) return limpio;
-    if (Object.prototype.hasOwnProperty.call(ROTULOS, m[1])) return ROTULOS[m[1]];
-    const palabras = m[1].replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+    const base = m[1].trim();
+    if (Object.prototype.hasOwnProperty.call(ROTULOS, base)) return ROTULOS[base];
+    if (!/^[a-z][A-Za-z0-9_]*$/.test(base)) return base;
+    const palabras = base.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
     return palabras.charAt(0).toUpperCase() + palabras.slice(1);
   }
   // El rótulo es de la interfaz (se puede traducir) si viene de una clave
