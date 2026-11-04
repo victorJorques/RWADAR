@@ -7,7 +7,8 @@
    Cloudflare con lo que hay en el repositorio: portada, privacidad, mapa
    del sitio, índice de la Academy, cada lección publicada (con su fecha de
    revisión legal), sus assets con huella, la CSP y que las lecciones no
-   publicadas y las fichas retiradas den 404. Sale con código 1 si algo no cuadra.
+   publicadas y las fichas retiradas den 404 (o 301 si la plataforma solo
+   cambió de carpeta). Sale con código 1 si algo no cuadra.
    ===================================================================== */
 import { createRequire } from 'node:module';
 import crypto from 'node:crypto';
@@ -145,10 +146,20 @@ const noEncontradaDelWorker = p => p.estado === 404 && p.cabeceras.get('x-robots
   p.cabeceras.get('cache-control') === 'no-store';
 const inexistente = await pedir('/ofertas/rwadar-comprobacion-ficha-inexistente');
 ok('una ficha que nunca existió da el 404 del worker', noEncontradaDelWorker(inexistente));
+/* Una plataforma que cambió de carpeta (de plataformas/ a fuera-del-radar/, o al
+   revés) no da 404: el worker redirige con 301 a la ficha publicada. */
+const trasladada = ficha => {
+  const [carpeta, archivo] = ficha.split('/');
+  const otra = { plataformas: 'fuera-del-radar', 'fuera-del-radar': 'plataformas' }[carpeta];
+  return otra && paginasFichas.includes(`${otra}/${archivo}`) ? `/${otra}/${archivo.replace(/\.html$/, '')}` : null;
+};
 for (const ficha of retiradas) {
   const ruta = '/' + ficha.replace(/\.html$/, '');
   const pagina = await pedir(ruta);
-  ok(`ficha retirada ${ruta} da el 404 del worker: ${pagina.estado}`, noEncontradaDelWorker(pagina));
+  const destino = trasladada(ficha);
+  if (destino) ok(`ficha trasladada ${ruta} redirige (301) a ${destino}: ${pagina.estado}`, pagina.estado === 301 &&
+    pagina.cabeceras.get('location') === destino && pagina.cabeceras.get('cache-control') === 'no-store');
+  else ok(`ficha retirada ${ruta} da el 404 del worker: ${pagina.estado}`, noEncontradaDelWorker(pagina));
 }
 /* Lo mismo con las ilustraciones de las ofertas retiradas: las borradas de
    Git que no sigan en la carpeta editorial ni en las precargas. Aquí el 404

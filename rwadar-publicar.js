@@ -453,6 +453,32 @@ if (!marcaPie.test(html)) {
 }
 html = html.replace(marcaPie, `$1${escapaTexto(pieRevision)}$2`);
 
+/* Cifras del radar en el HTML estático (04/11/2026, ARTEX pasa a Descartadas). El
+   navegador las pinta desde P y FUERA, pero el HTML que ven los buscadores, quien no
+   tiene JavaScript y las vistas previas al compartir llevaba 26 y 4 escritos a mano.
+   Salen del mismo catálogo que acaba de ejecutar el pre-render. */
+const enRadar = Number(vm.runInContext('P.length', contexto));
+const descartadas = Number(vm.runInContext('FUERA.length', contexto));
+if (!(enRadar > 0 && descartadas > 0) || capturadoTexto.s1 !== String(enRadar) || capturadoTexto.s4 !== String(descartadas) ||
+    capturadoTexto.rlTotal !== `${enRadar} plataformas en el radar`) {
+  console.error('ERROR: no se pudieron derivar del catálogo las cifras del radar.');
+  process.exit(1);
+}
+for (const [marca, cifra] of [
+  [/(<span class="n oro" id="s1">)\d+(<\/span>)/, enRadar],
+  [/(<span class="n coral" id="s4">)\d+(<\/span>)/, descartadas],
+  [/(<span class="rl-t" id="rlTotal">)\d+( plataformas en el radar<\/span>)/, enRadar],
+  [/(<p class="movil-cabecera-sub" id="movilCabeceraSub">Ofertas y )\d+( plataformas contrastadas<\/p>)/, enRadar],
+  [/(<meta property="og:image:alt" content="RWAdar · )\d+( plataformas )/, enRadar],
+  [/(<meta name="twitter:image:alt" content="RWAdar · )\d+( plataformas )/, enRadar],
+]) {
+  if (!marca.test(html)) {
+    console.error(`ERROR: no se encuentra en index.html la cifra ${marca.source}.`);
+    process.exit(1);
+  }
+  html = html.replace(marca, `$1${cifra}$2`);
+}
+
 // Fecha editorial real de los datos, sin rejuvenecer las fuentes canónicas.
 const fechaDatos = vm.runInContext(
   "[...P.map(p=>p.verificacionLocal?.verificadoEl || p.ver),...EMI.map(o=>o.verificadaEl || o.ver)].filter(Boolean).sort().at(-1)", contexto);

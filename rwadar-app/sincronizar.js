@@ -176,6 +176,33 @@ function manifiestoMinimoFuente(script, manifiesto, hoy) {
   return resultado.manifiesto;
 }
 
+/* Descartes (04/11/2026, ARTEX pasa a Descartadas). Antes se exigían
+   exactamente 4, escrito a mano. Ahora la cuenta sale del catálogo: al menos
+   uno y todos documentados como exige la base (etiqueta, motivo de 40
+   caracteres o más y alguna fuente HTTPS), sin repetidos y sin coincidir con
+   una plataforma del radar. Una respuesta vacía o a medias se rechaza; la
+   lista cerrada de fichas (rwadar-fichas-manifiesto.js) vuelve a contrastar
+   después cuántos son y cuáles. */
+const slugNombre = texto => String(texto).normalize('NFD').replace(/[̀-ͯ]/g, '')
+  .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+function validarDescartes(fuera, radar) {
+  if (!Array.isArray(fuera) || !fuera.length || fuera.length > LIMITES_CATALOGO_V2.plataformas) {
+    throw new Error('el catálogo público debe traer sus descartes documentados');
+  }
+  const enRadar = new Set((Array.isArray(radar) ? radar : []).map(p => p?.slug));
+  const vistos = new Set();
+  for (const f of fuera) {
+    const slug = slugNombre(f?.nombre || '');
+    if (!slug || vistos.has(slug) || enRadar.has(slug) ||
+        typeof f.etiqueta_descarte !== 'string' || !f.etiqueta_descarte.trim() ||
+        typeof f.motivo_descarte !== 'string' || f.motivo_descarte.trim().length < 40 ||
+        !Array.isArray(f.fuentes) || !f.fuentes.length || !f.fuentes.every(s => esHttps(s?.url))) {
+      throw new Error(`descarte sin documentar, repetido o también en el radar: ${f?.nombre || '(sin nombre)'}`);
+    }
+    vistos.add(slug);
+  }
+}
+
 async function main({
   fetchFn = globalThis.fetch,
   jsPath = JS,
@@ -200,9 +227,7 @@ async function main({
     pedir(`catalogo_ofertas_publicas${sufijo}?select=*${limiteOfertas}`, fetchFn),
   ]);
 
-  if (!Array.isArray(fuera) || fuera.length !== 4) {
-    throw new Error('el catálogo público debe contener exactamente 4 descartes documentados');
-  }
+  validarDescartes(fuera, radar);
   if (versionEsquema === 2) {
     // Siempre disponible salvo orden expresa (1/10/2026): un lote completo y
     // caducado se puede publicar; la web lo enseña con el aviso de revisión.
@@ -286,6 +311,7 @@ module.exports = {
   ofertaPublica,
   metadatosRevision,
   manifiestoMinimoFuente,
+  validarDescartes,
   sincronizar: main,
 };
 if (require.main === module) {

@@ -106,7 +106,7 @@ function leerBloquesCatalogo(codigo) {
 }
 
 function validarCatalogoSnapshot({plataformas,ofertas,fuera}, {
-  hoy = new Date(), manifiesto = MANIFIESTO_CATALOGO_V2,
+  hoy = new Date(), manifiesto = MANIFIESTO_CATALOGO_V2, paginasPermitidas = permitidas,
 } = {}) {
   const lote = validarLotePublicoV2(
     plataformas.map(p=>({...p,nombre:p.n,revision_id:p.revisionId,verificacion_local:p.verificacionLocal})),
@@ -116,7 +116,7 @@ function validarCatalogoSnapshot({plataformas,ofertas,fuera}, {
     {hoy,manifiesto,permitirAmpliacion:true,permitirCaducado:true});
   assert(plataformas.every(p=>enlace(p.web)) && ofertas.every(o=>enlace(o.url)),
     'El catálogo contiene enlaces de proveedor no válidos');
-  assert(Array.isArray(fuera) && fuera.length===permitidas.filter(n=>n.startsWith('fuera-del-radar/')).length &&
+  assert(Array.isArray(fuera) && fuera.length===paginasPermitidas.filter(n=>n.startsWith('fuera-del-radar/')).length &&
     new Set(fuera.map(f=>slug(f.n))).size===fuera.length && fuera.every(f=>slug(f.n) &&
       typeof f.badge==='string' && f.badge.trim() && typeof f.why==='string' && f.why.trim() &&
       Array.isArray(f.fuentes) && f.fuentes.length>0 && f.fuentes.every(s=>enlace(s.url))),
@@ -306,7 +306,7 @@ function novedades(catalogo) {
 }
 
 function construirSalidas({catalogo, paginasPermitidas = permitidas} = {}) {
-  const c = catalogo ? validarCatalogoSnapshot(catalogo) : leerCatalogo();
+  const c = catalogo ? validarCatalogoSnapshot(catalogo,{paginasPermitidas}) : leerCatalogo();
   validarRutasCatalogo(c,paginasPermitidas);
   const fotos = new Map(cargarActivosEditoriales(RAIZ).fichas.map(f=>[f.slug,f]));
   const salidas = new Map();

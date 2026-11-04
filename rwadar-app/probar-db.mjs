@@ -1,5 +1,6 @@
 import {PGlite} from '@electric-sql/pglite';
 import fs from 'fs';
+import { cuentaSeed } from './pruebas-soporte.mjs';
 const db=await new PGlite();
 const ok=[],fail=[];
 const paso=(n,c)=>c?ok.push(n):fail.push(n);
@@ -20,8 +21,10 @@ await db.exec(fs.readFileSync('db/04_rls.sql','utf8'));
 await db.exec(fs.readFileSync('db/06_archax_republic.sql','utf8'));
 console.log('El núcleo 01-06 se aplica sin error.\n');
 
-paso('26 en el radar',(await n("select count(*)::int c from plataformas where estado='en_radar'"))[0].c===26);
-paso('4 descartadas',(await n("select count(*)::int c from plataformas where estado='descartada'"))[0].c===4);
+/* Las cuentas del radar salen de 02_seed.sql (volcado de producción), no de un número fijo. */
+const seed=cuentaSeed();
+paso(`${seed.enRadar} en el radar, como 02_seed.sql`,seed.enRadar>0&&(await n("select count(*)::int c from plataformas where estado='en_radar'"))[0].c===seed.enRadar);
+paso(`${seed.descartadas} descartadas, como 02_seed.sql`,seed.descartadas>0&&(await n("select count(*)::int c from plataformas where estado='descartada'"))[0].c===seed.descartadas);
 /* Tantas fuentes como líneas «insert into fuentes» tenga 02_seed.sql, que es el volcado de
    producción (volcar-seed.js): así la cuenta sigue al catálogo sin fijar un número. */
 const fuentesSeed=(fs.readFileSync('db/02_seed.sql','utf8').match(/^insert into fuentes /gm)||[]).length;

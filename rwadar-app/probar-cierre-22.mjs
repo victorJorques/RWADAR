@@ -1,7 +1,7 @@
 /* Regresión completa: demuestra la reapertura de 16 y el cierre de 22. */
 import fs from 'node:fs';
 import {
-  MIGRACIONES, baseConMigraciones, leerMigracion, filas, sesion, informe,
+  MIGRACIONES, baseConMigraciones, leerMigracion, filas, sesion, informe, cuentaSeed,
 } from './pruebas-soporte.mjs';
 
 const hasta15 = MIGRACIONES.slice(0, MIGRACIONES.indexOf('17_avisos_push.sql'));
@@ -143,9 +143,11 @@ await sesion(db);
 
 const recuentos = await filas(db,
   'select estado::text, count(*)::int n from plataformas group by estado');
-paso('fresh-install mantiene paridad 26 en radar y 4 descartadas',
-  recuentos.find((r) => r.estado === 'en_radar')?.n === 26
-  && recuentos.find((r) => r.estado === 'descartada')?.n === 4);
+const seed = cuentaSeed();
+paso(`fresh-install mantiene paridad con 02_seed.sql: ${seed.enRadar} en radar y ${seed.descartadas} descartadas`,
+  seed.enRadar > 0 && seed.descartadas > 0
+  && recuentos.find((r) => r.estado === 'en_radar')?.n === seed.enRadar
+  && recuentos.find((r) => r.estado === 'descartada')?.n === seed.descartadas);
 
 const vistas = await filas(db, `select relname,coalesce(reloptions,array[]::text[]) opciones
   from pg_class where relnamespace='public'::regnamespace and relname in

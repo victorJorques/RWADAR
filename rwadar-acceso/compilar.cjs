@@ -13,7 +13,15 @@ const PAGINAS_FICHAS = require('../rwadar-fichas-manifiesto.js');
    sin pedírsela a ASSETS. Al retirar una ficha basta con quitarla del
    manifiesto, como hasta ahora. Para el resto de archivos (por ejemplo la
    ilustración de una oferta retirada), el worker reconoce la copia de
-   conservación por sus cabeceras y también responde 404. */
+   conservación por sus cabeceras y también responde 404.
+
+   Plataforma que cambia de carpeta (04/11/2026, ARTEX pasa a Descartadas).
+   Si /plataformas/<slug> ya no está en la lista pero /fuera-del-radar/<slug>
+   sí (o al revés, si una descartada vuelve al radar), el worker responde 301
+   a la ficha que sí existe, sin pedir nada a ASSETS: así la dirección vieja
+   no da 404 ni sirve la copia de conservación. Sale de la misma lista
+   cerrada (el destino solo puede ser una ficha publicada) y va con no-store
+   para que un navegador no guarde el salto si la plataforma vuelve. */
 const CARPETAS_FICHAS = Object.freeze(['ofertas', 'plataformas', 'fuera-del-radar']);
 function fichasPublicadas(manifiesto = PAGINAS_FICHAS) {
   const fichas = manifiesto.filter(ruta => {
@@ -54,6 +62,18 @@ function fichaRetiradaRWAdar(request) {
   const partes = rutaFichaRWAdar.exec(rutaNormalizadaRWAdar(request));
   if (!partes || partes[2].includes(".")) return false;
   return !fichasRWAdar.has(partes[1] + "/" + partes[2] + ".html");
+}
+function fichaTrasladadaRWAdar(request) {
+  if (request.method !== "GET" && request.method !== "HEAD") return null;
+  const partes = rutaFichaRWAdar.exec(rutaNormalizadaRWAdar(request));
+  if (!partes || partes[2].includes(".") || partes[1] === "ofertas") return null;
+  if (fichasRWAdar.has(partes[1] + "/" + partes[2] + ".html")) return null;
+  const otra = partes[1] === "plataformas" ? "fuera-del-radar" : "plataformas";
+  return fichasRWAdar.has(otra + "/" + partes[2] + ".html") ? "/" + otra + "/" + partes[2] : null;
+}
+function fichaRedirigidaRWAdar(request, destino) {
+  return new Response(null, { status: 301, headers: {
+    "Location": destino + new URL(request.url).search, "Cache-Control": "no-store" } });
 }
 /* El servidor de assets de Pages solo usa la Cache API en notFound(), para
    devolver la copia de conservación de un archivo que ya no está en este
@@ -97,6 +117,8 @@ async function esCopiaConservadaRWAdar(request, respuesta, env) {
   } catch { return false; }
 }
 async function servirArchivoRWAdar(request, env) {
+  const trasladada = fichaTrasladadaRWAdar(request);
+  if (trasladada) return fichaRedirigidaRWAdar(request, trasladada);
   if (fichaRetiradaRWAdar(request)) return paginaNoEncontradaRWAdar(request, env);
   const respuesta = await env.ASSETS.fetch(request);
   if (!(await esCopiaConservadaRWAdar(request, respuesta, env))) return respuesta;

@@ -5,7 +5,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { parse } from 'acorn';
 import { createRequire } from 'node:module';
-import { baseCompleta, filas, sesion, informe } from './pruebas-soporte.mjs';
+import { baseCompleta, filas, sesion, informe, cuentaSeed } from './pruebas-soporte.mjs';
 
 const require = createRequire(import.meta.url);
 const {
@@ -419,7 +419,7 @@ for (const rol of ['anon', 'authenticated']) {
   paso(`${rol}: el cierre mantiene el catálogo y los descartes documentados`,
     (await filas(db, 'select count(*)::int c from public.catalogo_plataformas_publicas'))[0].c === 26 &&
     (await filas(db, 'select count(*)::int c from public.catalogo_ofertas_publicas'))[0].c === 28 &&
-    (await filas(db, "select count(*)::int c from public.plataformas where estado='descartada'"))[0].c === 4);
+    (await filas(db, "select count(*)::int c from public.plataformas where estado='descartada'"))[0].c === cuentaSeed().descartadas);
   await sesion(db);
 }
 

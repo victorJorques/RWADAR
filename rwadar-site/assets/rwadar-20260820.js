@@ -5256,7 +5256,7 @@ const Movil = (function(){
  const cabEtiqueta=document.getElementById('movilCabeceraEtiqueta');
  const cabTitulo=document.getElementById('movilCabeceraTitulo');
  const cabSub=document.getElementById('movilCabeceraSub');
- const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||'26';
+ const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||String(P.length);
  const textos={
   inicio:['RWAdar','Inicio','Novedades y por dónde empezar'],
   buscar:['Explorar RWAdar','Ofertas','Cada una con su fuente y su fecha'],
