@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 04/11: corrección de la revisión de los arreglos de escritorio (idioma-previo solo oculta en escritorio y con tope desde la navegación, barra de filtros al filtrar, comparador «No aplica», botones de /acceso). Antes, el barrido de calidad y la entrega de catálogo 2026-11-04. Orden de Víctor: «hay que subirlo cuanto antes». npm test completo en verde.",
+  "nota": "Claude, 04/11: remates 3 (Inicio sin salto al cargar en escritorio, tableta y móvil; Inicio como historia en tableta; leyenda del radar sin marca de texto original en inglés; «Qué se adquiere» una sola vez), revisados y corregidos. Antes, la corrección de los arreglos de escritorio. Orden de Víctor: «hay que subirlo cuanto antes». npm test completo en verde.",
   "revisionAprobada": {
-    "commit": "c65b0f48c01b7a7d7e9c0cb9455161008bcd3247",
-    "contenidoSha256": "sha256:3a56da4eedcbf866877d28fb55f342638fd7895f9867edaea7ff02fc54140f92",
+    "commit": "9d06bca7dc3c57e1f30f2cf6d419452b841cd6aa",
+    "contenidoSha256": "sha256:1df7c77ccf7903f2c906d772e1bcff5a4d7a0219f0433af0021977e27a942c32",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
