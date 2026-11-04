@@ -1029,8 +1029,10 @@ function bloquePortada(academy) {
 }
 
 /* El enlace discreto de Inicio a la Academy (decisión de Víctor del 04/11/2026),
-   con el número real de lecciones publicadas. En el móvil cambia a la pestaña
-   Academy; en escritorio abre /academy/. */
+   con el número real de lecciones publicadas. Solo se ve en pantallas de
+   menos de 768 px, donde cambia a la pestaña Academy; sin JavaScript abre /academy/.
+   En escritorio no aparece: Academy está en el menú de arriba y en su propia
+   sección de la portada. */
 function bloqueInicio(academy) {
   const n = publicadas(academy).length;
   return `      <!--academy-inicio:ini-->
