@@ -255,7 +255,7 @@ export default function App() {
       }
       if (catalogo.caducado) {
         const [a, m, d] = String(catalogo.fecha).split('-');
-        mensajes.push(`Revisión pendiente: estos datos se revisaron el ${d}/${m}/${a} y su revisión semanal ha vencido. ` +
+        mensajes.push(`Revisión pendiente: estos datos se revisaron el ${d}/${m}/${a} y su revisión semanal ha caducado. ` +
           'Las cifras caducadas se ocultan; comprueba cada dato en la web del emisor.');
       }
       if (f.error) mensajes.push('No se pudieron actualizar los descartes documentados.');

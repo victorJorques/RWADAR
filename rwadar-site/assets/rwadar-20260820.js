@@ -1661,7 +1661,7 @@ function textoAvisoCatalogo(){
  if(CATALOGO_SIN_COMPROBAR)return 'No hemos podido comprobar la revisión más reciente. Mostramos la última revisión completa, del '+
   fecha+'. Comprueba cada dato en la web del emisor antes de decidir.';
  if(CATALOGO_CADUCADO)return 'Revisión pendiente. Estos datos se revisaron el '+fecha+
-  ' y su revisión semanal ha vencido. Las cifras caducadas se ocultan; comprueba cada dato en la web del emisor antes de decidir.';
+  ' y su revisión semanal ha caducado. Las cifras caducadas se ocultan; comprueba cada dato en la web del emisor antes de decidir.';
  return '';
 }
 function textoPieRevision(){
@@ -2459,7 +2459,7 @@ function comprobacionesOferta(o,resumen=resumenEditorialOferta(o)){
    motivo:partes.map(x=>x.length>1?x[0]+' '+x[1]+'.':x[0]).join(' ')},
   vigente:{cumple:vigente,fuente:null,motivo:vigente?'Revisada el '+fechaES(o.verificadaEl)+'; '+estado.texto+'.':
    o.estadoRevision==='fuentes_en_conflicto'?'Las fuentes no coinciden.':
-   o.estadoRevision==='no_verificable'?'No se pudo confirmar en la revisión.':'La revisión semanal ha vencido.'},
+   o.estadoRevision==='no_verificable'?'No se pudo confirmar en la revisión.':'La revisión semanal ha caducado.'},
  };
  return textos.map(c=>({...c,...lista[c.id]}));
 }

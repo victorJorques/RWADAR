@@ -38,7 +38,7 @@
     if (vigencia) {
       const vigente=!resumen.vencida && oferta.estadoRevision==='actual';
       vigencia.textContent=vigente ? 'Sí: la revisión está vigente y las fuentes coinciden.' :
-        'No: la revisión semanal ha vencido o no se pudo confirmar; consulta las condiciones en la fuente.';
+        'No: la revisión semanal ha caducado o no se pudo confirmar; consulta las condiciones en la fuente.';
       const fila=vigencia.parentElement, marca=fila && fila.querySelector('.comprobacion-marca');
       if (fila && fila.dataset) fila.dataset.cumple=vigente ? 'si' : 'no';
       if (marca) marca.textContent=vigente ? '✓ Sí' : '✗ No';

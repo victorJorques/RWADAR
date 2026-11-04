@@ -158,7 +158,7 @@ export function comprobacionesOferta(oferta, resumen, { ahora = new Date(), cata
       motivo: partes.map((x) => (x.length > 1 ? `${x[0]} ${x[1]}.` : x[0])).join(' ') },
     vigente: { cumple: vigente, fuente: null, motivo: vigente ? `Revisada el ${fechaES(o.verificadaEl)}; ${estado.texto}.`
       : o.estadoRevision === 'fuentes_en_conflicto' ? 'Las fuentes no coinciden.'
-        : o.estadoRevision === 'no_verificable' ? 'No se pudo confirmar en la revisión.' : 'La revisión semanal ha vencido.' },
+        : o.estadoRevision === 'no_verificable' ? 'No se pudo confirmar en la revisión.' : 'La revisión semanal ha caducado.' },
   };
   return textos.map((c) => ({ ...c, ...lista[c.id] }));
 }
