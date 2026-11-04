@@ -6,6 +6,20 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 4 de noviembre de 2026 (tarde, 3) · Claude · arreglos de la revisión de «Recién añadidas» (sin publicar)
+
+Rama `claude/recien-anadidas`, commits 90b92c6 (web), 78ed069 (inglés) y
+14c9510 (app); nada publicado, sin push ni OTA. Las
+tarjetas del carrusel llevan su línea de riesgo (la de la Selección) y
+«Revisa · N avisos en la ficha», o el aviso crítico entero, como la fila de
+Ofertas; «Nueva» solo si tiene menos de 14 días; solo Principales.
+«Ver todas las ofertas nuevas» quita filtros y búsqueda; con «Más nuevas
+primero» no hay grupos por proveedor (escritorio y tableta). App: chips de
+«Ordenar por» con diana de 48 px y «¿Cómo ordenamos?» propio para ese orden
+(su inglés en el bloque «Recién añadidas (04/11)»). Web: una sola raya bajo
+la portada, también con el carrusel oculto. Fuera dos pruebas que miraban el
+texto del código. `npm test` en verde y OTA compatible con c1f7106.
+
 ## 4 de noviembre de 2026 (tarde, 2) · Claude · «Recién añadidas» en Inicio y «Nueva» en Ofertas, web y app (sin publicar)
 
 Víctor: «pondría las más nuevas o las recién añadidas, algo así que venda».
