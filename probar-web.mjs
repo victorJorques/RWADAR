@@ -785,6 +785,15 @@ prueba('el pre-render contiene los 4 descartes', (html.match(/class="fila"/g) ||
     contexto.tecnica('https://example.com/datos.json') && !contexto.tecnica('https://api-docs.example.com/guia') &&
     /desenlazarConsultasTecnicas\(d,/.test(js) && /desenlazarConsultasTecnicas\(cuerpo,/.test(js));
 }
+// QA escritorio 04/11/2026, n.º 27: sin sesión, el botón de la cabecera dice «Entrar».
+{
+  const inicio = js.indexOf(' function pinta(){'), fin = js.indexOf(' function pintaMovil(){');
+  const boton = { textContent: '', innerHTML: '', disabled: true, atributos: {}, setAttribute(k, v) { this.atributos[k] = v; } };
+  new Function('b', `const SERVICIOS_USUARIO_DISPONIBLES=true,document=undefined;let identidadConfirmada=false,ses=null,perfil=null;
+    const $=id=>id==='btnCuenta'?b:null,esc=s=>s,pintaMovil=()=>{};${js.slice(inicio, fin)}\npinta();`)(boton);
+  prueba('sin sesión, el botón de la cabecera dice «Entrar» y está activo',
+    inicio > 0 && fin > inicio && boton.textContent === 'Entrar' && boton.disabled === false && /^Entrar /.test(boton.atributos['aria-label']));
+}
 prueba('todos los formularios fallan cerrados bajo form-action none',
   [...html.matchAll(/<form\b([^>]*)>/gi)].every(m => !/\baction\s*=/i.test(m[1])));
 

@@ -54,6 +54,9 @@
     $('clave').required = !$('campo-clave').hidden;
     $('clave').autocomplete = alta || nueva ? 'new-password' : 'current-password';
     $('correo').readOnly = nueva; $('enviar').textContent = textos[vista];
+    // El botón de la vista abierta no se repite debajo del formulario: en «Entrar»
+    // sobraba «Ya tengo cuenta» (QA 04/11/2026, n.º 27).
+    for (const otro of document.querySelectorAll('#acciones [data-vista]')) if (otro.closest && otro.closest('#acciones')) otro.hidden = otro.dataset.vista === vista;
     $('titulo').textContent = nueva ? 'Elige tu nueva contraseña' : alta ? 'Crea tu cuenta gratuita' : vista === 'entrar' ? 'Tu radar, con tu cuenta' : 'Recupera tu acceso';
     mensaje('');
   }

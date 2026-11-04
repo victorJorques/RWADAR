@@ -4874,7 +4874,8 @@ const Cuenta = (function(){
    const nom=(perfil&&perfil.nombre)||(ses.correo||'?').split('@')[0];
    b.innerHTML='<span class="ini" translate="no">'+esc(nom.slice(0,1))+'</span><span>Mis inversiones</span>';
    b.setAttribute('aria-label','Mis inversiones y mi cuenta');
-  }else{ b.textContent='Mis inversiones'; b.setAttribute('aria-label','Entrar o crear una cuenta para registrar mis inversiones'); }
+  /* Sin sesión el botón lleva a entrar: dice «Entrar» (QA 04/11/2026, n.º 27). */
+  }else{ b.textContent='Entrar'; b.setAttribute('aria-label','Entrar o crear una cuenta para registrar mis inversiones'); }
   pintaMovil();
  }
  function pintaMovil(){
