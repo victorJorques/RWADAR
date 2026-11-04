@@ -1206,7 +1206,9 @@ function pintarRadar(){
       leyenda que le faltaba: se ve de un vistazo qué color es cada tipo
       de activo, sin una tabla aparte. Va en `style` y no en `fill`
       porque un atributo de presentación pierde contra la clase CSS. */
-   +`<rect class="radar-et-zona" x="${zx.toFixed(1)}" y="${(ty-22).toFixed(1)}" width="${lado?104:96}" height="44" rx="13" fill="transparent"/>`
+   /* 60 de alto (unos 44 px en un móvil, donde el radar se dibuja a ~0,75):
+      lo que crece va hacia fuera del aro, para no tapar los puntos. */
+   +`<rect class="radar-et-zona" x="${zx.toFixed(1)}" y="${(ty-22-(ty<CY?16:0)).toFixed(1)}" width="${lado?104:96}" height="60" rx="13" fill="transparent"/>`
    +`<text class="radar-et${largo?' radar-et-largo':''}" x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="${ancla}" dominant-baseline="middle" fill="${CATMETA[c].c}">${escHtml(catCorta(c))}</text></g>`;
  });
 
@@ -1270,7 +1272,10 @@ function pintarRadar(){
    punto=svg.createSVGPoint();punto.x=e.clientX;punto.y=e.clientY;
    punto=punto.matrixTransform(matriz.inverse());
   }catch{return null;}
-  let mejor=null,distancia=22*22;
+  /* Diana de 22 px de radio en pantalla (44 px de diámetro) aunque el radar
+     se dibuje más pequeño; gana el punto más cercano. */
+  const escala=Math.abs(matriz.a)||1,radio=Math.max(22,22/escala);
+  let mejor=null,distancia=radio*radio;
   svg.querySelectorAll('.blip').forEach(g=>{
    const dx=punto.x-Number(g.dataset.x),dy=punto.y-Number(g.dataset.y),d=dx*dx+dy*dy;
    if(Number.isFinite(d)&&d<=distancia){distancia=d;mejor=parseInt(g.dataset.i,10);}
@@ -1438,13 +1443,13 @@ function renderGrid(f){
     <img class="empresa-visual__imagen" src="/plataformas/${portada}.webp" alt="" width="720" height="720" loading="lazy" decoding="async" draggable="false">
     <span class="empresa-visual__sombra" aria-hidden="true"></span>
     <span class="empresa-visual__categoria">${escHtml(catCorta(p.cat))}</span>
-    <span class="empresa-visual__texto"><strong>${escHtml(p.n)}</strong><small>${escHtml(p.tipo)} · ${escHtml(p.reg)}</small></span>
+    <span class="empresa-visual__texto"><strong>${escHtml(p.n)}</strong><small><span>${escHtml(p.tipo)}</span> · <span>${escHtml(p.reg)}</span></small></span>
     ${v?`<span class="empresa-visual__verificada"><span>${escHtml(marcaRevision)}</span></span>`:
      `<span class="empresa-visual__verificada">${okSVG}<span>Ficha verificada</span></span>`}
     <span class="empresa-visual__flecha" aria-hidden="true">›</span>
    </button>
    <button type="button" class="cmp empresa-visual__comparar ${on?'on':''}" data-comparar="${i}" aria-pressed="${on?'true':'false'}" aria-label="${escHtml(compararTexto)}" title="${escHtml(compararTexto)}"><span aria-hidden="true">${on?'✓':'+'}</span></button>
-   <div class="ficha-alto">${siglaEl(p)}<div class="ficha-nom"><h3><button class="abrir" data-cat="${escHtml(p.cat)}" data-abrir="${i}">${escHtml(p.n)}</button></h3><div class="sub">${escHtml(p.tipo)} · ${escHtml(p.reg)}</div></div></div>
+   <div class="ficha-alto">${siglaEl(p)}<div class="ficha-nom"><h3><button class="abrir" data-cat="${escHtml(p.cat)}" data-abrir="${i}">${escHtml(p.n)}</button></h3><div class="sub"><span>${escHtml(p.tipo)}</span> · <span>${escHtml(p.reg)}</span></div></div></div>
    <p class="nota">${escHtml(nota)}</p>
    <div class="aval${v?' aval-local':''}">${v?'':escudoSVG}<span>${escHtml(aval)}</span></div>
    ${marcas}
@@ -1962,6 +1967,10 @@ function tarjetaSeleccionHtml(o,i){
    masNuevasPrimero van junto a transparenciaOferta. Solo Principales: es la
    lista que abre «Ver todas las ofertas nuevas». */
 const ofertasRecienAnadidas=()=>ofertasCatalogoInicio().filter(o=>o.coleccion==='principales'&&ofertaNueva(o,30)).sort(masNuevasPrimero).slice(0,6);
+function lugarTarjetaHtml(lugar){
+ const partes=String(lugar).split(' · '),pais=partes.pop();
+ return '<span class="rel-lugar">'+(partes.length?'<span translate="no" lang="es">'+escHtml(partes.join(' · '))+'</span> · ':'')+'<span>'+escHtml(pais)+'</span></span>';
+}
 function tarjetaNuevaHtml(o,i){
  const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=altaOferta(o);
  /* Su línea de riesgo, como la Selección; y, como la fila de Ofertas en el
@@ -1970,7 +1979,8 @@ function tarjetaNuevaHtml(o,i){
  return '<li class="rel-tarjeta rel-nueva"><article aria-labelledby="'+id+'">'+
   (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
   '<div class="rel-tarjeta-cuerpo"><h3 id="'+id+'" lang="es" translate="no"><button class="rel-nueva-abrir" type="button" data-perfil-oferta="'+escHtml(o.slug)+'"><span>'+escHtml(t)+'</span></button></h3>'+
-  '<p class="rel-tarjeta-plat" translate="no">'+escHtml(o.plataformaNombre||'')+(img&&img.lugar?' · '+escHtml(img.lugar):'')+'</p>'+
+  /* Lugar en su propio bloque (no empieza línea con «·»); el país se traduce. */
+  '<p class="rel-tarjeta-plat"><span translate="no" lang="es">'+escHtml(o.plataformaNombre||'')+'</span>'+(img&&img.lugar?' · '+lugarTarjetaHtml(img.lugar):'')+'</p>'+
   '<p class="rel-tarjeta-nota">'+escHtml(NOTAS_SELECCION[o.slug]||'Puedes perder parte o todo lo que inviertas.')+'</p>'+
   (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · '+escHtml(textoLocal(bloqueo.texto))+(propios>1?'<span> · '+(propios-1)+' más en la ficha</span>':'')+'</p>':
    todos.length?'<p class="rel-nueva-aviso"><b>Revisa</b> · <span>'+todos.length+(todos.length===1?' aviso en la ficha':' avisos en la ficha')+'</span></p>':'')+
@@ -3716,8 +3726,12 @@ async function mirar(){
  if(MODO_LOCAL_SEGURO)return;
  refrescarVigenciaOfertas();
  if(Date.now()-ultimaMirada<60000) return;
+ /* En la primera carga el catálogo en vivo sustituye al embebido sin avisar:
+    para quien llega no ha cambiado nada. Solo se avisa si cambia después,
+    con la página ya abierta (y el aviso se traduce con el diccionario). */
+ const primera=!ultimaMirada;
  ultimaMirada=Date.now();
- try{ if(await alDia()) avisar('Registro actualizado'); }
+ try{ if(await alDia()&&!primera) avisar('Registro actualizado'); }
  catch{refrescarVigenciaOfertas()}
 }
 /* Primero se pinta lo que ya venía en el HTML, y solo después se
@@ -5335,7 +5349,7 @@ const Movil = (function(){
    lista.innerHTML=filas.map(([p,i])=>`
     <article class="movil-seguida ${catClase(p)}">
      ${siglaEl(p)}
-     <div><h3>${escHtml(p.n)}</h3><p>${escHtml(p.tipo)} · ${escHtml(p.reg)}</p></div>
+     <div><h3>${escHtml(p.n)}</h3><p><span>${escHtml(p.tipo)}</span> · <span>${escHtml(p.reg)}</span></p></div>
      <button type="button" data-abrir="${i}" aria-label="Abrir la ficha de ${escHtml(p.n)}">›</button>
     </article>`).join('');
   }
@@ -5599,6 +5613,19 @@ const Movil = (function(){
  });
  let detalleDeAncla=typeof location!=='undefined'&&detalles.has((location.hash||'').slice(1))?location.hash.slice(1):'';
  adaptar();
+ /* «Saltar al contenido» (#tool) en el móvil: lleva al contenido de la
+    pestaña visible (Inicio, Buscar, Academy o Perfil), no a un panel oculto. */
+ const saltar=document.querySelector('.saltar');
+ if(saltar)saltar.addEventListener('click',e=>{
+  if(!media.matches)return;
+  const panel=[...paneles.values()].find(visible);
+  const destino=panel&&([...panel.querySelectorAll('h1,h2')].find(visible)||panel);
+  if(!destino)return;
+  e.preventDefault();
+  if(!destino.hasAttribute('tabindex'))destino.setAttribute('tabindex','-1');
+  destino.focus({preventScroll:true});
+  if(destino.scrollIntoView)destino.scrollIntoView({block:'start',behavior:reduce()?'auto':'smooth'});
+ });
  if(typeof location!=='undefined'&&location.hash==='#explain')abrirAcademyDesde(document.getElementById('movilTabAcademy'));
  window.addEventListener('hashchange',()=>{if(location.hash==='#explain')abrirAcademyDesde(document.activeElement);});
  return {cambiar:cambiar,ir:ir,verEnBuscar:verEnBuscar,

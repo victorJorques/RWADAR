@@ -37,12 +37,12 @@
     '.escaparate-dialogo-identidad','.escaparate-dialogo-resumen','.escaparate-documentacion-caracteristicas',
     // De las referencias fechadas solo son de la fuente el rótulo original, el valor y el alcance.
     '.escaparate-referencias-fechadas .ref-etiqueta-original','.escaparate-referencias-fechadas .ref-valor','.escaparate-referencias-fechadas .ref-alcance','.escaparate-dialogo-metricas','.escaparate-dialogo-avisos',
-    '#grid .empresa-visual__texto strong','#grid .empresa-visual__imagen','#grid .ficha-nom h3','#grid .sub','#grid .nota','#grid .aval',
+    '#grid .empresa-visual__texto strong','#grid .empresa-visual__imagen','#grid .ficha-nom h3','#grid .nota','#grid .aval',
     '#matrix .mm','#rlNom','#rlMeta','#dwId h3','#dwBody .pn-resumen>p','#dwBody .pn-claves','#dwBody .pn-origen-visual>span',
     '#dwBody .pn-verificacion-local-campo>p','#dwBody .pn-verificacion-local-alertas ul','#dwBody .pn-datos-grid dd','#dwBody .pn-fuentes',
     '#modal thead strong','#modal tbody td','#outlist .fn','#outlist .por','#outlist .fuentes',
     '#perfilCuerpo .quien','#perfilCuerpo .correo','#perfilCuerpo .perfil-ini','#perfilCuerpo input[name="name"]',
-    '#perfilOfertas .perfil-oferta h3','#perfilOfertas .perfil-oferta p','#perfilEmpresas .movil-seguida h3','#perfilEmpresas .movil-seguida p','#cuentaIdentidad','#cuentaEstadoCorreo',
+    '#perfilOfertas .perfil-oferta h3','#perfilOfertas .perfil-oferta p','#perfilEmpresas .movil-seguida h3','#cuentaIdentidad','#cuentaEstadoCorreo',
     '.comunidad-autor','.comunidad-texto','.ac-articulo','.ac-tldr ol','.ac-glosario dl','.ac-leccion-cab h1',
     '.ac-pregunta legend','.ac-opcion-texto','.ac-explicacion','.ac-aviso-legal',
     // Contenido de las lecciones que sigue en castellano: índice de secciones, «Da el siguiente paso» y aviso legal.
