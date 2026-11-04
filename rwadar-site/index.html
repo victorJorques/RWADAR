@@ -275,19 +275,23 @@
             <option value="en_camino">Próximas</option>
           </select>
           <button type="button" class="f" id="mapaVerTodas">Ver todo</button>
-          <button type="button" class="f" id="mapaBuscarZona">Buscar en esta zona</button>
-          <button type="button" class="f mapa-quitar" id="mapaQuitarUbicacion" hidden>Quitar mi ubicación</button>
+          <button type="button" class="f" id="mapaBuscarZona" title="Buscar en la zona visible del mapa">Buscar aquí</button>
         </div>
       </div>
       <p class="solo-lector" id="mapaInstruccion">Arrastra para moverte y usa + y − para ampliar. En pantalla táctil, con dos dedos. Con teclado, enfoca el mapa y usa las flechas, + y −.</p>
       <div class="mapa-cuerpo">
         <div class="mapa-principal">
           <div class="mapa-marco">
-            <div class="mapa-lienzo" id="mapaLienzo" tabindex="0" aria-describedby="mapaInstruccion">
+            <div class="mapa-lienzo" id="mapaLienzo" tabindex="0" aria-describedby="mapaInstruccion"></div>
+            <div class="mapa-avisos" id="mapaAvisos">
               <div class="mapa-sin-teselas" id="mapaSinTeselas" hidden>
                 <p>No se ha podido cargar el mapa base.</p>
                 <p>Los puntos y las fichas siguen disponibles.</p>
                 <button type="button" class="mapa-reintentar" id="mapaReintentar">Reintentar</button>
+              </div>
+              <div class="mapa-aviso" id="mapaAviso" hidden>
+                <p id="mapaAvisoTexto" aria-hidden="true"></p>
+                <button type="button" class="mapa-aviso-cerrar" id="mapaAvisoCerrar" aria-label="Cerrar aviso" title="Cerrar aviso"></button>
               </div>
             </div>
           </div>
@@ -296,6 +300,7 @@
         <section class="mapa-lateral" aria-labelledby="mapaResultadosTitulo">
           <h3 id="mapaResultadosTitulo">Ofertas en el mapa</h3>
           <p class="mapa-origen" id="mapaOrigenLinea" hidden><span id="mapaOrigen"></span> <span class="mapa-margen" id="mapaMargen"></span></p>
+          <button type="button" class="f mapa-quitar" id="mapaQuitarUbicacion" hidden>Quitar mi ubicación</button>
           <ol class="mapa-resultados" id="mapaResultados"></ol>
           <p class="mapa-vacio" id="mapaVacio" hidden>No hay ofertas con ubicación en esta zona. Prueba otra búsqueda o pulsa «Ver todo».</p>
           <p class="mapa-cuenta" id="mapaCuenta"></p>

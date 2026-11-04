@@ -43,10 +43,10 @@
 .mapa-zona-ir svg,.mapa-ubicacion svg{width:20px;height:20px}
 .mapa-ubicacion:disabled{color:var(--tx-3);cursor:not-allowed;scale:none}
 .mapa-ubicacion[data-activa="si"]{background:var(--senal-t);color:var(--senal)}
-.mapa-chips{grid-column:1/-1;display:flex;align-items:center;gap:8px;min-width:0;margin:-4px;padding:4px;overflow-x:auto;scrollbar-width:none}
-.mapa-chips::-webkit-scrollbar{display:none}
-.mapa-chips>.f{position:relative;flex:none;white-space:nowrap}
-.mapa-chips>.f::before{content:'';position:absolute;inset:-4px 0}
+/* Si no caben, bajan a otra línea: nunca quedan cortados ni fuera de la vista. */
+.mapa-chips{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}
+.mapa-chips>.f,.mapa-quitar{position:relative;flex:none;white-space:nowrap}
+.mapa-chips>.f::before,.mapa-quitar::before{content:'';position:absolute;inset:-4px 0}
 #mapaColeccion{width:auto;height:36px;min-height:36px;margin:0;padding:0 30px 0 12px;appearance:none;-webkit-appearance:none;color-scheme:dark;
   background:var(--ton) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23BBB5AB' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E") no-repeat right 10px center/16px;
   color:var(--tx);font:500 .8125rem/1 var(--body)}
@@ -54,6 +54,7 @@
 @media (hover:hover){#mapaColeccion:hover{background-color:var(--ton-2)}}
 /* iOS amplía la página al abrir un campo de menos de 16 px. */
 @supports (-webkit-touch-callout:none){#mapaColeccion{font-size:1rem}}
+.mapa-quitar{margin:10px 0 2px}
 .mapa-quitar::after{content:'';width:12px;height:12px;background:currentColor;
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center/contain no-repeat;
   mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center/contain no-repeat}
@@ -84,7 +85,8 @@
 #mapaLienzo .leaflet-control-attribution{margin:0!important;padding:2px 8px;border-radius:8px 0 0 0;background:rgba(255,255,255,.88);color:#4A524D;font:400 .6875rem/1.5 var(--body)}
 
 /* Marcadores: el color de su tipo de activo, como en el radar; 44 px de
-   toque; el número centrado si hay varias ofertas en el mismo punto. */
+   toque; el número centrado si hay varias ofertas en el mismo punto o tan
+   cerca que en pantalla se taparían. */
 .mapa-marcador{display:grid;place-items:center;background:none;border:0;outline:0}
 /* El aro oscuro fuera del blanco da al borde más de 3:1 sobre el mapa claro
    (los colores del radar se pensaron para fondo oscuro). */
@@ -113,6 +115,15 @@
 .mapa-popup-oferta{padding:14px 16px 4px}
 .mapa-popup-oferta+.mapa-popup-oferta{border-top:1px solid #E3E7E4}
 .mapa-popup-oferta:first-of-type h4{margin-right:30px}
+.mapa-popup-grupo~.mapa-popup-oferta h4{margin-right:0}
+.mapa-popup h4:focus{outline:0}
+.mapa-popup h4:focus-visible{outline:2px solid #0B7A50;outline-offset:2px;border-radius:4px}
+/* Grupo de ofertas cercanas: cuántas y «Acercar» para separarlas. */
+.mapa-popup-grupo{display:flex;align-items:center;gap:8px;min-height:48px;margin-right:44px;padding:2px 0 0 16px;border-bottom:1px solid #E3E7E4}
+.mapa-popup-grupo p{flex:1;color:#4A524D;font:600 .75rem/1.3 var(--body)}
+.mapa-acercar{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;border:0;border-radius:var(--r-m);background:none;color:#0B7A50;font:600 .8125rem/1 var(--body);white-space:nowrap;cursor:pointer;transition:background-color var(--t-2) var(--ease)}
+.mapa-acercar:active{background:#E3F3EA}
+.mapa-acercar:focus-visible{outline:2px solid #0B7A50;outline-offset:-2px}
 .mapa-popup h4{display:-webkit-box;margin:0 0 6px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;color:#161A18;font:600 .9375rem/1.3 var(--body);letter-spacing:-.01em}
 .mapa-popup .mapa-tipo,.mapa-popup .mapa-lugar{color:#4A524D}
 .mapa-popup .mapa-precision{margin-top:2px;color:#5E6661;font-size:.75rem}
@@ -146,15 +157,25 @@
 .mapa-leyenda{display:flex;flex-wrap:wrap;gap:6px 16px;margin:10px 0 0;padding:0;list-style:none;color:var(--tx-2);font:500 .75rem/1.4 var(--body)}
 .mapa-leyenda li{display:inline-flex;align-items:center;gap:6px;min-height:20px}
 
-/* Aviso si OpenStreetMap no responde, en lugar de un fondo vacío. Vive
-   dentro del lienzo, bajo los puntos y la ficha (las capas de Leaflet van en
-   z-index 400) y bajo el zoom. */
-.mapa-sin-teselas{position:absolute;top:50%;left:50%;z-index:350;width:min(300px,calc(100% - 32px));padding:16px;translate:-50% -50%;border-radius:var(--r-l);background:#fff;color:#4A524D;text-align:center;font-size:.8125rem;line-height:1.45;box-shadow:0 16px 40px -12px rgba(16,24,20,.4),0 2px 8px rgba(16,24,20,.14)}
-.mapa-sin-teselas p{margin:0}
-.mapa-sin-teselas p:first-child{margin-bottom:4px;color:#161A18;font:600 .9375rem/1.3 var(--body)}
-.mapa-reintentar{display:inline-flex;align-items:center;min-height:44px;margin-top:12px;padding:0 20px;border:0;border-radius:var(--r-m);background:#161A18;color:#fff;font:600 .9375rem/1 var(--body);cursor:pointer;transition:var(--tr)}
+/* Avisos sobre el mapa, en una franja arriba: fuera del lienzo de Leaflet
+   (z-index 0), así quedan siempre por encima de puntos y fichas, que se
+   abren por debajo (ver margen('arriba')). Ni arrastran ni amplían. */
+.mapa-avisos{position:absolute;top:12px;right:12px;left:12px;z-index:1;display:grid;justify-items:center;gap:8px;pointer-events:none}
+.mapa-avisos>*{width:100%;max-width:520px;pointer-events:auto}
+.mapa-sin-teselas,.mapa-aviso{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:10px;border-radius:var(--r-m);background:#fff;color:#4A524D;font-size:.8125rem;line-height:1.4;box-shadow:0 1px 2px rgba(16,24,20,.16),0 8px 20px -8px rgba(16,24,20,.32)}
+.mapa-sin-teselas{padding:8px 8px 8px 14px}
+.mapa-sin-teselas p,.mapa-aviso p{grid-column:1;margin:0}
+.mapa-sin-teselas p:first-child{color:#161A18;font:600 .875rem/1.3 var(--body)}
+.mapa-reintentar{grid-column:2;grid-row:1/3;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:0;border-radius:var(--r-m);background:#161A18;color:#fff;font:600 .875rem/1 var(--body);cursor:pointer;transition:var(--tr)}
 .mapa-reintentar:active{background:#2A2F2C;scale:calc(1 - var(--pm)*.02)}
 .mapa-reintentar:focus-visible{outline:2px solid #0B7A50;outline-offset:2px}
+.mapa-aviso{padding:4px 4px 4px 14px;color:#161A18}
+.mapa-aviso-cerrar{grid-column:2;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:none;color:#4A524D;cursor:pointer;transition:background-color var(--t-2) var(--ease)}
+.mapa-aviso-cerrar::before{content:'';width:14px;height:14px;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E") center/contain no-repeat}
+.mapa-aviso-cerrar:active{background:#EEF1EE}
+.mapa-aviso-cerrar:focus-visible{outline:2px solid #0B7A50;outline-offset:-4px}
 
 /* Debajo del mapa: cuántas hay en la zona y sus filas, como en Ofertas. */
 .mapa-lateral{min-width:0;margin-top:20px}
@@ -182,6 +203,12 @@
 .mapa-pie p{margin:0 0 6px}
 #mapaNotas>span+span::before{content:' '}
 
+/* Móviles muy estrechos (320 px): chips algo más compactos, en una línea. */
+@media (max-width:350px){
+  .mapa-chips{gap:6px}
+  .mapa-chips>.f{padding-inline:10px;font-size:.75rem}
+  #mapaColeccion{padding-left:10px;padding-right:28px;background-position:right 8px center}
+}
 @media (min-width:900px){
   .mapa-permiso{padding:28px}
   .mapa-cargar{width:auto}
@@ -192,7 +219,8 @@
   .mapa-lateral{max-height:calc(min(620px,68vh) + 30px);margin:0;padding-right:8px;overflow:auto;overscroll-behavior:contain}
 }
 @media (hover:hover){
-  .mapa-popup-cerrar:hover{background:#F2F4F2}
+  .mapa-popup-cerrar:hover,.mapa-aviso-cerrar:hover{background:#F2F4F2}
+  .mapa-acercar:hover{background:#EEF7F2}
   .mapa-popup .mapa-ver:hover{background:#EEF7F2}
   .mapa-zona-ir:hover{background:var(--ton-2)}
 }
