@@ -90,16 +90,19 @@ paso('el proceso deja claro que un correo no contrata, factura ni publica',
   && texto.includes('el mensaje no reserva espacio ni activa presupuesto, contrato o facturacion')
   && texto.includes('no hay siguiente fase disponible todavia'));
 
-paso('la página es descubrible desde portada y políticas',
-  portada.includes('href="/para-empresas">Para empresas</a>')
-  && privacidad.includes('href="/para-empresas">Para empresas</a>')
-  && transparencia.includes('href="/para-empresas"'));
+// Decisión de Víctor (04/11/2026): «Para empresas» queda pendiente. No se enlaza
+// y su dirección lleva a Inicio; la fuente se conserva para retomarla.
+paso('la página queda pendiente: nadie la enlaza y su dirección lleva a Inicio',
+  !portada.includes('/para-empresas')
+  && !privacidad.includes('/para-empresas')
+  && !transparencia.includes('/para-empresas')
+  && /^\/para-empresas\.html\s+\/\s+302$/m.test(redirecciones)
+  && /^\/para-empresas\s+\/\s+302$/m.test(redirecciones));
 
 paso('canonical y ruta limpia se conservan, pero la página no es indexable ni está en sitemap',
   pagina.includes('href="https://rwadar.pages.dev/para-empresas"')
   && /<meta name="robots" content="noindex,nofollow">/.test(pagina)
   && !sitemap.includes('<loc>https://rwadar.pages.dev/para-empresas</loc>')
-  && /^\/para-empresas\.html\s+\/para-empresas\s+301$/m.test(redirecciones)
   && /^\/para-empresas\r?\n\s+Cache-Control:\s*public, max-age=0, must-revalidate\r?\n\s+X-Robots-Tag:\s*noindex, nofollow$/m.test(cabeceras)
   && /^\/para-empresas\.html\r?\n\s+Cache-Control:\s*public, max-age=0, must-revalidate\r?\n\s+X-Robots-Tag:\s*noindex, nofollow$/m.test(cabeceras));
 
@@ -132,8 +135,7 @@ paso('el árbol publicable y el servidor local incluyen la página de forma expl
   && manifiesto.includes('canonical/noindex de para-empresas.html')
   && /const PAGINAS_HTML = \[[^\]]*'para-empresas\.html'/.test(publicador)
   && (publicador.match(/PAGINAS_HTML/g) || []).length >= 4
-  && servidor.includes("p === '/para-empresas'")
-  && servidor.includes("p = '/para-empresas.html'"));
+  && servidor.includes("p === '/para-empresas' || p === '/para-empresas.html'"));
 
 paso('la PWA elimina sus copias antiguas y no sirve la página desde caché',
   /nombre\.startsWith\('rwadar-v'\)/.test(worker)

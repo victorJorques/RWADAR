@@ -348,8 +348,9 @@ const servidor = http.createServer((req, res) => {
     res.writeHead(301, { Location: '/transparencia-comercial', 'Cache-Control': 'no-store' });
     return res.end();
   }
-  if (p === '/para-empresas.html') {
-    res.writeHead(301, { Location: '/para-empresas', 'Cache-Control': 'no-store' });
+  // «Para empresas» queda pendiente (Víctor, 04/11/2026): sin publicar, lleva a Inicio como en _redirects.
+  if (p === '/para-empresas' || p === '/para-empresas.html') {
+    res.writeHead(302, { Location: '/', 'Cache-Control': 'no-store' });
     return res.end();
   }
   /* RWAdar Academy: /academy → /academy/ y /academy/<lección> → <lección>.html,

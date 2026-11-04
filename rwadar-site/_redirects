@@ -1,7 +1,8 @@
 /index.html       /             301
 /privacidad.html  /privacidad   301
 /transparencia-comercial.html  /transparencia-comercial   301
-/para-empresas.html  /para-empresas   301
+/para-empresas.html  /   302
+/para-empresas       /   302
 /android  https://github.com/victorJorques/RWAdar-downloads/releases/latest  302
 /fuera-del-radar   /#fuera      302
 /fuera-del-radar/  /#fuera      302
