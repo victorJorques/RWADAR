@@ -98,5 +98,6 @@ test('confirmar un enlace también espera el cierre compartido antes de adoptar 
   await adopcion;
   assert.deepEqual(e.peticiones.filter(ruta => !ruta.endsWith('/inspeccionar')),
     ['/api/acceso/salir', '/api/acceso/adoptar', '/api/acceso/sesion']);
-  assert.deepEqual(e.destinos, ['/']);
+  // Confirmar el alta sin «volver» ni lección guardada lleva a la Academy (05/11/2026).
+  assert.deepEqual(e.destinos, ['/academy/#cuenta-confirmada']);
 });
