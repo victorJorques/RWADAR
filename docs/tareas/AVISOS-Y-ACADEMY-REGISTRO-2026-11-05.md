@@ -404,7 +404,7 @@ producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
 | Al cerrar la Academy | `privacidad.html:55, 110-127, 230` y textos de `rwadar-academy.js` |
 | Al mostrar la casilla (interruptores encendidos) | `privacidad.html:62-64, 78, 230, 268-272`<br>`Cuenta.js:210, 308`<br>`App.js:1711`<br>`idioma-en.js:11, 148, 384, 543`<br>`rwadar-20260820.js:4463, 4491, 4817`<br>`index.html:1553-1561` |
 | Al encender el correo | `privacidad.html:361, 367-370, 453-454`<br>`App.js:1705` |
-| Al encender el push (1.4.2) | `privacidad.html:349-351, 455-459, 493-494`<br>`App.js:1733, 1756` y su inglés |
+| Al encender el push (1.4.2) | `privacidad.html:349-351, 455-459, 493-494`<br>`App.js:1733, 1756` y su inglés<br>`App.js`, diálogo de «Borrar datos del dispositivo»: «No se borran datos del servidor» (al borrar se quita también el registro push del móvil) |
 | Ya hoy | `docs/manual/LEEME.md:59-64` («baja en un clic») |
 
 Con cada interruptor apagado, las pruebas exigen las frases de hoy. Con cada
