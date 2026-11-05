@@ -47,8 +47,14 @@ lo comprueba **el servidor** (`rwadar-acceso/servidor.mjs`, compilado en
 - **Buscadores:** las lecciones llevan `noindex` en su HTML y salen del sitemap.
   El índice sigue `index,follow`.
 - **Interruptor único:** `"acceso": "cuenta"` en `rwadar-academy/academy.json`.
-  Con `"publico"` todo vuelve a como estaba. Sirve para retener el cierre si
-  Eric no da su visto bueno; ver «Pendiente de personas».
+  Con `"publico"` se reabren las lecciones y el tutorial 3D. Sirve para retener
+  el cierre si Eric no da su visto bueno; ver «Pendiente de personas». Los
+  textos de privacidad sobre la Academy con cuenta y el destino tras confirmar
+  el alta no dependen de él: hay que revertirlos a mano (lista en
+  `rwadar-academy/LEEME.md`).
+- **Tutorial 3D en el móvil:** vive dentro de la pestaña Academy de la web y
+  también pide cuenta (puerta de interfaz). En escritorio sigue siendo la
+  sección pública «Qué es tokenizar» de la portada.
 - **Volver a la lección tras registrarse:**
   - si `/acceso` llega con `volver=/academy/…`, se abre en «Crear cuenta
     gratis» con el texto «Las lecciones son gratis con cuenta»;
@@ -117,6 +123,11 @@ digan lo mismo. Cambiar una sola palabra obliga a crear una versión nueva.
   (`web`/`app`).
 - Si ya hay preferencias, los metadatos no se vuelven a leer, para que una baja
   no se deshaga.
+- **Barrera en la base:** el disparador solo lee los metadatos si
+  `configuracion.casilla_activa` está encendido. Nace apagado y se enciende en
+  el paso 4 (`30_avisos_registrados_activar_casilla.sql`), junto con la
+  plantilla de Auth. El servidor web también ignora `avisosNovedades`
+  mientras su `AVISOS_NOVEDADES_REMOTOS` esté apagado.
 
 **Cuentas que ya existen.** La 30 les crea las preferencias con
 `novedades = false`. Nadie se apunta solo: lo activan en Perfil.
@@ -266,8 +277,12 @@ hacia `auth.users`, para que `borrar_mi_cuenta` funcione.
   - quién envía (RWAdar, con enlace al aviso legal y la privacidad);
   - por qué lo recibe;
   - la baja (enlace y `mailto:`).
-- **Limpieza:** colas terminadas, a los 90 días; dispositivos sin actualizar,
-  a los 180.
+- **Limpieza:** colas terminadas (también las bienvenidas, que se recuerdan
+  con una marca en preferencias para no repetirse), a los 90 días;
+  dispositivos sin actualizar, a los 180. La app renueva el registro de su
+  móvil una vez al día mientras las notificaciones estén activas.
+- **Copias de seguridad:** `copia-seguridad.sh` incluye `rwadar_novedades`
+  (y `rwadar_cuentas_privadas`).
 
 **Funciones para la app y la web.**
 
@@ -436,7 +451,7 @@ de Víctor.
 3. **Base de datos:** copia de seguridad; aplicar la 30 en el SQL Editor y
    pasar el verificador.
 4. **Casilla visible:**
-   - plantilla de Auth puesta;
+   - plantilla de Auth puesta y `30_avisos_registrados_activar_casilla.sql`;
    - `AVISOS_NOVEDADES_REMOTOS = true` en la web y la app;
    - privacidad al día;
    - publicar la web y enviar la OTA.
@@ -447,7 +462,8 @@ de Víctor.
    - secretos en el Vault;
    - `30_avisos_registrados_activar_correo.sql`;
    - prueba con una cuenta propia: sin píxel, enlaces directos y baja de
-     principio a fin.
+     principio a fin; confirmar con Brevo el nombre de la cabecera de
+     idempotencia, el código de duplicado y que `List-Unsubscribe` llega.
 6. **Push:**
    - proyecto de Firebase y credencial FCM V1 en EAS;
    - APK 1.4.2 (guía);
