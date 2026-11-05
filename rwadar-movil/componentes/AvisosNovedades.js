@@ -8,6 +8,7 @@ import {
 import { capacidadPushNovedades, consultarPushNovedades, obtenerTokenNovedades } from '../lib/avisos';
 import {
   avisosLeidos, marcarAvisosLeidos, tokenPushNovedades, guardarTokenPushNovedades, borrarTokenPushNovedades,
+  renovacionPushNovedades, marcarRenovacionPushNovedades,
 } from '../lib/datos';
 
 /* ---------------------------------------------------------------------
@@ -21,11 +22,15 @@ import {
      segundo explica que llega con la 1.4.2 y no toca el SDK.
    - Inicio: tarjeta «Avisos» con los últimos y un punto de no leído,
      guardado en este dispositivo y por cuenta.
+   - Al cargar, si este móvil está activo, renueva su registro en la base
+     como mucho una vez al día, sin pedir permiso (la base borra los que no
+     se renuevan en 180 días).
    --------------------------------------------------------------------- */
 
 const ALMACEN = {
   leidos: avisosLeidos, marcarLeidos: marcarAvisosLeidos, token: tokenPushNovedades,
   guardarToken: guardarTokenPushNovedades, borrarToken: borrarTokenPushNovedades,
+  renovadoEl: renovacionPushNovedades, marcarRenovado: marcarRenovacionPushNovedades,
 };
 
 const MENSAJES = {
@@ -38,6 +43,7 @@ const MENSAJES = {
   movilOff: 'Notificaciones desactivadas en este móvil.',
   denegado: 'El sistema no permite notificaciones de RWAdar. Actívalas en los ajustes del móvil.',
   movilError: 'No se pudieron activar las notificaciones en este móvil. Inténtalo más tarde.',
+  noRegistrado: 'Este móvil ha dejado de recibir las notificaciones de RWAdar. Vuelve a activarlas para recibirlas.',
 };
 
 const INICIAL = Object.freeze({ servidor: null, movil: null, avisos: [], leidos: [], cargando: false,
@@ -65,6 +71,11 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
   async function cargar(g, vuelta) {
     actualizar(vuelta, { cargando: true, errorCarga: '' });
     const [perfil, recientes] = await Promise.allSettled([g.cargarPerfil(), g.cargarRecientes(10)]);
+    // Renovación en segundo plano, sin tocar la pantalla. Si falla, ya se
+    // intentará en otra carga u otro día.
+    if (perfil.status === 'fulfilled' && perfil.value.movil?.estado === 'activo' && vuelta === turno.current) {
+      g.renovarMovil(perfil.value.servidor, perfil.value.movil).catch(() => {});
+    }
     actualizar(vuelta, {
       cargando: false,
       ...(perfil.status === 'fulfilled' ? perfil.value : {}),
@@ -147,9 +158,15 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
     if (g) cargar(g, turno.current);
   }
 
+  /* Los avisos cargados (hasta 10) cuentan para la insignia de Inicio aunque
+     la tarjeta enseñe solo los primeros. «Marcar como leídos» los marca
+     todos, para que la insignia siempre se pueda vaciar. */
   const idsNoLeidos = vista.avisos.filter((aviso) => !vista.leidos.includes(aviso.id)).map((aviso) => aviso.id);
+  function marcarTodosLeidos() {
+    return marcarLeidos(idsNoLeidos);
+  }
   return { ...vista, activo: Boolean(cuenta && usuarioId), idsNoLeidos, noLeidos: idsNoLeidos.length,
-    alternarNovedades, alternarMovil, marcarLeidos, recargar };
+    alternarNovedades, alternarMovil, marcarLeidos, marcarTodosLeidos, recargar };
 }
 
 function textoMovil(movil, servidor) {
@@ -162,6 +179,8 @@ function textoMovil(movil, servidor) {
         : 'Las notificaciones en el móvil todavía no están activas. Mientras tanto, verás los avisos en Inicio.';
     case 'no-disponible':
       return 'Este dispositivo no puede recibir notificaciones de RWAdar.';
+    case 'no-registrado':
+      return MENSAJES.noRegistrado;
     case 'disponible':
       return 'Al activarlas, el sistema te pedirá permiso. Se guarda en tu cuenta un identificador de entrega de este móvil, que se borra al desactivarlas o al cerrar sesión.';
     case 'activo':
@@ -248,11 +267,14 @@ function fechaCorta(iso) {
   return `${dos(fecha.getDate())}/${dos(fecha.getMonth() + 1)}/${fecha.getFullYear()}`;
 }
 
-/* Inicio › Avisos: los últimos, con un punto en los que no has abierto. */
+/* Inicio › Avisos: los últimos, con un punto en los que no has abierto.
+   Enseña los `maximo` primeros, pero el punto de la cabecera y «Marcar como
+   leídos» cuentan todos los cargados, igual que la insignia de Inicio
+   (`idsNoLeidos` de useAvisosNovedades): marcar deja la insignia a cero. */
 export function TarjetaAvisosInicio({ avisos = [], leidos = [], cargando = false, error = '', maximo = 3,
   onAbrir, onMarcarLeidos }) {
   const visibles = avisos.slice(0, maximo);
-  const sinLeer = visibles.filter((aviso) => !leidos.includes(aviso.id));
+  const sinLeer = avisos.filter((aviso) => !leidos.includes(aviso.id));
   return (
     <View style={s.seccion}>
       <View style={s.cabecera}>

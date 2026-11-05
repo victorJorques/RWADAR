@@ -20,6 +20,7 @@ function cargarModulo(ruta, mocks = {}, contexto = {}) {
     if (nombre === './Idioma') return soporteIdioma(mocks.react,mocks['react-native']);
     if (nombre === '../lib/idioma') return require('../lib/idioma');
     if (nombre === './acceso-obligatorio') return require('../lib/acceso-obligatorio');
+    if (nombre === './avisos-cuenta') return require('../lib/avisos-cuenta');
     assert.ok(Object.hasOwn(mocks, nombre), `Dependencia inesperada: ${nombre}`);
     return mocks[nombre];
   }, ...Object.values(contexto));

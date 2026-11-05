@@ -5,6 +5,7 @@ import { validarRadarLocal, revisionTemporalOferta, ofertaConCifrasVigentes } fr
 import { CACHE_CATALOGO, crearLectorCatalogo } from './catalogo-remoto';
 import { normalizarProgreso, progresoVacio } from './academy-progreso';
 import { clavesPrivadasDispositivo } from './acceso-obligatorio';
+import { quitarPushConCliente } from './avisos-cuenta';
 
 /* Supabase no se importa al evaluar este módulo. En modo interno ni siquiera
    se ejecuta su archivo, de modo que cargar la app no puede crear un cliente
@@ -449,10 +450,12 @@ export async function sincronizarSeguimientoPendiente() {
 }
 
 /* Borrado remoto primero: si Supabase falla, se conserva la identidad local
-   para poder reintentar y no dejar una fila remota inaccesible. */
-export async function borrarDatosDispositivo() {
+   para poder reintentar y no dejar una fila remota inaccesible. El token de
+   avisos de este móvil sigue la misma regla, pero sin bloquear el borrado:
+   ver clavesPushQuitadas. */
+export async function borrarDatosDispositivo({ plazoQuitarPush = PLAZO_QUITAR_PUSH } = {}) {
   const todas = await AsyncStorage.getAllKeys();
-  const clavesCuenta = clavesPrivadasDispositivo(todas);
+  const clavesCuenta = [...clavesPrivadasDispositivo(todas), ...await clavesPushQuitadas(todas, plazoQuitarPush)];
   if (USUARIO_LOCAL) {
     await AsyncStorage.multiRemove([...CLAVES_LOCALES, ...clavesCuenta]);
     lectorCatalogo = null;
@@ -524,19 +527,25 @@ export async function guardarProgresoAcademy(progreso) {
   return limpio;
 }
 
-/* Avisos de novedades: qué avisos de Inicio has leído y el identificador de
-   entrega de este móvil. Solo en el dispositivo y por cuenta, bajo
-   rwadar.editorial.avisos.*:<UUID>; «Borrar datos del dispositivo» los
-   elimina con el resto. El identificador no se escribe en registros ni sale
-   de aquí salvo hacia las funciones de avisos de la propia cuenta. */
+/* Avisos de novedades: qué avisos de Inicio has leído, el identificador de
+   entrega de este móvil y el día en que se renovó por última vez. Solo en el
+   dispositivo y por cuenta, bajo rwadar.editorial.avisos.*:<UUID>; «Borrar
+   datos del dispositivo» los elimina con el resto (el identificador, solo
+   después de quitarlo de la base). El identificador no se escribe en
+   registros ni sale de aquí salvo hacia las funciones de avisos de la
+   propia cuenta. */
 const AVISOS_LEIDOS = `${PREFIJO}avisos.leidos.v1`;
 const AVISOS_PUSH = `${PREFIJO}avisos.push.v1`;
+const AVISOS_RENOVADO = `${PREFIJO}avisos.renovado.v1`;
 const ID_AVISO = /^(?:bienvenida|[1-9]\d{0,18})$/;
 const TOKEN_PUSH = /^Expo(nent)?PushToken\[[A-Za-z0-9_-]{16,64}\]$/;
+const DIA = /^\d{4}-\d{2}-\d{2}$/;
+const UUID_CUENTA = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const MAX_AVISOS_LEIDOS = 100;
+// Como al cerrar sesión (PLAZO_ANTES_DE_SALIR de lib/cuentas.js).
+const PLAZO_QUITAR_PUSH = 4000;
 function claveAvisosCuenta(base, usuarioId) {
-  if (MODO_LOCAL || typeof usuarioId !== 'string'
-    || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(usuarioId)) return null;
+  if (MODO_LOCAL || typeof usuarioId !== 'string' || !UUID_CUENTA.test(usuarioId)) return null;
   return `${base}:${usuarioId}`;
 }
 const limpiarLeidos = (lista) => (Array.isArray(lista)
@@ -582,6 +591,62 @@ export async function guardarTokenPushNovedades(usuarioId, token) {
 export async function borrarTokenPushNovedades(usuarioId) {
   const clave = claveAvisosCuenta(AVISOS_PUSH, usuarioId);
   if (clave) await AsyncStorage.removeItem(clave);
+}
+
+// Día (AAAA-MM-DD, UTC) de la última renovación del registro de este móvil.
+export async function renovacionPushNovedades(usuarioId) {
+  try {
+    const clave = claveAvisosCuenta(AVISOS_RENOVADO, usuarioId);
+    if (!clave) return null;
+    const dia = await AsyncStorage.getItem(clave);
+    return typeof dia === 'string' && DIA.test(dia) ? dia : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function marcarRenovacionPushNovedades(usuarioId, dia) {
+  const clave = claveAvisosCuenta(AVISOS_RENOVADO, usuarioId);
+  if (!clave || typeof dia !== 'string' || !DIA.test(dia)) throw new Error('Fecha de renovación no válida');
+  await AsyncStorage.setItem(clave, dia);
+}
+
+function conPlazo(promesa, ms) {
+  let reloj;
+  return Promise.race([promesa, new Promise((_, rechazar) => {
+    reloj = setTimeout(() => rechazar(new Error('plazo')), ms);
+  })]).finally(() => clearTimeout(reloj));
+}
+
+/* «Borrar datos del dispositivo» no deja este móvil apuntado a las
+   notificaciones sin saberlo: con la cuenta abierta, quita antes su token de
+   la base, como al desactivarlas. Devuelve las claves de token que ya se
+   pueden borrar: las quitadas de la base y las que no guardan un token
+   válido. Si no se puede quitar (sin conexión, sesión caducada, plazo
+   corto vencido, o el token es de otra cuenta de este dispositivo), la
+   clave se conserva para reintentarlo al desactivarlas, al cerrar esa
+   sesión o al volver a borrar. Nunca bloquea ni hace fallar el borrado. */
+async function clavesPushQuitadas(todas, plazo) {
+  const prefijo = `${AVISOS_PUSH}:`;
+  const quitadas = [];
+  for (const clave of todas) {
+    if (typeof clave !== 'string' || !clave.startsWith(prefijo)) continue;
+    const usuarioId = clave.slice(prefijo.length);
+    if (!UUID_CUENTA.test(usuarioId)) continue;
+    const token = await tokenPushNovedades(usuarioId);
+    if (!token) { quitadas.push(clave); continue; }
+    const acceso = accesoCatalogo;
+    if (!acceso || acceso.usuarioId !== usuarioId) continue;
+    try {
+      await conPlazo((async () => {
+        const cliente = await acceso.obtenerCliente();
+        if (accesoCatalogo !== acceso) throw new Error('La cuenta ha cambiado');
+        await quitarPushConCliente(cliente, token);
+      })(), plazo);
+      quitadas.push(clave);
+    } catch { /* Se conserva para reintentarlo. */ }
+  }
+  return quitadas;
 }
 
 export async function novedades(slugs) {

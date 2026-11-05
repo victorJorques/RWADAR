@@ -177,8 +177,8 @@ function estadoServidor(cambios = {}) {
     correo_activo: false, push_activo: true, ...cambios };
 }
 
-function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), recientes = [] }) {
-  const h = crearReact(), rpc = [], sdk = [], local = { leidos: [], token: null };
+function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), recientes = [], token = null, registrado = null }) {
+  const h = crearReact(), rpc = [], sdk = [], local = { leidos: [], token, renovado: null };
   let estado = servidor;
   const cliente = { rpc(nombre, args) {
     rpc.push([nombre, args]);
@@ -188,6 +188,12 @@ function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), reciente
     if (nombre === 'registrar_aviso_push') data = true;
     if (nombre === 'quitar_aviso_push') data = true;
     if (nombre === 'mis_avisos_recientes') data = recientes;
+    // Sin `registrado` (null), como una base sin mi_aviso_push_registrado: 404.
+    if (nombre === 'mi_aviso_push_registrado') {
+      return { abortSignal: async () => (registrado === null
+        ? { data: null, error: { code: 'PGRST202', message: 'Could not find the function' }, status: 404 }
+        : { data: args.p_token === local.token && registrado, error: null }) };
+    }
     return { abortSignal: async () => ({ data, error: null }) };
   } };
   const cuenta = { estado: () => ({ usuario: { id: UID } }), clienteCatalogo: async () => cliente,
@@ -206,6 +212,8 @@ function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), reciente
       tokenPushNovedades: async () => local.token,
       guardarTokenPushNovedades: async (_, t) => { local.token = t; },
       borrarTokenPushNovedades: async () => { local.token = null; },
+      renovacionPushNovedades: async () => local.renovado,
+      marcarRenovacionPushNovedades: async (_, dia) => { local.renovado = dia; },
     },
   });
   let ultimo;
@@ -216,6 +224,7 @@ function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), reciente
   };
   const esperar = async () => { for (let i = 0; i < 12; i++) { await new Promise((r) => setImmediate(r)); pintar(); } return pintar(); };
   return { modulo, rpc, sdk, local, pintar, esperar, estadoHook: () => ultimo, h,
+    cambiarRegistrado(valor) { registrado = valor; },
     async pulsar(etiqueta) { const b = boton(pintar(), etiqueta); assert.ok(b, `Falta ${etiqueta}`);
       assert.ok(!b.props.disabled, `${etiqueta} está deshabilitado`); b.props.onPress(); return esperar(); } };
 }
@@ -296,6 +305,59 @@ test('Perfil con otro texto vigente en la base: no se puede activar desde esta v
   p.h.desmontar();
 });
 
+test('Perfil con la 1.4.2 y el móvil activo: al cargar renueva el registro una vez al día, sin pedir permiso', async () => {
+  const p = perfil({ capacidad: true, token: TOKEN, sistema: { consulta: { ok: true, estado: 'permitido' } } });
+  let panel = await p.esperar();
+  assert.equal(boton(panel, 'Notificaciones en este móvil').props.accessibilityState.checked, true);
+  assert.deepEqual(p.rpc.filter(([n]) => n === 'registrar_aviso_push'), [['registrar_aviso_push', { p_token: TOKEN, p_plataforma: 'android' }]]);
+  assert.deepEqual(p.sdk.filter((x) => Array.isArray(x)), [['token', { solicitarPermiso: false }]], 'el token actual, sin pedir permiso');
+  assert.equal(p.local.renovado, new Date().toISOString().slice(0, 10));
+  // Sin mi_aviso_push_registrado en la base (404) se confía en el token.
+  assert.ok(p.rpc.some(([n]) => n === 'mi_aviso_push_registrado'));
+  // Recargar el mismo día no vuelve a registrar.
+  p.estadoHook().recargar();
+  panel = await p.esperar();
+  p.estadoHook().recargar();
+  await p.esperar();
+  assert.equal(p.rpc.filter(([n]) => n === 'registrar_aviso_push').length, 1);
+  assert.equal(p.sdk.filter((x) => Array.isArray(x)).length, 1);
+  p.h.desmontar();
+});
+
+test('Perfil: sin capacidad nativa, sin permiso o sin push en la base no se renueva nada', async () => {
+  for (const [nombre, opciones] of [
+    ['1.4.1 (código 23)', { capacidad: false }],
+    ['permiso retirado en el sistema', { capacidad: true, sistema: { consulta: { ok: false, estado: 'denegado' } } }],
+    ['push apagado en la base', { capacidad: true, servidor: estadoServidor({ push_activo: false }), sistema: { consulta: { ok: true, estado: 'permitido' } } }],
+  ]) {
+    const p = perfil({ ...opciones, token: TOKEN });
+    await p.esperar();
+    assert.equal(p.rpc.some(([n]) => n === 'registrar_aviso_push'), false, nombre);
+    assert.equal(p.sdk.some((x) => Array.isArray(x)), false, `${nombre}: no se pide token`);
+    assert.equal(p.local.renovado, null, nombre);
+    if (!opciones.capacidad) assert.deepEqual(p.sdk, [], 'por debajo del código 24 no se llama al SDK');
+    p.h.desmontar();
+  }
+});
+
+test('Perfil: si la base dice que este móvil ya no está registrado, no sale como activo ni se renueva solo', async () => {
+  const p = perfil({ capacidad: true, token: TOKEN, registrado: false, sistema: { consulta: { ok: true, estado: 'permitido' } } });
+  let panel = await p.esperar();
+  const movil = boton(panel, 'Notificaciones en este móvil');
+  assert.equal(movil.props.accessibilityState.checked, false);
+  assert.equal(movil.props.disabled, false, 'se puede volver a activar');
+  assert.match(texto(panel), /Este móvil ha dejado de recibir las notificaciones de RWAdar/);
+  assert.equal(p.rpc.some(([n]) => n === 'registrar_aviso_push'), false);
+  assert.deepEqual(p.rpc.find(([n]) => n === 'mi_aviso_push_registrado'), ['mi_aviso_push_registrado', { p_token: TOKEN }]);
+  // Volver a activarlas lo registra de nuevo; con la base diciendo que sí, activo.
+  p.cambiarRegistrado(true);
+  panel = await p.pulsar('Notificaciones en este móvil');
+  assert.deepEqual(p.rpc.filter(([n]) => n === 'registrar_aviso_push'), [['registrar_aviso_push', { p_token: TOKEN, p_plataforma: 'android' }]]);
+  assert.equal(boton(panel, 'Notificaciones en este móvil').props.accessibilityState.checked, true);
+  assert.match(texto(panel), /Notificaciones activadas en este móvil/);
+  p.h.desmontar();
+});
+
 /* ---------------------------------------------------------------------
    Inicio: tarjeta «Avisos» con punto de no leído
    --------------------------------------------------------------------- */
@@ -340,6 +402,45 @@ test('Inicio: los últimos avisos válidos, con punto de no leído que se guarda
   const vacia = p.modulo.TarjetaAvisosInicio({ avisos: [], leidos: [] });
   assert.match(texto(vacia), /Aquí verás las ofertas nuevas del radar/);
   p.h.desmontar();
+});
+
+test('Inicio con más de 3 avisos sin leer: «Marcar como leídos» marca todos los cargados y la insignia queda a cero', async () => {
+  const base = (id, dia) => ({ id: String(id), tipo: 'novedad', titulo: `Novedad ${id}`, texto: 'Hay cambios en RWAdar.',
+    enlace: 'https://rwadar.pages.dev/cambios', creado_el: `2026-11-${String(dia).padStart(2, '0')}T10:00:00Z` });
+  const recientes = [...[17, 16, 15, 14, 13, 12].map((id, i) => base(id, 5 - Math.floor(i / 2))), RECIENTES[2]];
+  const p = perfil({ capacidad: false, recientes });
+  await p.esperar();
+  assert.equal(p.estadoHook().avisos.length, 7);
+  assert.equal(p.estadoHook().noLeidos, 7, 'la insignia de Inicio cuenta los 7 cargados');
+  // App conecta la tarjeta así (ver la prueba de conexiones de App).
+  const marcados = [];
+  const tarjeta = () => p.modulo.TarjetaAvisosInicio({ avisos: p.estadoHook().avisos, leidos: p.estadoHook().leidos,
+    onAbrir: (aviso) => p.estadoHook().marcarLeidos([aviso.id]),
+    onMarcarLeidos: (ids) => { marcados.push(ids); return p.estadoHook().marcarTodosLeidos(); } });
+  let t = tarjeta();
+  assert.equal(nodos(t).filter((n) => n.type === 'Pressable' && /^Novedad /.test(n.props.accessibilityLabel)).length, 3, 'enseña 3');
+  // Abrir los 3 visibles deja 4 sin leer que no se ven: el punto y el botón
+  // siguen, para que la insignia se pueda vaciar.
+  for (const id of ['17', '16', '15']) { boton(t, `Novedad ${id}`).props.onPress(); await p.esperar(); t = tarjeta(); }
+  assert.equal(p.estadoHook().noLeidos, 4);
+  assert.ok(boton(t, 'Marcar como leídos'), 'el botón sigue mientras quede alguno sin leer');
+  const puntoCabecera = (arbol) => nodos(arbol).some((n) => n.type === 'View' && n.props.accessible === false && !Array.isArray(n.props.style));
+  assert.ok(puntoCabecera(t), 'el punto de la cabecera sigue');
+  boton(t, 'Marcar como leídos').props.onPress();
+  await p.esperar();
+  assert.deepEqual(marcados, [['14', '13', '12', 'bienvenida']], 'pasa todos los no leídos, no solo los visibles');
+  assert.equal(p.estadoHook().noLeidos, 0, 'la insignia queda a cero');
+  assert.deepEqual([...p.local.leidos].sort(), ['12', '13', '14', '15', '16', '17', 'bienvenida'].sort(), 'guardado en el dispositivo');
+  assert.equal(boton(tarjeta(), 'Marcar como leídos'), undefined);
+  assert.equal(puntoCabecera(tarjeta()), false);
+  // También de golpe, sin abrir ninguno.
+  const q = perfil({ capacidad: false, recientes });
+  await q.esperar();
+  assert.deepEqual([...q.estadoHook().idsNoLeidos], ['17', '16', '15', '14', '13', '12', 'bienvenida']);
+  await q.estadoHook().marcarTodosLeidos();
+  await q.esperar();
+  assert.equal(q.estadoHook().noLeidos, 0);
+  p.h.desmontar(); q.h.desmontar();
 });
 
 test('sin cuenta (interruptor apagado) el hook no llama a nada', async () => {
@@ -454,6 +555,8 @@ test('App: solo con el interruptor se observan las novedades y se pinta la tarje
   assert.match(APP, /useAvisosNovedades\(\{ cuenta, usuarioId: AVISOS_NOVEDADES_ACTIVOS \? usuarioAdmitido : null \}\)/);
   assert.match(APP, /tarjetaAvisos=\{AVISOS_NOVEDADES_ACTIVOS \? \(/);
   assert.match(APP, /panelNovedades=\{AVISOS_NOVEDADES_ACTIVOS \? \(/);
+  assert.match(APP, /<TarjetaAvisosInicio[^>]*onMarcarLeidos=\{novedadesCuenta\.marcarTodosLeidos\}/);
+  assert.match(APP, /await borrarDatosDispositivo\(\);[\s\S]{0,200}if \(AVISOS_NOVEDADES_ACTIVOS\) novedadesCuenta\.recargar\(\);/);
   assert.match(APP, /<AccesoObligatorio[^>]*avisosNovedades=\{AVISOS_NOVEDADES_ACTIVOS\}/);
   assert.match(APP, /antesDeSalir: AVISOS_NOVEDADES_REMOTOS === true \? quitarPushAlSalir : null/);
   assert.match(fs.readFileSync(path.join(RAIZ, 'componentes', 'AccesoObligatorio.js'), 'utf8'), /avisosNovedades=\{avisosNovedades === true\}/);
