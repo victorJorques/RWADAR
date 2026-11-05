@@ -1,0 +1,192 @@
+{
+ "grupo": "candidatas-espana",
+ "ciclo": "2026-11-05-v2",
+ "nota": "Consultas reales del 05/11/2026. HTML y PDF en disco (fuera de Git por .gitignore); en Git van los .txt extraídos. Las respuestas crudas (direcciones, IDs) van en fuentes/crudo/ (fuera de Git). Las URL sin archivo son intentos fallidos registrados para no darlos por leídos.",
+ "consultas": [
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ERIR.aspx?lang=es",
+   "archivo": "fuentes/cnmv/erir-indice.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:02:09Z",
+   "bytes": 150845,
+   "sha256": "bfc4361d3693cdad7fea685b36c14394366a0a7ee8e67efc1503296d8625478e",
+   "textoExtraido": "fuentes/cnmv/erir-indice.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es",
+   "archivo": "fuentes/cnmv/erir-ursus3-p0.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:02:11Z",
+   "bytes": 183044,
+   "sha256": "3ea04f8f58e800a3cc0a2d91415b0fd5d6725e5255faa6d864dd5895012a971b",
+   "textoExtraido": "fuentes/cnmv/erir-ursus3-p0.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1",
+   "archivo": "fuentes/cnmv/erir-ursus3-p1.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:02:13Z",
+   "bytes": 182838,
+   "sha256": "b21d66fa5390cdfca3368b4c4084f82a7bf1c2048a3f8466534a755bc896af73",
+   "textoExtraido": "fuentes/cnmv/erir-ursus3-p1.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+   "archivo": "fuentes/cnmv/erir-ursus3-p2.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:02:15Z",
+   "bytes": 162258,
+   "sha256": "4cdaee361403c68aec4dd3d5c5a5cf8008815d71573288829743597e0a0f320c",
+   "textoExtraido": "fuentes/cnmv/erir-ursus3-p2.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx?lang=es",
+   "archivo": "fuentes/cnmv/infraestructuras.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:02:17Z",
+   "bytes": 260219,
+   "sha256": "c7090d38ae80f5689eabae0e9687decafe3bc3601628f0434257a17ba532aee6",
+   "textoExtraido": "fuentes/cnmv/infraestructuras.txt"
+  },
+  {
+   "url": "https://bit2me.com/es/stx",
+   "archivo": "fuentes/bit2me/bit2me-stx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:02:43Z",
+   "bytes": 530852,
+   "sha256": "81b2b4d542075131300e543fa7c4db67e7b55a9beaf690d3d941e614ad950a5c",
+   "textoExtraido": "fuentes/bit2me/bit2me-stx.txt"
+  },
+  {
+   "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "archivo": "fuentes/bit2me/nota-2026-10-28.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:02:43Z",
+   "bytes": 168047,
+   "sha256": "c3b80c67603d9afd811bb562fe83607da49f3eda2aff916fec63c2fa2a7766c0",
+   "textoExtraido": "fuentes/bit2me/nota-2026-10-28.txt"
+  },
+  {
+   "url": "https://stx.bit2me.com/",
+   "archivo": "fuentes/bit2me/stx-app.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:02:44Z",
+   "bytes": 26014,
+   "sha256": "31e8e504b7681d97abf8db5a17af0d44f9883cca7581c5de92057ba43b7031d3",
+   "textoExtraido": "fuentes/bit2me/stx-app.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A56759137&lang=es",
+   "archivo": "fuentes/cnmv/esi-bit2me-stx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:02:46Z",
+   "bytes": 223261,
+   "sha256": "3472dbfd177f4b653120bbee025998ded72ad69831db796437c3ca29c02c3b68",
+   "textoExtraido": "fuentes/cnmv/esi-bit2me-stx.txt"
+  },
+  {
+   "url": "https://www.token-city.com/es/marketplace",
+   "archivo": "fuentes/tokencity/marketplace.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:04:22Z",
+   "bytes": 1125963,
+   "sha256": "1651b0ff49c1fce88655d10932e333d994e36fd4fe14b90415243b943f0053d9",
+   "textoExtraido": "fuentes/tokencity/marketplace.txt"
+  },
+  {
+   "url": "https://www.token-city.com/es",
+   "archivo": "fuentes/tokencity/home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:04:23Z",
+   "bytes": 1068826,
+   "sha256": "cd6335aeb295e65f653f51db6c019d08d62c1b122f1fdb55f58b6fe886ad6b72",
+   "textoExtraido": "fuentes/tokencity/home.txt"
+  },
+  {
+   "url": "https://openbrick.es/",
+   "archivo": null,
+   "http": 0,
+   "consultadoUtc": "2026-11-05T08:04:26Z",
+   "error": "curl: (56) CONNECT tunnel failed, response 502"
+  },
+  {
+   "url": "https://www.minossecurities.com/",
+   "archivo": null,
+   "http": 0,
+   "consultadoUtc": "2026-11-05T08:04:26Z",
+   "error": "curl: (35) Recv failure: Connection reset by peer"
+  },
+  {
+   "url": "https://aliuscap.com/projects",
+   "archivo": "fuentes/alius/projects.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:04:29Z",
+   "bytes": 4371,
+   "sha256": "4cbaba0dd2e0bec87e54ffeccf73449ef6aef07416c2a4c96d9d0fbc4b82a21c",
+   "textoExtraido": "fuentes/alius/projects.txt"
+  },
+  {
+   "url": "https://portfolio.exchange/es/portfolio-market",
+   "archivo": "fuentes/portfolio/market.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:04:29Z",
+   "bytes": 300334,
+   "sha256": "c6e1fee61897197258925a3a61f1261676ce429040e5b5a5a967b674a399b29d",
+   "textoExtraido": "fuentes/portfolio/market.txt"
+  },
+  {
+   "url": "https://www.azvalor.com/fondos/azvalor-blockchain/",
+   "archivo": "fuentes/otros/azvalor-blockchain.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-05T08:04:32Z",
+   "bytes": 202524,
+   "sha256": "0cd0ccd9c20f91e938ed6c0358e75d18732f69c3d31571c71d45dc420e835d42",
+   "textoExtraido": "fuentes/otros/azvalor-blockchain.txt"
+  },
+  {
+   "url": "https://www.afm.nl/en/sector/registers/meldingenregisters/genotificeerde-prospectussen/details?id=12515",
+   "archivo": "fuentes/hausera-eti/afm-prospectus-12515.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:05:18Z",
+   "bytes": 48979,
+   "sha256": "f8f30f00911b6835079c453274aad3f702cdb70896e135b61a880e6d58b65134",
+   "textoExtraido": "fuentes/hausera-eti/afm-prospectus-12515.txt"
+  },
+  {
+   "url": "https://www.altariuseti.com/",
+   "archivo": "fuentes/hausera-eti/altarius-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:05:42Z",
+   "bytes": 148680,
+   "sha256": "1f515b9a6de3a832fcbe23f06820ac3d6bdbef399e3320345cd98cf19922a69a",
+   "textoExtraido": "fuentes/hausera-eti/altarius-home.txt"
+  },
+  {
+   "url": "https://portfolio.exchange/es/portfolio-market",
+   "archivo": "fuentes/portfolio/nav-market-etp-deuda.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:05:43Z",
+   "bytes": 13219,
+   "sha256": "c0b7c8733d49d5a78598650bc34aae7810649ecd5e0ed3a9fd18a91ba69b8df8",
+   "nota": "texto renderizado con Playwright/Chromium, pestaña «ETP/Deuda»"
+  },
+  {
+   "url": "https://portfolio.exchange/es/portfolio-market/hausera-eti-HAUS-FR0014010H19-41",
+   "archivo": "fuentes/portfolio/nav-haus.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:06:14Z",
+   "bytes": 13471,
+   "sha256": "fb0832bdf0d3fc9504049d54395fa0089d9a666c1544882ec671ca4ca9665395",
+   "nota": "texto renderizado con Playwright/Chromium"
+  },
+  {
+   "url": "https://portfolio.exchange/es/portfolio-market/hausera-eti-HAUS-FR0014010H19-41",
+   "archivo": "fuentes/portfolio/nav-haus-documentos.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:06:48Z",
+   "bytes": 10626,
+   "sha256": "40254e935dfcaaef406accf61c2ee8bc0db29a1c881f5a707d5cb30d1eaba43a",
+   "nota": "texto renderizado con Playwright/Chromium, pestaña «Documentos»"
+  }
+ ]
+}

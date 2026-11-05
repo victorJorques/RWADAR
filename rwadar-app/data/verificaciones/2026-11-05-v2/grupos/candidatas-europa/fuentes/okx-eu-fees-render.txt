@@ -1,0 +1,201 @@
+Looks like you're in the United States. Switch to the United States site for products available in your region.
+
+Switch site
+Skip to main content
+Buy crypto
+SEPA, Visa, Mastercard, and more
+Check real-time conversion rates and crypto values
+Deposit
+Add cash to your account balance using a bank transfer to start trading
+Transfer crypto from an on-chain wallet or exchange
+Markets
+Trade
+Quick conversion, zero trading fees, no slippage
+Buy and sell crypto with ease
+Trade futures with leverage
+Trade stocks, ETF and commodities using crypto
+Automate your trades with AI agents and community-built skills
+Multiple strategies to help you trade with ease
+Custom multi-leg strategies and block trades
+Grow
+Don’t just HODL. Earn
+Institutional
+The world’s most powerful suite of crypto trading solutions
+Digital assets-as-a-service for regulated institutions
+Seamless and ultra-low latency API connectivity
+Manage sub-accounts, trade easily and safely with more profits
+Candlesticks, aggregate trades, order book data and more
+Our latest institutional trading research, news, and more
+Learn
+Build strong crypto fundamentals with simple guides and tutorials
+Follow step-by-step instructions to buy crypto
+Find answers to common questions on your crypto journey
+Track real-time crypto prices and market moves
+Stay on top of the latest crypto news and trends
+Read insights and stories from our team
+More
+Log in
+Sign up
+Trading fee
+Rollover rate and borrowing limit
+Crypto withdrawal
+
+Our trading fees are different for users of different tiers. Users are categorized into tiers by their assets under management and 30-day trading volumes. Fee tiers are updated daily.
+Users of different fee tiers will enjoy different fee discount. For example, if a user’s 30-day trading volume is 5,000,000,001 EUR, this user will enjoy fee discounts of -0.0050% for maker fee and 0.0150% for taker fee.
+
+Spot & derivatives account
+Spot-only account
+Spot
+Futures
+Options
+Standard
+Zero-fee pairs
+	Tier	Assets (EUR)	or	30-day trading volume (EUR)	Maker fee	Taker fee	24h crypto withdrawal limit (USD)
+ 
+	
+ 
+	
+ 
+	
+ 
+	
+ 
+	
+ 
+	
+ 
+	
+ 
+
+--	Regular user	0 - 100,000	/	0 - 1,000,000	0.0800%	0.1000%	10,000,000
+
+	VIP 1	100,001 - 200,000	/	1,000,001 - 5,000,000	0.0675%	0.0800%	24,000,000
+VIP 2	200,001 - 2,000,000	/	5,000,001 - 10,000,000	0.0600%	0.0700%	32,000,000
+VIP 3	2,000,001 - 5,000,000	/	10,000,001 - 20,000,000	0.0550%	0.0650%	40,000,000
+
+	VIP 4	5,000,001 - 20,000,000	/	20,000,001 - 100,000,000	0.0300%	0.0450%	44,000,000
+VIP 5	20,000,001 - 50,000,000	/	100,000,001 - 200,000,000	0.0250%	0.0350%	48,000,000
+VIP 6	50,000,001 - 100,000,000	/	200,000,001 - 500,000,000	0.0000%	0.0300%	60,000,000
+
+	VIP 7	100,000,001 - 250,000,000	/	500,000,001 - 1,000,000,000	-0.0010%	0.0230%	72,000,000
+VIP 8	250,000,001 - 500,000,000	/	1,000,000,001 - 5,000,000,000	-0.0025%	0.0200%	80,000,000
+VIP 9	500,000,001+	/	5,000,000,001+	-0.0050%	0.0150%	80,000,000
+
+30-day trading volume (EUR) is the total trading volume for the corresponding market
+
+Trading tier and market maker program
+Spot trading pairs with both maker and taker fees at 0% are excluded from users' 30-day spot trading volume.
+Spot trading pairs with both maker and taker fees at 0% are excluded from market maker tier assessment.
+Main and sub-accounts fee tier
+The fee tier of your main account is determined by the 30-day trading volume and snapshotted daily asset balance of all main and sub-accounts. Fee tier of your main account also applies to your sub-accounts at 4:00 pm UTC after the sub-accounts are created.
+30-day trading volume (EUR)
+Crypto pairs
+Calculate your trading volume in BTC based on its current USD value. Daily, at 4:00 PM UTC, we convert your total trading volume to USD using the daily middle price of BTC/USD [Middle price of BTC/USD = (Opening price + Closing price) / 2]. We then determine your total spot trading volume over the past 30 days. For example, if you have traded BTC, ETH, and MATIC in the last 30 days, we convert each transaction to its BTC equivalent at the time of the trade (this includes trades in USDC, ETH, and other pairs). This amount is then converted to USD based on the daily middle price, and finally converted to EUR based on the exchange rate. Daily, at 4:00 PM UTC, we update this calculation to reflect your trading volume over the past 30 days.
+EUR pairs
+Transactions are recorded in EUR equivalents according to its price at the moment of trading. For example, you have traded USDC/EUR pair in the last 30 days. We recorded each trade in EUR equivalents at the moment when each trade happened. Each day at 4:00 PM UTC, we calculate your total trading volume in the last 30 days.
+Total asset balance
+We take a snapshot of all of your crypto assets at 4:00 PM UTC daily and convert the value to BTC, then to USD based on the daily middle price of BTC/USD [Middle price of BTC/USD = (Opening price + Closing price) / 2]. The higher value between the past 30-day average asset amount and the daily snapshot is used as the user’s asset amount. Finally, the total amount is converted into EUR using the day’s exchange rate.
+For example, if the 30-day average asset amount is 1,000 EUR and the snapshot at 4:00 PM UTC shows 500 EUR, the user’s asset amount will be 1,000 EUR.
+Total assets include both your crypto and any fiat assets.
+Makers and takers
+A maker order is a limit order that enters the order book and isn’t filled immediately.
+
+For example, if the lowest BTC ask price is 1,000 USDC and you place a buy order at 999 USDC, it won’t match right away and will remain in the order book until someone fills it.
+Once filled, you’ll pay the maker fee, while the counterparty (the taker) pays the taker fee.
+Trading fee rules
+Calculating trading fees:
+Fee for spot trading = Fee rate × Amount of crypto bought when order was filled.
+Take USDC/EUR as an example, assuming the current price of USDC is 10 EUR. If trader A (0.04% for maker fee and 0.1% for taker fee) buys 1 USDC at the market price. As a taker in this trade, A’s trading fee = 0.1% × 1 = 0.001 USDC. After the trading fee deduction, A receives 0.999 USDC from this trade.
+Conversely, if A sells 1 USDC at a limit price and buys 10 EUR, A is considered the maker in this trade. In this case, A’s trading fee = 0.04% × 10 = 0.004 EUR. After the trading fee deduction, A receives 9.996 EUR from this trade.
+24h crypto withdrawal limit (USD)
+User’s 24-hour withdrawal limit is calculated daily at 4:00 PM UTC based on the fee level. All crypto held by the user will be converted to USD, and the total converted amount must not exceed the withdrawal limit of the corresponding level.
+For example, your 24-hour withdrawal limit is 300 USD. After withdrawing 250 USDC, 25 USD equivalent in OMG, and 15 USD equivalent in XRP, you used 290 USD of the withdrawal limit. This means you have 10 USD remaining within the 24-hour period. If you want to withdraw 20 USD equivalent in XRP, which exceeds the 10 USD remaining balance, you can’t withdraw until the next day. Alternatively, you can contact our customer support to increase your limit tentatively.
+Daily update time of trading fee
+OKX updates the latest level of user’s trading fee at 8:00 - 10:00 PM UTC
+Disclaimer
+OKX’s fees may vary depending on your region. Find out the fees applicable to you here.
+©2017 - 2026 OKX.COM
+English/EUR
+More about OKX
+About us
+Candidate Privacy Notice
+Careers
+Contact us
+Terms of Service
+Terms of Service (Derivatives)
+Privacy Notice
+OKX EU Disclosures
+OEM Disclosures
+Conflicts of interest disclosure
+Whistleblower notice
+Law enforcement
+OKX app
+Cookie preferences
+Products
+Buy crypto
+P2P trading
+Convert
+Trade
+Earn
+Trading bots
+All cryptocurrencies
+Learn
+TradingView
+X-RWA
+Outcome markets
+Stock price
+Services
+Affiliate
+API
+Historical market data
+CEX fee schedule
+Listing application
+P2P Merchant application
+Support
+Support center
+Channel verification
+Announcements
+Connect with OKX
+Buy crypto
+Buy USDC
+Buy Bitcoin
+Buy Ethereum
+Buy ADA
+Buy Solana
+Buy Litecoin
+Buy XRP
+Crypto calculator
+BTC to USD
+ETH to USD
+USDC to USD
+SOL to USD
+XRP to USD
+PI to USD
+Trade
+BTC USDC
+ETH USDC
+LTC USDC
+SOL USDC
+XRP USDC
+Bitcoin price
+Ethereum price
+Pi Network price
+Solana price
+XRP price
+Bitcoin price prediction
+Ethereum price prediction
+XRP price prediction
+Pi Network price prediction
+How to buy crypto
+How to buy Bitcoin
+How to buy Ethereum
+How to buy Solana
+How to buy Pi Network
+Trade on the go with OKX
+Register
+Scan to download OKX app
+Community
+Chat with us
+By clicking “Accept All Cookies”, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.
+Accept All Cookies
+Cookies Settings

@@ -1,0 +1,10 @@
+{
+ "url": "https://data.spiko.io/ustbl/",
+ "finalUrl": "https://data.spiko.io/ustbl/",
+ "http": 200,
+ "consultadoUtc": "2026-11-05T08:03:27Z",
+ "metodo": "playwright-chromium innerText",
+ "error": null,
+ "links": [],
+ "text": "Log in\nSign up\nAll products\nSmart Cash EUR\nSmart Cash USD\nSmart Cash GBP\nSmart Cash CHF\nEU T-Bills\nUS T-Bills\nUK T-Bills\nCash & Carry EUR\nCash & Carry USD\nUSD\nISIN FR001400ODM9\nSpiko US T-Bills Money Market Fund\n\nUSD short-term variable net asset value money market fund\n\nLearn more about Spiko US T-Bills Money Market Fund on spiko.io.\n\nAUM\n$173.64M\n$173,644,154\nUSERS\n872\n1D YIELD\n4.64%\nAnnualised\n7D YIELD\n4.65%\nAnnualised\n30D YIELD\n3.99%\nAnnualised\nLATEST NAV\n1.1018\n2026-11-04\nNAV, last 2 months\n\nDaily net asset value per share, in USD.\n\n2026-09-08\n2026-09-15\n2026-09-21\n2026-09-28\n2026-10-05\n2026-10-09\n2026-10-16\n2026-10-22\n2026-10-28\n2026-11-04\n1.0951\n1.0971\n1.0991\n1.1022\nAUM, last 2 months\n\nTotal AUM in this product, in USD.\n\n2026-09-11\n2026-09-24\n2026-10-07\n2026-10-21\n2026-11-04\n0\n50M\n100M\n150M\nUsers, last 2 months\n\nNumber of users holding this product.\n\n2026-09-11\n2026-09-24\n2026-10-07\n2026-10-21\n2026-11-04\n0\n200\n400\n600\n800\nCumulative interest accrued\n\nTotal interest accrued since the product's launch, in USD.\n\n2026-09-11\n2026-09-17\n2026-09-23\n2026-09-29\n2026-10-05\n2026-10-09\n2026-10-16\n2026-10-22\n2026-10-28\n2026-11-04\n9M\n9.2M\n9.4M\n9.6M\n9.8M\n10M\nShare class details\nISIN\nFR001400ODM9\nCURRENCY\nUSD\nAMF CLASSIFICATION\nShort-term VNAV MMF\nREFERENCE INDEX\nCapitalized EFFR\nUSE OF INCOME\nAccumulating\nMANAGEMENT FEES\n0.25%\nSUBSCRIPTION FEES\n0.00%\nREDEMPTION FEES\n0.00%\nMINIMUM INITIAL SUBSCRIPTION\n1 USD\nNAV DECIMALS\n6\nSHARE DECIMALS\n5\n\nTotal interest accrued since launch: $9.94M ($9,939,152).\n\nSource: Spiko Public API v0 · cached server-side\n\n© Spiko 2026\nLegal Notice\nTerms of Use\nPrivacy\nDune workspace ↗\n9M"
+}

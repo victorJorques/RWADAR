@@ -1,0 +1,520 @@
+DocuSign Envelope ID: D4A7D8BE-3C35-4515-9A7D-E6ED675641D7
+                                                                                                    TOKEN SHA                                                                                      TOKEN SHA
+
+
+                                                                                                                     a. Background: When a certain majority of Shareholders wants to sell, it is an important
+
+        Token Shareholder Agreement                                                                                     protection for minority Shareholders that they are not stuck with a new majority
+                                                                                                                        shareholder. Therefore, minority Shareholders should have the right to sell as well for
+                                                                                                                        the same price if a certain majority of Shareholders wish to sell.
+        Non-binding executive summary
+                                                                                                                     b. Mechanism: If a certain percentage of Shares are sold, the selling shareholders need
+        This Token Shareholder Agreement serves the following three key purposes:                                       to inform all other Shareholders and give them the right to sell for the same price.
+
+           1. Granting of Liquidation Preferences
+
+                   a. Background: When the Issuer is sold or liquidated, the relevant proceeds are
+                       distributed in accordance with a pre-agreed waterfall. Initially, any proceeds will be
+                       distributed up to the respective preference amount, to the most senior class of preferred
+                       shares, followed by a distribution of the agreed preference amount to less senior
+                       classes of preferred shares. Any remaining proceeds will be distributed to the holders
+                       of common shares, provided that, if holders of preferred shares would, taking into
+                       account any distributions to other holders of preferred shares, receive an amount that
+                       would exceed their respective preference amount, the relevant preferred shares shall
+                       be deemed converted into common shares for purposes of the calculation of the
+                       liquidation preference. I.e. each preferred share, in principle, receives the higher of (i)
+                       the relevant preference amount and (ii) the amount per preferred share it would receive
+                       if it had converted to a common share and thereby received a pro rata per-centage of
+                       any proceeds.
+
+                   b. Mechanism: In order to reflect the liquidation preference attaching to the Share Tokens
+                       as well as in order to ensure that the liquidation preferences of other classes of
+                       preferred shares may be honored, a clause governing the details of the distribution of
+                       the proceeds in case of a sale or liquidation is included in the Token Shareholder
+                       Agreement.
+
+           2. Drag-Along (obligation to sell in case of an exit):
+
+                   a. Background: When the Issuer is sold, the buyer will want to own 100% of the Shares,
+                       not 99.9% or less. As there are potentially hundreds of Token Holders, the process to
+                       transfer the Share Tokens to the buyer needs to be automated.
+
+                   b. Mechanism: If a certain majority of all Shareholders agrees to sell the Issuer for a
+                       specific price to a buyer, all Shareholders are obliged to sell their Shares for the same
+                       price. For Share Tokens, the transfer to the buyer is executed automatically through a
+                       smart contract. After the transfer, Token Holders will receive the purchase price for
+                       their Share Tokens.
+
+           3. Tag-Along (right to sell when a certain majority of shareholders sell):
+
+
+
+
+                                                                                                 PAGE 1 OF 17                                                                                   PAGE 2 OF 17
+DocuSign Envelope ID: D4A7D8BE-3C35-4515-9A7D-E6ED675641D7
+                                                                                              TOKEN SHA                                                                                                               TOKEN SHA
+
+
+
+        Section A – Key terms                                                                                       Drag-Along Quorum       662/3% of all Shares during the Voting Period (absolute majority) and, after the end of the
+                                                                                                                                            Voting Period, 662/3% of yes votes relative to those Shares who cast a vote (relative
+   Preamble           Switzerlend AG, Hofackerstrasse 13, 8032 Zürich, CHE-456.445.646 ("Issuer") has                                       majority).
+                      issued its shares in different forms and with different preferences as follows:
+
+                          -   Form of Shares: As unregistered rights ("Ordinary Shares") and as ledger-based        Key Decision            90% (required for changes to this Agreement or changes to the SHA Smart Contract)
+                              securities ("Share Tokens", together with the Ordinary Shares the "Shares", and       Quorum
+                              their holders the "Shareholders" and the holders of Share Tokens only, the “Token
+                              Holders”).
+                                                                                                                    Representative          Stefan Jaecklin, Ländliweg 11, 5400 Baden, Switzerland
+                          -   Preferences: As common shares (the "Common Shares") and as shares with
+                              certain liquidation preferences (the "Preferred Shares") as per the articles of
+                              association, as amended from time to time (the “Articles”), and a separate            Oracle                  [Name, Address], or any other natural person or legal entity appointed by the Issuer.
+                              shareholders agreement between the holders of Ordinary Shares (the "Ordinary
+                              SHA", as amended from time to time) and this token shareholders’ agreement
+                                                                                                                        Section B – General terms
+                      All Share Tokens are issued as preferred C1 shares with a nominal value of CHF 1.00 and
+                      which have the Liquidation Preferences as described in Section 2 (the "Preferred C1
+                                                                                                                        1 Scope
+                      Shares"). They shall rank equal to any other Shares of the category “C” (including but not
+                      limited, the Preferred Shares of the category “C2”) (the “Preferred C2 Shares").                  1.1   Parties
+
+                      This shareholder agreement is common to all Shareholders, i.e., it applies to Token Holders       All holders of Ordinary Shares ("Ordinary Shareholders") have become a Party to this Token SHA by
+                      and holders of Ordinary Shares ("Token SHA"). Each such Shareholder a “Party” and                 signing the separate Ordinary SHA or an accession declaration thereto.
+                      together the “Parties”).                                                                          Token Holders accept this Token SHA by wrapping their Share Tokens in the SHA Smart Contract or
+                      To enable the enforced transfer of Share Tokens, the Share Tokens are locked in a smart           by otherwise directly or indirectly obtaining ownership of or interacting with SHA Tokens.
+                      contract on the Ethereum blockchain ("SHA Smart Contract") and for each locked Share              New parties can join this Token SHA without explicit consent or information to the other Parties.
+                      Token, a placeholder token ("SHA Token") is generated.
+                                                                                                                        The Issuer and the Oracle are bound to this Token SHA to the extent they have specific obligations
+
+   Website            The latest version of this Token SHA can be found on the Issuer’s investor relations page         under this Token SHA.
+
+                      (the "Website").
+                                                                                                                        1.2   Relation to Share Tokens and Registration Agreement
+   Share Token        Share Tokens are issued under the Registration Agreement (as defined below) as available          The terms and technical features governing the Share Tokens as available on the Website of the Issuer
+                      on the Website and registered in the SHA Smart Contract.                                          ("Registration Agreement") relating to the transfer of Share Tokens, shareholder registration (incl.
+                                                                                                                        statutory transfer restrictions, if any), burning, establishment of securities, loss of tokens and hard fork
+   SHA Token          The 'draggable' SHA Token of the Issuer is called [Switzerlend AG C1 Shares SHA (LEN              apply to the SHA Tokens in analogy (Sections 5 ss. of the Registration Agreement).
+                      C1 SHA)] and registered in the SHA Smart Contract [TBD].
+                                                                                                                        Token Holders can only transfer ownership of Share Tokens indirectly by transferring SHA Tokens. It
+                      The source code of the SHA Smart Contract determines its functionality. It can be found on        is not possible to ‘unwrap’ the SHA Tokens or to terminate this Token SHA except as set out in
+                      Etherscan under:                                                                                  Section 10.
+
+                      etherscan.io/address/0xAe7c2042c2f84Ff5880A185Bd7D81dA5B822B3A7#code
+                                                                                                                        1.3   SHA Smart Contract
+   Voting Period      60 calendar days starting with the initiation of an Offer Contract                                In case of inconsistencies between the terms and conditions of this Token SHA and the source code of
+                                                                                                                        the SHA Smart Contract, the source code prevails. In case such inconsistencies lead to an outcome
+   Execution Period   30 calendar days starting after the end of a Voting Period                                        not intended in this Token SHA, the Issuer has the right, but no obligation whatsoever, to use the tools
+
+
+
+
+                                                                                           PAGE 3 OF 17                                                                                                            PAGE 4 OF 17
+DocuSign Envelope ID: D4A7D8BE-3C35-4515-9A7D-E6ED675641D7
+                                                                                                    TOKEN SHA                                                                                                      TOKEN SHA
+
+
+        at its disposal (e.g., recovery function and annulment of the tokens) in such a way that the intent of the   resulting from such Liquidation or Sale shall be distributed as follows (reflecting the principle of a one-
+        Token SHA is complied with. The source code of the SHA Smart Contract can be amended as outlined             time non-participating liquidation preference) (the "Liquidation Preferences"):
+        under Section 11.
+                                                                                                                         a. Initially, any preferred shares with senior ranking liquidation preferences as per the Articles,
+                                                                                                                              as amended from time to time, than the Share Tokens and the Preferred C2 Shares, if and
+        1.4   Open Trading & issuance of new Share Tokens
+                                                                                                                              when introduced by the shareholders’ meeting with a respective amendment of the Articles
+        All Shareholders agree that the Issuer may decide, within legal limitations and limitations agreed in the             and if and when issued at the time of a liquidation event as per this Section 2, shall receive,
+        Ordinary SHA, to offer Share Tokens for public sale and repurchase by the Issuer to create a public                   an amount equal to the liquidation preference as per the Articles, as adjusted by any
+        market for the Share Tokens ("Open Trading"). The Issuer is under no obligation to offer or repurchase                compensatory capital increase or anti-dilution adjustment, if applicable, in the order of priority
+        the Share Tokens and may stop the Open Trading at any time or limit the Open Trading to selling or                    specified for the liquidation preference as per the Articles, as amended from time to time. If
+        buying only.                                                                                                          the proceeds do not suffice to make such payments to all of the holders of Preferred Shares
+
+        To enable the Open Trading, all Shareholders hereby waive their right to equal treatment for the                      ranking senior compared to the Share Tokens and the Preferred C2 Shares, the proceeds
+
+        repurchase of Share Tokens and their subscription right for the sale of existing Share Tokens. In case                shall be distributed among the holders of such Preferred Shares pro rata to their respective
+
+        of a capital increase for the creation of new Share Tokens that are intended for sale through Open                    entitlements inter se.
+
+        Trading, the Token Holders agree that their subscription rights are granted by having equal access to            b. Thereafter, each holder of Share Token and Preferred C2 Share shall receive from the
+
+        the Open Trading.                                                                                                     proceeds available for distribution per Share Token and Preferred C2 Shares an amount
+                                                                                                                              equal to CHF 53.72 (rounded) (rounded, as adjusted by any compensatory capital increase or
+        1.5   Conversion                                                                                                      anti-dilution adjustment, if applicable). If the proceeds do not suffice to make such payments
+                                                                                                                              to all of the holders of Preferred C2 Shares and Share Tokens, the proceeds shall be
+        All Preferred Shares shall be converted into Common Shares in the event of a listing of the Issuer, i.e.
+                                                                                                                              distributed among the holders of Preferred C2 Shares and Share Tokens pro rata to their
+        the public listing of Shares on an internationally recognized securities exchange, or any other securities
+                                                                                                                              respective entitlements inter se.
+        exchange or automated quotation system (the "Listing"), with the initial conversion ratio as of the date
+                                                                                                                         c.   The remaining proceeds of the Liquidation or Sale shall be distributed among the other
+        of this Token SHA being a 1:1 conversion ratio (whereby such ratio is also subject to appropriate
+                                                                                                                              Shareholders in accordance with and pursuant to the Ordinary SHA, whereas in case of any
+        adjustment in the event of the issuance of share splits, combinations, reclassifications, recapitalization
+                                                                                                                              distribution (in the last priority) of the remaining proceeds to the holders of Common Shares,
+        and similar events). The Token Holders further acknowledge and agree that the Issuer may at any time
+                                                                                                                              such remaining proceeds shall be distributed to the holders of Common Shares pro rata to the
+        convert the Share Tokens into Shares in the Issuer issued in another form than ledger-based securities,
+                                                                                                                              Common Shares held by them, provided that each holder of Preferred Shares (including, for
+        e.g. in the form of intermediated securities or book-entry securities, provided that such Shares shall
+                                                                                                                              the avoidance of doubt, Token Holders) may participate in such distribution with the relevant
+        have the same Liquidation Preferences as the Share Tokens. Each Party hereby undertakes to the
+                                                                                                                              Preferred Shares if and to the extent such holder of Preferred Shares, in relation to the
+        other Parties (i) to approve the necessary shareholder resolution(s) to effect the above conversion(s)
+                                                                                                                              relevant Preferred Shares and hereby on an “as-converted” basis (assuming the conversion
+        as soon as reasonably after the relevant notice by the Issuer and (ii) to become or remain a party to
+                                                                                                                              of the relevant Preferred Share into a Common Share prior to the relevant Sale or Liquidation)
+        any shareholders agreement then in force.
+                                                                                                                              would receive, in the aggregate but not including any amounts received as preference amount
+                                                                                                                              as per this Section above and the Ordinary SHA, an amount greater than the amount that
+        2 Board                                                                                                               would be distributed to such holder of the relevant Preferred Shares as per this Section and
+        For the avoidance of doubt, the Token Holders shall not have a right to appoint a director to the Issuer’s            as per the Ordinary SHA.
+        Board and hereby waive any (statutory or contractual) rights they may have in this regard.                   Notwithstanding anything contained in this Section to the contrary, the Liquidation Preference shall
+                                                                                                                     terminate and cease automatically upon completion of a Listing.
+        3 Liquidation Preference                                                                                     In the event a Sale or Liquidation occurs and any portion of the consideration payable to the
+        In the event of a Liquidation or Sale (including as the case may be through the exercise of the Drag-        (participating) Shareholders is payable upon satisfaction of contingencies only (e.g., becomes payable
+        Along Right or the Tag-Along Right), whether in one or a series of related transactions, the proceeds        only with the passage of time or upon the occurrence or non-occurrence of certain events) (the
+
+
+
+
+                                                                                                 PAGE 5 OF 17                                                                                                   PAGE 6 OF 17
+DocuSign Envelope ID: D4A7D8BE-3C35-4515-9A7D-E6ED675641D7
+                                                                                                       TOKEN SHA                                                                                                         TOKEN SHA
+
+
+        "Contingent Consideration"), the Parties agree that (i) the portion of such consideration that is not                    do not continue to represent, or are not converted into or exchanged for shares that
+        Contingent Consideration (such portion, the "Initial Consideration") shall be allocated among the                        represent, immediately following such transaction, at least a majority, by voting power, of the
+        Shareholders in accordance with Sections 3 (a) – (c) as if the Initial Consideration were the only                       Issuer’s totally issued share capital, or (iii) a sale, transfer, lease or other disposition
+        consideration payable in connection with such Sale or Liquidation, and (ii) any Contingent Consideration                 (including by way of exclusive license to all or substantially all of the Company's intellectual
+        which becomes payable to the Shareholders only upon satisfaction of such contingencies shall be                          property which has the same effect or economic impact as the disposition or a sale of all or
+        allocated among the Shareholders in accordance with Section 3 (a) – (c) after taking into account the                    substantially all of the assets of the Company) of all or substantially all of the assets (including
+        previous payment of the Initial Consideration as part of the Sale or Liquidation. For the purposes of this               intellectual property rights) of the Company and its subsidiaries, taken as a whole, in a single
+        paragraph, consideration placed into escrow or retained as a holdback to be available for satisfaction                   transaction or a series of related transaction.
+        of indemnification or similar obligations in connection with such Sale or Liquidation shall be deemed to
+        be Contingent Consideration. The Parties further acknowledge and agree that the SHA Smart Contract              4 Pre-emptive Subscription Rights and Waiver
+        does not technically support the payment in multiple instalments and, as such, the payment of a
+                                                                                                                        Subject to the remainder of the paragraph, each Shareholder shall have a non-transferrable preferential
+        Contingent Consideration to Token Holders may require additional manual steps or not be possible to
+                                                                                                                        right to subscribe ("Pre-emptive Subscription Right") for any Shares or equity related securities
+        execute with reasonable efforts. Therefore, the Parties agree that Parties representing the Drag-Along
+                                                                                                                        offered by the Issuer at the same terms and conditions specified in such offer, i.e. that Shares or equity
+        Quorum may, in their reasonable discretion, (i) take measures to enable execution of the payment to
+                                                                                                                        related securities offered shall be available in their entirety to the Shareholders on a pro rata basis.
+        Token Holders in the event of a Sale or Liquidation fully or partially outside of the automated payment
+        function of the SHA Smart Contract to reflect a Contingent Consideration for Token Holders, or (ii)             Each holder of Share Tokens herewith unconditionally waives its statutory and contractual pre-emptive
+        decide to waive Contingent Consideration for Token Holders and accept that the Token Holders receive            subscription rights, in relation to;
+        full payment of the consideration through the automated payment function without any escrow for or
+                                                                                                                            -    any Shares or virtual shares (or options for Shares or virtual shares) granted, transferred or
+        subtraction of any Contingent Consideration.
+                                                                                                                                 issued to employees, consultants, service providers or other persons based on any employee
+        This Section 3 (Liquidation Preference) constitutes an agreement between and among the                                   incentive plan or agreement duly approved by the Board;
+        Shareholders and the Issuer in their internal relationship and, unless otherwise agreed between them,
+                                                                                                                            -    any Shares issued or transferred in connection compensatory capital increase, or the anti-
+        shall apply irrespective of whether or not the definitive agreement(s) with any (other) person(s) resulting
+                                                                                                                                 dilution adjustment contained in the Ordinary SHA or in an investment agreement;
+        in or pertaining to a Sale or Liquidation event contain provisions to the contrary. The Parties shall fully
+        cooperate and shall duly take all actions, make all declarations and enter into all agreements as may               -    any Shares issued or transferred following the conversion of bona fide convertible loans granted
+
+        be required or desirable from time to time in order to implement and give effect to the provisions of this               to the Issuer (such waiver, for the avoidance of doubt, also to include any advance subscription
+
+        Section 3 and their underlying (economic) purpose and intent.                                                            rights (Vorwegzeichnungsrechte) in relation to the granting of the respective convertible loans);
+                                                                                                                                 and
+        The preferential rights pursuant to this Section 3 shall cease to be effective with regard to each relevant
+        Share to the extent the holder of such Share benefitted from the preferential amounts pursuant to                   -    any Shares issued to the public in case of a Listing
+
+        Sections 3 (a) – (c).                                                                                           and agrees that the Board allocates any such subscription rights in its sole discretion to new or existing
+
+        For the purposes of this Section 3:                                                                             shareholders or employees, service providers, consultants or other persons (as applicable). The Board
+                                                                                                                        may allocate any preferential subscription rights not exercised by the Parties among other Shareholders
+            -   "Liquidation" hall mean a voluntary or non-voluntary liquidation of the Company, a
+                                                                                                                        or third parties.
+                dissolution or winding-up of the Company.
+            -   "Sale" shall mean (i) the sale, transfer or other disposal of Shares (whether through a single          Each holder of Share Tokens acknowledges and confirms (i) that on or before the (possible) occurrence
+
+                transaction or a series of related transactions) in which the Shareholders immediately prior to         of an event triggering the Pre-emptive Subscription Rights of the Shareholders, the Issuer will inform
+
+                such transaction do not continue to hold Shares that represent, immediately following such              the holder of Share Tokens in accordance with Section 12 about the relevant event as well as the Pre-
+
+                transaction, at least a majority, by voting power, of the Issuer’s totally issued share capital, (ii)   emptive Subscription Rights and setting a deadline for the exercise of the Pre-emptive Subscription
+
+                a merger of the Issuer into or with another company, in which the Issuer is not the surviving           Rights (the "Exercise Period"), (ii) that if the relevant holder of Share Tokens has not exercised its Pre-
+
+                entity or in which the shares of the Issuer outstanding immediately prior to such transaction           emptive Subscription Rights within the Exercise Period, any Pre-emptive Subscription Rights in relation
+
+
+
+
+                                                                                                    PAGE 7 OF 17                                                                                                      PAGE 8 OF 17
+DocuSign Envelope ID: D4A7D8BE-3C35-4515-9A7D-E6ED675641D7
+                                                                                                     TOKEN SHA                                                                                                        TOKEN SHA
+
+
+        to the relevant event shall be forfeited and waived, (iii) that independent of the category of Shares         5.4      Transfer to Proposed Acquirer
+        issued to other persons in the same event, a separate category of Shares (which shall generally have
+                                                                                                                      To the extent the other Parties do not exercise their right of first refusal (if any) or their Tag-Along Right,
+        the same rights than the Shares issued to the other persons) may have to be created and allocated to
+                                                                                                                      the Selling Shareholder(s) shall, subject to the exercise of a right of first refusal as per the Ordinary
+        the Token Holders, and (iv) that any issuance of additional shares is subject to the relevant holder of
+                                                                                                                      SHA (if any), be free to transfer the relevant Shares to the Proposed Acquirer on the terms disclosed
+        Share Tokens remaining a Party to this Token SHA or a new shareholders agreement with substantially
+                                                                                                                      to the other Shareholders in the Tag-Along Notice within a period of six months starting after the expiry
+        similar terms (as reasonably determined by the Issuer).
+                                                                                                                      of the 30-day exercise period for the Tag-Along Right. Thereafter, the procedure pursuant to this
+                                                                                                                      Section 5 needs to be repeated prior to any such transfer.
+        5 Tag-along (co-sale right)
+        5.1   Grant and notification                                                                                  6 Drag-along (co-sale obligation)
+        In the event a Shareholder (or a group of Shareholders) ("Selling Shareholder(s)") wishes to transfer         6.1      Grant and notification
+        all or a part of its Shares ("Relevant Shares") in one or a series of related transactions to a an existing
+                                                                                                                      In the event an offer from a Proposed Acquirer who wishes to acquire all (but not less than all) Shares
+        Shareholder or third party ) (the "Proposed Acquirer") (including in the event of exercise of the pre-
+                                                                                                                      in the Issuer pursuant to a bona fide purchase offer (i) is approved in accordance with the voting
+        emptive right under the Ordinary SHA) on the basis of a bona fide purchase offer, and provided such
+                                                                                                                      mechanism as set out in Section 7 by Shareholders representing a majority of the Shares, including the
+        transfer of Relevant Shares exceeds 50% of all Shares outstanding ("Tag-Along Event"), all
+                                                                                                                      Share Tokens, and (ii) is approved by Shareholders representing a majority of the Preferred B Shares,
+        Shareholders hereby grant the other Shareholders the right to co-sell all (but not less than all) Shares
+                                                                                                                      provided that such consent is not necessary if the purchase price offered in such transaction
+        held by such Shareholder together with the Selling Shareholder(s) to the Proposed Acquirer in
+                                                                                                                      corresponds or exceeds the applicable Series B Multiple (together the "Relevant Approving
+        accordance with the terms and conditions set forth in this Section 5 ("Tag-Along Right").
+                                                                                                                      Shareholders") (the "Drag-Along Event"), such Relevant Approving Shareholders shall be entitled to
+        The Selling Shareholder(s) shall notify the Issuer of any Tag-Along Event in accordance with Section 12       request that all other Shareholders sell all their Shares to the Proposed Acquirer and shall notify the
+        ("Tag-Along Notice"). The Issuer shall inform each Shareholder within five days after receipt of the          Issuer (the "Drag-Along Notice"). Relating to the execution for Ordinary Shares, the Issuer shall inform
+        Tag-Along Notice about the day the deadline to submit a Tag-Along Exercise Notice (as defined                 each Shareholder within five days after receipt of the Drag-Along Notice about the day the Transfer of
+        hereinafter) expires.                                                                                         the Shares to the Proposed Acquirer shall be completed which shall be no later than six months as from
+                                                                                                                      the date of receipt of the Drag-Along Notice. Relating to the execution for Share Tokens, the Issuer
+        5.2   Terms of tag-along                                                                                      shall coordinate the execution of the transfer of Share Tokens with the Proposed Acquirer and the
+        The terms of the Tag-Along Right shall be the same consideration per Share and otherwise the same             Shareholders in accordance with the execution mechanism as set out in Section 7.
+        terms and conditions as applicable to the Selling Shareholder(s).
+                                                                                                                      "Series B Multiple" shall mean a multiple of 1.5x of the preferred B subscription price (currently CHF
+                                                                                                                      51.1261) as adjusted by any anti-dilution adjustment provided for by the Ordinary SHA or by any
+        5.3   Exercise
+                                                                                                                      compensatory capital increase as per any investment agreement between a relevant investor and the
+        Each Shareholder wishing to exercise its Tag-Along Right with respect to all Shares held by such              Issuer.
+        Shareholder shall so notify the Selling Shareholder(s) in accordance with Section 12 within an exercise
+        period of 30 calendar days after being informed (date of relevant notice) by the Issuer about the Tag-        6.2      Terms of drag-along
+        Along Notice (“Tag-Along Exercise Notice”). If no Tag-Along Exercise Notice is submitted until the
+                                                                                                                      The terms of the Drag-Along Offer shall be in accordance with the terms of the underlying agreement
+        expiry of the exercise period, the Tag-Along Right of that Shareholder shall be deemed to have been
+                                                                                                                      between the Relevant Approving Shareholders and the Proposed Acquirer with the following minimum
+        forfeited (verwirkt; périmé) with respect to this Tag-Along Event. If the Proposed Acquirer refuses to
+                                                                                                                      terms:
+        accept the purchase of the Shares from the Shareholders exercising their Tag-Along Right, the selling
+                                                                                                                            a) For each Share, the purchase price shall be the same (subject to liquidation preferences or
+        Party shall be prohibited from transferring the Shares to the Proposed Acquirer.
+                                                                                                                                other agreements between Shareholders).
+
+                                                                                                                            b) Each holder of Share Tokens liability as well as representations and warranties shall, to the
+                                                                                                                                extent legally permissible, be excluded.
+
+
+                                                                                                  PAGE 9 OF 17                                                                                                     PAGE 10 OF 17
+DocuSign Envelope ID: D4A7D8BE-3C35-4515-9A7D-E6ED675641D7
+                                                                                                       TOKEN SHA                                                                                                          TOKEN SHA
+
+
+        The Token Holders hereby irrevocably, subject only to the condition precedent that the Drag-Along                     4. Cancellation function & higher counter offer: The Offer Contract can be canceled as follows:
+        Offer is accepted as per Section 7, accept and enter into a sales agreement with the Proposed Acquirer
+                                                                                                                                        a. By the Proposed Acquirer: The Proposed Acquirer can cancel the offer at any time
+        with the above terms.
+                                                                                                                                            by calling the respective function on the Offer Contract.
+
+                                                                                                                                        b. By anyone else: Anyone can cancel the Offer Contract by calling the respective
+        7 Execution
+                                                                                                                                            function on the Offer Contract if either (i) the Proposed Acquirer did not make enough
+        7.1     SHA Smart Contract functions & automated execution                                                                          funds available to the Offer Contract, or (ii) the Execution Period has passed, or (iii) the
+                                                                                                                                            Drag-Along Quorum has become unreachable under the assumption that the number
+        The Shareholders can vote on the Drag-Along Offer and execute or cancel it based on the following
+                                                                                                                                            of 'no' votes will not decrease, or (iv) a new Offer Contract with a higher counteroffer
+        SHA Smart Contract functionalities:
+                                                                                                                                            using the same acquisition currency as the current offer is made.
+              1. Initiation function: The Proposed Acquirer is required to call the initiation function in the SHA
+                  Smart Contract, which is subject to a non-reimbursable software license fee payable to the            7.2        Execution for Ordinary Shares
+                  licensor as defined in the source code. By doing so, a separate smart contract governing the
+                                                                                                                        In case of a Drag-Along Event, the Ordinary Shareholders shall co-ordinate the transfer of the Ordinary
+                  acquisition ("Offer Contract") is created and an 'OfferCreated' event is emitted on the
+                                                                                                                        Shares to the Proposed Acquirer as per their separate agreement with the Proposed Acquirer.
+                  Blockchain. It is the responsibility of each Token Holder to monitor the Blockchain for such
+                  events or to use a service to do so on her or his behalf.                                             7.3        Drag-Along Right taking precedence over Right of First Refusal
+              2. Voting function: After calling the initiation function, the Voting Period starts:                      For the avoidance of doubt and notwithstanding anything to the contrary contained herein, any right of
+                      a. Voting by Token Holders: During the Voting Period, any Token Holder may call the               first refusal contained in the Ordinary SHA shall not apply in case of a Drag-Along Event.
+                          functions 'voteYes' and 'voteNo' to vote on the Drag-Along Offer. Token Holders can
+                          change their vote during the Voting Period. In case of a token transfer during the Voting     8 Important Shareholder Matters
+                          Period, the vote counts are automatically updated to reflect the vote of the recipient
+                                                                                                                        Each of the Shareholders acknowledges and agrees with the other Shareholders that any affirmative
+                          address, if any.
+                                                                                                                        vote on any of the important shareholder matters set forth below, requires the approval of 66.67% of
+                      b. Voting by Ordinary Shareholders: Ordinary Shareholders may vote by either (i)                  shareholder votes represented at the relevant shareholders’ meeting, whereby each Share shall entitle
+                          turning their Ordinary Shares into Share Tokens, locking these in the SHA Smart               its holder to one vote irrespective of the class to which it belongs pursuant to the terms and conditions
+                          Contract and then voting, or (ii) reporting their vote to the Oracle which shall report       of this Token SHA and the Articles, as amended:
+                          such votes to the Offer Contract within 96 hours, subject to reimbursement of the
+                                                                                                                              a) any amendment of the Articles or the corporate purpose;
+                          transaction fees for voting. The Oracle, but not the Token Holders, can technically
+                          report votes to the Offer Contract even after the end of the Voting Period, but shall only          b) any change of the corporate name or registered seat;
+                          do so for votes received before the end of the Voting Period. The Ordinary                          c) any ordinary, authorized or conditional capital increase or capital decrease, the introduction of
+                          Shareholders shall vote no, and hereby instruct the Oracle to vote no, if the conditions                  a capital band (Kapitalband);
+                          and/or terms of a Drag-Along Event are not met.
+                                                                                                                              d) any increase of the share capital against the Issuer's equity, against contributions in kind, by
+              3. Execution function: The execution function enforces the Drag-Along Offer by transferring all                       offsetting against a receivable or granting of special benefits;
+                  Share Tokens to the Proposed Acquirer and replacing the Share Tokens with the respective
+                                                                                                                              e) any creation of preferred shares or shares with privileged voting rights;
+                  price per Share Token as per the Drag-Along Offer. SHA Tokens can then be used to unwrap
+                  the proceeds from the SHA Smart Contract. The Proposed Acquirer can trigger the execution                   f)    any easing or restriction of the transferability of shares;
+                  function, if (and only if) (i) the funds for the Drag-Along Offer for Share Tokens are available in
+                                                                                                                              g) any limitation or withdrawal of pre-emptive subscription rights for shares or the pre-emptive
+                  the Offer Contract, and (ii) the Drag-Along Quorum is reached (i.e., absolute majority of Shares
+                                                                                                                                    subscription relating to convertibles;
+                  during the Voting Period and relative majority of Shares during the Execution Period).
+                                                                                                                              h) any resolution as per article 704 CO;
+
+
+
+                                                                                                     PAGE 11 OF 17                                                                                                    PAGE 12 OF 17
+DocuSign Envelope ID: D4A7D8BE-3C35-4515-9A7D-E6ED675641D7
+                                                                                                       TOKEN SHA                                                                                                     TOKEN SHA
+
+
+            i)   the liquidation of the Issuer;                                                                       Holder becoming subject to financial obligations vis-à-vis the Issuer, another Shareholder or a third
+                                                                                                                      party, the Representative shall act in accordance with the specific instructions received from the
+            j)   the sale, disposal or transfer of all or substantially all of the Issuer's business and/or assets;
+                                                                                                                      relevant Minority Token Holder. In the absence of instructions, the Representative shall only be entitled
+            k) any resolutions for a merger, demerger, transfer of assets or similar resolution under the Swiss
+                                                                                                                      to waive such rights.
+                 Merger Law;
+                                                                                                                      If the Representative (i) for any reason can or no longer wants to act as Representative, or (ii) is revoked
+            l)   any resolution on dividends or other distributions;
+                                                                                                                      based on an according majority vote of the Minority Token Holders, a new Representative will be elected
+            m) the election or removal of the auditors.                                                               by majority vote of the Minority Shareholders. Until such election, the Minority Token Holders agree that
+                                                                                                                      their votes will be considered in line with the recommendations of the majority of the Board.
+        9 Representative                                                                                              The Minority Token Holders hereby agree that they shall neither directly nor indirectly assert any claims
+
+        Each Token Holder (each a "Minority Token Holder" and together the "Minority Token Holders"), by              against the Representative and waive any such claims in connection with any actions or omissions of
+
+        executing or acceding to this Token SHA, hereby appoints and instructs the Representative, or any             the Representative as per this Section 9. For the avoidance of doubt, the Parties agree and
+
+        replacement appointed in accordance with the below, to represent the Minority Token Holders (or their         acknowledge that the Ordinary SHA may provide for similar provisions and that the respective vote of
+
+        heirs, legal representative or administrator as the case may be) as regards the Shares, the rights as         minority shareholders shall take place and be considered as a separate vote.
+
+        shareholders of the Issuer and any rights under this Agreement, for the full term thereof, particularly to
+        perform all acts, exercise all rights and assume all obligations as set forth herein. The Representative      10 Term & Termination
+        will exercise such rights with the economic interest of the Minority Token Holders in mind.
+                                                                                                                      This Token SHA shall enter into force as of [date] and shall be in force for an initial fixed term expiring
+        The powers of the Representative shall include (but not be limited to) the right and entitlement to:          at midnight on 31 December 2033. Thereafter, this Token SHA shall continue to be in effect for
+
+            a) exercise and waive all and any rights relating to the represented Share Tokens and hereby in           successive periods of five years unless terminated by any Party upon twelve months' prior notice to all
+
+                 particular exercise any voting rights or exercise or waive any pre-emptive subscription rights       other Parties upon completion of the initial fixed term or any end of a successive period. Any termination
+
+                 pertaining to the represented Share Tokens;                                                          by a Party shall only be effective with respect to the respective Party and shall be without prejudice to
+                                                                                                                      the continued binding effect of this Token SHA for all other Parties.
+            b) exercise or waive any and all rights under this Agreement and hereby in particular any rights
+                                                                                                                      In case of termination of this Token SHA by any Party holding Share Tokens, in first priority the Issuer
+                 under 5 (Tag-Along) and 6 (Drag-Along).
+                                                                                                                      (to the extent permitted by law) and in second priority the other Parties have the option to purchase all
+            c) participate in negotiations with respect to a Tag-Along Event and Drag-Along Event (it being           Share Tokens of the terminating holder of Share Tokens during the entire notice period at 80% of Fair
+                 understood that no other Minority Token Holders other than the Representative shall contact or       Market Value. The "Fair Market Value" shall be determined based on the current price of the Share
+                 interact with Proposed Acquirer or Shareholders that do not qualify as Minority Token Holders        Token in the Open Trading, as of the date of the purchase offer. If no market price is available anymore
+                 in that respect);                                                                                    because the trading in the Open Trading has been halted, the Issuer, in its reasonable discretion,
+                                                                                                                      determines the Fair Market Value either based on (i) the last price in the Open Trading, or (ii) a
+            d) enter into, amend and/or terminate the Token SHA and any ancillary documents referred to in
+                                                                                                                      reasonable valuation method. In case the terminating holder of Share Tokens disagrees with the Fair
+                 the Token SHA to the extent permitted hereunder; or
+                                                                                                                      Market Value, it may request its binding and final determination , on the basis of a valuation using
+            e) confer all authorities, powers and rights which a holder of Share Tokens may generally exercise        methods customarily used at that time to establish the fair market value, by (i) in first priority either one
+                 in its capacity as a Shareholder.                                                                    of Ernst&Young, PriceWaterhouseCoopers, KPMG or Deloitte, as determined by the Issuer, or (ii),
+                                                                                                                      should none of Ernst&Young, PriceWaterhouseCoopers, KPMG or Deloitte be willing to accept such
+        Prior to exercising any rights, the Representative shall collect the majority opinion of all Minority Token
+                                                                                                                      mandate, with second priority by an audit firm with good reputation in Switzerland, as determined by
+        Holders and act accordingly. Upon receipt of the voting instruction request, Minority Token Holders shall
+                                                                                                                      the Issuer (as applicable, the "Expert"). In case the purchase option is not exercised, the terminating
+        have 7 calendar days to reply, or else be deemed non-participating to a vote, which shall not in any way
+                                                                                                                      Party is free to "burn" their tokens and demand a replacement of such shares issued in another form in
+        curtail the powers of the Representative with regard to those Shares represented. Notwithstanding the
+                                                                                                                      accordance with the Articles. The Issuer shall determine the form in which such shares shall be issued
+        foregoing, should any of the resolutions as per 9a) to e) above result in the individual Minority Token
+                                                                                                                      within its own discretion.
+
+
+                                                                                                    PAGE 13 OF 17                                                                                                PAGE 14 OF 17
+DocuSign Envelope ID: D4A7D8BE-3C35-4515-9A7D-E6ED675641D7
+                                                                                                    TOKEN SHA                                                                                                    TOKEN SHA
+
+
+        Ordinary Shares are excluded from the purchase option described above. In case of termination of this        12 Notifications
+        Token SHA by an Ordinary Shareholder, resulting purchase options, if any, are determined by the
+                                                                                                                     For notifications in accordance with this Token SHA, the notifying Party shall inform the Issuer, and the
+        provisions in the separate shareholder agreement between the Ordinary Shareholders.
+                                                                                                                     Issuer shall distribute the notification to all Parties latest within seven (7) calendar days by email in
+        This Token SHA terminates for a specific Party upon such Party ceasing to be a Shareholder, whereas          accordance with their entry in the shareholder registry (except to those that have opted out of
+        such cessation and release is without prejudice to any accrued rights and obligations of the relevant        notifications) as well as by making a respective blockchain-based announcement. In case of a Tag-
+        Party at the time of such cessation and release.                                                             Along or Drag-Along Event, the relevant Party shall provide the Issuer with all relevant information.
+                                                                                                                     However, the Issuer shall provide solely key terms to the Parties and provide further documentation
+        11 Amendments and extraordinary Termination                                                                  solely on request, subject to reasonable confidentiality undertakings by the recipient.
+
+        All Parties acknowledge and agree that:
+                                                                                                                     13 General Provisions
+            -   Parties together reaching the Key Decision Quorum of Shares bound to this Token SHA can
+                amend or terminate the SHA Smart Contract by migrating to a new smart contract; and                  13.1 Limitation of Liability
+            -   Parties together reaching the Key Decision Quorum of Shares bound to this Token SHA have             THE SHA SMART CONTRACT MAY BE USED BY A CERTAIN MAJORITY OF SHAREHOLDERS TO
+                the right to amend or terminate this Token SHA,                                                      ENFORCE A TRANSFER OF THE SHARE TOKENS FOR A PRICE THAT IS BELOW THE FAIR
+
+        provided, however, that the initiating Party shall notify the other Parties as set out in Section 12 about   MARKET VALUE OF THE SHARE TOKENS, OR TO AMEND OR OTHERWISE TERMINATE THE
+
+        the amendment or termination including its terms and proposed consummation, and, in case of a                SHA SMART CONTRACT AND THIS TOKEN SHA. THE SHA SMART CONTRACT WILL EXECUTE
+
+        Material Change (as defined below), if such initiating Party (or a Shareholder or the Issuer as agreed       SUCH TRANSACTIONS OF THE SHARE TOKENS REGARDLESS OF WHETHER THEY ARE IN
+
+        with the initiating Party) offers to the non-consenting Token Holders to purchase their Share Tokens at      COMPLIANCE WITH ANY APPLICABLE LAW, THIS TOKEN SHA OR ANY OTHER LEGAL
+
+        Fair Market Value determined by the Expert appointed by the Issuer within a period of 30 calendar days       OBLIGATIONS AND/OR RESTRICTIONS THAT MAY APPLY, AND SUCH TRANSACTION IS
+
+        from publication. In case of a Material Change, non-consenting Token Holders that do not exercise their      IRREVERSIBLE. NEITHER THE ISSUER NOR THE ORACLE HAVE THE TECHNICAL MEANS TO
+
+        sale option and provided that no Party exercises its call option in accordance with Section 10, are free     ENSURE COMPLIANCE WITH THIS TOKEN SHA AND ARE, TO THE MAXIMUM EXTENT
+
+        to terminate this Token SHA, burn their SHA Tokens and demand a replacement that is not bound to             PERMISSIBLE UNDER APPLICABLE LAW, NOT LIABLE FOR ANY DAMAGES AND/OR LOSSES
+
+        this Token SHA from the Issuer.                                                                              BY SHAREHOLDERS OUT OF OR IN CONNECTION WITH THE SHARE TOKENS.
+
+        A 'Material Change' means any amendment of any of the provisions of the SHA Smart Contract and/or            The Shareholders further confirm that they have taken note of the risk factors of the Share Tokens as
+
+        this Token SHA that disproportionately negatively affects any accrued rights of any other Parties or         set forth in the Registration Agreement.
+
+        impose any disproportionately greater liability or any more onerous obligation than in the current           Unless explicitly stated otherwise and except in cases where such exclusion is not permitted under
+        version. Any amendments in view of a Listing, including the replacement of the Share Tokens with             applicable law (such as in cases of willful misconduct and gross negligence, or for incorrect or
+        shares of a new holding company and customary lock-up periods, shall not constitute a Material               misleading statements relating to the content and functionality of the Share Tokens), all representations
+        Change.                                                                                                      and warranties with regard to the SHA Tokens, SHA Smart Contract, the Oracle and the Blockchain
+
+        In case of a termination or migration to a new contract, the current SHA Smart Contract and this Token       and any liability by the Issuer, the Representative and the Oracle, or any person acting on behalf of the
+
+        SHA cease to be binding on all Parties and all Token Holders are free to unwrap their Share Tokens           Issuer, the Representative and the Oracle with regard thereto, are herewith excluded.
+
+        (for the avoidance of doubt, this does not affect the validity of the Ordinary SHA to which the holders of
+                                                                                                                     13.2 Severability / Good Faith
+        Ordinary Shares remain bound). In such an event, the SHA Smart Contract is programmed to change
+        its name to reflect that it no longer reflects a shareholders' agreement. For the avoidance of doubt,        Should any part or provision of this Token SHA be held to be invalid by any competent court,
+        unwrapping the SHA Token after a successful migration does not necessarily yield the originally              governmental or administrative authority having jurisdiction, the other provisions of this Token SHA
+        wrapped Share Token, but could potentially also result in a new version of an SHA token bound to an          shall nonetheless remain valid. In this case, the Issuer shall dictate a substitute provision that best
+        updated version of this Token SHA and/or a new Share Token.                                                  reflects the economic intentions without being unenforceable and shall execute all agreements and
+
+
+
+
+                                                                                                 PAGE 15 OF 17                                                                                                 PAGE 16 OF 17
+DocuSign Envelope ID: D4A7D8BE-3C35-4515-9A7D-E6ED675641D7
+                                                                                                  TOKEN SHA
+
+
+        documents required in this connection. The same shall apply if and to the extent that this Token SHA
+        is found to contain any gaps or omissions.
+
+
+        13.3 Governing Law and Jurisdiction
+        This Token SHA shall be governed by and construed in accordance with the substantive laws of
+        Switzerland. Any dispute arising out of or in connection with this Agreement, including its conclusion,
+        validity, binding effect, amendment, breach, termination or rescission, shall be exclusively be referred
+        to the courts competent for the City of Zurich, Switzerland.
+
+
+
+
+                                                                                               PAGE 17 OF 17
+

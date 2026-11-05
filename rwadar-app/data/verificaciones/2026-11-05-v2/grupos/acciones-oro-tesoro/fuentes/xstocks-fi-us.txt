@@ -1,0 +1,167 @@
+xStocks - Tokenized Equities
+ xStocks are not available in the U.S. or to U.S. persons. Geo restrictions apply. Read Kraken's xStocks Risk Disclosure and the Base Prospectus and related Final Terms for more information.
+Products
+Partner Hub
+News
+Contact
+The Leading Network of Tokenized Equities.
+Capital markets shouldn't be fragmented across chains, venues, or user types. xStocks exists to unify them: The tokenized equity layer the onchain economy has been waiting for.See Latest News 
+Follow us
+LinkedIn
+X
+Telegram
+Setting the benchmark for liquidity across global markets
+$43B+
+Transaction Volume
+100+
+Integrated Platforms
+8 of the top 11
+Tokenized Equities*
+* By unique holders. Source: https://blog.kraken.com/product/xstocks/25-billion-in-total-transaction-volume
+100+ Stocks and ETFs
+Blue-Chip Equities.
+Tokenized and Onchain.
+xStocks brings the most traded U.S. stocks and ETFs onchain, activating recognizable, high-demand markets that drive real volume.
+From large-cap technology to global consumer brands, tokenized equities on xStocks brings the names users know into the platforms they trust. This isn't synthetic exposure or niche assets. These are the most liquid equities in the world tokenized for the onchain economy — 1-to-1 backed by the underlying, and plugged permissionlessly into crypto.View All Products 
+NFLXx
+Netflix xStock
+METAx
+Meta xStock
+HOODx
+Robinhood xStock
+COINx
+Coinbase xStock
+AMZNx
+Amazon xStock
+NVDAx
+NVIDIA xStock
+MRKx
+Merck xStock
+AAPLx
+Apple xStock
+AZNx
+AstraZeneca xStock
+MCDx
+McDonald's xStock
+TSLAx
+Tesla xStock
+MSFTx
+Microsoft xStock
+The market is moving
+Tokenized Equities
+Are Scaling Fast.
+No longer a demo, tokenization has moved from experimentation to infrastructure. Users increasingly expect:
+24/7 global market access
+Cross-chain mobility
+Composability with DeFi protocols
+Serve the onchain equity user
+Demand Is Global. Users Want Equities Onchain.
+Across regions and time zones, crypto-native users are already signaling what they want.
+"I want to hold stocks in my wallet - not in a brokerage account."
+"I want to hold stocks in my wallet - not in a brokerage account."
+"I don't want to move funds between platforms just to buy ETFs."
+"If it's tokenized, I want to use it in DeFi."
+"Why should I wait for market hours?"
+"Keep everything in one place: crypto and stocks."
+This demand isn't theoretical.
+It's active, and it's driving real transaction volume across venues.
+The old vs. the new
+Traditional Brokerage vs. xStocks.
+xStocks on Your Platform
+Traditional Brokerage
+Market Access
+24/7 onchain
+Limited hours
+Settlement
+Immediate
+T+1
+Custody
+Onchain, wallet compatible
+Broker controlled
+Portfolio Structure
+Unified crypto + equity liquidity
+Separate accounts
+DeFi Use
+Open and permissionless
+None
+Interoperability
+Multi-chain
+Siloed, traditional rails
+Market Access
+xStocks on Your Platform24/7 onchain
+Traditional BrokerageLimited hours
+Settlement
+xStocks on Your PlatformImmediate
+Traditional BrokerageT+1
+Custody
+xStocks on Your PlatformOnchain, wallet compatible
+Traditional BrokerageBroker controlled
+Portfolio Structure
+xStocks on Your PlatformUnified crypto + equity liquidity
+Traditional BrokerageSeparate accounts
+DeFi Use
+xStocks on Your PlatformOpen and permissionless
+Traditional BrokerageNone
+Interoperability
+xStocks on Your PlatformMulti-chain
+Traditional BrokerageSiloed, traditional rails
+The structural difference is clear.
+Trusted by leaders
+What our partners say.
+Showing quote from Kraken
+“xStocks is proving that tokenized equities aren’t a future concept. They’re a present reality scaling at record speed.”
+Mark Greenberg
+Chief Commercial Officer, Kraken
+“By listing tokenized equities and ETFs, we’re not just adding new products, we’re empowering our users with greater choice, deeper flexibility, and more control… xStocks was the clear choice.”
+Emily Bao
+Head of Spot, ByBit
+“This collaboration is a powerful step toward realizing the vision of internet capital markets and global, 24/7, permissionless access to the financial system.”
+Amelia Daly
+Head of Partnerships, Solana Foundation
+“The world is racing towards a Global Unified Market, where all assets, liquidity, and traders are onchain, 24/7. We're thrilled to be working with xStocks to bring this vision to life.”
+Kash Dhanda
+COO, Jupiter
+“TradFi and digital assets are no longer two separate worlds… seamless minting, redemption, and liquidity across fiat and onchain rails for tokenized equities today and more asset classes tomorrow.”
+Yoshi Yokokawa
+Co-Founder & CEO, Alpaca
+“We’re making it possible for regular people to access leading global stocks and ETFs, breaking down the legacy walls that have kept too many people out.”
+Ailona Tsik
+CMO, Alchemy Pay
+KrakenByBitSolanaJupiterAlpacaAlchemy
+xStocks Tokenized Equities
+Setting the benchmark for
+liquidity across global markets.See Latest News 
+Follow us
+LinkedIn
+X
+Telegram
+Discord
+Products
+Partner Hub
+News
+Contact
+Cookie Preferences
+Terms of Service
+Privacy Policy
+This website is provided for informational purposes only. xStocks are not available in the United States or to U.S. persons, and nothing on this website constitutes an offer to sell or a solicitation of an offer to buy any securities in the United States or in any jurisdiction where such offer or sale would be unlawful. xStocks are issued by Backed Assets (JE) Limited (a Jersey private limited company) and offered to eligible Kraken customers via Payward Digital Solutions Ltd. (“PDSL”), a company licensed to conduct digital asset business by the Bermuda Monetary Authority. In the European Union / European Economic Area, xStocks are offered to eligible customers via Payward Europe Digital Solutions (CY) Ltd. (“PEDLS-CY”), a Cyprus investment firm authorized and regulated under MiFID II. xStocks are not registered under the U.S. Securities Act and are not available in the United States or to U.S. persons. xStocks are also not currently available in the United Kingdom or in any other jurisdiction where their offer or distribution would be unlawful or would require regulatory authorization that has not been obtained. Neither PDSL, PEDLS-CY nor their respective affiliates provide investment advice and/or recommendations, and no communication, through any Kraken App or website or otherwise, should be construed as such. Individual investors should make their own decisions or seek professional independent advice if they are unsure as to the suitability / appropriateness of any investment for their circumstances or needs, including potential tax treatment. Investing in xStocks involves an element of risk. The value of an investment may go down as well as up, and past performance is not a reliable indicator of future results. Geo restrictions apply. Read Kraken’s xStocks Risk Disclosure at https://www.kraken.com/legal/xstocks as well as the Base Prospectus and related Final Terms for xStocks at https://assets.backed.fi/legal-documentation to learn more.
+by 
+© 2011–2026 Payward, Inc.
+Trading
+Kraken
+Kraken Pro
+NinjaTrader
+Breakout
+VIP
+API Trading
+Services
+Payward Services
+xStocks
+CF Benchmarks
+Reap
+Banking
+Krak
+Prime
+OTC
+Custody
+Asset Management
+Coming Soon

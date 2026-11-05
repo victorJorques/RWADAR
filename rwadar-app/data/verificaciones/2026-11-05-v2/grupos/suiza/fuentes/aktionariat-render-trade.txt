@@ -1,0 +1,142 @@
+URL: https://shares.aktionariat.com/trade
+Renderizado (Chromium): 2026-11-05T08:02:40Z
+
+tenant: {"company":"aktionariat"} - PROD
+English
+EN
+Sign In
+Home
+Secondary Trading
+Aktionariat AG Shares DAKS
+CHF 7.25
+1W
+1M
+6M
+1Y
+All
+Created with Highcharts 12.5.0 2 CHF 4 CHF 6 CHF 8 CHF
+Spread
+1.61%
+24h Vol
+CHF 0
+Market Cap
+CHF 12'928'657
+Bid/Ask
+6.10 / 6.20
+Order Book
+Price (ZCHF) Amount (DAKS) Total (ZCHF)
+7.20 1'000 7'200
+6.90 10 69
+6.80 40 272
+6.25 1'389 8'681.25
+6.20 356 2'207.2
+Spread: 0.10 (1.61%)
+6.10 10 61
+6.00 5 30
+5.00 100 500
+4.50 9 40.5
+4.00 1 4
+DIRECT FROM ISSUER
+Buy DAKS at 7.25 CHF · bank transfer or crypto
+Buy directly
+All Trades
+Date / Time Type Price Amount Total
+31 Oct 2026 / 11:56
+Direct Investment
+7.25 ZCHF
+1 DAKS
+7.25 ZCHF
+27 Oct 2026 / 15:39
+Direct Investment
+7.25 ZCHF
+100 DAKS
+725 ZCHF
+14 Oct 2026 / 03:01
+Direct Investment
+7.25 ZCHF
+100 DAKS
+725 ZCHF
+8 Oct 2026 / 21:06
+Direct Investment
+7.25 ZCHF
+69 DAKS
+500.25 ZCHF
+8 Oct 2026 / 05:56
+Direct Investment
+7.25 ZCHF
+1 DAKS
+7.25 ZCHF
+30 Sep 2026 / 19:57
+Secondary Trade
+6.25 ZCHF
+1 DAKS
+6.25 ZCHF
+22 Sep 2026 / 20:21
+Secondary Trade
+6.25 ZCHF
+1 DAKS
+6.25 ZCHF
+22 Sep 2026 / 20:06
+Secondary Trade
+4.50 ZCHF
+1 DAKS
+4.5 ZCHF
+20 Sep 2026 / 06:27
+Secondary Trade
+5.00 ZCHF
+583 DAKS
+2'915 ZCHF
+10 Sep 2026 / 20:00
+Secondary Trade
+5.50 ZCHF
+1 DAKS
+5.5 ZCHF
+Page 1 of 124
+1
+2
+3
+4
+5
+…
+124
+Buy
+Sell
+Number of Shares
+DAKS
+Limit Price
+ZCHF
+Order Summary
+1
+DAKS
+Matched instantly
+6.2
+ZCHF
+Fee (0%):
+0.00
+ZCHF
+Total Value:
+6.20
+ZCHF
+Register to Access Secondary Trading
+Aktionariat AG
+Terms of Use:
+This page is hosted by Aktionariat using technology licensed from Aktionariat. Some content is automatically compiled from other sources than Aktionariat and provided "AS IS" without further verification. These sources include the public trade registry, website users, and the Ethereum blockchain and related systems. Aktionariat assumes no responsibility for the accuracy of any of this data. All shareholder registration data is stored and processed in Switzerland by Aktionariat, which maintains the shareholder registry for Aktionariat. Shareholder registration data must by retained for ten years by law. Relevant shareholder registration data such as the current name and address is automatically synchronized with other issuers that use Aktionariat to maintain their shareholder registry.
+Direct Investment:
+The website may offer the possibility to directly buy securities issued by Aktionariat. Such offers constitute a primary offering by the issuer and are governed by the Financial Services Act
+in Switzerland, or equivalent laws for visitors of other countries. Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus in order to continue the offering.
+Secondary Trading:
+The website may offer the possibility to openly trade securities issued by Aktionariat using blockchain-based smart contracts to settle trades between buyers and sellers without counterparty risk. As the operator of this website, Aktionariat may charge a fee on trades. Neither being a shareholder nor performing individual trades constitute an ongoing business relationship between the shareholder and the operator under the AML act. The secondary trading facilitated herein is considered a non-commercial trading facility operated by Aktionariat under the Financial Market Infrastructure Act
+and is therefore not subject to prudential supervision. As a consequence, buyers and sellers are not protected by the financial market conduct rules applicable to the trading on supervised venues.
+©2026 Aktionariat (site content) and Aktionariat
+(site template).
+All rights reserved.
+Terms of Service
+Privacy Policy
+en
+de-ch
+fr
+it
+English
+Deutsch
+Français
+Italiano
