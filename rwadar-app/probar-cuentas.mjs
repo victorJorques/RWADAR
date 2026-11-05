@@ -10,6 +10,7 @@
    ===================================================================== */
 import { PGlite } from '@electric-sql/pglite';
 import fs from 'fs';
+import { cuentaSeed } from './pruebas-soporte.mjs';
 
 const db = await new PGlite();
 const n = async (s, p = []) => (await db.query(s, p)).rows;
@@ -98,17 +99,18 @@ paso('borrar la cuenta no deja perfil, ni vigilancia, ni avisos',
 
 /* --- el registro público, tras los dos descartes que hace la prueba -
    La prueba tira a Lofty y a Midas del radar para disparar los avisos,
-   así que aquí NO deben quedar 26: deben quedar 24. Y las dos que ha
+   así que aquí deben quedar dos menos que en 02_seed.sql. Y las dos que ha
    descartado van sin fuente a propósito, porque lo que se comprueba es
    que el guardián editorial las caza. Si esto diera cero, sería que el
    invariante no vigila nada. */
-paso('el radar baja a 24 tras los dos descartes de la prueba',
-  (await n('select count(*)::int c from radar_publico'))[0].c === 24);
+const seed = cuentaSeed();
+paso(`el radar baja de ${seed.enRadar} a ${seed.enRadar - 2} tras los dos descartes de la prueba`,
+  seed.enRadar > 2 && (await n('select count(*)::int c from radar_publico'))[0].c === seed.enRadar - 2);
 paso('el guardián detecta las 2 descartadas sin fuente que crea la prueba',
   (await n('select count(*)::int c from descartadas_sin_fuente'))[0].c === 2);
 /* Las fuentes de 02_seed.sql (el volcado de producción), sin fijar un número. */
 const fuentesSeed = (fs.readFileSync('db/02_seed.sql', 'utf8').match(/^insert into fuentes /gm) || []).length;
-paso(`las 4 descartadas reales conservan sus ${fuentesSeed} fuentes de 02_seed.sql`,
+paso(`las ${seed.descartadas} descartadas reales conservan sus ${fuentesSeed} fuentes de 02_seed.sql`,
   fuentesSeed > 0 && (await n('select count(*)::int c from fuentes'))[0].c === fuentesSeed);
 
 console.log('=== PRUEBAS DE CUENTAS ===');

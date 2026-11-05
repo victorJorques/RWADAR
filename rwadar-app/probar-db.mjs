@@ -1,5 +1,6 @@
 import {PGlite} from '@electric-sql/pglite';
 import fs from 'fs';
+import { cuentaSeed } from './pruebas-soporte.mjs';
 const db=await new PGlite();
 const ok=[],fail=[];
 const paso=(n,c)=>c?ok.push(n):fail.push(n);
@@ -20,8 +21,10 @@ await db.exec(fs.readFileSync('db/04_rls.sql','utf8'));
 await db.exec(fs.readFileSync('db/06_archax_republic.sql','utf8'));
 console.log('El núcleo 01-06 se aplica sin error.\n');
 
-paso('26 en el radar',(await n("select count(*)::int c from plataformas where estado='en_radar'"))[0].c===26);
-paso('4 descartadas',(await n("select count(*)::int c from plataformas where estado='descartada'"))[0].c===4);
+/* Las cuentas del radar salen de 02_seed.sql (volcado de producción), no de un número fijo. */
+const seed=cuentaSeed();
+paso(`${seed.enRadar} en el radar, como 02_seed.sql`,seed.enRadar>0&&(await n("select count(*)::int c from plataformas where estado='en_radar'"))[0].c===seed.enRadar);
+paso(`${seed.descartadas} descartadas, como 02_seed.sql`,seed.descartadas>0&&(await n("select count(*)::int c from plataformas where estado='descartada'"))[0].c===seed.descartadas);
 /* Tantas fuentes como líneas «insert into fuentes» tenga 02_seed.sql, que es el volcado de
    producción (volcar-seed.js): así la cuenta sigue al catálogo sin fijar un número. */
 const fuentesSeed=(fs.readFileSync('db/02_seed.sql','utf8').match(/^insert into fuentes /gm)||[]).length;
@@ -32,7 +35,7 @@ paso(`las ${fuentesSeed} fuentes documentales de 02_seed.sql`,
 paso('ninguna descartada sin fuente',(await n('select count(*)::int c from descartadas_sin_fuente'))[0].c===0);
 paso('toda fuente apunta a una descartada',
   (await n("select count(*)::int c from fuentes f join plataformas p on p.id=f.plataforma_id where p.estado<>'descartada'"))[0].c===0);
-paso('vista radar_publico devuelve 26',(await n('select count(*)::int c from radar_publico'))[0].c===26);
+paso(`vista radar_publico devuelve ${seed.enRadar}`,(await n('select count(*)::int c from radar_publico'))[0].c===seed.enRadar);
 paso('RLS activo en plataformas',
   (await n("select relrowsecurity from pg_class where relname='plataformas'"))[0].relrowsecurity===true);
 const pol=await n("select tablename, count(*)::int c from pg_policies group by tablename order by tablename");
@@ -65,7 +68,7 @@ paso('guarda el estado anterior',camb[0]?.estado_anterior==='en_radar');
 const avisos=await n('select * from avisos_pendientes');
 paso('genera 1 aviso para quien la seguia',avisos.length===1);
 paso('el aviso lleva el token del dispositivo',avisos[0]?.token_push==='ExpoTok[123]');
-paso('el radar publico baja a 25',(await n('select count(*)::int c from radar_publico'))[0].c===25);
+paso(`el radar publico baja a ${seed.enRadar-1}`,(await n('select count(*)::int c from radar_publico'))[0].c===seed.enRadar-1);
 
 // Nadie sigue a RealT: no debe generar aviso
 await db.query(`update plataformas set nombre=nombre where id=$1`,[realt]);

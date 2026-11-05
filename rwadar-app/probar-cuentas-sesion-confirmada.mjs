@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
-import { alta, baseCompleta, filas, informe, sesion } from './pruebas-soporte.mjs';
+import { alta, baseCatalogoHistorico, filas, informe, sesion } from './pruebas-soporte.mjs';
 
 const raiz = path.dirname(fileURLToPath(import.meta.url));
 process.chdir(raiz);
@@ -24,7 +24,8 @@ const precondicionRechazada = async db => {
 };
 const cuenta = async (db, consulta, parametros = []) => Number((await filas(db, consulta, parametros))[0]?.n);
 
-const db = await baseCompleta();
+// Importa lotes del catálogo de antes del 04/11/2026 (ARTEX en el radar): base con la copia fija del seed.
+const db = await baseCatalogoHistorico();
 try {
   await db.exec('alter default privileges grant all on tables to anon, authenticated');
   for (const ruta of ['db/24_catalogo_publico_verificado.sql', 'db/25_servicios_editoriales_solo_lectura.sql',

@@ -20,6 +20,8 @@ const { leerBloquesCatalogo } = require('./rwadar-fichas.js');
 // 02/11/2026 un lote coherente puede tener más o menos fichas que 49.
 const CATALOGO_REAL = leerBloquesCatalogo(fs.readFileSync(path.join(raiz, 'rwadar-site', 'assets', 'catalogo-publico-20261022.js'), 'utf8'));
 const N_OFERTAS = CATALOGO_REAL.ofertas.length, N_PLATAFORMAS = CATALOGO_REAL.plataformas.length;
+// Descartadas: también salen del catálogo (04/11/2026, ARTEX pasa a Descartadas y son 5).
+const N_DESCARTADAS = CATALOGO_REAL.fuera.length;
 const COL_REAL = { ...CATALOGO_REAL.ofertas[0].colecciones_esperadas };
 const {
   ARCHIVOS_PUBLICABLES,
@@ -696,8 +698,8 @@ const jsCerrado = js.replace('const SERVICIOS_USUARIO_REMOTOS=true;', 'const SER
 const css = lee('.' + estilos[0][1]);
 new Function(js);
 prueba('el JavaScript externo compila', true);
-prueba('el pre-render contiene las 26 fichas', (html.match(/class="abrir"/g) || []).length === 26);
-prueba('el pre-render contiene los 4 descartes', (html.match(/class="fila"/g) || []).length === 4);
+prueba(`el pre-render contiene las ${N_PLATAFORMAS} fichas`, (html.match(/class="abrir"/g) || []).length === N_PLATAFORMAS);
+prueba(`el pre-render contiene los ${N_DESCARTADAS} descartes`, (html.match(/class="fila"/g) || []).length === N_DESCARTADAS);
 probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, privacidad, transparenciaComercial, paraEmpresas });
 prueba('todos los formularios fallan cerrados bajo form-action none',
   [...html.matchAll(/<form\b([^>]*)>/gi)].every(m => !/\baction\s*=/i.test(m[1])));
@@ -1406,7 +1408,7 @@ prueba('Academy reúne el aprendizaje sin repetir sus accesos en Buscar e Inicio
 prueba('escritorio coloca ofertas y plataformas antes de la transparencia y Academy sin duplicar nodos',
   /const ordenEscritorio=\[portada,emisiones,herramienta,barra,resultados,metodo,fuera,academia\]/.test(codigoShellMovil) &&
   /ordenEscritorio\.forEach\(nodo=>panelBuscar\.appendChild\(nodo\)\)/.test(codigoShellMovil));
-prueba('los resultados móviles muestran seis fichas y conservan las 26 en el DOM',
+prueba(`los resultados móviles muestran seis fichas y conservan las ${N_PLATAFORMAS} en el DOM`,
   /id="plataformasResultados"/.test(html) &&
   /id="movilResultadosMas"[^>]*data-accion="alternar-resultados"[^>]*aria-controls="grid"/.test(html) &&
   /#grid:not\(\.movil-resultados-abiertos\)>\.ficha:nth-child\(n\+7\)/.test(cssMovil) &&
@@ -1482,12 +1484,16 @@ const botonesEmpresaVisual = etiquetasInicio.filter(e => e[1].toLowerCase() === 
   (atributoHTML(e[2], 'class') || '').split(/\s+/).includes('empresa-visual__abrir'));
 const imagenesEmpresaVisual = etiquetasInicio.filter(e => e[1].toLowerCase() === 'img' &&
   (atributoHTML(e[2], 'class') || '').split(/\s+/).includes('empresa-visual__imagen'));
-prueba('las 26 empresas usan portadas WebP editoriales propias sin imagen externa y con hash verificable',
-  rutasPortada.length === 26 && new Set(rutasPortada).size === 26 &&
-  entradasPortadas.length === 26 && portadasPorEmpresa.size === 26 &&
-  portadasGeneradas.length === 26 && portadasOficiales.length === 0 &&
-  new Set(entradasPortadas.map(x => x?.sha256)).size === 26 &&
-  new Set(entradasPortadas.map(x => x?.archivo)).size === 26 &&
+/* Cada empresa del radar tiene su portada; el manifiesto de portadas puede conservar la de
+   una plataforma que pasó a Descartadas (ARTEX, 04/11/2026): no se enseña en ninguna lista. */
+const nombresDescartadas = new Set(CATALOGO_REAL.fuera.map(f => f.n));
+prueba(`las ${N_PLATAFORMAS} empresas usan portadas WebP editoriales propias sin imagen externa y con hash verificable`,
+  rutasPortada.length === N_PLATAFORMAS && new Set(rutasPortada).size === N_PLATAFORMAS &&
+  portadasPorEmpresa.size === entradasPortadas.length && portadasOficiales.length === 0 &&
+  portadasGeneradas.length === entradasPortadas.length &&
+  entradasPortadas.every(x => plataformasFuente.some(p => p.n === x?.empresa) || nombresDescartadas.has(x?.empresa)) &&
+  new Set(entradasPortadas.map(x => x?.sha256)).size === entradasPortadas.length &&
+  new Set(entradasPortadas.map(x => x?.archivo)).size === entradasPortadas.length &&
   rutasPortada.every((ruta, i) => {
     const plataforma = plataformasFuente[i];
     const entrada = portadasPorEmpresa.get(plataforma.n);
@@ -1504,8 +1510,8 @@ prueba('las 26 empresas usan portadas WebP editoriales propias sin imagen extern
       bytes.length > 1024 && bytes.subarray(0,4).toString('ascii') === 'RIFF' &&
       bytes.subarray(8,12).toString('ascii') === 'WEBP';
   }));
-prueba('el distintivo móvil coincide exactamente con las 26 portadas generadas del manifiesto',
-  nombresGeneradasMovil.length === 26 && new Set(nombresGeneradasMovil).size === 26 &&
+prueba('el distintivo móvil coincide exactamente con las portadas generadas del manifiesto',
+  nombresGeneradasMovil.length === portadasGeneradas.length && new Set(nombresGeneradasMovil).size === nombresGeneradasMovil.length &&
   [...nombresGeneradasMovil].sort().join('|') === portadasGeneradas.map(x => x.empresa).sort().join('|'));
 prueba('las portadas explican qué muestran y conservan el encuadre editorial elegido',
   entradasPortadas.every(entrada =>
@@ -1515,7 +1521,7 @@ prueba('las portadas explican qué muestran y conservan el encuadre editorial el
     /(?:no|ni) implica afiliación, patrocinio (?:ni|o) recomendación de inversión/i.test(entrada?.uso || '') &&
     Number(entrada?.revisionPortada) >= 6));
 prueba('cada portada móvil es el botón accesible que abre su ficha y carga la imagen de forma eficiente',
-  botonesEmpresaVisual.length === 26 && imagenesEmpresaVisual.length === 26 &&
+  botonesEmpresaVisual.length === N_PLATAFORMAS && imagenesEmpresaVisual.length === N_PLATAFORMAS &&
   botonesEmpresaVisual.every((b, i) => atributoHTML(b[2], 'type') === 'button' &&
     atributoHTML(b[2], 'data-abrir') === String(i) &&
     atributoHTML(b[2], 'aria-label') === `Abrir la ficha de ${plataformasFuente[i].n}${
@@ -1730,8 +1736,8 @@ const existeRutaArmazon = ruta => {
 };
 prueba('la interfaz crítica sigue existiendo sin precache ni fallback offline',
   recursosCriticos.every(ruta => existeRutaArmazon(ruta)) && !/\bARMAZON\b/.test(sw));
-prueba('las 26 portadas siguen disponibles sin quedar guardadas por el worker',
-  rutasPortada.length === 26 && rutasPortada.every(existeRutaArmazon) && !/cache\.put\(/.test(sw));
+prueba(`las ${N_PLATAFORMAS} portadas siguen disponibles sin quedar guardadas por el worker`,
+  rutasPortada.length === N_PLATAFORMAS && rutasPortada.every(existeRutaArmazon) && !/cache\.put\(/.test(sw));
 prueba('la PWA es standalone de forma estándar además de declarar compatibilidad Apple',
   manifest.id === '/' && manifest.scope === '/' && manifest.start_url === '/' &&
   manifest.display === 'standalone' && manifest.display_override?.includes('standalone') &&
@@ -1807,8 +1813,8 @@ prueba('la analítica se versiona en todas las páginas y el worker no la persis
   analiticaPublicada && [htmlPublicado, privacidadPublicada, transparenciaComercialPublicada, paraEmpresasPublicada]
     .every(pagina => pagina.includes(analiticaPublicada)) &&
   !/caches\.open\(|cache\.(?:put|addAll|match)\(|cloudflareinsights/.test(swPublicado));
-prueba('el paquete desplegable incluye las 26 portadas y su manifiesto de procedencia',
-  portadasPublicadas.length === 26 &&
+prueba(`el paquete desplegable incluye las ${N_PLATAFORMAS} portadas y su manifiesto de procedencia`,
+  portadasPublicadas.length === entradasPortadas.length &&
   archivosPublicados.includes('plataformas/fuentes.json') &&
   rutasPortada.every(ruta => portadasPublicadas.includes(ruta.slice(1))));
 const editorialesPublicadas = archivosPublicados.filter(x=>x.startsWith('ofertas-editoriales/'));
@@ -1883,7 +1889,7 @@ const simulacionPublicador = vm.runInNewContext(
   { vm, script: js, scriptCatalogo: jsCatalogo, URL, console, require }, { timeout: 20000 });
 prueba(`el simulador real conserva URL HTTPS, las ${N_PLATAFORMAS} plataformas y las ${N_OFERTAS} referencias documentadas`,
   vm.runInContext("new URL('https://example.test/fuente').protocol", simulacionPublicador.contexto) === 'https:' &&
-  (simulacionPublicador.capturado.grid.match(/class="abrir"/g) || []).length === 26 &&
+  (simulacionPublicador.capturado.grid.match(/class="abrir"/g) || []).length === N_PLATAFORMAS &&
   (simulacionPublicador.capturado.emiLista.match(/data-oferta-detalle=/g) || []).length === N_OFERTAS &&
   // La fila móvil (ESPEC-FINAL §3) esconde «Fuente revisada el» junto a «Revisa · N avisos»: va en su propio span.
   (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}"><span class="emi-ver-pre">Fuente revisada el <\/span>/g) || []).length === N_OFERTAS);
@@ -1963,7 +1969,7 @@ const cargaSnapshotLocalParaPruebas = js.slice(js.indexOf('async function cargar
   const p=pestanaCatalogo({codigo:jsPublicado}),c=p.contexto;
   prueba('el JS público reducido activa Buscar sin fixture ni controles locales',
     !p.obtiene('escaparateBusqueda').hidden&&p.obtiene('escaparateLocalAviso').hidden&&p.obtiene('emiTipoFiltros').hidden&&
-    vm.runInContext('!MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL===null&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length===4',c)&&
+    vm.runInContext('!MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL===null&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length==='+N_DESCARTADAS,c)&&
     (p.escuchas.get('emiBuscar:input')||[]).length===1);
   p.obtiene('emiBuscar').value='Klagenfurt';p.escuchas.get('emiBuscar:input')[0]();
   prueba('Buscar público reducido encuentra la ficha de reventa y cambia de colección',
@@ -1973,13 +1979,13 @@ const cargaSnapshotLocalParaPruebas = js.slice(js.indexOf('async function cargar
   vm.runInContext('activarBusquedaOfertas();activarBusquedaOfertas()',c);
   prueba('reinicializar Buscar público no duplica eventos ni sustituye el catálogo',
     (p.escuchas.get('emiBuscar:input')||[]).length===1&&
-    vm.runInContext('P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length===4&&ESCAPARATE_LOCAL===null',c));
+    vm.runInContext('P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length==='+N_DESCARTADAS+'&&ESCAPARATE_LOCAL===null',c));
   p.obtiene('emiBuscar').value='';p.escuchas.get('emiBuscar:input')[0]();
   vm.runInContext("emiColeccion='principales'",c);
   p.escuchas.get('emiFiltros:click')[0]({target:{closest:()=>({getAttribute:()=> 'Tesoro y fondos'})}});
   p.obtiene('emiOrden').value='min';p.escuchas.get('emiOrden:change')[0]();
   prueba('filtro y orden públicos reducidos funcionan con el catálogo íntegro sin fixture',
-    vm.runInContext("emiCat==='Tesoro y fondos'&&emiOrden==='min'&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length===4",c)&&
+    vm.runInContext("emiCat==='Tesoro y fondos'&&emiOrden==='min'&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length==="+N_DESCARTADAS,c)&&
     p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="spiko-letras-del-tesoro-euro"')&&
     !p.obtiene('emiLista').innerHTML.includes('data-oferta-detalle="boss-info"'));
   const recarga=pestanaCatalogo({codigo:jsPublicado});
@@ -2030,11 +2036,11 @@ for(const fallo of ['incompleto','transporte']){
   const p=pestanaCatalogo();
   const puntos=[...p.obtiene('radarHero').innerHTML.matchAll(/<g class="blip"[^>]*data-x="([\d.]+)" data-y="([\d.]+)"/g)].map(x=>({x:Number(x[1]),y:Number(x[2])}));
   // El círculo de selección mide9+0.6 de trazo; el halo llega a3.4x3.4.
-  prueba('las26plataformas quedan dentro del radar con punto, anillo y halo de hover/foco completos',
-    puntos.length===26&&puntos.every(({x,y})=>Math.hypot(x-200,y-200)+11.56+2<=140.1));
+  prueba(`las ${N_PLATAFORMAS} plataformas quedan dentro del radar con punto, anillo y halo de hover/foco completos`,
+    puntos.length===N_PLATAFORMAS&&puntos.every(({x,y})=>Math.hypot(x-200,y-200)+11.56+2<=140.1));
   vm.runInContext('renderMatrix(P)',p.contexto);
   prueba('la matriz conserva todas las plataformas y separa el acceso sin comprobar sin asignar permiso histórico',
-    (p.obtiene('matrix').innerHTML.match(/data-abrir=/g)||[]).length===26&&/<th>Sin comprobar<\/th>/.test(p.obtiene('matrix').innerHTML));
+    (p.obtiene('matrix').innerHTML.match(/data-abrir=/g)||[]).length===N_PLATAFORMAS&&/<th>Sin comprobar<\/th>/.test(p.obtiene('matrix').innerHTML));
   p.contexto.resumenPrueba={minimo:{texto:'No documentado en euros'},accesoEspana:{texto:'Sin comprobar'},salida:{texto:'No documentada'},
     costes:{texto:'Gestión: 0,6 %; Éxito: 0 %',referencias:[
       {etiqueta:'Gestión',valor:'0,6 %',fuente:'https://gestor.example/gestion',fechaConsulta:'2026-10-21',fechaDato:'2026-10-20'},
@@ -2051,8 +2057,8 @@ for(const fallo of ['incompleto','transporte']){
   c.fetch=async(url,opciones)=>{llamadas.push({url,opciones});return {ok:true,json:async()=>
     JSON.parse(JSON.stringify(url.includes('manifest.json')?activosEditoriales.manifiesto:c.snapshot))};};
   const resultado=await vm.runInContext('('+cargaSnapshotLocalParaPruebas+')()',c);
-  prueba(`snapshot local V2 muestra las ${N_PLATAFORMAS}/${N_OFERTAS}/4 y las colecciones de su manifiesto con arrays de identidad conservada`,resultado===true&&
-    vm.runInContext("P===arraysAntes.plataformas&&EMI===arraysAntes.ofertas&&FUERA===arraysAntes.descartes&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length===4&&ESCAPARATE_LOCAL===null&&['principales','secundario','en_camino'].every(k=>EMI.filter(o=>o.coleccion===k).length===EMI[0].colecciones_esperadas[k])",c));
+  prueba(`snapshot local V2 muestra las ${N_PLATAFORMAS}/${N_OFERTAS}/${N_DESCARTADAS} y las colecciones de su manifiesto con arrays de identidad conservada`,resultado===true&&
+    vm.runInContext("P===arraysAntes.plataformas&&EMI===arraysAntes.ofertas&&FUERA===arraysAntes.descartes&&P.length===P[0].plataformas_esperadas&&EMI.length===EMI[0].ofertas_esperadas&&FUERA.length==="+N_DESCARTADAS+"&&ESCAPARATE_LOCAL===null&&['principales','secundario','en_camino'].every(k=>EMI.filter(o=>o.coleccion===k).length===EMI[0].colecciones_esperadas[k])",c));
   prueba('snapshot local V2 abre fichas normales y conserva las fechas y metadatos del lote',
     vm.runInContext('Boolean(ofertaDetalleLocalPorSlug(EMI[0].slug))&&P[0].verificacionLocal.verificadoEl===snapshot.fuente.revision&&EMI.every(o=>o.version_esquema===2&&o.revisionId===P[0].revisionId)',c));
   prueba('la carga aislada solo pide snapshot e imágenes editoriales con credenciales omitidas',
@@ -3211,7 +3217,7 @@ try {
   prueba('el endpoint local entrega por defecto el snapshot publicable V2 completo sin caché',
     escaparateRespuesta.status===200 && escaparateRespuesta.headers.get('cache-control')==='no-store' &&
     escaparate.versionEsquema===2 && escaparate.lote==='snapshot-publicable'&&escaparate.preparado===false&&
-    escaparate.plataformas?.length===N_PLATAFORMAS&&escaparate.ofertas?.length===N_OFERTAS&&escaparate.descartes?.length===4&&
+    escaparate.plataformas?.length===N_PLATAFORMAS&&escaparate.ofertas?.length===N_OFERTAS&&escaparate.descartes?.length===N_DESCARTADAS&&
     escaparate.ofertas.every(o=>o.revisionId===escaparate.plataformas[0].revisionId)&&!escaparate.secundario&&!escaparate.exclusionesOfertas);
   const imagenNombre = activosEditoriales.fichas[0].archivo;
   const imagenRespuesta = await fetch(`http://127.0.0.1:${puerto}/ofertas-editoriales/${imagenNombre}`);

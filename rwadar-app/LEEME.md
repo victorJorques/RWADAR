@@ -2,8 +2,9 @@
 
 Esta carpeta contiene el esquema reproducible, los instaladores y las pruebas
 locales. El contrato fresh-install actual termina en la migración 22 y debe
-producir exactamente **26 plataformas en radar, 4 descartadas y ninguna
-descartada sin fuente**.
+producir exactamente **las plataformas en radar y descartadas que trae
+`db/02_seed.sql`** (el volcado de producción de `volcar-seed.js`; las pruebas
+las cuentan ahí, sin fijar un número) **y ninguna descartada sin fuente**.
 
 ## Estado de producción · 20 de agosto de 2026
 

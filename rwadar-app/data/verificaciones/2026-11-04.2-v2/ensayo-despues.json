@@ -1,0 +1,112 @@
+{
+  "tipo": "ensayo_despues_de_aplicar",
+  "ejecutadoEl": "2026-11-05T00:21Z",
+  "como": "Copia aparte de la rama en su último commit (git clone en una carpeta temporal). comprobar-entrega.mjs --exportar=DIR aplica el SQL en PGlite sobre la cadena de producción y guarda lo que leería un visitante por REST; ensayo-rest-simulado.cjs sirve esos datos a sincronizar.js y volcar-seed.js. Nada sale a la red ni toca Supabase.",
+  "pasos": [
+    {
+      "orden": "node -r ensayo-rest-simulado.cjs rwadar-app/sincronizar.js",
+      "salida": "Sincronizado desde Supabase: 25 plataformas verificadas, 5 descartadas y 24 ofertas clasificadas. rwadar.csv regenerado: 30 filas."
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-04.2-v2/despues-de-aplicar.mjs",
+      "salida": "rwadar-fichas-manifiesto.js: la ficha de ARTEX pasa a fuera-del-radar/ · borrada rwadar-site/plataformas/artex-global-markets.html · transparencia.json: revisión y lote nuevos (repetido: «Nada que cambiar: ya estaba hecho.»)"
+    },
+    {
+      "orden": "node -r ensayo-rest-simulado.cjs rwadar-app/volcar-seed.js",
+      "salida": "02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13 fuentes. (diff: solo la línea de ARTEX, ahora descartada, y su fuente)"
+    },
+    {
+      "orden": "node rwadar-fichas.js",
+      "salida": "Archivos actualizados: 26 (la ficha nueva de ARTEX en fuera-del-radar, el mapa del sitio y las 24 fichas de oferta, que llevan la revisión y plataformas_esperadas en sus datos)"
+    },
+    {
+      "orden": "node rwadar-editorial-source/ofertas/transparencia.mjs",
+      "salida": "Transparencia escrita: 24 ofertas con transparencia"
+    },
+    {
+      "orden": "RWADAR_CHROMIUM=/usr/bin/google-chrome node rwadar-editorial-source/og.mjs",
+      "salida": "og.png: 78675 bytes (25 puntos, 2 en Materias primas)"
+    },
+    {
+      "orden": "npm test",
+      "salida": "exit 0 · base de datos 27 scripts (886 comprobaciones), 30 SQL y mapa 11/11 · web 593 · pre-render «25 fichas, 5 descartadas y 24 emisiones» · fichas 71 · precarga 32 · móvil 409 + 2 omitidas · acceso 146 · herramientas sin diferencias"
+    }
+  ],
+  "archivosQueCambian": [
+    "24 fichas de oferta (rwadar-site/ofertas/*.html: revisión y plataformas_esperadas en sus datos)",
+    "M rwadar-app/db/02_seed.sql",
+    "M rwadar-editorial-source/ofertas/transparencia.json",
+    "M rwadar-fichas-manifiesto.js",
+    "M rwadar-site/assets/catalogo-publico-20261022.js",
+    "A rwadar-site/fuera-del-radar/artex-global-markets.html",
+    "M rwadar-site/index.html",
+    "M rwadar-site/og.png",
+    "D rwadar-site/plataformas/artex-global-markets.html",
+    "M rwadar-site/rwadar.csv",
+    "M rwadar-site/sitemap.xml",
+    "rwadar-site/index.html: además de las cifras (25 y 5), el pre-render de siempre (textos que dependen de la fecha, como «cifras válidas N días más»)"
+  ],
+  "web": {
+    "escritorio": {
+      "franja": "25 Plataformas / 5 Descartadas",
+      "leyenda": "25 plataformas en el radar",
+      "fichasEnElRadar": 25,
+      "artexEnElRadar": false,
+      "descartadas": [
+        "ARTEX Global Markets · Sin blockchain",
+        "Domoblock",
+        "Goldfinch",
+        "RealT",
+        "Toucan Protocol"
+      ]
+    },
+    "movil": {
+      "descartadas": 5,
+      "primera": "ARTEX Global Markets · Sin blockchain, con su motivo y «Comprobado en» la página de preguntas frecuentes"
+    },
+    "ingles": {
+      "leyenda": "25 platforms on the radar"
+    },
+    "fichaNueva": {
+      "ruta": "/fuera-del-radar/artex-global-markets",
+      "titulo": "ARTEX Global Markets · Plataforma descartada · RWAdar",
+      "estado": "Sin blockchain",
+      "fuentes": [
+        "https://www.artexgm.com/faq"
+      ]
+    }
+  },
+  "workerSobreLosArchivosConstruidos": [
+    "/plataformas/artex-global-markets → 301 Location: /fuera-del-radar/artex-global-markets · cache-control: no-store · pide a Pages: nada",
+    "/plataformas/artex-global-markets.html → 301 Location: /fuera-del-radar/artex-global-markets · cache-control: no-store · pide a Pages: nada",
+    "/fuera-del-radar/artex-global-markets → 200 · cache-control: - · pide a Pages: /fuera-del-radar/artex-global-markets · <h1>: ARTEX Global Markets · Plataforma descartada",
+    "/plataformas/addx → 200 · cache-control: - · pide a Pages: /plataformas/addx · <h1>: ADDX",
+    "/plataformas/no-existe → 404 · cache-control: no-store · pide a Pages: nada"
+  ],
+  "comprobarPublicado": "con la página borrada en Git, .github/comprobar-publicado.mjs clasifica /plataformas/artex-global-markets como trasladada y exige 301 a /fuera-del-radar/artex-global-markets; las otras 29 fichas retiradas siguen exigiendo el 404 del worker",
+  "repetidoTrasCorregirElMotivo": {
+    "ejecutadoEl": "2026-11-05T00:45Z",
+    "por": "El corrector independiente pidió cambiar «Es un mercado regulado (MTF)» por un texto que atribuye el MTF a la empresa. Se repitió el ensayo con el motivo nuevo en otra copia aparte (git archive del commit 7b40ed2), con los datos que exporta comprobar-entrega.mjs --exportar.",
+    "pasos": [
+      "sincronizar.js: 25 plataformas verificadas, 5 descartadas y 24 ofertas; rwadar.csv de 30 filas",
+      "despues-de-aplicar.mjs: comprueba que ARTEX está en Descartadas con el motivo nuevo y su fuente; mueve la ficha y anota la revisión",
+      "volcar-seed.js: 25 en el radar, 5 descartadas, 13 fuentes",
+      "rwadar-fichas.js: 26 archivos actualizados (como en el primer ensayo)",
+      "transparencia.mjs: 24 ofertas",
+      "npm test: exit 0 · 30 SQL · web 593 · pre-render «25 fichas, 5 descartadas y 24 emisiones» · fichas 71 · precarga 32 · móvil 409 + 2 omitidas · acceso 146"
+    ],
+    "motivoNuevoEn": [
+      "rwadar-site/fuera-del-radar/artex-global-markets.html",
+      "rwadar-site/assets/catalogo-publico-20261022.js",
+      "rwadar-site/rwadar.csv",
+      "rwadar-app/db/02_seed.sql"
+    ],
+    "motivoViejoEnAlgunaParte": false,
+    "navegador": {
+      "escritorio": "franja 25 / 5, «25 plataformas en el radar», el motivo nuevo en Descartadas",
+      "fichaNueva": "/fuera-del-radar/artex-global-markets: «Sin blockchain», el motivo nuevo y la página de preguntas frecuentes como fuente",
+      "movil": "5 descartadas; ARTEX primera, con el motivo nuevo y «Comprobado en» su página de preguntas frecuentes"
+    },
+    "noRepetido": "og.png (el motivo no sale en la imagen) y el worker (no depende del motivo; comprobar-entrega.mjs lo vuelve a probar)"
+  }
+}

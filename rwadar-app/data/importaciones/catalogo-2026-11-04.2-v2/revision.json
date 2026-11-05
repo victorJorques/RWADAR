@@ -1,0 +1,38 @@
+{
+  "versionEsquema": 2,
+  "revisionId": "723968ce-00f7-7f42-b3e3-6c7f401b8f89",
+  "hash": "723968ce00f77f42b3e36c7f401b8f8919eaa5dbc35b782f15fa40f5c5337585",
+  "revisionAnterior": "cf79e4a4-f828-96ce-681b-ae69c3d1b81b",
+  "hashRevisionAnterior": "cf79e4a4f82896ce681bae69c3d1b81b7ad80d29866c6e301b0212123b5d1712",
+  "revisionAnteriorComprobadaEnRemoto": true,
+  "lecturaPublica": "rwadar-app/data/verificaciones/2026-11-04.2-v2/lectura-publica/",
+  "etiqueta": "2026-11-04.2",
+  "fechaRadar": "2026-11-03",
+  "revisionDocumental": "2026-11-04",
+  "plataformas": 25,
+  "ofertas": 24,
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 3
+  },
+  "vigenciaDias": 7,
+  "nuevasAltas": 0,
+  "retiradas": 0,
+  "plataformasDescartadas": [
+    "artex-global-markets"
+  ],
+  "descartadas": 5,
+  "tablasPublicas": [
+    "public.plataformas",
+    "public.fuentes"
+  ],
+  "efectosDeDisparadores": [
+    "public.plataformas.actualizada_el",
+    "public.cambios_estado: una fila («ARTEX Global Markets sale del radar»)",
+    "public.avisos_correo / public.avisos_push: un aviso por quien vigile ARTEX con los avisos activados (si hay alguien)"
+  ],
+  "estado": "borrador",
+  "aplicadoEnRemoto": false,
+  "publicacionWeb": false
+}

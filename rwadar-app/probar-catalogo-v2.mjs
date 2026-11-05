@@ -4,7 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import vm from 'node:vm';
 import { createRequire } from 'node:module';
-import { baseCompleta, filas, sesion } from './pruebas-soporte.mjs';
+import { baseCatalogoHistorico, filas, sesion } from './pruebas-soporte.mjs';
 
 const require = createRequire(import.meta.url);
 const { cargarFuentesLocales, construirSqlImportacion, validarLotePublico, validarLotePublicoV2,
@@ -51,7 +51,8 @@ for (const alterar of [
   assert.throws(() => construirSqlImportacion(invalida));
 }
 
-const db = await baseCompleta();
+// Importa lotes del catálogo de antes del 04/11/2026 (ARTEX en el radar): base con la copia fija del seed.
+const db = await baseCatalogoHistorico();
 const temporal = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-v2-'));
 try {
   await db.exec('alter default privileges grant all on tables to anon, authenticated');
@@ -252,6 +253,26 @@ try {
     'un lote coherente más pequeño sustituye al anterior');
   assert.throws(() => manifiestoMinimoFuente('const P=[(()=>{throw Error("no ejecutar");})()]; const EMI=[];',
     MANIFIESTO_CATALOGO_V2), /JSON|Unexpected token/);
+
+  // Los descartes los cuenta el catálogo (04/11/2026: ARTEX pasa a Descartadas y son 5):
+  // se acepta otra cantidad documentada; vacío, sin fuente, con motivo corto, repetido o
+  // también en el radar, no, y la copia anterior se conserva.
+  const conDescartes = lista => async url => ({ ok: true, json: async () => url.includes('catalogo_plataformas_publicas_v2')
+    ? plataformas : url.includes('catalogo_ofertas_publicas_v2') ? ofertas : lista });
+  const cinco = [...descartes, { ...structuredClone(descartes[1]), nombre: 'Descarte 4',
+    fuentes: [{ url: 'https://example.test/4', titulo: 'Fuente 4' }] }];
+  await sincronizar({ jsPath, csvPath: path.join(temporal, 'sitio.csv'), fetchFn: conDescartes(cinco),
+    versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true });
+  const conCinco = fs.readFileSync(jsPath, 'utf8');
+  assert.equal(vm.runInNewContext(conCinco + '\nFUERA.length;'), cinco.length, 'una cantidad distinta de descartes documentados se acepta');
+  for (const malos of [[], cinco.map((d, i) => i ? d : { ...d, fuentes: [] }),
+    cinco.map((d, i) => i ? d : { ...d, fuentes: [{ url: 'http://example.test/0', titulo: 'HTTP' }] }),
+    cinco.map((d, i) => i ? d : { ...d, motivo_descarte: 'Motivo corto.' }), [...cinco, cinco[0]],
+    [...cinco, { ...structuredClone(cinco[1]), nombre: plataformas[0].slug }]]) {
+    await assert.rejects(sincronizar({ jsPath, csvPath: path.join(temporal, 'sitio.csv'), fetchFn: conDescartes(malos),
+      versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true }), /descarte/);
+    assert.equal(fs.readFileSync(jsPath, 'utf8'), conCinco, 'un descarte sin documentar no reemplaza la copia anterior');
+  }
 
   const vacio = async () => {
     for (const rol of ['anon', 'authenticated']) {

@@ -126,6 +126,11 @@
           [/^(.+): ver (\d+) referencias$/,(m,n,total)=>n+': view '+total+' references'],
           [/^Mostrar (principales|secundario|en camino|en_camino|próximas) (\d+)$/,(m,g,n)=>'Show '+({principales:'main offers',secundario:'secondary market','en camino':'upcoming',en_camino:'upcoming','próximas':'upcoming'}[g])+' '+n],
           [/^Registrar inversión en (.+)$/,(m,n)=>'Record investment in '+n],
+          // Cifras del radar con su número del catálogo (04/11/2026: ARTEX pasa a Descartadas y el
+          // diccionario tenía «26» y «4» fijos).
+          [/^(\d+) plataformas en el radar$/,(m,n)=>n+' platforms on the radar'],
+          [/^Ofertas y (\d+) plataformas contrastadas$/,(m,n)=>'Offers and '+n+' reviewed platforms'],
+          [/^(\d+) descartadas con el motivo y sus fuentes$/,(m,n)=>n+' exclusions with reasons and sources'],
           [/^(\d+) de (\d+) (fichas?|plataformas?|ofertas?)(.*)$/,(m,n,total,tipo,resto)=>n+' of '+total+' '+({ficha:'entry',fichas:'entries',plataforma:'platform',plataformas:'platforms',oferta:'offer',ofertas:'offers'}[tipo])+t(resto)],
           [/^(\d+) (fichas?|plataformas?|ofertas?|referencias|días?|lecciones)(.*)$/,(m,n,tipo,resto)=>n+' '+({ficha:'entry',fichas:'entries',plataforma:'platform',plataformas:'platforms',oferta:'offer',ofertas:'offers',referencias:'references','día':'day','días':'days',lecciones:'lessons'}[tipo])+t(resto)],
           [/^(Consultada|Consultado|Comprobada|Comprobado|Revisada|Revisado) (?:el )?(.+)$/,(m,tipo,fecha)=>(/^Consult/.test(tipo)?'Checked on ':/^Comprob/.test(tipo)?'Verified on ':'Reviewed on ')+fecha],

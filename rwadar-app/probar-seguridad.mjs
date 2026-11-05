@@ -1,6 +1,6 @@
 /* Pruebas de regresión de la frontera de confianza de RWAdar. */
 import {
-  baseCompleta, reaplicaSeguridad, filas, sesion, alta, informe, MIGRACIONES,
+  baseCompleta, reaplicaSeguridad, filas, sesion, alta, informe, MIGRACIONES, cuentaSeed,
 } from './pruebas-soporte.mjs';
 
 const db = await baseCompleta();
@@ -38,9 +38,11 @@ paso('14_seguridad_integral.sql se puede reaplicar', true);
 
 const recuentos = await filas(db,
   "select estado::text, count(*)::int n from plataformas group by estado order by estado");
-paso('el registro reproducible contiene 26 en radar y 4 descartadas',
-  recuentos.find((r) => r.estado === 'en_radar')?.n === 26
-  && recuentos.find((r) => r.estado === 'descartada')?.n === 4);
+const seed = cuentaSeed();
+paso(`el registro reproducible contiene ${seed.enRadar} en radar y ${seed.descartadas} descartadas, como 02_seed.sql`,
+  seed.enRadar > 0 && seed.descartadas > 0
+  && recuentos.find((r) => r.estado === 'en_radar')?.n === seed.enRadar
+  && recuentos.find((r) => r.estado === 'descartada')?.n === seed.descartadas);
 paso('ninguna descartada carece de fuente',
   (await filas(db, 'select count(*)::int n from descartadas_sin_fuente'))[0].n === 0);
 

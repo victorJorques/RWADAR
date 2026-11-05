@@ -101,6 +101,15 @@ const sqlMigracion = (nombre) => {
 
 export const leerMigracion = sqlMigracion;
 
+/* Cuántas plataformas y fuentes trae db/02_seed.sql, que es el volcado de producción
+   (volcar-seed.js). Las pruebas comparan con esto en vez de fijar 26 y 4: cuando un
+   descarte cambia el radar (ARTEX, 04/11/2026), la cuenta sigue al catálogo. */
+export const cuentaSeed = (seed = fs.readFileSync(path.join('db', '02_seed.sql'), 'utf8')) => {
+  const estado = e => (seed.match(new RegExp(`^insert into plataformas \\([^)]*\\) values \\('[a-z0-9-]+','(?:[^']|'')*','${e}'`, 'gm')) || []).length;
+  return { enRadar: estado('en_radar'), descartadas: estado('descartada'),
+    fuentes: (seed.match(/^insert into fuentes /gm) || []).length };
+};
+
 export const baseConMigraciones = async (migraciones = MIGRACIONES) => {
   const db = await new PGlite();
   // Supabase y los lectores web y móvil fechan en UTC. Con la zona local,
@@ -115,6 +124,13 @@ export const baseConMigraciones = async (migraciones = MIGRACIONES) => {
 };
 
 export const baseCompleta = async () => baseConMigraciones();
+
+/* Para las pruebas que importan lotes del catálogo de antes del 04/11/2026 (llevan a ARTEX
+   en el radar): la misma instalación, pero con la copia fija de 02_seed.sql de entonces
+   (db/pruebas/02_seed_radar_26.sql). Las demás pruebas usan el 02_seed.sql vigente. */
+export const SEED_RADAR_26 = 'pruebas/02_seed_radar_26.sql';
+export const baseCatalogoHistorico = async () =>
+  baseConMigraciones(MIGRACIONES.map((m) => (m === '02_seed.sql' ? SEED_RADAR_26 : m)));
 
 export const reaplicaSeguridad = async (db) => {
   await db.exec(sqlMigracion('14_seguridad_integral.sql'));

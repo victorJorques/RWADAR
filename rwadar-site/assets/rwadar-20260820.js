@@ -3641,7 +3641,7 @@ function validarEscaparateLocalV2(d){
  if(!d||d.versionEsquema!==2||typeof d.preparado!=='boolean'||
     !d.fuente||d.fuente.url!=='https://rwadar.pages.dev/'||!fechaLocalValida(d.fuente.revision)||
     !(d.preparado?/^\d{4}-\d{2}-\d{2}(?:\.\d{1,2})?-v2$/.test(d.lote||''):d.lote==='snapshot-publicable')||
-    !Array.isArray(d.plataformas)||!Array.isArray(d.ofertas)||!Array.isArray(d.descartes)||d.descartes.length!==4)
+    !Array.isArray(d.plataformas)||!Array.isArray(d.ofertas)||!Array.isArray(d.descartes)||!d.descartes.length)
   throw new Error('cabecera de snapshot local V2 no válida');
  /* El servidor entrega la misma forma camelCase que el JS público. La
     adaptamos al contrato REST probado para validar tipos, fuentes y lote. */
@@ -3656,7 +3656,8 @@ function validarEscaparateLocalV2(d){
  const ofertas=ofertasRemotas.map(o=>ofertaCatalogoRemota(o,fecha));
  if(plataformas.some(p=>!fechaLocalValida(p.ver)||p.ver>fecha))throw new Error('fecha canónica de plataforma no válida');
  const descartes=d.descartes.map(descarteDesdeEscaparate);
- if(new Set(descartes.map(x=>x.n)).size!==4||descartes.some(x=>!x.fuentes.length))
+ /* Cuántas descartadas hay lo dice el catálogo (04/11/2026, ARTEX pasa a Descartadas). */
+ if(new Set(descartes.map(x=>x.n)).size!==descartes.length||descartes.some(x=>!x.fuentes.length))
   throw new Error('descartes del snapshot local sin fuentes o duplicados');
  return {plataformas,ofertas,descartes,fecha,preparado:d.preparado,lote:d.lote};
 }
@@ -3774,7 +3775,9 @@ async function alDia(){
   }
   const fallo=respuestas.slice(0,3).find(r=>r.status==='rejected');if(fallo)throw fallo.reason;
   const [r,f,e]=respuestas.map(r=>r.value);
-  if(!Array.isArray(f)||f.length!==4)throw new Error('descartes públicos incompletos');
+  // Cuántas descartadas hay lo dice el catálogo (04/11/2026: ARTEX pasa a Descartadas y son 5);
+  // vacío no vale, cada una con alguna fuente, y descarteRemoto exige su etiqueta y su motivo.
+  if(!Array.isArray(f)||!f.length||f.some(x=>!Array.isArray(x&&x.fuentes)||!x.fuentes.length))throw new Error('descartes públicos incompletos');
   let fecha,nP,nE;
   try{
    fecha=validarLoteCatalogoRemotoV2(r,e);
@@ -5256,7 +5259,7 @@ const Movil = (function(){
  const cabEtiqueta=document.getElementById('movilCabeceraEtiqueta');
  const cabTitulo=document.getElementById('movilCabeceraTitulo');
  const cabSub=document.getElementById('movilCabeceraSub');
- const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||'26';
+ const total=(document.getElementById('s1')&&document.getElementById('s1').textContent.trim())||String(P.length);
  const textos={
   inicio:['RWAdar','Inicio','Novedades y por dónde empezar'],
   buscar:['Explorar RWAdar','Ofertas','Cada una con su fuente y su fecha'],

@@ -196,3 +196,43 @@ test('la revalidación de una copia de conservación (304) también da 404, y la
     assert.deepEqual(pedidas, [ruta], ruta);
   }
 });
+
+test('una plataforma que cambia de carpeta redirige con 301 a la ficha que sí está en la lista', async () => {
+  // Como tras descartar ARTEX (04/11/2026): su ficha pasa de plataformas/ a fuera-del-radar/.
+  const worker = await compilar(['ofertas/viva.html', 'plataformas/sigue.html', 'fuera-del-radar/movida.html',
+    'plataformas/vuelve.html'], 'traslado');
+  for (const [ruta, destino] of [
+    ['/plataformas/movida', '/fuera-del-radar/movida'], ['/plataformas/movida.html', '/fuera-del-radar/movida'],
+    ['/plataformas/movida/', '/fuera-del-radar/movida'], ['//plataformas/movida', '/fuera-del-radar/movida'],
+    ['/plataformas/mov%69da', '/fuera-del-radar/movida'], ['/plataformas/movida?x=1', '/fuera-del-radar/movida?x=1'],
+    ['/fuera-del-radar/vuelve', '/plataformas/vuelve'], ['/fuera-del-radar/vuelve.html', '/plataformas/vuelve'],
+  ]) {
+    for (const method of ['GET', 'HEAD']) {
+      const { pedidas, env } = assetsDePrueba();
+      const r = await worker.fetch(new Request(BASE_WEB + ruta, { method }), env, CTX);
+      assert.equal(r.status, 301, `${method} ${ruta}`);
+      assert.equal(r.headers.get('location'), destino, `${method} ${ruta}`);
+      assert.equal(r.headers.get('cache-control'), 'no-store', ruta);
+      assert.equal(r.headers.get('x-robots-tag'), null, ruta);
+      assert.equal(r.headers.get('x-frame-options'), 'DENY', ruta);
+      assert.deepEqual(pedidas, [], `${ruta}: no pide nada a ASSETS (ni su copia de conservación)`);
+    }
+  }
+  // Sin ficha en la otra carpeta, o con la ficha aún en su sitio, nada cambia.
+  for (const ruta of ['/plataformas/no-esta', '/fuera-del-radar/no-esta', '/ofertas/movida', '/plataformas/MOVIDA',
+    '/plataformas/movida.webp']) {
+    const { pedidas, env } = assetsDePrueba();
+    const r = await worker.fetch(new Request(BASE_WEB + ruta), env, CTX);
+    assert.notEqual(r.status, 301, ruta);
+    assert.ok(!pedidas.includes('/fuera-del-radar/movida'), ruta);
+  }
+  for (const ruta of ['/plataformas/sigue', '/fuera-del-radar/movida', '/plataformas/vuelve']) {
+    const { pedidas, env } = assetsDePrueba();
+    const r = await worker.fetch(new Request(BASE_WEB + ruta), env, CTX);
+    assert.equal(r.status, 200, ruta);
+    assert.deepEqual(pedidas, [ruta], ruta);
+  }
+  const { env } = assetsDePrueba();
+  const post = await worker.fetch(new Request(BASE_WEB + '/plataformas/movida', { method: 'POST' }), env, CTX);
+  assert.notEqual(post.status, 301, 'solo GET y HEAD');
+});
