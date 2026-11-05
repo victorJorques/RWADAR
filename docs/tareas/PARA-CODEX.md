@@ -52,7 +52,8 @@ nada publicado, sin EAS.** Plan, decisiones y pasos de activación:
   ExportedHandler'»), y el comprobador posterior a publicar habría fallado
   siempre en la vista previa.
 - **Pruebas (al cerrar):** `npm test` en verde: web 619, acceso 201, móvil
-  467 + 2 omitidas, avisos 150, el resto de la base sin fallos. El worker
+  472 + 2 omitidas, avisos 175, el resto de la base sin fallos. Guardián de
+  OTA de la 1.4.1: `ok:true`. El worker
   compilado arranca en workerd (Miniflare) y da 303/404/200 donde toca.
   Capturas en local con el arnés `rwadar-acceso/probar-worker-local.mjs`.
 - **Copias:** `copia-seguridad.sh` añade `rwadar_novedades`. La cartera
