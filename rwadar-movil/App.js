@@ -2077,8 +2077,8 @@ const e = StyleSheet.create({
   ordenOfertasEtiqueta: { ...T.etiqueta, color: C.tx3, marginBottom: 2 },
   ordenOfertasChips: { maxHeight: 50 },
   chipOrden: { minHeight: UI.tactil, justifyContent: 'center', marginRight: 8 },
-  chipDiana: { minHeight: UI.tactil, justifyContent: 'center', marginRight: 8 },
-  chipOrdenCara: { marginRight: 0 },
+  chipDiana: { minHeight: UI.tactil, minWidth: UI.tactil, justifyContent: 'center', marginRight: 8 },
+  chipOrdenCara: { marginRight: 0, justifyContent: 'center' },
 
   ficha: {
     backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
