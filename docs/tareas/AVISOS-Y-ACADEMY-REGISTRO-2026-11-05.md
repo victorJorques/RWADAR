@@ -127,6 +127,12 @@ digan lo mismo. Cambiar una sola palabra obliga a crear una versión nueva.
   (`web`/`app`).
 - Si ya hay preferencias, los metadatos no se vuelven a leer, para que una baja
   no se deshaga.
+- **Solo correos de confirmación enviados con la casilla activa:** además, el
+  disparador exige que `auth.users.confirmation_sent_at` sea posterior a
+  `configuracion.casilla_activada_el`. Un alta hecha antes de activar la
+  casilla (su correo era el antiguo, sin el aviso) y confirmada después no da
+  permiso. Si falta ese dato, tampoco. Se comprueba con una cuenta propia en el
+  paso 4.
 - **Barrera en la base:** el disparador solo lee los metadatos si
   `configuracion.casilla_activa` está encendido. Nace apagado y se enciende en
   el paso 4 (`30_avisos_registrados_activar_casilla.sql`), junto con la
@@ -181,9 +187,16 @@ Por eso:
 
 ### 5. Notificaciones en la app
 
-- **Avisos dentro de la app** (lista «Avisos» en Inicio y en Perfil). Llegan
-  por OTA a la 1.4.1 y no necesitan permiso del sistema. Muestran los anuncios
+- **Avisos dentro de la app** (tarjeta «Avisos» en Inicio: enseña 3 y «Ver
+  todos» despliega los demás; Perfil solo tiene los interruptores). Llegan por
+  OTA a la 1.4.1 y no necesitan permiso del sistema. Muestran los anuncios
   publicados y la bienvenida.
+- **Cerrar sesión sin conexión:** si no se puede quitar el token, la clave se
+  conserva y se vuelve a intentar en la siguiente salida, desactivación o
+  «Borrar datos» de esa misma cuenta (solo su sesión puede quitarlo). Mientras
+  tanto el móvil puede recibir avisos generales, que no llevan datos
+  personales; si otra cuenta registra ese móvil, pasa a ser suyo, y si no, la
+  limpieza de 180 días lo borra.
 - **Notificaciones push del sistema.** Necesitan el APK 1.4.2: la 1.4.1
   bloquea `POST_NOTIFICATIONS` y no lleva Firebase. Transición:
   1. Primero, la OTA con los avisos internos a la 1.4.1.
@@ -429,6 +442,10 @@ producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
   - el contenido de las lecciones se comprueba en `rwadar-publicado/` antes de
     subir;
   - prueba local del comprobador contra el `_worker.js` compilado.
+  - **Límite conocido:** la precarga ya no puede comparar con producción los
+    bytes de las lecciones (sin sesión dan 303). Comprueba su estructura en la
+    base sellada (`comprobarLeccionesPublicadas`); el texto de una lección solo
+    cambia por el flujo normal desde `main`.
 - **Privacidad:** se cambia en dos momentos.
   - *Al cerrar la Academy:* `privacidad.html:55` y la finalidad del correo
     (`:230`) pasan a decir que la Academy es con cuenta. Se añade a las
