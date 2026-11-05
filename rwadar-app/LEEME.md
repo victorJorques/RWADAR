@@ -241,12 +241,15 @@ Preparada y probada en local; **no aplicada**. Contrato:
   (Brevo) y push (Expo). Va después de 22, 24-26, el refuerzo de sesión, 28,
   28_REVERTIR y 29. Se aplica en el SQL Editor con una copia hecha antes,
   **nunca** con `supabase db push` (subiría también la 27).
-- Todo nace **apagado**. Reaplicar la 30 vuelve a apagarlo todo y quita el
-  reloj, como la 22. Cada paso necesita permiso expreso de Víctor:
+- Todo nace **apagado**, también la casilla del alta (`casilla_activa`: sin
+  ella, los metadatos del alta no dan permiso). Reaplicar la 30 vuelve a
+  apagarlo todo y quita el reloj, como la 22. Cada paso necesita permiso
+  expreso de Víctor: `30_avisos_registrados_activar_casilla.sql` (con la
+  plantilla de Auth ya puesta; no envía nada ni crea reloj),
   `30_avisos_registrados_activar_correo.sql` (exige `BREVO_API_KEY` y
   `RWADAR_REMITENTE` en Vault) y `30_avisos_registrados_activar_push.sql`
-  (`EXPO_ACCESS_TOKEN` opcional). Crean un único reloj `rwadar-novedades`
-  cada 5 minutos que solo llama a `rwadar_novedades.procesar()`.
+  (`EXPO_ACCESS_TOKEN` opcional). Estos dos crean un único reloj
+  `rwadar-novedades` cada 5 minutos que solo llama a `rwadar_novedades.procesar()`.
 - Apagar: `30_avisos_registrados_apagar.sql`; `fallo_cerrado.sql` también lo
   apaga. Comprobar: `30_avisos_registrados_verificar.sql` (solo lee; pasa
   apagado y encendido).

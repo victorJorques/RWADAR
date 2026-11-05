@@ -118,7 +118,11 @@ digan lo mismo. Cambiar una sola palabra obliga a crear una versión nueva.
   `{{ if .Data.avisos_novedades }}`: «Al confirmar activas también los avisos
   de novedades. Si no lo pediste, no confirmes o date de baja en el primer
   correo».
-- La casilla no se enseña hasta que esa plantilla esté puesta.
+- La casilla no se enseña hasta que esa plantilla esté puesta. Y la base no
+  hace caso de los metadatos hasta que se aplica
+  `30_avisos_registrados_activar_casilla.sql` (`casilla_activa = true`, paso 4
+  de la activación, justo después de poner la plantilla). Antes, quien escriba
+  `avisos_novedades` a mano en un alta no queda apuntado.
 - Se guardan la fecha de alta, la fecha del permiso, la versión y el canal
   (`web`/`app`).
 - Si ya hay preferencias, los metadatos no se vuelven a leer, para que una baja
@@ -234,8 +238,8 @@ hacia `auth.users`, para que `borrar_mi_cuenta` funcione.
 
 | Tabla | Para qué |
 |---|---|
-| `configuracion` | Fila única. Interruptores `correo_habilitado`, `push_habilitado` y `ofertas_automaticas`, los tres `false` al instalar, con `correo_activado_el` y `push_activado_el`. También `version_consentimiento = 'novedades-v1-2026-11-05'`, `texto_consentimiento_es` y `texto_consentimiento_en`. |
-| `preferencias` | Una fila por cuenta: `usuario_id`, `novedades`, `aceptado_el`, `version`, `origen` (`alta`/`perfil`), `canal` (`web`/`app`), `alta_el`, `baja_token` (`gen_random_uuid()`, único), `baja_el` y `actualizado_el`. |
+| `configuracion` | Fila única. Interruptores `correo_habilitado`, `push_habilitado` y `ofertas_automaticas`, los tres `false` al instalar, con `correo_activado_el` y `push_activado_el`. `casilla_activa`, también `false` al instalar: sin ella, los metadatos del alta no dan permiso. También `version_consentimiento = 'novedades-v1-2026-11-05'`, `texto_consentimiento_es` y `texto_consentimiento_en`. |
+| `preferencias` | Una fila por cuenta: `usuario_id`, `novedades`, `aceptado_el`, `version`, `origen` (`alta`/`perfil`), `canal` (`web`/`app`), `alta_el`, `baja_token` (`gen_random_uuid()`, único), `baja_el` y `actualizado_el`. Más `bienvenida_correo_el` y `bienvenida_push_el`: cuándo se encoló cada bienvenida. Con la marca puesta no se vuelve a encolar. |
 | `anuncios` | `id`, `tipo` (`ofertas`, `actualizacion` o `novedad`), `clave` única, `estado` (`retenido` o `publicado`), `titulo` (3-90 caracteres), `texto` (3-400), `enlace` y `revision_id`. Fechas: `creado_el`, `publicado_el`, `correo_repartido_el` y `push_repartido_el`. Título y texto sin caracteres de control. El enlace debe cumplir `^https://rwadar\.pages\.dev(/[A-Za-z0-9._~%-]+)*/?([?#][A-Za-z0-9._~%=&-]*)?$` y tener 200 caracteres como mucho. |
 | `dispositivos` | Clave `token`, con formato `^Expo(nent)?PushToken\[[A-Za-z0-9_-]{16,64}\]$`. Más `usuario_id`, `plataforma` (`android`/`ios`) y fechas. Hasta 5 por cuenta. El último que registra un token se lo queda, y se borran los push pendientes de ese token. **No** reutiliza `public.dispositivos`, que sigue cerrada. |
 | `correos` | Cola: `usuario_id`, `tipo` (`bienvenida` o `anuncio`), `anuncio_id`, estado, idempotencia, petición, mensaje del proveedor, error y fechas. Una bienvenida por cuenta; un correo por cuenta y anuncio. |
@@ -251,21 +255,27 @@ hacia `auth.users`, para que `borrar_mi_cuenta` funcione.
 
 | Cuándo | Qué hace |
 |---|---|
-| Al confirmar el correo: `after insert or update of email_confirmed_at on auth.users`, solo si pasa de vacío a fecha (o la cuenta nace confirmada) y `is_anonymous is not true` | Crea las preferencias. El permiso, solo en el UPDATE y con las condiciones del punto 3. Si `correo_habilitado`, encola la bienvenida. |
+| Al confirmar el correo: `after insert or update of email_confirmed_at on auth.users`, solo si pasa de vacío a fecha (o la cuenta nace confirmada) y `is_anonymous is not true` | Crea las preferencias. El permiso, solo en el UPDATE, con `casilla_activa` y con las condiciones del punto 3. Si `correo_habilitado` y la cuenta aún no tiene `bienvenida_correo_el`, pone la marca y encola la bienvenida. |
 | Al aprobar el catálogo: `avisar_ofertas_nuevas`, `after update of estado on rwadar_catalogo.revisiones` | Su nombre va antes que `fijar_publicacion_v2` en orden alfabético, así que todavía ve el puntero viejo. Compara los `slug` de la nueva revisión V2 aprobada con los de `publicacion_v2.revision_id` de ese momento. Si no hay puntero o no hay altas, no hace nada. Si hay altas, inserta el anuncio del día (`on conflict (clave) do nothing`), retenido o publicado según `ofertas_automaticas`. **No reparte nada.** |
 
 **Reparto y envío: `rwadar_novedades.procesar()`.**
 
 - Es la única función que llama el reloj `rwadar-novedades`, cada 5 minutos.
   El reloj solo lo crean los scripts de activación.
-- **Reparte** los anuncios `publicado` no repartidos y creados después de
-  `correo_activado_el` (o de `push_activado_el`):
+- **Reparte** los anuncios `publicado` no repartidos y **publicados** después
+  de `correo_activado_el` (o de `push_activado_el`). Cuenta
+  `coalesce(publicado_el, creado_el)`: un retenido creado antes de activar y
+  publicado después también sale.
   - correo: a cada cuenta confirmada con `novedades = true` y versión vigente;
   - push: a cada dispositivo de esas cuentas.
 - **Envía y recoge los resultados** como 22 y 23: pg_net, Vault, dos fases e
   idempotencia.
   - Correo con Brevo: `BREVO_API_KEY` y `RWADAR_REMITENTE`, HTML escapado,
-    `Idempotency-Key` y `contactPixelTrackingConsent: false`.
+    `Idempotency-Key` y `contactPixelTrackingConsent: false`. Un 400 con
+    `duplicate_parameter` o `duplicate_request` cuenta como aceptado (Brevo ya
+    lo tenía). El nombre exacto de la cabecera de idempotencia, ese código y
+    si `List-Unsubscribe` llega al buzón se confirman en la prueba real del
+    paso 5 de la activación.
   - Push con Expo: canal `novedades`, `data: {tipo, destino}` con `destino` ∈
     `inicio`, `buscar`, `academy`, sin datos personales. `getReceipts` lee los
     resultados y `DeviceNotRegistered` borra el token.
@@ -277,12 +287,22 @@ hacia `auth.users`, para que `borrar_mi_cuenta` funcione.
   - quién envía (RWAdar, con enlace al aviso legal y la privacidad);
   - por qué lo recibe;
   - la baja (enlace y `mailto:`).
-- **Limpieza:** colas terminadas (también las bienvenidas, que se recuerdan
-  con una marca en preferencias para no repetirse), a los 90 días;
-  dispositivos sin actualizar, a los 180. La app renueva el registro de su
-  móvil una vez al día mientras las notificaciones estén activas.
-- **Copias de seguridad:** `copia-seguridad.sh` incluye `rwadar_novedades`
-  (y `rwadar_cuentas_privadas`).
+- **Limpieza (`limpiar()`, dentro de `procesar()`):**
+  - colas terminadas, a los 90 días, también las bienvenidas. No se repiten:
+    la marca `bienvenida_correo_el`/`bienvenida_push_el` vive en preferencias
+    y se va con la cuenta;
+  - dispositivos sin actualizar, a los 180. La app volverá a llamar a
+    `registrar_aviso_push` una vez al día, lo que renueva `actualizado_el`;
+  - `procesar()` limpia también con todo apagado.
+  - **El reloj no cambia.** `rwadar-novedades` solo existe tras activar un
+    canal; antes de la primera activación y después de apagar no hay reloj y
+    no se limpia nada. Con todo apagado no sale ningún aviso, pero la API
+    sigue registrando móviles: esos no caducan hasta que vuelva a haber reloj
+    o alguien ejecute `select rwadar_novedades.procesar();` a mano.
+- **Copias de seguridad:** `copia-seguridad.sh` incluye `rwadar_novedades`.
+  `rwadar_cuentas_privadas` (cartera, ya en producción) sigue fuera: su tabla
+  `carteras` lleva RLS forzado y podría hacer fallar la copia, que también hace
+  «Aplicar catálogo». Incluirla es una decisión aparte, tras comprobarlo.
 
 **Funciones para la app y la web.**
 
@@ -294,8 +314,9 @@ hacia `auth.users`, para que `borrar_mi_cuenta` funcione.
 |---|---|
 | `public.estado_mis_avisos() → jsonb` | Devuelve `{novedades, version, aceptado_el, version_vigente, texto_es, texto_en, dispositivos, correo_activo, push_activo}`. Si no hay fila, valores por defecto. |
 | `public.configurar_avisos_novedades(p_activar boolean, p_version text, p_canal text) → jsonb` | Para activar, `p_version` debe ser la vigente. Crea la fila si falta y devuelve lo mismo que la anterior. |
-| `public.registrar_aviso_push(p_token text, p_plataforma text) → boolean` | Aplica el formato y el límite de 5. Si es el primer dispositivo de la cuenta y `push_habilitado`, encola la bienvenida una sola vez por cuenta. |
+| `public.registrar_aviso_push(p_token text, p_plataforma text) → boolean` | Aplica el formato y el límite de 5. Si `push_habilitado` y la cuenta aún no tiene `bienvenida_push_el`, pone la marca y encola la bienvenida: una sola vez por cuenta (si se quita el móvil antes de que salga, no se vuelve a encolar). Volver a llamarla con el mismo token renueva `actualizado_el`; la app lo hará una vez al día. |
 | `public.quitar_aviso_push(p_token text) → boolean` | Quita un token propio. |
+| `public.mi_aviso_push_registrado(p_token text) → boolean` | Dice si ese token sigue registrado **en la cuenta de la sesión**; nunca mira los de otras. Sirve a la app para saber si debe volver a registrar su móvil (la base lo borra a los 180 días sin renovar, con `DeviceNotRegistered` o al pasar de 5). |
 | `public.mis_avisos_recientes(p_limite int default 20) → setof jsonb` | `p_limite` va de 1 a 50. Devuelve los anuncios `publicado` de los últimos 90 días más la bienvenida de la cuenta, con `id` `'bienvenida'`. Cada uno lleva `{id, tipo, titulo, texto, enlace, creado_el}`. |
 | `public.baja_avisos(p_token uuid) → boolean` | Para `anon` y `authenticated`. Pone `novedades = false` y `baja_el`. |
 | `rwadar_novedades.anunciar(p_tipo, p_clave, p_titulo, p_texto, p_enlace) → bigint` | Solo el propietario de la base. Crea el anuncio ya `publicado` y no repite claves. |
@@ -305,11 +326,12 @@ hacia `auth.users`, para que `borrar_mi_cuenta` funcione.
 
 | Script | Qué hace |
 |---|---|
-| `30_avisos_registrados_verificar.sql` | Solo lee. Comprueba los interruptores, los permisos de cada función, que no haya ninguna cuenta confirmada sin preferencias y el reloj. |
+| `30_avisos_registrados_verificar.sql` | Solo lee. Comprueba los interruptores, los permisos de cada función, que no haya ninguna cuenta confirmada sin preferencias y el reloj. Informa de si la casilla del alta está activa. |
+| `30_avisos_registrados_activar_casilla.sql` | Paso 4, con la plantilla de Auth ya puesta. Pone `casilla_activa = true`: desde entonces el permiso del alta cuenta. No envía nada ni crea reloj. |
 | `30_avisos_registrados_activar_correo.sql` | Exige los secretos en el Vault. Enciende el correo, fija `correo_activado_el` y crea el reloj. |
 | `30_avisos_registrados_activar_push.sql` | Lo mismo para el push. |
-| `30_avisos_registrados_apagar.sql` | Apaga los tres interruptores y quita el reloj. |
-| `fallo_cerrado.sql` | Además, quita cualquier reloj cuya orden contenga `rwadar_novedades.` y apaga los interruptores si existe el esquema. |
+| `30_avisos_registrados_apagar.sql` | Apaga los tres interruptores y la casilla y quita el reloj. |
+| `fallo_cerrado.sql` | Además, quita cualquier reloj cuya orden contenga `rwadar_novedades.` y apaga los interruptores y la casilla si existe el esquema. |
 
 **Pruebas: `rwadar-app/probar-avisos-registrados.mjs`,** sobre la cadena de
 producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
@@ -320,6 +342,8 @@ producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
   - con una avería forzada en la tabla. La confirmación siempre pasa.
 - **Permiso:**
   - solo en la confirmación;
+  - con `casilla_activa = false`, unos metadatos válidos no dan permiso; con
+    `true`, sí;
   - una baja no se deshace;
   - las cuentas existentes rellenadas;
   - `borrar_mi_cuenta` con filas en todas las tablas.
@@ -329,8 +353,13 @@ producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
   - con `ofertas_automaticas`, publicado; `procesar()` lo reparte.
 - **Envío:**
   - las peticiones a Brevo y Expo, con su pie y su baja;
+  - las respuestas de Brevo, `duplicate_parameter` y `duplicate_request`
+    incluidas;
+  - un retenido creado antes de activar y publicado después se reparte;
   - la segunda comprobación antes de enviar;
-  - límites y permisos de las funciones.
+  - límites y permisos de las funciones, `mi_aviso_push_registrado` incluida.
+- **Limpieza:** colas y bienvenidas terminadas a los 90 días sin que la
+  bienvenida se repita; también con todo apagado.
 - **Convivencia con los filtros antiguos:** activar, reaplicar la 22, pasar los
   verificadores de 22 y 23 y fresh-install y `correo_fallo_cerrado`: el reloj
   nuevo sigue.
@@ -453,7 +482,9 @@ de Víctor.
 3. **Base de datos:** copia de seguridad; aplicar la 30 en el SQL Editor y
    pasar el verificador.
 4. **Casilla visible:**
-   - plantilla de Auth puesta y `30_avisos_registrados_activar_casilla.sql`;
+   - plantilla de Auth puesta;
+   - `30_avisos_registrados_activar_casilla.sql` y el verificador 30 («casilla
+     del alta activa»);
    - `AVISOS_NOVEDADES_REMOTOS = true` en la web y la app;
    - privacidad al día;
    - publicar la web y enviar la OTA.

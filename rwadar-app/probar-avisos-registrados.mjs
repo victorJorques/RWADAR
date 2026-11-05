@@ -60,6 +60,7 @@ const MIGRACION30 = leer('supabase/migrations/20261105200000_avisos_registrados.
 const VERIFICAR30 = leer('db/30_avisos_registrados_verificar.sql');
 const ACTIVAR_CORREO = leer('db/30_avisos_registrados_activar_correo.sql');
 const ACTIVAR_PUSH = leer('db/30_avisos_registrados_activar_push.sql');
+const ACTIVAR_CASILLA = leer('db/30_avisos_registrados_activar_casilla.sql');
 const APAGAR = leer('db/30_avisos_registrados_apagar.sql');
 const ANUNCIAR = leer('db/anunciar.sql');
 const FALLO_CERRADO = leer('db/fallo_cerrado.sql');
@@ -199,8 +200,9 @@ const FILTROS_ANTIGUOS = ['avisos_ciclo', 'avisos_soltar', 'avisos_confirmar', '
     ordenes.every((o) => o === ' select rwadar_novedades.procesar() '));
   paso('esa orden no contiene ninguno de los patrones LIKE de los cierres antiguos',
     ordenes.every((o) => o && !FILTROS_ANTIGUOS.some((f) => o.toLowerCase().includes(f))));
-  paso('fallo_cerrado.sql apaga los interruptores de la 30 y quita cualquier reloj que llame a rwadar_novedades',
+  paso('fallo_cerrado.sql apaga los interruptores y la casilla de la 30 y quita cualquier reloj que llame a rwadar_novedades',
     /update rwadar_novedades\.configuracion\s+set correo_habilitado = false, push_habilitado = false, ofertas_automaticas = false/.test(FALLO_CERRADO)
+    && /update rwadar_novedades\.configuracion set casilla_activa = false where unica/.test(FALLO_CERRADO)
     && FALLO_CERRADO.includes("like '%rwadar_novedades.%'"));
 }
 
@@ -329,12 +331,13 @@ const pref = async (u) => { await sesion(db); return una(db, 'select * from rwad
 {
   const c = await config();
   const v = await verificar();
-  paso('todo nace apagado: correo, push y ofertas automáticas, sin fechas de activación ni reloj',
-    !c.correo_habilitado && !c.push_habilitado && !c.ofertas_automaticas && c.correo_activado_el === null
+  paso('todo nace apagado: casilla del alta, correo, push y ofertas automáticas, sin fechas de activación ni reloj',
+    !c.casilla_activa && !c.correo_habilitado && !c.push_habilitado && !c.ofertas_automaticas && c.correo_activado_el === null
     && c.push_activado_el === null && (await relojes()).length === 0);
   paso('configuracion guarda la versión y los textos de la casilla EXACTAMENTE como el contrato',
     c.version_consentimiento === VERSION && c.texto_consentimiento_es === TEXTO_ES && c.texto_consentimiento_en === TEXTO_EN);
-  paso(`el verificador 30 pasa con todo apagado («${v.aviso || v.error}»)`, v.ok && /correo apagado, push apagado/.test(v.aviso));
+  paso(`el verificador 30 pasa con todo apagado («${v.aviso || v.error}»)`,
+    v.ok && /casilla del alta inactiva, correo apagado, push apagado/.test(v.aviso));
   paso('las cuentas confirmadas que ya existían reciben preferencias con novedades = false, aunque sus metadatos digan true',
     (await pref(previa))?.novedades === false && (await pref(previa)).aceptado_el === null);
   paso('ni las cuentas sin confirmar ni las anónimas reciben preferencias',
@@ -363,10 +366,11 @@ const pref = async (u) => { await sesion(db); return una(db, 'select * from rwad
       has_function_privilege('authenticated', p.oid, 'EXECUTE') aut, has_function_privilege('service_role', p.oid, 'EXECUTE') srv
     from (values ('public.estado_mis_avisos()'), ('public.configurar_avisos_novedades(boolean,text,text)'),
       ('public.registrar_aviso_push(text,text)'), ('public.quitar_aviso_push(text)'),
+      ('public.mi_aviso_push_registrado(text)'),
       ('public.mis_avisos_recientes(integer)'), ('public.baja_avisos(uuid)')) f(firma)
     join pg_proc p on p.oid = to_regprocedure(f.firma)`);
-  paso('API pública: las 6 RPC existen, definer con search_path vacío; authenticated sí, public y service_role no',
-    rpc.length === 6 && rpc.every((f) => vacio(f) && f.aut && !f.pub && !f.srv));
+  paso('API pública: las 7 RPC existen, definer con search_path vacío; authenticated sí, public y service_role no',
+    rpc.length === 7 && rpc.every((f) => vacio(f) && f.aut && !f.pub && !f.srv));
   paso('anon solo puede ejecutar baja_avisos', rpc.filter((f) => f.anon).map((f) => f.firma).join() === 'public.baja_avisos(uuid)');
   const disparadores = await filas(db, `select tgname from pg_trigger
     where tgrelid = 'rwadar_catalogo.revisiones'::regclass and not tgisinternal order by tgname collate "C"`);
@@ -376,6 +380,19 @@ const pref = async (u) => { await sesion(db); return una(db, 'select * from rwad
     has_table_privilege('authenticated','vault.decrypted_secrets','SELECT') b,
     has_table_privilege('authenticated','net._http_response','SELECT') c, has_table_privilege('anon','net.http_request_queue','SELECT') d`);
   paso('se repiten los cierres de 23: ni Vault ni las colas de pg_net para los clientes', !vault.a && !vault.b && !vault.c && !vault.d);
+}
+{
+  // El verificador cubre lo nuevo: la RPC del móvil y las columnas de la casilla y las marcas.
+  await sesion(db);
+  await db.exec('grant execute on function public.mi_aviso_push_registrado(text) to anon');
+  const v1 = await verificar();
+  await db.exec('revoke execute on function public.mi_aviso_push_registrado(text) from anon');
+  await db.exec('alter table rwadar_novedades.preferencias rename column bienvenida_push_el to bienvenida_push_otra');
+  const v2 = await verificar();
+  await db.exec('alter table rwadar_novedades.preferencias rename column bienvenida_push_otra to bienvenida_push_el');
+  paso('el verificador 30 detecta mi_aviso_push_registrado abierta a anon y la falta de la casilla o de las marcas de bienvenida',
+    !v1.ok && /mi_aviso_push_registrado/.test(v1.error) && !v2.ok && /casilla_activa o las marcas/.test(v2.error)
+    && (await verificar()).ok);
 }
 
 /* =====================================================================
@@ -399,12 +416,30 @@ const META_SI = (canal = 'web') => ({ avisos_novedades: true, avisos_version: VE
     has_table_privilege('supabase_auth_admin','rwadar_novedades.preferencias','INSERT') i`);
   paso('supabase_auth_admin no tiene ningún privilegio sobre rwadar_novedades', !permisos.u && !permisos.i);
 }
+// Hueco del permiso: con la casilla sin activar (plantilla de Auth aún sin
+// poner), unos metadatos válidos escritos a mano en el alta no apuntan a nadie.
+{
+  const sinCasilla = await altaAuth('sin-casilla@ejemplo.test', META_SI('web'));
+  await confirmarAuth(sinCasilla);
+  const p = await pref(sinCasilla);
+  paso('con casilla_activa = false, confirmar con metadatos válidos crea preferencias pero NO da permiso',
+    p?.novedades === false && p.origen === null && p.aceptado_el === null && p.version === null);
+  await sesion(db);
+  await db.exec(ACTIVAR_CASILLA);
+  const c = await config();
+  const v = await verificar();
+  paso(`30_avisos_registrados_activar_casilla.sql solo activa la casilla: ni correo, ni push, ni reloj («${v.aviso || v.error}»)`,
+    c.casilla_activa === true && !c.correo_habilitado && !c.push_habilitado && !c.ofertas_automaticas
+    && (await relojes()).length === 0 && v.ok && /casilla del alta activa, correo apagado, push apagado/.test(v.aviso));
+  paso('activarla después no apunta a quien se confirmó antes (sus preferencias ya existen)',
+    (await pref(sinCasilla)).novedades === false);
+}
 const ana = await altaAuth('ana@ejemplo.test', META_SI('web'));
 paso('el alta sin confirmar todavía no crea preferencias', !(await pref(ana)));
 await confirmarAuth(ana);
 {
   const p = await pref(ana);
-  paso('con SET ROLE supabase_auth_admin, confirmar crea las preferencias y guarda el permiso (alta, web, versión y fecha)',
+  paso('con la casilla activa y SET ROLE supabase_auth_admin, confirmar crea las preferencias y guarda el permiso (alta, web, versión y fecha)',
     p?.novedades === true && p.origen === 'alta' && p.canal === 'web' && p.version === VERSION && p.aceptado_el instanceof Date
     && p.alta_el instanceof Date && /^[0-9a-f-]{36}$/.test(p.baja_token));
 }
@@ -535,21 +570,24 @@ const token = (n) => `ExponentPushToken[${`prueba${n}`.padEnd(22, 'x')}]`;
     codigo(() => db.query("select public.configurar_avisos_novedades(true, $1, 'web')", [VERSION])),
     codigo(() => db.query("select public.registrar_aviso_push($1, 'android')", [token(1)])),
     codigo(() => db.query('select public.quitar_aviso_push($1)', [token(1)])),
+    codigo(() => db.query('select public.mi_aviso_push_registrado($1)', [token(1)])),
     codigo(() => db.query('select * from public.mis_avisos_recientes(5)')),
   ]);
-  paso('anon no puede ejecutar ninguna RPC de avisos salvo la baja', anon.every((c) => c === '42501'));
+  paso('anon no puede ejecutar ninguna RPC de avisos salvo la baja', anon.length === 6 && anon.every((c) => c === '42501'));
   await como(ana, { session_id: '99999999-0000-4000-8000-000000000001' });
   const sinSesion = await Promise.all([
     codigo(() => db.query('select public.estado_mis_avisos()')),
     codigo(() => db.query("select public.configurar_avisos_novedades(false, null, null)")),
     codigo(() => db.query("select public.registrar_aviso_push($1, 'android')", [token(1)])),
     codigo(() => db.query('select public.quitar_aviso_push($1)', [token(1)])),
+    codigo(() => db.query('select public.mi_aviso_push_registrado($1)', [token(1)])),
     codigo(() => db.query('select * from public.mis_avisos_recientes(5)')),
   ]);
   await como(ana, { exp: 1 });
   const caducado = await codigo(() => db.query('select public.estado_mis_avisos()'));
-  paso('con un JWT de sesión revocada o caducada, las cinco RPC con cuenta se niegan (42501)',
-    sinSesion.every((c) => c === '42501') && caducado === '42501');
+  const caducadoMovil = await codigo(() => db.query('select public.mi_aviso_push_registrado($1)', [token(1)]));
+  paso('con un JWT de sesión revocada o caducada, las seis RPC con cuenta se niegan (42501)',
+    sinSesion.length === 6 && sinSesion.every((c) => c === '42501') && caducado === '42501' && caducadoMovil === '42501');
   await como(ana);
   paso('authenticated no entra en el esquema privado ni en sus funciones',
     await codigo(() => db.query('select * from rwadar_novedades.preferencias')) === '42501'
@@ -604,7 +642,14 @@ const token = (n) => `ExponentPushToken[${`prueba${n}`.padEnd(22, 'x')}]`;
     isDeepStrictEqual(deLuis, [3, 4, 5, 6, 7].map(token).sort()));
   paso('con el push apagado, registrar un móvil no encola ninguna bienvenida',
     await numero(db, 'select count(*) from rwadar_novedades.pushes') === 0);
+  // La app pregunta con su token si ESE móvil sigue registrado en su cuenta.
+  const registrado = async (t) => (await rpc('select public.mi_aviso_push_registrado($1) r', [t])).r;
+  await como(luis);
+  const luisAntes = [await registrado(token(7)), await registrado(token(1)), await registrado(null), await registrado('token')];
+  await como(ana);
+  const anaAntes = await registrado(token(7));
   // Un token que pasa a otra cuenta: lo pendiente de la anterior se borra.
+  await sesion(db);
   await db.query(`insert into rwadar_novedades.pushes(token, usuario_id, tipo) values ($1, $2, 'bienvenida')`, [token(7), luis.id]);
   await como(ana);
   await rpc("select public.registrar_aviso_push($1, 'ios') r", [token(7)]);
@@ -613,11 +658,19 @@ const token = (n) => `ExponentPushToken[${`prueba${n}`.padEnd(22, 'x')}]`;
     (await una(db, 'select usuario_id, plataforma from rwadar_novedades.dispositivos where token = $1', [token(7)])).usuario_id === ana.id
     && await numero(db, 'select count(*) from rwadar_novedades.pushes where token = $1', [token(7)]) === 0);
   await como(luis);
+  const luisTras = await registrado(token(7));
+  await como(ana);
+  const anaTras = await registrado(token(7));
+  paso('mi_aviso_push_registrado: true solo para un móvil propio; false para el desplazado por el límite, el de otra cuenta, null o basura',
+    isDeepStrictEqual(luisAntes, [true, false, false, false]) && anaAntes === false && luisTras === false && anaTras === true);
+  await como(luis);
   const ajeno = (await rpc('select public.quitar_aviso_push($1) r', [token(7)])).r;
   await como(ana);
   const propio = (await rpc('select public.quitar_aviso_push($1) r', [token(7)])).r;
+  const anaQuitado = await registrado(token(7));
   await sesion(db);
-  paso('quitar_aviso_push solo quita un token propio', ajeno === false && propio === true
+  paso('quitar_aviso_push solo quita un token propio y después mi_aviso_push_registrado da false', ajeno === false && propio === true
+    && anaQuitado === false
     && await numero(db, 'select count(*) from rwadar_novedades.dispositivos where token = $1', [token(7)]) === 0);
 }
 {
@@ -894,9 +947,9 @@ let n1;
   paso(`procesar() reparte el anuncio nuevo a las ${suscritas.length} cuentas confirmadas con permiso vigente (ana, eva, nueva…), no a luis`,
     isDeepStrictEqual(destinatarios, suscritas) && suscritas.includes(ana.id) && suscritas.includes(eva.id)
     && suscritas.includes(nueva.id) && !suscritas.includes(luis.id) && r.estado === 'encendido');
-  paso('solo reparte anuncios publicados creados después de la activación (ni el de antes, ni el retenido publicado luego)',
+  paso('solo reparte anuncios publicados después de la activación (ni el de antes, ni el retenido que se publicó antes de activar)',
     await numero(db, `select count(*) from rwadar_novedades.correos c join rwadar_novedades.anuncios a on a.id = c.anuncio_id
-      where a.creado_el < (select correo_activado_el from rwadar_novedades.configuracion)`) === 0
+      where coalesce(a.publicado_el, a.creado_el) < (select correo_activado_el from rwadar_novedades.configuracion)`) === 0
     && await numero(db, 'select count(*) from rwadar_novedades.pushes where anuncio_id is not null and anuncio_id <> $1', [n1]) === 0);
   paso('el push del anuncio va a los móviles de las cuentas con permiso (los 2 de ana), no a los de luis',
     isDeepStrictEqual((await filas(db, 'select token from rwadar_novedades.pushes where anuncio_id = $1 order by token', [n1])).map((f) => f.token),
@@ -1055,6 +1108,17 @@ let n1;
     join rwadar_novedades.anuncios a on a.id = p.anuncio_id where a.clave = 'actualizacion:prueba-n3'`);
   paso('un móvil que desaparece después del reparto no recibe el push: se descarta y se borra su token',
     (await peticiones(desde2, EXPO)).length === 0 && pushN3?.estado === 'descartado' && pushN3.token === null);
+  // Brevo también puede responder al reintento con la misma clave con «duplicate_request».
+  const [n3Ana] = paraCorreo(await peticiones(desde2, BREVO), ana);
+  await sesion(db);
+  await responder(n3Ana.id, 400, { code: 'duplicate_request', message: 'Duplicate request' });
+  const desde3 = await ultimaPeticion();
+  await procesar();
+  await sesion(db);
+  const correoN3 = await una(db, `select c.estado from rwadar_novedades.correos c join rwadar_novedades.anuncios a on a.id = c.anuncio_id
+    where a.clave = 'actualizacion:prueba-n3' and c.usuario_id = $1`, [ana.id]);
+  paso('Brevo 400 duplicate_request → aceptado (ya lo tenía), sin reenviar',
+    correoN3?.estado === 'aceptado' && paraCorreo(await peticiones(desde3, BREVO), ana).length === 0);
   await sesion(db, null, 'anon');
   const otra = (await rpc('select public.baja_avisos($1) b', [tokenEva])).b;
   await sesion(db);
@@ -1105,7 +1169,30 @@ let n1;
     !flujo.e && await numero(db, 'select count(*) from rwadar_novedades.correos where anuncio_id = $1', [retenido.id]) >= 1);
 }
 
-// Limpieza: colas de anuncios terminadas a los 90 días, móviles a los 180; las bienvenidas se quedan.
+// Un retenido creado ANTES de activar y publicado DESPUÉS también se reparte:
+// cuenta la fecha de publicación, no la de creación.
+{
+  const c = await config();
+  const antes = new Date(Math.min(c.correo_activado_el.getTime(), c.push_activado_el.getTime()) - 3600 * 1000);
+  const { id } = await una(db, `insert into rwadar_novedades.anuncios (tipo, clave, estado, titulo, texto, enlace, creado_el)
+    values ('novedad', 'novedad:retenido-antes-de-activar', 'retenido', 'Retenido desde antes de activar',
+      'Se publica después de encender los avisos.', 'https://rwadar.pages.dev/', $1) returning id`, [antes]);
+  const repartos = async () => {
+    await sesion(db);
+    return una(db, `select (select count(*)::int from rwadar_novedades.correos where anuncio_id = $1) c,
+      (select count(*)::int from rwadar_novedades.pushes where anuncio_id = $1) p`, [id]);
+  };
+  await procesar();
+  const mientrasRetenido = await repartos();
+  await db.query('select rwadar_novedades.publicar_anuncio($1)', [id]);
+  await procesar();
+  const trasPublicar = await repartos();
+  paso(`un retenido creado antes de activar y publicado después se reparte por correo y push (${trasPublicar.c}/${trasPublicar.p})`,
+    mientrasRetenido.c === 0 && mientrasRetenido.p === 0 && trasPublicar.c >= 1 && trasPublicar.p >= 1);
+}
+
+// Limpieza: colas terminadas (bienvenidas incluidas) a los 90 días y móviles a
+// los 180; las bienvenidas no se repiten porque su marca está en preferencias.
 {
   await sesion(db);
   await db.exec(`update rwadar_novedades.correos set terminado_el = now() - interval '91 days', creado_el = now() - interval '91 days'
@@ -1113,13 +1200,31 @@ let n1;
     update rwadar_novedades.pushes set terminado_el = now() - interval '91 days', creado_el = now() - interval '91 days'
       where estado in ('aceptado','descartado','fallido');
     update rwadar_novedades.dispositivos set actualizado_el = now() - interval '181 days' where usuario_id = '${luis.id}'`);
-  const bienvenidas = await numero(db, "select (select count(*) from rwadar_novedades.correos where tipo = 'bienvenida') + (select count(*) from rwadar_novedades.pushes where tipo = 'bienvenida')");
+  const terminadas = `select (select count(*) from rwadar_novedades.correos where estado in ('aceptado','descartado','fallido','incierto'))
+    + (select count(*) from rwadar_novedades.pushes where estado in ('aceptado','descartado','fallido'))`;
+  const bienvenidasTerminadas = await numero(db, `select
+    (select count(*) from rwadar_novedades.correos where tipo = 'bienvenida' and estado in ('aceptado','descartado','fallido','incierto'))
+    + (select count(*) from rwadar_novedades.pushes where tipo = 'bienvenida' and estado in ('aceptado','descartado','fallido'))`);
   const { r } = await procesar();
-  paso(`limpieza: colas de anuncios terminadas a los 90 días y móviles sin actualizar a los 180 (${r.limpiados} filas)`,
-    await numero(db, "select count(*) from rwadar_novedades.correos where tipo = 'anuncio' and estado in ('aceptado','descartado','fallido','incierto')") === 0
+  paso(`limpieza: colas terminadas a los 90 días, también ${bienvenidasTerminadas} bienvenidas, y móviles sin actualizar a los 180 (${r.limpiados} filas)`,
+    bienvenidasTerminadas === 3 && await numero(db, terminadas) === 0
     && await numero(db, 'select count(*) from rwadar_novedades.dispositivos where usuario_id = $1', [luis.id]) === 0);
-  paso('las bienvenidas terminadas se conservan para no repetirlas',
-    await numero(db, "select (select count(*) from rwadar_novedades.correos where tipo = 'bienvenida') + (select count(*) from rwadar_novedades.pushes where tipo = 'bienvenida')") === bienvenidas);
+  // nueva-2 vuelve a confirmar el correo y luis registra otro móvil: sus
+  // bienvenidas ya se encolaron y la cola se limpió; las marcas lo impiden.
+  const nueva2 = await una(db, "select id, email from auth.users where email = 'nueva-2@ejemplo.test'");
+  await comoAuth(() => db.query('update auth.users set email_confirmed_at = null where id = $1', [nueva2.id]));
+  await confirmarAuth(nueva2);
+  await como(luis);
+  await rpc("select public.registrar_aviso_push($1, 'android') r", [token(40)]);
+  const nuevaCuenta = await altaAuth('tras-limpieza@ejemplo.test', {});
+  await confirmarAuth(nuevaCuenta);
+  await sesion(db);
+  const bienvenidasDe = async (u, tabla) => numero(db, `select count(*) from rwadar_novedades.${tabla} where usuario_id = $1 and tipo = 'bienvenida'`, [u.id]);
+  paso('tras la limpieza, ni reconfirmar el correo ni registrar otro móvil repiten la bienvenida (marcas en preferencias)',
+    await bienvenidasDe(nueva2, 'correos') === 0 && await bienvenidasDe(luis, 'pushes') === 0
+    && (await pref(nueva2)).bienvenida_correo_el instanceof Date && (await pref(luis)).bienvenida_push_el instanceof Date);
+  paso('una cuenta nueva sí recibe su bienvenida, una vez, con su marca',
+    await bienvenidasDe(nuevaCuenta, 'correos') === 1 && (await pref(nuevaCuenta)).bienvenida_correo_el instanceof Date);
 }
 
 /* =====================================================================
@@ -1180,24 +1285,40 @@ let n1;
    ===================================================================== */
 {
   await sesion(db);
+  const casillaAntes = (await config()).casilla_activa;
   await db.exec(APAGAR);
   const c = await config();
   const v = await verificar();
+  // Filas viejas: con todo apagado, procesar() no envía, pero limpia igual.
+  await sesion(db);
+  await db.query(`insert into rwadar_novedades.correos (usuario_id, tipo, anuncio_id, estado, creado_el, terminado_el)
+    select $1, 'anuncio', id, 'descartado', now() - interval '100 days', now() - interval '91 days'
+      from rwadar_novedades.anuncios where clave = 'novedad:prueba-n1'`, [nace.id]);
+  await db.query(`insert into rwadar_novedades.dispositivos (token, usuario_id, plataforma, actualizado_el)
+    values ($1, $2, 'android', now() - interval '181 days')`, [token(50), nace.id]);
   const desde = await ultimaPeticion();
   const { r } = await procesar();
-  paso('apagar deja los tres interruptores apagados y sin reloj; el verificador pasa y procesar() no envía nada',
-    !c.correo_habilitado && !c.push_habilitado && !c.ofertas_automaticas && (await relojes()).length === 0
-    && v.ok && r.estado === 'apagado' && (await ultimaPeticion()) === desde);
+  paso('apagar deja los tres interruptores y la casilla apagados y sin reloj; el verificador pasa y procesar() no envía nada',
+    casillaAntes === true && !c.casilla_activa
+    && !c.correo_habilitado && !c.push_habilitado && !c.ofertas_automaticas && (await relojes()).length === 0
+    && v.ok && /casilla del alta inactiva, correo apagado, push apagado/.test(v.aviso)
+    && r.estado === 'apagado' && (await ultimaPeticion()) === desde);
+  await sesion(db);
+  paso(`con todo apagado, procesar() limpia igual: colas terminadas de 90 días y móviles de 180 (${r.limpiados} filas)`,
+    r.limpiados >= 2 && await numero(db, 'select count(*) from rwadar_novedades.correos where usuario_id = $1', [nace.id]) === 0
+    && await numero(db, 'select count(*) from rwadar_novedades.dispositivos where token = $1', [token(50)]) === 0);
   await db.exec(ACTIVAR_CORREO);
+  await db.exec(ACTIVAR_CASILLA);
   await db.exec("update rwadar_novedades.configuracion set ofertas_automaticas = true");
   const preferencias = await numero(db, 'select count(*) from rwadar_novedades.preferencias');
   await db.exec(SQL30);
   const c2 = await config();
-  paso('reaplicar la 30 vuelve al estado seguro (todo apagado, sin reloj) sin borrar preferencias y el verificador pasa',
-    !c2.correo_habilitado && !c2.ofertas_automaticas && (await relojes()).length === 0
+  paso('reaplicar la 30 vuelve al estado seguro (todo apagado, casilla incluida, sin reloj) sin borrar preferencias y el verificador pasa',
+    !c2.correo_habilitado && !c2.ofertas_automaticas && !c2.casilla_activa && (await relojes()).length === 0
     && await numero(db, 'select count(*) from rwadar_novedades.preferencias') === preferencias && (await verificar()).ok);
   await db.exec(ACTIVAR_PUSH);
   await db.exec(ACTIVAR_CORREO);
+  await db.exec(ACTIVAR_CASILLA);
   await db.exec("update rwadar_novedades.configuracion set ofertas_automaticas = true; select cron.schedule('alias-renombrado', '* * * * *', $$ select rwadar_novedades.repartir() $$)");
   await db.exec(FALLO_CERRADO);
   const c3 = await config();
@@ -1205,8 +1326,8 @@ let n1;
   const tras = await codigo(() => db.query('select public.estado_mis_avisos()'));
   await sesion(db, null, 'anon');
   const bajaTras = await codigo(() => db.query('select public.baja_avisos(gen_random_uuid())'));
-  paso('fallo_cerrado.sql apaga los tres interruptores, quita cualquier reloj que llame a rwadar_novedades y cierra las RPC',
-    !c3.correo_habilitado && !c3.push_habilitado && !c3.ofertas_automaticas && (await relojes()).length === 0
+  paso('fallo_cerrado.sql apaga los tres interruptores y la casilla, quita cualquier reloj que llame a rwadar_novedades y cierra las RPC',
+    !c3.correo_habilitado && !c3.push_habilitado && !c3.ofertas_automaticas && !c3.casilla_activa && (await relojes()).length === 0
     && tras === '42501' && bajaTras === '42501');
 }
 

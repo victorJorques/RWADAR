@@ -6,6 +6,35 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de noviembre de 2026 (8) · Claude · avisos a registrados (30): seis arreglos de la revisión independiente (sin aplicar)
+
+Nada aplicado ni publicado; la 30 sigue sin tocar Supabase. Contrato al día:
+[`AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+
+- **Permiso del alta:** nueva `configuracion.casilla_activa` (nace `false`;
+  reaplicar la 30, `30_avisos_registrados_apagar.sql` y `fallo_cerrado.sql` la
+  apagan). Sin ella, el disparador ni lee los metadatos. Se enciende con el
+  nuevo `30_avisos_registrados_activar_casilla.sql` en el paso 4, justo
+  después de poner la plantilla de Auth. El verificador 30 lo informa.
+- **Reparto:** cuenta `coalesce(publicado_el, creado_el)`; un retenido creado
+  antes de activar y publicado después ya sale.
+- **Retención:** `limpiar()` borra también las bienvenidas terminadas a los 90
+  días; no se repiten gracias a `preferencias.bienvenida_correo_el` y
+  `bienvenida_push_el`. `procesar()` limpia también con todo apagado. El reloj
+  no cambia (solo existe tras activar), escrito en el contrato.
+- **Brevo:** `duplicate_request` cuenta como aceptado, igual que
+  `duplicate_parameter`. Cabecera de idempotencia y `List-Unsubscribe`, a
+  confirmar en la prueba real del paso 5.
+- **Móviles:** `public.mi_aviso_push_registrado(p_token)` dice si ese token
+  sigue en la cuenta de la sesión (solo `authenticated`).
+- **Copias:** `copia-seguridad.sh` copia además `rwadar_novedades` (si aún no
+  existe, pg_dump lo salta). La cartera (`rwadar_cuentas_privadas`) se deja
+  fuera a propósito: lleva FORCE RLS y, si `postgres` no puede saltarla, fallaría
+  la copia entera, también la de «Aplicar catálogo». Incluirla es otro cambio,
+  a probar antes con una copia manual.
+- **Pruebas:** `probar-avisos-registrados.mjs` 150/150 y `npm --prefix
+  rwadar-app test` en verde.
+
 ## 5 de noviembre de 2026 (7) · Claude · entrega 2026-11-05.2 y remates publicados: Supabase, web y app
 
 Orden de Víctor: «Arregla todo, no dejes nada para mañana»; retiradas decididas

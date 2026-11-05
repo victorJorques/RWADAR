@@ -25,6 +25,9 @@
 --     art. 21, RGPD art. 7.4) con doble confirmación: solo cuenta cuando
 --     `email_confirmed_at` pasa de vacío a una fecha y los metadatos del alta
 --     traen `avisos_novedades` como booleano JSON `true` y la versión vigente.
+--     Y solo con `casilla_activa` (nace false; la enciende
+--     30_avisos_registrados_activar_casilla.sql junto con la plantilla de Auth):
+--     antes, nadie puede apuntarse escribiendo los metadatos a mano.
 --   · Los disparadores nunca tumban un alta, una confirmación ni la
 --     aprobación del catálogo: capturan el error y dejan un `warning` con el
 --     sqlstate, nunca el mensaje (podría llevar el correo).
@@ -74,6 +77,8 @@ create table if not exists rwadar_novedades.configuracion (
   correo_habilitado       boolean not null default false,
   push_habilitado         boolean not null default false,
   ofertas_automaticas     boolean not null default false,
+  -- Sin la casilla activa, los metadatos del alta no dan permiso.
+  casilla_activa          boolean not null default false,
   correo_activado_el      timestamptz,
   push_activado_el        timestamptz,
   version_consentimiento  text not null,
@@ -98,6 +103,10 @@ create table if not exists rwadar_novedades.preferencias (
   baja_token     uuid not null default gen_random_uuid() unique,
   baja_el        timestamptz,
   actualizado_el timestamptz not null default now(),
+  -- Cuándo se encoló la bienvenida de cada canal. Con la marca puesta no se
+  -- vuelve a encolar, aunque la limpieza ya haya borrado la fila de la cola.
+  bienvenida_correo_el timestamptz,
+  bienvenida_push_el   timestamptz,
   constraint permiso_documentado
     check (not novedades or (aceptado_el is not null and version is not null and origen is not null))
 );
@@ -213,22 +222,42 @@ create unique index if not exists pushes_ticket_unico
 create index if not exists pushes_por_enviar
   on rwadar_novedades.pushes (creado_el, id) where estado = 'pendiente';
 
+-- Columnas añadidas tras la primera versión de la 30 (nunca aplicada): así
+-- reaplicarla sobre esa versión también las crea.
+alter table rwadar_novedades.configuracion
+  add column if not exists casilla_activa boolean not null default false;
+alter table rwadar_novedades.preferencias
+  add column if not exists bienvenida_correo_el timestamptz,
+  add column if not exists bienvenida_push_el timestamptz;
+
 -- Reaplicar = estado seguro. Los textos de la casilla van con su versión:
 -- cambiar una sola palabra obliga a crear una versión nueva.
 insert into rwadar_novedades.configuracion as c
-  (unica, correo_habilitado, push_habilitado, ofertas_automaticas,
+  (unica, correo_habilitado, push_habilitado, ofertas_automaticas, casilla_activa,
    correo_activado_el, push_activado_el,
    version_consentimiento, texto_consentimiento_es, texto_consentimiento_en)
-values (true, false, false, false, null, null,
+values (true, false, false, false, false, null, null,
   'novedades-v1-2026-11-05',
   'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.',
   'I want to receive RWAdar notices by email and, if I turn them on in my phone, as notifications: new offers on the radar and news about the website and the app. It''s optional: the Academy unlocks anyway. You can unsubscribe in every notice or in Profile. More information in Privacy.')
 on conflict (unica) do update
   set correo_habilitado = false, push_habilitado = false, ofertas_automaticas = false,
+      casilla_activa = false,
       correo_activado_el = null, push_activado_el = null,
       version_consentimiento = excluded.version_consentimiento,
       texto_consentimiento_es = excluded.texto_consentimiento_es,
       texto_consentimiento_en = excluded.texto_consentimiento_en;
+
+-- Bienvenidas ya encoladas sin marca (colas anteriores a estas columnas):
+-- la marca sale de la cola, para que la limpieza nunca haga repetirlas.
+update rwadar_novedades.preferencias p
+   set bienvenida_correo_el = c.creado_el
+  from rwadar_novedades.correos c
+ where c.usuario_id = p.usuario_id and c.tipo = 'bienvenida' and p.bienvenida_correo_el is null;
+update rwadar_novedades.preferencias p
+   set bienvenida_push_el = s.creado_el
+  from rwadar_novedades.pushes s
+ where s.usuario_id = p.usuario_id and s.tipo = 'bienvenida' and p.bienvenida_push_el is null;
 
 -- ---------------------------------------------------------------------
 -- 2 · Piezas internas: escapado, destino y textos de los correos
@@ -374,9 +403,10 @@ $funcion$;
 -- ---------------------------------------------------------------------
 -- after insert or update of email_confirmed_at on auth.users. Solo actúa si
 -- el correo pasa de vacío a fecha (o la cuenta nace confirmada) y la cuenta
--- no es anónima. El permiso, solo en el UPDATE y con booleano JSON estricto
--- y la versión vigente. Nada de conversiones en `declare`: todo error queda
--- dentro de los bloques y nunca impide el alta ni la confirmación.
+-- no es anónima. El permiso, solo en el UPDATE, con la casilla activa
+-- (`casilla_activa`), booleano JSON estricto y la versión vigente. Nada de
+-- conversiones en `declare`: todo error queda dentro de los bloques y nunca
+-- impide el alta ni la confirmación.
 create or replace function rwadar_novedades.al_confirmar_cuenta()
 returns trigger
 language plpgsql security definer set search_path = ''
@@ -384,6 +414,7 @@ as $funcion$
 declare
   v_version text;
   v_correo boolean;
+  v_casilla boolean;
   v_meta jsonb;
   v_permiso boolean;
   v_canal text;
@@ -398,13 +429,16 @@ begin
       end if;
     end if;
 
-    select c.version_consentimiento, c.correo_habilitado and c.correo_activado_el is not null
-      into v_version, v_correo
+    select c.version_consentimiento, c.correo_habilitado and c.correo_activado_el is not null,
+           c.casilla_activa
+      into v_version, v_correo, v_casilla
       from rwadar_novedades.configuracion c
      where c.unica;
 
     v_permiso := false;
-    if tg_op = 'UPDATE' and v_version is not null then
+    -- Sin la casilla activa (plantilla de Auth puesta, paso 4 de la
+    -- activación), los metadatos ni se leen.
+    if tg_op = 'UPDATE' and v_version is not null and v_casilla is true then
       v_meta := new.raw_user_meta_data;
       if jsonb_typeof(v_meta) = 'object'
          and jsonb_typeof(v_meta -> 'avisos_novedades') = 'boolean'
@@ -434,10 +468,18 @@ begin
   end;
 
   begin
+    -- Una sola vez por cuenta: la marca de preferencias manda, también
+    -- cuando la limpieza ya borró la fila terminada de la cola. Sin fila de
+    -- preferencias (avería del bloque anterior) no se encola.
     if v_correo then
-      insert into rwadar_novedades.correos (usuario_id, tipo)
-      values (new.id, 'bienvenida')
-      on conflict do nothing;
+      update rwadar_novedades.preferencias
+         set bienvenida_correo_el = now()
+       where usuario_id = new.id and bienvenida_correo_el is null;
+      if found then
+        insert into rwadar_novedades.correos (usuario_id, tipo)
+        values (new.id, 'bienvenida')
+        on conflict do nothing;
+      end if;
     end if;
   exception when others then
     raise warning 'rwadar_novedades: bienvenida no encolada (sqlstate %)', sqlstate;
@@ -591,8 +633,10 @@ begin
 end
 $funcion$;
 
--- Reparte los anuncios publicados y no repartidos creados después de la
--- activación de cada canal, a las cuentas confirmadas con permiso vigente.
+-- Reparte los anuncios publicados y no repartidos cuya publicación es
+-- posterior a la activación de cada canal, a las cuentas confirmadas con
+-- permiso vigente. Cuenta la fecha de publicación, no la de creación: un
+-- retenido creado antes de activar y publicado después también sale.
 create or replace function rwadar_novedades.repartir()
 returns integer
 language plpgsql security definer set search_path = ''
@@ -613,7 +657,7 @@ begin
     for v_anuncio in
       select a.id from rwadar_novedades.anuncios a
        where a.estado = 'publicado' and a.correo_repartido_el is null
-         and a.creado_el > v_cfg.correo_activado_el
+         and coalesce(a.publicado_el, a.creado_el) > v_cfg.correo_activado_el
        order by a.id
        for update skip locked
     loop
@@ -634,7 +678,7 @@ begin
     for v_anuncio in
       select a.id from rwadar_novedades.anuncios a
        where a.estado = 'publicado' and a.push_repartido_el is null
-         and a.creado_el > v_cfg.push_activado_el
+         and coalesce(a.publicado_el, a.creado_el) > v_cfg.push_activado_el
        order by a.id
        for update skip locked
     loop
@@ -684,8 +728,12 @@ begin
       v_mensaje_id := null;
     end;
 
+    -- Un 400 con código de duplicado = Brevo ya tiene ese envío (misma clave
+    -- idempotente). Acepta los dos nombres que usa Brevo. El nombre exacto de
+    -- la cabecera de idempotencia, este código y si `List-Unsubscribe` llega
+    -- al buzón se confirman en la prueba real del paso 5 de la activación.
     if (r.status_code = 201 and v_mensaje_id is not null)
-       or (r.status_code = 400 and v_codigo = 'duplicate_parameter') then
+       or (r.status_code = 400 and v_codigo in ('duplicate_parameter', 'duplicate_request')) then
       update rwadar_novedades.correos
          set estado = 'aceptado', terminado_el = now(), peticion_id = null, peticion_el = null,
              proveedor_mensaje_id = coalesce(proveedor_mensaje_id, v_mensaje_id), error = null
@@ -820,6 +868,9 @@ begin
        set idempotencia = v_idempotencia, idempotencia_el = v_idempotencia_el
      where id = r.id;
 
+    -- Pendiente de la prueba real del paso 5 (correo propio): que Brevo
+    -- deduplique con esta cabecera tal como se llama aquí y que
+    -- `List-Unsubscribe` llegue al buzón. Si no, se corrige antes de seguir.
     v_cabeceras := jsonb_build_object('Idempotency-Key', v_idempotencia::text);
     -- List-Unsubscribe solo si la persona está apuntada. Sin
     -- List-Unsubscribe-Post: no se promete la baja «en un clic».
@@ -1109,9 +1160,10 @@ begin
 end
 $funcion$;
 
--- Colas de anuncios terminadas, a los 90 días; móviles sin actualizar, a los
--- 180. Las bienvenidas se conservan (sin token ni correo) para que no se
--- repitan; se van con la cuenta.
+-- Colas terminadas (anuncios y bienvenidas), a los 90 días; móviles sin
+-- actualizar, a los 180. Las bienvenidas no se repiten porque su marca vive
+-- en preferencias (bienvenida_correo_el, bienvenida_push_el) y se va con la
+-- cuenta.
 create or replace function rwadar_novedades.limpiar()
 returns integer
 language plpgsql security definer set search_path = ''
@@ -1121,11 +1173,11 @@ declare
   v_total integer;
 begin
   delete from rwadar_novedades.correos
-   where tipo = 'anuncio' and estado in ('aceptado', 'descartado', 'fallido', 'incierto')
+   where estado in ('aceptado', 'descartado', 'fallido', 'incierto')
      and coalesce(terminado_el, creado_el) < now() - interval '90 days';
   get diagnostics v_total = row_count;
   delete from rwadar_novedades.pushes
-   where tipo = 'anuncio' and estado in ('aceptado', 'descartado', 'fallido')
+   where estado in ('aceptado', 'descartado', 'fallido')
      and coalesce(terminado_el, creado_el) < now() - interval '90 days';
   get diagnostics v_filas = row_count;
   v_total := v_total + v_filas;
@@ -1141,6 +1193,8 @@ $funcion$;
 -- La única función que llama el reloj `rwadar-novedades` (cada 5 minutos;
 -- solo lo crean los scripts de activación). Cada paso va en su propio bloque:
 -- una caída de Vault o de red no deshace lo ya leído ni lo de otro canal.
+-- Con todo apagado no envía nada, pero limpia igual (la retención no depende
+-- de los canales). Sin reloj, nadie la llama: ver el contrato, «Limpieza».
 create or replace function rwadar_novedades.procesar()
 returns jsonb
 language plpgsql security definer set search_path = ''
@@ -1155,7 +1209,15 @@ begin
   end if;
   select * into v_cfg from rwadar_novedades.configuracion where unica;
   if not found or not (v_cfg.correo_habilitado or v_cfg.push_habilitado) then
-    return jsonb_build_object('estado', 'apagado');
+    v_resultado := jsonb_build_object('estado', 'apagado');
+    begin
+      v_n := rwadar_novedades.limpiar();
+      v_resultado := v_resultado || jsonb_build_object('limpiados', v_n);
+    exception when others then
+      v_resultado := v_resultado || jsonb_build_object('fallo_limpieza', sqlstate);
+      raise warning 'rwadar_novedades: limpieza omitida (sqlstate %)', sqlstate;
+    end;
+    return v_resultado;
   end if;
   v_resultado := jsonb_build_object('estado', 'encendido',
     'correo', v_cfg.correo_habilitado, 'push', v_cfg.push_habilitado);
@@ -1344,12 +1406,19 @@ begin
     set usuario_id = excluded.usuario_id, plataforma = excluded.plataforma,
         actualizado_el = now();
 
-  -- Bienvenida por push (de servicio): una sola vez por cuenta.
+  -- Bienvenida por push (de servicio): una sola vez por cuenta. La marca de
+  -- preferencias lo garantiza también tras la limpieza de la cola y con la
+  -- renovación diaria del móvil (la app volverá a llamar a esta función).
   select * into v_cfg from rwadar_novedades.configuracion where unica;
   if coalesce(v_cfg.push_habilitado, false) and v_cfg.push_activado_el is not null then
-    insert into rwadar_novedades.pushes (token, usuario_id, tipo)
-    values (p_token, v_usuario, 'bienvenida')
-    on conflict do nothing;
+    update rwadar_novedades.preferencias
+       set bienvenida_push_el = now()
+     where usuario_id = v_usuario and bienvenida_push_el is null;
+    if found then
+      insert into rwadar_novedades.pushes (token, usuario_id, tipo)
+      values (p_token, v_usuario, 'bienvenida')
+      on conflict do nothing;
+    end if;
   end if;
   return true;
 end
@@ -1370,6 +1439,23 @@ begin
    where token = p_token and usuario_id = v_usuario and estado = 'pendiente';
   delete from rwadar_novedades.dispositivos where token = p_token and usuario_id = v_usuario;
   return found;
+end
+$funcion$;
+
+-- ¿Sigue registrado ESTE móvil en mi cuenta? La app lo pregunta con su propio
+-- token (p. ej., al abrir) para saber si debe volver a registrarlo: la base
+-- borra los móviles sin renovar a los 180 días, los que Expo da por perdidos
+-- y el más antiguo si la cuenta pasa de 5. Solo mira los tokens de la cuenta.
+create or replace function public.mi_aviso_push_registrado(p_token text)
+returns boolean
+language plpgsql stable security definer set search_path = ''
+as $funcion$
+begin
+  if not rwadar_cuentas_privadas.sesion_confirmada() then
+    raise exception using errcode = '42501', message = 'Se necesita una sesión confirmada y vigente';
+  end if;
+  return exists (select 1 from rwadar_novedades.dispositivos d
+                  where d.token = p_token and d.usuario_id = auth.uid());
 end
 $funcion$;
 
@@ -1450,6 +1536,7 @@ revoke all on function public.configurar_avisos_novedades(boolean, text, text)
   from public, anon, authenticated, service_role;
 revoke all on function public.registrar_aviso_push(text, text) from public, anon, authenticated, service_role;
 revoke all on function public.quitar_aviso_push(text) from public, anon, authenticated, service_role;
+revoke all on function public.mi_aviso_push_registrado(text) from public, anon, authenticated, service_role;
 revoke all on function public.mis_avisos_recientes(integer) from public, anon, authenticated, service_role;
 revoke all on function public.baja_avisos(uuid) from public, anon, authenticated, service_role;
 
@@ -1457,6 +1544,7 @@ grant execute on function public.estado_mis_avisos() to authenticated;
 grant execute on function public.configurar_avisos_novedades(boolean, text, text) to authenticated;
 grant execute on function public.registrar_aviso_push(text, text) to authenticated;
 grant execute on function public.quitar_aviso_push(text) to authenticated;
+grant execute on function public.mi_aviso_push_registrado(text) to authenticated;
 grant execute on function public.mis_avisos_recientes(integer) to authenticated;
 grant execute on function public.baja_avisos(uuid) to anon, authenticated;
 

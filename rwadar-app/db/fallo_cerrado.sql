@@ -73,7 +73,9 @@ end
 $push$;
 
 -- Avisos a registrados (30): si existe el esquema, se apagan sus tres
--- interruptores. No se borra ninguna cola ni preferencia.
+-- interruptores y la casilla del alta (si la columna existe: este cierre no
+-- debe fallar con ninguna versión de la 30). No se borra ninguna cola ni
+-- preferencia.
 do $novedades$
 begin
   if to_regclass('rwadar_novedades.configuracion') is not null then
@@ -83,6 +85,11 @@ begin
              correo_activado_el = null, push_activado_el = null
        where unica
     $sql$;
+    if exists (select 1 from pg_attribute
+                where attrelid = to_regclass('rwadar_novedades.configuracion')
+                  and attname = 'casilla_activa' and not attisdropped) then
+      execute 'update rwadar_novedades.configuracion set casilla_activa = false where unica';
+    end if;
   end if;
 end
 $novedades$;
