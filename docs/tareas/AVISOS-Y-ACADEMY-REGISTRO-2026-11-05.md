@@ -345,9 +345,11 @@ producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
   - casilla obligatoria con los 18 años;
   - casilla `#avisos-novedades`, sin marcar, solo al crear la cuenta y con el
     interruptor encendido;
-  - el servidor acepta `avisosNovedades` (booleano estricto). Si es `true`,
+  - el servidor acepta `avisosNovedades` (booleano estricto). Si es `true` y
+    su propio `AVISOS_NOVEDADES_REMOTOS` (en `servidor.mjs`) está encendido,
     añade a los metadatos `avisos_novedades: true`, `avisos_version` y
-    `avisos_canal: 'web'`;
+    `avisos_canal: 'web'`. Los tres interruptores de la web (`acceso.js`,
+    `rwadar-20260820.js` y `servidor.mjs`) se encienden a la vez;
   - se aplica la vuelta a la lección del punto 1.
 - **Perfil** (con el interruptor encendido):
   - tarjeta «Avisos de novedades» con su interruptor;
