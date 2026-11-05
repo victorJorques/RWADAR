@@ -524,6 +524,66 @@ export async function guardarProgresoAcademy(progreso) {
   return limpio;
 }
 
+/* Avisos de novedades: qué avisos de Inicio has leído y el identificador de
+   entrega de este móvil. Solo en el dispositivo y por cuenta, bajo
+   rwadar.editorial.avisos.*:<UUID>; «Borrar datos del dispositivo» los
+   elimina con el resto. El identificador no se escribe en registros ni sale
+   de aquí salvo hacia las funciones de avisos de la propia cuenta. */
+const AVISOS_LEIDOS = `${PREFIJO}avisos.leidos.v1`;
+const AVISOS_PUSH = `${PREFIJO}avisos.push.v1`;
+const ID_AVISO = /^(?:bienvenida|[1-9]\d{0,18})$/;
+const TOKEN_PUSH = /^Expo(nent)?PushToken\[[A-Za-z0-9_-]{16,64}\]$/;
+const MAX_AVISOS_LEIDOS = 100;
+function claveAvisosCuenta(base, usuarioId) {
+  if (MODO_LOCAL || typeof usuarioId !== 'string'
+    || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(usuarioId)) return null;
+  return `${base}:${usuarioId}`;
+}
+const limpiarLeidos = (lista) => (Array.isArray(lista)
+  ? [...new Set(lista.filter((id) => typeof id === 'string' && ID_AVISO.test(id)))].slice(0, MAX_AVISOS_LEIDOS)
+  : []);
+
+export async function avisosLeidos(usuarioId) {
+  try {
+    const clave = claveAvisosCuenta(AVISOS_LEIDOS, usuarioId);
+    if (!clave) return [];
+    const guardado = await AsyncStorage.getItem(clave);
+    return limpiarLeidos(guardado ? JSON.parse(guardado) : []);
+  } catch {
+    return [];
+  }
+}
+
+export async function marcarAvisosLeidos(usuarioId, ids) {
+  const clave = claveAvisosCuenta(AVISOS_LEIDOS, usuarioId);
+  if (!clave) throw new Error('Entra para guardar tus datos');
+  const lista = limpiarLeidos([...limpiarLeidos(ids), ...await avisosLeidos(usuarioId)]);
+  await AsyncStorage.setItem(clave, JSON.stringify(lista));
+  return lista;
+}
+
+export async function tokenPushNovedades(usuarioId) {
+  try {
+    const clave = claveAvisosCuenta(AVISOS_PUSH, usuarioId);
+    if (!clave) return null;
+    const token = await AsyncStorage.getItem(clave);
+    return typeof token === 'string' && TOKEN_PUSH.test(token) ? token : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function guardarTokenPushNovedades(usuarioId, token) {
+  const clave = claveAvisosCuenta(AVISOS_PUSH, usuarioId);
+  if (!clave || typeof token !== 'string' || !TOKEN_PUSH.test(token)) throw new Error('Identificador de avisos no válido');
+  await AsyncStorage.setItem(clave, token);
+}
+
+export async function borrarTokenPushNovedades(usuarioId) {
+  const clave = claveAvisosCuenta(AVISOS_PUSH, usuarioId);
+  if (clave) await AsyncStorage.removeItem(clave);
+}
+
 export async function novedades(slugs) {
   if (!slugs.length) return { datos: [], error: null };
   if (USUARIO_LOCAL) return { datos: [], local: true, error: null };

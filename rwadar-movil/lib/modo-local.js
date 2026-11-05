@@ -23,6 +23,14 @@ export const SERVICIOS_USUARIO_REMOTOS = false;
 export const CUENTAS_REMOTAS = true;
 export const CORREO_AUTH_E2E = true;
 
+/* Avisos de novedades a cuentas registradas (contrato del 05/11/2026,
+   docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md). Apagado: la app no
+   enseña la casilla del alta, ni la tarjeta de Inicio, ni Perfil › Avisos, ni
+   llama a ninguna función de avisos; sus textos de hoy siguen siendo ciertos.
+   Solo lo enciende Víctor, con la base 30 aplicada y la plantilla de Auth
+   puesta. No toca SERVICIOS_USUARIO_REMOTOS ni pushDeliveryEnabled. */
+export const AVISOS_NOVEDADES_REMOTOS = false;
+
 export function modoLocalActivo() {
   return MODO_LOCAL === true;
 }

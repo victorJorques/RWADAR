@@ -13,7 +13,7 @@ function cuentaAdmitida(estado) {
 function clavesPrivadasDispositivo(claves) {
   return claves.filter(key => /^rwadar:cartera:v1:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key) ||
     /^rwadar\.cache\.catalogo\.v2:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key) ||
-    /^rwadar\.editorial\.(?:siguiendo|seguimiento\.pendiente|academy\.progreso\.v1|ofertas\.guardadas\.v1):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key));
+    /^rwadar\.editorial\.(?:siguiendo|seguimiento\.pendiente|academy\.progreso\.v1|ofertas\.guardadas\.v1|avisos\.leidos\.v1|avisos\.push\.v1):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key));
 }
 
 module.exports = { cuentaAdmitida, clavesPrivadasDispositivo };

@@ -18,7 +18,7 @@ import {
   ofertasGuardadas, alternarOfertaGuardada,
 } from './lib/datos';
 import {
-  MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, CUENTAS_REMOTAS, CORREO_AUTH_E2E,
+  MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, CUENTAS_REMOTAS, CORREO_AUTH_E2E, AVISOS_NOVEDADES_REMOTOS,
 } from './lib/modo-local';
 import { crearControladorCuentas } from './lib/cuentas';
 import { cuentaAdmitida } from './lib/acceso-obligatorio';
@@ -32,12 +32,16 @@ import {
   etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible,
 } from './lib/verificacion-local';
 import {
-  consultarEstadoAvisos, registrarParaAvisos, observarAperturasAvisos,
+  consultarEstadoAvisos, registrarParaAvisos, observarAperturasAvisos, capacidadPushNovedades,
 } from './lib/avisos';
 import Explicador from './componentes/Explicador';
 import Academy from './componentes/Academy';
 import Inicio from './componentes/Inicio';
 import Cuenta from './componentes/Cuenta';
+import {
+  useAvisosNovedades, PanelAvisosNovedades, TarjetaAvisosInicio, quitarPushAlSalir,
+} from './componentes/AvisosNovedades';
+import { destinoAviso } from './lib/avisos-cuenta';
 import { LECCIONES } from './lib/academy-contenido';
 import Radar from './componentes/Radar';
 import Marca from './componentes/Marca';
@@ -59,6 +63,9 @@ const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
 const USUARIO_LOCAL = MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true;
 // Las cuentas son independientes del seguimiento y los avisos de instalaciones.
 const CUENTA_REMOTA_ACTIVA = MODO_LOCAL === false && CUENTAS_REMOTAS === true && CORREO_AUTH_E2E === true;
+// Avisos de novedades a cuentas registradas (contrato del 05/11/2026). Apagado,
+// la app se ve y se comporta como antes.
+const AVISOS_NOVEDADES_ACTIVOS = CUENTA_REMOTA_ACTIVA && AVISOS_NOVEDADES_REMOTOS === true;
 
 async function abrirEnlace(url) {
   const valor = String(url || '').trim();
@@ -144,6 +151,7 @@ export default function App() {
   const [procesandoAvisos, setProcesandoAvisos] = useState(false);
   const [borrandoDatos, setBorrandoDatos] = useState(false);
   const [slugAvisoPendiente, setSlugAvisoPendiente] = useState(null);
+  const [destinoAvisoPendiente, setDestinoAvisoPendiente] = useState(null);
   // Las cuentas no habilitan el UUID de instalaciones, push ni seguimiento
   // antiguo. Su lista remota y los favoritos del dispositivo son distintos.
   const [cuenta, setCuenta] = useState(null);
@@ -154,6 +162,8 @@ export default function App() {
   const controladorActual = useRef(null);
   const usuarioAdmitido = cuentaAdmitida(estadoCuenta) ? estadoCuenta.usuario.id : null;
   const seguridad = useBloqueoApp({ usuarioId: CUENTA_REMOTA_ACTIVA ? usuarioAdmitido : null });
+  // Sin el interruptor, el hook no recibe cuenta y no llama a nada.
+  const novedadesCuenta = useAvisosNovedades({ cuenta, usuarioId: AVISOS_NOVEDADES_ACTIVOS ? usuarioAdmitido : null });
   const restaurarAcceso = useCallback(async (controlador) => {
     if (!CUENTA_REMOTA_ACTIVA || !controlador || controladorActual.current !== controlador) return;
     setRestaurandoAcceso(true); setErrorRestauracion('');
@@ -191,7 +201,9 @@ export default function App() {
     // Crear y liberar en el mismo efecto evita conservar un cliente del SDK
     // al desmontar App y también soporta el doble setup de React StrictMode.
     const controlador = crearControladorCuentas({ modoLocal: MODO_LOCAL,
-      cuentasRemotas: CUENTAS_REMOTAS, correoVerificado: CORREO_AUTH_E2E });
+      cuentasRemotas: CUENTAS_REMOTAS, correoVerificado: CORREO_AUTH_E2E,
+      avisosNovedades: AVISOS_NOVEDADES_REMOTOS === true,
+      antesDeSalir: AVISOS_NOVEDADES_REMOTOS === true ? quitarPushAlSalir : null });
     controladorActual.current = controlador;
     setCuenta(controlador);
     const cancelarSuscripcion = controlador.suscribir(setEstadoCuenta);
@@ -337,7 +349,29 @@ export default function App() {
   useEffect(() => observarAperturasAvisos((slug) => {
     setSlugAvisoPendiente(slug);
     return true;
-  }), []);
+  }, AVISOS_NOVEDADES_ACTIVOS ? {
+    // Notificación de novedades: solo lleva a una pestaña (inicio, buscar o academy).
+    onDestino: (aviso) => { setDestinoAvisoPendiente(aviso); return true; },
+  } : {}), []);
+  useEffect(() => {
+    if (!destinoAvisoPendiente || cargando || !usuarioAdmitido) return;
+    const { tipo, destino } = destinoAvisoPendiente;
+    setAbierta(null); setOfertaAbierta(null); setExplicando(false); setPrivacidad(false);
+    if (destino === 'academy') {
+      setLeccion(''); setPestana('academy');
+    } else if (destino === 'buscar') {
+      // Ofertas nuevas: «Más nuevas primero», sin filtros, como «Ver todas las ofertas nuevas».
+      if (tipo === 'ofertas') {
+        setOrdenOfertas('nuevas'); setGrupoOfertas('principales');
+        setTipoOferta(''); setProveedorOferta(''); setGrupoProveedorAbierto(''); setBusquedaOfertas('');
+      }
+      setVistaBuscar('ofertas'); setPestana('buscar');
+    } else {
+      setPestana('inicio');
+    }
+    novedadesCuenta.recargar();
+    setDestinoAvisoPendiente(null);
+  }, [destinoAvisoPendiente, cargando, usuarioAdmitido]);
   useEffect(() => {
     if (!slugAvisoPendiente || cargando) return;
     const plataforma = radar.find((p) => p.slug === slugAvisoPendiente);
@@ -357,6 +391,7 @@ export default function App() {
 
   const refrescar = async () => {
     setRefrescando(true);
+    if (AVISOS_NOVEDADES_ACTIVOS) novedadesCuenta.recargar();
     try {
       const actualizado = await traer();
       if (actualizado) tacto.novedad();
@@ -590,6 +625,13 @@ export default function App() {
       if (irADescartadas.current && pestana === 'buscar' && vistaBuscar === 'empresas') bajarADescartadas();
     }
   };
+  /* Un aviso de Inicio se marca como leído y lleva a su sitio dentro de la
+     app; si solo tiene un enlace de la web, lo abre. */
+  const abrirAvisoInicio = (aviso) => {
+    novedadesCuenta.marcarLeidos([aviso.id]);
+    const destino = destinoAviso(aviso);
+    if (destino) irA(destino.destino, destino.url);
+  };
   const ofertaPorSlug = useMemo(() => new Map(
     [...ofertas, ...secundario, ...enCamino].map((o) => [o.slug, o])), [ofertas, secundario, enCamino]);
   const ofertasGuardadasVisibles = useMemo(() => guardadas
@@ -656,7 +698,8 @@ export default function App() {
 
   if (fuentesListas && !usuarioAdmitido) {
     return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
-      <AccesoObligatorio controlador={cuenta} estado={estadoCuenta} onAbrirEnlace={abrirEnlace} aviso={avisoActualizacion} />
+      <AccesoObligatorio controlador={cuenta} estado={estadoCuenta} onAbrirEnlace={abrirEnlace} aviso={avisoActualizacion}
+        avisosNovedades={AVISOS_NOVEDADES_ACTIVOS} />
     </SafeAreaProvider>;
   }
 
@@ -728,6 +771,11 @@ export default function App() {
               onAbrirPlataforma={abrir}
               onAbrirOferta={(oferta) => { tacto.abrir(); setOfertaAbierta(oferta); }}
               onAbrirEnlace={abrirEnlace}
+              tarjetaAvisos={AVISOS_NOVEDADES_ACTIVOS ? (
+                <TarjetaAvisosInicio avisos={novedadesCuenta.avisos} leidos={novedadesCuenta.leidos}
+                  cargando={novedadesCuenta.cargando} error={novedadesCuenta.errorCarga}
+                  onAbrir={abrirAvisoInicio} onMarcarLeidos={novedadesCuenta.marcarLeidos} />
+              ) : null}
             />
           ) : null}
 
@@ -1039,6 +1087,12 @@ export default function App() {
                 { idioma, versionInstalada: actualizacion.versionInstalada }) : null}
               comprobandoVersion={actualizacion.resumen.tipo === 'comprobando'}
               onActualizarApp={actualizarApp}
+              avisosNovedades={AVISOS_NOVEDADES_ACTIVOS}
+              panelNovedades={AVISOS_NOVEDADES_ACTIVOS ? (
+                <PanelAvisosNovedades estado={novedadesCuenta} onAlternarNovedades={novedadesCuenta.alternarNovedades}
+                  onAlternarMovil={novedadesCuenta.alternarMovil} onAjustes={abrirAjustes}
+                  onReintentar={novedadesCuenta.recargar} />
+              ) : null}
             />
           ) : null}
         </View>
@@ -1046,7 +1100,7 @@ export default function App() {
         <Navegacion
           activa={destinoBarra}
           guardados={sigo.length + guardadas.length}
-          novedades={avisos.length}
+          novedades={avisos.length + (AVISOS_NOVEDADES_ACTIVOS ? novedadesCuenta.noLeidos : 0)}
           onCambiar={cambiarPestana}
         />
 
@@ -1080,7 +1134,9 @@ export default function App() {
         </Modal>
 
         <Privacidad visible={privacidad} onCerrar={() => setPrivacidad(false)} estadoCuenta={estadoCuenta} idioma={idioma}
-          onBorrar={confirmarBorrado} borrando={borrandoDatos} />
+          onBorrar={confirmarBorrado} borrando={borrandoDatos}
+          avisosNovedades={AVISOS_NOVEDADES_ACTIVOS} estadoNovedades={novedadesCuenta.servidor}
+          pushNovedades={AVISOS_NOVEDADES_ACTIVOS && capacidadPushNovedades()} />
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -1214,7 +1270,7 @@ function PantallaPerfil({
   seguidas, ofertasGuardadas, guardadasRetiradas = 0, sinConexion, estadoAvisos, procesandoAvisos,
   refrescando, borrando, onActualizar, onAbrirEmpresa, onAbrirOferta, onExplorar, onActivarAvisos, onAjustes,
   onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar, inversionInicial, onConsumirInversion,
-  idioma, textosVersion, comprobandoVersion, onActualizarApp,
+  idioma, textosVersion, comprobandoVersion, onActualizarApp, avisosNovedades = false, panelNovedades = null,
 }) {
   const total = seguidas.length + ofertasGuardadas.length;
   const usuarioCartera = estadoCuenta?.estado === 'autenticada' ? estadoCuenta.usuario?.id : null;
@@ -1238,7 +1294,7 @@ function PantallaPerfil({
             onConsumirOferta={onConsumirInversion} cargar={carteraCuenta?.cargar} guardar={carteraCuenta?.guardar} />
       ) : null}
       {cuenta ? <Cuenta controlador={cuenta} estado={estadoCuenta} seguridad={seguridad} plataformas={plataformas}
-        onAbrirEmpresa={onAbrirEmpresa} onAbrirEnlace={onAbrirEnlace} /> : (
+        onAbrirEmpresa={onAbrirEmpresa} onAbrirEnlace={onAbrirEnlace} avisosNovedades={avisosNovedades === true} /> : (
       <View style={e.resumenDispositivo}>
         <View style={e.resumenMarca}><Marca tamano={48} /></View>
         <View style={{ flex: 1 }}>
@@ -1291,6 +1347,14 @@ function PantallaPerfil({
         </Text>
       ) : null}
 
+      {/* Con AVISOS_NOVEDADES_REMOTOS, Perfil › Avisos son los dos interruptores
+          de la cuenta; sin él, la tarjeta «Próximamente» de siempre. */}
+      {panelNovedades ? (
+        <View style={e.grupoSeccion}>
+          <Text style={e.grupoTitulo}>Avisos</Text>
+          {panelNovedades}
+        </View>
+      ) : (
       <View style={e.grupoSeccion}>
         <Text style={e.grupoTitulo}>Avisos</Text>
         {USUARIO_LOCAL ? (
@@ -1307,6 +1371,7 @@ function PantallaPerfil({
             procesando={procesandoAvisos} onActivar={onActivarAvisos} onAjustes={onAjustes} />
         )}
       </View>
+      )}
 
       <GrupoMenu titulo="Entender RWAdar">
         <FilaMenu
@@ -1682,7 +1747,11 @@ function PiePrivacidad({ onAbrir }) {
   );
 }
 
-function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idioma }) {
+/* avisosNovedades: interruptor AVISOS_NOVEDADES_REMOTOS; estadoNovedades: lo
+   que dice la base (correo y push encendidos); pushNovedades: este binario
+   puede pedir notificaciones (código 24 o más). Apagados, los textos de hoy. */
+function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idioma,
+  avisosNovedades = false, estadoNovedades = null, pushNovedades = false }) {
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onCerrar}>
       <SafeAreaProvider>
@@ -1702,13 +1771,17 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
               <>
                 <Text style={e.privacidadTit}>Tu cuenta en la app y funciones personales de la web</Text>
                 <Text style={e.privacidadParrafo}>
-                  Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. RWAdar no guarda la contraseña en el dispositivo.
+                  {avisosNovedades && estadoNovedades?.correoActivo === true
+                    ? 'Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. Al confirmar la cuenta, RWAdar te envía un correo de bienvenida y, solo si lo pides, los avisos de novedades, a través de Brevo, sin píxel ni seguimiento de clics. RWAdar no guarda la contraseña en el dispositivo.'
+                    : 'Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. RWAdar no guarda la contraseña en el dispositivo.'}
                 </Text>
                 <Text style={e.privacidadParrafo}>
                   Tu lista de seguimiento y tu registro manual de inversiones se guardan de forma privada en Supabase, asociados a tu cuenta, para consultarlos y modificarlos desde la web y la app con cartera sincronizada. El registro incluye los nombres y proveedores que escribas, moneda, compras, ventas, cobros, gastos y valoraciones con sus cantidades, precios, comisiones y fechas. RWAdar no conecta con tus proveedores ni importa compras o precios automáticamente. No se envían los favoritos locales ni el progreso de Academy.
                 </Text>
                 <Text style={e.privacidadParrafo}>
-                  La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. No se activan opiniones, publicidad, avisos por correo ni push al registrarte.
+                  {avisosNovedades
+                    ? 'La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. Al registrarte no se activan opiniones ni publicidad. Los avisos de novedades solo se activan si marcas su casilla al crear la cuenta o los activas en Perfil › Avisos.'
+                    : 'La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. No se activan opiniones, publicidad, avisos por correo ni push al registrarte.'}
                 </Text>
                 <Text style={e.privacidadParrafo}>
                   La copia de inversiones de una versión anterior se conserva en este dispositivo. No se sube automáticamente: solo puedes importarla con tu confirmación cuando el registro de la cuenta está vacío. Importarla no borra la copia local ni combina o sustituye inversiones que ya estén en tu cuenta.
@@ -1750,11 +1823,27 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                 <Text style={e.privacidadParrafo}>
                   La caché del catálogo también se separa por cuenta. Antes de leerla se necesita conexión para verificar la sesión actual; no permite entrar sin conexión. Si no puede actualizarse una copia completa, se conserva la anterior tras verificar la sesión y se avisa de su fecha. Las cifras vencidas se ocultan.
                 </Text>
+                {avisosNovedades ? (
+                  <>
+                    <Text style={e.privacidadTit}>Avisos de novedades</Text>
+                    <Text style={e.privacidadParrafo}>
+                      Los avisos de novedades (ofertas nuevas en el radar y novedades de la web y la app) solo se activan con tu permiso: con su casilla al crear la cuenta o en Perfil › Avisos. Se guarda en tu cuenta si los aceptaste, cuándo, desde dónde y con qué texto. Puedes darte de baja en cada aviso o en Perfil. Los avisos se ven también en Inicio; qué avisos has leído se guarda solo en este dispositivo.
+                    </Text>
+                    <Text style={e.privacidadParrafo}>
+                      {pushNovedades
+                        ? 'Si activas «Notificaciones en este móvil», el sistema te pedirá permiso y se guarda en tu cuenta un identificador de entrega de este móvil y si es Android o iOS. Expo y Firebase Cloud Messaging lo usan para entregar cada notificación, que no lleva datos personales. Se borra al desactivarlas o al cerrar sesión. Las instalaciones antiguas siguen desactivadas.'
+                        : 'Esta versión no solicita permisos push ni obtiene tokens: las notificaciones en el móvil llegan con la versión 1.4.2. Las instalaciones antiguas siguen desactivadas.'}
+                    </Text>
+                  </>
+                ) : (
+                  <>
                 <Text style={e.privacidadTit}>{estadoCuenta?.disponible
                   ? 'Instalaciones y avisos desactivados' : 'Servicios de usuario desactivados'}</Text>
                 <Text style={e.privacidadParrafo}>
                   No se solicitan permisos push, obtienen tokens ni registran instalaciones. Cambiar de catálogo local a conectado no activa estos servicios.
                 </Text>
+                  </>
+                )}
                 <Text style={e.privacidadTit}>Borrado limitado a esta versión</Text>
                 <Text style={e.privacidadParrafo}>
                   El botón elimina las empresas y ofertas guardadas, las inversiones registradas de todas las cuentas en este dispositivo, el progreso de la Academy y las cachés del catálogo. No modifica identificadores o seguimientos de versiones anteriores ni elimina datos del servidor. Para solicitar acceso o borrado de datos históricos, usa «Contactar sobre mis datos».
