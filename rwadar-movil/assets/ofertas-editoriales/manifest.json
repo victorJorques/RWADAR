@@ -127,26 +127,6 @@
       "revisadoEl": "2026-11-02"
     },
     {
-      "slug": "casa-de-outeiro",
-      "categoria": "Acciones y capital privado",
-      "archivo": "oferta-casa-de-outeiro.webp",
-      "ancho": 960,
-      "alto": 660,
-      "bytes": 110174,
-      "hashSha256": "bf46b53cc08fc63d7bc45e132dd127f08cb5904de9de5bb9836990a667a11d6e",
-      "alt": "Ilustración editorial de una casa solariega de piedra restaurada entre viñedos en terrazas sobre un cañón fluvial de la Ribeira Sacra, parecida a la real, imagen generada con IA. Pasos: suscribes la ampliación; recibes tus acciones; socio de bodega y hotel. No es una foto del activo real.",
-      "concepto": "una casa solariega de piedra restaurada entre viñedos en terrazas sobre un cañón fluvial de la Ribeira Sacra, parecida a la real",
-      "pasos": [
-        "Suscribes la ampliación",
-        "Recibes tus acciones",
-        "Socio de bodega y hotel"
-      ],
-      "lugar": "Ribeira Sacra · Lugo",
-      "origen": "foto-generada",
-      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
-    },
-    {
       "slug": "drautalresidenz-paternion",
       "categoria": "Inmobiliario",
       "archivo": "oferta-drautalresidenz-paternion.webp",
@@ -422,26 +402,6 @@
         "Reventa entre socios"
       ],
       "lugar": "Zúrich · Suiza",
-      "origen": "foto-generada",
-      "modelo": "RealVisXL V5.0 Lightning (SG161222)",
-      "revisadoEl": "2026-11-02"
-    },
-    {
-      "slug": "terreno-con-arrendamiento-billa",
-      "categoria": "Inmobiliario",
-      "archivo": "oferta-terreno-con-arrendamiento-billa.webp",
-      "ancho": 960,
-      "alto": 660,
-      "bytes": 120624,
-      "hashSha256": "5ed61523549f1bcaa4e1a87253d3a050dbe9dfe89544a3419999a2ddee6c9b98",
-      "alt": "Ilustración editorial de un supermercado sin marca en su propio solar en un valle de Carintia, visto desde el aire, imagen generada con IA. Pasos: compras en la emisión; un súper alquila el suelo; reparto o venta futura. No es una foto del activo real.",
-      "concepto": "un supermercado sin marca en su propio solar en un valle de Carintia, visto desde el aire",
-      "pasos": [
-        "Compras en la emisión",
-        "Un súper alquila el suelo",
-        "Reparto o venta futura"
-      ],
-      "lugar": "Brückl · Austria",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
       "revisadoEl": "2026-11-02"

@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 05/11: entrega 2026-11-05 (investigación del día de las 24 ofertas, revisión cede1f27) aplicada y sincronizada; tarjetas de Ofertas más sencillas en web y app. npm test completo en verde.",
+  "nota": "Claude, 05/11: entrega 2026-11-05.2 (salen BILLA y Casa de Outeiro por decisión de Víctor; acceso de Spiko con la CNMV; web de Pax Gold) aplicada y sincronizada (revisión 88d5a757); remates de transparencia, Hausera y datos personales. npm test completo en verde.",
   "revisionAprobada": {
-    "commit": "7a1008ac62bfbadca7d8a9776cbce3b41c356ab7",
-    "contenidoSha256": "sha256:65d22f4b4fd9e6ffafa7d425e015a597fcf527987c600161d7eab3288bd7ff5e",
+    "commit": "5939684dd0d9d96dd0f60100a3e9c61ef877ec16",
+    "contenidoSha256": "sha256:3435001849f87400a8f736659660bac097ad3e17d66346de9e0002fc08ad1e46",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
