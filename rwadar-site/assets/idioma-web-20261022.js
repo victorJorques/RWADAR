@@ -30,9 +30,9 @@
   // Solo cambia la interfaz. Datos, citas, nombres y texto documental no
   // pasan por el diccionario aunque coincidan con una etiqueta como Inicio.
   const originales=[
-    '#emiLista .emi-tit','#emiLista .emi-donde','#emiLista .emi-lugar',
+    '#emiLista .emi-tit','#emiLista .emi-donde','#emiLista .emi-lugar [lang="es"]',
     '#movilPanelInicio .inicio-oferta-tit','#movilPanelInicio .inicio-oferta-prov','#movilPanelInicio .inicio-oferta-aviso','.escaparate-comprobacion-motivo-fuente','.escaparate-comprobacion-dato','.escaparate-fuente-titulo',
-    '#emiLista .escaparate-dato-principal b','#emiLista .escaparate-referencia','#emiLista .escaparate-aviso-compacto',
+    '#emiLista .escaparate-dato-principal b','#emiLista .escaparate-referencia','#emiLista .escaparate-aviso-compacto>[lang="es"]',
     '.escaparate-datos-clave dd:has(a)>.dato-fuente','.escaparate-datos-clave dd:has(a)>.escaparate-cita-original','#emiLista time','.escaparate-dialogo-cab h2','.escaparate-dialogo-imagen img',
     '.escaparate-dialogo-identidad','.escaparate-dialogo-resumen','.escaparate-documentacion-caracteristicas',
     // De las referencias fechadas solo son de la fuente el rótulo original, el valor y el alcance.

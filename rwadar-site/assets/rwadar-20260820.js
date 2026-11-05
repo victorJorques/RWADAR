@@ -2026,7 +2026,7 @@ function tarjetaNuevaHtml(o,i){
   /* Lugar en su propio bloque (no empieza línea con «·»); el país se traduce. */
   '<p class="rel-tarjeta-plat"><span translate="no" lang="es">'+escHtml(o.plataformaNombre||'')+'</span>'+(img&&img.lugar?' · '+lugarTarjetaHtml(img.lugar):'')+'</p>'+
   '<p class="rel-tarjeta-nota">'+escHtml(NOTAS_SELECCION[o.slug]||'Puedes perder parte o todo lo que inviertas.')+'</p>'+
-  (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · '+escHtml(textoLocal(bloqueo.texto))+'</p>':'')+
+  (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
   '<p class="rel-nueva-meta">'+(ofertaNueva(o)?'<span class="etq etq-ok">Nueva</span> ':'')+'<span><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></span></p></div></article></li>';
 }
 /* Las fotos de la Selección se piden al acercarse a la pantalla: con solo
@@ -2632,10 +2632,12 @@ function datosCortosOferta(o,resumen){
   textoBreveDatoTarjetaLocal(resumen.minimo);
  return {minimo,espana:textoEspanaOferta(resumen),espanaCorta:textoEspanaOferta(resumen,true),salida:textoSalidaOferta(o,resumen)};
 }
-/* La tarjeta de la lista: una sola línea con el mínimo y el acceso desde España. */
-function datosTarjetaOfertaHtml(o,resumen){
+/* La tarjeta de la lista: una sola línea con el mínimo y el acceso desde España.
+   Si la oferta no se contrata desde España, el dato dice «No» (nunca «Sin
+   confirmar» al lado de «No disponible en España»). */
+function datosTarjetaOfertaHtml(o,resumen,noEspana=false){
  const d=datosCortosOferta(o,resumen);
- return '<dl class="escaparate-datos-clave escaparate-datos-linea">'+[['Mínimo',d.minimo],['España',d.espanaCorta]]
+ return '<dl class="escaparate-datos-clave escaparate-datos-linea">'+[['Mínimo',d.minimo],['España',noEspana?'No':d.espanaCorta]]
   .map(([dt,dd])=>'<div><dt>'+escHtml(dt)+'</dt><dd>'+escHtml(dd)+'</dd></div>').join('')+'</dl>';
 }
 /* Un problema de la revisión (caducada, no verificable o con fuentes en
@@ -2688,11 +2690,12 @@ function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
     (nueva?'<span class="etq etq-ok emi-nueva">Nueva</span>':'')+'</p>':'')+
    '<h'+nivel+' class="emi-tit" title="'+escHtml(o.titulo)+'">'+escHtml(o.titulo)+'</h'+nivel+'>'+
    '<p class="escaparate-procedencia"><b class="emi-donde">'+escHtml(o.plataformaNombre)+'</b>'+
-   (imagen&&imagen.lugar?'<span class="emi-lugar">'+escHtml(imagen.lugar)+'</span>':'')+'</p>'+
-   datosTarjetaOfertaHtml(o,resumen)+
+   /* La ciudad es un dato (no se traduce); el país, sí, como en «Recién añadidas». */
+   (imagen&&imagen.lugar?'<span class="emi-lugar">'+lugarTarjetaHtml(imagen.lugar)+'</span>':'')+'</p>'+
+   datosTarjetaOfertaHtml(o,resumen,noEspana)+
    (revision||noEspana?'<p class="escaparate-alertas">'+(revision?'<span class="escaparate-estado escaparate-estado-linea caducado">'+escHtml(revision)+'</span>':'')+
     (noEspana?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+'</p>':'')+
-   (bloqueo?'<p class="escaparate-aviso-compacto escaparate-aviso-bloqueo"><b>Importante</b> · '+escHtml(textoLocal(bloqueo.texto))+'</p>':'')+
+   (bloqueo?'<p class="escaparate-aviso-compacto escaparate-aviso-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
    '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'"><span aria-hidden="true">›</span></button>'+
   '</div></article>';
 }
@@ -2771,8 +2774,14 @@ function dialogoOfertaLocal(){
  d.addEventListener('close',()=>{
   document.body.classList.remove('detalle-local-abierto');
   restaurarFocoOfertaLocal(d);
-  /* Cerrada con ×, Escape o el fondo: se retira su paso del historial. */
-  if(d.rwadarHistorial){d.rwadarHistorial=false;if(history.state&&history.state.rwadarOferta)history.back();}
+  /* Cerrada con ×, Escape o el fondo: se retira su paso del historial. Al
+     volver atrás, Chrome aplica otra vez el #fragmento y deja el foco en
+     <body>: se devuelve a la tarjeta en cuanto termina. */
+  if(d.rwadarHistorial){d.rwadarHistorial=false;if(history.state&&history.state.rwadarOferta){
+   const foco=document.activeElement;
+   if(foco&&foco!==document.body)window.addEventListener('popstate',()=>setTimeout(()=>{
+    const ahora=document.activeElement;if(document.contains(foco)&&(!ahora||ahora===document.body))foco.focus({preventScroll:true});},0),{once:true});
+   history.back();}}
  });
  /* Atrás cierra la ficha y deja la página donde estaba, sin salir de la web. */
  if(typeof window!=='undefined'&&typeof window.addEventListener==='function')window.addEventListener('popstate',()=>{

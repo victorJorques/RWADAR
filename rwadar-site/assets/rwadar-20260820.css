@@ -855,15 +855,15 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .escaparate-dato-principal>b{margin-top:3px;font:700 1.5rem/1.35 var(--body);color:var(--tx)}
 .escaparate-dato-principal .escaparate-referencia{font-family:var(--body);font-size:.875rem;line-height:1.5}
 .escaparate-estado.escaparate-estado-linea{justify-self:start}
-.escaparate-no-disponible{color:var(--aviso);font-size:.75rem;line-height:1.4}
-.escaparate-patrocinada{justify-self:start;color:var(--senal);font-size:.75rem;font-weight:700}
+.escaparate-no-disponible{color:var(--alarma);font-size:.75rem;line-height:1.4}
+.escaparate-patrocinada{justify-self:start;color:var(--tx-2);font-size:.75rem;font-weight:700}
 .escaparate-oferta .escaparate-detalle-boton{white-space:nowrap}
 .escaparate-detalle-boton:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
 .escaparate-aviso-compacto{margin:0;padding:7px 8px;border-left:2px solid var(--aviso);border-radius:0 var(--r-s) var(--r-s) 0;
   background:var(--aviso-t);color:var(--tx-2);font-size:.875rem;line-height:1.5;overflow-wrap:anywhere}
 .escaparate-aviso-bloqueo{border-color:var(--alarma);background:var(--alarma-t)}
 .escaparate-aviso-compacto.escaparate-aviso-bloqueo b{color:var(--alarma)}
-.escaparate-aviso-compacto b{color:var(--aviso)}.escaparate-aviso-compacto span{color:var(--tx-3)}
+.escaparate-aviso-compacto b{color:var(--aviso)}
 .escaparate-secundario{margin-top:34px;overflow:hidden}
 .escaparate-seccion-cab{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0;padding:17px 18px;
   cursor:pointer;list-style:none}
@@ -1781,16 +1781,20 @@ body.detalle-local-abierto{overflow:hidden}
 .emis-rejilla .escaparate-oferta:hover,.ofertas-grupo-rejilla .escaparate-oferta:hover{
   border-color:var(--linea)}
 /* Tarjeta sencilla (05/11/2026): título, proveedor · lugar y una línea con
-   Mínimo y España; «›» a su lado. «Nueva» y «Patrocinada», sobre la foto. */
-.escaparate-oferta .escaparate-cuerpo{display:grid;flex:1 1 auto;grid-template-columns:minmax(0,1fr) auto;
-  grid-template-areas:"tit tit" "proc proc" "datos ver" "alertas alertas" "aviso aviso";align-content:start;gap:0 12px;padding:16px 18px 18px}
+   Mínimo y España; «›» a su lado. «Nueva» y «Patrocinada», sobre la foto.
+   La línea de datos baja al pie, alineada en toda la fila, sin reservar un
+   hueco bajo los títulos cortos: las tarjetas de una fila miden lo mismo. */
+.emis-rejilla .escaparate-oferta{align-self:stretch}
+.escaparate-oferta .escaparate-cuerpo{display:grid;flex:1 1 auto;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto 1fr auto auto;
+  grid-template-areas:"tit tit" "proc proc" "datos ver" "alertas alertas" "aviso aviso";gap:0 12px;padding:16px 18px 18px}
 .escaparate-oferta .escaparate-marcas{position:absolute;z-index:2;top:10px;left:10px;display:flex;flex-wrap:wrap;gap:6px;margin:0;pointer-events:none}
 .escaparate-oferta .escaparate-marcas>span{padding:4px 10px;border-radius:var(--r-p);background:rgba(11,10,10,.72);color:var(--senal);font:600 .75rem/1.3 var(--body)}
-.escaparate-oferta .escaparate-cuerpo .emi-tit{grid-area:tit;min-height:2.6em;font-size:1.125rem;line-height:1.3;letter-spacing:-.01em}
+.escaparate-oferta .escaparate-marcas>.escaparate-patrocinada{color:var(--tx)}
+.escaparate-oferta .escaparate-cuerpo .emi-tit{grid-area:tit;min-height:0;font-size:1.125rem;line-height:1.3;letter-spacing:-.01em}
 .escaparate-oferta .escaparate-procedencia{grid-area:proc;display:flex;flex-wrap:wrap;min-width:0;margin:4px 0 0 -16px;color:var(--tx-2);font-size:.875rem;line-height:1.4}
 .escaparate-oferta .emi-donde{display:inline;margin:0;color:inherit;font:inherit;font-weight:600}
 .escaparate-oferta .emi-lugar{color:var(--tx-3)}
-.escaparate-oferta .escaparate-datos-linea{grid-area:datos;align-self:center;display:flex;flex-wrap:wrap;gap:0;margin:12px 0 0 -16px;font-size:.875rem;line-height:1.4}
+.escaparate-oferta .escaparate-datos-linea{grid-area:datos;align-self:end;display:flex;flex-wrap:wrap;gap:0;margin:12px 0 0 -16px;font-size:.875rem;line-height:1.4}
 .escaparate-datos-linea>div{display:block}
 .escaparate-datos-linea>div:last-child{white-space:nowrap}
 /* El «·» va delante de cada dato y la franja de 16 px de la izquierda se
@@ -1906,6 +1910,7 @@ Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
 #emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar.on::after{-webkit-mask-image:var(--i-estrella-llena);mask-image:var(--i-estrella-llena)}
 #emiLista .escaparate-oferta .escaparate-marcas{position:static;grid-area:marcas;margin:0 0 4px;pointer-events:auto}
 #emiLista .escaparate-oferta .escaparate-marcas>span{padding:1px 7px;border-radius:var(--r-s);background:var(--senal-t);font-size:.6875rem;line-height:1.45}
+#emiLista .escaparate-oferta .escaparate-marcas>.escaparate-patrocinada{background:var(--ton-2);color:var(--tx-2)}
 #emiLista .escaparate-oferta .emi-tit{grid-area:tit;display:-webkit-box;min-height:0;margin:0;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font:700 1rem/1.25 var(--display);letter-spacing:-.01em}
 #emiLista .escaparate-oferta .escaparate-procedencia{grid-area:proc;display:flex;flex-wrap:wrap;min-width:0;margin:3px 0 0 -16px;overflow:hidden;color:var(--tx-2);font-size:.8125rem;line-height:1.35;white-space:nowrap}
 #emiLista .escaparate-oferta :is(.emi-donde,.emi-lugar){display:block;flex:0 1 auto;min-width:0;margin:0;overflow:hidden;font:inherit;color:inherit;text-overflow:ellipsis}

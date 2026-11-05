@@ -474,8 +474,13 @@ test('sin revisión vigente la tarjeta dice el problema sin cifras; reventa y pr
   const caducado = ui.FichaOferta({ oferta: dato({ disponibleEs: false }), catalogoCaducado: true, nueva: true });
   assert.match(textoVisible(caducado), /Cifras por actualizar/);
   assert.doesNotMatch(textoVisible(caducado), /Nueva|No disponible en España/);
-  // En plazo y fuera de España, sí lo dice.
-  assert.match(textoVisible(ui.FichaOferta({ oferta: dato({ disponibleEs: false }) })), /No disponible en España/);
+  assert.deepEqual(datosTarjeta(ui, caducado)[1], ['España', 'Sin confirmar']);
+  // En plazo y fuera de España, sí lo dice, y el dato de España dice «No»:
+  // nunca «Sin confirmar» al lado de «No disponible en España» (igual que la web).
+  const fueraDeEspana = ui.FichaOferta({ oferta: dato({ disponibleEs: false }) });
+  assert.match(textoVisible(fueraDeEspana), /No disponible en España/);
+  assert.deepEqual(datosTarjeta(ui, fueraDeEspana)[1], ['España', 'No']);
+  assert.doesNotMatch(textoVisible(fueraDeEspana), /Sin confirmar/);
   for (const [coleccion, supra, estado] of [['secundario', 'Reventa entre inversores', /sin confirmar que se pueda operar/],
     ['en_camino', 'Próxima', /sin confirmar que abra/]]) {
     const oferta = dato({ coleccion, tipo: coleccion === 'secundario' ? 'secundario' : 'rendimiento' });

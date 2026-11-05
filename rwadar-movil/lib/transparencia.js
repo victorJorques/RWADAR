@@ -203,8 +203,10 @@ export function textoEspanaOferta(resumen, corto = false) {
 
 /* La tarjeta de la lista (05/11/2026): solo dos datos, el mínimo de
    datosCortosOferta y España en corto. Sin cifras nuevas: con la revisión o
-   el catálogo caducados manda lo mismo que en la ficha. */
-export function datosTarjetaOferta(oferta, resumen, opciones = {}) {
+   el catálogo caducados manda lo mismo que en la ficha. Si la oferta no se
+   contrata desde España (noEspana), el dato dice «No»: nunca «Sin confirmar»
+   al lado de «No disponible en España». Igual que la web. */
+export function datosTarjetaOferta(oferta, resumen, { noEspana = false, ...opciones } = {}) {
   const [minimo] = datosCortosOferta(oferta, resumen, opciones);
-  return [minimo, ['España', textoEspanaOferta(resumen, true)]];
+  return [minimo, ['España', noEspana ? 'No' : textoEspanaOferta(resumen, true)]];
 }

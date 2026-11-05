@@ -614,7 +614,7 @@ function webV2Cliente(lote, ahora = new Date('2026-09-27T12:00:00Z')) {
     'recordarManifiestoCatalogoV2', 'edadLoteDias', 'validarRevisionCatalogo',
     'fechaOfertaPublicaValida', 'ofertaCatalogoRemota', 'tipoEmpresaVisible', 'plataformaRemota', 'plataformaCatalogoRemota',
     'validarLoteCatalogoRemotoV2', 'comprobarCatalogoEmbebido', 'textoAvisoCatalogo', 'textoPieRevision',
-    'pintarAvisoCatalogo', 'pintarEmisiones', 'seccionReferenciasCatalogo']);
+    'pintarAvisoCatalogo', 'pintarEmisiones', 'seccionReferenciasCatalogo', 'lugarTarjetaHtml']);
   const fecha = contexto.validarLoteCatalogoRemotoV2(lote.plataformas, lote.ofertas);
   contexto.P = lote.plataformas.map(p => contexto.plataformaCatalogoRemota(p, fecha));
   contexto.EMI = lote.ofertas.map(o => contexto.ofertaCatalogoRemota(o, fecha));

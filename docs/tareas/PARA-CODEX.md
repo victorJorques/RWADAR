@@ -6,6 +6,85 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de noviembre de 2026 (3) · Claude · correcciones de la revisión de las tarjetas sencillas (sin publicar)
+
+Misma rama local `claude/tarjetas-simples` (worktree `tarjetas-simples`), un
+commit encima de los dos de abajo. **Sin push, sin OTA, sin EAS y sin tocar
+Supabase.** Un revisor independiente pidió dos correcciones y propuso varias
+mejoras. Están todas hechas salvo las dos que no hacían falta.
+
+**Correcciones obligatorias (web, en inglés):**
+- **El lugar de la tarjeta de Ofertas** salía en castellano en las 24 ofertas
+  («Estados Unidos», «Limasol · Chipre»), mientras «Recién añadidas» y la app
+  ya decían «United States» y «Limasol · Cyprus». Ahora la tarjeta pinta el
+  lugar con `lugarTarjetaHtml`: la ciudad es un dato y no se traduce; el país,
+  sí. En `idioma-web`, `originales` protege solo la ciudad
+  (`#emiLista .emi-lugar [lang="es"]`).
+- **El aviso crítico** empezaba por «Importante» también en inglés. Ahora dice
+  «Important · …» y el texto del aviso, que viene del catálogo, sigue en
+  castellano (`<span lang="es" translate="no">`, y `originales` protege solo
+  ese texto). Igual en «Recién añadidas».
+
+**Mejoras propuestas por el revisor, aplicadas:**
+- **Escritorio y tableta**: ya no queda un hueco bajo los títulos cortos. Las
+  tarjetas de una fila miden lo mismo y la línea «Mínimo · España» va al pie,
+  alineada en toda la fila (medido a 820 y 1366 px).
+- **«Patrocinada»** va en gris neutro, como en la app. El verde queda para
+  «Nueva» y la acción principal.
+- **«No disponible en España»** va en rojo en la web, como en la app.
+- **España dice «No»** (web y app) cuando la oferta no se contrata desde
+  España. Antes podía decir a la vez «España Sin confirmar» y «No disponible
+  en España». Hoy no pasa con datos reales.
+- **Teclado**: al cerrar la ficha con Escape o con ×, el foco vuelve a la
+  tarjeta. Antes acababa en `<body>`, porque al volver atrás en el historial
+  Chrome aplica otra vez el `#emisiones`. Si la persona ya ha movido el foco,
+  no se lo quita.
+- El texto del aviso crítico ya no sale atenuado. Quité la regla antigua que
+  apagaba el «N más en la ficha», que ya no existe.
+- Corregida la nota de la entrada «(2)» sobre Spiko Euro: ese fallo no existe.
+
+**No hacía falta tocar:** con el catálogo caducado, a 390 px «Mínimo No
+verificado · España Sin confirmar» ocupa dos líneas y se lee bien. Los mínimos
+de Reventa llevan su fecha dentro del valor (sale de `minimoCorto`, como
+antes).
+
+**Pruebas:**
+- `npm test` completo en verde:
+  - web: 601/0, más 71 de páginas y 32 de precarga;
+  - móvil: 412 pruebas, 410 correctas, 0 fallidas y 2 omitidas;
+  - acceso: 146/0;
+  - db: 11/11 y 30 comprobaciones SQL;
+  - tools en verde, con «Motor y diccionario ES/EN web/móvil idénticos».
+- `comprobar-ota-compatible.cjs --base c1f7106…`: `ok: true`.
+- Pruebas nuevas en `rwadar-app/probar-web-tarjeta.mjs`, que se llaman desde
+  `probar-web.mjs`. Ejecutan el traductor real de la web (`idioma-en`, `idioma`
+  e `idioma-web`) sobre el HTML real de las 24 tarjetas, en un DOM mínimo, y
+  leen lo que sale. Comprueban que:
+  - el país va en inglés y la ciudad tal cual;
+  - el aviso crítico dice «Important ·» y su texto sigue en castellano, en
+    Ofertas y en «Recién añadidas»;
+  - el botón de cada tarjeta se llama «View details for <título> from
+    <plataforma>».
+
+  Además, el foco al cerrar la ficha, el gris de «Patrocinada», el rojo de «No
+  disponible en España», la línea de datos al pie y el «No» de España en la
+  web y en la app.
+- Comprobación de las pruebas: provoqué 10 fallos a propósito y las pruebas
+  pillaron los 10 (2 del lugar, 4 del aviso, 2 de España y 2 del foco).
+- Capturas (Chromium, modo oscuro) en el scratchpad, `tarjetas-simples/final-*.png`:
+  390×844 ES/EN, 1366×860 ES/EN, 360 y 820, y un ensayo con «Patrocinada»,
+  «No disponible en España» y un aviso crítico. Sin errores de página ni
+  desborde horizontal.
+
+**Queda pendiente:**
+- Probar la app en un Android de verdad: las capturas de la app de la entrada
+  «(2)» se hicieron con react-native-web.
+- Publicar la web y enviar la OTA necesitan el permiso de Víctor.
+- `probar-web.mjs` sigue por encima del aviso 5S (243 KB; ya lo estaba). Las
+  pruebas nuevas van en su propio archivo.
+
+---
+
 ## 5 de noviembre de 2026 (2) · Claude · la misma tarjeta sencilla en la app Android (sin publicar)
 
 Misma rama local `claude/tarjetas-simples` (worktree `tarjetas-simples`), un
@@ -93,11 +172,12 @@ Supabase.** Completa lo que la entrada de abajo dejaba pendiente para la app.
   - desaparece el problema de la revisión.
 
 **Queda pendiente:**
-- **Web, accesibilidad en inglés**: el patrón `Ver ficha de (.+?) en (.+)` de
-  `lib/idioma.js` parte el título por su primer «en». En la web en inglés, el
-  nombre del botón de Spiko Euro (Smart Cash) se lee «View details for Spiko
-  Euro (Smart Cash): fondo from euros ligado al €STR en Spiko». La app ya no
-  usa ese patrón.
+- ~~Web, accesibilidad en inglés: el nombre del botón de Spiko Euro se parte
+  por su primer «en».~~ **No pasa** (corregido en la revisión de abajo, entrada
+  «(3)»): antes de aplicar el patrón, `idioma-web` cambia el título y la
+  plataforma por marcadores, así que en el navegador se lee entero: «View
+  details for Spiko Euro (Smart Cash): fondo en euros ligado al €STR from
+  Spiko». Una prueba nueva lo comprueba en las 24 ofertas.
 - **Probarlo en un Android de verdad**: las capturas se hicieron con
   react-native-web, no en el dispositivo.
 - **Publicar** la web y enviar la OTA necesitan el permiso de Víctor.

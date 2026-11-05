@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
 import { pruebaActivacionCache, pruebaActivacionSinMigracion, pruebaRedConCacheRota, pruebaActualizacionPWACliente } from './probar-web-pwa.mjs';
 import { probarEscritorio, probarTarjetaYComparador } from './rwadar-app/probar-web-escritorio.mjs';
+import { probarTarjetaEnIngles, probarFocoAlCerrarFicha } from './rwadar-app/probar-web-tarjeta.mjs';
 import { spawn, spawnSync } from 'node:child_process';
 
 const raiz = path.dirname(fileURLToPath(import.meta.url));
@@ -2021,6 +2022,7 @@ for(const fallo of ['incompleto','transporte']){
   prueba('cerrar la ficha mantiene primero el origen vivo aunque exista otro botón del mismo slug',
     focos.length===2&&focos[1].slug==='origen-vivo'&&focos[1].opciones.preventScroll===true);
 }
+probarFocoAlCerrarFicha({ p: pestanaCatalogo(), prueba });
 {
   const p=pestanaCatalogo({codigo:jsPublicado}),c=p.contexto;
   for(const slug of ['backed-finance','franklin-templeton','midas','openeden','superstate']){
@@ -2160,6 +2162,19 @@ for(const [nombre,alterar] of [
     /font:\d+ \.75rem/.test(dt)&&!/text-transform/.test(dt)&&/flex-wrap:wrap/.test(d(cssMovil,'#emiLista .escaparate-oferta .escaparate-procedencia'))&&
     /flex:none/.test(d(cssMovil,'#emiLista .escaparate-oferta .emi-lugar'))&&/<h3 id="emiSeleccionTit">[\s\S]*?<h4 class="emi-tit"/.test(sin)&&
     !/<h3 class="emi-tit"/.test(sin.slice(0,sin.indexOf('catalogo-referencias'))));
+  // Revisión de la tarjeta sencilla (05/11/2026): lo patrocinado no lleva el verde
+  // de «Nueva» ni de la acción; «No disponible en España», en rojo como en la app;
+  // en escritorio, sin hueco bajo los títulos cortos y con la línea de datos al pie.
+  const patrocinada=['.escaparate-patrocinada','.escaparate-oferta .escaparate-marcas>.escaparate-patrocinada'].map(x=>d(css,x)).join(';')+';'+
+    d(cssMovil,'#emiLista .escaparate-oferta .escaparate-marcas>.escaparate-patrocinada');
+  prueba('tarjeta: «Patrocinada» en gris neutro, «Nueva» en verde y «No disponible en España» en rojo',
+    /color:var\(--tx(?:-2)?\)/.test(patrocinada)&&!/senal/.test(patrocinada)&&/color:var\(--senal\)/.test(d(css,'.escaparate-oferta .escaparate-marcas>span'))&&
+    /color:var\(--alarma\)/.test(d(css,'.escaparate-no-disponible')));
+  const cssSinNotas=css.replace(/\/\*[\s\S]*?\*\//g,''),cuerpoEsc=d(cssSinNotas,'.escaparate-oferta .escaparate-cuerpo');
+  prueba('escritorio: sin hueco bajo los títulos cortos y la línea Mínimo · España al pie de la tarjeta',
+    /min-height:0/.test(d(css,'.escaparate-oferta .escaparate-cuerpo .emi-tit'))&&/grid-template-rows:auto auto 1fr auto auto/.test(cuerpoEsc)&&
+    /"tit tit" "proc proc" "datos ver"/.test(cuerpoEsc)&&!/align-content:start/.test(cuerpoEsc)&&/align-self:end/.test(d(css,'.escaparate-oferta .escaparate-datos-linea'))&&
+    /align-self:stretch/.test(d(cssSinNotas,'.emis-rejilla .escaparate-oferta')));
 }
 // ---- Versión final de Inicio y Buscar (ESPEC-FINAL, 03/11/2026) ----
 {
@@ -2206,11 +2221,12 @@ for(const [nombre,alterar] of [
     JSON.stringify(datos)===JSON.stringify([['Mínimo',transparencia.ofertas[sacada].minimoCorto],['España','Sí']])&&ocultaDatos.length===0&&
     /title="[^"]+"/.test((fila.match(/<h3 class="emi-tit"[^>]*>/)||[''])[0]));
   probarTarjetaYComparador({ c, prueba });
+  await probarTarjetaEnIngles({ c, prueba });
   // El aviso crítico nunca se resume ni se esconde en el móvil.
   const conBloqueo=vm.runInContext(`tarjetaOfertaLocal({...EMI.find(x=>x.slug==='${sacada}'),avisos:[{tono:'stop',texto:'AVISO_CRITICO_ENTERO_EN_LA_FILA'},{tono:'warn',texto:'Otro aviso.'}]})`,c);
   const reglasAviso=[...cssMovil.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(m=>/escaparate-aviso/.test(m[1]));
   prueba('.escaparate-aviso-bloqueo nunca se oculta en el móvil y va entero en la fila',
-    /<p class="escaparate-aviso-compacto escaparate-aviso-bloqueo"><b>Importante<\/b> · AVISO_CRITICO_ENTERO_EN_LA_FILA/.test(conBloqueo)&&
+    texto((conBloqueo.match(/<p class="escaparate-aviso-compacto escaparate-aviso-bloqueo">[\s\S]*?<\/p>/)||[''])[0]).trim()==='Importante · AVISO_CRITICO_ENTERO_EN_LA_FILA'&&
     !/Otro aviso|en la ficha/.test(conBloqueo)&&reglasAviso.length>0&&
     reglasAviso.every(m=>!/display\s*:\s*none|visibility\s*:\s*hidden|line-clamp|overflow\s*:\s*hidden/.test(m[2])||
       m[1].split(',').every(sel=>!/escaparate-aviso/.test(sel)||/:not\(\.escaparate-aviso-bloqueo\)/.test(sel))));
@@ -2605,7 +2621,7 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     {nombre:'fuentes en conflicto', cambios:{slug:'regresion-conflicto', estadoRevision:'fuentes_en_conflicto'}, estado:'fuentes en conflicto', linea:true},
     {nombre:'mercado secundario', cambios:{slug:'regresion-secundario', coleccion:'secundario', tipo:'secundario'}, fuera:'Liquidez no confirmada'},
     {nombre:'anuncio en camino', cambios:{slug:'regresion-en-camino', coleccion:'en_camino'}, fuera:'Apertura no confirmada'},
-    {nombre:'restricción territorial', cambios:{slug:'regresion-no-es', disponibleEs:false}, estado:'No disponible en España'},
+    {nombre:'restricción territorial', cambios:{slug:'regresion-no-es', disponibleEs:false}, estado:'No disponible en España', espana:'No'},
     {nombre:'patrocinio declarado', cambios:{slug:'regresion-patrocinada', patrocinada:true}, estado:'Patrocinada'},
   ];
   const ofertas = casos.map(caso => ({...base, ...caso.cambios}));
@@ -2644,6 +2660,8 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
       (cuerpo.match(/class="escaparate-datos-clave escaparate-datos-linea"/g)||[]).length === 1 &&
       // «Mínimo · España» (05/11/2026); el valor corto ya lleva su unidad («1 €», «500 CHF»). La Salida, en la ficha.
       ['Mínimo','España'].every(etiqueta=>cuerpo.includes('<dt>'+etiqueta+'</dt>')) && !cuerpo.includes('<dt>Salida</dt>') &&
+      // Fuera de España, el dato dice «No», nunca «Sin confirmar» al lado de «No disponible en España».
+      (!caso.espana || cuerpo.includes('<dt>España</dt><dd>'+caso.espana+'</dd>') && !cuerpo.includes('Sin confirmar')) &&
       !/escaparate-destacado|escaparate-dato-principal/.test(tarjeta));
     prueba(`tarjeta ${caso.nombre}: no contiene documento, descripción, métricas auxiliares ni enlaces externos`,
       !/<a\b|catalogo-descripcion|escaparate-metrica|escaparate-disponibilidad/.test(tarjeta) &&

@@ -273,9 +273,9 @@ export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado 
   const primerCritico = avisosCriticos(oferta)[0];
   const bloqueo = primerCritico?.tono === 'stop' ? primerCritico : null;
   const resumen = resumenOferta(ofertaParaResumen(ofertaOriginal), [], ahora);
-  const datos = datosTarjetaOferta(ofertaOriginal, resumen, { catalogoCaducado });
-  const revision = problemaRevisionOferta(ofertaOriginal, ahora, catalogoCaducado);
   const noEspana = !catalogoCaducado && resumen.cifrasVigentes && oferta.disponibleEs === false;
+  const datos = datosTarjetaOferta(ofertaOriginal, resumen, { catalogoCaducado, noEspana });
+  const revision = problemaRevisionOferta(ofertaOriginal, ahora, catalogoCaducado);
   const marcaNueva = nueva && !catalogoCaducado;
   // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
   const lugar = lugarConPais(imagenEditorialOferta(oferta)?.lugar);

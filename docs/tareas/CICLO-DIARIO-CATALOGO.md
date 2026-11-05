@@ -55,10 +55,12 @@ normas del catálogo a cosas con sentido»):
    en corto («Mínimo 1 € · España Sí»). Además lleva la imagen (en la web, con
    guardar; en la app, guardar está en la ficha), el título
    (dos líneas como mucho), proveedor · lugar, «Nueva» y «Patrocinada» si lo
-   son y, solo si existen, el aviso crítico entero, un problema de la revisión
-   (caducada, no verificable o fuentes en conflicto) y «No disponible en
-   España». La salida, los puntos fuertes, la vigencia, los demás avisos y las
-   fechas se quedan en la ficha. Toda la tarjeta abre la ficha.
+   son («Patrocinada» en gris: el verde es para «Nueva» y la acción) y, solo
+   si existen, el aviso crítico entero, un problema de la revisión (caducada,
+   no verificable o fuentes en conflicto) y «No disponible en España», en
+   rojo (entonces el dato de España dice «No»). La salida, los puntos fuertes,
+   la vigencia, los demás avisos y las fechas se quedan en la ficha. Toda la
+   tarjeta abre la ficha.
 2. **Reventa y próximas:** no llevan rentabilidad ni precio principal. En
    reventa la rentabilidad depende del precio que pagues a otro inversor, y en
    una próxima todavía no se puede comprar. La base de datos también lo exige
