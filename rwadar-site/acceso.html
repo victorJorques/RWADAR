@@ -36,7 +36,7 @@
   <section class="panel-acceso" aria-labelledby="titulo">
   <p class="ceja">Tu espacio en RWAdar</p>
   <h1 id="titulo">Tu radar, con tu cuenta</h1>
-  <p class="introduccion">Consulta el radar sin registro. Entra para guardar y gestionar tus inversiones.</p>
+  <p class="introduccion" id="introduccion">Consulta el radar sin registro. Entra para guardar y gestionar tus inversiones.</p>
   <p><a href="/">Seguir sin cuenta</a></p>
   <p class="estado" id="estado" role="status" aria-live="polite"></p>
   <section id="siguiente-alta" hidden aria-label="Cómo continuar con tu cuenta">
@@ -49,7 +49,9 @@
     <label>Correo<input id="correo" name="email" type="email" maxlength="254" autocomplete="username" required></label>
     <label id="campo-nombre" hidden>Nombre (opcional)<input id="nombre" name="nombre" maxlength="60" autocomplete="nickname"></label>
     <label id="campo-clave">Contraseña<input id="clave" name="password" type="password" maxlength="256" autocomplete="current-password" required></label>
-    <label id="campo-condiciones" hidden class="consentimiento"><input id="condiciones" type="checkbox">Acepto las <a href="/privacidad#condiciones">condiciones</a> y he leído la <a href="/privacidad">privacidad</a>.</label>
+    <label id="campo-condiciones" hidden class="consentimiento"><input id="condiciones" type="checkbox">Tengo 18 años o más, acepto las <a href="/privacidad#condiciones">condiciones</a> y he leído la <a href="/privacidad">privacidad</a>.</label>
+    <!-- Avisos de novedades, versión novedades-v1-2026-11-05: el texto es el del contrato, palabra por palabra. Solo se enseña con AVISOS_NOVEDADES_REMOTOS encendido en assets/acceso.js. -->
+    <label id="campo-avisos-novedades" hidden class="consentimiento"><input id="avisos-novedades" type="checkbox">Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.</label>
     <div id="robot" hidden></div>
     <button id="enviar" type="submit">Entrar</button>
   </form>

@@ -2882,6 +2882,39 @@ prueba('la privacidad explica criterios de conservación y la limpieza de instal
   /más de 180 días sin actividad/.test(privacidadLineal) &&
   /atender derechos, incidencias u obligaciones/.test(privacidadLineal) &&
   /Este proceso no borra cuentas/.test(privacidadLineal));
+// Academy con cuenta y avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+const accesoHTML = lee('acceso.html'), accesoJS = lee('assets/acceso.js'), bajaHTML = lee('baja.html');
+prueba('privacidad: la Academy es gratuita con cuenta y no guardamos qué lecciones lees',
+  /consultar el radar de RWAdar sin registrarte/.test(privacidadLineal) &&
+  /y para abrir las lecciones de RWAdar Academy, que son gratuitas/.test(privacidadLineal) &&
+  /RWAdar Academy<\/b> es gratuita con una cuenta confirmada/.test(privacidadLineal) &&
+  privacidadLineal.includes('para abrir una lección comprobamos tu sesión; no guardamos qué lecciones lees') &&
+  /con la que también abres las lecciones de RWAdar Academy/.test(privacidadLineal) &&
+  !/consultar la web de RWAdar sin registrarte/.test(privacidadLineal));
+prueba('privacidad: los avisos de novedades se explican y todavía no están activos',
+  /<h3 id="avisos-novedades">Avisos de novedades \(correo y notificaciones\)<\/h3>\s*<p><b>Todavía no están activos\.<\/b>/.test(privacidad) &&
+  /casilla aparte y sin marcar/.test(privacidadLineal) && /<code>novedades-v1-2026-11-05<\/code>/.test(privacidad) &&
+  /el permiso se guarda solo cuando confirmas el correo/.test(privacidadLineal) &&
+  /La baja corta a la vez los correos y las notificaciones de novedades/.test(privacidadLineal) &&
+  /no llevarán píxel de apertura ni seguimiento de clics/.test(privacidadLineal) &&
+  /Brevo enviaría los correos/.test(privacidadLineal) && /Firebase Cloud Messaging \(FCM\) de Google/.test(privacidadLineal) &&
+  /servicio de notificaciones de Apple/.test(privacidadLineal) &&
+  /90 días después de terminar/.test(privacidadLineal) && /no se actualicen en 180 días/.test(privacidadLineal) &&
+  /Al crear la cuenta confirmas que tienes 18 años o más/.test(privacidadLineal));
+prueba('acceso y Perfil: casilla de 18 años y avisos de novedades apagados por defecto',
+  /Tengo 18 años o más, acepto las <a href="\/privacidad#condiciones">condiciones<\/a> y he leído la <a href="\/privacidad">privacidad<\/a>\./.test(accesoHTML) &&
+  /<label id="campo-avisos-novedades" hidden class="consentimiento"><input id="avisos-novedades" type="checkbox">Quiero recibir avisos de RWAdar/.test(accesoHTML) &&
+  /const AVISOS_NOVEDADES_REMOTOS = false;/.test(accesoJS) && / const AVISOS_NOVEDADES_REMOTOS=false;/.test(js) &&
+  /<div id="perfilAvisosProximamente">\s*<article class="movil-estado">/.test(panelPerfilHTML) &&
+  /<div id="perfilAvisosNovedades" hidden>\s*<article class="movil-estado">/.test(panelPerfilHTML) &&
+  !/<article class="movil-estado"[^>]*\shidden/.test(panelPerfilHTML) &&
+  /Los avisos llegarán a la app en una próxima actualización\./.test(panelPerfilHTML));
+marcadoEstricto('baja.html', bajaHTML);
+prueba('baja: sin indexar, fuera del sitemap, sin formulario y con la baja por correo a la vista',
+  /<meta name="robots" content="noindex,nofollow">/.test(bajaHTML) &&
+  /<script defer src="\/assets\/baja-20261105\.js"><\/script>/.test(bajaHTML) &&
+  !/<form\b/i.test(bajaHTML) && /href="mailto:RWAdar@protonmail\.com\?subject=baja"/.test(bajaHTML) &&
+  !/\/baja</.test(lee('sitemap.xml')));
 
 prueba('los redirects usan sintaxis portable de Cloudflare Pages',
   /^\/index\.html\s+\/\s+301$/m.test(redirecciones) &&

@@ -52,7 +52,7 @@
 
   <div class="resumen">
     <p><b>El resumen, por si no lees el resto.</b></p>
-    <p>Puedes <b>consultar la web de RWAdar sin registrarte</b>. Necesitas una cuenta gratuita con el correo confirmado para guardar y gestionar tus inversiones. La conexión implica
+    <p>Puedes <b>consultar el radar de RWAdar sin registrarte</b>. Necesitas una cuenta gratuita con el correo confirmado para guardar y gestionar tus inversiones y para abrir las lecciones de RWAdar Academy, que son gratuitas. La conexión implica
       los datos técnicos descritos en el apartado 2. No hay cookies
       de seguimiento, perfilado ni venta de datos. RWAdar no ofrece ahora contratación a empresas
       ni espacios patrocinados. Si ese modelo se aprobara en el futuro, cualquier espacio
@@ -73,7 +73,7 @@
 
   <div class="pendiente" role="note">
     <p><b>Alcance de esta versión:</b> radar editorial gratuito, con fuentes y fechas
-      de revisión. La cuenta permite guardar una lista de seguimiento y acceder a las funciones personales (alta, entrada,
+      de revisión. La cuenta permite guardar una lista de seguimiento, abrir las lecciones de RWAdar Academy y acceder a las funciones personales (alta, entrada,
       recuperación de la contraseña y borrado). Las opiniones, los avisos por correo y el push
       están en pausa. RWAdar no ofrece
       actualmente contratación, facturación ni espacios para empresas: la página para empresas recoge
@@ -128,6 +128,10 @@
     valoración editorial. Los enlaces de afiliación, la atribución de inversiones y las
     comisiones por contratación no están activados. Cualquier cambio se explicará en la
     <a href="/transparencia-comercial">política de transparencia comercial</a>.</p>
+  <p><b>RWAdar Academy</b> es gratuita con una cuenta confirmada. Su índice puede consultarse
+    sin registrarte; para abrir una lección comprobamos tu sesión; no guardamos qué lecciones lees.
+    Las lecciones marcadas como leídas y los aciertos de sus tests se quedan en tu navegador
+    o en tu dispositivo (apartado 2).</p>
   <p>Estas condiciones no excluyen los derechos ni las responsabilidades que resulten
     obligatorios conforme a la legislación aplicable.</p>
 
@@ -162,7 +166,8 @@
       <tr>
         <td>Dirección IP al <br>actualizar el registro</td>
         <td><span class="celda-etiqueta">Por qué ocurre</span> La web sirve las fichas y consulta el catálogo público sin exigir una cuenta.
-          Cloudflare verifica tu sesión con Supabase al acceder a tus datos y funciones personales.
+          Cloudflare verifica tu sesión con Supabase al acceder a tus datos y funciones personales
+          y al abrir una lección de RWAdar Academy.
           La app Android consulta Supabase con su sesión confirmada (apartado 3).</td>
         <td><span class="celda-etiqueta">Quién lo recibe</span> Supabase, la base de datos y autenticación</td>
       </tr>
@@ -215,7 +220,7 @@
     Cloudflare también trata datos técnicos como alojamiento y CDN para entregar y proteger la web.</p>
 
   <h2>3 · Tu cuenta</h2>
-  <p>La consulta de la web es pública. Necesitas una cuenta con el correo confirmado para las funciones personales y guardar en el servidor
+  <p>La consulta de la web es pública, salvo las lecciones de RWAdar Academy, que son gratuitas con cuenta. Necesitas una cuenta con el correo confirmado para las funciones personales y guardar en el servidor
     la lista de plataformas que sigues y verla desde la web o una versión de la app
     con las cuentas habilitadas. Perfil indica su disponibilidad. Hace falta
     confirmar el correo antes de poder entrar. Estos son todos los datos de la cuenta:</p>
@@ -226,7 +231,8 @@
     <tbody>
       <tr>
         <td>Correo <br>electrónico</td>
-        <td><span class="celda-etiqueta">Para qué</span> Identificar tu cuenta, enviarte el correo para confirmarla y, si lo pides, el
+        <td><span class="celda-etiqueta">Para qué</span> Identificar tu cuenta, con la que también abres las lecciones de RWAdar Academy,
+          enviarte el correo para confirmarla y, si lo pides, el
           enlace para poner una contraseña nueva. No se usa para publicidad ni boletines.</td>
         <td><span class="celda-etiqueta">Base jurídica</span> Ejecución del servicio que has solicitado (art. 6.1.b RGPD)</td>
       </tr>
@@ -369,6 +375,35 @@
     comprobarán además el contrato de encargo, la región de tratamiento y las garantías de
     transferencia, y se actualizará esta política si fuera necesario. No se enviarán
     boletines ni publicidad.</p>
+
+  <h3 id="avisos-novedades">Avisos de novedades (correo y notificaciones)</h3>
+  <p><b>Todavía no están activos.</b> Esta versión no muestra la casilla para pedirlos, no guarda
+    ese permiso y no envía estos avisos. Antes de activarlos se actualizará esta política y su
+    fecha. Están preparados así:</p>
+  <ul>
+    <li><b>Qué son:</b> avisos de RWAdar sobre ofertas nuevas en el radar y novedades de la web
+      y la app, por correo y, si los activas en tu móvil, como notificaciones.</li>
+    <li><b>Solo con tu permiso:</b> al crear la cuenta habrá una casilla aparte y sin marcar;
+      también podrás activarlos en Perfil. Son opcionales: la Academy se desbloquea igual.
+      Si marcas la casilla al registrarte, el permiso se guarda solo cuando confirmas el correo.
+      Se guardan la fecha del alta, la fecha del permiso, la versión del texto que aceptaste
+      (<code>novedades-v1-2026-11-05</code>) y si lo diste en la web o en la app.</li>
+    <li><b>Baja:</b> cada aviso llevará un enlace para darte de baja y la dirección
+      RWAdar@protonmail.com; también podrás desactivarlos en Perfil. La baja corta a la vez
+      los correos y las notificaciones de novedades.</li>
+    <li><b>Sin seguimiento:</b> los correos no llevarán píxel de apertura ni seguimiento de
+      clics; los enlaces irán directos.</li>
+    <li><b>Proveedores:</b> Brevo enviaría los correos y recibiría tu dirección y el contenido
+      del aviso. Expo, con Firebase Cloud Messaging (FCM) de Google en Android o el servicio de
+      notificaciones de Apple, entregaría las notificaciones y recibiría el identificador de
+      notificaciones del móvil y el contenido del aviso, nunca tu correo. Ese identificador solo
+      se registra si activas las notificaciones en tu móvil, hasta cinco móviles por cuenta.</li>
+    <li><b>Conservación:</b> el permiso, mientras exista la cuenta; los registros de cada envío,
+      90 días después de terminar; los móviles que no se actualicen en 180 días se borran.
+      Al borrar la cuenta se borra todo lo anterior.</li>
+    <li><b>Base jurídica:</b> tu consentimiento (art. 6.1.a RGPD y art. 21 de la Ley 34/2002),
+      que puedes retirar cuando quieras sin que afecte a lo anterior.</li>
+  </ul>
 
   <h2 id="consultas-b2b">7 · Consultas de empresas por correo</h2>
   <p>La página «Para empresas» mantiene únicamente un canal para enviar una
@@ -546,6 +581,7 @@
   <h2>12 · Edad mínima</h2>
   <p>RWAdar está dirigido exclusivamente a personas mayores de 18 años. Las personas menores de
     18 años no deben crear una cuenta ni utilizar las funciones de seguimiento, opiniones o avisos.
+    Al crear la cuenta confirmas que tienes 18 años o más.
     Si detectamos una cuenta de una persona menor de 18 años, la bloquearemos y eliminaremos sus
     datos conforme a las obligaciones legales aplicables.</p>
 

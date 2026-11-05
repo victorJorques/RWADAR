@@ -4165,6 +4165,18 @@ const Cuenta = (function(){
     https://challenges.cloudflare.com y contarlo en la privacidad: pasos en
     docs/tareas/REABRIR-CUENTAS.md. */
  const TURNSTILE_SITEKEY='';
+ /* Avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+    Apagado hasta tener la base (30), la plantilla de confirmación de Auth y
+    la privacidad al día; se enciende a la vez que el de assets/acceso.js y el
+    de la app. Encendido, Perfil enseña «Avisos de novedades» con su
+    interruptor en lugar de «Próximamente · Avisos de cambios». Apagado, la
+    web no pide ni muestra nada de estos avisos. */
+ const AVISOS_NOVEDADES_REMOTOS=false;
+ const AVISOS_NOVEDADES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_NOVEDADES_REMOTOS;
+ const VERSION_AVISOS_NOVEDADES='novedades-v1-2026-11-05';
+ /* El mismo texto que la base, la app y la casilla de /acceso: cambiar una
+    palabra obliga a crear una versión nueva. */
+ const TEXTO_AVISOS_NOVEDADES='Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.';
  let ses=null, perfil=null, vigiladas=new Map(), modo='entrar', fichaAbierta=null,
      identidadConfirmada=false,versionSesion=0,versionCuenta=0,renovacion=null,cuentaRenovacion=-1,focoCuenta=null,
      correoPendiente='',operacionCuenta=0,temporizadorReenvio=null,cuentaHistorial=false,bajaPendiente=null,
@@ -4460,7 +4472,7 @@ const Cuenta = (function(){
     const filas=await rest('/vigilancia',{method:'POST',body:JSON.stringify({usuario_id:uid,plataforma_id:id})},cuenta);
     if(!Array.isArray(filas)||filas.length!==1||filas[0].plataforma_id!==id)
      throw new Error('No se ha podido confirmar el cambio en tu lista.');
-    vigiladas.set(nombre,id); aviso('Sigues '+nombre+'. Todavía no enviamos avisos por correo.');
+    vigiladas.set(nombre,id); aviso('Sigues '+nombre+(AVISOS_NOVEDADES_DISPONIBLES?'. Seguir una plataforma no envía avisos.':'. Todavía no enviamos avisos por correo.'));
    }
   }catch(e){ if(vigente(cuenta))aviso('No se ha podido guardar: '+e.message); }
   if(!vigente(cuenta))return;
@@ -4488,7 +4500,7 @@ const Cuenta = (function(){
   c.innerHTML='<button class="btn-vigilar'+(on?' on':'')+'" id="btnVig">'+
    (on?'✓ La sigues':'+ Seguir esta plataforma')+'</button>'+
    '<p class="pn-nota pn-nota-separada">'+
-   (identidadConfirmada?'Guardada en tu lista. Todavía no enviamos avisos por correo.'
+   (identidadConfirmada?(AVISOS_NOVEDADES_DISPONIBLES?'Guardada en tu lista. Seguir una plataforma no envía avisos.':'Guardada en tu lista. Todavía no enviamos avisos por correo.')
        :'Necesitas una cuenta para que tu lista se guarde entre visitas.')+'</p>';
   const b=$('btnVig'); if(b) b.addEventListener('click',()=>alternar(nombre));
  }
@@ -4810,7 +4822,10 @@ const Cuenta = (function(){
      ? '<ul class="vig-lista">'+lista.map(n=>'<li><span>'+esc(n)+'</span><button data-q="'+esc(n)+'">quitar</button></li>').join('')+'</ul>'
      : '<p class="perfil-nota">Todavía no sigues ninguna. Abre la ficha de cualquier plataforma del radar y pulsa «Seguir» para guardarla aquí.</p>')+
    '<div class="perfil-sec">Avisos</div>'+
-   (AVISOS_CORREO_DISPONIBLES
+   (AVISOS_NOVEDADES_DISPONIBLES
+     ? '<label class="fila-opcion"><input type="checkbox" role="switch" id="pfNovedades" disabled><span><b>Avisos de novedades.</b> '+esc(TEXTO_AVISOS_NOVEDADES)+'</span></label>'+
+       '<p class="perfil-nota perfil-ayuda" id="pfNovedadesEstado" role="status"></p>'
+     : AVISOS_CORREO_DISPONIBLES
      ? '<label class="fila-opcion"><input type="checkbox" id="optAvisos" aria-describedby="optAvisosAyuda"'+(correoConsentido?' checked':'')+'>'+
        '<span><b>Quiero recibir por correo avisos de cambios</b> en las plataformas que sigo. Al marcarlo doy mi consentimiento explícito, que puedo retirar aquí cuando quiera.</span></label>'+
        '<p class="perfil-nota perfil-ayuda" id="optAvisosAyuda">Está desactivado por defecto. Aunque lo aceptes, todavía no enviamos estos avisos: falta configurar el servicio de correo y probar que los mensajes llegan. Consulta la <a href="/privacidad">política de privacidad</a>.</p>'
@@ -4863,6 +4878,8 @@ const Cuenta = (function(){
      : 'No se ha podido confirmar la retirada; la preferencia sigue activada. Vuelve a intentarlo.');
    }finally{if(vigente(cuenta))o.disabled=false;}
   });
+  const pfn=$('pfNovedades');
+  if(pfn&&AVISOS_NOVEDADES_DISPONIBLES){pfn.addEventListener('change',cambiarNovedades);pintarNovedades();cargarNovedades().catch(()=>{});}
   /* Solo se anota la fecha de la primera descarga, en el propio perfil. */
   const m=$('pfManual'); if(m) m.addEventListener('click',()=>{
    rest('/rpc/marcar_manual_descargado',{method:'POST',body:'{}',keepalive:true}).catch(()=>{});
@@ -4956,6 +4973,75 @@ const Cuenta = (function(){
   closeAll();
  }
 
+ /* --- avisos de novedades (solo con AVISOS_NOVEDADES_DISPONIBLES) --- */
+ /* El permiso vive en la base (rpc/estado_mis_avisos y
+    rpc/configurar_avisos_novedades, por /api/acceso/datos). Aquí solo se
+    guarda en memoria lo último que dijo la base para esta cuenta. */
+ let novedades=null,novedadesCuenta=-1,novedadesError=false,novedadesGuardando=false,novedadesDeseado=false;
+ const novedadesActivas=()=>!!novedades&&novedades.novedades===true&&novedades.version===novedades.version_vigente;
+ function estadoNovedades(j){
+  if(!j||typeof j!=='object'||Array.isArray(j)||typeof j.novedades!=='boolean'||typeof j.version_vigente!=='string')
+   throw new Error('Respuesta de avisos no válida.');
+  return {novedades:j.novedades,version:typeof j.version==='string'?j.version:null,version_vigente:j.version_vigente,
+   correo_activo:j.correo_activo===true,push_activo:j.push_activo===true};
+ }
+ function textoNovedades(){
+  if(!identidadConfirmada||!ses)return 'Entra en tu cuenta para activarlos o desactivarlos.';
+  if(novedadesError)return 'No se ha podido comprobar tu preferencia. Recarga la página para reintentarlo.';
+  if(!novedades)return 'Comprobando tu preferencia…';
+  if(novedades.version_vigente!==VERSION_AVISOS_NOVEDADES)return 'El texto de los avisos ha cambiado. Recarga la página para verlo.';
+  if(novedadesGuardando)return 'Guardando…';
+  if(!novedadesActivas())return 'Desactivados. Puedes activarlos cuando quieras.';
+  return novedades.correo_activo||novedades.push_activo
+   ?'Activados. Puedes desactivarlos cuando quieras.':'Activados. Todavía no hemos empezado a enviarlos.';
+ }
+ function pintarNovedades(){
+  if(!AVISOS_NOVEDADES_DISPONIBLES)return;
+  const tarjeta=$('perfilAvisosNovedades'),anterior=$('perfilAvisosProximamente');
+  if(tarjeta)tarjeta.hidden=false;
+  if(anterior)anterior.hidden=true;
+  for(const [idOpcion,idEstado] of [['perfilNovedadesOpcion','perfilNovedadesEstado'],['pfNovedades','pfNovedadesEstado']]){
+   const o=$(idOpcion),e=$(idEstado);if(!o||!e)continue;
+   o.checked=novedadesGuardando?novedadesDeseado:novedadesActivas();
+   o.disabled=!identidadConfirmada||!ses||!novedades||novedadesGuardando||novedades.version_vigente!==VERSION_AVISOS_NOVEDADES;
+   e.textContent=textoNovedades();
+  }
+ }
+ async function cargarNovedades(){
+  if(!AVISOS_NOVEDADES_DISPONIBLES||!identidadConfirmada||!ses||novedadesCuenta===versionCuenta)return;
+  const cuenta=versionCuenta;
+  novedadesCuenta=cuenta;novedades=null;novedadesError=false;novedadesGuardando=false;pintarNovedades();
+  try{
+   const j=estadoNovedades(await rest('/rpc/estado_mis_avisos',{method:'POST',body:'{}'},cuenta));
+   if(!vigente(cuenta))return;
+   novedades=j;
+  }catch(e){
+   if(!vigente(cuenta))return;
+   novedadesError=true;novedadesCuenta=-1;
+  }
+  pintarNovedades();
+ }
+ async function cambiarNovedades(evento){
+  const o=evento&&evento.target;
+  if(!AVISOS_NOVEDADES_DISPONIBLES||!o||!identidadConfirmada||!ses||!novedades||novedadesGuardando)return;
+  const cuenta=versionCuenta,deseado=o.checked===true;
+  novedadesGuardando=true;novedadesDeseado=deseado;pintarNovedades();
+  try{
+   const j=estadoNovedades(await rest('/rpc/configurar_avisos_novedades',{method:'POST',body:JSON.stringify({
+    p_activar:deseado,p_version:VERSION_AVISOS_NOVEDADES,p_canal:'web'})},cuenta));
+   if(!vigente(cuenta))return;
+   novedades=j;
+   if(novedadesActivas()!==deseado)throw new Error('Cambio no confirmado.');
+   aviso(deseado?'Avisos de novedades activados.':'Avisos de novedades desactivados.');
+  }catch(e){
+   if(!vigente(cuenta))return;
+   aviso(deseado?'No se han activado los avisos de novedades. Vuelve a intentarlo.'
+    :'No se ha podido confirmar la baja de los avisos de novedades. Vuelve a intentarlo.');
+  }finally{
+   if(vigente(cuenta)){novedadesGuardando=false;pintarNovedades();}
+  }
+ }
+
  /* --- estado del botón de la cabecera ----------------------------- */
  function pinta(){
   /* La comunidad escucha este aviso para enseñar u ocultar el formulario. */
@@ -4995,6 +5081,10 @@ const Cuenta = (function(){
   /* El HTML nace con el botón desactivado (pausa); al abrir cuentas hay que
      habilitarlo aquí o en el móvil no habría forma de entrar. */
   if(accion){accion.disabled=false;accion.textContent=identidadConfirmada?'Ver mis inversiones':'Entrar o crear cuenta';}
+  if(AVISOS_NOVEDADES_DISPONIBLES){
+   if(!identidadConfirmada||!ses){novedades=null;novedadesCuenta=-1;novedadesError=false;novedadesGuardando=false;}
+   pintarNovedades();cargarNovedades().catch(()=>{});
+  }
  }
  async function abrirGestion(){
   if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('Las cuentas están en pausa. Para gestionar datos anteriores, escribe a RWAdar@protonmail.com.');return;}
@@ -5025,6 +5115,8 @@ const Cuenta = (function(){
    if(CORREO_AUTH_E2E&&correo)$('cCorreo').value=correo;
   });
   $('cuentaVolver').addEventListener('click',cerrar);
+  const opcionNovedades=$('perfilNovedadesOpcion');
+  if(opcionNovedades&&AVISOS_NOVEDADES_DISPONIBLES)opcionNovedades.addEventListener('change',cambiarNovedades);
   document.addEventListener('keydown',e=>{
    if(e.key==='Escape'&&$('cuentaCaja').classList.contains('on')){e.preventDefault();cerrar();}
   });
