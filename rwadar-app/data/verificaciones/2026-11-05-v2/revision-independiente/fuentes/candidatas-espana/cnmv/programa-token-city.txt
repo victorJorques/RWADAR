@@ -1,0 +1,112 @@
+Aviso de cookies
+
+Este sitio web utiliza cookies propias y de terceros para fines técnicos, de personalización de las visitas, análisis del sitio y de publicidad comportamental. Estas últimas nos permiten obtener datos sobre tus hábitos de navegación (p.ej. páginas visitadas) y obtener perfiles para mejorar nuestros contenidos.
+
+Para más información, consulta nuestra Política de cookies
+
+Este sitio web contiene enlaces a sitios web de terceros con políticas de privacidad ajenas a la de la CNMV. Al visualizarlos y acceder a ellos, usted acepta las cookies instaladas por terceros y sus políticas de privacidad y cookies.
+
+Configuración de cookies
+Ir al contenido principal
+Buscar:
+Inversores
+Contacto
+Español
+Sobre la CNMV
+Sala de prensa
+Consultas a registros oficiales
+Información privilegiada
+Folletos
+Inversores y educación financiera
+Normativa
+Publicaciones y estadísticas
+Sectores regulados
+Sede electrónica
+Inicio > Consultas a registros oficiales > Empresas de Servicios de Inversión Españolas > Consulta de Sociedades y Agencias de Valores, Sociedades Gestoras de Cartera y Empresas de Asesoramiento Financiero > ESIS nacionales
+Información de empresas de servicios de inversión españolas
+
+TOKEN CITY EUROPEAN EXCHANGE A.V., S.A.
+
+Sociedades y Agencias de Valores
+Nº Registro Oficial	Fecha registro oficial
+334	06/02/2026
+Datos generales
+Socios
+Administradores
+Agentes
+Sucursales España
+Sociedades gestionadas
+Sucursales EEE
+Sucursales fuera EEE
+Libre prestación EEE
+Libre prestación fuera EEE
+Programa de actividades
+Atención al cliente
+Servicios y actividades de inversión
+Servicios y actividades de inversión	Instrumentos	Clientes
+a	b	c	d	e	f	g	h	i	j	k	Minoristas	Profesionales	Contrapartes elegibles
+Recepción y transmisión de órdenes de clientes														
+Colocación de instrumentos financieros														
+Gestión de sistemas multilaterales de negociación														
+Servicios auxiliares
+Servicios auxiliares	Instrumentos	Clientes
+a	b	c	d	e	f	g	h	i	j	k	Minoristas	Profesionales	Contrapartes elegibles
+Custodia y administración de instrumentos financieros														
+Asesoramiento a empresas														
+Particularidades o limitaciones
+Servicios y actividades	Explicaciones
+
+Recepción y transmisión de órdenes de clientes en relación con uno o más instrumentos financieros	El servicio de inversión se prestará sobre instrumentos financieros basados en tecnología de registro distribuido no admitidos a negociación en el sistema de negociación y liquidación gestionado por la AV
+Colocación de instrumentos financieros sin base en un compromiso firme	El servicio de inversión se prestará sobre instrumentos financieros basados en tecnología de registro distribuido, que podrán ser posteriormente objeto de admisión para su negociación en el sistema de negociación y liquidación gestionado por la AV
+Gestión de sistemas multilaterales de negociación	El servicio de inversión se prestará sobre instrumentos financieros basados en tecnología de registro distribuido
+Custodia y administración por cuenta de clientes de los instrumentos financieros	Tendrá como objetivo únicamente las funciones propias de entidad responsable de la administración del registro e inscripción (ERIR) de los valores negociables basados en tecnología de registros distribuidos
+Asesoramiento a empresas sobre estructura de capital, estrategia industrial y cuestiones afines, así como el asesoramiento y demás servicios en relación con fusiones y adquisiciones de empresas	El servicio se prestará sobre instrumentos financieros basados en tecnología de registro distribuido
+Cuentas instrumentales
+Descripción	Si	No
+La sociedad mantiene fondos en cuentas instrumentales y transitorias a nombre de sus clientes		
+
+LISTA DE INSTRUMENTOS FINANCIEROS S/ ARTICULO 3 DEL RD 814/2023:
+
+Valores negociables, entendiendo como tal cualquier derecho de contenido patrimonial, cualquiera que sea su denominación, que por su configuración jurídica propia y régimen de transmisión, sea susceptible de tráfico generalizado e impersonal en un mercado financiero, incluyendo las siguientes categorías de valores negociables con excepción de los instrumentos de pago:
+
+1.º Acciones de sociedades y otros valores negociables equiparables a las acciones de sociedades, y recibos de depositario representativos de tales valores.
+
+2.º Bonos y obligaciones u otras formas de deuda titulizada, incluidos los recibos de depositario representativos de tales valores.
+
+3.º Los demás valores negociables que dan derecho a adquirir o a vender tales valores negociables o que dan lugar a una liquidación en efectivo, determinada por referencia a valores negociables, divisas, tipos de interés o rendimientos, materias primas u otros índices o medidas.
+
+Instrumentos del mercado monetario, entendiendo como tales las categorías de instrumentos que se negocian habitualmente en el mercado monetario, como letras del Tesoro, y efectos comerciales, excluidos los instrumentos de pago.
+
+Participaciones y acciones en instituciones de inversión colectiva, en las entidades de capital-riesgo y entidades de inversión colectiva de tipo cerrado, así como participaciones en fondos de capital riesgo europeos, fondos de emprendimiento social europeos y fondos de inversión a largo plazo europeos.
+
+Contratos de opciones, futuros, permutas (swaps), acuerdos de tipos de interés a plazo y otros contratos de derivados relacionados con valores negociables, divisas, tipos de interés o rendimientos, derechos de emisión u otros instrumentos derivados, índices financieros o medidas financieras que puedan liquidarse mediante entrega física o en efectivo.
+
+Contratos de opciones, futuros, permutas (swaps), contratos a plazo y otros contratos de derivados relacionados con materias primas que deban liquidarse en efectivo o que puedan liquidarse en efectivo a elección de una de las partes por motivos distintos al incumplimiento o a otro suceso que lleve a la rescisión del contrato.
+
+Contratos de opciones, futuros, permutas (swaps) y otros contratos de derivados relacionados con materias primas que puedan ser liquidados mediante entrega física, siempre que se negocien en un mercado regulado o un sistema multilateral de negociación (SMN) o un sistema organizado de contratación (SOC), excepto por lo que respecta a los productos energéticos al por mayor, según la definición del artículo 2, punto 4, del Reglamento (UE) n.° 1227/2011, que se negocien en un SOC y deban liquidarse mediante entrega física.
+
+Contratos de opciones, futuros, permutas (swaps) acuerdos a plazo y otros contratos de derivados relacionados con materias primas que puedan ser liquidados mediante entrega física no mencionados en el apartado anterior y no destinados a fines comerciales, que presenten las características de otros instrumentos financieros derivados.
+
+Instrumentos derivados para la transferencia del riesgo de crédito.
+
+Contratos financieros por diferencias.
+
+Contratos de opciones, futuros, permutas (swaps), acuerdos a plazo y otros contratos de derivados relacionados con variables climáticas, gastos de transporte o tipos de inflación u otras estadísticas económicas oficiales, que deban liquidarse en efectivo o que puedan liquidarse en efectivo a elección de una de las partes por motivos distintos al incumplimiento o a otro suceso que lleve a la rescisión del contrato, así como cualquier otro contrato derivado relacionado con activos, derechos, obligaciones, índices y medidas no mencionados en este artículo, que presentan las características de otros instrumentos financieros derivados, teniendo en cuenta, entre otras cosas, si se negocian en un mercado regulado, SOC o SMN.
+
+Derechos de emisión consistentes en unidades reconocidas a los efectos de la conformidad con los requisitos de la Directiva 2003/87/CE del Parlamento Europeo y del Consejo de 13 de octubre de 2003 por la que se establece un régimen para el comercio de derechos de emisión de gases de efecto invernadero en la Comunidad y por la que se modifica la Directiva 96/61/CE del Consejo.
+
+Mapa web
+Nota legal
+Política de cookies
+Protección de datos
+Accesibilidad
+X
+@CNMV_MEDIOS
+X
+@CNMV_IP
+X
+@CNMV_IFI
+Instagram
+LinkedIn
+YouTube
+RSS

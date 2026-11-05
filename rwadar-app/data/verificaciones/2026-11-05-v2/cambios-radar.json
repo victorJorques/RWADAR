@@ -3,11 +3,17 @@
   "nota": "Cambios del radar comprobados a mano el 05/11/2026. La comprobación automática (comprobar-radar.mjs) los aplica antes de contrastar y preparar-entrega.mjs los lleva al lote.",
   "fuentes": {
     "paxg-web": {
-      "antes": { "url": "https://paxos.com/paxgold", "titulo": "Pax Gold" },
+      "antes": {
+        "url": "https://paxos.com/paxgold",
+        "titulo": "Pax Gold"
+      },
       "url": "https://www.paxg.com/",
       "titulo": "Pax Gold (web oficial de PAXG)",
       "motivo": "https://paxos.com/paxgold redirige el 05/11/2026 a https://www.paxos.com/assets/paxg, una página comercial que ya no dice si PAXG está disponible en la UE. La web oficial de PAXG (https://www.paxg.com/, de Paxos Trust Company, N.A.) dice el 05/11/2026 a las 08:06 UTC: «For EU visitors: PAXG is currently not available to residents of the European Union» y «PAXG is issued by Paxos Trust Company, N.A., a U.S. national trust bank regulated by the Office of the Comptroller of the Currency». El hecho que respalda la fuente no cambia; cambia la página.",
-      "comprobaciones": ["not available to residents of the European Union", "Office of the Comptroller of the Currency"]
+      "comprobaciones": [
+        "not available to residents of the European Union",
+        "Office of the Comptroller of the Currency"
+      ]
     }
   },
   "plataformas": {
@@ -20,6 +26,28 @@
         "antes": "Paxos sigue publicando la ficha de PAXG, su custodia y las opciones de canje.",
         "detalle": "Paxos sigue publicando la web de PAXG, su custodia y que cada token se puede canjear por oro físico."
       }
+    }
+  },
+  "verificacionesManuales": {
+    "spiko-regafi": {
+      "motivo": "La página de REGAFI (https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211) da 502 el 05/11/2026 (07:58, 08:06 y 08:35 UTC) y el proxy corta curl. Se leyó la API pública del mismo registro, de la que se alimenta la página.",
+      "metodo": "API pública de REGAFI (prd-banque-entites), leída con WebFetch el 05/11/2026 hacia las 08:41 UTC; también leída por el grupo spiko a las 08:10 UTC",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D751211",
+      "literales": [
+        "denomination: \"Spiko Finance\"",
+        "cib: [{\"code\": \"19183\", \"date\": \"2025-12-15\"}]",
+        "nature_autorisation: \"Agrément\"; approval_withdrawal_process: \"False\""
+      ]
+    },
+    "spiko-regafi-pasaporte-es": {
+      "motivo": "Misma caída de la página de REGAFI. Se leyó la API pública de pasaportes salientes del mismo registro.",
+      "metodo": "API pública de REGAFI (prd-banque-passeports-sortants), leída con curl el 05/11/2026 a las 08:42 UTC; copia en radar-manual/regafi-spiko-pasaporte-espagne.json",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+      "literales": [
+        "\"type_passeport\": \"Libre prestation de services\"",
+        "\"pays\": \"ESPAGNE\", \"date_debut\": \"2026-01-08\"",
+        "\"A1\": {\"C3\": {\"date_debut\": \"2026-01-08\", \"value\": true}"
+      ]
     }
   }
 }

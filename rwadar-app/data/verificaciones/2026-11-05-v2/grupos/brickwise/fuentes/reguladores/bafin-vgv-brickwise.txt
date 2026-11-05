@@ -1,0 +1,7 @@
+URL: https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (POST nameVermittler=Brickwise)
+CONSULTADO: 2026-11-05T08:08:23Z
+HTTP: 200
+
+Stand der Daten: 04.11.2026 Ve
+
+Vertraglich gebundener Vermittler Brickwise Investment GmbH Amalienstraße 71, 2. RGB 80799 München Deutschland Vertreter 1: [persona física recortada] Nr. zum Haftungsinstitut Sitz Tätig ab Tätig bis Meldedatum hist. Meldungen 80174029 Effecta GmbH Florstadt 04.08.2021 29.06.2023 Anz. Exportoptionen: CSV | XML Rechtliches Datenschutz Impressum Nutzungsbedingungen Service Inhaltsverzeichnis Diese Seite Drucke

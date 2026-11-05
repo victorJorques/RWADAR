@@ -248,6 +248,392 @@
    "textoExtraido": "fuentes/hausera-eti/performance-report-dic25.txt",
    "nota_pdf": "PDF de 3389607 bytes (>= 3 MB): no se conserva; se guarda el texto extraído y el sha256 del original",
    "nota": "Performance Report Diciembre 25"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=0&lang=es",
+   "archivo": "fuentes/cnmv/listado-sav.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:08:27Z",
+   "bytes": 384691,
+   "sha256": "a2430be77c34a92390c92b0ba22db99f573ac2995836a06d5b10268ff00531a2",
+   "textoExtraido": "fuentes/cnmv/listado-sav.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A88474713&lang=es",
+   "archivo": "fuentes/cnmv/esi-edsx-portfolio.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:08:35Z",
+   "bytes": 223503,
+   "sha256": "cdc798d0bdc1a010b798445d9596b3c120afe58e6412192d52416c9b0b1eaad8",
+   "textoExtraido": "fuentes/cnmv/esi-edsx-portfolio.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&lang=es",
+   "archivo": "fuentes/cnmv/esi-token-city.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:08:37Z",
+   "bytes": 223191,
+   "sha256": "6baffdc2dfe925405ef7ccc34394d56e67447b82dc35dbe3f5acd2aacd7af0bf",
+   "textoExtraido": "fuentes/cnmv/esi-token-city.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A23875529&lang=es",
+   "archivo": "fuentes/cnmv/esi-minos.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:08:39Z",
+   "bytes": 223362,
+   "sha256": "3b94ca8293e42d6d9b4183cc6dc94eab2f125acb3ee5b07af68cbfb450c41d43",
+   "textoExtraido": "fuentes/cnmv/esi-minos.txt"
+  },
+  {
+   "url": "https://www.azvalor.com/",
+   "archivo": "fuentes/otros/azvalor-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:09:16Z",
+   "bytes": 313816,
+   "sha256": "593d841e193f9839099f4036ce58347806c3044615a4a17d94728230631dc3a5",
+   "textoExtraido": "fuentes/otros/azvalor-home.txt"
+  },
+  {
+   "url": "https://www.token-city.com/es/marketplace",
+   "archivo": "fuentes/tokencity/nav-marketplace.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:09:43Z",
+   "bytes": 13009,
+   "sha256": "1301c63fe12669cdac6cd7a25de37741835e5a2cb1698d8ac42633448ecdcda9",
+   "nota": "texto renderizado con Playwright/Chromium"
+  },
+  {
+   "url": "https://exchange.token-city.com/",
+   "archivo": "fuentes/tokencity/nav-exchange.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:10:14Z",
+   "bytes": 8307,
+   "sha256": "d47402beb3a51a900d2ba1a3de4b055979fbcd16aa9d3df5ef52f47330821e81",
+   "nota": "texto renderizado con Playwright/Chromium"
+  },
+  {
+   "url": "https://exchange.token-city.com/es/condiciones",
+   "archivo": "fuentes/tokencity/exchange-condiciones.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:10:40Z",
+   "bytes": 60447,
+   "sha256": "f6467674566550460df0366bb8b5cfdf0d03218e50e45d4376ac9e87736fa4ab",
+   "textoExtraido": "fuentes/tokencity/exchange-condiciones.txt"
+  },
+  {
+   "url": "https://www.bolsamania.com/noticias/criptodivisas/bestinver-securities-obtiene-la-licencia-erir-y-se-alia-con-token-city-para-impulsar-la-tokenizacion-de-activos-financieros--22538625.html",
+   "archivo": "fuentes/otros/bolsamania-bestinver-erir.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:10:47Z",
+   "bytes": 106261,
+   "sha256": "b529fc9b853592623f60244ccedb84eb61cea527006af5cd89da7c93f6180eda",
+   "textoExtraido": "fuentes/otros/bolsamania-bestinver-erir.txt"
+  },
+  {
+   "url": "https://betoken.io/",
+   "archivo": null,
+   "http": 0,
+   "consultadoUtc": "2026-11-05T08:10:55Z",
+   "error": "curl: (35) Recv failure: Connection reset by peer"
+  },
+  {
+   "url": "https://www.beselfbrands.com/",
+   "archivo": "fuentes/betoken/beselfbrands-home.html",
+   "http": 522,
+   "consultadoUtc": "2026-11-05T08:11:06Z",
+   "bytes": 16,
+   "sha256": "c8b9f348c8635d7ffcd5d16ad4b9c65289302dc6c4fe2e0210346b23013fb280",
+   "textoExtraido": "fuentes/betoken/beselfbrands-home.txt"
+  },
+  {
+   "url": "https://beselfbrands.com/",
+   "archivo": "fuentes/betoken/beselfbrands-home2.html",
+   "http": 522,
+   "consultadoUtc": "2026-11-05T08:11:26Z",
+   "bytes": 16,
+   "sha256": "c8b9f348c8635d7ffcd5d16ad4b9c65289302dc6c4fe2e0210346b23013fb280",
+   "textoExtraido": "fuentes/betoken/beselfbrands-home2.txt"
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers",
+   "archivo": "fuentes/betoken/gitbook-papers.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:05Z",
+   "bytes": 364109,
+   "sha256": "73313976838e10ef49258a8fc735482323ebce77f1864903810eead5143a0dca",
+   "textoExtraido": "fuentes/betoken/gitbook-papers.txt"
+  },
+  {
+   "url": "https://defillama.com/rwa/asset/BTK",
+   "archivo": "fuentes/betoken/defillama-btk.html",
+   "http": 403,
+   "consultadoUtc": "2026-11-05T08:12:06Z",
+   "bytes": 5645,
+   "sha256": "81dfb3ddf11c3868ca51f48756b3f65e076c2a98dceddb9d73a5fca7966efc81",
+   "textoExtraido": "fuentes/betoken/defillama-btk.txt",
+   "nota": "agregador; solo para descubrir"
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers/llms.txt",
+   "archivo": "fuentes/betoken/gitbook-llms.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:12Z",
+   "bytes": 10868,
+   "sha256": "27deedc6954dd90e738339c06819fab18960e19373ccb3dc56222553eb36b6b3"
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers/whitepaper/periodo-de-venta.md",
+   "archivo": "fuentes/betoken/gb-whitepaper_periodo-de-venta.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:18Z",
+   "bytes": 1005,
+   "sha256": "9e7c77f45cf16809d947c8f3f32263a39e75cab2cae31ae0c1f9786b28515be1"
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers/whitepaper/transmisibilidad.md",
+   "archivo": "fuentes/betoken/gb-whitepaper_transmisibilidad.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:18Z",
+   "bytes": 824,
+   "sha256": "99a4ebb17481cadfaa8bfadd232d137df54f89216aa1be43d0c46bf7e2a3f854"
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers/introduccion/documentos-oficiales-pdf/transparencia.md",
+   "archivo": "fuentes/betoken/gb-introduccion_documentos-oficiales-pdf_transparencia.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:19Z",
+   "bytes": 2440,
+   "sha256": "44308357ef88a852ffc18155601f19d779af84cd245045c0e947c56063953f6b"
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers/introduccion/documentos-oficiales-pdf.md",
+   "archivo": "fuentes/betoken/gb-introduccion_documentos-oficiales-pdf.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:19Z",
+   "bytes": 2023,
+   "sha256": "46d71d494b73076fca4044e19507d37d0f43ad5f207373b4b21886f3049c32ec"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+   "archivo": "fuentes/advertencias/adv-gemini.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:35Z",
+   "bytes": 217724,
+   "sha256": "dcff3dc1c7706a23b15d26e04974ea18110b69ecc883ff0782282359b27f80ec",
+   "textoExtraido": "fuentes/advertencias/adv-gemini.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bit2Me",
+   "archivo": "fuentes/advertencias/adv-bit2me.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:38Z",
+   "bytes": 212181,
+   "sha256": "85d8d9c0ce2e4cb089615c2f7a4ea11b5f08662bb78f8849635d5ca33d92797a",
+   "textoExtraido": "fuentes/advertencias/adv-bit2me.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Valorix",
+   "archivo": "fuentes/advertencias/adv-valorix.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:39Z",
+   "bytes": 212203,
+   "sha256": "2f63f6e9deb60406a40e1acbee1dd18c89eb5961f58179bcc4ec7ef65a688945",
+   "textoExtraido": "fuentes/advertencias/adv-valorix.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Activos%20y%20Valores%20Digitales",
+   "archivo": "fuentes/advertencias/adv-activos_y_valores_digitales.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:41Z",
+   "bytes": 212643,
+   "sha256": "08fcee44b7088ddd818e20f0b1664c4c169818c84ede96d5c4fe5c2f96288822",
+   "textoExtraido": "fuentes/advertencias/adv-activos_y_valores_digitales.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Altarius",
+   "archivo": "fuentes/advertencias/adv-altarius.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:43Z",
+   "bytes": 212225,
+   "sha256": "a90d8b49c0d2b52d276f86cfd74dc1aca9daa322bce1670c5c7bc60fabdc2aff",
+   "textoExtraido": "fuentes/advertencias/adv-altarius.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+   "archivo": "fuentes/advertencias/adv-hausera.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:45Z",
+   "bytes": 212203,
+   "sha256": "47b5107d101f56523502d340c7163415e2d1b9c9ec9d80eaabb4db2f6cbff73f",
+   "textoExtraido": "fuentes/advertencias/adv-hausera.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Portfolio%20Stock%20Exchange",
+   "archivo": "fuentes/advertencias/adv-portfolio_stock_exchange.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:47Z",
+   "bytes": 212577,
+   "sha256": "63f569bbdd85c3d3047dc09dcc5c029db4f44f640963dbb1509a2f30dd77aa6c",
+   "textoExtraido": "fuentes/advertencias/adv-portfolio_stock_exchange.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=European%20Digital%20Securities",
+   "archivo": "fuentes/advertencias/adv-european_digital_securities.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:49Z",
+   "bytes": 212643,
+   "sha256": "fd90fd451d03fd7ce84245af75d41e11771c961edea85caed1a4871ea6d6bf06",
+   "textoExtraido": "fuentes/advertencias/adv-european_digital_securities.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Beself",
+   "archivo": "fuentes/advertencias/adv-beself.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:51Z",
+   "bytes": 212181,
+   "sha256": "78d7f6c201b27155ed9bd7178fcedfa67a55afb93cd729392595762ebcf5af8d",
+   "textoExtraido": "fuentes/advertencias/adv-beself.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Betoken",
+   "archivo": "fuentes/advertencias/adv-betoken.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:53Z",
+   "bytes": 212203,
+   "sha256": "35b41c01e4fbf8f30e1fc1ee8715e5765ad4b5cfdc1712440fdb3a02efe248f6",
+   "textoExtraido": "fuentes/advertencias/adv-betoken.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City",
+   "archivo": "fuentes/advertencias/adv-token_city.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:56Z",
+   "bytes": 212269,
+   "sha256": "c8ebb6c2b8879f3b323de8bc4976cc7ac9142cea0f22420a00ab2400f18c1b71",
+   "textoExtraido": "fuentes/advertencias/adv-token_city.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lornin",
+   "archivo": "fuentes/advertencias/adv-lornin.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:57Z",
+   "bytes": 212181,
+   "sha256": "9e5dfafb42329aa8f778ff2c8f4dadc8116f57653572d8344c5c551dcba6b82a",
+   "textoExtraido": "fuentes/advertencias/adv-lornin.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cando",
+   "archivo": "fuentes/advertencias/adv-cando.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:12:59Z",
+   "bytes": 212159,
+   "sha256": "02612147d0963fa5ad9ff273d134dc043357b97604bc11c8f31eeb9270d4c1bf",
+   "textoExtraido": "fuentes/advertencias/adv-cando.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=2&nombre=Binance",
+   "archivo": "fuentes/advertencias/adv2-binance.html",
+   "http": 400,
+   "consultadoUtc": "2026-11-05T08:13:16Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db",
+   "textoExtraido": "fuentes/advertencias/adv2-binance.txt"
+  },
+  {
+   "url": "https://valorix.es/",
+   "archivo": null,
+   "http": 0,
+   "consultadoUtc": "2026-11-05T08:13:28Z",
+   "error": "curl: (35) Recv failure: Connection reset by peer"
+  },
+  {
+   "url": "https://www.valorix.es/",
+   "archivo": null,
+   "http": 0,
+   "consultadoUtc": "2026-11-05T08:13:35Z",
+   "error": "curl: (35) Recv failure: Connection reset by peer"
+  },
+  {
+   "url": "https://stx-landing-2026.pages.dev/en/index.html",
+   "archivo": "fuentes/bit2me/stx-landing-2026.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:13:43Z",
+   "bytes": 76299,
+   "sha256": "3f59d995a48d9c3d161bc051623b092cc78ebd2c2b00d8a90ea2faaa53231683",
+   "textoExtraido": "fuentes/bit2me/stx-landing-2026.txt",
+   "nota": "página encontrada por buscador; no consta que sea oficial"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&lang=es",
+   "archivo": "fuentes/cnmv/nav-esi-token-city-programa.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:14:16Z",
+   "bytes": 40585,
+   "sha256": "97dd89446c4f3b4f078f85938059c4190965649ef9a748e979f9d0f5017728a8",
+   "nota": "texto renderizado con Playwright/Chromium, pestaña «Programa de actividades»"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A56759137&lang=es",
+   "archivo": "fuentes/cnmv/nav-esi-bit2me-stx-programa.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:14:28Z",
+   "bytes": 40883,
+   "sha256": "4adf5c6a35279d5e112ca8bee0d19a2394f19d8324e983707a45f6c1888aaf64",
+   "nota": "texto renderizado con Playwright/Chromium, pestaña «Programa de actividades»"
+  },
+  {
+   "url": "https://support.bit2me.com/es/support/solutions/articles/35000266706",
+   "archivo": "fuentes/bit2me/faq-stx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:14:55Z",
+   "bytes": 250901,
+   "sha256": "b8105aca524b99a2d644a020b8bab4fd4d640ce2d904a4c91a7f27779f73e5fe",
+   "textoExtraido": "fuentes/bit2me/faq-stx.txt"
+  },
+  {
+   "url": "https://portfolio.exchange/es/portfolio-investors",
+   "archivo": "fuentes/portfolio/nav-investors.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:15:07Z",
+   "bytes": 10447,
+   "sha256": "a883df81310ebfcc2d6cde9c452486dbb9a02b7d6cd6b580fb5dbb9a6faf7d54",
+   "nota": "texto renderizado con Playwright/Chromium"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=2&lang=es",
+   "archivo": "fuentes/cnmv/listado-eaf.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:17:31Z",
+   "bytes": 341912,
+   "sha256": "0cf8c62d86ab8acea3ee0ba3194fd98a7bdb056ffb61a4aaa7939db98de43d2f",
+   "textoExtraido": "fuentes/cnmv/listado-eaf.txt"
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers/whitepaper/informacion-general/caracteristicas-del-token.md",
+   "archivo": "fuentes/betoken/gb-caracteristicas-del-token.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:17:39Z",
+   "bytes": 1335,
+   "sha256": "60d0a715367674cb3e3ffbbf2d0b3b909f407d8ede93d490864f2221a8f5fcaf"
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers/whitepaper/precio-de-los-tokens.md",
+   "archivo": "fuentes/crudo/betoken/gb-precio-de-los-tokens.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:17:40Z",
+   "bytes": 702,
+   "sha256": "6e871b3d60d9c74382be2a42574e3c6dff4c6c9399835711a50cb92649f6fd26",
+   "nota": "Movido a crudo/ (fuera de Git): incrusta una URL de imagen de GitBook con parámetro token=. La tabla de precios es una imagen y no se lee."
+  },
+  {
+   "url": "https://content.gitbook.com/content/0aYXo7y0jkozXKEdhHg8/blobs/7hAvNhp8E8k8Tajoj766/BeselfBrands_Whitepaper.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:18:32Z",
+   "nota": "PDF releído hoy en una carpeta temporal fuera del repositorio y borrado tras leerlo, porque contiene DNI de personas físicas. sha256 idéntico al del 03/11: el documento no ha cambiado.",
+   "bytes": 1293700,
+   "sha256": "e5e16d1d24644ef917e01d90a03b6384b9838b6fbdd25f2fa45baf3868188357"
   }
  ]
 }

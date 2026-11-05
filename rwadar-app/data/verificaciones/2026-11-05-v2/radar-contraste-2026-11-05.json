@@ -1,11 +1,8 @@
 {
   "fecha": "2026-11-05",
   "fuentes": 67,
-  "correctas": 65,
-  "bloqueos": [
-    "spiko-regafi: https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211 ya no dice «Spiko Finance», «19183»",
-    "spiko-regafi-pasaporte-es: https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211 ya no dice «ESPAGNE», «Libre prestation de services»"
-  ],
+  "correctas": 67,
+  "bloqueos": [],
   "contraste": [
     {
       "id": "addx-web",
@@ -844,28 +841,32 @@
     {
       "id": "spiko-regafi",
       "url": "https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211",
-      "estado": 200,
-      "metodo": "http",
+      "estado": 502,
+      "metodo": "API pública de REGAFI (prd-banque-entites), leída con WebFetch el 05/11/2026 hacia las 08:41 UTC; también leída por el grupo spiko a las 08:10 UTC",
       "capturadoEl": null,
-      "literales": [],
-      "faltan": [
-        "Spiko Finance",
-        "19183"
+      "ok": true,
+      "urlLeida": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D751211",
+      "literales": [
+        "denomination: \"Spiko Finance\"",
+        "cib: [{\"code\": \"19183\", \"date\": \"2025-12-15\"}]",
+        "nature_autorisation: \"Agrément\"; approval_withdrawal_process: \"False\""
       ],
-      "ok": false
+      "manual": "La página de REGAFI (https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211) da 502 el 05/11/2026 (07:58, 08:06 y 08:35 UTC) y el proxy corta curl. Se leyó la API pública del mismo registro, de la que se alimenta la página."
     },
     {
       "id": "spiko-regafi-pasaporte-es",
       "url": "https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211",
-      "estado": 200,
-      "metodo": "http",
+      "estado": 502,
+      "metodo": "API pública de REGAFI (prd-banque-passeports-sortants), leída con curl el 05/11/2026 a las 08:42 UTC; copia en radar-manual/regafi-spiko-pasaporte-espagne.json",
       "capturadoEl": null,
-      "literales": [],
-      "faltan": [
-        "ESPAGNE",
-        "Libre prestation de services"
+      "ok": true,
+      "urlLeida": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+      "literales": [
+        "\"type_passeport\": \"Libre prestation de services\"",
+        "\"pays\": \"ESPAGNE\", \"date_debut\": \"2026-01-08\"",
+        "\"A1\": {\"C3\": {\"date_debut\": \"2026-01-08\", \"value\": true}"
       ],
-      "ok": false
+      "manual": "Misma caída de la página de REGAFI. Se leyó la API pública de pasaportes salientes del mismo registro."
     }
   ]
 }

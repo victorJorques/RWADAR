@@ -1,0 +1,403 @@
+{
+ "grupo": "espana-proximas",
+ "revisor": "revisión independiente",
+ "nota": "Las .html y .pdf y todo crudo/ quedan fuera de Git (.gitignore del ciclo); de cada .html hay un .txt extraído con el mismo nombre. crudo/ guarda las copias íntegras que nombran a personas físicas.",
+ "consultas": [
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "archivo": "crudo/api-casa-de-outeiro.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:15:48Z",
+   "bytes": 48606,
+   "sha256": "00af0e4d7007f03c0455d9b8f526effb030fc50d91c7973203247edf799c13c5",
+   "enGit": false
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+   "archivo": "alius/casa-fdf.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:16:00Z",
+   "bytes": 429084,
+   "sha256": "147cd9729caaf06be2afe5d894303c964bac2be0777116006399f81d800e0de3",
+   "enGit": false
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/264",
+   "archivo": "alius/casa-anexos.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:16:02Z",
+   "bytes": 391427,
+   "sha256": "332e32c27aabd763e1607c1ebd91a17d00b569cb2bf2019d3d11e1fcc79e976b",
+   "enGit": false
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/tabs",
+   "archivo": "crudo/api-casa-tabs.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:16:03Z",
+   "bytes": 32513,
+   "sha256": "3ec67c48c55af62f0a3769e31d5fd989850a6b001b94c48f85754169d19fb741",
+   "enGit": false
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed",
+   "archivo": "crudo/api-count-by-status.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:16:41Z",
+   "bytes": 88,
+   "sha256": "d74ace86898fb04d8ba2c17e19e8033bc20cb9af125cf6a7e1652769f1d680f5",
+   "enGit": false
+  },
+  {
+   "url": "https://aliuscap.com/projects/casa-de-outeiro",
+   "archivo": "crudo/nav-casa-de-outeiro-raw.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:16:52Z",
+   "bytes": 4585,
+   "sha256": "e8b142278141b5136156ab6f3ac9397ee6255e2bc308db2509158a4b7ef6e507",
+   "enGit": false
+  },
+  {
+   "url": "https://aliuscap.com/projects/casa-de-outeiro",
+   "archivo": "alius/nav-casa-de-outeiro-cabecera.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:16:52Z",
+   "bytes": 1158,
+   "sha256": "8e4b20ea0538393acb5b739389b695acf10eddd4d785452a55fb9f9e230e9809",
+   "enGit": true
+  },
+  {
+   "url": "https://aliuscap.com/invest",
+   "archivo": "alius/nav-alius-invest.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:17:05Z",
+   "bytes": 3653,
+   "sha256": "55e720f260de9d8bd15d40cfefcdd7f0bc5bc4ce17b203d6925c36dcab9c400a",
+   "enGit": true
+  },
+  {
+   "url": "https://casadeouteiro.com/emision-capital/",
+   "archivo": "crudo/nav-casadeouteiro-emision-raw.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:17:30Z",
+   "bytes": 5557,
+   "sha256": "991ff8755ab3d3bdfd112b54fac69e9379f0d45d8632000e99e3a195e9e346d1",
+   "enGit": false
+  },
+  {
+   "url": "https://casadeouteiro.com/emision-capital/",
+   "archivo": "alius/nav-casadeouteiro-emision-capital.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:17:30Z",
+   "bytes": 5471,
+   "sha256": "1a2499632f18f28fd2b2434316aaf771156dd859e27e9a2bc1ddac4ac100d358",
+   "enGit": true
+  },
+  {
+   "url": "https://aliuscap.com/general-terms",
+   "archivo": "alius/nav-alius-condiciones-generales.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:17:58Z",
+   "bytes": 49890,
+   "sha256": "fbab408120deb66a87d480d5b4950b68c273e048d0e9a62bd26d9dc886d0ba39",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793",
+   "archivo": "cnmv/cnmv-psfp-11.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:18:27Z",
+   "bytes": 155452,
+   "sha256": "8a4c8171e27a806c0b19470f5f1ff8e765866f9156c3373a15e13b862a90656c",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981",
+   "archivo": "cnmv/cnmv-esi-token-city.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:18:29Z",
+   "bytes": 223179,
+   "sha256": "3b728472c61b29177ba4aa28b53aae4d31d9baab28b21f378a095611ebbb953d",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es",
+   "archivo": "cnmv/cnmv-erir-token-city.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:18:31Z",
+   "bytes": 150114,
+   "sha256": "ef47df434ee329cf2f55e341a7a4eee10a401395cb52f04c5347243a92b7bd51",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+   "archivo": "cnmv/cnmv-erir-ursus3.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:18:32Z",
+   "bytes": 183044,
+   "sha256": "3ea04f8f58e800a3cc0a2d91415b0fd5d6725e5255faa6d864dd5895012a971b",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+   "archivo": "cnmv/cnmv-psfp-listado.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:18:34Z",
+   "bytes": 165407,
+   "sha256": "5b2d500d2cc8c402d889323691828cba10a509b4e2d73becfc097a5944de02ed",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1",
+   "archivo": "cnmv/cnmv-erir-ursus3-page1.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:18:53Z",
+   "bytes": 182838,
+   "sha256": "b21d66fa5390cdfca3368b4c4084f82a7bf1c2048a3f8466534a755bc896af73",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+   "archivo": "cnmv/cnmv-erir-ursus3-page2.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:18:55Z",
+   "bytes": 162258,
+   "sha256": "12212c30c55628a72171275defb1ca5f10eb3e6b1fe5fce735930fecc5b27fd7",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=3",
+   "archivo": "cnmv/cnmv-erir-ursus3-page3.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:18:57Z",
+   "bytes": 153549,
+   "sha256": "7a076857f90d08b53e90de228b6eac0eb4f400626d27fdeebdc55dcd5895f57d",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "archivo": "cnmv/adv-trading.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:18Z",
+   "bytes": 237479,
+   "sha256": "67886086e04b24abc402496026c6e68d89de64ef948f567dfb81e388fa004e67",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius",
+   "archivo": "cnmv/adv-alius.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:20Z",
+   "bytes": 212159,
+   "sha256": "0c272239160a3cafa557769a1af19b9ee2b5144a61860dd505a471d46c841ac3",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius+Capital",
+   "archivo": "cnmv/adv-alius-capital.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:22Z",
+   "bytes": 212335,
+   "sha256": "5969a8aa4f7dfaab565aa891a429c35feff1e85bd2dc6c073fca933c4e6e6d22",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Adventurees",
+   "archivo": "cnmv/adv-adventurees.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:24Z",
+   "bytes": 212291,
+   "sha256": "9b3a71d9e9121ef21dc5f840dd5c872ee2c8f458df2581a17462b53ee5e4a430",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token+City",
+   "archivo": "cnmv/adv-token-city.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:26Z",
+   "bytes": 212269,
+   "sha256": "5fba5deb3ad6df13d692e97e6353d7fe1eca58e1362f671aca17f21287ed6eec",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Outeiro",
+   "archivo": "cnmv/adv-outeiro.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:28Z",
+   "bytes": 212203,
+   "sha256": "b918068140b74f0190b04e3ee8c8ac33bbd9470dbe6fa405170ff4bcde78ea91",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+   "archivo": "cnmv/adv-hausera.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:30Z",
+   "bytes": 212203,
+   "sha256": "5beb8d597f19c178dcb14caa0751c1e54770081d911a78c9486c5a585a4480c0",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx",
+   "archivo": "cnmv/adv-holdtx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:31Z",
+   "bytes": 212181,
+   "sha256": "b58aa380e8d2428affc27169cadbe558f7ebb2138e8311dca59c6e2fe0348611",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=HOLDTX+SPAIN",
+   "archivo": "cnmv/adv-holdtx-spain.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:33Z",
+   "bytes": 212313,
+   "sha256": "8859f900161093fcf2342252e207e1865ee3ea6b4099b6a75055153c17996d7a",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Casa+de+Outeiro",
+   "archivo": "cnmv/adv-casa-de-outeiro.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:35Z",
+   "bytes": 212379,
+   "sha256": "251846ad47f0103b3c30a7ead49a677b5dab5d0392afd8b4b9aa286f80307ad7",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=B67708032",
+   "archivo": "cnmv/cnmv-esi-holdtx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:47Z",
+   "bytes": 216248,
+   "sha256": "3d39fbd1b03b2357c35e13ea832ca2d8b90944d35b46020db6d0d44ff48ea64a",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/page-data/propiedad/alicante_2/page-data.json",
+   "archivo": "crudo/hausera-propiedad-alicante_2-page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:54Z",
+   "bytes": 158695,
+   "sha256": "b2a63ccc06e072f526419c9a542fa5e49f1470bee70a9c91cc9f07d39c36c1d5",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/page-data/oportunidades/page-data.json",
+   "archivo": "crudo/hausera-oportunidades-page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:54Z",
+   "bytes": 188757,
+   "sha256": "68af14ea980335281336b1eab13a9cedc9f6225f4851f7395655e6bed976d2be",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/page-data/propiedad/alicante_3/page-data.json",
+   "archivo": "crudo/hausera-propiedad-alicante_3-page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:19:55Z",
+   "bytes": 158473,
+   "sha256": "4f9fd81d68a81d177bae0a1ead4d10a73d4c822b14342fb34b9d64308766ef07",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/oportunidades/",
+   "archivo": "hausera/nav-hausera-oportunidades.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:20:26Z",
+   "bytes": 4752,
+   "sha256": "e9ccc29572f6c0f919d7b20489200b6f528efd862abd0f8f669565741b001f37",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_2/",
+   "archivo": "hausera/nav-hausera-alicante-2.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:20:37Z",
+   "bytes": 375,
+   "sha256": "7ff57bd92a13fbbcdb7098ee0749325f03bfb8c89ddb4abee01114a068afcbbf",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_3/",
+   "archivo": "hausera/nav-hausera-alicante-3.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:20:51Z",
+   "bytes": 375,
+   "sha256": "6d1780e99f4dde548238b79e28efc851664058f8ce524117da27c83f5a2a8ed9",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/",
+   "archivo": "hausera/nav-hausera-home.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:21:04Z",
+   "bytes": 5887,
+   "sha256": "4ae1bc30de204a7045564cbaf76f8fc79a326897409b1a85b476f50dc778e6a7",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/faq/",
+   "archivo": "hausera/nav-hausera-faq.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:21:15Z",
+   "bytes": 3288,
+   "sha256": "efaa95993d52fc73ee19783cfba121933a843b737970b7afba81396e7ef358ae",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/terms/",
+   "archivo": "hausera/nav-hausera-terms.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:21:28Z",
+   "bytes": 53168,
+   "sha256": "1a55aa71529b6dc7343bbb537b81aa22272eec4b52dd1ae37ecafac1b6986267",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/mercado-secundario/",
+   "archivo": "hausera/nav-hausera-mercado-secundario.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:21:38Z",
+   "bytes": 3403,
+   "sha256": "54aaaa1bebd143a0a062a65d1876d0b3a976e5b5d98ca3a01dc4daaea16b6199",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_2/",
+   "archivo": "hausera/nav-hausera-alicante-2-temprana.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:06Z",
+   "bytes": 3549,
+   "sha256": "f2e9e80db4487f76248846756942b50173d936c95a03ecfb73360f2e3f2c57a8",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/faq/",
+   "archivo": "hausera/nav-hausera-faq-pestanas.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:35Z",
+   "bytes": 9324,
+   "sha256": "51edf3e585a8070f47d30cacc1414b58a227910bde2b79612d9f0f040b754ca4",
+   "enGit": true
+  },
+  {
+   "url": "https://portfolio.exchange/es/portfolio-market",
+   "archivo": "hausera/nav-portfolio-market.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:23:45Z",
+   "bytes": 12031,
+   "sha256": "86d1305bb8c2ce98a41e9b1083a3a160f8eb1aa23d4f0d648ca0366ffe88aa5b",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A86796182",
+   "archivo": "cnmv/cnmv-esi-ursus3.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:24:19Z",
+   "bytes": 223442,
+   "sha256": "22681243676a2a5797b63fc262c4bd17d385bbe5e627dbabec48e910c6822b9c",
+   "enGit": false
+  }
+ ]
+}

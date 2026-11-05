@@ -1,0 +1,20 @@
+2026-11-05T08:24:16.435Z
+T0 | Nº Registro Oficial | Fecha registro oficial
+T0 | 334 | 06/02/2026
+T1 | Servicios y actividades de inversión | Instrumentos | Clientes
+T1 | a | b | c | d | e | f | g | h | i | j | k | Minoristas | Profesionales | Contrapartes elegibles
+T1 | Recepción y transmisión de órdenes de clientes | [Si] | [Si] | [Si] |  |  |  |  |  |  |  |  | [Si] | [Si] | [Si]
+T1 | Colocación de instrumentos financieros | [Si] | [Si] | [Si] |  |  |  |  |  |  |  |  | [Si] | [Si] | 
+T1 | Gestión de sistemas multilaterales de negociación | [Si] | [Si] |  |  |  |  |  |  |  |  |  | [Si] | [Si] | [Si]
+T2 | Servicios auxiliares | Instrumentos | Clientes
+T2 | a | b | c | d | e | f | g | h | i | j | k | Minoristas | Profesionales | Contrapartes elegibles
+T2 | Custodia y administración de instrumentos financieros | [Si] |  | [Si] |  |  |  |  |  |  |  |  | [Si] | [Si] | [Si]
+T2 | Asesoramiento a empresas |  |  |  |  |  |  |  |  |  |  |  | [Si] | [Si] | [Si]
+T3 | Servicios y actividades | Explicaciones
+T3 | Recepción y transmisión de órdenes de clientes en relación con uno o más instrumentos financieros | El servicio de inversión se prestará sobre instrumentos financieros basados en tecnología de registro distribuido no admitidos a negociación en el sistema de negociación y liquidación gestionado por la AV
+T3 | Colocación de instrumentos financieros sin base en un compromiso firme | El servicio de inversión se prestará sobre instrumentos financieros basados en tecnología de registro distribuido, que podrán ser posteriormente objeto de admisión para su negociación en el sistema de negociación y liquidación gestionado por la AV
+T3 | Gestión de sistemas multilaterales de negociación | El servicio de inversión se prestará sobre instrumentos financieros basados en tecnología de registro distribuido
+T3 | Custodia y administración por cuenta de clientes de los instrumentos financieros | Tendrá como objetivo únicamente las funciones propias de entidad responsable de la administración del registro e inscripción (ERIR) de los valores negociables basados en tecnología de registros distribuidos
+T3 | Asesoramiento a empresas sobre estructura de capital, estrategia industrial y cuestiones afines, así como el asesoramiento y demás servicios en relación con fusiones y adquisiciones de empresas | El servicio se prestará sobre instrumentos financieros basados en tecnología de registro distribuido
+T4 | Descripción | Si | No
+T4 | La sociedad mantiene fondos en cuentas instrumentales y transitorias a nombre de sus clientes |  | [Si]

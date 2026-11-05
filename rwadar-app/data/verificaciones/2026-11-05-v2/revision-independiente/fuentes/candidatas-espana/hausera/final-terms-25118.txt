@@ -1,0 +1,1905 @@
+                                                                  Altarius ETI AG
+
+
+MIFID II product governance / retail investors, professional investors and ECPs target market – Solely for the purposes of the manufacturer’s
+product approval process, the target market assessment in respect of the ETI Securities has led to the conclusion that: (i) the target market for
+the ETI Securities is eligible counterparties, professional clients and retail clients, each as defined in Directive 2014/65/EU as amended, "MiFID
+II"); (ii) all channels for distribution to eligible counterparties and professional clients are appropriate; and (iii) the following channels for
+distribution of the ETI Securities to retail clients are appropriate - investment advice, portfolio management, non-advised sales and pure
+execution services subject to the distributor’s suitability and appropriateness obligations under MiFID II, as applicable. Any person subsequently
+offering, selling or recommending the ETI Securities (a "distributor") should take into consideration the manufacturer’s target market assessment;
+however, a distributor subject to MiFID II is responsible for undertaking its own target market assessment in respect of the ETI Securities.
+
+
+
+
+                                                                 Altarius ETI AG
+
+                                        (a public company incorporated under the laws of Liechtenstein)
+
+                          EUR 1.000.000.000 Programme for the issue of ETI Securities in the form of debt securities.
+
+                                                                (the “Programme”)
+
+                                                                   Final Terms
+
+                                         Dated 22nd August 2025 (as updated on 18th December 2025)
+
+                                                 Series 19: Hausera ETI Securities (the “Series”)
+
+This document constitutes the Final Terms in the meaning of article 8 of the Prospectus Regulation of the ETI Securities described herein. The
+public offering of the ETI Securities got commenced under a Previous Base Prospectus and gets continued under the base prospectus approved
+by the Liechtenstein Financial Market Authority (the “FMA”) on 18th December 2025 (the “Base Prospectus”) together with supplements, if any, in
+line with article 8 (11) of the Prospectus Regulation. The Base Prospectus (together with any supplement thereto) as well as any successor base
+prospectus will be published at the website of the Issuer at https://www.altariuseti.com.
+
+Unless terms are defined herein, capitalised terms shall have the meanings given to them in the Conditions set forth in the Base Prospectus
+dated 18th December 2025. This document constitutes the Final Terms of the above Series of ETI Securities for the purposes of article 8 of the
+Prospectus Regulation and must be read in conjunction with the Base Prospectus, and in particular, the Conditions of the ETI Securities, as set
+out therein. Full information on the Issuer and the terms and conditions of the ETI Securities, is only available on the basis of the combination
+of these Final Terms and the Base Prospectus.
+
+The Base Prospectus has been published in accordance with article 21 of the Prospectus Regulation at https://www.altariuseti.com and is
+available for viewing during normal business hours at the registered office of the Issuer.
+
+The Issue Specific Summary of the ETI Securities is annexed to these Final Terms.
+
+The text referring to the Prospectus Regulation only relates to the ETI Securities in respect of which a base prospectus is required to be prepared
+under the Prospectus Regulation and should otherwise be disregarded.
+
+
+
+
+                                                                                                                                       Page 1 of 28
+                                                                      Altarius ETI AG
+
+
+The Final Terms of the ETI Securities comprise the following:
+
+PART A — CONTRACTUAL TERMS
+
+The particulars in relation to this issue of ETI Securities are as follows:
+
+1.    Issuer:                                            Altarius ETI AG with LEI: 5299001XE1CIMMOEME82
+
+2.    Series of ETI Securities to which these Final 19
+      Terms apply:
+
+3.    Tranche:                                           1
+
+4.    Number of ETI Securities to which these Final 7.000 ETI Securities
+      Terms apply:
+
+5.    Issue Date:                                        22nd August 2025
+
+6.    Series Issue Date:                                 22nd August 2025
+
+7.    Issue Price:                                       100% of the Specified Denomination
+
+8.    Arranger Fee:                                      Maximum of 0,75% of NAV(t) per annum or 47.500,00 EUR per annum as set out in the
+                                                         relevant PPM of the Underlying Security.
+
+9.    Calculation Agency Fee:                            Maximum of 0,15% of the NAV(t) per annum or 28.000,00 EUR per annum as set in the
+                                                         relevant PPM of the Underlying Security.
+
+10.   Management Fee:                                    Not applicable
+
+11.   FR0014012HS6                                       FR0014012HS6
+
+12.   Hurdle Rate:                                       12.00%
+
+13.   Maximum number of ETI Securities of this 7.000
+      Series which may be issued:
+
+14.   Maximum nominal amount of this Series 7.000.000,00 EUR
+      which may be issued:
+
+15.   Minimum transferable         number      of   ETI One
+      Securities:
+
+16.   Minimum nominal amount transferable:               1.000,00 per unit of ETI Security
+
+17.   Relevant Currency:                                 EUR
+
+18.   Maturity:                                          Perpetual
+
+19.   Denomination:                                      1.000,00 EUR
+
+20.   Specified Denomination:                            1.000,00 EUR per unit of ETI Security
+
+21.   Aggregate Nominal Amount of the Tranche            7.000.000,00 EUR
+
+22.   Relevant Exchange:                                 Portfolio Stock Exchange
+
+23.   Relevant Clearing System:                          Euroclear
+
+24.   Underlying Issuer:                                 Altarius Index PCC Limited- Cell N (Hausera Portfolio Linked Notes)
+
+25.   Underlying Security:                               Hausera Portfolio Linked Note (ISIN: GI000A4ANPR9) issued by Altarius Index PCC Ltd
+                                                         [Cell N – Hausera]
+
+                                                         Further information in relation to the Underlying Security, including its past performance
+                                                         can be found on the website of the Issuer, https://www.altariuseti.com.
+
+
+                                                                                                                                        Page 2 of 28
+                                                                  Altarius ETI AG
+
+
+
+26.   Distributions of the Underlying Security:       Up to 100% of the net profits, as reflected in the NAV(t) on each Accounting Date, may be
+                                                      distributed, at the discretion of the Director of the Underlying Security.
+
+27.   Form of ETI Securities:                         Bearer ETI Securities
+
+28.   Standard Redemption:                            Permitted
+
+29.   Standard Redemption Day(s):                     31st December of each year or the preceding Issuer Business Day.
+
+30.   Maximum Daily Redemption Limit:                 Not applicable
+
+31.   Issuer Call Redemption Notice Period:           30 calendar days
+
+32.   ECB Eligibility:                                Yes
+
+33.   Arranger:                                       Altarius Capital Limited
+
+34.   Issuing and Principal Paying Agents:            European Digital Securities Exchange, S.V, S.A.
+
+35.   Calculation Agent:                              Altarius Capital Limited
+
+36.   Authorised Participants:                        Altarius Index PCC Limited and Altarius Capital Limited
+
+37.   ETI Sponsor:                                    CCI Digital Media SL
+
+38.   Investment Manager:                             Altarius Capital Ltd.
+
+39.   Portfolio Manager:                              Hausera Property Manager SL
+
+40.   Advisor:                                        Not applicable
+
+
+
+The Issuer accepts responsibility for the information contained in these Final Terms. Having taken all reasonable care to ensure that such is the
+case, the information contained in the Base Prospectus, as completed by these Final Terms in relation to the Series of ETI Securities referred to
+above is, to the best of the Issuer’s knowledge, in accordance with the facts and contains no omission likely to affect its import.
+
+Signed on behalf of:
+
+Altarius ETI AG
+
+
+
+
+ Jaime Ortiz-Vigón                                                                                Hera Trust Establishment
+ Director                                                                                         Director
+
+ Duly authorised                                                                                  Duly authorised
+
+
+
+
+                                                                                                                                     Page 3 of 28
+                                                                 Altarius ETI AG
+
+
+PART B — OTHER INFORMATION
+
+1.   Listing and admission to trading:               Application has been made to the Portfolio Stock Exchange for the Series of ETI Securities
+                                                     to which these Final Terms apply to be admitted to listing and trading on any other
+                                                     multilateral trading facility. There is no guarantee that such application or applications will
+                                                     be successful or, if successful, that such admissions to trading will be maintained.
+
+2.   Authorisation:                                  The issue of these Final Terms and the Series 19 Hausera ETI were authorised by
+                                                     resolutions of the board of directors of the Issuer passed on 21st August 2025.
+
+3.   Notification:                                   The Liechtenstein Financial Market Authority has provided the competent authorities of
+                                                     the host member states; Liechtenstein, Germany, and Spain with a certificate of approval
+                                                     attesting that the Base Prospectus has been drawn up in accordance with the Prospectus
+                                                     Regulation.
+
+4.   Reasons for the offer:                          Making profit and/or hedging certain risks.
+
+5.   Interests of natural and legal persons involved So far as the Issuer is aware, no person involved in the offer of the ETI Securities has an
+     in the issue:                                   interest material to the offer.
+
+6.   Distribution
+
+     Non-exempt Offer:                               An offer of the ETI Securities may be made by the Authorised Offerors specified below
+                                                     other than pursuant to Article 1 of the Prospectus Regulation in Liechtenstein, Germany,
+                                                     and Spain (the "Non-exempt Offer Jurisdictions") during the Offer Period.
+
+                                                     No such offer should be made in any relevant jurisdiction until those requirements have
+                                                     been met. Non-exempt offers may only be made into jurisdictions in which the prospectus
+                                                     (and any supplement) has been notified.
+
+     Additional Selling Restrictions:                Not Applicable
+
+7.   Operational Information
+
+     ISIN code:                                      FR0014010H19
+
+     Common Code:                                    Not applicable
+
+     Names and addresses of additional Paying Not applicable
+     Agents (if any):
+
+     Names and addresses of additional Relevant
+                                                Not applicable
+     Clearing Systems (if any):
+
+8.   Terms and Conditions of the Offer
+
+     Offer Price:                                    1.000,00 EUR during the initial offering period and the market value thereafter.
+
+     Time period, including any possible 12 months from the Programme Effective Date (the “Offer Period”).
+     amendments, during which the offer will be
+     open:
+
+     Conditions to which the offer is subject:       Offers of the ETI Securities are conditional upon their issue and, as between the
+                                                     Authorised Offeror(s) and their customers, any further conditions as may be agreed
+                                                     between them.
+
+     Description of the application process:         ETI Securities will be issued to investors as per the arrangements in place between the
+                                                     Authorised Offeror and such investor, including as to the application process, allocation,
+                                                     price, expenses and settlement arrangements. A commission will not be charged to
+                                                     investors by the Authorised Offeror.
+
+     Description of possibility to reduce Not Applicable
+     subscriptions and manner for refunding
+     excess amount paid by applicants:
+
+
+
+
+                                                                                                                                        Page 4 of 28
+                                                            Altarius ETI AG
+
+
+Details of the minimum and/or maximum Not Applicable
+amount of application:
+
+Details of the method and time limit for paying The ETI Securities will be issued on the Issue Date against payment to the Issuer of the net
+up and delivering the ETI Securities:           subscription money.
+
+Manner in and date on which results of the Not Applicable
+offer are to be made public:
+
+Procedure for exercise of any right of pre- Not Applicable
+emption, negotiability of subscription rights
+and treatment of subscription rights not
+exercised:
+
+Categories of investors to whom the securities Subject to complying with any restrictions applicable to offers of the ETI Securities in any
+are being offered.                             jurisdictions, the ETI Securities may be offered to all categories of investors.
+
+Whether tranche(s) have been reserved for [Not Applicable / Tranches have not been reserved for particular countries.]
+certain countries:
+
+Process for notification to applicants of the Not Applicable
+amount allotted and the indication whether
+dealing may begin before notification is made:
+
+Amount of any expenses and taxes specifically Not Applicable
+charged to the subscriber or purchaser:
+
+Name(s) and address(es), to the extent known Altarius ETI AG, Industriering 20, FL-9491, Ruggell, Liechtenstein. No other placers are
+to the Issuer, of the placers in the various known to the Issuer.
+countries where the offer takes place.
+
+Names address of the Authorised Offerors:       Altarius ETI AG and each Authorised Participant expressly named as an Authorised
+                                                Offeror on the website of the Issuer at https://www.altariuseti.com.
+
+
+
+
+                                                                                                                                Page 5 of 28
+                                                                   Altarius ETI AG
+
+
+ANNEX — ISSUE-SPECIFIC SUMMARY
+
+(a)   Introduction
+
+ Name of the security:                                                      Hausera ETI
+
+ ISIN of the security:                                                      FR0014010H19
+
+ Issuer:                                                                    Altarius ETI AG
+                                                                            info@altariuseti.com
+                                                                            Industriering 20, 9491, Ruggell, Liechtenstein
+                                                                            +423 373 00 30
+                                                                            LEI: 5299001XE1CIMMOEME82
+
+ Competent authority approving the Base Prospectus:                         Liechtenstein Financial Market Authority
+                                                                            www.fma-li.li/en
+                                                                            Landstrasse 109, 9490 Vaduz, Liechtenstein
+                                                                            +423 236 71 35
+
+ Date of approval of the Base Prospectus:                                   18th December 2025
+
+
+
+Warnings
+
+This Issue Specific Summary should be read as an introduction to the Base Prospectus. Any decision to invest in the ETI Securities should be
+based on a consideration of the Base Prospectus as a whole by the prospective investors. An investment in ETI Securitues involves a significant
+degree of risk and an investor may lose the value of its entire investment or part of it. Where a claim relating to the information contained in the
+Base Prospectus is brought before a court, the plaintiff investor might, under national law, have to bear the costs of translating the Base
+Prospectus before the legal proceedings are initiated. Civil liability attaches only to those persons who have tabled the summary including any
+translation thereof, but only where the summary is misleading, inaccurate or inconsistent, when read together with the other parts of the Base
+Prospectus, or where it does not provide, when read together with the other parts of the Base Prospectus, key information in order to aid
+prospective investors when considering whether to invest in such ETI Securities.
+
+                             You are about to purchase a product that is not simple and may be difficult to understand.
+
+(b)   Key information on the Issuer
+
+Who is the issuer of the securities?
+
+The Issuer was incorporated as Altarius ETI AG on the 28th October 2021 in Liechtenstein under the laws of the Principality of Liechtenstein and
+organised in accordance with article 261 et seq. of the Liechtenstein Companies Act (Personen- und Gesellschaftsrecht, PGR) as a joint stock
+company (Aktiengesellschaft), with registered number FL-0002.669.856-9. It is registered with the Liechtenstein Registry of Commerce
+(Handelsregister) and has its registered office at, Industriering 20, FL-9491, Ruggell (Liechtenstein). The Issuer’s LEI is 5299001XE1CIMMOEME82.
+
+The Issuer has been established for the sole purpose of issuing ETI Securities in the form of debt securities, the value of which are linked on a
+1:1 basis to the Underlying Securities, which are segregated into cells of a securitisation special purpose entity. The sole shareholder of the
+Issuer is Altarius Capital Value S.L. (incorporated in Spain). Altarius Capital Value S.L. is beneficially owned and controlled by Adelaida Garrido
+Caballero and Jaime Ortiz-Vigón. The directors of the Issuer are: Jaime Ortiz-Vigón, Florian Wenaweser, and Hera Trust Establishment. The
+statutory auditors of the Issuer are Lirex AG. addressed in Im Krüz 2 . FL-9494 Schaan, Liechtenstein
+
+What is the key financial information regarding the Issuer?
+
+Audited financial statements for the period ending 31st December 2023 and a report of the review to the financial statements for the period
+ending 31st December 2024 have been prepared and are included at Annex 1 of the Base Prospectus. The audited annual financial statements
+and any available reports to the review of the financial statements will be available free of charge at the offices of the Issuer. The table below
+summarises key information from the Issuer's audited financial statements as well as reports to the review of the financial statements.
+
+ Balance Sheet                                                                          31.12.2024                                    31.12.2023
+
+ Assets                                                                              159.377.580,93                                20.581.828,51
+             Receivables                                                                 207.308,04                                   146.721,77
+             Investments                                                             159.131.460,34                                20.396.466.73
+             Bank deposits                                                                38.812,55                                    38.640,00
+ Equity                                                                                   50.041,96                                    50.621,19
+             Subscribed capital                                                           50.000,00                                    50.000,00
+             Profit / loss brought forward                                                   621,19                                       417,49
+
+                                                                                                                                        Page 6 of 28
+                                                                     Altarius ETI AG
+
+
+               Annual profit / loss                                                          (579,23)                                          203,70
+ Liabilities                                                                           159.323.917,01                                   20.531.207,31
+               Provisions                                                                   61.652,85                                       18.358,30
+               Exchange Traded Instruments                                             159.131.460,34                                   20.396.466.73
+               Accounts payable                                                            130.803,82                                      116.382,28
+
+ Income Statement                                                                         31.12.2024                                       31.12.2023
+
+ Annual profit / loss                                                                         (579,23)                                          203,70
+          Net revenues                                                                    137.771,85                                       185.033,96
+          Operating expenses                                                             (130.945,38)                                     (180.740,30)
+          Extraordinary expenses                                                                  0,00                                       (3.362,01)
+          Financial result                                                                  (5.594,72)                                        1.540,60
+          Taxes                                                                             (1.810,98)                                       (2.268,55)
+
+The loss incurred in the 2024 financial year is mainly attributable to an increase in the financial expenses associated with maintaining the
+Programme. The Issuer does not conduct commercial operations and therefore its financial performance is dependent on fee income generated
+from issuance activity and the costs attributable to each ETI Security.
+
+In respect of the Issuer, there is no material adverse change in the financial position or prospects of the Issuer. This since 31st December 2024
+(being the date of the most recent report of the review to the financial statements if applicable) and throughout the current financial year. There
+has been none qualifications in the audit reports on the historical financial information.
+
+What are the key risks specific to the Issuer?
+
+1.   Ability of the Issuer to meet its obligations in respect of the ETI Securities — Holders of the ETI Securities will be exposed to the risk that
+     the Issuer will have insufficient assets to meet its obligations under the ETI Securities. While the return payable by the Issuer on a
+     redemption of the ETI Securities of each Series will be linked to the performance of the Underlying Securities to which that Series is linked,
+     there can be no assurance that the Issuer will have sufficient assets to pay this amount. The Issuer does not have substantial assets other
+     than the proceeds of the ETI Securities and accordingly the ability of the Issuer to meet its obligations under the ETI Securities will depend
+     upon the performance of any investments acquired by the Issuer with the proceeds of the ETI Securities. The Issuer has discretion as to
+     how the proceeds of each Series of ETI Securities are used and if the Issuer was to invest in assets that did not perform as well as the
+     Underlying Securities, it is likely that the Issuer would not have sufficient assets to discharge its obligations in respect of the ETI Securities.
+     In such circumstances it is possible that the ETI Securityholders may receive less, or substantially less, than their initial investment.
+
+2.   No ringfencing of the assets of the Issuer — The Issuer will incur obligations from time to time with respect to further Series of ETI Securities.
+     There will be no ringfencing of the assets of the Issuer and all Series of ETI Securities will have recourse to a single pool of assets of the
+     Issuer. Accordingly, investors in one Series of ETI Securities will be exposed to the risk of the Issuer defaulting under another Series of ETI
+     Securities or otherwise being unable to discharge its obligations in respect of any other Series of ETI Securities. In the event that there is a
+     shortfall in the assets of the Issuer such that it is unable to discharge its obligations in respect of the ETI Securities, such shortfall may be
+     shared on a pro rata basis by all Series of ETI Securities. . In such circumstances it is possible that the ETI Securityholders may receive less,
+     or substantially less, than their initial investment.
+
+3.   Insolvency — The Issuer has agreed not to engage in activities other than the issue of ETI Securities and related and incidental matters.
+     Any issue of ETI Securities must be on terms that provide for the claims of the ETI Securityholders and the Series Parties (with the exception
+     of the claims of the Issuing and Principal Paying Agents with respect to the Paying Agreement) , in respect of such ETI Securities to be limited
+     to the proceeds of the assets on which such ETI Securities are secured. If such provisions are upheld, it would be unlikely that the Issuer
+     could become insolvent.
+
+     However, notwithstanding the above, the limited recourse and non-petition provisions, should the Issuer have outstanding liabilities to
+     third parties which it is unable to discharge or should the limited recourse or non-petition provisions be found to be non-enforceable in a
+     particular jurisdiction and as a result the Issuer becomes or is declared insolvent according to the law of any country having jurisdiction
+     over it or any of its assets, the insolvency laws of that country may determine the validity of the claims of ETI Securityholders and may
+     prevent ETI Securityholders from enforcing their rights with respect to any ETI Securities held by it or delay such enforcement. If the ETI
+     Securityholders are prevented from enforcing their rights with respect to the ETI Securities, this may result in the ETI Securityholders losing
+     their investment in the ETI Securities. The impact of the occurrence of such scenarios is that the ETI Securityholders may either lose all their
+     investment in the ETI Securities or receive less, or substantially less than their initial investment.
+
+     In the event of the Issuer’s insolvency, investors run the risk of suffering the total loss of their investment. Capital protection is not applicable
+     in respect of the Issuer or an investment in the ETI Securities. Investors in ETI Securities should therefore review their respective financial
+     circumstances to determine whether they are in a position to bear the risks of loss associated with an investment in the ETI Securities, in
+     particular a total loss risk.
+
+4.   The Issuer is a Special Purpose Vehicle — The Issuer is a special purpose vehicle with the sole business of issuing ETI Securities. The
+     contracts which may be entered into by the Issuer and the payments of the Issuer and the parties thereunder are structured to have the
+     capacity to provide the Issuer with funds to service payments due and payable in respect of the ETI Securities.
+
+                                                                                                                                              Page 7 of 28
+                                                                      Altarius ETI AG
+
+
+
+        The Issuer has, and will have, no assets other than (i) the small sums of money raised by issuing shares in relation to its incorporation, (ii)
+        such fees (if any) as are payable to it in connection with the issue or redemption of any Series of ETI Securities from time to time and (iii)
+        any rights, property, sums or other assets in relation to any Series of ETI Securities. This means that if the assets on which a Series of ETI
+        Securities are not sufficient to meet sums payable by the Issuer in respect of that Series, there are no other assets that are available to the
+        Issuer to make those payments. In such circumstances, the holders of the ETI Securities would not receive the amounts owing to them in
+        full losing some of their investment in the ETI Securities.
+
+5.      Regulation of the Issuer by any Regulatory Authority — The Issuer is not required to be licensed or authorised under any current securities,
+        commodities or banking laws of its jurisdiction of incorporation and will operate without supervision by any authority in any jurisdiction.
+        There is no assurance, however, that regulatory authorities in one or more jurisdictions would not take a contrary view regarding the
+        applicability of any such laws to the Issuer. The taking of a contrary view by such regulatory authority could have an adverse impact on the
+        Issuer or the holders of the ETI Securities. For instance, if it was determined by a regulatory authority that the Issuer was required to be
+        authorised in a particular jurisdiction, it may not be possible for the Issuer as a special purpose vehicle to receive such authorisation. In
+        such a scenario there is a risk that the Issuer may determine that an Event of Default Redemption Notice has occurred. The ETI Securities
+        may therefore be redeemed early at the Redemption Amount, which may result in ETI Securityholders receiving less, or substantially less,
+        than their initial investment.
+
+6.      Taxation and no Gross-Up — In the event that any withholding or deduction for or on account of tax is imposed on payments on such ETI
+        Securities, such ETI Securityholder will be subject to such tax or deduction and will not be entitled to receive amounts to compensate for
+        such withholding or deduction. No Event of Default will occur as a result of any such withholding or deduction.
+
+        The Issuer may become liable for tax charges whether by direct assessment or withholding. If any such event occurs as a result of a change
+        in law or regulation that materially increases the cost to the Issuer of performing its obligations under the ETI Securities or makes it illegal
+        for the Issuer to do the same or to hold, acquire or dispose of the Underlying Securities, there is a risk that the Issuer may determine that
+        an Event of Default Redemption Notice has occurred. The ETI Securities may therefore be redeemed early at the Redemption Amount,
+        which may result in ETI Securityholders receiving less, or substantially less, than their initial investment.
+
+(c)     Key information on the securities
+
+What are the main features of the securities?
+
+1.      Series of ETI Securities to which this Issue Specific Summary apply:            19
+
+2.      Tranche of the security:                                                        1
+
+3.      ISIN of the security:                                                           FR0014010H19
+
+4.      Currency of the security:                                                       EUR
+
+5.      Denomination of the security:                                                   1.000,00 EUR
+
+6.      Number of securities issued:                                                    7.000
+
+7.      Term of the securities:                                                         Perpetual
+
+8.      Type of the securities:                                                         NGN
+
+9.      Rights attached to the securities:
+
+(i)     Status — The ETI Securities of each Series are limited recourse obligations of the Issuer, at all times ranking pari passu with, and without
+        any preference among, themselves and the ETI Securities of each other Series. Recourse in respect of the ETI Securities of each Series is
+        limited in the manner described below.
+
+(ii)    Redemption Amount — On redemption of an ETI Security on any Redemption Day a Redemption Amount calculated by the Calculation
+        Agent shall be payable by the Issuer. The Redemption Amount in respect of an ETI Security is calculated as follows:
+
+        The Redemption Amount in respect of an ETI Securities for the any Relevant Day, is calculated as follows:
+
+                                                        𝑁𝐴𝑉(𝑡)
+                                  𝑅𝑒𝑑𝑒𝑚𝑝𝑡𝑖𝑜𝑛 𝐴𝑚𝑜𝑢𝑛𝑡 =          × 𝐴𝑑𝑗𝑢𝑠𝑡𝑚𝑒𝑛𝑡 𝐹𝑎𝑐𝑡𝑜𝑟 × 𝐷𝑒𝑛𝑜𝑚𝑖𝑛𝑎𝑡𝑖𝑜𝑛 × 𝑀𝑎𝑟𝑔𝑖𝑛 𝐹𝑎𝑐𝑡𝑜𝑟
+                                                        𝑁𝐴𝑉(0)
+
+(iii)   Redemption by ETI Securityholders — An ETI Securityholder which is not also an Authorised Participant may on any Standard Redemption
+        Day require the Issuer to redeem up to 100% of its holdings of such ETI Securities only where the relevant PPM for a Series of ETI Securities
+        specifies that Standard Redemption of the Underlying Security is permitted or, where the relevant PPM for a Series of ETI Securities specifies
+        that Standard Redemption of the Underlying Security is not permitted, only if the Underlying Issuer has notified the Issuer that Standard
+
+
+                                                                                                                                            Page 8 of 28
+                                                                    Altarius ETI AG
+
+
+       Redemption of the Underlying Security will be permitted. The amount of any Standard Redemption is subject to the Maximum Daily
+       Redemption Limit.
+
+       The Standard Redemption of ETI Securities to which this Issue Specific Summary apply pertains to the following restrictions concerning the
+       Standard Redemption of the Underlying Security:
+
+            (A)   The Issuer must return the redemption request to the Underlying Issuer via email at least 30 days before the Accounting Date
+                  on which the Issuer will redeem the Underlying Security. Any redemption requests which miss this deadline will be rolled over to
+                  the following Accounting Date and will take priority over any redemption requests submitted thereafter.
+
+            (B)   The Standard Redemption of the Underlying Security on a particular Accounting Date is subject to a redemption limit of maximum
+                  0,50% of the NAV or 1 unit of ETI Securities of the NAV on that Accounting Date (the “Redemption Limit”). If the number of
+                  Underlying Securities to be redeemed on a Accounting Date exceeds the Redemption Limit, all redemption requests on that
+                  Accounting Date will be reduced pro-rata so that only maximum 0,50% of the NAV or 1 unit of ETI Securities of the NAV is
+                  redeemed on that Accounting Date.
+
+            (C)   Redemptions exceeding the Redemption Gate on that Accounting Date will be rolled over to the following Accounting Date and
+                  will take priority over any redemption requests submitted thereafter. Redemptions rolled over to the next Accounting Date will
+                  also be subject to the Redemption Gate and will continue to be rolled over to the following Accounting Dates and to take priority
+                  until such time as they are fully redeemed.
+
+       An ETI Securityholder which is also an Authorised Participant may on any AP Redemption Day require the Issuer to redeem all or part of its
+       holding of ETI Securities at the Redemption Amount by submitting to the Issuer a valid Redemption Order in accordance with the relevant
+       Authorised Participant Agreement.
+
+(iv)   Suspension of Optional Redemptions — The Issuer may suspend the right to request redemptions of ETI Securities at any time while the
+       redemption of the Underlying Securities has been suspended by the Underlying Issuer. Unless terminated earlier by the Issuer in its sole
+       and absolute discretion, such suspension shall continue until such time as the suspension of the Underlying Securities terminates.
+
+(v)    Issuer Call Redemption Event — The Issuer may, on giving an Issuer Call Redemption Notice elect to redeem all or some only of the ETI
+       Securities and designate a Redemption Day for such purposes, provided that the date designated as the Redemption Day shall not be
+       earlier than the first calendar day following the date of the relevant Issuer Call Redemption Notice. Within ten Issuer Business Days of such
+       Redemption Day designated by the Issuer, the Issuer shall notify the ETI Securityholders of the Redemption Amount payable in respect of
+       the ETI Securities which are the subject of the Issuer Call Redemption Notice. Each ETI Security which is to be redeemed on such
+       Redemption Day designated by the Issuer shall become due and payable on the related Redemption Settlement Date at its Redemption
+       Amount. In the event that only some of the outstanding ETI Securities of a Series are called for redemption pursuant to an Issuer Call
+       Redemption Notice, a pro rata portion of each ETI Securityholder’s ETI Securities of that Series shall be subject to such redemption.
+
+(vi) Events of Default — If any Event of Default occurs, if approved by at least a majority of the ETI Securities then outstanding or if so directed
+     by an Event of Default Redemption Notice the ETI Securities shall immediately become due and payable at their Redemption Amount as at
+     the date of the Event of Default Redemption Notice.
+
+(vii) Enforcement — The ETI Securityholders by Extraordinary Resolution may take such action or step or institute such proceedings against the
+      Issuer, as they may think fit to enforce their rights as holders of the ETI Securities against the Issuer whether the same arise under general
+      law, or the ETI Securities, any other Series Document or otherwise.
+
+(viii) Meetings of ETI Securityholders — The quorum at any such meeting for passing an Extraordinary Resolution will be two or more ETI
+       Securityholders or agents present in person holding or representing in the aggregate more than 50 per cent. of the number of the ETI
+       Securities for the time being outstanding or, at any adjourned such meeting two or more ETI Securityholders or agents present in person
+       being or representing in the aggregate not less than 10 per cent. of the number of the ETI Securities so held or represented, and an
+       Extraordinary Resolution duly passed at any such meeting shall be binding on all the ETI Securityholders. A resolution in writing signed by
+       or on behalf of the holders of not less than 75 per cent. of the aggregate number of the ETI Securities for the time being outstanding shall
+       for all purposes be as valid and effectual as an Extraordinary Resolution passed at a meeting of ETI Securityholders.
+
+(ix) Substitution — The ETI Securityholders may consent by way of Extraordinary Resolution, to the substitution in place of the Issuer (or of any
+     previous substitute) as the principal debtor under the relevant Series Documents to which it is a party and the ETI Securities of each Series,
+     of any other company (incorporated in any jurisdiction), subject to any conditions of such substitution approved by the ETI Securityholders
+     in the Extraordinary Resolution.
+
+(x)    Payments net of Taxes — All payments in respect of the ETI Securities shall be made net of and after allowance for any withholding or
+       deduction for, or on account of, any Taxes. In the event that any withholding or deduction for, or on account of, any Tax applies to payments
+       in respect of the ETI Securities, the ETI Securityholders will be subject to, and shall not be entitled to receive amounts to compensate for,
+       any such Tax or deduction. No Event of Default shall occur as a result of any such withholding or deduction.
+
+(xi) Governing law — The governing law of the ETI Securities is Liechtenstein law.
+
+
+
+                                                                                                                                        Page 9 of 28
+                                                                     Altarius ETI AG
+
+
+10. Relative seniority of the securities in the Issuer’s capital structure in the event of insolvency
+
+In respect of any claim against the Issuer in relation to the ETI Securities, the parties of the series mentioned in the documents (the “Series
+Parties”) and the ETI Securityholders shall have recourse only to the assets of the Issuer. Any claim in relation to the ETI Securities which is not
+discharged in full from the assets of the Issuer (including claims in respect of any other Series of ETI Securities) (all such inclusive claims, together
+the “Pari Passu Claims”) shall be reduced pro rata so that the total value of all Pari Passu Claims and any other unsecured claims against the
+Issuer shall not exceed the aggregate value of any remaining assets of the Issuer (the “Remaining Assets”). If the Remaining Assets (whether by
+way of liquidation or enforcement) are insufficient, any outstanding claim of the Series Parties and the ETI Securityholders against the Issuer
+remains unpaid, then such outstanding claim shall be extinguished, and no debt shall be owed by the Issuer in respect thereof. Following the
+extinguishment of any such claim, none of the Series Parties (other than the Issuing and Principal Paying Agent), the ETI Securityholders or any
+other person acting on behalf of any of them shall be entitled to take any further steps against the Issuer or any of its officers, shareholders,
+corporate service providers or directors to recover any further sum in respect of the extinguished claim and no debt shall be owed to any such
+persons by the Issuer in respect of such further sum. The Issuing and Principal Paying Agent has not agreed to any limitation on its recourse to
+the Issuer or the assets of the Issuer.
+
+11. Restriction on the free transferability of the securities
+
+The distribution of the Base Prospectus and any Final Terms and the offering or sale of ETI Securities in certain jurisdictions may be restricted
+by law. Persons into whose possession this Base Prospectus comes are required by the Issuer and any Authorised Participant to inform
+themselves about and to observe any such restriction. The ETI Securities have not been and will not be registered under the Securities Act or
+the securities laws of any State of the United States and may not be offered, sold or otherwise transferred within the United States or to, or for
+the account or benefit of, US persons (as defined in Regulation S under the Securities Act).
+
+12. Dividend or payout policy
+
+The ETI Securities are zero-coupon debt instruments that shall not bear any interest.
+
+Where will the securities be traded?
+
+Application will be made to the following exchanges for the Series of ETI Securities to which these Final Terms apply: Portfolio Stock Exchange.
+There is no guarantee that such application will be successful or, if successful, that such admissions to trading will be maintained.
+
+Is there a guarantee attached to the securities?
+
+Each Series of ETI Securities issued under the Programme will be limited recourse obligations of the Issuer and will not be obligations or
+responsibilities of, or guaranteed by, any other person or entity.
+
+What are the key risks that are specific to the securities?
+
+1.   Nature of an investment in ETI Securities — The ETI Securities are not principal protected nor guaranteed and are a high-risk investment.
+     The ETI Securityholders are neither assured of repayment of the capital invested nor are they assured of payment of any return on such
+     capital. Any payments to be made on the ETI Securities depend on the value of the relevant Underlying Securities to which they are linked;
+     and any coupons, dividends or distributions to be made in respect of the Underlying Securities depend on their respective contractual
+     terms. Should the Underlying Securities decrease in value or default on their payments or obligations, the ETI Securityholders will incur a
+     partial or total loss of their investment. In such circumstances it is possible that the ETI Securityholders may receive less, or substantially
+     less, than their initial investment.
+
+2.   Market price of the ETI Securities — The ETI Securities may be perpetual. The only means through which an investor will be able to realise
+     value from an ETI Security prior to its Maturity will be to sell it at its then market price in a secondary market transaction. General movements
+     in local and international markets and factors that affect the investment climate and investor sentiment could all affect the level of trading
+     and, therefore, the market price of the ETI Securities. Investors should note that general movements in markets and factors that affect the
+     investor climate and investor sentiment may have different effects on each Series of ETI Securities. The Redemption Amount and/or market
+     price of the ETI Securities may be volatile and may fall rapidly and an investor may not be able to sell its ETI Securities quickly and/or at a
+     price such that the investor is able to prevent or minimise any loss of its investment.
+
+     The market price of the ETI Securities of a Series will be affected by a number of factors, including, but not limited to: (a) the value of the
+     Underlying Security relating such ETI Security; (b) market perception, interest rates, yields and foreign exchange rates; (c) whether or not
+     any market disruption is subsisting; (d) the creditworthiness of the Series Parties; (e) any fees or execution costs applicable to subscriptions
+     for or redemptions of the ETI Securities; (f) where the Underlying Security for a Series of ETI Securities is denominated in a currency other
+     than the currency in which the ETI Securities are listed; and (g) the liquidity in the ETI Securities.
+
+     Prospective investors should be aware that the Redemption Amount and the secondary market price of the ETI Securities can go down as
+     well as up throughout the term of the ETI Securities. Certain Underlying Securities may be more volatile than other Underlying Securities,
+     and the secondary market price of the ETI Securities linked to such Underlying Security may demonstrate similar volatility. Prospective
+     investors should be aware that the Redemption Amount and market price of any ETI Securities on any Relevant Day may not reflect their
+     prior or future performance. There can be no assurance as to the future value and market price of any ETI Securities.
+
+
+                                                                                                                                            Page 10 of 28
+                                                                    Altarius ETI AG
+
+
+
+3.   Market-making by Authorised Participants and/or Trading Specialists — Investors should be aware that no Authorised Participant is obliged
+     to make a market for any Series of ETI Securities (including any Series in respect of which it is appointed as an Authorised Participant) and
+     in circumstances where an Authorised Participant acts as Trading Specialist with respect to any Series of ETI Securities, such Authorised
+     Participant may discontinue making a market at any time. Where an Authorised Participant discontinues making a market and there is no
+     other liquidity in the secondary market, investors would not be able to realise their investment in the ETI Securities and may be required
+     to hold their ETI Securities until its Maturity. In addition, investors should be aware that in the event that there is no Trading Specialist with
+     respect to a Series of ETI Securities and there is no other liquidity in the secondary market, the Issuer may, but is not obliged to, redeem
+     all the ETI Securities of the relevant Series in accordance with the Issuer Call Redemption Event provisions.
+
+4.   Standard Redemption — Only Authorised Participants may deal with the Issuer in subscribing for or requiring the Issuer to redeem
+     outstanding ETI Securities, save in relation to Standard Redemptions at any time following notification by the Issuer that redemption
+     requests from ETI Securityholders which are not Authorised Participants will be permitted.
+
+     The amount of any Optional Redemption is subject to the Maximum Daily Redemption Limit, being a maximum limit (if applicable) on the
+     redemption number of ETI Securities of a Series on any Relevant Day, as may be amended from time to time. Prospective investors should
+     be aware that it is possible that the Maximum Daily Redemption Limit could cause the ETI Securities to trade at a higher premium or result
+     in a discount to the Redemption Amount. An investor who buys ETI Securities in such circumstances may incur a significant loss should
+     market demand change. Significant loss could occur even where the ETI Security has increased in price during the investor’s holding period.
+     The Maximum Daily Redemption Limit could also lead to higher trading spreads for the ETI Securities in the secondary market, which could
+     increase the execution costs for an investor purchasing the ETI Securities in the secondary market.
+
+     In the event that an investor is not able to immediately redeem their ETI Securities due to a breach of the Maximum Daily Redemption
+     Limit, such investor will be subject to market risk (i.e. that the value of the ETI Securities will decline prior to redemption and therefore
+     reduce the redemption amount). As a result, it is possible that the redemption amount could be reduced due to an adverse change in the
+     price of the Underlying Securities (which would consequently impact the value of the ETI Securities).
+
+5.   Issuer Call Redemption Event — The Issuer may at any time, in its sole and absolute discretion, elect to redeem all or some only of the ETI
+     Securities of a Series. In exercising such discretion, the Issuer will have no regard to the interests of the ETI Securityholders. There can be
+     no assurance that the value per ETI Security determined in respect of the Issuer Call Redemption Event following any such exercise will be
+     such that the Redemption Amount is greater than or equal to the amount invested by an investor per ETI Security. This may reduce the
+     return received by the ETI Securityholders on their investment in the ETI Securities. In such circumstances it is possible that the ETI
+     Securityholders may receive less, or substantially less, than their initial investment.
+
+6.   Suspension of redemptions — The Issuer may suspend the right to request redemptions of ETI Securities at any time while the redemption
+     of the Underlying Securities has been suspended by the Underlying Issuer. Unless terminated earlier by the Issuer in its sole and absolute
+     discretion, such suspension shall continue until such time as the suspension of the Underlying Securities terminates. The Issuer shall give
+     notice of any such suspension and of the termination of any such suspension to the Series Parties and the ETI Securityholders as soon as
+     reasonably practicable, but the failure to give such any such notice shall not prevent the exercise of such discretions. No redemption of the
+     ETI Securities shall take place for the duration of any period during which the redemption of the ETI Securities is suspended. In such
+     circumstances ETI Securityholders would accordingly be unable to redeem any ETI Securities they hold within the normal timeframes
+     specified in the Conditions.
+
+     In the event that an investor is not able to immediately redeem their ETI Securities due to a suspension of redemptions, such investor will
+     be subject to market risk (i.e. that the value of the ETI Securities will decline prior to redemption and therefore reduce the redemption
+     amount). As a result, it is possible that the redemption amount could be reduced due to an adverse change in the price of the Underlying
+     Securities (which would consequently impact the value of the ETI Securities). Accordingly, the ETI Securityholders may lose all or some of
+     their investment in the ETI Securities.
+
+7.   Events of Default — If any of the following events occurs, if approved by at least a majority of the ETI Securities then outstanding or if so
+     directed by an Event of Default Redemption Notice the ETI Securities shall immediately become due and payable at their Redemption
+     Amount as at the date of the Event of Default Redemption Notice: (a) the Issuer has been in a Default Period for more than 14 days; (b) a
+     Risk Capital Default Event occurs; (c) the Issuer has experienced a Compliance Default; (d) any order shall be made by any competent court,
+     or any resolution passed concerning a Dissolution Default; (e) a Series Event of Default occurs in respect of any other Series of ETI Securities
+     issued by the Issuer under the Programme. In such circumstances it is possible that the ETI Securityholders may receive less, or substantially
+     less, than their initial investment.
+
+8.   Recharacterisation risk — The ETI Securities are issued in the form of debt securities and are listed as non-equity securities on each Relevant
+     Exchange. The ETI Securities are not units in a collective investment scheme for the purposes of the Directive of 13 July 2009 of the European
+     Parliament and of the Council on the coordination of laws, regulations and administrative provisions relating to Undertakings for Collective
+     Investment in Transferable Securities (No 2009/65/CE), as amended.
+
+     There can be no assurance that the courts or regulatory authorities in any jurisdiction would not apply a different interpretation, including
+     recharacterizing the ETI Securities as units in a collective investment schedule or a fund. Any such difference in interpretation may have
+     adverse consequences (including, without limitation, adverse tax consequences) for an investor, which ultimately may impact the return an
+     investor receives on the ETI Securities.
+
+
+                                                                                                                                          Page 11 of 28
+                                                                      Altarius ETI AG
+
+
+
+      Any such recharacterization may have adverse consequences (including, without limitation, adverse tax consequences) for an investor,
+      which may lead to the ETI Securityholders receiving less, or substantially less, than their initial investment. In addition, as a result of such
+      recharacterization, the Issuer may determine that an Event of Default has occurred. The ETI Securities may therefore be redeemed early
+      at the Redemption Amount, which may result in ETI Securityholders receiving less, or substantially less, than their initial investment.
+
+(d)   Key information on the offer of securities to the public and/or the admission to trading on a regulated market
+
+Under which conditions and timetable can I invest in this security?
+
+ Offer price of the security:                                                  1.000,00 EUR
+
+ Time period, including any possible amendments, during which the              12 months from the Programme Effective Date.
+ offer will be open:
+
+ Admission to trading on a regulated market:                                   Not applicable
+
+ Conditions to which the offer is subject:                                     The ETI Securities are being made available by the Issuer for
+                                                                               subscription only to Authorised Participants who have submitted a
+                                                                               valid subscription order to the Issuer. ETI Securities will be issued to
+                                                                               investors as per the arrangements in place between the Authorised
+                                                                               Participants and such investor, including as to the application
+                                                                               process, allocation, price, expenses and settlement arrangements.
+
+ Details of the minimum and/or maximum amount of application:                  Not applicable
+
+ Name(s) and address(es), to the extent known to the Issuer, of the            Not applicable
+ placers in the various countries where the offer takes place.
+
+ Name and address of the Authorised Offerors:                                  Altarius ETI AG and each Authorised Participant expressly named as
+                                                                               an Authorised Offeror on the Issuer’s website (www.altariuseti.com).
+
+ Estimate of the total expenses of the issue and/or offer, including           Maximum of 1,04% of NAV(t) per annum or 75.500,00 EUR per annum
+ estimated expenses charged to the investor by the issuer or offeror:          as set out in the relevant PPM of the Underlying Security.
+
+Who is the offeror and/or the person asking for admission to trading?
+
+The Authorised Offerors are:
+
+      •    Altarius ETI AG; incorporated in Liechtenstein under the laws of the Principality of Liechtenstein and organised in accordance with
+           article 261 et seq. of the PGR as a joint stock company on 28th October 2021, with registered number FL-0002.669.856-9.
+
+      •    Altarius Capital Limited; a private limited liability company incorporated in the Gibraltar on the 9th September 2016, with registered
+           address at 28 Irish Town, GX11 1AA Gibraltar, and register number 114825.
+
+      •    Altarius Index PCC Limited; a protected cell company incorporated with limited liability in accordance with the Protected Cell
+           Companies Act 2001 of Gibraltar and with company registration number 122055. The registered office of Altarius Index is 2 Irish Town,
+           Gibraltar, GX11 1AA
+
+Why is this prospectus being produced?
+
+The reason for the offer is to aim for profits for the company by getting slightly higher returns on capital invested than capital costs. The Issuer
+will have discretion as to how the net proceeds from each issue of ETI Securities will be applied. The Issuer may, but is not obliged to, use the
+net proceeds from each issue of ETI Securities to acquire Underlying Securities. The Issuer may also invest in assets other than the Underlying
+Securities.
+
+This offer is not subject to an underwriting agreement on a firm commitment basis. So far as the Issuer is aware, it is not intended that any
+person involved in the offer of the ETI Securities has an interest material to the offer other than as disclosed below. One (1) or more individuals
+may hold shares in and/or may be appointed to the board of directors (whether as executive or non-executive directors) of the Issuer, any
+Underlying Issuer, the Arranger, Calculation Agent, any Authorised Participants, and/or the Corporate Services Provider. Such person may have
+an interest in securing maximum profits for the entities in which he holds shares or of which he is a director to the detriment of the Issuer and
+ETI Securityholders. Altarius Capital Ltd is acting in a number of capacities in connection with this transaction. With respect to the Issuer, Altarius
+Capital Ltd will act as the Arranger, the Calculation Agent and as Authorised Participant. Furthermore, Altarius Capital Ltd will act as investment
+manager and as corporate director to the Underlying Issuer. Altarius Index will act as an Authorised Participant and also as an Underlying Issuer
+in respect of this transaction. However, Altarius Index will have only those duties and responsibilities expressly agreed to by it in the Series
+Documents to which it is a party and will not, by virtue of its or any of its affiliates acting in any other capacity, be deemed to have any other
+
+
+                                                                                                                                            Page 12 of 28
+                                                                     Altarius ETI AG
+
+
+duties or responsibilities or be deemed to be held to a standard of care other than as expressly provided therein. Hera Trust Establishment will
+act as a Corporate Services Provider.
+
+ANEXO – NOTA DE SINTESIS ESPECIFICA PARA LA EMISION
+
+(a) Introducción
+
+ Nombre de los valores:                                                       Hausera ETI
+
+ ISIN de los valores:                                                         FR0014010H19
+
+ Emisor:                                                                      Altarius ETI AG
+                                                                              info@altariuseti.com
+                                                                              Industriering 20, 9491, Ruggell, Liechtenstein
+                                                                              +423 373 00 30
+                                                                              LEI: 5299001XE1CIMMOEME82
+
+ Autoridad competente que aprueba el Folleto Base:                            Liechtenstein Financial Market Authority
+                                                                              www.fma-li.li/en
+                                                                              Landstrasse 109, 9490 Vaduz, Liechtenstein
+                                                                              +423 236 71 35
+
+ Fecha de aprobación del Folleto Base:                                        18 de Diciembre de 2025
+
+Advertencias
+
+La Nota de Síntesis Específica para la Emisión debe de leerse como introducción al Folleto Base. Toda decisión de invertir en los Valores ETI
+deberá basarse en la consideración del conjunto del Folleto Base por parte del inversor. El inversor puede perder la totalidad o parte del capital
+invertido. En caso de presentación ante un tribunal de una demanda relacionada con la información contenida en un Folleto Base, es posible
+que el inversor demandante, en virtud del Derecho nacional, tenga que asumir los gastos de la traducción del Folleto Base antes de iniciar el
+procedimiento judicial. Solo habrá lugar a la responsabilidad civil de las personas que hayan presentado la Nota de Síntesis Específica para la
+Emisión, incluida su traducción, si esta Nota de Síntesis Especifica para la Emisión es engañosa, inexacta o incoherente con las demás partes
+del Folleto Base, o si, leída conjuntamente con el resto del Folleto Base, omite información fundamental para ayudar a los inversores a decidir
+si deben invertir o no en estos Valores ETI.
+
+                         Está a punto de adquirir un producto que no es sencillo y que puede ser difícil de comprender.
+
+(b) Información fundamental sobre el Emisor
+
+¿Quién es el emisor de los valores?
+
+El Emisor se constituyó como Altarius ETI AG el 28 de octubre de 2021 en Liechtenstein con arreglo a las leyes del Principado de Liechtenstein
+y se organizó de conformidad con el artículo 261 de la Ley de Sociedades de Liechtenstein (Personen- und Gesellschaftsrecht, PGR) como
+sociedad anónima (Aktiengesellschaft), con número de registro FL-0002.669.856-9. Está inscrita en el Registro Mercantil de Liechtenstein
+(Handelsregister) y tiene su domicilio social en, Industriering 20, FL-9491, Ruggell (Liechtenstein). El LEI del Emisor es 5299001XE1CIMMOEME82.
+
+El Emisor se ha establecido con el único propósito de emitir Valores ETI en forma de títulos de deuda, cuyo valor está vinculado en una
+proporción de 1:1 a los Valores Subyacentes, que están segregados en celdas de una entidad con fines especiales de titulización. El único
+accionista del Emisor es Altarius Capital Value S.L. (constituida en España). Altarius Capital Value S.L. es propiedad y está controlada por Adelaida
+Garrido Caballero y Jaime Ortiz-Vigón. Los administradores del Emisor son: Jaime Ortiz-Vigón, Florian Wenaweser y Hera Trust Establishment.
+Los auditores legales del Emisor son BDO (Liechtenstein) AG con domicilio en Wuhrstrasse 14, 9490 Vaduz, Liechtenstein.
+
+¿Cuál es la información financiera fundamental relativa al Emisor?
+
+Se han preparado estados financieros auditados para el periodo que finaliza el 31 de diciembre de 2023 y estados financieros no auditados
+para el periodo que finaliza el 31 de diciembre de 2024, que se incluyen en el Anexo 1 del Folleto Base. Los estados financieros anuales auditados
+estarán disponibles gratuitamente en las oficinas del Emisor. La siguiente tabla resume la información clave de los estados financieros auditados
+del Emisor, así como los estados financieros no auditados.
+
+ Balance General                                                                          31.12.2024                                   31.12.2023
+
+ Activos                                                                               159.377.580,93                               20.581.828,51
+            Cuentas por cobrar                                                             207.308,04                                  146.721,77
+            Inversiones                                                                159.131.460,34                               20.396.466.73
+            Depósitos bancarios                                                             38.812,55                                   38.640,00
+ Capital                                                                                    50.041,96                                   50.621,19
+
+                                                                                                                                        Page 13 of 28
+                                                                   Altarius ETI AG
+
+
+            Capital suscrito                                                              50.000,00                                        50.000
+            Perdidas / ganancias acumuladas                                                  621,19                                        417,49
+            Perdidas / ganancias anuales                                                   (579,23)                                        203,70
+ Pasivos                                                                             159.323.917,01                                 20.531.207,31
+            Provisiones                                                                   61.652,85                                     18.358,30
+            Exchange Traded Instruments                                              159.131.460,34                                 20.396.466.73
+            Cuentas por pagar                                                            130.803,82                                    116.382,28
+
+ Estado de Pérdidas y Ganancias                                                         31.12.2024                                     31.12.2023
+
+ Perdidas / ganancias anuales                                                               (579,23)                                        203,70
+           Ingresos netos                                                               137.771,85                                     185.033,96
+           Gastos operativos                                                           (130.945,38)                                   (180.740,30)
+           Gastos extraordinarios                                                               0,00                                     (3.362,01)
+           Resultado financiero                                                           (5.594,72)                                      1.540,60
+           Impuestos                                                                      (1.810,98)                                     (2.268,55)
+
+La pérdida incurrida en el ejercicio 2024 es principalmente atribuible a un aumento en los gastos financieros asociados con el mantenimiento
+del Programa. El Emisor no realiza operaciones comerciales y, por lo tanto, su rendimiento financiero depende de los ingresos por comisiones
+generados por la actividad de emisión y los costes atribuibles a cada Valor ETI.
+
+Por lo que se refiere al Emisor, no se ha producido ningún cambio adverso importante en la situación financiera o las perspectivas del Emisor.
+Esto desde el 31 de diciembre de 2024 (que es la fecha del reporte de la revisión de los estados financieros más recientes, si procede) y a lo
+largo del ejercicio financiero actual. No ha habido salvedades en los informes de auditoría relativos a la información financiera histórica.
+
+¿Cuáles son los principales riesgos específicos del Emisor?
+
+1.   Capacidad del Emisor para cumplir sus obligaciones con respecto a los Valores ETI — Los tenedores de los Valores ETI estarán expuestos
+     al riesgo de que el Emisor no disponga de activos suficientes para cumplir sus obligaciones en virtud de los Valores ETI. Aunque el
+     rendimiento pagadero por el Emisor en caso de reembolso de los Valores ETI de cada Serie estará vinculado a la rentabilidad de los Valores
+     Subyacentes a los que esté vinculada dicha Serie, no puede garantizarse que el Emisor disponga de activos suficientes para abonar dicho
+     importe. El Emisor no dispone de activos sustanciales distintos del producto de los Valores ETI y, en consecuencia, la capacidad del Emisor
+     para cumplir sus obligaciones en virtud de los Valores ETI dependerá del rendimiento de las inversiones adquiridas por el Emisor con el
+     producto de los Valores ETI. El Emisor tiene poder discrecional sobre el uso del producto de cada Serie de Valores ETI y si el Emisor invirtiera
+     en activos que no tuvieran el mismo rendimiento que los Valores Subyacentes, es probable que el Emisor no tuviera activos suficientes
+     para cumplir sus obligaciones con respecto a los Valores ETI. En tales circunstancias, es posible que los tenedores de los Valores ETI reciban
+     menos, o sustancialmente menos, que su inversión inicial.
+
+2.   Los activos del Emisor no están segregados — Los activos del Emisor no estarán segregados y todas las Series de Valores ETI tendrán
+     recurso a un único conjunto de activos del Emisor. Por consiguiente, los inversores en una Serie de Valores ETI estarán expuestos al riesgo
+     de que el emisor incumpla otra Serie de Valores ETI o no pueda cumplir sus obligaciones con respecto a cualquier otra serie de valores
+     ETI. En caso de que se produzca un déficit en los activos del Emisor que le impida cumplir sus obligaciones con respecto a los Valores ETI,
+     dicho déficit podrá ser compartido a prorrata por todas las Series de Valores ETI. En tales circunstancias, es posible que los tenedores de
+     Valores ETI reciban menos, o sustancialmente menos, que su inversión inicial.
+
+3.   Insolvencia — El Emisor ha acordado no realizar actividades distintas de la emisión de Valores ETI y asuntos conexos e incidentales. Toda
+     emisión de Valores ETI debe realizarse en condiciones que prevean que las reclamaciones de los tenedores de Valores ETI y de las partes
+     contractuales de la Serie (con excepción de las reclamaciones de los Agentes del Emisor y Pagador Principal en relación con el Acuerdo de
+     Pago), en relación con dichos Valores ETI, se limiten al producto de los activos sobre los que se garantizan dichos Valores ETI. Si se
+     mantuvieran estas disposiciones, sería poco probable que el Emisor se declarara insolvente.
+
+     No obstante, sin perjuicio de lo anterior, en caso de que el Emisor tenga deudas pendientes con terceros que no pueda liquidar o en caso
+     de que las disposiciones contractuales de recurso limitado o de no concurso se consideren no ejecutables en una jurisdicción concreta y,
+     como consecuencia de ello, el Emisor se declare insolvente o sea declarado insolvente con arreglo a la legislación de cualquier país que
+     tenga jurisdicción sobre él o cualquiera de sus activos, la legislación concursal de dicho país podrá determinar la validez de las
+     reclamaciones de los tenedores de Valores ETI e impedir que éstos hagan valer sus derechos con respecto a los Valores ETI que posean,
+     o retrasar dicha ejecución. Si se impide a los tenedores de Valores ETI hacer valer sus derechos con respecto a los Valores ETI, los tenedores
+     de Valores ETI podrían perder su inversión en los Valores ETI. El impacto de la ocurrencia de tales escenarios es que los tenedores de
+     Valores ETI pueden perder toda su inversión en los Valores ETI o recibir menos, o sustancialmente menos, de su inversión inicial.
+
+     En caso de insolvencia del Emisor, los inversores corren el riesgo de sufrir la pérdida total de su inversión. La protección del capital no es
+     aplicable con respecto al Emisor o a una inversión en los Valores ETI. Por lo tanto, los inversores en Valores ETI deben revisar sus respectivas
+     circunstancias financieras para determinar si están en condiciones de soportar los riesgos de pérdida asociados a una inversión en Valores
+     ETI, en particular un riesgo de pérdida total.
+
+
+
+
+                                                                                                                                        Page 14 of 28
+                                                                     Altarius ETI AG
+
+
+4.     El Emisor es una Entidad de Propósito Especial — El Emisor es una entidad de propósito especial cuya única actividad es la emisión de
+       Valores ETI. Los contratos que pueda celebrar el Emisor y los pagos del Emisor o de las partes contractuales en virtud de los mismos están
+       estructurados de forma que tengan la capacidad de proporcionar al Emisor fondos para atender los pagos vencidos y pagaderos con
+       respecto a los Valores ETI.
+
+       El Emisor no tiene, y no tendrá, más activos que (i) las pequeñas sumas de dinero recaudadas mediante la emisión de acciones en relación
+       con su constitución, (ii) las comisiones (si las hubiere) que le sean pagaderas en relación con la emisión o el reembolso de cualquier Serie
+       de Valores ETI de vez en cuando y (iii) cualquier derecho, propiedad, suma u otro activo en relación con cualquier Serie de Valores ETI. Esto
+       significa que si los activos sobre los que se basa una Serie de Valores ETI no son suficientes para hacer frente a las sumas pagaderas por
+       el Emisor con respecto a esa Serie, no hay otros activos que estén a disposición del Emisor para realizar esos pagos. En tales circunstancias,
+       los tenedores de los Valores ETI no recibirían íntegramente los importes que se les adeudan perdiendo parte de su inversión en los Valores
+       ETI.
+
+5.     Regulación del Emisor por parte de cualquier Autoridad Reguladora — El Emisor no está obligado a obtener licencia o autorización en
+       virtud de ninguna de las leyes vigentes en materia de valores, materias primas o banca de su jurisdicción de constitución y operará sin
+       supervisión por parte de ninguna autoridad de ninguna jurisdicción. Sin embargo, no existe ninguna garantía de que las Autoridades
+       Reguladoras de una o más jurisdicciones no adopten un punto de vista contrario con respecto a la aplicabilidad de cualquiera de dichas
+       leyes al Emisor. La adopción de un punto de vista contrario por parte de dicha Autoridad Reguladora podría tener un impacto adverso en
+       el Emisor o en los tenedores de los Valores ETI. Por ejemplo, si una Autoridad Reguladora determinara que el Emisor debe estar autorizado
+       en una jurisdicción concreta, podría no ser posible que el Emisor, como sociedad instrumental, recibiera dicha autorización. En tal caso,
+       existe el riesgo de que el Emisor determine que se ha producido un Notificación de Reembolso por Evento de Incumplimiento. Por lo tanto,
+       los Valores ETI pueden reembolsarse anticipadamente al Importe de Reembolso, lo que puede dar lugar a que los tenedores de los Valores
+       ETI reciban menos, o sustancialmente menos, que su inversión inicial.
+
+6.     Retenciones Fiscales — En caso de que se aplique una retención o deducción fiscal a los pagos de dichos Valores ETI, el tenedor de los
+       Valores ETI estará sujeto a dicha retención o deducción y no tendrá derecho a recibir importes para compensar dicha retención o
+       deducción. No se producirá ningún supuesto de incumplimiento como consecuencia de dicha retención o deducción.
+
+       El Emisor podría ser responsable de cargas fiscales, ya sea por liquidación directa o por retención. Si se produce cualquiera de estos
+       hechos como consecuencia de un cambio en la legislación o la normativa que aumente sustancialmente el coste para el Emisor del
+       cumplimiento de sus obligaciones en virtud de los Valores ETI o haga ilegal que el Emisor haga lo mismo o que mantenga, adquiera o
+       enajene los Valores Subyacentes, existe el riesgo de que el Emisor pueda determinar que se ha producido un Notificación de Reembolso
+       por Evento de Incumplimiento. Por lo tanto, los Valores ETI pueden reembolsarse anticipadamente al Importe de Reembolso, lo que puede
+       dar lugar a que los tenedores de los Valores ETI reciban menos, o sustancialmente menos, que su inversión inicial.
+
+(c) Información fundamental sobre los valores
+
+¿Cuáles son las principales características de los valores?
+
+1.     Serie de los Valores ETI a los que le aplica esta Nota de Síntesis Específica para la Emisión:    19
+
+2.     Tramo de los valores:                                                                             1
+
+3.     ISIN de los valores:                                                                              FR0014010H19
+
+4.     Divisa base de los valores:                                                                       EUR
+
+5.     Denominación de los valores:                                                                      1.000,00 EUR
+
+6.     Numero de valores emitidos:                                                                       7.000
+
+7.     Vencimiento de los valores:                                                                       Perpetuo
+
+8.     Tipo de los valores:                                                                              NGN
+
+9.     Derechos inherentes a los valores:
+
+(i)    Condición — Los Valores ETI de cada Serie son obligaciones de recurso limitado del Emisor, en todo momento con el mismo rango y sin
+       preferencia alguna entre sí y con respecto a los Valores ETI de las demás Series. El recurso con respecto a los Valores ETI de cada Serie
+       está limitado de la manera descrita en las Condiciones.
+
+(ii)   Importe de Reembolso — En el momento del reembolso de un Valor ETI en cualquier Día de Reembolso, el Emisor deberá abonar el
+       Importe de Reembolso calculado por el Agente de Cálculo. El Importe de Reembolso de un Valor ETI se calcula del siguiente modo:
+
+                                                         𝑁𝐴𝑉(𝑡)
+                              𝐼𝑚𝑝𝑜𝑟𝑡𝑒 𝑑𝑒 𝑅𝑒𝑒𝑚𝑏𝑜𝑙𝑠𝑜 =            × 𝐹𝑎𝑐𝑡𝑜𝑟 𝑑𝑒 𝐴𝑗𝑢𝑠𝑡𝑒 × 𝐷𝑒𝑛𝑜𝑚𝑖𝑛𝑎𝑐𝑖𝑜𝑛 × 𝐹𝑎𝑐𝑡𝑜𝑟 𝑑𝑒 𝑀𝑎𝑟𝑔𝑒𝑛
+                                                         𝑁𝐴𝑉(0)
+
+
+                                                                                                                                        Page 15 of 28
+                                                                      Altarius ETI AG
+
+
+
+(iii)   Reembolso por parte de los Tenedores de Valores ETI — Un tenedor de Valores ETI que no sea también un Participante Autorizado podrá,
+        en cualquier Día de Reembolso Estándar, exigir al Emisor que reembolse hasta el 100% de sus participaciones en dichos Valores ETI
+        únicamente cuando el PPM pertinente para una Serie de Valores ETI especifique que se permite el Reembolso Estándar del Valor
+        Subyacente o, cuando el PPM correspondiente a una Serie de Valores ETI especifique que no se permite el Reembolso Estándar del Valor
+        Subyacente, sólo si el Emisor Subyacente ha notificado al Emisor que se permitirá el Reembolso Estándar del Valor Subyacente. El importe
+        de cualquier Reembolso Estándar está sujeto al Límite Máximo de Amortización Diaria.
+
+        El Reembolso Estándar de Valores ETI al que se aplica esta Nota de Síntesis Especifica para la Emisión se refiere a las siguientes restricciones
+        relativas al Reembolso Estándar del Valor Subyacente:
+
+             (A)   El Emisor debe enviar la solicitud de reembolso al Emisor Subyacente por correo electrónico al menos 30 días antes de la Fecha
+                   Contable en la que el Emisor reembolsará el Valor Subyacente. Cualquier solicitud de reembolso que no cumpla este plazo se
+                   trasladará a la siguiente Fecha Contable y tendrá prioridad sobre cualquier solicitud de reembolso presentada posteriormente.
+
+             (B)   El Reembolso Estándar del Valor Subyacente en una Fecha Contable concreta está sujeto a un límite de reembolso del máximo
+                   entre el 0.50% del NAV o 1 unidad del Valor ETI del NAV en esa Fecha Contable (el “Límite de Reembolso”). Si el número de
+                   Valores Subyacentes a reembolsar en una Fecha Contable supera el Límite de Reembolso, todas las solicitudes de reembolso en
+                   esa Fecha Contable se reducirán proporcionalmente de modo que sólo se reembolse el máximo entre el 0.50% del NAV o 1
+                   unidad del Valor ETI del NAV en esa Fecha Contable.
+
+             (C)   Los reembolsos que superen el Límite de Reembolso en esa Fecha Contable se trasladarán a la siguiente Fecha Contable y
+                   tendrán prioridad sobre cualquier solicitud de reembolso presentada posteriormente. Los reembolsos prorrogados hasta la
+                   siguiente Fecha Contable también estarán sujetos al Límite de Reembolso y seguirán prorrogándose hasta las siguientes Fechas
+                   de Contables y tendrán prioridad hasta que se reembolsen en su totalidad.
+
+        Un tenedor de Valores ETI que sea también un Participante Autorizado podrá, en cualquier Día de Reembolso AP, exigir al Emisor que
+        reembolse la totalidad o parte de su participación en Valores ETI al Importe de Reembolso presentando al Emisor una Orden de Reembolso
+        válida de conformidad con el correspondiente Acuerdo de Participante Autorizado.
+
+(iv)    Suspensión de los Reembolsos Opcionales — El Emisor podrá suspender el derecho a solicitar reembolsos de los Valores ETI en cualquier
+        momento mientras el reembolso de los Valores Subyacentes haya sido suspendido por el Emisor Subyacente. A menos que el Emisor, a
+        su entera y absoluta discreción, ponga fin a dicha suspensión con anterioridad, ésta se mantendrá hasta el momento en que finalice la
+        suspensión de los Valores Subyacentes.
+
+(v)     Evento de Reembolso Obligatorio a Instancia del Emisor — El Emisor podrá, previa Notificación de Reembolso Obligatorio a Instancia del
+        Emisor, optar por reembolsar la totalidad o parte de los Valores ETI y designar un Día de Reembolso a tal efecto, siempre que la fecha
+        designada como Día de Reembolso no sea anterior al primer día natural siguiente a la fecha de la correspondiente Notificación de
+        Reembolso Obligatorio a Instancia del Emisor. En el plazo de diez Días Hábiles del Emisor a partir del Día de Reembolso designado por el
+        Emisor, éste notificará a los tenedores de Valores ETI el Importe de Reembolso pagadero con respecto a los Valores ETI objeto de la
+        Notificación de Reembolso Obligatorio a Instancia del Emisor. Cada Valor ETI que deba reembolsarse en el Día de Reembolso designado
+        por el Emisor vencerá y será pagadero en la Fecha de Liquidación del Reembolso correspondiente por su Importe de Reembolso. En caso
+        de que sólo algunos de los Valores ETI en circulación de una Serie se amorticen en virtud de una Notificación de Reembolso Obligatorio a
+        Instancia del Emisor, una parte proporcional de los Valores ETI de cada tenedor de Valores ETI de esa Serie estará sujeta a dicho reembolso.
+
+(vi) Eventos de Incumplimiento — Si se produce un Evento de Incumplimiento, los Valores ETI vencerán y serán pagaderos inmediatamente
+     por su Importe de Reembolso en la fecha de la Notificación de Reembolso por Evento de Incumplimiento, si así lo aprueba al menos la
+     mayoría de los tenedores de Valores ETI en circulación en ese momento o si así lo ordena una Notificación de Reembolso por Evento de
+     Incumplimiento.
+
+(vii) Ejecución — Los tenedores de los Valores ETI, mediante Resolución Extraordinaria, podrán emprender las acciones o medidas o iniciar los
+      procedimientos contra el Emisor que consideren oportunos para hacer valer sus derechos como tenedores de los Valores ETI frente al
+      Emisor, ya se deriven de la legislación general, de los Valores ETI, de cualquier otro Documento de la Serie o de cualquier otro modo.
+
+(viii) Reuniones de tenedores de Valores ETI — El quórum en cualquier asamblea para aprobar una Resolución Extraordinaria será de dos o
+       más tenedores de Valores ETI o agentes presentes en persona que posean o representen en conjunto más del 50 por ciento. del número
+       de Valores ETI en circulación en ese momento o, en cualquier junta aplazada, dos o más tenedores de Valores ETI o agentes presentes en
+       persona que posean o representen en conjunto no menos del 10 por ciento del número de Valores ETI así poseídos o representados, y
+       una Resolución Extraordinaria debidamente aprobada en dicha junta será vinculante para todos los tenedores de Valores ETI. Una
+       resolución por escrito firmada por o en nombre de los tenedores de al menos el 75 por ciento del número total de Valores ETI en circulación
+       en ese momento será, a todos los efectos, tan válida y eficaz como una Resolución Extraordinaria aprobada en una junta de tenedores de
+       Valores ETI.
+
+(ix) Sustitución — Los tenedores de Valores ETI podrán consentir, mediante Resolución Extraordinaria, la sustitución del Emisor (o de cualquier
+     sustituto anterior) como deudor principal en virtud de los Documentos de la Serie pertinentes de los que sea parte y de los Valores ETI de
+
+
+
+                                                                                                                                           Page 16 of 28
+                                                                    Altarius ETI AG
+
+
+      cada Serie, por cualquier otra sociedad (constituida en cualquier jurisdicción), con sujeción a cualesquiera condiciones de dicha sustitución
+      aprobadas por los tenedores de valores ETI en la Resolución Extraordinaria.
+
+(x)   Pagos netos de impuestos — Todos los pagos relativos a los Valores ETI se efectuarán netos de cualquier retención o deducción en
+      concepto de impuestos o a cuenta de los mismos. En caso de que se aplique cualquier retención o deducción por o a cuenta de cualquier
+      Impuesto a los pagos relativos a los Valores ETI, los tenedores de Valores ETI estarán sujetos a dicho Impuesto o deducción y no tendrán
+      derecho a recibir importes para compensarlos. No se producirá ningún Evento de Incumplimiento como consecuencia de dicha retención
+      o deducción.
+
+(xi) Legislación aplicable — La legislación aplicable a los Valores ETI es la de Liechtenstein.
+
+10. Prelación relativa de los valores dentro de la estructura de capital en caso de insolvencia
+
+Con respecto a cualquier reclamación contra el Emisor en relación con los Valores ETI, las Partes de las Series mencionadas en los documentos
+(las “Partes de las Series”) y los tenedores de Valores ETI sólo podrán recurrir a los activos del Emisor. Toda reclamación relativa a los valores
+ETI que no se cancele íntegramente con cargo a los activos del emisor (incluidas las reclamaciones a cualquier otra Serie de Valores ETI) (todos
+estas reclamaciones incluidas, conjuntamente, las “Reclamaciones Pari Passu”) se reducirá proporcionalmente de modo que el valor total de
+todos las Reclamaciones Pari Passu y de cualquier otra reclamación no garantizada contra el Emisor no supere el valor agregado de los activos
+remanente del Emisor (los “Activos Remanentes”). Si los Activos Remanentes (ya sea mediante liquidación o ejecución) son insuficientes,
+cualquier reclamación pendiente de las Partes de la Serie y de los tenedores de Valores ETI contra el Emisor sigue pendiente de pago, entonces
+dicha reclamación pendiente se extinguirá, y el Emisor no tendrá ninguna deuda al respecto. Tras la extinción de dicha reclamación, ninguna
+de las Partes de la Serie (salvo el Agente del Emisor y Pagador Principal), los tenedores de Valores ETI o cualquier otra persona que actúe en
+nombre de cualquiera de ellos tendrá derecho a emprender nuevas acciones contra el Emisor o cualquiera de sus directivos, accionistas,
+proveedores de servicios corporativos o consejeros para recuperar cualquier suma adicional en relación con la deuda pendiente del Emisor. El
+Agentes del Emisor y Pagador Principal no ha acordado ninguna limitación de su recurso al Emisor o a los activos del Emisor.
+
+11. Eventuales restricciones a la libre negociabilidad de los valores
+
+La distribución del Folleto Base y de cualesquiera Condiciones Finales y la oferta o venta de Valores ETI en determinadas jurisdicciones pueden
+estar restringidas por ley. El Emisor y cualquier Participante Autorizado exigen a las personas en cuyo poder se encuentre el presente Folleto
+Base que se informen y observen cualquier restricción de este tipo. Los Valores ETI no se han registrado ni se registrarán en virtud de la Ley de
+Valores ni de la legislación sobre valores de ningún Estado de los Estados Unidos de América, y no podrán ofrecerse, venderse ni transferirse
+de ningún otro modo en los Estados Unidos de América ni a personas estadounidenses (tal y como se definen en el Reglamento S de la Ley de
+Valores), ni por cuenta o en beneficio de las mismas.
+
+12. Política de dividendos y de distribución de resultados
+
+Los Valores ETI son instrumentos de deuda cupón cero que no devengarán intereses.
+
+¿Dónde se negociarán los valores?
+
+La solicitud se realizará en las siguientes bolsas de valores para la Serie de Valores ETI a la que se aplican estas Condiciones Finales: Portfolio
+Stock Exchange. No existe garantía alguna de que dicha solicitud prospere o, en caso de que prospere, de que se mantengan dichas admisiones
+a negociación.
+
+¿Hay alguna garantía vinculada a los valores?
+
+Cada Serie de Valores ETI emitida en el marco del Programa será una obligación de recurso limitado del Emisor y no será una obligación o
+responsabilidad de, ni estará garantizada por, ninguna otra persona o entidad.
+
+¿Cuáles son los principales riesgos específicos de los valores?
+
+1.    Naturaleza de una inversión en Valores ETI — Los Valores ETI no están protegidos por el principal ni garantizados y son una inversión de
+      alto riesgo. Los tenedores de los Valores ETI no tienen asegurado el reembolso del capital invertido ni el pago de ningún rendimiento sobre
+      dicho capital. Todos los pagos que deban efectuarse sobre los Valores ETI dependen del valor de los Valores Subyacentes a los que están
+      vinculados; y todos los cupones, dividendos o distribuciones que deban efectuarse con respecto a los Valores Subyacentes dependen de
+      sus respectivos términos contractuales. En caso de que los Valores Subyacentes pierdan valor o incumplan sus pagos u obligaciones, los
+      tenedores de Valores ETI sufrirán una pérdida parcial o total de su inversión. En tales circunstancias, es posible que los tenedores de los
+      Valores ETI reciban menos, o sustancialmente menos, que su inversión inicial.
+
+2.    Precio de mercado de los Valores ETI — Los Valores ETI pueden ser perpetuos. El único medio a través del cual un inversor podrá realizar
+      su inversión en un Valor ETI antes de su Vencimiento será vendiéndolo a su precio de mercado en ese momento en una operación de
+      mercado secundario. Los movimientos generales de los mercados locales e internacionales y los factores que afectan al clima de inversión
+      y al sentimiento de los inversores podrían afectar al nivel de negociación y, por tanto, al precio de mercado de los Valores ETI. Los inversores
+      deben tener en cuenta que los movimientos generales de los mercados y los factores que afectan al clima inversor y al sentimiento de los
+      inversores pueden tener efectos diferentes en cada Serie de Valores ETI. El Importe de Reembolso y/o el precio de mercado de los Valores
+
+
+                                                                                                                                         Page 17 of 28
+                                                                  Altarius ETI AG
+
+
+     ETI pueden ser volátiles y caer rápidamente, y es posible que un inversor no pueda vender sus Valores ETI rápidamente y/o a un precio tal
+     que le permita evitar o minimizar cualquier pérdida de su inversión.
+
+     El precio de mercado de los Valores ETI de una Serie se verá afectado por una serie de factores, entre los que se incluyen: (a) el valor del
+     Valor Subyacente relativo a dicho Valor ETI; (b) la percepción del mercado, los tipos de interés, los rendimientos y los tipos de cambio; (c)
+     la existencia o no de cualquier perturbación en el mercado; (d) la solvencia de las Partes de la Serie; (e) cualquier comisión o coste de
+     ejecución aplicable a las suscripciones o reembolsos de los Valores ETI; (f) cuando el Valor Subyacente de una Serie de Valores ETI esté
+     denominado en una divisa distinta de la divisa en la que coticen los Valores ETI; y (g) la liquidez de los Valores ETI.
+
+     Los posibles inversores deben ser conscientes de que el Importe de Reembolso y el precio de mercado secundario de los Valores ETI
+     pueden bajar o subir durante la vigencia de los Valores ETI. Determinados Valores Subyacentes pueden ser más volátiles que otros Valores
+     Subyacentes, y el precio de mercado secundario de los Valores ETI vinculados a dicho Valor Subyacente puede mostrar una volatilidad
+     similar. Los inversores potenciales deben ser conscientes de que el Importe de Reembolso y el precio de mercado de cualquier Valor ETI
+     en cualquier Día Relevante pueden no reflejar su rendimiento anterior o futuro. No puede garantizarse el valor futuro ni el precio de
+     mercado de los Valores ETI.
+
+3.   Creación de mercado por parte de Participantes Autorizados y/o Especialistas en Negociación — Los inversores deben ser conscientes de
+     que ningún Participante Autorizado está obligado a crear mercado para ninguna Serie de Valores ETI (incluida cualquier Serie para la que
+     haya sido designado como Participante Autorizado) y, en circunstancias en las que un Participante Autorizado actúe como Especialista en
+     Negociación con respecto a cualquier Serie de Valores ETI, dicho Participante Autorizado podrá dejar de crear mercado en cualquier
+     momento. En caso de que un Participante Autorizado deje de realizar un mercado y no haya otra liquidez en el mercado secundario, los
+     inversores no podrán realizar su inversión en los Valores ETI y podrán verse obligados a mantener sus Valores ETI hasta su Vencimiento.
+     Además, los inversores deben ser conscientes de que, en caso de que no haya ningún Especialista en Negociación con respecto a una
+     Serie de Valores ETI y no haya ninguna otra liquidez en el mercado secundario, el Emisor podrá, aunque no estará obligado a ello,
+     reembolsar todos los Valores ETI de la Serie en cuestión de conformidad con las disposiciones del Evento de Reembolso Obligatorio a
+     Instancia del Emisor.
+
+4.   Reembolso Estándar — Sólo los Participantes Autorizados podrán tratar con el Emisor para suscribir o solicitar al Emisor el reembolso de
+     Valores ETI en circulación, salvo en relación con los Reembolsos Estándar en cualquier momento tras la notificación por el Emisor de que
+     se permitirán las solicitudes de reembolso de los tenedores de Valores ETI que no sean Participantes Autorizados.
+
+     El importe de cualquier Reembolso Opcional está sujeto al Límite Máximo de Reembolso Diario, que es un límite máximo (si procede) en
+     el número de reembolsos de Valores ETI de una Serie en cualquier Día Relevante, según pueda modificarse en cada momento. Los posibles
+     inversores deben tener en cuenta que es posible que el Límite Máximo de Reembolso Diario haga que los Valores ETI se negocien con una
+     prima más alta o que den lugar a un descuento del Importe de Reembolso. Un inversor que compre Valores ETI en tales circunstancias
+     puede incurrir en una pérdida significativa si cambia la demanda del mercado. Podría producirse una pérdida significativa incluso cuando
+     el precio del Valor ETI haya aumentado durante el periodo de tenencia del inversor. El Límite Máximo de Reembolso Diario también podría
+     dar lugar a diferenciales de negociación más elevados para los Valores ETI en el mercado secundario, lo que podría aumentar los costes
+     de ejecución para un inversor que adquiera los Valores ETI en el mercado secundario.
+
+     En caso de que un inversor no pueda reembolsar inmediatamente sus Valores ETI debido a un incumplimiento del Límite Máximo de
+     Reembolso Diario, dicho inversor estará sujeto al riesgo de mercado (es decir, que el valor de los Valores ETI disminuya antes del reembolso
+     y, por lo tanto, se reduzca el importe de reembolso). En consecuencia, es posible que el importe de reembolso se reduzca debido a un
+     cambio adverso en el precio de los Valores Subyacentes (que, en consecuencia, repercutiría en el valor de los Valores ETI).
+
+5.   Evento de Reembolso Obligatorio a Instancia del Emisor — El Emisor podrá optar en cualquier momento, a su entera y absoluta discreción,
+     por reembolsar la totalidad o parte de los Valores ETI de una Serie. En el ejercicio de dicha facultad discrecional, el Emisor no tendrá en
+     cuenta los intereses de los tenedores de los Valores ETI. No puede garantizarse que el valor por Valor ETI determinado en relación con el
+     Evento de Reembolso Obligatorio a Instancia del Emisor tras dicho ejercicio sea tal que el Importe de Reembolso sea superior o igual al
+     importe invertido por un inversor por Valor ETI. Esto puede reducir la rentabilidad recibida por los tenedores de los valores ETI sobre su
+     inversión en los valores ETI. En tales circunstancias, es posible que los tenedores de Valores ETI reciban menos, o sustancialmente menos,
+     que su inversión inicial.
+
+6.   Suspensión de Reembolsos — El Emisor podrá suspender el derecho a solicitar reembolsos de Valores ETI en cualquier momento mientras
+     el reembolso de los Valores Subyacentes haya sido suspendido por el Emisor Subyacente. A menos que el Emisor, a su entera y absoluta
+     discreción, ponga fin a dicha suspensión con anterioridad, ésta se mantendrá hasta el momento en que finalice la suspensión de los
+     Valores Subyacentes. El Emisor notificará dicha suspensión y la finalización de la misma a las Partes de la Serie y a los tenedores de Valores
+     ETI tan pronto como sea razonablemente posible, pero la falta de notificación no impedirá el ejercicio de dichas facultades discrecionales.
+     No se procederá al reembolso de los Valores ETI durante el periodo de suspensión del reembolso de los Valores ETI. En tales circunstancias,
+     los tenedores de Valores ETI no podrán reembolsar los Valores ETI que posean dentro de los plazos normales especificados en las
+     Condiciones.
+
+     En caso de que un inversor no pueda reembolsar inmediatamente sus Valores ETI debido a una Suspensión de Reembolsos, dicho inversor
+     estará sujeto al riesgo de mercado (es decir, que el valor de los Valores ETI disminuya antes del reembolso y, por tanto, se reduzca el
+     importe del reembolso). En consecuencia, es posible que el importe de reembolso se reduzca debido a un cambio adverso en el precio de
+
+
+
+                                                                                                                                      Page 18 of 28
+                                                                     Altarius ETI AG
+
+
+     los Valores Subyacentes (que, en consecuencia, repercutiría en el valor de los Valores ETI). En consecuencia, los tenedores de los Valores
+     ETI podrían perder la totalidad o parte de su inversión en los Valores ETI.
+
+7.   Evento de Incumplimiento — En caso de que se produzca alguno de los siguientes eventos, si así lo aprueba al menos la mayoría de los
+     Valores ETI en circulación en ese momento o si así se indica en una Notificación de Reembolso por Evento de Incumplimiento, los Valores
+     ETI vencerán inmediatamente y serán pagaderos por su Importe de Reembolso en la fecha de la Notificación de Reembolso por Evento de
+     Incumplimiento: (a) el Emisor haya estado en un Periodo de Incumplimiento durante más de 14 días; (b) se produzca un Evento de
+     Incumplimiento del Capital Riesgo; (c) el Emisor haya incurrido en un Incumplimiento de Cumplimiento; (d) cualquier tribunal competente
+     dicte una orden o resolución relativa a un Incumplimiento de Disolución; (e) se produzca un Evento de Incumplimiento de Serie con
+     respecto a cualquier otra Serie de Valores ETI emitidos por el Emisor en virtud del Programa. En tales circunstancias, es posible que los
+     tenedores de los Valores ETI reciban menos, o sustancialmente menos, que su inversión inicial.
+
+8.   Riesgo de Recalificación — Los Valores ETI se emiten en forma de títulos de deuda y cotizan como valores no participativos en cada Bolsa
+     de Valores Relevante. Los Valores ETI no son participaciones en un organismo de inversión colectiva a efectos de la Directiva 2009/65/CE
+     sobre normas relativas a los organismos de inversión colectiva en valores mobiliarios (nº 2009/65/CE), en su versión modificada.
+
+     No puede garantizarse que los tribunales o las Autoridades Reguladoras de cualquier jurisdicción no apliquen una interpretación diferente,
+     incluida la recalificación de los Valores ETI como participaciones en un plan de inversión colectiva o un fondo. Cualquier diferencia de
+     interpretación de este tipo puede tener consecuencias adversas (incluidas, entre otras, consecuencias fiscales adversas) para un inversor,
+     lo que en última instancia puede afectar a la rentabilidad que un inversor recibe de los Valores ETI.
+
+     Cualquier recalificación de este tipo puede tener consecuencias adversas (incluidas, entre otras, consecuencias fiscales adversas) para un
+     inversor, lo que puede dar lugar a que los tenedores de valores ETI reciban menos, o sustancialmente menos, que su inversión inicial.
+     Además, como resultado de dicha recalificación, el Emisor puede determinar que se ha producido un Evento de Incumplimiento. Por lo
+     tanto, los Valores ETI pueden ser reembolsos anticipadamente al Importe de Reembolso, lo que puede dar lugar a que los tenedores de
+     los Valores ETI reciban menos, o sustancialmente menos, que su inversión inicial.
+
+(d) Información fundamental sobre la oferta pública de valores o sobre su admisión a cotización en un mercado regulado
+
+¿En qué condiciones y plazos puedo invertir en este valor?
+
+ Precio de oferta del valor:                                                  1.000,00 EUR
+
+ Características del calendario previsto para la oferta:                      12 meses desde la Fecha Efectiva del Programa.
+
+ Datos de la admisión a cotización en un mercado regulado:                    No aplica
+
+ Condiciones generales a las cuales está sujeta la oferta:                    El Emisor pone los Valores ETI a disposición de los Participantes
+                                                                              Autorizados que hayan presentado una orden de suscripción válida
+                                                                              al Emisor. Los Valores ETI se emitirán a los inversores de
+                                                                              conformidad con los acuerdos vigentes entre los Participantes
+                                                                              Autorizados y dicho inversor, incluidos los relativos al proceso de
+                                                                              solicitud, asignación, precio, gastos y acuerdos de liquidación.
+
+ Detalles del importe mínimo y/o máximo de la aplicación:                     No aplica
+
+ Nombre(s) y dirección(es), en la medida en que el Emisor los conozca,        No aplica
+ de los colocadores en los distintos países en los que tiene lugar la
+ oferta.
+
+ Nombre y dirección de los Oferentes Autorizados:                             Altarius ETI AG y cada Participante Autorizado expresamente
+                                                                              nombrado Oferente Autorizado en la página web del Emisor:
+                                                                              (www.altariuseti.com).
+
+ Estimación de los gastos totales de la emisión o de la oferta, incluidos     Máximo de 1.04% del NAV(t) por año o 75.500 EUR por año según se
+ los gastos cobrados al inversor por el emisor u oferente:                    establece en el PPM relevante a cada Valor Subyacente.
+
+¿Quién es el oferente o la persona que solicita admisión a cotización?
+
+Los Oferentes Autorizados son:
+
+     •    Altarius ETI AG; constituida en Liechtenstein de acuerdo a las leyes del Principado de Liechtenstein y organizada de conformidad con
+          el artículo 261 del PGR como sociedad anónima el 28 de octubre de 2021, con número de registro FL-0002.669.856-9.
+
+     •    Altarius Capital Limited; una sociedad de responsabilidad limitada constituida en Gibraltar el 9 de septiembre de 2016, con domicilio
+          social en 28 Irish Town, GX11 1AA Gibraltar, y número de registro 114825.
+
+
+                                                                                                                                      Page 19 of 28
+                                                                  Altarius ETI AG
+
+
+
+     •    Altarius Index PCC Limited; una sociedad de células protegidas constituida con responsabilidad limitada de conformidad con la Ley
+          de Sociedades Celulares Protegidas de 2001 de Gibraltar y con número de registro de sociedad 122055. El domicilio social de Altarius
+          Index es 2 Irish Town, Gibraltar, GX11 1AA.
+
+¿Por qué se ha elaborado este folleto?
+
+El motivo de la oferta es conseguir beneficios para la compañia mediante la obtención de rendimientos del capital invertido ligeramente
+superiores a los costes de capital. El Emisor tendrá discreción en cuanto a la forma en que se aplicará el producto neto de cada emisión de
+Valores ETI. El Emisor podrá, aunque no estará obligado a ello, utilizar los ingresos netos de cada emisión de Valores ETI para adquirir Valores
+Subyacentes. El Emisor también podrá invertir en activos distintos de los Valores Subyacentes.
+
+Esta oferta no está sujeta a un acuerdo de suscripción en firme. Según el conocimiento del Emisor, no se pretende que ninguna persona
+implicada en la oferta de los Valores ETI tenga un interés material en la oferta distinto del que se indica a continuación. Una (1) o más personas
+pueden poseer acciones y/o pueden ser nombradas miembros del consejo de administración (ya sea como consejeros ejecutivos o no
+ejecutivos) del Emisor, de cualquier Emisor Subyacente, del Organizador, del Agente de Cálculo, de cualquier Participante Autorizado y/o del
+Proveedor de Servicios Corporativos. Dicha persona puede tener interés en asegurar los máximos beneficios para las entidades en las que
+posee acciones o de las que es consejero en detrimento del Emisor y de los tenedores de Valores ETI. Altarius Capital Ltd actúa en diversas
+funciones en relación con esta operación. Con respecto al Emisor, Altarius Capital Ltd actuará como Organizador, Agente de Cálculo y
+Participante Autorizado. Además, Altarius Capital Ltd actuará como Gestor de Inversiones y como Director del Emisor Subyacente. Altarius Index
+actuará como Participante Autorizado y también como Emisor Subyacente en relación con esta operación. No obstante, Altarius Index tendrá
+únicamente las obligaciones y responsabilidades expresamente acordadas por ella en los Documentos de la Serie de los que es parte y, en
+virtud de su actuación o la de cualquiera de sus filiales en cualquier otra calidad, no se considerará que tiene otras obligaciones o
+responsabilidades ni que se le exige un nivel de diligencia distinto del expresamente previsto en los mismos. Hera Trust Establishment actuará
+como Proveedor de Servicios Corporativos.
+
+
+
+
+                                                                                                                                     Page 20 of 28
+                                                                   Altarius ETI AG
+
+
+ANHANG — EMISSIONSSPEZIFISCHE ZUSAMMENFASSUNG
+
+(a) Einleitung
+
+ Name des Wertpapiers:                                                      Hausera ETI
+
+ ISIN des Wertpapiers:                                                      FR0014010H19
+
+ Emittent:                                                                  Altarius ETI AG
+                                                                            info@altariuseti.com
+                                                                            Industriering 20, 9491, Ruggell, Liechtenstein
+                                                                            +423 373 00 30
+                                                                            LEI: 5299001XE1CIMMOEME82
+
+ Identität und Kontaktdaten der zuständigen Behörde die den                 Liechtenstein Financial Market Authority
+ Basisprospekt billigt:                                                     www.fma-li.li/en
+                                                                            Landstrasse 109, 9490 Vaduz, Liechtenstein
+                                                                            +423 236 71 35
+
+ Datum der Billigung des Basisprospekts:                                    18. Dezember 2025
+
+Warnhinweise
+
+Diese Emissionsspezifische Zusammenfassung sollte als Einführung zum Basisprospekt gelesen werden. Jede Entscheidung, in die ETI
+Wertpapiers zu investieren, sollte auf der Grundlage einer Prüfung des gesamten Basisprospekts durch die potenziellen Anleger erfolgen. Eine
+Anlage in ETI Wertpapiers ist mit einem erheblichen Risiko verbunden und ein Anleger kann den Wert seiner gesamten Anlage oder eines Teils
+davon verlieren. Wird ein Anspruch im Zusammenhang mit den im Basisprospekt enthaltenen Informationen vor Gericht geltend gemacht, so
+könnte der klagende Anleger nach nationalem Recht die Kosten für die Übersetzung des Basisprospekts vor Einleitung des Gerichtsverfahrens
+tragen müssen. Zivilrechtlich haftet nur derjenige, der die Zusammenfassung einschließlich einer Übersetzung davon vorgelegt hat, jedoch nur,
+wenn die Zusammenfassung irreführend, unrichtig oder widersprüchlich ist, wenn sie zusammen mit den anderen Teilen des Basisprospekts
+gelesen wird, oder wenn sie, wenn sie zusammen mit den anderen Teilen des Basisprospekts gelesen wird, keine Schlüsselinformationen enthält,
+die potenziellen Anlegern bei der Entscheidung über eine Anlage in solche ETI Wertpapiers helfen.
+
+                     Sie sind im Begriff, ein Produkt zu erwerben, das nicht einfach ist und schwer zu verstehen sein kann.
+
+(b) Basisinformationen über den Emittenten
+
+Wer ist der Emittent der Wertpapiere?
+
+Die Emittentin wurde am 28. Oktober 2021 in Liechtenstein unter dem Namen Altarius ETI AG nach dem Recht des Fürstentums Liechtenstein
+gegründet und gemäss Art. 261 ff. des liechtensteinischen Personen- und Gesellschaftsrechts (PGR) als Aktiengesellschaft mit der
+Registernummer FL-0002.669.856-9 organisiert. Sie ist im liechtensteinischen Handelsregister eingetragen und hat ihren Sitz in, Industriering
+20, FL-9491, Ruggell (Liechtenstein). Der LEI des Emittenten lautet 5299001XE1CIMMOEME82.
+
+Die Emittentin wurde ausschließlich zum Zweck der Emission von ETI Wertpapiers in Form von Schuldverschreibungen gegründet, deren Wert
+im Verhältnis 1:1 an die Basiswertpapiere gebunden ist, die in Zellen einer Verbriefungszweckgesellschaft aufgeteilt sind. Alleiniger Aktionär der
+Emittentin ist Altarius Capital Value S.L. (mit Sitz in Spanien). Altarius Capital Value S.L. befindet sich im wirtschaftlichen Eigentum und wird von
+Adelaida Garrido Caballero und Jaime Ortiz-Vigón kontrolliert. Die Direktoren des Emittenten sind: Jaime Ortiz-Vigón, Florian Wenaweser, und
+Hera Trust Establishment. Revisionsstelle der Emittentin ist die BDO (Liechtenstein) AG mit Sitz in der Wuhrstrasse 14, 9490 Vaduz, Liechtenstein
+
+Welches sind die wesentlichen Finanzinformationen über den Emittenten?
+
+Geprüfte Jahresabschlüsse für den Zeitraum bis zum 31. Dezember 2023 und ungeprüfte Jahresabschlüsse für den Zeitraum bis zum 31.
+Dezember 2024 wurden erstellt und sind in Anhang 1 des Basisprospekts enthalten. Die geprüften Jahresabschlüsse sind in den
+Geschäftsräumen der Emittentin kostenlos erhältlich. Die nachstehende Tabelle enthält eine Zusammenfassung der wichtigsten Informationen
+aus den geprüften und ungeprüften Jahresabschlüssen der Emittentin.
+
+ Bilanz                                                                                 31.12.2024                                     31.12.2023
+
+ Vermögenswerte                                                                      159.377.580,93                                 20.581.828,51
+           Forderungen                                                                   207.308,04                                    146.721,77
+           Investitionen                                                             159.131.460,34                                 20.396.466.73
+           Bankeinlagen                                                                   38.812,55                                     38.640,00
+ Eigenkapital                                                                             50.041,96                                     50.621,19
+           Gezeichnetes Kapital                                                           50.000,00                                        50.000
+           Gewinn/Verlustvortrag                                                             621,19                                        417,49
+
+                                                                                                                                        Page 21 of 28
+                                                                      Altarius ETI AG
+
+
+           Jährlicher Gewinn/Verlust                                                          (579,23)                                203,70
+ Verbindlichkeiten                                                                      159.323.917,01                         20.531.207,31
+           Bestimmungen                                                                      61.652,85                             18.358,30
+           ETI Wertpapiers                                                              159.131.460,34                         20.396.466.73
+           Verbindlichkeiten aus Lieferungen und Leistungen                                 130.803,82                            116.382,28
+
+ Gewinn und Verlustrechnung                                                                31.12.2024                             31.12.2023
+
+ Jährlicher Gewinn/Verlust                                                                     (579,23)                                203,70
+            Nettoeinnahmen                                                                 137.771,85                             185.033,96
+            Betriebliche Aufwendungen                                                     (130.945,38)                           (180.740,30)
+            Außerordentliche Ausgaben                                                              0,00                             (3.362,01)
+            Finanzielles Ergebnis                                                            (5.594,72)                              1.540,60
+            Steuern                                                                          (1.810,98)                             (2.268,55)
+
+Der im Geschäftsjahr 2024 entstandene Verlust ist hauptsächlich auf einen Anstieg der mit der Aufrechterhaltung des Programms verbundenen
+Finanzaufwendungen zurückzuführen. Der Emittent übt keine kommerzielle Geschäftstätigkeit aus, sodass seine Finanzergebnisse von den
+Gebühreneinnahmen aus der Emissionstätigkeit und den Kosten für jedes ETI-Wertpapier abhängen.
+
+In Bezug auf den Emittenten gibt es keine wesentlichen nachteiligen Veränderungen in der Finanzlage oder den Aussichten des Emittenten.
+Dies gilt seit dem 31. Dezember 2024 (dem Datum des letzten Berichts über die Prüfung des Jahresabschlusses, falls zutreffend) und während
+des gesamten laufenden Geschäftsjahres. Die Prüfungsberichte zu den historischen Finanzinformationen enthalten keine Einschränkungen.
+
+Welches sind die zentralen Risiken, die für den Emittenten spezifisch sind?
+
+1.   Fähigkeit der Emittentin, ihren Verpflichtungen in Bezug auf die ETI Wertpapiers nachzukommen — Die Inhaber der ETI Wertpapiers sind
+     dem Risiko ausgesetzt, dass die Emittentin nicht über ausreichende Vermögenswerte verfügt, um ihren Verpflichtungen aus den ETI
+     Wertpapiers nachzukommen. Obwohl die von der Emittentin bei einer Rückzahlung der ETI Wertpapiers jeder Serie zu zahlende Rendite
+     an die Wertentwicklung der Basiswerte, an die diese Serie gekoppelt ist, gebunden ist, kann nicht gewährleistet werden, dass die Emittentin
+     über ausreichende Vermögenswerte verfügt, um diesen Betrag zu zahlen. Die Emittentin verfügt neben den Erlösen aus den ETI
+     Wertpapiers über keine nennenswerten Vermögenswerte, und dementsprechend hängt die Fähigkeit der Emittentin, ihren Verpflichtungen
+     aus den ETI Wertpapiers nachzukommen, von der Wertentwicklung der Anlagen ab, die die Emittentin mit den Erlösen aus den ETI
+     Wertpapiers erworben hat. Die Emittentin kann nach eigenem Ermessen entscheiden, wie die Erlöse aus den einzelnen Serien von ETI
+     Wertpapiers verwendet werden. Sollte die Emittentin in Vermögenswerte investieren, die sich nicht so gut entwickeln wie die zugrunde
+     liegenden Wertpapiere, ist es wahrscheinlich, dass die Emittentin nicht über ausreichende Vermögenswerte verfügt, um ihren
+     Verpflichtungen im Zusammenhang mit den ETI Wertpapiers nachzukommen. Unter diesen Umständen ist es möglich, dass die ETI
+     Wertpapiers weniger oder wesentlich weniger als ihre ursprüngliche Anlage erhalten.
+
+2.   Fähigkeit der Emittentin, ihren Verpflichtungen in Bezug auf die ETI Wertpapiers nachzukommen — Die Inhaber der ETI Wertpapiers sind
+     dem Risiko ausgesetzt, dass die Emittentin nicht über ausreichende Vermögenswerte verfügt, um ihren Verpflichtungen aus den ETI
+     Wertpapiers nachzukommen. Obwohl die von der Emittentin bei einer Rückzahlung der ETI Wertpapiers jeder Serie zu zahlende Rendite
+     an die Wertentwicklung der Basiswerte, an die diese Serie gekoppelt ist, gebunden ist, kann nicht gewährleistet werden, dass die Emittentin
+     über ausreichende Vermögenswerte verfügt, um diesen Betrag zu zahlen. Die Emittentin verfügt neben den Erlösen aus den ETI
+     Wertpapiers über keine nennenswerten Vermögenswerte, und dementsprechend hängt die Fähigkeit der Emittentin, ihren Verpflichtungen
+     aus den ETI Wertpapiers nachzukommen, von der Wertentwicklung der Anlagen ab, die die Emittentin mit den Erlösen aus den ETI
+     Wertpapiers erworben hat. Die Emittentin kann nach eigenem Ermessen entscheiden, wie die Erlöse aus den einzelnen Serien von ETI
+     Wertpapiers verwendet werden. Sollte die Emittentin in Vermögenswerte investieren, die sich nicht so gut entwickeln wie die zugrunde
+     liegenden Wertpapiere, ist es wahrscheinlich, dass die Emittentin nicht über ausreichende Vermögenswerte verfügt, um ihren
+     Verpflichtungen im Zusammenhang mit den ETI Wertpapiers nachzukommen. Unter diesen Umständen ist es möglich, dass die ETI
+     Wertpapiers weniger oder wesentlich weniger als ihre ursprüngliche Anlage erhalten.
+
+3.   Keine Trennung der Vermögenswerte der Emittentin — Die Emittentin wird von Zeit zu Zeit Verpflichtungen in Bezug auf weitere Serien
+     von ETI Wertpapiers eingehen. Die Vermögenswerte der Emittentin sind nicht gegeneinander abgegrenzt, und alle Serien von ETI
+     Wertpapiers haben Rückgriff auf einen einzigen Pool von Vermögenswerten der Emittentin. Dementsprechend sind die Anleger einer Serie
+     von ETI Wertpapiers dem Risiko ausgesetzt, dass die Emittentin im Rahmen einer anderen Serie von ETI Wertpapiers in Verzug gerät oder
+     anderweitig nicht in der Lage ist, ihren Verpflichtungen in Bezug auf eine andere Serie von ETI Wertpapiers nachzukommen. Sollte die
+     Emittentin nicht in der Lage sein, ihren Verpflichtungen in Bezug auf die ETI Wertpapiers nachzukommen, so kann dieser Fehlbetrag anteilig
+     auf alle Serien von ETI Wertpapiers verteilt werden. Unter solchen Umständen ist es möglich, dass die ETI Wertpapiers weniger oder
+     wesentlich weniger als ihre ursprüngliche Anlage erhalten.
+
+4.   Zahlungsunfähigkeit — Die Emittentin hat sich verpflichtet, keine anderen Tätigkeiten als die Emission von ETI Wertpapiers und damit
+     zusammenhängende und damit zusammenhängende Angelegenheiten zu übernehmen. Jede Emission von ETI Wertpapiers muss zu
+     Bedingungen erfolgen, die vorsehen, dass die Ansprüche der ETI Wertpapiers und der Serienparteien (mit Ausnahme der Ansprüche der
+     Emissions- und Hauptzahlstelle in Bezug auf die Zahlungsvereinbarung) in Bezug auf diese ETI Wertpapiers auf die Erlöse aus den
+     Vermögenswerten, durch die diese ETI Wertpapiers besichert sind, beschränkt sind. Wenn diese Bestimmungen aufrechterhalten werden,
+     wäre es unwahrscheinlich, dass die Emittentin zahlungsunfähig werden könnte.
+
+                                                                                                                                   Page 22 of 28
+                                                                  Altarius ETI AG
+
+
+
+     Sollte die Emittentin jedoch ungeachtet der vorstehenden Bestimmungen über den beschränkten Rückgriff und das Insolvenzverbot
+     ausstehende Verbindlichkeiten gegenüber Dritten haben, die sie nicht begleichen kann, oder sollten sich die Bestimmungen über den
+     beschränkten Rückgriff oder das Insolvenzverbot in einer bestimmten Rechtsordnung als nicht durchsetzbar erweisen und sollte die
+     Emittentin infolgedessen nach dem Recht eines Landes, das für sie oder ihre Vermögenswerte zuständig ist, zahlungsunfähig werden oder
+     für zahlungsunfähig erklärt werden, kann das Insolvenzrecht dieses Landes die Gültigkeit der Ansprüche der ETI Wertpapiers bestimmen
+     und die Durchsetzung ihrer Rechte in Bezug auf die von ihr gehaltenen ETI Wertpapiers verhindern oder verzögern, können die
+     Insolvenzgesetze dieses Landes die Gültigkeit der Ansprüche der ETI Wertpapiers bestimmen und die ETI Wertpapiers daran hindern, ihre
+     Rechte in Bezug auf die von ihr gehaltenen ETI Wertpapiers durchzusetzen oder eine solche Durchsetzung verzögern. Wenn die ETI
+     Wertpapiers daran gehindert werden, ihre Rechte in Bezug auf die ETI Wertpapiers durchzusetzen, kann dies dazu führen, dass die ETI
+     Wertpapiers ihre Anlage in die ETI Wertpapiers verlieren. Der Eintritt eines solchen Szenarios hat zur Folge, dass die ETI Wertpapiers
+     entweder ihre gesamte Anlage in die ETI Wertpapiers verlieren oder weniger oder wesentlich weniger als ihre ursprüngliche Anlage erhalten
+     können.
+
+     Im Falle der Insolvenz der Emittentin besteht für die Anleger das Risiko des Totalverlustes ihrer Anlage. Ein Kapitalschutz ist in Bezug auf
+     die Emittentin oder eine Anlage in die ETI Wertpapiers nicht anwendbar. Anleger in ETI Wertpapiers sollten daher ihre jeweiligen finanziellen
+     Verhältnisse überprüfen, um festzustellen, ob sie in der Lage sind, die mit einer Anlage in die ETI Wertpapiers verbundenen Verlustrisiken
+     zu tragen, insbesondere das Risiko eines Totalverlusts.
+
+5.   Die Emittentin ist eine Zweckgesellschaft — Die Emittentin ist eine Zweckgesellschaft, deren einziger Geschäftszweck die Emission von ETI
+     Wertpapiers ist. Die Verträge, die von der Emittentin abgeschlossen werden können, und die Zahlungen der Emittentin und der Parteien
+     im Rahmen dieser Verträge sind so strukturiert, dass sie der Emittentin Mittel zur Bedienung der fälligen und zahlbaren Zahlungen in Bezug
+     auf die ETI Wertpapiers zur Verfügung stellen können.
+
+     Die Emittentin hat und wird keine anderen Vermögenswerte haben als (i) die geringen Geldbeträge, die durch die Ausgabe von Aktien im
+     Zusammenhang mit ihrer Gründung aufgebracht wurden, (ii) die Gebühren (falls zutreffend), die im Zusammenhang mit der Emission oder
+     Rückzahlung einer Serie von ETI Wertpapiers von Zeit zu Zeit an sie zu zahlen sind, und (iii) Rechte, Eigentum, Beträge oder sonstige
+     Vermögenswerte im Zusammenhang mit einer Serie von ETI Wertpapiers. Dies bedeutet, dass, wenn die Vermögenswerte, auf denen eine
+     Serie von ETI Wertpapiers beruht, nicht ausreichen, um die von der Emittentin in Bezug auf diese Serie zu zahlenden Beträge zu begleichen,
+     keine anderen Vermögenswerte vorhanden sind, die der Emittentin zur Verfügung stehen, um diese Zahlungen zu leisten. Unter diesen
+     Umständen würden die Inhaber der ETI Wertpapiers die ihnen geschuldeten Beträge nicht in voller Höhe erhalten und einen Teil ihrer
+     Anlage in die ETI Wertpapiers verlieren.
+
+6.   Regulierung des Emittenten durch eine Aufsichtsbehörde — Die Emittentin benötigt keine Zulassung oder Genehmigung nach den
+     geltenden Wertpapier-, Waren- oder Bankgesetzen des Landes, in dem sie gegründet wurde, und wird ohne Aufsicht durch eine Behörde
+     in einem Land tätig sein. Es gibt jedoch keine Garantie dafür, dass die Aufsichtsbehörden in einer oder mehreren Rechtsordnungen nicht
+     eine gegenteilige Auffassung hinsichtlich der Anwendbarkeit solcher Gesetze auf die Emittentin vertreten würden. Eine gegenteilige
+     Auffassung einer solchen Aufsichtsbehörde könnte sich nachteilig auf die Emittentin oder die Inhaber der ETI Wertpapiers auswirken. Wenn
+     beispielsweise eine Aufsichtsbehörde feststellt, dass die Emittentin in einer bestimmten Rechtsordnung zugelassen werden muss, ist es
+     für die Emittentin als Zweckgesellschaft möglicherweise nicht möglich, eine solche Zulassung zu erhalten. In einem solchen Szenario
+     besteht das Risiko, dass die Emittentin feststellt, dass ein Verzugsereignis eingetreten ist. Die ETI Wertpapiers können daher vorzeitig zum
+     Rückzahlungsbetrag zurückgezahlt werden, was dazu führen kann, dass die ETI Wertpapiers weniger oder wesentlich weniger als ihre
+     ursprüngliche Anlage erhalten.
+
+7.   Besteuerung und keine Hochrechnung — Falls bei Zahlungen auf solche ETI Wertpapiers ein Steuereinbehalt oder -abzug vorgenommen
+     wird, unterliegt der betreffende ETI Wertpapiers dieser Steuer oder diesem Abzug und hat keinen Anspruch auf Beträge, die diesen
+     Einbehalt oder Abzug ausgleichen. Infolge eines solchen Einbehalts oder Abzugs tritt kein Verzugsereignis ein.
+
+     Die Emittentin kann steuerpflichtig werden, sei es durch direkte Veranlagung oder durch Einbehaltung. Tritt ein solches Ereignis infolge
+     einer Gesetzes- oder Verordnungsänderung ein, die die Kosten der Emittentin für die Erfüllung ihrer Verpflichtungen aus den ETI
+     Wertpapiers wesentlich erhöht oder es der Emittentin unmöglich macht, diese zu erfüllen oder die Basiswertpapiere zu halten, zu erwerben
+     oder zu veräußern, besteht das Risiko, dass die Emittentin feststellt, dass ein Rückzahlungsgrund eingetreten ist. Die ETI Wertpapiers
+     können daher vorzeitig zum Rückzahlungsbetrag zurückgezahlt werden, was dazu führen kann, dass die ETI Wertpapiers weniger oder
+     wesentlich weniger als ihre ursprüngliche Anlage erhalten.
+
+(c) Basisinformationen über die Wertpapiere
+
+Welches sind die wichtigsten Merkmale der Wertpapiere?
+
+1.   Serie von ETI Wertpapiers, für die diese Emissionsspezifische Zusammenfassung gilt:              19
+
+2.   Tranche des Wertpapiers:                                                                         1
+
+3.   ISIN des Wertpapiers:                                                                            FR0014010H19
+
+4.   Währung des Wertpapiers:                                                                         EUR
+
+
+                                                                                                                                     Page 23 of 28
+                                                                   Altarius ETI AG
+
+
+
+5.      Stückelung des Wertpapiers:                                                                    1.000,00
+
+6.      Anzahl der ausgegebenen Wertpapiere:                                                           7.000
+
+7.      Laufzeit der Wertpapiere:                                                                      Unbefristet
+
+8.      Art der Wertpapiere:                                                                           Unbefristet
+
+9.      Mit den Wertpapieren verbundene Rechte:
+
+(i)     Status — Die ETI Wertpapiers jeder Serie sind Verpflichtungen des Emittenten mit beschränktem Rückgriffsrecht, die zu jeder Zeit
+        gleichrangig mit ihnen selbst und den ETI Wertpapiers jeder anderen Serie sind und untereinander keinen Vorrang haben. Der Rückgriff in
+        Bezug auf die ETI Wertpapiers jeder Serie ist in der in den Bedingungen beschriebenen Weise beschränkt.
+
+(ii)    Tilgungsbetrag — Bei Rückzahlung eines ETI Wertpapiers an einem Rückzahlungstag ist ein von der Berechnungsstelle berechneter
+        Rückzahlungsbetrag von der Emittentin zu zahlen. Der Rückzahlungsbetrag in Bezug auf ein ETI Wertpapiers wird wie folgt berechnet:
+
+                                                       𝑁𝐴𝑉(𝑡)
+                                    𝑇𝑖𝑙𝑔𝑢𝑛𝑔𝑠𝑏𝑒𝑡𝑟𝑎𝑔 =          × 𝐴𝑛𝑝𝑎𝑠𝑠𝑢𝑛𝑔𝑠𝑓𝑎𝑘𝑡𝑜𝑟 × 𝑆𝑡ü𝑐𝑘𝑒𝑙𝑢𝑛𝑔 × 𝑀𝑎𝑟𝑔𝑒𝑛𝑓𝑎𝑘𝑡𝑜𝑟
+                                                       𝑁𝐴𝑉(0)
+
+(iii)   Rücknahme durch ETI Wertpapierinhaber — Ein ETI Wertpapierinhaber, der kein zugelassener Teilnehmer ist, kann an einem
+        Standardrückzahlungstag vom Emittenten nur dann die Rückzahlung von bis zu 100% seiner ETI Wertpapiers verlangen, wenn in den
+        maßgeblichen PPM für eine Serie von ETI Wertpapiers festgelegt ist, dass eine Standardrückzahlung des Basiswerts zulässig ist, oder, wenn
+        in den maßgeblichen PPM für eine Serie von ETI Wertpapiers festgelegt ist, dass eine Standardrückzahlung des Basiswerts nicht zulässig
+        ist, nur dann, wenn der Basiswert-Emittent dem Emittenten mitgeteilt hat, dass eine Standardrückzahlung des Basiswerts zulässig ist. Der
+        Betrag einer Standard-Rückzahlung unterliegt der maximalen täglichen Rückzahlungsgrenze.
+
+        Die Standard-Rückzahlung von ETI Wertpapiers, auf die diese Emissionsspezifische Zusammenfassung Anwendung findet, bezieht sich auf
+        die folgenden Beschränkungen bezüglich der Standard-Rückzahlung des Basiswerts:
+
+             (A)   Der Emittent muss den Rückzahlungsantrag mindestens 30 Tage vor dem Abrechnungstag, an dem der Emittent das
+                   Basiswertpapier zurückzahlen wird, per E-Mail an den Basiswert-Emittenten zurücksenden. Rückzahlungsanträge, die diese Frist
+                   versäumen, werden auf den folgenden Abrechnungstag verschoben und haben Vorrang vor allen danach eingereichten
+                   Rückzahlungsanträgen.
+
+             (B)   Die Standardrückzahlung des Basiswerts an einem bestimmten Bilanzstichtag unterliegt einer Rückzahlungsgrenze von maximal
+                   zwischen 0,50 % des NAV oder 1 Einheit des ETI des NAV an diesem Bilanzstichtag (die “Rückzahlungsgrenze“). Übersteigt die
+                   Anzahl der an einem Bilanzstichtag zurückzuzahlenden Basiswerte das Rückzahlungslimit, werden alle Rückzahlungsanträge an
+                   diesem Bilanzstichtag anteilig reduziert, so dass an diesem Bilanzstichtag nur maximal zwischen 0,50 % des NAV oder 1 Einheit
+                   des ETI des NAV zurückgezahlt wird.
+
+             (C)   Rücknahmen, die das Rücknahme-Limit an diesem Abrechnungstag überschreiten, werden auf den folgenden Abrechnungstag
+                   übertragen und haben Vorrang vor allen danach eingereichten Rücknahmeanträgen. Rücknahmen, die auf den nächsten
+                   Abrechnungstag verschoben werden, unterliegen ebenfalls dem Rücknahme-Limit und werden weiterhin auf die folgenden
+                   Abrechnungstage verschoben und haben Vorrang, bis sie vollständig zurückgezahlt sind.
+
+        Ein ETI Wertpapiers, der auch ein zugelassener Teilnehmer ist, kann an jedem AP-Rückzahlungstag von der Emittentin die Rückzahlung aller
+        oder eines Teils seiner ETI Wertpapiers zum Rückzahlungsbetrag verlangen, indem er der Emittentin einen gültigen Rückzahlungsauftrag
+        in Übereinstimmung mit der entsprechenden Vereinbarung mit dem zugelassenen Teilnehmer vorlegt.
+
+(iv)    Aussetzung der optionalen Rücknahmen — Die Emittentin kann das Recht, Rückzahlungen von ETI Wertpapiers zu verlangen, jederzeit
+        aussetzen, solange die Rückzahlung der Basiswertpapiere von der Basiswert-Emittentin ausgesetzt wurde. Sofern die Emittentin diese
+        Aussetzung nicht nach ihrem alleinigen und uneingeschränkten Ermessen früher beendet, gilt sie bis zur Beendigung der Aussetzung der
+        Basiswertpapiere.
+
+(v)     Emittent Kündigung Rückkaufsereignis — Die Emittentin kann bei Abgabe einer Emittenten-Rückzahlungsmitteilung beschließen, die ETI
+        Wertpapiers ganz oder teilweise zurückzuzahlen und zu diesem Zweck einen Rückzahlungstag bestimmen, wobei der als Rückzahlungstag
+        bestimmte Tag nicht vor dem ersten Kalendertag nach dem Datum der betreffenden Emittenten-Rückzahlungsmitteilung liegen darf.
+        Innerhalb von zehn Emittenten-Geschäftstagen nach dem von der Emittentin festgelegten Rückzahlungstag teilt die Emittentin den ETI
+        Wertpapiers den Rückzahlungsbetrag mit, der in Bezug auf die ETI Wertpapiers zu zahlen ist, die Gegenstand der Rückzahlungsmitteilung
+        der Emittentin sind. Jedes ETI Wertpapiers, das an einem von der Emittentin bestimmten Rückzahlungstag zurückgezahlt werden soll, wird
+        an dem entsprechenden Rückzahlungsabrechnungstag zu seinem Rückzahlungsbetrag fällig und zahlbar. Für den Fall, dass nur ein Teil der
+        ausstehenden ETI Wertpapiers einer Serie gemäß einer Rückzahlungsaufforderung der Emittentin zur Rückzahlung aufgerufen wird,
+        unterliegt ein anteiliger Teil der ETI Wertpapiers jedes ETI Wertpapierinhaber dieser Serie einer solchen Rückzahlung.
+
+
+
+
+                                                                                                                                     Page 24 of 28
+                                                                  Altarius ETI AG
+
+
+(vi) Ereignisse des Verzugs — Tritt ein Verzugsereignis ein, werden die ETI Wertpapiers, wenn mindestens eine Mehrheit der zu diesem
+     Zeitpunkt in Umlauf befindlichen ETI Wertpapiers zustimmt oder wenn dies durch eine Rückzahlungsmitteilung für das Verzugsereignis
+     angeordnet wird, sofort fällig und zu ihrem Rückzahlungsbetrag zum Zeitpunkt der Rückzahlungsmitteilung für das Verzugsereignis zahlbar.
+
+(vii) Vollstreckung — Die ETI Wertpapierinhaber können durch außerordentlichen Beschluss alle Maßnahmen ergreifen oder Schritte
+      unternehmen oder Verfahren gegen die Emittentin einleiten, die sie für angemessen halten, um ihre Rechte als Inhaber der ETI Wertpapiers
+      gegenüber der Emittentin durchzusetzen, unabhängig davon, ob sich diese aus dem allgemeinen Recht, den ETI Wertpapiers, einem
+      anderen Seriendokument oder anderweitig ergeben.
+
+(viii) Versammlungen der ETI Wertpapierinhaber — Die Beschlussfähigkeit einer solchen Versammlung zur Verabschiedung eines
+       außerordentlichen Beschlusses ist gegeben, wenn zwei oder mehr ETI Wertpapierinhaber oder Vertreter persönlich anwesend sind, die
+       insgesamt mehr als 50 Prozent der zu diesem Zeitpunkt im Umlauf befindlichen ETI Wertpapiers halten oder vertreten, oder bei einer
+       vertagten Versammlung zwei oder mehr ETI Wertpapiers oder Vertreter persönlich anwesend sind, die insgesamt mindestens 10 Prozent
+       der so gehaltenen oder vertretenen ETI Wertpapiers halten oder vertreten, und ein auf einer solchen Versammlung ordnungsgemäß
+       verabschiedeter außerordentlicher Beschluss ist für alle ETI Wertpapiers verbindlich. Ein schriftlicher Beschluss, der von oder im Namen
+       von Inhabern von mindestens 75 Prozent der Gesamtzahl der zu diesem Zeitpunkt im Umlauf befindlichen ETI Wertpapiers unterzeichnet
+       ist, ist für alle Zwecke ebenso gültig und wirksam wie ein außerordentlicher Beschluss, der auf einer Versammlung der ETI
+       Wertpapierinhaber gefasst wurde.
+
+(ix) Vertretung — Die ETI Wertpapierinhaber können im Wege eines außerordentlichen Beschlusses zustimmen, dass anstelle der Emittentin
+     (oder eines früheren Vertreters) als Hauptschuldnerin im Rahmen der jeweiligen Serienurkunden, deren Vertragspartei sie ist, und der ETI
+     Wertpapiers jeder Serie eine andere Gesellschaft (mit Sitz in einer beliebigen Rechtsordnung) eingesetzt wird, vorbehaltlich der von den
+     ETI Wertpapierinhaber in dem außerordentlichen Beschluss genehmigten Bedingungen für einen solchen Austausch.
+
+(x)   Zahlungen nach Abzug von Steuern — Alle Zahlungen in Bezug auf die ETI Wertpapiers erfolgen abzüglich und unter Berücksichtigung von
+      Einbehalten oder Abzügen für oder aufgrund von Steuern. Falls ein Einbehalt oder Abzug für oder aufgrund von Steuern auf Zahlungen in
+      Bezug auf die ETI Wertpapiers erfolgt, unterliegen die ETI Wertpapierinhaber dieser Steuer oder diesem Abzug und haben keinen Anspruch
+      auf Ausgleichsbeträge. Ein solcher Einbehalt oder Abzug führt nicht zum Eintritt eines Verzugsereignisses.
+
+(xi) Geltendes Recht — Das auf die ETI Wertpapiers anwendbare Recht ist liechtensteinisches Recht.
+
+10. Relativer Rang der Wertpapiere in der Kapitalstruktur des Emittenten im Fall einer Insolvenz
+
+Hinsichtlich jeglicher Ansprüche gegen die Emittentin in Bezug auf die ETI Wertpapiers haben die Parteien der in den Dokumenten genannten
+Serien (die “Serien-Parteien“) und die ETI Wertpapierinhaber nur Rückgriff auf das Vermögen der Emittentin. Jede Forderung in Bezug auf die ETI
+Wertpapiers, die nicht in vollem Umfang aus dem Vermögen der Emittentin befriedigt wird (einschließlich Forderungen in Bezug auf andere
+Serien von ETI Wertpapiers) (alle derartigen Forderungen zusammen die “Pari-Passu-Forderungen“), wird anteilig reduziert, so dass der
+Gesamtwert aller Pari-Passu-Forderungen und sonstiger unbesicherter Forderungen gegen die Emittentin den Gesamtwert der verbleibenden
+Vermögenswerte der Emittentin (die “Verbleibenden Vermögenswerte“) nicht übersteigt. Wenn die verbleibenden Vermögenswerte (sei es im
+Wege der Liquidation oder der Vollstreckung) nicht ausreichen und eine ausstehende Forderung der Serienparteien und der ETI
+Wertpapierinhaber gegen die Emittentin unbezahlt bleibt, so erlischt diese ausstehende Forderung, und die Emittentin hat diesbezüglich keine
+Schulden mehr zu erfüllen. Nach dem Erlöschen einer solchen Forderung ist keine der Serienparteien (mit Ausnahme der Emissions- und
+Hauptzahlstelle), die ETI Wertpapierinhaber oder eine andere Person, die im Namen einer von ihnen handelt, berechtigt, weitere Schritte gegen
+die Emittentin oder einen ihrer leitenden Angestellten, Anteilseigner, Unternehmensdienstleister oder Direktoren zu unternehmen, um weitere
+Beträge in Bezug auf die erloschene Forderung einzutreiben, und die Emittentin schuldet den genannten Personen keine weiteren Beträge. Die
+Emissions- und Hauptzahlstelle hat keiner Beschränkung ihres Rückgriffs auf die Emittentin oder das Vermögen der Emittentin zugestimmt.
+
+11. Beschränkungen der freien Handelbarkeit der Wertpapiere
+
+Die Verteilung des Basisprospekts und der Endgültigen Bedingungen sowie das Angebot oder der Verkauf von ETI Wertpapiers können in
+bestimmten Rechtsordnungen gesetzlichen Beschränkungen unterliegen. Personen, die in den Besitz dieses Basisprospekts gelangen, werden
+von der Emittentin und jedem zugelassenen Teilnehmer aufgefordert, sich über solche Beschränkungen zu informieren und diese zu beachten.
+Die ETI Wertpapiers wurden und werden nicht gemäß dem Securities Act oder den Wertpapiergesetzen eines Bundesstaates der Vereinigten
+Staaten registriert und dürfen nicht innerhalb der Vereinigten Staaten oder an oder für Rechnung oder zugunsten von US-Personen (wie in
+Regulation S des Securities Act definiert) angeboten, verkauft oder anderweitig übertragen werden.
+
+12. Dividenden- bzw Ausschüttungspolitik
+
+Bei den ETI Wertpapiers handelt es sich um Nullkupon-Schuldverschreibungen, die nicht verzinst werden.
+
+Wo werden die Wertpapiere gehandelt?
+
+Für die Serie von ETI Wertpapiers, für die diese Endgültigen Bedingungen gelten, wird ein Antrag bei den folgenden Börsen gestellt: Portfolio
+Stock Exchange. Es gibt keine Garantie dafür, dass ein solcher Antrag erfolgreich sein wird oder, falls er erfolgreich ist, dass diese Zulassungen
+zum Handel aufrechterhalten werden.
+
+
+
+                                                                                                                                     Page 25 of 28
+                                                                       Altarius ETI AG
+
+
+Wird für die Wertpapiere eine Garantie gestellt?
+
+Jede Serie von ETI Wertpapiers, die im Rahmen des Programms begeben werden, sind Verbindlichkeiten mit beschränktem Rückgriffsrecht der
+Emittentin und stellen keine Verbindlichkeiten oder Verpflichtungen einer anderen natürlichen oder juristischen Person dar oder werden von
+dieser garantiert.
+
+Welches sind die zentralen Risiken, die für die Wertpapiere spezifisch sind?
+
+1.   Art der Anlage in ETI Wertpapiers — Die ETI Wertpapiers sind weder kapitalgeschützt noch garantiert und stellen eine hochriskante Anlage
+     dar. Den Inhabern der ETI Wertpapiers ist weder die Rückzahlung des investierten Kapitals noch die Zahlung einer Rendite auf dieses
+     Kapital zugesichert. Alle Zahlungen, die auf die ETI Wertpapiers zu leisten sind, hängen vom Wert der jeweiligen Basiswertpapiere ab, an
+     die sie gekoppelt sind; und alle Kupons, Dividenden oder Ausschüttungen, die in Bezug auf die Basiswertpapiere zu leisten sind, hängen
+     von deren jeweiligen Vertragsbedingungen ab. Sollten die Basiswerte im Wert sinken oder ihren Zahlungen oder Verpflichtungen nicht
+     nachkommen, erleiden die Inhaber von ETI Wertpapiers einen teilweisen oder vollständigen Verlust ihrer Anlage. Unter diesen Umständen
+     ist es möglich, dass die ETI Wertpapierinhaber weniger oder wesentlich weniger als ihre ursprüngliche Anlage erhalten.
+
+2.   Marktpreis der ETI Wertpapiers — Die ETI Wertpapiers können unbefristet sein. Die einzige Möglichkeit für einen Anleger, den Wert eines
+     ETI Wertpapiers vor seiner Fälligkeit zu realisieren, besteht darin, es in einer Sekundärmarkttransaktion zu seinem dann geltenden
+     Marktpreis zu verkaufen. Allgemeine Bewegungen an den lokalen und internationalen Märkten sowie Faktoren, die das Investitionsklima
+     und die Anlegerstimmung beeinflussen, können sich auf den Umfang des Handels und damit auf den Marktpreis der ETI Wertpapiers
+     auswirken. Anleger sollten beachten, dass allgemeine Marktbewegungen und Faktoren, die das Anlegerklima und die Anlegerstimmung
+     beeinflussen, sich auf die einzelnen Serien von ETI Wertpapiers unterschiedlich auswirken können. Der Rückzahlungsbetrag und/oder der
+     Marktpreis der ETI Wertpapiers kann volatil sein und schnell fallen, und ein Anleger ist möglicherweise nicht in der Lage, seine ETI
+     Wertpapiers schnell und/oder zu einem Preis zu verkaufen, der es ihm ermöglicht, einen Verlust seiner Anlage zu verhindern oder zu
+     minimieren.
+
+     Der Marktpreis der ETI Wertpapiers einer Serie wird von einer Reihe von Faktoren beeinflusst, einschließlich, aber nicht beschränkt auf: (a)
+     der Wert des Basiswerts der betreffenden ETI Wertpapiers; (b) die Marktwahrnehmung, die Zinssätze, die Renditen und die Wechselkurse;
+     (c) die Tatsache, ob eine Marktstörung vorliegt oder nicht; (d) die Kreditwürdigkeit der Vertragsparteien der Serie; (e) etwaige Gebühren
+     oder Ausführungskosten, die für die Zeichnung oder Rücknahme der ETI Wertpapiers anfallen; (f) wenn der Basiswert einer Serie von ETI
+     Wertpapiers auf eine andere Währung lautet als die Währung, in der die ETI Wertpapiers notiert sind; und (g) die Liquidität der ETI
+     Wertpapiers.
+
+     Potenzielle Anleger sollten sich bewusst sein, dass der Rückzahlungsbetrag und der Sekundärmarktpreis der ETI Wertpapiers während der
+     Laufzeit der ETI Wertpapiers sowohl steigen als auch fallen können. Bestimmte Basiswertpapiere können volatiler sein als andere
+     Basiswertpapiere, und der Sekundärmarktpreis der an diese Basiswertpapiere gebundenen ETI Wertpapiers kann eine ähnliche Volatilität
+     aufweisen. Potenzielle Anleger sollten sich darüber im Klaren sein, dass der Rückzahlungsbetrag und der Marktpreis der ETI Wertpapiers
+     an einem bestimmten Tag möglicherweise nicht deren frühere oder künftige Wertentwicklung widerspiegelt. Es gibt keine Garantie für den
+     zukünftigen Wert und Marktpreis von ETI Wertpapiers.
+
+3.   Market-making durch zugelassene Teilnehmer und/oder Handelsspezialisten — Anleger sollten sich darüber im Klaren sein, dass kein
+     zugelassener Teilnehmer verpflichtet ist, einen Markt für eine Serie von ETI Wertpapiers (einschließlich der Serien, für die er als zugelassener
+     Teilnehmer ernannt wurde) zu schaffen, und dass in Fällen, in denen ein zugelassener Teilnehmer als Handelsspezialist für eine Serie von
+     ETI Wertpapiers tätig ist, dieser zugelassene Teilnehmer die Schaffung eines Marktes jederzeit einstellen kann. Stellt ein zugelassener
+     Teilnehmer den Handel ein und gibt es keine andere Liquidität auf dem Sekundärmarkt, können die Anleger ihre Anlage in die ETI
+     Wertpapiers nicht realisieren und müssen ihre ETI Wertpapiers möglicherweise bis zu deren Fälligkeit halten. Darüber hinaus sollten sich
+     Anleger darüber im Klaren sein, dass für den Fall, dass es keinen Handelsspezialisten in Bezug auf eine Serie von ETI Wertpapiers gibt und
+     keine andere Liquidität auf dem Sekundärmarkt vorhanden ist, die Emittentin berechtigt, aber nicht verpflichtet ist, alle ETI Wertpapiers der
+     betreffenden Serie in Übereinstimmung mit den Bestimmungen der Emittentin zum Rückkaufereignis zurückzunehmen.
+
+4.   Standard-Rücknahme — Nur zugelassene Teilnehmer können mit der Emittentin handeln, indem sie ausstehende ETI Wertpapiers
+     zeichnen oder von der Emittentin deren Rücknahme verlangen, außer in Bezug auf Standardrücknahmen zu jedem Zeitpunkt nach der
+     Mitteilung der Emittentin, dass Rücknahmeanträge von ETI Wertpapierinhabern, die nicht zugelassene Teilnehmer sind, zugelassen werden.
+
+     Der Betrag einer optionalen Rückzahlung unterliegt dem maximalen täglichen Rückzahlungslimit, bei dem es sich um eine Höchstgrenze
+     (falls zutreffend) für die Rückzahlungsanzahl von ETI Wertpapiers einer Serie an einem relevanten Tag handelt, die von Zeit zu Zeit geändert
+     werden kann. Potenzielle Anleger sollten sich darüber im Klaren sein, dass das maximale tägliche Rückzahlungslimit dazu führen kann, dass
+     die ETI Wertpapiers mit einem höheren Aufschlag gehandelt werden oder zu einem Abschlag auf den Rückzahlungsbetrag führen können.
+     Ein Anleger, der unter solchen Umständen ETI Wertpapiers kauft, kann einen erheblichen Verlust erleiden, wenn sich die Marktnachfrage
+     ändert. Ein erheblicher Verlust kann auch dann eintreten, wenn der Kurs der ETI Wertpapiers während der Haltedauer des Anlegers
+     gestiegen ist. Das maximale tägliche Rückzahlungslimit könnte auch zu höheren Handelsspannen für die ETI Wertpapiers auf dem
+     Sekundärmarkt führen, was die Ausführungskosten für einen Anleger, der die ETI Wertpapiers auf dem Sekundärmarkt kauft, erhöhen
+     könnte.
+
+     Sollte ein Anleger nicht in der Lage sein, seine ETI Wertpapiers aufgrund einer Überschreitung des maximalen täglichen Rückzahlungslimits
+     sofort zurückzuzahlen, unterliegt er einem Marktrisiko (d. h., dass der Wert der ETI Wertpapiers vor der Rückzahlung sinkt und somit den
+
+
+                                                                                                                                        Page 26 of 28
+                                                                  Altarius ETI AG
+
+
+     Rückzahlungsbetrag reduziert). Infolgedessen ist es möglich, dass der Rückzahlungsbetrag aufgrund einer nachteiligen Veränderung des
+     Kurses der Basiswertpapiere reduziert wird (was sich folglich auf den Wert der ETI Wertpapiers auswirken würde).
+
+5.   Emittent Kündigung Rücknahmeereignis — Die Emittentin kann jederzeit nach ihrem alleinigen und uneingeschränkten Ermessen
+     beschließen, alle oder nur einige der ETI Wertpapiers einer Serie zurückzukaufen. Bei der Ausübung dieses Ermessens nimmt die Emittentin
+     keine Rücksicht auf die Interessen der ETI Wertpapierinhaber. Es kann nicht garantiert werden, dass der Wert pro ETI Wertpapiers, der in
+     Bezug auf das Rückkaufereignis der Emittentin nach einer solchen Ausübung ermittelt wird, so hoch ist, dass der Rückzahlungsbetrag
+     größer oder gleich dem von einem Anleger pro ETI Wertpapiers investierten Betrag ist. Dies kann zu einer Verringerung der Rendite führen,
+     die die Inhaber von ETI Wertpapiers auf ihre Anlage in die ETI Wertpapiers erhalten. Unter solchen Umständen ist es möglich, dass die ETI
+     Wertpapierinhaber weniger oder wesentlich weniger als ihre ursprüngliche Investition erhalten.
+
+6.   Aussetzung von Rücknahmen — Die Emittentin kann das Recht, Rückzahlungen von ETI Wertpapiers zu verlangen, jederzeit aussetzen,
+     solange die Rückzahlung der Basiswertpapiere von der Basiswert-Emittentin ausgesetzt wurde. Sofern nicht von der Emittentin nach ihrem
+     alleinigen und uneingeschränkten Ermessen früher beendet, bleibt eine solche Aussetzung so lange bestehen, bis die Aussetzung der
+     Basiswertpapiere beendet ist. Die Emittentin teilt den Serienparteien und den ETI Wertpapierinhaber eine solche Aussetzung und die
+     Beendigung einer solchen Aussetzung so bald wie möglich mit, wobei das Unterlassen einer solchen Mitteilung die Ausübung des
+     Ermessens nicht verhindert. Für die Dauer eines Zeitraums, in dem die Rückzahlung der ETI Wertpapiers ausgesetzt ist, findet keine
+     Rückzahlung der ETI Wertpapiers statt. Unter diesen Umständen wären die ETI Wertpapierinhaber nicht in der Lage, die von ihnen
+     gehaltenen ETI Wertpapiers innerhalb der in den Bedingungen festgelegten normalen Fristen zurückzukaufen.
+
+     Falls ein Anleger seine ETI Wertpapiers aufgrund einer Aussetzung der Rücknahme nicht sofort einlösen kann, unterliegt er dem Marktrisiko
+     (d. h., dass der Wert der ETI Wertpapiers vor der Rücknahme sinkt und somit den Rücknahmebetrag verringert). Infolgedessen ist es
+     möglich, dass sich der Rückzahlungsbetrag aufgrund einer nachteiligen Veränderung des Kurses der Basiswertpapiere verringert (was sich
+     folglich auf den Wert der ETI Wertpapiers auswirken würde). Dementsprechend können die Inhaber von ETI Wertpapiers ihre Anlage in die
+     ETI Wertpapiers ganz oder teilweise verlieren.
+
+7.   Verzugsereignisse — Tritt eines der folgenden Ereignisse ein, werden die ETI Wertpapiers, sofern mindestens eine Mehrheit der zu diesem
+     Zeitpunkt ausstehenden ETI Wertpapiers zustimmt, oder sofern dies durch eine Rückzahlungsmitteilung für den Fall eines
+     Verzugsereignisses angeordnet wird, sofort fällig und zu ihrem Rückzahlungsbetrag zum Datum der Rückzahlungsmitteilung für den Fall
+     eines Verzugsereignisses zahlbar: (a) die Emittentin befindet sich seit mehr als 14 Tagen in einem Verzugszeitraum; (b) ein Risikokapital-
+     Verzugsereignis tritt ein; (c) die Emittentin befindet sich in einem Compliance-Verzug; (d) ein zuständiges Gericht erlässt eine Verfügung
+     oder fasst einen Beschluss über einen Auflösungsverzug; (e) ein Serien-Verzugsereignis tritt in Bezug auf eine andere Serie von ETI
+     Wertpapiers ein, die von der Emittentin im Rahmen des Programms begeben wurden. Unter diesen Umständen ist es möglich, dass die ETI
+     Wertpapierinhaber weniger oder wesentlich weniger als ihre ursprüngliche Investition erhalten.
+
+8.   Risiko der Umklassifizierung — Die ETI Wertpapiers werden in Form von Schuldverschreibungen begeben und sind als
+     Nichtdividendenwerte an jeder relevanten Börse notiert. Die ETI Wertpapiers sind keine Anteile an einem Organismus für gemeinsame
+     Anlagen im Sinne der Richtlinie des Europäischen Parlaments und des Rates vom 13. Juli 2009 zur Koordinierung der Rechts- und
+     Verwaltungsvorschriften betreffend bestimmte Organismen für gemeinsame Anlagen in Wertpapieren (Nr. 2009/65/EG) in der jeweils
+     geltenden Fassung.
+
+     Es kann nicht garantiert werden, dass die Gerichte oder Aufsichtsbehörden in einer Rechtsordnung nicht eine andere Auslegung anwenden,
+     einschließlich der Umqualifizierung der ETI Wertpapiers in Anteile an einem gemeinsamen Anlageplan oder einem Fonds. Eine solche
+     unterschiedliche Auslegung kann für einen Anleger nachteilige Folgen haben (insbesondere nachteilige steuerliche Folgen), die sich letztlich
+     auf die Rendite auswirken können, die ein Anleger mit den ETI Wertpapiers erzielt.
+
+     Eine solche Umwidmung kann für einen Anleger nachteilige Folgen haben (insbesondere nachteilige steuerliche Folgen), die dazu führen
+     können, dass die ETI Wertpapierinhaber weniger oder wesentlich weniger als ihre ursprüngliche Anlage erhalten. Darüber hinaus kann die
+     Emittentin infolge einer solchen Umqualifizierung feststellen, dass ein Ausfallereignis eingetreten ist. Die ETI Wertpapiers können daher
+     vorzeitig zum Rückzahlungsbetrag zurückgezahlt werden, was dazu führen kann, dass die ETI Wertpapierinhaber weniger oder wesentlich
+     weniger als ihre ursprüngliche Anlage erhalten.
+
+(d) Basisinformationen über das öffentliche Angebot von Wertpapieren und/oder die Zulassung zum Handel an einem geregelten Markt
+
+Zu welchen Konditionen und nach welchem Zeitplan kann ich in dieses Wertpapier investieren?
+
+ Angebotspreis des Wertpapiers:                                            1.000,00 EUR
+
+ Zeitraum, in dem das Angebot offen ist, einschließlich etwaiger           12 Monate ab dem Datum des Inkrafttretens des Programms.
+ Änderungen:
+
+ Zulassung zum Handel an einem geregelten Markt:                           Nicht anwendbar
+
+ Bedingungen, denen das Angebot unterliegt:                                Die ETI Wertpapiers werden von der Emittentin nur zugelassenen
+                                                                           Teilnehmern zur Zeichnung zur Verfügung gestellt, die bei der
+                                                                           Emittentin einen gültigen Zeichnungsauftrag eingereicht haben. Die
+
+
+                                                                                                                                    Page 27 of 28
+                                                                 Altarius ETI AG
+
+
+                                                                          ETI Wertpapiers werden an die Anleger gemäß den zwischen den
+                                                                          zugelassenen Teilnehmern und den Anlegern getroffenen
+                                                                          Vereinbarungen ausgegeben, einschließlich des Antragsverfahrens,
+                                                                          der    Zuteilung,  des   Preises,   der    Kosten    und     der
+                                                                          Abrechnungsmodalitäten.
+
+ Angabe des Mindest- und/oder Höchstbetrags des Antrags:                  Nicht anwendbar
+
+ Name(n) und Anschrift(en), soweit dem Emittenten bekannt, der            Nicht anwendbar
+ Platzierer in den verschiedenen Ländern, in denen das Angebot
+ stattfindet:
+
+ Name und Anschrift der zugelassenen Bieter:                              Altarius ETI AG und jeder Zugelassene Teilnehmer, der auf der
+                                                                          Website der Emittentin (www.altariuseti.com) ausdrücklich als
+                                                                          Zugelassener Bieter genannt wird.
+
+ Schätzung der Gesamtkosten der Emission und/oder des Angebots,           Maximal 1.04% des NAV(t) pro Jahr oder 75.500,00 EUR pro Jahr, wie
+ einschließlich der geschätzten Kosten, die dem Anleger vom               in der entsprechenden PPM des Basiswerts festgelegt.
+ Emittenten oder Anbieter in Rechnung gestellt werden:
+
+Wer ist der Anbieter und/oder die die Zulassung zum Handel beantragende Person?
+
+Die zugelassenen Bieter sind:
+
+     •    Altarius ETI AG; gegründet in Liechtenstein nach dem Recht des Fürstentums Liechtenstein und organisiert in Übereinstimmung mit
+          Art. 261 ff. des PGR als Aktiengesellschaft am 28. Oktober 2021, mit eingetragener Nummer FL-0002.669.856-9.
+
+     •    Altarius Capital Limited; eine am 9. September 2016 in Gibraltar gegründete Gesellschaft mit beschränkter Haftung, mit eingetragener
+          Anschrift 28 Irish Town, GX11 1AA Gibraltar, und der Registernummer 114825.
+
+     •    Altarius Index PCC Limited; eine geschützte Gesellschaft mit beschränkter Haftung gemäß dem Protected Cell Companies Act 2001
+          von Gibraltar und mit der Unternehmensregisternummer 122055. Der eingetragene Sitz von Altarius Index ist 2 Irish Town, Gibraltar,
+          GX11 1AA.
+
+Weshalb wird dieser Prospekt erstellt?
+
+Der Grund für das Angebot ist das Ziel, Gewinne für das Unternehmen zu erzielen, indem die Rendite auf das investierte Kapital etwas höher ist
+als die Kapitalkosten. Es liegt im Ermessen des Emittenten, wie der Nettoerlös aus jeder Emission von ETI Wertpapiers verwendet wird. Der
+Emittent kann den Nettoerlös aus jeder Emission von ETI Wertpapiers zum Erwerb von Basiswerten verwenden, ist aber nicht dazu verpflichtet.
+Die Emittentin kann auch in andere Vermögenswerte als die Basiswertpapiere investieren.
+
+Dieses Angebot ist nicht Gegenstand eines Übernahmevertrags auf Basis einer festen Zusage. Soweit der Emittentin bekannt ist, ist nicht
+beabsichtigt, dass irgendeine Person, die an dem Angebot der ETI Wertpapiers beteiligt ist, ein anderes als das unten offengelegte Interesse an
+dem Angebot hat. Eine (1) oder mehrere Personen können Aktien der Emittentin, eines Basisemittenten, des Arrangers, der Berechnungsstelle,
+eines zugelassenen Teilnehmers und/oder des Corporate Services Providers halten und/oder in den Vorstand (als geschäftsführendes oder
+nicht geschäftsführendes Mitglied) berufen werden. Eine solche Person kann ein Interesse daran haben, zum Nachteil der Emittentin und der
+ETI Wertpapierinhaber maximale Gewinne für die Unternehmen zu erzielen, an denen sie Anteile hält oder bei denen sie ein Direktor ist. Altarius
+Capital Ltd. handelt im Zusammenhang mit dieser Transaktion in mehreren Funktionen. In Bezug auf die Emittentin wird Altarius Capital Ltd. als
+Arranger, Calculation Agent und als Authorised Participant handeln. Darüber hinaus wird Altarius Capital Ltd. also Investment Manager und als
+Corporate Director für den Basiswert-Emittenten tätig sein. Altarius Index wird im Rahmen dieser Transaktion als zugelassener Teilnehmer und
+auch als Basisemittent auftreten. Altarius Index hat jedoch nur die Pflichten und Verantwortlichkeiten, denen es in den Seriendokumenten, an
+denen es beteiligt ist, ausdrücklich zugestimmt hat, und es wird nicht davon ausgegangen, dass Altarius Index oder eines seiner verbundenen
+Unternehmen, das in einer anderen Funktion handelt, andere Pflichten oder Verantwortlichkeiten hat oder einem anderen Sorgfaltsmaßstab
+unterliegt als dem, der darin ausdrücklich vorgesehen ist. Hera Trust Establishment wird als Anbieter von Unternehmensdienstleistungen
+handeln.
+
+
+
+
+                                                                                                                                  Page 28 of 28
+

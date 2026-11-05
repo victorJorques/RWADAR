@@ -1,0 +1,46 @@
+URL: https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es
+Busqueda: Crypto.com
+ConsultadoUtc: 2026-11-05T08:11:17Z
+
+Listado de entidades advertidas
+
+Pulse sobre la cabecera de la columna 'Fecha' o la columna 'Compañías sobre las que se advierte' para ordenar de forma ascendente/descendente por dicho concepto.
+
+Resultado de búsqueda de Advertencias de la CNMV
+Fecha	Compañías sobre las que se advierte	Documento	Documento (en inglés)	Observaciones
+19/01/2026	
+HTTPS://IDCXSCRYPTO.COM
+			 
+02/10/2023	
+HTTPS://DELTASCRYPTO.COM/
+			 
+18/09/2023	
+WWW.ALPHASCRYPTO.COM
+			 
+17/01/2022	
+HTTPS://FXPROCRYPTO.COM/
+			 
+16/12/2019	
+HTTPS://WWW.TRADESCRYPTO.COM
+			 
+27/05/2019	
+WWW.CCXCRYPTO.COM
+			 
+
+Criterios de consulta: por tipo No autorizadas, de nombre Crypto.com.
+
+Mapa web
+Nota legal
+Política de cookies
+Protección de datos
+Accesibilidad
+X
+@CNMV_MEDIOS
+X
+@CNMV_IP
+X
+@CNMV_IFI
+Instagram
+LinkedIn
+YouTube
+RSS

@@ -1,0 +1,141 @@
+{
+  "slug": "bybit-eu-tokenized-stocks",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-europa",
+  "proveedor": "Bybit EU (bybit.eu) · acciones tokenizadas",
+  "plataformaSlug": null,
+  "entidadComercializadora": "Bybit EU GmbH (Viena), proveedor de servicios de criptoactivos (CASP) autorizado por la FMA de Austria",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": "AT",
+  "identificador": "FN 636180i (Bybit EU GmbH)",
+  "moneda": null,
+  "documentos": [
+    {
+      "titulo": "Portada bybit.eu",
+      "url": "https://www.bybit.eu/en-EU/",
+      "versionOFecha": "consultada hoy",
+      "paginas": null,
+      "sha256": "6520b2aff3d794c512cc87f060eb2e5da07fe16e0d006d9fa2dd64f060d31584",
+      "leido": true,
+      "nota": "Solo aparece la cadena «Invest in crypto, tokenized stocks, commodities, and more.» dentro del bloque de textos de la web; no hay página de producto, emisor, folleto ni KID."
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "FMA (Austria)",
+      "entidad": "Bybit EU GmbH",
+      "numero": "FN 636180i",
+      "url": "https://www.fma.gv.at/en/search-company-database/?cname=Bybit&place=&bic=&category=&per_page=10&submitted=1",
+      "alcance": "CASP - Crypto-Asset Service Provider (AT). Ninguna licencia de empresa de servicios de inversión (WAG 2018).",
+      "consultadoUtc": "2026-11-05T08:12:40Z"
+    },
+    {
+      "regulador": "FMA (Austria)",
+      "entidad": "Bybit Payments GmbH",
+      "numero": null,
+      "url": "https://www.fma.gv.at/en/search-company-database/?cname=Bybit&place=&bic=&category=&per_page=10&submitted=1",
+      "alcance": "Entidad de dinero electrónico con libre prestación en el EEE. No es empresa de servicios de inversión.",
+      "consultadoUtc": "2026-11-05T08:12:40Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "Bybit (cualquier entidad)",
+      "numero": null,
+      "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+      "alcance": "Ninguna entidad Bybit en el listado de ESI del EEE en libre prestación en España.",
+      "consultadoUtc": "2026-11-05T08:06:04Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Bybit",
+      "resultado": "1 coincidencia ajena: HTTPS://BYBITPROFIT.IO/ BYBITPROFIT (29/04/2024)",
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "consultadoUtc": "2026-11-05T08:12:02Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "licencia",
+      "literal": "Bybit EU GmbH · Category: CASP - Crypto-Asset Service Provider (AT)",
+      "dato": "solo CASP (MiCA); sin licencia MiFID",
+      "fuentePrimaria": "https://www.fma.gv.at/en/search-company-database/?cname=Bybit&place=&bic=&category=&per_page=10&submitted=1",
+      "localizador": "Base de datos de empresas de la FMA, búsqueda «Bybit», 2 resultados",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:12:40Z",
+      "alcanceYLimites": "Las acciones tokenizadas son instrumentos financieros: sin licencia MiFID propia o de un socio, no se pueden ofrecer en el EEE",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "(sin entidad Bybit en el listado)",
+      "dato": "sin pasaporte MiFID en España",
+      "fuentePrimaria": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+      "localizador": "Listado CNMV de ESI del EEE en libre prestación",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:06:04Z",
+      "alcanceYLimites": "La prensa (septiembre de 2026) dice que la licencia MiFID de Bybit X GmbH está en trámite; no consta autorizada hoy",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Sin licencia de empresa de servicios de inversión en la FMA ni pasaporte MiFID en la CNMV."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "No hay página de producto de acciones tokenizadas para el EEE."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Sin mínimo, costes ni documentos."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sin advertencias de la CNMV sobre Bybit (solo un dominio ajeno)."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "expediente",
+      "antes": "sin expediente (pista en el encargo de hoy)",
+      "ahora": "comprobado en la FMA y la CNMV: Bybit EU solo tiene licencia MiCA y de dinero electrónico; no puede ofrecer acciones tokenizadas a minoristas en España",
+      "fuente": "https://www.fma.gv.at/en/search-company-database/?cname=Bybit&place=&bic=&category=&per_page=10&submitted=1",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": null,
+    "supervisorVerificado": "FMA (Austria), solo CASP",
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Ninguna razón hoy: no hay producto de acciones tokenizadas autorizado para el EEE.",
+    "porQueNo": "Sin licencia MiFID ni pasaporte en la CNMV; la oferta de xStocks de Bybit es de su plataforma global."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Bybit EU GmbH es solo proveedor de servicios de criptoactivos (y Bybit Payments, entidad de dinero electrónico). No tiene licencia MiFID en la FMA ni figura en la CNMV como ESI del EEE, así que hoy no puede vender acciones tokenizadas a particulares en España. Revisar cuando la FMA publique la autorización MiFID que la prensa da por próxima.",
+  "bloqueos": [
+    "Licencia MiFID de Bybit X GmbH no publicada en la FMA a 05/11/2026.",
+    "Sin página de producto, emisor ni documentos para el EEE."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-05T08:06:04Z",
+    "finUtc": "2026-11-05T08:21:30Z"
+  },
+  "resumenTarjeta": {
+    "minimo": null,
+    "accesoEspana": "No: Bybit EU no tiene licencia para vender acciones tokenizadas",
+    "salida": null
+  },
+  "resumenTarjetaNota": "Interno: los tres datos tal como se ven hoy; no es propuesta de tarjeta (decisión no_admitir). null = no respaldado hoy en fuente primaria."
+}

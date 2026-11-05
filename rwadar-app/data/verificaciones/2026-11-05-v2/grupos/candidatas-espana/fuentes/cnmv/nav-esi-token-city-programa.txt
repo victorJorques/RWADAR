@@ -1,0 +1,448 @@
+URL: https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&lang=es (pestaña «Programa de actividades»)
+CONSULTADO: 2026-11-05T08:14:16Z
+HTTP: 200
+
+Aviso de cookies
+
+Este sitio web utiliza cookies propias y de terceros para fines técnicos, de personalización de las visitas, análisis del sitio y de publicidad comportamental. Estas últimas nos permiten obtener datos sobre tus hábitos de navegación (p.ej. páginas visitadas) y obtener perfiles para mejorar nuestros contenidos.
+
+Para más información, consulta nuestra Política de cookies
+
+Este sitio web contiene enlaces a sitios web de terceros con políticas de privacidad ajenas a la de la CNMV. Al visualizarlos y acceder a ellos, usted acepta las cookies instaladas por terceros y sus políticas de privacidad y cookies.
+
+Configuración de cookies
+Ir al contenido principal
+Buscar:
+Inversores
+Contacto
+Español
+Sobre la CNMV
+Sala de prensa
+Consultas a registros oficiales
+Información privilegiada
+Folletos
+Inversores y educación financiera
+Normativa
+Publicaciones y estadísticas
+Sectores regulados
+Sede electrónica
+Inicio > Consultas a registros oficiales > Empresas de Servicios de Inversión Españolas > Consulta de Sociedades y Agencias de Valores, Sociedades Gestoras de Cartera y Empresas de Asesoramiento Financiero > ESIS nacionales
+Información de empresas de servicios de inversión españolas
+
+TOKEN CITY EUROPEAN EXCHANGE A.V., S.A.
+
+Sociedades y Agencias de Valores
+Nº Registro Oficial	Fecha registro oficial
+334	06/02/2026
+Datos generales
+Socios
+Administradores
+Agentes
+Sucursales España
+Sociedades gestionadas
+Sucursales EEE
+Sucursales fuera EEE
+Libre prestación EEE
+Libre prestación fuera EEE
+Programa de actividades
+Atención al cliente
+Servicios y actividades de inversión
+Servicios y actividades de inversión	Instrumentos	Clientes
+a	b	c	d	e	f	g	h	i	j	k	Minoristas	Profesionales	Contrapartes elegibles
+Recepción y transmisión de órdenes de clientes														
+Colocación de instrumentos financieros														
+Gestión de sistemas multilaterales de negociación														
+Servicios auxiliares
+Servicios auxiliares	Instrumentos	Clientes
+a	b	c	d	e	f	g	h	i	j	k	Minoristas	Profesionales	Contrapartes elegibles
+Custodia y administración de instrumentos financieros														
+Asesoramiento a empresas														
+Particularidades o limitaciones
+Servicios y actividades	Explicaciones
+
+Recepción y transmisión de órdenes de clientes en relación con uno o más instrumentos financieros	El servicio de inversión se prestará sobre instrumentos financieros basados en tecnología de registro distribuido no admitidos a negociación en el sistema de negociación y liquidación gestionado por la AV
+Colocación de instrumentos financieros sin base en un compromiso firme	El servicio de inversión se prestará sobre instrumentos financieros basados en tecnología de registro distribuido, que podrán ser posteriormente objeto de admisión para su negociación en el sistema de negociación y liquidación gestionado por la AV
+Gestión de sistemas multilaterales de negociación	El servicio de inversión se prestará sobre instrumentos financieros basados en tecnología de registro distribuido
+Custodia y administración por cuenta de clientes de los instrumentos financieros	Tendrá como objetivo únicamente las funciones propias de entidad responsable de la administración del registro e inscripción (ERIR) de los valores negociables basados en tecnología de registros distribuidos
+Asesoramiento a empresas sobre estructura de capital, estrategia industrial y cuestiones afines, así como el asesoramiento y demás servicios en relación con fusiones y adquisiciones de empresas	El servicio se prestará sobre instrumentos financieros basados en tecnología de registro distribuido
+Cuentas instrumentales
+Descripción	Si	No
+La sociedad mantiene fondos en cuentas instrumentales y transitorias a nombre de sus clientes		
+
+LISTA DE INSTRUMENTOS FINANCIEROS S/ ARTICULO 3 DEL RD 814/2023:
+
+Valores negociables, entendiendo como tal cualquier derecho de contenido patrimonial, cualquiera que sea su denominación, que por su configuración jurídica propia y régimen de transmisión, sea susceptible de tráfico generalizado e impersonal en un mercado financiero, incluyendo las siguientes categorías de valores negociables con excepción de los instrumentos de pago:
+
+1.º Acciones de sociedades y otros valores negociables equiparables a las acciones de sociedades, y recibos de depositario representativos de tales valores.
+
+2.º Bonos y obligaciones u otras formas de deuda titulizada, incluidos los recibos de depositario representativos de tales valores.
+
+3.º Los demás valores negociables que dan derecho a adquirir o a vender tales valores negociables o que dan lugar a una liquidación en efectivo, determinada por referencia a valores negociables, divisas, tipos de interés o rendimientos, materias primas u otros índices o medidas.
+
+Instrumentos del mercado monetario, entendiendo como tales las categorías de instrumentos que se negocian habitualmente en el mercado monetario, como letras del Tesoro, y efectos comerciales, excluidos los instrumentos de pago.
+
+Participaciones y acciones en instituciones de inversión colectiva, en las entidades de capital-riesgo y entidades de inversión colectiva de tipo cerrado, así como participaciones en fondos de capital riesgo europeos, fondos de emprendimiento social europeos y fondos de inversión a largo plazo europeos.
+
+Contratos de opciones, futuros, permutas (swaps), acuerdos de tipos de interés a plazo y otros contratos de derivados relacionados con valores negociables, divisas, tipos de interés o rendimientos, derechos de emisión u otros instrumentos derivados, índices financieros o medidas financieras que puedan liquidarse mediante entrega física o en efectivo.
+
+Contratos de opciones, futuros, permutas (swaps), contratos a plazo y otros contratos de derivados relacionados con materias primas que deban liquidarse en efectivo o que puedan liquidarse en efectivo a elección de una de las partes por motivos distintos al incumplimiento o a otro suceso que lleve a la rescisión del contrato.
+
+Contratos de opciones, futuros, permutas (swaps) y otros contratos de derivados relacionados con materias primas que puedan ser liquidados mediante entrega física, siempre que se negocien en un mercado regulado o un sistema multilateral de negociación (SMN) o un sistema organizado de contratación (SOC), excepto por lo que respecta a los productos energéticos al por mayor, según la definición del artículo 2, punto 4, del Reglamento (UE) n.° 1227/2011, que se negocien en un SOC y deban liquidarse mediante entrega física.
+
+Contratos de opciones, futuros, permutas (swaps) acuerdos a plazo y otros contratos de derivados relacionados con materias primas que puedan ser liquidados mediante entrega física no mencionados en el apartado anterior y no destinados a fines comerciales, que presenten las características de otros instrumentos financieros derivados.
+
+Instrumentos derivados para la transferencia del riesgo de crédito.
+
+Contratos financieros por diferencias.
+
+Contratos de opciones, futuros, permutas (swaps), acuerdos a plazo y otros contratos de derivados relacionados con variables climáticas, gastos de transporte o tipos de inflación u otras estadísticas económicas oficiales, que deban liquidarse en efectivo o que puedan liquidarse en efectivo a elección de una de las partes por motivos distintos al incumplimiento o a otro suceso que lleve a la rescisión del contrato, así como cualquier otro contrato derivado relacionado con activos, derechos, obligaciones, índices y medidas no mencionados en este artículo, que presentan las características de otros instrumentos financieros derivados, teniendo en cuenta, entre otras cosas, si se negocian en un mercado regulado, SOC o SMN.
+
+Derechos de emisión consistentes en unidades reconocidas a los efectos de la conformidad con los requisitos de la Directiva 2003/87/CE del Parlamento Europeo y del Consejo de 13 de octubre de 2003 por la que se establece un régimen para el comercio de derechos de emisión de gases de efecto invernadero en la Comunidad y por la que se modifica la Directiva 96/61/CE del Consejo.
+
+Mapa web
+Nota legal
+Política de cookies
+Protección de datos
+Accesibilidad
+X
+@CNMV_MEDIOS
+X
+@CNMV_IP
+X
+@CNMV_IFI
+Instagram
+LinkedIn
+YouTube
+RSS
+
+--- ENLACES ---
+Política de cookies | https://www.cnmv.es/Portal/Utilidades/Politica-Cookies.aspx
+Política de cookies | https://www.cnmv.es/Portal/Utilidades/Politica-Cookies.aspx
+Ir al contenido principal | https://www.cnmv.es/portal/consultas/esi/esis?nif=A25988981&vista=17#maincontent
+ | https://www.cnmv.es/portal/consultas/esi/esis?nif=A25988981&vista=17#page-top
+ | https://www.cnmv.es/portal/home.aspx
+Inversores | https://www.cnmv.es/portal/Inversor/Indice.aspx
+Contacto | https://www.cnmv.es/portal/Utilidades/Contacto.aspx
+Español | https://www.cnmv.es/portal/consultas/esi/esis?nif=A25988981&vista=17&lang=es
+English | https://www.cnmv.es/portal/consultas/esi/esis?nif=A25988981&vista=17&lang=en
+Català | https://www.cnmv.es/portal/consultas/esi/esis?nif=A25988981&vista=17&lang=ca
+Euskara | https://www.cnmv.es/portal/consultas/esi/esis?nif=A25988981&vista=17&lang=eu
+Galego | https://www.cnmv.es/portal/consultas/esi/esis?nif=A25988981&vista=17&lang=gl
+Funciones | https://www.cnmv.es/portal/quees/Funciones-CNMV.aspx
+Estructura organizativa | https://www.cnmv.es/portal/gpage.aspx?id=Organigrama_AA
+Comité Consultivo | https://www.cnmv.es/portal/quees/Comite-Consultivo.aspx
+Informes preceptivos | https://www.cnmv.es/portal/quees/Comite-Consultivo-Informes-Preceptivos.aspx
+Informes no preceptivos | https://www.cnmv.es/portal/quees/Comite-Consultivo-Informes-No-Preceptivos.aspx
+Actividades internacionales | https://www.cnmv.es/portal/Aldia/ActInternacional/ActInternacionales.aspx
+Acuerdos Internacionales (MoUs) | https://www.cnmv.es/portal/Legislacion/MOUS.aspx
+IIMV | http://www.iimv.org/
+Boletín internacional | http://www.boletininternacionalcnmv.es/
+Comunicaciones públicas de organismos internacionales | https://www.cnmv.es/portal/Aldia/ActInternacional/NotasPrensa.aspx
+Informe de la OCDE sobre la revitalización de los mercados de capitales en Españ | https://www.cnmv.es/portal/Aldia/ActInternacional/Revitalizacion-Capitales.aspx
+Actividad Internacional de la CNMV | https://www.cnmv.es/portal/Aldia/ActInternacional/ActInterCNMV.aspx
+Glosario | https://www.cnmv.es/portal/Aldia/ActInternacional/Glosario.aspx
+Organizaciones Internacionales | https://www.cnmv.es/portal/Aldia/ActInternacional/OrgInter.aspx
+Mapa de organizaciones | https://www.cnmv.es/portal/Aldia/ActInternacional/MapaOrg.aspx
+Consultas de organismos internacionales | https://www.cnmv.es/portal/Aldia/ActInternacional/ComentariosOI.aspx
+Reglamento de régimen interior | https://www.cnmv.es/portal/quees/RegimenInterior.aspx
+Código de conducta | https://www.cnmv.es/DocPortal/quees/Conducta.pdf
+CNMV 2030 | https://www.cnmv.es/DocPortal/OtrosDocumentos/CNMV2030.pdf
+Plan de Actividades | https://www.cnmv.es/portal/quees/plan-actividades.aspx
+Plan de simplificación | https://www.cnmv.es/portal/quees/plan-simplificacion.aspx
+Política de comunicación pública | https://www.cnmv.es/DocPortal/AlDia/PoliticaComunicacionCNMV.pdf
+Plan de sostenibilidad ambiental | https://www.cnmv.es/DocPortal/OtrosDocumentos/Plan-Sostenibilidad-CNMV.pdf
+Procedimientos internos | https://www.cnmv.es/portal/quees/procedimientos-internos.aspx
+Sedes de la CNMV | https://www.cnmv.es/portal/quees/Sedes-CNMV.aspx
+Informes sobre la CNMV | https://www.cnmv.es/portal/quees/Infomes-Sobre-CNMV.aspx
+Ofertas de empleo | https://www.cnmv.es/portal/quees/Ofertas/empleo.aspx
+Información económico-financiera | https://www.cnmv.es/portal/quees/informacion-economica-financiera.aspx
+Licitaciones | https://www.cnmv.es/portal/quees/Licitaciones.aspx
+Plataforma de Contratación del Estado | https://contrataciondelestado.es/wps/portal/plataforma
+Perfil de contratante CNMV | https://contrataciondelestado.es/wps/poc?uri=deeplink:perfilContratante&idBp=piKbOQU6KFY%3D
+Tasas CNMV | https://www.cnmv.es/portal/quees/Tasas/PagoTasas.aspx
+Transparencia | https://www.cnmv.es/portal/quees/Ley-Transparencia.aspx
+Información institucional, organizativa y de planificación | https://www.cnmv.es/portal/quees/Informacion-Institucional.aspx
+Información de relevancia jurídica | https://www.cnmv.es/portal/quees/Informacion-Juridica.aspx
+Derecho de acceso | https://www.cnmv.es/portal/quees/Transparencia-Derecho-acceso.aspx
+Información económica, presupuestaria y estadística | https://www.cnmv.es/portal/quees/Informacion-Economica.aspx
+Portal de la Transparencia de la Administración del Estado | https://transparencia.gob.es/
+Comunicaciones públicas | https://www.cnmv.es/portal/AlDia/Comunicaciones-Publicas.aspx
+Advertencias de entidades no registradas | https://www.cnmv.es/portal/aldia/notasprensa.aspx?tipoNP=5
+Actualidad de otras organizaciones | https://www.cnmv.es/portal/AlDia/Otras-Organizaciones.aspx
+Discursos y artículos | https://www.cnmv.es/portal/AlDia/Discursos-Articulos.aspx
+Eventos públicos | https://www.cnmv.es/portal/AlDia/Eventos.aspx
+Galería multimedia | https://www.cnmv.es/portal/AlDia/Galeria-Multimedia.aspx
+Imágenes del Consejo | https://www.cnmv.es/portal/aldia/galeria.aspx?tImagen=1
+Imágenes corporativas | https://www.cnmv.es/portal/aldia/galeria.aspx?tImagen=2
+Imágenes de actos | https://www.cnmv.es/portal/aldia/galeria.aspx?tImagen=3
+Videos | https://www.cnmv.es/portal/Aldia/VideosCorporativos.aspx
+Política de comunicación pública | https://www.cnmv.es/DocPortal/AlDia/PoliticaComunicacionCNMV.pdf
+Premio de periodismo Antonio Moreno Espejo | https://www.cnmv.es/portal/AlDia/Premio-Periodismo.aspx
+Newsletter CNMV | https://www.cnmv.es/portal/AlDia/Newsletter-CNMV.aspx
+Listado de todas las Newsletter publicadas | http://www.newslettercnmv.es/boletin/
+Formulario de suscripción | http://www.newslettercnmv.es/formulario/
+Contacto prensa | https://www.cnmv.es/portal/AlDia/Contacto.aspx
+Suscripción a notas de prensa | https://www.cnmv.es/portal/aldia/FormRecibirNp.aspx
+Búsqueda por entidades | https://www.cnmv.es/portal/consultas/BusquedaPorEntidad.aspx
+Emisiones, admisiones y OPAS | https://www.cnmv.es/portal/consultas/IndiceEAO.aspx
+Folletos de emisión y OPVs | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=19
+Folletos de admisión | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=20
+Condiciones finales presentadas | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=35
+OPAS | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=22
+Pasaportes recibidos por la CNMV | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=11
+Consulta de códigos ISIN | https://www.cnmv.es/portal/ANCV/ConsultaISIN.aspx
+Escrituras de anotaciones en cuenta | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=27
+Empresas de Servicios de Inversión Españolas | https://www.cnmv.es/portal/consultas/ESI-Nacionales.aspx
+Consulta de Sociedades y Agencias de Valores, Sociedades Gestoras de Cartera y E | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=13
+Consulta de Agentes | https://www.cnmv.es/portal/consultas/esi/BusquedaAgentes.aspx
+Listado de Sociedades y Agencias de Valores | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=0
+Listado de Sociedades Gestoras de Cartera | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=1
+Listado de Empresas de Asesoramiento Financiero | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=2
+Empresas de Asesoramiento Financiero Nacional | https://www.cnmv.es/portal/consultas/Asesoramiento-Financiero-Nacional.aspx
+Consulta de Empresas de Asesoramiento Financiero Nacional | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=36
+Consulta de Agentes | https://www.cnmv.es/portal/consultas/esi/BusquedaAgentesAFN.aspx
+Listado de Empresas de Asesoramiento Financiero Nacional | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=13
+Empresas de Servicios de Inversión Extranjeras | https://www.cnmv.es/portal/consultas/ESI-Extranjeras.aspx
+Consulta de empresas de servicios de inversión extranjeras | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=14
+Listado de ESI del Espacio Económico Europeo con Sucursal | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=3
+Listado de ESI del Espacio Económico Europeo en Libre Prestación | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=4
+Listado de ESI fuera del Espacio Económico Europeo con sucursal | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=5
+Listado de ESI fuera del Espacio Económico Europeo en Libre Prestación | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=6
+Entidades de crédito | https://www.cnmv.es/portal/consultas/Entidades-Credito.aspx
+Consulta de entidades de crédito | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=15
+Listado de entidades de crédito españolas | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=7
+Listado de sucursales de entidades de crédito comunitarias | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=8
+Listado de sucursales de entidades de crédito extracomunitarias | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=9
+Listado de entidades de crédito comunitarias operantes en España en libre presta | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=10
+Listado de entidades financieras filiales de entidades de crédito comunitarias o | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=11
+Listado de entidades de crédito extracomunitarias operantes en España en libre p | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=12
+IIC nacionales, gestoras y depositarios | https://www.cnmv.es/portal/consultas/IndiceIIC.aspx
+Listado de entidades | https://www.cnmv.es/portal/consultas/EntRegIIC.aspx
+Hechos relevantes de IIC y otras entidades autorizadas | https://www.cnmv.es/portal/hr/busquedahr.aspx?division=2
+Vehículos de inversión extranjeros | https://www.cnmv.es/portal/consultas/Vehiculos-Inversion-Extranjeros.aspx
+Consulta por entidades | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=34
+Listado completo de UCITS | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=26
+Listado completo de FIA | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=27
+Entidades emisoras: Información regulada | https://www.cnmv.es/portal/consultas/Emisores-Informacion-Regulada.aspx
+Datos generales | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=1
+Información privilegiada | https://www.cnmv.es/portal/Informacion-Privilegiada/Consulta-IP.aspx
+Otra información relevante | https://www.cnmv.es/portal/Otra-Informacion-Relevante/Consulta-OIR.aspx
+Hechos relevantes de emisores de valores hasta 08/02/2020 | https://www.cnmv.es/portal/hr/busquedahr.aspx?division=3
+Notificación de directivos y personas vinculadas | https://www.cnmv.es/portal/consultas/Notificacion-Directivos.aspx
+Posiciones cortas | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=29
+Informes financieros anuales | https://www.cnmv.es/portal/consultas/em_inffinanual.aspx?id=EE
+Información financiera intermedia | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=6
+Participaciones significativas y autocartera | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=7
+Informe anual sobre gobierno corporativo | https://www.cnmv.es/portal/consultas/EE/BusquedaIGC.aspx
+Otra información regulada y corporativa | https://www.cnmv.es/portal/Otra-Informacion-Regulada-Corporativa/Consulta-OIRC.aspx
+Entidades emisoras: Otra información | https://www.cnmv.es/portal/consultas/Emisores-Otra-Informacion.aspx
+Distribución por bolsas | https://www.cnmv.es/portal/consultas/EE/DistribucionPorBolsas.aspx
+Distribución por sectores | https://www.cnmv.es/portal/consultas/EE/DistribucionPorSectores.aspx
+Sociedades Gestoras de Fondos de Titulización | https://www.cnmv.es/portal/consultas/FTA/ListadoGestorasFTA.aspx
+Registro Oficial de Fondos de Titulización | https://www.cnmv.es/portal/consultas/FTA/Listado_ROFT.aspx
+Información financiera intermedia. Fondos de titulización | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=2
+Información anual. Fondos de titulización | https://www.cnmv.es/portal/consultas/em_inffinanual.aspx?id=FTA
+Fondos de Activos Bancarios | https://www.cnmv.es/portal/consultas/ListadoFAB.aspx
+Información financiera intermedia. Fondos de activos bancarios | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=33
+Entidades de Capital-Riesgo | https://www.cnmv.es/portal/consultas/IndiceECR.aspx
+Consultas de entidades de capital riesgo | https://www.cnmv.es/portal/consultas/busqueda.aspx?id=16
+Listado completo de sociedades de capital-riesgo | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=0
+Listado completo de sociedades de capital-riesgo pyme | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=19
+Listado completo de sociedades de inversión colectiva de tipo cerrado | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=23
+Listado completo de fondos de capital-riesgo | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=1
+Listado completo de fondos de capital-riesgo pyme | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=20
+Listado completo de fondos de capital-riesgo europeos | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=21
+Listado completo de fondos de emprendimiento social europeos | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=22
+Listado completo de fondos de inversión colectiva de tipo cerrado | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=24
+Listado completo de fondos de inversión a largo plazo europeo | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=28
+Listado completo de sociedades gestoras de entidades de inversión de tipo cerrad | https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=4&tipoent=0
+Infraestructuras de mercados | https://www.cnmv.es/portal/gpage.aspx?id=Consultas_IM
+Relación de infraestructuras de mercados | https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx
+Listados de cuentas anuales e informes de auditoría | https://www.cnmv.es/portal/consultas/Rectoras/ListadoAuditoriasCuentasAnuales.aspx
+Listado de reglamentos de infraestructuras de mercados | https://www.cnmv.es/portal/consultas/Rectoras/ReglamentosSMN.aspx
+Entidades e infraestructuras designadas ERIR | https://www.cnmv.es/portal/consultas/ERIR.aspx
+Servicios de financiación participativa | https://www.cnmv.es/portal/consultas/Servicios-Financiacion-Participativa/Indice.aspx
+Plataformas de financiación participativa no armonizadas | https://www.cnmv.es/portal/consultas/Servicios-Financiacion-Participativa/Listado-PFP-No-Armonizadas.aspx
+Proveedores de servicios de financiación participativa | https://www.cnmv.es/portal/consultas/Servicios-Financiacion-Participativa/Listado-Proveedores.aspx
+Proveedores de servicios de financiación participativa europeos que prestan serv | https://www.cnmv.es/portal/consultas/Servicios-Financiacion-Participativa/Listado-Proveedores-Europeos.aspx
+Operaciones de Registro Semanales | https://www.cnmv.es/portal/Publicaciones/CNMVInforma.aspx
+Agencias de calificación crediticia | https://www.cnmv.es/portal/consultas/ListadoAgenciasCRA.aspx
+Registro de sanciones | https://www.cnmv.es/portal/consultas/RegistroSanciones/IniRegSanciones.aspx
+Entidades que realizan la función de valoración | https://www.cnmv.es/portal/consultas/mostrarlistados.aspx?id=25
+Proveedores del servicio de suministro datos | https://www.cnmv.es/portal/consultas/Proveedores-Datos.aspx
+Proveedores de servicios de criptoactivos | https://www.cnmv.es/portal/consultas/Proveedores-Servicios-Criptoactivos.aspx
+Información privilegiada | https://www.cnmv.es/portal/Informacion-Privilegiada/Consulta-IP.aspx
+Folletos | https://www.cnmv.es/portal/Folletos-Registros-Oficiales.aspx
+Novedades | https://www.cnmv.es/portal/Inversor/Informacion-Interes.aspx
+Advertencias (entidades no autorizadas y otras entidades) | https://www.cnmv.es/portal/Advertencias.aspx
+Decálogo para evitar chiringuitos financieros | https://www.cnmv.es/portal/inversor/Decalogo-chiringuitos.aspx
+MiCA: Nueva regulación de criptoactivos | https://www.cnmv.es/portal/MiCA/Regulacion-Criptoactivos.aspx
+Otras alertas para los inversores | https://www.cnmv.es/portal/gpage.aspx?id=Alertas-Inversor
+Reclamaciones | https://www.cnmv.es/portal/inversor/Reclamaciones.aspx
+Consultas de inversores | https://www.cnmv.es/portal/inversor/Consultas.aspx
+Recursos educativos | https://www.cnmv.es/portal/inversor/Multimedia.aspx
+Guías | https://www.cnmv.es/portal/Publicaciones/Guias.aspx
+Guías rápidas | https://www.cnmv.es/portal/Publicaciones/Fichas.aspx
+Infografías | https://www.cnmv.es/portal/inversor/Infografias.aspx
+Cursos | https://www.cnmv.es/portal/inversor/Cursos.aspx
+Podcast | https://www.cnmv.es/portal/inversor/Podcast.aspx
+Vídeos de educación financiera | https://www.cnmv.es/portal/inversor/Videos-Educacion-Financiera.aspx
+Eventos e intervenciones | https://www.cnmv.es/portal/inversor/Eventos-intervenciones.aspx
+Orientación para el inversor | https://www.cnmv.es/portal/inversor/Orientacion.aspx
+¿Cómo tomar decisiones de inversión? | https://www.cnmv.es/portal/inversor/Decisiones-Inversion.aspx
+¿Cuáles son los productos de inversión? | https://www.cnmv.es/portal/inversor/Productos-Inversion.aspx
+¿Qué son los servicios de inversión? | https://www.cnmv.es/portal/inversor/Servicios-Inversion.aspx
+¿Cuáles son las entidades autorizadas? | https://www.cnmv.es/portal/inversor/Entidades-Autorizadas.aspx
+Glosario | https://www.cnmv.es/portal/inversor/Glosario-Indice.aspx
+Glosario Financiero | https://www.cnmv.es/portal/inversor/Glosario.aspx
+Glosario Fondos | https://www.cnmv.es/portal/inversor/glosario.aspx?id=4
+Plan de Educación Financiera | https://www.cnmv.es/portal/inversor/Plan-Educacion.aspx
+Finanzas para todos | https://www.finanzasparatodos.es/
+Normativa Comunitaria | https://www.cnmv.es/portal/Menu/Normativa-Comunitaria.aspx
+Reglamentos, Directivas y Decisiones | https://www.cnmv.es/portal/gpage.aspx?id=Reglamentos_DirDec
+Actos delegados de la Comisión y actos de ejecución | https://www.cnmv.es/portal/gpage.aspx?id=RTS_ITS
+Guías-recomendaciones de ESMA/EBA | https://www.cnmv.es/portal/gpage.aspx?id=LegESMA
+Preguntas y respuestas de ESMA y otras organizaciones | https://www.cnmv.es/portal/Legislacion/ESMA_FAQ.aspx
+Normativa española | https://www.cnmv.es/portal/legislacion/legislacion/Legislacion.aspx
+Circulares | https://www.cnmv.es/portal/Legislacion/Circulares.aspx
+Guías técnicas | https://www.cnmv.es/portal/Legislacion/Guias-Tecnicas.aspx
+Preguntas y respuestas sobre normas y recomendaciones | https://www.cnmv.es/portal/Legislacion/FAQ-Normas-recomendaciones.aspx
+Gobierno Corporativo | https://www.cnmv.es/portal/Legislacion/COBG/COBG.aspx
+Código de buenas prácticas de inversores | https://www.cnmv.es/portal/Legislacion/Buenas-Practicas-Inversores.aspx
+Documentos a consulta | https://www.cnmv.es/portal/Publicaciones/DocumentosConsulta.aspx
+De la Comisión Nacional del Mercado de Valores | https://www.cnmv.es/portal/publicaciones/documentos-fase-consulta.aspx?tDoc=1
+De la Comisión Europea | https://www.cnmv.es/portal/publicaciones/listadodocumentos.aspx?tDoc=4
+De IOSCO | https://www.cnmv.es/portal/publicaciones/listadodocumentos.aspx?tDoc=2
+De ESMA | https://www.cnmv.es/portal/publicaciones/listadodocumentos.aspx?tDoc=3
+De otros organismos | https://www.cnmv.es/portal/publicaciones/listadodocumentos.aspx?tDoc=54
+Modelos normalizados | https://www.cnmv.es/portal/Legislacion/ModelosN/ModelosN.aspx
+Sociedades emisoras | https://www.cnmv.es/portal/legislacion/modelosn/modelosn.aspx?id=EMI
+Instituciones de inversión colectiva | https://www.cnmv.es/portal/legislacion/modelosn/modelosn.aspx?id=IIC
+Sociedades y Agencias de Valores (SAV), Sociedades Gestoras de Carteras (SGC) y  | https://www.cnmv.es/portal/legislacion/modelosn/modelosn.aspx?id=ESI
+Sociedades gestoras de instituciones de inversión colectiva | https://www.cnmv.es/portal/legislacion/modelosn/modelosn.aspx?id=SGIIC
+Entidades de capital riesgo | https://www.cnmv.es/portal/legislacion/modelosn/modelosn.aspx?id=ECR
+Empresas de asesoramiento financiero nacional (EAFN) | https://www.cnmv.es/portal/legislacion/modelosn/modelosn.aspx?id=EAF
+Infraestructura de Mercados | https://www.cnmv.es/portal/legislacion/modelosn/modelosn.aspx?id=IM
+Modelos de notificación de posiciones cortas netas | https://www.cnmv.es/portal/legislacion/modelosn/modelosn.aspx?id=PosicionesCortas
+Servicios de financiación participativa | https://www.cnmv.es/portal/legislacion/modelosn/modelosn.aspx?id=PFP
+Proveedores de servicios de criptoactivos | https://www.cnmv.es/portal/legislacion/modelosn/modelosn.aspx?id=PSC
+Libro Electrónico Jurisprudencia | https://www.cnmv.es/portal/legislacion/IndLibroJuris.aspx
+Sentencias clasificadas por Normativa | https://www.cnmv.es/portal/legislacion/librojurisprudencia/arbolsentencias.aspx?id=1
+Sentencias clasificadas por Jurisprudencia | https://www.cnmv.es/portal/legislacion/librojurisprudencia/arbolsentencias.aspx?id=2
+Índice Cronológico | https://www.cnmv.es/portal/legislacion/LibroJurisprudencia/SentenciasCronologico.aspx
+Buscador de sentencias | https://www.cnmv.es/portal/legislacion/LibroJurisprudencia/Buscador.aspx
+Acuerdos Internacionales (MoUs) | https://www.cnmv.es/portal/Legislacion/MOUS.aspx
+Memorándums | https://www.cnmv.es/portal/Legislacion/MOUS.aspx#Memorandums
+Por países | https://www.cnmv.es/portal/Legislacion/MOUS.aspx#Paises
+Publicaciones periódicas | https://www.cnmv.es/portal/Publicaciones/CNMV-Periodicas.aspx
+Calendario previsto de publicaciones | https://www.cnmv.es/portal/Publicaciones/Calendario.aspx
+Informe anual de la CNMV sobre los mercados de valores y su actuación | https://www.cnmv.es/portal/Publicaciones/Informes.aspx
+Plan de actividades de la CNMV | https://www.cnmv.es/portal/Publicaciones/PlanActCNMV.aspx
+Boletín de la CNMV | https://www.cnmv.es/portal/Publicaciones/BoletinCNMV.aspx
+Listado individualizado de artículos publicados en el Boletín de la CNMV | https://www.cnmv.es/DocPortal/Publicaciones/Boletin/Listado_ArticulosBoletin.pdf
+Los mercados de valores y sus agentes: situación y perspectivas | https://www.cnmv.es/portal/Publicaciones/Mercados.aspx
+Nota de estabilidad financiera | https://www.cnmv.es/portal/publicaciones/publicacionesgn.aspx?id=51
+Indicadores de estrés de los mercados | http://www.cnmv.es/portal/publicaciones/seriesweb/inicio.aspx?codrama=1295
+Monitor de la intermediación financiera no bancaria | https://www.cnmv.es/portal/publicaciones/publicacionesgn.aspx?id=56
+Informe de la CNMV sobre gobierno corporativo de las cotizadas | https://www.cnmv.es/portal/publicaciones/publicacionesgn.aspx?id=21
+Informe de la CNMV sobre remuneraciones de las cotizadas | https://www.cnmv.es/portal/publicaciones/publicacionesgn.aspx?id=46
+Presencia de mujeres en los consejos de administración y en la alta dirección de | https://www.cnmv.es/portal/Publicaciones/Consejeras_Directivas.aspx
+Informe sobre la supervisión de las cuentas anuales | https://www.cnmv.es/portal/publicaciones/publicacionesgn.aspx?id=20
+Informe sobre la supervisión del estado de información no financiera | https://www.cnmv.es/portal/publicaciones/publicacionesgn.aspx?id=61
+Memoria anual sobre reclamaciones y consultas | https://www.cnmv.es/portal/publicaciones/publicacionesgn.aspx?id=23
+Boletín internacional | https://boletininternacionalcnmv.es/
+Informe semestral de la Agencia Nacional de Codificación de Valores | https://www.cnmv.es/portal/Publicaciones/ANCV.aspx
+Publicaciones seriadas | https://www.cnmv.es/portal/Publicaciones/CNMV-Seriadas.aspx
+Documentos de Trabajo | https://www.cnmv.es/portal/Publicaciones/monografias.aspx
+Guías rápidas | https://www.cnmv.es/portal/Publicaciones/Fichas.aspx
+Guías | https://www.cnmv.es/portal/Publicaciones/Guias.aspx
+Otras publicaciones de la CNMV | https://www.cnmv.es/portal/Publicaciones/CNMV-Otras.aspx
+Códigos de Gobierno Corporativo | https://www.cnmv.es/portal/Publicaciones/CodigosGovCorp.aspx
+Plan de Educación Financiera de la CNMV y el Banco de España | https://www.cnmv.es/portal/Publicaciones/PlanEducCNMV.aspx
+Informe anual de mercados | https://www.cnmv.es/portal/publicaciones/publicacionesgn.aspx?id=38
+Informe anual de Gobierno Corporativo de las compañías del Ibex-35 | https://www.cnmv.es/portal/publicaciones/publicacionesgn.aspx?id=22
+Informe anual de Remuneraciones de los Consejeros de las compañías del IBEX 35 | https://www.cnmv.es/portal/publicaciones/publicacionesgn.aspx?id=42
+Perspectivas de los mercados de valores: supervisión y regulación. Libro conmemo | https://www.cnmv.es/portal/Publicaciones/PerspectivasMercados.aspx
+Ciberseguridad en las infraestructuras de los mercados | https://www.cnmv.es/DocPortal/Publicaciones/Ciberseguridad/Ciberseguridad_Infraestructuras_Mercados.pdf
+Documentos de grupos de expertos | https://www.cnmv.es/portal/publicaciones/publicacionesgn.aspx?id=29
+Otros documentos de interés | https://www.cnmv.es/portal/Publicaciones/OtrosDoc.aspx
+Publicaciones de organismos internacionales | https://www.cnmv.es/portal/Publicaciones/InformeOrganismos.aspx
+Estadísticas | https://www.cnmv.es/portal/Publicaciones/estadisticas.aspx
+Estadísticas de emisores y cotizadas | https://www.cnmv.es/portal/Publicaciones/Estadisticas-Emisores.aspx
+Estadísticas de instituciones de inversión colectiva | https://www.cnmv.es/portal/Publicaciones/Estadisticas-IIC.aspx
+Estadísticas de empresas de servicios de inversión | https://www.cnmv.es/portal/publicaciones/consultasestadisticas.aspx?id=ESI
+Series Estadísticas | https://www.cnmv.es/portal/Publicaciones/SeriesWeb/Inicio.aspx
+Cuadros de mandos | https://www.cnmv.es/portal/Publicaciones/Estadisticas-Cuadros-Mandos.aspx
+Descarga de ficheros de información individual de IIC | https://www.cnmv.es/portal/Publicaciones/Descarga-Informacion-Individual.aspx
+MiCA: Nueva regulación de criptoactivos | https://www.cnmv.es/portal/MiCA/Regulacion-Criptoactivos.aspx
+Finanzas Sostenibles | https://www.cnmv.es/portal/Finanzas-Sostenibles/Indice.aspx
+Innovación financiera | https://www.cnmv.es/portal/Fintech/Innovacion.aspx
+Emisores y cotizadas | https://www.cnmv.es/portal/indiceperfil.aspx?id=2
+Información privilegiada del día | https://www.cnmv.es/portal/Informacion-Privilegiada/AlDia-IP.aspx
+Registros Oficiales - Emisores y Cotizadas | https://www.cnmv.es/portal/Menu/Registros-Oficiales-Emisores.aspx
+Normativa - Emisores y Cotizadas | https://www.cnmv.es/portal/Menu/Legislacion-Emisores.aspx
+Publicaciones y estadísticas - Emisores y Cotizadas | https://www.cnmv.es/portal/Menu/Publicaciones-Estadisticas-Investigacion-Emisores.aspx
+Otros documentos - Emisores y Cotizadas | https://www.cnmv.es/portal/Menu/Otros-Documentos-Emisores.aspx
+Inversión colectiva y capital riesgo | https://www.cnmv.es/portal/indiceperfil.aspx?id=3
+Últimos Hechos Relevantes - IIC | https://www.cnmv.es/portal/Menu/Utimos-Hechos-Relevantes-IIC.aspx
+Registros Oficiales - IIC | https://www.cnmv.es/portal/Menu/Registros-Oficiales-IIC.aspx
+Normativa - IIC | https://www.cnmv.es/portal/Menu/Legislacion-IIC.aspx
+Publicaciones y estadísticas - IIC | https://www.cnmv.es/portal/Menu/Publicaciones-Estadisticas-Investigacion-IIC.aspx
+Otros documentos - IIC | https://www.cnmv.es/portal/Menu/Otros-Documentos-IIC.aspx
+Últimos Hechos Relevantes - Capital Riesgo | https://www.cnmv.es/portal/Menu/Utimos-Hechos-Relevantes-Capital-Riesgo.aspx
+Registros Oficiales – Capital Riesgo | https://www.cnmv.es/portal/Menu/Registros-Oficiales-Capital-Riesgo.aspx
+Normativa - Capital Riesgo | https://www.cnmv.es/portal/Menu/Legislacion-Capital-Riesgo.aspx
+Publicaciones y estadísticas - Capital Riesgo | https://www.cnmv.es/portal/Menu/Publicaciones-Investigacion-Capital-Riesgo.aspx
+Otros documentos - Capital Riesgo | https://www.cnmv.es/portal/Menu/Otros-Documentos-Capital-Riesgo.aspx
+Empresas de servicios de inversión | https://www.cnmv.es/portal/indiceperfil.aspx?id=5
+Transparencia supervisora | https://www.cnmv.es/portal/Aldia/TransparenciaSupervisora.aspx
+Registros Oficiales - ESI | https://www.cnmv.es/portal/Menu/Registros-Oficiales-ESI.aspx
+Normativa- ESI | https://www.cnmv.es/portal/Menu/Legislacion-ESI.aspx
+Resolución de ESI | https://www.cnmv.es/portal/Resoluciones/ESI.aspx
+Títulos acreditados para asesorar e informar | https://www.cnmv.es/portal/Titulos-Acreditados.aspx
+Publicaciones y estadísticas - ESI | https://www.cnmv.es/portal/Menu/Publicaciones-Estadisticas-Investigacion-ESI.aspx
+Otros documentos - ESI | https://www.cnmv.es/portal/Menu/Otros-Documentos-ESI.aspx
+Infraestructuras de mercados | https://www.cnmv.es/portal/indiceperfil.aspx?id=6
+Depositarios Centrales de Valores | https://www.cnmv.es/portal/CSD/Depositario-Central-Valores.aspx
+Registros Oficiales - Infraestructuras de mercados | https://www.cnmv.es/portal/Menu/Registros-Oficiales-Infraestructuras-Mercados.aspx
+Normativa - Infraestructuras de mercados | https://www.cnmv.es/portal/Menu/Legislacion-Infraestructuras-Mercados.aspx
+Resolución de ECC | https://www.cnmv.es/portal/Resoluciones/ECC.aspx
+Publicaciones y estadísticas - Infraestructuras de mercados | https://www.cnmv.es/portal/Menu/Publicaciones-Documentos-Infraestructuras-Mercados.aspx
+Otros documentos - Infraestructuras de mercados | https://www.cnmv.es/portal/Menu/Otros-Documentos-Infraestructuras.aspx
+Sistemas Multilaterales de Negociación: novedades regulatorias | https://www.cnmv.es/portal/Sistemas-Multilaterales-Negociacion/Regulacion.aspx
+Ciberseguridad | https://www.cnmv.es/portal/Ciberseguridad.aspx
+MiFID II - MiFIR | https://www.cnmv.es/portal/MiFIDII_MiFIR/MapaMiFID.aspx
+Índices de referencia | https://www.cnmv.es/portal/Benchmark/Indices-Referencia.aspx
+Sede electrónica | https://sede.cnmv.gob.es/
+Inicio | https://www.cnmv.es/Portal/home.aspx
+Consultas a registros oficiales | https://www.cnmv.es/Portal/Menu/Registros-Oficiales.aspx
+Empresas de Servicios de Inversión Españolas | https://www.cnmv.es/Portal/Consultas/ESI-Nacionales.aspx
+Consulta de Sociedades y Agencias de Valores, Sociedades Gestoras de Cartera y E | https://www.cnmv.es/Portal/Consultas/Busqueda.aspx?id=13
+Datos generales | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=0
+Socios | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=7
+Administradores | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=4
+Agentes | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=8
+Sucursales España | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=9
+Sociedades gestionadas | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=6
+Sucursales EEE | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=10
+Sucursales fuera EEE | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=11
+Libre prestación EEE | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=12
+Libre prestación fuera EEE | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=13
+Programa de actividades | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=17
+Atención al cliente | https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&vista=16
+Contacto | https://www.cnmv.es/portal/Utilidades/Contacto.aspx
+Mapa web | https://www.cnmv.es/portal/Utilidades/MapaWeb.aspx
+Nota legal | https://www.cnmv.es/portal/Utilidades/NotaLegal.aspx
+Política de cookies | https://www.cnmv.es/portal/Utilidades/Politica-Cookies.aspx
+Protección de datos | https://www.cnmv.es/portal/quees/Proteccion-Datos.aspx
+Accesibilidad | https://www.cnmv.es/portal/Utilidades/Accesibilidad.aspx
+X
+@CNMV_MEDIOS | https://x.com/CNMV_MEDIOS
+X
+@CNMV_IP | https://x.com/CNMV_IP
+X
+@CNMV_IFI | https://x.com/CNMV_IFI
+Instagram | https://www.instagram.com/cnmv_es/
+LinkedIn | https://www.linkedin.com/company/cnmv
+YouTube | https://www.youtube.com/@cnmv
+RSS | https://www.cnmv.es/portal/gpage.aspx?id=RSS

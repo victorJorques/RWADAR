@@ -1,0 +1,166 @@
+
+Buy and Sell Tokenized Stocks (EEA) | Crypto.com Help Center
+Copyright (c) 2023, Intercom, Inc. (
+[email protected]
+) with Reserved Font Name "Open Sans".
+ This Font Software is licensed under the SIL Open Font License, Version 1.1.
+Copyright 2023. Intercom Inc.
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+Skip to main content
+العربية
+Português do Brasil
+Hrvatski
+Čeština
+Dansk
+Nederlands
+English
+Suomi
+Français
+Deutsch
+Ελληνικά
+Magyar
+Italiano
+Norsk
+Polski
+Português
+Română
+Pусский
+Español
+Svenska
+繁體中文
+Türkçe
+English
+العربية
+Português do Brasil
+Hrvatski
+Čeština
+Dansk
+Nederlands
+English
+Suomi
+Français
+Deutsch
+Ελληνικά
+Magyar
+Italiano
+Norsk
+Polski
+Português
+Română
+Pусский
+Español
+Svenska
+繁體中文
+Türkçe
+English
+Search for articles...
+All Collections
+Tokenized Stocks (EEA)
+Buy and Sell Tokenized Stocks (EEA)
+Buy and Sell Tokenized Stocks (EEA)
+August 11, 2026
+Table of contents
+How do I buy tokenized stocks? 
+To buy tokenized stocks:
+From the Crypto.com App home screen, tap 
+Buy
+ or 
+Market
+ > 
+Tokenized stocks
+ to find a tokenized stock
+From the tokenized stock's 
+Detail
+ page, tap 
+Trade token
+ > 
+Buy
+Select an order type, payment method, and enter an amount
+Review the confirmation screen and tap 
+Confirm
+ to place the order
+How do I sell tokenized stocks?
+To sell tokenized stocks:
+From the Crypto.com App home screen, tap 
+Accounts
+ and find the tokenized stock you want to sell under 
+My assets
+From the tokenized stock's 
+Detail
+ page, tap 
+Trade token
+ > 
+Sell
+Select a destination, enter an amount, and tap 
+Confirm
+What order types are supported for tokenized stocks?
+One-Time order:
+ Buy or sell at the current quoted price immediately.
+Limit order:
+ Buy or sell only when the market reaches your specified target price.
+Recurring Buy order:
+ Schedule repeat purchases on a set frequency.
+Trading hours for tokenized stocks
+Depending on liquidity conditions, it is possible that One-Time orders for some tokenized stocks are available outside of U.S. regular trading hours. In that case, you can only place a limit order.
+U.S. regular trading hours are:
+Monday through Friday, except U.S. market holidays
+9:30 am. to 4:00 pm. ET
+How to set up Recurring Buy for tokenized stocks
+To set up Recurring Buy order:
+From the Crypto.com App home screen, tap 
+Buy
+ or 
+Market
+ > 
+Tokenized stocks
+ to find a tokenized stock
+From the tokenized stock's 
+Detail
+ page, tap 
+Trade token
+ > 
+Buy
+Select 
+Recurring buy
+, then choose a start date and frequency
+Review the details and tap 
+Confirm
+Scheduling rules:
+Only U.S. trading days are available. Weekends and U.S. market holidays are not selectable in the calendar.
+If a scheduled run falls on a U.S. trading holiday, that purchase automatically moves to the next U.S. trading day.
+You cannot pick a past date, the current day after the regular U.S. session has ended, or a date more than two months ahead.
+For monthly schedules, you can pick any day from 1 to 31. If that day does not exist in a given month (e.g., 31 in April), the purchase will run on the last U.S. trading day of that month.
+Execution timing:
+If you start today before the U.S. market opens, your first purchase will execute at around 10:00 am. ET. If you start after 10:00 am. ET and before the market closes, it will execute immediately. Otherwise, choose the next available trading day.
+All subsequent purchases execute at around 10:00 am. ET on each scheduled U.S. trading day. Holiday deferral still applies.
+Subject to jurisdictional availability. Availability depends on your country of residence, applicable law, account type and completion of all required verification checks.
+Tokenized Stocks issued by Foris Capital CY Limited are derivatives that track the prices of underlying financial instruments. Trading may involve loss of capital due to market volatility or counterparty risk. 
+Please consult the 
+Key Information Document
+ and 
+Risk Disclosure Statement
+ and ensure you fully understand the risks before trading. Terms apply.
+Related Articles
+About Crypto.com Tokenized Stocks
+Buy and Sell Tokenized Stocks
+Corporate actions and dividends of Tokenized Stocks
+About Crypto.com Tokenized Stocks (EEA)
+Corporate actions and dividends of Tokenized Stocks (EEA)
+Did this answer your question?
+Disappointed Reaction
+😞
+Neutral Reaction
+😐
+Smiley Reaction
+😃
+Table of contents
+Cryptocurrency in Every Wallet™
+Your Privacy Choices

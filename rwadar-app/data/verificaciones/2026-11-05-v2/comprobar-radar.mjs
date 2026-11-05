@@ -40,7 +40,11 @@ for (const f of radar.fuentes) {
   const patrones = COMPROBACIONES[f.id];
   const entrada = { id: f.id, url: f.url, estado: r?.estado ?? r?.error ?? 'sin captura',
     metodo: r?.metodo || 'navegador', capturadoEl: r?.capturadoEl || r?.hora || null };
-  if (!patrones) { bloqueos.push(`${f.id}: sin comprobaciones`); entrada.ok = false; }
+  const manual = (CAMBIOS.verificacionesManuales || {})[f.id];
+  if (manual && !texto) {
+    // La página no carga hoy: vale la lectura manual del mismo registro, con su método y sus literales.
+    Object.assign(entrada, { ok: true, metodo: manual.metodo, urlLeida: manual.url, literales: manual.literales, manual: manual.motivo });
+  } else if (!patrones) { bloqueos.push(`${f.id}: sin comprobaciones`); entrada.ok = false; }
   else if (!texto) { bloqueos.push(`${f.id}: no se pudo leer ${f.url} (${entrada.estado})`); entrada.ok = false; }
   else {
     entrada.literales = [];

@@ -1,0 +1,8 @@
+URL: https://www.brickwise.at/support/was-ist-der-marktplatz-a
+CONSULTADO: 2026-11-05T08:30:55Z
+HTTP: 200
+
+zurück zu allen fragen
+Was ist der Marktplatz?
+Der Marktplatz bietet eine Übersicht aller Investitionsmöglichkeiten innerhalb die App.
+Assets, die neu auf dem Marktplatz sind, werden mit einem entsprechenden “neu”-Tag gekennzeichnet. Ist die Finanzierungsphase eines Assets abgeschlossen, können die Wertpapiere ab diesem Zeitpunkt zwischen den Investorinnen direkt gehandelt werden.

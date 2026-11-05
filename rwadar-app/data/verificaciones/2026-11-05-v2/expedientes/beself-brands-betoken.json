@@ -1,0 +1,216 @@
+{
+  "slug": "beself-brands-betoken",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-espana",
+  "proveedor": "BeToken (Beself Brands)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "BESELF BRANDS, S.A. (emisor; venta en su propia web betoken.io). Según el documento de oferta, GABRIEL CARRILLO CAPEL EAF, S.L. (CNMV nº 147) valida el documento y supervisa la comercialización",
+  "emisor": "BESELF BRANDS, S.A. (antes S.L.), comercio electrónico de productos de consumo, Tarragona",
+  "vehiculo": "Acciones ordinarias de una sociedad no cotizada representadas mediante TRD (Ley 6/2023)",
+  "token": "BeToken (BTK); el GitBook del emisor dice «Polygon ERC-3646 / Security token»; dirección del contrato no reproducida",
+  "derechoAdquirido": "Acciones ordinarias de Beself Brands, S.A. (1 token = 1 acción de 0,01 € de nominal), con derechos económicos y de voto según estatutos y pacto de socios",
+  "jurisdiccion": "ES",
+  "identificador": null,
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Documento de oferta de acciones tokenizadas de Beself Brands, S.A. («whitepaper»)",
+      "url": "https://content.gitbook.com/content/0aYXo7y0jkozXKEdhHg8/blobs/7hAvNhp8E8k8Tajoj766/BeselfBrands_Whitepaper.pdf",
+      "versionOFecha": "28/03/2025; releído hoy a las 08:18:32 UTC en una carpeta temporal y borrado (contiene DNI); sha256 idéntico al del 03/11",
+      "paginas": 37,
+      "sha256": "e5e16d1d24644ef917e01d90a03b6384b9838b6fbdd25f2fa45baf3868188357",
+      "leido": true
+    },
+    {
+      "titulo": "GitBook del emisor «BeToken | Papers»: Período de venta, Transmisibilidad y Características del token",
+      "url": "https://betoken-1.gitbook.io/papers",
+      "versionOFecha": "sin fecha; consulta 05/11/2026",
+      "paginas": null,
+      "sha256": "73313976838e10ef49258a8fc735482323ebce77f1864903810eead5143a0dca",
+      "leido": true
+    },
+    {
+      "titulo": "Registro ERIR de la CNMV (Ursus-3 Capital), página 3: inscripción de la emisión de Beself Brands",
+      "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+      "versionOFecha": "inscripción del 11/07/2025; releída el 05/11/2026 sin cambios",
+      "paginas": null,
+      "sha256": "4cdaee361403c68aec4dd3d5c5a5cf8008815d71573288829743597e0a0f320c",
+      "leido": true
+    },
+    {
+      "titulo": "Web de venta betoken.io",
+      "url": "https://betoken.io/",
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "URSUS-3 CAPITAL, A.V., S.A. (ERIR de la emisión)",
+      "numero": "Agencia de valores nº 251; única ERIR de la lista de la CNMV",
+      "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+      "alcance": "Literal de la CNMV (11/07/2025): «Emisión de acciones por importe de 7.962.816€ y transformación en S.A. inscrita en el Registro Mercantil el 8/5/2025». La CNMV advierte que la inscripción «no implica que la CNMV haya validado las condiciones de la emisión».",
+      "consultadoUtc": "2026-11-05T08:02:15Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "GABRIEL CARRILLO CAPEL EAF, S.L.",
+      "numero": "Empresa de asesoramiento financiero nº 147",
+      "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=2&lang=es",
+      "alcance": "Sigue en el listado de EAF de la CNMV hoy. Una EAF asesora; no coloca valores ni custodia dinero.",
+      "consultadoUtc": "2026-11-05T08:17:31Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "BESELF BRANDS, S.A.",
+      "numero": "sin registro como entidad supervisada",
+      "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=0&lang=es",
+      "alcance": "No figura en el listado de sociedades y agencias de valores de hoy. Es una sociedad comercial.",
+      "consultadoUtc": "2026-11-05T08:08:27Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Beself",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Beself",
+      "consultadoUtc": "2026-11-05T08:12:51Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD) a las 08:12:35 UTC. La pestaña de advertencias de otras entidades (tipo=2) devuelve HTTP 400 hoy: no consultada. No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Betoken",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Betoken",
+      "consultadoUtc": "2026-11-05T08:12:53Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD) a las 08:12:35 UTC. La pestaña de advertencias de otras entidades (tipo=2) devuelve HTTP 400 hoy: no consultada. No aparecer no equivale a estar autorizado."
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "FASE 2 · Segunda venta · Inicio: 15 de septiembre de 2025 · Termina: Al final de la colocación de todos los tokens.",
+      "dato": null,
+      "fuentePrimaria": "https://betoken-1.gitbook.io/papers/whitepaper/periodo-de-venta.md",
+      "localizador": "GitBook del emisor, «Período de venta»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:12:18Z",
+      "alcanceYLimites": "El documento no fija fecha de cierre de la última fase: la venta seguiría mientras queden tokens. No se puede comprobar si sigue abierta porque betoken.io no responde hoy. Corrige el «terminó en septiembre de 2025» del 03/11.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "minimo",
+      "literal": "será necesario realizar una adquisición que comporte una inversión mínima de cien Euros (100,00.- €)",
+      "dato": null,
+      "fuentePrimaria": "https://content.gitbook.com/content/0aYXo7y0jkozXKEdhHg8/blobs/7hAvNhp8E8k8Tajoj766/BeselfBrands_Whitepaper.pdf",
+      "localizador": "Documento de oferta 28/03/2025, portada y apartado 2.3.3",
+      "fechaDato": "2025-03-28",
+      "consultadoUtc": "2026-11-05T08:18:32Z",
+      "alcanceYLimites": "Mínimo de las fases de 2025; no se puede comprobar que se aplique hoy porque la web de venta no responde.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "Los Tokens serán libremente transmisibles pero […] únicamente podrán ser transferidos a favor de aquéllos que hayan completado debidamente los procesos de KYC y PBC",
+      "dato": "Sin mercado secundario; venta privada a otro inversor con KYC y evaluación del emisor",
+      "fuentePrimaria": "https://betoken-1.gitbook.io/papers/whitepaper/transmisibilidad.md",
+      "localizador": "GitBook del emisor, «Transmisibilidad»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:12:18Z",
+      "alcanceYLimites": "No hay mercado secundario publicado. La salida a bolsa anunciada en prensa para el primer semestre de 2026 no se ha podido comprobar.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "(web de venta betoken.io sin respuesta: conexión reiniciada)",
+      "dato": null,
+      "fuentePrimaria": "https://betoken.io/",
+      "localizador": "betoken.io, 05/11/2026",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:10:55Z",
+      "alcanceYLimites": "beselfbrands.com da HTTP 522 (también por WebFetch: 503). No se puede comprobar el acceso.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Valor nominal de la participación en capital: 0,01€ · Nº de tokens emitidos: 17.841.900 · máximo del 16,65% de los Tokens, esto es, 2.971.200 acciones que tiene en autocartera",
+      "dato": "Acciones de Beself Brands, 1 token = 1 acción",
+      "fuentePrimaria": "https://betoken-1.gitbook.io/papers/whitepaper/informacion-general/caracteristicas-del-token.md",
+      "localizador": "GitBook del emisor, «Características del token»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:17:39Z",
+      "alcanceYLimites": "Coincide con el documento de oferta y con la inscripción ERIR.",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Emisión inscrita en la CNMV a través de la ERIR Ursus-3 (nº 251); documento validado por una EAF inscrita (nº 147). El emisor no está supervisado y no hay folleto aprobado."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_verificable",
+      "nota": "La última fase de venta no tiene fecha de cierre, pero su web de venta no responde hoy; no se puede comprobar si se puede comprar."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "Sin mercado secundario; transmisión solo a inversores aceptados por el emisor. Salida a bolsa anunciada sin confirmar."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sin advertencias de la CNMV para Beself ni Betoken (05/11, 08:12 UTC). Acciones de una pyme no cotizada: riesgo de pérdida total."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "estado",
+      "antes": "03/11: «la venta terminó en septiembre de 2025»",
+      "ahora": "05/11: el GitBook del emisor dice que la última fase «termina al final de la colocación de todos los tokens»; abierta o no, no se puede comprobar (web caída)",
+      "fuente": "https://betoken-1.gitbook.io/papers/whitepaper/periodo-de-venta.md",
+      "critico": true
+    },
+    {
+      "campo": "acceso",
+      "antes": "03/11: betoken.io y beselfbrands.com sin respuesta (conexión reiniciada y 522)",
+      "ahora": "05/11: igual (08:10–08:11 UTC)",
+      "fuente": "https://betoken.io/",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": {
+    "nota": "No se propone tarjeta (decisión no_admitir). Solo los tres datos de hoy, como referencia; null = no se puede comprobar hoy en fuente primaria.",
+    "resumenTarjeta": {
+      "minimo": "100 € en las fases de venta de 2025; hoy no se puede comprobar si sigue a la venta",
+      "accesoEspana": null,
+      "salida": "Sin mercado secundario: solo venta privada a otro inversor que acepte el emisor"
+    }
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": "CNMV · ERIR Ursus-3 Capital A.V. (nº 251) para el registro; EAF nº 147 para la validación del documento. El emisor no está supervisado",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Primera empresa española con el 100 % de sus acciones tokenizadas e inscritas en el registro ERIR de la CNMV.",
+    "porQueNo": "Su web de venta no responde, no hay mercado secundario y no hay entidad supervisada que coloque las acciones."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No se puede comprar de forma comprobable: betoken.io y beselfbrands.com siguen sin responder hoy. Corrección respecto al 03/11: el GitBook del emisor no fija cierre para la última fase de venta («al final de la colocación de todos los tokens»), así que no consta que terminara en septiembre de 2025, pero tampoco que siga abierta. No hay mercado secundario, la transmisión depende de la aprobación del emisor y no hay entidad supervisada que coloque las acciones ni folleto aprobado.",
+  "bloqueos": [
+    "betoken.io: conexión reiniciada (curl) y 503 (WebFetch) a las 08:10–08:12 UTC.",
+    "beselfbrands.com y www.beselfbrands.com: HTTP 522.",
+    "Salida a bolsa anunciada en prensa para el primer semestre de 2026: sin fuente primaria.",
+    "El PDF original del documento de oferta contiene DNI de los fundadores; no se descarga ni conserva."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-05T08:10:55Z",
+    "finUtc": "2026-11-05T08:18:45Z"
+  }
+}

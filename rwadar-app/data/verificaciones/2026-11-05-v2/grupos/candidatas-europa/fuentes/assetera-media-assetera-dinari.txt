@@ -1,0 +1,87 @@
+
+Assetera & Dinari
+About
+For B2B Partners
+For Investors
+Media
+Contact us
+EN
+DE
+EN
+EN
+DE
+Go to Platform
+Assetera Partners with Dinari to Unlock Compliant Distribution of Tokenized Securities in Europe
+Partnership enables European exchanges to list more than 150 tokenized U.S. equities without needing to obtain their own MiFID license.
+Partnerships
+16 Oct 2025
+Barcelona, Spain – 16.10.2025
+Assetera, a MiFID-licensed trading platform for blockchain-based securities in Europe, today announced a landmark partnership with 
+Dinari
+, the leading provider of tokenized U.S. equities. The collaboration combines Dinari’s dShares™, its fully backed tokenized stocks product, with Assetera’s regulatory infrastructure, enabling exchanges and brokers across 30 EU/EEA countries to offer their investors access to more than 150 U.S. equities.
+While demand for tokenized assets is growing rapidly, most exchanges lack the complex MiFID II framework needed to list them. Assetera removes this barrier by providing both a MiFID-compliant API and acting as European distribution partner for Dinari, ensuring instant regulatory coverage, full KYC/AML, distribution, settlement, and custody. 
+At launch, exchanges integrating with Assetera gain access to Dinari’s dShares™, backed one-to-one by the underlying stock and held with regulated custodians. Investors keep the same rights as traditional shareholders, including dividends, voting in the U.S., and participation in corporate actions, combined with the speed and programmability of blockchain settlement. This brings institutional-grade U.S. equities into the same platforms investors already use for digital assets.
+“Tokenized securities are the bridge between TradFi and DeFi,” said 
+Thomas Labenbacher
+, CEO of Assetera. “By partnering with Dinari, we remove Europe’s biggest regulatory roadblock and give exchanges the tools to scale compliant securities trading in weeks, not years.”
+Assetera expects strong adoption, with projected transaction volumes approaching €1 billion in the first year and potential reach of up to 50 million retail and institutional users via partner integrations.
+“It’s been our mission since founding Dinari to make U.S. equities globally accessible without compromising the rights and safeguards that define U.S. markets,” said 
+Gabe Otte
+, CEO of Dinari. “Working with Assetera ensures that access is delivered in full compliance with European regulation, giving exchanges a simple path to bring investors real equities on modern rails.”
+For more information, visit 
+assetera.com
+.
+About Assetera
+Assetera is the first EU-regulated DLT trading platform for Securities & Real-World Assets (RWAs). Assetera serves both retail and institutional investors through a robust DLT system built on blockchain, enabling seamless trading and atomic settlement. 
+Licensed and supervised by the Austrian Financial Market Authority (FMA), Assetera is your trusted partner for the new era of asset tokenization covering, primary and secondary market trading, asset management, and custody. Assetera holds a MiFID II license and provides regulated VASP - Virtual Asset Service Provider services. 
+Our vision is to build the Future of Capital Markets, connecting market participants and making blockchain-based financial instruments accessible to everyone.
+About Dinari Inc.
+Dinari Inc. is the largest tokenized U.S. public securities provider, with a mission to enable investing in anything from anywhere through its compliance-first, blockchain-based tokenization technology. With Dinari Inc., neobanks, fintechs, and other financial services providers can offer their customers seamless access to U.S. public markets through Dinari’s fully-backed dShares™.
+By tokenizing real-world equities at scale, Dinari Inc. provides global investors with seamless access to over 150 tokenized U.S. public stocks and financial assets. Turnkey integration and a focus on working with partners to navigate regulatory challenges make it easy for neobanks, fintechs, and other institutions to remain at the forefront of financial technology. Dinari Inc. has raised $22.65 million to date from leading investors including VanEck Ventures, Hack VC, F-Prime Capital, Blockchange Ventures, and Balaji Srinivasan.
+Dinari Inc. is a Registered Transfer Agent with the United States Securities & Exchange Commission (Section 17A(c)). Dinari dShares are not currently available in the United States and certain jurisdictions as limited by law.
+Be among the first investors
+TPLUS will be available through the Assetera Marketplace. Subscribe to our newsletter to be among the first investors with priority access and favourable conditions when it goes live.
+Thank you! Your submission has been received!
+Something went wrong while submitting the form.
+By subscribing you agree to receive Assetera market updates. Unsubscribe at any time. This is not an offer to purchase securities. Availability is subject to eligibility criteria and applicable law.
+Read the full TPLUS
+ launch announcement by Synthesys.
+You might also be interested in
+Assetera & Hedera Foundation
+Advance Digital Asset Infrastructure 
+Partnerships
+08 Jul 2025
+Assetera Lists 450+ Ondo Tokenized Stocks and ETFs for Eligible Investors Across 30 EEA countries
+Eligible European investors can now gain exposure to US equities via tokens issued by Ondo Global Markets (BVI) Limited and made available via Assetera's Austrian MiFID II license. Each token is backed by the stocks or ETFs it tracks, held with US-regulated custodians and reviewed daily by an independent verification agent
+Announcement
+07 Oct 2026
+Assetera Brings 700+ xStocks to European Retail and B2B Distribution
+Tokenized US equities and ETFs, collateralized 1:1 by shares held with a regulated custodian and distributed across 30 EU/EEA markets through a MiFID II-licensed platform
+Partnerships
+15 Sep 2026
+Assetera & Vancelian
+Assetera Partners with Vancelian to Expand Regulated Digital Asset Distribution Across Europe
+Partnerships
+17 Oct 2025
+Subscribe to stay informed on RWA trends and tokenization strategies.
+Weekly insights, webinars, and infographics from Assetera straight to your inbox.
+By proceeding, you acknowledge that you have read and agree to our 
+Privacy Policy
+ and consent to receive updates and communications related to our services.
+Thank you! Your submission has been received!
+Something went wrong while submitting the form.
+Home
+About
+For B2B Partners
+For Investors
+Media
+Contact us
+Imprint
+Privacy & Cookies Policy
+Legal Notice
+Corporate Governance
+Assetera GmbH - MiFID Conflicts of Interest
+Assetera GmbH - MiFID Complaint Procedure
+Assetera GmbH - MiFID Order Execution
+Token Listing
+Assetera 2026 ©. All Rights Reserved.

@@ -1,0 +1,21 @@
+2026-11-05T08:24:38.013Z
+T0 | Nº Registro Oficial | Fecha registro oficial
+T0 | 343 | 18/09/2026
+T1 | Servicios y actividades de inversión | Instrumentos | Clientes
+T1 | a | b | c | d | e | f | g | h | i | j | k | Minoristas | Profesionales | Contrapartes elegibles
+T1 | Colocación de instrumentos financieros | [Si] |  |  |  |  |  |  |  |  |  |  | [Si] | [Si] | [Si]
+T1 | Gestión de sistemas multilaterales de negociación | [Si] |  |  |  |  |  |  |  |  |  |  | [Si] | [Si] | [Si]
+T2 | Servicios auxiliares | Instrumentos | Clientes
+T2 | a | b | c | d | e | f | g | h | i | j | k | Minoristas | Profesionales | Contrapartes elegibles
+T2 | Custodia y administración de instrumentos financieros | [Si] |  |  |  |  |  |  |  |  |  |  | [Si] | [Si] | [Si]
+T2 | Asesoramiento a empresas |  |  |  |  |  |  |  |  |  |  |  | [Si] | [Si] | [Si]
+T3 | Actividades | Detalle | Clientes
+T3 | Minoristas | Profesionales | Contrapartes elegibles
+T3 | Servicios de toquenización de instrumentos financie-ros | En el marco del servicio de colocación, se prestará a las empresas emisoras servicios tecnológicos de toquenización de instrumentos financieros. | [Si] | [Si] | [Si]
+T4 | Servicios y actividades | Explicaciones
+T4 | Colocación de instrumentos financieros sin base en un compromiso firme. | Se restringe a la prestación del servicio respecto de los valores negociables del Art 2.1 a) de LMVSI representados mediante sistemas basados en tecnología de registros distribuidos.
+T4 | Gestión de sistemas multilaterales de nego-ciación | Se restringe a la prestación del servicio respecto de los valores negociables del Art 2.1 a) de LMVSI representados mediante sistemas basados en tecnología de registros distribuidos. La denominación del centro de negociación será Bit2me STX y la figura bajo la cual se operará el mercado será la de sistema de negociación y liquidación (SNL) de acuerdo a lo recogido en el Reglamento (UE) 2022/858 (Reglamento del Régimen Piloto)
+T4 | Custodia y administración por cuenta de clientes de los instrumentos financieros. | Se restringe a la prestación del servicio respecto de los valores negociables del Art 2.1 a) de LMVSI representados mediante sistemas basados en tecnología de registros distribuidos
+T4 | Asesoramiento a empresas sobre estructura de capital, estrategia industrial y cuestiones afines, así como el asesoramiento y demás servicios en relación con fusiones y adquisi-ciones de empresas | Se restringe a la prestación del servicio respecto de los valores negociables del Art 2.1 a) de LMVSI representados mediante sistemas basados en tecnología de registros distribuidos.
+T5 | Descripción | Si | No
+T5 | La sociedad mantiene fondos en cuentas instrumentales y transitorias a nombre de sus clientes | [Si] | 

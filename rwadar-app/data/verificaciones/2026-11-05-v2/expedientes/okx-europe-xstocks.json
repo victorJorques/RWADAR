@@ -1,0 +1,393 @@
+{
+  "slug": "okx-europe-xstocks",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-europa",
+  "proveedor": "OKX Europe (app y web OKX en el EEE) · Tokenized Stocks",
+  "plataformaSlug": null,
+  "entidadComercializadora": "OKX Europe Markets Limited (Malta, empresa de servicios de inversión MiFID); la cuenta base la da OKX Europe Limited (Malta, MiCA)",
+  "emisor": "Backed Assets (JE) Limited (Jersey), filial indirecta de Payward, Inc. (grupo Kraken)",
+  "vehiculo": "Certificados tracker (títulos de deuda) xStocks, folleto base aprobado por la FMA de Liechtenstein; en OKX se registran como saldo contractual «Unified Tokenized Stocks» (UTS) frente a OKX Europe Markets",
+  "token": "xStocks (p. ej. xAAPL, xNVDA, xSPY, xIREN, xASML); SPL en Solana y ERC-20 en Ethereum/XLayer según el anexo de OKX",
+  "derechoAdquirido": "Saldo contractual UTS frente a OKX Europe Markets, respaldado por el xStock que OKX custodia; el xStock es deuda del emisor garantizada con la acción. Sin voto ni propiedad de la acción. Se puede retirar el xStock a una wallet propia.",
+  "jurisdiccion": "MT",
+  "identificador": "CNMV ESI EEE libre prestación nº 5024 (OKX Europe Markets Limited) · folleto BPWO-80 (FMA-LI, 08/05/2026) · ISIN de ejemplo NVDAx CH1436219195",
+  "moneda": "USDC (precio por acción en USDC; las comisiones de la tabla EEE se expresan en EUR)",
+  "documentos": [
+    {
+      "titulo": "Annex 2.A – Tokenised Equities and UTS Services (OEM's Terms of Service – Product-specific terms)",
+      "url": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+      "versionOFecha": "sin fecha en el PDF; enlazado desde los términos de OEM «Last updated: 4 November 2026»",
+      "paginas": 21,
+      "sha256": "4f842a710e3f7ba3a6fc93f5fcd61402b132514e8ff4e4bfd5c2c8de6bd668c0",
+      "leido": true
+    },
+    {
+      "titulo": "OKX Europe Markets Ltd – Terms of Service",
+      "url": "https://www.okx.com/en-eu/help/okx-europe-market-ltd-oem-terms-of-service",
+      "versionOFecha": "Last updated: 4 November 2026",
+      "paginas": null,
+      "sha256": "506097b7d6133ab9bd923692e62ddace48ba52f9d4313e750153d088ca7f514c",
+      "leido": true
+    },
+    {
+      "titulo": "OKX Europe Markets Ltd – Risk Warning & Disclosure Statement",
+      "url": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/3YHawZa0mOqswmWOwFweMh/b025869f4e624570912d451465ccb9ec/OKX_Europe_Markets_Ltd_-_Risk_Warning___Disclosure_Statement_.docx.pdf",
+      "versionOFecha": "sin fecha visible",
+      "paginas": 24,
+      "sha256": "5243ea8ce6edf177efbb84bf71066b3a623472458bf0e7143f48b5f6b64f8fe6",
+      "leido": true
+    },
+    {
+      "titulo": "OEM Key Information Documents (KIDs) – apartado «Tokenised Equities - xStocks»",
+      "url": "https://www.okx.com/en-eu/help/oem-key-information-documents-kids",
+      "versionOFecha": "Last Updated: 7 September 2026 (apartado xStocks)",
+      "paginas": null,
+      "sha256": "baf9a27ebd424df7d4cffb280c8a75828e9df75cbfa21d617a5f829b5e753a10",
+      "leido": true
+    },
+    {
+      "titulo": "KID en español de NVIDIA xStock (NVDAx), Backed Assets (JE)",
+      "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+      "versionOFecha": "Este documento tiene fecha 04 nov. 2026",
+      "paginas": 3,
+      "sha256": "b5b06115dd8cd061e9ea36702b048a1a9673b4ff32928c9bd0279b0004004f7a",
+      "leido": true
+    },
+    {
+      "titulo": "Condiciones finales y resumen de NVDAx (Backed Assets (JE))",
+      "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+      "versionOFecha": "sustituyen a las de 30/01/2026; ligadas al folleto base de 08/05/2026",
+      "paginas": 162,
+      "sha256": "f309dd9cb54d17218369aa74beaf42d4910864f6500bc93e347f59a82e4f9154",
+      "leido": true,
+      "nota": "Copia en fuentes/crudo/ (contiene direcciones de contrato)."
+    },
+    {
+      "titulo": "Pre-IPO markets and tokenized stocks are live in Europe (OKX Europe)",
+      "url": "https://www.okx.com/en-eu/learn/pre-ipo-markets-tokenized-stocks-europe",
+      "versionOFecha": "datePublished 2026-09-10",
+      "paginas": null,
+      "sha256": "dccf6ce268bd193a3f7fca236b2af9d3d227957ba41b7007f2493c5c2ce48102",
+      "leido": true
+    },
+    {
+      "titulo": "OKX to list USDC trading pairs for Tokenized Stocks xIREN and xASML",
+      "url": "https://www.okx.com/en-eu/help/okx-to-list-usdc-trading-pairs-for-tokenized-stocks-xiren-and-xasml",
+      "versionOFecha": "Published on Nov 4, 2026",
+      "paginas": null,
+      "sha256": "9d554259b8b5807424fc05069686e063322f233da2c434d573ae9773147966a8",
+      "leido": true
+    },
+    {
+      "titulo": "Tabla de comisiones OKX EEE (spot)",
+      "url": "https://www.okx.com/en-eu/fees",
+      "versionOFecha": "consultada hoy (texto renderizado)",
+      "paginas": null,
+      "sha256": "01ffee4cc4f12645baeabcdcc9b70b7a36b595c530cad0d505485b789654ee79",
+      "leido": true
+    },
+    {
+      "titulo": "EEA Risk and Compliance Disclosure (lista de lugares restringidos)",
+      "url": "https://www.okx.com/en-eu/help/eea-risk-and-compliance-disclosure",
+      "versionOFecha": "consultada hoy",
+      "paginas": null,
+      "sha256": "eadeaadbb3efb9d270a8488f53e1dab9aec718b7606bc7657adde623374cce14",
+      "leido": true
+    },
+    {
+      "titulo": "Lista de xStocks disponibles para clientes del EEE",
+      "url": null,
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false,
+      "nota": "El anuncio del 04/11 dice «Please check the availability of the listed token or product for your region in the app». La API pública (eea.okx.com) devuelve el mismo catálogo que la global y no distingue el EEE."
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "OKX EUROPE MARKETS LIMITED",
+      "numero": "5024 (14/01/2021)",
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5024",
+      "alcance": "ESI del EEE en libre prestación en España, país de origen Malta. Programa de actividades (vista 17): ejecución de órdenes y negociación por cuenta propia sobre valores negociables y derivados; custodia de valores negociables.",
+      "consultadoUtc": "2026-11-05T08:06:41Z"
+    },
+    {
+      "regulador": "MFSA (Malta)",
+      "entidad": "OKX Europe Markets Limited",
+      "numero": null,
+      "url": null,
+      "alcance": "No consultado hoy en el registro de la MFSA (su buscador necesita JavaScript). La autorización bajo la Investment Services Act consta en el pie legal de OKX y la confirma la CNMV, que recibe los datos de la autoridad de origen.",
+      "consultadoUtc": null
+    },
+    {
+      "regulador": "ESMA / CNMV (folletos)",
+      "entidad": "BACKED ASSETS (JE) LIMITED (LEI 984500001AB7C6C7F577)",
+      "numero": "BPWO-80 (FMA-LI, 08/05/2026); suplementos SUPP-62 (04/08/2026) y SUPP-68 (29/09/2026)",
+      "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+      "alcance": "La CNMV recibió el pasaporte el 11/05/2026 con la nota de síntesis traducida; ESMA marca ES en el folleto y en los dos suplementos. No hay suplemento nuevo desde el 29/09/2026.",
+      "consultadoUtc": "2026-11-05T08:07:37Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "OKX",
+      "resultado": "coincidencia: «HTTPS://WWW.OKX.COM/ OKX» (04/04/2022) en la lista de entidades no autorizadas, y «HTTPS://WWW.AAYOKX.COM/ AAYOKX» (18/05/2026, web ajena). La advertencia de 2022 recae sobre el propio dominio okx.com y sigue publicada hoy.",
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "consultadoUtc": "2026-11-05T08:11:05Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "xStocks",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "consultadoUtc": "2026-11-05T08:14:46Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "entidad",
+      "literal": "OEM is the distributor of Tokenised Equities and the provider of the UTS Services in Your jurisdiction and is not the Issuer of the Tokenised Equities.",
+      "dato": "OKX Europe Markets Limited distribuye; no emite",
+      "fuentePrimaria": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+      "localizador": "Annex 2.A, cl. 2 (definiciones), p. 1",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:04:32Z",
+      "alcanceYLimites": "OEM es además contraparte contractual del saldo UTS (cl. 5, p. 3)",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "emisor",
+      "literal": "Issuer: Backed Assets (JE) Limited, a private limited company incorporated in Jersey. Parent / Group: Indirect subsidiary of Payward, Inc.",
+      "dato": "Backed Assets (JE) Limited (grupo Kraken)",
+      "fuentePrimaria": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+      "localizador": "Annex 2.A, Schedule A, A.1, p. 11-12",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:04:32Z",
+      "alcanceYLimites": "Coincide con el apartado «Tokenised Equities - xStocks» de la página de KIDs de OKX (07/09/2026)",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "pasaporteEspana",
+      "literal": "Ejecución de órdenes por cuenta de clientes · Negociación por cuenta propia · 1) Valores negociables · Custodia y administración de instrumentos financieros",
+      "dato": "CNMV nº 5024 con valores negociables y custodia",
+      "fuentePrimaria": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5024&vista=17&lang=es",
+      "localizador": "Ficha CNMV 5024, Programa de actividades",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:06:41Z",
+      "alcanceYLimites": "Acredita a la entidad para España; no prueba que el producto esté activado hoy para residentes en España",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "tipoCliente",
+      "literal": "Our trading services are available to Users that qualify either as Retail Clients, Professional Clients or Eligible Counterparties",
+      "dato": "minoristas admitidos, con test de conveniencia (cl. 1.8.3)",
+      "fuentePrimaria": "https://www.okx.com/en-eu/help/okx-europe-market-ltd-oem-terms-of-service",
+      "localizador": "Términos de OEM, cl. 1.7–1.8 (Last updated 4 November 2026)",
+      "fechaDato": "2026-11-04",
+      "consultadoUtc": "2026-11-05T08:03:48Z",
+      "alcanceYLimites": "Requiere cuenta verificada en OKX EEA (cl. 2.1)",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "This is a general update. Please check the availability of the listed token or product for your region in the app.",
+      "dato": "no_verificable a nivel de producto para España",
+      "fuentePrimaria": "https://www.okx.com/en-eu/help/okx-to-list-usdc-trading-pairs-for-tokenized-stocks-xiren-and-xasml",
+      "localizador": "Anuncio del 04/11/2026, encabezado",
+      "fechaDato": "2026-11-04",
+      "consultadoUtc": "2026-11-05T08:03:35Z",
+      "alcanceYLimites": "España no figura entre los lugares restringidos de la «EEA Risk and Compliance Disclosure» (consultada 08:05:49Z), pero eso no confirma que el producto esté activo para España",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "estado",
+      "literal": "We've also launched Tokenized Stocks for Europeans. With 100 markets on day one",
+      "dato": "lanzado el 10/09/2026; nuevos pares xIREN y xASML el 04/11/2026",
+      "fuentePrimaria": "https://www.okx.com/en-eu/learn/pre-ipo-markets-tokenized-stocks-europe",
+      "localizador": "Artículo OKX Europe, datePublished 2026-09-10",
+      "fechaDato": "2026-09-10",
+      "consultadoUtc": "2026-11-05T08:03:21Z",
+      "alcanceYLimites": "El 04/11 se anunciaron nuevos pares en USDC; activo hoy para el EEE en general",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Minimum order size (minSz) is determined by OKX and may be updated from time to time",
+      "dato": null,
+      "fuentePrimaria": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+      "localizador": "Annex 2.A, cl. 7.1, p. 5",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:04:32Z",
+      "alcanceYLimites": "La API pública da minSz 0,01 para XAAPL-USDC, pero es el mismo catálogo que la API global y no se puede atribuir al EEE; no se usa",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "moneda",
+      "literal": "Eligible UTS may be traded on a 7x24 orderbook on the OKX Platform, priced in Scaled Quantity per share in USDC.",
+      "dato": "precio en USDC (criptoactivo estable)",
+      "fuentePrimaria": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+      "localizador": "Annex 2.A, cl. 7.1, p. 5",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:04:32Z",
+      "alcanceYLimites": "Para comprar en el libro hace falta USDC; existe además compra/venta instantánea (RFQ) con diferencial incluido (cl. 7.2)",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Standard OKX trading fees apply to UTS orderbook and RFQ trades.",
+      "dato": "spot EEE nivel normal: 0,08 % creador / 0,10 % tomador; RFQ con diferencial incluido",
+      "fuentePrimaria": "https://www.okx.com/en-eu/fees",
+      "localizador": "Annex 2.A cl. 7.4 (p. 5) y tabla «Regular user» de okx.com/en-eu/fees (texto renderizado)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:07:20Z",
+      "alcanceYLimites": "Además, comisión de gestión del emisor según condiciones finales y costes de entrada/salida del KID; gas al retirar",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "the resulting Underlying Token Quantity is sent on-chain to the User’s withdrawal address",
+      "dato": "venta 24/7 en el libro o RFQ, o retirada del xStock a una wallet propia",
+      "fuentePrimaria": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+      "localizador": "Annex 2.A, cl. 6 (p. 4) y cl. 7 (p. 4-5)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:04:32Z",
+      "alcanceYLimites": "OKX puede parar la negociación o ampliar diferenciales (cl. 7.1); fuera de horario de EE. UU. el precio se basa en estimaciones; el reembolso directo al emisor es para participantes autorizados",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "As at 31 December 2025, the Issuer had negative shareholder funds of approximately USD -3.2 million and has been loss-making since incorporation.",
+      "dato": "emisor con fondos propios negativos; pago solo con la garantía de cada producto",
+      "fuentePrimaria": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+      "localizador": "Annex 2.A, Schedule A, A.3, p. 13",
+      "fechaDato": "2025-12-31",
+      "consultadoUtc": "2026-11-05T08:04:32Z",
+      "alcanceYLimites": "También: el emisor puede terminar un xStock con 30 días hábiles de aviso (A.4) y concentración en el grupo Payward y en Alpaca (A.5)",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "custodia",
+      "literal": "Custodian: Alpaca Securities LLC, a FINRA-registered, SIPC-member broker-dealer. Alpaca Securities LLC also acts as Prime Borrower",
+      "dato": "acciones en Alpaca (EE. UU.), con préstamo de valores",
+      "fuentePrimaria": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+      "localizador": "Annex 2.A, Schedule A, A.1, p. 12",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:04:32Z",
+      "alcanceYLimites": "OEM custodia el xStock por cuenta del cliente; OEM no controla al custodio de las acciones (cl. 4.2)",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "documentosEmisor",
+      "literal": "Hemos clasificado este producto en la clase de riesgo 6 en una escala de 7",
+      "dato": "KID en español NVDAx fechado 04/11/2026; riesgo 6/7; plazo recomendado 5 años",
+      "fuentePrimaria": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+      "localizador": "KID NVDAx, p. 1-2",
+      "fechaDato": "2026-11-04",
+      "consultadoUtc": "2026-11-05T08:07:54Z",
+      "alcanceYLimites": "El riesgo varía según el xStock",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "paisesOferta",
+      "literal": "The Products will be offered in Liechtenstein and Switzerland (only to Swiss Professional Investors). The right to offer in other jurisdictions is explicitly reserved.",
+      "dato": "conflicto: España notificada, pero no listada como país de oferta",
+      "fuentePrimaria": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+      "localizador": "Condiciones finales NVDAx, Part B «Country(ies) of offer(s)»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:07:55Z",
+      "alcanceYLimites": "Mismo conflicto que en kraken-xstocks: el folleto está notificado a España y hay KID en español",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "garantia",
+      "literal": "We are further covered by the Investor Compensation Scheme, which only applies to You if You are a retail customer",
+      "dato": "fondo de compensación de inversores de Malta para minoristas",
+      "fuentePrimaria": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/3YHawZa0mOqswmWOwFweMh/b025869f4e624570912d451465ccb9ec/OKX_Europe_Markets_Ltd_-_Risk_Warning___Disclosure_Statement_.docx.pdf",
+      "localizador": "Risk Warning & Disclosure Statement, p. 2",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:04:01Z",
+      "alcanceYLimites": "No cubre pérdidas de mercado ni el impago del emisor",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "advertenciaCNMV",
+      "literal": "04/04/2022 HTTPS://WWW.OKX.COM/ OKX",
+      "dato": "advertencia de la CNMV sobre okx.com publicada en 2022 y vigente en el buscador hoy",
+      "fuentePrimaria": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "localizador": "Búsqueda «OKX», tipo No autorizadas",
+      "fechaDato": "2022-04-04",
+      "consultadoUtc": "2026-11-05T08:11:05Z",
+      "alcanceYLimites": "La advertencia (04/04/2022) es posterior a la fecha de inscripción que muestra la ficha nº 5024 (14/01/2021) y no se ha retirado. Probablemente se refiere a la plataforma global de OKX, no autorizada entonces en España, pero la CNMV no lo aclara: hay que resolverlo antes de publicar nada con esta marca",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "OKX Europe Markets Limited figura en la CNMV (nº 5024) con valores negociables y custodia. Registro MFSA no consultado hoy."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Lanzado el 10/09/2026; nuevos pares el 04/11/2026. La lista concreta para el EEE solo se ve en la app."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Minoristas admitidos y España no está restringida, pero la disponibilidad por país se remite a la app; mínimo no publicado; se opera en USDC."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_cumple",
+      "nota": "La CNMV mantiene una advertencia sobre www.okx.com (04/04/2022). Riesgos del emisor bien documentados (fondos propios negativos, concentración Payward/Alpaca)."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "expediente",
+      "antes": "sin expediente (pista del 03/11: «OKX Europe Markets Limited … 100 acciones tokenizadas … No encontré documento oficial»)",
+      "ahora": "documentos oficiales localizados: anexo 2.A de OKX con el emisor (Backed/xStocks), la página de KIDs y el aviso de riesgos",
+      "fuente": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+      "critico": false
+    },
+    {
+      "campo": "advertenciasReguladores",
+      "antes": "no consultado",
+      "ahora": "la CNMV mantiene la advertencia «HTTPS://WWW.OKX.COM/ OKX» del 04/04/2022",
+      "fuente": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "critico": true
+    }
+  ],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": "CNMV nº 5024 (ESI del EEE en libre prestación, Malta)",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Mismo producto que kraken-xstocks (xStocks de Backed) por otro canal regulado, con retirada a wallet propia y documentación de riesgos del emisor más completa que la de Kraken.",
+    "porQueNo": "Advertencia de la CNMV vigente sobre okx.com, mínimo no publicado, disponibilidad por país solo en la app y compra en USDC."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No se admite hoy. La entidad está inscrita en la CNMV (nº 5024) y los documentos del producto son públicos, pero: (1) la CNMV mantiene en su lista de entidades no autorizadas el dominio «HTTPS://WWW.OKX.COM/ OKX» (04/04/2022), lo que choca con la regla «sin advertencias de la CNMV»; (2) el mínimo para el EEE no se publica (lo fija OKX); (3) la disponibilidad para España se remite a la app; (4) se compra en USDC. Además es el mismo producto que ya publicamos con Kraken.",
+  "bloqueos": [
+    "Advertencia CNMV sobre www.okx.com (04/04/2022) sin retirar; habría que preguntar a la CNMV o a OKX si sigue aplicando tras la inscripción nº 5024.",
+    "Mínimo de orden para el EEE no publicado (Annex 2.A cl. 7.1).",
+    "Lista de xStocks disponibles para España solo dentro de la app.",
+    "Registro de la MFSA no consultado (buscador con JavaScript).",
+    "Conflicto en las condiciones finales: países de oferta Liechtenstein y Suiza «con reserva»."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-05T08:03:20Z",
+    "finUtc": "2026-11-05T08:18:22Z"
+  },
+  "resumenTarjeta": {
+    "minimo": null,
+    "accesoEspana": "Sin confirmar: OKX remite a su app para saber si se ofrece en España",
+    "salida": "Vendes 24/7 en OKX o retiras el token a tu wallet; OKX puede pausar la negociación"
+  },
+  "resumenTarjetaNota": "Interno: los tres datos tal como se ven hoy; no es propuesta de tarjeta (decisión no_admitir). null = no respaldado hoy en fuente primaria."
+}

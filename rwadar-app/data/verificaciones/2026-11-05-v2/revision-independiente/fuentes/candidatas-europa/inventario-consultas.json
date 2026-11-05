@@ -1,0 +1,492 @@
+{
+ "grupo": "candidatas-europa",
+ "revisor": "revisión independiente 05/11/2026",
+ "consultas": [
+  {
+   "url": "https://www.okx.com/en-eu/help/okx-europe-market-ltd-oem-terms-of-service",
+   "archivo": "okx-oem-terms.html",
+   "http": "200",
+   "final": "https://www.okx.com/en-eu/help/okx-europe-market-ltd-oem-terms-of-service",
+   "consultadoUtc": "2026-11-05T08:24:35Z",
+   "bytes": 208197,
+   "sha256": "53789c7ddbc5f53ef7a0993edbd7e574aee83787d1fc64678870c766734d1742"
+  },
+  {
+   "url": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+   "archivo": "okx-annex-2a.pdf",
+   "http": "200",
+   "final": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+   "consultadoUtc": "2026-11-05T08:24:35Z",
+   "bytes": 190098,
+   "sha256": "4f842a710e3f7ba3a6fc93f5fcd61402b132514e8ff4e4bfd5c2c8de6bd668c0"
+  },
+  {
+   "url": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/3YHawZa0mOqswmWOwFweMh/b025869f4e624570912d451465ccb9ec/OKX_Europe_Markets_Ltd_-_Risk_Warning___Disclosure_Statement_.docx.pdf",
+   "archivo": "okx-risk-warning.pdf",
+   "http": "200",
+   "final": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/3YHawZa0mOqswmWOwFweMh/b025869f4e624570912d451465ccb9ec/OKX_Europe_Markets_Ltd_-_Risk_Warning___Disclosure_Statement_.docx.pdf",
+   "consultadoUtc": "2026-11-05T08:24:35Z",
+   "bytes": 408497,
+   "sha256": "5243ea8ce6edf177efbb84bf71066b3a623472458bf0e7143f48b5f6b64f8fe6"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": "cnmv-advertencias-formulario.html",
+   "http": "200",
+   "final": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "consultadoUtc": "2026-11-05T08:24:54Z",
+   "bytes": 215492,
+   "sha256": "cf6182f39b13b6675fc746de055340e5c8ea1906a91341d327ee6fe803e9dc10"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": "cnmv-advertencias-okx.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:28:02Z",
+   "bytes": 1797,
+   "sha256": "3b35557d11f6deb163fdb467f6b2f615477fd39c004e45bc4d8281422cf31865",
+   "nota": "Playwright: búsqueda «OKX» (tipo No autorizadas)"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": "cnmv-advertencias-crypto-com.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:28:39Z",
+   "bytes": 1977,
+   "sha256": "a0b043ea858bbeac05fd854caf97826d4d74acc77acb4f58baf57254e650a423",
+   "nota": "Playwright: búsqueda «Crypto.com»"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": "cnmv-advertencias-foris.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:28:46Z",
+   "bytes": 1799,
+   "sha256": "d28fd2f26921b23690746592b469b29ba5e5d29156fa58484bb0a2a8a7a7bede",
+   "nota": "Playwright: búsqueda «Foris»"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5024",
+   "archivo": "cnmv-esi-lp-5024-okx.html",
+   "http": "200",
+   "final": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5024",
+   "consultadoUtc": "2026-11-05T08:28:57Z",
+   "bytes": 218224,
+   "sha256": "c42a57df56a8afb46ce24c34989ef6391164245de0fb524aff58640ab0ad200d"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5024&vista=17&lang=es",
+   "archivo": "cnmv-esi-lp-5024-okx-programa.html",
+   "http": "200",
+   "final": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5024&vista=17&lang=es",
+   "consultadoUtc": "2026-11-05T08:28:59Z",
+   "bytes": 227869,
+   "sha256": "9df5ab92ef7575d35c935f546cc1e808fb0c2c6d6618b1185ef166aef932ded6"
+  },
+  {
+   "url": "https://www.okx.com/en-eu/help/okx-to-list-usdc-trading-pairs-for-tokenized-stocks-xiren-and-xasml",
+   "archivo": "okx-anuncio-xiren-xasml.html",
+   "http": "200",
+   "final": "https://www.okx.com/en-eu/help/okx-to-list-usdc-trading-pairs-for-tokenized-stocks-xiren-and-xasml",
+   "consultadoUtc": "2026-11-05T08:29:13Z",
+   "bytes": 83064,
+   "sha256": "9cf1efb4f8af068c278cbcee17db8ffd595b22fd27d4b1ba7bd63fb7a4d3aff4"
+  },
+  {
+   "url": "https://www.okx.com/en-eu/help/oem-key-information-documents-kids",
+   "archivo": "okx-kids.html",
+   "http": "200",
+   "final": "https://www.okx.com/en-eu/help/oem-key-information-documents-kids",
+   "consultadoUtc": "2026-11-05T08:29:13Z",
+   "bytes": 200268,
+   "sha256": "edf7e02025bebd9eeddc7b196506fccd1e0188395d7bad5b57271bfa73af593e"
+  },
+  {
+   "url": "https://www.okx.com/en-eu/help/eea-risk-and-compliance-disclosure",
+   "archivo": "okx-eea-risk-disclosure.html",
+   "http": "200",
+   "final": "https://www.okx.com/en-eu/help/eea-risk-and-compliance-disclosure",
+   "consultadoUtc": "2026-11-05T08:29:14Z",
+   "bytes": 80789,
+   "sha256": "d867402629dce2ed882710dd80ca567ef39727224707470114b1a39b57424f64"
+  },
+  {
+   "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+   "archivo": "kid-nvdax-es.pdf",
+   "http": "200",
+   "final": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+   "consultadoUtc": "2026-11-05T08:29:19Z",
+   "bytes": 225712,
+   "sha256": "b5b06115dd8cd061e9ea36702b048a1a9673b4ff32928c9bd0279b0004004f7a"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+   "archivo": "cnmv-pasaportes-backed.html",
+   "http": "200",
+   "final": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+   "consultadoUtc": "2026-11-05T08:29:28Z",
+   "bytes": 215530,
+   "sha256": "d99d668e84ef3bacc2a96ececf23ba88e3e7c839313649afa8200107db4ab620"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500Z0Q6A5E8BE2B61",
+   "archivo": "cnmv-pasaportes-ondo-gm.html",
+   "http": "200",
+   "final": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500Z0Q6A5E8BE2B61",
+   "consultadoUtc": "2026-11-05T08:29:29Z",
+   "bytes": 215545,
+   "sha256": "f99530c5051bf41534859a5d6cdddb5186db2c5af1234c1bc68b9feeedf61cda"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*Ondo*&wt=json&rows=100&sort=approval_filing_date%20desc",
+   "archivo": "crudo/esma-prospectos-ondo.json",
+   "http": "200",
+   "final": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*Ondo*&wt=json&rows=100&sort=approval_filing_date%20desc",
+   "consultadoUtc": "2026-11-05T08:29:47Z",
+   "bytes": 162378,
+   "sha256": "cb1accda3c9ba90d6563beb2f32b56058597775a992ad06ff8dade6a51377f30"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "archivo": "crudo/esma-prospectos-ondo-gm-sin-ft.json",
+   "http": "200",
+   "final": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "consultadoUtc": "2026-11-05T08:29:48Z",
+   "bytes": 4505,
+   "sha256": "08d7ae3ce3805a0b51c8d3f049b88908ec6eeb96400ee6ab6f0e8611289b1bc8"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "archivo": "ondo-eligibility.md",
+   "http": "200",
+   "final": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "consultadoUtc": "2026-11-05T08:29:58Z",
+   "bytes": 9141,
+   "sha256": "76916fd4a05b595e731a7288f8cffb36620e849478a06b3f8cc815571ba8ed61"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/secondary-market-restrictions.md",
+   "archivo": "ondo-secondary-market-restrictions.md",
+   "http": "200",
+   "final": "https://docs.ondo.finance/ondo-stocks/secondary-market-restrictions.md",
+   "consultadoUtc": "2026-11-05T08:29:58Z",
+   "bytes": 7972,
+   "sha256": "f186c2fd6998ced290715ca8bffcb67a5aa844fd1e18efcbb0bf2097c4f01a0a"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5216",
+   "archivo": "cnmv-esi-lp-5216-assetera.html",
+   "http": "200",
+   "final": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5216",
+   "consultadoUtc": "2026-11-05T08:30:08Z",
+   "bytes": 218092,
+   "sha256": "495ad4e77ff2be03ff401378641195774cf466f94b355b51fe6a269129059a62"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5216&vista=17&lang=es",
+   "archivo": "cnmv-esi-lp-5216-assetera-programa.html",
+   "http": "200",
+   "final": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5216&vista=17&lang=es",
+   "consultadoUtc": "2026-11-05T08:30:09Z",
+   "bytes": 238038,
+   "sha256": "7058b884546f0753b52a86b74efd263c31f97140dfb92aa596ae3148fa24f7ab"
+  },
+  {
+   "url": "https://www.fma.gv.at/en/search-company-database/?cname=Bybit&place=&bic=&category=&per_page=10&submitted=1",
+   "archivo": "fma-at-bybit.html",
+   "http": "200",
+   "final": "https://www.fma.gv.at/en/search-company-database/?cname=Bybit&place=&bic=&category=&per_page=10&submitted=1",
+   "consultadoUtc": "2026-11-05T08:30:20Z",
+   "bytes": 171466,
+   "sha256": "f982be78df36469eb3ff90eae9e13b76b2402a928d51cd40c8dc9c945974f82b"
+  },
+  {
+   "url": "https://www.fma.gv.at/en/search-company-database/?cname=Assetera&place=&bic=&category=&per_page=10&submitted=1",
+   "archivo": "fma-at-assetera.html",
+   "http": "200",
+   "final": "https://www.fma.gv.at/en/search-company-database/?cname=Assetera&place=&bic=&category=&per_page=10&submitted=1",
+   "consultadoUtc": "2026-11-05T08:30:22Z",
+   "bytes": 144667,
+   "sha256": "6df295cd071c3ff0fb5fabfc156d92730cbdb2b8a083f0ab2674ec6c6cee3b6b"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+   "archivo": "crudo/cnmv-listado-esi-eee-lp.html",
+   "http": "200",
+   "final": "https://www.cnmv.es/portal/Consultas/listadoentidad?id=1&tipoent=4",
+   "consultadoUtc": "2026-11-05T08:30:36Z",
+   "bytes": 1991636,
+   "sha256": "ad4959a8b45c98bd0f4a193f17a189d8e283d419165efa71db49b837c22eb239"
+  },
+  {
+   "url": "https://www.bybit.eu/en-EU/",
+   "archivo": "bybit-eu-portada.html",
+   "http": "200",
+   "final": "https://www.bybit.eu/",
+   "consultadoUtc": "2026-11-05T08:31:01Z",
+   "bytes": 184523,
+   "sha256": "f5be3433069d242e2323ae21c8e67c4ac9dade8cb2b95a3047840f245b85cb02"
+  },
+  {
+   "url": "https://crypto.com/document/fccy-tokenised-equities-terms",
+   "archivo": "cryptocom-terms.pdf",
+   "http": "200",
+   "final": "https://crypto.com/document/fccy-tokenised-equities-terms",
+   "consultadoUtc": "2026-11-05T08:31:31Z",
+   "bytes": 217691,
+   "sha256": "1169bff5d9a4deaf72885cf185e5134274089e0534fb43eab0ba8cdd37421c6f"
+  },
+  {
+   "url": "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+   "archivo": "cryptocom-risk.pdf",
+   "http": "200",
+   "final": "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+   "consultadoUtc": "2026-11-05T08:31:32Z",
+   "bytes": 99578,
+   "sha256": "8d5a498fe8787ae05d5911f5d00826b6e97db05a9d31c79aa04f13f87052fe3e"
+  },
+  {
+   "url": "https://crypto.com/eea/financialservices/disclosures",
+   "archivo": "cryptocom-disclosures.headers",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:31:32Z",
+   "bytes": 3562,
+   "sha256": "96aac501759dd07697898a95f1273a8fb4ef6a98e824818b36476c08b3a50e13",
+   "nota": "Cabeceras: 301 → crypto.com/ y 302 → crypto.com/us"
+  },
+  {
+   "url": "https://help.crypto.com/en/articles/15855813-about-crypto-com-tokenized-stocks-eea",
+   "archivo": "cryptocom-help-about.html",
+   "http": "200",
+   "final": "https://help.crypto.com/en/articles/15855813-about-crypto-com-tokenized-stocks-eea",
+   "consultadoUtc": "2026-11-05T08:31:48Z",
+   "bytes": 134255,
+   "sha256": "a30a7dc870ffcb1f544c0699c464cf41db93706cb68d4ff5ba542e7f8665867b"
+  },
+  {
+   "url": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+   "archivo": "cryptocom-nota-eea.html",
+   "http": "200",
+   "final": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+   "consultadoUtc": "2026-11-05T08:31:49Z",
+   "bytes": 135114,
+   "sha256": "65e8aaef4b9866172e33a55c8cb40b24dc3d128a0175306b078c19af34b5cc50"
+  },
+  {
+   "url": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "archivo": "crudo/ft-onchain-prospectus-en.pdf",
+   "http": "200",
+   "final": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "consultadoUtc": "2026-11-05T08:32:00Z",
+   "bytes": 1288473,
+   "sha256": "ec0458b62412448cca96249786b0c3453a7459e3bf9151a89d1cd1ac881dade9"
+  },
+  {
+   "url": "https://www.franklintempleton.com.es/download/es-es/key-information-document/4c549e34-cafe-470f-a8eb-a0dcd04a9f72/PRIIPSEU_LU3258450587_es_ES.pdf",
+   "archivo": "ft-kid-es-LU3258450587.pdf",
+   "http": "200",
+   "final": "https://www.franklintempleton.com.es/download/es-es/key-information-document/4c549e34-cafe-470f-a8eb-a0dcd04a9f72/PRIIPSEU_LU3258450587_es_ES.pdf",
+   "consultadoUtc": "2026-11-05T08:32:01Z",
+   "bytes": 166539,
+   "sha256": "1b9efc78b570d432ce3bce763d0a207fe1b5c032dcdd2c85c4c6b5a084f9a75a"
+  },
+  {
+   "url": "https://itunes.apple.com/lookup?id=1551677725&country=es",
+   "archivo": "crudo/itunes-lookup-benji-es.json",
+   "http": "200",
+   "final": "https://itunes.apple.com/lookup?id=1551677725&country=es",
+   "consultadoUtc": "2026-11-05T08:32:02Z",
+   "bytes": 42,
+   "sha256": "7f5ce663b726607eae2fde2a6dc438052ac0d1681e636de7cc3377c0bb77e047"
+  },
+  {
+   "url": "https://itunes.apple.com/lookup?id=1551677725&country=us",
+   "archivo": "crudo/itunes-lookup-benji-us.json",
+   "http": "200",
+   "final": "https://itunes.apple.com/lookup?id=1551677725&country=us",
+   "consultadoUtc": "2026-11-05T08:32:02Z",
+   "bytes": 7133,
+   "sha256": "147da76c0a0a5e89f047a2106b510e4807636547ca327471f2ecbacd1d3af9b3"
+  },
+  {
+   "url": "https://www.franklintempleton.com.es/fondos/fondos-monetarios/fondos/41372/PX1/franklin-on-chain-u-s-government-liquidity-fund/",
+   "archivo": "ft-ficha-fondo-render.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:32:32Z",
+   "bytes": 12765,
+   "sha256": "d3a4cc0b98ed9cba46b166fbdb891da7775eabc47021a439b6bb0e17125a996f",
+   "nota": "Playwright: texto renderizado"
+  },
+  {
+   "url": "https://marketplace.assetera.com/en",
+   "archivo": "assetera-marketplace-render.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:32:57Z",
+   "bytes": 3897,
+   "sha256": "0c9a0025627ca5495ed78a051334f6a35feb4482663cc2abc273c6d24d8aba83",
+   "nota": "Playwright: vista pública sin sesión"
+  },
+  {
+   "url": "https://marketplace.assetera.com/en",
+   "archivo": "assetera-marketplace-busqueda-ondo.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:34:46Z",
+   "bytes": 3954,
+   "sha256": "d8a645a652bcdd3e177d1f6f33561267816007aecf9a3024730bc7eb63986323",
+   "nota": "Playwright: búsqueda «Ondo» en el marketplace"
+  },
+  {
+   "url": "https://www.assetera.com/media/assetera-x-ondo",
+   "archivo": "assetera-media-assetera-x-ondo.html",
+   "http": "200",
+   "final": "https://www.assetera.com/media/assetera-x-ondo",
+   "consultadoUtc": "2026-11-05T08:34:55Z",
+   "bytes": 71067,
+   "sha256": "3c563bbd473fd633c8cef56a8f974d02553b223010ab0157f77807df8c77101f"
+  },
+  {
+   "url": "https://marketplace.assetera.com/en/terms",
+   "archivo": "assetera-marketplace-terms-render.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:35:18Z",
+   "bytes": 3211,
+   "sha256": "ceb4655e36b3df487a5ac67a8fbbd283aecd2b80e7a5c32a6adf600bdc59d9d7",
+   "nota": "Playwright"
+  },
+  {
+   "url": "https://marketplace.assetera.com/en/help",
+   "archivo": "assetera-marketplace-help-render.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:35:32Z",
+   "bytes": 619,
+   "sha256": "e2c945f0f7f8879448210b9d304fc1bef69b43847f15c51cdb19ab131b79ac32",
+   "nota": "Playwright"
+  },
+  {
+   "url": "https://marketplace.assetera.com/en/trading?id=648",
+   "archivo": "assetera-token-seagate-ondo-render.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:35:59Z",
+   "bytes": 2692,
+   "sha256": "9663a2cfb71c89ffe6b0f1c4d10dbb966329f62b745f313276d2d612deb4ef18",
+   "nota": "Playwright: ficha de STXon (Seagate, Ondo) sin sesión"
+  },
+  {
+   "url": "https://www.mfsa.mt/financial-services-register/",
+   "archivo": "mfsa-registro-okx-render.txt",
+   "http": "403",
+   "consultadoUtc": "2026-11-05T08:37:25Z",
+   "bytes": 812,
+   "sha256": "300dd71be998a0c365494aafe2d13bda39cff7a9c957144a17b8431e5d26bb60",
+   "nota": "Playwright: HTTP 403, bloqueo de Cloudflare"
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+   "archivo": "crudo/esma-mica-ARTZZ.csv",
+   "http": "200",
+   "final": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+   "consultadoUtc": "2026-11-05T08:37:35Z",
+   "bytes": 276,
+   "sha256": "fa1ef4da123e3d49642c69f90a81a88f6c2cc2a0b9471b2108e4dfc635ca7c67"
+  },
+  {
+   "url": "https://www.lcx.com/earn/",
+   "archivo": "crudo/lcx-earn.html",
+   "http": "200",
+   "final": "https://lcx.com/en/earn",
+   "consultadoUtc": "2026-11-05T08:37:36Z",
+   "bytes": 312973,
+   "sha256": "292d1442dcc85c2a5abd3bfcecedfce3e01f07a1922ae49e999980416b9b19db"
+  },
+  {
+   "url": "https://stasseteraassetsprod.blob.core.windows.net/token-documents/644/0a68a7a78381744689b98963a0d0774b557540685aae1f8902b7d6ec3c4fcd9f.pdf",
+   "archivo": "assetera-kid-stxon.pdf",
+   "http": "200",
+   "final": "https://stasseteraassetsprod.blob.core.windows.net/token-documents/644/0a68a7a78381744689b98963a0d0774b557540685aae1f8902b7d6ec3c4fcd9f.pdf",
+   "consultadoUtc": "2026-11-05T08:38:28Z",
+   "bytes": 129266,
+   "sha256": "0a68a7a78381744689b98963a0d0774b557540685aae1f8902b7d6ec3c4fcd9f"
+  },
+  {
+   "url": "https://stasseteraassetsprod.blob.core.windows.net/token-documents/644/b22d60dbdeeff75af93d0b1c1d1d1e566092bc7c24e58aee429e280faff91bbb.pdf",
+   "archivo": "crudo/assetera-termsheet-stxon.pdf",
+   "http": "200",
+   "final": "https://stasseteraassetsprod.blob.core.windows.net/token-documents/644/b22d60dbdeeff75af93d0b1c1d1d1e566092bc7c24e58aee429e280faff91bbb.pdf",
+   "consultadoUtc": "2026-11-05T08:38:29Z",
+   "bytes": 2433406,
+   "sha256": "b22d60dbdeeff75af93d0b1c1d1d1e566092bc7c24e58aee429e280faff91bbb"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-global-markets/eligibility",
+   "archivo": "ondo-global-markets-eligibility.html",
+   "http": "200",
+   "final": "https://docs.ondo.finance/ondo-stocks/eligibility",
+   "consultadoUtc": "2026-11-05T08:38:58Z",
+   "bytes": 189823,
+   "sha256": "ab57628f71201127a66c506a9c1e1e0c8100c3a14acee475e7f08a1796fc1c1d"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/important-notes.md",
+   "archivo": "ondo-important-notes.md",
+   "http": "200",
+   "final": "https://docs.ondo.finance/ondo-stocks/important-notes.md",
+   "consultadoUtc": "2026-11-05T08:38:59Z",
+   "bytes": 9269,
+   "sha256": "c8244e625f61e2e84801511da2c311c1da137bd25c067d3808ae28a761c876f9"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera.aspx?nif=N0363289J&vista=18",
+   "archivo": "cnmv-iic-2284-comercializadoras.html",
+   "http": "200",
+   "final": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0363289J&vista=18",
+   "consultadoUtc": "2026-11-05T08:39:12Z",
+   "bytes": 152440,
+   "sha256": "31ac2cdfd72131ef4bae65ac7492128e9900503971dd297109898d2666ba09b6"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4485",
+   "archivo": "cnmv-esi-lp-4485-foris.html",
+   "http": "200",
+   "final": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=4485",
+   "consultadoUtc": "2026-11-05T08:39:13Z",
+   "bytes": 218123,
+   "sha256": "c2496d5760de28e23acf3efdb5fa6f497626e344b3df2677c3afd78f55de18c3"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": "cnmv-advertencias-franklin.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:39:23Z",
+   "bytes": 1772,
+   "sha256": "1bd01ee2d2c546f8daaea092e51adb320293c6bdcc8f5166d0cdf56c702a51b8",
+   "nota": "Playwright: búsqueda «Franklin»"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": "cnmv-advertencias-assetera.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:39:31Z",
+   "bytes": 1440,
+   "sha256": "0fa8998927cd7916bdb1e4f47d75615fc67194de12cbc687e7e27b7f41a4b58b",
+   "nota": "Playwright: búsqueda «Assetera»"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": "cnmv-advertencias-bybit.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:39:39Z",
+   "bytes": 1765,
+   "sha256": "8442e4558f3379c7643fd5df1da4a92c637f5e2b6c3a31b6cce1eca94ae23ea2",
+   "nota": "Playwright: búsqueda «Bybit»"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": "cnmv-advertencias-ondo.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-05T08:39:46Z",
+   "bytes": 2634,
+   "sha256": "84fcdeb2dffcea87acc6277c93f546f4b48c41ca58d7b5695066d61c425b0de4",
+   "nota": "Playwright: búsqueda «Ondo»"
+  }
+ ]
+}

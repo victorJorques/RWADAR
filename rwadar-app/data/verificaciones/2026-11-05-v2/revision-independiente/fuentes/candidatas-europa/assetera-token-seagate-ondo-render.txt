@@ -1,0 +1,109 @@
+URL: https://marketplace.assetera.com/en/trading?id=648
+ConsultadoUtc: 2026-11-05T08:35:59.840Z
+
+Skip to main content
+Sign in
+Seagate (Ondo Tokenized)
+STXon / USDC
+
+Seagate (Ondo Tokenized)
+
+Tokenized Security
+
+1 STXon ≈ 1.0027 STX shares
+
+Price	24h Change
+
+541.68 USDC
+	
+10.83%
+Buy
+Sell
+Amount to spend
+USDC
+
+The platform fee is added on top of this amount.
+
+You receive at least:
+—
+Market price (indicative):
+541.68 USDC
+Fee:
+—
+Total:
+—
+
+* Gas fee is not included
+
+Sign in
+STXon
+Seagate (Ondo Tokenized)
+Primary
+Ondo Global Markets
+
+STXon (hereinafter the “Product”) is a tracker certificate issued on the Ethereum Mainnet and other blockchain networks which the Issuer may choose to issue on in its sole discretion, a Securities Ledger supported by the Product. The Product is engineered to mirror the price movements of the ordinary shares of SEAGATE TECHNOLOGY HOLDINGS PUBLIC LIMITED COMPANY (“Underlying”). The fundamental investment goal of the Product is to replicate the return performance of the Underlying, after the relevant fees and expenses. The Product offers several key advantages, such as faster transaction speeds compared to traditional securities, and it is specifically developed for offering the Investors exposure to the performance of the Underlying while simultaneously leveraging the advantages of the blockchain technology such as enhanced transparency, security, and ease of transfer. Below, the information on the Underlying: • issuer: SEAGATE TECHNOLOGY HOLDINGS PUBLIC LIMITED COMPANY; • name: SEAGATE TECHNOLOGY HOLDINGS PUBLIC LIMITED COMPANY; • ISIN: IE00BKVD2N49; and • Ticker STX. The denomination of the Product is US Dollar (“USD”), and the base currency referred to the Underlying is USD. The Product can be transferred freely to other investors only via wallets and the relevant Securities Ledger and is collateralized by the Underlying and any Additional Collateral to fulfil the payment obligations of the Issuer.
+
+Show more
+Prospectus
+First Supplement
+Tokenization Terms
+Term Sheet
+Website
+Key Information Document
+STXon / USDC
+Ondo Global Markets · indicative price, no trading volume · as of 16 seconds ago
+5m
+15m
+30m
+1h
+1d
+	
+	
+
+	
+	
+My activity
+Open orders
+Offers
+Transactions
+
+Market activity updated: 0 rows
+
+Side
+	
+Amount (STXon)
+	
+Price (USDC)
+	
+Status
+	
+Created
+	
+Expires
+	
+
+Sign in to see your transaction history
+Factsheet
+Instrument
+STXon · Equity & equity-like instruments
+Status
+active
+Markets
+Primary
+Chain
+Ethereum
+Contract
+0xb5...51ff
+Quote currency
+USDC
+Market opens
+—
+Primary sale end
+—
+EN
+Terms and Conditions
+Privacy Policy
+Need help?
+Corporate Governance
+
+Assetera 2026 © All Rights Reserved

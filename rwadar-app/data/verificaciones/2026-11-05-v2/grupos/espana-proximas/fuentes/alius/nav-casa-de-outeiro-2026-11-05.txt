@@ -1,6 +1,7 @@
 URL: https://aliuscap.com/projects/casa-de-outeiro
 URL final: https://aliuscap.com/projects/casa-de-outeiro
 Consulta UTC: 2026-11-05T08:01:39Z
+Nota: nombres de personas físicas recortados por RWAdar.
 HTTP: 200
 
 Consentimiento
@@ -105,7 +106,7 @@ Casa de Outeiro nace en Quiroga, en la parte más oriental de la Ribeira Sacra, 
 
 
 
-En 2019, doña Mercedes Maseda Fole, última propietaria de La Casa, confió en Juan Luis Vázquez para devolverla a la vida. La casa solariega del siglo XIV, abandonada desde los años ochenta, es el eje patrimonial del proyecto. Recuperarla no significa únicamente rehabilitar unas ruinas: significa conservar un legado histórico y crear nuevas oportunidades para el territorio.
+En 2019, [persona física], última propietaria de La Casa, confió en [persona física] para devolverla a la vida. La casa solariega del siglo XIV, abandonada desde los años ochenta, es el eje patrimonial del proyecto. Recuperarla no significa únicamente rehabilitar unas ruinas: significa conservar un legado histórico y crear nuevas oportunidades para el territorio.
 
 
 

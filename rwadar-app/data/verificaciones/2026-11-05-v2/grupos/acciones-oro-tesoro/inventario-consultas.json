@@ -273,22 +273,26 @@
  {
   "url": "https://eu.kraken.com/xstocks",
   "urlFinal": null,
-  "archivo": "fuentes/kraken-eu-xstocks-en.html",
+  "archivo": "fuentes/kraken-eu-xstocks-en.txt",
   "http": 200,
   "contentType": "text/html; charset=utf-8",
   "consultadoUtc": "2026-11-05T08:04:41Z",
   "bytes": 1422413,
-  "sha256": "18daca12946cd4f1e6bd5f5cf20eb737d231dfa0066ee016205dac316ec08f17"
+  "sha256": "18daca12946cd4f1e6bd5f5cf20eb737d231dfa0066ee016205dac316ec08f17",
+  "sha256Texto": "eefad663e0fcd62a6f0562a44be6900d043a915405da5eeaf17293c64aeb3db2",
+  "nota": "HTML original (>1 MB) no guardado; se conserva el texto extraído. sha256 y bytes son del HTML descargado."
  },
  {
   "url": "https://eu.kraken.com/es/xstocks",
   "urlFinal": null,
-  "archivo": "fuentes/kraken-eu-xstocks-es.html",
+  "archivo": "fuentes/kraken-eu-xstocks-es.txt",
   "http": 200,
   "contentType": "text/html; charset=utf-8",
   "consultadoUtc": "2026-11-05T08:04:42Z",
   "bytes": 1418939,
-  "sha256": "a8e93d8c826d490649952f089c8c648b57450a13641fa50ca66d6b710620ac09"
+  "sha256": "a8e93d8c826d490649952f089c8c648b57450a13641fa50ca66d6b710620ac09",
+  "sha256Texto": "846b81c406f39a7f97ebd0ed29615354997bd7bb36583e1e71ca1de18e8a2c90",
+  "nota": "HTML original (>1 MB) no guardado; se conserva el texto extraído. sha256 y bytes son del HTML descargado."
  },
  {
   "url": "https://eu.kraken.com/legal/risk-disclosure",
@@ -303,42 +307,48 @@
  {
   "url": "https://support.kraken.com/articles/xstocks-availability",
   "urlFinal": null,
-  "archivo": "fuentes/kraken-support-xstocks-availability-en.html",
+  "archivo": "fuentes/kraken-support-xstocks-availability-en.txt",
   "http": 200,
   "contentType": "text/html; charset=utf-8",
   "consultadoUtc": "2026-11-05T08:05:06Z",
   "bytes": 4167223,
-  "sha256": "476cf31031861ecffc4b35a92227640fd6c2b6cf680cae193efc8196ad1daff4"
+  "sha256": "476cf31031861ecffc4b35a92227640fd6c2b6cf680cae193efc8196ad1daff4",
+  "sha256Texto": "2bcbada6554cea2829bc5a09d711419646f247af1a72b4d2b5a3dcead56513c6",
+  "nota": "HTML original (>1 MB) no guardado; se conserva el texto extraído. sha256 y bytes son del HTML descargado."
  },
  {
   "url": "https://support.kraken.com/es-es/articles/xstocks-availability",
   "urlFinal": "https://support.kraken.com/articles/xstocks-availability",
-  "archivo": "fuentes/kraken-support-xstocks-availability-es.html",
+  "archivo": "fuentes/kraken-support-xstocks-availability-en.txt",
   "http": 200,
   "contentType": "text/html; charset=utf-8",
   "consultadoUtc": "2026-11-05T08:05:06Z",
   "bytes": 4167223,
-  "sha256": "476cf31031861ecffc4b35a92227640fd6c2b6cf680cae193efc8196ad1daff4"
+  "sha256": "476cf31031861ecffc4b35a92227640fd6c2b6cf680cae193efc8196ad1daff4",
+  "nota": "La URL /es-es/ redirige a la general y sirve el mismo HTML (mismo sha256) que la consulta anterior; texto extraído (en español por Accept-Language) en el archivo indicado. HTML no guardado (>1 MB)."
  },
  {
   "url": "https://support.kraken.com/articles/xstocks-faq",
   "urlFinal": null,
-  "archivo": "fuentes/kraken-support-xstocks-faq-en.html",
+  "archivo": "fuentes/kraken-support-xstocks-faq-en.txt",
   "http": 200,
   "contentType": "text/html; charset=utf-8",
   "consultadoUtc": "2026-11-05T08:05:07Z",
   "bytes": 1105352,
-  "sha256": "0dc21ccde4e4ea8be3d65c96d9691b57a078ab32347e451f4bbc925bceefccaf"
+  "sha256": "0dc21ccde4e4ea8be3d65c96d9691b57a078ab32347e451f4bbc925bceefccaf",
+  "sha256Texto": "ec242d97b9c7716af1a967455919918d54af32f53e318d2403a811177fd3276f",
+  "nota": "HTML original (>1 MB) no guardado; se conserva el texto extraído. sha256 y bytes son del HTML descargado."
  },
  {
   "url": "https://support.kraken.com/es-es/articles/xstocks-faq",
   "urlFinal": "https://support.kraken.com/articles/xstocks-faq",
-  "archivo": "fuentes/kraken-support-xstocks-faq-es.html",
+  "archivo": "fuentes/kraken-support-xstocks-faq-en.txt",
   "http": 200,
   "contentType": "text/html; charset=utf-8",
   "consultadoUtc": "2026-11-05T08:05:07Z",
   "bytes": 1105352,
-  "sha256": "0dc21ccde4e4ea8be3d65c96d9691b57a078ab32347e451f4bbc925bceefccaf"
+  "sha256": "0dc21ccde4e4ea8be3d65c96d9691b57a078ab32347e451f4bbc925bceefccaf",
+  "nota": "La URL /es-es/ redirige a la general y sirve el mismo HTML (mismo sha256) que la consulta anterior; texto extraído (en español por Accept-Language) en el archivo indicado. HTML no guardado (>1 MB)."
  },
  {
   "url": "https://www.kraken.com/features/fee-schedule",
@@ -354,12 +364,14 @@
  {
   "url": "https://www.kraken.com/es-es/features/fee-schedule",
   "urlFinal": "https://www.kraken.com/es/features/fee-schedule",
-  "archivo": "fuentes/kraken-fee-schedule-es.html",
+  "archivo": "fuentes/kraken-fee-schedule-es.txt",
   "http": 200,
   "contentType": "text/html; charset=utf-8",
   "consultadoUtc": "2026-11-05T08:05:08Z",
   "bytes": 1506763,
-  "sha256": "ca32b1ca27082bb63cc9e50a581094ac33d99f9c9b892f30f77693a8c1061ca8"
+  "sha256": "ca32b1ca27082bb63cc9e50a581094ac33d99f9c9b892f30f77693a8c1061ca8",
+  "sha256Texto": "51664e65c37b7c8678856fc40c3b08f594ea71bc2cc8baa420d8f0123a7d7b01",
+  "nota": "HTML original (>1 MB) no guardado; se conserva el texto extraído. sha256 y bytes son del HTML descargado."
  },
  {
   "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
@@ -394,12 +406,14 @@
  {
   "url": "https://www.kraken.com/features/fee-schedule",
   "urlFinal": null,
-  "archivo": "fuentes/kraken-fee-schedule-en.html",
+  "archivo": "fuentes/kraken-fee-schedule-en.txt",
   "http": 200,
   "contentType": "text/html; charset=utf-8",
   "consultadoUtc": "2026-11-05T08:05:45Z",
   "bytes": 1457791,
-  "sha256": "46a3836ded0da6705b4658fc8ef2fe9b7161db9a2ee812b904b5c763a7706517"
+  "sha256": "46a3836ded0da6705b4658fc8ef2fe9b7161db9a2ee812b904b5c763a7706517",
+  "sha256Texto": "667c860c05c4ea41253352f022e5bbd79ed7a8cfbf38b1a9a8676bb78ea7c3bc",
+  "nota": "HTML original (>1 MB) no guardado; se conserva el texto extraído. sha256 y bytes son del HTML descargado."
  },
  {
   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Kraken",
@@ -470,5 +484,341 @@
   "consultadoUtc": "2026-11-05T08:06:06Z",
   "bytes": 217724,
   "sha256": "79d6ac43e4debd6c079a7528bc975564be78627b7c38706cfe2202aa51acf079"
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/#/home",
+  "urlFinal": null,
+  "archivo": "fuentes/prosegur-app-home.json",
+  "http": 200,
+  "contentType": "application/json (texto renderizado)",
+  "consultadoUtc": "2026-11-05T08:10:14Z",
+  "bytes": 1213,
+  "sha256": "284d47f637738d7112f248fe1ed64ca7e8774d9a12572e04f5174731791c73f2",
+  "metodo": "playwright-chromium innerText",
+  "sha256TextoVisible": "40a7f09265f5a5ac9ebce09876a5e506c8e82ebfdfaa5dd98ec7f5e40f60f8bd"
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+  "urlFinal": null,
+  "archivo": "fuentes/prosegur-terms-service.json",
+  "http": 200,
+  "contentType": "application/json (texto renderizado)",
+  "consultadoUtc": "2026-11-05T08:10:32Z",
+  "bytes": 73365,
+  "sha256": "865bd8a578f68b10604ec31a7009518a0ecef8642c82f530d13b58938575c937",
+  "metodo": "playwright-chromium innerText",
+  "sha256TextoVisible": "7351083badb1b41ceedec18825bf73f8d1df1434cf1ae21cfd7965f598471407"
+ },
+ {
+  "url": "https://www.prosegurcrypto.com/digital-gold",
+  "urlFinal": null,
+  "archivo": "fuentes/prosegur-digital-gold-render.json",
+  "http": 200,
+  "contentType": "application/json (texto renderizado)",
+  "consultadoUtc": "2026-11-05T08:10:57Z",
+  "bytes": 8689,
+  "sha256": "b1330a2b55845dea0e294c3b7faa393f8660b36cb32ee114bb41be908ebf47e2",
+  "metodo": "playwright-chromium innerText",
+  "sha256TextoVisible": "d45cf8b8b4d51a1a48ad4fd6b00de2ea8182562e3df478af2dcca94f7b5b796d"
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/transparency",
+  "urlFinal": null,
+  "archivo": "fuentes/prosegur-transparency-render.json",
+  "http": 200,
+  "contentType": "application/json (texto renderizado)",
+  "consultadoUtc": "2026-11-05T08:11:14Z",
+  "bytes": 2469,
+  "sha256": "b7bd57b639e355e4a6007bbd7d10c1ac8591d2bfbd97b98b460088103bd1eb01",
+  "metodo": "playwright-chromium innerText",
+  "sha256TextoVisible": "d5bb7e0b498588354e22fea1f2472eb1862c4c9434d83e94c77765bef752aa64"
+ },
+ {
+  "url": "https://www.prosegurcrypto.com/digital-gold",
+  "urlFinal": null,
+  "archivo": "fuentes/prosegur-digital-gold.html",
+  "http": 200,
+  "contentType": "text/html;charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:11:26Z",
+  "bytes": 75252,
+  "sha256": "72f8f02e40dd70cd6e11c674cc3dbf75b96fbbbce69d32239eee420cc219eeea"
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/transparency",
+  "urlFinal": null,
+  "archivo": "fuentes/prosegur-transparency.html",
+  "http": 200,
+  "contentType": "text/html;charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:11:26Z",
+  "bytes": 27715,
+  "sha256": "2e78440c1d8e159fe311882e74ea73e502e9437ffe8e04d05ed7f9fa5c115e3f"
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/about-us/faqs",
+  "urlFinal": null,
+  "archivo": "fuentes/prosegur-faqs.html",
+  "http": 200,
+  "contentType": "text/html;charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:11:27Z",
+  "bytes": 46904,
+  "sha256": "9e0d523a3794d15f0f442c0ee9eb1320ae93dfddeaebf75588d75eb92ac67cc2"
+ },
+ {
+  "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+  "urlFinal": null,
+  "archivo": "fuentes/crudo/esma-casps.csv",
+  "http": 200,
+  "contentType": "text/csv",
+  "consultadoUtc": "2026-11-05T08:11:28Z",
+  "bytes": 191716,
+  "sha256": "14d19dfd3bb4bec5883e71e0d2c056dcc7807849ed1a871cb6788caae02a1f99"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur+Custodia",
+  "urlFinal": null,
+  "archivo": "fuentes/cnmv-advertencias-prosegur-custodia.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-05T08:11:50Z",
+  "bytes": 212423,
+  "sha256": "c1003354e870ab0f1691d5bf544583b8c72c7f06aa7444ced8348a0255a92a53"
+ },
+ {
+  "url": "https://midas.app/mtbill",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-app-mtbill.html",
+  "http": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:12:40Z",
+  "bytes": 5578,
+  "sha256": "3302cc0c76fb0e9aca2e0754e1ba06fe3dbb4ba317bb92308503c892cd6a2876",
+  "nota": "Cloudflare esperado"
+ },
+ {
+  "url": "https://midas.app/llms.txt",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-app-llms.txt",
+  "http": 200,
+  "contentType": "text/plain; charset=utf-8",
+  "consultadoUtc": "2026-11-05T08:12:40Z",
+  "bytes": 8256,
+  "sha256": "45bbcad034fe94fbd5d949c84e25dd6e108deb0864706957a93870504631a984"
+ },
+ {
+  "url": "https://docs.midas.app/llms.txt",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-docs-llms.txt",
+  "http": 200,
+  "contentType": "text/markdown; charset=utf-8",
+  "consultadoUtc": "2026-11-05T08:12:40Z",
+  "bytes": 5537,
+  "sha256": "4defa0d35d2f7675b0991aac173ca6bec89b61002b77da705e3fa132ec832e6c"
+ },
+ {
+  "url": "https://docs.midas.app/llms-full.txt",
+  "urlFinal": null,
+  "archivo": "fuentes/crudo/midas-docs-llms-full.txt",
+  "http": 200,
+  "contentType": "text/markdown; charset=utf-8",
+  "consultadoUtc": "2026-11-05T08:12:41Z",
+  "bytes": 217884,
+  "sha256": "aca8b6c7501587594d206d89edb086110ad086c11ad4d245f88890e3ac99932a",
+  "nota": "Movido a crudo/: contiene enlaces de GitBook con token= (escáner de secretos). SHA-256 idéntico al 01/11 y al 03/11."
+ },
+ {
+  "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-docs-legal-mtbill.html",
+  "http": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:12:41Z",
+  "bytes": 5782,
+  "sha256": "8fd599e72b086826414f5743bac60ad405210fa5e637d61a3f3c67492775b97c"
+ },
+ {
+  "url": "https://docs.midas.app/legal/eligibility-and-compliance",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-docs-eligibility.html",
+  "http": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:12:42Z",
+  "bytes": 5724,
+  "sha256": "cc46add53fb201c99e492963614dcfac24a60f528751f8b0936c2ea538658905"
+ },
+ {
+  "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill.md",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-docs-resources_legal-product-documentation_mtbill.md",
+  "http": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:12:56Z",
+  "bytes": 5791,
+  "sha256": "fe8bdc5957318ff21b7f159b2fdddfd13a69753a0f44d6f989c30082ae319a45"
+ },
+ {
+  "url": "https://docs.midas.app/legal/eligibility-and-compliance.md",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-docs-legal_eligibility-and-compliance.md",
+  "http": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:12:56Z",
+  "bytes": 5733,
+  "sha256": "35a251324da68f153ebd4c38350db7aac07b9ba69bca1dda2edeff3517a93882"
+ },
+ {
+  "url": "https://docs.midas.app/resources/legal-documents/prospectus-documents.md",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-docs-resources_legal-documents_prospectus-documents.md",
+  "http": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:12:56Z",
+  "bytes": 5797,
+  "sha256": "bb7a229177ba6b0aec8470496e522496a77b5e76ce76b2006379ae9be7a144ae"
+ },
+ {
+  "url": "https://docs.midas.app/resources/legal-product-documentation/issuer-documents.md",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-docs-resources_legal-product-documentation_issuer-documents.md",
+  "http": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:12:57Z",
+  "bytes": 5821,
+  "sha256": "d66837d0c71b3e61bc5be6ca7273902428ea07156e3ad0e37b60990159cd9061"
+ },
+ {
+  "url": "https://docs.midas.app/legal/legal-structure.md",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-docs-legal_legal-structure.md",
+  "http": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:12:57Z",
+  "bytes": 5679,
+  "sha256": "b7cd517ef825de285b59e9c104d3427d534899600b1d6cc9f4b1eaef71eb737d"
+ },
+ {
+  "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+  "urlFinal": null,
+  "archivo": "fuentes/mtbill-final-terms-20260717.pdf",
+  "http": 200,
+  "contentType": "application/pdf",
+  "consultadoUtc": "2026-11-05T08:13:31Z",
+  "bytes": 1248073,
+  "sha256": "b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a"
+ },
+ {
+  "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media",
+  "urlFinal": null,
+  "archivo": "fuentes/mtbill-kid-es.pdf",
+  "http": 200,
+  "contentType": "application/pdf",
+  "consultadoUtc": "2026-11-05T08:13:31Z",
+  "bytes": 154610,
+  "sha256": "6c22870917cda81ef3f28b01a6ea857e7e024163f3910c0cc2a36dc9e87da545"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500BB00BN6D2B7C48*&wt=json&rows=200&sort=approval_filing_date%20desc",
+  "urlFinal": null,
+  "archivo": "fuentes/crudo/esma-priii-midas-todos.json",
+  "http": 200,
+  "contentType": "application/json;charset=utf-8",
+  "consultadoUtc": "2026-11-05T08:13:40Z",
+  "bytes": 57763,
+  "sha256": "b9478ce1a29a8f7d6ece62a178973860e34f6110f00682468e2c2a9b5dee0f3c"
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:CH1371002986&wt=json&rows=50&sort=approval_filing_date%20desc",
+  "urlFinal": null,
+  "archivo": "fuentes/crudo/esma-priii-mtbill-isin.json",
+  "http": 200,
+  "contentType": "application/json;charset=utf-8",
+  "consultadoUtc": "2026-11-05T08:13:43Z",
+  "bytes": 4419,
+  "sha256": "8c1cd9f6d3fe1d56effbca59dda340805ee338e932e997301dd8bf0d1a9c5a2f"
+ },
+ {
+  "url": "https://ethereum-rpc.publicnode.com (eth_call, solo lectura)",
+  "metodo": "POST",
+  "cuerpo": "eth_call x16 + eth_blockNumber",
+  "archivo": "fuentes/crudo/onchain-mtbill-20261105.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-05T08:14:18Z",
+  "bytes": 5116,
+  "sha256": "edf68d36fed48cc4db6a43ce19d8d1722160ca94b35f6061ff2d237c86723b02",
+  "nota": "lecturas en cadena de mTBILL: token, oráculo, vault de emisión y de reembolso"
+ },
+ {
+  "url": "https://midas.app/",
+  "urlFinal": null,
+  "archivo": "fuentes/crudo/midas-app-index.html",
+  "http": 403,
+  "contentType": "text/html; charset=UTF-8",
+  "consultadoUtc": "2026-11-05T08:14:29Z",
+  "bytes": 5560,
+  "sha256": "e22ed7fe4bc59b54624084e726ab112c71d9f68731ea182d6ae2d7cb0cb645fb"
+ },
+ {
+  "url": "https://midas.app/llms-full.txt",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-app-llms-full.txt",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-05T08:14:29Z",
+  "bytes": 15445,
+  "sha256": "ca6dea7085f1b27225a5f14191bc441269b7f271d691e082290cd17fe2a893f0",
+  "nota": "La ruta devuelve el index SPA de midas.app (HTML), no un llms-full; sirve para ver qué bundle JS carga hoy (main-C67ipI_t.js)."
+ },
+ {
+  "url": "https://midas.app/assets/main-C67ipI_t.js",
+  "urlFinal": null,
+  "archivo": "fuentes/crudo/midas-app-main-C67ipI_t.js",
+  "http": 200,
+  "contentType": "application/javascript",
+  "consultadoUtc": "2026-11-05T08:14:42Z",
+  "bytes": 1948204,
+  "sha256": "19e9c54a58408f5839be6a884aacafb1cab8ea0cea0197435fe60f3aa8b63f2b",
+  "nota": "bundle JS público de midas.app servido hoy (referenciado por el index SPA)"
+ },
+ {
+  "url": "https://midas.app/mtbill",
+  "urlFinal": null,
+  "archivo": "fuentes/midas-app-mtbill-render.json",
+  "http": null,
+  "contentType": "application/json (texto renderizado)",
+  "consultadoUtc": "2026-11-05T08:15:14Z",
+  "bytes": 663,
+  "sha256": "2203502c2f8391f416ff1a7e9c3feae758b201a8d778b0eac7a1a70ae6853981",
+  "metodo": "playwright-chromium innerText",
+  "sha256TextoVisible": "3895b34bfca10324d7f1e51e756a3bfa8fe7f1c54f4fe5e81dc14ca7c4e50cb6",
+  "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://midas.app/mtbill\", waiting until \"networkidle\"\u001b[22m\n",
+  "nota": "Navegador: desafío de Cloudflare («Verificación de seguridad en curso», Ray ID a55a68d5fc1ad6fc); tiempo agotado a los 60 s. Bloqueo registrado."
+ },
+ {
+  "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Midas&registerNumber=&category=&searchType=ALL&law=&sortColumn=name&ascending=true&page=0",
+  "urlFinal": null,
+  "archivo": "fuentes/crudo/fma-li-api-search-Midas.json",
+  "http": 200,
+  "contentType": "application/json;charset=utf-8",
+  "consultadoUtc": "2026-11-05T08:16:21Z",
+  "bytes": 48,
+  "sha256": "d01953a2c338e43cb5b682030a96fb7ddd5a12cf6692ce46cdcd60c46853693b"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas+Software",
+  "urlFinal": null,
+  "archivo": "fuentes/cnmv-advertencias-midas-software.html",
+  "http": 200,
+  "contentType": "text/html; charset=utf-8",
+  "consultadoUtc": "2026-11-05T08:16:22Z",
+  "bytes": 212357,
+  "sha256": "18e4c804989387cef6a8cfabf209f3ffd8756345766ae270b43b687fc60389ae"
+ },
+ {
+  "url": "WebSearch: «xStocks Kraken EU final terms public offer Spain November 2026»",
+  "archivo": null,
+  "http": null,
+  "consultadoUtc": null,
+  "bytes": null,
+  "sha256": null,
+  "nota": "Solo descubrimiento: no apareció ningún documento nuevo; resultados de prensa de 2025 sobre el lanzamiento en la UE. No se usa como fuente. Hora no registrada al segundo: entre 2026-11-05T08:06:06Z y 08:06:43Z."
  }
 ]

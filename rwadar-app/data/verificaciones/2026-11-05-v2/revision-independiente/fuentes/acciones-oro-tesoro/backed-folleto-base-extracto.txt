@@ -1,0 +1,81 @@
+
+                                                      6
+MAY NOT BE FORWARDED TO ANY U.S. ADDRESS. ANY FORWARDING, DISTRIBUTION, OR
+REPRODUCTION OF THIS TRANSMISSION IN WHOLE OR IN PART IS UNAUTHORIZED. FAILURE
+TO COMPLY WITH THIS DIRECTIVE MAY RESULT IN A VIOLATION OF THE SECURITIES ACT OR
+THE APPLICABLE LAWS OF OTHER JURISDICTIONS. IF YOU HAVE GAINED ACCESS TO THIS
+TRANSMISSION CONTRARY TO ANY OF THE FOREGOING RESTRICTIONS, YOU ARE NOT AU-
+THORIZED AND WILL NOT BE ABLE TO PURCHASE ANY OF THE SECURITIES DESCRIBED
+HEREIN.
+
+EUROPEAN UNION ("EU") AND EUROPEAN ECONOMIC AREA ("EEA")
+
+In relation to each Member State of the EEA which has implemented the Prospectus Regulation (each
+"Relevant Member State"), the relevant authorized participant ("Authorized Participant") has repre-
+sented and agreed that with effect from and including the date on which the Prospectus Regulation is
+implemented in that Relevant Member State ("Relevant Implementation Date") it has not made and
+will not make an offer of securities which are the subject of this Base Prospectus as completed by the
+applicable Final Terms to the public in that Relevant Member State, except that the securities may, with
+effect from and including the Relevant Implementation Date, be offered to the public in that Relevant
+Member State:
+
+a.   if the Final Terms in relation to the securities specifies that an offer of those securities may be made
+     by the Authorised Participant(s) other than pursuant to Art. 1 Para. 4 of the Prospectus Regulation
+     in that Relevant Member State ("Non-Exempt Offer"), following the date of publication of the Base
+     Prospectus in relation to such securities. Such offer must have been approved by the competent
+     authority in that Relevant Member State or, where appropriate, approved in another Relevant Mem-
+     ber State and notified to the competent authority in that Relevant Member State. This is under the
+     condition that any such prospectus has subsequently been completed by the Final Terms contem-
+     plating such Non-Exempt Offer, in accordance with the Prospectus Directive, in the period (if any)
+     beginning and ending on the dates specified in such prospectus or Final Terms, as applicable, and
+     the Issuer has consented in writing to its use for the purpose of that Non-Exempt Offer;
+[...]
+
+2.3.2     Risks related to the Business Activities and Industry of the Issuer
+
+2.3.2.1   Issuer as Special Purpose Vehicle
+
+          The Issuer was established on 19 January 2024 and is a special purpose vehicle ("SPV").
+          The Issuer's sole business purpose is the issuance and redemption of financial instruments
+          for a surcharge and/or Management Fee. The Issuer is currently not profitable and depends
+          on capital and financing from its Parent and the Parent's investors. As an indirect subsidiary
+          of Payward Europe Limited, Ireland (“PEL”), which is a wholly owned subsidiary of Payward,
+          Inc. (US) (“Payward” and together with its Subsidiaries, the “Payward Group”), the Issuer
+          may benefit from additional business opportunities resulting from being part of a global cor-
+          porate structure. Nevertheless, as an SPV, there are significant liquidity and credit risks re-
+          lating to the Issuer for so long as the Issuer is not profitable. Furthermore, the reserves to
+          maintain the Issuer’s operations remain limited, which may result in the inability of the Issuer
+          to continue as a going concern. Neither PEL nor Payward have guaranteed the Issuer’s
+          obligations and neither PEL nor Payward is required to provide financial or liquidity support
+          to the Parent or the Issuer.
+
+                                                                                    Risk rating: medium
+
+[...]
+3096:3.2.2     Principal Markets
+3097-
+3098-          Backed Assets (JE) Limited offers its Products mainly in Liechtenstein and for the European
+3099-          Union ("EU") in Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Es-
+3100-          tonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Lithuania,
+3101-          Luxembourg, Malta, Norway, Poland, Portugal, Romania, Slovak Republic, Slovenia, Spain,
+3102-          Sweden and the Netherlands. The Issuer reserves the right to extend the offer to other coun-
+3103-          tries in a later stage.
+3104-
+3105-3.3       Organisational Structure
+3106-
+3107-          The Issuer is part of a corporate group and dependent on its the Payward Group. The Parent
+3108-          holds and controls 100% of Backed Assets (JE) Limited. The Parent is itself 100% owned
+3109-          by Payward Europe Limited, Ireland which is in turn 100% owned by Payward, Inc., US.
+3110-
+[...]
+                                                                                       Risk rating: high
+
+2.6     General Regulatory and Legal Risks
+
+2.6.1   Dependence on Authorizations
+
+        A public offer of the Products may depend on a relevant approval of the competent authori-
+        ties in the relevant jurisdictions. Any change to such relevant requirements, the regulations
+        of the Products, or acceptance of tokenized securities could adversely impact the offering
+        of the Products and therefore the main revenue source of the Issuer's business.
+

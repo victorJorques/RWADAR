@@ -1,6 +1,7 @@
 URL: https://casadeouteiro.com/emision-capital/
 URL final: https://casadeouteiro.com/emision-capital/
 Consulta UTC: 2026-11-05T08:01:39Z
+Nota: nombres de personas físicas recortados por RWAdar.
 HTTP: 200
 
 Gestionar consentimiento
@@ -154,7 +155,7 @@ Solicitud de acceso a La Comunidad
 123
 123
 Impulsores con raíces y visión global.
-Casa de Outeiro nace del impulso de Juan Luis Vázquez y Noemí Álvarez, fundadores de Grupo Tourgalia y comprometidos con su tierra.
+Casa de Outeiro nace del impulso de [persona física] y [persona física], fundadores de Grupo Tourgalia y comprometidos con su tierra.
 
 A su lado, socios en áreas clave como gastronomía, hotelería, arquitectura, marketing y comunicación, que aportan experiencia y prestigio internacional a un proyecto con alma.
 

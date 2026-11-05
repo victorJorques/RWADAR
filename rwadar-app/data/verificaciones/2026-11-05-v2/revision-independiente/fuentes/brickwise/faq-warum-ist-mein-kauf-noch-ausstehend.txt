@@ -1,0 +1,7 @@
+URL: https://www.brickwise.at/support/warum-ist-mein-kauf-noch-ausstehend
+CONSULTADO: 2026-11-05T08:30:56Z
+HTTP: 200
+
+zurück zu allen fragen
+Warum ist mein Kauf noch ausstehend?
+Werden Wertpapiere in Bezug auf ein Asset gezeichnet, das neu auf der Plattform ist und sich somit noch in der Finanzierungsphase befindet, erfolgt die Ausführung des Kaufs erst mit Abschluss dieser Finanzierungsphase. Anschließend werden die Wertpapiere an die Investor:innen ausgegeben und sind ab diesem Zeitpunkt über den Marktplatz handelbar.

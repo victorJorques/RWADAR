@@ -1,0 +1,14 @@
+mtbill-kid-es.headers:HTTP/1.1 200 Connection Established
+mtbill-kid-es.headers:HTTP/2 200 
+mtbill-kid-es.headers:date: Thu, 05 Nov 2026 08:27:15 GMT
+mtbill-kid-es.headers:content-type: application/pdf
+mtbill-kid-es.headers:content-length: 154610
+mtbill-kid-es.headers:etag: "5e92561e30dedbb16b682801dd987626"
+mtbill-kid-es.headers:last-modified: Mon, 12 Oct 2026 17:18:58 GMT
+mtbill-final-terms-20260717.headers:HTTP/1.1 200 Connection Established
+mtbill-final-terms-20260717.headers:HTTP/2 200 
+mtbill-final-terms-20260717.headers:date: Thu, 05 Nov 2026 08:27:14 GMT
+mtbill-final-terms-20260717.headers:content-type: application/pdf
+mtbill-final-terms-20260717.headers:content-length: 1248073
+mtbill-final-terms-20260717.headers:etag: "5802ad55547fd5a11c1857953f67ac94"
+mtbill-final-terms-20260717.headers:last-modified: Wed, 05 Aug 2026 13:15:21 GMT
