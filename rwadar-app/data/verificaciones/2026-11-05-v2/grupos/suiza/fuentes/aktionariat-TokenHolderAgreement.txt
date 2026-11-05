@@ -1,0 +1,225 @@
+                   TOKEN HOLDER AGREEMENT
+                 WITH PARTIALLY AUTOMATED ENFORCEMENT
+
+Version 1.0 – 2021-02-01
+
+1      GENERAL INFORMATION
+
+System                  Ethereum Mainnet ("Blockchain"), see ethereum.org for further information
+
+Base Token              Aktionariat AG Shares ("Base Token") as issued under the registration agree-
+                        ment available under aktionariat.com/investors.html (the "Registration
+                        Agreement")          and         registered        in       smart      contract
+                        0xcb58ec733ab0d96216b048bf7c3209d6c184d7c3 ("Base Token Contract")
+
+Wrapper Token           Draggable Aktionariat AG Shares ("Drag-Along Token"), registered in smart
+                        contract 0x6f38e0f1a73c96cB3f42598613EA3474F09cB200 ("Drag-Along
+                        Contract")
+
+Voting Period           60 calendar days starting with the initiation of an offer
+
+Execution period        3 calendar days starting when a Voting Period ends
+
+Acquisition             75%. During the Voting Period, the Acquisition Quorum is reached if at least
+Quorum                  75% of all Drag-Along Tokens reside on addresses that voted "yes". During
+                        the Execution Period, the Acquisition Quorum is already reached if at least
+                        75% of the total votes at the beginning of the Execution Period are "yes" votes.
+
+Parties                 All current and future holders of Drag-Along Tokens ("Drag-Along Token
+                        Holders") as well as the Issuer ("Company") to the extent it is a Token Holder
+                        itself or is assigned a special role in the Agreement.
+
+Source code             The source code of the Drag-Along Contract is an integral part of this Agree-
+                        ment and determines how parts of this Agreement are technically enforced. It
+                        is available on Etherscan1 and Github2.
+
+Important note          The Drag-Along Smart Contract offers the functionality to 'wrap' Share Tokens,
+                        returning for each wrapped token a 'Drag-Along Token' subject to the present
+
+
+
+
+1etherscan.io/address/0x6f38e0f1a73c96cB3f42598613EA3474F09cB200#code
+2github.com/aktionariat/contracts/blob/b0b83eadfcc97744e2588fa35ea4f00aa9cd2269/src/DraggableShares.sol
+TOKEN HOLDER AGREEMENT                                                                     2/6
+
+
+
+                         Agreement. Do not send Share Tokens directly to the Drag-Along Smart
+                         Contracts as such Share Tokens may be irreversibly lost.
+TOKEN HOLDER AGREEMENT                                                                                       3/6
+
+
+
+     2 SCOPE
+     This token holder agreement (the "Agreement") applies and is binding to all holders of Drag-Along
+     Token Holders as well as the Company to the extent it is a Token Holder itself or is assigned a special
+     role in the Agreement. By holding, using, accepting, owning, transferring, or directly or indirectly inter-
+     acting with Drag-Along Tokens, you explicitly acknowledge and agree with the terms of this Agreement,
+     as amended from time to time. The defined terms of the Registration Agreement apply to this Agree-
+     ment, unless defined otherwise herein.
+
+     Each Drag-Along Token Holder is free to transfer the Drag-Along Tokens in accordance with technical
+     functionalities of the Blockchain, the Registration Agreement and this Agreement. It is not possible to
+     'unwrap' the Drag-Along Tokens or to terminate this Agreement except as set out in Section 5
+     (Amendments & Termination).
+
+     Each Drag-Along Token represents a Base Token held under this Agreement. They are not a derivative
+     or other financial instrument derived from the Base Token, but a technical representation of the legal
+     arrangement described in this document. The Drag-Along Contract is a recognized sub-register of the
+     Base Token Contract. Consequently, Drag-Along Token Holders can register themselves in the share-
+     holder registry like direct holders of Base Token.
+
+     In case of inconsistencies between the natural language of this Agreement and the source code, the
+     intent embodied in the source code and the deployment parameters prevails. For example, if this Agree-
+     ment states that the Voting Period is 60 days, but the Drag-Along Contract was deployed with a Voting
+     Period of 90 days, then the latter Voting Period prevails and anyone becoming aware of this incon-
+     sistency shall henceforth distribute an updated version of this document that reflects the actual Voting
+     Period.
+
+
+     3 DRAG-ALONG (CO-SALE OBLIGATION AND ENFORCEMENT)
+     3.1   Grant
+
+     The Drag-Along Token Holders agree to sell their Drag-Along Tokens, and agree that such sale will be
+     enforced automatically by the Drag-Along Smart Contract, in accordance with the terms set out herein
+     (the "Drag-Along Obligation").
+
+     3.2   Initiation
+
+     Any interested buyer with enough capital can initiate an offer to acquire all (but not less than all) Drag-
+     Along Tokens (the "Offering Party") from the other Drag-Along Token Holders (the "Selling Parties")
+     for a specific price per Share (the "Offering Price", together with the further terms, the "Acquisition
+     Offer") by calling the "makeAcquisitionOffer" function in the Drag-Along Smart Contract, subject to a
+     non-reimbursable software license fee payable as defined in the source code. By doing so, a smart
+TOKEN HOLDER AGREEMENT                                                                                       4/6
+
+
+     contract governing the acquisition ("Offer Contract") is created and an "OfferCreated" event is emitted
+     on the Blockchain. It is the responsibility of each Token Holder to monitor the Blockchain for such events
+     or to use a service to do so on her or his behalf.
+
+     3.3   Voting
+
+     After the initiation of an offer, the Voting Period starts. During the Voting Period any Drag-Along Token
+     Holder (including the Offering Party) may call the functions 'voteYes' and 'voteNo' to vote on the Drag-
+     Along Offer. This only affects the tokens residing on the calling address and the vote count is automat-
+     ically adjusted as additional tokens arrive at this address or as tokens leave the address again during
+     the Voting Period. Note that the total supply of Drag-Along Tokens may increase during the Voting
+     Period as additional shareholders wrap newly tokenized shares or existing Base Tokens. After the end
+     of the Voting Period, the Execution Period starts.
+
+     3.4   Execution
+
+     The Offering Party may trigger the 'execution' function on the Offer Contract to enforce the acquisition
+     at any time during the Voting Period or the Execution Period. Executing the acquisition is only possible
+     at a point in time when the Acquisition Quorum is reached, and the required funding is available. Exe-
+     cuting the Acquisition Offer assigns all wrapped Base Tokens to the Offering Party and replaces them
+     with the sales proceeds. At the same time, this Agreement ceases to be contractually binding, allowing
+     the Drag-Along Token Holders to unwrap the sales proceeds in proportion to their tokens. See also
+     section 5 Amendments & Termination.
+
+     3.5   Cancellation
+
+     The Offering Party can cancel the offer at any time, calling the respective function on the Offer Contract.
+
+     Furthermore, anyone can contest the Acquisition Offer, calling the respective function on the Offer Con-
+     tract. This results in the Acquisition Offer being cancelled if the Offering Party did not make enough
+     funds available, if the Execution Period has passed, or if the Acquisition Quorum has become unreach-
+     able under the assumption that the number of "no" votes will not decrease.
+
+     Further, anyone can make a higher counteroffer using the same acquisition currency as the current
+     offer. Making such an offer cancels the old offer.
+
+     3.6   Precedence over Right of First Refusal and Tag-Along Right
+
+     For the avoidance of doubt and notwithstanding anything contained herein to the contrary, the Drag-
+     Along Right supersedes any other right of first refusal and/or tag-along right that the Drag-Along Token
+     Holders and any other shareholders may be a party to.
+TOKEN HOLDER AGREEMENT                                                                                       5/6
+
+
+
+     4 TAG-ALONG (CO-SALE RIGHT)
+     Each Drag-Along Token Holder grants the other Drag-Along Token Holders the right to co-sell all (but
+     not less than all) of the Drag-Along Tokens held by such other Drag-Along Token Holder together with
+     the selling Drag-Along Token Holder(s) to a proposed acquirer in accordance with the terms and condi-
+     tions set forth herein, provided that the proposed acquirer would directly, indirectly or acting in concert
+     with third parties control more than 50% of all Shares outstanding, tokenized or not ("Tag-Along
+     Event"). The selling Drag-Along Token Holder(s) shall notify the other Drag-Along Token Holder(s) as
+     specified in section 6 Notifications.
+
+     The terms of the Tag-Along Right shall be the same consideration per Share/Drag-Along Token and
+     otherwise the same terms and conditions as applicable to the selling Drag-Along Token Holder(s).
+
+     Each Drag-Along Token Holder wishing to exercise its Tag-Along Right with respect to its Drag-Along
+     Tokens shall so notify the selling Drag-Along Token Holder(s) within a period of 30 calendar days from
+     publication of the Tag-Along Event notice by the Company. If no tag-along exercise notice is submitted
+     by a Drag-Along Token Holder within this period, the Tag-Along Right of that Drag-Along Token Holder
+     shall be deemed to have been forfeited (verwirkt) with respect to this particular Tag-Along Event.
+
+     The proposed acquirer and the Drag-Along Token Holder(s) exercising the Tag-Along Right are solely
+     responsible for its consummation. Neither the Company nor the Drag-Along Smart Contract assist in the
+     consummation of the Tag-Along Right.
+
+
+     5 AMENDMENTS & TERMINATION
+     The Drag-Along Token Holders acknowledge and agree that:
+
+        -   Drag-Along Token Holders holding at least 75% of the Drag-Along Tokens can amend or termi-
+            nate the Drag-Along Smart Contract by migrating to a new smart contract; and
+        -   Drag-Along Token Holders holding at least 75% of the Drag-Along Tokens shall have the right
+            to amend or terminate this Agreement,
+
+     provided, however, that the initiating Drag-Along Token Holders shall notify the other Drag-Along Token
+     Holder(s) as set out in Section 6 Notifications about the amendment or termination including its terms
+     and proposed consummation, and, in case of a Material Change (as defined below), with the notice offer
+     all other Drag-Along Token Holders to purchase their Drag-Along Tokens at fair market value within a
+     period of 30 calendar days from publication. If any of the other Drag-Along Token Holders disagree with
+     the fair market value, they may request its binding and final determination for all other Drag-Along Token
+     Holders by an experienced international accounting firm appointed by the Company.
+TOKEN HOLDER AGREEMENT                                                                                      6/6
+
+
+     A 'Material Change' means any amendment of any of the provisions of the Drag-Along Smart Contract
+     and/or this Agreement that affect any accrued rights of any other Drag-Along Token Holder or impose
+     any greater liability or any more onerous obligation than in the current version.
+
+     In case of a termination or migration to a new contract, the current Drag-Along Contract ceases to be
+     binding and all token holders are free to unwrap their tokens. In such an event, the Drag-Along Contract
+     is programmed to change its name to reflect that it no longer reflects a drag-along agreement, potentially
+     also referring to a new Base Token.
+
+
+     6 NOTIFICATIONS
+     To send out the notifications as required under this Agreement, the Company is instructed to distribute
+     the notification to all Drag-Along Token Holders by email in accordance with their entry in the share-
+     holder registry as well as by making a respective blockchain-based announcement in the Base Contract.
+     No email notification is required for those Drag-Along Token Holders that explicitly opted out from being
+     notified by email.
+
+
+     7 ADDITIONAL RISKS
+     In addition to the Risk Factors of Share Tokens as referenced below, there are specific risks relating to
+     Drag-Along Token.
+
+     The Drag-Along Smart Contract may be used by majority shareholders or a majority of Drag-
+     Along Token Holders to trigger the Drag-Along Right under this Drag-Along Smart Contract
+     based on an Offer Price that is below the fair market value of the Drag-Along Tokens, or to amend
+     or terminate the Drag-Along Smart Contract and this Agreement. The Drag-Along Smart Contract
+     will execute such transactions regardless of whether they are in compliance with any applicable
+     law, this Agreement or any other legal obligations and/or restrictions that may apply, and such
+     transaction may not be reversible. The Company has neither the technical means nor the legal
+     obligation to ensure compliance with this Agreement and is, to the maximum extent permissible
+     under applicable law, not liable for any damages and/or losses by Drag-Along Token Holders out
+     of or in connection with the Drag-Along Tokens.
+
+
+     8 FURTHER TERMS
+     For as long as this Agreement is binding, Drag-Along Token Holders are always also holders of the
+     same number of Base Tokens and are therefore also bound to the Registration Agreement as linked to
+     in the Base Contract. The Drag-Along Contract is a recognized sub-register according to section 3.3 of
+     the Registration Agreement. Section 3 and all subsequent sections of the Registration Agreement also
+     apply mutatis mutandis to the Drag-Along Tokens. Specifically, the Drag-Along Tokens contain the same
+     recovery mechanism in case of loss as described in section 7 of the Registration Agreement.
+

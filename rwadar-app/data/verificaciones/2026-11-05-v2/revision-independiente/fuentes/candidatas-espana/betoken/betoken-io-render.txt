@@ -1,0 +1,5 @@
+URL: https://betoken.io/
+HTTP: 502
+consultadoUtc: 2026-11-05T08:28:56.751Z
+
+upstream request failed

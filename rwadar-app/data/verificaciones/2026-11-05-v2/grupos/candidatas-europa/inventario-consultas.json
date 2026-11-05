@@ -1,0 +1,1077 @@
+{
+  "grupo": "candidatas-europa",
+  "ciclo": "2026-11-05-v2",
+  "nota": "Horas en UTC reales. WebSearch y WebFetch solo se usaron para descubrir; ninguna afirmación se apoya en ellos. Rutas relativas a la carpeta del grupo.",
+  "consultas": [
+    {
+      "url": "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "urlFinal": "https://crypto.com/document/fccy-tokenised-equities-terms",
+      "archivo": [
+        "fuentes/cryptocom-terms.pdf",
+        "fuentes/cryptocom-terms.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:01:57Z",
+      "bytes": 217691,
+      "sha256": "1169bff5d9a4deaf72885cf185e5134274089e0534fb43eab0ba8cdd37421c6f",
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+      "urlFinal": "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+      "archivo": [
+        "fuentes/cryptocom-risk.pdf",
+        "fuentes/cryptocom-risk.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:01:58Z",
+      "bytes": 99578,
+      "sha256": "8d5a498fe8787ae05d5911f5d00826b6e97db05a9d31c79aa04f13f87052fe3e",
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+      "urlFinal": "https://crypto.com/eea/company-news/tokenized-stocks-eea-launch",
+      "archivo": [
+        "fuentes/cryptocom-nota-eea.html",
+        "fuentes/cryptocom-nota-eea.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:02:00Z",
+      "bytes": 135114,
+      "sha256": "6fba1fa95d447a26d262a5b5698f365a1d8d250322bdd78db485cde14b088130",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://help.crypto.com/en/articles/15855813-about-crypto-com-tokenized-stocks-eea",
+      "urlFinal": "https://help.crypto.com/en/articles/15855813-about-crypto-com-tokenized-stocks-eea",
+      "archivo": [
+        "fuentes/cryptocom-help-about.html",
+        "fuentes/cryptocom-help-about.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:02:00Z",
+      "bytes": 134255,
+      "sha256": "0a0f5db2f2af4deb7ddc1e0506e1203104b384c1beb7df5145bcb31a2f227135",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://crypto.com/eea/financialservices/disclosures",
+      "urlFinal": "https://crypto.com/us",
+      "archivo": [
+        "fuentes/cryptocom-disclosures.html",
+        "fuentes/cryptocom-disclosures.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:02:01Z",
+      "bytes": 221764,
+      "sha256": "dda4e65484aa8e9cad534f279c9f3449d8c514e4c462f39f792a4b03fc204bde",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://crypto.com/eea/financialservices/disclosures",
+      "archivo": [],
+      "http": 301,
+      "consultadoUtc": "2026-11-05T08:02:23Z",
+      "bytes": 0,
+      "sha256": null,
+      "nota": "Redirige a https://crypto.com/ y acaba en crypto.com/us desde nuestra conexión (bloqueo por país). Copia de la página final en fuentes/cryptocom-disclosures.*. No se intentó saltar el bloqueo."
+    },
+    {
+      "url": "https://www.okx.com/en-us/learn/pre-ipo-markets-tokenized-stocks-europe",
+      "urlFinal": "https://www.okx.com/en-us/learn/pre-ipo-markets-tokenized-stocks-europe",
+      "archivo": [
+        "fuentes/okx-learn-preipo-tokenized-europe.html",
+        "fuentes/okx-learn-preipo-tokenized-europe.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:03:20Z",
+      "bytes": 94359,
+      "sha256": "1be9f1da1b48f19545abf5c1fb77d25a144c67fbf8f2238271f687d6792f8379",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/help/section/announcements-latest-announcements",
+      "urlFinal": "https://www.okx.com/en-eu/help/section/announcements-latest-announcements",
+      "archivo": [
+        "fuentes/okx-eu-anuncios.html",
+        "fuentes/okx-eu-anuncios.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:03:20Z",
+      "bytes": 93389,
+      "sha256": "42d8f4b90ee063b0fdc2e9b7baf34e9d1d1813a48e1c17dc1591f33c2e5bd85f",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/learn/pre-ipo-markets-tokenized-stocks-europe",
+      "urlFinal": "https://www.okx.com/en-eu/learn/pre-ipo-markets-tokenized-stocks-europe",
+      "archivo": [
+        "fuentes/okx-eu-learn-preipo.html",
+        "fuentes/okx-eu-learn-preipo.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:03:21Z",
+      "bytes": 99764,
+      "sha256": "dccf6ce268bd193a3f7fca236b2af9d3d227957ba41b7007f2493c5c2ce48102",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/help/okx-to-list-usdc-trading-pairs-for-tokenized-stocks-xiren-and-xasml",
+      "urlFinal": "https://www.okx.com/en-eu/help/okx-to-list-usdc-trading-pairs-for-tokenized-stocks-xiren-and-xasml",
+      "archivo": [
+        "fuentes/okx-eu-anuncio-xiren-xasml.html",
+        "fuentes/okx-eu-anuncio-xiren-xasml.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:03:35Z",
+      "bytes": 83133,
+      "sha256": "9d554259b8b5807424fc05069686e063322f233da2c434d573ae9773147966a8",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/stock",
+      "urlFinal": "https://www.okx.com/en-eu/stock",
+      "archivo": [
+        "fuentes/okx-eu-stock.html",
+        "fuentes/okx-eu-stock.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:03:35Z",
+      "bytes": 151526,
+      "sha256": "61328f1ee62a83ba5d979662246dc7d8d80402b68e90fac34b551fdc15739cc9",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7HY8LlmOy7L2bfyZHuuVIi/210d195bb0e612daf21112abc0b8ae91/OKX_Europe_Markets_Ltd_-_Risk_Warning___Disclosure_Statement.pdf",
+      "urlFinal": "https://www.okx.com/en-eu/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7HY8LlmOy7L2bfyZHuuVIi/210d195bb0e612daf21112abc0b8ae91/OKX_Europe_Markets_Ltd_-_Risk_Warning___Disclosure_Statement.pdf",
+      "archivo": [
+        "fuentes/okx-oem-risk-disclosure.html",
+        "fuentes/okx-oem-risk-disclosure.txt"
+      ],
+      "http": 404,
+      "consultadoUtc": "2026-11-05T08:03:47Z",
+      "bytes": 79112,
+      "sha256": "9f90bd61b3ebfdc945155dcd676c02db4a14b10616a72fb3724010e3fb39a2fd",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/help/oem-disclosures",
+      "urlFinal": "https://www.okx.com/en-eu/help/oem-disclosures",
+      "archivo": [
+        "fuentes/okx-oem-disclosures.html",
+        "fuentes/okx-oem-disclosures.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:03:47Z",
+      "bytes": 75834,
+      "sha256": "4524d721921b7e962adf6d365442bfbaecd96ab3860e79ae4e5ff51d7cb1cfe5",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/help/okx-europe-market-ltd-oem-terms-of-service",
+      "urlFinal": "https://www.okx.com/en-eu/help/okx-europe-market-ltd-oem-terms-of-service",
+      "archivo": [
+        "fuentes/okx-oem-terms.html",
+        "fuentes/okx-oem-terms.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:03:48Z",
+      "bytes": 208187,
+      "sha256": "506097b7d6133ab9bd923692e62ddace48ba52f9d4313e750153d088ca7f514c",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/help/oem-key-information-documents-kids",
+      "urlFinal": "https://www.okx.com/en-eu/help/oem-key-information-documents-kids",
+      "archivo": [
+        "fuentes/okx-oem-kids.html",
+        "fuentes/okx-oem-kids.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:04:00Z",
+      "bytes": 200258,
+      "sha256": "baf9a27ebd424df7d4cffb280c8a75828e9df75cbfa21d617a5f829b5e753a10",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/3YHawZa0mOqswmWOwFweMh/b025869f4e624570912d451465ccb9ec/OKX_Europe_Markets_Ltd_-_Risk_Warning___Disclosure_Statement_.docx.pdf",
+      "urlFinal": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/3YHawZa0mOqswmWOwFweMh/b025869f4e624570912d451465ccb9ec/OKX_Europe_Markets_Ltd_-_Risk_Warning___Disclosure_Statement_.docx.pdf",
+      "archivo": [
+        "fuentes/okx-oem-risk-warning.pdf",
+        "fuentes/okx-oem-risk-warning.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:04:01Z",
+      "bytes": 408497,
+      "sha256": "5243ea8ce6edf177efbb84bf71066b3a623472458bf0e7143f48b5f6b64f8fe6",
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+      "urlFinal": "https://www.okx.com/cdn/assets/plugins/announcements/contentful/tofttmniq0qv/7cLuzEkRAHYVB1BORkr1wr/6288a8a18db3fa68d667797084f3345e/OEM-s_Terms_of_Service_-_Product-specific_terms_and_conditions.pdf",
+      "archivo": [
+        "fuentes/okx-oem-annex2-producto.pdf",
+        "fuentes/okx-oem-annex2-producto.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:04:32Z",
+      "bytes": 190098,
+      "sha256": "4f842a710e3f7ba3a6fc93f5fcd61402b132514e8ff4e4bfd5c2c8de6bd668c0",
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://eea.okx.com/api/v5/public/instruments?instType=SPOT",
+      "archivo": [
+        "fuentes/crudo/okx-eea-api-instruments-spot.json"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:04:55Z",
+      "bytes": 1307396,
+      "sha256": "3534b1126b2fa42e3cadb87b2745e26f86c43787bdc69cb45b21cc587321c618",
+      "nota": "API pública; respuesta idéntica a my.okx.com (1.307.396 bytes): no distingue el catálogo EEE Copia en fuentes/crudo/ (fuera de Git)."
+    },
+    {
+      "url": "https://www.okx.com/es-es",
+      "urlFinal": "https://www.okx.com/es-es",
+      "archivo": [
+        "fuentes/okx-es-portada.html",
+        "fuentes/okx-es-portada.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:05:27Z",
+      "bytes": 81359,
+      "sha256": "a8b11aed1a792e10813c41f9fb7f630f99b1016e19368092e36dbcda734e4288",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/es-es/stock",
+      "urlFinal": "https://www.okx.com/es-es/stock",
+      "archivo": [
+        "fuentes/okx-es-stock.html",
+        "fuentes/okx-es-stock.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:05:27Z",
+      "bytes": 155364,
+      "sha256": "efaa95a16745d883d5b9778d714af47363da439d9e0a655c8ab66b343e24f802",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/help/terms-of-service",
+      "urlFinal": "https://www.okx.com/en-eu/help/terms-of-service",
+      "archivo": [
+        "fuentes/okx-eea-terms.html",
+        "fuentes/okx-eea-terms.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:05:28Z",
+      "bytes": 223514,
+      "sha256": "7ca3840ad8cb3527878045ed865b68dda4cdc0596d5e1dc7b154fbbec9c7758f",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/fees",
+      "urlFinal": "https://www.okx.com/en-eu/fees",
+      "archivo": [
+        "fuentes/okx-eu-fees.html",
+        "fuentes/okx-eu-fees.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:05:29Z",
+      "bytes": 72876,
+      "sha256": "e657500dca97da6e9296252a0635786a818b8a48ebdcf4b16d26093985bbba1d",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/help/eea-risk-and-compliance-disclosure",
+      "urlFinal": "https://www.okx.com/en-eu/help/eea-risk-and-compliance-disclosure",
+      "archivo": [
+        "fuentes/okx-eea-risk-compliance.html",
+        "fuentes/okx-eea-risk-compliance.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:05:49Z",
+      "bytes": 80987,
+      "sha256": "eadeaadbb3efb9d270a8488f53e1dab9aec718b7606bc7657adde623374cce14",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+      "urlFinal": "https://www.cnmv.es/portal/Consultas/listadoentidad?id=1&tipoent=4",
+      "archivo": [
+        "fuentes/cnmv-listado-esi-eee-lp.html",
+        "fuentes/cnmv-listado-esi-eee-lp.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:06:04Z",
+      "bytes": 1991636,
+      "sha256": "b09b266c8a879fbcbc83174b13013d9aad6bfdb65ffda5e70b7afdfee5eca17f",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5024",
+      "urlFinal": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5024",
+      "archivo": [
+        "fuentes/cnmv-esi-lp-5024-okx.html",
+        "fuentes/cnmv-esi-lp-5024-okx.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:06:19Z",
+      "bytes": 218224,
+      "sha256": "afc9e10f8153bb19e3ceaafe3f5d6bc2f2aa47e383017d1bf42b79ccbb42ebc6",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4485",
+      "urlFinal": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=4485",
+      "archivo": [
+        "fuentes/cnmv-esi-lp-4485-foris.html",
+        "fuentes/cnmv-esi-lp-4485-foris.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:06:21Z",
+      "bytes": 218123,
+      "sha256": "7bcd728901de3c7147d8ada20cd4dd5337a1aae7655d1e9c23008071a1c4e545",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5216",
+      "urlFinal": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5216",
+      "archivo": [
+        "fuentes/cnmv-esi-lp-5216-assetera.html",
+        "fuentes/cnmv-esi-lp-5216-assetera.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:06:22Z",
+      "bytes": 218092,
+      "sha256": "8b61d91aae71334683d2b70b2ac3f19f417f155b79f82b4d2b927375540a7fc1",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5024&vista=17&lang=es",
+      "urlFinal": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5024&vista=17&lang=es",
+      "archivo": [
+        "fuentes/cnmv-esi-lp-5024-okx-programa.html",
+        "fuentes/cnmv-esi-lp-5024-okx-programa.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:06:41Z",
+      "bytes": 227869,
+      "sha256": "6e39dd558732e0a49011edaf26dd8384959411b0a1a84f85feec41b8ffc81c34",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.okx.com/en-eu/fees",
+      "archivo": [
+        "fuentes/okx-eu-fees-render.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:07:20Z",
+      "bytes": 8737,
+      "sha256": "01ffee4cc4f12645baeabcdcc9b70b7a36b595c530cad0d505485b789654ee79",
+      "nota": "Texto renderizado con Playwright (la tabla se carga con JavaScript)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+      "urlFinal": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+      "archivo": [
+        "fuentes/cnmv-pasaportes-backed.html",
+        "fuentes/cnmv-pasaportes-backed.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:07:36Z",
+      "bytes": 215530,
+      "sha256": "d99d668e84ef3bacc2a96ececf23ba88e3e7c839313649afa8200107db4ab620",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+      "urlFinal": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+      "archivo": [
+        "fuentes/crudo/esma-prospectos-backed.json"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:07:37Z",
+      "bytes": 21243,
+      "sha256": "64d1dc0453e9f4daea53bda0c6e61e8297b7e5a10df05672767954bd1c5f36b1",
+      "contentType": "application/json;charset=utf-8",
+      "nota": "Copia en fuentes/crudo/ (fuera de Git)."
+    },
+    {
+      "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+      "urlFinal": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+      "archivo": [
+        "fuentes/xstocks-nvdax-kid-es.pdf",
+        "fuentes/xstocks-nvdax-kid-es.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:07:54Z",
+      "bytes": 225712,
+      "sha256": "b5b06115dd8cd061e9ea36702b048a1a9673b4ff32928c9bd0279b0004004f7a",
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+      "urlFinal": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+      "archivo": [
+        "fuentes/crudo/xstocks-nvdax-condiciones-finales.pdf",
+        "fuentes/crudo/xstocks-nvdax-condiciones-finales.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:07:55Z",
+      "bytes": 1040803,
+      "sha256": "f309dd9cb54d17218369aa74beaf42d4910864f6500bc93e347f59a82e4f9154",
+      "contentType": "application/pdf",
+      "nota": "Copia en fuentes/crudo/ (fuera de Git)."
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-okx.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:05Z",
+      "bytes": 753,
+      "sha256": "57e0c93fcae17e152aa5201e3e0ecac1852c5900c8dba31f6fe9ae3bced60700",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «OKX», tipo No autorizadas"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-crypto-com.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:17Z",
+      "bytes": 926,
+      "sha256": "46672afe0eca1776880c50b98a792af422f88c98bc8b1594890197b8209bf8b8",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «Crypto.com», tipo No autorizadas"
+    },
+    {
+      "url": "https://www.assetera.com/",
+      "urlFinal": "https://www.assetera.com/",
+      "archivo": [
+        "fuentes/assetera-portada.html",
+        "fuentes/assetera-portada.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:33Z",
+      "bytes": 112798,
+      "sha256": "b6b325dc5f9d061ec0be39b08ac3b862c6986214dbf110626bafb740bd592d6c",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.assetera.com/sitemap.xml",
+      "urlFinal": "https://www.assetera.com/sitemap.xml",
+      "archivo": [
+        "fuentes/assetera-sitemap.html",
+        "fuentes/assetera-sitemap.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:33Z",
+      "bytes": 28916,
+      "sha256": "30a82c0e3f3996f0b44dfde04511a97e3bd2c193bbbbfec5f9ff190cc6256940",
+      "contentType": "application/rss+xml; charset=utf-8"
+    },
+    {
+      "url": "https://www.assetera.com/media/assetera-dinari",
+      "urlFinal": "https://www.assetera.com/media/assetera-dinari",
+      "archivo": [
+        "fuentes/assetera-media-assetera-dinari.html",
+        "fuentes/assetera-media-assetera-dinari.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:40Z",
+      "bytes": 70075,
+      "sha256": "4c6c4db7886d68b70b36bc3f4b30d434abe262e11568116349a642420e5b5b43",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.assetera.com/media/assetera-x-ondo",
+      "urlFinal": "https://www.assetera.com/media/assetera-x-ondo",
+      "archivo": [
+        "fuentes/assetera-media-assetera-x-ondo.html",
+        "fuentes/assetera-media-assetera-x-ondo.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:41Z",
+      "bytes": 71067,
+      "sha256": "3c563bbd473fd633c8cef56a8f974d02553b223010ab0157f77807df8c77101f",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.assetera.com/media/assetera-ondo-finance",
+      "urlFinal": "https://www.assetera.com/media/assetera-ondo-finance",
+      "archivo": [
+        "fuentes/assetera-media-assetera-ondo-finance.html",
+        "fuentes/assetera-media-assetera-ondo-finance.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:41Z",
+      "bytes": 69955,
+      "sha256": "1ec7fd8fdd5f9fd7aaa2c4ef65f8b3f115c7cd08ef34678502728ae3c810c619",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.assetera.com/media/treasuryplus-tplus",
+      "urlFinal": "https://www.assetera.com/media/treasuryplus-tplus",
+      "archivo": [
+        "fuentes/assetera-media-treasuryplus-tplus.html",
+        "fuentes/assetera-media-treasuryplus-tplus.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:41Z",
+      "bytes": 70539,
+      "sha256": "17dbe1aa4fe562b004ee22d303e34af0edbf58c0c696d478da7451850ea78739",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.assetera.com/media/assetera-x-xstocks",
+      "urlFinal": "https://www.assetera.com/media/assetera-x-xstocks",
+      "archivo": [
+        "fuentes/assetera-media-assetera-x-xstocks.html",
+        "fuentes/assetera-media-assetera-x-xstocks.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:41Z",
+      "bytes": 71457,
+      "sha256": "d43326edde36f61abd2460d0ac6ad8f1b5a6e94259c529ff41908b0c48b56b2c",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-foris.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:41Z",
+      "bytes": 753,
+      "sha256": "d03825002bce8c7992651906467ddcd19f1de96084a926ae8bc5cac839c14154",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «Foris», tipo No autorizadas"
+    },
+    {
+      "url": "https://www.assetera.com/platform",
+      "urlFinal": "https://www.assetera.com/platform",
+      "archivo": [
+        "fuentes/assetera-platform.html",
+        "fuentes/assetera-platform.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:42Z",
+      "bytes": 59331,
+      "sha256": "e6078060311274ccfa6c57d07ee0cd768bea602383cae09430ea5f288c29eb09",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.assetera.com/listing",
+      "urlFinal": "https://www.assetera.com/listing",
+      "archivo": [
+        "fuentes/assetera-listing.html",
+        "fuentes/assetera-listing.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:42Z",
+      "bytes": 51887,
+      "sha256": "5ef938e26ca924cc1f493c21dcd96f33f81bd28568cebe39ff284325efd78618",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.assetera.com/services",
+      "urlFinal": "https://www.assetera.com/services",
+      "archivo": [
+        "fuentes/assetera-services.html",
+        "fuentes/assetera-services.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:42Z",
+      "bytes": 105747,
+      "sha256": "ab5638c5a9ff81920fc14498841f20b32e8d974478342f5249e776a43f8caa59",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.assetera.com/legal-notice",
+      "urlFinal": "https://www.assetera.com/legal-notice",
+      "archivo": [
+        "fuentes/assetera-legal-notice.html",
+        "fuentes/assetera-legal-notice.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:42Z",
+      "bytes": 59869,
+      "sha256": "80c4fa7dee8023a7dddadda78b53362a391875de0805aa657c14d37c44cfd4f5",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*Ondo*&wt=json&rows=50&sort=approval_filing_date%20desc",
+      "urlFinal": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*Ondo*&wt=json&rows=50&sort=approval_filing_date%20desc",
+      "archivo": [
+        "fuentes/crudo/esma-prospectos-ondo.json"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:50Z",
+      "bytes": 80962,
+      "sha256": "7fece57322482ae5fa6bab28f5ba8b5e9e93153941ff11597fd8fe4f8d1071ed",
+      "contentType": "application/json;charset=utf-8",
+      "nota": "Copia en fuentes/crudo/ (fuera de Git)."
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-assetera.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:51Z",
+      "bytes": 391,
+      "sha256": "5e3d45cb75d188cffa467b7a3d7c965f2fb08c636049321b21b8a8a91ad714fb",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «Assetera», tipo No autorizadas"
+    },
+    {
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+      "urlFinal": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+      "archivo": [
+        "fuentes/crudo/esma-prospectos-ondo-gm-sin-ft.json"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:58Z",
+      "bytes": 4506,
+      "sha256": "325c5a6566d031bf9484c2604bf1e2c0146e667d431a0dea683be9a8a4159ec2",
+      "contentType": "application/json;charset=utf-8",
+      "nota": "Copia en fuentes/crudo/ (fuera de Git)."
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500Z0Q6A5E8BE2B61",
+      "urlFinal": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500Z0Q6A5E8BE2B61",
+      "archivo": [
+        "fuentes/cnmv-pasaportes-ondo-gm.html",
+        "fuentes/cnmv-pasaportes-ondo-gm.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:11:59Z",
+      "bytes": 215545,
+      "sha256": "7db49aa626fe84677896717ec1d3b500579ae05c2cf26696e0a591c68541eef2",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-bybit.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:12:02Z",
+      "bytes": 719,
+      "sha256": "18d3eacdf529e3dfa47748c5b154a5069fd044d7df23a9664b927dd2970b2346",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «Bybit», tipo No autorizadas"
+    },
+    {
+      "url": "https://docs.ondo.finance/ondo-stocks/important-notes",
+      "urlFinal": "https://docs.ondo.finance/ondo-stocks/important-notes",
+      "archivo": [
+        "fuentes/ondo-docs-important-notes.html",
+        "fuentes/ondo-docs-important-notes.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:12:07Z",
+      "bytes": 180158,
+      "sha256": "8887d692b8f51f125f8d8f0a11b557b6e2c767a9358bef211c43ac4d2381d425",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://docs.ondo.finance/llms.txt",
+      "urlFinal": "https://docs.ondo.finance/llms.txt",
+      "archivo": [
+        "fuentes/crudo/ondo-docs-llms.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:12:08Z",
+      "bytes": 19506,
+      "sha256": "7d559345c6310650b12df34651f1979a0b20391934a956ae7976878d063e3ff1",
+      "contentType": "text/plain; charset=utf-8",
+      "nota": "Copia en fuentes/crudo/ (fuera de Git)."
+    },
+    {
+      "url": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+      "urlFinal": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+      "archivo": [
+        "fuentes/ondo-stocks-eligibility.html",
+        "fuentes/ondo-stocks-eligibility.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:12:12Z",
+      "bytes": 9141,
+      "sha256": "76916fd4a05b595e731a7288f8cffb36620e849478a06b3f8cc815571ba8ed61",
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-ondo.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:12:13Z",
+      "bytes": 1589,
+      "sha256": "3c1961ce0810341e13097801f19fc76a916fc2540733ff564978d89a76e8c539",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «Ondo», tipo No autorizadas"
+    },
+    {
+      "url": "https://docs.ondo.finance/ondo-stocks/secondary-market-restrictions.md",
+      "urlFinal": "https://docs.ondo.finance/ondo-stocks/secondary-market-restrictions.md",
+      "archivo": [
+        "fuentes/ondo-stocks-secondary-restrictions.html",
+        "fuentes/ondo-stocks-secondary-restrictions.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:12:19Z",
+      "bytes": 7972,
+      "sha256": "f186c2fd6998ced290715ca8bffcb67a5aa844fd1e18efcbb0bf2097c4f01a0a",
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    {
+      "url": "https://docs.ondo.finance/ondo-stocks/legal-and-regulatory.md",
+      "urlFinal": "https://docs.ondo.finance/ondo-stocks/legal-and-regulatory.md",
+      "archivo": [
+        "fuentes/ondo-stocks-legal.html",
+        "fuentes/ondo-stocks-legal.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:12:19Z",
+      "bytes": 4843,
+      "sha256": "c7c4c122fedf7a73937681aa792332d0215b6654484f6d813fb3e808c6bb87b0",
+      "contentType": "text/markdown; charset=utf-8"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/search-company-database/?cname=Bybit&place=&bic=&category=&per_page=10&submitted=1",
+      "urlFinal": "https://www.fma.gv.at/en/search-company-database/?cname=Bybit&place=&bic=&category=&per_page=10&submitted=1",
+      "archivo": [
+        "fuentes/fma-at-bybit.html",
+        "fuentes/fma-at-bybit.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:12:40Z",
+      "bytes": 171466,
+      "sha256": "92451a0b739ebf097da728af3a3e795395365483abe7aad1ffc09adedeef5211",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/search-company-database/?cname=Assetera&place=&bic=&category=&per_page=10&submitted=1",
+      "urlFinal": "https://www.fma.gv.at/en/search-company-database/?cname=Assetera&place=&bic=&category=&per_page=10&submitted=1",
+      "archivo": [
+        "fuentes/fma-at-assetera.html",
+        "fuentes/fma-at-assetera.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:12:42Z",
+      "bytes": 144667,
+      "sha256": "38208e1a852e4aa9937e9586fa895c50cc18909f0c6033d6b112648ffd2d0d26",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-blockchain-com.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:12:50Z",
+      "bytes": 403,
+      "sha256": "91fcdb0dd04d15140adf82a07ff004238ad3f3ab2a82c09a2c01bb128b0634a5",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «Blockchain.com», tipo No autorizadas"
+    },
+    {
+      "url": "https://www.bybit.eu/en-EU/",
+      "urlFinal": "https://www.bybit.eu/",
+      "archivo": [
+        "fuentes/bybit-eu-portada.html",
+        "fuentes/bybit-eu-portada.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:12:53Z",
+      "bytes": 97509,
+      "sha256": "6520b2aff3d794c512cc87f060eb2e5da07fe16e0d006d9fa2dd64f060d31584",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+      "urlFinal": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+      "archivo": [
+        "fuentes/ft-onchain-folleto.pdf",
+        "fuentes/ft-onchain-folleto.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:13:16Z",
+      "bytes": 1288473,
+      "sha256": "ec0458b62412448cca96249786b0c3453a7459e3bf9151a89d1cd1ac881dade9",
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.franklintempleton.com.es/download/es-es/key-information-document/4c549e34-cafe-470f-a8eb-a0dcd04a9f72/PRIIPSEU_LU3258450587_es_ES.pdf",
+      "urlFinal": "https://www.franklintempleton.com.es/download/es-es/key-information-document/4c549e34-cafe-470f-a8eb-a0dcd04a9f72/PRIIPSEU_LU3258450587_es_ES.pdf",
+      "archivo": [
+        "fuentes/ft-grbenji-kid-es.pdf",
+        "fuentes/ft-grbenji-kid-es.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:13:18Z",
+      "bytes": 166539,
+      "sha256": "1b9efc78b570d432ce3bce763d0a207fe1b5c032dcdd2c85c4c6b5a084f9a75a",
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://itunes.apple.com/lookup?id=1551677725&country=es",
+      "urlFinal": "https://itunes.apple.com/lookup?id=1551677725&country=es",
+      "archivo": [
+        "fuentes/crudo/itunes-benji-es.html",
+        "fuentes/crudo/itunes-benji-es.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:13:19Z",
+      "bytes": 42,
+      "sha256": "7f5ce663b726607eae2fde2a6dc438052ac0d1681e636de7cc3377c0bb77e047",
+      "contentType": "text/javascript; charset=utf-8",
+      "nota": "Copia en fuentes/crudo/ (fuera de Git)."
+    },
+    {
+      "url": "https://itunes.apple.com/search?term=benji+franklin&country=es&entity=software",
+      "urlFinal": "https://itunes.apple.com/search?term=benji+franklin&country=es&entity=software",
+      "archivo": [
+        "fuentes/crudo/itunes-busqueda-benji-es.html",
+        "fuentes/crudo/itunes-busqueda-benji-es.txt"
+      ],
+      "http": 403,
+      "consultadoUtc": "2026-11-05T08:13:19Z",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "contentType": "",
+      "nota": "Copia en fuentes/crudo/ (fuera de Git)."
+    },
+    {
+      "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera.aspx?nif=N0363289J&vista=18",
+      "urlFinal": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0363289J&vista=18",
+      "archivo": [
+        "fuentes/cnmv-iic-2284-comercializadoras.html",
+        "fuentes/cnmv-iic-2284-comercializadoras.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:13:20Z",
+      "bytes": 152440,
+      "sha256": "31ac2cdfd72131ef4bae65ac7492128e9900503971dd297109898d2666ba09b6",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-bitget.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:13:32Z",
+      "bytes": 387,
+      "sha256": "4aaca5a2cdce44d422ebecbafe1898ecd4eeec9f35067681477e91a1c6b7b0d3",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «Bitget», tipo No autorizadas"
+    },
+    {
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+      "urlFinal": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+      "archivo": [
+        "fuentes/crudo/esma-mica-ARTZZ.html"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:13:36Z",
+      "bytes": 276,
+      "sha256": "fa1ef4da123e3d49642c69f90a81a88f6c2cc2a0b9471b2108e4dfc635ca7c67",
+      "contentType": "text/csv",
+      "nota": "Copia en fuentes/crudo/ (fuera de Git)."
+    },
+    {
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv",
+      "urlFinal": "https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv",
+      "archivo": [
+        "fuentes/crudo/esma-mica-OTHER.html"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:13:36Z",
+      "bytes": 251161,
+      "sha256": "6bf558a76610ab88a7b085b180fc93cda2f1e806ede465a17d250bb1ae649ce3",
+      "contentType": "text/csv",
+      "nota": "Copia en fuentes/crudo/ (fuera de Git)."
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-franklin.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:13:43Z",
+      "bytes": 723,
+      "sha256": "bdd11d5355081dc0c7da65d542feea0eb2f28336fdf5ef7255e6fbf8146db542",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «Franklin», tipo No autorizadas"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-bitpanda.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:13:55Z",
+      "bytes": 391,
+      "sha256": "2ab8aeb5c926b6f93647b8eb4cafd90d033e264e20518c4e3e087e4a5aa040ab",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «Bitpanda», tipo No autorizadas"
+    },
+    {
+      "url": "https://lcx.com/lcxt7",
+      "urlFinal": "https://lcx.com/en/lcxt7",
+      "archivo": [
+        "fuentes/lcx-lcxt7.html",
+        "fuentes/lcx-lcxt7.txt"
+      ],
+      "http": 404,
+      "consultadoUtc": "2026-11-05T08:14:04Z",
+      "bytes": 216569,
+      "sha256": "481714f67e2f2a02bc3a46158ec5ffdfcf73320034aa375a6af6ca7d006ff2ef",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://lcx.com/earn",
+      "urlFinal": "https://lcx.com/en/earn",
+      "archivo": [
+        "fuentes/lcx-earn.html",
+        "fuentes/lcx-earn.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:14:05Z",
+      "bytes": 312973,
+      "sha256": "6b5aabe30aed26970ff17b0825563501b0ff9ff0c6c0b51aa89e7f9235b42e5c",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-gemini.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:14:06Z",
+      "bytes": 786,
+      "sha256": "bece1c32c985e3a7a87d9ad00b1cf584cc51576ca7d09f30c4a80097d79e848f",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «Gemini», tipo No autorizadas"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+      "archivo": [
+        "fuentes/cnmv-advertencias-xstocks.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:14:46Z",
+      "bytes": 389,
+      "sha256": "a6695f395b16a6c35c0c256847d5e7185e745a46c7ecd913174e79dff3232c65",
+      "nota": "Formulario de advertencias de la CNMV rellenado con Playwright; búsqueda «xStocks», tipo No autorizadas"
+    },
+    {
+      "url": "https://www.bitpanda.com/en/stocks",
+      "urlFinal": "https://www.bitpanda.com/en/stocks",
+      "archivo": [
+        "fuentes/bitpanda-stocks-en.html",
+        "fuentes/bitpanda-stocks-en.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:15:16Z",
+      "bytes": 681641,
+      "sha256": "bb22812f67550315f6aa46c36a515a7cb61903edd121a9fd2c74a34c429ad771",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://marketplace.assetera.com/en",
+      "archivo": [
+        "fuentes/assetera-marketplace-render.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:15:37Z",
+      "bytes": 3815,
+      "sha256": "7ea0a99c0b0fb4fa7dc9004b24df117ded892a48e871a157871cb57e548d41b0",
+      "nota": "Texto renderizado con Playwright, sin iniciar sesión"
+    },
+    {
+      "url": "https://marketplace.assetera.com/en/terms",
+      "archivo": [
+        "fuentes/assetera-marketplace-terms-render.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:15:57Z",
+      "bytes": 3123,
+      "sha256": "858002f27b1eb1356da09bb0efeca64d9f2b5e5a6ad5ee77114f0f0db8eefb3e",
+      "nota": "Texto renderizado con Playwright"
+    },
+    {
+      "url": "https://marketplace.assetera.com/en/help",
+      "archivo": [
+        "fuentes/assetera-marketplace-help-render.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:15:57Z",
+      "bytes": 532,
+      "sha256": "e8159bd462c65263e8b3f55924c4ed2dde2b46b7e8a1c893e8a2f498a752f435",
+      "nota": "Texto renderizado con Playwright"
+    },
+    {
+      "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/46172/",
+      "urlFinal": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/46172/",
+      "archivo": [
+        "fuentes/cysec-foris-46172.html",
+        "fuentes/cysec-foris-46172.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:16:15Z",
+      "bytes": 680992,
+      "sha256": "d2c3ca9a8650631c08c9aa1781d6740f5ce6ab6961590ca67be83f0faffa5834",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://help.crypto.com/en/articles/15855825-buy-and-sell-tokenized-stocks-eea",
+      "urlFinal": "https://help.crypto.com/en/articles/15855825-buy-and-sell-tokenized-stocks-eea",
+      "archivo": [
+        "fuentes/cryptocom-help-buy-sell.html",
+        "fuentes/cryptocom-help-buy-sell.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:16:32Z",
+      "bytes": 134025,
+      "sha256": "04c715d30551f63b6abd44a9307049d711dbbd7a8f7391740067f0729bccbedc",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://help.crypto.com/en/articles/15855830-corporate-actions-and-dividends-of-tokenized-stocks-eea",
+      "urlFinal": "https://help.crypto.com/en/articles/15855830-corporate-actions-and-dividends-of-tokenized-stocks-eea",
+      "archivo": [
+        "fuentes/cryptocom-help-dividendos.html",
+        "fuentes/cryptocom-help-dividendos.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:16:33Z",
+      "bytes": 137091,
+      "sha256": "c29aece1aa12fdfc5c80d36fd30d6e27fbfd20fbaecc45db53fc150c5cba9f4e",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5216&vista=17&lang=es",
+      "urlFinal": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5216&vista=17&lang=es",
+      "archivo": [
+        "fuentes/cnmv-esi-lp-5216-assetera-programa.html",
+        "fuentes/cnmv-esi-lp-5216-assetera-programa.txt"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:19:28Z",
+      "bytes": 238038,
+      "sha256": "cd4d96a11d046f1c17de43878c35fc677497ead8f57a08f776245725e823d02c",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*LCX*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+      "urlFinal": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*LCX*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+      "archivo": [
+        "fuentes/crudo/esma-prospectos-lcx.json"
+      ],
+      "http": 200,
+      "consultadoUtc": "2026-11-05T08:21:52Z",
+      "bytes": 65589,
+      "sha256": "dcfc7decbe0b5a384b9f2b3b0b9ac00337ae5f20cbac13282d0edd9374a2b31f",
+      "contentType": "application/json;charset=utf-8",
+      "nota": "Copia en fuentes/crudo/ (fuera de Git)."
+    }
+  ]
+}

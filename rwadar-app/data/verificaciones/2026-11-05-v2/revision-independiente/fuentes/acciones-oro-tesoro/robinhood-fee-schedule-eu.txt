@@ -1,0 +1,56 @@
+                                                                                                  Robinhood Europe
+Standard Pricing Fee Schedule
+
+                                                  Robinhood Europe, UAB
+
+ Crypto Buying & Selling
+
+ Trading Fees                                                0.95% on the euro value of the executed amount*
+
+                                                             €0.01 minimum fee
+
+ Crypto Transfers
+
+  Transfer Fees                                               €0.00
+                                                              Though Robinhood Europe doesn’t charge fees for transfers, every
+                                                              crypto transfer does require a network fee. Network fees, or gas fees,
+                                                              are paid to miners/validators who process blockchain transactions.
+                                                              Fees vary based on network activity.
+
+  Staking
+
+  Staking Commissions                                         15% commission on ETH/SOL staking rewards
+                                                              25% commission on ADA staking rewards
+  Robinhood Classic Stock Tokens
+
+  Trading and FX Fees                                         Robinhood Europe applies a 0.10% currency conversion fee for each
+                                                              transaction based on the value in euros of the executed currency
+                                                              exchange transaction. Euros are converted to U.S. dollars when buy
+                                                              orders are executed, and U.S. dollars are converted to euros when sell
+                                                              orders are executed. Robinhood Europe does not apply any other fees
+                                                              related to the trading of Classic Stock Tokens.
+ Perpetual Futures
+
+  Transaction Fees                                            0.02% maker / 0.02% taker Robinhood fee
+                                                              0.00% maker / 0.02% taker venue fee
+
+                                                              Maker/taker fees are assessed on the order notional USD value
+  Liquidation Fees                                            0.05% of USD notional liquidated
+
+
+
+* No fees apply to EURC buy and sell transactions.
+
+Robinhood Europe reserves the right to vary its rates and fees among customers or cryptocurrencies transactions in connection with special offers,
+promotions, or arrangements based on criteria such as account values, account balances or customer loyalty.
+Processing and service fees assessed by third parties may be passed through to the customer’s account. Some products and services may require additional
+fees or transaction minimums not specifically listed here.
+
+
+
+
+                                                                                                                                                           1
+
+
+                                                                                                                     20260901-5888610-18779116
+

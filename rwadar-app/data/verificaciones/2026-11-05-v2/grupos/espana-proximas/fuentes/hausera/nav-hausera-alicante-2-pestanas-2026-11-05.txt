@@ -1,0 +1,33 @@
+URL: https://hausera.io/propiedad/alicante_2/
+URL final: https://hausera.io/login/
+Consulta UTC: 2026-11-05T08:04:30Z
+HTTP: 200
+
+===== PESTAÑA: Descripción (no se pudo pulsar: locator.click: Timeout 5000ms exceeded.) =====
+
+===== PESTAÑA: Datos financieros (no se pudo pulsar: locator.click: Timeout 5000ms exceeded.) =====
+
+===== PESTAÑA: Calendario (no se pudo pulsar: locator.click: Timeout 5000ms exceeded.) =====
+
+===== PESTAÑA: Documentos (no se pudo pulsar: locator.click: Timeout 5000ms exceeded.) =====
+
+==== ENLACES ====
+https://hausera.io/register/ | Regístrate
+https://hausera.io/register/ | Regístrate ahora.
+==== XHR JSON/PDF ====
+200 https://hausera.io/page-data/app-data.json application/json null
+200 https://hausera.io/page-data/propiedad/alicante_2/page-data.json application/json null
+200 https://bzrcdn.openai.com/pixel-config/v1/BEd6ry2BGXsue6jQKnNznJ.json application/json 44
+200 https://hausera.io/page-data/propiedad/alicante_2/page-data.json application/json 157212
+200 https://hausera.io/page-data/app-data.json application/json 50
+200 https://hausera.io/page-data/sq/d/1181653203.json application/json 326
+200 https://hausera.io/page-data/app-data.json application/json 50
+200 https://hausera.io/page-data/login/page-data.json application/json 7442
+200 https://api.hausera.io/v1/graphql application/json; charset=utf-8 142
+200 https://cdn.segment.com/v1/projects/F82r5rHq4Gm91gFyFH6zuh6blLCeZ6on/settings application/json; charset=utf-8 979
+200 https://api.hausera.io/v1/graphql application/json; charset=utf-8 172
+200 https://api.hausera.io/v1/graphql application/json; charset=utf-8 684
+200 https://api.segment.io/v1/p application/json 21
+200 https://api.segment.io/v1/p application/json 21
+200 https://hausera.io/page-data/register/page-data.json application/json 8003
+200 https://hausera.io/page-data/register/page-data.json application/json 8003

@@ -1,0 +1,968 @@
+                Investitionsbedingungen der Greeninfra G m.b.H.
+                                         ISIN: AT0000A3E842
+                                           Datum: 04.08.2024
+
+
+
+
+INVESTITIONSBEDINGUNGEN
+          FÜR
+TOKENISIERTE WERTPAPIERE
+                                                                                      Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                                                                ISIN: AT0000A3E842
+                                                                                                                  Datum: 04.08.2023
+
+
+
+
+                                                     INHALTSVERZEICHNIS
+
+ZIFFER                                                                                                                                                        SEITE
+1.       Präambel ...................................................................................................................................................... 3
+2.       Wesentliche Merkmale der tokenisierten Wertpapiere und Definitionen ............................ 3
+3.       Ausgabe, Stückelung und Tokenisierung der Wertpapiere ........................................................ 5
+4.       Zeichnung und Erwerb tokenisierter Wertpapiere........................................................................ 6
+5.       Ausschüttung, Verlustbeteiligung, Rückzahlungsanspruch...................................................... 9
+6.       Mitsprache bei der Verwaltung der Anlage .................................................................................... 10
+7.       Eigenverwaltung der tokenisierten Wertpapiere .........................................................................15
+8.       Keine Eigentumsrechte, kein Treuhandverhältnis, keine Gesellschafterrechte, keine
+         Nachschusspflicht .................................................................................................................................. 16
+9.       Rangrücktritt............................................................................................................................................ 16
+10.      Laufzeit, Rückzahlung bei Endfälligkeit und Beendigung der Wertpapiere,
+         Kündigungsrechte ................................................................................................................................... 17
+11.      Übertragbarkeit der tokenisierten Wertpapiere .......................................................................... 19
+12.      Ausgabe weiterer Wertpapiere und sonstiger Rechte .............................................................. 20
+13.      Mitteilungen und Nachrichten .......................................................................................................... 20
+14.      Steuern und sonstige Kosten ............................................................................................................ 20
+15.      Schlussbestimmungen ........................................................................................................................ 20
+
+
+
+
+                                                                               2
+                                                   Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                             ISIN: AT0000A3E842
+                                                                               Datum: 04.08.2023
+
+1.    PRÄAMBEL
+
+1.1   Die Greeninfra GmbH., eine nach österreichischem Recht gegründete Gesellschaft mit
+      beschränkter Haftung und der Geschäftsanschrift Gregor Mendel-Straße 2-4/1/2 1180
+      Wien, eingetragen im Firmenbuch des Handelsgerichts Wien unter FN 460779 t (in
+      weiterer Folge als "Emittentin" bezeichnet) betreibt für das Projekt "Parkhaus Q2" in St.
+      Pölten auf dem Dach der Parkhaus in der Rennbahnstraße 1, St. Pölten eine Photovoltaik
+      Anlage mit 113kWp Leistung, E-Ladestationen (28 Stk. AC-Lader und eine HPC
+      Ladestation mit 2 Anschlüssen und insgesamt 320kW Leistung mit Batteriespeicher).
+      Die Anlage ist in Betrieb und liefert Strom mittels ÖEMAG-Tarif ins Netz der Netz NÖ
+      GmbH eingespeist. Die Anlage erzeugt pro Jahr ca. 1.058 kWh Strom.(die oben genannte
+      Anlage in weiterer Folge als "GREEMER-Anlage" bezeichnet.)
+
+1.2   Die aus der Lieferung von Strom erwirtschafteten Überschüsse sind Gegenstand der den
+      Investoren gemäß diesen Investitionsbedingungen eingeräumten Genussrechte.
+
+1.3   Auf Grundlage der gegenständlichen Investitionsbedingungen begibt die Emittentin
+      tokenisierte Wertpapiere, die den Investoren das Recht einräumen, an den laufenden
+      Überschüssen aus dem Betrieb der GREEMER-Anlage zu partizipieren.
+
+1.4   Der Erlös der gegenständlichen Emission wird ausschließlich für die in Ziffer 2.2
+      angeführten Zahlungen verwendet.
+
+1.5   Der Unternehmensgegenstand der Emittentin gemäß deren Errichtungserklärung ist:
+      Infrastruktur für Elektromobilität (Ladestationen, etc.); Gründung, Erwerb, Halten,
+      Verwaltung und Veräußerung von Beteiligungen an Unternehmen und Gesellschaften in
+      beliebiger Rechtsform sowie von Anteilen an Beteiligungen an solchen Unternehmen
+      und Gesellschaften. Die Emittentin hat es gegenüber dem Investor zu unterlassen, einen
+      anderen Unternehmensgegenstand zu verfolgen.
+
+2.    WESENTLICHE MERKMALE DER TOKENISIERTEN WERTPAPIERE UND DEFINITIONEN
+
+2.1   Die nachfolgende Tabelle enthält die wesentlichen Merkmale der auf Basis dieser
+      Investitionsbedingungen ausgegebenen tokenisierten Wertpapiere. Soweit die in der
+      nachfolgenden     Tabelle  enthaltenen  Begriffe   (linke  Spalte)   in   diesen
+      Investitionsbedingungen verwendet werden, haben sie folgende Bedeutung (rechte
+      Spalte):
+
+       Emittentin:                Greeninfra GmbH FN 460779 t
+
+       Wertpapierart:             Tokenisierte Genussscheine
+
+       Tokenbezeichnung & ISIN:   AT0000A3E842
+
+
+
+                                              3
+                                                  Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                            ISIN: AT0000A3E842
+                                                                              Datum: 04.08.2023
+
+
+Art der Tokenisierung:        Jeder Token vermittelt anteilig Miteigentum an einer physischen
+                              Sammelurkunde (Ziffern 3.1-3.2)
+
+Verwaltung der Token:         Eigenverantwortlich durch den Investor (Ziffer 7)
+
+Marktplatz:                   Greemer App, gegebenenfalls weitere Marktplätze
+
+Blockchain-Netzwerk:          Brickprotocol
+
+Asset:                        Folgende Anlagen auf der Projektliegenschaft "ParkhausQ2 St. Pölten":
+                              (a)    Photovoltaik Anlage mit 113kWp Leistung;
+                              (b)    HPC Schnelladestation mit 320kW Leistung, 200kWh Speicher
+                              (c)    28 AC-Wallboxen
+
+Gesamtnennbetrag:             EUR 233.505,20 (siehe zur Kalkulation Ziffer 2.2)
+
+Stückelung / Gesamtzahl der   460 Stück tokenisierte Genussscheine
+tokenisierten Wertpapiere:
+
+Ausgabepreis:                 EUR 507,62 je tokenisiertem Wertpapier
+
+Ausschüttung:                 Monatliche Ausschüttung des Monatlichen Netto-Überschusses
+                              (Ziffer 5.1) als Ausschüttungsanspruch des Investors auf eine quotale
+                              Beteiligung an 40% des Jahresüberschusses aus dem Absatz des von der
+                              GREEMER-Anlage erzeugten Stroms
+                              Geplante erste monatliche Ausschüttung des Monatlichen Netto-
+                              Überschusses: 15.10.2024
+
+Rückzahlung:                  Rückzahlungsanspruch (qualifiziert nachrangig) des Investors nach Ablauf
+                              dieser Investitionsbedingungen in Höhe des Ausgabepreises (Nominale)
+                              je tokenisiertem Wertpapier (Ziffer 5.11)
+
+Nachrangigkeit:               Nachrangigkeit sämtlicher Forderungen der Investoren aus diesen
+                              Investitionsbedingungen gegenüber Forderungen von Gläubigern aus
+                              Fremdfinanzierungen (Ziffer 9)
+
+Aufwendungen:                 Monatliche Betriebliche Aufwendungen (Ziffer 5.5): 5% der Monatlich
+                              Erwirtschafteten Umsatzerlöse
+
+Rückstellungen:               Monatliche Rückstellung für die geplante Rückzahlung (Ziffern 5.4 iVm
+                              5.2): 12,66 % der Monatlich Erwirtschafteten Umsatzerlöse
+
+Rücklagen:                    Jährliche Instandhaltungsrücklage: 1% des Jahreserlöses (Ziffer 5.6)
+                              Jährliche Liquiditätsrücklage: 6% des Jahreserlöses (Ziffer 5.6)
+
+Zeichnungsfrist:              15.08.2024.
+                               05.09.2024 bis 30.09.2024
+                                              31.10.2024
+
+Ausgabetag:                   Tag, an dem die Emittentin erstmals tokenisierte Wertpapiere an einen
+                              Investor transferiert
+
+Mindestausgabemenge:          99 Stück tokenisierte Wertpapiere (EUR 50.000,00)
+
+Mindestzeichnungsbetrag je    EUR 507,62
+Investor:
+
+
+                                              4
+                                                            Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                                      ISIN: AT0000A3E842
+                                                                                        Datum: 04.08.2023
+
+
+       Laufzeit / keine ordentliche    Die Laufzeit der tokenisierten Wertpapiere beträgt 15 (fünfzehn) Jahre ab
+       Kündigung:                      dem Ausgabetag. Eine ordentliche Kündigung vor Ablauf dieses
+                                       Zeitraums ist nicht möglich.
+
+       Außerordentliche                Durch die Emittentin gemäß Ziffer 10.2 (insb. bei Kündigung tokenisierter
+       Kündigung:                      Wertpapiere durch einen oder mehrere Investoren); durch den Investor
+                                       gemäß Ziffer 10.3 ff (jedoch keine außerordentliche Kündigung bei
+                                       Wegfall der Handelbarkeit der tokenisierten Wertpapiere)
+
+       Übertragbarkeit:                Ja (siehe zu den Details Ziffer 11)
+
+
+2.2   Der Gesamtnennbetrag wird für die in der nachstehenden Kalkulation angegeben
+      Positionen bzw. Zahlungen verwendet:
+       Position / Zahlung                                 Betrag (EUR)              Informationen
+
+       1.   Rückführung Fremdkapital                      EUR       150.000,00
+
+       2. Rückführung Eigenmittel                         EUR        50.000,00
+
+       3. Summe (= Finanzierungsbetrag)                   EUR      200.000,00
+
+       4. Liquiditätsrücklage                             EUR        10.000,00
+
+       5. Vertriebskosten                                 EUR        10.000,00
+
+       6. Rechts- und Steuerberatungskosten               EUR        10.000,00
+
+       7.   Software-Lizenzgebühren Brickwise IT          EUR            3.502,54
+            Services GmbH
+
+       8. Rundungsbetrag                                  EUR                2,66
+
+       9. Gesamtnennbetrag                                EUR      233.505,20
+
+
+
+3.    AUSGABE, STÜCKELUNG UND TOKENISIERUNG DER WERTPAPIERE
+
+3.1   Die Emittentin begibt Wertpapiere zum Gesamtnennbetrag und mit einer Stückelung
+      gemäß diesen Investitionsbedingungen. Die Ausgabe erfolgt durch Ausstellung einer
+      einzigen physischen Sammelurkunde über sämtliche Wertpapiere (die "tokenisierten
+      Wertpapiere") durch die Emittentin. Ein Anspruch des Investors auf Ausstellung
+      einzelner Urkunden besteht nicht.
+
+3.2   Die von der Emittentin ausgegebenen Wertpapiere werden in Form von Tokens
+      digitalisiert. Token sind digitale (Wert-)Einheiten in Form eines Datensatzes, die
+      aufgrund eines Protokolls in einer Blockchain ausschließlich von der Emittentin erstellt
+      und an den Investor übertragen werden. Die Tokenisierung erfolgt durch Einräumung
+      eines Miteigentumsanteils im Umfang von 1/Gesamtzahl der tokenisierten Wertpapiere
+
+
+                                                      5
+                                                 Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                           ISIN: AT0000A3E842
+                                                                             Datum: 04.08.2023
+
+      je Token an der Sammelurkunde durch die Emittentin an den jeweiligen Token-Inhaber
+      durch Übertragung des jeweiligen Tokens in den Account des Investors.
+
+3.3   Um tokenisierte Wertpapiere zu erwerben und zu übernehmen, benötigt der Investor
+      einen Account am Marktplatz. Sämtliche Rechte des Investors gegenüber der
+      Emittentin knüpfen sich an die rechtmäßig erworbene anteilige Miteigentümerschaft an
+      der Sammelurkunde, welche der Emittentin ausschließlich durch die Inhaberschaft über
+      den jeweiligen Token nachgewiesen wird. Der Investor gilt als Inhaber eines Token,
+      solange sich dieser im Account des Investors befindet.
+
+3.4   Die Emittentin ist berechtigt, die verwendete Blockchain-Technologie und/oder das
+      verwendete Blockchain-Netzwerk jederzeit zu wechseln, sofern dadurch für den Investor
+      keine rechtlichen oder wirtschaftlichen Nachteile entstehen. Sollte ein Wechsel der
+      verwendeten Blockchain-Technologie und/oder des verwendeten Blockchain-
+      Netzwerks mit rechtlichen oder wirtschaftlichen Nachteilen für den Investor verbunden
+      sein, so wird die Emittentin den Investor hierüber vorabinformieren. Ist der Investor mit
+      dem Wechsel des Blockchain-Netzwerks aufgrund der ihm dadurch entstehenden
+      rechtlichen oder wirtschaftlichen Nachteile nicht einverstanden, kann er das
+      Rechtsverhältnis zur Emittentin gemäß Ziffer 10.3 dieser Investitionsbedingungen
+      außerordentlich kündigen.
+
+4.    ZEICHNUNG UND ERWERB TOKENISIERTER WERTPAPIERE
+
+4.1   Die Ausgabe von tokenisierten Wertpapieren erfolgt im Rahmen mehrerer öffentlicher
+      Angebote mit einem Gesamtgegenwert von weniger als EUR 2.000.000,00 innerhalb
+      von 12 Monaten in der Europäischen Union und daher unter Inanspruchnahme der
+      Ausnahme von der kapitalmarktrechtlichen Prospektpflicht.
+
+4.2   Jede natürliche und jede juristische Person kann am Marktplatz tokenisierte
+      Wertpapiere durch Zeichnung und Annahme durch die Emittentin erwerben. Die
+      Zeichnung ist ein Angebot des Investors zum Kauf und zum Erwerb tokenisierter
+      Wertpapiere im gezeichneten Ausmaß unter Einbeziehung und Geltung dieser
+      Investitionsbedingungen. Der Investor hat ab dem Zeitpunkt der Zeichnung eine
+      vorvertragliche Bedenkzeit von 4 (vier) Tagen, während der er seine Zeichnung ohne
+      Begründung und ohne Vertragsstrafe jederzeit widerrufen kann. Im Fall des wirksamen
+      Widerrufs erhält der Investor den bezahlten Investitionsbetrag abzugsfrei
+      zurückerstattet.
+
+4.3   Die tokenisierten Wertpapiere können nur während der Zeichnungsfrist gezeichnet
+      werden. Die Emittentin behält sich das Recht vor, die Zeichnungsfrist um einen
+      Zeitraum zu verlängern, dessen Dauer höchstens dem dreifachen der ursprünglichen
+      Zeichnungsfrist entspricht.
+
+                                             6
+                                              Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                        ISIN: AT0000A3E842
+                                                                          Datum: 04.08.2023
+
+4.4   Der kleinstmögliche Zeichnungsbetrag ist der Mindestzeichnungsbetrag. Die
+      Zeichnung kann nur zum Mindestzeichnungsbetrag oder zu einem über dem
+      Mindestzeichnungsbetrag liegenden Vielfachen des Ausgabepreises je tokenisiertem
+      Wertpapier erfolgen.
+
+4.5   Die Zeichnung erfolgt durch den Klick auf den Button „Kauf signieren“ auf der
+      Emissionsplattform der Emittentin, infolgedessen der Zeichnungsbetrag am
+      Zahlungskonto des Investors bis zur Ausgabe der tokenisierten Wertpapiere oder
+      alternativ bis zur Ablehnung der Zeichnung reserviert und gesperrt wird.
+
+4.6   Die rechtswirksame Zeichnung tokenisierter Wertpapiere setzt voraus, dass
+
+              (a)   sich der Investor am Marktplatz registriert und einen Account zur
+                    eigenverantwortlichen Verwahrung seiner tokenisierten Wertpapiere auf
+                    der Blockchain erstellt (hat),
+
+              (b)   die Person des Investors über den Marktplatz durch Erhebung und
+                    Prüfung der gesetzlich geforderten Angaben identifiziert wurde („Know
+                    Your Customer“) und die notwendigen Informationen und
+                    Identifikationsnachweise (z.B. Reisepass oder Personalausweis) an die
+                    Emittentin übermittelt wurden; und
+
+              (c)   der Emittentin die Bestätigung vorliegt, dass der jeweilige
+                    Zeichnungsbetrag vom Zahlungskonto des Investors auf das Konto der
+                    Emittentin überwiesen werden kann.
+
+4.7   Die Annahme der Zeichnung des Investors erfolgt dadurch, dass die Emittentin einen
+      Token generiert, welcher einen Miteigentumsanteil an der Sammelurkunde gemäß
+      Ziffern 3.1-3.2 repräsentiert, und die dem Investor zustehenden Token auf dessen
+      Account transferiert. Die Emittentin kann die Zeichnung des Investors jederzeit
+      annehmen, sobald angebotene tokenisierte Wertpapiere im Ausmaß der
+      Mindestausgabemenge (oder darüber) gezeichnet wurden und zuvor für einen allenfalls
+      verbleibenden Kapitalbedarf (das ist die Differenz zwischen Gesamtnennbetrag und
+      Mindestausgabemenge) eine anderweitige Finanzierungsquelle sichergestellt wurde,
+      welche die Ansprüche des Investors gemäß Ziffer 5 dieser Investitionsbedingungen bei
+      ordnungsgemäßem Gang der Geschäfte voraussichtlich nicht beeinträchtigt. Die
+      Emittentin wird die Zeichnung des Investors jedenfalls ohne unnötige Verzögerung
+      annehmen, sobald sämtliche angebotenen tokenisierten Wertpapiere gezeichnet
+      wurden.
+
+4.8   Sobald die Emittentin dem Investor die von ihm gezeichneten tokenisierten
+      Wertpapiere auf seinen Account übertragen hat, wird der Zeichnungsbetrag
+
+                                          7
+                                                  Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                            ISIN: AT0000A3E842
+                                                                              Datum: 04.08.2023
+
+       automatisch vom Zahlungskonto des Investors auf das Konto der Emittentin
+       überwiesen.
+
+4.9    Sofern die Emittentin die Zeichnung nicht binnen zwei (2) Wochen nach Zeichnung
+       sämtlicher tokenisierten Wertpapiere angenommen hat, kann der Investor die
+       Zeichnung ohne Angabe von Gründen zurückziehen.
+
+4.10   Die Emittentin ist nicht verpflichtet, die Zeichnung des Investors anzunehmen, wenn
+
+       4.10.1   innerhalb der Zeichnungsfrist tokenisierte Wertpapiere nicht im Umfang der
+                Mindestausgabemenge gezeichnet wurden;
+
+       4.10.2   zwar die Mindestausgabemenge erreicht, nicht aber sämtliche angebotenen
+                tokenisierten Wertpapiere gezeichnet wurden, und für einen verbleibenden
+                Kapitalbedarf (das ist die Differenz zwischen Gesamtnennbetrag und
+                Mindestausgabemenge) keine anderweitige Finanzierungsquelle sichergestellt
+                wurde, welche die Ansprüche des Investors gemäß Ziffer 5 dieser
+                Investitionsbedingungen bei ordnungsgemäßem Gang der Geschäfte
+                voraussichtlich nicht beeinträchtigt;
+
+       4.10.3   der Erwerb der tokenisierten Wertpapiere zu rechtswidrigen Zwecken erfolgen
+                sollte;
+
+       4.10.4   der Investor nicht zum Erwerb tokenisierter Wertpapiere berechtigt ist;
+
+       4.10.5   die Emittentin nicht berechtigt ist, tokenisierte Wertpapiere an den Investor zu
+                verkaufen.
+
+4.11   Sofern nicht tokenisierte Wertpapiere im Ausmaß der Mindestausgabemenge innerhalb
+       der Zeichnungsfrist gezeichnet wurden oder wenn der Investor seine Zeichnung im
+       Einklang mit diesen Investitionsbedingungen berechtigt zurückzieht, wird der am
+       Zahlungskonto des Investors reservierte Zeichnungsbetrag wieder freigegeben bzw. ein
+       bereits bezahlter Zeichnungsbetrag binnen 10 (zehn) Bankarbeitstagen auf das
+       Zahlungskonto des Investors zurücküberwiesen.
+
+4.12   Wurden tokenisierte Wertpapiere zumindest im Ausmaß der Mindestausgabemenge,
+       nicht aber sämtliche angebotenen tokenisierten Wertpapiere gezeichnet und
+       ausgegeben, und wurden nicht spätestens innerhalb 1 (eines) Jahres nach dem
+       Ausgabetag sämtliche angebotenen (verbleibenden) tokenisierten Wertpapiere
+       gezeichnet, so enden diese Investitionsbedingungen automatisch 1 (ein) Jahr nach dem
+       Ausgabetag (auflösende Bedingung). Der Investor erhält diesfalls den bezahlten
+       Ausgabebetrag vorbehaltlich der Regelungen der Ziffer 10 zurückerstattet. Bereits
+       erfolgte Ausschüttungen gemäß Ziffer 5 verbleiben beim Investor.
+
+                                              8
+                                                 Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                           ISIN: AT0000A3E842
+                                                                             Datum: 04.08.2023
+
+4.13   Der Investor ist neben der Zahlung des Zeichnungsbetrags zu keinen weiteren
+       Zahlungen an die Emittentin verpflichtet, insbesondere nicht zu Nachschüssen aus oder
+       im Zusammenhang mit den tokenisierten Wertpapieren.
+
+5.     AUSSCHÜTTUNG, VERLUSTBETEILIGUNG, RÜCKZAHLUNGSANSPRUCH
+
+5.1    Die tokenisierten Wertpapiere gewähren dem Investor eine quotale Beteiligung
+       (=Verhältnis zwischen der vom Investor gehaltenen tokenisierten Wertpapiere zur
+       Gesamtzahl der tokenisierten Wertpapiere) an 40 % des Jahresüberschusses aus dem
+       Absatz des von der GREEMER-Anlage erzeugten Stroms, welche monatlich aliquot
+       ausbezahlt wird. Der Ausschüttungsanspruch des Investors besteht in einer
+       monatlichen Zahlung auf die vorerwähnte quotale Beteiligung an 40 % des
+       Jahresüberschusses und berechnet sich wie folgt:
+           (Monatlich Erwirtschaftete Umsatzerlöse + Monatliche sonstige Erträgnisse -
+          Monatliche Rückstellung für die geplante Rückzahlung - Monatliche Betriebliche
+             Aufwendungen - Verlustvorträge (jeweils aliquot) (der "Monatliche Netto-
+         Überschuss") * 0,40) / Gesamtzahl der tokenisierten Wertpapiere * Anzahl der vom
+                 Investor im Zeitpunkt der Ausschüttung gehaltenen Wertpapiere
+
+5.2    Die „Monatlich Erwirtschaftete Umsatzerlöse“ setzen sich aus folgenden Positionen
+       zusammen:
+          •   Stromvergütung
+          •   Vergütung für Ladungen an den Ladestationen
+
+5.3    Die „Monatliche sonstigen Erträge“ setzen sich aus folgenden Positionen zusammen:
+          •   Erträge aus der Auflösung von Investitionszuschüssen (PV)
+
+5.4    Die „Monatliche Rückstellungen für die geplante Rückzahlung“ setzen sich aus den
+       jeweiligen zu leistenden Beträgen für Rückstellungen zusammen, die am Ende der
+       Laufzeit für die geplante Rückzahlung der Nominale der gegenständlichen tokenisierten
+       Wertpapiere verwendet werden. Die Rückstellung wird dabei für die Investoren auf ein
+       zu Ihren Gunsten verpfändetes Konto eingezahlt.
+
+5.5    Die „Monatliche Betriebliche Aufwendungen“ setzen sich aus folgenden Positionen
+       zusammen:
+          •   OPEX (externe operative Kosten, Betriebs- und Instandhaltungskosten)
+
+5.6    Die Instandhaltungs- und Liquiditätsrücklagen (siehe zur Höhe Ziffer 2.1) werden von der
+       Emittentin für die Deckung der Kosten gemäß Ziffer 5.5 sowie für sonstige Kosten im
+       Zusammenhang mit dem Betrieb der GREEMER-Anlage einbehalten.
+
+                                             9
+                                                  Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                            ISIN: AT0000A3E842
+                                                                              Datum: 04.08.2023
+
+5.7    Soweit der Monatliche Netto-Überschuss negativ ist (der "Netto-Fehlbetrag"), besteht
+       keine Nachschusspflicht für den Investor.
+
+5.8    Sofern operative Kosten und/oder Betriebs- und Instandhaltungskosten der GREEMER-
+       Anlage nicht monatlich (sondern z.B. quartalsmäßig, halbjährlich oder jährlich) anfallen,
+       werden sie gleichmäßig auf jene Monate verteilt, für die sie angefallen bzw. bestimmt
+       sind.
+
+5.9    Die monatliche Ausschüttung wird für jeden Kalendermonat gesondert festgestellt und
+       an den Investor nachträglich ausbezahlt. Die Feststellung der monatlichen
+       Ausschüttung erfolgt binnen 3 (drei) Wochen nach Ablauf eines Kalendermonats. Die
+       Ausschüttung wird bis spätestens am Endes des übernächsten Kalendermonats an den
+       Investor zur Auszahlung gebracht.
+
+5.10   Der Investor nimmt insoweit am Verlust aus dem Betrieb der GREEMER-Anlage teil, als
+       ein etwaiger Netto-Fehlbetrag mit Netto-Überschüssen der Folgemonate solange
+       verrechnet wird, bis der negative Saldo ausgeglichen ist (der "Verlustausgleich").
+
+5.11   Soweit nicht zuvor bereits ganz oder teilweise zurückgezahlt, werden die tokenisierten
+       Wertpapiere zu ihrem Rückzahlungsbetrag den Investoren am Endfälligkeitstag
+       zurückgezahlt. Dieser Rückzahlungsanspruch ist qualifiziert nachrangig gemäß Ziffer 9
+       dieser Investitionsbedingungen. Der Rückzahlungsbetrag entspricht dem Ausgabepreis
+       (Nominale) je tokenisiertem Wertpapier ("Rückzahlungsbetrag"). Nach erfolgter
+       Rückzahlung des Rückzahlungsbetrages erlischt der Token und somit auch der
+       Miteigentumsanteil des Investors an der Sammelurkunde gemäß Ziffer 3.1-3.2.
+
+5.12   Eine gegebenenfalls von der Emittentin für den Investor abzuführende Abzugssteuer
+       (z.B. Kapitalertragsteuer) wird gesondert vom jeweiligen Ausschüttungsbetrag gemäß
+       Ziffer 5.1 bzw. 5.11 in Abzug gebracht.
+
+5.13   Abgesehen von den in dieser Ziffer 5 genannten Ansprüchen bestehen keine
+       Ausschüttungsansprüche zugunsten des Investors.
+
+6.     MITSPRACHE BEI DER VERWALTUNG DER ANLAGE
+
+6.1    Die Emittentin wird für die Durchführung folgender Maßnahmen, sofern sie sich auf die
+       GREEMER-Anlage beziehen, die Zustimmung der Investoren einholen, wobei die
+       Zustimmung mit der einfachen Mehrheit der abgegebenen Stimmen der Investoren
+       erteilt wird:
+
+               (a)   Beauftragung    von    Dienstleistern  zur   Instandhaltung bzw.
+                     Instandsetzung (z.B. Renovierung) oder Umbau der GREEMER-Anlage
+                     sowie Ausübung der Rechte aus dem Vertragsverhältnis;
+
+                                             10
+                                                Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                          ISIN: AT0000A3E842
+                                                                            Datum: 04.08.2023
+
+              (b)   dingliche oder schuldrechtliche Belastung der GREEMER-Anlage;
+
+              (c)   Subbetrieb der GREEMER-Anlage und Beauftragung von Dienstleistern in
+                    diesem Zusammenhang sowie Ausübung der Rechte aus dem
+                    Vertragsverhältnis;
+
+              (d)   Abschluss, Abänderung, Neuverhandlung und/oder Beendigung von
+                    (bestehenden) Mietverträgen, Errichtungs- und Betriebsverträge
+                    und/oder Energielieferverträgen im Zusammenhang mit der GREEMER-
+                    Anlage.
+
+              (e)   Veräußerung der Anlage
+      Eine einfache Mehrheit ist erreicht, wenn ein Vorschlag mehr als die Hälfte der gültig
+      abgegebenen Stimmen auf sich vereinigt. Erforderlich ist sohin, dass die Zahl der
+      gültigen JA-Stimmen die der gültigen NEIN-Stimmen um wenigstens eine übertrifft.
+
+6.2   Die Veräußerung der GREEMER-Anlage darf nur erfolgen, sofern
+
+              (a)   die Zustimmung der Investoren gemäß 6.1(e) Veräußerung der Anlage
+                    erfolgt ist, oder
+
+              (b)   aufgrund der weiteren Bewirtschaftung der GREEMER-Anlage bei der
+                    Emittentin mindestens ein Insolvenzeröffnungsgrund entstehen würde;
+                    oder
+
+              (c)   die Emittentin gesetzlich oder aufgrund rechtskräftiger behördlicher
+                    oder gerichtlicher Anordnung zur Veräußerung der GREEMER-Anlage
+                    verpflichtet ist; oder
+
+              (d)   über das Vermögen der Emittentin ein Insolvenzverfahren eröffnet
+                    worden ist.
+
+6.3   Die Emittentin stellt dem Investor auf einer permanent verfügbaren Online-Plattform,
+      auf die der Investor über den Marktplatz zugreifen kann, alle für die wirtschaftliche
+      Entwicklung der GREEMER-Anlage sowie alle für die Beschlussfassungen nach dieser
+      Ziffer 6 notwendigen und verfügbaren Unterlagen und Informationen (soweit rechtlich
+      notwendig teilweise geschwärzt) im Rahmen des ordnungsgemäßen Geschäftsgangs
+      zur Verfügung. Dazu zählen insbesondere nachstehende Unterlagen und Informationen:
+
+              (a)   Aufstellungen und Abrechnungen über die Monatlichen Rückstellungen
+                    für die geplante Rückstellung und die Monatlichen Betrieblichen
+                    Aufwendungen;
+
+
+                                           11
+                                              Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                        ISIN: AT0000A3E842
+                                                                          Datum: 04.08.2023
+
+             (b)   Abrechnungen zu den Monatlich Erwirtschafteten Umsatzerlösen und
+                   Monatlichen Sonstigen Erträgen im Rahmen des Betriebs der GREEMER-
+                   Anlage;
+
+             (c)   Aufstellung und/oder Abrechnung über etwaige Verlustvorträge
+                   und/oder Steuern, sofern diese durch die Emittentin und aufgrund dieser
+                   Investitionsbedingungen wirtschaftlich durch den Investor zu tragen
+                   sind;
+
+             (d)   Informationen und vertragliche Unterlagen über den Abschluss, die
+                   Änderung und die Beendigung von, Errichtungs- und Betriebsverträge,
+                   Energielieferverträgen und sonstigen Verträgen im Zusammenhang mit
+                   der GREEMER-Anlage;
+
+             (e)   Informationen und vertragliche Unterlagen über Finanzierungen;
+
+             (f)   Informationen sowie vertragliche und behördliche Unterlagen über
+                   betriebsrelevante Umstände bezogen auf die GREEMER-Anlage.
+
+6.4   Die Abstimmungsergebnisse binden die Emittentin lediglich schuldrechtlich (d.h.
+      ausschließlich im Verhältnis zu den Investoren) und nur unter den folgenden
+      Voraussetzungen:
+
+             (a)   die Kosten für die Durchführung der jeweiligen Maßnahmen sind
+                   jedenfalls durch künftige Einnahmen aus dem Betrieb der GREEMER-
+                   Anlage gedeckt; und
+
+             (b)   die Durchführung der Maßnahme führt nicht zur Gefahr eines Netto-
+                   Fehlbetrages aus dem Betrieb der GREEMER-Anlage; und
+
+             (c)   die Durchführung der Maßnahme führt nicht zu einem oder mehreren
+                   Insolvenzeröffnungsgründen; und
+
+             (d)   es stehen der Durchführung der Maßnahme keine anderen zwingenden
+                   rechtlichen oder tatsächlichen Gründe entgegen (z.B. Gefahr im Verzug,
+                   Unmöglichkeit, potenzielle Gesetzwidrigkeit, potenzieller Verstoß gegen
+                   bestehende Verträge, deren Vertragspartei die Emittentin ist).
+
+6.5   Nach fristgerechtem und formgültigem Abschluss des Votings und sofern die
+      vorstehenden Voraussetzungen vorliegen, wird die Emittentin jene Maßnahme bzw.
+      jene Maßnahmen, die eine Zustimmung erhalten haben, unverzüglich, spätestens
+      innerhalb von 10 (zehn) Werktagen, umsetzen und/oder die notwendigen Erklärungen
+
+
+                                         12
+                                                Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                          ISIN: AT0000A3E842
+                                                                            Datum: 04.08.2023
+
+      abgeben, sofern dem nicht die in Ziffer 6.4 genannten oder sonst zwingende
+      tatsächliche oder rechtliche Gründe entgegenstehen.
+
+6.6   Eine wirksame Zustimmung kann nur im Rahmen einer Abstimmung über die in Ziffer
+      6.1 genannten Maßnahmen ("Voting") erfolgen. Jeder Investor ist zur Teilnahme an allen
+      Votings unter den nachfolgenden Bedingungen berechtigt.
+
+6.7   Das Voting wird ausschließlich über das Voting-Verfahren auf der Plattform der
+      Emittentin, die über den Marktplatz aufgerufen werden kann, abgehalten. Dieses
+      Voting-Verfahren erfolgt ausschließlich nach den folgenden Regeln:
+
+      6.7.1   Steht eine Entscheidung über eine der vorgenannten Maßnahmen an, wird die
+              Emittentin unverzüglich ein Voting abhalten.
+
+      6.7.2   Die Emittentin wird den Investoren eine angemessene Anzahl an unter
+              kaufmännischen Gesichtspunkten unter Wahrung der Sorgfalt eines
+              ordentlichen Kaufmanns angemessenen (d.h. geeigneten) Vorschlägen zur
+              Abstimmung bereitstellen. Sofern möglich, werden mindestens drei
+              Vorschläge zur Abstimmung bereitgestellt. Die Emittentin ist zur Abgabe einer
+              Beschlussempfehlung berechtigt; eine Pflicht zur Abgabe einer Empfehlung
+              besteht jedoch nicht.
+
+      6.7.3   Sobald ein Voting gestartet wurde, erhält der Investor eine Push-Nachricht
+              über die Plattform der Emittentin, die über den Marktplatz aufgerufen werden
+              kann, sowie eine E-Mail mit einem entsprechenden Hinweis.
+
+      6.7.4   Votings werden zumindest 48 Stunden vor dem Beginn des Voting-Zeitraums
+              angekündigt. Im Fall eines Votings über eine in Ziffer 6.2 ausdrücklich genannte
+              Maßnahme wird das Voting 1 (eine) Woche vor Beginn des Voting-Zeitraums
+              angekündigt.
+
+      6.7.5   Der Investor hat ab dem Start des Votings 72 Stunden Zeit, um am Voting
+              teilzunehmen, d.h. die auf die von ihm gehaltenen Token entfallenden Stimmen
+              abzugeben.
+
+      6.7.6   Der Investor erhält die Möglichkeit, im Einklang mit Ziffer 6.12 selbst einen
+              beschlussfähigen Vorschlag zur Abstimmung (der "Gegenvorschlag") zu
+              stellen.
+
+      6.7.7   Der Investor kann hinsichtlich der Vorschläge, die zur Abstimmung gebracht
+              werden, einem bestimmten Vorschlag zustimmen ("JA-Stimme") oder sich
+              seiner Stimme enthalten ("Enthaltung") oder einen bestimmten Vorschlag
+              ablehnen ("NEIN-Stimme").
+
+                                           13
+                                                 Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                           ISIN: AT0000A3E842
+                                                                             Datum: 04.08.2023
+
+       6.7.8   Der Investor kann seine Entscheidung innerhalb des Voting-Zeitraums
+               jederzeit ändern.
+
+       6.7.9   Jedes tokenisierte Wertpapier gewährt dem Investor eine Stimme. Hält die
+               Emittentin und/oder eine mit ihr im Sinne des § 189a Z 8 UGB (direkt oder
+               indirekt, mittelbar oder unmittelbar) verbundene juristische und/oder
+               natürliche Person und/oder ein Familienmitglied einer der vorerwähnten
+               Personen oder ein Treuhänder für eine der vorerwähnten Personen tokenisierte
+               Wertpapiere, so steht jeder dieser Personen unabhängig von der Anzahl der von
+               Ihnen gehaltenen tokenisierten Wertpapiere nur eine Stimme zu. Werden
+               mehrere tokenisierte Wertpapiere von unterschiedlichen Personen für eine der
+               vorerwähnten Personen gehalten und sind diese daher wirtschaftlich einer der
+               vorerwähnten Personen zuzuordnen, steht dieser Person ebenfalls nur eine
+               Stimme zu. Allen vorerwähnten Personen zusammen stehen jedoch keinesfalls
+               mehr als 50% der gesamten verfügbaren Stimmen zu. Familienmitglieder im
+               Sinne dieser Ziffer 6.7.9 sind folgende Personen: Ehepartner, Lebensgefährten,
+               Kinder, Verwandte in direkter Linie, Geschwister.
+
+6.8    Eine wirksame Zustimmung zu einer Voting-Option gilt als erteilt, wenn die für die
+       betreffende Maßnahme erforderliche Mehrheit der gültig abgegebenen JA-Stimmen am
+       Ende des Voting-Zeitraums vorliegt. Nicht abgegebene Stimmen und Enthaltungen
+       bleiben bei der Feststellung der erforderlichen Mehrheit der abgegebenen Stimmen
+       unberücksichtigt, wobei die Anzahl der abgegebenen Stimmen der Summe von JA-
+       Stimmen und NEIN-Stimmen je Vorschlag entspricht. Bei einem Voting nach Ziffer 6.10
+       ("Stichwahl") gilt dies auch für Stimmenthaltungen. Eine nachträgliche Stimmabgabe
+       ist ausgeschlossen.
+
+6.9    Verfügt ein Investor über mehr als 50% aller tokenisierten Wertpapiere, so ist für die
+       wirksame Zustimmung zu Maßnahmen gemäß den Ziffern 6.1-6.2, für die dieser Investor
+       abgestimmt hat, auch die Zustimmung der einfachen Mehrheit all jener Investoren, die
+       sich an der Abstimmung beteiligt haben, ("Kopfmehrheit") erforderlich.
+
+6.10   Stehen bei einem Voting mehr als 2 (zwei) Voting-Vorschläge zur Auswahl und erreicht
+       keine der Voting-Vorschläge die für eine wirksame Zustimmung erforderliche Mehrheit,
+       so wird zwischen den beiden Voting-Vorschlägen mit den meisten JA-Stimmen nach
+       Maßgabe dieser Ziffer 6 (ausgenommen sind die Ziffern 6.7.6 und 6.12) ein neuerliches
+       Voting durchgeführt ("Stichwahl").
+
+6.11   Wird keine Stimme abgegeben oder herrscht (gegebenenfalls nach einer Stichwahl)
+       Stimmengleichheit für mehrere Voting-Vorschläge, so gilt jenem Voting-Vorschlag die
+       Zustimmung erteilt, der der Beschlussempfehlung der Emittentin entspricht oder –
+       sofern keine Beschlussempfehlung abgegeben ist oder auf die Beschlussempfehlung
+
+                                            14
+                                                 Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                           ISIN: AT0000A3E842
+                                                                             Datum: 04.08.2023
+
+       keine oder weniger Stimme entfallen - der Vorschlag, der von der Emittentin
+       nachträglich empfohlen wird.
+
+6.12   Der Investor hat das Recht, über die Plattform der Emittentin, die über den Marktplatz
+       aufgerufen werden kann, ein eigenes Voting mit eigenen Vorschlägen zu den
+       Maßnahmen gemäß den Ziffern 6.1-6.2 nach dem in Ziffer 6.7 festgelegten Voting-
+       Verfahren und unter Beifügung der hierfür erforderlichen Unterlagen im Wege des
+       hierfür vorgesehen elektronischen Formulars unter Unterbreitung eines
+       beschlussfähigen Vorschlags anzustoßen. Der Investor hat weiters das Recht, im
+       Rahmen      eines    anderweitig     stattfindenden   Votings     eigene    Vorschläge
+       ("Gegenvorschlag") zur Abstimmung im Rahmen des Votings gemäß Ziffer 6.7 zu
+       unterbreiten. Der Investor hat diese Option spätestens 24 (vierundzwanzig) Stunden vor
+       dem angekündigten Start des Votings unter Beifügung der hierfür erforderlichen
+       Unterlagen im Wege des hierfür vorgesehen elektronischen Formulars bekanntzugeben.
+       Ein eigenes Voting oder ein Gegenvorschlag wird zum Voting zugelassen, sobald sie (i)
+       von mindestens 10% der gesamten verfügbaren Stimmen sowie (ii) von mindestens 10%
+       sämtlicher Investoren, sofern vorhanden jedoch mindestens 2 (zwei) weiteren
+       Investoren, mittels Voting unterstützt wird.
+
+6.13   Zur Abstimmung der Investoren untereinander sowie zur Kontaktaufnahme und
+       Kommunikation mit der Emittentin stellt die Emittentin den Investoren über die
+       Plattform der Emittentin, die über den Marktplatz aufgerufen werden kann, dauerhaft
+       (unterbrechungslos) ein gemeinsames elektronisches, nicht moderiertes Forum bereit,
+       welchem nur Investoren beitreten und sich frei zu allen gewünschten Themen per
+       elektronischer Textnachricht äußern sowie auch Dateien (z.B. Worddokumente, pdf-
+       Dateien) bereitstellen können. Eine jede derartige Kommunikation ist für sämtliche
+       anderen Investoren sichtbar. Überdies können die Investoren in diesem Forum im
+       Rahmen eines elektronischen Abstimmungsprozesses ihre Zustimmung, Ablehnung
+       oder Stimmenthaltung zu einem von einem Investor angestoßenen Voting oder zu
+       einem Gegenvorschlag abgeben.
+
+7.     EIGENVERWALTUNG DER TOKENISIERTEN WERTPAPIERE
+
+7.1    Die Token, welche einen Miteigentumsanteil an der Sammelurkunde gemäß Ziffern 3.1-
+       3.2 repräsentieren, sind auf dem Blockchain-Netzwerk gespeichert. Der Investor
+       verwaltet diese selbständig und eigenverantwortlich und kann nur über sie verfügen,
+       wenn er vollumfänglichen Zugang zu seinem Account hat. Ein solcher Account ist
+       zwingend erforderlich, um die tokenisierten Wertpapiere zu halten und zu handeln sowie
+       um Auszahlungen auf die tokenisierten Wertpapiere zu erhalten. Weder die Emittentin
+       noch andere Personen übernehmen die Verwaltung oder Verwahrung der tokenisierten
+       Wertpapiere.
+
+
+                                            15
+                                                 Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                           ISIN: AT0000A3E842
+                                                                             Datum: 04.08.2023
+
+8.    KEINE   EIGENTUMSRECHTE,      KEIN   TREUHANDVERHÄLTNIS,                            KEINE
+      GESELLSCHAFTERRECHTE, KEINE NACHSCHUSSPFLICHT
+
+8.1   Diese Investitionsbedingungen gewähren dem Investor keine unmittelbaren und/oder
+      keine dinglichen Rechte an der GREEMER-Anlage, insbesondere keine Eigentums- und
+      eigentumsähnlichen Rechte. Die Emittentin ist des Weiteren nicht Treuhänderin
+      hinsichtlich der GREEMER-Anlage. Der Investor hat nicht das Recht, anlässlich der
+      Kündigung der Wertpapiere oder aus irgendeinem sonstigen Anlass die GREEMER-
+      Anlage, einen Miteigentumsanteil an der GREEMER-Anlage oder sonstige Anteile an der
+      GREEMER-Anlage zu erhalten oder sonstige unmittelbare oder dingliche Rechte an der
+      Immobilie zu begründen.
+
+8.2   Diese Investitionsbedingungen begründen keine Gesellschafterrechte und/oder kein
+      Gesellschaftsverhältnis und kein Recht an der Mitwirkung an der Geschäftsführung der
+      Emittentin. Dies gilt auch für etwaige Rechtsnachfolger der Emittentin. Die Investoren
+      sind nicht dazu berechtigt, an Beschlussfassungen der Anteilseigner der Emittentin in
+      irgendeiner Form teilzunehmen und/oder mitzuwirken und/oder über Beschlüsse
+      informiert zu werden. Der Investor hat gegenüber der Geschäftsführung keine
+      Weisungsrechte, Einsichtsrechte in die Geschäftsbücher der Emittentin oder
+      gesellschaftsrechtlichen Informations- oder Stimmrechte.
+
+8.3   Der Investor hat kein Recht auf Umwandlung seiner tokenisierten Wertpapiere in einen
+      Gesellschaftsanteil an der Emittentin.
+
+8.4   Es ist nicht ausgeschlossen, dass die Emittentin ihre Firma ändert, in eine andere
+      Gesellschaftsform umgewandelt wird oder dass die Gesellschaftsanteile an der
+      Gesellschaft übertragen werden; solche Maßnahmen haben keine Auswirkungen auf den
+      Bestand der Wertpapiere. Der Investor hat diesbezüglich keine Informations- oder
+      Mitbestimmungsrechte. Die Regelungen der Sätze 1 und 2 gelten sinngemäß für den
+      Fall, dass die Emittentin an einer Strukturänderung im Sinne des
+      Umgründungssteuergesetzes beteiligt ist.
+
+8.5   Den Investor trifft keine Nachschusspflicht im Hinblick Verbindlichkeiten der Emittentin
+      aus oder im Zusammenhang mit der Errichtung, dem Betrieb oder der sonstigen
+      Bewirtschaftung der GREEMER-Anlage. Ein Verlustausgleich stellt keinen Nachschuss
+      im Sinne des Satz 1 dar.
+
+9.    RANGRÜCKTRITT
+
+9.1   Jegliche vermögensrechtlichen Forderungen eines Investors aus diesen
+      Investitionsbedingungen, einschließlich des Ausschüttungsanspruchs aus der quotalen
+      Beteiligung an 40% des Jahresüberschusses aus dem Absatz des von der GREEMER-
+
+                                            16
+                                                  Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                            ISIN: AT0000A3E842
+                                                                              Datum: 04.08.2023
+
+       Anlage erzeugten Stroms gemäß Ziffer 5.1 sowie des Rückzahlungsanspruches auf den
+       Rückzahlungsbetrag bei Endfälligkeit der gegenständlichen Investitionsbedingungen
+       gemäß Ziffer 5.11, sind gegenüber Gläubigern aus Fremdfinanzierungen im Sinne des §
+       67 Abs 3 Insolvenzrechtsordnung nachrangig, jedoch gegenüber allen sonstigen
+       Gläubigern gleichgestellt.
+
+9.2    Jeder Investor erklärt unwiderruflich, dass er sämtliche vermögensrechtliche
+       Forderungen aus den Investitionsbedingungen, soweit nicht zwingende gesetzliche
+       Bestimmungen etwas anderes vorsehen,
+
+       9.2.1   im Fall einer bestehenden oder durch diese Forderungen entstehenden
+               Zahlungsunfähigkeit (§ 66 IO);
+
+       9.2.2   im Fall eines bestehenden oder durch diese Forderungen entstehenden
+               negativen Eigenkapitals (§ 225 Abs 1 UGB);
+
+       9.2.3   im Fall der bestehenden oder durch diese Forderungen entstehenden
+               Unterschreitung   einer   Eigenmittelquote      von    8    % (§ 23
+               Unternehmensreorganisationsgesetz - "URG" idgF); ebenso wie
+
+       9.2.4   im Fall der Liquidation,
+
+       erst nach Befriedigung aller anderen Gläubiger aus Fremdfinanzierungen begehrt und
+       wegen seiner vermögensrechtlichen Forderungen kein Insolvenzverfahren eröffnet zu
+       werden braucht.
+
+10.    LAUFZEIT, RÜCKZAHLUNG BEI ENDFÄLLIGKEIT                     UND     BEENDIGUNG        DER
+       WERTPAPIERE, KÜNDIGUNGSRECHTE
+
+10.1   Die Laufzeit der tokenisierten Wertpapiere beträgt 15 (fünfzehn) Jahre. Die tokenisierten
+       Wertpapiere haben somit einen Endfälligkeitstag ("Endfälligkeitstag"). Die Möglichkeit
+       der ordentlichen Kündigung der tokenisierten Wertpapiere besteht nicht.
+
+10.2   Das Recht der Emittentin zur außerordentlichen Kündigung aus wichtigem Grund bleibt
+       davon unberührt. Ein wichtiger Grund, der die Emittentin zur außerordentlichen
+       Kündigung berechtigt, ist insbesondere dann gegeben, wenn
+
+               (a)   ein Investor ein oder mehrere tokenisierte(s) Wertpapier(e)
+                     rechtswirksam,     also   entweder   im   Einklang     mit    diesen
+                     Investitionsbedingungen oder sonst auf Grundlage der anwendbaren
+                     gesetzlichen Bestimmungen, kündigt und diese(s) tokenisierte(n)
+                     Wertpapier(e) nicht nach den Bestimmungen der Ziffern 10.4-10.6 (oder
+                     anderweitig) verkauft werden.
+
+                                             17
+                                                  Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                            ISIN: AT0000A3E842
+                                                                              Datum: 04.08.2023
+
+       Im Fall (a) kann die Emittentin das Rechtsverhältnis zum Investor unter Einhaltung einer
+       Kündigungsfrist von 6 (sechs) Monaten zum 31.12. eines jeden Kalenderjahres
+       (Kündigungstermin) außerordentlich kündigen.
+
+10.3   Das Recht des Investors zur Erklärung der außerordentlichen Kündigung des
+       Rechtsverhältnisses zur Emittentin bleibt hiervon unberührt. Ein wichtiger Grund, der
+       den Investor jedenfalls zur Erklärung der außerordentlichen Kündigung berechtigt, ist
+       der Wechsel des Blockchain-Netzwerks (Ziffer 3.4), wenn dem Investor dadurch
+       rechtliche oder wirtschaftliche Nachteile entstehen. In einem solchen Fall kann der
+       Investor tokenisierte Wertpapiere unter Einhaltung einer Kündigungsfrist von 30
+       (dreißig) Tagen ab dem Tag der Durchführung des Wechsels der Blockchain-Technologie
+       und/oder des Blockchain-Netzwerks außerordentlich kündigen. Für alle anderen
+       wichtigen Gründe gilt, dass der Investor die außerordentliche Kündigung erst wirksam
+       erklären kann, nachdem er die Emittentin zur Erfüllung der aus seiner Sicht verletzten
+       Verpflichtung unter Einräumung einer Frist von zumindest 14 (vierzehn) Tagen
+       aufgefordert und die Emittentin die Verletzung ihrer Verpflichtung nicht binnen der
+       gesetzten Frist eingestellt hat.
+
+10.4   Gleichzeitig mit der Erklärung der außerordentlichen Kündigung (Ziffer 10.3) hat der
+       Investor die von der Kündigung erfassten tokenisierten Wertpapiere auf Greemer sowie
+       auf jedem von der Emittentin namhaft gemachten Marktplatz, der den Handel mit den
+       betreffenden tokenisierten Wertpapieren ermöglicht, und jedem von der Emittentin
+       namhaft gemachten Dritten zum Verkauf Zug-um-Zug gegen Zahlung des Kaufpreises
+       anzubieten.
+
+10.5   Der beim Verkauf gemäß Ziffer 10.4 angebotene Verkaufspreis darf nicht über dem
+       gewichteten Mittel aus dem Durchschnittspreis der betreffenden tokenisierten
+       Wertpapiere der letzten 12 (zwölf) Monate und dem Durchschnittspreis der
+       betreffenden tokenisierten Wertpapiere der letzten 90 (neunzig) Tage liegen (wenn die
+       betreffenden tokenisierten Wertpapiere innerhalb der letzten 90 (neunzig) Tage nicht
+       gehandelt wurden, ist nur Durchschnittspreis der letzten 12 (zwölf) Monate
+       heranzuziehen). Sofern der Investor mit der Berechnung des Verkaufspreises nach
+       dieser Methode nicht einverstanden ist, kann er auf eigene Kosten ein Gutachten eines
+       unabhängigen Sachverständigen über den Verkehrswert der zu verkaufenden
+       tokenisierten Wertpapiere einholen. Diesfalls hat der Investor seinem Verkaufsangebot
+       den vom Sachverständigen ermittelten Verkehrswert seiner tokenisierten Wertpapiere
+       zugrunde zu legen.
+
+10.6   Soweit die betreffenden tokenisierten Wertpapiere auf Basis eines Angebots iSd Ziffer
+       10.4 verkauft werden, ist die Erklärung der außerordentlichen Kündigung (Ziffer 10.3) des
+       Investors unwirksam und die Kündigung wird nicht wirksam. Soweit die betreffenden
+       tokenisierten Wertpapiere nicht innerhalb eines Zeitraums von 3 (drei) Monaten ab dem
+
+                                             18
+                                                   Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                             ISIN: AT0000A3E842
+                                                                               Datum: 04.08.2023
+
+       Angebot der jeweiligen tokenisierten Wertpapiere zu einem Preis im Einklang mit Ziffer
+       10.5 verkauft werden und die Emittentin die tokenisierten Wertpapiere nicht selbst
+       kündigt, wird die Kündigung mit Ablauf des letzten Tages des vorerwähnten Zeitraums
+       von 3 (drei Monaten) wirksam und erhält der Investor von der Emittentin Zug-um-Zug
+       gegen     Herausgabe     der     betreffenden    tokenisierten    Wertpapiere      ein
+       Beendigungsguthaben, welches sich nach der in Ziffer 10.5 dargestellten Methode
+       errechnet. Dieses Beendigungsguthaben ist im Falle einer außerordentlichen
+       Kündigung innerhalb von 4 (vier) Monaten nach Erklärung der Kündigungserklärung
+       durch den Investor zur Zahlung auf das vom Investor zuletzt bekanntgegebene
+       Bankkonto fällig.
+
+10.7   Sofern (auch) die Emittentin die tokenisierten Wertpapiere (auch wenn zum gleichen
+       Stichtag wie ein Investor) außerordentlich (Ziffer 10.2) kündigt, steht dem Investor ein
+       Rückzahlungsanspruch gemäß Ziffer 5.11zu.
+
+10.8   Ungeachtet des Anlasses und des Grundes für die Kündigung enden die Wertpapiere
+       erst, sobald sämtliche Ansprüche des Investors aus diesen Investitionsbedingungen
+       beglichen worden sind.
+
+11.    ÜBERTRAGBARKEIT DER TOKENISIERTEN WERTPAPIERE
+
+11.1   Jeder Investor kann einzelne oder alle tokenisierten Wertpapiere mit Zustimmung der
+       Emittentin veräußern. Die Emittentin erteilt unter folgenden Voraussetzungen vorab
+       die Zustimmung zu einer Veräußerung der tokenisierten Wertpapiere:
+
+       11.1.1   sämtliche tokenisierten Wertpapiere wurden ausgegeben; und
+
+       11.1.2   die Übertragung erfolgt nicht zu einem gesetz- oder anderweitig
+                rechtswidrigen Zweck oder Motiv; und
+
+       11.1.3   der Investor erfüllt die unter Ziffer 4.6 lit a bis c angeführten Voraussetzungen;
+                und
+
+       11.1.4   der beabsichtigte Transfer wird am Marktplatz bekannt gemacht.
+
+11.2   Die Übertragung des durch den jeweiligen Token repräsentierten Miteigentumsanteils
+       an der Sammelurkunde gemäß Ziffern 3.1-3.2 erfolgt durch wirkliche Übergabe: Mit
+       Durchführung der Übertragung des jeweiligen Token weist der veräußernde Investor die
+       Emittentin an, den durch den jeweiligen Token repräsentierten Miteigentumsanteil an
+       der Sammelurkunde gemäß Ziffern 3.1-3.2 ab mit Abschluss des Übertragungsvorgangs
+       für den übernehmenden Investor zu besitzen (wirkliche Übergabe durch
+       Besitzanweisung). Der Token gilt mit der Änderung der Zuordnung vom Verkäufer an den
+       Käufer im Blockchain-Netzwerk als übertragen.
+
+                                              19
+                                                 Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                           ISIN: AT0000A3E842
+                                                                             Datum: 04.08.2023
+
+12.    AUSGABE WEITERER WERTPAPIERE UND SONSTIGER RECHTE
+
+12.1   Hinsichtlich der GREEMER-Anlage wird die Emittentin keine weiteren tokenisierten
+       Wertpapiere     oder  andere    Wertpapiere,  Veranlagungen     oder   sonstige
+       Beteiligungsinstrumente ausgeben.
+
+12.2   Die Emittentin behält sich jedoch ausdrücklich das Recht vor, weitere tokenisierte
+       Wertpapiere     oder   vergleichbare   Finanzinstrumente     hinsichtlich  anderer
+       Vermögenswerte der Emittentin zu gleichen oder anderen als diesen
+       Investitionsbedingungen auszugeben. Ein Bezugsrecht des Investors auf solche
+       zukünftigen tokenisierten Wertpapiere oder vergleichbare Finanzinstrumente besteht
+       nicht.
+
+13.    MITTEILUNGEN UND NACHRICHTEN
+
+13.1   Sämtliche Mitteilungen und Erklärungen in Zusammenhang mit den tokenisierten
+       Wertpapieren erfolgen durch Push-Mitteilung über den Marktplatz bzw. des in Ziffer 6.13
+       beschriebenen elektronischen Forums und – sofern der Investor diesen Wunsch durch
+       entsprechende Zustimmung über den Marktplatz geäußert hat – zusätzlich per E-Mail
+       an die von ihm bei der Registrierung am Marktplatz bekanntgegebene Email-Adresse.
+
+13.2   Der Investor kann Mitteilungen und Erklärungen sowohl über den Marktplatz als auch
+       per Email oder per Post an die Emittentin richten.
+
+14.    STEUERN UND SONSTIGE KOSTEN
+
+14.1   Sämtliche Steuern und Abgaben sowie etwaige sonstige Kosten, die mit dem Erwerb,
+       dem Halten oder der Veräußerung der tokenisierten Wertpapiere sowie mit
+       Ausschüttungen verbunden sind, müssen von den Investoren vorbehaltlich der
+       Regelung der Ziffer 14.2 selbst getragen und bezahlt oder abgeführt werden.
+
+14.2   Ist die Emittentin gesetzlich verpflichtet, Steuern, Gebühren und sonstige Abgaben
+       einzubehalten oder abzuziehen, wird die Emittentin nur den nach Abzug verbleibenden
+       Betrag     an   die   Investoren      verteilen.    Sofern     die    Emittentin    zum
+       Kapitalertragssteuerabzug verpflichtet ist, wird sie die Kapitalertragsteuer einbehalten
+       und an die zuständigen Finanzbehörden abführen.
+
+15.    SCHLUSSBESTIMMUNGEN
+
+15.1   Diese Investitionsbedingungen unterliegen ausschließlich österreichischem Recht
+       unter Ausschluss der jeweiligen Verweisungsnormen des internationalen Privatrechts.
+
+
+
+
+                                            20
+                                                 Investitionsbedingungen der Greeninfra G. m.b.H.
+                                                                           ISIN: AT0000A3E842
+                                                                             Datum: 04.08.2023
+
+15.2   Für alle sich aus dem Rechtsverhältnis zwischen dem Investor und der Emittentin
+       ergebenden Rechtsstreitigkeiten ist das sachlich für Handelssachen zuständige Gericht
+       in Wien, erster Bezirk, zuständig. Diese Gerichtsstandvereinbarung beschränkt nicht das
+       Recht eines Investors, Verfahren vor einem anderen zuständigen Gericht anzustrengen.
+       Ebenso wenig schließt die Einleitung von Verfahren vor einem oder mehreren anderen
+       Gerichtsständen die Einleitung von Verfahren an einem anderen Gerichtsstand aus, falls
+       und soweit dies rechtlich zulässig ist.
+
+15.3   Sofern ein Investor nicht als Verbraucher handelt und eine Bestimmung dieser
+       Investitionsbedingungen unwirksam oder undurchsetzbar ist oder werden sollte,
+       beeinträchtigt das nicht die Wirksamkeit oder Durchsetzbarkeit der übrigen
+       Bestimmungen dieser Investitionsbedingungen. In einem solchen Fall gilt die
+       unwirksame oder undurchsetzbare Bestimmung als durch eine wirksame und
+       durchsetzbare Bestimmung ersetzt, die dem Zweck der zu ersetzenden Bestimmung
+       am nächsten kommt. Dies gilt sinngemäß auch für die Ausfüllung etwaiger Lücken
+       dieser Investitionsbedingungen.
+
+
+
+
+                                            21
+

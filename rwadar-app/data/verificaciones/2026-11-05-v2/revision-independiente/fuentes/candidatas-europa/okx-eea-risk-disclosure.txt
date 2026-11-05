@@ -1,0 +1,157 @@
+ EEA Risk and Compliance Disclosure | OKX Europe Looks like you're in the United States. Switch to the United States site for products available in your region. 
+ Switch site 
+ Skip to main content 
+ Buy crypto P2P trading
+ Buy/Sell with zero trading fees via 100+ payment methods
+ Buy and Sell
+ SEPA, Visa, Mastercard, and more
+ Crypto calculator
+ Check real-time conversion rates and crypto values
+ Deposit Deposit cash
+ Add cash to your account balance using a bank transfer to start trading
+ Deposit crypto
+ Transfer crypto from an on-chain wallet or exchange
+ Markets Trade Trading instruments
+ Convert
+ Quick conversion, zero trading fees, no slippage
+ Spot and margin
+ Buy and sell crypto with ease
+ Futures
+ Trade futures with leverage
+ TradFi
+ Trade stocks, ETF and commodities using crypto
+ DEX
+ Trade on-chain tokens using your Exchange balance 
+ Events & Options
+ Trade on crypto price movements with events and options
+ Powerful tools
+ Flash Earn
+ Earn rewards on new listings, spot, futures, and more trading campaigns
+ Trade to Earn
+ Trade, climb leaderboards, and share new token rewards.
+ Stake to Earn
+ Subscribe to receive new crypto airdrops with your assets
+ Agent Trade Kit
+ Automate your trades with AI agents and community-built skills
+ Agent Trade Kit
+ Build AI agents to automate any trading strategy
+ AI Builder Program
+ Everything a Builder needs, all in one place
+ Skills
+ Discover and install trading skills
+ Bots & Copy
+ Automate your trades or follow top traders
+ Trading bots
+ Multiple strategies to help you trade with ease
+ Copy trading
+ Mirror the moves of top traders
+ Lead trader recruitment
+ Share your strategies and earn from copy traders
+ Nitro Spreads
+ Deep liquidity for futures spreads
+ RFQ
+ Custom multi-leg strategies and block trades
+ Grow Earn
+ Don’t just HODL. Earn
+ Margin Rewards Onchain Earn Flash Earn 
+ Stable Rewards Dual Investment BTC Yield+ 
+ Loan
+ Borrow to earn, borrow to spend
+ Jumpstart
+ Discover new, high-quality projects around the world
+ Institutional Institutional home
+ The world’s most powerful suite of crypto trading solutions
+ OKX Rubix
+ Digital assets-as-a-service for regulated institutions
+ Liquid Marketplace
+ OTC liquidity network for pro and institutional traders
+ APIs
+ Seamless and ultra-low latency API connectivity
+ Broker Program
+ Access world-class market depth with high commissions
+ Managed Trading Sub-accounts
+ Manage sub-accounts, trade easily and safely with more profits
+ Historical market data
+ Candlesticks, aggregate trades, order book data and more
+ Institutional Insights
+ Our latest institutional trading research, news, and more
+ Learn Learn crypto
+ Build strong crypto fundamentals with simple guides and tutorials
+ How to buy crypto
+ Follow step-by-step instructions to buy crypto
+ Getting started
+ Find answers to common questions on your crypto journey
+ Crypto prices
+ Track real-time crypto prices and market moves
+ Crypto news
+ Stay on top of the latest crypto news and trends
+ Blog
+ Read insights and stories from our team
+ Orbit Orbit
+ Discuss trending topics, and turn ideas into trades
+ Livestream
+ Go live and connect with your fans in real time
+ More Products
+ X-RWA Security of funds Status Proof of Reserves OKX Shield Web3 Pay & Card 
+ Others
+ Campaign center My rewards Deposit Bonus Referral VIP program Affiliates X Drops Club OKX Ventures Trade on TradingView Listing application Fees 
+ Log in Sign up 
+ Support Support center My tickets Connect with OKX 
+ Support center 
+ Terms of agreement 
+ Article
+ EEA Risk and Compliance Disclosure
+ Published on May 21, 2024 
+ Risk & Compliance Disclosure 
+ Last Updated: November 5, 2025 
+ 1. PURPOSE OF OUR PROGRAM 
+ OKX Europe Limited (incorporated in Malta) and licensed by the Malta Financial Services Authority (“OKX”) is authorised to carry out ‘relevant financial business’ in terms of Regulation 2(1) of the Prevention of Money Laundering and Funding of Terrorism Regulations (the “PMLFTR”) and has established and implemented an Anti-Money Laundering, Anti-Terrorist Financing, and Trade & Economic Sanctions Program (“AML/ATF/Sanctions Program” or “Program”)  in line with the EU 6th Anti-Money Laundering Directive (the “6th AMLD”), the Prevention of Money Laundering Act, the PMLFTR, the Financial Analysis Intelligence Unit (“FIAU”) Implementing procedures Part I, the FIAU Implementing Procedures Part II - Crypto-Assets Sector and any other guidance issued by the FIAU to ensure a Crypto Asset Services Provider that is compliant with all anti-money laundering/combatting funding of terrorism (“AML/CFT”) obligations. We want to promote legal, transparent business activities and maintain a strong reputation among our customers, regulators, and the crypto asset industry.
+ 2. OUR ROLE AND ACTIVITIES 
+ OKX provides online cryptoasset trading services and a platform to spot trade crypto assets and facilitate margin lending in certain permitted jurisdictions. Our Services are available through OKX.com, associated application program interfaces, and mobile applications such as the OKX app.  
+ Disclosure: Trading is risky. The risk of loss in trading or holding crypto assets can be substantial. You should therefore carefully consider whether trading is suitable for you in light of your financial condition.
+ 3. REGULATORY LANDSCAPE 
+ We understand that regulatory bodies have taken a diverse approach to the laws and regulations regarding crypto assets, including some characterizing or defining crypto assets Crypto Asset means crypto currencies, convertible virtual currency, virtual commodity, crypto payment token, crypto currencies, virtual currencies, stablecoins or crypto assets of any types not falling within the classification of a financial instrument in terms of the Markets in Crypto-Assets Act - Chapter 647 of the Laws of Malta). As a trading platform, we believe that bitcoin and litecoin (as well as other alternative-coins) are crypto assets that are emerging as an innovative alternative asset class; and therefore, crypto assets should not be called currency or money. 
+ Disclosure: Crypto assets are not fiat money nor fiat currency. Crypto assets such as bitcoin and litecoin are NOT backed by any government or central bank. Nevertheless, since we provide a valuable feature to our customers who wish to trade and settle in fiat, we believe it is imperative to maintain a robust AML/ATF/Sanctions program as we connect with the fiat financial system. We may at times have opinions of the different regulatory approaches taken by various government bodies; however, at all times, we will fully abide by rules and regulations of the respective countries we operate in. We regularly reach out to regulators and industry on the best approach to regulating crypto asset businesses. Furthermore, OKX does not accept certain customers. We may not make all of the Services available in all markets and jurisdictions, and may restrict or prohibit use of all or a portion of the Services from Restricted Locations, which at this time include Afghanistan, Algeria, Bangladesh, Canada, Cuba, El Salvador, Hong Kong, Iran, India, Japan, Malaysia, Nepal, Nigeria, North Korea, Syria, the Crimea, Donetsk and Luhansk regions of Ukraine, the United States of America including all U.S. territories like Puerto Rico, American Samoa, Guam, Northern Mariana Island, and the U.S. Virgin Islands (St. Croix, St. John and St. Thomas), and Uzbekistan.
+ We may restrict services in other jurisdictions including but not limited to Australia (specifically regarding our derivatives-related and cefi-related services), Bahamas (specifically regarding our retail products), Brazil (specifically regarding our derivatives-related and P2P services), Eritrea (specifically regarding our P2P services), Russia (specifically regarding our fiat payment services), Singapore (specifically regarding our cefi-related services), South Korea (specifically regarding our derivatives-related and P2P services), the United Kingdom (specifically regarding our derivatives-related, cefi-related, and P2P services) . 
+ We cooperate with governments and respect regulations and comply with applicable regulations. As good corporate citizens, we may be asked for information from law enforcement authorities and will assist if permissible by law as law enforcement conduct investigations to pursue and thwart illicit activity. What this also means is that our platform is intended for law abiding customers. We welcome the opportunity to earn your business, and in return we require that you act legally and properly on our platform.
+ 4. OUR AML/ATF PROGRAM 
+ We have designed our Program to reasonably prevent money laundering and terrorist financing through a risk-based, multi-layer control system. 
+ The first layer includes a stringent customer identification program, including verifying the identity of our customers, whether individuals or entities. In addition to obtaining identification documents, we obtain for non-natural persons their entities’ beneficial owners/natural persons consistent to international standards such as the Financial Action Task Force (FATF). 
+ The second layer includes a risk-based system to warrant additional customer due diligence. To accomplish this, we screen our customers (including beneficial owners) against the entities/persons on the European Commission’s Sanctions list, the list of the Maltese Government through the Sanctions Monitoring Board and/or FIAU, the list of the Government of the Hong Kong SAR Gazette, United States Office of Foreign Assets Control (OFAC) Sanctions Lists, and the United Nation Security Council Sanctions List, among other government-provided lists of sanctioned individuals and entities. We also may screen against other lists on a discretionary basis to protect our reputation and customers. 
+ The third layer includes ongoing monitoring for suspicious activity. If our Program suspects or has reason to suspect suspicious activities have occurred, we will file suspicious activities reports with local regulators. A suspicious transaction is often inconsistent with a customer’s known and legitimate business, or personal activities. 
+ These are the primary components of our compliance program; however, the most important glue or connection to these layers are our leadership team and staff, including AML/Risk personnel that execute training, oversight and a sound compliance culture.
+ 5. RISKS 
+ Trading in crypto assets is considered high risk. Crypto assets such as bitcoin and litecoin are NOT backed by any government or central bank. The risk of loss in trading or holding crypto assets can be substantial. You should carefully consider whether interacting, holding, or trading crypto assets is suitable for you in light of your financial condition.
+ 5.1 FX Conversion Risk : You agree and understand that any credit card payments you make using your local currency undergoes a standardized FX conversion process. This FX conversion process may in some circumstances be subject to systemic errors and unexpected failures. In the event of such errors and/or systemic failures, as determined by us in our sole discretion, you may receive a balance in USD or USDT which may be different from the local currency balance you started with
+at the outset of your payment transaction. This might result in a risk of loss and you agree that you shall bear all costs related to any FX conversion risk resulting from such system errors and/or failure.
+ 5.2 OKX Singapore User Specific Risk and Safe Guarding Disclosures : If you are a User of OKX Singapore, the Monetary Authority of Singapore ("MAS") requires OKX Singapore to provide certain disclosures to you as a customer of a digital payment token ("DPT") service provider. Please read the OKX Singappore User Specific Risk and Safeguarding Disclosures before using OKX Singapore's DPT services and depositing any Asset with OKX Singapore.
+ 5.3 Token Environmental Indicators 
+OKX Europe Limited ("OKX") duly incorporated in Malta and licensed by the Malta Financial Services Authority as a regulated Crypto-Asset Service Provider (“CASP”) in terms of the Markets in Crypto-Assets Regulation (Regulation (EU) 2023/1114, “MiCA”). In accordance with Article 66(5) of MiCA and related guidance issued by the European Commission, OKX is required to make publicly available information related to the principal adverse impacts on the climate and other environment-related adverse impacts of the consensus mechanism used for each crypto asset in relation to which it provides services. 
+ This information is presented and updated on the individual crypto asset page for each supported crypto asset. In addition, a downloadable file containing the environmental indicators for all supported crypto assets is made available here , and was last updated on 2025-06-17.
+ 6. COMMUNICATION 
+ If you have questions or require assistance with our customer due diligence controls, please reach out to our 24/7 customer service representatives by phone, chat or email at https://www.okx.com/en-eu/help .
+ For any law enforcement requests, please refer to the Law Enforcement Request Guide for more details regarding the contact information: 
+ https://www.okx.com/en-eu/help/okx-law-enforcement-request-guide 
+ 7. DIFFERENT VERSIONS 
+ This "Risk & Compliance Disclosure" may be posted in different languages. If there are any discrepancies, the English version shall prevail.
+ Risk & Compliance Disclosure 
+ ©2017 - 2026 OKX.COM
+ Language 
+ Europe English Deutsch Español (España) Français Italiano Nederlands Polski Português (Portugal) Română Norsk (bokmål) Suomi Svenska Čeština 
+ More about OKX 
+ About us Candidate Privacy Notice Careers Contact us Terms of Service Terms of Service (Derivatives) Privacy Notice OKX EU Disclosures OEM Disclosures Conflicts of interest disclosure Whistleblower notice Law enforcement OKX app 
+ Products 
+ Buy crypto P2P trading Convert Trade Earn Trading bots All cryptocurrencies Learn TradingView X-RWA Outcome markets Stock price 
+ Services 
+ Affiliate API Historical market data CEX fee schedule Listing application P2P Merchant application 
+ Support 
+ Support center Channel verification Announcements Connect with OKX 
+ Buy crypto 
+ Buy USDC Buy Bitcoin Buy Ethereum Buy ADA Buy Solana Buy Litecoin Buy XRP 
+ Crypto calculator 
+ BTC to USD ETH to USD USDC to USD SOL to USD XRP to USD PI to USD 
+ Trade 
+ BTC USDC ETH USDC LTC USDC SOL USDC XRP USDC Bitcoin price Ethereum price Pi Network price Solana price XRP price Bitcoin price prediction Ethereum price prediction XRP price prediction Pi Network price prediction How to buy crypto How to buy Bitcoin How to buy Ethereum How to buy Solana How to buy Pi Network 
+ Trade on the go with OKX
+ Register 
+ 

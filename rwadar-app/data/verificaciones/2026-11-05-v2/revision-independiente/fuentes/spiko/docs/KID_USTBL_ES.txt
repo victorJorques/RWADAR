@@ -1,0 +1,210 @@
+                                                                                          Documento de Datos Fundamentales
+
+Objetivo
+El presente documento contiene información esencial sobre el Producto de inversión. No se trata de un documento de carácter comercial. Esta información se le
+proporciona de conformidad con una obligación legal, con el fin de ayudarle a comprender en qué consiste este Producto y cuáles son los riesgos, costes, ganancias y
+pérdidas potenciales asociados al mismo, así como para ayudarle a compararlo con otros productos.
+
+Producto
+
+
+            SPIKO US T-BILLS MONEY MARKET FUND
+Iniciador del PRIIP (Packaged Retail Investment and Insurance-based Product): TWENTY FIRST CAPITAL. LEI: 969500WSBA6KS8V1OR80.
+ACTION USD ISIN: FR001400ODM9
+Sede social: 39, avenue Pierre 1er de Serbie, 75008 París, Francia - Sitio web: www.twentyfirstcapital.com. Llame al + 33 (0)1 70 37 80 83 para obtener más
+información.
+La Autorité des Marchés Financiers (AMF) es responsable del control de TWENTY FIRST CAPITAL en lo que respecta a este documento de información fundamental.
+TWENTY FIRST CAPITAL está autorizada en Francia con el número GP 11000029 y regulada por la Autorité des Marchés Financiers (AMF).
+SPIKO US T-BILLS MONEY MARKET FUND está autorizado en Francia y regulado por la Autoridad de Mercados Financieros (AMF).
+Fecha de la última revisión del documento de datos fundamentales: 01/09/2026
+
+¿En qué consiste este producto?
+Tipo                                                                                   inversores, quienes deben ser capaces de asumir pérdidas equivalentes al
+Este producto es un organismo de inversión colectiva en valores mobiliarios de         importe de su inversión en el Producto. Los inversores potenciales deben tener
+derecho francés.                                                                       un horizonte de inversión de al menos 1 semana. El Producto no se comercializa
+                                                                                       entre inversores estadounidenses que entran en la definición de «
+Plazo                                                                                  U.S. Persons», tal y como se resume en el folleto del Producto.
+El producto tiene una duración de 99 años.
+                                                                                       Otra información
+Objetivos                                                                              Depositario: CACEIS Bank
+Clasificación AMF: Monetario a corto plazo con valor liquidativo variable (VNAV).      Las solicitudes de suscripción, expresadas en importe, y de reembolso,
+                                                                                       expresadas en número de acciones, son centralizadas por Spiko Finance a más
+El objetivo del Producto es ofrecer a los inversores la preservación del capital       tardar a las 11:30 (hora de París). Estas solicitudes se ejecutan sobre la base del
+invertido y una evolución regular del rendimiento correspondiente al índice Fed        último valor liquidativo conocido. El valor liquidativo sobre el que se ejecutarán
+Funds capitalizado (Daily Effective Compounded Federal Funds Rate) o superior          las órdenes de suscripción y reembolso puede recalcularse entre el momento en
+al final del plazo mínimo de inversión recomendado, que es de 1 semana, menos          que se pasan las órdenes y su ejecución, con el fin de tener en cuenta cualquier
+el conjunto de gastos facturados al Producto y relativos a cada categoría de           acontecimiento excepcional del mercado que haya ocurrido entretanto. Las
+acciones. En períodos de rendimientos negativos en el mercado monetario, el            suscripciones y los reembolsos se refieren a acciones que deben registrarse a
+rendimiento del Producto puede verse afectado negativamente. Además, tras              nombre del titular en los TRD propuestos. La centralización de las órdenes que
+tener en cuenta los gastos corrientes, la rentabilidad del Producto puede ser          se reciben después de las 11:30 (hora de París) se aplaza al siguiente día hábil.
+inferior a la del índice de referencia, que es el Fed Funds capitalizado (Daily        En caso de días festivos oficiales en Francia o de cierre de la Bolsa de París, la
+Effective Compounded Federal Funds Rate). El equipo de gestión selecciona              centralización de las órdenes de suscripción y reembolso y el establecimiento
+instrumentos del mercado monetario de alta calidad emitidos o garantizados             del valor liquidativo se realizan el siguiente día hábil.
+por el Gobierno de los Estados Unidos de América. La estrategia se aplica              A elección del inversor, la liquidación de las suscripciones y los reembolsos
+respetando las siguientes restricciones de riesgo:                                     puede efectuarse mediante transferencia bancaria o mediante transferencia de
+●      En términos de sensibilidad a los tipos de interés, el vencimiento medio        fichas de dinero electrónico. Los importes recibidos en dinero escritural o en
+       ponderado de los activos es inferior o igual a 60 días;                         fichas de dinero electrónico deben estar en la divisa de la acción suscrita. Los
+●      En términos de riesgo de crédito y liquidez, la vida residual máxima de los     reembolsos en dinero escritural o en fichas de dinero electrónico se efectúan en
+       valores e instrumentos no supera los 180 días;                                  la divisa de la acción reembolsada. Si la liquidación de la suscripción se efectúa
+●      La vida media ponderada hasta la fecha de reembolso íntegro de los              en fichas de dinero electrónico, el inversor deberá remitir una cantidad de fichas
+       valores no supera los 120 días.                                                 igual al importe de la suscripción y de los eventuales gastos correspondientes;
+El Producto hace uso de la excepción prevista en el punto 7 del artículo 17 del        cada ficha de dinero electrónico se considerará equivalente a una unidad de su
+Reglamento (UE) 2017/1131. Por consiguiente, el Producto puede invertir, de            moneda de referencia. Los inversores que deseen utilizar fichas de dinero
+conformidad con el principio de distribución de riesgos, hasta el 100 % de su          electrónico para la liquidación de las suscripciones o los reembolsos deben
+patrimonio en diferentes instrumentos a corto plazo emitidos por el Gobierno           consultar el folleto del Producto, que describe las modalidades detalladas de
+de los Estados Unidos de América (letras del Tesoro). De este modo, se aparta          esta forma de liquidación, así como los riesgos asociados.
+del punto 1 del artículo 17 del mismo Reglamento, que limita la inversión al 5 %       Puede obtener más información sobre el Producto simplemente enviando una
+del activo por emisor. El Producto se gestiona de forma activa. El índice se utiliza   solicitud por escrito a Twenty First Capital, 39, avenue Pierre 1er de Serbie,
+a posteriori como indicador de comparación del rendimiento. La estrategia de           75008, París, Francia. Encontrará más información en el folleto del Producto o
+gestión es discrecional y no está sujeta a restricciones relativas al índice.          en el sitio web www.twentyfirstcapital.com.
+                                                                                       El precio de las acciones y, en su caso, la información relativa a otras categorías
+Asignación de ingresos: Capitalización.                                                de acciones, la información sobre el valor liquidativo, los escenarios de
+                                                                                       rendimiento y los rendimientos históricos del Producto están disponibles en los
+Inversores a los que se dirige                                                         sitios web www.twentyfirstcapital.com.
+El Producto está dirigido a todo tipo de inversores que deseen hacer fructificar
+sus ahorros con un riesgo mínimo. El capital no está garantizado para los
+
+
+
+
+SPIKO US T-BILLS MONEY MARKET FUND – FR001400ODM9                                                                                                                       1
+¿Cuáles son los riesgos y qué beneficios podría obtener?
+Indicador de riesgo                                                                    Riesgos importantes para el Producto no tenidos en cuenta en este indicador:
+
+     1          2          3           4          5          6           7             Riesgos relacionados con el uso de un TRD: el uso de esta tecnología de registro
+                                                                                       puede presentar riesgos derivados, en particular, de su reciente aparición, de los
+Riesgo más                                            bajo    Riesgo más alto          cambios a los que puede sufrir, los fallos o ataques que puedan afectarla, así
+                                                                                       como los cambios en la normativa y las restricciones que le son aplicables. Estos
+            El indicador sintético de riesgo parte de la hipótesis de que usted        riesgos podrían afectar momentáneamente a las operaciones de emisión,
+            conserva el Producto hasta el vencimiento del periodo de tenencia          recompra y transferencia de las acciones del Producto.
+            recomendado (1 semana). El riesgo real puede ser muy diferente si
+            decide salir antes del vencimiento, y podría obtener menos a               Riesgos relacionados con la cartera necesaria para asegurar y transferir las
+            cambio.                                                                    acciones en forma de tokens: dado que están registradas en TRD, las acciones
+                                                                                       del Producto adoptan la forma de tokens desde un punto de vista técnico. Estos
+El indicador sintético de riesgo permite evaluar el nivel de riesgo de este            tokens deben estar asegurados y solo pueden transferirse mediante la creación
+Producto en comparación con otros. Indica la probabilidad de que este Producto         de una cartera (wallet) establecida y gestionada bajo la responsabilidad de los
+registre pérdidas en caso de movimientos en los mercados o de que no podamos           inversores. Cualquier elemento que pueda afectar a la validez de la información
+pagarle.                                                                               proporcionada sobre esta cartera, su seguridad y la confidencialidad de los
+                                                                                       medios de acceso que permiten movilizar los tokens vinculados a ella, podría
+Hemos clasificado este Producto en el indicador de riesgo 1 sobre 7, que es la         afectar a las operaciones de emisión, recompra y transferencia de las acciones
+clase de riesgo más baja. En otras palabras, las pérdidas potenciales relacionadas     del Producto y provocar una pérdida total o parcial de la inversión para el
+con los resultados futuros del Producto son muy bajas y, si la situación se            inversor. Antes de invertir, el inversor potencial debe comprender las
+deteriorara en los mercados, es muy poco probable que nuestra capacidad para           implicaciones técnicas de las acciones del Producto que se le ofrecen, teniendo
+pagarle se viera afectada.                                                             en cuenta su inscripción en TRD.
+
+                                                                                       Atención al riesgo de cambio. Si un Producto de inversión está denominado en
+                                                                                       una moneda distinta de la moneda oficial del Estado en el que se comercializa
+                                                                                       dicho Producto, la ganancia final dependerá del tipo de cambio entre ambas
+                                                                                       monedas. Este riesgo no se tiene en cuenta en el indicador anterior.
+
+                                                                                       Riesgos relacionados con la liquidación de las suscripciones y los reembolsos en
+                                                                                       fichas de dinero electrónico y con la tenencia de fichas de dinero electrónico por
+                                                                                       parte del Producto: Se invita a los inversores a consultar la sección del folleto
+                                                                                       relativa a los riesgos, que presenta los riesgos relacionados con las fichas de
+                                                                                       dinero electrónico.
+                                                                                       Dado que este Producto no ofrece protección contra los riesgos del mercado,
+                                                                                       usted podría perder toda o parte de su inversión.
+Escenarios de rendimiento
+Las cifras indicadas incluyen todos los costes del propio Producto, pero no necesariamente todos los gastos adeudados a su asesor o distribuidor. Estas cifras no tienen
+en cuenta su situación fiscal personal, que también puede influir en las cantidades que recibirá.
+Lo que obtendrá de este producto depende del rendimiento futuro del mercado. La evolución futura del mercado es aleatoria y no se puede predecir con precisión.
+Los escenarios desfavorables, intermedios y favorables presentados son ejemplos que utilizan el mejor y el peor rendimiento, así como el rendimiento medio del
+Producto o del índice de referencia adecuado durante los últimos 10 años.
+Los mercados podrían evolucionar de forma muy diferente en el futuro.
+El escenario de tensiones muestra lo que podría obtener en situaciones de mercado extremas.
+                                              Inversión: 10 000 USD. El periodo de tenencia recomendado es de: 1 semana
+  Escenarios                                                                                                                  Si sale después de 1 semana
+ Mínimo               No existe ningún rendimiento mínimo garantizado. Podría perder toda o parte de su inversión.
+  Escenario de        Lo que podría obtener tras deducir los costes                                                                 9 990 USD
+  tensiones           Rendimiento medio semanal                                                                                        - 0,1 %
+  Escenario           Lo que podría obtener tras deducir los costes                                                                 10 000 USD
+  desfavorable        Rendimiento medio semanal                                                                                         0,0 %
+  Escenario           Lo que podría obtener tras deducir los costes                                                                 10 000 USD
+  intermedio          Rendimiento medio semanal                                                                                         0,0 %
+  Escenario           Lo que podría obtener tras deducir los costes                                                                 10 020 USD
+  favorable           Rendimiento medio semanal                                                                                       + 0,2 %
+Esta tabla muestra las cantidades que podría obtener durante el periodo de tenencia recomendado de una semana, en función de diferentes escenarios, suponiendo
+que invirtiera 10 000 USD.
+Escenario desfavorable: este tipo de escenario se produjo para una inversión realizada entre los meses de mayo de 2020 y mayo de 2020.
+Escenario intermedio: este tipo de escenario se produjo para una inversión entre los meses de 06/2018 y 06/2018.
+Escenario favorable: este tipo de escenario se produjo para una inversión entre los meses de 01/2024 y 01/2024.
+
+¿Qué ocurre si TWENTY FIRST CAPITAL no puede realizar los pagos?
+El Producto es una copropiedad de instrumentos financieros y depósitos independiente de la sociedad gestora de la cartera. En caso de incumplimiento de esta última,
+los activos del Producto conservados por el depositario no se verán afectados. En caso de incumplimiento del depositario, el riesgo de pérdida financiera del Producto
+se ve atenuado debido a la segregación legal de los activos del depositario de los del Producto.
+
+¿Cuánto me costará esta inversión?
+Es posible que la persona que le venda este Producto o le asesore sobre él le pida que pague costes adicionales. Si es así, dicha persona le informará sobre dichos
+costes y le mostrará el impacto de los costes totales en su inversión a lo largo del tiempo.
+
+
+SPIKO US T-BILLS MONEY MARKET FUND – FR001400ODM9                                                                                                                      2
+Costes a lo largo del tiempo:
+Las tablas muestran los importes deducidos de su inversión para cubrir los diferentes tipos de costes. Estos importes dependen del importe que invierta y del tiempo
+que mantenga el Producto. Los importes aquí indicados son ejemplos basados en un importe de inversión y diferentes periodos de inversión posibles. Hemos supuesto
+que:
+●     que recuperaría la cantidad invertida (rentabilidad anual del 0 %).
+●     Se invierten 10 000 USD.
+                                                                                           Si sale después de 1 semana *
+  Costes totales                                                                                        0 USD
+  Incidencia de los costes*                                                                             0,0 %
+(*) Esto ilustra el efecto de los costes durante un período de mantenimiento inferior a un año. Este porcentaje no se puede comparar directamente con las cifras de
+incidencia de los costes proporcionadas para otros PRIIP. Es posible que compartamos los costes con la persona que le vende el Producto a fin de cubrir los servicios
+que esta le presta. En su caso, esta persona le informará del importe.
+
+Composición de los costes
+                                                                                                                                                   Si sale después de 1
+ Costes puntuales de entrada o salida
+                                                                                                                                                          semana
+             Costes de entrada                                        No se aplican costes de entrada a este producto.                                     0 USD
+              Costes de salida                                         No se aplican costes de salida a este producto.                                    0 USD
+                                                                                                                                                   Si sale después de 1
+ Costes recurrentes
+                                                                                                                                                          semana
+ Gastos de gestión y otros gastos             0,25 % del valor de su inversión al año. Este porcentaje se basa en los costes reales del último
+ administrativos u operativos                 año.                                                                                                        0 USD
+
+ Costes de transacción                        Ningún coste de transacción para este Producto.
+                                                                                                                                                          0 USD
+
+                                                                                                                                                Si sale después de 1
+ Costes accesorios cobrados en determinadas condiciones
+                                                                                                                                                       semana
+  Comisiones vinculadas a los resultados      No se aplica ninguna comisión de rendimiento a este producto.                                             0 USD
+La tabla anterior indica la incidencia de los distintos tipos de costes en la rentabilidad que podría obtener de su inversión al final del período de mantenimiento
+recomendado de 1 semana, así como el significado de las distintas categorías de costes.
+
+¿Cuánto tiempo debo mantenerlo y puedo retirar dinero antes de tiempo?
+Periodo de tenencia recomendado: 1 semana
+Este Producto está diseñado para inversiones a muy corto plazo, por lo que debe estar preparado para mantener su inversión en el Producto durante al menos 1
+semana.
+Las solicitudes de suscripción, expresadas en importe, y de reembolso, expresadas en importe y en número de acciones, son centralizadas por Spiko Finance a más
+tardar a las 11:30 (hora de París). Estas solicitudes se ejecutan sobre la base del último valor liquidativo conocido. El valor liquidativo sobre el que se ejecutarán las
+órdenes de suscripción y reembolso puede recalcularse entre el momento en que se pasan las órdenes y su ejecución, con el fin de tener en cuenta cualquier
+acontecimiento excepcional del mercado que haya ocurrido entretanto. Las suscripciones y los reembolsos se refieren a acciones que deben registrarse a nombre del
+titular en los TRD propuestos. La centralización de las órdenes que se reciben después de las 11:30 (hora de París) se aplaza al siguiente día hábil. En caso de días
+festivos oficiales en Francia o de cierre de la Bolsa de París, la centralización de las órdenes de suscripción y reembolso y el establecimiento del valor liquidativo se
+realizan el siguiente día hábil.
+Este Producto cuenta con un mecanismo de limitación de los reembolsos que la Sociedad Gestora puede activar cuando se alcanza un umbral del 10 % del patrimonio
+neto. La Sociedad Gestora puede no ejecutar en su totalidad las órdenes de reembolso centralizadas sobre un mismo valor liquidativo en caso de circunstancias
+excepcionales y exclusivamente cuando así lo exija el interés de los accionistas. En caso de activación del mecanismo de limitación de los reembolsos, los accionistas
+serán informados por cualquier medio en el sitio web de la Sociedad Gestora: www.twentyfirstcapital.com. Además, los inversores cuyas solicitudes de reembolso no
+se hayan ejecutado, total o parcialmente, serán informados de forma particular y con la mayor brevedad posible tras la fecha de centralización por la entidad
+centralizadora.
+
+¿Cómo puedo presentar una reclamación?
+Los accionistas pueden presentar reclamaciones de forma gratuita a la Sociedad Gestora en una lengua oficial de su país de origen. Los partícipes pueden acceder al
+procedimiento de tramitación de reclamaciones previa solicitud en la sede de la Sociedad Gestora y en el sitio web de la Sociedad Gestora en la dirección
+www.twentyfirstcapital.com.
+
+Otra información relevante
+Escenarios de rendimiento: Puede encontrar los últimos escenarios de rendimiento actualizados mensualmente en el sitio web www.twentyfirstcapital.com.
+Rentabilidades pasadas: Puede descargar las rentabilidades pasadas del último año a través del sitio web www.twentyfirstcapital.com
+Este documento de datos fundamentales se actualiza al menos una vez al año.
+
+
+
+
+SPIKO US T-BILLS MONEY MARKET FUND – FR001400ODM9                                                                                                                         3
+

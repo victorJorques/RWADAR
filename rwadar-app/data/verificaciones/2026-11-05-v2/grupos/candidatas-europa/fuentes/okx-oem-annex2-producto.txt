@@ -1,0 +1,1097 @@
+                                                Annex 2
+                                 Product-specific terms and conditions
+
+Annex 2.A - Tokenised Equities and UTS Services
+
+1. Scope
+
+This Annex 2.A governs the trading of Tokenised Equities on the OKX Platform ("OKX," "we," "us," or "our")
+by eligible users ("You" or "User") and the provision of the UTS Services and supplements OKX's general
+Terms of Service and any other applicable OKX product terms published from time to time. In the event of
+any inconsistency between these Terms and OKX's general Terms of Service, these Terms shall prevail
+with respect to Unified Tokenized Stocks spot trading.
+
+2. Definitions
+
+For the purpose of this Annex 2.A, the following definitions will apply. Capitalised terms not otherwise
+defined herein will have the meaning assigned to them under paragraph 12 of the general Terms of Service.
+
+“Tokenised Equities” means each series of debt securities issued in tokenised format by the relevant
+Issuer and referencing the value of an Underlying Asset.
+
+“Tokenised Equities Issuer” means the issuer of a series of Tokenised Equities, as from time to time
+specified in the Schedule to this Sub-Annex 1.
+
+“Unified Tokenized Stocks” or “UTS” means the contractual entitlements recorded and administered
+through the OKX Platform in respect of Tokenised Equities. The UTS is not itself an on-chain token. The
+UTS balance represents the amount of Underlying Assets controlled by a User via their Tokenised Equities’
+holding. It does not represent a right of the User to receive that amount of Underlying Assets.
+
+“UTS Services” means the services provided by OEM in relation to UTS and in particular it includes trading
+services in relation to Tokenised Equities, including (but not limited to) deposit, withdrawal, order book
+trading, Buy/Sell/Convert (RFQ), collateral, and Corporate Action processing.
+
+These Terms are entered into between You and OEM. OEM is the distributor of Tokenised Equities and
+the provider of the UTS Services in Your jurisdiction and is not the Issuer of the Tokenised Equities.
+
+"Corporate Action" or "CA" means any event affecting the Underlying Asset, including but not limited to
+dividends, stock splits, reverse splits, mergers, reorganizations, and similar events.
+
+"Issuer Documentation" means, in respect of any Tokenised Equities, the prospectus, final terms, key
+information document, and any other official disclosure documentation published by the applicable Issuer,
+as identified in the applicable Issuer Schedule.
+
+"Issuer Schedule" means a schedule to these Terms setting out the Issuer-specific terms applicable to a
+particular Tokenised Equities, including the identity of the Issuer, the applicable Issuer Documentation, and
+any issuer-specific regulatory disclosures.
+
+"Multiplier" or “M” means the conversion factor(s) published by the applicable Issuer that relates on-chain
+token quantity of a particular Tokenised Equity to scaled share quantity, reflecting adjustments arising from
+Corporate Actions and Management Fee deductions (if and when applicable).
+
+
+
+
+1
+"OKX Platform" means the OKX centralised exchange platform, including the web application, mobile
+application, and API, as operated by OKX from time to time.
+
+"Reg S" means Regulation S under the United States Securities Act of 1933, as amended (17 C.F.R. §§
+230.901–905), which provides an exemption from SEC registration for offers and sales of securities made
+outside the United States to non-U.S. persons.
+
+"Scaled Quantity" means the quantity of UTS expressed in share-equivalent units for purposes of trading
+and account display on the OKX Platform, calculated as: Scaled Quantity = Token Quantity × M.
+
+"Token Quantity" means the quantity of the Underlying Token recorded on-chain, prior to conversion into
+Scaled Quantity for purposes of UTS Services on the OKX Platform.
+
+“Underlying Token” means the individual Tokenised Equities referenced by a UTS.
+
+3. Eligibility
+
+UTS Services will only be offered to eligible users in select jurisdictions at OKX's sole discretion, and
+availability is subject to change or discontinuation at any time. You must have a verified OKX account in
+good standing to access UTS Services.
+
+Access to UTS Services may be subject to additional eligibility criteria, including KYC/AML verification,
+geographic restrictions, and applicable regulatory requirements. OKX reserves the right to restrict or
+suspend access to UTS Services for any user at any time, with or without notice, in its sole discretion.
+
+By accessing UTS Services, You represent and warrant that:
+
+- You are not a U.S. Person as defined under Reg S;
+
+- You are not located in, incorporated in, or current resident of the United States;
+
+- You are not acquiring Tokenised Equities for the account or benefit of a U.S. Person;
+
+- You are eligible to access UTS Services under the laws and regulations of Your jurisdiction;
+
+4. Nature of UTS
+
+4.1 Overview
+
+Unified Tokenized Stocks are supported by Underlying Tokens issued by applicable Issuers. The instrument
+type and structure of each Underlying Token is described in the applicable Issuer Schedule. Each UTS
+represents a unit of the corresponding underlying U.S. equity or ETF. A UTS does not represent ownership
+of, or any direct legal claim against, the Underlying Asset. Nothing in these Terms creates a direct
+contractual claim by a UTS holder against the underlying equity or against the Issuer, except to the extent
+expressly provided in applicable Issuer Documentation or otherwise required by applicable law.
+
+4.2 Underlying Share Custody
+
+Each UTS represents an underlying share of the corresponding equity per the applicable Issuer
+Documentation, as held in custody by a third-party custodian engaged by the applicable Issuer. Where
+permitted under the applicable Issuer Documentation, the Issuer may lend underlying shares to third
+parties; when shares are lent, they are replaced by cash collateral and cease to qualify as standard
+collateral.
+
+
+2
+OEM has no direct relationship with, or control over, the custodian holding the Underlying Assets. Details
+of the custodian for each Issuer are set out in the applicable Issuer Documentation.
+
+4.3 Not Securities
+
+UTS are not securities and they do not confer any right to the Underlying Asset.
+
+4.4 Reg S Restriction
+
+UTS Services are offered in reliance on Reg S under the U.S. Securities Act 1933. Tokenised Equities have
+not been and will not be registered under the U.S. Securities Act 1933 or the laws of any U.S. state. By
+accessing UTS Services, You confirm that You are not a U.S. Person and that You are not acquiring
+Tokenised Equities in the United States or for the account or benefit of any U.S. Person. Resale or transfer
+of Tokenised Equities to U.S. Persons or within the United States is prohibited.
+
+4.5 Deemed Acknowledgements
+
+By acquiring Tokenised Equities on the OKX Platform, You are deemed to have: (a) read the applicable
+Issuer Documentation as identified in the applicable Issuer Schedule; (b) received, read, and acknowledged
+any issuer-specific regulatory disclosures required by the applicable Issuer Schedule; (c) confirmed that
+You satisfy any eligibility criteria set out in the applicable Issuer Schedule.
+
+5. OKX Entity's Role as Distributor
+
+OEM acts as the distributor of Tokenised Equities, represented by UTS, and is the contractual counterparty
+to the User in respect of the UTS Services. The applicable Underlying Token is issued by the Issuer under
+the applicable Issuer Documentation. The Issuer Documentation governs the rights and obligations
+attaching to that Underlying Token as between the Issuer and persons entitled under that documentation.
+A UTS holder’s contractual rights against OEM arise under these Terms. Holding a UTS balance does not,
+by itself, make the User a direct contractual party to the Issuer Documentation or confer a direct claim
+against the Issuer.
+
+Issuer-specific information, including the identity of the Issuer, its corporate structure, and any concentration
+or group risks, is set out in the applicable Issuer Schedule. You should read the applicable Issuer Schedule
+before trading in UTS.
+
+You acknowledge that:
+
+    -   OEM makes the UTS Services available to eligible users on the OKX Platform but has no control
+        over the applicable Issuer's decisions regarding the Tokenised Equities;
+    -   the applicable Issuer may suspend, cancel, or modify any Tokenised Equities programme at any
+        time, which may affect Your ability to trade or hold that Underlying Token on the OKX Platform;
+    -   OKX Entity's role is limited to distribution and secondary market facilitation of Tokenised Equities.
+
+6. Deposit and Withdrawal
+
+6.1 Scaled Quantity Accounting
+
+Tokenised Equities are represented on-chain in Token Quantity units. The OKX Platform displays and
+processes UTS in Scaled Quantity (share-equivalent) units to provide a standard equity trading experience,
+regardless of which Tokenised Equities is held by the User. The conversion is:
+
+
+
+
+3
+Scaled Quantity = Token Quantity × Multiplier (M)
+
+On deposit: the applicable Underlying Token Quantity received by OEM as custodian for the User is
+converted into Scaled Quantity using the then-current Multiplier, and the User’s UTS balance is credited
+with that Scaled Quantity.
+
+On withdrawal: the requested UTS Scaled Quantity is converted back into the Token Quantity of a
+supported Underlying Token using the applicable Multiplier, and the resulting Underlying Token Quantity is
+sent on-chain to the User’s withdrawal address, subject to the applicable issuer, network, compliance and
+inventory requirements.
+
+6.2 Multiplier Updates
+
+The Multiplier may change over time as Corporate Actions occur (e.g., dividend payouts step up M; stock
+splits adjust M). OEM will update M in its systems following validation against the Tokenised Equities
+Issuer’s API and on-chain data. The Multiplier applicable at the time of deposit credit or withdrawal dispatch
+governs the conversion for that transaction.
+
+6.3 Edge Cases
+
+    -   Deposits received during a Corporate Action processing window will be held in a queue and
+        credited after the CA completes, using the post-CA M (M_new).
+    -   Withdrawals submitted before a CA event and not cancelled by the User will be processed at the
+        pre-CA M (M_old), as the Token Quantity is fixed at the time of submission.
+    -   Withdrawals that are cancelled after a CA event will be returned to the user at the post-CA M
+        (M_new).
+    -   Deposits of Tokenised Equities to OEM where OEM does not support that particular Tokenised
+        Equities will be credited but the User will be restricted to withdrawal only and may not trade the
+        balance.
+
+
+6.4 Standard Checks
+
+All standard on-chain controls applicable to digital asset deposits and withdrawals on the OKX Platform
+apply to UTS deposits and withdrawals, including on-chain analytics screening, travel rule compliance, and
+applicable risk and compliance checks. No special exemptions apply to UTS.
+
+6.5 Reconciliation
+
+A reconciliation check is performed on every deposit credit and withdrawal dispatch. If a discrepancy is
+detected between the Underlying Token holdings maintained by the relevant OEM and the aggregate UTS
+balances recorded as contractual entitlements on the OKX Platform, the relevant credit or withdrawal will
+be held until the discrepancy is resolved.
+
+7. Trading
+
+Eligible UTS may be traded on the OKX Platform through the order book and Buy/Sell/Convert service,
+subject to the availability and eligibility information published on the Platform. The User trades the
+contractual UTS balance in Scaled Quantity/share-equivalent units. All references in this Section to “UTS”
+balances or amounts refer to the contractual UTS entitlement recorded on the OKX Platform and not to the
+Underlying Token itself.
+
+
+
+4
+7.1 Orderbook Trading
+
+OEM will provide matched principal trading services in relation to eligible UTS. Eligible UTS may be traded
+on a 7x24 orderbook on the OKX Platform, priced in Scaled Quantity per share in USDC. Orderbook trading
+is available for designated blue-chip instruments; the eligible set is published on the OKX Platform and may
+change from time to time.
+
+The following apply to orderbook trading:
+
+- Instruments are priced per share (Scaled Quantity), aligned to a tick size of USD 0.01;
+
+- Minimum order size (minSz) is determined by OKX and may be updated from time to time;
+
+- 7x24 trading continues when underlying U.S. equity markets are closed; pricing during off-hours is based
+on prior session close and market maker estimates and may deviate materially from the underlying equity
+price; trading may be paused when processing corporate actions requiring a rebasing;
+
+- OKX maintains the right to halt trading, widen spreads, or restrict order types at any time at its sole
+discretion.
+
+7.2 Buy/Sell/Convert (RFQ)
+
+For OKX Buy/Sell/Convert(RFQ) service, quotes are indicative and valid for a limited time window (typically
+10–30 seconds). By confirming an RFQ quote, You agree to trade at that indicative price subject to
+execution. OEM does not guarantee that the order will execute at the quoted price, or that the order will
+execute at all. RFQ quotes include an embedded spread which represents OEM’s cost of providing the
+instant-quote service; this spread is incorporated into the quoted price and is separate from any trading fee.
+During periods when the underlying U.S. equity market is closed (including weekends and after-hours),
+RFQ pricing is based on prior session close and market maker estimates and may deviate materially from
+the underlying equity's last traded price; spreads may be wider during these periods.
+
+7.3 No Short Selling Through Leverage
+
+UTS may not be used to open short positions through leverage. Margin borrowing to fund UTS short
+positions is not available on the OKX Platform.
+
+7.4 Fees and Spreads
+
+Standard OKX trading fees apply to UTS orderbook and RFQ trades. Applicable fees and spreads are
+disclosed prior to order confirmation. Your confirmation of the transaction constitutes agreement to pay all
+applicable fees. Fees may change from time to time and are published on the OKX fee schedule at
+[www.okx.com/fees].
+
+7.5 Order Execution Discretion
+
+OKX may at any time and without liability reject, cancel, suspend, or delay an UTS transaction (in whole or
+in part) for any reason, with or without notice. You should regularly check the status of pending UTS
+transactions. OKX will not verify the information or details of Your UTS transaction — You agree that
+information provided by You is accurate and complete.
+
+8. Collateral
+
+
+
+
+5
+Eligible UTS may be used as collateral in OKX's multi-currency margin (MCM) and Portfolio Margin (PM)
+accounts, subject to applicable collateral discount tiers and haircuts determined by OKX in its sole
+discretion. Collateral tiers, discount rates, and eligibility are published on the OKX Platform and may be
+updated from time to time.
+
+You acknowledge that:
+
+- UTS used as collateral are subject to liquidation risk if margin requirements are not met;
+
+- collateral tiers for UTS may be adjusted following Corporate Action events (e.g., stock splits) to reflect the
+rebased share quantity;
+
+- OKX may exclude specific UTS from collateral eligibility at any time;
+
+- short leverage on UTS balances used as collateral is not available;
+
+- UTS used as collateral may be liquidated by OKX at any time that margin requirements are not met,
+including during periods when the underlying U.S. equity market is closed (weekends, public holidays, and
+after-hours). You should take this risk into account when using UTS as collateral.
+
+9. Corporate Actions
+
+9.1 Dividend Corporate Actions
+
+When a Tokenised Equities Issuer processes a dividend on an Underlying Asset, the Multiplier is adjusted
+upward to reflect the economic value of the dividend being reinvested into the token (M steps up). OKX will:
+
+- pause deposit crediting, withdrawal processing, and internal transfers for the affected Unified Tokenized
+Stock during the CA processing window; trading is not halted for dividend CAs; although trading may be
+paused when processing large dividends;
+
+- compute a per-user share adjustment: new_share = floor8(old_share × M_new / M_old), and credit the
+delta to each User’s UTS balance as an account adjustment;
+
+- apply the adjustment to all UTS User accounts without exclusion (including accounts subject to compliance
+holds or KYC holds — the adjustment reflects economic entitlement and does not alter any hold or freeze
+status);
+
+- resume paused services once reconciliation is complete.
+
+You acknowledge that dividend Corporate Actions do not involve a cash distribution — economic value is
+reflected through the Multiplier adjustment and corresponding share quantity increase.
+
+Management and Investor Fee: Each Tokenised Equities is subject to an annual Management Fee as
+specified in the applicable Final Terms. The Management Fee is calculated and deducted daily at 12:00
+pm UTC by reducing the Multiplier. The Management Fee is an Issuer-side fee, not an OKX Platform fee,
+and is embedded in the price of each Underlying Token. Separate issuance and redemption fees ("Investor
+Fees") may apply to primary market transactions (subscriptions and redemptions directly with the Issuer
+via OKX as authorised participant for the Tokenised Equities). Investor Fees are Issuer-side fees and are
+embedded in the quoted prices for primary market transactions.
+
+9.2 Multiplier Validation
+
+
+
+6
+Before any Multiplier change is applied, OKX validates the expected M_new against multiple sources: the
+applicable Issuer's API, on-chain transaction data, and third-party data feeds. If sources disagree beyond
+tolerance, or the implied ratio falls outside expected ranges, the CA is held for manual review. M_new is
+never applied without passing validation checks.
+
+9.3 No Rights in Underlying Corporate Actions
+
+Users of the UTS Services have no rights in respect of the underlying equity's corporate actions beyond
+the economic adjustment reflected in the UTS balance through the applicable Multiplier and these Terms.
+Any rights attaching to the Underlying Token are governed by the applicable Issuer Documentation and do
+not arise merely from the User’s UTS balance.
+
+9.4 Complex Corporate Actions
+
+Certain corporate actions affecting the underlying equity may not be capable of being reflected through a
+simple Multiplier adjustment. These include, without limitation:
+
+- Cash mergers and acquisitions: where the underlying equity is acquired for cash, the Underlying Token
+may be forcibly redeemed by the Issuer at the applicable cash consideration, which may be at a discount
+to the price at which You acquired Your UTS.
+
+- Delisting: where the underlying equity is delisted from its primary exchange, the Issuer may determine
+that the Underlying Token cannot continue and may exercise its termination rights. Redemption proceeds
+in such circumstances may be materially lower than the last traded price.
+
+- Issuer insolvency / underlying company bankruptcy: where the underlying company enters bankruptcy or
+insolvency proceedings, the value of the Underlying Token may fall to zero. The Issuer is not obliged to
+maintain a token programme where the underlying equity has no recoverable value.
+
+In each such case, OKX has no control over the Issuer's determination of how to treat the relevant corporate
+action, and OKX does not guarantee that any corporate action will be reflected accurately or promptly in
+the UTS price or Multiplier. Section 9.3 (No Rights in Underlying Corporate Actions) applies in all cases.
+
+10. Withholding Tax
+
+Tokenised Equities provide economic exposure to U.S. equities. Dividend equivalent payments arising
+under delta-1 instruments referencing U.S. equities may be subject to U.S. withholding tax under Section
+871(m) of the U.S. Internal Revenue Code (30% default rate, or lower applicable tax treaty rate).
+
+The applicable Issuer engages a custodian or broker-dealer to hold the underlying U.S. shares. Dividend
+withholding on the underlying shares is handled at source by that custodian or broker-dealer.
+
+UTS reflect the net post-withholding economic value following Multiplier adjustment. OKX Entity does not
+act as a separate withholding agent in respect of the underlying equity dividends. Underlying U.S. share
+dividends are subject to U.S. withholding tax at the applicable rate (30% standard rate, or lower applicable
+tax treaty rate). Withholding is applied at the applicable custodian or broker-dealer, as further described in
+the applicable Issuer Schedule. OKX Entity does not act as a separate withholding agent in respect of
+underlying equity dividends.
+
+WE ARE NOT RESPONSIBLE FOR ANY TAX CONSEQUENCES TO YOU ARISING FROM HOLDING
+OR TRADING UTS. YOU SHOULD OBTAIN INDEPENDENT TAX ADVICE APPLICABLE TO YOUR
+JURISDICTION BEFORE TRADING.
+
+
+7
+11. Blockchain Risks
+
+Tokenised Equities are on-chain digital tokens. By trading UTS, You acknowledge and agree that:
+
+- The Tokenised Equities associated with UTS may be on-chain digital assets and may interact with third-
+party blockchain protocols.
+
+- The UTS entitlement recorded on the OKX Platform is not itself an on-chain token. By using UTS Services,
+You acknowledge and agree that: blockchain forks, smart contract bugs, protocol disruption, blacklisting
+and other blockchain events may affect the availability, transferability or value of an Underlying Token and
+may consequently affect the value or settlement of Your UTS entitlement;
+
+- OKX Entity may apply the standard controls applicable to digital asset deposits and withdrawals to the
+Underlying Tokens, including blockchain analytics, travel rule and compliance screening; and
+
+- OKX has no control over third-party blockchain protocols on which Underlying Tokens are issued or
+transferred.
+
+12. Risk Disclosure
+
+Trading UTS involves substantial risk and may not be suitable for all users. Risks include, but are not limited
+to:
+
+- Market risk: UTS prices may fluctuate significantly, including during periods when underlying U.S. equity
+markets are closed. Weekend and after-hours prices may diverge materially from the underlying equity's
+last traded price.
+
+- Issuer and Underlying Token risk: the Underlying Token associated with a UTS is issued by the
+applicable Issuer and is subject to the Issuer Documentation. Events affecting the Issuer, the Underlying
+Token, the underlying shares, custodians or other relevant counterparties may reduce or eliminate the
+economic value available through the UTS.
+
+- OKX contractual risk: Your UTS balance constitutes a contractual entitlement against the applicable
+OKX Entity under these Terms. The ability of OKX Entity to process deposits, trading, withdrawals and
+other UTS Services may be affected by insolvency, suspension, legal or regulatory action, systems failure,
+or other events affecting OKX Entity. Custody treatment of any Underlying Tokens held by the relevant
+OKX Entity is governed by the applicable OKX Terms of Service and any applicable custody arrangements.
+These Terms do not, by themselves, create a separate trust or beneficial ownership arrangement in respect
+of the Underlying Tokens.
+
+- Custody risk: The underlying shares are held by a third-party custodian engaged by the applicable Issuer.
+OKX Entity has no direct relationship with that custodian. Details of the applicable custodian, including any
+concentration risk, are set out in the applicable Issuer Schedule.
+
+- Corporate action risk: OKX does not guarantee that all corporate actions will be reflected accurately or
+immediately in UTS pricing or Multiplier adjustments.
+
+- Complex corporate action risk: Certain corporate actions (including cash mergers, delisting, and
+underlying company insolvency) may result in the forced redemption of the Tokenised Equities or a
+reduction of their value to zero. In such cases, the Issuer may terminate the Underlying Token programme;
+redemption proceeds may be materially lower than the price at which You acquired Your UTS.
+
+
+
+8
+- Blockchain risk: The Underlying Tokens on which UTS are based on are on-chain tokens. Smart contract
+bugs, protocol forks, or blockchain disruptions may result in loss of, or inability to access, the Underlying
+Tokens (and by extension, affect Your UTS).
+
+- Regulatory risk: regulatory changes in any jurisdiction may affect the availability, trading, or legal status
+of UTS. OKX may suspend or terminate UTS Services without prior notice if required to do so by applicable
+law or regulation. In such circumstances, the applicable Issuer may also exercise regulatory termination
+rights under the applicable Issuer Documentation, potentially redeeming Tokenised Equities at short or no
+notice. Redemption timing and amounts in such circumstances are at the Issuer's and/or OKX's discretion.
+
+- RFQ/Convert spread: Buy/Sell/Convert (RFQ) quotes include an embedded spread that forms part of the
+quoted price. During periods when the underlying U.S. equity market is closed, RFQ pricing is based on
+prior session close and market maker estimates; spreads may be wider and quoted prices may deviate
+materially from the underlying equity's last traded price.
+
+- Liquidity risk: market-maker liquidity for the Underlying Tokens may be limited, particularly during off-
+hours. There is no guarantee of a liquid market at any given time.
+
+- Management Fee / cost drag: Each Underlying Token may be subject to an annual Management Fee
+charged by the Issuer, as specified in the applicable Issuer Documentation. The Management Fee is
+deducted daily by reducing the Multiplier. This means that even if the underlying equity price is flat, Your
+UTS share balance may erode over time as the Multiplier decreases. The applicable Management Fee rate
+is set by the Issuer and is outside OKX Entity's control.
+
+- Margin and liquidation risk: If You use UTS as collateral, Your position may be liquidated if margin
+requirements are not met. Liquidation may occur at any time, including when the underlying U.S. equity
+market is closed (weekends and after-hours). Prices during such periods may deviate materially from the
+underlying equity's last exchange-traded price, and liquidation at off-hours prices may result in a worse
+outcome than liquidation during market hours.
+
+- Withholding tax risk: U.S. withholding tax treatment may affect the net economic value of dividend
+Corporate Actions.
+
+- Concentration and volatility risk: individual U.S. equity prices may be subject to sharp movements.
+Tokenized exposure to such equities carries the same market risk as the underlying instrument.
+
+- Issuer credit and financial risk: The applicable Issuer may have limited financial resources independent
+of the collateral securing each Underlying Token. Details of the applicable Issuer's financial position are set
+out in the applicable Issuer Documentation and Issuer Schedule.
+
+- Issuer termination / Regulatory Call risk: Any Issuer has the unilateral right to terminate its Underlying
+Token programme: (a) at any time for any reason by providing not less than 30 Business Days' written
+notice (Termination Notice); or (b) immediately and without prior notice via a Regulatory Call if the Issuer
+determines that continued operation would be unlawful or impossible as a result of any change in law,
+regulation, or regulatory authority action. Upon termination, Your UTS will be redeemed at the Redemption
+Amount as of the Termination Date, which may be materially lower than the price at which You acquired
+Your UTS. OKX has no control over or ability to prevent the exercise of the Issuer's termination rights.
+
+- Settlement currency risk: Redemption amounts may be settled by the Issuer in FIAT currency,
+stablecoins, or other cryptocurrencies, in each case at the Issuer's sole discretion. There is no guarantee
+that redemptions will be settled in the currency in which You originally purchased UTS.
+
+
+9
+- Tracking error and 24/7 trading risk: UTS trade on a 24-hour, 7-day basis, while the underlying U.S.
+equity markets are closed on weekends and U.S. public holidays. The secondary market price of UTS may
+diverge materially from the net asset value (NAV) of the underlying shares, particularly during periods when
+the underlying market is closed.
+
+- Blockchain gas fee risk: Withdrawal of the Underlying Tokens from the OKX Platform and other on-
+chain operations require the payment of blockchain transaction fees ("gas fees"). During periods of
+blockchain network congestion, gas fees may increase materially and may reduce the net proceeds of
+redemption.
+
+- Securities lending risk: Where permitted under the applicable Issuer Documentation, the Issuer may
+lend all or part of the underlying shares to a third-party prime borrower pursuant to a securities lending
+arrangement. When underlying shares are lent out, they are released from the collateral pledge and cease
+to qualify as standard collateral for the relevant product; cash collateral is substituted on a daily mark-to-
+market basis. The prime borrower may further on-lend those shares to end borrowers. In the event of
+insolvency of the prime borrower or an end borrower, or failure to return the lent shares, there is a risk that
+the underlying shares cannot be recovered by the Issuer and that cash collateral may be insufficient to
+cover the full value of the lent shares. Whether lending applies to a specific Underlying Token is determined
+by the applicable Issuer Documentation; OEM has no visibility into or control over whether lending is active
+at any given time. Details of the applicable prime borrower are set out in the applicable Issuer Schedule.
+
+13. Representations and Warranties
+
+You hereby represent, warrant, and undertake that:
+
+- You are not a U.S. Person under Reg S and are not acquiring Tokenised Equities in the United States or
+for the account or benefit of any U.S. Person;
+
+- You are not located in, incorporated in, or currently resident of the United States;
+
+- You are eligible to access Unified Tokenized Stock Services under the laws of Your jurisdiction;
+
+- You are not subject to any sanctions administered or enforced by the United Nations Security Council, the
+U.S. Office of Foreign Assets Control (OFAC), the European Union, His Majesty's Treasury (UK), or any
+other applicable sanctions authority.
+
+- You agree not to use the UTS Services in any manner that violates applicable anti-money laundering
+(AML), know-your-customer (KYC), sanctions, or other applicable laws and regulations.
+
+- the source of funds used to purchase UTS is legal and You are the beneficial owner of those funds;
+
+- You have read and understood the applicable Issuer Documentation for the Tokenised Equities You intend
+to trade, as identified in the applicable Issuer Schedule;
+
+- where required by the applicable Issuer Schedule, You satisfy any issuer-specific eligibility criteria
+(including any professional investor or SPB Order criteria) set out therein;
+
+- if any of the above representations cease to be true, You will immediately cease trading UTS and notify
+OKX.
+
+14. Limitation of Liability
+
+
+
+
+10
+YOU EXPRESSLY AGREE THAT YOUR USE OF THE UNIFIED TOKENIZED STOCK SERVICES IS AT
+YOUR OWN RISK. OKX AND ITS AFFILIATES MAKE NO REPRESENTATIONS, WARRANTIES, OR
+GUARANTEES THAT THE UNIFIED TOKENIZED SERVICES WILL FUNCTION OR PERFORM IN
+ACCORDANCE WITH YOUR EXPECTATIONS.
+
+TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, OKX AND ITS AFFILIATES DISCLAIM
+ALL LIABILITY FOR ANY LOSS, LIABILITY, OR DAMAGE — DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, OR CONSEQUENTIAL — ARISING FROM:
+
+- any decrease in the value of Your UTS or any Underlying Token;
+
+- any failure, delay, interruption, or suspension of Unified Tokenized Stock Services, including due to
+Corporate Action processing, blockchain disruptions, or system maintenance;
+
+- any inaccuracy in the Multiplier, Corporate Action adjustment, or account balance during or after a CA
+event;
+
+- any action taken by an issuer in respect of an Underlying Token, including any amendment to the
+applicable Issuer Documentation, suspension or termination of the relevant tokenized stock programme, or
+redemption of outstanding Underlying Tokens;
+
+- any action or omission by the custodian, broker-dealer, prime borrower, or other third party involved in
+holding or administering the underlying shares or other collateral;;
+
+- any legislative or regulatory changes affecting UTS, any Underlying Token, or the underlying shares or
+other assets;
+
+- any blockchain protocol, smart contract, or network event affecting an Underlying Token, including forks,
+bugs, congestion, or downtime;
+
+- any third-party technology failure;
+
+- Your failure to comply with Reg S restrictions or applicable laws in Your jurisdiction; or
+
+- any U.S. withholding tax or other tax consequences.
+
+NOTHING IN THESE TERMS SHALL EXCLUDE LIABILITY FOR FRAUD, DEATH OR BODILY INJURY
+CAUSED BY NEGLIGENCE, OR ANY OTHER LIABILITY THAT CANNOT BE LIMITED OR EXCLUDED
+BY APPLICABLE LAW.
+
+Notwithstanding the foregoing, OEM shall have no liability to You in respect of any loss, damage, or
+expense arising from or in connection with: (i) the Issuer's exercise of any call option, termination right, or
+Regulatory Call or similar right under the applicable Issuer Documentation; (ii) any adjustment to the
+Multiplier, Management Fee, or other economic terms made by applicable Issuer; (iii) any suspension or
+restriction of the minting, burning, issuance, redemption, or transfer of any Underlying Token by the
+applicable Issuer, tokenizer, or other relevant third party; or (iv) any withholding tax or deduction applied at
+source by the applicable custodian or broker-dealer holding the underlying shares, as further described in
+the applicable Issuer Schedule.
+
+SCHEDULE A — ISSUER-SPECIFIC TERMS: xSTOCKS (BACKED ASSETS (JE) LIMITED)
+
+A.1 Issuer Details
+
+
+
+11
+     -   Issuer: Backed Assets (JE) Limited, a private limited company incorporated in Jersey.
+     -   Parent / Group: Indirect subsidiary of Payward, Inc. The Issuer acts as Tokenizer utilising technical
+         infrastructure provided by the Payward Group.
+     -   Custodian: Alpaca Securities LLC, a FINRA-registered, SIPC-member broker-dealer. Alpaca
+         Securities LLC also acts as Prime Borrower under the Securities Lending Agreement. Alpaca holds
+         a significant share of tokenized U.S. stock assets under custody across the industry; an insolvency
+         or regulatory action affecting Alpaca could affect multiple tokenized equity products simultaneously.
+     -   Issuer Documentation as available at https://assets.backed.fi/legal-documentation
+              - Base Prospectus approved by FMA Liechtenstein;
+              - applicable Final Terms per xStock;
+              - Key Information Documents
+     -   Token standard: SPL tokens on Solana; ERC-20 on Ethereum (XLayer). Additional networks as
+         announced.
+     -   Instrument type: Tracker certificates (debt instruments) governed by Liechtenstein law).
+     -   MiFID II classification: transferable securities, Section C(1).
+
+A.2 Regulatory Disclosures (Jersey)
+
+The following disclosures are required by Jersey law and apply specifically to xStocks. They do not apply
+to Tokenised Equities issued by other Issuers.
+
+A.2.1 SPB Order Investment Warning
+
+The following investment warning is required by the Financial Services (Investment Business (Special
+Purpose Investment Business – Exemption)) (Jersey) Order 2001 (the "SPB Order") and must be
+acknowledged by all users before accessing xStock Services:
+
+Pursuant to the SPB Order, the Products may only be issued or allotted exclusively to:
+
+1. A person whose ordinary activities involve them acquiring, holding, managing or disposing of investments
+(as principal or agent) for the purposes of their business or who it is reasonable to expect will acquire, hold,
+arrange or dispose of investments (as principal or agent) for the purposes of their business (a "Professional
+Investor"); or
+
+2. A person who has received and acknowledged a warning to the effect that (A) the Products are only
+suitable for acquisition by a person who: (i) has a significantly substantial asset base such as would enable
+them to sustain any loss that might be incurred as a result of acquiring the Products; and (ii) is sufficiently
+financially sophisticated to be reasonably expected to know the risks involved with acquiring the Products;
+and (B) neither the issue of the Products nor the activities of any functionary with regard to the issue of the
+Products are subject to all the provisions of the Financial Services (Jersey) Law 1998 (the "SPB Order
+Investment Warning").
+
+A.2.2 JFSC Token Issuance Warning
+
+Pursuant to requirements of the Jersey Financial Services Commission, and as required by the Base
+Prospectus, the following warning applies to xStocks:
+
+The Issuer is a private limited company incorporated in Jersey. Anyone issuing a token through a Jersey
+company will require a specific consent from the Jersey Company Registry, part of the JFSC. Whilst this
+consent does not give the issuer a ‘regulated’ status, it mandates a set of conditions designed to ensure
+that the issuer meets specific standards in terms of governance, investor disclosure and AML/CFT/CPF
+
+
+12
+compliance.
+
+Token sales or coin offerings are typically a highly speculative form of investment. You should be prepared
+for the possibility of losing Your investment completely. Investment in token sales or coin offerings is not
+necessarily subject to existing capital market regulations and protections.
+
+In particular, investors should acknowledge the above warning and also confirm the following prior to
+investing in x-Stocks:
+
+1. (for an individual) that they have read the above warning, as well as the Base Prospectus and Final
+Terms and understand the risks set out above; that the Products are suitable for them and that they wish
+to proceed to acquire the Products.
+
+2. (for an entity) that they are duly authorised to act on behalf of the entity stated below, they have read the
+above warning, as well as the Base Prospectus and Final Terms and understand the risks set out above;
+that the entity You represent has considered the Products carefully and considers them suitable and wishes
+to proceed to acquire the Products.
+
+Token sales or coin offerings are typically a highly speculative form of investment. Investors should be
+prepared for the possibility of losing Your investment completely.
+
+A.3 Issuer Credit Information
+
+Backed Assets (JE) Limited has no credit rating from any recognised rating agency. As at 31 December
+2025, the Issuer had negative shareholder funds of approximately USD -3.2 million and has been loss-
+making since incorporation. The Issuer's financial obligations to xStock holders are met exclusively from
+the collateral securing each product. The Issuer's negative equity position reflects the pass-through nature
+of the vehicle.
+
+A.4 Termination Rights
+
+The Issuer has the unilateral right to terminate any xStock product: (a) at any time for any reason by
+providing not less than 30 Business Days' written notice; or (b) immediately via Regulatory Call if continued
+operation would be unlawful. Upon termination, xStocks will be redeemed at the Redemption Amount as of
+the Termination Date, which may be materially lower than the acquisition price.
+
+Defined terms herein are as defined in the Base Prospectus for the xStocks available on
+https://assets.backed.fi/legal-documentation.
+
+
+
+A.5 Payward Group Concentration Risk
+
+The Tokenizer (Payward, Inc.), the Issuer (Backed Assets (JE) Limited), and the tokenization infrastructure
+are all controlled by the Payward Group (operator of the Kraken exchange). A disruption to, or regulatory
+action against, the Payward Group could affect xStocks. Kraken is also an investor in Alpaca Securities
+LLC (Series D, January 2026), creating a potential conflict of interest between the Custodian and the
+Issuer's parent group.
+
+A.6 Selling restrictions
+
+The xStocks have not been and will not be registered under the U.S. Securities Act of 1933, as amended
+
+
+
+13
+("Securities Act") or with any securities regulatory authority of any State or other jurisdiction of the United
+States and (i) may not be offered, sold or delivered within the United States to, or for the account or benefit
+of U.S. Persons (as defined in Regulation S ("Regulation S") under the Securities Act), and (ii) may be
+offered, sold or otherwise delivered at any time only to transferees that are NonUnited States Persons (as
+defined        by       the       U.S.        Commodities         Futures        Trading         Commission).
+
+A description of restrictions on offers and sales of the securities is on clause XXV. “Selling Restrictions” of
+the Terms and Conditions of the xStocks in the related Base Prospectus.
+
+
+
+
+14
+Annex 2.B - USDⓈ-margined Options
+
+     1. Scope
+
+This Annex 2.B governs the trading of Options on the OKX Platform ("OKX," "we," "us," or "our") by eligible
+users ("You" or "User") and supplements OKX's general Terms of Service and any other applicable OKX
+product terms published from time to time. In the event of any inconsistency between these Terms and
+OKX's general Terms of Service, these Terms shall prevail with respect to Options.
+
+Definitions
+
+“Expiry Date” means the date upon which the Option can be exercised by its buyer. The Options described
+herein can have:
+
+     ●   “Daily Expiries”, in which case the Options will have an initial lifetime of three days at the time of
+         introduction and will expire every day at 08:00 UTC. A daily expiry will not be added if it already
+         exists as a weekly/monthly/quarterly expiry.
+     ●   “Weekly Expiries”, in which case the options will expire every Friday at 08:00 UTC. A weekly
+         expiry will not be added if it already exists as a monthly/quarterly expiry.
+     ●   “Monthly Expiries”, in which case the Options will expire the last Friday of the month at 08:00
+         UTC. A new monthly expiry will be launched on the 3rd to last Friday of each month at 08:30
+         UTC. A monthly expiry will not be added if it already exists as a monthly/quarterly expiry.
+     ●   “Quarterly Expires” at 3, 6, and 9 months of the March, June, September and December cycle.
+         The quarterly Options will expire on the last Friday of each calendar quarter at 08:00 UTC. A new
+         quarterly expiry will be added on the last Friday (BTC) or 3rd to last Friday (ETH) of each
+         calendar quarter at 08:00 UTC.
+
+"Index" means the index, calculated and published by OKX, measuring the performance of the Underlying.
+
+“Linear Options” or “USDⓈ-margined Options” means Options where margin, fees, and all settlement are
+denominated in USD-pegged currencies (USD, USDC, or USDG, as indicated on the Platform).
+
+“Option” means a contract under which the buyer has the right, but not the obligation, to buy (in the case
+of a Long Call Option) or sell (in the case of a Long Put Option) a specified quantity of an underlying
+reference asset on the Expiry Date, and the seller assumes the corresponding obligation to sell (in the case
+of Short Call Option) or to buy (in the case of a Short Put Option) if the Option is exercised. The Options
+offered via the OKX Platform are USDⓈ-margined Options and therefore, upon exercise, the buyer has a
+right to receive a Settlement Amount in the Settlement Currency. The Options that are the subject of these
+Terms are those available on the OKX Platform and they can be either:
+
+     ●   “Long Call Options” means an Option where the investor (or buyer) has the right (but not the
+         obligation) to buy the underlying reference asset .
+     ●   “Short Call Option” means an Option where the investor (or seller) has the obligation to sell the
+         underlying reference asset if the buyer exercises the Option.
+     ●   “Long Put Option” means an Option where the investor (or buyer) has the right (but not the
+         obligation) to sell the underlying reference asset.
+     ●   “Short Put Option” means an Option where the investor (or seller) has the obligation to buy the
+         underlying reference asset if the buyer exercises the Option.
+
+
+
+15
+"Settlement Price" means the time-weighted average price of the Index price during the last 30 minutes
+before the Expiry Date. The snapshot of the Index price is taken at 200ms interval.
+
+"Settlement Amount" means the amount, in the Settlement Currency, at which the In The Money Options
+will be settled, represented by the difference between the Settlement Price and the Strike Price".
+
+"Settlement Currency" means USD, USDC or USDG as displayed on the OKX Platform.
+
+“Strike Price” means the price at which the option holder can buy or sell the underlying asset when
+exercising a “Long Call Option” or “Long Put Option” respectively.
+
+“Premium” means the price at which the Option can be bought. The buyer of a “Long Call Option” or of a
+“Long Put Option” will pay the Premium, while the seller of a “Short Call Option” or of a “Short Put Option”
+will receive the Premium.
+
+"Underlying" is the reference asset of the Option, whose value is determined based on an index level,
+measuring the performance of that Underlying, as calculated by OKX. An Underlying can be either a crypto
+asset or a commodity or any other asset as available on the OKX Platform.
+
+     2. Mechanism
+
+2.1 When investing in Options, a buyer must select the appropriate contract options. A contract is deemed
+to be entered into only once the buyer has paid the required Premium.
+
+2.1. When investing in Options, a seller must select the appropriate contract options. A contract is deemed
+to be entered into only once the seller has provided the required collateral. Upon conclusion of the contract,
+the seller will also receive the corresponding Premium.
+
+2.2 On the Expiry Date:
+
+     ●   If the Option is "In the Money", which means that the Underlying reference asset price is higher
+         than Strike Price (for a Long Call Options) or lower than the Strike Price (for a Long Put Options),
+         the Option is automatically exercised at 8am (UTC on the Expiry Date, and the contract will be
+         settled based on the difference between the Settlement Price and the Strike Price. The resulting
+         deliverable amount will be settled in cash, in the applicable settlement currency.
+     ●   If the Option is "At the Money", which means that the Underlying reference asset price is equal to
+         the Strike Price, the Option will automatically expire without being exercised;
+     ●   If the Option is "Out of the Money", which means that the Underlying reference asset price is
+         lower than Strike Price (for a Long Call Options) or higher than the Strike Price (for a Long Put
+         Options), the Option will automatically expire without being exercised.
+
+2.3. The Seller of a Short Call Options or of a Short Put Options will, upon the In the Money Options being
+exercised, have the obligation to pay the relevant Settlement Amount.
+
+2.4 The option contract is collateralised and settled, and any fees are paid, in cash or stablecoins only as
+displayed on the Platform.
+
+     3. Risk Management
+
+3.1 The Service relies on various measures to control risks, including but not limited to:
+
+
+
+
+16
+     ●   Tiered maintenance margin ratio
+     ●   Auto-deleveraging (ADL)
+     ●   Forced Repayment Mechanism
+
+You should refer to the links above which describe each of these measures in detail. The content of the
+links above forms an integral part of this Agreement. OKX reserves the right to introduce additional
+measures to control risks from time to time. It may update the content of the links above or these Terms at
+any time, in accordance with the provisions of these Terms. Where material updates are made you will be
+required to confirm your acceptance of the updated Terms before continuing to access the Service.
+
+3.2 If the size of your positions or open orders accumulates to a level which poses risk to other Users, OKX
+reserves the right to cancel your orders or close your positions or orders in part or in full.
+
+     4. The Service
+
+4.1 OEM provides dealing services that allow you to buy and sell Linear Options (the "Service"). Investors
+in Long Call Options or Long Short Options can trade Options by paying the relevant Premium, as displayed
+on the Platform.
+
+4.2 You may place orders, in the form required by OKX, via the website, client software, API or any other
+channels. Once an order is filled you will not be able to cancel or amend it.
+
+4.3 Investing in Options will require you to pay the the Premium, as specified in the Platform at the time of
+trading or posting and maintaining the required level of collateral, depending on the Option contract and
+direction you have selected.
+
+4.4 The settlement method and amount at expiry of an Option will be determined by the Platform. When
+the contract is exercised, any relevant Settlement Amount will be credited to the buyer’s account balance
+and deducted from the seller’s. Both buyer and seller need to pay an applicable exercise fee (please see
+https://www.okx.com/en-eu/fees for further details);
+
+4.5 For USDⓈ-margined Options, settlement is effected in USD, USDC, or USDG depending on your
+selected preference at the time of trading. You acknowledge and agree that: (a) where you and your
+counterparty to a USDⓈ-margined Option have selected different settlement currencies, OKX will
+automatically convert between the relevant USD-pegged currencies at the platform level using OKX’s
+existing auto-conversion mechanism to effect settlement; (b) OKX determines the applicable conversion
+rate; (c) the economic value of your settlement proceeds is intended to remain USD-equivalent, but may
+
+be subject to deviation in the event of a stablecoin price event (see Clause 6.1 below for applicable risk
+disclosures); and (d) asset consumption records will be generated for reconciliation purposes where
+settlement currencies differ between counterparties.
+
+4.6 If market anomalies occur before settlement and delivery, including but not limited to acute fluctuation
+of underlying Index, OKX may, under its sole discretion, decide to settle and/or deliver at a proper time and
+price with a commercially reasonable method without prior announcement.
+
+4.7 Standard fees, including trading fees and exercise fee, apply to each order you place via the Service.
+
+
+17
+OKX may amend its fee schedule from time to time. The latest feee schedule is available on
+https://www.okx.com/en-eu/fees.
+
+4.8 OKX reserves its right, to be exercised at its sole and absolute discretion, to suspend or terminate any
+use of the Service, any services provided by OKX, or any OKX account in the event of a breach of any
+terms under this Agreement. The relevant scenarios and consequences after such suspension or
+termination are set out in the OKX Margin, Futures, Perpetual Swap Delisting Process Standards.
+
+     5. Representations and Warranties
+
+5.1 You hereby represent, warrant and undertake that:
+
+     ●   The source of the Premium is legal, and the ownership is not disputed;
+     ●   The assets you have deposited or will deposit with OKX are unencumbered and free from all
+         mortgages, charges, liens, security interests, or other claims.
+     ●   Your assets are not subject to any litigation, preservation, mortgage, judicial freeze, and
+         enforcement and thus becomes unenforceable, otherwise you shall be deemed to have breached
+         these Terms and shall bear all responsibilities;
+     ●   You will not infringe the legitimate rights and interests of OKX;
+     ●   You are not on the sanctions list issued by any government and international organizations;
+     ●   If the above representations, warranties and covenants are no longer correct, complete and valid
+         due to changes in the applicable laws, you will immediately notify OKX in writing.
+
+5.2 You hereby acknowledge that if you breach the foregoing representations, warranties and covenants,
+OKX shall have the right to stop providing you with any and all services (including but not limited to this
+Service). If OKX suffers losses due to your breach of the foregoing representations, warranties, and
+covenants, OKX has the right to hold you liable and you agree to indemnify and hold OKX harmless for the
+breach of these Terms.
+
+     6. Limitation of Liability and Risk Disclosure
+
+(1) YOU EXPRESSLY AGREE THAT YOUR USE OR NON-USE OF THIS SERVICE AND RELATED
+SERVICES ARE AT YOUR OWN RISK. EXCEPT AS EXPRESSLY PROVIDED TO THE CONTRARY
+UNDER THESE TERMS, THE SERVICES, ALL PRODUCTS AND SERVICES PROVIDED TO YOU
+THROUGH THIS SERVICE AND RELATED SERVICES PROVIDED TO YOU ARE STRICTLY OFFERED
+ON AN “AS IS” AND “AS AVAILABLE” BASIS, AND OKX AND ITS AFFILIATES OR ITS SERVICE
+PROVIDERS OR SUPPLIERS MAKE NO REPRESENTATIONS, WARRANTIES, OR GUARANTEES TO
+YOU OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION,
+MERCHANTABILITY, QUALITY OR FITNESS FOR A PARTICULAR PURPOSE, TITLE, OR NON-
+INFRINGEMENT, NO ERRORS OR OMISSIONS, CONTINUITY, ACCURACY, RELIABILITY OF THIS
+SERVICE. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES IN
+CONTRACTS, SO THE ABOVE EXCLUSION MAY NOT APPLY TO YOU. OKX DOES NOT MAKE ANY
+UNDERTAKINGS AND WARRANTIES FOR THE VALIDITY, ACCURACY, CORRECTNESS,
+RELIABILITY, QUALITY, STABILITY, COMPLETENESS OR TIMELINESS OF THE TECHNOLOGY AND
+INFORMATION IN CONNECTION WITH THIS SERVICES OR OTHER SERVICES PROVIDED BY THE
+OKX.
+
+(2) NOTHING IN THESE TERMS SHALL EXCLUDE OR LIMIT LIABILITY OF EITHER PARTY FOR
+FRAUD, DEATH OR BODILY INJURY CAUSED BY NEGLIGENCE, VIOLATION OF LAWS, OR ANY
+OTHER ACTIVITY THAT CANNOT BE LIMITED OR EXCLUDED BY LAW OR REGULATIONS.
+
+
+18
+(3) Like any asset, the value of crypto assets may fluctuate significantly, and there is a huge risk that Users
+may incur economic losses when buying, selling, holding or investing in crypto-assets and other related
+transactions. The choice of using and how to use the Services of the Platform is the User’s personal
+decision, and the User shall bear any and all of the risks and potential Losses. OKX does not make any
+express or implied warranties regarding the market, value or price of crypto-assetsets. Users acknowledge
+and understand the instability of the crypto-assets market. The price and value of crypto-assets may
+fluctuate or collapse at any time. Trading crypto-assets is the free choice and decision of Users, and Users
+shall solely bear their own risks and possible losses. Your use of this Service means that you confirm and
+agree: (1) You fully understand all of the risks associated with crypto-assets and related transactions; (2)
+You agree to solely bear any and all risks and Losses associated with the use of these Services and
+engaging in any transactions involving crypto-assets; and (3) OKX shall not be responsible for any of these
+risks or Losses or any other adverse consequences.
+
+(4) The Platform cannot guarantee the authenticity, sufficiency, reliability, accuracy, completeness or
+validity of the content on the Platform, and shall not bear any legal liability arising therefrom. The User shall
+rely on the User’s independent judgment to conduct transactions, and the User shall bear all responsibilities
+for User’s judgment and/or decisions.
+
+(5) Options trading involves significant risks of losses, which include the risk of loss of the entire Premium
+(for Options buyer) and the risk of unlimited losses (for Call Options sellers). You should review the Risk
+Warning and Disclosure Statement available here. By accepting these Terms you'll also deem to have
+acknowledged and accepted the risks included in the Risk Warning and Disclosure Statement.
+
+(6) Crypto-assets involve a high degree of risk. Using the Service involves market risk, smart contract risk,
+
+liquidity risk, oracle risk, volatility risk, and legal and compliance risks, among other risks. Crypto-assets
+are not the legal tender of any government, and their value is not guaranteed by a specific government.
+Significant movements or anomalies in the underlying index price will therefore have a direct and amplified
+impact on your margin requirements, fee amounts, and liquidation thresholds. In addition, if you use USDⓈ-
+
+margined Options, you are exposed to stablecoin de-peg risk: where USDC, USDG, or other USD-pegged
+stablecoins used as settlement or margin currencies lose their USD peg, the USD-equivalent value of your
+collateral and settlement proceeds may be adversely affected. The value of crypto-assets may fluctuate
+greatly. Users shall be fully aware of crypto-assets. Users of the Service must have sufficient financial
+
+capability, maturity, experience and willingness to bear all investment risks and potential investment losses.
+Thus, this investment is not suitable for all investors.
+
+(7) You understand and accept the risks that you may incur by using this Service, and the related losses
+that you may suffer as a result, including but not limited to:
+
+     ●   The key risks of using the Service are related to market price fluctuations. In a highly volatile
+         market, it may be difficult for users to predict the market price at maturity date; high price volatility
+         of crypto-assets and their derivatives may cause significant or total losses in a short period of
+         time; and you are willing and able to bear all risks caused by market price fluctuations and any
+         economic losses you may suffer;
+     ●   Once the crypto-assets you hold are frozen due to use of this Service, you will not be able to
+
+
+19
+         trade the frozen digital asset and accept the risks associated with the inability to trade these
+         crypto-assets, you are willing to bear the risks arising from locking your crypto-assets and any
+         economic losses you may suffer;
+     ●   If OKX terminates this Service for any reason whatsoever, which it may do at its complete
+         discretion, you may not be able to obtain the expected profits within the expected holding period
+         (if any) which may result in the loss of your crypto-assets;
+     ●   If there is a force majeure event, or a force majeure event that causes the price of Options, it may
+         cause loss of your crypto-assets;
+     ●   Technical abnormalities may occur, which may delay or prevent you from using this Service or
+         conducting related transactions, which may cause loss of your crypto-assets;
+     ●   Market abnormalities may occur, which may cause loss of your crypto-assets.
+
+In order to maintain the overall health of the market, OKX may add, delete, or modify the relevant provisions
+of these Terms, the policies, the terms and conditions or other related User Agreements, service
+agreements or terms from time to time. Such modifications may benefit or harm you.
+
+You confirm that you fully understand the nature, risks and potential losses related to the Service. Before
+making a decision to use the Service, you should exercise independent judgment and carefully consider
+using the Service based on your own investment experience and capability, financial situation, investment
+objectives, investment period, willingness and ability to bear investment risks, the extent of your
+understanding of the nature and risks of this product, and other relevant circumstances. The
+aforementioned risks do not include all the risks and all the market conditions of the User’s transactions
+related to this Service. If you have any questions or concerns, please seek advice from an independent
+financial advisor and/or legal counsel.
+
+(8) The trading market is volatile and may change rapidly in terms of liquidity, market and trading dynamics.
+You are fully responsible and liable for any and all trading and non-trading activities and your account used
+on or through the OKX Platform. You acknowledge and agree to be fully responsible for all your transactions
+and non-trading behaviours and omissions on OKX or through OKX, as well as all gains and losses arising
+from your use of the OKX website and this Service and any other services provided on the OKX Platform.
+You are responsible for any of your assets and liabilities in your OKX account, and you are responsible for
+all your obligations for all your financial activities on OKX. OKX is not responsible for any and all losses
+arising from this Service and any other services provided on the OKX Platform and shall not assume any
+compensation or any other responsibility.
+
+(9) You agree and accept that when you redeem your assets, the time it takes for you to receive the crypto-
+assets in your account may vary and the assets received and displayed on the Platform shall be final. OKX
+shall not be liable for any losses caused by or related to time differences or discrepancies for receipt of
+crypto-assets.
+
+(10) You agree and accept that OKX reserves the right to amend the content of this Agreement any time in
+its sole discretion, including when you are using the Service. OKX shall not be liable for any losses arising
+from your misunderstanding of this Agreement, or your delay of reading the amendments to this Agreement.
+
+(11) You agree and accept that if the OKX Platform cannot function properly or the Service is interrupted
+arising from the following conditions, such that you are unable to use the Service or cannot make commands
+or perform related trading operations, including but not limited to failure, delay, interruption, lack of system
+response, delayed system response or any other abnormal circumstances, OKX and its affiliates shall not
+be liable for any losses. These circumstances include but are not limited to:
+
+
+
+
+20
+     ●   Service suspension for maintenance as announced by OKX;
+     ●   Hacker attack(s) on the OKX Platform;
+     ●   Failure to transmit data as a result of telecom equipment failures;
+     ●   Force majeure events or accidents, such as but not limited to typhoons, earthquakes, tsunamis,
+         flooding, plagues, power outage, war, turmoil, government actions, terrorist attacks and any other
+         events that may lead to the suspension of the OKX Platform;
+     ●   Service interruption or delay arising from hacking, computer virus, technical adjustment or failure,
+         website upgrades, banking issues, temporary closure arising from government regulations and
+         any other reasons;
+     ●   Service interruption or delay caused by OKX’s systems being damaged, defective or unable to
+         perform normally for any reason;
+     ●   Losses arising from technical problems that cannot be predicted or solved by existing technical
+         forces in the industry;
+     ●   Losses suffered by you or other third parties arising from the fault or delay of the third party;
+     ●   Losses suffered by you or other third parties arising from changes in laws and regulations or
+         government orders;
+     ●   Losses suffered by you or other third parties arising from force majeure events or accidents
+         caused by other objectively unforeseeable, unavoidable and/or unsolvable circumstances.
+
+You agree and accept that the aforementioned reasons may lead to abnormal transactions, market
+interruptions and other possible abnormal circumstances, and OKX reserves the right to refuse to or for
+any reason in its sole discretion to not execute your commands based on the actual circumstances. You
+understand and agree that OKX shall not be liable for any of your losses (including but not limited to direct
+or indirect losses, actual losses, or loss of possible yield and other similar or related losses).
+
+(12) OKX strictly prohibits unfair trading behaviours. OKX reserves the right to enact, under its sole
+discretion, and take control over your account, if you:
+
+     ●   are involved in price manipulation, insider dealing, market manipulation, market distortion or any
+         other malicious wrongdoings to the market;
+     ●   might be harming other users or OKX by exploiting the Service’s vulnerabilities or by other
+         unreasonable means;
+     ●   are involved in any other activities that OKX deems harmful to the overall well-being of the
+         market.
+
+OKX also reserves the right to take actions including but not limited to closing your accounts, limiting trading,
+halting trading, cancelling transactions, rolling back transactions and returning the relevant crypto-assets
+to any complainant so as to eliminate any adverse effects to the overall wellbeing of the market. In no event
+shall OKX be liable to you for any loss incurred when such action against you happens, and OKX has the
+right to hold you liable and you agree to indemnify and hold OKX harmless for the breach of these Terms.
+
+(13) You agree and accept that OKX shall not be liable for any losses caused by the risks described in this
+Clause 6 of the Agreement (including but not limited to any direct or indirect losses, actual losses or possible
+loss of profits).
+
+
+
+
+21
+

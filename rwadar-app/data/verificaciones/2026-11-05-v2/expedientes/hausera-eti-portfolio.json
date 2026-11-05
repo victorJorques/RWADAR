@@ -1,0 +1,317 @@
+{
+  "slug": "hausera-eti-portfolio",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-espana",
+  "proveedor": "Hausera / Portfolio Stock Exchange",
+  "plataformaSlug": null,
+  "entidadComercializadora": "Mercado: Portfolio Stock Exchange (SMN de EUROPEAN DIGITAL SECURITIES EXCHANGE, S.V., S.A., CNMV nº 314). Oferentes autorizados según las condiciones finales: Altarius ETI AG y los participantes autorizados que nombre su web",
+  "emisor": "ALTARIUS ETI AG (Liechtenstein, FL-0002.669.856-9, LEI 5299001XE1CIMMOEME82)",
+  "vehiculo": "Serie 19 «Hausera ETI Securities» del programa de ETI de Altarius ETI AG: nota de deuda de recurso limitado, perpetua y cupón cero, ligada 1:1 a la «Hausera Portfolio Linked Note» (ISIN GI000A4ANPR9) de Altarius Index PCC Ltd, célula N (Gibraltar)",
+  "token": "No es un token: valores al portador liquidados en Euroclear (condiciones finales, apartado 23 y 27). Ni el folleto base ni las condiciones finales mencionan TRD, blockchain ni tokens",
+  "derechoAdquirido": "Deuda de Altarius ETI AG cuyo valor sigue el de una nota privada que invierte en la estrategia inmobiliaria de Hausera (comprar, reformar, alquilar y vender viviendas en España e Italia). Sin vencimiento, sin cupón y sin protección del capital",
+  "jurisdiccion": "LI",
+  "identificador": "ISIN FR0014010H19 (HAUS). Otras series Hausera en Portfolio: HIII FR0014012BI0 y HMII FR0014012HS6",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "KID_Hausera ETI_ES_20260317 (documento de datos fundamentales en español)",
+      "url": "https://api.portfolio.exchange/poex/document/28108",
+      "versionOFecha": "última revisión 17/03/2026; publicado en Portfolio el 23/03/2026",
+      "paginas": 3,
+      "sha256": "f2bd05c82dcaaed9b57aeb41e8048a342c5b6ce9f450258bdd27ffaa91e4c970",
+      "leido": true
+    },
+    {
+      "titulo": "Final Terms, Series 19: Hausera ETI Securities",
+      "url": "https://api.portfolio.exchange/poex/document/25118",
+      "versionOFecha": "22/08/2025, actualizadas el 18/12/2025; publicadas en Portfolio el 11/02/2026",
+      "paginas": 28,
+      "sha256": "262ada0df66893d96006fca8ad75e1a9fe6af4154a8da67f75859cff366ed36b",
+      "leido": true
+    },
+    {
+      "titulo": "Altarius ETI AG Base Prospectus (EUR 1.000.000.000 Programme)",
+      "url": "https://api.portfolio.exchange/poex/document/25075",
+      "versionOFecha": "18/12/2025 (aprobado por la FMA de Liechtenstein; válido 12 meses); PDF de 5,98 MB no conservado, solo texto y sha256",
+      "paginas": null,
+      "sha256": "b8be61a16b3a63150c71f99b13ce61382b9a252bfaab74b267356b6b3259f2cf",
+      "leido": true
+    },
+    {
+      "titulo": "Single Payment Notice «Other Cash Distributions», Series 19",
+      "url": "https://api.portfolio.exchange/poex/document/49667",
+      "versionOFecha": "comunicación del 27/10/2026",
+      "paginas": null,
+      "sha256": "25e7639e9d9942ba83fb3c3bd8fa853d74d1662384acc9b8f78589db5e6969fa",
+      "leido": true
+    },
+    {
+      "titulo": "Ficha de Hausera ETI en Portfolio Stock Exchange (pestañas Producto, Emisor y Documentos)",
+      "url": "https://portfolio.exchange/es/portfolio-market/hausera-eti-HAUS-FR0014010H19-41",
+      "versionOFecha": "consulta 05/11/2026",
+      "paginas": null,
+      "sha256": "fb0832bdf0d3fc9504049d54395fa0089d9a666c1544882ec671ca4ca9665395",
+      "leido": true
+    },
+    {
+      "titulo": "Documento de Oferta Privada de la Hausera Portfolio Linked Note (subyacente)",
+      "url": null,
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "EUROPEAN DIGITAL SECURITIES EXCHANGE, S.V., S.A.",
+      "numero": "Sociedad de valores nº 314 (13/01/2023); gestiona el SMN «Portfolio Stock Exchange»",
+      "url": "https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx?lang=es",
+      "alcance": "Relación de infraestructuras de mercados de la CNMV: «Portfolio Stock Exchange (SMN) · Sistema multilateral de negociación». Ficha ESI: adherida al FOGAIN, C/ José Abascal 45, Madrid. Es un SMN convencional, no un SNL TRD. Resuelve el bloqueo del 03/11 sobre su registro.",
+      "consultadoUtc": "2026-11-05T08:02:17Z"
+    },
+    {
+      "regulador": "FMA (Liechtenstein)",
+      "entidad": "ALTARIUS ETI AG",
+      "numero": "Folleto base aprobado el 18/12/2025",
+      "url": "https://api.portfolio.exchange/poex/document/25075",
+      "alcance": "Dato tomado del propio folleto, de las condiciones finales y del KID. Las condiciones finales dicen que la FMA notificó el folleto a Liechtenstein, Alemania y España. No se consultó el registro de folletos de la FMA ni el de folletos pasaportados de la CNMV.",
+      "consultadoUtc": "2026-11-05T08:07:55Z"
+    },
+    {
+      "regulador": "AFM (Países Bajos) · registro de folletos notificados",
+      "entidad": "ALTARIUS ETI PUBLIC LIMITED COMPANY (Irlanda)",
+      "numero": "Notificación recibida el 20/07/2026; autoridad competente: Central Bank of Ireland",
+      "url": "https://www.afm.nl/en/sector/registers/meldingenregisters/genotificeerde-prospectussen/details?id=12515",
+      "alcance": "Es otra sociedad del grupo (irlandesa) con un programa «Collateralised Exchange Traded Securities». No es el emisor de Hausera ETI; se anota para no confundirlos.",
+      "consultadoUtc": "2026-11-05T08:05:18Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Altarius",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Altarius",
+      "consultadoUtc": "2026-11-05T08:12:43Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD) a las 08:12:35 UTC. La pestaña de advertencias de otras entidades (tipo=2) devuelve HTTP 400 hoy: no consultada. No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Hausera",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+      "consultadoUtc": "2026-11-05T08:12:45Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD) a las 08:12:35 UTC. La pestaña de advertencias de otras entidades (tipo=2) devuelve HTTP 400 hoy: no consultada. No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Portfolio Stock Exchange",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Portfolio%20Stock%20Exchange",
+      "consultadoUtc": "2026-11-05T08:12:47Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD) a las 08:12:35 UTC. La pestaña de advertencias de otras entidades (tipo=2) devuelve HTTP 400 hoy: no consultada. No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "European Digital Securities",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=European%20Digital%20Securities",
+      "consultadoUtc": "2026-11-05T08:12:49Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD) a las 08:12:35 UTC. La pestaña de advertencias de otras entidades (tipo=2) devuelve HTTP 400 hoy: no consultada. No aparecer no equivale a estar autorizado."
+    }
+  ],
+  "claims": [
+    {
+      "campo": "derecho",
+      "literal": "Este producto es un instrumento de deuda derivado con cupón cero que no devenga intereses y no cuenta con protección de capital.",
+      "dato": "Nota de deuda perpetua, cupón cero, sin protección del capital",
+      "fuentePrimaria": "https://api.portfolio.exchange/poex/document/28108",
+      "localizador": "KID ES del 17/03/2026, «¿Qué es este producto?»",
+      "fechaDato": "2026-03-17",
+      "consultadoUtc": "2026-11-05T08:07:52Z",
+      "alcanceYLimites": "Ley de Liechtenstein. Expone a una nota privada de Gibraltar, no a los inmuebles directamente.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "token",
+      "literal": "Form of ETI Securities: Bearer ETI Securities · Relevant Clearing System: Euroclear",
+      "dato": "No tokenizado",
+      "fuentePrimaria": "https://api.portfolio.exchange/poex/document/25118",
+      "localizador": "Final Terms Series 19, Part A, apartados 23 y 27",
+      "fechaDato": "2025-12-18",
+      "consultadoUtc": "2026-11-05T08:07:53Z",
+      "alcanceYLimites": "Ni el folleto base ni las condiciones finales mencionan TRD, blockchain ni tokens (búsqueda en el texto extraído).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "estado",
+      "literal": "La Oferta Pública es válida por un período de 12 meses a partir de la aprobación del folleto base con fecha 18 de diciembre de 2025",
+      "dato": "Oferta pública vigente hasta el 18/12/2026 aprox.; cotiza en Portfolio",
+      "fuentePrimaria": "https://api.portfolio.exchange/poex/document/28108",
+      "localizador": "KID ES, encabezado",
+      "fechaDato": "2026-03-17",
+      "consultadoUtc": "2026-11-05T08:07:52Z",
+      "alcanceYLimites": "La suscripción primaria pasa por los «oferentes autorizados» de la web del emisor; no se comprobó quiénes son.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "An offer of the ETI Securities may be made […] in Liechtenstein, Germany, and Spain (the \"Non-exempt Offer Jurisdictions\")",
+      "dato": "Oferta pública permitida en España",
+      "fuentePrimaria": "https://api.portfolio.exchange/poex/document/25118",
+      "localizador": "Final Terms, Part B, apartado 6 «Distribution»",
+      "fechaDato": "2025-12-18",
+      "consultadoUtc": "2026-11-05T08:07:53Z",
+      "alcanceYLimites": "Producto complejo: el KID lo dirige a «inversores informados» con conocimientos y experiencia en productos similares. Portfolio admite minoristas con test de conveniencia; la ficha avisa de que el producto puede no ser conveniente.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Minimum nominal amount transferable: 1.000,00 per unit of ETI Security",
+      "dato": "1 título de 1.000 € nominales; hoy se negocia por debajo (último precio 960 €, 96 %)",
+      "fuentePrimaria": "https://api.portfolio.exchange/poex/document/25118",
+      "localizador": "Final Terms, Part A, apartados 15–16; ficha de Portfolio",
+      "fechaDato": "2025-12-18",
+      "consultadoUtc": "2026-11-05T08:07:53Z",
+      "alcanceYLimites": "En reventa el precio cambia cada día; hoy hay una orden de venta de 2.000 € nominales a 98,94 % (ficha de Portfolio, 05/11).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "Los inversores pueden vender el producto en cualquier día de negociación a través de la bolsa en la que el producto está listado · Standard Redemption Day(s): 31st December of each year",
+      "dato": "Venta en Portfolio o reembolso anual al emisor cada 31 de diciembre",
+      "fuentePrimaria": "https://api.portfolio.exchange/poex/document/28108",
+      "localizador": "KID ES, «¿Cuánto debo mantener…?»; Final Terms, Part A, apartados 28–29",
+      "fechaDato": "2026-03-17",
+      "consultadoUtc": "2026-11-05T08:07:52Z",
+      "alcanceYLimites": "El mismo KID advierte: «Puede que no pueda vender su producto de forma fácil». Hoy no hay órdenes de compra en el libro (ficha de Portfolio, 05/11).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Arranger Fee: Maximum of 0,75% of NAV(t) per annum […] Calculation Agency Fee: Maximum of 0,15% of the NAV(t) per annum · Hurdle Rate: 12.00%",
+      "dato": null,
+      "fuentePrimaria": "https://api.portfolio.exchange/poex/document/25118",
+      "localizador": "Final Terms, Part A, apartados 8, 9 y 12; KID: costes de entrada y salida 0,14 %",
+      "fechaDato": "2025-12-18",
+      "consultadoUtc": "2026-11-05T08:07:53Z",
+      "alcanceYLimites": "En conflicto: el KID da costes corrientes del 0,00 % y entrada/salida del 0,14 %, mientras las condiciones finales fijan comisiones anuales de hasta 0,90 % del NAV; el KID añade que el rendimiento del subyacente por encima del 12 % se queda al 100 % en «participaciones en cuenta». No se usa ninguna cifra.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Hemos clasificado este producto en la clase de riesgo 6 en una escala de 7 · Está a punto de adquirir un producto que no es sencillo y que puede ser difícil de comprender.",
+      "dato": "Riesgo 6/7, producto complejo",
+      "fuentePrimaria": "https://api.portfolio.exchange/poex/document/28108",
+      "localizador": "KID ES, «¿Qué riesgos corro…?»",
+      "fechaDato": "2026-03-17",
+      "consultadoUtc": "2026-11-05T08:07:52Z",
+      "alcanceYLimites": "Recurso limitado a los activos de la serie; sin fondo de garantía.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "identificador",
+      "literal": "11. FR0014012HS6 · 7. Operational Information · ISIN code: FR0014010H19",
+      "dato": null,
+      "fuentePrimaria": "https://api.portfolio.exchange/poex/document/25118",
+      "localizador": "Final Terms, Part A apartado 11 frente a Part B apartado 7",
+      "fechaDato": "2025-12-18",
+      "consultadoUtc": "2026-11-05T08:07:53Z",
+      "alcanceYLimites": "Las condiciones finales de la serie 19 citan en el apartado 11 el ISIN de Hausera Madrid 2 ETI (HMII). Error de documento a señalar.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "precio",
+      "literal": "ÚLTIMO PRECIO 960,00€ 96% · BID 989,46€ · ASK 996,98€",
+      "dato": null,
+      "fuentePrimaria": "https://portfolio.exchange/es/portfolio-market/hausera-eti-HAUS-FR0014010H19-41",
+      "localizador": "Ficha HAUS en Portfolio, cabecera",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:06:14Z",
+      "alcanceYLimites": "La ficha no fecha el último precio. Muestra BID y ASK aunque el libro dice «Órdenes de compra activas: No hay órdenes activas»; parecen precios indicativos. No se propone para tarjeta.",
+      "estado": "en_conflicto"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Portfolio es un SMN de una S.V. inscrita (CNMV nº 314). El emisor es una sociedad de Liechtenstein con folleto base aprobado por la FMA (según el propio folleto); el subyacente es una nota privada de una PCC de Gibraltar."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Cotiza hoy en Portfolio; oferta pública vigente hasta ~18/12/2026. Pagos de «other cash distributions» mensuales, el último comunicado el 27/10/2026."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Oferta pública permitida en España, nominal de 1.000 €, KID en español. Pero es un producto complejo para «inversores informados», sin vencimiento y con poca liquidez (sin órdenes de compra)."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Riesgo 6/7, sin protección del capital. Sin advertencias de la CNMV para Altarius, Hausera, Portfolio Stock Exchange ni European Digital Securities. Conflictos documentales en comisiones e ISIN."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "documentos",
+      "antes": "03/11: folleto y KID no localizados en abierto",
+      "ahora": "05/11: KID en español (17/03/2026), condiciones finales (18/12/2025), folleto base (18/12/2025) y avisos de pago (27/10/2026) en la pestaña «Documentos» de Portfolio",
+      "fuente": "https://portfolio.exchange/es/portfolio-market/hausera-eti-HAUS-FR0014010H19-41",
+      "critico": true
+    },
+    {
+      "campo": "licencia",
+      "antes": "03/11: registro de Portfolio no comprobado; supervisor del emisor desconocido",
+      "ahora": "05/11: Portfolio = SMN de European Digital Securities Exchange, S.V. (CNMV nº 314); emisor con folleto aprobado por la FMA de Liechtenstein y notificado a España",
+      "fuente": "https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx?lang=es",
+      "critico": true
+    },
+    {
+      "campo": "derecho/token",
+      "antes": "03/11: derecho no documentado",
+      "ahora": "05/11: nota estructurada perpetua de cupón cero, al portador en Euroclear, sin token; expone a una nota privada de Gibraltar que sigue la estrategia de Hausera",
+      "fuente": "https://api.portfolio.exchange/poex/document/25118",
+      "critico": true
+    },
+    {
+      "campo": "acceso",
+      "antes": "03/11: acceso de particulares en España no documentado",
+      "ahora": "05/11: oferta pública permitida en España, pero producto complejo para inversores informados (KID)",
+      "fuente": "https://api.portfolio.exchange/poex/document/28108",
+      "critico": true
+    }
+  ],
+  "propuestaTarjeta": {
+    "nota": "No se propone tarjeta (decisión no_admitir). Solo los tres datos de hoy, como referencia; null = no se puede comprobar hoy en fuente primaria.",
+    "resumenTarjeta": {
+      "minimo": "1 título de 1.000 € de nominal; en bolsa pagas el precio del día",
+      "accesoEspana": "Oferta pública permitida en España; producto complejo, con test de conveniencia",
+      "salida": "Vendes en Portfolio si alguien compra (hoy no hay órdenes de compra) o pides el reembolso anual del 31/12"
+    }
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "1 título de 1.000 € nominales (hoy cotiza por debajo del nominal)",
+    "supervisorVerificado": "CNMV · Portfolio Stock Exchange (S.V. nº 314); FMA Liechtenstein para el folleto (según el folleto)",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Permite exponerse a la estrategia de vivienda de Hausera con un KID en español y en un mercado supervisado por la CNMV.",
+    "porQueNo": "No es un activo tokenizado (nota en Euroclear), es un producto complejo de riesgo 6/7 sin vencimiento, con un subyacente privado en Gibraltar, poca liquidez y conflictos en sus documentos."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Hoy se resuelven casi todos los bloqueos del 03/11 (KID en español, condiciones finales, folleto aprobado por la FMA y notificado a España, registro de Portfolio en la CNMV), pero eso confirma que no encaja en RWAdar: no es un activo tokenizado sino una nota estructurada perpetua al portador en Euroclear, de un emisor de Liechtenstein, que sigue a una nota privada de Gibraltar. El KID la califica de riesgo 6/7 y producto complejo para «inversores informados», sin vencimiento y con salida difícil (sin órdenes de compra hoy). Además, hay conflictos en sus documentos (comisiones e ISIN).",
+  "bloqueos": [
+    "Documento de Oferta Privada de la Hausera Portfolio Linked Note (subyacente) no público.",
+    "No se consultó el registro de folletos de la FMA ni el de folletos pasaportados de la CNMV; la aprobación y la notificación a España se toman del propio folleto y de las condiciones finales.",
+    "No se comprobó en altariuseti.com la lista de «oferentes autorizados».",
+    "La pestaña de advertencias de otras entidades de la CNMV (tipo=2) devuelve HTTP 400."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-05T08:04:29Z",
+    "finUtc": "2026-11-05T08:17:20Z"
+  }
+}

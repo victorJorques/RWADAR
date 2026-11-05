@@ -1,0 +1,284 @@
+
+Pre-IPO markets and tokenized stocks are live in Europe | OKX Europe
+Looks like you're in the United States. Switch to the United States site for products available in your region.
+Switch site
+Skip to main content
+Buy crypto
+P2P trading
+Buy/Sell with zero trading fees via 100+ payment methods
+Buy and Sell
+SEPA, Visa, Mastercard, and more
+Crypto calculator
+Check real-time conversion rates and crypto values
+Deposit
+Deposit cash
+Add cash to your account balance using a bank transfer to start trading
+Deposit crypto
+Transfer crypto from an on-chain wallet or exchange
+Markets
+Trade
+Trading instruments
+Convert
+Quick conversion, zero trading fees, no slippage
+Spot and margin
+Buy and sell crypto with ease
+Futures
+Trade futures with leverage
+TradFi
+Trade stocks, ETF and commodities using crypto
+DEX
+Trade on-chain tokens using your Exchange balance 
+Events & Options
+Trade on crypto price movements with events and options
+Powerful tools
+Flash Earn
+Earn rewards on new listings, spot, futures, and more trading campaigns
+Trade to Earn
+Trade, climb leaderboards, and share new token rewards.
+Stake to Earn
+Subscribe to receive new crypto airdrops with your assets
+Agent Trade Kit
+Automate your trades with AI agents and community-built skills
+Agent Trade Kit
+Build AI agents to automate any trading strategy
+AI Builder Program
+Everything a Builder needs, all in one place
+Skills
+Discover and install trading skills
+Bots & Copy
+Automate your trades or follow top traders
+Trading bots
+Multiple strategies to help you trade with ease
+Copy trading
+Mirror the moves of top traders
+Lead trader recruitment
+Share your strategies and earn from copy traders
+Nitro Spreads
+Deep liquidity for futures spreads
+RFQ
+Custom multi-leg strategies and block trades
+Grow
+Earn
+Don’t just HODL. Earn
+Margin Rewards
+Onchain Earn
+Flash Earn
+Stable Rewards
+Dual Investment
+BTC Yield+
+Loan
+Borrow to earn, borrow to spend
+Jumpstart
+Discover new, high-quality projects around the world
+Institutional
+Institutional home
+The world’s most powerful suite of crypto trading solutions
+OKX Rubix
+Digital assets-as-a-service for regulated institutions
+Liquid Marketplace
+OTC liquidity network for pro and institutional traders
+APIs
+Seamless and ultra-low latency API connectivity
+Broker Program
+Access world-class market depth with high commissions
+Managed Trading Sub-accounts
+Manage sub-accounts, trade easily and safely with more profits
+Historical market data
+Candlesticks, aggregate trades, order book data and more
+Institutional Insights
+Our latest institutional trading research, news, and more
+Learn
+Learn crypto
+Build strong crypto fundamentals with simple guides and tutorials
+How to buy crypto
+Follow step-by-step instructions to buy crypto
+Getting started
+Find answers to common questions on your crypto journey
+Crypto prices
+Track real-time crypto prices and market moves
+Crypto news
+Stay on top of the latest crypto news and trends
+Blog
+Read insights and stories from our team
+Orbit
+Orbit
+Discuss trending topics, and turn ideas into trades
+Livestream
+Go live and connect with your fans in real time
+More
+Products
+X-RWA
+Security of funds
+Status
+Proof of Reserves
+OKX Shield
+Web3
+Pay & Card
+Others
+Campaign center
+My rewards
+Deposit Bonus
+Referral
+VIP program
+Affiliates
+X Drops Club
+OKX Ventures
+Trade on TradingView
+Listing application
+Fees
+Log in
+Sign up
+Support
+Support center
+My tickets
+Connect with OKX
+This page is for information purposes only. Certain services and features may not be available in your jurisdiction.
+Learn
+Blog
+Article
+Trading
+Derivatives
+Futures
+European traders shouldn't need two apps to trade bitcoin and NVIDIA
+Erald Ghoos
+Published on 
+Sep 10, 2026
+Updated on Sep 10, 2026
+5 min read
+2
+BTC
++2.93%
+ETH
++4.66%
+SOL
++3.01%
+Most Europeans keep money spread across several apps: a bank, a broker they log into twice a year, and something for crypto. Each holds a slice of the same money and none of them speak to each other. Crypto and equities ended up in separate boxes because they developed under separate rulebooks. That's an inheritance, and it's a poor reason to keep two accounts open in 2026 when you can have everything in one app that provides full portfolio visibility and instant switching strategies between asset classes when market conditions change.
+Bitcoin and NVIDIA now trade in the same OKX account, off the same balance. So does a position on OpenAI before it goes public.
+Pre-IPO: OpenAI and Anthropic
+OpenAI and Anthropic don't have tickers yet. Anthropic raised $65bn in May at a $965bn valuation, and OpenAI closed $122bn in March at $852bn: two of the largest private raises in history. Positions on both have been available offshore and on DeFi platforms for a while. From today, European traders can take a view on a regulated platform instead.
+We've opened pre-IPO markets on OKX, starting with Pre-IPO X-Perps on both companies. Long or short on the implied valuation of a private company, up to 10x leverage, in and out whenever you want. Both markets are live with liquidity deep enough to trade at size.
+These markets have been largely unavailable to European traders on traditional brokerage and other regulated platforms. So the two most talked-about companies in AI have been, for most Europeans, something to read about rather than something to have a position on.
+We'll keep adding in-demand Pre-IPO markets as they become relevant.
+Stocks that don't keep market hours
+We've also launched Tokenized Stocks for Europeans. With 100 markets on day one: SpaceX, Google, NVIDIA, Palantir, the SPY and QQQ ETFs, and more added every week. They track the underlying share price and they trade 24/7.
+US exchanges open at 15:30 CET and close at 22:00. A European trader's whole working morning runs with those markets shut, and anything breaking after the New York close lands late in our evening. Trading round the clock means you can act on Tuesday's news on Tuesday, or on what happened overnight before the market opens.
+You can buy, sell and convert these tokens if all you want is exposure. Or you can work them in a live market, with limit, market, stop, TWAP and Iceberg orders.
+One balance
+A stock position on OKX can collateralise an X-Perps trade. It can sit inside a DCA bot to average in over weeks, or a Grid bot to work a range while you're doing something else. Same order types, same bots and the same margin as the crypto beside it, next to spot, Earn and Pay in a single account. And if you'd rather hold the token yourself, supported tokens can be withdrawn on-chain, including to a self-custody wallet. Keeping that door open is deliberate.European traders shouldn't have to put up with stripped-back products or unregulated platforms to reach the markets they care about. Pre-IPO markets opened in several places this year and European customers were left out of most of them, which pushes people towards venues nobody here supervises. The appetite is not in question: X-Perps volume in Europe has grown fourfold since the beginning of July.
+The stock list grows every week. The pre-IPO list grows as new companies get big enough to argue about.One account. Whatever you want to trade in it.
+This content is provided for informational purposes only and may cover products that are not available in your region. It does not constitute investment or financial product advice, nor it is a recommendation or solicitation to buy or sell financial instruments or to engage in any specific trading strategy. 
+Trading in financial instruments involves a significant risk of loss and may not be suitable for all investors. If you invest in X-Perps or other derivatives you may lose some or all of the money you invest. X-Perps are leveraged instruments; leverage can amplify both gains and losses. The value of investments and any income derived from them can go down as well as up, and you may not recover the amount originally invested. Pre-IPO X-Perps provide no ownership or economic claim in the referenced company; their price may differ materially from private valuations or any IPO price, and an IPO may be delayed, cancelled or never occur. Tokenized Stocks provide no direct ownership or shareholder rights. Company names do not imply affiliation or endorsement. Past performance is not a reliable indicator of future results. You should carefully consider your investment objectives, level of experience, and risk appetite before engaging in any trading activity.
+OKX Europe Markets Ltd
+ ("
+OEM
+"), which is authorised and regulated by the Malta Financial Services Authority (MFSA) under the Investment Services Act (Chapter 370 of the Laws of Malta).
+© 2026 OKX. This article may be reproduced or distributed in its entirety, or excerpts of 100 words or less of this article may be used, provided such use is non-commercial. Any reproduction or distribution of the entire article must also prominently state: “This article is © 2026 OKX and is used with permission.” 
+Permitted excerpts must cite to the name of the article and include attribution, for example “Article Name, [author name if applicable], © 2026 OKX. Some content may be generated or assisted by artificial intelligence (AI) tools. No derivative works or other uses of this article are permitted."
+Disclaimer
+This content is provided for informational purposes only and may cover products that are not available in your region. It is not intended to provide (i) investment advice or an investment recommendation; (ii) an offer or solicitation to buy, sell, or hold crypto/digital assets, or (iii) financial, accounting, legal, or tax advice. Crypto/digital asset holdings, including stablecoins, involve a high degree of risk and can fluctuate greatly. You should carefully consider whether trading or holding crypto/digital assets is suitable for you in light of your financial condition. Please consult your legal/tax/investment professional for questions about your specific circumstances. Information (including market data and statistical information, if any) appearing in this post is for general information purposes only. While all reasonable care has been taken in preparing this data and graphs, no responsibility or liability is accepted for any errors of fact or omission expressed herein.
+Digital Assets subject to volatility and not insured. Not financial/investment advice. Not all products and services offered in all regions. Exclusions and T&Cs apply.
+© 2026 OKX. This article may be reproduced or distributed in its entirety, or excerpts of 100 words or less of this article may be used, provided such use is non-commercial. Any reproduction or distribution of the entire article must also prominently state: “This article is © 2026 OKX and is used with permission.” Permitted excerpts must cite to the name of the article and include attribution, for example “Article Name, [author name if applicable], © 2026 OKX.” Some content may be generated or assisted by artificial intelligence (AI) tools. No derivative works or other uses of this article are permitted.
+Expand
+Pre-IPO: OpenAI and Anthropic
+Stocks that don't keep market hours
+One balance
+Related articles
+View more
+We’re Bringing Options to Tokenized Stocks
+Today, we’re launching Simple Options, giving customers more ways to trade tokenized stocks on OKX. Customers across Southeast Asia, Northeast Asia, the CIS region, MENA and Türkiye can trade options 
+Nov 4, 2026
+Intermediate
+Proof of Reserves #49: Verifiable Assets and Customer Protection in Any Market Condition
+OKX has published its 49th monthly Proof of Reserves report, showing reserve ratios of 108% for BTC, 101% for ETH, 106% for USDT and 100% for USDC. T he PoR snapshot shows $33.87B across 21 assets, wi
+Nov 3, 2026
+Intermediate
+Mastercard®-Powered OKX Card Is Now Live in the United States, Unlocking Stablecoin Spending for Everyday Purchases
+The virtual card enables eligible U.S. customers to make purchases backed by USDC, USDT and USDG held on OKX Pay, with up to 10% cashback on eligible USDG purchases.¹ Today, OKX Card is launching in t
+Nov 2, 2026
+How to Start Trading X-Perps on OKX; Step By Step
+This guide walks you through everything you need to do to start trading X-Perps (Expiry Perps) on OKX, from setting up your account to placing your first trade. X-Perps are available to eligible trade
+Oct 30, 2026
+OKX Celebrates Four Years of Proof of Reserves
+OKX is celebrating the fourth anniversary of its Proof of Reserves program, which has delivered 48 consecutive monthly reports since November 2022. The latest report covers more than $36 billion in on
+Oct 30, 2026
+X-Perps: Our Regulated Crypto Derivatives are Live in Europe
+Today, OKX is launching X-Perps in Europe, MiFID-regulated crypto derivatives with up to 10x leverage, available to retail and institutional traders across the European Economic Area. X-Perps are five
+Oct 30, 2026
+View more
+©2017 - 2026 OKX.COM
+More about OKX
+About us
+Candidate Privacy Notice
+Careers
+Contact us
+Terms of Service
+Terms of Service (Derivatives)
+Privacy Notice
+OKX EU Disclosures
+OEM Disclosures
+Conflicts of interest disclosure
+Whistleblower notice
+Law enforcement
+OKX app
+Products
+Buy crypto
+P2P trading
+Convert
+Trade
+Earn
+Trading bots
+All cryptocurrencies
+Learn
+TradingView
+X-RWA
+Outcome markets
+Stock price
+Services
+Affiliate
+API
+Historical market data
+CEX fee schedule
+Listing application
+P2P Merchant application
+Support
+Support center
+Channel verification
+Announcements
+Connect with OKX
+Buy crypto
+Buy USDC
+Buy Bitcoin
+Buy Ethereum
+Buy ADA
+Buy Solana
+Buy Litecoin
+Buy XRP
+Crypto calculator
+BTC to USD
+ETH to USD
+USDC to USD
+SOL to USD
+XRP to USD
+PI to USD
+Trade
+BTC USDC
+ETH USDC
+LTC USDC
+SOL USDC
+XRP USDC
+Bitcoin price
+Ethereum price
+Pi Network price
+Solana price
+XRP price
+Bitcoin price prediction
+Ethereum price prediction
+XRP price prediction
+Pi Network price prediction
+How to buy crypto
+How to buy Bitcoin
+How to buy Ethereum
+How to buy Solana
+How to buy Pi Network
+Trade on the go with OKX
+Register

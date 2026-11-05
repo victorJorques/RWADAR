@@ -1,0 +1,28 @@
+I|||bi bi-cookie ms-1 me-3|
+IMG|Abrir menú||img-menu-r nav-toggle|/Portal/images/icon-open-nav.png
+IMG|Cerrar menú||img-menu-r up|/Portal/images/icon-closed-nav.png
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif
+IMG|Si|Si||/Portal/images/msgExito.gif

@@ -1,0 +1,386 @@
+Skip to main content
+Sign in
+Marketplace
+589
+RWAs available
+577
+Public Market Token
+5
+Private Market Token
+7
+Portfolio
+Available to Buy/Sell
+Search tokens
+Filters
+Gallery
+Table
+
+AMZNx / USDC
+
+Stock
+
+Amazon.com xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+267.97 USDC
+24h Change
++6.21%
+Buy
+
+AAPLx / USDC
+
+Stock
+
+Apple xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+350.87 USDC
+24h Change
++6.02%
+Buy
+
+GSx / USDC
+
+Stock
+
+Goldman Sachs xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+935.01 USDC
+24h Change
++2.96%
+Buy
+
+METAx / USDC
+
+Stock
+
+Meta xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+633.08 USDC
+24h Change
++1.60%
+Buy
+
+GOOGLx / USDC
+
+Stock
+
+Alphabet xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+291.51 USDC
+24h Change
++4.22%
+Buy
+
+JPMx / USDC
+
+Stock
+
+JPMorgan Chase xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+353.87 USDC
+24h Change
++4.24%
+Buy
+
+NVDAx / USDC
+
+Stock
+
+NVIDIA xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+198.35 USDC
+24h Change
+−4.61%
+Buy
+
+FI_STOKy / EURØP
+
+Structured Note
+
+FI Stock Mezzanine
+
+Permissioned
+: Only investors the issuer has approved can buy this asset. Anyone can see it and its prices.
+Asset class
+Derivatives & structured products
+Access type
+Realtime
+Market
+Primary
+Price
+—
+24h Change
+—
+Buy
+
+OXC / USDC
+
+Bond
+
+OilXCoin
+
+Asset class
+Derivatives & structured products
+Access type
+Realtime
+Market
+Primary
+Last purchase price
+1.80 USDC
+24h Change
+—
+Buy
+
+YLD8on / USDC
+
+—
+
+Ondo 8 Targeted Income TR Portfolio
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+5.02 USDC
+24h Change
++1.04%
+Buy
+
+YLD5on / USDC
+
+—
+
+Ondo 5 Targeted Income TR Portfolio
+
+Asset class
+Fixed income & money market instruments
+Access type
+Realtime
+Market
+Primary
+Price
+5.03 USDC
+24h Change
++0.68%
+Buy
+
+STXon / USDC
+
+Stock
+
+Seagate (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+540.75 USDC
+24h Change
+−10.98%
+Buy
+
+STRCon / USDC
+
+Stock
+
+Strategy Stretch Preferred (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+106.48 USDC
+24h Change
++0.20%
+Buy
+
+SNOWon / USDC
+
+Stock
+
+Snowflake (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+288.03 USDC
+24h Change
+−1.00%
+Buy
+
+SNDKon / USDC
+
+Stock
+
+SanDisk (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+1,009.57 USDC
+24h Change
+−10.83%
+Buy
+
+SHOPon / USDC
+
+Stock
+
+Shopify (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+151.72 USDC
+24h Change
++6.38%
+Buy
+
+SEDGon / USDC
+
+Stock
+
+SolarEdge Technologies (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+30.04 USDC
+24h Change
+−8.57%
+Buy
+
+SCCOon / USDC
+
+Stock
+
+Southern Copper (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+182.60 USDC
+24h Change
+−2.22%
+Buy
+
+RKLBon / USDC
+
+Stock
+
+Rocket Lab (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+51.82 USDC
+24h Change
+−5.14%
+Buy
+
+RIVNon / USDC
+
+Stock
+
+Rivian Automotive (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+13.97 USDC
+24h Change
++3.97%
+Buy
+Load more
+EN
+Terms and Conditions
+Privacy Policy
+Need help?
+Corporate Governance
+
+Assetera 2026 © All Rights Reserved

@@ -1,0 +1,425 @@
+# Extracto de mtbill-final-terms-20260717.pdf (SHA-256 b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a), líneas 1-395 y 485-512 de pdftotext -layout
+Docusign Envelope ID: 7EE38FC0-6C66-8896-80A1-2454183A521B
+
+
+
+
+             FINAL TERMS DATED 17 July 2026
+
+
+
+
+                                                     Midas Software GmbH
+
+                                  (incorporated in Pappelallee 78/79, 10437 Berlin, Germany)
+
+                                                             (the "Issuer")
+
+              Issue of 500,000,000 blockchain-based certificates "mTokens" relating to U.S. short term Treasury
+                                            Bills (the "Products" or "mTBILL")
+
+                   under the Issuer’s Programme on the Issuance and Offer of Blockchain-based Certificates
+
+                                                      ISIN: CH1371002986
+
+                                                             Series No.: 1
+
+
+
+             This document constitutes the Final Terms of the Products described herein. These Final Terms have
+             been prepared for the purposes of Article 8(5) of the Regulation (EU) 2017/1129 (the "Prospectus
+             Regulation") and must be read in conjunction with the Base Prospectus dated 17 July 2026 (the "Base
+             Prospectus"). Full information on the Issuer and the Products is available only on the basis of the
+             combination of the Base Prospectus, any supplement thereto and these Final Terms.
+
+             The Base Prospectus, any supplement thereto and these Final Terms are published, in accordance with
+             Art. 21(2)(a) of the Prospectus Regulation, in electronic form on the Issuer’s website at
+             https://midas.app/legal (or any successor address notified by the Issuer to the Tokenholders for this
+             purpose in accordance with the Terms and Conditions).
+
+             Terms used herein shall be deemed to be defined as such for the purposes of the Terms and Conditions
+             set out in the Base Prospectus.
+
+             A summary of the individual issuance is annexed to the Final Terms.
+
+             AN INVESTMENT IN THE PRODUCTS DOES NOT CONSTITUTE A PARTICIPATION IN
+             A COLLECTIVE INVESTMENT SCHEME. THEREFORE, THE PRODUCTS ARE NOT
+             SUPERVISED OR APPROVED BY THE LIECHTENSTEIN FINANCIAL MARKET
+             AUTHORITY (FMA) OR ANY OTHER SUPERVISORY AUTHORITY AND INVESTORS
+             MAY NOT BENEFIT FROM THE SPECIFIC INVESTOR PROTECTION PROVIDED
+             UNDER THE LIECHTENSTEIN LAW CONCERNING SPECIFIC UNDERTAKINGS FOR
+             COLLECTIVE INVESTMENTS IN TRANSFERABLE PRODUCTS (UCITSG), THE
+             LIECHTENSTEIN LAW CONCERNING THE MANAGERS OF ALTERNATIVE
+             INVESTMENT FUNDS (AIFMG) OR THE LIECHTENSTEIN LAW ON INVESTMENT
+             UNDERTAKINGS (IUG) OR THE SWISS FEDERAL ACT ON COLLECTIVE
+             INVESTMENT SCHEMES (CISA).
+
+             In Switzerland, the Products may only be sold within a private placement to handpicked investors
+             classified as Professional or Institutional Clients within the meaning of the Swiss Federal Act on
+             Financial Services ("FinSA").
+
+             The validity of the Base Prospectus dated 17 July 2026, under which the Products described in
+             these Final Terms have been offered, ends at the end of 17 July 2027. From this point in time,
+             these Final Terms are to be read in conjunction with the most recent base prospectus of Midas
+
+                                                                   1
+Docusign Envelope ID: 7EE38FC0-6C66-8896-80A1-2454183A521B
+
+
+
+
+             Software GmbH for Products which follows the Base Prospectus dated 17 July 2026 and any
+             reference in these Final Terms to the Base Prospectus shall be read as reference to that most
+             recent base prospectus. The most recent base prospectus of Midas Software GmbH and the Final
+             Terms will be available for viewing in electronic form at https://midas.app/legal (or any
+             successor address notified by the Issuer to the Tokenholders for this purpose in accordance with
+             the Terms and Conditions).
+
+             PART A - PRODUCT TERMS
+
+             Terms used herein shall be deemed to be defined as such for the purposes of the Terms and Conditions
+             of the Products (the "Terms and Conditions") issued by the Issuer as set forth in the Base Prospectus.
+
+             1.   General Product Terms
+
+              Product Type                           Basket Underlying mTokens other than AMC mTokens
+
+              Blockchains                            Ethereum, Base, Oasis Sapphire, Algorand, Plume, Rootstock,
+                                                     Etherlink
+
+                                                     Ethereum is a public blockchain supporting the native
+                                                     cryptocurrency Ether (ETH) and the execution of smart
+                                                     contracts. It is an Ethereum Virtual Machine (EVM)-
+                                                     compatible network. The EVM is the software environment in
+                                                     which smart contracts and decentralized applications are
+                                                     written and executed, enabling the issuance and transfer of
+                                                     digital tokens. Transactions are validated through a Proof-of-
+                                                     Stake consensus mechanism by independent validators.
+
+                                                     Base is an EVM-compatible Layer 2 blockchain built on
+                                                     Ethereum. It enables the execution of smart contracts and
+                                                     digital token transactions while relying on Ethereum for
+                                                     security and settlement. Base operates as an Optimistic Rollup.
+
+                                                     Oasis Sapphire is an EVM-compatible blockchain providing
+                                                     confidential smart contract execution through Trusted
+                                                     Execution Environments (TEEs). It operates as part of the
+                                                     Oasis Network, which uses a Proof-of-Stake consensus
+                                                     mechanism.
+
+                                                     Algorand is a public Layer 1 blockchain supporting digital
+                                                     assets and smart contracts. It uses a Pure Proof-of-Stake
+                                                     consensus mechanism in which validators are selected through
+                                                     cryptographic sortition.
+
+                                                     Plume is an EVM-compatible blockchain designed for
+                                                     tokenized real-world assets and decentralized finance
+                                                     applications. It supports smart contracts and digital token
+                                                     issuance and operates using a Proof-of-Stake validator
+                                                     network.
+
+                                                     Rootstock (RSK) is an EVM-compatible smart contract
+                                                     platform secured by Bitcoin through merge mining. It enables
+                                                     the issuance and execution of smart contracts while leveraging
+                                                     Bitcoin's mining network for consensus.
+
+                                                     Etherlink is an EVM-compatible Layer 2 blockchain built on
+
+                                                                 2
+Docusign Envelope ID: 7EE38FC0-6C66-8896-80A1-2454183A521B
+
+
+
+
+                                                     the Tezos ecosystem. It supports smart contracts and digital
+                                                     token transactions and utilizes Smart Rollup technology with
+                                                     settlement anchored to the Tezos blockchain.
+
+                                                     Products represented by tokens registered in the Securities
+                                                     Ledger pursuant to article 973d(2) CO on different supported
+                                                     Blockchains form a single series and are fungible with each
+                                                     other for all purposes under the Terms and Conditions.
+
+              Underlying                             Basket Underlying
+
+              Initial Issue Date                     13 September 2024
+
+              Initial Issue Price                    USD 1
+
+              Issue Time                             2 Business Days upon acceptance of the subscription request
+                                                     by the Issuer
+
+              Base Currency                          USD
+
+              Issue Currency                         USD
+
+              Subscription Currency/Asset            USDC
+
+              Settlement Currency/Asset              USDC
+
+              Calculation Agent                      Midas Software GmbH
+
+              Product Page                           https://midas.app/mtbill
+
+              Oracle / publication source for        Ethereum:
+              NAV per mToken                         0x056339C044055819E8Db84E71f5f2E1F536b2E5b
+
+                                                     Base:
+                                                     0x70E58b7A1c884fFFE7dbce5249337603a28b8422
+
+                                                     Oasis Sapphire:
+                                                     0xF76d11D4473EA49a420460B72798fc3B38D4d0CF
+
+                                                     Plume:
+                                                     0xb701ABEA3E4b6EAdAc4F56696904c5F551d2617b
+
+                                                     Rootstock:
+                                                     0x0Ca36aF4915a73DAF06912dd256B8a4737131AE7
+
+                                                     Etherlink:
+                                                     0x80dA45b66c4CBaB140aE53c9accB01BE4F41B7Dd
+
+              Additional Adjustment Events           not applicable
+
+              Additional Market Disruption           not applicable
+              Events
+
+              Reward Distribution Feature            not applicable
+
+
+
+                                                                 3
+Docusign Envelope ID: 7EE38FC0-6C66-8896-80A1-2454183A521B
+
+
+
+
+              Reward Threshold Percentage            not applicable
+
+              Governing law / Jurisdiction           Swiss law / Zurich, Switzerland
+
+
+             2.   Underlying-specific Terms
+
+             A. Single Underlying                    not applicable
+
+             B.   Basket Underlying
+
+              Name                                   mTBILL
+
+              Underlying Components                  U.S. short-term Treasury Bills
+
+              Initial Composition Date               13 September 2024
+
+              Initial Composition                    100 % U.S. short-term Treasury Bills
+
+
+             3.   Subscription, Redemption
+
+              Subscription Cohort                    1 Business Day
+
+              Order Cut-Off Time                     23:59 CET/CEST
+
+              Instant Subscription Fee               up to 0.2%
+
+              Issuance Fee                           0%
+
+              Maximum Investment Amount              not applicable
+
+              Minimum Investment Amount              not applicable
+
+              Realisation Period                     1 Business Day
+
+              Redemption Fees                        up to 0.05%
+
+              Redemption Gates                       25% of the aggregate number of outstanding mTokens per
+                                                     settlement day
+
+              Lock-up Period                         not applicable
+
+              Additional Valuation Input for         not applicable
+              Current Instant Redemption Price
+
+              Holdback Percentage                    up to 5%
+
+              Instant Redemption Settlement          Deferred Price Method
+              Method
+
+              Instant Redemption Fee                 0.07%
+
+              Accelerated Redemption Fee             not applicable
+
+
+
+                                                                   4
+Docusign Envelope ID: 7EE38FC0-6C66-8896-80A1-2454183A521B
+
+
+
+
+              Accelerated Redemption                 not applicable
+              Valuation Date
+
+
+             C. Security and Collateral
+
+              Security                               applicable
+
+              Collateral                             U.S. Treasury Bills, U.S. Treasury Bill equivalents including
+                                                     Funds or ETFs comprising U.S. T-Bills, U.S. Treasury notes,
+                                                     other obligations issued or guaranteed by the U.S. Treasury,
+                                                     repurchase agreements secured by U.S. Treasury obligations
+                                                     or liquid USD
+
+              Security Agent                         Ankura Trust Company LLC, 140 Sherman Street, 4th Floor,
+                                                     Fairfield, CT 06824
+
+              Collateral Account                     applicable
+
+              Collateral Agreement                   agreement between Midas Software GmbH and Ankura Trust
+                                                     Company LLC
+
+              Custodian                              Maerki Baumann & Co. AG, Dreikönigstrasse 6, 8002 Zurich,
+                                                     Switzerland
+
+              Custody Account                        applicable
+
+              Custody Agreement                      agreement between Midas Software GmbH and Maerki
+                                                     Baumann & Co. AG
+
+              Notice of Event of Default             applicable
+
+
+             PART B – TERMS OF THE OFFER
+
+              Offer Period                    until end of validity of the Base Prospectus
+
+              Countr(y)(ies) Where the        Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy,
+              Offer(s) to the Public          Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany
+              Takes Place
+
+              Countr(y)(ies) Where            Not applicable. No application has been or will be made for
+              Admission to Trading is         admission to trading of the Products.
+              Being Sought
+
+              Cancellation of the             not applicable
+              Issuance of the Products
+
+              Conditions to which the         not applicable
+              Offer is Subject
+
+              Consent to Use of Base          The Issuer consents to the use of the Base Prospectus and these Final
+              Prospectus                      Terms by any financial intermediary satisfying the conditions set out
+                                              in the Base Prospectus and these Final Terms.
+
+
+
+                                                                  5
+Docusign Envelope ID: 7EE38FC0-6C66-8896-80A1-2454183A521B
+
+
+
+
+              Estimated Net Amount of         The net amount of the proceeds is not quantifiable.
+              the Proceeds
+
+              Estimated Total Expenses        The total expenses of the issue and/or offer of the Products are not
+              of the Issue/Offer              separately identifiable and are included in the general operating
+                                              expenses of the Issuer.
+
+              Issue Size                      Not fixed; the number of Products issued will correspond to accepted
+                                              subscriptions and will be recorded on-chain and/or published on the
+                                              Product Page.
+
+              Process for Notification to     not applicable
+              Applicants of the Amount
+              Allotted and the Indication
+              whether Dealing may
+              begin before Notification
+              is made
+
+              Prohibition of Sales to         not applicable
+              EEA Retail Investors
+
+              Tranche(s) Reserved for         not applicable
+              Certain Countries
+
+              Listing and Admission to        not applicable
+              Trading
+
+              Manner in and Date on           The results of the offer will not be published separately.
+              Which Results of the Offer
+              are Made Available to the
+              Public
+
+              Amount of Expenses and          not applicable, other than the fees, costs and taxes specified in these
+              Taxes charged to the            Final Terms and the Terms and Conditions
+              Subscriber or Purchaser
+
+              Target market under             eligible counterparties, professional clients and retail clients
+              MiFID II
+
+
+             PART C – OTHER INFORMATION
+
+              Additional Selling              not applicable
+              Restrictions
+
+              Interests of Natural and        So far as the Issuer is aware, no person involved in the offer of the
+              legal Persons involved in       Products has an interest material to the offer.
+              the Issue
+
+              Name(s) and Address(es),        not applicable as at the date of these Final Terms
+              to the extent known to the
+              Issuer, of the Placement
+              Agents in the various
+              Countries where the Offer
+
+
+                                                                  6
+Docusign Envelope ID: 7EE38FC0-6C66-8896-80A1-2454183A521B
+
+
+
+
+              takes place
+
+
+
+
+              Managing Director
+
+
+
+
+                                                             7
+Docusign Envelope ID: 7EE38FC0-6C66-8896-80A1-2454183A521B
+[...]
+
+             As of the date hereof, the share capital of Midas Software GmbH in the amount of EUR 25,000 is
+             entirely paid in; it is divided into 25,000 shares.
+
+             The financial year of the Issuer ends on 31 December of each year. Audited financial statements as of
+             31.12.2023, 31.12.2024 and 31.12.2025 are published on https://midas.app/legal.
+
+             The financial year 2023 ended with a deficit not covered by equity of EUR 20’204.90. The financial
+             year 2024 ended with a deficit not covered by equity of EUR 1’770’693.86. As of 31 December 2024,
+             liabilities to affiliated companies amounted to EUR 1’134’912.84 and related to amounts drawn under
+             a framework loan agreement with the Issuer’s parent company with a facility amount of up to USD
+             3’000’000.00.
+
+             The financial year 2025 ended with a reported deficit not covered by equity of EUR 5’778’815.22.
+             Liabilities to affiliated companies amounted to EUR 14’873’900.58 and related to amounts drawn
+             under two framework loans granted by the parent company, Midas Protocol Limited, with an aggregate
+             facility amount of EUR 25’000’000.00. These liabilities are subject to qualified subordination. The
+             Issuer also had liabilities from token issuances in the amount of EUR 389’637’313.00, which are
+             qualified subordinated pursuant to the terms of the relevant products. These liabilities are taken into
+             account for insolvency-law over-indebtedness purposes in accordance with the relevant subordination
+             arrangements.
+
+             As a young, growth-oriented technology company, the Issuer depends on the provision of risk capital
+             by existing and, potentially, further investors. In the opinion of the management, the Issuer’s ability to
+             continue as a going concern is predominantly probable. This assessment is based in particular on the
+             existing framework loans, the shareholder resolution approving a capital increase of EUR
+                                                                                                                       2
+Docusign Envelope ID: 7EE38FC0-6C66-8896-80A1-2454183A521B

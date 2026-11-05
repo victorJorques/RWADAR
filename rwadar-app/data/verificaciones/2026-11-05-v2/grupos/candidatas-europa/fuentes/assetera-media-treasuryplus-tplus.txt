@@ -1,0 +1,115 @@
+
+TreasuryPlus (TPLUS)
+About
+For B2B Partners
+For Investors
+Media
+Contact us
+EN
+DE
+EN
+EN
+DE
+Go to Platform
+Assetera Opens EU Access to TPLUS — A New Tokenized Private Credit Fund
+‍
+Expanding compliant yield access for European qualified investors through a regulated, single-integration gateway.
+Announcement
+20 Mar 2026
+Vienna, 20 March
+Assetera has been selected as one of the founding distribution partners for TreasuryPlus (TPLUS) — a new digitally native private credit fund developed by 
+EPOCH Digital Credit
+, in partnership with 
+Synthesys Network
+ and 
+Chainlink Labs
+, and administered by 
+The Ascent Group
+. For European qualified investors, Assetera is the regulated access point.
+What is TPLUS?
+TPLUS is a tokenized private credit fund designed to deliver consistently higher yields than traditional money market instruments, while preserving daily liquidity. Investors benefit from daily subscription and redemption windows, with settlement handled on-chain via stablecoin — eliminating the operational friction typical of traditional fund structures.
+The fund is built on a unified technical framework for compliant lifecycle management across multiple blockchains, powered by 
+Chainlink
+'s Cross-Chain Interoperability Protocol (CCIP) and Digital Transfer Agent (DTA) standard.
+TPLUS Technical Infrastructure
+‍
+Institutional-grade fund administration
+Via 
+Ascent Fund Services
+‍
+Dual subscription & redemption rails 
+Supporting fiat and stablecoins
+Real-time digital transfer agent 
+‍
+Chainlink
+ DTA standard
+Multi-platform global distribution 
+22 channels live from day one
+Cross-chain interoperability
+Via
+Chainlink CCIP
+‍
+On-chain stablecoin settlement 
+Daily liquidity windows
+Why it matters for European investors
+Private credit has long been one of the most attractive yield categories in institutional portfolios. However, access for European investors has historically been constrained by complex structuring, long lock-ups, and fragmented infrastructure that made the asset class difficult to reach compliantly.
+TPLUS changes the equation: institutional-grade credit exposure, with the operational efficiency of a digital-native instrument. As an EU-regulated platform operating under MiFID II and supervised by the Austrian FMA, Assetera provides the compliant distribution gateway that allows European Qualified Purchasers to access TPLUS through a single, regulated integration.
+Assetera's role:
+ One integration into Assetera's MiFID II-regulated rails provides the legal certainty, client onboarding, and distribution infrastructure required for European qualified investors — without the complexity of navigating the regulatory framework independently.
+The next evolution up the yield curve
+From tokenized treasuries to tokenized private credit — without giving up liquidity.
+Credit funds have historically played an important role in institutional portfolios — delivering yield with structural protection that equity cannot offer. Tokenization now adds what was previously missing: liquidity. The launch of TPLUS reflects the industry's growing shift up the yield curve, enabling capital preservation pools to be deployed into highly liquid, stable income strategies without sacrificing governance and oversight standards.
+TPLUS represents the next evolution — from tokenized treasuries to tokenized private credit — combining EPOCH's decades-long expertise in credit and liquidity management with the natively digital infrastructure enabled by Synthesys and Chainlink.
+TPLUS launches natively across multiple blockchains including Ethereum, Stellar, and Solana in early 2026, with further integrations planned across Avalanche, Canton, and more. Synthesys and Chainlink enable cross-chain interoperability throughout — establishing a durable technical standard for compliant multi-chain distribution.
+Be among the first investors
+TPLUS will be available through the Assetera Marketplace. Subscribe to our newsletter to be among the first investors with priority access and favourable conditions when it goes live.
+Thank you! Your submission has been received!
+Something went wrong while submitting the form.
+By subscribing you agree to receive Assetera market updates. Unsubscribe at any time. This is not an offer to purchase securities. Availability is subject to eligibility criteria and applicable law.
+Read the full TPLUS
+ launch announcement by Synthesys.
+EPOCH Digital Credit
+EPOCH Digital Credit
+ is an institutional private credit platform building the infrastructure required for private credit to be originated, governed, and deployed under consistent standards across fragmented global markets. Operating through regulated, interest-aligned partnerships, EPOCH establishes common frameworks for governance, underwriting discipline, oversight, and transparency throughout the private credit lifecycle. This enables scalable participation across jurisdictions without centralising control or relying on bespoke, deal-by-deal structuring. With nearly $9 billion in executed receivables transactions and a long-standing institutional credit track record, EPOCH combines disciplined risk management with digitally native infrastructure to deliver repeatable, capital-preserving credit allocation at scale.
+Synthesys
+Synthesys
+ provides modular infrastructure that connects traditional financial institutions to the tokenized capital market. Its flagship product, Synthesys Network, enables cross-jurisdictional compliance and operational interoperability, bridging siloed legacy systems to the tokenized capital market through a unified API. This enables banks, fintechs, traditional brokers, and digital marketplaces to access tokenized funds issued by global asset managers and develop new use cases for the tokenized capital market.
+You might also be interested in
+EURØP to trade security tokens
+Building the Euro-Denominated Digital Asset Economy
+Partnerships
+02 Jul 2025
+Assetera & Chiliz
+Chiliz and Assetera join forces to accelerate tokenized Real-World Assets in sports and entertainment
+Partnerships
+24 Nov 2025
+Assetera Lists 450+ Ondo Tokenized Stocks and ETFs for Eligible Investors Across 30 EEA countries
+Eligible European investors can now gain exposure to US equities via tokens issued by Ondo Global Markets (BVI) Limited and made available via Assetera's Austrian MiFID II license. Each token is backed by the stocks or ETFs it tracks, held with US-regulated custodians and reviewed daily by an independent verification agent
+Announcement
+07 Oct 2026
+Assetera in the Courier Business Section
+Assetera brings traditional assets onto the blockchain
+In the news
+23 Sep 2025
+Subscribe to stay informed on RWA trends and tokenization strategies.
+Weekly insights, webinars, and infographics from Assetera straight to your inbox.
+By proceeding, you acknowledge that you have read and agree to our 
+Privacy Policy
+ and consent to receive updates and communications related to our services.
+Thank you! Your submission has been received!
+Something went wrong while submitting the form.
+Home
+About
+For B2B Partners
+For Investors
+Media
+Contact us
+Imprint
+Privacy & Cookies Policy
+Legal Notice
+Corporate Governance
+Assetera GmbH - MiFID Conflicts of Interest
+Assetera GmbH - MiFID Complaint Procedure
+Assetera GmbH - MiFID Order Execution
+Token Listing
+Assetera 2026 ©. All Rights Reserved.

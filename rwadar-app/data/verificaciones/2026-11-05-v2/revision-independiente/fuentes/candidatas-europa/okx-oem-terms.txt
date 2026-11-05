@@ -1,0 +1,924 @@
+
+OKX Europe Market Ltd (OEM) Terms of Service | OKX Europe
+Looks like you're in the United States. Switch to the United States site for products available in your region.
+Switch site
+Skip to main content
+Buy crypto
+P2P trading
+Buy/Sell with zero trading fees via 100+ payment methods
+Buy and Sell
+SEPA, Visa, Mastercard, and more
+Crypto calculator
+Check real-time conversion rates and crypto values
+Deposit
+Deposit cash
+Add cash to your account balance using a bank transfer to start trading
+Deposit crypto
+Transfer crypto from an on-chain wallet or exchange
+Markets
+Trade
+Trading instruments
+Convert
+Quick conversion, zero trading fees, no slippage
+Spot and margin
+Buy and sell crypto with ease
+Futures
+Trade futures with leverage
+TradFi
+Trade stocks, ETF and commodities using crypto
+DEX
+Trade on-chain tokens using your Exchange balance 
+Events & Options
+Trade on crypto price movements with events and options
+Powerful tools
+Flash Earn
+Earn rewards on new listings, spot, futures, and more trading campaigns
+Trade to Earn
+Trade, climb leaderboards, and share new token rewards.
+Stake to Earn
+Subscribe to receive new crypto airdrops with your assets
+Agent Trade Kit
+Automate your trades with AI agents and community-built skills
+Agent Trade Kit
+Build AI agents to automate any trading strategy
+AI Builder Program
+Everything a Builder needs, all in one place
+Skills
+Discover and install trading skills
+Bots & Copy
+Automate your trades or follow top traders
+Trading bots
+Multiple strategies to help you trade with ease
+Copy trading
+Mirror the moves of top traders
+Lead trader recruitment
+Share your strategies and earn from copy traders
+Nitro Spreads
+Deep liquidity for futures spreads
+RFQ
+Custom multi-leg strategies and block trades
+Grow
+Earn
+Don’t just HODL. Earn
+Margin Rewards
+Onchain Earn
+Flash Earn
+Stable Rewards
+Dual Investment
+BTC Yield+
+Loan
+Borrow to earn, borrow to spend
+Jumpstart
+Discover new, high-quality projects around the world
+Institutional
+Institutional home
+The world’s most powerful suite of crypto trading solutions
+OKX Rubix
+Digital assets-as-a-service for regulated institutions
+Liquid Marketplace
+OTC liquidity network for pro and institutional traders
+APIs
+Seamless and ultra-low latency API connectivity
+Broker Program
+Access world-class market depth with high commissions
+Managed Trading Sub-accounts
+Manage sub-accounts, trade easily and safely with more profits
+Historical market data
+Candlesticks, aggregate trades, order book data and more
+Institutional Insights
+Our latest institutional trading research, news, and more
+Learn
+Learn crypto
+Build strong crypto fundamentals with simple guides and tutorials
+How to buy crypto
+Follow step-by-step instructions to buy crypto
+Getting started
+Find answers to common questions on your crypto journey
+Crypto prices
+Track real-time crypto prices and market moves
+Crypto news
+Stay on top of the latest crypto news and trends
+Blog
+Read insights and stories from our team
+Orbit
+Orbit
+Discuss trending topics, and turn ideas into trades
+Livestream
+Go live and connect with your fans in real time
+More
+Products
+X-RWA
+Security of funds
+Status
+Proof of Reserves
+OKX Shield
+Web3
+Pay & Card
+Others
+Campaign center
+My rewards
+Deposit Bonus
+Referral
+VIP program
+Affiliates
+X Drops Club
+OKX Ventures
+Trade on TradingView
+Listing application
+Fees
+Log in
+Sign up
+Support
+Support center
+My tickets
+Connect with OKX
+Support center
+Terms of agreement
+Article
+OKX Europe Market Ltd (OEM) Terms of Service
+Published on Feb 26, 2026
+Last updated: 4 November 2026
+Thank you for visiting OKX.com or the OKX app (the “
+Site
+” or “
+OKX
+”). The OKX services in the European Union (“
+EU
+”) and the European Economic Area (“
+EEA
+”) are provided to you by 
+OKX Europe Markets Limited
+, a Malta limited liability company established and incorporated in Malta, registered with the Malta Business Registry under company registration number​​C 95813, and with registered address at Piazzetta Business Plaza Office, Number 4, Floor 2, Triq Ghar Il-Lembi, Sliema SLM 1562, Malta. 
+OKX Europe Markets Limited is licensed as an investment firm (hereinafter referred to as “
+Investment Firm
+” “
+We
+”, “
+Us
+” or “
+Our
+” as the context requires) by the Malta Financial Services Authority (the “
+MFSA
+”) in terms of the Investment Services Act (Chapter 370, Laws of Malta) (the “
+ISA
+”) and pursuant to Directive 2014/65/EU of the European Parliament and of the Council of 15 May 2014 on markets in financial instruments (“
+MiFID II
+”, as amended), to provide the investment services of ‘dealing on own account’, ‘execution of orders on behalf of clients’ and ‘trustee, custodian or nominee services’ (Authorisation ID: OEML) (the “
+Services
+”). We are also authorised to provide the ancillary service of ‘safekeeping and administration of financial instruments for the account of clients, including custodianship and related services such as cash, collateral management and excluding maintaining securities accounts at the top tier level’. The financial instruments currently offered for trade by the Investment Firm through the Site are:
+a. expiry futures referencing certain crypto-assets ("
+Crypto-linked
+X-Perps
+");
+b. expiry futures referencing exchange-traded funds (
+"ETFs
+"), equity single stocks, and commodities ("
+TradFi X-Perps
+"); 
+c. options referencing crypto-assets and/or commodities (“
+Options
+”); and
+d. tokenised certificates linked to ETFs and equity single stocks (“
+Tokenised Equities
+”),
+(together, the “
+financial instruments
+”). The list of financial instruments covered by our investment services licence may be viewed from the MFSA’s website via the link below and is also available upon request.
+If you are a resident of any operation location outside of Europe, please click 
+here
+.
+We provide certain users of the Site (referred to herein as “
+You”
+, “
+Your”
+ or “
+User
+”) the ability to engage in financial instruments trading with other users and/or other services in respect of financial instruments, subject to these terms of service (the “
+Terms
+”). By accepting these Terms, You are acknowledging and agreeing to all documents listed and linked herein.
+You acknowledge that, in order to access the Investment Firm’s Services (as defined below), You shall also maintain an Account with OKX Europe Limited (“
+OKX EEA
+”), an affiliated entity, licensed both as a Crypto-Asset Service Provider by the MFSA under the Markets in Crypto-Assets Act (Chapter 647, Laws of Malta) for the provision of crypto-asset services, and as a Financial Institution under the Financial Institutions Act (Chapter 376 of the Laws of Malta) for the provision of payment services. OKX EEA remains responsible for the safeguarding of client fiat currency and crypto-assets, as well as deposit, withdrawal and related Account services. To the extent that matters relating to custody, safeguarding, deposits, withdrawals, fees or operational handling of Your assets are not specifically addressed in these Terms, such matters shall be governed by the applicable terms and conditions of OKX EEA, available at 
+here
+ (as amended from time to time). If the Account is terminated by You or by OKX EEA then the Investment Firm shall not continue to provide its Services to You.
+The Investment Firm remains solely responsible for the provision of Services under MiFID II. Nothing in these Terms shall be interpreted as OKX EEA providing investment services on behalf of the Investment Firm.
+RISK DISCLOSURE & WARNING:
+ The financial instruments offered to You by Us contain certain risks, including potential significant price fluctuations with high volatility and severe liquidity constraints during market stress. You may incur financial loss, and You should therefore carefully evaluate whether holding or trading such financial instruments aligns with your personal financial situation. Your attention is directed to the Risk Disclosures provided under Section 3 herein, and the Risk Warning provided at the following link: 
+here
+. Please review these in detail, taking into account that they do not cover every possible risk, nor do they address how specific risks may affect your individual circumstances.
+You can contact the MFSA in the following ways:
+Website:
+www.mfsa.mt.
+Address: Malta Financial Services Authority, Triq l-Imdina, Zone 1, Central Business District, Birkirkara CBD 1010, Malta.
+Telephone: (+356) 2144 1155.
+You agree that You have read and accepted these Terms, as well as Our Privacy Notice, published on the 
+Site
+. You further agree that these Terms apply to any account on Our Site that You open, are a representative of, or are an authorised signatory of (Your “
+Account(s)
+”). By clicking the “create account” button or by visiting the Site, We may provide You with access to Our financial instruments trading platform and other services in respect of financial instruments via various software, API (application program interface), technologies, products and/or functionalities (collectively or individually, the “
+Service(s)
+”).
+If You do not agree to be bound by these Terms, you will not be permitted to access or use the Service(s) and must leave the Site immediately. We reserve the right to change, modify, or otherwise update the terms and conditions contained in these Terms, including but not limited to any policy or guideline of the platform that forms part of these Terms, at any time and at Our sole discretion (the “
+Updated Terms
+”). The Updated Terms will be effective upon actual, constructive, or inquiry notice. We may provide notice by posting the Updated Terms on the Site, changing the “Last updated” date at the top of the Terms, through a pop-up or e-mail communication, and/or by any other means we deem necessary. You agree that We will not be liable to You or any third party for any losses suffered resulting from any modification or amendment, duly notified to You, of these Terms. 
+If You do not agree to be bound by the Updated Terms, Your sole and exclusive remedy will be to close Your Account within thirty (30) days of being notified of the Updated Terms and Your access or use of the Service(s) will be permitted only to the extent necessary to immediately close Your Account. You acknowledge that You may close Your Account without making any trades or transactions using the Service(s), and that any such actions are not necessary to close Your Account. Your non-termination or continued use of the Site or Service(s) after such thirty (30)-day period will constitute Your acceptance of the Updated Terms as of date of being notified of the Updated Terms.
+These Terms and any terms expressly incorporated herein apply to Your access to, and use of, any Service(s) provided by Us. These Terms do not alter in any way the terms or conditions of any other mutual agreement You may have with Us for products, Services or otherwise.
+We encourage You to thoroughly review the Terms to ensure You understand the terms and conditions that apply to Your access to, and use of, the Site and Service(s). If You have any questions regarding the use of the Site or Service(s), please contact the
+Support Center
+ or support.eea@okx.com.
+1. GENERAL SERVICES TERMS
+1.1 Services
+:
+ We provide online trading account services and a platform to trade financial instruments and may facilitate margin lending subject to it being available and if permitted by applicable laws and in the relevant jurisdiction. Generally and unless otherwise indicated in product-specific terms or unless there is a change in the business plan of the Investment Firm, all User trades are executed with the Investment Firm acting as the counterparty on a matched principal (riskless) basis, in accordance with its regulatory authorisations. The Investment Firm does not act as an agent on Your behalf but as the counterparty to transactions. Pricing and execution follow a structured and transparent mechanism in line with applicable regulatory requirements.
+In addition to these Terms, product-specific terms govern the functioning of the individual product. In particular:
+Crypto-linked X-Perps and TradFi X-Perps are governed by the terms set out in the Contract Specifications available 
+here
+; and
+Tokenised Equities are governed by the terms set out in Annex 2 (cf. Annex 2.A) to these Terms.
+Options are governed by the terms set out in 
+Annex 2
+ (cf. Annex 2.B) to these Terms.
+By accepting these Terms, you are also deemed to accept the product-specific terms. 
+Our trading services are available to Users that qualify either as Retail Clients, Professional Clients or Eligible Counterparties (as defined below).
+1.2 Information Accuracy
+: While We make reasonable efforts to ensure the accuracy of the information on the Site and to give You prior notice of any material change to the information of the Site, the information and content on the Site are subject to change without prior notice and are provided for the sole purpose of assisting You with making independent decisions. We take reasonable measures to ensure the accuracy of the information on the Site; however, We do not guarantee the accuracy, suitability, reliability, completeness, performance and/or fitness for purpose of the content of any of the Service(s) or products available through the Site, and, to the extent permitted by law, will not be liable for any loss or damage that may arise directly or indirectly from the content on the Site, Your inability to access the Site, or any delay in or failure of the transmission or receipt of any instruction or notifications sent through the Site. We will not be liable, to the extent permitted by law, for any use or interpretation of such information.
+1.3 Service Availability
+: By using the Service(s), You acknowledge and agree that the Service(s) are provided by the Investment Firm according to its current technological and operational capacity. While We make reasonable efforts to ensure continuity and security of the Service(s), We are unable to completely foresee and eliminate all legal, technological, and other risks including but not limited to force majeure, virus, hacker attack, peak demand, volatility, heavy trading, systems upgrades or maintenance, system instability, flaws in third-party service, acts of government, third party actions, or other reasons that may result in service interruption, data loss or other loss or risk. You agree to and acknowledge the possibility of a discontinuity or disruption of the Service(s) and that, subject to these Terms, We will not be liable to You or any third party if You are unable to access Your Account(s) or use the Service(s). 
+1.4 Fees and Costs
+: Fees may be incurred for certain Service(s) provided to You (the “
+Fees
+”). You agree to pay the applicable Fees in accordance with Our Fee schedule as published on the Site and as may be amended from time to time. We may change the Fees for any Service(s) from time to time, at Our sole discretion. Please see Section 11 for more information.
+In order to access the Service(s), You must prepare and bear costs for the following:
+An internet-connected device capable of securely accessing the Site, including but not limited to a computer or other internet-connected terminal;
+Internet access, including but not limited to any equipment needed for such access; and
+Any other equipment, software, or assistance needed to securely access the Site and Service(s).
+1.5 Account Security
+: We will never ask You to reveal any passwords or keyphrases, nor will We ask You to transmit any funds (including, fiat currencies and crypto-assets) or financial instruments (hereinafter “
+Financial Products
+”) to bank accounts or addresses that are not listed on Our platform. Do not trust any discount or promotions-related information that is not accessed through the Site. To the extent permitted by law, We will not be responsible for any losses caused by transmitting Financial Products to bank accounts or financial instrument addresses that are not listed on the Site. Please see Section 4 for more information.
+1.6 Service Changes
+: You agree that We may change or suspend any or all of the Service(s) at any time. Please see Section 12 for more information.
+1.7 User Information
+: We may, and in some instances are required by law to, investigate and determine the background and purpose behind Your use of the Service(s). You are required to provide comprehensive, up-to-date, and accurate information when requested by Us. You shall also keep Your contact information updated at all times and We will not be responsible or liable for Your failure to do so. If We have reasonable grounds to suspect that any information You provide is inaccurate, We may temporarily or permanently restrict Your access to some or all of the Service(s) provided by Us. In the event that We temporarily or permanently restrict Your access to some or all of the Service(s), We will not be liable to You or any third party as a result of such restriction(s).
+1.8 Client Categorisation and Appropriateness Assessment:
+1.8.1 The Investment Firm classifies Users as either “
+Retail Clients
+”, “
+Professional Clients
+” or “
+Eligible Counterparties
+”, in accordance with the ISA and the provisions of MiFID II. Your classification is based on Your knowledge, experience, and understanding of the risks associated with trading in financial instruments as either elective or 
+per se
+:
+Retail Clients
+: This means a User who is not a Professional Client or an Eligible Counterparty, as defined under MiFID II. Retail Clients are afforded the highest level of regulatory client protection in accordance with the MFSA’s Conduct of Business Rulebook (the “
+CoBR
+”); or
+Professional Clients
+: You will be classified as a Professional Client if, following an assessment by the Investment Firm, You are found to possess the necessary experience, knowledge, and expertise to make informed investment decisions and properly assess the risks involved. Professional Clients are presumed to understand and manage the risks of trading in complex instruments; or
+Eligible Counterparties
+: These are entities such as investment firms, credit institutions, insurance companies, pension funds, and other regulated financial institutions. You, as an Eligible Counterparty, are deemed to have the expertise necessary to understand the risks associated with the Services offered by the Investment Firm.
+1.8.2 You may request to be reclassified to another category, but such a request is subject to the Investment Firm's approval. By using the Services of the Investment Firm, You acknowledge Your classification as either a Retail Client, a Professional Client or an Eligible Counterparty, and consent to the applicable regulatory protections associated with that classification.
+1.8.3 We undertake an appropriateness assessment for Retail Clients to determine knowledge and experience in relation to Our products before providing Our Services. We will undertake this assessment based on the information and documents provided by You. It is Your responsibility to ensure that any statements, information and documentation are complete, accurate and up-to-date. Any material changes shall be notified to Us without delay.
+1.8.4 Where an Account is opened or operated on behalf of a legal entity, including where such legal entity maintains a main account together with one or more linked or sub-accounts, or where one or more natural persons act through a duly appointed representative or authorised signatory, You acknowledge and agree that We will assess the knowledge and experience of the designated representative and/or the authorised user of the main account (without a separate appropriateness assessment being conducted for each linked sub-account) for the purposes of any appropriateness assessment carried out under MiFID II.
+1.8.5 You further acknowledge that decisions taken, instructions given, and transactions executed by the representative or through the main account will be treated as binding on the legal entity or group and shall apply equally to all linked or sub-accounts operated under that legal entity. As a result, the appropriateness assessment and the level of regulatory protection applied will be based on the representative’s knowledge and experience, rather than on the circumstances of each underlying individual, which may affect the protection of the respective interests of those individuals. This means, in particular, that warnings, restrictions, or determinations relating to the appropriateness of a product or service will be issued by reference to the representative’s profile and may not reflect the individual knowledge, experience, or risk tolerance of each underlying person.
+1.8.6 Accordingly, certain MiFID II investor protections that are designed to operate at an individual level, such as product appropriateness warnings, will be determined by reference to the representative or main account profile and will not be assessed separately for each linked or sub-accounts, which may affect the protection of the respective interests of those individuals or account users.
+1.8.7 You confirm that You understand how the appointment of a representative affects the manner in which appropriateness assessments and related investor protections are applied under MiFID II, and that such assessments and protections will operate by reference to the representative or main account profile rather than at the level of each underlying individual.
+1.8.8 For these purposes, We may request and rely on any information and documentation We reasonably consider necessary to conduct the appropriateness assessment, including information already obtained in the course of client onboarding and due diligence, whether in respect of the main account or the legal entity as a whole, to the extent relevant.
+1.8.9 You acknowledge that where the designated representative or authorised user changes, or where their role or responsibilities materially change, You will notify Us and We may require updated information and may reassess appropriateness accordingly.
+1.8.10 We reserve the right to take appropriate measures, including but not limited to Account restrictions or termination, if We determine that a User does not meet the eligibility criteria. You are responsible for providing us with accurate and up-to-date information in this respect. You are also responsible for informing us of any changes to Your circumstances that may impact the appropriateness assessment and provision of Our Services.
+1.9 Client Asset Safekeeping and Margin Arrangements:
+1.9.1 The Investment Firm does not receive, hold or safeguard User money or User crypto-assets. All User fiat currency and crypto-assets are held, safeguarded and administered by OKX EEA in accordance with its regulatory safeguarding and custody obligations. Financial instruments provided by Users as collateral are held, safeguarded and administered by the Investment Firm in accordance with applicable legal and regulatory requirements.
+1.9.2 
+Safekeeping Arrangements with OKX EEA
+: All User fiat currency and crypto-assets are held by OKX EEA in segregated client accounts and/or wallets in accordance with applicable regulatory requirements. Fiat currency is safeguarded by OKX EEA in segregated client bank accounts with authorised credit institutions, and crypto-assets are held in segregated client wallets and custody arrangements maintained by OKX EEA. The Investment Firm does not operate client money accounts under the current operating model.
+1.9.3 
+Safekeeping of certain Financial Instruments with the Investment Firm
+: The Investment Firm holds and safeguards certain financial instruments granted by Users as collateral in accordance with these Terms. The provision of such financial instruments as collateral does not result in a transfer of ownership to the Investment Firm, and Users retain ownership thereof, subject to the security interest granted in favour of the Investment Firm.
+1.9.4 
+Margin Arrangements
+: Where a User enters into a transaction with the Investment Firm, the User grants, from assets held with the Investment Firm and/or OKX EEA (as applicable), a pledge and equivalent collateral arrangement in favour of the Investment Firm, in accordance with Section 9 below, to secure the User’s obligations arising from such transactions. For any collateral held with OKX EEA, such collateral remains held by OKX EEA and is not transferred to the Investment Firm unless required for settlement of realised losses or other amounts due. The Investment Firm and/or OKX EEA (as applicable) shall designate and hold only such portion of the User’s assets as is reasonably necessary to cover the User’s current and potential exposure arising from trading - with all other assets remaining available to the User for withdrawal, use and trading in the ordinary course.
+1.9.5 
+Settlement of Profits and Losses
+: Upon closure of a position:
+where a User realises a loss, the Investment Firm is entitled to enforce the collateral arrangements and receive the corresponding amount required to settle the User’s obligations. For this purpose, fiat balances held in the User’s account with OKX EEA shall be applied first. However, where such fiat balances are insufficient, the Investment Firm may enforce against other eligible collateral, including crypto-assets held with OKX EEA and financial instruments held by the Investment Firm in custody for the User. OKX EEA shall liquidate the relevant User’s crypto-assets, and the Investment Firm may sell or otherwise realise the relevant financial instruments, in accordance with the applicable collateral arrangements, and apply the resulting proceeds towards settlement of the User’s obligations; and
+where a User realises a profit, the Investment Firm will credit the corresponding amount to the User’s account maintained with OKX EEA.
+Any such transfers are effected through arrangements between OKX EEA and the Investment Firm. For the avoidance of doubt, the Investment Firm may also hold financial instruments in custody for Users, including where such financial instruments are subject to collateral arrangements in favour of the Investment Firm.
+1.10 Account Modes, Leverage and Margin Trading:
+1.10.1 
+Account Modes
+1.10.1.1 The Investment Firm operates within a unified account framework that enables Users to access different margin configurations across eligible products. The selected margin mode may affect how collateral is assessed, how risk is calculated, and how positions may be margined and liquidated. The following modes may be available:
+“
+Single-Currency Margin Mode
+”: Margin requirements are calculated primarily by reference to the relevant currency of each position. Assets denominated in different currencies may not be fully offset against one another.
+“
+Multi-Currency Margin Mode
+”: Eligible assets may be valued on an aggregated basis and used as collateral across multiple products and positions. Where Selected Margin is applied within Multi-Currency Margin Mode, available collateral may be shared across positions, increasing capital efficiency but also increasing overall risk exposure.
+1.10.1.2 Within Multi-Currency Margin Mode, and in particular where Selected Margin is enabled, auto-borrowing functionality may be made available through the platform. If activated by the User, this feature may automatically borrow the relevant asset where the User’s balance is insufficient to support a transaction or maintain margin requirements. Any such borrowing gives rise to a repayment obligation and may accrue fees until repaid.
+1.10.1.3 Auto-borrowing functionality is a platform feature made available via OKX EEA and does not constitute an investment or ancillary service provided by the Investment Firm. The Investment Firm’s role remains limited to the execution of transactions in accordance with these Terms. Any borrowing costs, or related charges are determined and disclosed separately.
+1.10.1.4 The use of cross-collateralisation and borrowing features may materially increase both potential gains and losses and may accelerate liquidation in adverse market conditions. Users should carefully review the detailed explanations of margin modes, auto-borrowing mechanics and applicable fees available 
+here
+.
+1.10.2 
+Leverage and Margin Trading
+1.10.2.1 The Investment Firm may offer leverage on certain financial instruments (as applicable). Leverage allows You to control a larger position with a smaller amount of capital (known as margin), which amplifies both potential profits and potential losses.
+1.10.2.2 The maximum leverage available will be determined by the type of instrument traded and the regulations governing such instruments, including but not limited to the restrictions set out under MiFID II and applicable national regulations. The Investment Firm will provide You with the specific leverage ratios available for each product at the time of trade.
+1.10.2.3 Margin Requirements: When trading with leverage, You are required to maintain sufficient collateral in your account held with the Investment Firm and/or OKX EEA (as applicable), which serves as margin securing your obligations under transactions with the Investment Firm. Margin requirements are determined by the Investment Firm in accordance with its risk management policies, taking into account factors such as leverage, market volatility, liquidity and the characteristics of the relevant financial instrument. You may satisfy Your margin requirement by ensuring you have sufficient Assets in your Pledged Account(s) (as such terms are defined in Section 9.1.2 below). If Your margin balance falls below the required level, You may be subject to a margin call, requiring You to deposit additional funds to maintain Your position. Failure to do so may result in the liquidation of positions and enforcement of collateral arrangements (in accordance with Section 9 below). You acknowledge that collateral arrangements are established to secure your obligations to the Investment Firm and that the Investment Firm may enforce such arrangements in accordance with these Terms.
+1.10.3 
+Risks Associated with Leverage
+1.10.3.1 Trading with leverage significantly increases both the potential for profit and the potential for loss. You acknowledge and understand that using leverage involves a high degree of risk, and that You may lose more than Your initial investment if market conditions move unfavourably.
+1.10.3.2 The Investment Firm strongly advises You to fully understand the risks of leverage and to carefully consider whether it is appropriate for Your financial situation, risk tolerance, and investment objectives. It is Your responsibility to monitor Your Account regularly to ensure that Your margin balance remains sufficient to cover Your positions.
+1.10.3.3 Liquidation of Positions: Without prejudice to any rights and remedies available to the Investment Firm, where the value of Your collateral falls below applicable margin requirements, the Investment Firm may, in accordance with its risk management policies, close, liquidate or otherwise reduce Your open positions and enforce the relevant collateral arrangements to cover Your obligations. Such liquidation may, among other matters, result in the conversion of crypto-assets into fiat currency or other assets and the transfer of resulting proceeds to the Investment Firm to settle outstanding obligations. The Investment Firm shall not be liable for any losses resulting from such liquidation, except where required by applicable law. Further information on the collateral liquidation mechanism can be found in a separate agreement which must be accepted by You prior to conducting trades with leverage.
+1.10.3.4 The Investment Firm provides negative balance protection to all Retail Clients trading leveraged derivative products. This means that your total losses from trading cannot exceed the funds available in your Account, and you will not owe any additional amounts to the Investment Firm as a result of trading losses.
+1.10.4 
+Disclosure of Leverage and Margin Terms
+1.10.4.1 The Investment Firm will provide You with information regarding the leverage available on each product, the margin requirements, and the risks associated with trading on margin. This information will be provided on the Site, and any changes to the terms will be communicated to You promptly.
+1.10.4.2 You acknowledge that You understand the implications of trading with leverage, including the potential for losses that exceed Your initial margin, and that You are fully aware of the margin requirements associated with each product offered.
+1.11 Daily Compression
+1.11.1
+ Nature of the exercise:
+ Where You hold more than one open transaction in the same financial instrument, We may combine those positions into a single transaction by terminating them and creating a replacement transaction in their place (a “
+Compression
+”). A Compression reduces the number of contracts outstanding between You and Us and the counterparty credit and operational risk associated with them. It does not change the size of Your overall exposure and it does not change Your profit or loss at the time it is carried out.
+1.11.2
+ Standing Authority: 
+You authorise Us to carry out a Compression on each Business Day, in respect of all of Your eligible open positions. We may carry out a Compression without further instruction from You, and no separate proposal, agreement or documentation is required in respect of any individual Compression.
+1.11.3
+ Eligible Positions: 
+Only positions in the same financial instrument and having identical material contract specifications, including the same underlying, expiry date, settlement currency, contract multiplier, settlement method and price quotation, may be included in the same Compression. Positions that do not satisfy all of those criteria will not be combined. Long and short positions in the same instrument may be combined, with quantities taken as net.
+1.11.4
+ Price of the Replacement Position: 
+The price of the replacement transaction is the quantity-weighted average price of the positions it replaces. Long quantities are treated as positive and short quantities as negative, and the price is calculated as the sum of the price multiplied by the signed quantity of each position, divided by the net signed quantity, rounded to the tick size of the relevant instrument. If the net signed quantity is zero, the original positions are terminated without creating a replacement transaction and any fixed profit or loss arising from their termination is credited or debited to Your account, as applicable. Any economic difference resulting from rounding is credited or debited to Your account as a cash adjustment. From the time of the Compression, the calculated price applies to the replacement transaction for all purposes, including margin, valuation, settlement and the calculation of Your profit or loss.
+1.11.5
+ No Change to Your Economic Position: 
+The financial instruments to which this clause applies have a payoff which varies in direct proportion to the price of the underlying. Subject to the settlement and cash adjustments expressly described in clause 1.11.4, the replacement transaction accordingly produces the same aggregate economic result as the positions it replaces and a Compression does not transfer economic value between You and Us. Any amount credited or debited under clause 1.11.4, and any amounts already accrued, will be identified separately in Your account statement.
+1.11.6
+ Effect on Your Account: 
+Following a Compression: (a) the replacement transaction carries a new transaction identifier; (b) any subsequent partial closure is applied against the replacement transaction and not against the original positions; (c) financing and other periodic charges are calculated by reference to the replacement position; (d) any stop-loss, take-profit or other conditional order attached to an original transaction will be re-attached to the replacement transaction on equivalent terms or, where that is not possible, cancelled and notified to You; and (e) margin requirements are recalculated on the replacement position.
+1.11.7
+ Your Trade History: 
+The execution price, quantity and time of each original transaction remain available to You in Your trade history and on request, and We will retain those records in accordance with Our record-keeping obligations. Confirmations previously issued in respect of the original transactions are not affected by a Compression.
+1.11.8
+ Daily Compression Statement:
+ On each Business Day on which a Compression is carried out We will make available to You a statement identifying the positions terminated, the replacement transaction and the price calculated under clause 1.11.4 (a “
+Daily Compression Statement
+”). Where Annex 1 applies to You, paragraph 7 of Annex 1 applies to a Daily Compression Statement.
+1.11.9
+ Changes to the Methodology:
+ We will give You not less than 30 days' notice on a durable medium before making any material change to the time under clause 1.11.2, the method of calculating the price under clause 1.11.4 or the eligibility criteria under clause 1.11.3.
+1.12 Limited Services Terms
+: Notwithstanding anything contained herein to the contrary, if You are directed to this Site through a third-party channel to complete certain transactions with credit cards, debit cards or local instant transfer methods, You agree and acknowledge that the Services provided to You by Us are limited to those transactions, and that irrespective of any use of the words “purchase”, “sale” or similar terms, no full rights or privileges are granted to You under these Terms. We have no control over, or liability for, the delivery, quality, safety, validity, legality or any other aspect of any goods, services or technology that You may purchase or obtain from a third party (hereafter the “
+Third-Party Services
+”). We are not responsible for ensuring that any third party You transact with will complete the Third-Party Services or is authorised to do so. Be aware that Third-Party Services may have separate costs and fees associated with the goods, services or technology they provide, which are independent from Our Fees and are Your responsibility. If You experience a problem in relation to the Third-Party Services or if You have a dispute with such a third party, You should resolve the dispute directly with that third party. You are fully responsible for all acts or omissions of any third party with respect to Your Account(s). Further, You acknowledge and agree that You will not hold Us responsible for, and will indemnify Us from, any liability arising out of or related to any act or omission of any third party with access to Your Account(s).
+1.13 Order Execution
+: If We execute transactions for You, We will be required to provide best execution, and, in doing so, We will comply with Our Order Execution Policy. We shall, as applicable, take all steps necessary to obtain, while executing orders, the best possible result considering factors of price, costs, speed, likelihood of execution and settlement, size, nature, conditions of custody of the order assets or any other consideration relevant to the execution of the order. You hereby consent to the terms of Our Order Execution Policy available at the following link: 
+here
+.
+The Investment Firm is committed to executing Your orders in the best possible way, as defined under MiFID II. The Investment Firm will take all reasonable steps to achieve the best possible result for You when executing orders for financial instruments.
+Order Matching Engine: When You place an order for financial instruments, the Investment Firm will enter into a bilateral transaction for that financial instrument as a counterparty to You. At the same time as accepting the order, the Investment Firm will enter into an identical transaction, acting as principal counterparty, by submitting an order to OKX Bahamas FinTech Company Limited (“OKX Bahamas”). OKX Bahamas operates an order matching engine which matches, on the basis of transparent rules, buy and sell orders received by its clients. This means that the Investment Firm acts as the client-facing counterparty to Your transaction on a back-to-back (matched principal) basis, simultaneously entering into an equivalent offsetting transaction with OKX Bahamas (for hedging purposes) through its order matching engine. As a result, the Investment Firm carries no market risk in respect of Your financial instruments positions.
+You acknowledge and agree that, by using the Investment Firm's Services, You consent to the execution of Your orders in accordance with Our Order Execution Policy.
+1.14 Recording
+: You agree and acknowledge that when providing Services (particularly, the execution of orders on behalf of other persons and dealing on own account), We are required to record all relevant communications which result, or may result, in transactions as well as for the purposes of checking and/or confirming Your instructions, verifying Your identity and ensuring that We are meeting Our Service standards and regulatory obligations. These recordings may also be used as evidence if there is a dispute. If you are a natural person, You hereby acknowledge to have been informed of and provided with a copy of Our Privacy Notice for information on the processing of Your personal data.
+1.15 Conflicts of Interest:
+1.15.1
+ Identification and Management of Conflicts of Interest
+: The Investment Firm is committed to preventing and managing conflicts of interest that may arise during the provision of Services.
+1.15.2 
+Types of Conflicts
+: Conflicts of interest may occur when the Investment Firm or its employees have interests that are contrary to those of You. These may arise when the Investment Firm trades for its own account or acts as a counterparty to Your trades. A specific and material conflict arises from the back-to-back hedging arrangement between the Investment Firm and OKX Bahamas, further described in Section 1.14.4 below.
+1.15.3 
+Mitigation Measures
+: The Investment Firm takes the following measures to manage conflicts of interest:
+Disclosure of any actual or potential conflicts to You in a timely manner.
+Maintaining a Conflicts of Interest Register to record and track conflicts as they arise.
+Ensuring that employees report potential conflicts and comply with internal policies designed to manage such situations.
+1.15.4 
+Disclosure of Arrangement with OKX Bahamas
+: In the interest of transparency and to ensure You are aware of a material aspect of how Your trades are executed, the Investment Firm discloses the following: When You enter into a transaction with the Investment Firm, the Investment Firm simultaneously and instantaneously enters into a back-to-back (matched principal) transaction with OKX Bahamas to hedge its exposure arising from Your trade. OKX Bahamas operates the order matching engine through which these back-to-back transactions are executed.
+You should be aware that OKX Bahamas is a member of the same corporate group as the Investment Firm. This relationship gives rise to a potential conflict of interest, as the Investment Firm's hedging counterparty is an affiliated entity rather than an independent third party. The Investment Firm manages this conflict by ensuring that the terms on which it transacts with OKX Bahamas are consistent with the Investment Firm's obligation to achieve best execution for You, and by maintaining the structural separation between the Investment Firm's client-facing role and OKX Bahamas' role as execution venue. Further details of this arrangement are set out in the Investment Firm’s Order Execution Policy and the Conflicts of Interest Policy available on the Company’s website.
+1.15.5
+ Client Disclosure
+: The Investment Firm will provide You with full disclosure of any conflicts of interest that may affect the provision of its Services. By engaging in the Investment Firm’s Services, You accept the potential for conflicts and the measures taken to manage them.
+You hereby consent to the terms of Conflicts of Interest Policy available at the following link 
+here
+. 
+1.16 Disclosure Obligations:
+1.16.1 
+Client Disclosure and Transparency
+: The Investment Firm is required to make certain disclosures to You in accordance with MiFID II, the ISA, and applicable regulations. These disclosures are designed to ensure that You are fully informed about the risks, costs, and other material information before entering into any transactions.
+1.16.2 
+Costs and Charges
+: The Investment Firm will provide You with a clear breakdown of the Fees, costs and other charges (if any) that will apply to Your transactions. These include spreads, commissions, transaction fees, and financing costs related to margin trading, as applicable. All charges will be disclosed in advance of executing a transaction.
+1.16.3 
+Risk Warnings
+: You are warned of the potential for significant losses when trading in derivatives and other complex financial instruments. These instruments are highly speculative, and You must understand the risks before proceeding as further highlighted below under Section 3.
+1.17 Prevention of Anti-Money Laundering Legislation: 
+The Investment Firm has certain responsibilities under the Prevention of Money Laundering Act (Chapter 373, Laws of Malta) and the regulations issued thereunder, particularly in relation to the prevention of money laundering and the financing of terrorism. This includes seeking confirmation of Your identity and permanent address.
+The Investment Firm is also required to confirm the identity and permanent address of any third party connected to Your Account. You may be asked to provide documents to verify the accuracy of the details You have provided to the Investment Firm.
+1.18 Market Abuse: 
+You warrant and represent that You will not deliberately, recklessly, or negligently engage in any market abuse, including the prohibited use of inside information or market manipulation. You further agree not to engage in any prohibited activities under the Prevention of Financial Markets Abuse Act (Chapter 476, Laws of Malta) and the regulations issued thereunder. You will not encourage, solicit, or require any other person to engage in market abuse or prohibited activities. By engaging in the Services of the Investment Firm, You agree to comply with all applicable laws and regulations governing market abuse.
+1.19 No Investment Advice:
+ You agree and understand that We do not provide legal, tax, or investment advice, that the Services are provided on a strictly non-advisory basis and Your use of the Services is self-directed, and that it is Your responsibility to consult with qualified professionals in Your own jurisdiction prior to using the Services or implementing any financial plan.
+1.20 Cooling-Off Period and Right of Withdrawal:
+ If You qualify as a ‘consumer’ under the Distance Selling (Retail Financial Services) Regulations (S.L. 330.07, Laws of Malta) and have signed-up for Services exclusively via a distance contract (as defined therein, the “
+Distance Contract
+”), You may have a right to cancel these Terms within fourteen (14) calendar days (the “
+Cooling-Off Period
+”). The Cooling-Off Period starts running from the later of: (a) the day of the conclusion of the Distance Contract, or (b) from the day you accept these Terms. You may exercise this right of withdrawal by completing and submitting a cancellation request through the Sites (a “
+Cancellation Request
+”). Once sent, a Cancellation Request is irrevocable.
+This right of withdrawal does not apply:
+if, during the Cooling-Off Period, You placed an order, or otherwise were provided with any Service, in relation to any product whose price depends on fluctuations in the financial market outside Our control;
+if the Distance Contract has been fully completed by both parties at the Your express request before You exercised the right of withdrawal; or
+if, prior to the start of the Cooling-Off Period, You visited Our offices or otherwise met one of the representatives face-to-face.
+If You submit a Cancellation Request and the right of withdrawal applies, then the Distance Contract will be considered null and void. No benefit can be claimed by You under the Distance Contract once You have submitted a Cancellation Request.
+1.21
+ Not every Service offered by the Investment Firm is addressed in these Terms. Any Service may be subject to terms specific to that particular Service, therefore any such terms shall be incorporated into these Terms.
+2. ELIGIBILITY AND PROHIBITION OF USING OUR SERVICES
+2.1 Eligibility: 
+Access to the Services is available only to Users who:
+maintain an active and verified account with OKX EEA in accordance with the OKX EEA terms of services;
+satisfy all applicable onboarding, KYC and compliance requirements; and
+meet the eligibility criteria applicable to the relevant client category under MiFID II.
+If You act on behalf of a legal entity, You represent and warrant that such entity is duly incorporated and validly existing under applicable law and that You are duly authorised to bind it. The Company reserves the right to restrict or refuse access to the Services where required by law, regulatory obligation, sanctions, or internal risk assessment.
+2.2 Prohibited Businesses:
+ Any use of Our Service(s) in connection with any of the following categories of activities or businesses is prohibited (“
+Prohibited Businesses
+”):
+Illegal, unlicensed, or unregistered money services or money transmission activity;
+Money laundering, terrorist financing, sanctions evasion, fraud, or other Financial Crime;
+Any Ponzi scheme, pyramid scheme, or multi-level marketing program;
+Wash trading, front-running, insider trading, market manipulation, or other market-based fraud or deceit;
+Sale, purchase, or facilitation of illegal goods or services, including through hidden (“Darknet”) marketplaces;
+Shell Banks, or financial institutions maintaining correspondent relationships with Shell Banks;
+Any other unlawful activity, or activity that violates or assists in violating any Applicable Laws and Regulations or sanctions program; and
+Any other activity that we, in our sole and absolute discretion, deem a risk to our reputation, operations, or the integrity to our Services.
+In the event that We learn or reasonably suspect, in Our sole and absolute discretion, that any of Your Account(s) are or may be associated with any of the Prohibited Businesses as set forth above, We will consider You to be in violation of these Terms and We may suspend or terminate Your Account(s), cancel any uncompleted transactions, freeze Your Financial Products immediately without notice, or take any other action deemed necessary by a law enforcement agency, regulator, Our internal compliance department, or any other authority. We may also, with or without notice, report any such suspected or actual Prohibited Businesses activity to a law enforcement agency, regulator, or any other authority.
+3. RISK DISCLOSURE
+There are significant risks involved when dealing in financial instruments. It is important that you fully understand the risks involved before making a decision to use Our Services, and You should therefore consider whether trading financial instruments is suitable for you in light of your financial circumstances.
+Further information on the risks associated with using the Our Services is set out in our Risk Warning, which may be updated from time to time, with the key risks summarised below in this Section 3. You should read the Risk Warning carefully, however it is non-exhaustive and does not include how such risks relate to your personal circumstances.
+3.1 Trading Risk
+: Trading of financial instruments involves significant risk. The risk of loss in trading or holding financial instruments can be substantial. You should therefore carefully consider whether trading in financial instruments (or any use of margin if permitted/enabled) is suitable for Your financial condition, risk tolerance, or investment objectives.
+You should exercise prudence when trading Your Financial Products. Prices may fluctuate at any moment. Due to such price fluctuations, Your Financial Products may increase or decrease in value at any given moment
+.
+In accordance with the applicable provisions of MiFID II, Commission Delegated Directive (EU) 2017/593, Directive (EU) 2019/2034 on the prudential supervision of investment firms (“
+IFD
+”), and Regulation (EU) 2019/2033 (“
+IFR
+”) as implemented in the ISA and the CoBR, You acknowledge that You fully understand the risks involved and are solely responsible for any losses incurred. The Investment Firm does not guarantee profits and disclaims liability for any losses arising from the use of its Services.
+3.1.1 
+Complex Products:
+ Due to the speculative nature of the markets, particularly for complex instruments like futures and derivatives, Users may experience substantial financial loss in a short period of time. The Investment Firm is not responsible for any market movements that affect the value of Users’ positions.
+3.1.2
+ Risk of Leverage and Margin Trading: 
+As applicable, trading with leverage or on margin significantly increases the potential for both profits and losses. By using leverage, You can control larger positions than Your initial capital, but this also means that a relatively small adverse price movement can result in significant losses, potentially exceeding the initial margin. We advise You to carefully assess Your risk tolerance before using leverage. You must be prepared to provide additional margin if required and understand that the use of leverage magnifies both the potential for profit and the risk of loss.
+3.1.3 
+Unified Account and Collateral Risk: 
+Your Account operates under a unified structure, allowing the same assets to support positions across different product types. While this structure improves efficiency and margin utilisation, it also means that losses or margin calls in one product type may reduce the collateral available for other positions. In extreme market conditions, positions in either product type may be automatically liquidated to meet margin requirements or prevent a negative balance.
+3.1.4
+ Counterparty Risk: 
+When trading over-the-counter (“
+OTC
+”) derivatives, Users face counterparty risk, which is the risk that the other party to the transaction may fail to fulfill their contractual obligations. In the event of a counterparty default, You may suffer losses. We take measures to mitigate counterparty risk, but Users must understand that such risks are inherent in OTC trading and that We cannot guarantee that a counterparty will meet its obligations.
+3.1.5
+ Operational Risk:
+ Operational risk refers to risks arising from system failures, human error, fraud, or other issues that may impede the execution of transactions. The Investment Firm has procedures to mitigate such risks, but You should understand that no system is completely immune from failure. The Investment Firm will take reasonable steps to ensure the security and accuracy of its systems, but Users acknowledge that operational risks remain and that they are responsible for any losses arising from such risks.
+3.1.6 
+Regulatory Risk
+: You should be aware that trading financial instruments is subject to applicable laws and regulations, including those governing the markets in which the Investment Firm operates. Changes to regulatory requirements or market conditions may affect the value or viability of certain investments. The Investment Firm will make every reasonable effort to comply with applicable laws, but You must understand that legal or regulatory changes may impact Your positions, the services provided, or the availability of certain products.
+3.2 FX Conversion Risk: 
+Users whose Accounts are funded, maintained, or denominated in a different currency from the applicable settlement currency will be exposed to foreign exchange and/or conversion risk. Changes in exchange rates between the settlement currency and a client’s base currency may increase or decrease the value, profit, or loss of a position once converted back into that base currency.
+3.3 Liquidity Risk: 
+There is a risk that You may experience losses due to the inability to sell or convert financial instruments into preferred alternative financial instruments immediately or where conversion is possible but at a loss. Such liquidity risk for a financial instrument may be caused by many reasons, including but not limited to the absence of buyers, limited buy/sell activity, or underdeveloped secondary markets. Liquidity risk arises when You are unable to buy or sell an instrument quickly at a desired price due to market conditions. In some cases, Users may be unable to exit positions without incurring significant losses. This is particularly relevant in volatile markets or for products that are not widely traded. You should be aware that liquidity in certain instruments may be low, particularly during periods of high volatility, and We cannot guarantee the availability of a buyer or seller at a desired price.
+3.4 Your Responsibilities
+: You shall bear any loss as a result of Your actions, including, but not limited to:
+“Fat finger” input or instructions errors, including price, quantity, and/or timing (market vs. limit order specification) errors;
+Mistiming or mis-submission of trade instructions;
+Forgetting or disclosing Your password;
+Computer or network issues, including any hacks or virus issues related to Your computer or network (or the network You are utilising);
+Transfer-in or withdrawal of financial instruments or fiat currencies to or from the wrong account;
+Executing instructions provided to You by a third-party; or
+Third parties accessing and using Your Account for any reason.
+In the event of Your malicious, manipulative, or abusive use of the Service(s), a violation of these Terms of Service, and/or any other behaviours or methods utilised to gain an unfair advantage, as determined at Our sole and absolute discretion, We may take necessary action, including, but not limited to, closing Your Account(s), placing restrictions on account transactions, freezing Financial Products in Your Account(s), restricting Your access to Your Account(s), commencing legal action against You and/or pursuing other measures of recourse. We may require You to bear all costs incurred as a result of any action taken by Us under this Section 3.4, including legal fees and costs. In addition, it is Your sole responsibility to ensure that all account information is verified before making any transfers so that financial instruments or fiat currencies are transferred into the correct account. Financial instruments or fiat currencies transferred to a wrong account are typically irreversible. If You transfer financial instruments or fiat currencies to a wrong account and such account is controlled by Us, We will have the sole discretion to reject the transaction and return to You the relevant amount of financial instruments or fiat currencies, less applicable Fees.
+We take fraud and scams very seriously and work diligently to prevent them. However, We cannot be held responsible for any losses incurred by You as a result of engaging with fraudulent or scam companies outside of Our platform. It is Your responsibility to conduct Your own due diligence and exercise caution when dealing with third-party entities. If You experience a loss from falling victim to a scam, We will cooperate with You and any relevant authorities to the best of Our ability. However, We cannot guarantee the recovery of any lost Financial Products, will not be liable for the value of any lost Financial Products, nor can we be held liable for any chargebacks resulting from such losses. By using Our platform, You acknowledge and agree to assume all risks associated with Your purchases and transfers.
+3.5 Our Responsibilities for Credit Card Transactions
+: Our obligation to You as the cardholder is to provide a reliable and efficient platform for purchasing financial instruments and depositing funds. Any financial instrument You purchase using Your credit card will be credited into Your Account and Our obligation in this regard will be deemed complete when the financial instrument amount purchased by You is delivered and reflected in Your Account. We will not be responsible for any losses that may occur after that point. You are solely responsible for the management of these financial instruments once credited.
+3.6 Our Risk Management Procedures
+: In compliance with applicable prudential requirements under the IFD and IFR, Our procedures are designed to identify, assess, and manage the risks associated with the provision of investment services, including market, liquidity, credit, and operational risks including:
+3.6.1 
+Risk Identification and Mitigation
+: The Investment Firm will identify risks related to its operations and take appropriate steps to mitigate them. This includes monitoring risks arising from market volatility, changes in liquidity, and operational disruptions. The Investment Firm will conduct regular stress tests to assess the impact of adverse market conditions.
+3.6.2 
+Capital Adequacy
+: In accordance with the IFD and IFR, the Investment Firm ensures that it maintains sufficient capital buffers to absorb potential losses. The Investment Firm conducts periodic assessments to ensure compliance with capital adequacy requirements and to monitor its ability to withstand financial stress.
+3.6.3 
+Ongoing Monitoring
+: The Risk and Compliance Committee of the Investment Firm will oversee the ongoing risk management processes, reviewing them regularly to ensure they remain effective and in line with regulatory standards.
+3.7 Risk of Losses Beyond Initial Investment
+: It is possible for Users to incur losses greater than their initial investment, especially when trading on margin or using leverage. The Investment Firm strongly advises Users to assess their financial position, experience, and risk appetite before engaging in trading activities. In some cases, Users may be required to deposit additional funds to cover margin calls if their positions move against them. The Investment Firm will inform Users promptly if additional funds are required to maintain open positions.
+3.8 Risk Disclosure Acknowledgement
+: By using the Services of the Investment Firm, You acknowledge and expressly agree that You have read, understood, and accepted all risks associated with trading in financial instruments, including derivatives. You further acknowledge that trading involves a high degree of risk and may result in the loss of all or part of Your invested capital. You agree that all trading decisions are made at Your sole discretion and responsibility, and that You shall bear all resulting losses or liabilities.
+The Investment Firm shall not, under any circumstances, be liable for any losses, damages, costs, or expenses arising directly or indirectly from market fluctuations, price volatility, margin calls, system failures, execution delays, liquidity constraints, or any other events or circumstances beyond its reasonable control, whether foreseeable or not.
+4. YOUR ACCOUNT
+4.1 Account Registration and Identity Verification
+: In order to use any of the Service(s), You must first register to use the Service(s) by providing all information requested by Us, which may include Your email and/or mobile phone number, full name, date of birth, residential address, government identification number, taxpayer identification number, video ID authentication, and other personal or company information necessary to verify Your identity, along with affirming these Terms. You agree to provide such information at registration and on an ongoing basis for the purposes of identity verification and the detection of money laundering, terrorist financing, fraud, or any other financial crime, including without limitation (as relevant) a copy of Your government-issued photo ID, or evidence of residency such as a lease or utility bill. From time to time, We may send You requests to confirm or update the information You have provided. We may suspend access to Your Account(s) if We do not receive an adequate response from You. We may, in Our sole discretion, refuse to allow You to register to use the Service(s) or limit Your ability to register multiple accounts. By registering an account with Us, You agree and represent that You will use that account only for Yourself, and not on behalf of any third party, unless approved by Us. If You are a corporation, You shall register a corporate account with Us. An individual shall not use their individual account for business purposes.
+4.2 Protecting Your Account
+: You agree not to enable anyone to use or direct Your Account(s), unless authorized by Us, and to update Us of any information change or if Your Account has been compromised. You are solely responsible for keeping, protecting, and safeguarding any keys, certificates, passwords, access codes, User IDs, OAuth tokens, or other credentials and login information (collectively “
+Credentials”
+) that have been provided to You or that are generated in connection with Your use of the Service(s). You are responsible for creating strong Credentials and maintaining security and control of any and all Credentials that You use to access the Site and Service(s). If You lose Your Credentials, You may not be able to access Your Account(s). For any activities in Your Account(s) using Your Credentials, You authorize Us to presume that You authorized such transactions, unless You notify Us otherwise. If You notice or suspect an unauthorized transaction occurred using Your Account(s), or that a transaction was incorrectly carried out, You must contact Us immediately with underlying documentation evidencing Your request to 
+Support Center
+ or support.eea@okx.com. Additionally, You will promptly revoke any OAuth tokens or authorisations you suspect may have been compromised. It is Your responsibility to check Your Account balances and transaction history regularly to ensure You are made aware of any suspicious account activity. We are not responsible for any liability, loss, or damage resulting from unauthorized or incorrect transactions due to Your failure to abide by this Section 4.2. We further assume no responsibility for Your failure to follow or act on any notices or alerts that We may send to You.
+4.3 Password Recovery
+: If You lose Your password(s) You may reset it after being verified through Your registered email address and/or phone number. If You have 2-factor authentication (“
+2FA
+”) enabled via an authenticator app, You may also be asked to confirm Your 2FA code. If You need to reset both Your password and 2FA (e.g., lost 2FA app device or failed to migrate 2FA), You will need to contact 
+Support Center
+ or support.eea@okx.com for additional support and may be subject to enhanced identity verification procedures. These enhanced identity verification procedures are necessary to ensure the security of Our Users’ accounts. You agree to be subject to any enhanced identity verification procedures We deem necessary. Refusal of such procedures may render You unable to access Your Account(s).
+4.4 Account Closure
+: You may close Your Account(s) at any time. Closing an account will not affect any rights and obligations incurred prior to the date of account closure. You may be required to either cancel or complete all open orders and, in accordance with the provisions of these Terms, provide transfer instructions of where to transfer any Financial Products remaining in Your Account(s). You are responsible for any fees, costs, expenses, charges, or obligations (including, but not limited to, attorney and court fees or transfer costs of fiat currency or financial instruments) associated with the closing of Your Account(s). If the costs of closing Your Account(s) exceed the value in Your Account(s), You will be responsible for reimbursing Us. Closing Your Account(s) will not permanently delete Your personal data, which may be required to be retained to comply with all applicable laws and regulations.
+4.5 Account Suspension and Investigation
+: You agree and acknowledge that We may suspend Your Account(s) at any time, in Our sole and absolute discretion. You also agree we may freeze/lock the Financial Products in all such accounts and temporarily or permanently suspend Your access to the Site if we suspect, in Our sole and absolute discretion, any of the following:
+The account is in violation of any of these Terms;
+The account is in violation of any applicable laws or regulations;
+The account is in violation of Anti-Money-Laundering/Counter-Terrorism Financing laws;
+The account is in violation of a regulatory authority requirement, court order, or other applicable law;
+The account is subject to a government, regulatory authority, or court-ordered levy, judgment, or other asset turnover requirement (“
+Levy
+”);
+The account is, or is related to any account that is, subject to any pending litigation, investigation, or governmental proceeding;
+The account has a balance that needs to be reconciled for any reason;
+If We suspect that an unauthorised person is attempting to gain access to the account;
+If We suspect that You are using Your credentials or other account information in an unauthorised or inappropriate manner;
+If We suspect that the account is related to any Prohibited Businesses as set forth in Section 2.2;
+If We suspect that there are suspicious and/or fraudulent activities on the account; or
+The account has not been accessed in over one (1) year.
+You agree and acknowledge that We have the right to immediately investigate Your Account and any related account, if we suspect, in Our sole discretion, that any such account has committed a violation of these Terms or violation of applicable laws or regulations.
+4.6 Account Termination
+: You agree and acknowledge that We have the right to terminate any account at any time at our sole discretion. You further agree and understand that We have the right to take any and all necessary and appropriate actions pursuant to these Terms and/or applicable laws and regulations, including but not limited to applicable escheatment laws and procedures. If Your Account is terminated, we will return Your Financial Products, less the value of any trading Fee discounts, rebates, costs, expenses and/or damages that we are entitled to pursuant to these Terms. If Your Account is not subject to an investigation, court order, or subpoena, You authorise Us to return Your fiat balance (less any trading Fee discounts, rebates, costs, expenses and/or damages to which We are entitled) to any bank account linked to Your Account, unless otherwise required by applicable law. If there are any financial instruments remaining in Your Account, You agree to provide Us with a financial instrument address held in Your name upon receiving written notice, so that We can return the remaining financial instruments to You.
+4.7 Reversals and Cancellations
+: You agree and understand that You cannot cancel, reverse, or change any transaction that has been marked as complete in Your Account(s). We may refuse to process, or to cancel or reverse, any transaction conducted under Your Account(s) in Our sole and absolute discretion, even after the related Financial Products have been debited from Your Account(s), and we are under no obligation to allow You to reinstate a purchase or sale order at the same price or on the same terms as the canceled transaction:
+if We suspect the transaction involves (or has a high risk of involvement in) suspicious trading activity or violations of these Terms;
+if We have reason to believe there was an obvious error in any term, including but not limited to the price, amount or any other information about the trade;
+if there was disruption or malfunction in the operation of any trading system; or
+if there were extraordinary market conditions or other circumstances in which the nullification or modification of transactions may be necessary.
+4.8. Right of Offset and Recoveries
+: In the event that there are insufficient funds in Your Account(s) due to a chargeback, payment dispute, wire recall, SEPA reversal, credit error or other similar occurrence, or Your Account(s) are subject to a Levy that We reasonably determine is valid in Our sole and absolute discretion, You expressly authorise us to freeze, debit, convert, withhold, and/or liquidate any current or future Financial Products from Your Account(s) to the extent necessary to offset or satisfy any insufficiencies or to satisfy the Levy, to the fullest extent permitted by applicable law. You acknowledge that You will be solely responsible for any and all tax consequences of any such action by Us. In the event that the disposition or liquidation of Financial Products is inadequate to satisfy the insufficiencies, You agree that You will immediately deliver, in Euro (or the fiat currency relevant to Your jurisdiction, as applicable), the full amount necessary to alleviate the insufficiency or You will be liable to Us for the insufficiencies in addition to any attorney’s fees, interest or expense associated with its recovery.
+4.9. Credit Reporting and Third-Party Collection Agencies
+: You agree and acknowledge that, to the extent permitted under applicable law, We may use the services of external credit reporting agencies and third-party collection agencies in the recovery of any loss We incur from transactions and activities in Your Account(s).
+4.10 Electronic Delivery
+: We may be required to provide certain legal and regulatory disclosures, periodic statements, confirmations, notices, tax forms, and other communications (collectively “
+Communications
+”) to You in written form. By agreeing to these Terms, you consent to Us delivering such Communications to you in electronic form. Consent for electronic delivery applies to the statements that are furnished every year. If You no longer have access to the account You used to receive the Communications in electronic form, You are required to update Your information under Section 4.1 herein and You may contact Customer Service at 
+Support Center
+ or support.eea@okx.com to do so.
+5. EMIR PROVISIONS
+When You enter into these Terms as a legal entity and not a natural person, the provisions of Annex 1 to these Terms (“
+EMIR Provisions
+”) shall apply.
+6. THIRD-PARTY SERVICE PROVIDERS
+You agree and acknowledge that We may use third parties, affiliates or subsidiaries to gather, review, and transmit Your data and activity from one (1) or more of Your financial institutions to Us. By accessing or using the Service(s), You agree to grant third-party providers that We may engage with the right, power, and authority to access and transmit Your transaction data, activity, and personal and financial information either directly from You or from one (1) or more of Your financial institutions to Us in accordance with and pursuant to their terms and conditions, privacy policy, and/or other policies.
+By using Our Service(s), You agree that the data sources that maintain Your Account(s) and any third-party providers that interact with Your credentials or account data in connection with Our Service(s) are not liable for any loss, theft, compromise, or misuse whatsoever in connection with Our Service(s) (including negligence), except to the extent such liability cannot be limited under applicable law. For purposes of these Terms, “data source(s)” referred herein means a third-party information source where a User holds an account from which Our third-party service provider retrieves information (for example, a financial institution URL, website, server, or document).
+You agree that the data sources make no warranties of any kind related to the data provided by Our Service(s), whether express, implied, statutory, or otherwise, unless explicitly provided by each specific data source. Except for portable-document-format configured documents (“
+.pdf
+” or “
+PDFs
+”) of official account documents, which we retrieve on Your behalf and provide to You without alteration, no data provided by Our Service(s) is an official record of any of Your Account(s).
+7. USERS’ RIGHTS AND LIMITATIONS TO USE
+We grant You a limited, non-exclusive, non-transferable permit, subject to these Terms, to access and use the Site and Service(s), solely for purposes approved by Us. You agree not to copy, transmit, distribute, sell, license, reverse engineer, modify, publish, or participate in the transfer or sale of, create derivative works from, or in any other way exploit any of Our source code or similar proprietary or confidential data or other similar information, without Our prior express written consent.
+You may not use the Site for any unlawful purpose.
+You agree that:
+All rights, title and interest in the Service(s) and associated software, website and technology, including all intellectual property rights therein, are and will remain with Us;
+No right or interest in the Service(s) is conveyed other than the limited licenses granted herein;
+The Service(s) are protected by the copyright and other intellectual property laws; and
+All rights not expressly granted in these Terms are reserved.
+8. USER OBLIGATIONS/PROHIBITIONS
+8.1
+ You shall not register multiple accounts unless pre-approved by Us.
+8.2
+ You shall not use another User’s account without proper authorization.
+8.3 
+You shall not utilise the Site or Service(s) to engage in or facilitate any illegal activities.
+8.4
+ You shall not utilise the Site or Service(s) to engage in or in connection with any commercial activities without Our express written consent.
+8.5
+ You shall comply with all applicable laws and regulations and bear the responsibility and legal consequences of Your own actions when using the Site and Service(s). In addition, You shall not infringe the legitimate rights and interests of any third party.
+8.6
+ If You violate or, in Our good-faith determination, are suspected of violating any obligations above, as determined at Our sole and absolute discretion, We have the right to take all necessary measures directly, including but not limited to deleting any violating content posted by the User, freezing Your Financial Products or Account(s), clawing back any unlawful gains, and pursuing civil or criminal prosecution.
+9. SECURITY PROVISIONS
+9.1 Security Interest:
+9.1.1 You shall pay, discharge and satisfy all of Your present and future obligations and liabilities to the Investment Firm and OKX EEA (each an “
+Affiliated Entity
+” and collectively, the “
+Affiliated Entities
+”), whether actual or contingent, and whether owed jointly or severally, under or in connection with these Terms, or such other agreements, terms or documentation with any Affiliated Entity, together with all interest (including, without limitation, default interest), accruing in respect of those obligations or liabilities (the “
+Secured Obligations
+”).
+9.1.2 As continuing security for the due and punctual payment, and discharge, of all Secured Obligations, You hereby grant a pledge (the “
+Security
+”), in favour of the Investment Firm, which accepts, and also in favour of OKX EEA (whereby the Investment Firm shall hold the Security on trust for the benefit of OKX EEA), over (i) all fiat assets (cash, funds, or monetary balances); (ii) all crypto-assets, including without limitation virtual or digital currencies, stablecoins (including asset-referenced tokens and e-money tokens), tokenised assets or other forms of digital tokens, and any other digital representation of value or rights that can be transferred and stored electronically using distributed ledger or similar technology, irrespective of their structure or classification under applicable law and (iii) all kind of financial instruments (all fiat assets, all crypto-assets and all such financial instruments are together referred to as the “
+Assets
+”), held, deposited, or credited to Your Accounts with the Investment Firm and OKX EEA, as applicable (collectively, the “
+Pledged Account(s)
+”).
+9.1.3 You agree that each deposit or transfer made into a Pledged Account is subject to the Security and these Terms. In addition, You: (a) agree that the Pledged Accounts shall be under the control of the Investment Firm; and (b) authorise the Investment Firm, or any person acting on its behalf, to notify OKX EEA of the Security and obtain its acknowledgment thereof, as applicable.
+9.1.4 We hereby authorise You to operate, manage and trade with Your Accounts for the entire duration of Our client relationship. However, upon the occurrence of an Enforcement Event (as defined below), such authorisation can be immediately revoked or suspended by the Investment Firm until We have confirmed that the matter has been remedied or otherwise enforced as set out in these Terms.
+9.1.5 The Security confers, upon the Investment Firm, the right to obtain payment out of the Pledged Accounts with preference over other creditors as provided by the Civil Code (Chapter 16, Laws of Malta) in virtue of the special privilege afforded by applicable law, as well as the right of retention over the Pledged Accounts until the Secured Obligations have been fully and irrevocably performed.
+9.1.6 Without prejudice to the foregoing, Professional Clients and Eligible Counterparties may be subject to additional or different security or collateral arrangements, whether granted or constituted in favour of the Investment Firm or OKX EEA, which may be governed by separate agreements, terms or documentation.
+9.1.7 You covenant and agree that:
+(a) You will, at all times, remain the legal and beneficial owner of the Assets;
+(b) You shall not, at any time, create or agree to create or permit to subsist any mortgage, charge, pledge, lien, encumbrance, or other form of security interest or quasi-security over all or any part of the Assets without the prior written consent of the Investment Firm;
+(c) You shall not take or permit any action which may adversely affect, prejudice, compromise or subordinate the Security;
+(d) You shall warrant and defend the Security against the claims and demands of all persons;
+(e) You shall not take, or omit to take, any action that will or might impair the value of the Assets (including, but not limited to, the closure of any Pledged Account without Our prior written consent);
+(f) You shall not pursue any material variation to the conditions applicable to any Pledged Account without Our prior written consent;
+(g) You shall, if requested, inform third parties of the Security and shall not represent, in any way, that they have free use of the Pledged Accounts; and
+(h) the right to close a Pledged Account shall not, at any time, be exercised without the prior written consent of the Investment Firm.
+9.1.8 An enforcement event shall arise in any one or more of the following scenarios (each, an “
+Enforcement Event
+”):
+(a) any event of pre-insolvency, insolvency, bankruptcy, dissolution, liquidation (or winding-up), administration, moratorium or analogous proceeding is commenced by or against You or any event of interdiction or incapacitation or any other event which may affect Your capacity to enter into and be bound by these Terms;
+(b) any judgement, enforcement, attachment, execution, or other legal process is levied or enforced against any of Your assets or property;
+(c) the Investment Firm or OKX EEA, acting reasonably, considers that the performance of Your obligations is, or is likely to be, materially impaired or jeopardized;
+(d) any event occurs which, in the reasonable opinion of the Investment Firm or OKX EEA, may have a material adverse effect on Your financial position, creditworthiness, or ability to perform or discharge Your obligations, undertakings, covenants, or liabilities, or whenever You suffer any loss from Your trading activities or any transactions undertaken on Your behalf; or
+(e) You fail to make any payment or delivery when due or meet any margin call, collateral maintenance requirement, or collateral top-up obligation, or otherwise take or omit to take any action resulting in an Account shortfall, deficit, or insufficient collateral to cover open positions or You have incurred any loss from Your trading activities or any transactions undertaken on Your behalf (this latter scenario being a “
+Remediable Liquidation Event
+”).
+Without prejudice to any other rights and remedies contained in these Terms, upon the occurrence of a Remediable Liquidation Event, You will receive a notification that Your margin position is at risk of partial or full liquidation and how You may remedy Your position, if this is possible (the “
+Liquidation Risk Notice
+”).
+The Liquidation Risk Notice may be sent to the email address linked with your Account or by means of in-app notification or any other method of communication such as push notifications or messages delivered through Our platform and will be deemed to have been received by You upon transmission.
+Failure to make any payment or delivery or adhere to any margin call, collateral maintenance requirement or collateral top-up obligation or otherwise remedy any shortfall or deficit to cover open position or losses as set out in the Liquidation Risk Notice will constitute an Enforcement Event.
+The above is without prejudice to the right of the Investment Firm to liquidate Your positions as set out in Section 1.10.3.3 above.
+9.1.9 At any time following an Enforcement Event, the Security created under these Terms, is immediately enforceable and the Investment Firm may enforce all or any part of that Security (at such time, in the manner, and on the terms it thinks fit, and take possession of and hold or dispose of all or any part of the Assets), and exercise any of the rights, powers, and discretions conferred by applicable law and by these Terms.
+9.1.10 Upon service of a notice of default, We may exercise, with respect to the Pledged Accounts, all rights and remedies available under these Terms, and as provided by applicable law or otherwise, for the purpose of satisfying or discharging the Secured Obligations. The rights and remedies include, without limitation and to the extent applicable, the rights and remedies available under the Financial Collateral Arrangements Regulations (Subsidiary Legislation 459.01, Laws of Malta).
+9.1.11 All payments arising in relation to the Pledged Accounts, whether by way of dividend, capital distribution or otherwise, as well as the proceeds of any sale of all or any part of the Assets, and received by the Investment Firm following an Enforcement Event, shall be applied as follows: FIRST in payment of all fees, costs and expenses; SECOND in payment of any interest due; and THIRD in payment of the Secured Obligations, and the surplus, if any, after the Secured Obligations have been paid and performed in full, shall be paid to You or such other person as may be entitled thereto.
+9.1.12 The Security shall terminate upon the performance and discharge of the Secured Obligations to Our satisfaction. In the event that any payment or settlement of the Secured Obligations is either: (a) challenged or avoided in a court of law or tribunal at any time, or (b) reversed, revoked or declared null, at any time, by a court of law or tribunal, then You shall, upon request and at no cost to Us, execute and deliver to Us all documents necessary to re-instate the Security to the same extent and under the same conditions established in these Terms.
+9.2 Irrevocable Mandate By Way of Security:
+9.2.1 By accepting these Terms, You hereby irrevocably and unconditionally appoint, and authorise by way of security, the Investment Firm, which declares to have an interest in this mandate and accepts the same, as Your attorney (with full power of appointment, substitution or delegation) and, in Your name or otherwise on Your behalf, to sign, seal, execute, deliver, perfect and do all agreements, instruments, acts and things, at any time and without prior notice, which may be required, or which the Investment Firm (or its appointee, substitute or delegate) may reasonably think proper or expedient, to:
+(a) carry out any of Your obligations under these Terms, any agreement, terms or documentation entered into with any Affiliated Entity by You, or applicable law;
+(b) exercise all remedies available to any Affiliated Entity, under these Terms, any agreements, terms or documentation entered into with any Affiliated Entity by You, or applicable law;
+(c) transfer, sell, redeem, or otherwise liquidate, in favour of any Affiliated Entity (or in favour of any third party, as applicable), any Assets, including without limitation to remedy a Remediable Liquidation Event, and to apply the proceeds towards the satisfaction of any amounts or obligations owed by You; and
+(d) convert currencies, transfer, assign, deduct, set-off, net, and do such other things on Your behalf, as may be reasonably necessary to ensure full payment of all amounts, or full satisfaction of all obligations, due to any Affiliated Entity or to any third parties.
+9.2.2 These authorisations and mandates may not be withdrawn or revoked by You but will remain in full force and effect until: (i) these Terms are terminated or You have been fully de-registered as a User of the Investment Firm and all your Accounts have been closed, and all Secured Obligations (whether actual, contingent or prospective) owed to any Affiliated Entity have been irrevocably paid, discharged, or satisfied in full; or (ii) We consent in writing to their revocation. For the avoidance of doubt, the mere termination of these Terms shall not, of itself, operate to revoke or extinguish these authorisations and mandates, which shall subsist for so long as any Secured Obligations remain outstanding.
+9.2.3 The amount due shall: (i) be determined by the Investment Firm in its reasonable discretion in accordance with fair market value; and (ii) any surplus from the net proceeds of any sale or realisation of the Assets, after deducting all reasonable costs, interest, expenses and taxes (if any) incurred in connection therewith, shall be transferred to You only if the amounts or obligations have been appropriately covered to the satisfaction of the Investment Firm.
+9.2.4 This is an irrevocable mandate granted by way of security in terms of Article 1887(1) of the Civil Code (Chapter 16, Laws of Malta). Where applicable, the Investment Firm also reserves the right to register such mandate, or any other mandate by way of security, granted under these Terms in a public register.
+9.3 Set-Off:
+9.3.1 Without prejudice to any other provision in these Terms, if at any time You fail, refuse, neglect, or otherwise omit to duly observe, perform, or discharge any of Your obligations, undertakings, covenants, or liabilities towards the Investment Firm under these Terms and applicable law, or towards OKX EEA under any separate agreements, terms or documentation entered into with You, the Investment Firm or OKX EEA shall have a right of set-off over the Assets to satisfy any of such obligations, undertakings, covenants, liabilities or losses.
+9.3.2 You acknowledge and agree that the Affiliated Entity may set off any amount, of whatever nature, against the Assets. You agree that any of the Assets may be transferred, sold, redeemed, or otherwise liquidated, including in favour of any Affiliated Entity or to any third party, to set-off any of Your obligations, undertakings, covenants, liabilities or losses as aforesaid, at such time and in such manner as the Affiliated Entity may deem necessary. The amount due in respect of, and to cover and set-off, any of the obligations, undertakings, covenants, liabilities or losses as aforesaid shall: (i) be determined by the Affiliated Entity, in its reasonable discretion, in accordance with fair market value; and (ii) any surplus from the net proceeds of any sale or realisation of the Assets, after deducting all reasonable costs, interest, expenses and taxes (if any) incurred in connection therewith, shall be transferred to You only if the obligations, undertakings, covenants, liabilities or losses have been appropriately set-off to the satisfaction of the Affiliated Entity.
+9.3.3 The Affiliated Entity shall not be liable for any loss or prejudice suffered as a result of the exercise of its right as set out in this Section 9.3 Our rights under this Section 9.3 are in addition to, and will not prejudice, any other rights, or remedies which the Investment Firm may have under these Terms or applicable law.
+9.4. Methods of enforcement:
+9.4.1 For the avoidance of doubt upon the occurrence of an Enforcement Event, we shall be entitled, at our sole discretion, to exercise any and all rights and remedies available to us under these Terms, including: (i) the enforcement of the Security over the Pledged Accounts; (ii) the exercise of any powers and remedies granted pursuant to the irrevocable mandate by way of security as set out in Section 9.2; and (iii) the exercise of our right of set-off as provided in Section 9.3. All such rights and remedies shall be cumulative and shall be without prejudice to, and not in substitution for, any rights or remedies available to us at law.
+9.5 Instructions to OKX EEA:
+9.5.1 You agree that OKX EEA may act on any instruction issued by the Investment Firm. OKX EEA shall not be required to verify the accuracy or completeness of any statement or representation made by the Investment Firm, including without limitation whether an Enforcement Event or any breach or violation of these Terms has occurred, or whether any obligation, amount, or liability is due to the Investment Firm.
+9.5.2 The Investment Firm may, at any time and as frequently as it deems appropriate, delegate any or all of its rights, powers, remedies, or discretions under these Terms to any person it considers suitable, on such terms and in such manner as it determines. The remedies provided under these Terms are cumulative and in addition to, and not in substitution for, any remedies available to Us under applicable law.
+10. CLOSE-OUT NETTING UPON TERMINATION
+10.1
+. 
+Single agreement:
+10.1.1 These Terms and any separate agreements, terms or documentation entered into with You, the Investment Firm or OKX EEA in respect of the Services form a single agreement between the parties. All transactions entered into pursuant to the Services shall constitute a single indivisible contractual agreement and all transactions entered into by the Parties pursuant to this Agreement shall be treated as a single transaction or dealing for the purposes of the set-off and netting provisions set out in this Section.
+10.2 Cross-Affiliate Guarantee:
+10.2.1 It is hereby acknowledged and agreed that each Affiliated Entity:
+a) jointly and severally, unconditionally guarantees payment in full of any and all existing and future obligations and liabilities which may be owed to You pursuant to the Services; and
+b) are personally liable in full for any payment which may be due to you under or connection with the Services,
+(the “
+Cross-Affiliate Guarantee
+”).
+10.2.2 Any amounts which may be due to you pursuant to the Cross-Affiliate Guarantee shall be considered as a single indivisible obligation which to the maximum extent possible at law may be discharged by any Affiliated Entity. Any such discharge by any Affiliated Entity shall discharge and release each Affiliated Entity in respect of the payment obligation which may be owed to you.
+10.3 Close-out Netting:
+10.3.1 Upon the termination of these Terms for any reason whatsoever, You will receive a notification designating the date on which all transactions shall be terminated and all payment or delivery obligations or any other obligations which are due to You or by You shall become immediately due and payable without further notice (the “
+Termination Date
+”).
+10.3.2 Provided that upon the occurrence of an Enforcement Event as set out in sub-clauses (a) to (d) (inclusive) of Section 9.1.8 above, (an “
+Automatic Termination Event
+”), all open positions and transactions shall terminate automatically upon the occurrence of such event and the Termination Date shall be the same date as the date of such Automatic Termination Event.
+10.3.3 Upon the occurrence of the Termination Date, no further payments or deliveries in respect of any transactions will be made but the amount if any, payable between You and the Affiliated Entities pursuant to the Cross-Affiliate Guarantee shall be determined in accordance with this Section.
+10.3.4 On or as soon as reasonably practicable following the occurrence of the Termination Date the Investment Firm shall for each terminated transaction determine in good faith and using commercially reasonable procedures the total losses or gain arising in respect of each terminated transaction. Where market or exchange prices of the transactions are denominated in currencies other than the Euro, the Investment Firm shall convert them into Euro on the basis of currency exchange rates offered by leading market participants for selling the relevant currencies.
+10.3.5 Following such valuation of the terminated transactions the Investment Firm shall determine the total of all amounts that would have been payable or deliverable between the parties if each transaction had not been terminated and had continued until its intended maturity and set-off the amounts payable between You and the Affiliated Entities pursuant to the Cross-Affiliate Guarantee such that the respective claims, liabilities, payments and obligations arising from or in connection with the terminated transactions shall be converted into a single final net amount payable by either you or the Investment Firm/its Affiliates pursuant to the Cross-Affiliate Guarantee (the “
+Single Net Termination Amount
+”). In calculating the Single Net Termination Amount, the Investment Firm will also take into account any fees or other charges which may be due by You pursuant to these Terms.
+10.3.6 The Investment Firm provides negative balance protection to all Retail Clients trading leveraged derivative products. This means that Your total losses from trading cannot exceed the funds available in Your Account, and you will not owe any additional amounts to the Investment Firm as a result of trading losses. Therefore, in the event that the Single Net Termination Amount results in a payment being due by a Retail Client to the Investment Firm, such amount owing to the Investment Firm will be waived however any outstanding fees and charges will still be payable to the Investment Firm.
+10.3.7 The payment of the Single Net Termination Amount shall fully discharge all mutual claims, liabilities, payments and obligations between the You and the Affiliated Entities pursuant to the Cross-Affiliate Guarantee.
+10.3.8 The exercise of set-off under this paragraph shall be without prejudice and in addition to, any right of set-off or other right or remedy to which any party is at any time otherwise entitled (whether by operation of law, contract or otherwise).
+10.3.9 In the interest of clarity and for avoidance of doubt, the close-out netting provision contained in this Section, shall to the maximum extent possible at law, be enforceable in accordance with its terms whether before or after the bankruptcy or insolvency or any other proceeding in any jurisdiction having a similar effect of either party in respect of any mutual credits, debts or dealings arising or occurring before such bankruptcy or insolvency.
+11. FEES
+11.1
+ We reserve the right to set User Fees according to these Terms. We also reserve the right to formulate and adjust the Fees, set service charges specific to You, or terminate any promotional offers at any time.
+11.2
+ Unless otherwise stated or agreed upon in writing, You agree that We may deduct the above-mentioned Fees directly from the Financial Products in Your Account(s) once the Service(s) have been provided.
+11.3
+ Current Fee information is available at the following link: 
+here
+.
+11.4
+ At Our sole discretion, regional or jurisdiction-specific pricing may apply based on Your residence or location.
+11.5
+ If You fail to pay the applicable Fees (including, but not limited to, service charges) in full or on time, We reserve the right to interrupt, suspend or close Your Account(s).
+11.6 Additional Fees and Charges
+: Deposits, transfer-in and withdrawals in connection with Your Account are facilitated by OKX EEA under the unified account structure. Any applicable deposit, transfer-in or withdrawal fees are determined and charged through OKX EEA, not by Us. Information on such fees and available channels can be viewed via the OKX EEA platform or website. You are responsible for paying any additional fees charged by any financial service providers (including but not limited to PSPs, banks, and card schemes, hereinafter individually and collectively referred as the “
+Financial Service Provider(s)
+”) used to process a transfer to or from Your Account(s). We will not process a transfer if associated fees charged by the Financial Service Provider exceed the value of the transfer. You may be required to transfer in additional fiat to cover such fees in order to complete such a transfer. We have no control over, nor will We be liable for, such fees charged by these Financial Service Providers.
+12. CHANGE, INTERRUPTION, TERMINATION, AND DISCONTINUANCE OF SERVICES
+12.1 Service Change and Interruption
+: We may change, interrupt, suspend or terminate the Service(s) at any time without notice, although We will attempt to provide reasonable notice when practicable.
+12.2 Service Discontinuance and Termination
+: We reserve the right, in Our sole and absolute discretion, to discontinue or terminate the Service(s) provided to You without notice at any time, temporarily or permanently, including, but not limited to, in the following cases:
+If the personal information You provided is not true, complete, accurate, or is otherwise inconsistent with the information provided at the time of original registration;
+If You violate an applicable law or regulation, or these Terms;
+If required by any applicable law or regulation, or the requirements of a government authority with jurisdiction; or
+For security reasons or other necessary circumstances, as determined at Our sole and absolute. discretion.
+13. TAXES AND COMPLIANCE WITH LAWS
+13.1
+ It is Your sole responsibility to determine whether, and to what extent, any direct or indirect taxes apply to any transactions You conduct using the Service(s), and to withhold, collect, report and remit the correct amounts of taxes to the appropriate tax authorities. You agree that We do not provide legal or tax advice and are not responsible for determining whether taxes apply to Your transactions or for collecting, reporting, withholding or remitting any taxes arising from any transactions. You also acknowledge that You are not subject to any backup withholding in any jurisdiction. We advise You to consult a tax professional regarding Your specific tax situation.
+13.2
+ You agree to comply with all relevant laws and regulations. Regarding the prevention of terrorist financing and anti-money laundering, We will work with local authorities and may report certain transactions to the local authorities in accordance with applicable laws and regulations. When using Our Service(s), You represent and warrant that Your actions are legal and the source of any Financial Products used with the Service(s) are not derived from unlawful activities or any Prohibited Businesses. If We suspect, in Our sole and absolute discretion, that You are in violation of this Section 13.2, You may be subject to the remedies available to Us under Section 4 of these Terms.
+14. PRIVACY POLICY STATEMENT
+Please refer to Our Privacy Notice published on the Site for information about how We collect, use, and share Your information.
+15. INDEMNIFICATION
+Subject to applicable laws, except for the Investment Firm’s willful misconduct or fraud, You shall indemnify, hold harmless, and defend the Investment Firm, its parent and affiliates, and its and their employees, officers, directors, representatives, agents, contractors, and successors (collectively, the “
+Indemnified Party
+”) from and against any and all claims, losses, liabilities, damages, judgments, penalties, fines, costs, and expenses of any kind (including professional fees and reasonable attorney’s fees) (collectively “
+Losses
+”) which may be suffered or incurred by any of the Indemnified Party any as a result from or arising out of:
+Your use of the Service(s) hereunder;
+Your failure to perform Your obligations under these Terms;
+Your breach of any warranties and representations made to Us under these Terms;
+any third-party claim related to Your use of the Service(s);
+Your failure to comply with any applicable federal, state, or local laws and regulations in the performance of Your obligations hereunder; or
+any investigation, claim, suit, action or other proceeding against the Investment Firm relating to or arising out of Your use of the Service(s) by a governmental authority or regulatory or self-regulatory agency or organization.
+We may, in Our sole discretion, obtain sole control of the defense thereof. Unless otherwise explicitly agreed to by Us in writing, settlement of any Losses will not be entered into unless such settlement completely releases the Indemnified Parties of all liability.
+16. DISCLAIMER
+16.1 User Information
+: We are not responsible for the failure to preserve, modify, delete or store information provided by You, nor will We be liable for any typographical or clerical errors caused by Us. We have the right but not the obligation to improve or correct any omission or error of any part of this Site.
+16.2 NO WARRANTY
+: THE SERVICES WE PROVIDE ARE PROVIDED TO YOU ON A STRICTLY “AS IS”, “WHERE IS” AND “WHERE AVAILABLE” BASIS WITHOUT ANY REPRESENTATION OR WARRANTY, WHETHER EXPRESS, IMPLIED OR STATUTORY. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAWS AND REGULATIONS, OKX SPECIFICALLY DISCLAIMS ANY WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO UNINTERRUPTED OR CONTINUOUS AVAILABILITY OF SERVICES, IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND/OR NON-INFRINGEMENT. OKX DOES NOT MAKE ANY REPRESENTATIONS OR WARRANTIES THAT ACCESS TO THE SITE, ANY PART OF THE OKX SERVICES, OR ANY OF THE MATERIALS CONTAINED THEREIN, WILL BE CONTINUOUS, UNINTERRUPTED, TIMELY, OR ERROR-FREE, AND THAT THERE ARE NO VIRUSES OR OTHER HARMFUL COMPONENTS ON THE PLATFORM. OKX DOES NOT GUARANTEE THAT ANY ORDER WILL BE EXECUTED, ACCEPTED, RECORDED OR REMAIN OPEN. EXCEPT FOR THE EXPRESS STATEMENTS SET FORTH IN THESE TERMS, YOU HEREBY ACKNOWLEDGE AND AGREE THAT YOU HAVE NOT RELIED UPON ANY OTHER STATEMENT OR UNDERSTANDING, WHETHER WRITTEN OR ORAL, WITH RESPECT TO YOUR USE AND ACCESS OF THE OKX SERVICES AND OKX SITE. WITHOUT LIMITING THE FOREGOING, YOU HEREBY UNDERSTAND AND AGREE THAT OKX WILL NOT BE LIABLE FOR ANY LOSSES OR DAMAGES ARISING OUT OF OR RELATING TO: (A) ANY INACCURACY, DEFECT OR OMISSION OF FINANCIAL PRODUCTS PRICE DATA, (B) ANY ERROR OR DELAY IN THE TRANSMISSION OF SUCH DATA, OR (C) INTERRUPTION IN ANY SUCH DATA.
+16.3 User Opinion
+: Any comment published by a User is the sole purview of that User, and does not represent the views, opinions, or beliefs of the Investment Firm or of this Site. Neither the Investment Firm nor this Site will bear any legal responsibility for consequences caused by such User comments.
+16.4 Announcements
+: Official announcements may be made through a formal page announcement, station letter, e-mail, customer service phone call, SMS, pop-up or regular mail delivery. We disclaim any and all liability for information obtained from channels other than those mentioned in this paragraph.
+16.4.1 
+Messaging ‘Soft’ Opt-In
+: You agree that We may send You messages regarding Your Account(s)’ security, marketing via SMS, OTP, e-mail, phone, or other contact means We collect from You or a third-party for account security and verification purposes described under Sections 4 and 5 or other relevant sections. You will always be given the option to unsubscribe from receiving any marketing material from Us.
+16.4.2 
+Use for Information for Research Purposes: 
+You consent for Us to use Your User Information for marketing research purposes from time to time but mainly to implement marketing research analysis to aid and improve upon Our Services. In light of this, Your information, including but not limited to email and/or mobile phone, full name, and residential address, may be used for such purposes. We wish to emphasize that Your information will not be used for any secondary or additional processing purposes.
+16.5 LIMITATION OF LIABILITY
+: NOTHING IN THESE TERMS EXCLUDES THE LIABILITY OF OKX FOR ITS FRAUD, GROSS NEGLIGENCE, INTENTIONAL VIOLATIONS OF LAW, OR FOR ANY OTHER LIABILITY WHICH BY LAW CANNOT BE EXCLUDED, UNLESS APPLICABLE LAW EXPLICITLY ALLOWS SUCH EXCLUSION. SUBJECT TO THIS SECTION AND THE LAW, IN NO EVENT WILL THE PARTY HEREOF, ITS AFFILIATES AND SERVICE PROVIDERS, OR ANY OF ITS RESPECTIVE OFFICERS, DIRECTORS, AGENTS, JOINT VENTURERS, EMPLOYEES OR REPRESENTATIVES, BE LIABLE TO YOU FOR: (A) ANY AMOUNT GREATER THAN THE VALUE OF THE SUPPORTED FINANCIAL PRODUCTS ON DEPOSIT IN YOUR ACCOUNT AT THE TIME THE EVENT GIVING RISE TO YOUR CLAIM FIRST AROSE; OR (B) ANY LOST PROFITS, DIMINUTION IN VALUE OR BUSINESS OPPORTUNITY, ANY LOSS, DAMAGE, CORRUPTION OR BREACH OF DATA OR ANY OTHER INTANGIBLE PROPERTY OR ANY SPECIAL, INCIDENTAL, INDIRECT, INTANGIBLE, OR CONSEQUENTIAL DAMAGES, WHETHER BASED IN CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR OTHERWISE, ARISING OUT OF OR IN CONNECTION WITH AUTHORIZED OR UNAUTHORIZED USE OF THE SITE OR THE SERVICES, OR THESE TERMS OF SERVICES, EVEN IF AN AUTHORIZED REPRESENTATIVE OF OKX HAS BEEN ADVISED OF OR KNEW OR SHOULD HAVE KNOWN OF THE POSSIBILITY OF SUCH DAMAGES BEFOREHAND.
+DESPITE ANYTHING ELSE IN THESE TERMS, IF AN APPLICABLE LAW IMPOSES A LIABILITY ON OKX WHICH CANNOT BE EXCLUDED, BUT PERMITS THE PARTY TO LIMIT THAT LIABILITY, OKX’S LIABILITY IS LIMITED TO THE MAXIMUM EXTENT PERMITTED BY LAW. IF THE JURISDICTION OF THE PARTY DOES NOT ALLOW FOR THE EXCLUSION OF CERTAIN WARRANTIES OR THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES, SOME OF THE LIMITATIONS SET FORTH ABOVE MAY NOT APPLY TO YOU.
+17. APPLICABLE LAW AND JURISDICTION
+These Terms are governed by and shall be construed in accordance with the laws of Malta without regard to any choice or conflict of laws rules.
+18. DISPUTE RESOLUTION
+Unless mandatory provisions of the applicable law of Your jurisdiction determines otherwise, any dispute, controversy or claim, whether contractual or non-contractual, arising out of or in connection with these Terms, or the breach, termination or invalidity thereof, or any other issue which shall arise in virtue of these Terms, shall be referred to and finally settled by arbitration in terms of the UNCITRAL Rules of Arbitration in accordance with the provisions of Part V (International Arbitration) of the Arbitration Act (Chapter 387 of the Laws of Malta). Any arbitration commenced pursuant to this Section 18 shall take place in the English language and shall be confidential. The number of arbitrators shall be one, to be appointed by agreement between the parties to the proceedings. Failing such agreement within fourteen (14) days from the due notification of a written request to concur in the appointment of the arbitrators, appointment shall take place by the Chairman of the Malta Arbitration Centre.
+Any claim arising out of or related to the Terms must be filed within one year after such claim arose. Otherwise, the claim is permanently barred, which means that the Users will not have the right to assert the claim. The provisions set forth in this clause will survive termination of the Terms.
+19. GENERAL PROVISIONS
+19.1 Severability
+: If any provision of these Terms is deemed to be unlawful, invalid or unenforceable for any reason, such provision will be deemed to be severed and will not affect the legal effect of any other provision.
+19.2 Complaints
+: If You have any complaints, feedback, or questions, please contact Our 
+Support Center
+ or support.eea@okx.com. When You contact us, please provide Us with Your name, email address, and any other information we may need to identify You, as well as the transaction on which You have feedback, questions, or complaints. In the event that you wish to file a Formal Complaint please follow the instructions found at the following link: 
+here
+.
+19.3 Assignment
+: You may not assign any rights, obligations and/or licenses granted under these Terms without Our prior written consent. Any attempted transfer or assignment by You in violation hereof will be null and void. We may assign Our rights and obligations without restriction, including without limitation to any of Our affiliates or subsidiaries, or to any successor in interest of any business associated with Us. Subject to the foregoing, these Terms will bind and inure to the benefit of the Investment Firm, its successors, and permitted assigns.
+19.4 Change in Control
+: In the event that the Investment Firm is acquired by or merged with a third-party entity, We may, in any of these circumstances, transfer or assign the information We have collected from You as part of such merger, acquisition, sale, or other change of control.
+19.5 Force Majeure
+: You agree that in no event will We be liable for any delays, failure in performance or interruption of service which may result directly or indirectly from any cause or condition beyond any Party’s or any of Our Service Providers’ reasonable control, including but not limited to, significant market volatility or illiquidity, pandemics, epidemics, any delay or failure due to any act of God, act of civil or military authorities, act of terrorists, civil disturbance, war, strike or other labour dispute, fire, interruption in telecommunications or Internet services or network provider services, failure of equipment and/or software, other catastrophe or any other occurrence which is beyond Our reasonable control.
+19.6 Unclaimed Property
+: If Your Account(s) are inactive, there are Financial Products in Your Account(s), and You have not responded to Our attempts to contact You for the applicable period of time (as defined under the unclaimed property or similar laws of the relevant jurisdiction), We may have an obligation to report any Financial Products in Your Account(s) to the applicable governmental entity as unclaimed property. If this occurs, We will attempt to locate You at the last updated address shown in Our records. If We are unable to locate You, We may be required to deliver any such Financial Products to the applicable jurisdiction’s designated custodian as unclaimed property.
+19.7 No Advice Provided
+: You agree and understand that We do not provide legal, tax, or investment advice, that Your use of the Service(s) is self-directed, and that it is Your responsibility to consult with qualified professionals in Your own jurisdiction prior to using the Service(s) or implementing any financial plan.
+19.8 Miscellaneous
+: These Terms set forth the complete terms and conditions with respect to the subject matter hereof and supersede all prior understandings and communications relating thereto. Unless incorporated by reference into the Terms, no term or condition of any other document provided to the Investment Firm which is different from, inconsistent with, or in addition to the terms and conditions set forth herein will be binding upon the Investment Firm. You represent, warrant and undertake that all information disclosed to the Investment Firm in connection with these Terms are true, accurate, and complete.
+19.9 Language
+: The official language of these Terms and all referenced documents is English. Any translation of these Terms or its referenced documents are provided for convenience only and may not accurately represent the information contained in the original English. In the event of inconsistency or ambiguity, the English version of these Terms shall prevail.
+19.10 Investor Compensation Scheme:
+ We are covered by the Investor Compensation Scheme. You may be entitled to compensation from the scheme if We cannot meet our obligations. The amount of compensation depends on the type of business and circumstances of the claim. Information may be obtained from 
+www.compensationschemes.org.mt
+. Professional Clients and Eligible Counterparties are generally not entitled to claim for compensation from the investor compensation scheme in terms of the Investor Compensation Scheme Regulations (Subsidiary Legislation 370.09, Laws of Malta). For the avoidance of doubt, the Depositor Compensation Scheme established under Subsidiary Legislation 371.09, Laws of Malta, does not apply to the Investment Firm or to the Services provided under these Terms, irrespective of client classification.
+Language
+Version
+Croatian
+Click 
+here 
+Lithuainian
+Click 
+here 
+Slovenian
+Click 
+here 
+Annex 1 to OEM's Terms of Service — EMIR Provisions
+Link
+Annex 2
+to OEM's Terms of Service 
+- 
+Product-specific terms and conditions
+Link
+1. GENERAL SERVICES TERMS
+2. ELIGIBILITY AND PROHIBITION OF USING OUR SERVICES
+3. RISK DISCLOSURE
+4. YOUR ACCOUNT
+5. EMIR PROVISIONS
+6. THIRD-PARTY SERVICE PROVIDERS
+7. USERS’ RIGHTS AND LIMITATIONS TO USE
+8. USER OBLIGATIONS/PROHIBITIONS
+9. SECURITY PROVISIONS
+10. CLOSE-OUT NETTING UPON TERMINATION
+11. FEES
+12. CHANGE, INTERRUPTION, TERMINATION, AND DISCONTINUANCE OF SERVICES
+13. TAXES AND COMPLIANCE WITH LAWS
+14. PRIVACY POLICY STATEMENT
+15. INDEMNIFICATION
+16. DISCLAIMER
+17. APPLICABLE LAW AND JURISDICTION
+18. DISPUTE RESOLUTION
+19. GENERAL PROVISIONS
+Annex 1 to OEM's Terms of Service — EMIR Provisions
+Annex 2 to OEM's Terms of Service - Product-specific terms and conditions
+©2017 - 2026 OKX.COM
+Language
+Europe
+English
+Deutsch
+Français
+Italiano
+Polski
+Português (Portugal)
+Română
+Norsk (bokmål)
+More about OKX
+About us
+Candidate Privacy Notice
+Careers
+Contact us
+Terms of Service
+Terms of Service (Derivatives)
+Privacy Notice
+OKX EU Disclosures
+OEM Disclosures
+Conflicts of interest disclosure
+Whistleblower notice
+Law enforcement
+OKX app
+Products
+Buy crypto
+P2P trading
+Convert
+Trade
+Earn
+Trading bots
+All cryptocurrencies
+Learn
+TradingView
+X-RWA
+Outcome markets
+Stock price
+Services
+Affiliate
+API
+Historical market data
+CEX fee schedule
+Listing application
+P2P Merchant application
+Support
+Support center
+Channel verification
+Announcements
+Connect with OKX
+Buy crypto
+Buy USDC
+Buy Bitcoin
+Buy Ethereum
+Buy ADA
+Buy Solana
+Buy Litecoin
+Buy XRP
+Crypto calculator
+BTC to USD
+ETH to USD
+USDC to USD
+SOL to USD
+XRP to USD
+PI to USD
+Trade
+BTC USDC
+ETH USDC
+LTC USDC
+SOL USDC
+XRP USDC
+Bitcoin price
+Ethereum price
+Pi Network price
+Solana price
+XRP price
+Bitcoin price prediction
+Ethereum price prediction
+XRP price prediction
+Pi Network price prediction
+How to buy crypto
+How to buy Bitcoin
+How to buy Ethereum
+How to buy Solana
+How to buy Pi Network
+Trade on the go with OKX
+Register

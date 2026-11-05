@@ -1,0 +1,708 @@
+{
+ "grupo": "candidatas-espana",
+ "revisor": "revisión independiente del 05/11/2026",
+ "nota": "Lecturas propias del revisor (curl y Playwright). HTML, PDF, PNG y crudo/ quedan fuera de Git por .gitignore; los .txt son el texto extraído. El PDF de BeToken contiene DNI: se leyó en el scratchpad y se borró, solo consta su sha256. Los textos derivados (.txt) llevan el sha256 de la copia original en la entrada de su HTML/PDF.",
+ "consultas": [
+  {
+   "url": "https://support.bit2me.com/es/support/solutions/articles/35000266706",
+   "archivo": "bit2me/faq-stx.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:19Z",
+   "bytes": 250901,
+   "sha256": "9e0f6f5e453c17a9d6bc19ae5f1a1363c47b622b7b381ce776e9eaf1205f6bbc"
+  },
+  {
+   "url": "https://bit2me.com/es/stx",
+   "archivo": "bit2me/stx-producto.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:19Z",
+   "bytes": 530852,
+   "sha256": "81b2b4d542075131300e543fa7c4db67e7b55a9beaf690d3d941e614ad950a5c"
+  },
+  {
+   "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "archivo": "bit2me/nota-prensa-28-10.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:19Z",
+   "bytes": 168047,
+   "sha256": "c3b80c67603d9afd811bb562fe83607da49f3eda2aff916fec63c2fa2a7766c0"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A56759137&lang=es",
+   "archivo": "cnmv/esi-bit2me-stx.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:19Z",
+   "bytes": 223261,
+   "sha256": "b354db0a3ca4f25dccf1c04648e1cfb80ea5a8bbeb135f1fbb267ad944da629a"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx?lang=es",
+   "archivo": "cnmv/infraestructuras.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:19Z",
+   "bytes": 260219,
+   "sha256": "c7090d38ae80f5689eabae0e9687decafe3bc3601628f0434257a17ba532aee6"
+  },
+  {
+   "url": "https://valorix.es/",
+   "archivo": "bit2me/valorix-portada.html",
+   "http": "000",
+   "rc": 35,
+   "error": "curl: (35) Recv failure: Connection reset by peer ",
+   "consultadoUtc": "2026-11-05T08:22:19Z",
+   "bytes": 0,
+   "sha256": "null"
+  },
+  {
+   "url": "https://exchange.token-city.com/es/condiciones",
+   "archivo": "tokencity/condiciones.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:49Z",
+   "bytes": 60447,
+   "sha256": "f6467674566550460df0366bb8b5cfdf0d03218e50e45d4376ac9e87736fa4ab"
+  },
+  {
+   "url": "https://www.token-city.com/es/marketplace",
+   "archivo": "tokencity/marketplace.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:49Z",
+   "bytes": 1125963,
+   "sha256": "1651b0ff49c1fce88655d10932e333d994e36fd4fe14b90415243b943f0053d9"
+  },
+  {
+   "url": "https://exchange.token-city.com/",
+   "archivo": "tokencity/exchange-portada.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:49Z",
+   "bytes": 97312,
+   "sha256": "c1c02c69888bce1c64c8591cf34fa962c7674da34822503e77b9f7c6f7eca7ee"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1",
+   "archivo": "cnmv/erir-p2.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:49Z",
+   "bytes": 182838,
+   "sha256": "287f1432915b4b8e9373fd949a05bba87ce880645501ea0444fa1dab2878ea65"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es",
+   "archivo": "cnmv/erir-p1.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:49Z",
+   "bytes": 183044,
+   "sha256": "bc39c56a2d448f67fe6720ded3e81fca7c6aa96c7e4716b6addd2838cd8a5993"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+   "archivo": "cnmv/erir-p3.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:49Z",
+   "bytes": 162258,
+   "sha256": "12212c30c55628a72171275defb1ca5f10eb3e6b1fe5fce735930fecc5b27fd7"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&lang=es",
+   "archivo": "cnmv/esi-token-city.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:22:49Z",
+   "bytes": 223191,
+   "sha256": "0ed4ef67a29085602134989c92675ff04cb990477852a7058accd8f31c1b61cf"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A56759137&lang=es (pestaña Programa de actividades, Playwright)",
+   "archivo": "cnmv/programa-bit2me-stx.txt",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:23:53Z",
+   "bytes": 8590,
+   "sha256": "957a0556995c8eedc44f4737f494b27487d6fea3eb5245f5efbd71e52d1178ca"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&lang=es (pestaña Programa de actividades, Playwright)",
+   "archivo": "cnmv/programa-token-city.txt",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:23:53Z",
+   "bytes": 8292,
+   "sha256": "c9e70cc653e51497495c3889ad5a831fbc871538204bfa3f3b11759cf6c8119e"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&lang=es (pestaña Programa de actividades, Playwright)",
+   "archivo": "cnmv/programa-token-city-tabla.txt",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:24:16Z",
+   "bytes": 2595,
+   "sha256": "a3c08f4778a59c99dfdd57e2e2fa051e0a048ec93c2c7fec181bc2174a920e25"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A56759137&lang=es (pestaña Programa de actividades, Playwright)",
+   "archivo": "cnmv/programa-bit2me-stx-tabla.txt",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:24:38Z",
+   "bytes": 2780,
+   "sha256": "acfe43271582ed290c722a192ef3def5a3499684d1d8e4480ef8c963863f5c11"
+  },
+  {
+   "url": "https://api.portfolio.exchange/poex/document/28108",
+   "archivo": "hausera/kid-es-28108.pdf",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:24:50Z",
+   "bytes": 219682,
+   "sha256": "f2bd05c82dcaaed9b57aeb41e8048a342c5b6ce9f450258bdd27ffaa91e4c970"
+  },
+  {
+   "url": "https://api.portfolio.exchange/poex/document/25118",
+   "archivo": "hausera/final-terms-25118.pdf",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:24:50Z",
+   "bytes": 457269,
+   "sha256": "262ada0df66893d96006fca8ad75e1a9fe6af4154a8da67f75859cff366ed36b"
+  },
+  {
+   "url": "https://api.portfolio.exchange/poex/document/49667",
+   "archivo": "hausera/aviso-pago-49667.pdf",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:24:50Z",
+   "bytes": 458382,
+   "sha256": "25e7639e9d9942ba83fb3c3bd8fa853d74d1662384acc9b8f78589db5e6969fa"
+  },
+  {
+   "url": "https://portfolio.exchange/es/portfolio-market/hausera-eti-HAUS-FR0014010H19-41",
+   "archivo": "hausera/ficha-portfolio.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:24:50Z",
+   "bytes": 234822,
+   "sha256": "4cdd6f8c166e1dff3fcbc115de1303283cb2eb8b4b854fd909c253f755183440"
+  },
+  {
+   "url": "https://api.portfolio.exchange/poex/document/25075",
+   "archivo": "crudo/folleto-base-25075.pdf",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:25:07Z",
+   "bytes": 5976814,
+   "sha256": "b8be61a16b3a63150c71f99b13ce61382b9a252bfaab74b267356b6b3259f2cf"
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers/whitepaper/periodo-de-venta.md",
+   "archivo": "crudo/gitbook-periodo-venta.md",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:26:06Z",
+   "bytes": 1005,
+   "sha256": "9e7c77f45cf16809d947c8f3f32263a39e75cab2cae31ae0c1f9786b28515be1"
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers/whitepaper/transmisibilidad.md",
+   "archivo": "crudo/gitbook-transmisibilidad.md",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:26:06Z",
+   "bytes": 824,
+   "sha256": "99a4ebb17481cadfaa8bfadd232d137df54f89216aa1be43d0c46bf7e2a3f854"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=0&lang=es",
+   "archivo": "cnmv/listado-sv-av.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:26:06Z",
+   "bytes": 384691,
+   "sha256": "f8b5361bf3c4ef5a2eba795f7ab8a38888d82d3fc45904ed3b644ee4007ea7b4"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=2&lang=es",
+   "archivo": "cnmv/listado-eaf.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:26:06Z",
+   "bytes": 341912,
+   "sha256": "0cf8c62d86ab8acea3ee0ba3194fd98a7bdb056ffb61a4aaa7939db98de43d2f"
+  },
+  {
+   "url": "https://betoken.io/",
+   "archivo": "betoken/betoken-io.html",
+   "http": "000",
+   "rc": 35,
+   "error": "curl: (35) Recv failure: Connection reset by peer ",
+   "consultadoUtc": "2026-11-05T08:26:06Z",
+   "bytes": 0,
+   "sha256": "null"
+  },
+  {
+   "url": "https://www.beselfbrands.com/",
+   "archivo": "betoken/www-beselfbrands.html",
+   "http": "522",
+   "rc": 0,
+   "error": "curl: (35) Recv failure: Connection reset by peer ",
+   "consultadoUtc": "2026-11-05T08:26:06Z",
+   "bytes": 16,
+   "sha256": "c8b9f348c8635d7ffcd5d16ad4b9c65289302dc6c4fe2e0210346b23013fb280"
+  },
+  {
+   "url": "https://beselfbrands.com/",
+   "archivo": "betoken/beselfbrands.html",
+   "http": "522",
+   "rc": 0,
+   "error": "curl: (35) Recv failure: Connection reset by peer ",
+   "consultadoUtc": "2026-11-05T08:26:06Z",
+   "bytes": 16,
+   "sha256": "c8b9f348c8635d7ffcd5d16ad4b9c65289302dc6c4fe2e0210346b23013fb280"
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers/whitepaper/informacion-general/caracteristicas-del-token.md",
+   "archivo": "crudo/gitbook-caracteristicas.md",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:26:07Z",
+   "bytes": 1335,
+   "sha256": "60d0a715367674cb3e3ffbbf2d0b3b909f407d8ede93d490864f2221a8f5fcaf"
+  },
+  {
+   "url": "copia de crudo/gitbook-periodo-venta.md (sin parámetros firmados)",
+   "archivo": "betoken/gitbook-periodo-venta.txt",
+   "http": "n/a",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:26:07Z",
+   "bytes": 1005,
+   "sha256": "9e7c77f45cf16809d947c8f3f32263a39e75cab2cae31ae0c1f9786b28515be1"
+  },
+  {
+   "url": "copia de crudo/gitbook-transmisibilidad.md (sin parámetros firmados)",
+   "archivo": "betoken/gitbook-transmisibilidad.txt",
+   "http": "n/a",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:26:07Z",
+   "bytes": 824,
+   "sha256": "99a4ebb17481cadfaa8bfadd232d137df54f89216aa1be43d0c46bf7e2a3f854"
+  },
+  {
+   "url": "copia de crudo/gitbook-caracteristicas.md (sin parámetros firmados)",
+   "archivo": "betoken/gitbook-caracteristicas.txt",
+   "http": "n/a",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:26:07Z",
+   "bytes": 1335,
+   "sha256": "60d0a715367674cb3e3ffbbf2d0b3b909f407d8ede93d490864f2221a8f5fcaf"
+  },
+  {
+   "url": "https://content.gitbook.com/content/0aYXo7y0jkozXKEdhHg8/blobs/7hAvNhp8E8k8Tajoj766/BeselfBrands_Whitepaper.pdf",
+   "archivo": null,
+   "nota": "leído en carpeta temporal del scratchpad y borrado (contiene DNI)",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:26:40Z",
+   "bytes": 1293700,
+   "sha256": "e5e16d1d24644ef917e01d90a03b6384b9838b6fbdd25f2fa45baf3868188357"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+   "archivo": "cnmv/adv-gemini.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:15Z",
+   "bytes": 217724,
+   "sha256": "dcff3dc1c7706a23b15d26e04974ea18110b69ecc883ff0782282359b27f80ec"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bit2Me",
+   "archivo": "cnmv/adv-bitme.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:17Z",
+   "bytes": 212181,
+   "sha256": "85d8d9c0ce2e4cb089615c2f7a4ea11b5f08662bb78f8849635d5ca33d92797a"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Valorix",
+   "archivo": "cnmv/adv-valorix.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:19Z",
+   "bytes": 212203,
+   "sha256": "2f63f6e9deb60406a40e1acbee1dd18c89eb5961f58179bcc4ec7ef65a688945"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Activos%20y%20Valores%20Digitales",
+   "archivo": "cnmv/adv-activosyvaloresdigitales.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:22Z",
+   "bytes": 212643,
+   "sha256": "08fcee44b7088ddd818e20f0b1664c4c169818c84ede96d5c4fe5c2f96288822"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Altarius",
+   "archivo": "cnmv/adv-altarius.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:24Z",
+   "bytes": 212225,
+   "sha256": "a90d8b49c0d2b52d276f86cfd74dc1aca9daa322bce1670c5c7bc60fabdc2aff"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+   "archivo": "cnmv/adv-hausera.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:27Z",
+   "bytes": 212203,
+   "sha256": "47b5107d101f56523502d340c7163415e2d1b9c9ec9d80eaabb4db2f6cbff73f"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Portfolio",
+   "archivo": "cnmv/adv-portfolio.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:29Z",
+   "bytes": 212247,
+   "sha256": "5a65079e8279be4e9b05edcbcfafa2cce5d4d68de0fb383424c364e068300be2"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Beself",
+   "archivo": "cnmv/adv-beself.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:31Z",
+   "bytes": 212181,
+   "sha256": "78d7f6c201b27155ed9bd7178fcedfa67a55afb93cd729392595762ebcf5af8d"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Betoken",
+   "archivo": "cnmv/adv-betoken.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:33Z",
+   "bytes": 212203,
+   "sha256": "5dbcc1c42700ac7f59bca85ca7da1569f6819da8a744d1eb825a3cea1c0462e2"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City",
+   "archivo": "cnmv/adv-tokencity.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:35Z",
+   "bytes": 212269,
+   "sha256": "776498c25c381d076191193d3bbd2f0074799cbe805c98c1fbc259d456b89e83"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lornin",
+   "archivo": "cnmv/adv-lornin.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:37Z",
+   "bytes": 212181,
+   "sha256": "9e5dfafb42329aa8f778ff2c8f4dadc8116f57653572d8344c5c551dcba6b82a"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cando",
+   "archivo": "cnmv/adv-cando.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:40Z",
+   "bytes": 212159,
+   "sha256": "2eec6fc674969428ab8fe95156ce40471ded4c16fc2995ccbbecc3ca8d30cd70"
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ERIR.aspx?lang=es",
+   "archivo": "cnmv/erir-entidades.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:27:41Z",
+   "bytes": 150845,
+   "sha256": "bfc4361d3693cdad7fea685b36c14394366a0a7ee8e67efc1503296d8625478e"
+  },
+  {
+   "url": "https://www.bolsamania.com/noticias/criptodivisas/bestinver-securities-obtiene-la-licencia-erir-y-se-alia-con-token-city-para-impulsar-la-tokenizacion-de-activos-financieros--22538625.html",
+   "archivo": "tokencity/bolsamania-22-05-2026.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:28:00Z",
+   "bytes": 106261,
+   "sha256": "6e5a5e888b7a0fa8c0d532a4d65b106773738f3de5e7ebaf495e76710ecba5a3"
+  },
+  {
+   "url": "https://portfolio.exchange/es/portfolio-market",
+   "archivo": "hausera/portfolio-market.html",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:28:26Z",
+   "bytes": 300334,
+   "sha256": "c6e1fee61897197258925a3a61f1261676ce429040e5b5a5a967b674a399b29d"
+  },
+  {
+   "url": "https://stx.bit2me.com/ (Playwright)",
+   "archivo": "bit2me/stx-app-render.txt",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:28:51Z",
+   "bytes": 3747,
+   "sha256": "58418700e538e43139a899aa5aae745f26184e1ee340e7b78adc53d710d13f96"
+  },
+  {
+   "url": "https://exchange.token-city.com/ (Playwright)",
+   "archivo": "tokencity/exchange-portada-render.txt",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:28:54Z",
+   "bytes": 4955,
+   "sha256": "bdcf609247eb6fe65491fdc160302582870a533cd278f706558a7b2f75453e1d"
+  },
+  {
+   "url": "https://portfolio.exchange/es/portfolio-market (Playwright)",
+   "archivo": "hausera/portfolio-market-render.txt",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:28:55Z",
+   "bytes": 5278,
+   "sha256": "873f839c70cb10c65ee0bf71ed589aefa42a29a5ffa0a61134001b1be61d6a2f"
+  },
+  {
+   "url": "https://betoken.io/ (Playwright)",
+   "archivo": "betoken/betoken-io-render.txt",
+   "http": "502",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:28:56Z",
+   "bytes": 99,
+   "sha256": "12f0b5409144bf17a34d5562cff0865ed1c9dfe0e49de29edabd9e19b15a8780"
+  },
+  {
+   "url": "https://portfolio.exchange/es/portfolio-market (pestaña ETP/Deuda, Playwright)",
+   "archivo": "hausera/portfolio-etp-render.txt",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:29:25Z",
+   "bytes": 5164,
+   "sha256": "4f54d51ebf22c8fd23688e2973ee63a5a69703f9b0cb2c1691ca8c063d4c85af"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=%7B!lucene%20q.op%3DAND%7D(prospectus_issuer_name:*altarius*%20OR%20issuer_name:*altarius*)&rows=50&wt=json",
+   "archivo": "crudo/esma-priii-altarius-1.json",
+   "http": "400",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:29:37Z",
+   "bytes": 429,
+   "sha256": "0859930e3bb65b659edc0f9ab11302504090b023ae740f7273f322bb4994aaba"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=*altarius*&rows=50&wt=json",
+   "archivo": "crudo/esma-priii-altarius-2.json",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:29:38Z",
+   "bytes": 208,
+   "sha256": "b4e257d2fcf343691ae73f7026873b00a65ca41dff3ec0dd81d017bd48032558"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=*:*&rows=1&wt=json&sort=id%20desc",
+   "archivo": "crudo/esma-priii-sample.json",
+   "http": "504",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:29:45Z",
+   "bytes": 595,
+   "sha256": "9b2706ee7f39bb63285adf0e8b083466359aa91914496d047e02d46559a1f401"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=*:*&rows=1&wt=json",
+   "archivo": "crudo/esma-priii-sample2.json",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:30:16Z",
+   "bytes": 563,
+   "sha256": "26272667736f1bf106d8093d9bd9e3b6450e4f052271488e010b6478e0ee750d"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=issuer_name:*Altarius*&rows=20&wt=json",
+   "archivo": "crudo/esma-priii-altarius-3.json",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:30:21Z",
+   "bytes": 10420,
+   "sha256": "cca24a7bf29dd1c3f1a630eab634a44f8b3a8c859d14f125380097cf685d98e0"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=issuer_name:*Altarius*&rows=100&wt=json",
+   "archivo": "crudo/esma-priii-altarius-all.json",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:30:32Z",
+   "bytes": 31568,
+   "sha256": "813801937b80a4182ff147eb2f9687d97ec3745b39f09f2be9d084baac658756"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=id:(42296508%20OR%2042297213%20OR%2042297395%20OR%2043653182%20OR%2044827028%20OR%2045005016%20OR%2045257133%20OR%2045551776%20OR%2047284954%20OR%2047284955%20OR%2047352906%20OR%2047878115)&rows=20&wt=json",
+   "archivo": "crudo/esma-priii-altarius-roots.json",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:30:44Z",
+   "bytes": 15366,
+   "sha256": "1e1e40fa87bb5d868c136ede6438d904f7e03a3f1d96c69ecc4eadf5ec9f509f"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=type_s:parent%20AND%20(prospectus_id:42225%20OR%20prospetus_id_fk:42225)%20AND%20document_type:BP*&rows=20&wt=json",
+   "archivo": "crudo/esma-priii-bp42225.json",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:31:14Z",
+   "bytes": 1557,
+   "sha256": "8747805939db94bc1e34834edb3d4fdca0a3365931fc067de23c3eb09d58fb09"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:FR0014010H19&rows=20&wt=json",
+   "archivo": "crudo/esma-priii-FR0014010H19.json",
+   "http": "200",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:31:21Z",
+   "bytes": 1467,
+   "sha256": "c881c89401c90771514dab84d56c8aa09097a822482f474b620fd4eb315cb60f"
+  },
+  {
+   "url": "(texto derivado de crudo/esma-priii-bp42225.json y crudo/esma-priii-FR0014010H19.json, sin identificadores internos)",
+   "archivo": "hausera/esma-registro-folletos.txt",
+   "http": "n/a",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:31:21Z",
+   "bytes": 1344,
+   "sha256": "8a8cfd839a16fd4f8806e134444a54b41d5654defeef83578ea582f80b03f254"
+  },
+  {
+   "url": "https://openbrick.es/",
+   "archivo": "crudo/openbrick.html",
+   "http": "000",
+   "rc": 56,
+   "error": "curl: (56) CONNECT tunnel failed, response 502 ",
+   "consultadoUtc": "2026-11-05T08:31:47Z",
+   "bytes": 0,
+   "sha256": "null"
+  },
+  {
+   "url": "https://www.altariuseti.com/",
+   "archivo": "hausera/altariuseti-portada.html",
+   "http": "200",
+   "rc": 0,
+   "error": "curl: (56) CONNECT tunnel failed, response 502 ",
+   "consultadoUtc": "2026-11-05T08:31:47Z",
+   "bytes": 148680,
+   "sha256": "b5ac571054949dda0091363c0ac695d6e1c9b03b51a8534958bb9291bed700e1"
+  },
+  {
+   "url": "https://minossecurities.com/",
+   "archivo": "crudo/minos.html",
+   "http": "000",
+   "rc": 35,
+   "error": "curl: (35) Recv failure: Connection reset by peer ",
+   "consultadoUtc": "2026-11-05T08:31:47Z",
+   "bytes": 0,
+   "sha256": "null"
+  },
+  {
+   "url": "https://www.valorix.es/",
+   "archivo": "crudo/www-valorix.html",
+   "http": "000",
+   "rc": 35,
+   "error": "curl: (35) Recv failure: Connection reset by peer ",
+   "consultadoUtc": "2026-11-05T08:31:47Z",
+   "bytes": 0,
+   "sha256": "null"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=2&nombre=Token%20City",
+   "archivo": "cnmv/adv-tipo2-tokencity.html",
+   "http": "400",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:34:17Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=2&nombre=Gemini",
+   "archivo": "cnmv/adv-tipo2-gemini.html",
+   "http": "400",
+   "rc": 0,
+   "error": "",
+   "consultadoUtc": "2026-11-05T08:34:19Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  }
+ ]
+}

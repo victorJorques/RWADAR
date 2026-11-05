@@ -1,0 +1,35 @@
+URL: https://shares.lend.ch/trade
+Renderizado (Chromium), pestaña Sell pulsada=true: 2026-11-05T08:11:17Z
+
+ment	68.00 ZCHF	1 LENDS	68 ZCHF
+
+
+2 Jul 2026 / 10:54	Secondary Trade	67.00 ZCHF	1 LENDS	67 ZCHF
+
+
+28 May 2026 / 15:50	Direct Investment	68.00 ZCHF	1 LENDS	68 ZCHF
+Page 1 of 10
+1
+2
+3
+4
+5
+…
+10
+Buy
+Sell
+Number of Shares
+LENDS
+Limit Price
+ZCHF
+Order Summary
+1 LENDS
+To be matched later
+67 ZCHF
+Fee (1.9%):
+1.27 ZCHF
+Total Value:
+65.73 ZCHF
+Register to Access Secondary Trading
+Switzerlend AG
+Terms of Use: This page is hosted by Switzerlend using technology licensed from Aktionariat. Some content is automatically compiled from other sources than Switzerlend and provided "AS IS" without further verification. These sources include the public trade registry, website users, and the Ethereum blockchain and related systems. Switzerlend assumes no responsibility for the accuracy of any of this data. All 

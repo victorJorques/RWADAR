@@ -1,0 +1,101 @@
+ 
+ Bit2Me STX obtiene la autorización de la CNMV para lanzar su Bolsa de Valores nativa en blockchain 
+ Saltar al contenido 
+ Buscar: 
+ Notas de prensa Archivo blog Secciones Token B2M Bit2Me Earn Bit2Me Launchpad Bit2Me Commerce Bit2Me Consulting Bit2Me CryptoApi Nueva criptomoneda Nuevo servicio Academy Language English Português 
+ Buscar: 
+ Services 
+ Go to Bit2Me 
+ Bit2Me STX obtiene la autorización de la CNMV para lanzar su Bolsa de Valores nativa en blockchain Por Bit2Me | 28 octubre, 2026 | 
+ Bit2Me 
+ 28 octubre, 2026 
+ Bit2Me Security Tokens Exchange, A.V., S.A. (Bit2Me STX o simplemente «STX»), empresa filial del grupo Bit2Me, ha obtenido la autorización de la Comisión Nacional del Mercado de Valores (CNMV) para operar un Sistema de Negociación y Liquidación (SNL , o Trading and Settlement System , TSS, en inglés) bajo el Régimen Piloto de infraestructuras DLT de la Unión Europea. Con esta licencia, STX lanza oficialmente su Bolsa de Valores nativa en blockchain: una infraestructura regulada de mercado para la emisión, negociación, custodia y liquidación de Security Tokens , es decir, instrumentos financieros tradicionales —como acciones, bonos corporativos o fondos— emitidos, negociados y liquidados de forma nativa mediante Tecnologías de Registro Distribuido (TRD/DLT). 
+ Este hito convierte a Bit2Me STX en pionera en Europa y consolida a España como referente en la transformación digital de los mercados de capitales, especialmente para empresas de mediana capitalización de los sectores de tecnología, crecimiento, farma y energías renovables: la Bolsa de los Mercados Privados. 
+ Una Bolsa de Valores 3.0: eficiente, líquida y sin intermediarios 
+ Los mercados de capitales tradicionales arrastran procesos lentos (liquidaciones en T+2), costes elevados y una gran fragmentación derivada de la multiplicidad de intermediarios, como cámaras de compensación y depositarios centrales, lo que limita gravemente el acceso a la financiación bursátil de pymes, scaleups y fondos de inversión. 
+ La Bolsa de Valores de STX resuelve estas limitaciones operando de forma ininterrumpida (24/7), con contratos inteligentes que sustituyen a las cámaras de compensación tradicionales y permiten una liquidación atómica instantánea (T+0) mediante el mecanismo de entrega contra pago (DvP). Un custodio bancario garantiza la conexión con el sistema financiero mediante la tokenización de depósitos en euros. 
+ La licencia SNL, junto a la de Agencia de Valores, habilita a STX para gestionar los instrumentos financieros del mercado, actuar como Entidad Responsable de la Inscripción y Registro (ERIR) y custodiar y comercializar los valores tokenizados por orden de terceros. El resultado: un mercado primario y secundario que elimina por completo a los intermediarios post-contratación, bajo la autorización y supervisión de la CNMV y alineado con los estándares regulatorios europeos. 
+ Un camino regulatorio recorrido junto a la CNMV 
+ La licencia SNL es el último hito de un camino regulatorio recorrido paso a paso junto a la CNMV desde la constitución de STX en 2023: 
+ Sandbox regulatorio de la CNMV (noviembre 2024 – febrero 2025): STX emitió, negoció y liquidó con éxito el primer bono corporativo tokenizado de España, el Valorix Token 4T24 (ISIN ES0305845002), por 145.000 euros, vencimiento a tres meses y cupón fijado para dicha prueba del 3,25 % (rentabilidades pasadas no garantizan rendimientos futuros). Las pruebas cubrieron el ciclo de vida completo del bono —emisión primaria, negociación secundaria y vencimiento con pago de principal y cupón mediante transferencias inmediatas—, además de la tokenización de depósitos bancarios y la resiliencia de la infraestructura ante caídas de nodos. 
+ Autorización como Agencia de Valores (noviembre 2025): la CNMV autorizó la transformación de STX en empresa de servicios de inversión, primer requisito legal habilitante para operar la infraestructura. 
+ Licencia SNL bajo el Régimen Piloto DLT (octubre 2026): la autorización definitiva que permite el lanzamiento de la Bolsa de Valores en blockchain. 
+ Estas autorizaciones se suman a las obtenidas por el grupo Bit2Me: la licencia MiCA (julio de 2025), la primera concedida a una empresa no bancaria en España, y la licencia PSD2 (junio de 2026), con la que el Banco de España autoriza a Bit2Me a prestar servicios de pago basados en tokens de dinero electrónico (EMT), convirtiéndola en la primera plataforma de criptoactivos de Europa en combinar ambas normativas. El grupo se posiciona así a la vanguardia de los operadores autorizados capaz de ofrecer soluciones completas y reguladas para todo el espectro de activos digitales: desde criptoactivos (bajo MiCA) hasta valores negociables tokenizados (bajo el Régimen Piloto DLT y la Ley del Mercado de Valores). 
+ Declaraciones 
+ Para Javier Tordable, CEO y cofundador de Bit2Me STX : «Hoy nace la Bolsa de los Mercados Privados: una Bolsa de Valores 3.0 regulada y especializada en empresas tech, growth, farma y renovables que quieran salir a bolsa de forma eficiente, innovadora, asequible y líquida. Cualquier compañía que hoy se financia a través de capital riesgo, private equity, deuda privada o direct lending debería considerar, de forma complementaria, cotizar en STX. Ofrecemos una solución de financiación alternativa de capital innovadora, eficiente y segura, que complementará a la banca y a los fondos de capital privado». 
+ Por su parte, Leif Ferreira, CEO y cofundador de Bit2Me , destaca: «La licencia SNL de nuestra filial STX culmina el posicionamiento de nuestro grupo como el único actor capaz de gestionar la totalidad del ecosistema de activos digitales bajo supervisión y escrutinio regulatorio. Facilitamos la transición de las finanzas tradicionales a un modelo tokenizado, regulado y seguro, aportando confianza tanto a emisores como a inversores». 
+ Próximos pasos: primeras emisiones antes de fin de año 
+ Con la licencia concedida, STX prevé iniciar su operativa en las próximas semanas y completar su primera emisión de la mano de Valorix , el mismo emisor con el que validó su infraestructura en el Sandbox: un bono corporativo tokenizado de 1 millón de euros, dirigido a inversores elegibles conforme a la normativa de emisión aplicable, previsto para diciembre de 2026, que cotizará posteriormente en el mercado secundario. A esta primera operación le seguirá en 2027 una cartera de nuevas emisiones de acciones, bonos y fondos de compañías de los sectores de tecnología, crecimiento, farma y renovables, sujetas a la aprobación del comité de admisiones. 
+ STX participará, además, activamente en la nueva red de mercados de capitales europeos y en la liquidación mayorista con dinero tokenizado, donde la tecnología DLT jugará un papel fundamental. Su objetivo es escalar la adopción de las finanzas tokenizadas en España y Europa, actuando como la infraestructura central de mercado que conecta a emisores de productos financieros tokenizados con inversores institucionales y minoristas de forma transparente, supervisada y regulada. 
+ Acerca de Bit2Me STX 
+ Bit2Me Security Tokens Exchange, A.V., S.A. (Bit2Me STX) es la filial del grupo Bit2Me constituida en 2023 para construir una de las primeras infraestructuras de mercados financieros nativas en blockchain de Europa. Autorizada por la CNMV como Agencia de Valores y como Sistema de Negociación y Liquidación bajo el Régimen Piloto DLT de la UE, STX posibilita la emisión, custodia, negociación y liquidación de Security Tokens —acciones, bonos y fondos tokenizados—, especializándose en empresas Tech, Growth, Farma y Renovables europeas: la Bolsa de los Mercados Privados. 
+ Acerca de Bit2Me 
+ Bit2Me, fundada en 2015 por Leif Ferreira y Andrei Manuel, es la empresa líder del sector de las criptomonedas en España y la primera empresa no bancaria en obtener las licencias MiCA (julio de 2025) y PSD2 (junio de 2026). Cuenta con el respaldo de socios e inversores institucionales de primer nivel como Telefónica, Unicaja, Investcorp, BBVA, Cecabank, Bankinter, Inveready y Tether, emisor líder mundial del sector de las stablecoins . Bit2Me dispone de certificados de ciberseguridad y compliance como las normas ISO 27001, ISO 22301, ISO 37001, ISO 37301 y UNE 19601, y apuesta por la educación con Bit2Me Academy, el mayor portal de formación sobre criptomonedas en español. 
+ Disclaimer 
+ Bit2Me Security Tokens Exchange, A.V., S.A. (STX) es una Agencia de Valores autorizada y supervisada por la CNMV, habilitada para operar un Sistema de Negociación y Liquidación al amparo del Reglamento (UE) 2022/858 (Régimen Piloto DLT). La inversión en instrumentos financieros tokenizados (acciones, bonos y fondos) conlleva riesgos significativos, entre los que se incluyen la pérdida total o parcial del capital invertido, riesgo de iliquidez en el mercado secundario y riesgos operacionales derivados del uso de tecnologías de registro distribuido (TRD/DLT). Estos productos no están cubiertos por fondos de garantía de depósitos ni necesariamente por fondos de garantía de inversiones según la tipología de operación. Consulte las condiciones de funcionamiento, tarifas y factores de riesgo antes de adoptar cualquier decisión de inversión. 
+ Compartir Twittear Compartir 0 Compartir 
+ Compañía Comunicados Notas de prensa Portada 
+ Autor 
+ Bit2Me 
+ Bit2Me se fundó en 2014 con base en España (Europa) para ayudar a personas, empresas e instituciones a acceder, comerciar y gestionar criptomonedas y activos digitales de forma sencilla y segura. 
+ Leer más 
+ Anterior Siguiente 
+ Artículos relacionados
+ Artículos relacionados 
+ Nota informativa: tus criptoactivos en Bit2Me no están afectados por el incidente de seguridad de Binance 
+ 30 octubre, 2026 
+ Así funciona el sistema de seguridad multicapa de Bit2Me 
+ 30 octubre, 2026 
+ | 
+ Sin comentarios 
+ -->
+ Invertir en acciones y ETFs: novedades de Bit2Me Invest 
+ 15 octubre, 2026 
+ Buscar: 
+ 👤 Sobre Bit2Me Bit2Me es la plataforma líder en España para comprar vender o almacenar criptomonedas. 
+ Respaldada por grandes empresas como Telefónica Ventures, Invescorp o Ledger Enterprise, Bit2Me es tu exchange seguro, fácil y completo. 
+ 📡 Notas de Prensa Accede a los comunicados oficiales sobre los productos y servicios de Bit2Me 
+ Ver Notas de Prensa 
+ ⭐ Aprende con nosotros y conoce todas las novedades 
+ ¡Únete al canal de Telegram! 
+ Aprende con Academy 
+ Abre una cuenta ahora y recibe 15€ en premios 
+ Regístrate en la plataforma más fácil, segura y completa del mundo 
+ Compra Bitcoin Ahora 
+ Be Pioneer, be Smart, be Free 
+ blog@bit2me.com 
+ +34 910 91 37 88 
+ Bit2Me Suite 
+ Wallet 
+ Comprar 
+ Vender 
+ Card 
+ Commerce 
+ Pro 
+ +Productos 
+ Wealth 
+ B2M Token 
+ Crypto News 
+ Custody 
+ Todos los productos 
+ Academy 
+ Primeros pasos 
+ Minar Bitcoins 
+ Precio Bitcoin 
+ Cambiar a efectivo 
+ ¿Qué es la Blockchain? 
+ Ir a Academy 
+ Compañía 
+ Equipo 
+ Invita y gana 
+ Prensa 
+ Marca 
+ Empleo 
+ Bit2Me es una marca registrada por la compañía Bitcoinforme S.L. (CIF B54835301), operando desde 2015 en España (Europa) y protegiendo a nuestros clientes y a los fondos aportados con cuentas especiales de nuestros partners ( más información ), cumpliendo con la regulación vigente en Prevención de Blanqueo de Capitales y Prevención en Financiación del Terrorismo. 
+ La inversión en criptoactivos no está regulada, puede no ser adecuada para inversores minoristas y perderse la totalidad del importe invertido. 
+Es importante leer y comprender los riesgos de esta inversión que se explican detalladamente en esta ubicación . 
+ Términos y condiciones | Privacidad | Cookies | Seguridad de la información ©2015-2025 bit2me.com 
+ Page load link 
+ Aave (AAVE) 118,54 € 5,95% The Graph (GRT) 0,018473 € 8,10% Kusama (KSM) 3,13 € 6,29% Waves (WAVES) 0,212750 € 5,45% Dash (DASH) 44,20 € 10,91% Bitcoin (BTC) 71.976,02 € 5,54% Ethereum (ETH) 2.168,19 € 8,20% Cardano (ADA) 0,177325 € 7,11% Tether (USDT) 0,891612 € 0,04% XRP (XRP) 1,17 € 4,16% Solana (SOL) 86,24 € 6,09% Polkadot (DOT) 0,853442 € 3,63% USDC (USDC) 0,891937 € 0,02% Dogecoin (DOGE) 0,068879 € 5,23% Uniswap (UNI) 6,92 € 9,20% Terra Luna Classic (LUNC) 0,000037 € 5,07% Litecoin (LTC) 50,27 € 6,49% Chainlink (LINK) 10,33 € 7,65% Bitcoin Cash (BCH) 251,77 € 4,82% Algorand (ALGO) 0,089827 € 11,02% Stellar (XLM) 0,150309 € 5,94% Cosmos Hub (ATOM) 1,35 € 8,72% Filecoin (FIL) 0,784836 € 5,24% TRON (TRX) 0,284821 € 0,68% Ethereum Classic (ETC) 6,58 € 6,10% Dai (DAI) 0,892250 € 0,00% Tezos (XTZ) 0,248832 € 14,24% Monero (XMR) 568,22 € 1,76% 
+ Ir a Arriba 
+ 
