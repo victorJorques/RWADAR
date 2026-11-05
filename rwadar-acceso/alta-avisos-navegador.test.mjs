@@ -152,7 +152,7 @@ test('desde una lección se abre «Crear cuenta gratis» con su aviso y se guard
 });
 
 test('solo cuenta como lección una ruta /academy/<slug> propia', async () => {
-  for (const volver of ['/academy/', '/academy/index.html', '/', '//atacante.test/academy/x', '/academy/x?y=1',
+  for (const volver of ['/', '//atacante.test/academy/x', '/academy/x?y=1', '/academy/?x=1',
     'https://atacante.test/academy/x', '/academy/../api/acceso/datos', '/academy/x/y', '/academy/%2F', '/\\academy/x']) {
     const p = pagina({ search: '?volver=' + encodeURIComponent(volver) });
     assert.notEqual(p.elemento('enviar').textContent, 'Crear cuenta gratis', volver + ' no abre el alta');
@@ -164,6 +164,16 @@ test('solo cuenta como lección una ruta /academy/<slug> propia', async () => {
   for (const volver of ['/academy/que-significa-tokenizar-un-activo', '/academy/cuanto-cuesta-tokenizar/', '/academy/es-tu-activo-tokenizable.html']) {
     const p = pagina({ search: '?volver=' + encodeURIComponent(volver) });
     assert.equal(p.elemento('enviar').textContent, 'Crear cuenta gratis', volver);
+  }
+});
+
+test('el índice de la Academy (botón «Crea tu cuenta gratis» y puerta del tutorial) abre el alta sin guardar vuelta', async () => {
+  for (const volver of ['/academy/', '/academy', '/academy/index.html']) {
+    const p = pagina({ search: '?volver=' + encodeURIComponent(volver) });
+    assert.equal(p.elemento('enviar').textContent, 'Crear cuenta gratis', volver + ' abre el alta');
+    assert.equal(p.elemento('introduccion').textContent, 'Las lecciones son gratis con cuenta. Si ya la tienes, entra.', volver);
+    await p.registrar();
+    assert.equal(p.guardado.has('rwadar.alta.volver'), false, volver + ' no guarda vuelta');
   }
 });
 

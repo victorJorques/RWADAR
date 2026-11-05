@@ -214,13 +214,22 @@ document.querySelectorAll('svg.mk').forEach(s=>{s.innerHTML=MARK});
    escritorio. Sin RWADAR_ACCESO (modo local), dentro de la app nativa (que
    ya exige cuenta) o ante un fallo pasajero al comprobar la sesión, se abre
    como siempre: nunca se manda a entrar por un error de red. */
-function tutorialConCuenta(abrir){
+function tutorialConCuenta(abrir,alCargar=false){
  const acceso=typeof window!=='undefined'?window.RWADAR_ACCESO:null;
  const conCuenta=typeof document!=='undefined'&&!!document.querySelector('[data-academy-acceso="cuenta"]');
  if(!conCuenta||!acceso||typeof acceso.verificar!=='function'||(typeof window!=='undefined'&&window.ReactNativeWebView)){abrir();return;}
+ const aEntrar=()=>{
+  const destino='/acceso?volver='+encodeURIComponent('/academy/');
+  /* Al cargar, replace: Atrás no vuelve a /#explain para saltar otra vez. */
+  if(alCargar)location.replace(destino);else location.assign(destino);
+ };
  acceso.verificar().then(()=>abrir(),error=>{
   if(error&&error.reintentable===true){abrir();return;}
-  location.assign('/acceso?volver='+encodeURIComponent('/academy/'));
+  /* verificar() recuerda un 401 de la carga y no vuelve a preguntar: quien
+     entró después en otra pestaña se mandaría a entrar. Se pregunta de nuevo
+     al servidor y solo un 401/403 cierra el tutorial. */
+  fetch('/api/acceso/sesion',{credentials:'same-origin',cache:'no-store',redirect:'error'})
+   .then(r=>{if(r.status===401||r.status===403)aEntrar();else abrir();},()=>abrir());
  });
 }
 const irA=id=>{
@@ -5785,10 +5794,10 @@ const Movil = (function(){
   if(!accion)return;
   e.stopImmediatePropagation();
   if(accion.dataset.movilAction==='ayuda'){
-   e.preventDefault();abrirAcademyDesde(accion);
+   e.preventDefault();tutorialConCuenta(()=>abrirAcademyDesde(accion));
   }
   if(accion.dataset.movilAction==='academy'){
-   e.preventDefault();abrirAcademyDesde(accion);
+   e.preventDefault();tutorialConCuenta(()=>abrirAcademyDesde(accion));
   }
   if(accion.dataset.movilAction==='detalle'){
    e.preventDefault();cambiar('buscar',{arriba:false});mostrarDetalle(accion.dataset.movilDetalle,true,true,accion);
@@ -5855,8 +5864,10 @@ const Movil = (function(){
   }else if(estado.rwadarAcademy===true){
    if(!academyAbierta){
     if(detalleAbierto)cerrarDetalleVisual(false);
-    cambiar('academy',{arriba:false});
-    mostrarAcademy(true,enfocar,false,document.getElementById('movilTabAcademy'));academyHistorial=true;
+    tutorialConCuenta(()=>{
+     cambiar('academy',{arriba:false});
+     mostrarAcademy(true,enfocar,false,document.getElementById('movilTabAcademy'));academyHistorial=true;
+    });
    }
   }else{
    if(detalleAbierto)cerrarDetalleVisual(enfocar);
@@ -5911,7 +5922,7 @@ const Movil = (function(){
  /* La puerta del tutorial solo actúa en el móvil; en escritorio #explain
     sigue siendo la sección pública de la portada. */
  const tutorialMovil=abrir=>{if(media.matches)tutorialConCuenta(abrir);else abrir();};
- if(typeof location!=='undefined'&&location.hash==='#explain'){const origen=document.getElementById('movilTabAcademy');tutorialMovil(()=>abrirAcademyDesde(origen));}
+ if(typeof location!=='undefined'&&location.hash==='#explain'){const origen=document.getElementById('movilTabAcademy');if(media.matches)tutorialConCuenta(()=>abrirAcademyDesde(origen),true);else abrirAcademyDesde(origen);}
  window.addEventListener('hashchange',()=>{if(location.hash==='#explain'){const origen=document.activeElement;tutorialMovil(()=>abrirAcademyDesde(origen));}});
  return {cambiar:cambiar,ir:ir,verEnBuscar:verEnBuscar,
   tutorial(origen){if(!media.matches)return false;tutorialConCuenta(()=>abrirAcademyDesde(origen));return true;},

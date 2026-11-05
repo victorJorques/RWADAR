@@ -44,7 +44,9 @@ function browser({adopt=false,keepCookie=true,status=200,network=false,sessionUi
   vm.runInContext(script,context);
   return {node:id=>nodes.get(id),calls,destinations,async enter(){
     if(adopt){await tick();await nodes.get('adoptar').events.click();}
-    else{nodes.get('correo').value='local@example.test';nodes.get('clave').value='local-password-test';
+    // Con volver=/academy/ la página abre «Crear cuenta»: quien ya la tiene pulsa «Entrar».
+    else{buttons.find(b=>b.dataset.vista==='entrar')?.events.click?.();
+      nodes.get('correo').value='local@example.test';nodes.get('clave').value='local-password-test';
       await nodes.get('formulario').events.submit({preventDefault(){}});}
   }};
 }

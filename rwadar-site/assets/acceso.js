@@ -31,7 +31,12 @@
       return /^\/academy\/(?!index(?:\.html)?$)[a-z0-9][a-z0-9-]*(?:\/|\.html)?$/i.test(destino.pathname) ? destino.pathname : null;
     } catch { return null; }
   }
-  const volverLeccion = rutaLeccion(new URLSearchParams(location.search).get('volver'));
+  const volverPedido = new URLSearchParams(location.search).get('volver');
+  const volverLeccion = rutaLeccion(volverPedido);
+  // El índice de la Academy («Crea tu cuenta gratis») y la puerta del tutorial
+  // 3D del móvil mandan a /acceso?volver=/academy/: también abren el alta, pero
+  // no guardan vuelta (al confirmar ya se va a /academy/#cuenta-confirmada).
+  const vieneDeAcademy = !!volverLeccion || ['/academy/', '/academy', '/academy/index.html'].includes(volverPedido);
   function guardarVolver(ruta) {
     try { localStorage.setItem(CLAVE_VOLVER, JSON.stringify({ ruta, hasta: Date.now() + DURACION_VOLVER })); }
     catch { /* Sin almacenamiento, al confirmar se va al índice de la Academy. */ }
@@ -223,8 +228,8 @@
       }).catch(() => { enlace = null; form.hidden = false; mensaje('El enlace no se pudo comprobar. Solicita uno nuevo.'); });
     }
   }
-  // Llegada desde una lección sin sesión: se abre «Crear cuenta gratis».
-  if (volverLeccion && !hayRetorno) {
+  // Llegada desde la Academy sin sesión: se abre «Crear cuenta gratis».
+  if (vieneDeAcademy && !hayRetorno) {
     $('introduccion').textContent = 'Las lecciones son gratis con cuenta. Si ya la tienes, entra.';
     cambiar('registrar');
   }
