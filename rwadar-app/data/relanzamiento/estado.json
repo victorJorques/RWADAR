@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 04/11: «Para empresas» queda pendiente por decisión de Víctor: sin enlaces y su dirección lleva a Inicio. npm test completo en verde.",
+  "nota": "Claude, 05/11: entrega 2026-11-04.2 (ARTEX pasa a Descartadas por decisión de Víctor: no usa blockchain), aplicada y sincronizada (revisión 723968ce); arreglos de la app probada en móvil. npm test completo en verde.",
   "revisionAprobada": {
-    "commit": "d37a9cc5cc4d9d9b0110c77b25beb930e5f5cd38",
-    "contenidoSha256": "sha256:e80632b23d80139a6f7db513fb3bc11b37c36218251159bec4a4791691d8959c",
+    "commit": "e06558d8475c9ce342292d4a6d757766c4d133ff",
+    "contenidoSha256": "sha256:bcc7cb3dc2c2c16a25a4a76b5f6f9dbc8ffd7c60f44df3e5c412f219394b20aa",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
