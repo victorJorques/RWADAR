@@ -6,6 +6,38 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de noviembre de 2026 (4) · Claude · investigación del día publicada: Supabase, web y app
+
+Orden de Víctor: «Hazme la investigación de hoy de las ofertas, y actualiza la
+web y la app». Informe: [`INVESTIGACION-CATALOGO-2026-11-05.md`](../INVESTIGACION-CATALOGO-2026-11-05.md).
+
+- **Investigación:** 7 grupos con revisor independiente cada uno. Entrega
+  `2026-11-05`, revisión `cede1f27`. SQL revisado por un agente independiente,
+  con sus correcciones; el SQL corregido lo volvió a comprobar el coordinador.
+  Sin altas ni retiradas.
+- **PRs:** #66 (catálogo, rama limpia de un commit), #67 (tarjetas sencillas en
+  web y app) y #68 (sincronización y sello). Las tres, unidas a `main`.
+- **Supabase:** «Aplicar catálogo» run 42050045063. En línea, `cede1f27` con
+  25/24 (8/13/3), vigente hasta el 12/11.
+- **OTA Android:** run 42052119704, correcto (base c1f7106, 1.4.1(23)).
+- **Web:** «Publicar web» en preview (run 42052080652, 220/0) y en producción
+  (run 42069278129). Comprobado con curl en `https://rwadar.pages.dev`:
+  catálogo `cede1f27`, Spiko 2,39 % y 3,99 %, «66,67 € la participación en
+  reventa (05/11)» y tarjetas sencillas. Captura del móvil hecha.
+- **Pruebas:** `npm test` en verde (web 601, móvil 410 + 2 omitidas, acceso
+  146, base de datos sin fallos). La prueba de la tarjeta de la app sigue ahora
+  al catálogo publicado.
+- **Nuevo:** skill `investigacion-catalogo` y flujo guardado
+  `investigacion-catalogo` en `.claude/`. `.gitignore` admite solo `skills/` y
+  `workflows/`. Con «haz la investigación» se hace el ciclo entero ese día.
+- **Pendiente:**
+  - web de PAX Gold en `public.plataformas` (paxg.com);
+  - texto de acceso de Spiko en el radar;
+  - ilustración de Hausera (Orihuela Costa);
+  - nombres de personas en copias de `2026-11-01-v2` y `2026-11-03.3-v2`;
+  - la rama `claude/catalogo-2026-11-05` de origin lleva esas copias sin
+    recortar: borrarla (no se unió).
+
 ## 5 de noviembre de 2026 (3) · Claude · correcciones de la revisión de las tarjetas sencillas (sin publicar)
 
 Misma rama local `claude/tarjetas-simples` (worktree `tarjetas-simples`), un
