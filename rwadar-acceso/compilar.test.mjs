@@ -113,13 +113,20 @@ test('una ficha que no está en la lista da 404 sin pedir a ASSETS su copia de c
   assert.deepEqual(pedidas, ['/404']);
 
   // Las vivas, las imágenes y lo que no es una ficha van a ASSETS tal cual.
+  // (Una lección inexistente ya no: con la Academy con cuenta da 404 en la
+  // puerta de la Academy; ver academy-cuenta.test.mjs.)
   for (const ruta of ['/ofertas/viva', '/ofertas/viva.html', '/ofertas/viva/', '//ofertas/viva', '/ofertas/viva?x=1', '/plataformas/plataforma-viva',
-    '/fuera-del-radar/descarte-vivo', '/plataformas/addx.webp', '/ofertas/', '/ofertas', '/ofertas-editoriales/oferta-viva.webp', '/academy/no-existe', '/']) {
+    '/fuera-del-radar/descarte-vivo', '/plataformas/addx.webp', '/ofertas/', '/ofertas', '/ofertas-editoriales/oferta-viva.webp', '/academy/', '/']) {
     const { pedidas, env } = assetsDePrueba();
     const r = await worker.fetch(new Request(BASE_WEB + ruta), env, CTX);
     assert.equal(r.status, 200, ruta);
     assert.equal(await r.text(), 'contenido', ruta);
     assert.deepEqual(pedidas, [new URL(BASE_WEB + ruta).pathname], ruta);
+  }
+  {
+    const { pedidas, env } = assetsDePrueba();
+    await esNoEncontrada(await worker.fetch(new Request(BASE_WEB + '/academy/no-existe'), env, CTX), '/academy/no-existe');
+    assert.deepEqual(pedidas, ['/404'], 'una lección inexistente no se pide a ASSETS');
   }
 
   // Si /404 no está disponible, responde igualmente 404 en texto.
@@ -133,17 +140,27 @@ test('una ficha que no está en la lista da 404 sin pedir a ASSETS su copia de c
 
 test('la copia de conservación de cualquier otro archivo retirado da 404, salvo en /assets/', async () => {
   const worker = await compilar(['ofertas/viva.html'], 'conservada');
+  // Con la Academy en "publico" (como antes), una lección borrada llega a ASSETS
+  // y su copia de conservación se reconoce igual que la de cualquier archivo.
+  const publica = (await import('data:text/javascript;base64,' + Buffer.from(construirWorker(undefined,
+    { fichas: ['ofertas/viva.html'], academy: { acceso: 'publico', lecciones: [{ slug: 'viva', estado: 'publicado' }] } })).toString('base64') + '#conservada-publica')).default;
   const conservada = { 'CF-Cache-Status': 'HIT', 'X-Robots-Tag': 'noindex', 'Cache-Control': 'public, s-maxage=604800' };
-  for (const [ruta, cabeceras] of [
+  for (const [ruta, cabeceras, servidor = worker] of [
     ['/ofertas-editoriales/oferta-retirada.webp', conservada],
     ['/ofertas-editoriales/oferta-retirada.webp', { 'CF-Cache-Status': 'hit', 'X-Robots-Tag': 'noindex, nofollow' }],
-    ['/academy/leccion-borrada', conservada],
+    ['/academy/leccion-borrada', conservada, publica],
     ['/plataformas/retirada.webp', conservada],
     ['//ofertas-editoriales/oferta-retirada.webp', conservada],
   ]) {
     const { pedidas, env } = assetsDePrueba(cabeceras);
-    await esNoEncontrada(await worker.fetch(new Request(BASE_WEB + ruta), env, CTX), ruta);
+    await esNoEncontrada(await servidor.fetch(new Request(BASE_WEB + ruta), env, CTX), ruta);
     assert.deepEqual(pedidas, [new URL(BASE_WEB + ruta).pathname, '/404'], ruta);
+  }
+  // Con la Academy con cuenta, la lección borrada ni siquiera se pide a ASSETS.
+  {
+    const { pedidas, env } = assetsDePrueba(conservada);
+    await esNoEncontrada(await worker.fetch(new Request(BASE_WEB + '/academy/leccion-borrada'), env, CTX), '/academy/leccion-borrada');
+    assert.deepEqual(pedidas, ['/404']);
   }
   const { env } = assetsDePrueba(conservada);
   await esNoEncontrada(await worker.fetch(new Request(BASE_WEB + '/ofertas-editoriales/oferta-retirada.webp', { method: 'HEAD' }), env, CTX), 'HEAD', 'HEAD');

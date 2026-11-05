@@ -32,6 +32,29 @@ function fichasPublicadas(manifiesto = PAGINAS_FICHAS) {
   return [...new Set(fichas)].sort();
 }
 
+/* Academy con cuenta (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+   El worker lleva la lista cerrada de lecciones publicadas y el modo de
+   rwadar-academy/academy.json: "cuenta" (cada lección pide una sesión
+   confirmada) o "publico" (como antes). Una lección «Próximamente» o inventada
+   da 404 sin mirar la cookie. Publicar una lección sigue siendo cambiar
+   academy.json, regenerar y publicar: el worker se compila con esa lista. */
+const ACCESOS_ACADEMY = Object.freeze(['cuenta', 'publico']);
+const RUTA_ACADEMY = path.join(__dirname, '..', 'rwadar-academy', 'academy.json');
+function academyPublicada(config = JSON.parse(fs.readFileSync(RUTA_ACADEMY, 'utf8'))) {
+  if (!config || !ACCESOS_ACADEMY.includes(config.acceso)) {
+    throw new Error('academy.json: "acceso" debe ser "cuenta" o "publico".');
+  }
+  const lecciones = Array.isArray(config.lecciones) ? config.lecciones : [];
+  const slug = l => l && typeof l.slug === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(l.slug);
+  if (!lecciones.length || !lecciones.every(slug) || new Set(lecciones.map(l => l.slug)).size !== lecciones.length) {
+    throw new Error('academy.json: lecciones repetidas o con un slug no válido.');
+  }
+  const publicadas = lecciones.filter(l => l.estado === 'publicado').map(l => l.slug).sort();
+  if (!publicadas.length) throw new Error('academy.json no publica ninguna lección.');
+  return Object.freeze({ acceso: config.acceso, lecciones: Object.freeze(publicadas),
+    pendientes: Object.freeze(lecciones.filter(l => l.estado !== 'publicado').map(l => l.slug).sort()) });
+}
+
 // Public project coordinates; never an administrative key.
 const CONFIGURACION_PUBLICA = Object.freeze({
   SUPABASE_URL: 'https://exgpmjpaaebyoolpwced.supabase.co',
@@ -127,8 +150,9 @@ async function servirArchivoRWAdar(request, env) {
 }
 `;
 
-function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS } = {}) {
+function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS, academy } = {}) {
   const publicadas = fichasPublicadas(fichas);
+  const { acceso, lecciones } = academyPublicada(academy);
   const importCartera = "import { crearCarteraServidor } from './cartera-servidor.mjs';";
   const original = fs.readFileSync(path.join(raiz, 'servidor.mjs'), 'utf8');
   if (original.split(importCartera).length !== 2) throw new Error('Falta la integración explícita de cartera.');
@@ -148,12 +172,14 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS } = {}) {
     servidor + '\nconst configuracionRWAdar = Object.freeze(' + JSON.stringify(CONFIGURACION_PUBLICA) + ');\n' +
     'const cabecerasRWAdar = Object.freeze(' + JSON.stringify(CABECERAS_SEGURIDAD) + ');\n' +
     'const fichasRWAdar = new Set(' + JSON.stringify(publicadas) + ');\n' +
+    'const academyRWAdar = Object.freeze(' + JSON.stringify({ acceso, lecciones }) + ');\n' +
     ARCHIVOS_RETIRADOS_WORKER +
-    'const accesoRWAdar = crearAccesoServidor();\n' +
+    'const accesoRWAdar = crearAccesoServidor({ academy: academyRWAdar });\n' +
     'export default { async fetch(request, env, executionCtx) {\n' +
     '  const respuesta = await accesoRWAdar.atender({ request, env: configuracionRWAdar,\n' +
     '    waitUntil: executionCtx.waitUntil.bind(executionCtx),\n' +
-    '    next: () => servirArchivoRWAdar(request, env) });\n' +
+    '    next: () => servirArchivoRWAdar(request, env),\n' +
+    '    noEncontrada: () => paginaNoEncontradaRWAdar(request, env) });\n' +
     '  const headers = new Headers(respuesta.headers);\n' +
     '  for (const [nombre, valor] of Object.entries(cabecerasRWAdar)) {\n' +
     '    if (nombre === "Content-Security-Policy" && headers.has(nombre)) continue;\n' +
@@ -164,4 +190,5 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS } = {}) {
 }
 
 const RUTAS = Object.freeze({ version: 1, include: ['/*'], exclude: [] });
-module.exports = { construirWorker, RUTAS, CONFIGURACION_PUBLICA, CABECERAS_SEGURIDAD, CARPETAS_FICHAS, fichasPublicadas };
+module.exports = { construirWorker, RUTAS, CONFIGURACION_PUBLICA, CABECERAS_SEGURIDAD, CARPETAS_FICHAS, fichasPublicadas,
+  ACCESOS_ACADEMY, academyPublicada };

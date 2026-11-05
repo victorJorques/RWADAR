@@ -26,7 +26,7 @@ delete process.env.RWADAR_CATALOGO_ACCESS_TOKEN;
 const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
 const { cargarRegistro: cargarPrecargas, unirActivos } = require('./rwadar-precargar-imagenes');
-const { comprobar: comprobarAcademy, paginasAcademy } = require('./rwadar-academy');
+const { comprobar: comprobarAcademy, paginasAcademy, comprobarLeccionesPublicadas } = require('./rwadar-academy');
 const { comprobar: comprobarNoticias } = require('./rwadar-noticias');
 const { comprobar: comprobarFichas } = require('./rwadar-fichas');
 const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
@@ -52,7 +52,7 @@ const FILE = path.join(DIR, 'index.html');
 /* Todas las páginas HTML propias: pasan la misma CSP estricta y reciben los
    nombres versionados de los assets. */
 const PAGINAS_HTML = ['index.html', 'privacidad.html', 'transparencia-comercial.html', 'para-empresas.html', '404.html', 'acceso.html',
-  ...PAGINAS_ACADEMY, ...PAGINAS_FICHAS.filter(nombre => nombre.endsWith('.html'))];
+  'baja.html', ...PAGINAS_ACADEMY, ...PAGINAS_FICHAS.filter(nombre => nombre.endsWith('.html'))];
 const SALIDA = path.join(__dirname, 'rwadar-publicado');
 const WRANGLER_VERSION = '4.125.0';
 const modos = ['--local', '--preview', '--produccion'].filter(x => process.argv.includes(x));
@@ -517,7 +517,8 @@ function construirSalida() {
       const destino = path.join(temporal, ...nombre.split('/'));
       fs.mkdirSync(path.dirname(destino), { recursive: true });
       fs.copyFileSync(origen, destino);
-      if (PAGINAS_HTML.includes(nombre) && !['acceso.html', 'privacidad.html', 'transparencia-comercial.html'].includes(nombre)) {
+      // La baja de avisos no usa la cuenta: no lleva el ayudante de sesión.
+      if (PAGINAS_HTML.includes(nombre) && !['acceso.html', 'baja.html', 'privacidad.html', 'transparencia-comercial.html'].includes(nombre)) {
         let pagina = fs.readFileSync(destino, 'utf8');
         if (!pagina.includes('/assets/acceso-privado.js')) {
           if (!/<head(?:\s[^>]*)?>/i.test(pagina)) throw new Error(`Falta head en ${nombre}`);
@@ -564,6 +565,10 @@ function construirSalida() {
       const archivo = path.join(temporal, ...nombre.split('/'));
       fs.writeFileSync(archivo, reescribirReferencias(fs.readFileSync(archivo, 'utf8')), 'utf8');
     }
+    /* Con la Academy solo con cuenta, la web publicada da 303 a quien no ha
+       entrado: lo que lleva cada lección se comprueba aquí, antes de subir. */
+    const fallosAcademy = comprobarLeccionesPublicadas(temporal);
+    if (fallosAcademy.length) throw new Error(`lecciones de la Academy incorrectas en la salida: ${fallosAcademy.join('; ')}`);
 
     // All generated pages, exports and assets pass through the same gate.
     fs.writeFileSync(path.join(temporal, '_worker.js'), construirWorker(), 'utf8');

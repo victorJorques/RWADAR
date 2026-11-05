@@ -3143,12 +3143,58 @@ console.log('\n=== RWADAR ACADEMY ===');
     publicadasA.every(l => html.includes(`<a href="/academy/${l.slug}">`)) &&
     pendientesA.every(l => !html.includes(`href="/academy/${l.slug}"`)) &&
     html.includes('<p id="comparador">'));
-  prueba('el sitemap incluye solo la Academy publicada',
+  // Academy con cuenta (05/11/2026): las lecciones piden cuenta, llevan noindex y
+  // salen del sitemap; el índice sigue público e indexable.
+  const conCuentaA = academy.acceso === 'cuenta';
+  prueba('academy.json declara quién abre las lecciones y hoy es "cuenta"',
+    academyMod.ACCESOS.join('|') === 'cuenta|publico' && conCuentaA);
+  prueba('el sitemap lleva el índice de la Academy y ninguna lección (van con cuenta)',
     sitemapAcademy.includes('<loc>https://rwadar.pages.dev/academy/</loc>') &&
-    publicadasA.every(l => sitemapAcademy.includes(`<loc>https://rwadar.pages.dev/academy/${l.slug}</loc>`)) &&
-    pendientesA.every(l => !sitemapAcademy.includes(l.slug)));
+    academy.lecciones.every(l => !sitemapAcademy.includes(`/academy/${l.slug}`)));
+  prueba('cada lección publicada lleva una sola etiqueta robots con noindex; el índice se indexa',
+    publicadasA.every(l => (paginaDe(l.slug).match(/<meta name="robots"[^>]*>/g) || []).join() === '<meta name="robots" content="noindex, nofollow">') &&
+    indiceAcademy.includes('<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">'));
+  const ldIndice = JSON.parse(indiceAcademy.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+  prueba('los datos estructurados del índice no anuncian lecciones que no se indexan',
+    ldIndice['@type'] === 'CollectionPage' && !('hasPart' in ldIndice) && /gratis con tu cuenta/.test(ldIndice.description) &&
+    !/academy\/[a-z]/.test(JSON.stringify(ldIndice)));
+  const textoIndice = textoDe(indiceAcademy), bloqueAcademy = html.slice(html.indexOf('<!--academy:ini-->'), html.indexOf('<!--academy:fin-->'));
+  prueba('el índice y la portada dicen «Gratis con tu cuenta» y llevan a crear la cuenta, sin prometer lecciones que no hay',
+    textoIndice.includes('Gratis con tu cuenta') && textoIndice.includes('Crea tu cuenta gratis para abrir las lecciones') &&
+    indiceAcademy.includes(`<a class="ac-accion" href="${academyMod.ALTA_ACADEMY}">`) && academyMod.ALTA_ACADEMY === '/acceso?volver=/academy/' &&
+    textoDe(bloqueAcademy).includes('Gratis con tu cuenta') && textoDe(bloqueAcademy).includes('Crea tu cuenta gratis para abrir las lecciones') &&
+    textoDe(bloqueAcademy).includes(`${publicadasA.length} de ${academy.lecciones.length} lecciones disponibles`) &&
+    !/\b9 lecciones (?:gratuitas|en 3 niveles)/.test(textoIndice + textoDe(bloqueAcademy)) &&
+    !/lecciones gratuitas/i.test(indiceAcademy.match(/<meta name="description" content="([^"]+)"/)[1]));
+  // Con "publico" (el interruptor de vuelta atrás), todo vuelve a como estaba.
+  const salidasPublicas = academyMod.construirSalidas({ ...academy, acceso: 'publico' });
+  const salidaPublica = nombre => salidasPublicas.get(path.join(sitio, ...nombre.split('/')));
+  prueba('con "acceso": "publico", las lecciones se indexan, vuelven al sitemap y el índice las enumera',
+    publicadasA.every(l => salidaPublica(`academy/${l.slug}.html`).includes('<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">') &&
+      salidaPublica('sitemap.xml').includes(`<loc>https://rwadar.pages.dev/academy/${l.slug}</loc>`)) &&
+    /"hasPart":\[/.test(salidaPublica('academy/index.html')) && !salidaPublica('academy/index.html').includes('Gratis con tu cuenta') &&
+    salidaPublica('index.html').includes(`<h3 id="academiaLeccionesTit">${academy.lecciones.length} lecciones en 3 niveles</h3>`));
+  prueba('el generador de la Academy rechaza un "acceso" desconocido',
+    /"acceso" debe ser "cuenta" o "publico"/.test(fs.readFileSync(path.join(raiz, 'rwadar-academy.js'), 'utf8')));
   prueba('las URL limpias de la Academy no se quedan en caché del CDN',
     /\/academy\/\*\n\s+Cache-Control: public, max-age=0, must-revalidate/.test(headers));
+  prueba('la baja de avisos no se indexa ni se guarda en ninguna caché',
+    /\n\/baja\n\s+Cache-Control: no-store\n\s+X-Robots-Tag: noindex, nofollow\n/.test(headers));
+  prueba('el publicado de cada lección lleva su contenido y noindex antes de subir',
+    academyMod.comprobarLeccionesPublicadas(publicado, academy).length === 0 &&
+    /comprobarLeccionesPublicadas\(temporal\)/.test(publicador) &&
+    publicador.indexOf('comprobarLeccionesPublicadas(temporal)') < publicador.indexOf("'pages', 'deploy', SALIDA"));
+  prueba('la baja de avisos se publica con su script con huella y sin el ayudante de sesión',
+    ARCHIVOS_PUBLICABLES.includes('baja.html') && ARCHIVOS_PUBLICABLES.includes('assets/baja-20261105.js') &&
+    /'baja\.html', \.\.\.PAGINAS_ACADEMY/.test(publicador) &&
+    /\['acceso\.html', 'baja\.html', 'privacidad\.html', 'transparencia-comercial\.html'\]\.includes\(nombre\)/.test(publicador) &&
+    /\/assets\/baja-20261105\.[0-9a-f]{12}\.js/.test(fs.readFileSync(path.join(publicado, 'baja.html'), 'utf8')) &&
+    !fs.readFileSync(path.join(publicado, 'baja.html'), 'utf8').includes('/assets/acceso-privado'));
+  const workerPublicado = fs.readFileSync(path.join(publicado, '_worker.js'), 'utf8');
+  prueba('el worker publicado lleva la puerta de la Academy con la lista cerrada de lecciones',
+    workerPublicado.includes('const academyRWAdar = Object.freeze(' + JSON.stringify({ acceso: 'cuenta', lecciones: publicadasA.map(l => l.slug).sort() }) + ');') &&
+    workerPublicado.includes('crearAccesoServidor({ academy: academyRWAdar })') &&
+    pendientesA.every(l => !workerPublicado.includes(l.slug)));
   const codigoAcademy = lee('assets/academy-20261002.js');
   prueba('el progreso es local y separado por cuenta tras verificar la sesión, sin enviar resultados',
     /CLAVE = 'rwadar\.academy\.v1:' \+ cuenta\.id/.test(codigoAcademy) && /if \(!CLAVE\) return vacio\(\)/.test(codigoAcademy) &&
