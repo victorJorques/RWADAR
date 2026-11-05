@@ -18,3 +18,8 @@ grupos/**/crudo/
 revision-independiente/**/crudo/
 grupos/**/*.json.gz
 grupos/**/.inventario.jsonl
+
+# Copias públicas de Midas (llms-full.txt) con un identificador público que el
+# escáner de secretos confunde con una clave: en disco con su SHA-256, no en Git.
+grupos/acciones-oro-tesoro/fuentes/midas-app-llms-full.txt
+revision-independiente/fuentes/acciones-oro-tesoro/midas-app-llms-full.txt
