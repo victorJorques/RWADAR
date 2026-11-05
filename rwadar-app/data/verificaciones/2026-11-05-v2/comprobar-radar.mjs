@@ -17,6 +17,14 @@ if (!capturas) throw new Error('Uso: comprobar-radar.mjs capturas.json');
 const CAP = JSON.parse(fs.readFileSync(capturas, 'utf8'));
 const COMPROBACIONES = JSON.parse(fs.readFileSync(path.join(APP, 'data', 'comprobaciones-fuentes.json'), 'utf8')).fuentes;
 const radar = JSON.parse(fs.readFileSync(path.join(APP, 'data', 'verificaciones', '2026-11-04.2-v2', 'radar-canonico-26.json'), 'utf8'));
+// Cambios de fuente comprobados a mano hoy (cambios-radar.json): se contrasta la página nueva.
+const CAMBIOS = JSON.parse(fs.readFileSync(path.join(DIR, 'cambios-radar.json'), 'utf8'));
+for (const f of radar.fuentes) {
+  const c = CAMBIOS.fuentes[f.id];
+  if (!c) continue;
+  if (f.url !== c.antes.url) throw new Error(`${f.id}: la fuente de partida no es ${c.antes.url}`);
+  f.url = c.url;
+}
 
 const BLOQUEO = /^(Un momento|Just a moment|Attention Required|Access denied)/i;
 const captura = url => CAP[url] || CAP[url.replace(/\/$/, '')] || CAP[url + '/'];

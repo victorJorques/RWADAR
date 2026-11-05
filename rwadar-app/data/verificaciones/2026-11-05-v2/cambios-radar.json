@@ -1,0 +1,25 @@
+{
+  "fecha": "2026-11-05",
+  "nota": "Cambios del radar comprobados a mano el 05/11/2026. La comprobación automática (comprobar-radar.mjs) los aplica antes de contrastar y preparar-entrega.mjs los lleva al lote.",
+  "fuentes": {
+    "paxg-web": {
+      "antes": { "url": "https://paxos.com/paxgold", "titulo": "Pax Gold" },
+      "url": "https://www.paxg.com/",
+      "titulo": "Pax Gold (web oficial de PAXG)",
+      "motivo": "https://paxos.com/paxgold redirige el 05/11/2026 a https://www.paxos.com/assets/paxg, una página comercial que ya no dice si PAXG está disponible en la UE. La web oficial de PAXG (https://www.paxg.com/, de Paxos Trust Company, N.A.) dice el 05/11/2026 a las 08:06 UTC: «For EU visitors: PAXG is currently not available to residents of the European Union» y «PAXG is issued by Paxos Trust Company, N.A., a U.S. national trust bank regulated by the Office of the Comptroller of the Currency». El hecho que respalda la fuente no cambia; cambia la página.",
+      "comprobaciones": ["not available to residents of the European Union", "Office of the Comptroller of the Currency"]
+    }
+  },
+  "plataformas": {
+    "pax-gold": {
+      "acceso": {
+        "antes": "La ficha oficial de Paxos indica que PAXG no está disponible actualmente en la UE ('PAXG is currently unavailable in the EU'), así que no consta acceso desde España. Fuera de la UE se dirige a particulares, sobre todo a través de exchanges, y a instituciones mediante contacto comercial directo.",
+        "detalle": "La web oficial de PAXG indica que ahora no está disponible para residentes en la Unión Europea ('PAXG is currently not available to residents of the European Union'), así que no consta acceso desde España. Fuera de la UE se dirige a particulares, sobre todo a través de exchanges, y a instituciones mediante contacto comercial directo."
+      },
+      "estadoOperativo": {
+        "antes": "Paxos sigue publicando la ficha de PAXG, su custodia y las opciones de canje.",
+        "detalle": "Paxos sigue publicando la web de PAXG, su custodia y que cada token se puede canjear por oro físico."
+      }
+    }
+  }
+}

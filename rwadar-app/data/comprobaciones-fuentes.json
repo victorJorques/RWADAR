@@ -42,7 +42,7 @@
     "openeden-web": ["TBILL"],
     "openeden-intro": ["registered professional fund"],
     "openeden-onboarding": ["permissioned protocol", "Accredited Investors"],
-    "paxg-web": ["PAXG is currently unavailable in the EU", "Office of the Comptroller of the Currency"],
+    "paxg-web": ["not available to residents of the European Union", "Office of the Comptroller of the Currency"],
     "paxg-nydfs": ["Paxos Trust Company", "PAX Gold"],
     "reental-web": ["Proyectos|Projects"],
     "reental-faq": ["Any adult user can register and invest", "accredited investor"],
