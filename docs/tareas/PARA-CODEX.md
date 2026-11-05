@@ -6,6 +6,32 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de noviembre de 2026 (7) · Claude · entrega 2026-11-05.2 y remates publicados: Supabase, web y app
+
+Orden de Víctor: «Arregla todo, no dejes nada para mañana»; retiradas decididas
+por él: «Retirar las dos hoy».
+
+- **PRs unidas:** #70 (remates: transparencia 48/48 al 05/11, Hausera en
+  Orihuela Costa, datos personales recortados en copias antiguas), #71 (entrega
+  2026-11-05.2) y #72 (sincronización y sello).
+- **Supabase:** «Aplicar catálogo» con `2026-11-05.2` (run 42082712442), tras
+  releer como visitante la `cede1f27` a las 18:16 UTC. En línea, `88d5a757`:
+  25 plataformas, **22 ofertas (8/13/1)**, sin BILLA ni Casa de Outeiro, Pax Gold
+  con https://www.paxg.com/ y el acceso de Spiko con lo que muestra la CNMV.
+- **Web:** «Publicar web» en preview (run 42083927291) y producción (run
+  42084230282). Comprobado con curl en https://rwadar.pages.dev: revisión
+  `88d5a757`, `/ofertas/casa-de-outeiro` y `/ofertas/terreno-con-arrendamiento-billa`
+  dan 404, Pax Gold enlaza a paxg.com, Spiko cita a Aldana Capital y Hausera dice
+  «Orihuela Costa · Alicante».
+- **App:** OTA Android (run 42083933359), correcta, base c1f7106 (1.4.1(23)).
+- **Pruebas:** `npm test` en verde tras sincronizar (web 601, móvil 410 + 2
+  omitidas, acceso 146, base de datos sin fallos).
+- **Pendiente (solo Víctor):** borrar en GitHub la rama `claude/catalogo-2026-11-05`.
+  Lleva copias sin recortar con nombres de personas, no se unió a `main` y la
+  herramienta no puede borrar ramas. Los nombres siguen en el historial de
+  `main` de ciclos anteriores; borrarlos de ahí exigiría reescribir la historia
+  y Víctor tendría que pedirlo expresamente.
+
 ## 5 de noviembre de 2026 (6) · Claude · entrega 2026-11-05.2 revisada; registro de Casa de Outeiro corregido
 
 Misma orden de Víctor: «Arregla todo, no dejes nada para mañana». Rama

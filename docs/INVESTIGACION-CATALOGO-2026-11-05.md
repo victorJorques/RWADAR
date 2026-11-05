@@ -82,18 +82,23 @@ Carpeta completa: `rwadar-app/data/verificaciones/2026-11-05-v2/`
 - **App Android:** el catálogo le llega solo desde Supabase. La OTA lleva las
   tarjetas nuevas y los textos de transparencia del 05/11 (runtime 1.4.1(23)).
 
-## 5. Pendiente
+## 5. Arreglado esa misma tarde (entrega 2026-11-05.2 y remates)
 
-- **PAX Gold:** la dirección vieja sigue en `public.plataformas.web` (botón «Ir a
-  la web de Pax Gold» y JSON-LD). Hay que cambiarla con un SQL aparte.
-- **Spiko:** el texto de acceso de la plataforma en el radar dice todavía «No
-  hemos comprobado en la CNMV…».
-- **Hausera:** la ilustración dice Alicante y el activo está en Orihuela Costa
-  (La Zenia).
-- **Datos personales:** hay copias con nombres de personas en
-  `2026-11-01-v2` y `2026-11-03.3-v2`, ya en `main`.
-- **Transparencia:** 4 de las 48 comprobaciones conservan la fecha del 03/11
-  porque hoy no se volvió a leer su fuente.
-- **Seguimiento:** Casa de Outeiro, retirarla si el 10/11 sigue sin avance;
-  Hausera, revisarla a partir del 11/11; BILLA, plazo vencido sin prórroga
-  (propuesta de retirada si el 15/11 sigue igual; decide Víctor).
+Víctor: «Arregla todo, no dejes nada para mañana»; y sobre las retiradas,
+«Retirar las dos hoy».
+
+- **Salen BILLA y Casa de Outeiro.** El catálogo queda en 22 ofertas (8/13/1).
+- **Pax Gold** enlaza a paxg.com.
+- **Spiko:** su texto de acceso dice lo que muestra la CNMV.
+- **Transparencia:** las 48 comprobaciones, con fecha del 05/11.
+- **Hausera:** su ilustración dice Orihuela Costa.
+- **Datos personales:** recortados en las copias de fuentes antiguas.
+
+Todo publicado en Supabase, en la web y en la app (OTA) el 05/11 hacia las
+18:30 UTC.
+
+## 6. Pendiente
+
+- Borrar en GitHub la rama `claude/catalogo-2026-11-05`. Lleva copias sin
+  recortar, no se unió y la herramienta no puede borrar ramas.
+- Hausera: revisar a partir del 11/11 si publica el documento de emisión.
