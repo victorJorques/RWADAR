@@ -62,6 +62,7 @@ const ACTIVAR_CORREO = leer('db/30_avisos_registrados_activar_correo.sql');
 const ACTIVAR_PUSH = leer('db/30_avisos_registrados_activar_push.sql');
 const ACTIVAR_CASILLA = leer('db/30_avisos_registrados_activar_casilla.sql');
 const APAGAR = leer('db/30_avisos_registrados_apagar.sql');
+const APAGAR_CASILLA = leer('db/30_avisos_registrados_apagar_casilla.sql');
 const ANUNCIAR = leer('db/anunciar.sql');
 const FALLO_CERRADO = leer('db/fallo_cerrado.sql');
 const FLUJO = leer('../.github/workflows/avisar-novedad.yml');
@@ -190,20 +191,46 @@ const scriptDe = (bloque) => {
   }
 }
 
-// El reloj nuevo no lo tocan los LIKE de 22, 23, correo_fallo_cerrado ni fresh-install.
+// Los relojes nuevos no los tocan los LIKE de 22, 23, correo_fallo_cerrado,
+// push_fallo_cerrado ni fresh-install.
 const FILTROS_ANTIGUOS = ['avisos_ciclo', 'avisos_soltar', 'avisos_confirmar', 'push_ciclo', 'push_soltar',
   'push_confirmar', 'retencion_dispositivos_ciclo'];
+const CIERRES_ANTIGUOS = ['22_cierre_regresiones.sql', '22_cierre_regresiones_verificar.sql', '23_activar_correo.sql',
+  '23_activar_correo_verificar.sql', 'correo_fallo_cerrado.sql', 'push_fallo_cerrado.sql', 'fresh_install_verificar.sql'];
+const LIMPIEZA = ['rwadar-novedades-limpieza', '41 4 * * *', ' select rwadar_novedades.limpiar() '];
 {
   const orden = (sql) => sql.match(/select cron\.schedule\('rwadar-novedades', '\*\/5 \* \* \* \*', \$\$(.*?)\$\$\);/)?.[1];
   const ordenes = [orden(ACTIVAR_CORREO), orden(ACTIVAR_PUSH)];
+  const ordenLimpieza = SQL30.match(/select cron\.schedule\('rwadar-novedades-limpieza', '41 4 \* \* \*', \$\$(.*?)\$\$\);/)?.[1];
   paso('los dos scripts de activación crean el mismo reloj, que solo llama a rwadar_novedades.procesar()',
     ordenes.every((o) => o === ' select rwadar_novedades.procesar() '));
-  paso('esa orden no contiene ninguno de los patrones LIKE de los cierres antiguos',
-    ordenes.every((o) => o && !FILTROS_ANTIGUOS.some((f) => o.toLowerCase().includes(f))));
-  paso('fallo_cerrado.sql apaga los interruptores y la casilla de la 30 y quita cualquier reloj que llame a rwadar_novedades',
+  paso('la 30 crea el reloj diario de limpieza rwadar-novedades-limpieza a las 41 4 * * *, que solo llama a rwadar_novedades.limpiar()',
+    ordenLimpieza === LIMPIEZA[2] && (SQL30.match(/cron\.schedule\(/g) || []).length === 1);
+  // Cada LIKE de los cierres y verificadores antiguos, leído de sus archivos y
+  // traducido a expresión regular (% = cualquier cosa, _ = un carácter).
+  const likes = [], nombres = new Set();
+  for (const archivo of CIERRES_ANTIGUOS) {
+    const sql = leer(`db/${archivo}`);
+    for (const [, patron] of sql.matchAll(/like\s+'([^']*)'/gi)) likes.push(patron);
+    for (const [, nombre] of sql.matchAll(/'(rwadar-[a-z-]+)'/g)) nombres.add(nombre);
+  }
+  const casa = (texto, patron) => new RegExp(`^${patron.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    .replace(/%/g, '[\\s\\S]*').replace(/_/g, '[\\s\\S]')}$`).test(texto.toLowerCase());
+  paso(`las órdenes de los dos relojes de la 30 no casan con ninguno de los ${likes.length} LIKE de 22, 23, correo_fallo_cerrado, push_fallo_cerrado y fresh_install_verificar`,
+    likes.length >= 20 && FILTROS_ANTIGUOS.every((f) => likes.includes(`%${f}%`))
+    && casa(' select public.push_ciclo(50) ', '%push_ciclo%') && casa('xretencionydispositivosyciclo', '%retencion_dispositivos_ciclo%')
+    && [...ordenes, ordenLimpieza].every((o) => o && !likes.some((l) => casa(o, l))));
+  paso(`y sus nombres no están entre los que esos archivos quitan o cuentan (${[...nombres].sort().join(', ')})`,
+    nombres.size >= 3 && !nombres.has('rwadar-novedades') && !nombres.has(LIMPIEZA[0]));
+  paso('fallo_cerrado.sql apaga los interruptores y la casilla de la 30 (con su fecha) y quita cualquier reloj que llame a rwadar_novedades, también el de limpieza',
     /update rwadar_novedades\.configuracion\s+set correo_habilitado = false, push_habilitado = false, ofertas_automaticas = false/.test(FALLO_CERRADO)
     && /update rwadar_novedades\.configuracion set casilla_activa = false where unica/.test(FALLO_CERRADO)
-    && FALLO_CERRADO.includes("like '%rwadar_novedades.%'"));
+    && /update rwadar_novedades\.configuracion set casilla_activada_el = null where unica/.test(FALLO_CERRADO)
+    && FALLO_CERRADO.includes("like '%rwadar_novedades.%'") && FALLO_CERRADO.includes(`'${LIMPIEZA[0]}'`));
+  paso('apagar.sql no toca la casilla del alta y deja el reloj de limpieza; apagar_casilla.sql solo toca la casilla',
+    !/casilla_activ/.test(sinComentarios(APAGAR)) && APAGAR.includes("= 'select rwadar_novedades.limpiar()'")
+    && /set casilla_activa = false/.test(APAGAR_CASILLA) && /set casilla_activada_el = null/.test(APAGAR_CASILLA)
+    && !/correo_habilitado|push_habilitado|ofertas_automaticas|cron\./.test(sinComentarios(APAGAR_CASILLA)));
 }
 
 /* =====================================================================
@@ -223,6 +250,8 @@ const loteReal = (etiqueta) => {
 };
 const AUTH_DOBLES = `
   alter table auth.users add column is_anonymous boolean default false;
+  -- Como en Supabase: cuándo salió el correo de confirmación (GoTrue lo fija al enviarlo).
+  alter table auth.users add column confirmation_sent_at timestamptz;
   alter table auth.users alter column raw_user_meta_data drop not null;
   create or replace function auth.uid() returns uuid language sql stable security definer
     set search_path='' as $$ select uid from public._sesion limit 1 $$;
@@ -316,28 +345,39 @@ paso('la 30 se aplica literalmente dos veces sobre la cadena de producción', tr
 /* =====================================================================
    3 · Estado de instalación: apagado, relleno, permisos
    ===================================================================== */
+const AVISO_CASILLA = /^RWAdar 30: casilla del alta inactiva: si la web o la app enseñan la casilla, ejecuta 30_avisos_registrados_activar_casilla\.sql/;
 const verificar = async () => {
   await sesion(db);
   const avisos = [];
   const e = await error(() => db.exec(VERIFICAR30, { onNotice: (n) => avisos.push(n.message) }));
   if (e) { await db.exec('rollback'); return { ok: false, error: e.message }; }
-  return { ok: avisos.some((a) => a.startsWith('RWAdar 30 OK')), aviso: avisos.find((a) => a.startsWith('RWAdar 30 OK')) };
+  return { ok: avisos.some((a) => a.startsWith('RWAdar 30 OK')), aviso: avisos.find((a) => a.startsWith('RWAdar 30 OK')),
+    avisoCasilla: avisos.find((a) => AVISO_CASILLA.test(a)) };
 };
-const relojes = async () => (await sesion(db), filas(db, `select jobname, schedule, command from cron.job
-  where jobname = 'rwadar-novedades' or lower(coalesce(command, '')) like '%rwadar_novedades.%'`));
+// Todos los relojes de la 30; `relojes()` son los de envío (todos menos el
+// de limpieza canónico) y `conLimpieza()` exige ese, uno y tal cual.
+const todosRelojes = async () => (await sesion(db), filas(db, `select jobname, schedule, command from cron.job
+  where jobname like 'rwadar-novedades%' or lower(coalesce(command, '')) like '%rwadar_novedades.%' order by jobname, jobid`));
+const esLimpieza = (r) => r.jobname === LIMPIEZA[0] && r.command.trim().toLowerCase() === LIMPIEZA[2].trim();
+const relojes = async () => (await todosRelojes()).filter((r) => !esLimpieza(r));
+const conLimpieza = async () => isDeepStrictEqual((await todosRelojes()).filter(esLimpieza)
+  .map((r) => [r.jobname, r.schedule, r.command]), [LIMPIEZA]);
 const config = async () => { await sesion(db); return una(db, 'select * from rwadar_novedades.configuracion'); };
 const pref = async (u) => { await sesion(db); return una(db, 'select * from rwadar_novedades.preferencias where usuario_id = $1', [u.id]); };
 
 {
   const c = await config();
   const v = await verificar();
-  paso('todo nace apagado: casilla del alta, correo, push y ofertas automáticas, sin fechas de activación ni reloj',
-    !c.casilla_activa && !c.correo_habilitado && !c.push_habilitado && !c.ofertas_automaticas && c.correo_activado_el === null
-    && c.push_activado_el === null && (await relojes()).length === 0);
+  paso('todo nace apagado: casilla del alta, correo, push y ofertas automáticas, sin fechas de activación ni reloj de envío',
+    !c.casilla_activa && c.casilla_activada_el === null && !c.correo_habilitado && !c.push_habilitado && !c.ofertas_automaticas
+    && c.correo_activado_el === null && c.push_activado_el === null && (await relojes()).length === 0);
+  paso('aplicada dos veces, la 30 deja UN reloj diario de limpieza rwadar-novedades-limpieza (41 4 * * *) que solo llama a limpiar()',
+    await conLimpieza() && (await todosRelojes()).length === 1);
   paso('configuracion guarda la versión y los textos de la casilla EXACTAMENTE como el contrato',
     c.version_consentimiento === VERSION && c.texto_consentimiento_es === TEXTO_ES && c.texto_consentimiento_en === TEXTO_EN);
   paso(`el verificador 30 pasa con todo apagado («${v.aviso || v.error}»)`,
-    v.ok && /casilla del alta inactiva, correo apagado, push apagado/.test(v.aviso));
+    v.ok && /casilla del alta inactiva, correo apagado, push apagado/.test(v.aviso) && /reloj diario de limpieza/.test(v.aviso));
+  paso(`y avisa de la casilla inactiva («${v.avisoCasilla}»)`, AVISO_CASILLA.test(v.avisoCasilla || ''));
   paso('las cuentas confirmadas que ya existían reciben preferencias con novedades = false, aunque sus metadatos digan true',
     (await pref(previa))?.novedades === false && (await pref(previa)).aceptado_el === null);
   paso('ni las cuentas sin confirmar ni las anónimas reciben preferencias',
@@ -390,9 +430,66 @@ const pref = async (u) => { await sesion(db); return una(db, 'select * from rwad
   await db.exec('alter table rwadar_novedades.preferencias rename column bienvenida_push_el to bienvenida_push_otra');
   const v2 = await verificar();
   await db.exec('alter table rwadar_novedades.preferencias rename column bienvenida_push_otra to bienvenida_push_el');
-  paso('el verificador 30 detecta mi_aviso_push_registrado abierta a anon y la falta de la casilla o de las marcas de bienvenida',
-    !v1.ok && /mi_aviso_push_registrado/.test(v1.error) && !v2.ok && /casilla_activa o las marcas/.test(v2.error)
-    && (await verificar()).ok);
+  await db.exec('alter table rwadar_novedades.configuracion rename column casilla_activada_el to casilla_otra');
+  const v3 = await verificar();
+  await db.exec('alter table rwadar_novedades.configuracion rename column casilla_otra to casilla_activada_el');
+  paso('el verificador 30 detecta mi_aviso_push_registrado abierta a anon y la falta de la casilla, de su fecha o de las marcas de bienvenida',
+    !v1.ok && /mi_aviso_push_registrado/.test(v1.error) && !v2.ok && /casilla_activada_el o las marcas/.test(v2.error)
+    && !v3.ok && /casilla_activada_el o las marcas/.test(v3.error) && (await verificar()).ok);
+
+  // Un disparador de confirmación sin la comprobación de la fecha de envío.
+  const original = SQL30.match(/create or replace function rwadar_novedades\.al_confirmar_cuenta\(\)[\s\S]*?\n\$funcion\$;/)[0];
+  await db.exec(`create or replace function rwadar_novedades.al_confirmar_cuenta() returns trigger
+    language plpgsql security definer set search_path = '' as $f$ begin
+      perform 1 from rwadar_novedades.configuracion c where c.casilla_activa; return null; end $f$`);
+  const v4 = await verificar();
+  await db.exec(original);
+  paso('el verificador 30 detecta un disparador de confirmación que no mira confirmation_sent_at ni casilla_activada_el',
+    !v4.ok && /confirmation_sent_at/.test(v4.error) && (await verificar()).ok);
+
+  // La casilla no se enciende sin fecha: solo con activar_casilla.
+  const ec = await error(() => db.exec('update rwadar_novedades.configuracion set casilla_activa = true'));
+  paso('encender la casilla a mano sin casilla_activada_el lo impide la base (23514)',
+    ec?.code === '23514' && !(await config()).casilla_activa);
+
+  // Reloj de limpieza alterado, quitado o con un alias que llama a limpiar().
+  await sesion(db);
+  await db.exec(`update cron.job set schedule = '* * * * *' where jobname = '${LIMPIEZA[0]}'`);
+  const va = await verificar();
+  await db.exec(`update cron.job set schedule = '${LIMPIEZA[1]}' where jobname = '${LIMPIEZA[0]}';
+    select cron.unschedule('${LIMPIEZA[0]}')`);
+  const vb = await verificar();
+  await db.exec(`select cron.schedule('${LIMPIEZA[0]}', '${LIMPIEZA[1]}', $$${LIMPIEZA[2]}$$);
+    select cron.schedule('alias-limpieza', '* * * * *', $$ select rwadar_novedades.limpiar() $$)`);
+  const vc = await verificar();
+  await db.exec("select cron.unschedule('alias-limpieza')");
+  paso('el verificador 30 exige el reloj diario de limpieza tal cual (ni alterado, ni ausente) y ningún otro reloj de rwadar_novedades con todo apagado',
+    !va.ok && /reloj diario de limpieza/.test(va.error) && !vb.ok && /reloj diario de limpieza/.test(vb.error)
+    && !vc.ok && /ningún reloj de envío/.test(vc.error) && (await verificar()).ok && await conLimpieza());
+}
+{
+  // Retención con todo apagado y sin haber activado nunca nada: la orden del
+  // reloj diario, ejecutada como la ejecuta pg_cron, borra lo caducado.
+  await sesion(db);
+  const TOKEN_VIEJO = 'ExponentPushToken[retencion-vieja-0001]', TOKEN_RECIENTE = 'ExponentPushToken[retencion-nueva-0001]';
+  await db.query(`insert into rwadar_novedades.correos (usuario_id, tipo, estado, creado_el, terminado_el)
+    values ($1, 'bienvenida', 'descartado', now() - interval '100 days', now() - interval '91 days')`, [previa.id]);
+  await db.query(`insert into rwadar_novedades.pushes (usuario_id, tipo, estado, creado_el, terminado_el)
+    values ($1, 'bienvenida', 'fallido', now() - interval '100 days', now() - interval '91 days')`, [previa.id]);
+  await db.query(`insert into rwadar_novedades.dispositivos (token, usuario_id, plataforma, actualizado_el)
+    values ($1, $3, 'android', now() - interval '181 days'), ($2, $3, 'android', now())`, [TOKEN_VIEJO, TOKEN_RECIENTE, previa.id]);
+  const [reloj] = (await todosRelojes()).filter(esLimpieza);
+  const peticionesAntes = await numero(db, 'select count(*) from net.http_request_queue');
+  const fila = await una(db, reloj.command);
+  const quedan = await una(db, `select (select count(*)::int from rwadar_novedades.correos) c,
+    (select count(*)::int from rwadar_novedades.pushes) p,
+    (select count(*)::int from rwadar_novedades.dispositivos where usuario_id = $1) d`, [previa.id]);
+  paso(`retención con todo apagado y sin activar nada: el reloj diario borra colas de 90 días y móviles de 180 (${fila?.limpiar} filas), no el móvil reciente`,
+    fila?.limpiar === 3 && quedan.c === 0 && quedan.p === 0 && quedan.d === 1);
+  const definicion = (await una(db, "select lower(pg_get_functiondef('rwadar_novedades.limpiar()'::regprocedure)) d")).d;
+  paso('limpiar() no hace red: ni pg_net ni Vault en su definición y ninguna petición nueva en la cola de pg_net',
+    !/net\.|http|vault/.test(definicion) && await numero(db, 'select count(*) from net.http_request_queue') === peticionesAntes);
+  await db.query('delete from rwadar_novedades.dispositivos where token = $1', [TOKEN_RECIENTE]);
 }
 
 /* =====================================================================
@@ -403,9 +500,11 @@ const comoAuth = async (fn) => {
   await db.exec('set role supabase_auth_admin');
   try { return await fn(); } finally { await db.exec('reset role'); }
 };
+// Como GoTrue: un alta sin confirmar recibe su correo de confirmación ya
+// (confirmation_sent_at); una cuenta que nace confirmada no recibe ninguno.
 const altaAuth = (email, meta, confirmada = false) => comoAuth(async () => (await filas(db,
-  `insert into auth.users(email, raw_user_meta_data, email_confirmed_at)
-   values ($1, $2::jsonb, ${confirmada ? 'now()' : 'null'}) returning id, email`,
+  `insert into auth.users(email, raw_user_meta_data, email_confirmed_at, confirmation_sent_at)
+   values ($1, $2::jsonb, ${confirmada ? 'now(), null' : 'null, now()'}) returning id, email`,
   [email, meta === null ? null : JSON.stringify(meta ?? {})]))[0]);
 const confirmarAuth = (u, avisos = []) => comoAuth(() => db.query(
   'update auth.users set email_confirmed_at = now() where id = $1', [u.id], { onNotice: (n) => avisos.push(n) }));
@@ -418,29 +517,67 @@ const META_SI = (canal = 'web') => ({ avisos_novedades: true, avisos_version: VE
 }
 // Hueco del permiso: con la casilla sin activar (plantilla de Auth aún sin
 // poner), unos metadatos válidos escritos a mano en el alta no apuntan a nadie.
+const enviadoEl = async (u) => { await sesion(db); return (await una(db, 'select confirmation_sent_at f from auth.users where id = $1', [u.id])).f; };
 {
   const sinCasilla = await altaAuth('sin-casilla@ejemplo.test', META_SI('web'));
   await confirmarAuth(sinCasilla);
   const p = await pref(sinCasilla);
   paso('con casilla_activa = false, confirmar con metadatos válidos crea preferencias pero NO da permiso',
     p?.novedades === false && p.origen === null && p.aceptado_el === null && p.version === null);
+  // Altas hechas ANTES de activar la casilla: su correo de confirmación es el
+  // antiguo, sin el párrafo de los avisos. Se confirman después.
+  const antesDeActivar = await altaAuth('alta-antes@ejemplo.test', META_SI('web'));
+  const reenviada = await altaAuth('reenviada@ejemplo.test', META_SI('app'));
   await sesion(db);
   await db.exec(ACTIVAR_CASILLA);
   const c = await config();
   const v = await verificar();
-  paso(`30_avisos_registrados_activar_casilla.sql solo activa la casilla: ni correo, ni push, ni reloj («${v.aviso || v.error}»)`,
-    c.casilla_activa === true && !c.correo_habilitado && !c.push_habilitado && !c.ofertas_automaticas
-    && (await relojes()).length === 0 && v.ok && /casilla del alta activa, correo apagado, push apagado/.test(v.aviso));
+  paso(`30_avisos_registrados_activar_casilla.sql solo activa la casilla, con su fecha: ni correo, ni push, ni reloj de envío («${v.aviso || v.error}»)`,
+    c.casilla_activa === true && c.casilla_activada_el instanceof Date && !c.correo_habilitado && !c.push_habilitado
+    && !c.ofertas_automaticas && (await relojes()).length === 0 && await conLimpieza()
+    && v.ok && /casilla del alta activa, correo apagado, push apagado/.test(v.aviso) && !v.avisoCasilla);
+  await db.exec(ACTIVAR_CASILLA);
+  paso('repetir activar_casilla con la casilla ya activa conserva casilla_activada_el',
+    (await config()).casilla_activada_el.getTime() === c.casilla_activada_el.getTime());
   paso('activarla después no apunta a quien se confirmó antes (sus preferencias ya existen)',
     (await pref(sinCasilla)).novedades === false);
+  const enviadoAntes = await enviadoEl(antesDeActivar);
+  await confirmarAuth(antesDeActivar);
+  const pa = await pref(antesDeActivar);
+  paso('un alta hecha ANTES de activar la casilla y confirmada DESPUÉS no guarda el permiso (su correo de confirmación era el antiguo)',
+    enviadoAntes instanceof Date && enviadoAntes < c.casilla_activada_el
+    && pa?.novedades === false && pa.origen === null && pa.aceptado_el === null);
+  // Si Auth le reenvía la confirmación ya con la plantilla nueva, sí cuenta.
+  await comoAuth(() => db.query('update auth.users set confirmation_sent_at = now() where id = $1', [reenviada.id]));
+  await confirmarAuth(reenviada);
+  paso('si la confirmación se reenvía después de activar (correo nuevo, con el aviso), confirmarla sí guarda el permiso',
+    (await enviadoEl(reenviada)) >= c.casilla_activada_el && (await pref(reenviada))?.novedades === true
+    && (await pref(reenviada)).canal === 'app');
+  // Sin fecha de envío: vacía, o Auth sin esa columna.
+  const sinEnvio = await altaAuth('sin-envio@ejemplo.test', META_SI('web'));
+  await comoAuth(() => db.query('update auth.users set confirmation_sent_at = null where id = $1', [sinEnvio.id]));
+  const avisosSinEnvio = [];
+  const e1 = await error(() => confirmarAuth(sinEnvio, avisosSinEnvio));
+  await sesion(db);
+  await db.exec('alter table auth.users rename column confirmation_sent_at to confirmation_enviada_otra');
+  const sinColumna = await comoAuth(async () => (await filas(db, `insert into auth.users(email, raw_user_meta_data, email_confirmed_at)
+    values ('sin-columna@ejemplo.test', $1::jsonb, null) returning id, email`, [JSON.stringify(META_SI('web'))]))[0]);
+  const avisosSinColumna = [];
+  const e2 = await error(() => confirmarAuth(sinColumna, avisosSinColumna));
+  await sesion(db);
+  await db.exec('alter table auth.users rename column confirmation_enviada_otra to confirmation_sent_at');
+  paso('sin fecha de envío (vacía o sin la columna confirmation_sent_at en Auth), confirmar pasa sin avisos, crea preferencias y NO da permiso',
+    !e1 && !e2 && avisosSinEnvio.length === 0 && avisosSinColumna.length === 0
+    && (await pref(sinEnvio))?.novedades === false && (await pref(sinColumna))?.novedades === false);
 }
 const ana = await altaAuth('ana@ejemplo.test', META_SI('web'));
 paso('el alta sin confirmar todavía no crea preferencias', !(await pref(ana)));
 await confirmarAuth(ana);
 {
   const p = await pref(ana);
-  paso('con la casilla activa y SET ROLE supabase_auth_admin, confirmar crea las preferencias y guarda el permiso (alta, web, versión y fecha)',
-    p?.novedades === true && p.origen === 'alta' && p.canal === 'web' && p.version === VERSION && p.aceptado_el instanceof Date
+  paso('con la casilla activa, un alta y su confirmación DESPUÉS de activarla (SET ROLE supabase_auth_admin) guardan el permiso (alta, web, versión y fecha)',
+    (await enviadoEl(ana)) >= (await config()).casilla_activada_el
+    && p?.novedades === true && p.origen === 'alta' && p.canal === 'web' && p.version === VERSION && p.aceptado_el instanceof Date
     && p.alta_el instanceof Date && /^[0-9a-f-]{36}$/.test(p.baja_token));
 }
 const nace = await altaAuth('nace@ejemplo.test', META_SI('app'), true);
@@ -883,9 +1020,10 @@ const VAULT_BREVO = "insert into vault.decrypted_secrets(name, decrypted_secret)
   const fechaCorreo = (await config()).correo_activado_el.getTime();
   await db.exec(ACTIVAR_CORREO);
   const c3 = await config();
-  paso('activar el push y repetir la activación del correo dejan un solo reloj y conservan la fecha de activación',
+  paso('activar el push y repetir la activación del correo dejan un solo reloj de envío y conservan la fecha de activación',
     c3.push_habilitado && c3.push_activado_el instanceof Date && c3.correo_activado_el.getTime() === fechaCorreo
     && (await relojes()).length === 1);
+  paso('las activaciones no tocan el reloj diario de limpieza: sigue uno y tal cual', await conLimpieza());
   const v2 = await verificar();
   paso('el verificador 30 pasa con correo y push encendidos', v2.ok && /correo encendido, push encendido/.test(v2.aviso));
 }
@@ -1258,22 +1396,33 @@ let n1;
 }
 
 /* =====================================================================
-   11 · Convivencia con 22, 23, fresh-install y correo_fallo_cerrado
+   11 · Convivencia con 22, 23, fresh-install, correo_ y push_fallo_cerrado
    ===================================================================== */
 {
-  const reloj = async () => (await relojes()).map((r) => r.jobname).join();
+  // Los dos relojes de la 30: el de envío y el diario de limpieza, tal cual.
+  const AMBOS = ['rwadar-novedades', LIMPIEZA[0]].join();
+  const reloj = async () => ((await conLimpieza()) ? (await todosRelojes()).map((r) => r.jobname).sort().join() : 'sin limpieza');
   const corre = async (nombre) => { await sesion(db); const e = await error(() => db.exec(leer(`db/${nombre}`))); if (e) await db.exec('rollback'); return e; };
   const e23 = await corre('23_activar_correo.sql');
   const v23 = await corre('23_activar_correo_verificar.sql');
-  paso('con los avisos encendidos se aplica la 23 y su verificador pasa; el reloj rwadar-novedades sigue',
-    !e23 && !v23 && await reloj() === 'rwadar-novedades');
+  paso('con los avisos encendidos se aplica la 23 y su verificador pasa; siguen los relojes rwadar-novedades y rwadar-novedades-limpieza',
+    !e23 && !v23 && await reloj() === AMBOS);
   const e22 = await corre('22_cierre_regresiones.sql');
   const v22 = await corre('22_cierre_regresiones_verificar.sql');
   const fresh = await corre('fresh_install_verificar.sql');
-  paso(`reaplicar la 22 y pasar sus verificadores y fresh-install (${[e22, v22, fresh].map((e) => e?.message || 'OK').join(' / ')}): el reloj sigue`,
-    !e22 && !v22 && !fresh && await reloj() === 'rwadar-novedades');
+  paso(`reaplicar la 22 y pasar sus verificadores y fresh-install con el reloj de limpieza puesto (${[e22, v22, fresh].map((e) => e?.message || 'OK').join(' / ')}): los dos relojes siguen`,
+    !e22 && !v22 && !fresh && await reloj() === AMBOS);
   const cf = await corre('correo_fallo_cerrado.sql');
-  paso('correo_fallo_cerrado.sql apaga el correo antiguo sin tocar el reloj de la 30', !cf && await reloj() === 'rwadar-novedades');
+  paso('correo_fallo_cerrado.sql apaga el correo antiguo sin tocar los relojes de la 30', !cf && await reloj() === AMBOS);
+  const pf = await corre('push_fallo_cerrado.sql');
+  paso('push_fallo_cerrado.sql apaga el push antiguo sin tocar los relojes de la 30', !pf && await reloj() === AMBOS);
+  // Tras los dos cierres antiguos, la 22 se vuelve a aplicar y sus
+  // verificadores pasan con los dos relojes de la 30 puestos.
+  const e22b = await corre('22_cierre_regresiones.sql');
+  const v22b = await corre('22_cierre_regresiones_verificar.sql');
+  const freshB = await corre('fresh_install_verificar.sql');
+  paso(`después de esos cierres, reaplicar la 22 y pasar sus verificadores y fresh-install (${[e22b, v22b, freshB].map((e) => e?.message || 'OK').join(' / ')}): los dos relojes siguen`,
+    !e22b && !v22b && !freshB && await reloj() === AMBOS);
   const v = await verificar();
   const { r } = await procesar();
   paso('después de todo, el verificador 30 pasa y procesar() sigue funcionando', v.ok && /correo encendido, push encendido/.test(v.aviso)
@@ -1281,11 +1430,12 @@ let n1;
 }
 
 /* =====================================================================
-   12 · Apagar, reaplicar la 30 y fallo_cerrado
+   12 · Apagar el envío, retirar la casilla, reaplicar la 30,
+        fallo_cerrado y restaurar una copia anterior a la 30
    ===================================================================== */
 {
   await sesion(db);
-  const casillaAntes = (await config()).casilla_activa;
+  const antes = await config();
   await db.exec(APAGAR);
   const c = await config();
   const v = await verificar();
@@ -1298,37 +1448,83 @@ let n1;
     values ($1, $2, 'android', now() - interval '181 days')`, [token(50), nace.id]);
   const desde = await ultimaPeticion();
   const { r } = await procesar();
-  paso('apagar deja los tres interruptores y la casilla apagados y sin reloj; el verificador pasa y procesar() no envía nada',
-    casillaAntes === true && !c.casilla_activa
-    && !c.correo_habilitado && !c.push_habilitado && !c.ofertas_automaticas && (await relojes()).length === 0
-    && v.ok && /casilla del alta inactiva, correo apagado, push apagado/.test(v.aviso)
-    && r.estado === 'apagado' && (await ultimaPeticion()) === desde);
+  paso('apagar.sql apaga el envío (correo, push, ofertas automáticas y el reloj de envío) y deja el reloj diario de limpieza; el verificador pasa y procesar() no envía nada',
+    antes.correo_habilitado && antes.push_habilitado
+    && !c.correo_habilitado && !c.push_habilitado && !c.ofertas_automaticas && (await relojes()).length === 0 && await conLimpieza()
+    && v.ok && /correo apagado, push apagado/.test(v.aviso) && r.estado === 'apagado' && (await ultimaPeticion()) === desde);
+  paso('apagar.sql NO toca la casilla del alta: sigue activa, con la misma fecha, y el verificador no avisa',
+    antes.casilla_activa === true && c.casilla_activa === true
+    && c.casilla_activada_el.getTime() === antes.casilla_activada_el.getTime()
+    && /casilla del alta activa/.test(v.aviso) && !v.avisoCasilla);
   await sesion(db);
   paso(`con todo apagado, procesar() limpia igual: colas terminadas de 90 días y móviles de 180 (${r.limpiados} filas)`,
     r.limpiados >= 2 && await numero(db, 'select count(*) from rwadar_novedades.correos where usuario_id = $1', [nace.id]) === 0
     && await numero(db, 'select count(*) from rwadar_novedades.dispositivos where token = $1', [token(50)]) === 0);
+  const trasApagar = await altaAuth('tras-apagar@ejemplo.test', META_SI('web'));
+  await confirmarAuth(trasApagar);
+  paso('con el envío apagado y la casilla visible, marcarla y confirmar sigue guardando el permiso (nada se pierde en silencio)',
+    (await pref(trasApagar))?.novedades === true && (await pref(trasApagar)).origen === 'alta');
+
+  // Retirar la casilla (al quitar la plantilla de Auth): solo la casilla.
+  await sesion(db);
   await db.exec(ACTIVAR_CORREO);
+  await db.exec(APAGAR_CASILLA);
+  const c1 = await config();
+  const v1 = await verificar();
+  const trasRetirar = await altaAuth('tras-retirar@ejemplo.test', META_SI('web'));
+  await confirmarAuth(trasRetirar);
+  paso('30_avisos_registrados_apagar_casilla.sql apaga solo la casilla y su fecha: el correo, su reloj y el de limpieza siguen',
+    !c1.casilla_activa && c1.casilla_activada_el === null && c1.correo_habilitado && c1.correo_activado_el instanceof Date
+    && (await relojes()).length === 1 && await conLimpieza());
+  paso(`con la casilla apagada, el verificador pasa y avisa («${v1.avisoCasilla}»)`,
+    v1.ok && /casilla del alta inactiva, correo encendido/.test(v1.aviso) && AVISO_CASILLA.test(v1.avisoCasilla || ''));
+  paso('después, confirmar con la casilla marcada ya no guarda el permiso; los ya guardados siguen valiendo',
+    (await pref(trasRetirar))?.novedades === false && (await pref(trasApagar)).novedades === true);
+
+  // Reaplicar la 30 sí apaga la casilla: hay que repetir activar_casilla.
+  await sesion(db);
   await db.exec(ACTIVAR_CASILLA);
   await db.exec("update rwadar_novedades.configuracion set ofertas_automaticas = true");
   const preferencias = await numero(db, 'select count(*) from rwadar_novedades.preferencias');
   await db.exec(SQL30);
   const c2 = await config();
-  paso('reaplicar la 30 vuelve al estado seguro (todo apagado, casilla incluida, sin reloj) sin borrar preferencias y el verificador pasa',
-    !c2.correo_habilitado && !c2.ofertas_automaticas && !c2.casilla_activa && (await relojes()).length === 0
-    && await numero(db, 'select count(*) from rwadar_novedades.preferencias') === preferencias && (await verificar()).ok);
+  const v2 = await verificar();
+  paso('reaplicar la 30 vuelve al estado seguro (todo apagado, casilla y su fecha incluidas, sin reloj de envío, con un reloj de limpieza) sin borrar preferencias',
+    !c2.correo_habilitado && !c2.ofertas_automaticas && !c2.casilla_activa && c2.casilla_activada_el === null
+    && (await relojes()).length === 0 && await conLimpieza()
+    && await numero(db, 'select count(*) from rwadar_novedades.preferencias') === preferencias);
+  paso('tras reaplicar la 30, el verificador pasa y pide ejecutar activar_casilla si la web o la app enseñan la casilla',
+    v2.ok && AVISO_CASILLA.test(v2.avisoCasilla || ''));
   await db.exec(ACTIVAR_PUSH);
   await db.exec(ACTIVAR_CORREO);
   await db.exec(ACTIVAR_CASILLA);
   await db.exec("update rwadar_novedades.configuracion set ofertas_automaticas = true; select cron.schedule('alias-renombrado', '* * * * *', $$ select rwadar_novedades.repartir() $$)");
-  await db.exec(FALLO_CERRADO);
+  const avisosFallo = [];
+  await db.exec(FALLO_CERRADO, { onNotice: (n) => avisosFallo.push(n.message) });
   const c3 = await config();
   await como(nace);
   const tras = await codigo(() => db.query('select public.estado_mis_avisos()'));
   await sesion(db, null, 'anon');
   const bajaTras = await codigo(() => db.query('select public.baja_avisos(gen_random_uuid())'));
-  paso('fallo_cerrado.sql apaga los tres interruptores y la casilla, quita cualquier reloj que llame a rwadar_novedades y cierra las RPC',
-    !c3.correo_habilitado && !c3.push_habilitado && !c3.ofertas_automaticas && !c3.casilla_activa && (await relojes()).length === 0
-    && tras === '42501' && bajaTras === '42501');
+  paso('fallo_cerrado.sql apaga los tres interruptores y la casilla con su fecha, quita todos los relojes de la 30 (también el de limpieza) y cierra las RPC',
+    !c3.correo_habilitado && !c3.push_habilitado && !c3.ofertas_automaticas && !c3.casilla_activa && c3.casilla_activada_el === null
+    && (await todosRelojes()).length === 0 && tras === '42501' && bajaTras === '42501');
+  paso('y recuerda reaplicar la 30 y, si se enseña la casilla, activar_casilla',
+    avisosFallo.some((a) => /reaplica 30_avisos_registrados\.sql y, si la web o la app enseñan la casilla, 30_avisos_registrados_activar_casilla\.sql/.test(a)));
+
+  // Restaurar una copia anterior a la 30 (docs/COPIAS-DE-SEGURIDAD.md): se
+  // borra la fila de configuración para cargar y la tabla queda vacía; al
+  // reaplicar la 30, su insert ... on conflict recrea la fila apagada.
+  await sesion(db);
+  await db.exec('delete from rwadar_novedades.configuracion');
+  const vacia = await numero(db, 'select count(*) from rwadar_novedades.configuracion');
+  await db.exec(SQL30);
+  const c4 = await config();
+  const v4 = await verificar();
+  paso('restauración: con la tabla de configuración vacía, reaplicar la 30 recrea la fila con todo apagado y el reloj de limpieza, y el verificador pasa',
+    vacia === 0 && SQL30.includes('on conflict (unica) do update') && c4?.version_consentimiento === VERSION
+    && !c4.correo_habilitado && !c4.push_habilitado && !c4.ofertas_automaticas && !c4.casilla_activa
+    && (await relojes()).length === 0 && await conLimpieza() && v4.ok && AVISO_CASILLA.test(v4.avisoCasilla || ''));
 }
 
 } catch (e) {

@@ -10,7 +10,8 @@
 --
 -- Transaccional: si falta algo no queda ni el interruptor encendido ni el
 -- reloj. Lo encolado antes de encender se descarta: nada sale de golpe.
--- Apagar: 30_avisos_registrados_apagar.sql (o fallo_cerrado.sql).
+-- Apagar: 30_avisos_registrados_apagar.sql (o fallo_cerrado.sql). El reloj
+-- diario de limpieza (rwadar-novedades-limpieza) lo crea la 30 y no se toca.
 -- =====================================================================
 begin;
 
@@ -67,10 +68,14 @@ do $relojes$
 declare
   v_job record;
 begin
+  -- Cualquier reloj que llame a rwadar_novedades, salvo el diario de
+  -- limpieza de la 30 tal cual (ese se queda siempre).
   for v_job in
     select jobname from cron.job
-     where jobname = 'rwadar-novedades'
-        or lower(coalesce(command, '')) like '%rwadar_novedades.%'
+     where (jobname = 'rwadar-novedades'
+            or lower(coalesce(command, '')) like '%rwadar_novedades.%')
+       and not (jobname = 'rwadar-novedades-limpieza'
+                and lower(btrim(coalesce(command, ''))) = 'select rwadar_novedades.limpiar()')
   loop
     perform cron.unschedule(v_job.jobname);
   end loop;

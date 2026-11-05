@@ -14,23 +14,37 @@
 -- antes de que la plantilla avise de ello. Las cuentas confirmadas antes de
 -- este paso no cambian (sus preferencias ya existen): se apuntan en Perfil.
 --
+-- Fija `casilla_activada_el`. Solo cuenta el permiso de un alta cuyo correo
+-- de confirmación salió desde ese momento (`confirmation_sent_at` de Auth):
+-- un alta anterior recibió el correo antiguo, sin el aviso, y confirmarla
+-- después no la apunta (puede apuntarse en Perfil). Si la casilla ya estaba
+-- activa, se conserva la fecha.
+--
+-- Hay que REPETIRLO tras fallo_cerrado.sql o tras reaplicar
+-- 30_avisos_registrados.sql si la web o la app siguen enseñando la casilla:
+-- los dos la apagan. 30_avisos_registrados_apagar.sql no la toca.
+--
 -- No envía nada, no crea reloj y no enciende el correo ni el push. Después:
--- el verificador 30 («casilla del alta activa»). Marcha atrás:
--- 30_avisos_registrados_apagar.sql (o fallo_cerrado.sql), que la apagan.
+-- el verificador 30 («casilla del alta activa»). Marcha atrás, al retirar la
+-- plantilla: 30_avisos_registrados_apagar_casilla.sql.
 -- =====================================================================
 begin;
 
 do $precondiciones$
 begin
-  if not exists (select 1 from pg_attribute
-                  where attrelid = to_regclass('rwadar_novedades.configuracion')
-                    and attname = 'casilla_activa' and not attisdropped) then
+  if (select count(*) from pg_attribute
+       where attrelid = to_regclass('rwadar_novedades.configuracion')
+         and attname in ('casilla_activa', 'casilla_activada_el') and not attisdropped) <> 2 then
     raise exception using errcode = '55000',
       message = 'avisos 30: falta aplicar la versión actual de 30_avisos_registrados.sql';
   end if;
 end
 $precondiciones$;
 
-update rwadar_novedades.configuracion set casilla_activa = true where unica;
+update rwadar_novedades.configuracion
+   set casilla_activada_el = case when casilla_activa and casilla_activada_el is not null
+                                  then casilla_activada_el else now() end,
+       casilla_activa = true
+ where unica;
 
 commit;

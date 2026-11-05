@@ -238,7 +238,7 @@ hacia `auth.users`, para que `borrar_mi_cuenta` funcione.
 
 | Tabla | Para qué |
 |---|---|
-| `configuracion` | Fila única. Interruptores `correo_habilitado`, `push_habilitado` y `ofertas_automaticas`, los tres `false` al instalar, con `correo_activado_el` y `push_activado_el`. `casilla_activa`, también `false` al instalar: sin ella, los metadatos del alta no dan permiso. También `version_consentimiento = 'novedades-v1-2026-11-05'`, `texto_consentimiento_es` y `texto_consentimiento_en`. |
+| `configuracion` | Fila única. Interruptores `correo_habilitado`, `push_habilitado` y `ofertas_automaticas`, los tres `false` al instalar, con `correo_activado_el` y `push_activado_el`. `casilla_activa`, también `false` al instalar: sin ella, los metadatos del alta no dan permiso. `casilla_activada_el`: cuándo se encendió la casilla (la base no deja encenderla sin esa fecha). También `version_consentimiento = 'novedades-v1-2026-11-05'`, `texto_consentimiento_es` y `texto_consentimiento_en`. |
 | `preferencias` | Una fila por cuenta: `usuario_id`, `novedades`, `aceptado_el`, `version`, `origen` (`alta`/`perfil`), `canal` (`web`/`app`), `alta_el`, `baja_token` (`gen_random_uuid()`, único), `baja_el` y `actualizado_el`. Más `bienvenida_correo_el` y `bienvenida_push_el`: cuándo se encoló cada bienvenida. Con la marca puesta no se vuelve a encolar. |
 | `anuncios` | `id`, `tipo` (`ofertas`, `actualizacion` o `novedad`), `clave` única, `estado` (`retenido` o `publicado`), `titulo` (3-90 caracteres), `texto` (3-400), `enlace` y `revision_id`. Fechas: `creado_el`, `publicado_el`, `correo_repartido_el` y `push_repartido_el`. Título y texto sin caracteres de control. El enlace debe cumplir `^https://rwadar\.pages\.dev(/[A-Za-z0-9._~%-]+)*/?([?#][A-Za-z0-9._~%=&-]*)?$` y tener 200 caracteres como mucho. |
 | `dispositivos` | Clave `token`, con formato `^Expo(nent)?PushToken\[[A-Za-z0-9_-]{16,64}\]$`. Más `usuario_id`, `plataforma` (`android`/`ios`) y fechas. Hasta 5 por cuenta. El último que registra un token se lo queda, y se borran los push pendientes de ese token. **No** reutiliza `public.dispositivos`, que sigue cerrada. |
@@ -255,7 +255,7 @@ hacia `auth.users`, para que `borrar_mi_cuenta` funcione.
 
 | Cuándo | Qué hace |
 |---|---|
-| Al confirmar el correo: `after insert or update of email_confirmed_at on auth.users`, solo si pasa de vacío a fecha (o la cuenta nace confirmada) y `is_anonymous is not true` | Crea las preferencias. El permiso, solo en el UPDATE, con `casilla_activa` y con las condiciones del punto 3. Si `correo_habilitado` y la cuenta aún no tiene `bienvenida_correo_el`, pone la marca y encola la bienvenida. |
+| Al confirmar el correo: `after insert or update of email_confirmed_at on auth.users`, solo si pasa de vacío a fecha (o la cuenta nace confirmada) y `is_anonymous is not true` | Crea las preferencias. El permiso, solo en el UPDATE, con `casilla_activa`, con las condiciones del punto 3 y si el correo de confirmación salió **después** de encender la casilla: `confirmation_sent_at` de Auth `>= casilla_activada_el`. Un alta anterior recibió el correo antiguo, sin el aviso, y confirmarla después no la apunta (se apunta en Perfil); si Auth le reenvía la confirmación ya con la plantilla nueva, sí cuenta. `confirmation_sent_at` se lee con `to_jsonb(new)`: si falta o está vacía, no hay permiso, y la confirmación pasa igual. Si `correo_habilitado` y la cuenta aún no tiene `bienvenida_correo_el`, pone la marca y encola la bienvenida. |
 | Al aprobar el catálogo: `avisar_ofertas_nuevas`, `after update of estado on rwadar_catalogo.revisiones` | Su nombre va antes que `fijar_publicacion_v2` en orden alfabético, así que todavía ve el puntero viejo. Compara los `slug` de la nueva revisión V2 aprobada con los de `publicacion_v2.revision_id` de ese momento. Si no hay puntero o no hay altas, no hace nada. Si hay altas, inserta el anuncio del día (`on conflict (clave) do nothing`), retenido o publicado según `ofertas_automaticas`. **No reparte nada.** |
 
 **Reparto y envío: `rwadar_novedades.procesar()`.**
@@ -287,22 +287,31 @@ hacia `auth.users`, para que `borrar_mi_cuenta` funcione.
   - quién envía (RWAdar, con enlace al aviso legal y la privacidad);
   - por qué lo recibe;
   - la baja (enlace y `mailto:`).
-- **Limpieza (`limpiar()`, dentro de `procesar()`):**
+- **Limpieza (`limpiar()`):**
   - colas terminadas, a los 90 días, también las bienvenidas. No se repiten:
     la marca `bienvenida_correo_el`/`bienvenida_push_el` vive en preferencias
     y se va con la cuenta;
   - dispositivos sin actualizar, a los 180. La app volverá a llamar a
     `registrar_aviso_push` una vez al día, lo que renueva `actualizado_el`;
-  - `procesar()` limpia también con todo apagado.
-  - **El reloj no cambia.** `rwadar-novedades` solo existe tras activar un
-    canal; antes de la primera activación y después de apagar no hay reloj y
-    no se limpia nada. Con todo apagado no sale ningún aviso, pero la API
-    sigue registrando móviles: esos no caducan hasta que vuelva a haber reloj
-    o alguien ejecute `select rwadar_novedades.procesar();` a mano.
+  - **reloj propio y diario, `rwadar-novedades-limpieza`** (`41 4 * * *`,
+    orden `select rwadar_novedades.limpiar()`). Lo crea la 30 al aplicarse,
+    también al reaplicarla, y existe con todo apagado: los plazos que promete
+    la privacidad se cumplen aunque no se active nunca ningún canal.
+    `limpiar()` solo borra filas de `rwadar_novedades`: no hace red ni lee
+    Vault. Comparte cerrojo con `procesar()`, que también la llama en cada
+    vuelta;
+  - su orden no casa con ningún `LIKE` de 22, 23, `correo_fallo_cerrado`,
+    `push_fallo_cerrado` ni `fresh_install_verificar`. Los scripts de
+    activación y `30_avisos_registrados_apagar.sql` no lo quitan; solo
+    `fallo_cerrado.sql` (emergencia), y reaplicar la 30 lo vuelve a crear. El
+    verificador exige que esté, uno y tal cual.
 - **Copias de seguridad:** `copia-seguridad.sh` incluye `rwadar_novedades`.
   `rwadar_cuentas_privadas` (cartera, ya en producción) sigue fuera: su tabla
   `carteras` lleva RLS forzado y podría hacer fallar la copia, que también hace
-  «Aplicar catálogo». Incluirla es una decisión aparte, tras comprobarlo.
+  «Aplicar catálogo». Incluirla es una decisión aparte, tras comprobarlo. Al
+  restaurar, después de cargar los datos se reaplica la 30 (recrea la fila de
+  `configuracion` con todo apagado si la copia no la trae) y se pasa su
+  verificador: `docs/COPIAS-DE-SEGURIDAD.md`.
 
 **Funciones para la app y la web.**
 
@@ -326,12 +335,20 @@ hacia `auth.users`, para que `borrar_mi_cuenta` funcione.
 
 | Script | Qué hace |
 |---|---|
-| `30_avisos_registrados_verificar.sql` | Solo lee. Comprueba los interruptores, los permisos de cada función, que no haya ninguna cuenta confirmada sin preferencias y el reloj. Informa de si la casilla del alta está activa. |
-| `30_avisos_registrados_activar_casilla.sql` | Paso 4, con la plantilla de Auth ya puesta. Pone `casilla_activa = true`: desde entonces el permiso del alta cuenta. No envía nada ni crea reloj. |
-| `30_avisos_registrados_activar_correo.sql` | Exige los secretos en el Vault. Enciende el correo, fija `correo_activado_el` y crea el reloj. |
+| `30_avisos_registrados.sql` (reaplicada) | Vuelve al estado de instalación: todo apagado, **casilla incluida** (`casilla_activa = false`, `casilla_activada_el` vacía), sin reloj de envío y con el de limpieza. No borra filas. |
+| `30_avisos_registrados_verificar.sql` | Solo lee. Comprueba los interruptores, los permisos de cada función, que no haya ninguna cuenta confirmada sin preferencias, el reloj de envío y el diario de limpieza. Informa de si la casilla del alta está activa; si no lo está, avisa (WARNING): «casilla del alta inactiva: si la web o la app enseñan la casilla, ejecuta `30_avisos_registrados_activar_casilla.sql`». |
+| `30_avisos_registrados_activar_casilla.sql` | Paso 4, con la plantilla de Auth ya puesta. Pone `casilla_activa = true` y `casilla_activada_el` (si ya estaba activa, conserva la fecha): desde entonces cuenta el permiso de las altas cuyo correo de confirmación sale desde ese momento. No envía nada ni crea reloj. |
+| `30_avisos_registrados_activar_correo.sql` | Exige los secretos en el Vault. Enciende el correo, fija `correo_activado_el` y crea el reloj de envío. No toca el de limpieza. |
 | `30_avisos_registrados_activar_push.sql` | Lo mismo para el push. |
-| `30_avisos_registrados_apagar.sql` | Apaga los tres interruptores y la casilla y quita el reloj. |
-| `fallo_cerrado.sql` | Además, quita cualquier reloj cuya orden contenga `rwadar_novedades.` y apaga los interruptores y la casilla si existe el esquema. |
+| `30_avisos_registrados_apagar.sql` | Apaga el **envío**: correo, push, `ofertas_automaticas` y el reloj de envío. **No** toca la casilla del alta (la web y la app la siguen enseñando y quien la marca guarda su permiso) ni el reloj de limpieza. |
+| `30_avisos_registrados_apagar_casilla.sql` | Solo para **retirar la casilla**, al quitar el párrafo de avisos de la plantilla de Auth: `casilla_activa = false` y `casilla_activada_el` vacía. Antes, `AVISOS_NOVEDADES_REMOTOS = false` en la web y la app. No toca el envío ni los relojes. |
+| `fallo_cerrado.sql` | Emergencia. Además, quita cualquier reloj cuya orden contenga `rwadar_novedades.`, **también el de limpieza**, y apaga los interruptores y la casilla (con su fecha) si existe el esquema. |
+
+Tras `fallo_cerrado.sql` o tras reaplicar la 30, la casilla queda apagada: si
+la web o la app la siguen enseñando, hay que repetir
+`30_avisos_registrados_activar_casilla.sql` (el verificador lo recuerda).
+Tras `fallo_cerrado.sql`, además, reaplicar la 30 para recuperar el reloj de
+limpieza.
 
 **Pruebas: `rwadar-app/probar-avisos-registrados.mjs`,** sobre la cadena de
 producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
@@ -344,6 +361,11 @@ producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
   - solo en la confirmación;
   - con `casilla_activa = false`, unos metadatos válidos no dan permiso; con
     `true`, sí;
+  - un alta hecha antes de activar la casilla y confirmada después no lo da;
+    alta y confirmación después, sí; una confirmación reenviada después de
+    activar, también; sin `confirmation_sent_at` (vacía o sin la columna), no;
+  - `apagar.sql` no toca la casilla; `apagar_casilla.sql`, reaplicar la 30 y
+    `fallo_cerrado.sql` sí, y el verificador avisa;
   - una baja no se deshace;
   - las cuentas existentes rellenadas;
   - `borrar_mi_cuenta` con filas en todas las tablas.
@@ -359,10 +381,15 @@ producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
   - la segunda comprobación antes de enviar;
   - límites y permisos de las funciones, `mi_aviso_push_registrado` incluida.
 - **Limpieza:** colas y bienvenidas terminadas a los 90 días sin que la
-  bienvenida se repita; también con todo apagado.
-- **Convivencia con los filtros antiguos:** activar, reaplicar la 22, pasar los
-  verificadores de 22 y 23 y fresh-install y `correo_fallo_cerrado`: el reloj
-  nuevo sigue.
+  bienvenida se repita; también con todo apagado y sin haber activado nunca
+  nada, con la orden del reloj diario; `limpiar()` no hace ninguna petición.
+- **Convivencia con los filtros antiguos:** las órdenes de los dos relojes no
+  casan con ningún `LIKE` de esos archivos (leídos de ellos); activar,
+  reaplicar la 22, pasar los verificadores de 22 y 23 y fresh-install,
+  `correo_fallo_cerrado` y `push_fallo_cerrado`, y otra vez la 22: los dos
+  relojes nuevos siguen.
+- **Restauración:** con la tabla `configuracion` vacía (copia anterior a la
+  30), reaplicar la 30 recrea la fila apagada y el verificador pasa.
 - **Textos:** el de la casilla coincide en la base, la web y la app.
 
 ## Web
@@ -480,23 +507,67 @@ de Víctor.
 2. **Revisión legal** de la casilla, la privacidad, las plantillas de correo y
    el anuncio de ofertas.
 3. **Base de datos:** copia de seguridad; aplicar la 30 en el SQL Editor y
-   pasar el verificador.
+   pasar el verificador. Desde ese momento corre el reloj diario de limpieza,
+   aunque todo siga apagado.
 4. **Casilla visible:**
    - plantilla de Auth puesta;
    - `30_avisos_registrados_activar_casilla.sql` y el verificador 30 («casilla
-     del alta activa»);
+     del alta activa»). Las altas cuyo correo de confirmación salió antes
+     (con la plantilla antigua) no guardan el permiso aunque se confirmen
+     después: se apuntan en Perfil;
    - `AVISOS_NOVEDADES_REMOTOS = true` en la web y la app;
    - privacidad al día;
-   - publicar la web y enviar la OTA.
+   - publicar la web y enviar la OTA;
+   - prueba con una cuenta propia: alta con la casilla marcada, confirmar y
+     ver en Perfil que los avisos están activos.
+
+   Si después se aplica `fallo_cerrado.sql` o se reaplica la 30, la casilla se
+   apaga: mientras la web o la app la enseñen, repetir
+   `30_avisos_registrados_activar_casilla.sql`. Para retirarla de verdad:
+   `AVISOS_NOVEDADES_REMOTOS = false` (web y OTA),
+   `30_avisos_registrados_apagar_casilla.sql` y la plantilla anterior
+   (`plantillas-auth/LEEME.md`). `30_avisos_registrados_apagar.sql` no la toca.
 5. **Correo:**
    - dominio propio;
    - Brevo con el dominio autenticado, el contrato de encargo aceptado y
      archivado, y el seguimiento de aperturas y clics desactivado;
    - secretos en el Vault;
-   - `30_avisos_registrados_activar_correo.sql`;
-   - prueba con una cuenta propia: sin píxel, enlaces directos y baja de
-     principio a fin; confirmar con Brevo el nombre de la cabecera de
-     idempotencia, el código de duplicado y que `List-Unsubscribe` llega.
+   - **envío de prueba a una cuenta propia ANTES de dejar el reloj encendido
+     para todos.** Lo que no se puede saber sin Brevo de verdad (el nombre de
+     la cabecera de idempotencia, el código con que responde a un duplicado y
+     si `List-Unsubscribe` llega al buzón) se comprueba aquí, no se supone.
+     Durante la prueba no se publica ningún anuncio ni se lanza «Avisar
+     novedad», y `ofertas_automaticas` sigue apagado: así solo pueden salir
+     bienvenidas.
+     1. `30_avisos_registrados_activar_correo.sql` y el verificador 30.
+     2. Registrar una cuenta propia con la casilla marcada y confirmarla. En
+        unos minutos llega la bienvenida.
+     3. En el buzón: sin píxel, enlaces directos a `rwadar.pages.dev`, pie
+        completo y la baja de principio a fin. En el original del mensaje,
+        la cabecera `List-Unsubscribe` con el enlace y el `mailto:`.
+     4. Idempotencia, en los 25 minutos siguientes al primer envío y cuando
+        la cola ya la marca `aceptado`: devolver esa bienvenida a la cola con
+        la misma clave
+        (`update rwadar_novedades.correos set estado = 'pendiente', terminado_el = null where tipo = 'bienvenida' and estado = 'aceptado' and usuario_id = (select id from auth.users where email = '<la cuenta propia>');`)
+        y ejecutar `select rwadar_novedades.procesar();`, y otra vez al cabo
+        de un minuto para leer la respuesta
+        (`select status_code, content from net._http_response order by id desc limit 3;`).
+        Tiene que llegar **un solo** correo. Si Brevo responde 400, su `code`
+        debe ser `duplicate_parameter` o `duplicate_request`; si usa otro, se
+        añade a `leer_correos()` (nueva versión de la 30, con su prueba)
+        antes de seguir.
+     5. Si algo no cuadra (llegan dos correos, falta la cabecera, el código es
+        otro): `30_avisos_registrados_apagar.sql` en ese momento (apaga el
+        correo y su reloj; la casilla y el reloj de limpieza siguen), corregir
+        y repetir la prueba desde el principio.
+
+     Con todo correcto, el reloj se queda encendido para todos y se cambian
+     las frases de «Al encender el correo».
+   - **Si Brevo descarta `List-Unsubscribe`** (no llega al buzón): se quita
+     del contrato (punto 3, «Baja») y de la privacidad, y la cabecera de
+     `enviar_correos()` en una nueva versión de la 30 con su prueba. No se
+     promete lo que no llega. La baja sigue en el pie de cada aviso (enlace y
+     `mailto:`) y en Perfil.
 6. **Push:**
    - proyecto de Firebase y credencial FCM V1 en EAS;
    - APK 1.4.2 (guía);

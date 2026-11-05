@@ -243,16 +243,32 @@ Preparada y probada en local; **no aplicada**. Contrato:
   **nunca** con `supabase db push` (subiría también la 27).
 - Todo nace **apagado**, también la casilla del alta (`casilla_activa`: sin
   ella, los metadatos del alta no dan permiso). Reaplicar la 30 vuelve a
-  apagarlo todo y quita el reloj, como la 22. Cada paso necesita permiso
-  expreso de Víctor: `30_avisos_registrados_activar_casilla.sql` (con la
-  plantilla de Auth ya puesta; no envía nada ni crea reloj),
+  apagarlo todo, casilla incluida, y quita el reloj de envío, como la 22.
+  Cada paso necesita permiso expreso de Víctor:
+  `30_avisos_registrados_activar_casilla.sql` (con la plantilla de Auth ya
+  puesta; fija `casilla_activada_el`; no envía nada ni crea reloj),
   `30_avisos_registrados_activar_correo.sql` (exige `BREVO_API_KEY` y
   `RWADAR_REMITENTE` en Vault) y `30_avisos_registrados_activar_push.sql`
-  (`EXPO_ACCESS_TOKEN` opcional). Estos dos crean un único reloj
+  (`EXPO_ACCESS_TOKEN` opcional). Estos dos crean un único reloj de envío
   `rwadar-novedades` cada 5 minutos que solo llama a `rwadar_novedades.procesar()`.
-- Apagar: `30_avisos_registrados_apagar.sql`; `fallo_cerrado.sql` también lo
-  apaga. Comprobar: `30_avisos_registrados_verificar.sql` (solo lee; pasa
-  apagado y encendido).
+- El permiso del alta solo cuenta si el correo de confirmación salió después
+  de activar la casilla (`confirmation_sent_at >= casilla_activada_el`): un
+  alta anterior se confirmó con el correo antiguo, sin el aviso.
+- Retención: la 30 crea además un reloj diario propio,
+  `rwadar-novedades-limpieza` (`41 4 * * *`, solo `rwadar_novedades.limpiar()`,
+  sin red), que existe también con todo apagado: colas a los 90 días, móviles
+  a los 180.
+- Apagar el envío: `30_avisos_registrados_apagar.sql` (correo, push, aviso
+  automático de ofertas y reloj de envío; **no** toca la casilla ni el reloj
+  de limpieza). Retirar la casilla, al quitar la plantilla de Auth:
+  `30_avisos_registrados_apagar_casilla.sql`. Emergencia: `fallo_cerrado.sql`
+  lo apaga todo, casilla y reloj de limpieza incluidos.
+- **Tras `fallo_cerrado.sql` o tras reaplicar la 30, la casilla queda
+  apagada:** si la web o la app la siguen enseñando, repite
+  `30_avisos_registrados_activar_casilla.sql` (tras `fallo_cerrado.sql`,
+  reaplica antes la 30 para recuperar el reloj de limpieza). Comprobar:
+  `30_avisos_registrados_verificar.sql` (solo lee; pasa apagado y encendido, y
+  avisa si la casilla está inactiva).
 - El catálogo no envía nada por su cuenta: una revisión V2 con ofertas nuevas
   crea un anuncio al día, **retenido**. Solo sale con el flujo «Avisar novedad»
   (`.github/workflows/avisar-novedad.yml`, que ejecuta `db/anunciar.sql`) y

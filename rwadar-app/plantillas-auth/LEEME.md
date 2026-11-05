@@ -36,7 +36,25 @@ Víctor**.
 guarda el permiso del alta aunque lleguen los metadatos); y solo entonces la
 casilla de avisos de la web y de la app (`AVISOS_NOVEDADES_REMOTOS`).
 
-**Marcha atrás:** primero `db/30_avisos_registrados_apagar.sql` (apaga la
-casilla y todo lo demás); después pegar la plantilla anterior, que está en
-[`docs/tareas/REABRIR-CUENTAS.md`](../../docs/tareas/REABRIR-CUENTAS.md)
-(«Plantillas de correo»), con su asunto `Confirma tu cuenta de RWAdar`.
+La base solo guarda el permiso si el correo de confirmación salió **después**
+de `activar_casilla` (`confirmation_sent_at` de Auth): quien se dio de alta
+antes recibió esta plantilla sin el aviso, o la anterior, y confirmarlo después
+no lo apunta (puede apuntarse en Perfil).
+
+`fallo_cerrado.sql` y reaplicar `30_avisos_registrados.sql` apagan la casilla
+en la base. Si la plantilla sigue puesta y la web o la app enseñan la casilla,
+hay que repetir `db/30_avisos_registrados_activar_casilla.sql` (el verificador
+30 lo avisa). `db/30_avisos_registrados_apagar.sql` solo apaga el envío y no
+la toca.
+
+**Marcha atrás (retirar la casilla):**
+
+1. `AVISOS_NOVEDADES_REMOTOS = false` en la web y la app, publicar la web y
+   enviar la OTA: la casilla deja de enseñarse.
+2. `db/30_avisos_registrados_apagar_casilla.sql`: la base deja de guardar el
+   permiso del alta.
+3. Pegar la plantilla anterior, que está en
+   [`docs/tareas/REABRIR-CUENTAS.md`](../../docs/tareas/REABRIR-CUENTAS.md)
+   («Plantillas de correo»), con su asunto `Confirma tu cuenta de RWAdar`.
+
+Si además hay que dejar de enviar avisos: `db/30_avisos_registrados_apagar.sql`.
