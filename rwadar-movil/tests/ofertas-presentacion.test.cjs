@@ -171,9 +171,10 @@ test('la tarjeta de la lista enseña título, proveedor y Mínimo · España; lo
   assert.ok(textoVisible(detalle).includes(oferta.avisos[0].texto));
 });
 
-// Las 24 ofertas del catálogo publicado (la lectura en línea de la revisión que lleva la web),
-// por el mismo camino que la app (adaptarCatalogoV2), dos días después de su revisión.
-test('las 24 ofertas reales: la tarjeta lleva solo Mínimo y España, de la misma función que la ficha, que lo conserva todo', async () => {
+// Las ofertas del catálogo publicado (la lectura en línea de la revisión que lleva la web), todas,
+// por el mismo camino que la app (adaptarCatalogoV2), dos días después de su revisión. Cuántas son lo
+// dice el propio lote (24 hasta la entrega 2026-11-05; 22 desde la 2026-11-05.2, sin BILLA ni Casa de Outeiro).
+test('las ofertas reales publicadas: la tarjeta lleva solo Mínimo y España, de la misma función que la ficha, que lo conserva todo', async () => {
   assert.ok(DOC_ACTUAL, `sin lectura en línea de la revisión ${REVISION_WEB}`);
   const revisadas = JSON.parse(fs.readFileSync(path.join(DOC_ACTUAL, 'ofertas-v2.json'), 'utf8'))[0].verificada_el.slice(0, 10);
   const dia = n => new Date(Date.parse(revisadas + 'T12:00:00Z') + n * 86400000);
@@ -183,7 +184,8 @@ test('las 24 ofertas reales: la tarjeta lleva solo Mínimo y España, de la mism
   const lote = { version: 2, plataformas: JSON.parse(fs.readFileSync(path.join(DOC_ACTUAL, 'plataformas-v2.json'), 'utf8')),
     ofertas: JSON.parse(fs.readFileSync(path.join(DOC_ACTUAL, 'ofertas-v2.json'), 'utf8')) };
   const { ofertas } = require('../lib/catalogo-remoto').adaptarCatalogoV2(lote, ahora);
-  assert.equal(ofertas.length, 24);
+  assert.equal(ofertas.length, lote.ofertas.length, 'el lector de la app no deja ninguna fuera');
+  assert.equal(ofertas.length, lote.plataformas[0].ofertas_esperadas, 'todas las que declara el lote');
   const corta = { 'Sí, según la fuente': 'Sí', 'No, según la fuente': 'No', 'Sin confirmar': 'Sin confirmar' };
   let conPuntos = 0;
   for (const o of ofertas) {

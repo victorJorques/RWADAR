@@ -6,6 +6,40 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de noviembre de 2026 (5) · Claude · entrega 2026-11-05.2 preparada (sin aplicar ni publicar)
+
+Orden de Víctor: «Arregla todo, no dejes nada para mañana». Sobre BILLA y Casa
+de Outeiro, preguntado hacia las 17:10 UTC: «Retirar las dos hoy». Rama
+`claude/catalogo-2026-11-05-2`. Informe en llano:
+[`INFORME-ENTREGA.md`](../../rwadar-app/data/verificaciones/2026-11-05.2-v2/INFORME-ENTREGA.md).
+
+- **Qué cambia** (revisión `88d5a757`, sobre la publicada `cede1f27`):
+  - salen BILLA y Casa de Outeiro; quedan 22 ofertas (8/13/1);
+  - la web de Pax Gold en `public.plataformas` pasa a `https://www.paxg.com/`;
+  - el acceso de Spiko dice lo que muestra la CNMV, con dos fuentes nuevas de
+    la CNMV.
+  - Todo lo demás, igual. SHA del aplicador: `24073c9f…ba19`. Hay que aplicarla
+    antes del 12/11 incluido.
+- **Commits:** `205cead` (la entrega) y el de ensayo, informe y traspaso.
+- **Pruebas:**
+  - PGlite: 22 comprobaciones y 10 casos de fallo sin dejar nada;
+  - `npm test` en verde antes de aplicar y en el ensayo «después de aplicar»
+    (copia aparte);
+  - worker: 404 para las dos fichas;
+  - OTA compatible;
+  - gitleaks sin hallazgos.
+- **Fuera del encargo:**
+  - una segunda fuente de la CNMV (Spiko Finance, n.º 5325), para que ese dato
+    tenga la suya;
+  - la ficha editorial de las dos sale ya, como con mF-ONE;
+  - una prueba de la app ya no exige 24 ofertas fijas.
+- **Pendiente:**
+  - revisión independiente del SQL; PR y merge; «Aplicar catálogo» `2026-11-05.2`;
+  - después, `despues-de-aplicar.mjs` y la secuencia del informe (§5);
+  - publicar la web y enviar la OTA (cambian la transparencia y las
+    ilustraciones de la app).
+  - Para otro día: el «aval» de Pax Gold aún dice NYDFS, y su web dice OCC.
+
 ## 5 de noviembre de 2026 (4) · Claude · investigación del día publicada: Supabase, web y app
 
 Orden de Víctor: «Hazme la investigación de hoy de las ofertas, y actualiza la

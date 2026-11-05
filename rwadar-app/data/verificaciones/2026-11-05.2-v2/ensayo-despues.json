@@ -1,0 +1,136 @@
+{
+  "tipo": "ensayo_despues_de_aplicar",
+  "ejecutadoEl": "2026-11-05T17:36Z",
+  "como": "Copia aparte del repositorio (git clone de la carpeta en 205cead, el commit de la entrega en claude/catalogo-2026-11-05-2), con node_modules enlazados. comprobar-entrega.mjs --exportar=DIR aplica el SQL en PGlite sobre la cadena de producción y guarda lo que leería un visitante por REST; ensayo-rest-simulado.cjs (el de la 2026-11-05) sirve esos datos a sincronizar.js y volcar-seed.js. Como lectura «después de aplicar» (la que exige la prueba de la app ofertas-presentacion.test.cjs) se usaron las mismas vistas exportadas, copiadas en lectura-despues-de-aplicar/ solo en la copia. Nada sale a la red ni toca Supabase.",
+  "pasos": [
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-05.2-v2/comprobar-entrega.mjs --exportar=DIR",
+      "salida": "correcto · 23 comprobaciones (con la exportación) y 10 casos de fallo · revisión 88d5a757-3481-f70e-dc7c-6272704a00b3 · SHA 24073c9f…ba19"
+    },
+    {
+      "orden": "RWADAR_REST_SIMULADO=DIR node -r ensayo-rest-simulado.cjs rwadar-app/sincronizar.js",
+      "salida": "Sincronizado desde Supabase: 25 plataformas verificadas, 5 descartadas y 22 ofertas clasificadas. rwadar.csv regenerado: 30 filas (cambia solo la fila de Pax Gold: https://paxos.com/paxgold → https://www.paxg.com/)."
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-05.2-v2/despues-de-aplicar.mjs",
+      "salida": "· rwadar-fichas-manifiesto.js: fuera las fichas de BILLA y Casa de Outeiro · borradas rwadar-site/ofertas/terreno-con-arrendamiento-billa.html y casa-de-outeiro.html · transparencia.json: fuera las dos; revisión y lote nuevos · manifest.json editorial, EDITORIAL_OFERTA_POR_SLUG de la web y fixture de la app: fuera sus dos ilustraciones · borradas rwadar-movil/assets/ofertas-editoriales/oferta-terreno-con-arrendamiento-billa.webp y oferta-casa-de-outeiro.webp"
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-05.2-v2/despues-de-aplicar.mjs (otra vez)",
+      "salida": "Nada que cambiar: ya estaba hecho."
+    },
+    {
+      "orden": "Antes de aplicar (en la carpeta de trabajo): node rwadar-app/data/verificaciones/2026-11-05.2-v2/despues-de-aplicar.mjs",
+      "salida": "Falla con «el catálogo sincronizado no es la revisión 88d5a757…: aplica antes el SQL y ejecuta node rwadar-app/sincronizar.js» y no toca nada."
+    },
+    {
+      "orden": "RWADAR_REST_SIMULADO=DIR node -r ensayo-rest-simulado.cjs rwadar-app/volcar-seed.js",
+      "salida": "02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13 fuentes. Cambia una línea: la web de Pax Gold."
+    },
+    {
+      "orden": "node rwadar-editorial-source/ofertas/transparencia.mjs",
+      "salida": "Transparencia escrita: 22 ofertas con transparencia"
+    },
+    {
+      "orden": "node rwadar-fichas.js",
+      "salida": "Archivos actualizados: 25 (22 fichas de oferta, que llevan la revisión y el manifiesto del lote; /plataformas/pax-gold, con el botón y el JSON-LD en paxg.com; /plataformas/spiko, con el texto nuevo y los dos enlaces a la CNMV; sitemap.xml sin las dos)."
+    },
+    {
+      "orden": "npm test (primera vez)",
+      "salida": "Falla una prueba de la app, ofertas-presentacion.test.cjs: exigía exactamente 24 ofertas y una lectura en línea de la revisión de la web. Corregida en la entrega (cuenta las que declara el lote) y repetido el ensayo con la lectura «después de aplicar»."
+    },
+    {
+      "orden": "npm test",
+      "salida": "exit 0 en 1 min 50 s · base de datos (todas «0 fallidas», 30 SQL y mapa 11/11) · web 601 · fichas 69 (dos páginas menos) · precarga 32 · móvil 410 + 2 omitidas de 412 · acceso 146 · herramientas: «fichas.json: 22 fichas (22 con foto), catálogo 2026-11-05.2-v2», «Transparencia al día: 22 ofertas», «Diferencias: 0», «Motor y diccionario ES/EN web/móvil idénticos». npm test vuelve a generar rwadar-site/index.html (pre-render sin las dos)."
+    },
+    {
+      "orden": "node rwadar-movil/scripts/comprobar-ota-compatible.cjs --base c1f7106a49e988ca1dde214f0e75b7fe7d4d2719",
+      "salida": "{\"ok\":true,\"runtime\":\"1.4.1(23)\",\"channel\":\"production\",\"publicacionAutorizada\":false}: los cambios de la app (transparencia e ilustraciones) caben en una OTA."
+    },
+    {
+      "orden": "git commit en la copia y node ensayo-404.mjs <copia>",
+      "salida": "Con el historial de Git de la copia, la misma lista que calcula .github/comprobar-publicado.mjs: /ofertas/casa-de-outeiro y /ofertas/terreno-con-arrendamiento-billa dan el 404 del worker (noindex, nofollow; no-store) sin pedir su copia de conservación; /plataformas/artex-global-markets, 301 a /fuera-del-radar/ (ya trasladada); oferta-casa-de-outeiro.webp y oferta-terreno-con-arrendamiento-billa.webp, 404 con y sin copia y al revalidar. (La carpeta es un clon superficial: el flujo de GitHub, con todo el historial, comprueba además las retiradas anteriores.)"
+    }
+  ],
+  "worker404": {
+    "fichas": [
+      {
+        "ruta": "/ofertas/casa-de-outeiro",
+        "estado": 404,
+        "delWorker": true,
+        "trasladadaA": null,
+        "correcta": true,
+        "pedidas": [
+          "/404"
+        ]
+      },
+      {
+        "ruta": "/ofertas/terreno-con-arrendamiento-billa",
+        "estado": 404,
+        "delWorker": true,
+        "trasladadaA": null,
+        "correcta": true,
+        "pedidas": [
+          "/404"
+        ]
+      },
+      {
+        "ruta": "/plataformas/artex-global-markets",
+        "estado": 301,
+        "delWorker": false,
+        "trasladadaA": "/fuera-del-radar/artex-global-markets",
+        "correcta": true,
+        "pedidas": []
+      }
+    ],
+    "imagenes": [
+      {
+        "nombre": "oferta-casa-de-outeiro.webp",
+        "estados": [
+          404,
+          404,
+          404,
+          404
+        ]
+      },
+      {
+        "nombre": "oferta-terreno-con-arrendamiento-billa.webp",
+        "estados": [
+          404,
+          404,
+          404,
+          404
+        ]
+      }
+    ]
+  },
+  "archivosQueCambian": [
+    "M rwadar-app/db/02_seed.sql (web de Pax Gold)",
+    "M rwadar-editorial-source/ofertas/transparencia.json",
+    "M rwadar-fichas-manifiesto.js",
+    "M rwadar-movil/assets/ofertas-editoriales/manifest.json",
+    "D rwadar-movil/assets/ofertas-editoriales/oferta-casa-de-outeiro.webp",
+    "D rwadar-movil/assets/ofertas-editoriales/oferta-terreno-con-arrendamiento-billa.webp",
+    "M rwadar-movil/fixtures/imagenes-editoriales.js",
+    "M rwadar-movil/lib/transparencia-contenido.js",
+    "M rwadar-site/assets/catalogo-publico-20261022.js",
+    "M rwadar-site/assets/rwadar-20260820.js (transparencia e ilustraciones)",
+    "M rwadar-site/index.html (pre-render, lo regenera npm test)",
+    "M rwadar-site/ofertas/*.html (22)",
+    "D rwadar-site/ofertas/casa-de-outeiro.html",
+    "D rwadar-site/ofertas/terreno-con-arrendamiento-billa.html",
+    "M rwadar-site/plataformas/pax-gold.html",
+    "M rwadar-site/plataformas/spiko.html",
+    "M rwadar-site/rwadar.csv",
+    "M rwadar-site/sitemap.xml",
+    "sin cambios: las otras 23 fichas de plataforma, las 5 de descartadas, cambios.html y metodologia.html; rwadar-site/assets/mapa-ubicaciones-20261027.json conserva el punto de BILLA (el mapa solo une puntos con ofertas del catálogo, como ya pasa con 14 puntos de ofertas retiradas de Reental)"
+  ],
+  "web": {
+    "como": "rwadar-servir.js en la copia (puerto 4199) y, para comparar, en la carpeta de trabajo sin aplicar (4198); Chrome sin interfaz con Playwright, todo lo que no es 127.0.0.1 bloqueado, a 1366×900 y 390×844, modo oscuro. Capturas en el scratchpad de la sesión (proximas-*-antes/despues.png, pax-gold-1366.png, spiko-acceso-1366.png).",
+    "antes": "«Próximas 3»: Casa de Outeiro, Terreno con supermercado BILLA · Brückl y Hausera · próximas ofertas",
+    "despues": "«Próximas 1»: Hausera · próximas ofertas (Mínimo 100 € según la FAQ de Hausera · España Sin confirmar)",
+    "paxGold": "/plataformas/pax-gold: «Ir a la web de Pax Gold ↗» lleva a https://www.paxg.com/",
+    "spiko": "/plataformas/spiko, «Quién puede acceder»: el texto nuevo, con «CNMV · SPIKO SICAV, vehículo de inversión extranjero (n.º 2380) ↗ · consultada el 05/11/2026» y la ficha de Spiko Finance (n.º 5325) entre las fuentes",
+    "billa": "/ofertas/terreno-con-arrendamiento-billa en el servidor local: 404"
+  }
+}
