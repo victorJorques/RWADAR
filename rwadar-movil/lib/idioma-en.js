@@ -1822,6 +1822,7 @@
   "Cargando tus avisos": "Loading your notices",
   "Sin leer": "Unread",
   "Marcar como leídos": "Mark as read",
+  "Ver menos": "Show less",
   "Aquí verás las ofertas nuevas del radar y las novedades de RWAdar.": "Here you will see new offers on the radar and RWAdar news.",
   "Te damos la bienvenida a RWAdar": "Welcome to RWAdar",
   "Tu cuenta está confirmada y la Academy ya está desbloqueada: es gratis con tu cuenta.": "Your account is confirmed and the Academy is now unlocked: it is free with your account.",

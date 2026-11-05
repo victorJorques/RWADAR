@@ -21,7 +21,8 @@ import {
      registra este móvil. En binarios por debajo del código 24 (la 1.4.1) el
      segundo explica que llega con la 1.4.2 y no toca el SDK.
    - Inicio: tarjeta «Avisos» con los últimos y un punto de no leído,
-     guardado en este dispositivo y por cuenta.
+     guardado en este dispositivo y por cuenta. Enseña los 3 primeros y
+     «Ver todos (N)» despliega los demás cargados en la misma tarjeta.
    - Al cargar, si este móvil está activo, renueva su registro en la base
      como mucho una vez al día, sin pedir permiso (la base borra los que no
      se renuevan en 180 días).
@@ -50,8 +51,16 @@ const INICIAL = Object.freeze({ servidor: null, movil: null, avisos: [], leidos:
   errorCarga: '', procesando: '', mensaje: '', error: '' });
 
 /* Quita este móvil de los avisos al cerrar sesión, con la sesión que se
-   cierra. La llama el controlador de cuentas con plazo; si falla, la salida
-   sigue y el token se conserva para quitarlo la próxima vez. */
+   cierra. La llama el controlador de cuentas con plazo; si falla (sin
+   conexión, plazo vencido), la salida sigue y el token se conserva bajo la
+   clave de esa cuenta: se vuelve a intentar en la próxima salida de esa
+   misma cuenta, al desactivarlas o al «Borrar datos del dispositivo» con ella
+   dentro. Mientras tanto la base lo sigue teniendo a nombre de esa cuenta.
+   Si entra otra, no puede quitarlo (quitar_aviso_push solo quita tokens
+   propios) y la clave ajena no se toca: queda en la base hasta que la otra
+   cuenta registre este mismo móvil (el último que lo registra se lo queda),
+   hasta la limpieza de 180 días sin renovar o hasta que la primera vuelva,
+   vea el móvil activo, como lo está en la base, y salga con conexión. */
 export async function quitarPushAlSalir({ cliente, usuarioId }) {
   const token = await tokenPushNovedades(usuarioId);
   if (!token) return false;
@@ -158,9 +167,10 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
     if (g) cargar(g, turno.current);
   }
 
-  /* Los avisos cargados (hasta 10) cuentan para la insignia de Inicio aunque
-     la tarjeta enseñe solo los primeros. «Marcar como leídos» los marca
-     todos, para que la insignia siempre se pueda vaciar. */
+  /* Los avisos cargados (hasta 10) cuentan para la insignia de Inicio. La
+     tarjeta enseña los primeros y «Ver todos (N)» despliega el resto, así que
+     todo lo que cuenta la insignia se puede ver. «Marcar como leídos» los
+     marca todos, para que la insignia siempre se pueda vaciar. */
   const idsNoLeidos = vista.avisos.filter((aviso) => !vista.leidos.includes(aviso.id)).map((aviso) => aviso.id);
   function marcarTodosLeidos() {
     return marcarLeidos(idsNoLeidos);
@@ -268,13 +278,20 @@ function fechaCorta(iso) {
 }
 
 /* Inicio › Avisos: los últimos, con un punto en los que no has abierto.
-   Enseña los `maximo` primeros, pero el punto de la cabecera y «Marcar como
-   leídos» cuentan todos los cargados, igual que la insignia de Inicio
-   (`idsNoLeidos` de useAvisosNovedades): marcar deja la insignia a cero. */
+   Plegada enseña los `maximo` primeros; «Ver todos (N)» despliega todos los
+   cargados dentro de la misma tarjeta y «Ver menos» la vuelve a plegar. El
+   punto de la cabecera y «Marcar como leídos» cuentan todos los cargados,
+   igual que la insignia de Inicio (`idsNoLeidos` de useAvisosNovedades):
+   todo lo que cuenta se puede ver, y marcar deja la insignia a cero. */
 export function TarjetaAvisosInicio({ avisos = [], leidos = [], cargando = false, error = '', maximo = 3,
   onAbrir, onMarcarLeidos }) {
-  const visibles = avisos.slice(0, maximo);
+  const [verTodos, setVerTodos] = useState(false);
+  const plegable = avisos.length > maximo;
+  const plegada = plegable && !verTodos;
+  const visibles = plegada ? avisos.slice(0, maximo) : avisos;
   const sinLeer = avisos.filter((aviso) => !leidos.includes(aviso.id));
+  const ocultosSinLeer = plegada ? avisos.slice(maximo).filter((aviso) => !leidos.includes(aviso.id)).length : 0;
+  const textoVer = plegada ? `Ver todos (${avisos.length})` : 'Ver menos';
   return (
     <View style={s.seccion}>
       <View style={s.cabecera}>
@@ -296,6 +313,14 @@ export function TarjetaAvisosInicio({ avisos = [], leidos = [], cargando = false
           </Pressable>
         );
       })}
+      {plegable ? (
+        <Pressable onPress={() => setVerTodos((antes) => !antes)} accessibilityRole="button"
+          accessibilityLabel={textoVer} accessibilityState={{ expanded: !plegada }}
+          accessibilityHint={ocultosSinLeer ? `${ocultosSinLeer} sin leer` : undefined}
+          style={({ pressed }) => [s.b3, pressed && s.pulsado]}>
+          <Text style={s.b3Texto}>{textoVer}</Text>
+        </Pressable>
+      ) : null}
       {!visibles.length && !cargando && !error
         ? <Text style={s.nota}>Aquí verás las ofertas nuevas del radar y las novedades de RWAdar.</Text> : null}
       {cargando && !visibles.length ? <ActivityIndicator color={C.senal} accessibilityLabel="Cargando tus avisos" /> : null}

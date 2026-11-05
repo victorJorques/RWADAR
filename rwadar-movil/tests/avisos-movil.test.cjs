@@ -291,6 +291,50 @@ test('si no se puede quitar el token de la base, el borrado sigue y la clave se 
   assert.deepEqual(await vacio.datos.borrarDatosDispositivo(), { ok: true, local: true });
 });
 
+/* La renovación diaria lee el token, espera al sistema (getExpoPushTokenAsync)
+   y luego lo registra. «Borrar datos del dispositivo» no pasa por la cola del
+   gestor: si llega en medio, quita el token de la base y borra su clave antes
+   de que la renovación lo vuelva a registrar. Con el almacén real. */
+test('renovación con «Borrar datos del dispositivo» en medio: el móvil no queda apuntado en la base sin su clave', async () => {
+  const a = require('../lib/avisos-cuenta');
+  const CLAVE = 'rwadar.editorial.avisos.push.v1:' + UID;
+  const servidor = a.validarEstadoAvisos({ novedades: true, version: a.VERSION_AVISOS, aceptado_el: '2026-11-05T09:00:00Z',
+    version_vigente: a.VERSION_AVISOS, texto_es: a.TEXTO_AVISOS_ES, texto_en: a.TEXTO_AVISOS_EN, dispositivos: 1,
+    correo_activo: true, push_activo: true });
+  for (const tokenSistema of [TOKEN, TOKEN_OTRO]) {
+    const { datos: d, mapa } = datos({ [CLAVE]: TOKEN, 'otra.app': 'conservar' });
+    // La base: los tokens apuntados a la cuenta, por cualquiera de los dos caminos.
+    const base = new Set([TOKEN]), orden = [];
+    const avisosCuenta = {
+      async registrarPush(token) { orden.push(['registrar', token]); base.add(token); return true; },
+      async quitarPush(token) { orden.push(['quitar', token]); return base.delete(token); },
+    };
+    d.configurarAccesoCatalogo(UID, async () => ({ async rpc(nombre, args) {
+      orden.push(['borrar-datos', nombre, args.p_token]); return { data: base.delete(args.p_token), error: null };
+    } }));
+    let entregar;
+    const push = { capacidad: true, consultar: async () => ({ ok: true, estado: 'permitido' }),
+      obtenerToken: (opciones) => { assert.deepEqual(opciones, { solicitarPermiso: false }); return new Promise((r) => { entregar = r; }); } };
+    // Las mismas funciones de lib/datos.js que usa componentes/AvisosNovedades.js.
+    const almacen = { leidos: d.avisosLeidos, marcarLeidos: d.marcarAvisosLeidos, token: d.tokenPushNovedades,
+      guardarToken: d.guardarTokenPushNovedades, borrarToken: d.borrarTokenPushNovedades,
+      renovadoEl: d.renovacionPushNovedades, marcarRenovado: d.marcarRenovacionPushNovedades };
+    const g = a.crearGestorAvisosNovedades({ avisosCuenta, usuarioId: UID, push, almacen });
+    const renovando = g.renovarMovil(servidor);
+    for (let i = 0; i < 20 && !entregar; i++) await new Promise((r) => setImmediate(r));
+    assert.equal(typeof entregar, 'function', 'la renovación está esperando al sistema');
+    assert.deepEqual(await d.borrarDatosDispositivo(), { ok: true, local: true });
+    assert.equal(mapa.has(CLAVE), false, '«Borrar datos» quitó el token de la base y borró su clave');
+    assert.equal(base.size, 0);
+    entregar({ ok: true, estado: 'permitido', token: tokenSistema, plataforma: 'android' });
+    assert.deepEqual(await renovando, { renovado: false, motivo: 'borrado' }, tokenSistema);
+    assert.deepEqual(orden, [['borrar-datos', 'quitar_aviso_push', TOKEN], ['registrar', tokenSistema], ['quitar', tokenSistema]],
+      'lo que la renovación registró tarde se quita');
+    assert.equal(base.size, 0, 'ningún token queda en la base sin dueño en este móvil');
+    assert.equal(mapa.has(CLAVE), false, 'y no se vuelve a guardar');
+  }
+});
+
 test('las claves nuevas cuentan como datos privados del dispositivo; la del token, aparte', () => {
   const { clavesPrivadasDispositivo } = require('../lib/acceso-obligatorio');
   const propias = [`rwadar.editorial.avisos.leidos.v1:${UID}`, `rwadar.editorial.avisos.renovado.v1:${UID}`];
