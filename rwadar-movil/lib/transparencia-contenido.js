@@ -4,7 +4,7 @@
    Es una comprobación de la documentación, no una recomendación de inversión.
    Una oferta sin entrada, o cuya verificadaEl no coincida con la del catálogo, no
    enseña puntos fuertes ni entra en la Selección. */
-export const TRANSPARENCIA_REVISADA_EL = "2026-11-03";
+export const TRANSPARENCIA_REVISADA_EL = "2026-11-05";
 
 export const CRITERIOS_TRANSPARENCIA = [
   {
@@ -31,7 +31,7 @@ export const CRITERIOS_TRANSPARENCIA = [
 
 export const TRANSPARENCIA_POR_SLUG = {
   "aktionariat": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -40,7 +40,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "FINMA · Registro de entidades autorizadas (búsqueda «Aktionariat»: 0 resultados)",
         "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -49,7 +49,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Aktionariat · Aviso legal (oferta en el EEE limitada a 100.000 € en total, sin folleto)",
         "url": "https://www.aktionariat.com/disclaimer"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "minimoCorto": "500 CHF",
     "salidaCorta": "Venta a otros accionistas",
@@ -64,7 +64,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "apartamento-vacacional-hinterstoder-50": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -73,7 +73,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -82,22 +82,22 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A31KP7)",
         "url": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "Desde 72 € en reventa (03/11)",
+    "minimoCorto": "Desde 77 € la participación (05/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
     "puntos": [
       {
         "texto": "Reventa activa en la app",
         "fuente": {
-          "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+          "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
         }
       }
     ]
   },
   "boss-info": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -115,7 +115,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Portal de acciones de Boss Info · compra directa al emisor (sin folleto ni KID publicados)",
         "url": "https://shares.bossinfo.com/invest"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "minimoCorto": "100 CHF",
     "salidaCorta": "Venta a otros accionistas",
@@ -130,7 +130,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "casa-de-outeiro": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": true,
@@ -139,7 +139,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Proveedores de servicios de financiación participativa: nº 11, ADVENTUREES CAPITAL PFP (www.aliuscap.com)",
         "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": true,
@@ -148,7 +148,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Ficha de datos fundamentales de la inversión v5 · Casa de Outeiro (30/10/2026)",
         "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "minimoCorto": "2.000 €",
     "salidaCorta": "Venta limitada tras la emisión",
@@ -170,7 +170,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "drautalresidenz-paternion": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -179,7 +179,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -188,22 +188,22 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2YPQ0)",
         "url": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "Desde 70 € en reventa (03/11)",
+    "minimoCorto": "Desde 70 € la participación (05/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
     "puntos": [
       {
         "texto": "Reventa activa en la app",
         "fuente": {
-          "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+          "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
         }
       }
     ]
   },
   "fotovoltaica-cohotel": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -212,7 +212,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -221,22 +221,22 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A38J40)",
         "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "Desde 110 € en reventa (03/11)",
+    "minimoCorto": "Desde 110 € la participación (05/11)",
     "salidaCorta": "Nominal en 2038; antes, reventa",
     "puntos": [
       {
         "texto": "Reventa activa en la app",
         "fuente": {
-          "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+          "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
         }
       }
     ]
   },
   "fotovoltaica-greenpoint": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -245,7 +245,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -254,22 +254,22 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A38J32)",
         "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "Desde 100 € en reventa (03/11)",
+    "minimoCorto": "Desde 100 € la participación (05/11)",
     "salidaCorta": "Nominal en 2038; antes, reventa",
     "puntos": [
       {
         "texto": "Reventa activa en la app",
         "fuente": {
-          "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+          "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
         }
       }
     ]
   },
   "hausera-proximas-ofertas": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -278,7 +278,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Listado de proveedores de servicios de financiación participativa (Hausera/HOLDTX no figura)",
         "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -287,14 +287,14 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Hausera · ficha de Alicante 2 (redirige al inicio de sesión)",
         "url": "https://hausera.io/propiedad/alicante_2/"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": null,
+    "minimoCorto": "100 € según la FAQ de Hausera",
     "salidaCorta": null,
     "puntos": []
   },
   "kraken-xstocks": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-11-03",
     "supervisada": {
       "cumple": true,
@@ -303,7 +303,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Payward Europe Digital Solutions (CY) Limited, ESI del EEE en libre prestación n.º 4474",
         "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=4474"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -327,7 +327,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "local-de-estanco-klagenfurt": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -336,7 +336,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -345,22 +345,22 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2U5V3)",
         "url": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "Desde 95 € en reventa (03/11)",
+    "minimoCorto": "Desde 95 € la participación (05/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
     "puntos": [
       {
         "texto": "Reventa activa en la app",
         "fuente": {
-          "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+          "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
         }
       }
     ]
   },
   "mtbill": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -378,7 +378,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Midas · Documentación legal de mTBILL (condiciones finales del 17/07/2026 y KID en español)",
         "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "minimoCorto": null,
     "salidaCorta": null,
@@ -400,7 +400,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "prosegur-digital-gold": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -409,7 +409,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Relación de proveedores de servicios de criptoactivos (Prosegur: custodia, recepción de órdenes y transferencia)",
         "url": "https://www.cnmv.es/Docportal/Proveedores-Servicios-Criptoactivos/Listado_ProveedoresCriptoactivos.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -418,7 +418,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Prosegur Gold · Términos y condiciones generales (08/07/2026)",
         "url": "https://app.prosegurdigitalgold.com/#/terms-service"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "minimoCorto": "1 gramo de oro",
     "salidaCorta": "Recompra por Prosegur",
@@ -440,7 +440,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "randhartingergasse-9-viena": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -449,7 +449,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -458,22 +458,22 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2ZT84)",
         "url": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "Desde 78 € en reventa (03/11)",
+    "minimoCorto": "Desde 78 € la participación (05/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
     "puntos": [
       {
         "texto": "Reventa activa en la app",
         "fuente": {
-          "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+          "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
         }
       }
     ]
   },
   "robinhood-classic-stock-tokens": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-11-02",
     "supervisada": {
       "cumple": true,
@@ -482,7 +482,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Robinhood Europe, UAB, ESI del EEE en libre prestación n.º 5299",
         "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5299"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": true,
@@ -513,7 +513,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "spiko-letras-del-tesoro-dolar": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-11-02",
     "supervisada": {
       "cumple": true,
@@ -522,16 +522,16 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": true,
-      "motivo": "Tiene KID oficial en español para todo inversor; su SICAV está inscrita en la CNMV (n.º 2380), que no detalla cada fondo.",
+      "motivo": "KID oficial en español para todo inversor; la SICAV figura en la CNMV (n.º 2380) y la tabla de países de Spiko marca España.",
       "fuente": {
         "titulo": "Spiko US T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)",
         "url": "https://cdn.spiko.finance/legal_docs/ES/KID_USTBL_ES.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "minimoCorto": "1 USD",
     "salidaCorta": "Reembolso diario",
@@ -553,7 +553,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "spiko-letras-del-tesoro-euro": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": true,
@@ -562,16 +562,16 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": true,
-      "motivo": "KID oficial en español para todo inversor; el fondo ya existía cuando su SICAV se inscribió en la CNMV (n.º 2380), que no lista compartimentos.",
+      "motivo": "KID oficial en español para todo inversor; la SICAV figura en la CNMV (n.º 2380) y la tabla de países de Spiko marca España.",
       "fuente": {
         "titulo": "Spiko EU T-Bills Money Market Fund · Documento de datos fundamentales en español (01/09/2026)",
         "url": "https://cdn.spiko.finance/legal_docs/ES/KID_EUTBL_ES.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "minimoCorto": "1 €",
     "salidaCorta": "Reembolso diario",
@@ -593,7 +593,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "spiko-smart-cash-euro": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-11-03",
     "supervisada": {
       "cumple": true,
@@ -602,7 +602,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Spiko Finance SASU, ESI del EEE en libre prestación n.º 5325",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -611,7 +611,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Spiko SICAV, IIC extranjera n.º 2380 (no muestra sus fondos uno a uno)",
         "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "minimoCorto": "1 €",
     "salidaCorta": "Reembolso diario, con límites",
@@ -626,7 +626,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "switzerlend": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -635,7 +635,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Switzerlend AG · Investor Relations (afiliación a PolyReg y mercado no supervisado)",
         "url": "https://www.lend.ch/de/investor-relations"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -644,9 +644,9 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Switzerlend AG · Investor Relations («weder Anlageberatung noch ein Prospekt»)",
         "url": "https://www.lend.ch/de/investor-relations"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "1 acción (68,01 CHF, 03/11)",
+    "minimoCorto": "1 acción (68,01 CHF, 05/11)",
     "salidaCorta": "Venta a otros accionistas",
     "puntos": [
       {
@@ -659,7 +659,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "terreno-con-arrendamiento-billa": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -668,7 +668,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -677,7 +677,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A3SE89)",
         "url": "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "minimoCorto": "1.000 €",
     "salidaCorta": "Cancelable a los 5 años; reventa",
@@ -692,7 +692,7 @@ export const TRANSPARENCIA_POR_SLUG = {
     ]
   },
   "vivienda-pluddemanngasse-101-graz": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -701,7 +701,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -710,22 +710,22 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2RAH5)",
         "url": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "Desde 80 € en reventa (03/11)",
+    "minimoCorto": "Desde 75 € la participación (05/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
     "puntos": [
       {
         "texto": "Reventa activa en la app",
         "fuente": {
-          "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+          "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
         }
       }
     ]
   },
   "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -734,7 +734,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -743,22 +743,22 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A324B4)",
         "url": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "Desde 78 € en reventa (03/11)",
-    "salidaCorta": "Cancelable a los 15 años; reventa",
+    "minimoCorto": "Desde 74 € la participación (05/11)",
+    "salidaCorta": "Primera cancelación a 15 años; reventa",
     "puntos": [
       {
         "texto": "Reventa activa en la app",
         "fuente": {
-          "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+          "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
         }
       }
     ]
   },
   "vivienda-schwarzer-weg-18-graz": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -767,7 +767,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -776,22 +776,22 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2WCE8)",
         "url": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "Desde 69,90 € en reventa (03/11)",
+    "minimoCorto": "Desde 66,67 € la participación (05/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
     "puntos": [
       {
         "texto": "Reventa activa en la app",
         "fuente": {
-          "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+          "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
         }
       }
     ]
   },
   "vivienda-sonnleithnergasse-2-viena": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -800,7 +800,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -809,22 +809,22 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2T4D7)",
         "url": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "Desde 75 € en reventa (03/11)",
+    "minimoCorto": "Desde 75 € la participación (05/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
     "puntos": [
       {
         "texto": "Reventa activa en la app",
         "fuente": {
-          "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+          "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
         }
       }
     ]
   },
   "vivienda-stallhofstra-e-28-gratwein": {
-    "verificadaEl": "2026-11-03",
+    "verificadaEl": "2026-11-05",
     "anadidaEl": "2026-09-30",
     "supervisada": {
       "cumple": false,
@@ -833,7 +833,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
         "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
     "documentoEspana": {
       "cumple": false,
@@ -842,15 +842,15 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A2WCD0)",
         "url": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf"
       },
-      "consultadaEl": "2026-11-03"
+      "consultadaEl": "2026-11-05"
     },
-    "minimoCorto": "Desde 69,90 € en reventa (03/11)",
+    "minimoCorto": "Desde 69,90 € la participación (05/11)",
     "salidaCorta": "Reventa en la app, si hay comprador",
     "puntos": [
       {
         "texto": "Reventa activa en la app",
         "fuente": {
-          "titulo": "Brickwise · mercado de reventa en la app (03/11/2026)",
+          "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
           "url": "https://app.brickwise.at/desktopWeb/marketplace"
         }
       }
