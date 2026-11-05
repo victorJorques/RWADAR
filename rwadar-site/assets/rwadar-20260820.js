@@ -1771,12 +1771,12 @@ function pintarEmisiones(){
    '<button type="button" class="b3" data-emi-borrar-busqueda>Borrar búsqueda</button></div>':
    '<div class="emis-vacio"><h3>Ninguna oferta coincide</h3><p>Cambia los filtros para volver a ver todas las ofertas.</p></div>'):
    elegidas.length?'<div class="catalogo-bloque catalogo-seleccion" role="group" aria-labelledby="emiSeleccionTit"><header class="catalogo-bloque-cab"><h3 id="emiSeleccionTit">Selección RWAdar <span>· pasan nuestras 5 comprobaciones</span></h3>'+
-    '<p>No es una recomendación de inversión.</p></header>'+elegidas.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>'+
+    '</header>'+elegidas.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>'+
     (resto.length?'<div class="catalogo-bloque" role="group" aria-labelledby="emiRestoTit"><header class="catalogo-bloque-cab"><h3 id="emiRestoTit">Otras ofertas principales</h3></header>'+resto.map(o=>tarjetaOfertaLocal(o,{nivel:4})).join('')+'</div>':''):
    tarjetasPorProveedorHtml(visibles);
   /* Con un filtro o una búsqueda, el recuento también a la vista (el lector ya lo oye en #movilOfertasEstado). */
   caja.innerHTML=(movil?(emiCat||emiBusquedaLocal?'<p class="catalogo-recuento" aria-hidden="true">'+escHtml(recuento)+'</p>':'')+
-   '<p class="catalogo-nota-movil">RWAdar no recibe dinero de las inversiones.</p>':'')+
+   '<p class="catalogo-nota-movil">No es una recomendación de inversión · RWAdar no recibe dinero de las inversiones.</p>':'')+
    '<header class="catalogo-coleccion-cab"><h3>Ofertas principales</h3><p>'+visibles.length+' de '+principales.length+' fichas. Son informativas y gratuitas. Si puedes invertir, las condiciones y los riesgos los confirma la empresa que ofrece cada producto. RWAdar no recibe dinero de las inversiones.</p></header>'+
    '<div class="catalogo-principales">'+filas+'</div>'+
    seccionReferenciasCatalogo(catalogo,'secundario')+seccionReferenciasCatalogo(catalogo,'en_camino')+
@@ -2017,17 +2017,16 @@ function lugarTarjetaHtml(lugar){
 }
 function tarjetaNuevaHtml(o,i){
  const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=altaOferta(o);
- /* Su línea de riesgo, como la Selección; y, como la fila de Ofertas en el
-    móvil, «Revisa · N avisos en la ficha» o el aviso crítico entero. */
- const todos=avisosOfertaLocal(o),bloqueo=avisoBloqueoOferta(o),propios=todos.filter(x=>!AVISO_GENERAL_OFERTA.test(x)).length;
+ /* Su línea de riesgo, como la Selección; y, como la tarjeta de Ofertas
+    (05/11/2026), solo el aviso crítico entero: los demás, en la ficha. */
+ const bloqueo=avisoBloqueoOferta(o);
  return '<li class="rel-tarjeta rel-nueva"><article aria-labelledby="'+id+'">'+
   (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
   '<div class="rel-tarjeta-cuerpo"><h3 id="'+id+'" lang="es" translate="no"><button class="rel-nueva-abrir" type="button" data-perfil-oferta="'+escHtml(o.slug)+'"><span>'+escHtml(t)+'</span></button></h3>'+
   /* Lugar en su propio bloque (no empieza línea con «·»); el país se traduce. */
   '<p class="rel-tarjeta-plat"><span translate="no" lang="es">'+escHtml(o.plataformaNombre||'')+'</span>'+(img&&img.lugar?' · '+lugarTarjetaHtml(img.lugar):'')+'</p>'+
   '<p class="rel-tarjeta-nota">'+escHtml(NOTAS_SELECCION[o.slug]||'Puedes perder parte o todo lo que inviertas.')+'</p>'+
-  (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · '+escHtml(textoLocal(bloqueo.texto))+(propios>1?'<span> · '+(propios-1)+' más en la ficha</span>':'')+'</p>':
-   todos.length?'<p class="rel-nueva-aviso"><b>Revisa</b> · <span>'+todos.length+(todos.length===1?' aviso en la ficha':' avisos en la ficha')+'</span></p>':'')+
+  (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · '+escHtml(textoLocal(bloqueo.texto))+'</p>':'')+
   '<p class="rel-nueva-meta">'+(ofertaNueva(o)?'<span class="etq etq-ok">Nueva</span> ':'')+'<span><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></span></p></div></article></li>';
 }
 /* Las fotos de la Selección se piden al acercarse a la pantalla: con solo
@@ -2447,8 +2446,6 @@ function clavesOfertaLocal(o,secundario){
  metricas.forEach(x=>{if(!preferidas.includes(x))preferidas.push(x)});
  return {destacado,auxiliares:preferidas.slice(0,2)};
 }
-/* Como en los buscadores de viajes: dónde está el activo, con su chincheta. */
-const ICONO_LUGAR='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
 const AVISO_GENERAL_OFERTA=/^Referencia editorial gratuita\b/;
 /* Lo primero que piden los usuarios en una tarjeta: quién supervisa la
    plataforma. Sale del radar; sin promesas ni sellos que no consten. */
@@ -2618,9 +2615,11 @@ function textoCortoLocal(v,max=40){
 /* España y Salida se escriben con UNA función para la tarjeta (escritorio y
    móvil) y para «Lo esencial» de la ficha: antes la tarjeta de escritorio
    decía «Disponible» y la ficha «Sí, según la fuente» (QA 04/11/2026, n.º 18). */
-function textoEspanaOferta(resumen){
+/* La lista dice solo «Sí» o «No» (decisión de Víctor del 05/11/2026); la
+   ficha, con «según la fuente» y la fuente al lado. */
+function textoEspanaOferta(resumen,corto=false){
  const acceso=resumen&&resumen.accesoEspana&&resumen.accesoEspana.estado;
- return acceso==='si'?'Sí, según la fuente':acceso==='no'?'No, según la fuente':'Sin confirmar';
+ return acceso==='si'?(corto?'Sí':'Sí, según la fuente'):acceso==='no'?(corto?'No':'No, según la fuente'):'Sin confirmar';
 }
 function textoSalidaOferta(o,resumen){
  const e=transparenciaOferta(o);
@@ -2631,16 +2630,22 @@ function datosCortosOferta(o,resumen){
  const e=transparenciaOferta(o);
  const minimo=minimoDocumentadoLocal(resumen)?e&&textoLocal(e.minimoCorto)||textoCortoLocal(textoBreveDatoTarjetaLocal(resumen.minimo)):
   textoBreveDatoTarjetaLocal(resumen.minimo);
- return {minimo,espana:textoEspanaOferta(resumen),salida:textoSalidaOferta(o,resumen)};
+ return {minimo,espana:textoEspanaOferta(resumen),espanaCorta:textoEspanaOferta(resumen,true),salida:textoSalidaOferta(o,resumen)};
 }
+/* La tarjeta de la lista: una sola línea con el mínimo y el acceso desde España. */
 function datosTarjetaOfertaHtml(o,resumen){
  const d=datosCortosOferta(o,resumen);
- return '<dl class="escaparate-datos-clave">'+[['Mínimo',d.minimo],['España',d.espana],['Salida',d.salida]]
+ return '<dl class="escaparate-datos-clave escaparate-datos-linea">'+[['Mínimo',d.minimo],['España',d.espanaCorta]]
   .map(([dt,dd])=>'<div><dt>'+escHtml(dt)+'</dt><dd>'+escHtml(dd)+'</dd></div>').join('')+'</dl>';
 }
-function puntosFuertesHtml(o,max=2){
- const l=puntosFuertesOferta(o).slice(0,max);
- return l.length?'<ul class="escaparate-puntos" aria-label="Puntos fuertes">'+l.map(x=>'<li>'+escHtml(x.texto)+'</li>').join('')+'</ul>':'';
+/* Un problema de la revisión (caducada, no verificable o con fuentes en
+   conflicto) se ve en la tarjeta. En Reventa y Próximas «no verificable» es
+   su estado de siempre (liquidez o apertura sin confirmar): lo explican el
+   encabezado de la sección y la ficha, y no se repite en cada fila. */
+function problemaRevisionOferta(o){
+ const principal=o.coleccion==null||o.coleccion==='principales';
+ const e=estadoVigenciaLocal(principal?o:{...o,coleccion:'principales',estadoRevision:o.estadoRevision==='no_verificable'?'actual':o.estadoRevision});
+ return e.clase==='caducado'?e.texto:'';
 }
 /* En la ficha: los cinco criterios con su motivo y su fuente; todos los puntos
    fuertes. Solo el texto de transparencia.json y los datos del catálogo se
@@ -2663,38 +2668,33 @@ function transparenciaDetalleHtml(o,resumen){
    (x.fuente&&urlHttps(x.fuente.url)?' '+fuente({url:urlHttps(x.fuente.url),titulo:textoLocal(x.fuente.titulo)},x.texto):'')+'</li>').join('')+'</ul>':'')+
   '</details>';
 }
+/* Tarjeta de la lista (decisión de Víctor del 05/11/2026: «veo demasiada
+   información así de primeras, me marea»). Solo lo que sirve para decidir
+   qué abrir: imagen y guardar, «Patrocinada» y «Nueva», título, proveedor ·
+   lugar y una línea con el mínimo y el acceso desde España. Por seguridad,
+   solo si existen: el aviso crítico entero, un problema de la revisión y «No
+   disponible en España». Los puntos fuertes, la vigencia, la salida, los
+   avisos ordinarios y las fechas siguen en la ficha. Toda la tarjeta abre la
+   ficha con un único botón («›»); guardar va aparte. */
 function tarjetaOfertaLocal(o,{secundario=false,nivel=3}={}){
- const estado=estadoVigenciaLocal(o);
- const resumen=resumenEditorialOferta(o);
- const documentacion=documentacionOfertaLocal(o);
- /* El aviso general (igual en todas) va una vez encima de la lista; la
-    tarjeta enseña el propio de esa oferta. */
- const todos=avisosOfertaLocal(o),avisos=todos.filter(t=>!AVISO_GENERAL_OFERTA.test(t)),imagen=imagenOfertaLocal(o);
- const bloqueo=avisoBloqueoOferta(o);
- const advertencia=(Array.isArray(o.avisos)?o.avisos:[]).find(x=>x&&x.tono==='warn'&&!x.esAntiguedad&&!AVISO_GENERAL_OFERTA.test(textoLocal(x.texto)));
- const avisoPrincipal=bloqueo?textoLocal(bloqueo.texto):advertencia?textoLocal(advertencia.texto):avisos[0];
- const fechaRevision=documentacion?documentacion.revisadaEl:o.verificadaEl;
- const estadoCompacto=o.coleccion==='en_camino'?'Apertura no confirmada':
-  o.coleccion==='secundario'?'Liquidez no confirmada':estado.texto;
+ const estado=estadoVigenciaLocal(o),resumen=resumenEditorialOferta(o),imagen=imagenOfertaLocal(o);
+ const bloqueo=avisoBloqueoOferta(o),revision=problemaRevisionOferta(o),nueva=ofertaNueva(o);
+ const noEspana=estado.clase!=='caducado'&&o.disponibleEs===false;
  const cat=Object.hasOwn(CATMETA,o.categoria)?catClase({cat:o.categoria}):'';
  return '<article class="emi escaparate-oferta'+cat+(secundario?' escaparate-oferta-secundaria':'')+'">'+
   '<div class="escaparate-imagen"><img src="'+escHtml(imagen.src)+'" alt="'+escHtml(imagen.alt)+'"'+respaldoImagen(imagen)+' loading="lazy" decoding="async" width="640" height="440">'+botonGuardarOferta(o)+'</div>'+
   '<div class="escaparate-cuerpo">'+
-   (o.patrocinada?'<span class="escaparate-patrocinada">Patrocinada</span>':'')+
-   '<h'+nivel+' class="emi-tit" title="'+escHtml(o.titulo)+'">'+escHtml(o.titulo)+'</h'+nivel+'><div class="escaparate-procedencia"><div class="emi-donde"><b>'+escHtml(o.plataformaNombre)+'</b></div>'+
-   (imagen&&imagen.lugar?'<p class="emi-lugar">'+ICONO_LUGAR+escHtml(imagen.lugar)+'</p>':'')+'</div>'+
-   puntosFuertesHtml(o)+datosTarjetaOfertaHtml(o,resumen)+
-   '<div class="escaparate-meta">'+(ofertaNueva(o)?'<span class="etq etq-ok emi-nueva">Nueva</span>':'')+'<span class="escaparate-estado escaparate-estado-linea '+estado.clase+'">'+escHtml(estadoCompacto)+'</span>'+
-   (estado.clase!=='caducado'&&o.disponibleEs===false?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+'</div>'+
-   (avisoPrincipal?'<p class="escaparate-aviso-compacto'+(bloqueo?' escaparate-aviso-bloqueo':'')+'"><b>'+(bloqueo?'Importante':'Revisa')+'</b> · '+escHtml(avisoPrincipal)+(avisos.length>1?'<span> · '+(avisos.length-1)+' más en la ficha</span>':'')+'</p>':'')+
-   /* En la fila compacta del móvil el aviso ordinario se resume en su
-      número, junto a la fecha; el crítico (tono stop) se lee entero siempre. */
-   '<div class="emi-pie">'+(!bloqueo&&todos.length?'<p class="escaparate-avisos-n"><b>Revisa</b> · <span>'+todos.length+(todos.length===1?' aviso en la ficha':' avisos en la ficha')+'</span></p>':'')+
-    '<div class="emi-revision"><time class="emi-ver" datetime="'+escHtml(fechaRevision)+'"><span class="emi-ver-pre">'+
-    (documentacion?'Fuente revisada el':'Revisado')+' </span>'+escHtml(fechaES(fechaRevision))+'</time>'+
-    (resumen.fechas.fechaDato&&resumen.fechas.fechaDato!==fechaRevision?'<span class="emi-fecha-dato">Dato del '+escHtml(fechaES(resumen.fechas.fechaDato))+'</span>':'')+'</div>'+
-    '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'">Ver ficha <span aria-hidden="true">→</span></button>'+
-   '</div></div></article>';
+   (o.patrocinada||nueva?'<p class="escaparate-marcas">'+(o.patrocinada?'<span class="escaparate-patrocinada">Patrocinada</span>':'')+
+    (nueva?'<span class="etq etq-ok emi-nueva">Nueva</span>':'')+'</p>':'')+
+   '<h'+nivel+' class="emi-tit" title="'+escHtml(o.titulo)+'">'+escHtml(o.titulo)+'</h'+nivel+'>'+
+   '<p class="escaparate-procedencia"><b class="emi-donde">'+escHtml(o.plataformaNombre)+'</b>'+
+   (imagen&&imagen.lugar?'<span class="emi-lugar">'+escHtml(imagen.lugar)+'</span>':'')+'</p>'+
+   datosTarjetaOfertaHtml(o,resumen)+
+   (revision||noEspana?'<p class="escaparate-alertas">'+(revision?'<span class="escaparate-estado escaparate-estado-linea caducado">'+escHtml(revision)+'</span>':'')+
+    (noEspana?'<span class="escaparate-no-disponible">No disponible en España</span>':'')+'</p>':'')+
+   (bloqueo?'<p class="escaparate-aviso-compacto escaparate-aviso-bloqueo"><b>Importante</b> · '+escHtml(textoLocal(bloqueo.texto))+'</p>':'')+
+   '<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(o.titulo)+' en '+escHtml(o.plataformaNombre)+'"><span aria-hidden="true">›</span></button>'+
+  '</div></article>';
 }
 /* En el móvil las filas son compactas y van sueltas, sin grupos por
    proveedor (una sola nota común arriba). En escritorio siguen los grupos

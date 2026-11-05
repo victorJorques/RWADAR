@@ -47,14 +47,23 @@ consulta (`vigenciaDias`).
 normas del catálogo a cosas con sentido»):
 
 1. **Principales:** pueden llevar rentabilidad o precio, siempre con su fuente,
-   su base y la fecha del dato. Se ven 7 días desde su consulta. La tarjeta
-   enseña tres datos: mínimo, acceso desde España y salida.
+   su base y la fecha del dato. Se ven 7 días desde su consulta. La ficha
+   enseña en «Lo esencial» tres datos: mínimo, acceso desde España y salida.
+   **La tarjeta de la lista**, desde la decisión de Víctor del 05/11/2026
+   («veo demasiada información así de primeras, me marea; hazlo simple»),
+   enseña solo dos, en una línea: el mínimo y el acceso desde España en corto
+   («Mínimo 1 € · España Sí»). Además lleva la imagen con guardar, el título
+   (dos líneas como mucho), proveedor · lugar, «Nueva» y «Patrocinada» si lo
+   son y, solo si existen, el aviso crítico entero, un problema de la revisión
+   (caducada, no verificable o fuentes en conflicto) y «No disponible en
+   España». La salida, los puntos fuertes, la vigencia, los demás avisos y las
+   fechas se quedan en la ficha. Toda la tarjeta abre la ficha.
 2. **Reventa y próximas:** no llevan rentabilidad ni precio principal. En
    reventa la rentabilidad depende del precio que pagues a otro inversor, y en
    una próxima todavía no se puede comprar. La base de datos también lo exige
    (`oferta_coleccion_documental`). Sí enseñan el mínimo, el acceso desde España
-   y la salida cuando hay una referencia escrita para la tarjeta, con estas
-   condiciones:
+   y la salida (la salida, solo en la ficha) cuando hay una referencia escrita
+   para la tarjeta, con estas condiciones:
    - lleva la etiqueta fija `Mínimo de inversión`, `Acceso desde España`,
      `Salida` o `Reembolso`, con un paréntesis opcional;
    - está en castellano llano;

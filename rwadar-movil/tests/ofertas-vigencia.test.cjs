@@ -114,8 +114,9 @@ test('web y móvil conservan el último día completo y retiran cifras al siguie
     assert.equal(movil.cifrasOfertaVigentes(dato, ultimoDia), true);
     assert.equal(movil.cifrasOfertaVigentes(dato, caducada), false);
     assert.doesNotMatch(webVigente.tarjetaOfertaLocal(dato), centinelas);
-    // «cifras válidas hasta hoy» (LISTA-FINAL fila 14, 04/11/2026).
-    assert.match(webVigente.tarjetaOfertaLocal(dato), /cifras válidas hasta hoy/);
+    // «válidas hasta hoy» (LISTA-FINAL fila 14) va en la ficha; la tarjeta web
+    // sencilla (05/11/2026) solo dice un problema de revisión.
+    assert.doesNotMatch(webVigente.tarjetaOfertaLocal(dato), /cifras válidas|escaparate-estado-linea/);
     assert.match(webVigente.tarjetaOfertaLocal(dato), /aria-label="Ver ficha de Oferta de prueba en Proveedor"/);
     assert.doesNotMatch(webCaducada.tarjetaOfertaLocal(dato), centinelas);
     assert.match(webCaducada.tarjetaOfertaLocal(dato), /escaparate-estado-linea caducado/);
@@ -127,6 +128,7 @@ test('web y móvil conservan el último día completo y retiran cifras al siguie
       assert.ok(vista.dialogo.innerHTML.includes(`href="${dato.url}"`));
     }
     assert.match(vistaVigente.dialogo.innerHTML, /97,13/);
+    assert.match(vistaVigente.dialogo.innerHTML, /válidas hasta hoy/);
     assert.doesNotMatch(vistaCaducada.dialogo.innerHTML, centinelas);
     assert.equal(movil.ofertaConCifrasVigentes(dato, caducada).precio, null);
   }
@@ -186,9 +188,10 @@ test('una web abierta revisa las cifras a medianoche sin depender de una respues
     assert.ok(inicio > 0 && fin > inicio);
     vm.runInContext(codigo.slice(inicio, fin), contexto);
     contexto.refrescarVigenciaOfertas();
-    assert.match(html, /cifras válidas hasta hoy/);
+    assert.doesNotMatch(html, /escaparate-estado-linea/);
     contexto.abrirDetalleOfertaLocal(oferta.slug);
     assert.match(contexto.document.getElementById().innerHTML, /97,13/);
+    assert.match(contexto.document.getElementById().innerHTML, /válidas hasta hoy/);
     contexto.programarRevisionVigenciaOfertas();
     reloj.setTime(caducada.getTime());
     temporizador();
@@ -453,8 +456,8 @@ test('las 28 fichas reales conservan documentación y referencias fechadas en we
       assert.match(tarjeta, /Sin confirmar/);
       assert.doesNotMatch(tarjeta, /Pendiente de revisión/);
     }
-    assert.match(tarjetaWeb, /Fuente revisada el/);
-    assert.ok(tarjetaWeb.includes(`datetime="${doc.revisadaEl}"`), o.slug);
+    // La tarjeta web sencilla (05/11/2026) no lleva fecha: la fecha de la fuente, en la ficha.
+    assert.doesNotMatch(tarjetaWeb, /<time\b|Fuente revisada el/);
     const ultimaConsulta = doc.referencias.map(r => r.fechaConsulta).sort().at(-1);
     assert.ok(tarjetaMovil.includes(ultimaConsulta
       ? `Fuente consultada ${movil.fechaVerificacionLocalVisible(ultimaConsulta)}`
@@ -463,6 +466,7 @@ test('las 28 fichas reales conservan documentación y referencias fechadas en we
     assert.equal(contexto.ofertaDetalleLocalPorSlug(o.slug), o);
     contexto.abrirDetalleOfertaLocal(o.slug);
     const detalleWeb = dialogo.innerHTML;
+    assert.ok(detalleWeb.includes(doc.revisadaEl), o.slug);
     const detalleMovil = textoRenderizado(componentes.DetalleOferta({ oferta: o }));
     assert.ok(detalleWeb.includes(contexto.escHtml(doc.descripcion)), o.slug);
     assert.ok(detalleMovil.includes(doc.descripcion), o.slug);

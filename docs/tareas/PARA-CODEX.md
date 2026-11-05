@@ -6,6 +6,79 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de noviembre de 2026 · Claude · tarjetas de Ofertas más sencillas en la web (sin publicar)
+
+Rama local `claude/tarjetas-simples` (worktree `tarjetas-simples`, sale de
+`main` 5a97fd2), un commit con esta entrada. **Sin push ni publicación, sin
+tocar Supabase, sin OTA ni EAS.**
+
+Encargo de Víctor, con una captura de Ofertas en el iPhone: «veo demasiada
+información así de primeras, me marea; hazlo simple y fácil de leer; el que
+quiera más detalle ya entrará en la tarjeta».
+
+- **La tarjeta de la lista** (web en móvil y escritorio; una sola función,
+  `tarjetaOfertaLocal`) enseña ahora:
+  - la imagen con «Guardar»;
+  - «Nueva» y «Patrocinada», si lo son;
+  - el título, con dos líneas como mucho (entero en `title` y en el nombre del
+    botón);
+  - proveedor · lugar;
+  - una línea con el mínimo y el acceso desde España: «Mínimo 1 € · España Sí».
+
+  Solo si existen, por seguridad, enseña también el aviso crítico entero, un
+  problema de la revisión (cifras por actualizar, apertura no confirmada en
+  las principales o fuentes en conflicto) y «No disponible en España».
+
+  Toda la tarjeta abre la ficha con un único botón «›», cuyo nombre accesible
+  es «Ver ficha de <título> en <plataforma>». «Guardar» va aparte y no hay
+  botones anidados. El foco marca la tarjeta entera.
+- **Sale de la lista y sigue en la ficha**: los puntos fuertes, «cifras
+  válidas N días más», «Liquidez/Apertura no confirmada», la salida, los
+  avisos ordinarios y su recuento, la fecha de revisión y «Dato del …». Se
+  comprobó oferta por oferta (24 de 24), en el navegador y en una prueba nueva.
+- **España en corto**: `textoEspanaOferta(resumen, true)` devuelve «Sí», «No»
+  o «Sin confirmar». La ficha sigue diciendo «Sí, según la fuente». No hay
+  cifras nuevas: con el catálogo caducado manda `resumenOferta` y la tarjeta
+  dice «Mínimo No verificado · España Sin confirmar» y «Cifras por actualizar».
+- **Encima de la lista** (móvil), una sola línea pequeña: «No es una
+  recomendación de inversión · RWAdar no recibe dinero de las inversiones.».
+  La cabecera de la Selección ya no repite la frase.
+- **«Recién añadidas» de Inicio** sigue el mismo criterio: quita «Revisa · N
+  avisos en la ficha» y el «· N más en la ficha» del aviso crítico. Perfil no
+  cambia: ya es una fila corta propia.
+- **Inglés**: «Sí» → «Yes» y la línea de encima de la lista. Van en
+  `rwadar-movil/lib/idioma-en.js` y en su copia web.
+- **Normas**: el párrafo de las tarjetas de `CICLO-DIARIO-CATALOGO.md` dice
+  ahora que la ficha lleva los tres datos y la lista, dos.
+- **Medidas** (alto de las 3 primeras tarjetas): 390 px en castellano,
+  469 → 359; 390 px en inglés, 621 → 359; 1366 px, 2228 → 1199. Sin errores
+  de página. Sin desborde horizontal a 360 y 820 px.
+
+**Pruebas:** `npm run test:web` 595 correctas y 0 fallidas, más 71 de páginas
+y 32 de precarga. `npm run test:mobile`: 409 correctas, 0 fallidas y 2
+omitidas. `npm run test:tools` en verde, con `copiar-idiomas-web.cjs
+--comprobar`. Las pruebas de tarjeta comprueban qué se ve y qué no: con
+mutaciones (la Salida vuelve a la tarjeta, la ficha pierde la Salida o
+desaparece el aviso crítico), las pruebas fallan.
+
+**Toqué `rwadar-movil` solo en dos sitios:**
+- el diccionario, que se comparte con la web;
+- tres aserciones de `tests/ofertas-vigencia.test.cjs` que comprueban la
+  tarjeta **web** («cifras válidas hasta hoy» y «Fuente revisada el» pasan a
+  comprobarse en la ficha).
+
+**Queda pendiente:**
+- **App Android** (otro agente): la misma tarjeta en la lista de Ofertas y en
+  «Recién añadidas» (`RecienAnadidas.js`). Las pruebas de la app que esperan
+  «Ver ficha →» y la Salida en la tarjeta (`ofertas-presentacion`,
+  `navegacion`) siguen como estaban.
+- Los títulos largos se cortan a dos líneas con «…». En escritorio, el título
+  reserva dos líneas para que la línea de datos quede alineada en la fila.
+- `probar-web.mjs` sigue por encima del aviso 5S (241 KB; ya lo estaba).
+- Publicar la web necesita el permiso de Víctor.
+
+---
+
 ## 4 de noviembre de 2026 (noche, 6) · Claude · publicadas la tercera y la cuarta subida: todo el barrido de calidad en producción
 
 Cierra lo que quedaba pendiente en la entrada «(noche, 4)».
