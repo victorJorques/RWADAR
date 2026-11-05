@@ -229,8 +229,8 @@ test('al cerrar sesión se quita el token con el cliente que se cierra y se vali
   assert.equal(llamadas.length, 1);
 });
 
-function almacenFalso(token = null) {
-  const datos = { leidos: [], token };
+function almacenFalso(token = null, renovado = null) {
+  const datos = { leidos: [], token, renovado };
   const llamadas = [];
   return { datos, llamadas, almacen: {
     async leidos(uid) { llamadas.push(['leidos', uid]); return datos.leidos; },
@@ -238,17 +238,28 @@ function almacenFalso(token = null) {
     async token(uid) { llamadas.push(['token', uid]); return datos.token; },
     async guardarToken(uid, t) { llamadas.push(['guardarToken', uid]); datos.token = t; },
     async borrarToken(uid) { llamadas.push(['borrarToken', uid]); datos.token = null; },
+    async renovadoEl(uid) { llamadas.push(['renovadoEl', uid]); return datos.renovado; },
+    async marcarRenovado(uid, dia) { llamadas.push(['marcarRenovado', uid, dia]); datos.renovado = dia; },
   } };
 }
-function avisosFalsos(servidor = a.validarEstadoAvisos(estadoServidor())) {
+function avisosFalsos(servidor = a.validarEstadoAvisos(estadoServidor()), { registrado } = {}) {
   const llamadas = [];
-  return { llamadas, avisos: {
+  const avisos = {
     async estado() { llamadas.push(['estado']); return servidor; },
     async configurar(activar) { llamadas.push(['configurar', activar]); return { ...servidor, novedades: activar }; },
     async registrarPush(token, plataforma) { llamadas.push(['registrar', token, plataforma]); return true; },
     async quitarPush(token) { llamadas.push(['quitar', token]); return true; },
     async recientes(limite) { llamadas.push(['recientes', limite]); return []; },
-  } };
+  };
+  // Sin `registrado`, como hoy: la base todavía no tiene mi_aviso_push_registrado.
+  if (registrado !== undefined) {
+    avisos.pushRegistrado = async (token) => {
+      llamadas.push(['registrado', token]);
+      if (registrado instanceof Error) throw registrado;
+      return registrado;
+    };
+  }
+  return { llamadas, avisos };
 }
 function sdkProhibido() {
   return { capacidad: false,
@@ -332,4 +343,192 @@ test('el permiso de novedades solo se activa con el texto vigente; la baja siemp
   const vigente = a.validarEstadoAvisos(estadoServidor());
   assert.equal((await g.alternarNovedades(true, vigente)).novedades, true);
   assert.deepEqual(f.llamadas.filter(([n]) => n === 'configurar'), [['configurar', false], ['configurar', true]]);
+});
+
+/* ---------------------------------------------------------------------
+   ¿Sigue este móvil registrado? public.mi_aviso_push_registrado (opcional)
+   --------------------------------------------------------------------- */
+test('mi_aviso_push_registrado: con el cliente de la cuenta; sin la función, un error o algo raro es «desconocido»', async () => {
+  const casos = [
+    [{ data: true, error: null }, true],
+    [{ data: false, error: null }, false],
+    // Antes de que la base la tenga: PostgREST responde 404 (PGRST202).
+    [{ data: null, error: { code: 'PGRST202', message: 'Could not find the function' }, status: 404 }, null],
+    [{ data: null, error: { code: '42501' }, status: 401 }, null],
+    [{ data: null, error: { code: '500' }, status: 500 }, null],
+    [{ data: 'false', error: null }, null],
+    [{ data: null, error: null }, null],
+    [{ data: [true], error: null }, null],
+  ];
+  for (const [respuesta, esperado] of casos) {
+    const f = cuentaFalsa({ respuestas: { mi_aviso_push_registrado: respuesta } });
+    const avisos = a.crearAvisosCuenta({ cuenta: f.cuenta, usuarioId: UID });
+    assert.equal(await avisos.pushRegistrado(TOKEN), esperado, JSON.stringify(respuesta));
+    assert.deepEqual(f.llamadas, [['clienteCatalogo'], ['mi_aviso_push_registrado', { p_token: TOKEN }]]);
+    avisos.destruir();
+  }
+  const f = cuentaFalsa({ respuestas: { mi_aviso_push_registrado: { data: true, error: null } } });
+  const avisos = a.crearAvisosCuenta({ cuenta: f.cuenta, usuarioId: UID });
+  await assert.rejects(avisos.pushRegistrado('token-raro'), /avisos_parametro_invalido/);
+  assert.equal(f.llamadas.length, 0, 'un token inválido no llega al servidor');
+  f.cambiarUsuario(OTRO);
+  await assert.rejects(avisos.pushRegistrado(TOKEN), /cancelada/, 'con otra cuenta no se responde por la anterior');
+});
+
+test('Perfil con el código 24: si la base dice que el móvil ya no está, no se enseña como activo', async () => {
+  const activo = a.validarEstadoAvisos(estadoServidor({ push_activo: true }));
+  const permitido = { capacidad: true, consultar: async () => ({ ok: true, estado: 'permitido' }),
+    obtenerToken: async () => ({ ok: true, estado: 'permitido', token: TOKEN, plataforma: 'android' }) };
+  // La base dice false: se puede volver a activar, y se vuelve a registrar.
+  const { almacen, datos } = almacenFalso(TOKEN);
+  const perdido = avisosFalsos(activo, { registrado: false });
+  const g = a.crearGestorAvisosNovedades({ avisosCuenta: perdido.avisos, usuarioId: UID, almacen, push: permitido });
+  assert.deepEqual(await g.estadoMovil(activo), { estado: 'no-registrado', activo: false, puedeActivar: true, puedeDesactivar: false });
+  assert.deepEqual(perdido.llamadas, [['registrado', TOKEN]]);
+  assert.deepEqual(await g.renovarMovil(activo), { renovado: false, motivo: 'no-registrado' },
+    'la renovación no vuelve a apuntar un móvil que la base ya no tiene');
+  assert.equal(perdido.llamadas.some(([n]) => n === 'registrar'), false);
+  assert.deepEqual(await g.activarMovil(activo), { ok: true, estado: 'activo' });
+  assert.deepEqual(perdido.llamadas.filter(([n]) => n === 'registrar'), [['registrar', TOKEN, 'android']]);
+  assert.equal(datos.token, TOKEN);
+  // La base dice true o no lo sabe (sin la función, error): activo, como hasta ahora.
+  for (const registrado of [true, null, undefined, new Error('avisos_no_disponibles')]) {
+    const f = avisosFalsos(activo, { registrado });
+    const g2 = a.crearGestorAvisosNovedades({ avisosCuenta: f.avisos, usuarioId: UID, almacen: almacenFalso(TOKEN).almacen, push: permitido });
+    assert.deepEqual(await g2.estadoMovil(activo), { estado: 'activo', activo: true, puedeActivar: false, puedeDesactivar: true }, String(registrado));
+  }
+  // Sin token, sin permiso o con la base en pausa no se pregunta.
+  for (const [token, consultar, servidor] of [[null, permitido.consultar, activo],
+    [TOKEN, async () => ({ ok: false, estado: 'denegado' }), activo],
+    [TOKEN, permitido.consultar, a.validarEstadoAvisos(estadoServidor())]]) {
+    const f = avisosFalsos(activo, { registrado: false });
+    const g3 = a.crearGestorAvisosNovedades({ avisosCuenta: f.avisos, usuarioId: UID, almacen: almacenFalso(token).almacen,
+      push: { ...permitido, consultar } });
+    assert.notEqual((await g3.estadoMovil(servidor)).estado, 'no-registrado');
+    assert.equal(f.llamadas.some(([n]) => n === 'registrado'), false);
+  }
+  // Con la 1.4.1, nada.
+  const f141 = avisosFalsos(activo, { registrado: false });
+  const g141 = a.crearGestorAvisosNovedades({ avisosCuenta: f141.avisos, usuarioId: UID, almacen: almacenFalso(TOKEN).almacen, push: sdkProhibido() });
+  assert.equal((await g141.estadoMovil(activo)).estado, 'requiere-version');
+  assert.deepEqual(f141.llamadas, []);
+});
+
+/* ---------------------------------------------------------------------
+   Renovación: la base borra los móviles que no se renuevan en 180 días
+   --------------------------------------------------------------------- */
+function renovacion({ capacidad = true, consulta = { ok: true, estado: 'permitido' }, token = TOKEN, renovado = null,
+  servidor = estadoServidor({ push_activo: true }), registrado, tokenSistema = TOKEN, plazoRenovacion } = {}) {
+  const reloj = { ahora: new Date('2026-11-05T09:00:00Z') };
+  const almacen = almacenFalso(token, renovado);
+  const f = avisosFalsos(a.validarEstadoAvisos(servidor), { registrado });
+  const sdk = [];
+  const push = capacidad ? { capacidad: true,
+    async consultar() { sdk.push('consultar'); return consulta; },
+    async obtenerToken(opciones) { sdk.push(['token', opciones]); return { ok: true, estado: 'permitido', token: tokenSistema, plataforma: 'android' }; },
+  } : sdkProhibido();
+  const g = a.crearGestorAvisosNovedades({ avisosCuenta: f.avisos, usuarioId: UID, almacen: almacen.almacen, push,
+    ahora: () => reloj.ahora, ...(plazoRenovacion ? { plazoRenovacion } : {}) });
+  return { g, f, sdk, push, reloj, almacen, servidor: a.validarEstadoAvisos(servidor) };
+}
+
+test('renovación: con todo en regla vuelve a registrar el token actual una vez al día y sin pedir permiso', async () => {
+  const r = renovacion();
+  assert.deepEqual(await r.g.renovarMovil(r.servidor), { renovado: true });
+  assert.deepEqual(r.f.llamadas.filter(([n]) => n === 'registrar'), [['registrar', TOKEN, 'android']]);
+  assert.deepEqual(r.sdk, ['consultar', ['token', { solicitarPermiso: false }]], 'nunca pide permiso al sistema');
+  assert.equal(r.almacen.datos.renovado, '2026-11-05', 'marca de fecha por cuenta');
+  assert.ok(r.almacen.llamadas.some(([n, uid]) => n === 'marcarRenovado' && uid === UID));
+  // El mismo día, ni SDK ni base, aunque se recargue muchas veces.
+  r.reloj.ahora = new Date('2026-11-05T23:59:00Z');
+  for (let i = 0; i < 3; i++) assert.deepEqual(await r.g.renovarMovil(r.servidor), { renovado: false, motivo: 'hecho-hoy' });
+  assert.equal(r.f.llamadas.filter(([n]) => n === 'registrar').length, 1);
+  assert.equal(r.sdk.length, 2);
+  // Al día siguiente, otra vez.
+  r.reloj.ahora = new Date('2026-11-06T00:01:00Z');
+  assert.deepEqual(await r.g.renovarMovil(r.servidor), { renovado: true });
+  assert.equal(r.f.llamadas.filter(([n]) => n === 'registrar').length, 2);
+  assert.equal(r.almacen.datos.renovado, '2026-11-06');
+  // Dos cargas a la vez no registran dos veces.
+  r.reloj.ahora = new Date('2026-11-07T08:00:00Z');
+  const dobles = await Promise.all([r.g.renovarMovil(r.servidor), r.g.renovarMovil(r.servidor)]);
+  assert.deepEqual(dobles, [{ renovado: true }, { renovado: false, motivo: 'hecho-hoy' }]);
+  assert.equal(r.f.llamadas.filter(([n]) => n === 'registrar').length, 3);
+});
+
+test('renovación: sin capacidad nativa, sin push en la base, sin permiso, sin token o con la base diciendo que no, no llama', async () => {
+  const casos = [
+    ['1.4.1 (código 23)', { capacidad: false }, 'requiere-version'],
+    ['push apagado en la base', { servidor: estadoServidor({ push_activo: false }) }, 'servicio-pendiente'],
+    ['permiso por pedir', { consulta: { ok: false, estado: 'disponible' } }, 'sin-permiso'],
+    ['permiso denegado con token guardado', { consulta: { ok: false, estado: 'denegado' } }, 'sin-permiso'],
+    ['sin token guardado', { token: null }, 'disponible'],
+    ['emulador', { consulta: { ok: false, estado: 'emulador' } }, 'no-disponible'],
+    ['la base dice que ya no está', { registrado: false }, 'no-registrado'],
+    ['ya renovado hoy', { renovado: '2026-11-05' }, 'hecho-hoy'],
+  ];
+  for (const [nombre, opciones, motivo] of casos) {
+    const r = renovacion(opciones);
+    assert.deepEqual(await r.g.renovarMovil(r.servidor), { renovado: false, motivo }, nombre);
+    assert.equal(r.f.llamadas.some(([n]) => n === 'registrar'), false, nombre);
+    assert.equal(r.sdk.some((x) => Array.isArray(x) && x[0] === 'token'), false, `${nombre}: no se pide token`);
+    assert.equal(r.almacen.datos.renovado, opciones.renovado ?? null, `${nombre}: sin marca nueva`);
+  }
+  // Con la 1.4.1 ni siquiera se lee el almacén.
+  const v141 = renovacion({ capacidad: false });
+  await v141.g.renovarMovil(v141.servidor);
+  assert.deepEqual(v141.almacen.llamadas, []);
+});
+
+test('renovación: si el sistema cambió el token, se guarda el nuevo y se quita el anterior', async () => {
+  const r = renovacion({ tokenSistema: TOKEN_NUEVO });
+  assert.deepEqual(await r.g.renovarMovil(r.servidor), { renovado: true });
+  assert.deepEqual(r.f.llamadas.filter(([n]) => n === 'registrar' || n === 'quitar'),
+    [['registrar', TOKEN_NUEVO, 'android'], ['quitar', TOKEN]]);
+  assert.equal(r.almacen.datos.token, TOKEN_NUEVO);
+});
+
+test('renovación: un fallo no la repite el mismo día y no se cruza con «desactivar»', async () => {
+  const r = renovacion();
+  r.f.avisos.registrarPush = async () => { r.f.llamadas.push(['registrar-fallo']); throw new Error('avisos_no_disponibles'); };
+  await assert.rejects(r.g.renovarMovil(r.servidor), /avisos_no_disponibles/);
+  assert.deepEqual(await r.g.renovarMovil(r.servidor), { renovado: false, motivo: 'hecho-hoy' }, 'como mucho un intento al día');
+  assert.equal(r.f.llamadas.filter(([n]) => n === 'registrar-fallo').length, 1);
+  // Desactivar mientras se renueva: va después, y el móvil queda fuera.
+  const d = renovacion();
+  let soltar;
+  d.f.avisos.registrarPush = (token) => new Promise((resolver) => { soltar = () => { d.f.llamadas.push(['registrar', token]); resolver(true); }; });
+  const renovando = d.g.renovarMovil(d.servidor);
+  const desactivando = d.g.desactivarMovil();
+  for (let i = 0; i < 5; i++) await new Promise((resolver) => setImmediate(resolver));
+  assert.equal(typeof soltar, 'function', 'la renovación ha llegado a registrar');
+  assert.equal(d.f.llamadas.some(([n]) => n === 'quitar'), false, 'desactivar espera a la renovación en curso');
+  soltar();
+  assert.deepEqual(await renovando, { renovado: true });
+  assert.deepEqual(await desactivando, { ok: true });
+  assert.deepEqual(d.f.llamadas.filter(([n]) => n === 'registrar' || n === 'quitar'), [['registrar', TOKEN], ['quitar', TOKEN]]);
+  assert.equal(d.almacen.datos.token, null);
+  d.reloj.ahora = new Date('2026-11-09T08:00:00Z');
+  assert.deepEqual(await d.g.renovarMovil(d.servidor), { renovado: false, motivo: 'disponible' }, 'desactivado, ya no se renueva');
+});
+
+test('renovación: si el sistema no contesta, suelta a los interruptores y no registra tarde', async () => {
+  const r = renovacion({ plazoRenovacion: 30 });
+  let entregar;
+  r.push.obtenerToken = () => new Promise((resolver) => { entregar = resolver; });
+  await assert.rejects(r.g.renovarMovil(r.servidor), /plazo/);
+  assert.deepEqual(await r.g.desactivarMovil(), { ok: true }, 'desactivar no se queda esperando');
+  assert.deepEqual(r.f.llamadas.filter(([n]) => n === 'quitar'), [['quitar', TOKEN]]);
+  entregar({ ok: true, estado: 'permitido', token: TOKEN, plataforma: 'android' });
+  for (let i = 0; i < 5; i++) await new Promise((resolver) => setImmediate(resolver));
+  assert.equal(r.f.llamadas.some(([n]) => n === 'registrar'), false, 'el token que llega tarde no vuelve a apuntar el móvil');
+  assert.equal(r.almacen.datos.token, null);
+});
+
+test('al activar el móvil queda apuntado como renovado ese día', async () => {
+  const r = renovacion({ token: null });
+  assert.deepEqual(await r.g.activarMovil(r.servidor), { ok: true, estado: 'activo' });
+  assert.equal(r.almacen.datos.renovado, '2026-11-05');
+  assert.deepEqual(await r.g.renovarMovil(r.servidor), { renovado: false, motivo: 'hecho-hoy' });
+  assert.equal(r.f.llamadas.filter(([n]) => n === 'registrar').length, 1);
 });

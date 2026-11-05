@@ -544,6 +544,8 @@ export default function App() {
             try {
               await borrarDatosDispositivo();
               setRevisionCartera(actual => actual + 1);
+              // Leídos y token de este móvil pueden haber cambiado.
+              if (AVISOS_NOVEDADES_ACTIVOS) novedadesCuenta.recargar();
               setRadar([]); setFuera([]); setOfertas([]); setSecundario([]); setEnCamino([]);
               setExclusionesOfertas([]); setSigo([]); setAvisos([]); setGuardadas([]);
               setEstadoDatos(MODO_LOCAL
@@ -774,7 +776,7 @@ export default function App() {
               tarjetaAvisos={AVISOS_NOVEDADES_ACTIVOS ? (
                 <TarjetaAvisosInicio avisos={novedadesCuenta.avisos} leidos={novedadesCuenta.leidos}
                   cargando={novedadesCuenta.cargando} error={novedadesCuenta.errorCarga}
-                  onAbrir={abrirAvisoInicio} onMarcarLeidos={novedadesCuenta.marcarLeidos} />
+                  onAbrir={abrirAvisoInicio} onMarcarLeidos={novedadesCuenta.marcarTodosLeidos} />
               ) : null}
             />
           ) : null}

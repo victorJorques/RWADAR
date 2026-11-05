@@ -114,6 +114,16 @@ test('con la 1.4.2 (código 24) la consulta es pasiva y el permiso solo se pide 
   } finally { e.restaurar(); }
 });
 
+test('con la 1.4.2 y el permiso ya concedido, la renovación obtiene el token actual sin abrir el diálogo', async () => {
+  const e = avisos({ runtime: '1.4.2(24)', sistema: sdk({ permiso: { granted: true } }) });
+  try {
+    assert.deepEqual(await e.modulo.obtenerTokenNovedades({ solicitarPermiso: false }),
+      { ok: true, estado: 'permitido', token: TOKEN, plataforma: 'android' });
+    assert.equal(e.sistema.llamadas.some(([n]) => n === 'solicitar'), false, 'no se pide permiso');
+    assert.equal(e.sistema.llamadas.filter(([n]) => n === 'token').length, 1);
+  } finally { e.restaurar(); }
+});
+
 test('con la 1.4.2 un permiso denegado, un token raro o un fallo del SDK no dan token', async () => {
   for (const [opciones, estado] of [
     [{ permiso: { granted: false, canAskAgain: false } }, 'denegado'],
@@ -177,7 +187,7 @@ function datos(inicial = {}) {
   return { datos: e.modulo, mapa };
 }
 
-test('avisos leídos y token del móvil se guardan por cuenta y «Borrar datos del dispositivo» los quita', async () => {
+test('avisos leídos, token y renovación del móvil se guardan por cuenta; sin cuenta abierta el token no se borra a ciegas', async () => {
   const { datos: d, mapa } = datos({ 'rwadar.editorial.avisos.leidos.v1': '["bienvenida"]', 'otra.app': 'conservar' });
   assert.deepEqual(await d.avisosLeidos(UID), [], 'no se heredan lecturas sin cuenta');
   assert.deepEqual(await d.marcarAvisosLeidos(UID, ['bienvenida', '7', '7', '<script>', 7, '0']), ['bienvenida', '7']);
@@ -194,15 +204,97 @@ test('avisos leídos y token del móvil se guardan por cuenta y «Borrar datos d
   assert.equal(await d.tokenPushNovedades(OTRO), null, 'un valor manipulado no se usa como token');
   mapa.set('rwadar.editorial.avisos.leidos.v1:' + OTRO, '{roto');
   assert.deepEqual(await d.avisosLeidos(OTRO), []);
-  await d.borrarDatosDispositivo();
-  assert.deepEqual([...mapa.keys()].sort(), ['otra.app', 'rwadar.editorial.avisos.leidos.v1'].sort());
-  await d.guardarTokenPushNovedades(UID, TOKEN);
+  // Día de la última renovación del registro, por cuenta y con formato fijo.
+  assert.equal(await d.renovacionPushNovedades(UID), null);
+  await d.marcarRenovacionPushNovedades(UID, '2026-11-05');
+  assert.equal(await d.renovacionPushNovedades(UID), '2026-11-05');
+  assert.equal(await d.renovacionPushNovedades(OTRO), null);
+  for (const raro of ['05/11/2026', '2026-11-05T10:00', '', null]) await assert.rejects(d.marcarRenovacionPushNovedades(UID, raro));
+  await assert.rejects(d.marcarRenovacionPushNovedades('no-uuid', '2026-11-05'));
+  mapa.set('rwadar.editorial.avisos.renovado.v1:' + OTRO, 'ayer');
+  assert.equal(await d.renovacionPushNovedades(OTRO), null);
+  // Sin cuenta abierta no se puede quitar el token de la base: su clave se
+  // conserva para quitarlo al entrar y desactivarlas o al cerrar sesión. Una
+  // clave que no guarda un token válido no tiene nada que quitar y se borra.
+  assert.deepEqual(await d.borrarDatosDispositivo(), { ok: true, local: true });
+  assert.deepEqual([...mapa.keys()].sort(),
+    ['otra.app', 'rwadar.editorial.avisos.leidos.v1', 'rwadar.editorial.avisos.push.v1:' + UID].sort());
   await d.borrarTokenPushNovedades(UID);
   assert.equal(await d.tokenPushNovedades(UID), null);
 });
 
-test('las claves nuevas cuentan como datos privados del dispositivo', () => {
+const TOKEN_OTRO = 'ExpoPushToken[zyxwvutsrqponmlk9876]';
+function clienteAvisos(respuesta) {
+  const llamadas = [];
+  return { llamadas, cliente: { async rpc(nombre, args) { llamadas.push([nombre, args]); return respuesta(nombre, args); } } };
+}
+function conDatosDeAvisos(extra = {}) {
+  return datos({
+    ['rwadar.editorial.avisos.push.v1:' + UID]: TOKEN,
+    ['rwadar.editorial.avisos.push.v1:' + OTRO]: TOKEN_OTRO,
+    ['rwadar.editorial.avisos.leidos.v1:' + UID]: '["9"]',
+    ['rwadar.editorial.avisos.renovado.v1:' + UID]: '2026-11-05',
+    ['rwadar.editorial.ofertas.guardadas.v1:' + UID]: '[]',
+    'otra.app': 'conservar',
+    ...extra,
+  });
+}
+
+test('con la cuenta abierta, «Borrar datos del dispositivo» quita el token de la base antes de borrar su clave', async () => {
+  const { datos: d, mapa } = conDatosDeAvisos();
+  const { cliente, llamadas } = clienteAvisos(() => ({ data: true, error: null }));
+  d.configurarAccesoCatalogo(UID, async () => cliente);
+  assert.deepEqual(await d.borrarDatosDispositivo(), { ok: true, local: true });
+  assert.deepEqual(llamadas, [['quitar_aviso_push', { p_token: TOKEN }]], 'solo el token de la cuenta abierta');
+  assert.deepEqual([...mapa.keys()].sort(), ['otra.app', 'rwadar.editorial.avisos.push.v1:' + OTRO].sort(),
+    'el token de otra cuenta del dispositivo se conserva: solo su sesión puede quitarlo');
+  // Si la base ya no lo tenía (false), tampoco queda nada que reintentar.
+  const segundo = conDatosDeAvisos();
+  segundo.datos.configurarAccesoCatalogo(UID, async () => clienteAvisos(() => ({ data: false, error: null })).cliente);
+  await segundo.datos.borrarDatosDispositivo();
+  assert.equal(segundo.mapa.has('rwadar.editorial.avisos.push.v1:' + UID), false);
+});
+
+test('si no se puede quitar el token de la base, el borrado sigue y la clave se conserva para reintentarlo', async () => {
+  const fallos = [
+    ['error del servidor', async () => clienteAvisos(() => ({ data: null, error: { code: 'PGRST202', status: 404 } })).cliente],
+    ['respuesta rara', async () => clienteAvisos(() => ({ data: 'sí', error: null })).cliente],
+    ['sesión caducada', async () => { throw new Error('sin_sesion'); }],
+    ['sin conexión', async () => clienteAvisos(() => { throw new Error('red'); }).cliente],
+  ];
+  for (const [motivo, obtenerCliente] of fallos) {
+    const { datos: d, mapa } = conDatosDeAvisos();
+    d.configurarAccesoCatalogo(UID, obtenerCliente);
+    assert.deepEqual(await d.borrarDatosDispositivo(), { ok: true, local: true }, motivo);
+    assert.deepEqual([...mapa.keys()].sort(), ['otra.app', 'rwadar.editorial.avisos.push.v1:' + OTRO,
+      'rwadar.editorial.avisos.push.v1:' + UID].sort(), motivo);
+    assert.equal(await d.tokenPushNovedades(UID), TOKEN, motivo);
+  }
+  // Un servidor que no contesta no bloquea el borrado: plazo corto.
+  const { datos: d, mapa } = conDatosDeAvisos();
+  const colgado = { rpc: () => new Promise(() => {}) };
+  d.configurarAccesoCatalogo(UID, async () => colgado);
+  const inicio = Date.now();
+  assert.deepEqual(await d.borrarDatosDispositivo({ plazoQuitarPush: 30 }), { ok: true, local: true });
+  assert.ok(Date.now() - inicio < 2000, 'no espera al servidor');
+  assert.equal(mapa.get('rwadar.editorial.avisos.push.v1:' + UID), TOKEN);
+  assert.equal(mapa.has('rwadar.editorial.avisos.leidos.v1:' + UID), false);
+  // Al reintentarlo con conexión, se quita de la base y ya se borra.
+  const { cliente, llamadas } = clienteAvisos(() => ({ data: true, error: null }));
+  d.configurarAccesoCatalogo(UID, async () => cliente);
+  await d.borrarDatosDispositivo();
+  assert.deepEqual(llamadas, [['quitar_aviso_push', { p_token: TOKEN }]]);
+  assert.equal(mapa.has('rwadar.editorial.avisos.push.v1:' + UID), false);
+  // Sin avisos guardados no se llama a nada.
+  const vacio = datos({ 'otra.app': 'conservar' });
+  vacio.datos.configurarAccesoCatalogo(UID, async () => assert.fail('sin token no se abre el cliente'));
+  assert.deepEqual(await vacio.datos.borrarDatosDispositivo(), { ok: true, local: true });
+});
+
+test('las claves nuevas cuentan como datos privados del dispositivo; la del token, aparte', () => {
   const { clavesPrivadasDispositivo } = require('../lib/acceso-obligatorio');
-  const propias = [`rwadar.editorial.avisos.leidos.v1:${UID}`, `rwadar.editorial.avisos.push.v1:${UID}`];
-  assert.deepEqual(clavesPrivadasDispositivo([...propias, 'rwadar.editorial.avisos.push.v1', `rwadar.editorial.avisos.otro.v1:${UID}`]), propias);
+  const propias = [`rwadar.editorial.avisos.leidos.v1:${UID}`, `rwadar.editorial.avisos.renovado.v1:${UID}`];
+  assert.deepEqual(clavesPrivadasDispositivo([...propias, `rwadar.editorial.avisos.push.v1:${UID}`,
+    'rwadar.editorial.avisos.push.v1', 'rwadar.editorial.avisos.renovado.v1', `rwadar.editorial.avisos.otro.v1:${UID}`]), propias,
+  'el token de este móvil solo se borra después de quitarlo de la base (lib/datos.js)');
 });

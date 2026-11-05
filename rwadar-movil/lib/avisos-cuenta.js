@@ -31,6 +31,8 @@ const ID_AVISO = /^(?:bienvenida|[1-9]\d{0,18})$/;
 const VERSION_TEXTO = /^[a-z0-9]+(?:-[a-z0-9]+){0,12}$/;
 const CONTROL = /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/;
 const MAX_AVISOS = 50;
+// Lo más que una renovación en segundo plano retiene a los interruptores.
+const PLAZO_RENOVACION_MS = 20000;
 
 function fallo(code, status) {
   const error = new Error(code);
@@ -206,6 +208,19 @@ function crearAvisosCuenta({ cuenta, usuarioId, vigente = () => true } = {}) {
       if (typeof quitado !== 'boolean') throw fallo('avisos_respuesta_invalida');
       return quitado;
     },
+    /* ¿Sigue este token en la cuenta? Lo dice public.mi_aviso_push_registrado
+       cuando la base la tenga. Sin ella (404), con un error o con una
+       respuesta que no es booleana, «desconocido» (null): no se deduce nada. */
+    async pushRegistrado(token) {
+      if (!tokenPushValido(token)) throw fallo('avisos_parametro_invalido');
+      try {
+        const registrado = await rpc('mi_aviso_push_registrado', { p_token: token });
+        return typeof registrado === 'boolean' ? registrado : null;
+      } catch (error) {
+        if (error?.code === 'cancelada') throw error;
+        return null;
+      }
+    },
     async recientes(limite = 10) {
       if (!Number.isInteger(limite) || limite < 1 || limite > MAX_AVISOS) throw fallo('avisos_parametro_invalido');
       return validarAvisosRecientes(await rpc('mis_avisos_recientes', { p_limite: limite }), limite);
@@ -228,12 +243,35 @@ async function quitarPushConCliente(cliente, token) {
    Inicio. Sin React ni SDK: `push` y `almacen` llegan inyectados.
    - push.capacidad: binario con código >= 24 (sin eso no se llama al SDK);
    - push.consultar(): permiso del sistema, sin pedirlo;
-   - push.obtenerToken({ solicitarPermiso }): permiso y token, tras una
-     pulsación explícita;
-   - almacen: avisos leídos y token de este móvil, por cuenta. */
-function crearGestorAvisosNovedades({ avisosCuenta, usuarioId, push, almacen } = {}) {
+   - push.obtenerToken({ solicitarPermiso }): permiso y token; solo pide el
+     permiso tras una pulsación explícita;
+   - almacen: avisos leídos, token de este móvil y día de la última
+     renovación, por cuenta;
+   - ahora(): reloj, inyectable en las pruebas. */
+function crearGestorAvisosNovedades({ avisosCuenta, usuarioId, push, almacen, ahora = () => new Date(),
+  plazoRenovacion = PLAZO_RENOVACION_MS } = {}) {
   if (!avisosCuenta || !UUID.test(usuarioId || '') || !push || !almacen) throw fallo('sin_sesion', 401);
   const capacidad = push.capacidad === true;
+  // Activar, desactivar y renovar van de una en una: una renovación en curso
+  // no puede volver a apuntar un móvil que se acaba de desactivar. La
+  // renovación tiene plazo para no dejar esperando a los interruptores.
+  let cola = Promise.resolve();
+  function enCola(tarea) {
+    const resultado = cola.then(tarea, tarea);
+    cola = resultado.catch(() => {});
+    return resultado;
+  }
+  const hoy = () => ahora().toISOString().slice(0, 10);
+
+  async function registradoEnServidor(token) {
+    if (typeof avisosCuenta.pushRegistrado !== 'function') return null;
+    try {
+      return await avisosCuenta.pushRegistrado(token);
+    } catch (error) {
+      if (error?.code === 'cancelada') throw error;
+      return null;
+    }
+  }
 
   async function estadoMovil(servidor) {
     // Por debajo del código 24 no se toca el SDK de notificaciones.
@@ -248,12 +286,51 @@ function crearGestorAvisosNovedades({ avisosCuenta, usuarioId, push, almacen } =
     if (['no-compatible', 'emulador', 'expo-go', 'configuracion-pendiente', 'desactivados', 'requiere-version'].includes(estadoSistema)) {
       return { estado: 'no-disponible', motivo: estadoSistema, activo, puedeActivar: false, puedeDesactivar: activo };
     }
+    if (activo && estadoSistema !== 'permitido') {
+      return { estado: 'sin-permiso', activo: true, puedeActivar: false, puedeDesactivar: true };
+    }
     if (activo) {
-      return { estado: estadoSistema === 'permitido' ? 'activo' : 'sin-permiso', activo: true,
-        puedeActivar: false, puedeDesactivar: true };
+      // La base borra los móviles que no se renuevan en 180 días y los que
+      // Expo da por perdidos. Si dice que este ya no está, no se enseña como
+      // activo y se puede volver a activar. Si no lo sabe, se confía en el token.
+      if (await registradoEnServidor(token) === false) {
+        return { estado: 'no-registrado', activo: false, puedeActivar: true, puedeDesactivar: false };
+      }
+      return { estado: 'activo', activo: true, puedeActivar: false, puedeDesactivar: true };
     }
     if (estadoSistema === 'denegado') return { estado: 'denegado', activo: false, puedeActivar: false, puedeDesactivar: false };
     return { estado: 'disponible', activo: false, puedeActivar: true, puedeDesactivar: false };
+  }
+
+  /* La base borra los móviles cuyo registro no se renueva en 180 días. Con
+     la cuenta abierta, el binario 1.4.2, el push encendido en la base, el
+     permiso del sistema ya concedido y el móvil activo, se vuelve a registrar
+     el token actual como mucho una vez al día. Nunca pide permiso. */
+  async function renovar(servidor, movil, intento) {
+    // Por debajo del código 24 no se toca el SDK ni el almacén.
+    if (!capacidad) return { renovado: false, motivo: 'requiere-version' };
+    if (!servidor?.pushActivo) return { renovado: false, motivo: 'servicio-pendiente' };
+    const dia = hoy();
+    if (await almacen.renovadoEl(usuarioId) === dia) return { renovado: false, motivo: 'hecho-hoy' };
+    const estado = movil || await estadoMovil(servidor);
+    if (estado?.estado !== 'activo') return { renovado: false, motivo: estado?.estado || 'error' };
+    const anterior = await almacen.token(usuarioId);
+    if (!tokenPushValido(anterior)) return { renovado: false, motivo: 'sin-token' };
+    // Se apunta antes de llamar: un intento al día como mucho, salga como salga.
+    await almacen.marcarRenovado(usuarioId, dia);
+    const resultado = await push.obtenerToken({ solicitarPermiso: false });
+    if (!resultado?.ok || !tokenPushValido(resultado.token)) {
+      return { renovado: false, motivo: resultado?.estado || 'error' };
+    }
+    // Si se pasó del plazo, los interruptores ya siguieron: no se registra tarde.
+    if (!intento.vigente) return { renovado: false, motivo: 'plazo' };
+    await avisosCuenta.registrarPush(resultado.token, resultado.plataforma);
+    // Si el sistema cambió el token, el anterior deja de servir.
+    if (resultado.token !== anterior) {
+      await almacen.guardarToken(usuarioId, resultado.token);
+      try { await avisosCuenta.quitarPush(anterior); } catch { /* Lo limpia la base a los 180 días. */ }
+    }
+    return { renovado: true };
   }
 
   return {
@@ -267,27 +344,40 @@ function crearGestorAvisosNovedades({ avisosCuenta, usuarioId, push, almacen } =
       if (activar === true && servidor?.textoVigente !== true) throw fallo('avisos_texto_desfasado');
       return avisosCuenta.configurar(activar === true);
     },
-    async activarMovil(servidor) {
-      if (!capacidad) return { ok: false, estado: 'requiere-version' };
-      if (!servidor?.pushActivo) return { ok: false, estado: 'servicio-pendiente' };
-      const resultado = await push.obtenerToken({ solicitarPermiso: true });
-      if (!resultado?.ok || !tokenPushValido(resultado.token)) {
-        return { ok: false, estado: resultado?.estado || 'error' };
-      }
-      const anterior = await almacen.token(usuarioId);
-      await avisosCuenta.registrarPush(resultado.token, resultado.plataforma);
-      await almacen.guardarToken(usuarioId, resultado.token);
-      // Si el sistema cambió el token, el anterior deja de servir.
-      if (tokenPushValido(anterior) && anterior !== resultado.token) {
-        try { await avisosCuenta.quitarPush(anterior); } catch { /* Lo limpia la base a los 180 días. */ }
-      }
-      return { ok: true, estado: 'activo' };
+    activarMovil(servidor) {
+      return enCola(async () => {
+        if (!capacidad) return { ok: false, estado: 'requiere-version' };
+        if (!servidor?.pushActivo) return { ok: false, estado: 'servicio-pendiente' };
+        const resultado = await push.obtenerToken({ solicitarPermiso: true });
+        if (!resultado?.ok || !tokenPushValido(resultado.token)) {
+          return { ok: false, estado: resultado?.estado || 'error' };
+        }
+        const anterior = await almacen.token(usuarioId);
+        await avisosCuenta.registrarPush(resultado.token, resultado.plataforma);
+        await almacen.guardarToken(usuarioId, resultado.token);
+        // Recién registrado: hoy no hace falta renovarlo.
+        try { await almacen.marcarRenovado?.(usuarioId, hoy()); } catch { /* Se renovará otro día. */ }
+        // Si el sistema cambió el token, el anterior deja de servir.
+        if (tokenPushValido(anterior) && anterior !== resultado.token) {
+          try { await avisosCuenta.quitarPush(anterior); } catch { /* Lo limpia la base a los 180 días. */ }
+        }
+        return { ok: true, estado: 'activo' };
+      });
     },
-    async desactivarMovil() {
-      const token = await almacen.token(usuarioId);
-      if (tokenPushValido(token)) await avisosCuenta.quitarPush(token);
-      await almacen.borrarToken(usuarioId);
-      return { ok: true };
+    desactivarMovil() {
+      return enCola(async () => {
+        const token = await almacen.token(usuarioId);
+        if (tokenPushValido(token)) await avisosCuenta.quitarPush(token);
+        await almacen.borrarToken(usuarioId);
+        return { ok: true };
+      });
+    },
+    renovarMovil(servidor, movil = null) {
+      return enCola(() => new Promise((resolver, rechazar) => {
+        const intento = { vigente: true };
+        const reloj = setTimeout(() => { intento.vigente = false; rechazar(fallo('plazo')); }, plazoRenovacion);
+        renovar(servidor, movil, intento).then(resolver, rechazar).finally(() => clearTimeout(reloj));
+      }));
     },
     async cargarRecientes(limite = 10) {
       const [avisos, leidos] = await Promise.all([avisosCuenta.recientes(limite), almacen.leidos(usuarioId)]);
