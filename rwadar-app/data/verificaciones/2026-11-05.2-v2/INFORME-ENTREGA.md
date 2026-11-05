@@ -145,8 +145,9 @@ niega y no toca nada; así el repositorio sigue casando con lo publicado.
 
 ## 6. Pruebas
 
-- **`comprobar-entrega.mjs` (PGlite, sin red): correcto.** Comprueba 22 cosas y
-  10 casos de fallo; en cada fallo, nada queda a medias (`pruebas-locales.json`).
+- **`comprobar-entrega.mjs` (PGlite, sin red): correcto.** Son 22 pruebas: 12 de
+  funcionamiento y 10 casos de fallo; en cada fallo, nada queda a medias
+  (`pruebas-locales.json`).
   - La cadena de producción, del 22/10 a la 2026-11-05, deja publicada la
     `cede1f27`.
   - Antes de aplicar, PGlite enseña lo mismo que la lectura como visitante.
