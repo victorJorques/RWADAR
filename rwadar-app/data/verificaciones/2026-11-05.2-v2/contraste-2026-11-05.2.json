@@ -8,7 +8,7 @@
   "archivos": {
     "cambios-plataformas.json": "95a72c8319279cd7259bd2f4d2bb9675699e6cb1a001fadbf745ce7bc564901c",
     "cambios-radar.json": "a8c746ba98bc3957290c9eca2c2b053df338678c9237d28fef28978998a14122",
-    "comprobacion-retiradas.json": "c62ed90983e14752708f743502df53f21d5481edf6e50dd2e0418d29f332b19c"
+    "comprobacion-retiradas.json": "0b744739cac9d19c8d55c8407e01bdca573f0c1845475970d6d4a104d53340d1"
   },
   "cuentas": {
     "plataformas": 25,
@@ -74,7 +74,7 @@
       "retirada": "casa-de-outeiro",
       "titulo": "Casa de Outeiro",
       "coleccion": "en_camino",
-      "texto": "Retirada el 05/11/2026: la campaña en Alius terminó el 31/10/2026 sin ampliación publicada en la plataforma, con 1.121.000 € de un mínimo de 2.000.000 €."
+      "texto": "Retirada el 05/11/2026: la campaña en Alius terminó el 31/10/2026 sin ampliación registrada en la campaña, con 1.121.000 € de un mínimo de 2.000.000 €."
     }
   ],
   "sinCambios": [

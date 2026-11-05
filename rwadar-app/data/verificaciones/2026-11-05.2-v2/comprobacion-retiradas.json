@@ -10,7 +10,7 @@
     "ordenDelCiclo": "Arregla todo, no dejes nada para mañana",
     "nota": "Es una decisión expresa de Víctor. No se hizo una ronda de revisores escépticos como en la 2026-11-03.6: el precedente la usaba para decidir si retirar; aquí lo decide Víctor y este archivo deja el motivo y la fuente de cada una."
   },
-  "criterioComun": "Campaña de emisión primaria con el plazo vencido y sin prórroga publicada ni registrada, muy lejos de su mínimo. Las dos estaban en «En camino» (sin cifras, estado no_verificable).",
+  "criterioComun": "Campaña de emisión primaria con el plazo vencido y sin prórroga registrada en la campaña, muy lejos de su mínimo. Las dos estaban en «En camino» (sin cifras, estado no_verificable).",
   "retirar": [
     {
       "slug": "terreno-con-arrendamiento-billa",
@@ -57,8 +57,8 @@
       "plataforma": "Alius Capital",
       "coleccion": "en_camino",
       "criterio": "campana_terminada_sin_ampliacion",
-      "motivo": "Alius dio fin a la campaña el 31/10/2026 y el 05/11/2026 no mostraba días restantes ni ampliación (la API no registra ninguna). Llevaba 1.121.000 € de un mínimo de 2.000.000 €. La ficha de datos del emisor del 30/10/2026 cita el 31/03/2027 como fecha límite, pero nada más lo confirma: la pestaña «Proceso» de Alius, la API y la web del emisor siguen diciendo 31/10, y las condiciones de Alius limitan las campañas a 6 meses (del 01/07/2026 al 31/03/2027 hay 9).",
-      "textoRetirada": "Retirada el 05/11/2026: la campaña en Alius terminó el 31/10/2026 sin ampliación publicada en la plataforma, con 1.121.000 € de un mínimo de 2.000.000 €.",
+      "motivo": "Alius dio fin a la campaña el 31/10/2026 y el 05/11/2026 no mostraba días restantes ni ampliación (la API no registra ninguna). Llevaba 1.121.000 € de un mínimo de 2.000.000 €. Dos documentos de la emisión del 30/10/2026, publicados en la plataforma, citan el 31/03/2027 como fecha límite: la Ficha de Datos Fundamentales v5 (documento 263) y el Anexo I y Anexo II v3 (documento 264). Pero la campaña no lo recoge: la pestaña «Proceso» de Alius, la API (extend_days vacío) y la web del emisor siguen en el 31/10, y las condiciones de Alius limitan una campaña a 6 meses (del 01/07/2026 al 31/03/2027 hay 9).",
+      "textoRetirada": "Retirada el 05/11/2026: la campaña en Alius terminó el 31/10/2026 sin ampliación registrada en la campaña, con 1.121.000 € de un mínimo de 2.000.000 €.",
       "fuentes": [
         {
           "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
@@ -80,9 +80,15 @@
         },
         {
           "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
-          "de": "expediente 2026-11-05, claim «plazo» (lo único que habla de otra fecha)",
+          "de": "expediente 2026-11-05, claim «plazo» (Ficha de Datos Fundamentales v5, «26_10_30_Ficha Datos Fundamentales Inversión-capital Casa de Outeiro_v5»); revision-independiente/espana-proximas.md (08:16:00Z). Uno de los dos documentos de la emisión que citan otra fecha; el otro es el 264",
           "horaUtc": "2026-11-05T08:01:18Z",
           "literal": "Periodo de la oferta: Hasta completar suscripción. Fecha límite: 31/03/2027 · Madrid, 30 de octubre del 2026"
+        },
+        {
+          "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/264",
+          "de": "expediente 2026-11-05, documentos (Anexo I y Anexo II v3, «26_10_30_Anexo I y Anexo II Casa de Outeiro_v3», SHA-256 332e32c2…976b); revision-independiente/espana-proximas.md (08:16:00Z, el mismo SHA-256); revisión de la entrega 2026-11-05.2, §6.2. Releído al corregir este registro (17:58:44Z): el mismo SHA-256",
+          "horaUtc": "2026-11-05T08:01:19Z",
+          "literal": "Periodo de la oferta: Hasta completar suscripción. Fecha límite: 31/03/2027 · Madrid, 30 de octubre del 2026 · Plazo para alcanzar el objetivo de la financiación: hasta completar suscripción, con fecha límite el 31/03/2027"
         },
         {
           "url": "https://aliuscap.com/general-terms",

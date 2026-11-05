@@ -91,9 +91,12 @@ el SHA-256 del HTML completo.
   participaciones necesarias: 8.200 €, el 1,64 % del mínimo de 500.000 €.
 - **Casa de Outeiro:** Alius dio fin a la campaña el 31/10/2026 y el 05/11 no
   mostraba días restantes ni ampliación. Tenía 1.121.000 € de un mínimo de
-  2.000.000 €. La ficha de datos del emisor del 30/10 cita el 31/03/2027, pero
-  nada más lo confirma: la pestaña «Proceso», la API y la web del emisor siguen
-  en 31/10, y las condiciones de Alius limitan una campaña a 6 meses.
+  2.000.000 €. En la plataforma hay dos documentos de la emisión del 30/10 que
+  citan el 31/03/2027 como fecha límite: la Ficha de Datos Fundamentales v5
+  (documento 263) y el Anexo I y Anexo II v3 (documento 264). Pero la campaña
+  no lo recoge: la pestaña «Proceso», la API (`extend_days` vacío) y la web del
+  emisor siguen en el 31/10, y las condiciones de Alius limitan una campaña a
+  6 meses.
 
 Los expedientes de la mañana proponían esperar al 15/11 (BILLA) y al 10/11
 (Casa de Outeiro). Víctor decidió no esperar.
