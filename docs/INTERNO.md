@@ -11,7 +11,7 @@ publicar, pendiente de valoración creativa.
 [Vídeo y comprobaciones](VERIFICACION-ANUNCIO-DESCUBRE-2026-10-28.md).
 Los anuncios anteriores rechazados se conservan como historial.
 
-*Actualizado el 3 de noviembre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 5 de noviembre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -57,7 +57,7 @@ en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
 | | Estado |
 |---|---|
 | **Web** | Publicada en **https://rwadar.pages.dev**, actualizada el **28/10** desde la rama aislada, con mapa de activos en Buscar. Consulta pública; cuenta para funciones personales. Login, sesión y salida comprobados con la cuenta de QA. Se conservan el radar del acceso, registro, recuperación, comparación e idiomas. |
-| **Catálogo** | **Revisado de nuevo y publicado el 3 de noviembre: 24 ofertas** (8 principales, 13 de reventa y 3 en camino) y 26 plataformas, vigente hasta el **10 de noviembre**. Nuevas, por decisión de Víctor y con sus avisos: **Kraken xStocks** (certificados que siguen acciones de EE. UU., desde 1 €; las condiciones finales del emisor solo la ofrecen en Liechtenstein y Suiza) y **Spiko Smart Cash Euro** (2,84 % neto variable, desde 1 €; ningún registro público confirma su alta en España y su web contradice al KID). Sale **mF-ONE** (Midas): solo se vende a inversores profesionales con wallet en lista blanca. Spiko rinde hoy un 2,34 % (euro) y un 3,95 % (dólar). Las tarjetas de reventa y próximas ya enseñan mínimo, acceso desde España y salida documentados. Ver [`INVESTIGACION-CATALOGO-2026-11-03.md`](INVESTIGACION-CATALOGO-2026-11-03.md). Entran Spiko Letras del Tesoro Dólar y los derivados sobre acciones de Robinhood; salen 28 fichas que no se podían comprar o no tenían entidad supervisada (22 de Reental, 3 de Midas, IOD, wemakeit y quitt). Las cifras se ven 7 días desde su comprobación. Cada tarjeta dice en castellano el mínimo (en su moneda o unidad: 1 €, 1 USD, 1 gramo de oro, 500 CHF), si se puede desde España y cómo se sale. Se puede actualizar el catálogo varias veces el mismo día. Ver [`INVESTIGACION-CATALOGO-2026-11-01.md`](INVESTIGACION-CATALOGO-2026-11-01.md). |
+| **Catálogo** | **Investigado de nuevo y publicado el 5 de noviembre, el mismo día que Víctor lo pidió: 24 ofertas** (8 principales, 13 de reventa y 3 en camino) y 25 plataformas en el radar (5 descartadas), vigente hasta el **12 de noviembre**. Spiko rinde un 2,39 % (euro), un 3,99 % (dólar, en dólares) y un 2,84 % (Smart Cash). Vender entre accionistas en Aktionariat, Boss Info y Switzerlend cuesta un 1,9 %. Brickwise, con los precios de reventa del día. Hoy no entra ninguna oferta nueva: ninguna de las 9 candidatas cumple todo para un particular en España. **Tarjetas más sencillas** (petición de Víctor del 05/11): en la lista solo título, empresa y lugar, mínimo y si se puede desde España; lo demás, en la ficha. Igual en la web y en la app. Ver [`INVESTIGACION-CATALOGO-2026-11-05.md`](INVESTIGACION-CATALOGO-2026-11-05.md). Las cifras se ven 7 días desde su comprobación. Se puede actualizar varias veces el mismo día. **Con la orden «haz la investigación» se hace el ciclo entero ese día** (skill `investigacion-catalogo`). |
 | **Imágenes de las ofertas** | Las 49 fichas **ya muestran en la web y Android 1.3.2** su ilustración generada del activo, con el lugar y tres pasos explicativos. Llevan etiqueta «Ilustración editorial» y texto alternativo que identifica la IA y que no es una fotografía real del activo. La correspondencia con las 49 ofertas y los recursos del APK se comprobó por contenido. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
 | **App Android** | **[Versión 1.4.0](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.0)** publicada. Descarga pública, firma y contenido comprobados. Sesión persistente y desbloqueo opcional desde Perfil; catálogo completo, Academy y cartera manual validados. No está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
@@ -191,7 +191,7 @@ Los puntos de mantenimiento siguientes no equivalen a ese cierre de entrega.
    versión corregida (22.23.4). En el PC, `node rwadar-node-seguro.js` dice si la que
     hay vale. Para esta entrega se usa un runtime portable corregido; no se ha
     actualizado la instalación global del PC. La investigación permanece manual.
-2. **Siguiente actualización del catálogo (antes del 10 de noviembre).** Empieza
+2. **Siguiente actualización del catálogo (antes del 12 de noviembre).** Empieza
    por orden de Víctor, que autoriza el ciclo completo (aplicar, publicar y OTA si
    pasan las compuertas), cualquier día y varias veces el mismo día. Pendientes:
    - Kraken xStocks ya está publicada; si el emisor publica condiciones finales
@@ -199,8 +199,15 @@ Los puntos de mantenimiento siguientes no equivalen a ese cierre de entrega.
    - Spiko Smart Cash Euro ya está publicada; si la CNMV, la AMF o Aldana
      Capital confirman su alta en España, se quita el primer aviso (si lo niegan,
      se retira).
-   - Casa de Outeiro: retirarla si el 10/11 sigue sin avance.
-   - Bono Valorix (Bit2Me STX) en diciembre.
+   - Casa de Outeiro: retirarla si el 10/11 sigue sin avance (el 05/11 seguía
+     en 1.121.000 € de 2.000.000 €).
+   - Hausera: la oferta pública de Alicante 2 se anuncia para el 11/11; revisar
+     si publica el documento de emisión y el emisor.
+   - BILLA (Brickwise): plazo vencido sin prórroga y 82 de 5.000 participaciones;
+     propuesta de retirada si el 15/11 sigue igual (decide Víctor).
+   - PAX Gold: cambiar su web en `public.plataformas` a paxg.com (SQL aparte).
+   - Bono Valorix (Bit2Me STX) y CANDO1 (Token City) cuando publiquen su
+     documento de emisión.
    Ver [`RUNBOOK.md`](RUNBOOK.md#catálogo).
 3. **Actualizar Postgres.** Las copias de seguridad ya están activas: la
    primera, del 2 de octubre, copió 52 tablas y se comprobó
@@ -236,7 +243,7 @@ Los puntos de mantenimiento siguientes no equivalen a ese cierre de entrega.
 
 | Cuándo | Qué |
 |---|---|
-| **10 de noviembre de 2026** | Vence la revisión del catálogo del 03/11 (entrega 2026-11-03.3). Se conserva completa con aviso y sin cifras vencidas. |
+| **12 de noviembre de 2026** | Vence la revisión del catálogo del 05/11 (entrega 2026-11-05). Se conserva completa con aviso y sin cifras vencidas. |
 | Cada noche, 02:43 UTC | Copia de seguridad cifrada, guardada 35 días en GitHub |
 | Cada noche, 03:17 UTC | Limpieza de dispositivos inactivos de más de 180 días |
 | Agosto de 2027 | Caduca `/.well-known/security.txt`: renovar la fecha |

@@ -31,6 +31,9 @@ y traspasos fechados del 22/10.
 
 Seguir la investigación profunda, la revisión independiente y las compuertas de
 [`CICLO-DIARIO-CATALOGO.md`](docs/tareas/CICLO-DIARIO-CATALOGO.md).
+El orden de trabajo para hacerlo entero el mismo día, en paralelo, está en la
+skill [`investigacion-catalogo`](.claude/skills/investigacion-catalogo/SKILL.md)
+(Claude la carga sola con «haz la investigación»; Codex puede seguirla a mano).
 
 **La orden de Víctor autoriza el ciclo completo** (indicación expresa de Víctor
 del 03/11/2026: «que se pueda modificar en cualquier momento; las ofertas no
