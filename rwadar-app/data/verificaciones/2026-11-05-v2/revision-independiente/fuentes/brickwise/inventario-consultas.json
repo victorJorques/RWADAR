@@ -1,0 +1,984 @@
+{
+ "grupo": "brickwise",
+ "ciclo": "2026-11-05-v2",
+ "revisor": "revisión independiente",
+ "nota": "Consultas públicas sin sesión del revisor, 05/11/2026, horas UTC reales. Respuestas crudas de API (direcciones, tokenId) en crudo/ (fuera de Git). PDF y HTML completos en disco, fuera de Git; en Git los .txt. Nombres de personas físicas recortados en los .txt.",
+ "consultas": [
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "archivo": "crudo/api-v1-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:00Z",
+   "bytes": 235128,
+   "sha256": "a4c944aed21f79e4529b68f39192dd977b410ab2ef7876ff5d89095f9569ed98"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "archivo": "crudo/api-v1-assets-control.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:31:42Z",
+   "bytes": 235128,
+   "sha256": "a4c944aed21f79e4529b68f39192dd977b410ab2ef7876ff5d89095f9569ed98"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "crudo/api-v2-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:00Z",
+   "bytes": 53973,
+   "sha256": "bc589c405d9103499c875675c0a86e429facb3a3e7b850509033ef96015a1d0a"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/utils/fees",
+   "archivo": "crudo/api-v1-utils-fees.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:01Z",
+   "bytes": 49,
+   "sha256": "f4d671a12c51e2caf42835630be0a6f1f31ea5c9a7fc97dc7472aacc17b90449"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2RAH5",
+   "archivo": "crudo/api-v1-asset-AT0000A2RAH5.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:48Z",
+   "bytes": 8776,
+   "sha256": "0a4afb6ef94b72ffb274a980f34da98a9384ddaa9b3ff9d6dd11b6d986396d33"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2T4D7",
+   "archivo": "crudo/api-v1-asset-AT0000A2T4D7.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:48Z",
+   "bytes": 9139,
+   "sha256": "312dfccf3c330f2ae71b45d7bc36d35e2bc90612d51cf6df1814f41db5a3ccc2"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2U5V3",
+   "archivo": "crudo/api-v1-asset-AT0000A2U5V3.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:49Z",
+   "bytes": 9447,
+   "sha256": "a4590d751fabbd822809a8cdac61d3e70a2f2c2742527ff4a9a719081c45766d"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCD0",
+   "archivo": "crudo/api-v1-asset-AT0000A2WCD0.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:49Z",
+   "bytes": 8491,
+   "sha256": "780c50cc2a1e0a8dd1de28b8ec89fc57f6b0e142cbe60d3fa0ffca55dcf6d08f"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCE8",
+   "archivo": "crudo/api-v1-asset-AT0000A2WCE8.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:50Z",
+   "bytes": 8566,
+   "sha256": "54cb4c69ec2b6bd85c3696bd4cae20ed2b7d4b3206a8421873a42cc7e5def1a0"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2YPQ0",
+   "archivo": "crudo/api-v1-asset-AT0000A2YPQ0.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:50Z",
+   "bytes": 9653,
+   "sha256": "61742cecd01100f3a15ec222973de4d154673b3bb2b69b537e23a7f3183f3492"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2ZT84",
+   "archivo": "crudo/api-v1-asset-AT0000A2ZT84.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:51Z",
+   "bytes": 10670,
+   "sha256": "8b5bcaebf9ede7a41733477a0cf87631248baa518a540e35847bb9d0f1c40a3b"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A31KP7",
+   "archivo": "crudo/api-v1-asset-AT0000A31KP7.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:51Z",
+   "bytes": 9881,
+   "sha256": "de8b0ecb98e828f0f06114910f7db6dd7e6db4c3b3ec5b737b271d2bf2645ca9"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A324B4",
+   "archivo": "crudo/api-v1-asset-AT0000A324B4.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:52Z",
+   "bytes": 12167,
+   "sha256": "a4062515dbf24bec302794d5628abe76e1094c057def614853407adbd88cf7ea"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+   "archivo": "crudo/api-v1-asset-AT0000A38J32.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:52Z",
+   "bytes": 7969,
+   "sha256": "a214c96285d5be503af4bfa9c247d3098dc153de99033a86d0797cff6932f6d4"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+   "archivo": "crudo/api-v1-asset-AT0000A38J40.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:53Z",
+   "bytes": 6615,
+   "sha256": "b5fd7e17d84b6793a89425a3fb09a1af74d98a8fde2c3cbb26db04c347d7707b"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+   "archivo": "crudo/api-v1-asset-AT0000A3SE89.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:22:53Z",
+   "bytes": 7526,
+   "sha256": "b66346d157c1fb981b83175c6d344833b330aa1c09208ea3cd1ab3dbd4fdff72"
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/marketplace (Playwright)",
+   "archivo": "web-app-marketplace-revisor-2026-11-05.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:23:49Z",
+   "bytes": 3704,
+   "sha256": "a093aa92115d2d8ca4c497b13eef25a496f7dd1291155ab9afe28ae7d600ece6"
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/marketplace (Playwright, captura)",
+   "archivo": "captura-app-marketplace-revisor-2026-11-05.png",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:23:49Z",
+   "bytes": 2111736,
+   "sha256": "4d0527ca99f45246bc1985b6f9383f649fa9e110e1ed8139f786c40d83d8c5ff"
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A3SE89 (URL directa, Playwright)",
+   "archivo": "web-app-billa-url-directa-revisor.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:25:09Z",
+   "bytes": 162,
+   "sha256": "8e438419171c6dca48ade0e3c904f69f35f9d970158ed9a64469da8a74bd08f6"
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A3SE89/details (clic desde el mercado, Playwright)",
+   "archivo": "web-app-billa-desde-mercado-revisor.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:25:19Z",
+   "bytes": 2000,
+   "sha256": "2f91d08df546a329cd0cf5c2c20a90fdd88f40586559fcb1bdca0109210a3306"
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A3SE89/details (captura)",
+   "archivo": "captura-app-billa-revisor-2026-11-05.png",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:25:19Z",
+   "bytes": 1493980,
+   "sha256": "e21240d7b220c02f10d237fb499ad7e82490f92e0e3387bed2ea4dd89ef3b9f6"
+  },
+  {
+   "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "archivo": "faq-land.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:28:07Z",
+   "bytes": 15919,
+   "sha256": "4eff870b62c2e198b1372bfdfde1354568ab9022af9ea651e13e6449ebc17b8c"
+  },
+  {
+   "url": "https://www.brickwise.at/",
+   "archivo": "home.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:28:14Z",
+   "bytes": 36762,
+   "sha256": "01b05a73cce0c1ff75020c28c16d90e5224195c260a2707b0f00de0066ef018c"
+  },
+  {
+   "url": "https://www.brickwise.at/faq",
+   "archivo": "faq-index.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-05T08:30:47Z",
+   "bytes": 27657,
+   "sha256": "56cfbf81985faaa4838a9bce41827f3cf552ff4861c15f9280c702c86c63ea4e"
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz",
+   "archivo": "faq-wie-funktioniert-der-handel-am-marktplatz.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:30:54Z",
+   "bytes": 1193,
+   "sha256": "f6c350a97c40ef804804c3c02f03b2af4d3e97a6de3c60b2e4cbcce02dd4de83"
+  },
+  {
+   "url": "https://www.brickwise.at/support/was-ist-der-marktplatz-a",
+   "archivo": "faq-was-ist-der-marktplatz-a.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:30:55Z",
+   "bytes": 499,
+   "sha256": "a86af278b2943b800f2b3cfb1b58dcf5e54ab447d145192ff7e4c77be1ac17bc"
+  },
+  {
+   "url": "https://www.brickwise.at/support/was-kostet-der-handel-am-marktplatz",
+   "archivo": "faq-was-kostet-der-handel-am-marktplatz.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:30:55Z",
+   "bytes": 413,
+   "sha256": "3586ee92ceee5544ddb14dce854fcb4a6da46f7bb1e918bb0bd222f221b61da2"
+  },
+  {
+   "url": "https://www.brickwise.at/support/warum-ist-mein-kauf-noch-ausstehend",
+   "archivo": "faq-warum-ist-mein-kauf-noch-ausstehend.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:30:56Z",
+   "bytes": 530,
+   "sha256": "cc348231086c98bf55aee1a4e757e673e81c99661e587728e39a7eb2161263cf"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?numero=5003&tipo=CLP",
+   "archivo": "reguladores/cnmv-effecta-lp.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:28:44Z",
+   "bytes": 13922,
+   "sha256": "2eb94e9c5c9ed99e12ae3f265b1b8b2cd5f40c8c08fd1e6439fcc66cd60122b3"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=8",
+   "archivo": "reguladores/cnmv-effecta-agentes.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:28:23Z",
+   "bytes": 13861,
+   "sha256": "681907fdfaea368f6f1014a84e17421818fa5116ac33b3252c07943a523d39b6"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=17",
+   "archivo": "reguladores/cnmv-effecta-programa.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:28:25Z",
+   "bytes": 14068,
+   "sha256": "a560235185d582c54ddb488c419875ded24be16bdf634bd1753a72de9a7adeb1"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+   "archivo": "reguladores/cnmv-adv-brickwise.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:28:26Z",
+   "bytes": 13200,
+   "sha256": "aa3e69563d0c4f62c16bfb103b7ca1d4c8ceac085717f34d8fb5241fcdb6911f"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "archivo": "reguladores/cnmv-adv-effecta.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:28:29Z",
+   "bytes": 13198,
+   "sha256": "6b5c98813c5281a1a013b90ae05178d6057c15ac6a83ec728d035330e77e8a8a"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Qogir",
+   "archivo": "reguladores/cnmv-adv-brick-qogir.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:28:31Z",
+   "bytes": 13202,
+   "sha256": "5ad1098def0b53ff5540df3a21b472c4c0b2dee4256e11d6ee4d815dce930f44"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=BrickOne",
+   "archivo": "reguladores/cnmv-adv-brickone.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:28:33Z",
+   "bytes": 13199,
+   "sha256": "537437a66c3add7d5b619876c0aa6c2baea7d29d5ae58268b6e4b743bad71202"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading (control del buscador)",
+   "archivo": "reguladores/cnmv-adv-control-trading.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:28:35Z",
+   "bytes": 14234,
+   "sha256": "9f2c812584de048af17433f6c3fe88962e87c72ea947f6a7352d486889dfaf47"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "archivo": "reguladores/bafin-effecta-detalle.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:28:36Z",
+   "bytes": 2364,
+   "sha256": "6f2d202ecb1098af718edcf5be18bf1bce16d3813e8e989a0c0b385e5cf64911"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (POST nameVermittler=Brickwise, statusVermittler=0)",
+   "archivo": "reguladores/bafin-vgv-brickwise.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:29:16Z",
+   "bytes": 1044,
+   "sha256": "f4fe6ca97ba837dd48466b20b89f5a6bee18211bdc7b3c7b766343d853c23668"
+  },
+  {
+   "url": "https://www.fma.gv.at/en/?s=brickwise",
+   "archivo": "reguladores/fma-busqueda-brickwise.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:31:50Z",
+   "bytes": 9633,
+   "sha256": "4326c26dce42ebfd3ab611f727de34d1b14ebad44ca197e3452e66dbbc76fe03"
+  },
+  {
+   "url": "https://www.fma.gv.at/en/?s=effecta",
+   "archivo": "reguladores/fma-busqueda-effecta.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:31:52Z",
+   "bytes": 9627,
+   "sha256": "f326e9edfd27c68e3498d934082352162f71d27eb1f266099e5176c25438017e"
+  },
+  {
+   "url": "https://www.fma.gv.at/en/?s=investor+warning (control del buscador)",
+   "archivo": "reguladores/fma-busqueda-investor-warning.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:31:53Z",
+   "bytes": 13494,
+   "sha256": "24e54e162990ca2ab026a7c122c8a41ae97bf83373ed15a9d06392856581cba2"
+  },
+  {
+   "url": "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+   "archivo": "pdf/contrato-AT0000A2RAH5.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:12Z",
+   "bytes": 181670,
+   "sha256": "82527141de87db307f45f35677f1b3f7636bc1f422637217a83b233c909e3101",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
+   "archivo": "pdf/kid-AT0000A2RAH5.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:12Z",
+   "bytes": 138297,
+   "sha256": "42a72c88cd0723a8a5abda76afd52df12ee335f3f3524c863b4b79aef01f03f8",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/1aec57d6-3aa3-473a-ae33-2a0fbdf4a1c5.pdf",
+   "archivo": "pdf/info-AT0000A2RAH5.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:12Z",
+   "bytes": 246360,
+   "sha256": "ac03e06460c1a7522a7713167b8697dfc06d0e1d8ea13e8ce96994828a4d49ac",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+   "archivo": "pdf/contrato-AT0000A2T4D7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:12Z",
+   "bytes": 180825,
+   "sha256": "f3a59f1a655e69a8cd83327c84acb57fd5d6cdf42011bb2eecab08007feb9d9b",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
+   "archivo": "pdf/kid-AT0000A2T4D7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:13Z",
+   "bytes": 138157,
+   "sha256": "50c07fa952e77ba57f36220000f9e24182e353211ba17cb3e25b3bbfedf9d5ae",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/c372686c-443c-445b-9747-a87cdc8844de.pdf",
+   "archivo": "pdf/info-AT0000A2T4D7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:13Z",
+   "bytes": 246126,
+   "sha256": "e22f98856be7d3ee2f1e472c411ab9d194f643aac6d0f233f1acc79ca8b85c38",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+   "archivo": "pdf/contrato-AT0000A2U5V3.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:13Z",
+   "bytes": 223374,
+   "sha256": "8c6faa84cff714ea7ca77c3310096489c1a391023cf6ad0bdc2cffffc8b16095",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
+   "archivo": "pdf/kid-AT0000A2U5V3.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:13Z",
+   "bytes": 138294,
+   "sha256": "31731e28f95f59f3294f20c500ec03e76276c145440a1d43f8a15e2080fbb98d",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/2439beca-ac29-466c-b038-6c7689e7a5a7.pdf",
+   "archivo": "pdf/info-AT0000A2U5V3.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:13Z",
+   "bytes": 244352,
+   "sha256": "71f55ebf5927a7660af368bf9811a5cbecf116aab6a6bf62e19920e6aaa2e41b",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+   "archivo": "pdf/contrato-AT0000A2WCD0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:13Z",
+   "bytes": 190996,
+   "sha256": "802c9affad120bfd62fc2fb4455de43bf61da84575291f3570d4d799d1460431",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
+   "archivo": "pdf/kid-AT0000A2WCD0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:14Z",
+   "bytes": 138935,
+   "sha256": "70ebc500925211d30c1c5d4eca699971addb2ca4fc4397db821654148e880283",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/3254e2f8-2426-4c15-8f4d-12da298060a9.pdf",
+   "archivo": "pdf/info-AT0000A2WCD0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:14Z",
+   "bytes": 212480,
+   "sha256": "f602f699d6fe47c79e790fa8da1a7e7581707e88141828ab079745df7524ce1a",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+   "archivo": "pdf/contrato-AT0000A2WCE8.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:14Z",
+   "bytes": 190968,
+   "sha256": "29f022d658974041c33edc0dc9494559d8a8f79e159342b777614046032735fc",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+   "archivo": "pdf/kid-AT0000A2WCE8.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:14Z",
+   "bytes": 139764,
+   "sha256": "3a4fa36bfa5f16012b2054c5b54bacae5425801f725628b3e2ea7576264d1d13",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/36cfe50a-2527-45f9-85d9-23aaab647847.pdf",
+   "archivo": "pdf/info-AT0000A2WCE8.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:14Z",
+   "bytes": 212260,
+   "sha256": "0124232ae6afee97d3f0e15c614fd68f3049303aa61a3ba1f2ed8573abbeaea2",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+   "archivo": "pdf/contrato-AT0000A2YPQ0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:14Z",
+   "bytes": 192682,
+   "sha256": "29f181dbb5f5c4fa9c2440544e19312221bf686f4840845129cce4145bc2b0c8",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
+   "archivo": "pdf/kid-AT0000A2YPQ0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:15Z",
+   "bytes": 138356,
+   "sha256": "cac2672068fb64cd05d738d70e60daea017fb7d5f74b3c1041084fb4aefb22dd",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/f82e5244-dc70-45af-9a41-3a40b5390442.pdf",
+   "archivo": "pdf/info-AT0000A2YPQ0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:15Z",
+   "bytes": 213054,
+   "sha256": "8d2ba1cca96e9fb334d89a331352a154cead31d627a4d8f45a9f56ff644d6b07",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+   "archivo": "pdf/contrato-AT0000A2ZT84.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:15Z",
+   "bytes": 191910,
+   "sha256": "7bb228005348caffb8eba0651cb49929d119c576ceae9d3388b4044c878b3797",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+   "archivo": "pdf/kid-AT0000A2ZT84.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:15Z",
+   "bytes": 128786,
+   "sha256": "2aa7ac3cea28b0805a2d316216d0ed2b699c08185e9fa99022fae688681e8bba",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/ac8e71ad-8e24-4c8e-a180-bf801dccd487.pdf",
+   "archivo": "pdf/info-AT0000A2ZT84.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:15Z",
+   "bytes": 228984,
+   "sha256": "fdf2ed79e9c2377111a8d41b771ab014241da39812925c3653f6af2b07b8baf5",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+   "archivo": "pdf/contrato-AT0000A31KP7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:16Z",
+   "bytes": 247203,
+   "sha256": "d483a25c2f39dfe26fa1da7cd192840ee72f9b2465b940d2d0ae931a65487693",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
+   "archivo": "pdf/kid-AT0000A31KP7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:16Z",
+   "bytes": 139587,
+   "sha256": "ce890eafd16419c444a3da4b2f291a735583c367ccf77a7a52237f01a79c917d",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/04f3f1d5-71a1-4629-8e5f-dcc45ef4fb15.pdf",
+   "archivo": "pdf/info-AT0000A31KP7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:16Z",
+   "bytes": 220687,
+   "sha256": "b25ece9e355d627f132b14a93c296a921ff5ea98198b2a81611a013d7a59a48f",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+   "archivo": "pdf/contrato-AT0000A324B4.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:16Z",
+   "bytes": 259949,
+   "sha256": "24d01690a2138988c9cfc889d359ac4e2ca1d67397621a13784ff0f19b715502",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
+   "archivo": "pdf/kid-AT0000A324B4.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:16Z",
+   "bytes": 146611,
+   "sha256": "da458b99233909ce7bfe16cc6f119b69bbd3182508ff558bb5787b1a6a6dca67",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/a847b550-48f2-4971-aec9-19684c6cca4f.pdf",
+   "archivo": "pdf/info-AT0000A324B4.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:17Z",
+   "bytes": 355071,
+   "sha256": "6feb6d254c9ea0ec691276caebfc76e1897e0a909c4d473367bc3fa5d25fb32d",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+   "archivo": "pdf/contrato-AT0000A38J32.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:17Z",
+   "bytes": 550355,
+   "sha256": "74260541deaea4cd2f7443dcc93edef81f6f49bd67b2f59c82d7d8e0004d52a0",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "archivo": "pdf/kid-AT0000A38J32.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:17Z",
+   "bytes": 360088,
+   "sha256": "bbfe14b97ec9cb14f1fd73c98e62405a6fa5cc3a72a962e37cf9ddaeacdf69ee",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/b9711a2c-4f37-4d6e-81d9-0719e54c6b90.pdf",
+   "archivo": "pdf/info-AT0000A38J32.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:17Z",
+   "bytes": 456752,
+   "sha256": "6e69b88ae5ae27b2a9339e28c0f56eca4b4310802b3de2e857a3c7e5c67a3d72",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+   "archivo": "pdf/contrato-AT0000A38J40.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:18Z",
+   "bytes": 557605,
+   "sha256": "1b2f693c00e99e4d764165ec15d5996c8a0298e8cf81822894649928a202bb40",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+   "archivo": "pdf/kid-AT0000A38J40.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:18Z",
+   "bytes": 396631,
+   "sha256": "a9cd936866fa7793d33eec1fd1ea222a69906157df061208dd720be10267888f",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/8dfb7e84-2f99-4de7-9e49-c5a43fa76537.pdf",
+   "archivo": "pdf/info-AT0000A38J40.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:18Z",
+   "bytes": 410115,
+   "sha256": "b98ac9fe99249337dace974450357b18d768d346399323bead9aaa515b4f52e5",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/64da3d27-ad35-4007-bf3d-9f022d3e14d2.pdf",
+   "archivo": "pdf/contrato-AT0000A3E842.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:19Z",
+   "bytes": 225748,
+   "sha256": "9ebfa0b7c23f60022f36e62e62ad2c1044a3709562e18e816184f6ca187c0de2",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/0cfef387-b8a9-4c6c-99c9-fd46110617da.pdf",
+   "archivo": "pdf/kid-AT0000A3E842.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:19Z",
+   "bytes": 177431,
+   "sha256": "613879bec7d740d888e618f2fe67d8b3a90da96dfc4b1c3260757d738e5df63d",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/ef8df591-a9bf-445f-b282-b631c24a0e5b.pdf",
+   "archivo": "pdf/info-AT0000A3E842.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:19Z",
+   "bytes": 238788,
+   "sha256": "6a58d5f5fb2537eba92b58ef79f069fb12b024f2b4d452bbf0e23eba300a8769",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+   "archivo": "pdf/contrato-AT0000A3SE89.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:19Z",
+   "bytes": 143516,
+   "sha256": "56b3147d497082b01b573f51680655540365f95e43a64065ad4e8de8a000b533",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+   "archivo": "pdf/kid-AT0000A3SE89.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:20Z",
+   "bytes": 58954,
+   "sha256": "3f3206fd1c953eef67faeba7ac60c2b4200f4a56c5c7674171ed3d2b250734bf",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+   "archivo": "pdf/info-AT0000A3SE89.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:20Z",
+   "bytes": 107314,
+   "sha256": "d30134b31232e324e470345bdb08ac7c37c353c40d6cd13137477cc1dc5aac02",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://staging.cdn.brickwise.at/61a38504-8277-435d-a42b-97a6d41ec266.pdf",
+   "archivo": "pdf/mietvertrag-AT0000A3SE89.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:20Z",
+   "bytes": 2070484,
+   "sha256": "0ad5847e65edd9426d91b9bc44a94c587595d5e6d5a639c113298ae8d4d36dd1",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+   "archivo": "pdf/brickwise-kosteninformationen-cdn.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:21Z",
+   "bytes": 30692,
+   "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/investment/Effecta_Verbraucherinformationen.pdf",
+   "archivo": "pdf/effecta-verbraucherinformationen.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:21Z",
+   "bytes": 101082,
+   "sha256": "9a240e3033053acbe460689263aaf1eeec120939b6b3fba264dee8afdb72cbd9",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A3SE89/AT0000A3SE89_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A3SE89.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:22Z",
+   "bytes": 64709,
+   "sha256": "64612057d922812916e1c893ab67b78592c9f0a8a6c031f27cb3d941912f0528",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "IGUAL_0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2RAH5/AT0000A2RAH5_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A2RAH5.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:23Z",
+   "bytes": 64476,
+   "sha256": "ec40926ae354d7794459ac2815f1f1a38263162ea9b88cda22db547b61fb6efd",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "sin0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2T4D7/AT0000A2T4D7_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A2T4D7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:24Z",
+   "bytes": 64426,
+   "sha256": "b15509ffc221abb4ac3b2a75932c8bb2b819293d618b0a51a5360bc5337b667d",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "sin0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2U5V3/AT0000A2U5V3_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A2U5V3.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:25Z",
+   "bytes": 64514,
+   "sha256": "667096d9157b0a849793ed14736ef0418ace08797c30bd150605098638f92c7b",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "sin0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCD0/AT0000A2WCD0_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A2WCD0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:26Z",
+   "bytes": 64521,
+   "sha256": "ee6231311898f6e7e2e071e56a355427c66fa56e3cbd9dbb654837f851fcb3c7",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "sin0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCE8/AT0000A2WCE8_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A2WCE8.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:26Z",
+   "bytes": 64710,
+   "sha256": "d78426254c6c4d31cd1e1f7526925938a34df10eb74cfe83dc05ca4c355d5d2a",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "sin0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2YPQ0/AT0000A2YPQ0_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A2YPQ0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:27Z",
+   "bytes": 64873,
+   "sha256": "bfda893516cd948739fa5072d4e68d2877e60a8d1cf11eb3e559af31369a0093",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "sin0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2ZT84/AT0000A2ZT84_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A2ZT84.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:28Z",
+   "bytes": 64605,
+   "sha256": "87ba2e6bdd09fb4552bbc9972cddad6fbf63e5ed6a22360a5b972c209cf7398d",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "sin0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A31KP7/AT0000A31KP7_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A31KP7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:29Z",
+   "bytes": 64520,
+   "sha256": "bdd30292931f8ea00570f1d01f1d00f3a1374f32e0cd081d278c90fa2cef0216",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "sin0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A324B4/AT0000A324B4_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A324B4.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:30Z",
+   "bytes": 63599,
+   "sha256": "63ece51e24107b8d41a555d1bd6e9af4887d6160c1865e56d1c5f8ec3f3dc567",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "sin0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A38J32.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:31Z",
+   "bytes": 64702,
+   "sha256": "125c5a95047e5544dbc3261bab7fda428bacc8238510a3635e44e16422028a0c",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "sin0311"
+   }
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J40/AT0000A38J40_Ruecktrittsbelehrung.pdf",
+   "archivo": "pdf/ruecktritt-AT0000A38J40.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-05T08:27:32Z",
+   "bytes": 64712,
+   "sha256": "e4652529f4c4591ba2d427861e03e154bbb647cad8a0890083198fcfa2647919",
+   "comparacion": {
+    "conInventarioInvestigador": "IGUAL_INV",
+    "conInventario0311": "sin0311"
+   }
+  }
+ ]
+}

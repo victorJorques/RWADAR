@@ -1,0 +1,890 @@
+Description of Services, Financial Instruments and Risks
+
+This version of our Description of Services, Financial Instruments and Risks document will apply
+from 1 July 2026.
+
+
+Section I
+
+INFORMATION REGARDING ROBINHOOD EUROPE, UAB AND ITS INVESTMENT
+SERVICES
+
+1. Purpose
+
+This Description of Services, Financial Instruments and Risks (hereinafter referred to as ‘this
+Document’) lays out information about Robinhood Europe UAB (‘Robinhood’, ‘we’, ‘us’ or ‘our’)
+and the investment and ancillary services that may be offered to its clients (each a ‘Client’, ‘you’,
+‘your’ or ‘yourself’).
+
+The purpose of this Document is to provide information and warnings in respect of the risks
+associated with financial instruments that you may buy, sell or order through us. Risk is
+understood as the failure to achieve a certain expected return on the capital invested and/or the
+loss of the capital invested, the basis for which may be various causes related to financial
+instruments, markets or the issuers of these instruments. These risks cannot always be foreseen in
+advance, and therefore the statements in this Document cannot be considered as definitive. We
+have indicated the most common risks related to financial instrument transactions in general
+terms. However, you should understand that we cannot disclose or explain all the inherent risks
+that you may be exposed to when engaging with our investment services, now or in the future.
+
+The purpose of this description is not to provide information on all the risks that may arise with
+financial instruments in the provision of services, but rather to provide you with information to
+enable you to understand the nature of these risks when making investment decisions. We advise
+you to closely read the additional disclosures about the financial instrument or service before
+making a decision in relation to a particular investment service or transaction.
+
+The statements in this description do not constitute advice from us on potential investments, and
+should not be understood as a recommendation made by us. The descriptions contained herein
+should not substitute the Client's own due diligence regarding the specific product.
+
+This Document is designed for retail clients, as defined in the Law on Markets in Financial
+Instruments of the Republic of Lithuania, that transposed the provisions of Directive 2014/65/EU
+(‘LMFI’). The LMFI definition of retail clients refers to both natural persons (‘Individuals’) and legal
+entities (‘Businesses’). We currently offer our investment services to natural persons only.
+
+
+
+
+                                                   1
+                                                                          20260622-5631134-17836042
+2. Our details
+
+ Name                                               Robinhood Europe, UAB
+
+ Company code                                       306377915
+
+ Address                                            Vilniaus g. 33-201, LT-01402 Vilnius, Lithuania
+
+ Website                                            https://robinhood.com/eu/en/
+                                                    Bank of Lithuania
+                                                    Gedimino pr. 6, LT-01103 Vilnius, Lithuania​
+                                                    Tel.: ​
+ Supervisory authority
+                                                    +370 5 251 2763 (for international calls) ​
+                                                    +370 800 50 500 (for domestic calls),​
+                                                    E-mail: info@lb.lt; Website: www.lb.lt
+
+                                                    For more information on Robinhood Europe
+                                                    and UAB regulatory permissions, please visit
+ Regulatory permissions
+                                                    the Bank of Lithuania (BoL) licence register
+                                                    here.
+
+
+
+
+3. Investment and ancillary services that we are licensed to provide
+
+We provide the following investment and ancillary services under the LMFI:
+Investment Services
+   ●​ Receipt and transmission of orders;
+   ●​ Execution of orders on behalf of clients; and
+   ●​ Dealing on own account.
+
+Investment Ancillary Services
+   ●​ Safekeeping and administration of financial instruments on behalf of clients; and
+   ●​ Foreign currency exchange services when they are related to the provision of investment
+      services.
+You will be required to open an account at Robinhood in order to acquire access to the described
+services. All client funds will be custodied in a client money account in an EU-licensed credit
+institution.
+
+
+
+
+                                                2
+                                                                       20260622-5631134-17836042
+4. Client classification
+
+In accordance with the applicable regulations, you will be assigned the status of a retail client. The
+status has a direct impact on your investment protection level. The status of a retail client
+guarantees you the highest level of protection.
+
+Some of the key protection measures that retail clients benefit from are enhanced
+appropriateness controls, helping to ensure the client is investing in investment products in line
+with their investment objectives, risk tolerance, financial capabilities, experience and knowledge.
+
+
+5. Assessment of appropriateness
+
+In order to invest in the complex investment products that Robinhood offers, you will be required
+to fill out an appropriateness questionnaire. We are required to determine whether your
+expertise, experience and knowledge is sufficient for you to undertake such investment decisions.
+
+It is important that you provide us with accurate, up-to-date and complete information so that we
+are able to perform appropriateness assessments, enabling us to act in your best interests when
+providing you with relevant services.
+
+We may from time to time provide you with factual information regarding the investment
+products for educational purposes. However, this information is not and should not be interpreted
+as investment advice. It is your decision whether to submit any orders, and your investment
+decisions are your sole responsibility.
+
+We reserve the right not to provide our clients with investment services or investment ancillary
+services at our own discretion, without explaining the reason for providing or not providing such
+services.
+
+
+6. Transactions in financial instruments
+
+Transactions in financial instruments can take place in various ways, such as on an organised or
+multilateral trading facility, or over the counter.
+
+Prior to entering into the respective investment services agreement, you shall examine the
+summary of the Order Execution Policy here, which discusses execution venues and other
+information essential for financial instrument transactions.
+
+
+7. Taxation
+
+Your income from investment services and investment ancillary services may be subject to taxes,
+as and when specified in the legislation of the Republic of Lithuania and/or any other country in
+which you reside for tax purposes.
+
+
+
+                                                  3
+                                                                         20260622-5631134-17836042
+Please note that we or a third party may be legally required to withhold taxes from your payment.
+We may also need to convert funds used to pay taxes into the official currency of the relevant
+country at the current exchange rate, as provided by an FX service provider selected by
+Robinhood at its sole discretion. We are under no obligation to reimburse you for the amount of
+tax withheld.
+
+Taxes may also be withheld by a foreign financial authority pursuant to the procedure set forth in
+foreign legislation.
+
+We do not provide tax, financial, legal or regulatory advice. You must independently assess all the
+circumstances regarding taxation of your investments or their return, even if we have indicated
+specific tax aspects in the information provided to you. You should seek independent advice if you
+have any questions in this respect.
+
+
+8. Fees
+
+All the fees for the services are specified in any ex-ante cost disclosures and our fee schedule
+here, and you will be charged in accordance with those documents.
+
+
+9. Communication
+
+A.​Unless agreed otherwise, the language used in our communications with you will be English.
+   This document, the summary of the Order Execution Policy, and other relevant documents are
+   available on our website here.
+B.​The forms we will use to communicate with you are described in the Client Agreement,
+   available here.
+C.​We shall provide you with information regarding your executions, transactions and orders, as
+   described in the Client Agreement.
+D.​We may provide you with binding third-party information in the original language.
+
+
+10. Prevention of conflicts of interest
+
+ A.​We will take all reasonable steps to identify and prevent any conflicts of interest that may
+    arise between us (including our employees) and you while we are providing you with
+    investment services.
+ B.​A summary of our Conflicts of Interest Policy is available here.
+
+
+11. Arrangements for insurance of liabilities to investors
+
+ A.​We insure our liabilities to investors under the Law on Insurance of Deposits and Liabilities to
+    Investors of Lithuania. The Liabilities to Investors Insurance Fund is a fund managed by
+
+                                                  4
+                                                                       20260622-5631134-17836042
+   Deposit and Investment Insurance, a Lithuanian state company, in accordance with the above
+   stated law. You are provided with investment liabilities insurance of up to 22,000 EUR upon
+   the occurrence of an insured event.
+ B.​Information regarding the investor protection scheme is available here.
+
+
+
+Section II
+
+DESCRIPTION OF CUSTODY SERVICES FOR FINANCIAL INSTRUMENTS AND
+CASH, AND THE ASSOCIATED RISKS
+
+1. US Share Derivatives
+
+We ensure the safekeeping of US Share Derivatives (also referred to as Share Tokens) on behalf of
+clients by maintaining individual accounts, accurately reflecting each client’s holdings and
+ensuring full segregation from other clients and our proprietary holdings. Clients retain full
+beneficial ownership of the US Share Derivatives in their respective accounts, and each client will
+have direct access to their account through the Robinhood app or website. We have no right to
+use any US Share Derivatives belonging to you, except with your explicit consent. We will not
+transfer the custody of US Share Derivatives owned by clients to any third parties.
+
+
+2. Perpetuals
+
+The clients’ Perpetuals comprise a range of perpetual swap products with underlying assets
+including single-name shares, exchange-traded funds, foreign exchange instruments,
+commodities, cryptoassets, and other assets or indices (also referred to as Perpetuals), which are
+held in custody by Bitstamp Finančne Storitve d.o.o. (‘Bitstamp’), a MiFID II investment firm
+authorised by the Securities Market Agency (‘ATVP’) in Slovenia. Perpetuals are safeguarded in an
+omnibus account opened in the name of Robinhood at Bitstamp. You will be able to exercise all
+relevant rights in respect of your financial instruments only through us. We have no right to use
+the Perpetuals belonging to you, except with your explicit consent. We ensure that Perpetuals
+custodied on behalf of clients are properly accounted for in our books and records, with clear
+segregation from our own assets.
+
+3. Client money
+
+Client money is segregated from our own money and safeguarded in accounts known as ‘client
+money accounts’, which are opened at licensed credit institutions pursuant to the requirements
+under LMFI. Your money may be pooled with that of our other clients in the client money
+account.
+
+                                                5
+                                                                      20260622-5631134-17836042
+While we’ve exercised all due care, skill and diligence in selecting the credit institution, we are not
+responsible for any losses you may suffer as a result of any action that the credit institution takes
+or fails to take in connection with client money.
+
+
+
+
+4. Potential risks related to the safekeeping of your assets
+
+You should be aware that there are risks regarding the safekeeping your assets.
+
+  Risk                               Description
+
+                                     You may suffer losses in the event that the custodian
+  Operational Risk
+                                     experiences technical failures in their respective systems.
+                                     Although legally required to segregate clients’ assets from
+                                     the custodian’s own assets, in the event of bankruptcy of the
+                                     custodian, you may irrecoverably lose your investment
+                                     where there is a failure of sufficient segregation.
+  Custodian Risk
+                                     Additionally, funds in client money accounts are protected
+                                     against the custodian’s creditors, but may not be protected
+                                     against a credit institution’s creditors in the event of its
+                                     insolvency.
+                                     In the event of an unfavourable legislative change, you may
+  Legal Risk
+                                     be subject to a loss.
+
+                                     As we in some cases rely on third parties, you may not always
+  Information risk                   have full access on demand to information regarding your
+                                     financial instruments.
+
+
+
+Section III
+INFORMATION REGARDING FINANCIAL INSTRUMENT TRANSACTIONS AND
+THEIR ASSOCIATED RISKS
+
+Part 1. General risk introduction
+
+1.1. You need to take into consideration that investing in financial instruments exposes you to
+different risks which may decrease the value of your investment. A risk refers to the possibility of
+incurring a loss when investing.
+
+
+
+                                                   6
+                                                                         20260622-5631134-17836042
+1.2. The value of financial instruments may decrease or increase. Therefore, there is a risk that the
+return on financial instruments may be negative, resulting in financial loss for you. The risk of loss
+may vary from one financial instrument to another. You should also keep in mind that past
+performance of financial instruments doesn’t guarantee future results, and you may lose the
+entire invested amount.
+
+1.3. Prior to undertaking a transaction involving a financial instrument, you should make an
+independent assessment of its characteristics and associated risks in respect of your financial
+standing, experience of transactions involving financial instruments, risk tolerance, investment
+objectives and preferred investment horizon.
+
+1.4. You are responsible for understanding all the risks related to the relevant financial
+instruments, since you will be liable for any losses if the value of your investment decreases.
+
+1.5. When investing in financial instruments, you should:
+
+    1.5.1. Carefully examine the summary of the Order Execution Policy, which is available here,
+    and assess your capacity to accept the terms set forth in the Client Agreement;
+
+    1.5.2. Carefully assess the transaction risks described in this document, especially the risks
+    inherent in the financial instrument transactions you will be entering into;
+
+    1.5.3. Pay attention to the obligations attached to the applicable instruments, and assess
+    whether you are willing and able to comply; and
+
+    1.5.4. Carefully evaluate the information found in order confirmations you receive from us,
+    and independently keep track of the status of your orders.
+
+1.6. Risk types:
+
+
+  Risk type                             Description
+  Market risk                           The value of financial instruments changes over time,
+                                        reflecting their supply and demand. Furthermore, a
+                                        financial instrument’s market value based on data from a
+                                        particular source may not necessarily reflect the actual
+                                        value of that financial instrument.
+
+
+
+
+                                                  7
+                                                                         20260622-5631134-17836042
+Political risk               Political decisions made by governments and
+                             administrative bodies may negatively impact market
+                             participants. As a result, issuers may not be able to fulfil
+                             certain commitments or obligations, decreasing the value
+                             of the applicable financial instruments. Examples of such
+                             scenarios include trade embargoes, increases of interest
+                             rates or any other decisions impacting the social,
+                             economic and legal environment.
+Regulatory change risk       There is a risk that Lithuania or the countries in whose
+                             capital markets you invest may experience an adverse
+                             change in regulations, including a change in tax
+                             regulations or any type of restriction on capital flows with
+                             foreign countries, which may adversely affect both the
+                             liquidity and the value of investments in the capital
+                             markets.
+
+Currency risk                Unfavourable currency exchange rate fluctuations may
+                             lead to lower returns or losses.
+
+Market risk                  You may suffer losses if the market in which you have
+                             investments is underperforming. Underperformance
+                             could be related to an unstable macro- or microeconomic
+                             environment, instability on securities or crypto
+                             exchanges, or poor financial returns in relevant countries,
+                             regions or industries.
+Liquidity risk               Insufficient market liquidity may hinder your ability to sell
+                             or buy financial instruments at a price that is favourable
+                             to you. As a result, you may receive smaller returns or
+                             bear losses on your investments.
+Price risk                   You may incur a loss due to unfavourable fluctuations in
+                             the prices of your investments.
+System or operational risk   There can be a risk of loss in the event of inadequacy or
+                             malfunctioning of a company’s internal processes or
+                             systems, or malpractice by a company’s employees.
+Issuer risk                  If the issuer of a financial instrument suffers financial or
+                             liquidity difficulties, underperforms or faces any other
+                             challenges of a similar nature, there could be a negative
+                             impact on the financial instrument or the issuer’s
+                             commitment or obligations towards its investors.
+Information risk             It may be impossible for you to obtain adequate and
+                             correct information regarding all financial instruments,
+                             or obtaining such information could be challenging. On
+                             such occasions, it may be impossible for you to make
+                             appropriate decisions in respect of your investments.
+Credit risk                  There is a risk that the issuer of a financial instrument or
+                             a counterparty may default on its obligations.
+                                       8
+                                                              20260622-5631134-17836042
+ Inflation risk                       There is a risk that the real return on an investment will
+                                      be lower than expected, meaning that the purchasing
+                                      power of any proceeds realised at the time of withdrawal
+                                      (cashing in) will be lower than expected.
+Part 2. Extended market hours
+
+2.1. Should you engage in ‘after-hours trading’, you could be subject to new risks or exposed to
+the above-mentioned risks to a greater extent. After-hours trading in this context occurs outside
+‘regular trading hours’, which generally takes place between 9:30 and 16:00 Eastern Time.
+
+2.2. You should be aware of the most important risks:
+  Risk type                           Description
+
+ Liquidity risk                       Trading in shares or exchange-traded products (‘ETPs’)
+                                      underlying US Share Derivatives outside regular market
+                                      hours involves a smaller group of market participants,
+                                      which may result in fewer market and marketable orders
+                                      for those shares or ETPs than during regular trading
+                                      hours. This could lead to difficulties in buying or selling US
+                                      Share Derivatives at your preferred price.
+ News release risk                    Issuers often publish important news during after-hours
+                                      trading to limit the news impact on the price of their
+                                      financial instruments. Such announcements may occur
+                                      outside regular market hours and cause rapid price
+                                      movements, which may lead to losses for you.
+ Volatility risk                      The fluctuating changes in the price of financial
+                                      instruments is known as volatility. Volatility in the shares
+                                      or ETPs underlying US Share Derivatives during
+                                      after-hours trading is generally higher, which could result
+                                      in partially executed orders in US Share Derivatives and
+                                      exposure to unfavourable prices.
+ Wider spread risk                    Higher volatility coupled with lower liquidity could cause
+                                      an increase in the difference between the sell and buy
+                                      price (the ‘spread’) for the shares or ETPs underlying US
+                                      Share Derivatives, which could affect the profitability of
+                                      your trades and lead to larger losses.
+ Price gapping risk                   The price of the share or ETP underlying a US Share
+                                      Derivative may experience sudden changes without any
+                                      trades taking place in between, known as ‘price gapping’.
+                                      This could occur due to unexpected news, events, or
+                                      unusual trading activities, and could result in losses if
+                                      you trade a US Share Derivative when the underlying
+                                      share or ETP is at an unfavourable price.
+
+
+
+
+                                                9
+                                                                       20260622-5631134-17836042
+ Unlinked markets risk                 The after-hours trading systems are not interconnected,
+                                       meaning that the price of a financial instrument
+                                       displayed on one system may differ from the price of the
+                                       same financial instrument on another system operating
+                                       at the same time. This difference in prices may cause you
+                                       to trade at a worse price than you intended during
+                                       after-hours trading.
+ Uncertain prices risk                 The prices of some shares and ETPs (and therefore the US
+                                       Share Derivatives based on them) traded during
+                                       after-hours trading may not reflect the prices of those
+                                       shares and ETPs (and the US Share Derivatives based on
+                                       them) during regular trading hours, including at the end
+                                       of the regular trading session or upon the opening of
+                                       regular trading the following business day.
+
+2.3 In order to protect clients from large movements in price in US Share Derivatives, we collar
+orders using limit orders priced up to 0.5% above or below the last reported trade price for the
+Underlying Asset on a Nasdaq exchange (i.e., the Nasdaq Stock Market, Nasdaq OMX BX, or
+Nasdaq OMX PHLX) and 0.5% above or below the quoted FX exchange rate. However, it is
+important to note that it is impossible to eliminate all trading risks entirely. If any of the
+above-mentioned risks exceeds your risk tolerance, you should not place orders during
+after-hours sessions.
+
+
+Part 3. Risks involved in trading over-the-counter (OTC) financial instruments
+
+When submitting orders for Financial Instruments that are traded outside a regulated market, a
+multilateral trading facility or an organised trading facility (also known as over-the-counter or
+‘OTC’) or that are otherwise pegged to an underlying asset that is traded OTC, you are engaging in
+and/or being exposed to transactions that occur directly between parties, outside of trading
+venues. As such, trading OTC, or being exposed to such trading via a derivative, comes with the
+below inherent risks:
+
+
+ Risk type                           Description
+                                     Liquidity risk refers to how quickly a financial instrument
+                                     can be bought or sold in the market without affecting its
+                                     price. Instruments traded OTC may face lower liquidity
+ Liquidity risk                      compared to those traded on established trading venues.
+                                     This can result in difficulty finding a buyer or seller without
+                                     experiencing significant price changes, potentially leading
+                                     to greater losses.
+
+
+
+
+                                                10
+                                                                        20260622-5631134-17836042
+Part 4. Risk concerning the financial instrument
+
+The below discussion of risks does not take into account your investment period or your
+investment objectives. Please keep in mind that:
+    ●​ you bear the investment risk during the financial instrument lifecycle;
+    ●​ when trading in financial instruments, you must carefully read the transaction
+       confirmation documents and immediately inform us about possible errors;
+    ●​ you must constantly monitor changes in the value and positions of your investments;
+    ●​ when necessary, you should consider taking appropriate measures to reduce the losses
+       associated with your investments; and
+    ●​ you are responsible for familiarising yourself with documents prepared by the
+       manufacturer of the financial instrument, such as key information documents and other
+       important information.
+
+4.1. Tokenised US Share Derivatives
+
+What is a share?
+
+An equity (also called ‘share’) is a financial instrument that gives the shareholder participatory
+interest in the equity capital of a company.
+
+What is an ETF?
+
+
+
+                                               11
+                                                                      20260622-5631134-17836042
+An ETF is an investment fund that holds a collection of assets like shares, bonds, or commodities
+and trades on a securities exchange, similar to individual shares (together with exchange-traded
+notes, ‘exchange-traded products’ or ‘ETPs’).
+
+What is a derivative contract?
+
+A derivative contract is a financial agreement between two parties whose value is based on (or
+‘derived’ from) the price of something else — like a share, bond, commodity, currency, interest
+rate, or even a market index. Instead of owning the actual thing (like barrels of oil or shares of a
+company), you're betting on how its price will move.
+
+In the case of a US Share Derivative, the derivative contract is based on the value of its underlying
+asset, which would be a US share or ETP. These contracts oblige Robinhood as the counterparty to
+make payments to clients based on the performance of the underlying US shares or ETPs. If the US
+share’s or ETP’s value increases from the opening to the closing of the contract, Robinhood will
+pay the resulting profit to the client. Conversely, if the US share’s or ETP’s value decreases,
+Robinhood retains the difference. Derivative contracts shall be amended and tokens rebased in
+the event of share splits and repurchases.
+
+What is the difference between a share/ETP and a share/ETP derivative contract?
+
+Clients have certain contractual rights under the terms of the US Share Derivative contract, but
+do not have ownership rights over the share or ETP itself. Although, under the terms of the
+derivative contract, the client has a right to the difference between the derivative contract’s
+purchase price and the share or ETP price at the time of the closing of the derivative contract, as
+well as any accrued dividends, the client does not have rights that they would otherwise have if
+they were an owner of the share or ETP. For instance, holding company shares usually grants the
+right to vote at the issuer’s general meeting, but the purchaser of a US Share Derivative based on
+such a share does not.
+
+If an issuer generates profit, it might decide to pay its shareholders dividends in the form of cash.
+Through US Share Derivatives, clients shall have a right to dividend amounts. Clients should be
+advised that dividends are not guaranteed. Whether there will be a dividend is fully at the
+discretion of the issuer.
+
+US Share Derivatives are cash-settled only, meaning that they may not be redeemed for the
+underlying shares or ETPs themselves.
+
+
+What is tokenisation?
+
+When a new US Share Derivative contract is entered into, Robinhood will simultaneously issue
+(mint) a new fungible token over a blockchain. This token represents the ownership rights of the
+client over the US Share Derivative. The token is non-transferable and non-assignable. When the
+US Share Derivative is closed out, Robinhood burns the tokenised US Share Derivative contract
+from the blockchain. The blockchain is updated in real time, and the token is no longer valid and
+cannot be part of a wallet or any blockchain transaction.
+
+
+                                                 12
+                                                                         20260622-5631134-17836042
+Risks inherent in US Share Derivatives
+
+When investing in US Share Derivatives, it is possible that they will not increase in value as
+expected or that all the invested money will be lost. Because the US Share Derivatives look to US
+shares or ETPs as the underlying asset, the risks inherent to the US securities market also apply to
+US Share Derivatives.
+
+There are several factors which impact the performance of shares and ETPs. For instance, the
+issuer’s growth potential, the health of its balance sheet, the competition landscape and any
+changes particular to the company itself (e.g., opening a new branch) are considered
+microeconomic factors. Events with a more sectoral and global reach, such as increases in interest
+rates, weather disasters or a global recession, are called macroeconomic factors. Clients should
+take both sets of factors into account. Therefore, a person investing in US Share Derivatives
+should, at a minimum, observe the corresponding company and securities markets, and also
+follow general economic news.
+
+The change in the value of equities may be significant. A common method of reducing risk
+associated with a single company is diversification, whereby risk is spread by gaining exposure to a
+portfolio of various equities from different sectors, countries and regions, for example. However,
+diversification would not necessarily mitigate general market risks, which may result in equity
+prices strongly fluctuating due to reasons not directly connected to issuers’ economic results (e.g.
+global recession or liquidity crises).
+
+When purchasing the equities of a foreign company, you should also take into account the
+political risk, economic risk, legal risk and potential fluctuations of currency exchange rates (see
+the general risk introduction above).
+
+US Share Derivatives are considered to be complex financial instruments. They are not traded on a
+regulated market or on a multilateral trading facility. Furthermore, although Robinhood hedges
+its obligations by purchasing US shares or ETPs for its own account on a 1:1 basis with the US
+Share Derivatives it issues, clients should be aware of the counterparty risk inherent in US Share
+Derivatives and evaluate the creditworthiness of Robinhood prior to entering into the transaction.
+
+Direct costs and associated expenses of transactions
+
+You may incur costs when carrying out transactions involving financial instruments. For more
+details, please refer to our fee schedule here. The most common direct costs for US Share
+Derivatives are:
+
+   ●​ The price of purchasing the US Share Derivative(s); and
+   ●​ if purchases are made or sale proceeds are paid in a currency other than US dollars, an FX
+      fee will be withheld based on the current exchange rate, as determined by a third-party FX
+      service provider.
+
+
+
+
+                                                13
+                                                                       20260622-5631134-17836042
+4.2. Perpetuals
+
+What are perpetual futures contracts (or Perpetuals)?
+
+Futures contracts are a type of derivative contract that creates an obligation between a seller and
+buyer for the sale of an asset for a set price at a fixed date in the future, regardless of the market
+value of the asset on that date. A perpetual futures contract, or Perpetual, is a type of futures
+contract without an expiry date. Without an expiry date, there is no physical settlement of goods,
+so the only purpose of a perpetual futures contract is to speculate on the price of an asset. These
+contracts can speculate that the future price will be either lower than the current price (referred
+to as a short position) or higher than the current price (referred to as a long position).
+
+What types of perpetual futures contracts (or Perpetuals) are offered by Robinhood?
+
+
+Robinhood offers a range of perpetual futures contracts with different types of underlying assets,
+such as single shares, exchange-traded funds, foreign exchange (forex) instruments, commodities
+and cryptoassets, as well as other assets or indices. The perpetuals offered by Robinhood refer to
+the underlying assets identified in the Key Information Document here.
+
+Risks inherent in perpetual futures contracts
+
+Due to the complexity of trading Perpetuals, they are not suitable for every investor. Investors
+who trade Perpetuals can lose all of their invested funds. In addition to the general risks identified
+above, risks of Perpetuals trading include the following:
+
+
+
+  Risk type                             Description
+                                        Perpetuals are derivative financial instruments which can
+                                        carry a high degree of risk, as they often involve leverage,
+                                        meaning even a small change in the price of the
+                                        underlying instrument can result in a much larger change
+                                        in the price of the derivative or the value of the investor's
+                                        open position, either in the investor’s favour or against it.
+                                        If the investor's trading direction is opposite to market
+                                        movements, this can result in a significant loss.
+  Trading with leverage                 Depending on the extent of potential loss, investors must
+                                        either provide additional funds to be used as collateral or
+                                        reduce their open positions. In the event of a loss, if
+                                        investors fail to provide additional funds as collateral,
+                                        investor funds that have been designated as collateral
+                                        may be used to cover losses. This risk applies to all
+                                        Perpetuals regardless of the type of underlying asset they
+                                        are referencing, including shares, ETFs, foreign exchange
+                                        instruments, commodities, cryptoassets and indices.
+
+
+                                                 14
+                                                                         20260622-5631134-17836042
+                                  The price of derivatives depends on market movements
+                                  and the price of the underlying instrument. Fluctuations
+                                  in the market of the underlying instrument may cause
+                                  unpredictable changes in the value of the derivative,
+                                  which may lead to losses. For underlying assets traded
+Risk of market fluctuations
+                                  only during specified market hours (e.g. shares or ETFs),
+                                  price movements may occur outside such hours and be
+                                  reflected in the price of the Perpetual once the
+                                  underlying market reopens, potentially resulting in
+                                  sudden price fluctuations.
+                                  With derivatives, it is not necessary to deposit the entire
+                                  value of the transaction before purchase. It is sufficient to
+                                  maintain a certain amount in the margin account. If the
+                                  price of the underlying instrument changes significantly,
+                                  additional margin may be required from the investor in
+Risk of increasing the required
+                                  order for the investor to maintain their open position. If
+equity
+                                  additional margin is not provided, the position may be
+                                  liquidated, resulting in losses for the investor. Such
+                                  changes may occur rapidly across all asset classes,
+                                  including during periods when the underlying market is
+                                  closed but the Perpetual continues to trade.
+                                  If the price of the underlying instrument moves in the
+                                  opposite direction to the investor's trading direction, a
+                                  liquidation of the position may occur. In such a case, the
+                                  investor may suffer a loss. In the event that the position is
+                                  liquidated, the investor may lose all or some of the assets
+                                  that it has designated as collateral. The investor is not
+                                  responsible for losses beyond the value of the assets it
+                                  designated as collateral. Such losses are paid by other
+                                  investors via a process referred to as the socialisation of
+                                  losses. Under certain market conditions, particularly due
+                                  to the high degree of market volatility and the risk of
+                                  illiquidity in the derivatives market, it may prove difficult
+Liquidation risk                  or impossible to close out a market position above the
+                                  liquidation level. For example, if there is insufficient
+                                  liquidity in the market, or if there are technical problems
+                                  with the orders that investors are trying to place, it may
+                                  not be possible to manage the positions’ risk. Placement
+                                  of conditional orders, such as so-called ‘Stop-limit’
+                                  orders, do not necessarily guarantee the limitation of
+                                  losses to the desired level, as these types of orders are
+                                  not guaranteed and market conditions may make it
+                                  impossible to execute such orders. This risk may be
+                                  heightened for Perpetuals referencing underlying assets
+                                  with limited trading hours, where price gaps may occur
+                                  between trading sessions.
+                                  Investors who trade with profits may have part of their
+Socialisation of losses
+                                  profits confiscated and distributed among investors who
+
+                                           15
+                                                                   20260622-5631134-17836042
+                        trade at a loss, in accordance with the rules of the MTF.
+                        This can happen during a periodic settlement, which is
+                        carried out several times a day. Before a periodic
+                        settlement, all profits from the previous periodic
+                        settlement are unsettled, even though they may have
+                        already been realised.
+                        The price of a derivative traded on a derivatives trading
+                        platform may be linked to an index price that is used as a
+                        proxy for the price of the underlying instrument. The
+                        index is provided by an external data service provider
+                        that uses data from third-party trading platforms.
+                        Changes in the value and volume of transactions on
+                        trading platforms, as well as potential errors in index
+                        calculations, may affect the profit, loss, margins and
+                        settlement of trades on derivatives trading platforms. The
+                        execution of a derivatives transaction does not represent
+                        the purchase or sale of an underlying instrument. The
+                        return on a derivative transaction may not reflect the
+                        return that the investor would have if the underlying
+                        instrument were sold or purchased. The methodology for
+Index risks
+                        the calculation and publication of each index may lead to
+                        deviations from other publicly available indices and prices
+                        of the underlying instrument; therefore, the index values
+                        used may differ significantly from other publicly available
+                        values for the prices of the underlying instruments. The
+                        composition, calculation methodology and security
+                        measures of each index are subject to change at any time
+                        without notice and are at the sole discretion of the data
+                        service provider. A change in the composition of an index
+                        and any change in the methodology used may affect the
+                        value of the index and could lead to losses or gains for
+                        the investor. Robinhood is not responsible for losses that
+                        the investor suffers (directly or indirectly) due to a change
+                        in the methodology or composition of the index.
+                        There is a risk that a derivative may be delisted from a
+                        derivatives trading platform, or that the platform may
+                        stop trading in the derivative for any reason. This may
+                        occur in relation to Perpetuals referencing all types of
+                        underlying assets, including shares, ETFs, foreign
+                        exchange instruments, commodities, cryptoassets and
+                        indices. Furthermore, if you are trading Perpetuals where
+Supported derivatives
+                        the underlying asset is a cryptoasset, please note that
+                        Robinhood does not own or control the underlying
+                        protocol or technology that governs the operation of the
+                        cryptoasset servings as the underlying instrument. The
+                        protocol or technology enabling the existence of the
+                        underlying instrument may change or cease to function
+                        due to changes made to the properties or functions of
+
+                                 16
+                                                         20260622-5631134-17836042
+                                       the underlying protocol or technology, a cyberattack, or
+                                       similar events. Such changes may include, but are not
+                                       limited to, a ‘fork’, ‘rollback’, ‘airdrop’ or ‘bootstrap’. Any
+                                       such change or error in the applicable underlying
+                                       protocol or technology may affect the availability and
+                                       value of the underlying cryptoasset and any derivative
+                                       contract based on the cryptoasset, and may result in a
+                                       partial or total loss of the investor's funds. Robinhood is
+                                       not responsible for such changes to the underlying
+                                       protocol or technology, and does not assume any
+                                       responsibility for any losses arising from such changes.
+                                       The investor is responsible for being aware of such
+                                       changes. Robinhood may stop supporting a derivative at
+                                       its sole discretion.
+                                       Perpetuals may reference a broad range of underlying
+                                       assets, including shares, exchange-traded funds, foreign
+                                       exchange (forex) instruments, commodities and
+                                       cryptoassets, as well as other assets or indices. Each of
+                                       these asset classes may behave differently in terms of
+                                       price volatility, liquidity, trading hours, price formation
+                                       and susceptibility to market events, including differences
+ Underlying asset-specific risks
+                                       in trading hours (e.g. continuous trading vs. market
+                                       hours), which may result in price gaps or discontinuities.
+                                       Accordingly, the risk profile of a Perpetual depends on the
+                                       characteristics of its underlying asset, and investors
+                                       should carefully assess and understand the risks specific
+                                       to the relevant underlying asset prior to entering into a
+                                       Perpetual position.
+
+In order to protect clients from large movements in price in Perpetuals, we collar orders using
+limit orders priced up to 1% above or below the last reported trade price for the applicable
+Perpetual on the exchange. However, it is important to note that it is impossible to eliminate all
+trading risks entirely. If any of the above-mentioned risks exceeds your risk tolerance, you should
+not place orders in Perpetuals.
+
+
+Execution venue, settlement procedure
+
+Execution venues may halt or suspend trading in Perpetuals. It may be very difficult to close
+positions in Perpetuals in the case of an illiquid market (in the event that there are few or no
+buyers and/or sellers in the market). The settlement goes in your account with us; however, we
+must first settle in an account held in our name at the applicable execution venue.
+
+Direct costs and associated expenses of transactions
+
+You may incur costs when carrying out transactions involving financial instruments. For more
+details, please refer to our fee schedule here. The most common direct costs for Perpetuals are:
+
+                                                17
+                                                                         20260622-5631134-17836042
+   ●​ Transaction fees assessed by us, and the execution venue when opening or closing a
+      position;
+   ●​ Any losses incurred while a position is open;
+   ●​ Funding rate fees assessed to help keep the Perpetual contract price close to the price of
+      the underlying asset; and
+   ●​ Liquidation fees assessed if there is a liquidation event.
+
+
+
+
+4.3 Money Market Fund
+
+What is a Money Market Fund?
+
+A Money Market Fund (MMF) is a fund in which money received from investors is invested in
+short-term debt securities. The primary objective is to preserve capital while also generating a
+steady stream of income.
+
+An MMF is generally classified according to the maturity of the underlying securities and the
+intended behaviour of the Net Asset Value (NAV), which represents the net value of the fund. A
+short-term MMF invests in debt securities with a maximum maturity of thirteen (13) months and
+a weighted average maturity of sixty (60) days. A standard MMF invests in debt securities with a
+maximum maturity of two (2) years and a weighted average maturity of 180 days.
+
+The yield of an MMF depends on the returns generated from the underlying debt securities. The
+yield is shown as a percentage, assuming an investment horizon of one-year (i.e., estimate of how
+much value the investment is expected to increase in the coming twelve [12] months).
+
+Risks inherent in Money Market Funds
+
+While an MMF is sometimes considered a low-risk investment, they are not risk-free. The value of
+the underlying securities can fluctuate, and there is a risk of loss if the issuer of the underlying
+securities defaults, or if the issuer of the MMF suffers an insolvency event. Additionally, changes
+in interest rates, in market fluctuations, and in regulatory governance can impact performance.
+
+Execution venue and settlement procedures
+
+By electing to invest your buying power in an MMF, all your buying power within your Robinhood
+account will be invested, including any fiat amounts that you deposit in your Robinhood account
+                                                18
+                                                                       20260622-5631134-17836042
+going forward. Your orders for MMF shares (including those generated as part of your standing
+order) will only be executed on the same day if they are received before the cut-off time of a
+dealing day. Orders submitted after the dealing cut-off time will be automatically rolled over for
+execution on the next dealing day. In the event you make a purchase (i.e. buy other financial
+instruments or cryptoassets available on the Platform) or initiate a withdrawal from your Account,
+any uninvested funds will be used first before any buying power invested in an MMF.
+
+Interest accrues from the day your buying power is invested in the MMF and paid out monthly.
+Unless you decide to make a withdrawal from your Account or opt-out of the MMF, any interest
+earned will be reinvested (i.e., used to purchase additional shares in the MMF). Robinhood, as
+your agent, purchases shares of the MMF on your behalf; you will not have a direct relationship
+with the Programme Bank.
+
+Upon placing a sell order, you should have immediate access to your redeemed proceeds shortly
+afterwards. In the event of unfavourable market conditions, it could take longer. If you choose to
+opt out of the MMF completely, we shall execute an order on your behalf to sell all shares in your
+MMF at the valuation of the following dealing day.
+
+
+
+Direct costs and associated expenses of transactions
+
+You may incur costs when carrying out transactions involving financial instruments. For more
+information, please refer to our fee schedule here.
+
+The most common direct costs for MMFs are:
+-​ Fees Robinhood charges on the annual percentage yield (APY);
+-​ Fund level fees from JP Morgan or other third-parties (that are deducted before the APY is
+   calculated); and
+-​ Any relevant foreign exchange fees.
+
+
+
+
+                                               19
+                                                                      20260622-5631134-17836042
+

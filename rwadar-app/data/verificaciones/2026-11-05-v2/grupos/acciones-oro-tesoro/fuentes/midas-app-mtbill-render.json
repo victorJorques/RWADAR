@@ -1,0 +1,9 @@
+{
+ "url": "https://midas.app/mtbill",
+ "finalUrl": "https://midas.app/mtbill",
+ "http": null,
+ "consultadoUtc": "2026-11-05T08:15:14Z",
+ "metodo": "playwright-chromium innerText",
+ "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://midas.app/mtbill\", waiting until \"networkidle\"\u001b[22m\n",
+ "text": "midas.app\nVerificación de seguridad en curso\n\nEste sitio web utiliza un servicio de seguridad para protegerse contra bots maliciosos. Esta página se muestra mientras el sitio web verifica que tú no eres un bot.\n\nRay ID: a55a68d5fc1ad6fc\nRendimiento y seguridad de Cloudflare\nPrivacidad"
+}

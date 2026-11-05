@@ -1,0 +1,241 @@
+{
+  "slug": "token-city-exchange-cando1",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-espana",
+  "proveedor": "Token City Exchange",
+  "plataformaSlug": null,
+  "entidadComercializadora": "TOKEN CITY EUROPEAN EXCHANGE A.V., S.A. (NIF A25988981, CNMV nº 334)",
+  "emisor": "LORNIN IBÉRICA S.L. (marca comercial CANDO), según la ficha de la oportunidad; la ficha no dice si emite esta sociedad u otro vehículo",
+  "vehiculo": "No publicado",
+  "token": "CANDO1 (CDO1); 1.971 tokens según la ficha; red y contrato no publicados",
+  "derechoAdquirido": "No publicado (la ficha no dice si es deuda, capital u otro instrumento)",
+  "jurisdiccion": "ES",
+  "identificador": null,
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Token City Exchange: portada con «Oportunidades de inversión · PRÓXIMAMENTE» (ficha CANDO1)",
+      "url": "https://exchange.token-city.com/",
+      "versionOFecha": "consulta 05/11/2026 (texto renderizado con navegador)",
+      "paginas": null,
+      "sha256": "d47402beb3a51a900d2ba1a3de4b055979fbcd16aa9d3df5ef52f47330821e81",
+      "leido": true
+    },
+    {
+      "titulo": "Condiciones generales de Token City European Exchange A.V.",
+      "url": "https://exchange.token-city.com/es/condiciones",
+      "versionOFecha": "sin fecha; consulta 05/11/2026",
+      "paginas": null,
+      "sha256": "f6467674566550460df0366bb8b5cfdf0d03218e50e45d4376ac9e87736fa4ab",
+      "leido": true
+    },
+    {
+      "titulo": "Documento de emisión, folleto o documento de admisión de CANDO1",
+      "url": null,
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "TOKEN CITY EUROPEAN EXCHANGE A.V., S.A.",
+      "numero": "Agencia de valores nº 334 (fecha de registro oficial 06/02/2026)",
+      "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&lang=es",
+      "alcance": "Ficha ESI: adherida al FOGAIN, C/ Henri Dunant 17, Madrid. Programa de actividades (leído con navegador a las 08:14:16 UTC): recepción y transmisión de órdenes, colocación sin compromiso firme, gestión de SMN, custodia (solo como ERIR) y asesoramiento a empresas, todo sobre instrumentos basados en TRD. Las casillas de tipo de cliente son iconos y no se leen en el texto.",
+      "consultadoUtc": "2026-11-05T08:14:16Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "TOKEN CITY EUROPEAN EXCHANGE A.V., S.A.",
+      "numero": "No figura como SNL TRD",
+      "url": "https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx?lang=es",
+      "alcance": "La relación de infraestructuras de mercados de hoy solo lista dos SNL TRD (Bit2Me STX y Securitize). Token City no aparece como infraestructura.",
+      "consultadoUtc": "2026-11-05T08:02:17Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "Registro ERIR (Ursus-3 Capital, única ERIR de la lista)",
+      "numero": "Sin inscripción de CANDO1 ni de Lornin Ibérica",
+      "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es",
+      "alcance": "Las 23 emisiones inscritas (3 páginas) no incluyen CANDO1 ni Lornin Ibérica a 05/11/2026.",
+      "consultadoUtc": "2026-11-05T08:02:11Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Token City",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City",
+      "consultadoUtc": "2026-11-05T08:12:56Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD) a las 08:12:35 UTC. La pestaña de advertencias de otras entidades (tipo=2) devuelve HTTP 400 hoy: no consultada. No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Lornin",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lornin",
+      "consultadoUtc": "2026-11-05T08:12:57Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD) a las 08:12:35 UTC. La pestaña de advertencias de otras entidades (tipo=2) devuelve HTTP 400 hoy: no consultada. No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Cando",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cando",
+      "consultadoUtc": "2026-11-05T08:12:59Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas». Validado hoy con «Gemini», que devuelve dos entidades advertidas (GEMINI LTD FX, GEMINI OPTION LTD) a las 08:12:35 UTC. La pestaña de advertencias de otras entidades (tipo=2) devuelve HTTP 400 hoy: no consultada. No aparecer no equivale a estar autorizado."
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "Oportunidades de inversión · PRÓXIMAMENTE · CANDO1 (CDO1) · En estudio",
+      "dato": "Próxima, «en estudio»; solo se puede apuntar a una «Lista prioritaria» (registro)",
+      "fuentePrimaria": "https://exchange.token-city.com/",
+      "localizador": "exchange.token-city.com, bloque «Oportunidades de inversión»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:10:14Z",
+      "alcanceYLimites": "Sin fecha de apertura ni documento de emisión.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Inversión mínima 657 €",
+      "dato": null,
+      "fuentePrimaria": "https://exchange.token-city.com/",
+      "localizador": "Ficha CANDO1 en la portada de Token City Exchange",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:10:14Z",
+      "alcanceYLimites": "Cifra comercial de una oportunidad «en estudio», sin documento que la respalde. No se propone.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "TIR bruta estimada ~11,7% anual",
+      "dato": null,
+      "fuentePrimaria": "https://exchange.token-city.com/",
+      "localizador": "Ficha CANDO1",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:10:14Z",
+      "alcanceYLimites": "Estimación del promotor, bruta, sin base de cálculo ni plazo publicados. No se publica.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "importe",
+      "literal": "Objetivo de emisión 1.971.000 € · Token 1.971",
+      "dato": null,
+      "fuentePrimaria": "https://exchange.token-city.com/",
+      "localizador": "Ficha CANDO1",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:10:14Z",
+      "alcanceYLimites": "Por debajo de 5 M€: podría ir sin folleto aprobado (las condiciones de Token City prevén entonces un «Documento de Admisión validado por una Empresa de Servicios de Inversión»).",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "activo",
+      "literal": "complejo de Senior Living premium en La Moraleja (Madrid), compuesto por 76 apartamentos […] derechos de uso o derecho de habitación de larga duración",
+      "dato": "Residencia para mayores en La Moraleja (Madrid), 76 apartamentos",
+      "fuentePrimaria": "https://exchange.token-city.com/",
+      "localizador": "Ficha CANDO1",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:10:14Z",
+      "alcanceYLimites": "Descripción del promotor, sin documentación del activo.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Renta fija y variable · Institucionales y minoristas · Captación de inversión: Colocamos los instrumentos financieros conforme a normativa MiFID, captando inversión minorista y profesional",
+      "dato": null,
+      "fuentePrimaria": "https://exchange.token-city.com/",
+      "localizador": "Portada de Token City Exchange",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:10:14Z",
+      "alcanceYLimites": "Declaración general de la agencia; no hay condiciones de CANDO1.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "salida",
+      "literal": "PRÓXIMAMENTE · Mercado secundario · Compra y vende activos tokenizados en una infraestructura de mercado regulada",
+      "dato": "Sin mercado secundario hoy",
+      "fuentePrimaria": "https://exchange.token-city.com/",
+      "localizador": "Portada de Token City Exchange, «Servicios»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:10:14Z",
+      "alcanceYLimites": "La propia web dice que el mercado secundario llegará «próximamente».",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "licencia",
+      "literal": "Agencia de Valores autorizada por la CNMV para operar un Sistema de Negociación y Liquidación bajo el Régimen Piloto de la UE",
+      "dato": null,
+      "fuentePrimaria": "https://www.token-city.com/es/marketplace",
+      "localizador": "token-city.com/es/marketplace, tarjeta «El futuro del capital privado»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:04:22Z",
+      "alcanceYLimites": "En conflicto con la CNMV: Token City no figura hoy entre los SNL TRD de la relación de infraestructuras, y la propia nota de Bolsamanía (22/05/2026) dice que «prevé» poner en marcha su bolsa bajo el Régimen Piloto.",
+      "estado": "en_conflicto"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Agencia de valores CNMV nº 334 con colocación de instrumentos con TRD en su programa. No es SNL TRD pese a lo que dice su marketplace. Emisor y vehículo sin identificar con documentos."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "La oportunidad está «en estudio» y «próximamente»; no hay fecha de apertura."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Sin documento de emisión: mínimo, comisiones, custodia y salida sin respaldo. Sin mercado secundario."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_verificable",
+      "nota": "Sin advertencias de la CNMV para Token City, Lornin ni Cando (05/11, 08:12 UTC). Sin factores de riesgo publicados."
+    }
+  },
+  "estadoOferta": "proxima",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "estado",
+      "antes": "Sin expediente previo (candidata nueva). El 03/11 solo se leyó la portada de token-city.com, que daba su bolsa como «Próximamente»; exchange.token-city.com no se revisó",
+      "ahora": "05/11: primera oportunidad anunciada, CANDO1, «en estudio», con lista prioritaria",
+      "fuente": "https://exchange.token-city.com/",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": {
+    "nota": "No se propone tarjeta (decisión no_admitir). Solo los tres datos de hoy, como referencia; null = no se puede comprobar hoy en fuente primaria.",
+    "resumenTarjeta": {
+      "minimo": null,
+      "accesoEspana": null,
+      "salida": "Sin mercado secundario hoy: Token City lo anuncia como «próximamente»"
+    }
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": "CNMV · agencia de valores nº 334 (Token City European Exchange A.V.)",
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Sería una emisión inmobiliaria española tokenizada colocada por una agencia de valores inscrita en la CNMV, dirigida también a minoristas según la agencia.",
+    "porQueNo": "Hoy solo está «en estudio»: no hay documento de emisión, emisor confirmado, inscripción ERIR ni mercado secundario."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Es la pista española nueva más seria del día: una agencia de valores inscrita (Token City European Exchange A.V., CNMV nº 334) anuncia su primera oportunidad, CANDO1, ligada a una residencia de mayores de 76 apartamentos en La Moraleja. Pero está «en estudio»: no hay documento de emisión, vehículo, derecho, fecha ni inscripción ERIR, y el mínimo (657 €) y la TIR estimada (~11,7 % bruta) son cifras comerciales sin respaldo. Revisar cuando publique el documento de emisión. Aparte, su marketplace se presenta como SNL del régimen piloto y la CNMV no lo lista como tal.",
+  "bloqueos": [
+    "Documento de emisión o de admisión de CANDO1 no publicado.",
+    "Detalle de la oportunidad solo accesible con registro («Lista prioritaria»); no se ha entrado.",
+    "La pestaña de advertencias de otras entidades de la CNMV (tipo=2) devuelve HTTP 400."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-05T08:04:22Z",
+    "finUtc": "2026-11-05T08:19:40Z"
+  }
+}

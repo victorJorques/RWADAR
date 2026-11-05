@@ -1,0 +1,631 @@
+{
+ "slug": "terreno-con-arrendamiento-billa",
+ "tipoExpediente": "publicada",
+ "grupo": "brickwise",
+ "proveedor": "Brickwise",
+ "plataformaSlug": "brickwise",
+ "entidadComercializadora": "Brickwise Investment GmbH (agente vinculado de Effecta GmbH)",
+ "emisor": "Brick Qogir GmbH & Co KG (FN 549470 w), socio colectivo Brickwise Real Estate GmbH",
+ "vehiculo": "Sociedad vehículo austriaca GmbH & Co KG del grupo Brickwise",
+ "token": "Token en la red «Brickprotocol»; tokenId nulo en la API (no se ha emitido ningún token)",
+ "derechoAdquirido": "Genussschein tokenizado perpetuo (capital ajeno a efectos fiscales) sobre el excedente neto de alquiler y la venta del terreno con supermercado BILLA en Brückl; prenda colectiva prevista en el registro",
+ "jurisdiccion": "AT",
+ "identificador": "ISIN AT0000A3SE89",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Informationsblatt für Anleger (AltFG)",
+   "url": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+   "versionOFecha": "Stand 16.02.2026",
+   "paginas": null,
+   "sha256": "d30134b31232e324e470345bdb08ac7c37c353c40d6cd13137477cc1dc5aac02",
+   "leido": true,
+   "nota": "Descargado de nuevo el 05/11/2026 (2026-11-05T08:03:05Z); SHA-256 idéntico al del 03/11. Texto en fuentes/brickwise/info-AT0000A3SE89.pdf.txt"
+  },
+  {
+   "titulo": "Investitionsbedingungen",
+   "url": "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+   "versionOFecha": "sin fecha visible en el documento",
+   "paginas": null,
+   "sha256": "56b3147d497082b01b573f51680655540365f95e43a64065ad4e8de8a000b533",
+   "leido": true,
+   "nota": "Descargado de nuevo el 05/11/2026 (2026-11-05T08:03:04Z); SHA-256 idéntico al del 03/11. Texto en fuentes/brickwise/contrato-AT0000A3SE89.pdf.txt"
+  },
+  {
+   "titulo": "Basisinformationsblatt (KID)",
+   "url": "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+   "versionOFecha": "Stand 16.02.2026",
+   "paginas": null,
+   "sha256": "3f3206fd1c953eef67faeba7ac60c2b4200f4a56c5c7674171ed3d2b250734bf",
+   "leido": true,
+   "nota": "Descargado de nuevo el 05/11/2026 (2026-11-05T08:03:04Z); SHA-256 idéntico al del 03/11. Texto en fuentes/brickwise/kid-AT0000A3SE89.pdf.txt"
+  },
+  {
+   "titulo": "Rücktrittsbelehrung und vorvertragliche Informationen",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A3SE89/AT0000A3SE89_Ruecktrittsbelehrung.pdf",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": "64612057d922812916e1c893ab67b78592c9f0a8a6c031f27cb3d941912f0528",
+   "leido": true,
+   "nota": "Descargado de nuevo el 05/11/2026 (2026-11-05T08:03:08Z); SHA-256 idéntico al del 03/11. Texto en fuentes/brickwise/ruecktritt-AT0000A3SE89.pdf.txt"
+  },
+  {
+   "titulo": "Mietvertrag (contrato de alquiler con el inquilino, 2012)",
+   "url": "https://staging.cdn.brickwise.at/61a38504-8277-435d-a42b-97a6d41ec266.pdf",
+   "versionOFecha": "PDF creado 17/08/2012",
+   "paginas": 7,
+   "sha256": "0ad5847e65edd9426d91b9bc44a94c587595d5e6d5a639c113298ae8d4d36dd1",
+   "leido": false,
+   "nota": "Descargado de nuevo el 05/11/2026 (2026-11-05T08:03:05Z); SHA-256 idéntico al del 03/11. Escaneo de 2012 sin capa de texto (pdftotext da 7 bytes)."
+  },
+  {
+   "titulo": "API pública v2 (listado de activos)",
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "versionOFecha": "updatedAt del activo 2026-11-04T18:03:48.647Z",
+   "paginas": null,
+   "sha256": "bc589c405d9103499c875675c0a86e429facb3a3e7b850509033ef96015a1d0a",
+   "leido": true,
+   "nota": "Crudo en fuentes/crudo/; consulta 2026-11-05T08:01:15Z"
+  },
+  {
+   "titulo": "Ficha del activo (API v1)",
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+   "versionOFecha": "updatedAt 2026-10-26T22:26:36.233Z",
+   "paginas": null,
+   "sha256": "b66346d157c1fb981b83175c6d344833b330aa1c09208ea3cd1ab3dbd4fdff72",
+   "leido": true,
+   "nota": "Respuesta idéntica byte a byte a la del 03/11; consulta 2026-11-05T08:02:10Z"
+  },
+  {
+   "titulo": "API launchpad (la consulta la app al cargar el mercado)",
+   "url": "https://api.app.brickwise.at/launchpad/api/v2/assets?ids=[…]",
+   "versionOFecha": "consulta 05/11/2026",
+   "paginas": null,
+   "sha256": "76605f8c987e97006bb90c8484b0f1105be9b5a0f68e7f3fb61f823a7063b98b",
+   "leido": true,
+   "nota": "Crudo en fuentes/crudo/; consulta 2026-11-05T08:02:10Z"
+  },
+  {
+   "titulo": "Mercado de la app (texto renderizado sin sesión)",
+   "url": "https://app.brickwise.at/desktopWeb/marketplace",
+   "versionOFecha": "consulta 2026-11-05T08:03:24Z",
+   "paginas": null,
+   "sha256": "a093aa92115d2d8ca4c497b13eef25a496f7dd1291155ab9afe28ae7d600ece6",
+   "leido": true,
+   "nota": "Texto renderizado sin sesión (Playwright); captura en captura-app-marketplace-2026-11-05.png"
+  },
+  {
+   "titulo": "Ficha de BILLA en la app (texto renderizado sin sesión)",
+   "url": "https://app.brickwise.at/desktopWeb/asset/AT0000A3SE89/details",
+   "versionOFecha": "consulta 2026-11-05T08:05:42Z",
+   "paginas": null,
+   "sha256": "3d49cf365fcdbc8a39f2230fa2bd374a6693cd073ccd846f0f4543b5fb0d3cf2",
+   "leido": true,
+   "nota": "Se abre pulsando la tarjeta del mercado; la URL directa /desktopWeb/asset/AT0000A3SE89 devuelve «404 Diese Seite existiert zurzeit nicht» (igual que el 03/11). Captura en captura-app-asset-AT0000A3SE89-2026-11-05.png"
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Effecta GmbH",
+   "numero": "BaFin-ID 10133261",
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "alcance": "Wertpapierinstitut: Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG) y Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG) desde 26.06.2021; «Stand der Daten: 04.11.2026». Es la entidad bajo cuya responsabilidad actúa Brickwise; no acredita el producto ni al emisor.",
+   "consultadoUtc": "2026-11-05T08:07:59Z"
+  },
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Brickwise Investment GmbH",
+   "numero": "80174029",
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (búsqueda por nombre «Brickwise»)",
+   "alcance": "Vertraglich gebundener Vermittler (agente vinculado) con Effecta GmbH como entidad responsable; «Tätig ab 04.08.2021», sin fecha «Tätig bis», Meldedatum 29.06.2023; «Stand der Daten: 04.11.2026». Sin licencia propia. Igual que el 03/11.",
+   "consultadoUtc": "2026-11-05T08:08:23Z"
+  },
+  {
+   "regulador": "CNMV (España)",
+   "entidad": "EFFECTA GmbH",
+   "numero": "5003 (registro 11/11/2020)",
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?numero=5003&tipo=CLP",
+   "alcance": "ESI del EEE en libre prestación en España; programa: «Recepción y transmisión de órdenes» sobre valores negociables y participaciones de IIC. Pestaña «Agentes»: «No se han encontrado datos disponibles» (Brickwise no consta como agente notificado para España). Igual que el 03/11.",
+   "consultadoUtc": "2026-11-05T08:08:00Z"
+  },
+  {
+   "regulador": "Firmenbuch (Austria)",
+   "entidad": "Brick Qogir GmbH & Co KG",
+   "numero": "FN 549470 w",
+   "url": null,
+   "alcance": "Número FN tomado de los documentos del emisor y de la API (spv.taxNumber); no consultado en el Firmenbuch (consulta de pago). El emisor es una sociedad vehículo no supervisada; la emisión no está aprobada por la FMA (oferta con exención de folleto).",
+   "consultadoUtc": null
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Brickwise (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+   "consultadoUtc": "2026-11-05T08:08:47Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas; la primera, del 11/05/2026). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Effecta (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "consultadoUtc": "2026-11-05T08:08:48Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas; la primera, del 11/05/2026). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Brick Qogir (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Qogir",
+   "consultadoUtc": "2026-11-05T08:08:50Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas; la primera, del 11/05/2026). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Brickwise Real Estate (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise+Real+Estate",
+   "consultadoUtc": "2026-11-05T08:08:58Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve entidades advertidas; la primera, del 11/05/2026). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "FMA (Austria)",
+   "busqueda": "brickwise (base de entidades autorizadas)",
+   "resultado": "sin coincidencias («0 Search results · No entries found»): Brickwise no es entidad autorizada por la FMA",
+   "url": "https://www.fma.gv.at/en/search-company-database/?cname=brickwise",
+   "consultadoUtc": "2026-11-05T08:09:19Z"
+  },
+  {
+   "regulador": "FMA (Austria)",
+   "busqueda": "brickwise, effecta, brick qogir, brickone (buscador de la web de la FMA, que incluye sus avisos al inversor)",
+   "resultado": "0 resultados en las cuatro búsquedas; la misma búsqueda con «investor warning» devuelve 1.224 resultados (buscador operativo)",
+   "url": "https://www.fma.gv.at/en/?s=brickwise",
+   "consultadoUtc": "2026-11-05T08:09:12Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "\"stage\":\"primary\",\"bricks\":6404,\"availableBricks\":6322",
+   "dato": "abierta (emisión primaria): 82 de 6.404 participaciones suscritas",
+   "fuentePrimaria": "https://api.app.brickwise.at/api/v2/assets",
+   "localizador": "Objeto id=AT0000A3SE89: stage, bricks, availableBricks; updatedAt=2026-11-04T18:03:48.647Z",
+   "fechaDato": "2026-11-05",
+   "consultadoUtc": "2026-11-05T08:01:15Z",
+   "alcanceYLimites": "La cifra no se mueve desde el 01/11 (82); entre el 06/10 y el 21/10 eran 62 (expedientes de esas fechas). tokenId sigue nulo: no se ha emitido ningún token.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "estado",
+   "literal": "Neue Objekte … Betriebsgrundstück mit langfristigem BILLA-Mietvertrag … 1% … Mindestinvestition € 1.000,00 · Ficha: «+ Weitere Anteile kaufen» … Verfügbare Anteile 6.322 · Anteile Gesamt 6.404",
+   "dato": "La app la sigue ofreciendo en «Neue Objekte» con botón de compra, mínimo de 1.000 € y 6.322 de 6.404 participaciones disponibles",
+   "fuentePrimaria": "https://app.brickwise.at/desktopWeb/marketplace",
+   "localizador": "Mercado de la app, bloque «Neue Objekte», y ficha …/asset/AT0000A3SE89/details (texto renderizado sin sesión)",
+   "fechaDato": "2026-11-05",
+   "consultadoUtc": "2026-11-05T08:05:42Z",
+   "alcanceYLimites": "Sin iniciar sesión no se puede comprobar que la orden se acepte de verdad. El indicador «1%» es 82/6.404 redondeado.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "plazo",
+   "literal": "Die Frist für die Erreichung der Funding-Schwelle („Zeichnungsfrist“) endet am 16.05.2026 um 23:59 Uhr. ... Ebenso kann die Zeichnungsfrist mehrmals, maximal jedoch um bis zum dreifachen des ursprünglichen Ausgabezeitraums verlängert werden.",
+   "dato": "Plazo publicado vencido el 16/05/2026; prórroga permitida pero sin nueva fecha publicada",
+   "fuentePrimaria": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+   "localizador": "Informationsblatt AltFG, Teil B, p. 3; Investitionsbedingungen §4.3 («höchstens dem dreifachen der ursprünglichen Zeichnungsfrist») y «Zeichnungsfrist: 3 Monate»",
+   "fechaDato": "2026-02-16",
+   "consultadoUtc": "2026-11-05T08:03:05Z",
+   "alcanceYLimites": "API v1 y launchpad hoy (2026-11-05T08:02:10Z): issueEndDate = issueEndDateOriginal = 2026-05-15T22:00:00Z (16/05/2026, hora de Viena): no registra prórroga. Investitionsbedingungen §4.3: prórroga de como máximo el triple de la «Zeichnungsfrist» de 3 meses; según nuestra lectura, el límite sería en torno al 16/02/2027 (Brickwise no publica la fecha). · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "plazo",
+   "literal": "\"issueStartDate\":\"2026-02-15T23:00:00.000Z\",\"issueEndDate\":\"2026-05-15T22:00:00.000Z\",\"issueEndDateOriginal\":\"2026-05-15T22:00:00.000Z\"",
+   "dato": "Sin prórroga registrada en la API",
+   "fuentePrimaria": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+   "localizador": "investmentDetails: issueStartDate, issueEndDate, issueEndDateOriginal",
+   "fechaDato": "2026-10-26",
+   "consultadoUtc": "2026-11-05T08:02:10Z",
+   "alcanceYLimites": "Igual en la API launchpad de hoy (2026-11-05T08:02:10Z) y en la ficha del activo (misma respuesta que el 03/11).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "umbral",
+   "literal": "Der Mindestkapitalbedarf des Emittenten beträgt EUR 500.000,00 („Funding-Schwelle“) ... wird der Vertrag über die Zeichnung der Genussscheine aufgelöst ... kostenfrei und ohne Verzinsung refundiert.",
+   "dato": "Umbral 500.000 € (5.000 participaciones); hoy 82 suscritas = 8.200 € (1,64 % del umbral)",
+   "fuentePrimaria": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+   "localizador": "Informationsblatt AltFG, Teil B, p. 3; Investitionsbedingungen «Mindestausgabemenge: 5.000»",
+   "fechaDato": "2026-11-05",
+   "consultadoUtc": "2026-11-05T08:03:05Z",
+   "alcanceYLimites": "Suscritas según la API v2 del 05/11/2026 (2026-11-05T08:01:15Z). La API da issueFundingFloor=78076; 5.000/6.404 = 78,076 %, así que parece el umbral en porcentaje mal escalado (campo sin documentar; solo lo anotamos). · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Der Mindestzeichnungsbetrag beträgt EUR 1.000,00. Eine Erhöhung dieses Betrages ist in 100,00-EUR- Schritten möglich.",
+   "dato": "1.000 € (10 participaciones de 100 €), y después en tramos de 100 €.",
+   "fuentePrimaria": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+   "localizador": "Informationsblatt AltFG, Teil D; Investitionsbedingungen «Mindestzeichnungsbetrag: EUR 1.000,00»; API minSubscriptionAmount=10; app «Mindestinvestition € 1.000,00»",
+   "fechaDato": "2026-02-16",
+   "consultadoUtc": "2026-11-05T08:03:05Z",
+   "alcanceYLimites": "Más 1,5 % de comisión de intermediación. · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "precio",
+   "literal": "Der Nennbetrag je Token (Produkt) beträgt EUR 100,00; die Ausgabe erfolgt zu 100% des Nennbetrages und der Gesamtbetrag des Produkts beträgt bis zu EUR 640.400,00.",
+   "dato": "100 € por participación; emisión hasta 640.400 €",
+   "fuentePrimaria": "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+   "localizador": "Basisinformationsblatt (Stand 16.02.2026), p. 1",
+   "fechaDato": "2026-02-16",
+   "consultadoUtc": "2026-11-05T08:03:04Z",
+   "alcanceYLimites": "Precio de emisión; sin mercado secundario hasta la emisión (API: sin órdenes, offers vacío). · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "derecho",
+   "literal": "Genussscheinen ... Zahlungsansprüche ... durch eine an der Immobilie noch zu bestellende Immobiliarsicherheit (Kollektivpfandrecht zugunsten der Tokeninhaber) besichert werden.",
+   "dato": "Genussschein tokenizado perpetuo (capital ajeno a efectos fiscales) sobre el excedente neto de alquiler y la venta del terreno con supermercado BILLA en Brückl; prenda colectiva prevista en el registro",
+   "fuentePrimaria": "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+   "localizador": "Basisinformationsblatt, p. 1 «Art»",
+   "fechaDato": "2026-02-16",
+   "consultadoUtc": "2026-11-05T08:03:04Z",
+   "alcanceYLimites": "API: «Grundbücherliche Besicherung noch ausstehend». Sin propiedad del inmueble ni derechos societarios (Informationsblatt Teil E, p. 13). El emisor retiene el 3 % de la renta neta (contrato §2.1). · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Im Falle einer erfolgreichen Investition sowie einem erfolgreichen Verkauf über den Marktplatz von Brickwise fällt jeweils eine einmalige Vermittlungsprovision in Höhe von 1,5% des Investitions-/Verkaufsbetrags an.",
+   "dato": "1,5 % al invertir y 1,5 % al vender",
+   "fuentePrimaria": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+   "localizador": "Informationsblatt AltFG, Teil F, p. 15",
+   "fechaDato": "2026-02-16",
+   "consultadoUtc": "2026-11-05T08:03:05Z",
+   "alcanceYLimites": "Costes indirectos: del nominal de 640.400 € solo 550.000 € pagan el inmueble; el resto son impuestos, gastos, marketing (26.311,54 €) y licencia de software de Brickwise IT Services (9.606 €) (contrato §2.2, p. 4). RIY total KID: 12,34 % a 10 años (0,65 %/año). · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Es liegt per 31.12.2024 ein negatives Eigenkapital in Höhe von rund EUR 83.000,00 vor und ein den Gesellschaftern zuzurechnender Bilanzverlust in Höhe von rund EUR 85.000,00 vor.",
+   "dato": "Emisor con fondos propios negativos (~83.000 €) a 31/12/2024",
+   "fuentePrimaria": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+   "localizador": "Informationsblatt AltFG, Teil C, p. 8",
+   "fechaDato": "2024-12-31",
+   "consultadoUtc": "2026-11-05T08:03:05Z",
+   "alcanceYLimites": "Además: riesgo 6 de 7 (KID p. 2), conflicto de intereses dentro del grupo Brickwise (Informationsblatt p. 6–7), oferta no revisada ni aprobada por la FMA (p. 1). · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "regimen",
+   "literal": "INFORMATIONSBLATT FÜR ANLEGER gemäß § 4 Abs 1 Z 1 Alternativfinanzierungsgesetz (AltFG) ... wurde weder von der Finanzmarktaufsicht (FMA) noch einer anderen österreichischen Behörde geprüft oder genehmigt.",
+   "dato": "Oferta pública austriaca bajo AltFG con exención de folleto (< 2 M€ en 12 meses en la UE)",
+   "fuentePrimaria": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+   "localizador": "Informationsblatt AltFG, p. 1; Investitionsbedingungen §4.1, p. 5",
+   "fechaDato": "2026-02-16",
+   "consultadoUtc": "2026-11-05T08:03:05Z",
+   "alcanceYLimites": "Régimen nacional austriaco; no es un folleto aprobado ni un pasaporte de la oferta a España. · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+   "dato": "1,5 % por compra y 1,5 % por venta",
+   "fuentePrimaria": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+   "localizador": "Kosteninformationen Brickwise, p. 1 (Last-Modified 01/04/2023)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-05T08:03:07Z",
+   "alcanceYLimites": "Comisión del intermediario sobre el importe de cada operación; los costes del producto (RIY) están en el KID de cada emisión y no se suman mecánicamente. · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "custodia",
+   "literal": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+   "dato": "Autocustodia del token en la cuenta/app del inversor",
+   "fuentePrimaria": "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+   "localizador": "Basisinformationsblatt, p. 1 «Art»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-05T08:03:04Z",
+   "alcanceYLimites": "La recuperación de una cuenta exige identificación notarial (~120 € según Kosteninformationen p. 1, nota 3). · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "\"rentalReturn\":5.07; rentalIncome=67170.36; Submietvertrag=33277.44; managementFee=1021.49; liquidityReserve=420.00; rentalSurplus=32451.43 · app: «5,07 % p.a. Erw. laufende Ausschüttung»",
+   "dato": null,
+   "fuentePrimaria": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+   "localizador": "rentalDetails; mercado de la app",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-05T08:02:10Z",
+   "alcanceYLimites": "Previsión del emisor sobre 100 € por participación; la emisión no se ha ejecutado y la partida «Submietvertrag» (la mitad de la renta) sigue sin explicar porque el contrato de alquiler es una imagen. No se publica (tarjeta «en camino»).",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "garantia",
+   "literal": "\"landRegisterMortgageStatusText\":\"Grundbücherliche Besicherung noch ausstehend.\"",
+   "dato": "Prenda registral pendiente",
+   "fuentePrimaria": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+   "localizador": "investmentDetails.landRegisterMortgageStatusText",
+   "fechaDato": "2026-10-26",
+   "consultadoUtc": "2026-11-05T08:02:10Z",
+   "alcanceYLimites": "Igual que el 01/11 y el 03/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "desistimiento",
+   "literal": "Du kannst von deiner Zeichnung (Angebot an die Emittentin über den Erwerb der tokenisierten Wertpapiere) innerhalb von 14 Tagen ohne Angabe von Gründen zurücktreten.",
+   "dato": "14 días para desistir de la suscripción, hasta que se emitan los tokens",
+   "fuentePrimaria": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A3SE89/AT0000A3SE89_Ruecktrittsbelehrung.pdf",
+   "localizador": "Rücktrittsbelehrung, punto 1",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-05T08:03:08Z",
+   "alcanceYLimites": "El plazo termina antes si la emisora entrega los valores. No hay desistimiento en la reventa (punto 2). La dirección de la emisora en este documento (Marxergasse 24, 1030 Viena) no coincide con la de la API (Börseplatz 4, 1010 Viena). · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "salida",
+   "literal": "Sowohl der Investor als auch die Emittentin sind berechtigt, die Wertpapiere erstmalig nach Ablauf von 5 Jahren ab dem Ausgabetag ... sowie danach in jeweils wiederkehrenden Abständen von 1 Jahr(en) ... zu kündigen.",
+   "dato": "Si no llega a 500.000 €, te devuelven el dinero; si se emite, cancelable a los 5 años o reventa en la app",
+   "fuentePrimaria": "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+   "localizador": "Basisinformationsblatt, p. 3 «Wie lange sollte ich die Anlage halten»; Informationsblatt Teil B (devolución si no se alcanza el umbral)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-05T08:03:04Z",
+   "alcanceYLimites": "Tras la emisión: cancelación a los 5 años y luego cada año con 30 días de preaviso, o venta en la app si hay comprador (1,5 %). Tenencia recomendada en el KID: 10 años. · Releído el 05/11/2026 (mismo SHA-256 que el 01/11 y el 03/11).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Mindestinvestition € 1.000,00 · \"minSubscriptionAmount\":10",
+   "dato": "1.000 € (10 participaciones de 100 €), y después en tramos de 100 €",
+   "fuentePrimaria": "https://app.brickwise.at/desktopWeb/marketplace",
+   "localizador": "Ficha de la app (Details) y API launchpad investmentDetails.minSubscriptionAmount; coincide con el Informationsblatt Teil D",
+   "fechaDato": "2026-11-05",
+   "consultadoUtc": "2026-11-05T08:05:42Z",
+   "alcanceYLimites": "Más 1,5 % de comisión de intermediación.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+   "dato": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+   "fuentePrimaria": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "localizador": "FAQ (texto renderizado hoy; mismo texto que el 03/11)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-05T08:07:07Z",
+   "alcanceYLimites": "Abrir cuenta no confirma que la emisión se distribuya en España: oferta AltFG austriaca, Effecta en la CNMV solo en libre prestación (RTO) y sin agentes; documentos solo en alemán.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "{\"data\":{\"fees\":0.015}}",
+   "dato": "1,5 % por operación (API de comisiones)",
+   "fuentePrimaria": "https://api.app.brickwise.at/api/v1/utils/fees",
+   "localizador": "GET /api/v1/utils/fees",
+   "fechaDato": "2026-11-05",
+   "consultadoUtc": "2026-11-05T08:01:18Z",
+   "alcanceYLimites": "Confirma el 1,5 % del Informationsblatt y de Kosteninformationen.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "reparto",
+   "literal": "Nächste Ausschüttung Monatlich zum 15. (Erwartet ab 14.7.2026) · \"plannedFirstRentalIncomeDate\":\"2026-07-14T22:00:00.000Z\" · tokenId=null",
+   "dato": "La app sigue anunciando repartos «desde el 14/07/2026», una fecha ya pasada, con la emisión sin ejecutar: no ha podido haber reparto",
+   "fuentePrimaria": "https://app.brickwise.at/desktopWeb/marketplace",
+   "localizador": "Ficha de la app (Höhepunkte der Beteiligung) y API launchpad rentalDetails.plannedFirstRentalIncomeDate",
+   "fechaDato": "2026-11-05",
+   "consultadoUtc": "2026-11-05T08:05:42Z",
+   "alcanceYLimites": "Que no haya habido reparto se deduce de que la emisión no se ha ejecutado (umbral no alcanzado, sin tokens emitidos); no hay extracto de pagos público.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "entidad",
+   "literal": "Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird bei der Vermittlung von Finanzinstrumenten gemäß § 2 (2) Nr. 3 WpIG ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+   "dato": "Brickwise Investment GmbH, agente vinculado de Effecta GmbH",
+   "fuentePrimaria": "https://www.brickwise.at/imprint",
+   "localizador": "Impressum (hoy)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-05T08:07:20Z",
+   "alcanceYLimites": "Contrastado hoy con la BaFin (nº 80174029, activo, datos a 04/11/2026).",
+   "estado": "respaldado"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Comprobado hoy: agente vinculado nº 80174029 de Effecta GmbH (BaFin-ID 10133261, datos a 04/11/2026); Effecta en la CNMV nº 5003 (libre prestación, RTO, sin agentes). Emisor: SPV austriaca no supervisada; oferta AltFG sin aprobación de la FMA."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "API 05/11/2026: stage=primary y 82 de 6.404 suscritas (sin cambio desde el 01/11). El plazo publicado venció el 16/05/2026 y la API no registra prórroga, pero la app la sigue ofreciendo en «Neue Objekte» con botón de compra."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Mínimo 1.000 € en tramos de 100 €; cuenta para residentes del EEE con KYC; 1,5 % al entrar y al salir; 14 días para desistir de la suscripción; distribución en España no confirmada; documentos en alemán."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Riesgo 6 de 7; emisor con fondos propios negativos a 31/12/2024; garantía registral pendiente; umbral muy lejos (1,64 %). CNMV y FMA sin advertencias (comprobado hoy)."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "no_confirmado",
+ "propuestaTarjeta": {
+  "titulo": "Terreno con supermercado BILLA · Brückl",
+  "categoria": "Inmobiliario",
+  "pais": "AT",
+  "tipo": "rendimiento",
+  "coleccion": "en_camino",
+  "resumen": "Genussscheine tokenizados de Brick Qogir GmbH & Co KG sobre las rentas de un terreno con supermercado alquilado a BILLA hasta 2057 en Brückl (Carintia). Emisión primaria a 100 € por participación, pendiente de alcanzar su umbral mínimo.",
+  "rentabilidad": null,
+  "metricas": [
+   {
+    "etiqueta": "Mínimo",
+    "valor": "1.000 € (tramos de 100 €)"
+   },
+   {
+    "etiqueta": "Precio por participación",
+    "valor": "100 €"
+   },
+   {
+    "etiqueta": "Reembolso",
+    "valor": "Cancelable a los 5 años y luego cada año; o reventa"
+   },
+   {
+    "etiqueta": "Comisión",
+    "valor": "1,5 % al invertir y 1,5 % al vender"
+   },
+   {
+    "etiqueta": "Intermediario",
+    "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+   },
+   {
+    "etiqueta": "Riesgo KID",
+    "valor": "6 de 7"
+   },
+   {
+    "etiqueta": "Moneda",
+    "valor": "EUR"
+   },
+   {
+    "etiqueta": "Suscrito / umbral",
+    "valor": "82 de 5.000 participaciones necesarias (API 05/11/2026)"
+   }
+  ],
+  "avisos": [
+   "La emisión solo se ejecuta si alcanza 500.000 €; el 05/11/2026 la API mostraba 82 participaciones suscritas (8.200 €, el 1,64 % del mínimo). Si no se alcanza, se devuelve el dinero sin intereses.",
+   "El plazo publicado terminó el 16/05/2026; el contrato permite prorrogarlo, pero no se publica la nueva fecha.",
+   "El emisor tenía fondos propios negativos a 31/12/2024 y la garantía en el registro aún no está inscrita.",
+   "Cuenta para residentes del EEE; distribución en España no confirmada; documentos en alemán. Riesgo 6 de 7.",
+   "El reparto que prevé el emisor no está garantizado y todavía no se ha pagado ninguno.",
+   "Puedes desistir de la suscripción en 14 días, salvo que antes te entreguen los tokens; es un derecho que da el emisor y no existe en la reventa."
+  ],
+  "url": "https://app.brickwise.at/desktopWeb/marketplace",
+  "fuentesActuales": [
+   "https://app.brickwise.at/desktopWeb/marketplace",
+   "https://api.app.brickwise.at/api/v2/assets",
+   "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+   "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+   "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf"
+  ],
+  "lugar": "Brückl · Austria",
+  "pasos": [
+   "Cuenta con residencia EEE",
+   "Suscribes desde mínimo",
+   "Esperas umbral mínimo",
+   "Reparto si se emite"
+  ],
+  "concepto": "un supermercado de pueblo con aparcamiento en un valle de Carintia",
+  "resumenTarjeta": {
+   "minimo": "1.000 € (10 participaciones de 100 €)",
+   "accesoEspana": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+   "salida": "Si no llega a 500.000 €, te devuelven el dinero; si se emite, cancelable a los 5 años o reventa en la app"
+  }
+ },
+ "revisionAvisos": [
+  {
+   "aviso": "La emisión solo se ejecuta si alcanza 500.000 €; el 03/11/2026 la API mostraba 82 participaciones suscritas (1,64 %). Si no se alcanza, se devuelve el dinero sin intereses.",
+   "veredicto": "cambia",
+   "textoNuevo": "La emisión solo se ejecuta si alcanza 500.000 €; el 05/11/2026 la API mostraba 82 participaciones suscritas (8.200 €, el 1,64 % del mínimo). Si no se alcanza, se devuelve el dinero sin intereses.",
+   "fuente": "https://api.app.brickwise.at/api/v2/assets",
+   "literal": "\"stage\":\"primary\",\"bricks\":6404,\"availableBricks\":6322 (updatedAt 2026-11-04T18:03:48.647Z)",
+   "consultadoUtc": "2026-11-05T08:01:15Z",
+   "nota": "La cifra sigue en 82 (igual que el 01/11 y el 03/11); solo cambia la fecha del dato y se aclara a qué se refiere el 1,64 %."
+  },
+  {
+   "aviso": "El plazo publicado terminó el 16/05/2026; el contrato permite prorrogarlo, pero no se publica la nueva fecha.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+   "literal": "\"issueEndDate\":\"2026-05-15T22:00:00.000Z\" = issueEndDateOriginal (también en la API launchpad)",
+   "consultadoUtc": "2026-11-05T08:02:10Z"
+  },
+  {
+   "aviso": "El emisor tenía fondos propios negativos a 31/12/2024 y la garantía en el registro aún no está inscrita.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+   "literal": "Es liegt per 31.12.2024 ein negatives Eigenkapital in Höhe von rund EUR 83.000,00 vor · API: «Grundbücherliche Besicherung noch ausstehend.»",
+   "consultadoUtc": "2026-11-05T08:03:05Z"
+  },
+  {
+   "aviso": "Cuenta para residentes del EEE; distribución en España no confirmada; documentos en alemán. Riesgo 6 de 7.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "literal": "Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen. · KID: Risikoklasse 6",
+   "consultadoUtc": "2026-11-05T08:07:07Z"
+  },
+  {
+   "aviso": "El reparto que prevé el emisor no está garantizado y todavía no se ha pagado ninguno.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+   "literal": "«Monatlich zum 15. (Erwartet ab 14.7.2026)» con la emisión sin ejecutar (82 de 5.000; tokenId nulo)",
+   "consultadoUtc": "2026-11-05T08:05:42Z"
+  },
+  {
+   "aviso": "Puedes desistir de la suscripción en 14 días, salvo que antes te entreguen los tokens; es un derecho que da el emisor y no existe en la reventa.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A3SE89/AT0000A3SE89_Ruecktrittsbelehrung.pdf",
+   "literal": "Du kannst von deiner Zeichnung … innerhalb von 14 Tagen ohne Angabe von Gründen zurücktreten. … Kein Rücktrittsrecht am Zweitmarkt",
+   "consultadoUtc": "2026-11-05T08:03:08Z"
+  }
+ ],
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "metricas · Suscrito / umbral",
+   "antes": "82 de 5.000 participaciones necesarias (API 03/11/2026)",
+   "ahora": "82 de 5.000 participaciones necesarias (API 05/11/2026)",
+   "fuente": "https://api.app.brickwise.at/api/v2/assets",
+   "critico": false,
+   "nota": "Misma cifra; solo cambia la fecha."
+  },
+  {
+   "campo": "avisos",
+   "antes": "La emisión solo se ejecuta si alcanza 500.000 €; el 03/11/2026 la API mostraba 82 participaciones suscritas (1,64 %). Si no se alcanza, se devuelve el dinero sin intereses.",
+   "ahora": "La emisión solo se ejecuta si alcanza 500.000 €; el 05/11/2026 la API mostraba 82 participaciones suscritas (8.200 €, el 1,64 % del mínimo). Si no se alcanza, se devuelve el dinero sin intereses.",
+   "fuente": "https://api.app.brickwise.at/api/v2/assets",
+   "critico": false,
+   "nota": "Misma cifra (82); cambia la fecha y se aclara el 1,64 %."
+  },
+  {
+   "campo": "resumenTarjeta.accesoEspana",
+   "antes": "Sin confirmar: Brickwise abre cuenta a residentes del EEE (España incluida), pero no confirma que esta emisión se distribuya en España",
+   "ahora": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+   "fuente": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "critico": false,
+   "nota": "Mismo sentido; el texto publicado tiene 131 caracteres y la norma pide ≤ 120."
+  },
+  {
+   "campo": "verificadaEl",
+   "antes": "2026-11-03",
+   "ahora": "2026-11-05",
+   "fuente": "https://api.app.brickwise.at/api/v2/assets",
+   "critico": false
+  }
+ ],
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": "1.000 € (EUR), tramos de 100 €",
+  "supervisorVerificado": "BaFin: Effecta GmbH (BaFin-ID 10133261) y Brickwise Investment GmbH, agente vinculado nº 80174029; CNMV: Effecta nº 5003 (libre prestación). Comprobado el 05/11/2026",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "si",
+  "cifraRecienteVerificada": "si",
+  "porQueDestaca": "Sigue siendo la única emisión primaria de Brickwise en la app (05/11/2026): 100 € por participación y mínimo de 1.000 €.",
+  "porQueNo": "Solo 82 de las 5.000 participaciones del umbral, plazo vencido sin prórroga publicada, emisor con fondos propios negativos y acceso desde España sin confirmar."
+ },
+ "decision": "actualizar",
+ "motivoDecision": "Sin cambios de fondo desde el 03/11: mismos documentos (mismo SHA-256), 82 participaciones suscritas de las 5.000 necesarias (igual desde el 01/11), plazo publicado vencido el 16/05/2026 sin prórroga registrada en la API y la app la sigue ofreciendo. Se re-fecha el aviso del umbral y la métrica al 05/11. Se mantiene en «en camino». Resta confianza: el 03/11 se fijó mediados de noviembre como punto de control; si el 15/11 sigue en 82, proponemos retirarla (decide Víctor).",
+ "bloqueos": [
+  "Prórroga del plazo: Brickwise no publica fecha nueva y la API no la registra.",
+  "Contrato de alquiler (Mietvertrag) solo en imagen: la partida «Submietvertrag» sigue sin explicar.",
+  "Sin sesión no se puede comprobar que la app acepte de verdad una suscripción hoy.",
+  "Firmenbuch no consultado (de pago)."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-05T08:01:15Z",
+  "finUtc": "2026-11-05T08:18:06Z"
+ }
+}

@@ -1,0 +1,202 @@
+Condiciones Generales | Token City Exchange
+TOKEN CITY
+EXCHANGE
+Login
+Registrarse
+ES
+EN
+Sesión
+Registrarse
+ES
+EN
+Condiciones Generales de Contratación
+Volver al inicio
+Última actualización:
+28 de febrero de 2026
+Tabla de Contenidos
+Introducción
+Consentimiento
+Registro
+Servicios de TC AV
+Condiciones para Emisores
+Solicitud de admisión
+Decisión de admisión
+Conservar la condición de Emisor
+Tarifas para Emisores
+Otras garantías y obligaciones
+Condiciones para Miembros
+Habilitarse para operar
+Recibir contraseñas para la Wallet
+Explorar e invertir
+Derechos y obligaciones de los instrumentos financieros
+Suspensión y pérdida de la condición
+Tarifas para Miembros
+Advertencias
+Condiciones comunes
+Responsabilidad y garantías
+Fondo de Garantía de Inversiones
+Propiedad Intelectual e Industrial
+Miscelánea
+Ley aplicable y jurisdicción
+1. Introducción
+Las presentes Condiciones Generales de Contratación (en adelante, las Condiciones Generales) establecen los términos y condiciones aplicables a los usuarios (en adelante, el Usuario o los Usuarios) dentro del área privada de la plataforma web
+https://exchange.token-city.com
+(en adelante, el Sitio Web), operada por TOKEN CITY EUROPEAN EXCHANGE S.A. A.V. (en adelante, el TC AV), identificada con C.I.F. A25988981 y domiciliada en C/ de Henri Dunant 17, 28036 Madrid, siendo su e-mail de contacto:
+contact@token-city.com
+. TC AV se encuentra inscrito en el Registro Mercantil de Madrid, Tomo 0, Folio 0, Hoja M-00874124.
+TC AV es una Agencia de Valores, con número de registro oficial en CNMV nº 334, que cuenta con la autorización pertinente para prestar los servicios regulados que figuran en su programa de actividades (en adelante, los Servicios).
+2. Consentimiento
+El registro por parte de los Usuarios en el Sitio Web está sujeto a la previa aceptación de forma expresa de todas las Condiciones Generales vigentes en cada momento en que el Usuario acceda al Sitio Web.
+Constituyen las Condiciones Generales el presente documento, junto con:
+El reglamento de defensa del cliente, incluyendo la política de gestión de quejas y reclamaciones.
+La política de gestión de conflicto de intereses.
+El Usuario garantiza a TC AV y queda obligado a cumplir estas Condiciones Generales, el Aviso Legal, la Política de Privacidad y la Política de Cookies, respetando el interés público, la legalidad vigente y las exigencias de la buena fe.
+Si algún Usuario no estuviese de acuerdo con el contenido o parte del contenido de las presentes Condiciones Generales no podrá registrarse en el Sitio Web, no pudiendo acceder ni disponer de los servicios que en éste se ofrecen. El Usuario debe leer atentamente las presentes Condiciones Generales cada vez que acceda o utilice algún servicio a través del Sitio Web, ya que podrían sufrir modificaciones.
+TC AV se reserva el derecho a denegar, sin derecho a indemnización, el acceso al Sitio Web y rescindir la contratación a aquellos Usuarios que incumplan o hagan un uso que vulnera las presentes Condiciones Generales o las particulares que, en cada caso, les sean de aplicación.
+El Usuario queda informado y acepta expresamente que los datos personales facilitados en el proceso de contratación de los servicios serán incorporados a un fichero automatizado, cuya titularidad corresponde a TC AV, y serán tratados de acuerdo con la Política de Privacidad. Los Usuarios podrán, en todo momento, ejercer sus derechos de acceso, rectificación, cancelación y oposición, en la forma descrita en la Política de Privacidad de TC AV.
+Las Condiciones Generales que aquí se recogen son aplicables a todas las formas de acceso que se hagan al Sitio Web, incluyendo Internet, vía móvil o cualquier otro dispositivo.
+El Usuario acepta que TC AV le proporcione la información correspondiente a los Servicios, de acuerdo con la normativa en vigor, a través del Área Privada del Sitio Web y del propio Sitio Web, y que las comunicaciones entre las Partes se realicen igualmente a través de la referida Área Privada del Sitio Web y del propio Sitio Web. A los efectos anteriores, el Usuario reconoce que la provisión de dicha información y la comunicación entre las Partes mediante dichos medios resulta apropiada al contexto de la prestación de los Servicios, y que está conforme en que la provisión de la información y la comunicación se realice en dicha forma. TC AV pondrá los medios razonables para que la información esté accesible de forma continuada.
+El acceso al área privada del Sitio Web se encuentra sujeto al registro previo. Las presentes Condiciones Generales no excluyen la posibilidad de que ciertos Servicios o utilidades ofrecidos por medio del Sitio Web estén sometidos a unas condiciones especiales que, en todo caso, podrán ser consultadas por el Usuario antes de su activación y contratación.
+TC AV se reserva el derecho de efectuar los cambios y las modificaciones que considere oportunas en el Sitio Web y en las presentes Condiciones Generales siguiendo el procedimiento previsto en la cláusula "Miscelánea" de este documento.
+3. Registro
+Cuando el Usuario se registra, cumplimentando el formulario de registro, reconoce haber tenido conocimiento del contenido de las presentes Condiciones Generales y declara expresamente que las acepta.
+El Usuario declara ser mayor de edad y disponer de la capacidad jurídica suficiente para vincularse por las Condiciones Generales. Igualmente, acepta de forma expresa y sin excepciones que el acceso y la utilización del Sitio Web, de sus Servicios y de los contenidos, tiene lugar bajo su única y exclusiva responsabilidad.
+Si el Usuario es una persona jurídica, garantiza estar válidamente constituida. El representante que se registre en nombre de una persona jurídica garantiza y certifica que tiene todos los derechos y poderes necesarios para la aceptación de las presentes Condiciones Generales en nombre de la persona jurídica a la que representa.
+El Usuario garantiza que los datos que proporcione a TC AV son verdaderos y correctos. En caso de haber facilitado datos falsos o inexactos, TC AV se reserva el derecho a prohibirle el acceso al Sitio Web.
+El Usuario se compromete a poner en conocimiento de TC AV cualquier circunstancia que afecte a los datos comunicados o que tenga incidencia en los Servicios prestados por éste, entre otras, y a efectos meramente enunciativos y no limitativos: modificación en el domicilio, nacionalidad, residencia fiscal, estado civil, régimen económico matrimonial, capacidad de obrar, revocación o modificación de los poderes otorgados a los Representantes Autorizados, modificaciones en los titulares de la cuenta, embargo o constitución de cualquier carga o gravamen sobre la totalidad o parte de los Instrumentos Financieros o efectivo, modificaciones de la forma jurídica en casos de Usuarios personas jurídicas, cambios en la titularidad real, situaciones concursales, cualquier hecho o circunstancia que modifique los conocimientos, situación financiera y objetivos de inversión comunicados a TC AV, etc. El Usuario mantendrá actualizada permanentemente la información facilitada a TC AV.
+El acceso al área privada del Sitio Web y la propia operativa dentro de la misma se realizará mediante la utilización de contraseñas. Estas tienen el carácter de personales e intransferibles. Los Usuarios serán responsables de la adecuada custodia y confidencialidad de cualquier contraseña que le sea suministrada por TC AV, y se comprometen a no ceder su uso a terceros, ni a permitir su acceso a personas ajenas. Será responsabilidad de los Usuarios la utilización ilícita del Sitio Web por cualquier tercero ilegítimo que emplee una contraseña a causa de una utilización no diligente o de la pérdida de la misma por el Usuario.
+El Usuario tiene la obligación de notificar de forma inmediata a TC AV cualquier hecho que conlleve el uso indebido de las contraseñas, tales como el extravío o el acceso no autorizado, con el fin de proceder a su inmediata cancelación.
+Mientras no se comuniquen tales hechos, TC AV estará eximido de cualquier responsabilidad que pudiera derivarse de ese uso indebido de las contraseñas por terceros no autorizados.
+Por razones de seguridad (por ejemplo, varios intentos fallidos de acceso) u operativas, así como cuando el Usuario haga un uso indebido de las mismas, TC AV podrá bloquear y sustituir las contraseñas, notificando dicha situación al Usuario. TC AV podrá realizar las comprobaciones que estime necesarias sobre la identidad y autenticación del Usuario quedando exonerada de cualquier responsabilidad que pudiera derivarse de la indebida, incorrecta o negligente utilización o conservación de las contraseñas por parte del Usuario.
+4. Servicios de TC AV
+TC AV podrá prestar los Servicios que su autorización como Agencia de Valores le permite, en los términos dispuestos al efecto en su Programa de Actividades, publicado en el registro oficial de la CNMV en el siguiente enlace:
+https://www.cnmv.es/portal/consultas/esi/esis?nif=A25988981&vista=17&lang=es
+4.1 Condiciones generales de contratación para Emisores
+Los Emisores son personas jurídicas que han emitido o que tienen previsto emitir instrumentos financieros tokenizados y, en relación con ello, podrán ser Usuarios del Sitio Web.
+Estos Emisores podrán recibir servicios de registro e inscripción (ERIR), colocación y/o futura negociación de sus instrumentos financieros tokenizados, para lo cual deberán ser previamente admitidos por TC AV.
+4.1.1 Solicitud de admisión
+Los Emisores deberán presentar a TC AV la siguiente información:
+a. Documentación de identificación
+DNI o Pasaporte del representante legal y título de su representación.
+Escritura notarial debidamente inscrita en el Registro Mercantil que contenga los estatutos sociales actualizados.
+Certificado de Registro de la empresa con una antigüedad inferior a 3 meses.
+Escritura pública, o documento equivalente, de identificación de titulares reales.
+Cualquier otra documentación solicitada por TC AV para la diligencia debida en materia de PBC/FT.
+b. Información financiera
+El Emisor deberá aportar las cuentas anuales individuales correspondientes a los dos últimos ejercicios (o al periodo más corto de actividad del Emisor), con el informe de auditoría correspondiente a cada año. Las cuentas anuales deberán estar formuladas con sujeción a NIIF (Normas Internacionales de Información Financiera) o US GAAP (United States Generally Accepted Accounting Principles), en función de la nacionalidad del Emisor, y con el contenido que, de acuerdo con el régimen propio del Emisor, le sea exigible. Igualmente, deberán aportarse las cuentas consolidadas, en caso de ser exigibles bajo dicho régimen.
+El informe de auditoría debe manifestar una opinión favorable. En los casos de opiniones de auditoría favorables con reservas, el Emisor debe informar sobre los planes de corrección y los plazos para abordar los factores que han determinado la inclusión de reservas en la opinión del auditor, y debe hacer públicos esos planes de corrección o las medidas adoptadas, mediante la emisión de un aviso de "Otra Información Relevante" o de "Información Privilegiada" (según proceda), o especificar, de otro modo, los motivos por los que no se han adoptado los planes ni las medidas. No se admitirán emisores cuyo informe de auditoría manifieste una opinión desfavorable o denegada.
+En el caso de Emisores que, en el momento en que soliciten la incorporación, no tengan dos años de existencia, se contemplan los supuestos siguientes:
+Que el Emisor sea una SPA (Sociedad con Propósito para la Adquisición), en cuyo caso se pedirán los estados financieros auditados de la sociedad que ostente el control de la SPA, en los términos anteriormente reseñados.
+Que el Emisor sea una sociedad de reciente creación, en cuyo caso se solicitará un plan económico financiero del proyecto validado por un auditor o consultor de reconocida solvencia. Dicho plan contendrá, al menos, previsiones o estimaciones relativas al ejercicio en curso y al siguiente en las que, al menos, se contenga información numérica, en un formato comparable al de la información periódica, sobre ingresos o ventas, costes, gastos generales, gastos financieros, amortizaciones y beneficio antes de impuestos. El Órgano de Administración habrá de aprobar estas previsiones o estimaciones y notificarlo a TC AV con indicación detallada, en su caso, de los votos en contra.
+En todo caso, el Emisor deberá aportar una certificación, debidamente firmada por su representante legal, declarando que el Emisor existe y no está disuelto o liquidado o en proceso de disolución o liquidación.
+c. Estructura organizativa
+El Emisor debe contar con una estructura organizativa que le permita cumplir con las obligaciones previstas en las presentes Condiciones Generales de Contratación. En particular, debe identificar con claridad a las personas físicas que pueden actuar en su representación, justificando debidamente ésta.
+El Emisor deberá disponer de los procedimientos y mecanismos internos adecuados para garantizar que la información hecha pública a través del Sitio Web es veraz y coincide con la información publicada en su propia página web.
+d. Información relativa a los instrumentos financieros
+El Emisor debe aportar la siguiente información relativa a los instrumentos financieros:
+Folleto registrado en la Comisión Nacional del Mercado de Valores, salvo en aquellos casos en los que no sea requerido, en los cuales se podrá acompañar el Documento de Admisión validado por una Empresa de Servicios de Inversión.
+e. Otra información
+TC AV podrá solicitar adicionalmente otros documentos o información, en caso de que sea necesario comprobar la idoneidad del Emisor y/o de los instrumentos financieros.
+4.1.2 Decisión de admisión
+TC AV llevará a cabo su examen en un plazo máximo de 15 días desde la fecha de presentación de la información. Si TC AV estimara que la documentación o información aportadas no son suficientes para formar un juicio o no cumplen con los criterios de admisión, requerirá al Emisor, fijando un plazo para la aportación de lo solicitado. El Departamento de operaciones y finanzas adoptará una decisión definitiva en el plazo de 15 días desde que el Emisor hubiese aportado toda la información requerida. TC AV podrá rechazar la solicitud del Emisor, si de su análisis de los riesgos jurídicos, los riesgos financieros o los riesgos operativos concluyera que el Emisor no puede cumplir los requisitos exigidos, no posee recursos financieros suficientes para cumplir sus obligaciones contractuales, o si la concesión de acceso obligaría a TC AV a realizar cambios importantes en sus operaciones que afecten a sus procedimientos de gestión de riesgos, o pudiera poner en peligro a otros Usuarios del Sitio Web o pudieran poner en riesgo la reputación de TC AV.
+4.1.3 Conservar la condición de Emisor admitido
+El Emisor deberá, en todo momento, vigilar y cumplir las presentes Condiciones Generales de Contratación. Entre otras incluyen a título enunciativo no limitativo, proporcionar la información exigida para cumplir con las obligaciones de transparencia.
+Igualmente, el Emisor deberá mantener el cumplimiento continuado de las condiciones o requisitos exigidos para su admisión.
+El incumplimiento de las obligaciones por parte del Emisor será motivo de la adopción de medidas disciplinarias por parte de TC AV que pueden derivar, en su caso, en la suspensión de los Servicios, así como en la exclusión como Usuario del Sitio Web.
+4.1.4 Tarifas para Emisores
+Las tarifas aplicables por los distintos Servicios a los Emisores son las siguientes:
+Validación del documento de emisión (ESI): 3.000€
+Admisión a mercado primario: 3.000€.
+Colocación: entre el 0,1% y el 2,3%, en función del volumen emitido y colocado.
+Custodia y administración por cuenta de clientes de los instrumentos financieros tokenizados (E.R.I.R): 0,2% del volumen emitido, con un mínimo de 3.000€/año y un máximo de 25.000€/año, más una tasa de 50€ por evento corporativo inscrito.
+Otro asesoramiento a empresas: consultar
+Los impuestos y costes de terceros, en caso de aplicar, no están incluidos.
+4.1.5 Otras garantías y obligaciones de los Emisores
+El Emisor garantiza a TC AV que es el único responsable sobre los contenidos que suba al Sitio Web, como pueden ser, de forma no limitativa, los vídeos, fotografías, textos, marcas, logos, nombres comerciales, artículos, datos personales, etc. (en adelante, el Contenido). El Emisor ostenta el permiso y las autorizaciones de todos los derechos de Propiedad Intelectual e Industrial sobre el Contenido, así como la autorización de los titulares de los datos de carácter personal y/o de las imágenes que puedan incluirse en dicho Contenido.
+Asimismo, el Emisor garantiza expresamente que todo el Contenido que utilice o provea ni infringe derechos exclusivos de terceros de ninguna naturaleza, ni infringe derechos al honor, la intimidad o la propia imagen de personas o terceros. De esta forma el Emisor declara y garantiza que es el único responsable, con completa indemnidad a TC AV, de cualquier reclamación (judicial o extrajudicial) que surja o pudiera surgir por el uso de dicho Contenido.
+El Emisor concede una autorización y cesión de todos los derechos del Contenido, tanto de Propiedad Intelectual, Industrial como de Imagen para que TC AV pueda publicarlo y promocionarlo.
+4.2 Condiciones generales de contratación para Miembros
+Los Miembros son los Usuarios interesados en invertir en los instrumentos financieros admitidos por TC AV, ya sea por cuenta propia o de terceros. Para ello deben seguir el siguiente proceso:
+Habilitarse para poder operar en el Sitio Web.
+Recibir y guardar cuidadosamente las contraseñas facilitadas por TC AV para poder operar con la Wallet que albergará sus instrumentos financieros.
+Explorar e invertir en los instrumentos financieros disponibles.
+Ejercer los derechos y asumir las obligaciones que se derivan de la titularidad de los instrumentos financieros.
+4.2.1 Habilitarse para poder operar en el Sitio Web
+El proceso incluirá:
+La plena identificación del solicitante y verificación de las previsiones legales en materia de prevención del blanqueo de capitales y financiación del terrorismo.
+Su clasificación en función de su perfil, y, en función de ésta, la aportación de la documentación correspondiente y la cumplimentación de un cuestionario que permita determinar si el Miembro tiene la experiencia y conocimientos necesarios para comprender los riesgos que implica operar con los instrumentos financieros ofrecidos en el Sitio Web.
+Si no tiene la experiencia y conocimientos o no aporta la documentación, el Miembro será advertido de que el servicio no le resulta conveniente o no ha sido posible evaluarlo, y deberá declarar explícitamente haber recibido y entendido la advertencia.
+Aportación adicional, en función del tipo de Miembro, de documentación diversa relacionada con honorabilidad, organización, etc., y una declaración responsable sobre la veracidad de la información proporcionada.
+4.2.2 Recibir y almacenar las contraseñas para operar con la Wallet
+Cumplimentado el proceso y admitido el Usuario como Miembro, TC AV le habilitará una Wallet en la que se registrarán los saldos titularidad del Miembro de instrumentos financieros.
+TC AV proporcionará al Miembro las contraseñas que le permitirán operar con dicha Wallet. El Miembro será responsable del correcto almacenamiento y uso de dichas contraseñas.
+4.2.3 Explorar e invertir en los instrumentos financieros disponibles
+Los Miembros podrán visualizar y filtrar la oferta de instrumentos financieros, junto con la información relevante sobre estos, desde el momento del registro en el Sitio Web.
+No obstante, para poder comenzar a invertir en instrumentos financieros, deberán habilitarse de acuerdo con los procesos señalados en los apartados anteriores.
+Para invertir en los instrumentos financieros, el Miembro deberá introducir la correspondiente orden de inversión y completar los trámites indicados en cada caso para formalizar la operación.
+4.2.4 Ejercer los derechos y asumir las obligaciones que se derivan de la titularidad de los instrumentos financieros
+La titularidad de los instrumentos financieros habilitará al Miembro para recibir los pagos de las cantidades de las que, en su caso, sea acreedor en función de la naturaleza y características de los instrumentos (dividendos, pagos de intereses, amortizaciones de principal, etc.).
+Además de la administración de eventos corporativos de naturaleza económica, TC AV, en cumplimiento de su función como ERIR (entidad responsable de la inscripción y registro de los valores admitidos a negociación), gestionará los diferentes actos y negocios jurídicos que deban ejecutarse conforme a derecho respecto de dichos instrumentos financieros (embargos y otros gravámenes, transmisiones forzosas, etc.).
+Adicionalmente, garantizará al titular su acceso a la información sobre sus instrumentos financieros y operaciones realizadas, expedirá certificados de legitimación acreditativos de los distintos derechos sobre estos y los restituirá a su titular en caso de robo o pérdida de las claves públicas o privadas, entre otras funciones de su competencia.
+4.2.5 Suspensión y pérdida de la condición de Miembro
+El incumplimiento de las obligaciones previstas en estas Condiciones Generales de Contratación conllevará la adopción de medidas disciplinarias incluidas, en su caso, la suspensión o pérdida de la condición de Miembro y la exclusión como Usuario del Sitio Web.
+Serán también motivo de la pérdida de la condición de Miembro, además de la renuncia voluntaria de éste, dejar de cumplir los requisitos para obtener tal condición, el inicio de un proceso concursal, intervención del Miembro u otros hechos de alcance similar a los anteriores.
+4.2.6 Tarifas para Miembros
+Las tarifas aplicables por los distintos Servicios a los Miembros son las siguientes:
+Inversión directa en emisiones en mercado primario: sin coste
+Recepción y transmisión de órdenes: 5€ + 0,25% del volumen transaccionado.
+Custodia y administración por cuenta de clientes de los instrumentos financieros tokenizados (E.R.I.R): una tasa de 10€ por certificado de titularidad solicitado.
+Los impuestos y costes de terceros, en caso de aplicar, no están incluidos.
+4.2.7 Advertencias
+El Miembro entiende y acepta que los responsables de que toda la información que se publique sobre los Emisores e instrumentos financieros sea veraz, cierta y completa, y que sea oportunamente actualizada, son sus respectivos Emisores y no TC AV.
+4.3 Condiciones comunes aplicables a todos los Clientes
+4.3.1 Responsabilidad y garantías de TC AV
+TC AV no tendrá responsabilidad alguna, contractual o extracontractual, frente a ningún Usuario, ni frente a sus órganos de gobierno, empleados, colaboradores y representantes por razón de cualquier daño, pérdida, coste o gasto de cualquier naturaleza sufrido o incurrido por aquellos o cualquier otra persona a ellos vinculada, como resultado de su participación en el Sitio Web.
+TC AV pone a disposición de los Usuarios y de terceros un sistema para la presentación y resolución de quejas o reclamaciones por parte de los Usuarios del Sitio Web. Para ello, la presentación de la queja o reclamación se efectuará por medio informático, siempre que este permita la lectura, impresión y conservación de los documentos que fundamentan la queja o reclamación, mediante su remisión a la dirección de correo electrónico:
+claims@token-city.com
+. Para más información, los Usuarios pueden consultar el Sistema de Quejas y Reclamaciones de TC AV.
+4.3.2 Fondo de Garantía de Inversiones
+TC AV está adherida al FOGAIN. En caso de requerir información adicional, el Usuario puede consultar la página web en la siguiente dirección:
+www.fogain.es
+4.3.3 Derechos de Propiedad Intelectual e Industrial
+El Usuario, mediante la aceptación de las presentes Condiciones Generales de Contratación, reconoce que los derechos de propiedad intelectual e industrial y cualesquiera otros de naturaleza análoga sobre el dominio, marca o nombre comercial, software, diseño del Sitio Web, informaciones y datos, y cualesquiera otros que TC AV ponga a su disposición para la prestación de los servicios serán de titularidad exclusiva de TC AV, no suponiendo la aceptación de esas Condiciones Generales de Contratación ni el acceso al Sitio Web cesión alguna de los citados derechos. Asimismo, el Usuario se compromete a no realizar ingeniería inversa, reproducir, transformar, comunicar públicamente, descompilar o desensamblar el código fuente del software y a no realizar un uso del Sitio Web y las correspondientes páginas web que pueda vulnerar cualquier derecho de propiedad intelectual o industrial de TC AV.
+5. Miscelánea
+Las presentes Condiciones Generales de Contratación constituyen el acuerdo total entre TC AV y el Usuario en lo referente al objeto del presente documento y solo se podrán modificar mediante una corrección escrita firmada por una persona autorizada de TC AV, o a través de la publicación de una versión revisada en el Sitio Web.
+Si cualquier cláusula de las presentes Condiciones Generales de Contratación fuese declarada total o parcialmente nula o ineficaz afectará tan solo a esa disposición o parte de la misma que resulte nula o ineficaz, subsistiendo en todo lo demás el resto de Condiciones Generales de Contratación y teniéndose tal disposición o la parte de la misma que resulte afectada por no puesta salvo que, por resultar esencial a las presentes Condiciones Generales de Contratación, hubiese de afectarlas de manera integral.
+Los Usuarios podrán dar de baja su cuenta en el Sitio Web en cualquier momento, sin perjuicio del cumplimiento de aquellas obligaciones que hubiesen adquirido, comunicando su decisión a TC AV en la siguiente dirección:
+contact@token-city.com
+. La baja del Usuario conllevará el cierre de la cuenta de usuario en el Sitio Web y su Contenido y no da derecho al Usuario a indemnización alguna.
+Las Condiciones Generales de Contratación tendrán vigencia por tiempo indefinido a partir del momento de su aceptación en el Sitio Web o hasta que el Usuario notifique a TC AV la intención de cancelar su cuenta de Usuario.
+Cualquier modificación de las Condiciones Generales de Contratación se comunicará por TC AV con una antelación no inferior a 3 días naturales respecto de la fecha en que entre en vigor la modificación propuesta. Se excluyen del anterior plazo los casos en los que las modificaciones vengan impuestas por la regulación aplicable, en cuyo caso, entrarán en vigor en la fecha prevista por la correspondiente regulación sin necesidad de aceptación por parte del Usuario, así como aquellas otras modificaciones que, inequívocamente, resulten más favorables para el Usuario, o que supongan meras correcciones de erratas.
+En el supuesto de que el Usuario no acepte las modificaciones propuestas, éste tendrá el derecho a darse de baja de forma inmediata y sin coste adicional alguno antes de la fecha propuesta para la aplicación de dichas modificaciones. En el caso de que el Usuario no comunique a TC AV su no aceptación dentro del plazo anteriormente previsto, TC AV entenderá que el Usuario ha aceptado la correspondiente modificación.
+TC AV y/o los Usuarios en ningún caso serán responsables ni incumplidores de las presentes Condiciones Generales de Contratación en caso de retraso o incumplimiento de las mismas por causas de fuerza mayor, en los supuestos contemplados en la legislación.
+Los Usuarios no podrán ceder total o parcialmente, onerosa o gratuitamente, los derechos u obligaciones adquiridos en las presentes Condiciones Generales de Contratación. Si se incumple esta prohibición, TC AV podrá cancelar la cuenta del Usuario en el Sitio Web, sin perjuicio de su derecho a ejercitar las acciones judiciales, que en su caso procedan por daños y perjuicios que pudieran crearse por esa causa.
+Las presentes Condiciones Generales de Contratación han sido redactadas originariamente en español. En caso de discrepancia con cualquier traducción de estas, prevalecerá la versión en español.
+6. Ley aplicable y jurisdicción
+Estas Condiciones Generales de Contratación, así como cualquier relación entre los Usuarios y TC AV, se regirán por la legislación española. En caso de conflicto en la aplicación o interpretación de estas Condiciones Generales de Contratación, las partes se someten a los Juzgados y Tribunales de Madrid.
+Sin perjuicio de todo lo anterior, cuando el Usuario sea considerado como Consumidor podrá reclamar sus derechos como tal, tanto en España como en su Estado Miembro de residencia en la Unión Europea.
+TOKEN CITY
+EXCHANGE
+TOKEN CITY EUROPEAN EXCHANGE AV S.A.
+ESI autorizada por CNMV, Registro nº 334. Adherida al FOGAIN.
+Legal
+Condiciones generales
+Defensa del cliente
+Conflictos de interés
+Canal de denuncias
+Nosotros
+Contacto
+Mantente al día
+Recibe las últimas oportunidades de inversión.
+Suscríbete
+Síguenos
+© 2026 Token City European Exchange AV S.A. Todos los derechos reservados.
+ES
+EN
+Aviso Legal
+|
+Política de Privacidad
+|
+Política de Cookies
+|
+Gestión de Cookies

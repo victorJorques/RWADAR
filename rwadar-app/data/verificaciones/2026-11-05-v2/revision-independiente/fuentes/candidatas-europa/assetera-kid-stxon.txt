@@ -1,0 +1,199 @@
+KEY INFORMATION DOCUMENT (“KID”).
+
+PRODUCT
+
+
+  PURPOSE
+  This document provides you with key information about this investment product. It is not marketing material. The information is
+  required by law to help you understand the nature, risks, costs, potential gains, and losses of this product and to help you compare it
+  with other products. Any capitalized term used in this KID shall have the meaning provided in the relevant Base Prospectus and Final
+  Terms.
+
+  Product Name                  STXon
+  PRIIP Manufacturer            Ondo Global Markets (BVI) Limited, Floor 4 Banco Popular Building, Road Town, Tortola
+                                VG1110, British Virgin Islands. The PRIIP Manufacturer is the product issuer (the “Issuer”).
+  Product Identifier            ISIN: VGG7001ALR37
+  Website                       https://ondo.finance/global-markets
+  Contact Phone                 +1 284 494 2423
+  Number
+  Competent Authority           Financial Market Authority (“FMA”) Liechtenstein as the competent authority for the approval of the
+  of the PRIIP                  Base Prospectus. The PRIIP Manufacturer/Issuer is not subject to prudential supervision by FMA or
+  Manufacturer                  any other financial market supervisory authority.
+  Date of Production of         11.11.2025
+  the KID
+
+                  You are about to purchase a product that is not simple and may be difficult to understand.
+
+1. WHAT IS THIS PRODUCT?
+Type:                 Open-ended tracker certificate in the form of Ledger-Based Securities (Registerwertrechte) according to Art.
+                      973d et seqq. Swiss Code of Obligations (“CO”) under Swiss law.
+Term                  The Product (as defined below) does not have a fixed maturity date.
+Objectives:            STXon (hereinafter the “Product”) is a tracker certificate issued on the Ethereum Mainnet and other
+                       blockchain networks which the Issuer may choose to issue on in its sole discretion, a Securities Ledger
+                       supported by the Product. The Product is engineered to mirror the price movements of the ordinary shares of
+                       SEAGATE TECHNOLOGY HOLDINGS PUBLIC LIMITED COMPANY (“Underlying”). The fundamental
+                       investment goal of the Product is to replicate the return performance of the Underlying, after the relevant fees
+                       and expenses. The Product offers several key advantages, such as faster transaction speeds compared to
+                       traditional securities, and it is specifically developed for offering the Investors exposure to the performance of
+                       the Underlying while simultaneously leveraging the advantages of the blockchain technology such as
+                       enhanced transparency, security, and ease of transfer. Below, the information on the Underlying:
+                       ·    issuer: SEAGATE TECHNOLOGY HOLDINGS PUBLIC LIMITED COMPANY;
+                       ·    name: SEAGATE TECHNOLOGY HOLDINGS PUBLIC LIMITED COMPANY;
+                       ·    ISIN: IE00BKVD2N49; and
+                       ·    Ticker STX.
+                       The denomination of the Product is US Dollar (“USD”), and the base currency referred to the Underlying is
+                       USD.
+                       The Product can be transferred freely to other investors only via wallets and the relevant Securities Ledger
+                       and is collateralized by the Underlying and any Additional Collateral to fulfil the payment obligations of the
+                       Issuer.
+Intended retail        Retail investors who have the following characteristics
+investors:             ·    have sufficient financial resources and liquidity to be able to bear a total loss of the amount invested;
+                       ·    are seeking a speculative investment opportunity that is accompanied by the expectation that the
+                            Underlying will gain sufficient value over time to exceed any fees;
+                       ·    have only limited technical capabilities or lack the relevant technical expertise and therefore, instead of
+                            investing directly in the Underlying and its ecosystem, with the aid of debt securities with a value based on
+                            the Underlying price without having to hold Underlying themselves during the holding period of the Product;
+                       ·    have the ability to make an informed investment decision through having sufficient knowledge and
+                            experience to make a meaningful evaluation of the Product, the merits, and risks of investing in the Product
+                            and the information contained in the Base Prospectus and Final Terms; and
+                       ·    have a minimum investment horizon of the recommended holding period specified below.
+
+KEY INFORMATION DOCUMENT (“KID”)                                                                                        Page | 1
+5010083417.1
+  2. WHAT ARE THE RISKS AND WHAT COULD I GET IN RETURN?
+ RISK INDICATOR
+
+                1                 2                 3                  4                  5                6                7
+               Lower risk                                                                                   Higher risk
+
+     The risk indicator assumes you keep the Product for 5 years. If you cash in at an early stage you may get back less
+ The summary risk indicator is a guide to the level of risk of this Product compared to other products. It shows how likely it is that the
+ Product will lose money because of movements in the markets or because the Issuer is not able to pay the Investor.
+ This Product is rated at level 6 out of 7, corresponding to the second-highest risk class. This indicates that potential losses
+ arising from future performance are considered high and that adverse market conditions are very likely to impact the Issuer’s ability to
+ make payments to you. Additional risks include market liquidity risk, which may amplify result fluctuations. The Product does not offer
+ protection against market downturns; therefore, you may lose all or part of your investment. If the Issuer is not able to pay you what is
+ owed, you could lose your entire investment. Beyond the risk indicator, other factors may affect the Product’s performance. Please
+ refer to the Base Prospectus of the Product for full details.
+
+
+PERFORMANCE SCENARIO
+Market developments in the future cannot be accurately predicted. The scenarios shown are only an indication of some of
+the possible outcomes based on recent returns. Actual returns could be lower or even zero as markets could develop
+differently in the future.
+ Investment 10’000 USD                                                                                    Recommended holding
+                                                                                                          period
+ Scenarios                                                                               After 1 year                  After 5 years
+ Minimum                                                            There is no minimum                   There is no minimum
+                                                                    guaranteed return. You could          guaranteed return. You could
+                                                                    lose all of your investment.          lose all of your investment.
+                               What might you get back                                    818.86 USD                            299.69 USD
+ Stress scenario               after costs                                                   -91.81%                               -50.42%
+                               Average returns each year
+                               What might you get back                                 8,649.65 USD                         23,520.91 USD
+ Unfavourable scenario         after costs                                                  -13.50%                                18.66%
+                               Average returns each year
+                               What might you get back                                15,319.29 USD                         84,695.09 USD
+ Moderate scenario             after costs                                                   53.19%                                53.31%
+                               Average returns each year
+ Favourable scenario           What might you get back                                27,217.37 USD                        305,935.48 USD
+                               after costs                                                  172.17%                                98.21%
+                               Average returns each year
+This table shows the money you could get back over the recommended holding period of 5 years under various scenarios, assuming
+you invest 10,000 USD. The scenarios shown illustrate how your investment could perform. You can compare them with the scenarios
+of other products. The scenarios presented are an estimate of future performance based on evidence from the past on how the value of
+this investment varies and are not an exact indicator. What you get will vary depending on how the market performs and how long you
+keep the Product. The stress scenario shows what you might get back in extreme market circumstances, and it does not consider the
+situation where we are not able to pay you. The figures shown include all the costs of the Product itself but may not include all the costs
+that you pay to your advisor or distributor. The figures do not consider your personal tax situation, which may also affect how much you
+get back.
+3. WHAT HAPPENS IF THE ISSUER IS UNABLE TO PAY OUT?
+The focus of the Issuer’s business activities is the issuance of Product directly or indirectly linked to the Underlying. The Investors have
+recourse only to the collateralised relevant Underlying in respect of the Product, and not to any other assets of the Issuer or any service
+provider of the Product.
+The Product is collateralized through the purchase of the Underlying. When the Investor buys the Product, the Issuer uses the
+proceeds, minus the costs, to finance the purchase of the Underlying. The value of the Collateral at any point in time must correspond at
+least to the value of the Product at that time calculated accordingly as specified within the Base Prospectus. The Investors have a
+primary claim to the Collateral allocated to the Product. In the event the Collateral is insufficient, then the Investors have a claim to any
+Additional Collateral as detailed within the Base Prospectus
+The Product is neither insured nor guaranteed by any government, regulator or agency. Accordingly, the Investor has no residual claim
+KEY INFORMATION DOCUMENT (“KID”)                                                                                            Page | 2
+5010083417.1
+against the assets of the Issuer (or any service providers to the Issuer) in the event that the Investor suffers any losses in relation to their
+purchase of the Product.
+The Product is a debt instrument and as such is not covered by any deposit protection scheme or other kind of insurance
+4. WHAT ARE THE COSTS?
+COSTS OVER TIME
+The tables show the amounts that are taken from your investment to cover different types of costs. These amounts depend on how
+much you invest and how long you hold the Product. For the purposes of the calculation illustrated below, it is assumed that the investor
+invests USD 10,000 and holds the product for the recommended period of five years. Please note that the total costs shown below
+reflect all one-off entry and exit charges, ongoing costs, and any incidental costs, as detailed. These figures are estimates only, and
+actual costs may fluctuate over time.
+
+    Investment 10’000 USD                                                                           Annual cost impact if you exit after 5 years
+
+    Total costs (USD)                                                                                                                        20.00 USD
+
+    Cost Impact                                                                                                                                   0.20%
+
+
+
+
+Composition of Costs                                                                                                          Annual cost impact if
+                                                                                                                              you exit after 1 year
+
+       One-off                                                    Up to 0.1% of the market price of the Underlying, at
+                    Entry costs                                                                                                        10.00 USD
+      Entry/Exit                                                  the sole discretion of the Issuer1
+        Costs                                                     Up to 0.1% of the market price of the Underlying,
+                    Exit costs                                                                                                         10.00 USD
+                                                                  at the sole discretion of the Issuer2
+                    Management fees and admin and
+      On-going                                                    Not applicable                                                       0.00 USD
+                    operating costs
+       Costs
+                    Other ongoing costs                           Not applicable                                                       0.00 USD
+      Incidental
+     costs taken
+                   Performance Fees                               Not applicable                                                       0.00 USD
+    under specific
+     conditions
+5. HOW LONG SHOULD I HOLD IT, AND CAN I TAKE MONEY OUT EARLY?
+The Product does not have a fixed maturity date. The recommended holding period is 5 years.
+You may place a redemption order for the Product with the Issuer, or any party acting on behalf of the Issuer, at any time. The redemption
+can be settled in cash, and/or at the sole discretion of the Issuer, optionally also in other fiat currencies or cryptocurrencies. You may also
+sell the Product in the secondary market to third parties (“OTC”) subject to the transfer restrictions set forth in the Base Prospectus and
+the Final Terms.
+The Product at the moment is neither listed nor admitted to trading at any stock exchange, authorized multilateral trading facility or
+organized trading facility (inside or outside of the EU/Switzerland). Should the Issuer resolve to proceed with a listing or an admission to
+trading on any stock exchange, authorised multilateral trading facility (“MTF”), or organised trading facility (“OTF”), it shall notify this on
+its website: https://ondo.finance/global-markets
+In unusual market situations, or in the event of technical faults/disruptions, a purchase and/or sale of the Product can be
+temporarily hindered or may not be possible at all.
+6. HOW CAN I COMPLAIN?
+Any complaint regarding the person/entity advising on or selling the Product can be lodged directly with the relevant person/entity. Any
+complaint regarding the Product or the conduct of the Issuer of this Product can be submitted in text form (e.g. by letter or e-mail) at the
+following address: Ondo Global Markets (BVI) Limited, Floor 4 Banco Popular Building, Road Town, Tortola VG1110, British Virgin
+Islands, by e-mail to: legal@ondo.finance. Complaints should include the name of the Product, the ISIN, and the reason for the
+complaint.
+7. OTHER RELEVANT INFORMATION
+Any additional documentation in relation to the Product and in particular the Base Prospectus, the Final Terms and any supplements
+thereto are published on the following website: https://ondo.finance/global-markets in accordance with relevant legal requirements. In
+1
+  At present, no fees are charged to Investors. Should fees be applied in the future, such fees will not exceed 0.1% of the market price. Investors will
+bear no additional costs beyond those explicitly disclosed herein.
+2
+  At present, no fees are charged to Investors. Should fees be applied in the future, such fees will not exceed 0.1% of the market price. Investors will
+bear no additional costs beyond those explicitly disclosed herein.
+KEY INFORMATION DOCUMENT (“KID”)                                                                                                       Page | 3
+5010083417.1
+order to obtain more detailed information - and in particular, details of the structure of and risks associated with an investment in the
+Product - you should read these documents. Further information about the Underlying, including past performance, holdings and more is
+available at the following website: https://finance.yahoo.com/quote/STX/.
+
+
+
+
+KEY INFORMATION DOCUMENT (“KID”)                                                                                        Page | 4
+5010083417.1
+

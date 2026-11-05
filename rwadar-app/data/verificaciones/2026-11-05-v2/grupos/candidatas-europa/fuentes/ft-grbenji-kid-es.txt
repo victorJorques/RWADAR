@@ -1,0 +1,227 @@
+Documento de Datos Fundamentales
+Finalidad
+Este documento le proporciona información clave sobre este producto de inversión. No se trata de
+material de promoción comercial. La información es necesaria por ley para ayudarle a comprender
+la naturaleza, los riesgos, los costes, las posibles ganancias y pérdidas de este producto y para
+ayudarle a compararlo con otros productos.
+
+
+
+Producto
+
+Franklin OnChain U.S. Government Liquidity Fund
+Clase AB (Dis) USD • ISIN LU3258450587 • Token grBENJI • Un subfondo de Franklin Templeton OnChain Funds (OICVM)
+Sociedad gestora (y fabricante): Franklin Templeton International Services S.à r.l. («FTIS»), parte del grupo de empresas de Franklin Templeton.
+Sitio web: www.franklintempleton.lu
+Llame al (+352) 46 66 67-1 para obtener más información
+La Commission de Surveillance du Secteur Financier (CSSF) es responsable de la supervisión de Franklin Templeton International Services S.à r.l. en relación
+con este documento de información fundamental.
+Este producto está autorizado en Luxemburgo.
+Fecha de producción del KID: 15/06/2026
+
+
+
+¿Qué es este producto?
+Tipo                                                                             en la suscripción de nuevas acciones de la clase a la que corresponden
+El producto es una clase de acciones del subfondo Franklin OnChain U.S.          dichos dividendos.
+Government Liquidity Fund (el «Fondo»), que forma parte de Franklin              Compra y venta de acciones
+Templeton OnChain Funds, una sociedad de inversión abierta y de capital          Las acciones pueden adquirirse o reembolsarse el cualquier momento
+variable (SICAV), que se considera un OICVM.                                     mediante la App o el Portal web institucional, según proceda, aunque
+Término                                                                          únicamente se procesarán reembolsos de acciones según la Hora límite de
+El Fondo no tiene fecha de vencimiento. El Fondo puede cerrarse si se            negociación (que se define en el folleto vigente del Fondo) y en los Días de
+cumple alguna de las condiciones establecidas en el folleto actual del Fondo.    valoración.
+Objetivos                                                                        Destinado a inversores minoristas
+Objetivo de inversión                                                            Inversores que entienden los riesgos del Fondo y prevén invertir durante al
+Maximizar los ingresos, en una medida que sea coherente con la                   menos 1 año. El Fondo puede atraer a los inversores que:
+conservación del capital y la liquidez, al tiempo que tratar de mantener un      • busquen ingresos a partir de una inversión que trata de preservar el capital
+valor liquidativo de la acción constante de 1 USD.                               • estén interesados en obtener exposición a los mercados desarrollados de
+Según el Reglamento europeo relativo a los fondos del mercado monetario,         renta fija con vencimiento a corto plazo, como parte de una cartera
+este Fondo entrará en la categoría de fondo del mercado monetario de valor       diversificada
+liquidativo constante (VLC) de deuda pública a corto plazo.                      • tengan un perfil de riesgo bajo y puedan tolerar variaciones pequeñas a
+Política de inversión                                                            corto plazo del precio de la acción
+El Fondo invierte al menos el 99,5 % en: (i) Instrumentos del mercado
+monetario («IMM») de deuda pública denominados en dólares
+estadounidenses y emitidos o garantizados por el Gobierno o el banco
+                                                                                  Términos que deben comprenderse
+central de EE. UU., incluidos valores emitidos por agencias relacionadas; (ii)    bonos: Valores que representan la obligación de pagar una deuda,
+pactos de recompra inversa admisibles garantizados por IMM de deuda               junto con intereses.
+pública; y/o (iii) depósitos en efectivo en dólares estadounidenses.
+Se prevé que el Fondo tenga exposición a pactos de recompra inversa por           derivados: Instrumentos financieros cuyo valor está vinculado a
+un valor de entre el 0 % y el 50 % de su Valor liquidativo. En determinadas       uno o más tipos, índices, cotizaciones de acciones u otros valores.
+circunstancias esta proporción puede aproximarse al 100 %, pero nunca
+exceder este porcentaje.                                                          instrumentos del mercado monetario: Instrumentos financieros
+                                                                                  están diseñados para proporcionar un valor estable, intereses, alta
+El Fondo únicamente invierte en valores denominados en dólares
+estadounidenses con un vencimiento medio ponderado de hasta 60 días y             liquidez y un riesgo de pérdida muy bajo.
+una vida media ponderada de hasta 120 días.
+Categoría según el SFDR Artículo 6 (no promueve características
+medioambientales y/o sociales ni tiene un objetivo de inversión sostenible       Depositario
+según el reglamento de la UE).                                                   The Bank of New York Mellon SA/NV, Luxembourg Branch
+Divisa de referencia Dólar estadounidense (USD).                                 Información adicional
+Índice(s) de referencia FTSE 1-month US Treasury Bill Index. Se emplea           Remítase a continuación a la sección «Otra información relevante». La
+únicamente para comparar la rentabilidad.                                        denominación Franklin Templeton OnChain Funds hace referencia al
+El Fondo se gestiona de manera activa y puede desviarse                          sistema propio integrado en blockchain para la agencia de transmisión que
+considerablemente del índice o los índices de referencia.                        emplea características del libro de entradas tradicional y una o varias redes
+Política de clase de acciones                                                    de blockchains públicas. A fin de evitar cualquier duda, el Fondo no invertirá
+En el caso de la clase de acciones de distribución que se recoge en este         en ninguna criptomoneda (lo que hace referencia, entre otras coas, a las
+documento, normalmente los ingresos por dividendos se reinvertirán a diario      monedas virtuales) ni de forma más general en ningún activo que guarde
+                                                                                 relación con blockchain.
+
+
+
+
+Documento de Datos Fundamentales Página 1 de 3
+¿Qué riesgos corro y qué podría obtener a cambio?
+Indicador de riesgo                                                               Hemos clasificado este producto como 1 de 7, es decir, el tipo de riesgo más
+                                                                                  bajo. Esto sitúa las posibles pérdidas de rendimiento futuro en un nivel muy
+                                                                                  bajo, y existen muy pocas probabilidades de que unas malas condiciones
+
+      1 2 3 4 5 6 7                                                               del mercado afecten a la capacidad de pagarle.
+                                                                                  Tenga en cuenta el riesgo de cambio. En determinadas circunstancias, es
+                                                                                  posible que reciba pagos en una divisa distinta, de modo que la rentabilidad
+                                                                                  final que obtenga dependerá del tipo de cambio entre ambas monedas. El
+   Riesgo más bajo                                         Riesgo más alto        indicador mostrado anteriormente no tiene en cuenta este riesgo.
+                                                                                  Otros riesgos de importancia significativa para el producto no incluidos en el
+                                                                                  indicador resumido de riesgo:
+               El indicador de riesgo asume que usted mantendrá el
+                                                                                  • Riesgo de contraparte
+               producto durante 1 año(s).
+                                                                                  • Riesgo de las Acciones basadas en el blockchain
+               El riesgo real puede variar significativamente si cobra en una
+               fase temprana y puede recuperar menos.                             Para obtener un análisis completo de todos los riesgos aplicables a este
+                                                                                  Fondo, consulte el apartado «Consideraciones sobre riesgos» en el folleto
+El indicador de riesgo resumido es una guía del nivel de riesgo de este           actual del Fondo.
+producto en comparación con otros productos. Muestra la probabilidad de           Este producto no incluye ninguna protección frente a la evolución futura del
+que el producto pierda dinero debido a los movimientos de los mercados.           mercado, por lo que podría perder una parte o la totalidad de su inversión.
+
+
+
+
+Escenarios de rentabilidad
+Las cifras indicadas incluyen todos los costes del producto en sí, pero pueden no incluir todos los costes que usted paga a su asesor o distribuidor. Las cifras
+no tienen en cuenta su situación fiscal personal, que también puede afectar a la cantidad que le devuelven. Lo que se obtenga de este producto dependerá
+de la evolución futura del mercado. La evolución del mercado en el futuro es incierta y no puede predecirse con exactitud.
+Los escenarios desfavorables, moderados y favorables mostrados son ilustraciones que utilizan el peor, el promedio y el mejor rendimiento del producto, así
+como el índice de referencia adecuado en los últimos 10 años. Los mercados podrían evolucionar de forma muy diferente en el futuro.
+
+Periodo de mantenimiento recomendado: 1 año
+Ejemplo de inversión: 10000 USD
+                                                                                                                                           En caso de salida
+Escenarios                                 Devoluciones
+                                                                                                                                           después de 1 año
+                                            No existe una rentabilidad mínima garantizada. Podría perder una parte o la
+Mínimo                                                                                                                                                       -
+                                            totalidad de su inversión.
+Tensión                                     Lo que podría recibir tras deducir los costes                                                          9 630 USD
+Tensión                                     Rendimiento medio cada año                                                                                 -3.70%
+Desfavorable                                Lo que podría recibir tras deducir los costes                                                          9 830 USD
+Desfavorable                                Rendimiento medio cada año                                                                                 -1.70%
+Moderado                                    Lo que podría recibir tras deducir los costes                                                          9 990 USD
+Moderado                                    Rendimiento medio cada año                                                                                 -0.10%
+Favorable                                   Lo que podría recibir tras deducir los costes                                                         10 380 USD
+Favorable                                   Rendimiento medio cada año                                                                                  3.80%
+
+El escenario de estrés muestra lo que se podría recuperar en circunstancias extremas del mercado.
+Escenario desfavorable: Este tipo de escenario se produjo para una inversión en la que se emplee el índice de referencia, tal y como se establece en el folleto,
+entre noviembre 2020 y noviembre 2021.
+Escenario moderado: Este tipo de escenario se produjo para una inversión en la que se emplee el índice de referencia, tal y como se establece en el folleto,
+entre mayo 2019 y mayo 2020.
+Escenario favorable: Este tipo de escenario se produjo para una inversión en la que se emplee el índice de referencia, tal y como se establece en el folleto,
+entre junio 2023 y junio 2024.
+
+¿Qué pasa si Franklin Templeton International Services S.à r.l. no puede pagar?
+Franklin Templeton International Services S.à r.l. («FTIS») es la sociedad gestora del Fondo, pero el depositario mantiene los activos del Fondo por separado
+de FTIS. Bank of New York Mellon SA/NV, Luxembourg Branch, en calidad de depositario designado, es responsable ante el Fondo o sus accionistas de las
+pérdidas causadas por su incumplimiento negligente o intencionado de sus obligaciones de custodia o mantenimiento de registros (aun así, se podría perder
+efectivo debido a impagos del depositario o sus delegados).
+No existe un sistema de compensación o garantía que le proteja de un impago del depositario del Fondo.
+
+¿Cuáles son los costes?
+La persona que le asesora o le vende este producto puede cobrarle otros gastos. Si es así, esta persona le proporcionará información sobre estos costes y
+cómo afectan a su inversión.
+Costes a lo largo del tiempo
+Las tablas muestran los importes que se retiran de su inversión para cubrir diferentes tipos de gastos. Estos importes dependen de la cantidad que inviertas,
+del tiempo que mantengas el producto y del rendimiento del mismo. Los importes aquí indicados son ilustraciones basadas en un importe de inversión de
+ejemplo y en diferentes períodos de inversión posibles.
+Hemos asumido:
+• En el primer año recuperaría la cantidad invertida (0% de rentabilidad anual). Para los demás periodos de tenencia hemos asumido que el producto se
+comporta como se muestra en el escenario moderado
+• Se invierten USD 10 000
+
+
+
+
+Documento de Datos Fundamentales Página 2 de 3
+Costes a lo largo del tiempo                                                                                             En caso de salida después de 1 año
+Costes totales                                                                                                                                         170 USD
+Incidencia anual de los costes (*)                                                                                                                         1.7%
+(*) Esto ilustra cómo los costes reducen su rendimiento cada año durante el periodo de tenencia. Por ejemplo, muestra que si se sale en el periodo de tenencia
+recomendado, su rentabilidad media anual se proyecta en un 1,6% antes de costes y en un -0,1% después de costes.
+Podemos compartir parte de los costes con la persona que le vende el producto para cubrir los servicios que le presta. Ellos le informarán del importe.
+Tenga en cuenta que las cifras mostradas aquí no incluyen ninguna comisión adicional que pueda cobrar su distribuidor, asesor o cualquier envoltorio de
+seguro en el que se pueda colocar el fondo.
+Composición de los costes
+
+ Costes únicos de entrada o                                                                                                             En caso de salida
+                                      Descripción
+ salida                                                                                                                                 después de 1 año
+
+Costes de entrada                    Un 1.50% de la cantidad que ingresa al entrar en esta inversión.                                   Hasta 150 USD
+
+                                     No cobramos una tarifa de salida por este producto, pero la persona que le vende el
+Costes de salida                                                                                                                        0 USD
+                                     producto puede hacerlo.
+ Costes corrientes detraídos                                                                                                            En caso de salida
+                                      Descripción
+ cada año                                                                                                                               después de 1 año
+Comisiones de gestión y otros
+                                     Un 0.20% del valor de su inversión al año. Se trata de una estimación basada en los costes
+costes administrativos o de                                                                                                             20 USD
+                                     reales del último año.
+funcionamiento
+                                     Un 0.00% del valor de su inversión al año. Se trata de una estimación de los costes
+Costes de operación                  incurridos cuando compramos y vendemos las inversiones subyacentes del producto. El                0 USD
+                                     importe real variará en función de la cantidad que compremos y vendamos.
+ Costes accesorios detraídos                                                                                                            En caso de salida
+                                      Descripción
+ en condiciones específicas                                                                                                             después de 1 año
+
+Comisiones de rendimiento (y
+                                     Este producto no tiene comisión de rendimiento.                                                    0 USD
+participaciones en cuenta)
+
+
+
+¿Cuánto tiempo debo mantener la inversión, y puedo retirar dinero de manera anticipada?
+Período de tenencia recomendado: 1 año(s)
+Este Fondo no tiene un período de tenencia requerido mínimo. Consideramos que el período de tenencia recomendado de 1 años es apropiado, pues el
+Fondo está concebido para la inversión a corto plazo. Puede vender sus acciones en cualquier día de negociación. El valor de sus inversiones puede bajar o
+subir independientemente del período durante el cual mantenga sus inversiones, en función de factores como el desempeño del fondo, las fluctuaciones de
+los precios de las acciones y los bonos, así como de las condiciones de los mercados financieros en general. Póngase en contacto con su agente, asesor
+financiero o distribuidor para obtener más información sobre los costes relativos a la venta de las acciones.
+
+¿Cómo puedo reclamar?
+Los inversores que quieran recibir los procedimientos relacionados con el tratamiento de reclamaciones o que deseen presentar una reclamación con relación
+al Fondo, el funcionamiento de FTIS o la persona que se encarga del asesoramiento o la venta del Fondo, deben acceder al sitio web www.franklintempleton.lu,
+ponerse en contacto con Franklin Templeton International Services, S.à r.l., 8A, rue Albert Borschette L-1246, Luxemburgo, o enviar un correo electrónico al
+departamento de atención al cliente a través de la dirección OnchainServicingIntl@franklintempleton.com.
+
+
+
+Otros datos de interés
+Consulte el apartado «Información, objetivos y políticas de inversión del Fondo» del folleto actual para obtener más información sobre los objetivos y la política
+de inversión del Fondo. Existen copias de la última versión del folleto y los informes anuales y semestrales de Franklin Templeton OnChain Funds disponibles
+en inglés y, selectivamente, en determinados idiomas en el sitio web www.ftidocuments.com o su sitio web local de Franklin Templeton, y también se pueden
+obtener de manera gratuita a través de Franklin Templeton International Services, S.à r.l., 8A, rue Albert Borschette, L- 1246, Luxemburgo, o de su asesor
+financiero. Los últimos precios y otras informaciones del Fondo (incluidas otras clases de activos de este) están disponibles a través de FTIS,
+www.fundinfo.com o www.franklintempleton.lu.
+Con arreglo a la legislación actual, no tenemos permitido mostrar datos sobre la rentabilidad para fondos que no hayan existido durante al menos un año civil
+completo. Los cálculos anteriores de los escenarios de rendimiento están disponibles en:
+- https://docs.data2report.lu/documents/FTI/KID_PP/KID_annex_PP_LU3258450587_en.pdf
+- https://docs.data2report.lu/documents/FTI/KID_PS/KID_annex_PS_LU3258450587_en.pdf
+
+
+
+
+Documento de Datos Fundamentales Página 3 de 3
+

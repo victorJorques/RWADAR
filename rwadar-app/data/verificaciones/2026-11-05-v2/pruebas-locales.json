@@ -1,0 +1,357 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-05T09:36:37.817Z",
+  "etiqueta": "2026-11-05",
+  "revisionAnterior": "723968ce-00f7-7f42-b3e3-6c7f401b8f89",
+  "revisionNueva": "cede1f27-b5eb-36d3-e223-eb4155df2572",
+  "sha256AplicarYAprobar": "65c71cf0388c91dafcc9f7bcbfd646d98bb83051b74c27fa608d1bb6dd60cd80",
+  "pruebas": [
+    "inventario: una transacción serializable; guarda (publicada 723968ce con su huella, catálogo no retirado, fecha no anterior al 05/11 ni posterior al 12/11, destino sin otra identidad); solo inserts en rwadar_catalogo (1 en revisiones, 67 en fuentes, 25 en plataformas, 105 en plataforma_fuentes, 25 en alertas, 35 en alerta_fuentes, 24 en ofertas), todos idempotentes; aprobación al final; sin DDL, borrados, permisos, Auth ni funciones; nada en public.*",
+    "cadena de producción (seed del 04/11 antes de ARTEX + 12 lotes, del 22/10 a la 2026-11-04.2): la publicada es la 723968ce y ARTEX está en Descartadas",
+    "antes de aplicar, PGlite enseña lo mismo que se leyó hoy como visitante: 25 plataformas, 24 ofertas y las 30 filas de public.plataformas (25 en el radar y 5 descartadas); tolerancias del 04/11: el uuid de cada plataforma (se genera al instalar), «publicadaEl» de las fuentes del radar (la base no la guarda) y el orden de las fuentes de cada campo",
+    "idempotente: aplicarla dos veces da lo mismo",
+    "public.plataformas, public.fuentes, cambios de estado, avisos y emisiones, intactos; las revisiones anteriores se conservan y la nueva queda aprobada",
+    "publicada la revisión nueva: las mismas 25 plataformas y 24 fichas (8/13/3, mismos estados de revisión), fechadas el 05/11 con 7 días; las 5 descartadas, iguales",
+    "plataformas: iguales salvo la revisión, la fecha (05/11) y la verificación; Pax Gold cita https://www.paxg.com/ en su verificación, y su columna «web» de public.plataformas sigue en paxos.com/paxgold (hoy no se toca)",
+    "Spiko, en las vistas públicas: Letras del Tesoro Euro 2,34 % → 2,39 %, Dólar 3,95 % → 3,99 % (en USD) y Spiko Euro 2,84 % con fecha nueva; las tres con el valor liquidativo del 04/11 y la consulta del 05/11",
+    "vigencia: el lector de la web (validarLotePublicoV2) lo acepta el 05/11 y el 12/11 y lo da por caducado el 13/11; las 24 tarjetas ocultan cifras desde el 13/11; el lector de la app lo acepta (25/24)",
+    "tarjetas (resumenOferta, 05/11): las 24 en castellano, sin citas en otro idioma y sin «por participación» en el mínimo; cambian 17: robinhood-classic-stock-tokens, spiko-smart-cash-euro, boss-info, switzerlend, casa-de-outeiro, apartamento-vacacional-hinterstoder-50, drautalresidenz-paternion, fotovoltaica-cohotel, fotovoltaica-greenpoint, randhartingergasse-9-viena, local-de-estanco-klagenfurt, vivienda-pluddemanngasse-101-graz, vivienda-pottendorfer-stra-e-62-wr-neustadt, vivienda-schwarzer-weg-18-graz, vivienda-sonnleithnergasse-2-viena, vivienda-stallhofstra-e-28-gratwein, hausera-proximas-ofertas; Brickwise «Desde X € la participación en reventa (05/11)»; Boss Info y Switzerlend, «Disponible desde España según la fuente»",
+    "sincronizador real con estas vistas: 25 plataformas, 24 ofertas y 5 descartadas (CSV de 30 filas); las fichas salen con la lista cerrada de siempre (54 páginas, ninguna nueva ni retirada) y cambian 54 por la revisión y las fechas",
+    "exportado a /tmp/claude-0/-home-user-RWADAR/38fd9e48-9524-5c14-81eb-f634b4de109d/scratchpad/exportado lo que leería un visitante después de aplicar",
+    "si la revisión nueva ya estaba importada como borrador, el aplicador la aprueba y la publica sin duplicar filas",
+    "falla y no deja nada: la publicada no es la 723968ce (es la anterior, cf79e4a4) → Publicación distinta de la revisión anterior prevista: cf79e4a4-f828-96ce-681b-ae69c3d1b81b. No aplicar este lote.",
+    "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+    "falla y no deja nada: el catálogo está retirado → Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+    "falla y no deja nada: la revisión destino ya existe con otra huella → La revisión destino existe con otra identidad o está retirada",
+    "falla y no deja nada: aplicada después del último día vigente (lote caducado) → Lote caducado: sus fichas valían hasta el 12/11/2026. No aplicar este lote.",
+    "falla y no deja nada: una plataforma del radar no está en public.plataformas (catálogo incompleto) → Catálogo incompleto: se conserva el lote anterior"
+  ],
+  "casos": [
+    {
+      "caso": "la revisión nueva ya estaba importada como borrador",
+      "falla": false,
+      "publicada": "cede1f27-b5eb-36d3-e223-eb4155df2572"
+    },
+    {
+      "caso": "la publicada no es la 723968ce (es la anterior, cf79e4a4)",
+      "falla": true,
+      "error": "Publicación distinta de la revisión anterior prevista: cf79e4a4-f828-96ce-681b-ae69c3d1b81b. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión publicada con otra huella",
+      "falla": true,
+      "error": "La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "el catálogo está retirado",
+      "falla": true,
+      "error": "Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión destino ya existe con otra huella",
+      "falla": true,
+      "error": "La revisión destino existe con otra identidad o está retirada",
+      "todoIgual": true
+    },
+    {
+      "caso": "aplicada después del último día vigente (lote caducado)",
+      "falla": true,
+      "error": "Lote caducado: sus fichas valían hasta el 12/11/2026. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "una plataforma del radar no está en public.plataformas (catálogo incompleto)",
+      "falla": true,
+      "error": "Catálogo incompleto: se conserva el lote anterior",
+      "todoIgual": true
+    }
+  ],
+  "inventario": {
+    "rwadar_catalogo.revisiones": 1,
+    "rwadar_catalogo.fuentes": 67,
+    "rwadar_catalogo.plataformas": 25,
+    "rwadar_catalogo.plataforma_fuentes": 105,
+    "rwadar_catalogo.alertas": 25,
+    "rwadar_catalogo.alerta_fuentes": 35,
+    "rwadar_catalogo.ofertas": 24
+  },
+  "cifrasSpiko": {
+    "spiko-letras-del-tesoro-euro": {
+      "antes": "2,34 %",
+      "despues": "2,39 %"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "antes": "3,95 %",
+      "despues": "3,99 %"
+    },
+    "spiko-smart-cash-euro": {
+      "antes": "2,84 %",
+      "despues": "2,84 %"
+    }
+  },
+  "tarjetas": {
+    "aktionariat": {
+      "coleccion": "principales",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "minimo": "500 CHF por transferencia bancaria",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Venta solo a otros accionistas; el emisor no recompra"
+    },
+    "kraken-xstocks": {
+      "coleccion": "principales",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo"
+    },
+    "prosegur-digital-gold": {
+      "coleccion": "principales",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "minimo": "1 gramo de oro",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Solo recompra por Prosegur; normalmente de 1 a 7 días hábiles, y puede suspenderse"
+    },
+    "robinhood-classic-stock-tokens": {
+      "coleccion": "principales",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: Cierras con Robinhood Europe (24/5 según su web; horario ampliado no siempre disponible); el cierre puede suspenderse",
+      "antes": {
+        "minimo": "1 €",
+        "espana": "Disponible desde España según la fuente",
+        "salida": "Salida: Cierras la posición con Robinhood Europe (24/5 según su web; el horario ampliado no siempre está disponible); el cierre puede suspenderse"
+      }
+    },
+    "spiko-smart-cash-euro": {
+      "coleccion": "principales",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario, con orden antes de las 15:00 (París) y abono al día hábil siguiente; puede limitarse (25 % del fondo)",
+      "antes": {
+        "minimo": "1 €",
+        "espana": "Disponible desde España según la fuente",
+        "salida": "Reembolso: Diario; puede limitarse si un día las salidas netas de todos los inversores llegan al 25 % del fondo. Orden antes de las 15:00 (hora de París) y pago al día hábil siguiente"
+      }
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "coleccion": "principales",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "minimo": "1 USD",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario en días hábiles de Francia y EE. UU., con corte a las 11:30 (hora de París)"
+    },
+    "spiko-letras-del-tesoro-euro": {
+      "coleccion": "principales",
+      "estado": "Datos con fuente y fecha · consulta las condiciones",
+      "minimo": "1 €",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Reembolso: Diario en días hábiles, con corte a las 11:30 (hora de París); puede limitarse si se pide más del 10 % del fondo"
+    },
+    "boss-info": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 05/11)",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: El emisor no recompra ahora; vendes a otros accionistas en ZCHF si hay comprador",
+      "antes": {
+        "minimo": "100 CHF por transferencia bancaria",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: El emisor no recompra ahora; vendes a otros accionistas en ZCHF si hay comprador"
+      }
+    },
+    "switzerlend": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "1 acción (68,01 CHF el 05/11)",
+      "espana": "Disponible desde España según la fuente",
+      "salida": "Salida: El emisor no recompra hoy (su web dice lo contrario); vendes a otros accionistas en ZCHF si hay comprador",
+      "antes": {
+        "minimo": "1 acción (68,01 CHF el 03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: El emisor no recompra hoy (su web dice lo contrario); vendes a otros accionistas en ZCHF si hay comprador"
+      }
+    },
+    "casa-de-outeiro": {
+      "coleccion": "en_camino",
+      "estado": "Anuncio documentado · apertura sin confirmar",
+      "minimo": "2.000 € (80 acciones de 25 €)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Si no llega a 2 M€, te devuelven el dinero; si sale, solo podrás vender un 2,5 % de tus acciones al año de 2027 a 2030",
+      "antes": {
+        "minimo": "2.000 € (80 acciones de 25 €)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Si no se llega a 2 M€, te devuelven el dinero; si sale, solo podrás vender un 2,5 % de tus acciones al año de 2027 a 2030"
+      }
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "Desde 77 € la participación en reventa (05/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)",
+      "antes": {
+        "minimo": "1 participación desde 72 € en reventa (03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+      }
+    },
+    "drautalresidenz-paternion": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "Desde 70 € la participación en reventa (05/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)",
+      "antes": {
+        "minimo": "1 participación desde 70 € en reventa (03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+      }
+    },
+    "fotovoltaica-cohotel": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "Desde 110 € la participación en reventa (05/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)",
+      "antes": {
+        "minimo": "1 participación desde 110 € en reventa (03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+      }
+    },
+    "fotovoltaica-greenpoint": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "Desde 100 € la participación en reventa (05/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)",
+      "antes": {
+        "minimo": "1 participación desde 100 € en reventa (03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+      }
+    },
+    "randhartingergasse-9-viena": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "Desde 78 € la participación en reventa (05/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)",
+      "antes": {
+        "minimo": "1 participación desde 78 € en reventa (03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+      }
+    },
+    "local-de-estanco-klagenfurt": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "Desde 95 € la participación en reventa (05/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)",
+      "antes": {
+        "minimo": "1 participación desde 95 € en reventa (03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+      }
+    },
+    "terreno-con-arrendamiento-billa": {
+      "coleccion": "en_camino",
+      "estado": "Anuncio documentado · apertura sin confirmar",
+      "minimo": "1.000 € (10 participaciones de 100 €)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Si no llega a 500.000 €, te devuelven el dinero; si se emite, cancelable a los 5 años o reventa en la app"
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "Desde 75 € la participación en reventa (05/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)",
+      "antes": {
+        "minimo": "1 participación desde 80 € en reventa (03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+      }
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "Desde 74 € la participación en reventa (05/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Primera cancelación a los 15 años de la emisión; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)",
+      "antes": {
+        "minimo": "1 participación desde 78 € en reventa (03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Primera cancelación posible a los 15 años de la emisión; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+      }
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "Desde 66,67 € la participación en reventa (05/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)",
+      "antes": {
+        "minimo": "1 participación desde 69,90 € en reventa (03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+      }
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "Desde 75 € la participación en reventa (05/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)",
+      "antes": {
+        "minimo": "1 participación desde 75 € en reventa (03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+      }
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "coleccion": "secundario",
+      "estado": "Referencia de reventa · disponibilidad sin confirmar",
+      "minimo": "Desde 69,90 € la participación en reventa (05/11)",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)",
+      "antes": {
+        "minimo": "1 participación desde 69,90 € en reventa (03/11)",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida: Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+      }
+    },
+    "hausera-proximas-ofertas": {
+      "coleccion": "en_camino",
+      "estado": "Anuncio documentado · apertura sin confirmar",
+      "minimo": "100 € según la FAQ de Hausera (05/11); las condiciones de Alicante 2 están en su documento de emisión, aún no público.",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida no documentada",
+      "antes": {
+        "minimo": "No documentado en euros",
+        "espana": "Sin comprobar si se puede contratar desde España",
+        "salida": "Salida no documentada"
+      }
+    },
+    "mtbill": {
+      "coleccion": "principales",
+      "estado": "Las fuentes no coinciden",
+      "minimo": "Sin mínimo vigente en euros",
+      "espana": "Sin comprobar si se puede contratar desde España",
+      "salida": "Salida no documentada"
+    }
+  },
+  "fichasQueCambian": 54,
+  "lecturasDelSincronizador": [
+    "/rest/v1/catalogo_plataformas_publicas_v2?select=*&limit=257",
+    "/rest/v1/plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,fuentes(url,titulo)&order=nombre",
+    "/rest/v1/catalogo_ofertas_publicas_v2?select=*&limit=1001"
+  ],
+  "resultado": "correcto"
+}

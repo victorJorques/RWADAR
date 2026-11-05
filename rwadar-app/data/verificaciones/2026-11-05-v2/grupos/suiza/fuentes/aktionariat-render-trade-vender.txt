@@ -1,0 +1,35 @@
+URL: https://shares.aktionariat.com/trade
+Renderizado (Chromium), pestaña Sell pulsada=true: 2026-11-05T08:10:44Z
+
+de	4.50 ZCHF	1 DAKS	4.5 ZCHF
+
+
+20 Sep 2026 / 06:27	Secondary Trade	5.00 ZCHF	583 DAKS	2'915 ZCHF
+
+
+10 Sep 2026 / 20:00	Secondary Trade	5.50 ZCHF	1 DAKS	5.5 ZCHF
+Page 1 of 124
+1
+2
+3
+4
+5
+…
+124
+Buy
+Sell
+Number of Shares
+DAKS
+Limit Price
+ZCHF
+Order Summary
+1 DAKS
+To be matched later
+6.2 ZCHF
+Fee (1.9%):
+0.12 ZCHF
+Total Value:
+6.08 ZCHF
+Register to Access Secondary Trading
+Aktionariat AG
+Terms of Use: This page is hosted by Aktionariat using technology licensed from Aktionariat. Some content is automatically compiled from other sources than Aktionariat and provided "AS IS" without further verification. These sources include the public trade registry, website users, and the Ethereum blockchain and related systems. Aktionariat assumes no responsibility for the accuracy of any of this data. All sh

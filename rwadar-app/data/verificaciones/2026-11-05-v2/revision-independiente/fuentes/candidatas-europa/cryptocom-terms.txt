@@ -1,0 +1,734 @@
+                     CRYPTO.COM – Tokenized Stocks Terms and Conditions
+Last Update: 11 August 2026
+1.    Introduction
+
+     Foris Capital CY Limited, a company registered in the Republic of Cyprus, with registration number HE
+     348194, having its registered office at 47 Ioanni Kondylaki Street, Q Tower, Floor 5, CY 6042, Larnaca,
+     Cyprus (“Foris Capital CY LTD” or “FCCY”) (formerly known as A.N. Allnew Investments Ltd) is
+     authorised and regulated by the Cyprus Securities and Exchange Commission (“CySEC”) as a Cypriot
+     Investment Firm (“CIF”) with licence number 344/17 under the Investment Services and Activities and
+     Regulated Markets Law of 2017 (Law 87(I)/2017), as amended, implementing the EU Markets in
+     Financial Instruments Directive II 2014/65/EU (“MiFID II”) in Cyprus. Foris Capital CY Ltd provides
+     investment and ancillary services and activities within the scope of its authorisation. Foris Capital CY
+     Ltd has passported those MiFID II activities to certain other EEA jurisdictions on a freedom of services
+     basis. Details of the licensed services and activities that Foris Capital CY Ltd is permitted to conduct
+     can be found on the CySEC website at: .
+     The contact details of CySEC are as follows: Office address: 19 Diagorou Str., CY-1097 Nicosia, Cyprus
+     (P.O BOX 24996, 1306 Nicosia, Cyprus). Telephone: +357 22506600. Email: info@cysec.gov.cy.
+     Foris Capital CY Ltd does not provide investment, legal or tax advice. You should consult your financial
+     advisor, legal or tax professional regarding your specific situation and financial condition, and carefully
+     consider whether investing, trading and/or holding the Tokenised Stocks is suitable for you.
+
+1.1   The Tokenized Stocks Services (described below) are provided to you by Foris Capital CY Ltd
+(together with its affiliates, "Crypto.com"). The Tokenised Socks Service constitutes an investment service
+provided in accordance with applicable MiFID II requirements.
+
+1.2   These ("Tokenized Stocks Terms" or “Terms”), together with any express consents given by you from
+time to time, and any documents we referenced to or incorporated herein, govern your use of the Tokenized
+Stock Services and constitute the agreement we have with you (“Agreement”).
+
+1.3   By using the Tokenized Stock Services and/or completing the sign-up process, you are entering into
+a binding contract with FCCY and shall be deemed to have expressly read, understood and agreed to be
+bound by the terms of the Agreement. You also confirm that you have knowledge of the English language
+which is sufficient for you to be able to use the Tokenized Stock Services, fully understand these Terms and
+any other documents that form part of the Agreement.
+
+1.4   These Terms apply in addition to and must be read together with the following: a) the Crypto.com
+App terms and conditions (“App Terms”) you have entered into with Foris DAX MT Limited, which you
+accepted to gain access to the Crypto.com App (“Crypto.com App” or “App”), b) the Cash (EUR) Account
+terms and conditions (“EUR Account Terms”) you have entered into with Foris MT Limited, which you
+accepted to gain access to the EUR Account
+
+1.5    In the event of any inconsistency between these Terms and the App Terms or EUR Account Terms in
+relation to the provision and use of the Tokenized Stock Services, these Terms shall prevail. Please take the
+time to read and understand these Terms before using the Tokenized Stock Services so that you are aware
+of your legal rights and obligations.
+
+1.6    FCCY provides the Tokenized Stock Services solely as described in these Terms and within the scope
+of its CIF authorisation. Any activity relating to virtual assets, digital tokens, cryptocurrencies, or other
+features that may appear in the App are provided, if at all, by other group entities under separate terms and
+conditions.
+
+1.7   These Tokenized Stocks Terms incorporate within them as though they were fully restated herein,
+the provisions of the following terms and policies: (i) our privacy notice as accessible at the following link:
+
+
+
+
+                                                                                                              1
+https://crypto.com/privacy/global/html ("Privacy Notice") and; (ii) our cookies policy accessible at the
+Cookies Consent banner on our Site.
+
+1.8     By agreeing and accepting these Tokenized Stocks Terms, you confirm that you:
+
+(a)    have read, understood and agreed to our policies and disclosures, as available on our website here,
+as follows:
+
+      ● Best Execution and Order Handling Policy;
+      ● Investor Compensation Fund Policy;
+      ● Risk Disclosure;
+      ● Conflicts of Interest Policy;
+      ● Client Categorization Policy;
+      ● Complaints Handling Policy.;
+      ● Tokenized Stocks Corporate Action Policy; and
+      ● Tokenized Stocks FAQs.
+
+(b) fully understand the risks associated with the Tokenized Stocks Services and/or have sought
+independent investment, financial, legal, tax and other necessary professional advice before using the
+Tokenized Stocks Services.
+
+2.      Definitions and Interpretations
+
+2.1     The following terms used in these Terms shall have the following meaning(s):
+“Applicable Laws” means all laws, regulations, rules, directives, orders, and regulatory guidance
+applicable to you, us, and the Tokenized Stocks service.
+“Business Day” means a day (other than a Saturday, Sunday or public holiday) on which banks are open
+for normal banking business in Cyprus.
+“Consumer” means an individual acting for purposes that are wholly or mainly outside that individual’s
+trade, business, craft or profession.
+“FX Conversion” means the purchase and sale of one currency against another to support orders,
+collateral, settlement, fees, distributions, or withdrawals under these Tokenized Stocks Terms.
+"Key Information Document and Offering Documents" means key information relating to the relevant
+Tokenized Stock, including the prospectus, key investor information document, and any other offering or
+disclosure documents made available to you via the Crypto.com App.
+“Mint” or “Minting” means the creation of Tokenized Stocks by or on behalf of Foris Capital CY Ltd
+following acceptance of an instruction and settlement of any required consideration.
+“Redeem” or “Redemption” means the burning, cancellation or removal from circulation of Tokenized
+Stocks by or on behalf of Foris Capital CY Ltd following acceptance of an instruction and settlement of
+any required consideration.
+“Reserve Assets” has the meaning provided in clause 12.1.
+“Securities Broker” means broker or service provider(s) for the sourcing and acquisition of the Underlying
+Securities as specified by Foris Capital CY Ltd from time to time.
+“Tokenized Stocks” means ledger-based derivatives (i.e. derivatives in the form of digital tokens on a
+distributed ledger or blockchain) and issued by Foris Capital CY Ltd made available on supported
+blockchain networks that reference and provide economic exposure to the price performance of the
+relevant Underlying Security, and which confer no ownership, voting, dividend or other shareholder
+rights in the Underlying Security.
+“Tokenized Stocks Services” has the meaning provided in clause 6.
+
+
+
+                                                                                                             2
+“Underlying Security” means, as applicable, a stock/share, exchange-traded fund, product or other
+financial instrument referenced by a Tokenized Stock, as specified by us from time to time.
+"we/us/our" means Foris Capital CY Ltd;
+"you/your" means the Crypto.com App user who uses the Tokenized Stocks Services.
+
+2.2 Other capitalised terms used but not defined herein shall have the meanings given to them in the App
+terms and conditions and/or the applicable FAQs.
+
+3.    Eligibility
+
+3.1   To be eligible to use the Tokenized Stocks Services, you must:
+
+(a) be an existing Crypto.com App user and remain at all times in compliance with the App Terms;
+
+(b) have a Crypto.com App account that is not suspended, restricted, terminated or otherwise;
+
+(c) be at least 18 years of age or the legal age of majority in the jurisdiction in which you reside to have the
+    necessary legal capacity, right, power and authority to accept these Tokenized Stocks Terms;
+
+(d) not be located in, under the jurisdiction of, or a national or resident of any of the countries, states and
+    jurisdictions listed in the Tokenized Stocks FAQs;
+
+(e) have the requisite and necessary experience and risk tolerance for using the Tokenized Stocks Services,
+    and have the experience and knowledge to invest in non-guaranteed financial products;
+
+(f) not be, and not have a principal or beneficial owner who is or is involved with any third party, which is
+    subject to or the target of any sanctions imposed by any government or supranational body, including
+    without limitation those imposed by the United Nations, the European Union, any EU country, the UK
+    Treasury, the U.S. Office of Foreign Assets Control, the Bureau of Industry and Security or the U.S.
+    Department of State;
+
+(g) be the beneficial owner of, and have all right, title and interest in, the assets which you intend to use for
+    the Tokenized Stocks Services.
+
+3.2 You represent and warrant that you meet the eligibility criteria above, and that your use of the
+Tokenized Stocks Services will not violate any applicable laws in your respective jurisdiction, or these
+Terms, or the rights of any third party.
+
+3.3 Access to the Tokenized Stocks Services is subject to geographic restrictions. We may at any time
+restrict, suspend, or discontinue the Tokenized Stocks Services in any jurisdiction (or to any user) for any
+reason, including in response to regulatory or legal considerations. You are responsible for ensuring that
+your use of the Tokenized Stocks Services is, and remains lawful despite changes to any applicable laws,
+your domicile and circumstances. Failure to do so shall be deemed a breach of contract, giving rise to our
+right to seek any damages, immediately terminate the Tokenized Stocks Services or other services provided
+to you, and/or to seek any other remedy available to us under the Agreement and/or any applicable laws.
+
+3.4 Notwithstanding your meeting the eligibility criteria above, we reserve the right to refuse your
+request to use and/or to suspend your use of the Tokenized Stocks Services at any time in our sole
+discretion, with or without notice to you. Further, we reserve the right to change the eligibility criteria at
+any time with or without notice to you. If we become aware that you are ineligible otherwise determine
+that that you are in violation of these Terms and/or the Agreement, we may request that you take follow-
+up action, suspend your use of the Tokenized Stocks Services immediately without notice, ban you from
+using any of our or our affiliates’ products and services and/or take any other reasonable action in the
+circumstances. In the event that use of the Tokenized Stocks Services is refused or suspended, you
+acknowledge that you may not be able to use or have access to your Tokenized Stocks.
+
+4.    Appropriateness Assessment
+
+
+
+                                                                                                               3
+4.1    Tokenized Stocks are complex instruments that carry a high level of risk. Tokenized Stocks are
+intended for traders who have sufficient experience and/or knowledge in trading such instruments and are
+able to understand and accept the associated risks. Therefore, we have to assess whether Tokenized Stocks
+are appropriate for you before you can start trading Tokenized Stocks (the "Appropriateness Assessment").
+Prior to granting access to Tokenized Stocks, we will conduct the Appropriateness Assessment, in
+accordance with MiFID II requirements, by asking you to provide relevant information about your
+knowledge and experience relevant to trading Tokenized Stocks. Access may be restricted where the
+Appropriateness Assessment indicates that Tokenized Stocks are not appropriate for a client. A warning
+may be provided where insufficient information is supplied.
+
+4.2 It is therefore important and in your best interest that you provide us with up-to-date, accurate and
+complete information and inform us immediately of any changes.
+
+4.3 You confirm and understand that you will be solely responsible for all your decisions to trade if you
+decide to proceed with trading Tokenized Stocks despite receiving our warning that this instrument is not
+appropriate for you.
+
+4.4 Before accessing the Tokenized Stocks Services, you will be classified by us as one of the following:
+a retail client, a professional client, elective professional client or eligible counterparty, in accordance with
+applicable law and our Client Categorisation Policy. Retail clients receive the greatest level of regulatory
+protection under the applicable rules and regulations and you will be classified as a retail client unless
+otherwise notified. You will receive notification of your classification once your account is opened. If you
+do not agree with your classification, you can apply for a reclassification. Elective professional clients have
+the right to request a reclassification to a client classification that is entitled to a higher level of protection.
+The information that you provide to us is relied upon by us when processing your account application,
+classifying and dealing with you. You need to inform us immediately in writing of any changes (e.g. change
+of address, contact details, change in employment or financial status, bank/credit details).
+
+5.    Pre-Investment Information, Key Information Document and Offering Documents
+
+5.1     Before making any deposit or investment through Tokenized Stocks, you must review and
+understand the Key Information Document and Offering Documents relating to the Tokenized Stock made
+available through the Tokenized Stocks Services. The Key Information Document and Offering Documents
+contain essential information regarding:
+(a)    the investment strategy, objective, and policy of the Tokenized Stocks;
+
+(b)    the risk profile and risk indicators;
+
+(c)    the fees, charges, and expenses applicable to the Tokenized Stocks;
+
+(d)    the dealing procedures, cut-off times, and settlement cycles;
+
+(e)    historical performance data; and
+
+(f)    other material characteristics of the Tokenized Stocks.
+
+5.2      Foris Capital CY Ltd makes the Key Information Document and Offering Documents available to
+you via the Crypto.com App in electronic form. By proceeding to deposit funds and submit a subscription
+instruction, you confirm that: (a) you have received the applicable Key Information Document and Offering
+Documents in a durable medium; (b) you have read and understood their contents; (c) you consent to their
+electronic delivery; and (d) you have had sufficient time and opportunity to consider the information
+contained therein.
+
+5.3    You acknowledge that you are solely responsible for reviewing and understanding the Key
+Information Document and Offering Documents before investing, and that Foris Capital CY Ltd bears no
+responsibility for your failure to do so.
+
+
+
+
+                                                                                                                  4
+5.4     The Key Information Document and Offering Documents are prepared by Foris Capital CY Ltd and
+may be updated from time to time. You are responsible for reviewing any updated documents made
+available to you. Continued participation in Tokenized Stocks following receipt of updated Key Information
+Document and Offering Documents shall constitute your acceptance of the updated terms and information.
+6.    Tokenized Stocks Services
+
+6.1    The Tokenized Stocks Services enable eligible users to buy, sell, hold, and transfer Tokenized Stocks
+via the Crypto.com App. Tokenized Stocks provide economic exposure to the value of an Underlying
+Security; however, ownership of a Tokenized Stock does not confer any ownership or rights in the
+Underlying Security, including voting, dividends or distribution entitlements, information, or any residual or
+liquidation rights. Your exposure is limited to price performance and any discretionary rewards we may
+grant as described below. Tokenized Stocks are fully funded derivative products. You must pay the full
+value of the Tokenized Stocks in cash when you purchase them under these Terms. We do not provide
+leverage or margin in respect of Tokenized Stocks under these Terms, and market losses on your Tokenized
+Stocks positions will not exceed the amount you have paid to acquire them.
+
+6.2 Foris Capital MU Limited is responsible for procuring eligible Underlying Securities from the Securities
+Broker for its own account and separately issuingTokenized Stocks on supported blockchain networks that
+reference and provide economic exposure to the price performance of the corresponding Underlying
+Security. Tokenized Stocks do not represent and are not backed by any ownership, proprietary or security
+interest in the Underlying Security.
+
+6.3 Tokenized Stocks cannot be transferred by you to any third party or to any external wallet or trading
+venue. Positions may only be opened and closed through the Crypto.com App, except where we expressly
+permit otherwise.
+
+6.4 Foris Capital CY Ltd acts as (i) a principal when it Mints and sells Tokenized Stocks to its users; (ii) ,
+and (iii) a principal when it buys or sells Tokenized Stocks from or to its users on its own account for
+secondary liquidity.
+
+6.5 We may make available different types of Tokenized Stocks. The availability of any Tokenized Stock
+is determined by us at our sole discretion, may vary by jurisdiction, and may be changed, suspended, or
+discontinued at any time without notice, subject to applicable laws.
+
+6.6 You agree that our affiliate(s) may act as intermediate or facilitate settlements or transactions
+pursuant to these Terms.
+
+6.7 We do not provide any investment, financial, legal, tax, or similar advice or personal
+recommendation in relation to Tokenized Stocks Services (non-advised services) and you remain fully
+responsible for all investment decisions and actions pertaining to Tokenized Stocks transactions you enter
+into via the Crypto.com App. Any information received from us or available on the Crypto.com App or our
+website, including market data, should not be understood as advice or treated as such. All such information
+and documents were provided to you without taking into consideration your personal circumstances.
+
+7.    Minting and Redemption
+
+7.1   All Minting and Redemption are subject to these Terms as published by us from time to time. Minting
+occurs when Foris Capital CY Ltd issues Tokenized Stocks. Redemptions allow holders to return Tokenized
+Stocks to Foris Capital CY Ltd in exchange for the economic value of the Underlying Security. Foris Capital
+CY Ltd will manage its resulting exposure in accordance with its internal hedging practices.
+
+7.2 Users may submit Mint or Redemption instructions to Foris Capital CY Ltd via the Crypto.com App or
+approved channels. We may specify submission channels, formats, and cut-off times for instructions;
+instructions received after a cut-off may be processed on the next business day (or rejected). We may
+require a pre-funding amount or settlement margin, and we may place limits on the number, size, or
+frequency of instructions. We may decline, suspend, or cancel instructions where we consider it necessary
+or appropriate for risk, operational, market, or compliance reasons. Our determinations (acting reasonably
+
+
+
+                                                                                                            5
+and in good faith) are final and binding, subject to applicable laws. Cut-off times, minimum/maximum sizes,
+suspension rights, fees, settlement assets, and other conditions may differ by Tokenized Stock and
+jurisdiction.
+
+7.3 You authorise us to communicate your instructions and any necessary information to relevant service
+providers and to receive any Tokenized Stocks or proceeds on your behalf for onward credit to your
+account, subject to our operational processes.
+8.    Custody of Underlying Securities and Tokenized Stocks
+
+8.1   Custody is segregated along two dimensions:
+
+(a) the Underlying Securities will be held with the Securities Broker under its custodial arrangements for
+    the benefit of Foris Capital CY Ltd, to support and evidence the backing of the Tokenized Stocks; and
+
+(b) the Tokenized Stocks will be recorded on-chain for the benefit of each user, with Foris Capital CY Ltd
+    maintaining appropriate books, records, reconciliations and controls to align on-chain positions with
+    off-chain reserve holdings.
+
+8.2 For the avoidance of doubt, no Tokenized Stock holder has any proprietary, beneficial, trust, or
+security interest in the Underlying Securities held under this custodial arrangement.
+
+9.    Corporate Actions and Market Disruptions
+
+9.1   Where corporate actions occur in respect of an Underlying Security (for example, stock splits,
+consolidations, mergers, spin-offs, or cash/stock dividends), we will determine, in our sole discretion and
+acting in a commercially reasonable manner subject to applicable laws, the consequential adjustments (if
+any) to Tokenized Stocks and any discretionary rewards. We may, but are not obliged to, grant you
+additional rewards or adjustments linked to corporate actions, and we may take any steps we deem
+appropriate to maintain economic exposure or protect the integrity of the service (including suspending
+trading, rebalancing, or amending product parameters). Any such rewards are not guaranteed, may be
+conditional, and may differ from the treatment of holders of the Underlying Security.
+
+9.2 In the event of market disruption, trading halts, illiquidity, or foreign exchange disruption affecting
+sourcing or settlement, we may delay, suspend or cancel pending instructions, restrict access, or adjust
+pricing or settlement until normal conditions resume, acting in good faith and consistent with market
+practice.
+
+9.3 We are not responsible for delays, shortfalls, or losses arising from relevant service providers’ actions
+or omissions, market conditions, blockchain events, or other factors outside our control.
+
+9.4 Further details regarding the treatment of corporate actions are set out in the Corporate Actions
+Policy.
+10.   Fees and Charges
+
+10.1 We may charge fees and/or spreads related to Minting, Redemption, holding, or transfer of Tokenized
+Stocks, as well as network or third-party charges. We may collect Pass-Through Services fees and/or fees
+on behalf of other service providers where applicable. Fees and any changes will be disclosed via the App
+and relevant FAQs or otherwise communicated by us and may be updated from time to time. All fees,
+charges and costs will be disclosed in accordance with MiFID II cost and charges disclosure requirements.
+
+11.   Currency and FX Conversion
+
+11.1 Tokenized Stocks, related collateral, cash settlement, and fees are denominated in US dollars (USD).
+If your account balance or deposited assets are not in USD, you authorise us to arrange for the conversion
+of non-USD funds into USD (and, where applicable, from USD into your account currency) to facilitate (a)
+placement and settlement of orders, (b) posting and release of collateral, (c) payment of fees, charges, and
+
+
+
+
+                                                                                                           6
+adjustments, and (d) distributions or withdrawals.
+
+11.2 FX Conversions may be executed by us, an affiliate, or a third-party liquidity provider at a rate
+determined by reference to prevailing market rates available to us at the time of conversion, which may
+include a spread or markup. We may use aggregated or streamed pricing, and different rates may apply
+across products or at different times.
+
+11.3 FX Conversions may occur before, during, or after order execution, margining, settlement or
+withdrawal events. We may round amounts to a reasonable number of decimal places and, where
+applicable, perform multiple partial conversions to meet funding or settlement requirements.
+
+11.4 You bear all foreign exchange risk, including the risk that the value of your non-USD assets may
+fluctuate against USD between the time an order is placed, executed, margined, or settled, and the time a
+conversion is completed. We are not responsible for losses arising from currency movements, liquidity
+constraints, market volatility, or delays attributable to third-party systems.
+
+11.5 Unless we notify you otherwise, confirmations and statements for Tokenized Stocks will be provided
+in USD. Where we display non-USD equivalents, such figures are indicative only.
+
+11.6 If a FX Conversion is reversed, corrected, or adjusted (for example, due to a cancellation, rejection,
+or error), you authorise us to perform offsetting conversions at then-prevailing rates. You remain
+responsible for any shortfall resulting from rate movements.
+
+11.7 If a FX Conversion results in an insufficient balance in any currency, you must promptly fund any
+shortfall. We may, without notice, convert available balances in other currencies to cure any deficit.
+
+11.8 FX Conversions may affect returns and may result in gains and losses independent of movements in
+the Underlying Security.
+
+12.   Reserve Assets and Hedging
+
+12.1 In connection with the issuance of Tokenized Stocks, Foris Capital CY Ltd will purchase hold or
+otherwise maintain, for its own account, Underlying Securities and/or other assets (the “Reserve Assets”)
+with an aggregate value that Foris Capital CY Ltd determines and seeks to maintain by reference to the
+then-current value of outstanding Tokenized Stocks. The Reserve Assets are assets of Foris Capital CY Ltd
+held to enable Foris Capital CY Ltd to hedge its economic exposure under the Tokenized Stocks it has issued,
+and may include Foris Capital CY Ltd's claims for delivery of Underlying Securities against its counterparties
+and, during the settlement period for the purchase and delivery of Underlying Securities, cash positions
+corresponding to the payment amount for that settlement period. No Tokenized Stock holder is granted any
+security interest, charge, pledge, trust, proprietary interest or other preferential claim over the Reserve
+Assets, and a Tokenized Stock holder’s rights in respect of the Reserve Assets are solely contractual rights
+against Foris Capital CY Ltd. They are unsecured and do not constitute any legal, equitable or beneficial
+interest in any Reserve Assets.
+
+12.2 Foris Capital CY Ltd shall monitor the value of the Reserve Assets against the value of outstanding
+Tokenized Stocks at least once per business day and shall use reasonable efforts to increase or reduce the
+Reserve Assets to reflect any material variance within the following business day. This is an internal risk
+management practice conducted for Foris Capital CY Ltd’s own account and does not create or evidence
+any proprietary or security interest in favor of Tokenized Stock holders.
+
+12.3 For the avoidance of doubt, temporary variances between the value of Reserve Assets and
+the value of outstanding Tokenized Stocks arising from ordinary hedging practices, settlement
+timing, market hours, or periods when relevant markets are closed (including weekends and public
+holidays) shall not constitute a breach of these Terms, provided that Foris Capital CY Ltd uses
+reasonable efforts to address any material variance within the timeframes set out in clause 12.2.
+
+13.   Risk Disclosure Statement
+
+
+
+                                                                                                            7
+13.1   Tokenized Stocks involve significant risks and may not be suitable for all investors. Key risks include:
+
+(a) General risk: Tokenized Stocks involve significant risks and may not be suitable for all investors. You
+    may lose all of your invested capital. You are solely responsible for your investment decisions and
+    should obtain independent legal, tax and financial advice. Past performance is not indicative of future
+    results.
+
+(b) Market and volatility risk: Prices of Tokenized Stocks may be volatile, influenced by the Underlying
+    Security, broader market conditions, and other factors, and may change rapidly and unpredictably.
+
+(c) Liquidity risk: You may be unable to buy or sell Tokenized Stocks when desired or at favorable prices
+    due to insufficient demand or market conditions.
+
+(d) Platform and operational risk: Trading utilises complex systems that may suffer downtime, failures,
+    cyber events, or other disruptions, which can impact order submission or execution.
+
+(e) Legal and regulatory risk: Laws and regulations relating to tokenised assets and underlying instruments
+    are uncertain and evolving. We may be required to restrict or terminate the Tokenized Stocks Services
+    (or aspects of it) in one or more jurisdictions without notice.
+
+(f) No shareholder rights: Tokenized Stocks do not confer ownership, voting, dividends, information rights,
+    or any legal claim to Underlying Securities. Returns may differ from direct holding due to fees or product
+    parameters.
+
+(g) Counterparty risk: If any third-party custodian or service provider involved in the reference or issuance
+    structure fails or becomes insolvent, you may suffer delay, shortfall, or loss.
+
+(h) Issuer risk: Tokenized Stocks are unsecured contractual obligations of Foris Capital CY Ltd. You do not
+    have any proprietary, beneficial, or security interest in the Underlying Securities, Reserve Assets, or
+    other assets held by Foris Capital CY Ltd to hedge its exposure under the Tokenized Stocks. In the event
+    of the insolvency, winding-up, or default of Foris Capital CY Ltd, you will rank as an unsecured creditor
+    and may lose some or all of the value of your Tokenized Stocks.
+
+(i) Cybersecurity: Virtual assets and platforms may be subject to hacking, malware, denial of service and
+    other attacks; remedies or compensation are not guaranteed.
+
+(j) Compensation schemes: Foris Capital CY Ltd is a member of the Investor Compensation Fund for Clients
+    of Cyprus Investment Firms (the “ICF”), subject to the ICF rules and eligibility under applicable laws. You
+    may be eligible for protection under the ICF in respect of certain Tokenised Stocks Services, subject to
+    the applicable terms, eligibility criteria and limits (currently up to €20,000 or 90% of the claimed
+    amount, whichever is lower, per person). Such schemes do not protect you against losses arising solely
+    from a fall in the value of Tokenised Stocks or the Underlying Securities. Further details are set out in
+    our Investor Compensation Fund Policy and/or from the ICF publications.
+
+(k) Tax: You are solely responsible for all taxes arising from your use of the Tokenized Stocks Services,
+    including any gains or income. We may make filings or reports as required by law, but we do not
+    provide tax advice.
+
+(l) Redemption process risk. Minting and Redemption instructions may be delayed, suspended, rejected,
+    or partially fulfilled, including due to cut-off times, market hours, liquidity constraints, operational
+    incidents, or compliance checks. You may receive fewer Tokenized Stocks or proceeds than expected
+    or at a different time or valuation than anticipated.
+
+(m) Blockchain and settlement risk: Transactions may depend on one or more blockchain networks.
+    Network congestion, forks, bugs, validator failures, gas fee spikes, or other events may delay or prevent
+    settlement, or result in permanent loss.
+
+
+
+
+                                                                                                             8
+(n) Price sources, tracking error and oracles. Tokenized Stocks may reference external price sources.
+    Tracking error, stale prices, outages, calculation methodologies, or oracle failures may cause prices to
+    diverge from the Underlying Security.
+
+(o) Suspension, delisting and corporate events: We may suspend, restrict, or delist a Tokenized Stock.
+    Corporate actions on the Underlying Security may be handled differently from the primary market and
+    may result in adjustments, cash substitutes, or no action.
+
+(p) Stablecoin/fiat conversion risk: Where settlement uses stablecoins or fiat conversions, you may be
+    exposed to conversion spreads, depegging, bank and payment system risks, or delays.
+
+(q) Conflicts of interest. We, or our Affiliates, may have commercial arrangements, positions, or roles that
+    create conflicts (e.g., as liquidity providers or service providers). We may take actions to manage risk
+    or comply with laws that affect your positions.
+
+14.   Representations and Warranties
+
+14.1 In addition to the representations and warranties you gave in the App Terms and Cash Account
+Terms, you represent and warrant that you are:
+
+(a)   not located in (whether temporarily or permanently) a jurisdiction where it may be unlawful to access
+our Tokenized Stocks Services; and
+
+(b) not connected with the issuer of any Underlying Security of the Tokenized Stocks in respect of which
+you have subscribed, including as a director, employee, agent, contractor or professional adviser of such
+issuer.
+
+16.2 Nothing in these Terms excludes or restricts any rights that cannot be excluded under applicable EEA
+consumer protection laws.
+
+15.   Authorised Persons
+
+15.1 You are not permitted to act as an agent or representative of any person in relation to the Tokenized
+Stocks Services. That means that you are the only customer of ours for all purposes and you are solely
+responsible for performing all your obligations under this Agreement.
+
+16.   Availability of the Tokenized Stocks Services and Prohibited Activities
+
+16.1 Without limiting our rights herein, we may at any time: refuse any request to access the Tokenized
+Stocks Service; change eligibility criteria; close, suspend, limit, or restrict your access; change, update,
+remove, cancel, suspend, disable, or discontinue any feature, component, content, or incentive; adjust fees
+or spreads; and/or place parameters or limits on orders or positions.
+
+16.2 Although we will use all reasonable care and skill to make our Tokenized Stocks Services and
+Crypto.com App Services available when required by you, we cannot guarantee that our Crypto.com App
+and/or Tokenized Stocks Services will be available all the time. We also cannot guarantee that they will be
+without interruption, error free, or will meet your individual requirements, or compatible with your
+hardware or software.
+
+16.3 Nothing in these Terms excludes liability where such exclusion is prohibited by applicable law. We
+will not be liable to you for any loss, damages, expenses or other costs which arise as a result of our
+Tokenized Stocks Services being unavailable due to technical issues or otherwise, unless such loss,
+damages, expenses or other costs is a direct result of our fraud, wilful act or gross negligence.
+
+16.4 Where the Tokenized Stocks Services and/or the Crypto.com app is or are unavailable as a result of
+scheduled or urgent maintenance work, we will make reasonable efforts, where practicable, to give you
+advance notice of that unavailability.
+
+
+
+
+                                                                                                          9
+16.5 You are responsible for making sure that you are able to access our Tokenized Stocks Services when
+you need to. This includes having access to a device that can connect to our Crypto.com App, maintaining
+the device so that it functions properly, safely and securely and having adequate internet connectivity. Your
+access to the Crypto.com App can be interrupted by a weak internet connection or an outdated version of
+the Crypto.com App. You should ensure that, when using the Crypto.com App, you are connected to a
+reliable and stable network and your Crypto.com App is always updated to the latest available version.
+
+16.6 You understand that we might suspend access to the Crypto.com App and/or Tokenized Stocks
+Services in the circumstances described in these Tokenized Stocks Terms.
+
+16.7 In connection with the Tokenized Stocks Service, you must not: violate any applicable laws; provide
+false, misleading, or inaccurate information; attempt unauthorized access; interfere with systems; engage
+in data mining or scraping; infringe intellectual property rights; introduce harmful code; or unduly burden
+or hinder our services.
+
+16.8 You may submit complaints using the complaints procedure available on the Foris Capital CY Ltd
+website. Complaints will be handled in accordance with CySEC requirements and the Complaints Handling
+Policy. Where applicable, you may refer unresolved complaints to the Financial Ombudsman of the
+Republic of Cyprus.
+
+17.   Suspension and Termination
+
+17.1 If you are a Consumer, because your agreement with us is a distance contract, you have the right
+under the Distance Marketing Directive as implemented in Cyprus or the EEA jurisdiction in which you are
+resident, to withdraw from these Terms, within 14 days of (a) accepting it, or (b) the date that you accessed
+these Terms incorporating the information required by the Directive as implemented, whichever is later. If
+you do not cancel the Terms during the 14-day period they will continue until they are terminated in
+accordance with their terms. Should you wish to cancel these Terms, please contact us at
+compliance.cy@crypto.com. You will not be charged for cancellation or termination of these Terms in
+accordance with this section, although you will be required to pay any amounts owed to us and from the
+date of cancellation you will no longer be able to use our services.
+
+17.2 You may terminate your participation in Tokenised Stocks by redeeming your holdings at any time.
+All such redemptions will be processed by reference to the applicable redemption provisions of these
+Terms.
+
+17.3 Foris Capital CY Ltd may, at its discretion and with notice where practicable, suspend, restrict, or
+terminate your access to Tokenised Stocks, in whole or in part, where it determines that such action is
+necessary or appropriate, including but not limited to the following circumstances: (a) where required by
+applicable law, regulation, court order, or regulatory directive; (b) where you are in breach of these Terms
+or any other agreement with Foris Capital CY Ltd or its affiliates; (c) where continuing to provide access
+would be unlawful or would expose Foris Capital CY Ltd to material regulatory, legal, operational,
+reputational, or financial risk; (d) where operational, security, compliance, risk management, or internal
+policy considerations justify such action.
+
+17.4 Foris Capital CY Ltd shall not be liable to you for any loss, cost, or damage incurred as a result of
+suspension or termination in accordance with this clause. Any suspension or termination shall be without
+prejudice to the rights and obligations of the parties accrued as at the effective date of such action.
+
+18.    Indemnification
+
+18.1 You agree to indemnify and hold Crypto.com and its third party service providers, and each of their
+officers, directors, agents, joint venture entities, employees and representatives, harmless from any claim
+or demand (including attorneys' fees and any fines, fees or penalties imposed by any regulatory authority)
+arising out of or related to (a) your breach of any of these Tokenized Stocks Terms; (b) your use of the
+Tokenized Stocks Services and/or the Crypto.com App Services; and (c) your violation of any applicable
+laws or regulations of any jurisdiction, or the rights of any third party.
+
+
+
+
+                                                                                                          10
+19.   Records and Reporting
+
+19.1 From time to time we may be subject to requirements to report trades made via Foris Capital CY Ltd
+under applicable law, including but not limited to the European Market Infrastructure Regulation No.
+648/2012 on derivatives and all related delegated, supplementing or successive regulations, as amended
+("EMIR"), Markets in Financial Instruments Regulation (“MIFIR”) regulation (EU) No 600/2014 and under
+applicable CySEC rules (the “Reportable Transactions”), as may be applicable. Where we are subject to
+such reporting obligations, you irrevocably authorise us to report all of your Reportable Transactions to
+CySEC or any other applicable reporting entity, as may be required and to promptly provide us with all
+information which we request in order to comply with our obligations. Where such reporting obligations
+apply, when reporting information in relation to your Reportable Transactions, we will assume - unless you
+notify us to the contrary - that you have not exceeded the clearing thresholds specified under EMIR.
+
+19.2 We will provide you with adequate reporting on your orders. For this reason, we will provide you
+with online access to the Crypto.com App, which will provide you with sufficient information in order to
+comply with CySEC rules and applicable laws in regard to client reporting requirements. Due to the
+omnibus nature of trade execution and the aggregated order handling process of Foris Capital CY Ltd,
+detailed trade-level confirmations specifying the exact time and price at which your individual subscription
+or redemption was executed will not be provided.
+
+19.3 Account statements and confirmations are available to you via the Crypto.com App where the
+statements are stored. A statement of account or certification or confirmation issued by us in relation to the
+Tokenised Stocks Services or other matters will be final and binding absent manifest error, unless you notify
+Foris Capital CY Ltd of a dispute or query within a reasonable period after becoming aware of the issue (and
+in any event within any applicable limitation period under Applicable Laws).
+
+20.    Amendment and Variation
+
+20.1 These Tokenized Stocks Terms may from time to time be updated or amended. We will post any
+such updates on the Crypto.com App or Site and an alert notification will be sent to you. Such updated
+Terms as posted will take effect [immediately] unless otherwise indicated. You should regularly check the
+Crypto.com App and Site to inform yourself of any such changes. In addition, we may at any time change,
+add or remove any feature or functionality of the Tokenized Stocks Services without prior notice. By
+continuing to use the Crypto.com App and/or the Tokenized Stocks Services after any such changes have
+taken effect, you are indicating your acceptance of the updated or amended Tokenized Stocks Terms as
+well as your acceptance of the updated Crypto.com App. If you do not wish to be bound by any changes
+or amendments to these Tokenized Stocks Terms, you should stop using the Tokenized Stocks Services
+immediately.
+
+21.    Transfer, Assignment and Delegation
+
+21.1 These Tokenized Stock Terms, and any rights and obligations and licences granted hereunder, are
+limited, revocable, non-exclusive and personal to you and therefore may not be transferred, assigned or
+delegated by you to any third-party without our written consent, but may be transferred, assigned or
+delegated by us without notice and restriction, including without limitation to any of the entities within the
+Crypto.com group, or to any successor in interest of any business associated with the Crypto.com App
+Services. Any attempted transfer or assignment in violation hereof shall be null and void.
+
+22.    Severability
+
+22.1 If any provision of these Tokenized Stocks Terms shall be found by any court or administrative body
+of competent jurisdiction to be invalid or unenforceable, the invalidity or unenforceability of such provision
+shall not affect the other provisions of these Tokenized Stocks Terms and all provisions not affected by such
+invalidity or unenforceability shall remain in full force and effect. Such provision will be changed and
+interpreted to accomplish the objectives of the provision to the greatest extent possible under any
+applicable laws.
+
+
+
+
+                                                                                                           11
+23.   Entire Agreement and Translation
+
+23.1 These Tokenized Stocks Terms constitute the entire agreement between the parties with regard to its
+subject matter and supersedes and invalidates all other prior representations, arrangements,
+understandings, and agreements relating to the same subject matter, (whether oral or in writing, express
+or implied). You acknowledge that in agreeing to these Tokenized Stocks Terms you do not rely on any
+statement, representation, warranty, or understanding other than those expressly set out in these Tokenized
+Stocks Terms.
+
+23.2 These Tokenized Stocks Terms are concluded in the English language and all communications
+including any notices or information being transmitted shall be in English. In the event that these Terms or
+any part of it is translated (for any proceedings, for your convenience or otherwise) into any other language,
+the English language text of these Tokenized Stocks Terms shall prevail (except where expressly prohibited
+by law).
+
+23.3     In some jurisdictions, you may have the right to receive these Tokenised Stocks Terms and/or
+information related to these Tokenised Stocks Terms in your local language. To the extent permitted by
+applicable law, by accessing or using the Tokenised Stocks Services, you agree to waive this right and you
+explicitly consent to receive these Tokenised Stocks Terms and all information relating to these Tokenised
+Stocks Terms in English.
+
+24.   Waiver
+
+24.1 These Tokenized Stocks Terms shall not be waived in whole or in part except where agreed by all
+parties in writing.
+
+24.2 The delay of enforcement or the non-enforcement of any of the terms of these Tokenized Stocks
+Terms by any party shall not be construed as a waiver of any of the other rights of that party arising out of
+the breach or any subsequent breach of any of these Tokenized Stocks Terms and no right, power or
+remedy conferred upon or reserved for any party in these Tokenized Stocks Terms is exclusive of any other
+right, power or remedy available to that party and each such right, power or remedy shall be cumulative.
+
+25.   Notices and Communications
+
+25.1 By using the Crypto.com App Services, you agree that we may provide you with any notices or other
+communications, including marketing, relating to your use of the Crypto.com App Services electronically:
+(a) via email (in each case to the email address that you provide), SMS message, or telephone call (in each
+case to the phone number that you provide), or (b) by posting to the Site. For notices made by email, the
+date of receipt will be deemed the date on which such notice is transmitted. You will always be given the
+option to unsubscribe from receiving any marketing material from us.
+
+25.2 Notices to us should be sent electronically to our support system at chat.crypto.com.
+
+26.   Third Party Rights
+
+26.1 Other than any entities within the Crypto.com group, a person who is not a party in these Tokenized
+Stock Terms has no right to enforce any of these Tokenized Stock Terms.
+
+27.   Governing Law and Jurisdiction
+
+27.1 These Tokenized StockTerms are governed by and shall be construed in accordance with the
+substantive law of Cyprus, without regard to any choice or conflict of laws rules.
+
+27.2 Any dispute, controversy or claim, whether contractual or non-contractual, arising out of or in
+connection with these Tokenized Stocks Terms, or the breach, termination or invalidity thereof, or any other
+issue which shall arise in virtue of these Tokenized Stocks Terms, shall be referred to and finally settled by
+arbitration administered by the International Chamber of Commerce under the Rules of the International
+Chamber of Commerce in force when the Notice of Arbitration is submitted. The law of this arbitration
+
+
+
+
+                                                                                                           12
+Clause shall be Cyprus law. The seat of arbitration shall be in Nicosia, Cyprus. Any arbitration commenced
+pursuant to this Clause shall take place in the English language. The number of arbitrators shall be one, to
+be appointed by agreement between the parties to the proceedings.
+
+
+
+
+                                                                                                         13
+

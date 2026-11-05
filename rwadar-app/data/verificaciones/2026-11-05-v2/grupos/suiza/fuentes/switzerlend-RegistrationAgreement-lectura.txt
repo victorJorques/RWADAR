@@ -1,0 +1,26 @@
+URL: https://storage.googleapis.com/aktionariat/public/40880/869c7faa-0f1c-4d52-a5ae-b4f4c129d1a4/Registration_Agreement_Lend_signed.pdf
+Descargado: 2026-11-05T08:06:04Z · sha256 6d0ffcee66df76ba91d09184840ec6fe406d8e99e6fc89bccbbb7945fd7b1d06 · 8 páginas
+Lectura: páginas 1 a 5 escaneadas (sin capa de texto), leídas como imagen el 05/11/2026 entre las 08:07 y las 08:19 UTC;
+páginas 6 a 8 (hoja de firmas DocuSign) por su capa de texto (switzerlend-RegistrationAgreement.txt).
+Nota de lectura (resumen, no transcripción completa):
+
+1 General Information
+- Issuer: «Switzerlend AG, Hofackerstrasse 13, 8032 Zürich, CHE-456.445.646» (en Zefix el domicilio es hoy
+  Mühlebachstrasse 38, desde el 29/09/2025).
+- Instrument: «Preferred C1 shares (Vorzugsaktien) of the Issuer without transfer restrictions and the
+  preferential rights as per the articles of association and the shareholders' agreement».
+- Form: valores registrados en DLT, art. 973d ss. CO.
+- Smart Contract: token ERC-20 «Switzerlend AG C1 Shares», símbolo «LEND», contrato
+  0x0618d80830f4aDB887032D23eafd5B99eB276771. Los tokens no son divisibles.
+- Transfer Restrictions: «Not appliable».
+- Other Agreements: «"Switzerlend AG C1 Shares SHA" (LENDS) is a wrapper token» ligado a un acuerdo de
+  accionistas publicado en la web.
+- Jurisdiction: Zürich, Suiza.
+2 Scope · 3 Issuance · 4 Transfer of Share Tokens · 5 Shareholder Registration (solo los inscritos en el
+  libro registro ejercen voto y dividendo; aviso del 25 % art. 697j CO) · 6 Burning · 7 Establishment of
+  securities · 8 Loss of Tokens (función de recuperación) · 9 Subjecting Share Tokens to other Agreements ·
+  10 Hard Fork · 11 General Provisions (limitación de responsabilidad, derecho suizo, tribunales de Zúrich).
+12 Resolution: aprobado por el consejo en resolución circular; firmas del 08/05/2024 al 13/05/2024.
+
+Lo que NO dice: nada sobre países o residencia de los compradores, nada sobre recompra por el emisor,
+precios ni mínimos.

@@ -1,0 +1,9 @@
+URL: https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz
+CONSULTADO: 2026-11-05T08:30:54Z
+HTTP: 200
+
+zurück zu allen fragen
+Wie funktioniert der Handel am Marktplatz?
+Alle Wertpapiere in Bezug auf Assets, die am Marktplatz nicht mehr als “neu” gekennzeichnet sind, sind am Zweitmarkt direkt zwischen den Investor:innen handelbar.
+Über den Kauf- bzw. Verkaufsbutton, der auf der Detailseite eines Assets angezeigt wird, gelangt man zur Übersicht aller bestehenden Kauf- und Verkaufsangebote. Ist ein dort verfügbares Angebot (bestehend aus Preis pro Anteil und der Anzahl der angebotenen Wertpapiere) interessant, kann dieses direkt ausgewählt werden. Sobald der:die Ver-/ Käufer:in das Angebot erneut bestätigt hat, wird die Transaktion direkt zwischen den jeweiligen Investor:innen durchgeführt.
+Es besteht auch die Möglichkeit, ein eigenes Kauf- oder Verkaufsangebot zu erstellen. Dabei legt man die Anzahl und den Preis, zu dem Wertpapiere angeboten werden sollen, selbst fest. Sobald das Angebot von einem:r anderen Investor:in angenommen wurde, muss das Angebot noch ein letztes Mal bestätigt werden, bevor die Wertpapiere übertragen werden können.

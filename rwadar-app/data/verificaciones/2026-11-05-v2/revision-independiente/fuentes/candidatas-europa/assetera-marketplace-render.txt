@@ -1,0 +1,389 @@
+URL: https://marketplace.assetera.com/en
+ConsultadoUtc: 2026-11-05T08:32:57.223Z
+
+Skip to main content
+Sign in
+Marketplace
+589
+RWAs available
+577
+Public Market Token
+5
+Private Market Token
+7
+Portfolio
+Available to Buy/Sell
+Search tokens
+Filters
+Gallery
+Table
+
+AMZNx / USDC
+
+Stock
+
+Amazon.com xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+268.45 USDC
+24h Change
++6.40%
+Buy
+
+AAPLx / USDC
+
+Stock
+
+Apple xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+350.56 USDC
+24h Change
++5.93%
+Buy
+
+GSx / USDC
+
+Stock
+
+Goldman Sachs xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+935.01 USDC
+24h Change
++2.96%
+Buy
+
+METAx / USDC
+
+Stock
+
+Meta xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+634.40 USDC
+24h Change
++1.81%
+Buy
+
+GOOGLx / USDC
+
+Stock
+
+Alphabet xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+291.54 USDC
+24h Change
++4.23%
+Buy
+
+JPMx / USDC
+
+Stock
+
+JPMorgan Chase xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+354.11 USDC
+24h Change
++4.31%
+Buy
+
+NVDAx / USDC
+
+Stock
+
+NVIDIA xStock
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+199.43 USDC
+24h Change
+−4.09%
+Buy
+
+FI_STOKy / EURØP
+
+Structured Note
+
+FI Stock Mezzanine
+
+Permissioned
+: Only investors the issuer has approved can buy this asset. Anyone can see it and its prices.
+Asset class
+Derivatives & structured products
+Access type
+Realtime
+Market
+Primary
+Price
+—
+24h Change
+—
+Buy
+
+OXC / USDC
+
+Bond
+
+OilXCoin
+
+Asset class
+Derivatives & structured products
+Access type
+Realtime
+Market
+Primary
+Last purchase price
+1.80 USDC
+24h Change
+—
+Buy
+
+YLD8on / USDC
+
+—
+
+Ondo 8 Targeted Income TR Portfolio
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+5.02 USDC
+24h Change
++1.04%
+Buy
+
+YLD5on / USDC
+
+—
+
+Ondo 5 Targeted Income TR Portfolio
+
+Asset class
+Fixed income & money market instruments
+Access type
+Realtime
+Market
+Primary
+Price
+5.03 USDC
+24h Change
++0.68%
+Buy
+
+STXon / USDC
+
+Stock
+
+Seagate (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+541.67 USDC
+24h Change
+−10.83%
+Buy
+
+STRCon / USDC
+
+Stock
+
+Strategy Stretch Preferred (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+106.47 USDC
+24h Change
++0.19%
+Buy
+
+SNOWon / USDC
+
+Stock
+
+Snowflake (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+288.75 USDC
+24h Change
+−0.75%
+Buy
+
+SNDKon / USDC
+
+Stock
+
+SanDisk (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+1,011.30 USDC
+24h Change
+−10.68%
+Buy
+
+SHOPon / USDC
+
+Stock
+
+Shopify (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+151.48 USDC
+24h Change
++6.21%
+Buy
+
+SEDGon / USDC
+
+Stock
+
+SolarEdge Technologies (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+30.04 USDC
+24h Change
+−8.57%
+Buy
+
+SCCOon / USDC
+
+Stock
+
+Southern Copper (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+183.91 USDC
+24h Change
+−1.52%
+Buy
+
+RKLBon / USDC
+
+Stock
+
+Rocket Lab (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+51.94 USDC
+24h Change
+−4.92%
+Buy
+
+RIVNon / USDC
+
+Stock
+
+Rivian Automotive (Ondo Tokenized)
+
+Asset class
+Equity & equity-like instruments
+Access type
+Realtime
+Market
+Primary
+Price
+13.98 USDC
+24h Change
++4.06%
+Buy
+Load more
+EN
+Terms and Conditions
+Privacy Policy
+Need help?
+Corporate Governance
+
+Assetera 2026 © All Rights Reserved

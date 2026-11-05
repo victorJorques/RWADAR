@@ -1,0 +1,94 @@
+{
+  "tipo": "ensayo_despues_de_aplicar",
+  "ejecutadoEl": "2026-11-05T09:47Z",
+  "como": "Repetido tras aplicar las correcciones de la revisión independiente (REVISION-ENTREGA.md, «Correcciones aplicadas»). Copia aparte del repositorio (git clone de la carpeta en 13ae882, el último commit de claude/catalogo-2026-11-05, más los archivos de esta entrega tal como quedan en el commit único de claude/catalogo-2026-11-05-limpia), con node_modules enlazados. comprobar-entrega.mjs --exportar=DIR aplica el SQL en PGlite sobre la cadena de producción y guarda lo que leería un visitante por REST; ensayo-rest-simulado.cjs sirve esos datos a sincronizar.js y volcar-seed.js. Nada sale a la red ni toca Supabase.",
+  "pasos": [
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-05-v2/comprobar-entrega.mjs --exportar=DIR",
+      "salida": "correcto · 19 comprobaciones y 6 casos de fallo (nuevo: aplicado después del 12/11 → «Lote caducado») · revisión cede1f27-b5eb-36d3-e223-eb4155df2572 · SHA 65c71cf0…cd80"
+    },
+    {
+      "orden": "RWADAR_REST_SIMULADO=DIR node -r ensayo-rest-simulado.cjs rwadar-app/sincronizar.js",
+      "salida": "Sincronizado desde Supabase: 25 plataformas verificadas, 5 descartadas y 24 ofertas clasificadas. rwadar.csv regenerado: 30 filas (sin diferencias con el de la rama)."
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-05-v2/despues-de-aplicar.mjs",
+      "salida": "· transparencia.json: revisión, lote, fechas del 05/11, mínimos cortos, puntos y motivos de Spiko · las 11 de reventa de Brickwise, «Desde X € la participación (05/11)», comprobadas contra el texto largo del catálogo (R4) · Comprobaciones de transparencia al 05/11: 44 de 48 (con su fecha anterior: kraken-xstocks documentoEspana, robinhood-classic-stock-tokens documentoEspana, mtbill supervisada y boss-info supervisada, porque el expediente de hoy no volvió a leer esa fuente)"
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-05-v2/despues-de-aplicar.mjs (otra vez)",
+      "salida": "Nada que cambiar: ya estaba hecho."
+    },
+    {
+      "orden": "Prueba en contra de R4: la misma orden con el mínimo corto antiguo («Desde X € en reventa (05/11)»)",
+      "salida": "Falla con «apartamento-vacacional-hinterstoder-50: mínimo corto de la tarjeta» y no escribe transparencia.json (mismo SHA-256 antes y después)."
+    },
+    {
+      "orden": "RWADAR_REST_SIMULADO=DIR node -r ensayo-rest-simulado.cjs rwadar-app/volcar-seed.js",
+      "salida": "02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13 fuentes. Sin diferencias (hoy no se toca public.plataformas ni public.fuentes)."
+    },
+    {
+      "orden": "node rwadar-fichas.js",
+      "salida": "Archivos actualizados: 57 (24 fichas de oferta, 25 de plataforma y 5 de descartadas, que llevan la revisión y las fechas; cambios.html, metodologia.html y sitemap.xml). Ninguna ficha nueva ni retirada: la lista cerrada no cambia."
+    },
+    {
+      "orden": "node rwadar-editorial-source/ofertas/transparencia.mjs",
+      "salida": "Transparencia escrita: 24 ofertas con transparencia"
+    },
+    {
+      "orden": "npm test",
+      "salida": "exit 0 en 2 min 12 s · base de datos 27 scripts (886 comprobaciones), 30 SQL y mapa 11/11 · web 593 · pre-render «25 fichas, 5 descartadas y 24 emisiones» · fichas 71 · precarga 32 · móvil 409 + 2 omitidas de 411 · acceso 146 · herramientas: «fichas.json: 24 fichas (24 con foto), catálogo 2026-11-05-v2», «Transparencia al día: 24 ofertas», «Diferencias: 0»"
+    }
+  ],
+  "archivosQueCambian": [
+    "M rwadar-editorial-source/ofertas/transparencia.json",
+    "M rwadar-movil/lib/transparencia-contenido.js",
+    "M rwadar-site/assets/catalogo-publico-20261022.js",
+    "M rwadar-site/assets/rwadar-20260820.js (bloque de transparencia)",
+    "M rwadar-site/cambios.html",
+    "M rwadar-site/fuera-del-radar/*.html (5)",
+    "M rwadar-site/index.html (pre-render)",
+    "M rwadar-site/metodologia.html",
+    "M rwadar-site/ofertas/*.html (24)",
+    "M rwadar-site/plataformas/*.html (25)",
+    "M rwadar-site/sitemap.xml",
+    "sin cambios: rwadar-app/db/02_seed.sql, rwadar-site/rwadar.csv, rwadar-fichas-manifiesto.js"
+  ],
+  "web": {
+    "como": "rwadar-servir.js en la copia (puerto 4199) y Chrome sin interfaz por CDP, con el DOM ya pintado, a 1366×900 y a 390×844: las 24 tarjetas dicen lo mismo en los dos tamaños. Captura de la reventa de Brickwise a 1366×900 (pestaña «Reventa», «Ver sus 11 ofertas»): «Mínimo · Desde 66,67 € la participación (05/11)» en Schwarzer Weg.",
+    "tarjetas": {
+      "Aktionariat": "Mínimo: 500 CHF | España: Sí, según la fuente | Salida: Venta a otros accionistas",
+      "xStocks: certificados tokenizados que siguen el precio de acciones de EE. UU.": "Mínimo: 1 € | España: Sí, según la fuente | Salida: Venta a Kraken, 24/5",
+      "Prosegur Digital Gold": "Mínimo: 1 gramo de oro | España: Sí, según la fuente | Salida: Recompra por Prosegur",
+      "Classic Stock Tokens: derivados sobre acciones de EE. UU.": "Mínimo: 1 € | España: Sí, según la fuente | Salida: Cierre con Robinhood, 24/5",
+      "Spiko Euro (Smart Cash): fondo en euros ligado al €STR": "Mínimo: 1 € | España: Sí, según la fuente | Salida: Reembolso diario, con límites",
+      "Spiko Letras del Tesoro Dólar": "Mínimo: 1 USD | España: Sí, según la fuente | Salida: Reembolso diario",
+      "Spiko Letras del Tesoro Euro": "Mínimo: 1 € | España: Sí, según la fuente | Salida: Reembolso diario",
+      "mTBILL": "Mínimo: No verificado | España: Sin confirmar | Salida: Sin documentar",
+      "Boss Info": "Mínimo: 100 CHF | España: Sí, según la fuente | Salida: Venta a otros accionistas",
+      "Switzerlend": "Mínimo: 1 acción (68,01 CHF, 05/11) | España: Sí, según la fuente | Salida: Venta a otros accionistas",
+      "Apartamento vacacional Hinterstoder 50": "Mínimo: Desde 77 € la participación (05/11) | España: Sin confirmar | Salida: Reventa en la app, si hay comprador",
+      "Drautalresidenz · Paternion": "Mínimo: Desde 70 € la participación (05/11) | España: Sin confirmar | Salida: Reventa en la app, si hay comprador",
+      "Fotovoltaica Cohotel · Steyregg": "Mínimo: Desde 110 € la participación (05/11) | España: Sin confirmar | Salida: Nominal en 2038; antes, reventa",
+      "Fotovoltaica GreenPoint · Wiener Neustadt": "Mínimo: Desde 100 € la participación (05/11) | España: Sin confirmar | Salida: Nominal en 2038; antes, reventa",
+      "Inmueble Randhartingergasse 9 · Viena": "Mínimo: Desde 78 € la participación (05/11) | España: Sin confirmar | Salida: Reventa en la app, si hay comprador",
+      "Local de estanco · Klagenfurt": "Mínimo: Desde 95 € la participación (05/11) | España: Sin confirmar | Salida: Reventa en la app, si hay comprador",
+      "Vivienda Plüddemanngasse 101 · Graz": "Mínimo: Desde 75 € la participación (05/11) | España: Sin confirmar | Salida: Reventa en la app, si hay comprador",
+      "Vivienda Pottendorfer Straße 62 · Wiener Neustadt": "Mínimo: Desde 74 € la participación (05/11) | España: Sin confirmar | Salida: Primera cancelación a 15 años; reventa",
+      "Vivienda Schwarzer Weg 18 · Graz": "Mínimo: Desde 66,67 € la participación (05/11) | España: Sin confirmar | Salida: Reventa en la app, si hay comprador",
+      "Vivienda Sonnleithnergasse 2 · Viena": "Mínimo: Desde 75 € la participación (05/11) | España: Sin confirmar | Salida: Reventa en la app, si hay comprador",
+      "Vivienda Stallhofstraße 28 · Gratwein": "Mínimo: Desde 69,90 € la participación (05/11) | España: Sin confirmar | Salida: Reventa en la app, si hay comprador",
+      "Casa de Outeiro": "Mínimo: 2.000 € | España: Sin confirmar | Salida: Venta limitada tras la emisión",
+      "Terreno con supermercado BILLA · Brückl": "Mínimo: 1.000 € | España: Sin confirmar | Salida: Cancelable a los 5 años; reventa",
+      "Hausera · próximas ofertas": "Mínimo: 100 € según la FAQ de Hausera | España: Sin confirmar | Salida: Sin documentar"
+    },
+    "fichaSchwarzerWeg": "/ofertas/vivienda-schwarzer-weg-18-graz: la referencia «Participaciones en venta · 05/11/2026» dice «Participaciones de esta emisión a la venta entre inversores ese día (suma de las órdenes abiertas en la app). Cambia a diario.» (R1); siguen el aviso del alquiler, la venta más barata, la mejor oferta de compra (35,00 €) y «Desistimiento».",
+    "otrasFichas": {
+      "mtbill": "«Países de oferta según la web de Midas · consulta 05/11/2026» enlaza «Abrir fuente ↗» a https://midas.app/; el archivo main-C67ipI_t.js solo aparece como localizador en el alcance (R2).",
+      "spiko-smart-cash-euro": "Reembolso: «Diario, con orden antes de las 15:00 (París) y abono al día hábil siguiente; puede limitarse (25 % del fondo)» (R6).",
+      "aktionariat": "«Salida · consulta 01/11/2026: Bid/Ask 6.00 / 6.20 · Spread 3.23%», con la aclaración de la comisión en el alcance (R3).",
+      "boss-info": "Alcance de «Salida · consulta 01/11/2026»: «La comisión del 0 % que se veía ese día era la de la compra; al vender, el 05/11/2026 se cobraba un 1,9 %» (R3)."
+    }
+  },
+  "paxGoldDespues": "Tras sincronizar, /plataformas/pax-gold cita https://www.paxg.com/ en las fuentes de su verificación (3 enlaces), pero el JSON-LD («about.url»), el botón «Ir a la web de Pax Gold» y rwadar.csv siguen en https://paxos.com/paxgold: salen de la columna «web» de public.plataformas, que hoy no se toca (pendiente)."
+}

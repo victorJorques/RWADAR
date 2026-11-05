@@ -1,0 +1,44 @@
+HTTP/1.1 200 Connection Established
+
+HTTP/2 301 
+date: Thu, 05 Nov 2026 08:31:32 GMT
+content-type: text/html; charset=UTF-8
+location: https://crypto.com/
+strict-transport-security: max-age=15552000
+report-to: {"group":"cf-csp-endpoint","max_age":86400,"endpoints":[{"url":"https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=PKsCc91XCw261E0auUZ1MbXIPbjS_bM0mMHrWvMh1qw-1793867492.977703-1.0.1.1-3W.R0tIK70mjkSfjA_gC_.ypaopjsH7fU0RUpGGUKmw8Ht1A7tkMBFYH8uW8hWWWWHu_tRaHUhqqJToYU906mycvdfH2QaXenzks1GlkKSa3Y6LhjsNXMT0DzVcMDOw7Dy4PWWbLA6vfy3p26ghloSQprmSeKOt32MvmJ3MOXs0"}]}
+reporting-endpoints: cf-csp-endpoint="https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=PKsCc91XCw261E0auUZ1MbXIPbjS_bM0mMHrWvMh1qw-1793867492.977703-1.0.1.1-3W.R0tIK70mjkSfjA_gC_.ypaopjsH7fU0RUpGGUKmw8Ht1A7tkMBFYH8uW8hWWWWHu_tRaHUhqqJToYU906mycvdfH2QaXenzks1GlkKSa3Y6LhjsNXMT0DzVcMDOw7Dy4PWWbLA6vfy3p26ghloSQprmSeKOt32MvmJ3MOXs0"
+content-security-policy-report-only: script-src 'unsafe-inline' 'unsafe-eval'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=PKsCc91XCw261E0auUZ1MbXIPbjS_bM0mMHrWvMh1qw-1793867492.977703-1.0.1.1-3W.R0tIK70mjkSfjA_gC_.ypaopjsH7fU0RUpGGUKmw8Ht1A7tkMBFYH8uW8hWWWWHu_tRaHUhqqJToYU906mycvdfH2QaXenzks1GlkKSa3Y6LhjsNXMT0DzVcMDOw7Dy4PWWbLA6vfy3p26ghloSQprmSeKOt32MvmJ3MOXs0; report-to cf-csp-endpoint
+server: cloudflare
+cf-ray: a55a80b71817c95b-IAD
+alt-svc: h3=":443"; ma=86400
+
+HTTP/2 302 
+date: Thu, 05 Nov 2026 08:31:33 GMT
+content-length: 0
+location: https://crypto.com/us
+set-cookie: __cf_bm=pyp7FK23xYiZYb9B64YjhfND_8HMjBnibBIdPgsKbzY-1793867493.024498-1.0.1.1-7hnx5m0T5IBc9qwajKleTAUCUOULaslJTILFiS33tZC49R5x9JXlqCZuUYzzomQYrV71cQb6BoJHvCurrAsKkqMRqSiilmRgNsA0g.fKXgDE5m_PzWl4jT9Sl4udFcmI; HttpOnly; SameSite=None; Secure; Path=/; Domain=crypto.com; Expires=Thu, 05 Nov 2026 09:01:33 GMT
+set-cookie: _cfuvid=RW6bSB6uqerbkpPitcpSAb2FFUKscF1806GZf9Q7WA0-1793867493.024498-1.0.1.1-Ihc12.bMDQHOEMEi5aZ6OR.yS5laLRR0nEf5nmtw8mo; HttpOnly; SameSite=None; Secure; Path=/; Domain=crypto.com
+vary: accept-encoding
+strict-transport-security: max-age=15552000
+server: cloudflare
+cf-ray: a55a80b768ccc95b-IAD
+alt-svc: h3=":443"; ma=86400
+
+HTTP/2 200 
+date: Thu, 05 Nov 2026 08:31:33 GMT
+content-type: text/html; charset=utf-8
+cache-control: public, s-maxage=3600, no-store
+strict-transport-security: max-age=15552000
+x-middleware-rewrite: /us
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+x-powered-by: Next.js
+age: 2994
+last-modified: Thu, 05 Nov 2026 07:42:32 GMT
+cf-cache-status: HIT
+set-cookie: __cf_bm=CsTCZE2pJ53Rd9A4no_9nRImaHZltC94sfTPt8s2Xi8-1793867493.082722-1.0.1.1-iqpr0jGHv19IKR3igGSFS8fCiXV6AANZGjbglIHe1nxLR4PISJhBtR2J7baSir68GdxhCEb2U1ZJJaPAxpSHTmBHahqiyNAuUuLAgr7rnGpBSCkYcUVHWyjOlMr7_COi; HttpOnly; SameSite=None; Secure; Path=/; Domain=crypto.com; Expires=Thu, 05 Nov 2026 09:01:33 GMT
+set-cookie: _cfuvid=O20nGgvIDluqSM7uB7YjUAqIk9Hsnn61bTeEFpZy7WM-1793867493.082722-1.0.1.1-qBCD4Erx7.rjd4EftgcIo3Y49LN8IKNd4NP13Gi6LXs; HttpOnly; SameSite=None; Secure; Path=/; Domain=crypto.com
+link: </mkt-web/_next/static/css/dab8c1a647b002ae.css>; rel=preload; as="style", </mkt-web/_next/static/css/6af9e26749910a54.css>; rel=preload; as="style", </mkt-web/_next/static/css/e0565e881b11a088.css>; rel=preload; as="style", </mkt-web/_next/static/css/32493cc1d966f400.css>; rel=preload; as="style"
+server: cloudflare
+cf-ray: a55a80b7c99ec95b-IAD
+alt-svc: h3=":443"; ma=86400
+

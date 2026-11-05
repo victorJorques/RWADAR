@@ -1,0 +1,428 @@
+{
+  "slug": "boss-info",
+  "tipoExpediente": "publicada",
+  "grupo": "suiza",
+  "proveedor": "Aktionariat (portal de inversores shares.bossinfo.com)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Boss Info AG (vende sus propias acciones en un portal con tecnología de Aktionariat AG)",
+  "emisor": "Boss Info AG, Farnern, UID CHE-105.004.543",
+  "vehiculo": "Sociedad anónima suiza (AG); sin SPV",
+  "token": "BOSS, ERC-20 en Ethereum, contrato 0x2e880962a9609aa3eab4def919fe9e917e99073b (0 decimales). Contrato de venta del emisor 0x3e73d3fc22a8637b2c16790aa2c0e2d552d44e69 (Brokerbot v8).",
+  "derechoAdquirido": "Acciones nominativas de Boss Info AG emitidas como valores registrados en DLT; sin restricción de transmisión según el reglamento de registro. Derechos de socio tras inscripción en el libro registro.",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-105.004.543; token BOSS 0x2e880962a9609aa3eab4def919fe9e917e99073b",
+  "moneda": "CHF (transferencia) / ZCHF (cripto y secundario)",
+  "documentos": [
+    {
+      "titulo": "Registration Regulations (CMTA compatible), firmado",
+      "url": "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+      "versionOFecha": "V2.0 – 2022-05-24; mismo archivo que el 01/11 y el 03/11 (sha256 idéntico)",
+      "paginas": 7,
+      "sha256": "613277222244065ffc6faf4b1458c700ac86b203d58a816e0e4043d4073e045f",
+      "leido": true
+    },
+    {
+      "titulo": "Investor Page Terms del portal shares.bossinfo.com (enlace «Terms of Service» del pie)",
+      "url": "https://shares.bossinfo.com/investor-page-terms",
+      "versionOFecha": "Version 1.0 • October 30, 2026; mismo HTML que en shares.aktionariat.com y shares.lend.ch (plantilla común de Aktionariat). Leído por primera vez en este portal hoy.",
+      "paginas": null,
+      "sha256": "d3ed3a3ca9f9fa8b4c1362f58979e31d67686d2a455c6e71b763d24068645ae4",
+      "leido": true
+    },
+    {
+      "titulo": "Investor Relations – FAQ (quién no puede comprar)",
+      "url": "https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/",
+      "versionOFecha": "sin fecha; texto igual al del 03/11 (el HTML cambia por elementos de navegación)",
+      "paginas": null,
+      "sha256": "070fa9f3d5d1369fe108679eaa446d59b3526e931159eff7b08ce2b5e889768e",
+      "leido": true
+    },
+    {
+      "titulo": "Investor Relations – Tokens (Aktien) kaufen",
+      "url": "https://www.bossinfo.com/unternehmen/investor-relations/investor-tokens/",
+      "versionOFecha": "sin fecha; texto igual al del 03/11",
+      "paginas": null,
+      "sha256": "43eb735d1cce8bd7fd828b98b97bb225ac1243959c95141fa99dd081054b6a4d",
+      "leido": true
+    },
+    {
+      "titulo": "Folleto / ficha informativa",
+      "url": null,
+      "versionOFecha": "no existe",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (ZefixREST)",
+      "entidad": "Boss Info AG",
+      "numero": "CHE-105.004.543",
+      "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/450692.json",
+      "alcance": "EXISTIEREND, sede Farnern. Ficha idéntica a la del 03/11; última publicación SHAB del 05/08/2026 (cambio en el consejo). No es una licencia financiera.",
+      "consultadoUtc": "2026-11-05T08:10:08Z"
+    },
+    {
+      "regulador": "FINMA · registro de entidades autorizadas",
+      "entidad": "Boss Info",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "alcance": "Búsqueda «Boss Info»: Count 0 (controles «Maerki Baumann» = 1, «Sygnum» = 1). No es entidad autorizada.",
+      "consultadoUtc": "2026-11-05T08:08:54Z"
+    },
+    {
+      "regulador": "PolyReg (autorregulación contra el blanqueo)",
+      "entidad": "Boss Info AG",
+      "numero": null,
+      "url": "https://api.polyreg.ch/api/membership-check?name=Boss%20Info%20AG",
+      "alcance": "result=false: no afiliada.",
+      "consultadoUtc": "2026-11-05T08:10:10Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Boss Info",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info",
+      "consultadoUtc": "2026-11-05T08:09:22Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Boss Info AG",
+      "resultado": "sin coincidencias («No hay datos disponibles»); control «Capital» con resultados",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info+AG",
+      "consultadoUtc": "2026-11-05T08:09:23Z"
+    },
+    {
+      "regulador": "FINMA · lista de advertencias",
+      "busqueda": "boss info / bossinfo / boss-info",
+      "resultado": "sin coincidencias (2.401 entradas)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-05T08:09:04Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "DIRECT FROM ISSUER Buy BOSS at 8.502 CHF · bank transfer or crypto",
+      "dato": "Venta directa del emisor técnicamente activa",
+      "fuentePrimaria": "https://shares.bossinfo.com/trade",
+      "localizador": "/trade renderizado (08:03:21Z); en cadena settings()=0x1 en 0x3e73…4e69, que tiene 11.171 BOSS (08:05:42Z)",
+      "fechaDato": "2026-11-05",
+      "consultadoUtc": "2026-11-05T08:03:21Z",
+      "alcanceYLimites": "Activa no significa con actividad: la última compra al emisor sigue siendo la del 29/06/2026 (183 acciones a 8,50).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "precio",
+      "literal": "Price per BOSS 8.5 CHF",
+      "dato": "8,50197 por acción (precio del emisor; sube 0,000005 por acción vendida)",
+      "fuentePrimaria": "https://shares.bossinfo.com/invest",
+      "localizador": "/invest renderizado (08:03:12Z) + getPrice()=8,50197e18 e increment()=5e12 (08:05:42Z)",
+      "fechaDato": "2026-11-05",
+      "consultadoUtc": "2026-11-05T08:03:12Z",
+      "alcanceYLimites": "Sin cambios desde el 01/11. En reventa no va como precio de la tarjeta.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "actividad",
+      "literal": "28 Sep 2026 / 11:32 Secondary Trade 6.70 ZCHF 474 BOSS",
+      "dato": "Última operación: 28/09/2026 entre accionistas a 6,70 ZCHF. Última compra al emisor: 29/06/2026. Ninguna operación nueva desde el 03/11 (historial de 318 operaciones idéntico).",
+      "fuentePrimaria": "https://shares.bossinfo.com/api/secondarymarkets/getTrades",
+      "localizador": "getTrades company=1664, historial completo (08:12:25Z)",
+      "fechaDato": "2026-09-28",
+      "consultadoUtc": "2026-11-05T08:12:25Z",
+      "alcanceYLimites": "Entre el 05/11/2025 y el 05/11/2026: 70 operaciones entre accionistas y 10 compras al emisor (448 acciones).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "bankTransferLimit: enabled true, min 100 · cryptoPaymentsLimit: min 9",
+      "dato": "100 CHF por transferencia; en cripto desde 1 acción",
+      "fuentePrimaria": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+      "localizador": "API pública del portal; BOSS decimals()=0 (08:05:42Z)",
+      "fechaDato": "2026-11-05",
+      "consultadoUtc": "2026-11-05T08:01:52Z",
+      "alcanceYLimites": "Orden por defecto del portal: 500 acciones (4.251,61 CHF).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "9.1 Offer only valid for persons in Switzerland and the EEA — The public offer to purchase the shares from the Company (Direct Investment) is exclusively addressed to persons domiciled or resident in Switzerland or the EEA. … The offer for persons from the EEA is limited to a total of €100,000.",
+      "dato": "La venta directa del emisor admite a residentes en Suiza o el EEE (España incluida), con un tope conjunto de 100.000 € para el EEE",
+      "fuentePrimaria": "https://shares.bossinfo.com/investor-page-terms",
+      "localizador": "Investor Page Terms v1.0 (30/10/2026), §9.1; enlazadas como «Terms of Service» en el pie de shares.bossinfo.com. «Company» = la sociedad del pie del portal («This page is hosted by Boss Info», «©2026 Boss Info (site content)»)",
+      "fechaDato": "2026-10-30",
+      "consultadoUtc": "2026-11-05T08:07:19Z",
+      "alcanceYLimites": "Es la plantilla común de Aktionariat (mismo HTML en los tres portales), servida en el dominio del emisor. No se publica cuánto queda del tope. El emisor puede rechazar a cualquier inversor (§3.1).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Wer kann keine Aktien kaufen? … vom Kauf der BOSS Token ausgenommen sind: United States of America, People’s Republic of China, Afghanistan, … Yemen.",
+      "dato": "España no figura entre los países excluidos por el emisor",
+      "fuentePrimaria": "https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/",
+      "localizador": "FAQ de inversores, pregunta «Wer kann keine Aktien kaufen?»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:06:36Z",
+      "alcanceYLimites": "Lista de exclusiones, coherente con la condición Suiza + EEE del portal en lo que toca a España. Texto igual al del 03/11.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "Aktuell ist der Ankauf von Aktien aufgrund eines Wartungsfensters deaktiviert.",
+      "dato": "El emisor no recompra («ventana de mantenimiento», sin fecha)",
+      "fuentePrimaria": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+      "localizador": "disabledSellText; en cadena settings()=0x1 (bit 0x2 de recompra apagado, 08:05:42Z)",
+      "fechaDato": "2026-11-05",
+      "consultadoUtc": "2026-11-05T08:01:52Z",
+      "alcanceYLimites": "El contrato tiene 2.491 ZCHF, pero con la recompra apagada no los paga. Ninguna venta al emisor en las 318 operaciones del historial.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "Bid/Ask 7.30 / 8.40 · Spread 13.10% · 7.30 1'000 · 6.51 1'500",
+      "dato": "Mejor compra entre accionistas 7,30 ZCHF (1.000 acciones) y 6,51 (1.500); mejor venta 8,40 (104)",
+      "fuentePrimaria": "https://shares.bossinfo.com/trade",
+      "localizador": "/trade renderizado (08:03:21Z) y API getOrderBook company=1664 (08:04:49Z)",
+      "fechaDato": "2026-11-05",
+      "consultadoUtc": "2026-11-05T08:04:49Z",
+      "alcanceYLimites": "En ZCHF con monedero propio. Libro idéntico al del 03/11.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Sell · Fee (1.9%) | Buy · Fee (0%): 0.00 ZCHF | API: buyerFeeRate 0, sellerFeeRate 0.0190",
+      "dato": "Mercado entre accionistas: el comprador paga 0 %; quien vende paga 1,9 %",
+      "fuentePrimaria": "https://shares.bossinfo.com/trade",
+      "localizador": "/trade con la pestaña «Sell» (08:11:03Z); /api/secondarymarketsettings?ticker=BOSS (08:10:23Z); Investor Page Terms §4.1 y §4.3",
+      "fechaDato": "2026-11-05",
+      "consultadoUtc": "2026-11-05T08:11:03Z",
+      "alcanceYLimites": "Corrige la ficha publicada («Comisión mostrada 0 %»), que solo miró el lado comprador.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "moneda_secundario",
+      "literal": "FAQ: «die verwendete Kryptowährung ist ein sogenannter «stable coin». Der Krypto Schweizer Franken ist 1:1 mit CHF gedeckt … Informationen zum xCHF» | portal: baseCryptoCurrency ZCHF (Frankencoin)",
+      "dato": "La FAQ describe el XCHF de Bitcoin Suisse («1:1 con CHF»), pero el portal liquida hoy en ZCHF (Frankencoin), otra moneda",
+      "fuentePrimaria": "https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/",
+      "localizador": "FAQ, «Kursrisiko beim Verkauf der Tokens?»; brokerbotsettings baseCryptoCurrency=ZCHF",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:06:36Z",
+      "alcanceYLimites": "Conflicto de documentación: la promesa «1:1 con CHF» de la FAQ habla de otra moneda. No se ha comprobado hoy la cobertura de ZCHF.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Issued instrument Registered shares (Namenaktien) … Transfer restrictions (Vinkulierung) None",
+      "dato": "Acciones nominativas DLT sin restricción de transmisión",
+      "fuentePrimaria": "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+      "localizador": "Registration Regulations V2.0 (24/05/2022), apartado 1 y §2",
+      "fechaDato": "2022-05-24",
+      "consultadoUtc": "2026-11-05T08:06:02Z",
+      "alcanceYLimites": "Mismo archivo que el 03/11.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "supervision",
+      "literal": "The secondary trading facilitated herein is considered a non-commercial trading facility operated by Boss Info … not subject to prudential supervision.",
+      "dato": "Sin supervisión financiera; no figura en FINMA ni en PolyReg",
+      "fuentePrimaria": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "localizador": "Buscador FINMA «Boss Info» = 0 (08:08:54Z); pie del portal",
+      "fechaDato": "2026-11-05",
+      "consultadoUtc": "2026-11-05T08:08:54Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Ein Wertverlust bis 100% des eingesetzten Kapitals ist möglich.",
+      "dato": "Pérdida total posible",
+      "fuentePrimaria": "https://www.bossinfo.com/unternehmen/investor-relations/investor-tokens/",
+      "localizador": "Pie de la página de compra de tokens",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-05T08:06:37Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Inscrita en el registro mercantil; no autorizada por FINMA ni afiliada a PolyReg (05/11/2026). Sin advertencias de la CNMV ni de FINMA."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Venta del emisor activa en cadena, pero la última compra al emisor fue el 29/06/2026 y la última operación, entre accionistas, el 28/09/2026. Nada nuevo desde el 03/11."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Las condiciones del propio portal (§9.1) admiten a residentes de Suiza y del EEE, con tope de 100.000 € para el EEE; la FAQ no excluye a España. Mínimo 100 CHF. Sin recompra; vender entre accionistas cuesta un 1,9 %."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Pérdida total posible; sin folleto ni KID; emisor no supervisado; precio del emisor por encima de la mejor venta del secundario; la FAQ describe otra moneda estable (XCHF) que la que usa el portal (ZCHF)."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "notaDisponibleEs": "Confirmado con alcance por las condiciones del portal del emisor (plantilla común de Aktionariat). Mientras la ficha siga en «secundario», la base de datos exige disponibleEs = null: el acceso solo puede ir en el texto del aviso y en resumenTarjeta.",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "acceso desde España (aviso publicado)",
+      "antes": "No confirmado: el emisor solo publica una lista de países vetados, sin España, pero no dice que la oferta se dirija al EEE",
+      "ahora": "Las condiciones del portal del emisor (shares.bossinfo.com/investor-page-terms §9.1, v1.0 del 30/10/2026) dirigen la venta directa a residentes en Suiza o el EEE, con tope total de 100.000 € para el EEE",
+      "fuente": "https://shares.bossinfo.com/investor-page-terms",
+      "critico": true
+    },
+    {
+      "campo": "comisiones (ficha completa: «Comisión mostrada 0 %»)",
+      "antes": "0 % en el mercado entre accionistas",
+      "ahora": "0 % para quien compra y 1,9 % para quien vende",
+      "fuente": "https://shares.bossinfo.com/trade",
+      "critico": true
+    },
+    {
+      "campo": "aviso nuevo (moneda)",
+      "antes": "no publicado",
+      "ahora": "La FAQ del emisor explica el XCHF «1:1 con CHF», pero el portal liquida en ZCHF (Frankencoin)",
+      "fuente": "https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/",
+      "critico": false
+    },
+    {
+      "campo": "metricas.Supervisor (fecha)",
+      "antes": "no figura en el registro de FINMA (03/11/2026)",
+      "ahora": "sigue sin figurar (05/11/2026)",
+      "fuente": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "critico": false
+    },
+    {
+      "campo": "precio del emisor, mínimo, recompra, libro de órdenes, operaciones, documentos",
+      "antes": "lo publicado con datos del 03/11",
+      "ahora": "sin cambios en la consulta de 08:01–08:13 UTC del 05/11 (historial y reglamento con sha256 idéntico)",
+      "fuente": "https://shares.bossinfo.com/api/secondarymarkets/getOrderBook",
+      "critico": false
+    }
+  ],
+  "avisosConFecha": [
+    {
+      "avisoPublicado": "Acceso desde España no confirmado: el emisor solo publica una lista de países vetados (EE. UU., China y otros), sin España, pero no dice que la oferta se dirija al EEE.",
+      "estadoHoy": "cambia",
+      "literal": "The public offer to purchase the shares from the Company (Direct Investment) is exclusively addressed to persons domiciled or resident in Switzerland or the EEA.",
+      "fuente": "https://shares.bossinfo.com/investor-page-terms",
+      "consultadoUtc": "2026-11-05T08:07:19Z",
+      "textoNuevo": "Según las condiciones de su portal, la venta del emisor es solo para residentes en Suiza o el EEE, con un tope total de 100.000 € para el EEE; no se publica cuánto queda."
+    },
+    {
+      "avisoPublicado": "El emisor no recompra («ventana de mantenimiento», sin fecha).",
+      "estadoHoy": "vigente",
+      "literal": "Aktuell ist der Ankauf von Aktien aufgrund eines Wartungsfensters deaktiviert.",
+      "fuente": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+      "consultadoUtc": "2026-11-05T08:01:52Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "El precio del emisor está por encima de la mejor oferta de venta entre accionistas.",
+      "estadoHoy": "vigente",
+      "literal": "Buy BOSS at 8.502 CHF · Bid/Ask 7.30 / 8.40",
+      "fuente": "https://shares.bossinfo.com/trade",
+      "consultadoUtc": "2026-11-05T08:03:21Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "El precio del emisor y las ofertas entre accionistas cambian: compruébalos en el portal antes de operar.",
+      "estadoHoy": "vigente",
+      "literal": "Bid/Ask 7.30 / 8.40",
+      "fuente": "https://shares.bossinfo.com/trade",
+      "consultadoUtc": "2026-11-05T08:04:49Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "(nuevo)",
+      "estadoHoy": "nuevo",
+      "literal": "Fee (1.9%) · Applicable fees are borne by the seller.",
+      "fuente": "https://shares.bossinfo.com/trade",
+      "consultadoUtc": "2026-11-05T08:11:03Z",
+      "textoNuevo": "Si vendes a otro accionista pagas una comisión del 1,9 %; quien compra no paga comisión."
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "Boss Info",
+    "categoria": "Acciones y capital privado",
+    "pais": "CH",
+    "tipo": "valor",
+    "coleccion": "secundario",
+    "resumen": "Acciones tokenizadas de Boss Info AG, integrador informático suizo. El emisor sigue vendiendo, pero nadie le compra desde el 29/06/2026; la última operación fue entre accionistas el 28/09/2026.",
+    "resumenTarjeta": {
+      "minimo": "100 CHF por transferencia al emisor; en cripto, desde 1 acción",
+      "accesoEspana": "Sí, según las condiciones del portal: residentes en Suiza y el EEE, con tope total de 100.000 € para el EEE",
+      "salida": "El emisor no recompra; vendes a otros accionistas en ZCHF, con un 1,9 % de comisión (mejor compra 7,30 el 05/11)"
+    },
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Mínimo de inversión",
+        "valor": "100 CHF por transferencia"
+      },
+      {
+        "etiqueta": "Acceso desde España",
+        "valor": "Sí: residentes en Suiza o EEE (tope EEE 100.000 €)"
+      },
+      {
+        "etiqueta": "Salida",
+        "valor": "Solo a otros accionistas, con un 1,9 % de comisión"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "Ninguno: no figura en el registro de autorizados de FINMA (05/11/2026)"
+      }
+    ],
+    "avisos": [
+      "Según las condiciones de su portal, la venta del emisor es solo para residentes en Suiza o el EEE, con un tope total de 100.000 € para el EEE; no se publica cuánto queda.",
+      "El emisor no recompra («ventana de mantenimiento», sin fecha).",
+      "Si vendes a otro accionista pagas una comisión del 1,9 %; quien compra no paga comisión.",
+      "El precio del emisor está por encima de la mejor oferta de venta entre accionistas.",
+      "Nadie ha comprado al emisor desde el 29/06/2026.",
+      "La página de preguntas del emisor describe una moneda estable distinta (XCHF) de la que usa hoy el portal (ZCHF, Frankencoin).",
+      "El precio del emisor y las ofertas entre accionistas cambian: compruébalos en el portal antes de operar."
+    ],
+    "url": "https://shares.bossinfo.com/",
+    "fuentesActuales": [
+      "https://shares.bossinfo.com/invest",
+      "https://shares.bossinfo.com/trade",
+      "https://shares.bossinfo.com/investor-page-terms",
+      "https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/",
+      "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf"
+    ],
+    "lugar": "Farnern · Suiza",
+    "pasos": [
+      "Registro en el portal",
+      "Compra al emisor",
+      "Venta entre accionistas"
+    ],
+    "concepto": "un servidor informático en un pueblo del Jura suizo cuyas acciones viajan como fichas digitales"
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "100 CHF por transferencia",
+    "supervisorVerificado": null,
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Mínimo bajo (100 CHF), acceso Suiza + EEE en las condiciones del portal y compradores con volumen entre accionistas (1.000 acciones a 7,30 ZCHF).",
+    "porQueNo": "Nadie compra al emisor desde junio, su precio (8,50) está por encima de la mejor venta entre accionistas (8,40) y de la última operación (6,70), y vender cuesta un 1,9 %."
+  },
+  "decision": "actualizar",
+  "motivoDecision": "Los datos de mercado y el precio del emisor no cambian desde el 03/11 (ninguna operación nueva). Cambia el acceso: las condiciones del propio portal del emisor (§9.1) dirigen la venta directa a residentes en Suiza o el EEE, con tope de 100.000 € para el EEE, así que el aviso «no confirmado» ya no es correcto. Se corrige la comisión (vender entre accionistas cuesta un 1,9 %, no 0 %) y se añade el desajuste XCHF/ZCHF de la FAQ. Propongo seguir en «secundario»: la venta del emisor no tiene compradores desde el 29/06/2026 y su precio está por encima del mercado entre accionistas. Hoy se ve en línea como «Condiciones pendientes de nueva revisión»; con este expediente puede volver a mostrar datos.",
+  "bloqueos": [
+    "No se probó el registro ni el KYC del portal.",
+    "El acceso Suiza + EEE sale de la plantilla común de condiciones de Aktionariat servida en el portal del emisor; el emisor no lo repite en su propia web ni publica cuánto queda del tope EEE.",
+    "El emisor no publica en qué exención de folleto se apoya para vender fuera de Suiza."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-05T08:01:29Z",
+    "finUtc": "2026-11-05T08:16:57Z"
+  }
+}

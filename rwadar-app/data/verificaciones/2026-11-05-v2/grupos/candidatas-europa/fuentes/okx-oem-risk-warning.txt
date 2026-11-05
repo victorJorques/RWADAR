@@ -1,0 +1,1095 @@
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+Last updated: 1 October 2026
+
+
+
+1. ​   Overview
+
+
+OKX Europe Markets Limited (hereinafter referred to as “Investment Firm” “We”, “Us” or “Our”
+as the context requires) operates a trading platform for certain financial instruments through
+OKX.com or the OKX app (the “Site” or “OKX”), as further described in the terms of service (the
+“Terms”) accessible here.
+
+The financial instruments currently offered for trade through the Site are expiry futures
+referencing certain crypto-assets (“Crypto-linked Expiry Futures”) as well as referencing
+exchange-traded funds ("ETFs"), equity single stocks, and commodity underlyings ("TradFi
+Futures"). The Investment Firm also offers options referencing crypto-assets or commodities,
+including gold (“Options”) and transferable securities falling within Section C(1) of Annex I to
+MiFID II in tokenised form, including equity-linked tracker certificates made available on the Site
+as “Tokenised Equities”. All such products are referred to collectively in this risk warning and
+disclosure statement (“Risk Statement”) as the "financial instruments", as available from time
+to time.
+
+The Investment Firm believes that users of the Site (referred to herein as “You”, “Your” or
+“User”) should be aware of the risks involved in the financial instruments offered. For this
+purpose, this Risk Statement provides You with a summary of certain risks you should take into
+account when deciding whether to trade in the financial instruments offered by Us. This Risk
+Statement is being presented and delivered to You in connection with and at the time of the
+opening of Account(s) with the Investment Firm, and is incorporated by reference into the online
+Terms that you will be required to accept at the time of Account opening.
+
+Capitalized terms used and not defined in this Risk Statement have the meanings given to them
+in the Terms. This Risk Statement is available to You within Your document settings on the Site.
+You must acknowledge having received, read, and understood the Terms, which includes this
+Risk Statement by reference therein, prior to commencing the Services (as defined in the
+Terms).
+
+By using the Site or the Services provided by the Investment Firm, you understand and
+acknowledge that there are substantial risks (detailed below) associated with trading and
+holding of financial instruments and receiving the Services through the Site. The nature and
+degree of those risks differ depending on the relevant financial instrument. Tokenised Equities
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+are not leveraged derivatives merely by virtue of being tokenised, but may nevertheless involve
+substantial market, issuer, liquidity, custody, technology and other risks, including the risk of loss
+of the entire amount invested. This Risk Statement does not explain all of the risks or how such
+risks relate to your personal circumstances.You agree to familiarize yourself with and assume
+any and all such risks, and that You have read and acknowledged the relevant Terms applicable
+to the Services.
+
+
+2. ​    Risks associated with financial instruments and the Services
+
+2.1 ​   Make Your own assessment
+You should always perform Your own assessment to determine the appropriate level of risk and
+risk tolerance for Your personal circumstances. You should only perform trading in financial
+instruments if You understand and accept the nature of Your contractual relationship with the
+Investment Firm and the extent of your exposure to the risks associated with the Services.
+
+You should also carefully consider whether trading in financial instruments is appropriate for You
+in light of Your knowledge, experience, financial objectives, financial resources and other
+relevant circumstances. We conduct an appropriate test with Your classification being based on
+the information You provide Us regarding Your knowledge, experience, and understanding of the
+risks associated with trading in the financial instruments, as referred to in Section 1.9 of the
+Terms. In particular, We undertake an appropriateness assessment for retail clients to determine
+knowledge and experience in relation to Our products. The risks disclosed herein pertaining to
+the financial instruments offered for trading on the Site, must be read and considered in light of
+the customer classification as determined by Us based on the information provided by You. On
+this basis, You should make Your own assessment of whether or not it is appropriate for You to
+trade in the financial instruments.
+
+Certain financial instruments offered by Us, including derivatives and Tokenised Equities, may
+be complex and involve a significant risk of loss. You may lose some or all of the amount
+invested. Derivatives may additionally involve leverage and margin risk and, where applicable to
+non-retail Clients, losses exceeding the initial amount invested. Tokenised Equities are not
+derivatives but are subject to the specific risks described below.
+
+The Investment Firm maintains resources dedicated to helping people educate themselves
+about financial instruments - please refer to https://www.okx.com to learn more. We are further
+covered by the Investor Compensation Scheme, which only applies to You if You are a retail
+customer, as Professional Clients and Eligible Counterparties are generally not entitled to claim
+compensation from the investor compensation scheme in terms of the Maltese Investor
+Compensation Scheme Regulations, as specified under Section 19.10 of the Terms.
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+2.2​   Risks pertaining to the specific financial instruments offered for trading
+Below is an outline of the specific risks pertaining to the financial instruments offered by the
+Company, while more general risks relating to trading on the Site are included below under
+Section 2.4.
+
+I. Crypto-linked Expiry Futures
+
+Crypto-linked Expiry Futures are cash-settled derivative contracts that provide leveraged
+exposure to the price movements of underlying crypto-assets, with a fixed settlement date.
+Crypto-linked Expiry Futures are complex financial instruments. You should only trade
+Crypto-linked Expiry Futures if You fully understand leverage, margin requirements, liquidation
+procedures, the settlement mechanism, and the specific risks associated with crypto-asset
+derivatives. As these contracts involve leverage, they are subject to margin requirements, which
+means that You can gain or lose significantly more than Your initial investment. Retail clients are
+subject to negative balance protection, meaning retail clients may never lose more than the
+assets in their Trading Account, including assets placed as collateral for the leveraged trade.
+Non-retail clients may, in exceptional circumstances, incur losses beyond their initial investment.
+If market prices move against You and Your Account margin falls below required levels, You will
+receive a margin call requiring additional funds or collateral. Failure to meet margin
+requirements will result in forced liquidation of Your positions, potentially at unfavourable prices.
+During volatile markets, liquidations can occur rapidly with little or no notice. You should ensure
+You understand the settlement mechanism and have adequate resources to fulfil Your
+obligations before placing a trade.
+
+II. TradFi Expiry Futures - Equity Single Stock and ETF Futures
+
+Equity single stock and ETF expiry futures are cash-settled derivative contracts that provide
+leveraged exposure to the price of individual listed company shares or to the net asset value or
+closing price of exchange-traded funds, with a fixed settlement date and maturities of up to five
+(5) years. These are complex financial instruments. Before trading, You should understand the
+following specific risks::
+
+   ●​ ETF composition and rebalancing risk: The value of an ETF futures contract may be
+      adversely affected by changes in the composition, weighting, or rebalancing of the
+      underlying ETF's portfolio. Rebalancing events may cause temporary price dislocations
+      between the ETF and its constituent securities. The reference price used to value and
+      settle Your position in ETF futures is derived from the official closing price of the ETF on
+      its primary exchange; changes to the methodology for calculating that closing price, or
+      trading halts affecting the ETF itself, may affect the settlement value of Your position.
+   ●​ Corporate event risk: Dividends, stock splits, mergers, acquisitions, and delistings
+      affecting constituents of the reference security or the constituent securities of the
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+       reference ETF may cause sudden and unexpected changes in the value of the financial
+       instrument.
+  ●​   Basis risk: The price of the futures contract may diverge from the value of the
+       underlying reference security or ETF, particularly for longer-dated contracts. This
+       divergence, known as the basis, can widen or narrow unpredictably and result in losses
+       even where the underlying index performs in line with Your expectations.
+  ●​   Funding rate risk: Holding a position in equity single stock and ETF futures is subject to
+       a periodic funding rate, under which payments are exchanged between long and short
+       position holders based on the difference between the contract price and reference
+       security or ETF price. The funding rate may be positive or negative and can vary
+       materially with market conditions. Funding payments may represent a significant
+       cumulative cost or income over time, particularly for positions held over extended
+       periods.
+  ●​   Term structure, cost-of-carry and roll risk: The price of a futures contract reflects the
+       expected cost of carry over the contract’s term and may trade at a premium or discount
+       to the current spot price. The convergence of the futures price toward the spot price as
+       the contract approaches expiry may affect returns independently of movements in the
+       underlying asset, particularly for longer-dated contracts or where the position was
+       entered into at a significant premium or discount. Where positions are closed prior to
+       expiry and replaced with new contracts, additional costs or gains may arise depending
+       on the shape of the futures curve (contango or backwardation), which may further affect
+       returns.
+  ●​   Leverage and margin risk: As with all leveraged instruments, losses may be magnified.
+       Retail clients benefit from negative balance protection; non-retail clients may incur losses
+       in excess of their initial investment.
+  ●​   Market hours and gap risk: Equity markets operate within defined trading hours. Prices
+       may gap significantly at market open or in response to news events outside trading
+       hours. While the Site operates 24 hours, pricing outside primary market hours may
+       reflect reduced liquidity and increased spread.
+  ●​   Concentration risk: Unlike an index, exposure through a single stock future is
+       concentrated in one company. An adverse development affecting that company -
+       including profit warnings, regulatory action, accounting irregularities, management
+       changes, or legal proceedings - may result in a sudden and significant fall in the value of
+       Your position.
+  ●​   Short selling regulation: Certain equity single stock futures referencing EU-listed or
+       dual-listed securities may be subject to restrictions under the EU Short Selling
+       Regulation (Regulation (EU) No 236/2012) or other applicable market regulations. Such
+       restrictions may limit Your ability to open or maintain short positions in certain securities.
+  ●​   Illiquidity in single names: Individual stocks can experience periods of extreme
+       illiquidity, including trading halts, circuit breakers, or suspension. This may prevent You
+       from closing or adjusting Your position and result in losses.
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+You should ensure You understand all applicable margin requirements and settlement
+procedures before placing a trade. In addition, ETF Futures carry all of the risks applicable to
+single stock futures described above to the extent that those risks arise in respect of the
+constituent securities of the reference ETF.
+
+III. TradFi Expiry Futures - Commodity Futures
+
+Commodity expiry futures are cash-settled derivative contracts that provide leveraged exposure
+to the price of physical commodities (including but not limited to gold, silver, crude oil, and
+natural gas), with a fixed settlement date and maturities of up to five (5) years. These are
+complex financial instruments. Before trading, You should understand the following specific
+risks:
+
+   ●​ Supply and demand risk: Commodity prices are determined by global supply and
+      demand dynamics, which are in turn affected by geopolitical events, weather patterns,
+      production decisions (including by state actors and bodies such as OPEC), and
+      technological changes. These factors can cause extreme price volatility and may be
+      difficult to predict.
+   ●​ Geopolitical and macroeconomic risk: Commodity prices are particularly sensitive to
+      international political instability, sanctions, trade restrictions, and macroeconomic
+      conditions. Events in producing or consuming countries can cause sudden and severe
+      price movements.
+   ●​ Basis risk: The price of a commodity futures contract may differ materially from the
+      price of the underlying physical commodity. This basis can fluctuate significantly and
+      independently of movements in the commodity spot price.
+   ●​ Funding rate risk: Holding a position in commodity futures is subject to a periodic
+      funding rate, under which payments are exchanged between long and short position
+      holders based on the difference between the contract price and the index price. The
+      funding rate may be positive or negative and can vary materially with market conditions.
+      Funding payments may represent a significant cumulative cost or income over time,
+      particularly for positions held over extended periods.
+   ●​ Roll yield and term structure risk: The futures curve for commodities may be in
+      contango (futures price higher than spot) or backwardation (futures price lower than
+      spot). Rolling positions from one contract to the next may result in a roll cost (in
+      contango) or roll gain (in backwardation). Over time, particularly for longer-dated
+      contracts, these roll dynamics can materially affect returns.
+   ●​ Position limits: Trading in commodity derivatives is subject to position limits under
+      Article 57 of Directive 2014/65/EU (MiFID II) and applicable implementing measures.
+      You are responsible for monitoring Your own positions and ensuring compliance with
+      applicable position limit requirements. Exceeding position limits may result in
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+      enforcement action by the competent authority, forced position reductions, or account
+      restrictions.
+   ●​ Leverage and margin risk: As with all leveraged instruments, losses may be magnified.
+      Commodity markets can experience rapid and extreme price movements. Retail clients
+      benefit from negative balance protection; non-retail clients may incur losses in excess of
+      their initial investment.
+   ●​ Market hours and gap risk: Commodity markets operate within defined trading hours.
+      Prices may gap significantly at market open or in response to news events outside
+      trading hours. While the Site operates 24 hours, pricing outside primary market hours
+      may reflect reduced liquidity and increased spread.
+
+You should ensure You understand all of the above risks and all applicable margin requirements
+and settlement procedures before placing a trade in expiry futures referencing commodities.
+
+IV. Options
+
+Options are cash-settled option contracts referencing crypto-assets or commodities, including
+gold. They grant the buyer the right, but not the obligation, to receive a cash payment based on
+the difference between the settlement price of the relevant underlying asset or reference index
+and the agreed strike price at the scheduled expiry time. The settlement value is determined by
+reference to the applicable index price at expiry. These are complex financial instruments. You
+should only trade Options if You fully understand the option premium, exercise mechanics,
+settlement methodology, margin requirements for option sellers, and the specific risks described
+below:
+
+   ●​ Premium loss risk: As a buyer of an Option, the maximum loss is limited to the
+      premium paid. If the relevant underlying price does not reach the strike price (for a call
+      option) or fall below the strike price (for a put option) by the scheduled expiry, the option
+      will expire worthless and You will lose the entire premium paid.
+
+   ●​ Unlimited loss risk for option sellers: As a seller of a call option, Your potential loss is
+      theoretically unlimited, as there is no ceiling on how far the relevant underlying price may
+      rise. As a seller of a put option, the maximum loss is equal to the strike price multiplied
+      by the contract size (i.e., if the underlying falls to zero). You should fully understand
+      these risks before selling any option.
+
+   ●​ Margin requirements for option sellers: Selling options requires You to post and
+      maintain margin throughout the life of the contract. If the relevant underlying price moves
+      against Your sold position and Your Account margin falls below required levels, You will
+      receive a margin call requiring additional funds or collateral. Failure to meet margin
+      requirements will result in forced liquidation of Your position, potentially at unfavourable
+      prices.
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+  ●​ Time decay (theta) risk: The time value component of an option premium decreases as
+     the expiry date approaches, a phenomenon known as time decay. For option buyers,
+     time decay represents a continuous cost, independent of movements in the relevant
+     underlying price. Options that are out-of-the-money will lose their entire time value if the
+     underlying does not move sufficiently before expiry.
+
+  ●​ Implied volatility risk: Option premiums are highly sensitive to changes in implied
+     volatility. A decrease in implied volatility will reduce the value of a long option position
+     even if the relevant underlying price moves in the expected direction. Implied volatility in
+     both crypto-asset and commodity markets can be extreme and unpredictable, and You
+     may incur losses attributable solely to volatility changes rather than directional price
+     movements.
+
+  ●​ Delta and non-linear risk: Unlike futures contracts, which have a linear payoff, options
+     have a non-linear relationship between the option premium and the relevant underlying
+     price. The sensitivity of an option's value to movements in the underlying (delta) changes
+     dynamically as the underlying price moves relative to the strike. Gamma measures the
+     rate at which delta changes as the underlying price changes. Gamma can become
+     particularly significant for options that are near the strike price and close to expiry,
+     meaning that small movements in the underlying price may cause rapid and
+     disproportionate changes in the value and risk profile of an Option. This non-linearity
+     means that Your position's profit and loss profile may change rapidly and in complex
+     ways, particularly as the option approaches expiry or moves significantly in- or
+     out-of-the-money.
+
+  ●​ Settlement and expiry risk: At the scheduled expiry time, Options are automatically
+     cash-settled by reference to the applicable settlement index price, determined in
+     accordance with the relevant product rules and index methodology. You cannot exercise
+     early. Any disruption to the index price calculation at or around expiry may affect
+     settlement. If You do not close Your position before expiry, it will be settled automatically;
+     You should understand the settlement mechanics fully before trading.
+
+  ●​ Interaction with underlying asset risks: The risks applicable to the relevant underlying
+     asset also apply to Options. Crypto-asset-referencing Options are exposed to
+     technology, cybersecurity, extreme volatility, regulatory, market-manipulation and liquidity
+     risks. Commodity-referencing Options, including options referencing gold, are exposed
+     to supply-and-demand, geopolitical, market-hours, price-gap and benchmark risks.
+     Because options are sensitive to the underlying price, volatility and time, adverse
+     developments in these factors may affect Your position before expiry.
+
+  ●​ Liquidity risk for options: Option markets may have lower liquidity than equivalent
+     futures or spot markets, particularly for out-of-the-money options or options with longer
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+       maturities. Wide bid-ask spreads may make it difficult to enter or exit positions at desired
+       prices, and the cost of unwinding a position may be significant.
+
+   ●​ Leverage: Options provide implicit leverage. A relatively small movement in the relevant
+      underlying price can result in a disproportionately large percentage change in the value
+      of the option premium. While the maximum loss for a buyer is the premium paid, the
+      effective leverage embedded in an out-of-the-money option can be very high. Option
+      sellers are subject to the full leverage risk of an open derivative position without the
+      premium protection available to buyers.
+
+You should ensure You understand all of the above risks and all applicable margin requirements
+and settlement procedures before placing a trade in Options.
+
+V. Tokenised Equities
+
+Tokenised Equities are transferable securities which provide economic exposure to the
+performance of an underlying equity or ETF through a tokenised financial instrument issued by
+a third-party issuer. Depending on the relevant product structure, the instrument may constitute
+a tracker certificate or other debt security. A Tokenised Equity does not give You direct
+ownership of the underlying equity or ETF and You will generally not benefit from shareholder
+rights attaching to that underlying asset. You will not: (i) hold or be entitled to exercise voting
+rights in the underlying company; (ii) receive cash dividends or other distributions, any economic
+benefit being reflected instead through an adjustment to the terms or balance of the instrument
+as described under "Corporate action risk" below; (iii) be entitled to participate in rights issues,
+tender offers, scrip dividend elections or similar shareholder elections; (iv) be entitled to receive
+shareholder reports, notices or other information from the underlying company; or (v) have any
+claim against the underlying company, including any claim to its residual assets in the event of
+its liquidation. The underlying company is not involved in the offer, sale or administration of the
+Tokenised Equity, does not sponsor, endorse or promote it, and owes You no obligation of any
+kind. It may take actions in respect of its own shares without regard to the interests of holders of
+Tokenised Equities, and You will have no opportunity to influence those actions. You should
+review the applicable issuer documentation, including the prospectus, final terms and KID,
+before investing.
+
+You may lose the entire amount You invest in a Tokenised Equity. Unless a Tokenised Equity is
+used as collateral for a leveraged position, in which case the risks described under "Collateral
+and liquidation risk" below and in Section 2.5.6 apply, You cannot lose more than the amount
+invested. The principal risks include:
+
+   ●​ Market and tracking risk: the value of a Tokenised Equity is exposed to movements in
+      the underlying equity or ETF but its market price may diverge from the price of that
+      underlying asset, particularly outside the underlying market's normal trading hours.
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+       Tokenised Equities may trade 24/7 while the relevant equity market is closed, during
+       which liquidity may be lower, spreads wider and prices more dependent on
+       market-maker estimates.
+  ●​   Issuer and credit risk: You are exposed to the creditworthiness and continued
+       operation of the third-party issuer. The fact that an instrument may be collateralised by
+       underlying shares does not eliminate issuer, collateral or enforcement risk. An issuer
+       default or insolvency may result in delayed recovery, partial recovery or loss of the entire
+       investment.
+  ●​   Underlying asset custody and third-party risk: the underlying shares supporting a
+       Tokenised Equity may be held with a third-party custodian or broker appointed by the
+       issuer. The Investment Firm does not control that underlying custodian. Insolvency,
+       operational failure or other default affecting the issuer, custodian, broker, security agent
+       or other relevant third party may adversely affect the value of or recoveries in respect of
+       the Tokenised Equity.
+  ●​   Liquidity and suspension risk: there is no guarantee that sufficient liquidity will be
+       available at all times. Trading, deposits, withdrawals or other services may be restricted,
+       delayed or suspended and You may be unable to dispose of Your investment at Your
+       preferred time or price. You may be able to redeem a Tokenised Equity directly with the
+       issuer, subject to the issuer's requirements. These may include onboarding and
+       identification procedures, minimum transaction sizes, restrictions on when redemption
+       may be effected and fees. You should familiarise Yourself with the redemption terms set
+       out in the issuer documentation before investing.
+  ●​   Corporate action risk: dividends, stock splits, mergers, acquisitions, delistings,
+       insolvency events and other corporate actions may affect the economic value and
+       treatment of a Tokenised Equity. Adjustments may be implemented through a multiplier
+       or other mechanism rather than by giving You the same legal rights as a direct
+       shareholder. Certain events may lead to compulsory redemption or termination at a
+       value materially below Your acquisition price. Where an adjustment is implemented
+       through a multiplier or similar mechanism, the number or displayed balance of Your
+       Tokenised Equities may change without any action by You, and the instrument may be
+       temporarily suspended from trading around the time at which the adjustment takes
+       effect. Where a Tokenised Equity is used as collateral, an adjustment may also affect its
+       collateral value and Your margin position.
+  ●​   DLT and smart-contract risk: the underlying tokenised financial instrument relies on
+       DLT infrastructure. Smart-contract defects, blockchain forks, network congestion or
+       disruption, blacklisting, cyber incidents or other protocol events may affect the
+       availability, transferability, custody, settlement or value of the instrument.
+  ●​   Issuer termination and regulatory risk: the issuer may have rights under the
+       applicable issuer documentation to suspend, modify or terminate an instrument or
+       programme, including following regulatory changes. This may result in compulsory
+       redemption, potentially at an unfavourable value or time.
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+    ●​ Securities lending risk: where permitted by the relevant issuer documentation, the
+       issuer may permit underlying shares to be lent to third parties and replaced by cash or
+       other collateral. A borrower default or collateral shortfall may adversely affect the value
+       available to investors.
+    ●​ Fees and tax risk: issuer-level management fees, transaction costs, blockchain fees
+       and applicable withholding taxes may reduce Your return. Tax treatment depends on
+       Your circumstances and may change over time.
+    ●​ Collateral and liquidation risk: where an eligible Tokenised Equity is used as collateral
+       for leveraged positions, its collateral value may be subject to discounts or haircuts which
+       may change. If margin requirements are not met, the Tokenised Equity may be
+       liquidated, including while the underlying equity market is closed, potentially resulting in
+       an unfavourable execution price.
+
+2.3 Contractual arrangement
+Your Account constitutes a contractual agreement with the Investment Firm, affording You
+specific rights and imposing corresponding responsibilities. This contractual arrangement,
+entitles You to financial instruments acquired, traded, and held pursuant to the contract. Within
+this framework, We undertake to provide You with the Services to allow You to trade in certain
+financial instruments.
+
+It is noted that this contractual arrangement may subject you to risks such as insolvency (credit
+risk), fraud, or operational competence issues on the part of the Investment Firm, or OKX
+Europe Ltd as custodian under a separate customer relationship with You, responsible for
+safeguarding your fiat currency and crypto-assets should you use fiat currency and/or
+crypto-assets as collateral in a margin trade with the Investment Firm. Where the Investment
+Firm safeguards Tokenised Equities for You, such instruments are subject to separate
+financial-instrument custody arrangements operated by the Investment Firm. These
+arrangements are distinct from the custody of fiat currency and crypto-assets by OKX Europe
+Ltd.
+
+2.4 ​   General risks
+Trading in financial instruments, and in particular derivatives, carry a range of risks. We aim to
+provide a transparent understanding of these risks to help You make informed decisions.
+
+By engaging with OKX or Our Services allowing you to perform trading in certain financial
+instruments, you acknowledge the inherent risks associated with such instruments facilitated
+through the Site.
+
+The following is a brief, non-exhaustive summary of general factors and risks you should take
+into account when deciding whether to trade the offered financial instruments.
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+You thereby agree to acquaint yourself with and accept all such risks, including:
+
+2.4.1 Technology Risk
+       o​ Financial instruments deriving its value from underlying crypto-assets rely on
+          distributed ledger technology (DLT), which includes blockchain technology still being
+          in its developmental stages. Technological issues, such as bugs or vulnerabilities in
+          the code, can pose risks to the integrity and security of such crypto-assets, which
+          may ultimately affect the value of the financial instruments.
+       o​ As a relatively new open-source technology, blockchain developments are
+          anticipated to persist, potentially influencing the value of crypto-assets. Given the
+          limited historical data, the durability of the economic value, governance structures,
+          and functional aspects of crypto-assets remains uncertain.
+       o​ Software developers involved in implementing crypto-assets may not receive direct
+          compensation for their efforts in maintaining or enhancing the software or protocol.
+          There is no guarantee that these individuals will persist in contributing to the ongoing
+          development of such software.
+       o​ Miners, validators, or other transaction-validating nodes on blockchains may cease
+          processing transactions under specific conditions. This interruption can potentially
+          delay or prevent the processing of blockchain transactions, which may affect the
+          value of the financial instruments, and even necessitate the Investment Firm to halt
+          or suspend trading of the financial instrument and the use of such crypto-assets as
+          collateral in margin trades.
+       o​ Financial instruments linked to crypto-assets issued on underlying (layer one)
+          blockchain networks, such as Bitcoin or Ethereum, operate within a competitive
+          market of crypto-assets. Demand for these crypto-assets can be volatile as they
+          strive to demonstrate value to the market and establish a sustainable business
+          model. Like other crypto-assets, they are susceptible to changes in code, design, or
+          community governance, often communicated through forums and social channels for
+          stakeholder assessment.
+       o​ In the past, vulnerabilities in crypto-assets’ source codes have been exploited,
+          leading to various issues such as disabled functionality, exposure of personal
+          information, or theft of crypto-assets. While Bitcoin and Ethereum blockchains have
+          shown resilience, their underlying cryptography could potentially be flawed in the
+          future. Advances in mathematics and technology, including quantum computing,
+          could render blockchain cryptography vulnerable to attack. Any loss of public
+          confidence in blockchain security or source code could adversely impact the sector,
+          consequently affecting the value of the financial instruments linked to crypto-assets
+          traded on the Site.
+       o​ Blockchain networks rely on open-source software, where modifications are
+          implemented with the consent of a substantial majority of miners. However, if a
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+            modification lacks sufficient consensus and is incompatible with existing software, it
+            can result in a 'fork' or split of the blockchain. This situation arises when different
+            groups of nodes maintain divergent and inconsistent copies of the blockchain. The
+            divergence may persist until consensus is reestablished, potentially resulting in the
+            cancellation of transactions. Future forks could impact the viability or value of a
+            crypto-asset, and the Investment Firm may choose not to support such forks,
+            resulting in the financial instruments not deriving its value from new crypto-assets.
+            The Investment Firm retains the right to determine support for resulting crypto-assets
+            and will communicate options to affected users.
+       o​   Utilizing an Internet-based trading system to deliver Our Services carries inherent
+            risks, inclusive but not limited to potential hardware failures, software malfunctions,
+            and disruptions to internet connectivity.
+       o​   The Investment Firm maintains an independent and secure ledger of all transactions
+            to minimize loss and maintains contingency plans to minimize the possibility of
+            system failure. However, the Investment Firm does not control signal power,
+            reception, routing via the internet, conﬁguration of Your equipment or the reliability of
+            Your connection to the internet. The result of any failure of the foregoing may be that
+            You are unable to perform trading in financial instruments, e.g. that Your order is not
+            executed according to Your instructions, or Your order is not executed at all.
+       o​   The Investment Firm hereby disclaims responsibility for any communication failures,
+            disruptions, errors, distortions, or delays encountered via the Services and the Site,
+            irrespective of the underlying cause.
+       o​   Tokenised financial instruments may themselves be issued, recorded, transferred or
+            held using DLT. Smart-contract vulnerabilities, forks, network outages, congestion,
+            validator failures, blacklisting or other blockchain events may delay or prevent
+            settlement or transfer and may adversely affect the availability, custody or value of
+            such financial instruments.
+
+2.4.2 Cybersecurity Risk
+       o​ Despite the Investment Firm’s best efforts to maintain high security standards,
+          financial instruments are susceptible to cyber-attacks (e.g., through “hacking” or
+          malicious software coding) and other security breaches. Security vulnerabilities can
+          result in significant financial losses.
+       o​ A breach in cyber security refers to both intentional and unintentional events that
+          may cause the Investment Firm to lose proprietary information or other information
+          subject to privacy laws, suﬀer data corruption, or lose operational capacity. This in
+          turn could cause the Investment Firm to incur regulatory penalties, reputational
+          damage, additional compliance costs associated with corrective measures and/or
+          ﬁnancial loss.
+       o​ Cybersecurity breaches at the Investment Firm could include unauthorized entry into
+          digital systems (for example, via hacking or malicious software) and external attacks,
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+          such as attempts to disrupt network service. Additionally, breaches involving the
+          Investment Firm’s third-party service providers, such as the manufacturer of the
+          financial instruments or Your crypto-assets custodian used for collateral purposes
+          while performing margin trades, pose similar risks.
+       o​ The Investment Firm has implemented risk management systems to mitigate these
+          cybersecurity risks.
+
+2.4.3 Market Risks
+       o​ Market data or other information concerning financial instruments and crypto-assets,
+          including data or information obtained by the Investment Firm from third parties, may
+          contain errors, be incomplete, or otherwise inaccurate.
+       o​ Crypto-assets markets can be susceptible to manipulation, including
+          pump-and-dump schemes and other fraudulent activities. These practices can distort
+          market prices of the financial instruments and create misleading perceptions of
+          value.
+       o​ Under certain market conditions, You may find it difficult or impossible to liquidate a
+          position quickly at the desired price or even at all. This can occur, for example, when
+          the market for a particular financial instrument suddenly drops, or if trading is halted
+          due to recent news events, unusual trading activity, or changes in the market more
+          generally.
+       o​ Financial instrument derivatives linked to crypto-assets are generally traded through
+          diverse avenues, including centralized marketplaces, decentralized finance (DeFi)
+          protocols, over-the-counter (“OTC”) trading desks, and peer-to-peer transactions.
+          There is no guarantee that the market price of a financial instrument observed in one
+          venue will align with that in another venue. Regulatory oversight varies across
+          jurisdictions, which exposes the market to potential manipulation such as
+          wash-trading by certain participants.
+       o​ Significant entities like trading platforms, market-makers, and other participants could
+          face insolvency due to factors like theft, fraud, security breaches, or operational
+          failures. Fraudsters continue to attempt to exploit the rising popularity of
+          crypto-assets and seek to lure account holders into scams. Participation in a scam
+          (even unwitting) may lead to the complete loss of financial instruments (as well as
+          any other assets).
+       o​ Disruptions or manipulation in these alternative marketplaces may impact the prices
+          of financial instruments available on the Investment Firm’s platform.
+       o​ Financial instruments referencing traditional financial asset classes, such as ETFs,
+          equity single stocks, and commodities, are also subject to market risks specific to
+          those asset classes, including but not limited to: macroeconomic conditions; interest
+          rate changes; geopolitical instability; corporate events; sector-specific developments;
+          and regulatory changes affecting the relevant markets. The prices of TradFi Futures
+          may be influenced by events and factors that differ materially from those affecting
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+           crypto-asset markets, and You should familiarise Yourself with the relevant market
+           dynamics before trading. Options are additionally subject to the option-specific
+           market risks described in Section 2.2 (IV) above, including sensitivity to implied
+           volatility movements and time decay, which may adversely affect an option position
+           independently of movements in the relevant underlying price.
+
+2.4.4 Price Volatility and Discovery Risks
+       o​ The value of financial instrument derivatives linked to crypto-assets is influenced by
+           a variety of factors, including market demand, regulatory changes, technological
+           advancements, and market sentiment.
+       o​ Crypto-assets are known for their extreme price volatility, which ultimately also affect
+           the price of the financial instrument derivatives linked to such crypto-assets. Due to
+           such price fluctuations, you may increase or lose value in your financial instruments
+           at any given moment. Any financial instrument or trading position may be subject to
+           large swings in value and may even become worthless.
+       o​ The market for financial instrument derivatives linked to crypto-assets may
+           experience significant price discovery challenges due to fragmented liquidity across
+           multiple trading platforms, varying market structures, and the absence of
+           standardized valuation methodologies. Unlike traditional financial markets with
+           centralized price-setting mechanisms, the price of financial instrument derivatives
+           linked to crypto-assets’ can differ materially between platforms based on localized
+           supply/demand dynamics, liquidity disparities, or operational factors.
+       o​ These discrepancies may be exacerbated by: (1) limited transparency into order
+           book depth on some platforms; (2) the presence of unregulated and/or decentralised
+           exchanges with differing market practices; (3) susceptibility to sudden liquidity shifts
+           during market stress; and (4) the influence of algorithmic trading strategies that may
+           amplify volatility.
+       o​ We cannot guarantee that prices displayed on Our Site reflect broader market
+           consensus values, particularly for less liquid financial instruments, although adhering
+           to best execution practices to provide You with a fair price. Users may face difficulty
+           executing orders at expected prices during periods of high volatility or illiquidity,
+           potentially resulting in unexpected financial losses.
+       o​ Financial instruments referencing equity or commodity underlyings may experience
+           price gaps, trading halts, or circuit breaker events in the underlying markets that are
+           outside the control of the Investment Firm. During periods when the underlying
+           market is closed or subject to a halt, the ability to trade, hedge, or close a position on
+           the Site may be materially affected, potentially resulting in losses.
+
+2.4.5 Correlation Risk
+       o​ When trading derivatives on margin, the value of assets You post as collateral may
+           fall at the same time as Your position moves against You. This is particularly relevant
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+           where the collateral asset is the same as, or closely correlated with, the asset
+           underlying Your trade. You should also be aware that correlations between different
+           asset classes (including crypto-assets, equities, ETFs and commodities) may change
+           rapidly, particularly during periods of market stress, which may increase the
+           likelihood of simultaneous losses across positions. This risk arises from market
+           dynamics and may be independent of how Your account is structured or margined.
+
+2.4.6 Market Concentration Risk
+       o​ Certain addresses on blockchain networks hold substantial amounts of the
+          circulating supply of crypto-assets, like Bitcoin and Ether respectively. The potential
+          exit of these addresses from their positions could induce volatility, adversely
+          impacting the price of each respective crypto-asset and the financial instrument
+          derivatives linked to such crypto-assets.
+       o​ Moreover, the control of over 51% of the computing power (hash rate) in the
+          blockchain network could enable a malicious actor to execute a '51% attack,'
+          allowing them to double spend their crypto-asset. A successful attack of this nature
+          would severely undermine trust in public blockchain networks like Bitcoin and
+          Ethereum as reliable stores of value and mediums of exchange, leading to a
+          significant devaluation of crypto-assets and the financial instrument derivatives linked
+          to such crypto-assets.
+
+2.4.7 Community Risks
+       o​ Participants within crypto-asset networks and protocols (i.e., crypto-assets
+          communities), including software developers and operators of nodes or validators,
+          may encounter disagreements regarding the optimal methods for maintaining,
+          developing, or operating the underlying software of crypto-assets. Such
+          disagreements have the potential to negatively impact the utilization, advancement,
+          or market valuation of crypto-assets and the financial instrument derivative linked to
+          such crypto-assets.
+       o​ Factors such as insufficient software development, contribution rates, community
+          disputes, or unforeseen challenges could adversely affect a crypto-asset's price and
+          the financial instrument derivative linked to such crypto-assets.
+
+2.4.8 Psychological Risk
+       o​ The volatile nature of financial and crypto-assets markets can lead to emotional
+          stress and pressure, potentially influencing decisions around the financial
+          instruments. It is essential that You remain calm and make informed decisions based
+          on thorough research and understanding of the market dynamics.
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+2.4.9 Legal Risk
+       o​ The legal status of financial instrument derivatives linked to crypto-assets varies by
+           jurisdiction and can change. New regulations or changes in existing laws can affect
+           the value and legality of holding or trading such financial instruments. It’s important
+           to stay informed about regulatory developments, and to comply with local laws and
+           understand the implications of your investments. Failure to comply with regulations
+           can result in significant penalties.
+       o​ The individuals or entities responsible for the creation, distribution, or ongoing
+           development of crypto-assets linked to the financial instruments offered through the
+           Investment Firm’s Site, may not be identifiable or known, and they may be situated in
+           foreign jurisdictions. Consequently, you may lack legal or other avenues of recourse
+           against such individuals or entities.
+
+2.4.10 Tax Consequences
+       o​ While tax authorities have provided some guidance on certain taxation aspects
+           related to financial instruments and crypto-assets, the application of income, excise
+           (sales), and other forms of taxation to financial instrument derivatives linked to
+           crypto-assets (including trading) may lack clarity in Your jurisdiction.
+       o​ There is no guarantee that taxation laws, administrative policies, or assessment
+           practices of tax authorities concerning the treatment of such financial instruments will
+           remain unchanged and not adversely affect you. It is advisable to seek advice from a
+           qualified tax professional or obtain guidance regarding the tax implications of Your
+           trading in financial instruments.
+
+2.4.11 Uncertainty Regarding Future Financial Institution Support
+       o​ There is a possibility that banks and other financial institutions may choose not to
+          process transactions linked to crypto-assets, or offer services to individuals or
+          entities involved in activities or instruments linked to crypto-assets.
+
+2.4.12 Energy Consumption Risk
+       o​ Some crypto-assets networks require substantial computing power for block
+          validation through mining. This creates risks linked to energy sourcing and
+          consumption.
+       o​ The overall energy consumption of these networks may be considered unsustainable
+          now or in the future. This potential sustainability issue could pose risks to the broader
+          and lasting acceptance of such networks.
+       o​ This energy consumption risk may affect the price and value of the financial
+          instrument derivatives linked to such crypto-assets.
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+2.4.13 Regulatory Classification Risk
+       o​ The regulatory classification of crypto-asset derivative products is subject to
+          interpretation and evolving supervisory guidance. On 24 February 2026, ESMA
+          indicated that, via a public statement, certain leveraged crypto-asset derivative
+          products may fall within the scope of ESMA’s product intervention measures (for
+          CFDs). Changes in regulatory interpretation or supervisory approach may result in
+          adjustments to leverage levels, margin requirements, marketing restrictions or
+          product availability.
+       o​ Tokenised financial instruments are subject to comparable uncertainty. A Tokenised
+          Equity may constitute a transferable security in the European Economic Area while
+          being classified differently in other jurisdictions. Changes in regulatory interpretation,
+          supervisory expectations or applicable law, or regulatory action taken against the
+          Investment Firm or against the issuer of a financial instrument, may require the
+          Investment Firm to restrict, suspend or terminate the availability of a financial
+          instrument or of related Services, including the ability to trade, deposit or withdraw.
+          Such measures may be taken at short notice and may prevent You from dealing in or
+          realising Your investment.
+
+2.4.14 Equity, ETF, Commodity and Options Market Risks
+       o​ Expiry futures referencing ETFs, equity single stocks, and commodities expose You
+          to risks specific to those markets, which may differ materially from the risks of
+          crypto-asset derivatives. The value of such financial instruments is influenced by
+          macroeconomic conditions, corporate earnings and governance, sector-specific
+          factors, commodity supply and demand dynamics, geopolitical events, and the
+          regulatory environment applicable to the relevant underlying asset class.
+       o​ Equity markets are subject to company-specific events including earnings
+          announcements, profit warnings, mergers and acquisitions, regulatory investigations,
+          and dividend decisions. These events can cause significant and rapid price
+          movements in individual equity and ETF futures.
+       o​ Commodity markets are influenced by weather events, production quotas,
+          geopolitical developments, trade policy, and changes in demand from major
+          consuming countries. Energy commodities in particular can experience extreme
+          short-term price movements in response to supply disruptions or geopolitical events.
+       o​ The Investment Firm does not control the underlying equity or commodity markets
+          and cannot guarantee the accuracy or timeliness of price reference data sourced
+          from third-party providers. Market data delays, errors, or reference price disruptions
+          may affect the pricing and settlement of TradFi Futures.
+       o​ Position limits imposed under MiFID II Article 57 and applicable implementing
+          measures may restrict the size of positions You are permitted to hold in certain
+          commodity derivatives. You are responsible for monitoring Your own compliance with
+          such limits.
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+       o​ Options are additionally subject to the option-specific market risks described in
+          Section 2.2 (IV) above. In particular, their value is influenced by changes in implied
+          volatility, time to expiry and the relationship between the relevant underlying price
+          and the strike price, in addition to the risks applicable to the relevant crypto-asset or
+          commodity described elsewhere in this Risk Statement.
+
+2.4.15. Index Methodology and Discretion Risk
+        o​ OKX determines the methodology used to construct the underlying crypto-asset
+           index prices used for the settlement of Crypto-linked Expiry Futures and Options.
+           This includes discretion over the selection of component exchanges, data sources,
+           weighting methodology, and contingency measures applicable where component
+           data is unavailable or where a market disruption event occurs. Changes to the
+           methodology or the exercise of such discretion may result in differences between the
+           crypto-asset index price used for settlement and the prevailing spot market price of
+           the underlying crypto-asset, and may adversely affect Your positions.
+
+2.4.16. Conflicts of Interest Risk:
+        o​ The Investment Firm may have interests that conflict with those of its clients,
+           including in relation to the determination of reference prices, index methodologies,
+           funding rates, margin requirements, or other key parameters of the financial
+           instruments. While the Investment Firm maintains policies and procedures to
+           manage such conflicts, there is a risk that such conflicts may adversely affect the
+           value or outcome of Your positions. The Investment Firm may also act as principal,
+           market maker or liquidity provider in respect of financial instruments offered on the
+           Site, including Tokenised Equities, and may hold positions in them. The Investment
+           Firm may have commercial arrangements with the issuers or distributors of financial
+           instruments made available on the Site.
+
+2.4.17. Product Structure Risk:
+        o​ Certain financial instruments offered on the Site may not be admitted to or traded on
+           a regulated market and may differ materially in structure, liquidity, pricing and
+           investor rights from a direct investment in the relevant underlying asset. In particular,
+           acquiring a Tokenised Equity does not amount to acquiring the underlying listed
+           share or ETF itself. As a result, the protections and transparency typically associated
+           with regulated markets may not apply, and prices, liquidity and execution may differ
+           from those available on other trading venues.
+
+2.5 Site Risks
+
+By engaging with OKX or Our Services allowing you to perform trading in certain financial
+instruments, you acknowledge the risks facilitated through the Site.
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+You thereby agree to acquaint yourself with and accept all such Site risks, including:
+
+2.5.1 Operational Risks, Errors & Omissions
+       o​ Operational disruptions impacting the Investment Firm or its service providers could
+          impact your ability to engage in the trade of financial instruments on the Site.
+       o​ The operation of trading platforms, including that of the Investment Firm and the Site,
+          can be affected by technical issues, system failures, business disruption and/or other
+          operational problems, whether caused by external events or internally generated
+          systems failure. These disruptions can hinder your ability to access or manage your
+          financial instruments.
+       o​ To mitigate these risks, the Investment Firm has robust business recovery policies
+          and procedures as well as related systems risk management, data protection, and
+          cyber-security policies and procedures. The Investment Firm tests the effectiveness
+          of these policies and procedures regularly.
+       o​ If the Investment Firm is unable to continue operating, for any reason, we will,
+          subject to regulatory permission and with your instructions, transfer your assets to
+          another account under your ownership and control, and we will return any funds to
+          your credit to the financial institution of your choice.
+       o​ We will make every reasonable effort to comply with applicable laws in the
+          operations of the Site, but You must understand that legal or regulatory changes may
+          impact Your positions, the Services provided, or the availability of certain products.
+
+2.5.2 Trading Risk
+        o​ Trading of financial instruments on the Site involves significant risk. The risk of loss
+           in trading or holding derivative financial instruments, including those referencing
+           crypto-assets, ETFs, equity single stocks, and commodities as well as options
+           referencing crypto-assets or commodities, can be substantial.
+        o​ Due to the speculative nature of the markets, particularly for complex instruments
+           like futures and derivatives, Users may experience substantial financial loss in a
+           short period of time. The Investment Firm is not responsible for any market
+           movements that affect the value of Users’ positions.
+        o​ When trading futures and derivatives You may suffer a loss as a result of a number
+           of factors including but not limited to the following: (i) a position in futures and
+           derivatives moving against You, where You may lose the entirety of Your investment,
+           including all assets that You have made available as margin for the position; (iii) You
+           cannot close a futures or derivatives position because there is insufficient market
+           liquidity or demand for the other side of that trade; (iv) we are required to change the
+           commercial terms and other parameters on the Site such as the margin
+           requirements; (v) there is a malfunction of the Site, for example resulting from
+           scheduled or unscheduled downtimes, system failure, database failure, transfer or
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+          storage failure, failure or malfunction of the API, hacker attacks or other failure or
+          malfunction.
+       o​ The market price of a futures or derivatives contract may not mirror the price of the
+          underlying asset in the spot market. For TradFi Futures, the basis between the
+          futures price and underlying ETF, stock, or commodity price may widen significantly,
+          particularly during periods of market stress, and may result in losses independently
+          of movements in the underlying asset price. For Options, the value of a position may
+          decline due to time decay, changes in implied volatility or adverse movements in the
+          relevant underlying price, independently of one another. Option sellers face
+          potentially unlimited losses and may be subject to forced liquidation if margin
+          requirements are breached.
+       o​ You should therefore exercise prudence when trading financial instruments. Prices
+          may fluctuate at any moment. Due to such price fluctuations, Your financial
+          instruments may increase or decrease in value at any given moment.
+
+2.5.3 Investment risk
+        o​ You bear the sole responsibility for your investment decisions made using the Site.
+           You should only invest funds that you can afford to lose. In particular, buying, selling,
+           owning, or otherwise trading financial instruments may not be appropriate for you,
+           particularly if you use funds from retirement savings, student loans, mortgages,
+           emergency savings, or funds you require for other purposes.
+        o​ Using borrowed money to finance the purchase of financial instruments, including by
+           using your credit card or conducting leveraged margin trades, involves greater risk
+           than using cash resources only.
+        o​ You should therefore carefully consider whether investing in financial instruments (or
+           any use of margin if permitted/enabled) is suitable for Your financial condition, risk
+           tolerance, or investment objectives.
+        o​ The Investment Firm does not offer financial, legal, tax, or investment advice or
+           recommendations.
+
+2.5.4 Risk of Leverage and Margin Trading
+       o​ As applicable, trading with leverage or on margin significantly increases the potential
+           for both profits and losses. By using leverage, You can control larger positions than
+           Your initial capital, but this also means that a relatively small adverse price
+           movement can result in significant losses, potentially exceeding the initial margin.
+       o​ We advise You to carefully assess Your risk tolerance before using leverage. You
+           must be prepared to provide additional margin if required and understand that the
+           use of leverage magnifies both the potential for profit and the risk of loss.
+       o​ If Your pledged assets for the leveraged margin trade(s) are subject to liquidation,
+           you may sustain a total loss of all collateral that has been provided or otherwise
+           made available to establish or maintain a position, including collateral provided to
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+           meet margin calls. Further, non-retail customers may, in exceptional circumstances,
+           be responsible and liable for any deficit resulting in your Account following liquidation
+           of your positions (does not apply to retail customers subject to the negative balance
+           protection under applicable law). It is your responsibility to ensure that you have
+           sufficient margin in your Account to maintain all open positions.
+
+2.5.5 Risk of Losses Beyond Initial Investment (only applicable to non-retail customers only)
+       o​ It is possible for non-retail Users to incur losses greater than their initial investment,
+           especially when trading on margin or using leverage (does not apply to retail
+           customers subject to the negative balance protection under applicable law). The
+           Investment Firm strongly advises non-retail Users to assess their financial position,
+           experience, and risk appetite before engaging in trading activities. In some cases,
+           non-retail Users may be required to deposit additional funds to cover margin calls if
+           their positions move against them. The Investment Firm will inform non-retail Users
+           promptly if additional funds are required to maintain open positions.
+
+2.5.6 Unified Account and Collateral Risk
+       o​ Your Account operates under a unified structure, allowing the same assets to support
+            positions across different product types. While this structure improves efficiency and
+            margin utilisation, it also means that losses or margin calls in one product type may
+            reduce the collateral available for other positions. Because collateral is shared
+            across different asset classes, adverse movements in one market (including
+            crypto-assets, equities or commodities) may trigger margin calls or liquidations
+            across other, unrelated positions. Correlations between asset classes may increase
+            during periods of market stress, resulting in simultaneous losses across multiple
+            positions and the rapid depletion of available collateral. These effects may be
+            amplified by the shared collateral structure of the Account, as described above.
+       o​ Eligible Tokenised Equities may also be accepted as collateral. Their collateral value
+            may be subject to eligibility limits, valuation discounts and haircuts determined from
+            time to time. A fall in the value of a Tokenised Equity, or a change to its collateral
+            treatment, may result in a margin shortfall and liquidation. Such liquidation may occur
+            when the underlying equity market is closed, when liquidity may be reduced and
+            prices may differ materially from the most recent exchange-traded price of the
+            underlying asset.
+
+2.5.7 Margin Mode Selection Risk
+       o​ Before transferring assets from Your Funding Account to Your Trading Account, You
+           should carefully consider which margin mode to select, as this will determine how
+           Your collateral is applied and the circumstances in which liquidation may occur. Two
+           modes are available:
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+              o​ Isolated Margin Mode (default): Under this mode, the margin allocated to
+                  each individual position is fixed and ring-fenced at the time the position is
+                  opened. The maximum loss on any given position is limited to the margin
+                  specifically assigned to it, and losses on one position cannot exceed the
+                  collateral allocated to that position or draw upon collateral held elsewhere in
+                  Your Account.
+              o​ Selected Margin Mode (available under Multi-Currency Margin Mode): Where
+                  Multi-Currency Margin Mode is selected, You may also enable Selected
+                  Margin Mode, under which collateral is shared across positions. Whilst this
+                  improves capital efficiency and may delay liquidation of individual positions,
+                  losses in one position reduce the margin available for others, which may
+                  trigger simultaneous liquidation of multiple positions and result in greater
+                  overall losses.
+       o​ Switching margin modes after positions are opened may affect existing margin
+          requirements. You should ensure Your appropriateness assessment reflects the
+          margin mode You intend to use. The choice of margin mode is made solely at Your
+          discretion and responsibility.
+​
+2.5.8 Liquidity Risk
+        o​ Financial markets can experience periods of reduced liquidity, during which you may
+           find it difficult or impossible to sell your financial instruments at a desired price.
+           Illiquid markets can lead to higher volatility and increased risk of loss.
+        o​ There is a risk that You may experience losses due to the inability to trade financial
+           instruments immediately, or where trade is possible but at a loss. Such liquidity risk
+           for a financial instrument may be caused by many reasons, including but not limited
+           to the absence of buyers, limited buy/sell activity, or underdeveloped secondary
+           markets.
+        o​ Liquidity risk arises when You are unable to buy or sell an instrument quickly at a
+           desired price due to market conditions. In some cases, Users may be unable to exit
+           positions without incurring significant losses. This is particularly relevant in volatile
+           markets or for products that are not widely traded. You should be aware that liquidity
+           in certain instruments may be low, particularly during periods of high volatility, and
+           We cannot guarantee the availability of a buyer or seller at a desired price.
+        o​ TradFi Futures referencing ETFs, equity single stocks, or commodities may
+           experience periods of reduced liquidity that are independent of conditions in the
+           crypto-asset markets. In particular, liquidity may be reduced: (i) outside the primary
+           trading hours of the relevant underlying market; (ii) around corporate events such as
+           earnings announcements or ETF rebalancing events; (iii) during commodity market
+           disruptions; or (iv) during periods of extreme market stress when market makers
+           withdraw from the market. Options may additionally experience reduced liquidity,
+           particularly where they are out-of-the-money, approaching expiry or have longer
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+           maturities. During such periods, bid-ask spreads may widen significantly and You
+           may be unable to close or unwind a position at an acceptable price.​
+
+2.5.9 FX Conversion Risk
+       o​ Most of the derivatives products offered on the Site are priced and settled in USD or
+          USD-referenced stablecoins. If Your Account is funded or denominated in another
+          currency, You are exposed to foreign exchange risk. Movements in the USD
+          exchange rate relative to EUR, or another base currency if applicable to You, may
+          affect the overall value, profit, or loss of a position when converted back to that base
+          currency. You should be aware that fluctuations in exchange rates can therefore
+          increase or decrease domestic currency returns.
+
+2.5.10 Counterparty Risk
+       o​ When trading financial instruments, users face counterparty risk, which is the risk
+          that the other party to the transaction may fail to fulfil their contractual obligations. In
+          the event of a counterparty default, You may suffer losses. We take measures to
+          mitigate counterparty risk, but users must understand that such risks are inherent in
+          derivative trading and that We cannot guarantee that a counterparty will meet its
+          obligations.The Investment Firm operates a matched principal model and may rely
+          on third-party liquidity providers to execute hedge transactions. The availability,
+          pricing and execution of Your trades may therefore depend on such liquidity
+          providers. A failure, delay or withdrawal of liquidity by such providers may affect Your
+          ability to trade or close positions and may result in losses. Where You acquire a
+          Tokenised Equity, You are additionally exposed to the credit risk of the issuer of that
+          instrument and of the third parties appointed by it, as described in Section 2.2 IV.
+       o​ Our utilisation of the Service(s) may lead to potential or actual conflicts of interest
+          with other counterparties, including Users. Such trading activity, as described in
+          Section 1.8.1 of the Terms, may include Us engaging in transactions with multiple
+          counterparties, including Users, where interests differ. We may at times hold
+          positions or engage in transactions that are contrary to the interests of certain
+          counterparties, including Users. We have no fiduciary duty to You and do not
+          undertake to act in any fiduciary capacity.
+
+2.5.11 Recordkeeping and Personal Data risks
+       o​ Ownership records and transaction histories are recorded in the Investment Firm's
+          books and records. Where a financial instrument is issued or held using DLT,
+          relevant positions and transactions may also be reflected in the applicable on-chain
+          records and custody infrastructure. The Investment Firm maintains reconciliation and
+          recordkeeping controls designed to ensure that Client entitlements remain
+          appropriately identified. We use permissioned-based technology and audit tracking
+          to create a complete audit trail of every action on the Site.
+RISK WARNING & DISCLOSURE S​​TATEMENT
+
+
+
+
+       o​ Our service providers may store personal data within their own systems across
+          various jurisdictions in order to perform the services requested by the Investment
+          Firm, or to comply with our legal and regulatory obligations. We require them to
+          protect the confidentiality of personal data and comply with all applicable privacy and
+          data protection laws. This is described more fully in our Privacy Statement.
+
+2.5.12 TradFi Reference Price and Data Risk
+       o​ The pricing and settlement of TradFi Futures relies on reference prices from multiple
+           sources, including primary market data feeds, tokenised market sources, relevant
+           competitor derivative products and OKX’s own perpetual contract prices, with the
+           relative weighting of each source varying depending on market conditions, trading
+           session and data availability.. The Investment Firm does not control the source data
+           or the third-party providers that supply it.
+       o​ Errors, delays, or interruptions in the delivery of reference price data may affect the
+           pricing, margining, and settlement of TradFi Futures. In the event of a material data
+           error or reference price disruption, the Investment Firm reserves the right to suspend
+           trading, adjust settlement values, or take such other steps as may be reasonably
+           necessary to preserve the integrity of the platform and protect users.
+       o​ ETF providers may change the composition, investment objective, or fee structure of
+           a reference ETF. Such changes may affect the value of the relevant ETF futures
+           contract independently of movements in the constituent securities and may result in
+           divergence between the futures contract and the intended exposure.
+       o​ The settlement of Options is dependent on the applicable underlying index price at
+           the scheduled expiry time. Any disruption, error or delay in determining that index
+           price may affect the settlement value of outstanding positions. The Investment Firm
+           reserves the right to apply contingency settlement procedures following a market
+           disruption affecting the applicable index at or around expiry.
+
+
+3. Risk Disclosure Acknowledgement
+By using the Services of the Investment Firm, You acknowledge and expressly agree that You
+have read, understood, and accepted all risks associated with trading in financial instruments,
+including derivatives and Tokenised Equities. You further acknowledge that trading involves a
+high degree of risk and may result in the loss of all or part of Your invested capital. You agree
+that all trading decisions are made at Your sole discretion and responsibility, and that You shall
+bear all resulting losses or liabilities.
+
+The Investment Firm shall not, under any circumstances, be liable for any losses, damages,
+costs, or expenses arising directly or indirectly from market fluctuations, price volatility, margin
+calls, system failures, execution delays, liquidity constraints, or any other events or
+circumstances beyond its reasonable control, whether foreseeable or not.
+

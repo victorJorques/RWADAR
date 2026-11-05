@@ -1,0 +1,35 @@
+URL: https://shares.bossinfo.com/trade
+Renderizado (Chromium), pestaña Sell pulsada=true: 2026-11-05T08:11:03Z
+
+CHF	850 BOSS	6'970 ZCHF
+
+
+7 Aug 2026 / 13:39	Secondary Trade	6.90 ZCHF	482 BOSS	3'325.8 ZCHF
+
+
+7 Aug 2026 / 13:39	Secondary Trade	7.05 ZCHF	989 BOSS	6'972.45 ZCHF
+Page 1 of 32
+1
+2
+3
+4
+5
+…
+32
+Buy
+Sell
+Number of Shares
+BOSS
+Limit Price
+ZCHF
+Order Summary
+1 BOSS
+To be matched later
+8.4 ZCHF
+Fee (1.9%):
+0.16 ZCHF
+Total Value:
+8.24 ZCHF
+Register to Access Secondary Trading
+Boss Info AG
+Terms of Use: This page is hosted by Boss Info using technology licensed from Aktionariat. Some content is automatically compiled from other sources than Boss Info and provided "AS IS" without further verification. These sources include the public trade registry, website users, and the Ethereum blockchain and related systems. Boss Info assumes no responsibility for the accuracy of any of this data. All shareholde
