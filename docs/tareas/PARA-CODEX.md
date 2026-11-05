@@ -31,7 +31,8 @@ catálogo (se retiran en la entrega `2026-11-05.2`, en otra rama).
   mediterráneo blanco con balcones y palmeras, sin nada propio de la ciudad);
   su `prompt` no cambia porque es el que la generó. `generar.mjs`: las 24 webp
   salen idénticas; cambian el manifiesto de la app, el bloque de la web y la
-  ficha publicada. `generar.mjs --comprobar` en verde.
+  ficha publicada, y `npm test` reescribe la tarjeta pre-renderizada de
+  `rwadar-site/index.html` (commit `d53bf50`). `generar.mjs --comprobar` en verde.
 - **Datos personales** (commit `a5b6934`): los nombres recortados hoy en
   `2026-11-05-v2` seguían en copias de `2026-11-01-v2` y `2026-11-03.3-v2`, y
   también en `docs/investigacion/2026-10-23` (incluida la portada de Hausera
