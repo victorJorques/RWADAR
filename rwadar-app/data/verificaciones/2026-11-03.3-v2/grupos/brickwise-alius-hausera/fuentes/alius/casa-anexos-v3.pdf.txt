@@ -358,8 +358,8 @@ CASA DE OUTEIRO BODEGA Y VIÑEDOS S.A.           ACCIONES                       
 TOURGALIA GESTIÓN S.L.                                                         74103          741.030,00 €           43,49%
 INVERSIONS DE CAPITAIS REUNIDOS S.L.                                           62900          629.000,00 €           36,91%
 SOLQUIROGA S.L.                                                                24000          240.000,00 €            14,8%
-SONIA NOEMÍ ÁLVAREZ BLANCO                                                      9100           91.000,00 €            5,34%
-JUAN LUIS VÁZQUEZ RODRÍGUEZ                                                      300              3.000,00 €          0,18%
+[nombre recortado]                                                              9100           91.000,00 €            5,34%
+[nombre recortado]                                                               300              3.000,00 €          0,18%
 TOTALES                                                                      170403          1.704.030,00 €           100%
                                                POST EMISIÓN DE CAPITAL
 PRIMA DE EMISIÓN                                                             15,00 €     VALOR NOMINAL               10,00 €

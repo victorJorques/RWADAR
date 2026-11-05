@@ -7,12 +7,16 @@
     "fechaDato": null,
     "httpDate": "Fri, 23 Oct 2026 19:28:33 GMT",
     "httpLastModified": "Fri, 23 Oct 2026 11:50:45 GMT",
-    "bytes": 2529666,
-    "sha256": "89fec17b2269d89a4a55ab8d3cea3e4cb8da183bf3572d6e36de5660abb9015f",
+    "bytes": 2529668,
+    "sha256": "600b75d8abe5a66f220dc46c0d30162295da3e736437975a89d5a58aca2228fe",
     "copia": "portada.html.gz",
-    "gzipBytes": 361870,
-    "gzipSha256": "6a9692788dc072577a5785bb657e2a1519361bf98501dfe72037a80eb727bd4d",
-    "textoSha256": "098f59e469c518f92fc689bab436e13c699dc5908f93a37254a829934f98d981"
+    "gzipBytes": 361874,
+    "gzipSha256": "e50b6421fa00f26886a71caf885aaadc3a698c457c19b8bc084d054efe28aa86",
+    "textoSha256": "b684e7c8ff254e43c090e79856db3ff3423b46017639111845cd0ca51e57c9a9",
+    "sha256Captura": "89fec17b2269d89a4a55ab8d3cea3e4cb8da183bf3572d6e36de5660abb9015f",
+    "gzipSha256Captura": "6a9692788dc072577a5785bb657e2a1519361bf98501dfe72037a80eb727bd4d",
+    "textoSha256Captura": "098f59e469c518f92fc689bab436e13c699dc5908f93a37254a829934f98d981",
+    "nota": "Copias (portada.html.gz y portada.txt) con el nombre de una persona física recortado el 05/11/2026 («[nombre recortado]»); bytes, sha256, gzipBytes, gzipSha256 y textoSha256 son los de las copias recortadas; los campos …Captura, los de la captura original."
   },
   "terminos": {
     "url": "https://hausera.io/terms/",

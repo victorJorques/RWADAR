@@ -29,7 +29,7 @@
   "consultadoUtc": "2026-11-01T13:12:38Z",
   "bytes": 429084,
   "sha256": "147cd9729caaf06be2afe5d894303c964bac2be0777116006399f81d800e0de3",
-  "nota": "PDF público leído completo; se guarda solo el texto extraído con NIF/teléfono/correo de personas físicas omitidos. bytes/sha256 son del PDF original servido."
+  "nota": "PDF público leído completo; se guarda solo el texto extraído con NIF/teléfono/correo de personas físicas omitidos. bytes/sha256 son del PDF original servido. La copia de texto en Git lleva recortados desde el 05/11/2026 los nombres de personas físicas («[nombre recortado]»); bytes y sha256 siguen siendo los del PDF original."
  },
  {
   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/264",
@@ -40,7 +40,7 @@
   "consultadoUtc": "2026-11-01T13:12:39Z",
   "bytes": 391427,
   "sha256": "332e32c27aabd763e1607c1ebd91a17d00b569cb2bf2019d3d11e1fcc79e976b",
-  "nota": "PDF público leído completo; se guarda solo el texto extraído con NIF/teléfono/correo de personas físicas omitidos. bytes/sha256 son del PDF original servido."
+  "nota": "PDF público leído completo; se guarda solo el texto extraído con NIF/teléfono/correo de personas físicas omitidos. bytes/sha256 son del PDF original servido. La copia de texto en Git lleva recortados desde el 05/11/2026 los nombres de personas físicas («[nombre recortado]»); bytes y sha256 siguen siendo los del PDF original."
  },
  {
   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/tabs",
@@ -117,18 +117,20 @@
   "archivo": "api-casa-de-outeiro-campana.json",
   "http": 200,
   "consultadoUtc": "2026-11-01T13:12:26Z",
-  "bytes": 25795,
-  "sha256": "b503a46e3bfd0d3628fd875895df2ae50ddc4bd3c180553bf6e4dbcf30a54636",
-  "nota": "Extracto filtrado (campos públicos) de la respuesta API; sha256 del extracto, el sha de la respuesta original consta en la entrada raw-only con la misma URL."
+  "bytes": 25733,
+  "sha256": "ec680d2eed1d274a727b8e51c43ee6acfe65330189e3e28feb251649f22b2350",
+  "nota": "Extracto filtrado (campos públicos) de la respuesta API; sha256 del extracto, el sha de la respuesta original consta en la entrada raw-only con la misma URL. Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior.",
+  "sha256Captura": "b503a46e3bfd0d3628fd875895df2ae50ddc4bd3c180553bf6e4dbcf30a54636"
  },
  {
   "url": "https://aliuscap.com/projects/casa-de-outeiro",
   "archivo": "nav-casa-de-outeiro-2026-11-01.txt",
   "http": 200,
   "consultadoUtc": "2026-11-01T13:11:59Z",
-  "bytes": 7324,
-  "sha256": "8e04010a2628f4f29161747b68b3a0969e02ba2850de8c04fa6edb151e374e72",
-  "nota": "Texto visible renderizado con Playwright (Chromium sin sesión), 13:11:59–13:12:10 UTC."
+  "bytes": 7322,
+  "sha256": "f23d9fe5333b63ba69801532cea36bc272c3955280f3e0517283058d815af54e",
+  "nota": "Texto visible renderizado con Playwright (Chromium sin sesión), 13:11:59–13:12:10 UTC. Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior.",
+  "sha256Captura": "8e04010a2628f4f29161747b68b3a0969e02ba2850de8c04fa6edb151e374e72"
  },
  {
   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed",
@@ -379,9 +381,10 @@
   "archivo": "nav-casa-de-outeiro-boton-2026-11-01.txt",
   "http": 200,
   "consultadoUtc": "2026-11-01T15:05:20Z",
-  "bytes": 4863,
-  "sha256": "f7fabbab1d8ff92b3130795f4f437dd016e6a4d84ddb7e5e9f19fbdef32eaf10",
-  "nota": "Texto visible renderizado con Playwright (Chromium sin sesión)."
+  "bytes": 4861,
+  "sha256": "bb2a9957b340e5ac71e4da39d63f402cee5b6dd3e86486d764648a4dbef9077e",
+  "nota": "Texto visible renderizado con Playwright (Chromium sin sesión). Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior.",
+  "sha256Captura": "f7fabbab1d8ff92b3130795f4f437dd016e6a4d84ddb7e5e9f19fbdef32eaf10"
  },
  {
   "url": "https://hausera.io/oportunidades/",

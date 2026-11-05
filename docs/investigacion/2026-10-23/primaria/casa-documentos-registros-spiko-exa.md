@@ -27,10 +27,10 @@ Identidad, forma jurídica, titularidad, puestos directivos y datos de contacto.
 
 • Código LEI: Pendiente de constitución
 
-• Titularidad: Tourgalia Gestión S.L., NIF B27459072 ostenta el 43.49% del capital de la Sociedad Investimentos de Capitais Reunidos S.L., NIF B-27412980 ostenta el 36.91% del capital de la Sociedad. SolQuiroga S.L. NIF B27334150 ostenta el 14.08% del capital de la Sociedad. Sonia Noemí Álvarez Blanco NIF [DNI omitido] ostenta el 5.34% del capital de la Sociedad. Juan Luis Vázquez Rodríguez NIF [DNI omitido] ostenta el 0.18% del capital de la Sociedad. 
-• Administradores solidarios de Casa de Outeiro Bodega y Viñedos S.A.: Juan Luis Vázquez Rodríguez/Sonia Noemí Álvarez Blanco 
-• Puestos directivos: Presidente (Juan Luis Vázquez Rodríguez), Vicepresidenta (Sonia Noemí Álvarez Blanco) 
-• Datos de contacto: 637895831, jlvazquez@casadeouteiro.com 
+• Titularidad: Tourgalia Gestión S.L., NIF B27459072 ostenta el 43.49% del capital de la Sociedad Investimentos de Capitais Reunidos S.L., NIF B-27412980 ostenta el 36.91% del capital de la Sociedad. SolQuiroga S.L. NIF B27334150 ostenta el 14.08% del capital de la Sociedad. [nombre recortado] NIF [DNI omitido] ostenta el 5.34% del capital de la Sociedad. [nombre recortado] NIF [DNI omitido] ostenta el 0.18% del capital de la Sociedad. 
+• Administradores solidarios de Casa de Outeiro Bodega y Viñedos S.A.: [nombre recortado]/[nombre recortado] 
+• Puestos directivos: Presidente ([nombre recortado]), Vicepresidenta ([nombre recortado]) 
+• Datos de contacto: [teléfono recortado], [correo recortado] 
 
 La presente oferta de financiación participativa no ha sido verificada ni aprobada por CNMV ni por la Autoridad Europea de Valores y Mercados (AEVM). La idoneidad de su experiencia y conocimientos no se ha evaluado necesariamente antes de que se le concediera acceso a esta inversión. Al realizar esta inversión, usted asume plenamente el riesgo que comporta, incluido el de pérdida parcial o total del dinero invertido.
 
@@ -58,7 +58,7 @@ Entidad registrada en CNMV con el Nº11
 
 Declaración de responsabilidad de la persona responsable de la información facilitada.
 
-D. Juan Luis Vázquez Rodríguez, administrador solidario de Casa de Outeiro Bodega y Viñedos S.A., declara que, hasta donde alcanza su conocimiento, no se ha omitido ningún dato y la información no es sustancialmente engañosa ni inexacta. El promotor del proyecto es el responsable de la elaboración de esta ficha de datos fundamentales de la inversión.
+D. [nombre recortado], administrador solidario de Casa de Outeiro Bodega y Viñedos S.A., declara que, hasta donde alcanza su conocimiento, no se ha omitido ningún dato y la información no es sustancialmente engañosa ni inexacta. El promotor del proyecto es el responsable de la elaboración de esta ficha de datos fundamentales de la inversión.
 
 Actividades principales del promotor del proyecto, productos o servicios ofrecidos por el promotor del proyecto.
 
@@ -146,9 +146,9 @@ Desglose de los principales derechos y restricciones que se derivan del Pacto de
 
 • Todas las acciones tienen los mismos derechos políticos y económicos. 
 • Los socios tienen derecho de acompañamiento. 
-• El derecho de arrastre sólo podrá ejercitarse respecto de operaciones de venta global o estratégica que cuenten con las mayorías reforzadas previstas en el Pacto de Socios y siempre que se respeten las exclusiones expresas de Tourgalia Gestión, S.L., Don Juan Luis Vázquez Rodríguez y Doña Noemí Álvarez Blanco. 
-• En las transmisiones de acciones de Socios Impulsores sujetas a derecho de adquisición preferente, Tourgalia Gestión, S.L., Don Juan Luis Vázquez Rodríguez y Doña Noemí Álvarez Blanco tendrán, en el ámbito interno del presente Pacto, un derecho preferente reforzado para adquirir las acciones ofrecidas. 
-• Ni Juan Luis Vázquez Rodríguez, ni Sonia Noemí Álvarez Blanco, ni Tourgalia Gestión S.L. podrán ser arrastrados por Inversions de Capitais Reunidos S.L., Sol Quiroga S.L., o cualquier otro socio. 
+• El derecho de arrastre sólo podrá ejercitarse respecto de operaciones de venta global o estratégica que cuenten con las mayorías reforzadas previstas en el Pacto de Socios y siempre que se respeten las exclusiones expresas de Tourgalia Gestión, S.L., Don [nombre recortado] y Doña [nombre recortado]. 
+• En las transmisiones de acciones de Socios Impulsores sujetas a derecho de adquisición preferente, Tourgalia Gestión, S.L., Don [nombre recortado] y Doña [nombre recortado] tendrán, en el ámbito interno del presente Pacto, un derecho preferente reforzado para adquirir las acciones ofrecidas. 
+• Ni [nombre recortado], ni [nombre recortado], ni Tourgalia Gestión S.L. podrán ser arrastrados por Inversions de Capitais Reunidos S.L., Sol Quiroga S.L., o cualquier otro socio. 
 • Transmisibilidad: Se limita la transmisión inicial de las acciones hasta el año 2027. Los accionistas se comprometen a no transmitir sus acciones hasta el año 2026. Desde el año 2027 al año 2030 incluido se producirá una liberación del 10% en paquetes del 2.5% anual por inversor. A partir de 2031 se producirá una liberación progresiva conforme al plan aprobado en la primera Junta de Accionistas del año 2031. 
 
 Distribución del capital y los derechos de voto antes y después de la ampliación de capital suponiendo que se suscriba íntegramente la ronda de financiación participativa, la estructura del capital será:
@@ -170,8 +170,8 @@ CASA DE OUTEIRO BODEGA Y VIÑEDOS S.A. ACCIONES CAPITAL PORCENTAJE
 TOURGALIA GESTIÓN S.L. 74103 741.030,00 € 43,49% 
 INVERSIONS DE CAPITAIS REUNIDOS S.L. 62900 629.000,00 € 36,91% 
 SOLQUIROGA S.L. 24000 240.000,00 € 14,8% 
-SONIA NOEMÍ ÁLVAREZ BLANCO 9100 91.000,00 € 5,34% 
-JUAN LUIS VÁZQUEZ RODRÍGUEZ 300 3.000,00 € 0,18% 
+[nombre recortado] 9100 91.000,00 € 5,34% 
+[nombre recortado] 300 3.000,00 € 0,18% 
 TOTALES 170403 1.704.030,00 € 100% 
 POST EMISIÓN DE CAPITAL 
 PRIMA DE EMISIÓN 15,00 € VALOR NOMINAL 10,00 € 
@@ -214,10 +214,10 @@ Identidad, forma jurídica, titularidad, puestos directivos y datos de contacto.
 
 • Código LEI: Pendiente de constitución
 
-• Titularidad: Tourgalia Gestión S.L., NIF B27459072 ostenta el 43.49% del capital de la Sociedad Investimentos de Capitais Reunidos S.L., NIF B-27412980 ostenta el 36.91% del capital de la Sociedad. SolQuiroga S.L. NIF B27334150 ostenta el 14.08% del capital de la Sociedad. Sonia Noemí Álvarez Blanco NIF [DNI omitido] ostenta el 5.34% del capital de la Sociedad. Juan Luis Vázquez Rodríguez NIF [DNI omitido] ostenta el 0.18% del capital de la Sociedad. 
-• Administradores solidarios de Casa de Outeiro Bodega y Viñedos S.A.: Juan Luis Vázquez Rodríguez/Sonia Noemí Álvarez Blanco 
-• Puestos directivos: Presidente (Juan Luis Vázquez Rodríguez), Vicepresidenta (Sonia Noemí Álvarez Blanco) 
-• Datos de contacto: 637895831, jlvazquez@casadeouteiro.com 
+• Titularidad: Tourgalia Gestión S.L., NIF B27459072 ostenta el 43.49% del capital de la Sociedad Investimentos de Capitais Reunidos S.L., NIF B-27412980 ostenta el 36.91% del capital de la Sociedad. SolQuiroga S.L. NIF B27334150 ostenta el 14.08% del capital de la Sociedad. [nombre recortado] NIF [DNI omitido] ostenta el 5.34% del capital de la Sociedad. [nombre recortado] NIF [DNI omitido] ostenta el 0.18% del capital de la Sociedad. 
+• Administradores solidarios de Casa de Outeiro Bodega y Viñedos S.A.: [nombre recortado]/[nombre recortado] 
+• Puestos directivos: Presidente ([nombre recortado]), Vicepresidenta ([nombre recortado]) 
+• Datos de contacto: [teléfono recortado], [correo recortado] 
 
 La presente oferta de financiación participativa no ha sido verificada ni aprobada por CNMV ni por la Autoridad Europea de Valores y Mercados (AEVM). La idoneidad de su experiencia y conocimientos no se ha evaluado necesariamente antes de que se le concediera acceso a esta inversión. Al realizar esta inversión, usted asume plenamente el riesgo que comporta, incluido el de pérdida parcial o total del dinero invertido.
 
@@ -245,7 +245,7 @@ Entidad registrada en CNMV con el Nº11
 
 Declaración de responsabilidad de la persona responsable de la información facilitada.
 
-D. Juan Luis Vázquez Rodríguez, administrador solidario de Casa de Outeiro Bodega y Viñedos S.A., declara que, hasta donde alcanza su conocimiento, no se ha omitido ningún dato y la información no es sustancialmente engañosa ni inexacta. El promotor del proyecto es el responsable de la elaboración de esta ficha de datos fundamentales de la inversión.
+D. [nombre recortado], administrador solidario de Casa de Outeiro Bodega y Viñedos S.A., declara que, hasta donde alcanza su conocimiento, no se ha omitido ningún dato y la información no es sustancialmente engañosa ni inexacta. El promotor del proyecto es el responsable de la elaboración de esta ficha de datos fundamentales de la inversión.
 
 Actividades principales del promotor del proyecto, productos o servicios ofrecidos por el promotor del proyecto.
 
@@ -333,9 +333,9 @@ Desglose de los principales derechos y restricciones que se derivan del Pacto de
 
 • Todas las acciones tienen los mismos derechos políticos y económicos. 
 • Los socios tienen derecho de acompañamiento. 
-• El derecho de arrastre sólo podrá ejercitarse respecto de operaciones de venta global o estratégica que cuenten con las mayorías reforzadas previstas en el Pacto de Socios y siempre que se respeten las exclusiones expresas de Tourgalia Gestión, S.L., Don Juan Luis Vázquez Rodríguez y Doña Noemí Álvarez Blanco. 
-• En las transmisiones de acciones de Socios Impulsores sujetas a derecho de adquisición preferente, Tourgalia Gestión, S.L., Don Juan Luis Vázquez Rodríguez y Doña Noemí Álvarez Blanco tendrán, en el ámbito interno del presente Pacto, un derecho preferente reforzado para adquirir las acciones ofrecidas. 
-• Ni Juan Luis Vázquez Rodríguez, ni Sonia Noemí Álvarez Blanco, ni Tourgalia Gestión S.L. podrán ser arrastrados por Inversions de Capitais Reunidos S.L., Sol Quiroga S.L., o cualquier otro socio. 
+• El derecho de arrastre sólo podrá ejercitarse respecto de operaciones de venta global o estratégica que cuenten con las mayorías reforzadas previstas en el Pacto de Socios y siempre que se respeten las exclusiones expresas de Tourgalia Gestión, S.L., Don [nombre recortado] y Doña [nombre recortado]. 
+• En las transmisiones de acciones de Socios Impulsores sujetas a derecho de adquisición preferente, Tourgalia Gestión, S.L., Don [nombre recortado] y Doña [nombre recortado] tendrán, en el ámbito interno del presente Pacto, un derecho preferente reforzado para adquirir las acciones ofrecidas. 
+• Ni [nombre recortado], ni [nombre recortado], ni Tourgalia Gestión S.L. podrán ser arrastrados por Inversions de Capitais Reunidos S.L., Sol Quiroga S.L., o cualquier otro socio. 
 • Transmisibilidad: Se limita la transmisión inicial de las acciones hasta el año 2027. Los accionistas se comprometen a no transmitir sus acciones hasta el año 2026. Desde el año 2027 al año 2030 incluido se producirá una liberación del 10% en paquetes del 2.5% anual por inversor. A partir de 2031 se producirá una liberación progresiva conforme al plan aprobado en la primera Junta de Accionistas del año 2031. 
 
 Distribución del capital y los derechos de voto antes y después de la ampliación de capital suponiendo que se suscriba íntegramente la ronda de financiación participativa, la estructura del capital será:
@@ -357,8 +357,8 @@ CASA DE OUTEIRO BODEGA Y VIÑEDOS S.A. ACCIONES CAPITAL PORCENTAJE
 TOURGALIA GESTIÓN S.L. 74103 741.030,00 € 43,49% 
 INVERSIONS DE CAPITAIS REUNIDOS S.L. 62900 629.000,00 € 36,91% 
 SOLQUIROGA S.L. 24000 240.000,00 € 14,8% 
-SONIA NOEMÍ ÁLVAREZ BLANCO 9100 91.000,00 € 5,34% 
-JUAN LUIS VÁZQUEZ RODRÍGUEZ 300 3.000,00 € 0,18% 
+[nombre recortado] 9100 91.000,00 € 5,34% 
+[nombre recortado] 300 3.000,00 € 0,18% 
 TOTALES 170403 1.704.030,00 € 100% 
 POST EMISIÓN DE CAPITAL 
 PRIMA DE EMISIÓN 15,00 € VALOR NOMINAL 10,00 € 

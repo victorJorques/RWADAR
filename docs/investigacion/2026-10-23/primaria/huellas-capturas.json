@@ -11,18 +11,24 @@
   },
   {
     "archivo": "casa-api-publica-filtrada.json",
-    "bytes": 40406,
-    "sha256": "8a91012133c668253e0bcece0e0b2634ebeb6e613a5860c21e5b661362fcb509"
+    "bytes": 40044,
+    "sha256": "52e3e68ff786b9290d112296dd37b11fc7536d3be1234b1b4e9808e4a560e163",
+    "sha256Captura": "8a91012133c668253e0bcece0e0b2634ebeb6e613a5860c21e5b661362fcb509",
+    "nota": "Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior."
   },
   {
     "archivo": "casa-documentos-registros-spiko-exa.md",
-    "bytes": 54186,
-    "sha256": "995a4b3989473f075cff57afaad3a53c2249f9053f12ed70bc64aca2f632328f"
+    "bytes": 53900,
+    "sha256": "d806c4878e51c4df1de3055672cedc8c8675a9bd35bf74fc4a9c5f69032e0a63",
+    "sha256Captura": "995a4b3989473f075cff57afaad3a53c2249f9053f12ed70bc64aca2f632328f",
+    "nota": "Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior."
   },
   {
     "archivo": "casa-navegador.txt",
-    "bytes": 8134,
-    "sha256": "c732ae77dd00806eed8072497932ae6b8d0144c9d67e7d9ea3d19de70ddfdf69"
+    "bytes": 8132,
+    "sha256": "cea8bede7da2878d48715b2749d487140a8582965ac560a7b8c07ec4c0577c24",
+    "sha256Captura": "c732ae77dd00806eed8072497932ae6b8d0144c9d67e7d9ea3d19de70ddfdf69",
+    "nota": "Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior."
   },
   {
     "archivo": "documentos-hashes.json",
