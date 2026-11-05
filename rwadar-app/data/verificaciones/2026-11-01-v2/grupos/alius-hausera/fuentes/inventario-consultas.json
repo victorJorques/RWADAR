@@ -228,7 +228,7 @@
   "consultadoUtc": "2026-11-01T15:04:41Z",
   "bytes": 390753,
   "sha256": "92dd2d29dd6c2fa6a6a3617abe27294efde05058052aeeaae9000b3c5b647055",
-  "nota": "PDF leído completo; se guarda texto extraído con datos personales omitidos; bytes/sha256 del PDF original (idéntico al del 23/10)."
+  "nota": "PDF leído completo; bytes/sha256 del PDF original (idéntico al del 23/10). La copia de texto en Git lleva omitidos los DNI y el correo y, desde el 05/11/2026, también recortados los nombres de las personas físicas (socios y administrador único: «[nombre recortado]»)."
  },
  {
   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/169/document/299",
@@ -239,7 +239,7 @@
   "consultadoUtc": "2026-11-01T15:04:42Z",
   "bytes": 1427963,
   "sha256": "dd65b08adf32c28fc7365e64289732bd1b8000e5353ec6b9ddffb7de15c68284",
-  "nota": "Copia simple electrónica de la escritura de emisión (42 págs.) leída en sus apartados de condiciones; se guarda texto extraído con DNI omitidos; bytes/sha256 del PDF original."
+  "nota": "Copia simple electrónica de la escritura de emisión (42 págs.) leída en sus apartados de condiciones; bytes/sha256 del PDF original. La copia de texto en Git lleva omitidos los DNI y, desde el 05/11/2026, también recortados los nombres de las personas físicas (otorgantes, administradora de Alius Capital y notarios: «[nombre recortado]»), sus domicilios («[domicilio recortado]») y el estado civil."
  },
  {
   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius+Capital",

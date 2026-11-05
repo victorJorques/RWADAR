@@ -3318,8 +3318,8 @@ company (Aktiengesellschaft), with registered number FL-0002.669.856-9. It is re
 
 The Issuer has been established for the sole purpose of issuing ETI Securities in the form of debt securities, the value of which are linked on a
 1:1 basis to the Underlying Securities, which are segregated into cells of a securitisation special purpose entity. The sole shareholder of the
-Issuer is Altarius Capital Value S.L. (incorporated in Spain). Altarius Capital Value S.L. is beneficially owned and controlled by Adelaida Garrido
-Caballero and Jaime Ortiz-Vigón. The directors of the Issuer are: Jaime Ortiz-Vigón, Florian Wenaweser, and Hera Trust Establishment. The
+Issuer is Altarius Capital Value S.L. (incorporated in Spain). Altarius Capital Value S.L. is beneficially owned and controlled by [nombre recortado]
+ and [nombre recortado]. The directors of the Issuer are: [nombre recortado], [nombre recortado], and Hera Trust Establishment. The
 statutory auditors of the Issuer are Lirex AG. addressed in Im Krüz 2 . FL-9494 Schaan, Liechtenstein
 
 What is the key financial information regarding the Issuer?
@@ -3860,27 +3860,27 @@ The directors of the Issuer are as follows:
                                                                     Altarius ETI AG
 
 
-15.1.3.1. Jaime Ortiz-Vigón
+15.1.3.1. [nombre recortado]
 
-Mr Ortiz-Vigón has studied Economics and Wealth Management. During the last 10 years Mr Ortiz-Vigón has been holding senior position in
+Mr [nombre recortado] has studied Economics and Wealth Management. During the last 10 years Mr [nombre recortado] has been holding senior position in
 different international wealth management companies and financial advisory companies.
 
-Investors’ attention is brought to the fact that Mr. Ortiz-Vigón is a director and an owner of Altarius Capital Value SL, which is the holding company
+Investors’ attention is brought to the fact that Mr. [nombre recortado] is a director and an owner of Altarius Capital Value SL, which is the holding company
 of Altarius ETI AG (the Issuer), and of Altarius Capital Limited (the Calculation Agent, the Arranger, the Authorised Participant and the Director of
 Altarius Index). Furthermore, Altarius Capital Limited is the owner and corporate director of Altarius Index (the Underlying Issuer).
 
-Mr. Jaime Ortiz-Vigón was appointed a Director of the Issuer on 2nd March 2022.
+Mr. [nombre recortado] was appointed a Director of the Issuer on 2nd March 2022.
 
-15.1.3.2. Florian Wenaweser
+15.1.3.2. [nombre recortado]
 
-Florian Wenaweser was born and raised in Liechtenstein, where he still lives with his wife and two children. After his apprenticeship in the
+[nombre recortado] was born and raised in Liechtenstein [datos familiares recortados]. After his apprenticeship in the
 fiduciary sector, he has completed a variety of further education in the areas of corporate management, taxation and compliance. In addition,
-Florian has successfully passed the Liechtenstein Fiduciary Examination.
+[nombre recortado] has successfully passed the Liechtenstein Fiduciary Examination.
 
-Investor’s attention is brought to the fact that Mr. Wenaweser is a member of the board of directors of Hera Trust Establishment, the Corporate
+Investor’s attention is brought to the fact that Mr. [nombre recortado] is a member of the board of directors of Hera Trust Establishment, the Corporate
 Services Provider
 
-Mr Florian Wenaweser was appointed as a Director of the Issuer on 12th April 2024.
+Mr [nombre recortado] was appointed as a Director of the Issuer on 12th April 2024.
 
 15.1.3.3. Hera Trust Establishment
 
@@ -3971,7 +3971,7 @@ In addition to its general business purpose, the Arranger serves operational rol
 Calculation Agent. As Arranger, it provides administrative, structural, and coordination services to the Issuer for the issuance and management
 of the Programme.
 
-Investors are advised that Mrs. Adelaida Garrido Caballero and Mr. Jaime Ortiz-Vigón serve as directors and/or beneficial owners of Altarius
+Investors are advised that Mrs. [nombre recortado] and Mr. [nombre recortado] serve as directors and/or beneficial owners of Altarius
 Capital Value SL, the holding company of Altarius ETI AG (the Issuer), and both Altarius Capital Limited (the Investment Manager and an
 Authorised Participant) and Altarius Index (an Authorised Participant) of the Programme.
 
@@ -3981,11 +3981,11 @@ It is important to note that ETI Securities issued under the Programme are oblig
 
 The directors of the Arranger are:
 
-     •    Adelaida Garrido Caballero
+     •    [nombre recortado]
 
-     •    Antonio Bernardes Honorio
+     •    [nombre recortado]
 
-     •    George Lewis Felipes
+     •    [nombre recortado]
 
 The business address of each of the directors of the Arranger is at World Trade Center Unit 5.26 , 6 Bayside Road, GX11 1AA, Gibraltar.
 
@@ -4059,7 +4059,7 @@ In addition to its general business purpose, the Calculation Agent provides corp
 aimed at securing financing, as well as in corporate and debt transactions. The ETI Securities are obligations of the Issuer alone and not of the
 Calculation Agent.
 
-Investors are advised that Mrs. Adelaida Garrido Caballero and Mr. Jaime Ortiz-Vigón serve as directors and/or beneficial owners of Altarius
+Investors are advised that Mrs. [nombre recortado] and Mr. [nombre recortado] serve as directors and/or beneficial owners of Altarius
 Capital Value SL, the holding company of Altarius ETI AG (the Issuer), and both Altarius Capital Limited (the Investment Manager and an
 Authorised Participant) and Altarius Index (an Authorised Participant) of the Programme.
 
@@ -4069,7 +4069,7 @@ It is important to note that ETI Securities issued under the Programme are oblig
 
 The directors of the Calculation Agent are:
 
-     •     Adelaida Garrido Caballero
+     •     [nombre recortado]
 
 
 
@@ -4077,9 +4077,9 @@ The directors of the Calculation Agent are:
                                                                    Altarius ETI AG
 
 
-     •    Antonio Bernardes Honorio
+     •    [nombre recortado]
 
-     •    George Lewis Felipes
+     •    [nombre recortado]
 
 The business address of each of the directors of the Calculation Agent is at World Trade Center Unit 5.26 , 6 Bayside Road, GX11 1AA, Gibraltar.
 
@@ -4194,11 +4194,11 @@ Altarius Index is managed by its corporate director, Altarius Capital Limited.
 
 The directors of Altarius Capital Limited are:
 
-     •    Adelaida Garrido
+     •    [nombre recortado]
 
-     •    Antonio Bernardes Honorio
+     •    [nombre recortado]
 
-     •    George Felipes
+     •    [nombre recortado]
 
 Altarius Capital Value SL is the sole shareholder of Altarius Index, Altarius Capital Ltd, the Issuer, and the Calculation Agent.
 
@@ -4530,7 +4530,7 @@ market and any applicable supporting law, rule or regulation in the Relevant Sta
 
 
 
-              Jaime Ortiz-Vigón                                                   Hera Trust Establishment
+              [nombre recortado]                                                   Hera Trust Establishment
               A Director for                                                      A Director for
               Altarius ETI AG                                                     Altarius ETI AG
 
@@ -4837,60 +4837,4 @@ Altarius ETI AG (Base Prospectus) - 2025-12-15.pdf      SHA256 Original:
                                                         1s9Rhk_PAtnPzU5Sfodv3884oBSz17R3xhPmTw5uVkM=
                                                         Generado el: 15 de diciembre de 2025 14:23 CET
 
-
-
-
-Ivan Quintans
-ivan.quintans@heragroup.li
-
-Verificación de correo electrónico: Verificado
-IP: 185.174.32.64
-ID de la Sesión: 1d30bdc39e0559644fb07bc936ed3705
-User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)
-Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
-
-
-CAMPO DE FIRMA 1
-
-
-
-
-Jaime Ortiz-Vigón
-jortizvigon@altariuseti.com
-
-Verificación de correo electrónico: Verificado
-IP: 188.26.220.121
-ID de la Sesión: c254b934a47033f8c56ece3f5edcd0b1
-User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)
-Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0
-
-
-CAMPO DE FIRMA 1
-
-
-
-
-Registro de Eventos
-
-15 de diciembre de 2025 10:43 CET                       Correo electrónico enviado a
-                                                        ivan.quintans@heragroup.li
-15 de diciembre de 2025 10:43 CET   Correo electrónico enviado a jortizvigon@altariuseti.com
-
-15 de diciembre de 2025 10:47 CET   Enlace del correo electrónico clicado por
-                                    ivan.quintans@heragroup.li
-
-15 de diciembre de 2025 10:47 CET   Formulario visto por ivan.quintans@heragroup.li
-
-15 de diciembre de 2025 10:47 CET   Envío iniciado por ivan.quintans@heragroup.li
-
-15 de diciembre de 2025 10:47 CET   Envío completado por ivan.quintans@heragroup.li
-
-15 de diciembre de 2025 14:23 CET   Enlace del correo electrónico clicado por
-                                    jortizvigon@altariuseti.com
-
-15 de diciembre de 2025 14:23 CET   Formulario visto por jortizvigon@altariuseti.com
-
-15 de diciembre de 2025 14:23 CET   Envío iniciado por jortizvigon@altariuseti.com
-
-15 de diciembre de 2025 14:23 CET   Envío completado por jortizvigon@altariuseti.com
-
+[Registro de firma electrónica recortado por RWAdar: nombres, correos, IP, ID de sesión y navegador de los firmantes]

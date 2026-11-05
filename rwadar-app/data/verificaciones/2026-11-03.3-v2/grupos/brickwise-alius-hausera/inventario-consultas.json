@@ -1021,7 +1021,7 @@
    "bytes": 162069,
    "sha256": "930fa4b8996010f92c97f6973f2804232e22601973798dc9922c4e85355fd567",
    "enGit": false,
-   "nota": "FMA búsqueda validación"
+   "nota": "FMA búsqueda validación. La copia de texto en Git (fma-busqueda-web-validacion.txt) lleva recortado desde el 05/11/2026 el nombre de una persona física de un aviso de la FMA de 2006 («[nombre recortado]»); bytes y sha256 siguen siendo los del HTML original."
   },
   {
    "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",

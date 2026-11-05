@@ -52,8 +52,10 @@
   },
   {
     "archivo": "iod-aktionariat-documentos-exa.md",
-    "bytes": 46347,
-    "sha256": "5f53601d33afc3205ba1ac779d4c225ac27fdee9729845994ec6e72a72824ee5"
+    "bytes": 46304,
+    "sha256": "886fb0aec436faa501c6695a17db7b67a5c4898f2aa18e534adeb17aee7ab3ed",
+    "sha256Captura": "5f53601d33afc3205ba1ac779d4c225ac27fdee9729845994ec6e72a72824ee5",
+    "nota": "Nombres de personas físicas y un correo personal recortados el 05/11/2026 («[nombre recortado]», «[correo recortado]»); sha256 y bytes son los de la copia recortada; sha256Captura, el anotado al capturar (46347 bytes). La copia que había en Git antes del recorte ya no cuadraba con esa huella: tenía 46346 bytes y sha256 4e1d03a50ce9ffd3030cb09548cfbd071efc672a2cc38a9fdf5956a35f5dcb40."
   },
   {
     "archivo": "iod-navegador.txt",
