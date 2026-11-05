@@ -113,8 +113,8 @@ body.locked{overflow:hidden}
 .etq-aviso,.escaparate-estado.caducado,.emi-cierra.pronto{background:var(--aviso-t);color:var(--aviso)}
 .etq-alarma,.fila .sello,.emi-cierra.ultimo,.mod-den,.op-nota.baja{background:var(--alarma-t);color:var(--alarma)}
 .escaparate-estado::first-letter{text-transform:uppercase}
-.pf,.escaparate-puntos li{display:inline-flex;align-items:center;gap:4px;padding:0;border:0;background:none;color:var(--tx-2);font:400 .8125rem/1.35 var(--body)}
-.pf::before,.escaparate-puntos li::before{content:'✓'/'';color:var(--senal);font-weight:600}
+.pf{display:inline-flex;align-items:center;gap:4px;padding:0;border:0;background:none;color:var(--tx-2);font:400 .8125rem/1.35 var(--body)}
+.pf::before{content:'✓'/'';color:var(--senal);font-weight:600}
 
 /* Rótulo: lo que iba en mayúsculas de máquina va en frase normal, 12 px y gris. */
 .etiq,.wm small,.rl-t,.marcador .l,.escena-rotulo,.escena-pie,.calc-mando label,.calc-total .cl,.tabla thead th,.fuentes-t,.comp tbody th,.pn-body h4,footer h4,.cuenta-caja label,.cuenta-estado-marca,.perfil-cifras .l,.perfil-sec,.perfil-editar label,.op-tit,.mod-estado,.emis-orden label,.emi-cifra .l,.emi-pat,.escaparate-busqueda label,.escaparate-sec-cifras small,.escaparate-dialogo-cab span,.escaparate-dialogo-dato span,.academia-nivel-etiq,.academia-lista small,.movil-cabecera-etiqueta,.movil-mini-etiqueta,.movil-resumen-numero small,.inicio-hud span,#movilPanelRadar .movil-ofertas-intro .movil-mini-etiqueta,#movilPanelRadar .emis-orden label,#drawer .pn-body h4{color:var(--tx-3);font:600 .75rem/1.4 var(--body);letter-spacing:0;text-transform:none}
@@ -849,24 +849,21 @@ footer a{color:var(--senal);text-decoration:underline;text-underline-offset:3px}
 .escaparate-cuerpo{display:grid;gap:9px;padding:15px 15px 13px;min-width:0}
 .escaparate-cuerpo .emi-tit{min-height:2.55em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
   overflow:hidden;font-size:1.25rem;line-height:1.3}
-.escaparate-cuerpo .emi-donde{margin:-4px 0 0;font-family:var(--body);font-size:.875rem;line-height:1.4;letter-spacing:0}
 .escaparate-dato-principal{padding-top:7px;min-width:0}
 .escaparate-dato-principal>span,.escaparate-dato-principal>b{display:block;overflow-wrap:anywhere}
 .escaparate-dato-principal>span{font-size:.875rem;line-height:1.4;color:var(--tx-3)}
 .escaparate-dato-principal>b{margin-top:3px;font:700 1.5rem/1.35 var(--body);color:var(--tx)}
 .escaparate-dato-principal .escaparate-referencia{font-family:var(--body);font-size:.875rem;line-height:1.5}
 .escaparate-estado.escaparate-estado-linea{justify-self:start}
-.escaparate-no-disponible{color:var(--aviso);font-size:.75rem;line-height:1.4}
-.escaparate-patrocinada{justify-self:start;color:var(--senal);font-size:.75rem;font-weight:700}
+.escaparate-no-disponible{color:var(--alarma);font-size:.75rem;line-height:1.4}
+.escaparate-patrocinada{justify-self:start;color:var(--tx-2);font-size:.75rem;font-weight:700}
 .escaparate-oferta .escaparate-detalle-boton{white-space:nowrap}
 .escaparate-detalle-boton:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
 .escaparate-aviso-compacto{margin:0;padding:7px 8px;border-left:2px solid var(--aviso);border-radius:0 var(--r-s) var(--r-s) 0;
   background:var(--aviso-t);color:var(--tx-2);font-size:.875rem;line-height:1.5;overflow-wrap:anywhere}
 .escaparate-aviso-bloqueo{border-color:var(--alarma);background:var(--alarma-t)}
-.escaparate-aviso-bloqueo b{color:var(--alarma)}
-.escaparate-aviso-compacto b{color:var(--aviso)}.escaparate-aviso-compacto span{color:var(--tx-3)}
-.escaparate-oferta .emi-pie{gap:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.escaparate-oferta .emi-ver{font-family:var(--body);font-size:.875rem;line-height:1.4;white-space:normal;overflow-wrap:anywhere}
+.escaparate-aviso-compacto.escaparate-aviso-bloqueo b{color:var(--alarma)}
+.escaparate-aviso-compacto b{color:var(--aviso)}
 .escaparate-secundario{margin-top:34px;overflow:hidden}
 .escaparate-seccion-cab{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0;padding:17px 18px;
   cursor:pointer;list-style:none}
@@ -941,7 +938,6 @@ body.detalle-local-abierto{overflow:hidden}
 .nota-ilustrativa{margin:6px 0 0;color:var(--tx-3);font-size:.75rem;line-height:1.4}
 .solo-lector{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 /* Puntos fuertes (con fuente en la ficha): hasta dos chips con ✓, sin nota ni orden. */
-.escaparate-puntos{display:flex;flex-wrap:wrap;gap:2px 12px;margin:0;padding:0;list-style:none}
 /* Ficha: «Transparencia: lo que hemos comprobado». Cinco criterios con su
    motivo y su fuente; ni nota ni orden. */
 .escaparate-transparencia-aviso{margin:-4px 0 10px;color:var(--tx-2);font-size:.84rem;line-height:1.5}
@@ -1021,8 +1017,6 @@ body.detalle-local-abierto{overflow:hidden}
 .escaparate-datos-completos{padding:13px;border:var(--bd);border-radius:var(--r-m)}
 .escaparate-antes-fuente{padding:12px 16px;border-radius:var(--r-m);background:var(--ton)}
 .escaparate-antes-fuente ul{margin:0;padding-left:18px;color:var(--tx-2);font-size:.84rem;line-height:1.6}
-.emi-fecha-dato{color:var(--tx-3);font-size:.72rem}
-.emi-revision{display:grid;gap:3px;min-width:0}
 .ficha-permanente{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-block:12px}
 .escaparate-fechas{color:var(--tx-2);font-size:.85rem;line-height:1.5}
 .emis-criterio-orden{max-width:75ch;margin:0 0 18px;font-size:.84rem;color:var(--tx-2)}
@@ -1041,8 +1035,6 @@ body.detalle-local-abierto{overflow:hidden}
   .escaparate-local-marca{justify-self:start}
   .escaparate-local-aviso p{display:none}
   .escaparate-cuerpo{padding:11px 12px 12px}
-  .escaparate-oferta .emi-pie{align-items:center;flex-direction:row}
-  .escaparate-oferta .emi-ver{white-space:normal}
   .escaparate-oferta .escaparate-detalle-boton,.escaparate-oferta .emi-ir{min-height:44px}
   .escaparate-secundario-cuerpo{padding-inline:10px}
   .escaparate-secundario-rejilla{grid-template-columns:minmax(0,1fr)}
@@ -1748,8 +1740,6 @@ body.detalle-local-abierto{overflow:hidden}
 .escaparate-oferta .escaparate-imagen>.escaparate-guardar{position:absolute;z-index:3;top:10px;right:10px;min-height:44px;padding:8px 14px;color:#F7F5F0;font-size:.78rem;font-weight:600;border:0;border-radius:var(--r-p);background:rgba(11,10,10,.66)}
 .escaparate-oferta .escaparate-imagen>.escaparate-guardar.on{color:var(--senal)!important}
 @media (hover:hover){.escaparate-oferta .escaparate-imagen>.escaparate-guardar:hover{color:var(--senal)}}
-.escaparate-oferta .emi-lugar{display:flex;align-items:center;gap:5px;margin:-3px 0 0;font-size:.875rem;line-height:1.35;color:var(--tx-2)}
-.escaparate-oferta .emi-lugar svg{flex:0 0 auto;color:var(--cc,var(--senal))}
 /* Los avisos materiales se leen completos en todos los tamaños. */
 
 /* Buscar en el móvil: Ofertas o Plataformas, cada una con su botón en la
@@ -1790,24 +1780,37 @@ body.detalle-local-abierto{overflow:hidden}
 .emis-rejilla .escaparate-oferta,.ofertas-grupo-rejilla .escaparate-oferta{display:flex;flex-direction:column;overflow:hidden;transition:var(--tr)}
 .emis-rejilla .escaparate-oferta:hover,.ofertas-grupo-rejilla .escaparate-oferta:hover{
   border-color:var(--linea)}
-.escaparate-oferta .escaparate-cuerpo{display:flex;flex:1 1 auto;flex-direction:column;gap:12px;padding:18px 18px 16px}
-.escaparate-oferta .escaparate-cuerpo .emi-tit{min-height:0;font-size:1.25rem;line-height:1.25;letter-spacing:-.01em}
-.escaparate-oferta .escaparate-cuerpo .emi-donde{margin:-7px 0 0;color:var(--tx-2);font-size:.875rem}
-.escaparate-oferta .escaparate-cuerpo .emi-donde b{font-weight:600}
-.escaparate-oferta .escaparate-cuerpo .emi-lugar{margin:-9px 0 0;color:var(--tx-3);font-size:.875rem}
-.escaparate-oferta .escaparate-datos-clave{gap:0;margin:4px 0 0;border-top:var(--bd)}
-.escaparate-oferta .escaparate-datos-clave>div{grid-template-columns:7.2em minmax(0,1fr);gap:12px;align-items:baseline;
-  padding:10px 0;border-bottom:var(--bd)}
-.escaparate-oferta .escaparate-datos-clave dt{color:var(--tx-3);font-size:.875rem;font-weight:500}
-.escaparate-oferta .escaparate-datos-clave dd{margin:0;color:var(--tx);font-size:1rem;line-height:1.4;font-weight:600;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.escaparate-oferta .escaparate-estado.escaparate-estado-linea{align-self:flex-start}
-.escaparate-oferta .escaparate-aviso-compacto{padding:2px 0 2px 11px;border-left:2px solid rgba(255,180,84,.6);
-  background:none;color:var(--tx-2);font-size:.875rem;line-height:1.5}
-.escaparate-oferta .escaparate-aviso-compacto b{font-weight:600}
-.escaparate-oferta .escaparate-aviso-compacto span{color:var(--tx-3)}
-.escaparate-oferta .emi-pie{margin-top:auto;padding-top:14px;border-top:var(--bd)}
-.escaparate-oferta .emi-ver{color:var(--tx-3)}
+/* Tarjeta sencilla (05/11/2026): título, proveedor · lugar y una línea con
+   Mínimo y España; «›» a su lado. «Nueva» y «Patrocinada», sobre la foto.
+   La línea de datos baja al pie, alineada en toda la fila, sin reservar un
+   hueco bajo los títulos cortos: las tarjetas de una fila miden lo mismo. */
+.emis-rejilla .escaparate-oferta{align-self:stretch}
+.escaparate-oferta .escaparate-cuerpo{display:grid;flex:1 1 auto;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto 1fr auto auto;
+  grid-template-areas:"tit tit" "proc proc" "datos ver" "alertas alertas" "aviso aviso";gap:0 12px;padding:16px 18px 18px}
+.escaparate-oferta .escaparate-marcas{position:absolute;z-index:2;top:10px;left:10px;display:flex;flex-wrap:wrap;gap:6px;margin:0;pointer-events:none}
+.escaparate-oferta .escaparate-marcas>span{padding:4px 10px;border-radius:var(--r-p);background:rgba(11,10,10,.72);color:var(--senal);font:600 .75rem/1.3 var(--body)}
+.escaparate-oferta .escaparate-marcas>.escaparate-patrocinada{color:var(--tx)}
+.escaparate-oferta .escaparate-cuerpo .emi-tit{grid-area:tit;min-height:0;font-size:1.125rem;line-height:1.3;letter-spacing:-.01em}
+.escaparate-oferta .escaparate-procedencia{grid-area:proc;display:flex;flex-wrap:wrap;min-width:0;margin:4px 0 0 -16px;color:var(--tx-2);font-size:.875rem;line-height:1.4}
+.escaparate-oferta .emi-donde{display:inline;margin:0;color:inherit;font:inherit;font-weight:600}
+.escaparate-oferta .emi-lugar{color:var(--tx-3)}
+.escaparate-oferta .escaparate-datos-linea{grid-area:datos;align-self:end;display:flex;flex-wrap:wrap;gap:0;margin:12px 0 0 -16px;font-size:.875rem;line-height:1.4}
+.escaparate-datos-linea>div{display:block}
+.escaparate-datos-linea>div:last-child{white-space:nowrap}
+/* El «·» va delante de cada dato y la franja de 16 px de la izquierda se
+   recorta: si un dato baja de línea, no empieza por «·». */
+.escaparate-oferta :is(.escaparate-procedencia,.escaparate-datos-linea){clip-path:inset(0 0 0 16px)}
+.escaparate-oferta :is(.emi-donde,.emi-lugar)::before,.escaparate-datos-linea>div::before{content:'·'/'';display:inline-block;width:16px;color:var(--tx-3);font-weight:400;text-align:center}
+.escaparate-datos-linea :is(dt,dd){display:inline;margin:0}
+.escaparate-datos-linea dt{margin-right:4px;color:var(--tx-3);font-weight:500}
+.escaparate-datos-linea dd{color:var(--tx);font-weight:600}
+.escaparate-oferta .escaparate-alertas{grid-area:alertas;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:12px 0 0}
+.escaparate-oferta .escaparate-aviso-bloqueo{grid-area:aviso;margin:12px 0 0;padding:6px 0 6px 11px;background:none;font-size:.875rem;line-height:1.5}
+.escaparate-oferta .escaparate-detalle-boton{grid-area:ver;align-self:end;justify-self:end;min-width:24px;min-height:44px;margin:0 -6px -12px 0;padding:0 6px;
+  color:var(--tx-3);font:400 1.375rem/1 var(--body)}
+.escaparate-oferta .escaparate-detalle-boton:focus-visible{outline:0}
+.escaparate-oferta .escaparate-detalle-boton:focus-visible::after{outline:2px solid var(--senal);outline-offset:-2px}
+@media (hover:hover){.escaparate-oferta:hover .escaparate-detalle-boton{color:var(--senal)}}
 @media(prefers-reduced-motion:reduce){
   .emis-rejilla .escaparate-oferta,.ofertas-grupo-rejilla .escaparate-oferta,.escaparate-oferta .escaparate-detalle-boton,
   .escaparate-oferta .escaparate-detalle-boton span{transition:none}
@@ -1815,8 +1818,7 @@ body.detalle-local-abierto{overflow:hidden}
 }
 
 /* 21 · RADAR VIVO EN EL MÓVIL (03/11/2026): Inicio con el radar real y filas densas en Buscar. */
-.escaparate-procedencia,.escaparate-meta{display:contents}
-.escaparate-avisos-n,.f-corto{display:none}
+.f-corto{display:none}
 @media (max-width:767px),(max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){.f-largo{display:none}.f-corto{display:inline}
 .inicio-cuerpo{padding-top:0}
 .inicio-radar-caja{position:relative;margin:0 calc(-1 * var(--movil-margen));cursor:pointer}
@@ -1891,39 +1893,38 @@ Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
 #movilPanelRadar .catalogo-referencias[open]>summary{margin-bottom:2px}
 #movilPanelRadar .catalogo-referencias>p{margin:0;padding-bottom:8px;border-bottom:var(--bd);color:var(--tx-3);font-size:.75rem;line-height:1.45}
 #movilPanelRadar .catalogo-referencias>.emis-rejilla{margin:0}
-/* Fila compacta: miniatura de 88 px y a su lado título, proveedor · lugar, estado, puntos y datos; debajo, el pie. Toda la fila abre la ficha. */
-#emiLista .escaparate-oferta{display:grid;grid-template-columns:88px minmax(0,1fr) auto auto;grid-template-rows:auto auto auto auto auto minmax(0,1fr);grid-template-areas:"img tit tit tit" "img proc proc proc" "img meta meta meta" "img puntos puntos puntos" "img datos datos datos" "img . . ." "aviso aviso aviso aviso" "avisos avisos fecha ver";column-gap:8px;row-gap:0;align-items:start;margin:0;padding:7px 0;overflow:visible;border:0;border-bottom:var(--bd);border-radius:0;background:none;box-shadow:none;transition:var(--tr)}
+/* Fila sencilla (05/11/2026): miniatura y a su lado «Nueva», título, proveedor
+   · lugar y Mínimo · España; «›» a la derecha. Debajo, solo el aviso crítico.
+   Toda la fila abre la ficha. */
+#emiLista .escaparate-oferta{display:grid;grid-template-columns:80px minmax(0,1fr) 16px;grid-template-rows:auto auto auto auto auto minmax(0,1fr) auto;
+  grid-template-areas:"img marcas ver" "img tit ver" "img proc ver" "img datos ver" "img alertas ver" "img . ver" "aviso aviso aviso";
+  column-gap:12px;align-items:start;margin:0;padding:14px 0;overflow:visible;border:0;border-bottom:var(--bd);border-radius:0;background:none;box-shadow:none;transition:var(--tr)}
 #emiLista .escaparate-oferta:hover{transform:none;box-shadow:none}
 #emiLista .escaparate-oferta:active{background:var(--ton)}
-#emiLista .escaparate-oferta::before,#emiLista .escaparate-oferta .emi-lugar svg,#emiLista .escaparate-oferta .escaparate-aviso-compacto:not(.escaparate-aviso-bloqueo),#emiLista .escaparate-oferta .emi-fecha-dato{display:none}
-#emiLista .escaparate-oferta :is(.escaparate-cuerpo,.emi-pie,.emi-revision){display:contents}
-#movilPanelRadar .escaparate-oferta .escaparate-imagen{grid-area:img;width:88px;height:88px;aspect-ratio:auto;border-radius:var(--r-m)}
+#emiLista .escaparate-oferta::before{display:none}
+#emiLista .escaparate-oferta .escaparate-cuerpo{display:contents}
+#movilPanelRadar .escaparate-oferta .escaparate-imagen{grid-area:img;width:80px;height:80px;aspect-ratio:auto;border-radius:var(--r-m)}
 #emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar{top:7px;right:7px;width:30px;height:30px;min-height:30px;padding:0;font-size:0;line-height:1}
 #emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar::before{content:'';position:absolute;inset:-8px}
 #emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar::after{content:'';width:16px;height:16px;background:currentColor;-webkit-mask:var(--i-estrella) center/contain no-repeat;mask:var(--i-estrella) center/contain no-repeat}
 #emiLista .escaparate-oferta .escaparate-imagen>.escaparate-guardar.on::after{-webkit-mask-image:var(--i-estrella-llena);mask-image:var(--i-estrella-llena)}
-#emiLista .escaparate-oferta .escaparate-patrocinada{grid-area:tit;justify-self:start;margin:-2px 0 0}
-#emiLista .escaparate-oferta .emi-tit{grid-area:tit;display:-webkit-box;min-height:0;margin:0;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font:700 1rem/1.2 var(--display);letter-spacing:-.01em}
-#emiLista .escaparate-oferta .escaparate-procedencia{grid-area:proc;display:flex;flex-wrap:wrap;min-width:0;overflow:hidden;color:var(--tx-2);font-size:.8125rem;line-height:1.35;white-space:nowrap}
+#emiLista .escaparate-oferta .escaparate-marcas{position:static;grid-area:marcas;margin:0 0 4px;pointer-events:auto}
+#emiLista .escaparate-oferta .escaparate-marcas>span{padding:1px 7px;border-radius:var(--r-s);background:var(--senal-t);font-size:.6875rem;line-height:1.45}
+#emiLista .escaparate-oferta .escaparate-marcas>.escaparate-patrocinada{background:var(--ton-2);color:var(--tx-2)}
+#emiLista .escaparate-oferta .emi-tit{grid-area:tit;display:-webkit-box;min-height:0;margin:0;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font:700 1rem/1.25 var(--display);letter-spacing:-.01em}
+#emiLista .escaparate-oferta .escaparate-procedencia{grid-area:proc;display:flex;flex-wrap:wrap;min-width:0;margin:3px 0 0 -16px;overflow:hidden;color:var(--tx-2);font-size:.8125rem;line-height:1.35;white-space:nowrap}
 #emiLista .escaparate-oferta :is(.emi-donde,.emi-lugar){display:block;flex:0 1 auto;min-width:0;margin:0;overflow:hidden;font:inherit;color:inherit;text-overflow:ellipsis}
-#emiLista .escaparate-oferta .emi-donde b{font-weight:600}
+#emiLista .escaparate-oferta .emi-donde{font-weight:600}
 #emiLista .escaparate-oferta .emi-lugar{flex:none;max-width:100%;color:var(--tx-3)}
-#emiLista .escaparate-oferta .emi-lugar::before{content:'·'/'';margin:0 5px}
-#emiLista .escaparate-oferta .escaparate-puntos{grid-area:puntos;gap:0 10px;margin:2px 0 0}
-#emiLista .escaparate-oferta .escaparate-puntos li{font-size:.75rem;white-space:nowrap}
-#emiLista .escaparate-oferta .escaparate-datos-clave{grid-area:datos;display:flex;flex-wrap:wrap;gap:0 10px;margin:2px 0 0;border:0;min-width:0}
-#emiLista .escaparate-oferta .escaparate-datos-clave>div{display:block;padding:0;border:0;font-size:.8125rem;line-height:1.35}
-#emiLista .escaparate-oferta .escaparate-datos-clave :is(dt,dd){display:inline;margin:0}
+#emiLista .escaparate-oferta .escaparate-datos-clave{grid-area:datos;margin:6px 0 0 -16px;border:0;min-width:0}
+#emiLista .escaparate-oferta .escaparate-datos-clave>div{padding:0;border:0;font-size:.8125rem;line-height:1.35}
 #emiLista .escaparate-oferta .escaparate-datos-clave dt{margin-right:3px;color:var(--tx-3);font:500 .75rem/1.35 var(--body)}
 #emiLista .escaparate-oferta .escaparate-datos-clave dd{color:var(--tx);font:600 .8125rem/1.35 var(--body);overflow-wrap:normal;hyphens:none}
-#emiLista .escaparate-oferta .escaparate-meta{grid-area:meta;display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;min-width:0}
+#emiLista .escaparate-oferta .escaparate-alertas{grid-area:alertas;gap:2px 10px;margin:6px 0 0}
 #emiLista .escaparate-oferta .escaparate-estado.escaparate-estado-linea{padding:0;background:none;line-height:1.35}
 #emiLista .escaparate-oferta .escaparate-no-disponible{font-size:.75rem}
-#emiLista .escaparate-oferta .escaparate-avisos-n{grid-area:avisos;display:block;align-self:center;margin:6px 0 0;color:var(--aviso);font-size:.75rem;line-height:1.4}
-#emiLista .escaparate-oferta .emi-ver-pre{display:none}
-#emiLista .escaparate-oferta .escaparate-aviso-bloqueo{grid-area:aviso;margin:4px 0 0;padding:2px 0 2px 9px;font-size:.8125rem;line-height:1.45}
-#emiLista .escaparate-oferta .emi-ver{grid-area:fecha;align-self:center;margin-top:6px;color:var(--tx-3);font:500 .75rem/1.3 var(--body);white-space:nowrap;font-variant-numeric:tabular-nums}
-#movilPanelRadar .escaparate-oferta .escaparate-detalle-boton{grid-area:ver;align-self:center;justify-self:end;min-height:44px;margin:-12px -4px -12px 0;padding:0 4px;white-space:nowrap;font-size:.8125rem}
+#emiLista .escaparate-oferta .escaparate-aviso-bloqueo{grid-area:aviso;margin:10px 0 0;padding:2px 0 2px 9px;font-size:.8125rem;line-height:1.45}
+#movilPanelRadar .escaparate-oferta .escaparate-detalle-boton{grid-area:ver;align-self:center;justify-self:end;min-width:16px;min-height:44px;margin:0;padding:0;font-size:1.375rem}
 #emiLista .escaparate-oferta .escaparate-detalle-boton::after{border-radius:0}
 #emiLista>.nota-ilustrativa{margin:12px 0 0}
 
@@ -2308,9 +2309,10 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
  #movilPanelRadar :is(.emis-filtros,.fichas-f) .f::before{inset:-5px min(-1px,calc(50% - 22px))}
 }
 /* Títulos y lugares sin cortar a 360 px (QA móvil 04/11/2026): tres líneas
-   para el título de las ofertas y de «Recién añadidas», y en la galería de
-   Plataformas el tipo y la región en dos líneas en vez de cortar la región. */
-#emiLista .escaparate-oferta .emi-tit,.rel-nueva h3 span{-webkit-line-clamp:3}
+   para el título de «Recién añadidas» (el de la lista de Ofertas, dos desde el
+   05/11, con el texto entero en title), y en la galería de Plataformas el tipo
+   y la región en dos líneas en vez de cortar la región. */
+.rel-nueva h3 span{-webkit-line-clamp:3}
 @media (max-width:767px){
  #movilPanelRadar .empresa-visual__texto small{font-size:0}
  #movilPanelRadar .empresa-visual__texto small>span{display:block;overflow:hidden;font-size:.75rem;text-overflow:ellipsis;white-space:nowrap}

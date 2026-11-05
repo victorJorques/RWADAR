@@ -171,7 +171,6 @@ test('las 52 imágenes originales se conservan y la interfaz usa la ilustración
   assert.doesNotMatch(componente, /oferta\.imagenAlt/);
   // La ficha de la web final (04/11/2026) ya no dice si el proveedor está en el radar.
   assert.doesNotMatch(componente, /Producto activo/);
-  assert.match(componente, /permanente-vigente/);
   assert.match(componente, /accessibilityLabel=\{etiquetaAccesible\}/);
   assert.match(componente, /avisosCriticos\(oferta\)/);
   assert.match(componente, /aviso\.tono === 'stop'/);
@@ -240,11 +239,11 @@ test('la ficha compacta prioriza imagen y una parada accesible, y las exclusione
   assert.match(ficha, /accessibilityHint=\{traducir\('Abre la ficha completa de la oferta'\)\}/);
   assert.doesNotMatch(ficha, /oferta\.resumen|documentacion\.descripcion|rentabilidadSecundaria\(|VER →|criticos\.slice\(0, 2\)/);
   assert.match(ficha, /numberOfLines=\{2\}>\{oferta\.titulo\}/);
-  assert.match(ficha, /const primerCritico = criticos\[0\]/);
+  assert.match(ficha, /const primerCritico = avisosCriticos\(oferta\)\[0\]/);
   assert.match(ficha, /aspectRatio|imagenFicha/);
-  assert.match(ficha, /Fuente consultada \$\{fechaVerificacionLocalVisible\(resumen\.fechas\.comprobadaEl\)\}/);
-  assert.match(ficha, /Revisión documental \$\{fechaVerificacionLocalVisible\(documentacion\.fecha\)\}/);
-  assert.match(ficha, /Ver ficha →/);
+  // Tarjeta sencilla (05/11/2026): qué se ve y qué no se comprueba renderizando
+  // en ofertas-presentacion.test.cjs; aquí, que siga siendo una sola parada.
+  assert.equal((ficha.match(/<Pressable\b/g) || []).length, 1);
   assert.doesNotMatch(ficha, /vigenciaSobreImagen|datoCompactoSecundario/);
   assert.match(detalle, /<ImagenOferta oferta=\{oferta\} grande \/>/);
 

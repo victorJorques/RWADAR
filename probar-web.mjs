@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
 import { pruebaActivacionCache, pruebaActivacionSinMigracion, pruebaRedConCacheRota, pruebaActualizacionPWACliente } from './probar-web-pwa.mjs';
 import { probarEscritorio, probarTarjetaYComparador } from './rwadar-app/probar-web-escritorio.mjs';
+import { probarTarjetaEnIngles, probarFocoAlCerrarFicha } from './rwadar-app/probar-web-tarjeta.mjs';
 import { spawn, spawnSync } from 'node:child_process';
 
 const raiz = path.dirname(fileURLToPath(import.meta.url));
@@ -1891,8 +1892,8 @@ prueba(`el simulador real conserva URL HTTPS, las ${N_PLATAFORMAS} plataformas y
   vm.runInContext("new URL('https://example.test/fuente').protocol", simulacionPublicador.contexto) === 'https:' &&
   (simulacionPublicador.capturado.grid.match(/class="abrir"/g) || []).length === N_PLATAFORMAS &&
   (simulacionPublicador.capturado.emiLista.match(/data-oferta-detalle=/g) || []).length === N_OFERTAS &&
-  // La fila móvil (ESPEC-FINAL §3) esconde «Fuente revisada el» junto a «Revisa · N avisos»: va en su propio span.
-  (simulacionPublicador.capturado.emiLista.match(/<time class="emi-ver" datetime="\d{4}-\d{2}-\d{2}"><span class="emi-ver-pre">Fuente revisada el <\/span>/g) || []).length === N_OFERTAS);
+  // Tarjeta sencilla (Víctor, 05/11/2026): sin fechas, recuentos de avisos ni puntos fuertes; esos datos, en la ficha.
+  !/<time\b|escaparate-avisos-n|escaparate-puntos|avisos? en la ficha/.test(simulacionPublicador.capturado.emiLista));
 // Ejecutar el cliente entero, con un reloj y un DOM persistentes como los de
 // una pestaña abierta. No se sustituye la validación ni el render del catálogo.
 const fechaLoteEmbebido = jsCatalogo.match(/"verificado_lote_el":"(\d{4}-\d{2}-\d{2})"/)?.[1];
@@ -2021,6 +2022,7 @@ for(const fallo of ['incompleto','transporte']){
   prueba('cerrar la ficha mantiene primero el origen vivo aunque exista otro botón del mismo slug',
     focos.length===2&&focos[1].slug==='origen-vivo'&&focos[1].opciones.preventScroll===true);
 }
+probarFocoAlCerrarFicha({ p: pestanaCatalogo(), prueba });
 {
   const p=pestanaCatalogo({codigo:jsPublicado}),c=p.contexto;
   for(const slug of ['backed-finance','franklin-templeton','midas','openeden','superstate']){
@@ -2160,6 +2162,19 @@ for(const [nombre,alterar] of [
     /font:\d+ \.75rem/.test(dt)&&!/text-transform/.test(dt)&&/flex-wrap:wrap/.test(d(cssMovil,'#emiLista .escaparate-oferta .escaparate-procedencia'))&&
     /flex:none/.test(d(cssMovil,'#emiLista .escaparate-oferta .emi-lugar'))&&/<h3 id="emiSeleccionTit">[\s\S]*?<h4 class="emi-tit"/.test(sin)&&
     !/<h3 class="emi-tit"/.test(sin.slice(0,sin.indexOf('catalogo-referencias'))));
+  // Revisión de la tarjeta sencilla (05/11/2026): lo patrocinado no lleva el verde
+  // de «Nueva» ni de la acción; «No disponible en España», en rojo como en la app;
+  // en escritorio, sin hueco bajo los títulos cortos y con la línea de datos al pie.
+  const patrocinada=['.escaparate-patrocinada','.escaparate-oferta .escaparate-marcas>.escaparate-patrocinada'].map(x=>d(css,x)).join(';')+';'+
+    d(cssMovil,'#emiLista .escaparate-oferta .escaparate-marcas>.escaparate-patrocinada');
+  prueba('tarjeta: «Patrocinada» en gris neutro, «Nueva» en verde y «No disponible en España» en rojo',
+    /color:var\(--tx(?:-2)?\)/.test(patrocinada)&&!/senal/.test(patrocinada)&&/color:var\(--senal\)/.test(d(css,'.escaparate-oferta .escaparate-marcas>span'))&&
+    /color:var\(--alarma\)/.test(d(css,'.escaparate-no-disponible')));
+  const cssSinNotas=css.replace(/\/\*[\s\S]*?\*\//g,''),cuerpoEsc=d(cssSinNotas,'.escaparate-oferta .escaparate-cuerpo');
+  prueba('escritorio: sin hueco bajo los títulos cortos y la línea Mínimo · España al pie de la tarjeta',
+    /min-height:0/.test(d(css,'.escaparate-oferta .escaparate-cuerpo .emi-tit'))&&/grid-template-rows:auto auto 1fr auto auto/.test(cuerpoEsc)&&
+    /"tit tit" "proc proc" "datos ver"/.test(cuerpoEsc)&&!/align-content:start/.test(cuerpoEsc)&&/align-self:end/.test(d(css,'.escaparate-oferta .escaparate-datos-linea'))&&
+    /align-self:stretch/.test(d(cssSinNotas,'.emis-rejilla .escaparate-oferta')));
 }
 // ---- Versión final de Inicio y Buscar (ESPEC-FINAL, 03/11/2026) ----
 {
@@ -2198,27 +2213,27 @@ for(const [nombre,alterar] of [
   prueba('sin una entrada de transparencia con la misma verificadaEl no hay puntos fuertes ni Selección',
     cerrado.sel===false&&cerrado.puntos===0&&!/escaparate-puntos/.test(cerrado.tarjeta)&&
     vm.runInContext(`enSeleccionOferta(EMI.find(x=>x.slug==='${sacada}'))`,c)===true);
-  // Fila móvil: Mínimo · España · Salida a la vista y en forma corta.
+  // Tarjeta sencilla (Víctor, 05/11/2026): una línea con Mínimo y España; la Salida, en la ficha.
   const fila=vm.runInContext(`tarjetaOfertaLocal(EMI.find(x=>x.slug==='${sacada}'))`,c);
   const datos=[...fila.matchAll(/<div><dt>([^<]+)<\/dt><dd>([^<]+)<\/dd><\/div>/g)].map(m=>[m[1],m[2]]);
   const ocultaDatos=[...cssMovil.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(m=>/escaparate-datos-clave/.test(m[1])&&/display\s*:\s*none/.test(m[2]));
-  prueba('la fila móvil enseña Mínimo, España y Salida en forma corta y no esconde ninguno',
-    JSON.stringify(datos.map(d=>d[0]))==='["Mínimo","España","Salida"]'&&datos.every(d=>d[1].trim().length>0&&d[1].length<=40)&&
-    /^(?:Sí, según la fuente|No, según la fuente|Sin confirmar)$/.test(datos[1][1])&&
-    datos[2][1]===transparencia.ofertas[sacada].salidaCorta&&ocultaDatos.length===0&&
+  prueba('la tarjeta enseña solo Mínimo y España, en corto, y no esconde ninguno',
+    JSON.stringify(datos)===JSON.stringify([['Mínimo',transparencia.ofertas[sacada].minimoCorto],['España','Sí']])&&ocultaDatos.length===0&&
     /title="[^"]+"/.test((fila.match(/<h3 class="emi-tit"[^>]*>/)||[''])[0]));
   probarTarjetaYComparador({ c, prueba });
+  await probarTarjetaEnIngles({ c, prueba });
   // El aviso crítico nunca se resume ni se esconde en el móvil.
   const conBloqueo=vm.runInContext(`tarjetaOfertaLocal({...EMI.find(x=>x.slug==='${sacada}'),avisos:[{tono:'stop',texto:'AVISO_CRITICO_ENTERO_EN_LA_FILA'},{tono:'warn',texto:'Otro aviso.'}]})`,c);
   const reglasAviso=[...cssMovil.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(m=>/escaparate-aviso/.test(m[1]));
   prueba('.escaparate-aviso-bloqueo nunca se oculta en el móvil y va entero en la fila',
-    /<p class="escaparate-aviso-compacto escaparate-aviso-bloqueo"><b>Importante<\/b> · AVISO_CRITICO_ENTERO_EN_LA_FILA/.test(conBloqueo)&&
-    !/escaparate-avisos-n/.test(conBloqueo)&&reglasAviso.length>0&&
+    texto((conBloqueo.match(/<p class="escaparate-aviso-compacto escaparate-aviso-bloqueo">[\s\S]*?<\/p>/)||[''])[0]).trim()==='Importante · AVISO_CRITICO_ENTERO_EN_LA_FILA'&&
+    !/Otro aviso|en la ficha/.test(conBloqueo)&&reglasAviso.length>0&&
     reglasAviso.every(m=>!/display\s*:\s*none|visibility\s*:\s*hidden|line-clamp|overflow\s*:\s*hidden/.test(m[2])||
       m[1].split(',').every(sel=>!/escaparate-aviso/.test(sel)||/:not\(\.escaparate-aviso-bloqueo\)/.test(sel))));
-  const resumenAvisos=vm.runInContext(`tarjetaOfertaLocal(EMI.find(x=>x.slug==='${sacada}'))`,c);
-  prueba('los avisos ordinarios se resumen en «Revisa · N avisos en la ficha» junto a la fecha',
-    /<p class="escaparate-avisos-n"><b>Revisa<\/b> · <span>\d+ avisos? en la ficha<\/span><\/p><div class="emi-revision"><time /.test(resumenAvisos));
+  // Encima de la lista, una sola línea pequeña; la Selección ya no repite la frase.
+  prueba('una sola línea pequeña encima de la lista: no es una recomendación · RWAdar no recibe dinero',
+    (lista.match(/No es una recomendación de inversión/g)||[]).length===1&&/<h3 id="emiSeleccionTit">.*?<\/h3><\/header>/.test(lista)&&
+    lista.includes('<p class="catalogo-nota-movil">No es una recomendación de inversión · RWAdar no recibe dinero de las inversiones.</p>'));
   // Inicio sale del catálogo y sin cifras cuando caduca (ESPEC-INICIO §2 y §2.10).
   const cifras=p.obtiene('inicioCifras').innerHTML,ci=JSON.parse(vm.runInContext('JSON.stringify(cifrasInicio())',c));
   const n=JSON.parse(vm.runInContext('JSON.stringify([EMI.length,P.length,FUERA.length])',c)),pl=(t,en)=>vm.runInContext(`plantillaInicio(${JSON.stringify(t)},cifrasInicio(),${en})`,c);
@@ -2597,15 +2612,16 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     },
   };
   const casos = [
-    // «cifras válidas N días más» (LISTA-FINAL fila 14, 04/11/2026).
-    {nombre:'rendimiento vigente', cambios:{}, estado:'cifras válidas 7 días más'},
-    {nombre:'valor vigente', cambios:{slug:'regresion-valor', tipo:'valor'}, estado:'cifras válidas 7 días más'},
-    {nombre:'caducada con documentación reciente', cambios:{slug:'regresion-caducada', verificadaEl:'2026-09-01', vigenciaDias:1}, estado:'cifras por actualizar'},
-    {nombre:'apertura no confirmada', cambios:{slug:'regresion-apertura', estadoRevision:'no_verificable'}, estado:'apertura no confirmada'},
-    {nombre:'fuentes en conflicto', cambios:{slug:'regresion-conflicto', estadoRevision:'fuentes_en_conflicto'}, estado:'fuentes en conflicto'},
-    {nombre:'mercado secundario', cambios:{slug:'regresion-secundario', coleccion:'secundario', tipo:'secundario'}, estado:'Liquidez no confirmada'},
-    {nombre:'anuncio en camino', cambios:{slug:'regresion-en-camino', coleccion:'en_camino'}, estado:'Apertura no confirmada'},
-    {nombre:'restricción territorial', cambios:{slug:'regresion-no-es', disponibleEs:false}, estado:'No disponible en España'},
+    // Tarjeta sencilla (Víctor, 05/11/2026): «cifras válidas» y «Liquidez/Apertura no
+    // confirmada» van a la ficha (fuera); la tarjeta solo dice un problema de revisión (linea).
+    {nombre:'rendimiento vigente', cambios:{}, fuera:'cifras válidas 7 días más'},
+    {nombre:'valor vigente', cambios:{slug:'regresion-valor', tipo:'valor'}, fuera:'cifras válidas 7 días más'},
+    {nombre:'caducada con documentación reciente', cambios:{slug:'regresion-caducada', verificadaEl:'2026-09-01', vigenciaDias:1}, estado:'cifras por actualizar', linea:true},
+    {nombre:'apertura no confirmada', cambios:{slug:'regresion-apertura', estadoRevision:'no_verificable'}, estado:'apertura no confirmada', linea:true},
+    {nombre:'fuentes en conflicto', cambios:{slug:'regresion-conflicto', estadoRevision:'fuentes_en_conflicto'}, estado:'fuentes en conflicto', linea:true},
+    {nombre:'mercado secundario', cambios:{slug:'regresion-secundario', coleccion:'secundario', tipo:'secundario'}, fuera:'Liquidez no confirmada'},
+    {nombre:'anuncio en camino', cambios:{slug:'regresion-en-camino', coleccion:'en_camino'}, fuera:'Apertura no confirmada'},
+    {nombre:'restricción territorial', cambios:{slug:'regresion-no-es', disponibleEs:false}, estado:'No disponible en España', espana:'No'},
     {nombre:'patrocinio declarado', cambios:{slug:'regresion-patrocinada', patrocinada:true}, estado:'Patrocinada'},
   ];
   const ofertas = casos.map(caso => ({...base, ...caso.cambios}));
@@ -2633,17 +2649,19 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
       todosBotones.filter(b => atributoHTML(b[1], 'data-guardar-oferta') === oferta.slug &&
         /\bfav-local\b/.test(atributoHTML(b[1], 'class') || '')).length === 1);
     prueba(`tarjeta ${caso.nombre}: fixture válido y documento largo aceptado`, render.valida && render.docValida);
-    prueba(`tarjeta ${caso.nombre}: imagen, título, proveedor y tres datos siguen el orden de lectura`,
+    prueba(`tarjeta ${caso.nombre}: imagen, título, proveedor y dos datos siguen el orden de lectura`,
       /<img\b[^>]*alt="[^"]+"[^>]*loading="lazy"[^>]*width="\d+"[^>]*height="\d+"/.test(tarjeta) &&
       tarjeta.indexOf('escaparate-imagen') < tarjeta.indexOf('escaparate-cuerpo') &&
       // ESPEC-FINAL §3: el título lleva title= con el texto completo (la fila lo corta a dos líneas).
       cuerpo.includes('<h3 class="emi-tit" title="'+render.titulo+'">'+render.titulo+'</h3>') &&
-      cuerpo.includes('<div class="emi-donde"><b>'+render.proveedor+'</b></div>') &&
+      cuerpo.includes('<b class="emi-donde">'+render.proveedor+'</b>') &&
       cuerpo.indexOf('<h3') < cuerpo.indexOf('class="emi-donde"') &&
-      cuerpo.indexOf('class="emi-donde"') < cuerpo.indexOf('class="escaparate-datos-clave"') &&
-      (cuerpo.match(/class="escaparate-datos-clave"/g)||[]).length === 1 &&
-      // ESPEC-FINAL §3: «Mínimo · España · Salida»; el valor corto ya lleva su unidad («1 €», «500 CHF»).
-      ['Mínimo','España','Salida'].every(etiqueta=>cuerpo.includes('<dt>'+etiqueta+'</dt>')) &&
+      cuerpo.indexOf('class="emi-donde"') < cuerpo.indexOf('class="escaparate-datos-clave escaparate-datos-linea"') &&
+      (cuerpo.match(/class="escaparate-datos-clave escaparate-datos-linea"/g)||[]).length === 1 &&
+      // «Mínimo · España» (05/11/2026); el valor corto ya lleva su unidad («1 €», «500 CHF»). La Salida, en la ficha.
+      ['Mínimo','España'].every(etiqueta=>cuerpo.includes('<dt>'+etiqueta+'</dt>')) && !cuerpo.includes('<dt>Salida</dt>') &&
+      // Fuera de España, el dato dice «No», nunca «Sin confirmar» al lado de «No disponible en España».
+      (!caso.espana || cuerpo.includes('<dt>España</dt><dd>'+caso.espana+'</dd>') && !cuerpo.includes('Sin confirmar')) &&
       !/escaparate-destacado|escaparate-dato-principal/.test(tarjeta));
     prueba(`tarjeta ${caso.nombre}: no contiene documento, descripción, métricas auxiliares ni enlaces externos`,
       !/<a\b|catalogo-descripcion|escaparate-metrica|escaparate-disponibilidad/.test(tarjeta) &&
@@ -2651,17 +2669,18 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
         'AUXILIAR_ENTRADA_SOLO_EN_FICHA','AUXILIAR_PLAZO_SOLO_EN_FICHA','AUXILIAR_GARANTIA_SOLO_EN_FICHA',
         'CARACTERISTICA_COMPLETA_SOLO_EN_FICHA','DATO_DOCUMENTAL_COMPLETO','AVISO_COMPLETO_SOLO_EN_FICHA']
         .some(marca => tarjeta.includes(marca)));
-    prueba(`tarjeta ${caso.nombre}: conserva el estado y prioriza el aviso crítico íntegro`,
-      tarjeta.includes(caso.estado) && tarjeta.includes('escaparate-estado-linea') &&
-      tarjeta.includes('escaparate-aviso-bloqueo') && tarjeta.includes(avisoCritico));
-    prueba(`tarjeta ${caso.nombre}: fecha documental y único botón Ver ficha con nombre accesible`,
-      new RegExp(`<time\\b[^>]*datetime="${dia(-1)}"`).test(tarjeta) && tarjeta.includes(render.fecha) &&
+    prueba(`tarjeta ${caso.nombre}: dice solo los problemas de revisión y el aviso crítico íntegro`,
+      (caso.estado ? tarjeta.includes(caso.estado) : !tarjeta.includes(caso.fuera)) &&
+      tarjeta.includes('escaparate-estado-linea') === !!caso.linea &&
+      tarjeta.includes('escaparate-aviso-bloqueo') && tarjeta.includes(avisoCritico) && !tarjeta.includes(avisoAmpliado.slice(0, 40)));
+    prueba(`tarjeta ${caso.nombre}: sin fechas y un único botón «›» con nombre accesible`,
+      !/<time\b/.test(tarjeta) && !tarjeta.includes(render.fecha) &&
       botones.length === 1 && atributoHTML(botones[0][1], 'type') === 'button' &&
       atributoHTML(botones[0][1], 'data-oferta-detalle') === oferta.slug &&
       atributoHTML(botones[0][1], 'aria-label').startsWith('Ver ficha de ') &&
       atributoHTML(botones[0][1], 'aria-label').includes(render.titulo) &&
-      atributoHTML(botones[0][1], 'aria-label').includes(render.proveedor) &&
-      /Ver ficha/.test(botones[0][2]));
+      atributoHTML(botones[0][1], 'aria-label') === 'Ver ficha de '+render.titulo+' en '+render.proveedor &&
+      botones[0][2] === '<span aria-hidden="true">›</span>');
     prueba(`tarjeta y ficha ${caso.nombre}: cifras y contexto van completos al detalle y no reviven si caducan`,
       !tarjeta.includes(literal) && !tarjeta.includes(unidad) && !/6,50 %|100 EUR/.test(tarjeta) &&
       (render.vigente ? detalle.includes(render.referencia) : !detalle.includes(literal) && !detalle.includes(unidad)));
@@ -2694,9 +2713,9 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
   const avisoSinStop = {...base,slug:'regresion-warn-integro',avisos:[{tono:'warn',texto:warnCompleto},{tono:'warn',texto:warnSecundario}]};
   vm.runInContext('EMI.push('+JSON.stringify(avisoSinStop)+');',p.contexto);
   const renderWarn = vm.runInContext(`(() => {const tarjeta=tarjetaOfertaLocal(EMI[EMI.length-1]);abrirDetalleOfertaLocal('regresion-warn-integro');return {tarjeta,detalle:document.getElementById('escaparateDetalleLocal').innerHTML};})()`,p.contexto);
-  prueba('la tarjeta conserva el primer warn íntegro, cuenta los restantes y mantiene todos en el detalle',
-    renderWarn.tarjeta.includes(warnCompleto) && renderWarn.tarjeta.includes(' · 1 más en la ficha') &&
-    !renderWarn.tarjeta.includes('Avisos y condiciones en la ficha completa.') &&
+  prueba('la tarjeta no enseña los avisos ordinarios ni su recuento; el detalle los mantiene todos',
+    !renderWarn.tarjeta.includes('WARN_FINAL_INTEGRO') && !renderWarn.tarjeta.includes(warnSecundario) &&
+    !/en la ficha|escaparate-aviso-compacto/.test(renderWarn.tarjeta) &&
     renderWarn.detalle.includes(warnCompleto) && renderWarn.detalle.includes(warnSecundario));
   prueba('las tarjetas editoriales no convierten los datos documentales en un ranking',
     !/Ordenar por puntuaci[oó]n/.test(js));

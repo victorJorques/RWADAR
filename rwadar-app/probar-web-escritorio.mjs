@@ -2,6 +2,7 @@
 // Viven aparte para que probar-web.mjs no pase su presupuesto de probar-orden.mjs;
 // probar-web.mjs las llama con sus propios datos (código de la web, páginas y prueba()).
 import vm from 'node:vm';
+import { createRequire } from 'node:module';
 
 export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, privacidad, transparenciaComercial, paraEmpresas }) {
   // Orden de los scripts de Inicio: idioma-previo va en <head> y sin defer (tiene
@@ -214,14 +215,41 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
 
 // Necesita el contexto de la web ya cargado (pestanaCatalogo) con EMI y P.
 export function probarTarjetaYComparador({ c, prueba }) {
-  // QA escritorio 04/11/2026, n.º 18: la tarjeta de escritorio dice España y
-  // Salida igual que «Lo esencial» de la ficha (una sola función).
-  const mismaFila=vm.runInContext(`(()=>{const antes=window.matchMedia;window.matchMedia=()=>({matches:false});
-    try{return EMI.map(o=>{const d=datosCortosOferta(o,resumenEditorialOferta(o)),t=tarjetaOfertaLocal(o);
-      return [t.includes('<dt>España</dt><dd>'+escHtml(d.espana)+'</dd>'),t.includes('<dt>Salida</dt><dd>'+escHtml(d.salida)+'</dd>'),vistaMovilOfertas()];});}
-    finally{window.matchMedia=antes;}})()`,c);
-  prueba('en escritorio la tarjeta y la ficha escriben España y Salida con la misma función',
-    mismaFila.length>0&&mismaFila.every(([espana,salida,movil])=>espana&&salida&&movil===false));
+  // Tarjeta sencilla (decisión de Víctor del 05/11/2026), en cada oferta del
+  // catálogo: Mínimo y España en corto (la misma función que «Lo esencial»),
+  // un único botón «›» con nombre accesible y nada anidado; y lo que sale de
+  // la tarjeta (puntos fuertes, vigencia, Salida, avisos ordinarios y fechas)
+  // sigue en la ficha. Se compara el HTML que ve la persona, no el código.
+  const revisar = () => EMI.map(o => {
+    const r = resumenEditorialOferta(o), d = datosCortosOferta(o, r), e = estadoVigenciaLocal(o), t = tarjetaOfertaLocal(o);
+    abrirDetalleOfertaLocal(o.slug);
+    const f = document.getElementById('escaparateDetalleLocal').innerHTML, esencial = (f.match(/escaparate-esencial[\s\S]*?<\/section>/) || [''])[0];
+    const doc = documentacionOfertaLocal(o), bloqueo = avisoBloqueoOferta(o);
+    const fechas = [o.verificadaEl, doc && doc.revisadaEl, r.fechas.fechaDato].filter(Boolean).map(fechaES);
+    const ordinarios = avisosOfertaLocal(o).filter(x => !AVISO_GENERAL_OFERTA.test(x) && !(bloqueo && textoLocal(bloqueo.texto) === x)).map(escHtml);
+    const puntos = puntosFuertesOferta(o).map(x => escHtml(textoLocal(x.texto)));
+    const fuera = [...puntos, ...ordinarios, ...fechas];
+    return { datos: [...t.matchAll(/<dt>([^<]+)<\/dt><dd>([^<]+)<\/dd>/g)].map(m => m[1] + '=' + m[2]).join('|'),
+      esperado: 'Mínimo=' + escHtml(d.minimo) + '|España=' + escHtml(d.espanaCorta), corta: d.espanaCorta, larga: d.espana,
+      botones: (t.match(/<button\b/g) || []).length, anidado: /<button\b[^>]*>(?:(?!<\/button>)[\s\S])*<button\b/.test(t),
+      ver: t.includes('<button class="escaparate-detalle-boton" type="button" data-oferta-detalle="' + escHtml(o.slug) + '" aria-label="Ver ficha de ' +
+        escHtml(o.titulo) + ' en ' + escHtml(o.plataformaNombre) + '"><span aria-hidden="true">›</span></button>'),
+      sobra: [...fuera, '<time', '<dt>Salida</dt>', 'cifras válidas', 'Liquidez no confirmada', 'Apertura no confirmada', 'en la ficha'].filter(x => t.includes(x)),
+      ficha: [['Mínimo', d.minimo], ['España', d.espana], ['Salida', d.salida]].every(([k, v]) => esencial.includes('<dt>' + k + '</dt>') && esencial.includes(escHtml(v))) &&
+        fuera.every(x => f.includes(x)) && f.includes(escHtml(e.clase === 'caducado' ? e.texto : e.texto.replace(/^cifras /, ''))) };
+  });
+  const filas = vm.runInContext('(' + revisar + ')()', c);
+  prueba('cada tarjeta: Mínimo y España en corto (misma función que la ficha) y un único «›» con nombre accesible, sin botones anidados',
+    filas.length > 0 && filas.every(f => f.datos === f.esperado && f.botones === 2 && !f.anidado && f.ver &&
+      ({ 'Sí': 'Sí, según la fuente', 'No': 'No, según la fuente', 'Sin confirmar': 'Sin confirmar' })[f.corta] === f.larga));
+  prueba('lo que sale de la tarjeta (puntos fuertes, vigencia, Salida, avisos ordinarios y fechas) sigue en la ficha de cada oferta',
+    filas.every(f => f.sobra.length === 0 && f.ficha));
+  // Los textos nuevos de la tarjeta tienen su inglés (diccionario compartido con la app).
+  const { ingles } = createRequire(import.meta.url)('../rwadar-movil/lib/idioma.js');
+  prueba('inglés: «Sí», la línea de encima de la lista y el nombre del botón se traducen',
+    ingles('Sí') === 'Yes' && ingles('Ver ficha de Spiko Euro en Spiko') === 'View details for Spiko Euro from Spiko' &&
+    ingles('No es una recomendación de inversión · RWAdar no recibe dinero de las inversiones.') ===
+      'This is not an investment recommendation · RWAdar receives no money from investments.');
   // El comparador enseña el mínimo real (o «Sin documentar»), no el nivel de entrada.
   const minimosComparador=vm.runInContext(`P.map(p=>[p.slug,p.ticket,minimoPlataformaTexto(p),EMI.some(o=>o.plataformaSlug===p.slug)])`,c);
   vm.runInContext(`compare=[P.findIndex(p=>p.slug==='spiko'),P.findIndex(p=>p.slug==='addx')];openCompare()`,c);

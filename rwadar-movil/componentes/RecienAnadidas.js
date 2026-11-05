@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, useWindowDimensions } from 'react-native';
 import { Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
-import { ImagenOferta, avisosContables, avisosCriticos, lugarConPais } from './Ofertas';
+import { ImagenOferta, avisosCriticos, lugarConPais } from './Ofertas';
 import { imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
 import { esNueva, fechaAlta } from '../lib/recien-anadidas';
 import { textosInicio } from '../lib/inicio-contenido';
@@ -16,11 +16,11 @@ import { tacto } from '../lib/tacto';
    Justo bajo la portada: las altas de los últimos 30 días (las elige
    `recienAnadidas` de lib/recien-anadidas.js), con las tarjetas de la
    Selección. Cada tarjeta lleva la foto, el título en 2 líneas, el
-   proveedor y el lugar, su línea de riesgo (la de la Selección),
-   «Revisa · N avisos en la ficha» o el aviso crítico entero (como la fila
-   de Ofertas), «Nueva» si tiene menos de 14 días y «Añadida el
-   dd/mm/aaaa», y abre su ficha. Sin ninguna no se pinta nada. El inglés
-   va en lib/idioma-en.js («Recién añadidas (04/11)»).
+   proveedor y el lugar, su línea de riesgo (la de la Selección), el aviso
+   crítico entero si lo hay (como la tarjeta de Ofertas desde el 05/11/2026:
+   los demás avisos, en la ficha), «Nueva» si tiene menos de 14 días y
+   «Añadida el dd/mm/aaaa», y abre su ficha. Sin ninguna no se pinta nada.
+   El inglés va en lib/idioma-en.js («Recién añadidas (04/11)»).
    --------------------------------------------------------------------- */
 export default function RecienAnadidas({ ofertas = [], onAbrirOferta, onVerTodas }) {
   const { width } = useWindowDimensions();
@@ -38,16 +38,16 @@ export default function RecienAnadidas({ ofertas = [], onAbrirOferta, onVerTodas
           const fecha = fechaES(fechaAlta(o));
           const procedencia = [o.plataformaNombre, lugar].filter(Boolean).join(' · ');
           const letra = t.seleccion.letraPequena[o.slug] || t.seleccion.letraRespaldo;
-          const criticos = avisosCriticos(o), contables = avisosContables(o);
-          const bloqueo = criticos[0]?.tono === 'stop' ? criticos[0] : null;
+          const critico = avisosCriticos(o)[0];
+          const bloqueo = critico?.tono === 'stop' ? critico : null;
           const nueva = esNueva(o);
           return (
             <Pressable key={o.slug} onPress={() => { tacto.abrir(); onAbrirOferta?.(o); }}
               style={({ pressed }) => [e.tarjeta, { width: ancho }, pressed && e.tarjetaPulsada]}
               accessibilityRole="button" noTraducir
               accessibilityLabel={[`${traducir('Ver ficha de')} ${String(o.titulo || '').replace(/\.$/, '')}`, procedencia, letra.replace(/\.$/, ''),
-                // Como FichaOferta: el primer aviso entero para el lector de pantalla.
-                criticos[0] ? `${traducir(bloqueo ? 'Aviso bloqueante' : 'Precaución')}: ${String(criticos[0].texto).replace(/\.$/, '')}` : null,
+                // Como FichaOferta: el lector de pantalla oye lo que se ve, el aviso crítico entero.
+                bloqueo ? `${traducir('Aviso bloqueante')}: ${String(bloqueo.texto).replace(/\.$/, '')}` : null,
                 nueva ? traducir('Nueva') : null,
                 `${traducir('Añadida el')} ${fecha}`].filter(Boolean).join('. ')}>
               <ImagenOferta oferta={o} decorativa estilo={e.imagen} />
@@ -56,13 +56,8 @@ export default function RecienAnadidas({ ofertas = [], onAbrirOferta, onVerTodas
                 {procedencia ? <Text noTraducir idiomaOriginal="es-ES" style={e.procedencia}>{procedencia}</Text> : null}
                 <Text noTraducir style={e.letra}>{letra}</Text>
                 {bloqueo ? (
-                  <Text style={[e.aviso, e.avisoStop]}>
-                    <Text style={e.avisoStopMarca}>Importante</Text> · <Text noTraducir idiomaOriginal="es-ES">{bloqueo.texto}</Text>
-                    {criticos.length > 1 ? ` · ${criticos.length - 1} más en la ficha` : ''}
-                  </Text>
-                ) : contables.length ? (
                   <Text style={e.aviso}>
-                    <Text style={e.avisoMarca}>Revisa</Text> · {contables.length === 1 ? '1 aviso en la ficha' : `${contables.length} avisos en la ficha`}
+                    <Text style={e.avisoStopMarca}>Importante</Text> · <Text noTraducir idiomaOriginal="es-ES">{bloqueo.texto}</Text>
                   </Text>
                 ) : null}
                 <View style={e.meta}>
@@ -99,10 +94,8 @@ const e = StyleSheet.create({
   procedencia: { ...T.menor, fontSize: 13, lineHeight: 18, fontFamily: F.semi, color: C.tx3, marginTop: 4 },
   // La línea de riesgo, como tarjetaSelLetra de Inicio.js.
   letra: { ...T.menor, color: C.tx2, marginTop: 8 },
-  // Como la web (.rel-nueva-aviso): raya ámbar a la izquierda; roja si es crítico.
-  aviso: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx2, marginTop: 8, paddingLeft: 10, borderLeftWidth: 2, borderLeftColor: C.aviso },
-  avisoMarca: { fontFamily: F.semi, color: C.aviso },
-  avisoStop: { borderLeftColor: C.alarma },
+  // Como la web (.rel-nueva-bloqueo): raya roja a la izquierda; solo el aviso crítico.
+  aviso: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx2, marginTop: 8, paddingLeft: 10, borderLeftWidth: 2, borderLeftColor: C.alarma },
   avisoStopMarca: { fontFamily: F.semi, color: C.alarma },
   meta: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginTop: 'auto', paddingTop: 12 },
   // Etiqueta de estado (GUIA-ACABADOS §5): rectángulo de 8, verde suave, sin borde.
