@@ -4,6 +4,7 @@
    guardan cifrados en SecureStore para restaurar tras reiniciar. Nunca se guarda
    la contraseña. Confirmación y recuperación siguen en la web oficial. */
 const { crearAlmacenSesion } = require('./almacen-sesion');
+const { VERSION_AVISOS } = require('./avisos-cuenta');
 const REDIRECT_CUENTAS = 'https://rwadar.pages.dev/';
 const URL_CUENTAS = 'https://exgpmjpaaebyoolpwced.supabase.co';
 // Clave publicable, igual que la del lector de catálogo. No es una credencial.
@@ -20,6 +21,9 @@ const LECTURAS_CATALOGO = new Set([
   '/rest/v1/catalogo_ofertas_publicas_v2',
 ]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+// Lo que se hace con la sesión antes de cerrarla (quitar este móvil de los
+// avisos) nunca retrasa la salida más que esto.
+const PLAZO_ANTES_DE_SALIR = 4000;
 let instanciaCliente = 0;
 
 function fallo(codigo) {
@@ -35,7 +39,7 @@ function mensajeError(error) {
   if (codigo === 'clave_corta') return 'Usa una contraseña de al menos 12 caracteres.';
   if (codigo === 'clave_vacia') return 'Escribe tu contraseña.';
   if (codigo === 'nombre_invalido') return 'El nombre debe tener entre 1 y 60 caracteres.';
-  if (codigo === 'condiciones') return 'Acepta las condiciones y la política de privacidad para crear la cuenta.';
+  if (codigo === 'condiciones') return 'Para crear la cuenta, confirma que tienes 18 años o más, que aceptas las condiciones y que has leído la privacidad.';
   if (codigo === 'confirmar_borrado') return 'Escribe BORRAR y tu contraseña actual para borrar la cuenta.';
   if (codigo === 'sin_sesion' || codigo === 'identidad_invalida') return 'La sesión no se ha podido verificar. Vuelve a entrar.';
   if (codigo === 'email_not_confirmed' || codigo === 'correo_no_confirmado') return 'Confirma tu correo antes de entrar. Puedes pedir otro enlace.';
@@ -132,9 +136,14 @@ function crearClienteCuentas({ fetchImpl, plazoMs = PLAZO_CUENTAS, createClient:
   });
 }
 
+/* avisosNovedades: interruptor AVISOS_NOVEDADES_REMOTOS. Apagado, el alta no
+   envía nada nuevo aunque se lo pidan. antesDeSalir({ cliente, usuarioId }):
+   tarea con la sesión que se cierra, antes de revocarla; con plazo y sin
+   bloquear la salida si falla. */
 function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, correoVerificado = false,
   cliente: clientePrueba, crearCliente = crearClienteCuentas, plazoMs = PLAZO_CUENTAS,
-  almacenSesion = crearAlmacenSesion() } = {}) {
+  almacenSesion = crearAlmacenSesion(), avisosNovedades = false, antesDeSalir = null,
+  plazoAntesDeSalir = PLAZO_ANTES_DE_SALIR } = {}) {
   const disponible = modoLocal === false && cuentasRemotas === true && correoVerificado === true;
   let revision = 0, revisionToken = 0, destruido = false, clienteActual = null, suscripcionSesion = null, restauracion = null;
   const oyentes = new Set(), clientesTemporales = new Set();
@@ -245,6 +254,13 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
     }
     return { perfil: { id: usuario.id, nombre: nombreValido(perfiles[0].nombre, true) }, vigiladas, avisoVigilancia };
   }
+  function tareaAntesDeSalir(cliente, usuarioId) {
+    let reloj;
+    return Promise.race([
+      Promise.resolve().then(() => antesDeSalir({ cliente, usuarioId })),
+      new Promise(resolver => { reloj = setTimeout(resolver, plazoAntesDeSalir); }),
+    ]).catch(() => null).finally(() => clearTimeout(reloj));
+  }
   function sesionInvalida(error) {
     return error?.status === 401 || ['sin_sesion', 'identidad_invalida', 'correo_no_confirmado',
       'email_not_confirmed', 'refresh_token_not_found', 'refresh_token_already_used',
@@ -352,14 +368,21 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
       if (!destruido) { oyentes.add(oyente); oyente(estado()); }
       return () => oyentes.delete(oyente);
     },
-    registrar({ correo, clave, nombre = '', aceptaCondiciones } = {}) {
+    registrar({ correo, clave, nombre = '', aceptaCondiciones, avisosNovedades: pideAvisos } = {}) {
       return ejecutar('registrar', async actual => {
         const email = correoValido(correo), nombreLimpio = nombreValido(nombre, true);
         if (typeof clave !== 'string' || clave.length < 12 || clave.length > 256) throw fallo('clave_corta');
         if (aceptaCondiciones !== true) throw fallo('condiciones');
+        const datos = { nombre: nombreLimpio };
+        // Casilla de avisos: solo con el interruptor encendido y marcada de
+        // verdad (booleano estricto). La base guarda el permiso solo cuando se
+        // confirma el correo y con la versión vigente del texto.
+        if (avisosNovedades === true && pideAvisos === true) {
+          Object.assign(datos, { avisos_novedades: true, avisos_version: VERSION_AVISOS, avisos_canal: 'app' });
+        }
         const cliente = clienteNuevo();
         await pedir(cliente.auth.signUp({ email, password: clave,
-          options: { emailRedirectTo: REDIRECT_CUENTAS, data: { nombre: nombreLimpio } } }), actual);
+          options: { emailRedirectTo: REDIRECT_CUENTAS, data: datos } }), actual);
         // Ni siquiera una configuración accidental de autoconfirmación inicia
         // una sesión aquí: siempre se pide confirmar y después entrar.
         pintar({ estado: 'confirmacion', mensaje: 'Si el registro se ha completado, recibirás un enlace. Confirma tu correo en la web y después entra en la app.' });
@@ -435,12 +458,17 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
     },
     async salir() {
       if (destruido) return { ok: true };
-      const anterior = clienteActual, inicio = ++revision;
+      const anterior = clienteActual, usuarioAnterior = vista.usuario?.id, inicio = ++revision;
       purgar();
       pintar({ procesando: false, accion: null, error: null, mensaje: null });
       if (!disponible) return { ok: true };
-      const remoto = anterior ? pedir(anterior.auth.signOut({ scope: 'local' }), contexto(inicio))
-        .then(() => null, error => error) : Promise.resolve(null);
+      const cerrarRemoto = () => pedir(anterior.auth.signOut({ scope: 'local' }), contexto(inicio))
+        .then(() => null, error => error);
+      // La pantalla sale al momento; la sesión se revoca después de la tarea
+      // previa (o de su plazo), que todavía la necesita.
+      const remoto = !anterior ? Promise.resolve(null)
+        : typeof antesDeSalir === 'function' && usuarioAnterior
+          ? tareaAntesDeSalir(anterior, usuarioAnterior).then(cerrarRemoto) : cerrarRemoto();
       try { await almacenSesion.borrar(); }
       catch (_) {
         await remoto;

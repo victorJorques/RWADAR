@@ -209,6 +209,7 @@ const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
 export default function Inicio({
   refrescando, onActualizar, onDestino, onExplicar, fuera = [], cambios = [], renderCambio,
   plataformas = [], ofertas = [], fechaCatalogo = null, onAbrirPlataforma, onAbrirOferta, onAbrirEnlace,
+  tarjetaAvisos = null,
 }) {
   const idioma = useIdioma();
   const t = textosInicio(idioma);
@@ -323,6 +324,10 @@ export default function Inicio({
           vean ofertas de verdad. Sin catálogo vigente, nada. */}
       <RecienAnadidas ofertas={recienAnadidas(ofertas, { catalogoCaducado: !cifras.vigente })}
         onAbrirOferta={onAbrirOferta} onVerTodas={() => onDestino('ofertas-nuevas')} />
+
+      {/* Avisos de la cuenta (solo con AVISOS_NOVEDADES_REMOTOS): la tarjeta
+          llega hecha desde App, que tiene la cuenta y su estado. */}
+      {tarjetaAvisos}
 
       {cambios.length ? (
         <View style={e.seccion}>
