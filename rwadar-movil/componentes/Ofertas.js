@@ -249,6 +249,15 @@ export function avisosContables(oferta) {
     aviso.tono !== 'ok' && (!aviso.esAntiguedad || aviso.tono === 'stop'));
 }
 
+/* El lugar de la tarjeta, como en la web (lugarTarjetaHtml): la ciudad tal
+   cual y el país en el idioma elegido («Limasol · Cyprus»). */
+export function lugarConPais(lugar) {
+  const partes = String(lugar || '').split(' · ').filter(Boolean);
+  if (!partes.length) return '';
+  const pais = partes.pop();
+  return [...partes, traducir(pais)].join(' · ');
+}
+
 export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catalogoCaducado = false, nueva = false }) {
   const idiomaActual = useIdioma();
   const ahora = useFechaOferta();
@@ -281,7 +290,7 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
     return minuscula.charAt(0).toUpperCase() + minuscula.slice(1);
   })();
   // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
-  const lugar = imagenEditorialOferta(oferta)?.lugar || '';
+  const lugar = lugarConPais(imagenEditorialOferta(oferta)?.lugar);
   const etiquetaAccesible = [
     `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar, nueva && !catalogoCaducado ? traducir('Nueva') : null,
     traducir(ETIQUETA_EDITORIAL),
@@ -391,6 +400,14 @@ function Plegable({ titulo, detalle = '', children }) {
     </View>
   );
 }
+
+/* Frases que escribe la app a partir de la fuente (lib/ficha-editorial.js), no
+   citas literales: se traducen aunque el dato tenga fuente. En inglés salía
+   «Disponible desde España según la fuente» (prueba en móvil, 04/11/2026). */
+const FRASES_PROPIAS = new Set([
+  'Disponible desde España según la fuente', 'No disponible desde España según la fuente',
+  'No documentado en euros', 'Reventa entre inversores; depende de que haya compradores',
+]);
 
 const mayuscula = (texto) => (texto ? texto.charAt(0).toUpperCase() + texto.slice(1) : texto);
 
@@ -665,7 +682,7 @@ export function DetalleOferta({
                         {dato.referencias?.length ? citasCostes(dato.referencias)
                           : <Text noTraducir idiomaOriginal="es-ES" style={e.referencia}>{dato.texto}</Text>}
                       </> : etiqueta === 'Costes' && dato.referencias?.length ? citasCostes(dato.referencias, e.metricaValor) : (
-                        <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length)} idiomaOriginal="es-ES" style={e.metricaValor}>
+                        <Text noTraducir={Boolean(dato.fuente || dato.referencias?.length) && !FRASES_PROPIAS.has(dato.texto)} idiomaOriginal="es-ES" style={e.metricaValor}>
                           {etiqueta === 'Salida' ? String(dato.texto || '').replace(/^Salida:\s*/i, '') : dato.texto}
                         </Text>
                       )}

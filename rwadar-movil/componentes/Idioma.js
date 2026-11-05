@@ -15,10 +15,17 @@ export function FuenteOriginal({children,idiomaOriginal='es-ES',style,aviso=true
   </Native.View>;
 }
 let carga;
+// El idioma guardado se lee al abrir la app, no al entrar en Perfil: desde
+// que el selector vive solo en Perfil, quien eligió English veía la app en
+// castellano en cada arranque (prueba en móvil, 04/11/2026).
+export function cargarIdiomaGuardado(){
+  if(!carga)carga=idioma.cargarIdioma(AsyncStorage).catch(()=>idioma.obtenerIdioma());
+  return carga;
+}
 export function SelectorIdioma(){
   const actual=useIdioma();
   const [error,setError]=useState(false);
-  useEffect(()=>{if(!carga)carga=idioma.cargarIdioma(AsyncStorage);},[]);
+  useEffect(()=>{cargarIdiomaGuardado();},[]);
   async function elegir(valor){
     setError(false);
     try{await idioma.cambiarIdioma(valor);}catch{setError(true);}

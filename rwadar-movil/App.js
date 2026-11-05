@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { ActivityIndicator, Animated, AppState, FlatList, Linking, Modal, RefreshControl, StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
-import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal, useIdioma } from './componentes/Idioma';
+import { Alert, Pressable, ScrollView, Text, TextInput, View, SelectorIdioma, FuenteOriginal, useIdioma, cargarIdiomaGuardado } from './componentes/Idioma';
 import { traducir } from './lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -49,6 +49,7 @@ import {
   DetalleOferta, ExclusionesOfertas, FichaOferta, FichaGrupoOfertas,
   agruparOfertasLectura, ordenarOfertasLectura,
 } from './componentes/Ofertas';
+import { imagenEditorialOferta } from './fixtures/imagenes-editoriales';
 import { resumenOferta } from './lib/ficha-editorial';
 import { enSeleccionOferta } from './lib/transparencia';
 import { esNueva, ordenarMasNuevas } from './lib/recien-anadidas';
@@ -182,6 +183,9 @@ export default function App() {
     }
   }, [cuenta]);
   const { width: anchoPantalla } = useWindowDimensions();
+
+  // El idioma elegido en Perfil vale desde la primera pantalla (también la de acceso).
+  useEffect(() => { cargarIdiomaGuardado(); }, []);
 
   useEffect(() => {
     // Crear y liberar en el mismo efecto evita conservar un cliente del SDK
@@ -389,7 +393,10 @@ export default function App() {
         verificacion.acceso?.estado, verificacion.acceso?.detalle,
         ...(verificacion.alertasCriticas || []).flatMap((alerta) => [alerta.codigo, alerta.detalle]),
       ] : [p.nota, p.aval, p.acceso];
-      return [p.nombre, p.categoria, p.region, p.cadenas, ...textoVerificado]
+      // También por el nombre en inglés de la región y la categoría, que es
+      // lo que enseña la tarjeta en inglés («Switzerland», «Treasury»).
+      return [p.nombre, p.categoria, p.region, p.cadenas, ...textoVerificado,
+        traducir(p.region, 'en'), traducir(p.categoria, 'en'), traducir(p.actor, 'en')]
         .join(' ').toLowerCase().includes(q);
     });
   }, [radar, busqueda, categoria]);
@@ -407,7 +414,10 @@ export default function App() {
     const lista = ordenarOfertasLectura(ofertasDelGrupo.filter((oferta) => {
       if (tipoOferta && oferta.tipo !== tipoOferta) return false;
       if (proveedorOferta && oferta.plataformaSlug !== proveedorOferta) return false;
-      return !q || textoBusquedaOferta(oferta).includes(q);
+      // El ejemplo del buscador en inglés es «Switzerland»: se busca también
+      // por el país y la categoría en inglés (prueba en móvil, 04/11/2026).
+      return !q || textoBusquedaOferta(oferta).includes(q) ||
+        [paisInglesOferta(oferta), traducir(oferta.categoria, 'en')].join(' ').toLocaleLowerCase('es').includes(q);
     }));
     return ordenOfertas === 'nuevas' ? ordenarMasNuevas(lista) : lista;
   }, [ofertasDelGrupo, busquedaOfertas, tipoOferta, proveedorOferta, ordenOfertas]);
@@ -1124,6 +1134,13 @@ function Cabecera({ pestana, vistaBuscar, total, ofertas, secundario, enCamino, 
   );
 }
 
+// El país del lugar de la tarjeta, en inglés: con el idioma en inglés la
+// tarjeta dice «Switzerland» y el buscador lo pone de ejemplo.
+function paisInglesOferta(oferta) {
+  const partes = String(imagenEditorialOferta(oferta)?.lugar || '').split(' · ');
+  return traducir(partes[partes.length - 1] || '', 'en');
+}
+
 function BannerModoLocal() {
   return (
     <View style={e.bannerLocal} accessibilityRole="alert">
@@ -1394,17 +1411,23 @@ function FilaMenu({ icono, titulo, subtitulo, onPress, ultima, peligro, cargando
   );
 }
 
+// Como «Ordenar por»: la diana mide 48 px y el chip se ve de 36 (antes la
+// diana era el chip, 36 px; prueba en móvil, 04/11/2026).
 function Chip({ texto, color, activo, onPress }) {
   return (
     <Pressable
       onPress={onPress}
-      style={({ pressed }) => [e.chip, activo && e.chipOn, pressed && e.pulsado]}
+      style={e.chipDiana}
       accessibilityRole="button"
       accessibilityState={{ selected: activo }}
       accessibilityLabel={`Filtrar por ${texto}`}
     >
-      {color ? <View style={[e.punto, { backgroundColor: color }]} /> : null}
-      <Text style={[e.chipTxt, activo && e.chipTxtOn]} numberOfLines={1}>{texto}</Text>
+      {({ pressed }) => (
+        <View style={[e.chip, e.chipOrdenCara, activo && e.chipOn, pressed && e.pulsado]}>
+          {color ? <View style={[e.punto, { backgroundColor: color }]} /> : null}
+          <Text style={[e.chipTxt, activo && e.chipTxtOn]} numberOfLines={1}>{texto}</Text>
+        </View>
+      )}
     </Pressable>
   );
 }
@@ -1833,7 +1856,7 @@ function Descartadas({ fuera }) {
             <View style={e.fuentes}>
               <Text style={e.fuentesTitulo}>Comprobado en</Text>
               {f.fuentes.map((s) => (
-                <Pressable key={s.url} onPress={() => { tacto.eleccion(); abrirEnlace(s.url); }}
+                <Pressable key={s.url} onPress={() => { tacto.eleccion(); abrirEnlace(s.url); }} style={e.fuenteDiana}
                   accessibilityRole="link" accessibilityLabel={`Abrir fuente: ${s.titulo}`}>
                   <Text style={e.fuente} numberOfLines={2}>{s.titulo} ↗</Text>
                 </Pressable>
@@ -2001,7 +2024,7 @@ const e = StyleSheet.create({
   },
   limpiarTxt: { fontFamily: F.media, fontSize: 13, color: C.tx2 },
   chips: { maxHeight: 58 },
-  chipsContenido: { paddingHorizontal: 0, paddingVertical: 10 },
+  chipsContenido: { paddingHorizontal: 0, paddingVertical: 5 },
   chip: {
     minHeight: 36, flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: C.ton,
     borderRadius: R.p, paddingHorizontal: 12, marginRight: 8,
@@ -2049,12 +2072,13 @@ const e = StyleSheet.create({
   filtrosOfertasDesplegados: { marginTop: 8, paddingTop: 4 },
   filtroGrupoEtiqueta: { ...T.etiqueta, color: C.tx3, marginTop: 4, marginBottom: 2 },
   chipsOfertas: { maxHeight: 50 },
-  chipsContenidoCompacto: { paddingTop: 5, paddingBottom: 7 },
+  chipsContenidoCompacto: { paddingTop: 1, paddingBottom: 1 },
   ordenOfertas: { marginTop: 4 },
   ordenOfertasEtiqueta: { ...T.etiqueta, color: C.tx3, marginBottom: 2 },
   ordenOfertasChips: { maxHeight: 50 },
   chipOrden: { minHeight: UI.tactil, justifyContent: 'center', marginRight: 8 },
-  chipOrdenCara: { marginRight: 0 },
+  chipDiana: { minHeight: UI.tactil, minWidth: UI.tactil, justifyContent: 'center', marginRight: 8 },
+  chipOrdenCara: { marginRight: 0, justifyContent: 'center' },
 
   ficha: {
     backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd,
@@ -2242,9 +2266,12 @@ const e = StyleSheet.create({
     paddingHorizontal: 8, paddingVertical: 2, borderRadius: R.s, overflow: 'hidden',
   },
   fueraPor: { ...T.menor, color: C.tx2 },
-  fuentes: { marginTop: 11, paddingTop: 11, gap: 6, borderTopWidth: 1, borderTopColor: C.linea },
+  fuentes: { marginTop: 11, paddingTop: 11, borderTopWidth: 1, borderTopColor: C.linea },
   fuentesTitulo: { ...T.etiqueta, color: C.tx3 },
-  fuente: { ...T.menor, fontSize: 13, lineHeight: 19, fontFamily: F.semi, color: C.senal, paddingVertical: 12, marginVertical: -12 },
+  // La diana es el Pressable (44 px): el relleno del texto quedaba fuera de
+  // él y en el móvil no recibía el toque.
+  fuenteDiana: { minHeight: 44, justifyContent: 'center' },
+  fuente: { ...T.menor, fontSize: 13, lineHeight: 19, fontFamily: F.semi, color: C.senal },
 
   piePrivacidad: { alignItems: 'center', paddingVertical: 22 },
   piePrivacidadTxt: { ...T.menor, fontFamily: F.semi, color: C.senal },
