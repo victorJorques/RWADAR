@@ -23,24 +23,37 @@ function exigirConstruida() {
     'Falta rwadar-publicado/: ejecuta antes npm run test:web (o node rwadar-publicar.js --local --sin-sincronizar).');
 }
 
+// Lanza el comprobador contra un worker local ya arrancado. vistaPrevia: lo juzga
+// como una vista previa de Pages (RWADAR_COMPROBAR_VISTA_PREVIA=1).
+async function comprobar(local, { vistaPrevia = false } = {}) {
+  let salida = '', codigo = 0;
+  const env = { ...process.env, RWADAR_COMPROBAR_LOCAL: '1' };
+  delete env.RWADAR_COMPROBAR_VISTA_PREVIA;
+  if (vistaPrevia) env.RWADAR_COMPROBAR_VISTA_PREVIA = '1';
+  try {
+    ({ stdout: salida } = await ejecutar(process.execPath, ['.github/comprobar-publicado.mjs', local.url], {
+      cwd: RAIZ, env, maxBuffer: 16 * 1024 * 1024, timeout: 240000 }));
+  } catch (error) { salida = error.stdout || ''; codigo = error.code; }
+  const lineas = salida.split('\n');
+  // En un clon superficial (CI descarga solo el último commit) Git no conoce fichas ni
+  // ilustraciones retiradas: esas dos comprobaciones dependen del historial, no del worker.
+  const historial = /^ {2}FALLA el historial de Git da las (?:fichas|ilustraciones) retiradas que hay que comprobar \(0\)$/;
+  return { salida, codigo, lineas, fallidas: lineas.filter(linea => linea.startsWith('  FALLA ') && !historial.test(linea)),
+    sinHistorial: lineas.filter(linea => historial.test(linea)).length };
+}
+const correcta = (lineas, linea) => lineas.some(l => l.startsWith('  OK    ') && l.endsWith(linea));
+
 test('el comprobador de la web publicada pasa contra el worker compilado, sin red', async () => {
   exigirConstruida();
   const academy = academyPublicada();
   assert.equal(academy.acceso, 'cuenta');
   const local = await arrancarWorkerLocal({ raiz: PUBLICADO, puerto: 0 });
-  let salida = '', codigo = 0;
-  try {
-    try {
-      ({ stdout: salida } = await ejecutar(process.execPath, ['.github/comprobar-publicado.mjs', local.url], {
-        cwd: RAIZ, env: { ...process.env, RWADAR_COMPROBAR_LOCAL: '1' }, maxBuffer: 16 * 1024 * 1024, timeout: 240000 }));
-    } catch (error) { salida = error.stdout || ''; codigo = error.code; }
-  } finally { await local.cerrar(); }
-  const fallidas = salida.split('\n').filter(linea => linea.startsWith('  FALLA '));
-  // En un clon superficial (CI descarga solo el último commit) Git no conoce fichas ni
-  // ilustraciones retiradas: esas dos comprobaciones dependen del historial, no del worker.
-  assert.ok(fallidas.every(linea => /^ {2}FALLA el historial de Git da las (?:fichas|ilustraciones) retiradas que hay que comprobar \(0\)$/.test(linea)),
-    'Fallos del comprobador:\n' + fallidas.join('\n'));
-  assert.equal(codigo === 0, fallidas.length === 0);
+  let resultado;
+  try { resultado = await comprobar(local); } finally { await local.cerrar(); }
+  const { salida, codigo, fallidas, sinHistorial } = resultado;
+  assert.deepEqual(fallidas, [], 'Fallos del comprobador:\n' + fallidas.join('\n'));
+  assert.equal(codigo === 0, sinHistorial === 0);
+  assert.match(salida, /\(producción\) …/);
   const esperadas = [
     'el mapa del sitio lista el índice de la Academy y ninguna lección (van con cuenta)',
     'el índice de la Academy responde 200 y se puede indexar',
@@ -59,9 +72,53 @@ test('el comprobador de la web publicada pasa contra el worker compilado, sin re
     'la baja rechaza un enlace sin forma de UUID: 400',
     ...academy.lecciones.map(slug => `sin sesión: 303 a /acceso?volver=/academy/${slug}, sin guardarse: 303`),
   ];
-  for (const linea of esperadas) assert.ok(salida.split('\n').some(l => l.startsWith('  OK    ') && l.endsWith(linea)), 'Falta: ' + linea);
+  for (const linea of esperadas) assert.ok(correcta(resultado.lineas, linea), 'Falta: ' + linea);
   // El worker solo preguntó a Auth por la cookie inventada (y Auth la rechazó).
   assert.deepEqual(local.peticionesSupabase.map(p => p.metodo + ' ' + p.ruta), ['GET /auth/v1/user']);
+});
+
+/* En una vista previa (revision.rwadar.pages.dev), Cloudflare Pages pone
+   x-robots-tag: noindex a todo archivo servido. El comprobador no puede exigir
+   allí que el índice de la Academy se indexe por la cabecera: le basta su HTML.
+   En producción lo sigue exigiendo, y esa misma web le haría fallar. */
+test('en una vista previa de Pages (noindex en cada archivo) el comprobador pasa; como producción, solo falla el índice', async () => {
+  // Vale con "acceso": "cuenta" o "publico": la cabecera de la vista previa no depende de él.
+  exigirConstruida();
+  const conCuenta = academyPublicada().acceso === 'cuenta';
+  const previa = await arrancarWorkerLocal({ raiz: PUBLICADO, puerto: 0, vistaPrevia: true });
+  let comoPrevia, comoProduccion;
+  try {
+    // El arnés imita Pages: noindex en los archivos (también la 404.html y /baja,
+    // por encima de _headers) y nada en lo que responde el propio worker.
+    const indice = await fetch(previa.url + '/academy/', { redirect: 'manual' });
+    assert.equal(indice.status, 200); assert.equal(indice.headers.get('x-robots-tag'), 'noindex');
+    assert.match(await indice.text(), /<meta name="robots" content="index,follow/);
+    assert.equal((await fetch(previa.url + '/baja')).headers.get('x-robots-tag'), 'noindex');
+    const falsa = await fetch(previa.url + '/ofertas/rwadar-comprobacion-ficha-inexistente', { headers: { accept: 'text/html' } });
+    assert.equal(falsa.status, 404); assert.equal(falsa.headers.get('x-robots-tag'), 'noindex, nofollow', 'la 404 del worker conserva su marca');
+    if (conCuenta) {
+      const sinSesion = await fetch(previa.url + LECCION, { redirect: 'manual', headers: { accept: 'text/html' } });
+      assert.equal(sinSesion.status, 303); assert.equal(sinSesion.headers.get('x-robots-tag'), 'noindex, nofollow');
+    }
+    comoPrevia = await comprobar(previa, { vistaPrevia: true });
+    comoProduccion = await comprobar(previa);
+  } finally { await previa.cerrar(); }
+
+  assert.deepEqual(comoPrevia.fallidas, [], 'Fallos del comprobador en la vista previa:\n' + comoPrevia.fallidas.join('\n'));
+  assert.equal(comoPrevia.codigo === 0, comoPrevia.sinHistorial === 0);
+  assert.match(comoPrevia.salida, /\(vista previa: Pages añade noindex en la cabecera\) …/);
+  for (const linea of ['el índice de la Academy responde 200 y su HTML se puede indexar (en la vista previa, la cabecera noindex es de Pages)',
+    'la página de baja de avisos responde 200, sin indexar ni guardarse: 200',
+    'lección 8 (Próximamente) no tiene página: 404', 'lección 9 (Próximamente) no tiene página: 404',
+    'una ficha que nunca existió da el 404 del worker',
+    ...(conCuenta ? ['una lección que no existe da el 404 del worker sin mirar la sesión: 404'] : [])]) {
+    assert.ok(correcta(comoPrevia.lineas, linea), 'Falta: ' + linea);
+  }
+  assert.ok(!comoPrevia.salida.includes('el índice de la Academy responde 200 y se puede indexar'));
+
+  // La misma web juzgada como producción: solo cae el índice, por la cabecera.
+  assert.deepEqual(comoProduccion.fallidas, ['  FALLA el índice de la Academy responde 200 y se puede indexar']);
+  assert.equal(comoProduccion.codigo, 1);
 });
 
 function pedirConHost(puerto, host) {

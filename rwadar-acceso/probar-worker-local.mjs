@@ -10,7 +10,7 @@
 
    Uso (desde la carpeta raíz del proyecto):
 
-     node rwadar-acceso/probar-worker-local.mjs [--raiz=rwadar-publicado] [--puerto=8788] [--con-sesion]
+     node rwadar-acceso/probar-worker-local.mjs [--raiz=rwadar-publicado] [--puerto=8788] [--con-sesion] [--vista-previa]
 
      --raiz        carpeta que se sirve: rwadar-publicado (por defecto; antes,
                    npm run test:web o node rwadar-publicar.js --local
@@ -19,6 +19,12 @@
      --con-sesion  cada petición que llega sin cookie de sesión lleva la de la
                    cuenta de prueba: así se capturan las lecciones «con sesión»
                    sin pasar por /acceso.
+     --vista-previa  imita una vista previa de Cloudflare Pages
+                   (revision.rwadar.pages.dev): cada archivo servido lleva
+                   x-robots-tag: noindex, también la 404.html y por encima de
+                   _headers. Las respuestas propias del worker no cambian, como en
+                   Pages. Con RWADAR_COMPROBAR_VISTA_PREVIA=1, el comprobador
+                   juzga ese caso como una vista previa.
 
    Ejemplos para capturas:
      sin sesión   node rwadar-acceso/probar-worker-local.mjs --puerto=8788
@@ -114,7 +120,10 @@ function leerRedirecciones(texto) {
   return texto.split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith('#'))
     .map(l => l.split(/\s+/)).map(([desde, hasta, estado = '302']) => ({ desde, hasta, estado: Number(estado) }));
 }
-export function crearAssetsLocales(raiz) {
+/* vistaPrevia: como en una vista previa de Pages (docs/VERIFICACION-ACCESO-PUBLICO-2026-10-26.md),
+   cada archivo servido lleva x-robots-tag: noindex. Se pone después de _headers,
+   el caso más duro: una comprobación no puede contar con el valor de _headers. */
+export function crearAssetsLocales(raiz, { vistaPrevia = false } = {}) {
   const base = path.resolve(raiz);
   const leer = nombre => { try { return fs.readFileSync(path.join(base, nombre), 'utf8'); } catch { return ''; } };
   const reglas = leerReglasCabeceras(leer('_headers'));
@@ -140,12 +149,15 @@ export function crearAssetsLocales(raiz) {
   const servir = (request, ruta, absoluta, estado = 200) => {
     const extension = absoluta.split('.').pop().toLowerCase();
     const headers = cabecerasDe(ruta, { 'Content-Type': TIPOS[extension] || 'application/octet-stream' });
+    if (vistaPrevia) headers.set('X-Robots-Tag', 'noindex');
     return new Response(request.method === 'HEAD' ? null : fs.readFileSync(absoluta), { status: estado, headers });
   };
   const noEncontrada = (request, ruta) => {
     const pagina = archivo('404.html');
     if (pagina) return servir(request, ruta, pagina, 404);
-    return new Response(request.method === 'HEAD' ? null : 'No encontrado', { status: 404, headers: cabecerasDe(ruta) });
+    const headers = cabecerasDe(ruta);
+    if (vistaPrevia) headers.set('X-Robots-Tag', 'noindex');
+    return new Response(request.method === 'HEAD' ? null : 'No encontrado', { status: 404, headers });
   };
   return { async fetch(entrada, init) {
     const request = entrada instanceof Request ? entrada : new Request(entrada, init);
@@ -191,14 +203,14 @@ export async function cargarWorker({ raiz, fetchSupabase }) {
 const HOST_LOCAL = /^(?:127\.0\.0\.1|localhost):\d{1,5}$/;
 const COOKIE_SESION = '__Host-rwadar-acceso';
 export async function arrancarWorkerLocal({ raiz = path.join(RAIZ_REPO, 'rwadar-publicado'), puerto = 8788, conSesion = false,
-  responder = null } = {}) {
+  responder = null, vistaPrevia = false } = {}) {
   raiz = path.resolve(raiz);
   if (!fs.existsSync(path.join(raiz, 'index.html'))) {
     throw new Error(`No hay web construida en ${raiz}: ejecuta antes npm run test:web (o node rwadar-publicar.js --local --sin-sincronizar).`);
   }
   const peticionesSupabase = [];
   const worker = await cargarWorker({ raiz, fetchSupabase: crearAuthSimulado({ registro: peticionesSupabase, responder }) });
-  const env = { ASSETS: crearAssetsLocales(raiz) };
+  const env = { ASSETS: crearAssetsLocales(raiz, { vistaPrevia }) };
   const servidor = http.createServer(async (req, res) => {
     try {
       // Como rwadar-servir.js: solo Host de loopback con su puerto.
@@ -236,7 +248,7 @@ export async function arrancarWorkerLocal({ raiz = path.join(RAIZ_REPO, 'rwadar-
   });
   await new Promise((resolver, rechazar) => { servidor.once('error', rechazar); servidor.listen(puerto, '127.0.0.1', resolver); });
   const real = servidor.address().port;
-  return { url: 'http://127.0.0.1:' + real, puerto: real, raiz, peticionesSupabase,
+  return { url: 'http://127.0.0.1:' + real, puerto: real, raiz, vistaPrevia, peticionesSupabase,
     cerrar: () => new Promise(resolver => { servidor.closeAllConnections?.(); servidor.close(() => resolver()); }) };
 }
 
@@ -246,8 +258,10 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
   const puerto = Number(opcion('puerto') ?? 8788);
   if (!Number.isInteger(puerto) || puerto < 0 || puerto > 65535) { console.error('--puerto no válido'); process.exit(2); }
   try {
-    const local = await arrancarWorkerLocal({ raiz, puerto, conSesion: process.argv.includes('--con-sesion') });
+    const vistaPrevia = process.argv.includes('--vista-previa');
+    const local = await arrancarWorkerLocal({ raiz, puerto, conSesion: process.argv.includes('--con-sesion'), vistaPrevia });
     console.log(`Worker local de RWAdar sobre ${path.relative(RAIZ_REPO, raiz) || raiz}: ${local.url}/`);
+    if (vistaPrevia) console.log('Como una vista previa de Pages: cada archivo servido lleva x-robots-tag: noindex.');
     console.log(process.argv.includes('--con-sesion')
       ? 'Con sesión: cada petición lleva la cookie de la cuenta de prueba.'
       : `Sin sesión. Cookie de la cuenta de prueba: ${COOKIE_SESION}=${TOKEN_PRUEBA}`);

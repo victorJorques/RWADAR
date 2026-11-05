@@ -17,9 +17,21 @@
    que su índice coincida byte a byte con el publicado. Nunca entra con una
    cuenta ni envía nada que cambie datos.
 
+   Vista previa (revision.rwadar.pages.dev o <hash>.rwadar.pages.dev): Cloudflare
+   Pages añade «x-robots-tag: noindex» a todo archivo que sirve allí
+   (docs/VERIFICACION-ACCESO-PUBLICO-2026-10-26.md, «Preview observada»). Por eso
+   solo con https://rwadar.pages.dev se exige que el índice de la Academy no
+   lleve noindex en la cabecera; en una vista previa basta la etiqueta robots
+   «index,follow» de su HTML. Las demás valen igual en las dos: o no miran esa
+   cabecera, o piden que lleve noindex (/baja), o miran la marca «noindex,
+   nofollow» que pone el propio worker en su 404 y que Pages no toca (pasó en la
+   vista previa del 03/11/2026, 219/219; ver docs/tareas/PARA-CODEX.md).
+
    Prueba local, sin red: RWADAR_COMPROBAR_LOCAL=1 y un http://127.0.0.1:<puerto>
    servido por rwadar-acceso/probar-worker-local.mjs (lo hace
-   rwadar-acceso/comprobar-publicado.test.mjs).
+   rwadar-acceso/comprobar-publicado.test.mjs). En local se comprueba como en
+   producción, salvo con RWADAR_COMPROBAR_VISTA_PREVIA=1 (junto con
+   probar-worker-local.mjs --vista-previa), que lo hace como en una vista previa.
    ===================================================================== */
 import { createRequire } from 'node:module';
 import crypto from 'node:crypto';
@@ -39,6 +51,9 @@ if (!prueba && !/^https:\/\/[a-z0-9.-]+\.pages\.dev$/.test(base)) {
   console.error('Uso: node .github/comprobar-publicado.mjs https://rwadar.pages.dev');
   process.exit(2);
 }
+
+// Producción: la única base que se indexa. Cualquier otra *.pages.dev es una vista previa.
+const produccion = prueba ? process.env.RWADAR_COMPROBAR_VISTA_PREVIA !== '1' : base === 'https://rwadar.pages.dev';
 
 const academy = academyMod.cargarAcademy();
 const publicadas = academy.lecciones.filter(l => l.estado === 'publicado');
@@ -75,7 +90,7 @@ const fechaLarga = iso => {
   return `${d} de ${meses[m - 1]} de ${a}`;
 };
 
-console.log(`Comprobando ${base} …`);
+console.log(`Comprobando ${base} (${produccion ? 'producción' : 'vista previa: Pages añade noindex en la cabecera'}) …`);
 
 const portada = await pedir('/');
 ok('portada responde 200', portada.estado === 200);
@@ -103,8 +118,12 @@ ok(conCuenta ? 'el mapa del sitio lista el índice de la Academy y ninguna lecci
   pendientes.every(l => !sitemap.texto.includes(l.slug)));
 
 const indice = await pedir('/academy/');
-ok('el índice de la Academy responde 200 y se puede indexar', indice.estado === 200 && indice.texto.includes('data-academy-indice-pagina') &&
-  !/noindex/i.test(indice.cabeceras.get('x-robots-tag') || '') && indice.texto.includes('<meta name="robots" content="index,follow'));
+const indiceIndexable = indice.estado === 200 && indice.texto.includes('data-academy-indice-pagina') &&
+  indice.texto.includes('<meta name="robots" content="index,follow');
+if (produccion) ok('el índice de la Academy responde 200 y se puede indexar',
+  indiceIndexable && !/noindex/i.test(indice.cabeceras.get('x-robots-tag') || ''));
+else ok('el índice de la Academy responde 200 y su HTML se puede indexar (en la vista previa, la cabecera noindex es de Pages)',
+  indiceIndexable);
 if (conCuenta) ok('el índice dice que es gratis con cuenta y enlaza el alta con vuelta a la Academy',
   indice.texto.includes('Gratis con tu cuenta') && indice.texto.includes(`href="${academyMod.ALTA_ACADEMY}"`));
 ok(`el índice muestra ${publicadas.length} lecciones disponibles y ${pendientes.length} «Próximamente»`,

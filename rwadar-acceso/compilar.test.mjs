@@ -1,8 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 const require = createRequire(import.meta.url);
 const { construirWorker, RUTAS } = require('./compilar.cjs');
+const AQUI = path.dirname(fileURLToPath(import.meta.url));
 
 test('el artefacto sirve lectura pública de exportaciones y páginas generadas', async () => {
   const worker = (await import('data:text/javascript;base64,' + Buffer.from(construirWorker()).toString('base64'))).default;
@@ -27,6 +32,43 @@ test('el artefacto sirve lectura pública de exportaciones y páginas generadas'
 test('la compilación es determinista y no acepta un servidor con dependencias nuevas', () => {
   assert.equal(construirWorker(), construirWorker());
   assert.throws(() => construirWorker('no-existe'), /ENOENT/);
+});
+
+/* Cloudflare (workerd) toma cada exportación con nombre de _worker.js como un
+   punto de entrada: una exportación que no es una función (p. ej. un texto)
+   hace que la web no se pueda desplegar. Ocurrió con VERSION_AVISOS_NOVEDADES. */
+test('el worker compilado solo exporta funciones con nombre, además de default', async () => {
+  for (const [marca, opciones] of [['exportaciones', {}],
+    ['exportaciones-publica', { fichas: ['ofertas/viva.html'], academy: { acceso: 'publico', lecciones: [{ slug: 'viva', estado: 'publicado' }] } }]]) {
+    const modulo = await import('data:text/javascript;base64,' + Buffer.from(construirWorker(undefined, opciones)).toString('base64') + '#' + marca);
+    const conNombre = Object.keys(modulo).filter(nombre => nombre !== 'default');
+    assert.deepEqual(conNombre.filter(nombre => typeof modulo[nombre] !== 'function'), [], marca + ': exportaciones que no son funciones');
+    assert.deepEqual(conNombre.sort(), ['crearAccesoServidor', 'crearCarteraServidor', 'retornoSeguro'], marca);
+    assert.equal(typeof modulo.default?.fetch, 'function', marca);
+  }
+});
+
+test('la compilación rechaza un servidor que exporta algo que no es una función', () => {
+  const temporal = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-compilar-'));
+  try {
+    const raiz = path.join(temporal, 'rwadar-acceso');
+    fs.mkdirSync(raiz); fs.mkdirSync(path.join(temporal, 'rwadar-movil', 'lib'), { recursive: true });
+    fs.copyFileSync(path.join(AQUI, '..', 'rwadar-movil', 'lib', 'cartera.js'), path.join(temporal, 'rwadar-movil', 'lib', 'cartera.js'));
+    const servidor = fs.readFileSync(path.join(AQUI, 'servidor.mjs'), 'utf8');
+    const cartera = fs.readFileSync(path.join(AQUI, 'cartera-servidor.mjs'), 'utf8');
+    const escribir = (s, c = cartera) => { fs.writeFileSync(path.join(raiz, 'servidor.mjs'), s); fs.writeFileSync(path.join(raiz, 'cartera-servidor.mjs'), c); };
+    escribir(servidor);
+    assert.equal(construirWorker(raiz), construirWorker(), 'la copia sin cambios compila igual');
+    for (const extra of ["export const VERSION_PRUEBA = 'x';", 'export let marca = 1;', 'export var activo = false;',
+      'export class Prueba {}', 'const a = 1;\nexport { a };']) {
+      escribir(servidor + '\n' + extra + '\n');
+      assert.throws(() => construirWorker(raiz), /servidor\.mjs solo puede exportar funciones/, extra);
+      escribir(servidor, cartera + '\n' + extra + '\n');
+      assert.throws(() => construirWorker(raiz), /cartera-servidor\.mjs solo puede exportar funciones/, extra);
+    }
+    escribir(servidor + '\nexport async function otraPrueba() {}\n');
+    assert.doesNotThrow(() => construirWorker(raiz));
+  } finally { fs.rmSync(temporal, { recursive: true, force: true }); }
 });
 
 test('la salida compilada permite recursos legales y lectura del catálogo', async () => {

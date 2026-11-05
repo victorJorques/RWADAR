@@ -74,6 +74,58 @@ inventada da 404 sin mirar la cookie. Si Supabase no responde, la lección da
 No es un candado: el texto va en el paquete de la app. Nunca se pone material
 privado en la Academy.
 
+### Volver a `"publico"`: lo que cambia solo y lo que hay que cambiar a mano
+
+Con `"publico"`, `node rwadar-academy.js` y el worker reabren solos las
+lecciones (sin 303, indexables y otra vez en el `sitemap.xml`) y el tutorial 3D
+de la portada en el móvil, que deja de pedir sesión (lo decide el atributo
+`data-academy-acceso` del bloque generado de la portada).
+
+**No se revierten solos** y hay que cambiarlos a mano en el mismo cambio:
+
+- **Privacidad** (`rwadar-site/privacidad.html`): los textos que dicen que las
+  lecciones de la Academy son gratis *con cuenta* y que «para abrir una lección
+  comprobamos tu sesión» (hoy en las líneas 55, 76, 131-134, 170, 223 y 234;
+  busca «Academy» en el archivo).
+- **Destino tras confirmar el alta** (`rwadar-site/assets/acceso.js`,
+  `regresarTrasConfirmar`): sin lección guardada lleva a
+  `/academy/#cuenta-confirmada`, que enseña «Cuenta confirmada: Academy
+  desbloqueada» (`assets/academy-20261002.js`). En `acceso.js` está además el
+  texto «Las lecciones son gratis con cuenta» de `/acceso?volver=/academy/…`.
+- **Correo de confirmación** (`rwadar-app/plantillas-auth/confirmar-alta.html`,
+  «desbloquea gratis la Academy»), si ya está puesto en Supabase Auth (cambiarlo
+  es tocar Supabase en línea: con permiso de Víctor).
+
+**Pruebas que fijan `"cuenta"`** (comprobado el 05/11/2026 cambiando el valor a
+`"publico"` y regenerando): fallan hasta que se adapten al otro modo.
+
+- `rwadar-acceso/academy-cuenta.test.mjs`: «el worker lleva el modo y la lista
+  cerrada de lecciones de academy.json» y «el worker compilado aplica la puerta
+  con sus cabeceras de seguridad y su página 404».
+- `rwadar-acceso/compilar.test.mjs`: «una ficha que no está en la lista da 404
+  sin pedir a ASSETS su copia de conservación» y «la copia de conservación de
+  cualquier otro archivo retirado da 404, salvo en /assets/» (esperan el 404 de
+  la puerta en `/academy/no-existe` y `/academy/leccion-borrada`).
+- `rwadar-acceso/comprobar-publicado.test.mjs`: «el comprobador de la web
+  publicada pasa contra el worker compilado, sin red» y «el arnés local abre la
+  lección con la sesión de prueba y la cierra sin ella».
+- `probar-web.mjs`: «academy.json declara quién abre las lecciones y hoy es
+  "cuenta"», «el sitemap lleva el índice de la Academy y ninguna lección (van
+  con cuenta)», «cada lección publicada lleva una sola etiqueta robots con
+  noindex; el índice se indexa», «los datos estructurados del índice no anuncian
+  lecciones que no se indexan», «el índice y la portada dicen «Gratis con tu
+  cuenta»…» y «el worker publicado lleva la puerta de la Academy con la lista
+  cerrada de lecciones».
+- `probar-precarga.cjs`: «con "acceso": "cuenta", las 7 lecciones publicadas se
+  comprueban por su 303…», tres de los rechazos de «la verificación de
+  producción rechaza…» (lección servida a cualquiera, 303 a otra vuelta y 303
+  que se puede guardar) y «con "acceso": "publico", una lección vuelve a exigir
+  200…» (su producción simulada sigue la puerta de `academy.json`). Este archivo
+  se para en el primer fallo.
+
+`npm run test:tools`, `npm run test:mobile`, `probar-fichas.cjs` y el resto de
+`npm run test:acceso` pasan con los dos valores.
+
 Para ver la web con la puerta funcionando en local (y hacer capturas):
 `node rwadar-acceso/probar-worker-local.mjs --raiz=rwadar-publicado` (ver el
 comentario del principio de ese archivo).

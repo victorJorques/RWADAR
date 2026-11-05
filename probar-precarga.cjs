@@ -111,6 +111,25 @@ prueba('mutar HTML, JS o configuración invalida el sello',()=>{
     const p=path.join(base,a.ruta), original=fs.readFileSync(p);fs.appendFileSync(p,' ');assert.throws(()=>validarBase(base,sello));fs.writeFileSync(p,original);
   }
 });
+prueba('el contenido de las lecciones de la base sellada se valida aunque producción ya no enseñe sus bytes',()=>{
+  // Con "acceso": "cuenta", verificarHTTP solo ve el 303 de cada lección; validarBase
+  // revisa en la base su marca, título, canónica, robots, revisión legal y assets.
+  const recalcular=()=>{const archivos=inventario(base);return {...sello,archivos,sha256:huellaInventario(archivos)};};
+  const ruta='academy/'+academyPublicada().lecciones[0]+'.html', p=path.join(base,ruta), original=fs.readFileSync(p,'utf8');
+  for(const [cambio,mutado] of [
+    ['otra etiqueta robots',original.replace(/<meta name="robots" content="[^"]*">/,'<meta name="robots" content="index,follow">')],
+    ['sin la fecha de revisión legal',original.replace(/Contenido revisado el <time datetime="[^"]+">/,'Contenido revisado el <time>')],
+    ['sin la marca de lección',original.replace(/ data-academy-leccion="[^"]+"/,'')],
+    ['vaciada','<!doctype html><title>Lección</title>'],
+  ]) {
+    assert.notEqual(mutado,original,cambio);
+    try{
+      fs.writeFileSync(p,mutado);
+      assert.throws(()=>validarBase(base,recalcular()),new RegExp('Lecciones de la Academy incompletas en la base: '+ruta.replace(/[.]/g,'\\.')),cambio);
+    }finally{fs.writeFileSync(p,original);}
+  }
+  assert.equal(validarBase(base,sello).sha256,sello.sha256);
+});
 prueba('sello recalculado no puede omitir ficha, fuente, JS o imagen propia',()=>{
   for(const a of archivos.filter(a=>a.ruta==='ofertas/spiko-letras-del-tesoro-euro.html'||
     a.ruta===fotoOriginal||/assets\/rwadar-20260820\./.test(a.ruta)||/\.woff2$/.test(a.ruta))) {

@@ -168,6 +168,15 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS, academy } 
   if (/\bimport\s*(?:\(|[{*'"\w])/.test(servidor) || /\bexport\s+default\b/.test(servidor)) {
     throw new Error('El servidor de acceso debe ser autónomo sin export default.');
   }
+  /* Cloudflare (workerd) toma cada exportación con nombre del módulo principal
+     como un punto de entrada: una función pasa, pero un texto, un número o un
+     booleano exportados hacen que el despliegue falle. Solo se admiten
+     «export function» / «export async function» (compilar.test.mjs lo comprueba
+     además importando el worker). */
+  for (const [nombre, codigo] of [['servidor.mjs', servidor], ['cartera-servidor.mjs', cartera]]) {
+    const exportaciones = codigo.match(/\bexport\b(?!\s*(?:async\s+)?function\b)[^\n]{0,40}/g);
+    if (exportaciones) throw new Error(`${nombre} solo puede exportar funciones: ${exportaciones[0].trim()}`);
+  }
   return 'const carteraModelo = (() => { const module = { exports: {} };\n' + modelo + '\nreturn module.exports; })();\n' + cartera + '\n' +
     servidor + '\nconst configuracionRWAdar = Object.freeze(' + JSON.stringify(CONFIGURACION_PUBLICA) + ');\n' +
     'const cabecerasRWAdar = Object.freeze(' + JSON.stringify(CABECERAS_SEGURIDAD) + ');\n' +

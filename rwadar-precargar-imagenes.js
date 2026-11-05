@@ -12,6 +12,7 @@ const {leerBloquesCatalogo, validarCatalogoSnapshot} = require('./rwadar-fichas'
 const {sincronizar} = require('./rwadar-app/sincronizar');
 const {adelgazarJS} = require('./rwadar-adelgazar');
 const {construirWorker, RUTAS: RUTAS_ACCESO, academyPublicada} = require('./rwadar-acceso/compilar.cjs');
+const {comprobarLeccionesPublicadas} = require('./rwadar-academy');
 const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 const ARTEFACTOS_ACCESO = Object.freeze(['_worker.js','_routes.json']);
 const RAIZ = __dirname;
@@ -167,6 +168,11 @@ function validarBase(base, sello, {excluirLote}={}) {
   for(const nombre of ARTEFACTOS_ACCESO) assert(fs.readFileSync(archivoSeguro(base,nombre)).equals(Buffer.from(accesoEsperado[nombre],'utf8')),
     'Artefacto de acceso distinto de la fuente aprobada: '+nombre);
   seguridad.validarOrigenPublicable(base);
+  // Con "acceso": "cuenta" producción responde 303 a cada lección y verificarHTTP
+  // ya no compara sus bytes: lo que llevan (marca, título, canónica, robots,
+  // revisión legal y assets con huella) se comprueba aquí, en la base sellada.
+  const fallosLecciones=comprobarLeccionesPublicadas(base);
+  assert(fallosLecciones.length===0,'Lecciones de la Academy incompletas en la base: '+fallosLecciones.join('; '));
   return sello;
 }
 function archivoCatalogo(base) {
@@ -175,7 +181,8 @@ function archivoCatalogo(base) {
 }
 /* Academy con cuenta ("acceso": "cuenta", 05/11/2026): sin sesión, una lección
    publicada responde 303 a /acceso?volver=/academy/<slug> con no-store, así que
-   no se comparan sus bytes (ya van en el inventario sellado de la base); las
+   no se comparan sus bytes (van en el inventario sellado de la base, y
+   validarBase comprueba su contenido con comprobarLeccionesPublicadas); las
    «Próximamente» dan 404. Nunca se entra con una cuenta. */
 const SIN_GUARDAR = /(?:^|,)\s*no-store\s*(?:,|$)/;
 async function verificarHTTP(base, archivos, fetchFn=globalThis.fetch, academy=academyPublicada()) {
