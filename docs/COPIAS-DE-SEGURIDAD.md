@@ -123,10 +123,20 @@ prueba**, nunca directamente encima de la base en uso.
 
    Si la base nueva ya tiene aplicada la migración 30, su fila de
    `rwadar_novedades.configuracion` choca con la que trae la copia. Antes de
-   cargar, bórrala (`delete from rwadar_novedades.configuracion;`). Después de
-   cargar, aplica `rwadar-app/db/30_avisos_registrados_apagar.sql`: los avisos
-   quedan apagados hasta que Víctor los vuelva a encender.
-5. Abre la web y comprueba que salen las 26 plataformas.
+   cargar, bórrala (`delete from rwadar_novedades.configuracion;`).
+5. **Avisos a registrados (migración 30), siempre tras cargar:** vuelve a
+   aplicar `rwadar-app/db/30_avisos_registrados.sql` y pasa
+   `rwadar-app/db/30_avisos_registrados_verificar.sql`.
+   - Si la copia es anterior a la 30, no trae esa fila y la tabla se habría
+     quedado vacía: la 30 la vuelve a crear (su `insert … on conflict`).
+   - Si la trae, la 30 la deja con todo apagado: correo, push, aviso
+     automático de ofertas y casilla del alta, sin reloj de envío y con el
+     reloj diario de limpieza.
+   - Los avisos quedan apagados hasta que Víctor los vuelva a encender. Si la
+     web o la app enseñan la casilla de avisos, ejecuta también
+     `rwadar-app/db/30_avisos_registrados_activar_casilla.sql` (el
+     verificador lo avisa).
+6. Abre la web y comprueba que salen las 26 plataformas.
 
 ---
 

@@ -11,23 +11,31 @@
 -- de sesión (supabase/migrations/20261011074218_…); 28 y 28_REVERTIR; 29.
 -- Copia idéntica: supabase/migrations/20261105200000_avisos_registrados.sql.
 --
--- Todo nace APAGADO: correo, push y el aviso automático de ofertas. Nada
--- sale hasta que Víctor da cada paso (30_avisos_registrados_activar_*.sql).
--- Reaplicar este archivo vuelve siempre al estado apagado y sin reloj, como
--- la 22: después hay que repetir la activación. No borra filas.
+-- Todo nace APAGADO: correo, push, el aviso automático de ofertas y la
+-- casilla del alta. Nada sale hasta que Víctor da cada paso
+-- (30_avisos_registrados_activar_*.sql). Reaplicar este archivo vuelve
+-- siempre a ese estado, casilla incluida, sin reloj de envío y con el reloj
+-- diario de limpieza, como la 22: después hay que repetir la activación (y
+-- 30_avisos_registrados_activar_casilla.sql si la web o la app enseñan la
+-- casilla). No borra filas.
 --
 -- Por qué así:
 --   · Esquema privado `rwadar_novedades`, sin `usage` para los clientes y
 --     fuera de la API. Los `LIKE '%avisos_ciclo%'`/`'%push_soltar%'` de 22,
---     23, correo_fallo_cerrado y los verificadores no lo tocan: su reloj
---     solo llama a `rwadar_novedades.procesar()`.
+--     23, correo_fallo_cerrado y los verificadores no lo tocan: sus dos
+--     relojes solo llaman a `rwadar_novedades.procesar()` (envío, cada 5
+--     minutos; lo crean las activaciones) y `rwadar_novedades.limpiar()`
+--     (limpieza diaria, `rwadar-novedades-limpieza`; lo crea esta migración).
 --   · El permiso para los avisos es una casilla aparte y sin marcar (LSSI
 --     art. 21, RGPD art. 7.4) con doble confirmación: solo cuenta cuando
 --     `email_confirmed_at` pasa de vacío a una fecha y los metadatos del alta
 --     traen `avisos_novedades` como booleano JSON `true` y la versión vigente.
 --     Y solo con `casilla_activa` (nace false; la enciende
 --     30_avisos_registrados_activar_casilla.sql junto con la plantilla de Auth):
---     antes, nadie puede apuntarse escribiendo los metadatos a mano.
+--     antes, nadie puede apuntarse escribiendo los metadatos a mano. Además,
+--     el correo de confirmación tiene que haber salido después de encenderla
+--     (`confirmation_sent_at >= casilla_activada_el`): un alta anterior recibió
+--     el correo antiguo, sin el aviso, y confirmarla después no la apunta.
 --   · Los disparadores nunca tumban un alta, una confirmación ni la
 --     aprobación del catálogo: capturan el error y dejan un `warning` con el
 --     sqlstate, nunca el mensaje (podría llevar el correo).
@@ -77,8 +85,10 @@ create table if not exists rwadar_novedades.configuracion (
   correo_habilitado       boolean not null default false,
   push_habilitado         boolean not null default false,
   ofertas_automaticas     boolean not null default false,
-  -- Sin la casilla activa, los metadatos del alta no dan permiso.
+  -- Sin la casilla activa, los metadatos del alta no dan permiso. Con ella,
+  -- solo si el correo de confirmación salió después de `casilla_activada_el`.
   casilla_activa          boolean not null default false,
+  casilla_activada_el     timestamptz,
   correo_activado_el      timestamptz,
   push_activado_el        timestamptz,
   version_consentimiento  text not null,
@@ -87,7 +97,9 @@ create table if not exists rwadar_novedades.configuracion (
   constraint correo_activado_con_fecha
     check (not correo_habilitado or correo_activado_el is not null),
   constraint push_activado_con_fecha
-    check (not push_habilitado or push_activado_el is not null)
+    check (not push_habilitado or push_activado_el is not null),
+  constraint casilla_activada_con_fecha
+    check (not casilla_activa or casilla_activada_el is not null)
 );
 
 -- Una fila por cuenta. `novedades` es el permiso; la fila existe aunque sea
@@ -225,7 +237,8 @@ create index if not exists pushes_por_enviar
 -- Columnas añadidas tras la primera versión de la 30 (nunca aplicada): así
 -- reaplicarla sobre esa versión también las crea.
 alter table rwadar_novedades.configuracion
-  add column if not exists casilla_activa boolean not null default false;
+  add column if not exists casilla_activa boolean not null default false,
+  add column if not exists casilla_activada_el timestamptz;
 alter table rwadar_novedades.preferencias
   add column if not exists bienvenida_correo_el timestamptz,
   add column if not exists bienvenida_push_el timestamptz;
@@ -234,19 +247,33 @@ alter table rwadar_novedades.preferencias
 -- cambiar una sola palabra obliga a crear una versión nueva.
 insert into rwadar_novedades.configuracion as c
   (unica, correo_habilitado, push_habilitado, ofertas_automaticas, casilla_activa,
-   correo_activado_el, push_activado_el,
+   casilla_activada_el, correo_activado_el, push_activado_el,
    version_consentimiento, texto_consentimiento_es, texto_consentimiento_en)
-values (true, false, false, false, false, null, null,
+values (true, false, false, false, false, null, null, null,
   'novedades-v1-2026-11-05',
   'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.',
   'I want to receive RWAdar notices by email and, if I turn them on in my phone, as notifications: new offers on the radar and news about the website and the app. It''s optional: the Academy unlocks anyway. You can unsubscribe in every notice or in Profile. More information in Privacy.')
 on conflict (unica) do update
   set correo_habilitado = false, push_habilitado = false, ofertas_automaticas = false,
-      casilla_activa = false,
+      casilla_activa = false, casilla_activada_el = null,
       correo_activado_el = null, push_activado_el = null,
       version_consentimiento = excluded.version_consentimiento,
       texto_consentimiento_es = excluded.texto_consentimiento_es,
       texto_consentimiento_en = excluded.texto_consentimiento_en;
+
+-- La casilla no se enciende sin su fecha (también sobre una versión anterior
+-- de la tabla, que no tenía esta regla). Va después de apagarla arriba.
+do $casilla_con_fecha$
+begin
+  if not exists (select 1 from pg_constraint
+                  where conrelid = 'rwadar_novedades.configuracion'::regclass
+                    and conname = 'casilla_activada_con_fecha') then
+    alter table rwadar_novedades.configuracion
+      add constraint casilla_activada_con_fecha
+      check (not casilla_activa or casilla_activada_el is not null);
+  end if;
+end
+$casilla_con_fecha$;
 
 -- Bienvenidas ya encoladas sin marca (colas anteriores a estas columnas):
 -- la marca sale de la cola, para que la limpieza nunca haga repetirlas.
@@ -404,9 +431,12 @@ $funcion$;
 -- after insert or update of email_confirmed_at on auth.users. Solo actúa si
 -- el correo pasa de vacío a fecha (o la cuenta nace confirmada) y la cuenta
 -- no es anónima. El permiso, solo en el UPDATE, con la casilla activa
--- (`casilla_activa`), booleano JSON estricto y la versión vigente. Nada de
--- conversiones en `declare`: todo error queda dentro de los bloques y nunca
--- impide el alta ni la confirmación.
+-- (`casilla_activa`), un correo de confirmación enviado después de activarla
+-- (`confirmation_sent_at >= casilla_activada_el`: el de antes no llevaba el
+-- aviso), booleano JSON estricto y la versión vigente. `confirmation_sent_at`
+-- se lee con `to_jsonb(new)`: si Auth no tiene esa columna o viene vacía, no
+-- hay permiso. Nada de conversiones en `declare`: todo error queda dentro de
+-- los bloques y nunca impide el alta ni la confirmación.
 create or replace function rwadar_novedades.al_confirmar_cuenta()
 returns trigger
 language plpgsql security definer set search_path = ''
@@ -415,6 +445,8 @@ declare
   v_version text;
   v_correo boolean;
   v_casilla boolean;
+  v_casilla_el timestamptz;
+  v_enviado timestamptz;
   v_meta jsonb;
   v_permiso boolean;
   v_canal text;
@@ -430,16 +462,28 @@ begin
     end if;
 
     select c.version_consentimiento, c.correo_habilitado and c.correo_activado_el is not null,
-           c.casilla_activa
-      into v_version, v_correo, v_casilla
+           c.casilla_activa, c.casilla_activada_el
+      into v_version, v_correo, v_casilla, v_casilla_el
       from rwadar_novedades.configuracion c
      where c.unica;
 
     v_permiso := false;
     -- Sin la casilla activa (plantilla de Auth puesta, paso 4 de la
     -- activación), los metadatos ni se leen.
-    if tg_op = 'UPDATE' and v_version is not null and v_casilla is true then
-      v_meta := new.raw_user_meta_data;
+    if tg_op = 'UPDATE' and v_version is not null and v_casilla is true
+       and v_casilla_el is not null then
+      -- Cuándo salió el correo de confirmación. Una avería al leerlo deja
+      -- la fecha vacía (sin permiso), nunca la cuenta sin preferencias.
+      begin
+        v_enviado := (to_jsonb(new) ->> 'confirmation_sent_at')::timestamptz;
+      exception when others then
+        v_enviado := null;
+      end;
+      if v_enviado is null or v_enviado < v_casilla_el then
+        v_meta := null;
+      else
+        v_meta := new.raw_user_meta_data;
+      end if;
       if jsonb_typeof(v_meta) = 'object'
          and jsonb_typeof(v_meta -> 'avisos_novedades') = 'boolean'
          and (v_meta -> 'avisos_novedades') = 'true'::jsonb
@@ -1163,7 +1207,9 @@ $funcion$;
 -- Colas terminadas (anuncios y bienvenidas), a los 90 días; móviles sin
 -- actualizar, a los 180. Las bienvenidas no se repiten porque su marca vive
 -- en preferencias (bienvenida_correo_el, bienvenida_push_el) y se va con la
--- cuenta.
+-- cuenta. Solo borra filas de este esquema: ni red, ni Vault, ni envíos. La
+-- llaman el reloj diario `rwadar-novedades-limpieza` (existe siempre, también
+-- con todo apagado) y `procesar()` en cada vuelta.
 create or replace function rwadar_novedades.limpiar()
 returns integer
 language plpgsql security definer set search_path = ''
@@ -1172,6 +1218,9 @@ declare
   v_filas integer;
   v_total integer;
 begin
+  -- El mismo cerrojo que procesar(): desde ella lo vuelve a tomar sin
+  -- esperar; desde el reloj diario espera a que acabe la vuelta en curso.
+  perform pg_advisory_xact_lock(20261105, 30);
   delete from rwadar_novedades.correos
    where estado in ('aceptado', 'descartado', 'fallido', 'incierto')
      and coalesce(terminado_el, creado_el) < now() - interval '90 days';
@@ -1190,11 +1239,12 @@ begin
 end
 $funcion$;
 
--- La única función que llama el reloj `rwadar-novedades` (cada 5 minutos;
--- solo lo crean los scripts de activación). Cada paso va en su propio bloque:
--- una caída de Vault o de red no deshace lo ya leído ni lo de otro canal.
--- Con todo apagado no envía nada, pero limpia igual (la retención no depende
--- de los canales). Sin reloj, nadie la llama: ver el contrato, «Limpieza».
+-- La única función que llama el reloj de envío `rwadar-novedades` (cada 5
+-- minutos; solo lo crean los scripts de activación). Cada paso va en su
+-- propio bloque: una caída de Vault o de red no deshace lo ya leído ni lo de
+-- otro canal. Con todo apagado no envía nada, pero limpia igual. La
+-- retención no depende de este reloj: el diario `rwadar-novedades-limpieza`
+-- llama a limpiar() aunque no haya ninguno de envío (contrato, «Limpieza»).
 create or replace function rwadar_novedades.procesar()
 returns jsonb
 language plpgsql security definer set search_path = ''
@@ -1565,23 +1615,33 @@ end
 $acl_vault_net$;
 
 -- ---------------------------------------------------------------------
--- 9 · Estado seguro: sin reloj y cuentas existentes rellenadas
+-- 9 · Estado seguro: sin reloj de envío, con el de limpieza, y cuentas
+--     existentes rellenadas
 -- ---------------------------------------------------------------------
 -- El nombre del reloj no es una frontera de seguridad: se quita cualquiera
--- que llame a rwadar_novedades. Solo los scripts de activación lo crean.
+-- que llame a rwadar_novedades, también el de limpieza, que se vuelve a crear
+-- abajo tal cual (así reaplicar arregla uno alterado). El de envío
+-- (`rwadar-novedades`) solo lo crean los scripts de activación.
 do $relojes$
 declare
   v_job record;
 begin
   for v_job in
     select jobname from cron.job
-     where jobname = 'rwadar-novedades'
+     where jobname in ('rwadar-novedades', 'rwadar-novedades-limpieza')
         or lower(coalesce(command, '')) like '%rwadar_novedades.%'
   loop
     perform cron.unschedule(v_job.jobname);
   end loop;
 end
 $relojes$;
+
+-- Retención con todo apagado: el reloj diario de limpieza existe desde la
+-- instalación, aunque no se active nunca ningún canal. limpiar() no hace red.
+-- Su orden no casa con ningún LIKE antiguo de 22, 23, correo_fallo_cerrado,
+-- push_fallo_cerrado ni fresh_install_verificar. Solo fallo_cerrado.sql lo
+-- quita (emergencia); reaplicar este archivo lo recrea.
+select cron.schedule('rwadar-novedades-limpieza', '41 4 * * *', $$ select rwadar_novedades.limpiar() $$);
 
 -- Las cuentas ya confirmadas reciben sus preferencias con novedades = false:
 -- nadie se apunta solo; lo activan en Perfil.

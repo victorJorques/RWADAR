@@ -2,7 +2,9 @@
 -- RWAdar 30 · verificador de los avisos a registrados
 -- Solo lee: no envía, no agenda y no devuelve secretos. Cualquier
 -- desviación aborta con una excepción. Pasa con todo apagado (estado de
--- instalación) y después de cada activación.
+-- instalación) y después de cada activación. Con la casilla del alta
+-- inactiva avisa (WARNING) de que, si la web o la app la enseñan, hay que
+-- ejecutar 30_avisos_registrados_activar_casilla.sql.
 -- =====================================================================
 begin transaction read only;
 
@@ -23,13 +25,15 @@ begin
      or to_regclass('rwadar_novedades.configuracion') is null then
     raise exception '30: falta el esquema rwadar_novedades (aplicar 30_avisos_registrados.sql)';
   end if;
-  -- Columnas de la versión actual: casilla del alta y marcas de bienvenida.
+  -- Columnas de la versión actual: casilla del alta con su fecha y marcas
+  -- de bienvenida.
   if (select count(*) from pg_attribute
        where not attisdropped and attnum > 0
-         and ((attrelid = to_regclass('rwadar_novedades.configuracion') and attname = 'casilla_activa')
+         and ((attrelid = to_regclass('rwadar_novedades.configuracion')
+               and attname in ('casilla_activa', 'casilla_activada_el'))
               or (attrelid = to_regclass('rwadar_novedades.preferencias')
-                  and attname in ('bienvenida_correo_el', 'bienvenida_push_el')))) <> 3 then
-    raise exception '30: faltan casilla_activa o las marcas de bienvenida (reaplicar 30_avisos_registrados.sql)';
+                  and attname in ('bienvenida_correo_el', 'bienvenida_push_el')))) <> 4 then
+    raise exception '30: faltan casilla_activa, casilla_activada_el o las marcas de bienvenida (reaplicar 30_avisos_registrados.sql)';
   end if;
   foreach v_rol in array array['public', 'anon', 'authenticated'] loop
     if has_schema_privilege(v_rol, 'rwadar_novedades', 'USAGE')
@@ -53,11 +57,32 @@ begin
      or (v_cfg.push_habilitado and v_cfg.push_activado_el is null) then
     raise exception '30: un canal encendido sin fecha de activación';
   end if;
+  if v_cfg.casilla_activa and v_cfg.casilla_activada_el is null then
+    raise exception '30: casilla del alta activa sin fecha (ejecutar 30_avisos_registrados_activar_casilla.sql)';
+  end if;
 
-  -- Reloj: uno solo y canónico con algo encendido; ninguno con todo apagado.
+  -- Reloj diario de limpieza: siempre, uno y tal como lo crea la 30 (la
+  -- retención no depende de que haya algo encendido).
+  if (select count(*) from cron.job where jobname = 'rwadar-novedades-limpieza') <> 1
+     or not exists (
+       select 1 from cron.job
+        where jobname = 'rwadar-novedades-limpieza' and schedule = '41 4 * * *' and active
+          and lower(btrim(command)) = 'select rwadar_novedades.limpiar()') then
+    raise exception '30: falta, está duplicado o alterado el reloj diario de limpieza rwadar-novedades-limpieza (reaplicar 30_avisos_registrados.sql)';
+  end if;
+  if position('net.' in lower(pg_get_functiondef('rwadar_novedades.limpiar()'::regprocedure))) > 0
+     or position('vault.' in lower(pg_get_functiondef('rwadar_novedades.limpiar()'::regprocedure))) > 0 then
+    raise exception '30: rwadar_novedades.limpiar() no debe hacer red ni leer Vault';
+  end if;
+
+  -- Reloj de envío: uno solo y canónico con algo encendido; ninguno con todo
+  -- apagado. Cuenta cualquier reloj que llame a rwadar_novedades salvo el de
+  -- limpieza canónico.
   select count(*) into v_relojes from cron.job
-   where jobname = 'rwadar-novedades'
-      or lower(coalesce(command, '')) like '%rwadar_novedades.%';
+   where (jobname = 'rwadar-novedades'
+          or lower(coalesce(command, '')) like '%rwadar_novedades.%')
+     and not (jobname = 'rwadar-novedades-limpieza'
+              and lower(btrim(coalesce(command, ''))) = 'select rwadar_novedades.limpiar()');
   if v_cfg.correo_habilitado or v_cfg.push_habilitado then
     if v_relojes <> 1 or not exists (
          select 1 from cron.job
@@ -66,7 +91,7 @@ begin
       raise exception '30: con avisos encendidos debe haber un solo reloj rwadar-novedades cada 5 minutos';
     end if;
   elsif v_relojes <> 0 then
-    raise exception '30: con todo apagado no puede quedar ningún reloj de rwadar_novedades';
+    raise exception '30: con todo apagado no puede quedar ningún reloj de envío de rwadar_novedades';
   end if;
   if (select count(*) from cron.job where jobname = 'rwadar-retencion-dispositivos') <> 1 then
     raise exception '30: falta el reloj independiente de retención de la 22';
@@ -193,9 +218,12 @@ begin
           and tgfoid = 'rwadar_novedades.al_confirmar_cuenta()'::regprocedure) then
     raise exception '30: falta o está desactivado el disparador de confirmación en auth.users';
   end if;
-  -- El permiso del alta solo se lee con la casilla activa (versión actual).
-  if position('casilla_activa' in pg_get_functiondef('rwadar_novedades.al_confirmar_cuenta()'::regprocedure)) = 0 then
-    raise exception '30: el disparador de confirmación no comprueba casilla_activa (reaplicar 30_avisos_registrados.sql)';
+  -- El permiso del alta solo se lee con la casilla activa y un correo de
+  -- confirmación enviado después de activarla (versión actual).
+  if position('casilla_activa' in pg_get_functiondef('rwadar_novedades.al_confirmar_cuenta()'::regprocedure)) = 0
+     or position('casilla_activada_el' in pg_get_functiondef('rwadar_novedades.al_confirmar_cuenta()'::regprocedure)) = 0
+     or position('confirmation_sent_at' in pg_get_functiondef('rwadar_novedades.al_confirmar_cuenta()'::regprocedure)) = 0 then
+    raise exception '30: el disparador de confirmación no comprueba casilla_activa y confirmation_sent_at (reaplicar 30_avisos_registrados.sql)';
   end if;
   if not exists (
        select 1 from pg_trigger
@@ -231,14 +259,20 @@ begin
     raise exception '30: Vault o las colas de pg_net están expuestos a clientes';
   end if;
 
+  -- fallo_cerrado.sql y reaplicar la 30 apagan la casilla: si la web o la
+  -- app la siguen enseñando, marcarla no guardaría el permiso.
+  if not v_cfg.casilla_activa then
+    raise warning 'RWAdar 30: casilla del alta inactiva: si la web o la app enseñan la casilla, ejecuta 30_avisos_registrados_activar_casilla.sql (hasta entonces, marcarla no guarda el permiso)';
+  end if;
+
   select count(*) into v_retenidos from rwadar_novedades.anuncios where estado = 'retenido';
-  raise notice 'RWAdar 30 OK: casilla del alta %, correo %, push %, aviso automático de ofertas %, % anuncio(s) retenido(s), %',
+  raise notice 'RWAdar 30 OK: casilla del alta %, correo %, push %, aviso automático de ofertas %, % anuncio(s) retenido(s), %, reloj diario de limpieza',
     case when v_cfg.casilla_activa then 'activa' else 'inactiva' end,
     case when v_cfg.correo_habilitado then 'encendido' else 'apagado' end,
     case when v_cfg.push_habilitado then 'encendido' else 'apagado' end,
     case when v_cfg.ofertas_automaticas then 'encendido' else 'apagado' end,
     v_retenidos,
-    case when v_relojes = 1 then 'reloj rwadar-novedades cada 5 minutos' else 'sin reloj' end;
+    case when v_relojes = 1 then 'reloj rwadar-novedades cada 5 minutos' else 'sin reloj de envío' end;
 end
 $verificador$;
 

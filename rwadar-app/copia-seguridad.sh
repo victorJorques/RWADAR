@@ -4,10 +4,12 @@
 # ---------------------------------------------------------------------
 # Hace una copia de lo que no se puede volver a generar desde el
 # repositorio: las cuentas (auth), los datos de la app (public), el
-# catálogo editorial (rwadar_catalogo), la cartera de cada cuenta
-# (rwadar_cuentas_privadas) y los avisos a registrados (rwadar_novedades:
-# permisos, bajas, móviles y colas). La cifra con una contraseña y
-# comprueba que se puede descifrar y leer antes de darla por buena.
+# catálogo editorial (rwadar_catalogo) y los avisos a registrados
+# (rwadar_novedades: permisos, bajas, móviles y colas). La cartera de cada
+# cuenta (rwadar_cuentas_privadas) NO entra todavía, a propósito: ver
+# ESQUEMAS más abajo y docs/COPIAS-DE-SEGURIDAD.md. La cifra con una
+# contraseña y comprueba que se puede descifrar y leer antes de darla por
+# buena.
 #
 # Lo usa el workflow `.github/workflows/copia-seguridad.yml`, pero
 # también funciona a mano desde Git Bash o Linux:
