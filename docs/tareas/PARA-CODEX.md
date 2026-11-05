@@ -37,8 +37,16 @@ nada publicado, sin EAS.** Plan, decisiones y pasos de activación:
   [`APK-1.4.2-NOTIFICACIONES.md`](APK-1.4.2-NOTIFICACIONES.md). La rama no toca
   `app.json`: la OTA a la 1.4.1 sigue compatible (guardián `ok:true`).
 - **Revisión:** diseño revisado antes de programar (legal, seguridad,
-  operaciones); revisión independiente del código con verificación doble, y
-  corrección de lo confirmado. Lo más grave que se cazó: el `_worker.js`
+  operaciones); dos revisiones independientes del código, cada hallazgo
+  verificado por dos agentes, y corrección de todo lo confirmado. La segunda
+  comprobó que la primera ronda de arreglos funcionaba y cazó, entre otros:
+  que «apagar» desactivaba la casilla del alta para siempre (ahora hay
+  `30_avisos_registrados_apagar_casilla.sql` aparte); que un alta anterior a
+  la casilla y confirmada después daba permiso (ahora se exige
+  `confirmation_sent_at` ≥ `casilla_activada_el`); que sin envío activo no se
+  limpiaba nada (reloj diario `rwadar-novedades-limpieza`); que Atrás podía
+  quedar atrapado en `/acceso` (la puerta del tutorial ya no navega sola), y
+  una carrera entre «Borrar datos» y la renovación diaria del móvil. Lo más grave que se cazó: el `_worker.js`
   exportaba un texto y Cloudflare no lo habría desplegado (comprobado con
   workerd: «Incorrect type for map entry … not of type 'function or
   ExportedHandler'»), y el comprobador posterior a publicar habría fallado
