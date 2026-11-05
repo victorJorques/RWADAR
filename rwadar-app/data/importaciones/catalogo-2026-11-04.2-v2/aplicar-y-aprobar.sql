@@ -368,7 +368,7 @@ begin
         and p.aval is null
         and p.nota is null
         and p.etiqueta_descarte::text = 'Sin blockchain'
-        and p.motivo_descarte::text = 'Es un mercado regulado (MTF) de acciones sobre obras de arte que no usa blockchain: su propia web dice que, por ahora, no la usa de ninguna forma. RWAdar solo recoge plataformas de activos tokenizados.'
+        and p.motivo_descarte::text = 'ARTEX se presenta como un sistema multilateral de negociación (MTF) regulado de acciones sobre obras de arte, y su propia web dice que, por ahora, no usa blockchain de ninguna forma. RWAdar solo recoge plataformas de activos tokenizados.'
         and p.verificada_el = '2026-11-04'::date
         and (select count(*) from public.fuentes f where f.plataforma_id = p.id) = 1 and exists (select 1 from public.fuentes f where f.plataforma_id = p.id and f.url = 'https://www.artexgm.com/faq' and f.titulo = 'ARTEX · preguntas frecuentes: por ahora no usa blockchain de ninguna forma'
           and f.publicada_el is null
@@ -389,7 +389,7 @@ update public.plataformas set estado = 'descartada',
     aval = null,
     nota = null,
     etiqueta_descarte = 'Sin blockchain',
-    motivo_descarte = 'Es un mercado regulado (MTF) de acciones sobre obras de arte que no usa blockchain: su propia web dice que, por ahora, no la usa de ninguna forma. RWAdar solo recoge plataformas de activos tokenizados.',
+    motivo_descarte = 'ARTEX se presenta como un sistema multilateral de negociación (MTF) regulado de acciones sobre obras de arte, y su propia web dice que, por ahora, no usa blockchain de ninguna forma. RWAdar solo recoge plataformas de activos tokenizados.',
     verificada_el = '2026-11-04'::date
   where slug = 'artex-global-markets' and estado = 'en_radar';
 insert into public.fuentes (plataforma_id,url,titulo,publicada_el,consultada_el) select id,'https://www.artexgm.com/faq','ARTEX · preguntas frecuentes: por ahora no usa blockchain de ninguna forma',null,'2026-11-04'::date from public.plataformas where slug = 'artex-global-markets' on conflict (plataforma_id,url) do nothing;
@@ -407,7 +407,7 @@ begin
         and p.aval is null
         and p.nota is null
         and p.etiqueta_descarte::text = 'Sin blockchain'
-        and p.motivo_descarte::text = 'Es un mercado regulado (MTF) de acciones sobre obras de arte que no usa blockchain: su propia web dice que, por ahora, no la usa de ninguna forma. RWAdar solo recoge plataformas de activos tokenizados.'
+        and p.motivo_descarte::text = 'ARTEX se presenta como un sistema multilateral de negociación (MTF) regulado de acciones sobre obras de arte, y su propia web dice que, por ahora, no usa blockchain de ninguna forma. RWAdar solo recoge plataformas de activos tokenizados.'
         and p.verificada_el = '2026-11-04'::date
         and (select count(*) from public.fuentes f where f.plataforma_id = p.id) = 1 and exists (select 1 from public.fuentes f where f.plataforma_id = p.id and f.url = 'https://www.artexgm.com/faq' and f.titulo = 'ARTEX · preguntas frecuentes: por ahora no usa blockchain de ninguna forma'
           and f.publicada_el is null

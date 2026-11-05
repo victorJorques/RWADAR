@@ -6,7 +6,7 @@
   "revisionAnterior": "cf79e4a4-f828-96ce-681b-ae69c3d1b81b",
   "revisionNueva": "723968ce-00f7-7f42-b3e3-6c7f401b8f89",
   "archivos": {
-    "cambios-plataformas.json": "86c4b368fd3958509c7b7fa01615dc9747712ae52abfade659e1d159a39f897b"
+    "cambios-plataformas.json": "882beb507836e7f3eb20c5b93a28a79671a8e645ade48be64b43b0eec17e2bf0"
   },
   "cuentas": {
     "plataformasAntes": 26,
@@ -100,7 +100,7 @@
       "slug": "artex-global-markets",
       "columna": "motivo_descarte",
       "antes": null,
-      "despues": "Es un mercado regulado (MTF) de acciones sobre obras de arte que no usa blockchain: su propia web dice que, por ahora, no la usa de ninguna forma. RWAdar solo recoge plataformas de activos tokenizados."
+      "despues": "ARTEX se presenta como un sistema multilateral de negociación (MTF) regulado de acciones sobre obras de arte, y su propia web dice que, por ahora, no usa blockchain de ninguna forma. RWAdar solo recoge plataformas de activos tokenizados."
     },
     {
       "slug": "artex-global-markets",

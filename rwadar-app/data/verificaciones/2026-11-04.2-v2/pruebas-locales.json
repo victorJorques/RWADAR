@@ -1,10 +1,10 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-05T00:14:28.613Z",
+  "ejecutadoEl": "2026-11-05T00:43:12.641Z",
   "etiqueta": "2026-11-04.2",
   "revisionAnterior": "cf79e4a4-f828-96ce-681b-ae69c3d1b81b",
   "revisionNueva": "723968ce-00f7-7f42-b3e3-6c7f401b8f89",
-  "sha256AplicarYAprobar": "a4d99551d47d65f09a9a164ecfd2a619a8afd3d019967a1560d1626497513e15",
+  "sha256AplicarYAprobar": "2ce8084d049a7ab309723c4d8a2ed9a0a65fcd150a51b0e910fd2396363dfb33",
   "pruebas": [
     "inventario: una transacción serializable; guarda; el lote nuevo en rwadar_catalogo (1 revisión, 25 plataformas sin ARTEX, 24 ofertas y sus fuentes); 1 update de public.plataformas (ARTEX a «descartada», solo si sigue en el radar) y 1 insert en public.fuentes (su página de preguntas frecuentes), con su guarda y su comprobación; aprobación al final; sin borrados, esquema ni permisos",
     "cadena de producción 22/10 → 2026-11-04 (con los cambios de public.plataformas de la .8 y de la 2026-11-04 en 02_seed.sql): la publicada es la cf79e4a4",
