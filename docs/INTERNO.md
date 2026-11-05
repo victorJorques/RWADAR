@@ -64,7 +64,7 @@ en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
 | **Google y RSS** | Fichas, sitemap y RSS vuelven a estar disponibles sin sesión. Sus respuestas públicas se comprobaron el 26/10; esto no acredita que Google ya haya vuelto a indexarlas. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
 | **Legal** | Aviso legal, condiciones, privacidad y transparencia comercial publicados. |
-| **RWAdar Academy** | **Publicada** en la web (`/academy/`) desde el 5/10. 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. En la app, pestaña Academy. Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). |
+| **RWAdar Academy** | **Publicada** en la web (`/academy/`) desde el 5/10. 9 lecciones de Eric en 3 niveles: 1 a 7 publicadas, 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. En la app, pestaña Academy. Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). **Preparado el 05/11, sin publicar:** en la web, las lecciones y el tutorial 3D del móvil pasan a pedir una cuenta gratis; el índice sigue público. En la app ya la pedía. Falta el visto bueno de Eric y el permiso de Víctor para publicar ([plan](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md)). |
 | **Tipografía** | Geist completa para español. La web publicada reutiliza los archivos locales: títulos de tarjeta de 20 px, datos de decisión de 16 px y secundarios de 14 px. El candidato Android también aumenta el tamaño de lectura y navegación; su comprobación se acredita por separado. |
 
 **Cuentas:** consultar la web no requiere cuenta. Las funciones personales sí
@@ -160,7 +160,14 @@ APK y evidencia coinciden con sus sumas y la firma del APK es válida. El detall
 actual está en [`VERIFICACION-ANDROID-1.3.2-2026-10-22.md`](VERIFICACION-ANDROID-1.3.2-2026-10-22.md)
 y [`VERIFICACION-PUBLICACION-2026-10-22.md`](VERIFICACION-PUBLICACION-2026-10-22.md).
 
-**En pausa:** opiniones, comunidad, avisos de cambios por correo y avisos push. Seguridad anterior:
+**En pausa:** opiniones, comunidad, avisos de cambios por correo y avisos push.
+**Avisos a registrados (preparados el 05/11, todo apagado):** correo de bienvenida al confirmar la cuenta;
+avisos de ofertas nuevas y de actualizaciones por correo y notificación, solo para quien marque una casilla
+aparte, sin marcar; baja en cada correo; lista de avisos dentro de la app. La base de datos (migración 30),
+la web y la app están hechas y probadas en local, pero no se ha aplicado ni publicado nada. Para encenderlos
+hacen falta, por orden y con permiso de Víctor: revisión legal, aplicar la 30, dominio propio y Brevo para el
+correo, y Firebase y un APK 1.4.2 para las notificaciones del sistema. Plan y pasos:
+[`tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md). Seguridad anterior:
 [`seguridad/REVISION-SEGURIDAD-2026-10-05.md`](seguridad/REVISION-SEGURIDAD-2026-10-05.md).
 Manual de bienvenida de Eric recibido, pendiente de corregir su sección 8:
 [`manual/LEEME.md`](manual/LEEME.md).
