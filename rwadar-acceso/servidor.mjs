@@ -18,7 +18,16 @@ const GRUPO_LIMITE = Object.freeze({ '/api/acceso/entrar': 'clave', '/api/acceso
   '/api/acceso/baja': 'baja' });
 // Avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md): la
 // casilla del alta es opcional y versionada. Cambiar su texto obliga a otra versión.
-export const VERSION_AVISOS_NOVEDADES = 'novedades-v1-2026-11-05';
+// Ninguna de estas dos constantes se exporta: este archivo acaba dentro de
+// _worker.js y Cloudflare (workerd) rechaza el despliegue si una exportación con
+// nombre no es un manejador o una clase (un texto o un booleano lo tumban). Las
+// pruebas las leen en el objeto que devuelve crearAccesoServidor.
+const VERSION_AVISOS_NOVEDADES = 'novedades-v1-2026-11-05';
+// El mismo interruptor, con el mismo nombre, que la web (assets/acceso.js y
+// assets/rwadar-20260820.js) y la app (lib/modo-local.js). Apagado, el alta
+// sigue exigiendo que avisosNovedades, si viene, sea un booleano, pero no lo
+// pasa a los metadatos: nadie se apunta a los avisos mientras no estén activos.
+const AVISOS_NOVEDADES_REMOTOS = false;
 const MENSAJE_BAJA = 'Si el enlace era válido, ya no recibirás avisos de novedades.';
 // Academy con cuenta: modos de academy.json y forma de un slug publicado.
 const ACCESOS_ACADEMY = Object.freeze(['cuenta', 'publico']);
@@ -176,7 +185,11 @@ async function leerTexto(result, maxBytes) {
   return text;
 }
 
-export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora = Date.now, academy = null } = {}) {
+// avisosNovedades: solo para las pruebas, que encienden el interruptor sin
+// tocar el archivo. El worker y functions/_middleware.js no lo pasan.
+export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora = Date.now, academy = null,
+  avisosNovedades = AVISOS_NOVEDADES_REMOTOS } = {}) {
+  if (typeof avisosNovedades !== 'boolean') throw new Error('avisos_invalidos');
   const limitador = crearLimitador(ahora);
   // Sin configuración de la Academy (o con "publico") no hay puerta: como antes.
   // El worker la recibe de construirWorker, sacada de rwadar-academy/academy.json.
@@ -400,10 +413,11 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
           if (data.aceptaCondiciones !== true) throw new Error('condiciones');
           const name = typeof data.nombre === 'string' ? data.nombre.trim() : '';
           if (name.length > 60 || /[\u0000-\u001f\u007f]/.test(name)) throw new Error('nombre_invalido');
-          // Casilla opcional de avisos: solo un booleano JSON. Con true viajan la
-          // versión vigente y el canal; el permiso lo guarda la base al confirmar.
+          // Casilla opcional de avisos: solo un booleano JSON. Con true, y solo con
+          // el interruptor encendido, viajan la versión vigente y el canal; el
+          // permiso lo guarda la base al confirmar. Apagado, se valida y se ignora.
           if (data.avisosNovedades !== undefined && typeof data.avisosNovedades !== 'boolean') throw new Error('solicitud_invalida');
-          const avisos = data.avisosNovedades === true
+          const avisos = avisosNovedades && data.avisosNovedades === true
             ? { avisos_novedades: true, avisos_version: VERSION_AVISOS_NOVEDADES, avisos_canal: 'web' } : {};
           const email = correo(data.correo), password = clave(data.clave, true), extra = seguridad(data);
           reservarIntento(path, request);
@@ -458,5 +472,6 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
       return respuesta({ error: code }, code === 'sesion_necesaria' ? 401 : 400);
     }
   }
-  return { atender, verificar };
+  return { atender, verificar,
+    avisosNovedades: Object.freeze({ activos: avisosNovedades, version: VERSION_AVISOS_NOVEDADES }) };
 }
