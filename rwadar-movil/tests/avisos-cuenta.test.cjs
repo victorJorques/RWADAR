@@ -525,6 +525,39 @@ test('renovación: si el sistema no contesta, suelta a los interruptores y no re
   assert.equal(r.almacen.datos.token, null);
 });
 
+test('renovación: si se pasa de plazo ya registrando y se desactiva entretanto, deshace su registro', async () => {
+  const r = renovacion({ plazoRenovacion: 30 });
+  let soltar;
+  r.f.avisos.registrarPush = (token, plataforma) => new Promise((resolver) => {
+    soltar = () => { r.f.llamadas.push(['registrar', token, plataforma]); resolver(true); };
+  });
+  await assert.rejects(r.g.renovarMovil(r.servidor), /plazo/);
+  assert.equal(typeof soltar, 'function', 'el plazo vence con la llamada a la base en curso');
+  assert.deepEqual(await r.g.desactivarMovil(), { ok: true }, 'desactivar no espera');
+  assert.equal(r.almacen.datos.token, null);
+  soltar();
+  for (let i = 0; i < 5; i++) await new Promise((resolver) => setImmediate(resolver));
+  assert.deepEqual(r.f.llamadas.filter(([n]) => n === 'registrar' || n === 'quitar'),
+    [['quitar', TOKEN], ['registrar', TOKEN, 'android'], ['quitar', TOKEN]], 'el registro tardío se deshace');
+  assert.equal(r.almacen.datos.token, null, 'y no vuelve a guardar el token');
+});
+
+test('renovación: si otra activación cambió la clave mientras tanto, no la pisa y solo deshace un token distinto', async () => {
+  for (const [tokenSistema, quitados] of [[TOKEN, [['quitar', TOKEN]]], [TOKEN_NUEVO, []]]) {
+    const r = renovacion({ tokenSistema });
+    let entregar;
+    r.push.obtenerToken = () => new Promise((resolver) => { entregar = resolver; });
+    const renovando = r.g.renovarMovil(r.servidor);
+    for (let i = 0; i < 10 && !entregar; i++) await new Promise((resolver) => setImmediate(resolver));
+    r.almacen.datos.token = TOKEN_NUEVO;
+    entregar({ ok: true, estado: 'permitido', token: tokenSistema, plataforma: 'android' });
+    assert.deepEqual(await renovando, { renovado: false, motivo: 'cambiado' }, tokenSistema);
+    assert.deepEqual(r.f.llamadas.filter(([n]) => n === 'quitar'), quitados, tokenSistema);
+    assert.equal(r.almacen.datos.token, TOKEN_NUEVO, 'la clave que manda es la que hay');
+    assert.equal(r.almacen.llamadas.some(([n]) => n === 'guardarToken'), false);
+  }
+});
+
 test('al activar el móvil queda apuntado como renovado ese día', async () => {
   const r = renovacion({ token: null });
   assert.deepEqual(await r.g.activarMovil(r.servidor), { ok: true, estado: 'activo' });

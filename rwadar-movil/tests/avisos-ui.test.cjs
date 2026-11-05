@@ -371,6 +371,15 @@ const RECIENTES = [
     enlace: 'https://rwadar.pages.dev/academy/', creado_el: '2026-11-01T10:00:00Z' },
 ];
 
+/* La tarjeta guarda si está desplegada: se pinta en un React aislado propio,
+   aparte del hook, para que ese estado se conserve entre pintadas. */
+function tarjetaViva() {
+  const h = crearReact();
+  const modulo = cargarComponente('AvisosNovedades.js', h.react, { '../lib/avisos': {}, '../lib/datos': {} });
+  return (props) => h.pintar(() => modulo.TarjetaAvisosInicio(props));
+}
+const verTodos = (arbol) => nodos(arbol).find((n) => n.type === 'Pressable' && /^Ver (todos \(\d+\)|menos)$/.test(n.props.accessibilityLabel));
+
 test('Inicio: los últimos avisos válidos, con punto de no leído que se guarda al abrirlos', async () => {
   const p = perfil({ capacidad: false, recientes: RECIENTES });
   await p.esperar();
@@ -378,13 +387,14 @@ test('Inicio: los últimos avisos válidos, con punto de no leído que se guarda
   assert.deepEqual(hook.avisos.map((x) => x.id), ['9', 'bienvenida'], 'el aviso con enlace ajeno no se enseña');
   assert.equal(hook.noLeidos, 2);
   assert.deepEqual(p.rpc.find(([n]) => n === 'mis_avisos_recientes'), ['mis_avisos_recientes', { p_limite: 10 }]);
-  const abiertos = [], marcados = [];
-  const tarjeta = () => p.modulo.TarjetaAvisosInicio({ avisos: p.estadoHook().avisos, leidos: p.estadoHook().leidos,
+  const abiertos = [], marcados = [], pintarTarjeta = tarjetaViva();
+  const tarjeta = () => pintarTarjeta({ avisos: p.estadoHook().avisos, leidos: p.estadoHook().leidos,
     onAbrir: (aviso) => { abiertos.push(aviso.id); p.estadoHook().marcarLeidos([aviso.id]); },
     onMarcarLeidos: (ids) => { marcados.push(ids); p.estadoHook().marcarLeidos(ids); } });
   let t = tarjeta();
   assert.match(texto(t), /Avisos/);
   assert.match(texto(t), /2 fichas nuevas en el radar de RWAdar/);
+  assert.equal(verTodos(t), undefined, 'con 3 o menos ya se ven todos: no hay «Ver todos»');
   const aviso = boton(t, '2 fichas nuevas en el radar de RWAdar');
   assert.equal(aviso.props.accessibilityHint, 'Sin leer');
   aviso.props.onPress();
@@ -399,41 +409,73 @@ test('Inicio: los últimos avisos válidos, con punto de no leído que se guarda
   assert.deepEqual(marcados, [['bienvenida']]);
   assert.equal(p.estadoHook().noLeidos, 0);
   assert.equal(boton(tarjeta(), 'Marcar como leídos'), undefined);
-  const vacia = p.modulo.TarjetaAvisosInicio({ avisos: [], leidos: [] });
+  const vacia = tarjetaViva()({ avisos: [], leidos: [] });
   assert.match(texto(vacia), /Aquí verás las ofertas nuevas del radar/);
   p.h.desmontar();
 });
 
-test('Inicio con más de 3 avisos sin leer: «Marcar como leídos» marca todos los cargados y la insignia queda a cero', async () => {
+test('Inicio con 7 avisos: «Ver todos (7)» los enseña todos en la tarjeta y se marcan leídos después de verlos', async () => {
   const base = (id, dia) => ({ id: String(id), tipo: 'novedad', titulo: `Novedad ${id}`, texto: 'Hay cambios en RWAdar.',
     enlace: 'https://rwadar.pages.dev/cambios', creado_el: `2026-11-${String(dia).padStart(2, '0')}T10:00:00Z` });
   const recientes = [...[17, 16, 15, 14, 13, 12].map((id, i) => base(id, 5 - Math.floor(i / 2))), RECIENTES[2]];
+  const TITULOS = [...['17', '16', '15', '14', '13', '12'].map((id) => `Novedad ${id}`), 'Te damos la bienvenida a RWAdar'];
   const p = perfil({ capacidad: false, recientes });
   await p.esperar();
   assert.equal(p.estadoHook().avisos.length, 7);
   assert.equal(p.estadoHook().noLeidos, 7, 'la insignia de Inicio cuenta los 7 cargados');
   // App conecta la tarjeta así (ver la prueba de conexiones de App).
-  const marcados = [];
-  const tarjeta = () => p.modulo.TarjetaAvisosInicio({ avisos: p.estadoHook().avisos, leidos: p.estadoHook().leidos,
-    onAbrir: (aviso) => p.estadoHook().marcarLeidos([aviso.id]),
+  const abiertos = [], marcados = [], pintarTarjeta = tarjetaViva();
+  const tarjeta = () => pintarTarjeta({ avisos: p.estadoHook().avisos, leidos: p.estadoHook().leidos,
+    onAbrir: (aviso) => { abiertos.push(aviso.id); p.estadoHook().marcarLeidos([aviso.id]); },
     onMarcarLeidos: (ids) => { marcados.push(ids); return p.estadoHook().marcarTodosLeidos(); } });
+  const avisosVistos = (arbol) => nodos(arbol).filter((n) => n.type === 'Pressable' && TITULOS.includes(n.props.accessibilityLabel))
+    .map((n) => n.props.accessibilityLabel);
+  // Plegada: los 3 primeros y «Ver todos (7)», que avisa de los 4 sin leer que no se ven.
   let t = tarjeta();
-  assert.equal(nodos(t).filter((n) => n.type === 'Pressable' && /^Novedad /.test(n.props.accessibilityLabel)).length, 3, 'enseña 3');
-  // Abrir los 3 visibles deja 4 sin leer que no se ven: el punto y el botón
-  // siguen, para que la insignia se pueda vaciar.
-  for (const id of ['17', '16', '15']) { boton(t, `Novedad ${id}`).props.onPress(); await p.esperar(); t = tarjeta(); }
-  assert.equal(p.estadoHook().noLeidos, 4);
-  assert.ok(boton(t, 'Marcar como leídos'), 'el botón sigue mientras quede alguno sin leer');
+  assert.deepEqual(avisosVistos(t), TITULOS.slice(0, 3));
+  let ver = verTodos(t);
+  assert.equal(ver.props.accessibilityLabel, 'Ver todos (7)');
+  assert.equal(ver.props.accessibilityState.expanded, false);
+  assert.equal(ver.props.accessibilityHint, '4 sin leer');
+  assert.match(texto(t), /Ver todos \(7\)/);
+  // Desplegada: los 7, en la misma tarjeta y en orden, con su punto de no leído.
+  ver.props.onPress();
+  t = tarjeta();
+  assert.deepEqual(avisosVistos(t), TITULOS, 'se ven los 7');
+  for (const titulo of TITULOS) assert.equal(boton(t, titulo).props.accessibilityHint, 'Sin leer', titulo);
+  const vistos = new Set(avisosVistos(t));
+  assert.ok(p.estadoHook().idsNoLeidos.every((id) => vistos.has(p.estadoHook().avisos.find((x) => x.id === id).titulo)),
+    'todo lo que cuenta la insignia se puede ver');
+  ver = verTodos(t);
+  assert.equal(ver.props.accessibilityLabel, 'Ver menos');
+  assert.equal(ver.props.accessibilityState.expanded, true);
+  assert.equal(ver.props.accessibilityHint, undefined);
+  // Uno de los que antes no se veían se puede abrir; la tarjeta sigue desplegada.
+  boton(t, 'Novedad 12').props.onPress();
+  await p.esperar();
+  assert.deepEqual(abiertos, ['12']);
+  assert.equal(p.estadoHook().noLeidos, 6);
+  t = tarjeta();
+  assert.deepEqual(avisosVistos(t), TITULOS);
+  assert.equal(boton(t, 'Novedad 12').props.accessibilityHint, undefined);
+  // Vistos todos, «Marcar como leídos» deja la insignia a cero.
   const puntoCabecera = (arbol) => nodos(arbol).some((n) => n.type === 'View' && n.props.accessible === false && !Array.isArray(n.props.style));
-  assert.ok(puntoCabecera(t), 'el punto de la cabecera sigue');
+  assert.ok(puntoCabecera(t));
   boton(t, 'Marcar como leídos').props.onPress();
   await p.esperar();
-  assert.deepEqual(marcados, [['14', '13', '12', 'bienvenida']], 'pasa todos los no leídos, no solo los visibles');
+  assert.deepEqual(marcados, [['17', '16', '15', '14', '13', 'bienvenida']]);
   assert.equal(p.estadoHook().noLeidos, 0, 'la insignia queda a cero');
   assert.deepEqual([...p.local.leidos].sort(), ['12', '13', '14', '15', '16', '17', 'bienvenida'].sort(), 'guardado en el dispositivo');
-  assert.equal(boton(tarjeta(), 'Marcar como leídos'), undefined);
-  assert.equal(puntoCabecera(tarjeta()), false);
-  // También de golpe, sin abrir ninguno.
+  t = tarjeta();
+  assert.equal(boton(t, 'Marcar como leídos'), undefined);
+  assert.equal(puntoCabecera(t), false);
+  // «Ver menos» la vuelve a plegar; sin nada por leer, sin pista.
+  verTodos(t).props.onPress();
+  t = tarjeta();
+  assert.deepEqual(avisosVistos(t), TITULOS.slice(0, 3));
+  assert.equal(verTodos(t).props.accessibilityLabel, 'Ver todos (7)');
+  assert.equal(verTodos(t).props.accessibilityHint, undefined);
+  // La insignia también se puede vaciar de golpe, como hasta ahora.
   const q = perfil({ capacidad: false, recientes });
   await q.esperar();
   assert.deepEqual([...q.estadoHook().idsNoLeidos], ['17', '16', '15', '14', '13', '12', 'bienvenida']);
@@ -476,6 +518,32 @@ test('al cerrar sesión se quita el token de este móvil con el cliente que se c
   const fallo = { async rpc() { return { data: null, error: { code: '500' } }; } };
   await assert.rejects(modulo.quitarPushAlSalir({ cliente: fallo, usuarioId: UID }));
   assert.equal(local.token, TOKEN, 'si falla, se conserva para quitarlo la próxima vez');
+});
+
+test('salir sin conexión con una cuenta y entrar con otra: la clave pendiente de la primera no se toca y se quita en su próxima salida', async () => {
+  const OTRA = '22222222-2222-4222-8222-222222222222';
+  const h = crearReact(), claves = new Map([[UID, TOKEN]]), rpc = [];
+  const modulo = cargarComponente('AvisosNovedades.js', h.react, {
+    '../lib/avisos': {},
+    '../lib/datos': { tokenPushNovedades: async (uid) => claves.get(uid) ?? null,
+      borrarTokenPushNovedades: async (uid) => { claves.delete(uid); } },
+  });
+  // Cada cliente lleva la sesión de su cuenta: quitar_aviso_push solo quita tokens propios.
+  const cliente = (uid, conexion = true) => ({ async rpc(nombre, args) {
+    if (!conexion) throw new Error('sin conexión');
+    rpc.push([uid, nombre, args]); return { data: true, error: null };
+  } });
+  // La primera cuenta sale sin conexión: la clave se conserva.
+  await assert.rejects(modulo.quitarPushAlSalir({ cliente: cliente(UID, false), usuarioId: UID }));
+  assert.equal(claves.get(UID), TOKEN);
+  // Entra y sale otra cuenta sin móvil activo: ni usa su sesión con el token ajeno ni borra la clave ajena.
+  assert.equal(await modulo.quitarPushAlSalir({ cliente: cliente(OTRA), usuarioId: OTRA }), false);
+  assert.deepEqual(rpc, []);
+  assert.equal(claves.get(UID), TOKEN, 'la clave de la primera cuenta sigue pendiente');
+  // Cuando la primera vuelve y sale con conexión, se quita con su propia sesión.
+  assert.equal(await modulo.quitarPushAlSalir({ cliente: cliente(UID), usuarioId: UID }), true);
+  assert.deepEqual(rpc, [[UID, 'quitar_aviso_push', { p_token: TOKEN }]]);
+  assert.equal(claves.has(UID), false);
 });
 
 /* ---------------------------------------------------------------------
@@ -609,6 +677,9 @@ test('todos los textos nuevos de la interfaz tienen su inglés en el diccionario
   }
   assert.equal(idioma.ingles('2 fichas nuevas en el radar de RWAdar'), '2 new entries on the RWAdar radar');
   assert.equal(idioma.ingles('1 ficha nueva en el radar de RWAdar'), '1 new entry on the RWAdar radar');
+  assert.equal(idioma.ingles('Ver todos (7)'), 'Show all (7)');
+  assert.equal(idioma.ingles('Ver menos'), 'Show less');
+  assert.equal(idioma.ingles('4 sin leer'), '4 unread');
   // Todo el texto visible del panel y la tarjeta (literales y texto JSX).
   const archivo = fs.readFileSync(path.join(RAIZ, 'componentes', 'AvisosNovedades.js'), 'utf8');
   const ast = babel.parseSync(archivo, { babelrc: false, configFile: false, sourceType: 'module', parserOpts: { plugins: ['jsx'] } });
@@ -657,4 +728,11 @@ test('el panel y la tarjeta se renderizan también con React y react-native-web 
   assert.match(html, /Te damos la bienvenida a RWAdar/);
   assert.match(html, /01\/11\/2026/);
   assert.match(html, /Marcar como leídos/);
+  assert.doesNotMatch(html, /Ver todos|Ver menos/, 'con 2 avisos no hace falta desplegar');
+  const siete = avisosCuenta.validarAvisosRecientes([1, 2, 3, 4, 5, 6, 7].map((n) => ({ id: String(n), tipo: 'novedad',
+    titulo: `Novedad ${n}`, texto: 'Hay cambios en RWAdar.', enlace: null, creado_el: '2026-11-05T10:00:00Z' })));
+  const plegada = renderToStaticMarkup(React.createElement(modulo.TarjetaAvisosInicio, { avisos: siete, leidos: [] }));
+  assert.match(plegada, /Ver todos \(7\)/);
+  assert.equal((plegada.match(/aria-label="Novedad \d"/g) || []).length, 3, 'plegada, 3 de 7');
+  assert.match(plegada, /aria-label="Ver todos \(7\)"/);
 });

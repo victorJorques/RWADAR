@@ -305,7 +305,9 @@ function crearGestorAvisosNovedades({ avisosCuenta, usuarioId, push, almacen, ah
   /* La base borra los móviles cuyo registro no se renueva en 180 días. Con
      la cuenta abierta, el binario 1.4.2, el push encendido en la base, el
      permiso del sistema ya concedido y el móvil activo, se vuelve a registrar
-     el token actual como mucho una vez al día. Nunca pide permiso. */
+     el token actual como mucho una vez al día. Nunca pide permiso. Tras
+     registrar vuelve a leer la clave del token: si se borró entretanto, deshace
+     el registro. */
   async function renovar(servidor, movil, intento) {
     // Por debajo del código 24 no se toca el SDK ni el almacén.
     if (!capacidad) return { renovado: false, motivo: 'requiere-version' };
@@ -325,6 +327,19 @@ function crearGestorAvisosNovedades({ avisosCuenta, usuarioId, push, almacen, ah
     // Si se pasó del plazo, los interruptores ya siguieron: no se registra tarde.
     if (!intento.vigente) return { renovado: false, motivo: 'plazo' };
     await avisosCuenta.registrarPush(resultado.token, resultado.plataforma);
+    /* La clave del token manda. «Borrar datos del dispositivo» la quita fuera
+       de esta cola, y «desactivar» puede entrar si la renovación se pasó de
+       plazo. Si mientras se esperaba al sistema o a la base la clave ya no
+       está (o la cambió otra activación), lo recién registrado no puede
+       quedarse en la base sin dueño en este móvil: se quita y no se guarda
+       nada. */
+    const actual = await almacen.token(usuarioId);
+    if (actual !== anterior) {
+      if (resultado.token !== actual) {
+        try { await avisosCuenta.quitarPush(resultado.token); } catch { /* Lo limpia la base a los 180 días. */ }
+      }
+      return { renovado: false, motivo: tokenPushValido(actual) ? 'cambiado' : 'borrado' };
+    }
     // Si el sistema cambió el token, el anterior deja de servir.
     if (resultado.token !== anterior) {
       await almacen.guardarToken(usuarioId, resultado.token);
