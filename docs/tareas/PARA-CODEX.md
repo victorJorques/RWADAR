@@ -6,7 +6,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 5 de noviembre de 2026 (4) · Claude · investigación del día aplicada, app actualizada y web en preview
+## 5 de noviembre de 2026 (4) · Claude · investigación del día publicada: Supabase, web y app
 
 Orden de Víctor: «Hazme la investigación de hoy de las ofertas, y actualiza la
 web y la app». Informe: [`INVESTIGACION-CATALOGO-2026-11-05.md`](../INVESTIGACION-CATALOGO-2026-11-05.md).
@@ -20,9 +20,10 @@ web y la app». Informe: [`INVESTIGACION-CATALOGO-2026-11-05.md`](../INVESTIGACI
 - **Supabase:** «Aplicar catálogo» run 42050045063. En línea, `cede1f27` con
   25/24 (8/13/3), vigente hasta el 12/11.
 - **OTA Android:** run 42052119704, correcto (base c1f7106, 1.4.1(23)).
-- **Web:** «Publicar web» en preview, run 42052080652 (220/0 en
-  `revision.rwadar.pages.dev`). **Producción pendiente de la orden de Víctor**
-  (paró la comprobación manual de la preview).
+- **Web:** «Publicar web» en preview (run 42052080652, 220/0) y en producción
+  (run 42069278129). Comprobado con curl en `https://rwadar.pages.dev`:
+  catálogo `cede1f27`, Spiko 2,39 % y 3,99 %, «66,67 € la participación en
+  reventa (05/11)» y tarjetas sencillas. Captura del móvil hecha.
 - **Pruebas:** `npm test` en verde (web 601, móvil 410 + 2 omitidas, acceso
   146, base de datos sin fallos). La prueba de la tarjeta de la app sigue ahora
   al catálogo publicado.
