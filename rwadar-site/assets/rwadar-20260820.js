@@ -214,11 +214,15 @@ document.querySelectorAll('svg.mk').forEach(s=>{s.innerHTML=MARK});
    escritorio. Sin RWADAR_ACCESO (modo local), dentro de la app nativa (que
    ya exige cuenta) o ante un fallo pasajero al comprobar la sesión, se abre
    como siempre: nunca se manda a entrar por un error de red. */
-function tutorialConCuenta(abrir,alCargar=false){
+function tutorialConCuenta(abrir,alCargar=false,alDenegar=null){
  const acceso=typeof window!=='undefined'?window.RWADAR_ACCESO:null;
  const conCuenta=typeof document!=='undefined'&&!!document.querySelector('[data-academy-acceso="cuenta"]');
  if(!conCuenta||!acceso||typeof acceso.verificar!=='function'||(typeof window!=='undefined'&&window.ReactNativeWebView)){abrir();return;}
  const aEntrar=()=>{
+  /* Al recorrer el historial (Atrás/Adelante, vuelta desde la caché) no se
+     navega: quien llama se queda en la pestaña Academy, con su botón de
+     crear cuenta. Navegar ahí dejaría el botón Atrás atrapado en /acceso. */
+  if(typeof alDenegar==='function'){alDenegar();return;}
   const destino='/acceso?volver='+encodeURIComponent('/academy/');
   /* Al cargar, replace: Atrás no vuelve a /#explain para saltar otra vez. */
   if(alCargar)location.replace(destino);else location.assign(destino);
@@ -5867,6 +5871,11 @@ const Movil = (function(){
     tutorialConCuenta(()=>{
      cambiar('academy',{arriba:false});
      mostrarAcademy(true,enfocar,false,document.getElementById('movilTabAcademy'));academyHistorial=true;
+    },false,()=>{
+     /* Sin sesión: se quita la marca de la subvista de esta entrada y se
+        queda en la pestaña Academy, sin añadir nada al historial. */
+     if(typeof history!=='undefined'&&history.replaceState)history.replaceState(estadoBaseSubvista(),'',location.href);
+     academyHistorial=false;cambiar('academy',{arriba:false});
     });
    }
   }else{
@@ -5920,10 +5929,22 @@ const Movil = (function(){
   if(destino.scrollIntoView)destino.scrollIntoView({block:'start',behavior:reduce()?'auto':'smooth'});
  });
  /* La puerta del tutorial solo actúa en el móvil; en escritorio #explain
-    sigue siendo la sección pública de la portada. */
- const tutorialMovil=abrir=>{if(media.matches)tutorialConCuenta(abrir);else abrir();};
- if(typeof location!=='undefined'&&location.hash==='#explain'){const origen=document.getElementById('movilTabAcademy');if(media.matches)tutorialConCuenta(()=>abrirAcademyDesde(origen),true);else abrirAcademyDesde(origen);}
- window.addEventListener('hashchange',()=>{if(location.hash==='#explain'){const origen=document.activeElement;tutorialMovil(()=>abrirAcademyDesde(origen));}});
+    sigue siendo la sección pública de la portada. Sin sesión, al llegar a
+    #explain sin pulsar nada, se queda en la pestaña Academy (sin el #explain
+    en la dirección) con su botón de crear cuenta. */
+ const quedarseEnAcademy=()=>{
+  if(typeof history!=='undefined'&&history.replaceState)history.replaceState(estadoBaseSubvista(),'',location.pathname+location.search);
+  academyHistorial=false;cambiar('academy',{arriba:false});
+ };
+ if(typeof location!=='undefined'&&location.hash==='#explain'){const origen=document.getElementById('movilTabAcademy');
+  /* Enlace directo a /#explain sin sesión: no se salta solo a /acceso (el
+     botón Atrás volvería aquí y saltaría otra vez). Se queda en la pestaña
+     Academy, sin el #explain, y crear la cuenta es un toque de la persona. */
+  if(media.matches)tutorialConCuenta(()=>abrirAcademyDesde(origen),true,quedarseEnAcademy);else abrirAcademyDesde(origen);}
+ /* Lo mismo al cambiar a #explain (enlace interno o Atrás/Adelante): sin
+    sesión no se navega sola a /acceso; solo los botones del tutorial lo hacen. */
+ window.addEventListener('hashchange',()=>{if(location.hash==='#explain'){const origen=document.activeElement;
+  if(media.matches)tutorialConCuenta(()=>abrirAcademyDesde(origen),false,quedarseEnAcademy);else abrirAcademyDesde(origen);}});
  return {cambiar:cambiar,ir:ir,verEnBuscar:verEnBuscar,
   tutorial(origen){if(!media.matches)return false;tutorialConCuenta(()=>abrirAcademyDesde(origen));return true;},
   volverAcademy(){if(!media.matches)return false;mostrarAcademy(false);return true;}

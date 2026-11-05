@@ -115,7 +115,12 @@ de la portada en el móvil, que deja de pedir sesión (lo decide el atributo
   noindex; el índice se indexa», «los datos estructurados del índice no anuncian
   lecciones que no se indexan», «el índice y la portada dicen «Gratis con tu
   cuenta»…» y «el worker publicado lleva la puerta de la Academy con la lista
-  cerrada de lecciones».
+  cerrada de lecciones». Además, al revertir a mano la privacidad, falla
+  «privacidad: la Academy es gratuita con cuenta y no guardamos qué lecciones
+  lees» (exige «para abrir una lección comprobamos tu sesión»), y en
+  `rwadar-acceso/alta-avisos-navegador.test.mjs` las que esperan el destino
+  `/academy/#cuenta-confirmada` y el texto «Las lecciones son gratis con
+  cuenta», si también se revierten en `acceso.js`.
 - `probar-precarga.cjs`: «con "acceso": "cuenta", las 7 lecciones publicadas se
   comprueban por su 303…», tres de los rechazos de «la verificación de
   producción rechaza…» (lección servida a cualquiera, 303 a otra vuelta y 303
