@@ -5,7 +5,9 @@ worktree `/home/user/RWADAR/.claude/worktrees/catalogo-artex`, rama
 `claude/catalogo-2026-11-04-2` (sale de `origin/main`, 3bb010b; sin push).
 **Nada aplicado en Supabase, nada publicado, sin OTA, ningún flujo lanzado.**
 Estado: **preparada y probada en local, también en un ensayo de «después de
-aplicar»; falta la revisión independiente.**
+aplicar»; revisada por un corrector independiente el 05/11, que encontró dos
+fallos menores (ver «Revisión independiente», al final). El motivo de ARTEX está
+corregido y el SQL, regenerado y vuelto a probar.**
 
 ## 1. La decisión y lo comprobado
 
@@ -35,8 +37,10 @@ aplicar»; falta la revisión independiente.**
   (huella `723968ce00f77f42b3e36c7f401b8f8919eaa5dbc35b782f15fa40f5c5337585`).
 - Exige que la publicada sea la `cf79e4a4…` con su huella `cf79e4a4f828…1712`.
 - **SHA-256 de `rwadar-app/data/importaciones/catalogo-2026-11-04.2-v2/aplicar-y-aprobar.sql`:
-  `a4d99551d47d65f09a9a164ecfd2a619a8afd3d019967a1560d1626497513e15`.**
-  `preparar-entrega.mjs` lo reproduce byte a byte (comprobado dos veces).
+  `2ce8084d049a7ab309723c4d8a2ed9a0a65fcd150a51b0e910fd2396363dfb33`.**
+  `preparar-entrega.mjs` lo reproduce byte a byte (comprobado dos veces después de
+  corregir el motivo). El SHA anterior, `a4d99551…e15`, era el del motivo viejo y
+  ya no vale.
 - El radar, las cifras y la vigencia siguen siendo del 03/11: el lote vence el
   11/11, como la 2026-11-04. No se alarga ningún plazo.
 
@@ -46,7 +50,7 @@ aplicar»; falta la revisión independiente.**
 |---|---|---|
 | ARTEX, estado | En el radar | **Descartada** |
 | ARTEX, etiqueta | — | **Sin blockchain** |
-| ARTEX, motivo | — | «Es un mercado regulado (MTF) de acciones sobre obras de arte que no usa blockchain: su propia web dice que, por ahora, no la usa de ninguna forma. RWAdar solo recoge plataformas de activos tokenizados.» |
+| ARTEX, motivo | — | «ARTEX se presenta como un sistema multilateral de negociación (MTF) regulado de acciones sobre obras de arte, y su propia web dice que, por ahora, no usa blockchain de ninguna forma. RWAdar solo recoge plataformas de activos tokenizados.» |
 | ARTEX, fuente pública | ninguna | «ARTEX · preguntas frecuentes: por ahora no usa blockchain de ninguna forma» (`https://www.artexgm.com/faq`), consultada el 04/11/2026, sin fecha de publicación |
 | ARTEX, ficha del radar (categoría, región, tipo, acceso, entrada, blockchains, web, aval y descripción) | Materias primas · Liechtenstein · Marketplace · Acreditado · Alto · «No usa blockchain» · artexgm.com · … | vacías, como en las otras 4 descartadas (la ficha anterior queda en `lectura-publica/artex-plataforma.json` y en las revisiones anteriores) |
 | ARTEX, fecha de verificación | 26/07/2026 | 04/11/2026 |
@@ -186,7 +190,8 @@ Sin borrados, esquema, permisos, cuentas ni funciones.
 ## 9. Pasos para aplicarla (con la orden de Víctor)
 
 1. Revisión independiente de este informe, `cambios-plataformas.json`, el SQL y
-   los cambios de código (worker, sincronizador, pre-render, verificadores, pruebas).
+   los cambios de código (worker, sincronizador, pre-render, verificadores,
+   pruebas). **Hecha el 05/11**; sus dos fallos están resueltos (ver al final).
 2. Unir a `main` (PR y CI).
 3. Releer como visitante, con hora, que la publicada sigue siendo la `cf79e4a4`,
    con 26/24 y 4 descartadas, y ARTEX como en `lectura-publica/artex-plataforma.json`.
@@ -224,3 +229,41 @@ Sin borrados, esquema, permisos, cuentas ni funciones.
 - `contraste-2026-11-04.2.json`, `manifiesto-catalogo.json`, `radar-canonico-26.json`
   (con 25 plataformas: el nombre lo fija el cargador), `escaparate-publicacion.json`,
   `documentacion-ofertas.json`.
+
+## Revisión independiente (05/11/2026)
+
+Un corrector revisó la rama solo leyendo (releyó la publicada como visitante a las
+00:24 UTC, comparó el lote con el de la 2026-11-04, abrió la página de preguntas
+frecuentes de ARTEX con Chrome sin interfaz, repitió las pruebas y el ensayo en
+copias aparte). Todo lo que dice esta entrega se cumplía, con dos fallos menores:
+
+1. **El motivo llamaba «mercado regulado» a un MTF y lo daba por hecho.** En la
+   normativa europea (MiFID II, art. 4.1.21 y 4.1.22) un mercado regulado y un
+   sistema multilateral de negociación (MTF) son dos clases distintas de centro de
+   negociación, y la página de ARTEX solo dice que es «the first regulated art
+   Multilateral Trading Facility (MTF)». **Corregido:** el motivo es ahora «ARTEX
+   se presenta como un sistema multilateral de negociación (MTF) regulado de
+   acciones sobre obras de arte, y su propia web dice que, por ahora, no usa
+   blockchain de ninguna forma. RWAdar solo recoge plataformas de activos
+   tokenizados.» La razón del descarte (no usa blockchain) no cambia.
+   - `preparar-entrega.mjs` regenera el SQL: cambian las tres líneas con el motivo
+     (la guarda «después», el `update` y la comprobación) y el SHA, que pasa de
+     `a4d99551…e15` a **`2ce8084d…fb33`**. La revisión `723968ce…`, `catalogo.sql`
+     y `revision.json` no cambian. Repetido dos veces: mismo SHA.
+   - `comprobar-entrega.mjs` otra vez (05/11, 00:43 UTC): **correcto, 26
+     comprobaciones y 12 casos de fallo** (27 con `--exportar`).
+   - Ensayo «después de aplicar» repetido con el motivo nuevo
+     (`ensayo-despues.json`, `repetidoTrasCorregirElMotivo`): 25 / 5 / 24;
+     `despues-de-aplicar.mjs` comprueba el motivo nuevo; el motivo nuevo sale en la
+     ficha `/fuera-del-radar/artex-global-markets`, en Descartadas (escritorio y
+     móvil), en `rwadar.csv` y en `02_seed.sql`, y el viejo en ninguna parte;
+     `npm test` con salida 0.
+2. **La ruta del SQL en el resumen de la entrega estaba mal** (faltaba `data/`).
+   Este informe ya usaba la buena:
+   `rwadar-app/data/importaciones/catalogo-2026-11-04.2-v2/aplicar-y-aprobar.sql`.
+   Hay que usar esa misma ruta en la entrada de `docs/tareas/PARA-CODEX.md` cuando
+   se escriba.
+
+**`npm test` en la rama después de la corrección: salida 0** (mismos números que en
+el apartado 7). Guardián OTA `--base c1f7106…`: `ok`, 1.4.1(23). Gitleaks sin
+hallazgos.
