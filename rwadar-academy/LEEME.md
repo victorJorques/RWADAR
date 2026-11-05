@@ -54,6 +54,30 @@ ejecutar el generador.
 
 En la app, una lección nueva solo llega con la siguiente compilación.
 
+## Quién abre las lecciones en la web: `"acceso"`
+
+Desde el 05/11/2026 (`docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`),
+`academy.json` lleva un interruptor:
+
+| `"acceso"` | Qué pasa |
+|---|---|
+| `"cuenta"` | El índice `/academy/` sigue público e indexable. Cada lección pide una cuenta confirmada: sin sesión, la web manda a `/acceso?volver=/academy/<slug>` (303). Las lecciones llevan `noindex`, salen del `sitemap.xml` y los textos dicen «Gratis con tu cuenta». |
+| `"publico"` | Todo como antes: lecciones abiertas, indexables y en el sitemap. |
+
+Lo aplica el servidor de la web (`rwadar-acceso/servidor.mjs`, compilado en
+`_worker.js` por `rwadar-acceso/compilar.cjs`), que lleva dentro la lista
+cerrada de lecciones publicadas de este archivo: una lección «Próximamente» o
+inventada da 404 sin mirar la cookie. Si Supabase no responde, la lección da
+503 y nunca manda a entrar. Para cambiarlo: el valor, `node rwadar-academy.js`,
+`npm test` y publicar, **con permiso de Víctor**.
+
+No es un candado: el texto va en el paquete de la app. Nunca se pone material
+privado en la Academy.
+
+Para ver la web con la puerta funcionando en local (y hacer capturas):
+`node rwadar-acceso/probar-worker-local.mjs --raiz=rwadar-publicado` (ver el
+comentario del principio de ese archivo).
+
 ## Los botones de las lecciones
 
 Las lecciones escriben botones así: `**[Abrir el radar →]**`. El texto del
@@ -85,7 +109,8 @@ meses** sin revisión legal.
 
 ## El progreso del alumno
 
-Sin cuentas. En la web se guarda en el navegador (`localStorage`, clave
-`rwadar.academy.v1`); en la app, en el dispositivo, y se borra con «Borrar
-datos del dispositivo». Nunca se envía a RWAdar. La política de privacidad ya
-lo dice.
+Sin sincronizar. En la web se guarda en el navegador, separado por cuenta
+(`localStorage`, clave `rwadar.academy.v1:<id de la cuenta>`); en la app, en el
+dispositivo, y se borra con «Borrar datos del dispositivo». Nunca se envía a
+RWAdar: para abrir una lección se comprueba la sesión, pero no se guarda qué
+lecciones se leen. La política de privacidad ya lo dice.

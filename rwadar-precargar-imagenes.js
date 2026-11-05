@@ -11,7 +11,7 @@ const {dimensionesWebp, FICHA_ANCHO, FICHA_ALTO, FICHA_BYTES_MAX, TEXTO_PROHIBID
 const {leerBloquesCatalogo, validarCatalogoSnapshot} = require('./rwadar-fichas');
 const {sincronizar} = require('./rwadar-app/sincronizar');
 const {adelgazarJS} = require('./rwadar-adelgazar');
-const {construirWorker, RUTAS: RUTAS_ACCESO} = require('./rwadar-acceso/compilar.cjs');
+const {construirWorker, RUTAS: RUTAS_ACCESO, academyPublicada} = require('./rwadar-acceso/compilar.cjs');
 const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 const ARTEFACTOS_ACCESO = Object.freeze(['_worker.js','_routes.json']);
 const RAIZ = __dirname;
@@ -173,13 +173,28 @@ function archivoCatalogo(base) {
   const nombres=seguridad.listarArchivosRegulares(base).filter(n=>/^assets\/catalogo-publico-20261022(?:\.[a-f0-9]{12})?\.js$/.test(n));
   assert(nombres.length===1,'Snapshot base ambiguo'); return path.join(base,nombres[0]);
 }
-async function verificarHTTP(base, archivos, fetchFn=globalThis.fetch) {
+/* Academy con cuenta ("acceso": "cuenta", 05/11/2026): sin sesión, una lección
+   publicada responde 303 a /acceso?volver=/academy/<slug> con no-store, así que
+   no se comparan sus bytes (ya van en el inventario sellado de la base); las
+   «Próximamente» dan 404. Nunca se entra con una cuenta. */
+const SIN_GUARDAR = /(?:^|,)\s*no-store\s*(?:,|$)/;
+async function verificarHTTP(base, archivos, fetchFn=globalThis.fetch, academy=academyPublicada()) {
+  const protegidas=new Map(academy.acceso==='cuenta'?academy.lecciones.map(slug=>[`academy/${slug}.html`,slug]):[]);
+  const pedirLeccion=ruta=>fetchFn(ORIGEN+ruta,{method:'GET',cache:'no-store',credentials:'omit',redirect:'manual',
+    headers:{Accept:'text/html'},signal:AbortSignal.timeout(45000)});
   let posicion=0;
   await Promise.all(Array.from({length:4},async()=>{
     while(posicion<archivos.length) {
       const a=archivos[posicion++];
       if(['_headers','_redirects',...ARTEFACTOS_ACCESO].includes(a.ruta))continue;
       const ruta='/'+a.ruta.replace(/(^|\/)index\.html$/,'$1').replace(/\.html$/,'');
+      if(protegidas.has(a.ruta)) {
+        const r=await pedirLeccion(ruta);
+        await r.body?.cancel();
+        assert(r.status===303&&r.headers.get('location')===`/acceso?volver=/academy/${protegidas.get(a.ruta)}`&&
+          SIN_GUARDAR.test(r.headers.get('cache-control')||''),`La lección ${ruta} no manda a entrar sin sesión (HTTP ${r.status})`);
+        continue;
+      }
       const r=await fetchFn(ORIGEN+ruta,{method:'GET',cache:'no-store',credentials:'omit',redirect:'error',signal:AbortSignal.timeout(45000)});
       assert(r.status===200,`HTTP ${r.status} para ${ruta}`);
       const bytes=Buffer.from(await r.arrayBuffer());
@@ -187,6 +202,11 @@ async function verificarHTTP(base, archivos, fetchFn=globalThis.fetch) {
       if(a.ruta.endsWith('.webp'))assert(/^image\/webp(?:;|$)/i.test(r.headers.get('content-type')||''),'Respuesta WebP no es imagen');
     }
   }));
+  for(const slug of academy.pendientes) {
+    const r=await pedirLeccion('/academy/'+slug);
+    await r.body?.cancel();
+    assert(r.status===404,`La lección «Próximamente» /academy/${slug} no da 404 (HTTP ${r.status})`);
+  }
 }
 function ejecutarWranglerLectura() {
   const args=['--yes','wrangler@4.125.0','pages','deployment','list','--project-name','rwadar','--environment','production','--json'];

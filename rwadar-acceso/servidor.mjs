@@ -10,10 +10,19 @@ const MAX_BODY = 16 * 1024;
 // is keyed by the visitor (IPv4 address or IPv6 /64) and, like Supabase, counts
 // every request that reaches Auth. There is deliberately no per-email limit:
 // anyone could use it to lock a stranger out. Maximum per window:
-const LIMITES = Object.freeze({ clave: 30, envio: 10 }); // password attempts; requests that can send an email
+// password attempts; requests that can send an email; unsubscribe links (baja)
+const LIMITES = Object.freeze({ clave: 30, envio: 10, baja: 20 });
 const VENTANA_S = 600;
 const GRUPO_LIMITE = Object.freeze({ '/api/acceso/entrar': 'clave', '/api/acceso/reautenticar': 'clave',
-  '/api/acceso/registrar': 'envio', '/api/acceso/recuperar': 'envio', '/api/acceso/reenviar': 'envio' });
+  '/api/acceso/registrar': 'envio', '/api/acceso/recuperar': 'envio', '/api/acceso/reenviar': 'envio',
+  '/api/acceso/baja': 'baja' });
+// Avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md): la
+// casilla del alta es opcional y versionada. Cambiar su texto obliga a otra versión.
+export const VERSION_AVISOS_NOVEDADES = 'novedades-v1-2026-11-05';
+const MENSAJE_BAJA = 'Si el enlace era válido, ya no recibirás avisos de novedades.';
+// Academy con cuenta: modos de academy.json y forma de un slug publicado.
+const ACCESOS_ACADEMY = Object.freeze(['cuenta', 'publico']);
+const SLUG_ACADEMY = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export function retornoSeguro(value, origin) {
   if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//') || /[\\\r\n\u0000]/.test(value)) return '/';
@@ -122,6 +131,37 @@ function crearLimitador(ahora, maxClaves = 10000) {
   };
 }
 
+/* Lecciones de la Academy solo con cuenta. La ruta se normaliza como
+   rutaNormalizadaRWAdar del worker (se decodifica y se juntan las //), pero sin
+   perdonar nada: con %2F, %5C, \ o una codificación rota la respuesta es 400.
+   El primer segmento no distingue mayúsculas. Devuelve null si la petición no
+   va a la Academy o va a su índice (público); { estado: 400 }; o { slug }, con
+   slug null si bajo /academy/ hay algo que no tiene forma de lección. */
+function peticionAcademy(url) {
+  const cruda = url.pathname;
+  let ruta = null;
+  try { ruta = decodeURIComponent(cruda); } catch { /* codificación rota: 400 más abajo */ }
+  const academia = /^\/+academy(?:\/|\\|%2f|%5c|$)/i;
+  if (!academia.test(cruda) && !(ruta !== null && academia.test(ruta))) return null;
+  if (ruta === null || /%2f|%5c|\\/i.test(cruda) || ruta.includes('\\')) return { estado: 400 };
+  const resto = ruta.replace(/\/{2,}/g, '/').replace(/^\/academy/i, '');
+  if (resto === '' || resto === '/' || /^\/index(?:\.html)?\/?$/.test(resto)) return null;
+  const leccion = /^\/([^/]+?)(?:\.html)?\/?$/.exec(resto);
+  return { slug: leccion ? leccion[1] : null };
+}
+// Una navegación o una petición que acepta HTML: se la manda a entrar.
+function pideHTML(request) {
+  return request.headers.get('sec-fetch-mode') === 'navigate' || request.headers.get('sec-fetch-dest') === 'document' ||
+    /\btext\/html\b/i.test(request.headers.get('accept') || '');
+}
+// Página mínima para un fallo pasajero de Supabase: sin estilos ni scripts (CSP).
+const PAGINA_ACADEMY_NO_DISPONIBLE = '<!doctype html><html lang="es"><meta charset="utf-8">' +
+  '<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">' +
+  '<title>Academy no disponible ahora · RWAdar</title><body><h1>No podemos comprobar tu sesión ahora</h1>' +
+  '<p>El servicio de cuentas no responde. Tu sesión se conserva: vuelve a intentarlo en unos segundos.</p>' +
+  '<p lang="en">We can’t check your session right now. Your session is kept: try again in a few seconds.</p>' +
+  '<p><a href="/academy/">Volver a la Academy</a></p></body></html>';
+
 async function leerTexto(result, maxBytes) {
   if (Number(result.headers.get('content-length')) > maxBytes) throw new Error('respuesta_excesiva');
   const reader = result.body?.getReader(); let text = '';
@@ -136,8 +176,14 @@ async function leerTexto(result, maxBytes) {
   return text;
 }
 
-export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora = Date.now } = {}) {
+export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora = Date.now, academy = null } = {}) {
   const limitador = crearLimitador(ahora);
+  // Sin configuración de la Academy (o con "publico") no hay puerta: como antes.
+  // El worker la recibe de construirWorker, sacada de rwadar-academy/academy.json.
+  if (academy !== null && (!ACCESOS_ACADEMY.includes(academy?.acceso) || !Array.isArray(academy.lecciones) ||
+    !academy.lecciones.every(slug => typeof slug === 'string' && SLUG_ACADEMY.test(slug)))) throw new Error('academy_invalida');
+  const academyConCuenta = academy?.acceso === 'cuenta';
+  const leccionesAcademy = new Set(academy?.lecciones || []);
   async function api(env, path, { token, method = 'GET', data, maxBytes = 128 * 1024, representacion = false } = {}) {
     if (env.SUPABASE_URL !== ORIGEN_AUTH || !/^sb_publishable_[A-Za-z0-9_-]+$/.test(env.SUPABASE_PUBLISHABLE_KEY || '')) throw new Error('configuracion_pendiente');
     const abort = new AbortController(); const timer = setTimeout(() => abort.abort(), plazoMs);
@@ -192,6 +238,49 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
     const espera = limitador.reservar(grupo + ':' + quien, LIMITES[grupo]);
     if (espera) { const error = new Error('intentos_excedidos'); error.status = 429; error.reintentarTras = String(espera); throw error; }
   }
+  /* Puerta de las lecciones (contrato AVISOS-Y-ACADEMY-REGISTRO-2026-11-05, punto 1).
+     null: la petición sigue su camino normal. Una lección que no está en la
+     lista cerrada da 404 sin mirar la cookie. Sin sesión: 303 a /acceso (HTML)
+     o 401. Un fallo pasajero de Supabase da 503 y nunca manda a entrar ni toca
+     la cookie: solo un 401/403 de Auth (o una sesión que no cuadra) es «sin
+     sesión». Con sesión, la lección sale por el camino normal de los archivos,
+     privada y sin guardar. No es un candado del contenido: es una puerta. */
+  async function puertaAcademy(context, url) {
+    if (!academyConCuenta) return null;
+    const { request, env } = context;
+    const pedida = peticionAcademy(url);
+    if (!pedida) return null;
+    if (pedida.estado === 400) return respuesta({ error: 'solicitud_invalida' }, 400);
+    if (!pedida.slug || !leccionesAcademy.has(pedida.slug)) {
+      if (context.noEncontrada) return context.noEncontrada();
+      return new Response(request.method === 'HEAD' ? null : 'No encontrado', { status: 404, headers: {
+        'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' } });
+    }
+    try { await verificar(env, leerCookie(request)); }
+    catch (error) {
+      const sinSesion = ['sin_sesion', 'correo_invalido'].includes(error.message) ||
+        (error.message === 'auth_rechazado' && [401, 403].includes(error.status));
+      if (!sinSesion) {
+        const espera = error.status === 429 ? error.reintentarTras || '60' : '30';
+        if (!pideHTML(request)) return respuesta({ error: 'servicio_no_disponible' }, 503, { 'Retry-After': espera, Vary: 'Cookie' });
+        return new Response(request.method === 'HEAD' ? null : PAGINA_ACADEMY_NO_DISPONIBLE, { status: 503, headers: {
+          'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Retry-After': espera, Vary: 'Cookie',
+          'X-Robots-Tag': 'noindex, nofollow', 'Referrer-Policy': 'no-referrer' } });
+      }
+      if (!pideHTML(request)) return respuesta({ error: 'sesion_necesaria' }, 401, { Vary: 'Cookie' });
+      // El slug sale de la lista cerrada; retornoSeguro lo deja en una ruta propia.
+      const volver = retornoSeguro('/academy/' + pedida.slug, url.origin);
+      return new Response(null, { status: 303, headers: { Location: '/acceso?volver=' + volver,
+        'Cache-Control': 'no-store', Vary: 'Cookie', 'X-Robots-Tag': 'noindex, nofollow', 'Referrer-Policy': 'no-referrer' } });
+    }
+    const servida = await context.next();
+    const headers = new Headers(servida.headers);
+    headers.set('Cache-Control', 'private, no-store');
+    headers.set('X-Robots-Tag', 'noindex');
+    const vary = headers.get('Vary');
+    headers.set('Vary', !vary ? 'Cookie' : /(?:^|,)\s*cookie\s*(?:,|$)/i.test(vary) ? vary : vary + ', Cookie');
+    return new Response(servida.body, { status: servida.status, statusText: servida.statusText, headers });
+  }
   const atenderCartera = crearCarteraServidor({ api, verificar, leerCookie, respuesta });
   async function atender(context) {
     const { request, env } = context; const url = new URL(request.url);
@@ -203,14 +292,19 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
       // Host-only cookies plus strict Origin and JSON prevent login/logout CSRF.
       if (request.headers.get('origin') !== url.origin || request.headers.get('sec-fetch-site') === 'cross-site') return respuesta({ error: 'origen_no_permitido' }, 403);
     }
-    // The catalog, Academy, sources, RSS and SEO pages are public. Only the
+    // The catalog, the Academy index, sources, RSS and SEO pages are public;
+    // Academy lessons may require an account (puertaAcademy). Only the
     // closed account API handles identity and private data. ASSETS cannot write.
-    if (!endpoint) return path.startsWith('/api/')
-      ? respuesta({ error: 'ruta_no_permitida' }, 404) : context.next();
+    if (!endpoint) {
+      if (path.startsWith('/api/')) return respuesta({ error: 'ruta_no_permitida' }, 404);
+      // Solo las lecciones de la Academy, con "acceso": "cuenta", pasan por la puerta.
+      return (await puertaAcademy(context, url)) || context.next();
+    }
     if (path === '/api/acceso/cartera') return atenderCartera({ request, env });
     if (endpoint && !recursoCatalogo && !['/api/acceso/sesion', '/api/acceso/entrar', '/api/acceso/registrar',
       '/api/acceso/recuperar', '/api/acceso/reenviar', '/api/acceso/inspeccionar',
-      '/api/acceso/adoptar', '/api/acceso/nueva-clave', '/api/acceso/salir', '/api/acceso/datos', '/api/acceso/reautenticar', '/api/acceso/tutorial', '/api/acceso/tutorial-continuar.js'].includes(path)) return respuesta({ error: 'ruta_no_permitida' }, 404);
+      '/api/acceso/adoptar', '/api/acceso/nueva-clave', '/api/acceso/salir', '/api/acceso/datos', '/api/acceso/reautenticar', '/api/acceso/tutorial', '/api/acceso/tutorial-continuar.js',
+      '/api/acceso/baja'].includes(path)) return respuesta({ error: 'ruta_no_permitida' }, 404);
     try {
       if (path === '/api/acceso/tutorial-continuar.js') {
         if (request.method !== 'GET') return respuesta({ error: 'metodo_no_permitido' }, 405);
@@ -267,7 +361,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
           const token = leerCookie(request); await verificar(env, token);
           // Closed routes only; each own-account write still goes through existing RLS/RPC.
           const route = typeof data.ruta === 'string' ? data.ruta : '';
-          const match = route.match(/^\/(mi_perfil|perfiles|vigilancia|avisos_correo|plataformas|opiniones_publicas|nota_media|mis_opiniones|cola_moderacion|publicaciones|rpc\/(?:guardar_opinion|borrar_mi_opinion|denunciar_opinion|moderar|configurar_avisos_correo|marcar_manual_descargado|borrar_mi_cuenta|mis_publicaciones|publicar|borrar_mi_publicacion|denunciar_publicacion))(\?[^#\r\n]*)?$/);
+          const match = route.match(/^\/(mi_perfil|perfiles|vigilancia|avisos_correo|plataformas|opiniones_publicas|nota_media|mis_opiniones|cola_moderacion|publicaciones|rpc\/(?:guardar_opinion|borrar_mi_opinion|denunciar_opinion|moderar|configurar_avisos_correo|marcar_manual_descargado|borrar_mi_cuenta|mis_publicaciones|publicar|borrar_mi_publicacion|denunciar_publicacion|estado_mis_avisos|configurar_avisos_novedades|mis_avisos_recientes))(\?[^#\r\n]*)?$/);
           const method = data.metodo || 'GET';
           if (!match || route.length > 4096 || !['GET', 'POST', 'PATCH', 'DELETE'].includes(method)) throw new Error('solicitud_invalida');
           const resource = match[1], rpc = resource.startsWith('rpc/');
@@ -306,10 +400,15 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
           if (data.aceptaCondiciones !== true) throw new Error('condiciones');
           const name = typeof data.nombre === 'string' ? data.nombre.trim() : '';
           if (name.length > 60 || /[\u0000-\u001f\u007f]/.test(name)) throw new Error('nombre_invalido');
+          // Casilla opcional de avisos: solo un booleano JSON. Con true viajan la
+          // versión vigente y el canal; el permiso lo guarda la base al confirmar.
+          if (data.avisosNovedades !== undefined && typeof data.avisosNovedades !== 'boolean') throw new Error('solicitud_invalida');
+          const avisos = data.avisosNovedades === true
+            ? { avisos_novedades: true, avisos_version: VERSION_AVISOS_NOVEDADES, avisos_canal: 'web' } : {};
           const email = correo(data.correo), password = clave(data.clave, true), extra = seguridad(data);
           reservarIntento(path, request);
           await api(env, '/auth/v1/signup?redirect_to=' + encodeURIComponent(destinoCorreo(url.origin)),
-            { method: 'POST', data: { email, password, data: { nombre: name }, ...extra } });
+            { method: 'POST', data: { email, password, data: { nombre: name, ...avisos }, ...extra } });
           // Signup never grants account access, even if remote autoconfirm is misconfigured.
           return respuesta({ confirmarCorreo: true, mensaje: 'Si la cuenta es nueva, recibirás un enlace para confirmar el correo antes de entrar. Si ya tenías cuenta, entra con tu contraseña o recupérala.' });
         }
@@ -320,6 +419,21 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
             '?redirect_to=' + encodeURIComponent(destinoCorreo(url.origin)), { method: 'POST',
               data: { email, ...(path.endsWith('reenviar') ? { type: 'signup' } : {}), ...extra } });
           return respuesta({ mensaje: 'Si hay una cuenta con ese correo, recibirás el enlace. Revisa también el correo no deseado.' });
+        }
+        if (path === '/api/acceso/baja') {
+          // Baja de los avisos desde el enlace de un correo: sin cuenta y sin la
+          // cookie de nadie, con la clave publicable. Solo { token } con un UUID.
+          // La respuesta es siempre la misma: no dice si el enlace existía.
+          if (Object.keys(data).length !== 1 || typeof data.token !== 'string' || !UUID.test(data.token)) throw new Error('solicitud_invalida');
+          reservarIntento(path, request);
+          try { await api(env, '/rest/v1/rpc/baja_avisos', { method: 'POST', data: { p_token: data.token }, maxBytes: 1024 }); }
+          catch (error) {
+            // Un rechazo de la base no depende del enlace: es un fallo del servicio,
+            // nunca «sin sesión», y no se finge una baja que no se hizo.
+            if (['auth_rechazado', 'redireccion_no_permitida'].includes(error.message) && error.status !== 429) throw new Error('servicio_no_disponible');
+            throw error;
+          }
+          return respuesta({ ok: true, mensaje: MENSAJE_BAJA });
         }
         const user = await verificar(env, data.access_token);
         if (path === '/api/acceso/inspeccionar') return respuesta({ usuario: user });

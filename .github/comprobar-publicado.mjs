@@ -9,6 +9,17 @@
    revisión legal), sus assets con huella, la CSP y que las lecciones no
    publicadas y las fichas retiradas den 404 (o 301 si la plataforma solo
    cambió de carpeta). Sale con código 1 si algo no cuadra.
+
+   Academy con cuenta ("acceso": "cuenta" en rwadar-academy/academy.json,
+   05/11/2026): sin sesión, cada lección da 303 a /acceso?volver=/academy/<slug>
+   con no-store, así que su contenido no se compara con lo publicado: se
+   comprueba en rwadar-publicado/ (lo que el flujo acaba de subir), y se exige
+   que su índice coincida byte a byte con el publicado. Nunca entra con una
+   cuenta ni envía nada que cambie datos.
+
+   Prueba local, sin red: RWADAR_COMPROBAR_LOCAL=1 y un http://127.0.0.1:<puerto>
+   servido por rwadar-acceso/probar-worker-local.mjs (lo hace
+   rwadar-acceso/comprobar-publicado.test.mjs).
    ===================================================================== */
 import { createRequire } from 'node:module';
 import crypto from 'node:crypto';
@@ -32,6 +43,11 @@ if (!prueba && !/^https:\/\/[a-z0-9.-]+\.pages\.dev$/.test(base)) {
 const academy = academyMod.cargarAcademy();
 const publicadas = academy.lecciones.filter(l => l.estado === 'publicado');
 const pendientes = academy.lecciones.filter(l => l.estado !== 'publicado');
+const conCuenta = academy.acceso === 'cuenta';
+const publicado = fileURLToPath(new URL('../rwadar-publicado/', import.meta.url));
+const leerPublicado = relativa => {
+  try { return fs.readFileSync(path.join(publicado, ...relativa.split('/')), 'utf8'); } catch { return null; }
+};
 const fallos = [];
 let correctas = 0;
 const ok = (nombre, condicion) => {
@@ -43,6 +59,15 @@ const pedir = async (ruta, opciones = {}) => {
   const texto = opciones.method === 'HEAD' ? '' : await respuesta.text();
   return { estado: respuesta.status, cabeceras: respuesta.headers, texto };
 };
+/* La marca «noindex, nofollow» + no-store solo la pone el 404 del worker (el
+   404 propio de Pages no lleva x-robots-tag): así la comprobación demuestra que
+   la lista cerrada está activa, y no depende de si el centro de datos que
+   responde guarda o no una copia. */
+const noEncontradaDelWorker = p => p.estado === 404 && p.cabeceras.get('x-robots-tag') === 'noindex, nofollow' &&
+  p.cabeceras.get('cache-control') === 'no-store';
+// Lección con cuenta pedida sin sesión: a /acceso con su vuelta, sin guardarse ni tocar cookies.
+const mandaAEntrar = (p, slug) => p.estado === 303 && p.cabeceras.get('location') === `/acceso?volver=/academy/${slug}` &&
+  /(?:^|,)\s*no-store\s*(?:,|$)/.test(p.cabeceras.get('cache-control') || '') && !p.cabeceras.has('set-cookie');
 const fechaLarga = iso => {
   const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto',
     'septiembre', 'octubre', 'noviembre', 'diciembre'];
@@ -71,13 +96,17 @@ ok('privacidad explica dónde se guarda el progreso de la Academy',
   privacidad.estado === 200 && privacidad.texto.includes('progreso de RWAdar Academy'));
 
 const sitemap = await pedir('/sitemap.xml');
-ok('el mapa del sitio lista la Academy publicada y nada más',
+ok(conCuenta ? 'el mapa del sitio lista el índice de la Academy y ninguna lección (van con cuenta)'
+  : 'el mapa del sitio lista la Academy publicada y nada más',
   sitemap.estado === 200 && sitemap.texto.includes(`<loc>https://rwadar.pages.dev/academy/</loc>`) &&
-  publicadas.every(l => sitemap.texto.includes(`/academy/${l.slug}</loc>`)) &&
+  publicadas.every(l => conCuenta ? !sitemap.texto.includes(`/academy/${l.slug}`) : sitemap.texto.includes(`/academy/${l.slug}</loc>`)) &&
   pendientes.every(l => !sitemap.texto.includes(l.slug)));
 
 const indice = await pedir('/academy/');
-ok('el índice de la Academy responde 200', indice.estado === 200 && indice.texto.includes('data-academy-indice-pagina'));
+ok('el índice de la Academy responde 200 y se puede indexar', indice.estado === 200 && indice.texto.includes('data-academy-indice-pagina') &&
+  !/noindex/i.test(indice.cabeceras.get('x-robots-tag') || '') && indice.texto.includes('<meta name="robots" content="index,follow'));
+if (conCuenta) ok('el índice dice que es gratis con cuenta y enlaza el alta con vuelta a la Academy',
+  indice.texto.includes('Gratis con tu cuenta') && indice.texto.includes(`href="${academyMod.ALTA_ACADEMY}"`));
 ok(`el índice muestra ${publicadas.length} lecciones disponibles y ${pendientes.length} «Próximamente»`,
   indice.texto.includes(`<progress max="${publicadas.length}"`) &&
   (indice.texto.match(/ac-tarjeta ac-tarjeta-pronto/g) || []).length === pendientes.length);
@@ -104,16 +133,50 @@ for (const nombre of ARCHIVOS_PUBLICABLES.filter(n => n.endsWith('.woff2'))) {
   ok(`tipografía íntegra ${nombre}`, respuesta.status === 200 && bytes.subarray(0,4).toString() === 'wOF2' &&
     crypto.createHash('sha256').update(bytes).digest('hex').slice(0,12) === huella);
 }
-for (const l of publicadas) {
-  const pagina = await pedir(`/academy/${l.slug}`);
-  ok(`lección ${l.modulo} responde 200 con su contenido`,
-    pagina.estado === 200 && pagina.texto.includes(`data-academy-leccion="${l.slug}"`) &&
-    pagina.texto.includes(l.titulo.replace(/&/g, '&amp;')));
-  ok(`lección ${l.modulo} muestra la revisión legal del ${fechaLarga(l.revisionLegal)}`,
-    pagina.texto.includes(`Contenido revisado el <time datetime="${l.revisionLegal}">${fechaLarga(l.revisionLegal)}</time>`));
-  ok(`lección ${l.modulo} aplica la CSP estricta`,
-    /script-src 'self'/.test(pagina.cabeceras.get('content-security-policy') || ''));
-  for (const m of pagina.texto.matchAll(/(?:href|src)="(\/assets\/(?:academy-20261002|idioma(?:-en|-web)?-20261022)\.[0-9a-f]{12}\.(?:css|js))"/g)) assets.add(m[1]);
+const assetsLeccion = /(?:href|src)="(\/assets\/(?:academy-20261002|idioma(?:-en|-web)?-20261022)\.[0-9a-f]{12}\.(?:css|js))"/g;
+if (conCuenta) {
+  /* El contenido se comprueba en rwadar-publicado/: el índice publicado debe
+     ser byte a byte el de esa carpeta, o lo comprobado no es lo que se sirve. */
+  ok('rwadar-publicado/ es lo que está publicado (el índice de la Academy coincide byte a byte)',
+    leerPublicado('academy/index.html') === indice.texto);
+  const fallosLecciones = academyMod.comprobarLeccionesPublicadas(publicado, academy);
+  ok(`las ${publicadas.length} lecciones de rwadar-publicado/ llevan su contenido, su revisión legal y noindex` +
+    (fallosLecciones.length ? `: ${fallosLecciones.join('; ')}` : ''), fallosLecciones.length === 0);
+  for (const l of publicadas) {
+    for (const m of (leerPublicado(`academy/${l.slug}.html`) || '').matchAll(assetsLeccion)) assets.add(m[1]);
+    const pagina = await pedir(`/academy/${l.slug}`, { headers: { Accept: 'text/html' } });
+    ok(`lección ${l.modulo} sin sesión: 303 a /acceso?volver=/academy/${l.slug}, sin guardarse: ${pagina.estado}`, mandaAEntrar(pagina, l.slug));
+  }
+  const primera = publicadas[0].slug;
+  for (const ruta of [`/academy/${primera}.html`, `/academy/${primera}/`, `//academy/${primera}`, `/ACADEMY/${primera}`]) {
+    const variante = await pedir(ruta, { headers: { Accept: 'text/html' } });
+    ok(`${ruta} sin sesión también manda a entrar: ${variante.estado}`, mandaAEntrar(variante, primera));
+  }
+  const cabeza = await pedir(`/academy/${primera}`, { method: 'HEAD', headers: { Accept: 'text/html' } });
+  ok(`HEAD de una lección sin sesión: 303: ${cabeza.estado}`, mandaAEntrar(cabeza, primera));
+  const noHtml = await pedir(`/academy/${primera}`, { headers: { Accept: 'application/json' } });
+  ok(`una lección pedida sin sesión fuera de una página da 401 sin guardarse: ${noHtml.estado}`, noHtml.estado === 401 &&
+    /no-store/.test(noHtml.cabeceras.get('cache-control') || '') && !noHtml.cabeceras.has('set-cookie'));
+  // Un token con forma de JWT pero falso: Auth lo rechaza y la lección sigue cerrada.
+  const inventada = await pedir(`/academy/${primera}`, { headers: { Accept: 'text/html',
+    Cookie: '__Host-rwadar-acceso=eyJhbGciOiJub25lIn0.eyJzdWIiOiJjb21wcm9iYWNpb24ifQ.comprobacion' } });
+  ok(`una cookie inventada no abre la lección ni se borra: ${inventada.estado}`, mandaAEntrar(inventada, primera));
+  const barra = await pedir('/academy/a%2Fb', { headers: { Accept: 'text/html' } });
+  ok(`una ruta de la Academy con %2F da 400: ${barra.estado}`, barra.estado === 400);
+  const falsa = await pedir('/academy/rwadar-comprobacion-leccion-inexistente', { headers: { Accept: 'text/html' } });
+  ok(`una lección que no existe da el 404 del worker sin mirar la sesión: ${falsa.estado}`, noEncontradaDelWorker(falsa));
+} else {
+  for (const l of publicadas) {
+    const pagina = await pedir(`/academy/${l.slug}`);
+    ok(`lección ${l.modulo} responde 200 con su contenido`,
+      pagina.estado === 200 && pagina.texto.includes(`data-academy-leccion="${l.slug}"`) &&
+      pagina.texto.includes(l.titulo.replace(/&/g, '&amp;')));
+    ok(`lección ${l.modulo} muestra la revisión legal del ${fechaLarga(l.revisionLegal)}`,
+      pagina.texto.includes(`Contenido revisado el <time datetime="${l.revisionLegal}">${fechaLarga(l.revisionLegal)}</time>`));
+    ok(`lección ${l.modulo} aplica la CSP estricta`,
+      /script-src 'self'/.test(pagina.cabeceras.get('content-security-policy') || ''));
+    for (const m of pagina.texto.matchAll(assetsLeccion)) assets.add(m[1]);
+  }
 }
 ok('las lecciones y fichas usan sus hojas, scripts y cuatro recursos de idioma con huella', assets.size === 9);
 for (const ruta of assets) {
@@ -121,9 +184,20 @@ for (const ruta of assets) {
   ok(`${ruta} responde 200`, asset.estado === 200 && asset.texto.length > 1000);
 }
 for (const l of pendientes) {
-  const pagina = await pedir(`/academy/${l.slug}`);
-  ok(`lección ${l.modulo} (Próximamente) no tiene página: ${pagina.estado}`, pagina.estado === 404);
+  const pagina = await pedir(`/academy/${l.slug}`, { headers: { Accept: 'text/html' } });
+  ok(`lección ${l.modulo} (Próximamente) no tiene página: ${pagina.estado}`, conCuenta ? noEncontradaDelWorker(pagina) : pagina.estado === 404);
 }
+
+/* Baja de los avisos sin cuenta (05/11/2026): la página no se indexa ni se
+   guarda, y el endpoint existe y rechaza un enlace sin forma de UUID antes de
+   llamar a la base. Nunca se envía un token de verdad. */
+const baja = await pedir('/baja');
+ok(`la página de baja de avisos responde 200, sin indexar ni guardarse: ${baja.estado}`, baja.estado === 200 &&
+  /noindex/.test(baja.cabeceras.get('x-robots-tag') || '') && /no-store/.test(baja.cabeceras.get('cache-control') || ''));
+const bajaMala = await pedir('/api/acceso/baja', { method: 'POST', headers: { Origin: base, 'Content-Type': 'application/json' },
+  body: JSON.stringify({ token: 'no-es-un-enlace' }) });
+ok(`la baja rechaza un enlace sin forma de UUID: ${bajaMala.estado}`, bajaMala.estado === 400 &&
+  /no-store/.test(bajaMala.cabeceras.get('cache-control') || ''));
 
 /* Fichas retiradas: Cloudflare Pages conserva una semana, en cada centro de
    datos, copias de lo que sirvió y las devuelve si el archivo desaparece. El
@@ -138,12 +212,6 @@ try {
     .filter(ficha => !paginasFichas.includes(ficha)).sort();
 } catch (e) { console.log(`  (no se pudo leer el historial de Git: ${e.message})`); }
 ok(`el historial de Git da las fichas retiradas que hay que comprobar (${retiradas.length})`, retiradas.length > 0);
-/* La marca «noindex, nofollow» + no-store solo la pone el 404 del worker (el
-   404 propio de Pages no lleva x-robots-tag): así la comprobación demuestra que
-   la lista cerrada está activa, y no depende de si el centro de datos que
-   responde guarda o no una copia. */
-const noEncontradaDelWorker = p => p.estado === 404 && p.cabeceras.get('x-robots-tag') === 'noindex, nofollow' &&
-  p.cabeceras.get('cache-control') === 'no-store';
 const inexistente = await pedir('/ofertas/rwadar-comprobacion-ficha-inexistente');
 ok('una ficha que nunca existió da el 404 del worker', noEncontradaDelWorker(inexistente));
 /* Una plataforma que cambió de carpeta (de plataformas/ a fuera-del-radar/, o al

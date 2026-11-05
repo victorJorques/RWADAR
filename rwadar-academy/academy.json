@@ -1,5 +1,7 @@
 {
   "version": 1,
+  "acceso": "cuenta",
+  "nota_acceso": "Quién abre las lecciones en la web: \"cuenta\" (cada lección pide una cuenta confirmada; el índice sigue público) o \"publico\" (como antes del 05/11/2026). Lo aplica el worker (rwadar-acceso/compilar.cjs) y lo refleja el generador: noindex, sitemap y textos. Ver docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md.",
   "nota": "Configuración editorial de RWAdar Academy. Las lecciones viven en lecciones/*.md (fuente de verdad, tal como las entregó Eric). Aquí solo se decide qué se publica, cómo se agrupan y adónde llevan los botones. Después de cambiar algo: node rwadar-academy.js",
   "niveles": [
     {
