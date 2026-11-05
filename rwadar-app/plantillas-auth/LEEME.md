@@ -31,9 +31,12 @@ Víctor**.
 5. Prueba con una cuenta propia, dos veces: sin marcar la casilla (no debe
    salir el párrafo de los avisos) y marcándola (debe salir).
 
-**Orden:** la casilla de avisos de la web y de la app (`AVISOS_NOVEDADES_REMOTOS`)
-no se enciende hasta que esta plantilla esté puesta.
+**Orden:** primero esta plantilla; después
+`db/30_avisos_registrados_activar_casilla.sql` (hasta entonces la base no
+guarda el permiso del alta aunque lleguen los metadatos); y solo entonces la
+casilla de avisos de la web y de la app (`AVISOS_NOVEDADES_REMOTOS`).
 
-**Marcha atrás:** pegar la plantilla anterior, que está en
+**Marcha atrás:** primero `db/30_avisos_registrados_apagar.sql` (apaga la
+casilla y todo lo demás); después pegar la plantilla anterior, que está en
 [`docs/tareas/REABRIR-CUENTAS.md`](../../docs/tareas/REABRIR-CUENTAS.md)
 («Plantillas de correo»), con su asunto `Confirma tu cuenta de RWAdar`.

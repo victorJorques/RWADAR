@@ -23,6 +23,14 @@ begin
      or to_regclass('rwadar_novedades.configuracion') is null then
     raise exception '30: falta el esquema rwadar_novedades (aplicar 30_avisos_registrados.sql)';
   end if;
+  -- Columnas de la versión actual: casilla del alta y marcas de bienvenida.
+  if (select count(*) from pg_attribute
+       where not attisdropped and attnum > 0
+         and ((attrelid = to_regclass('rwadar_novedades.configuracion') and attname = 'casilla_activa')
+              or (attrelid = to_regclass('rwadar_novedades.preferencias')
+                  and attname in ('bienvenida_correo_el', 'bienvenida_push_el')))) <> 3 then
+    raise exception '30: faltan casilla_activa o las marcas de bienvenida (reaplicar 30_avisos_registrados.sql)';
+  end if;
   foreach v_rol in array array['public', 'anon', 'authenticated'] loop
     if has_schema_privilege(v_rol, 'rwadar_novedades', 'USAGE')
        or has_schema_privilege(v_rol, 'rwadar_novedades', 'CREATE') then
@@ -151,6 +159,7 @@ begin
       ('public.configurar_avisos_novedades(boolean,text,text)', false),
       ('public.registrar_aviso_push(text,text)', false),
       ('public.quitar_aviso_push(text)', false),
+      ('public.mi_aviso_push_registrado(text)', false),
       ('public.mis_avisos_recientes(integer)', false),
       ('public.baja_avisos(uuid)', true)
     ) as esperado(firma, para_anon)
@@ -183,6 +192,10 @@ begin
           and tgenabled <> 'D' and not tgisinternal
           and tgfoid = 'rwadar_novedades.al_confirmar_cuenta()'::regprocedure) then
     raise exception '30: falta o está desactivado el disparador de confirmación en auth.users';
+  end if;
+  -- El permiso del alta solo se lee con la casilla activa (versión actual).
+  if position('casilla_activa' in pg_get_functiondef('rwadar_novedades.al_confirmar_cuenta()'::regprocedure)) = 0 then
+    raise exception '30: el disparador de confirmación no comprueba casilla_activa (reaplicar 30_avisos_registrados.sql)';
   end if;
   if not exists (
        select 1 from pg_trigger
@@ -219,7 +232,8 @@ begin
   end if;
 
   select count(*) into v_retenidos from rwadar_novedades.anuncios where estado = 'retenido';
-  raise notice 'RWAdar 30 OK: correo %, push %, aviso automático de ofertas %, % anuncio(s) retenido(s), %',
+  raise notice 'RWAdar 30 OK: casilla del alta %, correo %, push %, aviso automático de ofertas %, % anuncio(s) retenido(s), %',
+    case when v_cfg.casilla_activa then 'activa' else 'inactiva' end,
     case when v_cfg.correo_habilitado then 'encendido' else 'apagado' end,
     case when v_cfg.push_habilitado then 'encendido' else 'apagado' end,
     case when v_cfg.ofertas_automaticas then 'encendido' else 'apagado' end,

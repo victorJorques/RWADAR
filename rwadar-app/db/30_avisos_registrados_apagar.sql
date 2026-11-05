@@ -1,10 +1,11 @@
 -- =====================================================================
 -- RWAdar 30 · APAGAR los avisos a registrados
 -- ---------------------------------------------------------------------
--- Apaga el correo, el push y el aviso automático de ofertas y quita el
--- reloj. No corta la API, no borra filas y no toca la 22, la 23 ni la
--- retención. Las colas quedan como estaban: al volver a encender, lo
--- anterior a la nueva activación se descarta y nada sale de golpe.
+-- Apaga el correo, el push, el aviso automático de ofertas y la casilla del
+-- alta (los metadatos dejan de dar permiso) y quita el reloj. No corta la
+-- API, no borra filas y no toca la 22, la 23 ni la retención. Las colas
+-- quedan como estaban: al volver a encender, lo anterior a la nueva
+-- activación se descarta y nada sale de golpe.
 -- =====================================================================
 begin;
 
@@ -13,7 +14,7 @@ begin
   if to_regclass('rwadar_novedades.configuracion') is not null then
     update rwadar_novedades.configuracion
        set correo_habilitado = false, push_habilitado = false, ofertas_automaticas = false,
-           correo_activado_el = null, push_activado_el = null
+           casilla_activa = false, correo_activado_el = null, push_activado_el = null
      where unica;
   end if;
 end
