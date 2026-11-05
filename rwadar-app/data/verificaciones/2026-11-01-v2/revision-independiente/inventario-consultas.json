@@ -148,8 +148,10 @@
   "archivo": "fuentes/outeiro-api.json",
   "http": 200,
   "consultadoUtc": "2026-11-02T16:32:07Z",
-  "bytes": 48606,
-  "sha256": "00af0e4d7007f03c0455d9b8f526effb030fc50d91c7973203247edf799c13c5"
+  "bytes": 48542,
+  "sha256": "da99502939f54b1d9e8a7041d6aedcbc1cc6e8aa1dbfb2443e23f5d98ea06b09",
+  "sha256Captura": "00af0e4d7007f03c0455d9b8f526effb030fc50d91c7973203247edf799c13c5",
+  "nota": "Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior."
  },
  {
   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
@@ -157,7 +159,8 @@
   "http": 200,
   "consultadoUtc": "2026-11-02T16:32:14Z",
   "bytes": 429084,
-  "sha256": "147cd9729caaf06be2afe5d894303c964bac2be0777116006399f81d800e0de3"
+  "sha256": "147cd9729caaf06be2afe5d894303c964bac2be0777116006399f81d800e0de3",
+  "nota": "La copia de texto en Git (outeiro-FDF-v5.txt) lleva recortados desde el 05/11/2026 los nombres de personas físicas («[nombre recortado]»); bytes y sha256 siguen siendo los del PDF original."
  },
  {
   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793",
@@ -172,16 +175,20 @@
   "archivo": "fuentes/alius-outeiro.json",
   "http": 200,
   "consultadoUtc": "2026-11-02T16:32:45Z",
-  "bytes": 4815,
-  "sha256": "bf5fc3f0f7f865cdcaf2d3be696cfde1d12d909267ebbb027737bb97fd131199"
+  "bytes": 4813,
+  "sha256": "6df2e974284649a9da487d8813902da749958080893174e82b8ea51546e0022e",
+  "sha256Captura": "bf5fc3f0f7f865cdcaf2d3be696cfde1d12d909267ebbb027737bb97fd131199",
+  "nota": "Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior."
  },
  {
   "url": "https://casadeouteiro.com/emision-capital/",
   "archivo": "fuentes/outeiro-emisor.json",
   "http": 200,
   "consultadoUtc": "2026-11-02T16:33:13Z",
-  "bytes": 5776,
-  "sha256": "aa638ca073cfe3d8b72763da8ec89efc97d85e112a5c954f65a2717fe3d6e567"
+  "bytes": 5779,
+  "sha256": "e065567c1ccc46967db65997b33ec5830b944cf870877cceb65b0654f6cd3e8e",
+  "sha256Captura": "aa638ca073cfe3d8b72763da8ec89efc97d85e112a5c954f65a2717fe3d6e567",
+  "nota": "Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior."
  },
  {
   "url": "https://hausera.io/oportunidades/",

@@ -1021,7 +1021,7 @@
    "bytes": 162069,
    "sha256": "930fa4b8996010f92c97f6973f2804232e22601973798dc9922c4e85355fd567",
    "enGit": false,
-   "nota": "FMA búsqueda validación"
+   "nota": "FMA búsqueda validación. La copia de texto en Git (fma-busqueda-web-validacion.txt) lleva recortado desde el 05/11/2026 el nombre de una persona física de un aviso de la FMA de 2006 («[nombre recortado]»); bytes y sha256 siguen siendo los del HTML original."
   },
   {
    "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
@@ -1709,18 +1709,20 @@
    "archivo": "fuentes/alius/casa-anexos-v3.pdf.txt",
    "http": null,
    "consultadoUtc": null,
-   "bytes": 26686,
-   "sha256": "9dab7776fcf1d77baa48fff35b07229faa3cf4527ec9bad2e629e285e2ed5b60",
-   "nota": "Texto extraído con pdftotext -layout del PDF homónimo (datos personales recortados)"
+   "bytes": 26682,
+   "sha256": "3af1a9d1e1c614d9d791ffe6d7264b36e6a365f052f702c9578362b2b72401d4",
+   "nota": "Texto extraído con pdftotext -layout del PDF homónimo (datos personales recortados). Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior.",
+   "sha256Captura": "9dab7776fcf1d77baa48fff35b07229faa3cf4527ec9bad2e629e285e2ed5b60"
   },
   {
    "url": null,
    "archivo": "fuentes/alius/casa-fdf-v5.pdf.txt",
    "http": null,
    "consultadoUtc": null,
-   "bytes": 23264,
-   "sha256": "90cdf9fd5800bc6db8cdbed2ae2cfdaa0fb6014bd85516fb30388545f3602750",
-   "nota": "Texto extraído con pdftotext -layout del PDF homónimo (datos personales recortados)"
+   "bytes": 23260,
+   "sha256": "16b00cd39fd06a09e27bcceb55e0d05acb1c406535647a3e832e060dbc73b73a",
+   "nota": "Texto extraído con pdftotext -layout del PDF homónimo (datos personales recortados). Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior.",
+   "sha256Captura": "90cdf9fd5800bc6db8cdbed2ae2cfdaa0fb6014bd85516fb30388545f3602750"
   }
  ]
 }

@@ -1,4 +1,4 @@
-[Texto extraído con pdftotext/HTML; datos personales de personas físicas omitidos por RWAdar]
+[Texto extraído con pdftotext/HTML; datos personales de personas físicas (nombres, DNI, correos, domicilios y estado civil) recortados por RWAdar]
 
         NÚMERO: TRES MIL CUARENTA Y UNO. ------------------------
 
@@ -8,7 +8,7 @@
 
 mil veintiséis. --------------------------------------------------------------------------
 
-        Ante mí, CRISTINA REQUENA TORRECILLAS Notario del
+        Ante mí, [nombre recortado] Notario del
 
 Ilustre Colegio Notarial de Catalunya,------------------------------------------
 
@@ -16,11 +16,11 @@ Ilustre Colegio Notarial de Catalunya,------------------------------------------
 
         De una parte, como representante de la sociedad emisora: ----
 
-        El Sr. ALBERTO LUIS ORTEGA USEROS, mayor de edad,
+        El Sr. [nombre recortado], mayor de edad,
 
-con domicilio a estos efectos en la calle Clara Campoamor, número 6,
+con domicilio a estos efectos en [domicilio recortado],
 
-portal 6, 1ºB, Las Rozas de Madrid (Madrid-28232), titular del
+Las Rozas de Madrid (Madrid-28232), titular del
 
 DNI/NIF número [DNI omitido], en el espacio habilitado en la sede
 
@@ -32,13 +32,13 @@ videoconferencia. --------------------------------------------------------------
 
 Obligacionistas: ----------------------------------------------------------------------
 
-        DOÑA YAEL MAZALTOB HERNÁNDEZ OAKNIN, de
+        DOÑA [nombre recortado], de
 
-nacionalidad española, mayor de edad, divorciada, empresaria,
+nacionalidad española, mayor de edad, empresaria,
 
-vecina de 38260-San Cristóbal de la Laguna (Santa Cruz de Tenerife),
+vecina de [domicilio recortado],
 
-con domicilio en carretera General Tejina, número 110, titular del
+con domicilio en [domicilio recortado], titular del
 
 
 
@@ -64,7 +64,7 @@ capacidad suficiente para el presente otorgamiento. ----------------------
 
                            ===== INTERVENCIÓN =====
 
-        1.- El Sr. ALBERTO LUIS ORTEGA USEROS en nombre y
+        1.- El Sr. [nombre recortado] en nombre y
 
 representación, como administrador único, de la siguiente sociedad:
 
@@ -72,11 +72,11 @@ representación, como administrador único, de la siguiente sociedad:
 
         Constitución: En virtud de escritura pública autorizada por la
 
-Notario de Madrid, la Sra. Alicia Velarde Valiente, el día 9 de julio de
+Notario de Madrid, la Sra. [nombre recortado], el día 9 de julio de
 
 2024, con número 2.175 de protocolo. -----------------------------------------
 
-        Domicilio: calle Clara Campoamor, número 6, portal 6, 1ºB,
+        Domicilio: [domicilio recortado],
 
 Las Rozas de Madrid (Madrid-28232). -----------------------------------------
 
@@ -140,7 +140,7 @@ misma es correcta y vigente. ---------------------------------------------------
 
 
                                                                                   -3-
-        2.- La Sra. YAEL MAZALTOB HERNÁNDEZ OAKNIN, en
+        2.- La Sra. [nombre recortado], en
 
 nombre y representación, como administradora única, de la
 
@@ -152,7 +152,7 @@ STOS PSFP S.L.” --------------------------------------------------------------
 
         Constitución: mediante escritura autorizada en Santa Cruz de
 
-Tenerife, por el notario don Javier Martínez del Moral, el día 10 de
+Tenerife, por el notario don [nombre recortado], el día 10 de
 
 marzo de 2014, bajo el número 364 de protocolo. --------------------------
 
@@ -170,7 +170,7 @@ Tenerife al tomo 3319, folio 114, hoja número TF53353. -----------------
 
 cargo que resulta de escritura pública autorizada por el Notario de
 
-Madrid, don Pedro Antonio Mateos Salgado, en fecha 28 de octubre
+Madrid, don [nombre recortado], en fecha 28 de octubre
 
 de 2024, con el número 5.592 de protocolo, cuya copia auténtica me
 
@@ -308,7 +308,7 @@ cumple con los estándares de calidad y normativos exigidos en la
 
 jurisdicción aplicable. Se incorpora dicho Certificado firmado
 
-digitalmente por doña Yael Mazaltob Hernández Oaknin, y cuya firma
+digitalmente por doña [nombre recortado], y cuya firma
 
 considero legitima por haberla verificado previamente de forma digital,
 

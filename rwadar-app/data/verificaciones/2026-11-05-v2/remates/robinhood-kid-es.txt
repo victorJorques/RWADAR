@@ -1,0 +1,227 @@
+Documento de datos fundamentales
+Objetivo
+Este documento le proporciona información fundamental que debe conocer sobre este producto de inversión. No se trata de material
+comercial. Es una información exigida por ley para ayudarle a comprender la naturaleza, los riesgos, los costes y los beneficios y pérdidas
+potenciales de este producto y para ayudarle a compararlo con otros productos.
+
+Producto
+Nombre: Derivado sobre acciones/ETP estadounidenses (el «Producto»)
+Productor del PRIIP: Robinhood Europe, UAB, una empresa de inversión lituana autorizada y regulada (código de entidad jurídica:
+306377915) («Robinhood Europe»), filial de Robinhood Markets, Inc. (junto con sus filiales, «Robinhood») y parte del grupo de empresas
+Robinhood.
+Contacto: https://robinhood.com/eu/es/| Llame al teléfono +370 5 214 1321 para obtener información adicional.
+Autoridad competente: El Banco de Lituania, Gedimino pr. 6, LT-01103 Vilnius, Lituania, es el responsable de la supervisión de Robinhood
+Europe en relación con el presente Documento de datos fundamentales.
+Fecha de producción del documento: 1 de julio de 2026
+
+Está a punto de adquirir un producto que no es sencillo y que puede ser difícil de comprender.
+¿Qué es este producto?                                                  Todas las referencias a los símbolos bursátiles y los nombres de los
+Tipo: El Producto es un derivado del mercado extrabursátil («OTC»)      Activos subyacentes tienen un carácter meramente descriptivo y no
+que permite la participación directa y equivalente en la acción         implican, en ningún caso, relación de colaboración o afiliación con
+cotizada en bolsa en EE. UU. o el producto cotizado en bolsa en EE.     los emisores correspondientes de los Activos subyacentes ni con
+UU. («ETP») subyacente que haya seleccionado. El precio del             terceros, ni suponen control alguno por su parte ni aprobación del
+Producto se establece y se cotiza en dólares estadounidenses (USD)      Producto. El presente Documento de datos fundamentales tiene por
+y las ganancias y pérdidas se calculan en USD. Un producto              objeto ofrecerle una visión general del Derivado sobre acciones
+cotizado en bolsa (ETP, por sus siglas en inglés) es un instrumento     estadounidenses/ETP, que tiene disponibles varios Activos
+de inversión que cotiza en bolsa, similar a una acción, cuyo valor      subyacentes. Consulte aquí información adicional sobre los activos
+suele estar vinculado a la evolución de un activo subyacente como,      subyacentes disponibles como opciones de inversión.
+por ejemplo, un índice, una cesta de acciones o una materia prima.
+                                                                        Plazo: El Producto no tiene un plazo fijo.
+Al comprar el Producto, celebra con Robinhood Europe un contrato
+de derivados financieros, un tipo de instrumento financiero regulado    Objetivos: El objetivo del Producto es ofrecerle la posibilidad de
+por la Directiva sobre mercados de instrumentos financieros             participar de forma indirecta y proporcional en las variaciones de
+(Directiva UE 2014/65 – MiFID II). El valor de este contrato depende    valor del Activo subyacente. La tenencia del Producto no confiere la
+de la evolución de la acción cotizada en bolsa en EE. UU. o el          titularidad de acciones o participaciones, ni otorga derecho alguno
+producto cotizado en bolsa en EE. UU. que seleccione en la              a recibir acciones o participaciones del Activo subyacente. El
+plataforma de Robinhood Europe (dicha acción o ETP cotizados en         Producto no otorga la posibilidad de canjearlo por acciones o
+la bolsa estadounidense se denominarán el «Activo subyacente»).         participaciones del Activo subyacente, ni de ningún otro modo, y
+Los derechos que le corresponden en virtud del Producto derivan         tampoco confiere los derechos inherentes a la tenencia directa de
+del contrato con Robinhood Europe y están representados también         dichas acciones o participaciones, como, por ejemplo, el derecho
+mediante un token negociado en una blockchain (el «Token») que          de voto en las juntas de accionistas.
+Robinhood Europe le emite en el momento de la celebración del
+contrato. Cada Token representa 1 acción o participación                Puede conservar el Producto indefinidamente, lo que significa que
+subyacente en el Activo subyacente, de modo que recibirá el mismo       no tiene plazo de vigencia ni fecha de caducidad. Puede cerrar su
+número de Tokens que de acciones o participaciones seleccionadas        posición en el Producto en cualquier momento enviándonos la
+en la Aplicación de Robinhood Europe.                                   solicitud correspondiente a través de la Aplicación de Robinhood
+                                                                        Europe. Dicha solicitud se tramitará lo antes posible, de conformidad
+El precio del Producto varía en función del precio del Activo           con los Términos y Condiciones aplicables. Cualquier cierre de una
+subyacente en cada momento, según los precios de mercado de             posición en el Producto se realizará siempre al precio vigente en ese
+dicho Activo subyacente. Puede comprar el Producto al precio del        momento del Activo subyacente, una vez deducidas las comisiones
+Activo subyacente en el momento de la compra y puede solicitar a        pertinentes. Por lo tanto, un factor importante del que dependerá el
+Robinhood Europe que se lo recompre en el futuro al precio del          rendimiento que obtenga es el Activo subyacente que seleccione y
+Activo subyacente vigente en ese momento, en cualquier caso, de         su rentabilidad.
+conformidad con las comisiones y demás condiciones aplicables.
+                                                                        Inversor minorista al que va dirigido: El Producto es un
+Por lo general, puede negociar con el Producto durante el horario       instrumento financiero complejo, adecuado únicamente para
+habitual de negociación del NASDAQ, es decir, de las 09:30 a las        inversores minoristas con conocimientos y experiencia específicos
+16:00, hora del Este (GMT-5). Robinhood Europe podría ofrecer la        en la negociación de productos similares y en el funcionamiento de
+posibilidad de negociar fuera de este horario, aunque es posible que,   los mercados financieros. Está destinado a aquellos inversores que
+en ocasiones, esta opción no esté disponible. La negociación fuera      deseen obtener exposición a los activos subyacentes.
+del horario habitual conlleva riesgos adicionales, como una mayor
+volatilidad de los precios, una menor liquidez, unos diferenciales      El Producto es adecuado para inversores con un horizonte de
+entre el precio de compra y el de venta más amplios y el hecho de       inversión a corto plazo, en consonancia con el período de
+disponer de menos información sobre el mercado. Puede realizar las      mantenimiento recomendado. Está destinado a inversores que estén
+órdenes del Producto en euros («EUR») a través de la Aplicación de      dispuestos y tengan la capacidad financiera para asumir pérdidas
+Robinhood Europe. Al abrir una posición, los EUR se convierten a        significativas, incluida la pérdida total del capital invertido, y que no
+USD al tipo de cambio que se indica en la Aplicación. Al cerrar la      esperen ninguna protección del capital. Los inversores deben tener
+posición, todos los pagos se calculan en USD y se vuelve a convertir    en cuenta que el valor del Producto puede fluctuar
+a EUR al tipo de cambio que se indica en la Aplicación.                 considerablemente debido a la volatilidad de los activos
+                                                                        subyacentes. Es necesario realizar un seguimiento y una gestión de
+Los Activos subyacentes que son ETP proceden de terceros y no           los activos de la inversión.
+son emitidos ni gestionados por Robinhood. Robinhood no está
+vinculada a dichos terceros ni ejerce control alguno sobre ellos.
+
+
+
+
+Página 1 de 3 | Documento de datos fundamentales
+                                                                                                            20260626-5664125-17985362
+¿Qué riesgos corro y qué podría obtener a cambio?
+Indicador de riesgo:
+                                                                           Escenarios de rentabilidad: Lo que obtenga de este Producto
+                                                                           dependerá de la evolución futura del mercado, la cual es incierta y
+                                                                           no puede predecirse con exactitud.
+
+                                                                           Los escenarios que se muestran son ilustraciones basadas en
+                                                                           resultados pasados y en determinadas hipótesis. Los mercados
+                                                                           podrían evolucionar de forma muy diferente en el futuro. Las cifras
+                                                                           presentadas incluyen todos los costes del Producto propiamente
+                                                                           dicho, pero es posible que no incluyan todos los costes que usted
+                                                                           deba pagar a su asesor o distribuidor. Las cifras no tienen en cuenta
+                                                                           su situación fiscal personal, que también puede influir en la cantidad
+                                                                           que reciba. El escenario de tensión muestra lo que usted podría
+                                                                           recibir en circunstancias extremas de los mercados.
+
+                                                                           Es difícil calcular cuánto recibiría si liquidara su inversión de manera
+                                                                           anticipada. Es posible que no pueda hacerlo o que, si lo hace, tenga
+                                                                           que pagar unos costes elevados o perder hasta el 100 % de la
+                                                                           inversión. La compra de este Producto implicaría que usted cree que
+El indicador resumido de riesgo es una guía del nivel de riesgo de
+                                                                           el precio del subyacente aumentará. La pérdida máxima que podría
+este Producto en comparación con otros productos. Muestra las
+                                                                           sufrir sería la totalidad de su inversión (el importe desembolsado).
+probabilidades de que el Producto pierda dinero debido a la
+evolución de los mercados o porque no podamos pagarle.                      Período de mantenimiento recomendado: 1 año
+                                                                            Ejemplo de inversión: 10.000 EUR
+Hemos clasificado este Producto en la clase de riesgo 7 en una
+escala de 7, en la que 1 significa «el riesgo más bajo», 2 significa «un    Escenarios                                              En caso de salida
+riesgo bajo», 3 significa «un riesgo medio bajo», 4 significa «un riesgo                                                            después de 1 año
+medio», 5 significa «un riesgo medio alto», 6 significa «el segundo
+riesgo más alto» y 7 significa «el riesgo más alto». Esta evaluación        Mínimo             No hay una rentabilidad mínima garantizada. Podría
+califica como muy alta la posibilidad de sufrir pérdidas en                                    perder parte o la totalidad de su inversión.
+rentabilidades futuras y la probabilidad de que una mala coyuntura
+de mercado influya en nuestra capacidad de pagarle. El riesgo y la          Tensión            Lo que podría recibir tras deducir           4.033
+rentabilidad de la inversión variarán considerablemente en función                             los costes                                  -59,7 %
+del Activo subyacente por el que opte, ya que la rentabilidad del                              Rentabilidad media cada año
+Producto depende en gran medida del Activo subyacente
+seleccionado y de su evolución. Aunque el riesgo y la rentabilidad
+del Producto varían en función del Activo subyacente, la clasificación
+de riesgo (siendo 7 la clase de riesgo más alta) se aplica                  Desfavorable       Lo que podría recibir tras deducir           6.646
+independientemente del Activo subyacente específico seleccionado                               los costes                                  -33,5 %
+como subyacente.                                                                               Rentabilidad media cada año
+
+Tenga presente el riesgo de cambio. Usted recibirá los pagos en
+una moneda diferente, por lo que la rentabilidad final que reciba
+dependerá del tipo de cambio entre ambas monedas. Este
+riesgo no se tiene en cuenta en el indicador anterior.                      Moderado           Lo que podría recibir tras deducir           9.933
+                                                                                               los costes                                  -0,7 %
+                                                                                               Rentabilidad media cada año
+Las fluctuaciones del precio facilitado por el NASDAQ y el volumen
+de negociación de un Activo subyacente pueden afectar
+negativamente al valor del Producto, ya que reflejan el valor de
+mercado del Activo subyacente correspondiente. El precio del
+Activo subyacente puede estar sujeto, a su vez, a una volatilidad           Favorable          Lo que podría recibir tras deducir          14.804
+significativa. Este Producto no incluye protección alguna contra la                            los costes                                  48,0 %
+                                                                                               Rentabilidad media cada año
+evolución futura del mercado, por lo que podría sufrir pérdidas
+significativas o incluso perder la totalidad de su inversión. Si no
+podemos pagarle lo que se le debe, podría perder parte o la totalidad
+de su inversión.
+
+Riesgos significativos no incluidos en el indicador resumido de            TENGA EN CUENTA QUE: Los escenarios anteriores se basan en
+riesgo: Robinhood Europe es la única contraparte responsable de            el supuesto de que el Activo subyacente que usted ha seleccionado
+atender sus reclamaciones. Si no podemos pagarle lo que se le              es AAPL (una acción emitida por Apple, Inc. y cotizada en el
+debe, podría perder toda su inversión.                                     NASDAQ). La rentabilidad real del Producto dependerá de varios
+                                                                           factores, entre ellos, el Activo subyacente seleccionado.
+
+¿Qué pasa si Robinhood Europe no puede pagar?
+El Producto no está sujeto a ningún sistema de indemnización a los inversores ni a ninguna garantía de depósitos. Robinhood Europe es la
+única contraparte responsable de atender las reclamaciones de pago relacionadas con el producto en el caso de todos los Activos
+subyacentes. Actuamos por tanto como contraparte en los contratos de derivados financieros y, por consiguiente, usted está expuesto al
+riesgo de que no podamos cumplir las obligaciones derivadas de dichos contratos, lo que podría ocasionarle pérdidas que podrían llegar a
+suponer la pérdida total de su inversión (por ejemplo, en caso de insolvencia por nuestra parte).
+
+¿Cuáles son los costes?
+La persona que le asesore sobre este Producto o se lo venda puede cobrarle otros costes. En tal caso, esa persona le facilitará información
+acerca de estos costes y de la incidencia que tienen en su inversión.
+Costes a lo largo del tiempo:
+Los cuadros muestran los importes que se detraen de su inversión para cubrir diferentes tipos de costes para todos los Activos subyacentes.
+Estos importes dependen de cuánto invierte, de cuánto tiempo mantiene el Producto y de lo buenos que sean los resultados del Producto.
+Los importes indicados aquí están basados en un importe de inversión de ejemplo.
+
+Página 2 de 3 | Documento de datos fundamentales
+                                                                                                                 20260626-5664125-17985362
+Hemos partido de los siguientes supuestos: (i) recuperaría usted el importe invertido (rentabilidad anual del 0 %); (ii) una inversión de 10.000
+                                                                       EUR.
+                                                 En caso de salida         * Esto refleja la medida en que los costes reducen su rentabilidad
+                                                 después de 1 año          cada año a lo largo del período de mantenimiento. Por ejemplo,
+Costes totales                                                   20 EUR    muestra que, en caso de salida al término del período de
+                                                                           mantenimiento recomendado, la rentabilidad media que se prevé que
+Incidencia anual de los costes (*)                                 0,2 %   obtendrá cada año será del 0,5 % antes de deducir los costes y del
+                                                                           0,7 % después de deducir los costes.
+
+
+Composición de los costes:
+ Costes únicos de entrada o salida                                                                                           En caso de salida
+                                                                                                                             después de 1 año
+   Costes de entrada                          0,00 % del importe que invierta al realizar esta inversión. Es lo máximo que            10 EUR
+                                            se le cobrará. La persona que le venda el Producto le informará de cuál es la
+                                            comisión real.
+  Costes de salida                            0,10 % de su inversión antes de que se le abone.                                         10 EUR
+  Costes corrientes
+  Comisiones de gestión y otros costes      0,00 % del valor de su inversión por año. Se trata de una estimación basada                 0 EUR
+ administrativos o de funcionamiento      en los costes reales del año pasado.
+  Costes de operación                       0,00 % del valor de su inversión por año. Se trata de una estimación de los                 0 EUR
+                                          costes en que incurrimos al comprar o vender los activos subyacentes del
+                                          Producto. El importe real dependerá de la cantidad que compremos y
+                                          vendamos.
+ Costes accesorios detraídos en condiciones específicas
+ Comisiones de rentabilidad               En el caso de este Producto, no existen comisiones de rentabilidad.                           0 EUR
+
+
+
+¿Cuánto tiempo debo mantener la inversión, y puedo retirar dinero de manera anticipada?
+Período de mantenimiento recomendado: 1 año
+No puede formularse una recomendación personalizada sobre el período de mantenimiento. El período de mantenimiento recomendado
+refleja las características del producto, en particular la volatilidad de las acciones y los ETP cotizados en la bolsa estadounidense, y tiene
+como objetivo reducir el impacto que tienen sobre la rentabilidad las fluctuaciones a corto plazo del mercado y los costes de salida.
+Puede mantener el Producto hasta que opte por cerrar su posición cualquier día de negociación, siempre que las condiciones del mercado
+y los Términos y Condiciones del Producto lo permitan. Que decida hacerlo o no dependerá de su estrategia de inversión y de su perfil de
+riesgo. Robinhood Europe podrá suspender el cierre de posiciones en el Producto, en particular en caso de movimientos inesperados del
+mercado, solicitudes realizadas fuera del horario de negociación de EE. UU., anuncios puntuales u otras circunstancias que dificulten la
+fijación de precios.
+¿Cómo puedo reclamar?
+Si no está satisfecho con alguna parte de nuestros servicios o con este Producto y desea presentar una reclamación, puede encontrar
+información sobre nuestro procedimiento de reclamaciones en línea aquí. También puede ponerse en contacto con nosotros por escrito, en
+la siguiente dirección: Vilniaus g. 33-201, LT-01402 Vilnius, Lituania, o por correo electrónico a través de complaints_eu@robinhood.com. A
+continuación, gestionaremos su reclamación y le informaremos de su estado lo antes posible. Si no está satisfecho con nuestra respuesta
+final a su reclamación, puede ponerse en contacto con el Banco de Lituania a través del Portal Electrónico del Gobierno (aplicable a
+ciudadanos y residentes de la República de Lituania) o dirigirse al Departamento Jurídico y de Licencias del Banco de Lituania en la dirección
+Totorių g. 4, LT-01121 Vilnius, o por correo electrónico a través de www.lb.lt/gincu-sistema, en el plazo de un año a partir de la fecha en que
+se puso en contacto con nosotros para resolver cualquier controversia. Las reclamaciones se tramitan gratuitamente. Para obtener más
+información sobre las controversias que tramita el Banco de Lituania, visite www.lb.lt.
+
+Otros datos de interés
+Robinhood Europe está dispuesta a comentar o aclarar los Términos y Condiciones de la oferta y facilitará cualquier información adicional
+de la que disponga o que pueda obtener mediante un esfuerzo o coste razonables. Puede consultar los Términos y Condiciones completos
+del Producto aquí.
+
+El presente documento se ha elaborado para cumplir con el Reglamento (UE) n.º 1286/2014 (el «Reglamento PRIIPs») e incluye información
+basada en las metodologías establecidas en dicho Reglamento.
+
+
+
+
+Página 3 de 3 | Documento de datos fundamentales
+                                                                                                                  20260626-5664125-17985362
+

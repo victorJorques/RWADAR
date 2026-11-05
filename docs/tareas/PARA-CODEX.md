@@ -72,6 +72,128 @@ de Outeiro, preguntado hacia las 17:10 UTC: «Retirar las dos hoy». Rama
     ilustraciones de la app).
   - Para otro día: el «aval» de Pax Gold aún dice NYDFS, y su web dice OCC.
 
+## 5 de noviembre de 2026 (6) · Claude · datos personales: segunda pasada pedida por la revisión independiente (sin publicar)
+
+Misma orden de Víctor («Arregla todo, no dejes nada para mañana») y misma rama
+`claude/remates-1105`. El revisor independiente de los remates encontró datos
+personales que la primera pasada (`a5b6934`) no había recortado. **Sin tocar
+Supabase, sin publicar la web y sin OTA.** Commit `ef893e6`.
+
+- **IOD Occasio (Alius), copias del 01/11** (`2026-11-01-v2/grupos/alius-hausera/fuentes/iod-*.txt`):
+  el FDF y la escritura de emisión llevaban los nombres de dos socios personas
+  físicas (uno es también el administrador único), de la administradora de
+  Alius Capital y de cuatro notarios; la escritura, además, la dirección y el
+  estado civil de una persona física y el domicilio «a estos efectos» del
+  administrador (calle, portal y piso, el mismo que el domicilio social).
+  Ahora dicen «[nombre recortado]» y «[domicilio recortado]», sin estado civil
+  (se deja el municipio). La primera línea de cada copia dice qué se recortó.
+  En `inventario-consultas.json` el sha256 es el del PDF original: solo
+  cambia la nota, que antes decía «datos personales omitidos» cuando solo
+  faltaban los DNI y el correo.
+- **Copia de exa de IOD del 23/10** (`docs/investigacion/2026-10-23/primaria/iod-aktionariat-documentos-exa.md`):
+  los mismos nombres, el correo personal del administrador y los dos
+  firmantes del contrato de Aktionariat que copia, recortados. En
+  `huellas-capturas.json`, sha256 y bytes de la copia recortada;
+  `sha256Captura` guarda la huella anotada al capturar (46347 bytes, la que
+  cita `REVISION-IOD-OUTEIRO-SPIKO.md`, que no se toca). La nota explica que la
+  copia que había en Git ya no cuadraba con ella (46346 bytes).
+- **Hausera ETI, copias del 05/11** (folleto base y condiciones finales, en
+  `grupos/candidatas-espana/fuentes/hausera-eti/` y en
+  `revision-independiente/fuentes/candidatas-espana/hausera/`, idénticas dos a
+  dos): recortado entero el registro de firma electrónica del final del
+  folleto (nombre, correo, IP, ID de sesión y navegador de los dos firmantes),
+  el dato familiar de un consejero y, de las dos opciones que dio el revisor,
+  **también los nombres de consejeros y titulares reales** (folleto y
+  condiciones finales, en inglés, castellano y alemán). Las funciones se
+  mantienen («[nombre recortado] is a director and an owner of…»), así que el
+  conflicto de intereses se sigue leyendo. En los dos inventarios,
+  `sha256`/`bytes` siguen siendo los del PDF original (si se cambiaran,
+  dejarían de describir el PDF de la URL); se añaden `sha256Texto`/`bytesTexto`
+  (copia recortada) y `sha256TextoCaptura` (copia anterior), y en el de la
+  revisión independiente, `textoExtraido`.
+- **Aviso de la FMA de 2006** con el nombre de una persona física, que salió
+  en el barrido: recortado en la copia de
+  `2026-11-03.3-v2/grupos/brickwise-alius-hausera/` (nota en el inventario,
+  cuyo sha256 es el del HTML) y en la de Brickwise del 05/11 (sha256 y bytes
+  al día, `sha256Captura` con el anterior).
+- **Comprobaciones después de recortar:**
+  - todos los nombres recortados hoy (los de esta pasada y los de
+    `a5b6934`), los correos, las dos IP y los dos ID de sesión: 0
+    coincidencias en todos los archivos de Git y en los 6 `.gz`;
+  - barrido de las 162 copias de Alius, Casa de Outeiro, IOD y Hausera
+    (texto y `.gz`) en busca de correos, IP, rastros de sesión y tratamientos
+    («Sr.», «Mr.»…) seguidos de un nombre: solo quedan correos de empresa
+    (reclamaciones, protección de datos, contacto) y el de ejemplo
+    `tu@email.com`; ninguna IP y ningún rastro de sesión;
+  - los 6 JSON tocados son válidos y las 6 huellas nuevas cuadran con sus
+    archivos;
+  - gitleaks 8.30.1 sobre los 15 archivos cambiados: sin hallazgos;
+  - `npm test` en verde (web 601, móvil 410 + 2 omitidas, acceso 146, base
+    de datos sin fallos); guardián de la OTA contra `c1f7106`: correcto (1.4.1(23)).
+- **Pendiente:**
+  - lo del traspaso anterior sigue igual: unir la rama a `main` y, con permiso
+    de Víctor, publicar la web y enviar la OTA; borrar la rama
+    `claude/catalogo-2026-11-05` de origin, que conserva los nombres; las
+    copias crudas de la carpeta local (fuera de Git) tampoco están
+    recortadas;
+  - fuera de estas cuatro plataformas siguen, como hasta ahora en `main`, los
+    nombres de consejeros de otros folletos regulados (Backed, Spiko,
+    Franklin Templeton), los firmantes en las demás copias de Aktionariat y
+    algunos nombres de directivos en las lecturas del radar del 02/11. Si
+    Víctor quiere el mismo criterio que en Hausera, hace falta otra pasada.
+
+## 5 de noviembre de 2026 (5) · Claude · remates del día: transparencia, lugar de Hausera y datos personales (sin publicar)
+
+Orden de Víctor: «Arregla todo, no dejes nada para mañana». Rama
+`claude/remates-1105` (desde `main`), con push y sin PR. **Sin tocar Supabase,
+sin publicar la web y sin OTA.** No toca Billa ni Casa de Outeiro en el
+catálogo (se retiran en la entrega `2026-11-05.2`, en otra rama).
+
+- **Transparencia** (commit `8633019`): las cuatro comprobaciones que seguían
+  con fecha 03/11 se han vuelto a leer hoy y dicen lo mismo: condiciones
+  finales n.º 159 de Backed (Kraken; mismo SHA-256 que el 03/11, solo
+  Liechtenstein y Suiza), KID en español de Robinhood (01/07/2026, enlazado
+  desde `robinhood.com/eu/es/` y su página legal), BaFin (para «Midas» solo
+  la sociedad danesa; para «Midas Software», sin resultados) y aviso legal del
+  portal de Boss Info («not subject to prudential supervision»). Solo cambia
+  `consultadaEl` a 2026-11-05. Copias de texto y SHA-256 en
+  `rwadar-app/data/verificaciones/2026-11-05-v2/remates/inventario-remates.json`
+  (los PDF y HTML originales, fuera de Git). Regenerados el bloque de la web,
+  `lib/transparencia-contenido.js` y las fichas.
+- **Hausera** (commit `42f0f65`): el lugar de la ilustración pasa de
+  «Alicante · España» a «Orihuela Costa · Alicante» (Alicante 2 son 14
+  viviendas en La Zenia), como «Ribeira Sacra · Lugo». El texto alternativo
+  dice «en la costa de Orihuela (Alicante)». La foto sirve igual (edificio
+  mediterráneo blanco con balcones y palmeras, sin nada propio de la ciudad);
+  su `prompt` no cambia porque es el que la generó. `generar.mjs`: las 24 webp
+  salen idénticas; cambian el manifiesto de la app, el bloque de la web y la
+  ficha publicada, y `npm test` reescribe la tarjeta pre-renderizada de
+  `rwadar-site/index.html` (commit `d53bf50`). `generar.mjs --comprobar` en verde.
+- **Datos personales** (commit `a5b6934`): los nombres recortados hoy en
+  `2026-11-05-v2` seguían en copias de `2026-11-01-v2` y `2026-11-03.3-v2`, y
+  también en `docs/investigacion/2026-10-23` (incluida la portada de Hausera
+  en `.html.gz`). Ahora dicen «[nombre recortado]». En esas copias también se
+  recortaron un correo y un teléfono personales y dos NIF que quedaban en el
+  texto del FDF de la revisión del 01/11. Inventarios al día (`sha256` de la
+  copia recortada y `sha256Captura` con el anterior). El informe con fecha
+  `REVISION-IOD-OUTEIRO-SPIKO.md` no se toca.
+- **Pruebas:** `npm test` en verde (web 601, móvil 410 + 2 omitidas, acceso
+  146, base de datos sin fallos). Guardián de la OTA contra `c1f7106`: correcto
+  (1.4.1(23)). gitleaks 8.30.1 sobre los 43 archivos cambiados: sin hallazgos.
+- **Pendiente:**
+  - unir la rama a `main` y, con permiso de Víctor, publicar la web y enviar
+    la OTA: hasta entonces, la web y la app siguen enseñando «Alicante · España»
+    y las fechas del 03/11;
+  - la entrega `2026-11-05.2` también toca `fichas.json`, `fotos.json` y lo
+    generado (manifiesto, bloque de la web): al unir las dos ramas, si chocan
+    los archivos generados, volver a ejecutar `generar.mjs`,
+    `transparencia.mjs` y `node rwadar-fichas.js` en vez de resolverlos a mano;
+  - las copias crudas de la carpeta local (fuera de Git) y la rama
+    `claude/catalogo-2026-11-05` de origin siguen con los nombres sin recortar:
+    borrar esa rama (no se unió);
+  - quedan del traspaso anterior: web de PAX Gold en `public.plataformas` y
+    texto de acceso de Spiko en el radar.
+
 ## 5 de noviembre de 2026 (4) · Claude · investigación del día publicada: Supabase, web y app
 
 Orden de Víctor: «Hazme la investigación de hoy de las ofertas, y actualiza la

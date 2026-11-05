@@ -171,7 +171,7 @@ Altarius ETI AG
 
 
 
- Jaime Ortiz-Vigón                                                                                Hera Trust Establishment
+ [nombre recortado]                                                                                Hera Trust Establishment
  Director                                                                                         Director
 
  Duly authorised                                                                                  Duly authorised
@@ -344,8 +344,8 @@ company (Aktiengesellschaft), with registered number FL-0002.669.856-9. It is re
 
 The Issuer has been established for the sole purpose of issuing ETI Securities in the form of debt securities, the value of which are linked on a
 1:1 basis to the Underlying Securities, which are segregated into cells of a securitisation special purpose entity. The sole shareholder of the
-Issuer is Altarius Capital Value S.L. (incorporated in Spain). Altarius Capital Value S.L. is beneficially owned and controlled by Adelaida Garrido
-Caballero and Jaime Ortiz-Vigón. The directors of the Issuer are: Jaime Ortiz-Vigón, Florian Wenaweser, and Hera Trust Establishment. The
+Issuer is Altarius Capital Value S.L. (incorporated in Spain). Altarius Capital Value S.L. is beneficially owned and controlled by [nombre recortado]
+ and [nombre recortado]. The directors of the Issuer are: [nombre recortado], [nombre recortado], and Hera Trust Establishment. The
 statutory auditors of the Issuer are Lirex AG. addressed in Im Krüz 2 . FL-9494 Schaan, Liechtenstein
 
 What is the key financial information regarding the Issuer?
@@ -849,8 +849,8 @@ sociedad anónima (Aktiengesellschaft), con número de registro FL-0002.669.856-
 
 El Emisor se ha establecido con el único propósito de emitir Valores ETI en forma de títulos de deuda, cuyo valor está vinculado en una
 proporción de 1:1 a los Valores Subyacentes, que están segregados en celdas de una entidad con fines especiales de titulización. El único
-accionista del Emisor es Altarius Capital Value S.L. (constituida en España). Altarius Capital Value S.L. es propiedad y está controlada por Adelaida
-Garrido Caballero y Jaime Ortiz-Vigón. Los administradores del Emisor son: Jaime Ortiz-Vigón, Florian Wenaweser y Hera Trust Establishment.
+accionista del Emisor es Altarius Capital Value S.L. (constituida en España). Altarius Capital Value S.L. es propiedad y está controlada por [nombre recortado]
+ y [nombre recortado]. Los administradores del Emisor son: [nombre recortado], [nombre recortado] y Hera Trust Establishment.
 Los auditores legales del Emisor son BDO (Liechtenstein) AG con domicilio en Wuhrstrasse 14, 9490 Vaduz, Liechtenstein.
 
 ¿Cuál es la información financiera fundamental relativa al Emisor?
@@ -1385,7 +1385,7 @@ Registernummer FL-0002.669.856-9 organisiert. Sie ist im liechtensteinischen Han
 Die Emittentin wurde ausschließlich zum Zweck der Emission von ETI Wertpapiers in Form von Schuldverschreibungen gegründet, deren Wert
 im Verhältnis 1:1 an die Basiswertpapiere gebunden ist, die in Zellen einer Verbriefungszweckgesellschaft aufgeteilt sind. Alleiniger Aktionär der
 Emittentin ist Altarius Capital Value S.L. (mit Sitz in Spanien). Altarius Capital Value S.L. befindet sich im wirtschaftlichen Eigentum und wird von
-Adelaida Garrido Caballero und Jaime Ortiz-Vigón kontrolliert. Die Direktoren des Emittenten sind: Jaime Ortiz-Vigón, Florian Wenaweser, und
+[nombre recortado] und [nombre recortado] kontrolliert. Die Direktoren des Emittenten sind: [nombre recortado], [nombre recortado], und
 Hera Trust Establishment. Revisionsstelle der Emittentin ist die BDO (Liechtenstein) AG mit Sitz in der Wuhrstrasse 14, 9490 Vaduz, Liechtenstein
 
 Welches sind die wesentlichen Finanzinformationen über den Emittenten?

@@ -191,7 +191,12 @@
    "error": "",
    "consultadoUtc": "2026-11-05T08:24:50Z",
    "bytes": 457269,
-   "sha256": "262ada0df66893d96006fca8ad75e1a9fe6af4154a8da67f75859cff366ed36b"
+   "sha256": "262ada0df66893d96006fca8ad75e1a9fe6af4154a8da67f75859cff366ed36b",
+   "textoExtraido": "hausera/final-terms-25118.txt",
+   "sha256Texto": "94db390dc4cf81eed6e5d70071de13c93a4350b0e181e5d8b139ef8db923246e",
+   "bytesTexto": 165725,
+   "sha256TextoCaptura": "ec68cab8ec8bb3917b6510e5249b5b2800717a6ac6242baff15f72b63479257b",
+   "nota": "La copia de texto en Git lleva recortados desde el 05/11/2026 los nombres de los consejeros y titulares reales («[nombre recortado]»); sha256 y bytes siguen siendo los del PDF original; sha256Texto y bytesTexto son los de la copia de texto recortada; sha256TextoCaptura, el de la copia de texto anterior."
   },
   {
    "url": "https://api.portfolio.exchange/poex/document/49667",
@@ -221,7 +226,12 @@
    "error": "",
    "consultadoUtc": "2026-11-05T08:25:07Z",
    "bytes": 5976814,
-   "sha256": "b8be61a16b3a63150c71f99b13ce61382b9a252bfaab74b267356b6b3259f2cf"
+   "sha256": "b8be61a16b3a63150c71f99b13ce61382b9a252bfaab74b267356b6b3259f2cf",
+   "textoExtraido": "hausera/folleto-base-25075.txt",
+   "sha256Texto": "afa2f99618c9666eb8299974b66aa3d5f3e1012015aee05ed498eb010ef684a3",
+   "bytesTexto": 370771,
+   "sha256TextoCaptura": "d7ab6c39171e2560dde47f9865a1690bae6709adbb6c63ede46e32539b381d9c",
+   "nota": "La copia de texto en Git lleva recortados desde el 05/11/2026 los nombres de los consejeros y titulares reales («[nombre recortado]»), un dato familiar de un consejero y el registro de firma electrónica del final (nombres, correos, IP, ID de sesión y navegador de los firmantes); sha256 y bytes siguen siendo los del PDF original; sha256Texto y bytesTexto son los de la copia de texto recortada; sha256TextoCaptura, el de la copia de texto anterior."
   },
   {
    "url": "https://betoken-1.gitbook.io/papers/whitepaper/periodo-de-venta.md",
