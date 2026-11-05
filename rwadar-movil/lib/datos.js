@@ -455,9 +455,11 @@ export async function sincronizarSeguimientoPendiente() {
    ver clavesPushQuitadas. */
 export async function borrarDatosDispositivo({ plazoQuitarPush = PLAZO_QUITAR_PUSH } = {}) {
   const todas = await AsyncStorage.getAllKeys();
-  const clavesCuenta = [...clavesPrivadasDispositivo(todas), ...await clavesPushQuitadas(todas, plazoQuitarPush)];
+  const quitados = [];
+  const clavesCuenta = [...clavesPrivadasDispositivo(todas), ...await clavesPushQuitadas(todas, plazoQuitarPush, quitados)];
   if (USUARIO_LOCAL) {
     await AsyncStorage.multiRemove([...CLAVES_LOCALES, ...clavesCuenta]);
+    await requitarPushTrasBorrar(quitados, plazoQuitarPush);
     lectorCatalogo = null;
     return { ok: true, local: true };
   }
@@ -475,8 +477,27 @@ export async function borrarDatosDispositivo({ plazoQuitarPush = PLAZO_QUITAR_PU
 
   await borrarIdInstalacionLocal();
   await AsyncStorage.multiRemove([...CLAVES_LOCALES, ...clavesCuenta]);
+  await requitarPushTrasBorrar(quitados, plazoQuitarPush);
   lectorCatalogo = null;
   return { ok: true };
+}
+
+/* Segunda pasada, ya sin la clave local: si una renovación diaria en curso
+   volvió a registrar el token entre la primera retirada y el borrado de la
+   clave, aquí se quita (quitar_aviso_push no falla si ya no estaba). Nunca
+   bloquea ni hace fallar el borrado. */
+async function requitarPushTrasBorrar(quitados, plazo) {
+  for (const { usuarioId, token } of quitados) {
+    const acceso = accesoCatalogo;
+    if (!acceso || acceso.usuarioId !== usuarioId) continue;
+    try {
+      await conPlazo((async () => {
+        const cliente = await acceso.obtenerCliente();
+        if (accesoCatalogo !== acceso) throw new Error('La cuenta ha cambiado');
+        await quitarPushConCliente(cliente, token);
+      })(), plazo);
+    } catch { /* La limpieza de 180 días de la base hace el resto. */ }
+  }
 }
 
 /* Ofertas guardadas: como los favoritos, solo en este dispositivo y por
@@ -626,7 +647,7 @@ function conPlazo(promesa, ms) {
    corto vencido, o el token es de otra cuenta de este dispositivo), la
    clave se conserva para reintentarlo al desactivarlas, al cerrar esa
    sesión o al volver a borrar. Nunca bloquea ni hace fallar el borrado. */
-async function clavesPushQuitadas(todas, plazo) {
+async function clavesPushQuitadas(todas, plazo, quitados = []) {
   const prefijo = `${AVISOS_PUSH}:`;
   const quitadas = [];
   for (const clave of todas) {
@@ -644,6 +665,7 @@ async function clavesPushQuitadas(todas, plazo) {
         await quitarPushConCliente(cliente, token);
       })(), plazo);
       quitadas.push(clave);
+      quitados.push({ usuarioId, token });
     } catch { /* Se conserva para reintentarlo. */ }
   }
   return quitadas;

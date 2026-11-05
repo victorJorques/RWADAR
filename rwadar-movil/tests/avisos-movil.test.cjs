@@ -245,7 +245,9 @@ test('con la cuenta abierta, «Borrar datos del dispositivo» quita el token de 
   const { cliente, llamadas } = clienteAvisos(() => ({ data: true, error: null }));
   d.configurarAccesoCatalogo(UID, async () => cliente);
   assert.deepEqual(await d.borrarDatosDispositivo(), { ok: true, local: true });
-  assert.deepEqual(llamadas, [['quitar_aviso_push', { p_token: TOKEN }]], 'solo el token de la cuenta abierta');
+  // Dos pasadas: antes de borrar la clave y otra después (cubre una renovación en medio).
+  assert.deepEqual(llamadas, [['quitar_aviso_push', { p_token: TOKEN }], ['quitar_aviso_push', { p_token: TOKEN }]],
+    'solo el token de la cuenta abierta');
   assert.deepEqual([...mapa.keys()].sort(), ['otra.app', 'rwadar.editorial.avisos.push.v1:' + OTRO].sort(),
     'el token de otra cuenta del dispositivo se conserva: solo su sesión puede quitarlo');
   // Si la base ya no lo tenía (false), tampoco queda nada que reintentar.
@@ -283,7 +285,7 @@ test('si no se puede quitar el token de la base, el borrado sigue y la clave se 
   const { cliente, llamadas } = clienteAvisos(() => ({ data: true, error: null }));
   d.configurarAccesoCatalogo(UID, async () => cliente);
   await d.borrarDatosDispositivo();
-  assert.deepEqual(llamadas, [['quitar_aviso_push', { p_token: TOKEN }]]);
+  assert.deepEqual(llamadas, [['quitar_aviso_push', { p_token: TOKEN }], ['quitar_aviso_push', { p_token: TOKEN }]]);
   assert.equal(mapa.has('rwadar.editorial.avisos.push.v1:' + UID), false);
   // Sin avisos guardados no se llama a nada.
   const vacio = datos({ 'otra.app': 'conservar' });
@@ -328,11 +330,33 @@ test('renovación con «Borrar datos del dispositivo» en medio: el móvil no qu
     assert.equal(base.size, 0);
     entregar({ ok: true, estado: 'permitido', token: tokenSistema, plataforma: 'android' });
     assert.deepEqual(await renovando, { renovado: false, motivo: 'borrado' }, tokenSistema);
-    assert.deepEqual(orden, [['borrar-datos', 'quitar_aviso_push', TOKEN], ['registrar', tokenSistema], ['quitar', tokenSistema]],
-      'lo que la renovación registró tarde se quita');
+    assert.deepEqual(orden, [['borrar-datos', 'quitar_aviso_push', TOKEN], ['borrar-datos', 'quitar_aviso_push', TOKEN],
+      ['registrar', tokenSistema], ['quitar', tokenSistema]], 'lo que la renovación registró tarde se quita');
     assert.equal(base.size, 0, 'ningún token queda en la base sin dueño en este móvil');
     assert.equal(mapa.has(CLAVE), false, 'y no se vuelve a guardar');
   }
+});
+
+/* El hueco que queda entre las dos mitades de «Borrar datos»: la renovación
+   vuelve a registrar el token después de la primera retirada pero antes de que
+   se borre la clave (así la renovación ve la clave y no deshace nada). La
+   segunda pasada de «Borrar datos», ya sin clave, lo quita. */
+test('«Borrar datos» quita también un token que la renovación registró entre la retirada y el borrado de la clave', async () => {
+  const CLAVE = 'rwadar.editorial.avisos.push.v1:' + UID;
+  const { datos: d, mapa } = datos({ [CLAVE]: TOKEN, 'otra.app': 'conservar' });
+  const base = new Set([TOKEN]); let llamadas = 0;
+  d.configurarAccesoCatalogo(UID, async () => ({ async rpc(nombre, args) {
+    assert.equal(nombre, 'quitar_aviso_push');
+    llamadas++;
+    const habia = base.delete(args.p_token);
+    // Primera retirada: justo después, una renovación en curso lo vuelve a apuntar.
+    if (llamadas === 1) base.add(args.p_token);
+    return { data: habia, error: null };
+  } }));
+  assert.deepEqual(await d.borrarDatosDispositivo(), { ok: true, local: true });
+  assert.equal(llamadas, 2);
+  assert.equal(base.size, 0, 'el token registrado en medio también se quita de la base');
+  assert.equal(mapa.has(CLAVE), false);
 });
 
 test('las claves nuevas cuentan como datos privados del dispositivo; la del token, aparte', () => {
