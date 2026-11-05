@@ -1,0 +1,72 @@
+{
+  "etiqueta": "2026-11-05.2",
+  "revisionPublicadaExigida": "cede1f27-b5eb-36d3-e223-eb4155df2572",
+  "hashRevisionPublicadaExigida": "cede1f27b5eb36d3e223eb4155df257228fc98e517776cefa0693a0657088823",
+  "redactadoEl": "2026-11-05",
+  "decision": "Víctor, 05/11/2026: «Arregla todo, no dejes nada para mañana». Quedaba pendiente de la entrega 2026-11-05 (INFORME-ENTREGA.md y PARA-CODEX.md): la columna «web» de Pax Gold en public.plataformas.",
+  "alcance": "Solo la columna «web» de Pax Gold en public.plataformas. No cambia su estado, así que no registra cambios de estado ni avisos; el disparador de siempre pone actualizada_el = now(). Pax Gold no tiene fuentes propias en public.fuentes y sigue sin tenerlas.",
+  "radar": {
+    "enRadar": 25,
+    "descartadas": 5
+  },
+  "plataformas": {
+    "pax-gold": {
+      "id": "372b4ace-60d1-4135-99aa-a8a8fd60da18",
+      "nombre": "Pax Gold",
+      "antes": {
+        "slug": "pax-gold",
+        "nombre": "Pax Gold",
+        "estado": "en_radar",
+        "categoria_slug": "materias-primas",
+        "region_slug": "ee-uu",
+        "actor": "Emisor",
+        "acceso": "Minorista",
+        "ticket": "Bajo",
+        "cadenas": "Ethereum",
+        "web": "https://paxos.com/paxgold",
+        "aval": "Emitido por Paxos bajo supervisión del regulador bancario de Nueva York (NYDFS), con atestaciones mensuales del oro asignado.",
+        "nota": "Cada token representa una onza concreta de oro asignada en cámaras de Londres, identificable por número de lingote.",
+        "etiqueta_descarte": null,
+        "motivo_descarte": null,
+        "verificada_el": "2026-07-26"
+      },
+      "despues": {
+        "slug": "pax-gold",
+        "nombre": "Pax Gold",
+        "estado": "en_radar",
+        "categoria_slug": "materias-primas",
+        "region_slug": "ee-uu",
+        "actor": "Emisor",
+        "acceso": "Minorista",
+        "ticket": "Bajo",
+        "cadenas": "Ethereum",
+        "web": "https://www.paxg.com/",
+        "aval": "Emitido por Paxos bajo supervisión del regulador bancario de Nueva York (NYDFS), con atestaciones mensuales del oro asignado.",
+        "nota": "Cada token representa una onza concreta de oro asignada en cámaras de Londres, identificable por número de lingote.",
+        "etiqueta_descarte": null,
+        "motivo_descarte": null,
+        "verificada_el": "2026-07-26"
+      },
+      "fuentesPublicas": 0,
+      "motivo": "https://paxos.com/paxgold redirige a https://www.paxos.com/assets/paxg, una página comercial de Paxos que ya no dice si PAXG está disponible en la UE (entrega 2026-11-05, cambios-radar.json, fuente paxg-web). La web oficial de PAXG es https://www.paxg.com/, de Paxos Trust Company, N.A. Desde la entrega 2026-11-05 el radar ya cita paxg.com; lo que aún enseña la dirección vieja sale de esta columna: el botón «Ir a la web de Pax Gold» y el JSON-LD de /plataformas/pax-gold, y rwadar.csv.",
+      "comprobadoHoy": {
+        "url": "https://www.paxg.com/",
+        "horaUtc": "2026-11-05T17:07:25Z",
+        "http": 200,
+        "sha256Html": "fe75a80289588697dc396151988b3b57cf857452e999f671f0c147d1e6768a12",
+        "copia": "fuentes/paxg-com.txt",
+        "literales": [
+          "PAXG is issued by Paxos Trust Company, N.A., a U.S. national trust bank regulated by the Office of the Comptroller of the Currency.",
+          "For EU visitors: PAXG is currently not available to residents of the European Union."
+        ],
+        "direccionVieja": {
+          "url": "https://paxos.com/paxgold",
+          "horaUtc": "2026-11-05T17:07:25Z",
+          "http": 200,
+          "redirigeA": "https://www.paxos.com/assets/paxg"
+        }
+      },
+      "leidoComoVisitante": "lectura-publica/pax-gold-plataforma.json (2026-11-05T17:07:16Z–17:07:19Z)"
+    }
+  }
+}

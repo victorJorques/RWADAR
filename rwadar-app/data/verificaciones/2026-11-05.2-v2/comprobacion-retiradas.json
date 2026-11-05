@@ -1,0 +1,135 @@
+{
+  "etiqueta": "2026-11-05.2",
+  "fecha": "2026-11-05",
+  "decision": {
+    "quien": "Víctor",
+    "fecha": "2026-11-05",
+    "horaUtcAproximada": "17:10",
+    "pregunta": "BILLA (Brickwise) y Casa de Outeiro (Alius): ¿se retiran hoy o se espera a los puntos de control que proponían los expedientes (15/11 y 10/11)?",
+    "respuesta": "Retirar las dos hoy",
+    "ordenDelCiclo": "Arregla todo, no dejes nada para mañana",
+    "nota": "Es una decisión expresa de Víctor. No se hizo una ronda de revisores escépticos como en la 2026-11-03.6: el precedente la usaba para decidir si retirar; aquí lo decide Víctor y este archivo deja el motivo y la fuente de cada una."
+  },
+  "criterioComun": "Campaña de emisión primaria con el plazo vencido y sin prórroga publicada ni registrada, muy lejos de su mínimo. Las dos estaban en «En camino» (sin cifras, estado no_verificable).",
+  "retirar": [
+    {
+      "slug": "terreno-con-arrendamiento-billa",
+      "titulo": "Terreno con supermercado BILLA · Brückl",
+      "plataforma": "Brickwise",
+      "coleccion": "en_camino",
+      "criterio": "plazo_vencido_sin_prorroga",
+      "motivo": "El plazo de suscripción terminó el 16/05/2026 y no hay prórroga publicada ni registrada en la API de Brickwise (fecha de fin igual a la original). El 05/11/2026 la API mostraba 82 de las 5.000 participaciones que hacen falta: 8.200 €, el 1,64 % del mínimo de 500.000 €. La cifra no se mueve desde el 01/11.",
+      "textoRetirada": "Retirada el 05/11/2026: el plazo de suscripción terminó el 16/05/2026 sin prórroga publicada, y solo tenía 82 de las 5.000 participaciones necesarias (el 1,64 % del mínimo de 500.000 €).",
+      "fuentes": [
+        {
+          "url": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+          "de": "expediente 2026-11-05, claims «plazo» y «umbral»",
+          "horaUtc": "2026-11-05T08:03:05Z",
+          "literal": "Die Frist für die Erreichung der Funding-Schwelle („Zeichnungsfrist“) endet am 16.05.2026 um 23:59 Uhr. … Der Mindestkapitalbedarf des Emittenten beträgt EUR 500.000,00 („Funding-Schwelle“)"
+        },
+        {
+          "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+          "de": "expediente 2026-11-05, claim «plazo»; revision-independiente/brickwise.md (08:22:53Z)",
+          "horaUtc": "2026-11-05T08:02:10Z",
+          "literal": "\"issueEndDate\":\"2026-05-15T22:00:00.000Z\",\"issueEndDateOriginal\":\"2026-05-15T22:00:00.000Z\""
+        },
+        {
+          "url": "https://api.app.brickwise.at/api/v2/assets",
+          "de": "expediente 2026-11-05, claim «estado»; revision-independiente/brickwise.md",
+          "horaUtc": "2026-11-05T08:01:15Z",
+          "literal": "id AT0000A3SE89: \"stage\":\"primary\",\"bricks\":6404,\"availableBricks\":6322 (82 suscritas)"
+        }
+      ],
+      "releidoAlRetirar": {
+        "horaUtc": "2026-11-05T17:12:20Z",
+        "fuentes": [
+          "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+          "https://api.app.brickwise.at/api/v2/assets"
+        ],
+        "resultado": "Igual que por la mañana: issueEndDate = issueEndDateOriginal = 2026-05-15T22:00:00.000Z; stage primary; 6.322 de 6.404 libres (82 suscritas); updatedAt 2026-11-04T18:03:48.647Z.",
+        "sha256RespuestaV1": "b66346d157c1fb981b83175c6d344833b330aa1c09208ea3cd1ab3dbd4fdff72"
+      },
+      "loQueNoCambia": "La app de Brickwise seguía listándola en «Neue Objekte» con el botón de compra (revisión independiente, 08:25 UTC), y el contrato permite prorrogar el plazo. Ninguna de las dos cosas es una prórroga publicada con fecha; revision-independiente/brickwise.md: «La fuente también sostendría retirarla ya: el plazo venció hace más de cinco meses y no hay prórroga publicada. Lo decide Víctor.»"
+    },
+    {
+      "slug": "casa-de-outeiro",
+      "titulo": "Casa de Outeiro",
+      "plataforma": "Alius Capital",
+      "coleccion": "en_camino",
+      "criterio": "campana_terminada_sin_ampliacion",
+      "motivo": "Alius dio fin a la campaña el 31/10/2026 y el 05/11/2026 no mostraba días restantes ni ampliación (la API no registra ninguna). Llevaba 1.121.000 € de un mínimo de 2.000.000 €. La ficha de datos del emisor del 30/10/2026 cita el 31/03/2027 como fecha límite, pero nada más lo confirma: la pestaña «Proceso» de Alius, la API y la web del emisor siguen diciendo 31/10, y las condiciones de Alius limitan las campañas a 6 meses (del 01/07/2026 al 31/03/2027 hay 9).",
+      "textoRetirada": "Retirada el 05/11/2026: la campaña en Alius terminó el 31/10/2026 sin ampliación publicada en la plataforma, con 1.121.000 € de un mínimo de 2.000.000 €.",
+      "fuentes": [
+        {
+          "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+          "de": "expediente 2026-11-05, claims «estado» y «recaudado»; revision-independiente/espana-proximas.md (08:15:48Z)",
+          "horaUtc": "2026-11-05T08:01:16Z",
+          "literal": "campaign_status: CAMPAIGN; campaign.end_date: 2026-10-31; extend_days: null · invested: 1121000 · minimum_revenue_money: 2000000"
+        },
+        {
+          "url": "https://aliuscap.com/projects/casa-de-outeiro",
+          "de": "revision-independiente/espana-proximas.md (08:16:52Z)",
+          "horaUtc": "2026-11-05T08:16:52Z",
+          "literal": "«Campaña», «Días restantes --», botón «Invertir»; «Recaudado 1.121.000,00 €», «Umbral de éxito 2.000.000,00 €»"
+        },
+        {
+          "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/tabs",
+          "de": "expediente 2026-11-05, claim «plazo»; revision-independiente/espana-proximas.md (08:16:03Z)",
+          "horaUtc": "2026-11-05T08:16:03Z",
+          "literal": "Pestaña «Proceso»: «con fecha límite el 31/10/2026» y «desde el 01/07/2026 hasta el 31/10/2026»; última actualización publicada «21/07/2026: WEBINAR Q&A»"
+        },
+        {
+          "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263",
+          "de": "expediente 2026-11-05, claim «plazo» (lo único que habla de otra fecha)",
+          "horaUtc": "2026-11-05T08:01:18Z",
+          "literal": "Periodo de la oferta: Hasta completar suscripción. Fecha límite: 31/03/2027 · Madrid, 30 de octubre del 2026"
+        },
+        {
+          "url": "https://aliuscap.com/general-terms",
+          "de": "revision-independiente/espana-proximas.md (08:17:58Z)",
+          "horaUtc": "2026-11-05T08:17:58Z",
+          "literal": "El plazo mínimo será de un (1) mes y el máximo de seis (6) meses"
+        }
+      ],
+      "releidoAlRetirar": {
+        "horaUtc": "2026-11-05T17:12:22Z",
+        "fuentes": [
+          "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress"
+        ],
+        "resultado": "Igual que por la mañana (mismo SHA-256 que la copia del investigador y del revisor, 00af0e4d…13c5): CAMPAIGN, end_date 2026-10-31, extend_days null, invested 1.121.000 €.",
+        "sha256Respuesta": "00af0e4d7007f03c0455d9b8f526effb030fc50d91c7973203247edf799c13c5"
+      },
+      "loQueNoCambia": "Alius seguía mostrando la campaña como «En campaña» con el botón «Invertir» (lleva al inicio de sesión). revision-independiente/espana-proximas.md: «Casa de Outeiro: se mantiene la propuesta de retirarla si el 10/11 sigue sin avance ni ampliación. Hoy no hay ninguna fuente primaria que la rebata.» Víctor decidió no esperar al 10/11."
+    }
+  ],
+  "seQuedan": [
+    "spiko-letras-del-tesoro-euro",
+    "spiko-letras-del-tesoro-dolar",
+    "spiko-smart-cash-euro",
+    "robinhood-classic-stock-tokens",
+    "mtbill",
+    "prosegur-digital-gold",
+    "aktionariat",
+    "kraken-xstocks",
+    "boss-info",
+    "switzerlend",
+    "vivienda-pluddemanngasse-101-graz",
+    "vivienda-sonnleithnergasse-2-viena",
+    "local-de-estanco-klagenfurt",
+    "vivienda-stallhofstra-e-28-gratwein",
+    "vivienda-schwarzer-weg-18-graz",
+    "drautalresidenz-paternion",
+    "randhartingergasse-9-viena",
+    "apartamento-vacacional-hinterstoder-50",
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+    "fotovoltaica-greenpoint",
+    "fotovoltaica-cohotel",
+    "hausera-proximas-ofertas"
+  ],
+  "coleccionesDespues": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 1
+  },
+  "precedente": "Entrega 2026-11-03.6 (retirada de mF-ONE): la oferta sale de rwadar_catalogo en una revisión nueva; su ficha editorial sale en el mismo commit de la entrega; su página, su ruta de la lista cerrada y su ilustración, después de aplicar y sincronizar."
+}

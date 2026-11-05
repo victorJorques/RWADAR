@@ -1,0 +1,7 @@
+Copia de texto (sin el HTML) de https://www.paxg.com/
+Leída con curl, sin sesión, el 2026-11-05 17:07:25 (UTC). HTTP 200. SHA-256 del HTML completo: fe75a80289588697dc396151988b3b57cf857452e999f671f0c147d1e6768a12 (666931 bytes).
+Solo el contenido principal; menús, avisos de cookies y pie fuera.
+
+FEDERALLY REGULATED | Tokenized gold, issued under U.S. federal oversight | PAXG is issued by Paxos Trust Company, N.A., a U.S. national trust bank regulated by the Office of the Comptroller of the Currency. Reserves are held bankruptcy-remote and segregated from corporate assets, a standard of supervision few tokenized assets can claim. | COMPARE | How PAXG compares | Cost, speed, ownership and regulation. Side by s
+…
+For EU visitors: PAXG is currently not available to residents of the European Union. | Any mention of third-party companies, products, services, or websites is for informational purposes only and does not constitute an endorsement, recommendation, or validation by Paxos Trust Company, National Association or its affiliates ("Paxos”). The content on this website is provided “as-is” and should not be considered legal,

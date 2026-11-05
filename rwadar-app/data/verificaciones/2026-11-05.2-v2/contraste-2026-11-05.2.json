@@ -1,0 +1,97 @@
+{
+  "tipo": "retiradas_y_correcciones",
+  "fecha": "2026-11-05",
+  "etiqueta": "2026-11-05.2",
+  "revisionAnterior": "cede1f27-b5eb-36d3-e223-eb4155df2572",
+  "revisionNueva": "88d5a757-3481-f70e-dc7c-6272704a00b3",
+  "decision": "Víctor, 05/11/2026: «Arregla todo, no dejes nada para mañana» y, sobre BILLA y Casa de Outeiro, «Retirar las dos hoy».",
+  "archivos": {
+    "cambios-plataformas.json": "95a72c8319279cd7259bd2f4d2bb9675699e6cb1a001fadbf745ce7bc564901c",
+    "cambios-radar.json": "a8c746ba98bc3957290c9eca2c2b053df338678c9237d28fef28978998a14122",
+    "comprobacion-retiradas.json": "c62ed90983e14752708f743502df53f21d5481edf6e50dd2e0418d29f332b19c"
+  },
+  "cuentas": {
+    "plataformas": 25,
+    "fuentesRadarAntes": 67,
+    "fuentesRadarDespues": 69,
+    "ofertasAntes": 24,
+    "ofertasDespues": 22,
+    "descartadas": 5
+  },
+  "cambios": [
+    {
+      "donde": "public.plataformas",
+      "slug": "pax-gold",
+      "columna": "web",
+      "antes": "https://paxos.com/paxgold",
+      "despues": "https://www.paxg.com/"
+    },
+    {
+      "donde": "radar",
+      "slug": "spiko",
+      "campo": "acceso.detalle",
+      "antes": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. No hemos comprobado en la CNMV que el fondo se comercialice en España, ni llegamos a darnos de alta.",
+      "despues": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. La CNMV tiene inscritas a SPIKO SICAV como IIC extranjera (n.º 2380, con Aldana Capital como comercializadora) y a Spiko Finance como empresa de inversión en libre prestación (n.º 5325), pero no muestra qué compartimentos de la SICAV están dados de alta en España. No llegamos a darnos de alta."
+    },
+    {
+      "donde": "radar",
+      "slug": "spiko",
+      "campo": "acceso.fuentes",
+      "antes": [
+        "spiko-web",
+        "spiko-amf",
+        "spiko-regafi-pasaporte-es"
+      ],
+      "despues": [
+        "spiko-web",
+        "spiko-amf",
+        "spiko-regafi-pasaporte-es",
+        "spiko-cnmv-iic",
+        "spiko-cnmv-lps"
+      ]
+    },
+    {
+      "donde": "radar",
+      "fuenteNueva": "spiko-cnmv-iic",
+      "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+      "titulo": "CNMV · SPIKO SICAV, vehículo de inversión extranjero (n.º 2380)"
+    },
+    {
+      "donde": "radar",
+      "fuenteNueva": "spiko-cnmv-lps",
+      "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es",
+      "titulo": "CNMV · Spiko Finance, empresa de servicios de inversión en libre prestación (n.º 5325)"
+    },
+    {
+      "donde": "catálogo",
+      "retirada": "terreno-con-arrendamiento-billa",
+      "titulo": "Terreno con supermercado BILLA · Brückl",
+      "coleccion": "en_camino",
+      "texto": "Retirada el 05/11/2026: el plazo de suscripción terminó el 16/05/2026 sin prórroga publicada, y solo tenía 82 de las 5.000 participaciones necesarias (el 1,64 % del mínimo de 500.000 €)."
+    },
+    {
+      "donde": "catálogo",
+      "retirada": "casa-de-outeiro",
+      "titulo": "Casa de Outeiro",
+      "coleccion": "en_camino",
+      "texto": "Retirada el 05/11/2026: la campaña en Alius terminó el 31/10/2026 sin ampliación publicada en la plataforma, con 1.121.000 € de un mínimo de 2.000.000 €."
+    }
+  ],
+  "sinCambios": [
+    "las otras 22 ofertas: documentación, cifras, avisos, colecciones y vigencia (verificadas el 05/11, 7 días: hasta el 12/11)",
+    "las otras 24 plataformas del radar, y de Spiko todo menos su texto de acceso",
+    "las 67 fuentes del radar que ya estaban",
+    "las 5 descartadas",
+    "de public.plataformas, todo menos la web de Pax Gold; public.fuentes"
+  ],
+  "altas": [],
+  "retiradas": [
+    "terreno-con-arrendamiento-billa",
+    "casa-de-outeiro"
+  ],
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 1
+  }
+}

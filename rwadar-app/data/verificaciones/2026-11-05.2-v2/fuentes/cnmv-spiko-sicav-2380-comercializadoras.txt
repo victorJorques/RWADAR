@@ -1,0 +1,5 @@
+Copia de texto (sin el HTML) de https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es&vista=18
+Leída con curl, sin sesión, el 2026-11-05 17:07:54–17:07:56 (UTC). HTTP 200. SHA-256 del HTML completo: eab32ca21f1d006c1ab40958e2cf489fbf24d54eea8fe370d5532c6a9ccc2434 (152642 bytes).
+Solo el contenido principal; menús, avisos de cookies y pie fuera.
+
+Inicio | > | Consultas a registros oficiales | > | Vehículos de inversión extranjeros | > | Consulta por entidades | > | Información de vehículos de inversión extranjeros | Información de vehículos de inversión extranjeros | SPIKO SICAV | Nº Registro oficial | Fecha registro oficial | Tipo IIC | País | 2380 | 30/01/2026 | SICAV | FRANCIA | Datos generales | Entidades comercializadoras | Entidades comercializadoras | Denominación | ALDANA CAPITAL, SOCIEDAD ANONIMA AGENCIA DE VALORES

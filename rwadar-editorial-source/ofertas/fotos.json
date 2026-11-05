@@ -37,13 +37,6 @@
    "concepto": "un edificio residencial de pocas plantas con jardín ante montañas de Carintia, parecido al real",
    "prompt": "A long three-storey residential complex with white facades, wooden balconies and dark grey pitched roofs around a landscaped garden courtyard with lawns and conifers, green forested Carinthian mountains behind, golden hour"
   },
-  "terreno-con-arrendamiento-billa": {
-   "modelo": "realvisxl",
-   "semilla": 11,
-   "encuadre": "70% 55%",
-   "concepto": "un supermercado sin marca en su propio solar en un valle de Carintia, visto desde el aire",
-   "prompt": "aerial view of a modern single-storey supermarket building with a large parking lot on its own plot in a small green valley town in Carinthia, Austria, forested hills, soft morning light"
-  },
   "vivienda-stallhofstra-e-28-gratwein": {
    "modelo": "realvisxl",
    "semilla": 11,
@@ -125,13 +118,6 @@
    "encuadre": "70% 55%",
    "concepto": "unos lingotes de oro sin marcas en una cámara acorazada",
    "prompt": "stacks of polished plain gold bars inside a high-security bank vault, heavy round steel vault door ajar, warm dramatic light, dark polished floor"
-  },
-  "casa-de-outeiro": {
-   "modelo": "realvisxl",
-   "semilla": 23,
-   "encuadre": "70% 55%",
-   "concepto": "una casa solariega de piedra restaurada entre viñedos en terrazas sobre un cañón fluvial de la Ribeira Sacra, parecida a la real",
-   "prompt": "beautifully restored old granite stone manor house with dark slate roof and wooden balcony among neat terraced vineyards above a deep river canyon, Ribeira Sacra, Galicia, golden hour, autumn"
   },
   "aktionariat": {
    "modelo": "realvisxl",
