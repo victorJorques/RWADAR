@@ -79,12 +79,10 @@ Identidad, forma jurídica, titularidad, puestos directivos y datos de contacto.
          Investimentos de Capitais Reunidos S.L., NIF B-27412980 ostenta el 36.91% del capital de la
          Sociedad.
          SolQuiroga S.L. NIF B27334150 ostenta el 14.08% del capital de la Sociedad.
-         Sonia Noemí Álvarez Blanco NIF [DNI omitido] ostenta el 5.34% del capital de la Sociedad.
-         Juan Luis Vázquez Rodríguez NIF [DNI omitido] ostenta el 0.18% del capital de la Sociedad.
-     •   Administradores solidarios de Casa de Outeiro Bodega y Viñedos S.A.: Juan Luis Vázquez
-         Rodríguez/Sonia Noemí Álvarez Blanco
-     •   Puestos directivos: Presidente (Juan Luis Vázquez Rodríguez), Vicepresidenta (Sonia Noemí Álvarez
-         Blanco)
+         [nombre recortado] NIF [DNI omitido] ostenta el 5.34% del capital de la Sociedad.
+         [nombre recortado] NIF [DNI omitido] ostenta el 0.18% del capital de la Sociedad.
+     •   Administradores solidarios de Casa de Outeiro Bodega y Viñedos S.A.: [nombre recortado]/[nombre recortado]
+     •   Puestos directivos: Presidente ([nombre recortado]), Vicepresidenta ([nombre recortado])
      •   Datos de contacto: [teléfono omitido], [correo omitido]
                                                                                                              2
                                                                                                       CIF B76632793
@@ -94,7 +92,7 @@ Identidad, forma jurídica, titularidad, puestos directivos y datos de contacto.
 Declaración de responsabilidad de la persona responsable de la información facilitada.
 
 
-D. Juan Luis Vázquez Rodríguez, administrador solidario de Casa de Outeiro Bodega y Viñedos S.A., declara
+D. [nombre recortado], administrador solidario de Casa de Outeiro Bodega y Viñedos S.A., declara
 que, hasta donde alcanza su conocimiento, no se ha omitido ningún dato y la información no es sustancialmente
 engañosa ni inexacta. El promotor del proyecto es el responsable de la elaboración de esta ficha de datos
 fundamentales de la inversión.
@@ -289,13 +287,11 @@ Comunidad de Casa de Outeiro, de acuerdo con las condiciones que se describen en
           •   Los socios tienen derecho de acompañamiento.
           •   El derecho de arrastre sólo podrá ejercitarse respecto de operaciones de venta global o
               estratégica que cuenten con las mayorías reforzadas previstas en el Pacto de Socios y siempre
-              que se respeten las exclusiones expresas de Tourgalia Gestión, S.L., Don Juan Luis Vázquez
-              Rodríguez y Doña Noemí Álvarez Blanco.
+              que se respeten las exclusiones expresas de Tourgalia Gestión, S.L., Don [nombre recortado] y Doña [nombre recortado].
           •   En las transmisiones de acciones de Socios Impulsores sujetas a derecho de adquisición
-              preferente, Tourgalia Gestión, S.L., Don Juan Luis Vázquez Rodríguez y Doña Noemí Álvarez
-              Blanco tendrán, en el ámbito interno del presente Pacto, un derecho preferente reforzado para
+              preferente, Tourgalia Gestión, S.L., Don [nombre recortado] y Doña [nombre recortado] tendrán, en el ámbito interno del presente Pacto, un derecho preferente reforzado para
               adquirir las acciones ofrecidas.
-          •   Ni Juan Luis Vázquez Rodríguez, ni Sonia Noemí Álvarez Blanco, ni Tourgalia Gestión S.L.
+          •   Ni [nombre recortado], ni [nombre recortado], ni Tourgalia Gestión S.L.
               podrán ser arrastrados por Inversions de Capitais Reunidos S.L., Sol Quiroga S.L., o cualquier
               otro socio.
           •   Transmisibilidad: Se limita la transmisión inicial de las acciones hasta el año 2027. Los
@@ -312,8 +308,8 @@ CASA DE OUTEIRO BODEGA Y VIÑEDOS S.A.           ACCIONES                       
 TOURGALIA GESTIÓN S.L.                                                         74103          741.030,00 €           43,49%
 INVERSIONS DE CAPITAIS REUNIDOS S.L.                                           62900          629.000,00 €           36,91%
 SOLQUIROGA S.L.                                                                24000          240.000,00 €            14,8%
-SONIA NOEMÍ ÁLVAREZ BLANCO                                                      9100           91.000,00 €            5,34%
-JUAN LUIS VÁZQUEZ RODRÍGUEZ                                                      300              3.000,00 €          0,18%
+[nombre recortado]                                                              9100           91.000,00 €            5,34%
+[nombre recortado]                                                               300              3.000,00 €          0,18%
 TOTALES                                                                      170403          1.704.030,00 €           100%
                                                POST EMISIÓN DE CAPITAL
 PRIMA DE EMISIÓN                                                             15,00 €     VALOR NOMINAL               10,00 €
@@ -343,8 +339,7 @@ SERIE A EMISIÓN A TRAVÉS DE ALIUS CAPITAL                                    1
 
 
 
-                                                              Firmado por Juan Luis
-                                                              Vázquez el día 30 de
+                                                              Firmado por [nombre recortado] el día 30 de
                                                               octubre de 2026 con un                                               6
                                                               certificado emitido por
                                                               Fabrica Nacional de Moneda

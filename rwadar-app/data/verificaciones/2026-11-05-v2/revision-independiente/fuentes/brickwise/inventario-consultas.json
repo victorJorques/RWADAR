@@ -329,8 +329,10 @@
    "archivo": "reguladores/fma-busqueda-investor-warning.txt",
    "http": 200,
    "consultadoUtc": "2026-11-05T08:31:53Z",
-   "bytes": 13494,
-   "sha256": "24e54e162990ca2ab026a7c122c8a41ae97bf83373ed15a9d06392856581cba2"
+   "bytes": 13495,
+   "sha256": "a571f44d20a4b0bc9ee873f0c4dd8cc2cc8e3c784b5673ee0047262e5b437df1",
+   "nota": "Nombre de una persona física de un aviso de la FMA de 2006 recortado el 05/11/2026 («[nombre recortado]»); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior.",
+   "sha256Captura": "24e54e162990ca2ab026a7c122c8a41ae97bf83373ed15a9d06392856581cba2"
   },
   {
    "url": "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",

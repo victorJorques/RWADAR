@@ -824,9 +824,11 @@
    "archivo": "fuentes/renders/alius-casa-de-outeiro-render.txt",
    "http": 200,
    "consultadoUtc": "2026-11-03T11:03:39Z",
-   "bytes": 4529,
-   "sha256": "8f5a33f754972ea18234c8ab44f86c1a24f479b9723ea18fd26868b527bcaf20",
-   "metodo": "playwright (render público)"
+   "bytes": 4527,
+   "sha256": "f1b0d2a6a1ae84624728025a31c9a88c4128fbdc0a1e4bde40caab3d6430c9d1",
+   "metodo": "playwright (render público)",
+   "sha256Captura": "8f5a33f754972ea18234c8ab44f86c1a24f479b9723ea18fd26868b527bcaf20",
+   "nota": "Nombres de personas físicas recortados el 05/11/2026 («[nombre recortado]», y también su correo, teléfono o NIF si aparecían); sha256 y bytes son los de la copia recortada; sha256Captura, el de la copia anterior."
   }
  ],
  "derivados": [

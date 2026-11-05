@@ -27,7 +27,7 @@ Apertura el 08/10/2026. Fecha límite el 23/10/2026
 • Identidad: IOD APPLICATIONS S.L (en adelante, “la Sociedad”, “el Promotor” o “el Emisor”) 
 • CIF: B19875392 
 • Forma jurídica: Sociedad Limitada (S.L.) 
-• Titularidad: SMART ESCROW, S.L. (en adelante, “Smart Escrow”), NIF B26571471 ostenta el 25% del capital de la Sociedad; ARMATURA CAPITAL, S.L (en adelante, “Armatura”). NIF B86496510 ostente el 25% del capital de la Sociedad; Gregorio Lopez-Triviño, DNI [DNI omitido] ostenta el 25% del capital de la Sociedad y Alberto Luis Ortega Useros, DNI [DNI omitido] ostenta el 25% del capital de la Sociedad. 
+• Titularidad: SMART ESCROW, S.L. (en adelante, “Smart Escrow”), NIF B26571471 ostenta el 25% del capital de la Sociedad; ARMATURA CAPITAL, S.L (en adelante, “Armatura”). NIF B86496510 ostente el 25% del capital de la Sociedad; [nombre recortado], DNI [DNI omitido] ostenta el 25% del capital de la Sociedad y [nombre recortado], DNI [DNI omitido] ostenta el 25% del capital de la Sociedad. 
 
 La presente oferta de financiación participativa no ha sido verificada ni aprobada por CNMV ni por la Autoridad Europea de Valores y Mercados (AEVM). La idoneidad de su experiencia y conocimientos no se ha evaluado necesariamente antes de que se le concediera acceso a esta inversión. Al realizar esta inversión, usted asume plenamente el riesgo que comporta, incluido el de pérdida parcial o total del dinero invertido.
 
@@ -51,11 +51,11 @@ Período de reflexión precontractual para inversores no experimentados Los inve
 CIF B76632793 
 Entidad registrada en CNMV con el Nº11 
 
-• Administrador único: D. Alberto Luis Ortega Useros • Datos de contacto: Alberto Luis Ortega Useros, alberto.ortega@iodapplications.com
+• Administrador único: D. [nombre recortado] • Datos de contacto: [nombre recortado], [correo recortado]
 
 Declaración de responsabilidad de la persona responsable de la información facilitada.
 
-D. Alberto Luis Ortega Useros, administrador único de IOD APPLICATIONS S.L., declara que, hasta donde alcanza su conocimiento, no se ha omitido ningún dato y la información no es sustancialmente engañosa ni inexacta. El promotor del proyecto es el responsable de la elaboración de esta ficha de datos fundamentales de la inversión.
+D. [nombre recortado], administrador único de IOD APPLICATIONS S.L., declara que, hasta donde alcanza su conocimiento, no se ha omitido ningún dato y la información no es sustancialmente engañosa ni inexacta. El promotor del proyecto es el responsable de la elaboración de esta ficha de datos fundamentales de la inversión.
 
 Actividades principales del promotor del proyecto, productos o servicios ofrecidos por el promotor del proyecto.
 
@@ -330,7 +330,7 @@ Registration Agreement 6/6 of the wallet in which the Share Tokens are stored. T
 
 Zurich, 2021-02-01
 
-Luzius Meisser Murat Ögat
+[nombre recortado] [nombre recortado]
 
 President of the Board of Directors Member of the Board of Directors
 
