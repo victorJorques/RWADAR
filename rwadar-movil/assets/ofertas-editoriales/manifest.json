@@ -214,14 +214,14 @@
       "alto": 660,
       "bytes": 80220,
       "hashSha256": "efe6009b5cc07801927825b3d7d8a666d8096d3636abaffbf62dfd73a278d8cb",
-      "alt": "Ilustración editorial de un edificio de viviendas mediterráneo recién reformado en Alicante, como imagen de una casa que se compra, se reforma y se vende, imagen generada con IA. Pasos: reservas en la preventa; se reforma y se vende; cobro tras la venta. No es una foto del activo real.",
-      "concepto": "un edificio de viviendas mediterráneo recién reformado en Alicante, como imagen de una casa que se compra, se reforma y se vende",
+      "alt": "Ilustración editorial de un edificio de viviendas mediterráneo recién reformado en la costa de Orihuela (Alicante), como imagen de viviendas que se compran, se reforman y se venden, imagen generada con IA. Pasos: reservas en la preventa; se reforma y se vende; cobro tras la venta. No es una foto del activo real.",
+      "concepto": "un edificio de viviendas mediterráneo recién reformado en la costa de Orihuela (Alicante), como imagen de viviendas que se compran, se reforman y se venden",
       "pasos": [
         "Reservas en la preventa",
         "Se reforma y se vende",
         "Cobro tras la venta"
       ],
-      "lugar": "Alicante · España",
+      "lugar": "Orihuela Costa · Alicante",
       "origen": "foto-generada",
       "modelo": "RealVisXL V5.0 Lightning (SG161222)",
       "revisadoEl": "2026-11-02"
