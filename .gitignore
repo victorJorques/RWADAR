@@ -22,6 +22,8 @@
 !/PLAN-GIT-Y-RESPALDOS.md
 !/SECURITY.md
 !/AGENTS.md
+# Procedimientos de Claude (skills y flujos guardados); el resto de .claude/ se ignora más abajo
+!/.claude/
 !/docs/
 !/docs/**
 
@@ -87,7 +89,11 @@ service-role*.json
 credentials*.json
 **/.clave-local
 **/qr-movil.png
-.claude/
+.claude/*
+!/.claude/skills/
+!/.claude/skills/**
+!/.claude/workflows/
+!/.claude/workflows/**
 coverage/
 .cache/
 *.tmp
