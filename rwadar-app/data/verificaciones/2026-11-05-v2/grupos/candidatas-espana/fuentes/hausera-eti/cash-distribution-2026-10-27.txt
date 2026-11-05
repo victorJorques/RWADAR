@@ -1,0 +1,70 @@
+                                                                                                            Single Payment Notice
+
+
+
+Other Relevant Information - "Other Cash Distributions" Programme
+                                        Single Payment Notice
+
+In accordance with the provisions of Article 17 of Regulation (EU) No 596/2014 of the European Parliament
+and of the Council of 16 April 2014 on Market Abuse and Article 227 and Art. 5.2.5 of Portfolio Stock Exchange´s
+Rulebook, Altarius ETI communicates the Distribution of Cash for “Programme” according to the conditions
+described hereafter:
+
+  Field                    Content
+
+  Issuer                   Altarius ETI AG
+
+  Series / Programme       Series 19: Hausera ETI Securities
+
+  ISIN                     FR0014010H19
+
+  Market (MIC)             Portfolio Stock Exchange (POSE)
+
+  Applicable               Base Prospectus dated 29th August 2024 and Final Terms / Addendum dated 22nd
+  documentation            August 2025, clause "[Distributions / Other Amounts]"
+
+  Nature of the            "Other cash distributions" (non-amortising): not a coupon/interest and does not reduce
+  payment                  principal or alter maturity. The entitlement arises exclusively from holding on the Record
+                           Date, there is no daily accrual and no accrued coupon.
+
+  Express issuer           We expressly confirm that:
+  confirmation             • this payment does not constitute a coupon payment,
+                           • does not represent a redemption or amortisation of principal, whether partial or total,
+                           • does not modify the legal or economic structure of the ETI,
+                           • and does not affect its classification as a zero-coupon instrument.
+
+
+  Paying & custody         Amounts will be credited through European Digital Securities Exchange, SV, S.A., acting
+  agent                    and paying agent of the Issuance and Custody agent.
+
+  Taxation &               Spanish tax rules will apply, where applicable, the corresponding withholding will be
+  withholding              practiced to Noteholders through the paying agent.
+
+  Instruction              Altarius ETI AG hereby expressly instructs Portfolio Stock Exchange, in its capacity as
+  regarding excluded       paying agent, to exclude from the calculation and allocation of the present cash
+  holdings                 distribution any Notes held by Altarius Index PCC. Consequently, the Notes owned by
+                           Altarius Index PCC shall not be entitled to receive any amount under this distribution,
+                           which shall be calculated and paid exclusively in respect of the Notes held by eligible
+                           Noteholders other than Altarius Index PCC, as of the applicable Record Date.
+
+  Nullification of         This document constitutes a corrected version of the previously published ORI, and
+  previous ORI             therefore nullifies the aforementioned ORI.
+
+
+Single payment details
+POSE market rules:
+• Ex-Date - Trading day after Record Date.
+• Record Date - End of day on which holder positions are determined for the distribution.
+• Payment Date - Date on which the distribution is paid.
+
+                                                                                                Gross unit amount per
+           Ex-Date               Record Date                Payment Date                                 ETI
+
+
+         29-oct.-26               28-oct.-26                   3-nov.-26                           5,83333333 Euro
+
+
+
+
+                                                        altarius ETI AG – The Issuer - Industriering 20, FL-9491, Ruggell (Liechtenstein)
+
