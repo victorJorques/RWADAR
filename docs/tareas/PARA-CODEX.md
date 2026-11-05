@@ -6,34 +6,61 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 5 de noviembre de 2026 (8) · Claude · avisos a registrados (30): seis arreglos de la revisión independiente (sin aplicar)
+## 5 de noviembre de 2026 (8) · Claude · avisos a registrados y Academy con cuenta (preparado, sin aplicar ni publicar)
 
-Nada aplicado ni publicado; la 30 sigue sin tocar Supabase. Contrato al día:
+Petición de Víctor: «al registrarse, al sacar una nueva actualización o nuevas
+ofertas se enviará un correo de aviso y una notificación a la aplicación» y
+«que el apartado de Academy se desbloquee solo a los que se han registrado».
+Rama `claude/avisos-y-academy-registro` (sin PR). **Nada aplicado en Supabase,
+nada publicado, sin EAS.** Plan, decisiones y pasos de activación:
 [`AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
 
-- **Permiso del alta:** nueva `configuracion.casilla_activa` (nace `false`;
-  reaplicar la 30, `30_avisos_registrados_apagar.sql` y `fallo_cerrado.sql` la
-  apagan). Sin ella, el disparador ni lee los metadatos. Se enciende con el
-  nuevo `30_avisos_registrados_activar_casilla.sql` en el paso 4, justo
-  después de poner la plantilla de Auth. El verificador 30 lo informa.
-- **Reparto:** cuenta `coalesce(publicado_el, creado_el)`; un retenido creado
-  antes de activar y publicado después ya sale.
-- **Retención:** `limpiar()` borra también las bienvenidas terminadas a los 90
-  días; no se repiten gracias a `preferencias.bienvenida_correo_el` y
-  `bienvenida_push_el`. `procesar()` limpia también con todo apagado. El reloj
-  no cambia (solo existe tras activar), escrito en el contrato.
-- **Brevo:** `duplicate_request` cuenta como aceptado, igual que
-  `duplicate_parameter`. Cabecera de idempotencia y `List-Unsubscribe`, a
-  confirmar en la prueba real del paso 5.
-- **Móviles:** `public.mi_aviso_push_registrado(p_token)` dice si ese token
-  sigue en la cuenta de la sesión (solo `authenticated`).
-- **Copias:** `copia-seguridad.sh` copia además `rwadar_novedades` (si aún no
-  existe, pg_dump lo salta). La cartera (`rwadar_cuentas_privadas`) se deja
-  fuera a propósito: lleva FORCE RLS y, si `postgres` no puede saltarla, fallaría
-  la copia entera, también la de «Aplicar catálogo». Incluirla es otro cambio,
-  a probar antes con una copia manual.
-- **Pruebas:** `probar-avisos-registrados.mjs` 150/150 y `npm --prefix
-  rwadar-app test` en verde.
+- **Academy con cuenta (web).** El worker (`rwadar-acceso/servidor.mjs`) cierra
+  `/academy/<slug>`: sin sesión, 303 a `/acceso?volver=…` (401 si no es HTML),
+  lecciones no publicadas 404, fallo de Supabase 503 (nunca manda a entrar),
+  con sesión `private, no-store`, `noindex` y `Vary: Cookie`. El índice
+  `/academy/` sigue público. Interruptor `"acceso"` en `rwadar-academy/academy.json`.
+  En el móvil, el tutorial 3D de la pestaña Academy también pide cuenta. En la
+  app ya pedía cuenta para todo desde la 1.4.1. Las capturas de Víctor (iPhone)
+  eran de la web instalada en la pantalla de inicio.
+- **Avisos (todo apagado).** Migración `rwadar-app/db/30_avisos_registrados.sql`
+  (esquema `rwadar_novedades`; copia en `supabase/migrations/20261105200000_…`):
+  bienvenida al confirmar; avisos de ofertas (disparador del catálogo, nacen
+  **retenidos**) y de actualizaciones (flujo manual «Avisar novedad»); correo
+  por Brevo y push por Expo con pg_net; baja sin cuenta (`/baja`); lista de
+  avisos dentro de la app. El permiso es una casilla aparte, sin marcar, que se
+  guarda al confirmar el correo y solo si `casilla_activa`. Interruptores:
+  `AVISOS_NOVEDADES_REMOTOS` en `acceso.js`, `rwadar-20260820.js`,
+  `servidor.mjs` y `rwadar-movil/lib/modo-local.js`, todos `false`.
+- **Alta:** la casilla obligatoria dice ya «Tengo 18 años o más…» (web y app).
+- **Push del sistema:** necesita el APK 1.4.2 (permisos y Firebase). Guía:
+  [`APK-1.4.2-NOTIFICACIONES.md`](APK-1.4.2-NOTIFICACIONES.md). La rama no toca
+  `app.json`: la OTA a la 1.4.1 sigue compatible (guardián `ok:true`).
+- **Revisión:** diseño revisado antes de programar (legal, seguridad,
+  operaciones); revisión independiente del código con verificación doble, y
+  corrección de lo confirmado. Lo más grave que se cazó: el `_worker.js`
+  exportaba un texto y Cloudflare no lo habría desplegado (comprobado con
+  workerd: «Incorrect type for map entry … not of type 'function or
+  ExportedHandler'»), y el comprobador posterior a publicar habría fallado
+  siempre en la vista previa.
+- **Pruebas (al cerrar):** `npm test` en verde: web 619, acceso 201, móvil
+  467 + 2 omitidas, avisos 150, el resto de la base sin fallos. El worker
+  compilado arranca en workerd (Miniflare) y da 303/404/200 donde toca.
+  Capturas en local con el arnés `rwadar-acceso/probar-worker-local.mjs`.
+- **Copias:** `copia-seguridad.sh` añade `rwadar_novedades`. La cartera
+  (`rwadar_cuentas_privadas`) sigue fuera a propósito: lleva FORCE RLS y, si
+  `postgres` no puede saltarla, fallaría la copia entera, también la previa de
+  «Aplicar catálogo». Incluirla es otro cambio, a probar antes con una copia manual.
+- **Ojo al unir a `main`:** el siguiente «Publicar web» del ciclo del catálogo
+  publicaría el cierre de la Academy. Antes, visto bueno escrito de Eric (su
+  especificación decía «sin cuentas») y permiso de Víctor, o poner
+  `"acceso": "publico"` (ver `rwadar-academy/LEEME.md`: hay textos que
+  revertir a mano).
+- **Pendiente de Víctor, cada paso con su permiso:** revisión legal (casilla,
+  privacidad y avisos de ofertas); aplicar la 30 en el SQL Editor con copia
+  previa (nunca `db push`); plantilla de Auth y `activar_casilla`; encender los
+  interruptores y publicar web y OTA; dominio propio y Brevo para el correo;
+  Firebase y APK 1.4.2 para el push; decidir si se publican las lecciones 8 y 9.
 
 ## 5 de noviembre de 2026 (7) · Claude · entrega 2026-11-05.2 y remates publicados: Supabase, web y app
 
