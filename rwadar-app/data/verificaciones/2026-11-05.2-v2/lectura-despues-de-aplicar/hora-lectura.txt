@@ -1,0 +1,2 @@
+Lectura como visitante (clave publicable, REST de Supabase, solo GET): 2026-11-05T18:18:30Z – 2026-11-05T18:18:33Z
+Resultado: {"revision":["88d5a757-3481-f70e-dc7c-6272704a00b3"],"plataformas":25,"ofertas":22,"colecciones":{"principales":8,"secundario":13,"en_camino":1},"descartadas":["artex-global-markets","domoblock","goldfinch","realt","toucan-protocol"],"verificadaEl":["2026-11-05"]}

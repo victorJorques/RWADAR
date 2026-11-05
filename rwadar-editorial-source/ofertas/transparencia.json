@@ -2,8 +2,8 @@
   "versionEsquema": 1,
   "nota": "Datos editoriales de RWAdar para la tarjeta y la ficha: puntos fuertes comprobados, textos cortos y dos de las cinco comprobaciones de transparencia (las otras tres se calculan con el catálogo). No es una recomendación de inversión. Se revisa en cada ciclo del catálogo: una oferta cuya verificadaEl no coincida con la del catálogo no enseña nada de esto.",
   "revisadoEl": "2026-11-05",
-  "lote": "2026-11-05",
-  "revisionCatalogo": "cede1f27-b5eb-36d3-e223-eb4155df2572",
+  "lote": "2026-11-05.2",
+  "revisionCatalogo": "88d5a757-3481-f70e-dc7c-6272704a00b3",
   "revision": {
     "evaluacion": "workflow «criterios-documentacion» (2 evaluadores y 1 escéptico por oferta con algún sí, 03/11/2026)",
     "decision": "Claude como CEO, con Víctor (03/11/2026)"
@@ -401,46 +401,6 @@
         }
       ]
     },
-    "casa-de-outeiro": {
-      "verificadaEl": "2026-11-05",
-      "anadidaEl": "2026-09-30",
-      "supervisada": {
-        "cumple": true,
-        "motivo": "Alius está inscrita en la CNMV como plataforma de crowdfunding (nº 11, con su antiguo nombre Adventurees) y autorizada para colocar acciones.",
-        "fuente": {
-          "titulo": "CNMV · Proveedores de servicios de financiación participativa: nº 11, ADVENTUREES CAPITAL PFP (www.aliuscap.com)",
-          "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"
-        },
-        "consultadaEl": "2026-11-05"
-      },
-      "documentoEspana": {
-        "cumple": true,
-        "motivo": "Publica la ficha de datos fundamentales que exige la norma europea de crowdfunding, en español y prevista para particulares. La CNMV no la revisa.",
-        "fuente": {
-          "titulo": "Ficha de datos fundamentales de la inversión v5 · Casa de Outeiro (30/10/2026)",
-          "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263"
-        },
-        "consultadaEl": "2026-11-05"
-      },
-      "minimoCorto": "2.000 €",
-      "salidaCorta": "Venta limitada tras la emisión",
-      "puntos": [
-        {
-          "texto": "Plataforma en la CNMV",
-          "fuente": {
-            "titulo": "CNMV · Proveedores de servicios de financiación participativa: nº 11, ADVENTUREES CAPITAL PFP (www.aliuscap.com)",
-            "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Proveedor.aspx?nreg=11&nif=B76632793"
-          }
-        },
-        {
-          "texto": "Ficha oficial en español",
-          "fuente": {
-            "titulo": "Ficha de datos fundamentales de la inversión v5 · Casa de Outeiro (30/10/2026)",
-            "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/document/263"
-          }
-        }
-      ]
-    },
     "apartamento-vacacional-hinterstoder-50": {
       "verificadaEl": "2026-11-05",
       "anadidaEl": "2026-09-30",
@@ -634,39 +594,6 @@
           "texto": "Reventa activa en la app",
           "fuente": {
             "titulo": "Brickwise · mercado de reventa en la app (05/11/2026)",
-            "url": "https://app.brickwise.at/desktopWeb/marketplace"
-          }
-        }
-      ]
-    },
-    "terreno-con-arrendamiento-billa": {
-      "verificadaEl": "2026-11-05",
-      "anadidaEl": "2026-09-30",
-      "supervisada": {
-        "cumple": false,
-        "motivo": "Effecta (BaFin) figura en la CNMV, pero Brickwise, el agente que te vende, no consta notificado para operar en España.",
-        "fuente": {
-          "titulo": "CNMV · Effecta GmbH en libre prestación (nº 5003), pestaña Agentes: sin datos",
-          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=8"
-        },
-        "consultadaEl": "2026-11-05"
-      },
-      "documentoEspana": {
-        "cumple": false,
-        "motivo": "Solo hay un KID en alemán y una ficha de la ley austriaca de financiación alternativa; ninguno cubre su venta en España.",
-        "fuente": {
-          "titulo": "Basisinformationsblatt (KID) del emisor, solo en alemán (ISIN AT0000A3SE89)",
-          "url": "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf"
-        },
-        "consultadaEl": "2026-11-05"
-      },
-      "minimoCorto": "1.000 €",
-      "salidaCorta": "Cancelable a los 5 años; reventa",
-      "puntos": [
-        {
-          "texto": "Arrendado a BILLA",
-          "fuente": {
-            "titulo": "Fuente de la ficha · Brickwise",
             "url": "https://app.brickwise.at/desktopWeb/marketplace"
           }
         }
