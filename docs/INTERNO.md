@@ -57,7 +57,7 @@ en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
 | | Estado |
 |---|---|
 | **Web** | Publicada en **https://rwadar.pages.dev**, actualizada el **28/10** desde la rama aislada, con mapa de activos en Buscar. Consulta pública; cuenta para funciones personales. Login, sesión y salida comprobados con la cuenta de QA. Se conservan el radar del acceso, registro, recuperación, comparación e idiomas. |
-| **Catálogo** | **Investigado de nuevo y publicado el 5 de noviembre, el mismo día que Víctor lo pidió: 24 ofertas** (8 principales, 13 de reventa y 3 en camino) y 25 plataformas en el radar (5 descartadas), vigente hasta el **12 de noviembre**. Spiko rinde un 2,39 % (euro), un 3,99 % (dólar, en dólares) y un 2,84 % (Smart Cash). Vender entre accionistas en Aktionariat, Boss Info y Switzerlend cuesta un 1,9 %. Brickwise, con los precios de reventa del día. Hoy no entra ninguna oferta nueva: ninguna de las 9 candidatas cumple todo para un particular en España. **Tarjetas más sencillas** (petición de Víctor del 05/11): en la lista solo título, empresa y lugar, mínimo y si se puede desde España; lo demás, en la ficha. Igual en la web y en la app. Ver [`INVESTIGACION-CATALOGO-2026-11-05.md`](INVESTIGACION-CATALOGO-2026-11-05.md). Las cifras se ven 7 días desde su comprobación. Se puede actualizar varias veces el mismo día. **Con la orden «haz la investigación» se hace el ciclo entero ese día** (skill `investigacion-catalogo`). |
+| **Catálogo** | **Investigado de nuevo y publicado el 5 de noviembre, el mismo día que Víctor lo pidió: 22 ofertas** (8 principales, 13 de reventa y 1 en camino; esa tarde salieron BILLA y Casa de Outeiro por decisión de Víctor, porque no avanzaban) y 25 plataformas en el radar (5 descartadas), vigente hasta el **12 de noviembre**. Spiko rinde un 2,39 % (euro), un 3,99 % (dólar, en dólares) y un 2,84 % (Smart Cash). Vender entre accionistas en Aktionariat, Boss Info y Switzerlend cuesta un 1,9 %. Brickwise, con los precios de reventa del día. Hoy no entra ninguna oferta nueva: ninguna de las 9 candidatas cumple todo para un particular en España. **Tarjetas más sencillas** (petición de Víctor del 05/11): en la lista solo título, empresa y lugar, mínimo y si se puede desde España; lo demás, en la ficha. Igual en la web y en la app. Ver [`INVESTIGACION-CATALOGO-2026-11-05.md`](INVESTIGACION-CATALOGO-2026-11-05.md). Las cifras se ven 7 días desde su comprobación. Se puede actualizar varias veces el mismo día. **Con la orden «haz la investigación» se hace el ciclo entero ese día** (skill `investigacion-catalogo`). |
 | **Imágenes de las ofertas** | Las 49 fichas **ya muestran en la web y Android 1.3.2** su ilustración generada del activo, con el lugar y tres pasos explicativos. Llevan etiqueta «Ilustración editorial» y texto alternativo que identifica la IA y que no es una fotografía real del activo. La correspondencia con las 49 ofertas y los recursos del APK se comprobó por contenido. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
 | **App Android** | **[Versión 1.4.0](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.0)** publicada. Descarga pública, firma y contenido comprobados. Sesión persistente y desbloqueo opcional desde Perfil; catálogo completo, Academy y cartera manual validados. No está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
@@ -199,13 +199,8 @@ Los puntos de mantenimiento siguientes no equivalen a ese cierre de entrega.
    - Spiko Smart Cash Euro ya está publicada; si la CNMV, la AMF o Aldana
      Capital confirman su alta en España, se quita el primer aviso (si lo niegan,
      se retira).
-   - Casa de Outeiro: retirarla si el 10/11 sigue sin avance (el 05/11 seguía
-     en 1.121.000 € de 2.000.000 €).
    - Hausera: la oferta pública de Alicante 2 se anuncia para el 11/11; revisar
      si publica el documento de emisión y el emisor.
-   - BILLA (Brickwise): plazo vencido sin prórroga y 82 de 5.000 participaciones;
-     propuesta de retirada si el 15/11 sigue igual (decide Víctor).
-   - PAX Gold: cambiar su web en `public.plataformas` a paxg.com (SQL aparte).
    - Bono Valorix (Bit2Me STX) y CANDO1 (Token City) cuando publiquen su
      documento de emisión.
    Ver [`RUNBOOK.md`](RUNBOOK.md#catálogo).
