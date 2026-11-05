@@ -229,6 +229,34 @@ comando haya superado los verificadores 14, 15, 22 y la paridad 26/4. Aplicar
 El resultado deliberado es API reparada, retención diaria activa y correo/push
 apagados, bloqueados y sin cron.
 
+## Avisos a registrados (30)
+
+Preparada y probada en local; **no aplicada**. Contrato:
+[`docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](../docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+
+- `db/30_avisos_registrados.sql` (copia idéntica en
+  `supabase/migrations/20261105200000_avisos_registrados.sql`): esquema privado
+  `rwadar_novedades`, preferencias con permiso versionado
+  (`novedades-v1-2026-11-05`), bienvenida, anuncios, móviles y colas de correo
+  (Brevo) y push (Expo). Va después de 22, 24-26, el refuerzo de sesión, 28,
+  28_REVERTIR y 29. Se aplica en el SQL Editor con una copia hecha antes,
+  **nunca** con `supabase db push` (subiría también la 27).
+- Todo nace **apagado**. Reaplicar la 30 vuelve a apagarlo todo y quita el
+  reloj, como la 22. Cada paso necesita permiso expreso de Víctor:
+  `30_avisos_registrados_activar_correo.sql` (exige `BREVO_API_KEY` y
+  `RWADAR_REMITENTE` en Vault) y `30_avisos_registrados_activar_push.sql`
+  (`EXPO_ACCESS_TOKEN` opcional). Crean un único reloj `rwadar-novedades`
+  cada 5 minutos que solo llama a `rwadar_novedades.procesar()`.
+- Apagar: `30_avisos_registrados_apagar.sql`; `fallo_cerrado.sql` también lo
+  apaga. Comprobar: `30_avisos_registrados_verificar.sql` (solo lee; pasa
+  apagado y encendido).
+- El catálogo no envía nada por su cuenta: una revisión V2 con ofertas nuevas
+  crea un anuncio al día, **retenido**. Solo sale con el flujo «Avisar novedad»
+  (`.github/workflows/avisar-novedad.yml`, que ejecuta `db/anunciar.sql`) y
+  con orden de Víctor; el mismo flujo anuncia actualizaciones y novedades.
+- Plantilla de confirmación de Auth: [`plantillas-auth/`](plantillas-auth/LEEME.md).
+- Prueba: `node probar-avisos-registrados.mjs` (también en `npm test`).
+
 ## Contenido y sincronización
 
 `02_seed.sql` contiene el bloque inicial; `06_archax_republic.sql` completa la
