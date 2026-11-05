@@ -72,6 +72,21 @@ begin
 end
 $push$;
 
+-- Avisos a registrados (30): si existe el esquema, se apagan sus tres
+-- interruptores. No se borra ninguna cola ni preferencia.
+do $novedades$
+begin
+  if to_regclass('rwadar_novedades.configuracion') is not null then
+    execute $sql$
+      update rwadar_novedades.configuracion
+         set correo_habilitado = false, push_habilitado = false, ofertas_automaticas = false,
+             correo_activado_el = null, push_activado_el = null
+       where unica
+    $sql$;
+  end if;
+end
+$novedades$;
+
 -- pg_cron ofrece unschedule(text) en Supabase. La rama bigint permite que el
 -- cierre siga siendo util con instalaciones antiguas que solo tengan esa firma.
 -- El reloj de retención NO se detiene: no hace red y minimiza datos personales.
@@ -83,10 +98,12 @@ begin
     return;
   end if;
 
+  -- También cualquier reloj que llame a rwadar_novedades (30), se llame como se llame.
   for v_job in execute
     $sql$select jobid, jobname
            from cron.job
-          where jobname in ('rwadar-avisos', 'rwadar-push')$sql$
+          where jobname in ('rwadar-avisos', 'rwadar-push', 'rwadar-novedades')
+             or lower(coalesce(command, '')) like '%rwadar_novedades.%'$sql$
   loop
     if to_regprocedure('cron.unschedule(text)') is not null then
       execute 'select cron.unschedule($1)' using v_job.jobname;
