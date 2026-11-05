@@ -6,6 +6,57 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de noviembre de 2026 (5) · Claude · remates del día: transparencia, lugar de Hausera y datos personales (sin publicar)
+
+Orden de Víctor: «Arregla todo, no dejes nada para mañana». Rama
+`claude/remates-1105` (desde `main`), con push y sin PR. **Sin tocar Supabase,
+sin publicar la web y sin OTA.** No toca Billa ni Casa de Outeiro en el
+catálogo (se retiran en la entrega `2026-11-05.2`, en otra rama).
+
+- **Transparencia** (commit `8633019`): las cuatro comprobaciones que seguían
+  con fecha 03/11 se han vuelto a leer hoy y dicen lo mismo: condiciones
+  finales n.º 159 de Backed (Kraken; mismo SHA-256 que el 03/11, solo
+  Liechtenstein y Suiza), KID en español de Robinhood (01/07/2026, enlazado
+  desde `robinhood.com/eu/es/` y su página legal), BaFin (para «Midas» solo
+  la sociedad danesa; para «Midas Software», sin resultados) y aviso legal del
+  portal de Boss Info («not subject to prudential supervision»). Solo cambia
+  `consultadaEl` a 2026-11-05. Copias de texto y SHA-256 en
+  `rwadar-app/data/verificaciones/2026-11-05-v2/remates/inventario-remates.json`
+  (los PDF y HTML originales, fuera de Git). Regenerados el bloque de la web,
+  `lib/transparencia-contenido.js` y las fichas.
+- **Hausera** (commit `42f0f65`): el lugar de la ilustración pasa de
+  «Alicante · España» a «Orihuela Costa · Alicante» (Alicante 2 son 14
+  viviendas en La Zenia), como «Ribeira Sacra · Lugo». El texto alternativo
+  dice «en la costa de Orihuela (Alicante)». La foto sirve igual (edificio
+  mediterráneo blanco con balcones y palmeras, sin nada propio de la ciudad);
+  su `prompt` no cambia porque es el que la generó. `generar.mjs`: las 24 webp
+  salen idénticas; cambian el manifiesto de la app, el bloque de la web y la
+  ficha publicada. `generar.mjs --comprobar` en verde.
+- **Datos personales** (commit `a5b6934`): los nombres recortados hoy en
+  `2026-11-05-v2` seguían en copias de `2026-11-01-v2` y `2026-11-03.3-v2`, y
+  también en `docs/investigacion/2026-10-23` (incluida la portada de Hausera
+  en `.html.gz`). Ahora dicen «[nombre recortado]». En esas copias también se
+  recortaron un correo y un teléfono personales y dos NIF que quedaban en el
+  texto del FDF de la revisión del 01/11. Inventarios al día (`sha256` de la
+  copia recortada y `sha256Captura` con el anterior). El informe con fecha
+  `REVISION-IOD-OUTEIRO-SPIKO.md` no se toca.
+- **Pruebas:** `npm test` en verde (web 601, móvil 410 + 2 omitidas, acceso
+  146, base de datos sin fallos). Guardián de la OTA contra `c1f7106`: correcto
+  (1.4.1(23)). gitleaks 8.30.1 sobre los 43 archivos cambiados: sin hallazgos.
+- **Pendiente:**
+  - unir la rama a `main` y, con permiso de Víctor, publicar la web y enviar
+    la OTA: hasta entonces, la web y la app siguen enseñando «Alicante · España»
+    y las fechas del 03/11;
+  - la entrega `2026-11-05.2` también toca `fichas.json`, `fotos.json` y lo
+    generado (manifiesto, bloque de la web): al unir las dos ramas, si chocan
+    los archivos generados, volver a ejecutar `generar.mjs`,
+    `transparencia.mjs` y `node rwadar-fichas.js` en vez de resolverlos a mano;
+  - las copias crudas de la carpeta local (fuera de Git) y la rama
+    `claude/catalogo-2026-11-05` de origin siguen con los nombres sin recortar:
+    borrar esa rama (no se unió);
+  - quedan del traspaso anterior: web de PAX Gold en `public.plataformas` y
+    texto de acceso de Spiko en el radar.
+
 ## 5 de noviembre de 2026 (4) · Claude · investigación del día publicada: Supabase, web y app
 
 Orden de Víctor: «Hazme la investigación de hoy de las ofertas, y actualiza la
