@@ -5,6 +5,7 @@
 // ni incorporación automática de slugs recibidos desde Supabase.
 module.exports = Object.freeze([
   "cambios.html",
+  "fuera-del-radar/artex-global-markets.html",
   "fuera-del-radar/domoblock.html",
   "fuera-del-radar/goldfinch.html",
   "fuera-del-radar/realt.html",
@@ -37,7 +38,6 @@ module.exports = Object.freeze([
   "ofertas/vivienda-stallhofstra-e-28-gratwein.html",
   "plataformas/addx.html",
   "plataformas/archax.html",
-  "plataformas/artex-global-markets.html",
   "plataformas/backed-finance.html",
   "plataformas/blocksquare.html",
   "plataformas/centrifuge.html",
