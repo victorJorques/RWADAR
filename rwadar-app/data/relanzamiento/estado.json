@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-04",
+  "actualizadoEl": "2026-11-05",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 05/11: entrega 2026-11-04.2 (ARTEX pasa a Descartadas por decisión de Víctor: no usa blockchain), aplicada y sincronizada (revisión 723968ce); arreglos de la app probada en móvil. npm test completo en verde.",
+  "nota": "Claude, 05/11: entrega 2026-11-05 (investigación del día de las 24 ofertas, revisión cede1f27) aplicada y sincronizada; tarjetas de Ofertas más sencillas en web y app. npm test completo en verde.",
   "revisionAprobada": {
-    "commit": "e06558d8475c9ce342292d4a6d757766c4d133ff",
-    "contenidoSha256": "sha256:bcc7cb3dc2c2c16a25a4a76b5f6f9dbc8ffd7c60f44df3e5c412f219394b20aa",
+    "commit": "7a1008ac62bfbadca7d8a9776cbce3b41c356ab7",
+    "contenidoSha256": "sha256:65d22f4b4fd9e6ffafa7d425e015a597fcf527987c600161d7eab3288bd7ff5e",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

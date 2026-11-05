@@ -110,7 +110,14 @@ function dato(cambios = {}) {
 }
 
 const FECHA = /\b\d{2}\/\d{2}\/\d{4}\b/;
-const DOC_ACTUAL = path.join(RAIZ, '..', 'rwadar-app', 'data', 'verificaciones', '2026-11-04.2-v2', 'lectura-publica');
+// La lectura en línea del catálogo que lleva la web (su snapshot sincronizado): así la prueba
+// sigue al catálogo de cada ciclo y casa con la transparencia del mismo día.
+const VERIF = path.join(RAIZ, '..', 'rwadar-app', 'data', 'verificaciones');
+const REVISION_WEB = (fs.readFileSync(path.join(RAIZ, '..', 'rwadar-site', 'assets', 'catalogo-publico-20261022.js'), 'utf8')
+  .match(/"revisionId":"([0-9a-f-]{36})"/) || [])[1];
+const DOC_ACTUAL = fs.readdirSync(VERIF).sort().reverse()
+  .flatMap(d => ['lectura-despues-de-aplicar', 'lectura-publica'].map(s => path.join(VERIF, d, s)))
+  .find(c => { try { return JSON.parse(fs.readFileSync(path.join(c, 'ofertas-v2.json'), 'utf8'))[0].revision_id === REVISION_WEB; } catch { return false; } });
 
 // Lo que dice una fila de «Lo esencial» de la ficha (Mínimo, España, Salida…).
 function esencial(detalle, etiqueta) {
@@ -164,10 +171,14 @@ test('la tarjeta de la lista enseña título, proveedor y Mínimo · España; lo
   assert.ok(textoVisible(detalle).includes(oferta.avisos[0].texto));
 });
 
-// Las 24 ofertas del catálogo publicado (revisión 2026-11-04.2), por el mismo
-// camino que la app (adaptarCatalogoV2), el 05/11/2026.
+// Las 24 ofertas del catálogo publicado (la lectura en línea de la revisión que lleva la web),
+// por el mismo camino que la app (adaptarCatalogoV2), dos días después de su revisión.
 test('las 24 ofertas reales: la tarjeta lleva solo Mínimo y España, de la misma función que la ficha, que lo conserva todo', async () => {
-  const ahora = new Date('2026-11-05T12:00:00Z');
+  assert.ok(DOC_ACTUAL, `sin lectura en línea de la revisión ${REVISION_WEB}`);
+  const revisadas = JSON.parse(fs.readFileSync(path.join(DOC_ACTUAL, 'ofertas-v2.json'), 'utf8'))[0].verificada_el.slice(0, 10);
+  const dia = n => new Date(Date.parse(revisadas + 'T12:00:00Z') + n * 86400000);
+  const ahora = dia(2);
+  const revisadasES = revisadas.split('-').reverse().join('/');
   const ui = componentes(ahora);
   const lote = { version: 2, plataformas: JSON.parse(fs.readFileSync(path.join(DOC_ACTUAL, 'plataformas-v2.json'), 'utf8')),
     ofertas: JSON.parse(fs.readFileSync(path.join(DOC_ACTUAL, 'ofertas-v2.json'), 'utf8')) };
@@ -211,13 +222,13 @@ test('las 24 ofertas reales: la tarjeta lleva solo Mínimo y España, de la mism
     }
     assert.match(textoDetalle, /Lo esencial/);
     assert.match(esencial(detalle, 'Cifras'), o.coleccion === 'principales' && o.estadoRevision === 'actual'
-      ? /^Revisadas el 03\/11\/2026 · válidas 5 días más$/ : /sin confirmar|conflicto/, o.slug);
+      ? new RegExp(`^Revisadas el ${revisadasES.replace(/\//g, '\\/')} · válidas 5 días más$`) : /sin confirmar|conflicto/, o.slug);
     assert.match(textoDetalle, /Revisión del catálogo:\s*\d{2}\/\d{2}\/2026/, o.slug);
   }
   assert.ok(conPuntos >= 8, `solo ${conPuntos} ofertas con puntos fuertes`);
-  // Con el catálogo caducado (12/11/2026) manda resumenOferta: ninguna cifra vencida,
-  // «Mínimo No verificado · España Sin confirmar», el problema de la revisión y sin «Nueva».
-  const tarde = new Date('2026-11-12T12:00:00Z'), uiTarde = componentes(tarde);
+  // Con el catálogo caducado (8 días después de la revisión) manda resumenOferta: ninguna cifra
+  // vencida, «Mínimo No verificado · España Sin confirmar», el problema de la revisión y sin «Nueva».
+  const tarde = dia(8), uiTarde = componentes(tarde);
   const caducado = require('../lib/catalogo-remoto').adaptarCatalogoV2(lote, tarde);
   assert.equal(caducado.caducado, true);
   for (const o of caducado.ofertas) {
