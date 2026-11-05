@@ -6,6 +6,104 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de noviembre de 2026 (2) · Claude · la misma tarjeta sencilla en la app Android (sin publicar)
+
+Misma rama local `claude/tarjetas-simples` (worktree `tarjetas-simples`), un
+commit encima del de la web. **Sin push, sin OTA, sin EAS y sin tocar
+Supabase.** Completa lo que la entrada de abajo dejaba pendiente para la app.
+
+- **La fila de Ofertas** (`FichaOferta`, `componentes/Ofertas.js`) sigue el
+  mismo criterio que la web:
+  - la miniatura (80 px);
+  - «Patrocinada» y «Nueva», si lo son;
+  - el título, en dos líneas como mucho;
+  - proveedor · lugar;
+  - una línea con el mínimo y el acceso desde España, por ejemplo «Mínimo 1 € ·
+    España Sí»;
+  - un «›» discreto.
+
+  Solo si existen, por seguridad, enseña también un problema de la revisión
+  («Cifras por actualizar», «Apertura no confirmada» o «Fuentes en
+  conflicto»), «No disponible en España» y el aviso crítico entero. Ya no
+  lleva el «· N más en la ficha».
+- **Sale de la fila y sigue en la ficha**: los puntos fuertes, «Cifras válidas
+  N días más», «Liquidez/Apertura no confirmada», la salida, «Revisa · N avisos
+  en la ficha», el aviso ordinario, la fecha y «Ver ficha →». La ficha no
+  cambia.
+- **Accesibilidad**: toda la fila es un único botón, sin botones dentro.
+  - Su nombre empieza por «Ver ficha de <título> en <plataforma>». En inglés
+    es «View details for <título> from <plataforma>».
+  - El nombre se compone en el componente, porque el patrón del diccionario
+    corta mal los títulos que llevan «en».
+  - Después dice solo lo que se ve. Ya no lee la fecha, los puntos fuertes ni
+    los avisos ordinarios.
+  - El «›» no se lee.
+  - En la app, «Guardar» sigue en la cabecera de la ficha. La fila no lo
+    tenía y no se ha añadido.
+- **España en corto**: `textoEspanaOferta(resumen, corto)` y
+  `datosTarjetaOferta` en `lib/transparencia.js`. Son la misma función que usa
+  la ficha («Sí, según la fuente»), así que no hay cifras nuevas. Con el
+  catálogo caducado (probado con el real al 12/11), las 24 fichas dicen
+  «Mínimo No verificado · España Sin confirmar».
+- **Encima de la lista**: una sola línea, «No es una recomendación de
+  inversión · RWAdar no recibe dinero de las inversiones.». La cabecera de la
+  Selección ya no repite la frase.
+- **«Recién añadidas»** (`RecienAnadidas.js`): sin «Revisa · N avisos en la
+  ficha» ni «N más en la ficha». Solo queda el aviso crítico, si lo hay.
+- **Perfil**: no cambia, porque ya usa una fila corta propia.
+- **Inglés**: no hay textos nuevos. Basta con los dos que añadió la web en
+  `lib/idioma-en.js`.
+- **Medidas** (react-native-web en Chrome, 412 px de ancho):
+
+  | | Antes | Después |
+  |---|---|---|
+  | 3 primeras tarjetas, castellano | 575 px | 367 px (−36 %) |
+  | 3 primeras tarjetas, inglés | 695 px | 367 px (−47 %) |
+  | 8 principales, castellano | 1596 px | 999 px |
+  | 8 principales, inglés | 1776 px | 981 px |
+
+  Sin desborde a 360 px.
+- **Contraste**: todo pasa AA. El texto suave da 6,1:1, el ámbar 11,2:1 y el
+  aviso crítico 7,7:1.
+
+**Pruebas:**
+- `npm test` completo en verde:
+  - web: 595/0, 71 de páginas y 32 de precarga;
+  - móvil: 412 pruebas, 410 correctas, 0 fallidas y 2 omitidas;
+  - tools en verde, con «Motor y diccionario ES/EN web/móvil idénticos»;
+  - acceso: 146/0;
+  - db y qr: sin fallos.
+- `comprobar-ota-compatible.cjs --base c1f7106…`: `ok: true`, sin cambios
+  nativos ni dependencias.
+- Prueba nueva: recorre las 24 ofertas reales por `adaptarCatalogoV2`. Comprueba
+  que:
+  - la fila lleva solo Mínimo y España, y que coinciden con «Lo esencial» de la
+    ficha;
+  - no aparecen la salida, la vigencia, las fechas, los puntos fuertes ni los
+    avisos ordinarios;
+  - la ficha conserva todo eso.
+- Comprobación de las pruebas: provoqué 7 fallos a propósito y las pruebas
+  pillaron los 7. Fueron estos:
+  - la salida vuelve a la fila;
+  - la ficha pierde la salida;
+  - desaparece el aviso crítico;
+  - vuelve el aviso ordinario;
+  - la fila dice España en largo;
+  - se anida un botón;
+  - desaparece el problema de la revisión.
+
+**Queda pendiente:**
+- **Web, accesibilidad en inglés**: el patrón `Ver ficha de (.+?) en (.+)` de
+  `lib/idioma.js` parte el título por su primer «en». En la web en inglés, el
+  nombre del botón de Spiko Euro (Smart Cash) se lee «View details for Spiko
+  Euro (Smart Cash): fondo from euros ligado al €STR en Spiko». La app ya no
+  usa ese patrón.
+- **Probarlo en un Android de verdad**: las capturas se hicieron con
+  react-native-web, no en el dispositivo.
+- **Publicar** la web y enviar la OTA necesitan el permiso de Víctor.
+
+---
+
 ## 5 de noviembre de 2026 · Claude · tarjetas de Ofertas más sencillas en la web (sin publicar)
 
 Rama local `claude/tarjetas-simples` (worktree `tarjetas-simples`, sale de

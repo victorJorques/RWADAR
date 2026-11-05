@@ -189,6 +189,22 @@ export function datosCortosOferta(oferta, resumen, { catalogoCaducado = false, t
   const salida = salidaDocumentada(r) && !catalogoCaducado
     ? (e && texto(e.salidaCorta)) || textoCorto(datoBreve(r.salida).replace(/^Salida:\s*/, ''))
     : pendienteRevalidar(r, catalogoCaducado) ? 'Pendiente de volver a comprobar' : 'Sin documentar';
-  const espana = acceso === 'si' ? 'Sí, según la fuente' : acceso === 'no' ? 'No, según la fuente' : 'Sin confirmar';
-  return [['Mínimo', minimo], ['España', espana], ['Salida', salida]];
+  return [['Mínimo', minimo], ['España', textoEspanaOferta(r)], ['Salida', salida]];
+}
+
+/* España con UNA función para la tarjeta y la ficha, como la web
+   (textoEspanaOferta). La lista dice solo «Sí» o «No» (decisión de Víctor del
+   05/11/2026); la ficha, «Sí, según la fuente», con la fuente al lado. */
+export function textoEspanaOferta(resumen, corto = false) {
+  const acceso = resumen && resumen.accesoEspana && resumen.accesoEspana.estado;
+  return acceso === 'si' ? (corto ? 'Sí' : 'Sí, según la fuente')
+    : acceso === 'no' ? (corto ? 'No' : 'No, según la fuente') : 'Sin confirmar';
+}
+
+/* La tarjeta de la lista (05/11/2026): solo dos datos, el mínimo de
+   datosCortosOferta y España en corto. Sin cifras nuevas: con la revisión o
+   el catálogo caducados manda lo mismo que en la ficha. */
+export function datosTarjetaOferta(oferta, resumen, opciones = {}) {
+  const [minimo] = datosCortosOferta(oferta, resumen, opciones);
+  return [minimo, ['España', textoEspanaOferta(resumen, true)]];
 }

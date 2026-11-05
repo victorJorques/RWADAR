@@ -4,11 +4,11 @@ import { Image, Pressable, ScrollView, Text, View, FuenteOriginal, useIdioma } f
 import { traducir } from '../lib/idioma';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ETIQUETA_EDITORIAL, PIE_EDITORIAL, imagenEditorial, imagenEditorialOferta } from '../fixtures/imagenes-editoriales';
-import { proveedoresDeOfertas, vigenciaOferta } from '../lib/datos';
+import { proveedoresDeOfertas } from '../lib/datos';
 import { documentacionOferta, etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible, ofertaConCifrasVigentes } from '../lib/verificacion-local';
 import { idiomaCita, resumenOferta, rotuloReferencia, rotuloTraducible } from '../lib/ficha-editorial';
 import {
-  comprobacionesOferta, datosCortosOferta, estadoVigencia, fechaES, puntosFuertesOferta,
+  comprobacionesOferta, datosCortosOferta, datosTarjetaOferta, estadoVigencia, fechaES, puntosFuertesOferta,
 } from '../lib/transparencia';
 import { C, COLOR_CATEGORIA, F, R, T, UI, iniciales } from '../lib/tema';
 import { Icono } from './Navegacion';
@@ -72,14 +72,6 @@ function datoDestacado(oferta) {
 function ofertaParaResumen(oferta) {
   return oferta && oferta.coleccion != null && oferta.coleccion !== 'principales'
     ? { ...oferta, cifrasPendientes: false } : oferta;
-}
-
-/* El estado de la fila con las palabras de la web (estadoCompacto). */
-function estadoCompactoOferta(oferta, ahora, catalogoCaducado) {
-  if (oferta?.coleccion === 'en_camino') return 'Apertura no confirmada';
-  if (oferta?.coleccion === 'secundario') return 'Liquidez no confirmada';
-  const estado = estadoVigencia(oferta, ahora);
-  return mayuscula(catalogoCaducado && !estado.caducado ? 'cifras por actualizar' : estado.texto);
 }
 
 function rentabilidadSecundaria(oferta) {
@@ -237,16 +229,22 @@ export function ImagenOferta({ oferta, grande = false, decorativa = false, estil
   );
 }
 
-/* La fila compacta de la web (03/11/2026, final del 04/11): miniatura y, en
-   la columna del texto, título de dos líneas como mucho, proveedor y lugar,
-   «Cifras válidas N días más», hasta dos puntos fuertes ✓ en texto y
-   Mínimo · España · Salida en forma corta; y al pie «Revisa · N avisos en la
-   ficha», la fecha y «Ver ficha». El aviso crítico (tono stop) se lee entero
-   siempre; el ordinario se resume en su número y sigue entero para el lector
-   de pantalla y en la ficha. */
-export function avisosContables(oferta) {
-  return (oferta?.avisos || []).filter((aviso) => aviso && String(aviso.texto || '').trim() &&
-    aviso.tono !== 'ok' && (!aviso.esAntiguedad || aviso.tono === 'stop'));
+/* Un problema de la revisión (caducada, no verificable o con fuentes en
+   conflicto), como problemaRevisionOferta de la web. En Reventa y Próximas
+   «no verificable» es su estado de siempre (liquidez o apertura sin
+   confirmar): lo explican el encabezado de la sección y la ficha, y no se
+   repite en cada fila. Con el catálogo caducado, «Cifras por actualizar». */
+function problemaRevisionOferta(oferta, ahora, catalogoCaducado) {
+  const principal = oferta?.coleccion == null || oferta.coleccion === 'principales';
+  const estado = estadoVigencia(principal ? oferta : { ...oferta, coleccion: 'principales',
+    estadoRevision: oferta.estadoRevision === 'no_verificable' ? 'actual' : oferta.estadoRevision }, ahora);
+  return estado.caducado ? mayuscula(estado.texto) : catalogoCaducado ? 'Cifras por actualizar' : '';
+}
+
+// «Cifras por actualizar» empieza en mayúscula; el diccionario lo tiene en minúscula.
+function traducirEstado(texto) {
+  const directo = traducir(texto);
+  return directo !== texto ? directo : mayuscula(traducir(texto.charAt(0).toLowerCase() + texto.slice(1)));
 }
 
 /* El lugar de la tarjeta, como en la web (lugarTarjetaHtml): la ciudad tal
@@ -258,51 +256,41 @@ export function lugarConPais(lugar) {
   return [...partes, traducir(pais)].join(' · ');
 }
 
-export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catalogoCaducado = false, nueva = false }) {
+/* La tarjeta de la lista, igual que la web (tarjetaOfertaLocal), por decisión
+   de Víctor del 05/11/2026: «veo demasiada información así de primeras, me
+   marea; hazlo simple y fácil de leer». Enseña la miniatura, «Patrocinada» y
+   «Nueva» si lo son, el título en dos líneas como mucho, proveedor · lugar y
+   una línea con el mínimo y el acceso desde España. Por seguridad, solo si
+   existen: un problema de la revisión, «No disponible en España» y el aviso
+   crítico (tono stop) entero. Los puntos fuertes, la vigencia, la salida, los
+   avisos ordinarios y las fechas siguen en la ficha. Toda la tarjeta es un
+   único botón, «Ver ficha de <título> en <plataforma>», que abre la ficha; el
+   «›» lo indica y el lector de pantalla no lo repite. */
+export function FichaOferta({ oferta: ofertaOriginal, onAbrir, catalogoCaducado = false, nueva = false }) {
   const idiomaActual = useIdioma();
   const ahora = useFechaOferta();
   const oferta = ofertaConCifrasVigentes(ofertaOriginal, ahora);
-  const documentacion = documentacionOferta(ofertaOriginal, ahora);
-  const vigencia = vigenciaOferta(oferta, ahora);
-  const criticos = avisosCriticos(oferta);
-  const primerCritico = criticos[0];
+  const primerCritico = avisosCriticos(oferta)[0];
   const bloqueo = primerCritico?.tono === 'stop' ? primerCritico : null;
-  const contables = avisosContables(oferta);
   const resumen = resumenOferta(ofertaParaResumen(ofertaOriginal), [], ahora);
-  const datosCortos = datosCortosOferta(ofertaOriginal, resumen, { catalogoCaducado });
-  const puntos = puntosFuertesOferta(ofertaOriginal).slice(0, 2);
-  const fechaProcedencia = resumen.fechas.comprobadaEl
-    ? `Fuente consultada ${fechaVerificacionLocalVisible(resumen.fechas.comprobadaEl)}`
-    : documentacion ? `Revisión documental ${fechaVerificacionLocalVisible(documentacion.fecha)}`
-      : 'Sin consulta de fuente fechada';
-  // La fecha visible es la de la revisión, como la web (documentación o, si no hay, la ficha).
-  const fechaRevision = documentacion ? documentacion.fecha : ofertaOriginal.verificadaEl;
-  const fechaCorta = fechaRevision ? fechaVerificacionLocalVisible(fechaRevision) : '';
-  // Una principal vigente enseña su vigencia; lo demás, el estado corto de la web.
-  const vigenteOk = !catalogoCaducado && resumen.cifrasVigentes &&
-    ['vigente', 'proxima', 'permanente-vigente', 'permanente-proxima'].includes(vigencia.estado);
-  const estadoTexto = vigenteOk ? vigencia.etiqueta : estadoCompactoOferta(ofertaOriginal, ahora, catalogoCaducado);
-  // «Cifras válidas N días más» empieza en mayúscula; el patrón del idioma va en minúscula.
-  const estadoTraducido = (() => {
-    const directo = traducir(estadoTexto);
-    if (directo !== estadoTexto) return directo;
-    const minuscula = traducir(estadoTexto.charAt(0).toLowerCase() + estadoTexto.slice(1));
-    return minuscula.charAt(0).toUpperCase() + minuscula.slice(1);
-  })();
+  const datos = datosTarjetaOferta(ofertaOriginal, resumen, { catalogoCaducado });
+  const revision = problemaRevisionOferta(ofertaOriginal, ahora, catalogoCaducado);
+  const noEspana = !catalogoCaducado && resumen.cifrasVigentes && oferta.disponibleEs === false;
+  const marcaNueva = nueva && !catalogoCaducado;
   // Como en los buscadores de viajes: dónde está el activo, bajo el nombre.
   const lugar = lugarConPais(imagenEditorialOferta(oferta)?.lugar);
+  // El patrón «Ver ficha de A en B» del diccionario parte mal los títulos con «en»: se compone aquí.
+  const nombre = `${traducir('Ver ficha de')} ${oferta.titulo}${oferta.plataformaNombre
+    ? ` ${idiomaActual === 'en' ? 'from' : 'en'} ${oferta.plataformaNombre}` : ''}`;
+  // El lector de pantalla oye lo que se ve (y que la foto es una ilustración); nada que solo esté en la ficha.
   const etiquetaAccesible = [
-    `${traducir('Ver ficha de')} ${oferta.titulo}`, oferta.plataformaNombre, lugar, nueva && !catalogoCaducado ? traducir('Nueva') : null,
-    traducir(ETIQUETA_EDITORIAL),
+    nombre, lugar, traducir(ETIQUETA_EDITORIAL),
     oferta.patrocinada ? traducir('Contenido patrocinado; no cambia el orden editorial') : null,
-    ...puntos.map((punto) => `✓ ${traducir(punto.texto)}`),
-    ...datosCortos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
-    traducir(fechaProcedencia),
-    estadoTraducido,
-    primerCritico
-      ? `${traducir(primerCritico.tono === 'stop' ? 'Aviso bloqueante' : 'Precaución')}: ${primerCritico.texto}`
-      : null,
-    criticos.length > 1 ? `${criticos.length - 1} avisos adicionales en el detalle` : null,
+    marcaNueva ? traducir('Nueva') : null,
+    ...datos.map(([etiqueta, valor]) => `${traducir(etiqueta)}: ${traducir(valor)}`),
+    revision ? traducirEstado(revision) : null,
+    noEspana ? traducir('No disponible en España') : null,
+    bloqueo ? `${traducir('Aviso bloqueante')}: ${bloqueo.texto}` : null,
   ].filter(Boolean).join('. ');
   return (
     <Pressable
@@ -318,56 +306,49 @@ export function FichaOferta({ oferta: ofertaOriginal, plataforma, onAbrir, catal
           <ImagenOferta oferta={oferta} decorativa estilo={e.imagenEnFicha} />
         </View>
         <View style={e.cuerpoFicha}>
-          {oferta.patrocinada ? <Text style={e.patrocinada}>Patrocinada</Text> : null}
+          {oferta.patrocinada || marcaNueva ? (
+            <View style={e.marcas}>
+              {oferta.patrocinada ? <Text style={e.patrocinada}>Patrocinada</Text> : null}
+              {/* «Nueva»: añadida al radar hace menos de 14 días (lib/recien-anadidas.js, desde App.js). */}
+              {marcaNueva ? <Text style={e.etiquetaNueva}>Nueva</Text> : null}
+            </View>
+          ) : null}
           <Text noTraducir idiomaOriginal="es-ES" style={e.titulo} numberOfLines={2}>{oferta.titulo}</Text>
           <Text style={e.plataforma} numberOfLines={1}>
             <Text noTraducir idiomaOriginal="es-ES" style={e.plataformaNombre}>{oferta.plataformaNombre}</Text>
             {lugar ? <Text noTraducir idiomaOriginal="es-ES" style={e.lugarTxt}>{` · ${lugar}`}</Text> : null}
           </Text>
-          <View style={e.metaFicha}>
-            {/* «Nueva»: añadida al radar hace menos de 14 días (lib/recien-anadidas.js, desde App.js). */}
-            {nueva && !catalogoCaducado ? <Text style={e.etiquetaNueva}>Nueva</Text> : null}
-            <Text noTraducir idiomaOriginal={idiomaActual === 'en' ? 'en-US' : 'es-ES'}
-              style={[e.estadoFicha, vigenteOk ? e.estadoOk : e.estadoCaducado]}>{estadoTraducido}</Text>
-            {!catalogoCaducado && resumen.cifrasVigentes && oferta.disponibleEs === false
-              ? <Text style={e.noDisponible}>No disponible en España</Text> : null}
-          </View>
-          {/* Como la web: los puntos fuertes y Mínimo · España · Salida van en la
-              columna del texto, junto a la miniatura; el pie ocupa todo el ancho. */}
-          {puntos.length ? (
-            <View style={e.puntos} accessibilityLabel={traducir('Puntos fuertes')}>
-              {puntos.map((punto) => (
-                <Text key={punto.texto} style={e.punto}><Text style={e.puntoMarca}>✓ </Text>{punto.texto}</Text>
+          {/* Mínimo · España en una línea. Cada dato lleva delante su «·» y el
+              marco recorta la franja de la izquierda, como la web: si el
+              segundo baja de línea, no empieza por «·». */}
+          <View style={e.datosMarco}>
+            <View style={e.datosLinea}>
+              {datos.map(([etiqueta, valor]) => (
+                <View key={etiqueta} style={e.datoTarjeta}>
+                  <Text style={e.datoPunto} accessible={false} importantForAccessibility="no">·</Text>
+                  <Text style={e.datoTarjetaEtiqueta}>{etiqueta}</Text>
+                  <Text style={e.datoTarjetaValor}>{valor}</Text>
+                </View>
               ))}
             </View>
-          ) : null}
-          <View style={e.decisionTarjeta}>
-            {datosCortos.map(([etiqueta, valor]) => (
-              <View key={etiqueta} style={e.decisionFila}>
-                <Text style={e.decisionEtiqueta}>{etiqueta}</Text>
-                <Text style={e.decisionValor}>{valor}</Text>
-              </View>
-            ))}
           </View>
+          {revision || noEspana ? (
+            <View style={e.alertas}>
+              {revision ? <Text noTraducir idiomaOriginal={idiomaActual === 'en' ? 'en-US' : 'es-ES'}
+                style={e.alertaRevision}>{traducirEstado(revision)}</Text> : null}
+              {noEspana ? <Text style={e.noDisponible}>No disponible en España</Text> : null}
+            </View>
+          ) : null}
         </View>
+        <Text style={e.flechaFicha} accessible={false} importantForAccessibility="no">›</Text>
       </View>
       {bloqueo ? (
         <View style={[e.avisoFicha, e.avisoFichaStop]}>
           <Text style={[e.avisoFichaTxt, e.avisoTxtStop]}>
             Importante · <Text noTraducir idiomaOriginal="es-ES">{bloqueo.texto}</Text>
-            {criticos.length > 1 ? ` · ${criticos.length - 1} más en la ficha` : ''}
           </Text>
         </View>
       ) : null}
-      <View style={e.pieFicha}>
-        {!bloqueo && contables.length ? (
-          <Text style={e.avisosN}>
-            <Text style={e.avisosNMarca}>Revisa</Text> · {contables.length === 1 ? '1 aviso en la ficha' : `${contables.length} avisos en la ficha`}
-          </Text>
-        ) : <View style={e.avisosHueco} />}
-        {fechaCorta ? <Text style={e.fechaFicha}>{fechaCorta}</Text> : null}
-        <Text style={e.abrirFicha}>Ver ficha →</Text>
-      </View>
     </Pressable>
   );
 }
@@ -876,26 +857,30 @@ export function ExclusionesOfertas({ datos, onAbrirEnlace }) {
 }
 
 const e = StyleSheet.create({
+  // Aire entre filas (05/11/2026): 14 px arriba y abajo, como la web.
   ficha: {
-    paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: C.bd,
+    paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: C.bd,
   },
   fichaPulsada: { backgroundColor: C.ton },
   filaSuperior: { flexDirection: 'row', alignItems: 'flex-start', gap: 12 },
+  // «›»: la fila entera es el botón; la flecha solo lo indica.
+  flechaFicha: { fontFamily: F.regular, fontSize: 22, lineHeight: 26, color: C.tx3, alignSelf: 'center' },
   pulsado: { backgroundColor: C.ton2 },
   imagen: { width: '100%', backgroundColor: C.sup3 },
   imagenEditorialMarco: { position: 'relative', overflow: 'hidden' },
   imagenEditorial: { width: '100%', height: '100%' },
-  imagenFicha: { width: 88, aspectRatio: 1, borderRadius: R.m, overflow: 'hidden', backgroundColor: C.sup3 },
+  imagenFicha: { width: 80, aspectRatio: 1, borderRadius: R.m, overflow: 'hidden', backgroundColor: C.sup3 },
   imagenEnFicha: { height: '100%' },
   imagenGrande: { aspectRatio: 960 / 660, borderRadius: R.l },
   imagenFallback: { alignItems: 'center', justifyContent: 'center' },
   imagenFallbackTxt: { fontFamily: F.negrita, fontSize: 34, color: C.noche },
   imagenFallbackTxtPeq: { fontSize: 20 },
-  estadoFicha: { ...T.menor, fontFamily: F.semi, color: C.tx2, fontSize: 13, lineHeight: 18 },
-  estadoOk: { color: C.senal },
-  metaFicha: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8, marginTop: 3 },
+  marcas: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 6, marginBottom: 4 },
   etiquetaNueva: { ...T.etiqueta, color: C.senal, backgroundColor: C.senalT, borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 2, overflow: 'hidden' },
-  noDisponible: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.alarma },
+  noDisponible: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.alarma },
+  // Solo si la revisión tiene un problema; en ámbar, como la web (.caducado).
+  alertas: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', columnGap: 10, rowGap: 2, marginTop: 6 },
+  alertaRevision: { ...T.menor, fontFamily: F.semi, fontSize: 13, lineHeight: 18, color: C.aviso },
   // Sin cifras vigentes, en ámbar en la fila y en la ficha, como la web (.caducado).
   estadoCaducado: { color: C.aviso },
   cuerpoFicha: { flex: 1, minWidth: 0 },
@@ -904,27 +889,24 @@ const e = StyleSheet.create({
   abrirGrupo: { ...T.menor, fontFamily: F.semi, color: C.senal, fontSize: 14, lineHeight: 20, marginTop: 8 },
   patrocinada: {
     ...T.etiqueta, alignSelf: 'flex-start', color: C.tx2, backgroundColor: C.ton,
-    borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 2, marginBottom: 4, overflow: 'hidden',
+    borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 2, overflow: 'hidden',
   },
   plataforma: { ...T.menor, fontFamily: F.regular, color: C.tx3, fontSize: 13, lineHeight: 18, marginTop: 3 },
   plataformaNombre: { fontFamily: F.semi, color: C.tx2 },
   lugarTxt: { color: C.tx3 },
   titulo: { ...T.ficha, color: C.tx, fontSize: 16, lineHeight: 20, letterSpacing: -0.16 },
-  decisionTarjeta: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12, rowGap: 2, marginTop: 6 },
-  puntos: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 12, rowGap: 2, marginTop: 6 },
+  /* Mínimo · España: el marco recorta los 16 px de la izquierda, donde cae
+     el «·» del dato que empieza cada línea. */
+  datosMarco: { overflow: 'hidden', marginTop: 6 },
+  datosLinea: { flexDirection: 'row', flexWrap: 'wrap', marginLeft: -16 },
+  datoTarjeta: { flexDirection: 'row', alignItems: 'baseline', flexShrink: 1, maxWidth: '100%' },
+  datoPunto: { ...T.menor, width: 16, fontSize: 13, lineHeight: 18, color: C.tx3, textAlign: 'center' },
+  datoTarjetaEtiqueta: { ...T.menor, fontFamily: F.media, fontSize: 13, lineHeight: 18, color: C.tx3, marginRight: 4 },
+  datoTarjetaValor: { ...T.menor, fontFamily: F.semi, fontSize: 13, lineHeight: 18, color: C.tx, flexShrink: 1 },
   punto: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx2 },
   puntoMarca: { fontFamily: F.semi, color: C.senal },
-  decisionFila: { flexDirection: 'row', alignItems: 'baseline', gap: 4, flexShrink: 1, maxWidth: '100%' },
-  decisionEtiqueta: { ...T.menor, fontFamily: F.media, fontSize: 12, lineHeight: 18, color: C.tx3 },
-  decisionValor: { ...T.menor, fontFamily: F.semi, fontSize: 13, lineHeight: 18, color: C.tx, flexShrink: 1 },
-  pieFicha: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 8 },
-  avisosN: { ...T.menor, flex: 1, fontSize: 12, lineHeight: 17, color: C.aviso },
-  avisosNMarca: { fontFamily: F.semi },
-  avisosHueco: { flex: 1 },
-  fechaFicha: { ...T.dato, color: C.tx3, fontSize: 12, lineHeight: 17 },
-  abrirFicha: { ...T.menor, fontFamily: F.semi, color: C.senal, fontSize: 14, lineHeight: 20, paddingVertical: 12, marginVertical: -12 },
   avisoFicha: {
-    borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 4, marginTop: 8,
+    borderRadius: R.s, paddingHorizontal: 8, paddingVertical: 4, marginTop: 10,
   },
   avisoFichaStop: { backgroundColor: C.alarmaT },
   avisoFichaWarn: { backgroundColor: C.avisoT },

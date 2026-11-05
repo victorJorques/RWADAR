@@ -49,10 +49,11 @@ normas del catálogo a cosas con sentido»):
 1. **Principales:** pueden llevar rentabilidad o precio, siempre con su fuente,
    su base y la fecha del dato. Se ven 7 días desde su consulta. La ficha
    enseña en «Lo esencial» tres datos: mínimo, acceso desde España y salida.
-   **La tarjeta de la lista**, desde la decisión de Víctor del 05/11/2026
-   («veo demasiada información así de primeras, me marea; hazlo simple»),
-   enseña solo dos, en una línea: el mínimo y el acceso desde España en corto
-   («Mínimo 1 € · España Sí»). Además lleva la imagen con guardar, el título
+   **La tarjeta de la lista** (web y app), desde la decisión de Víctor del
+   05/11/2026 («veo demasiada información así de primeras, me marea; hazlo
+   simple»), enseña solo dos, en una línea: el mínimo y el acceso desde España
+   en corto («Mínimo 1 € · España Sí»). Además lleva la imagen (en la web, con
+   guardar; en la app, guardar está en la ficha), el título
    (dos líneas como mucho), proveedor · lugar, «Nueva» y «Patrocinada» si lo
    son y, solo si existen, el aviso crítico entero, un problema de la revisión
    (caducada, no verificable o fuentes en conflicto) y «No disponible en

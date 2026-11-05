@@ -9,6 +9,7 @@ const babel = require('@babel/core');
 const commonjs = require('@babel/plugin-transform-modules-commonjs');
 const jsx = require('@babel/plugin-transform-react-jsx');
 const {soporteIdioma}=require('./soporte-idioma.cjs');
+const idioma = require('../lib/idioma');
 
 const RAIZ = path.resolve(__dirname, '..');
 const AHORA = new Date('2026-09-30T12:00:00Z');
@@ -49,7 +50,8 @@ const transparencia = modulo('lib/transparencia.js', {
 function componentes(ahora = AHORA, opciones = {}) {
   const estilos = {};
   const crear = (tipo, props, ...children) => typeof tipo === 'function' && tipo.name === 'FilaMetrica'
-    ? tipo(props) : { tipo: typeof tipo === 'function' ? tipo.name : tipo, props, children };
+    ? tipo(props) : { tipo: typeof tipo === 'function' ? tipo.name : tipo, props, children,
+      ...(typeof tipo === 'function' ? { componente: tipo } : {}) };
   class Reloj extends Date { constructor(...args) { super(...(args.length ? args : [ahora.getTime()])); } }
   const render = modulo('componentes/Ofertas.js', {
     react: { createElement: crear, useState: opciones.useState || (valor => [typeof valor === 'function' ? valor() : valor, () => {}]),
@@ -107,25 +109,133 @@ function dato(cambios = {}) {
   };
 }
 
-test('tarjeta móvil prioriza nombre/proveedor, tres datos y la consulta de fuente sin repetir el documento', () => {
+const FECHA = /\b\d{2}\/\d{2}\/\d{4}\b/;
+const DOC_ACTUAL = path.join(RAIZ, '..', 'rwadar-app', 'data', 'verificaciones', '2026-11-04.2-v2', 'lectura-publica');
+
+// Lo que dice una fila de «Lo esencial» de la ficha (Mínimo, España, Salida…).
+function esencial(detalle, etiqueta) {
+  const fila = nodos(detalle).find(n => n.tipo === 'View' && Array.isArray(n.children) &&
+    n.children[0]?.tipo === 'Text' && textoVisible(n.children[0]) === etiqueta);
+  return fila ? textoVisible(fila.children[1]).replace(/\s+/g, ' ').trim() : null;
+}
+
+// Los datos de la línea Mínimo · España de la tarjeta, como pares [rótulo, valor].
+function datosTarjeta(ui, tarjeta) {
+  return nodos(tarjeta).filter(n => n.tipo === 'View' && n.props?.style === ui.estilos.datoTarjeta)
+    .map(n => n.children.filter(h => h?.tipo === 'Text' && h.props.style !== ui.estilos.datoPunto).map(textoVisible));
+}
+
+// Tarjeta de la lista sencilla (decisión de Víctor del 05/11/2026, igual que la
+// web): título, proveedor · lugar y una línea Mínimo · España. La salida, los
+// avisos ordinarios, la vigencia y las fechas se quedan en la ficha.
+test('la tarjeta de la lista enseña título, proveedor y Mínimo · España; lo demás sigue en la ficha', () => {
   const ui = componentes();
   const oferta = dato();
-  const tarjeta = ui.FichaOferta({ oferta });
+  let abiertas = 0;
+  const tarjeta = ui.FichaOferta({ oferta, onAbrir: () => abiertas++ });
   const visible = textoVisible(tarjeta);
+  const etiqueta = tarjeta.props.accessibilityLabel;
   const textos = nodos(tarjeta).filter(nodo => nodo.tipo === 'Text').map(textoVisible);
   assert.ok(textos.indexOf(oferta.titulo) < textos.indexOf(oferta.plataformaNombre));
-  // Fila compacta de la web (versión final del 03/11/2026, decidida por Víctor):
-  // Mínimo · España · Salida en forma corta y solo la fecha al pie; «Fuente
-  // consultada …» sigue entero en la etiqueta accesible.
-  for (const esperado of [oferta.titulo, oferta.plataformaNombre, '30/09/2026',
-    'Mínimo', 'España', 'Salida', 'Ver ficha →']) assert.ok(visible.includes(esperado), esperado);
-  for (const fuera of ['7,50 %', oferta.rentabilidad.literal, oferta.documentacion.descripcion, 'Fuente revisada el', '999 EUR', '123 CHF', oferta.resumen, 'RENT. AJUSTADA']) {
-    assert.ok(!visible.includes(fuera), `bloque largo reapareció en la tarjeta: ${fuera}`);
+  assert.deepEqual(datosTarjeta(ui, tarjeta), [['Mínimo', 'No verificado'], ['España', 'Sin confirmar']]);
+  for (const fuera of ['Salida', 'Sin documentar', 'Ver ficha →', 'válidas', 'Revisa', 'avisos en la ficha',
+    oferta.avisos[0].texto, '7,50 %', oferta.rentabilidad.literal, oferta.documentacion.descripcion, '999 EUR', '123 CHF',
+    oferta.resumen]) {
+    assert.ok(!visible.includes(fuera), `la tarjeta enseña ${fuera}`);
+    assert.ok(!etiqueta.includes(fuera), `el lector de pantalla oye ${fuera}`);
   }
-  assert.ok(tarjeta.props.accessibilityLabel.includes('Fuente consultada 30/09/2026'));
-  assert.ok(tarjeta.props.accessibilityLabel.startsWith(`Ver ficha de ${oferta.titulo}`));
+  assert.doesNotMatch(visible, FECHA);
+  assert.doesNotMatch(etiqueta, FECHA);
+  // Un solo control: toda la tarjeta, con nombre propio; el «›» no se lee.
   assert.equal(nodos(tarjeta).filter(nodo => nodo.tipo === 'Pressable').length, 1);
   assert.equal(tarjeta.props.accessibilityRole, 'button');
+  assert.ok(etiqueta.startsWith(`Ver ficha de ${oferta.titulo} en ${oferta.plataformaNombre}. `));
+  assert.match(etiqueta, /Mínimo: No verificado\. España: Sin confirmar/);
+  const flecha = nodos(tarjeta).find(n => n.tipo === 'Text' && textoVisible(n) === '›');
+  assert.equal(flecha.props.accessible, false);
+  tarjeta.props.onPress();
+  assert.equal(abiertas, 1);
+  // La ficha conserva los tres datos, la vigencia, la fecha y el aviso.
+  const detalle = ui.DetalleOferta({ oferta });
+  assert.equal(esencial(detalle, 'Mínimo'), 'No verificado');
+  assert.equal(esencial(detalle, 'España'), 'Sin confirmar');
+  assert.equal(esencial(detalle, 'Salida'), 'Sin documentar');
+  assert.match(esencial(detalle, 'Cifras'), /Revisadas el 30\/09\/2026 · válidas 1 día más/);
+  assert.ok(textoVisible(detalle).includes(oferta.avisos[0].texto));
+});
+
+// Las 24 ofertas del catálogo publicado (revisión 2026-11-04.2), por el mismo
+// camino que la app (adaptarCatalogoV2), el 05/11/2026.
+test('las 24 ofertas reales: la tarjeta lleva solo Mínimo y España, de la misma función que la ficha, que lo conserva todo', async () => {
+  const ahora = new Date('2026-11-05T12:00:00Z');
+  const ui = componentes(ahora);
+  const lote = { version: 2, plataformas: JSON.parse(fs.readFileSync(path.join(DOC_ACTUAL, 'plataformas-v2.json'), 'utf8')),
+    ofertas: JSON.parse(fs.readFileSync(path.join(DOC_ACTUAL, 'ofertas-v2.json'), 'utf8')) };
+  const { ofertas } = require('../lib/catalogo-remoto').adaptarCatalogoV2(lote, ahora);
+  assert.equal(ofertas.length, 24);
+  const corta = { 'Sí, según la fuente': 'Sí', 'No, según la fuente': 'No', 'Sin confirmar': 'Sin confirmar' };
+  let conPuntos = 0;
+  for (const o of ofertas) {
+    const tarjeta = ui.FichaOferta({ oferta: o });
+    const visible = textoVisible(tarjeta), etiqueta = tarjeta.props.accessibilityLabel;
+    const detalle = ui.DetalleOferta({ oferta: o });
+    const textoDetalle = textoVisible(detalle);
+    assert.equal(nodos(tarjeta).filter(n => n.tipo === 'Pressable').length, 1, o.slug);
+    assert.ok(etiqueta.startsWith(`Ver ficha de ${o.titulo} en ${o.plataformaNombre}. `), o.slug);
+    assert.ok(visible.includes(o.titulo) && visible.includes(o.plataformaNombre), o.slug);
+    // Los dos datos de la tarjeta son los de «Lo esencial» de la ficha, España en corto.
+    const [[rMinimo, minimo], [rEspana, espana], ...mas] = datosTarjeta(ui, tarjeta);
+    assert.deepEqual([rMinimo, rEspana, mas.length], ['Mínimo', 'España', 0], o.slug);
+    assert.equal(minimo, esencial(detalle, 'Mínimo'), o.slug);
+    assert.equal(espana, corta[esencial(detalle, 'España')], o.slug);
+    assert.ok(etiqueta.includes(`Mínimo: ${minimo}. España: ${espana}`), o.slug);
+    // Fuera de la tarjeta (y de lo que oye el lector), dentro de la ficha.
+    const salida = esencial(detalle, 'Salida');
+    assert.ok(salida, o.slug);
+    for (const texto of [visible, etiqueta]) {
+      assert.doesNotMatch(texto, /Salida|Ver ficha →|válidas|Liquidez no confirmada|Apertura no confirmada|avisos? en la ficha|más en la ficha/, o.slug);
+      assert.doesNotMatch(texto, FECHA, o.slug);
+    }
+    const puntos = transparencia.puntosFuertesOferta(o);
+    if (puntos.length) conPuntos++;
+    const nodoTransparencia = nodos(detalle).find(n => n.tipo === 'Transparencia');
+    const textoTransparencia = textoVisible(nodoTransparencia.componente(nodoTransparencia.props));
+    for (const punto of puntos) {
+      assert.ok(!visible.includes(punto.texto) && !etiqueta.includes(punto.texto), `${o.slug}: ${punto.texto}`);
+      assert.ok(textoTransparencia.includes(punto.texto), `${o.slug}: ${punto.texto}`);
+    }
+    for (const aviso of (o.avisos || []).filter(a => a && a.texto && a.tono !== 'ok' && !a.esAntiguedad)) {
+      if (/^Referencia editorial gratuita\b/.test(aviso.texto)) continue;
+      assert.equal(visible.includes(aviso.texto), aviso.tono === 'stop', `${o.slug}: ${aviso.texto}`);
+      assert.ok(textoDetalle.includes(aviso.texto), `${o.slug}: ${aviso.texto}`);
+    }
+    assert.match(textoDetalle, /Lo esencial/);
+    assert.match(esencial(detalle, 'Cifras'), o.coleccion === 'principales' && o.estadoRevision === 'actual'
+      ? /^Revisadas el 03\/11\/2026 · válidas 5 días más$/ : /sin confirmar|conflicto/, o.slug);
+    assert.match(textoDetalle, /Revisión del catálogo:\s*\d{2}\/\d{2}\/2026/, o.slug);
+  }
+  assert.ok(conPuntos >= 8, `solo ${conPuntos} ofertas con puntos fuertes`);
+  // Con el catálogo caducado (12/11/2026) manda resumenOferta: ninguna cifra vencida,
+  // «Mínimo No verificado · España Sin confirmar», el problema de la revisión y sin «Nueva».
+  const tarde = new Date('2026-11-12T12:00:00Z'), uiTarde = componentes(tarde);
+  const caducado = require('../lib/catalogo-remoto').adaptarCatalogoV2(lote, tarde);
+  assert.equal(caducado.caducado, true);
+  for (const o of caducado.ofertas) {
+    const tarjeta = uiTarde.FichaOferta({ oferta: o, catalogoCaducado: true, nueva: true });
+    assert.deepEqual(datosTarjeta(uiTarde, tarjeta), [['Mínimo', 'No verificado'], ['España', 'Sin confirmar']], o.slug);
+    assert.match(textoVisible(tarjeta), /Cifras por actualizar|Fuentes en conflicto/, o.slug);
+    assert.doesNotMatch(textoVisible(tarjeta), /Nueva/, o.slug);
+  }
+  // En inglés, el mismo control con su nombre traducido, también con «en» en el título.
+  await idioma.cambiarIdioma('en');
+  try {
+    for (const [slug, nombre] of [['spiko-smart-cash-euro', 'View details for Spiko Euro (Smart Cash): fondo en euros ligado al €STR from Spiko. '],
+      ['robinhood-classic-stock-tokens', 'View details for Classic Stock Tokens: derivados sobre acciones de EE. UU. from Robinhood Europe. ']]) {
+      const etiqueta = ui.FichaOferta({ oferta: ofertas.find(o => o.slug === slug) }).props.accessibilityLabel;
+      assert.ok(etiqueta.startsWith(nombre), etiqueta);
+      assert.match(etiqueta, /Minimum: .+\. Spain: (Yes|No|Unconfirmed)/);
+    }
+  } finally { await idioma.cambiarIdioma('es'); }
 });
 
 function imagenesReales() {
@@ -217,36 +327,37 @@ test('la tarjeta muestra un mínimo en euros solo desde una referencia fechada, 
   const oferta = dato({pais:'España',disponibleEs:true});
   oferta.documentacion.referencias.push({etiqueta:'Entrada mínima',valor:'1.000 EUR',fechaDato:'2026-09-28',
     fechaConsulta:'2026-09-29',fuente:FUENTE,alcance:'Mínimo publicado por el proveedor en esa consulta.'});
-  const tarjeta = componentes().FichaOferta({oferta});
-  const texto = textoVisible(tarjeta);
-  assert.match(texto,/1000 €/);
-  // Fila compacta de la web (03/11/2026): al pie, solo la fecha.
-  assert.match(texto,/30\/09\/2026/);
-  assert.match(tarjeta.props.accessibilityLabel,/Fuente consultada 30\/09\/2026/);
-  const detalle = textoVisible(componentes().DetalleOferta({oferta}));
-  assert.match(detalle,/Fuente consultada el\s+29\/09\/2026/);
-  assert.match(detalle,/Fecha del dato:\s+28\/09\/2026/);
-  assert.match(texto,/Sin confirmar/);
-  assert.match(texto,/Sin documentar/);
-  assert.doesNotMatch(texto,/999 EUR|Disponible desde España/);
+  const ui = componentes();
+  const tarjeta = ui.FichaOferta({oferta});
   // Forma corta de la web: «Mínimo», sin «(EUR)», porque el dato ya lleva el €.
+  assert.deepEqual(datosTarjeta(ui, tarjeta), [['Mínimo', '1000 €'], ['España', 'Sin confirmar']]);
   assert.match(tarjeta.props.accessibilityLabel,/Mínimo: 1000 €/);
+  assert.doesNotMatch(textoVisible(tarjeta),/999 EUR|Disponible desde España|Sin documentar/);
+  // Las fechas de la fuente y la salida, solo en la ficha (05/11/2026).
+  assert.doesNotMatch(textoVisible(tarjeta) + tarjeta.props.accessibilityLabel, FECHA);
+  const detalle = componentes().DetalleOferta({oferta});
+  assert.match(textoVisible(detalle),/Fuente consultada el\s+29\/09\/2026/);
+  assert.match(textoVisible(detalle),/Fecha del dato:\s+28\/09\/2026/);
+  assert.equal(esencial(detalle, 'Mínimo'), '1000 €');
+  assert.equal(esencial(detalle, 'Salida'), 'Sin documentar');
 });
 
-test('un mínimo en otra moneda se rotula «Mínimo» y la salida no repite «Salida:»', () => {
+test('un mínimo en otra moneda se rotula «Mínimo» y la salida, en la ficha, no repite «Salida:»', () => {
   const oferta = dato();
   oferta.documentacion.referencias.push(
     {etiqueta:'Mínimo de inversión',valor:'500 CHF por transferencia bancaria',fechaDato:'2026-09-28',
       fechaConsulta:'2026-09-29',fuente:FUENTE,alcance:'Mínimo publicado por el emisor.'},
     {etiqueta:'Salida',valor:'Venta solo a otros accionistas',fechaDato:'2026-09-28',
       fechaConsulta:'2026-09-29',fuente:FUENTE,alcance:'Condición de salida publicada.'});
-  const tarjeta = componentes().FichaOferta({oferta});
+  const ui = componentes();
+  const tarjeta = ui.FichaOferta({oferta});
   const texto = textoVisible(tarjeta);
-  assert.match(texto,/500 CHF por transferencia bancaria/);
+  assert.deepEqual(datosTarjeta(ui, tarjeta)[0], ['Mínimo', '500 CHF por transferencia bancaria']);
   assert.doesNotMatch(texto,/Mínimo \(EUR\)/);
   assert.match(tarjeta.props.accessibilityLabel,/Mínimo: 500 CHF/);
-  assert.match(texto,/Venta solo a otros accionistas/);
-  assert.doesNotMatch(texto,/Salida:\s*Venta/);
+  assert.doesNotMatch(texto + tarjeta.props.accessibilityLabel,/Venta solo a otros accionistas|Salida/);
+  const detalle = ui.DetalleOferta({oferta});
+  assert.equal(esencial(detalle, 'Salida'), 'Venta solo a otros accionistas');
 });
 
 test('registro del proveedor conserva fuente y fecha sin acreditar la oferta ni acceso desde España', () => {
@@ -348,64 +459,88 @@ test('orden de lectura prioriza datos comprobables y conserva empates sin usar r
   assert.deepEqual(ofertas,originales);
 });
 
-test('datos vencidos y colecciones documentales no regresan al simplificar la tarjeta', () => {
-  const ofertas = [dato({ verificadaEl: '2026-09-27' }),
-    dato({ coleccion: 'secundario', tipo: 'secundario' }), dato({ coleccion: 'en_camino' })];
-  for (const oferta of ofertas) {
-    const original = structuredClone(oferta);
-    const tarjeta = componentes().FichaOferta({ oferta });
-    for (const texto of [textoVisible(tarjeta), tarjeta.props.accessibilityLabel]) {
+test('sin revisión vigente la tarjeta dice el problema sin cifras; reventa y próximas no repiten su estado en cada fila', () => {
+  const ui = componentes();
+  const vencida = dato({ verificadaEl: '2026-09-27' });
+  const original = structuredClone(vencida);
+  const tarjeta = ui.FichaOferta({ oferta: vencida });
+  for (const texto of [textoVisible(tarjeta), tarjeta.props.accessibilityLabel]) {
+    assert.doesNotMatch(texto, /7,50|999 EUR|123 CHF|APY ilustrativo/);
+    assert.match(texto, /Cifras por actualizar/);
+    assert.doesNotMatch(texto, FECHA);
+  }
+  assert.deepEqual(vencida, original);
+  // Con el catálogo caducado, lo mismo aunque la oferta esté en plazo; sin «Nueva» ni «No disponible».
+  const caducado = ui.FichaOferta({ oferta: dato({ disponibleEs: false }), catalogoCaducado: true, nueva: true });
+  assert.match(textoVisible(caducado), /Cifras por actualizar/);
+  assert.doesNotMatch(textoVisible(caducado), /Nueva|No disponible en España/);
+  // En plazo y fuera de España, sí lo dice.
+  assert.match(textoVisible(ui.FichaOferta({ oferta: dato({ disponibleEs: false }) })), /No disponible en España/);
+  for (const [coleccion, supra, estado] of [['secundario', 'Reventa entre inversores', /sin confirmar que se pueda operar/],
+    ['en_camino', 'Próxima', /sin confirmar que abra/]]) {
+    const oferta = dato({ coleccion, tipo: coleccion === 'secundario' ? 'secundario' : 'rendimiento' });
+    const fila = ui.FichaOferta({ oferta });
+    for (const texto of [textoVisible(fila), fila.props.accessibilityLabel]) {
       assert.doesNotMatch(texto, /7,50|999 EUR|123 CHF|APY ilustrativo/);
+      // El encabezado de la sección y la ficha ya lo explican (como la web).
+      assert.doesNotMatch(texto, /Liquidez no confirmada|Apertura no confirmada|Cifras válidas|Cifras por actualizar/);
     }
-    // Fila compacta de la web (03/11/2026): al pie, solo la fecha.
-    assert.ok(textoVisible(tarjeta).includes('30/09/2026'));
-    assert.ok(tarjeta.props.accessibilityLabel.includes('Fuente consultada 30/09/2026'));
-    assert.match(textoVisible(tarjeta), /Cifras por actualizar|Liquidez no confirmada|Apertura no confirmada/);
-    assert.deepEqual(oferta, original);
+    const detalle = ui.DetalleOferta({ oferta });
+    assert.match(textoVisible(detalle), new RegExp(supra));
+    assert.match(esencial(detalle, 'Cifras'), estado);
   }
 });
 
-test('patrocinio y aviso bloqueante principal permanecen visibles y sin elipsis', () => {
+test('patrocinio y aviso bloqueante principal permanecen visibles y sin elipsis; los demás avisos, en la ficha', () => {
   const oferta = dato({ patrocinada: true, avisos: [
     { tono: 'warn', esAntiguedad: true, texto: 'Revisión antigua repetida' },
     { tono: 'warn', texto: 'Aviso adicional de riesgo' },
     { tono: 'stop', texto: 'La apertura de nuevas inversiones no está confirmada.' },
   ] });
-  const tarjeta = componentes().FichaOferta({ oferta });
+  const ui = componentes();
+  const tarjeta = ui.FichaOferta({ oferta });
   const visible = textoVisible(tarjeta);
   // Rótulos en frase normal (GUIA-ACABADOS §5, aplicada a la web el 04/11).
   assert.match(visible, /Patrocinada/);
-  assert.match(visible, /La apertura de nuevas inversiones no está confirmada/);
-  assert.match(visible, /1 más en la ficha/);
-  assert.doesNotMatch(visible, /Revisión antigua repetida/);
+  assert.match(visible, /Importante\s+·\s+La apertura de nuevas inversiones no está confirmada\./);
+  assert.doesNotMatch(visible, /más en la ficha|Aviso adicional de riesgo|Revisión antigua repetida/);
   const aviso = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && textoVisible(nodo).includes('Importante'));
   assert.equal(aviso.props.numberOfLines, undefined);
-  assert.match(tarjeta.props.accessibilityLabel, /Aviso bloqueante/);
+  assert.match(tarjeta.props.accessibilityLabel, /Contenido patrocinado; no cambia el orden editorial/);
+  assert.match(tarjeta.props.accessibilityLabel, /Aviso bloqueante: La apertura de nuevas inversiones no está confirmada\./);
+  assert.doesNotMatch(tarjeta.props.accessibilityLabel, /Aviso adicional de riesgo/);
+  const detalle = textoVisible(ui.DetalleOferta({ oferta }));
+  for (const texto of ['Aviso adicional de riesgo', 'La apertura de nuevas inversiones no está confirmada.']) assert.ok(detalle.includes(texto), texto);
 });
 
-test('un warning relevante no desaparece si no hay stop y tampoco se trunca', () => {
+test('un aviso ordinario sale de la tarjeta y se lee entero, sin cortar, en la ficha', () => {
   const warning = 'La inversión puede perder valor. La salida depende de que haya compradores y no tiene liquidez garantizada.';
-  const tarjeta = componentes().FichaOferta({ oferta: dato({ avisos: [
+  const oferta = dato({ avisos: [
     { tono: 'warn', texto: warning }, { tono: 'warn', texto: 'Las comisiones reducen el resultado.' },
-  ] }) });
-  // Fila compacta de la web (03/11/2026): sin aviso crítico, el ordinario se
-  // resume en su número al pie («Revisa · N avisos en la ficha») y se lee
-  // entero en la ficha y en la etiqueta accesible, sin cortar.
-  assert.match(textoVisible(tarjeta), /Revisa\s+·\s+2 avisos en la ficha/);
-  assert.doesNotMatch(textoVisible(tarjeta), /Avisos y condiciones en la ficha completa/);
-  const resumenAvisos = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && /avisos en la ficha/.test(textoVisible(nodo)));
-  assert.equal(resumenAvisos.props.numberOfLines, undefined);
-  assert.ok(tarjeta.props.accessibilityLabel.includes(warning));
-  assert.match(tarjeta.props.accessibilityLabel, /Precaución/);
+  ] });
+  const ui = componentes();
+  const tarjeta = ui.FichaOferta({ oferta });
+  // Tarjeta sencilla (05/11/2026): ni el aviso ni su recuento («Revisa · N avisos en la ficha»).
+  for (const texto of [textoVisible(tarjeta), tarjeta.props.accessibilityLabel]) {
+    assert.doesNotMatch(texto, /Revisa|avisos? en la ficha|Precaución|perder valor|comisiones reducen/);
+  }
+  const detalle = ui.DetalleOferta({ oferta });
+  for (const texto of [warning, 'Las comisiones reducen el resultado.']) {
+    const nodo = nodos(detalle).find(n => n.tipo === 'FuenteOriginal' && textoVisible(n) === texto);
+    assert.ok(nodo, texto);
+    assert.equal(nodo.props.numberOfLines, undefined);
+  }
 });
 
-test('estado documental conserva incertidumbre y nunca hereda apertura del sello documental', () => {
-  for (const [coleccion, esperado] of [['secundario', 'Liquidez no confirmada'], ['en_camino', 'Apertura no confirmada']]) {
-    const tarjeta = componentes().FichaOferta({ oferta: dato({ coleccion }) });
-    const estado = nodos(tarjeta).find(nodo => nodo.tipo === 'Text' && textoVisible(nodo).includes(esperado));
-    assert.ok(estado);
+test('estado documental conserva incertidumbre en la ficha y nunca hereda apertura del sello documental', () => {
+  for (const [coleccion, esperado] of [['secundario', 'Reventa · sin confirmar que se pueda operar'], ['en_camino', 'Anunciada · sin confirmar que abra']]) {
+    const ui = componentes();
+    const detalle = ui.DetalleOferta({ oferta: dato({ coleccion }) });
+    const estado = nodos(detalle).find(nodo => nodo.tipo === 'Text' && textoVisible(nodo) === esperado);
+    assert.ok(estado, esperado);
     assert.equal(estado.props.numberOfLines, undefined);
-    assert.doesNotMatch(textoVisible(tarjeta), /Cifras válidas|Cifras vigentes/);
+    assert.doesNotMatch(textoVisible(detalle), /Cifras válidas|Cifras vigentes|Revisadas el/);
+    assert.doesNotMatch(textoVisible(ui.FichaOferta({ oferta: dato({ coleccion }) })), /Cifras válidas|Cifras vigentes/);
   }
 });
 
@@ -453,11 +588,11 @@ test('el detalle muestra éxito y gestión separados con fechas y enlaces propio
 
 test('compactación no reduce la legibilidad ni fija alturas sobre condiciones o riesgos', () => {
   const { estilos } = componentes();
-  // La miniatura de la fila compacta de la web (88 px, cuadrada).
+  // La miniatura de la fila de la web (80 px, cuadrada; 05/11/2026).
   assert.equal(estilos.imagenFicha.aspectRatio, 1);
   assert.ok(estilos.titulo.fontSize >= 16);
   assert.ok(estilos.datoValor.fontSize >= 16);
-  for (const nombre of ['plataforma', 'estadoFicha', 'fechaFicha', 'abrirFicha', 'avisoFichaTxt', 'referencia']) {
+  for (const nombre of ['plataforma', 'datoTarjetaEtiqueta', 'datoTarjetaValor', 'alertaRevision', 'noDisponible', 'avisoFichaTxt', 'referencia']) {
     assert.ok(estilos[nombre].fontSize >= 12, nombre);
     assert.equal(estilos[nombre].height, undefined);
     assert.equal(estilos[nombre].maxHeight, undefined);

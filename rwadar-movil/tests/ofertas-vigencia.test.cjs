@@ -265,10 +265,11 @@ test('una app abierta retira las cifras al cambiar de día y al volver de suspen
       AppState: { addEventListener(nombre, fn) { assert.equal(nombre, 'change'); reactivar = fn; return { remove() { retiroEscucha = true; } }; } },
       setTimeout(fn, espera) { assert.ok(espera > 0 && espera <= 86400100); temporizador = fn; return 1; },
     });
-    // Fila compacta de la web (03/11/2026): una principal vigente enseña su vigencia.
-    // «Cifras válidas N días más» desde el 04/11/2026 (LISTA-FINAL fila 14).
-    assert.match(textoRenderizado(componentes.FichaOferta({ oferta })), /Cifras válidas/);
+    // Tarjeta sencilla (05/11/2026): vigente, la fila no dice nada de la revisión;
+    // «válidas hasta hoy» (LISTA-FINAL fila 14) va en la ficha, con la cifra.
+    assert.doesNotMatch(textoRenderizado(componentes.FichaOferta({ oferta })), /Cifras válidas|Cifras por actualizar/);
     assert.match(textoRenderizado(componentes.DetalleOferta({ oferta })), /97,13/);
+    assert.match(textoRenderizado(componentes.DetalleOferta({ oferta })), /válidas hasta hoy/);
     reloj.setTime(caducada.getTime());
     if (evento === 'medianoche') temporizador(); else reactivar('active');
     assert.doesNotMatch(textoRenderizado(componentes.FichaOferta({ oferta })), centinelas);
@@ -338,11 +339,13 @@ test('una referencia del 27 de septiembre conserva su revisión documental el d�
     assert.equal(sanitizada.disponibleEs, null);
     for (const render of [componentes.FichaOferta, componentes.DetalleOferta]) {
       const texto = textoRenderizado(render({ oferta: dato }));
-      assert.match(texto, /(?:Revisión documental|Revisión del catálogo:)\s*27\/09\/2026/);
-      assert.match(texto, render === componentes.FichaOferta
-        ? { actual: /Cifras por actualizar/, no_verificable: /Apertura no confirmada/, fuentes_en_conflicto: /Fuentes en conflicto/ }[estadoRevision]
-        : /Consultar emisor/);
-      assert.match(texto, /La inversión puede perder valor/);
+      const ficha = render === componentes.DetalleOferta;
+      assert.match(texto, ficha ? /Consultar emisor/
+        : { actual: /Cifras por actualizar/, no_verificable: /Apertura no confirmada/, fuentes_en_conflicto: /Fuentes en conflicto/ }[estadoRevision]);
+      // La fecha de la revisión y el aviso ordinario, solo en la ficha (tarjeta sencilla, 05/11/2026).
+      assert[ficha ? 'match' : 'doesNotMatch'](texto, /Revisión del catálogo:\s*27\/09\/2026/);
+      assert[ficha ? 'match' : 'doesNotMatch'](texto, /La inversión puede perder valor/);
+      if (!ficha) assert.doesNotMatch(texto, /\d{2}\/\d{2}\/\d{4}/);
       assert.doesNotMatch(texto, /Pendiente de revisión|Producto activo|Disponible desde España/);
       assert.doesNotMatch(texto, centinelas);
     }
@@ -388,12 +391,13 @@ test('la ficha documental y sus referencias históricas sobreviven al TTL sin pr
   assert.deepEqual(vista.documentacion, documentacion);
   const componentes = componentesMoviles(ahora);
   const tarjeta = textoRenderizado(componentes.FichaOferta({ oferta: dato }));
-  assert.match(tarjeta, /Fuente consultada 27\/09\/2026/);
-  assert.doesNotMatch(tarjeta, /Fuente consultada 30\/09\/2026/);
+  // La fecha de la consulta, en la ficha (tarjeta sencilla, 05/11/2026).
+  assert.doesNotMatch(tarjeta, /Fuente consultada|\d{2}\/\d{2}\/\d{4}/);
   assert.match(tarjeta, /Cifras por actualizar/);
   assert.doesNotMatch(tarjeta, /54,20|97,13|9876|1234|4455/);
   const detalle = textoRenderizado(componentes.DetalleOferta({ oferta: dato }));
   assert.match(detalle, /Revisión del catálogo:\s*30\/09\/2026/);
+  assert.match(detalle, /Consultamos la fuente por última vez el 27\/09\/2026/);
   for (const esperado of ['Características', documentacion.descripcion, 'Inmobiliario residencial',
     'No son precios actuales', '54,20 CHF', '26/09/2026',
     '27/09/2026', documentacion.referencias[0].alcance, fuente]) assert.ok(detalle.includes(esperado), esperado);
@@ -458,16 +462,18 @@ test('las 28 fichas reales conservan documentación y referencias fechadas en we
     }
     // La tarjeta web sencilla (05/11/2026) no lleva fecha: la fecha de la fuente, en la ficha.
     assert.doesNotMatch(tarjetaWeb, /<time\b|Fuente revisada el/);
+    // Tampoco la móvil (05/11/2026): la consulta de la fuente, en la ficha.
+    assert.doesNotMatch(tarjetaMovil, /\d{2}\/\d{2}\/\d{4}|Fuente consultada|Revisión documental/, o.slug);
     const ultimaConsulta = doc.referencias.map(r => r.fechaConsulta).sort().at(-1);
-    assert.ok(tarjetaMovil.includes(ultimaConsulta
-      ? `Fuente consultada ${movil.fechaVerificacionLocalVisible(ultimaConsulta)}`
-      : `Revisión documental ${movil.fechaVerificacionLocalVisible(doc.revisadaEl)}`), o.slug);
     assert.ok(tarjetaWeb.includes('data-oferta-detalle="'+o.slug+'"'));
     assert.equal(contexto.ofertaDetalleLocalPorSlug(o.slug), o);
     contexto.abrirDetalleOfertaLocal(o.slug);
     const detalleWeb = dialogo.innerHTML;
     assert.ok(detalleWeb.includes(doc.revisadaEl), o.slug);
     const detalleMovil = textoRenderizado(componentes.DetalleOferta({ oferta: o }));
+    assert.ok(detalleMovil.includes(ultimaConsulta
+      ? `Consultamos la fuente por última vez el ${movil.fechaVerificacionLocalVisible(ultimaConsulta)}`
+      : 'No consta cuándo consultamos la fuente'), o.slug);
     assert.ok(detalleWeb.includes(contexto.escHtml(doc.descripcion)), o.slug);
     assert.ok(detalleMovil.includes(doc.descripcion), o.slug);
     for (const referencia of doc.referencias) {
@@ -635,8 +641,11 @@ test('V2 recorre REST y normalizadores hasta tres grupos web y detalles document
     assert.equal(dialogo.open, true); assert.match(dialogo.innerHTML, /9043 CHF/);
     assert.match(dialogo.innerHTML, /2026-09-20/); assert.match(dialogo.innerHTML, /2026-09-27/);
     const tarjeta = textoRenderizado(componentes.FichaOferta({ oferta: o }));
-    assert.match(tarjeta, o.coleccion === 'secundario' ? /Liquidez no confirmada/ : /Apertura no confirmada/); assert.doesNotMatch(tarjeta, /9043 CHF/);
-    assert.match(textoRenderizado(componentes.DetalleOferta({ oferta: o })), /9043 CHF/);
+    // El estado de la colección lo dicen su encabezado y la ficha, no cada fila (05/11/2026).
+    assert.doesNotMatch(tarjeta, /Liquidez no confirmada|Apertura no confirmada|9043 CHF/);
+    const detalleMovil = textoRenderizado(componentes.DetalleOferta({ oferta: o }));
+    assert.match(detalleMovil, /9043 CHF/);
+    assert.match(detalleMovil, o.coleccion === 'secundario' ? /Reventa · sin confirmar que se pueda operar/ : /Anunciada · sin confirmar que abra/);
   }
 });
 

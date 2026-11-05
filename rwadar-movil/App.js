@@ -924,7 +924,7 @@ export default function App() {
                       ? 'Ofertas de reventa entre inversores, tal como aparecen en su fuente. No confirman el precio de hoy, que se pueda comprar o vender ni que sigan disponibles.'
                       : grupoOfertas === 'en_camino'
                         ? 'Ofertas anunciadas en su fuente. No confirman que vayan a abrir, cuándo lo harán ni que puedas invertir.'
-                        : 'RWAdar no recibe dinero de las inversiones.'}</Text>
+                        : 'No es una recomendación de inversión · RWAdar no recibe dinero de las inversiones.'}</Text>
                   </View>
                   {filtrosOfertasAbiertos ? (
                     <View style={e.filtrosOfertasDesplegados}>
@@ -967,8 +967,8 @@ export default function App() {
                   {item.tipo === 'cabecera' ? (
                     <View style={e.bloqueOfertasCab} accessibilityRole="header">
                       {item.seleccion ? <>
+                        {/* «No es una recomendación…» va una vez encima de la lista (05/11/2026). */}
                         <Text style={e.bloqueOfertasTit}><Text style={e.bloqueOfertasMarca}>Selección RWAdar</Text> · pasan nuestras 5 comprobaciones</Text>
-                        <Text style={e.bloqueOfertasSub}>No es una recomendación de inversión.</Text>
                       </> : <Text style={e.bloqueOfertasTit}>Otras ofertas principales</Text>}
                     </View>
                   ) : item.tipo === 'grupo'
@@ -2042,7 +2042,6 @@ const e = StyleSheet.create({
   bloqueOfertasCab: { paddingTop: 14, paddingBottom: 6 },
   bloqueOfertasTit: { ...T.cuerpoFte, fontFamily: F.semi, fontSize: 15, lineHeight: 21, color: C.tx },
   bloqueOfertasMarca: { color: C.senal },
-  bloqueOfertasSub: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx3, marginTop: 1 },
   notaImagenes: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, marginTop: 12, marginBottom: 8 },
   panelOfertasCompacto: { marginBottom: 12 },
   selectorOfertas: {
