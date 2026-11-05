@@ -1049,8 +1049,10 @@ function bloquePortada(academy) {
     : `<p class="etiq">${visibles.length} de ${academy.lecciones.length} lecciones disponibles</p>
       <h3 id="academiaLeccionesTit">${academy.lecciones.length} lecciones en ${academy.niveles.length} niveles</h3>
       <p>Cada nivel responde a una pregunta. Accede gratis con tu cuenta: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>`;
+  /* data-academy-acceso: el mismo interruptor de academy.json llega al JS de
+     la portada, que con «cuenta» abre el tutorial 3D del móvil solo con sesión. */
   return `  <!--academy:ini-->
-  <div class="academia-lecciones" aria-labelledby="academiaLeccionesTit">
+  <div class="academia-lecciones" aria-labelledby="academiaLeccionesTit" data-academy-acceso="${academy.acceso === 'cuenta' ? 'cuenta' : 'publico'}">
     <div class="academia-lecciones-cab">
       ${cabecera}
     </div>

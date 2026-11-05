@@ -24,6 +24,17 @@ import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { alta, baseCatalogoHistorico, filas, informe, sesion } from './pruebas-soporte.mjs';
 
+/* Vista previa opcional de los correos que construye la 30 (no cambia la
+   prueba): RWADAR_VOLCAR_CORREOS=<carpeta> node rwadar-app/probar-avisos-registrados.mjs
+   escribe ahí el HTML de cada tipo para abrirlo en un navegador. */
+const volcarCorreo = (nombre, peticion) => {
+  const carpeta = process.env.RWADAR_VOLCAR_CORREOS;
+  if (!carpeta || !peticion?.body?.htmlContent) return;
+  fs.mkdirSync(carpeta, { recursive: true });
+  fs.writeFileSync(path.join(carpeta, nombre + '.html'), peticion.body.htmlContent);
+  fs.writeFileSync(path.join(carpeta, nombre + '.asunto.txt'), String(peticion.body.subject || ''));
+};
+
 const raiz = path.dirname(fileURLToPath(import.meta.url));
 process.chdir(raiz);
 const require = createRequire(import.meta.url);
@@ -916,6 +927,9 @@ let n1;
       && [...c.body.htmlContent.matchAll(/href="([^"]*)"/g)].every(([, h]) => h.startsWith('https://rwadar.pages.dev/') || h.startsWith('mailto:RWAdar@protonmail.com'))));
   const [bienvenidaSi] = paraCorreo(correos, nueva);
   const [bienvenidaNo] = paraCorreo(correos, nueva2);
+  volcarCorreo('bienvenida-con-avisos', bienvenidaSi);
+  volcarCorreo('bienvenida-sin-avisos', bienvenidaNo);
+  volcarCorreo('anuncio-novedad', aAna);
   paso('bienvenida: Academy gratis con enlace a /academy/, sin ofertas ni número de lecciones, y «Si no creaste esta cuenta, escríbenos o bórrala»',
     [bienvenidaSi, bienvenidaNo].every((b) => b && b.body.subject === 'Te damos la bienvenida a RWAdar'
       && b.body.htmlContent.includes('href="https://rwadar.pages.dev/academy/"') && b.body.htmlContent.includes('Academy')
@@ -1069,6 +1083,7 @@ let n1;
   await procesar();
   const push = (await peticiones(desde, EXPO)).find((p) => p.body.to === TOKEN_ANA);
   const correo = (await peticiones(desde, BREVO)).find((p) => p.body.to[0].email === ana.email);
+  volcarCorreo('anuncio-ofertas', correo);
   paso('con ofertas_automaticas, el anuncio de ofertas nace publicado y procesar() lo reparte',
     automatico?.estado === 'publicado' && automatico.publicado_el instanceof Date
     && correo?.body.subject === '1 ficha nueva en el radar de RWAdar' && correo.body.htmlContent.includes(AVISO_FIJO));

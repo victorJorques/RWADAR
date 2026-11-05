@@ -206,6 +206,23 @@ const MARK=`
  <circle class="eco" cx="82" cy="76" r="2.9"/></g>`;
 document.querySelectorAll('svg.mk').forEach(s=>{s.innerHTML=MARK});
 
+/* Academy con cuenta (petición de Víctor del 05/11/2026). En el móvil, el
+   tutorial 3D vive dentro de la pestaña Academy: con «acceso: cuenta» en
+   academy.json (lo marca el bloque generado de la portada) solo se abre con
+   sesión y, sin ella, lleva a crear la cuenta gratis. Es una puerta de
+   interfaz: el contenido del tutorial sigue en la portada pública del
+   escritorio. Sin RWADAR_ACCESO (modo local), dentro de la app nativa (que
+   ya exige cuenta) o ante un fallo pasajero al comprobar la sesión, se abre
+   como siempre: nunca se manda a entrar por un error de red. */
+function tutorialConCuenta(abrir){
+ const acceso=typeof window!=='undefined'?window.RWADAR_ACCESO:null;
+ const conCuenta=typeof document!=='undefined'&&!!document.querySelector('[data-academy-acceso="cuenta"]');
+ if(!conCuenta||!acceso||typeof acceso.verificar!=='function'||(typeof window!=='undefined'&&window.ReactNativeWebView)){abrir();return;}
+ acceso.verificar().then(()=>abrir(),error=>{
+  if(error&&error.reintentable===true){abrir();return;}
+  location.assign('/acceso?volver='+encodeURIComponent('/academy/'));
+ });
+}
 const irA=id=>{
  if(id==='explain'&&typeof Movil!=='undefined'&&Movil.tutorial&&Movil.tutorial(document.activeElement))return;
  const el=document.getElementById(id);if(el&&el.scrollIntoView)el.scrollIntoView();
@@ -5891,10 +5908,13 @@ const Movil = (function(){
   destino.focus({preventScroll:true});
   if(destino.scrollIntoView)destino.scrollIntoView({block:'start',behavior:reduce()?'auto':'smooth'});
  });
- if(typeof location!=='undefined'&&location.hash==='#explain')abrirAcademyDesde(document.getElementById('movilTabAcademy'));
- window.addEventListener('hashchange',()=>{if(location.hash==='#explain')abrirAcademyDesde(document.activeElement);});
+ /* La puerta del tutorial solo actúa en el móvil; en escritorio #explain
+    sigue siendo la sección pública de la portada. */
+ const tutorialMovil=abrir=>{if(media.matches)tutorialConCuenta(abrir);else abrir();};
+ if(typeof location!=='undefined'&&location.hash==='#explain'){const origen=document.getElementById('movilTabAcademy');tutorialMovil(()=>abrirAcademyDesde(origen));}
+ window.addEventListener('hashchange',()=>{if(location.hash==='#explain'){const origen=document.activeElement;tutorialMovil(()=>abrirAcademyDesde(origen));}});
  return {cambiar:cambiar,ir:ir,verEnBuscar:verEnBuscar,
-  tutorial(origen){if(!media.matches)return false;abrirAcademyDesde(origen);return true;},
+  tutorial(origen){if(!media.matches)return false;tutorialConCuenta(()=>abrirAcademyDesde(origen));return true;},
   volverAcademy(){if(!media.matches)return false;mostrarAcademy(false);return true;}
  };
 })();
