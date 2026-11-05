@@ -23,3 +23,9 @@ grupos/**/.inventario.jsonl
 # escáner de secretos confunde con una clave: en disco con su SHA-256, no en Git.
 grupos/acciones-oro-tesoro/fuentes/midas-app-llms-full.txt
 revision-independiente/fuentes/acciones-oro-tesoro/midas-app-llms-full.txt
+
+# Remates del 05/11 (transparencia): los PDF y HTML originales quedan en disco
+# con su SHA-256 en remates/inventario-remates.json; en Git, las copias .txt.
+remates/crudo/
+remates/**/*.pdf
+remates/**/*.html

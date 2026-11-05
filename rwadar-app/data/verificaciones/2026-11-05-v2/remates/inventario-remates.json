@@ -1,0 +1,188 @@
+{
+ "ciclo": "2026-11-05",
+ "tarea": "Remate de transparencia: volver a leer hoy las cuatro fuentes que en rwadar-editorial-source/ofertas/transparencia.json seguían con consultadaEl 2026-11-03.",
+ "nota": "Lecturas reales del 05/11/2026 (UTC) con curl, sin sesión ni JavaScript (las cuatro páginas sirven el texto en el HTML). Los PDF y HTML originales quedan en crudo/ (fuera de Git) con su SHA-256; en Git van las copias de texto.",
+ "comprobaciones": [
+  {
+   "oferta": "kraken-xstocks",
+   "campo": "documentoEspana",
+   "fuentes": [
+    "backed-ft-159-LITEx-20260326.pdf"
+   ],
+   "resultado": "Sin cambios: mismo SHA-256 que el 03/11 y el 05/11 por la mañana. El apartado «Country(ies) of offer(s)» sigue diciendo «The Products will be offered in Liechtenstein and Switzerland (only to Swiss Professional Investors). The right to offer in other jurisdictions is explicitly reserved.» y el folleto de base se notifica, entre otros, a España. El motivo sigue valiendo.",
+   "consultadaEl": "2026-11-05"
+  },
+  {
+   "oferta": "robinhood-classic-stock-tokens",
+   "campo": "documentoEspana",
+   "fuentes": [
+    "robinhood-kid-es.pdf",
+    "robinhood-eu-es-portada.html",
+    "robinhood-eu-es-legal.html"
+   ],
+   "resultado": "Sin cambios: el KID está en español, «Fecha de producción del documento: 1 de julio de 2026», productor Robinhood Europe, UAB (Banco de Lituania), dirigido a inversores minoristas con conocimientos y experiencia, y no excluye ningún país. La web española (robinhood.com/eu/es/ y su página legal, «DDF sobre tokens de acciones y ETPs») enlaza este mismo PDF. El motivo sigue valiendo.",
+   "consultadaEl": "2026-11-05"
+  },
+  {
+   "oferta": "mtbill",
+   "campo": "supervisada",
+   "fuentes": [
+    "bafin-busqueda-midas.html",
+    "bafin-busqueda-midas-software.html"
+   ],
+   "resultado": "Sin cambios: la base de datos de BaFin (datos a 04.11.2026) devuelve para «Midas» una sola entidad, Midas Fondsmaeglerselskab A/S (prestador transfronterizo, § 74 WpIG), distinta del emisor; para «Midas Software», «Keine Ergebnisse». El motivo sigue valiendo.",
+   "consultadaEl": "2026-11-05"
+  },
+  {
+   "oferta": "boss-info",
+   "campo": "supervisada",
+   "fuentes": [
+    "bossinfo-portal.html"
+   ],
+   "resultado": "Sin cambios: el aviso legal del portal sigue diciendo que la compra directa es una oferta primaria del emisor regida por la FinSA suiza y que la negociación secundaria es «a non-commercial trading facility operated by Boss Info under the Financial Market Infrastructure Act and is therefore not subject to prudential supervision». El motivo sigue valiendo.",
+   "consultadaEl": "2026-11-05"
+  }
+ ],
+ "consultas": [
+  {
+   "url": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
+   "urlFinal": null,
+   "http": 200,
+   "contentType": "application/pdf",
+   "consultadoUtc": "2026-11-05T17:07:37Z",
+   "original": {
+    "archivo": "crudo/backed-ft-159-LITEx-20260326.pdf",
+    "bytes": 1365826,
+    "sha256": "85b56d11920c9641dcf95f28ca7aa030d53bef0f5729df8f2e252c1c9d0fde5a",
+    "enGit": false
+   },
+   "copiaTexto": {
+    "archivo": "backed-ft-159-LITEx-20260326.txt",
+    "bytes": 843636,
+    "sha256": "07e8d05a579b14814d0c21512ccd68319e3b22a31e75f30bc36d8dfafc8acbed",
+    "enGit": true,
+    "metodo": "pdftotext -layout"
+   }
+  },
+  {
+   "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf",
+   "urlFinal": null,
+   "http": 200,
+   "contentType": "application/pdf",
+   "consultadoUtc": "2026-11-05T17:07:38Z",
+   "original": {
+    "archivo": "crudo/robinhood-kid-es.pdf",
+    "bytes": 191487,
+    "sha256": "84f4f0a815734c1d7241f45fc458665ed92c849bf882ad3a15799b4d28a4f501",
+    "enGit": false
+   },
+   "copiaTexto": {
+    "archivo": "robinhood-kid-es.txt",
+    "bytes": 22700,
+    "sha256": "061f48d24529be3c98fb6b1005d8638a4bac9ff608c464fdb5b366ab24eaa18c",
+    "enGit": true,
+    "metodo": "pdftotext -layout"
+   }
+  },
+  {
+   "url": "https://robinhood.com/eu/es/",
+   "urlFinal": null,
+   "http": 200,
+   "contentType": "text/html; charset=utf-8",
+   "consultadoUtc": "2026-11-05T17:07:38Z",
+   "original": {
+    "archivo": "crudo/robinhood-eu-es-portada.html",
+    "bytes": 218997,
+    "sha256": "812a8e3f3bd8ea9f552f1481f859c6be6fdc1406daed77919248385582bb496a",
+    "enGit": false
+   },
+   "copiaTexto": {
+    "archivo": "robinhood-eu-es-portada.txt",
+    "bytes": 10973,
+    "sha256": "8518aabe167070849099040e0cc95249e4730a58e12b8f5576c5cbe782579d26",
+    "enGit": true,
+    "metodo": "HTML sin scripts ni estilos, con el destino de los enlaces a PDF"
+   }
+  },
+  {
+   "url": "https://robinhood.com/eu/es/legal/",
+   "urlFinal": null,
+   "http": 200,
+   "contentType": "text/html; charset=utf-8",
+   "consultadoUtc": "2026-11-05T17:07:39Z",
+   "original": {
+    "archivo": "crudo/robinhood-eu-es-legal.html",
+    "bytes": 130185,
+    "sha256": "d91e35d98b485eb4e19aa9daf29f5d143f51e729dda6809e94950757491a79f6",
+    "enGit": false
+   },
+   "copiaTexto": {
+    "archivo": "robinhood-eu-es-legal.txt",
+    "bytes": 10089,
+    "sha256": "f738bfb2c03280a2986127810fc6dd75ccf03eec23240a22f10d7eb02be4931d",
+    "enGit": true,
+    "metodo": "HTML sin scripts ni estilos, con el destino de los enlaces a PDF"
+   }
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Midas&sucheButtonInstitut=Suche",
+   "urlFinal": null,
+   "http": 200,
+   "contentType": "text/html",
+   "consultadoUtc": "2026-11-05T17:07:39Z",
+   "original": {
+    "archivo": "crudo/bafin-busqueda-midas.html",
+    "bytes": 25868,
+    "sha256": "dc45cf3be43b397387d57ed869c3142e6d2526416f914135c04eae45a835ba34",
+    "enGit": false
+   },
+   "copiaTexto": {
+    "archivo": "bafin-busqueda-midas.txt",
+    "bytes": 1877,
+    "sha256": "d19ebb90f137737f851e256593cdf4d0ad2121137dc3e72db72beecd1c0415b1",
+    "enGit": true,
+    "metodo": "HTML sin scripts ni estilos, con el destino de los enlaces a PDF"
+   }
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Midas+Software&sucheButtonInstitut=Suche",
+   "urlFinal": null,
+   "http": 200,
+   "contentType": "text/html",
+   "consultadoUtc": "2026-11-05T17:07:40Z",
+   "original": {
+    "archivo": "crudo/bafin-busqueda-midas-software.html",
+    "bytes": 24480,
+    "sha256": "e977ad3d61836979f22c5b5042155fd3b839c77f9a6cbd0557bf3572ddf82b6c",
+    "enGit": false
+   },
+   "copiaTexto": {
+    "archivo": "bafin-busqueda-midas-software.txt",
+    "bytes": 1732,
+    "sha256": "89c05b463d4ff429163a7f4482fb04ffa5047fe8e1ddce14bfa16ad030fc790a",
+    "enGit": true,
+    "metodo": "HTML sin scripts ni estilos, con el destino de los enlaces a PDF"
+   }
+  },
+  {
+   "url": "https://shares.bossinfo.com/",
+   "urlFinal": null,
+   "http": 200,
+   "contentType": "text/html",
+   "consultadoUtc": "2026-11-05T17:07:40Z",
+   "original": {
+    "archivo": "crudo/bossinfo-portal.html",
+    "bytes": 74083,
+    "sha256": "cc7dfb48434ce34cfc36017585d45adc9af4676232ddf6d2640a01b37507aee5",
+    "enGit": false
+   },
+   "copiaTexto": {
+    "archivo": "bossinfo-portal.txt",
+    "bytes": 3839,
+    "sha256": "59a562f1e7f5d631bba7c41469a0744c8317e647be19c51bd440bc15bd0a309e",
+    "enGit": true,
+    "metodo": "HTML sin scripts ni estilos, con el destino de los enlaces a PDF"
+   }
+  }
+ ]
+}
