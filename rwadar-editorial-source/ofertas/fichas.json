@@ -34,18 +34,6 @@
    "concepto": "un edificio residencial genérico de pocas plantas"
   },
   {
-   "slug": "terreno-con-arrendamiento-billa",
-   "escena": "terreno",
-   "op": {},
-   "lugar": "Brückl · Austria",
-   "pasos": [
-    "Compras en la emisión",
-    "Un súper alquila el suelo",
-    "Reparto o venta futura"
-   ],
-   "concepto": "un solar genérico con un supermercado arrendado, sin marca"
-  },
-  {
    "slug": "vivienda-stallhofstra-e-28-gratwein",
    "escena": "edificio",
    "op": {
@@ -214,18 +202,6 @@
     "Vendes y cobras en euros"
    ],
    "concepto": "unos lingotes genéricos de oro en una cámara acorazada"
-  },
-  {
-   "slug": "casa-de-outeiro",
-   "escena": "bodega",
-   "op": {},
-   "lugar": "Ribeira Sacra · Lugo",
-   "pasos": [
-    "Suscribes la ampliación",
-    "Recibes tus acciones",
-    "Socio de bodega y hotel"
-   ],
-   "concepto": "una casa solariega de piedra con bodega y viñedo en terrazas"
   },
   {
    "slug": "aktionariat",

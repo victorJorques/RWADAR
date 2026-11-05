@@ -6,6 +6,72 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 5 de noviembre de 2026 (6) · Claude · entrega 2026-11-05.2 revisada; registro de Casa de Outeiro corregido
+
+Misma orden de Víctor: «Arregla todo, no dejes nada para mañana». Rama
+`claude/catalogo-2026-11-05-2`.
+
+- **Revisión independiente** del SQL y de la entrega:
+  [`REVISION-ENTREGA.md`](../../rwadar-app/data/verificaciones/2026-11-05.2-v2/REVISION-ENTREGA.md).
+  Veredicto: aprobado con cambios. El SQL se puede aplicar tal cual.
+- **El cambio obligatorio, hecho.** Era solo de documentación, en la retirada
+  de Casa de Outeiro.
+  - En la plataforma hay dos documentos del 30/10 que citan el 31/03/2027: la
+    ficha de datos (263) y los anexos (264). El registro decía que nada más que
+    la ficha lo confirmaba. Ahora lo dice bien: la campaña no lo recoge.
+  - El 264 entra entre las fuentes.
+  - Texto de la retirada: «sin ampliación registrada en la campaña».
+  - El SQL no cambia: su SHA sigue siendo `24073c9f…ba19`, y la revisión,
+    `88d5a757`.
+- **Pruebas repetidas:** `preparar-entrega.mjs` dos veces (solo cambia el
+  contraste); PGlite correcto; ensayo «después de aplicar» en una copia aparte,
+  con `npm test` en verde, el 404 del worker para las dos fichas y la OTA
+  compatible. El detalle está al final de `REVISION-ENTREGA.md`.
+- **Commits:** el de la corrección y el de la revisión con este traspaso.
+- **Pendiente:**
+  - PR y merge; «Aplicar catálogo» `2026-11-05.2` antes del 12/11 incluido;
+    después, `despues-de-aplicar.mjs` y la secuencia del informe (§5); publicar
+    la web y enviar la OTA.
+  - Para otra entrega:
+    - el aval de Pax Gold dice NYDFS, y su web dice OCC;
+    - la comprobación de la CNMV de Spiko no mira a Aldana Capital;
+    - una nota interna del escaparate aún dice «sin prórroga publicada».
+
+## 5 de noviembre de 2026 (5) · Claude · entrega 2026-11-05.2 preparada (sin aplicar ni publicar)
+
+Orden de Víctor: «Arregla todo, no dejes nada para mañana». Sobre BILLA y Casa
+de Outeiro, preguntado hacia las 17:10 UTC: «Retirar las dos hoy». Rama
+`claude/catalogo-2026-11-05-2`. Informe en llano:
+[`INFORME-ENTREGA.md`](../../rwadar-app/data/verificaciones/2026-11-05.2-v2/INFORME-ENTREGA.md).
+
+- **Qué cambia** (revisión `88d5a757`, sobre la publicada `cede1f27`):
+  - salen BILLA y Casa de Outeiro; quedan 22 ofertas (8/13/1);
+  - la web de Pax Gold en `public.plataformas` pasa a `https://www.paxg.com/`;
+  - el acceso de Spiko dice lo que muestra la CNMV, con dos fuentes nuevas de
+    la CNMV.
+  - Todo lo demás, igual. SHA del aplicador: `24073c9f…ba19`. Hay que aplicarla
+    antes del 12/11 incluido.
+- **Commits:** `205cead` (la entrega) y el de ensayo, informe y traspaso.
+- **Pruebas:**
+  - PGlite: 22 pruebas, de ellas 12 de funcionamiento y 10 casos de fallo que
+    no dejan nada a medias;
+  - `npm test` en verde antes de aplicar y en el ensayo «después de aplicar»
+    (copia aparte);
+  - worker: 404 para las dos fichas;
+  - OTA compatible;
+  - gitleaks sin hallazgos.
+- **Fuera del encargo:**
+  - una segunda fuente de la CNMV (Spiko Finance, n.º 5325), para que ese dato
+    tenga la suya;
+  - la ficha editorial de las dos sale ya, como con mF-ONE;
+  - una prueba de la app ya no exige 24 ofertas fijas.
+- **Pendiente:**
+  - revisión independiente del SQL; PR y merge; «Aplicar catálogo» `2026-11-05.2`;
+  - después, `despues-de-aplicar.mjs` y la secuencia del informe (§5);
+  - publicar la web y enviar la OTA (cambian la transparencia y las
+    ilustraciones de la app).
+  - Para otro día: el «aval» de Pax Gold aún dice NYDFS, y su web dice OCC.
+
 ## 5 de noviembre de 2026 (6) · Claude · datos personales: segunda pasada pedida por la revisión independiente (sin publicar)
 
 Misma orden de Víctor («Arregla todo, no dejes nada para mañana») y misma rama

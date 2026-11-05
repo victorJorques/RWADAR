@@ -1,0 +1,4 @@
+Lectura como visitante (clave publicable, REST de Supabase, solo GET): 2026-11-05T17:06:58Z – 2026-11-05T17:07:01Z
+Resultado: {"revision":["cede1f27-b5eb-36d3-e223-eb4155df2572"],"plataformas":25,"ofertas":24,"colecciones":{"principales":8,"secundario":13,"en_camino":3},"descartadas":["artex-global-markets","domoblock","goldfinch","realt","toucan-protocol"],"verificadaEl":["2026-11-05"]}
+Además, 2026-11-05T17:07:16Z – 2026-11-05T17:07:19Z: plataformas?slug=eq.pax-gold&select=*,fuentes(*) (pax-gold-plataforma.json: web https://paxos.com/paxgold, sin fuentes propias) y plataformas?estado=eq.descartada&select=*,fuentes(*)&order=slug (descartadas.json: 5).
+El intento anterior de esta entrega leyó lo mismo a las 17:04:52Z–17:04:55Z.

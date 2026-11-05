@@ -1,0 +1,130 @@
+{
+  "tipo": "ensayo_local_pglite",
+  "ejecutadoEl": "2026-11-05T18:01:23.350Z",
+  "etiqueta": "2026-11-05.2",
+  "revisionAnterior": "cede1f27-b5eb-36d3-e223-eb4155df2572",
+  "revisionNueva": "88d5a757-3481-f70e-dc7c-6272704a00b3",
+  "sha256AplicarYAprobar": "24073c9f5afdbf74191fcf95e38d625bbd62c0fb4d9cf09a70115255fe51ba19",
+  "pruebas": [
+    "inventario: una transacción serializable; guarda (publicada cede1f27 con su huella cede1f27b5eb…, catálogo no retirado, fecha del 05/11 al 12/11, destino sin otra identidad); inserts idempotentes en rwadar_catalogo (1 en revisiones, 69 en fuentes, 25 en plataformas, 107 en plataforma_fuentes, 25 en alertas, 35 en alerta_fuentes, 22 en ofertas), sin BILLA ni Casa de Outeiro; en public.* solo «update public.plataformas set web» de Pax Gold, con su guarda y su comprobación; aprobación al final; sin DDL, borrados, permisos, Auth ni funciones",
+    "cadena de producción (seed del 04/11 antes de ARTEX + 13 lotes, del 22/10 a la 2026-11-05): la publicada es la cede1f27",
+    "antes de aplicar, PGlite enseña lo mismo que se leyó hoy como visitante: 25 plataformas, 24 ofertas (8/13/3), las 30 filas de public.plataformas, las 5 descartadas con sus fuentes y la fila de Pax Gold (web https://paxos.com/paxgold, sin fuentes propias); tolerancias de siempre: el uuid de cada plataforma, «publicadaEl» de las fuentes del radar y el orden de las fuentes de cada campo",
+    "idempotente: aplicarla dos veces da lo mismo (la segunda vez no cambia ni actualizada_el de Pax Gold)",
+    "public.plataformas: solo cambia Pax Gold (web https://paxos.com/paxgold → https://www.paxg.com/, y actualizada_el); public.fuentes, cambios de estado, avisos y emisiones, intactos; las revisiones anteriores se conservan y la nueva queda aprobada",
+    "publicada la revisión nueva: 25 plataformas y 22 ofertas (8 principales, 13 de reventa y 1 en camino, Hausera); BILLA y Casa de Outeiro, fuera; las 22 que se quedan, idénticas a la cede1f27 (mismo orden, cifras, avisos, documentación, verificadas el 05/11 con 7 días) salvo la revisión y el manifiesto del lote (24 → 22, en camino 3 → 1); las 5 descartadas, iguales",
+    "plataformas: iguales salvo la revisión y el manifiesto; Pax Gold con web https://www.paxg.com/ en la vista; Spiko con el texto de acceso nuevo («…La CNMV tiene inscritas a SPIKO SICAV… (n.º 2380, con Aldana Capital como comercializadora) y a Spiko Finance… (n.º 5325), pero no muestra qué compartimentos…»), sin decir que el fondo se comercializa en España, y sus fuentes de antes más las dos de la CNMV (consultadas el 05/11)",
+    "lector de la web (validarLotePublicoV2) y de la app (adaptarCatalogoV2): aceptan 25/22 con 1 en camino; vale el 05/11 y el 12/11 y caduca el 13/11; las 22 tarjetas se ven igual que hoy (mínimo, España, salida y estado)",
+    "sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de 30 filas, Pax Gold con https://www.paxg.com/); sin quitar las dos de la lista cerrada las fichas no se generan; con la lista nueva salen 52 páginas, ninguna de BILLA ni de Casa de Outeiro (ni en el sitemap ni enlazadas), /plataformas/pax-gold con el botón «Ir a la web de Pax Gold» y el JSON-LD en paxg.com, y /plataformas/spiko con el texto nuevo y los dos enlaces a la CNMV",
+    "worker con la lista nueva: /ofertas/terreno-con-arrendamiento-billa y /ofertas/casa-de-outeiro (también con .html o barra final) dan el 404 del worker (noindex, nofollow; no-store) sin pedir su copia de conservación; sus ilustraciones conservadas, 404; Hausera sigue sirviéndose",
+    "si la revisión nueva ya estaba importada como borrador, el aplicador la aprueba y la publica sin duplicar filas",
+    "si Pax Gold ya tenía la web nueva, la entrega se aplica igual y no vuelve a tocar su fila",
+    "falla y no deja nada: la publicada no es la cede1f27 (es la anterior, 723968ce) → Publicación distinta de la revisión anterior prevista: 723968ce-00f7-7f42-b3e3-6c7f401b8f89. No aplicar este lote.",
+    "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+    "falla y no deja nada: el catálogo está retirado → Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+    "falla y no deja nada: la revisión destino ya existe con otra huella → La revisión destino existe con otra identidad o está retirada",
+    "falla y no deja nada: aplicada después del último día vigente (lote caducado) → Lote caducado: sus fichas valían hasta el 12/11/2026. No aplicar este lote.",
+    "falla y no deja nada: Pax Gold con otra web → Pax Gold no está como se leyó hoy (web vieja o ya la nueva, mismos datos y sin fuentes propias): no aplicar.",
+    "falla y no deja nada: Pax Gold con otro dato («Por qué es fiable» distinto) → Pax Gold no está como se leyó hoy (web vieja o ya la nueva, mismos datos y sin fuentes propias): no aplicar.",
+    "falla y no deja nada: Pax Gold con una fuente propia → Pax Gold no está como se leyó hoy (web vieja o ya la nueva, mismos datos y sin fuentes propias): no aplicar.",
+    "falla y no deja nada: Pax Gold descartada → Pax Gold no está como se leyó hoy (web vieja o ya la nueva, mismos datos y sin fuentes propias): no aplicar.",
+    "falla y no deja nada: una plataforma del radar no está en public.plataformas (catálogo incompleto) → Catálogo incompleto: se conserva el lote anterior"
+  ],
+  "casos": [
+    {
+      "caso": "la revisión nueva ya estaba importada como borrador",
+      "falla": false,
+      "publicada": "88d5a757-3481-f70e-dc7c-6272704a00b3"
+    },
+    {
+      "caso": "Pax Gold ya tenía la web nueva",
+      "falla": false,
+      "publicada": "88d5a757-3481-f70e-dc7c-6272704a00b3",
+      "plataformasSinCambios": true
+    },
+    {
+      "caso": "la publicada no es la cede1f27 (es la anterior, 723968ce)",
+      "falla": true,
+      "error": "Publicación distinta de la revisión anterior prevista: 723968ce-00f7-7f42-b3e3-6c7f401b8f89. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión publicada con otra huella",
+      "falla": true,
+      "error": "La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "el catálogo está retirado",
+      "falla": true,
+      "error": "Catálogo retirado o control ausente: este lote no autoriza reactivarlo.",
+      "todoIgual": true
+    },
+    {
+      "caso": "la revisión destino ya existe con otra huella",
+      "falla": true,
+      "error": "La revisión destino existe con otra identidad o está retirada",
+      "todoIgual": true
+    },
+    {
+      "caso": "aplicada después del último día vigente (lote caducado)",
+      "falla": true,
+      "error": "Lote caducado: sus fichas valían hasta el 12/11/2026. No aplicar este lote.",
+      "todoIgual": true
+    },
+    {
+      "caso": "Pax Gold con otra web",
+      "falla": true,
+      "error": "Pax Gold no está como se leyó hoy (web vieja o ya la nueva, mismos datos y sin fuentes propias): no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "Pax Gold con otro dato («Por qué es fiable» distinto)",
+      "falla": true,
+      "error": "Pax Gold no está como se leyó hoy (web vieja o ya la nueva, mismos datos y sin fuentes propias): no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "Pax Gold con una fuente propia",
+      "falla": true,
+      "error": "Pax Gold no está como se leyó hoy (web vieja o ya la nueva, mismos datos y sin fuentes propias): no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "Pax Gold descartada",
+      "falla": true,
+      "error": "Pax Gold no está como se leyó hoy (web vieja o ya la nueva, mismos datos y sin fuentes propias): no aplicar.",
+      "todoIgual": true
+    },
+    {
+      "caso": "una plataforma del radar no está en public.plataformas (catálogo incompleto)",
+      "falla": true,
+      "error": "Catálogo incompleto: se conserva el lote anterior",
+      "todoIgual": true
+    }
+  ],
+  "inventario": {
+    "rwadar_catalogo.revisiones": 1,
+    "rwadar_catalogo.fuentes": 69,
+    "rwadar_catalogo.plataformas": 25,
+    "rwadar_catalogo.plataforma_fuentes": 107,
+    "rwadar_catalogo.alertas": 25,
+    "rwadar_catalogo.alerta_fuentes": 35,
+    "rwadar_catalogo.ofertas": 22,
+    "public.plataformas (update)": 1
+  },
+  "spiko": {
+    "antes": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. No hemos comprobado en la CNMV que el fondo se comercialice en España, ni llegamos a darnos de alta.",
+    "despues": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. La CNMV tiene inscritas a SPIKO SICAV como IIC extranjera (n.º 2380, con Aldana Capital como comercializadora) y a Spiko Finance como empresa de inversión en libre prestación (n.º 5325), pero no muestra qué compartimentos de la SICAV están dados de alta en España. No llegamos a darnos de alta.",
+    "fuentesNuevas": [
+      "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+      "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es"
+    ]
+  },
+  "fichasQueCambian": 27,
+  "lecturasDelSincronizador": [
+    "/rest/v1/catalogo_plataformas_publicas_v2?select=*&limit=257",
+    "/rest/v1/plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,fuentes(url,titulo)&order=nombre",
+    "/rest/v1/catalogo_ofertas_publicas_v2?select=*&limit=1001"
+  ],
+  "resultado": "correcto"
+}

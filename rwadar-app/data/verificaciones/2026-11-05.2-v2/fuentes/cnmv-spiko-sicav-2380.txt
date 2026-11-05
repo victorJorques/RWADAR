@@ -1,0 +1,5 @@
+Copia de texto (sin el HTML) de https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es
+Leída con curl, sin sesión, el 2026-11-05 17:07:35–17:07:37 (UTC). HTTP 200. SHA-256 del HTML completo: e49ecc17e8f3cf7b84b1793a5cb991d9625808602f962cacaf491cc3fcbf53eb (151927 bytes).
+Solo el contenido principal; menús, avisos de cookies y pie fuera.
+
+Inicio | > | Consultas a registros oficiales | > | Vehículos de inversión extranjeros | > | Consulta por entidades | > | Información de vehículos de inversión extranjeros | Información de vehículos de inversión extranjeros | SPIKO SICAV | Nº Registro oficial | Fecha registro oficial | Tipo IIC | País | 2380 | 30/01/2026 | SICAV | FRANCIA | Datos generales | Entidades comercializadoras | Datos generales | IIC Comunitaria | IIC Sujeto a la directiva 2009/65/CE

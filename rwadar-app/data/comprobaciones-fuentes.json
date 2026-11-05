@@ -69,6 +69,8 @@
     "tzero-finra": ["TZERO SECURITIES, LLC", "123421", "currently suspended with any regulator\\? No"],
     "paxg-occ": ["Trust Banks Active As of", "Paxos Trust Company, National Association"],
     "spiko-regafi": ["Spiko Finance", "19183"],
-    "spiko-regafi-pasaporte-es": ["ESPAGNE", "Libre prestation de services"]
+    "spiko-regafi-pasaporte-es": ["ESPAGNE", "Libre prestation de services"],
+    "spiko-cnmv-iic": ["SPIKO SICAV", "2380\\W+30/01/2026", "Entidades comercializadoras"],
+    "spiko-cnmv-lps": ["SPIKO FINANCE SASU", "5325\\W+14/01/2026", "Libre Prestaci[oó]n"]
   }
 }

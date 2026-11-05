@@ -1,0 +1,97 @@
+{
+  "fecha": "2026-11-05",
+  "etiqueta": "2026-11-05.2",
+  "nota": "Cambios del radar de la entrega 2026-11-05.2, comprobados a mano el 05/11/2026 por la tarde. preparar-entrega.mjs los lleva al lote y comprueba los patrones de comprobaciones-fuentes.json contra las copias de fuentes/.",
+  "decision": "Víctor, 05/11/2026: «Arregla todo, no dejes nada para mañana». Pendiente de la entrega 2026-11-05: el texto de acceso de Spiko (revision-independiente/spiko.md de la 2026-11-05, corrección 2: «no digas que el fondo se comercializa en España en general; di lo que muestra la CNMV»).",
+  "fuentesNuevas": {
+    "spiko-cnmv-iic": {
+      "tipo": "regulador",
+      "titulo": "CNMV · SPIKO SICAV, vehículo de inversión extranjero (n.º 2380)",
+      "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+      "respalda": "SPIKO SICAV inscrita en la CNMV como IIC extranjera (n.º 2380, 30/01/2026, SICAV de Francia sujeta a la Directiva 2009/65/CE) y su única entidad comercializadora, Aldana Capital (pestaña «Entidades comercializadoras»). La ficha no tiene ninguna lista de compartimentos ni de clases.",
+      "comprobaciones": [
+        "SPIKO SICAV",
+        "2380\\W+30/01/2026",
+        "Entidades comercializadoras"
+      ],
+      "lecturas": [
+        {
+          "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+          "horaUtc": "2026-11-05T17:07:35Z",
+          "http": 200,
+          "sha256Html": "e49ecc17e8f3cf7b84b1793a5cb991d9625808602f962cacaf491cc3fcbf53eb",
+          "copia": "fuentes/cnmv-spiko-sicav-2380.txt",
+          "literales": [
+            "SPIKO SICAV | Nº Registro oficial | Fecha registro oficial | Tipo IIC | País | 2380 | 30/01/2026 | SICAV | FRANCIA",
+            "Datos generales | IIC Comunitaria | IIC Sujeto a la directiva 2009/65/CE"
+          ]
+        },
+        {
+          "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es&vista=18",
+          "horaUtc": "2026-11-05T17:07:54Z",
+          "http": 200,
+          "sha256Html": "eab32ca21f1d006c1ab40958e2cf489fbf24d54eea8fe370d5532c6a9ccc2434",
+          "copia": "fuentes/cnmv-spiko-sicav-2380-comercializadoras.txt",
+          "literales": [
+            "Entidades comercializadoras | Denominación | ALDANA CAPITAL, SOCIEDAD ANONIMA AGENCIA DE VALORES"
+          ]
+        }
+      ]
+    },
+    "spiko-cnmv-lps": {
+      "tipo": "regulador",
+      "titulo": "CNMV · Spiko Finance, empresa de servicios de inversión en libre prestación (n.º 5325)",
+      "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es",
+      "respalda": "Spiko Finance SASU inscrita en la CNMV como empresa de servicios de inversión del EEE en libre prestación (n.º 5325, 14/01/2026), con recepción y transmisión de órdenes sobre participaciones y acciones de IIC (pestaña «Programa de actividades»).",
+      "comprobaciones": [
+        "SPIKO FINANCE SASU",
+        "5325\\W+14/01/2026",
+        "Libre Prestaci[oó]n"
+      ],
+      "lecturas": [
+        {
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es",
+          "horaUtc": "2026-11-05T17:07:56Z",
+          "http": 200,
+          "sha256Html": "950397fa865128df7d43d65b05841dafe4f8f8f519d1c1fbfe5b5da67e90cd65",
+          "copia": "fuentes/cnmv-spiko-finance-5325.txt",
+          "literales": [
+            "SPIKO FINANCE SASU | Empresas de Servicios de Inversión del Espacio Económico Europeo en Libre Prestación | Nº Registro Oficial | Fecha registro oficial | 5325 | 14/01/2026"
+          ]
+        },
+        {
+          "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es&vista=17",
+          "horaUtc": "2026-11-05T17:07:59Z",
+          "http": 200,
+          "sha256Html": "4e429f0c6d442f7d01c1a6771b1c7866d9d28410d4a948df6cd0c4a7e4277f7c",
+          "copia": "fuentes/cnmv-spiko-finance-5325-actividades.txt",
+          "literales": [
+            "1. Recepción y transmisión de órdenes de clientes en relación con uno o más instrumentos financieros | 3) Participaciones y acciones en instituciones de inversión colectiva"
+          ]
+        }
+      ],
+      "porQue": "El texto nuevo dice que la CNMV inscribe a Spiko Finance en libre prestación (n.º 5325). La ficha de SPIKO SICAV no lo dice, así que ese dato lleva su propia ficha de la CNMV como fuente."
+    }
+  },
+  "plataformas": {
+    "spiko": {
+      "acceso": {
+        "antes": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. No hemos comprobado en la CNMV que el fondo se comercialice en España, ni llegamos a darnos de alta.",
+        "detalle": "La AMF marca el compartimento EU T-Bills como abierto a todo suscriptor y Spiko dice que sus productos principales son UCITS aprobados por el regulador francés. El registro REGAFI de la ACPR muestra que Spiko Finance tiene pasaporte de libre prestación de servicios en España desde el 08/01/2026 para recibir y transmitir órdenes sobre participaciones de IIC. La CNMV tiene inscritas a SPIKO SICAV como IIC extranjera (n.º 2380, con Aldana Capital como comercializadora) y a Spiko Finance como empresa de inversión en libre prestación (n.º 5325), pero no muestra qué compartimentos de la SICAV están dados de alta en España. No llegamos a darnos de alta.",
+        "fuentesAntes": [
+          "spiko-web",
+          "spiko-amf",
+          "spiko-regafi-pasaporte-es"
+        ],
+        "fuentes": [
+          "spiko-web",
+          "spiko-amf",
+          "spiko-regafi-pasaporte-es",
+          "spiko-cnmv-iic",
+          "spiko-cnmv-lps"
+        ],
+        "motivo": "Hoy sí se comprobó en la CNMV (expediente spiko-letras-del-tesoro-euro de la 2026-11-05, «registros», 08:06 UTC; revisión independiente, 08:24 UTC; y otra vez a las 17:07–17:08 UTC). El texto dice solo lo que muestra la CNMV: inscribe a SPIKO SICAV (n.º 2380, comercializadora Aldana Capital) y a Spiko Finance en libre prestación (n.º 5325), y no muestra qué compartimentos de la SICAV están dados de alta en España. No dice que el fondo se comercialice en España. Se conserva lo de la AMF y del REGAFI."
+      }
+    }
+  }
+}
