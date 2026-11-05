@@ -5,7 +5,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { parse } from 'acorn';
 import { createRequire } from 'node:module';
-import { baseCompleta, filas, sesion, informe, cuentaSeed } from './pruebas-soporte.mjs';
+import { baseCatalogoHistorico, filas, sesion, informe, cuentaSeed, SEED_RADAR_26 } from './pruebas-soporte.mjs';
 
 const require = createRequire(import.meta.url);
 const {
@@ -71,7 +71,8 @@ fechaImposible.radar.verificadoEl = '2026-02-30';
 await rechaza(Promise.resolve().then(() => validarFuentesLocales(fechaImposible)),
   'una fecha de calendario imposible');
 
-const db = await baseCompleta();
+// Importa lotes del catálogo de antes del 04/11/2026 (ARTEX en el radar): base con la copia fija del seed.
+const db = await baseCatalogoHistorico();
 // Reproducir los privilegios automáticos de un proyecto Supabase antiguo.
 // RLS no protege TRUNCATE: cada objeto del catálogo debe revocar esos defaults.
 await db.exec('alter default privileges grant all on tables to anon, authenticated');
@@ -419,7 +420,7 @@ for (const rol of ['anon', 'authenticated']) {
   paso(`${rol}: el cierre mantiene el catálogo y los descartes documentados`,
     (await filas(db, 'select count(*)::int c from public.catalogo_plataformas_publicas'))[0].c === 26 &&
     (await filas(db, 'select count(*)::int c from public.catalogo_ofertas_publicas'))[0].c === 28 &&
-    (await filas(db, "select count(*)::int c from public.plataformas where estado='descartada'"))[0].c === cuentaSeed().descartadas);
+    (await filas(db, "select count(*)::int c from public.plataformas where estado='descartada'"))[0].c === cuentaSeed(fs.readFileSync(path.join('db', SEED_RADAR_26), 'utf8')).descartadas);
   await sesion(db);
 }
 

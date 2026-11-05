@@ -35,7 +35,7 @@ paso(`las ${fuentesSeed} fuentes documentales de 02_seed.sql`,
 paso('ninguna descartada sin fuente',(await n('select count(*)::int c from descartadas_sin_fuente'))[0].c===0);
 paso('toda fuente apunta a una descartada',
   (await n("select count(*)::int c from fuentes f join plataformas p on p.id=f.plataforma_id where p.estado<>'descartada'"))[0].c===0);
-paso('vista radar_publico devuelve 26',(await n('select count(*)::int c from radar_publico'))[0].c===26);
+paso(`vista radar_publico devuelve ${seed.enRadar}`,(await n('select count(*)::int c from radar_publico'))[0].c===seed.enRadar);
 paso('RLS activo en plataformas',
   (await n("select relrowsecurity from pg_class where relname='plataformas'"))[0].relrowsecurity===true);
 const pol=await n("select tablename, count(*)::int c from pg_policies group by tablename order by tablename");
@@ -68,7 +68,7 @@ paso('guarda el estado anterior',camb[0]?.estado_anterior==='en_radar');
 const avisos=await n('select * from avisos_pendientes');
 paso('genera 1 aviso para quien la seguia',avisos.length===1);
 paso('el aviso lleva el token del dispositivo',avisos[0]?.token_push==='ExpoTok[123]');
-paso('el radar publico baja a 25',(await n('select count(*)::int c from radar_publico'))[0].c===25);
+paso(`el radar publico baja a ${seed.enRadar-1}`,(await n('select count(*)::int c from radar_publico'))[0].c===seed.enRadar-1);
 
 // Nadie sigue a RealT: no debe generar aviso
 await db.query(`update plataformas set nombre=nombre where id=$1`,[realt]);

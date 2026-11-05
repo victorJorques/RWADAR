@@ -1,6 +1,6 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-04T23:56:22.056Z",
+  "ejecutadoEl": "2026-11-05T00:14:28.613Z",
   "etiqueta": "2026-11-04.2",
   "revisionAnterior": "cf79e4a4-f828-96ce-681b-ae69c3d1b81b",
   "revisionNueva": "723968ce-00f7-7f42-b3e3-6c7f401b8f89",
@@ -19,7 +19,6 @@
     "las 24 tarjetas se ven igual (mínimo, acceso desde España y salida)",
     "sincronizador real con estas vistas: 25 plataformas, 24 ofertas y 5 descartadas (CSV de 30 filas); con la lista cerrada actualizada sale /fuera-del-radar/artex-global-markets con el motivo y la fuente, sin /plataformas/artex-global-markets; las fichas de las otras 25 plataformas, byte a byte iguales, y las de las 24 ofertas solo cambian la revisión y «plataformas_esperadas» (26 → 25) en sus datos",
     "worker con la lista nueva: /plataformas/artex-global-markets (con .html o barra final) → 301 a /fuera-del-radar/artex-global-markets, no-store, sin servir la copia de conservación",
-    "exportado a /tmp/claude-0/-home-user-RWADAR/bcd94329-4aea-5eb8-87b2-dce08ca7c659/scratchpad/artex/exportado lo que leería un visitante después de aplicar",
     "si alguien vigila ARTEX con los avisos por correo activados, queda un aviso en cola, sin enviar",
     "falla y no deja nada: la publicada no es la cf79e4a4 → Publicación distinta de la revisión anterior prevista: 344a86aa-2c53-d2f0-fed4-5fdaadda33ad. No aplicar este lote.",
     "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",

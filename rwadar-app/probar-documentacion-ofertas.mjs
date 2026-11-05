@@ -4,7 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import vm from 'node:vm';
 import { createRequire } from 'node:module';
-import { baseCompleta, filas, sesion } from './pruebas-soporte.mjs';
+import { baseCatalogoHistorico, filas, sesion } from './pruebas-soporte.mjs';
 
 const require = createRequire(import.meta.url);
 const { cargarFuentesLocales, construirSqlImportacion, validarDocumentacionOferta,
@@ -51,7 +51,8 @@ for (const alterar of [
 assert.equal(validarDocumentacionOferta(null, 'anterior'), null);
 assert.equal(validarDocumentacionOferta(undefined, 'anterior'), null);
 
-const db = await baseCompleta();
+// Importa lotes del catálogo de antes del 04/11/2026 (ARTEX en el radar): base con la copia fija del seed.
+const db = await baseCatalogoHistorico();
 const temporal = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-documentacion-'));
 try {
   await db.exec('alter default privileges grant all on tables to anon, authenticated');

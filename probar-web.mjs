@@ -3217,7 +3217,7 @@ try {
   prueba('el endpoint local entrega por defecto el snapshot publicable V2 completo sin caché',
     escaparateRespuesta.status===200 && escaparateRespuesta.headers.get('cache-control')==='no-store' &&
     escaparate.versionEsquema===2 && escaparate.lote==='snapshot-publicable'&&escaparate.preparado===false&&
-    escaparate.plataformas?.length===N_PLATAFORMAS&&escaparate.ofertas?.length===N_OFERTAS&&escaparate.descartes?.length===4&&
+    escaparate.plataformas?.length===N_PLATAFORMAS&&escaparate.ofertas?.length===N_OFERTAS&&escaparate.descartes?.length===N_DESCARTADAS&&
     escaparate.ofertas.every(o=>o.revisionId===escaparate.plataformas[0].revisionId)&&!escaparate.secundario&&!escaparate.exclusionesOfertas);
   const imagenNombre = activosEditoriales.fichas[0].archivo;
   const imagenRespuesta = await fetch(`http://127.0.0.1:${puerto}/ofertas-editoriales/${imagenNombre}`);

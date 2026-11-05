@@ -311,12 +311,13 @@ async function caso(nombre, preparar, esperaFallo, extra) {
       const escribe = (nombre, datos) => fs.writeFileSync(path.join(exportar, nombre), JSON.stringify(datos));
       escribe('catalogo_plataformas_publicas_v2.json', v1.p);
       escribe('catalogo_ofertas_publicas_v2.json', v1.o);
-      escribe('descartadas-sincronizar.json', v1.d);
+      // Las fuentes, en su orden natural (el de la base), como las devuelve PostgREST.
+      escribe('descartadas-sincronizar.json', await filas(db, DESCARTADAS.replace(' order by f.url', '')));
       escribe('categorias.json', await filas(db, 'select * from public.categorias order by orden'));
       escribe('regiones.json', await filas(db, 'select * from public.regiones order by slug'));
       escribe('radar_publico.json', api(await filas(db, 'select * from public.radar_publico')).sort((a, b) => a.nombre.localeCompare(b.nombre, 'en')));
       escribe('descartadas-volcar.json', api(await filas(db, `select p.slug, p.nombre, p.etiqueta_descarte, p.motivo_descarte, p.verificada_el,
-        coalesce((select json_agg(json_build_object('url', f.url, 'titulo', f.titulo, 'publicada_el', f.publicada_el, 'consultada_el', f.consultada_el) order by f.url)
+        coalesce((select json_agg(json_build_object('url', f.url, 'titulo', f.titulo, 'publicada_el', f.publicada_el, 'consultada_el', f.consultada_el))
           from public.fuentes f where f.plataforma_id = p.id), '[]') as fuentes
         from public.plataformas p where p.estado = 'descartada' order by p.slug`)));
       escribe('catalogo_publicacion.json', await filas(db, 'select retirado, motivo from public.catalogo_publicacion'));

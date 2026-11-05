@@ -84,8 +84,9 @@ test('esquema real y lote 26/49: ACL 28 conserva joins/datos, exige Auth real de
   const cwd=process.cwd(), app=fileURLToPath(new URL('../rwadar-app/',import.meta.url));
   process.chdir(app);let db;
   try {
-    const {baseCompleta,alta,filas,sesion}=await import('../rwadar-app/pruebas-soporte.mjs');
-    db=await baseCompleta();
+    // El lote del 22/10 lleva a ARTEX en el radar: base con la copia fija del seed de entonces.
+    const {baseCatalogoHistorico,alta,filas,sesion}=await import('../rwadar-app/pruebas-soporte.mjs');
+    db=await baseCatalogoHistorico();
     await db.exec('alter default privileges grant all on tables to anon, authenticated');
     for(const file of ['db/24_catalogo_publico_verificado.sql','db/25_servicios_editoriales_solo_lectura.sql',
       'supabase/migrations/20260930084133_ofertas_documentacion_publica.sql',

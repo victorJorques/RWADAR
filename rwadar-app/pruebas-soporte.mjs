@@ -125,6 +125,13 @@ export const baseConMigraciones = async (migraciones = MIGRACIONES) => {
 
 export const baseCompleta = async () => baseConMigraciones();
 
+/* Para las pruebas que importan lotes del catálogo de antes del 04/11/2026 (llevan a ARTEX
+   en el radar): la misma instalación, pero con la copia fija de 02_seed.sql de entonces
+   (db/pruebas/02_seed_radar_26.sql). Las demás pruebas usan el 02_seed.sql vigente. */
+export const SEED_RADAR_26 = 'pruebas/02_seed_radar_26.sql';
+export const baseCatalogoHistorico = async () =>
+  baseConMigraciones(MIGRACIONES.map((m) => (m === '02_seed.sql' ? SEED_RADAR_26 : m)));
+
 export const reaplicaSeguridad = async (db) => {
   await db.exec(sqlMigracion('14_seguridad_integral.sql'));
 };

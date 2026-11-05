@@ -14,7 +14,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
-import { baseCompleta, filas, sesion } from './pruebas-soporte.mjs';
+import { baseCatalogoHistorico, filas, sesion } from './pruebas-soporte.mjs';
 
 const require = createRequire(import.meta.url);
 const { cargarFuentesLocales, construirSqlImportacion, MANIFIESTO_CATALOGO_V2,
@@ -43,7 +43,8 @@ const lote = (sufijo = '') => {
   return construirSqlImportacion(v2);
 };
 
-const db = await baseCompleta();
+// Importa lotes del catálogo de antes del 04/11/2026 (ARTEX en el radar): base con la copia fija del seed.
+const db = await baseCatalogoHistorico();
 await db.exec('alter default privileges grant all on tables to anon, authenticated');
 for (const archivo of ['db/24_catalogo_publico_verificado.sql', 'db/25_servicios_editoriales_solo_lectura.sql',
   'supabase/migrations/20260930084133_ofertas_documentacion_publica.sql',

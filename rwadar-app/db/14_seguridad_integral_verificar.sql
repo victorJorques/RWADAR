@@ -9,11 +9,22 @@ do $$
 declare
   v_activas integer;
   v_descartadas integer;
+  v_esperadas integer;
 begin
   select count(*) into v_activas from plataformas where estado = 'en_radar';
   select count(*) into v_descartadas from plataformas where estado = 'descartada';
-  if v_activas <> 26 or v_descartadas <> 4 then
+  -- Las cuentas salen del catálogo, no de un número fijo (04/11/2026, ARTEX pasa a
+  -- Descartadas): ninguna de las dos listas vacía y, si hay una revisión V2 publicada,
+  -- tantas plataformas en el radar como declara.
+  if v_activas < 1 or v_descartadas < 1 then
     raise exception 'recuento inesperado: % activas, % descartadas', v_activas, v_descartadas;
+  end if;
+  if to_regclass('rwadar_catalogo.publicacion_v2') is not null then
+    execute 'select r.plataformas_esperadas from rwadar_catalogo.revisiones r
+      join rwadar_catalogo.publicacion_v2 p on p.revision_id = r.id' into v_esperadas;
+    if v_esperadas is not null and v_activas <> v_esperadas then
+      raise exception 'recuento inesperado: % activas y la revisión publicada declara %', v_activas, v_esperadas;
+    end if;
   end if;
   if exists (select 1 from descartadas_sin_fuente) then
     raise exception 'hay plataformas descartadas sin fuente';

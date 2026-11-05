@@ -13,8 +13,11 @@ begin
     into v_en_radar, v_descartadas
     from public.plataformas;
 
-  if v_en_radar <> 26 or v_descartadas <> 4 then
-    raise exception 'fresh-install: esperaba 26/4 y obtuvo %/%',
+  -- Las cuentas exactas son las de db/02_seed.sql (volcado de producción); las pruebas
+  -- locales las comparan con ese archivo. Aquí basta con que ninguna lista esté vacía
+  -- (04/11/2026: ARTEX pasa a Descartadas y dejan de ser 26/4).
+  if v_en_radar < 1 or v_descartadas < 1 then
+    raise exception 'fresh-install: radar o descartadas vacíos (%/%)',
       v_en_radar, v_descartadas;
   end if;
 
