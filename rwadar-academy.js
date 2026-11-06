@@ -739,7 +739,7 @@ function paginaLeccion(academy, l) {
   const ctx = { destinos: academy.destinos, lecciones: academy.lecciones };
   const nivel = nivelDe(academy, l.nivel);
   const nNivel = numeroNivel(academy, l.nivel);
-  const total = publicadas(academy).length; // solo las publicadas: «Lección 1 de 7», no «de 9»
+  const total = publicadas(academy).length; // solo las publicadas: con 7 de 9, «Lección 1 de 7», no «de 9»
   const canonica = `${ORIGEN}${urlLeccion(l.slug)}`;
   const cuerpo = l.cuerpo.map(b => ({ ...b }));
   const indice = asignarIds(cuerpo);
@@ -966,8 +966,9 @@ function paginaIndice(academy) {
     </section>`;
   }).join('\n\n    ');
 
-  /* Con cuenta no se dice «9 lecciones gratuitas»: hay 7 publicadas y 2
-     «Próximamente», y se abren con una cuenta gratis. */
+  /* Con cuenta no se dice «9 lecciones gratuitas»: puede haber lecciones
+     «Próximamente» (hasta el 06/11/2026 eran 7 publicadas de 9) y se abren
+     con una cuenta gratis. */
   const entradilla = conCuenta
     ? `<p class="ac-entradilla">Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida. Lecciones en ${academy.niveles.length} niveles, con un resumen de 30 segundos y un test corto.</p>
     <p class="ac-sobrelinea">Gratis con tu cuenta</p>

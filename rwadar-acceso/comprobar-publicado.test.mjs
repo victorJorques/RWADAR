@@ -66,13 +66,15 @@ test('el comprobador de la web publicada pasa contra el worker compilado, sin re
     'una ruta de la Academy con %2F da 400: 400',
     'una lección que no existe da el 404 del worker sin mirar la sesión: 404',
     'las lecciones y fichas usan sus hojas, scripts y cuatro recursos de idioma con huella',
-    'lección 8 (Próximamente) no tiene página: 404',
-    'lección 9 (Próximamente) no tiene página: 404',
+    // Desde el 06/11/2026 las nueve están publicadas: ninguna «Próximamente».
+    `el índice muestra ${academy.lecciones.length} lecciones disponibles y ${academy.pendientes.length} «Próximamente»`,
     'la página de baja de avisos responde 200, sin indexar ni guardarse: 200',
     'la baja rechaza un enlace sin forma de UUID: 400',
     ...academy.lecciones.map(slug => `sin sesión: 303 a /acceso?volver=/academy/${slug}, sin guardarse: 303`),
   ];
   for (const linea of esperadas) assert.ok(correcta(resultado.lineas, linea), 'Falta: ' + linea);
+  assert.equal(academy.lecciones.length, 9); assert.deepEqual([...academy.pendientes], []);
+  assert.ok(!salida.includes('(Próximamente) no tiene página'), 'no queda ninguna lección «Próximamente» que pedir');
   // El worker solo preguntó a Auth por la cookie inventada (y Auth la rechazó).
   assert.deepEqual(local.peticionesSupabase.map(p => p.metodo + ' ' + p.ruta), ['GET /auth/v1/user']);
 });
@@ -109,7 +111,7 @@ test('en una vista previa de Pages (noindex en cada archivo) el comprobador pasa
   assert.match(comoPrevia.salida, /\(vista previa: Pages añade noindex en la cabecera\) …/);
   for (const linea of ['el índice de la Academy responde 200 y su HTML se puede indexar (en la vista previa, la cabecera noindex es de Pages)',
     'la página de baja de avisos responde 200, sin indexar ni guardarse: 200',
-    'lección 8 (Próximamente) no tiene página: 404', 'lección 9 (Próximamente) no tiene página: 404',
+    `el índice muestra ${academyPublicada().lecciones.length} lecciones disponibles y 0 «Próximamente»`,
     'una ficha que nunca existió da el 404 del worker',
     ...(conCuenta ? ['una lección que no existe da el 404 del worker sin mirar la sesión: 404'] : [])]) {
     assert.ok(correcta(comoPrevia.lineas, linea), 'Falta: ' + linea);

@@ -3089,9 +3089,11 @@ console.log('\n=== RWADAR ACADEMY ===');
 
   prueba('las páginas de la Academy están generadas desde las lecciones y al día',
     academyMod.comprobar(academy).length === 0);
-  prueba('las nueve lecciones se validan: 7 publicadas y 2 en revisión con su motivo',
-    academy.lecciones.length === 9 && publicadasA.length === 7 &&
-    publicadasA.every(l => l.modulo <= 7) && pendientesA.every(l => l.estado === 'en_revision' && l.motivo));
+  // Las lecciones 8 y 9 se publican por orden de Víctor del 06/11/2026 («Publicar las 9 ya»).
+  prueba('las nueve lecciones se validan y las nueve están publicadas, en orden de módulo',
+    academy.lecciones.length === 9 && publicadasA.length === 9 && pendientesA.length === 0 &&
+    publicadasA.every((l, k) => l.modulo === k + 1) &&
+    academy.config.lecciones.every(l => l.estado === 'publicado' && !('motivo' in l)));
   prueba('el manifiesto publicable lista exactamente el índice y las lecciones publicadas',
     JSON.stringify(academyMod.paginasAcademy(academy)) === JSON.stringify([...PAGINAS_ACADEMY]) &&
     fs.readdirSync(path.join(sitio, 'academy')).length === publicadasA.length + 1 &&
@@ -3150,9 +3152,16 @@ console.log('\n=== RWADAR ACADEMY ===');
   const leccion1 = paginaDe('que-significa-tokenizar-un-activo');
   prueba('los dos tipos de recuadro (idea y aviso) se distinguen en el marcado',
     leccion1.includes('ac-recuadro ac-recuadro-idea') && leccion1.includes('ac-recuadro ac-recuadro-aviso'));
+  const leccion8 = paginaDe('expediente-de-tokenizacion'), leccion9 = paginaDe('despues-de-emitir-ciclo-de-vida');
+  const prontoAccion = etiqueta => new RegExp(`<span class="ac-accion ac-accion-pronto">${etiqueta} <small>Próximamente</small></span>`);
   prueba('un destino que aún no existe se muestra como «Próximamente», nunca como enlace',
-    /<span class="ac-accion ac-accion-pronto">Evaluador de Viabilidad <small>Próximamente<\/small><\/span>/.test(leccion1) &&
-    !/href="[^"]*evaluador/i.test(publicadasA.map(l => paginaDe(l.slug)).join('')));
+    prontoAccion('Evaluador de Viabilidad').test(leccion1) &&
+    prontoAccion('Evaluador de Viabilidad').test(leccion8) && prontoAccion('Checklist del expediente').test(leccion8) &&
+    leccion8.includes('<span class="ac-enlinea-pronto">Checklist del expediente <small>Próximamente</small></span>') &&
+    prontoAccion('Evaluador de Viabilidad').test(leccion9) &&
+    ['evaluador-viabilidad', 'checklist-expediente'].every(d => academy.destinos[d].estado === 'proximamente') &&
+    // (la lección 8 tiene un apartado propio, #tu-checklist: un ancla de la página no es un destino)
+    !/href="(?!#)[^"]*(?:evaluador|checklist)/i.test(publicadasA.map(l => paginaDe(l.slug)).join('')));
   prueba('un destino parcial enlaza al radar y explica qué falta',
     paginaDe('quien-es-quien-actores-tokenizacion').includes('todavía no filtra por tipo de proveedor') &&
     paginaDe('marco-legal-cuando-tu-token-es-un-valor').includes('Todavía no hay un filtro por supervisión'));
@@ -3160,10 +3169,30 @@ console.log('\n=== RWADAR ACADEMY ===');
     (paginaDe('es-tu-activo-tokenizable').match(/<div class="ac-tabla ac-tabla-c\d" role="region" tabindex="0"/g) || []).length >= 1 &&
     /\.ac-tabla\{overflow-x:auto/.test(lee('assets/academy-20261002.css')) &&
     /body\{[^}]*overflow-x:hidden/.test(lee('assets/academy-20261002.css')));
-  prueba('la última lección publicada enlaza la siguiente como «Próximamente», sin página inexistente',
-    paginaDe('como-leer-el-radar').includes('ac-vecina-pronto') &&
-    !paginaDe('como-leer-el-radar').includes('href="/academy/expediente-de-tokenizacion"') &&
+  prueba('las lecciones 7, 8 y 9 se enlazan en orden y la 9, la última, no anuncia ninguna siguiente',
+    paginaDe('como-leer-el-radar').includes('<a class="ac-vecina ac-vecina-siguiente" href="/academy/expediente-de-tokenizacion" rel="next">') &&
+    leccion8.includes('<a class="ac-vecina ac-vecina-anterior" href="/academy/como-leer-el-radar" rel="prev">') &&
+    leccion8.includes('<a class="ac-vecina ac-vecina-siguiente" href="/academy/despues-de-emitir-ciclo-de-vida" rel="next">') &&
+    leccion9.includes('<a class="ac-vecina ac-vecina-anterior" href="/academy/expediente-de-tokenizacion" rel="prev">') &&
+    !leccion9.includes('ac-vecina-siguiente') && publicadasA.every(l => !paginaDe(l.slug).includes('ac-vecina-pronto')) &&
     paginaDe('liquidez-como-evaluarla').includes('href="/academy/como-leer-el-radar"'));
+  // Sin lecciones pendientes de verdad, el camino «Próximamente» se prueba con una
+  // Academy simulada en la que la 9 vuelve a «en revisión» (no se escribe nada).
+  const academyPendiente = { ...academy, lecciones: academy.lecciones.map(l =>
+    l.slug === 'despues-de-emitir-ciclo-de-vida' ? { ...l, estado: 'en_revision' } : l) };
+  const salidasPendiente = academyMod.construirSalidas(academyPendiente);
+  const salidaPendiente = nombre => salidasPendiente.get(path.join(sitio, ...nombre.split('/')));
+  prueba('si una lección vuelve a «en revisión», sale como «Próximamente» sin página ni enlace',
+    salidaPendiente('academy/expediente-de-tokenizacion.html').includes('<div class="ac-vecina ac-vecina-siguiente ac-vecina-pronto"><span>Siguiente → · Lección 9 · Próximamente</span>') &&
+    !salidaPendiente('academy/expediente-de-tokenizacion.html').includes('href="/academy/despues-de-emitir-ciclo-de-vida"') &&
+    salidaPendiente('academy/expediente-de-tokenizacion.html').includes('Lección 8 de 8 ·') &&
+    salidaPendiente('academy/despues-de-emitir-ciclo-de-vida.html') === undefined &&
+    (salidaPendiente('academy/index.html').match(/ac-tarjeta ac-tarjeta-pronto/g) || []).length === 1 &&
+    !salidaPendiente('academy/index.html').includes('href="/academy/despues-de-emitir-ciclo-de-vida"') &&
+    salidaPendiente('index.html').includes('<h3 id="academiaLeccionesTit">8 de 9 lecciones disponibles</h3>') &&
+    salidaPendiente('index.html').includes('<span>8 lecciones gratis en Academy</span>') &&
+    !salidaPendiente('index.html').includes('href="/academy/despues-de-emitir-ciclo-de-vida"') &&
+    !academyMod.paginasAcademy(academyPendiente).includes('academy/despues-de-emitir-ciclo-de-vida.html'));
   prueba('el índice muestra los tres niveles, el progreso local y las pendientes como «Próximamente»',
     academy.niveles.every(n => indiceAcademy.includes(`<section class="ac-nivel" id="${n.id}"`)) &&
     indiceAcademy.includes(`<progress max="${publicadasA.length}" value="0"`) &&
@@ -3199,6 +3228,12 @@ console.log('\n=== RWADAR ACADEMY ===');
     textoDe(bloqueAcademy).includes(`${publicadasA.length} de ${academy.lecciones.length} lecciones disponibles`) &&
     !/\b9 lecciones (?:gratuitas|en 3 niveles)/.test(textoIndice + textoDe(bloqueAcademy)) &&
     !/lecciones gratuitas/i.test(indiceAcademy.match(/<meta name="description" content="([^"]+)"/)[1]));
+  const { ingles: inglesAcademy } = require('./rwadar-movil/lib/idioma.js');
+  const textosBloque = [...bloqueAcademy.matchAll(/<(h3|h4|b|small|p)\b[^>]*>([^<]+)<\/\1>/g)].map(m => m[2]);
+  prueba('en inglés, el bloque de lecciones de la portada se traduce entero (también el recuento y las lecciones 8 y 9)',
+    textosBloque.length >= 30 && textosBloque.every(t => inglesAcademy(t) !== t) &&
+    inglesAcademy(`${publicadasA.length} de ${academy.lecciones.length} lecciones disponibles`) === `${publicadasA.length} of ${academy.lecciones.length} lessons available` &&
+    inglesAcademy('Preparación · 15 min') === 'Preparation · 15 min' && inglesAcademy('Post-emisión · 17 min') === 'After issuance · 17 min');
   // Con "publico" (el interruptor de vuelta atrás), todo vuelve a como estaba.
   const salidasPublicas = academyMod.construirSalidas({ ...academy, acceso: 'publico' });
   const salidaPublica = nombre => salidasPublicas.get(path.join(sitio, ...nombre.split('/')));
@@ -3374,13 +3409,15 @@ try {
   const academyIndice = await fetch(`http://127.0.0.1:${puerto}/academy/`);
   const academyLeccion = await fetch(`http://127.0.0.1:${puerto}/academy/que-significa-tokenizar-un-activo`);
   const academyHtml = await fetch(`http://127.0.0.1:${puerto}/academy/que-significa-tokenizar-un-activo.html`, { redirect:'manual' });
-  const academyPendiente = await fetch(`http://127.0.0.1:${puerto}/academy/expediente-de-tokenizacion`);
+  const academyLeccion9 = await fetch(`http://127.0.0.1:${puerto}/academy/despues-de-emitir-ciclo-de-vida`);
+  const academyInventada = await fetch(`http://127.0.0.1:${puerto}/academy/leccion-inventada`);
   prueba('las URL limpias de la Academy funcionan localmente como en Cloudflare',
     academySinBarra.status===308 && academySinBarra.headers.get('location')==='/academy/' &&
     academyIndice.status===200 && (await academyIndice.text()).includes('data-academy-indice-pagina') &&
     academyLeccion.status===200 && (await academyLeccion.text()).includes('data-academy-leccion="que-significa-tokenizar-un-activo"') &&
     academyHtml.status===308 && academyHtml.headers.get('location')==='/academy/que-significa-tokenizar-un-activo' &&
-    academyPendiente.status===404);
+    academyLeccion9.status===200 && (await academyLeccion9.text()).includes('data-academy-leccion="despues-de-emitir-ciclo-de-vida"') &&
+    academyInventada.status===404);
 } finally {
   proceso.kill();
 }

@@ -52,7 +52,14 @@ ejecutar el generador.
    publicación (`docs/OPERACION-LANZAMIENTO.md`), **siempre con permiso de
    Víctor**.
 
-En la app, una lección nueva solo llega con la siguiente compilación.
+En la app, una lección nueva llega con la siguiente actualización de la app:
+la OTA basta (el contenido va en `rwadar-movil/lib/academy-contenido.js`, que
+es JavaScript), o una compilación nueva.
+
+Las lecciones 8 y 9 se publicaron así el 06/11/2026 por orden de Víctor
+(«Publicar las 9 ya»): desde entonces no queda ninguna «Próximamente». Las
+pruebas siguen exigiendo el 404 a una lección inventada y prueban el camino
+«Próximamente» con una Academy simulada en la que la 9 vuelve a «en revisión».
 
 ## Quién abre las lecciones en la web: `"acceso"`
 
@@ -120,7 +127,7 @@ es público en los dos modos (decisión de Víctor del 06/11/2026).
   `rwadar-acceso/alta-avisos-navegador.test.mjs` las que esperan el destino
   `/academy/#cuenta-confirmada` y el texto «Las lecciones son gratis con
   cuenta», si también se revierten en `acceso.js`.
-- `probar-precarga.cjs`: «con "acceso": "cuenta", las 7 lecciones publicadas se
+- `probar-precarga.cjs`: «con "acceso": "cuenta", las 9 lecciones publicadas se
   comprueban por su 303…», tres de los rechazos de «la verificación de
   producción rechaza…» (lección servida a cualquiera, 303 a otra vuelta y 303
   que se puede guardar) y «con "acceso": "publico", una lección vuelve a exigir

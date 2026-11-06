@@ -54,13 +54,11 @@
     },
     {
       "slug": "expediente-de-tokenizacion",
-      "estado": "en_revision",
-      "motivo": "Fase 2 del calendario editorial (2 a 4 semanas después del lanzamiento)."
+      "estado": "publicado"
     },
     {
       "slug": "despues-de-emitir-ciclo-de-vida",
-      "estado": "en_revision",
-      "motivo": "Fase 3 del calendario editorial."
+      "estado": "publicado"
     }
   ],
   "destinos": {
