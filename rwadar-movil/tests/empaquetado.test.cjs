@@ -9,6 +9,7 @@ const filtro = ignore().add(fs.readFileSync(path.join(raiz, '.easignore'), 'utf8
 
 test('EAS incluye el proyecto móvil sin depender de separadores de directorio de Windows', () => {
   for (const ruta of ['rwadar-movil', 'rwadar-movil/App.js', 'rwadar-movil/app.json',
+    'rwadar-movil/app.config.js', 'rwadar-movil/plugins/firebase-sin-autoarranque.js',
     'rwadar-movil/package.json', 'rwadar-movil/package-lock.json', 'rwadar-movil/eas.json',
     'rwadar-movil/index.js', 'rwadar-movil/lib', 'rwadar-movil/lib/modo-local.js',
     'rwadar-movil/lib/cuentas.js', 'rwadar-movil/componentes/Cuenta.js',
@@ -35,7 +36,10 @@ test('EAS excluye otros proyectos, históricos, fotos sin licencia y credenciale
     'rwadar-movil/assets/ofertas/caribe-1.webp', 'rwadar-movil/LEEME.md',
     'rwadar-movil/tests/flujo.test.cjs', 'rwadar-movil/node_modules/expo/package.json',
     'rwadar-movil/lib/.env', 'rwadar-movil/assets/firma.keystore',
-    'rwadar-movil/lib/credentials.json', 'rwadar-movil/lib/service-role-test.json']) {
+    'rwadar-movil/lib/credentials.json', 'rwadar-movil/lib/service-role-test.json',
+    // Firebase llega como variable de EAS de tipo archivo, nunca desde el repositorio.
+    'rwadar-movil/google-services.json', 'google-services.json',
+    'rwadar-movil/plugins/google-services.json', 'rwadar-movil/android/app/google-services.json']) {
     assert.equal(filtro.ignores(ruta), true, ruta);
   }
 });

@@ -78,10 +78,10 @@ test('configuración: runtime nativo aislado, arranque offline y canal público 
   const { expo } = JSON.parse(fs.readFileSync(path.join(raiz, 'app.json'), 'utf8'));
   const eas = JSON.parse(fs.readFileSync(path.join(raiz, 'eas.json'), 'utf8'));
   assert.deepEqual(expo.runtimeVersion, { policy: 'nativeVersion' });
-  assert.equal(expo.android.versionCode, 23);
+  assert.equal(expo.android.versionCode, 24);
   assert.equal(eas.cli.appVersionSource, 'local', 'nativeVersion necesita la misma versión local al compilar y publicar');
   const { getRuntimeVersionAsync } = require('@expo/config-plugins/build/utils/Updates');
-  assert.equal(await getRuntimeVersionAsync(raiz, expo, 'android'), '1.4.1(23)', 'resuelto por el SDK57 instalado');
+  assert.equal(await getRuntimeVersionAsync(raiz, expo, 'android'), '1.4.2(24)', 'resuelto por el SDK57 instalado');
   assert.equal(expo.updates.enabled, true);
   assert.equal(expo.updates.url, `https://u.expo.dev/${expo.extra.eas.projectId}`);
   assert.equal(expo.updates.checkAutomatically, 'ON_LOAD');

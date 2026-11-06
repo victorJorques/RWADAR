@@ -321,13 +321,44 @@ RWAdar no recibe dinero de inversión ni cobra comisiones en este corte.
 
 ## Actualizaciones actuales e histórico de EAS
 
-**Preparado para el siguiente APK 1.4.1/código23:** Updates habilitado, runtime
-oficial `nativeVersion` que resuelve Android `1.4.1(23)`, canal `production`
-y entorno `production`. EAS usa `appVersionSource=local` y
-`autoIncrement=false`: el código nativo se elige e incrementa explícitamente
-para cada nuevo binario. El perfil `editorial` sigue generando APK para GitHub;
-`production` conserva AAB y no implica una publicación en Google Play.
-La configuración local no demuestra que ese APK se haya compilado o entregado.
+**Preparado para el siguiente APK 1.4.2/código 24 (notificaciones del
+sistema):** Updates habilitado, runtime oficial `nativeVersion` que resuelve
+Android `1.4.2(24)`, canal `production` y entorno `production`. EAS usa
+`appVersionSource=local` y `autoIncrement=false`: el código nativo se elige e
+incrementa explícitamente para cada nuevo binario. El perfil `editorial` sigue
+generando APK para GitHub; `production` conserva AAB y no implica una
+publicación en Google Play. La configuración local no demuestra que ese APK se
+haya compilado o entregado. Guía completa:
+[`APK-1.4.2-NOTIFICACIONES.md`](../docs/tareas/APK-1.4.2-NOTIFICACIONES.md).
+
+- **Permisos:** `POST_NOTIFICATIONS`, `c2dm.permission.RECEIVE` y `WAKE_LOCK`
+  salen de `blockedPermissions`. El resto sigue bloqueado:
+  `RECEIVE_BOOT_COMPLETED`, porque no hay notificaciones locales programadas;
+  las insignias de lanzadores; `SYSTEM_ALERT_WINDOW`; audio; almacenamiento, y
+  *install referrer*. La notificación lleva su icono propio,
+  `assets/notification-icon.png`. `extra.rwadar.pushDeliveryEnabled` pasa a `true`.
+- **Firebase (FCM) sin archivo en Git:** `app.config.js` añade
+  `android.googleServicesFile` solo si existe la variable de EAS
+  `GOOGLE_SERVICES_JSON` (tipo archivo, visibilidad secreta, entorno
+  `production`, el del perfil `editorial`). En la máquina de compilación de EAS
+  (`EAS_BUILD=true`) sin esa variable, la configuración falla a propósito: un
+  APK sin FCM no entregaría nada. En local (`expo start`, `eas update`) no hace
+  falta: la configuración es la de `app.json`. `google-services.json` está en
+  `.gitignore` y `.easignore`; se borra la copia local después de subirlo.
+- **Credencial FCM V1:** clave JSON de una cuenta de servicio de Google Cloud
+  del mismo proyecto de Firebase, subida en `eas credentials -p android` ›
+  *Google Service Account* › *Push Notifications (FCM V1)* (o en expo.dev ›
+  Credentials › Android › `com.rwadar.app`). Sin ella Expo no puede entregar en
+  Android. No se guarda en el repositorio ni en el Vault.
+- **Firebase no arranca solo:** el plugin local
+  `plugins/firebase-sin-autoarranque.js` pone en el `<application>` del
+  manifiesto `firebase_messaging_auto_init_enabled=false` y
+  `firebase_analytics_collection_enabled=false`. El token solo se pide al pulsar
+  «Notificaciones en este móvil» (y en la renovación diaria de un móvil ya
+  activo).
+- **OTA:** desde que se compile la 1.4.2, la base de `ota-android.yml` pasa a
+  ser el commit completo de esa compilación; la 1.4.1 deja de recibir OTA y ve
+  el aviso de la versión nueva por `version-android.json`.
 
 **APK 1.4.0 ya publicado:** contiene Updates desactivado. Hace falta instalar
 una vez el APK nuevo con el mismo paquete y firma para recibir futuras OTA.
@@ -370,7 +401,7 @@ exigen otro binario con otro código. Conservar la fuente del APK para no
 confundir su runtime con el de una compilación futura.
 
 Antes de la primera OTA, comprobar en el APK nuevo canal `production`,
-runtime `1.4.1(23)`, Updates activo, arranque sin conexión y aplicación en la
+runtime `1.4.2(24)`, Updates activo, arranque sin conexión y aplicación en la
 siguiente apertura sin perder datos. Comprobar el plan y la cuota de EAS antes
 de una operación. El plan Free no genera cargos por exceso; no contratar un
 plan ni activar la firma EAS de extremo a extremo, que es de pago, sin permiso.
@@ -383,8 +414,9 @@ como antecedente: no se omite ninguna verificación ni se reutilizan aquellos
 binarios o actualizaciones. La preparación actual usa `nativeVersion`.
 
 Una configuración o un comando escrito no demuestra una OTA recibida. Los
-avisos push siguen desactivados; activarlos requiere su revisión independiente
-de permisos, registro, envío, recepción y retirada de tokens.
+avisos push siguen desactivados en la base (`push_activo = false`) hasta que
+Víctor los encienda con la 1.4.2 publicada y probada en un móvil real
+(permisos, registro, envío, recepción, canales y retirada de tokens).
 
 Fuentes: [Updates SDK57](https://docs.expo.dev/versions/v57.0.0/sdk/updates/),
 [versiones locales y limitaciones](https://docs.expo.dev/build-reference/app-versions/),

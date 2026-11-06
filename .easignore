@@ -7,6 +7,8 @@
 !/rwadar-movil/App.js
 !/rwadar-movil/index.js
 !/rwadar-movil/app.json
+!/rwadar-movil/app.config.js
+!/rwadar-movil/plugins
 !/rwadar-movil/eas.json
 !/rwadar-movil/package.json
 !/rwadar-movil/package-lock.json
