@@ -48,11 +48,21 @@ const una = async (db, sql, p = []) => (await filas(db, sql, p))[0];
 const numero = async (db, sql, p = []) => Number(Object.values(await una(db, sql, p))[0]);
 
 // ---------------------------------------------------------------- textos del contrato
-const VERSION = 'novedades-v1-2026-11-05';
-const TEXTO_ES = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.';
-const TEXTO_EN = "I want to receive RWAdar notices by email and, if I turn them on in my phone, as notifications: new offers on the radar and news about the website and the app. It's optional: the Academy unlocks anyway. You can unsubscribe in every notice or in Profile. More information in Privacy.";
-const AVISO_FIJO = 'RWAdar no intermedia ni recomienda. Aparecer en el radar no es un respaldo y se puede perder lo invertido. Nadie paga por aparecer en este aviso.';
-const FRASE_PLANTILLA = 'Al confirmar activas también los avisos de novedades. Si no lo pediste, no confirmes o date de baja en el primer correo.';
+// Versión v2, de la revisión legal del 06/11/2026: sustituye a la v1, con la
+// que nunca se recogió ningún permiso (la casilla no llegó a enseñarse).
+const VERSION = 'novedades-v2-2026-11-06';
+const VERSION_V1 = 'novedades-v1-2026-11-05';
+const TEXTO_ES = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en Privacidad.';
+const TEXTO_EN = "I want to receive RWAdar notices by email and, if I enable them on my phone, as notifications: new listings on the radar and news about the website and the app. It's optional: the Academy unlocks anyway. You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your phone settings. More information in Privacy.";
+const AVISO_FIJO = 'Información, no recomendación: aparecer en el radar no es un respaldo y puedes perder lo invertido. RWAdar no intermedia y nadie paga por aparecer en este aviso. Consulta en el radar qué ha entrado y con qué fuentes.';
+const FRASE_PLANTILLA = 'Marcaste también la casilla de avisos de novedades: al confirmar tu correo quedarán activados. Si solo querías la cuenta, confírmala igualmente y desactívalos en Perfil.';
+const RESPONSABLE = 'Responsable: Víctor Manuel Jorques Granero, España';
+const PARRAFO_APUNTADO = 'Además, te has apuntado a los avisos de novedades: te avisaremos de las fichas nuevas que entren en el radar y de las novedades de la web y la app. Puedes darte de baja cuando quieras con el enlace del final o en tu Perfil.';
+const CIERRE_HTML = 'Si no creaste esta cuenta, <a href="mailto:RWAdar@protonmail.com" style="color:#0F7A57">escríbenos</a> y la borramos.';
+const CIERRE_TXT = 'Si no creaste esta cuenta, escríbenos a RWAdar@protonmail.com y la borramos.';
+const PIE_HTML = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE} (<a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">aviso legal</a> · <a href="https://rwadar.pages.dev/privacidad" style="color:#555">privacidad</a>).`;
+const PIE_TXT = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE}.`;
+const PUSH_BIENVENIDA = 'Notificaciones activadas en este móvil. Las de novedades solo llegan si las tienes activadas en Perfil.';
 const MAILTO_BAJA = 'mailto:RWAdar@protonmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
 
 const SQL30 = leer('db/30_avisos_registrados.sql');
@@ -78,25 +88,52 @@ try {
    1 · Revisión estática: copia versionada, textos, plantilla, flujo
    ===================================================================== */
 paso('la migración versionada 20261105200000 es una copia idéntica de db/30', MIGRACION30 === SQL30);
-paso('la 30 y su verificador guardan la versión y los textos ES/EN exactos del contrato',
+paso('la 30 y su verificador guardan la versión v2 y los textos ES/EN exactos del contrato, y ya no la v1',
   [SQL30, VERIFICAR30].every((s) => s.includes(`'${VERSION}'`) && s.includes(`'${TEXTO_ES}'`)
-    && s.includes(`'${TEXTO_EN.replace(/'/g, "''")}'`)));
+    && s.includes(`'${TEXTO_EN.replace(/'/g, "''")}'`))
+  && !sinComentarios(SQL30).includes(VERSION_V1) && !VERIFICAR30.includes(VERSION_V1));
 {
-  // El contrato es la fuente de verdad: si está en esta copia, sus citas deben coincidir.
+  // El contrato es la fuente de verdad: si está en esta copia, sus citas deben
+  // coincidir. Cada cita (líneas seguidas que empiezan por «>») se une en una.
   const ruta = path.join(raiz, '..', 'docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md');
   if (fs.existsSync(ruta)) {
     const md = fs.readFileSync(ruta, 'utf8');
-    const cita = (marca) => {
-      const lineas = md.slice(md.indexOf(marca)).split('\n').slice(1);
-      const texto = [];
-      for (const l of lineas) { const m = l.match(/^\s*>\s?(.*)$/); if (!m) break; texto.push(m[1].trim()); }
-      return texto.join(' ');
-    };
-    paso('los textos de la prueba son literalmente las citas del contrato',
-      cita('- Texto en español:') === TEXTO_ES && cita('- Texto en inglés:') === TEXTO_EN
+    const citas = [];
+    let cita = null;
+    for (const l of md.split('\n')) {
+      const m = l.match(/^\s*>\s?(.*)$/);
+      if (m) (cita ??= []).push(m[1].trim());
+      else if (cita) { citas.push(cita.join(' ')); cita = null; }
+    }
+    if (cita) citas.push(cita.join(' '));
+    paso('los textos de la prueba (casilla v2 ES/EN y aviso fijo de ofertas) son literalmente citas del contrato',
+      citas.includes(TEXTO_ES) && citas.includes(TEXTO_EN) && citas.includes(AVISO_FIJO)
       && md.includes(`\`${VERSION}\``));
   } else {
-    console.log('  (el contrato no está en esta copia: se comparan los textos copiados aquí de su versión 2)');
+    console.log('  (el contrato no está en esta copia: se comparan los textos copiados aquí de su versión v2)');
+  }
+}
+{
+  // La web y la app los cambian otros con el mismo texto. Mientras declaren la
+  // v1, solo se avisa; en cuanto declaren la v2, sus textos deben ser estos.
+  // Se quitan etiquetas HTML («Privacidad» puede ser un enlace) y los \' de JS.
+  const plano = (t) => t.replace(/<[^>]+>/g, '').replace(/\\'/g, "'");
+  const lados = [
+    ['la app', ['../rwadar-movil/lib/avisos-cuenta.js', '../rwadar-movil/lib/idioma-en.js'], /VERSION_AVISOS = '([^']+)'/],
+    ['la web', ['../rwadar-site/assets/rwadar-20260820.js', '../rwadar-site/assets/idioma-en-20261022.js',
+      '../rwadar-site/acceso.html', '../rwadar-site/index.html'], /VERSION_AVISOS_NOVEDADES\s*=\s*'([^']+)'/],
+  ];
+  for (const [lado, archivos, patron] of lados) {
+    const rutas = archivos.map((a) => path.join(raiz, a));
+    if (!rutas.every((r) => fs.existsSync(r))) { console.log(`  (${lado} no está en esta copia)`); continue; }
+    const texto = rutas.map((r) => fs.readFileSync(r, 'utf8')).join('\n');
+    const version = texto.match(patron)?.[1];
+    if (version === VERSION_V1) {
+      console.log(`  (${lado} aún declara ${VERSION_V1}: la cambian otros; esta comprobación pasa a exigir los textos al declarar ${VERSION})`);
+      continue;
+    }
+    paso(`${lado} declara ${VERSION} y enseña literalmente los textos ES y EN de la base`,
+      version === VERSION && plano(texto).includes(TEXTO_ES) && plano(texto).includes(TEXTO_EN));
   }
 }
 
@@ -112,6 +149,8 @@ paso('la 30 y su verificador guardan la versión y los textos ES/EN exactos del 
     isDeepStrictEqual(acciones, ['.ConfirmationURL', 'if .Data.avisos_novedades', 'end'])
     && bloque?.[1].includes(FRASE_PLANTILLA)
     && PLANTILLA.replace(bloque?.[0] ?? '', '').search(/avisos de novedades/) === -1);
+  paso('el pie de la plantilla nombra al responsable: «RWAdar · Responsable: Víctor Manuel Jorques Granero, España · Aviso legal»',
+    PLANTILLA.includes(`RWAdar · ${RESPONSABLE} · <a href="https://rwadar.pages.dev/privacidad#aviso-legal"`));
   paso('la plantilla no lleva imágenes, scripts, http:// ni enlaces de seguimiento',
     !/<img|<script|http:\/\/|utm_|track|pixel/i.test(PLANTILLA)
     && enlaces.every((h) => h === '{{ .ConfirmationURL }}' || h.startsWith('https://rwadar.pages.dev/')
@@ -330,6 +369,28 @@ const previaAnonima = await alta(db, 'previa-anonima@ejemplo.test');
 await db.query('update auth.users set email_confirmed_at = null where id = $1', [previaPendiente.id]);
 await db.query('update auth.users set is_anonymous = true where id = $1', [previaAnonima.id]);
 
+// El «ensayo-30» de .github/workflows/avisos-base.yml, montado igual que allí:
+// la 30 sin su última línea (commit;), el verificador sin su begin ni su
+// última línea (rollback;) y un rollback. Debe pasar y no dejar nada.
+{
+  const lineas = (t) => t.replace(/\n$/, '').split('\n');
+  const sinUltima = (t) => lineas(t).slice(0, -1).join('\n') + '\n';
+  const forma = (SQL30.match(/^commit;$/gm) || []).length === 1 && lineas(SQL30).at(-1) === 'commit;'
+    && (VERIFICAR30.match(/^begin transaction read only;$/gm) || []).length === 1 && lineas(VERIFICAR30).at(-1) === 'rollback;';
+  const ensayo = sinUltima(SQL30)
+    + sinUltima(lineas(VERIFICAR30).filter((l) => l !== 'begin transaction read only;').join('\n') + '\n')
+    + 'rollback;\n';
+  await sesion(db);
+  const avisos = [];
+  const e = await error(() => db.exec(ensayo, { onNotice: (n) => avisos.push(n.message) }));
+  if (e) await db.exec('rollback');
+  paso(`el ensayo-30 del flujo «Avisos a registrados (base)» pasa sobre la cadena de producción y no deja nada (${e?.message || 'OK'})`,
+    forma && !e && avisos.some((a) => a.startsWith('RWAdar 30 OK'))
+    && (await una(db, "select to_regnamespace('rwadar_novedades') n")).n === null
+    && (await una(db, "select count(*)::int n from pg_trigger where tgrelid = 'auth.users'::regclass and tgname like 'rwadar_novedades%'")).n === 0
+    && (await una(db, "select count(*)::int n from cron.job where jobname like 'rwadar-novedades%'")).n === 0);
+}
+
 // Privilegios por defecto hostiles mientras se aplica la 30: cualquier objeto
 // nuevo nacería abierto a los clientes. La 30 debe cerrarlo todo ella sola.
 const HOSTIL = `alter default privileges grant execute on functions to anon, authenticated, service_role;
@@ -399,12 +460,22 @@ const pref = async (u) => { await sesion(db); return una(db, 'select * from rwad
       has_table_privilege('authenticated', c.oid, 'SELECT,INSERT,UPDATE,DELETE') aut,
       has_table_privilege('public', c.oid, 'SELECT,INSERT,UPDATE,DELETE') pub
     from pg_class c where c.relnamespace = 'rwadar_novedades'::regnamespace and c.relkind = 'r'`);
-  paso('el esquema privado no tiene usage para clientes; sus 6 tablas, RLS y ningún permiso',
-    !esquema.a && !esquema.b && !esquema.c && tablas.length === 6 && tablas.every((t) => t.rls && !t.anon && !t.aut && !t.pub));
+  paso('el esquema privado no tiene usage para clientes; sus 7 tablas (historial_permiso incluida), RLS y ningún permiso',
+    !esquema.a && !esquema.b && !esquema.c && tablas.length === 7 && tablas.some((t) => t.relname === 'historial_permiso')
+    && tablas.every((t) => t.rls && !t.anon && !t.aut && !t.pub));
+  const baja = funciones.find((f) => f.firma === 'rwadar_novedades.baja_por_correo(text)');
+  paso('rwadar_novedades.baja_por_correo(text) existe y solo la ejecuta el propietario (ni public, ni anon, ni authenticated, ni service_role)',
+    baja && vacio(baja) && !baja.pub && !baja.anon && !baja.aut && !baja.srv);
+  const [historial] = await filas(db, `select
+      (select count(*)::int from pg_constraint where conrelid = 'rwadar_novedades.historial_permiso'::regclass and contype = 'f') fk,
+      (select count(*)::int from pg_trigger where tgrelid = 'auth.users'::regclass and tgname = 'rwadar_novedades_borrado'
+         and (tgtype & 2) = 2 and (tgtype & 8) = 8 and tgfoid = 'rwadar_novedades.al_borrar_cuenta()'::regprocedure) borrado`);
+  paso('historial_permiso no tiene clave ajena a auth.users y hay un disparador BEFORE DELETE en auth.users que lo marca',
+    historial.fk === 0 && historial.borrado === 1);
   const rpc = await filas(db, `select f.firma, p.prosecdef, p.proconfig,
       has_function_privilege('public', p.oid, 'EXECUTE') pub, has_function_privilege('anon', p.oid, 'EXECUTE') anon,
       has_function_privilege('authenticated', p.oid, 'EXECUTE') aut, has_function_privilege('service_role', p.oid, 'EXECUTE') srv
-    from (values ('public.estado_mis_avisos()'), ('public.configurar_avisos_novedades(boolean,text,text)'),
+    from (values ('public.estado_mis_avisos()'), ('public.configurar_avisos_novedades(boolean,text,text,text)'),
       ('public.registrar_aviso_push(text,text)'), ('public.quitar_aviso_push(text)'),
       ('public.mi_aviso_push_registrado(text)'),
       ('public.mis_avisos_recientes(integer)'), ('public.baja_avisos(uuid)')) f(firma)
@@ -412,6 +483,8 @@ const pref = async (u) => { await sesion(db); return una(db, 'select * from rwad
   paso('API pública: las 7 RPC existen, definer con search_path vacío; authenticated sí, public y service_role no',
     rpc.length === 7 && rpc.every((f) => vacio(f) && f.aut && !f.pub && !f.srv));
   paso('anon solo puede ejecutar baja_avisos', rpc.filter((f) => f.anon).map((f) => f.firma).join() === 'public.baja_avisos(uuid)');
+  paso('configurar_avisos_novedades solo existe con su firma nueva de cuatro argumentos (p_idioma opcional): la de tres ya no',
+    (await una(db, "select to_regprocedure('public.configurar_avisos_novedades(boolean,text,text)') v")).v === null);
   const disparadores = await filas(db, `select tgname from pg_trigger
     where tgrelid = 'rwadar_catalogo.revisiones'::regclass and not tgisinternal order by tgname collate "C"`);
   paso('avisar_ofertas_nuevas se dispara antes que fijar_publicacion_v2 (orden alfabético de los AFTER)',
@@ -436,6 +509,33 @@ const pref = async (u) => { await sesion(db); return una(db, 'select * from rwad
   paso('el verificador 30 detecta mi_aviso_push_registrado abierta a anon y la falta de la casilla, de su fecha o de las marcas de bienvenida',
     !v1.ok && /mi_aviso_push_registrado/.test(v1.error) && !v2.ok && /casilla_activada_el o las marcas/.test(v2.error)
     && !v3.ok && /casilla_activada_el o las marcas/.test(v3.error) && (await verificar()).ok);
+
+  // Lo nuevo de la revisión legal: baja_por_correo abierta, disparadores del
+  // historial quitados, una clave ajena que lo borraría con la cuenta, la firma
+  // antigua de configurar, limpiar() que borra anuncios y el filtro antiguo.
+  await sesion(db);
+  const prueba = async (romper, arreglar) => { await sesion(db); await db.exec(romper); const v = await verificar(); await sesion(db); await db.exec(arreglar); return v; };
+  const vBaja = await prueba('grant execute on function rwadar_novedades.baja_por_correo(text) to service_role',
+    'revoke execute on function rwadar_novedades.baja_por_correo(text) from service_role');
+  const vBorrado = await prueba('alter table auth.users disable trigger rwadar_novedades_borrado',
+    'alter table auth.users enable trigger rwadar_novedades_borrado');
+  const vSolo = await prueba('drop trigger historial_solo_anadir on rwadar_novedades.historial_permiso',
+    'create trigger historial_solo_anadir before update or delete on rwadar_novedades.historial_permiso for each row execute function rwadar_novedades.historial_solo_anadir()');
+  const vFk = await prueba('alter table rwadar_novedades.historial_permiso add constraint borra_con_la_cuenta foreign key (usuario_id) references auth.users(id) on delete cascade not valid',
+    'alter table rwadar_novedades.historial_permiso drop constraint borra_con_la_cuenta');
+  const vFirma = await prueba(`create function public.configurar_avisos_novedades(p_activar boolean, p_version text, p_canal text)
+      returns jsonb language sql security definer set search_path = '' as $f$ select '{}'::jsonb $f$`,
+    'drop function public.configurar_avisos_novedades(boolean, text, text)');
+  const limpiarOriginal = SQL30.match(/create or replace function rwadar_novedades\.limpiar\(\)[\s\S]*?\n\$funcion\$;/)[0];
+  const vLimpiar = await prueba(limpiarOriginal.replace('return v_total;', 'delete from rwadar_novedades.anuncios where false;\n  return v_total;'), limpiarOriginal);
+  const vPalabras = await prueba(`alter table rwadar_novedades.anuncios drop constraint anuncio_sin_palabras_vetadas;
+      alter table rwadar_novedades.anuncios add constraint anuncio_sin_palabras_vetadas check ((titulo || ' ' || texto) !~* '(oportunidad|rentabilidad|garantiz|%)')`,
+    SQL30.match(/alter table rwadar_novedades\.anuncios drop constraint if exists anuncio_sin_palabras_vetadas;[\s\S]*?\$palabras_vetadas\$;/)[0]);
+  paso('el verificador 30 detecta baja_por_correo abierta, el disparador de borrado desactivado, sin historial_solo_anadir, una clave ajena en el historial, la firma antigua de configurar, un limpiar() que borra anuncios y el filtro de palabras antiguo',
+    !vBaja.ok && /baja_por_correo/.test(vBaja.error) && !vBorrado.ok && /rwadar_novedades_borrado/.test(vBorrado.error)
+    && !vSolo.ok && /historial_solo_anadir/.test(vSolo.error) && !vFk.ok && /clave ajena/.test(vFk.error)
+    && !vFirma.ok && /firma antigua/.test(vFirma.error) && !vLimpiar.ok && /nunca los anuncios/.test(vLimpiar.error)
+    && !vPalabras.ok && /filtro de palabras/.test(vPalabras.error) && (await verificar()).ok);
 
   // Un disparador de confirmación sin la comprobación de la fecha de envío.
   const original = SQL30.match(/create or replace function rwadar_novedades\.al_confirmar_cuenta\(\)[\s\S]*?\n\$funcion\$;/)[0];
@@ -508,7 +608,10 @@ const altaAuth = (email, meta, confirmada = false) => comoAuth(async () => (awai
   [email, meta === null ? null : JSON.stringify(meta ?? {})]))[0]);
 const confirmarAuth = (u, avisos = []) => comoAuth(() => db.query(
   'update auth.users set email_confirmed_at = now() where id = $1', [u.id], { onNotice: (n) => avisos.push(n) }));
-const META_SI = (canal = 'web') => ({ avisos_novedades: true, avisos_version: VERSION, avisos_canal: canal, nombre: 'x' });
+const META_SI = (canal = 'web', extra = {}) => ({ avisos_novedades: true, avisos_version: VERSION, avisos_canal: canal, nombre: 'x', ...extra });
+// Historial del permiso de una cuenta, en orden (como propietario).
+const historial = async (u) => { await sesion(db); return filas(db, `select accion, version, idioma, origen, canal, correo,
+  creado_el, cuenta_borrada_el from rwadar_novedades.historial_permiso where usuario_id = $1 order by id`, [u.id]); };
 
 {
   const [permisos] = await filas(db, `select has_schema_privilege('supabase_auth_admin','rwadar_novedades','USAGE') u,
@@ -579,10 +682,35 @@ await confirmarAuth(ana);
     (await enviadoEl(ana)) >= (await config()).casilla_activada_el
     && p?.novedades === true && p.origen === 'alta' && p.canal === 'web' && p.version === VERSION && p.aceptado_el instanceof Date
     && p.alta_el instanceof Date && /^[0-9a-f-]{36}$/.test(p.baja_token));
+  const h = await historial(ana);
+  paso('…y el permiso deja su fila en el historial: alta/alta, versión v2, canal web, el correo de ese momento y sin idioma si los metadatos no lo traen',
+    h.length === 1 && h[0].accion === 'alta' && h[0].origen === 'alta' && h[0].version === VERSION && h[0].canal === 'web'
+    && h[0].correo === ana.email && h[0].idioma === null && h[0].creado_el instanceof Date && h[0].cuenta_borrada_el === null);
+}
+{
+  // Idioma del texto que vio: solo 'es' o 'en' como texto JSON; cualquier otra cosa, vacío.
+  const idiomas = [['en', 'en'], ['es', 'es'], ['EN', null], ['fr', null], [true, null], [['en'], null]];
+  const vistos = [];
+  for (const [i, [valor]] of idiomas.entries()) {
+    const u = await altaAuth(`idioma-${i}@ejemplo.test`, META_SI('app', { avisos_idioma: valor }));
+    await confirmarAuth(u);
+    const [fila] = await historial(u);
+    vistos.push(fila?.idioma ?? null);
+    if ((await pref(u))?.novedades !== true) vistos.push('sin permiso');
+  }
+  paso(`el idioma del historial sale de avisos_idioma solo si es 'es' o 'en' (${JSON.stringify(vistos)}); un idioma raro no anula el permiso`,
+    isDeepStrictEqual(vistos, idiomas.map(([, esperado]) => esperado)));
+}
+{
+  // Un alta con el texto v1 (sustituido) ya no cuenta.
+  const conV1 = await altaAuth('con-v1@ejemplo.test', { avisos_novedades: true, avisos_version: VERSION_V1, avisos_canal: 'web' });
+  await confirmarAuth(conV1);
+  paso('unos metadatos con la versión v1 (sustituida) no dan permiso ni dejan fila en el historial',
+    (await pref(conV1))?.novedades === false && (await historial(conV1)).length === 0);
 }
 const nace = await altaAuth('nace@ejemplo.test', META_SI('app'), true);
-paso('una cuenta que nace confirmada (INSERT) recibe preferencias pero NO el permiso',
-  (await pref(nace))?.novedades === false && (await pref(nace)).origen === null);
+paso('una cuenta que nace confirmada (INSERT) recibe preferencias pero NO el permiso, ni fila en el historial',
+  (await pref(nace))?.novedades === false && (await pref(nace)).origen === null && (await historial(nace)).length === 0);
 {
   const grande = { relleno: 'x'.repeat(300000), anidado: Array.from({ length: 2000 }, (_, i) => ({ i, v: [i, `${i}`] })),
     avisos_novedades: 'true', avisos_version: VERSION };
@@ -610,6 +738,9 @@ paso('una cuenta que nace confirmada (INSERT) recibe preferencias pero NO el per
   }
   paso(`metadatos raros (${raros.map((r) => r[0]).join(', ')}): el alta y la confirmación pasan siempre`, todas);
   paso('y ninguno cuenta como permiso: solo el booleano JSON true con la versión vigente', ningunPermiso);
+  await sesion(db);
+  paso('una confirmación sin permiso no deja ninguna fila en el historial',
+    await numero(db, "select count(*) from rwadar_novedades.historial_permiso h join auth.users u on u.id = h.usuario_id where u.email like 'raro-%'") === 0);
 }
 const canalRaro = await altaAuth('canal-raro@ejemplo.test', META_SI('sms'));
 await confirmarAuth(canalRaro);
@@ -645,13 +776,37 @@ paso('una cuenta anónima confirmada no recibe preferencias', !(await pref(anoni
   paso('…y el warning lleva el sqlstate, nunca el mensaje ni el correo',
     avisos2.some((n) => /sqlstate P0001/.test(n.message)) && avisos2.every((n) => !n.message.includes('averia-2@')));
 
+  // Sin el historial (tabla renombrada, o un error con el correo dentro), la
+  // confirmación pasa igual, pero sin la prueba no se guarda el permiso.
+  const avisos3 = [];
+  await sesion(db);
+  await db.exec('alter table rwadar_novedades.historial_permiso rename to historial_permiso_roto');
+  const averia3 = await altaAuth('averia-3@ejemplo.test', META_SI());
+  const e3 = await error(() => confirmarAuth(averia3, avisos3));
+  await sesion(db);
+  await db.exec(`alter table rwadar_novedades.historial_permiso_roto rename to historial_permiso;
+    create function public._rompe_historial() returns trigger language plpgsql as $$
+    begin raise exception 'avería con %', new.correo; end $$;
+    create trigger rompe before insert on rwadar_novedades.historial_permiso for each row execute function public._rompe_historial();`);
+  const avisos4 = [];
+  const averia4 = await altaAuth('averia-4@ejemplo.test', META_SI());
+  const e4 = await error(() => confirmarAuth(averia4, avisos4));
+  await sesion(db);
+  await db.exec('drop trigger rompe on rwadar_novedades.historial_permiso; drop function public._rompe_historial();');
+  paso('con el historial averiado (renombrado, o un error con el correo dentro), la confirmación pasa, sin permiso ni preferencias, y el warning solo lleva el sqlstate',
+    !e3 && !e4 && !(await pref(averia3)) && !(await pref(averia4))
+    && (await una(db, 'select email_confirmed_at from auth.users where id = $1', [averia3.id])).email_confirmed_at instanceof Date
+    && avisos3.some((n) => /sqlstate 42P01/.test(n.message)) && avisos4.some((n) => /sqlstate P0001/.test(n.message))
+    && [...avisos3, ...avisos4].every((n) => !/averia-[34]@/.test(n.message)));
+
   const v = await verificar();
   paso('el verificador 30 detecta las cuentas confirmadas que se quedaron sin preferencias',
     !v.ok && /cuentas confirmadas sin preferencias/.test(v.error));
   await sesion(db);
   const rellenadas = await numero(db, 'select rwadar_novedades.rellenar()');
   paso(`el relleno las completa con novedades = false (${rellenadas}) y el verificador vuelve a pasar`,
-    rellenadas === 3 && (await pref(averia1))?.novedades === false && (await pref(averia2))?.novedades === false
+    rellenadas === 5 && (await pref(averia1))?.novedades === false && (await pref(averia2))?.novedades === false
+    && (await pref(averia4))?.novedades === false && (await historial(averia4)).length === 0
     && (await verificar()).ok);
 }
 
@@ -747,20 +902,122 @@ const token = (n) => `ExponentPushToken[${`prueba${n}`.padEnd(22, 'x')}]`;
     && d.aceptado_el === null && d.dispositivos === 0);
   const malos = await Promise.all([
     codigo(() => db.query("select public.configurar_avisos_novedades(true, 'novedades-v0', 'web')")),
+    codigo(() => db.query("select public.configurar_avisos_novedades(true, $1, 'web')", [VERSION_V1])),
     codigo(() => db.query('select public.configurar_avisos_novedades(true, $1, null)', [VERSION])),
     codigo(() => db.query("select public.configurar_avisos_novedades(true, $1, 'sms')", [VERSION])),
     codigo(() => db.query("select public.configurar_avisos_novedades(null, $1, 'web')", [VERSION])),
+    codigo(() => db.query("select public.configurar_avisos_novedades(true, $1, 'web', 'fr')", [VERSION])),
+    codigo(() => db.query("select public.configurar_avisos_novedades(true, $1, 'web', 'ES')", [VERSION])),
   ]);
-  paso('para activar hacen falta la versión vigente y un canal web/app (22023/22004)',
-    isDeepStrictEqual(malos, ['22023', '22023', '22023', '22004']));
+  paso('para activar hacen falta la versión vigente (la v1 ya no), un canal web/app y, si se da, un idioma es/en (22023/22004)',
+    isDeepStrictEqual(malos, ['22023', '22023', '22023', '22023', '22004', '22023', '22023'])
+    && (await historial(eva)).length === 0);
+  await como(eva);
   const activado = (await rpc("select public.configurar_avisos_novedades(true, $1, 'app') e", [VERSION])).e;
   const p = await pref(eva);
-  paso('activar en Perfil crea la fila y guarda permiso, versión, fecha, origen «perfil» y canal «app»',
+  paso('activar en Perfil con tres argumentos (las llamadas de hoy) crea la fila y guarda permiso, versión, fecha, origen «perfil» y canal «app»',
     activado.novedades === true && p.novedades && p.origen === 'perfil' && p.canal === 'app' && p.aceptado_el instanceof Date);
+  const h = await historial(eva);
+  paso('…y deja en el historial alta/perfil, versión v2, canal app, el correo y sin idioma',
+    h.length === 1 && h[0].accion === 'alta' && h[0].origen === 'perfil' && h[0].version === VERSION && h[0].canal === 'app'
+    && h[0].idioma === null && h[0].correo === eva.email);
   await como(nace);
   await rpc("select public.configurar_avisos_novedades(true, $1, 'web') e", [VERSION]);
   const apagado = (await rpc('select public.configurar_avisos_novedades(false, null, null) e')).e;
   paso('desactivar quita el permiso y anota la baja', apagado.novedades === false && (await pref(nace)).baja_el instanceof Date);
+  paso('en el historial de esa cuenta: alta/perfil y baja/perfil (con la versión retirada)',
+    isDeepStrictEqual((await historial(nace)).map((f) => [f.accion, f.origen, f.version]),
+      [['alta', 'perfil', VERSION], ['baja', 'perfil', VERSION]]));
+}
+
+/* ---------------------------------------------------------------------
+   5b · Historial del permiso (solo de añadir) y baja por correo
+   --------------------------------------------------------------------- */
+{
+  // alta (casilla del alta, en inglés) → baja (enlace) → alta (Perfil, en español): 3 filas.
+  const hilo = await altaAuth('Historia.Permiso@Ejemplo.test', META_SI('web', { avisos_idioma: 'en' }));
+  await confirmarAuth(hilo);
+  const tokenHilo = (await pref(hilo)).baja_token;
+  await sesion(db, null, 'anon');
+  const bajaEnlace = (await rpc('select public.baja_avisos($1) b', [tokenHilo])).b;
+  await como(hilo);
+  const reactivado = (await rpc("select public.configurar_avisos_novedades(true, $1, 'app', 'es') e", [VERSION])).e;
+  const tres = await historial(hilo);
+  paso('alta → baja → alta deja 3 filas: alta/alta (web, en), baja/enlace (con la versión retirada) y alta/perfil (app, es), con el correo',
+    bajaEnlace === true && reactivado.novedades === true
+    && isDeepStrictEqual(tres.map((f) => [f.accion, f.origen, f.version, f.canal, f.idioma]),
+      [['alta', 'alta', VERSION, 'web', 'en'], ['baja', 'enlace', VERSION, null, null], ['alta', 'perfil', VERSION, 'app', 'es']])
+    && tres.every((f) => f.correo === hilo.email && f.cuenta_borrada_el === null)
+    && tres[0].creado_el <= tres[1].creado_el && tres[1].creado_el <= tres[2].creado_el);
+  // Solo un cambio de estado deja fila en Perfil.
+  await como(hilo);
+  const aceptado = (await pref(hilo)).aceptado_el.getTime();
+  await como(hilo);
+  await rpc("select public.configurar_avisos_novedades(true, $1, 'web', 'en') e", [VERSION]);
+  const trasRepetir = await historial(hilo);
+  const aceptadoTras = (await pref(hilo)).aceptado_el.getTime();
+  await como(hilo);
+  await rpc("select public.configurar_avisos_novedades(false, null, 'app', 'es') e");
+  await rpc('select public.configurar_avisos_novedades(false, null, null) e');
+  const trasBajas = await historial(hilo);
+  paso('en Perfil, activar ya activado no cambia nada (ni fila nueva ni fecha del permiso); desactivar dos veces deja una sola baja/perfil',
+    trasRepetir.length === 3 && aceptadoTras === aceptado
+    && trasBajas.length === 4 && isDeepStrictEqual([trasBajas[3].accion, trasBajas[3].origen, trasBajas[3].version,
+      trasBajas[3].canal, trasBajas[3].idioma], ['baja', 'perfil', VERSION, 'app', 'es']));
+
+  // Baja por correo: solo el propietario; sin distinguir mayúsculas.
+  await como(hilo);
+  await rpc("select public.configurar_avisos_novedades(true, $1, 'web') e", [VERSION]);
+  const cerradas = [];
+  for (const rol of ['anon', 'authenticated', 'service_role']) {
+    await sesion(db, null, rol);
+    cerradas.push(await codigo(() => db.query("select rwadar_novedades.baja_por_correo('historia.permiso@ejemplo.test')")));
+  }
+  paso('anon, authenticated y service_role no pueden ejecutar baja_por_correo (42501)', cerradas.every((c) => c === '42501'));
+  await sesion(db);
+  const encontrada = (await una(db, "select rwadar_novedades.baja_por_correo('  HISTORIA.permiso@EJEMPLO.TEST ') b")).b;
+  const ph = await pref(hilo);
+  const todas = await historial(hilo);
+  const hc = todas.at(-1);
+  paso('baja_por_correo (propietario) encuentra la cuenta sin distinguir mayúsculas: novedades = false, baja_el y fila baja/correo con la versión retirada',
+    encontrada === true && ph.novedades === false && ph.baja_el instanceof Date
+    && hc.accion === 'baja' && hc.origen === 'correo' && hc.version === VERSION && hc.correo === hilo.email
+    && todas.length === 6);
+  await sesion(db);
+  const ninguna = [];
+  for (const c of ['nadie@ejemplo.test', '', '   ', null]) ninguna.push((await una(db, 'select rwadar_novedades.baja_por_correo($1) b', [c])).b);
+  paso('baja_por_correo con un correo que no es de ninguna cuenta, vacío o nulo devuelve false y no deja nada',
+    ninguna.every((b) => b === false)
+    && await numero(db, "select count(*) from rwadar_novedades.historial_permiso where origen = 'correo'") === 1);
+  // Una cuenta aún sin confirmar que pide la baja por correo: queda dada de
+  // baja y confirmar después (con la casilla marcada) no la apunta.
+  const sinConfirmar = await altaAuth('pide-baja@ejemplo.test', META_SI('web'));
+  await sesion(db);
+  const deSinConfirmar = (await una(db, "select rwadar_novedades.baja_por_correo('pide-baja@ejemplo.test') b")).b;
+  await confirmarAuth(sinConfirmar);
+  paso('una cuenta sin confirmar que pide la baja por correo queda dada de baja: confirmar después con la casilla marcada no la apunta',
+    deSinConfirmar === true && (await pref(sinConfirmar))?.novedades === false && (await pref(sinConfirmar)).baja_el instanceof Date
+    && isDeepStrictEqual((await historial(sinConfirmar)).map((f) => [f.accion, f.origen, f.version]), [['baja', 'correo', null]]));
+
+  // Solo de añadir: ni cambiar una fila, ni borrarla (cuenta viva), ni quitar la marca.
+  await sesion(db);
+  const cambios = [];
+  for (const [sql, params] of [
+    ['update rwadar_novedades.historial_permiso set correo = $2 where usuario_id = $1', [hilo.id, 'otro@ejemplo.test']],
+    ["update rwadar_novedades.historial_permiso set accion = 'alta', version = $2 where usuario_id = $1 and accion = 'baja'", [hilo.id, VERSION]],
+    ['delete from rwadar_novedades.historial_permiso where usuario_id = $1', [hilo.id]],
+    ["update rwadar_novedades.historial_permiso set cuenta_borrada_el = now() - interval '4 years', correo = null where usuario_id = $1", [hilo.id]],
+  ]) cambios.push(await codigo(() => db.query(sql, params)));
+  paso('el historial es solo de añadir: cambiar una fila, borrarla o marcarla y cambiarla a la vez lo impide la base (42501)',
+    cambios.every((c) => c === '42501') && (await historial(hilo)).length === 6);
+  await sesion(db);
+  const insertar = (accion, origen, extra = {}) => codigo(() => db.query(`insert into rwadar_novedades.historial_permiso
+    (usuario_id, accion, origen, version, idioma, canal) values ($1, $2, $3, $4, $5, $6)`,
+  [hilo.id, accion, origen, extra.version ?? null, extra.idioma ?? null, extra.canal ?? null]));
+  const malas = [await insertar('alta', 'perfil'), await insertar('cambio', 'perfil'), await insertar('baja', 'sms'),
+    await insertar('baja', 'perfil', { idioma: 'fr' }), await insertar('baja', 'perfil', { canal: 'sms' })];
+  paso('un alta sin versión, o una acción, origen, idioma o canal fuera de lista, lo impide la base (23514)',
+    malas.every((c) => c === '23514') && (await historial(hilo)).length === 6);
 }
 {
   await como(luis);
@@ -854,10 +1111,24 @@ const token = (n) => `ExponentPushToken[${`prueba${n}`.padEnd(22, 'x')}]`;
     await anunciar('ofertas', 'ofertas:a-mano', '3 fichas nuevas', 'Texto') === '22023');
   paso('anunciar no repite claves', await anunciar('novedad', 'novedad:antes-de-activar', 'Otro título', 'Otro texto') === '23505');
   const vetados = [['Una gran oportunidad', 'Texto'], ['Novedad', 'Mejor RENTABILIDAD'], ['Novedad', 'Retorno garantizado'],
-    ['Novedad', 'Sube un 5 %'], ['Oportunidades nuevas', 'x y z']];
+    ['Novedad', 'Sube un 5 %'], ['Oportunidades nuevas', 'x y z'],
+    // Ampliación de la revisión legal (06/11/2026), sin distinguir mayúsculas.
+    ['Novedad', 'Buen RENDIMIENTO'], ['Novedad', 'Hasta 7 APY'], ['Novedad', 'Un apr fijo'], ['Novedad', 'Inversión sin  riesgo'],
+    ['Acceso EXCLUSIVO', 'Texto'], ['Novedad', 'Últimas plazas'], ['Novedad', 'ULTIMAS PLAZAS'], ['No te lo pierdas', 'Texto'],
+    ['Novedad', 'Gana dinero'], ['Novedad', 'Ganancias para todos'], ['Novedad', 'Un regalo'], ['Novedad', 'Bono de entrada'],
+    ['Novedad', 'Descuentos'], ['Novedad', 'Plataforma autorizada'], ['NOVEDAD', 'AUTORIZADOS']];
   const codigosVetados = [];
   for (const [i, [t, x]] of vetados.entries()) codigosVetados.push(await anunciar('novedad', `novedad:vetada-${i}`, t, x));
-  paso('filtro de palabras: sin «oportunidad», «rentabilidad», «garantiz…» ni % (23514)', codigosVetados.every((c) => c === '23514'));
+  paso(`filtro de palabras (${vetados.length} vetados): sin «oportunidad», «rentabilidad», «garantiz…», %, «rendimiento», APY, APR, «sin riesgo», «exclusiv…», «últimas plazas», «no te lo pierdas», «gana…», «regalo», «bono», «descuento» ni «autorizad…» (23514)`,
+    codigosVetados.every((c) => c === '23514'));
+  // Límites de palabra: las raíces no atrapan palabras inocentes.
+  const inocentes = [['Nueva lección: bonos tokenizados', 'Aprende cómo se organiza la Academy: su organización y los abonos.'],
+    ['Aprende con la Academy', 'Las veganas y los paganos no son palabras vetadas; APRENDER tampoco.']];
+  const codigosInocentes = [];
+  for (const [i, [t, x]] of inocentes.entries()) codigosInocentes.push(await anunciar('novedad', `novedad:inocente-${i}`, t, x));
+  paso('con límites de palabra: «bonos», «abonos», «aprende», «organización» y «veganas» pasan el filtro',
+    codigosInocentes.every((c) => c === null));
+  await db.exec("delete from rwadar_novedades.anuncios where clave like 'novedad:inocente-%'");
   const enlaces = ['http://rwadar.pages.dev/', 'https://rwadar.pages.dev.evil.example/', 'https://rwadar.pages.dev@evil.example/',
     'https://evil.example/', 'https://rwadar.pages.dev/a b', 'https://rwadar.pages.dev/"><b>', `https://rwadar.pages.dev/${'a'.repeat(190)}`,
     'javascript:alert(1)', 'https://RWADAR.pages.dev/'];
@@ -966,9 +1237,10 @@ const HOY = (await una(db, "select to_char(current_date, 'YYYY-MM-DD') d")).d;
   paso('un lote inventado con una oferta nueva crea 1 anuncio de ofertas, retenido, con la clave del día',
     (await anunciosOfertas()).length === 1 && anuncio.estado === 'retenido' && anuncio.clave === `ofertas:${HOY}`
     && anuncio.publicado_el === null && puntero === anuncio.revision_id);
-  paso('plantilla cerrada: «1 ficha nueva en el radar de RWAdar», enlace a #emisiones y el aviso fijo, sin nombres de productos',
+  paso('plantilla cerrada: «1 ficha nueva en el radar de RWAdar», enlace a #emisiones y el aviso fijo nuevo, con el riesgo delante, sin nombres de productos',
     anuncio.titulo === '1 ficha nueva en el radar de RWAdar' && anuncio.enlace === 'https://rwadar.pages.dev/#emisiones'
-    && anuncio.texto.endsWith(AVISO_FIJO) && !/inventada|Spiko|Brickwise/i.test(anuncio.titulo + anuncio.texto));
+    && anuncio.texto === AVISO_FIJO && anuncio.texto.startsWith('Información, no recomendación: aparecer en el radar no es un respaldo y puedes perder lo invertido.')
+    && !/inventada|Spiko|Brickwise/i.test(anuncio.titulo + anuncio.texto));
   paso('el disparador vio el puntero viejo y no repartió nada: colas vacías', await colas() === 0);
   await como(ana);
   const lista = (await filas(db, 'select * from public.mis_avisos_recientes(50)')).map((f) => f.mis_avisos_recientes);
@@ -1108,6 +1380,8 @@ let n1;
   paso('el título y el texto van escapados en el HTML; el asunto, tal cual',
     html.includes('Avisos &amp; &lt;mejoras&gt; en la app') && html.includes('elegir &quot;qué&quot; avisos')
     && !html.includes('<mejoras>') && aAna.body.subject === 'Avisos & <mejoras> en la app');
+  paso('pie de todos los correos: quién envía, con el titular (Víctor Manuel Jorques Granero, España), aviso legal y privacidad, en HTML y en texto',
+    correos.every((c) => c.body.htmlContent.includes(PIE_HTML) && c.body.textContent.includes(`\n--\n${PIE_TXT}\nAviso legal: https://rwadar.pages.dev/privacidad#aviso-legal\nPrivacidad: https://rwadar.pages.dev/privacidad\n`)));
   paso('pie: quién envía (aviso legal y privacidad), por qué lo recibe y la baja por enlace y mailto',
     html.includes('Te escribe RWAdar') && html.includes('href="https://rwadar.pages.dev/privacidad#aviso-legal"')
     && html.includes('href="https://rwadar.pages.dev/privacidad"') && html.includes('te apuntaste a los avisos de novedades')
@@ -1121,32 +1395,35 @@ let n1;
   volcarCorreo('bienvenida-con-avisos', bienvenidaSi);
   volcarCorreo('bienvenida-sin-avisos', bienvenidaNo);
   volcarCorreo('anuncio-novedad', aAna);
-  paso('bienvenida: Academy gratis con enlace a /academy/, sin ofertas ni número de lecciones, y «Si no creaste esta cuenta, escríbenos o bórrala»',
+  paso('bienvenida: Academy gratis con enlace a /academy/, sin ofertas ni número de lecciones, y «Si no creaste esta cuenta, escríbenos y la borramos»',
     [bienvenidaSi, bienvenidaNo].every((b) => b && b.body.subject === 'Te damos la bienvenida a RWAdar'
       && b.body.htmlContent.includes('href="https://rwadar.pages.dev/academy/"') && b.body.htmlContent.includes('Academy')
       && !/\d+\s*lecciones|oportunidad|rentabilidad|\/ofertas\/|#emisiones/i.test(b.body.htmlContent)
-      && b.body.textContent.includes('Si no creaste esta cuenta, escríbenos o bórrala')
-      && /Si no creaste esta cuenta, <a href="mailto:RWAdar@protonmail.com"[^>]*>escríbenos<\/a> o bórrala\./.test(b.body.htmlContent)));
+      && b.body.textContent.includes(`\n\n${CIERRE_TXT}\n\n--\n`) && b.body.htmlContent.includes(CIERRE_HTML)
+      && !/bórrala/.test(b.body.htmlContent + b.body.textContent)));
   paso('bienvenida a quien NO se apuntó: sin List-Unsubscribe, sin baja y sin invitar a apuntarse',
     !('List-Unsubscribe' in bienvenidaNo.body.headers) && !bienvenidaNo.body.htmlContent.includes('baja?t=')
     && !/apunta|avisos de novedades/i.test(bienvenidaNo.body.htmlContent));
-  paso('bienvenida a quien se apuntó: confirma la suscripción, con List-Unsubscribe y enlace de baja',
-    'List-Unsubscribe' in bienvenidaSi.body.headers && bienvenidaSi.body.htmlContent.includes('te has apuntado a los avisos de novedades')
+  paso('bienvenida a quien se apuntó: confirma la suscripción con el párrafo nuevo (fichas, no ofertas), con List-Unsubscribe y enlace de baja',
+    'List-Unsubscribe' in bienvenidaSi.body.headers && bienvenidaSi.body.htmlContent.includes(`${PARRAFO_APUNTADO}</p>`)
+    && bienvenidaSi.body.textContent.includes(`\n\n${PARRAFO_APUNTADO}\n\n`) && !/ofertas nuevas/.test(bienvenidaSi.body.htmlContent)
     && bienvenidaSi.body.htmlContent.includes(`baja?t=${(await pref(nueva)).baja_token}`));
 
   const pushes = await peticiones(antes, EXPO);
   const deAna = pushes.filter((p) => p.body.to === TOKEN_ANA);
   const anuncioAna = deAna.find((p) => p.body.data.tipo === 'novedad');
-  paso('Expo: canal «novedades», data exactamente {tipo, destino} y sin Authorization si no hay EXPO_ACCESS_TOKEN',
-    pushes.length === 4 && pushes.every((p) => p.body.channelId === 'novedades' && Object.keys(p.body.data).sort().join() === 'destino,tipo'
+  paso('Expo: canales de Android separados (bienvenida por «cuenta», anuncios por «novedades»), data exactamente {tipo, destino} y sin Authorization si no hay EXPO_ACCESS_TOKEN',
+    pushes.length === 4 && pushes.every((p) => p.body.channelId === (p.body.data.tipo === 'bienvenida' ? 'cuenta' : 'novedades')
+      && Object.keys(p.body.data).sort().join() === 'destino,tipo'
       && ['inicio', 'buscar', 'academy'].includes(p.body.data.destino) && !('authorization' in p.headers))
     && isDeepStrictEqual(anuncioAna?.body.data, { tipo: 'novedad', destino: 'academy' })
     && anuncioAna.body.title === 'Avisos & <mejoras> en la app');
   paso('ningún push lleva datos personales (ni correo ni id de cuenta)',
     pushes.every((p) => ![ana, luis, eva].some((u) => JSON.stringify(p.body).includes(u.email) || JSON.stringify(p.body).includes(u.id))));
-  paso('la bienvenida por push va a la Academy: data {tipo: bienvenida, destino: academy}',
+  paso('la bienvenida por push va a la Academy con el texto nuevo: data {tipo: bienvenida, destino: academy}, canal «cuenta»',
     pushes.filter((p) => p.body.data.tipo === 'bienvenida').length === 2
-    && pushes.filter((p) => p.body.data.tipo === 'bienvenida').every((p) => p.body.data.destino === 'academy'));
+    && pushes.filter((p) => p.body.data.tipo === 'bienvenida').every((p) => p.body.data.destino === 'academy'
+      && p.body.title === 'RWAdar' && p.body.body === PUSH_BIENVENIDA && p.body.channelId === 'cuenta'));
   paso('una segunda vuelta no reparte ni envía nada de nuevo', await (async () => {
     const desde = await ultimaPeticion();
     await procesar();
@@ -1337,7 +1614,10 @@ let n1;
       where estado in ('aceptado','descartado','fallido','incierto');
     update rwadar_novedades.pushes set terminado_el = now() - interval '91 days', creado_el = now() - interval '91 days'
       where estado in ('aceptado','descartado','fallido');
-    update rwadar_novedades.dispositivos set actualizado_el = now() - interval '181 days' where usuario_id = '${luis.id}'`);
+    update rwadar_novedades.dispositivos set actualizado_el = now() - interval '181 days' where usuario_id = '${luis.id}';
+    update rwadar_novedades.anuncios set creado_el = now() - interval '4 years', publicado_el = now() - interval '4 years'
+      where clave = 'novedad:viejo'`);
+  const anunciosAntes = await numero(db, 'select count(*) from rwadar_novedades.anuncios');
   const terminadas = `select (select count(*) from rwadar_novedades.correos where estado in ('aceptado','descartado','fallido','incierto'))
     + (select count(*) from rwadar_novedades.pushes where estado in ('aceptado','descartado','fallido'))`;
   const bienvenidasTerminadas = await numero(db, `select
@@ -1347,6 +1627,10 @@ let n1;
   paso(`limpieza: colas terminadas a los 90 días, también ${bienvenidasTerminadas} bienvenidas, y móviles sin actualizar a los 180 (${r.limpiados} filas)`,
     bienvenidasTerminadas === 3 && await numero(db, terminadas) === 0
     && await numero(db, 'select count(*) from rwadar_novedades.dispositivos where usuario_id = $1', [luis.id]) === 0);
+  paso(`la tabla de anuncios no se limpia nunca (copia de cada aviso para posibles requerimientos): siguen los ${anunciosAntes}, también uno de hace 4 años`,
+    anunciosAntes > 0 && await numero(db, 'select count(*) from rwadar_novedades.anuncios') === anunciosAntes
+    && await numero(db, "select count(*) from rwadar_novedades.anuncios where clave = 'novedad:viejo'") === 1
+    && !/delete\s+from\s+rwadar_novedades\.anuncios/i.test(sinComentarios(SQL30)));
   // nueva-2 vuelve a confirmar el correo y luis registra otro móvil: sus
   // bienvenidas ya se encolaron y la cola se limpió; las marcas lo impiden.
   const nueva2 = await una(db, "select id, email from auth.users where email = 'nueva-2@ejemplo.test'");
@@ -1393,6 +1677,73 @@ let n1;
     && await numero(db, 'select count(*) from auth.users where id = $1', [ana.id]) === 0);
   paso('los anuncios y las filas de otras cuentas se conservan',
     await numero(db, 'select count(*) from rwadar_novedades.anuncios') === anuncios && (await filasDe(nace)).p === 1);
+
+  // El historial del permiso sobrevive al borrado, bloqueado (LOPDGDD art. 32).
+  const hAna = await historial(ana);
+  paso(`borrar la cuenta conserva su historial del permiso (${hAna.length} fila/s), con el correo y cuenta_borrada_el`,
+    hAna.length >= 1 && hAna.every((f) => f.cuenta_borrada_el instanceof Date && f.correo === ana.email)
+    && hAna[0].accion === 'alta' && hAna[0].version === VERSION);
+  await sesion(db);
+  await numero(db, 'select rwadar_novedades.limpiar()');
+  const vTras = await verificar();
+  paso('limpiar() no borra ese historial recién bloqueado y el verificador 30 sigue pasando',
+    (await historial(ana)).length === hAna.length && vTras.ok);
+
+  // Con el historial averiado, el borrado pasa igual (y el warning no lleva el correo).
+  const hEva = (await historial(eva)).length;
+  await sesion(db);
+  await db.exec(`create function public._rompe_historial() returns trigger language plpgsql as $$
+      begin raise exception 'avería con %', old.correo; end $$;
+    create trigger rompe before update on rwadar_novedades.historial_permiso for each row execute function public._rompe_historial();`);
+  await como(eva);
+  const avisosBorrado = [];
+  const eBorrado = await error(() => db.query('select public.borrar_mi_cuenta()', [], { onNotice: (n) => avisosBorrado.push(n.message) }));
+  await sesion(db);
+  await db.exec('drop trigger rompe on rwadar_novedades.historial_permiso; drop function public._rompe_historial();');
+  const sinMarca = await historial(eva);
+  paso(`con el disparador de borrado averiado (un error con el correo dentro), borrar_mi_cuenta borra la cuenta igual; solo un warning con el sqlstate (${hEva} fila/s sin marcar)`,
+    !eBorrado && await numero(db, 'select count(*) from auth.users where id = $1', [eva.id]) === 0
+    && hEva >= 2 && sinMarca.length === hEva && sinMarca.every((f) => f.cuenta_borrada_el === null)
+    && avisosBorrado.some((a) => /historial sin marcar al borrar la cuenta \(sqlstate P0001\)/.test(a))
+    && avisosBorrado.every((a) => !a.includes(eva.email)));
+  await numero(db, 'select rwadar_novedades.limpiar()');
+  paso('limpiar() marca después las filas que se quedaron sin cuenta (el plazo cuenta desde ese día)',
+    (await historial(eva)).every((f) => f.cuenta_borrada_el instanceof Date) && (await historial(eva)).length === hEva);
+
+  // A los 3 años de borrar la cuenta, fuera; antes no, y nunca de una cuenta viva.
+  await sesion(db);
+  const vivo = await una(db, "select id from auth.users where email = 'Historia.Permiso@Ejemplo.test'");
+  const hVivo = await numero(db, 'select count(*) from rwadar_novedades.historial_permiso where usuario_id = $1', [vivo.id]);
+  await db.exec('alter table rwadar_novedades.historial_permiso disable trigger historial_solo_anadir');
+  await db.query(`update rwadar_novedades.historial_permiso set cuenta_borrada_el = now() - interval '3 years' - interval '1 day'
+    where usuario_id = $1`, [ana.id]);
+  await db.query(`update rwadar_novedades.historial_permiso set cuenta_borrada_el = now() - interval '3 years' + interval '1 day'
+    where usuario_id = $1`, [eva.id]);
+  await db.query(`update rwadar_novedades.historial_permiso set creado_el = now() - interval '5 years' where usuario_id = $1`, [vivo.id]);
+  // Una marca puesta por error a una cuenta viva: limpiar() tampoco la borra.
+  await db.query(`insert into rwadar_novedades.historial_permiso (usuario_id, accion, origen, cuenta_borrada_el)
+    values ($1, 'baja', 'correo', now() - interval '4 years')`, [nace.id]);
+  await db.exec('alter table rwadar_novedades.historial_permiso enable trigger historial_solo_anadir');
+  const borradas = await numero(db, 'select rwadar_novedades.limpiar()');
+  paso(`limpiar() borra el historial de las cuentas borradas hace más de 3 años (${hAna.length} fila/s de ana), no el de hace menos (eva) ni el de cuentas vivas, aunque sea de hace 5 años o lleve una marca`,
+    borradas >= hAna.length && (await historial(ana)).length === 0 && (await historial(eva)).length === hEva
+    && await numero(db, 'select count(*) from rwadar_novedades.historial_permiso where usuario_id = $1', [vivo.id]) === hVivo
+    && await numero(db, 'select count(*) from rwadar_novedades.historial_permiso where usuario_id = $1 and cuenta_borrada_el is not null', [nace.id]) === 1);
+  const eLimpia = await codigo(() => db.query('delete from rwadar_novedades.historial_permiso where usuario_id = $1', [eva.id]));
+  paso('y el disparador solo_anadir no deja borrar a mano el historial de una cuenta borrada hace menos de 3 años (42501)',
+    eLimpia === '42501' && (await historial(eva)).length === hEva);
+  await db.exec('alter table rwadar_novedades.historial_permiso disable trigger historial_solo_anadir');
+  await db.query('delete from rwadar_novedades.historial_permiso where usuario_id = $1 and cuenta_borrada_el is not null', [nace.id]);
+  await db.exec('alter table rwadar_novedades.historial_permiso enable trigger historial_solo_anadir');
+
+  // Borrar desde el panel o la API de administración (GoTrue, con su rol): igual.
+  const porAuth = await una(db, "select id, email from auth.users where email = 'idioma-0@ejemplo.test'");
+  const hPorAuth = (await historial(porAuth)).length;
+  const ePorAuth = await error(() => comoAuth(() => db.query('delete from auth.users where id = $1', [porAuth.id])));
+  const tras = await historial(porAuth);
+  paso('borrar la cuenta con el rol de Auth (supabase_auth_admin, sin permisos sobre rwadar_novedades) también deja su historial bloqueado',
+    !ePorAuth && hPorAuth === 1 && tras.length === 1 && tras[0].cuenta_borrada_el instanceof Date && tras[0].correo === porAuth.email
+    && await numero(db, 'select count(*) from auth.users where id = $1', [porAuth.id]) === 0);
 }
 
 /* =====================================================================
@@ -1480,6 +1831,33 @@ let n1;
     v1.ok && /casilla del alta inactiva, correo encendido/.test(v1.aviso) && AVISO_CASILLA.test(v1.avisoCasilla || ''));
   paso('después, confirmar con la casilla marcada ya no guarda el permiso; los ya guardados siguen valiendo',
     (await pref(trasRetirar))?.novedades === false && (await pref(trasApagar)).novedades === true);
+
+  // Un anuncio guardado con el filtro antiguo (p. ej., «rendimiento») no
+  // impide reaplicar la 30: se conserva tal cual (copia de lo enviado), el
+  // filtro nuevo queda sin validar y avisa, y ese anuncio ya no se publica.
+  await sesion(db);
+  await db.exec(`alter table rwadar_novedades.anuncios drop constraint anuncio_sin_palabras_vetadas;
+    alter table rwadar_novedades.anuncios add constraint anuncio_sin_palabras_vetadas check ((titulo || ' ' || texto) !~* '(oportunidad|rentabilidad|garantiz|%)');
+    insert into rwadar_novedades.anuncios (tipo, clave, estado, titulo, texto, enlace)
+    values ('actualizacion', 'actualizacion:filtro-antiguo', 'retenido', 'Mejoras de rendimiento', 'La app va más rápida.', 'https://rwadar.pages.dev/')`);
+  const avisosReaplicar = [];
+  const eReaplicar = await error(() => db.exec(SQL30, { onNotice: (n) => avisosReaplicar.push(n.message) }));
+  if (eReaplicar) await db.exec('rollback');
+  await sesion(db);
+  const antiguo = await una(db, "select id, titulo from rwadar_novedades.anuncios where clave = 'actualizacion:filtro-antiguo'");
+  const filtro = await una(db, `select convalidated v, pg_get_constraintdef(oid) d from pg_constraint
+    where conrelid = 'rwadar_novedades.anuncios'::regclass and conname = 'anuncio_sin_palabras_vetadas'`);
+  const ePublicar = await codigo(() => db.query('select rwadar_novedades.publicar_anuncio($1)', [antiguo?.id]));
+  const vAntiguo = await verificar();
+  paso(`reaplicar la 30 con un anuncio antiguo que el filtro nuevo veta: pasa, lo conserva, avisa, y ese anuncio ya no se publica (${ePublicar})`,
+    !eReaplicar && antiguo?.titulo === 'Mejoras de rendimiento' && filtro.v === false && /autorizad/.test(filtro.d)
+    && avisosReaplicar.some((a) => /anuncios guardados con palabras ahora vetadas/.test(a))
+    && ePublicar === '23514' && vAntiguo.ok);
+  await db.query('delete from rwadar_novedades.anuncios where id = $1', [antiguo.id]);
+  await db.exec(SQL30);
+  paso('sin ese anuncio, reaplicar la 30 valida el filtro nuevo',
+    (await una(db, `select convalidated v from pg_constraint
+      where conrelid = 'rwadar_novedades.anuncios'::regclass and conname = 'anuncio_sin_palabras_vetadas'`)).v === true);
 
   // Reaplicar la 30 sí apaga la casilla: hay que repetir activar_casilla.
   await sesion(db);

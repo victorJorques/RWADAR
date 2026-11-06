@@ -237,8 +237,9 @@ Preparada y probada en local; **no aplicada**. Contrato:
 - `db/30_avisos_registrados.sql` (copia idéntica en
   `supabase/migrations/20261105200000_avisos_registrados.sql`): esquema privado
   `rwadar_novedades`, preferencias con permiso versionado
-  (`novedades-v1-2026-11-05`), bienvenida, anuncios, móviles y colas de correo
-  (Brevo) y push (Expo). Va después de 22, 24-26, el refuerzo de sesión, 28,
+  (`novedades-v2-2026-11-06`, de la revisión legal del 06/11/2026; sustituye a
+  la v1, con la que nunca se recogió ningún permiso), bienvenida, anuncios,
+  móviles y colas de correo (Brevo) y push (Expo). Va después de 22, 24-26, el refuerzo de sesión, 28,
   28_REVERTIR y 29. Se aplica en el SQL Editor con una copia hecha antes,
   **nunca** con `supabase db push` (subiría también la 27).
 - Todo nace **apagado**, también la casilla del alta (`casilla_activa`: sin
@@ -269,6 +270,25 @@ Preparada y probada en local; **no aplicada**. Contrato:
   reaplica antes la 30 para recuperar el reloj de limpieza). Comprobar:
   `30_avisos_registrados_verificar.sql` (solo lee; pasa apagado y encendido, y
   avisa si la casilla está inactiva).
+- Historial del permiso (`rwadar_novedades.historial_permiso`), solo de
+  añadir: cada alta y cada baja con el correo de ese momento, el origen
+  (`alta`, `perfil`, `enlace`, `correo`), el canal y el idioma. Sin clave
+  ajena: al borrar la cuenta (disparador `BEFORE DELETE` en `auth.users`, que
+  nunca impide el borrado) se queda bloqueado con `cuenta_borrada_el`
+  (LOPDGDD art. 32) y `limpiar()` lo borra a los 3 años, nunca el de una cuenta
+  viva. `configurar_avisos_novedades` admite un cuarto argumento opcional,
+  `p_idioma` (`'es'`/`'en'`); el alta lee `avisos_idioma` de los metadatos.
+- Baja que llega por correo (RWAdar@protonmail.com), antes del siguiente
+  envío y solo el propietario, desde el SQL Editor:
+  `select rwadar_novedades.baja_por_correo('persona@ejemplo.com');` (sin
+  distinguir mayúsculas; devuelve si encontró la cuenta y deja la fila
+  baja/correo en el historial).
+- Los anuncios no se borran nunca (copia de lo enviado). Su filtro de palabras
+  veta, además de «oportunidad», «rentabilidad», «garantiz…» y %:
+  «rendimiento», APY, APR, «sin riesgo», «exclusiv…», «últimas plazas», «no te
+  lo pierdas», «gana…», «regalo», «bono», «descuento» y «autorizad…» (p. ej.,
+  «mejoras de rendimiento» no pasa). Push: la bienvenida por el canal de
+  Android `cuenta` y los anuncios por `novedades`.
 - El catálogo no envía nada por su cuenta: una revisión V2 con ofertas nuevas
   crea un anuncio al día, **retenido**. Solo sale con el flujo «Avisar novedad»
   (`.github/workflows/avisar-novedad.yml`, que ejecuta `db/anunciar.sql`) y

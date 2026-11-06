@@ -14,8 +14,11 @@ correo de RWAdar.
 
 El bloque `{{ if .Data.avisos_novedades }}` lee los metadatos del alta. Solo
 aparece si la persona marcó la casilla de avisos: la web y la app envían
-`avisos_novedades: true` (booleano) y nada en otro caso. Dice que al confirmar
-se activan también los avisos y cómo no hacerlo. La base de datos solo guarda
+`avisos_novedades: true` (booleano) y nada en otro caso. Dice, con el texto
+de la revisión legal del 06/11/2026: «Marcaste también la casilla de avisos de
+novedades: al confirmar tu correo quedarán activados. Si solo querías la
+cuenta, confírmala igualmente y desactívalos en Perfil.» El pie nombra al
+responsable (Víctor Manuel Jorques Granero, España). La base de datos solo guarda
 el permiso si el valor es el booleano `true` y la versión es la vigente
 (`30_avisos_registrados.sql`).
 

@@ -22,6 +22,14 @@
 -- están encendidos (30_avisos_registrados_activar_*.sql) y solo a quien se
 -- apuntó. La clave (tipo:fecha:huella) impide repetir el mismo aviso el
 -- mismo día si el flujo se lanza dos veces.
+--
+-- La base rechaza (23514) un título o texto con «oportunidad», «rentabilidad»,
+-- «garantiz…», %, «rendimiento», APY, APR, «sin riesgo», «exclusiv…», «últimas
+-- plazas», «no te lo pierdas», «gana…» (al empezar palabra), «regalo», «bono»
+-- (suelto), «descuento» o «autorizad…», sin distinguir mayúsculas: p. ej.,
+-- «mejoras de rendimiento» no pasa; «la app va más rápida», sí. La validación
+-- en bash del flujo solo mira las cuatro primeras: el resto lo para la base.
+-- Los anuncios no se borran nunca: son la copia de lo enviado.
 -- =====================================================================
 \set ON_ERROR_STOP on
 begin;
