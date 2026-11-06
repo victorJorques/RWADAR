@@ -36,12 +36,21 @@
 --     el correo de confirmación tiene que haber salido después de encenderla
 --     (`confirmation_sent_at >= casilla_activada_el`): un alta anterior recibió
 --     el correo antiguo, sin el aviso, y confirmarla después no la apunta.
---   · Los disparadores nunca tumban un alta, una confirmación ni la
---     aprobación del catálogo: capturan el error y dejan un `warning` con el
---     sqlstate, nunca el mensaje (podría llevar el correo).
+--   · Los disparadores nunca tumban un alta, una confirmación, el borrado de
+--     una cuenta ni la aprobación del catálogo: capturan el error y dejan un
+--     `warning` con el sqlstate, nunca el mensaje (podría llevar el correo).
 --   · El catálogo no envía nada por su cuenta: una aprobación con ofertas
 --     nuevas solo crea el anuncio del día, retenido salvo que Víctor encienda
 --     `ofertas_automaticas`.
+--   · Revisión legal del 06/11/2026 (LSSI, RGPD, LOPDGDD): texto de la casilla
+--     `novedades-v2-2026-11-06` (sustituye a la v1, con la que nunca se recogió
+--     ningún permiso); historial del permiso solo de añadir, que sobrevive
+--     bloqueado 3 años al borrado de la cuenta (LOPDGDD art. 32); baja por
+--     correo (`baja_por_correo`, solo el propietario); titular en el pie de
+--     cada correo; aviso fijo de ofertas con el riesgo delante; filtro de
+--     palabras ampliado; canales de Android separados (`cuenta` para la
+--     bienvenida, `novedades` para los anuncios). Los anuncios no se borran
+--     nunca: son la copia de lo enviado.
 -- =====================================================================
 begin;
 
@@ -123,6 +132,38 @@ create table if not exists rwadar_novedades.preferencias (
     check (not novedades or (aceptado_el is not null and version is not null and origen is not null))
 );
 
+-- Historial del permiso, solo de añadir: cada alta y cada baja, con el correo
+-- de ese momento, para demostrar que había permiso en la fecha de cada envío
+-- (RGPD arts. 5.2 y 7.1; EDPB 05/2020 §108). SIN clave ajena a auth.users:
+-- al borrar la cuenta las filas se quedan, bloqueadas (LOPDGDD art. 32), con
+-- `cuenta_borrada_el`; limpiar() las borra a los 3 años de esa fecha
+-- (prescripción, LOPDGDD art. 72) y nunca las de una cuenta viva. Solo se
+-- añaden filas: el disparador historial_solo_anadir no deja cambiar nada salvo
+-- poner `cuenta_borrada_el` una vez, ni borrar antes de esos 3 años.
+create table if not exists rwadar_novedades.historial_permiso (
+  id                bigint generated always as identity primary key,
+  usuario_id        uuid not null,
+  correo            text,
+  accion            text not null
+    constraint historial_accion_valida check (accion in ('alta', 'baja')),
+  version           text,
+  idioma            text
+    constraint historial_idioma_valido check (idioma is null or idioma in ('es', 'en')),
+  origen            text not null
+    constraint historial_origen_valido check (origen in ('alta', 'perfil', 'enlace', 'correo')),
+  canal             text
+    constraint historial_canal_valido check (canal is null or canal in ('web', 'app')),
+  creado_el         timestamptz not null default now(),
+  cuenta_borrada_el timestamptz,
+  constraint historial_alta_con_version check (accion = 'baja' or version is not null)
+);
+create index if not exists historial_por_usuario
+  on rwadar_novedades.historial_permiso (usuario_id, creado_el);
+create index if not exists historial_de_cuentas_borradas
+  on rwadar_novedades.historial_permiso (cuenta_borrada_el) where cuenta_borrada_el is not null;
+
+-- Los anuncios NO se borran nunca (limpiar() no los toca): son la copia de cada
+-- aviso enviado, para posibles requerimientos. No llevan datos personales.
 create table if not exists rwadar_novedades.anuncios (
   id                  bigint generated always as identity primary key,
   tipo                text not null
@@ -145,13 +186,31 @@ create table if not exists rwadar_novedades.anuncios (
   publicado_el        timestamptz,
   correo_repartido_el timestamptz,
   push_repartido_el   timestamptz,
-  -- Filtro de palabras del contrato (§4). Se aplica también a la plantilla
-  -- cerrada de ofertas, que no las usa: así ningún camino lo esquiva.
-  constraint anuncio_sin_palabras_vetadas
-    check ((titulo || ' ' || texto) !~* '(oportunidad|rentabilidad|garantiz|%)'),
+  -- El filtro de palabras (anuncio_sin_palabras_vetadas) va justo después,
+  -- con alter table, para que reaplicar la 30 lo actualice.
   constraint anuncio_publicado_con_fecha
     check (estado <> 'publicado' or publicado_el is not null)
 );
+-- Filtro de palabras del contrato (§4), ampliado tras la revisión legal. Se
+-- aplica también a la plantilla cerrada de ofertas, que no las usa: así ningún
+-- camino lo esquiva. Sin distinguir mayúsculas. Con límites de palabra donde
+-- la raíz atraparía palabras inocentes: APY y APR solo sueltas («aprende»
+-- pasa), «gana» solo al empezar palabra («veganas», «organización» pasan) y
+-- «bono» suelto («bonos», el activo, y «abono» pasan). Se rehace en cada
+-- aplicación sin reescribir los anuncios guardados (son la copia de lo
+-- enviado): si alguno antiguo no lo cumple, queda sin validar y avisa.
+alter table rwadar_novedades.anuncios drop constraint if exists anuncio_sin_palabras_vetadas;
+alter table rwadar_novedades.anuncios add constraint anuncio_sin_palabras_vetadas
+  check ((titulo || ' ' || texto) !~*
+    '(oportunidad|rentabilidad|garantiz|%|rendimiento|\mapy\M|\mapr\M|sin\s+riesgo|exclusiv|[uúÚ]ltimas\s+plazas|no\s+te\s+lo\s+pierdas|\mgana|regalo|\mbono\M|descuento|autorizad)')
+  not valid;
+do $palabras_vetadas$
+begin
+  alter table rwadar_novedades.anuncios validate constraint anuncio_sin_palabras_vetadas;
+exception when check_violation then
+  raise warning 'RWAdar 30: hay anuncios guardados con palabras ahora vetadas: se conservan, pero ya no se pueden volver a publicar ni cambiar';
+end
+$palabras_vetadas$;
 create index if not exists anuncios_publicados
   on rwadar_novedades.anuncios (publicado_el desc) where estado = 'publicado';
 
@@ -244,15 +303,17 @@ alter table rwadar_novedades.preferencias
   add column if not exists bienvenida_push_el timestamptz;
 
 -- Reaplicar = estado seguro. Los textos de la casilla van con su versión:
--- cambiar una sola palabra obliga a crear una versión nueva.
+-- cambiar una sola palabra obliga a crear una versión nueva. La v2 (revisión
+-- legal del 06/11/2026) sustituye a la v1 (`novedades-v1-2026-11-05`), con la
+-- que nunca se recogió ningún permiso: la casilla no llegó a enseñarse.
 insert into rwadar_novedades.configuracion as c
   (unica, correo_habilitado, push_habilitado, ofertas_automaticas, casilla_activa,
    casilla_activada_el, correo_activado_el, push_activado_el,
    version_consentimiento, texto_consentimiento_es, texto_consentimiento_en)
 values (true, false, false, false, false, null, null, null,
-  'novedades-v1-2026-11-05',
-  'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.',
-  'I want to receive RWAdar notices by email and, if I turn them on in my phone, as notifications: new offers on the radar and news about the website and the app. It''s optional: the Academy unlocks anyway. You can unsubscribe in every notice or in Profile. More information in Privacy.')
+  'novedades-v2-2026-11-06',
+  'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en Privacidad.',
+  'I want to receive RWAdar notices by email and, if I enable them on my phone, as notifications: new listings on the radar and news about the website and the app. It''s optional: the Academy unlocks anyway. You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your phone settings. More information in Privacy.')
 on conflict (unica) do update
   set correo_habilitado = false, push_habilitado = false, ofertas_automaticas = false,
       casilla_activa = false, casilla_activada_el = null,
@@ -354,15 +415,15 @@ begin
       || 'lecciones cortas para entender la tokenización de activos reales a tu ritmo.';
     if v_baja is not null then
       v_cuerpo := v_cuerpo || v_parrafo || 'Además, te has apuntado a los avisos de novedades: '
-        || 'te escribiremos cuando haya ofertas nuevas en el radar o novedades en la web y la app. '
+        || 'te avisaremos de las fichas nuevas que entren en el radar y de las novedades de la web y la app. '
         || 'Puedes darte de baja cuando quieras con el enlace del final o en tu Perfil.</p>';
       v_cuerpo_txt := v_cuerpo_txt || E'\n\n' || 'Además, te has apuntado a los avisos de novedades: '
-        || 'te escribiremos cuando haya ofertas nuevas en el radar o novedades en la web y la app. '
+        || 'te avisaremos de las fichas nuevas que entren en el radar y de las novedades de la web y la app. '
         || 'Puedes darte de baja cuando quieras con el enlace del final o en tu Perfil.';
     end if;
     v_cierre := v_parrafo || 'Si no creaste esta cuenta, <a href="mailto:RWAdar@protonmail.com" '
-      || 'style="color:#0F7A57">escríbenos</a> o bórrala.</p>';
-    v_cierre_txt := 'Si no creaste esta cuenta, escríbenos o bórrala: RWAdar@protonmail.com';
+      || 'style="color:#0F7A57">escríbenos</a> y la borramos.</p>';
+    v_cierre_txt := 'Si no creaste esta cuenta, escríbenos a RWAdar@protonmail.com y la borramos.';
     v_motivo := 'Recibes este correo porque se ha confirmado una cuenta de RWAdar con esta dirección.';
   elsif p_tipo = 'anuncio' then
     if v_baja is null then
@@ -387,11 +448,14 @@ begin
     raise exception using errcode = '22023', message = 'enlace fuera de rwadar.pages.dev';
   end if;
 
+  -- Titular identificable (LSSI art. 20.1): la persona en cuyo nombre se envía.
   v_pie := '<p style="margin:0 0 8px">Te escribe RWAdar, un radar independiente de plataformas de '
-    || 'tokenización (<a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">aviso legal</a>'
+    || 'tokenización. Responsable: Víctor Manuel Jorques Granero, España '
+    || '(<a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">aviso legal</a>'
     || ' · <a href="https://rwadar.pages.dev/privacidad" style="color:#555">privacidad</a>).</p>'
     || '<p style="margin:0 0 8px">' || v_motivo || '</p>';
-  v_pie_txt := 'Te escribe RWAdar, un radar independiente de plataformas de tokenización.' || E'\n'
+  v_pie_txt := 'Te escribe RWAdar, un radar independiente de plataformas de tokenización. '
+    || 'Responsable: Víctor Manuel Jorques Granero, España.' || E'\n'
     || 'Aviso legal: https://rwadar.pages.dev/privacidad#aviso-legal' || E'\n'
     || 'Privacidad: https://rwadar.pages.dev/privacidad' || E'\n' || v_motivo;
   if v_baja is not null then
@@ -436,7 +500,9 @@ $funcion$;
 -- aviso), booleano JSON estricto y la versión vigente. `confirmation_sent_at`
 -- se lee con `to_jsonb(new)`: si Auth no tiene esa columna o viene vacía, no
 -- hay permiso. Nada de conversiones en `declare`: todo error queda dentro de
--- los bloques y nunca impide el alta ni la confirmación.
+-- los bloques y nunca impide el alta ni la confirmación. El permiso y su
+-- fila del historial (alta/alta, con el correo y el idioma `avisos_idioma` si
+-- es 'es' o 'en') van en el mismo bloque: sin la prueba no queda el permiso.
 create or replace function rwadar_novedades.al_confirmar_cuenta()
 returns trigger
 language plpgsql security definer set search_path = ''
@@ -450,6 +516,8 @@ declare
   v_meta jsonb;
   v_permiso boolean;
   v_canal text;
+  v_idioma text;
+  v_filas integer;
 begin
   begin
     if new.email_confirmed_at is null or new.is_anonymous is true then
@@ -494,6 +562,11 @@ begin
            and (v_meta ->> 'avisos_canal') in ('web', 'app') then
           v_canal := v_meta ->> 'avisos_canal';
         end if;
+        -- Idioma del texto que vio, estricto: solo 'es' o 'en' como texto.
+        if jsonb_typeof(v_meta -> 'avisos_idioma') = 'string'
+           and (v_meta ->> 'avisos_idioma') in ('es', 'en') then
+          v_idioma := v_meta ->> 'avisos_idioma';
+        end if;
       end if;
     end if;
 
@@ -507,6 +580,12 @@ begin
             v_canal,
             coalesce(new.email_confirmed_at, now()))
     on conflict (usuario_id) do nothing;
+    get diagnostics v_filas = row_count;
+    if v_permiso and v_filas = 1 then
+      insert into rwadar_novedades.historial_permiso
+        (usuario_id, correo, accion, version, idioma, origen, canal)
+      values (new.id, new.email, 'alta', v_version, v_idioma, 'alta', v_canal);
+    end if;
   exception when others then
     raise warning 'rwadar_novedades: confirmación sin preferencias (sqlstate %)', sqlstate;
   end;
@@ -536,6 +615,59 @@ drop trigger if exists rwadar_novedades_confirmacion on auth.users;
 create trigger rwadar_novedades_confirmacion
   after insert or update of email_confirmed_at on auth.users
   for each row execute function rwadar_novedades.al_confirmar_cuenta();
+
+-- Al borrar una cuenta (borrar_mi_cuenta, el panel o la API de Auth: el
+-- borrado de verdad, no el «soft delete»), su historial del permiso se queda
+-- bloqueado con `cuenta_borrada_el` (LOPDGDD art. 32). NUNCA impide el
+-- borrado: captura cualquier error, deja un warning con el sqlstate (nunca el
+-- mensaje) y siempre devuelve OLD. Si falla, limpiar() marca después las
+-- filas que se quedaron sin cuenta.
+create or replace function rwadar_novedades.al_borrar_cuenta()
+returns trigger
+language plpgsql security definer set search_path = ''
+as $funcion$
+begin
+  begin
+    update rwadar_novedades.historial_permiso
+       set cuenta_borrada_el = now()
+     where usuario_id = old.id and cuenta_borrada_el is null;
+  exception when others then
+    raise warning 'rwadar_novedades: historial sin marcar al borrar la cuenta (sqlstate %)', sqlstate;
+  end;
+  return old;
+end
+$funcion$;
+
+drop trigger if exists rwadar_novedades_borrado on auth.users;
+create trigger rwadar_novedades_borrado
+  before delete on auth.users
+  for each row execute function rwadar_novedades.al_borrar_cuenta();
+
+-- Solo de añadir: nada cambia salvo poner `cuenta_borrada_el` una vez, y solo
+-- se borran filas de cuentas borradas hace más de 3 años (limpiar()).
+create or replace function rwadar_novedades.historial_solo_anadir()
+returns trigger
+language plpgsql security definer set search_path = ''
+as $funcion$
+begin
+  if tg_op = 'UPDATE' then
+    if old.cuenta_borrada_el is null and new.cuenta_borrada_el is not null
+       and (to_jsonb(new) - 'cuenta_borrada_el') = (to_jsonb(old) - 'cuenta_borrada_el') then
+      return new;
+    end if;
+  elsif old.cuenta_borrada_el is not null
+        and old.cuenta_borrada_el < now() - interval '3 years' then
+    return old;
+  end if;
+  raise exception using errcode = '42501',
+    message = 'el historial del permiso solo admite añadir filas';
+end
+$funcion$;
+
+drop trigger if exists historial_solo_anadir on rwadar_novedades.historial_permiso;
+create trigger historial_solo_anadir
+  before update or delete on rwadar_novedades.historial_permiso
+  for each row execute function rwadar_novedades.historial_solo_anadir();
 
 -- ---------------------------------------------------------------------
 -- 4 · Disparador del catálogo: solo crea el anuncio del día
@@ -583,7 +715,7 @@ begin
     v_automaticas := coalesce(v_automaticas, false);
 
     -- Plantilla cerrada: no nombra productos ni emisores, sin «oportunidad»
-    -- ni cifras económicas, con el aviso fijo.
+    -- ni cifras económicas, con el aviso fijo y el riesgo delante.
     insert into rwadar_novedades.anuncios
       (tipo, clave, estado, titulo, texto, enlace, revision_id, publicado_el)
     values ('ofertas',
@@ -591,9 +723,9 @@ begin
             case when v_automaticas then 'publicado' else 'retenido' end,
             case when v_altas = 1 then '1 ficha nueva en el radar de RWAdar'
                  else v_altas::text || ' fichas nuevas en el radar de RWAdar' end,
-            'Consulta en el radar qué ha entrado y con qué fuentes. RWAdar no intermedia ni '
-              || 'recomienda. Aparecer en el radar no es un respaldo y se puede perder lo '
-              || 'invertido. Nadie paga por aparecer en este aviso.',
+            'Información, no recomendación: aparecer en el radar no es un respaldo y puedes '
+              || 'perder lo invertido. RWAdar no intermedia y nadie paga por aparecer en este '
+              || 'aviso. Consulta en el radar qué ha entrado y con qué fuentes.',
             'https://rwadar.pages.dev/#emisiones',
             new.id,
             case when v_automaticas then now() end)
@@ -1174,7 +1306,10 @@ begin
      for update of s skip locked
   loop
     v_tipo := coalesce(r.anuncio_tipo, 'bienvenida');
-    -- Canal `novedades`; `data` solo con {tipo, destino}: ningún dato personal.
+    -- Canales de Android separados: la bienvenida (de servicio) por `cuenta` y
+    -- los anuncios por `novedades`, para que quitar el canal de novedades
+    -- desde la propia notificación corte solo los anuncios. `data` solo con
+    -- {tipo, destino}: ningún dato personal.
     select net.http_post(
       url := 'https://exp.host/--/api/v2/push/send',
       headers := v_cabeceras,
@@ -1182,11 +1317,11 @@ begin
         'to', r.token,
         'title', case when r.tipo = 'bienvenida' then 'RWAdar' else r.titulo end,
         'body', case when r.tipo = 'bienvenida'
-                     then 'Este móvil ya puede recibir notificaciones de RWAdar. Tu Academy gratis está desbloqueada.'
+                     then 'Notificaciones activadas en este móvil. Las de novedades solo llegan si las tienes activadas en Perfil.'
                      else r.texto end,
         'sound', 'default',
         'priority', 'default',
-        'channelId', 'novedades',
+        'channelId', case when r.tipo = 'bienvenida' then 'cuenta' else 'novedades' end,
         'data', jsonb_build_object('tipo', v_tipo,
                                    'destino', rwadar_novedades.destino(v_tipo, r.enlace))),
       timeout_milliseconds := 10000
@@ -1205,11 +1340,14 @@ end
 $funcion$;
 
 -- Colas terminadas (anuncios y bienvenidas), a los 90 días; móviles sin
--- actualizar, a los 180. Las bienvenidas no se repiten porque su marca vive
--- en preferencias (bienvenida_correo_el, bienvenida_push_el) y se va con la
--- cuenta. Solo borra filas de este esquema: ni red, ni Vault, ni envíos. La
--- llaman el reloj diario `rwadar-novedades-limpieza` (existe siempre, también
--- con todo apagado) y `procesar()` en cada vuelta.
+-- actualizar, a los 180; historial del permiso de cuentas borradas, a los 3
+-- años de borrarlas (nunca el de una cuenta viva). Las bienvenidas no se
+-- repiten porque su marca vive en preferencias (bienvenida_correo_el,
+-- bienvenida_push_el) y se va con la cuenta. La tabla de anuncios NO se
+-- limpia nunca: es la copia de cada aviso enviado, para posibles
+-- requerimientos. Solo borra filas de este esquema: ni red, ni Vault, ni
+-- envíos. La llaman el reloj diario `rwadar-novedades-limpieza` (existe
+-- siempre, también con todo apagado) y `procesar()` en cada vuelta.
 create or replace function rwadar_novedades.limpiar()
 returns integer
 language plpgsql security definer set search_path = ''
@@ -1235,6 +1373,19 @@ begin
   v_total := v_total + v_filas;
   update rwadar_novedades.pushes set token = null
    where token is not null and estado in ('aceptado', 'descartado', 'fallido');
+
+  -- Historial del permiso. Si el disparador de borrado falló, las filas de
+  -- una cuenta que ya no existe se marcan hoy (el plazo cuenta desde ahora,
+  -- nunca antes). Después, fuera las de cuentas borradas hace más de 3 años.
+  update rwadar_novedades.historial_permiso h
+     set cuenta_borrada_el = now()
+   where h.cuenta_borrada_el is null
+     and not exists (select 1 from auth.users u where u.id = h.usuario_id);
+  delete from rwadar_novedades.historial_permiso h
+   where h.cuenta_borrada_el < now() - interval '3 years'
+     and not exists (select 1 from auth.users u where u.id = h.usuario_id);
+  get diagnostics v_filas = row_count;
+  v_total := v_total + v_filas;
   return v_total;
 end
 $funcion$;
@@ -1367,14 +1518,25 @@ begin
 end
 $funcion$;
 
+-- `p_idioma` (opcional: 'es', 'en' o null) es el idioma del texto que vio la
+-- persona; las llamadas con tres argumentos siguen valiendo. La firma antigua
+-- de tres argumentos se quita: con las dos, una llamada de tres sería ambigua.
+-- Solo un cambio de estado deja fila en el historial (perfil): activar ya
+-- activado, o desactivar ya desactivado, no cambia nada. El alta y su fila van
+-- juntas (sin la prueba no hay permiso); la baja se aplica aunque su fila
+-- fallara.
+drop function if exists public.configurar_avisos_novedades(boolean, text, text);
 create or replace function public.configurar_avisos_novedades(
-  p_activar boolean, p_version text, p_canal text
+  p_activar boolean, p_version text, p_canal text, p_idioma text default null
 ) returns jsonb
 language plpgsql security definer set search_path = ''
 as $funcion$
 declare
   v_usuario uuid;
   v_vigente text;
+  v_correo text;
+  v_novedades boolean;
+  v_version text;
 begin
   if not rwadar_cuentas_privadas.sesion_confirmada() then
     raise exception using errcode = '42501', message = 'Se necesita una sesión confirmada y vigente';
@@ -1384,6 +1546,9 @@ begin
   end if;
   if p_canal is not null and p_canal not in ('web', 'app') then
     raise exception using errcode = '22023', message = 'canal no válido';
+  end if;
+  if p_idioma is not null and p_idioma not in ('es', 'en') then
+    raise exception using errcode = '22023', message = 'idioma no válido';
   end if;
   v_usuario := auth.uid();
   select c.version_consentimiento into v_vigente from rwadar_novedades.configuracion c where c.unica;
@@ -1395,17 +1560,33 @@ begin
   insert into rwadar_novedades.preferencias (usuario_id, novedades, alta_el)
   select u.id, false, coalesce(u.email_confirmed_at, now()) from auth.users u where u.id = v_usuario
   on conflict (usuario_id) do nothing;
+  select p.novedades, p.version into v_novedades, v_version
+    from rwadar_novedades.preferencias p where p.usuario_id = v_usuario
+     for update;
+  select u.email into v_correo from auth.users u where u.id = v_usuario;
 
   if p_activar then
+    if v_novedades and v_version is not distinct from p_version then
+      return public.estado_mis_avisos();
+    end if;
     update rwadar_novedades.preferencias
        set novedades = true, aceptado_el = now(), version = p_version, origen = 'perfil',
            canal = p_canal, baja_el = null, actualizado_el = now()
      where usuario_id = v_usuario;
-  else
+    insert into rwadar_novedades.historial_permiso
+      (usuario_id, correo, accion, version, idioma, origen, canal)
+    values (v_usuario, v_correo, 'alta', p_version, p_idioma, 'perfil', p_canal);
+  elsif v_novedades then
     update rwadar_novedades.preferencias
-       set novedades = false, baja_el = case when novedades then now() else baja_el end,
-           actualizado_el = now()
+       set novedades = false, baja_el = now(), actualizado_el = now()
      where usuario_id = v_usuario;
+    begin
+      insert into rwadar_novedades.historial_permiso
+        (usuario_id, correo, accion, version, idioma, origen, canal)
+      values (v_usuario, v_correo, 'baja', v_version, p_idioma, 'perfil', p_canal);
+    exception when others then
+      raise warning 'rwadar_novedades: baja sin fila en el historial (sqlstate %)', sqlstate;
+    end;
   end if;
   return public.estado_mis_avisos();
 end
@@ -1551,19 +1732,86 @@ end
 $funcion$;
 
 -- Baja sin cuenta, desde el enlace de cada aviso. Corta correo y push de
--- novedades. El token es aleatorio (gen_random_uuid) y único por cuenta.
+-- novedades. El token es aleatorio (gen_random_uuid) y único por cuenta. Cada
+-- baja deja su fila en el historial (enlace), con la versión retirada si
+-- estaba apuntada; la baja se aplica aunque esa fila fallara.
 create or replace function public.baja_avisos(p_token uuid)
 returns boolean
 language plpgsql security definer set search_path = ''
 as $funcion$
+declare
+  v_usuario uuid;
+  v_novedades boolean;
+  v_version text;
 begin
   if p_token is null then
     return false;
   end if;
+  select p.usuario_id, p.novedades, p.version into v_usuario, v_novedades, v_version
+    from rwadar_novedades.preferencias p where p.baja_token = p_token
+     for update;
+  if v_usuario is null then
+    return false;
+  end if;
   update rwadar_novedades.preferencias
      set novedades = false, baja_el = now(), actualizado_el = now()
-   where baja_token = p_token;
-  return found;
+   where usuario_id = v_usuario;
+  begin
+    insert into rwadar_novedades.historial_permiso (usuario_id, correo, accion, version, origen)
+    values (v_usuario, (select u.email from auth.users u where u.id = v_usuario), 'baja',
+            case when v_novedades then v_version end, 'enlace');
+  exception when others then
+    raise warning 'rwadar_novedades: baja sin fila en el historial (sqlstate %)', sqlstate;
+  end;
+  return true;
+end
+$funcion$;
+
+-- Baja que llega por correo (LSSI art. 22.1: basta la simple notificación al
+-- remitente; «baja» en RWAdar@protonmail.com o en una respuesta). Solo el
+-- propietario de la base, desde el SQL Editor, antes del siguiente envío:
+--   select rwadar_novedades.baja_por_correo('persona@ejemplo.com');
+-- Busca la cuenta por su correo sin distinguir mayúsculas, pone
+-- novedades = false y baja_el, añade la fila baja/correo y devuelve si la
+-- encontró. Si aún no tiene preferencias (p. ej., sin confirmar), se las crea
+-- dadas de baja: así confirmar después no la apunta.
+create or replace function rwadar_novedades.baja_por_correo(p_email text)
+returns boolean
+language plpgsql security definer set search_path = ''
+as $funcion$
+declare
+  r record;
+  v_novedades boolean;
+  v_version text;
+  v_encontrada boolean;
+begin
+  v_encontrada := false;
+  if nullif(btrim(coalesce(p_email, '')), '') is null then
+    return false;
+  end if;
+  for r in
+    select u.id, u.email, u.email_confirmed_at from auth.users u
+     where lower(btrim(u.email)) = lower(btrim(p_email))
+     order by u.id
+  loop
+    v_encontrada := true;
+    insert into rwadar_novedades.preferencias (usuario_id, novedades, alta_el)
+    values (r.id, false, coalesce(r.email_confirmed_at, now()))
+    on conflict (usuario_id) do nothing;
+    select p.novedades, p.version into v_novedades, v_version
+      from rwadar_novedades.preferencias p where p.usuario_id = r.id
+       for update;
+    update rwadar_novedades.preferencias
+       set novedades = false, baja_el = now(), actualizado_el = now()
+     where usuario_id = r.id;
+    begin
+      insert into rwadar_novedades.historial_permiso (usuario_id, correo, accion, version, origen)
+      values (r.id, r.email, 'baja', case when v_novedades then v_version end, 'correo');
+    exception when others then
+      raise warning 'rwadar_novedades: baja sin fila en el historial (sqlstate %)', sqlstate;
+    end;
+  end loop;
+  return v_encontrada;
 end
 $funcion$;
 
@@ -1576,13 +1824,15 @@ alter table rwadar_novedades.anuncios enable row level security;
 alter table rwadar_novedades.dispositivos enable row level security;
 alter table rwadar_novedades.correos enable row level security;
 alter table rwadar_novedades.pushes enable row level security;
+alter table rwadar_novedades.historial_permiso enable row level security;
 
+-- También historial_permiso y baja_por_correo: solo el propietario.
 revoke all on all tables in schema rwadar_novedades from public, anon, authenticated, service_role;
 revoke all on all sequences in schema rwadar_novedades from public, anon, authenticated, service_role;
 revoke all on all functions in schema rwadar_novedades from public, anon, authenticated, service_role;
 
 revoke all on function public.estado_mis_avisos() from public, anon, authenticated, service_role;
-revoke all on function public.configurar_avisos_novedades(boolean, text, text)
+revoke all on function public.configurar_avisos_novedades(boolean, text, text, text)
   from public, anon, authenticated, service_role;
 revoke all on function public.registrar_aviso_push(text, text) from public, anon, authenticated, service_role;
 revoke all on function public.quitar_aviso_push(text) from public, anon, authenticated, service_role;
@@ -1591,7 +1841,7 @@ revoke all on function public.mis_avisos_recientes(integer) from public, anon, a
 revoke all on function public.baja_avisos(uuid) from public, anon, authenticated, service_role;
 
 grant execute on function public.estado_mis_avisos() to authenticated;
-grant execute on function public.configurar_avisos_novedades(boolean, text, text) to authenticated;
+grant execute on function public.configurar_avisos_novedades(boolean, text, text, text) to authenticated;
 grant execute on function public.registrar_aviso_push(text, text) to authenticated;
 grant execute on function public.quitar_aviso_push(text) to authenticated;
 grant execute on function public.mi_aviso_push_registrado(text) to authenticated;

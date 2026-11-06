@@ -75,7 +75,9 @@ $push$;
 -- Avisos a registrados (30): si existe el esquema, se apagan sus tres
 -- interruptores y la casilla del alta con su fecha (cada columna, si existe:
 -- este cierre no debe fallar con ninguna versión de la 30). No se borra
--- ninguna cola ni preferencia. Tras reparar: reaplicar la 30 (recrea el
+-- ninguna cola ni preferencia, ni el historial del permiso: su disparador de
+-- borrado de cuentas sigue puesto (es la prueba del permiso y nunca impide
+-- borrar una cuenta). Tras reparar: reaplicar la 30 (recrea el
 -- reloj diario de limpieza) y, si la web o la app siguen enseñando la
 -- casilla, 30_avisos_registrados_activar_casilla.sql.
 do $novedades$

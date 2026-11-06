@@ -20,6 +20,8 @@ declare
   v_remitente text;
   v_expo text;
   v_retenidos integer;
+  v_limpiar text;
+  v_palabras text;
 begin
   if to_regnamespace('rwadar_novedades') is null
      or to_regclass('rwadar_novedades.configuracion') is null then
@@ -35,6 +37,31 @@ begin
                   and attname in ('bienvenida_correo_el', 'bienvenida_push_el')))) <> 4 then
     raise exception '30: faltan casilla_activa, casilla_activada_el o las marcas de bienvenida (reaplicar 30_avisos_registrados.sql)';
   end if;
+  -- Historial del permiso (revisión legal del 06/11/2026): existe, sin clave
+  -- ajena a auth.users (sobrevive bloqueado al borrado de la cuenta), con la
+  -- regla de la versión en las altas y solo de añadir.
+  if to_regclass('rwadar_novedades.historial_permiso') is null
+     or (select count(*) from pg_attribute
+          where attrelid = to_regclass('rwadar_novedades.historial_permiso')
+            and not attisdropped and attnum > 0
+            and attname in ('usuario_id', 'correo', 'accion', 'version', 'idioma', 'origen',
+                            'canal', 'creado_el', 'cuenta_borrada_el')) <> 9 then
+    raise exception '30: falta rwadar_novedades.historial_permiso o alguna de sus columnas (reaplicar 30_avisos_registrados.sql)';
+  end if;
+  if exists (select 1 from pg_constraint
+              where conrelid = 'rwadar_novedades.historial_permiso'::regclass and contype = 'f')
+     or not exists (select 1 from pg_constraint
+                     where conrelid = 'rwadar_novedades.historial_permiso'::regclass
+                       and conname = 'historial_alta_con_version' and contype = 'c') then
+    raise exception '30: el historial del permiso no debe tener clave ajena y sus altas exigen versión';
+  end if;
+  if not exists (
+       select 1 from pg_trigger
+        where tgrelid = 'rwadar_novedades.historial_permiso'::regclass and tgname = 'historial_solo_anadir'
+          and tgenabled <> 'D' and not tgisinternal
+          and tgfoid = 'rwadar_novedades.historial_solo_anadir()'::regprocedure) then
+    raise exception '30: falta o está desactivado el disparador historial_solo_anadir';
+  end if;
   foreach v_rol in array array['public', 'anon', 'authenticated'] loop
     if has_schema_privilege(v_rol, 'rwadar_novedades', 'USAGE')
        or has_schema_privilege(v_rol, 'rwadar_novedades', 'CREATE') then
@@ -46,11 +73,11 @@ begin
   if not found then
     raise exception '30: falta la fila de configuración';
   end if;
-  if v_cfg.version_consentimiento is distinct from 'novedades-v1-2026-11-05'
+  if v_cfg.version_consentimiento is distinct from 'novedades-v2-2026-11-06'
      or v_cfg.texto_consentimiento_es is distinct from
-        'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.'
+        'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en Privacidad.'
      or v_cfg.texto_consentimiento_en is distinct from
-        'I want to receive RWAdar notices by email and, if I turn them on in my phone, as notifications: new offers on the radar and news about the website and the app. It''s optional: the Academy unlocks anyway. You can unsubscribe in every notice or in Profile. More information in Privacy.' then
+        'I want to receive RWAdar notices by email and, if I enable them on my phone, as notifications: new listings on the radar and news about the website and the app. It''s optional: the Academy unlocks anyway. You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your phone settings. More information in Privacy.' then
     raise exception '30: la versión o los textos de la casilla no son los del contrato';
   end if;
   if (v_cfg.correo_habilitado and v_cfg.correo_activado_el is null)
@@ -70,9 +97,23 @@ begin
           and lower(btrim(command)) = 'select rwadar_novedades.limpiar()') then
     raise exception '30: falta, está duplicado o alterado el reloj diario de limpieza rwadar-novedades-limpieza (reaplicar 30_avisos_registrados.sql)';
   end if;
-  if position('net.' in lower(pg_get_functiondef('rwadar_novedades.limpiar()'::regprocedure))) > 0
-     or position('vault.' in lower(pg_get_functiondef('rwadar_novedades.limpiar()'::regprocedure))) > 0 then
+  v_limpiar := lower(pg_get_functiondef('rwadar_novedades.limpiar()'::regprocedure));
+  if position('net.' in v_limpiar) > 0 or position('vault.' in v_limpiar) > 0 then
     raise exception '30: rwadar_novedades.limpiar() no debe hacer red ni leer Vault';
+  end if;
+  -- Limpia el historial de cuentas borradas a los 3 años y NUNCA los anuncios
+  -- (copia de lo enviado, para posibles requerimientos).
+  if position('rwadar_novedades.historial_permiso' in v_limpiar) = 0
+     or position('interval ''3 years''' in v_limpiar) = 0
+     or v_limpiar ~ 'delete\s+from\s+rwadar_novedades\.anuncios' then
+    raise exception '30: limpiar() debe borrar el historial de cuentas borradas a los 3 años y nunca los anuncios (reaplicar 30_avisos_registrados.sql)';
+  end if;
+  -- Filtro de palabras de los anuncios, el ampliado tras la revisión legal.
+  select pg_get_constraintdef(c.oid) into v_palabras from pg_constraint c
+   where c.conrelid = 'rwadar_novedades.anuncios'::regclass and c.conname = 'anuncio_sin_palabras_vetadas';
+  if v_palabras is null or v_palabras !~ 'rendimiento' or v_palabras !~ 'autorizad'
+     or v_palabras !~ 'pierdas' or v_palabras !~ 'mgana' or v_palabras !~ 'mbono' then
+    raise exception '30: falta el filtro de palabras ampliado de los anuncios (reaplicar 30_avisos_registrados.sql)';
   end if;
 
   -- Reloj de envío: uno solo y canónico con algo encendido; ninguno con todo
@@ -131,6 +172,9 @@ begin
     'rwadar_novedades.anunciar(text,text,text,text,text)',
     'rwadar_novedades.publicar_anuncio(bigint)',
     'rwadar_novedades.al_confirmar_cuenta()',
+    'rwadar_novedades.al_borrar_cuenta()',
+    'rwadar_novedades.historial_solo_anadir()',
+    'rwadar_novedades.baja_por_correo(text)',
     'rwadar_novedades.avisar_ofertas_nuevas()',
     'rwadar_novedades.correo_mensaje(text,text,text,text,boolean,uuid)'
   ] loop
@@ -153,11 +197,19 @@ begin
     end if;
   end loop;
 
+  -- La baja por correo es solo del propietario (también se comprueba en el
+  -- bucle anterior; aquí, con su nombre).
+  foreach v_rol in array array['public', 'anon', 'authenticated', 'service_role'] loop
+    if has_function_privilege(v_rol, 'rwadar_novedades.baja_por_correo(text)', 'EXECUTE') then
+      raise exception '30: rwadar_novedades.baja_por_correo(text) es ejecutable por %', v_rol;
+    end if;
+  end loop;
+
   -- Tablas privadas: RLS y ningún permiso para los clientes.
   if (select count(*) from pg_class
        where relnamespace = 'rwadar_novedades'::regnamespace and relkind = 'r'
          and relname in ('configuracion', 'preferencias', 'anuncios',
-                         'dispositivos', 'correos', 'pushes')) <> 6 then
+                         'dispositivos', 'correos', 'pushes', 'historial_permiso')) <> 7 then
     raise exception '30: faltan tablas de rwadar_novedades';
   end if;
   for v_tabla in
@@ -181,7 +233,7 @@ begin
   for v_funcion in
     select * from (values
       ('public.estado_mis_avisos()', false),
-      ('public.configurar_avisos_novedades(boolean,text,text)', false),
+      ('public.configurar_avisos_novedades(boolean,text,text,text)', false),
       ('public.registrar_aviso_push(text,text)', false),
       ('public.quitar_aviso_push(text)', false),
       ('public.mi_aviso_push_registrado(text)', false),
@@ -209,7 +261,13 @@ begin
     end if;
   end loop;
 
-  -- Disparadores: el de Auth y el del catálogo, activos; el del catálogo
+  -- La firma antigua de tres argumentos no puede seguir: haría ambigua cada
+  -- llamada de la web y la app.
+  if to_regprocedure('public.configurar_avisos_novedades(boolean,text,text)') is not null then
+    raise exception '30: sigue la firma antigua configurar_avisos_novedades(boolean,text,text) (reaplicar 30_avisos_registrados.sql)';
+  end if;
+
+  -- Disparadores: los dos de Auth y el del catálogo, activos; el del catálogo
   -- antes que fijar_publicacion_v2 (los AFTER se disparan por nombre).
   if not exists (
        select 1 from pg_trigger
@@ -217,6 +275,16 @@ begin
           and tgenabled <> 'D' and not tgisinternal
           and tgfoid = 'rwadar_novedades.al_confirmar_cuenta()'::regprocedure) then
     raise exception '30: falta o está desactivado el disparador de confirmación en auth.users';
+  end if;
+  -- Antes de borrar una cuenta, su historial del permiso queda marcado
+  -- (bloqueado, LOPDGDD art. 32).
+  if not exists (
+       select 1 from pg_trigger
+        where tgrelid = 'auth.users'::regclass and tgname = 'rwadar_novedades_borrado'
+          and tgenabled <> 'D' and not tgisinternal
+          and (tgtype & 2) = 2 and (tgtype & 8) = 8
+          and tgfoid = 'rwadar_novedades.al_borrar_cuenta()'::regprocedure) then
+    raise exception '30: falta o está desactivado el disparador BEFORE DELETE rwadar_novedades_borrado en auth.users';
   end if;
   -- El permiso del alta solo se lee con la casilla activa y un correo de
   -- confirmación enviado después de activarla (versión actual).
