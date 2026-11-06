@@ -4,8 +4,12 @@ Sustituye solo dos pasajes que prometen lo que todavía no existe:
   - página 7 (sección 6): el Checklist de Elegibilidad «se descarga
     libremente desde la web» → llegará próximamente.
   - página 9 (sección 8): avisos por correo, guías «una cada diez días»,
-    baja en el pie de cada correo y «nueve lecciones» → lista de vigilancia
-    hoy; guías y avisos «próximamente»; siete lecciones publicadas.
+    baja en el pie de cada correo → lista de vigilancia hoy; guías y avisos
+    de novedades «próximamente», solo si la persona los pide, con baja desde
+    cada correo o en Perfil (sin «un clic»: revisión legal del 06/11/2026,
+    punto 5.13); la cuenta gratuita abre la RWAdar Academy, con sus nueve
+    lecciones publicadas (desde el 06/11/2026; antes decía «siete … y dos más
+    en preparación»).
 
 Usa la misma tipografía del PDF (Carlito, de @fontsource/carlito) con el
 mismo tamaño, color e interlineado. Lo demás (fondo, tabla, pie, resto de
@@ -175,23 +179,32 @@ y, n = b.parrafo(300.0, [
 ])
 assert y < 325 and n <= 2, f'página 9: el párrafo de las guías invade la tabla ({y})'
 
-y, _ = b.parrafo(510.8, [
-    ('Mientras tanto, la ', False),
+# Desde el 06/11/2026 las nueve lecciones están publicadas y cada una se abre
+# con la cuenta gratuita (el índice de la Academy sigue siendo público).
+y, n = b.parrafo(510.8, [
+    ('Mientras tanto, su cuenta gratuita ya le abre la ', False),
     ('RWAdar Academy', True),
-    (' ya tiene siete lecciones publicadas, de qué significa tokenizar un activo '
-     'a cómo leer el radar, y dos más en preparación.', False),
+    (': nueve lecciones publicadas, de los fundamentos a lo que ocurre después '
+     'de emitir, pasando por cómo leer el radar.', False),
 ])
+assert n <= 2, f'página 9: el párrafo de la Academy ocupa {n} líneas (caben 2)'
+informe.append(f'página 9: párrafo de la Academy en {n} líneas, termina en y={y:.1f}')
+# Revisión legal del 06/11/2026 (docs/legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md,
+# 5.13): sin «baja en un clic» ni avisos «cuando una plataforma que vigila cambie».
+# Los avisos reales son de novedades, opcionales, con baja en cada correo o en Perfil.
 y, n = b.parrafo(y + 26.25, [
-    ('También llegarán próximamente los avisos por correo cuando una plataforma '
-     'que vigila cambie de situación. Serán opcionales y podrá darse de baja en un '
-     'clic sin perder la cuenta.', False),
+    ('También llegarán próximamente, solo si usted los pide, los avisos de novedades: '
+     'fichas nuevas en el radar y novedades de la web y la app. Podrá darse de baja '
+     'cuando quiera, desde el enlace de cada correo o en su Perfil, sin perder la '
+     'cuenta.', False),
 ])
+assert n <= 2, f'página 9: el párrafo de avisos ocupa {n} líneas (caben 2)'
 assert y < 585, f'página 9: el último párrafo invade «Si encuentra un error» ({y})'
-informe.append(f'página 9: párrafo de avisos termina en y={y:.1f} (subtítulo en 601.6)')
+informe.append(f'página 9: párrafo de avisos en {n} líneas, termina en y={y:.1f} (subtítulo en 601.6)')
 b.escribir()
 
 doc.set_metadata({'title': 'Cómo usar RWAdar · Manual de uso · Edición 2026',
-                  'author': 'RWAdar', 'subject': 'Manual de bienvenida (revisado el 5/10/2026)'})
+                  'author': 'RWAdar', 'subject': 'Manual de bienvenida (revisado el 6/11/2026)'})
 doc.subset_fonts()
 doc.save(SALIDA, garbage=4, deflate=True)
 print('\n'.join(informe))

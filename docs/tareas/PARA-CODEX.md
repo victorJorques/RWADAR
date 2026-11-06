@@ -6,6 +6,65 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 6 de noviembre de 2026 (5) · Claude · correo de los avisos con Lettermint (31, apagado), contratos de encargado, permiso de Eric y manual
+
+Rama `claude/avisos-pendientes-0611`. Órdenes de Víctor: «haz todo lo que puedas, apáñate, te doy permiso de todo», «ya tenemos permiso de eric por escrito».
+
+**Proveedor de correo: Lettermint en lugar de Brevo.** Brevo mete píxel de apertura en el correo transaccional (revisión legal). Lettermint B.V. es de Países Bajos y guarda los datos en la UE. No hace seguimiento por defecto, y además se fuerza en cada correo.
+
+**Base de datos.** `rwadar-app/db/31_correo_lettermint.sql`, con su copia idéntica en `supabase/migrations/`, sustituye `correo_mensaje`, `leer_correos` y `enviar_correos`:
+- envía a `api.lettermint.co` con `Idempotency-Key` en la cabecera HTTP (la misma en cada reintento) y `settings` con `track_opens` y `track_clicks` en `false`;
+- usa la ruta `broadcast` solo para anuncios; el slug está sin confirmar;
+- respuestas: 202 → aceptado; 409 → incierto, sin reenviar;
+- pie con la dirección postal, que ya está publicada en el aviso legal y la exige la política de uso de Lettermint;
+- el correo sigue **apagado**.
+
+Archivos de apoyo:
+- verificador 31;
+- `31_correo_lettermint_guardar.sql`: guarda el token y el remitente en Vault sin que el token quede en los registros de Postgres;
+- `activar_correo` exige la 31.
+
+En el flujo «Avisos a registrados (base)», acciones nuevas `ensayo-31`, `verificar-31`, `aplicar-31` y `guardar-correo`. Plantillas de Auth (confirmar y la nueva `recuperar-acceso.html`) con la dirección postal.
+
+**Web y app.**
+- «Información básica» y Privacidad nombran a Lettermint.
+- Privacidad de la web (apartado 8, proveedores), en condicional.
+- Párrafo de Privacidad de la app, oculto mientras el correo esté apagado.
+
+**Revisión independiente.** 4 enfoques, cada hallazgo verificado por otro agente: 18 confirmados y todos corregidos. Lo más importante:
+- token en los registros de Postgres;
+- dirección postal en las plantillas de Auth;
+- prueba de idempotencia dentro de 25 minutos;
+- privacidad publicada **antes** de pasar el SMTP de Auth a Lettermint (paso 5.8, con las frases ya escritas).
+
+**Contratos de encargado.** [`docs/legal/encargados/`](../legal/encargados/): PDF fechados de los DPA de Supabase, Cloudflare, Google Firebase, Expo, GitHub y Lettermint (y de Postmark y Resend, descartados), con README y RAT v2.
+- Firebase: proyecto `rwadar-14e3d`, condiciones aceptadas el 06/11/2026.
+- **Hueco real:** GitHub gratuito no tiene DPA, y sus runners ven datos en claro en las copias de seguridad. Víctor elige: organización con GitHub Team y Customer Agreement, o sacar esos datos de los runners.
+
+**Eric.** Licencia escrita recibida por WhatsApp; Víctor confirma que existe y la conserva (`docs/academy/VISTO-BUENO-ERIC-2026-11-06.md`). No se copia el texto.
+
+**Manual PDF** (`docs/manual/`). La página 9 dice que la cuenta abre la Academy con 9 lecciones. Quita «baja en un clic» y «cuando una plataforma que vigila cambie» (revisión legal 5.13). Las demás páginas quedan idénticas píxel a píxel.
+
+**Dominio.**
+- rwadar.com y rwadar.io están aparcados en Afternic por un tercero.
+- rwadar.app y rwadar.es parecen libres; no se ha comprado nada.
+
+**Pruebas:**
+- avisos: 248 correctas de 248;
+- `npm --prefix rwadar-app test` sin fallos;
+- app: 489 pruebas, 487 correctas, 2 omitidas y 0 fallos (con la 1.4.2 ya en `main`);
+- `npm test` de la raíz sin fallos;
+- diccionarios idénticos.
+
+**Pendiente de Víctor**, paso 5 del contrato en orden:
+- comprar el dominio;
+- cuenta y proyecto en Lettermint y DNS;
+- secreto `LETTERMINT_API_TOKEN` en GitHub;
+- `aplicar-31` y `guardar-correo`;
+- privacidad publicada y SMTP de Auth;
+- pedir a Lettermint que quite su enlace de baja de la ruta de difusión;
+- prueba real, y solo entonces `activar-correo`.
+
 ## 6 de noviembre de 2026 (4) · Claude · APK 1.4.2: Firebase hecho, revisión aplicada, unir y compilar
 
 Firebase y EAS ya están listos. Los dejó la sesión local de Víctor:
