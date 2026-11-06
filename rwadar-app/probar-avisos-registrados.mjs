@@ -1,22 +1,27 @@
 /* =====================================================================
-   RWAdar · avisos a registrados (migración 30)
+   RWAdar · avisos a registrados (migraciones 30 y 31)
    ---------------------------------------------------------------------
    Contrato: docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md.
 
    Postgres real en WebAssembly (PGlite) sobre la cadena de producción: el
    seed anterior a ARTEX, 01-22, 24, 25, las migraciones del catálogo, los
    lotes reales del 22/10 al 2026-11-04.2, 26, el refuerzo de sesión, 28,
-   28_REVERTIR, 29 y la 30. Encima, los lotes reales 2026-11-05 y
-   2026-11-05.2 y lotes inventados con ofertas nuevas.
+   28_REVERTIR, 29, la 30 y la 31 (el correo sale por Lettermint). Encima,
+   los lotes reales 2026-11-05 y 2026-11-05.2 y lotes inventados con ofertas
+   nuevas.
 
    Auth (con el rol supabase_auth_admin), pg_net, Vault y pg_cron son dobles
    locales: no hay red, ni correo, ni push, ni Supabase. Las peticiones a
-   Brevo y a Expo se leen de la cola del doble de pg_net y sus respuestas se
-   simulan escribiéndolas en net._http_response.
+   Lettermint y a Expo se leen de la cola del doble de pg_net y sus
+   respuestas se simulan escribiéndolas en net._http_response. Los pasos del
+   flujo «Avisos a registrados (base)» (ensayo-30, ensayo-31, guardar-correo)
+   se ejecutan de verdad con bash y un doble de psql, y el SQL que montan se
+   pasa a PGlite.
 
        node probar-avisos-registrados.mjs
    ===================================================================== */
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
@@ -29,9 +34,9 @@ import { alta, baseCatalogoHistorico, filas, informe, sesion } from './pruebas-s
    escribe ahí el HTML de cada tipo para abrirlo en un navegador. */
 const volcarCorreo = (nombre, peticion) => {
   const carpeta = process.env.RWADAR_VOLCAR_CORREOS;
-  if (!carpeta || !peticion?.body?.htmlContent) return;
+  if (!carpeta || !peticion?.body?.html) return;
   fs.mkdirSync(carpeta, { recursive: true });
-  fs.writeFileSync(path.join(carpeta, nombre + '.html'), peticion.body.htmlContent);
+  fs.writeFileSync(path.join(carpeta, nombre + '.html'), peticion.body.html);
   fs.writeFileSync(path.join(carpeta, nombre + '.asunto.txt'), String(peticion.body.subject || ''));
 };
 
@@ -56,12 +61,17 @@ const TEXTO_ES = 'Quiero recibir avisos de RWAdar por correo y, si los activo en
 const TEXTO_EN = "I want to receive RWAdar notices by email and, if I enable them on my phone, as notifications: new listings on the radar and news about the website and the app. It's optional: the Academy unlocks anyway. You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your phone settings. More information in Privacy.";
 const AVISO_FIJO = 'Información, no recomendación: aparecer en el radar no es un respaldo y puedes perder lo invertido. RWAdar no intermedia y nadie paga por aparecer en este aviso. Consulta en el radar qué ha entrado y con qué fuentes.';
 const FRASE_PLANTILLA = 'Marcaste también la casilla de avisos de novedades: al confirmar tu correo quedarán activados. Si solo querías la cuenta, confírmala igualmente y desactívalos en Perfil.';
+// El pie de la 30 (sin dirección) solo sirve para comparar sus correos con los
+// de la 31. Desde la 31, los avisos y las plantillas de Auth (que salen por el
+// SMTP de Lettermint desde el paso 5.8) llevan la dirección postal: la pide la
+// política de uso de Lettermint en cada correo.
 const RESPONSABLE = 'Responsable: Víctor Manuel Jorques Granero, España';
+const RESPONSABLE_CORREO = 'Responsable: Víctor Manuel Jorques Granero, Plaza Generalitat, s/n, 46600 Alzira (Valencia), España';
 const PARRAFO_APUNTADO = 'Además, te has apuntado a los avisos de novedades: te avisaremos de las fichas nuevas que entren en el radar y de las novedades de la web y la app. Puedes darte de baja cuando quieras con el enlace del final o en tu Perfil.';
 const CIERRE_HTML = 'Si no creaste esta cuenta, <a href="mailto:RWAdar@protonmail.com" style="color:#0F7A57">escríbenos</a> y la borramos.';
 const CIERRE_TXT = 'Si no creaste esta cuenta, escríbenos a RWAdar@protonmail.com y la borramos.';
-const PIE_HTML = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE} (<a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">aviso legal</a> · <a href="https://rwadar.pages.dev/privacidad" style="color:#555">privacidad</a>).`;
-const PIE_TXT = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE}.`;
+const PIE_HTML = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE_CORREO} (<a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">aviso legal</a> · <a href="https://rwadar.pages.dev/privacidad" style="color:#555">privacidad</a>).`;
+const PIE_TXT = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE_CORREO}.`;
 const PUSH_BIENVENIDA = 'Notificaciones activadas en este móvil. Las de novedades solo llegan si las tienes activadas en Perfil.';
 const MAILTO_BAJA = 'mailto:RWAdar@protonmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
 
@@ -74,9 +84,15 @@ const ACTIVAR_CASILLA = leer('db/30_avisos_registrados_activar_casilla.sql');
 const APAGAR = leer('db/30_avisos_registrados_apagar.sql');
 const APAGAR_CASILLA = leer('db/30_avisos_registrados_apagar_casilla.sql');
 const ANUNCIAR = leer('db/anunciar.sql');
+const SQL31 = leer('db/31_correo_lettermint.sql');
+const MIGRACION31 = leer('supabase/migrations/20261106120000_correo_lettermint.sql');
+const VERIFICAR31 = leer('db/31_correo_lettermint_verificar.sql');
+const GUARDAR31 = leer('db/31_correo_lettermint_guardar.sql');
+const BASE = leer('../.github/workflows/avisos-base.yml');
 const FALLO_CERRADO = leer('db/fallo_cerrado.sql');
 const FLUJO = leer('../.github/workflows/avisar-novedad.yml');
 const PLANTILLA = leer('plantillas-auth/confirmar-alta.html');
+const PLANTILLA_RECUPERAR = leer('plantillas-auth/recuperar-acceso.html');
 
 // psql no sustituye variables en los comentarios ni dentro de un bloque $etiqueta$.
 const sinComentarios = (sql) => sql.split('\n').filter((l) => !/^\s*--/.test(l)).join('\n');
@@ -88,6 +104,31 @@ try {
    1 · Revisión estática: copia versionada, textos, plantilla, flujo
    ===================================================================== */
 paso('la migración versionada 20261105200000 es una copia idéntica de db/30', MIGRACION30 === SQL30);
+paso('la migración versionada 20261106120000 es una copia idéntica de db/31', MIGRACION31 === SQL31);
+{
+  // Forma que exige el ensayo del flujo: la 31, una sola transacción; su
+  // verificador, solo lectura y deshecho al final.
+  const lineas = (t) => t.replace(/\n$/, '').split('\n');
+  const primera = (t) => sinComentarios(t).split('\n').find((l) => l.trim() !== '');
+  paso('la 31 empieza en «begin;» y termina en su único «commit;»; su verificador empieza en «begin transaction read only;» y termina en «rollback;»',
+    primera(SQL31) === 'begin;' && (SQL31.match(/^commit;$/gm) || []).length === 1 && lineas(SQL31).at(-1) === 'commit;'
+    && primera(VERIFICAR31) === 'begin transaction read only;' && lineas(VERIFICAR31).at(-1) === 'rollback;'
+    && (VERIFICAR31.match(/^begin transaction read only;$/gm) || []).length === 1
+    && !/^commit;$/m.test(VERIFICAR31) && !/^begin transaction read only;$/m.test(SQL31));
+  const codigo = sinComentarios(SQL31);
+  const funciones = [...codigo.matchAll(/create or replace function (rwadar_novedades\.[a-z_]+)\(/g)].map((m) => m[1]);
+  const firmas = ['correo_mensaje(text, text, text, text, boolean, uuid)', 'leer_correos()', 'enviar_correos(integer)'];
+  paso('la 31 solo sustituye correo_mensaje, leer_correos y enviar_correos (create or replace, sin drop ni grant) y repite sus revoke de la 30; no enciende nada, ni toca relojes ni Vault',
+    isDeepStrictEqual(funciones, ['rwadar_novedades.correo_mensaje', 'rwadar_novedades.leer_correos', 'rwadar_novedades.enviar_correos'])
+    && !/\bdrop\s|\bgrant\s|alter\s+(function|table)|cron\.(un)?schedule|update\s+rwadar_novedades\.configuracion|vault\.(create|update)_secret|insert\s+into\s+vault/i.test(codigo)
+    && firmas.every((f) => new RegExp(`revoke all on function rwadar_novedades\\.${f.replace(/[()]/g, '\\$&')}\\s+from public, anon, authenticated, service_role;`).test(codigo))
+    && /language plpgsql stable security definer set search_path = ''\nas \$funcion\$;?/.test(codigo.slice(codigo.indexOf('function rwadar_novedades.correo_mensaje')))
+    && (codigo.match(/security definer set search_path = ''/g) || []).length === 3);
+  const cuerpos = [...SQL31.matchAll(/create or replace function rwadar_novedades\.[a-z_]+\([\s\S]*?\n\$funcion\$;/g)].map((m) => m[0]);
+  paso('las tres funciones de la 31 no mencionan Brevo y el envío llama a https://api.lettermint.co/v1/send',
+    cuerpos.length === 3 && cuerpos.every((c) => !/brevo/i.test(c))
+    && cuerpos[2].includes("url := 'https://api.lettermint.co/v1/send'") && !cuerpos[2].includes('api.brevo.com'));
+}
 paso('la 30 y su verificador guardan la versión v2 y los textos ES/EN exactos del contrato, y ya no la v1',
   [SQL30, VERIFICAR30].every((s) => s.includes(`'${VERSION}'`) && s.includes(`'${TEXTO_ES}'`)
     && s.includes(`'${TEXTO_EN.replace(/'/g, "''")}'`))
@@ -149,28 +190,88 @@ paso('la 30 y su verificador guardan la versión v2 y los textos ES/EN exactos d
     isDeepStrictEqual(acciones, ['.ConfirmationURL', 'if .Data.avisos_novedades', 'end'])
     && bloque?.[1].includes(FRASE_PLANTILLA)
     && PLANTILLA.replace(bloque?.[0] ?? '', '').search(/avisos de novedades/) === -1);
-  paso('el pie de la plantilla nombra al responsable: «RWAdar · Responsable: Víctor Manuel Jorques Granero, España · Aviso legal»',
-    PLANTILLA.includes(`RWAdar · ${RESPONSABLE} · <a href="https://rwadar.pages.dev/privacidad#aviso-legal"`));
-  paso('la plantilla no lleva imágenes, scripts, http:// ni enlaces de seguimiento',
-    !/<img|<script|http:\/\/|utm_|track|pixel/i.test(PLANTILLA)
-    && enlaces.every((h) => h === '{{ .ConfirmationURL }}' || h.startsWith('https://rwadar.pages.dev/')
-      || h === 'mailto:RWAdar@protonmail.com'));
+  const plantillas = fs.readdirSync(path.join(raiz, 'plantillas-auth')).filter((f) => f.endsWith('.html')).sort();
+  const pie = `RWAdar · ${RESPONSABLE_CORREO} · <a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">Aviso legal</a> · `
+    + '<a href="https://rwadar.pages.dev/privacidad" style="color:#555">Privacidad</a> · <a href="mailto:RWAdar@protonmail.com" style="color:#555">RWAdar@protonmail.com</a></p>';
+  paso('el pie de las plantillas de Auth (confirmación y recuperación) nombra al responsable con su dirección postal: «Plaza Generalitat, s/n, 46600 Alzira (Valencia), España»',
+    isDeepStrictEqual(plantillas, ['confirmar-alta.html', 'recuperar-acceso.html'])
+    && plantillas.every((f) => leer(`plantillas-auth/${f}`).includes(pie)));
+  const accionesRecuperar = [...PLANTILLA_RECUPERAR.matchAll(/\{\{\s*([^}]*?)\s*\}\}/g)].map((m) => m[1]);
+  paso('la plantilla «Reset password» solo usa {{ .ConfirmationURL }}, una vez, con el texto de REABRIR-CUENTAS',
+    isDeepStrictEqual(accionesRecuperar, ['.ConfirmationURL'])
+    && ['Recupera tu acceso a RWAdar', 'Has pedido poner una contraseña nueva.', 'Elegir una contraseña nueva',
+      'Si no lo has pedido tú, ignora este mensaje: tu contraseña no cambia.'].every((t) => PLANTILLA_RECUPERAR.includes(t)));
+  paso('las plantillas no llevan imágenes, scripts, http:// ni enlaces de seguimiento',
+    [PLANTILLA, PLANTILLA_RECUPERAR].every((p) => !/<img|<script|http:\/\/|utm_|track|pixel/i.test(p)
+      && [...p.matchAll(/href="([^"]*)"/g)].map((m) => m[1]).every((h) => h === '{{ .ConfirmationURL }}'
+        || h.startsWith('https://rwadar.pages.dev/') || h === 'mailto:RWAdar@protonmail.com'))
+    && enlaces.includes('{{ .ConfirmationURL }}'));
 }
 
 // Flujo «Avisar novedad»: manual, sin permisos de más, entradas por env:.
 const ENLACE_VALIDO = /^https:\/\/rwadar\.pages\.dev(\/[A-Za-z0-9._~%-]+)*\/?([?#][A-Za-z0-9._~%=&-]*)?$/;
-const pasoFlujo = (nombre) => {
-  const lineas = FLUJO.split('\n');
+// Un paso de un flujo de GitHub (« - name: …» a 6 espacios) y su script (run: |).
+const pasoDe = (yaml, nombre) => {
+  const lineas = yaml.split('\n');
   const inicio = lineas.findIndex((l) => l.trim() === `- name: ${nombre}`);
   if (inicio < 0) return null;
-  const fin = lineas.findIndex((l, i) => i > inicio && /^ {6}- /.test(l));
+  const fin = lineas.findIndex((l, i) => i > inicio && /^ {6}(- |# )/.test(l));
   return lineas.slice(inicio, fin < 0 ? undefined : fin).join('\n');
 };
+const pasoFlujo = (nombre) => pasoDe(FLUJO, nombre);
 const scriptDe = (bloque) => {
   const lineas = bloque.split('\n');
   const i = lineas.findIndex((l) => /^ {8}run: \|$/.test(l));
   return lineas.slice(i + 1).map((l) => l.replace(/^ {10}/, '')).join('\n');
 };
+
+// Pasos del flujo «Avisos a registrados (base)» ejecutados de verdad: bash,
+// desde la raíz del repositorio, con GITHUB_ENV en un archivo y un doble de
+// psql que guarda sus argumentos y una copia del archivo -f de cada llamada
+// (nunca se conecta a nada). El SQL que montan se pasa después a PGlite.
+const hayBash = spawnSync('bash', ['--version'], { encoding: 'utf8' }).status === 0;
+const temporal = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-avisos-'));
+const PSQL_DOBLE = `#!/usr/bin/env bash
+set -euo pipefail
+d="$PSQL_DOBLE_DIR"
+n=$(cat "$d/contador" 2>/dev/null || echo 0); echo $((n + 1)) > "$d/contador"
+printf '%s\\0' "$@" > "$d/llamada-$n.argv"
+while [ $# -gt 0 ]; do if [ "$1" = -f ]; then cp "$2" "$d/llamada-$n.sql"; fi; shift; done
+`;
+const correPaso = (nombre, entorno) => {
+  const dir = fs.mkdtempSync(path.join(temporal, 'paso-'));
+  fs.writeFileSync(path.join(dir, 'psql'), PSQL_DOBLE, { mode: 0o755 });
+  const githubEnv = path.join(dir, 'github-env');
+  fs.writeFileSync(githubEnv, '');
+  const bloque = pasoDe(BASE, nombre);
+  if (!bloque) throw new Error(`el flujo no tiene el paso «${nombre}»`);
+  const r = spawnSync('bash', ['-c', scriptDe(bloque)], { cwd: path.join(raiz, '..'), encoding: 'utf8',
+    env: { PATH: `${dir}:${process.env.PATH}`, PSQL_DOBLE_DIR: dir, GITHUB_ENV: githubEnv, ...entorno } });
+  const llamadas = fs.readdirSync(dir).filter((f) => f.endsWith('.argv'))
+    .sort((a, b) => parseInt(a.slice(8), 10) - parseInt(b.slice(8), 10)).map((f) => {
+      const sql = path.join(dir, f.replace(/\.argv$/, '.sql'));
+      return { argv: fs.readFileSync(path.join(dir, f), 'utf8').split('\0').slice(0, -1),
+        sql: fs.existsSync(sql) ? fs.readFileSync(sql, 'utf8') : null };
+    });
+  const salida = Object.fromEntries(fs.readFileSync(githubEnv, 'utf8').split('\n').filter(Boolean)
+    .map((l) => [l.slice(0, l.indexOf('=')), l.slice(l.indexOf('=') + 1)]));
+  return { estado: r.status, texto: `${r.stdout}${r.stderr}`, llamadas, salida };
+};
+// Las variables -v nombre=valor de una llamada a psql (no las de ON_ERROR_STOP).
+const variablesPsql = (argv) => Object.fromEntries(argv.flatMap((a, i) =>
+  (argv[i - 1] === '-v' && /^[a-z_]+=/.test(a) ? [[a.slice(0, a.indexOf('=')), a.slice(a.indexOf('=') + 1)]] : [])));
+// Lo que hace psql con un archivo: sin metacomandos (\set…) y con cada
+// :'variable' fuera de los bloques $…$ cambiada por su literal escapado.
+const conVariablesPsql = (sql, variables) => sinComentarios(sql).split('\n').filter((l) => !l.startsWith('\\')).join('\n')
+  .split(/(\$[a-z_]*\$[\s\S]*?\$[a-z_]*\$)/)
+  .map((trozo, i) => (i % 2 ? trozo : trozo.replace(/:'([a-z_]+)'/g, (_, nombre) => {
+    if (!(nombre in variables)) throw new Error(`falta la variable ${nombre}`);
+    return `'${String(variables[nombre]).replace(/'/g, "''")}'`;
+  }))).join('');
+const V30_RUTA = 'rwadar-app/db/30_avisos_registrados_verificar.sql';
+const V31_RUTA = 'rwadar-app/db/31_correo_lettermint_verificar.sql';
+// Token inventado para los dobles (no es de Lettermint ni de nadie).
+const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].join('-');
 {
   const runs = [...FLUJO.matchAll(/^( +)run: \|\n((?:\1 {2}.*\n|\s*\n)*)/gm)].map((m) => m[2]);
   const trabajos = FLUJO.slice(FLUJO.indexOf('\njobs:\n') + 7).match(/^ {2}[a-z][a-z0-9-]*:$/gm) || [];
@@ -227,6 +328,92 @@ const scriptDe = (bloque) => {
       validar.includes(ENLACE_VALIDO.source.replace(/\\\//g, '/')) && SQL30.includes(ENLACE_VALIDO.source.replace(/\\\//g, '/')));
   } else {
     console.log('  (sin bash en este equipo: la validación del flujo se comprueba en CI)');
+  }
+}
+
+// Flujo «Avisos a registrados (base)»: acciones de la 31 y guardar-correo.
+{
+  const runs = [...BASE.matchAll(/^( +)run: \|\n((?:\1 {2}.*\n|\s*\n)*)/gm)].map((m) => m[2]);
+  const opciones = BASE.match(/ {6}accion:\n(?: {8}.*\n)*? {8}options:\n((?: {10}- .*\n)+)/)?.[1]
+    .trim().split('\n').map((l) => l.trim().slice(2));
+  paso('el flujo «Avisos a registrados (base)» añade ensayo-31, verificar-31, aplicar-31 y guardar-correo y conserva las de la 30',
+    isDeepStrictEqual(opciones, ['ensayo-30', 'verificar-30', 'diagnostico-30', 'aplicar-30', 'ensayo-31', 'verificar-31',
+      'aplicar-31', 'guardar-correo', 'activar-casilla', 'activar-correo', 'activar-push', 'apagar', 'apagar-casilla'])
+    && /^ {6}remitente:\n {8}description: .*\n {8}required: false\n {8}type: string$/m.test(BASE));
+  const guardar = pasoDe(BASE, 'Guardar en Vault el token de Lettermint y el remitente') || '';
+  paso('nunca ${{ … }} dentro de run:; el secreto LETTERMINT_API_TOKEN solo llega, por env:, al paso que guarda; ni set -x ni echo del token',
+    runs.length >= 5 && runs.every((r) => !r.includes('${{'))
+    && (BASE.match(/secrets\.LETTERMINT_API_TOKEN/g) || []).length === 1
+    && guardar.includes('LETTERMINT_API_TOKEN: ${{ secrets.LETTERMINT_API_TOKEN }}')
+    && !/set -[a-z]*x|set -o xtrace/.test(BASE) && !/(echo|printf)[^\n]*\$\{?LETTERMINT_API_TOKEN/.test(BASE));
+  paso('el paso que guarda pasa token y remitente a psql como variables (-v) desde el entorno, y el SQL usa vault.create_secret / vault.update_secret',
+    /psql "\$SUPABASE_DB_URL" -X -v ON_ERROR_STOP=1 \\\n {12}-v token="\$LETTERMINT_API_TOKEN" -v remitente="\$REMITENTE" \\\n {12}-f "\$SQL"\n/.test(guardar)
+    && /if: inputs\.accion == 'guardar-correo'/.test(guardar)
+    && /vault\.create_secret\(new_secret := v_valor, new_name := v_nombre/.test(GUARDAR31)
+    && /vault\.update_secret\(secret_id := v_id, new_secret := v_valor\)/.test(GUARDAR31)
+    && isDeepStrictEqual([...new Set([...sinComentarios(GUARDAR31).matchAll(/:'([a-z_]+)'/g)].map((m) => m[1]))], ['token', 'remitente'])
+    && /^\\set VERBOSITY terse$/m.test(GUARDAR31) && !/raise[^;]*(e\.token|v_token|v_valor)/.test(GUARDAR31));
+  {
+    // Supabase registra con su texto las DDL del rol postgres (log_statement =
+    // 'ddl'): las variables de psql solo pueden ir en un SELECT, nunca en un
+    // CREATE … AS, un INSERT o cualquier otra sentencia que se registre.
+    const sentencias = sinComentarios(GUARDAR31).split('\n').filter((l) => !l.startsWith('\\')).join('\n')
+      .split(/(\$[a-z_]*\$[\s\S]*?\$[a-z_]*\$)/).filter((_, i) => i % 2 === 0).join(' ')
+      .split(';').map((t) => t.trim()).filter(Boolean);
+    const conVariables = sentencias.filter((t) => /:'(token|remitente)'/.test(t));
+    paso('guardar-correo pasa el token y el remitente en un solo SELECT (set_config local a la transacción), no en una DDL que Supabase registra con el valor',
+      conVariables.length === 1 && /^select set_config\('rwadar\.guardar_token', :'token', true\)/.test(conVariables[0])
+      && conVariables[0].includes("set_config('rwadar.guardar_remitente', :'remitente', true)")
+      && !/\b(create|alter|insert|update|delete|copy|do|grant|comment)\b/i.test(conVariables[0])
+      && !/create\s+(temporary|temp)\s+table/i.test(GUARDAR31)
+      && GUARDAR31.includes("current_setting('rwadar.guardar_token', true)"));
+  }
+  paso('el flujo comprueba que las dos copias de la 30 y las dos de la 31 son idénticas',
+    BASE.includes('cmp -s "$D/30_avisos_registrados.sql" rwadar-app/supabase/migrations/20261105200000_avisos_registrados.sql')
+    && BASE.includes('cmp -s "$D/31_correo_lettermint.sql" rwadar-app/supabase/migrations/20261106120000_correo_lettermint.sql'));
+
+  if (hayBash) {
+    const comprueba = (entradas) => correPaso('Comprobar la acción', { ACCION: 'ensayo-31', CONFIRMAR: '', REMITENTE: '', ...entradas });
+    const ambos = `${V30_RUTA} ${V31_RUTA}`;
+    const esperados = [
+      [{ ACCION: 'ensayo-30' }, { SQL: 'rwadar-app/db/30_avisos_registrados.sql', CAMBIA: 'no', ENSAYO: 'si', VERIFICADORES: V30_RUTA }],
+      [{ ACCION: 'verificar-30' }, { SQL: V30_RUTA, CAMBIA: 'no', ENSAYO: 'no', VERIFICADORES: V30_RUTA }],
+      [{ ACCION: 'aplicar-30', CONFIRMAR: 'AVISOS' }, { SQL: 'rwadar-app/db/30_avisos_registrados.sql', CAMBIA: 'si', ENSAYO: 'no', VERIFICADORES: V30_RUTA }],
+      [{ ACCION: 'ensayo-31' }, { SQL: 'rwadar-app/db/31_correo_lettermint.sql', CAMBIA: 'no', ENSAYO: 'si', VERIFICADORES: ambos }],
+      [{ ACCION: 'verificar-31' }, { SQL: V31_RUTA, CAMBIA: 'no', ENSAYO: 'no', VERIFICADORES: ambos }],
+      [{ ACCION: 'aplicar-31', CONFIRMAR: 'AVISOS' }, { SQL: 'rwadar-app/db/31_correo_lettermint.sql', CAMBIA: 'si', ENSAYO: 'no', VERIFICADORES: ambos }],
+      [{ ACCION: 'guardar-correo', CONFIRMAR: 'AVISOS', REMITENTE: 'avisos@rwadar.example' },
+        { SQL: 'rwadar-app/db/31_correo_lettermint_guardar.sql', CAMBIA: 'si', ENSAYO: 'no', VERIFICADORES: V30_RUTA }],
+      [{ ACCION: 'activar-correo', CONFIRMAR: 'AVISOS' }, { SQL: 'rwadar-app/db/30_avisos_registrados_activar_correo.sql', CAMBIA: 'si', ENSAYO: 'no', VERIFICADORES: ambos }],
+    ];
+    const vistos = esperados.map(([entradas]) => comprueba(entradas));
+    paso(`«Comprobar la acción» elige SQL, copia, ensayo y verificadores de ${esperados.length} acciones (las de la 31 pasan los verificadores 30 y 31)`,
+      vistos.every((v, i) => v.estado === 0 && isDeepStrictEqual(v.salida, esperados[i][1])));
+    const malos = [{ ACCION: 'aplicar-31' }, { ACCION: 'aplicar-31', CONFIRMAR: 'avisos' },
+      { ACCION: 'guardar-correo', REMITENTE: 'avisos@rwadar.example' }, { ACCION: 'guardar-correo', CONFIRMAR: 'AVISOS' },
+      { ACCION: 'guardar-correo', CONFIRMAR: 'AVISOS', REMITENTE: 'RWAdar <avisos@rwadar.example>' },
+      { ACCION: 'guardar-correo', CONFIRMAR: 'AVISOS', REMITENTE: 'avisos@localhost' },
+      { ACCION: 'guardar-correo', CONFIRMAR: 'AVISOS', REMITENTE: 'av isos@rwadar.example' },
+      { ACCION: 'guardar-correo', CONFIRMAR: 'AVISOS', REMITENTE: 'avisos@rwadar.example\nBcc: otro@ejemplo.test' },
+      { ACCION: 'guardar-correo', CONFIRMAR: 'AVISOS', REMITENTE: `${'a'.repeat(250)}@rwadar.example` },
+      { ACCION: 'borrar-vault', CONFIRMAR: 'AVISOS' }];
+    paso(`y rechaza ${malos.length} entradas malas (sin AVISOS, remitente vacío, con nombre, sin dominio, con espacios o saltos, demasiado largo, acción desconocida) sin dejar nada en GITHUB_ENV`,
+      malos.every((e) => { const v = comprueba(e); return v.estado !== 0 && Object.keys(v.salida).length === 0; }));
+    // El paso «Verificar», ejecutado de verdad: un psql por verificador, en orden.
+    const llamadaVerificador = (v) => ['postgresql://doble-local/sin-red', '-v', 'ON_ERROR_STOP=1', '-X', '-f', v];
+    const verificaciones = [
+      [{ ACCION: 'aplicar-31', CONFIRMAR: 'AVISOS' }, [V30_RUTA, V31_RUTA]],
+      [{ ACCION: 'verificar-31' }, [V30_RUTA, V31_RUTA]],
+      [{ ACCION: 'activar-correo', CONFIRMAR: 'AVISOS' }, [V30_RUTA, V31_RUTA]],
+      [{ ACCION: 'aplicar-30', CONFIRMAR: 'AVISOS' }, [V30_RUTA]],
+      [{ ACCION: 'guardar-correo', CONFIRMAR: 'AVISOS', REMITENTE: 'avisos@rwadar.example' }, [V30_RUTA]],
+    ].map(([entradas, esperados]) => {
+      const v = correPaso('Verificar', { ...comprueba(entradas).salida, SUPABASE_DB_URL: 'postgresql://doble-local/sin-red' });
+      return v.estado === 0 && isDeepStrictEqual(v.llamadas.map((l) => l.argv), esperados.map(llamadaVerificador))
+        && esperados.every((ruta, i) => v.llamadas[i].sql === fs.readFileSync(path.join(raiz, '..', ruta), 'utf8'));
+    });
+    paso('el paso «Verificar» del flujo, ejecutado de verdad, pasa los verificadores 30 y 31 (en ese orden) tras aplicar-31, verificar-31 y activar-correo, y solo el 30 tras aplicar-30 y guardar-correo',
+      verificaciones.every(Boolean));
   }
 }
 
@@ -399,9 +586,80 @@ const HOSTIL = `alter default privileges grant execute on functions to anon, aut
 await db.exec(HOSTIL);
 await db.exec(SQL30);
 await db.exec(SQL30);
+paso('la 30 se aplica literalmente dos veces sobre la cadena de producción', true);
+
+// La 31 encima de la 30, como en producción (la 30 se aplicó el 06/11/2026).
+// Antes: los correos que construye la 30, para comparar, y los ensayos del
+// flujo tal cual (bash, doble de psql y el SQL que montan, en PGlite).
+const MUESTRAS = [
+  ['bienvenida', null, null, null, false, null],
+  ['bienvenida', null, null, null, true, '11111111-2222-4333-8444-555555555555'],
+  ['anuncio', 'Avisos & <mejoras>', 'Texto "con" comillas y \'apóstrofos\'.', 'https://rwadar.pages.dev/academy/', true,
+    '11111111-2222-4333-8444-555555555555'],
+];
+const correosMuestra = async () => {
+  await sesion(db);
+  const lista = [];
+  for (const m of MUESTRAS) lista.push((await una(db, 'select rwadar_novedades.correo_mensaje($1, $2, $3, $4, $5, $6) m', m)).m);
+  return lista;
+};
+const correos30 = await correosMuestra();
+const definicion = async (firma) => { await sesion(db); return (await una(db, 'select pg_get_functiondef($1::regprocedure) d', [firma])).d; };
+const FIRMAS_31 = ['rwadar_novedades.correo_mensaje(text,text,text,text,boolean,uuid)', 'rwadar_novedades.leer_correos()',
+  'rwadar_novedades.enviar_correos(integer)'];
+const verificar31 = async () => {
+  await sesion(db);
+  const avisos = [];
+  const e = await error(() => db.exec(VERIFICAR31, { onNotice: (n) => avisos.push(n.message) }));
+  if (e) { await db.exec('rollback'); return { ok: false, error: e.message }; }
+  const aviso = avisos.find((a) => a.startsWith('RWAdar 31 OK'));
+  return { ok: !!aviso, aviso };
+};
+if (hayBash) {
+  for (const [accion, archivo, oks] of [['ensayo-30', '30_avisos_registrados.sql', ['RWAdar 30 OK']],
+    ['ensayo-31', '31_correo_lettermint.sql', ['RWAdar 30 OK', 'RWAdar 31 OK']]]) {
+    const comprobar = correPaso('Comprobar la acción', { ACCION: accion, CONFIRMAR: '', REMITENTE: '' });
+    const ensayo = correPaso('Ensayo sin cambiar nada (se deshace al final)',
+      { ...comprobar.salida, SUPABASE_DB_URL: 'postgresql://doble-local/sin-red' });
+    const [llamada] = ensayo.llamadas;
+    await sesion(db);
+    const avisos = [];
+    const e = await error(() => db.exec(llamada?.sql || 'select 1 / 0', { onNotice: (n) => avisos.push(n.message) }));
+    if (e) await db.exec('rollback');
+    const envio = await definicion('rwadar_novedades.enviar_correos(integer)');
+    paso(`el paso «Ensayo» del flujo, ejecutado de verdad para ${accion}, monta ${archivo} + sus verificadores + rollback, pasa en PGlite y no deja nada (${e?.message || 'OK'})`,
+      comprobar.estado === 0 && ensayo.estado === 0 && ensayo.llamadas.length === 1
+      && isDeepStrictEqual(llamada.argv.slice(0, 5), ['postgresql://doble-local/sin-red', '-v', 'ON_ERROR_STOP=1', '-X', '-f'])
+      && ensayo.texto.includes(`ENSAYO CORRECTO: ${archivo} y sus verificadores pasan`)
+      && llamada.sql.trimEnd().endsWith('rollback;') && !/^commit;$/m.test(llamada.sql)
+      && !e && oks.every((ok) => avisos.some((a) => a.startsWith(ok)))
+      && envio.includes('api.brevo.com') && !envio.includes('api.lettermint.co'));
+  }
+}
+await db.exec(SQL31);
+await sesion(db);
+await db.exec('grant execute on function rwadar_novedades.leer_correos() to anon, service_role');
+await db.exec(SQL31);
 await db.exec(HOSTIL.replace(/ grant /g, ' revoke ').replace(/ to /g, ' from '));
 await db.exec('alter default privileges grant all on tables to anon, authenticated'); // la base de antes
-paso('la 30 se aplica literalmente dos veces sobre la cadena de producción', true);
+{
+  const [tres] = await filas(db, `select count(*)::int n,
+      bool_and(p.prosecdef and p.proconfig && array['search_path=""', 'search_path=']) definer,
+      bool_and(p.proowner = (select q.proowner from pg_proc q where q.oid = 'rwadar_novedades.procesar()'::regprocedure)) dueno,
+      bool_or(has_function_privilege('public', p.oid, 'EXECUTE') or has_function_privilege('anon', p.oid, 'EXECUTE')
+        or has_function_privilege('authenticated', p.oid, 'EXECUTE') or has_function_privilege('service_role', p.oid, 'EXECUTE')) abierta,
+      bool_and(pg_get_functiondef(p.oid) not ilike '%brevo%') sin_brevo
+    from pg_proc p where p.oid in (to_regprocedure($1), to_regprocedure($2), to_regprocedure($3))`, FIRMAS_31);
+  paso('la 31 se aplica dos veces con privilegios por defecto hostiles; sus tres funciones siguen definer, con search_path vacío y el dueño de la 30, sin Brevo, y una abierta a mano entre medias vuelve a quedar cerrada',
+    tres.n === 3 && tres.definer && tres.dueno && !tres.abierta && tres.sin_brevo);
+  const correos31 = await correosMuestra();
+  paso('con la 31, correo_mensaje construye exactamente los mismos correos que con la 30 salvo la dirección postal del responsable en el pie',
+    correos31.length === 3 && correos31.every((c, i) => c.html.includes(`${RESPONSABLE_CORREO} (<a href=`)
+      && c.texto.includes(`${RESPONSABLE_CORREO}.\nAviso legal:`)
+      && isDeepStrictEqual(JSON.parse(JSON.stringify(c).replaceAll(RESPONSABLE_CORREO, RESPONSABLE)), correos30[i])));
+  const v31 = await verificar31();
+  paso(`el verificador 31 pasa con todo apagado («${v31.aviso || v31.error}»)`, v31.ok && /correo apagado$/.test(v31.aviso));
+}
 
 /* =====================================================================
    3 · Estado de instalación: apagado, relleno, permisos
@@ -560,6 +818,45 @@ const pref = async (u) => { await sesion(db); return una(db, 'select * from rwad
   await db.exec(original);
   paso('el verificador 30 detecta un disparador de confirmación que no mira confirmation_sent_at ni casilla_activada_el',
     !v4.ok && /confirmation_sent_at/.test(v4.error) && (await verificar()).ok);
+
+  // El verificador 31: cada cosa que desharía el cambio a Lettermint, rota y
+  // arreglada con el texto literal de la 30 o de la 31.
+  const funcionDe = (sql, nombre) => sql.match(new RegExp(`create or replace function rwadar_novedades\\.${nombre}\\([\\s\\S]*?\\n\\$funcion\\$;`))[0];
+  const envio31 = funcionDe(SQL31, 'enviar_correos');
+  const rompe31 = async (romper, arreglar) => {
+    await sesion(db); await db.exec(romper); const v = await verificar31(); await sesion(db); await db.exec(arreglar); return v;
+  };
+  const dueno = (await una(db, "select p.proowner::regrole::text d from pg_proc p where p.oid = 'rwadar_novedades.procesar()'::regprocedure")).d;
+  const rotos = {
+    'enviar_correos de la 30 (Brevo)': [await rompe31(funcionDe(SQL30, 'enviar_correos'), envio31), /api\.brevo\.com/],
+    'leer_correos de la 30': [await rompe31(funcionDe(SQL30, 'leer_correos'), funcionDe(SQL31, 'leer_correos')), /mencionan Brevo/],
+    'correo_mensaje de la 30 (sin dirección)': [await rompe31(funcionDe(SQL30, 'correo_mensaje'), funcionDe(SQL31, 'correo_mensaje')), /dirección postal/],
+    'track_opens true': [await rompe31(envio31.replace("'track_opens', false", "'track_opens', true"), envio31), /track_opens/],
+    'track_clicks true': [await rompe31(envio31.replace("'track_clicks', false", "'track_clicks', true"), envio31), /track_clicks/],
+    'route también en la bienvenida': [await rompe31(envio31.replace("if r.tipo = 'anuncio' then", 'if true then'), envio31), /broadcast/],
+    'sin Idempotency-Key': [await rompe31(envio31.replace("'Idempotency-Key', v_idempotencia::text,", ''), envio31), /Idempotency-Key/],
+    // La clave sacada de la cabecera HTTP y puesta en las cabeceras del correo:
+    // Lettermint no deduplicaría y un reintento tras un timeout enviaría otro.
+    'Idempotency-Key en las cabeceras del correo': [await rompe31(envio31.replace("'Idempotency-Key', v_idempotencia::text,", '')
+      .replace('    if v_suscrito then', "    v_cuerpo := v_cuerpo || jsonb_build_object('headers', jsonb_build_object('Idempotency-Key', v_idempotencia::text));\n    if v_suscrito then"), envio31), /Idempotency-Key/],
+    'cuerpo sin settings': [await rompe31(envio31.replace('body := v_cuerpo,', "body := v_cuerpo - 'settings',"), envio31), /body := v_cuerpo/],
+    'clave nueva al reintentar sin respuesta': [await rompe31(envio31.replace("error = 'Respuesta del proveedor agotada'",
+      "idempotencia = null, error = 'Respuesta del proveedor agotada'"), envio31), /la misma en cada reintento/],
+    'List-Unsubscribe-Post': [await rompe31(envio31.replace("'List-Unsubscribe',", "'List-Unsubscribe-Post', 'List-Unsubscribe=One-Click', 'List-Unsubscribe',"), envio31), /List-Unsubscribe-Post/],
+    'con metadata': [await rompe31(envio31.replace("'reply_to',", "'metadata', jsonb_build_object('u', r.id), 'reply_to',"), envio31), /metadata/],
+    '409 reenviado': [await rompe31(funcionDe(SQL31, 'leer_correos').replace('elsif r.status_code = 409 then', 'elsif false then'), funcionDe(SQL31, 'leer_correos')), /409 incierto/],
+    'ejecutable por service_role': [await rompe31('grant execute on function rwadar_novedades.enviar_correos(integer) to service_role',
+      'revoke execute on function rwadar_novedades.enviar_correos(integer) from service_role'), /ejecutable por service_role/],
+    'security invoker': [await rompe31('alter function rwadar_novedades.leer_correos() security invoker',
+      'alter function rwadar_novedades.leer_correos() security definer'), /security definer/],
+    'search_path quitado': [await rompe31('alter function rwadar_novedades.leer_correos() reset search_path',
+      "alter function rwadar_novedades.leer_correos() set search_path = ''"), /search_path vacío/],
+    'otro dueño': [await rompe31('alter function rwadar_novedades.correo_mensaje(text,text,text,text,boolean,uuid) owner to service_role',
+      `alter function rwadar_novedades.correo_mensaje(text,text,text,text,boolean,uuid) owner to ${dueno}`), /dueño/],
+  };
+  const fallan = Object.entries(rotos).filter(([, [v, motivo]]) => v.ok || !motivo.test(v.error || '')).map(([n, [v]]) => `${n}: ${v.error || 'pasa'}`);
+  paso(`el verificador 31 detecta ${Object.keys(rotos).length} roturas (Brevo de vuelta, pie sin dirección, seguimiento, ruta, clave idempotente quitada, movida al correo o nueva al reintentar, cuerpo sin settings, List-Unsubscribe-Post, metadata, 409, permisos, definer, search_path y dueño)${fallan.length ? ` · no detecta: ${fallan.join(' | ')}` : ''}`,
+    fallan.length === 0 && (await verificar31()).ok && (await verificar()).ok);
 
   // La casilla no se enciende sin fecha: solo con activar_casilla.
   const ec = await error(() => db.exec('update rwadar_novedades.configuracion set casilla_activa = true'));
@@ -1167,12 +1464,7 @@ const token = (n) => `ExponentPushToken[${`prueba${n}`.padEnd(22, 'x')}]`;
 // anunciar.sql con las variables de psql sustituidas como hace psql con :'variable'.
 // Como psql: las metaórdenes (\set) no son SQL, y :'variable' se sustituye por
 // un literal escapado salvo en comentarios y dentro de un bloque $etiqueta$.
-const psqlAnunciar = (variables) => sinComentarios(ANUNCIAR).split('\n').filter((l) => !l.startsWith('\\')).join('\n')
-  .split(/(\$[a-z_]*\$[\s\S]*?\$[a-z_]*\$)/)
-  .map((trozo, i) => (i % 2 ? trozo : trozo.replace(/:'([a-z_]+)'/g, (_, nombre) => {
-    if (!(nombre in variables)) throw new Error(`falta la variable ${nombre}`);
-    return `'${String(variables[nombre]).replace(/'/g, "''")}'`;
-  }))).join('');
+const psqlAnunciar = (variables) => conVariablesPsql(ANUNCIAR, variables);
 const correAnunciar = async (variables) => {
   await sesion(db);
   const avisos = [];
@@ -1280,23 +1572,115 @@ const HOY = (await una(db, "select to_char(current_date, 'YYYY-MM-DD') d")).d;
 /* =====================================================================
    8 · Activación
    ===================================================================== */
-const VAULT_BREVO = "insert into vault.decrypted_secrets(name, decrypted_secret) values ('BREVO_API_KEY', 'xkeysib-clave-local-larga-no-real-123456789'), ('RWADAR_REMITENTE', 'avisos@rwadar.example') on conflict (name) do update set decrypted_secret = excluded.decrypted_secret";
+// Dobles de vault.secrets, vault.create_secret y vault.update_secret (las
+// firmas de Supabase Vault) sobre el doble de vault.decrypted_secrets.
+const VAULT_GUARDAR_DOBLES = `
+  alter table vault.decrypted_secrets add column id uuid not null default gen_random_uuid(), add column description text;
+  create view vault.secrets as select id, name, description, decrypted_secret as secret from vault.decrypted_secrets;
+  create function vault.create_secret(new_secret text, new_name text default null, new_description text default '',
+      new_key_id uuid default null) returns uuid language sql as $$
+    insert into vault.decrypted_secrets(name, decrypted_secret, description) values (new_name, new_secret, new_description) returning id $$;
+  create function vault.update_secret(secret_id uuid, new_secret text default null, new_name text default null,
+      new_description text default null, new_key_id uuid default null) returns void language sql as $$
+    update vault.decrypted_secrets set decrypted_secret = coalesce(new_secret, decrypted_secret), name = coalesce(new_name, name),
+      description = coalesce(new_description, description) where id = secret_id $$;`;
+const VAULT_LETTERMINT = `insert into vault.decrypted_secrets(name, decrypted_secret) values ('LETTERMINT_API_TOKEN', '${TOKEN_LM}'),
+  ('RWADAR_REMITENTE', 'avisos@rwadar.example') on conflict (name) do update set decrypted_secret = excluded.decrypted_secret`;
+const secretos = async () => { await sesion(db); return filas(db, `select name, decrypted_secret v from vault.decrypted_secrets
+  where name in ('LETTERMINT_API_TOKEN', 'RWADAR_REMITENTE', 'BREVO_API_KEY') order by name`); };
 {
   await sesion(db);
-  const e = await error(() => db.exec(ACTIVAR_CORREO));
-  await db.exec('rollback');
+  await db.exec(VAULT_GUARDAR_DOBLES);
+  const activar = async () => { await sesion(db); const e = await error(() => db.exec(ACTIVAR_CORREO)); if (e) await db.exec('rollback'); return e; };
+  const e = await activar();
   const c = await config();
-  paso('sin BREVO_API_KEY y RWADAR_REMITENTE en Vault, activar el correo falla y no deja nada encendido ni reloj',
-    e?.code === '55000' && /Vault/.test(e.message) && !c.correo_habilitado && (await relojes()).length === 0);
-  await db.exec(VAULT_BREVO);
+  paso(`sin LETTERMINT_API_TOKEN ni RWADAR_REMITENTE en Vault, activar el correo falla y no deja nada encendido ni reloj («${e?.message}»)`,
+    e?.code === '55000' && /falta LETTERMINT_API_TOKEN en Vault/.test(e.message) && !c.correo_habilitado && (await relojes()).length === 0);
+  await db.exec(`insert into vault.decrypted_secrets(name, decrypted_secret) values
+    ('BREVO_API_KEY', 'xkeysib-clave-local-larga-no-real-123456789'), ('RWADAR_REMITENTE', 'avisos@rwadar.example')`);
+  const eBrevo = await activar();
+  paso('con solo la credencial antigua de Brevo (BREVO_API_KEY) tampoco se enciende: pide LETTERMINT_API_TOKEN',
+    eBrevo?.code === '55000' && /LETTERMINT_API_TOKEN/.test(eBrevo.message) && !(await config()).correo_habilitado);
+  await db.exec("delete from vault.decrypted_secrets where name in ('BREVO_API_KEY', 'RWADAR_REMITENTE')");
+
+  // guardar-correo: el paso del flujo (bash y doble de psql) y su SQL en PGlite.
+  const guardar = async (variables) => {
+    await sesion(db);
+    const avisos = [];
+    const e = await error(() => db.exec(conVariablesPsql(GUARDAR31, variables), { onNotice: (n) => avisos.push(n.message) }));
+    if (e) await db.exec('rollback');
+    return { e, avisos };
+  };
+  const PASO_GUARDAR = 'Guardar en Vault el token de Lettermint y el remitente';
+  const entornoGuardar = (extra) => ({ SQL: 'rwadar-app/db/31_correo_lettermint_guardar.sql', SUPABASE_DB_URL: 'postgresql://doble-local/sin-red',
+    LETTERMINT_API_TOKEN: `${TOKEN_LM}-anterior`, REMITENTE: 'avisos-viejo@rwadar.example', ...extra });
+  let primera = { variables: { token: `${TOKEN_LM}-anterior`, remitente: 'avisos-viejo@rwadar.example' } };
+  if (hayBash) {
+    const paso1 = correPaso(PASO_GUARDAR, entornoGuardar({}));
+    const sinToken = correPaso(PASO_GUARDAR, entornoGuardar({ LETTERMINT_API_TOKEN: '' }));
+    const conEspacio = correPaso(PASO_GUARDAR, entornoGuardar({ LETTERMINT_API_TOKEN: 'lm token con espacios y largo de sobra' }));
+    const corto = correPaso(PASO_GUARDAR, entornoGuardar({ LETTERMINT_API_TOKEN: 'lm-corto' }));
+    const [llamada] = paso1.llamadas;
+    primera = { variables: variablesPsql(llamada?.argv || []) };
+    paso('el paso «Guardar» del flujo llama a psql una vez con -v token y -v remitente leídos del entorno y el SQL de guardar, sin imprimir el token',
+      paso1.estado === 0 && paso1.llamadas.length === 1
+      && isDeepStrictEqual(llamada.argv, ['postgresql://doble-local/sin-red', '-X', '-v', 'ON_ERROR_STOP=1',
+        '-v', `token=${TOKEN_LM}-anterior`, '-v', 'remitente=avisos-viejo@rwadar.example', '-f', 'rwadar-app/db/31_correo_lettermint_guardar.sql'])
+      && !paso1.texto.includes(TOKEN_LM));
+    paso('sin el secreto de GitHub, con espacios o demasiado corto, el paso se para antes de psql y sin imprimirlo',
+      [sinToken, conEspacio, corto].every((r) => r.estado !== 0 && r.llamadas.length === 0)
+      && !conEspacio.texto.includes('lm token con espacios') && !corto.texto.includes('lm-corto')
+      && /Falta el secreto de GitHub LETTERMINT_API_TOKEN/.test(sinToken.texto));
+  }
+  const g1 = await guardar(primera.variables);
+  const tras1 = await secretos();
+  const g2 = await guardar({ token: TOKEN_LM, remitente: 'avisos@rwadar.example' });
+  const tras2 = await secretos();
+  paso('31_correo_lettermint_guardar.sql crea LETTERMINT_API_TOKEN y RWADAR_REMITENTE con vault.create_secret y, repetido, los cambia con vault.update_secret (uno de cada, sin imprimir el token)',
+    !g1.e && !g2.e && isDeepStrictEqual(tras1, [{ name: 'LETTERMINT_API_TOKEN', v: `${TOKEN_LM}-anterior` }, { name: 'RWADAR_REMITENTE', v: 'avisos-viejo@rwadar.example' }])
+    && isDeepStrictEqual(tras2, [{ name: 'LETTERMINT_API_TOKEN', v: TOKEN_LM }, { name: 'RWADAR_REMITENTE', v: 'avisos@rwadar.example' }])
+    && g2.avisos.some((a) => /guardados en Vault con forma válida/.test(a))
+    && [...g1.avisos, ...g2.avisos].every((a) => !a.includes(TOKEN_LM))
+    && !(await config()).correo_habilitado);
+  const malos = [{ token: 'corto', remitente: 'avisos@rwadar.example' }, { token: `${TOKEN_LM} con espacio`, remitente: 'avisos@rwadar.example' },
+    { token: '', remitente: 'avisos@rwadar.example' }, { token: `${TOKEN_LM}-nuevo`, remitente: 'RWAdar <avisos@rwadar.example>' },
+    { token: `${TOKEN_LM}-nuevo`, remitente: 'sin-arroba' }, { token: `${TOKEN_LM}-nuevo`, remitente: '' }];
+  const resultados = [];
+  for (const m of malos) resultados.push(await guardar(m));
+  paso(`y con un token o un remitente sin forma válida (${malos.length} casos) se niega (22023) sin cambiar nada y sin repetir el valor en el error`,
+    resultados.every((r) => r.e?.code === '22023' && !r.e.message.includes(TOKEN_LM) && !r.e.message.includes('corto'))
+    && isDeepStrictEqual(await secretos(), tras2));
+
+  await db.exec(`update vault.decrypted_secrets set decrypted_secret = 'lm token con espacios y de largo suficiente' where name = 'LETTERMINT_API_TOKEN'`);
+  const eForma = await activar();
+  await db.exec(VAULT_LETTERMINT);
+  paso('un LETTERMINT_API_TOKEN con espacios en Vault tampoco enciende el correo (solo se mira su forma)',
+    eForma?.code === '55000' && /no tiene forma de token/.test(eForma.message) && !eForma.message.includes('espacios y de largo')
+    && !(await config()).correo_habilitado);
   await db.exec(ACTIVAR_CORREO);
   const c2 = await config();
   const v = await verificar();
+  const v31 = await verificar31();
   paso('activar el correo lo enciende con fecha y crea un solo reloj rwadar-novedades cada 5 minutos',
     c2.correo_habilitado && c2.correo_activado_el instanceof Date && !c2.push_habilitado
     && isDeepStrictEqual((await relojes()).map((r) => [r.jobname, r.schedule, r.command]),
       [['rwadar-novedades', '*/5 * * * *', ' select rwadar_novedades.procesar() ']]));
-  paso(`el verificador 30 pasa con el correo encendido («${v.aviso || v.error}»)`, v.ok && /correo encendido, push apagado/.test(v.aviso));
+  paso(`los verificadores 30 y 31 pasan con el correo encendido («${v.aviso || v.error}» · «${v31.aviso || v31.error}»)`,
+    v.ok && /correo encendido, push apagado/.test(v.aviso) && v31.ok && /correo encendido$/.test(v31.aviso));
+  // Con el correo encendido: sin la credencial de Lettermint, o con un envío
+  // que no llama a ningún proveedor conocido, los verificadores se paran.
+  await db.exec("update vault.decrypted_secrets set name = 'LETTERMINT_API_TOKEN_OTRO' where name = 'LETTERMINT_API_TOKEN'");
+  const vSin = await verificar();
+  const v31Sin = await verificar31();
+  await db.exec("update vault.decrypted_secrets set name = 'LETTERMINT_API_TOKEN' where name = 'LETTERMINT_API_TOKEN_OTRO'");
+  const envio31 = SQL31.match(/create or replace function rwadar_novedades\.enviar_correos\([\s\S]*?\n\$funcion\$;/)[0];
+  await db.exec(envio31.replace("url := 'https://api.lettermint.co/v1/send'", "url := 'https://correo.otro.example/send'"));
+  const vOtro = await verificar();
+  await sesion(db);
+  await db.exec(envio31);
+  paso('con el correo encendido, el verificador 30 (neutral respecto al proveedor) pide la credencial de Lettermint y se para si el envío no llama a un proveedor conocido; el 31 también pide el token',
+    !vSin.ok && /sin LETTERMINT_API_TOKEN y RWADAR_REMITENTE/.test(vSin.error) && !v31Sin.ok && /LETTERMINT_API_TOKEN/.test(v31Sin.error)
+    && !vOtro.ok && /proveedor conocido/.test(vOtro.error) && (await verificar()).ok && (await verificar31()).ok);
   await db.exec("insert into vault.decrypted_secrets(name, decrypted_secret) values ('EXPO_ACCESS_TOKEN', 'no válido!')");
   const ep = await error(() => db.exec(ACTIVAR_PUSH));
   await db.exec('rollback');
@@ -1315,9 +1699,9 @@ const VAULT_BREVO = "insert into vault.decrypted_secrets(name, decrypted_secret)
 }
 
 /* =====================================================================
-   9 · procesar(): reparto, peticiones a Brevo y Expo, respuestas y recibos
+   9 · procesar(): reparto, peticiones a Lettermint y Expo, respuestas y recibos
    ===================================================================== */
-const BREVO = 'https://api.brevo.com/v3/smtp/email';
+const LETTERMINT = 'https://api.lettermint.co/v1/send';
 const EXPO = 'https://exp.host/--/api/v2/push/send';
 const RECIBOS = 'https://exp.host/--/api/v2/push/getReceipts';
 const ultimaPeticion = async () => { await sesion(db); return numero(db, 'select coalesce(max(id), 0)::int from net.http_request_queue'); };
@@ -1331,7 +1715,7 @@ const procesar = async () => {
   const r = (await db.query('select rwadar_novedades.procesar() r', [], { onNotice: (n) => avisos.push(n.message) })).rows[0].r;
   return { r, avisos };
 };
-const paraCorreo = (lista, u) => lista.filter((p) => p.body.to?.[0]?.email === u.email);
+const paraCorreo = (lista, u) => lista.filter((p) => p.body.to?.[0] === u.email);
 const correoDe = async (u, tipo) => { await sesion(db); return una(db, 'select * from rwadar_novedades.correos where usuario_id = $1 and tipo = $2 order by id desc limit 1', [u.id, tipo]); };
 
 const TOKEN_ANA = token(20), TOKEN_ANA_2 = token(21);
@@ -1379,31 +1763,45 @@ let n1;
     isDeepStrictEqual((await filas(db, 'select token from rwadar_novedades.pushes where anuncio_id = $1 order by token', [n1])).map((f) => f.token),
       [TOKEN_ANA, TOKEN_ANA_2].sort()));
 
-  const correos = await peticiones(antes, BREVO);
+  const correos = await peticiones(antes, LETTERMINT);
   const [aAna] = paraCorreo(correos, ana);
-  const html = aAna?.body.htmlContent || '';
-  paso('Brevo: una petición por correo, con api-key de Vault, remitente RWAdar y contactPixelTrackingConsent: false',
-    correos.length === suscritas.length + 2 && aAna?.headers['api-key'] === 'xkeysib-clave-local-larga-no-real-123456789'
-    && isDeepStrictEqual(aAna.body.sender, { name: 'RWAdar', email: 'avisos@rwadar.example' })
-    && isDeepStrictEqual(aAna.body.to, [{ email: ana.email, contactPixelTrackingConsent: false }]));
+  const html = aAna?.body.html || '';
+  paso('Lettermint: una petición por correo a https://api.lettermint.co/v1/send con el token de Vault en x-lettermint-token, from «RWAdar <remitente>», to y reply_to (RWAdar@protonmail.com) en listas',
+    correos.length === suscritas.length + 2 && aAna?.headers['x-lettermint-token'] === TOKEN_LM
+    && aAna.headers['content-type'] === 'application/json' && !('api-key' in aAna.headers)
+    && correos.every((c) => c.body.from === 'RWAdar <avisos@rwadar.example>' && isDeepStrictEqual(c.body.reply_to, ['RWAdar@protonmail.com'])
+      && Array.isArray(c.body.to) && c.body.to.length === 1 && c.headers['x-lettermint-token'] === TOKEN_LM)
+    && isDeepStrictEqual(aAna.body.to, [ana.email]));
+  paso('todas piden no seguir aperturas ni clics (settings: track_opens y track_clicks false) y no llevan tag, metadata ni campos de Brevo',
+    correos.every((c) => isDeepStrictEqual(c.body.settings, { track_opens: false, track_clicks: false })
+      && !['tag', 'metadata', 'sender', 'replyTo', 'htmlContent', 'textContent'].some((k) => k in c.body)));
+  paso('la clave idempotente de cada fila va en la cabecera HTTP Idempotency-Key (un uuid por correo, el de su fila) y ya no dentro del correo',
+    correos.every((c) => /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(c.headers['Idempotency-Key'])
+      && !('Idempotency-Key' in (c.body.headers || {})))
+    && new Set(correos.map((c) => c.headers['Idempotency-Key'])).size === correos.length
+    && (await una(db, 'select idempotencia::text k from rwadar_novedades.correos where peticion_id = $1', [aAna.id])).k === aAna.headers['Idempotency-Key']);
+  const bienvenidas = correos.filter((c) => c.body.subject === 'Te damos la bienvenida a RWAdar');
+  paso('ruta: los anuncios van por «broadcast»; las bienvenidas, sin route (la transaccional del proyecto)',
+    bienvenidas.length === 2 && bienvenidas.every((c) => !('route' in c.body))
+    && correos.filter((c) => !bienvenidas.includes(c)).every((c) => c.body.route === 'broadcast'));
   const bajaAna = `https://rwadar.pages.dev/baja?t=${(await pref(ana)).baja_token}`;
-  paso('Idempotency-Key propia y List-Unsubscribe con la baja por enlace y por mailto (sin List-Unsubscribe-Post)',
-    /^[0-9a-f-]{36}$/.test(aAna.body.headers['Idempotency-Key'])
-    && aAna.body.headers['List-Unsubscribe'] === `<${bajaAna}>, <${MAILTO_BAJA}>`
-    && !JSON.stringify(aAna.body).includes('List-Unsubscribe-Post'));
+  paso('List-Unsubscribe con la baja por enlace y por mailto (sin List-Unsubscribe-Post)',
+    aAna.body.headers['List-Unsubscribe'] === `<${bajaAna}>, <${MAILTO_BAJA}>`
+    && isDeepStrictEqual(Object.keys(aAna.body.headers), ['List-Unsubscribe'])
+    && !JSON.stringify(correos).includes('List-Unsubscribe-Post'));
   paso('el título y el texto van escapados en el HTML; el asunto, tal cual',
     html.includes('Avisos &amp; &lt;mejoras&gt; en la app') && html.includes('elegir &quot;qué&quot; avisos')
     && !html.includes('<mejoras>') && aAna.body.subject === 'Avisos & <mejoras> en la app');
-  paso('pie de todos los correos: quién envía, con el titular (Víctor Manuel Jorques Granero, España), aviso legal y privacidad, en HTML y en texto',
-    correos.every((c) => c.body.htmlContent.includes(PIE_HTML) && c.body.textContent.includes(`\n--\n${PIE_TXT}\nAviso legal: https://rwadar.pages.dev/privacidad#aviso-legal\nPrivacidad: https://rwadar.pages.dev/privacidad\n`)));
+  paso('pie de todos los correos: quién envía, con el titular y su dirección postal (Plaza Generalitat, s/n, 46600 Alzira), aviso legal y privacidad, en HTML y en texto',
+    correos.every((c) => c.body.html.includes(PIE_HTML) && c.body.text.includes(`\n--\n${PIE_TXT}\nAviso legal: https://rwadar.pages.dev/privacidad#aviso-legal\nPrivacidad: https://rwadar.pages.dev/privacidad\n`)));
   paso('pie: quién envía (aviso legal y privacidad), por qué lo recibe y la baja por enlace y mailto',
     html.includes('Te escribe RWAdar') && html.includes('href="https://rwadar.pages.dev/privacidad#aviso-legal"')
     && html.includes('href="https://rwadar.pages.dev/privacidad"') && html.includes('te apuntaste a los avisos de novedades')
     && html.includes(`href="${bajaAna}"`) && html.includes(`href="${MAILTO_BAJA}"`)
-    && aAna.body.textContent.includes(bajaAna) && aAna.body.textContent.includes('RWAdar@protonmail.com'));
+    && aAna.body.text.includes(bajaAna) && aAna.body.text.includes('RWAdar@protonmail.com'));
   paso('sin píxel ni enlaces de seguimiento: ninguna imagen y todos los enlaces directos a rwadar.pages.dev o mailto',
-    correos.every((c) => !/<img|utm_|track/i.test(c.body.htmlContent)
-      && [...c.body.htmlContent.matchAll(/href="([^"]*)"/g)].every(([, h]) => h.startsWith('https://rwadar.pages.dev/') || h.startsWith('mailto:RWAdar@protonmail.com'))));
+    correos.every((c) => !/<img|utm_|track/i.test(c.body.html)
+      && [...c.body.html.matchAll(/href="([^"]*)"/g)].every(([, h]) => h.startsWith('https://rwadar.pages.dev/') || h.startsWith('mailto:RWAdar@protonmail.com'))));
   const [bienvenidaSi] = paraCorreo(correos, nueva);
   const [bienvenidaNo] = paraCorreo(correos, nueva2);
   volcarCorreo('bienvenida-con-avisos', bienvenidaSi);
@@ -1411,17 +1809,17 @@ let n1;
   volcarCorreo('anuncio-novedad', aAna);
   paso('bienvenida: Academy gratis con enlace a /academy/, sin ofertas ni número de lecciones, y «Si no creaste esta cuenta, escríbenos y la borramos»',
     [bienvenidaSi, bienvenidaNo].every((b) => b && b.body.subject === 'Te damos la bienvenida a RWAdar'
-      && b.body.htmlContent.includes('href="https://rwadar.pages.dev/academy/"') && b.body.htmlContent.includes('Academy')
-      && !/\d+\s*lecciones|oportunidad|rentabilidad|\/ofertas\/|#emisiones/i.test(b.body.htmlContent)
-      && b.body.textContent.includes(`\n\n${CIERRE_TXT}\n\n--\n`) && b.body.htmlContent.includes(CIERRE_HTML)
-      && !/bórrala/.test(b.body.htmlContent + b.body.textContent)));
-  paso('bienvenida a quien NO se apuntó: sin List-Unsubscribe, sin baja y sin invitar a apuntarse',
-    !('List-Unsubscribe' in bienvenidaNo.body.headers) && !bienvenidaNo.body.htmlContent.includes('baja?t=')
-    && !/apunta|avisos de novedades/i.test(bienvenidaNo.body.htmlContent));
+      && b.body.html.includes('href="https://rwadar.pages.dev/academy/"') && b.body.html.includes('Academy')
+      && !/\d+\s*lecciones|oportunidad|rentabilidad|\/ofertas\/|#emisiones/i.test(b.body.html)
+      && b.body.text.includes(`\n\n${CIERRE_TXT}\n\n--\n`) && b.body.html.includes(CIERRE_HTML)
+      && !/bórrala/.test(b.body.html + b.body.text)));
+  paso('bienvenida a quien NO se apuntó: sin cabeceras de correo (ni List-Unsubscribe), sin baja y sin invitar a apuntarse',
+    !('headers' in bienvenidaNo.body) && !bienvenidaNo.body.html.includes('baja?t=') && !bienvenidaNo.body.text.includes('baja?t=')
+    && !/apunta|avisos de novedades/i.test(bienvenidaNo.body.html));
   paso('bienvenida a quien se apuntó: confirma la suscripción con el párrafo nuevo (fichas, no ofertas), con List-Unsubscribe y enlace de baja',
-    'List-Unsubscribe' in bienvenidaSi.body.headers && bienvenidaSi.body.htmlContent.includes(`${PARRAFO_APUNTADO}</p>`)
-    && bienvenidaSi.body.textContent.includes(`\n\n${PARRAFO_APUNTADO}\n\n`) && !/ofertas nuevas/.test(bienvenidaSi.body.htmlContent)
-    && bienvenidaSi.body.htmlContent.includes(`baja?t=${(await pref(nueva)).baja_token}`));
+    'List-Unsubscribe' in (bienvenidaSi.body.headers || {}) && bienvenidaSi.body.html.includes(`${PARRAFO_APUNTADO}</p>`)
+    && bienvenidaSi.body.text.includes(`\n\n${PARRAFO_APUNTADO}\n\n`) && !/ofertas nuevas/.test(bienvenidaSi.body.html)
+    && bienvenidaSi.body.html.includes(`baja?t=${(await pref(nueva)).baja_token}`));
 
   const pushes = await peticiones(antes, EXPO);
   const deAna = pushes.filter((p) => p.body.to === TOKEN_ANA);
@@ -1444,13 +1842,17 @@ let n1;
     return (await ultimaPeticion()) === desde;
   })());
 
-  // Respuestas de Brevo.
+  // Respuestas de Lettermint (202 con message_id, como documenta, o errores).
   await sesion(db);
+  const reenviada = await una(db, "select id, email from auth.users where email = 'reenviada@ejemplo.test'");
+  const sinId = await una(db, "select id, email from auth.users where email = 'idioma-1@ejemplo.test'");
   const id = (u) => paraCorreo(correos, u)[0].id;
-  await responder(id(ana), 201, { messageId: '<m1@brevo.example>' });
-  await responder(id(eva), 500, { code: 'internal_error' });
-  await responder(id(nueva2), 401, { code: 'unauthorized' });
-  await responder(id(canalRaro), 400, { code: 'duplicate_parameter' });
+  await responder(id(ana), 202, { message_id: 'lm-mensaje-1', status: 'pending' });
+  await responder(id(eva), 500, { message: 'Server Error' });
+  await responder(id(nueva2), 401, { message: 'Unauthenticated.' });
+  await responder(id(reenviada), 422, { message: 'The given data was invalid.' });
+  await responder(id(canalRaro), 429, { message: 'Too Many Attempts.' });
+  await responder(id(sinId), 202, { status: 'pending' });
   // Push: ticket como objeto, como array de uno y DeviceNotRegistered al enviar.
   const pushDe = (t, tipo) => pushes.find((p) => p.body.to === t && p.body.data.tipo === tipo).id;
   await responder(pushDe(TOKEN_ANA, 'novedad'), 200, { data: { status: 'ok', id: 'ticket-ana-1' } });
@@ -1460,14 +1862,23 @@ let n1;
     { data: { status: 'error', message: 'no', details: { error: 'DeviceNotRegistered' } } });
   const desde = await ultimaPeticion();
   await procesar();
-  const reenvios = await peticiones(desde, BREVO);
-  paso('Brevo 201 con messageId → aceptado; 400 duplicate_parameter → aceptado; 401 → fallido sin reintentar',
-    (await correoDe(ana, 'anuncio')).estado === 'aceptado' && (await correoDe(ana, 'anuncio')).proveedor_mensaje_id === '<m1@brevo.example>'
-    && (await correoDe(canalRaro, 'anuncio')).estado === 'aceptado' && (await correoDe(nueva2, 'bienvenida')).estado === 'fallido');
-  paso('un 500 vuelve a la cola y se reenvía con la MISMA Idempotency-Key',
-    reenvios.length === 1 && reenvios[0].body.to[0].email === eva.email
-    && reenvios[0].body.headers['Idempotency-Key'] === paraCorreo(correos, eva)[0].body.headers['Idempotency-Key']);
-  await responder(reenvios[0].id, 201, { messageId: '<m2@brevo.example>' });
+  const reenvios = await peticiones(desde, LETTERMINT);
+  const [aceptadoAna, fallido401, fallido422] = [await correoDe(ana, 'anuncio'), await correoDe(nueva2, 'bienvenida'), await correoDe(reenviada, 'anuncio')];
+  paso('Lettermint 202 con message_id → aceptado con su id; 401 y 422 → fallido «Lettermint rechazó la petición (HTTP n)», sin reintentar',
+    aceptadoAna.estado === 'aceptado' && aceptadoAna.proveedor_mensaje_id === 'lm-mensaje-1' && aceptadoAna.error === null
+    && fallido401.estado === 'fallido' && fallido401.error === 'Lettermint rechazó la petición (HTTP 401)'
+    && fallido422.estado === 'fallido' && fallido422.error === 'Lettermint rechazó la petición (HTTP 422)'
+    && paraCorreo(reenvios, nueva2).length === 0 && paraCorreo(reenvios, reenviada).length === 0);
+  const primero = (u) => paraCorreo(correos, u)[0];
+  paso('un 500, un 429 y un 202 sin message_id vuelven a la cola y se reenvían con la MISMA Idempotency-Key y el mismo cuerpo',
+    reenvios.length === 3 && [eva, canalRaro, sinId].every((u) => {
+      const [r] = paraCorreo(reenvios, u);
+      return r && r.headers['Idempotency-Key'] === primero(u).headers['Idempotency-Key'] && isDeepStrictEqual(r.body, primero(u).body);
+    }));
+  // Tras un 5xx, Lettermint contesta 409 a esa clave durante 24 horas.
+  await responder(paraCorreo(reenvios, eva)[0].id, 409, { message: 'Idempotency key already used.' });
+  await responder(paraCorreo(reenvios, canalRaro)[0].id, 202, { message_id: 'lm-mensaje-2', status: 'pending' });
+  await responder(paraCorreo(reenvios, sinId)[0].id, 202, { message_id: 'lm-mensaje-3', status: 'pending' });
   await sesion(db);
   paso('Expo: el ticket aceptado espera su recibo; DeviceNotRegistered al enviar borra ese móvil',
     await numero(db, "select count(*) from rwadar_novedades.pushes where estado = 'ticket'") === 3
@@ -1480,8 +1891,15 @@ let n1;
   await db.exec("update rwadar_novedades.pushes set ticket_el = now() - interval '16 minutes' where estado = 'ticket'");
   const desde2 = await ultimaPeticion();
   await procesar();
-  paso('sin respuesta de Brevo en 25 minutos, «incierto» y sin reenviar',
-    (await correoDe(nueva, 'bienvenida')).estado === 'incierto' && (await peticiones(desde2, BREVO)).length === 0);
+  paso('sin respuesta de Lettermint en 25 minutos, «incierto» y sin reenviar',
+    (await correoDe(nueva, 'bienvenida')).estado === 'incierto' && (await peticiones(desde2, LETTERMINT)).length === 0);
+  const [incierto409, aceptado429, aceptadoSinId] = [await correoDe(eva, 'anuncio'), await correoDe(canalRaro, 'anuncio'), await correoDe(sinId, 'anuncio')];
+  paso('Lettermint 409 → «incierto» con el aviso de no reenviar y sin otro envío; los reintentos aceptados guardan su message_id',
+    incierto409.estado === 'incierto' && incierto409.terminado_el instanceof Date
+    && incierto409.error === 'Lettermint: clave idempotente ya usada o en curso; revisar en el panel, no reenviar automáticamente'
+    && aceptado429.estado === 'aceptado' && aceptado429.proveedor_mensaje_id === 'lm-mensaje-2'
+    && aceptadoSinId.estado === 'aceptado' && aceptadoSinId.proveedor_mensaje_id === 'lm-mensaje-3' && aceptadoSinId.intentos === 2
+    && paraCorreo(await peticiones(desde2, LETTERMINT), eva).length === 0);
   const recibos = await peticiones(desde2, RECIBOS);
   paso('a los 15 minutos se consulta el recibo de cada ticket, uno por petición',
     recibos.length === 3 && recibos.every((p) => p.body.ids.length === 1));
@@ -1501,10 +1919,72 @@ let n1;
     await numero(db, "select count(*) from rwadar_novedades.pushes where token is not null and estado in ('aceptado','descartado','fallido')") === 0);
 }
 
+// Reintentos de Lettermint (D3) que no cubre lo de arriba: un 408 y una
+// petición sin respuesta de pg_net (corta a los 10 s y escribe «Timeout was
+// reached») vuelven a la cola; una petición sin fila en net._http_response a
+// los 10 minutos, también. Siempre con la MISMA Idempotency-Key y el mismo
+// cuerpo: con otra clave, Lettermint enviaría un segundo correo. Y el tope de
+// 5 intentos: el cuarto se reintenta; el quinto termina en «fallido».
+{
+  const usuarios = [];
+  for (const nombre of ['reintento-408', 'reintento-sin-respuesta', 'reintento-10-minutos', 'reintento-cuarto', 'reintento-quinto']) {
+    const u = await altaAuth(`${nombre}@ejemplo.test`, {});
+    await confirmarAuth(u);
+    usuarios.push(u);
+  }
+  const [u408, uSin, u10, uCuarto, uQuinto] = usuarios;
+  const ids = usuarios.map((u) => u.id);
+  const estados = async () => { await sesion(db); return filas(db, `select u.email, c.estado, c.intentos, c.error, c.terminado_el
+    from rwadar_novedades.correos c join auth.users u on u.id = c.usuario_id
+    where c.usuario_id = any($1::uuid[]) and c.tipo = 'bienvenida'`, [ids]); };
+  const desde = await ultimaPeticion();
+  await procesar();
+  const primeras = await peticiones(desde, LETTERMINT);
+  const primeraDe = (u) => paraCorreo(primeras, u)[0];
+  await sesion(db);
+  await responder(primeraDe(u408).id, 408, { message: 'Request Timeout' });
+  await responder(primeraDe(uSin).id, null, null, 'Timeout was reached');
+  await responder(primeraDe(uCuarto).id, 429, { message: 'Too Many Attempts.' });
+  await responder(primeraDe(uQuinto).id, 500, { message: 'Server Error' });
+  await db.query(`update rwadar_novedades.correos set peticion_el = now() - interval '11 minutes',
+    idempotencia_el = now() - interval '11 minutes' where usuario_id = $1 and tipo = 'bienvenida'`, [u10.id]);
+  await db.query("update rwadar_novedades.correos set intentos = 4 where usuario_id = $1 and tipo = 'bienvenida'", [uCuarto.id]);
+  await db.query("update rwadar_novedades.correos set intentos = 5 where usuario_id = $1 and tipo = 'bienvenida'", [uQuinto.id]);
+  // Primero solo la lectura de respuestas, para ver el estado intermedio.
+  await db.query('select rwadar_novedades.leer_correos()');
+  const leidos = await estados();
+  const leido = (u) => leidos.find((f) => f.email === u.email) || {};
+  paso('Lettermint 408, sin respuesta de pg_net («Timeout was reached») y 429 por debajo del tope vuelven a «pendiente» con su error; un 500 en el quinto intento queda «fallido»',
+    usuarios.every((u) => paraCorreo(primeras, u).length === 1)
+    && leido(u408).estado === 'pendiente' && leido(u408).error === 'Lettermint HTTP 408'
+    && leido(uSin).estado === 'pendiente' && leido(uSin).error === 'Timeout was reached'
+    && leido(uCuarto).estado === 'pendiente' && leido(uCuarto).intentos === 4
+    && leido(uQuinto).estado === 'fallido' && leido(uQuinto).terminado_el instanceof Date
+    && leido(uQuinto).error === 'Lettermint HTTP 500' && leido(u10).estado === 'enviando');
+  const desde2 = await ultimaPeticion();
+  await procesar();
+  const segundas = await peticiones(desde2, LETTERMINT);
+  const tras = await estados();
+  const fila = (u) => tras.find((f) => f.email === u.email) || {};
+  const misma = (u) => {
+    const lista = paraCorreo(segundas, u);
+    return lista.length === 1 && lista[0].headers['Idempotency-Key'] === primeraDe(u).headers['Idempotency-Key']
+      && isDeepStrictEqual(lista[0].body, primeraDe(u).body) && fila(u).estado === 'enviando';
+  };
+  paso('se reenvían con la MISMA Idempotency-Key y el mismo cuerpo tras un 408, tras quedarse sin respuesta, a los 10 minutos sin fila en net._http_response y en el cuarto intento',
+    [u408, uSin, u10, uCuarto].every(misma)
+    && fila(u408).intentos === 2 && fila(uSin).intentos === 2 && fila(u10).intentos === 2 && fila(uCuarto).intentos === 5);
+  paso('tope de 5 intentos: el que falló en el quinto sigue «fallido» y no sale un sexto envío',
+    paraCorreo(segundas, uQuinto).length === 0 && fila(uQuinto).estado === 'fallido' && fila(uQuinto).intentos === 5);
+  // Fuera de la cola, para no cambiar las cuentas de la limpieza de abajo.
+  await sesion(db);
+  await db.query('delete from rwadar_novedades.correos where usuario_id = any($1::uuid[])', [ids]);
+}
+
 // Segunda comprobación justo antes de enviar.
 {
   await sesion(db);
-  await db.exec(`update vault.decrypted_secrets set decrypted_secret = 'corta' where name = 'BREVO_API_KEY';
+  await db.exec(`update vault.decrypted_secrets set decrypted_secret = 'corta' where name = 'LETTERMINT_API_TOKEN';
     insert into vault.decrypted_secrets(name, decrypted_secret) values ('EXPO_ACCESS_TOKEN', 'no válido!')`);
   await db.query(`select rwadar_novedades.anunciar('actualizacion', 'actualizacion:prueba-n3', 'Nueva versión de la app',
     'Llega la versión con avisos en el móvil.', 'https://rwadar.pages.dev/')`);
@@ -1513,6 +1993,15 @@ let n1;
   paso('si Vault falla, procesar() sigue: reparte, deja el envío para otra vuelta y solo avisa con el sqlstate',
     r.fallo_envio_correo === '55000' && r.fallo_envio_push === '55000' && r.repartidos > 0
     && (await ultimaPeticion()) === desde && avisos.some((a) => /envío de correo omitido \(sqlstate 55000\)/.test(a)));
+  // Llamada directa: el mensaje exacto del bloqueo, con el token corto y sin él.
+  await sesion(db);
+  const eCorta = await error(() => db.query('select rwadar_novedades.enviar_correos()'));
+  await db.exec("update vault.decrypted_secrets set name = 'LETTERMINT_API_TOKEN_QUITADO' where name = 'LETTERMINT_API_TOKEN'");
+  const eSin = await error(() => db.query('select rwadar_novedades.enviar_correos()'));
+  await db.exec("delete from vault.decrypted_secrets where name = 'LETTERMINT_API_TOKEN_QUITADO'");
+  paso('con LETTERMINT_API_TOKEN corto o sin él, enviar_correos() se bloquea con «correo bloqueado: credenciales de Lettermint ausentes o no válidas en Vault» y no pide nada',
+    [eCorta, eSin].every((e) => e?.code === '55000' && e.message === 'correo bloqueado: credenciales de Lettermint ausentes o no válidas en Vault')
+    && (await ultimaPeticion()) === desde);
   // Mientras tanto: eva se da de baja con el enlace (sin sesión), el móvil de
   // ana desaparece (como en la limpieza de 180 días) y canal-raro deja de estar
   // confirmada.
@@ -1523,10 +2012,10 @@ let n1;
   await db.query('delete from rwadar_novedades.dispositivos where token = $1', [TOKEN_ANA]);
   await comoAuth(() => db.query('update auth.users set email_confirmed_at = null where id = $1', [canalRaro.id]));
   await sesion(db);
-  await db.exec(`${VAULT_BREVO}; delete from vault.decrypted_secrets where name = 'EXPO_ACCESS_TOKEN'`);
+  await db.exec(`${VAULT_LETTERMINT}; delete from vault.decrypted_secrets where name = 'EXPO_ACCESS_TOKEN'`);
   const desde2 = await ultimaPeticion();
   await procesar();
-  const enviados = (await peticiones(desde2, BREVO)).map((p) => p.body.to[0].email);
+  const enviados = (await peticiones(desde2, LETTERMINT)).map((p) => p.body.to[0]);
   paso('la baja posterior al reparto corta el correo: se descarta sin enviar',
     bajaEva === true && !enviados.includes(eva.email) && (await correoDe(eva, 'anuncio')).estado === 'descartado'
     && enviados.includes(ana.email));
@@ -1537,17 +2026,18 @@ let n1;
     join rwadar_novedades.anuncios a on a.id = p.anuncio_id where a.clave = 'actualizacion:prueba-n3'`);
   paso('un móvil que desaparece después del reparto no recibe el push: se descarta y se borra su token',
     (await peticiones(desde2, EXPO)).length === 0 && pushN3?.estado === 'descartado' && pushN3.token === null);
-  // Brevo también puede responder al reintento con la misma clave con «duplicate_request».
-  const [n3Ana] = paraCorreo(await peticiones(desde2, BREVO), ana);
+  // La n3 de ana, con el token restaurado: Lettermint la acepta.
+  const [n3Ana] = paraCorreo(await peticiones(desde2, LETTERMINT), ana);
   await sesion(db);
-  await responder(n3Ana.id, 400, { code: 'duplicate_request', message: 'Duplicate request' });
+  await responder(n3Ana.id, 202, { message_id: 'lm-mensaje-n3', status: 'pending' });
   const desde3 = await ultimaPeticion();
   await procesar();
   await sesion(db);
-  const correoN3 = await una(db, `select c.estado from rwadar_novedades.correos c join rwadar_novedades.anuncios a on a.id = c.anuncio_id
-    where a.clave = 'actualizacion:prueba-n3' and c.usuario_id = $1`, [ana.id]);
-  paso('Brevo 400 duplicate_request → aceptado (ya lo tenía), sin reenviar',
-    correoN3?.estado === 'aceptado' && paraCorreo(await peticiones(desde3, BREVO), ana).length === 0);
+  const correoN3 = await una(db, `select c.estado, c.proveedor_mensaje_id from rwadar_novedades.correos c
+    join rwadar_novedades.anuncios a on a.id = c.anuncio_id where a.clave = 'actualizacion:prueba-n3' and c.usuario_id = $1`, [ana.id]);
+  paso('restaurado el token, el anuncio pendiente sale con él y el 202 de Lettermint lo deja aceptado, sin reenviar',
+    n3Ana?.headers['x-lettermint-token'] === TOKEN_LM && correoN3?.estado === 'aceptado'
+    && correoN3.proveedor_mensaje_id === 'lm-mensaje-n3' && paraCorreo(await peticiones(desde3, LETTERMINT), ana).length === 0);
   await sesion(db, null, 'anon');
   const otra = (await rpc('select public.baja_avisos($1) b', [tokenEva])).b;
   await sesion(db);
@@ -1575,11 +2065,12 @@ let n1;
   const desde = await ultimaPeticion();
   await procesar();
   const push = (await peticiones(desde, EXPO)).find((p) => p.body.to === TOKEN_ANA);
-  const correo = (await peticiones(desde, BREVO)).find((p) => p.body.to[0].email === ana.email);
+  const correo = (await peticiones(desde, LETTERMINT)).find((p) => p.body.to[0] === ana.email);
   volcarCorreo('anuncio-ofertas', correo);
   paso('con ofertas_automaticas, el anuncio de ofertas nace publicado y procesar() lo reparte',
     automatico?.estado === 'publicado' && automatico.publicado_el instanceof Date
-    && correo?.body.subject === '1 ficha nueva en el radar de RWAdar' && correo.body.htmlContent.includes(AVISO_FIJO));
+    && correo?.body.subject === '1 ficha nueva en el radar de RWAdar' && correo.body.html.includes(AVISO_FIJO)
+    && correo.body.route === 'broadcast');
   paso('el push de ofertas va a Buscar y, con EXPO_ACCESS_TOKEN en Vault, lleva Authorization',
     isDeepStrictEqual(push?.body.data, { tipo: 'ofertas', destino: 'buscar' })
     && push.headers.authorization === `Bearer ${EXPO_FICTICIO}`);
@@ -1768,9 +2259,14 @@ let n1;
   const AMBOS = ['rwadar-novedades', LIMPIEZA[0]].join();
   const reloj = async () => ((await conLimpieza()) ? (await todosRelojes()).map((r) => r.jobname).sort().join() : 'sin limpieza');
   const corre = async (nombre) => { await sesion(db); const e = await error(() => db.exec(leer(`db/${nombre}`))); if (e) await db.exec('rollback'); return e; };
+  // El sistema antiguo de la 23 (inactivo; la 31 no lo toca) sigue pidiendo su
+  // credencial de Brevo: una inventada, solo para comprobar la convivencia.
+  await sesion(db);
+  await db.exec(`insert into vault.decrypted_secrets(name, decrypted_secret) values ('BREVO_API_KEY', 'xkeysib-clave-local-larga-no-real-123456789')
+    on conflict (name) do update set decrypted_secret = excluded.decrypted_secret`);
   const e23 = await corre('23_activar_correo.sql');
   const v23 = await corre('23_activar_correo_verificar.sql');
-  paso('con los avisos encendidos se aplica la 23 y su verificador pasa; siguen los relojes rwadar-novedades y rwadar-novedades-limpieza',
+  paso(`con los avisos encendidos se aplica la 23 y su verificador pasa (${[e23, v23].map((e) => e?.message || 'OK').join(' / ')}); siguen los relojes rwadar-novedades y rwadar-novedades-limpieza`,
     !e23 && !v23 && await reloj() === AMBOS);
   const e22 = await corre('22_cierre_regresiones.sql');
   const v22 = await corre('22_cierre_regresiones_verificar.sql');
@@ -1789,9 +2285,10 @@ let n1;
   paso(`después de esos cierres, reaplicar la 22 y pasar sus verificadores y fresh-install (${[e22b, v22b, freshB].map((e) => e?.message || 'OK').join(' / ')}): los dos relojes siguen`,
     !e22b && !v22b && !freshB && await reloj() === AMBOS);
   const v = await verificar();
+  const v31 = await verificar31();
   const { r } = await procesar();
-  paso('después de todo, el verificador 30 pasa y procesar() sigue funcionando', v.ok && /correo encendido, push encendido/.test(v.aviso)
-    && r.estado === 'encendido' && !Object.keys(r).some((k) => k.startsWith('fallo_')));
+  paso('después de todo, los verificadores 30 y 31 pasan y procesar() sigue funcionando', v.ok && /correo encendido, push encendido/.test(v.aviso)
+    && v31.ok && r.estado === 'encendido' && !Object.keys(r).some((k) => k.startsWith('fallo_')));
 }
 
 /* =====================================================================
@@ -1887,6 +2384,68 @@ let n1;
     && await numero(db, 'select count(*) from rwadar_novedades.preferencias') === preferencias);
   paso('tras reaplicar la 30, el verificador pasa y pide ejecutar activar_casilla si la web o la app enseñan la casilla',
     v2.ok && AVISO_CASILLA.test(v2.avisoCasilla || ''));
+
+  // Reaplicar la 30 devuelve el correo a Brevo: el verificador 31 lo ve y
+  // activar el correo se niega hasta volver a aplicar la 31.
+  const v31Tras30 = await verificar31();
+  await sesion(db);
+  const eSin31 = await error(() => db.exec(ACTIVAR_CORREO));
+  if (eSin31) await db.exec('rollback');
+  paso(`reaplicar la 30 devuelve las funciones del correo a Brevo: el verificador 31 lo detecta y activar el correo se niega sin la 31 («${eSin31?.message}»)`,
+    !v31Tras30.ok && /api\.brevo\.com/.test(v31Tras30.error) && eSin31?.code === '55000'
+    && /falta aplicar 31_correo_lettermint\.sql/.test(eSin31.message) && !(await config()).correo_habilitado && (await relojes()).length === 0);
+  // Cambiar de proveedor: con el correo encendido con Brevo la 31 se niega;
+  // apagado, lo que quedó pedido con el código anterior pasa a «incierto».
+  await sesion(db);
+  await db.exec("update rwadar_novedades.configuracion set correo_habilitado = true, correo_activado_el = now()");
+  const eEncendido = await error(() => db.exec(SQL31));
+  if (eEncendido) await db.exec('rollback');
+  const conBrevo = (await definicion('rwadar_novedades.enviar_correos(integer)')).includes('api.brevo.com');
+  await db.exec("update rwadar_novedades.configuracion set correo_habilitado = false, correo_activado_el = null");
+  const { id: anuncioN1 } = await una(db, "select id from rwadar_novedades.anuncios where clave = 'novedad:prueba-n1'");
+  // Lo que quedó a medias al reaplicar la 31: la primera vez, con Brevo; o
+  // tras fallo_cerrado.sql y reaplicar la 30 con correos de Lettermint en
+  // curso. Lo que el proveedor ya aceptó queda «aceptado» con su id; lo demás,
+  // «incierto» con un motivo que no da por hecho de qué proveedor vino.
+  const anunciosNace = (await filas(db, 'select id from rwadar_novedades.anuncios order by id limit 5')).map((f) => f.id);
+  const pedir = async (anuncio, estado, peticion) => (await una(db, `insert into rwadar_novedades.correos (usuario_id, tipo, anuncio_id,
+      estado, intentos, idempotencia, idempotencia_el, peticion_id, peticion_el)
+    values ($1, 'anuncio', $2, $3, 1, gen_random_uuid(), now(), $4::bigint, case when $4::bigint is null then null else now() end)
+    returning id`, [nace.id, anuncio, estado, peticion])).id;
+  const pedidos = {
+    brevo: await pedir(anunciosNace[0], 'enviando', 999999),
+    lettermint: await pedir(anunciosNace[1], 'enviando', 999991),
+    sinRespuesta: await pedir(anunciosNace[2], 'enviando', 999992),
+    error500: await pedir(anunciosNace[3], 'enviando', 999993),
+    pendiente: await pedir(anunciosNace[4], 'pendiente', null),
+  };
+  await responder(999999, 201, { messageId: '<pedido-con-brevo@ejemplo.test>' });
+  await responder(999991, 202, { message_id: 'lm-antes-de-reaplicar', status: 'pending' });
+  await responder(999993, 500, { message: 'Server Error' });
+  await db.exec(SQL31);
+  const tras31 = {};
+  for (const [clave, id] of Object.entries(pedidos)) {
+    tras31[clave] = await una(db, 'select estado, error, peticion_id, proveedor_mensaje_id from rwadar_novedades.correos where id = $1', [id]);
+  }
+  const v31De = await verificar31();
+  const INCIERTO_31 = 'Entrega incierta: petición previa a la (re)aplicación de la 31; revisar en el panel del proveedor, no reenviar automáticamente';
+  paso('con el correo encendido con Brevo la 31 se niega (apagar antes); apagado, se aplica: lo ya aceptado (201 de Brevo, 202 de Lettermint) queda «aceptado» con su id, lo demás «incierto» con un motivo neutro, nada se reenvía y el verificador 31 vuelve a pasar',
+    eEncendido?.code === '55000' && /encendido con Brevo/.test(eEncendido.message) && conBrevo && anunciosNace.length === 5
+    && tras31.brevo.estado === 'aceptado' && tras31.brevo.proveedor_mensaje_id === '<pedido-con-brevo@ejemplo.test>'
+    && tras31.lettermint.estado === 'aceptado' && tras31.lettermint.proveedor_mensaje_id === 'lm-antes-de-reaplicar'
+    && [tras31.brevo, tras31.lettermint].every((f) => f.error === null && f.peticion_id === null)
+    && [tras31.sinRespuesta, tras31.error500, tras31.pendiente].every((f) => f.estado === 'incierto' && f.error === INCIERTO_31
+      && f.peticion_id === null && f.proveedor_mensaje_id === null)
+    && v31De.ok);
+  await db.query('delete from rwadar_novedades.correos where id = any($1::bigint[])', [Object.values(pedidos)]);
+  const { id: enCurso } = await una(db, `insert into rwadar_novedades.correos (usuario_id, tipo, anuncio_id, estado, intentos, idempotencia,
+      idempotencia_el, peticion_id, peticion_el) values ($1, 'anuncio', $2, 'enviando', 1, gen_random_uuid(), now(), 999998, now()) returning id`,
+    [nace.id, anuncioN1]);
+  await db.exec(SQL31);
+  const sigue = await una(db, 'select estado, peticion_id from rwadar_novedades.correos where id = $1', [enCurso]);
+  await db.query('delete from rwadar_novedades.correos where id = $1', [enCurso]);
+  paso('reaplicar la 31 sobre sí misma no toca las colas: un correo en curso con Lettermint sigue «enviando» con su petición',
+    sigue.estado === 'enviando' && Number(sigue.peticion_id) === 999998 && (await verificar31()).ok);
   await db.exec(ACTIVAR_PUSH);
   await db.exec(ACTIVAR_CORREO);
   await db.exec(ACTIVAR_CASILLA);
@@ -1924,4 +2483,5 @@ let n1;
 } finally {
   await db?.close();
 }
-informe('RWAdar · avisos a registrados (30)', ok, fail);
+try { fs.rmSync(temporal, { recursive: true, force: true }); } catch { /* sin importancia */ }
+informe('RWAdar · avisos a registrados (30 y 31)', ok, fail);

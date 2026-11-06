@@ -622,18 +622,19 @@ test('Privacidad: con el interruptor apagado, las frases de hoy; encendido, las 
   assert.match(hoy, /No se activan opiniones, publicidad, avisos por correo ni push al registrarte/);
   assert.match(hoy, /Instalaciones y avisos desactivados/);
   assert.match(hoy, /No se solicitan permisos push, obtienen tokens ni registran instalaciones/);
-  assert.doesNotMatch(hoy, /Avisos de novedades|Brevo/);
+  assert.doesNotMatch(hoy, /Avisos de novedades|Brevo|Lettermint/);
   const v141 = texto(Privacidad({ estadoCuenta: { disponible: true }, avisosNovedades: true, pushNovedades: false }));
   assert.doesNotMatch(v141, /No se activan opiniones, publicidad, avisos por correo ni push|Instalaciones y avisos desactivados/);
   assert.match(v141, /Los avisos de novedades solo se activan si marcas su casilla/);
   assert.match(v141, /solo se activan con tu permiso/);
   assert.match(v141, /las notificaciones en el móvil llegan con la versión 1\.4\.2/);
-  assert.doesNotMatch(v141, /Brevo/, 'el correo no se describe hasta que la base lo encienda');
+  assert.doesNotMatch(v141, /Brevo|Lettermint/, 'el correo no se describe hasta que la base lo encienda');
   const v142 = texto(Privacidad({ estadoCuenta: { disponible: true }, avisosNovedades: true, pushNovedades: true,
     estadoNovedades: { correoActivo: true } }));
   assert.match(v142, /Si activas «Notificaciones en este móvil», el sistema te pedirá permiso/);
   assert.match(v142, /Expo y Firebase Cloud Messaging/);
-  assert.match(v142, /a través de Brevo, sin píxel ni seguimiento de clics/);
+  assert.match(v142, /a través de Lettermint, sin píxel ni seguimiento de clics/);
+  assert.doesNotMatch(v142, /Brevo/, 'Brevo se descartó: mete píxel en el correo transaccional');
 });
 
 test('Perfil: con el interruptor, el panel de la cuenta sustituye a «Próximamente»', () => {

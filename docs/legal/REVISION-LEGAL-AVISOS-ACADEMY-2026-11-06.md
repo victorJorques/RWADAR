@@ -674,3 +674,74 @@ quedan.
   - «7D APY»;
   - «Puntos fuertes».
 - Revisar las «verificar» del registro de actividades.
+
+---
+
+## Actualización 06/11/2026: proveedor Lettermint
+
+El informe de arriba no se reescribe: es un documento fechado. Este anexo
+dice qué cambia al elegir proveedor de correo y qué sigue pendiente. Lo decide
+Víctor con su permiso general del 06/11/2026. Contratos, citas y PDF:
+[`encargados/README.md`](encargados/README.md).
+
+**Qué cambia:**
+
+- **Proveedor de la UE.** Lettermint B.V. (Zwolle, Países Bajos) sustituye a
+  Brevo, que queda descartado por el punto 4.10 (solo anonimiza el píxel).
+  Según su contrato de encargo (§8.1), los correos se alojan y se tratan en la
+  UE, y sus tres subencargados con acceso al correo están en la UE: el correo
+  no sale de la UE. Donde este informe dice «Brevo» como proveedor de los
+  avisos nuevos (apartados 1, 2, 4.10, 4.12, 4.13, 5.8 y 6), léase Lettermint.
+- **Sin píxel ni seguimiento de clics.** Lettermint no los activa si no se
+  pide. Además, cada petición de RWAdar los desactiva expresamente
+  (`"settings": {"track_opens": false, "track_clicks": false}`, en la
+  migración 31). El control del punto 4.10 sigue: se comprueba en el original
+  de un correo real antes de encender.
+- **Dirección postal en el pie.** La política de uso de Lettermint exige
+  «your valid physical postal address in every email». El pie de todos los
+  correos lleva la del aviso legal: Plaza Generalitat, s/n, 46600 Alzira
+  (Valencia), España. Se suma al nombre del titular del punto 4.9.
+- **Dos rutas.** La bienvenida sale por la ruta de servicio (la de por
+  defecto). Los anuncios, por la de difusión, porque Lettermint pide separar
+  el correo de servicio del promocional. La ruta de difusión añade su propio
+  enlace de baja y su `List-Unsubscribe`, y guarda las bajas en su lista.
+  RWAdar ya tiene su baja (puntos 4.7 y 4.11). Se pide a Lettermint que quite
+  la suya; mientras tanto, cada baja que guarde Lettermint se aplica también
+  en RWAdar antes del siguiente anuncio. Si no, se enviaría después de una
+  baja (ver el riesgo del contraste).
+- **SMTP de Supabase Auth (punto 5.8).** También pasa a Lettermint
+  (`smtp.lettermint.co`), en el mismo paso 5. Así deja de usarse la cuenta de
+  Gmail sin contrato (contraste, punto 9).
+- **Contratos archivados (punto 4.13).** Supabase, Cloudflare, Google
+  (Firebase), Expo, GitHub y Lettermint, en PDF del 06/11/2026, en
+  `docs/legal/encargados/`. El de Lettermint se acepta al crear la cuenta
+  (sus condiciones, §4.7 y §15.3). Al leerlos apareció un hueco nuevo:
+  **GitHub** no tiene contrato de encargo en una cuenta personal gratuita, y
+  sus máquinas ven datos en claro al hacer las copias y los cambios de la base.
+- **Dudas del apartado 6 resueltas:** firma Lettermint B.V. (Cámara de
+  Comercio neerlandesa, n.º 99337711). Firebase sí pide aceptar sus
+  condiciones de tratamiento: rigen desde la fecha en que se aceptan.
+- **Textos.** En la «Información básica» (punto 4.2), «Brevo» pasa a
+  «Lettermint». No cambian la versión del permiso (`novedades-v2-2026-11-06`)
+  ni el texto de la casilla (punto 4.1), que no nombran al proveedor. Además,
+  la casilla sigue apagada: nadie ha dado todavía el permiso con el texto
+  anterior.
+
+**Qué sigue pendiente:**
+
+- Dominio propio (recomendado `rwadar.app`) y cuenta de Lettermint, con la
+  fecha de alta apuntada en `encargados/README.md`.
+- La prueba real del paso 5, antes de encender el correo:
+  - sin píxel ni enlaces reescritos en el original del mensaje;
+  - `List-Unsubscribe` en el buzón;
+  - el nombre exacto de la ruta de difusión (`broadcast`, sin confirmar);
+  - un solo correo al repetir el envío con la misma clave.
+- Que Lettermint quite su enlace de baja de la ruta de difusión, o revisar su
+  lista de bajas antes de cada anuncio.
+- Firebase: aceptar sus condiciones en la consola y apuntar la fecha.
+- GitHub: firmar su «Customer Agreement» en una organización o sacar los
+  datos personales de sus máquinas. Decide Víctor.
+- Lo pendiente del anexo anterior que no depende del proveedor.
+- El sistema antiguo de avisos de seguimiento (migraciones 13 y 23) sigue
+  inactivo y usa Brevo. Si algún día se reactiva, también tiene que salir de
+  Brevo.
