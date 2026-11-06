@@ -10,15 +10,33 @@ const html = fs.readFileSync(new URL('../rwadar-site/acceso.html', import.meta.u
 const original = fs.readFileSync(new URL('../rwadar-site/assets/acceso.js', import.meta.url), 'utf8');
 const APAGADO = 'const AVISOS_NOVEDADES_REMOTOS = false;';
 const encendido = original.replace(APAGADO, 'const AVISOS_NOVEDADES_REMOTOS = true;');
+// Versión novedades-v2-2026-11-06 (revisión legal del 06/11/2026), palabra por palabra.
 const TEXTO_ES = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ' +
-  'ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. ' +
-  'Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.';
+  'fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. ' +
+  'Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ' +
+  'ajustes del móvil. Más información en Privacidad.';
+const TEXTO_EN = 'I want to receive RWAdar notices by email and, if I enable them on my phone, as notifications: ' +
+  'new listings on the radar and news about the website and the app. It\'s optional: the Academy unlocks anyway. ' +
+  'You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your ' +
+  'phone settings. More information in Privacy.';
+// Información básica sobre los datos: fuera del texto versionado, junto a la casilla.
+const INFO_ES = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). ' +
+  'Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las ' +
+  'notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, ' +
+  'y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu ' +
+  'consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, ' +
+  'Cloudflare y Google; para los avisos, Brevo y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: ' +
+  'acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; ' +
+  'también puedes reclamar ante la AEPD. Más información en Privacidad.';
+const CLAVE_VOLVER = 'rwadar.alta.volver';
 const uid = '11111111-1111-4111-8111-111111111111';
 const DIA = 24 * 60 * 60 * 1000;
 const tick = () => new Promise(resolve => setImmediate(resolve));
 const texto = fragmento => fragmento.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 
-function pagina({ script = original, search = '', hash = '', guardado = new Map(), almacenRoto = false } = {}) {
+// lang: el <html lang> que pondría idioma-web (sin él, como hoy en /acceso, no
+// hay documentElement que leer). textoCasilla: lo que se ve en la casilla.
+function pagina({ script = original, search = '', hash = '', guardado = new Map(), almacenRoto = false, lang, textoCasilla } = {}) {
   const elementos = new Map(), botones = [], peticiones = [], destinos = [];
   for (const [, tag, atributos] of html.matchAll(/<([a-z][a-z0-9-]*)\b([^>]*)>/g)) {
     const id = atributos.match(/\bid="([^"]+)"/)?.[1];
@@ -35,8 +53,10 @@ function pagina({ script = original, search = '', hash = '', guardado = new Map(
   const localStorage = almacenRoto ? { getItem: roto, setItem: roto, removeItem: roto }
     : { getItem: clave => guardado.has(clave) ? guardado.get(clave) : null,
       setItem: (clave, valor) => guardado.set(clave, String(valor)), removeItem: clave => guardado.delete(clave) };
+  if (textoCasilla !== undefined) elementos.get('campo-avisos-novedades').textContent = textoCasilla;
   const context = vm.createContext({
-    document: { getElementById: id => elementos.get(id), querySelectorAll: () => botones },
+    document: { getElementById: id => elementos.get(id), querySelectorAll: () => botones,
+      ...(lang === undefined ? {} : { documentElement: { lang } }) },
     sessionStorage: { getItem: () => null, removeItem() {}, setItem() { assert.fail('Nada de credenciales en sessionStorage'); } },
     localStorage,
     location: { origin: 'https://rwadar.pages.dev', pathname: '/acceso', search, hash, replace: ruta => destinos.push(ruta) },
@@ -72,17 +92,53 @@ test('la casilla obligatoria dice que tienes 18 años o más, con condiciones y 
   assert.match(etiqueta, /href="\/privacidad"/);
 });
 
-test('la casilla de avisos lleva el texto exacto del contrato, aparte y sin marcar', () => {
+test('la casilla de avisos lleva el texto exacto de la v2, aparte y sin marcar, con «Privacidad» enlazada', () => {
   const etiqueta = html.match(/<label id="campo-avisos-novedades"([^>]*)>([\s\S]*?)<\/label>/);
   assert.ok(etiqueta, 'Existe la casilla #avisos-novedades');
   assert.match(etiqueta[1], /\bhidden\b/, 'Nace oculta en el HTML');
-  assert.equal(texto(etiqueta[2]), TEXTO_ES);
-  assert.ok(html.includes(TEXTO_ES), 'El texto va seguido, sin etiquetas dentro');
+  assert.equal(texto(etiqueta[2]), TEXTO_ES, 'El texto visible es el versionado, palabra por palabra');
+  // Seguido y sin más etiquetas que el enlace final a la sección de avisos.
+  assert.ok(etiqueta[2].endsWith(TEXTO_ES.replace(/Privacidad\.$/, '') + '<a href="/privacidad#avisos-novedades">Privacidad</a>.'));
+  assert.equal([...etiqueta[2].matchAll(/<a\b/g)].length, 1);
   assert.doesNotMatch(etiqueta[2], /\bchecked\b/);
+  assert.match(html, /<!-- Avisos de novedades, versión novedades-v2-2026-11-06:/);
   assert.ok(original.includes(APAGADO), 'El interruptor de la web nace apagado');
 });
 
-test('con el interruptor apagado no se ve la casilla y el alta no envía avisosNovedades', async () => {
+test('la información básica sobre los datos va junto a la casilla, oculta y con «Privacidad» enlazada', () => {
+  const bloque = html.match(/<div id="info-datos"([^>]*)>([\s\S]*?)<\/div>/);
+  assert.ok(bloque, 'Existe #info-datos');
+  assert.match(bloque[1], /\bhidden\b/, 'Nace oculta en el HTML');
+  assert.equal(texto(bloque[2]), INFO_ES);
+  assert.ok(bloque[2].endsWith(INFO_ES.replace(/Privacidad\.$/, '') + '<a href="/privacidad">Privacidad</a>.'));
+  // Justo después de la casilla de avisos, dentro del formulario y fuera de su <label>.
+  const casilla = html.indexOf('<label id="campo-avisos-novedades"'), info = html.indexOf('<div id="info-datos"');
+  assert.ok(casilla > 0 && info > casilla && info < html.indexOf('<div id="robot"'));
+  assert.equal(html.slice(casilla, info).match(/<\/label>/g).length, 1);
+});
+
+test('la información básica solo se ve al crear la cuenta y con el interruptor encendido', () => {
+  const apagado = pagina();
+  for (const v of ['registrar', 'entrar', 'recuperar', 'reenviar']) {
+    apagado.vista(v).eventos.click();
+    assert.equal(apagado.elemento('info-datos').hidden, true, 'apagado: ' + v);
+  }
+  const p = pagina({ script: encendido });
+  assert.equal(p.elemento('info-datos').hidden, true, 'En «Entrar» no se ve');
+  p.vista('registrar').eventos.click();
+  assert.equal(p.elemento('info-datos').hidden, false);
+  for (const otra of ['entrar', 'recuperar', 'reenviar']) {
+    p.vista(otra).eventos.click();
+    assert.equal(p.elemento('info-datos').hidden, true, otra);
+    p.vista('registrar').eventos.click();
+    assert.equal(p.elemento('info-datos').hidden, false, 'registrar tras ' + otra);
+  }
+  // Llegando desde una lección se abre el alta, y con ella la información.
+  assert.equal(pagina({ script: encendido, search: '?volver=%2Facademy%2Fcomo-leer-el-radar' }).elemento('info-datos').hidden, false);
+  assert.equal(pagina({ search: '?volver=%2Facademy%2Fcomo-leer-el-radar' }).elemento('info-datos').hidden, true);
+});
+
+test('con el interruptor apagado no se ve la casilla y el alta no envía avisosNovedades ni idioma', async () => {
   const p = pagina();
   p.vista('registrar').eventos.click();
   assert.equal(p.elemento('campo-condiciones').hidden, false);
@@ -90,6 +146,7 @@ test('con el interruptor apagado no se ve la casilla y el alta no envía avisosN
   const cuerpo = await p.registrar({ avisos: true });
   assert.ok(cuerpo, 'Se envía el alta');
   assert.equal(Object.hasOwn(cuerpo, 'avisosNovedades'), false, 'El JSON no lleva la clave');
+  assert.equal(Object.hasOwn(cuerpo, 'idioma'), false, 'Ni el idioma');
   assert.equal(cuerpo.aceptaCondiciones, true);
 });
 
@@ -108,21 +165,42 @@ test('con el interruptor encendido la casilla solo aparece al crear la cuenta y 
   }
 });
 
-test('con el interruptor encendido el alta envía avisosNovedades como booleano estricto', async () => {
+test('con el interruptor encendido el alta envía avisosNovedades como booleano estricto y el idioma de la casilla', async () => {
   for (const avisos of [false, true]) {
     const p = pagina({ script: encendido });
     p.vista('registrar').eventos.click();
     const cuerpo = await p.registrar({ avisos });
     assert.equal(cuerpo.avisosNovedades, avisos);
     assert.equal(typeof cuerpo.avisosNovedades, 'boolean');
+    // /acceso no carga el traductor: la casilla se ve en castellano.
+    assert.equal(cuerpo.idioma, 'es');
   }
-  // Entrar con una cuenta nunca manda la preferencia.
+  // Entrar con una cuenta nunca manda la preferencia ni el idioma.
   const p = pagina({ script: encendido });
   p.elemento('correo').value = 'alta@example.test';
   p.elemento('clave').value = 'una-clave-solo-de-prueba';
   await p.elemento('formulario').eventos.submit({ preventDefault() {} });
   const entrar = p.peticiones.find(x => x.ruta === '/api/acceso/entrar').cuerpo;
   assert.equal(Object.hasOwn(entrar, 'avisosNovedades'), false);
+  assert.equal(Object.hasOwn(entrar, 'idioma'), false);
+});
+
+test('el idioma es «en» solo si la página está en inglés y la casilla se ve traducida', async () => {
+  for (const [opciones, esperado] of [
+    [{ lang: 'es', textoCasilla: TEXTO_ES }, 'es'],
+    [{ lang: '', textoCasilla: TEXTO_ES }, 'es'],
+    // En inglés pero sin traducción en el diccionario: se ve el castellano.
+    [{ lang: 'en', textoCasilla: TEXTO_ES }, 'es'],
+    [{ lang: 'en', textoCasilla: '' }, 'es'],
+    [{ lang: 'en', textoCasilla: TEXTO_EN }, 'en'],
+    [{ lang: 'en-GB', textoCasilla: TEXTO_EN }, 'en'],
+    [{ lang: 'eng', textoCasilla: TEXTO_EN }, 'es'],
+  ]) {
+    const p = pagina({ script: encendido, ...opciones });
+    p.vista('registrar').eventos.click();
+    const cuerpo = await p.registrar({ avisos: true });
+    assert.equal(cuerpo.idioma, esperado, JSON.stringify(opciones.lang) + ' ' + opciones.textoCasilla.slice(0, 20));
+  }
 });
 
 test('sin la casilla de edad marcada no se envía nada', async () => {
@@ -233,4 +311,34 @@ test('entrar con la contraseña sigue volviendo a donde estaba, sin tocar la lec
   await p.elemento('formulario').eventos.submit({ preventDefault() {} });
   assert.deepEqual(p.destinos, ['/']);
   assert.equal(guardado.has('rwadar.alta.volver'), true);
+});
+
+test('en cualquier carga de /acceso se borra una vuelta caducada, manipulada o ilegible, y se conserva la vigente', () => {
+  const vigente = JSON.stringify({ ruta: '/academy/como-leer-el-radar', hasta: Date.now() + DIA - 1000 });
+  const casos = [
+    [JSON.stringify({ ruta: '/academy/como-leer-el-radar', hasta: Date.now() - 1 }), false, 'caducada'],
+    [JSON.stringify({ ruta: '/academy/como-leer-el-radar', hasta: Date.now() + 30 * DIA }), false, 'más de 24 horas'],
+    [JSON.stringify({ ruta: '/api/acceso/datos', hasta: Date.now() + 1000 }), false, 'no es una lección'],
+    [JSON.stringify({ ruta: '/academy/como-leer-el-radar', hasta: 'mañana' }), false, 'sin fecha'],
+    ['{no es json', false, 'ilegible'],
+    ['null', false, 'vacía'],
+    [vigente, true, 'vigente'],
+  ];
+  // Sin parámetros (entrar), con un enlace de recuperación o abriendo el alta desde una lección.
+  for (const [search, hash] of [['', ''], ['', '#access_token=solo.prueba.token&type=recovery'],
+    ['?volver=%2Facademy%2Fcuanto-cuesta-tokenizar', ''], ['?volver=%2F', '']]) {
+    for (const [valor, queda, nombre] of casos) {
+      const guardado = new Map([[CLAVE_VOLVER, valor]]);
+      const p = pagina({ guardado, search, hash });
+      assert.equal(guardado.has(CLAVE_VOLVER), queda, nombre + ' ' + search + hash);
+      if (queda) assert.equal(guardado.get(CLAVE_VOLVER), valor, 'La vigente no se toca');
+      assert.deepEqual(p.destinos, [], 'Limpiar no navega');
+    }
+  }
+  // Sin nada guardado no se escribe nada, y sin almacenamiento la página carga igual.
+  const vacio = new Map();
+  pagina({ guardado: vacio });
+  assert.equal(vacio.size, 0);
+  const sinAlmacen = pagina({ almacenRoto: true });
+  assert.equal(sinAlmacen.elemento('formulario').hidden, false);
 });

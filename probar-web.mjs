@@ -2893,7 +2893,8 @@ prueba('privacidad: la Academy es gratuita con cuenta y no guardamos qué leccio
   !/consultar la web de RWAdar sin registrarte/.test(privacidadLineal));
 prueba('privacidad: los avisos de novedades se explican y todavía no están activos',
   /<h3 id="avisos-novedades">Avisos de novedades \(correo y notificaciones\)<\/h3>\s*<p><b>Todavía no están activos\.<\/b>/.test(privacidad) &&
-  /casilla aparte y sin marcar/.test(privacidadLineal) && /<code>novedades-v1-2026-11-05<\/code>/.test(privacidad) &&
+  /casilla aparte y sin marcar/.test(privacidadLineal) && /<code>novedades-v2-2026-11-06<\/code>/.test(privacidad) &&
+  !/novedades-v1-2026-11-05/.test(privacidad) &&
   /el permiso se guarda solo cuando confirmas el correo/.test(privacidadLineal) &&
   /La baja corta a la vez los correos y las notificaciones de novedades/.test(privacidadLineal) &&
   /no llevarán píxel de apertura ni seguimiento de clics/.test(privacidadLineal) &&
@@ -2901,24 +2902,67 @@ prueba('privacidad: los avisos de novedades se explican y todavía no están act
   /servicio de notificaciones de Apple/.test(privacidadLineal) &&
   /90 días después de terminar/.test(privacidadLineal) && /no se actualicen en 180 días/.test(privacidadLineal) &&
   /Al crear la cuenta confirmas que tienes 18 años o más/.test(privacidadLineal));
+// Revisión legal del 06/11/2026: lo que ya es cierto con los avisos todavía apagados.
+const seccionAvisos = privacidadLineal.slice(privacidadLineal.indexOf('<h3 id="avisos-novedades">'), privacidadLineal.indexOf('<h2 id="consultas-b2b">'));
+const seccionCondiciones = privacidadLineal.slice(privacidadLineal.indexOf('<h3 id="condiciones">'), privacidadLineal.indexOf('<h3 id="mapa-ubicacion">'));
+prueba('privacidad: condiciones de la cuenta dentro de #condiciones (adonde va /condiciones)',
+  /<p id="condiciones-cuenta"><b>Condiciones de la cuenta\.<\/b>/.test(seccionCondiciones) &&
+  /<li>Es gratuita y personal\.<\/li>/.test(seccionCondiciones) &&
+  /<li>Es solo para mayores de 18 años\.<\/li>/.test(seccionCondiciones) &&
+  /lecciones de RWAdar Academy, para tu uso personal: no se pueden redistribuir/.test(seccionCondiciones) &&
+  /Puedes borrarla cuando quieras desde Perfil/.test(seccionCondiciones) &&
+  /lo avisaremos en la web y, cuando el cambio sea importante, te pediremos que las aceptes de nuevo/.test(seccionCondiciones));
+prueba('privacidad: baja, retirada, conservación bloqueada y Brevo sin el nombre en los avisos',
+  /<b>Todavía no están activos\.<\/b>/.test(seccionAvisos) && /fichas nuevas en el radar/.test(seccionAvisos) &&
+  !/ofertas nuevas/.test(seccionAvisos) &&
+  /darte de baja en Perfil o con el enlace de cada correo/.test(seccionAvisos) &&
+  /Las notificaciones también se quitan en los ajustes del móvil/.test(seccionAvisos) &&
+  seccionAvisos.includes('Puedes retirar tu permiso cuando quieras, sin que afecte a los envíos anteriores.') &&
+  /el permiso y su historial de altas y bajas, mientras exista la cuenta/.test(seccionAvisos) &&
+  /queda bloqueado durante 3 años, solo para atender reclamaciones \(art\. 32 de la Ley Orgánica 3\/2018, LOPDGDD\)/.test(seccionAvisos) &&
+  !/se borra todo lo anterior/.test(privacidadLineal) &&
+  /recibiría tu dirección de correo y el contenido del mensaje, no tu nombre/.test(seccionAvisos) &&
+  !/el nombre si existe/.test(privacidadLineal) &&
+  /<b>Brevo<\/b> — solo si se activa en el futuro el envío de avisos por correo; recibiría tu dirección de correo y el contenido del mensaje necesario para entregarlo, no tu nombre\./.test(privacidadLineal) &&
+  /historial de ese permiso \(sus altas y bajas\), que queda bloqueado durante 3 años/.test(privacidadLineal) &&
+  /documentados en el registro de actividades de tratamiento de RWAdar/.test(privacidadLineal) &&
+  !/deben documentarse en el registro interno/.test(privacidadLineal));
+prueba('privacidad: los datos locales cuentan la vuelta a la lección de 24 horas y su borrado',
+  /En la web, al crear la cuenta desde una lección, el navegador guarda durante 24 horas a qué lección volver; se borra al usarlo o al caducar\./.test(privacidadLineal) &&
+  /const CLAVE_VOLVER = 'rwadar\.alta\.volver', DURACION_VOLVER = 24 \* 60 \* 60 \* 1000;/.test(accesoJS) &&
+  /\n  limpiarVolver\(\);\n/.test(accesoJS));
+// Texto versionado v2 y la información básica (fuera de la versión), en /acceso y en Perfil.
+const TEXTO_AVISOS_V2 = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en ';
+const INFO_DATOS = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Brevo y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; también puedes reclamar ante la AEPD. Más información en ';
 prueba('acceso y Perfil: casilla de 18 años y avisos de novedades apagados por defecto',
   /Tengo 18 años o más, acepto las <a href="\/privacidad#condiciones">condiciones<\/a> y he leído la <a href="\/privacidad">privacidad<\/a>\./.test(accesoHTML) &&
-  /<label id="campo-avisos-novedades" hidden class="consentimiento"><input id="avisos-novedades" type="checkbox">Quiero recibir avisos de RWAdar/.test(accesoHTML) &&
+  accesoHTML.includes('<label id="campo-avisos-novedades" hidden class="consentimiento"><input id="avisos-novedades" type="checkbox">' + TEXTO_AVISOS_V2 + '<a href="/privacidad#avisos-novedades">Privacidad</a>.</label>') &&
+  accesoHTML.includes('<div id="info-datos" hidden class="consentimiento">' + INFO_DATOS + '<a href="/privacidad">Privacidad</a>.</div>') &&
+  panelPerfilHTML.includes('<span>' + TEXTO_AVISOS_V2 + '<a href="/privacidad#avisos-novedades">Privacidad</a>.</span>') &&
+  panelPerfilHTML.includes('<p class="perfil-aviso-detalle" id="perfilNovedadesDatos">' + INFO_DATOS + '<a href="/privacidad">Privacidad</a>.</p>') &&
+  / const VERSION_AVISOS_NOVEDADES='novedades-v2-2026-11-06';/.test(js) &&
   /const AVISOS_NOVEDADES_REMOTOS = false;/.test(accesoJS) && / const AVISOS_NOVEDADES_REMOTOS=false;/.test(js) &&
   /<div id="perfilAvisosProximamente">\s*<article class="movil-estado">/.test(panelPerfilHTML) &&
   /<div id="perfilAvisosNovedades" hidden>\s*<article class="movil-estado">/.test(panelPerfilHTML) &&
   !/<article class="movil-estado"[^>]*\shidden/.test(panelPerfilHTML) &&
   /Los avisos llegarán a la app en una próxima actualización\./.test(panelPerfilHTML));
 marcadoEstricto('baja.html', bajaHTML);
-prueba('baja: sin indexar, fuera del sitemap, sin formulario y con la baja por correo a la vista',
+// El mismo asunto que el pie y List-Unsubscribe de los correos de avisos.
+const MAILTO_BAJA = 'mailto:RWAdar@protonmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
+prueba('baja: sin indexar, fuera del sitemap, sin formulario y con la baja por correo a la vista, también sin JavaScript',
   /<meta name="robots" content="noindex,nofollow">/.test(bajaHTML) &&
   /<script defer src="\/assets\/baja-20261105\.js"><\/script>/.test(bajaHTML) &&
-  !/<form\b/i.test(bajaHTML) && /href="mailto:RWAdar@protonmail\.com\?subject=baja"/.test(bajaHTML) &&
+  !/<form\b/i.test(bajaHTML) && bajaHTML.includes('href="' + MAILTO_BAJA + '"') &&
+  [...bajaHTML.matchAll(/href="(mailto:[^"]+)"/g)].every(m => m[1] === MAILTO_BAJA) &&
+  /<noscript><p class="estado">[^<]*<a href="mailto:RWAdar@protonmail\.com\?subject=Baja%20de%20los%20avisos%20de%20RWAdar">RWAdar@protonmail\.com<\/a> con el asunto «Baja de los avisos de RWAdar»/.test(bajaHTML) &&
+  lee('assets/baja-20261105.js').includes('con el asunto «Baja de los avisos de RWAdar»') &&
+  !/asunto «baja»/.test(bajaHTML + lee('assets/baja-20261105.js')) &&
   !/\/baja</.test(lee('sitemap.xml')));
 
 prueba('los redirects usan sintaxis portable de Cloudflare Pages',
   /^\/index\.html\s+\/\s+301$/m.test(redirecciones) &&
   /^\/privacidad\.html\s+\/privacidad\s+301$/m.test(redirecciones) &&
+  /^\/condiciones\s+\/privacidad#condiciones\s+301$/m.test(redirecciones) &&
   /^\/transparencia-comercial\.html\s+\/transparencia-comercial\s+301$/m.test(redirecciones) &&
   /^\/para-empresas\.html\s+\/\s+302$/m.test(redirecciones) && /^\/para-empresas\s+\/\s+302$/m.test(redirecciones) &&
   !/301!/.test(redirecciones));

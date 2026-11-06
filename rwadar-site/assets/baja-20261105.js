@@ -8,7 +8,8 @@
   // por eso hay un botón y una petición fetch al mismo origen.
   const $ = id => document.getElementById(id);
   const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-  const ALTERNATIVA = 'Escribe a RWAdar@protonmail.com con el asunto «baja» y la tramitamos a mano.';
+  // El mismo asunto que el pie y List-Unsubscribe de los correos.
+  const ALTERNATIVA = 'Escribe a RWAdar@protonmail.com con el asunto «Baja de los avisos de RWAdar» y la tramitamos a mano.';
   const parametros = new URLSearchParams(location.search);
   let token = parametros.get('t');
   if (parametros.has('t')) {

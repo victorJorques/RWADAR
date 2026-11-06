@@ -168,3 +168,28 @@ test('el arnés local abre la lección con la sesión de prueba y la cierra sin 
     await local.cerrar(); await conSesion.cerrar();
   }
 });
+
+// La app (Cuenta.js, APK 1.4.x) enlaza «Leer condiciones» a /condiciones, que daba
+// 404: _redirects la manda con un 301 a las condiciones de la privacidad.
+test('el worker publicado manda /condiciones con un 301 a /privacidad#condiciones', async () => {
+  exigirConstruida();
+  const local = await arrancarWorkerLocal({ raiz: PUBLICADO, puerto: 0 });
+  try {
+    for (const metodo of ['GET', 'HEAD']) {
+      const r = await fetch(local.url + '/condiciones', { method: metodo, redirect: 'manual', headers: { accept: 'text/html' } });
+      assert.equal(r.status, 301, metodo);
+      assert.equal(r.headers.get('location'), '/privacidad#condiciones', metodo);
+    }
+    // El destino existe y tiene el ancla, con las condiciones de la cuenta dentro.
+    const destino = await fetch(local.url + '/privacidad', { redirect: 'manual' });
+    assert.equal(destino.status, 200);
+    const pagina = await destino.text();
+    assert.match(pagina, /<h3 id="condiciones">/);
+    assert.ok(pagina.indexOf('id="condiciones-cuenta"') > pagina.indexOf('id="condiciones"'));
+    assert.ok(pagina.indexOf('id="condiciones-cuenta"') < pagina.indexOf('id="mapa-ubicacion"'));
+    // Lo demás sigue igual: /condiciones.html no existe y /privacidad.html va a /privacidad.
+    assert.equal((await fetch(local.url + '/condiciones.html', { redirect: 'manual' })).status, 404);
+    const vieja = await fetch(local.url + '/privacidad.html', { redirect: 'manual' });
+    assert.equal(vieja.status, 301); assert.equal(vieja.headers.get('location'), '/privacidad');
+  } finally { await local.cerrar(); }
+});

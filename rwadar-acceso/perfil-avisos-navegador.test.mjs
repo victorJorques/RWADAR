@@ -10,17 +10,39 @@ const web = fs.readFileSync(new URL('../rwadar-site/assets/rwadar-20260820.js', 
 const html = fs.readFileSync(new URL('../rwadar-site/index.html', import.meta.url), 'utf8');
 const bridge = fs.readFileSync(new URL('../rwadar-site/assets/acceso-privado.js', import.meta.url), 'utf8');
 const APAGADO = ' const AVISOS_NOVEDADES_REMOTOS=false;';
-const VERSION = 'novedades-v1-2026-11-05';
+// Versión v2 (revisión legal del 06/11/2026), palabra por palabra.
+const VERSION = 'novedades-v2-2026-11-06';
 const TEXTO_ES = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ' +
-  'ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. ' +
-  'Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.';
+  'fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. ' +
+  'Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ' +
+  'ajustes del móvil. Más información en Privacidad.';
+const TEXTO_EN = 'I want to receive RWAdar notices by email and, if I enable them on my phone, as notifications: ' +
+  'new listings on the radar and news about the website and the app. It\'s optional: the Academy unlocks anyway. ' +
+  'You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your ' +
+  'phone settings. More information in Privacy.';
+// Información básica sobre los datos, junto al interruptor y fuera del texto versionado.
+const INFO_ES = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). ' +
+  'Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las ' +
+  'notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, ' +
+  'y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu ' +
+  'consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, ' +
+  'Cloudflare y Google; para los avisos, Brevo y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: ' +
+  'acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; ' +
+  'también puedes reclamar ante la AEPD. Más información en Privacidad.';
+// En la web, «Privacidad» del final es un enlace; el texto visible no cambia.
+const enlazado = (textoPlano, href) => textoPlano.replace(/Privacidad\.$/, '') + '<a href="' + href + '">Privacidad</a>.';
+const CASILLA_HTML = enlazado(TEXTO_ES, '/privacidad#avisos-novedades');
+const INFO_HTML = enlazado(INFO_ES, '/privacidad');
+const ACTIVADOS = 'Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.';
 const tick = async (veces = 4) => { for (let i = 0; i < veces; i++) await new Promise(resolve => setImmediate(resolve)); };
 const consentimiento = codigo => codigo.slice(codigo.indexOf('const VERSION_CONSENTIMIENTO_CORREO='), codigo.indexOf('/* correo-consentimiento:fin */'));
 const cuenta = codigo => codigo.slice(codigo.indexOf('const Cuenta = (function(){'), codigo.indexOf('/* comunidad:inicio */'));
 const estadoBase = { novedades: false, version: null, aceptado_el: null, version_vigente: VERSION,
   texto_es: TEXTO_ES, texto_en: 'x', dispositivos: 0, correo_activo: false, push_activo: false };
 
-function entorno({ encendido = false, sesion = true, estado = estadoBase, configurar = null } = {}) {
+// idioma: lo que devolvería RWAdarIdioma.obtenerIdioma() (sin él, no hay
+// traductor). textoCasilla: el texto que se ve junto al interruptor.
+function entorno({ encendido = false, sesion = true, estado = estadoBase, configurar = null, idioma, textoCasilla } = {}) {
   const llamadas = [], avisos = [], nodos = new Map();
   let actual = { ...estado };
   function nodo(id) {
@@ -29,7 +51,8 @@ function entorno({ encendido = false, sesion = true, estado = estadoBase, config
       nodos.set(id, { id, innerHTML: '', value: '', textContent: '', checked: false,
         disabled: /\bdisabled\b/.test(atributos), hidden: /\bhidden\b/.test(atributos), handlers: new Map(),
         addEventListener(tipo, fn) { this.handlers.set(tipo, fn); }, setAttribute() {}, removeAttribute() {},
-        querySelectorAll() { return []; }, classList: { contains: () => false, add() {}, remove() {} } });
+        querySelectorAll() { return []; }, classList: { contains: () => false, add() {}, remove() {} },
+        ...(textoCasilla === undefined ? {} : { closest: selector => selector === 'label' ? { textContent: textoCasilla } : null }) });
     }
     return nodos.get(id);
   }
@@ -39,6 +62,7 @@ function entorno({ encendido = false, sesion = true, estado = estadoBase, config
     sessionStorage: { getItem: () => null, setItem() {}, removeItem() {} }, setInterval() {}, URLSearchParams,
     SERVICIOS_USUARIO_DISPONIBLES: true, OPINIONES_DISPONIBLES: false, AVISOS_CORREO_DISPONIBLES: false,
     openPanel() {}, closeAll() {}, avisar: texto => avisos.push(texto),
+    ...(idioma === undefined ? {} : { RWAdarIdioma: { obtenerIdioma: () => idioma } }),
     fetch: async (ruta, opciones) => {
       llamadas.push({ ruta, opciones });
       if (ruta.endsWith('/sesion')) return sesion
@@ -71,9 +95,15 @@ test('el HTML trae las dos tarjetas: la de siempre visible y la nueva oculta, co
   assert.match(html, /<div id="perfilAvisosNovedades" hidden>\s*<article class="movil-estado">/);
   assert.doesNotMatch(html, /<article class="movil-estado"[^>]*\shidden/);
   assert.match(html, /<input type="checkbox" role="switch" id="perfilNovedadesOpcion" disabled>/);
-  assert.ok(html.includes('<span>' + TEXTO_ES + '</span>'));
+  assert.ok(html.includes('<span>' + CASILLA_HTML + '</span>'), 'Texto exacto con «Privacidad» enlazada');
   assert.ok(web.includes("const TEXTO_AVISOS_NOVEDADES='" + TEXTO_ES + "';"));
   assert.ok(web.includes("const VERSION_AVISOS_NOVEDADES='" + VERSION + "';"));
+  assert.match(html, /<!-- Avisos de novedades \(novedades-v2-2026-11-06\)/);
+  // La información básica, dentro de la tarjeta nueva (oculta con ella) y fuera del <label>.
+  const tarjeta = html.slice(html.indexOf('<div id="perfilAvisosNovedades" hidden>'), html.indexOf('</article>', html.indexOf('<div id="perfilAvisosNovedades" hidden>')));
+  assert.ok(tarjeta.includes('<p class="perfil-aviso-detalle" id="perfilNovedadesDatos">' + INFO_HTML + '</p>'));
+  assert.ok(tarjeta.indexOf('id="perfilNovedadesDatos"') > tarjeta.indexOf('</label>'));
+  assert.ok(web.includes("const INFO_DATOS_AVISOS='" + INFO_ES + "';"));
   // La tarjeta de hoy sigue diciendo lo que es cierto con el interruptor apagado.
   assert.match(html, /<h3>Avisos de cambios<\/h3>[\s\S]{0,200}Los avisos llegarán a la app en una próxima actualización\./);
 });
@@ -116,14 +146,14 @@ test('encendido con sesión: lee el estado, activa con la versión vigente y el 
   opcion.checked = true;
   await opcion.handlers.get('change')({ target: opcion });
   assert.deepEqual(e.rpc().at(-1), { ruta: '/rpc/configurar_avisos_novedades', metodo: 'POST',
-    cuerpo: { p_activar: true, p_version: VERSION, p_canal: 'web' } });
+    cuerpo: { p_activar: true, p_version: VERSION, p_canal: 'web', p_idioma: 'es' } });
   assert.equal(opcion.checked, true);
   assert.equal(opcion.disabled, false);
   assert.equal(e.nodo('perfilNovedadesEstado').textContent, 'Activados. Todavía no hemos empezado a enviarlos.');
-  assert.equal(e.avisos.at(-1), 'Avisos de novedades activados.');
+  assert.equal(e.avisos.at(-1), ACTIVADOS);
   opcion.checked = false;
   await opcion.handlers.get('change')({ target: opcion });
-  assert.deepEqual(e.rpc().at(-1).cuerpo, { p_activar: false, p_version: VERSION, p_canal: 'web' });
+  assert.deepEqual(e.rpc().at(-1).cuerpo, { p_activar: false, p_version: VERSION, p_canal: 'web', p_idioma: 'es' });
   assert.equal(opcion.checked, false);
   assert.equal(e.avisos.at(-1), 'Avisos de novedades desactivados.');
 });
@@ -135,7 +165,8 @@ test('encendido: el panel de cuenta del escritorio lleva el mismo interruptor en
   await tick();
   const panel = e.nodo('perfilCuerpo').innerHTML;
   assert.match(panel, /id="pfNovedades"/);
-  assert.ok(panel.includes(TEXTO_ES));
+  assert.ok(panel.includes('<b>Avisos de novedades.</b> ' + CASILLA_HTML + '</span></label>'), 'Texto exacto con «Privacidad» enlazada');
+  assert.ok(panel.includes('<p class="perfil-nota perfil-ayuda">' + INFO_HTML + '</p>'), 'Con la información básica');
   assert.doesNotMatch(panel, /Próximamente: avisos por correo/);
   assert.equal(e.nodo('pfNovedades').checked, true);
   assert.equal(e.nodo('pfNovedadesEstado').textContent, 'Activados. Puedes desactivarlos cuando quieras.');
@@ -171,4 +202,24 @@ test('encendido: una versión distinta en la base bloquea el interruptor hasta r
   await tick();
   assert.equal(e.nodo('perfilNovedadesOpcion').disabled, true);
   assert.equal(e.nodo('perfilNovedadesEstado').textContent, 'El texto de los avisos ha cambiado. Recarga la página para verlo.');
+});
+
+test('encendido: p_idioma es «en» solo si la web está en inglés y el texto del interruptor se ve traducido', async () => {
+  for (const [opciones, esperado] of [
+    [{}, 'es'],
+    [{ idioma: 'es', textoCasilla: TEXTO_ES }, 'es'],
+    // En inglés pero sin la frase en el diccionario: se ve el castellano.
+    [{ idioma: 'en', textoCasilla: TEXTO_ES }, 'es'],
+    [{ idioma: 'en', textoCasilla: 'Avisos de novedades. ' + TEXTO_ES }, 'es'],
+    [{ idioma: 'en', textoCasilla: '' }, 'es'],
+    [{ idioma: 'en' }, 'es'],
+    [{ idioma: 'en', textoCasilla: TEXTO_EN }, 'en'],
+  ]) {
+    const e = entorno({ encendido: true, ...opciones });
+    await tick();
+    const opcion = e.nodo('perfilNovedadesOpcion');
+    opcion.checked = true;
+    await opcion.handlers.get('change')({ target: opcion });
+    assert.equal(e.rpc().at(-1).cuerpo.p_idioma, esperado, JSON.stringify(opciones).slice(0, 60));
+  }
 });
