@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Keyboard, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
-import { Pressable, Text, TextInput, View } from './Idioma';
+import { Pressable, Text, TextInput, View, useIdioma } from './Idioma';
 import { C, F, R, T, UI } from '../lib/tema';
-import { TEXTO_AVISOS_ES } from '../lib/avisos-cuenta';
+import { INFO_BASICA_ES, TEXTO_AVISOS_ES } from '../lib/avisos-cuenta';
 
 const PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
-const CONDICIONES = 'https://rwadar.pages.dev/condiciones';
+// Las condiciones están en la página de privacidad (la ruta /condiciones da 404).
+const CONDICIONES = 'https://rwadar.pages.dev/privacidad#condiciones';
 const TEXTO_EDAD = 'Tengo 18 años o más, acepto las condiciones y he leído la privacidad';
 
 /* Validación de lectura, no autorización: el controlador y el servidor
@@ -62,9 +63,14 @@ function Campo({ etiqueta, referencia, ...props }) {
 }
 
 /* avisosNovedades: interruptor AVISOS_NOVEDADES_REMOTOS. Apagado, el alta y
-   el perfil se ven y envían exactamente lo de antes. */
+   el perfil envían exactamente lo de antes y no enseñan la casilla ni la
+   información básica de los avisos. Con o sin él, las condiciones abren
+   /privacidad#condiciones y borrar la cuenta explica que se van también los
+   avisos (revisión legal del 06/11/2026). */
 export default function Cuenta({ controlador, estado, seguridad, plataformas = [], onAbrirEmpresa, onAbrirEnlace,
   avisosNovedades = false }) {
+  // Idioma en que se ve la casilla de avisos: se guarda con el permiso.
+  const idioma = useIdioma();
   const [vista, setVista] = useState('entrar');
   const [correo, setCorreo] = useState('');
   const [clave, setClave] = useState('');
@@ -134,7 +140,8 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
     if (error) { setErrorLocal(error); return; }
     if (vista === 'alta') {
       ejecutar('registrar', { correo, clave, nombre, aceptaCondiciones: acepta,
-        ...(avisosNovedades === true ? { avisosNovedades: avisos === true } : {}) }, () => setVista('confirmacion'));
+        ...(avisosNovedades === true ? { avisosNovedades: avisos === true, idioma: idioma === 'en' ? 'en' : 'es' } : {}) },
+      () => setVista('confirmacion'));
     } else if (vista === 'recuperar') {
       ejecutar('recuperar', { correo });
     } else if (vista === 'borrar') {
@@ -255,7 +262,7 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
         </>
       ) : autenticada && vista === 'borrar' ? (
         <>
-          <Text style={s.parrafo}>La baja elimina tu perfil y tu lista de seguimiento de la cuenta. No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.</Text>
+          <Text style={s.parrafo}>Borrar la cuenta elimina tu perfil, tu lista de seguimiento y tus avisos (permiso y móviles registrados). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.</Text>
           <Campo etiqueta="Contraseña actual" referencia={claveInput} value={clave} onChangeText={setClave}
             secureTextEntry autoCapitalize="none" autoCorrect={false} autoComplete="current-password"
             textContentType="password" editable={!bloqueado} maxLength={256} />
@@ -319,6 +326,8 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
                   <Text style={s.aceptacionTexto}>{TEXTO_AVISOS_ES}</Text>
                 </Pressable>
               ) : null}
+              {/* Primera capa de información, fuera del texto versionado del permiso. */}
+              {avisosNovedades ? <Text style={s.nota}>{INFO_BASICA_ES}</Text> : null}
               <View style={s.enlaces}>
                 <Boton texto="Leer condiciones" secundario onPress={() => onAbrirEnlace(CONDICIONES)} />
                 <Boton texto="Leer privacidad" secundario onPress={() => onAbrirEnlace(PRIVACIDAD)} />

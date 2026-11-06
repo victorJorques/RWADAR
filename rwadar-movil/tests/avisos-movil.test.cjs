@@ -107,11 +107,39 @@ test('con la 1.4.2 (código 24) la consulta es pasiva y el permiso solo se pide 
     assert.equal(e.sistema.llamadas.some(([n]) => n === 'solicitar' || n === 'token'), false);
     const resultado = await e.modulo.obtenerTokenNovedades({ solicitarPermiso: true });
     assert.deepEqual(resultado, { ok: true, estado: 'permitido', token: TOKEN, plataforma: 'android' });
-    // El canal es el mismo que usa la base al enviar.
-    const canal = e.sistema.llamadas.find(([n]) => n === 'canal');
-    assert.equal(canal[1], 'novedades');
+    /* Dos canales, los mismos con que envía la base: «cuenta» (la bienvenida)
+       y «novedades» (los anuncios). Se crean antes de pedir el permiso. */
+    // Una vez por cada llamada (aquí dos: la consulta sin pedir y la de pedir).
+    const canales = e.sistema.llamadas.filter(([n]) => n === 'canal');
+    assert.deepEqual(canales.map(([, id]) => id), ['cuenta', 'novedades', 'cuenta', 'novedades']);
+    assert.deepEqual(canales.slice(2).map(([, , canal]) => canal), [
+      { name: 'Avisos de tu cuenta', description: 'Avisos de servicio de tu cuenta, como la bienvenida.', importance: 3, lightColor: '#25E39A' },
+      { name: 'Novedades de RWAdar', description: 'Fichas nuevas en el radar y novedades de la web y la app.', importance: 3, lightColor: '#25E39A' },
+    ]);
+    const orden = e.sistema.llamadas.map(([n]) => n);
+    assert.ok(orden.lastIndexOf('canal') < orden.indexOf('solicitar'), 'los canales existen antes de pedir el permiso');
+    assert.deepEqual(e.modulo.CANALES_AVISOS.map((canal) => canal.id), ['cuenta', 'novedades']);
     assert.deepEqual(e.sistema.llamadas.find(([n]) => n === 'token'), ['token', { projectId: 'proyecto-prueba' }]);
   } finally { e.restaurar(); }
+});
+
+test('con la 1.4.2 los dos canales llevan el nombre en el idioma de la app; en iOS no se crean', async () => {
+  const e = avisos({ runtime: '1.4.2(24)', sistema: sdk({ permiso: { granted: true } }) });
+  // El mismo módulo de idioma que acaba de cargar avisos.js.
+  const idioma = require('../lib/idioma');
+  await idioma.cambiarIdioma('en');
+  try {
+    await e.modulo.obtenerTokenNovedades({ solicitarPermiso: false });
+    assert.deepEqual(e.sistema.llamadas.filter(([n]) => n === 'canal').map(([, id, canal]) => [id, canal.name, canal.description]), [
+      ['cuenta', 'Account notices', 'Service notices about your account, such as the welcome.'],
+      ['novedades', 'RWAdar news', 'New listings on the radar and news about the website and the app.'],
+    ]);
+  } finally { e.restaurar(); await idioma.cambiarIdioma('es'); }
+  const ios = avisos({ runtime: '1.4.2(24)', os: 'ios', sistema: sdk({ permiso: { granted: true } }) });
+  try {
+    assert.equal((await ios.modulo.obtenerTokenNovedades({ solicitarPermiso: false })).ok, true);
+    assert.equal(ios.sistema.llamadas.some(([n]) => n === 'canal'), false);
+  } finally { ios.restaurar(); }
 });
 
 test('con la 1.4.2 y el permiso ya concedido, la renovación obtiene el token actual sin abrir el diálogo', async () => {

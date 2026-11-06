@@ -10,12 +10,20 @@
    aviso con un campo raro no se enseña. Este archivo no importa React Native,
    el SDK de notificaciones ni el almacenamiento: se los pasa quien lo usa. */
 const { codigoNativoInstalado } = require('./actualizaciones-app');
+const { obtenerIdioma } = require('./idioma');
 
 // Cambiar una sola palabra del texto obliga a una versión nueva, en la base,
-// la web y la app a la vez.
-const VERSION_AVISOS = 'novedades-v1-2026-11-05';
-const TEXTO_AVISOS_ES = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.';
-const TEXTO_AVISOS_EN = "I want to receive RWAdar notices by email and, if I turn them on in my phone, as notifications: new offers on the radar and news about the website and the app. It's optional: the Academy unlocks anyway. You can unsubscribe in every notice or in Profile. More information in Privacy.";
+// la web y la app a la vez. La v2 sale de la revisión legal del 06/11/2026
+// (con la v1 nunca se recogió ningún permiso: la casilla nunca se mostró).
+const VERSION_AVISOS = 'novedades-v2-2026-11-06';
+const TEXTO_AVISOS_ES = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en Privacidad.';
+const TEXTO_AVISOS_EN = "I want to receive RWAdar notices by email and, if I enable them on my phone, as notifications: new listings on the radar and news about the website and the app. It's optional: the Academy unlocks anyway. You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your phone settings. More information in Privacy.";
+// Información básica (primera capa). Va fuera del texto versionado, junto a
+// la casilla del alta y junto al interruptor de Perfil. El inglés sale del
+// diccionario compartido con la web.
+const INFO_BASICA_ES = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Brevo y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; también puedes reclamar ante la AEPD. Más información en Privacidad.';
+const INFO_BASICA_EN = 'Basic information about your data. Controller: Víctor Manuel Jorques Granero (RWAdar). Data: your email, your password and, if you give it, your name; with notices, also your consent and, if you turn on notifications, a delivery identifier for your phone. Purpose: your account, which also opens the Academy, and, only if you tick the notices box, sending you those notices. Legal basis: the service you request (account) and your consent (notices), which you can withdraw at any time without affecting what came before. Providers: Supabase, Cloudflare and Google; for notices, Brevo and Expo. Some process data outside the EU with safeguards. Rights: access, rectification, erasure, objection, restriction and portability, in Profile or at RWAdar@protonmail.com; you can also complain to the AEPD (Spanish Data Protection Agency). More information in Privacy.';
+const IDIOMAS_AVISOS = Object.freeze(['es', 'en']);
 // La 1.4.1 (código 23) bloquea POST_NOTIFICATIONS y no lleva Firebase: las
 // notificaciones del sistema llegan con el APK 1.4.2 (código 24).
 const CODIGO_PUSH_MINIMO = 24;
@@ -68,6 +76,13 @@ function enlaceAvisoValido(valor) {
   } catch {
     return false;
   }
+}
+
+/* Idioma en que se ha visto el texto del permiso: se guarda con él. Solo
+   'es' o 'en'; si quien llama no lo dice, el de la app en ese momento. */
+function idiomaAvisos(valor) {
+  if (IDIOMAS_AVISOS.includes(valor)) return valor;
+  return obtenerIdioma() === 'en' ? 'en' : 'es';
 }
 
 function tokenPushValido(valor) {
@@ -188,10 +203,10 @@ function crearAvisosCuenta({ cuenta, usuarioId, vigente = () => true } = {}) {
     async estado() {
       return validarEstadoAvisos(await rpc('estado_mis_avisos', {}));
     },
-    async configurar(activar) {
+    async configurar(activar, idioma) {
       if (typeof activar !== 'boolean') throw fallo('avisos_parametro_invalido');
       const estado = validarEstadoAvisos(await rpc('configurar_avisos_novedades',
-        { p_activar: activar, p_version: VERSION_AVISOS, p_canal: 'app' }));
+        { p_activar: activar, p_version: VERSION_AVISOS, p_canal: 'app', p_idioma: idiomaAvisos(idioma) }));
       if (estado.novedades !== activar) throw fallo('avisos_respuesta_invalida');
       return estado;
     },
@@ -355,9 +370,9 @@ function crearGestorAvisosNovedades({ avisosCuenta, usuarioId, push, almacen, ah
       return { servidor, movil: await estadoMovil(servidor) };
     },
     estadoMovil,
-    async alternarNovedades(activar, servidor) {
+    async alternarNovedades(activar, servidor, idioma) {
       if (activar === true && servidor?.textoVigente !== true) throw fallo('avisos_texto_desfasado');
-      return avisosCuenta.configurar(activar === true);
+      return avisosCuenta.configurar(activar === true, idioma);
     },
     activarMovil(servidor) {
       return enCola(async () => {
@@ -405,7 +420,7 @@ function crearGestorAvisosNovedades({ avisosCuenta, usuarioId, push, almacen, ah
 }
 
 module.exports = {
-  VERSION_AVISOS, TEXTO_AVISOS_ES, TEXTO_AVISOS_EN, CODIGO_PUSH_MINIMO, TIPOS_AVISO, DESTINOS_AVISO,
-  capacidadPushNativa, tokenPushValido, enlaceAvisoValido, validarEstadoAvisos, validarAvisosRecientes,
+  VERSION_AVISOS, TEXTO_AVISOS_ES, TEXTO_AVISOS_EN, INFO_BASICA_ES, INFO_BASICA_EN, CODIGO_PUSH_MINIMO, TIPOS_AVISO,
+  DESTINOS_AVISO, idiomaAvisos, capacidadPushNativa, tokenPushValido, enlaceAvisoValido, validarEstadoAvisos, validarAvisosRecientes,
   aperturaDesdeDatosAviso, destinoAviso, crearAvisosCuenta, quitarPushConCliente, crearGestorAvisosNovedades,
 };

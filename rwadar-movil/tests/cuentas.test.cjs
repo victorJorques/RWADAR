@@ -474,7 +474,7 @@ test('el SDK real con transporte simulado recorre alta, acceso, recuperación, p
 /* Avisos de novedades (contrato del 05/11/2026): metadatos del alta y tarea
    previa a cerrar sesión (quitar este móvil de los avisos). */
 const TOKEN_AVISOS = 'ExponentPushToken[abcdefghijklmnop1234]';
-const VERSION_AVISOS = 'novedades-v1-2026-11-05';
+const VERSION_AVISOS = 'novedades-v2-2026-11-06';
 
 test('alta con el interruptor de avisos apagado: nada nuevo en los metadatos aunque se pida', async () => {
   for (const avisosNovedades of [true, false, 'true', 1, undefined]) {
@@ -486,14 +486,30 @@ test('alta con el interruptor de avisos apagado: nada nuevo en los metadatos aun
 
 test('alta con el interruptor encendido: avisos solo con la casilla marcada y booleano estricto', async () => {
   for (const [avisosNovedades, esperado] of [
-    [true, { nombre: 'Ana', avisos_novedades: true, avisos_version: VERSION_AVISOS, avisos_canal: 'app' }],
+    [true, { nombre: 'Ana', avisos_novedades: true, avisos_version: VERSION_AVISOS, avisos_canal: 'app', avisos_idioma: 'es' }],
     [false, { nombre: 'Ana' }], ['true', { nombre: 'Ana' }], [1, { nombre: 'Ana' }], [undefined, { nombre: 'Ana' }],
   ]) {
     const e = entorno({ controlador: { avisosNovedades: true } });
-    assert.equal((await e.controlador.registrar({ ...alta, avisosNovedades })).ok, true);
+    assert.equal((await e.controlador.registrar({ ...alta, avisosNovedades, idioma: 'es' })).ok, true);
     assert.deepEqual(e.llamadas[0][1], { email: CORREO, password: CLAVE,
       options: { emailRedirectTo: REDIRECT_CUENTAS, data: esperado } }, String(avisosNovedades));
   }
+  // Con el permiso se guarda el idioma en que se vio la casilla: 'es' o 'en'.
+  // Sin él (o con otro valor), el de la app en ese momento; nunca otra cosa.
+  const idioma = require('../lib/idioma');
+  for (const [pedido, appEn, esperado] of [['en', false, 'en'], ['es', true, 'es'], [undefined, false, 'es'],
+    [undefined, true, 'en'], ['fr', false, 'es'], ['EN', true, 'en']]) {
+    await idioma.cambiarIdioma(appEn ? 'en' : 'es');
+    try {
+      const e = entorno({ controlador: { avisosNovedades: true } });
+      assert.equal((await e.controlador.registrar({ ...alta, avisosNovedades: true, idioma: pedido })).ok, true);
+      assert.equal(e.llamadas[0][1].options.data.avisos_idioma, esperado, `${pedido} / app en ${appEn ? 'inglés' : 'español'}`);
+    } finally { await idioma.cambiarIdioma('es'); }
+  }
+  // Sin casilla no se guarda idioma ninguno.
+  const sinCasilla = entorno({ controlador: { avisosNovedades: true } });
+  await sinCasilla.controlador.registrar({ ...alta, avisosNovedades: false, idioma: 'en' });
+  assert.deepEqual(sinCasilla.llamadas[0][1].options.data, { nombre: 'Ana' });
   const e = entorno({ controlador: { avisosNovedades: true } });
   assert.equal((await e.controlador.registrar({ ...alta, aceptaCondiciones: false, avisosNovedades: true })).ok, false);
   assert.deepEqual(e.llamadas, [], 'sin la casilla de 18 años y condiciones no se envía nada');
@@ -554,7 +570,8 @@ test('el SDK real quita el móvil de los avisos por /rest/v1/rpc con el token de
     almacenSesion: almacenFalso(), avisosNovedades: true,
     antesDeSalir: ({ cliente }) => quitarPushConCliente(cliente, TOKEN_AVISOS) });
   assert.equal((await c.registrar({ ...alta, avisosNovedades: true })).ok, true);
-  assert.deepEqual(llamadas[0].cuerpo.data, { nombre: 'Ana', avisos_novedades: true, avisos_version: VERSION_AVISOS, avisos_canal: 'app' });
+  assert.deepEqual(llamadas[0].cuerpo.data, { nombre: 'Ana', avisos_novedades: true, avisos_version: VERSION_AVISOS, avisos_canal: 'app',
+    avisos_idioma: 'es' });
   assert.equal((await c.entrar(entrada)).ok, true);
   assert.equal((await c.salir()).ok, true);
   const rutas = llamadas.map(x => x.ruta);
