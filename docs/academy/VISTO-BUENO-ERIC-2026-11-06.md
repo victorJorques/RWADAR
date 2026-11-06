@@ -25,13 +25,15 @@ sesión de trabajo:
 
 > «ya tenemos permiso de eric por escrito»
 
-Con eso queda cubierto lo que faltaba: la licencia o cesión de las 9 lecciones
-para la web y la app, y la conformidad de Eric con los puntos de arriba.
+Licencia escrita de Eric recibida por WhatsApp. Víctor confirma que existe y la
+conserva (06/11/2026). Con eso queda cubierto lo que faltaba: la licencia o
+cesión de las 9 lecciones para la web y la app, y la conformidad de Eric con los
+puntos de arriba.
 
-**Dónde está el original.** El escrito de Eric no se sube a Git: lleva datos
-personales de Eric, y este repositorio no es su archivo. Víctor guarda el
-original (correo, mensaje o documento firmado) en un sitio privado, y aquí solo
-queda constancia de que existe. Si algún día hace falta probarlo, por ejemplo
+**Dónde está el original.** En el WhatsApp de Víctor. No se copia aquí: lleva
+datos personales de Eric, y este repositorio no es su archivo. Conviene
+exportar ese chat, o hacer una captura con la fecha visible, y guardarla en un
+sitio privado: un móvil se pierde o se cambia. Si algún día hace falta probarlo, por ejemplo
 ante una tienda de apps o en una disputa sobre la autoría, se presenta ese
 original.
 
