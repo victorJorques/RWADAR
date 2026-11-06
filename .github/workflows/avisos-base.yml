@@ -1,0 +1,145 @@
+name: Avisos a registrados (base)
+
+# Aplica en Supabase, desde GitHub, la migración 30 (avisos a registrados) y
+# sus scripts, con las mismas garantías que «Aplicar catálogo»: solo desde
+# main, copia cifrada de la base antes de cambiar nada, cada SQL en su propia
+# transacción y el verificador 30 al final. Solo hay acciones fijas: no se
+# puede pasar un archivo cualquiera.
+#
+# Cada acción que cambia la base necesita orden expresa de Víctor (AGENTS.md)
+# y escribir AVISOS en «confirmar». «ensayo-30» y «verificar-30» no cambian
+# nada: el ensayo aplica la 30 y su verificador dentro de una transacción que
+# se deshace al final, para saber si entra en producción antes de aplicarla.
+#
+# Usa los secretos de la copia de seguridad: SUPABASE_DB_URL y COPIA_CLAVE.
+# Contrato: docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md.
+
+on:
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: 'Qué hacer'
+        required: true
+        type: choice
+        options:
+          - ensayo-30
+          - verificar-30
+          - aplicar-30
+          - activar-casilla
+          - activar-correo
+          - activar-push
+          - apagar
+          - apagar-casilla
+      confirmar:
+        description: 'Escribe AVISOS para las acciones que cambian la base (no hace falta para ensayo-30 ni verificar-30)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+# La misma cola que «Aplicar catálogo»: nunca dos escrituras a la vez.
+concurrency:
+  group: rwadar-aplicar-catalogo
+  cancel-in-progress: false
+
+jobs:
+  base:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "Los avisos solo se aplican desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Comprobar la acción
+        env:
+          ACCION: ${{ inputs.accion }}
+          CONFIRMAR: ${{ inputs.confirmar }}
+        run: |
+          set -euo pipefail
+          D=rwadar-app/db
+          case "$ACCION" in
+            ensayo-30)       SQL="$D/30_avisos_registrados.sql";                CAMBIA=no ;;
+            verificar-30)    SQL="$D/30_avisos_registrados_verificar.sql";      CAMBIA=no ;;
+            aplicar-30)      SQL="$D/30_avisos_registrados.sql";                CAMBIA=si ;;
+            activar-casilla) SQL="$D/30_avisos_registrados_activar_casilla.sql"; CAMBIA=si ;;
+            activar-correo)  SQL="$D/30_avisos_registrados_activar_correo.sql";  CAMBIA=si ;;
+            activar-push)    SQL="$D/30_avisos_registrados_activar_push.sql";    CAMBIA=si ;;
+            apagar)          SQL="$D/30_avisos_registrados_apagar.sql";          CAMBIA=si ;;
+            apagar-casilla)  SQL="$D/30_avisos_registrados_apagar_casilla.sql";  CAMBIA=si ;;
+            *) echo "Acción no válida: $ACCION"; exit 1 ;;
+          esac
+          test -f "$SQL" || { echo "No existe $SQL"; exit 1; }
+          if [ "$CAMBIA" = si ] && [ "$CONFIRMAR" != "AVISOS" ]; then
+            echo "Esta acción cambia la base: escribe AVISOS en «confirmar»."; exit 1
+          fi
+          # Las dos copias de la 30 deben ser idénticas (la del CLI y la del SQL Editor).
+          cmp -s "$D/30_avisos_registrados.sql" rwadar-app/supabase/migrations/20261105200000_avisos_registrados.sql \
+            || { echo "Las dos copias de la 30 no coinciden"; exit 1; }
+          { echo "SQL=$SQL"; echo "CAMBIA=$CAMBIA"; } >> "$GITHUB_ENV"
+
+      - name: Instalar psql y pg_dump 17 (misma versión que Supabase)
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+
+      - name: Copia de seguridad antes de cambiar nada
+        if: env.CAMBIA == 'si'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          COPIA_CLAVE: ${{ secrets.COPIA_CLAVE }}
+        run: bash rwadar-app/copia-seguridad.sh copia-antes-avisos
+
+      - name: Guardar la copia 35 días
+        if: env.CAMBIA == 'si'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: copia-antes-avisos-${{ inputs.accion }}-${{ github.run_number }}
+          path: copia-antes-avisos/
+          retention-days: 35
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Ensayo de la 30 (se deshace al final)
+        if: inputs.accion == 'ensayo-30'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          set -euo pipefail
+          V=rwadar-app/db/30_avisos_registrados_verificar.sql
+          # La 30 es una sola transacción (begin; … commit;). Se cambia su commit
+          # final por el verificador (sin su propia transacción) y un rollback.
+          [ "$(grep -c '^commit;$' "$SQL")" = 1 ] && [ "$(tail -n 1 "$SQL")" = "commit;" ] \
+            || { echo "La 30 no termina en un único commit;"; exit 1; }
+          [ "$(grep -c '^begin transaction read only;$' "$V")" = 1 ] && [ "$(tail -n 1 "$V")" = "rollback;" ] \
+            || { echo "El verificador no tiene la forma esperada"; exit 1; }
+          ENSAYO="$(mktemp)"
+          head -n -1 "$SQL" > "$ENSAYO"
+          grep -v '^begin transaction read only;$' "$V" | head -n -1 >> "$ENSAYO"
+          echo 'rollback;' >> "$ENSAYO"
+          psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$ENSAYO"
+          echo "ENSAYO CORRECTO: la 30 y su verificador pasan en producción. No se ha cambiado nada (rollback)."
+
+      - name: Aplicar
+        if: env.CAMBIA == 'si'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$SQL"
+
+      - name: Verificar
+        if: inputs.accion != 'ensayo-30'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f rwadar-app/db/30_avisos_registrados_verificar.sql
