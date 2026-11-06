@@ -102,10 +102,59 @@ apartado 3) resume esto mismo y enlaza aquí.
 | **Quién** | GitHub, Inc. (EE. UU.) o GitHub B.V. (Países Bajos). |
 | **Contrato que existe** | GitHub Data Protection Agreement: https://github.com/customer-terms/github-data-protection-agreement («Version: October 2025»). |
 | **Cómo vincula** | **En nuestra cuenta, no vincula.** El DPA dice que «forms part of the GitHub Customer Agreement», y llama «Online Services» a lo que GitHub presta «under a written and executed agreement». La cuenta de RWAdar es personal y gratuita: se rige por los términos generales de GitHub, no por el Customer Agreement. Para esas cuentas, la privacidad de GitHub dice que trata los datos «as the "Data Controller"», es decir, como responsable y no como encargado. |
-| **Por qué es un hueco real** | Las copias y los flujos de la base se ejecutan en máquinas de GitHub. Allí la copia está **en claro** unos minutos, antes de cifrarse, y los flujos de la base leen y escriben datos de las cuentas. Eso es tratar datos de usuarios por cuenta de RWAdar sin el contrato del art. 28.3. Las copias guardadas sí van cifradas, y GitHub no tiene la clave. |
+| **Por qué es un hueco real** | Las copias y los flujos de la base se ejecutan en máquinas de GitHub. Allí la copia está **en claro** unos minutos, antes de cifrarse, y los flujos de la base leen y escriben datos de las cuentas. Eso es tratar datos de usuarios por cuenta de RWAdar sin el contrato del art. 28.3. Las copias guardadas van cifradas, pero la contraseña (`COPIA_CLAVE`) también es un secreto de GitHub: GitHub guarda a la vez la copia y su llave. |
 | **Transferencias** | GitHub está en el DPF como «Active» (participante 6174). Pero el DPF solo cubre el viaje de los datos: no sustituye al contrato de encargo. |
 | **Subencargados** | Solo con el DPA: https://github.com/github-subprocessors-list |
 | **PDF** | [`2026-11-06-github-dpa.pdf`](2026-11-06-github-dpa.pdf) y [`2026-11-06-github-declaracion-privacidad.pdf`](2026-11-06-github-declaracion-privacidad.pdf) |
+
+**Decisión (06/11/2026, Claude, por encargo de Víctor): opción A, GitHub Team.**
+
+Por qué:
+
+- **El DPA solo existe en planes de pago.** La página de condiciones de
+  GitHub dice que el DPA «applies to the processing of data for GitHub
+  Enterprise Cloud, GitHub Enterprise (Unified), GitHub Teams and GitHub
+  Copilot» (https://github.com/customer-terms, consultado el 06/11/2026). Una
+  organización gratuita no basta.
+- **Supabase gratuito no hace copias.** Su ayuda dice «We automatically back
+  up all Pro, Team, and Enterprise Plan projects» y recomienda a los proyectos
+  gratuitos exportar sus datos ellos mismos
+  (https://supabase.com/docs/guides/platform/backups). Hoy las únicas copias
+  de RWAdar son las de GitHub: la diaria y la que se hace antes de cada cambio
+  en la base. Sacar de ahí los datos personales (opción B) dejaría las cuentas
+  sin copia, o dependería de que el ordenador de Víctor esté encendido cada
+  noche.
+- **Es lo más barato que cierra el hueco.** GitHub Team cuesta 4 $ por
+  persona y mes (una persona). Supabase Pro, que sí hace copias, cuesta 25 $ al
+  mes y además no quitaría los flujos de GitHub.
+- **Casi no cambia nada.** Al pasar el repositorio a la organización se
+  conservan los secretos, los webhooks y el historial, y GitHub redirige las
+  direcciones antiguas. Los flujos de uso diario (copias, base, catálogo,
+  publicar, compilar y OTA) no llevan escrito el nombre del repositorio. Solo
+  lo llevan las pruebas antiguas de la 1.4.0 y la 1.4.1, que ya no se usan.
+  Team además sube los minutos de Actions de 2.000 a 3.000 al mes.
+- **RWAdar-downloads se queda en la cuenta personal.** Es público, solo
+  guarda el APK y no trata datos de usuarios. Las apps instaladas consultan su
+  dirección exacta, así que no conviene moverlo.
+
+Pasos (solo puede hacerlos Víctor, con su cuenta y su tarjeta; la sesión local
+de Claude con su Chrome puede hacer los clics):
+
+1. github.com › «+» › «New organization» › plan **Team**. Nombre: `rwadar`
+   (el 06/11 no existía ninguna cuenta con ese nombre). Tarjeta de Víctor.
+2. En la organización: Settings › «Terms of Service» › «Read the GitHub
+   Customer Agreement» › «Sign GitHub customer terms». Como nombre, «RWAdar
+   (Víctor Manuel Jorques Granero)». Apuntar la fecha abajo y guardar en esta
+   carpeta un PDF de la página de condiciones aceptadas.
+3. En `victorJorques/RWADAR`: Settings › «Danger Zone» › «Transfer» ›
+   `rwadar`.
+4. Instalar en la organización las apps que usa el proyecto (Claude y Codex)
+   con acceso a `rwadar/RWADAR`. En cada copia local:
+   `git remote set-url origin https://github.com/rwadar/RWADAR`.
+5. Lanzar «Copia de seguridad» a mano y comprobar que sale en verde.
+
+Mientras tanto, las copias siguen funcionando como hasta ahora. Pararlas sería
+peor para los usuarios: con Supabase gratuito no habría ninguna otra copia.
 
 ## Lettermint
 
@@ -148,7 +197,8 @@ Mail y Apple (push en iPhone, sin app publicada).
 
 1. **Firebase.** ✅ Hecho el 06/11/2026: proyecto `rwadar-14e3d`, condiciones
    aceptadas en la consola.
-2. **GitHub.** Elegir una de dos:
+2. **GitHub.** **Decidido el 06/11: opción A, GitHub Team** (ver «GitHub ·
+   hueco», arriba, con los pasos). Las dos opciones eran:
    - **A. Firmar el contrato de GitHub.** Pasar el repositorio a una
      organización con GitHub Team (de pago) y aceptar allí el «GitHub Customer
      Agreement», que incluye el DPA. Según la ayuda de GitHub, se hace en la
@@ -179,7 +229,7 @@ Mail y Apple (push en iPhone, sin app publicada).
 |---|---|---|
 | Google Firebase | **06/11/2026** | Aceptadas en la consola al crear el proyecto `rwadar-14e3d` |
 | Lettermint | **pendiente** | Crear la cuenta |
-| GitHub | **pendiente (sin contrato)** | Opción A o B de arriba |
+| GitHub | **pendiente**: organización `rwadar` con GitHub Team | Firmar el «GitHub Customer Agreement» en la organización |
 
 ---
 
