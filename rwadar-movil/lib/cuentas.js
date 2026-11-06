@@ -4,7 +4,7 @@
    guardan cifrados en SecureStore para restaurar tras reiniciar. Nunca se guarda
    la contraseña. Confirmación y recuperación siguen en la web oficial. */
 const { crearAlmacenSesion } = require('./almacen-sesion');
-const { VERSION_AVISOS } = require('./avisos-cuenta');
+const { VERSION_AVISOS, idiomaAvisos } = require('./avisos-cuenta');
 const REDIRECT_CUENTAS = 'https://rwadar.pages.dev/';
 const URL_CUENTAS = 'https://exgpmjpaaebyoolpwced.supabase.co';
 // Clave publicable, igual que la del lector de catálogo. No es una credencial.
@@ -368,7 +368,7 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
       if (!destruido) { oyentes.add(oyente); oyente(estado()); }
       return () => oyentes.delete(oyente);
     },
-    registrar({ correo, clave, nombre = '', aceptaCondiciones, avisosNovedades: pideAvisos } = {}) {
+    registrar({ correo, clave, nombre = '', aceptaCondiciones, avisosNovedades: pideAvisos, idioma } = {}) {
       return ejecutar('registrar', async actual => {
         const email = correoValido(correo), nombreLimpio = nombreValido(nombre, true);
         if (typeof clave !== 'string' || clave.length < 12 || clave.length > 256) throw fallo('clave_corta');
@@ -376,9 +376,11 @@ function crearControladorCuentas({ modoLocal = true, cuentasRemotas = false, cor
         const datos = { nombre: nombreLimpio };
         // Casilla de avisos: solo con el interruptor encendido y marcada de
         // verdad (booleano estricto). La base guarda el permiso solo cuando se
-        // confirma el correo y con la versión vigente del texto.
+        // confirma el correo y con la versión vigente del texto, y con él el
+        // idioma en que se vio ('es' o 'en').
         if (avisosNovedades === true && pideAvisos === true) {
-          Object.assign(datos, { avisos_novedades: true, avisos_version: VERSION_AVISOS, avisos_canal: 'app' });
+          Object.assign(datos, { avisos_novedades: true, avisos_version: VERSION_AVISOS, avisos_canal: 'app',
+            avisos_idioma: idiomaAvisos(idioma) });
         }
         const cliente = clienteNuevo();
         await pedir(cliente.auth.signUp({ email, password: clave,

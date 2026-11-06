@@ -519,7 +519,7 @@
   ". Escribe un nombre para filtrar la lista.": ". Type a name to filter the list.",
   "Actualizar mi lista": "Refresh my list",
   "Cerrar sesión": "Sign out",
-  "La baja elimina tu perfil y tu lista de seguimiento de la cuenta. No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.": "Deletion removes your profile and account watchlist. It does not delete local favourites or Academy progress. This cannot be undone.",
+  "Borrar la cuenta elimina tu perfil, tu lista de seguimiento y tus avisos (permiso y móviles registrados). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.": "Deleting the account removes your profile, your watchlist and your notices (consent and registered phones). It does not delete local favourites or Academy progress. This cannot be undone.",
   "Contraseña actual": "Current password",
   "Escribe BORRAR": "Type BORRAR",
   "Confirmar borrado de cuenta": "Confirm account deletion",
@@ -1802,7 +1802,7 @@
   "Avisos de novedades": "News notices",
   "Avisos de novedades (correo y móvil)": "News notices (email and phone)",
   "Notificaciones en este móvil": "Notifications on this phone",
-  "Avisos de novedades activados. Puedes darte de baja aquí o en cada aviso.": "News notices turned on. You can unsubscribe here or in every notice.",
+  "Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.": "News notices turned on. You can unsubscribe here or with the link in every email.",
   "Avisos de novedades desactivados. Ya no recibirás correos ni notificaciones de novedades.": "News notices turned off. You will no longer receive news emails or notifications.",
   "Para activarlos, actualiza la app: el texto del permiso ha cambiado.": "To turn them on, update the app: the consent text has changed.",
   "No se pudo guardar el cambio. Comprueba la conexión e inténtalo de nuevo.": "The change could not be saved. Check your connection and try again.",
@@ -1816,7 +1816,7 @@
   "Las notificaciones en el móvil todavía no están activas. Mientras tanto, verás los avisos en Inicio.": "Phone notifications are not active yet. Meanwhile, you will see notices in Home.",
   "Este dispositivo no puede recibir notificaciones de RWAdar.": "This device cannot receive RWAdar notifications.",
   "Este móvil ha dejado de recibir las notificaciones de RWAdar. Vuelve a activarlas para recibirlas.": "This phone no longer receives RWAdar notifications. Turn them on again to receive them.",
-  "Al activarlas, el sistema te pedirá permiso. Se guarda en tu cuenta un identificador de entrega de este móvil, que se borra al desactivarlas o al cerrar sesión.": "When you turn them on, the system will ask for permission. A delivery identifier for this phone is stored in your account and deleted when you turn them off or sign out.",
+  "Al activarlas, el sistema te pedirá permiso. Guardamos en tu cuenta un identificador de este móvil para entregarte las notificaciones (lo reciben Expo y Google). Se borra al desactivarlas, al cerrar sesión con conexión, al borrar la cuenta o tras 180 días sin usar la app.": "When you turn them on, the system will ask for permission. We store an identifier for this phone in your account to deliver notifications to you (Expo and Google receive it). It is deleted when you turn them off, when you sign out while online, when you delete your account or after 180 days without using the app.",
   "Este móvil recibe las notificaciones de RWAdar.": "This phone receives RWAdar notifications.",
   "Este móvil solo recibe avisos de servicio, como la bienvenida. Activa «Avisos de novedades» para recibir también las novedades.": "This phone only receives service notices, such as the welcome. Turn on «News notices» to receive news as well.",
   "El envío por correo y al móvil todavía no está activo. Mientras tanto, los avisos se ven en Inicio.": "Sending by email and to phones is not active yet. Meanwhile, notices are shown in Home.",
@@ -1853,7 +1853,16 @@
   "Avisos de novedades desactivados.": "News notices turned off.",
   "No se han activado los avisos de novedades. Vuelve a intentarlo.": "News notices weren't turned on. Please try again.",
   "No se ha podido confirmar la baja de los avisos de novedades. Vuelve a intentarlo.": "We couldn't confirm that news notices were turned off. Please try again.",
-  "Guardada en tu lista. Seguir una plataforma no envía avisos.": "Saved to your list. Following a platform doesn't send notices."
+  "Guardada en tu lista. Seguir una plataforma no envía avisos.": "Saved to your list. Following a platform doesn't send notices.",
+  // Revisión legal del 06/11/2026: casilla v2, información básica, baja desde Inicio y canales de Android.
+  "Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en Privacidad.": "I want to receive RWAdar notices by email and, if I enable them on my phone, as notifications: new listings on the radar and news about the website and the app. It's optional: the Academy unlocks anyway. You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your phone settings. More information in Privacy.",
+  "Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Brevo y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; también puedes reclamar ante la AEPD. Más información en Privacidad.": "Basic information about your data. Controller: Víctor Manuel Jorques Granero (RWAdar). Data: your email, your password and, if you give it, your name; with notices, also your consent and, if you turn on notifications, a delivery identifier for your phone. Purpose: your account, which also opens the Academy, and, only if you tick the notices box, sending you those notices. Legal basis: the service you request (account) and your consent (notices), which you can withdraw at any time without affecting what came before. Providers: Supabase, Cloudflare and Google; for notices, Brevo and Expo. Some process data outside the EU with safeguards. Rights: access, rectification, erasure, objection, restriction and portability, in Profile or at RWAdar@protonmail.com; you can also complain to the AEPD (Spanish Data Protection Agency). More information in Privacy.",
+  "¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.": "Don't want these notices? Turn them off in Profile or in your phone settings.",
+  "Abre Perfil › Avisos": "Opens Profile › Alerts",
+  "Avisos de tu cuenta": "Account notices",
+  "Avisos de servicio de tu cuenta, como la bienvenida.": "Service notices about your account, such as the welcome.",
+  "Novedades de RWAdar": "RWAdar news",
+  "Fichas nuevas en el radar y novedades de la web y la app.": "New listings on the radar and news about the website and the app."
 };
 if(typeof module==='object'&&module.exports)module.exports=Object.freeze(diccionario);else raiz.RWAdarEnglish=Object.freeze(diccionario);
 })(typeof globalThis==='object'?globalThis:this);

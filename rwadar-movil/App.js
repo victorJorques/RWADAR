@@ -59,6 +59,7 @@ import { enSeleccionOferta } from './lib/transparencia';
 import { esNueva, ordenarMasNuevas } from './lib/recien-anadidas';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
+const URL_PRIVACIDAD_AVISOS = `${URL_PRIVACIDAD}#avisos-novedades`;
 const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
 const USUARIO_LOCAL = MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true;
 // Las cuentas son independientes del seguimiento y los avisos de instalaciones.
@@ -140,6 +141,8 @@ export default function App() {
   const [abierta, setAbierta] = useState(null);
   const [ofertaAbierta, setOfertaAbierta] = useState(null);
   const [inversionInicial, setInversionInicial] = useState(null);
+  // «¿No quieres estos avisos?» de Inicio: Perfil baja hasta Avisos y lo consume.
+  const [enfocarAvisosPerfil, setEnfocarAvisosPerfil] = useState(false);
   const [explicando, setExplicando] = useState(false);
   // Pestaña Academy: '' muestra la lista de lecciones; un slug, esa lección.
   const [leccion, setLeccion] = useState('');
@@ -634,6 +637,14 @@ export default function App() {
     const destino = destinoAviso(aviso);
     if (destino) irA(destino.destino, destino.url);
   };
+  /* Enlace de baja de la tarjeta «Avisos»: lleva a Perfil › Avisos, donde
+     están los dos interruptores. */
+  const irAAvisosPerfil = () => {
+    tacto.eleccion();
+    setAbierta(null); setOfertaAbierta(null);
+    setEnfocarAvisosPerfil(true);
+    setPestana('perfil');
+  };
   const ofertaPorSlug = useMemo(() => new Map(
     [...ofertas, ...secundario, ...enCamino].map((o) => [o.slug, o])), [ofertas, secundario, enCamino]);
   const ofertasGuardadasVisibles = useMemo(() => guardadas
@@ -776,7 +787,8 @@ export default function App() {
               tarjetaAvisos={AVISOS_NOVEDADES_ACTIVOS ? (
                 <TarjetaAvisosInicio avisos={novedadesCuenta.avisos} leidos={novedadesCuenta.leidos}
                   cargando={novedadesCuenta.cargando} error={novedadesCuenta.errorCarga}
-                  onAbrir={abrirAvisoInicio} onMarcarLeidos={novedadesCuenta.marcarTodosLeidos} />
+                  onAbrir={abrirAvisoInicio} onMarcarLeidos={novedadesCuenta.marcarTodosLeidos}
+                  onDesactivar={irAAvisosPerfil} />
               ) : null}
             />
           ) : null}
@@ -1084,6 +1096,8 @@ export default function App() {
               onBorrar={confirmarBorrado}
               inversionInicial={inversionInicial}
               onConsumirInversion={() => setInversionInicial(null)}
+              enfocarAvisos={enfocarAvisosPerfil}
+              onAvisosEnfocados={() => setEnfocarAvisosPerfil(false)}
               idioma={idioma}
               textosVersion={actualizacion.activo ? textosActualizacion(actualizacion.resumen,
                 { idioma, versionInstalada: actualizacion.versionInstalada }) : null}
@@ -1093,7 +1107,7 @@ export default function App() {
               panelNovedades={AVISOS_NOVEDADES_ACTIVOS ? (
                 <PanelAvisosNovedades estado={novedadesCuenta} onAlternarNovedades={novedadesCuenta.alternarNovedades}
                   onAlternarMovil={novedadesCuenta.alternarMovil} onAjustes={abrirAjustes}
-                  onReintentar={novedadesCuenta.recargar} />
+                  onReintentar={novedadesCuenta.recargar} onPrivacidad={() => abrirEnlace(URL_PRIVACIDAD_AVISOS)} />
               ) : null}
             />
           ) : null}
@@ -1273,8 +1287,23 @@ function PantallaPerfil({
   refrescando, borrando, onActualizar, onAbrirEmpresa, onAbrirOferta, onExplorar, onActivarAvisos, onAjustes,
   onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar, inversionInicial, onConsumirInversion,
   idioma, textosVersion, comprobandoVersion, onActualizarApp, avisosNovedades = false, panelNovedades = null,
+  enfocarAvisos = false, onAvisosEnfocados,
 }) {
   const total = seguidas.length + ofertasGuardadas.length;
+  /* Desde el enlace de baja de Inicio: se baja hasta Avisos cada vez que se
+     mide (lo de arriba, como Mis inversiones, puede crecer al cargar) hasta
+     que la persona desliza o pasa un momento. */
+  const desplazamiento = useRef(null);
+  useEffect(() => {
+    if (!enfocarAvisos) return undefined;
+    const reloj = setTimeout(() => onAvisosEnfocados?.(), 1500);
+    return () => clearTimeout(reloj);
+  }, [enfocarAvisos]);
+  const medirAvisos = (evento) => {
+    const y = evento?.nativeEvent?.layout?.y;
+    if (!enfocarAvisos || !Number.isFinite(y)) return;
+    desplazamiento.current?.scrollTo?.({ y: Math.max(0, y - 12), animated: false });
+  };
   const usuarioCartera = estadoCuenta?.estado === 'autenticada' ? estadoCuenta.usuario?.id : null;
   const [carteraRemota, setCarteraRemota] = useState(null);
   const carteraCuenta = carteraRemota?.usuarioId === usuarioCartera ? carteraRemota.adaptador : null;
@@ -1286,8 +1315,10 @@ function PantallaPerfil({
   }, [cuenta, usuarioCartera]);
   return (
     <ScrollView
+      ref={desplazamiento}
       contentContainerStyle={e.masCuerpo}
       keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag"
+      onScrollBeginDrag={enfocarAvisos ? onAvisosEnfocados : undefined}
       refreshControl={<RefreshControl refreshing={refrescando} onRefresh={onActualizar} tintColor={C.senal} />}
     >
       {estadoCuenta?.estado === 'autenticada' && estadoCuenta.usuario?.id ? (
@@ -1352,7 +1383,7 @@ function PantallaPerfil({
       {/* Con AVISOS_NOVEDADES_REMOTOS, Perfil › Avisos son los dos interruptores
           de la cuenta; sin él, la tarjeta «Próximamente» de siempre. */}
       {panelNovedades ? (
-        <View style={e.grupoSeccion}>
+        <View style={e.grupoSeccion} onLayout={medirAvisos}>
           <Text style={e.grupoTitulo}>Avisos</Text>
           {panelNovedades}
         </View>

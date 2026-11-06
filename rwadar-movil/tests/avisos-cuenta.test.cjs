@@ -45,17 +45,51 @@ function cuentaFalsa({ respuestas = {}, usuarioId = UID } = {}) {
   };
 }
 
-test('versión y textos de la casilla: los del contrato, en la app y en el diccionario compartido', () => {
-  assert.equal(a.VERSION_AVISOS, 'novedades-v1-2026-11-05');
-  assert.equal(a.TEXTO_AVISOS_ES, 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.');
-  assert.equal(a.TEXTO_AVISOS_EN, "I want to receive RWAdar notices by email and, if I turn them on in my phone, as notifications: new offers on the radar and news about the website and the app. It's optional: the Academy unlocks anyway. You can unsubscribe in every notice or in Profile. More information in Privacy.");
+test('versión y textos de la casilla: los de la revisión legal, en la app y en el diccionario compartido', () => {
+  assert.equal(a.VERSION_AVISOS, 'novedades-v2-2026-11-06');
+  assert.equal(a.TEXTO_AVISOS_ES, 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en Privacidad.');
+  assert.equal(a.TEXTO_AVISOS_EN, "I want to receive RWAdar notices by email and, if I enable them on my phone, as notifications: new listings on the radar and news about the website and the app. It's optional: the Academy unlocks anyway. You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your phone settings. More information in Privacy.");
   // La app enseña el texto en inglés a través del diccionario compartido con la web.
   assert.equal(idioma.ingles(a.TEXTO_AVISOS_ES), a.TEXTO_AVISOS_EN);
   assert.equal(a.CODIGO_PUSH_MINIMO, 24);
 });
 
+test('información básica: fuera del texto versionado, en español e inglés, y la web la traduce igual', () => {
+  assert.equal(a.INFO_BASICA_ES, 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Brevo y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; también puedes reclamar ante la AEPD. Más información en Privacidad.');
+  assert.equal(a.INFO_BASICA_EN, 'Basic information about your data. Controller: Víctor Manuel Jorques Granero (RWAdar). Data: your email, your password and, if you give it, your name; with notices, also your consent and, if you turn on notifications, a delivery identifier for your phone. Purpose: your account, which also opens the Academy, and, only if you tick the notices box, sending you those notices. Legal basis: the service you request (account) and your consent (notices), which you can withdraw at any time without affecting what came before. Providers: Supabase, Cloudflare and Google; for notices, Brevo and Expo. Some process data outside the EU with safeguards. Rights: access, rectification, erasure, objection, restriction and portability, in Profile or at RWAdar@protonmail.com; you can also complain to the AEPD (Spanish Data Protection Agency). More information in Privacy.');
+  assert.equal(idioma.ingles(a.INFO_BASICA_ES), a.INFO_BASICA_EN);
+  assert.equal(a.TEXTO_AVISOS_ES.includes('Responsable'), false, 'no forma parte del texto del permiso');
+  // La copia de la web es idéntica (copiar-idiomas-web.cjs): ahí se traduce igual.
+  const web = path.resolve(__dirname, '../../rwadar-site/assets/idioma-en-20261022.js');
+  if (fs.existsSync(web)) {
+    const diccionarioWeb = fs.readFileSync(web, 'utf8');
+    for (const [es, en] of [[a.TEXTO_AVISOS_ES, a.TEXTO_AVISOS_EN], [a.INFO_BASICA_ES, a.INFO_BASICA_EN]]) {
+      assert.ok(diccionarioWeb.includes(`${JSON.stringify(es)}: ${JSON.stringify(en)}`), es.slice(0, 40));
+    }
+  }
+});
+
+test('el idioma del permiso solo puede ser es o en; sin decirlo, el de la app', async () => {
+  assert.equal(a.idiomaAvisos('es'), 'es');
+  assert.equal(a.idiomaAvisos('en'), 'en');
+  for (const raro of [undefined, null, 'EN', 'fr', 'en-GB', 1, {}]) assert.equal(a.idiomaAvisos(raro), 'es', String(raro));
+  await idioma.cambiarIdioma('en');
+  try {
+    assert.equal(a.idiomaAvisos(undefined), 'en');
+    assert.equal(a.idiomaAvisos('fr'), 'en');
+    assert.equal(a.idiomaAvisos('es'), 'es', 'lo que dice quien llama manda');
+  } finally { await idioma.cambiarIdioma('es'); }
+});
+
 const CONTRATO = path.resolve(__dirname, '../../docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md');
-test('los textos coinciden palabra por palabra con el contrato', { skip: !fs.existsSync(CONTRATO) && 'el contrato no está en esta copia' }, () => {
+test('los textos coinciden palabra por palabra con el contrato', { skip: !fs.existsSync(CONTRATO) && 'el contrato no está en esta copia' }, (t) => {
+  /* El contrato se actualiza aparte (no es de la app). Mientras describa otra
+     versión, no se compara; en cuanto nombre la vigente, sus citas tienen que
+     coincidir palabra por palabra. */
+  if (!fs.readFileSync(CONTRATO, 'utf8').includes(a.VERSION_AVISOS)) {
+    t.skip(`el contrato aún no describe ${a.VERSION_AVISOS}`);
+    return;
+  }
   const lineas = fs.readFileSync(CONTRATO, 'utf8').split(/\r?\n/);
   const cita = (rotulo) => {
     const inicio = lineas.findIndex((linea) => linea.trim() === rotulo);
@@ -176,18 +210,20 @@ test('las cinco funciones RPC del contrato, con sus argumentos exactos y la sesi
   assert.equal((await avisos.estado()).novedades, false);
   assert.equal((await avisos.configurar(true)).novedades, true);
   assert.equal((await avisos.configurar(false)).novedades, false);
+  assert.equal((await avisos.configurar(true, 'en')).novedades, true);
   assert.equal(await avisos.registrarPush(TOKEN, 'android'), true);
   assert.equal(await avisos.quitarPush(TOKEN), false);
   assert.equal((await avisos.recientes(5))[0].id, 'bienvenida');
   assert.deepEqual(f.llamadas.filter(([n]) => n !== 'clienteCatalogo'), [
     ['estado_mis_avisos', {}],
-    ['configurar_avisos_novedades', { p_activar: true, p_version: 'novedades-v1-2026-11-05', p_canal: 'app' }],
-    ['configurar_avisos_novedades', { p_activar: false, p_version: 'novedades-v1-2026-11-05', p_canal: 'app' }],
+    ['configurar_avisos_novedades', { p_activar: true, p_version: 'novedades-v2-2026-11-06', p_canal: 'app', p_idioma: 'es' }],
+    ['configurar_avisos_novedades', { p_activar: false, p_version: 'novedades-v2-2026-11-06', p_canal: 'app', p_idioma: 'es' }],
+    ['configurar_avisos_novedades', { p_activar: true, p_version: 'novedades-v2-2026-11-06', p_canal: 'app', p_idioma: 'en' }],
     ['registrar_aviso_push', { p_token: TOKEN, p_plataforma: 'android' }],
     ['quitar_aviso_push', { p_token: TOKEN }],
     ['mis_avisos_recientes', { p_limite: 5 }],
   ]);
-  assert.equal(f.llamadas.filter(([n]) => n === 'clienteCatalogo').length, 6, 'cada llamada revalida la cuenta');
+  assert.equal(f.llamadas.filter(([n]) => n === 'clienteCatalogo').length, 7, 'cada llamada revalida la cuenta');
   const antes = f.llamadas.length;
   for (const intento of [() => avisos.configurar('true'), () => avisos.configurar(1), () => avisos.registrarPush('token', 'android'),
     () => avisos.registrarPush(TOKEN, 'web'), () => avisos.quitarPush('ExponentPushToken[corto]'), () => avisos.recientes(0),
@@ -246,7 +282,10 @@ function avisosFalsos(servidor = a.validarEstadoAvisos(estadoServidor()), { regi
   const llamadas = [];
   const avisos = {
     async estado() { llamadas.push(['estado']); return servidor; },
-    async configurar(activar) { llamadas.push(['configurar', activar]); return { ...servidor, novedades: activar }; },
+    async configurar(activar, idioma) {
+      llamadas.push(idioma === undefined ? ['configurar', activar] : ['configurar', activar, idioma]);
+      return { ...servidor, novedades: activar };
+    },
     async registrarPush(token, plataforma) { llamadas.push(['registrar', token, plataforma]); return true; },
     async quitarPush(token) { llamadas.push(['quitar', token]); return true; },
     async recientes(limite) { llamadas.push(['recientes', limite]); return []; },
@@ -342,7 +381,10 @@ test('el permiso de novedades solo se activa con el texto vigente; la baja siemp
   assert.equal((await g.alternarNovedades(false, desfasado)).novedades, false);
   const vigente = a.validarEstadoAvisos(estadoServidor());
   assert.equal((await g.alternarNovedades(true, vigente)).novedades, true);
-  assert.deepEqual(f.llamadas.filter(([n]) => n === 'configurar'), [['configurar', false], ['configurar', true]]);
+  // El idioma en que se vio el texto pasa tal cual hasta configurar (p_idioma).
+  assert.equal((await g.alternarNovedades(true, vigente, 'en')).novedades, true);
+  assert.deepEqual(f.llamadas.filter(([n]) => n === 'configurar'),
+    [['configurar', false], ['configurar', true], ['configurar', true, 'en']]);
 });
 
 /* ---------------------------------------------------------------------

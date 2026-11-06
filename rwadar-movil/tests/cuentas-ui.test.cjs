@@ -8,6 +8,7 @@ const babel = require('@babel/core');
 const commonjs = require('@babel/plugin-transform-modules-commonjs');
 const jsx = require('@babel/plugin-transform-react-jsx');
 const {soporteIdioma}=require('./soporte-idioma.cjs');
+const idioma = require('../lib/idioma');
 
 const RAIZ = path.resolve(__dirname, '..');
 const ARCHIVO = path.join(RAIZ, 'componentes', 'Cuenta.js');
@@ -226,7 +227,9 @@ test('un nombre de usuario que coincide con un rótulo y su correo conservan con
 
 test('borrar cuenta exige contraseña nueva en pantalla y BORRAR; cancelar no da la baja', async () => {
   const p = pantalla(autenticada); await p.pulsar('Borrar mi cuenta');
-  assert.match(p.texto(), /No se puede deshacer/);
+  assert.ok(p.texto().includes('Borrar la cuenta elimina tu perfil, tu lista de seguimiento y tus avisos (permiso y móviles registrados). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.'));
+  assert.equal(idioma.ingles('Borrar la cuenta elimina tu perfil, tu lista de seguimiento y tus avisos (permiso y móviles registrados). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.'),
+    'Deleting the account removes your profile, your watchlist and your notices (consent and registered phones). It does not delete local favourites or Academy progress. This cannot be undone.');
   await p.pulsar('Confirmar borrado de cuenta'); assert.match(p.texto(), /Escribe tu contraseña/);
   p.campo('Contraseña actual', 'clave de prueba local');
   p.campo('Escribe BORRAR', 'borrar'); await p.pulsar('Confirmar borrado de cuenta');
@@ -264,9 +267,11 @@ test('estado ocupado deshabilita envíos, conserva una salida y anuncia el error
 test('los enlaces legales no llevan contraseñas, tokens ni parámetros de sesión', async () => {
   const p = pantalla(); await p.pulsar('Crear una cuenta gratis');
   await p.pulsar('Leer condiciones'); await p.pulsar('Leer privacidad');
+  // Las condiciones viven en la sección #condiciones de la privacidad (/condiciones da 404).
   assert.deepEqual(p.llamadas.filter(([n]) => n === 'enlace').map(([, url]) => url), [
-    'https://rwadar.pages.dev/condiciones', 'https://rwadar.pages.dev/privacidad',
+    'https://rwadar.pages.dev/privacidad#condiciones', 'https://rwadar.pages.dev/privacidad',
   ]);
+  assert.doesNotMatch(fs.readFileSync(ARCHIVO, 'utf8'), /pages\.dev\/condiciones/);
 });
 
 test('todos los botones reales tienen diana mínima de 48 y etiquetas accesibles', () => {
@@ -326,7 +331,7 @@ function seccionesPerfil() {
   const entorno = {
     React: { createElement: (type, props, ...children) => ({ type, props: props || {}, children }) },
     useState: inicial => [typeof inicial === 'function' ? inicial() : inicial, () => {}],
-    useEffect() {},
+    useEffect() {}, useRef: inicial => ({ current: inicial }),
     StyleSheet: { create: (s) => s }, T: tema.T, C: colores, MODO_LOCAL: false, USUARIO_LOCAL: true,
   };
   for (const nombre of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono',

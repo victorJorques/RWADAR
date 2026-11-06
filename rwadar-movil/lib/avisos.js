@@ -5,13 +5,23 @@ import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import { MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, AVISOS_NOVEDADES_REMOTOS } from './modo-local';
 import { aperturaDesdeDatosAviso, capacidadPushNativa, tokenPushValido } from './avisos-cuenta';
+import { traducir } from './idioma';
 
 const SERVICIOS_ACTIVOS = !MODO_LOCAL && SERVICIOS_USUARIO_REMOTOS === true;
 // Avisos de novedades de la cuenta (contrato del 05/11/2026). Independientes
 // de las instalaciones antiguas, que siguen cerradas.
 const NOVEDADES_ACTIVAS = !MODO_LOCAL && AVISOS_NOVEDADES_REMOTOS === true;
-// El mismo canal que usa la base al enviar (`channelId: 'novedades'`).
-const CANAL_NOVEDADES = 'novedades';
+/* Dos canales de Android, con los mismos `channelId` con que envía la base:
+   «cuenta» para los avisos de servicio (la bienvenida) y «novedades» para los
+   anuncios. Así, quien desactiva las novedades en los ajustes del móvil o
+   desde la propia notificación no deja de recibir los avisos de su cuenta, y
+   al revés. Solo se crean en binarios con capacidad push (1.4.2 o posterior). */
+export const CANALES_AVISOS = Object.freeze([
+  Object.freeze({ id: 'cuenta', nombre: 'Avisos de tu cuenta',
+    descripcion: 'Avisos de servicio de tu cuenta, como la bienvenida.' }),
+  Object.freeze({ id: 'novedades', nombre: 'Novedades de RWAdar',
+    descripcion: 'Fichas nuevas en el radar y novedades de la web y la app.' }),
+]);
 let moduloSupabase = SERVICIOS_ACTIVOS ? require('./supabase') : null;
 function supabaseRemoto() {
   if (!SERVICIOS_ACTIVOS) throw new Error('Los servicios remotos de usuario están desactivados');
@@ -301,13 +311,18 @@ export async function obtenerTokenNovedades({ solicitarPermiso = false } = {}) {
     const previo = entornoPushNovedades();
     if (previo) return previo;
     /* Android 13 no muestra el permiso ni entrega token hasta que existe al
-       menos un canal, según la documentación versionada de SDK 57. */
+       menos un canal, según la documentación versionada de SDK 57. Se crean
+       (o se actualizan, con el idioma de la app) los dos antes de pedirlo, y
+       también al renovar: así un móvil ya activo recibe el canal que le falte. */
     if (Platform.OS === 'android') {
-      await Notifications.setNotificationChannelAsync(CANAL_NOVEDADES, {
-        name: 'Novedades de RWAdar',
-        importance: Notifications.AndroidImportance.DEFAULT,
-        lightColor: '#25E39A',
-      });
+      for (const canal of CANALES_AVISOS) {
+        await Notifications.setNotificationChannelAsync(canal.id, {
+          name: traducir(canal.nombre),
+          description: traducir(canal.descripcion),
+          importance: Notifications.AndroidImportance.DEFAULT,
+          lightColor: '#25E39A',
+        });
+      }
     }
     let permiso = await Notifications.getPermissionsAsync();
     if (!permisoConcedido(permiso)) {

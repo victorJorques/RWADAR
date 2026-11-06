@@ -3,9 +3,10 @@ import { ActivityIndicator, StyleSheet } from 'react-native';
 import { Pressable, Text, View } from './Idioma';
 import { C, F, R, T, UI } from '../lib/tema';
 import {
-  TEXTO_AVISOS_ES, crearAvisosCuenta, crearGestorAvisosNovedades, quitarPushConCliente,
+  INFO_BASICA_ES, TEXTO_AVISOS_ES, crearAvisosCuenta, crearGestorAvisosNovedades, quitarPushConCliente,
 } from '../lib/avisos-cuenta';
 import { capacidadPushNovedades, consultarPushNovedades, obtenerTokenNovedades } from '../lib/avisos';
+import { obtenerIdioma } from '../lib/idioma';
 import {
   avisosLeidos, marcarAvisosLeidos, tokenPushNovedades, guardarTokenPushNovedades, borrarTokenPushNovedades,
   renovacionPushNovedades, marcarRenovacionPushNovedades,
@@ -22,7 +23,8 @@ import {
      segundo explica que llega con la 1.4.2 y no toca el SDK.
    - Inicio: tarjeta «Avisos» con los últimos y un punto de no leído,
      guardado en este dispositivo y por cuenta. Enseña los 3 primeros y
-     «Ver todos (N)» despliega los demás cargados en la misma tarjeta.
+     «Ver todos (N)» despliega los demás cargados en la misma tarjeta. Debajo,
+     «¿No quieres estos avisos?…» lleva a Perfil › Avisos.
    - Al cargar, si este móvil está activo, renueva su registro en la base
      como mucho una vez al día, sin pedir permiso (la base borra los que no
      se renuevan en 180 días).
@@ -35,7 +37,7 @@ const ALMACEN = {
 };
 
 const MENSAJES = {
-  novedadesOn: 'Avisos de novedades activados. Puedes darte de baja aquí o en cada aviso.',
+  novedadesOn: 'Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.',
   novedadesOff: 'Avisos de novedades desactivados. Ya no recibirás correos ni notificaciones de novedades.',
   desfasado: 'Para activarlos, actualiza la app: el texto del permiso ha cambiado.',
   error: 'No se pudo guardar el cambio. Comprueba la conexión e inténtalo de nuevo.',
@@ -46,6 +48,12 @@ const MENSAJES = {
   movilError: 'No se pudieron activar las notificaciones en este móvil. Inténtalo más tarde.',
   noRegistrado: 'Este móvil ha dejado de recibir las notificaciones de RWAdar. Vuelve a activarlas para recibirlas.',
 };
+
+// Qué se guarda al activar «Notificaciones en este móvil», quién lo recibe y
+// cuándo se borra (revisión legal del 06/11/2026).
+const TEXTO_MOVIL = 'Al activarlas, el sistema te pedirá permiso. Guardamos en tu cuenta un identificador de este móvil para entregarte las notificaciones (lo reciben Expo y Google). Se borra al desactivarlas, al cerrar sesión con conexión, al borrar la cuenta o tras 180 días sin usar la app.';
+// Enlace de baja de la tarjeta «Avisos» de Inicio.
+const TEXTO_DESACTIVAR = '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.';
 
 const INICIAL = Object.freeze({ servidor: null, movil: null, avisos: [], leidos: [], cargando: false,
   errorCarga: '', procesando: '', mensaje: '', error: '' });
@@ -122,7 +130,8 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
     const activar = !servidor.novedades;
     actualizar(vuelta, { procesando: 'novedades', mensaje: '', error: '' });
     try {
-      const nuevo = await g.alternarNovedades(activar, servidor);
+      // Con el permiso se guarda el idioma en que se ha visto su texto.
+      const nuevo = await g.alternarNovedades(activar, servidor, obtenerIdioma());
       actualizar(vuelta, { servidor: nuevo, procesando: '', mensaje: activar ? MENSAJES.novedadesOn : MENSAJES.novedadesOff });
     } catch (error) {
       actualizar(vuelta, { procesando: '', error: error?.code === 'avisos_texto_desfasado' ? MENSAJES.desfasado : MENSAJES.error });
@@ -192,7 +201,7 @@ function textoMovil(movil, servidor) {
     case 'no-registrado':
       return MENSAJES.noRegistrado;
     case 'disponible':
-      return 'Al activarlas, el sistema te pedirá permiso. Se guarda en tu cuenta un identificador de entrega de este móvil, que se borra al desactivarlas o al cerrar sesión.';
+      return TEXTO_MOVIL;
     case 'activo':
       return servidor?.novedades
         ? 'Este móvil recibe las notificaciones de RWAdar.'
@@ -229,8 +238,10 @@ function Boton({ texto, onPress }) {
   );
 }
 
-/* Perfil › Avisos. `estado` es lo que devuelve useAvisosNovedades. */
-export function PanelAvisosNovedades({ estado, onAlternarNovedades, onAlternarMovil, onAjustes, onReintentar }) {
+/* Perfil › Avisos. `estado` es lo que devuelve useAvisosNovedades.
+   `onPrivacidad`, si llega, abre la privacidad (segunda capa de la
+   información básica). */
+export function PanelAvisosNovedades({ estado, onAlternarNovedades, onAlternarMovil, onAjustes, onReintentar, onPrivacidad }) {
   const servidor = estado?.servidor, movil = estado?.movil;
   const procesando = estado?.procesando || '';
   if (!servidor) {
@@ -255,6 +266,9 @@ export function PanelAvisosNovedades({ estado, onAlternarNovedades, onAlternarMo
         ocupado={procesando === 'novedades'} onPress={onAlternarNovedades} />
       <Text style={s.permiso}>{TEXTO_AVISOS_ES}</Text>
       {!servidor.novedades && !servidor.textoVigente ? <Text style={s.nota}>{MENSAJES.desfasado}</Text> : null}
+      {/* Primera capa de información, fuera del texto versionado del permiso. */}
+      <Text style={s.nota}>{INFO_BASICA_ES}</Text>
+      {onPrivacidad ? <Boton texto="Leer privacidad" onPress={onPrivacidad} /> : null}
       {!servidor.correoActivo && !servidor.pushActivo
         ? <Text style={s.nota}>El envío por correo y al móvil todavía no está activo. Mientras tanto, los avisos se ven en Inicio.</Text>
         : !servidor.correoActivo ? <Text style={s.nota}>El envío por correo todavía no está activo.</Text> : null}
@@ -262,6 +276,8 @@ export function PanelAvisosNovedades({ estado, onAlternarNovedades, onAlternarMo
       <Interruptor etiqueta="Notificaciones en este móvil" activo={movil?.activo === true}
         deshabilitado={!!procesando || !puedeMovil} ocupado={procesando === 'movil'} onPress={onAlternarMovil} />
       {notaMovil ? <Text style={s.nota}>{notaMovil}</Text> : null}
+      {/* Volver a activarlas vuelve a guardar el identificador: se explica igual. */}
+      {movil?.estado === 'no-registrado' ? <Text style={s.nota}>{TEXTO_MOVIL}</Text> : null}
       {(movil?.estado === 'denegado' || movil?.estado === 'sin-permiso') && onAjustes
         ? <Boton texto="Abrir ajustes" onPress={onAjustes} /> : null}
       {estado.mensaje ? <Text style={s.mensaje}>{estado.mensaje}</Text> : null}
@@ -282,9 +298,11 @@ function fechaCorta(iso) {
    cargados dentro de la misma tarjeta y «Ver menos» la vuelve a plegar. El
    punto de la cabecera y «Marcar como leídos» cuentan todos los cargados,
    igual que la insignia de Inicio (`idsNoLeidos` de useAvisosNovedades):
-   todo lo que cuenta se puede ver, y marcar deja la insignia a cero. */
+   todo lo que cuenta se puede ver, y marcar deja la insignia a cero.
+   `onDesactivar` (Perfil › Avisos) pinta debajo de la lista cómo dejar de
+   recibirlos. */
 export function TarjetaAvisosInicio({ avisos = [], leidos = [], cargando = false, error = '', maximo = 3,
-  onAbrir, onMarcarLeidos }) {
+  onAbrir, onMarcarLeidos, onDesactivar }) {
   const [verTodos, setVerTodos] = useState(false);
   const plegable = avisos.length > maximo;
   const plegada = plegable && !verTodos;
@@ -331,6 +349,12 @@ export function TarjetaAvisosInicio({ avisos = [], leidos = [], cargando = false
           <Text style={s.b3Texto}>Marcar como leídos</Text>
         </Pressable>
       ) : null}
+      {typeof onDesactivar === 'function' ? (
+        <Pressable onPress={onDesactivar} accessibilityRole="link" accessibilityLabel={TEXTO_DESACTIVAR}
+          accessibilityHint="Abre Perfil › Avisos" style={({ pressed }) => [s.enlaceBaja, pressed && s.pulsado]}>
+          <Text style={s.enlace}>{TEXTO_DESACTIVAR}</Text>
+        </Pressable>
+      ) : null}
     </View>
   );
 }
@@ -370,4 +394,6 @@ const s = StyleSheet.create({
   fecha: { ...T.dato, color: C.tx3 },
   b3: { minHeight: UI.tactil, borderRadius: R.m, justifyContent: 'center', alignSelf: 'flex-start', paddingHorizontal: 8, marginHorizontal: -8 },
   b3Texto: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal },
+  enlaceBaja: { minHeight: UI.tactil, justifyContent: 'center' },
+  enlace: { ...T.menor, color: C.senal, textDecorationLine: 'underline' },
 });

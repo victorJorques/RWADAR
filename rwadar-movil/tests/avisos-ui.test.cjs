@@ -132,6 +132,7 @@ test('alta con el interruptor apagado: casilla de 18 años, sin casilla de aviso
     const p = alta(flag);
     await p.pulsar('Crear una cuenta gratis');
     assert.equal(boton(p.pintar(), avisosCuenta.TEXTO_AVISOS_ES), undefined);
+    assert.equal(texto(p.pintar()).includes(avisosCuenta.INFO_BASICA_ES), false, 'sin la información básica de los avisos');
     assert.match(texto(p.pintar()), /No te suscribes a publicidad ni a avisos/);
     assert.match(texto(p.pintar()), /Tengo 18 años o más, acepto las condiciones y he leído la privacidad\./);
     p.escribir('Correo', 'ana@ejemplo.test'); p.escribir('Contraseña · mínimo 12 caracteres', 'clave de prueba local');
@@ -146,7 +147,8 @@ test('alta con el interruptor apagado: casilla de 18 años, sin casilla de aviso
 });
 
 test('alta con el interruptor encendido: casilla opcional, sin marcar, con el texto exacto del contrato', async () => {
-  for (const marcar of [false, true]) {
+  for (const [marcar, idiomaApp] of [[false, 'es'], [true, 'es'], [true, 'en']]) {
+    await idioma.cambiarIdioma(idiomaApp);
     const p = alta(true);
     await p.pulsar('Crear una cuenta gratis');
     const casilla = boton(p.pintar(), avisosCuenta.TEXTO_AVISOS_ES);
@@ -154,6 +156,14 @@ test('alta con el interruptor encendido: casilla opcional, sin marcar, con el te
     assert.equal(casilla.props.accessibilityRole, 'checkbox');
     assert.equal(casilla.props.accessibilityState.checked, false, 'nace sin marcar');
     assert.ok(texto(casilla).includes(avisosCuenta.TEXTO_AVISOS_ES));
+    // Información básica junto a la casilla (lo siguiente que se pinta), fuera
+    // de su texto y de su etiqueta accesible.
+    const arbol = p.pintar(), orden = nodos(arbol);
+    const enArbol = boton(arbol, avisosCuenta.TEXTO_AVISOS_ES);
+    const info = orden.find((n) => n.type === 'Text' && texto(n) === avisosCuenta.INFO_BASICA_ES);
+    assert.ok(info, 'falta la información básica junto a la casilla');
+    assert.equal(texto(casilla).includes('Responsable'), false);
+    assert.equal(orden.indexOf(info), orden.indexOf(enArbol) + nodos(enArbol).length, 'justo después de la casilla');
     assert.match(texto(p.pintar()), /Los avisos de novedades solo llegan si marcas su casilla y confirmas el correo/);
     assert.doesNotMatch(texto(p.pintar()), /No te suscribes a publicidad ni a avisos/);
     p.escribir('Correo', 'ana@ejemplo.test'); p.escribir('Contraseña · mínimo 12 caracteres', 'clave de prueba local');
@@ -162,10 +172,12 @@ test('alta con el interruptor encendido: casilla opcional, sin marcar, con el te
     assert.equal(p.llamadas.length, 0, 'la casilla de avisos no sustituye a la de 18 años');
     await p.pulsar(EDAD);
     await p.pulsar('Crear cuenta');
+    // El idioma en que se ve la casilla viaja con el alta (avisos_idioma).
     assert.deepEqual(p.llamadas, [{ correo: 'ana@ejemplo.test', clave: 'clave de prueba local', nombre: '',
-      aceptaCondiciones: true, avisosNovedades: marcar }]);
+      aceptaCondiciones: true, avisosNovedades: marcar, idioma: idiomaApp }]);
     assert.match(texto(p.autenticar()), /ni activan avisos sobre cada empresa/);
   }
+  await idioma.cambiarIdioma('es');
 });
 
 /* ---------------------------------------------------------------------
@@ -217,13 +229,15 @@ function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), reciente
     },
   });
   let ultimo;
+  const enlaces = [];
   const pintar = () => {
     ultimo = h.pintar(() => modulo.useAvisosNovedades({ cuenta, usuarioId: UID }));
     return modulo.PanelAvisosNovedades({ estado: ultimo, onAlternarNovedades: ultimo.alternarNovedades,
-      onAlternarMovil: ultimo.alternarMovil, onAjustes: () => sdk.push('ajustes'), onReintentar: ultimo.recargar });
+      onAlternarMovil: ultimo.alternarMovil, onAjustes: () => sdk.push('ajustes'), onReintentar: ultimo.recargar,
+      onPrivacidad: () => enlaces.push('privacidad') });
   };
   const esperar = async () => { for (let i = 0; i < 12; i++) { await new Promise((r) => setImmediate(r)); pintar(); } return pintar(); };
-  return { modulo, rpc, sdk, local, pintar, esperar, estadoHook: () => ultimo, h,
+  return { modulo, rpc, sdk, local, pintar, esperar, estadoHook: () => ultimo, h, enlaces,
     cambiarRegistrado(valor) { registrado = valor; },
     async pulsar(etiqueta) { const b = boton(pintar(), etiqueta); assert.ok(b, `Falta ${etiqueta}`);
       assert.ok(!b.props.disabled, `${etiqueta} está deshabilitado`); b.props.onPress(); return esperar(); } };
@@ -238,14 +252,23 @@ test('Perfil con la 1.4.1 (código 23): el móvil anuncia la 1.4.2, no toca el S
   assert.equal(movil.props.accessibilityState.checked, false);
   assert.match(texto(panel), /Llegan con la versión 1\.4\.2 de la app/);
   assert.ok(texto(panel).includes(avisosCuenta.TEXTO_AVISOS_ES), 'enseña el texto del permiso');
+  // Información básica junto al interruptor, con su enlace a la privacidad.
+  assert.ok(nodos(panel).some((n) => n.type === 'Text' && texto(n) === avisosCuenta.INFO_BASICA_ES), 'falta la información básica');
+  boton(panel, 'Leer privacidad').props.onPress();
+  assert.deepEqual(p.enlaces, ['privacidad']);
   const novedades = boton(panel, 'Avisos de novedades (correo y móvil)');
   assert.equal(novedades.props.accessibilityState.checked, false);
   const activado = await p.pulsar('Avisos de novedades (correo y móvil)');
   assert.equal(boton(activado, 'Avisos de novedades (correo y móvil)').props.accessibilityState.checked, true);
-  assert.match(texto(activado), /Avisos de novedades activados/);
+  assert.ok(texto(activado).includes('Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.'));
   assert.deepEqual(p.rpc.find(([n]) => n === 'configurar_avisos_novedades'),
-    ['configurar_avisos_novedades', { p_activar: true, p_version: 'novedades-v1-2026-11-05', p_canal: 'app' }]);
-  const desactivado = await p.pulsar('Avisos de novedades (correo y móvil)');
+    ['configurar_avisos_novedades', { p_activar: true, p_version: 'novedades-v2-2026-11-06', p_canal: 'app', p_idioma: 'es' }]);
+  // Con la app en inglés, el permiso se guarda con p_idioma 'en' (también la baja).
+  await idioma.cambiarIdioma('en');
+  let desactivado;
+  try { desactivado = await p.pulsar('Avisos de novedades (correo y móvil)'); } finally { await idioma.cambiarIdioma('es'); }
+  assert.deepEqual(p.rpc.filter(([n]) => n === 'configurar_avisos_novedades')[1],
+    ['configurar_avisos_novedades', { p_activar: false, p_version: 'novedades-v2-2026-11-06', p_canal: 'app', p_idioma: 'en' }]);
   assert.match(texto(desactivado), /Avisos de novedades desactivados/);
   assert.deepEqual(p.sdk, [], 'por debajo del código 24 no se llama al SDK');
   assert.equal(p.rpc.some(([n]) => n === 'registrar_aviso_push'), false);
@@ -256,7 +279,7 @@ test('Perfil con la 1.4.2 (código 24): pide permiso solo al pulsar, registra el
   const p = perfil({ capacidad: true });
   let panel = await p.esperar();
   assert.deepEqual(p.sdk, ['consultar'], 'al abrir solo se consulta, sin pedir permiso');
-  assert.match(texto(panel), /el sistema te pedirá permiso/);
+  assert.ok(texto(panel).includes('Al activarlas, el sistema te pedirá permiso. Guardamos en tu cuenta un identificador de este móvil para entregarte las notificaciones (lo reciben Expo y Google). Se borra al desactivarlas, al cerrar sesión con conexión, al borrar la cuenta o tras 180 días sin usar la app.'));
   panel = await p.pulsar('Notificaciones en este móvil');
   assert.deepEqual(p.sdk[1], ['token', { solicitarPermiso: true }]);
   assert.deepEqual(p.rpc.find(([n]) => n === 'registrar_aviso_push'), ['registrar_aviso_push', { p_token: TOKEN, p_plataforma: 'android' }]);
@@ -347,6 +370,7 @@ test('Perfil: si la base dice que este móvil ya no está registrado, no sale co
   assert.equal(movil.props.accessibilityState.checked, false);
   assert.equal(movil.props.disabled, false, 'se puede volver a activar');
   assert.match(texto(panel), /Este móvil ha dejado de recibir las notificaciones de RWAdar/);
+  assert.match(texto(panel), /lo reciben Expo y Google/, 'volver a activarlas se explica igual');
   assert.equal(p.rpc.some(([n]) => n === 'registrar_aviso_push'), false);
   assert.deepEqual(p.rpc.find(([n]) => n === 'mi_aviso_push_registrado'), ['mi_aviso_push_registrado', { p_token: TOKEN }]);
   // Volver a activarlas lo registra de nuevo; con la base diciendo que sí, activo.
@@ -485,6 +509,28 @@ test('Inicio con 7 avisos: «Ver todos (7)» los enseña todos en la tarjeta y s
   p.h.desmontar(); q.h.desmontar();
 });
 
+const DESACTIVAR = '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.';
+test('Inicio: debajo de la lista, «¿No quieres estos avisos?» lleva a Perfil › Avisos', () => {
+  const pulsados = [];
+  for (const avisos of [avisosCuenta.validarAvisosRecientes(RECIENTES), []]) {
+    const t = tarjetaViva()({ avisos, leidos: [], onDesactivar: () => pulsados.push('perfil') });
+    const enlace = boton(t, DESACTIVAR);
+    assert.ok(enlace, 'falta el enlace de baja');
+    assert.equal(enlace.props.accessibilityRole, 'link');
+    assert.equal(enlace.props.accessibilityHint, 'Abre Perfil › Avisos');
+    assert.ok(texto(enlace).includes(DESACTIVAR));
+    const estilos = enlace.props.style({ pressed: false }).flat().filter(Boolean);
+    assert.ok(estilos.some((e) => e.minHeight >= 48), 'diana táctil de 48');
+    // Es lo último de la tarjeta: debajo de la lista y de «Marcar como leídos».
+    const pulsables = nodos(t).filter((n) => n.type === 'Pressable');
+    assert.equal(pulsables.at(-1), enlace);
+    enlace.props.onPress();
+  }
+  assert.deepEqual(pulsados, ['perfil', 'perfil']);
+  assert.equal(boton(tarjetaViva()({ avisos: [], leidos: [] }), DESACTIVAR), undefined, 'sin destino no se pinta');
+  assert.equal(idioma.ingles(DESACTIVAR), "Don't want these notices? Turn them off in Profile or in your phone settings.");
+});
+
 test('sin cuenta (interruptor apagado) el hook no llama a nada', async () => {
   const h = crearReact();
   const prohibido = () => assert.fail('no debe llamarse');
@@ -591,7 +637,7 @@ test('Privacidad: con el interruptor apagado, las frases de hoy; encendido, las 
 });
 
 test('Perfil: con el interruptor, el panel de la cuenta sustituye a «Próximamente»', () => {
-  const entorno = { useState: (i) => [typeof i === 'function' ? i() : i, () => {}], useEffect() {}, MODO_LOCAL: false,
+  const entorno = { useState: (i) => [typeof i === 'function' ? i() : i, () => {}], useEffect() {}, useRef: (i) => ({ current: i }), MODO_LOCAL: false,
     USUARIO_LOCAL: true, e: {}, C: {}, crearCarteraCuenta() {} };
   for (const n of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono', 'Cuenta', 'GrupoMenu', 'FilaMenu',
     'PanelAvisos', 'ActivityIndicator', 'MisInversiones']) entorno[n] = n;
@@ -604,6 +650,57 @@ test('Perfil: con el interruptor, el panel de la cuenta sustituye a «Próximame
   assert.doesNotMatch(texto(conAvisos), /Próximamente|Los avisos llegarán a la app/);
   assert.ok(nodos(conAvisos).some((n) => n.type === 'PanelNovedades'));
   assert.equal(nodos(conAvisos).find((n) => n.type === 'Cuenta').props.avisosNovedades, true);
+});
+
+function variableApp(nombre) {
+  let valor;
+  babel.traverse(AST, { VariableDeclarator(ruta) { if (ruta.node.id.name === nombre) valor = ruta.node.init; } });
+  assert.ok(valor, nombre);
+  return babel.transformFromAstSync(babel.types.file(babel.types.program([babel.types.expressionStatement(valor)])),
+    null, { babelrc: false, configFile: false }).code.replace(/;\s*$/, '');
+}
+
+test('App: el enlace de baja de Inicio abre Perfil y Perfil baja hasta Avisos', () => {
+  assert.match(APP, /<TarjetaAvisosInicio[^>]*onDesactivar=\{irAAvisosPerfil\}/);
+  assert.match(APP, /enfocarAvisos=\{enfocarAvisosPerfil\}\s*onAvisosEnfocados=\{\(\) => setEnfocarAvisosPerfil\(false\)\}/);
+  assert.match(APP, /<PanelAvisosNovedades[^>]*onPrivacidad=\{\(\) => abrirEnlace\(URL_PRIVACIDAD_AVISOS\)\}/);
+  assert.match(APP, /const URL_PRIVACIDAD_AVISOS = `\$\{URL_PRIVACIDAD\}#avisos-novedades`;/);
+  // irAAvisosPerfil: cierra lo abierto, va a Perfil y pide bajar hasta Avisos.
+  const cambios = {};
+  const setter = (nombre) => (valor) => { cambios[nombre] = valor; };
+  new Function('tacto', 'setAbierta', 'setOfertaAbierta', 'setEnfocarAvisosPerfil', 'setPestana', `return (${variableApp('irAAvisosPerfil')});`)(
+    { eleccion() {} }, setter('abierta'), setter('ofertaAbierta'), setter('enfocar'), setter('pestana'))();
+  assert.deepEqual(cambios, { abierta: null, ofertaAbierta: null, enfocar: true, pestana: 'perfil' });
+  // PantallaPerfil: con la petición, cada medida de Avisos baja hasta ella; deslizar la consume.
+  const efectos = [];
+  const entorno = { useState: (i) => [typeof i === 'function' ? i() : i, () => {}], useEffect: (fn) => efectos.push(fn),
+    useRef: (i) => ({ current: i }), MODO_LOCAL: false, USUARIO_LOCAL: true, e: {}, C: {}, crearCarteraCuenta() {} };
+  for (const n of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono', 'Cuenta', 'GrupoMenu', 'FilaMenu',
+    'PanelAvisos', 'ActivityIndicator', 'MisInversiones']) entorno[n] = n;
+  const PantallaPerfil = funcionApp('PantallaPerfil', entorno);
+  const panel = { type: 'PanelNovedades', props: {}, children: [] };
+  for (const enfocarAvisos of [true, false]) {
+    const desplazados = [], consumidos = [];
+    efectos.length = 0;
+    const arbol = PantallaPerfil({ cuenta: {}, estadoCuenta: { disponible: true }, seguidas: [], ofertasGuardadas: [],
+      avisosNovedades: true, panelNovedades: panel, enfocarAvisos, onAvisosEnfocados: () => consumidos.push(1) });
+    const scroll = nodos(arbol).find((n) => n.type === 'ScrollView');
+    scroll.props.ref.current = { scrollTo: (opciones) => desplazados.push(opciones) };
+    const seccion = nodos(arbol).find((n) => n.type === 'View' && (n.children || []).flat(Infinity).includes(panel));
+    assert.equal(typeof seccion.props.onLayout, 'function');
+    seccion.props.onLayout({ nativeEvent: { layout: { y: 900 } } });
+    seccion.props.onLayout({ nativeEvent: { layout: { y: 1300 } } });
+    seccion.props.onLayout({ nativeEvent: {} });
+    if (enfocarAvisos) {
+      assert.deepEqual(desplazados, [{ y: 888, animated: false }, { y: 1288, animated: false }], 'cada vez que se mide');
+      scroll.props.onScrollBeginDrag();
+      assert.equal(consumidos.length, 1, 'deslizar la consume');
+      assert.equal(efectos.length, 2, 'y un plazo corto, por si nadie desliza');
+    } else {
+      assert.deepEqual(desplazados, [], 'sin petición no se mueve');
+      assert.equal(scroll.props.onScrollBeginDrag, undefined);
+    }
+  }
 });
 
 test('App: solo con el interruptor se observan las novedades y se pinta la tarjeta, el panel y la casilla', () => {
@@ -677,6 +774,14 @@ test('todos los textos nuevos de la interfaz tienen su inglés en el diccionario
   }
   assert.equal(idioma.ingles('2 fichas nuevas en el radar de RWAdar'), '2 new entries on the RWAdar radar');
   assert.equal(idioma.ingles('1 ficha nueva en el radar de RWAdar'), '1 new entry on the RWAdar radar');
+  // Nombres y descripciones de los dos canales de Android (lib/avisos.js).
+  for (const es of ['Avisos de tu cuenta', 'Avisos de servicio de tu cuenta, como la bienvenida.', 'Novedades de RWAdar',
+    'Fichas nuevas en el radar y novedades de la web y la app.', 'Abre Perfil › Avisos', avisosCuenta.INFO_BASICA_ES,
+    'Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.']) {
+    assert.notEqual(idioma.ingles(es), es, es);
+  }
+  assert.equal(idioma.ingles('Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.'),
+    'News notices turned on. You can unsubscribe here or with the link in every email.');
   assert.equal(idioma.ingles('Ver todos (7)'), 'Show all (7)');
   assert.equal(idioma.ingles('Ver menos'), 'Show less');
   assert.equal(idioma.ingles('4 sin leer'), '4 unread');
@@ -721,11 +826,14 @@ test('el panel y la tarjeta se renderizan también con React y react-native-web 
       estado: { servidor, movil, procesando: '', mensaje: '', error: '' }, onAlternarNovedades() {}, onAlternarMovil() {} }));
     assert.match(html, /role="switch"/);
     assert.match(html, /Avisos de novedades \(correo y móvil\)/);
+    assert.match(html, /Información básica sobre tus datos\. Responsable: Víctor Manuel Jorques Granero \(RWAdar\)\./);
     assert.doesNotMatch(html, /undefined|ExponentPushToken/);
   }
   const avisos = avisosCuenta.validarAvisosRecientes(RECIENTES);
-  const html = renderToStaticMarkup(React.createElement(modulo.TarjetaAvisosInicio, { avisos, leidos: ['9'] }));
+  const html = renderToStaticMarkup(React.createElement(modulo.TarjetaAvisosInicio, { avisos, leidos: ['9'], onDesactivar() {} }));
   assert.match(html, /Te damos la bienvenida a RWAdar/);
+  assert.match(html, /¿No quieres estos avisos\? Desactívalos en Perfil o en los ajustes del móvil\./);
+  assert.ok(html.lastIndexOf('¿No quieres estos avisos?') > html.lastIndexOf('Marcar como leídos'), 'debajo de la lista');
   assert.match(html, /01\/11\/2026/);
   assert.match(html, /Marcar como leídos/);
   assert.doesNotMatch(html, /Ver todos|Ver menos/, 'con 2 avisos no hace falta desplegar');
