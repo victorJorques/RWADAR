@@ -6,6 +6,22 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 6 de noviembre de 2026 (8) · Claude · plan para encender los avisos (orden decidido)
+
+Víctor: «Hacemos lo que tú como CEO creas que es mejor». Orden decidido en [`PLAN-CEO-2026-11-06.md`](PLAN-CEO-2026-11-06.md):
+1. Correo propio con Lettermint. Quita el Gmail sin contrato, que la revisión legal marcó como infracción grave, y desbloquea los avisos.
+2. GitHub Team.
+3. Notificaciones del móvil, con prueba en un Android físico.
+
+Coste: unos 60 $ al año.
+
+El plan va por rondas:
+- Ronda 1, Víctor: dominio, Lettermint y GitHub Team.
+- Claude: Vault, privacidad y publicar.
+- Ronda 2, Víctor: plantillas y SMTP de Supabase Auth.
+- Claude: prueba real, encender el correo y la casilla.
+- Ronda 3: el push.
+
 ## 6 de noviembre de 2026 (7) · Claude · GitHub: decisión de pasar a una organización con GitHub Team
 
 Víctor: «Decide tú lo mejor para el proyecto» (el hueco de GitHub sin contrato de encargo).
