@@ -161,6 +161,13 @@ que te da, y en Supabase se pone Host `smtp-relay.brevo.com`, Port `587` y
 el usuario y la clave SMTP de Brevo (Brevo › SMTP & API). El remitente sería
 `no-responder@tudominio`. Se puede empezar con A y pasar a B sin tocar la web.
 
+> **Nota del 06/11/2026:** el camino B ya no es con Brevo, sino con
+> **Lettermint** (Países Bajos, UE): Brevo quedó descartado porque mete un
+> píxel de apertura. Host `smtp.lettermint.co`, Port `587`, usuario
+> `lettermint` y, como contraseña, el token del proyecto. Pasos y orden: paso 5
+> de la activación en
+> [`AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+
 ### Paso 2 · Ajustes de Auth en Supabase
 
 En **Authentication**:
@@ -310,6 +317,13 @@ añadir antes del pie:
 <p>Si no lo has pedido tú, ignora este mensaje: tu contraseña no cambia.</p>
 <p>RWAdar · <a href="https://rwadar.pages.dev/privacidad">Privacidad</a> · RWAdar@protonmail.com</p>
 ```
+
+> **Desde el 06/11/2026** la versión que vale es
+> [`rwadar-app/plantillas-auth/recuperar-acceso.html`](../../rwadar-app/plantillas-auth/recuperar-acceso.html):
+> el mismo texto con el pie del titular y la dirección postal, que pide
+> Lettermint en cada correo. Se pega antes de pasar el SMTP de Auth a
+> Lettermint (paso 5.8 de
+> [`AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md)).
 
 ## Lo que hará Claude cuando Víctor termine los pasos 1 a 3
 

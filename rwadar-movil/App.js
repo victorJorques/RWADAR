@@ -1805,7 +1805,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                 <Text style={e.privacidadTit}>Tu cuenta en la app y funciones personales de la web</Text>
                 <Text style={e.privacidadParrafo}>
                   {avisosNovedades && estadoNovedades?.correoActivo === true
-                    ? 'Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. Al confirmar la cuenta, RWAdar te envía un correo de bienvenida y, solo si lo pides, los avisos de novedades, a través de Brevo, sin píxel ni seguimiento de clics. RWAdar no guarda la contraseña en el dispositivo.'
+                    ? 'Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. Al confirmar la cuenta, RWAdar te envía un correo de bienvenida y, solo si lo pides, los avisos de novedades, a través de Lettermint, sin píxel ni seguimiento de clics. RWAdar no guarda la contraseña en el dispositivo.'
                     : 'Si creas una cuenta se envían tu correo, tu contraseña y, si lo eliges, tu nombre a Supabase. El servicio verifica tu correo antes de permitir el acceso y envía los mensajes de confirmación y recuperación. RWAdar no guarda la contraseña en el dispositivo.'}
                 </Text>
                 <Text style={e.privacidadParrafo}>

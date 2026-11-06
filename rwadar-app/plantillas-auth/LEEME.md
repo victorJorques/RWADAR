@@ -6,21 +6,37 @@ Contrato: [`docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](../../docs/tar
 | Archivo | Plantilla del panel | Asunto |
 |---|---|---|
 | `confirmar-alta.html` | *Confirm signup* | `Confirma tu correo y desbloquea gratis la Academy` |
+| `recuperar-acceso.html` | *Reset password* | `Recupera tu acceso a RWAdar` |
 
-Es el correo de confirmación de hoy (sale por el SMTP de Gmail) convertido en
-bienvenida. Es HTML sencillo: sin imágenes remotas, sin píxel y sin enlaces de
-seguimiento. Solo enlaza a `{{ .ConfirmationURL }}`, a `rwadar.pages.dev` y al
-correo de RWAdar.
+`confirmar-alta.html` es el correo de confirmación de hoy (sale por el SMTP de
+Gmail) convertido en bienvenida. `recuperar-acceso.html` es la recuperación de
+contraseña de `docs/tareas/REABRIR-CUENTAS.md` con el mismo formato y el mismo
+pie. Son HTML sencillo: sin imágenes remotas, sin píxel y sin enlaces de
+seguimiento. Solo enlazan a `{{ .ConfirmationURL }}`, a `rwadar.pages.dev` y
+al correo de RWAdar.
+
+El pie de las dos nombra al responsable con la dirección postal del aviso
+legal: «Víctor Manuel Jorques Granero, Plaza Generalitat, s/n, 46600 Alzira
+(Valencia), España». La política de uso de Lettermint pide una dirección
+física en cada correo, también en los de servicio, y desde el paso 5.8 del
+contrato estos correos salen por su SMTP.
 
 El bloque `{{ if .Data.avisos_novedades }}` lee los metadatos del alta. Solo
 aparece si la persona marcó la casilla de avisos: la web y la app envían
 `avisos_novedades: true` (booleano) y nada en otro caso. Dice, con el texto
 de la revisión legal del 06/11/2026: «Marcaste también la casilla de avisos de
 novedades: al confirmar tu correo quedarán activados. Si solo querías la
-cuenta, confírmala igualmente y desactívalos en Perfil.» El pie nombra al
-responsable (Víctor Manuel Jorques Granero, España). La base de datos solo guarda
+cuenta, confírmala igualmente y desactívalos en Perfil.» La base de datos solo guarda
 el permiso si el valor es el booleano `true` y la versión es la vigente
 (`30_avisos_registrados.sql`).
+
+## Antes de pasar el SMTP de Auth a Lettermint (paso 5.8 del contrato)
+
+Con permiso de Víctor, se pegan **las dos** en el panel (abajo; la de
+recuperación va en *Reset password*, con su asunto) **antes** de cambiar el
+SMTP. Si en el panel hay alguna otra plantilla activa (cambio de correo,
+enlace mágico, avisos de seguridad), se le pone el mismo pie. Ningún correo de
+Auth debe salir por Lettermint sin la dirección.
 
 ## Ponerla en el panel (solo con permiso de Víctor)
 
@@ -33,6 +49,11 @@ Víctor**.
 4. **Save changes**.
 5. Prueba con una cuenta propia, dos veces: sin marcar la casilla (no debe
    salir el párrafo de los avisos) y marcándola (debe salir).
+
+La de recuperación, igual: **Templates › Reset password**, asunto
+`Recupera tu acceso a RWAdar`, el contenido entero de `recuperar-acceso.html`,
+**Save changes** y una prueba con «¿Has olvidado tu contraseña?» desde una
+cuenta propia.
 
 **Orden:** primero esta plantilla; después
 `db/30_avisos_registrados_activar_casilla.sql` (hasta entonces la base no
@@ -59,5 +80,7 @@ la toca.
 3. Pegar la plantilla anterior, que está en
    [`docs/tareas/REABRIR-CUENTAS.md`](../../docs/tareas/REABRIR-CUENTAS.md)
    («Plantillas de correo»), con su asunto `Confirma tu cuenta de RWAdar`.
+   Si el SMTP ya es el de Lettermint, ponle antes en el pie la dirección
+   postal (la misma de `confirmar-alta.html`).
 
 Si además hay que dejar de enviar avisos: `db/30_avisos_registrados_apagar.sql`.

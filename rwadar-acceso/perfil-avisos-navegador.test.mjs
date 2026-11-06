@@ -26,7 +26,7 @@ const INFO_ES = 'Información básica sobre tus datos. Responsable: Víctor Manu
   'notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, ' +
   'y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu ' +
   'consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, ' +
-  'Cloudflare y Google; para los avisos, Brevo y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: ' +
+  'Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: ' +
   'acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; ' +
   'también puedes reclamar ante la AEPD. Más información en Privacidad.';
 // En la web, «Privacidad» del final es un enlace; el texto visible no cambia.

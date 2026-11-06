@@ -5,6 +5,9 @@
 -- instalación) y después de cada activación. Con la casilla del alta
 -- inactiva avisa (WARNING) de que, si la web o la app la enseñan, hay que
 -- ejecutar 30_avisos_registrados_activar_casilla.sql.
+-- Vale con la 30 sola (correo por Brevo) y con la 31 encima (Lettermint):
+-- con el correo encendido exige la credencial del proveedor al que llama
+-- enviar_correos. Lo propio de Lettermint lo mira 31_correo_lettermint_verificar.sql.
 -- =====================================================================
 begin transaction read only;
 
@@ -18,6 +21,8 @@ declare
   v_relojes integer;
   v_clave text;
   v_remitente text;
+  v_envio text;
+  v_secreto text;
   v_expo text;
   v_retenidos integer;
   v_limpiar text;
@@ -138,16 +143,30 @@ begin
     raise exception '30: falta el reloj independiente de retención de la 22';
   end if;
 
+  -- La credencial que hace falta depende del proveedor al que llama
+  -- enviar_correos: Lettermint desde la 31 (LETTERMINT_API_TOKEN) o Brevo con
+  -- la 30 sola (BREVO_API_KEY). Si no llama a ninguno de los dos, también
+  -- para. El verificador 31 comprueba además la forma exacta del envío.
   if v_cfg.correo_habilitado then
-    select max(decrypted_secret) filter (where name = 'BREVO_API_KEY'),
+    v_envio := coalesce(pg_get_functiondef(to_regprocedure('rwadar_novedades.enviar_correos(integer)')), '');
+    v_secreto := case
+      when position('https://api.lettermint.co/' in v_envio) > 0
+           and position('api.brevo.com' in v_envio) = 0 then 'LETTERMINT_API_TOKEN'
+      when position('https://api.brevo.com/' in v_envio) > 0
+           and position('api.lettermint.co' in v_envio) = 0 then 'BREVO_API_KEY'
+    end;
+    if v_secreto is null then
+      raise exception '30: correo encendido y enviar_correos no llama a un proveedor conocido (aplicar 31_correo_lettermint.sql)';
+    end if;
+    select max(decrypted_secret) filter (where name = v_secreto),
            max(decrypted_secret) filter (where name = 'RWADAR_REMITENTE')
       into v_clave, v_remitente
       from vault.decrypted_secrets
-     where name in ('BREVO_API_KEY', 'RWADAR_REMITENTE');
+     where name in (v_secreto, 'RWADAR_REMITENTE');
     if length(btrim(coalesce(v_clave, ''))) < 20
        or btrim(coalesce(v_remitente, '')) !~*
           '^[a-z0-9.!#$%&''*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$' then
-      raise exception '30: correo encendido sin BREVO_API_KEY y RWADAR_REMITENTE válidos en Vault';
+      raise exception '30: correo encendido sin % y RWADAR_REMITENTE válidos en Vault', v_secreto;
     end if;
   end if;
   if v_cfg.push_habilitado then

@@ -208,12 +208,17 @@ lecciones o si una lección publicada no está en la lista cerrada
 Plan, activación y textos:
 [`tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
 Revisión legal: [`legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`](legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md).
+Contratos de encargo: [`legal/encargados/README.md`](legal/encargados/README.md).
 
 - **La base se toca solo desde GitHub**, con el flujo «Avisos a registrados
   (base)» (`.github/workflows/avisos-base.yml`), y cada acción con orden
   expresa de Víctor. Antes de aplicar o activar nada, `ensayo-30` (aplica y
   deshace) y `verificar-30` (solo lee). Las acciones que cambian la base piden
-  escribir `AVISOS` y hacen una copia cifrada antes.
+  escribir `AVISOS` y hacen una copia cifrada antes. Para el correo, además:
+  `ensayo-31` y `aplicar-31` (la 31: el correo sale por Lettermint) y
+  `guardar-correo` (copia al Vault el secreto de GitHub
+  `LETTERMINT_API_TOKEN` y guarda el remitente). **Si se reaplica la 30, hay
+  que reaplicar la 31:** la 30 devuelve el envío al código de Brevo.
 - **Bajas que llegan por correo** (LSSI art. 22.1: basta con pedirlo al
   remitente). Mientras salgan avisos:
   1. Antes de cada envío —y cada día si `ofertas_automaticas` está encendido—
@@ -225,8 +230,61 @@ Revisión legal: [`legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`](legal/REV
      (devuelve `true` si encontró la cuenta; deja la baja en el historial).
   3. Responde «Hecho: ya no recibirás avisos de RWAdar» y anota la fecha.
   El asunto puede ser «baja» o «Baja de los avisos de RWAdar»: valen los dos.
-- **Correo:** no se activa con un proveedor que meta píxel de apertura o
-  reescriba los enlaces. Brevo solo anonimiza la apertura en los correos
-  transaccionales (no quita el píxel): hay que conseguir su confirmación
-  escrita de que lo quitan para esta cuenta o usar otro proveedor (ver la
-  revisión legal, §4.10 y su contraste).
+
+  **Bajas guardadas en Lettermint.** Su ruta de difusión (la de los
+  anuncios) añade su propio enlace de baja y guarda las bajas en su lista.
+  Mientras su soporte no lo quite, la regla es la misma que para el buzón:
+  antes de cada anuncio y, si `ofertas_automaticas` está encendido, cada día
+  (el anuncio automático sale minutos después de aprobar el catálogo), mira
+  esa lista en el panel de Lettermint y aplica cada dirección nueva con la
+  misma `baja_por_correo`. Si nadie puede revisarla a diario,
+  `ofertas_automaticas` se queda apagado hasta que el soporte quite su enlace.
+  Aplicarla no es opcional: una baja dada solo en Lettermint deja la cuenta
+  apuntada en RWAdar y le siguen llegando los push de novedades;
+  `baja_por_correo` corta los dos.
+- **Correo: Lettermint** (Países Bajos, UE). Brevo quedó descartado: mete un
+  píxel de apertura también en los correos de servicio (revisión legal,
+  §4.10, y su anexo del 06/11/2026). Lettermint no sigue aperturas ni clics si
+  no se pide, y cada petición de RWAdar lo desactiva expresamente. Aun así,
+  **no se enciende** sin la prueba real a un buzón propio: en el original del
+  mensaje, ningún píxel ni enlaces reescritos.
+
+  **Encender el correo, en orden** (detalle en el contrato, «Activación»,
+  paso 5; cada paso que toca Supabase, con orden de Víctor):
+  1. Comprar el dominio: recomendado `rwadar.app` en Cloudflare (la web ya
+     está allí). `rwadar.com` y `rwadar.io` los tiene un tercero a la venta;
+     `rwadar.es` parece libre, pero Cloudflare no vende `.es`.
+  2. Crear la cuenta y un proyecto en Lettermint. Con eso se acepta su
+     contrato de encargo: apuntar la fecha en `legal/encargados/README.md`.
+  3. Añadir el dominio en Lettermint y poner sus registros DNS en Cloudflare.
+  4. Crear el token del proyecto (sin pegarlo en ningún sitio).
+  5. Guardarlo como secreto de GitHub `LETTERMINT_API_TOKEN`.
+  6. Flujo «Avisos a registrados (base)»: `ensayo-31` y después `aplicar-31`.
+  7. Mismo flujo: `guardar-correo`, con remitente `avisos@<dominio>`.
+  8. Pasar los correos de Auth (confirmación y recuperación) a Lettermint,
+     en este orden (detalle en el contrato, punto 5.8):
+     1. pegar en Supabase › Authentication › Emails › Templates las dos
+        plantillas de `rwadar-app/plantillas-auth/`, que llevan la dirección
+        postal en el pie (Lettermint la pide en cada correo);
+     2. dejar al día la privacidad (§6 y §8: Lettermint en vez de Gmail para
+        estos correos) y la «Información básica», y publicarlas **antes** de
+        cambiar el SMTP;
+     3. en Lettermint, la ruta de servicio con el seguimiento apagado (por
+        SMTP no van los `settings` de la API);
+     4. Supabase › Authentication › Emails › SMTP Settings: host
+        `smtp.lettermint.co`, puerto `587`, usuario `lettermint`, contraseña
+        el token, remitente `avisos@<dominio>`;
+     5. probar una recuperación de contraseña y mirar el original (sin
+        píxel, enlace sin reescribir, dirección en el pie);
+     6. quitar el Gmail (`rwadares@gmail.com`), que no tiene contrato de
+        encargo.
+  9. Pedir al soporte de Lettermint que quite su enlace de baja automático de
+     la ruta de difusión (RWAdar tiene su baja). Mientras no lo hagan, sus
+     bajas se aplican a mano (arriba).
+  10. Prueba real a un buzón propio: en el código fuente del correo, ningún
+      píxel ni enlaces reescritos; la cabecera `List-Unsubscribe`; y que la
+      ruta de difusión se llama `broadcast`.
+  11. Solo entonces, `activar-correo`, y la comprobación final con una cuenta
+      propia (bienvenida, un solo correo al repetir el envío y la baja). La
+      repetición, en los 25 minutos siguientes al primer envío y antes de
+      probar la baja; si no, no comprueba nada (contrato, punto 5.11).

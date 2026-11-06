@@ -1,17 +1,26 @@
 name: Avisos a registrados (base)
 
-# Aplica en Supabase, desde GitHub, la migración 30 (avisos a registrados) y
-# sus scripts, con las mismas garantías que «Aplicar catálogo»: solo desde
-# main, copia cifrada de la base antes de cambiar nada, cada SQL en su propia
-# transacción y el verificador 30 al final. Solo hay acciones fijas: no se
-# puede pasar un archivo cualquiera.
+# Aplica en Supabase, desde GitHub, la migración 30 (avisos a registrados),
+# la 31 (el correo sale por Lettermint) y sus scripts, con las mismas
+# garantías que «Aplicar catálogo»: solo desde main, copia cifrada de la base
+# antes de cambiar nada, cada SQL en su propia transacción y los
+# verificadores al final. Solo hay acciones fijas: no se puede pasar un
+# archivo cualquiera.
 #
 # Cada acción que cambia la base necesita orden expresa de Víctor (AGENTS.md)
-# y escribir AVISOS en «confirmar». «ensayo-30» y «verificar-30» no cambian
-# nada: el ensayo aplica la 30 y su verificador dentro de una transacción que
-# se deshace al final, para saber si entra en producción antes de aplicarla.
+# y escribir AVISOS en «confirmar». «ensayo-30», «ensayo-31», «verificar-30»,
+# «verificar-31» y «diagnostico-30» no cambian nada: un ensayo aplica su
+# migración y sus verificadores dentro de una transacción que se deshace al
+# final, para saber si entra en producción antes de aplicarla.
 #
-# Usa los secretos de la copia de seguridad: SUPABASE_DB_URL y COPIA_CLAVE.
+# «guardar-correo» crea o actualiza en Vault LETTERMINT_API_TOKEN (del secreto
+# de GitHub con ese nombre) y RWADAR_REMITENTE (de la entrada «remitente»). No
+# enciende el correo: eso es «activar-correo», que exige la 31 y esos dos.
+# OJO: reaplicar la 30 devuelve el envío de correo al código de Brevo; si la
+# 31 ya estaba aplicada, hay que volver a aplicarla (aplicar-31).
+#
+# Usa los secretos de la copia de seguridad: SUPABASE_DB_URL y COPIA_CLAVE;
+# y, solo en guardar-correo, LETTERMINT_API_TOKEN.
 # Contrato: docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md.
 
 on:
@@ -26,13 +35,21 @@ on:
           - verificar-30
           - diagnostico-30
           - aplicar-30
+          - ensayo-31
+          - verificar-31
+          - aplicar-31
+          - guardar-correo
           - activar-casilla
           - activar-correo
           - activar-push
           - apagar
           - apagar-casilla
       confirmar:
-        description: 'Escribe AVISOS para las acciones que cambian la base (no hace falta para ensayo-30, verificar-30 ni diagnostico-30)'
+        description: 'Escribe AVISOS para las acciones que cambian la base (no hace falta para los ensayos, las verificaciones ni diagnostico-30)'
+        required: false
+        type: string
+      remitente:
+        description: 'Solo para guardar-correo: dirección desde la que salen los avisos, del dominio verificado en Lettermint (no es secreta)'
         required: false
         type: string
 
@@ -64,29 +81,52 @@ jobs:
         env:
           ACCION: ${{ inputs.accion }}
           CONFIRMAR: ${{ inputs.confirmar }}
+          REMITENTE: ${{ inputs.remitente }}
         run: |
           set -euo pipefail
+          export LC_ALL=C
           D=rwadar-app/db
+          V30="$D/30_avisos_registrados_verificar.sql"
+          V31="$D/31_correo_lettermint_verificar.sql"
+          # VERIFICADORES: los que se pasan al final (o dentro del ensayo).
+          ENSAYO=no
+          VERIFICADORES="$V30"
           case "$ACCION" in
-            ensayo-30)       SQL="$D/30_avisos_registrados.sql";                CAMBIA=no ;;
-            verificar-30)    SQL="$D/30_avisos_registrados_verificar.sql";      CAMBIA=no ;;
+            ensayo-30)       SQL="$D/30_avisos_registrados.sql";                CAMBIA=no; ENSAYO=si ;;
+            verificar-30)    SQL="$V30";                                         CAMBIA=no ;;
             diagnostico-30)  SQL="$D/30_avisos_registrados_diagnostico.sql";    CAMBIA=no ;;
             aplicar-30)      SQL="$D/30_avisos_registrados.sql";                CAMBIA=si ;;
+            ensayo-31)       SQL="$D/31_correo_lettermint.sql";                 CAMBIA=no; ENSAYO=si; VERIFICADORES="$V30 $V31" ;;
+            verificar-31)    SQL="$V31";                                         CAMBIA=no; VERIFICADORES="$V30 $V31" ;;
+            aplicar-31)      SQL="$D/31_correo_lettermint.sql";                 CAMBIA=si; VERIFICADORES="$V30 $V31" ;;
+            guardar-correo)  SQL="$D/31_correo_lettermint_guardar.sql";         CAMBIA=si ;;
             activar-casilla) SQL="$D/30_avisos_registrados_activar_casilla.sql"; CAMBIA=si ;;
-            activar-correo)  SQL="$D/30_avisos_registrados_activar_correo.sql";  CAMBIA=si ;;
+            activar-correo)  SQL="$D/30_avisos_registrados_activar_correo.sql";  CAMBIA=si; VERIFICADORES="$V30 $V31" ;;
             activar-push)    SQL="$D/30_avisos_registrados_activar_push.sql";    CAMBIA=si ;;
             apagar)          SQL="$D/30_avisos_registrados_apagar.sql";          CAMBIA=si ;;
             apagar-casilla)  SQL="$D/30_avisos_registrados_apagar_casilla.sql";  CAMBIA=si ;;
             *) echo "Acción no válida: $ACCION"; exit 1 ;;
           esac
           test -f "$SQL" || { echo "No existe $SQL"; exit 1; }
+          for V in $VERIFICADORES; do test -f "$V" || { echo "No existe $V"; exit 1; }; done
           if [ "$CAMBIA" = si ] && [ "$CONFIRMAR" != "AVISOS" ]; then
             echo "Esta acción cambia la base: escribe AVISOS en «confirmar»."; exit 1
           fi
-          # Las dos copias de la 30 deben ser idénticas (la del CLI y la del SQL Editor).
+          if [ "$ACCION" = guardar-correo ]; then
+            REMITENTE="${REMITENTE:-}"
+            # Una dirección sencilla (más estricta que la de la base), sin
+            # nombre ni <>: el correo sale como «RWAdar <remitente>».
+            CORREO_VALIDO='^[A-Za-z0-9._%+-]+@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$'
+            (( ${#REMITENTE} <= 254 )) && [[ "$REMITENTE" =~ $CORREO_VALIDO ]] \
+              || { echo "guardar-correo necesita en «remitente» una dirección de correo válida, sin nombre ni <>."; exit 1; }
+          fi
+          # Las dos copias de la 30 y las dos de la 31 deben ser idénticas
+          # (la del CLI y la del SQL Editor).
           cmp -s "$D/30_avisos_registrados.sql" rwadar-app/supabase/migrations/20261105200000_avisos_registrados.sql \
             || { echo "Las dos copias de la 30 no coinciden"; exit 1; }
-          { echo "SQL=$SQL"; echo "CAMBIA=$CAMBIA"; } >> "$GITHUB_ENV"
+          cmp -s "$D/31_correo_lettermint.sql" rwadar-app/supabase/migrations/20261106120000_correo_lettermint.sql \
+            || { echo "Las dos copias de la 31 no coinciden"; exit 1; }
+          { echo "SQL=$SQL"; echo "CAMBIA=$CAMBIA"; echo "ENSAYO=$ENSAYO"; echo "VERIFICADORES=$VERIFICADORES"; } >> "$GITHUB_ENV"
 
       - name: Instalar psql y pg_dump 17 (misma versión que Supabase)
         run: |
@@ -114,31 +154,63 @@ jobs:
           compression-level: 0
           if-no-files-found: error
 
-      - name: Ensayo de la 30 (se deshace al final)
-        if: inputs.accion == 'ensayo-30'
+      - name: Ensayo sin cambiar nada (se deshace al final)
+        if: env.ENSAYO == 'si'
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: |
           set -euo pipefail
-          V=rwadar-app/db/30_avisos_registrados_verificar.sql
-          # La 30 es una sola transacción (begin; … commit;). Se cambia su commit
-          # final por el verificador (sin su propia transacción) y un rollback.
+          # La migración es una sola transacción (begin; … commit;). Se cambia
+          # su commit final por los verificadores (sin su propia transacción)
+          # y un rollback.
           [ "$(grep -c '^commit;$' "$SQL")" = 1 ] && [ "$(tail -n 1 "$SQL")" = "commit;" ] \
-            || { echo "La 30 no termina en un único commit;"; exit 1; }
-          [ "$(grep -c '^begin transaction read only;$' "$V")" = 1 ] && [ "$(tail -n 1 "$V")" = "rollback;" ] \
-            || { echo "El verificador no tiene la forma esperada"; exit 1; }
-          ENSAYO="$(mktemp)"
-          head -n -1 "$SQL" > "$ENSAYO"
-          grep -v '^begin transaction read only;$' "$V" | head -n -1 >> "$ENSAYO"
-          echo 'rollback;' >> "$ENSAYO"
-          psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$ENSAYO"
-          echo "ENSAYO CORRECTO: la 30 y su verificador pasan en producción. No se ha cambiado nada (rollback)."
+            || { echo "$SQL no termina en un único commit;"; exit 1; }
+          ENSAYO_SQL="$(mktemp)"
+          head -n -1 "$SQL" > "$ENSAYO_SQL"
+          for V in $VERIFICADORES; do
+            [ "$(grep -c '^begin transaction read only;$' "$V")" = 1 ] && [ "$(tail -n 1 "$V")" = "rollback;" ] \
+              || { echo "El verificador $V no tiene la forma esperada"; exit 1; }
+            grep -v '^begin transaction read only;$' "$V" | head -n -1 >> "$ENSAYO_SQL"
+          done
+          echo 'rollback;' >> "$ENSAYO_SQL"
+          psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$ENSAYO_SQL"
+          echo "ENSAYO CORRECTO: $(basename "$SQL") y sus verificadores pasan en producción. No se ha cambiado nada (rollback)."
 
       - name: Aplicar
-        if: env.CAMBIA == 'si'
+        if: env.CAMBIA == 'si' && inputs.accion != 'guardar-correo'
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
-        run: psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$SQL"
+          ACCION: ${{ inputs.accion }}
+        run: |
+          set -euo pipefail
+          psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$SQL"
+          if [ "$ACCION" = aplicar-30 ]; then
+            echo "Aviso: reaplicar la 30 devuelve el envío de correo al código de Brevo. Si la 31 ya estaba aplicada, vuelve a aplicarla (aplicar-31)."
+          fi
+
+      # El token llega por el entorno y pasa a psql como variable (-v); nunca
+      # se escribe en el script ni se imprime. psql corre con -X y sin eco,
+      # y el SQL usa VERBOSITY terse: un error no repite la línea del valor.
+      # En la base, el valor solo va en un SELECT (set_config local a la
+      # transacción), nunca en una sentencia DDL: Supabase registra las DDL
+      # del rol postgres (log_statement = 'ddl') y lo dejaría en sus registros.
+      - name: Guardar en Vault el token de Lettermint y el remitente
+        if: inputs.accion == 'guardar-correo'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          LETTERMINT_API_TOKEN: ${{ secrets.LETTERMINT_API_TOKEN }}
+          REMITENTE: ${{ inputs.remitente }}
+        run: |
+          set -euo pipefail
+          export LC_ALL=C
+          [ -n "${LETTERMINT_API_TOKEN:-}" ] \
+            || { echo "Falta el secreto de GitHub LETTERMINT_API_TOKEN (Settings → Secrets → Actions)."; exit 1; }
+          if (( ${#LETTERMINT_API_TOKEN} < 20 || ${#LETTERMINT_API_TOKEN} > 1024 )) || [[ "$LETTERMINT_API_TOKEN" =~ [^!-~] ]]; then
+            echo "El secreto LETTERMINT_API_TOKEN no tiene forma de token (20 a 1024 caracteres visibles, sin espacios)."; exit 1
+          fi
+          psql "$SUPABASE_DB_URL" -X -v ON_ERROR_STOP=1 \
+            -v token="$LETTERMINT_API_TOKEN" -v remitente="$REMITENTE" \
+            -f "$SQL"
 
       - name: Diagnóstico (solo lee)
         if: inputs.accion == 'diagnostico-30'
@@ -147,7 +219,12 @@ jobs:
         run: psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$SQL"
 
       - name: Verificar
-        if: inputs.accion != 'ensayo-30' && inputs.accion != 'diagnostico-30'
+        if: env.ENSAYO != 'si' && inputs.accion != 'diagnostico-30'
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
-        run: psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f rwadar-app/db/30_avisos_registrados_verificar.sql
+        run: |
+          set -euo pipefail
+          for V in $VERIFICADORES; do
+            echo "Verificador: $V"
+            psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$V"
+          done

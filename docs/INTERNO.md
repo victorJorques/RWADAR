@@ -11,7 +11,7 @@ publicar, pendiente de valoración creativa.
 [Vídeo y comprobaciones](VERIFICACION-ANUNCIO-DESCUBRE-2026-10-28.md).
 Los anuncios anteriores rechazados se conservan como historial.
 
-*Actualizado el 5 de noviembre de 2026.* Si solo vas a leer un documento, que sea
+*Actualizado el 6 de noviembre de 2026.* Si solo vas a leer un documento, que sea
 este. El detalle técnico con todas las pruebas del 30 de septiembre está en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
 
@@ -165,9 +165,12 @@ y [`VERIFICACION-PUBLICACION-2026-10-22.md`](VERIFICACION-PUBLICACION-2026-10-22
 avisos de ofertas nuevas y de actualizaciones por correo y notificación, solo para quien marque una casilla
 aparte, sin marcar; baja en cada correo; lista de avisos dentro de la app. La migración 30 está aplicada en Supabase
 (06/11, con copia previa) y la web y la app están publicadas con los avisos apagados. Revisión legal hecha
-([informe](legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md)). Para encenderlos faltan, con permiso de Víctor:
-dominio propio y un proveedor de correo sin píxel, contratos de encargo, y Firebase más el APK 1.4.2 para las
-notificaciones del sistema. Plan y pasos:
+([informe](legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md)). El correo saldrá por **Lettermint** (Países Bajos,
+UE, sin píxel de apertura); Brevo quedó descartado porque mete ese píxel. Los contratos de encargo están
+archivados en [`legal/encargados/`](legal/encargados/README.md), con un hueco: GitHub no tiene contrato de
+encargo en una cuenta personal gratuita (decide Víctor). Para encender los avisos faltan, con permiso de Víctor:
+dominio propio, cuenta de Lettermint y la migración 31 (preparada, sin aplicar), la prueba real a un buzón propio,
+y Firebase más el APK 1.4.2 para las notificaciones del sistema. Plan y pasos:
 [`tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md). Seguridad anterior:
 [`seguridad/REVISION-SEGURIDAD-2026-10-05.md`](seguridad/REVISION-SEGURIDAD-2026-10-05.md).
 Manual de bienvenida de Eric recibido, pendiente de corregir su sección 8:
@@ -231,7 +234,9 @@ Los puntos de mantenimiento siguientes no equivalen a ese cierre de entrega.
    ni se rellena nada. El paquete para Google Play (AAB 1.1.2, icono, cabecera y
    capturas) ya está preparado.
 6. **Dominio propio** (unos 12 € al año). Da seriedad y permite un correo
-   propio.
+   propio. Recomendado `rwadar.app` en Cloudflare. Lo necesita el correo de
+   los avisos y de las cuentas (Lettermint): paso 5 del
+   [contrato de avisos](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
 7. **iPhone:** el fallo de memoria de una librería de Expo ya está corregido.
    Falta probar la app en un simulador o un iPhone de verdad antes de enviarla.
 8. **Ingresos:** decidir con un abogado cómo se puede cobrar a las
