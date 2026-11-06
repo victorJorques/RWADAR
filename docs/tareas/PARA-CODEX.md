@@ -20,9 +20,10 @@ nada publicado, sin EAS.** Plan, decisiones y pasos de activación:
   lecciones no publicadas 404, fallo de Supabase 503 (nunca manda a entrar),
   con sesión `private, no-store`, `noindex` y `Vary: Cookie`. El índice
   `/academy/` sigue público. Interruptor `"acceso"` en `rwadar-academy/academy.json`.
-  En el móvil, el tutorial 3D de la pestaña Academy también pide cuenta. En la
-  app ya pedía cuenta para todo desde la 1.4.1. Las capturas de Víctor (iPhone)
-  eran de la web instalada en la pantalla de inicio.
+  El tutorial 3D sigue público en la web (decisión de Víctor del 06/11/2026;
+  se quitó la puerta que se le había puesto). En la app ya pedía cuenta para
+  todo desde la 1.4.1. Las capturas de Víctor (iPhone) eran de la web
+  instalada en la pantalla de inicio.
 - **Avisos (todo apagado).** Migración `rwadar-app/db/30_avisos_registrados.sql`
   (esquema `rwadar_novedades`; copia en `supabase/migrations/20261105200000_…`):
   bienvenida al confirmar; avisos de ofertas (disparador del catálogo, nacen
@@ -44,9 +45,8 @@ nada publicado, sin EAS.** Plan, decisiones y pasos de activación:
   `30_avisos_registrados_apagar_casilla.sql` aparte); que un alta anterior a
   la casilla y confirmada después daba permiso (ahora se exige
   `confirmation_sent_at` ≥ `casilla_activada_el`); que sin envío activo no se
-  limpiaba nada (reloj diario `rwadar-novedades-limpieza`); que Atrás podía
-  quedar atrapado en `/acceso` (la puerta del tutorial ya no navega sola), y
-  una carrera entre «Borrar datos» y la renovación diaria del móvil. Lo más grave que se cazó: el `_worker.js`
+  limpiaba nada (reloj diario `rwadar-novedades-limpieza`), y una carrera
+  entre «Borrar datos» y la renovación diaria del móvil. Lo más grave que se cazó: el `_worker.js`
   exportaba un texto y Cloudflare no lo habría desplegado (comprobado con
   workerd: «Incorrect type for map entry … not of type 'function or
   ExportedHandler'»), y el comprobador posterior a publicar habría fallado

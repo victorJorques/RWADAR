@@ -77,9 +77,8 @@ privado en la Academy.
 ### Volver a `"publico"`: lo que cambia solo y lo que hay que cambiar a mano
 
 Con `"publico"`, `node rwadar-academy.js` y el worker reabren solos las
-lecciones (sin 303, indexables y otra vez en el `sitemap.xml`) y el tutorial 3D
-de la portada en el móvil, que deja de pedir sesión (lo decide el atributo
-`data-academy-acceso` del bloque generado de la portada).
+lecciones (sin 303, indexables y otra vez en el `sitemap.xml`). El tutorial 3D
+es público en los dos modos (decisión de Víctor del 06/11/2026).
 
 **No se revierten solos** y hay que cambiarlos a mano en el mismo cambio:
 

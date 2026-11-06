@@ -1049,8 +1049,9 @@ function bloquePortada(academy) {
     : `<p class="etiq">${visibles.length} de ${academy.lecciones.length} lecciones disponibles</p>
       <h3 id="academiaLeccionesTit">${academy.lecciones.length} lecciones en ${academy.niveles.length} niveles</h3>
       <p>Cada nivel responde a una pregunta. Accede gratis con tu cuenta: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>`;
-  /* data-academy-acceso: el mismo interruptor de academy.json llega al JS de
-     la portada, que con «cuenta» abre el tutorial 3D del móvil solo con sesión. */
+  /* data-academy-acceso: deja a la vista en la portada el modo de
+     academy.json. El tutorial 3D es público en la web (decisión de Víctor del
+     06/11/2026): ningún script lo usa para cerrarlo. */
   return `  <!--academy:ini-->
   <div class="academia-lecciones" aria-labelledby="academiaLeccionesTit" data-academy-acceso="${academy.acceso === 'cuenta' ? 'cuenta' : 'publico'}">
     <div class="academia-lecciones-cab">

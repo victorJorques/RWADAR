@@ -47,14 +47,14 @@ lo comprueba **el servidor** (`rwadar-acceso/servidor.mjs`, compilado en
 - **Buscadores:** las lecciones llevan `noindex` en su HTML y salen del sitemap.
   El índice sigue `index,follow`.
 - **Interruptor único:** `"acceso": "cuenta"` en `rwadar-academy/academy.json`.
-  Con `"publico"` se reabren las lecciones y el tutorial 3D. Sirve para retener
-  el cierre si Eric no da su visto bueno; ver «Pendiente de personas». Los
+  Con `"publico"` se reabren las lecciones. Eric dio su visto bueno el
+  06/11/2026 ([nota](../academy/VISTO-BUENO-ERIC-2026-11-06.md)). Los
   textos de privacidad sobre la Academy con cuenta y el destino tras confirmar
   el alta no dependen de él: hay que revertirlos a mano (lista en
   `rwadar-academy/LEEME.md`).
-- **Tutorial 3D en el móvil:** vive dentro de la pestaña Academy de la web y
-  también pide cuenta (puerta de interfaz). En escritorio sigue siendo la
-  sección pública «Qué es tokenizar» de la portada.
+- **Tutorial 3D:** público en la web, en ordenador y en móvil (decisión de
+  Víctor del 06/11/2026). En la app nativa está, como todo, detrás de la
+  cuenta desde la 1.4.1.
 - **Volver a la lección tras registrarse:**
   - si `/acceso` llega con `volver=/academy/…`, se abre en «Crear cuenta
     gratis» con el texto «Las lecciones son gratis con cuenta»;
