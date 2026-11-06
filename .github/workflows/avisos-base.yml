@@ -24,6 +24,7 @@ on:
         options:
           - ensayo-30
           - verificar-30
+          - diagnostico-30
           - aplicar-30
           - activar-casilla
           - activar-correo
@@ -31,7 +32,7 @@ on:
           - apagar
           - apagar-casilla
       confirmar:
-        description: 'Escribe AVISOS para las acciones que cambian la base (no hace falta para ensayo-30 ni verificar-30)'
+        description: 'Escribe AVISOS para las acciones que cambian la base (no hace falta para ensayo-30, verificar-30 ni diagnostico-30)'
         required: false
         type: string
 
@@ -69,6 +70,7 @@ jobs:
           case "$ACCION" in
             ensayo-30)       SQL="$D/30_avisos_registrados.sql";                CAMBIA=no ;;
             verificar-30)    SQL="$D/30_avisos_registrados_verificar.sql";      CAMBIA=no ;;
+            diagnostico-30)  SQL="$D/30_avisos_registrados_diagnostico.sql";    CAMBIA=no ;;
             aplicar-30)      SQL="$D/30_avisos_registrados.sql";                CAMBIA=si ;;
             activar-casilla) SQL="$D/30_avisos_registrados_activar_casilla.sql"; CAMBIA=si ;;
             activar-correo)  SQL="$D/30_avisos_registrados_activar_correo.sql";  CAMBIA=si ;;
@@ -138,8 +140,14 @@ jobs:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$SQL"
 
+      - name: Diagnóstico (solo lee)
+        if: inputs.accion == 'diagnostico-30'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$SQL"
+
       - name: Verificar
-        if: inputs.accion != 'ensayo-30'
+        if: inputs.accion != 'ensayo-30' && inputs.accion != 'diagnostico-30'
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f rwadar-app/db/30_avisos_registrados_verificar.sql
