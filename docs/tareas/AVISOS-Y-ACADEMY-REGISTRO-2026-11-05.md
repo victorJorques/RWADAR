@@ -684,6 +684,12 @@ de Víctor.
      `enviar_correos()` en una nueva versión de la 30 con su prueba. No se
      promete lo que no llega. La baja sigue en el pie de cada aviso (enlace y
      `mailto:`) y en Perfil.
+   - antes de encender, repetir desde fuera que ni `net` ni `vault` están
+     publicados en la API: `GET …/rest/v1/http_request_queue` con
+     `Accept-Profile: net` debe dar `PGRST106 Invalid schema: net`. Las colas
+     de pg_net las abre Supabase a todos los roles y postgres no puede
+     cerrarlas (diagnóstico de producción del 06/11/2026); por ahí pasa la
+     clave del proveedor de correo.
 6. **Push:**
    - proyecto de Firebase y credencial FCM V1 en EAS;
    - APK 1.4.2 (guía);
