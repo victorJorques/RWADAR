@@ -730,7 +730,7 @@ test('App: solo con el interruptor se observan las novedades y se pinta la tarje
   const modo = fs.readFileSync(path.join(RAIZ, 'lib', 'modo-local.js'), 'utf8');
   assert.match(modo, /export const AVISOS_NOVEDADES_REMOTOS = false;/, 'el interruptor nace apagado');
   assert.match(modo, /export const SERVICIOS_USUARIO_REMOTOS = false;/);
-  assert.equal(JSON.parse(fs.readFileSync(path.join(RAIZ, 'app.json'), 'utf8')).expo.extra.rwadar.pushDeliveryEnabled, false);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(RAIZ, 'app.json'), 'utf8')).expo.extra.rwadar.pushDeliveryEnabled, true, 'la 1.4.2 puede entregar push');
 });
 
 test('App: tocar una notificación lleva a inicio, a ofertas nuevas o a la Academy, y espera a la cuenta', () => {
