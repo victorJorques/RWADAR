@@ -6,6 +6,66 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 6 de noviembre de 2026 (2) · Claude · publicado: Academy con cuenta y 9 lecciones; migración 30 aplicada (avisos apagados); revisión legal
+
+Órdenes de Víctor del 06/11: «Eric da el visto bueno», «La revisión legal hazla
+tú», «3 hazlo tú» (aplicar la 30), «Sí, publica hoy», «Publicar las 9 ya» y
+tutorial 3D «público en ambos». PR #74.
+
+- **Revisión legal** hecha por Claude, con contraste adversarial:
+  [`legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`](../legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md).
+  Sus cambios obligatorios ya están en el código:
+  - permiso `novedades-v2-2026-11-06` con el texto nuevo;
+  - información básica junto a la casilla y en Perfil;
+  - historial del permiso, bloqueado 3 años tras borrar la cuenta;
+  - `rwadar_novedades.baja_por_correo`;
+  - pie con el responsable;
+  - riesgo delante en el aviso de ofertas;
+  - canales Android `cuenta` y `novedades`;
+  - condiciones mínimas de la cuenta y `/condiciones` (antes 404).
+
+  Registro de actividades: [`legal/REGISTRO-ACTIVIDADES-TRATAMIENTO.md`](../legal/REGISTRO-ACTIVIDADES-TRATAMIENTO.md).
+- **Academy:** las 9 lecciones publicadas; el tutorial 3D, público otra vez.
+  Visto bueno de Eric en
+  [`academy/VISTO-BUENO-ERIC-2026-11-06.md`](../academy/VISTO-BUENO-ERIC-2026-11-06.md).
+- **Base de datos:** flujo nuevo «Avisos a registrados (base)»
+  (`.github/workflows/avisos-base.yml`): `ensayo-30`, `aplicar-30`,
+  `verificar-30` y las activaciones, con copia previa y la palabra `AVISOS`.
+- **Publicado y aplicado (06/11, ~03:00-03:12 UTC):**
+  - PR #74 (todo), #75 (diagnóstico), #76 (sello) y #77 (verificador). Las
+    cuatro pasaron CI.
+  - «Publicar web» en preview y producción. Comprobado en
+    https://rwadar.pages.dev con curl y Playwright (390 y 1366 px):
+    - las lecciones sin sesión dan 303 a `/acceso?volver=…`;
+    - una lección inventada da 404;
+    - `/condiciones` da 301;
+    - `/baja` da 200;
+    - «9 de 9 lecciones disponibles»;
+    - el tutorial 3D sigue público;
+    - sin errores de JS;
+    - el catálogo intacto: 22 ofertas y 25 plataformas.
+  - «OTA Android» sobre la base `c1f7106` (1.4.1(23)), correcta.
+  - **Migración 30 aplicada en Supabase** con «Avisos a registrados (base)»:
+    primero el ensayo y después aplicar, con copia cifrada guardada 35 días.
+    El verificador dice «RWAdar 30 OK: casilla del alta inactiva, correo
+    apagado, push apagado, aviso automático de ofertas apagado, 0 anuncios
+    retenidos, sin reloj de envío, reloj diario de limpieza». Las 9 cuentas
+    existentes tienen preferencias con `novedades = false`.
+  - **El primer ensayo paró**, y fue lo correcto: Supabase abre a todos los
+    roles las colas de pg_net (las concede `supabase_admin`) y `postgres` no
+    puede cerrarlas. Vault sí está cerrado.
+    - Desde fuera, la API solo publica `public` y `graphql_public`
+      (PGRST106 para `net` y `vault`), y pg_graphql está apagado.
+    - Ahora el verificador para si Vault se abre y solo avisa de las colas.
+    - Antes de encender el correo hay que repetir esa comprobación (contrato,
+      paso 5).
+- **Pendiente de Víctor:**
+  - dominio propio y un proveedor de correo sin píxel (Brevo no lo quita en
+    los transaccionales);
+  - contratos de encargo en `docs/legal/encargados/`;
+  - Firebase y credencial FCM V1 en expo.dev para compilar el APK 1.4.2;
+  - licencia escrita de Eric.
+
 ## 6 de noviembre de 2026 · Claude · lecciones 8 y 9 de la Academy publicadas en el repositorio (sin publicar la web ni enviar OTA)
 
 Orden de Víctor del 06/11/2026: «Publicar las 9 ya». Rama `lecciones-8-9`,
