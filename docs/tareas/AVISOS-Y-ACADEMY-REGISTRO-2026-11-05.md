@@ -79,9 +79,13 @@ Es un correo de servicio. Su contenido está cerrado:
 
 - Dice que ya tienen la Academy gratis y enlaza `/academy/`.
 - No lleva ofertas, enlaces a plataformas ni invitaciones a apuntarse a avisos.
-  Según la AEPD, pedir el permiso por correo ya es comunicación comercial.
+  Por prudencia: la AEPD (E/01415/2017) no consideró comercial un correo que
+  solo pide el permiso, pero el ICO británico sí, y mezclarlo con la
+  bienvenida la volvería comercial.
 - No da número de lecciones.
-- Cierra con «Si no creaste esta cuenta, escríbenos o bórrala».
+- Cierra con «Si no creaste esta cuenta, escríbenos y la borramos».
+- El pie de todos los correos nombra al responsable (Víctor Manuel Jorques
+  Granero, España) y enlaza el aviso legal y la privacidad.
 - Solo lleva `List-Unsubscribe` si la persona se apuntó a los avisos.
 - A quien se apuntó le confirma la suscripción y le da el enlace de baja.
 
@@ -90,18 +94,25 @@ Es un correo de servicio. Su contenido está cerrado:
 La LSSI (art. 21) y el RGPD (art. 7.4) no dejan apuntar a nadie a avisos de
 ofertas por el mero hecho de registrarse, ni condicionar la Academy a ello.
 
-**Casilla aparte, sin marcar, al crear la cuenta.** Versión `novedades-v1-2026-11-05`.
+**Casilla aparte, sin marcar, al crear la cuenta.** Versión `novedades-v2-2026-11-06`
+(la v1 se sustituyó tras la revisión legal del 06/11/2026 sin haber recogido
+ningún permiso: la casilla nunca se llegó a mostrar).
 
 - Texto en español:
   > Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil,
-  > como notificaciones: ofertas nuevas en el radar y novedades de la web y la
+  > como notificaciones: fichas nuevas en el radar y novedades de la web y la
   > app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en
-  > cada aviso o en Perfil. Más información en Privacidad.
+  > Perfil o con el enlace de cada correo; las notificaciones también se quitan
+  > en los ajustes del móvil. Más información en Privacidad.
 - Texto en inglés:
-  > I want to receive RWAdar notices by email and, if I turn them on in my
-  > phone, as notifications: new offers on the radar and news about the website
-  > and the app. It's optional: the Academy unlocks anyway. You can unsubscribe
-  > in every notice or in Profile. More information in Privacy.
+  > I want to receive RWAdar notices by email and, if I enable them on my
+  > phone, as notifications: new listings on the radar and news about the
+  > website and the app. It's optional: the Academy unlocks anyway. You can
+  > unsubscribe in Profile or with the link in every email; notifications can
+  > also be turned off in your phone settings. More information in Privacy.
+- Junto a la casilla (y junto al interruptor de Perfil) va la información
+  básica de protección de datos: responsable, datos, finalidad, base,
+  proveedores y derechos. No forma parte del texto versionado.
 
 La base guarda los dos textos. Una prueba exige que la web, la app y la base
 digan lo mismo. Cambiar una sola palabra obliga a crear una versión nueva.
@@ -115,9 +126,9 @@ digan lo mismo. Cambiar una sola palabra obliga a crear una versión nueva.
 - Si la cuenta ya nace confirmada (INSERT), se crea la fila de preferencias y
   se envía la bienvenida, pero **no** se guarda el permiso.
 - La plantilla de confirmación de Supabase Auth dice, con
-  `{{ if .Data.avisos_novedades }}`: «Al confirmar activas también los avisos
-  de novedades. Si no lo pediste, no confirmes o date de baja en el primer
-  correo».
+  `{{ if .Data.avisos_novedades }}`: «Marcaste también la casilla de avisos
+  de novedades: al confirmar tu correo quedarán activados. Si solo querías la
+  cuenta, confírmala igualmente y desactívalos en Perfil».
 - La casilla no se enseña hasta que esa plantilla esté puesta. Y la base no
   hace caso de los metadatos hasta que se aplica
   `30_avisos_registrados_activar_casilla.sql` (`casilla_activa = true`, paso 4
@@ -175,15 +186,20 @@ Por eso:
   - no nombra productos ni emisores, tampoco en el push;
   - título: «N fichas nuevas en el radar de RWAdar», sin «oportunidad» ni cifras;
   - enlace a `https://rwadar.pages.dev/#emisiones`;
-  - aviso fijo: «RWAdar no intermedia ni recomienda. Aparecer en el radar no es
-    un respaldo y se puede perder lo invertido. Nadie paga por aparecer en este
-    aviso».
-  - Si hace falta el prefijo «Publi» (LSSI art. 20), lo decide la revisión
-    legal.
+  - texto fijo, con el riesgo delante: «Información, no recomendación:
+    aparecer en el radar no es un respaldo y puedes perder lo invertido. RWAdar
+    no intermedia y nadie paga por aparecer en este aviso. Consulta en el radar
+    qué ha entrado y con qué fuentes.»
+  - No se pone «Publi»: el art. 20.1 LSSI no lo exige desde la Ley 9/2014 y
+    aquí haría pensar que alguien paga. Si algún día hay contenido pagado, se
+    marca como publicidad (LSSI 20.1, Ley de Competencia Desleal 26) y se
+    revisa aparte.
 - **Como mucho un anuncio de ofertas al día** (clave `ofertas:AAAA-MM-DD`),
   aunque haya entregas `.2` y `.3`.
-- **Los anuncios `novedad` y `actualizacion` pasan un filtro de palabras:** sin
-  «oportunidad», «rentabilidad», «garantiz…» ni «%».
+- **Todos los anuncios pasan un filtro de palabras** (comprobación de la
+  tabla): sin «oportunidad», «rentabilidad», «garantiz…», «%», «rendimiento»,
+  «APY», «APR», «sin riesgo», «exclusiv…», «últimas plazas», «no te lo
+  pierdas», «gana…», «regalo», «bono», «descuento» ni «autorizad…».
 
 ### 5. Notificaciones en la app
 
@@ -599,11 +615,13 @@ de Víctor.
 
 ## Activación (cada paso, con permiso expreso de Víctor)
 
-1. **Cierre de la Academy.** Visto bueno escrito de Eric (ver «Pendiente de
-   personas»). Después: sellar, PR, merge, «Publicar web» y la OTA de textos.
-   Unir a `main` equivale a publicar en el siguiente ciclo.
-2. **Revisión legal** de la casilla, la privacidad, las plantillas de correo y
-   el anuncio de ofertas.
+1. **Cierre de la Academy.** ✅ Visto bueno de Eric (06/11/2026) y orden de
+   Víctor de publicar hoy. Sellar, PR, merge, «Publicar web» y la OTA.
+2. **Revisión legal.** ✅ Hecha por Claude a petición de Víctor (06/11/2026):
+   [`legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`](../legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md).
+   Sus cambios obligatorios antes de los pasos 4 a 6 ya están en el código;
+   lo que queda (contratos de encargo, píxel de Brevo, autoarranque de
+   Firebase, licencia escrita de Eric) está en su apartado de pendientes.
 3. **Base de datos:** copia de seguridad; aplicar la 30 en el SQL Editor y
    pasar el verificador. Desde ese momento corre el reloj diario de limpieza,
    aunque todo siga apagado.
@@ -691,5 +709,6 @@ de Víctor.
   - Firebase;
   - permiso para cada paso de la activación;
   - si se publican las lecciones 8 y 9.
-- **Abogado:** el texto de la casilla, los avisos de ofertas (comunicación
-  comercial y publicidad financiera) y si hace falta el prefijo «Publi».
+- **Profesional (opcional):** la revisión legal la hizo Claude; lo que
+  conviene confirmar con un profesional está en su apartado 6 (actividad
+  económica y publicidad financiera si algún día hay ingresos).
