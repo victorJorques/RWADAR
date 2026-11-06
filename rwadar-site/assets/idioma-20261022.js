@@ -42,6 +42,11 @@
           [/^Fuente de (.+)$/,(m,x)=>{const y=t(x);return y===x?m:'Source for '+y;}],
           [/^Ninguna oferta coincide con «(.+)»$/,(m,q)=>'No offer matches «'+q+'»'],
           [/^Ver (\d+) más$/,(m,n)=>'Show '+n+' more'],
+          // Título fijo del aviso de ofertas nuevas (contrato del 05/11/2026).
+          [/^(\d+) fichas? nuevas? en el radar de RWAdar$/,(m,n)=>n+(n==='1'?' new entry':' new entries')+' on the RWAdar radar'],
+          // Tarjeta «Avisos» de Inicio: desplegar todos los cargados y cuántos quedan sin leer.
+          [/^Ver todos \((\d+)\)$/,(m,n)=>'Show all ('+n+')'],
+          [/^(\d+) sin leer$/,(m,n)=>n+' unread'],
           [/^Mostrar solo (\d+)$/,(m,n)=>'Show only '+n],
           [/^(\d+) de (\d+) lecciones leídas$/,(m,n,total)=>n+' of '+total+' lessons read'],
           [/^de (\d+) lecciones leídas en este navegador$/,(m,n)=>'of '+n+' lessons read in this browser'],

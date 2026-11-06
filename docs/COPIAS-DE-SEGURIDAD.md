@@ -18,6 +18,20 @@ guía lo resuelve en dos partes:
 | Cuentas de usuario (`auth`) | Secretos del Vault: van cifrados con la clave del proyecto y no sirven fuera |
 | Datos de la app (`public`) | Lo que Supabase vuelve a montar solo (almacenamiento interno, extensiones) |
 | Catálogo editorial (`rwadar_catalogo`) | El código: ya está en este repositorio |
+| Avisos a registrados (`rwadar_novedades`): quién se apuntó y cuándo, las bajas, los móviles, los anuncios y las colas de envío | |
+
+Si un esquema aún no existe en la base (por ejemplo, `rwadar_novedades` antes
+de aplicar la migración 30), la copia sigue adelante sin él: `pg_dump` solo se
+para si no encuentra **ninguno** de la lista.
+
+**La cartera («Mis inversiones», `rwadar_cuentas_privadas`) todavía no entra
+en la copia.** Tiene una protección extra (cada persona solo ve la suya,
+incluso para el dueño de la tabla) y la copia solo podría leerla si el usuario
+de la conexión (`postgres` de Supabase) puede saltarse esa protección. Eso no
+se ha comprobado en línea, y si falla, falla la copia entera, también la que
+hace «Aplicar catálogo» antes de aplicar. Añadirla
+(`COPIA_ESQUEMAS` o el valor por defecto de `copia-seguridad.sh`) es un cambio
+aparte que hay que probar primero con una copia manual.
 
 La copia va **cifrada** con una contraseña que solo tú conoces. Sin ella el
 archivo no se puede abrir, aunque alguien lo descargue.
@@ -106,7 +120,23 @@ prueba**, nunca directamente encima de la base en uso.
    ```
 
    Va todo en una sola transacción: o entra todo o no entra nada.
-5. Abre la web y comprueba que salen las 26 plataformas.
+
+   Si la base nueva ya tiene aplicada la migración 30, su fila de
+   `rwadar_novedades.configuracion` choca con la que trae la copia. Antes de
+   cargar, bórrala (`delete from rwadar_novedades.configuracion;`).
+5. **Avisos a registrados (migración 30), siempre tras cargar:** vuelve a
+   aplicar `rwadar-app/db/30_avisos_registrados.sql` y pasa
+   `rwadar-app/db/30_avisos_registrados_verificar.sql`.
+   - Si la copia es anterior a la 30, no trae esa fila y la tabla se habría
+     quedado vacía: la 30 la vuelve a crear (su `insert … on conflict`).
+   - Si la trae, la 30 la deja con todo apagado: correo, push, aviso
+     automático de ofertas y casilla del alta, sin reloj de envío y con el
+     reloj diario de limpieza.
+   - Los avisos quedan apagados hasta que Víctor los vuelva a encender. Si la
+     web o la app enseñan la casilla de avisos, ejecuta también
+     `rwadar-app/db/30_avisos_registrados_activar_casilla.sql` (el
+     verificador lo avisa).
+6. Abre la web y comprueba que salen las 26 plataformas.
 
 ---
 

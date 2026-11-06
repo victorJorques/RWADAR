@@ -8,6 +8,7 @@ const babel = require('@babel/core');
 const commonjs = require('@babel/plugin-transform-modules-commonjs');
 const jsx = require('@babel/plugin-transform-react-jsx');
 const {soporteIdioma}=require('./soporte-idioma.cjs');
+const idioma = require('../lib/idioma');
 
 const RAIZ = path.resolve(__dirname, '..');
 const ARCHIVO = path.join(RAIZ, 'componentes', 'Cuenta.js');
@@ -153,8 +154,9 @@ test('el acceso valida correo y contraseña antes de pedir nada al controlador',
 test('alta con aceptación explícita, contraseña oculta y confirmación antes del acceso', async () => {
   const p = pantalla(); await p.pulsar('Crear una cuenta gratis');
   p.campo('Correo', 'ana@ejemplo.test'); p.campo('Contraseña · mínimo 12 caracteres', 'clave de prueba local');
-  await p.pulsar('Crear cuenta'); assert.match(p.texto(), /Acepta las condiciones/);
-  await p.pulsar('Acepto las condiciones y he leído la privacidad');
+  // Desde el 05/11/2026 la casilla obligatoria incluye la edad (contrato de avisos).
+  await p.pulsar('Crear cuenta'); assert.match(p.texto(), /Confirma que tienes 18 años o más, que aceptas las condiciones/);
+  await p.pulsar('Tengo 18 años o más, acepto las condiciones y he leído la privacidad');
   await p.pulsar('Crear cuenta');
   assert.deepEqual(p.llamadas.find(([n]) => n === 'registrar')[1], {
     correo: 'ana@ejemplo.test', clave: 'clave de prueba local', nombre: '', aceptaCondiciones: true,
@@ -225,7 +227,9 @@ test('un nombre de usuario que coincide con un rótulo y su correo conservan con
 
 test('borrar cuenta exige contraseña nueva en pantalla y BORRAR; cancelar no da la baja', async () => {
   const p = pantalla(autenticada); await p.pulsar('Borrar mi cuenta');
-  assert.match(p.texto(), /No se puede deshacer/);
+  assert.ok(p.texto().includes('Borrar la cuenta elimina tu perfil, tu lista de seguimiento, tu registro de inversiones y tus avisos (permiso y móviles registrados; el historial del permiso queda bloqueado 3 años solo para atender reclamaciones). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.'));
+  assert.equal(idioma.ingles('Borrar la cuenta elimina tu perfil, tu lista de seguimiento, tu registro de inversiones y tus avisos (permiso y móviles registrados; el historial del permiso queda bloqueado 3 años solo para atender reclamaciones). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.'),
+    'Deleting your account removes your profile, your watchlist, your investment record and your notices (consent and registered phones; the consent history is kept blocked for 3 years only to handle complaints). It does not delete local favourites or Academy progress. It cannot be undone.');
   await p.pulsar('Confirmar borrado de cuenta'); assert.match(p.texto(), /Escribe tu contraseña/);
   p.campo('Contraseña actual', 'clave de prueba local');
   p.campo('Escribe BORRAR', 'borrar'); await p.pulsar('Confirmar borrado de cuenta');
@@ -263,9 +267,11 @@ test('estado ocupado deshabilita envíos, conserva una salida y anuncia el error
 test('los enlaces legales no llevan contraseñas, tokens ni parámetros de sesión', async () => {
   const p = pantalla(); await p.pulsar('Crear una cuenta gratis');
   await p.pulsar('Leer condiciones'); await p.pulsar('Leer privacidad');
+  // Las condiciones viven en la sección #condiciones de la privacidad (/condiciones da 404).
   assert.deepEqual(p.llamadas.filter(([n]) => n === 'enlace').map(([, url]) => url), [
-    'https://rwadar.pages.dev/condiciones', 'https://rwadar.pages.dev/privacidad',
+    'https://rwadar.pages.dev/privacidad#condiciones', 'https://rwadar.pages.dev/privacidad',
   ]);
+  assert.doesNotMatch(fs.readFileSync(ARCHIVO, 'utf8'), /pages\.dev\/condiciones/);
 });
 
 test('todos los botones reales tienen diana mínima de 48 y etiquetas accesibles', () => {
@@ -325,7 +331,7 @@ function seccionesPerfil() {
   const entorno = {
     React: { createElement: (type, props, ...children) => ({ type, props: props || {}, children }) },
     useState: inicial => [typeof inicial === 'function' ? inicial() : inicial, () => {}],
-    useEffect() {},
+    useEffect() {}, useRef: inicial => ({ current: inicial }),
     StyleSheet: { create: (s) => s }, T: tema.T, C: colores, MODO_LOCAL: false, USUARIO_LOCAL: true,
   };
   for (const nombre of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono',
@@ -379,7 +385,8 @@ test('el efecto de App libera el controlador y vuelve a crear uno sano al repeti
   ])), null, { babelrc: false, configFile: false }).code;
   const controladores = [], visibles = [], orden = [], controladorActual = { current: null };
   const crear = new Function('crearControladorCuentas', 'setCuenta', 'setEstadoCuenta', 'MODO_LOCAL',
-    'CUENTAS_REMOTAS', 'CORREO_AUTH_E2E', 'controladorActual', 'restaurarAcceso', 'CUENTA_REMOTA_ACTIVA', `return (${js.replace(/;\s*$/, '')});`);
+    'CUENTAS_REMOTAS', 'CORREO_AUTH_E2E', 'controladorActual', 'restaurarAcceso', 'CUENTA_REMOTA_ACTIVA',
+    'AVISOS_NOVEDADES_REMOTOS', `return (${js.replace(/;\s*$/, '')});`);
   const setup = crear((flags) => {
     const c = { flags, destruido: false, desuscrito: false,
       suscribir(fn) { orden.push('suscribir'); fn({ disponible: true }); return () => { c.desuscrito = true; }; },
@@ -388,13 +395,15 @@ test('el efecto de App libera el controlador y vuelve a crear uno sano al repeti
     controladores.push(c); return c;
   }, (c) => visibles.push(c), () => {}, false, true, true, controladorActual, (c) => {
     assert.equal(controladorActual.current, c); orden.push('restaurar');
-  }, true);
+  }, true, false);
   const limpiarPrimero = setup(); limpiarPrimero();
   const limpiarSegundo = setup();
   assert.equal(controladores.length, 2);
   assert.equal(controladores[0].desuscrito, true); assert.equal(controladores[0].destruido, true);
   assert.equal(controladores[1].destruido, false); assert.equal(visibles[1], controladores[1]);
-  assert.deepEqual(controladores[1].flags, { modoLocal: false, cuentasRemotas: true, correoVerificado: true });
+  // Con AVISOS_NOVEDADES_REMOTOS apagado, el alta no envía la casilla de avisos ni hay tarea previa a salir.
+  assert.deepEqual(controladores[1].flags, { modoLocal: false, cuentasRemotas: true, correoVerificado: true,
+    avisosNovedades: false, antesDeSalir: null });
   limpiarSegundo(); assert.equal(controladores[1].destruido, true);
   assert.equal(controladorActual.current, null);
   assert.deepEqual(orden, ['suscribir', 'restaurar', 'suscribir', 'restaurar']);

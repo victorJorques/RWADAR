@@ -159,7 +159,27 @@
 
   /* ---- índice de la Academy ---- */
   const portada = document.querySelector('[data-academy-indice-pagina]');
+  /* Vuelta del correo de confirmación sin lección guardada (acceso.js):
+     /academy/#cuenta-confirmada. Se avisa una vez y se quita el fragmento. */
+  if (portada && location.hash === '#cuenta-confirmada') {
+    const cab = portada.querySelector('.ac-portada-cab');
+    if (cab) {
+      const aviso = document.createElement('p');
+      aviso.className = 'ac-confirmada';
+      aviso.setAttribute('role', 'status');
+      aviso.textContent = 'Cuenta confirmada: Academy desbloqueada';
+      cab.insertBefore(aviso, cab.firstChild);
+    }
+    try { history.replaceState(history.state, '', location.pathname + location.search); } catch (_) {}
+  }
   if (portada) await cuentaLista;
+  /* Con sesión, la invitación a crear cuenta ya no tiene sentido. */
+  if (portada && CLAVE) {
+    portada.querySelectorAll('.ac-acciones a[href^="/acceso"]').forEach(a => {
+      const fila = a.closest('.ac-acciones');
+      if (fila) fila.hidden = true;
+    });
+  }
   if (portada && sePuedeGuardar()) {
     const estado = leer();
     const tarjetas = [...document.querySelectorAll('[data-academy-tarjeta]')];

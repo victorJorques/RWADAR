@@ -202,3 +202,31 @@ cada botón y el aviso legal común están explicados en
 El publicador se niega a construir si la Academy no está al día con sus
 lecciones o si una lección publicada no está en la lista cerrada
 `PAGINAS_ACADEMY` de `rwadar-publicacion-segura.js`.
+
+## Avisos a registrados
+
+Plan, activación y textos:
+[`tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+Revisión legal: [`legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`](legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md).
+
+- **La base se toca solo desde GitHub**, con el flujo «Avisos a registrados
+  (base)» (`.github/workflows/avisos-base.yml`), y cada acción con orden
+  expresa de Víctor. Antes de aplicar o activar nada, `ensayo-30` (aplica y
+  deshace) y `verificar-30` (solo lee). Las acciones que cambian la base piden
+  escribir `AVISOS` y hacen una copia cifrada antes.
+- **Bajas que llegan por correo** (LSSI art. 22.1: basta con pedirlo al
+  remitente). Mientras salgan avisos:
+  1. Antes de cada envío —y cada día si `ofertas_automaticas` está encendido—
+     revisa RWAdar@protonmail.com (es también la dirección de respuesta de los
+     avisos). Si nadie lo puede revisar a diario, `ofertas_automaticas` se
+     queda apagado.
+  2. Cada baja se aplica antes del siguiente envío, en Supabase › SQL Editor:
+     `select rwadar_novedades.baja_por_correo('correo@de.la.persona');`
+     (devuelve `true` si encontró la cuenta; deja la baja en el historial).
+  3. Responde «Hecho: ya no recibirás avisos de RWAdar» y anota la fecha.
+  El asunto puede ser «baja» o «Baja de los avisos de RWAdar»: valen los dos.
+- **Correo:** no se activa con un proveedor que meta píxel de apertura o
+  reescriba los enlaces. Brevo solo anonimiza la apertura en los correos
+  transaccionales (no quita el píxel): hay que conseguir su confirmación
+  escrita de que lo quitan para esta cuenta o usar otro proveedor (ver la
+  revisión legal, §4.10 y su contraste).

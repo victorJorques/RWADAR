@@ -415,7 +415,7 @@
       </div>
       <p class="rel-aviso rel-revela">Invertir tiene riesgos: puedes perder parte o todo lo que inviertas.</p>
       <!--academy-inicio:ini-->
-      <a class="b3 rel-academia rel-revela" href="/academy/" data-movil-cambiar="academy"><span><span>¿Empiezas de cero?</span> <span>7 lecciones gratis en Academy</span></span><span class="rel-flecha" aria-hidden="true"></span></a>
+      <a class="b3 rel-academia rel-revela" href="/academy/" data-movil-cambiar="academy"><span><span>¿Empiezas de cero?</span> <span>9 lecciones gratis en Academy</span></span><span class="rel-flecha" aria-hidden="true"></span></a>
       <!--academy-inicio:fin-->
       <div class="rel-app rel-revela">
         <a class="b3 rel-app-enlace" href="/android"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5M5 19h14"/></svg>App gratis para Android</a>
@@ -1436,11 +1436,11 @@
   </article>
 
   <!--academy:ini-->
-  <div class="academia-lecciones" aria-labelledby="academiaLeccionesTit">
+  <div class="academia-lecciones" aria-labelledby="academiaLeccionesTit" data-academy-acceso="cuenta">
     <div class="academia-lecciones-cab">
-      <p class="etiq">7 de 9 lecciones disponibles</p>
-      <h3 id="academiaLeccionesTit">9 lecciones en 3 niveles</h3>
-      <p>Cada nivel responde a una pregunta. Accede gratis con tu cuenta: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>
+      <p class="etiq">Gratis con tu cuenta</p>
+      <h3 id="academiaLeccionesTit">9 de 9 lecciones disponibles</h3>
+      <p>Cada nivel responde a una pregunta. Crea tu cuenta gratis para abrir las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>
     </div>
     <div class="academia-niveles">
     <section class="academia-nivel" aria-labelledby="academiaNivel1">
@@ -1469,8 +1469,8 @@
       <p class="academia-nivel-preg">¿Con quién y cómo lo hago?</p>
       <ol class="academia-lista">
         <li><a href="/academy/como-leer-el-radar"><span class="academia-num">07</span><b>Cómo usar RWAdar para comparar proveedores con criterio</b><small>Selección de proveedor · 13 min</small></a></li>
-        <li class="academia-pronto"><span class="academia-num">08</span><b>El expediente de tokenización: los doce documentos que te van a pedir</b><small>Próximamente</small></li>
-        <li class="academia-pronto"><span class="academia-num">09</span><b>Después de emitir: gobierno, informes, impuestos y ciclo de vida del token</b><small>Próximamente</small></li>
+        <li><a href="/academy/expediente-de-tokenizacion"><span class="academia-num">08</span><b>El expediente de tokenización: los doce documentos que te van a pedir</b><small>Preparación · 15 min</small></a></li>
+        <li><a href="/academy/despues-de-emitir-ciclo-de-vida"><span class="academia-num">09</span><b>Después de emitir: gobierno, informes, impuestos y ciclo de vida del token</b><small>Post-emisión · 17 min</small></a></li>
       </ol>
     </section>
     </div>
@@ -1552,6 +1552,8 @@
 
     <section class="movil-menu-grupo" aria-labelledby="perfilAvisosTit">
       <h3 id="perfilAvisosTit">Avisos</h3>
+      <!-- Cada tarjeta va en un div con hidden: .movil-estado fija display y taparía el atributo. -->
+      <div id="perfilAvisosProximamente">
       <article class="movil-estado">
         <div class="movil-estado-cab">
           <span class="movil-estado-icono" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.7 9.8a5.3 5.3 0 0 1 10.6 0c0 6 2.2 6.2 2.2 7.2h-15c0-1 2.2-1.2 2.2-7.2z"/><path d="M9.7 20h4.6"/></svg></span>
@@ -1560,6 +1562,19 @@
         <p>Los avisos llegarán a la app en una próxima actualización.</p>
         <p class="perfil-aviso-detalle">Esta versión no recoge nuevas preferencias de correo ni envía avisos del radar. Si diste un consentimiento en una versión anterior, puedes retirarlo escribiendo a RWAdar@protonmail.com.</p>
       </article>
+      </div>
+      <!-- Avisos de novedades (novedades-v2-2026-11-06): solo con AVISOS_NOVEDADES_REMOTOS encendido en assets/rwadar-20260820.js; entonces sustituye a la tarjeta anterior. El texto del interruptor es el versionado, palabra por palabra; la información básica va aparte, sin versión. -->
+      <div id="perfilAvisosNovedades" hidden>
+      <article class="movil-estado">
+        <div class="movil-estado-cab">
+          <span class="movil-estado-icono" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.7 9.8a5.3 5.3 0 0 1 10.6 0c0 6 2.2 6.2 2.2 7.2h-15c0-1 2.2-1.2 2.2-7.2z"/><path d="M9.7 20h4.6"/></svg></span>
+          <div><p class="movil-mini-etiqueta">Correo y móvil</p><h3>Avisos de novedades</h3></div>
+        </div>
+        <label class="fila-opcion"><input type="checkbox" role="switch" id="perfilNovedadesOpcion" disabled><span>Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en <a href="/privacidad#avisos-novedades">Privacidad</a>.</span></label>
+        <p class="perfil-aviso-detalle" id="perfilNovedadesEstado" role="status">Entra en tu cuenta para activarlos o desactivarlos.</p>
+        <p class="perfil-aviso-detalle" id="perfilNovedadesDatos">Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Brevo y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; también puedes reclamar ante la AEPD. Más información en <a href="/privacidad">Privacidad</a>.</p>
+      </article>
+      </div>
     </section>
 
     <section class="movil-menu-grupo" id="perfilComunidad" aria-labelledby="perfilComunidadTit" hidden>

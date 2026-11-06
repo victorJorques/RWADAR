@@ -1,0 +1,12 @@
+<div style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;max-width:560px;margin:0 auto;padding:24px;color:#1a1a1a">
+  <h2 style="font-size:22px;line-height:1.25;margin:0 0 14px">Confirma tu correo y desbloquea gratis la Academy</h2>
+  <p style="font-size:15px;line-height:1.6;margin:0 0 14px">Hola. Alguien (esperamos que tú) ha creado una cuenta en RWAdar con esta dirección.</p>
+  <p style="font-size:15px;line-height:1.6;margin:0 0 18px">Al confirmar tu correo, tu cuenta queda lista y la RWAdar Academy se desbloquea gratis.</p>
+  <p style="margin:0 0 22px"><a href="{{ .ConfirmationURL }}" style="background:#25E39A;color:#06231A;text-decoration:none;font-weight:700;font-size:15px;padding:12px 22px;border-radius:99px;display:inline-block">Confirmar mi correo</a></p>
+  {{ if .Data.avisos_novedades }}
+  <p style="font-size:15px;line-height:1.6;margin:0 0 14px">Marcaste también la casilla de avisos de novedades: al confirmar tu correo quedarán activados. Si solo querías la cuenta, confírmala igualmente y desactívalos en Perfil.</p>
+  {{ end }}
+  <p style="font-size:15px;line-height:1.6;margin:0 0 14px">Si no has sido tú, ignora este mensaje: sin confirmar, la cuenta no se puede usar.</p>
+  <p style="font-size:13px;line-height:1.55;color:#555;margin:0 0 14px">RWAdar es un registro informativo: no te pediremos nunca datos bancarios, claves de monederos ni frases de recuperación.</p>
+  <p style="font-size:12px;line-height:1.55;color:#666;border-top:1px solid #e5e5e5;padding-top:14px;margin:0">RWAdar · Responsable: Víctor Manuel Jorques Granero, España · <a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">Aviso legal</a> · <a href="https://rwadar.pages.dev/privacidad" style="color:#555">Privacidad</a> · <a href="mailto:RWAdar@protonmail.com" style="color:#555">RWAdar@protonmail.com</a></p>
+</div>

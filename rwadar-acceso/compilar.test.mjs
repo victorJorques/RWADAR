@@ -1,8 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 const require = createRequire(import.meta.url);
 const { construirWorker, RUTAS } = require('./compilar.cjs');
+const AQUI = path.dirname(fileURLToPath(import.meta.url));
 
 test('el artefacto sirve lectura pública de exportaciones y páginas generadas', async () => {
   const worker = (await import('data:text/javascript;base64,' + Buffer.from(construirWorker()).toString('base64'))).default;
@@ -27,6 +32,43 @@ test('el artefacto sirve lectura pública de exportaciones y páginas generadas'
 test('la compilación es determinista y no acepta un servidor con dependencias nuevas', () => {
   assert.equal(construirWorker(), construirWorker());
   assert.throws(() => construirWorker('no-existe'), /ENOENT/);
+});
+
+/* Cloudflare (workerd) toma cada exportación con nombre de _worker.js como un
+   punto de entrada: una exportación que no es una función (p. ej. un texto)
+   hace que la web no se pueda desplegar. Ocurrió con VERSION_AVISOS_NOVEDADES. */
+test('el worker compilado solo exporta funciones con nombre, además de default', async () => {
+  for (const [marca, opciones] of [['exportaciones', {}],
+    ['exportaciones-publica', { fichas: ['ofertas/viva.html'], academy: { acceso: 'publico', lecciones: [{ slug: 'viva', estado: 'publicado' }] } }]]) {
+    const modulo = await import('data:text/javascript;base64,' + Buffer.from(construirWorker(undefined, opciones)).toString('base64') + '#' + marca);
+    const conNombre = Object.keys(modulo).filter(nombre => nombre !== 'default');
+    assert.deepEqual(conNombre.filter(nombre => typeof modulo[nombre] !== 'function'), [], marca + ': exportaciones que no son funciones');
+    assert.deepEqual(conNombre.sort(), ['crearAccesoServidor', 'crearCarteraServidor', 'retornoSeguro'], marca);
+    assert.equal(typeof modulo.default?.fetch, 'function', marca);
+  }
+});
+
+test('la compilación rechaza un servidor que exporta algo que no es una función', () => {
+  const temporal = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-compilar-'));
+  try {
+    const raiz = path.join(temporal, 'rwadar-acceso');
+    fs.mkdirSync(raiz); fs.mkdirSync(path.join(temporal, 'rwadar-movil', 'lib'), { recursive: true });
+    fs.copyFileSync(path.join(AQUI, '..', 'rwadar-movil', 'lib', 'cartera.js'), path.join(temporal, 'rwadar-movil', 'lib', 'cartera.js'));
+    const servidor = fs.readFileSync(path.join(AQUI, 'servidor.mjs'), 'utf8');
+    const cartera = fs.readFileSync(path.join(AQUI, 'cartera-servidor.mjs'), 'utf8');
+    const escribir = (s, c = cartera) => { fs.writeFileSync(path.join(raiz, 'servidor.mjs'), s); fs.writeFileSync(path.join(raiz, 'cartera-servidor.mjs'), c); };
+    escribir(servidor);
+    assert.equal(construirWorker(raiz), construirWorker(), 'la copia sin cambios compila igual');
+    for (const extra of ["export const VERSION_PRUEBA = 'x';", 'export let marca = 1;', 'export var activo = false;',
+      'export class Prueba {}', 'const a = 1;\nexport { a };']) {
+      escribir(servidor + '\n' + extra + '\n');
+      assert.throws(() => construirWorker(raiz), /servidor\.mjs solo puede exportar funciones/, extra);
+      escribir(servidor, cartera + '\n' + extra + '\n');
+      assert.throws(() => construirWorker(raiz), /cartera-servidor\.mjs solo puede exportar funciones/, extra);
+    }
+    escribir(servidor + '\nexport async function otraPrueba() {}\n');
+    assert.doesNotThrow(() => construirWorker(raiz));
+  } finally { fs.rmSync(temporal, { recursive: true, force: true }); }
 });
 
 test('la salida compilada permite recursos legales y lectura del catálogo', async () => {
@@ -113,13 +155,20 @@ test('una ficha que no está en la lista da 404 sin pedir a ASSETS su copia de c
   assert.deepEqual(pedidas, ['/404']);
 
   // Las vivas, las imágenes y lo que no es una ficha van a ASSETS tal cual.
+  // (Una lección inexistente ya no: con la Academy con cuenta da 404 en la
+  // puerta de la Academy; ver academy-cuenta.test.mjs.)
   for (const ruta of ['/ofertas/viva', '/ofertas/viva.html', '/ofertas/viva/', '//ofertas/viva', '/ofertas/viva?x=1', '/plataformas/plataforma-viva',
-    '/fuera-del-radar/descarte-vivo', '/plataformas/addx.webp', '/ofertas/', '/ofertas', '/ofertas-editoriales/oferta-viva.webp', '/academy/no-existe', '/']) {
+    '/fuera-del-radar/descarte-vivo', '/plataformas/addx.webp', '/ofertas/', '/ofertas', '/ofertas-editoriales/oferta-viva.webp', '/academy/', '/']) {
     const { pedidas, env } = assetsDePrueba();
     const r = await worker.fetch(new Request(BASE_WEB + ruta), env, CTX);
     assert.equal(r.status, 200, ruta);
     assert.equal(await r.text(), 'contenido', ruta);
     assert.deepEqual(pedidas, [new URL(BASE_WEB + ruta).pathname], ruta);
+  }
+  {
+    const { pedidas, env } = assetsDePrueba();
+    await esNoEncontrada(await worker.fetch(new Request(BASE_WEB + '/academy/no-existe'), env, CTX), '/academy/no-existe');
+    assert.deepEqual(pedidas, ['/404'], 'una lección inexistente no se pide a ASSETS');
   }
 
   // Si /404 no está disponible, responde igualmente 404 en texto.
@@ -133,17 +182,27 @@ test('una ficha que no está en la lista da 404 sin pedir a ASSETS su copia de c
 
 test('la copia de conservación de cualquier otro archivo retirado da 404, salvo en /assets/', async () => {
   const worker = await compilar(['ofertas/viva.html'], 'conservada');
+  // Con la Academy en "publico" (como antes), una lección borrada llega a ASSETS
+  // y su copia de conservación se reconoce igual que la de cualquier archivo.
+  const publica = (await import('data:text/javascript;base64,' + Buffer.from(construirWorker(undefined,
+    { fichas: ['ofertas/viva.html'], academy: { acceso: 'publico', lecciones: [{ slug: 'viva', estado: 'publicado' }] } })).toString('base64') + '#conservada-publica')).default;
   const conservada = { 'CF-Cache-Status': 'HIT', 'X-Robots-Tag': 'noindex', 'Cache-Control': 'public, s-maxage=604800' };
-  for (const [ruta, cabeceras] of [
+  for (const [ruta, cabeceras, servidor = worker] of [
     ['/ofertas-editoriales/oferta-retirada.webp', conservada],
     ['/ofertas-editoriales/oferta-retirada.webp', { 'CF-Cache-Status': 'hit', 'X-Robots-Tag': 'noindex, nofollow' }],
-    ['/academy/leccion-borrada', conservada],
+    ['/academy/leccion-borrada', conservada, publica],
     ['/plataformas/retirada.webp', conservada],
     ['//ofertas-editoriales/oferta-retirada.webp', conservada],
   ]) {
     const { pedidas, env } = assetsDePrueba(cabeceras);
-    await esNoEncontrada(await worker.fetch(new Request(BASE_WEB + ruta), env, CTX), ruta);
+    await esNoEncontrada(await servidor.fetch(new Request(BASE_WEB + ruta), env, CTX), ruta);
     assert.deepEqual(pedidas, [new URL(BASE_WEB + ruta).pathname, '/404'], ruta);
+  }
+  // Con la Academy con cuenta, la lección borrada ni siquiera se pide a ASSETS.
+  {
+    const { pedidas, env } = assetsDePrueba(conservada);
+    await esNoEncontrada(await worker.fetch(new Request(BASE_WEB + '/academy/leccion-borrada'), env, CTX), '/academy/leccion-borrada');
+    assert.deepEqual(pedidas, ['/404']);
   }
   const { env } = assetsDePrueba(conservada);
   await esNoEncontrada(await worker.fetch(new Request(BASE_WEB + '/ofertas-editoriales/oferta-retirada.webp', { method: 'HEAD' }), env, CTX), 'HEAD', 'HEAD');

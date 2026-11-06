@@ -2882,10 +2882,87 @@ prueba('la privacidad explica criterios de conservación y la limpieza de instal
   /más de 180 días sin actividad/.test(privacidadLineal) &&
   /atender derechos, incidencias u obligaciones/.test(privacidadLineal) &&
   /Este proceso no borra cuentas/.test(privacidadLineal));
+// Academy con cuenta y avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+const accesoHTML = lee('acceso.html'), accesoJS = lee('assets/acceso.js'), bajaHTML = lee('baja.html');
+prueba('privacidad: la Academy es gratuita con cuenta y no guardamos qué lecciones lees',
+  /consultar el radar de RWAdar sin registrarte/.test(privacidadLineal) &&
+  /y para abrir las lecciones de RWAdar Academy, que son gratuitas/.test(privacidadLineal) &&
+  /RWAdar Academy<\/b> es gratuita con una cuenta confirmada/.test(privacidadLineal) &&
+  privacidadLineal.includes('para abrir una lección comprobamos tu sesión; no guardamos qué lecciones lees') &&
+  /con la que también abres las lecciones de RWAdar Academy/.test(privacidadLineal) &&
+  !/consultar la web de RWAdar sin registrarte/.test(privacidadLineal));
+prueba('privacidad: los avisos de novedades se explican y todavía no están activos',
+  /<h3 id="avisos-novedades">Avisos de novedades \(correo y notificaciones\)<\/h3>\s*<p><b>Todavía no están activos\.<\/b>/.test(privacidad) &&
+  /casilla aparte y sin marcar/.test(privacidadLineal) && /<code>novedades-v2-2026-11-06<\/code>/.test(privacidad) &&
+  !/novedades-v1-2026-11-05/.test(privacidad) &&
+  /el permiso se guarda solo cuando confirmas el correo/.test(privacidadLineal) &&
+  /La baja corta a la vez los correos y las notificaciones de novedades/.test(privacidadLineal) &&
+  /no llevarán píxel de apertura ni seguimiento de clics/.test(privacidadLineal) &&
+  /Brevo enviaría los correos/.test(privacidadLineal) && /Firebase Cloud Messaging \(FCM\) de Google/.test(privacidadLineal) &&
+  /servicio de notificaciones de Apple/.test(privacidadLineal) &&
+  /90 días después de terminar/.test(privacidadLineal) && /no se actualicen en 180 días/.test(privacidadLineal) &&
+  /Al crear la cuenta confirmas que tienes 18 años o más/.test(privacidadLineal));
+// Revisión legal del 06/11/2026: lo que ya es cierto con los avisos todavía apagados.
+const seccionAvisos = privacidadLineal.slice(privacidadLineal.indexOf('<h3 id="avisos-novedades">'), privacidadLineal.indexOf('<h2 id="consultas-b2b">'));
+const seccionCondiciones = privacidadLineal.slice(privacidadLineal.indexOf('<h3 id="condiciones">'), privacidadLineal.indexOf('<h3 id="mapa-ubicacion">'));
+prueba('privacidad: condiciones de la cuenta dentro de #condiciones (adonde va /condiciones)',
+  /<p id="condiciones-cuenta"><b>Condiciones de la cuenta\.<\/b>/.test(seccionCondiciones) &&
+  /<li>Es gratuita y personal\.<\/li>/.test(seccionCondiciones) &&
+  /<li>Es solo para mayores de 18 años\.<\/li>/.test(seccionCondiciones) &&
+  /lecciones de RWAdar Academy, para tu uso personal: no se pueden redistribuir/.test(seccionCondiciones) &&
+  /Puedes borrarla cuando quieras desde Perfil/.test(seccionCondiciones) &&
+  /lo avisaremos en la web y, cuando el cambio sea importante, te pediremos que las aceptes de nuevo/.test(seccionCondiciones));
+prueba('privacidad: baja, retirada, conservación bloqueada y Brevo sin el nombre en los avisos',
+  /<b>Todavía no están activos\.<\/b>/.test(seccionAvisos) && /fichas nuevas en el radar/.test(seccionAvisos) &&
+  !/ofertas nuevas/.test(seccionAvisos) &&
+  /darte de baja en Perfil o con el enlace de cada correo/.test(seccionAvisos) &&
+  /Las notificaciones también se quitan en los ajustes del móvil/.test(seccionAvisos) &&
+  seccionAvisos.includes('Puedes retirar tu permiso cuando quieras, sin que afecte a los envíos anteriores.') &&
+  /el permiso y su historial de altas y bajas, mientras exista la cuenta/.test(seccionAvisos) &&
+  /queda bloqueado durante 3 años, solo para atender reclamaciones \(art\. 32 de la Ley Orgánica 3\/2018, LOPDGDD\)/.test(seccionAvisos) &&
+  !/se borra todo lo anterior/.test(privacidadLineal) &&
+  /recibiría tu dirección de correo y el contenido del mensaje, no tu nombre/.test(seccionAvisos) &&
+  !/el nombre si existe/.test(privacidadLineal) &&
+  /<b>Brevo<\/b> — solo si se activa en el futuro el envío de avisos por correo; recibiría tu dirección de correo y el contenido del mensaje necesario para entregarlo, no tu nombre\./.test(privacidadLineal) &&
+  /historial de ese permiso \(sus altas y bajas\), que queda bloqueado durante 3 años/.test(privacidadLineal) &&
+  /documentados en el registro de actividades de tratamiento de RWAdar/.test(privacidadLineal) &&
+  !/deben documentarse en el registro interno/.test(privacidadLineal));
+prueba('privacidad: los datos locales cuentan la vuelta a la lección de 24 horas y su borrado',
+  /En la web, al crear la cuenta desde una lección, el navegador guarda durante 24 horas a qué lección volver; se borra al usarlo o al caducar\./.test(privacidadLineal) &&
+  /const CLAVE_VOLVER = 'rwadar\.alta\.volver', DURACION_VOLVER = 24 \* 60 \* 60 \* 1000;/.test(accesoJS) &&
+  /\n  limpiarVolver\(\);\n/.test(accesoJS));
+// Texto versionado v2 y la información básica (fuera de la versión), en /acceso y en Perfil.
+const TEXTO_AVISOS_V2 = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en ';
+const INFO_DATOS = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Brevo y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; también puedes reclamar ante la AEPD. Más información en ';
+prueba('acceso y Perfil: casilla de 18 años y avisos de novedades apagados por defecto',
+  /Tengo 18 años o más, acepto las <a href="\/privacidad#condiciones">condiciones<\/a> y he leído la <a href="\/privacidad">privacidad<\/a>\./.test(accesoHTML) &&
+  accesoHTML.includes('<label id="campo-avisos-novedades" hidden class="consentimiento"><input id="avisos-novedades" type="checkbox">' + TEXTO_AVISOS_V2 + '<a href="/privacidad#avisos-novedades">Privacidad</a>.</label>') &&
+  accesoHTML.includes('<div id="info-datos" hidden class="consentimiento">' + INFO_DATOS + '<a href="/privacidad">Privacidad</a>.</div>') &&
+  panelPerfilHTML.includes('<span>' + TEXTO_AVISOS_V2 + '<a href="/privacidad#avisos-novedades">Privacidad</a>.</span>') &&
+  panelPerfilHTML.includes('<p class="perfil-aviso-detalle" id="perfilNovedadesDatos">' + INFO_DATOS + '<a href="/privacidad">Privacidad</a>.</p>') &&
+  / const VERSION_AVISOS_NOVEDADES='novedades-v2-2026-11-06';/.test(js) &&
+  /const AVISOS_NOVEDADES_REMOTOS = false;/.test(accesoJS) && / const AVISOS_NOVEDADES_REMOTOS=false;/.test(js) &&
+  /<div id="perfilAvisosProximamente">\s*<article class="movil-estado">/.test(panelPerfilHTML) &&
+  /<div id="perfilAvisosNovedades" hidden>\s*<article class="movil-estado">/.test(panelPerfilHTML) &&
+  !/<article class="movil-estado"[^>]*\shidden/.test(panelPerfilHTML) &&
+  /Los avisos llegarán a la app en una próxima actualización\./.test(panelPerfilHTML));
+marcadoEstricto('baja.html', bajaHTML);
+// El mismo asunto que el pie y List-Unsubscribe de los correos de avisos.
+const MAILTO_BAJA = 'mailto:RWAdar@protonmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
+prueba('baja: sin indexar, fuera del sitemap, sin formulario y con la baja por correo a la vista, también sin JavaScript',
+  /<meta name="robots" content="noindex,nofollow">/.test(bajaHTML) &&
+  /<script defer src="\/assets\/baja-20261105\.js"><\/script>/.test(bajaHTML) &&
+  !/<form\b/i.test(bajaHTML) && bajaHTML.includes('href="' + MAILTO_BAJA + '"') &&
+  [...bajaHTML.matchAll(/href="(mailto:[^"]+)"/g)].every(m => m[1] === MAILTO_BAJA) &&
+  /<noscript><p class="estado">[^<]*<a href="mailto:RWAdar@protonmail\.com\?subject=Baja%20de%20los%20avisos%20de%20RWAdar">RWAdar@protonmail\.com<\/a> con el asunto «Baja de los avisos de RWAdar»/.test(bajaHTML) &&
+  lee('assets/baja-20261105.js').includes('con el asunto «Baja de los avisos de RWAdar»') &&
+  !/asunto «baja»/.test(bajaHTML + lee('assets/baja-20261105.js')) &&
+  !/\/baja</.test(lee('sitemap.xml')));
 
 prueba('los redirects usan sintaxis portable de Cloudflare Pages',
   /^\/index\.html\s+\/\s+301$/m.test(redirecciones) &&
   /^\/privacidad\.html\s+\/privacidad\s+301$/m.test(redirecciones) &&
+  /^\/condiciones\s+\/privacidad#condiciones\s+301$/m.test(redirecciones) &&
   /^\/transparencia-comercial\.html\s+\/transparencia-comercial\s+301$/m.test(redirecciones) &&
   /^\/para-empresas\.html\s+\/\s+302$/m.test(redirecciones) && /^\/para-empresas\s+\/\s+302$/m.test(redirecciones) &&
   !/301!/.test(redirecciones));
@@ -3056,9 +3133,11 @@ console.log('\n=== RWADAR ACADEMY ===');
 
   prueba('las páginas de la Academy están generadas desde las lecciones y al día',
     academyMod.comprobar(academy).length === 0);
-  prueba('las nueve lecciones se validan: 7 publicadas y 2 en revisión con su motivo',
-    academy.lecciones.length === 9 && publicadasA.length === 7 &&
-    publicadasA.every(l => l.modulo <= 7) && pendientesA.every(l => l.estado === 'en_revision' && l.motivo));
+  // Las lecciones 8 y 9 se publican por orden de Víctor del 06/11/2026 («Publicar las 9 ya»).
+  prueba('las nueve lecciones se validan y las nueve están publicadas, en orden de módulo',
+    academy.lecciones.length === 9 && publicadasA.length === 9 && pendientesA.length === 0 &&
+    publicadasA.every((l, k) => l.modulo === k + 1) &&
+    academy.config.lecciones.every(l => l.estado === 'publicado' && !('motivo' in l)));
   prueba('el manifiesto publicable lista exactamente el índice y las lecciones publicadas',
     JSON.stringify(academyMod.paginasAcademy(academy)) === JSON.stringify([...PAGINAS_ACADEMY]) &&
     fs.readdirSync(path.join(sitio, 'academy')).length === publicadasA.length + 1 &&
@@ -3117,9 +3196,16 @@ console.log('\n=== RWADAR ACADEMY ===');
   const leccion1 = paginaDe('que-significa-tokenizar-un-activo');
   prueba('los dos tipos de recuadro (idea y aviso) se distinguen en el marcado',
     leccion1.includes('ac-recuadro ac-recuadro-idea') && leccion1.includes('ac-recuadro ac-recuadro-aviso'));
+  const leccion8 = paginaDe('expediente-de-tokenizacion'), leccion9 = paginaDe('despues-de-emitir-ciclo-de-vida');
+  const prontoAccion = etiqueta => new RegExp(`<span class="ac-accion ac-accion-pronto">${etiqueta} <small>Próximamente</small></span>`);
   prueba('un destino que aún no existe se muestra como «Próximamente», nunca como enlace',
-    /<span class="ac-accion ac-accion-pronto">Evaluador de Viabilidad <small>Próximamente<\/small><\/span>/.test(leccion1) &&
-    !/href="[^"]*evaluador/i.test(publicadasA.map(l => paginaDe(l.slug)).join('')));
+    prontoAccion('Evaluador de Viabilidad').test(leccion1) &&
+    prontoAccion('Evaluador de Viabilidad').test(leccion8) && prontoAccion('Checklist del expediente').test(leccion8) &&
+    leccion8.includes('<span class="ac-enlinea-pronto">Checklist del expediente <small>Próximamente</small></span>') &&
+    prontoAccion('Evaluador de Viabilidad').test(leccion9) &&
+    ['evaluador-viabilidad', 'checklist-expediente'].every(d => academy.destinos[d].estado === 'proximamente') &&
+    // (la lección 8 tiene un apartado propio, #tu-checklist: un ancla de la página no es un destino)
+    !/href="(?!#)[^"]*(?:evaluador|checklist)/i.test(publicadasA.map(l => paginaDe(l.slug)).join('')));
   prueba('un destino parcial enlaza al radar y explica qué falta',
     paginaDe('quien-es-quien-actores-tokenizacion').includes('todavía no filtra por tipo de proveedor') &&
     paginaDe('marco-legal-cuando-tu-token-es-un-valor').includes('Todavía no hay un filtro por supervisión'));
@@ -3127,10 +3213,30 @@ console.log('\n=== RWADAR ACADEMY ===');
     (paginaDe('es-tu-activo-tokenizable').match(/<div class="ac-tabla ac-tabla-c\d" role="region" tabindex="0"/g) || []).length >= 1 &&
     /\.ac-tabla\{overflow-x:auto/.test(lee('assets/academy-20261002.css')) &&
     /body\{[^}]*overflow-x:hidden/.test(lee('assets/academy-20261002.css')));
-  prueba('la última lección publicada enlaza la siguiente como «Próximamente», sin página inexistente',
-    paginaDe('como-leer-el-radar').includes('ac-vecina-pronto') &&
-    !paginaDe('como-leer-el-radar').includes('href="/academy/expediente-de-tokenizacion"') &&
+  prueba('las lecciones 7, 8 y 9 se enlazan en orden y la 9, la última, no anuncia ninguna siguiente',
+    paginaDe('como-leer-el-radar').includes('<a class="ac-vecina ac-vecina-siguiente" href="/academy/expediente-de-tokenizacion" rel="next">') &&
+    leccion8.includes('<a class="ac-vecina ac-vecina-anterior" href="/academy/como-leer-el-radar" rel="prev">') &&
+    leccion8.includes('<a class="ac-vecina ac-vecina-siguiente" href="/academy/despues-de-emitir-ciclo-de-vida" rel="next">') &&
+    leccion9.includes('<a class="ac-vecina ac-vecina-anterior" href="/academy/expediente-de-tokenizacion" rel="prev">') &&
+    !leccion9.includes('ac-vecina-siguiente') && publicadasA.every(l => !paginaDe(l.slug).includes('ac-vecina-pronto')) &&
     paginaDe('liquidez-como-evaluarla').includes('href="/academy/como-leer-el-radar"'));
+  // Sin lecciones pendientes de verdad, el camino «Próximamente» se prueba con una
+  // Academy simulada en la que la 9 vuelve a «en revisión» (no se escribe nada).
+  const academyPendiente = { ...academy, lecciones: academy.lecciones.map(l =>
+    l.slug === 'despues-de-emitir-ciclo-de-vida' ? { ...l, estado: 'en_revision' } : l) };
+  const salidasPendiente = academyMod.construirSalidas(academyPendiente);
+  const salidaPendiente = nombre => salidasPendiente.get(path.join(sitio, ...nombre.split('/')));
+  prueba('si una lección vuelve a «en revisión», sale como «Próximamente» sin página ni enlace',
+    salidaPendiente('academy/expediente-de-tokenizacion.html').includes('<div class="ac-vecina ac-vecina-siguiente ac-vecina-pronto"><span>Siguiente → · Lección 9 · Próximamente</span>') &&
+    !salidaPendiente('academy/expediente-de-tokenizacion.html').includes('href="/academy/despues-de-emitir-ciclo-de-vida"') &&
+    salidaPendiente('academy/expediente-de-tokenizacion.html').includes('Lección 8 de 8 ·') &&
+    salidaPendiente('academy/despues-de-emitir-ciclo-de-vida.html') === undefined &&
+    (salidaPendiente('academy/index.html').match(/ac-tarjeta ac-tarjeta-pronto/g) || []).length === 1 &&
+    !salidaPendiente('academy/index.html').includes('href="/academy/despues-de-emitir-ciclo-de-vida"') &&
+    salidaPendiente('index.html').includes('<h3 id="academiaLeccionesTit">8 de 9 lecciones disponibles</h3>') &&
+    salidaPendiente('index.html').includes('<span>8 lecciones gratis en Academy</span>') &&
+    !salidaPendiente('index.html').includes('href="/academy/despues-de-emitir-ciclo-de-vida"') &&
+    !academyMod.paginasAcademy(academyPendiente).includes('academy/despues-de-emitir-ciclo-de-vida.html'));
   prueba('el índice muestra los tres niveles, el progreso local y las pendientes como «Próximamente»',
     academy.niveles.every(n => indiceAcademy.includes(`<section class="ac-nivel" id="${n.id}"`)) &&
     indiceAcademy.includes(`<progress max="${publicadasA.length}" value="0"`) &&
@@ -3143,12 +3249,64 @@ console.log('\n=== RWADAR ACADEMY ===');
     publicadasA.every(l => html.includes(`<a href="/academy/${l.slug}">`)) &&
     pendientesA.every(l => !html.includes(`href="/academy/${l.slug}"`)) &&
     html.includes('<p id="comparador">'));
-  prueba('el sitemap incluye solo la Academy publicada',
+  // Academy con cuenta (05/11/2026): las lecciones piden cuenta, llevan noindex y
+  // salen del sitemap; el índice sigue público e indexable.
+  const conCuentaA = academy.acceso === 'cuenta';
+  prueba('academy.json declara quién abre las lecciones y hoy es "cuenta"',
+    academyMod.ACCESOS.join('|') === 'cuenta|publico' && conCuentaA);
+  prueba('el sitemap lleva el índice de la Academy y ninguna lección (van con cuenta)',
     sitemapAcademy.includes('<loc>https://rwadar.pages.dev/academy/</loc>') &&
-    publicadasA.every(l => sitemapAcademy.includes(`<loc>https://rwadar.pages.dev/academy/${l.slug}</loc>`)) &&
-    pendientesA.every(l => !sitemapAcademy.includes(l.slug)));
+    academy.lecciones.every(l => !sitemapAcademy.includes(`/academy/${l.slug}`)));
+  prueba('cada lección publicada lleva una sola etiqueta robots con noindex; el índice se indexa',
+    publicadasA.every(l => (paginaDe(l.slug).match(/<meta name="robots"[^>]*>/g) || []).join() === '<meta name="robots" content="noindex, nofollow">') &&
+    indiceAcademy.includes('<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">'));
+  const ldIndice = JSON.parse(indiceAcademy.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+  prueba('los datos estructurados del índice no anuncian lecciones que no se indexan',
+    ldIndice['@type'] === 'CollectionPage' && !('hasPart' in ldIndice) && /gratis con tu cuenta/.test(ldIndice.description) &&
+    !/academy\/[a-z]/.test(JSON.stringify(ldIndice)));
+  const textoIndice = textoDe(indiceAcademy), bloqueAcademy = html.slice(html.indexOf('<!--academy:ini-->'), html.indexOf('<!--academy:fin-->'));
+  prueba('el índice y la portada dicen «Gratis con tu cuenta» y llevan a crear la cuenta, sin prometer lecciones que no hay',
+    textoIndice.includes('Gratis con tu cuenta') && textoIndice.includes('Crea tu cuenta gratis para abrir las lecciones') &&
+    indiceAcademy.includes(`<a class="ac-accion" href="${academyMod.ALTA_ACADEMY}">`) && academyMod.ALTA_ACADEMY === '/acceso?volver=/academy/' &&
+    textoDe(bloqueAcademy).includes('Gratis con tu cuenta') && textoDe(bloqueAcademy).includes('Crea tu cuenta gratis para abrir las lecciones') &&
+    textoDe(bloqueAcademy).includes(`${publicadasA.length} de ${academy.lecciones.length} lecciones disponibles`) &&
+    !/\b9 lecciones (?:gratuitas|en 3 niveles)/.test(textoIndice + textoDe(bloqueAcademy)) &&
+    !/lecciones gratuitas/i.test(indiceAcademy.match(/<meta name="description" content="([^"]+)"/)[1]));
+  const { ingles: inglesAcademy } = require('./rwadar-movil/lib/idioma.js');
+  const textosBloque = [...bloqueAcademy.matchAll(/<(h3|h4|b|small|p)\b[^>]*>([^<]+)<\/\1>/g)].map(m => m[2]);
+  prueba('en inglés, el bloque de lecciones de la portada se traduce entero (también el recuento y las lecciones 8 y 9)',
+    textosBloque.length >= 30 && textosBloque.every(t => inglesAcademy(t) !== t) &&
+    inglesAcademy(`${publicadasA.length} de ${academy.lecciones.length} lecciones disponibles`) === `${publicadasA.length} of ${academy.lecciones.length} lessons available` &&
+    inglesAcademy('Preparación · 15 min') === 'Preparation · 15 min' && inglesAcademy('Post-emisión · 17 min') === 'After issuance · 17 min');
+  // Con "publico" (el interruptor de vuelta atrás), todo vuelve a como estaba.
+  const salidasPublicas = academyMod.construirSalidas({ ...academy, acceso: 'publico' });
+  const salidaPublica = nombre => salidasPublicas.get(path.join(sitio, ...nombre.split('/')));
+  prueba('con "acceso": "publico", las lecciones se indexan, vuelven al sitemap y el índice las enumera',
+    publicadasA.every(l => salidaPublica(`academy/${l.slug}.html`).includes('<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">') &&
+      salidaPublica('sitemap.xml').includes(`<loc>https://rwadar.pages.dev/academy/${l.slug}</loc>`)) &&
+    /"hasPart":\[/.test(salidaPublica('academy/index.html')) && !salidaPublica('academy/index.html').includes('Gratis con tu cuenta') &&
+    salidaPublica('index.html').includes(`<h3 id="academiaLeccionesTit">${academy.lecciones.length} lecciones en 3 niveles</h3>`));
+  prueba('el generador de la Academy rechaza un "acceso" desconocido',
+    /"acceso" debe ser "cuenta" o "publico"/.test(fs.readFileSync(path.join(raiz, 'rwadar-academy.js'), 'utf8')));
   prueba('las URL limpias de la Academy no se quedan en caché del CDN',
     /\/academy\/\*\n\s+Cache-Control: public, max-age=0, must-revalidate/.test(headers));
+  prueba('la baja de avisos no se indexa ni se guarda en ninguna caché',
+    /\n\/baja\n\s+Cache-Control: no-store\n\s+X-Robots-Tag: noindex, nofollow\n/.test(headers));
+  prueba('el publicado de cada lección lleva su contenido y noindex antes de subir',
+    academyMod.comprobarLeccionesPublicadas(publicado, academy).length === 0 &&
+    /comprobarLeccionesPublicadas\(temporal\)/.test(publicador) &&
+    publicador.indexOf('comprobarLeccionesPublicadas(temporal)') < publicador.indexOf("'pages', 'deploy', SALIDA"));
+  prueba('la baja de avisos se publica con su script con huella y sin el ayudante de sesión',
+    ARCHIVOS_PUBLICABLES.includes('baja.html') && ARCHIVOS_PUBLICABLES.includes('assets/baja-20261105.js') &&
+    /'baja\.html', \.\.\.PAGINAS_ACADEMY/.test(publicador) &&
+    /\['acceso\.html', 'baja\.html', 'privacidad\.html', 'transparencia-comercial\.html'\]\.includes\(nombre\)/.test(publicador) &&
+    /\/assets\/baja-20261105\.[0-9a-f]{12}\.js/.test(fs.readFileSync(path.join(publicado, 'baja.html'), 'utf8')) &&
+    !fs.readFileSync(path.join(publicado, 'baja.html'), 'utf8').includes('/assets/acceso-privado'));
+  const workerPublicado = fs.readFileSync(path.join(publicado, '_worker.js'), 'utf8');
+  prueba('el worker publicado lleva la puerta de la Academy con la lista cerrada de lecciones',
+    workerPublicado.includes('const academyRWAdar = Object.freeze(' + JSON.stringify({ acceso: 'cuenta', lecciones: publicadasA.map(l => l.slug).sort() }) + ');') &&
+    workerPublicado.includes('crearAccesoServidor({ academy: academyRWAdar })') &&
+    pendientesA.every(l => !workerPublicado.includes(l.slug)));
   const codigoAcademy = lee('assets/academy-20261002.js');
   prueba('el progreso es local y separado por cuenta tras verificar la sesión, sin enviar resultados',
     /CLAVE = 'rwadar\.academy\.v1:' \+ cuenta\.id/.test(codigoAcademy) && /if \(!CLAVE\) return vacio\(\)/.test(codigoAcademy) &&
@@ -3295,13 +3453,15 @@ try {
   const academyIndice = await fetch(`http://127.0.0.1:${puerto}/academy/`);
   const academyLeccion = await fetch(`http://127.0.0.1:${puerto}/academy/que-significa-tokenizar-un-activo`);
   const academyHtml = await fetch(`http://127.0.0.1:${puerto}/academy/que-significa-tokenizar-un-activo.html`, { redirect:'manual' });
-  const academyPendiente = await fetch(`http://127.0.0.1:${puerto}/academy/expediente-de-tokenizacion`);
+  const academyLeccion9 = await fetch(`http://127.0.0.1:${puerto}/academy/despues-de-emitir-ciclo-de-vida`);
+  const academyInventada = await fetch(`http://127.0.0.1:${puerto}/academy/leccion-inventada`);
   prueba('las URL limpias de la Academy funcionan localmente como en Cloudflare',
     academySinBarra.status===308 && academySinBarra.headers.get('location')==='/academy/' &&
     academyIndice.status===200 && (await academyIndice.text()).includes('data-academy-indice-pagina') &&
     academyLeccion.status===200 && (await academyLeccion.text()).includes('data-academy-leccion="que-significa-tokenizar-un-activo"') &&
     academyHtml.status===308 && academyHtml.headers.get('location')==='/academy/que-significa-tokenizar-un-activo' &&
-    academyPendiente.status===404);
+    academyLeccion9.status===200 && (await academyLeccion9.text()).includes('data-academy-leccion="despues-de-emitir-ciclo-de-vida"') &&
+    academyInventada.status===404);
 } finally {
   proceso.kill();
 }

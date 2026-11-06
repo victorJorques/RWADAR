@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Keyboard, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
-import { Pressable, Text, TextInput, View } from './Idioma';
+import { Pressable, Text, TextInput, View, useIdioma } from './Idioma';
 import { C, F, R, T, UI } from '../lib/tema';
+import { INFO_BASICA_ES, TEXTO_AVISOS_ES } from '../lib/avisos-cuenta';
 
 const PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
-const CONDICIONES = 'https://rwadar.pages.dev/condiciones';
+// Las condiciones están en la página de privacidad (la ruta /condiciones da 404).
+const CONDICIONES = 'https://rwadar.pages.dev/privacidad#condiciones';
+const TEXTO_EDAD = 'Tengo 18 años o más, acepto las condiciones y he leído la privacidad';
 
 /* Validación de lectura, no autorización: el controlador y el servidor
    comprueban otra vez los datos y la identidad antes de cada operación. */
@@ -26,7 +29,7 @@ export function validarFormularioCuenta(vista, datos) {
     return 'Usa un nombre de hasta 60 caracteres, sin saltos de línea.';
   }
   if (vista === 'alta' && datos.acepta !== true) {
-    return 'Acepta las condiciones y confirma que has leído la privacidad.';
+    return 'Confirma que tienes 18 años o más, que aceptas las condiciones y que has leído la privacidad.';
   }
   if (vista === 'borrar' && datos.confirmacion !== 'BORRAR') {
     return 'Escribe BORRAR para confirmar la baja.';
@@ -59,12 +62,22 @@ function Campo({ etiqueta, referencia, ...props }) {
   );
 }
 
-export default function Cuenta({ controlador, estado, seguridad, plataformas = [], onAbrirEmpresa, onAbrirEnlace }) {
+/* avisosNovedades: interruptor AVISOS_NOVEDADES_REMOTOS. Apagado, el alta y
+   el perfil envían exactamente lo de antes y no enseñan la casilla ni la
+   información básica de los avisos. Con o sin él, las condiciones abren
+   /privacidad#condiciones y borrar la cuenta explica que se van también los
+   avisos (revisión legal del 06/11/2026). */
+export default function Cuenta({ controlador, estado, seguridad, plataformas = [], onAbrirEmpresa, onAbrirEnlace,
+  avisosNovedades = false }) {
+  // Idioma en que se ve la casilla de avisos: se guarda con el permiso.
+  const idioma = useIdioma();
   const [vista, setVista] = useState('entrar');
   const [correo, setCorreo] = useState('');
   const [clave, setClave] = useState('');
   const [nombre, setNombre] = useState('');
   const [acepta, setAcepta] = useState(false);
+  // Casilla aparte y sin marcar: la Academy y la cuenta no dependen de ella.
+  const [avisos, setAvisos] = useState(false);
   const [confirmacion, setConfirmacion] = useState('');
   const [errorLocal, setErrorLocal] = useState('');
   const [selectorAbierto, setSelectorAbierto] = useState(false);
@@ -126,7 +139,9 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
     const error = validarFormularioCuenta(vista, datos);
     if (error) { setErrorLocal(error); return; }
     if (vista === 'alta') {
-      ejecutar('registrar', { correo, clave, nombre, aceptaCondiciones: acepta }, () => setVista('confirmacion'));
+      ejecutar('registrar', { correo, clave, nombre, aceptaCondiciones: acepta,
+        ...(avisosNovedades === true ? { avisosNovedades: avisos === true, idioma: idioma === 'en' ? 'en' : 'es' } : {}) },
+      () => setVista('confirmacion'));
     } else if (vista === 'recuperar') {
       ejecutar('recuperar', { correo });
     } else if (vista === 'borrar') {
@@ -207,7 +222,9 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
 
           <View style={s.divisor} />
           <Text style={s.subtitulo} accessibilityRole="header">Lista de seguimiento · {vigiladas.length}</Text>
-          <Text style={s.nota}>Estas empresas se sincronizan con tu cuenta. No son inversiones ni activan avisos por correo.</Text>
+          <Text style={s.nota}>{avisosNovedades
+            ? 'Estas empresas se sincronizan con tu cuenta. No son inversiones ni activan avisos sobre cada empresa.'
+            : 'Estas empresas se sincronizan con tu cuenta. No son inversiones ni activan avisos por correo.'}</Text>
           {vigiladas.length ? vigiladas.map((p) => {
             const empresa = plataformas.find((item) => item.nombre === p.nombre);
             return (
@@ -245,7 +262,7 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
         </>
       ) : autenticada && vista === 'borrar' ? (
         <>
-          <Text style={s.parrafo}>La baja elimina tu perfil y tu lista de seguimiento de la cuenta. No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.</Text>
+          <Text style={s.parrafo}>Borrar la cuenta elimina tu perfil, tu lista de seguimiento, tu registro de inversiones y tus avisos (permiso y móviles registrados; el historial del permiso queda bloqueado 3 años solo para atender reclamaciones). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.</Text>
           <Campo etiqueta="Contraseña actual" referencia={claveInput} value={clave} onChangeText={setClave}
             secureTextEntry autoCapitalize="none" autoCorrect={false} autoComplete="current-password"
             textContentType="password" editable={!bloqueado} maxLength={256} />
@@ -296,16 +313,28 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
                 autoCapitalize="words" autoComplete="name" maxLength={60} editable={!bloqueado}
                 returnKeyType="done" onSubmitEditing={enviarFormulario} />
               <Pressable onPress={() => setAcepta(!acepta)} disabled={bloqueado} style={s.aceptacion}
-                accessibilityRole="checkbox" accessibilityLabel="Acepto las condiciones y he leído la privacidad"
+                accessibilityRole="checkbox" accessibilityLabel={TEXTO_EDAD}
                 accessibilityState={{ checked: acepta, disabled: bloqueado }}>
                 <View style={[s.casilla, acepta && s.casillaMarcada]}><Text style={s.marca}>{acepta ? '✓' : ''}</Text></View>
-                <Text style={s.aceptacionTexto}>Acepto las condiciones y he leído la privacidad.</Text>
+                <Text style={s.aceptacionTexto}>{`${TEXTO_EDAD}.`}</Text>
               </Pressable>
+              {avisosNovedades ? (
+                <Pressable onPress={() => setAvisos(!avisos)} disabled={bloqueado} style={s.aceptacion}
+                  accessibilityRole="checkbox" accessibilityLabel={TEXTO_AVISOS_ES}
+                  accessibilityState={{ checked: avisos, disabled: bloqueado }}>
+                  <View style={[s.casilla, avisos && s.casillaMarcada]}><Text style={s.marca}>{avisos ? '✓' : ''}</Text></View>
+                  <Text style={s.aceptacionTexto}>{TEXTO_AVISOS_ES}</Text>
+                </Pressable>
+              ) : null}
+              {/* Primera capa de información, fuera del texto versionado del permiso. */}
+              {avisosNovedades ? <Text style={s.nota}>{INFO_BASICA_ES}</Text> : null}
               <View style={s.enlaces}>
                 <Boton texto="Leer condiciones" secundario onPress={() => onAbrirEnlace(CONDICIONES)} />
                 <Boton texto="Leer privacidad" secundario onPress={() => onAbrirEnlace(PRIVACIDAD)} />
               </View>
-              <Text style={s.nota}>No te suscribes a publicidad ni a avisos. Tendrás que confirmar el correo antes de entrar.</Text>
+              <Text style={s.nota}>{avisosNovedades
+                ? 'Crear la cuenta no te suscribe a publicidad. Los avisos de novedades solo llegan si marcas su casilla y confirmas el correo. Tendrás que confirmar el correo antes de entrar.'
+                : 'No te suscribes a publicidad ni a avisos. Tendrás que confirmar el correo antes de entrar.'}</Text>
             </>
           ) : null}
           <Boton texto={vista === 'alta' ? 'Crear cuenta' : vista === 'recuperar' ? 'Enviar enlace de recuperación' : 'Entrar'}

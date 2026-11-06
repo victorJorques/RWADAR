@@ -3,9 +3,13 @@
 # RWAdar · copia de seguridad cifrada de la base de datos
 # ---------------------------------------------------------------------
 # Hace una copia de lo que no se puede volver a generar desde el
-# repositorio: las cuentas (auth), los datos de la app (public) y el
-# catálogo editorial (rwadar_catalogo). La cifra con una contraseña y
-# comprueba que se puede descifrar y leer antes de darla por buena.
+# repositorio: las cuentas (auth), los datos de la app (public), el
+# catálogo editorial (rwadar_catalogo) y los avisos a registrados
+# (rwadar_novedades: permisos, bajas, móviles y colas). La cartera de cada
+# cuenta (rwadar_cuentas_privadas) NO entra todavía, a propósito: ver
+# ESQUEMAS más abajo y docs/COPIAS-DE-SEGURIDAD.md. La cifra con una
+# contraseña y comprueba que se puede descifrar y leer antes de darla por
+# buena.
 #
 # Lo usa el workflow `.github/workflows/copia-seguridad.yml`, pero
 # también funciona a mano desde Git Bash o Linux:
@@ -19,7 +23,14 @@
 set -euo pipefail
 
 SALIDA="${1:-copia-rwadar}"
-ESQUEMAS="${COPIA_ESQUEMAS:-public rwadar_catalogo auth}"
+# Un esquema que todavía no existe (rwadar_novedades antes de aplicar la 30)
+# no rompe la copia: sin --strict-names, pg_dump solo falla si NINGÚN
+# esquema de la lista existe (manual de pg_dump, --strict-names). No añadir
+# --strict-names mientras haya esquemas pendientes de aplicar.
+# rwadar_cuentas_privadas (cartera) queda fuera a propósito: carteras lleva
+# FORCE ROW LEVEL SECURITY y, si postgres no puede saltársela, pg_dump falla
+# entero (también la copia previa de «Aplicar catálogo»). Ver COPIAS-DE-SEGURIDAD.md.
+ESQUEMAS="${COPIA_ESQUEMAS:-public rwadar_catalogo auth rwadar_novedades}"
 # Tablas sin las cuales la copia no sirve. Si falta alguna, se para.
 IMPRESCINDIBLES="${COPIA_IMPRESCINDIBLES:-public plataformas|public fuentes|rwadar_catalogo revisiones|auth users}"
 

@@ -3,9 +3,25 @@ import { isRunningInExpoGo } from 'expo';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import { MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS } from './modo-local';
+import { MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, AVISOS_NOVEDADES_REMOTOS } from './modo-local';
+import { aperturaDesdeDatosAviso, capacidadPushNativa, tokenPushValido } from './avisos-cuenta';
+import { traducir } from './idioma';
 
 const SERVICIOS_ACTIVOS = !MODO_LOCAL && SERVICIOS_USUARIO_REMOTOS === true;
+// Avisos de novedades de la cuenta (contrato del 05/11/2026). Independientes
+// de las instalaciones antiguas, que siguen cerradas.
+const NOVEDADES_ACTIVAS = !MODO_LOCAL && AVISOS_NOVEDADES_REMOTOS === true;
+/* Dos canales de Android, con los mismos `channelId` con que envía la base:
+   «cuenta» para los avisos de servicio (la bienvenida) y «novedades» para los
+   anuncios. Así, quien desactiva las novedades en los ajustes del móvil o
+   desde la propia notificación no deja de recibir los avisos de su cuenta, y
+   al revés. Solo se crean en binarios con capacidad push (1.4.2 o posterior). */
+export const CANALES_AVISOS = Object.freeze([
+  Object.freeze({ id: 'cuenta', nombre: 'Avisos de tu cuenta',
+    descripcion: 'Avisos de servicio de tu cuenta, como la bienvenida.' }),
+  Object.freeze({ id: 'novedades', nombre: 'Novedades de RWAdar',
+    descripcion: 'Fichas nuevas en el radar y novedades de la web y la app.' }),
+]);
 let moduloSupabase = SERVICIOS_ACTIVOS ? require('./supabase') : null;
 function supabaseRemoto() {
   if (!SERVICIOS_ACTIVOS) throw new Error('Los servicios remotos de usuario están desactivados');
@@ -53,12 +69,45 @@ export function slugDesdeRespuestaAviso(respuesta) {
   return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) ? slug : null;
 }
 
+/* Capacidad del binario instalado para las notificaciones de novedades: la
+   1.4.1 (código 23) bloquea POST_NOTIFICATIONS y no lleva Firebase. Solo se
+   lee runtimeVersion de expo-updates; por debajo del código 24 nunca se llama
+   al SDK de notificaciones. */
+export function capacidadPushNovedades() {
+  if (!NOVEDADES_ACTIVAS || (Platform.OS !== 'android' && Platform.OS !== 'ios')) return false;
+  try {
+    return capacidadPushNativa(require('expo-updates').runtimeVersion);
+  } catch {
+    return false;
+  }
+}
+
+/* Con la app abierta, una notificación de novedades se enseña como banner.
+   Solo con capacidad nativa y una sola vez. */
+let manejadorNovedades = false;
+function prepararNotificacionesNovedades() {
+  if (manejadorNovedades || SERVICIOS_ACTIVOS) return;
+  manejadorNovedades = true;
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowBanner: true,
+      shouldShowList: true,
+      shouldPlaySound: false,
+      shouldSetBadge: false,
+    }),
+  });
+}
+
 /* Observa exclusivamente interacciones del usuario. Consultar la ultima
    respuesta y registrar el listener no solicita permisos ni crea un token.
-   Se cubren tanto el arranque en frio como un toque con la app abierta. */
-export function observarAperturasAvisos(onAbrir) {
-  if (!SERVICIOS_ACTIVOS) return () => {};
-  if (Platform.OS === 'web' || typeof onAbrir !== 'function') return () => {};
+   Se cubren tanto el arranque en frio como un toque con la app abierta.
+   `onAbrir` recibe el slug editorial antiguo; `onDestino`, las novedades
+   ({tipo, destino}) del contrato del 05/11/2026. Lo demás se ignora. */
+export function observarAperturasAvisos(onAbrir, { onDestino } = {}) {
+  const conDestino = typeof onDestino === 'function' && capacidadPushNovedades();
+  // El slug antiguo se sigue aceptando donde hay un observador activo.
+  const conSlug = typeof onAbrir === 'function' && (SERVICIOS_ACTIVOS || conDestino);
+  if (Platform.OS === 'web' || (!conSlug && !conDestino)) return () => {};
 
   let activo = true;
   const atendidas = new Set();
@@ -68,14 +117,15 @@ export function observarAperturasAvisos(onAbrir) {
     if (accion && Notifications.DEFAULT_ACTION_IDENTIFIER &&
         accion !== Notifications.DEFAULT_ACTION_IDENTIFIER) return;
 
-    const slug = slugDesdeRespuestaAviso(respuesta);
-    if (!slug) return;
+    const apertura = aperturaDesdeDatosAviso(respuesta?.notification?.request?.content?.data);
+    if (!apertura || (apertura.slug ? !conSlug : !conDestino)) return;
     const identificador = respuesta?.notification?.request?.identifier;
     if (identificador && atendidas.has(identificador)) return;
     if (identificador) atendidas.add(identificador);
 
     try {
-      const abierta = await onAbrir(slug);
+      const abierta = await (apertura.slug ? onAbrir(apertura.slug)
+        : onDestino({ tipo: apertura.tipo, destino: apertura.destino }));
       if (abierta === false) {
         if (identificador) atendidas.delete(identificador);
         return;
@@ -88,6 +138,7 @@ export function observarAperturasAvisos(onAbrir) {
 
   let suscripcion;
   try {
+    if (conDestino) prepararNotificacionesNovedades();
     suscripcion = Notifications.addNotificationResponseReceivedListener(
       (respuesta) => { void manejar(respuesta); },
     );
@@ -223,5 +274,67 @@ export async function registrarParaAvisos({ solicitarPermiso = false } = {}) {
       estado: 'error',
       motivo: error?.message || 'no se pudo preparar el dispositivo',
     };
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Notificaciones de novedades en este móvil (APK 1.4.2 o posterior)
+   --------------------------------------------------------------------- */
+function entornoPushNovedades() {
+  if (!NOVEDADES_ACTIVAS) return { ok: false, estado: 'desactivados' };
+  if (Platform.OS === 'web') return { ok: false, estado: 'no-compatible' };
+  if (!capacidadPushNovedades()) return { ok: false, estado: 'requiere-version' };
+  if (!Device.isDevice) return { ok: false, estado: 'emulador' };
+  if (Platform.OS === 'android' && isRunningInExpoGo()) return { ok: false, estado: 'expo-go' };
+  if (!proyectoEas()) return { ok: false, estado: 'configuracion-pendiente' };
+  return null;
+}
+
+/* Consulta pasiva: nunca abre el diálogo del sistema ni pide un token. */
+export async function consultarPushNovedades() {
+  try {
+    const previo = entornoPushNovedades();
+    if (previo) return previo;
+    const permiso = await Notifications.getPermissionsAsync();
+    if (permisoConcedido(permiso)) return { ok: true, estado: 'permitido' };
+    return { ok: false, estado: permiso.canAskAgain ? 'disponible' : 'denegado' };
+  } catch {
+    return { ok: false, estado: 'error' };
+  }
+}
+
+/* Solo tras pulsar «Notificaciones en este móvil». El token solo va a las
+   funciones de avisos de la cuenta y al almacenamiento por cuenta de este
+   móvil; nunca a registros ni mensajes. */
+export async function obtenerTokenNovedades({ solicitarPermiso = false } = {}) {
+  try {
+    const previo = entornoPushNovedades();
+    if (previo) return previo;
+    /* Android 13 no muestra el permiso ni entrega token hasta que existe al
+       menos un canal, según la documentación versionada de SDK 57. Se crean
+       (o se actualizan, con el idioma de la app) los dos antes de pedirlo, y
+       también al renovar: así un móvil ya activo recibe el canal que le falte. */
+    if (Platform.OS === 'android') {
+      for (const canal of CANALES_AVISOS) {
+        await Notifications.setNotificationChannelAsync(canal.id, {
+          name: traducir(canal.nombre),
+          description: traducir(canal.descripcion),
+          importance: Notifications.AndroidImportance.DEFAULT,
+          lightColor: '#25E39A',
+        });
+      }
+    }
+    let permiso = await Notifications.getPermissionsAsync();
+    if (!permisoConcedido(permiso)) {
+      if (!solicitarPermiso) return { ok: false, estado: permiso.canAskAgain ? 'disponible' : 'denegado' };
+      if (!permiso.canAskAgain) return { ok: false, estado: 'denegado' };
+      permiso = await Notifications.requestPermissionsAsync();
+    }
+    if (!permisoConcedido(permiso)) return { ok: false, estado: 'denegado' };
+    const { data: token } = await Notifications.getExpoPushTokenAsync({ projectId: proyectoEas() });
+    if (!tokenPushValido(token)) return { ok: false, estado: 'error' };
+    return { ok: true, estado: 'permitido', token, plataforma: Platform.OS };
+  } catch {
+    return { ok: false, estado: 'error' };
   }
 }

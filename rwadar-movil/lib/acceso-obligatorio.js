@@ -10,10 +10,13 @@ function cuentaAdmitida(estado) {
     estado.perfil?.id === estado.usuario.id;
 }
 
+/* Lo que «Borrar datos del dispositivo» elimina sin más. El token de avisos
+   de este móvil (rwadar.editorial.avisos.push.v1:<UUID>) no está aquí a
+   propósito: lib/datos.js lo borra solo después de quitarlo de la base. */
 function clavesPrivadasDispositivo(claves) {
   return claves.filter(key => /^rwadar:cartera:v1:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key) ||
     /^rwadar\.cache\.catalogo\.v2:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key) ||
-    /^rwadar\.editorial\.(?:siguiendo|seguimiento\.pendiente|academy\.progreso\.v1|ofertas\.guardadas\.v1):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key));
+    /^rwadar\.editorial\.(?:siguiendo|seguimiento\.pendiente|academy\.progreso\.v1|ofertas\.guardadas\.v1|avisos\.leidos\.v1|avisos\.renovado\.v1):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(key));
 }
 
 module.exports = { cuentaAdmitida, clavesPrivadasDispositivo };

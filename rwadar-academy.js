@@ -35,6 +35,14 @@ const JS = '/assets/academy-20261002.js';
 const ANALITICA = '/assets/analitica-20260927.js';
 const PALABRAS_POR_MINUTO = 200;
 const ESTADOS = new Set(['borrador', 'en_revision', 'publicado', 'retirado']);
+const ACCESOS = ['cuenta', 'publico'];
+/* Con "acceso": "cuenta" las lecciones no se indexan: el worker añade además
+   X-Robots-Tag: noindex. El índice /academy/ sigue indexable. */
+const ROBOTS_INDEXABLE = 'index,follow,max-snippet:-1,max-image-preview:large';
+const ROBOTS_CON_CUENTA = 'noindex, nofollow';
+/* Adónde lleva «Crea tu cuenta gratis»: /acceso abre «Crear cuenta gratis» y
+   vuelve a la Academy al confirmar (contrato del 05/11/2026). */
+const ALTA_ACADEMY = '/acceso?volver=/academy/';
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto',
   'septiembre', 'octubre', 'noviembre', 'diciembre'];
 const ICONO = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'><rect width='104' height='104' rx='24' fill='%230B0A0A'/><g fill='none' stroke='%2325E39A' stroke-width='2.6' opacity='.55'><circle cx='52' cy='52' r='40'/><circle cx='52' cy='52' r='28'/></g><path d='M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z' fill='%2325E39A' opacity='.45'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z' fill='%2325E39A'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52Z' fill='%230F7A57'/></svg>";
@@ -466,6 +474,9 @@ function cargarAvisoComun(acciones) {
 function cargarAcademy() {
   const config = JSON.parse(fs.readFileSync(path.join(DIR_FUENTE, 'academy.json'), 'utf8'));
   const donde = 'academy.json';
+  /* Quién abre las lecciones en la web: "cuenta" o "publico". El worker lo
+     aplica (rwadar-acceso/compilar.cjs) y aquí cambian noindex, sitemap y textos. */
+  if (!ACCESOS.includes(config.acceso)) falla(donde, '"acceso" debe ser "cuenta" o "publico"');
   if (!Array.isArray(config.niveles) || !config.niveles.length) falla(donde, 'faltan los niveles');
   const ids = new Set(config.niveles.map(n => n.id));
   if (ids.size !== config.niveles.length) falla(donde, 'hay niveles repetidos');
@@ -528,7 +539,7 @@ function cargarAcademy() {
     }
     delete l.enlacesDeclarados;
   });
-  return { config, niveles: config.niveles, destinos: config.destinos, avisoComun: contexto.avisoComun, lecciones, avisos };
+  return { config, acceso: config.acceso, niveles: config.niveles, destinos: config.destinos, avisoComun: contexto.avisoComun, lecciones, avisos };
 }
 
 /* ------------------------------------------------------------------ */
@@ -641,7 +652,7 @@ function tituloPestana(titulo) {
   return titulo;
 }
 
-function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg, jsonLd, extraMeta = '' }) {
+function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg, jsonLd, extraMeta = '', robots = ROBOTS_INDEXABLE }) {
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -649,7 +660,7 @@ function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(titulo)}</title>
 <meta name="description" content="${esc(descripcion)}">
-<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="robots" content="${robots}">
 <link rel="canonical" href="${esc(canonica)}">
 <meta name="theme-color" content="#0B0A0A">
 <meta name="color-scheme" content="dark">
@@ -728,7 +739,7 @@ function paginaLeccion(academy, l) {
   const ctx = { destinos: academy.destinos, lecciones: academy.lecciones };
   const nivel = nivelDe(academy, l.nivel);
   const nNivel = numeroNivel(academy, l.nivel);
-  const total = publicadas(academy).length; // solo las publicadas: «Lección 1 de 7», no «de 9»
+  const total = publicadas(academy).length; // solo las publicadas: con 7 de 9, «Lección 1 de 7», no «de 9»
   const canonica = `${ORIGEN}${urlLeccion(l.slug)}`;
   const cuerpo = l.cuerpo.map(b => ({ ...b }));
   const indice = asignarIds(cuerpo);
@@ -799,6 +810,7 @@ function paginaLeccion(academy, l) {
     tipoOg: 'article',
     jsonLd,
     extraMeta: `<meta property="article:published_time" content="${l.fechaPublicacion}">\n<meta property="article:modified_time" content="${l.revisionLegal}">\n<meta property="article:section" content="${esc(l.categoria)}">\n`,
+    robots: academy.acceso === 'cuenta' ? ROBOTS_CON_CUENTA : ROBOTS_INDEXABLE,
   })}
 <body class="ac-cuerpo-pagina">
 ${barraSuperior('leccion')}
@@ -901,20 +913,25 @@ ${pieHtml()}
 function paginaIndice(academy) {
   const ctx = { destinos: academy.destinos, lecciones: academy.lecciones };
   const visibles = publicadas(academy);
+  const conCuenta = academy.acceso === 'cuenta';
   const canonica = `${ORIGEN}/academy/`;
+  /* Con cuenta, las lecciones llevan noindex y salen del sitemap: el índice
+     no las anuncia como partes indexables. */
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     '@id': `${canonica}#academy`,
     name: 'RWAdar Academy',
-    description: 'Lecciones gratuitas sobre tokenización de activos reales, en tres niveles, con test de autoevaluación y fecha de revisión legal.',
+    description: conCuenta
+      ? 'Lecciones sobre tokenización de activos reales, gratis con tu cuenta, en tres niveles, con test de autoevaluación y fecha de revisión legal.'
+      : 'Lecciones gratuitas sobre tokenización de activos reales, en tres niveles, con test de autoevaluación y fecha de revisión legal.',
     url: canonica,
     inLanguage: 'es-ES',
     isPartOf: { '@type': 'WebSite', name: 'RWAdar', url: `${ORIGEN}/` },
-    hasPart: visibles.map(l => ({
+    ...(conCuenta ? {} : { hasPart: visibles.map(l => ({
       '@type': 'Article', headline: l.titulo, url: `${ORIGEN}${urlLeccion(l.slug)}`,
       datePublished: l.fechaPublicacion, dateModified: l.revisionLegal,
-    })),
+    })) }),
   };
   const tarjeta = l => {
     const datos = `<span class="ac-tarjeta-num" aria-hidden="true">${dosCifras(l.modulo)}</span>
@@ -949,9 +966,20 @@ function paginaIndice(academy) {
     </section>`;
   }).join('\n\n    ');
 
+  /* Con cuenta no se dice «9 lecciones gratuitas»: puede haber lecciones
+     «Próximamente» (hasta el 06/11/2026 eran 7 publicadas de 9) y se abren
+     con una cuenta gratis. */
+  const entradilla = conCuenta
+    ? `<p class="ac-entradilla">Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida. Lecciones en ${academy.niveles.length} niveles, con un resumen de 30 segundos y un test corto.</p>
+    <p class="ac-sobrelinea">Gratis con tu cuenta</p>
+    <p class="ac-acciones"><a class="ac-accion" href="${ALTA_ACADEMY}">Crea tu cuenta gratis para abrir las lecciones <span aria-hidden="true">→</span></a></p>`
+    : `<p class="ac-entradilla">Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida. ${academy.lecciones.length} lecciones gratuitas en ${academy.niveles.length} niveles, con un resumen de 30 segundos y un test corto.</p>`;
+
   return `${cabeceraHtml({
     titulo: 'RWAdar Academy · Aprende a tokenizar sin promesas',
-    descripcion: 'Lecciones gratuitas sobre tokenización de activos reales: qué es, quién interviene, marco legal, costes, liquidez y cómo comparar proveedores.',
+    descripcion: conCuenta
+      ? 'Lecciones sobre tokenización de activos reales, gratis con tu cuenta: qué es, quién interviene, marco legal, costes, liquidez y cómo comparar proveedores.'
+      : 'Lecciones gratuitas sobre tokenización de activos reales: qué es, quién interviene, marco legal, costes, liquidez y cómo comparar proveedores.',
     canonica,
     tipoOg: 'website',
     jsonLd,
@@ -963,7 +991,7 @@ ${barraSuperior('academy')}
   <header class="ac-portada-cab">
     <p class="ac-sobrelinea">RWAdar Academy</p>
     <h1>Entiende la tokenización <em>antes</em> de decidir</h1>
-    <p class="ac-entradilla">Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida. ${academy.lecciones.length} lecciones gratuitas en ${academy.niveles.length} niveles, con un resumen de 30 segundos y un test corto.</p>
+    ${entradilla}
     <section class="ac-extra ac-tutorial" aria-labelledby="extraTit">
       <span class="ac-extra-icono" aria-hidden="true">3D</span>
       <div>
@@ -1013,12 +1041,22 @@ function bloquePortada(academy) {
       </ol>
     </section>`;
   }).join('\n    ');
-  return `  <!--academy:ini-->
-  <div class="academia-lecciones" aria-labelledby="academiaLeccionesTit">
-    <div class="academia-lecciones-cab">
-      <p class="etiq">${visibles.length} de ${academy.lecciones.length} lecciones disponibles</p>
+  /* Con cuenta, el número que se da es el cierto (publicadas de total) y se
+     dice cómo se abren: con una cuenta gratis. */
+  const cabecera = academy.acceso === 'cuenta'
+    ? `<p class="etiq">Gratis con tu cuenta</p>
+      <h3 id="academiaLeccionesTit">${visibles.length} de ${academy.lecciones.length} lecciones disponibles</h3>
+      <p>Cada nivel responde a una pregunta. Crea tu cuenta gratis para abrir las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>`
+    : `<p class="etiq">${visibles.length} de ${academy.lecciones.length} lecciones disponibles</p>
       <h3 id="academiaLeccionesTit">${academy.lecciones.length} lecciones en ${academy.niveles.length} niveles</h3>
-      <p>Cada nivel responde a una pregunta. Accede gratis con tu cuenta: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>
+      <p>Cada nivel responde a una pregunta. Accede gratis con tu cuenta: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>`;
+  /* data-academy-acceso: deja a la vista en la portada el modo de
+     academy.json. El tutorial 3D es público en la web (decisión de Víctor del
+     06/11/2026): ningún script lo usa para cerrarlo. */
+  return `  <!--academy:ini-->
+  <div class="academia-lecciones" aria-labelledby="academiaLeccionesTit" data-academy-acceso="${academy.acceso === 'cuenta' ? 'cuenta' : 'publico'}">
+    <div class="academia-lecciones-cab">
+      ${cabecera}
     </div>
     <div class="academia-niveles">
     ${niveles}
@@ -1044,9 +1082,10 @@ function bloqueInicio(academy) {
 function bloqueSitemap(academy) {
   const visibles = publicadas(academy);
   const ultima = visibles.map(l => l.revisionLegal).sort().at(-1);
+  // Con cuenta, las lecciones (noindex) no van al sitemap: solo el índice.
   const urls = [
     `  <url>\n    <loc>${ORIGEN}/academy/</loc>\n    <lastmod>${ultima}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`,
-    ...visibles.map(l => `  <url>\n    <loc>${ORIGEN}${urlLeccion(l.slug)}</loc>\n    <lastmod>${l.revisionLegal}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.6</priority>\n  </url>`),
+    ...(academy.acceso === 'cuenta' ? [] : visibles.map(l => `  <url>\n    <loc>${ORIGEN}${urlLeccion(l.slug)}</loc>\n    <lastmod>${l.revisionLegal}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.6</priority>\n  </url>`)),
   ];
   return `  <!-- academy:ini · generado por rwadar-academy.js -->\n${urls.join('\n')}\n  <!-- academy:fin -->`;
 }
@@ -1167,9 +1206,47 @@ function avisosRevision(academy, hoy = new Date()) {
     .map(l => `Lección ${l.modulo}: su última revisión legal (${l.revisionLegal}) tiene más de 6 meses. Pide que la revisen.`);
 }
 
+/* Contenido de las lecciones en un árbol ya construido (el temporal del
+   publicador o rwadar-publicado/), antes de subirlo. Con "acceso": "cuenta" la
+   web publicada responde 303 a quien no tiene sesión, así que lo que lleva cada
+   lección se comprueba aquí y no en producción. Devuelve los fallos (vacío si
+   todo cuadra). */
+function comprobarLeccionesPublicadas(directorio, academy = cargarAcademy()) {
+  const fallos = [];
+  const leer = relativa => {
+    try { return fs.readFileSync(path.join(directorio, ...relativa.split('/')), 'utf8'); } catch { return null; }
+  };
+  const robots = academy.acceso === 'cuenta' ? ROBOTS_CON_CUENTA : ROBOTS_INDEXABLE;
+  const conHuella = ruta => {
+    const punto = ruta.lastIndexOf('.');
+    return new RegExp(ruta.slice(0, punto).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\.[0-9a-f]{12}\\.' + ruta.slice(punto + 1));
+  };
+  const indice = leer('academy/index.html');
+  if (!indice || !indice.includes('data-academy-indice-pagina')) fallos.push('academy/index.html no es el índice de la Academy');
+  for (const l of publicadas(academy)) {
+    const nombre = `academy/${l.slug}.html`;
+    const pagina = leer(nombre);
+    if (pagina === null) { fallos.push(`${nombre} no está`); continue; }
+    for (const [texto, que] of [
+      [`data-academy-leccion="${l.slug}"`, 'su marca de lección'],
+      [`<h1>${esc(l.titulo)}</h1>`, 'su título'],
+      [`<link rel="canonical" href="${ORIGEN}${urlLeccion(l.slug)}">`, 'su URL canónica'],
+      [`<meta name="robots" content="${robots}">`, `robots «${robots}»`],
+      [`Contenido revisado el <time datetime="${l.revisionLegal}">${fechaLarga(l.revisionLegal)}</time>`, 'su fecha de revisión legal'],
+    ]) if (!pagina.includes(texto)) fallos.push(`${nombre}: falta ${que}`);
+    if ((pagina.match(/<meta name="robots"/g) || []).length !== 1) fallos.push(`${nombre}: lleva más de una etiqueta robots`);
+    // Hoja y script con huella: sin ella, el navegador pediría archivos que no se publican.
+    if (!conHuella(CSS).test(pagina) || !conHuella(JS).test(pagina)) fallos.push(`${nombre}: hoja o script de la Academy sin huella`);
+  }
+  for (const l of academy.lecciones.filter(x => x.estado !== 'publicado')) {
+    if (leer(`academy/${l.slug}.html`) !== null) fallos.push(`academy/${l.slug}.html no está publicada y no debe estar en el árbol`);
+  }
+  return fallos;
+}
+
 module.exports = {
-  ORIGEN, CSS, JS, cargarAcademy, construirSalidas, paginasAcademy, comprobar, generar,
-  parsearInline, parsearBloques, textoPlano, avisosRevision, ErrorAcademy, tituloPestana,
+  ORIGEN, CSS, JS, ACCESOS, ALTA_ACADEMY, ROBOTS_CON_CUENTA, cargarAcademy, construirSalidas, paginasAcademy, comprobar, generar,
+  comprobarLeccionesPublicadas, parsearInline, parsearBloques, textoPlano, avisosRevision, ErrorAcademy, tituloPestana,
 };
 
 if (require.main === module) {

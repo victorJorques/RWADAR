@@ -52,7 +52,94 @@ ejecutar el generador.
    publicación (`docs/OPERACION-LANZAMIENTO.md`), **siempre con permiso de
    Víctor**.
 
-En la app, una lección nueva solo llega con la siguiente compilación.
+En la app, una lección nueva llega con la siguiente actualización de la app:
+la OTA basta (el contenido va en `rwadar-movil/lib/academy-contenido.js`, que
+es JavaScript), o una compilación nueva.
+
+Las lecciones 8 y 9 se publicaron así el 06/11/2026 por orden de Víctor
+(«Publicar las 9 ya»): desde entonces no queda ninguna «Próximamente». Las
+pruebas siguen exigiendo el 404 a una lección inventada y prueban el camino
+«Próximamente» con una Academy simulada en la que la 9 vuelve a «en revisión».
+
+## Quién abre las lecciones en la web: `"acceso"`
+
+Desde el 05/11/2026 (`docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`),
+`academy.json` lleva un interruptor:
+
+| `"acceso"` | Qué pasa |
+|---|---|
+| `"cuenta"` | El índice `/academy/` sigue público e indexable. Cada lección pide una cuenta confirmada: sin sesión, la web manda a `/acceso?volver=/academy/<slug>` (303). Las lecciones llevan `noindex`, salen del `sitemap.xml` y los textos dicen «Gratis con tu cuenta». |
+| `"publico"` | Todo como antes: lecciones abiertas, indexables y en el sitemap. |
+
+Lo aplica el servidor de la web (`rwadar-acceso/servidor.mjs`, compilado en
+`_worker.js` por `rwadar-acceso/compilar.cjs`), que lleva dentro la lista
+cerrada de lecciones publicadas de este archivo: una lección «Próximamente» o
+inventada da 404 sin mirar la cookie. Si Supabase no responde, la lección da
+503 y nunca manda a entrar. Para cambiarlo: el valor, `node rwadar-academy.js`,
+`npm test` y publicar, **con permiso de Víctor**.
+
+No es un candado: el texto va en el paquete de la app. Nunca se pone material
+privado en la Academy.
+
+### Volver a `"publico"`: lo que cambia solo y lo que hay que cambiar a mano
+
+Con `"publico"`, `node rwadar-academy.js` y el worker reabren solos las
+lecciones (sin 303, indexables y otra vez en el `sitemap.xml`). El tutorial 3D
+es público en los dos modos (decisión de Víctor del 06/11/2026).
+
+**No se revierten solos** y hay que cambiarlos a mano en el mismo cambio:
+
+- **Privacidad** (`rwadar-site/privacidad.html`): los textos que dicen que las
+  lecciones de la Academy son gratis *con cuenta* y que «para abrir una lección
+  comprobamos tu sesión» (hoy en las líneas 55, 76, 131-134, 170, 223 y 234;
+  busca «Academy» en el archivo).
+- **Destino tras confirmar el alta** (`rwadar-site/assets/acceso.js`,
+  `regresarTrasConfirmar`): sin lección guardada lleva a
+  `/academy/#cuenta-confirmada`, que enseña «Cuenta confirmada: Academy
+  desbloqueada» (`assets/academy-20261002.js`). En `acceso.js` está además el
+  texto «Las lecciones son gratis con cuenta» de `/acceso?volver=/academy/…`.
+- **Correo de confirmación** (`rwadar-app/plantillas-auth/confirmar-alta.html`,
+  «desbloquea gratis la Academy»), si ya está puesto en Supabase Auth (cambiarlo
+  es tocar Supabase en línea: con permiso de Víctor).
+
+**Pruebas que fijan `"cuenta"`** (comprobado el 05/11/2026 cambiando el valor a
+`"publico"` y regenerando): fallan hasta que se adapten al otro modo.
+
+- `rwadar-acceso/academy-cuenta.test.mjs`: «el worker lleva el modo y la lista
+  cerrada de lecciones de academy.json» y «el worker compilado aplica la puerta
+  con sus cabeceras de seguridad y su página 404».
+- `rwadar-acceso/compilar.test.mjs`: «una ficha que no está en la lista da 404
+  sin pedir a ASSETS su copia de conservación» y «la copia de conservación de
+  cualquier otro archivo retirado da 404, salvo en /assets/» (esperan el 404 de
+  la puerta en `/academy/no-existe` y `/academy/leccion-borrada`).
+- `rwadar-acceso/comprobar-publicado.test.mjs`: «el comprobador de la web
+  publicada pasa contra el worker compilado, sin red» y «el arnés local abre la
+  lección con la sesión de prueba y la cierra sin ella».
+- `probar-web.mjs`: «academy.json declara quién abre las lecciones y hoy es
+  "cuenta"», «el sitemap lleva el índice de la Academy y ninguna lección (van
+  con cuenta)», «cada lección publicada lleva una sola etiqueta robots con
+  noindex; el índice se indexa», «los datos estructurados del índice no anuncian
+  lecciones que no se indexan», «el índice y la portada dicen «Gratis con tu
+  cuenta»…» y «el worker publicado lleva la puerta de la Academy con la lista
+  cerrada de lecciones». Además, al revertir a mano la privacidad, falla
+  «privacidad: la Academy es gratuita con cuenta y no guardamos qué lecciones
+  lees» (exige «para abrir una lección comprobamos tu sesión»), y en
+  `rwadar-acceso/alta-avisos-navegador.test.mjs` las que esperan el destino
+  `/academy/#cuenta-confirmada` y el texto «Las lecciones son gratis con
+  cuenta», si también se revierten en `acceso.js`.
+- `probar-precarga.cjs`: «con "acceso": "cuenta", las 9 lecciones publicadas se
+  comprueban por su 303…», tres de los rechazos de «la verificación de
+  producción rechaza…» (lección servida a cualquiera, 303 a otra vuelta y 303
+  que se puede guardar) y «con "acceso": "publico", una lección vuelve a exigir
+  200…» (su producción simulada sigue la puerta de `academy.json`). Este archivo
+  se para en el primer fallo.
+
+`npm run test:tools`, `npm run test:mobile`, `probar-fichas.cjs` y el resto de
+`npm run test:acceso` pasan con los dos valores.
+
+Para ver la web con la puerta funcionando en local (y hacer capturas):
+`node rwadar-acceso/probar-worker-local.mjs --raiz=rwadar-publicado` (ver el
+comentario del principio de ese archivo).
 
 ## Los botones de las lecciones
 
@@ -85,7 +172,8 @@ meses** sin revisión legal.
 
 ## El progreso del alumno
 
-Sin cuentas. En la web se guarda en el navegador (`localStorage`, clave
-`rwadar.academy.v1`); en la app, en el dispositivo, y se borra con «Borrar
-datos del dispositivo». Nunca se envía a RWAdar. La política de privacidad ya
-lo dice.
+Sin sincronizar. En la web se guarda en el navegador, separado por cuenta
+(`localStorage`, clave `rwadar.academy.v1:<id de la cuenta>`); en la app, en el
+dispositivo, y se borra con «Borrar datos del dispositivo». Nunca se envía a
+RWAdar: para abrir una lección se comprueba la sesión, pero no se guarda qué
+lecciones se leen. La política de privacidad ya lo dice.

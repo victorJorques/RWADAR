@@ -229,6 +229,73 @@ comando haya superado los verificadores 14, 15, 22 y la paridad 26/4. Aplicar
 El resultado deliberado es API reparada, retención diaria activa y correo/push
 apagados, bloqueados y sin cron.
 
+## Avisos a registrados (30)
+
+Preparada y probada en local; **no aplicada**. Contrato:
+[`docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](../docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+
+- `db/30_avisos_registrados.sql` (copia idéntica en
+  `supabase/migrations/20261105200000_avisos_registrados.sql`): esquema privado
+  `rwadar_novedades`, preferencias con permiso versionado
+  (`novedades-v2-2026-11-06`, de la revisión legal del 06/11/2026; sustituye a
+  la v1, con la que nunca se recogió ningún permiso), bienvenida, anuncios,
+  móviles y colas de correo (Brevo) y push (Expo). Va después de 22, 24-26, el refuerzo de sesión, 28,
+  28_REVERTIR y 29. Se aplica en el SQL Editor con una copia hecha antes,
+  **nunca** con `supabase db push` (subiría también la 27).
+- Todo nace **apagado**, también la casilla del alta (`casilla_activa`: sin
+  ella, los metadatos del alta no dan permiso). Reaplicar la 30 vuelve a
+  apagarlo todo, casilla incluida, y quita el reloj de envío, como la 22.
+  Cada paso necesita permiso expreso de Víctor:
+  `30_avisos_registrados_activar_casilla.sql` (con la plantilla de Auth ya
+  puesta; fija `casilla_activada_el`; no envía nada ni crea reloj),
+  `30_avisos_registrados_activar_correo.sql` (exige `BREVO_API_KEY` y
+  `RWADAR_REMITENTE` en Vault) y `30_avisos_registrados_activar_push.sql`
+  (`EXPO_ACCESS_TOKEN` opcional). Estos dos crean un único reloj de envío
+  `rwadar-novedades` cada 5 minutos que solo llama a `rwadar_novedades.procesar()`.
+- El permiso del alta solo cuenta si el correo de confirmación salió después
+  de activar la casilla (`confirmation_sent_at >= casilla_activada_el`): un
+  alta anterior se confirmó con el correo antiguo, sin el aviso.
+- Retención: la 30 crea además un reloj diario propio,
+  `rwadar-novedades-limpieza` (`41 4 * * *`, solo `rwadar_novedades.limpiar()`,
+  sin red), que existe también con todo apagado: colas a los 90 días, móviles
+  a los 180.
+- Apagar el envío: `30_avisos_registrados_apagar.sql` (correo, push, aviso
+  automático de ofertas y reloj de envío; **no** toca la casilla ni el reloj
+  de limpieza). Retirar la casilla, al quitar la plantilla de Auth:
+  `30_avisos_registrados_apagar_casilla.sql`. Emergencia: `fallo_cerrado.sql`
+  lo apaga todo, casilla y reloj de limpieza incluidos.
+- **Tras `fallo_cerrado.sql` o tras reaplicar la 30, la casilla queda
+  apagada:** si la web o la app la siguen enseñando, repite
+  `30_avisos_registrados_activar_casilla.sql` (tras `fallo_cerrado.sql`,
+  reaplica antes la 30 para recuperar el reloj de limpieza). Comprobar:
+  `30_avisos_registrados_verificar.sql` (solo lee; pasa apagado y encendido, y
+  avisa si la casilla está inactiva).
+- Historial del permiso (`rwadar_novedades.historial_permiso`), solo de
+  añadir: cada alta y cada baja con el correo de ese momento, el origen
+  (`alta`, `perfil`, `enlace`, `correo`), el canal y el idioma. Sin clave
+  ajena: al borrar la cuenta (disparador `BEFORE DELETE` en `auth.users`, que
+  nunca impide el borrado) se queda bloqueado con `cuenta_borrada_el`
+  (LOPDGDD art. 32) y `limpiar()` lo borra a los 3 años, nunca el de una cuenta
+  viva. `configurar_avisos_novedades` admite un cuarto argumento opcional,
+  `p_idioma` (`'es'`/`'en'`); el alta lee `avisos_idioma` de los metadatos.
+- Baja que llega por correo (RWAdar@protonmail.com), antes del siguiente
+  envío y solo el propietario, desde el SQL Editor:
+  `select rwadar_novedades.baja_por_correo('persona@ejemplo.com');` (sin
+  distinguir mayúsculas; devuelve si encontró la cuenta y deja la fila
+  baja/correo en el historial).
+- Los anuncios no se borran nunca (copia de lo enviado). Su filtro de palabras
+  veta, además de «oportunidad», «rentabilidad», «garantiz…» y %:
+  «rendimiento», APY, APR, «sin riesgo», «exclusiv…», «últimas plazas», «no te
+  lo pierdas», «gana…», «regalo», «bono», «descuento» y «autorizad…» (p. ej.,
+  «mejoras de rendimiento» no pasa). Push: la bienvenida por el canal de
+  Android `cuenta` y los anuncios por `novedades`.
+- El catálogo no envía nada por su cuenta: una revisión V2 con ofertas nuevas
+  crea un anuncio al día, **retenido**. Solo sale con el flujo «Avisar novedad»
+  (`.github/workflows/avisar-novedad.yml`, que ejecuta `db/anunciar.sql`) y
+  con orden de Víctor; el mismo flujo anuncia actualizaciones y novedades.
+- Plantilla de confirmación de Auth: [`plantillas-auth/`](plantillas-auth/LEEME.md).
+- Prueba: `node probar-avisos-registrados.mjs` (también en `npm test`).
+
 ## Contenido y sincronización
 
 `02_seed.sql` contiene el bloque inicial; `06_archax_republic.sql` completa la

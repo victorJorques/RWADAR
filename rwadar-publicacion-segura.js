@@ -109,6 +109,8 @@ const PAGINAS_ACADEMY = Object.freeze([
   'academy/cuanto-cuesta-tokenizar.html',
   'academy/liquidez-como-evaluarla.html',
   'academy/como-leer-el-radar.html',
+  'academy/expediente-de-tokenizacion.html',
+  'academy/despues-de-emitir-ciclo-de-vida.html',
 ].sort());
 
 const ARCHIVOS_PUBLICABLES = Object.freeze([
@@ -117,6 +119,8 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   '_redirects',
   '404.html',
   'acceso.html',
+  // Baja de los avisos de novedades sin cuenta (contrato del 05/11/2026).
+  'baja.html',
   ...PAGINAS_ACADEMY,
   ...PAGINAS_FICHAS,
   'assets/academy-20261002.css',
@@ -125,6 +129,7 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'assets/acceso-privado.js',
   'assets/academy-20261002.js',
   'assets/analitica-20260927.js',
+  'assets/baja-20261105.js',
   'assets/error-20260820.css',
   'assets/ficha-editorial-20261022.js',
   'assets/ficha-pagina-20261022.js',

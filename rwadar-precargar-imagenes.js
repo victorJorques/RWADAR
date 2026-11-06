@@ -11,7 +11,8 @@ const {dimensionesWebp, FICHA_ANCHO, FICHA_ALTO, FICHA_BYTES_MAX, TEXTO_PROHIBID
 const {leerBloquesCatalogo, validarCatalogoSnapshot} = require('./rwadar-fichas');
 const {sincronizar} = require('./rwadar-app/sincronizar');
 const {adelgazarJS} = require('./rwadar-adelgazar');
-const {construirWorker, RUTAS: RUTAS_ACCESO} = require('./rwadar-acceso/compilar.cjs');
+const {construirWorker, RUTAS: RUTAS_ACCESO, academyPublicada} = require('./rwadar-acceso/compilar.cjs');
+const {comprobarLeccionesPublicadas} = require('./rwadar-academy');
 const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 const ARTEFACTOS_ACCESO = Object.freeze(['_worker.js','_routes.json']);
 const RAIZ = __dirname;
@@ -167,19 +168,43 @@ function validarBase(base, sello, {excluirLote}={}) {
   for(const nombre of ARTEFACTOS_ACCESO) assert(fs.readFileSync(archivoSeguro(base,nombre)).equals(Buffer.from(accesoEsperado[nombre],'utf8')),
     'Artefacto de acceso distinto de la fuente aprobada: '+nombre);
   seguridad.validarOrigenPublicable(base);
+  // Con "acceso": "cuenta" producción responde 303 a cada lección y verificarHTTP
+  // ya no compara sus bytes: lo que llevan (marca, título, canónica, robots,
+  // revisión legal y assets con huella) se comprueba aquí, en la base sellada.
+  const fallosLecciones=comprobarLeccionesPublicadas(base);
+  assert(fallosLecciones.length===0,'Lecciones de la Academy incompletas en la base: '+fallosLecciones.join('; '));
   return sello;
 }
 function archivoCatalogo(base) {
   const nombres=seguridad.listarArchivosRegulares(base).filter(n=>/^assets\/catalogo-publico-20261022(?:\.[a-f0-9]{12})?\.js$/.test(n));
   assert(nombres.length===1,'Snapshot base ambiguo'); return path.join(base,nombres[0]);
 }
-async function verificarHTTP(base, archivos, fetchFn=globalThis.fetch) {
+/* Academy con cuenta ("acceso": "cuenta", 05/11/2026): sin sesión, una lección
+   publicada responde 303 a /acceso?volver=/academy/<slug> con no-store, así que
+   no se comparan sus bytes (van en el inventario sellado de la base, y
+   validarBase comprueba su contenido con comprobarLeccionesPublicadas); las
+   «Próximamente» y una lección inventada dan 404. Desde el 06/11/2026 las nueve
+   están publicadas: la inventada mantiene la comprobación del 404 (la misma ruta
+   que .github/comprobar-publicado.mjs). Nunca se entra con una cuenta. */
+const SIN_GUARDAR = /(?:^|,)\s*no-store\s*(?:,|$)/;
+const LECCION_INEXISTENTE = 'rwadar-comprobacion-leccion-inexistente';
+async function verificarHTTP(base, archivos, fetchFn=globalThis.fetch, academy=academyPublicada()) {
+  const protegidas=new Map(academy.acceso==='cuenta'?academy.lecciones.map(slug=>[`academy/${slug}.html`,slug]):[]);
+  const pedirLeccion=ruta=>fetchFn(ORIGEN+ruta,{method:'GET',cache:'no-store',credentials:'omit',redirect:'manual',
+    headers:{Accept:'text/html'},signal:AbortSignal.timeout(45000)});
   let posicion=0;
   await Promise.all(Array.from({length:4},async()=>{
     while(posicion<archivos.length) {
       const a=archivos[posicion++];
       if(['_headers','_redirects',...ARTEFACTOS_ACCESO].includes(a.ruta))continue;
       const ruta='/'+a.ruta.replace(/(^|\/)index\.html$/,'$1').replace(/\.html$/,'');
+      if(protegidas.has(a.ruta)) {
+        const r=await pedirLeccion(ruta);
+        await r.body?.cancel();
+        assert(r.status===303&&r.headers.get('location')===`/acceso?volver=/academy/${protegidas.get(a.ruta)}`&&
+          SIN_GUARDAR.test(r.headers.get('cache-control')||''),`La lección ${ruta} no manda a entrar sin sesión (HTTP ${r.status})`);
+        continue;
+      }
       const r=await fetchFn(ORIGEN+ruta,{method:'GET',cache:'no-store',credentials:'omit',redirect:'error',signal:AbortSignal.timeout(45000)});
       assert(r.status===200,`HTTP ${r.status} para ${ruta}`);
       const bytes=Buffer.from(await r.arrayBuffer());
@@ -187,6 +212,11 @@ async function verificarHTTP(base, archivos, fetchFn=globalThis.fetch) {
       if(a.ruta.endsWith('.webp'))assert(/^image\/webp(?:;|$)/i.test(r.headers.get('content-type')||''),'Respuesta WebP no es imagen');
     }
   }));
+  for(const slug of [...academy.pendientes,LECCION_INEXISTENTE]) {
+    const r=await pedirLeccion('/academy/'+slug);
+    await r.body?.cancel();
+    assert(r.status===404,`La lección ${slug===LECCION_INEXISTENTE?'inexistente':'«Próximamente»'} /academy/${slug} no da 404 (HTTP ${r.status})`);
+  }
 }
 function ejecutarWranglerLectura() {
   const args=['--yes','wrangler@4.125.0','pages','deployment','list','--project-name','rwadar','--environment','production','--json'];
@@ -347,5 +377,5 @@ async function main(args=process.argv.slice(2)) {
   fs.writeFileSync(path.join(trabajo,'evidencia.json'),JSON.stringify(evidencia,null,2)+'\n',{flag:'wx'});
   console.log(JSON.stringify({precargado:true,imagenes:extras.length,evidencia:path.join(trabajo,'evidencia.json')}));
 }
-module.exports={cargarRegistro,unirActivos,inventario,huellaInventario,validarBase,verificarHTTP,preparar,despliegueProduccion,identidadListaWrangler,comprobarAndroidCompatible,main};
+module.exports={cargarRegistro,unirActivos,inventario,huellaInventario,validarBase,verificarHTTP,preparar,despliegueProduccion,identidadListaWrangler,comprobarAndroidCompatible,LECCION_INEXISTENTE,main};
 if(require.main===module)main().catch(e=>{console.error('PRECARGA BLOQUEADA:',e.message);process.exitCode=1;});

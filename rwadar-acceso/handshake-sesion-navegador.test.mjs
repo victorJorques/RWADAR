@@ -21,7 +21,8 @@ function browser({adopt=false,keepCookie=true,status=200,network=false,sessionUi
   const context=vm.createContext({
     document:{getElementById:id=>nodes.get(id),querySelectorAll:()=>buttons},
     sessionStorage:{getItem:()=>null,removeItem(){},setItem(){assert.fail('Do not persist credentials or tokens');}},
-    localStorage:{setItem(){assert.fail('Do not persist credentials or tokens');}},
+    // Entrar o adoptar puede leer y borrar la vuelta a la lección; nunca guardar.
+    localStorage:{getItem:()=>null,removeItem(){},setItem(){assert.fail('Do not persist credentials or tokens');}},
     location:{origin:'https://rwadar.pages.dev',pathname:'/acceso',search:'?volver=%2Facademy%2F',
       hash:adopt?'#access_token=local-test-only&type=signup':'',replace:path=>destinations.push(path)},
     history:{replaceState(){}},URL,URLSearchParams,AbortController,setTimeout:()=>0,clearTimeout(){},
@@ -43,7 +44,9 @@ function browser({adopt=false,keepCookie=true,status=200,network=false,sessionUi
   vm.runInContext(script,context);
   return {node:id=>nodes.get(id),calls,destinations,async enter(){
     if(adopt){await tick();await nodes.get('adoptar').events.click();}
-    else{nodes.get('correo').value='local@example.test';nodes.get('clave').value='local-password-test';
+    // Con volver=/academy/ la página abre «Crear cuenta»: quien ya la tiene pulsa «Entrar».
+    else{buttons.find(b=>b.dataset.vista==='entrar')?.events.click?.();
+      nodes.get('correo').value='local@example.test';nodes.get('clave').value='local-password-test';
       await nodes.get('formulario').events.submit({preventDefault(){}});}
   }};
 }

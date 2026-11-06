@@ -25,6 +25,7 @@ function modulo(ruta, mocks, contexto = {}) {
     if (dependencia === './Idioma') return soporteIdioma(mocks.react,mocks['react-native']);
     if (dependencia === '../lib/idioma') return require('../lib/idioma');
     if (dependencia === './acceso-obligatorio') return require('../lib/acceso-obligatorio');
+    if (dependencia === './avisos-cuenta') return require('../lib/avisos-cuenta');
     assert.ok(Object.hasOwn(mocks, dependencia), `Dependencia inesperada: ${dependencia}`);
     return mocks[dependencia];
   }, ...Object.values(contexto));

@@ -2,6 +2,35 @@
 
 App nativa en React Native con Expo (SDK 57).
 
+## Avisos de novedades · 5 de noviembre de 2026 (preparado y apagado)
+
+Contrato: [`AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](../docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+Solo JS, compatible con la OTA de la 1.4.1. El interruptor
+`AVISOS_NOVEDADES_REMOTOS` (`lib/modo-local.js`) nace en `false`: así la app
+se ve y se comporta como antes, salvo la casilla obligatoria del alta, que ya
+dice «Tengo 18 años o más, acepto las condiciones y he leído la privacidad».
+
+Encendido (solo Víctor, con la base 30 aplicada y la plantilla de Auth
+puesta):
+
+- **Alta:** casilla opcional y sin marcar con el texto exacto del contrato.
+  Marcada, añade a los metadatos `avisos_novedades: true`, `avisos_version` y
+  `avisos_canal: 'app'`.
+- **Perfil › Avisos** (`componentes/AvisosNovedades.js`): «Avisos de novedades
+  (correo y móvil)», que es el permiso, y «Notificaciones en este móvil». En
+  binarios por debajo del código 24 (la 1.4.1) el segundo dice que llega con
+  la 1.4.2 y no llama al SDK de notificaciones.
+- **Inicio:** tarjeta «Avisos» con un punto de no leído, guardado en el
+  dispositivo y por cuenta (`rwadar.editorial.avisos.*:<UUID>`).
+- **Al tocar una notificación:** solo `{tipo, destino}` con `destino` ∈
+  `inicio`, `buscar`, `academy`, o el `slug` antiguo.
+- **Al cerrar sesión:** `quitar_aviso_push` con la sesión que se cierra, con un
+  plazo de 4 s y sin bloquear la salida.
+
+Las llamadas a la base están en `lib/avisos-cuenta.js` y las del SDK, en
+`lib/avisos.js`. El APK con notificaciones del sistema:
+[`APK-1.4.2-NOTIFICACIONES.md`](../docs/tareas/APK-1.4.2-NOTIFICACIONES.md).
+
 ## Cuentas · Android del 11 de octubre de 2026
 
 Se ha añadido un panel nativo para crear cuenta, confirmar correo, entrar,

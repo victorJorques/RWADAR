@@ -53,7 +53,9 @@ test('el contenido de la app sale del mismo generador que la web y está al día
 
 test('la app trae las nueve lecciones y solo el texto completo de las publicadas', () => {
   assert.equal(contenido.LECCIONES.length, 9);
-  assert.equal(publicadas.length, 7);
+  // Las nueve publicadas desde el 06/11/2026 (orden de Víctor: «Publicar las 9 ya»).
+  assert.equal(publicadas.length, 9);
+  assert.deepEqual(publicadas.map((l) => l.modulo), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
   for (const l of contenido.LECCIONES) {
     assert.match(l.url, /^https:\/\/rwadar\.pages\.dev\/academy\/[a-z0-9-]+$/);
     if (l.publicado) {
@@ -98,6 +100,14 @@ test('cada botón de una lección lleva al radar, a la web o a «Próximamente»
     else assert.equal(destino.app, 'radar', clave);
   }
   assert.equal(contenido.DESTINOS['evaluador-viabilidad'].estado, 'proximamente');
+  assert.equal(contenido.DESTINOS['checklist-expediente'].estado, 'proximamente');
+  // La lección 8 lleva a la checklist y al Evaluador; la 9, al Evaluador: los dos, «Próximamente».
+  const clavesDe = (slug) => { const c = new Set(); const r = (v) => {
+    if (Array.isArray(v)) v.forEach(r); else if (v && typeof v === 'object') { if (typeof v.a === 'string') c.add(v.a); Object.values(v).forEach(r); } };
+    r(contenido.LECCIONES.find((l) => l.slug === slug)); return c; };
+  assert.ok(clavesDe('expediente-de-tokenizacion').has('checklist-expediente'));
+  assert.ok(clavesDe('expediente-de-tokenizacion').has('evaluador-viabilidad'));
+  assert.ok(clavesDe('despues-de-emitir-ciclo-de-vida').has('evaluador-viabilidad'));
 });
 
 test('el progreso se valida al leerlo y no admite valores manipulados', () => {
@@ -171,7 +181,9 @@ test('la Academy se pinta: índice y todas las lecciones publicadas', () => {
 
   const indice = renderToStaticMarkup(React.createElement(Academy, { ...props, slug: null }));
   for (const l of contenido.LECCIONES) assert.ok(indice.includes(l.titulo.replace(/«/g, '«')), l.slug);
-  assert.equal((indice.match(/>Próximamente</g) || []).length, 2);
+  // Con las nueve publicadas, el índice ya no tiene ninguna tarjeta «Próximamente».
+  assert.equal((indice.match(/>Próximamente</g) || []).length, contenido.LECCIONES.length - publicadas.length);
+  assert.equal(contenido.LECCIONES.length - publicadas.length, 0);
   assert.match(indice, /0<\/span>|>0</);
 
   for (const l of publicadas) {
@@ -183,8 +195,19 @@ test('la Academy se pinta: índice y todas las lecciones publicadas', () => {
     assert.equal(html.includes('Aviso reforzado para esta lección'), l.avisoReforzado, l.slug);
     assert.ok(!html.includes('undefined'), `${l.slug} pinta «undefined»`);
   }
+  // Lecciones 8 y 9: sus destinos que aún no existen se pintan como «Próximamente».
+  const leccion8 = renderToStaticMarkup(React.createElement(Academy, { ...props, slug: 'expediente-de-tokenizacion' }));
+  const leccion9 = renderToStaticMarkup(React.createElement(Academy, { ...props, slug: 'despues-de-emitir-ciclo-de-vida' }));
+  assert.ok(leccion8.includes('Checklist del expediente') && leccion8.includes('Evaluador de Viabilidad') && leccion8.includes('>Próximamente<'));
+  assert.ok(leccion9.includes('Evaluador de Viabilidad') && leccion9.includes('>Próximamente<'));
+  assert.ok(leccion8.includes('Lección 8 de 9'), 'la lección 8 se cuenta sobre 9');
+  assert.ok(indice.includes('de 9 lecciones leídas en este dispositivo'));
   assert.equal(academy.resolverDestino('evaluador-viabilidad').estado, 'proximamente');
   assert.equal(academy.resolverDestino('leccion:marco-legal-cuando-tu-token-es-un-valor').app, 'leccion');
   assert.equal(academy.resolverDestino('leccion:como-leer-el-radar').app, 'leccion');
-  assert.equal(academy.resolverDestino('leccion:expediente-de-tokenizacion').estado, 'proximamente');
+  assert.equal(academy.resolverDestino('leccion:expediente-de-tokenizacion').app, 'leccion');
+  assert.equal(academy.resolverDestino('leccion:despues-de-emitir-ciclo-de-vida').app, 'leccion');
+  // Una lección que no existe nunca es un botón: «Próximamente».
+  assert.equal(academy.resolverDestino('leccion:inventada').estado, 'proximamente');
+  assert.equal(academy.resolverDestino('checklist-expediente').estado, 'proximamente');
 });

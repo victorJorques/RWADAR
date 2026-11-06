@@ -1,0 +1,146 @@
+name: Avisar novedad
+
+# Envío MANUAL de un aviso de novedades a quienes se apuntaron
+# (rwadar-app/db/30_avisos_registrados.sql), o publicación de un anuncio de
+# ofertas retenido. Nunca se lanza solo: solo con «Run workflow», escribiendo
+# ENVIAR y SIEMPRE con orden expresa de Víctor (AGENTS.md), igual que los
+# scripts de activación.
+#
+#   anunciar           → crea un anuncio `actualizacion` o `novedad` ya publicado.
+#   publicar-retenido  → publica el anuncio de ofertas retenido con ese id.
+#
+# El anuncio se ve en la app al momento. El correo y el push salen solo si
+# están encendidos (30_avisos_registrados_activar_*.sql) y solo a quien se
+# apuntó. ota-android.yml no cambia.
+#
+# Seguridad: un único trabajo en máquina nueva, sin npm. Las entradas llegan
+# por env: y se validan en bash; psql las recibe con -v y anunciar.sql las
+# usa como literales (:'titulo'). Nunca ${{ inputs.* }} dentro de run:. El
+# secreto SUPABASE_DB_URL, solo en el paso de psql.
+
+on:
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: 'Qué hacer'
+        required: true
+        type: choice
+        options:
+          - anunciar
+          - publicar-retenido
+        default: anunciar
+      tipo:
+        description: 'Tipo de anuncio (solo para anunciar)'
+        required: true
+        type: choice
+        options:
+          - novedad
+          - actualizacion
+        default: novedad
+      titulo:
+        description: 'Título: 3-90 caracteres, sin «oportunidad», «rentabilidad», «garantiz…» ni %'
+        required: false
+        type: string
+      texto:
+        description: 'Texto: 3-400 caracteres, una sola línea'
+        required: false
+        type: string
+      enlace:
+        description: 'Enlace dentro de https://rwadar.pages.dev'
+        required: false
+        type: string
+        default: 'https://rwadar.pages.dev/'
+      id:
+        description: 'Id del anuncio retenido (solo para publicar-retenido)'
+        required: false
+        type: string
+      confirmacion:
+        description: 'Escribe ENVIAR'
+        required: true
+        type: string
+
+# Ningún permiso por defecto. El trabajo solo necesita leer este repositorio
+# privado para descargar anunciar.sql (actions/checkout no puede sin él).
+permissions: {}
+
+concurrency:
+  group: rwadar-avisar-novedad
+  cancel-in-progress: false
+
+jobs:
+  avisar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "Solo se avisa desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      - name: Comprobar las entradas
+        env:
+          ACCION: ${{ inputs.accion }}
+          TIPO: ${{ inputs.tipo }}
+          TITULO: ${{ inputs.titulo }}
+          TEXTO: ${{ inputs.texto }}
+          ENLACE: ${{ inputs.enlace }}
+          ID: ${{ inputs.id }}
+          CONFIRMACION: ${{ inputs.confirmacion }}
+        run: |
+          set -euo pipefail
+          export LC_ALL=C.UTF-8
+          [[ "$CONFIRMACION" == "ENVIAR" ]] || { echo "Para enviar hay que escribir ENVIAR."; exit 1; }
+          case "$ACCION" in
+            anunciar)
+              [[ "$TIPO" == "actualizacion" || "$TIPO" == "novedad" ]] || { echo "Tipo no válido."; exit 1; }
+              (( ${#TITULO} >= 3 && ${#TITULO} <= 90 )) || { echo "El título debe tener entre 3 y 90 caracteres."; exit 1; }
+              (( ${#TEXTO} >= 3 && ${#TEXTO} <= 400 )) || { echo "El texto debe tener entre 3 y 400 caracteres."; exit 1; }
+              if [[ "$TITULO$TEXTO" =~ [[:cntrl:]] ]]; then echo "Sin saltos de línea ni caracteres de control."; exit 1; fi
+              if printf '%s %s' "$TITULO" "$TEXTO" | grep -qiE 'oportunidad|rentabilidad|garantiz|%'; then
+                echo "El aviso no puede decir «oportunidad», «rentabilidad», «garantiz…» ni llevar %."; exit 1
+              fi
+              ENLACE_VALIDO='^https://rwadar\.pages\.dev(/[A-Za-z0-9._~%-]+)*/?([?#][A-Za-z0-9._~%=&-]*)?$'
+              (( ${#ENLACE} <= 200 )) && [[ "$ENLACE" =~ $ENLACE_VALIDO ]] || { echo "El enlace debe ser de https://rwadar.pages.dev."; exit 1; }
+              ;;
+            publicar-retenido)
+              [[ "$ID" =~ ^[1-9][0-9]{0,17}$ ]] || { echo "Id de anuncio no válido."; exit 1; }
+              ;;
+            *)
+              echo "Acción no válida."; exit 1
+              ;;
+          esac
+          echo "Entradas correctas: $ACCION."
+
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: rwadar-app/db
+
+      - name: Instalar psql 17 (misma versión que Supabase)
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+
+      - name: Avisar
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          ACCION: ${{ inputs.accion }}
+          TIPO: ${{ inputs.tipo }}
+          TITULO: ${{ inputs.titulo }}
+          TEXTO: ${{ inputs.texto }}
+          ENLACE: ${{ inputs.enlace }}
+          ID: ${{ inputs.id }}
+        run: |
+          set -euo pipefail
+          psql "$SUPABASE_DB_URL" -X -v ON_ERROR_STOP=1 \
+            -v accion="$ACCION" -v tipo="$TIPO" -v titulo="$TITULO" \
+            -v texto="$TEXTO" -v enlace="$ENLACE" -v id="$ID" \
+            -f rwadar-app/db/anunciar.sql

@@ -19,6 +19,11 @@ Lo de `docs/archive/` es histórico y no describe el estado vigente.
   `*_MUTANTE=SI`.
 - Compilar o publicar la app: `eas build`, `eas update`, `eas submit`.
 - Cambiar la visibilidad del repositorio, borrar hosting o rotar credenciales.
+- Avisos a registrados (petición de Víctor del 05/11/2026, ver
+  [`AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md)):
+  aplicar la migración 30 o sus scripts de activación, poner la plantilla de
+  Auth, encender `AVISOS_NOVEDADES_REMOTOS`, lanzar el flujo «Avisar novedad»
+  o publicar un anuncio retenido. Cada paso, con su orden expresa.
 
 **Investigación del catálogo: inicio manual.** Por indicación de Víctor del
 22/10/2026, la tarea queda preparada y **PAUSADA**. Sólo se inicia cuando Víctor
@@ -46,7 +51,9 @@ detiene el ciclo en ese paso. Se puede entregar el catálogo varias veces el
 mismo día (`AAAA-MM-DD`, después `AAAA-MM-DD.2`, `.3`…). No incluye cuentas,
 comunidad, Auth, RLS/ACL, funciones, migraciones de esquema, credenciales,
 correos, pagos, `eas build`/`eas submit`, tiendas, visibilidad ni otras
-operaciones.
+operaciones. Con la migración 30 aplicada, aprobar un catálogo con ofertas
+nuevas solo deja un anuncio **retenido** (no se envía ni se ve) mientras
+`ofertas_automaticas` siga apagado; publicarlo es otra orden de Víctor.
 Cada candidata se admite y publica tras las compuertas y con autorización, o no
 se admite ni publica ese día; no se mantiene una cola ni un estado público
 «en investigación». En otro inicio manual se consultan de nuevo las fuentes,

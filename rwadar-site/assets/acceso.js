@@ -10,8 +10,77 @@
   // docs/tareas/ANTI-ROBOTS-Y-LIMITES-2026-11-01.md, or Android sign-in breaks.
   const TURNSTILE_SITEKEY = '';
   const CON_ROBOT = ['entrar', 'registrar', 'recuperar', 'reenviar'];
+  // Avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+  // Apagado: la casilla no se ve y el alta no envía avisosNovedades. Se enciende
+  // solo con la base (30), la plantilla de confirmación de Auth y la privacidad
+  // al día, a la vez que el de rwadar-20260820.js y el de la app.
+  const AVISOS_NOVEDADES_REMOTOS = false;
+  // Vuelta a la lección tras confirmar el correo: se guarda 24 horas en este
+  // navegador. Solo rutas de lecciones propias; nunca un token ni el correo.
+  const CLAVE_VOLVER = 'rwadar.alta.volver', DURACION_VOLVER = 24 * 60 * 60 * 1000;
   let cargaTurnstile = null, widget = null, turnoRobot = 0;
   function mensaje(texto) { $('estado').textContent = texto; }
+  // Una lección de la Academy de este mismo sitio: /academy/<slug>, /<slug>/ o
+  // /<slug>.html. El índice /academy/ y cualquier otra ruta no cuentan.
+  function rutaLeccion(valor) {
+    if (typeof valor !== 'string' || valor.length > 200 || !valor.startsWith('/') || valor.startsWith('//') ||
+      /[\\\r\n\u0000]/.test(valor)) return null;
+    try {
+      const destino = new URL(valor, location.origin);
+      if (destino.origin !== location.origin || destino.search || destino.hash) return null;
+      return /^\/academy\/(?!index(?:\.html)?$)[a-z0-9][a-z0-9-]*(?:\/|\.html)?$/i.test(destino.pathname) ? destino.pathname : null;
+    } catch { return null; }
+  }
+  const volverPedido = new URLSearchParams(location.search).get('volver');
+  const volverLeccion = rutaLeccion(volverPedido);
+  // El índice de la Academy («Crea tu cuenta gratis») y la puerta del tutorial
+  // 3D del móvil mandan a /acceso?volver=/academy/: también abren el alta, pero
+  // no guardan vuelta (al confirmar ya se va a /academy/#cuenta-confirmada).
+  const vieneDeAcademy = !!volverLeccion || ['/academy/', '/academy', '/academy/index.html'].includes(volverPedido);
+  function guardarVolver(ruta) {
+    try { localStorage.setItem(CLAVE_VOLVER, JSON.stringify({ ruta, hasta: Date.now() + DURACION_VOLVER })); }
+    catch { /* Sin almacenamiento, al confirmar se va al índice de la Academy. */ }
+  }
+  // La lección de un destino guardado, o null si ha caducado, dura más de 24
+  // horas (manipulado) o no es una lección propia.
+  function volverVigente(guardado) {
+    if (!guardado || typeof guardado.hasta !== 'number' || guardado.hasta < Date.now() ||
+      guardado.hasta > Date.now() + DURACION_VOLVER) return null;
+    return rutaLeccion(guardado.ruta);
+  }
+  // Lee y borra a la vez: el destino guardado sirve una sola vez.
+  function tomarVolver() {
+    try {
+      const crudo = localStorage.getItem(CLAVE_VOLVER);
+      localStorage.removeItem(CLAVE_VOLVER);
+      return volverVigente(JSON.parse(crudo || 'null'));
+    } catch { return null; }
+  }
+  // En cualquier carga de /acceso, un destino caducado o que no sirve se borra
+  // ya, sin esperar a que se confirme el correo (RGPD, art. 5.1.e). Uno vigente
+  // se queda para la vuelta tras confirmar.
+  function limpiarVolver() {
+    try {
+      const crudo = localStorage.getItem(CLAVE_VOLVER);
+      if (crudo === null) return;
+      let ruta = null;
+      try { ruta = volverVigente(JSON.parse(crudo)); } catch { /* ilegible: se borra */ }
+      if (!ruta) localStorage.removeItem(CLAVE_VOLVER);
+    } catch { /* Sin almacenamiento no hay nada que borrar. */ }
+  }
+  limpiarVolver();
+  // Idioma en que se ve el texto de la casilla de avisos, para guardarlo con el
+  // permiso. /acceso no carga el traductor de la web (idioma-web): se ve siempre
+  // en castellano y su <html lang> es «es». Si algún día lo carga, idioma-web
+  // pone lang="en" al traducir; aun así solo cuenta como inglés si el texto de
+  // la casilla se ha traducido de verdad.
+  function idiomaCasilla() {
+    try {
+      const ingles = /^en(?:-|$)/i.test(document.documentElement.lang || '');
+      const texto = String($('campo-avisos-novedades').textContent || '').trim();
+      return ingles && texto !== '' && !texto.startsWith('Quiero recibir avisos') ? 'en' : 'es';
+    } catch { return 'es'; }
+  }
   function cargarTurnstile() {
     if (window.turnstile) return Promise.resolve(window.turnstile);
     if (!cargaTurnstile) cargaTurnstile = new Promise((ok, mal) => {
@@ -46,10 +115,14 @@
     });
   }
   function cambiar(siguiente) {
-    vista = siguiente; $('clave').value = ''; $('condiciones').checked = false;
+    vista = siguiente; $('clave').value = ''; $('condiciones').checked = false; $('avisos-novedades').checked = false;
     $('siguiente-alta').hidden = true; $('acciones').hidden = false; form.hidden = false;
     const alta = vista === 'registrar', nueva = vista === 'nueva-clave';
     $('campo-nombre').hidden = !alta; $('campo-condiciones').hidden = !alta;
+    // Casilla aparte, sin marcar y solo al crear la cuenta.
+    $('campo-avisos-novedades').hidden = !(alta && AVISOS_NOVEDADES_REMOTOS);
+    // La información básica sobre los datos va junto a la casilla, con ella.
+    $('info-datos').hidden = !(alta && AVISOS_NOVEDADES_REMOTOS);
     $('campo-clave').hidden = !['entrar', 'registrar', 'nueva-clave'].includes(vista);
     $('clave').required = !$('campo-clave').hidden;
     $('clave').autocomplete = alta || nueva ? 'new-password' : 'current-password';
@@ -69,7 +142,7 @@
       const result = await response.json();
       if (!response.ok) {
         const mensajes = { correo_invalido: 'Escribe un correo válido.', clave_corta: 'Usa una contraseña de al menos 12 caracteres.',
-          condiciones: 'Acepta las condiciones y la privacidad para registrarte.', configuracion_pendiente: 'El acceso todavía necesita configuración. Inténtalo más tarde.',
+          condiciones: 'Confirma que tienes 18 años o más y acepta las condiciones y la privacidad para registrarte.', configuracion_pendiente: 'El acceso todavía necesita configuración. Inténtalo más tarde.',
           captcha_fallido: 'No hemos podido comprobar que no eres un robot. Vuelve a intentarlo.' };
         throw new Error(response.status === 429 ? 'Has hecho varios intentos. Espera antes de repetir.' :
           mensajes[result.error] || 'No se pudo comprobar el acceso. Revisa tus datos o solicita otro enlace.');
@@ -112,6 +185,13 @@
     })().finally(() => { cierreEnCurso = null; });
     await cierreEnCurso;
   }
+  // Al confirmar el alta desde el correo (enlace sin «volver»), se vuelve a la
+  // lección guardada al registrarse o, si no hay, al índice de la Academy con
+  // el aviso «Cuenta confirmada: Academy desbloqueada» (#cuenta-confirmada).
+  function regresarTrasConfirmar() {
+    if (new URLSearchParams(location.search).has('volver')) { tomarVolver(); regresar(); return; }
+    location.replace(tomarVolver() || '/academy/#cuenta-confirmada');
+  }
   function regresar() {
     const value = new URLSearchParams(location.search).get('volver') || '/';
     let path = '/';
@@ -128,7 +208,13 @@
     event.preventDefault(); if (ocupado || !form.reportValidity()) return;
     const data = { correo: $('correo').value, clave: $('clave').value, nombre: $('nombre').value,
       aceptaCondiciones: $('condiciones').checked };
-    if (vista === 'registrar' && !data.aceptaCondiciones) { mensaje('Acepta las condiciones y la privacidad para registrarte.'); return; }
+    // Booleano estricto y solo en el alta, con el idioma del texto mostrado;
+    // con el interruptor apagado no viaja ninguno de los dos.
+    if (vista === 'registrar' && AVISOS_NOVEDADES_REMOTOS) {
+      data.avisosNovedades = $('avisos-novedades').checked === true;
+      data.idioma = idiomaCasilla();
+    }
+    if (vista === 'registrar' && !data.aceptaCondiciones) { mensaje('Confirma que tienes 18 años o más y acepta las condiciones y la privacidad para registrarte.'); return; }
     if (['registrar', 'nueva-clave'].includes(vista) && data.clave.length < 12) { mensaje('Usa una contraseña de al menos 12 caracteres.'); return; }
     if (vista === 'nueva-clave') data.access_token = enlace?.access_token;
     $('clave').value = ''; ocupado = true; $('enviar').disabled = true;
@@ -141,6 +227,7 @@
         if (vista === 'nueva-clave') { enlace = null; cambiar('entrar'); }
         mensaje(result.mensaje || 'Revisa tu correo para confirmar la cuenta.');
         if (vista === 'registrar') {
+          if (volverLeccion) guardarVolver(volverLeccion);
           form.hidden = true; $('acciones').hidden = true; $('siguiente-alta').hidden = false;
           $('entrar-tras-alta').focus();
         }
@@ -152,7 +239,11 @@
     if (!enlace || ocupado) return;
     if (enlace.tipo === 'recovery') { form.hidden = false; $('identidad').hidden = true; cambiar('nueva-clave'); return; }
     ocupado = true; $('adoptar').disabled = true;
-    try { await terminarCierre(); const result = await api('adoptar', { access_token: enlace.access_token, confirmarIdentidad: true }); await confirmarSesion(result); enlace = null; regresar(); }
+    try {
+      await terminarCierre(); const result = await api('adoptar', { access_token: enlace.access_token, confirmarIdentidad: true });
+      await confirmarSesion(result); const alta = enlace.tipo === 'signup'; enlace = null;
+      if (alta) regresarTrasConfirmar(); else regresar();
+    }
     catch (error) { mensaje(error.message); }
     finally { ocupado = false; $('adoptar').disabled = false; }
   });
@@ -171,6 +262,11 @@
         $('identidad').hidden = false;
       }).catch(() => { enlace = null; form.hidden = false; mensaje('El enlace no se pudo comprobar. Solicita uno nuevo.'); });
     }
+  }
+  // Llegada desde la Academy sin sesión: se abre «Crear cuenta gratis».
+  if (vieneDeAcademy && !hayRetorno) {
+    $('introduccion').textContent = 'Las lecciones son gratis con cuenta. Si ya la tienes, entra.';
+    cambiar('registrar');
   }
   if (cierrePendiente) {
     mensaje('El cierre anterior todavía no se confirmó. Necesitas conexión para terminarlo antes de entrar.');

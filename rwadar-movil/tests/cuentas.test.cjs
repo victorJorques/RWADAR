@@ -470,3 +470,114 @@ test('el SDK real con transporte simulado recorre alta, acceso, recuperación, p
   for (const llamada of llamadas) assert.equal(llamada.opciones.credentials, 'omit');
   c.destruir();
 });
+
+/* Avisos de novedades (contrato del 05/11/2026): metadatos del alta y tarea
+   previa a cerrar sesión (quitar este móvil de los avisos). */
+const TOKEN_AVISOS = 'ExponentPushToken[abcdefghijklmnop1234]';
+const VERSION_AVISOS = 'novedades-v2-2026-11-06';
+
+test('alta con el interruptor de avisos apagado: nada nuevo en los metadatos aunque se pida', async () => {
+  for (const avisosNovedades of [true, false, 'true', 1, undefined]) {
+    const e = entorno();
+    assert.equal((await e.controlador.registrar({ ...alta, avisosNovedades })).ok, true);
+    assert.deepEqual(e.llamadas[0][1].options.data, { nombre: 'Ana' });
+  }
+});
+
+test('alta con el interruptor encendido: avisos solo con la casilla marcada y booleano estricto', async () => {
+  for (const [avisosNovedades, esperado] of [
+    [true, { nombre: 'Ana', avisos_novedades: true, avisos_version: VERSION_AVISOS, avisos_canal: 'app', avisos_idioma: 'es' }],
+    [false, { nombre: 'Ana' }], ['true', { nombre: 'Ana' }], [1, { nombre: 'Ana' }], [undefined, { nombre: 'Ana' }],
+  ]) {
+    const e = entorno({ controlador: { avisosNovedades: true } });
+    assert.equal((await e.controlador.registrar({ ...alta, avisosNovedades, idioma: 'es' })).ok, true);
+    assert.deepEqual(e.llamadas[0][1], { email: CORREO, password: CLAVE,
+      options: { emailRedirectTo: REDIRECT_CUENTAS, data: esperado } }, String(avisosNovedades));
+  }
+  // Con el permiso se guarda el idioma en que se vio la casilla: 'es' o 'en'.
+  // Sin él (o con otro valor), el de la app en ese momento; nunca otra cosa.
+  const idioma = require('../lib/idioma');
+  for (const [pedido, appEn, esperado] of [['en', false, 'en'], ['es', true, 'es'], [undefined, false, 'es'],
+    [undefined, true, 'en'], ['fr', false, 'es'], ['EN', true, 'en']]) {
+    await idioma.cambiarIdioma(appEn ? 'en' : 'es');
+    try {
+      const e = entorno({ controlador: { avisosNovedades: true } });
+      assert.equal((await e.controlador.registrar({ ...alta, avisosNovedades: true, idioma: pedido })).ok, true);
+      assert.equal(e.llamadas[0][1].options.data.avisos_idioma, esperado, `${pedido} / app en ${appEn ? 'inglés' : 'español'}`);
+    } finally { await idioma.cambiarIdioma('es'); }
+  }
+  // Sin casilla no se guarda idioma ninguno.
+  const sinCasilla = entorno({ controlador: { avisosNovedades: true } });
+  await sinCasilla.controlador.registrar({ ...alta, avisosNovedades: false, idioma: 'en' });
+  assert.deepEqual(sinCasilla.llamadas[0][1].options.data, { nombre: 'Ana' });
+  const e = entorno({ controlador: { avisosNovedades: true } });
+  assert.equal((await e.controlador.registrar({ ...alta, aceptaCondiciones: false, avisosNovedades: true })).ok, false);
+  assert.deepEqual(e.llamadas, [], 'sin la casilla de 18 años y condiciones no se envía nada');
+  assert.match(mensajeError({ code: 'condiciones' }), /18 años o más/);
+});
+
+test('cerrar sesión ejecuta la tarea previa con la sesión que se cierra, antes de revocarla', async () => {
+  const orden = [];
+  const e = entorno({ controlador: { antesDeSalir: async ({ cliente, usuarioId }) => {
+    orden.push(['antes', usuarioId, cliente === e.cliente, e.controlador.estado().usuario]);
+  } } });
+  e.datos.signOut = () => { orden.push(['signOut']); return { data: {}, error: null }; };
+  await e.controlador.entrar(entrada);
+  const salida = e.controlador.salir();
+  assert.equal(e.controlador.estado().usuario, null, 'la pantalla sale al momento');
+  assert.equal((await salida).ok, true);
+  assert.deepEqual(orden, [['antes', UID, true, null], ['signOut']]);
+});
+
+test('una tarea previa que falla o se cuelga no bloquea el cierre de sesión', async () => {
+  for (const antesDeSalir of [async () => { throw new Error('red'); }, () => { throw new Error('síncrono'); },
+    () => new Promise(() => {})]) {
+    const e = entorno({ controlador: { antesDeSalir, plazoAntesDeSalir: 20 } });
+    await e.controlador.entrar(entrada);
+    assert.equal((await e.controlador.salir()).ok, true);
+    assert.deepEqual(e.llamadas.find(x => x[0] === 'salir'), ['salir', { scope: 'local' }]);
+    assert.equal(e.controlador.estado().usuario, null);
+  }
+  // Sin sesión abierta no hay nada que quitar.
+  let llamadas = 0;
+  const e = entorno({ controlador: { antesDeSalir: () => { llamadas++; } } });
+  assert.equal((await e.controlador.salir()).ok, true);
+  assert.equal(llamadas, 0);
+});
+
+test('el SDK real quita el móvil de los avisos por /rest/v1/rpc con el token de la sesión antes del logout', async () => {
+  const tokenDePrueba = [{ alg: 'HS256' }, { sub: '1' }]
+    .map(parte => Buffer.from(JSON.stringify(parte)).toString('base64url')).join('.') + '.prueba';
+  const llamadas = [], user = { id: UID, email: CORREO, email_confirmed_at: '2026-10-11T08:00:00Z',
+    aud: 'authenticated', role: 'authenticated', app_metadata: {}, user_metadata: {}, created_at: '2026-10-11T08:00:00Z' };
+  const crearCliente = (opciones) => crearClienteCuentas({ ...opciones, fetchImpl: async (url, peticion) => {
+    const destino = new URL(url), cuerpo = peticion.body && JSON.parse(peticion.body);
+    llamadas.push({ ruta: destino.pathname, cuerpo, autorizacion: new Headers(peticion.headers).get('authorization') });
+    let data;
+    if (destino.pathname === '/auth/v1/signup') data = user;
+    else if (destino.pathname === '/auth/v1/token') data = { user, access_token: tokenDePrueba,
+      refresh_token: 'refresh-aislado', expires_in: 3600, token_type: 'bearer' };
+    else if (destino.pathname === '/auth/v1/user') data = user;
+    else if (destino.pathname === '/rest/v1/mi_perfil') data = [{ id: UID, nombre: 'Ana' }];
+    else if (destino.pathname === '/rest/v1/vigilancia') data = [];
+    else if (destino.pathname === '/rest/v1/rpc/quitar_aviso_push') data = true;
+    else if (destino.pathname === '/auth/v1/logout') data = {};
+    else throw new Error('Petición fuera del ensayo: ' + destino.pathname);
+    return new Response(JSON.stringify(data), { status: 200, headers: { 'content-type': 'application/json' } });
+  } });
+  const { quitarPushConCliente } = require('../lib/avisos-cuenta');
+  const c = crearControladorCuentas({ modoLocal: false, cuentasRemotas: true, correoVerificado: true, crearCliente,
+    almacenSesion: almacenFalso(), avisosNovedades: true,
+    antesDeSalir: ({ cliente }) => quitarPushConCliente(cliente, TOKEN_AVISOS) });
+  assert.equal((await c.registrar({ ...alta, avisosNovedades: true })).ok, true);
+  assert.deepEqual(llamadas[0].cuerpo.data, { nombre: 'Ana', avisos_novedades: true, avisos_version: VERSION_AVISOS, avisos_canal: 'app',
+    avisos_idioma: 'es' });
+  assert.equal((await c.entrar(entrada)).ok, true);
+  assert.equal((await c.salir()).ok, true);
+  const rutas = llamadas.map(x => x.ruta);
+  const quitar = rutas.indexOf('/rest/v1/rpc/quitar_aviso_push');
+  assert.ok(quitar > 0 && quitar < rutas.indexOf('/auth/v1/logout'), rutas.join(' '));
+  assert.deepEqual(llamadas[quitar].cuerpo, { p_token: TOKEN_AVISOS });
+  assert.equal(llamadas[quitar].autorizacion, 'Bearer ' + tokenDePrueba);
+  c.destruir();
+});

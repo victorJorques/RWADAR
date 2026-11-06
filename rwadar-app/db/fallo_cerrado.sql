@@ -72,9 +72,43 @@ begin
 end
 $push$;
 
+-- Avisos a registrados (30): si existe el esquema, se apagan sus tres
+-- interruptores y la casilla del alta con su fecha (cada columna, si existe:
+-- este cierre no debe fallar con ninguna versión de la 30). No se borra
+-- ninguna cola ni preferencia, ni el historial del permiso: su disparador de
+-- borrado de cuentas sigue puesto (es la prueba del permiso y nunca impide
+-- borrar una cuenta). Tras reparar: reaplicar la 30 (recrea el
+-- reloj diario de limpieza) y, si la web o la app siguen enseñando la
+-- casilla, 30_avisos_registrados_activar_casilla.sql.
+do $novedades$
+begin
+  if to_regclass('rwadar_novedades.configuracion') is not null then
+    execute $sql$
+      update rwadar_novedades.configuracion
+         set correo_habilitado = false, push_habilitado = false, ofertas_automaticas = false,
+             correo_activado_el = null, push_activado_el = null
+       where unica
+    $sql$;
+    if exists (select 1 from pg_attribute
+                where attrelid = to_regclass('rwadar_novedades.configuracion')
+                  and attname = 'casilla_activa' and not attisdropped) then
+      execute 'update rwadar_novedades.configuracion set casilla_activa = false where unica';
+    end if;
+    if exists (select 1 from pg_attribute
+                where attrelid = to_regclass('rwadar_novedades.configuracion')
+                  and attname = 'casilla_activada_el' and not attisdropped) then
+      execute 'update rwadar_novedades.configuracion set casilla_activada_el = null where unica';
+    end if;
+    raise notice 'RWAdar 30: avisos y casilla del alta apagados. Tras reparar, reaplica 30_avisos_registrados.sql y, si la web o la app enseñan la casilla, 30_avisos_registrados_activar_casilla.sql';
+  end if;
+end
+$novedades$;
+
 -- pg_cron ofrece unschedule(text) en Supabase. La rama bigint permite que el
 -- cierre siga siendo util con instalaciones antiguas que solo tengan esa firma.
--- El reloj de retención NO se detiene: no hace red y minimiza datos personales.
+-- El reloj de retención de la 22 NO se detiene: no hace red y minimiza datos
+-- personales. Los de la 30 sí, todos (también rwadar-novedades-limpieza, por
+-- ser una emergencia); reaplicar la 30 vuelve a crear el de limpieza.
 do $relojes$
 declare
   v_job record;
@@ -83,10 +117,13 @@ begin
     return;
   end if;
 
+  -- También cualquier reloj que llame a rwadar_novedades (30), se llame como se llame.
   for v_job in execute
     $sql$select jobid, jobname
            from cron.job
-          where jobname in ('rwadar-avisos', 'rwadar-push')$sql$
+          where jobname in ('rwadar-avisos', 'rwadar-push', 'rwadar-novedades',
+                            'rwadar-novedades-limpieza')
+             or lower(coalesce(command, '')) like '%rwadar_novedades.%'$sql$
   loop
     if to_regprocedure('cron.unschedule(text)') is not null then
       execute 'select cron.unschedule($1)' using v_job.jobname;
