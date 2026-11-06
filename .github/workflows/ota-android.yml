@@ -18,9 +18,9 @@ on:
         required: true
         type: string
       base:
-        description: 'Commit completo del APK instalado (1.4.1 = c1f7106…)'
+        description: 'Commit completo del APK instalado (1.4.2 = fa30779…)'
         required: true
-        default: c1f7106a49e988ca1dde214f0e75b7fe7d4d2719
+        default: fa30779f7d1d671f56b5f711cde9cac9eb090310
         type: string
 
 permissions:

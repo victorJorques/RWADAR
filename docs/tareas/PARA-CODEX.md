@@ -6,6 +6,34 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 6 de noviembre de 2026 (6) · Claude · app 1.4.2 publicada; base de OTA a la 1.4.2; migración 31 aplicada; web publicada
+
+**Lo que se hizo:**
+- **App 1.4.2 (código 24).**
+  - Compilada en EAS desde `main` `fa30779f7d1d671f56b5f711cde9cac9eb090310` («Compilar app», run 42201003691).
+  - APK: SHA-256 `89aeee5a76cb4e702590088a98d9b3688613131b59d908bf11a5e1ca081108e7`, 88.073.983 bytes, misma firma de siempre (`f506dea7…`).
+  - Publicada en [RWAdar-downloads v1.4.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.2) con `version-android.json`, `SHA256SUMS.txt` y `QA-1.4.2.json`.
+  - Comprobado desde fuera: el `version-android.json` de la última versión es el exacto, y el APK público coincide byte a byte.
+- **Prueba en emulador.** Flujo nuevo `android-142.yml` en RWAdar-downloads; [ejecución que publicó](https://github.com/victorJorques/RWAdar-downloads/actions/runs/42207814749). Android 15 con Google Play:
+  - permisos: los de la 1.4.1 más `POST_NOTIFICATIONS`, `c2dm…RECEIVE` y `WAKE_LOCK`;
+  - Firebase sin arranque automático, del proyecto `rwadar-14e3d`, e icono de notificación;
+  - la 1.4.1 se instala y se abre; la 1.4.2 se instala encima sin desinstalar y se abre dos veces en frío sin cierres;
+  - el permiso de notificaciones no se concede solo;
+  - red: un proxy del sistema apunta cada servidor. Con la 1.4.2 abierta solo salen `u.expo.dev`, `github.com`, `release-assets.githubusercontent.com` y las comprobaciones de Android. **Ninguna conexión a Firebase.**
+  - Los dos primeros intentos de grabar la red no valían, y el flujo los paró como debía. Con `-tcpdump` el wifi simulado no se graba, y sin wifi no hay internet. Quedó el proxy.
+- **Base de OTA.** `ota-android.yml` pasa a la 1.4.2 (`fa30779…`). El guardián da `ok` con runtime `1.4.2(24)`. Desde ahora las OTA van a la 1.4.2. La 1.4.1 sigue funcionando y avisa de la versión nueva.
+- **Migración 31.** Aplicada en producción con copia previa: ensayo (run 42204084669) y aplicar (run 42204422901). Verificadores 30 y 31 «OK». El correo sigue apagado.
+- **Web.** Sello (PR #81) y publicada en revisión y en producción (runs 42204901001 y 42205768477). La privacidad nombra a Lettermint. Las lecciones siguen pidiendo cuenta: 303 a `/acceso`.
+
+**Para encender el push, más adelante:**
+1. Privacidad del push en la web y en la app, incluido el «latido» de Firebase; ver `APK-1.4.2-NOTIFICACIONES.md`.
+2. Revisión legal de ese texto.
+3. OTA con `AVISOS_NOVEDADES_REMOTOS = true`.
+4. Prueba en un **Android físico**, porque Víctor usa iPhone.
+5. `activar-push`.
+
+**Pendiente menor.** En `main` hay cambios de texto de Lettermint en la app (ocultos mientras el correo esté apagado) que todavía no han ido por OTA. Irán en la próxima.
+
 ## 6 de noviembre de 2026 (5) · Claude · correo de los avisos con Lettermint (31, apagado), contratos de encargado, permiso de Eric y manual
 
 Rama `claude/avisos-pendientes-0611`. Órdenes de Víctor: «haz todo lo que puedas, apáñate, te doy permiso de todo», «ya tenemos permiso de eric por escrito».
