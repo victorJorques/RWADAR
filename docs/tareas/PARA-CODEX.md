@@ -6,6 +6,39 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 6 de noviembre de 2026 (4) · Claude · APK 1.4.2: Firebase hecho, revisión aplicada, unir y compilar
+
+Firebase y EAS ya están listos. Los dejó la sesión local de Víctor:
+
+- proyecto `rwadar-14e3d` (plan Spark), condiciones aceptadas el 06/11/2026;
+- app `com.rwadar.app`;
+- variable `GOOGLE_SERVICES_JSON` (archivo, secreta, `production`);
+- clave FCM V1 de `firebase-adminsdk-fbsvc@rwadar-14e3d…` asignada a la app.
+
+Detalle en [`APK-1.4.2-NOTIFICACIONES.md`](APK-1.4.2-NOTIFICACIONES.md),
+apartado «Al día (06/11/2026, tarde)».
+
+- **Revisión independiente de la rama (3 enfoques, cada hallazgo verificado).**
+  Cambios aplicados:
+  - icono propio de notificación (`assets/notification-icon.png`);
+  - `RECEIVE_BOOT_COMPLETED` vuelve a estar bloqueado, porque no hay
+    notificaciones locales programadas;
+  - la guía parte la prueba en dos: emulador antes de publicar, Android
+    físico antes de encender el push;
+  - queda anotado el «latido» de Firebase, para la privacidad antes de
+    encender el push.
+- **Pruebas:** `npm --prefix rwadar-movil test` da 489, de ellas 487
+  correctas, 0 fallos y 2 omitidas. `expo config --type introspect` enseña el
+  icono `notification_icon` y `RECEIVE_BOOT_COMPLETED` retirado.
+- **Emulador y publicación:** nuevo flujo `android-142.yml` en
+  RWAdar-downloads (PR #1 unido). No usa cuentas ni secretos.
+- **Pendiente:** unir a `main`, «Compilar app» `editorial`, `android-142.yml`
+  sin publicar y después con `publicar=si`, y cambiar la base de OTA el mismo
+  día.
+- **Para encender el push, más adelante:** privacidad de web y app, revisión
+  legal del «latido», OTA con `AVISOS_NOVEDADES_REMOTOS = true` y prueba en un
+  **Android físico**. Víctor usa iPhone.
+
 ## 6 de noviembre de 2026 (3) · Claude · APK 1.4.2 con notificaciones: rama preparada (sin unir, sin compilar)
 
 Rama `claude/apk-142-notificaciones`, sobre `main`, un solo commit. **Sin push,

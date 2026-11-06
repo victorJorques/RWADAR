@@ -25,6 +25,7 @@
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE",
         "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
         "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE",
         "com.sec.android.provider.badge.permission.READ",
         "com.sec.android.provider.badge.permission.WRITE",
@@ -70,7 +71,8 @@
       [
         "expo-notifications",
         {
-          "color": "#25E39A"
+          "color": "#25E39A",
+          "icon": "./assets/notification-icon.png"
         }
       ],
       "expo-font",

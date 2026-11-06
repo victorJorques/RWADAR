@@ -94,6 +94,68 @@ la 1.4.1 (`c1f7106…`).
 8. Encender el push en la base (`30_avisos_registrados_activar_push.sql`) y
    repetir la prueba en el móvil real (punto 5 de «Compilar y publicar»).
 
+## Al día (06/11/2026, tarde): Firebase hecho, revisión y cambios
+
+**Firebase y EAS, hechos por la sesión local de Víctor** (comprobado con
+eas-cli 21.8.0):
+
+- **Proyecto de Firebase:** `rwadar-14e3d`, plan Spark.
+  - Analytics, Gemini y el Programa de desarrolladores, apagados.
+  - **Condiciones aceptadas el 06/11/2026.**
+  - App Android: `com.rwadar.app`.
+- **Variable de EAS:** `GOOGLE_SERVICES_JSON` (archivo, secreta, entorno
+  `production`).
+- **Clave FCM V1:** asignada a `com.rwadar.app`, con la cuenta
+  `firebase-adminsdk-fbsvc@rwadar-14e3d.iam.gserviceaccount.com`.
+- Las copias locales de los dos JSON, borradas.
+- Contratos: Firebase es encargado (ver
+  [`docs/legal/encargados/`](../legal/encargados/)).
+
+**Revisión independiente antes de compilar (tres enfoques, cada hallazgo
+verificado por otro agente):**
+
+1. **Icono de la notificación.** Sin él, Android usa el del lanzador, que se ve
+   como un círculo blanco. Cambiarlo después exigiría otro APK. Se añade
+   `assets/notification-icon.png`: el logo del radar, blanco sobre
+   transparente, 96×96. Va en el plugin `expo-notifications` con `"icon"`.
+2. **`RECEIVE_BOOT_COMPLETED` vuelve a estar bloqueado.**
+   - La app no programa notificaciones locales, así que no lo necesita.
+   - Con él, Android arrancaría RWAdar en segundo plano cada vez que se
+     enciende el móvil.
+   - FCM entrega sin él.
+   - Quedan desbloqueados tres permisos: `POST_NOTIFICATIONS`,
+     `c2dm.permission.RECEIVE` y `WAKE_LOCK`.
+3. **Firebase sí arranca, aunque no envía nada.** Con las dos claves en
+   `false`, Firebase no pide token ni se conecta al abrir la app. Pero
+   `FirebaseInitProvider` sí crea `FirebaseApp` en cada arranque, y Firebase
+   guarda en el móvil un «latido»: las fechas de los días en que se abrió la
+   app, hasta 30. La primera petición a Firebase Installations, al pulsar
+   «Notificaciones en este móvil», envía a Google esas fechas, junto con la
+   marca, el modelo y el instalador del móvil. Antes de encender el push hay
+   que hacer dos cosas:
+   - decirlo en la privacidad (web y app) y en el texto del interruptor;
+   - que lo valide la revisión legal.
+
+   Quitar el arranque de Firebase exigiría código nativo propio: no compensa
+   en esta versión.
+4. **La prueba se parte en dos.** Con `AVISOS_NOVEDADES_REMOTOS = false`, el
+   botón «Notificaciones en este móvil» no aparece. Además, en un emulador
+   `lib/avisos.js` no pide permiso ni token (`Device.isDevice`).
+   - **Antes de publicar (emulador con Google Play):**
+     - firma, versión, permisos, claves de Firebase y proyecto
+       `rwadar-14e3d`;
+     - instalar encima de la 1.4.1;
+     - dos aperturas sin cierres;
+     - red grabada sin Firebase.
+
+     Lo hace el flujo `android-142.yml` de RWAdar-downloads.
+   - **Después, antes de encender el push** (orden de Víctor):
+     - OTA a la 1.4.2 con el interruptor encendido;
+     - en un **Android físico**: permiso al pulsar, captura de control, los
+       dos canales y el punto 5.
+
+     **Víctor usa iPhone:** hace falta un Android prestado.
+
 ## Por qué hace falta un APK nuevo
 
 La 1.4.1 (código 23) no puede mostrar notificaciones del sistema:

@@ -603,12 +603,17 @@ test('la configuración conserva el producto nuevo y falla cerrado', () => {
     assert.ok(app.android.blockedPermissions.includes(permiso),
       `El manifiesto editorial debe retirar el permiso heredado ${permiso}`);
   }
-  // La 1.4.2 entrega notificaciones del sistema con FCM: estos cuatro salen de
+  // La 1.4.2 entrega notificaciones del sistema con FCM: estos tres salen de
   // la lista de bloqueados (APK-1.4.2-NOTIFICACIONES.md, punto 1).
+  // RECEIVE_BOOT_COMPLETED sigue bloqueado: la app no programa notificaciones
+  // locales y, sin él, Android no arranca RWAdar en segundo plano al encender
+  // el móvil.
+  assert.ok(app.android.blockedPermissions.includes('android.permission.RECEIVE_BOOT_COMPLETED'),
+    'RECEIVE_BOOT_COMPLETED sigue bloqueado');
   for (const permiso of ['android.permission.INTERNET', 'android.permission.ACCESS_NETWORK_STATE',
     'android.permission.VIBRATE', 'com.rwadar.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION',
     'android.permission.POST_NOTIFICATIONS', 'com.google.android.c2dm.permission.RECEIVE',
-    'android.permission.WAKE_LOCK', 'android.permission.RECEIVE_BOOT_COMPLETED']) {
+    'android.permission.WAKE_LOCK']) {
     assert.ok(!app.android.blockedPermissions.includes(permiso),
       `Se conserva la capacidad necesaria o protección interna ${permiso}`);
   }

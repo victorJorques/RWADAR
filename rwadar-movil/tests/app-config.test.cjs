@@ -70,3 +70,15 @@ test('el runtime resuelto con app.config.js es 1.4.2(24), con y sin la variable'
     assert.ok(!exp.android.blockedPermissions.includes('android.permission.POST_NOTIFICATIONS'));
   }
 });
+
+test('la notificación lleva su propio icono: blanco sobre transparente, 96×96', () => {
+  const plugin = expo.plugins.find((p) => Array.isArray(p) && p[0] === 'expo-notifications');
+  assert.ok(plugin, 'expo-notifications está en plugins');
+  assert.equal(plugin[1].icon, './assets/notification-icon.png');
+  const png = fs.readFileSync(path.join(RAIZ, 'assets', 'notification-icon.png'));
+  assert.equal(png.subarray(1, 4).toString('latin1'), 'PNG');
+  // Cabecera IHDR: ancho y alto en los bytes 16-23; tipo de color 6 = RGBA.
+  assert.equal(png.readUInt32BE(16), 96);
+  assert.equal(png.readUInt32BE(20), 96);
+  assert.equal(png[25], 6, 'RGBA, con canal alfa');
+});

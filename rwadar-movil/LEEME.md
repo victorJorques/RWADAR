@@ -331,10 +331,12 @@ publicación en Google Play. La configuración local no demuestra que ese APK se
 haya compilado o entregado. Guía completa:
 [`APK-1.4.2-NOTIFICACIONES.md`](../docs/tareas/APK-1.4.2-NOTIFICACIONES.md).
 
-- **Permisos:** `POST_NOTIFICATIONS`, `c2dm.permission.RECEIVE`, `WAKE_LOCK` y
-  `RECEIVE_BOOT_COMPLETED` salen de `blockedPermissions`; el resto (insignias
-  de lanzadores, `SYSTEM_ALERT_WINDOW`, audio, almacenamiento, *install
-  referrer*) sigue bloqueado. `extra.rwadar.pushDeliveryEnabled` pasa a `true`.
+- **Permisos:** `POST_NOTIFICATIONS`, `c2dm.permission.RECEIVE` y `WAKE_LOCK`
+  salen de `blockedPermissions`. El resto sigue bloqueado:
+  `RECEIVE_BOOT_COMPLETED`, porque no hay notificaciones locales programadas;
+  las insignias de lanzadores; `SYSTEM_ALERT_WINDOW`; audio; almacenamiento, y
+  *install referrer*. La notificación lleva su icono propio,
+  `assets/notification-icon.png`. `extra.rwadar.pushDeliveryEnabled` pasa a `true`.
 - **Firebase (FCM) sin archivo en Git:** `app.config.js` añade
   `android.googleServicesFile` solo si existe la variable de EAS
   `GOOGLE_SERVICES_JSON` (tipo archivo, visibilidad secreta, entorno

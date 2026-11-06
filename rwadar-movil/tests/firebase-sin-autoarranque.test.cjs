@@ -58,13 +58,15 @@ test('introspección: <application> lleva las dos claves de Firebase en false', 
     { 'android:name': 'firebase_messaging_auto_init_enabled', 'android:value': 'false' },
     { 'android:name': 'firebase_analytics_collection_enabled', 'android:value': 'false' },
   ]);
-  // Los cuatro permisos de la entrega ya no se retiran del manifiesto.
+  // Los tres permisos de la entrega ya no se retiran del manifiesto;
+  // RECEIVE_BOOT_COMPLETED sí (no hay notificaciones locales programadas).
   const retirados = (manifiesto.manifest['uses-permission'] || [])
     .filter((p) => p.$['tools:node'] === 'remove').map((p) => p.$['android:name']);
   for (const permiso of ['android.permission.POST_NOTIFICATIONS', 'com.google.android.c2dm.permission.RECEIVE',
-    'android.permission.WAKE_LOCK', 'android.permission.RECEIVE_BOOT_COMPLETED']) {
+    'android.permission.WAKE_LOCK']) {
     assert.ok(!retirados.includes(permiso), `${permiso} ya no se bloquea`);
   }
+  assert.ok(retirados.includes('android.permission.RECEIVE_BOOT_COMPLETED'), 'RECEIVE_BOOT_COMPLETED se retira');
   assert.ok(retirados.includes('android.permission.SYSTEM_ALERT_WINDOW'), 'el resto sigue bloqueado');
   assert.equal(fs.existsSync(path.join(RAIZ, 'android')), false, 'la introspección no escribe android/');
 });
