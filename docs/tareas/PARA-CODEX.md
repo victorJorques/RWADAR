@@ -6,6 +6,37 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 6 de noviembre de 2026 (3) · Claude · APK 1.4.2 con notificaciones: rama preparada (sin unir, sin compilar)
+
+Rama `claude/apk-142-notificaciones`, sobre `main`, un solo commit. **Sin push,
+sin merge, sin EAS, sin Firebase, sin Supabase.** Estado y pasos que faltan:
+[`APK-1.4.2-NOTIFICACIONES.md`](APK-1.4.2-NOTIFICACIONES.md), apartado
+«Estado: rama preparada».
+
+- **Cambios:** `rwadar-movil/app.json` (1.4.2, código 24, sin bloquear
+  `POST_NOTIFICATIONS`, `c2dm…RECEIVE`, `WAKE_LOCK` ni
+  `RECEIVE_BOOT_COMPLETED`, `pushDeliveryEnabled: true`, plugin local),
+  `rwadar-movil/app.config.js` (Firebase solo desde la variable de EAS
+  `GOOGLE_SERVICES_JSON`; falla en EAS Build sin ella),
+  `rwadar-movil/plugins/firebase-sin-autoarranque.js` (las dos `meta-data` de
+  Firebase en `false`), `.easignore`, `LEEME.md` y pruebas (`flujo`,
+  `actualizaciones-app`, `avisos-ui`, `empaquetado`, y nuevas `app-config` y
+  `firebase-sin-autoarranque`).
+- **Pruebas:** `npm --prefix rwadar-movil test` (486 + 2 omitidas, 0 fallos),
+  `copiar-idiomas-web.cjs --comprobar` y `expo config --type introspect` sin
+  red (runtime `1.4.2(24)`, las dos claves en `false`, sin
+  `googleServicesFile` sin la variable).
+- **Guardián de OTA con la base de la 1.4.1:** rechaza la rama, como debe
+  («Requiere revisión nativa y otro APK»). **No unir a `main` hasta el día que
+  se compile:** desde ese merge no se puede enviar OTA a la 1.4.1.
+- **Sin tocar, a propósito:** `AVISOS_NOVEDADES_REMOTOS = false`, la base por
+  defecto de `ota-android.yml` (se cambia el día que se publique el APK) y la
+  privacidad de la web (frases de «Al encender el push», antes de encenderlo).
+- **Pendiente de Víctor:** Firebase y `google-services.json`, la variable de
+  EAS, la credencial FCM V1; después, merge y «Compilar app» desde `main`,
+  prueba en móvil real, release `v1.4.2` con `version-android.json` y cambio
+  de la base de OTA.
+
 ## 6 de noviembre de 2026 (2) · Claude · publicado: Academy con cuenta y 9 lecciones; migración 30 aplicada (avisos apagados); revisión legal
 
 Órdenes de Víctor del 06/11: «Eric da el visto bueno», «La revisión legal hazla

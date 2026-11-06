@@ -6,6 +6,94 @@ punto 5). Es el paso 6 de la activación y **cada acción de esta guía necesita
 el permiso expreso de Víctor**: crear Firebase, subir credenciales a EAS,
 compilar y publicar el APK.
 
+## Estado: rama preparada (06/11/2026, Claude)
+
+El cambio nativo de los puntos 1 a 4 (y la parte de `LEEME.md` del punto 5)
+está hecho en la rama **`claude/apk-142-notificaciones`**, sobre `main`, en un
+solo commit. **No está unido a `main`, no se ha compilado ni publicado nada y no
+se ha tocado EAS, Firebase ni Supabase.** Mientras no se una, `main` sigue
+siendo compatible con la 1.4.1 y se le pueden seguir enviando OTA.
+
+**Hecho en la rama:**
+
+- `rwadar-movil/app.json`: el diff exacto del punto 1 (1.4.2, código 24, los
+  cuatro permisos fuera de `blockedPermissions`, `pushDeliveryEnabled: true` y
+  el plugin local al final de `plugins`).
+- `rwadar-movil/app.config.js` (punto 2) y
+  `rwadar-movil/plugins/firebase-sin-autoarranque.js` (punto 2 bis), con el
+  código de esta guía, sin dependencias nuevas.
+- `.easignore` (punto 3): sube `app.config.js` y `plugins/`;
+  `google-services.json` sigue excluido.
+- Pruebas (punto 4): `flujo`, `actualizaciones-app`, `avisos-ui` y
+  `empaquetado` cambiadas, y dos nuevas, `app-config.test.cjs` y
+  `firebase-sin-autoarranque.test.cjs` (esta última aplica el plugin en modo
+  introspección, sin escribir `android/`, y comprueba que sin él no hay claves y
+  que aplicarlo dos veces no las duplica).
+- `rwadar-movil/LEEME.md`: actualizaciones en «1.4.2/código 24», la variable
+  de EAS y la credencial FCM V1.
+
+**Comprobado en local (sin red, sin EAS):**
+
+- `EXPO_OFFLINE=1 npx --no-install expo config --type introspect --json`, sin
+  `GOOGLE_SERVICES_JSON`: versión `1.4.2`, `versionCode` 24,
+  `expo_runtime_version` = `1.4.2(24)` en `strings.xml`, ninguno de los cuatro
+  permisos con `tools:node="remove"` (los demás siguen retirados),
+  `firebase_messaging_auto_init_enabled` y
+  `firebase_analytics_collection_enabled` con `false` en `<application>`, y
+  **sin** `android.googleServicesFile`. Con la variable apuntando a un archivo
+  de prueba, solo se añade `googleServicesFile`; con `EAS_BUILD=true` y sin la
+  variable, falla con «Falta GOOGLE_SERVICES_JSON…».
+- `npm --prefix rwadar-movil test`: 488 pruebas, 486 correctas, 2 omitidas
+  (las de siempre), 0 fallos.
+- `node rwadar-movil/scripts/copiar-idiomas-web.cjs --comprobar`: idénticos.
+- Guardián de OTA con la base de la 1.4.1 (`c1f7106…`): **rechaza esta rama**,
+  como debe: «Requiere revisión nativa y otro APK: .easignore,
+  rwadar-movil/app.config.js, rwadar-movil/app.json,
+  rwadar-movil/plugins/firebase-sin-autoarranque.js».
+
+**Orden de los mods (detalle comprobado):** Expo ejecuta los mods de los
+plugins en orden inverso, así que el plugin local, al final de `plugins`, corre
+el primero de los de `app.json`. Hoy ningún otro plugin toca esas dos claves
+(comprobado: la introspección del proyecto real las deja en `false`), y la
+prueba definitiva sigue siendo el manifiesto del APK compilado (punto 3 de
+«Compilar y publicar»).
+
+**No cambia en esta rama, a propósito:** `AVISOS_NOVEDADES_REMOTOS` sigue en
+`false` (encenderlo es otra orden de Víctor), `SERVICIOS_USUARIO_REMOTOS`
+sigue en `false` y la base por defecto de `ota-android.yml` sigue siendo la de
+la 1.4.1 (`c1f7106…`).
+
+**Falta, por este orden (cada paso con permiso de Víctor):**
+
+1. Los cuatro pasos de Víctor fuera del repositorio (más abajo): proyecto de
+   Firebase con `google-services.json`, la variable de EAS
+   `GOOGLE_SERVICES_JSON` (tipo archivo, entorno `production`), la credencial
+   FCM V1 en expo.dev y, solo si se activa la seguridad de push de Expo,
+   `EXPO_ACCESS_TOKEN` en el Vault. Sin la variable, la compilación en EAS
+   falla a propósito.
+2. El mismo día que se compile: poner la rama al día con `main` (si han
+   entrado OTA de JS entretanto), `npm test` completo, PR y merge a `main`.
+3. «Compilar app Android» (`compilar-app.yml`), perfil `editorial`, **desde
+   `main`**, y apuntar el commit completo de esa compilación.
+4. Pruebas en un móvil real antes de publicar (punto 3 de «Compilar y
+   publicar»): manifiesto del APK con las dos claves en `false`, captura de red
+   del primer arranque sin Firebase, instalar encima de la 1.4.1, permiso solo
+   al pulsar, los dos canales y «Versión de la app» 1.4.2.
+5. Publicar en `RWAdar-downloads` la release `v1.4.2` con `RWAdar.apk` y
+   `version-android.json` (forma exacta en el punto 4 de «Compilar y
+   publicar»).
+6. **Cambiar la base de OTA (pendiente, no se hace en esta rama):** en
+   `.github/workflows/ota-android.yml`, `inputs.base.default` pasa a ser el
+   commit completo de la compilación del paso 3 y la descripción, «Commit
+   completo del APK instalado (1.4.2 = <primeros 7>…)». Hasta entonces, no se
+   envía ninguna OTA desde un `main` con este cambio.
+7. Privacidad de la web (`privacidad.html`, frases de «Al encender el push»
+   del contrato): **no está en esta rama**. El contrato solo señala dónde
+   cambian; el texto nuevo se redacta y revisa antes de encender el push en la
+   base, para que la web no lo anuncie antes de tiempo.
+8. Encender el push en la base (`30_avisos_registrados_activar_push.sql`) y
+   repetir la prueba en el móvil real (punto 5 de «Compilar y publicar»).
+
 ## Por qué hace falta un APK nuevo
 
 La 1.4.1 (código 23) no puede mostrar notificaciones del sistema:
