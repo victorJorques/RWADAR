@@ -34,7 +34,7 @@ apartado 3) resume esto mismo y enlaza aquí.
 |---|---|---|---|
 | **Supabase** | Base de datos y cuentas | Sí, dentro de sus condiciones. Nada que firmar | Cláusulas tipo (SCC), módulo 2 |
 | **Cloudflare** | Web, sesión, analítica | Sí, dentro de su acuerdo de autoservicio. Nada que firmar | Marco UE-EE. UU. (DPF) y SCC |
-| **Google Firebase** | Notificaciones en Android (pendiente) | Sí, desde que Víctor acepte sus condiciones en la consola (pendiente) | DPF y SCC |
+| **Google Firebase** | Notificaciones en Android (desde la 1.4.2; los avisos siguen apagados) | Sí: condiciones aceptadas en la consola el 06/11/2026 (proyecto `rwadar-14e3d`) | DPF y SCC |
 | **Expo** | Actualizaciones de la app y push | Sí, en sus términos (§3.2). No hay contrato aparte | SCC módulo 2, y DPF «en revisión» |
 | **GitHub** | Código, flujos, copias y descargas del APK | **No. Es un hueco** | DPF |
 | **Lettermint** | Todos los correos de RWAdar (pendiente) | Sí, al crear la cuenta (pendiente) | No salen: todo en la UE |
@@ -71,11 +71,11 @@ apartado 3) resume esto mismo y enlaza aquí.
 
 | | |
 |---|---|
-| **Qué hará** | Entregar las notificaciones en Android, desde el APK 1.4.2. **Hoy no trata nada.** |
+| **Qué hará** | Entregar las notificaciones en Android, desde el APK 1.4.2. Proyecto `rwadar-14e3d` (plan Spark; Analytics, Gemini y Programa de desarrolladores apagados), app `com.rwadar.app`. **Hoy no recibe datos:** la app solo le pide algo cuando la persona pulsa «Notificaciones en este móvil», y los avisos siguen apagados. Ojo: desde la 1.4.2, Firebase guarda en el móvil las fechas recientes de uso de la app («latido») y las envía en esa primera petición (ver `docs/tareas/APK-1.4.2-NOTIFICACIONES.md`). |
 | **Quién firma** | Google LLC, Google Ireland Limited u otra empresa del grupo, «as applicable»: el contrato no fija cuál. |
 | **Contrato** | Firebase Data Processing and Security Terms: https://firebase.google.com/terms/data-processing-terms. Sus cláusulas tipo: https://firebase.google.com/terms/firebase-sccs-eu-c2p |
 | **Versión** | «Terms last modified: August 21, 2024» (21/08/2024). |
-| **Cómo vincula** | «These Firebase Data Processing and Security Terms […] are incorporated into the Agreement.» Rigen desde la «Terms Effective Date», que es «the date on which Customer accepted, or the parties otherwise agreed to, these Terms». O sea: desde que Víctor las acepta en la consola al crear el proyecto. **Fecha de aceptación: pendiente** (ver «Fechas que hay que apuntar»). |
+| **Cómo vincula** | «These Firebase Data Processing and Security Terms […] are incorporated into the Agreement.» Rigen desde la «Terms Effective Date», que es «the date on which Customer accepted, or the parties otherwise agreed to, these Terms». O sea: desde que Víctor las acepta en la consola al crear el proyecto. **Aceptadas el 06/11/2026** al crear el proyecto `rwadar-14e3d` (lo hizo la sesión local de Claude con la cuenta de Google de Víctor y su permiso). |
 | **Transferencias** | Google LLC está en el DPF como «Active» (participante 5780). §10.2: se usa el DPF y, si no estuviera disponible, las SCC. |
 | **Subencargados** | https://firebase.google.com/terms/subprocessors |
 | **PDF** | [`2026-11-06-google-firebase-terminos-tratamiento.pdf`](2026-11-06-google-firebase-terminos-tratamiento.pdf) y [`2026-11-06-google-firebase-scc.pdf`](2026-11-06-google-firebase-scc.pdf) |
@@ -146,9 +146,8 @@ Mail y Apple (push en iPhone, sin app publicada).
 
 ## Qué tiene que hacer Víctor
 
-1. **Firebase.** Al crear el proyecto, aceptar en la consola las «Firebase Data
-   Processing and Security Terms» y apuntar la fecha abajo. Si no aparecen al
-   crearlo, buscarlas en la configuración del proyecto y apuntarlo igual.
+1. **Firebase.** ✅ Hecho el 06/11/2026: proyecto `rwadar-14e3d`, condiciones
+   aceptadas en la consola.
 2. **GitHub.** Elegir una de dos:
    - **A. Firmar el contrato de GitHub.** Pasar el repositorio a una
      organización con GitHub Team (de pago) y aceptar allí el «GitHub Customer
@@ -178,7 +177,7 @@ Mail y Apple (push en iPhone, sin app publicada).
 
 | Proveedor | Fecha de aceptación | Cómo |
 |---|---|---|
-| Google Firebase | **pendiente** | Aceptar sus condiciones de tratamiento en la consola |
+| Google Firebase | **06/11/2026** | Aceptadas en la consola al crear el proyecto `rwadar-14e3d` |
 | Lettermint | **pendiente** | Crear la cuenta |
 | GitHub | **pendiente (sin contrato)** | Opción A o B de arriba |
 
