@@ -6,6 +6,29 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 6 de noviembre de 2026 (7) · Claude · GitHub: decisión de pasar a una organización con GitHub Team
+
+Víctor: «Decide tú lo mejor para el proyecto» (el hueco de GitHub sin contrato de encargo).
+
+**Decisión: opción A**, organización `rwadar` con **GitHub Team** (4 $ al mes) y el «GitHub Customer Agreement», que incluye el DPA. Motivos, comprobados en las páginas oficiales:
+1. El DPA de GitHub solo se aplica a Team y Enterprise. Una organización gratuita no basta.
+2. Supabase gratuito no hace copias, así que las de GitHub son las únicas. Sacar de GitHub los datos personales dejaría las cuentas sin copia.
+3. Es lo más barato que cierra el hueco. Supabase Pro cuesta 25 $ al mes y no quitaría los flujos de GitHub.
+4. Al trasladar el repositorio se conservan los secretos y las direcciones redirigen. Solo los flujos antiguos de pruebas de la 1.4.0 y la 1.4.1 nombran `victorJorques/RWADAR`, y ya no se usan.
+
+`RWAdar-downloads` se queda en la cuenta personal: es público, no trata datos de usuarios y las apps instaladas usan su dirección exacta.
+
+**Corrección del README de encargados:** decía que GitHub no tenía la clave de las copias. Sí la tiene, porque `COPIA_CLAVE` es un secreto de GitHub.
+
+**Pendiente de Víctor** (pasos en `docs/legal/encargados/README.md`, «GitHub · hueco»):
+1. Crear la organización con Team.
+2. Firmar el «Customer Agreement».
+3. Trasladar `RWADAR`.
+4. Instalar Claude y Codex en la organización.
+5. Probar la copia de seguridad.
+
+Mientras tanto, las copias siguen como están.
+
 ## 6 de noviembre de 2026 (6) · Claude · app 1.4.2 publicada; base de OTA a la 1.4.2; migración 31 aplicada; web publicada
 
 **Lo que se hizo:**
