@@ -5,6 +5,27 @@
 original sin tocar, [`RWAdar_Como_Usar_RWAdar_2026.pdf`](RWAdar_Como_Usar_RWAdar_2026.pdf)
 (10 páginas, 594 KB, sha256 `035e9568…1534`).
 
+*06/11/2026 · Claude.* La RWAdar Academy ya tiene las nueve lecciones
+publicadas, y en la web cada lección se abre con una cuenta gratuita
+confirmada (el índice `/academy/` y el tutorial 3D siguen públicos). Por eso
+la página 9 del manual corregido ya no dice «siete lecciones publicadas … y
+dos más en preparación», sino que la cuenta gratuita abre la Academy, con sus
+nueve lecciones, «de los fundamentos a lo que ocurre después de emitir,
+pasando por cómo leer el radar» (la 9 es «Después de emitir»; «cómo leer el
+radar» es la 7). Y, por la revisión legal
+([`REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`](../legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md),
+punto 5.13), el párrafo de los avisos ya no promete «baja en un clic» ni
+avisos «cuando una plataforma que vigila cambie de situación». Ahora dice:
+«También llegarán próximamente, solo si usted los pide, los avisos de
+novedades: fichas nuevas en el radar y novedades de la web y la app. Podrá
+darse de baja cuando quiera, desde el enlace de cada correo o en su Perfil,
+sin perder la cuenta.» Los avisos siguen apagados. PDF regenerado (sha256
+`e21d0e3a…4fdf`): solo cambian esos dos párrafos de la página 9, y el resto
+de páginas sale idéntico píxel a píxel a la versión del 05/10. Ojo: cada
+vez que se ejecuta el script, el sha256 sale distinto aunque el contenido sea
+el mismo, porque PyMuPDF pone al guardar un identificador interno (`/ID`) al
+azar. Para comparar dos versiones, compara cómo se ven las páginas, no el sha256.
+
 ## Qué pide Eric
 
 Que quien cree una cuenta pueda descargarlo: un botón en la pantalla de
@@ -24,7 +45,7 @@ el comparador de hasta tres, el CSV y «Fuera del radar».
 **Había que corregir dos cosas antes de ofrecerlo. Ya hay una versión
 corregida, pendiente del visto bueno de Eric:**
 [`RWAdar_Como_Usar_RWAdar_2026_corregido.pdf`](RWAdar_Como_Usar_RWAdar_2026_corregido.pdf)
-(sha256 `85f3bd5b…3b4a`). La genera [`corregir-manual.py`](corregir-manual.py)
+(sha256 `e21d0e3a…4fdf`, revisada el 06/11/2026). La genera [`corregir-manual.py`](corregir-manual.py)
 a partir del original, que no se toca. Usa la misma letra (Carlito), con el
 mismo tamaño, color e interlineado. Las páginas 1–6, 8 y 10 salen idénticas
 píxel a píxel, y el texto viejo se elimina de verdad, no se tapa. Solo
@@ -34,9 +55,11 @@ cambian estas dos:
   Arriba, lo que la cuenta hace hoy: guardar la lista y volver a ella. El
   párrafo «Por qué importa» es el de Eric, sin tocar. «Qué recibirá a partir
   de ahora» pasa a «Próximamente: las guías de la serie», con la misma tabla
-  y la aclaración de que llegarán solo si la persona lo pide. La Academy
-  tiene «siete lecciones publicadas … y dos más en preparación». Los avisos
-  por correo se anuncian como próximamente, opcionales y con baja en un clic.
+  y la aclaración de que llegarán solo si la persona lo pide. La cuenta
+  gratuita abre la RWAdar Academy, con sus nueve lecciones publicadas. Los
+  avisos de novedades (fichas nuevas en el radar y novedades de la web y la
+  app) se anuncian como próximamente, solo si la persona los pide, con baja
+  desde el enlace de cada correo o en su Perfil.
 - **Página 7:** el Checklist «llegará próximamente a la web, de descarga
   libre y sin registro».
 
@@ -56,16 +79,18 @@ Lo que se corrigió y por qué:
    > su lista en cualquier navegador. Una verificación vale para la fecha en
    > que se hizo: vuelva a su lista y mire la fecha de revisión de cada ficha.
    >
-   > **Próximamente:** avisos por correo cuando una plataforma que vigila
-   > cambie de situación, y las guías de la serie (comisiones y costes,
-   > guía del inversor, viabilidad de la tokenización, seguridad y regulación
-   > MiCA-CNMV). Solo se activarán si usted lo pide, y podrá darse de baja en
-   > un clic. Mientras tanto, la RWAdar Academy tiene siete lecciones
-   > publicadas, de los fundamentos a cómo leer el radar.
+   > **Próximamente:** las guías de la serie (comisiones y costes, guía del
+   > inversor, viabilidad de la tokenización, seguridad y regulación
+   > MiCA-CNMV) y los avisos de novedades (fichas nuevas en el radar y
+   > novedades de la web y la app). Solo llegarán si usted lo pide, y podrá
+   > darse de baja cuando quiera, desde el enlace de cada correo o en su
+   > Perfil. Mientras tanto, su cuenta gratuita ya le abre la RWAdar
+   > Academy: nueve lecciones publicadas, de los fundamentos a lo que ocurre
+   > después de emitir, pasando por cómo leer el radar.
 
    (Si Eric prefiere otra redacción, vale cualquiera que no presente como
-   activo lo que todavía no lo está. La Academy publicada tiene 7 lecciones,
-   no 9.)
+   activo lo que todavía no lo está. Desde el 06/11/2026 la Academy tiene
+   las 9 lecciones publicadas, y cada una se abre con la cuenta gratuita.)
 
 2. **Sección 6 (página 7) remite al «Checklist de Elegibilidad RWA», que
    «se descarga libremente desde la web».** No está en la web ni en el

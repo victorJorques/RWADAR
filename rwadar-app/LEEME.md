@@ -49,6 +49,9 @@ Estos ficheros **no pertenecen a la cadena automática**:
   interpola HTML sin escapar y el cierre 22 lo vuelve a apagar. No se aplica.
 - `23_activar_correo.sql`: opt-in idempotente posterior a 22. Solo se ejecuta
   mediante `aplicar-envio-avisos.cmd`; exige Vault/Brevo y aprobación explícita.
+  Está inactivo; si algún día se reactiva, también tiene que dejar Brevo (la
+  revisión legal del 06/11/2026 lo descartó por el píxel de apertura en el
+  correo transaccional), como ya hizo la 31 con los avisos a registrados.
   Su verificador es read-only y `correo_fallo_cerrado.sql` apaga únicamente
   correo sin cortar la API, push ni la retención.
 - `16_reparacion.sql`: histórico; reabrió permisos que exponen `usuario_id` y
@@ -229,9 +232,11 @@ comando haya superado los verificadores 14, 15, 22 y la paridad 26/4. Aplicar
 El resultado deliberado es API reparada, retención diaria activa y correo/push
 apagados, bloqueados y sin cron.
 
-## Avisos a registrados (30)
+## Avisos a registrados (30 y 31)
 
-Preparada y probada en local; **no aplicada**. Contrato:
+La 30 está **aplicada** en producción desde el 06/11/2026, con todo apagado;
+por eso ya no se edita: cualquier cambio va en una migración nueva, como la
+31. La 31 está preparada y probada en local; **no aplicada**. Contrato:
 [`docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](../docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
 
 - `db/30_avisos_registrados.sql` (copia idéntica en
@@ -239,7 +244,8 @@ Preparada y probada en local; **no aplicada**. Contrato:
   `rwadar_novedades`, preferencias con permiso versionado
   (`novedades-v2-2026-11-06`, de la revisión legal del 06/11/2026; sustituye a
   la v1, con la que nunca se recogió ningún permiso), bienvenida, anuncios,
-  móviles y colas de correo (Brevo) y push (Expo). Va después de 22, 24-26, el refuerzo de sesión, 28,
+  móviles y colas de correo y push (Expo). La 30 sola enviaba el correo con
+  Brevo; desde la 31, con Lettermint. Va después de 22, 24-26, el refuerzo de sesión, 28,
   28_REVERTIR y 29. Se aplica en el SQL Editor con una copia hecha antes,
   **nunca** con `supabase db push` (subiría también la 27).
 - Todo nace **apagado**, también la casilla del alta (`casilla_activa`: sin
@@ -248,8 +254,8 @@ Preparada y probada en local; **no aplicada**. Contrato:
   Cada paso necesita permiso expreso de Víctor:
   `30_avisos_registrados_activar_casilla.sql` (con la plantilla de Auth ya
   puesta; fija `casilla_activada_el`; no envía nada ni crea reloj),
-  `30_avisos_registrados_activar_correo.sql` (exige `BREVO_API_KEY` y
-  `RWADAR_REMITENTE` en Vault) y `30_avisos_registrados_activar_push.sql`
+  `30_avisos_registrados_activar_correo.sql` (exige la 31 aplicada y
+  `LETTERMINT_API_TOKEN` y `RWADAR_REMITENTE` en Vault) y `30_avisos_registrados_activar_push.sql`
   (`EXPO_ACCESS_TOKEN` opcional). Estos dos crean un único reloj de envío
   `rwadar-novedades` cada 5 minutos que solo llama a `rwadar_novedades.procesar()`.
 - El permiso del alta solo cuenta si el correo de confirmación salió después
@@ -267,7 +273,8 @@ Preparada y probada en local; **no aplicada**. Contrato:
 - **Tras `fallo_cerrado.sql` o tras reaplicar la 30, la casilla queda
   apagada:** si la web o la app la siguen enseñando, repite
   `30_avisos_registrados_activar_casilla.sql` (tras `fallo_cerrado.sql`,
-  reaplica antes la 30 para recuperar el reloj de limpieza). Comprobar:
+  reaplica antes la 30 para recuperar el reloj de limpieza, y después la 31
+  para que el correo vuelva a salir por Lettermint). Comprobar:
   `30_avisos_registrados_verificar.sql` (solo lee; pasa apagado y encendido, y
   avisa si la casilla está inactiva).
 - Historial del permiso (`rwadar_novedades.historial_permiso`), solo de
@@ -293,8 +300,53 @@ Preparada y probada en local; **no aplicada**. Contrato:
   crea un anuncio al día, **retenido**. Solo sale con el flujo «Avisar novedad»
   (`.github/workflows/avisar-novedad.yml`, que ejecuta `db/anunciar.sql`) y
   con orden de Víctor; el mismo flujo anuncia actualizaciones y novedades.
-- Plantilla de confirmación de Auth: [`plantillas-auth/`](plantillas-auth/LEEME.md).
-- Prueba: `node probar-avisos-registrados.mjs` (también en `npm test`).
+- Plantillas de Auth (confirmación de cuenta y recuperación de contraseña): [`plantillas-auth/`](plantillas-auth/LEEME.md).
+- **31 · el correo sale por Lettermint** (`db/31_correo_lettermint.sql`, copia
+  idéntica en `supabase/migrations/20261106120000_correo_lettermint.sql`). La
+  revisión legal del 06/11/2026 descartó Brevo porque mete un píxel de apertura
+  también en el correo transaccional. La 31 solo sustituye `correo_mensaje`,
+  `leer_correos` y `enviar_correos` (misma firma, dueño, `security definer`,
+  `search_path` vacío y ningún permiso para clientes); no enciende nada ni
+  toca la configuración, los relojes ni Vault.
+  - Envío: `POST https://api.lettermint.co/v1/send` con el token de proyecto
+    (Vault `LETTERMINT_API_TOKEN`) en `x-lettermint-token`; `from` «RWAdar
+    <`RWADAR_REMITENTE`>», `reply_to` RWAdar@protonmail.com; `settings` con
+    `track_opens` y `track_clicks` en `false` en cada correo; sin `tag` ni
+    `metadata`. La bienvenida va por la ruta transaccional (la de por defecto,
+    sin `route`) y los anuncios por `route: "broadcast"`. `List-Unsubscribe`
+    solo para quien está apuntado, sin `List-Unsubscribe-Post`.
+  - Idempotencia: la clave uuid de cada fila va en la cabecera HTTP
+    `Idempotency-Key`, la misma en cada reintento (Lettermint la guarda 24 h).
+  - Respuestas: 202 con `message_id` = aceptado (no es entrega); 409 =
+    «incierto» (clave ya usada o en curso: se revisa en el panel y nunca se
+    reenvía solo); otro 4xx salvo 408 y 429 = fallido («Lettermint rechazó la
+    petición (HTTP n)»); 5xx, 408, 429 o sin respuesta = reintento, hasta 5, y
+    a los 25 minutos «incierto», como en la 30.
+  - Pie de cada correo con la dirección postal del responsable (Plaza
+    Generalitat, s/n, 46600 Alzira, Valencia): la exige la política de uso de
+    Lettermint y es la del aviso legal de la web.
+  - Si el correo estuviera encendido con Brevo, la 31 se niega (apagar antes);
+    lo que hubiera quedado pedido con Brevo pasa a «incierto», nunca se reenvía.
+  - **Reaplicar la 30 devuelve el correo a Brevo**: después hay que reaplicar
+    la 31. `30_avisos_registrados_activar_correo.sql` se niega a encender sin
+    ella (y sin `LETTERMINT_API_TOKEN` y `RWADAR_REMITENTE` con forma válida).
+  - Comprobar: `31_correo_lettermint_verificar.sql` (solo lee; junto al
+    verificador 30, que ahora es neutral respecto al proveedor).
+  - Flujo «Avisos a registrados (base)» (`.github/workflows/avisos-base.yml`):
+    `ensayo-31` (la 31 y los verificadores 30 y 31 en una transacción que se
+    deshace), `verificar-31`, `aplicar-31` (copia antes y `AVISOS`) y
+    `guardar-correo` (copia antes y `AVISOS`): lee el secreto de GitHub
+    `LETTERMINT_API_TOKEN` y la entrada `remitente` y los guarda en Vault con
+    `db/31_correo_lettermint_guardar.sql` (`vault.create_secret` o
+    `vault.update_secret`; psql recibe los valores como variables `-v` desde
+    el entorno y no los imprime). No enciende el correo: eso es
+    `activar-correo`, que ahora pasa también el verificador 31.
+  - Pendiente de la prueba real del paso 5: que la ruta de difusión se llama
+    `broadcast`, qué hace con nuestro `List-Unsubscribe` (añade el suyo) y que
+    el correo llega sin píxel ni enlaces reescritos.
+- Prueba: `node probar-avisos-registrados.mjs` (también en `npm test`): la 30
+  y la 31 sobre la cadena de producción, con los pasos del flujo ejecutados de
+  verdad con bash y un doble de psql.
 
 ## Contenido y sincronización
 

@@ -85,7 +85,8 @@ Es un correo de servicio. Su contenido está cerrado:
 - No da número de lecciones.
 - Cierra con «Si no creaste esta cuenta, escríbenos y la borramos».
 - El pie de todos los correos nombra al responsable (Víctor Manuel Jorques
-  Granero, España) y enlaza el aviso legal y la privacidad.
+  Granero, con la dirección postal del aviso legal) y enlaza el aviso legal y
+  la privacidad.
 - Solo lleva `List-Unsubscribe` si la persona se apuntó a los avisos.
 - A quien se apuntó le confirma la suscripción y le da el enlace de baja.
 
@@ -293,9 +294,13 @@ una versión nueva; la web y la app deben decir lo mismo):
   quieras con el enlace del final o en tu Perfil.» Cierre: «Si no creaste esta
   cuenta, escríbenos y la borramos» (en HTML, «escríbenos» enlaza al
   `mailto:`; en texto, «escríbenos a RWAdar@protonmail.com y la borramos»).
-- Primera línea del pie de todos los correos: «Te escribe RWAdar, un radar
-  independiente de plataformas de tokenización. Responsable: Víctor Manuel
-  Jorques Granero, España (aviso legal · privacidad).»
+- Primera línea del pie de todos los correos (desde la 31): «Te escribe
+  RWAdar, un radar independiente de plataformas de tokenización. Responsable:
+  Víctor Manuel Jorques Granero, Plaza Generalitat, s/n, 46600 Alzira
+  (Valencia), España (aviso legal · privacidad).» En texto plano, la misma
+  frase terminada en «España.», sin el paréntesis: los enlaces del aviso
+  legal y de la privacidad van en las líneas siguientes. (En la 30 decía
+  solo «Víctor Manuel Jorques Granero, España».)
 - Bienvenida por push (título «RWAdar», canal `cuenta`): «Notificaciones
   activadas en este móvil. Las de novedades solo llegan si las tienes
   activadas en Perfil.»
@@ -351,12 +356,35 @@ la cuenta.
   - push: a cada dispositivo de esas cuentas.
 - **Envía y recoge los resultados** como 22 y 23: pg_net, Vault, dos fases e
   idempotencia.
-  - Correo con Brevo: `BREVO_API_KEY` y `RWADAR_REMITENTE`, HTML escapado,
-    `Idempotency-Key` y `contactPixelTrackingConsent: false`. Un 400 con
-    `duplicate_parameter` o `duplicate_request` cuenta como aceptado (Brevo ya
-    lo tenía). El nombre exacto de la cabecera de idempotencia, ese código y
-    si `List-Unsubscribe` llega al buzón se confirman en la prueba real del
-    paso 5 de la activación.
+  - **Correo con Lettermint** (migración 31, `31_correo_lettermint.sql`, del
+    06/11/2026). La 30 lo hacía con Brevo, que la revisión legal descartó por
+    el píxel de apertura; la 31 sustituye solo las tres funciones del correo
+    (`correo_mensaje`, `enviar_correos` y `leer_correos`) y no enciende nada:
+    - `POST https://api.lettermint.co/v1/send` con el token del proyecto en
+      la cabecera `x-lettermint-token`. En el Vault: `LETTERMINT_API_TOKEN` y
+      `RWADAR_REMITENTE`. Si faltan o no valen: «correo bloqueado:
+      credenciales de Lettermint ausentes o no válidas en Vault»;
+    - HTML escapado, y siempre
+      `"settings": {"track_opens": false, "track_clicks": false}`;
+    - la bienvenida, por la ruta de servicio (la de por defecto, sin
+      `route`); los anuncios, por la de difusión (`"route": "broadcast"`);
+    - la clave idempotente de la fila va en la cabecera HTTP
+      `Idempotency-Key`, la misma en cada reintento (no dentro de las
+      cabeceras del correo). Lettermint la guarda 24 horas: con la misma clave
+      y el mismo cuerpo devuelve el mismo `message_id` y no envía otro;
+    - respuestas: 202 con `message_id`, aceptado. 409, «incierto»: nunca se
+      reenvía solo («Lettermint: clave idempotente ya usada o en curso;
+      revisar en el panel, no reenviar automáticamente»). Otro 4xx salvo 408
+      y 429, fallido («Lettermint rechazó la petición (HTTP n)»). 5xx, 408,
+      429 o sin respuesta: reintento, como en la 30 (hasta 5, y la regla de
+      «incierto» a los 25 minutos);
+    - sin `tag` ni `metadata`: no se manda a Lettermint nada que no haga falta.
+
+    Se confirma en la prueba real del paso 5 de la activación: el nombre de la
+    ruta de difusión, qué hace con nuestro `List-Unsubscribe` (esa ruta pone
+    el suyo) y que el correo llega sin píxel ni enlaces reescritos.
+    **Ojo:** reaplicar la 30 devuelve esas tres funciones a Brevo; después
+    hay que reaplicar la 31.
   - Push con Expo: canales de Android separados, la bienvenida por `cuenta`
     y los anuncios por `novedades` (la app tiene que crear los dos), con
     `data: {tipo, destino}` con `destino` ∈
@@ -368,7 +396,10 @@ la cuenta.
   Si no, lo cierra sin enviarlo.
 - **Pie de cada aviso:**
   - quién envía (RWAdar y su responsable, Víctor Manuel Jorques Granero,
-    España, con enlace al aviso legal y la privacidad);
+    con enlace al aviso legal y la privacidad). Desde la 31, con su dirección
+    postal, la del aviso legal: «Plaza Generalitat, s/n, 46600 Alzira
+    (Valencia), España». La pide la política de uso de Lettermint en cada
+    correo;
   - por qué lo recibe;
   - la baja (enlace y `mailto:`).
 - **Limpieza (`limpiar()`):**
@@ -466,7 +497,8 @@ producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
 - **Envío:**
   - las peticiones a Brevo y Expo, con su pie y su baja;
   - las respuestas de Brevo, `duplicate_parameter` y `duplicate_request`
-    incluidas;
+    incluidas (con la 31, las de correo pasan a Lettermint: petición,
+    cabeceras, `settings`, ruta y los códigos 202, 409, otros 4xx y 5xx);
   - un retenido creado antes de activar y publicado después se reparte;
   - la segunda comprobación antes de enviar;
   - límites y permisos de las funciones, `mi_aviso_push_registrado` incluida.
@@ -549,7 +581,8 @@ producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
     condiciones y se explica que «para abrir una lección comprobamos tu
     sesión; no guardamos qué lecciones lees».
   - *Avisos:* nueva sección con permiso, casilla sin marcar, baja en cada
-    aviso, sin píxel ni seguimiento de clics, proveedores Brevo y Expo/FCM,
+    aviso, sin píxel ni seguimiento de clics, proveedores Lettermint y
+    Expo/FCM,
     plazos de conservación y el aviso de que **todavía no están activos**.
     Cuando se activen, se cambian además las frases de la tabla de abajo.
 
@@ -575,7 +608,8 @@ producción. Dentro de `npm --prefix rwadar-app test`. Cubre:
 |---|---|
 | Al cerrar la Academy | `privacidad.html:55, 110-127, 230` y textos de `rwadar-academy.js` |
 | Al mostrar la casilla (interruptores encendidos) | `privacidad.html:62-64, 78, 230, 268-272`<br>`Cuenta.js:210, 308`<br>`App.js:1711`<br>`idioma-en.js:11, 148, 384, 543`<br>`rwadar-20260820.js:4463, 4491, 4817`<br>`index.html:1553-1561` |
-| Al encender el correo | `privacidad.html:361, 367-370, 453-454`<br>`App.js:1705` |
+| Al pasar Auth a Lettermint (punto 5.8 de «Activación») | `privacidad.html:376-379` (§6: «a través de una cuenta de Gmail de RWAdar»), `495-501` (§8, Google / Gmail: «envía además los correos de confirmación y de recuperación»), `502-508` (§8, Lettermint: «solo si se activa en el futuro el envío de avisos por correo») y la fecha<br>«Información básica», ES y EN, web y app: `acceso.html:56`, `index.html:1575`, `rwadar-20260820.js:4182`, `avisos-cuenta.js:24-25`, `idioma-en.js` (y su copia de la web): «Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo»<br>Las pruebas que exigen las frases de hoy: `probar-web.mjs:2852, 2928-2934` y las de `rwadar-movil` y `rwadar-acceso` |
+| Al encender el correo | `privacidad.html:380-382, 407-409, 502-508`<br>`App.js:1807-1809` |
 | Al encender el push (1.4.2) | `privacidad.html:349-351, 455-459, 493-494`<br>`App.js:1733, 1756` y su inglés<br>`App.js`, diálogo de «Borrar datos del dispositivo»: «No se borran datos del servidor» (al borrar se quita también el registro push del móvil) |
 | Ya hoy | `docs/manual/LEEME.md:59-64` («baja en un clic») |
 
@@ -608,7 +642,10 @@ uno encendido, exigen las nuevas.
 `rwadar-app/plantillas-auth/confirmar-alta.html` es el correo de confirmación
 de hoy, que sale por Gmail, convertido en bienvenida: «Confirma tu correo y
 desbloquea gratis la Academy». Lleva el bloque `{{ if .Data.avisos_novedades }}`
-del punto 3.
+del punto 3. `recuperar-acceso.html` es la recuperación de contraseña. Las dos
+llevan en el pie la dirección postal del responsable, como los avisos: desde
+el punto 5.8 de «Activación» salen por el SMTP de Lettermint, cuya política
+de uso la pide en cada correo.
 
 Ponerla en el panel de Supabase es tocar Supabase en línea: requiere permiso
 de Víctor.
@@ -620,8 +657,12 @@ de Víctor.
 2. **Revisión legal.** ✅ Hecha por Claude a petición de Víctor (06/11/2026):
    [`legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`](../legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md).
    Sus cambios obligatorios antes de los pasos 4 a 6 ya están en el código;
-   lo que queda (contratos de encargo, píxel de Brevo, autoarranque de
-   Firebase, licencia escrita de Eric) está en su apartado de pendientes.
+   lo que queda (contratos de encargo, proveedor de correo sin píxel,
+   autoarranque de Firebase) está en su apartado de pendientes. El proveedor
+   ya está elegido: Lettermint (ver su anexo del 06/11/2026), y los contratos
+   están archivados en
+   [`legal/encargados/`](../legal/encargados/README.md). La licencia escrita de Eric
+   ya existe (06/11, la guarda Víctor fuera de Git).
 3. **Base de datos:** copia de seguridad; aplicar la 30 en el SQL Editor y
    pasar el verificador. Desde ese momento corre el reloj diario de limpieza,
    aunque todo siga apagado.
@@ -643,59 +684,200 @@ de Víctor.
    `AVISOS_NOVEDADES_REMOTOS = false` (web y OTA),
    `30_avisos_registrados_apagar_casilla.sql` y la plantilla anterior
    (`plantillas-auth/LEEME.md`). `30_avisos_registrados_apagar.sql` no la toca.
-5. **Correo:**
-   - dominio propio;
-   - Brevo con el dominio autenticado, el contrato de encargo aceptado y
-     archivado, y el seguimiento de aperturas y clics desactivado;
-   - secretos en el Vault;
-   - **envío de prueba a una cuenta propia ANTES de dejar el reloj encendido
-     para todos.** Lo que no se puede saber sin Brevo de verdad (el nombre de
-     la cabecera de idempotencia, el código con que responde a un duplicado y
-     si `List-Unsubscribe` llega al buzón) se comprueba aquí, no se supone.
-     Durante la prueba no se publica ningún anuncio ni se lanza «Avisar
-     novedad», y `ofertas_automaticas` sigue apagado: así solo pueden salir
-     bienvenidas.
-     1. `30_avisos_registrados_activar_correo.sql` y el verificador 30.
-     2. Registrar una cuenta propia con la casilla marcada y confirmarla. En
-        unos minutos llega la bienvenida.
-     3. En el buzón: sin píxel, enlaces directos a `rwadar.pages.dev`, pie
-        completo y la baja de principio a fin. En el original del mensaje,
-        la cabecera `List-Unsubscribe` con el enlace y el `mailto:`.
-     4. Idempotencia, en los 25 minutos siguientes al primer envío y cuando
-        la cola ya la marca `aceptado`: devolver esa bienvenida a la cola con
-        la misma clave
-        (`update rwadar_novedades.correos set estado = 'pendiente', terminado_el = null where tipo = 'bienvenida' and estado = 'aceptado' and usuario_id = (select id from auth.users where email = '<la cuenta propia>');`)
-        y ejecutar `select rwadar_novedades.procesar();`, y otra vez al cabo
-        de un minuto para leer la respuesta
-        (`select status_code, content from net._http_response order by id desc limit 3;`).
-        Tiene que llegar **un solo** correo. Si Brevo responde 400, su `code`
-        debe ser `duplicate_parameter` o `duplicate_request`; si usa otro, se
-        añade a `leer_correos()` (nueva versión de la 30, con su prueba)
-        antes de seguir.
-     5. Si algo no cuadra (llegan dos correos, falta la cabecera, el código es
-        otro): `30_avisos_registrados_apagar.sql` en ese momento (apaga el
-        correo y su reloj; la casilla y el reloj de limpieza siguen), corregir
-        y repetir la prueba desde el principio.
+5. **Correo, con Lettermint.** Lo hace Víctor, en este orden. Cada paso que
+   toca Supabase, con su orden expresa. Ni bienvenidas ni avisos salen hasta
+   el punto 11; desde el punto 8, eso sí, la confirmación y la recuperación de
+   las cuentas ya salen por Lettermint en vez de por Gmail.
+   1. **Comprar el dominio.** Recomendado `rwadar.app`, en Cloudflare ›
+      Domain Registration: la web ya está en Cloudflare, así que los registros
+      DNS se ponen en el mismo panel. `rwadar.com` y `rwadar.io` los tiene
+      aparcados un tercero, a la venta en Afternic. `rwadar.es` también parece
+      libre, pero Cloudflare no vende `.es`: habría que comprarlo en otro
+      sitio. (Un `.app` solo abre webs con `https`; para el correo da igual.)
+   2. **Crear la cuenta de Lettermint y un proyecto** («RWAdar»). Al crear la
+      cuenta se acepta su contrato de encargo: apuntar la fecha en
+      [`legal/encargados/README.md`](../legal/encargados/README.md). Usar un
+      correo de cuenta que se revise: ahí avisan de brechas y de subencargados
+      nuevos.
+   3. **Añadir el dominio en Lettermint** y copiar los registros DNS que pida
+      (normalmente SPF, DKIM y DMARC) en Cloudflare › el dominio › DNS.
+      Esperar a que Lettermint lo dé por verificado.
+   4. **Crear el token del proyecto** en Lettermint. No se pega en ningún
+      chat, archivo ni captura.
+   5. **Guardarlo como secreto de GitHub** con el nombre
+      `LETTERMINT_API_TOKEN` (repositorio › Settings › Secrets and variables ›
+      Actions › New repository secret).
+   6. **Aplicar la 31.** GitHub › Actions › «Avisos a registrados (base)»:
+      primero `ensayo-31` (la prueba y la deshace; no cambia nada) y después
+      `aplicar-31` escribiendo `AVISOS` (hace una copia antes y pasa los
+      verificadores). No enciende nada.
+   7. **Guardar el correo en el Vault.** Mismo flujo, acción
+      `guardar-correo`, con `remitente` = `avisos@<dominio>` (por ejemplo,
+      `avisos@rwadar.app`) y `AVISOS`. Copia el secreto de GitHub al Vault y
+      guarda el remitente. Tampoco enciende nada.
+   8. **Pasar los correos de Auth a Lettermint** (confirmación de cuenta y
+      recuperación de contraseña). En este orden; cada parte que toca
+      Supabase o publica, con orden de Víctor:
+      1. **Plantillas con la dirección postal.** La política de uso de
+         Lettermint pide una dirección física en cada correo, también en los
+         de servicio. Supabase › Authentication › Emails › Templates:
+         `rwadar-app/plantillas-auth/confirmar-alta.html` en *Confirm signup*
+         y `recuperar-acceso.html` en *Reset password*, con sus asuntos
+         ([`plantillas-auth/LEEME.md`](../../rwadar-app/plantillas-auth/LEEME.md)).
+         Si hay otra plantilla activa en el panel, el mismo pie.
+      2. **Privacidad al día y publicada antes de cambiar el SMTP** (fila «Al
+         pasar Auth a Lettermint» de la tabla «Frases que dejan de ser
+         ciertas»). Si no, cada alta y cada recuperación pasarían por un
+         encargado que la privacidad no nombra (RGPD, art. 13.1.e):
+         - §6: «Salen del servicio de autenticación de Supabase a través de
+           Lettermint (apartado 8).», en lugar de «… a través de una cuenta de
+           Gmail de RWAdar (apartado 8).»;
+         - §8, entrada de Google / Gmail: se quita la frase de la
+           confirmación y la recuperación; Gmail queda solo para los
+           contactos de empresa;
+         - §8, entrada de Lettermint: «envía los correos de confirmación y de
+           recuperación de la cuenta (apartado 6) y, si se activan, los avisos
+           por correo», en lugar de «solo si se activa en el futuro el envío
+           de avisos por correo»;
+         - la «Información básica» (web y app, ES y EN): Lettermint pasa a la
+           lista de proveedores de la cuenta, y Google sale de ella si, sin el
+           Gmail, ya no trata datos de la cuenta. No es el texto del permiso:
+           la versión `novedades-v2-2026-11-06` no cambia;
+         - la fecha de la privacidad y las pruebas que exigen las frases de
+           hoy.
 
-     Con todo correcto, el reloj se queda encendido para todos y se cambian
-     las frases de «Al encender el correo».
-   - **Si Brevo descarta `List-Unsubscribe`** (no llega al buzón): se quita
-     del contrato (punto 3, «Baja») y de la privacidad, y la cabecera de
-     `enviar_correos()` en una nueva versión de la 30 con su prueba. No se
-     promete lo que no llega. La baja sigue en el pie de cada aviso (enlace y
-     `mailto:`) y en Perfil.
-   - antes de encender, repetir desde fuera que ni `net` ni `vault` están
-     publicados en la API: `GET …/rest/v1/http_request_queue` con
-     `Accept-Profile: net` debe dar `PGRST106 Invalid schema: net`. Las colas
-     de pg_net las abre Supabase a todos los roles y postgres no puede
-     cerrarlas (diagnóstico de producción del 06/11/2026); por ahí pasa la
-     clave del proveedor de correo.
+         Publicar la web y, si cambia la app, enviar la OTA.
+      3. **Seguimiento apagado en la ruta de servicio.** Por SMTP no van los
+         `settings` de la API: en el panel de Lettermint, la ruta de servicio
+         (la de por defecto) con el seguimiento de aperturas y de clics
+         apagado.
+      4. **El SMTP.** Supabase › Authentication › Emails › SMTP Settings:
+         - Host `smtp.lettermint.co` · Port `587`;
+         - Username `lettermint` · Password: el token del proyecto;
+         - Sender email: el mismo remitente, `avisos@<dominio>` · Sender
+           name: `RWAdar`.
+      5. **Prueba:** «¿Has olvidado tu contraseña?» con una cuenta propia. En
+         el original del mensaje: ningún píxel, el enlace sin reescribir y el
+         pie con la dirección postal. Si algo falla, se vuelve a poner el
+         Gmail en SMTP Settings (y la privacidad anterior) y no se sigue.
+      6. Con todo bien, quitar el Gmail: borrar la contraseña de aplicación de
+         `rwadares@gmail.com` (myaccount.google.com › Seguridad › Contraseñas
+         de aplicaciones). Desde aquí ningún correo de RWAdar sale sin
+         contrato de encargo (revisión legal, 5.8).
+   9. **Pedir al soporte de Lettermint** que quite de la ruta de difusión su
+      enlace de baja automático, porque RWAdar ya tiene su baja (enlace
+      `/baja`, `mailto:` y `List-Unsubscribe` en cada aviso, y el interruptor
+      de Perfil). Mientras no lo quiten, antes de cada anuncio y, si
+      `ofertas_automaticas` está encendido, cada día: mirar en Lettermint su
+      lista de bajas (supresión) de la ruta de difusión y, por cada dirección
+      nueva, ejecutar en Supabase › SQL Editor
+      `select rwadar_novedades.baja_por_correo('correo@de.la.persona');`.
+      Con `ofertas_automaticas` encendido, el anuncio sale minutos después de
+      aprobar el catálogo, sin un «antes» en el que mirar; si nadie puede
+      revisar esa lista a diario, `ofertas_automaticas` se queda apagado hasta
+      que el soporte quite su enlace. `baja_por_correo` corta también los push
+      de novedades: una baja dada solo en Lettermint los deja llegando. Es lo
+      mismo que con las bajas que llegan por correo (RUNBOOK).
+   10. **Prueba real a un buzón propio, antes de encender nada.** Enviar desde
+       Lettermint dos correos a un buzón tuyo: uno por la ruta de servicio y
+       otro por la de difusión, con el seguimiento apagado. Claude o Codex lo
+       pueden lanzar en tu ordenador con el token en una variable, sin verlo:
+
+       ```bash
+       curl -sS https://api.lettermint.co/v1/send \
+         -H "x-lettermint-token: $LETTERMINT_API_TOKEN" \
+         -H "Content-Type: application/json" \
+         -d '{"from":"RWAdar <avisos@rwadar.app>","to":["tu-buzon@ejemplo.com"],
+              "subject":"Prueba de RWAdar (difusión)","text":"Prueba",
+              "html":"<p>Prueba <a href=\"https://rwadar.pages.dev/\">enlace</a></p>",
+              "route":"broadcast",
+              "settings":{"track_opens":false,"track_clicks":false}}'
+       ```
+
+       Para la ruta de servicio, lo mismo sin `"route"`. Cada uno tiene que
+       responder 202 con un `message_id`. En el buzón, abrir el original del
+       mensaje (en Gmail, «Mostrar original») y comprobar:
+       - **sin píxel:** ningún `<img>` que no hayamos puesto;
+       - **enlaces directos** a `rwadar.pages.dev`, sin reescribir;
+       - la cabecera **`List-Unsubscribe`**: en la de difusión, si es la de
+         Lettermint, la nuestra o las dos;
+       - **el nombre de la ruta:** si `broadcast` no existe (responde 4xx), se
+         mira en el panel cómo se llama y se corrige la 31, con su prueba,
+         antes de seguir.
+
+       Si aparece un píxel o enlaces reescritos, **no se enciende**.
+   11. **Encender el correo**, solo entonces, y comprobarlo dentro del sistema
+       antes de dejarlo para todos. Durante la comprobación no se publica
+       ningún anuncio ni se lanza «Avisar novedad», y `ofertas_automaticas`
+       sigue apagado: así solo pueden salir bienvenidas.
+       1. Antes, repetir desde fuera que ni `net` ni `vault` están publicados
+          en la API: `GET …/rest/v1/http_request_queue` con
+          `Accept-Profile: net` debe dar `PGRST106 Invalid schema: net`. Las
+          colas de pg_net las abre Supabase a todos los roles y postgres no
+          puede cerrarlas (diagnóstico de producción del 06/11/2026); por ahí
+          pasa el token de Lettermint.
+       2. Flujo «Avisos a registrados (base)», acción `activar-correo` con
+          `AVISOS`. Se niega si falta la 31 o los secretos del Vault.
+       3. Registrar una cuenta propia con la casilla marcada y confirmarla (la
+          confirmación ya llega por Lettermint). En unos minutos llega la
+          bienvenida.
+       4. En el buzón: sin píxel, enlaces directos a `rwadar.pages.dev` y pie
+          completo (con la dirección postal). En el original del mensaje, la
+          cabecera `List-Unsubscribe` con el enlace y el `mailto:`. La baja
+          todavía no: se prueba en el punto 6, porque darse de baja cambia el
+          cuerpo del correo y la repetición del punto 5 daría 409 en vez del
+          202 guardado.
+       5. Idempotencia, **en los 25 minutos siguientes al primer envío** y con
+          la bienvenida ya en `aceptado`. Pasados los 25 minutos, la cola la
+          marca «incierta» sin pedir nada a Lettermint (aunque Lettermint
+          guarde la clave 24 horas) y la prueba no comprueba nada.
+          1. Anotar el número que da
+             `select max(id) from net._http_response;`.
+          2. Devolver esa bienvenida a la cola con la misma clave
+             (`update rwadar_novedades.correos set estado = 'pendiente', terminado_el = null where tipo = 'bienvenida' and estado = 'aceptado' and usuario_id = (select id from auth.users where email = '<la cuenta propia>');`),
+             ejecutar `select rwadar_novedades.procesar();` y otra vez al
+             cabo de un minuto, para leer la respuesta.
+          3. Comprobar que hay una petición nueva y qué contestó:
+             `select id, status_code, content from net._http_response where id > <el número anotado> order by id;`
+             tiene que salir una fila nueva con 202 y el mismo `message_id`
+             que guarda la cola
+             (`select estado, intentos, proveedor_mensaje_id from rwadar_novedades.correos where tipo = 'bienvenida' and usuario_id = (select id from auth.users where email = '<la cuenta propia>');`),
+             y la bienvenida, otra vez en `aceptado` con `intentos` = 2.
+
+          Tiene que llegar **un solo** correo. Si no hay fila nueva y la
+          bienvenida sale «incierta», ya habían pasado los 25 minutos: no
+          está probado, se repite con otra cuenta propia. Un 409 también evita
+          el duplicado, pero deja la fila «incierta»: mirar en el panel de
+          Lettermint por qué antes de seguir.
+       6. La baja de principio a fin: el enlace del pie y, con otra alta, el
+          interruptor de Perfil.
+       7. Si algo no cuadra (llegan dos correos, falta la cabecera, aparece un
+          píxel): acción `apagar` en ese momento
+          (`30_avisos_registrados_apagar.sql`: apaga el correo y su reloj; la
+          casilla y el reloj de limpieza siguen), corregir y repetir desde el
+          punto 10.
+
+       Con todo correcto, el reloj se queda encendido para todos y se cambian
+       las frases de «Al encender el correo».
+   - **Si Lettermint descarta nuestro `List-Unsubscribe`** (no llega al
+     buzón): se quita del contrato (punto 3, «Baja») y de la privacidad, y la
+     cabecera de `enviar_correos()` en una nueva versión de la 31 con su
+     prueba. No se promete lo que no llega. La baja sigue en el pie de cada
+     aviso (enlace y `mailto:`) y en Perfil.
+   - **Si alguna vez se reaplica la 30** (por ejemplo, tras
+     `fallo_cerrado.sql`), el envío vuelve al código de Brevo: hay que
+     reaplicar la 31 (`aplicar-31`). `activar-correo` se niega a encender sin
+     ella.
 6. **Push:**
    - proyecto de Firebase y credencial FCM V1 en EAS;
    - APK 1.4.2 (guía);
    - `30_avisos_registrados_activar_push.sql`;
    - prueba en un móvil real.
 7. **Aviso automático de ofertas,** si Víctor lo quiere:
+   - antes, que Lettermint haya quitado su enlace de baja de la ruta de
+     difusión, o que alguien revise cada día su lista de bajas y el buzón
+     RWAdar@protonmail.com (punto 5.9 y RUNBOOK, «Bajas»): con el aviso
+     automático no hay un «antes de cada anuncio»;
    - `update rwadar_novedades.configuracion set ofertas_automaticas = true`;
    - cambiar `AGENTS.md`, la skill y `CICLO-DIARIO-CATALOGO.md`.
 
@@ -711,8 +893,10 @@ de Víctor.
   Se archiva en `docs/academy/`.
 - **Víctor:**
   - dominio propio;
-  - cuenta de Brevo;
+  - cuenta de Lettermint (paso 5);
   - Firebase;
+  - el contrato de encargo de GitHub
+    ([`legal/encargados/`](../legal/encargados/README.md#github--hueco));
   - permiso para cada paso de la activación;
   - si se publican las lecciones 8 y 9.
 - **Profesional (opcional):** la revisión legal la hizo Claude; lo que

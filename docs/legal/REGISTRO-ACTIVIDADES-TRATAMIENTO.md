@@ -1,6 +1,7 @@
 # Registro de actividades de tratamiento · RWAdar
 
-**Fecha:** 06/11/2026 (versión 1).
+**Fecha:** 06/11/2026 (versión 2: proveedor de correo Lettermint y contratos de
+encargo comprobados; ver el historial al final).
 **Quién lo lleva:** Víctor Manuel Jorques Granero, titular de RWAdar y
 responsable del tratamiento. Es quien lo mantiene al día y lo entrega a la
 Agencia Española de Protección de Datos (AEPD) si lo pide (RGPD, art. 30.4).
@@ -26,7 +27,11 @@ marcado:
 - [`docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](../tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md)
   («contrato de avisos»).
 - [`rwadar-app/db/30_avisos_registrados.sql`](../../rwadar-app/db/30_avisos_registrados.sql)
-  («la 30»): preparada y probada en local, **no aplicada**.
+  («la 30»): aplicada en Supabase el 06/11/2026, con todo apagado.
+- `rwadar-app/db/31_correo_lettermint.sql` («la 31»): cambia el envío del
+  correo de Brevo a Lettermint. Preparada, **no aplicada**.
+- [`docs/legal/encargados/README.md`](encargados/README.md): los contratos de
+  encargo de cada proveedor, con citas y copia en PDF del 06/11/2026.
 - [`docs/COPIAS-DE-SEGURIDAD.md`](../COPIAS-DE-SEGURIDAD.md) y
   `rwadar-app/copia-seguridad.sh`.
 - [`docs/RUNBOOK.md`](../RUNBOOK.md), apartado «Avisos a registrados».
@@ -39,8 +44,8 @@ marcado:
 
 **Cómo leer las marcas:**
 
-- **(pendiente):** depende de un paso futuro que aún no se ha dado (Brevo,
-  Firebase, dominio propio, aplicar la 30, el APK 1.4.2…). Hoy no ocurre.
+- **(pendiente):** depende de un paso futuro que aún no se ha dado (Lettermint,
+  Firebase, dominio propio, el APK 1.4.2…). Hoy no ocurre.
 - **verificar:** el dato no consta con claridad en las fuentes, o las fuentes
   no coinciden. Hay que comprobarlo y corregir esta línea.
 
@@ -89,17 +94,21 @@ describe (§§ 4, 5, 9 y 11) y un registro sin ellas quedaría incompleto.
 Son encargados del tratamiento (RGPD, art. 28). Los países marcados
 «verificar» no constan en las fuentes: los pongo por conocimiento general.
 
+Los contratos de Supabase, Cloudflare, Google (Firebase), Expo, GitHub y
+Lettermint se leyeron y archivaron en PDF el 06/11/2026. Citas, versiones y
+qué falta: [`encargados/README.md`](encargados/README.md).
+
 | Proveedor | Para qué | Dónde | Garantías si hay transferencia | Contrato de encargo | Fichas |
 |---|---|---|---|---|---|
-| **Supabase** | Base de datos y autenticación | Proyecto en eu-west-1 (Irlanda, UE). Empresa de EE. UU. (verificar) | Su contrato de encargo incluye cláusulas contractuales tipo (SCC) | Forma parte de sus condiciones. Archivar el PDF con fecha (pendiente) | A1-A7, A9, A10, A13, A14 |
-| **Cloudflare** | Alojamiento (Pages), servidor web que gestiona la sesión, CDN, seguridad y Web Analytics | EE. UU., red mundial | Contrato de encargo de autoservicio con el Marco de Privacidad de Datos UE-EE. UU. (DPF) y, cuando corresponda, SCC | En sus condiciones de autoservicio. Archivar el PDF (pendiente) | A1-A3, A10, A12 |
+| **Supabase** | Base de datos y autenticación | Proyecto en eu-west-1 (Irlanda, UE). Firma Supabase Pte. Ltd. (Singapur) | No está en el DPF (consulta del 06/11/2026). Su DPA incluye las SCC, módulo 2, para cualquier acceso desde fuera de la UE | DPA v1 del 01/08/2026, incorporado a sus condiciones (§7.b): no hay que firmar nada. Archivado ([encargados](encargados/README.md#supabase)) | A1-A7, A9, A10, A13, A14 |
+| **Cloudflare** | Alojamiento (Pages), servidor web que gestiona la sesión, CDN, seguridad y Web Analytics | EE. UU., red mundial | Marco de Privacidad de Datos UE-EE. UU. (DPF), activo el 06/11/2026; si cae, SCC módulo 2 (DPA §6.2 y §6.4) | DPA v6.4 del 03/04/2026, incorporado por referencia en su acuerdo de autoservicio (§6.1): no hay que firmar nada. Archivado ([encargados](encargados/README.md#cloudflare)) | A1-A3, A10, A12 |
 | **Netlify** | Página de retirada de los accesos antiguos en rwadar.netlify.app | EE. UU. (verificar) | La privacidad lo cita entre los «identificados», pero no describe el mecanismo. **verificar** | verificar | A10 |
-| **Google (Gmail)** | Una cuenta de Gmail de RWAdar envía, por SMTP de Supabase Auth, la confirmación y la recuperación de la contraseña. El titular usa además su Gmail para contactos de empresa | EE. UU. (verificar) | No documentadas para este uso. **verificar** | **No hay:** es una cuenta de consumo (revisión legal 5.8; contraste 9: infracción grave, LOPDGDD art. 73.k). Pasar a un proveedor con contrato en el paso 5 (pendiente) | A1, A8 |
+| **Google (Gmail)** | Una cuenta de Gmail de RWAdar envía, por SMTP de Supabase Auth, la confirmación y la recuperación de la contraseña. El titular usa además su Gmail para contactos de empresa | EE. UU. (verificar) | No documentadas para este uso. **verificar** | **No hay:** es una cuenta de consumo (revisión legal 5.8; contraste 9: infracción grave, LOPDGDD art. 73.k). Se sustituye por el SMTP de Lettermint cuando haya dominio propio, en el paso 5 (pendiente) | A1, A8 |
 | **Proton Mail** | Buzón RWAdar@protonmail.com: consultas, derechos, bajas, empresas y reportes de seguridad | Suiza (verificar) | Suiza tiene decisión de adecuación de la UE (verificar) | verificar | A7-A10 |
-| **GitHub** | Página de descargas del APK (la app consulta si hay versión nueva). Guarda las copias de seguridad cifradas y ejecuta los flujos | EE. UU. (verificar) | No descritas en la privacidad. **verificar** | verificar | A11, A13 |
-| **Expo** (650 Industries) | Actualizaciones de la app sin instalar versión nueva. Push (pendiente) | EE. UU. | SCC en sus términos. Expo declara el DPF, pero no se ha podido confirmar en la lista oficial (contraste 15): guardar captura con fecha o citar solo SCC | En sus términos. Archivar (pendiente) | A4, A5, A11 |
-| **Brevo** (pendiente) | Correo de bienvenida y avisos | Francia, UE (revisión legal 4.12) | Filiales y subencargados fuera de la UE con SCC o DPF (verificar en su contrato) | Aceptar y archivar antes del paso 5 (pendiente) | A4, A5 |
-| **Google Firebase Cloud Messaging** (pendiente) | Entrega de notificaciones en Android | EE. UU. (verificar) | verificar (la revisión legal cita el DPF de Google LLC) | verificar si hay que aceptar condiciones en la consola | A4, A5 |
+| **GitHub** | Página de descargas del APK (la app consulta si hay versión nueva). Guarda las copias de seguridad cifradas y ejecuta los flujos, que hacen las copias y los cambios de la base en sus máquinas | EE. UU. (GitHub, Inc.) o Países Bajos (GitHub B.V.) | DPF, activo el 06/11/2026. No sustituye al contrato de encargo | **No hay. Hueco:** su DPA solo forma parte del «GitHub Customer Agreement»; en una cuenta personal gratuita GitHub actúa como responsable. Sus máquinas ven los datos en claro al hacer las copias y los cambios de la base. Decisión de Víctor pendiente ([encargados](encargados/README.md#github--hueco)) | A11, A13 |
+| **Expo** (650 Industries) | Actualizaciones de la app sin instalar versión nueva. Push (pendiente) | EE. UU. | SCC módulo 2 (sus términos, §3.2). En la lista oficial del DPF: «Active - Re-certification under Review» (06/11/2026); se citan primero las SCC | No hay DPA aparte (expo.dev/dpa da 404): el contrato es el §3.2 de sus términos del 02/11/2026. No hay que firmar nada. Archivado ([encargados](encargados/README.md#expo-650-industries)) | A4, A5, A11 |
+| **Lettermint** (pendiente) | Correo de bienvenida y avisos (por su API) y, cuando haya dominio, los correos de Supabase Auth (por SMTP) | Países Bajos, UE. Lettermint B.V., Willemsvaart 16 B, 8019 AB Zwolle. Los correos se alojan y tratan en la UE (DPA §8.1) | Ninguna prevista: sus subencargados con acceso a los correos (UpCloud, OVH Cloud, Postmastery) están en la UE. Fuera del EEE solo con autorización y garantías del capítulo V (DPA §8.4) | DPA del 09/10/2026, que se acepta al crear la cuenta (condiciones §4.7 y §15.3). Crear la cuenta y apuntar la fecha antes del paso 5 (pendiente). Archivado ([encargados](encargados/README.md#lettermint)) | A1, A4, A5 |
+| **Google Firebase Cloud Messaging** (proyecto `rwadar-14e3d`, condiciones aceptadas el 06/11/2026; entrega pendiente de encender los avisos) | Entrega de notificaciones en Android | EE. UU. y otros países donde Google tenga centros (sus condiciones, §10.1) | DPF de Google LLC, activo el 06/11/2026; si no está disponible, SCC (§10.2) | «Firebase Data Processing and Security Terms» (21/08/2024): rigen desde que Víctor las acepte en la consola al crear el proyecto. Apuntar la fecha (pendiente). Archivado ([encargados](encargados/README.md#google-firebase-cloud-messaging)) | A4, A5 |
 | **Apple Push Notification service** (pendiente) | Entrega de notificaciones en iPhone. No hay app de iPhone publicada | EE. UU. (verificar) | verificar | verificar | A4, A5 |
 
 **Terceros que no son encargados y reciben algo:**
@@ -198,13 +207,16 @@ Valen para todas las fichas; cada ficha añade las suyas.
   - Supabase (Irlanda);
   - Cloudflare (EE. UU.), cuyo servidor web intermedia la sesión;
   - Google (Gmail), que entrega la confirmación y la recuperación y recibe el
-    correo y el contenido del mensaje.
+    correo y el contenido del mensaje. En el paso 5 lo sustituye el SMTP de
+    Lettermint (pendiente).
 
   Dentro de RWAdar accede el titular. No se comparte con las plataformas.
 - **Transferencias internacionales:**
   - Cloudflare: DPF y SCC;
-  - Supabase: datos en la UE, con SCC para posibles accesos desde fuera;
-  - Gmail: sin garantías documentadas (verificar).
+  - Supabase: datos en la UE, con SCC (módulo 2) para posibles accesos desde
+    fuera;
+  - Gmail: sin garantías documentadas (verificar);
+  - Lettermint, cuando sustituya a Gmail: ninguna, trata los correos en la UE.
 - **Plazo de supresión:**
   - mientras exista la cuenta;
   - al borrarla desde Perfil se eliminan en el momento la cuenta, el perfil,
@@ -222,8 +234,8 @@ Valen para todas las fichas; cada ficha añade las suyas.
   - el borrado exige la contraseña recién comprobada;
   - la analítica se omite en las visitas de esos enlaces.
 - **Pendiente / verificar:**
-  - el SMTP de Gmail no tiene contrato de encargo: moverlo a un proveedor con
-    contrato en el paso 5 (pendiente; contraste 9);
+  - el SMTP de Gmail no tiene contrato de encargo: pasarlo al SMTP de
+    Lettermint en el paso 5 (pendiente; contraste 9; revisión legal 5.8);
   - **verificar el panel de control:** según `docs/INTERNO.md` y el traspaso
     del 22-23/10/2026, el panel `rwadar-panel` (un Worker de Cloudflare con
     almacenamiento KV, compartido con los socios por enlace personal desde el
@@ -313,9 +325,9 @@ Valen para todas las fichas; cada ficha añade las suyas.
 ### A4 · Correo de bienvenida (y push de bienvenida)
 
 - **Estado:** preparado, **no se envía**:
-  - la 30 no está aplicada;
-  - `correo_habilitado` y `push_habilitado` nacen apagados;
-  - correo (pendiente): dominio propio y Brevo, u otro proveedor;
+  - la 30 está aplicada (06/11/2026), pero `correo_habilitado` y
+    `push_habilitado` siguen apagados;
+  - correo (pendiente): dominio propio, cuenta de Lettermint y la 31;
   - push (pendiente): Firebase y APK 1.4.2.
 - **Responsable:** el del apartado 1.
 - **Finalidad:**
@@ -341,11 +353,13 @@ Valen para todas las fichas; cada ficha añade las suyas.
     de la cola al terminar.
 - **Destinatarios:**
   - Supabase;
-  - Brevo (pendiente), que recibe el correo y el contenido;
+  - Lettermint (pendiente), que recibe el correo y el contenido y los guarda
+    28 días en la UE;
   - Expo y FCM de Google, o APNs de Apple (pendiente), que reciben el
     identificador del móvil y el contenido, nunca el correo.
-- **Transferencias internacionales:** las del apartado 3 para Brevo, Expo y
-  Google (pendientes de verificar antes de cada paso).
+- **Transferencias internacionales:**
+  - Lettermint: ninguna, trata los correos en la UE;
+  - Expo y Google: las del apartado 3.
 - **Plazo de supresión:**
   - fila de la cola: 90 días después de terminar;
   - marca en `preferencias`: mientras exista la cuenta, para no repetir la
@@ -357,8 +371,11 @@ Valen para todas las fichas; cada ficha añade las suyas.
   - clave de idempotencia y segunda comprobación justo antes de enviar;
   - `List-Unsubscribe` solo si la persona se apuntó;
   - claves del proveedor en el Vault;
-  - sin píxel ni seguimiento de clics (por comprobar con el proveedor, ver
-    A5).
+  - sin píxel ni seguimiento de clics: Lettermint no los pone si no se pide,
+    y cada petición los desactiva (`track_opens` y `track_clicks` a `false`).
+    Se comprueba en el original del mensaje en la prueba real del paso 5;
+  - el pie lleva la dirección postal del responsable, que pide la política de
+    uso de Lettermint.
 - **Pendiente:**
   - los textos de la bienvenida (revisión legal 4.8);
   - la privacidad §6 aún dice que solo se envían la confirmación y la
@@ -371,10 +388,11 @@ Valen para todas las fichas; cada ficha añade las suyas.
   - la casilla no se ve (`AVISOS_NOVEDADES_REMOTOS = false` en la web y la
     app);
   - la base no la acepta (`casilla_activa = false`);
-  - la 30 no está aplicada.
+  - la 30 está aplicada (06/11/2026), con todo apagado.
 
   Faltan, cada uno con permiso de Víctor:
-  - correo (pendiente): dominio propio, Brevo u otro proveedor, y su contrato;
+  - correo (pendiente): dominio propio, cuenta de Lettermint (con ella se
+    acepta su contrato de encargo) y la 31;
   - push (pendiente): Firebase y APK 1.4.2.
 - **Responsable:** el del apartado 1.
 - **Finalidad:** avisar a quien lo pida, por correo y, si lo activa en su
@@ -412,7 +430,8 @@ Valen para todas las fichas; cada ficha añade las suyas.
     personales.
 - **Destinatarios:**
   - Supabase;
-  - Brevo (pendiente): correo y contenido;
+  - Lettermint (pendiente): correo y contenido. Los anuncios van por su ruta
+    de difusión, que guarda además su propia lista de bajas;
   - Expo y FCM, o APNs (pendiente): identificador del móvil y contenido,
     nunca el correo. El push solo lleva `{tipo, destino}`.
 - **Transferencias internacionales:** como A4.
@@ -445,14 +464,19 @@ Valen para todas las fichas; cada ficha añade las suyas.
     - el aviso automático solo lo enciende Víctor;
   - **tokens del móvil:** el token se borra de la cola al terminar, y
     `DeviceNotRegistered` borra el móvil;
-  - **sin píxel de apertura ni seguimiento de clics:** es una promesa de la
-    privacidad que aún no está comprobada (ver «Pendiente»).
+  - **sin píxel de apertura ni seguimiento de clics:** Lettermint no los pone
+    si no se pide y cada petición los desactiva. Falta comprobarlo en un
+    correo real (ver «Pendiente»).
 - **Pendiente:**
   - **texto e información:** casilla v2 (revisión legal 4.1), información
     básica junto a las casillas (4.2) y privacidad (4.6, 4.12 y 4.14);
-  - **Brevo:** solo anonimiza la apertura y no quita el píxel. Hace falta su
-    confirmación escrita o cambiar de proveedor antes del paso 5
-    (contraste 1);
+  - **proveedor de correo:** Brevo quedó descartado porque solo anonimiza la
+    apertura y no quita el píxel (contraste 1). Se elige Lettermint. Antes de
+    encender, la prueba real del paso 5: sin píxel en el original del mensaje,
+    `List-Unsubscribe` y el nombre de la ruta de difusión;
+  - **bajas en Lettermint:** su ruta de difusión añade su propio enlace de
+    baja. Pedir a su soporte que lo quite; mientras siga, cada baja que guarde
+    se aplica también en RWAdar (A7);
   - **baja en cada push** (contraste 2);
   - **Firebase:** que no genere el identificador al abrir la app
     (contraste 3).
@@ -463,9 +487,9 @@ Valen para todas las fichas; cada ficha añade las suyas.
   - **Dónde está el diseño:** la revisión legal (§§ 4.5 y 5.1) y su contraste
     (puntos 7 y 11). El RUNBOOK ya da por hecho que la baja por correo «deja
     la baja en el historial».
-  - **verificar:** en el commit revisado (`4d75c98`), ni la 30 ni el contrato
-    de avisos tienen todavía esta tabla. Cuando entre, contrastar esta ficha
-    con el SQL y corregir lo que no coincida.
+  - **verificar:** la tabla `historial_permiso` ya está en la 30, aplicada el
+    06/11/2026. Falta contrastar esta ficha con el SQL y corregir lo que no
+    coincida.
 - **Responsable:** el del apartado 1.
 - **Finalidad:** poder demostrar:
   - que había permiso en la fecha de cada envío y cuándo se retiró (RGPD,
@@ -515,8 +539,9 @@ Valen para todas las fichas; cada ficha añade las suyas.
 
 - **Estado:** (pendiente). El procedimiento está escrito en el RUNBOOK desde
   el 06/11/2026 y se aplica desde que salga el primer aviso.
-  **verificar:** la función `rwadar_novedades.baja_por_correo(email)` que cita
-  el RUNBOOK aún no está en la 30 de este commit.
+  La función `rwadar_novedades.baja_por_correo(email)` que cita el RUNBOOK ya
+  está en la 30, aplicada el 06/11/2026. **verificar:** contrastar esta ficha
+  con el SQL.
 - **Responsable:** el del apartado 1.
 - **Finalidad:** atender, antes del siguiente envío, la baja de quien la pide
   escribiendo a RWAdar@protonmail.com, que es también la dirección de
@@ -543,7 +568,12 @@ Valen para todas las fichas; cada ficha añade las suyas.
     si el aviso automático de fichas nuevas está encendido. Si nadie puede
     revisarlo a diario, ese aviso se queda apagado;
   - la función la ejecuta solo el propietario de la base, desde el SQL Editor;
-  - valen los asuntos «baja» y «Baja de los avisos de RWAdar».
+  - valen los asuntos «baja» y «Baja de los avisos de RWAdar»;
+  - mientras la ruta de difusión de Lettermint lleve su propio enlace de baja
+    (pendiente), antes de cada anuncio (y cada día si el aviso automático de
+    fichas nuevas está encendido) se revisa su lista de bajas y cada una se
+    aplica igual, con `baja_por_correo`, que corta también los push de
+    novedades.
 
 ### A8 · Consultas de empresas («Para empresas»)
 
@@ -578,8 +608,8 @@ Valen para todas las fichas; cada ficha añade las suyas.
   - el proveedor de cada interlocutor.
 
   Accede el titular y, cuando proceda, quien tramite la consulta bajo su
-  responsabilidad (**verificar** quién). No entra en Supabase, Brevo ni en un
-  CRM.
+  responsabilidad (**verificar** quién). No entra en Supabase, Lettermint ni en
+  un CRM.
 - **Transferencias internacionales:** Gmail y Proton Mail, ver apartado 3
   (verificar).
 - **Plazo de supresión:** mientras se responde y, si no se abre una fase
@@ -654,7 +684,9 @@ Valen para todas las fichas; cada ficha añade las suyas.
   - **contador en memoria:** 10 minutos;
   - **registros de cada proveedor:** sus plazos de seguridad y diagnóstico.
     **verificar y anotar aquí el de cada uno**: la privacidad (§9) dice que
-    se documentan en este registro;
+    se documentan en este registro. Lettermint (pendiente): registros
+    técnicos, normalmente 14 días como máximo; datos de cada mensaje, 28 días
+    ([encargados](encargados/README.md#lettermint));
   - **registros de acceso en la propia base de Supabase:** **verificar** si
     caducan. Entran en las copias, 35 días;
   - **reportes de vulnerabilidades:** no consta. **verificar.**
@@ -679,10 +711,14 @@ Valen para todas las fichas; cada ficha añade las suyas.
     identificador aleatorio de esa instalación. Nunca la cuenta ni sus datos;
   - **GitHub**, al consultar si hay versión nueva: IP y datos técnicos de la
     conexión. El APK solo se descarga al pulsar «Actualizar».
-- **Destinatarios:** Expo (EE. UU.) y GitHub (EE. UU., verificar).
+- **Destinatarios:** Expo (EE. UU.) y GitHub (EE. UU.).
 - **Transferencias internacionales:**
-  - Expo: SCC; el DPF no está confirmado en la lista oficial (contraste 15);
-  - GitHub: **verificar.**
+  - Expo: SCC módulo 2 (sus términos, §3.2). En la lista oficial del DPF,
+    «Active - Re-certification under Review» el 06/11/2026;
+  - GitHub: DPF, activo el 06/11/2026. **Sin contrato de encargo** (hueco,
+    ver apartado 3 y [encargados](encargados/README.md#github--hueco)). Esta
+    consulta solo lleva la IP y datos técnicos, que GitHub trata como
+    responsable propio.
 - **Plazo de supresión:** el de cada proveedor. **verificar.**
 - **Medidas:**
   - sin datos de cuenta;
@@ -749,8 +785,10 @@ Valen para todas las fichas; cada ficha añade las suyas.
   Actions en el repositorio privado. **verificar:** la privacidad no cita a
   GitHub como depósito de copias; añadirlo.
 - **Transferencias internacionales:** GitHub (EE. UU.) guarda un archivo que
-  no puede abrir, porque no tiene la clave. **verificar** su contrato de
-  encargo y sus garantías.
+  no puede abrir, porque no tiene la clave. Está en el DPF (activo el
+  06/11/2026). **Hueco:** no hay contrato de encargo, y la copia se hace en
+  una máquina de GitHub, donde está en claro unos minutos antes de cifrarse
+  (ver apartado 3 y [encargados](encargados/README.md#github--hueco)).
 - **Plazo de supresión:** **35 días** (`retention-days: 35`), también para las
   copias previas al catálogo y a los avisos. La privacidad lo dice en §9.
 - **Medidas:**
@@ -832,14 +870,23 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
 
 ## 7. Pendientes que cambian este registro
 
-- [ ] **Contratos de encargo.** Archivar en PDF, con fecha, los aceptados de
-  Supabase, Cloudflare y Expo, y los de Brevo y Google (Firebase) antes de
-  activarlos, en `docs/legal/encargados/` (revisión legal 4.13). Comprobar
-  también los de Netlify, GitHub y Proton Mail.
+- [x] **Contratos de encargo archivados** el 06/11/2026 en
+  [`encargados/`](encargados/README.md): Supabase, Cloudflare, Google
+  (Firebase), Expo, GitHub y Lettermint. Quedan:
+  - [x] Firebase: condiciones aceptadas el 06/11/2026 (proyecto `rwadar-14e3d`);
+  - [ ] Lettermint: crear la cuenta y apuntar la fecha;
+  - [ ] **GitHub: no hay contrato de encargo.** Firmar el «GitHub Customer
+    Agreement» en una organización, o sacar los datos personales de sus
+    máquinas (decisión de Víctor);
+  - [ ] comprobar los de Netlify y Proton Mail.
 - [ ] **Gmail.** Quitar el envío de Auth por una cuenta de consumo sin
-  contrato (paso 5; contraste 9).
-- [ ] **Historial del permiso y baja por correo.** Que entren en la 30 y
-  contrastar A6 y A7 con el SQL.
+  contrato: pasarlo al SMTP de Lettermint (paso 5.8; contraste 9). Antes, las
+  plantillas de Auth con la dirección postal y la privacidad (§6 y §8) y la
+  «Información básica» publicadas con Lettermint en lugar de Gmail. Ese día
+  se quita de este registro el envío de Auth de la fila de Google (Gmail) y
+  se pasa a la de Lettermint.
+- [ ] **Historial del permiso y baja por correo.** Ya están en la 30
+  (aplicada el 06/11/2026); falta contrastar A6 y A7 con el SQL.
 - [ ] **Corresponsabilidad** de Eric Almiñana y Samuel Rodriguez: decidir y,
   si procede, firmar el acuerdo y cambiar la privacidad (apartado 1).
 - [ ] **Panel de control:** documentar qué datos de cuentas trata y quién
@@ -853,8 +900,9 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
 - [ ] **Bases que faltan en la privacidad:** actualizaciones de la app (A11) y
   analítica (A12).
 - [ ] **GitHub** como depósito de las copias cifradas, en la privacidad (A13).
-- [ ] **Expo y el DPF:** guardar una captura con fecha o citar solo SCC
-  (contraste 15).
+- [x] **Expo y el DPF:** consultado en la lista oficial el 06/11/2026,
+  «Active - Re-certification under Review»; se citan primero las SCC de sus
+  términos (contraste 15).
 - [ ] **Al dar cada paso de los avisos** (4: casilla; 5: correo; 6: push;
   7: aviso automático de fichas nuevas), cambiar aquí el estado de A4-A7 y
   quitar las marcas «(pendiente)» que correspondan.
@@ -868,3 +916,4 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
 | Fecha | Cambio | Quién |
 |---|---|---|
 | 06/11/2026 | Versión 1: 14 actividades, proveedores y medidas comunes | Claude, a petición de Víctor Manuel Jorques Granero |
+| 06/11/2026 | Versión 2: Lettermint sustituye a Brevo; contratos de encargo leídos y archivados en `encargados/`; filas de Supabase, Cloudflare, Expo, Firebase y GitHub corregidas; hueco de GitHub; Gmail se sustituye por el SMTP de Lettermint; la 30, aplicada | Claude, con el permiso general de Víctor |
