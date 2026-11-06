@@ -495,6 +495,20 @@ const pref = async (u) => { await sesion(db); return una(db, 'select * from rwad
   paso('se repiten los cierres de 23: ni Vault ni las colas de pg_net para los clientes', !vault.a && !vault.b && !vault.c && !vault.d);
 }
 {
+  // Producción (06/11/2026): Supabase concede las colas de pg_net a PUBLIC desde
+  // supabase_admin y postgres no puede retirarlo. El verificador lo avisa sin
+  // pararse; los secretos de Vault, en cambio, siguen parándolo todo.
+  await sesion(db);
+  await db.exec('grant select on table net.http_request_queue to public');
+  const conColas = await verificar();
+  await db.exec('revoke all on table net.http_request_queue from public');
+  await db.exec('grant select on table vault.decrypted_secrets to authenticated');
+  const conVault = await verificar();
+  await db.exec('revoke all on table vault.decrypted_secrets from authenticated');
+  paso('verificador 30: colas de pg_net abiertas por Supabase = aviso (no para); Vault legible por un cliente = error',
+    conColas.ok && !conVault.ok && /secretos de Vault/.test(conVault.error) && (await verificar()).ok);
+}
+{
   // El verificador cubre lo nuevo: la RPC del móvil y las columnas de la casilla y las marcas.
   await sesion(db);
   await db.exec('grant execute on function public.mi_aviso_push_registrado(text) to anon');

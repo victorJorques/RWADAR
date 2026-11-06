@@ -316,15 +316,25 @@ begin
     raise exception '30: quedan tokens en avisos push terminados';
   end if;
 
+  -- Los secretos nunca pueden ser legibles por un cliente: esto para todo.
   if has_table_privilege('anon', 'vault.decrypted_secrets', 'SELECT')
-     or has_table_privilege('authenticated', 'vault.decrypted_secrets', 'SELECT')
-     or (to_regclass('net._http_response') is not null
+     or has_table_privilege('authenticated', 'vault.decrypted_secrets', 'SELECT') then
+    raise exception '30: los secretos de Vault están expuestos a clientes';
+  end if;
+  -- Las colas de pg_net, en cambio, Supabase las concede a PUBLIC desde
+  -- supabase_admin (comprobado en producción el 06/11/2026 con
+  -- 30_avisos_registrados_diagnostico.sql), y postgres no puede retirar ese
+  -- permiso. No hay ruta de cliente mientras el esquema net no se publique en
+  -- la API (hoy solo public y graphql_public: PGRST106 «Invalid schema: net»)
+  -- y pg_graphql siga sin activar. Se avisa; antes de encender el correo se
+  -- repite esa comprobación desde fuera (contrato, paso 5).
+  if (to_regclass('net._http_response') is not null
          and (has_table_privilege('anon', 'net._http_response', 'SELECT')
               or has_table_privilege('authenticated', 'net._http_response', 'SELECT')))
      or (to_regclass('net.http_request_queue') is not null
          and (has_table_privilege('anon', 'net.http_request_queue', 'SELECT')
               or has_table_privilege('authenticated', 'net.http_request_queue', 'SELECT'))) then
-    raise exception '30: Vault o las colas de pg_net están expuestos a clientes';
+    raise warning '30: las colas de pg_net son legibles por anon/authenticated (permiso de Supabase que postgres no puede retirar); no deben publicarse en la API: el esquema net debe seguir fuera de los «Exposed schemas» y pg_graphql apagado';
   end if;
 
   -- fallo_cerrado.sql y reaplicar la 30 apagan la casilla: si la web o la
