@@ -64,7 +64,7 @@ en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
 | **Google y RSS** | Fichas, sitemap y RSS vuelven a estar disponibles sin sesión. Sus respuestas públicas se comprobaron el 26/10; esto no acredita que Google ya haya vuelto a indexarlas. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
 | **Legal** | Aviso legal, condiciones, privacidad y transparencia comercial publicados. |
-| **RWAdar Academy** | **Publicada** en la web (`/academy/`) desde el 5/10. 9 lecciones de Eric en 3 niveles: en línea, 1 a 7 publicadas y 8 y 9 «Próximamente». Revisión legal verificada por Víctor el 2/10/2026. En la app, pestaña Academy. Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). **06/11, preparado para publicar hoy (orden de Víctor):** las 9 lecciones publicadas («Publicar las 9 ya») y, en la web, las lecciones pasan a pedir una cuenta gratis; el índice y el tutorial 3D siguen públicos. En la app ya la pedía. Eric dio su visto bueno el 06/11 ([plan](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md)). |
+| **RWAdar Academy** | **Publicada** en la web (`/academy/`) desde el 5/10. 9 lecciones de Eric en 3 niveles, las 9 publicadas desde el 06/11. Revisión legal verificada por Víctor el 2/10/2026. En la app, pestaña Academy. Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). **Desde el 06/11 (publicado):** las 9 lecciones están publicadas y, en la web, cada lección pide una cuenta gratis; el índice y el tutorial 3D siguen públicos. En la app ya la pedía; la OTA llevó las 9 lecciones. Eric dio su visto bueno ([plan](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md)). |
 | **Tipografía** | Geist completa para español. La web publicada reutiliza los archivos locales: títulos de tarjeta de 20 px, datos de decisión de 16 px y secundarios de 14 px. El candidato Android también aumenta el tamaño de lectura y navegación; su comprobación se acredita por separado. |
 
 **Cuentas:** consultar la web no requiere cuenta. Las funciones personales sí
@@ -161,12 +161,13 @@ actual está en [`VERIFICACION-ANDROID-1.3.2-2026-10-22.md`](VERIFICACION-ANDROI
 y [`VERIFICACION-PUBLICACION-2026-10-22.md`](VERIFICACION-PUBLICACION-2026-10-22.md).
 
 **En pausa:** opiniones, comunidad, avisos de cambios por correo y avisos push.
-**Avisos a registrados (preparados el 05/11, todo apagado):** correo de bienvenida al confirmar la cuenta;
+**Avisos a registrados (base aplicada el 06/11; todo apagado):** correo de bienvenida al confirmar la cuenta;
 avisos de ofertas nuevas y de actualizaciones por correo y notificación, solo para quien marque una casilla
-aparte, sin marcar; baja en cada correo; lista de avisos dentro de la app. La base de datos (migración 30),
-la web y la app están hechas y probadas en local, pero no se ha aplicado ni publicado nada. Para encenderlos
-hacen falta, por orden y con permiso de Víctor: revisión legal, aplicar la 30, dominio propio y Brevo para el
-correo, y Firebase y un APK 1.4.2 para las notificaciones del sistema. Plan y pasos:
+aparte, sin marcar; baja en cada correo; lista de avisos dentro de la app. La migración 30 está aplicada en Supabase
+(06/11, con copia previa) y la web y la app están publicadas con los avisos apagados. Revisión legal hecha
+([informe](legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md)). Para encenderlos faltan, con permiso de Víctor:
+dominio propio y un proveedor de correo sin píxel, contratos de encargo, y Firebase más el APK 1.4.2 para las
+notificaciones del sistema. Plan y pasos:
 [`tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md). Seguridad anterior:
 [`seguridad/REVISION-SEGURIDAD-2026-10-05.md`](seguridad/REVISION-SEGURIDAD-2026-10-05.md).
 Manual de bienvenida de Eric recibido, pendiente de corregir su sección 8:
