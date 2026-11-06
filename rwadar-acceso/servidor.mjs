@@ -18,11 +18,16 @@ const GRUPO_LIMITE = Object.freeze({ '/api/acceso/entrar': 'clave', '/api/acceso
   '/api/acceso/baja': 'baja' });
 // Avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md): la
 // casilla del alta es opcional y versionada. Cambiar su texto obliga a otra versión.
-// Ninguna de estas dos constantes se exporta: este archivo acaba dentro de
+// Ninguna de estas constantes se exporta: este archivo acaba dentro de
 // _worker.js y Cloudflare (workerd) rechaza el despliegue si una exportación con
 // nombre no es un manejador o una clase (un texto o un booleano lo tumban). Las
 // pruebas las leen en el objeto que devuelve crearAccesoServidor.
-const VERSION_AVISOS_NOVEDADES = 'novedades-v1-2026-11-05';
+// v2 desde la revisión legal del 06/11/2026; con la v1 no se llegó a recoger
+// ningún permiso porque la casilla nunca se mostró.
+const VERSION_AVISOS_NOVEDADES = 'novedades-v2-2026-11-06';
+// Idioma en que se mostró el texto de la casilla, para acreditar qué texto exacto
+// se aceptó (EDPB, Directrices 05/2020, §108). Solo estos dos valores.
+const IDIOMAS_AVISOS = Object.freeze(['es', 'en']);
 // El mismo interruptor, con el mismo nombre, que la web (assets/acceso.js y
 // assets/rwadar-20260820.js) y la app (lib/modo-local.js). Apagado, el alta
 // sigue exigiendo que avisosNovedades, si viene, sea un booleano, pero no lo
@@ -414,11 +419,14 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
           const name = typeof data.nombre === 'string' ? data.nombre.trim() : '';
           if (name.length > 60 || /[\u0000-\u001f\u007f]/.test(name)) throw new Error('nombre_invalido');
           // Casilla opcional de avisos: solo un booleano JSON. Con true, y solo con
-          // el interruptor encendido, viajan la versión vigente y el canal; el
-          // permiso lo guarda la base al confirmar. Apagado, se valida y se ignora.
+          // el interruptor encendido, viajan la versión vigente, el canal y el
+          // idioma del texto mostrado; el permiso lo guarda la base al confirmar.
+          // Apagado, se valida y se ignora. idioma, si viene, es 'es' o 'en' tal
+          // cual (ni 'EN' ni 'en-US'); si no viene, el texto era el castellano.
           if (data.avisosNovedades !== undefined && typeof data.avisosNovedades !== 'boolean') throw new Error('solicitud_invalida');
+          if (data.idioma !== undefined && !IDIOMAS_AVISOS.includes(data.idioma)) throw new Error('solicitud_invalida');
           const avisos = avisosNovedades && data.avisosNovedades === true
-            ? { avisos_novedades: true, avisos_version: VERSION_AVISOS_NOVEDADES, avisos_canal: 'web' } : {};
+            ? { avisos_novedades: true, avisos_version: VERSION_AVISOS_NOVEDADES, avisos_canal: 'web', avisos_idioma: data.idioma ?? 'es' } : {};
           const email = correo(data.correo), password = clave(data.clave, true), extra = seguridad(data);
           reservarIntento(path, request);
           await api(env, '/auth/v1/signup?redirect_to=' + encodeURIComponent(destinoCorreo(url.origin)),

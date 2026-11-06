@@ -4173,10 +4173,15 @@ const Cuenta = (function(){
     web no pide ni muestra nada de estos avisos. */
  const AVISOS_NOVEDADES_REMOTOS=false;
  const AVISOS_NOVEDADES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_NOVEDADES_REMOTOS;
- const VERSION_AVISOS_NOVEDADES='novedades-v1-2026-11-05';
+ const VERSION_AVISOS_NOVEDADES='novedades-v2-2026-11-06';
  /* El mismo texto que la base, la app y la casilla de /acceso: cambiar una
-    palabra obliga a crear una versión nueva. */
- const TEXTO_AVISOS_NOVEDADES='Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ofertas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en cada aviso o en Perfil. Más información en Privacidad.';
+    palabra obliga a crear una versión nueva. v2: revisión legal del 06/11/2026. */
+ const TEXTO_AVISOS_NOVEDADES='Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en Privacidad.';
+ /* Información básica sobre los datos (LOPDGDD, art. 11), junto al interruptor.
+    Va fuera del texto versionado: cambiarla no pide una versión nueva. */
+ const INFO_DATOS_AVISOS='Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Brevo y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; también puedes reclamar ante la AEPD. Más información en Privacidad.';
+ /* En la web, «Privacidad» del final es un enlace; el texto visible no cambia. */
+ const conEnlacePrivacidad=(texto,href)=>esc(texto.replace(/Privacidad\.$/,''))+'<a href="'+href+'">Privacidad</a>.';
  let ses=null, perfil=null, vigiladas=new Map(), modo='entrar', fichaAbierta=null,
      identidadConfirmada=false,versionSesion=0,versionCuenta=0,renovacion=null,cuentaRenovacion=-1,focoCuenta=null,
      correoPendiente='',operacionCuenta=0,temporizadorReenvio=null,cuentaHistorial=false,bajaPendiente=null,
@@ -4823,8 +4828,9 @@ const Cuenta = (function(){
      : '<p class="perfil-nota">Todavía no sigues ninguna. Abre la ficha de cualquier plataforma del radar y pulsa «Seguir» para guardarla aquí.</p>')+
    '<div class="perfil-sec">Avisos</div>'+
    (AVISOS_NOVEDADES_DISPONIBLES
-     ? '<label class="fila-opcion"><input type="checkbox" role="switch" id="pfNovedades" disabled><span><b>Avisos de novedades.</b> '+esc(TEXTO_AVISOS_NOVEDADES)+'</span></label>'+
-       '<p class="perfil-nota perfil-ayuda" id="pfNovedadesEstado" role="status"></p>'
+     ? '<label class="fila-opcion"><input type="checkbox" role="switch" id="pfNovedades" disabled><span><b>Avisos de novedades.</b> '+conEnlacePrivacidad(TEXTO_AVISOS_NOVEDADES,'/privacidad#avisos-novedades')+'</span></label>'+
+       '<p class="perfil-nota perfil-ayuda" id="pfNovedadesEstado" role="status"></p>'+
+       '<p class="perfil-nota perfil-ayuda">'+conEnlacePrivacidad(INFO_DATOS_AVISOS,'/privacidad')+'</p>'
      : AVISOS_CORREO_DISPONIBLES
      ? '<label class="fila-opcion"><input type="checkbox" id="optAvisos" aria-describedby="optAvisosAyuda"'+(correoConsentido?' checked':'')+'>'+
        '<span><b>Quiero recibir por correo avisos de cambios</b> en las plataformas que sigo. Al marcarlo doy mi consentimiento explícito, que puedo retirar aquí cuando quiera.</span></label>'+
@@ -4995,6 +5001,16 @@ const Cuenta = (function(){
   return novedades.correo_activo||novedades.push_activo
    ?'Activados. Puedes desactivarlos cuando quieras.':'Activados. Todavía no hemos empezado a enviarlos.';
  }
+ /* Idioma en que se ve el texto junto al interruptor, para guardarlo con el
+    permiso: «en» solo si la web está en inglés y ese texto se ha traducido de
+    verdad (si falta en el diccionario, se ve en castellano). Si no, «es». */
+ function idiomaNovedades(o){
+  try{
+   const ingles=typeof RWAdarIdioma!=='undefined'&&RWAdarIdioma.obtenerIdioma()==='en';
+   const texto=String((o.closest('label')||{}).textContent||'').trim();
+   return ingles&&texto!==''&&!texto.includes('Quiero recibir avisos')?'en':'es';
+  }catch(e){return 'es';}
+ }
  function pintarNovedades(){
   if(!AVISOS_NOVEDADES_DISPONIBLES)return;
   const tarjeta=$('perfilAvisosNovedades'),anterior=$('perfilAvisosProximamente');
@@ -5024,15 +5040,15 @@ const Cuenta = (function(){
  async function cambiarNovedades(evento){
   const o=evento&&evento.target;
   if(!AVISOS_NOVEDADES_DISPONIBLES||!o||!identidadConfirmada||!ses||!novedades||novedadesGuardando)return;
-  const cuenta=versionCuenta,deseado=o.checked===true;
+  const cuenta=versionCuenta,deseado=o.checked===true,idioma=idiomaNovedades(o);
   novedadesGuardando=true;novedadesDeseado=deseado;pintarNovedades();
   try{
    const j=estadoNovedades(await rest('/rpc/configurar_avisos_novedades',{method:'POST',body:JSON.stringify({
-    p_activar:deseado,p_version:VERSION_AVISOS_NOVEDADES,p_canal:'web'})},cuenta));
+    p_activar:deseado,p_version:VERSION_AVISOS_NOVEDADES,p_canal:'web',p_idioma:idioma})},cuenta));
    if(!vigente(cuenta))return;
    novedades=j;
    if(novedadesActivas()!==deseado)throw new Error('Cambio no confirmado.');
-   aviso(deseado?'Avisos de novedades activados.':'Avisos de novedades desactivados.');
+   aviso(deseado?'Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.':'Avisos de novedades desactivados.');
   }catch(e){
    if(!vigente(cuenta))return;
    aviso(deseado?'No se han activado los avisos de novedades. Vuelve a intentarlo.'

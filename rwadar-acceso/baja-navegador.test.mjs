@@ -41,10 +41,23 @@ test('la página no se indexa, no lleva scripts ni estilos en línea y no usa fo
   assert.match(html, /<link rel="stylesheet" href="\/assets\/acceso\.css">/, 'Mismo estilo que /acceso');
 });
 
-test('sin JavaScript la página explica la baja por correo con el asunto «baja»', () => {
+// El mismo asunto que el pie y List-Unsubscribe de los correos (30_avisos_registrados.sql).
+const ASUNTO = 'Baja de los avisos de RWAdar';
+const MAILTO = 'mailto:RWAdar@protonmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
+test('sin JavaScript la página explica la baja por correo con el asunto de los correos', () => {
   const visible = html.replace(/<[^>]+\shidden[^>]*>[\s\S]*?<\/[a-z]+>/g, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
-  assert.match(visible, /escribiendo a RWAdar@protonmail\.com con el asunto «baja»/);
-  assert.match(html, /href="mailto:RWAdar@protonmail\.com\?subject=baja"/);
+  assert.ok(visible.includes('escribiendo a RWAdar@protonmail.com con el asunto «' + ASUNTO + '»'));
+  assert.equal(decodeURIComponent(MAILTO.split('subject=')[1]), ASUNTO);
+  // Todos los mailto de la página llevan ese asunto; ninguno el antiguo «baja».
+  const mailtos = [...html.matchAll(/href="(mailto:[^"]+)"/g)].map(m => m[1]);
+  assert.ok(mailtos.length >= 2); assert.ok(mailtos.every(m => m === MAILTO), mailtos.join(' '));
+  // <noscript>: quien no tiene JavaScript no ve el botón y lee ahí qué hacer.
+  const aviso = html.match(/<noscript>([\s\S]*?)<\/noscript>/);
+  assert.ok(aviso, 'Hay un <noscript>');
+  assert.ok(aviso[1].includes('href="' + MAILTO + '"'));
+  assert.ok(aviso[1].replace(/<[^>]+>/g, '').includes('con el asunto «' + ASUNTO + '»'));
+  assert.ok(html.indexOf('<noscript>') > html.indexOf('id="estado"') && html.indexOf('<noscript>') < html.indexOf('id="baja"'),
+    'Va donde el mensaje de estado, antes del botón');
 });
 
 test('el token sale de la dirección antes de cualquier petición y se envía al pulsar', async () => {
@@ -84,7 +97,7 @@ test('un token que no es un UUID no ofrece el botón ni llama al servidor, y tam
     const p = pagina(search);
     assert.equal(p.elemento('baja').hidden, true, search);
     assert.match(p.elemento('estado').textContent, /no es válido o está incompleto/);
-    assert.match(p.elemento('estado').textContent, /RWAdar@protonmail\.com con el asunto «baja»/);
+    assert.ok(p.elemento('estado').textContent.includes('RWAdar@protonmail.com con el asunto «' + ASUNTO + '»'));
     assert.equal(p.peticiones.length, 0);
     assert.deepEqual(p.historial, search.includes('t=') ? ['/baja'] : []);
   }
@@ -96,7 +109,7 @@ test('un fallo del servidor o de la red permite reintentar y da la alternativa p
     const p = pagina('?t=' + TOKEN, responder);
     await p.elemento('baja').eventos.click();
     assert.match(p.elemento('estado').textContent, /No se ha podido completar la baja ahora/);
-    assert.match(p.elemento('estado').textContent, /asunto «baja»/);
+    assert.ok(p.elemento('estado').textContent.includes('asunto «' + ASUNTO + '»'));
     assert.equal(p.elemento('baja').hidden, false);
     assert.equal(p.elemento('baja').disabled, false);
   }

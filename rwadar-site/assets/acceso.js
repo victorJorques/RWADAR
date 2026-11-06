@@ -41,16 +41,45 @@
     try { localStorage.setItem(CLAVE_VOLVER, JSON.stringify({ ruta, hasta: Date.now() + DURACION_VOLVER })); }
     catch { /* Sin almacenamiento, al confirmar se va al índice de la Academy. */ }
   }
+  // La lección de un destino guardado, o null si ha caducado, dura más de 24
+  // horas (manipulado) o no es una lección propia.
+  function volverVigente(guardado) {
+    if (!guardado || typeof guardado.hasta !== 'number' || guardado.hasta < Date.now() ||
+      guardado.hasta > Date.now() + DURACION_VOLVER) return null;
+    return rutaLeccion(guardado.ruta);
+  }
   // Lee y borra a la vez: el destino guardado sirve una sola vez.
   function tomarVolver() {
     try {
       const crudo = localStorage.getItem(CLAVE_VOLVER);
       localStorage.removeItem(CLAVE_VOLVER);
-      const guardado = JSON.parse(crudo || 'null');
-      if (!guardado || typeof guardado.hasta !== 'number' || guardado.hasta < Date.now() ||
-        guardado.hasta > Date.now() + DURACION_VOLVER) return null;
-      return rutaLeccion(guardado.ruta);
+      return volverVigente(JSON.parse(crudo || 'null'));
     } catch { return null; }
+  }
+  // En cualquier carga de /acceso, un destino caducado o que no sirve se borra
+  // ya, sin esperar a que se confirme el correo (RGPD, art. 5.1.e). Uno vigente
+  // se queda para la vuelta tras confirmar.
+  function limpiarVolver() {
+    try {
+      const crudo = localStorage.getItem(CLAVE_VOLVER);
+      if (crudo === null) return;
+      let ruta = null;
+      try { ruta = volverVigente(JSON.parse(crudo)); } catch { /* ilegible: se borra */ }
+      if (!ruta) localStorage.removeItem(CLAVE_VOLVER);
+    } catch { /* Sin almacenamiento no hay nada que borrar. */ }
+  }
+  limpiarVolver();
+  // Idioma en que se ve el texto de la casilla de avisos, para guardarlo con el
+  // permiso. /acceso no carga el traductor de la web (idioma-web): se ve siempre
+  // en castellano y su <html lang> es «es». Si algún día lo carga, idioma-web
+  // pone lang="en" al traducir; aun así solo cuenta como inglés si el texto de
+  // la casilla se ha traducido de verdad.
+  function idiomaCasilla() {
+    try {
+      const ingles = /^en(?:-|$)/i.test(document.documentElement.lang || '');
+      const texto = String($('campo-avisos-novedades').textContent || '').trim();
+      return ingles && texto !== '' && !texto.startsWith('Quiero recibir avisos') ? 'en' : 'es';
+    } catch { return 'es'; }
   }
   function cargarTurnstile() {
     if (window.turnstile) return Promise.resolve(window.turnstile);
@@ -92,6 +121,8 @@
     $('campo-nombre').hidden = !alta; $('campo-condiciones').hidden = !alta;
     // Casilla aparte, sin marcar y solo al crear la cuenta.
     $('campo-avisos-novedades').hidden = !(alta && AVISOS_NOVEDADES_REMOTOS);
+    // La información básica sobre los datos va junto a la casilla, con ella.
+    $('info-datos').hidden = !(alta && AVISOS_NOVEDADES_REMOTOS);
     $('campo-clave').hidden = !['entrar', 'registrar', 'nueva-clave'].includes(vista);
     $('clave').required = !$('campo-clave').hidden;
     $('clave').autocomplete = alta || nueva ? 'new-password' : 'current-password';
@@ -177,8 +208,12 @@
     event.preventDefault(); if (ocupado || !form.reportValidity()) return;
     const data = { correo: $('correo').value, clave: $('clave').value, nombre: $('nombre').value,
       aceptaCondiciones: $('condiciones').checked };
-    // Booleano estricto y solo en el alta; con el interruptor apagado no viaja.
-    if (vista === 'registrar' && AVISOS_NOVEDADES_REMOTOS) data.avisosNovedades = $('avisos-novedades').checked === true;
+    // Booleano estricto y solo en el alta, con el idioma del texto mostrado;
+    // con el interruptor apagado no viaja ninguno de los dos.
+    if (vista === 'registrar' && AVISOS_NOVEDADES_REMOTOS) {
+      data.avisosNovedades = $('avisos-novedades').checked === true;
+      data.idioma = idiomaCasilla();
+    }
     if (vista === 'registrar' && !data.aceptaCondiciones) { mensaje('Confirma que tienes 18 años o más y acepta las condiciones y la privacidad para registrarte.'); return; }
     if (['registrar', 'nueva-clave'].includes(vista) && data.clave.length < 12) { mensaje('Usa una contraseña de al menos 12 caracteres.'); return; }
     if (vista === 'nueva-clave') data.access_token = enlace?.access_token;

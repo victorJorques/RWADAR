@@ -39,9 +39,12 @@ const SIGNUP_SIN_AVISOS = { email: 'nueva@ejemplo.test', password: 'clave-de-doc
 const signup = e => e.calls.find(c => c.url.includes('/auth/v1/signup')).body;
 const ENCENDIDO_Y_APAGADO = [['apagado', false], ['encendido', true]];
 
-test('la versión de la casilla es la del contrato y el interruptor nace apagado, como en la web', () => {
-  assert.deepEqual(crearAccesoServidor().avisosNovedades, { activos: false, version: 'novedades-v1-2026-11-05' });
-  assert.deepEqual(crearAccesoServidor({ avisosNovedades: true }).avisosNovedades, { activos: true, version: 'novedades-v1-2026-11-05' });
+// Versión v2 de la casilla (revisión legal del 06/11/2026).
+const VERSION = 'novedades-v2-2026-11-06';
+
+test('la versión de la casilla es la de la revisión legal y el interruptor nace apagado, como en la web', () => {
+  assert.deepEqual(crearAccesoServidor().avisosNovedades, { activos: false, version: VERSION });
+  assert.deepEqual(crearAccesoServidor({ avisosNovedades: true }).avisosNovedades, { activos: true, version: VERSION });
   for (const valor of ['true', 1, null]) assert.throws(() => crearAccesoServidor({ avisosNovedades: valor }), /avisos_invalidos/);
   // Mismo nombre y mismo valor que en la web: se encienden juntos o no se encienden.
   const leer = ruta => fs.readFileSync(new URL(ruta, import.meta.url), 'utf8');
@@ -50,7 +53,12 @@ test('la versión de la casilla es la del contrato y el interruptor nace apagado
   assert.doesNotMatch(servidor, /\bexport\s+(?:const|let|var)\b/, 'el servidor no exporta constantes (rompen el worker)');
   assert.match(leer('../rwadar-site/assets/acceso.js'), /const AVISOS_NOVEDADES_REMOTOS = false;/);
   assert.match(leer('../rwadar-site/assets/rwadar-20260820.js'), / const AVISOS_NOVEDADES_REMOTOS=false;/);
-  assert.match(leer('../rwadar-site/assets/rwadar-20260820.js'), / const VERSION_AVISOS_NOVEDADES='novedades-v1-2026-11-05';/);
+  assert.ok(leer('../rwadar-site/assets/rwadar-20260820.js').includes(" const VERSION_AVISOS_NOVEDADES='" + VERSION + "';"));
+  assert.ok(servidor.includes("const VERSION_AVISOS_NOVEDADES = '" + VERSION + "';"));
+  for (const html of ['../rwadar-site/acceso.html', '../rwadar-site/index.html']) {
+    assert.ok(leer(html).includes(VERSION), html + ' cita la versión vigente');
+    assert.doesNotMatch(leer(html), /novedades-v1-2026-11-05/, html + ' ya no cita la v1');
+  }
 });
 
 test('con el interruptor apagado, una casilla marcada no llega a los metadatos del alta', async () => {
@@ -64,13 +72,48 @@ test('con el interruptor apagado, una casilla marcada no llega a los metadatos d
   }
 });
 
-test('con el interruptor encendido y la casilla marcada, el alta lleva el permiso, su versión y el canal web', async () => {
-  const e = entorno({ avisosNovedades: true });
-  const r = await e.run('registrar', alta({ avisosNovedades: true }));
-  assert.equal(r.status, 200); assert.equal((await r.json()).confirmarCorreo, true);
-  assert.deepEqual(signup(e), { email: 'nueva@ejemplo.test', password: 'clave-de-doce!',
-    data: { nombre: 'Ana', avisos_novedades: true, avisos_version: 'novedades-v1-2026-11-05', avisos_canal: 'web' } });
-  assert.equal(r.headers.get('set-cookie'), null);
+test('con el interruptor encendido y la casilla marcada, el alta lleva el permiso, su versión, el canal web y el idioma', async () => {
+  // Sin idioma, el texto que se vio es el castellano.
+  for (const [extra, idioma] of [[{}, 'es'], [{ idioma: 'es' }, 'es'], [{ idioma: 'en' }, 'en']]) {
+    const e = entorno({ avisosNovedades: true });
+    const r = await e.run('registrar', alta({ avisosNovedades: true, ...extra }));
+    assert.equal(r.status, 200, JSON.stringify(extra)); assert.equal((await r.json()).confirmarCorreo, true);
+    assert.deepEqual(signup(e), { email: 'nueva@ejemplo.test', password: 'clave-de-doce!',
+      data: { nombre: 'Ana', avisos_novedades: true, avisos_version: VERSION, avisos_canal: 'web', avisos_idioma: idioma } },
+    JSON.stringify(extra));
+    assert.equal(r.headers.get('set-cookie'), null);
+  }
+});
+
+test('el idioma solo viaja con la casilla marcada y el interruptor encendido', async () => {
+  for (const [estado, avisosNovedades] of ENCENDIDO_Y_APAGADO) {
+    for (const extra of [{ idioma: 'en' }, { idioma: 'es', avisosNovedades: false }, { idioma: 'en', avisosNovedades: false }]) {
+      const e = entorno({ avisosNovedades });
+      assert.equal((await e.run('registrar', alta(extra))).status, 200, estado + ' ' + JSON.stringify(extra));
+      assert.deepEqual(signup(e), SIGNUP_SIN_AVISOS, estado + ' ' + JSON.stringify(extra));
+    }
+  }
+  // Apagado, ni con la casilla marcada.
+  const e = entorno();
+  assert.equal((await e.run('registrar', alta({ avisosNovedades: true, idioma: 'en' }))).status, 200);
+  assert.deepEqual(signup(e), SIGNUP_SIN_AVISOS);
+});
+
+test('el idioma solo admite «es» o «en» tal cual, con el interruptor apagado o encendido', async () => {
+  for (const [estado, avisosNovedades] of ENCENDIDO_Y_APAGADO) {
+    const e = entorno({ avisosNovedades });
+    for (const valor of ['EN', 'Es', 'en-US', 'es-ES', 'fr', '', ' es', null, 1, true, {}, ['es']]) {
+      for (const marcada of [true, false]) {
+        const r = await e.run('registrar', alta({ avisosNovedades: marcada, idioma: valor }));
+        assert.equal(r.status, 400, estado + ' ' + JSON.stringify(valor));
+        assert.deepEqual(await r.json(), { error: 'solicitud_invalida' });
+      }
+    }
+    assert.equal(e.calls.length, 0, estado + ': nada llega a Auth');
+    // Estos rechazos tampoco gastan el límite de envíos de la IP.
+    for (let i = 0; i < 10; i++) assert.equal((await e.run('registrar', alta({ correo: `i${i}@ejemplo.test` }))).status, 200, estado);
+    assert.equal((await e.run('registrar', alta())).status, 429, estado);
+  }
 });
 
 test('sin marcar la casilla, el alta es exactamente la de antes, con el interruptor apagado o encendido', async () => {
@@ -103,7 +146,7 @@ test('la casilla solo admite un booleano y no sustituye a las condiciones, con e
 test('la pasarela admite las tres RPC de avisos, solo por POST y con la sesión de la cuenta', async () => {
   const e = entorno();
   for (const [ruta, cuerpo] of [['/rpc/estado_mis_avisos', {}], ['/rpc/configurar_avisos_novedades',
-    { p_activar: true, p_version: 'novedades-v1-2026-11-05', p_canal: 'web' }], ['/rpc/mis_avisos_recientes', { p_limite: 20 }]]) {
+    { p_activar: true, p_version: VERSION, p_canal: 'web', p_idioma: 'es' }], ['/rpc/mis_avisos_recientes', { p_limite: 20 }]]) {
     const r = await e.run('datos', { ruta, metodo: 'POST', cuerpo }, { cookie: TOKEN });
     assert.equal(r.status, 200, ruta);
     const llamada = e.calls.at(-1);
