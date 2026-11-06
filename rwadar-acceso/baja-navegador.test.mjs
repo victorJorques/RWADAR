@@ -7,7 +7,7 @@ import vm from 'node:vm';
 // (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
 const html = fs.readFileSync(new URL('../rwadar-site/baja.html', import.meta.url), 'utf8');
 const script = fs.readFileSync(new URL('../rwadar-site/assets/baja-20261105.js', import.meta.url), 'utf8');
-const TOKEN = '3f2b8c1e-9a4d-4e6f-8b7a-1c2d3e4f5a6b';
+const UUID_BAJA = '3f2b8c1e-9a4d-4e6f-8b7a-1c2d3e4f5a6b';
 const tick = () => new Promise(resolve => setImmediate(resolve));
 
 function pagina(search, responder = async () => Response.json({ ok: true })) {
@@ -61,7 +61,7 @@ test('sin JavaScript la página explica la baja por correo con el asunto de los 
 });
 
 test('el token sale de la dirección antes de cualquier petición y se envía al pulsar', async () => {
-  const p = pagina('?t=' + TOKEN);
+  const p = pagina('?t=' + UUID_BAJA);
   assert.deepEqual(p.historial, ['/baja'], 'Se quita t con history.replaceState');
   assert.equal(p.location.search, '');
   assert.equal(p.peticiones.length, 0, 'Abrir el enlace no da de baja: hace falta pulsar');
@@ -74,7 +74,7 @@ test('el token sale de la dirección antes de cualquier petición y se envía al
   assert.equal(ruta, '/api/acceso/baja');
   assert.equal(opciones.method, 'POST');
   assert.equal(opciones.headers['Content-Type'], 'application/json');
-  assert.deepEqual(JSON.parse(opciones.body), { token: TOKEN });
+  assert.deepEqual(JSON.parse(opciones.body), { token: UUID_BAJA });
   assert.equal(opciones.credentials, 'omit', 'La baja no necesita la cookie de sesión');
   assert.equal(opciones.cache, 'no-store');
   assert.equal(opciones.redirect, 'error');
@@ -86,14 +86,14 @@ test('el token sale de la dirección antes de cualquier petición y se envía al
 });
 
 test('conserva otros parámetros y acepta el UUID en mayúsculas', async () => {
-  const p = pagina('?utm=correo&t=' + TOKEN.toUpperCase());
+  const p = pagina('?utm=correo&t=' + UUID_BAJA.toUpperCase());
   assert.deepEqual(p.historial, ['/baja?utm=correo']);
   await p.elemento('baja').eventos.click();
-  assert.deepEqual(JSON.parse(p.peticiones[0].opciones.body), { token: TOKEN });
+  assert.deepEqual(JSON.parse(p.peticiones[0].opciones.body), { token: UUID_BAJA });
 });
 
 test('un token que no es un UUID no ofrece el botón ni llama al servidor, y también se borra', async () => {
-  for (const search of ['', '?t=', '?t=123', '?t=' + TOKEN + 'x', '?t=' + TOKEN.replace(/-/g, ''), '?t=%3Cscript%3E']) {
+  for (const search of ['', '?t=', '?t=123', '?t=' + UUID_BAJA + 'x', '?t=' + UUID_BAJA.replace(/-/g, ''), '?t=%3Cscript%3E']) {
     const p = pagina(search);
     assert.equal(p.elemento('baja').hidden, true, search);
     assert.match(p.elemento('estado').textContent, /no es válido o está incompleto/);
@@ -106,14 +106,14 @@ test('un token que no es un UUID no ofrece el botón ni llama al servidor, y tam
 test('un fallo del servidor o de la red permite reintentar y da la alternativa por correo', async () => {
   for (const responder of [async () => Response.json({ error: 'servicio_no_disponible' }, { status: 503 }),
     async () => { throw new TypeError('sin red'); }]) {
-    const p = pagina('?t=' + TOKEN, responder);
+    const p = pagina('?t=' + UUID_BAJA, responder);
     await p.elemento('baja').eventos.click();
     assert.match(p.elemento('estado').textContent, /No se ha podido completar la baja ahora/);
     assert.ok(p.elemento('estado').textContent.includes('asunto «' + ASUNTO + '»'));
     assert.equal(p.elemento('baja').hidden, false);
     assert.equal(p.elemento('baja').disabled, false);
   }
-  const p = pagina('?t=' + TOKEN, async () => Response.json({ error: 'intentos_excedidos' }, { status: 429 }));
+  const p = pagina('?t=' + UUID_BAJA, async () => Response.json({ error: 'intentos_excedidos' }, { status: 429 }));
   await p.elemento('baja').eventos.click();
   assert.match(p.elemento('estado').textContent, /Espera unos minutos/);
   assert.equal(p.elemento('baja').disabled, false);

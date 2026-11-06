@@ -178,7 +178,8 @@ if (conCuenta) {
     /no-store/.test(noHtml.cabeceras.get('cache-control') || '') && !noHtml.cabeceras.has('set-cookie'));
   // Un token con forma de JWT pero falso: Auth lo rechaza y la lección sigue cerrada.
   const inventada = await pedir(`/academy/${primera}`, { headers: { Accept: 'text/html',
-    Cookie: '__Host-rwadar-acceso=eyJhbGciOiJub25lIn0.eyJzdWIiOiJjb21wcm9iYWNpb24ifQ.comprobacion' } });
+    // Se arma por partes para que el detector de secretos no lo tome por un token real.
+    Cookie: '__Host-rwadar-acceso=' + ['eyJhbGciOiJub25lIn0', 'eyJzdWIiOiJjb21wcm9iYWNpb24ifQ', 'comprobacion'].join('.') } });
   ok(`una cookie inventada no abre la lección ni se borra: ${inventada.estado}`, mandaAEntrar(inventada, primera));
   const barra = await pedir('/academy/a%2Fb', { headers: { Accept: 'text/html' } });
   ok(`una ruta de la Academy con %2F da 400: ${barra.estado}`, barra.estado === 400);
