@@ -59,7 +59,7 @@ en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
 | **Web** | Publicada en **https://rwadar.pages.dev**, actualizada el **28/10** desde la rama aislada, con mapa de activos en Buscar. Consulta pública; cuenta para funciones personales. Login, sesión y salida comprobados con la cuenta de QA. Se conservan el radar del acceso, registro, recuperación, comparación e idiomas. |
 | **Catálogo** | **Investigado de nuevo y publicado el 5 de noviembre, el mismo día que Víctor lo pidió: 22 ofertas** (8 principales, 13 de reventa y 1 en camino; esa tarde salieron BILLA y Casa de Outeiro por decisión de Víctor, porque no avanzaban) y 25 plataformas en el radar (5 descartadas), vigente hasta el **12 de noviembre**. Spiko rinde un 2,39 % (euro), un 3,99 % (dólar, en dólares) y un 2,84 % (Smart Cash). Vender entre accionistas en Aktionariat, Boss Info y Switzerlend cuesta un 1,9 %. Brickwise, con los precios de reventa del día. Hoy no entra ninguna oferta nueva: ninguna de las 9 candidatas cumple todo para un particular en España. **Tarjetas más sencillas** (petición de Víctor del 05/11): en la lista solo título, empresa y lugar, mínimo y si se puede desde España; lo demás, en la ficha. Igual en la web y en la app. Ver [`INVESTIGACION-CATALOGO-2026-11-05.md`](INVESTIGACION-CATALOGO-2026-11-05.md). Las cifras se ven 7 días desde su comprobación. Se puede actualizar varias veces el mismo día. **Con la orden «haz la investigación» se hace el ciclo entero ese día** (skill `investigacion-catalogo`). |
 | **Imágenes de las ofertas** | Las 49 fichas **ya muestran en la web y Android 1.3.2** su ilustración generada del activo, con el lugar y tres pasos explicativos. Llevan etiqueta «Ilustración editorial» y texto alternativo que identifica la IA y que no es una fotografía real del activo. La correspondencia con las 49 ofertas y los recursos del APK se comprobó por contenido. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
-| **App Android** | **[Versión 1.4.0](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.0)** publicada. Descarga pública, firma y contenido comprobados. Sesión persistente y desbloqueo opcional desde Perfil; catálogo completo, Academy y cartera manual validados. No está en Google Play. |
+| **App Android** | **[Versión 1.4.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.2)** publicada el 06/11 (código 24). Preparada para las notificaciones del móvil: Firebase (`rwadar-14e3d`) va dentro, sin arranque automático, y la app solo pide permiso cuando la persona pulsa «Notificaciones en este móvil». Hasta encender los avisos funciona igual que la 1.4.1. Comprobada en emulador Android 15 con Google Play: instalada encima de la 1.4.1, sin cierres y sin ninguna conexión a Firebase al abrirla ([QA](https://github.com/victorJorques/RWAdar-downloads/actions/runs/42206828119)). Las actualizaciones automáticas (OTA) van ya a la 1.4.2; la 1.4.1 sigue funcionando y avisa de la versión nueva. No está en Google Play. |
 | **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
 | **Google y RSS** | Fichas, sitemap y RSS vuelven a estar disponibles sin sesión. Sus respuestas públicas se comprobaron el 26/10; esto no acredita que Google ya haya vuelto a indexarlas. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
@@ -169,12 +169,14 @@ aparte, sin marcar; baja en cada correo; lista de avisos dentro de la app. La mi
 UE, sin píxel de apertura); Brevo quedó descartado porque mete ese píxel. Los contratos de encargo están
 archivados en [`legal/encargados/`](legal/encargados/README.md), con un hueco: GitHub no tiene contrato de
 encargo en una cuenta personal gratuita (decide Víctor). Para encender los avisos faltan, con permiso de Víctor:
-dominio propio, cuenta de Lettermint y la migración 31 (preparada, sin aplicar), la prueba real a un buzón propio,
-y Firebase más el APK 1.4.2 para las notificaciones del sistema. Plan y pasos:
+dominio propio, cuenta de Lettermint (la migración 31, que cambia el envío a Lettermint, ya está aplicada el
+06/11 con copia previa y el correo apagado) y la prueba real a un buzón propio. Para las notificaciones del
+móvil ya están Firebase (`rwadar-14e3d`) y la app 1.4.2; falta la privacidad del push, una OTA con el
+interruptor encendido y probarlo en un Android físico (Víctor usa iPhone). Plan y pasos:
 [`tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md). Seguridad anterior:
 [`seguridad/REVISION-SEGURIDAD-2026-10-05.md`](seguridad/REVISION-SEGURIDAD-2026-10-05.md).
-Manual de bienvenida de Eric recibido, pendiente de corregir su sección 8:
-[`manual/LEEME.md`](manual/LEEME.md).
+Manual de bienvenida de Eric: versión corregida al día (06/11: 9 lecciones con la cuenta, avisos opcionales
+sin «baja en un clic»), [`manual/LEEME.md`](manual/LEEME.md).
 
 **Nueva barra del móvil (5/10): Inicio · Buscar · Academy · Perfil**, en la
 web y en la app. Inicio trae las noticias de RWAdar (se editan en
