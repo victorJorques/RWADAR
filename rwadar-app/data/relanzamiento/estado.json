@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-05",
+  "actualizadoEl": "2026-11-06",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Claude, 05/11: entrega 2026-11-05.2 (salen BILLA y Casa de Outeiro por decisión de Víctor; acceso de Spiko con la CNMV; web de Pax Gold) aplicada y sincronizada (revisión 88d5a757); remates de transparencia, Hausera y datos personales. npm test completo en verde.",
+  "nota": "06/11/2026: Academy solo con cuenta, 9 lecciones y avisos a registrados preparados y apagados (PR #74; orden de Víctor «publica hoy»)",
   "revisionAprobada": {
-    "commit": "5939684dd0d9d96dd0f60100a3e9c61ef877ec16",
-    "contenidoSha256": "sha256:3435001849f87400a8f736659660bac097ad3e17d66346de9e0002fc08ad1e46",
+    "commit": "6abcc6746815e403fb29d30e4312a3302d9d07ed",
+    "contenidoSha256": "sha256:c0b23d1b1028c709a7a46e903ca089575fd9e3304ba84814d793a3390bb2e81e",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
