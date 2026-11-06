@@ -6,6 +6,53 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 6 de noviembre de 2026 · Claude · lecciones 8 y 9 de la Academy publicadas en el repositorio (sin publicar la web ni enviar OTA)
+
+Orden de Víctor del 06/11/2026: «Publicar las 9 ya». Rama `lecciones-8-9`,
+sobre `claude/avisos-y-academy-registro` (`fe3a9d2`). **Nada publicado, sin
+Supabase, sin EAS, sin push.**
+
+- **Academy:** `expediente-de-tokenizacion` (8) y
+  `despues-de-emitir-ciclo-de-vida` (9) pasan a `"publicado"` en
+  `academy.json` y entran en `PAGINAS_ACADEMY`. Regenerado con
+  `node rwadar-academy.js`: sus dos páginas, el índice (9 de 9, ninguna
+  «Próximamente»), «Lección N de 9» en todas, la portada («9 de 9 lecciones
+  disponibles», «9 lecciones gratis en Academy») y `academy-contenido.js` de la
+  app. Siguen en modo `"cuenta"`: `noindex`, fuera del `sitemap.xml` (sin
+  cambios) y 303 a `/acceso` sin sesión. Revisión legal del 02/10/2026, válida
+  hasta el 02/04/2027 (el generador no avisa).
+- **Destinos que no existen:** el Evaluador de Viabilidad y la checklist del
+  expediente salen como «Próximamente» en la web y en la app (comprobado y
+  fijado en pruebas).
+- **Inglés:** el diccionario cambia «7 de 9» por «9 de 9 lecciones
+  disponibles» y añade «Preparación · 15 min» y «Post-emisión · 17 min»
+  (copiado a la web con `copiar-idiomas-web.cjs`).
+- **Pruebas adaptadas** a 9 publicadas y 0 «Próximamente»: `probar-web.mjs`,
+  `probar-precarga.cjs`, `rwadar-acceso/academy-cuenta.test.mjs`,
+  `rwadar-acceso/comprobar-publicado.test.mjs` y
+  `rwadar-movil/tests/academy.test.cjs`. Siguen exigiendo 404 a una lección
+  inventada, y el camino «Próximamente» se prueba con una Academy simulada.
+  `.github/comprobar-publicado.mjs` no fija lecciones: no cambia.
+- **Verificación de producción de la precarga** (`rwadar-precargar-imagenes.js`,
+  `verificarHTTP`): sin «Próximamente» ya no pedía ningún 404 de la Academy;
+  ahora pide también `/academy/rwadar-comprobacion-leccion-inexistente` y exige
+  404 (la misma ruta que usa `comprobar-publicado.mjs`).
+- **Pruebas:** `node rwadar-academy.js --comprobar` (9 de 9), `npm run
+  test:web` (web 631, páginas 69, precarga 39), `npm run test:acceso` (201),
+  `npm --prefix rwadar-movil test` (472 + 2 omitidas), `npm run test:tools`,
+  `npm run test:qr` y guardián de OTA de la 1.4.1 con la base `c1f7106`:
+  `ok:true`.
+- **Se quedan como están, a propósito:** la noticia del 05/10 («Siete
+  lecciones gratuitas…», en `noticias.json`, `cambios.html`, `novedades.xml` y
+  su traducción), los flujos antiguos de QA de Android
+  (`.github/pruebas-android/*`, esperan «de 7 lecciones leídas» del APK de
+  entonces) y los informes con fecha.
+- **Pendiente:** publicar la web y enviar la OTA, con permiso de Víctor (y lo
+  que diga la entrada siguiente sobre unir la Academy con cuenta a `main`). El
+  manual corregido de Eric (`docs/manual/`, sin publicar) aún dice «siete
+  lecciones publicadas… y dos más en preparación»: cambiarlo exige regenerar el
+  PDF con `corregir-manual.py`.
+
 ## 5 de noviembre de 2026 (8) · Claude · avisos a registrados y Academy con cuenta (preparado, sin aplicar ni publicar)
 
 Petición de Víctor: «al registrarse, al sacar una nueva actualización o nuevas

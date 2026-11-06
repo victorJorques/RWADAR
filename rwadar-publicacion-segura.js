@@ -109,6 +109,8 @@ const PAGINAS_ACADEMY = Object.freeze([
   'academy/cuanto-cuesta-tokenizar.html',
   'academy/liquidez-como-evaluarla.html',
   'academy/como-leer-el-radar.html',
+  'academy/expediente-de-tokenizacion.html',
+  'academy/despues-de-emitir-ciclo-de-vida.html',
 ].sort());
 
 const ARCHIVOS_PUBLICABLES = Object.freeze([

@@ -235,9 +235,16 @@ test('el worker lleva el modo y la lista cerrada de lecciones de academy.json', 
   const academy = academyPublicada();
   assert.equal(academy.acceso, 'cuenta');
   assert.deepEqual([...academy.lecciones], PAGINAS_ACADEMY.filter(p => p !== 'academy/index.html').map(p => p.slice(8, -5)).sort());
-  assert.deepEqual([...academy.pendientes], ['despues-de-emitir-ciclo-de-vida', 'expediente-de-tokenizacion']);
+  // Las nueve publicadas desde el 06/11/2026 (orden de Víctor): ya no queda ninguna «Próximamente».
+  assert.equal(academy.lecciones.length, 9);
+  assert.ok(['expediente-de-tokenizacion', 'despues-de-emitir-ciclo-de-vida'].every(slug => academy.lecciones.includes(slug)));
+  assert.deepEqual([...academy.pendientes], []);
   assert.ok(construirWorker().includes('const academyRWAdar = Object.freeze(' + JSON.stringify({ acceso: 'cuenta', lecciones: academy.lecciones }) + ');'));
-  assert.ok(!construirWorker().includes('expediente-de-tokenizacion'), 'las «Próximamente» no viajan en el worker');
+  // Una «Próximamente» no viaja en el worker (con una configuración simulada).
+  const conPendiente = construirWorker(undefined, { academy: { acceso: 'cuenta', lecciones: [{ slug: LECCION, estado: 'publicado' },
+    { slug: 'leccion-en-revision', estado: 'en_revision' }] } });
+  assert.ok(conPendiente.includes('const academyRWAdar = Object.freeze(' + JSON.stringify({ acceso: 'cuenta', lecciones: [LECCION] }) + ');'));
+  assert.ok(!conPendiente.includes('leccion-en-revision'), 'las «Próximamente» no viajan en el worker');
   const publico = construirWorker(undefined, { academy: { acceso: 'publico', lecciones: [{ slug: LECCION, estado: 'publicado' }] } });
   assert.ok(publico.includes('"acceso":"publico"'));
   for (const academy of [{ lecciones: [{ slug: LECCION, estado: 'publicado' }] }, { acceso: 'abierto', lecciones: [{ slug: LECCION, estado: 'publicado' }] },
@@ -256,14 +263,30 @@ test('el worker compilado aplica la puerta con sus cabeceras de seguridad y su p
   assert.equal(r.headers.get('x-frame-options'), 'DENY');
   assert.match(r.headers.get('content-security-policy'), /script-src 'self'/);
   assert.deepEqual(sinSesion.pedidas, []);
-  for (const ruta of ['/academy/expediente-de-tokenizacion', '/academy/despues-de-emitir-ciclo-de-vida', '/academy/inventada']) {
-    const { pedidas, env } = assets();
-    const pendiente = await worker.fetch(new Request(BASE + ruta, { headers: { accept: HTML, cookie: '__Host-rwadar-acceso=' + TOKEN } }), env, CTX);
-    assert.equal(pendiente.status, 404, ruta);
-    assert.equal(await pendiente.text(), '<title>Fuera de cobertura · RWAdar</title>');
-    assert.equal(pendiente.headers.get('cache-control'), 'no-store'); assert.equal(pendiente.headers.get('x-robots-tag'), 'noindex, nofollow');
-    assert.deepEqual(pedidas, ['/404'], ruta);
+  // Las lecciones 8 y 9 (publicadas el 06/11/2026) siguen la misma puerta que las demás.
+  for (const slug of ['expediente-de-tokenizacion', 'despues-de-emitir-ciclo-de-vida']) {
+    const sin = assets();
+    mandaAEntrar(await worker.fetch(new Request(BASE + '/academy/' + slug, { headers: { accept: HTML } }), sin.env, CTX), slug);
+    assert.deepEqual(sin.pedidas, [], slug);
+    const con = assets();
+    const abierta = await worker.fetch(new Request(BASE + '/academy/' + slug, { headers: { accept: HTML, cookie: '__Host-rwadar-acceso=' + TOKEN } }), con.env, CTX);
+    assert.equal(abierta.status, 200, slug); assert.equal(abierta.headers.get('cache-control'), 'private, no-store');
+    assert.deepEqual(con.pedidas, ['/academy/' + slug], slug);
   }
+  // Una lección inventada da el 404 del worker aunque haya sesión.
+  const fuera = async (w, ruta) => {
+    const { pedidas, env } = assets();
+    const r = await w.fetch(new Request(BASE + ruta, { headers: { accept: HTML, cookie: '__Host-rwadar-acceso=' + TOKEN } }), env, CTX);
+    assert.equal(r.status, 404, ruta);
+    assert.equal(await r.text(), '<title>Fuera de cobertura · RWAdar</title>');
+    assert.equal(r.headers.get('cache-control'), 'no-store'); assert.equal(r.headers.get('x-robots-tag'), 'noindex, nofollow');
+    assert.deepEqual(pedidas, ['/404'], ruta);
+  };
+  for (const ruta of ['/academy/inventada', '/academy/rwadar-comprobacion-leccion-inexistente', '/academy/leccion-10']) await fuera(worker, ruta);
+  // Y una «Próximamente» también (con una configuración simulada: hoy no queda ninguna).
+  const conPendiente = await compilar({ academy: { acceso: 'cuenta', lecciones: [{ slug: LECCION, estado: 'publicado' },
+    { slug: 'despues-de-emitir-ciclo-de-vida', estado: 'en_revision' }] } });
+  await fuera(conPendiente, '/academy/despues-de-emitir-ciclo-de-vida');
   const conSesion = assets();
   const leccion = await worker.fetch(new Request(BASE + '/academy/' + LECCION, { headers: { accept: HTML, cookie: '__Host-rwadar-acceso=' + TOKEN } }), conSesion.env, CTX);
   assert.equal(leccion.status, 200); assert.equal(await leccion.text(), 'LECCION');

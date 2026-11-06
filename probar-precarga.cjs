@@ -6,7 +6,7 @@ const vm=require('node:vm');
 const {spawnSync}=require('node:child_process');
 const {parse}=require('./rwadar-app/node_modules/acorn');
 const {adelgazarJS}=require('./rwadar-adelgazar');
-const {cargarRegistro,unirActivos,inventario,huellaInventario,validarBase,verificarHTTP,preparar,despliegueProduccion,identidadListaWrangler,comprobarAndroidCompatible}=require('./rwadar-precargar-imagenes');
+const {cargarRegistro,unirActivos,inventario,huellaInventario,validarBase,verificarHTTP,preparar,despliegueProduccion,identidadListaWrangler,comprobarAndroidCompatible,LECCION_INEXISTENTE}=require('./rwadar-precargar-imagenes');
 const {academyPublicada}=require('./rwadar-acceso/compilar.cjs');
 const raiz=__dirname;
 let correctas=0;
@@ -180,15 +180,16 @@ prueba('flags de bypass remoto o destinos arbitrarios fallan antes de red',()=>{
     assets:['RWAdar.apk','SHA256SUMS.txt','rwadar-android-140-evidence.zip'].map(name=>({name,size:100,digest:'sha256:'+'1'.repeat(64)}))}))).version,'v1.4.0');
   prueba('release140 pública con APK, sumas y evidencia identificados supera guarda de compatibilidad',()=>{});
   // Producción simulada como el worker: con la Academy con cuenta, una lección
-  // pedida sin sesión da 303 a /acceso con no-store; las «Próximamente», 404.
+  // pedida sin sesión da 303 a /acceso con no-store; una «Próximamente» o una
+  // inventada, 404 (desde el 06/11/2026 no queda ninguna «Próximamente»).
   const academy=academyPublicada();
   const conCuenta=academy.acceso==='cuenta'?academy.lecciones:[];
-  let visitas=0;const pedidasLeccion=[];
+  let visitas=0;const pedidasLeccion=[],pedidas404=[];
   const produccion=(cambios={})=>async(url,init)=>{
     visitas++;const ruta=new URL(url).pathname;
     assert(!['/_headers','/_redirects','/_worker.js','/_routes.json'].includes(ruta),'No solicita configuración privada de Pages');
     const slug=ruta.match(/^\/academy\/([a-z0-9-]+)$/)?.[1];
-    if(slug&&academy.pendientes.includes(slug))return cambios.pendiente?.(slug)||new Response('No encontrado',{status:404});
+    if(slug&&!academy.lecciones.includes(slug)){pedidas404.push([slug,init]);return cambios.pendiente?.(slug)||new Response('No encontrado',{status:404});}
     if(slug&&conCuenta.includes(slug)){
       pedidasLeccion.push(init);
       return cambios.leccion?.(slug)||new Response(null,{status:303,headers:{Location:'/acceso?volver=/academy/'+slug,'Cache-Control':'no-store'}});
@@ -197,13 +198,16 @@ prueba('flags de bypass remoto o destinos arbitrarios fallan antes de red',()=>{
     return new Response(fs.readFileSync(path.join(base,a.ruta)),{status:200,headers:{'content-type':a.ruta.endsWith('.webp')?'image/webp':'application/octet-stream'}});
   };
   await verificarHTTP(base,archivos,produccion());
-  prueba('GET verifica todos los recursos públicos, omite solo los cuatro archivos de configuración inaccesibles y pide las lecciones «Próximamente»',
-    ()=>assert.equal(visitas,archivos.length-4+academy.pendientes.length));
-  prueba('con "acceso": "cuenta", las 7 lecciones publicadas se comprueban por su 303 y no por sus bytes',()=>{
-    assert.equal(academy.acceso,'cuenta');assert.equal(conCuenta.length,7);assert.equal(academy.pendientes.length,2);
+  prueba('GET verifica todos los recursos públicos, omite solo los cuatro archivos de configuración inaccesibles y pide una lección inventada (y las «Próximamente», si las hay)',
+    ()=>{assert.equal(visitas,archivos.length-4+academy.pendientes.length+1);
+      assert.deepEqual(pedidas404.map(([slug])=>slug),[...academy.pendientes,LECCION_INEXISTENTE]);
+      assert(!archivos.some(a=>a.ruta===`academy/${LECCION_INEXISTENTE}.html`));
+      assert(pedidas404.every(([,i])=>i.redirect==='manual'&&i.credentials==='omit'&&!i.headers.Cookie));});
+  prueba('con "acceso": "cuenta", las 9 lecciones publicadas se comprueban por su 303 y no por sus bytes',()=>{
+    assert.equal(academy.acceso,'cuenta');assert.equal(conCuenta.length,9);assert.equal(academy.pendientes.length,0);
     assert(conCuenta.every(slug=>archivos.some(a=>a.ruta===`academy/${slug}.html`)));
     // Sin cookies, sin seguir el 303 y como una página (Accept: text/html).
-    assert.equal(pedidasLeccion.length,7);
+    assert.equal(pedidasLeccion.length,9);
     assert(pedidasLeccion.every(i=>i.redirect==='manual'&&i.credentials==='omit'&&i.headers.Accept==='text/html'&&!i.headers.Cookie));
   });
   const leccionBytes=slug=>new Response(fs.readFileSync(path.join(base,'academy',slug+'.html')),{status:200});
@@ -211,7 +215,7 @@ prueba('flags de bypass remoto o destinos arbitrarios fallan antes de red',()=>{
     ['una lección servida a cualquiera (puerta apagada en producción)',{leccion:leccionBytes},/no manda a entrar/],
     ['un 303 a otra vuelta',{leccion:()=>new Response(null,{status:303,headers:{Location:'/acceso?volver=/','Cache-Control':'no-store'}})},/no manda a entrar/],
     ['un 303 que se puede guardar',{leccion:slug=>new Response(null,{status:303,headers:{Location:'/acceso?volver=/academy/'+slug,'Cache-Control':'public, max-age=60'}})},/no manda a entrar/],
-    ['una lección «Próximamente» publicada',{pendiente:()=>new Response('<h1>Lección futura</h1>',{status:200})},/no da 404/],
+    ['una lección inventada servida con 200 (o una «Próximamente» publicada)',{pendiente:()=>new Response('<h1>Lección futura</h1>',{status:200})},/no da 404/],
   ]) {
     await assert.rejects(()=>verificarHTTP(base,archivos,produccion(cambios)),error);
     prueba(`la verificación de producción rechaza ${nombre}`,()=>{});
@@ -220,7 +224,7 @@ prueba('flags de bypass remoto o destinos arbitrarios fallan antes de red',()=>{
   const publico={...academy,acceso:'publico'};
   await verificarHTTP(base,archivos,async(url,init)=>{
     const ruta=new URL(url).pathname,slug=ruta.match(/^\/academy\/([a-z0-9-]+)$/)?.[1];
-    if(slug&&academy.pendientes.includes(slug))return new Response('No encontrado',{status:404});
+    if(slug&&!academy.lecciones.includes(slug))return new Response('No encontrado',{status:404});
     const a=archivos.find(a=>'/'+a.ruta.replace(/(^|\/)index\.html$/,'$1').replace(/\.html$/,'')===ruta);
     return new Response(fs.readFileSync(path.join(base,a.ruta)),{status:200,headers:{'content-type':a.ruta.endsWith('.webp')?'image/webp':'application/octet-stream'}});
   },publico);

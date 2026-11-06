@@ -183,8 +183,11 @@ function archivoCatalogo(base) {
    publicada responde 303 a /acceso?volver=/academy/<slug> con no-store, así que
    no se comparan sus bytes (van en el inventario sellado de la base, y
    validarBase comprueba su contenido con comprobarLeccionesPublicadas); las
-   «Próximamente» dan 404. Nunca se entra con una cuenta. */
+   «Próximamente» y una lección inventada dan 404. Desde el 06/11/2026 las nueve
+   están publicadas: la inventada mantiene la comprobación del 404 (la misma ruta
+   que .github/comprobar-publicado.mjs). Nunca se entra con una cuenta. */
 const SIN_GUARDAR = /(?:^|,)\s*no-store\s*(?:,|$)/;
+const LECCION_INEXISTENTE = 'rwadar-comprobacion-leccion-inexistente';
 async function verificarHTTP(base, archivos, fetchFn=globalThis.fetch, academy=academyPublicada()) {
   const protegidas=new Map(academy.acceso==='cuenta'?academy.lecciones.map(slug=>[`academy/${slug}.html`,slug]):[]);
   const pedirLeccion=ruta=>fetchFn(ORIGEN+ruta,{method:'GET',cache:'no-store',credentials:'omit',redirect:'manual',
@@ -209,10 +212,10 @@ async function verificarHTTP(base, archivos, fetchFn=globalThis.fetch, academy=a
       if(a.ruta.endsWith('.webp'))assert(/^image\/webp(?:;|$)/i.test(r.headers.get('content-type')||''),'Respuesta WebP no es imagen');
     }
   }));
-  for(const slug of academy.pendientes) {
+  for(const slug of [...academy.pendientes,LECCION_INEXISTENTE]) {
     const r=await pedirLeccion('/academy/'+slug);
     await r.body?.cancel();
-    assert(r.status===404,`La lección «Próximamente» /academy/${slug} no da 404 (HTTP ${r.status})`);
+    assert(r.status===404,`La lección ${slug===LECCION_INEXISTENTE?'inexistente':'«Próximamente»'} /academy/${slug} no da 404 (HTTP ${r.status})`);
   }
 }
 function ejecutarWranglerLectura() {
@@ -374,5 +377,5 @@ async function main(args=process.argv.slice(2)) {
   fs.writeFileSync(path.join(trabajo,'evidencia.json'),JSON.stringify(evidencia,null,2)+'\n',{flag:'wx'});
   console.log(JSON.stringify({precargado:true,imagenes:extras.length,evidencia:path.join(trabajo,'evidencia.json')}));
 }
-module.exports={cargarRegistro,unirActivos,inventario,huellaInventario,validarBase,verificarHTTP,preparar,despliegueProduccion,identidadListaWrangler,comprobarAndroidCompatible,main};
+module.exports={cargarRegistro,unirActivos,inventario,huellaInventario,validarBase,verificarHTTP,preparar,despliegueProduccion,identidadListaWrangler,comprobarAndroidCompatible,LECCION_INEXISTENTE,main};
 if(require.main===module)main().catch(e=>{console.error('PRECARGA BLOQUEADA:',e.message);process.exitCode=1;});
