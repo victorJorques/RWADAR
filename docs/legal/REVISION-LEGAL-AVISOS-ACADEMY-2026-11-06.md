@@ -121,7 +121,7 @@ El margen de duda está en la Circular CNMV 2/2020, norma 3.1, que habla de «ll
 - **La privacidad ya tiene la sección de avisos,** con su base jurídica (`privacidad.html:379-406`).
 - **Los plazos de conservación son proporcionados:** colas 90 días, móviles 180 días, con un reloj diario de limpieza (RGPD, art. 5.1.e).
 - **No hay que consultar la lista Robinson**, porque hay consentimiento (LOPDGDD, art. 23.4, párr. 2). [SEGURO]
-- **Eric dio su visto bueno** a la Academy con cuenta y a usarla como reclamo del alta (`docs/academy/VISTO-BUENO-ERIC-2026-11-06.md`). Falta la licencia por escrito (ver 5.14).
+- **Eric dio su visto bueno** a la Academy con cuenta y a usarla como reclamo del alta (`docs/academy/VISTO-BUENO-ERIC-2026-11-06.md`). El 06/11 Víctor confirmó que ya hay permiso por escrito; el original lo guarda él, fuera de Git (ver 5.14).
 
 ---
 
@@ -666,7 +666,8 @@ quedan.
 - Contratos de encargo aceptados y archivados en PDF en `docs/legal/encargados/`:
   Supabase, Cloudflare, Google/Firebase, Expo y el proveedor de correo.
 - Proveedor de correo sin píxel ni seguimiento de clics (paso 5).
-- Licencia escrita de Eric con las modalidades de arriba.
+- Licencia escrita de Eric: ✅ existe desde el 06/11 (según Víctor). Si no
+  recoge las modalidades de 5.14, pedirle que confirme ese texto.
 - Recomendaciones del apartado 5.3, antes de publicar un aviso de ofertas o
   encender `ofertas_automaticas`:
   - enlaces hacia las plataformas;

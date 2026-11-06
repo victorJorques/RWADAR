@@ -621,7 +621,8 @@ de Víctor.
    [`legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`](../legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md).
    Sus cambios obligatorios antes de los pasos 4 a 6 ya están en el código;
    lo que queda (contratos de encargo, píxel de Brevo, autoarranque de
-   Firebase, licencia escrita de Eric) está en su apartado de pendientes.
+   Firebase) está en su apartado de pendientes. La licencia escrita de Eric
+   ya existe (06/11, la guarda Víctor fuera de Git).
 3. **Base de datos:** copia de seguridad; aplicar la 30 en el SQL Editor y
    pasar el verificador. Desde ese momento corre el reloj diario de limpieza,
    aunque todo siga apagado.

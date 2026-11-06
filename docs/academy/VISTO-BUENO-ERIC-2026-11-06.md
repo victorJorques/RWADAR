@@ -20,11 +20,24 @@ las cuentas para una segunda versión «solo si el negocio lo pide»
 (`ESPECIFICACION_WEB.md`, líneas 152 y 171-173). Este visto bueno abre esa
 segunda versión.
 
-**Qué queda por escrito aparte.** El visto bueno llega a través de Víctor, que es
-corresponsable. Falta todavía un documento firmado por Eric con dos cosas:
+**Permiso por escrito (06/11/2026).** Víctor comunicó ese mismo día, en la
+sesión de trabajo:
 
-- la licencia o cesión de las 9 lecciones para la web y la app;
-- su conformidad, en primera persona, con el texto de arriba.
+> «ya tenemos permiso de eric por escrito»
 
-No bloquea publicar el cierre, porque el contenido ya está publicado con su
-acuerdo. Conviene archivarlo aquí cuando exista.
+Con eso queda cubierto lo que faltaba: la licencia o cesión de las 9 lecciones
+para la web y la app, y la conformidad de Eric con los puntos de arriba.
+
+**Dónde está el original.** El escrito de Eric no se sube a Git: lleva datos
+personales de Eric, y este repositorio no es su archivo. Víctor guarda el
+original (correo, mensaje o documento firmado) en un sitio privado, y aquí solo
+queda constancia de que existe. Si algún día hace falta probarlo, por ejemplo
+ante una tienda de apps o en una disputa sobre la autoría, se presenta ese
+original.
+
+**Qué conviene que diga.** Si el escrito es solo un «sí, adelante», conviene
+que Eric conteste además con el texto del apartado 5.14 de la
+[revisión legal](../legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md).
+Ese texto fija para qué se usan las lecciones, dónde, durante cuánto tiempo y
+cómo se retira el permiso. Sin eso, la ley lo limita: 5 años y solo España
+(TRLPI, arts. 43 y 45).
