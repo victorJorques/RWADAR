@@ -434,7 +434,7 @@ test('Inicio: los últimos avisos válidos, con punto de no leído que se guarda
   assert.equal(p.estadoHook().noLeidos, 0);
   assert.equal(boton(tarjeta(), 'Marcar como leídos'), undefined);
   const vacia = tarjetaViva()({ avisos: [], leidos: [] });
-  assert.match(texto(vacia), /Aquí verás las ofertas nuevas del radar/);
+  assert.match(texto(vacia), /Aquí verás las fichas nuevas del radar/);
   p.h.desmontar();
 });
 

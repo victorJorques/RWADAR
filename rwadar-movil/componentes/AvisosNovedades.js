@@ -340,7 +340,7 @@ export function TarjetaAvisosInicio({ avisos = [], leidos = [], cargando = false
         </Pressable>
       ) : null}
       {!visibles.length && !cargando && !error
-        ? <Text style={s.nota}>Aquí verás las ofertas nuevas del radar y las novedades de RWAdar.</Text> : null}
+        ? <Text style={s.nota}>Aquí verás las fichas nuevas del radar y las novedades de RWAdar.</Text> : null}
       {cargando && !visibles.length ? <ActivityIndicator color={C.senal} accessibilityLabel="Cargando tus avisos" /> : null}
       {error ? <Text style={s.nota}>{error}</Text> : null}
       {sinLeer.length ? (

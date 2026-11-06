@@ -1860,11 +1860,11 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                   <>
                     <Text style={e.privacidadTit}>Avisos de novedades</Text>
                     <Text style={e.privacidadParrafo}>
-                      Los avisos de novedades (ofertas nuevas en el radar y novedades de la web y la app) solo se activan con tu permiso: con su casilla al crear la cuenta o en Perfil › Avisos. Se guarda en tu cuenta si los aceptaste, cuándo, desde dónde y con qué texto. Puedes darte de baja en cada aviso o en Perfil. Los avisos se ven también en Inicio; qué avisos has leído se guarda solo en este dispositivo.
+                      Los avisos de novedades (fichas nuevas en el radar y novedades de la web y la app) solo se activan con tu permiso: con su casilla al crear la cuenta o en Perfil › Avisos. Se guarda en tu cuenta si los aceptaste, cuándo, desde dónde, con qué texto y en qué idioma, y el historial de altas y bajas. Puedes retirar el permiso cuando quieras, sin que afecte a los envíos anteriores: en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Los avisos se ven también en Inicio; qué avisos has leído se guarda solo en este dispositivo.
                     </Text>
                     <Text style={e.privacidadParrafo}>
                       {pushNovedades
-                        ? 'Si activas «Notificaciones en este móvil», el sistema te pedirá permiso y se guarda en tu cuenta un identificador de entrega de este móvil y si es Android o iOS. Expo y Firebase Cloud Messaging lo usan para entregar cada notificación, que no lleva datos personales. Se borra al desactivarlas o al cerrar sesión. Las instalaciones antiguas siguen desactivadas.'
+                        ? 'Si activas «Notificaciones en este móvil», el sistema te pedirá permiso y se guarda en tu cuenta un identificador de entrega de este móvil y si es Android o iOS. Expo y Firebase Cloud Messaging lo usan para entregar cada notificación, que no lleva datos personales. Se borra al desactivarlas, al cerrar sesión con conexión, al borrar la cuenta o tras 180 días sin usar la app. Las instalaciones antiguas siguen desactivadas.'
                         : 'Esta versión no solicita permisos push ni obtiene tokens: las notificaciones en el móvil llegan con la versión 1.4.2. Las instalaciones antiguas siguen desactivadas.'}
                     </Text>
                   </>

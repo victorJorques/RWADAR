@@ -262,7 +262,7 @@ export default function Cuenta({ controlador, estado, seguridad, plataformas = [
         </>
       ) : autenticada && vista === 'borrar' ? (
         <>
-          <Text style={s.parrafo}>Borrar la cuenta elimina tu perfil, tu lista de seguimiento y tus avisos (permiso y móviles registrados). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.</Text>
+          <Text style={s.parrafo}>Borrar la cuenta elimina tu perfil, tu lista de seguimiento, tu registro de inversiones y tus avisos (permiso y móviles registrados; el historial del permiso queda bloqueado 3 años solo para atender reclamaciones). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.</Text>
           <Campo etiqueta="Contraseña actual" referencia={claveInput} value={clave} onChangeText={setClave}
             secureTextEntry autoCapitalize="none" autoCorrect={false} autoComplete="current-password"
             textContentType="password" editable={!bloqueado} maxLength={256} />

@@ -227,9 +227,9 @@ test('un nombre de usuario que coincide con un rótulo y su correo conservan con
 
 test('borrar cuenta exige contraseña nueva en pantalla y BORRAR; cancelar no da la baja', async () => {
   const p = pantalla(autenticada); await p.pulsar('Borrar mi cuenta');
-  assert.ok(p.texto().includes('Borrar la cuenta elimina tu perfil, tu lista de seguimiento y tus avisos (permiso y móviles registrados). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.'));
-  assert.equal(idioma.ingles('Borrar la cuenta elimina tu perfil, tu lista de seguimiento y tus avisos (permiso y móviles registrados). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.'),
-    'Deleting the account removes your profile, your watchlist and your notices (consent and registered phones). It does not delete local favourites or Academy progress. This cannot be undone.');
+  assert.ok(p.texto().includes('Borrar la cuenta elimina tu perfil, tu lista de seguimiento, tu registro de inversiones y tus avisos (permiso y móviles registrados; el historial del permiso queda bloqueado 3 años solo para atender reclamaciones). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.'));
+  assert.equal(idioma.ingles('Borrar la cuenta elimina tu perfil, tu lista de seguimiento, tu registro de inversiones y tus avisos (permiso y móviles registrados; el historial del permiso queda bloqueado 3 años solo para atender reclamaciones). No borra los favoritos locales ni el progreso de Academy. No se puede deshacer.'),
+    'Deleting your account removes your profile, your watchlist, your investment record and your notices (consent and registered phones; the consent history is kept blocked for 3 years only to handle complaints). It does not delete local favourites or Academy progress. It cannot be undone.');
   await p.pulsar('Confirmar borrado de cuenta'); assert.match(p.texto(), /Escribe tu contraseña/);
   p.campo('Contraseña actual', 'clave de prueba local');
   p.campo('Escribe BORRAR', 'borrar'); await p.pulsar('Confirmar borrado de cuenta');
