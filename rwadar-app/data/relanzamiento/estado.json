@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "06/11: privacidad e «Información básica» con Lettermint como proveedor previsto de los avisos (apagados); 1.4.2 en main",
+  "nota": "07/11: legal 5.3 (botón al proveedor), latido de Firebase en privacidad, noticia del 05/11 corregida, /assets fuera del worker (PR #85)",
   "revisionAprobada": {
-    "commit": "e2f786aa6af1d25110829b982d454969b75a529b",
-    "contenidoSha256": "sha256:9f876c924460eaf3464b22d0f3310261d1029d34205d4efca40cf4d426c21164",
+    "commit": "b13ddebb8f93384b3226f98bf52dc446f151b649",
+    "contenidoSha256": "sha256:e7f99c5e30d9c348dd408ef49c473218f391a94467dc208376055516820ae6cd",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
