@@ -530,12 +530,12 @@ function declaracionesCSS(codigo, selectorBuscado) {
     .map(m => m[2]);
 }
 
-function renderEmisionHostil(codigo) {
+function renderEmisionHostil(codigo, cambios = {}) {
   const dato = [{
     s:'prueba', t:'<img src=x onerror=alert(1)>', res:'</script><script>alert(2)</script>',
     pl:'Midas', cat:'Tesoro y fondos', mon:'EUR', min:100, obj:1000, cap:500,
     pct:50, rent:3.2, plazo:12, tipo:'estimada', est:'abierta', cont:false,
-    url:'https://example.com/emision', ver:'2026-08-20', pat:false,
+    url:'https://example.com/emision', ver:'2026-08-20', pat:false, ...cambios,
   }];
   const capturado = {};
   const lista = [];
@@ -1046,6 +1046,13 @@ prueba('texto hostil de una emisión se escapa como texto', hostil.includes('&lt
 prueba('un cierre script hostil no crea otro script', hostil.includes('&lt;/script&gt;&lt;script&gt;alert(2)&lt;/script&gt;'));
 prueba('la emisión renderizada no genera style ni manejadores inline',
   !/<[^>]*\s(?:style|on[a-z]+)\s*=/i.test(hostil));
+// Revisión legal 06/11/2026, 5.3: la tarjeta antigua (emisiones sin ficha del catálogo)
+// no trae la comprobación de supervisión, así que nunca dice «Ver oferta en».
+for (const esNo of [true, false, null]) {
+  const antigua = renderEmisionHostil(js, { esNo });
+  prueba(`tarjeta antigua con disponible_es ${esNo}: el enlace dice que sales de RWAdar, nunca «Ver oferta en»`,
+    antigua.includes('>Ir a la web del proveedor (sales de RWAdar) ↗</a>') && !antigua.includes('Ver oferta en'));
+}
 
 console.log('\n=== ADAPTACIÓN MÓVIL Y ACCESIBILIDAD ===');
 // Barra de 5 (decisión de Víctor, 04/11/2026; ESPEC-INICIO §4): Ofertas y
@@ -2563,8 +2570,13 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
   prueba('la ficha conserva el enlace al mercado secundario y distingue su ficha oficial',
     /urlFicha=urlHttps\(o\.url\),urlMercado=urlHttps\(o\.urlMercado\)/.test(detalleOfertaParaPruebas) &&
     /secundario&&urlMercado\?enlace\(urlMercado,'Abrir mercado'/.test(detalleOfertaParaPruebas) &&
-    // El enlace final dice «Ver oferta en <proveedor> ↗», como la página aparte (NOTAS 3 del coordinador, 04/11/2026).
-    /secundario\?'Ficha oficial':'Ver oferta en '\+o\.plataformaNombre/.test(detalleOfertaParaPruebas));
+    // El enlace final dice «Ver oferta en <proveedor> ↗», como la página aparte (NOTAS 3 del coordinador, 04/11/2026),
+    // solo si se contrata hoy desde España y la entidad está supervisada; si no, que sales de RWAdar (revisión legal 06/11/2026, 5.3).
+    /const verOferta=comprobacionesOferta\(o,resumen\)\.some\(c=>c\.id==='contratable'&&c\.cumple===true\)&&!!supervisada&&supervisada\.cumple===true;/.test(detalleOfertaParaPruebas) &&
+    /secundario\?'Ficha oficial':verOferta\?'Ver oferta en '\+o\.plataformaNombre:SALIR_AL_PROVEEDOR/.test(detalleOfertaParaPruebas) &&
+    /const SALIR_AL_PROVEEDOR='Ir a la web del proveedor \(sales de RWAdar\)';/.test(js));
+  prueba('revisión legal 5.3: la web ya no dice «Puntos fuertes», sino «Datos comprobados a favor»',
+    !/Puntos fuertes, con su fuente/.test(js) && js.includes("'<h4>Datos comprobados a favor, con su fuente</h4>"));
 }
 // REGRESION_TARJETAS_EDITORIALES: fixtures sintéticos, sin consultar ni editar
 // el catálogo real. Se comprueba el HTML generado, no solo CSS que lo esconda.
@@ -2717,6 +2729,45 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     !renderWarn.tarjeta.includes('WARN_FINAL_INTEGRO') && !renderWarn.tarjeta.includes(warnSecundario) &&
     !/en la ficha|escaparate-aviso-compacto/.test(renderWarn.tarjeta) &&
     renderWarn.detalle.includes(warnCompleto) && renderWarn.detalle.includes(warnSecundario));
+  // Revisión legal 06/11/2026, 5.3: «Ver oferta en X» solo con «Se contrata hoy desde España» y «supervisada» en «Sí».
+  {
+    const accesoSi = {etiqueta:'Acceso desde España', valor:'Disponible para residentes en España',
+      alcance:'Acceso documentado para residentes en España.', fechaDato:dia(-1), fechaConsulta:dia(-1), fuente:fuentes[1]};
+    const contratable = {...base, slug:'regresion-contratable', avisos:[],
+      documentacion:{...base.documentacion, referencias:[...base.documentacion.referencias, accesoSi]}};
+    const sinEspana = {...base, slug:'regresion-sin-espana', avisos:[], disponibleEs:null};
+    vm.runInContext('EMI.push('+JSON.stringify(contratable)+','+JSON.stringify(sinEspana)+');',p.contexto);
+    const enlaceFinal = slug => vm.runInContext(`(() => {abrirDetalleOfertaLocal(${JSON.stringify(slug)});
+      const o=EMI.find(x=>x.slug===${JSON.stringify(slug)});
+      return {detalle:document.getElementById('escaparateDetalleLocal').innerHTML,
+        cumple:comprobacionesOferta(o).find(c=>c.id==='contratable').cumple};})()`, p.contexto);
+    const sinSupervision = enlaceFinal('regresion-contratable'), no = enlaceFinal('regresion-sin-espana');
+    const supervisadaDe = slug => vm.runInContext(`comprobacionesOferta(EMI.find(x=>x.slug===${JSON.stringify(slug)})).find(c=>c.id==='supervisada').cumple`, p.contexto);
+    prueba('revisión legal 5.3: «Ver oferta en <proveedor>» no sale si no se contrata hoy desde España, ni si la entidad no consta supervisada',
+      // Se contrata desde España, pero sin la comprobación «supervisada» en «Sí» (no hay entrada en transparencia.json).
+      sinSupervision.cumple === true && supervisadaDe('regresion-contratable') === false &&
+      sinSupervision.detalle.includes('>Ir a la web del proveedor (sales de RWAdar) ↗</a>') && !sinSupervision.detalle.includes('Ver oferta en') &&
+      no.cumple === false && no.detalle.includes('aria-label="Ir a la web del proveedor (sales de RWAdar): Activo sintético de regresión">Ir a la web del proveedor (sales de RWAdar) ↗</a>') &&
+      !no.detalle.includes('Ver oferta en') &&
+      // Después de los avisos y de «Antes de invertir».
+      no.detalle.indexOf('sales de RWAdar') > no.detalle.indexOf('Antes de invertir'));
+    // Con las fichas reales del catálogo: Robinhood (se contrata y está supervisada) dice «Ver oferta en»;
+    // Aktionariat y Prosegur Digital Gold se contratan desde España, pero quien las vende no está supervisado.
+    // (En otra pestaña: esta ya tiene EMI cambiado por ofertas sintéticas.)
+    const q = pestanaCatalogo();
+    const real = slug => vm.runInContext(`(() => {const o=EMI.find(x=>x.slug===${JSON.stringify(slug)});if(!o)return null;
+      abrirDetalleOfertaLocal(${JSON.stringify(slug)});const c=comprobacionesOferta(o);
+      return {detalle:document.getElementById('escaparateDetalleLocal').innerHTML,
+        cumple:c.find(x=>x.id==='contratable').cumple,supervisada:c.find(x=>x.id==='supervisada').cumple};})()`, q.contexto);
+    const robinhood = real('robinhood-classic-stock-tokens'), aktionariat = real('aktionariat'), prosegur = real('prosegur-digital-gold');
+    prueba('revisión legal 5.3 con las fichas reales: «Ver oferta en» en Robinhood; Aktionariat y Prosegur (no supervisadas), «sales de RWAdar»',
+      !!robinhood && !!aktionariat && !!prosegur &&
+      robinhood.cumple === true && robinhood.supervisada === true && robinhood.detalle.includes('>Ver oferta en Robinhood Europe ↗</a>') &&
+      aktionariat.cumple === true && aktionariat.supervisada === false && !aktionariat.detalle.includes('Ver oferta en') &&
+      aktionariat.detalle.includes('>Ir a la web del proveedor (sales de RWAdar) ↗</a>') &&
+      prosegur.supervisada === false && !prosegur.detalle.includes('Ver oferta en') &&
+      prosegur.detalle.includes('>Ir a la web del proveedor (sales de RWAdar) ↗</a>'));
+  }
   prueba('las tarjetas editoriales no convierten los datos documentales en un ranking',
     !/Ordenar por puntuaci[oó]n/.test(js));
   const reglasImagen = declaracionesCSS(cssBase, '.escaparate-imagen');
@@ -2903,8 +2954,26 @@ prueba('privacidad: los avisos de novedades se explican y todavía no están act
   /servicio de notificaciones de Apple/.test(privacidadLineal) &&
   /90 días después de terminar/.test(privacidadLineal) && /no se actualicen en 180 días/.test(privacidadLineal) &&
   /Al crear la cuenta confirmas que tienes 18 años o más/.test(privacidadLineal));
+// El «latido» de Firebase, que ya ocurre en la app 1.4.2 (APK-1.4.2-NOTIFICACIONES.md, «Al día 06/11/2026, tarde», punto 3).
+{
+  const firebase = privacidadLineal.slice(privacidadLineal.indexOf('<p id="firebase-android">'));
+  prueba('privacidad: el componente de notificaciones de Google de la 1.4.2, sin prometer el botón oculto, y la fecha al día',
+    privacidadLineal.includes('<p id="firebase-android"><b>Componente de notificaciones de Google (Firebase) en Android:</b>') &&
+    /^[^]*?desde la versión 1\.4\.2, la app de Android lleva el componente de notificaciones de Google \(Firebase Cloud Messaging\)\./.test(firebase) &&
+    /^[^]*?Mientras no se activen «Notificaciones en este móvil», no envía nada a Google; hoy ese botón no aparece en la app\./.test(firebase) &&
+    /^[^]*?las fechas recientes en que se abrió la app \(hasta 30\)/.test(firebase) &&
+    // Lo que manda Firebase y para qué, según la guía de Google para Play (firebase.google.com/docs/android/play-data-disclosure):
+    // el «Firebase user agent», para sus estadísticas internas, no para entregar las notificaciones (revisión del 07/11/2026).
+    /^[^]*?Google recibe esas fechas junto con qué componentes de Firebase lleva la app y sus versiones, y datos técnicos del móvil \(versión de Android, marca, modelo, tipo de dispositivo y tienda desde la que se instaló la app\)\. Según Google, los usa para sus estadísticas internas de uso de esos componentes, sin unirlos a un identificador de la persona ni del móvil\./.test(firebase) &&
+    !/solo para su uso|para poder entregarlas/.test(firebase.slice(0, firebase.indexOf('</p>'))) &&
+    // El botón de RWAdar no las borra: hay que decirlo, está en la misma pantalla de la app.
+    /^[^]*?Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android\. El botón «Borrar datos del dispositivo» de RWAdar no las borra\.<\/p>/.test(firebase) &&
+    privacidadLineal.indexOf('<p id="firebase-android">') < privacidadLineal.indexOf('<h2>6 · Correos de servicio</h2>') &&
+    privacidadLineal.includes('<a href="#firebase-android">apartado 5</a>') &&
+    privacidad.includes('Versión revisada el <time datetime="2026-11-07">7 de noviembre de 2026</time>'));
+}
 // Revisión legal del 06/11/2026: lo que ya es cierto con los avisos todavía apagados.
-const seccionAvisos = privacidadLineal.slice(privacidadLineal.indexOf('<h3 id="avisos-novedades">'), privacidadLineal.indexOf('<h2 id="consultas-b2b">'));
+const seccionAvisos =privacidadLineal.slice(privacidadLineal.indexOf('<h3 id="avisos-novedades">'), privacidadLineal.indexOf('<h2 id="consultas-b2b">'));
 const seccionCondiciones = privacidadLineal.slice(privacidadLineal.indexOf('<h3 id="condiciones">'), privacidadLineal.indexOf('<h3 id="mapa-ubicacion">'));
 prueba('privacidad: condiciones de la cuenta dentro de #condiciones (adonde va /condiciones)',
   /<p id="condiciones-cuenta"><b>Condiciones de la cuenta\.<\/b>/.test(seccionCondiciones) &&

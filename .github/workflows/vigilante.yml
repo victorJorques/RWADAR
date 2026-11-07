@@ -1,0 +1,85 @@
+name: Vigilante diario
+
+# Comprobación diaria, de SOLO LECTURA, de lo que ya está publicado. No
+# publica, no escribe en la base y no envía nada. Si algo falla, el flujo
+# sale en rojo y GitHub manda un correo; cada fallo dice qué hacer (también
+# arriba, en la página del flujo). Detalle: .github/vigilante.mjs.
+#
+# Comprueba: portada, puerta de la Academy (303 sin cuenta), privacidad,
+# version-android.json de la última release, que el catálogo no caduque en
+# menos de 48 h, que security.txt no caduque en menos de 30 días y que ningún
+# trabajo de pg_cron haya fallado en las últimas 48 h.
+#
+# Necesita el secreto SUPABASE_DB_URL (el mismo de «Copia de seguridad»).
+#
+# Ojo: GitHub solo ejecuta los horarios desde main, y manda el correo de los
+# fallos a quien cambió por última vez la línea «cron» (o a quien volvió a
+# activar el flujo). Para asegurarte de que te llega a ti: Actions › Vigilante
+# diario › «…» › Disable workflow y después Enable workflow, y en tu perfil
+# de GitHub › Settings › Notifications › Actions, deja marcado el correo
+# («Only notify for failed workflows»).
+
+on:
+  schedule:
+    # 05:17 UTC: 21:17 en California en invierno (22:17 en verano) y 06:17 en
+    # España (07:17 en verano), fuera de las horas punta de GitHub.
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rwadar-vigilante
+  cancel-in-progress: false
+
+# Conexiones a Supabase siempre cifradas: con el «prefer» de libpq (lo que usa
+# psql si la dirección no lleva sslmode), alguien en medio que rechace TLS haría
+# seguir sin cifrar. Una sola regla para todos los flujos que usan
+# SUPABASE_DB_URL; la comprueba .github/flujos.test.mjs.
+env:
+  PGSSLMODE: require
+
+jobs:
+  vigilar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      # Solo lo que usa el vigilante: el script, la lista de lecciones y la
+      # comprobación del parche de Node.
+      - name: Descargar el script
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            .github/vigilante.mjs
+            rwadar-academy/academy.json
+            rwadar-node-seguro.js
+          sparse-checkout-cone-mode: false
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          # Parche de seguridad de Node del 21/10/2026 (TLS, Brotli y certificados
+          # de eMudhra). Versión exacta: no se usa la que traiga en caché el runner.
+          node-version: 22.23.4
+
+      - name: Comprobar que Node lleva el parche de seguridad
+        run: node rwadar-node-seguro.js
+
+      # Si esto falla, el vigilante lo dice en su informe («no está psql») y
+      # aun así comprueba la web.
+      - name: Instalar psql 17 (misma versión que Supabase)
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+
+      - name: Vigilar la web, las descargas y la base
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: node .github/vigilante.mjs

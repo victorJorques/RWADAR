@@ -2478,6 +2478,466 @@ let n1;
     && (await relojes()).length === 0 && await conLimpieza() && v4.ok && AVISO_CASILLA.test(v4.avisoCasilla || ''));
 }
 
+/* =====================================================================
+   10 · Correo Lettermint: prueba real y bajas guardadas allí
+   ---------------------------------------------------------------------
+   Flujo «Correo Lettermint (prueba y bajas)» (.github/workflows/
+   correo-lettermint.yml) y sus pasos (rwadar-app/correo-lettermint.sh),
+   ejecutados de verdad con bash, jq y dobles de curl y psql que nunca se
+   conectan a nada. El SQL que usan (db/31_correo_lettermint_remitente.sql
+   y db/31_correo_lettermint_baja.sql) se ejecuta en PGlite con una
+   respuesta de ejemplo de la API de Lettermint (GET /v1/suppressions, con
+   la forma de su referencia oficial: SuppressedRecipientData y cursor).
+   ===================================================================== */
+{
+  const FLUJO_LM = leer('../.github/workflows/correo-lettermint.yml');
+  const SCRIPT_LM = leer('correo-lettermint.sh');
+  const SQL_BAJA = leer('db/31_correo_lettermint_baja.sql');
+  const SQL_REMITENTE = leer('db/31_correo_lettermint_remitente.sql');
+  const RUTA_BAJA = 'rwadar-app/db/31_correo_lettermint_baja.sql';
+  const RUTA_REMITENTE = 'rwadar-app/db/31_correo_lettermint_remitente.sql';
+  const DB_DOBLE = 'postgresql://doble-local/sin-red';
+  // Token de equipo inventado para los dobles (no es de Lettermint ni de nadie).
+  const TOKEN_EQUIPO = ['lm', 'equipo', 'ficticio', 'solo', 'para', 'esta', 'prueba'].join('-');
+  const hayJq = hayBash && spawnSync('jq', ['--version'], { encoding: 'utf8' }).status === 0;
+  const pasoLM = (nombre) => pasoDe(FLUJO_LM, nombre) || '';
+  // Sentencias de un archivo de psql, sin comentarios, metacomandos ni bloques $…$.
+  const sentenciasPsql = (sql) => sinComentarios(sql).split('\n').filter((l) => !l.startsWith('\\')).join('\n')
+    .split(/(\$[a-z_]*\$[\s\S]*?\$[a-z_]*\$)/).filter((_, i) => i % 2 === 0).join(' ')
+    .split(';').map((t) => t.trim()).filter(Boolean);
+  // Lo que devolvería psql -At con ese archivo y esas variables: el primer
+  // valor de la última consulta con columnas. Un error se deshace.
+  const ejecutaPsql = async (sql, variables = {}) => {
+    await sesion(db);
+    try {
+      const resultados = await db.exec(conVariablesPsql(sql, variables));
+      const ultima = resultados.filter((r) => r.fields?.length).at(-1);
+      return ultima?.rows?.length ? Object.values(ultima.rows[0])[0] : undefined;
+    } catch (e) {
+      await db.exec('rollback');
+      throw e;
+    }
+  };
+
+  // ---------------------------------------------------------- el flujo, leído
+  const opcionesLM = FLUJO_LM.match(/ {6}accion:\n(?: {8}.*\n)*? {8}options:\n((?: {10}- .*\n)+)/)?.[1]
+    .trim().split('\n').map((l) => l.trim().slice(2));
+  const trabajosLM = FLUJO_LM.slice(FLUJO_LM.indexOf('\njobs:\n') + 7).match(/^ {2}[a-z][a-z0-9-]*:$/gm) || [];
+  paso('«Correo Lettermint»: solo prueba-correo y sincronizar-bajas, un solo trabajo, y el horario APAGADO salvo con la variable RWADAR_BAJAS_LETTERMINT_DIARIO = si',
+    isDeepStrictEqual(opcionesLM, ['prueba-correo', 'sincronizar-bajas']) && trabajosLM.length === 1
+    && /^on:\n {2}workflow_dispatch:\n/m.test(FLUJO_LM) && /^ {2}schedule:\n {4}- cron: '23 4 \* \* \*'/m.test(FLUJO_LM)
+    && !/^ {2}(push|pull_request|pull_request_target|workflow_run|repository_dispatch|workflow_call):/m.test(FLUJO_LM)
+    && /^ {4}if: github\.event_name != 'schedule' \|\| vars\.RWADAR_BAJAS_LETTERMINT_DIARIO == 'si'$/m.test(FLUJO_LM)
+    && /^ {6}destinatario:\n {8}description: .*\n {8}required: false\n {8}type: string$/m.test(FLUJO_LM)
+    && /^ {6}remitente:\n {8}description: .*\n {8}required: false\n {8}type: string$/m.test(FLUJO_LM));
+  const checkoutLM = FLUJO_LM.match(/uses: actions\/checkout@[0-9a-f]{40} # v[0-9.]+/)?.[0];
+  paso('permisos solo de lectura, cola propia (no la de «Aplicar catálogo»: el horario nunca cancela un catálogo en espera), solo desde main y el mismo checkout fijado que «Avisos a registrados (base)»',
+    /^permissions:\n {2}contents: read$/m.test(FLUJO_LM) && (FLUJO_LM.match(/permissions:/g) || []).length === 1
+    && !/write/.test(FLUJO_LM.replace(/^\s*#.*$/gm, ''))
+    && /^concurrency:\n {2}group: rwadar-correo-lettermint\n {2}cancel-in-progress: false$/m.test(FLUJO_LM)
+    && !FLUJO_LM.includes('rwadar-aplicar-catalogo')
+    && /if: github\.ref != 'refs\/heads\/main'/.test(pasoLM('Solo desde main'))
+    && !!checkoutLM && BASE.includes(checkoutLM) && /persist-credentials: false/.test(pasoLM('Descargar el código')));
+  const pasosConSecreto = (secreto) => FLUJO_LM.split('\n      - name: ').slice(1)
+    .filter((p) => p.includes(`\${{ secrets.${secreto} }}`)).map((p) => p.split('\n')[0]);
+  paso('cada secreto llega por env: solo al paso que lo usa: LETTERMINT_API_TOKEN al envío, LETTERMINT_TEAM_TOKEN a la lista de bajas y SUPABASE_DB_URL a leer el remitente y a aplicar las bajas',
+    isDeepStrictEqual(pasosConSecreto('LETTERMINT_API_TOKEN'), ['Enviar los dos correos de prueba'])
+    && isDeepStrictEqual(pasosConSecreto('LETTERMINT_TEAM_TOKEN'), ['Pedir a Lettermint sus bajas (solo lee)'])
+    && isDeepStrictEqual(pasosConSecreto('SUPABASE_DB_URL'), ['Leer el remitente de Vault (solo lee)', 'Aplicar las bajas en RWAdar'])
+    && (FLUJO_LM.match(/\$\{\{ secrets\./g) || []).length === 4
+    && pasoLM('Enviar los dos correos de prueba').includes('LETTERMINT_API_TOKEN: ${{ secrets.LETTERMINT_API_TOKEN }}'));
+  const ORDENES_LM = [['Comprobar la acción', 'comprobar'], ['Comprobar que la API REST de Supabase no expone net ni vault', 'rest-cerrada'],
+    ['Pedir a Lettermint sus bajas (solo lee)', 'listar-bajas'], ['Leer el remitente de Vault (solo lee)', 'remitente'],
+    ['Enviar los dos correos de prueba', 'enviar-prueba'], ['Aplicar las bajas en RWAdar', 'aplicar-bajas'],
+    ['Borrar la lista temporal de bajas', 'limpiar']];
+  const CONDICIONES_LM = [
+    ['Comprobar que la API REST de Supabase no expone net ni vault', "env.ACCION == 'prueba-correo'"],
+    ['Pedir a Lettermint sus bajas (solo lee)', "env.ACCION == 'sincronizar-bajas'"],
+    ['Instalar psql 17 (misma versión que Supabase)',
+      "(env.ACCION == 'prueba-correo' && env.REMITENTE == '') || (env.ACCION == 'sincronizar-bajas' && env.BAJAS_LETTERMINT != '0')"],
+    ['Leer el remitente de Vault (solo lee)', "env.ACCION == 'prueba-correo' && env.REMITENTE == ''"],
+    ['Enviar los dos correos de prueba', "env.ACCION == 'prueba-correo'"],
+    ['Aplicar las bajas en RWAdar', "env.ACCION == 'sincronizar-bajas' && env.BAJAS_LETTERMINT != '0'"],
+    ['Borrar la lista temporal de bajas', "always() && env.BAJAS_ARCHIVO != ''"]];
+  paso('cada paso llama a rwadar-app/correo-lettermint.sh con su orden y su condición: psql solo se instala si hace falta (remitente de Vault o alguna baja que aplicar) y la lista temporal se borra siempre',
+    ORDENES_LM.every(([n, o]) => pasoLM(n).split('\n').includes(`        run: bash rwadar-app/correo-lettermint.sh ${o}`))
+    && CONDICIONES_LM.every(([n, c]) => pasoLM(n).split('\n').includes(`        if: ${c}`))
+    && pasoLM('Comprobar la acción').includes("ACCION: ${{ github.event_name == 'schedule' && 'sincronizar-bajas' || inputs.accion }}")
+    && pasoLM('Comprobar la acción').includes('EVENTO: ${{ github.event_name }}')
+    && /apt-get install -y -qq postgresql-client-17/.test(pasoLM('Instalar psql 17 (misma versión que Supabase)')));
+  const runsLM = [...FLUJO_LM.matchAll(/^ {8}run: (.*)$/gm)].map((m) => m[1])
+    .concat([...FLUJO_LM.matchAll(/^( +)run: \|\n((?:\1 {2}.*\n|\s*\n)*)/gm)].map((m) => m[2]));
+  paso('nunca ${{ … }} dentro de run:, ni set -x; los dos tokens van a curl por la entrada estándar (-H @-) y ningún echo/printf enseña un token, la base o un correo de la lista',
+    runsLM.length >= 9 && runsLM.every((r) => !r.includes('${{'))
+    && !/set -[a-z]*x|set -o xtrace/.test(FLUJO_LM + SCRIPT_LM)
+    && !/(echo|printf)[^\n]*\$\{?(token|LETTERMINT_[A-Z_]*TOKEN|SUPABASE_DB_URL|correo|fecha|r)\b/.test(SCRIPT_LM)
+    && SCRIPT_LM.includes('<<< "x-lettermint-token: $token"') && SCRIPT_LM.includes('<<< "Authorization: Bearer $token")')
+    && (SCRIPT_LM.match(/ -H @- /g) || []).length === 2 && !/-H "?(x-lettermint-token|Authorization)/.test(SCRIPT_LM));
+  const conVariablesLM = sentenciasPsql(SQL_BAJA).filter((t) => /:'[a-z_]+'/.test(t));
+  paso('aplicar-bajas pasa cada correo y su fecha a psql como variables (-v), con la entrada estándar cerrada; el SQL solo los usa como literales en un único SELECT (nunca en una DDL, que Supabase registra con su texto)',
+    SCRIPT_LM.includes('-v correo="$correo" -v suprimido_el="$fecha" \\\n      -f "$D/31_correo_lettermint_baja.sql" < /dev/null)"')
+    && isDeepStrictEqual([...new Set([...sinComentarios(SQL_BAJA).matchAll(/:'([a-z_]+)'/g)].map((m) => m[1]))], ['correo', 'suprimido_el'])
+    && conVariablesLM.length === 1 && /^with entrada as \(/.test(conVariablesLM[0])
+    && !/\b(create|alter|insert|update|delete|copy|do|grant|comment|drop)\b/i.test(conVariablesLM[0])
+    && /rwadar_novedades\.baja_por_correo\(correo\)/.test(conVariablesLM[0])
+    && /^\\set ON_ERROR_STOP on$/m.test(SQL_BAJA) && /^\\set VERBOSITY terse$/m.test(SQL_BAJA));
+  const remitenteSql = sinComentarios(SQL_REMITENTE);
+  paso('el remitente se lee de Vault en una transacción de solo lectura que se deshace: sin variables, sin el token y sin escribir nada',
+    /^begin transaction read only;$/m.test(remitenteSql) && remitenteSql.trimEnd().endsWith('rollback;')
+    && !/\b(insert|update|delete|create|alter|drop|grant|commit|set_config)\b/i.test(remitenteSql)
+    && !/:'/.test(remitenteSql) && !remitenteSql.includes('LETTERMINT_API_TOKEN')
+    && /where s\.name = 'RWADAR_REMITENTE'/.test(remitenteSql)
+    && SCRIPT_LM.includes('-f "$D/31_correo_lettermint_remitente.sql" < /dev/null)"'));
+
+  // ---------------------------------------------------------- el SQL, en PGlite
+  // Remitente, sobre el doble de Vault.
+  await sesion(db);
+  const remitentesAntes = await filas(db, "select decrypted_secret v from vault.decrypted_secrets where name = 'RWADAR_REMITENTE'");
+  await db.exec("delete from vault.decrypted_secrets where name = 'RWADAR_REMITENTE'");
+  const remitenteNinguno = await ejecutaPsql(SQL_REMITENTE);
+  await db.exec("insert into vault.decrypted_secrets(name, decrypted_secret) values ('RWADAR_REMITENTE', '  avisos@rwadar.example ')");
+  const remitenteVault = await ejecutaPsql(SQL_REMITENTE);
+  paso('31_correo_lettermint_remitente.sql, en PGlite: devuelve RWADAR_REMITENTE sin espacios, o nada si no está en Vault',
+    remitenteNinguno === null && remitenteVault === 'avisos@rwadar.example');
+
+  // Respuesta de ejemplo de GET /v1/suppressions?filter[reason]=unsubscribe&filter[scope]=route
+  // (dos páginas). Solo cuentan las bajas de una ruta de difusión: ámbito
+  // «route» y categoría «broadcast». La de la ruta de servicio (categoría
+  // «all») y la de un dominio entero no se tocan.
+  const supresion = (id, value, created_at, extra = {}) => ({ id, type: 'email', value, reason: 'unsubscribe', scope: 'route',
+    applies_to: 'broadcast', project_id: 'proyecto-rwadar', route_id: 'ruta-difusion',
+    source_message: { id: `mensaje-${id}`, available: true, subject: 'Novedad en RWAdar', created_at }, created_at, ...extra });
+  const paginador = (data, next_cursor) => ({ data, path: 'https://api.lettermint.co/v1/suppressions', per_page: 100, next_cursor,
+    next_page_url: next_cursor ? `https://api.lettermint.co/v1/suppressions?page%5Bcursor%5D=${encodeURIComponent(next_cursor)}` : null,
+    prev_cursor: null, prev_page_url: null });
+  const CURSOR_LM = 'eyJpZCI6IjlmMWItNSJ9+/=';
+  const PAGINAS_LM = [
+    paginador([
+      supresion('s1', 'Apuntada@Bajas.Test', '2026-11-07T08:00:00.000000Z'),
+      supresion('s2', 'ya.de.baja@bajas.test', '2026-11-05T12:00:00.000000Z'),
+      supresion('s3', 'reapuntada@bajas.test', '2026-11-03T10:00:00.000000Z'),
+      supresion('s4', 'servicio@bajas.test', '2026-11-06T10:00:00.000000Z', { applies_to: 'all', route_id: 'ruta-servicio' }),
+      supresion('s5', 'bajas.test', '2026-11-06T11:00:00.000000Z', { type: 'domain' }),
+    ], CURSOR_LM),
+    paginador([
+      supresion('s6', 'nadie@bajas.test', '2026-11-06T09:00:00.000000Z'),
+      supresion('s7', 'sin.confirmar@bajas.test', '2026-11-06T09:30:00Z'),
+      supresion('s8', 'apuntada@bajas.test', '2026-11-07T08:00:00.000000Z'),
+    ], null),
+  ];
+  // Lo que debe quedar de la lista: en minúsculas, sin repetidas y en orden.
+  const bajasEsperadas = [...new Set(PAGINAS_LM.flatMap((p) => p.data)
+    .filter((s) => s.type === 'email' && s.reason === 'unsubscribe' && s.scope === 'route' && s.applies_to === 'broadcast')
+    .map((s) => `${s.value.toLowerCase()}\t${s.created_at}`))].sort();
+  // Cuentas de RWAdar de esas direcciones, cada una en un estado.
+  const cuentaLM = async (email, prefs) => {
+    const u = await altaAuth(email, {}, true);
+    await sesion(db);
+    await db.query(`insert into rwadar_novedades.preferencias (usuario_id, novedades, aceptado_el, version, origen, canal, baja_el)
+        values ($1, $2, $3, $4, $5, 'web', $6)
+        on conflict (usuario_id) do update set novedades = excluded.novedades, aceptado_el = excluded.aceptado_el,
+          version = excluded.version, origen = excluded.origen, canal = excluded.canal, baja_el = excluded.baja_el`,
+    [u.id, prefs.novedades, prefs.aceptado_el ?? null, prefs.novedades ? VERSION : null, prefs.novedades ? 'perfil' : null, prefs.baja_el ?? null]);
+    return u;
+  };
+  const lmApuntada = await cuentaLM('Apuntada@Bajas.test', { novedades: true, aceptado_el: '2026-11-01T10:00:00Z' });
+  const lmYaDeBaja = await cuentaLM('ya.de.baja@bajas.test', { novedades: false, baja_el: '2026-11-05T10:00:00Z' });
+  const lmReapuntada = await cuentaLM('reapuntada@bajas.test', { novedades: true, aceptado_el: '2026-11-04T10:00:00Z' });
+  const lmSinConfirmar = await altaAuth('sin.confirmar@bajas.test', {});
+  const historialLM = async () => (await sesion(db), numero(db, "select count(*) from rwadar_novedades.historial_permiso where correo ilike '%@bajas.test'"));
+  const historialAntes = await historialLM();
+  const sinPreferencias = (await pref(lmSinConfirmar)) === undefined;
+  const aplicarEnPglite = async () => {
+    const r = [];
+    for (const linea of bajasEsperadas) {
+      const [correo, suprimido_el] = linea.split('\t');
+      r.push(await ejecutaPsql(SQL_BAJA, { correo, suprimido_el }));
+    }
+    return r;
+  };
+  const resultadosLM = await aplicarEnPglite();
+  const [pApuntada, pYaDeBaja, pReapuntada, pSinConfirmar] = [await pref(lmApuntada), await pref(lmYaDeBaja),
+    await pref(lmReapuntada), await pref(lmSinConfirmar)];
+  const hApuntada = await historial(lmApuntada);
+  paso('31_correo_lettermint_baja.sql, en PGlite, con la respuesta de ejemplo: aplica la baja a quien seguía apuntado con un permiso anterior (sin distinguir mayúsculas) y a quien aún no tenía preferencias; no toca a quien ya estaba de baja ni a quien se volvió a apuntar después; «sin_cuenta» si no hay cuenta',
+    bajasEsperadas.length === 5 && sinPreferencias
+    && isDeepStrictEqual(resultadosLM, ['aplicada', 'sin_cuenta', 'reapuntada', 'aplicada', 'ya_de_baja'])
+    && pApuntada.novedades === false && pApuntada.baja_el instanceof Date
+    && isDeepStrictEqual([hApuntada.at(-1)?.accion, hApuntada.at(-1)?.origen, hApuntada.at(-1)?.version], ['baja', 'correo', VERSION])
+    && pSinConfirmar?.novedades === false && pSinConfirmar.baja_el instanceof Date
+    && isDeepStrictEqual((await historial(lmSinConfirmar)).map((f) => [f.accion, f.origen, f.version]), [['baja', 'correo', null]])
+    && pReapuntada.novedades === true && pReapuntada.aceptado_el.toISOString() === '2026-11-04T10:00:00.000Z' && pReapuntada.baja_el === null
+    && pYaDeBaja.novedades === false && pYaDeBaja.baja_el.toISOString() === '2026-11-05T10:00:00.000Z'
+    && (await historial(lmYaDeBaja)).length === 0 && await historialLM() === historialAntes + 2);
+  const bajaElAntes = pApuntada.baja_el.toISOString();
+  const resultadosOtraVez = await aplicarEnPglite();
+  paso('repetir la sincronización no cambia nada: las ya aplicadas salen «ya_de_baja», sin filas nuevas en el historial ni otra fecha de baja',
+    isDeepStrictEqual(resultadosOtraVez, ['ya_de_baja', 'sin_cuenta', 'reapuntada', 'ya_de_baja', 'ya_de_baja'])
+    && await historialLM() === historialAntes + 2 && (await pref(lmApuntada)).baja_el.toISOString() === bajaElAntes);
+  const usuariosAntes = await numero(db, 'select count(*) from auth.users');
+  const inyeccion = await ejecutaPsql(SQL_BAJA, { correo: "x'); delete from auth.users; --@bajas.test", suprimido_el: '2026-11-07T08:00:00Z' });
+  const fechaMala = await error(() => ejecutaPsql(SQL_BAJA, { correo: 'apuntada@bajas.test', suprimido_el: 'ayer' }));
+  paso('el correo va como literal (una comilla no rompe nada: «sin_cuenta») y una fecha sin forma hace fallar la consulta sin tocar nada',
+    inyeccion === 'sin_cuenta' && await numero(db, 'select count(*) from auth.users') === usuariosAntes
+    && fechaMala?.code === '22007' && await historialLM() === historialAntes + 2);
+
+  // ---------------------------------------------------------- los pasos, ejecutados
+  if (hayJq) {
+    // Dobles: guardan los argumentos, la entrada estándar y el cuerpo de cada
+    // llamada, y contestan lo preparado para esa llamada. El de psql lee la
+    // entrada estándar, como haría uno de verdad que la esperase: si el paso
+    // no la cerrara (< /dev/null), se comería la lista de bajas.
+    const CURL_DOBLE = `#!/usr/bin/env bash
+set -euo pipefail
+d="$LM_DOBLE_DIR"
+n=$(cat "$d/curl-contador" 2>/dev/null || echo 0); echo $((n + 1)) > "$d/curl-contador"
+printf '%s\\0' "$@" > "$d/curl-$n.argv"
+salida=/dev/null; formato=""; leer=no
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -o) salida="$2"; shift ;;
+    -w) formato="$2"; shift ;;
+    --data-binary) cp "\${2#@}" "$d/curl-$n.data"; shift ;;
+    -H) if [ "$2" = @- ]; then leer=si; fi; shift ;;
+  esac
+  shift
+done
+if [ "$leer" = si ]; then cat > "$d/curl-$n.stdin"; else cat > /dev/null; fi
+codigo=$(cat "$d/respuesta-$n.code" 2>/dev/null || echo 000)
+if [ -f "$d/respuesta-$n.body" ]; then cp "$d/respuesta-$n.body" "$salida"; else : > "$salida"; fi
+if [ "$formato" = '%{http_code}' ]; then printf '%s' "$codigo"; fi
+if [ "$codigo" = 000 ]; then exit 7; fi
+`;
+    const PSQL_DOBLE_LM = `#!/usr/bin/env bash
+set -euo pipefail
+d="$LM_DOBLE_DIR"
+n=$(cat "$d/psql-contador" 2>/dev/null || echo 0); echo $((n + 1)) > "$d/psql-contador"
+printf '%s\\0' "$@" > "$d/psql-$n.argv"
+while [ $# -gt 0 ]; do if [ "$1" = -f ]; then cp "$2" "$d/psql-$n.sql"; fi; shift; done
+cat > /dev/null
+if [ -f "$d/psql-falla-$n" ]; then exit 2; fi
+cat "$d/psql-respuesta-$n" 2>/dev/null || true
+`;
+    const correLM = (orden, entorno = {}, { curl = [], psql = [], psqlFalla = [] } = {}) => {
+      const dir = fs.mkdtempSync(path.join(temporal, 'lm-'));
+      fs.writeFileSync(path.join(dir, 'curl'), CURL_DOBLE, { mode: 0o755 });
+      fs.writeFileSync(path.join(dir, 'psql'), PSQL_DOBLE_LM, { mode: 0o755 });
+      curl.forEach(([codigo, cuerpo], i) => {
+        fs.writeFileSync(path.join(dir, `respuesta-${i}.code`), String(codigo));
+        fs.writeFileSync(path.join(dir, `respuesta-${i}.body`), typeof cuerpo === 'string' ? cuerpo : JSON.stringify(cuerpo));
+      });
+      psql.forEach((texto, i) => fs.writeFileSync(path.join(dir, `psql-respuesta-${i}`), texto));
+      psqlFalla.forEach((i) => fs.writeFileSync(path.join(dir, `psql-falla-${i}`), ''));
+      const githubEnv = path.join(dir, 'github-env');
+      const resumen = path.join(dir, 'resumen.md');
+      fs.writeFileSync(githubEnv, '');
+      const r = spawnSync('bash', ['rwadar-app/correo-lettermint.sh', orden], { cwd: path.join(raiz, '..'), encoding: 'utf8',
+        env: { PATH: `${dir}:${process.env.PATH}`, LM_DOBLE_DIR: dir, GITHUB_ENV: githubEnv, GITHUB_STEP_SUMMARY: resumen,
+          RUNNER_TEMP: dir, ...entorno } });
+      const leerSi = (f) => (fs.existsSync(path.join(dir, f)) ? fs.readFileSync(path.join(dir, f), 'utf8') : null);
+      const llamadas = (prefijo) => fs.readdirSync(dir).filter((f) => f.startsWith(`${prefijo}-`) && f.endsWith('.argv'))
+        .map((f) => Number(f.slice(prefijo.length + 1, -5))).sort((a, b) => a - b)
+        .map((n) => ({ argv: leerSi(`${prefijo}-${n}.argv`).split('\0').slice(0, -1), stdin: leerSi(`${prefijo}-${n}.stdin`),
+          data: leerSi(`${prefijo}-${n}.data`), sql: leerSi(`${prefijo}-${n}.sql`) }));
+      const salida = Object.fromEntries(fs.readFileSync(githubEnv, 'utf8').split('\n').filter(Boolean)
+        .map((l) => [l.slice(0, l.indexOf('=')), l.slice(l.indexOf('=') + 1)]));
+      return { estado: r.status, texto: `${r.stdout}${r.stderr}`, curl: llamadas('curl'), psql: llamadas('psql'), salida, dir,
+        resumen: leerSi('resumen.md') || '' };
+    };
+
+    // Comprobar la acción.
+    const comprobarLM = (e) => correLM('comprobar', { ACCION: '', CONFIRMAR: '', DESTINATARIO: '', REMITENTE: '', EVENTO: 'workflow_dispatch', ...e });
+    const buenosLM = [
+      [{ ACCION: 'prueba-correo', CONFIRMAR: 'AVISOS', DESTINATARIO: 'victor@ejemplo.test' },
+        { ACCION: 'prueba-correo', DESTINATARIO: 'victor@ejemplo.test', REMITENTE: '' }],
+      [{ ACCION: 'prueba-correo', CONFIRMAR: 'AVISOS', DESTINATARIO: 'victor@ejemplo.test', REMITENTE: 'avisos@rwadar.example' },
+        { ACCION: 'prueba-correo', DESTINATARIO: 'victor@ejemplo.test', REMITENTE: 'avisos@rwadar.example' }],
+      [{ ACCION: 'sincronizar-bajas', CONFIRMAR: 'AVISOS' }, { ACCION: 'sincronizar-bajas' }],
+      [{ ACCION: 'sincronizar-bajas', EVENTO: 'schedule' }, { ACCION: 'sincronizar-bajas' }],
+    ];
+    const malosLM = [{ ACCION: 'prueba-correo', DESTINATARIO: 'victor@ejemplo.test' },
+      { ACCION: 'prueba-correo', CONFIRMAR: 'avisos', DESTINATARIO: 'victor@ejemplo.test' },
+      { ACCION: 'prueba-correo', CONFIRMAR: 'AVISOS' },
+      { ACCION: 'prueba-correo', CONFIRMAR: 'AVISOS', DESTINATARIO: 'Víctor <victor@ejemplo.test>' },
+      { ACCION: 'prueba-correo', CONFIRMAR: 'AVISOS', DESTINATARIO: 'victor@localhost' },
+      { ACCION: 'prueba-correo', CONFIRMAR: 'AVISOS', DESTINATARIO: 'victor@ejemplo.test\nBcc: otro@ejemplo.test' },
+      { ACCION: 'prueba-correo', CONFIRMAR: 'AVISOS', DESTINATARIO: 'victor@ejemplo.test', REMITENTE: 'avisos@rwadar.example\nX: y' },
+      { ACCION: 'prueba-correo', CONFIRMAR: 'AVISOS', DESTINATARIO: `${'a'.repeat(250)}@ejemplo.test` },
+      { ACCION: 'sincronizar-bajas' }, { ACCION: 'sincronizar-bajas', CONFIRMAR: 'avisos' },
+      { ACCION: 'prueba-correo', EVENTO: 'schedule', DESTINATARIO: 'victor@ejemplo.test' }, { ACCION: '', EVENTO: 'schedule' },
+      { ACCION: 'borrar-bajas', CONFIRMAR: 'AVISOS' }];
+    paso(`«Comprobar la acción» acepta ${buenosLM.length} entradas buenas (el horario sin AVISOS, solo para sincronizar-bajas) y deja en GITHUB_ENV solo lo necesario`,
+      buenosLM.every(([e, esperado]) => { const v = comprobarLM(e); return v.estado === 0 && isDeepStrictEqual(v.salida, esperado); }));
+    paso(`y rechaza ${malosLM.length} malas (sin AVISOS, destinatario vacío, con nombre, sin dominio, con saltos de línea o demasiado largo, prueba-correo por horario, acción desconocida) sin dejar nada en GITHUB_ENV`,
+      malosLM.every((e) => { const v = comprobarLM(e); return v.estado !== 0 && Object.keys(v.salida).length === 0; }));
+
+    // API REST cerrada para net y vault.
+    const PGRST106 = (s) => ({ code: 'PGRST106', details: null, hint: null, message: `Invalid schema: ${s}` });
+    const cabecerasH = (l) => l.argv.filter((_, i) => l.argv[i - 1] === '-H');
+    // La dirección pública de la web, leída de donde la lee el paso (aquí no
+    // se escribe: probar-app-movil-estatico.mjs lo prohíbe en los probar-*).
+    const URL_WEB = leer('../rwadar-acceso/compilar.cjs').match(/^ *SUPABASE_URL: '([^']*)',$/m)?.[1] || 'sin-direccion';
+    const rest = correLM('rest-cerrada', {}, { curl: [[406, PGRST106('net')], [406, PGRST106('vault')]] });
+    /* Se pide una tabla de cada esquema (contrato, AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md):
+       desde el 08/04/2026 Supabase cierra la raíz /rest/v1/ a las claves no secretas
+       antes de PostgREST, y allí nunca volvería PGRST106 (supabase.com/changelog/42949). */
+    const TABLAS_REST = { net: 'http_request_queue', vault: 'decrypted_secrets' };
+    paso('rest-cerrada pide net.http_request_queue y vault.decrypted_secrets (nunca la raíz /rest/v1/) con su Accept-Profile y la clave publicable de la web (solo https), acepta PGRST106 y no enseña la clave',
+      rest.estado === 0 && rest.curl.length === 2 && /^https:\/\/[a-z0-9]{20}\.supabase\.co$/.test(URL_WEB)
+      && rest.curl.every((l, i) => l.argv.at(-1) === `${URL_WEB}/rest/v1/${TABLAS_REST[['net', 'vault'][i]]}`
+        && cabecerasH(l).includes(`Accept-Profile: ${['net', 'vault'][i]}`)
+        && cabecerasH(l).some((h) => /^apikey: sb_publishable_[A-Za-z0-9_-]+$/.test(h)) && l.argv.includes('=https'))
+      && /net \(http_request_queue\): no se expone \(HTTP 406, PGRST106\)/.test(rest.texto)
+      && /vault \(decrypted_secrets\): no se expone \(HTTP 406, PGRST106\)/.test(rest.texto)
+      && !`${rest.texto}${rest.resumen}`.includes('sb_publishable_'));
+    const expuesto = correLM('rest-cerrada', {}, { curl: [[406, PGRST106('net')], [200, []]] });
+    const sinTabla = correLM('rest-cerrada', {}, { curl: [[404, { code: 'PGRST205', message: 'Could not find the table' }]] });
+    const claveMala = correLM('rest-cerrada', {}, { curl: [[401, { message: 'Invalid API key' }]] });
+    // Lo que contesta hoy la raíz /rest/v1/ a una clave publicable: sin código de PostgREST.
+    const pasarela = correLM('rest-cerrada', {}, { curl: [[403, { message: 'Access to schema is forbidden',
+      hint: 'Accessing the schema via the Data API is only allowed using a secret API key.' }]] });
+    const jwtMalo = correLM('rest-cerrada', {}, { curl: [[401, { code: 'PGRST301', message: 'JWSError' }]] });
+    const sinRedRest = correLM('rest-cerrada');
+    paso('y para con «no se manda nada» si vault responde 200 o net responde como esquema expuesto (PGRST205), si la clave no vale (401), si la pasarela corta antes (403 sin código) o si no hay red',
+      [expuesto, sinTabla, claveMala, pasarela, jwtMalo, sinRedRest].every((r) => r.estado !== 0 && /No se manda nada/.test(r.texto))
+      && /NO rechaza el esquema «vault» \(HTTP 200/.test(expuesto.texto) && /NO rechaza el esquema «net» \(HTTP 404, código «PGRST205»/.test(sinTabla.texto)
+      && /no se sabe si el esquema «net» está expuesto o no/.test(claveMala.texto) && /HTTP 401, código «ninguno»: «Invalid API key»/.test(claveMala.texto)
+      && /HTTP 403, código «ninguno»: «Access to schema is forbidden»/.test(pasarela.texto) && /no se sabe si el esquema/.test(pasarela.texto)
+      && /HTTP 401, código «PGRST301»/.test(jwtMalo.texto) && /no se sabe si el esquema/.test(jwtMalo.texto)
+      && [claveMala, pasarela, jwtMalo].every((r) => !/NO rechaza/.test(r.texto))
+      && /net\.http_request_queue \(HTTP 000/.test(sinRedRest.texto));
+
+    // Remitente de Vault: el doble de psql contesta lo que devolvió PGlite.
+    const remPsql = correLM('remitente', { SUPABASE_DB_URL: DB_DOBLE }, { psql: [`${remitenteVault}\n`] });
+    const remVacio = correLM('remitente', { SUPABASE_DB_URL: DB_DOBLE }, { psql: ['\n'] });
+    paso('el paso «Leer el remitente» llama a psql -X -q -At con ese SQL y deja en GITHUB_ENV lo que devuelve PGlite; sin remitente válido en Vault, para y dice qué hacer',
+      remPsql.estado === 0 && isDeepStrictEqual(remPsql.salida, { REMITENTE: 'avisos@rwadar.example' }) && remPsql.psql.length === 1
+      && isDeepStrictEqual(remPsql.psql[0].argv, [DB_DOBLE, '-X', '-q', '-At', '-v', 'ON_ERROR_STOP=1', '-f', RUTA_REMITENTE])
+      && remPsql.psql[0].sql === SQL_REMITENTE
+      && remVacio.estado !== 0 && /guardar-correo/.test(remVacio.texto) && Object.keys(remVacio.salida).length === 0);
+
+    // Los dos correos de prueba.
+    const ENTORNO_ENVIO = { LETTERMINT_API_TOKEN: TOKEN_LM, DESTINATARIO: 'victor@ejemplo.test', REMITENTE: 'avisos@rwadar.example' };
+    const envio = correLM('enviar-prueba', ENTORNO_ENVIO, { curl: [[202, { message_id: 'msg-servicio-0001', status: 'pending' }],
+      [202, { message_id: 'msg-difusion-0002', status: 'pending' }]] });
+    const cuerpos = envio.curl.map((l) => JSON.parse(l.data || 'null'));
+    const cabecerasStdin = envio.curl.map((l) => (l.stdin || '').split('\n').filter(Boolean));
+    const claves = cabecerasStdin.map((c) => c.find((h) => h.startsWith('Idempotency-Key: '))?.slice(17));
+    paso('enviar-prueba hace dos POST a https://api.lettermint.co/v1/send con el token y una clave idempotente distinta en cada uno por la entrada estándar (nunca en la línea de órdenes) y enseña HTTP 202 y el message_id de cada uno',
+      envio.estado === 0 && envio.curl.length === 2
+      && envio.curl.every((l) => l.argv.at(-1) === 'https://api.lettermint.co/v1/send' && l.argv.includes('POST')
+        && l.argv.includes('@-') && !l.argv.join(' ').includes(TOKEN_LM))
+      && cabecerasStdin.every((c) => c.length === 2 && c[0] === `x-lettermint-token: ${TOKEN_LM}`)
+      && claves.every((k) => /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(k || '')) && claves[0] !== claves[1]
+      && /ruta de servicio \(la de por defecto\): HTTP 202 · message_id msg-servicio-0001 · estado pending/.test(envio.texto)
+      && /ruta de difusión \(broadcast\): HTTP 202 · message_id msg-difusion-0002 · estado pending/.test(envio.texto)
+      && !`${envio.texto}${envio.resumen}`.includes(TOKEN_LM) && envio.resumen.includes('| broadcast | 202 | msg-difusion-0002 | pending |'));
+    paso('los dos correos: «RWAdar <remitente>», al destinatario, reply_to RWAdar@protonmail.com, sin seguimiento (track_opens y track_clicks en false), List-Unsubscribe con el mailto de baja, enlace sin imágenes y la dirección postal en el pie; route "broadcast" solo en el segundo',
+      cuerpos.every((c) => c && c.from === 'RWAdar <avisos@rwadar.example>' && isDeepStrictEqual(c.to, ['victor@ejemplo.test'])
+        && isDeepStrictEqual(c.reply_to, ['RWAdar@protonmail.com']) && isDeepStrictEqual(c.settings, { track_opens: false, track_clicks: false })
+        && isDeepStrictEqual(c.headers, { 'List-Unsubscribe': `<${MAILTO_BAJA}>` }) && !('tag' in c) && !('metadata' in c)
+        && !/<img|<script|utm_|pixel/i.test(c.html) && c.html.includes('href="https://rwadar.pages.dev/"')
+        && c.text.includes('https://rwadar.pages.dev/') && c.text.includes('tokenización')
+        && [c.text, c.html].every((t) => t.includes('Plaza Generalitat, s/n, 46600 Alzira (Valencia), España')))
+      && !('route' in (cuerpos[0] || {})) && cuerpos[1]?.route === 'broadcast'
+      && /ruta de servicio/.test(cuerpos[0]?.subject) && /ruta de difusión/.test(cuerpos[1]?.subject));
+    const sinToken = correLM('enviar-prueba', { ...ENTORNO_ENVIO, LETTERMINT_API_TOKEN: '' });
+    const tokenRaro = correLM('enviar-prueba', { ...ENTORNO_ENVIO, LETTERMINT_API_TOKEN: 'corto' });
+    const rutaMala = correLM('enviar-prueba', ENTORNO_ENVIO, { curl: [[202, { message_id: 'msg-servicio-0003', status: 'pending' }],
+      [422, { message: `The selected route is invalid. ${TOKEN_LM}` }]] });
+    paso('sin el secreto (o con uno sin forma de token) para claro sin llamar a Lettermint; si la ruta de difusión no existe (422), enseña los dos resultados, sugiere mirar su slug, tapa el token y falla',
+      sinToken.estado !== 0 && /Falta el secreto de GitHub LETTERMINT_API_TOKEN/.test(sinToken.texto) && sinToken.curl.length === 0
+      && tokenRaro.estado !== 0 && /no tiene forma de token/.test(tokenRaro.texto) && tokenRaro.curl.length === 0
+      && rutaMala.estado !== 0 && rutaMala.curl.length === 2 && /HTTP 202 · message_id msg-servicio-0003/.test(rutaMala.texto)
+      && /ruta de difusión \(broadcast\): HTTP 422/.test(rutaMala.texto) && /slug/.test(rutaMala.texto)
+      && /1 de 2 correos no fueron aceptados/.test(rutaMala.texto) && !rutaMala.texto.includes(TOKEN_LM) && rutaMala.texto.includes('[token]'));
+
+    // Bajas: lista de Lettermint.
+    const URL_BAJAS = 'https://api.lettermint.co/v1/suppressions?filter%5Breason%5D=unsubscribe&filter%5Bscope%5D=route&page%5Bsize%5D=100';
+    const listarLM = (curl, extra = {}) => correLM('listar-bajas', { LETTERMINT_TEAM_TOKEN: TOKEN_EQUIPO, ...extra }, { curl });
+    const CORREOS_LM = ['apuntada@', 'ya.de.baja@', 'reapuntada@', 'nadie@', 'sin.confirmar@', 'servicio@', 'bajas.test'];
+    const sinCorreos = (r) => CORREOS_LM.every((c) => !`${r.texto}${r.resumen}`.toLowerCase().includes(c));
+    const leerLista = (r) => (r.salida.BAJAS_ARCHIVO && fs.existsSync(r.salida.BAJAS_ARCHIVO) ? fs.readFileSync(r.salida.BAJAS_ARCHIVO, 'utf8') : '');
+    const lista = listarLM([[200, PAGINAS_LM[0]], [200, PAGINAS_LM[1]]]);
+    const tsv = leerLista(lista);
+    paso('listar-bajas pide GET /v1/suppressions con los filtros de «unsubscribe» y ámbito de ruta, 100 por página, el token de equipo por la entrada estándar y el cursor de la página siguiente codificado',
+      lista.estado === 0 && lista.curl.length === 2 && lista.curl[0].argv.at(-1) === URL_BAJAS
+      && lista.curl[1].argv.at(-1) === `${URL_BAJAS}&page%5Bcursor%5D=${encodeURIComponent(CURSOR_LM)}`
+      && lista.curl.every((l) => isDeepStrictEqual((l.stdin || '').split('\n').filter(Boolean), [`Authorization: Bearer ${TOKEN_EQUIPO}`])
+        && !l.argv.join(' ').includes(TOKEN_EQUIPO) && l.argv.includes('--globoff') && l.argv.includes('=https')));
+    paso('se queda solo con las bajas de rutas de difusión (ni la de la ruta de servicio ni la de un dominio), en minúsculas y sin repetidas, en un archivo temporal, y solo enseña recuentos: ningún correo en el registro',
+      tsv === bajasEsperadas.map((l) => `${l}\n`).join('')
+      && isDeepStrictEqual({ ...lista.salida, BAJAS_ARCHIVO: '-' }, { BAJAS_ARCHIVO: '-', BAJAS_LETTERMINT: '5', BAJAS_RARAS: '0' })
+      && path.dirname(lista.salida.BAJAS_ARCHIVO) === lista.dir
+      && /Lettermint: 5 bajas \(«unsubscribe»\) en rutas de difusión \(2 página\(s\)\); 2 supresiones de otro tipo no se tocan\./.test(lista.texto)
+      && sinCorreos(lista));
+    const vacia = listarLM([[200, paginador([], null)]]);
+    paso('sin ninguna baja en Lettermint, BAJAS_LETTERMINT = 0: el flujo ni instala psql ni toca la base',
+      vacia.estado === 0 && vacia.salida.BAJAS_LETTERMINT === '0' && vacia.salida.BAJAS_RARAS === '0' && leerLista(vacia) === '');
+    const sinEquipo = listarLM([], { LETTERMINT_TEAM_TOKEN: '' });
+    const r401 = listarLM([[401, { message: 'Unauthenticated.' }]]);
+    const r403 = listarLM([[403, { message: 'This action is unauthorized.' }]]);
+    const rForma = listarLM([[200, { mensaje: 'otra cosa' }]]);
+    paso('sin token de equipo para claro (el de proyecto no sirve) sin llamar a Lettermint; un 401, un 403 o una respuesta con otra forma paran sin dejar lista ni nada en GITHUB_ENV',
+      sinEquipo.estado !== 0 && /LETTERMINT_TEAM_TOKEN/.test(sinEquipo.texto) && /DE EQUIPO/.test(sinEquipo.texto) && sinEquipo.curl.length === 0
+      && r401.estado !== 0 && /HTTP 401/.test(r401.texto)
+      && r403.estado !== 0 && /permiso para leer las supresiones \(HTTP 403\)/.test(r403.texto)
+      && rForma.estado !== 0 && /forma inesperada/.test(rForma.texto)
+      && [sinEquipo, r401, r403, rForma].every((r) => Object.keys(r.salida).length === 0
+        && !fs.readdirSync(r.dir).some((f) => f.startsWith('rwadar-bajas.') || f.startsWith('rwadar-lista.'))));
+    const RARAS = [supresion('r1', 'Nombre <otra@bajas.test>', '2026-11-07T08:00:00Z'), supresion('r2', 'fecha.rara@bajas.test', 'ayer')];
+    const soloRaras = listarLM([[200, paginador(RARAS, null)]]);
+    const mezcla = listarLM([[200, paginador([...RARAS, PAGINAS_LM[1].data[0]], null)]]);
+    paso('una baja sin forma de correo o de fecha no se aplica sola: si no hay ninguna buena, para y pide revisarla a mano; si hay alguna buena, deja que se apliquen',
+      soloRaras.estado !== 0 && /2 bajas de Lettermint no tienen forma/.test(soloRaras.texto)
+      && soloRaras.salida.BAJAS_RARAS === '2' && soloRaras.salida.BAJAS_LETTERMINT === '0'
+      && mezcla.estado === 0 && mezcla.salida.BAJAS_RARAS === '2' && mezcla.salida.BAJAS_LETTERMINT === '1'
+      && sinCorreos(soloRaras) && sinCorreos(mezcla));
+
+    // Bajas: aplicarlas. El doble de psql contesta, en el mismo orden, lo que
+    // devolvió el SQL en PGlite con las mismas variables (resultadosLM).
+    const aplicar = correLM('aplicar-bajas', { SUPABASE_DB_URL: DB_DOBLE, BAJAS_ARCHIVO: lista.salida.BAJAS_ARCHIVO, BAJAS_RARAS: '0' },
+      { psql: resultadosLM.map((r) => `${r}\n`) });
+    paso('aplicar-bajas: un psql por baja (-X -q -At, -v correo y -v suprimido_el, el SQL de la 31) en el orden de la lista, con la entrada estándar cerrada (si no, el psql se comería la lista); cuenta lo que devolvió la base en PGlite, no enseña ningún correo y borra la lista',
+      aplicar.estado === 0 && aplicar.psql.length === 5
+      && aplicar.psql.every((l, i) => isDeepStrictEqual(l.argv, [DB_DOBLE, '-X', '-q', '-At', '-v', 'ON_ERROR_STOP=1',
+        '-v', `correo=${bajasEsperadas[i].split('\t')[0]}`, '-v', `suprimido_el=${bajasEsperadas[i].split('\t')[1]}`, '-f', RUTA_BAJA])
+        && l.sql === SQL_BAJA)
+      && /\(de 5\): 2 aplicadas ahora · 1 ya estaban de baja · 1 apuntadas otra vez después \(no se tocan\) · 1 sin cuenta en RWAdar\./.test(aplicar.texto)
+      && /1 se apuntaron de nuevo en RWAdar después/.test(aplicar.texto)
+      && sinCorreos(aplicar) && !fs.existsSync(lista.salida.BAJAS_ARCHIVO));
+    const lista2 = listarLM([[200, PAGINAS_LM[0]], [200, PAGINAS_LM[1]]]);
+    const fallo = correLM('aplicar-bajas', { SUPABASE_DB_URL: DB_DOBLE, BAJAS_ARCHIVO: lista2.salida.BAJAS_ARCHIVO, BAJAS_RARAS: '0' },
+      { psql: ['aplicada\n'], psqlFalla: [1] });
+    const conRaras = correLM('aplicar-bajas', { SUPABASE_DB_URL: DB_DOBLE, BAJAS_ARCHIVO: mezcla.salida.BAJAS_ARCHIVO, BAJAS_RARAS: '2' },
+      { psql: ['sin_cuenta\n'] });
+    const lista3 = listarLM([[200, PAGINAS_LM[1]]]);
+    const respuestaRara = correLM('aplicar-bajas', { SUPABASE_DB_URL: DB_DOBLE, BAJAS_ARCHIVO: lista3.salida.BAJAS_ARCHIVO, BAJAS_RARAS: '0' },
+      { psql: ['borrada\n'] });
+    paso('si psql falla a mitad, para en esa baja (las anteriores quedan) y dice que repetir es seguro; con bajas raras, aplica las buenas y después falla pidiendo revisarlas; una respuesta desconocida de la base para',
+      fallo.estado !== 0 && fallo.psql.length === 2 && /Falló psql en la baja 2 de 5/.test(fallo.texto) && /repite la acción/.test(fallo.texto)
+      && conRaras.estado !== 0 && conRaras.psql.length === 1
+      && /\(de 1\): 0 aplicadas ahora · 0 ya estaban de baja · 0 apuntadas otra vez después \(no se tocan\) · 1 sin cuenta/.test(conRaras.texto)
+      && /2 bajas de Lettermint no tienen forma/.test(conRaras.texto)
+      && respuestaRara.estado !== 0 && /Respuesta inesperada de la base en la baja 1 de 3/.test(respuestaRara.texto)
+      && [fallo, conRaras, respuestaRara].every(sinCorreos));
+    const ajeno = path.join(temporal, 'no-es-una-lista');
+    fs.writeFileSync(ajeno, 'x');
+    const limpio = correLM('limpiar', { BAJAS_ARCHIVO: lista2.salida.BAJAS_ARCHIVO, RUNNER_TEMP: lista2.dir });
+    const noAjeno = correLM('limpiar', { BAJAS_ARCHIVO: ajeno });
+    paso('el último paso borra la lista temporal de bajas (también si un paso anterior falló) y nada que no sea suya',
+      fs.existsSync(path.join(lista2.dir, path.basename(lista2.salida.BAJAS_ARCHIVO))) === false
+      && limpio.estado === 0 && noAjeno.estado === 0 && fs.existsSync(ajeno));
+  } else {
+    console.log('  (sin bash o sin jq en este equipo: los pasos de «Correo Lettermint» se comprueban en CI)');
+  }
+
+  // Vault como estaba.
+  await sesion(db);
+  await db.exec("delete from vault.decrypted_secrets where name = 'RWADAR_REMITENTE'");
+  for (const { v } of remitentesAntes) await db.query("insert into vault.decrypted_secrets(name, decrypted_secret) values ('RWADAR_REMITENTE', $1)", [v]);
+}
+
 } catch (e) {
   fail.push(`ERROR INESPERADO tras «${ok.at(-1) || 'el inicio'}»: ${e?.message}${e?.where ? ` (${e.where})` : ''}`);
 } finally {

@@ -26,7 +26,7 @@ test('el artefacto sirve lectura pública de exportaciones y páginas generadas'
   assert.equal(publico.status, 200);
   assert.match(publico.headers.get('content-security-policy'), /frame-ancestors 'none'/);
   assert.equal(servidos, 5);
-  assert.deepEqual(RUTAS, { version: 1, include: ['/*'], exclude: [] });
+  assert.deepEqual(RUTAS, { version: 1, include: ['/*'], exclude: ['/assets/*'] });
 });
 
 test('la compilación es determinista y no acepta un servidor con dependencias nuevas', () => {
@@ -294,4 +294,134 @@ test('una plataforma que cambia de carpeta redirige con 301 a la ficha que sí e
   const { env } = assetsDePrueba();
   const post = await worker.fetch(new Request(BASE_WEB + '/plataformas/movida', { method: 'POST' }), env, CTX);
   assert.notEqual(post.status, 301, 'solo GET y HEAD');
+});
+
+/* _routes.json (07/11/2026): /assets/ sale del worker para no gastar el cupo
+   gratis de Pages Functions en hojas, scripts, fuentes e imágenes del mapa.
+   Cloudflare compara cada regla con la ruta; «*» vale cualquier cosa, también
+   barras. Se comprueba con dos lecturas del comodín: la de wrangler en local
+   («/x/*» también vale «/x») y la literal («*» → «.*»). Con las dos, lo que el
+   worker controla tiene que seguir dentro. */
+const SITIO = path.join(AQUI, '..', 'rwadar-site');
+function reglaWrangler(regla) {
+  let r;
+  if (regla === '/' || regla === '/*') r = regla;
+  else if (regla.endsWith('/*')) r = regla.slice(0, -2) + '(/*)?';
+  else if (regla.endsWith('/')) r = regla.slice(0, -1) + '(/)?';
+  else if (regla.endsWith('*')) r = regla;
+  else r = regla + '(/)?';
+  return new RegExp('^' + r.replaceAll('.', '\\.').replaceAll('*', '.*') + '$');
+}
+const reglaLiteral = regla => new RegExp('^' + regla.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replaceAll('*', '.*') + '$');
+function pasaPorWorker(ruta, rutas = RUTAS, regla = reglaWrangler) {
+  return rutas.include.some(r => regla(r).test(ruta)) && !rutas.exclude.some(r => regla(r).test(ruta));
+}
+function archivosDe(carpeta, base = carpeta) {
+  return fs.readdirSync(carpeta, { withFileTypes: true }).flatMap(e => e.isDirectory()
+    ? archivosDe(path.join(carpeta, e.name), base) : [path.relative(base, path.join(carpeta, e.name)).split(path.sep).join('/')]);
+}
+
+test('_routes.json generado es válido y respeta los límites de Cloudflare', () => {
+  const { comprobarRutas, LIMITES_RUTAS } = require('./compilar.cjs');
+  const generado = JSON.parse(JSON.stringify(RUTAS) + '\n');
+  assert.deepEqual(generado, { version: 1, include: ['/*'], exclude: ['/assets/*'] });
+  assert.deepEqual(LIMITES_RUTAS, { reglas: 100, caracteres: 100 });
+  const reglas = [...generado.include, ...generado.exclude];
+  assert.ok(generado.include.length >= 1 && reglas.length <= 100 && reglas.every(r => r.startsWith('/') && r.length <= 100));
+  assert.doesNotThrow(() => comprobarRutas(generado));
+  assert.ok(Object.isFrozen(RUTAS) && Object.isFrozen(RUTAS.exclude), 'nadie puede cambiar RUTAS después de comprobarla');
+  const malas = [
+    { version: 2, include: ['/*'], exclude: [] },
+    { version: 1, include: [], exclude: [] },
+    { version: 1, include: ['/*'] },
+    { version: 1, include: ['/*'], exclude: [], extra: true },
+    { version: 1, include: ['/*', '/*'], exclude: [] },
+    { version: 1, include: ['/academy/*'], exclude: [] },
+    { version: 1, include: ['/*'], exclude: ['/' + 'a'.repeat(100)] },
+    { version: 1, include: ['/*'], exclude: Array.from({ length: 100 }, (_, i) => '/assets/' + i + '.js') },
+    { version: 1, include: ['/*'], exclude: ['assets/*'] },
+  ];
+  for (const exclusion of ['/academy/*', '/academy*', '/api/*', '/api/acceso/*', '/*', '/*.html', '/', '/ofertas/*',
+    '/plataformas/*', '/ofertas-editoriales/*', '/sw.js', '/assets', '/assets/x.js', '/assets*', '/assets/*.html', '/assets/ *'
+  ]) malas.push({ version: 1, include: ['/*'], exclude: [exclusion] });
+  for (const rutas of malas) assert.throws(() => comprobarRutas(rutas), /_routes\.json/, JSON.stringify(rutas));
+});
+
+test('/academy/*, /api/*, el HTML y lo que el worker controla siguen pasando por el worker; /assets/ queda fuera', () => {
+  const { fichasPublicadas, academyPublicada } = require('./compilar.cjs');
+  const { lecciones, pendientes } = academyPublicada();
+  const dentro = ['/', '/index.html', '/acceso', '/acceso.html', '/baja', '/cambios', '/metodologia', '/privacidad',
+    '/transparencia-comercial', '/para-empresas', '/404', '/404.html', '/sw.js', '/manifest.webmanifest', '/icono-192.png',
+    '/og.png', '/robots.txt', '/sitemap.xml', '/novedades.xml', '/rwadar.csv', '/.well-known/security.txt', '/android',
+    '/academy', '/academy/', '/academy/x', '/academy/index', '/academy/assets/x.js', '/academy/x/assets/y.css',
+    '/api', '/api/', '/api/x', '/api/assets/x.js', '/api/acceso/sesion', '/api/acceso/entrar', '/api/acceso/datos',
+    '/api/acceso/cartera', '/api/acceso/baja', '/api/acceso/tutorial', '/api/acceso/tutorial-continuar.js',
+    '/api/acceso/catalogo/plataformas', '/ofertas/', '/plataformas/', '/fuera-del-radar/', '/ofertas/retirada',
+    '/plataformas/retirada.webp', '/ofertas-editoriales/oferta-retirada.webp', '/assetsx/a.js', '/ASSETS/a.js',
+    '/Assets/a.js', '//assets/a.js', '/x/assets/a.js',
+    ...[...lecciones, ...pendientes].flatMap(slug => ['/academy/' + slug, '/academy/' + slug + '.html', '/academy/' + slug + '/']),
+    ...fichasPublicadas().flatMap(ruta => ['/' + ruta, '/' + ruta.replace(/\.html$/, ''), '/' + ruta.replace(/\.html$/, '.webp')]),
+  ];
+  const fuera = ['/assets/', '/assets/x.js', '/assets/rwadar-20260820.0123456789ab.js', '/assets/rwadar-20260820.0123456789ab.css',
+    '/assets/fuentes/geist-normal-6ab67a4f11f1.woff2', '/assets/images/layers.png', '/assets/mapa-ubicaciones-20261027.json',
+    '/assets/vendor/leaflet-1.9.4/license.txt'];
+  for (const regla of [reglaWrangler, reglaLiteral]) {
+    for (const ruta of dentro) assert.equal(pasaPorWorker(ruta, RUTAS, regla), true, `${ruta} tiene que pasar por el worker`);
+    for (const ruta of fuera) assert.equal(pasaPorWorker(ruta, RUTAS, regla), false, `${ruta} tiene que quedar fuera`);
+  }
+  // Con el sitio real: todo lo que queda fuera está en assets/ y no es HTML;
+  // todo lo de la raíz y de las demás carpetas (HTML, fichas, imágenes de las
+  // fichas, Academy, sw.js, iconos) sigue dentro.
+  const archivos = archivosDe(SITIO).filter(n => !['_headers', '_redirects'].includes(n));
+  const excluidos = archivos.filter(n => !pasaPorWorker('/' + n));
+  assert.ok(excluidos.length >= 30, `assets fuera del worker: ${excluidos.length}`);
+  assert.deepEqual(excluidos.filter(n => !n.startsWith('assets/') || /\.html?$/i.test(n)), []);
+  assert.deepEqual(archivos.filter(n => n.startsWith('assets/') && pasaPorWorker('/' + n)), []);
+  for (const n of archivos.filter(n => n.endsWith('.html'))) {
+    assert.ok(pasaPorWorker('/' + n) && pasaPorWorker('/' + n.replace(/(?:index)?\.html$/, '')), n);
+  }
+});
+
+test('en /assets/ el worker solo añade las cabeceras de seguridad, y _headers ya las pone', async () => {
+  const { CABECERAS_SEGURIDAD } = require('./compilar.cjs');
+  const worker = await compilar(['ofertas/viva.html'], 'assets-fuera');
+  const muestras = [];
+  for (const extension of ['css', 'js', 'woff2', 'png', 'json', 'txt']) {
+    const n = archivosDe(path.join(SITIO, 'assets')).find(a => a.endsWith('.' + extension));
+    assert.ok(n, 'falta un .' + extension + ' en assets/');
+    muestras.push('/assets/' + n);
+  }
+  // 1. Con el worker delante: misma respuesta de ASSETS, cabeceras de seguridad encima.
+  const propias = { 'Content-Type': 'text/css; charset=utf-8', 'Cache-Control': 'public, max-age=31536000, immutable',
+    'ETag': '"x"', 'CF-Cache-Status': 'HIT', 'X-Robots-Tag': 'noindex', 'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Content-Security-Policy': "default-src 'self'" };
+  for (const ruta of muestras) {
+    for (const method of ['GET', 'HEAD']) {
+      const pedidas = [];
+      const env = { ASSETS: { fetch: async req => { pedidas.push(req.method + ' ' + new URL(req.url).pathname);
+        return new Response(req.method === 'HEAD' ? null : 'contenido', { status: 200, headers: propias }); } } };
+      const r = await worker.fetch(new Request(BASE_WEB + ruta, { method }), env, CTX);
+      assert.equal(r.status, 200, ruta);
+      assert.equal(await r.text(), method === 'HEAD' ? '' : 'contenido', ruta);
+      assert.deepEqual(pedidas, [method + ' ' + ruta], ruta);
+      const esperadas = new Headers(propias);
+      for (const [nombre, valor] of Object.entries(CABECERAS_SEGURIDAD)) {
+        if (nombre !== 'Content-Security-Policy' || !esperadas.has(nombre)) esperadas.set(nombre, valor);
+      }
+      assert.deepEqual(Object.fromEntries(r.headers), Object.fromEntries(esperadas), `${method} ${ruta}: el worker no añade nada más`);
+    }
+  }
+  // 2. Sin el worker (como en Pages tras el cambio): lo que pone _headers.
+  const { crearAssetsLocales } = await import('./probar-worker-local.mjs');
+  const assets = crearAssetsLocales(SITIO);
+  /* Sin diferencias admitidas: si el worker cambia o endurece una cabecera,
+     /assets/ (que ya no pasa por él) no puede quedarse atrás sin que esto falle. */
+  for (const ruta of muestras) {
+    const r = await assets.fetch(new Request(BASE_WEB + ruta));
+    assert.equal(r.status, 200, ruta);
+    assert.equal(r.headers.get('cache-control'), 'public, max-age=31536000, immutable', ruta);
+    for (const [nombre, valor] of Object.entries(CABECERAS_SEGURIDAD)) {
+      assert.equal(r.headers.get(nombre), valor, `${ruta}: ${nombre} de _headers no es la que pone el worker`);
+    }
+  }
 });

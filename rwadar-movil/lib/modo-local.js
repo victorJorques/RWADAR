@@ -31,6 +31,17 @@ export const CORREO_AUTH_E2E = true;
    puesta. No toca SERVICIOS_USUARIO_REMOTOS ni pushDeliveryEnabled. */
 export const AVISOS_NOVEDADES_REMOTOS = false;
 
+/* Bandeja de avisos sin correo ni push (07/11/2026). Interruptor aparte del
+   anterior: encendido, Inicio enseña SOLO la tarjeta «Avisos» con los avisos
+   recibidos, que la base ya da a cualquier cuenta confirmada (la bienvenida y
+   los anuncios publicados, rpc mis_avisos_recientes de db/30). No enseña la
+   casilla del alta ni Perfil › Avisos, no pide ni guarda ningún permiso, no
+   envía correo ni toca el push. Qué avisos has leído se guarda solo en el
+   móvil. Es solo JS: llega por OTA a la 1.4.2. Con AVISOS_NOVEDADES_REMOTOS
+   encendido no hace nada (esos avisos ya traen la tarjeta). Se enciende a la
+   vez que el de la web (assets/rwadar-20260820.js), con orden de Víctor. */
+export const AVISOS_BANDEJA_REMOTA = false;
+
 export function modoLocalActivo() {
   return MODO_LOCAL === true;
 }

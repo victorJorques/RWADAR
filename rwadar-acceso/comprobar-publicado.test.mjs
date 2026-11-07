@@ -64,6 +64,10 @@ test('el comprobador de la web publicada pasa contra el worker compilado, sin re
     'una lección pedida sin sesión fuera de una página da 401 sin guardarse: 401',
     'una cookie inventada no abre la lección ni se borra: 303',
     'una ruta de la Academy con %2F da 400: 400',
+    // Rutas con «..» mandadas tal cual (como curl --path-as-is), por /assets/, que no pasa por el worker.
+    ...['/assets/..', '/assets/%2e%2e', '/assets/.%2e'].map(p => `${p}${LECCION} (ruta tal cual) no abre la lección: 303`),
+    `/assets/%2E%2E${LECCION}.html (ruta tal cual) no abre la lección: 303`,
+    `/assets/..%2f${LECCION.slice(1)} (ruta tal cual) no abre la lección: 404`,
     'una lección que no existe da el 404 del worker sin mirar la sesión: 404',
     'las lecciones y fichas usan sus hojas, scripts y cuatro recursos de idioma con huella',
     // Desde el 06/11/2026 las nueve están publicadas: ninguna «Próximamente».

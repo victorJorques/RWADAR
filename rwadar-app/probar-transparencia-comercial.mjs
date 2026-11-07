@@ -60,11 +60,16 @@ paso('obliga a identificar el patrocinio de forma visible',
   && cliente.includes("e.pat?' sponsored':'"));
 
 paso('la tarjeta abre una ficha identificada y los enlaces externos conservan el proveedor en el detalle',
-  cliente.includes("Ver oferta en '+escHtml(e.pl)")
-  && cliente.includes('data-oferta-detalle=')
+  cliente.includes('data-oferta-detalle=')
   && cliente.includes('>Ver ficha ')
-  // El enlace final dice «Ver oferta en <proveedor> ↗», como la página aparte (NOTAS 3 del coordinador, 04/11/2026).
-  && cliente.includes("(secundario?'Ficha oficial':'Ver oferta en '+o.plataformaNombre)+': '+o.titulo")
+  // El enlace final dice «Ver oferta en <proveedor> ↗», como la página aparte (NOTAS 3 del coordinador, 04/11/2026),
+  // solo si «Se contrata hoy desde España» y «supervisada» están en «Sí»; si no, que sales de RWAdar
+  // (revisión legal 06/11/2026, 5.3). La etiqueta accesible lleva siempre el título de la oferta.
+  && cliente.includes("const verOferta=comprobacionesOferta(o,resumen).some(c=>c.id==='contratable'&&c.cumple===true)&&!!supervisada&&supervisada.cumple===true;")
+  && cliente.includes("const textoFicha=secundario?'Ficha oficial':verOferta?'Ver oferta en '+o.plataformaNombre:SALIR_AL_PROVEEDOR;")
+  && cliente.includes("enlace(urlFicha,textoFicha,textoFicha+': '+o.titulo)")
+  // La tarjeta antigua no tiene la comprobación de supervisión: nunca dice «Ver oferta en».
+  && !cliente.includes("'Ver oferta en '+escHtml(e.pl)")
   && cliente.includes("o.patrocinada?' sponsored':''"));
 
 paso('la página no activa el modelo porcentual 3–5 %',

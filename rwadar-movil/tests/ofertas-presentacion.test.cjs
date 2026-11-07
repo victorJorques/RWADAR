@@ -67,7 +67,7 @@ function componentes(ahora = AHORA, opciones = {}) {
     '../lib/verificacion-local': verificacion,
     '../lib/ficha-editorial': require('../lib/ficha-editorial'),
     // La transparencia de la web (03/11/2026): puntos fuertes y forma corta.
-    '../lib/transparencia': transparencia,
+    '../lib/transparencia': opciones.transparencia || transparencia,
     '../lib/tema': { C: {}, COLOR_CATEGORIA: {}, F: { media: 'Media', semi: 'Semi' }, R: {}, T: {}, UI: { tactil: 44, boton: 48 }, iniciales: () => 'PR' },
     './Navegacion': { Icono: 'Icono' },
     './useTransicionFicha': { default: (_visible, cerrar) => ({ cerrar, estilo: {} }), __esModule: true },
@@ -407,7 +407,8 @@ test('el detalle muestra las cuatro condiciones antes de la explicación larga y
   const detalle = ui.DetalleOferta({ oferta, plataforma });
   const texto = textoVisible(detalle);
   const esencial = texto.indexOf('Mínimo'), riesgo = texto.indexOf('Puedes perder parte o todo');
-  const enlace = texto.indexOf('Ver oferta en');
+  // disponibleEs null: no consta que se contrate desde España (revisión legal 5.3).
+  const enlace = texto.indexOf('Ir a la web del proveedor (sales de RWAdar)');
   assert.ok(esencial >= 0 && esencial < riesgo && riesgo < enlace);
   for (const condicion of ['Mínimo en euros', 'Desde España', 'Costes']) {
     assert.ok(texto.indexOf(condicion) > enlace && texto.indexOf(condicion) < texto.indexOf(oferta.documentacion.descripcion), condicion);
@@ -425,8 +426,49 @@ test('registrar inversión es una acción manual secundaria y mantiene una sola 
   assert.equal(registros, 0, 'abrir la ficha no registra una inversión');
   registrar.props.onPress(); assert.equal(registros, 1);
   const principales = nodos(detalle).filter(n => n.props?.accessibilityRole === 'link'
-    && n.props.accessibilityLabel?.startsWith('Ver oferta en '));
+    && n.props.accessibilityLabel?.startsWith('Ir a la web del proveedor (sales de RWAdar): '));
   assert.equal(principales.length, 1);
+});
+
+// Revisión legal 06/11/2026, punto 5.3: «Ver oferta en X» solo con «Se contrata hoy
+// desde España» y «supervisada» en «Sí»; si no, el botón dice que sales de RWAdar.
+// Y «Datos comprobados a favor».
+test('revisión legal 5.3: el botón al proveedor depende de si se contrata hoy desde España y de si la entidad está supervisada', () => {
+  // La comprobación «supervisada» sale de transparencia.json; aquí, una tabla de prueba para el slug de dato().
+  const supervision = (cumple) => ({ verificadaEl: '2026-09-30', anadidaEl: '2026-09-30', puntos: [],
+    supervisada: { cumple, motivo: cumple ? 'Inscrita en la CNMV (prueba).' : 'No figura en ningún registro (prueba).',
+      fuente: { titulo: 'Registro de prueba', url: FUENTE }, consultadaEl: '2026-09-30' },
+    documentoEspana: { cumple: false, motivo: 'Sin KID (prueba).', fuente: { titulo: 'Prueba', url: FUENTE }, consultadaEl: '2026-09-30' } });
+  const conTabla = (tabla) => componentes(AHORA, { transparencia: { ...transparencia,
+    comprobacionesOferta: (o, r, op = {}) => transparencia.comprobacionesOferta(o, r, { ...op, tabla }) } });
+  const ui = conTabla({ 'fondo-presentacion': supervision(true) });
+  const uiNoSupervisada = conTabla({ 'fondo-presentacion': supervision(false) });
+  const acceso = { etiqueta: 'Acceso desde España', valor: 'Disponible para residentes en España',
+    fechaDato: '2026-09-30', fechaConsulta: '2026-09-30', fuente: FUENTE, alcance: 'Acceso documentado para residentes en España.' };
+  const base = dato();
+  const contratable = dato({ disponibleEs: true,
+    documentacion: { ...base.documentacion, referencias: [...base.documentacion.referencias, acceso] } });
+  const enlaces = (oferta, conUi = ui) => nodos(conUi.DetalleOferta({ oferta })).filter((n) => n.tipo === 'Pressable'
+    && n.props?.accessibilityRole === 'link' && /^(?:Ver oferta en |Ir a la web del proveedor|Abrir mercado)/.test(n.props.accessibilityLabel || ''));
+  const si = enlaces(contratable), no = enlaces(dato()), fuera = enlaces(dato({ disponibleEs: false }));
+  // Se contrata desde España, pero la entidad no consta supervisada (como Aktionariat o Prosegur Digital Gold).
+  const sinSupervision = enlaces(contratable, uiNoSupervisada);
+  // Sin entrada en transparencia.json para esa revisión: no consta supervisada (falla cerrado).
+  const sinComprobar = enlaces(contratable, componentes());
+  assert.equal(si.length, 1); assert.equal(no.length, 1); assert.equal(fuera.length, 1);
+  assert.equal(sinSupervision.length, 1); assert.equal(sinComprobar.length, 1);
+  assert.match(si[0].props.accessibilityLabel, /^Ver oferta en Proveedor: /);
+  assert.match(textoVisible(si[0]), /Ver oferta en\s*Proveedor\s*↗/);
+  for (const enlace of [no[0], fuera[0], sinSupervision[0], sinComprobar[0]]) {
+    assert.match(enlace.props.accessibilityLabel, /^Ir a la web del proveedor \(sales de RWAdar\): /);
+    assert.equal(textoVisible(enlace).replace(/\s+/g, ' ').trim(), 'Ir a la web del proveedor (sales de RWAdar) ↗');
+  }
+  // Con la revisión caducada tampoco se afirma que se contrate hoy.
+  const caducada = enlaces(dato({ ...contratable, verificadaEl: '2026-09-01' }));
+  assert.match(caducada[0].props.accessibilityLabel, /^Ir a la web del proveedor \(sales de RWAdar\): /);
+  const componente = fs.readFileSync(path.join(RAIZ, 'componentes', 'Ofertas.js'), 'utf8');
+  assert.doesNotMatch(componente, /Puntos fuertes, con su fuente/);
+  assert.match(componente, />Datos comprobados a favor, con su fuente</);
 });
 
 test('agrupar repetidas mantiene todas las referencias y la búsqueda permite abrir una coincidencia exacta', () => {
@@ -572,7 +614,8 @@ test('detalle conserva documentación, importes históricos contextualizados, ri
     'No son precios actuales', '28/09/2026', '30/09/2026', oferta.documentacion.referencias[0].alcance,
     'La inversión puede perder valor.', '999 EUR', oferta.rentabilidad.literal, 'no recibe ni custodia']) assert.ok(visible.includes(esperado), esperado);
   assert.ok(!visible.includes(FUENTE));
-  assert.match(visible, /Ver oferta en\s*Proveedor/);
+  assert.match(visible, /Ir a la web del proveedor \(sales de RWAdar\)\s*↗/);
+  assert.doesNotMatch(visible, /Ver oferta en/);
   assert.doesNotMatch(visible, /Ver fuente 1 ·/);
   const enlaces = nodos(detalle).filter(nodo => nodo.tipo === 'Pressable' && nodo.props.accessibilityLabel?.includes(FUENTE));
   assert.equal(enlaces.length, 1, 'cada destino tiene una sola acción, sin repetir el CTA principal en las referencias');

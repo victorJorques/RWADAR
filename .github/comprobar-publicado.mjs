@@ -38,6 +38,8 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
+import http from 'node:http';
+import https from 'node:https';
 import path from 'node:path';
 
 const require = createRequire(import.meta.url);
@@ -74,6 +76,21 @@ const pedir = async (ruta, opciones = {}) => {
   const texto = opciones.method === 'HEAD' ? '' : await respuesta.text();
   return { estado: respuesta.status, cabeceras: respuesta.headers, texto };
 };
+/* Como `curl --path-as-is`: manda la ruta tal cual, sin resolver «..» ni
+   «%2e%2e» (fetch y new URL los resuelven antes de enviar). Sirve para ver qué
+   hace Cloudflare con ellas antes de decidir si pasan por el worker. */
+const pedirCruda = (ruta, cabeceras = {}) => new Promise((resolver, rechazar) => {
+  const destino = new URL(base);
+  const peticion = (destino.protocol === 'https:' ? https : http).request({ host: destino.hostname, port: destino.port || undefined,
+    method: 'GET', path: ruta, headers: { Host: destino.host, ...cabeceras } }, respuesta => {
+    const trozos = [];
+    respuesta.on('data', trozo => trozos.push(trozo));
+    respuesta.on('end', () => resolver({ estado: respuesta.statusCode, texto: Buffer.concat(trozos).toString('utf8') }));
+  });
+  peticion.setTimeout(30000, () => peticion.destroy(new Error('sin respuesta en 30 s')));
+  peticion.on('error', rechazar);
+  peticion.end();
+});
 /* La marca «noindex, nofollow» + no-store solo la pone el 404 del worker (el
    404 propio de Pages no lleva x-robots-tag): así la comprobación demuestra que
    la lista cerrada está activa, y no depende de si el centro de datos que
@@ -183,6 +200,16 @@ if (conCuenta) {
   ok(`una cookie inventada no abre la lección ni se borra: ${inventada.estado}`, mandaAEntrar(inventada, primera));
   const barra = await pedir('/academy/a%2Fb', { headers: { Accept: 'text/html' } });
   ok(`una ruta de la Academy con %2F da 400: ${barra.estado}`, barra.estado === 400);
+  /* /assets/* no pasa por el worker (_routes.json, 07/11/2026). Una lección
+     pedida «a través» de /assets/ con «..» no puede saltarse la puerta: tiene
+     que redirigir, dar 400 o 404, nunca 200 ni el contenido de la lección. */
+  for (const ruta of [`/assets/../academy/${primera}`, `/assets/%2e%2e/academy/${primera}`, `/assets/.%2e/academy/${primera}`,
+    `/assets/%2E%2E/academy/${primera}.html`, `/assets/..%2facademy/${primera}`]) {
+    let cruda;
+    try { cruda = await pedirCruda(ruta, { Accept: 'text/html' }); } catch (error) { cruda = { estado: 'error: ' + error.message, texto: '' }; }
+    ok(`${ruta} (ruta tal cual) no abre la lección: ${cruda.estado}`, [301, 302, 303, 307, 308, 400, 404].includes(cruda.estado) &&
+      !cruda.texto.includes(`data-academy-leccion="${primera}"`));
+  }
   const falsa = await pedir('/academy/rwadar-comprobacion-leccion-inexistente', { headers: { Accept: 'text/html' } });
   ok(`una lección que no existe da el 404 del worker sin mirar la sesión: ${falsa.estado}`, noEncontradaDelWorker(falsa));
 } else {

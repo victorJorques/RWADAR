@@ -1,19 +1,16 @@
 # RWAdar · cómo está el proyecto
 
-**Material promocional local del 28 de octubre:** tras el rechazo del corte
-de veintiséis segundos, hay una nueva propuesta de veintiocho, inspirada en
-la referencia visual que aportó Víctor. Incluye rodaje real nuevo con la app
-integrada en la pantalla del móvil, un recorrido espacial por funciones,
-una oferta de Casa de Outeiro y la portada web actual. La música es distinta
-y no hay locución. Las capturas proceden del código real en navegador,
-sin cambios del producto; no son una prueba del APK. Entrega local sin
-publicar, pendiente de valoración creativa.
-[Vídeo y comprobaciones](VERIFICACION-ANUNCIO-DESCUBRE-2026-10-28.md).
-Los anuncios anteriores rechazados se conservan como historial.
-
-*Actualizado el 6 de noviembre de 2026.* Si solo vas a leer un documento, que sea
-este. El detalle técnico con todas las pruebas del 30 de septiembre está en
+*Actualizado el 7 de noviembre de 2026.* Si solo vas a leer un documento, que
+sea este. Lo que hizo cada sesión, con sus pruebas, está en
+[`tareas/PARA-CODEX.md`](tareas/PARA-CODEX.md). El detalle técnico antiguo está
+en los informes con fecha y en
 [`archive/2026-09/INTERNO-detalle-2026-09-30.md`](archive/2026-09/INTERNO-detalle-2026-09-30.md).
+
+> **El catálogo publicado vale hasta el jueves 12 de noviembre de 2026
+> incluido** (último día con cifras). Es la revisión del 05/11 (entrega
+> `2026-11-05.2`). Desde el viernes 13/11 a las 00:00 UTC (01:00 en España) no
+> desaparece: se sigue viendo completo, con un aviso y sin las cifras vencidas.
+> Para renovarlo, Víctor pide «haz la investigación» (ver «Lo que falta», punto 1).
 
 ---
 
@@ -30,222 +27,122 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 ## Qué está funcionando hoy
 
-**Acceso web en revisión:** Víctor sigue observando un retorno al acceso. Se ha reproducido y corregido otro cierre ante fallos temporales y se confirma la sesión del navegador antes de regresar. Las pruebas dirigidas pasan; todavía no se presenta el caso de su cuenta como resuelto. [Detalle](VERIFICACION-ACCESO-WEB-2026-10-29.md).
-
-El mapa de activos ya está publicado dentro de Buscar, con Lista/Mapa, 26 fichas ubicadas y permiso opcional de ubicación. Conserva las 49 referencias del catálogo y señala las ubicaciones aproximadas. La preview y producción pasan las comprobaciones HTTPS; dos lecturas independientes corroboran los archivos publicados. La revisión visual no quedó acreditada porque el controlador no pudo verificar la URL de Chrome.
-
-**Web actualizada el 28 de octubre; consulta pública y acceso corregido:** el catálogo, las fichas y Academy se pueden
-consultar sin registro. La cuenta confirmada se pide para guardar y usar funciones
-personales. Se corrigió una carrera del inicio de sesión que podía cerrar la
-sesión recién abierta. Pasaron 37 pruebas locales dirigidas, 16 comprobaciones
-HTTP en preview y otras 16 en producción; entrada, sesión y salida reales con
-la cuenta de QA también funcionaron en ambos entornos. La nueva inspección visual
-no pudo completarse: Computer Use se detuvo al no poder verificar la URL.
-
-Con permiso de Víctor se restauró la lectura pública de Supabase: siguen las
-26 plataformas y 49 referencias y las protecciones de perfiles y vigilancia.
-Esto restaura el contrato de lectura de Android 1.3.2; no se ha vuelto a probar
-en dispositivo. Investigación PAUSADA, sin modificar fechas del catálogo.
-
-**Android 1.4.0 ya está publicado** en la página de descargas. Conserva la sesión de forma segura entre arranques y permite activar el desbloqueo del teléfono desde Perfil. Se comprobaron el PIN del sistema, la cancelación sin mostrar contenido, el tutorial real de cuatro pasos, los cálculos de cartera y el cierre que impide recuperar la cuenta. Huella y cara dependen del hardware compatible; la prueba de dispositivo usó PIN Android. La cartera es un registro manual y no actualiza precios de intermediarios. La cuenta temporal y sus secretos quedaron limpiados.
-[Detalle de validación](VERIFICACION-ACCESO-PERSISTENTE-2026-10-28.md).
-
-**Web y cartera renovadas:** la web pública ya muestra tarjetas más claras, avisos completos y Mis inversiones en la cuenta. La cartera privada de Supabase está aplicada con permiso de Víctor; sus movimientos y precios son manuales. Las comprobaciones públicas de producción pasan. Android1.4.1 ya está compilado: corrige la renovación de sesión y prepara las mejoras automáticas compatibles. Se está comprobando el mismo APK, sin recompilar. Se instalará sobre la versión actual, sin desinstalarla. Faltan las pruebas del binario y su publicación; la descarga estable continúa en1.4.0. [Detalle](VERIFICACION-ACTUALIZACION-141-2026-10-28.md).
-
-**Seguridad web comprobada hoy:** cabeceras, cookies y controles de acceso/sesión están aplicados. La comunidad permanece apagada. Turnstile, el control adicional de abuso y algunos ajustes de los paneles aún no están acreditados; no se presentan como terminados. [Detalle breve](SEGURIDAD-WEB-REVISION-2026-10-28.md).
-
 | | Estado |
 |---|---|
-| **Web** | Publicada en **https://rwadar.pages.dev**, actualizada el **28/10** desde la rama aislada, con mapa de activos en Buscar. Consulta pública; cuenta para funciones personales. Login, sesión y salida comprobados con la cuenta de QA. Se conservan el radar del acceso, registro, recuperación, comparación e idiomas. |
-| **Catálogo** | **Investigado de nuevo y publicado el 5 de noviembre, el mismo día que Víctor lo pidió: 22 ofertas** (8 principales, 13 de reventa y 1 en camino; esa tarde salieron BILLA y Casa de Outeiro por decisión de Víctor, porque no avanzaban) y 25 plataformas en el radar (5 descartadas), vigente hasta el **12 de noviembre**. Spiko rinde un 2,39 % (euro), un 3,99 % (dólar, en dólares) y un 2,84 % (Smart Cash). Vender entre accionistas en Aktionariat, Boss Info y Switzerlend cuesta un 1,9 %. Brickwise, con los precios de reventa del día. Hoy no entra ninguna oferta nueva: ninguna de las 9 candidatas cumple todo para un particular en España. **Tarjetas más sencillas** (petición de Víctor del 05/11): en la lista solo título, empresa y lugar, mínimo y si se puede desde España; lo demás, en la ficha. Igual en la web y en la app. Ver [`INVESTIGACION-CATALOGO-2026-11-05.md`](INVESTIGACION-CATALOGO-2026-11-05.md). Las cifras se ven 7 días desde su comprobación. Se puede actualizar varias veces el mismo día. **Con la orden «haz la investigación» se hace el ciclo entero ese día** (skill `investigacion-catalogo`). |
-| **Imágenes de las ofertas** | Las 49 fichas **ya muestran en la web y Android 1.3.2** su ilustración generada del activo, con el lugar y tres pasos explicativos. Llevan etiqueta «Ilustración editorial» y texto alternativo que identifica la IA y que no es una fotografía real del activo. La correspondencia con las 49 ofertas y los recursos del APK se comprobó por contenido. Ver [`comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md`](comercial/REVISION-IMAGENES-OFERTAS-2026-10-21.md). |
-| **App Android** | **[Versión 1.4.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.2)** publicada el 06/11 (código 24). Preparada para las notificaciones del móvil: Firebase (`rwadar-14e3d`) va dentro, sin arranque automático, y la app solo pide permiso cuando la persona pulsa «Notificaciones en este móvil». Hasta encender los avisos funciona igual que la 1.4.1. Comprobada en emulador Android 15 con Google Play: instalada encima de la 1.4.1, sin cierres y sin ninguna conexión a Firebase al abrirla ([QA](https://github.com/victorJorques/RWAdar-downloads/actions/runs/42206828119)). Las actualizaciones automáticas (OTA) van ya a la 1.4.2; la 1.4.1 sigue funcionando y avisa de la versión nueva. No está en Google Play. |
-| **App iPhone** | Compilada para el simulador. Aún no hay cuenta de Apple Developer. |
-| **Google y RSS** | Fichas, sitemap y RSS vuelven a estar disponibles sin sesión. Sus respuestas públicas se comprobaron el 26/10; esto no acredita que Google ya haya vuelto a indexarlas. |
+| **Web** | Publicada en **https://rwadar.pages.dev** (Cloudflare Pages, con un servidor web propio que gestiona la sesión). Se publica desde `main` con el flujo de GitHub «Publicar web», primero en revisión y después en producción. Última publicación: **06/11/2026** (Academy con cuenta y privacidad que nombra a Lettermint). |
+| **Catálogo** | Investigado y publicado el **05/11/2026**: **22 ofertas** (8 principales, 13 de reventa y 1 en camino) y **25 plataformas** en el radar (5 descartadas). Vale hasta el **12/11/2026** incluido; desde el 13/11 (00:00 UTC) se ve con aviso y sin cifras. Las cifras se ven 7 días desde su comprobación. Ver [`INVESTIGACION-CATALOGO-2026-11-05.md`](INVESTIGACION-CATALOGO-2026-11-05.md). |
+| **Cuentas** | Abiertas y gratis. En la web, la cuenta confirmada hace falta para las funciones personales (lista de seguimiento, «Mis inversiones») y para leer las lecciones de la Academy; el resto se consulta sin registro. La app pide cuenta para todo desde la 1.4.1. El fallo que devolvía a la pantalla de acceso quedó resuelto el 29/10. El servidor web limita los intentos por IP; el CAPTCHA (Turnstile) está preparado y apagado. |
+| **Correo de las cuentas** | La confirmación y la recuperación de contraseña salen hoy por un **Gmail sin contrato de encargo**: es el riesgo legal más alto que queda. Se pasa a Lettermint en la ronda 2 del [plan](tareas/PLAN-CEO-2026-11-06.md). |
+| **App Android** | **[Versión 1.4.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.2)** publicada el **06/11/2026** (código 24). Lleva Firebase para las notificaciones del móvil, sin arranque automático: en el emulador, al abrirla, no hubo ninguna conexión a Firebase. Hasta que se enciendan los avisos funciona igual que la 1.4.1. Las actualizaciones automáticas (OTA) van ya a la 1.4.2; la 1.4.1 sigue funcionando y avisa de la versión nueva. No está en Google Play. Pendiente menor: unos textos de Lettermint de la app (ocultos mientras el correo esté apagado) irán en la próxima OTA. |
+| **App iPhone** | No hay. Solo se compiló para el simulador y no hay cuenta de Apple Developer. En iPhone, RWAdar es la web (también añadida a la pantalla de inicio). |
+| **RWAdar Academy** | Las **9 lecciones** de Eric, publicadas desde el 06/11/2026. En la web, cada lección pide una cuenta gratis; el índice y el tutorial 3D siguen abiertos. Eric dio su visto bueno y su licencia escrita el 06/11 (la guarda Víctor). La revisión legal de las lecciones vale hasta el **02/04/2027**. |
+| **Avisos a registrados** | **Preparados y apagados.** La base (migraciones 30 y 31) está aplicada desde el 06/11/2026; no sale ningún correo ni notificación y la casilla del alta no se ve. Para encenderlos: [`tareas/PLAN-CEO-2026-11-06.md`](tareas/PLAN-CEO-2026-11-06.md) (ver «Lo que falta», punto 2). |
+| **Copias de seguridad** | Cada noche, cifradas, guardadas 35 días en GitHub, y otra antes de cada cambio en la base. Supabase gratuito no hace copias: estas son las únicas. Ver [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md). |
+| **Legal** | Aviso legal, condiciones, privacidad (06/11/2026) y transparencia comercial publicados. Registro de actividades, contratos de encargo y qué hacer ante una brecha, en [`legal/`](legal/): ver «Lo que falta», punto 3. |
 | **Analítica** | Cloudflare Web Analytics, sin cookies. |
-| **Legal** | Aviso legal, condiciones, privacidad y transparencia comercial publicados. |
-| **RWAdar Academy** | **Publicada** en la web (`/academy/`) desde el 5/10. 9 lecciones de Eric en 3 niveles, las 9 publicadas desde el 06/11. Revisión legal verificada por Víctor el 2/10/2026. En la app, pestaña Academy. Ver [`academy/REVISION-CONTENIDO-2026-10-02.md`](academy/REVISION-CONTENIDO-2026-10-02.md). **Desde el 06/11 (publicado):** las 9 lecciones están publicadas y, en la web, cada lección pide una cuenta gratis; el índice y el tutorial 3D siguen públicos. En la app ya la pedía; la OTA llevó las 9 lecciones. Eric dio su visto bueno ([plan](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md)). |
-| **Tipografía** | Geist completa para español. La web publicada reutiliza los archivos locales: títulos de tarjeta de 20 px, datos de decisión de 16 px y secundarios de 14 px. El candidato Android también aumenta el tamaño de lectura y navegación; su comprobación se acredita por separado. |
+| **Google y RSS** | Fichas, sitemap y RSS se ven sin sesión. Las lecciones de la Academy van con `noindex` y fuera del sitemap. |
+| **Panel de control** | El panel de los socios sigue en línea en <https://rwadar-panel.victorjorquesgranero.workers.dev> (se entra con enlace personal; sin él responde 401, comprobado el 07/11). Su código está en la rama `claude/panel-control`, **no en `main`**. |
 
-**Cuentas:** consultar la web no requiere cuenta. Las funciones personales sí
-requieren una cuenta confirmada. Se comprobaron entrada, sesión y cierre en
-preview y producción. El alta y la recepción de recuperación reales ya se
-acreditaron el 24/10; no se atribuye al titular un guardado de contraseña que
-no se observó. La limpieza de la cuenta temporal se documenta por cada ciclo de QA.
+**Investigación del catálogo: inicio manual.** Solo empieza cuando Víctor
+pulsa **Ejecutar** o pide **«haz la investigación»**. Esa orden autoriza el
+ciclo completo de ese día (aplicar en Supabase, publicar la web y enviar la
+OTA si pasan las pruebas y la revisión independiente), y se puede repetir
+varias veces el mismo día. No hay programación automática ni cola pública «en
+investigación». Procedimiento:
+[`tareas/CICLO-DIARIO-CATALOGO.md`](tareas/CICLO-DIARIO-CATALOGO.md) y la
+skill `investigacion-catalogo`.
 
-**La fuente web publicada el 26/10 está en la rama aislada y aún no está integrada
-en main.** La carpeta principal conserva cambios de otras herramientas y no se
-ha sobrescrito su trabajo. Hay que integrar la entrega antes de volver a publicar
-desde allí. Las pruebas y las huellas quedan en los informes con fecha. El vídeo
-de nueve perfiles simulados está entregado en local y reproducido completo; no
-es una prueba con personas ni una evaluación de todos los cambios posteriores.
-
-**Catálogo renovado y publicado el 3 de noviembre**, con permiso expreso de Víctor: investigación de las 49 ofertas y 56 candidatas con revisión independiente, 23 ofertas comprobadas aplicadas en Supabase con el flujo «Aplicar catálogo», web publicada desde GitHub y actualización OTA enviada a Android 1.4.1. Desde GitHub ya se puede publicar la web y enviar la OTA (secretos `CLOUDFLARE_API_TOKEN` y `EXPO_TOKEN` añadidos por Víctor). [Informe](INVESTIGACION-CATALOGO-2026-11-01.md).
-
-**Investigación del catálogo:** tarea preparada y **PAUSADA, con inicio manual**.
-Víctor debe pulsar **Ejecutar** o pedir **«haz la investigación»** para abrir un
-solo ciclo; la programación anterior no inicia trabajo ni autoriza futuras
-ejecuciones. Investiga las ofertas publicadas y busca nuevas con documentos
-primarios, contraste y revisión independiente. Cada candidata se publica con
-tarjeta e ilustración editorial si pasa las compuertas y existe permiso expreso
-para SQL y publicación de ese ciclo, o no se admite ese día. No existe cola
-pública «en investigación» ni autorización recurrente autónoma. Se conserva el
-catálogo completo publicado. Procedimiento:
-[`tareas/CICLO-DIARIO-CATALOGO.md`](tareas/CICLO-DIARIO-CATALOGO.md).
-
-**Cambios del 11/10:** panel nativo de cuentas y refuerzos de la web
-para evitar mezclar sesiones; registro, acceso, nombre, vigilancia, recuperación
-y baja con contraseña recién comprobada. Los favoritos locales no se convierten
-en vigilancia remota. La sesión nativa queda solo en memoria. La app no activa
-instalaciones históricas ni push. El refuerzo de sesión **ya se aplicó en
-Supabase con permiso expreso de Víctor**. La lectura posterior comprobó las
-políticas restrictivas de acceso, la sesión confirmada y vigente, la exclusión
-de usuarios anónimos y que el esquema privado no queda expuesto por REST.
-
-**Publicación y app:** la web es pública; las funciones personales conservan
-las guardas de cuentas. El APK nativo 1.3.2 también las lleva activadas, pasó la prueba de
-ejecución en emulador y **ya está publicado en GitHub**, con resultado real
-de QA y publicación exitoso. Los servicios antiguos de
-instalaciones y push permanecen apagados. Víctor autorizó EAS Android y GitHub **sin cargos**;
-la compilación se hizo dentro de la cuota gratuita. La compatibilidad y los
-avisos actuales de dependencias se describen a continuación.
-
-**Dependencias pendientes:** la auditoría de paquetes **no está limpia**.
-La consulta del 22/10 da 21 avisos móviles (17 altos y 4 moderados) y uno alto
-en la herramienta de imágenes de la raíz. Expo Doctor pasa 20 de 21 controles:
-recomienda seis parches posteriores del mismo SDK. La instalación coincide
-exactamente con el lock aprobado y es compatible con el mapa del SDK fijado.
-La revisión de las vías usadas no identificó un bloqueo concreto para esta
-entrega, pero no garantiza ausencia de vulnerabilidades ni sustituye la prueba
-del APK. Se mantienen visibles los avisos, sin downgrades forzados ni exclusiones
-para silenciar Doctor. Informe actual:
-[`VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-22.md`](VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-22.md).
-
-**Pruebas locales del 22/10:** `npm test` completo terminó correctamente después
-de instalar las dependencias móviles desde el lock: web 502 comprobaciones,
-móvil 184 y base de datos, QR y herramientas correctos. Las 49 fichas tienen
-foto y la Academy está al día. La web en línea se comprobó por separado y la
-revisión independiente no encontró bloqueos visuales concretos. Estas pruebas
-no demuestran por sí solas el cambio real de contraseña ni un APK instalado.
-
-**Prueba real del APK del 22/10:** se instaló y ejecutó el mismo APK 1.3.2, sin modificarlo,
-en un emulador Android 15. Pasaron Inicio, búsqueda de las 26 plataformas y 49
-referencias, ficha de Spiko, las siete lecciones publicadas de Academy, apertura
-de una lección y favorito conservado tras reiniciar. También se comprobaron los
-formularios de cuentas y su validación vacía, además de las imágenes y lugares
-de cinco ofertas, sin introducir contraseñas, crear
-cuentas ni enviar correos. **No es un flujo completo de Auth nativo ni una
-prueba en un teléfono físico.**
-
-**Revisión visual y acabado:** las capturas propias de la 1.3.2 muestran las
-fotos, lugares y pasos legibles, con el rótulo editorial y sin solapes observados.
-Se conserva el arreglo del Perfil introducido en 1.3.1: la separación medida
-entre recuperación y nota de favoritos sigue siendo de 92 píxeles, por encima
-del mínimo de 40. Alta, confirmación y Perfil también se revisaron; el favorito
-siguió guardado después de reiniciar. La primera prueba de uso pasó pero su
-empaquetado de capturas superó el límite inicial; se amplió ese límite y se
-repitió correctamente el mismo APK, conservando toda la evidencia. No hubo
-una segunda compilación ni cargos añadidos.
-
-Codex es responsable de integrar, configurar y comprobar técnicamente los
-cambios, y de publicar dentro de las autorizaciones expresas. Víctor únicamente
-introduce sus credenciales, verifica su identidad y autoriza las operaciones
-reservadas; no se le asignan cambios de código. Plan vigente:
-[`tareas/CUENTAS-WEB-MOVIL-2026-10-11.md`](tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
-La evidencia local y el diagnóstico real están en
-[`VERIFICACION-CUENTAS-2026-10-11.md`](VERIFICACION-CUENTAS-2026-10-11.md).
-La web nueva y el APK 1.3.2 ya están publicados. La publicación Android está
-confirmada por el flujo exitoso, la API pública y la descarga anónima local:
-APK y evidencia coinciden con sus sumas y la firma del APK es válida. El detalle
-actual está en [`VERIFICACION-ANDROID-1.3.2-2026-10-22.md`](VERIFICACION-ANDROID-1.3.2-2026-10-22.md)
-y [`VERIFICACION-PUBLICACION-2026-10-22.md`](VERIFICACION-PUBLICACION-2026-10-22.md).
-
-**En pausa:** opiniones, comunidad, avisos de cambios por correo y avisos push.
-**Avisos a registrados (base aplicada el 06/11; todo apagado):** correo de bienvenida al confirmar la cuenta;
-avisos de ofertas nuevas y de actualizaciones por correo y notificación, solo para quien marque una casilla
-aparte, sin marcar; baja en cada correo; lista de avisos dentro de la app. La migración 30 está aplicada en Supabase
-(06/11, con copia previa) y la web y la app están publicadas con los avisos apagados. Revisión legal hecha
-([informe](legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md)). El correo saldrá por **Lettermint** (Países Bajos,
-UE, sin píxel de apertura); Brevo quedó descartado porque mete ese píxel. Los contratos de encargo están
-archivados en [`legal/encargados/`](legal/encargados/README.md), con un hueco: GitHub no tiene contrato de
-encargo en una cuenta personal gratuita (decide Víctor). Para encender los avisos faltan, con permiso de Víctor:
-dominio propio, cuenta de Lettermint (la migración 31, que cambia el envío a Lettermint, ya está aplicada el
-06/11 con copia previa y el correo apagado) y la prueba real a un buzón propio. Para las notificaciones del
-móvil ya están Firebase (`rwadar-14e3d`) y la app 1.4.2; falta la privacidad del push, una OTA con el
-interruptor encendido y probarlo en un Android físico (Víctor usa iPhone). Plan y pasos:
-[`tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md). Seguridad anterior:
-[`seguridad/REVISION-SEGURIDAD-2026-10-05.md`](seguridad/REVISION-SEGURIDAD-2026-10-05.md).
-Manual de bienvenida de Eric: versión corregida al día (06/11: 9 lecciones con la cuenta, avisos opcionales
-sin «baja en un clic»), [`manual/LEEME.md`](manual/LEEME.md).
-
-**Nueva barra del móvil (5/10): Inicio · Buscar · Academy · Perfil**, en la
-web y en la app. Inicio trae las noticias de RWAdar (se editan en
-[`../rwadar-noticias/`](../rwadar-noticias/LEEME.md)) y anuncia la comunidad;
-Perfil reúne las empresas y ofertas guardadas (solo en el navegador o en el
-móvil) y los avisos como «próximamente». Publicada en la web el 5/10 y en la
-app con la versión 1.2.0.
-
-**Desactivado:** publicidad, comisiones y cobros. Hay una cuenta de AdMob con
-dos fichas de prueba, pero nada conectado a la app.
+**En pausa:** opiniones y comunidad. **Desactivado:** publicidad, comisiones y
+cobros (hay una cuenta de AdMob con dos fichas de prueba, sin conectar a la
+app). **Sin publicar:** el vídeo promocional del 28/10, pendiente de valoración
+([detalle](VERIFICACION-ANUNCIO-DESCUBRE-2026-10-28.md)).
 
 ---
 
 ## Lo que falta, por orden
 
-La prioridad actual es resolver la compatibilidad de la descarga Android pública,
-cerrar la validación de la app nueva e integrar la web ya publicada en main.
-La lista completa de brechas y el alcance de cada prueba están en la
-[revisión integral del 24/10](REVISION-INTEGRAL-2026-10-24.md).
-Los puntos de mantenimiento siguientes no equivalen a ese cierre de entrega.
-
-1. **Actualizar Node.js en el PC.** El 21/10 Node corrigió fallos graves
-   (código remoto por Brotli, nombres de certificados TLS y los certificados
-   comprometidos de eMudhra). GitHub y las compilaciones de EAS ya usan la
-   versión corregida (22.23.4). En el PC, `node rwadar-node-seguro.js` dice si la que
-    hay vale. Para esta entrega se usa un runtime portable corregido; no se ha
-    actualizado la instalación global del PC. La investigación permanece manual.
-2. **Siguiente actualización del catálogo (antes del 12 de noviembre).** Empieza
-   por orden de Víctor, que autoriza el ciclo completo (aplicar, publicar y OTA si
-   pasan las compuertas), cualquier día y varias veces el mismo día. Pendientes:
-   - Kraken xStocks ya está publicada; si el emisor publica condiciones finales
-     con España, se quita el aviso.
-   - Spiko Smart Cash Euro ya está publicada; si la CNMV, la AMF o Aldana
-     Capital confirman su alta en España, se quita el primer aviso (si lo niegan,
-     se retira).
-   - Hausera: la oferta pública de Alicante 2 se anuncia para el 11/11; revisar
-     si publica el documento de emisión y el emisor.
-   - Bono Valorix (Bit2Me STX) y CANDO1 (Token City) cuando publiquen su
+1. **Renovar el catálogo antes del 12 de noviembre.** Con la orden de Víctor,
+   cualquier día. Lo que conviene mirar:
+   - Hausera: la oferta pública de Alicante 2 se anuncia para el **11/11**;
+     revisar si publica el documento de emisión y el emisor.
+   - Kraken xStocks: si el emisor publica condiciones finales con España, se
+     quita el aviso.
+   - Spiko Smart Cash Euro: si la CNMV, la AMF o Aldana Capital confirman su
+     alta en España, se quita el primer aviso (si lo niegan, se retira).
+   - Bono Valorix (Bit2Me STX) y CANDO1 (Token City), cuando publiquen su
      documento de emisión.
+
    Ver [`RUNBOOK.md`](RUNBOOK.md#catálogo).
-3. **Actualizar Postgres.** Las copias de seguridad ya están activas: la
-   primera, del 2 de octubre, copió 52 tablas y se comprobó
-   que se descifra. Antes de actualizar, descarga una copia y ábrela una vez
-   como explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
-4. **Completar los flujos reales de cuentas.** La web y Android 1.3.2 ya están
-   publicados y sus descargas verificadas. Completar el cambio de contraseña de
-   recuperación y la entrada posterior, mejorar la entrega del correo que
-   llega a spam y comprobar los flujos sobre la versión publicada. El refuerzo
-   de sesión ya está aplicado y verificado, y el acabado del Perfil ya pasó
-   sus pruebas sobre el APK publicado. Quedan distintos el uso de Auth nativo
-   con credenciales reales
-   y la comprobación en un teléfono físico; no presentarlos como hechos.
-   Codex hace los pasos técnicos; el plan y las autorizaciones concretas
-   están en [`tareas/CUENTAS-WEB-MOVIL-2026-10-11.md`](tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
-5. **Tiendas.** Apple y Google tienen cada uno una consulta de soporte
+2. **Encender los avisos y quitar el Gmail**, en tres rondas
+   ([plan](tareas/PLAN-CEO-2026-11-06.md); pasos en el
+   [contrato de avisos](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md),
+   «Activación»):
+   - **Ronda 1, Víctor:** comprar el dominio (recomendado `rwadar.app` en
+     Cloudflare: unos 8 $ el primer año y unos 14 $ los siguientes; el precio
+     exacto sale al pagar), crear la cuenta de Lettermint y **pedir su
+     verificación** (borrador de respuestas en
+     [`tareas/LETTERMINT-VERIFICACION-RESPUESTAS.md`](tareas/LETTERMINT-VERIFICACION-RESPUESTAS.md)),
+     dos tokens (uno para la base y otro para el SMTP de Supabase) y GitHub
+     Team.
+   - **Ronda 2, Víctor, solo con Lettermint ya verificado:** plantillas y SMTP
+     de Supabase Auth. Hasta que Lettermint apruebe la cuenta, solo deja
+     enviar a los miembros del equipo.
+   - **Ronda 3:** el push, cuando haya un Android físico para probarlo (Víctor
+     usa iPhone).
+
+   Ojo con el plan gratis de Lettermint: **300 correos al mes en total**, que
+   comparten las confirmaciones de cuenta, las recuperaciones, las
+   bienvenidas y los anuncios. Su enlace de baja de los anuncios
+   probablemente no se puede quitar en el plan gratis, así que sus bajas se
+   pasan a RWAdar (a mano o con la sincronización automática, preparada el
+   07/11 y apagada).
+3. **Legal pendiente** (detalle en el
+   [registro de actividades](legal/REGISTRO-ACTIVIDADES-TRATAMIENTO.md),
+   apartado 7):
+   - **GitHub sin contrato de encargo:** decidido pasar a una organización con
+     GitHub Team (4 $ al mes) y firmar su «Customer Agreement». Lo hace Víctor
+     ([pasos](legal/encargados/README.md#github--hueco)).
+   - **Gmail sin contrato:** se quita en la ronda 2 (punto 2).
+   - Decidir si Eric Almiñana y Samuel Rodriguez son corresponsables en el
+     sentido del RGPD (hoy la privacidad solo nombra a Víctor).
+   - Plazos que faltan (registros de proveedores, analítica, buzones, altas
+     sin confirmar, datos en pausa) y nombrar a GitHub en la privacidad como
+     depósito de las copias.
+   - Ya resuelto el 07/11: Netlify y Proton Mail tienen contrato de encargo
+     sin firmar nada; no hace falta delegado de protección de datos; Apple no
+     aplica; la protección de contraseñas filtradas de Supabase no está en el
+     plan gratuito. Si hay una brecha:
+     [`legal/BRECHAS-DE-DATOS.md`](legal/BRECHAS-DE-DATOS.md).
+4. **Minutos de GitHub Actions.** El plan gratuito da 2.000 al mes en el
+   repositorio privado (https://github.com/pricing, consultado el 07/11). Del
+   01 al 07/11 se gastaron unos 790, sobre todo en las pruebas (`ci.yml`), que
+   corrían en cada PR y otra vez al unir a `main`, también cuando solo cambiaba
+   la documentación (recuento del 07/11; **verificar** en GitHub › Settings ›
+   Billing). A ese ritmo se acabarían hacia la mitad del mes. El 07/11 se
+   ajusta `ci.yml` para gastar menos (ver el traspaso de ese día en
+   [`tareas/PARA-CODEX.md`](tareas/PARA-CODEX.md)). GitHub Team sube el cupo a
+   3.000.
+5. **Actualizar Postgres.** Antes, descargar una copia y abrirla una vez, como
+   explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
+6. **Node.js del PC.** GitHub y EAS ya usan la versión corregida (22.23.4). En
+   el PC, `node rwadar-node-seguro.js` dice si la que hay vale; el 30/10 Víctor
+   lanzó su actualización y falta confirmarla con `node --version`.
+7. **Cuentas, lo que queda por probar de verdad:** el cambio de contraseña de
+   recuperación y la entrada posterior con credenciales reales, y la app en un
+   teléfono físico. No presentarlos como hechos. Plan:
+   [`tareas/CUENTAS-WEB-MOVIL-2026-10-11.md`](tareas/CUENTAS-WEB-MOVIL-2026-10-11.md).
+8. **Dependencias:** la auditoría de paquetes **no está limpia** (consulta del
+   22/10: 21 avisos en la app y uno en la herramienta de imágenes). Corregirlos
+   con versiones compatibles antes de otra compilación nativa
+   ([informe](VERIFICACION-DEPENDENCIAS-ANDROID-2026-10-22.md)).
+9. **Tiendas.** Apple y Google tienen cada uno una consulta de soporte
    pendiente sobre el alta como persona física. Hasta que respondan, no se paga
-   ni se rellena nada. El paquete para Google Play (AAB 1.1.2, icono, cabecera y
-   capturas) ya está preparado.
-6. **Dominio propio** (unos 12 € al año). Da seriedad y permite un correo
-   propio. Recomendado `rwadar.app` en Cloudflare. Lo necesita el correo de
-   los avisos y de las cuentas (Lettermint): paso 5 del
-   [contrato de avisos](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
-7. **iPhone:** el fallo de memoria de una librería de Expo ya está corregido.
-   Falta probar la app en un simulador o un iPhone de verdad antes de enviarla.
-8. **Ingresos:** decidir con un abogado cómo se puede cobrar a las
-   plataformas. El veredicto editorial no se vende nunca.
-9. **Dependencias de compilación:** corregir los avisos con versiones compatibles
-   verificadas y revaluarlos antes de otra compilación o de activar actualizaciones
-   remotas. No presentar el análisis de alcance como una auditoría limpia.
+   ni se rellena nada. El paquete para Google Play ya está preparado
+   ([`ENTREGA-TIENDAS-Y-ANUNCIOS.md`](ENTREGA-TIENDAS-Y-ANUNCIOS.md)).
+10. **iPhone:** falta probar la app en un simulador o un iPhone de verdad antes
+    de enviarla, y la cuenta de Apple Developer.
+11. **Ingresos:** decidir con un abogado cómo se puede cobrar a las
+    plataformas. El veredicto editorial no se vende nunca.
 
 ---
 
@@ -253,10 +150,14 @@ Los puntos de mantenimiento siguientes no equivalen a ese cierre de entrega.
 
 | Cuándo | Qué |
 |---|---|
-| **12 de noviembre de 2026** | Vence la revisión del catálogo del 05/11 (entrega 2026-11-05). Se conserva completa con aviso y sin cifras vencidas. |
-| Cada noche, 02:43 UTC | Copia de seguridad cifrada, guardada 35 días en GitHub |
-| Cada noche, 03:17 UTC | Limpieza de dispositivos inactivos de más de 180 días |
-| Agosto de 2027 | Caduca `/.well-known/security.txt`: renovar la fecha |
+| **11 de noviembre de 2026** | Hausera anuncia la oferta pública de Alicante 2 |
+| **12 de noviembre de 2026** | **Último día con cifras de la revisión del catálogo del 05/11.** Desde el 13/11 a las 00:00 UTC (01:00 en España) se conserva completa, con aviso y sin cifras vencidas |
+| Cada noche, 02:43 UTC | Copia de seguridad cifrada (GitHub Actions), guardada 35 días |
+| Cada noche, 03:17 UTC | Limpieza de dispositivos inactivos de más de 180 días (pg_cron en Supabase, versiones anteriores) |
+| Cada noche, 04:41 UTC | Limpieza de los avisos a registrados, `rwadar-novedades-limpieza` (pg_cron en Supabase, desde el 06/11/2026; corre aunque los avisos estén apagados) |
+| 2 de abril de 2027 | Hasta aquí vale la revisión legal de las lecciones de la Academy |
+| 22 de agosto de 2027 | Caduca `/.well-known/security.txt`: renovar la fecha |
+| Antes del 6 de noviembre de 2027 | Revisión anual del registro de actividades de tratamiento |
 
 ---
 
@@ -264,10 +165,11 @@ Los puntos de mantenimiento siguientes no equivalen a ese cierre de entrega.
 
 | | |
 |---|---|
-| **Víctor** (titular) | Decide; cuentas de tiendas, pagos, contratos y todo lo que exija identidad. Solo él autoriza publicar o tocar la base en línea. |
-| **Eric Almiñana y Samuel Rodriguez** | Corresponsables junto a Víctor (ver [`../SECURITY.md`](../SECURITY.md)). |
-| **Codex (ChatGPT)** | Responsable de la integración técnica, configuración, pruebas y publicación autorizada de web y app; también del trabajo técnico de catálogo y tiendas. |
-| **Claude** | Seguridad, copias de seguridad, revisiones y documentación. |
+| **Víctor** (titular) | Decide; cuentas de proveedores y tiendas, pagos, contratos y todo lo que exija identidad. Solo él autoriza publicar o tocar la base en línea. Es el responsable del tratamiento de datos. |
+| **Eric Almiñana** | Autor de las lecciones de la Academy. Con Samuel y Víctor, gestiona los reportes de seguridad ([`../SECURITY.md`](../SECURITY.md)). |
+| **Samuel Rodriguez** | Gestiona con Eric y Víctor los reportes de seguridad. Si Eric y él son corresponsables en el sentido del RGPD está por decidir (registro de actividades, apartado 1). |
+| **Codex (ChatGPT)** | Integración técnica, configuración, pruebas y publicación autorizada de web y app; también trabajo técnico de catálogo y tiendas. |
+| **Claude** | Seguridad, copias de seguridad, revisiones, legal y documentación; también ciclos del catálogo y publicación autorizada. |
 
 Cada herramienta firma sus commits con su propio nombre (ver
 [`../AGENTS.md`](../AGENTS.md)). Lo que hace una queda anotado para la otra en
@@ -280,15 +182,19 @@ Cada herramienta firma sus commits con su propio nombre (ver
 | Carpeta | Qué hay |
 |---|---|
 | `rwadar-site/` | La web: lo que se edita |
+| `rwadar-acceso/` | El servidor web de la sesión y de la Academy con cuenta (`servidor.mjs`); `compilar.cjs` lo convierte en el `_worker.js` que se publica |
 | `rwadar-academy/` | Las lecciones de la Academy en Markdown; `node rwadar-academy.js` genera la web y la app |
+| `rwadar-noticias/` | Las noticias de Inicio (web y app) |
 | `rwadar-publicado/` | La web lista para subir. Se genera sola: no se edita |
-| `rwadar-app/` | Base de datos: migraciones, importadores y pruebas |
+| `rwadar-app/` | Base de datos: migraciones, importadores, plantillas de correo y pruebas |
 | `rwadar-movil/` | App de Android e iPhone (Expo) |
 | `rwadar-qr/` | Código QR de la tarjeta |
-| `rwadar-limpieza/` | Página que desinstala la PWA antigua de Netlify: se conserva |
-| `rwadar-panel/` | Panel de control: encender/apagar web y catálogo, salud, visitas, descargas y cuentas. En el ordenador (`npm run panel`) o compartido con los socios en <https://rwadar-panel.victorjorquesgranero.workers.dev> (subido el 22/10 con permiso de Víctor; se entra con enlace personal). Ver su `LEEME.md` |
+| `rwadar-limpieza/` | Página que desinstala la app web antigua de `rwadar.netlify.app`: se conserva |
 | `rwadar-version-codex/` | Copia rescatada de la versión de agosto: no se edita |
-| `docs/` | Esta documentación |
+| `docs/` | Esta documentación; lo legal, en `docs/legal/` |
+
+El panel de control (`rwadar-panel/`) no está en `main`: está en la rama
+`claude/panel-control`.
 
 **Documentos para el día a día:**
 
@@ -297,16 +203,23 @@ Cada herramienta firma sus commits con su propio nombre (ver
 - [`OPERACION-LANZAMIENTO.md`](OPERACION-LANZAMIENTO.md): cómo se publica.
 - [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md): copias y actualización
   de Postgres.
+- [`tareas/PLAN-CEO-2026-11-06.md`](tareas/PLAN-CEO-2026-11-06.md): el orden
+  para encender los avisos.
+- [`legal/REGISTRO-ACTIVIDADES-TRATAMIENTO.md`](legal/REGISTRO-ACTIVIDADES-TRATAMIENTO.md),
+  [`legal/encargados/README.md`](legal/encargados/README.md) y
+  [`legal/BRECHAS-DE-DATOS.md`](legal/BRECHAS-DE-DATOS.md): datos personales,
+  proveedores y qué hacer si hay una brecha.
 - [`ANALITICA.md`](ANALITICA.md): cómo leer las visitas.
 - [`ENTREGA-TIENDAS-Y-ANUNCIOS.md`](ENTREGA-TIENDAS-Y-ANUNCIOS.md): tiendas y
   anuncios.
 - [`seguridad/PRUEBAS-DE-ATAQUE-2026-10-01.md`](seguridad/PRUEBAS-DE-ATAQUE-2026-10-01.md):
   qué aguanta la web y qué se puede mejorar.
 
-Los informes con fecha (`VERIFICACION-…`, `CATALOGO-V2-…`, `SEO-…`,
-`PREPARACION-PLAY-…`, `CORRECCION-OFERTAS-…`) son **pruebas técnicas** de lo
-que se comprobó cada día. La compuerta de publicación las cita, por eso siguen
-ahí. No hace falta leerlas para trabajar. Índice en [`LEEME.md`](LEEME.md).
+Los informes con fecha (`VERIFICACION-…`, `CATALOGO-V2-…`, `INVESTIGACION-…`,
+`SEO-…`, `PREPARACION-PLAY-…`, `CORRECCION-OFERTAS-…`) son **pruebas técnicas**
+de lo que se comprobó cada día. La compuerta de publicación las cita, por eso
+siguen ahí. No hace falta leerlas para trabajar. Índice en
+[`LEEME.md`](LEEME.md).
 
 ---
 

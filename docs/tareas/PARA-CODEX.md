@@ -6,6 +6,55 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 7 de noviembre de 2026 (1) · Claude · ahorro de minutos, vigilante diario, copias, correo Lettermint, textos legales
+
+Víctor: «todo lo que puedas hacer tú, todo lo haces». Rama `claude/apanarse-0711`. Lo hicieron agentes por zonas, con revisión adversarial: se confirmaron 22 de 29 hallazgos y se corrigieron todos. `npm test` de la raíz termina con código 0 (web 641/0, móvil 491/0 con 2 omitidas, acceso 217/217, `.github` 43/43, avisos 275/0).
+
+**Minutos de GitHub Actions**
+- `ci.yml` ya no corre al unir a main: solo en los PR y a mano.
+- Si el PR solo toca `docs/**` o `.md` de la raíz que no lee ninguna prueba, se salta la batería (`.github/cambios-ci.sh`). gitleaks corre siempre.
+- Los 4 flujos de QA viejos (1.4.0 y 1.4.1) pasan a `.github/qa-archivo/`.
+- `compilar-app.yml` usa `upload-artifact` v7.0.1.
+
+**Vigilante diario** (`vigilante.yml`, 05:17 UTC)
+- Comprueba la caducidad del catálogo, `security.txt`, `version-android.json`, la web y los fallos de pg_cron de las últimas 48 h.
+- Un fallo que ya se corrigió sale en verde.
+- Cada fallo lleva «Qué hacer:» en llano.
+
+**Copias**
+- `copia-seguridad.yml` admite el modo «prueba» y la cartera (solo en prueba, nunca se sube).
+- `copia-seguridad.sh` detecta FORCE RLS y compara filas.
+- Nuevo `ensayo-restauracion.yml`: restaura la última copia en un Postgres de usar y tirar, con los registros del servidor apagados, y solo enseña recuentos.
+
+**Correo**
+- Nuevo flujo «Correo Lettermint» (`correo-lettermint.yml` y `.sh`) con `prueba-correo` y `sincronizar-bajas`. Está apagado hasta la ronda 2.
+- TLS obligatorio (`PGSSLMODE=require`) en todos los flujos que usan `SUPABASE_DB_URL`.
+
+**Web**
+- `_routes.json` saca `/assets/*` del worker para ahorrar cupo de Functions; `/academy/*` sigue dentro.
+- `_headers` pasa a `Referrer-Policy: no-referrer`, igual que el worker.
+- `comprobar-publicado.mjs` prueba que `/assets/../academy/…` no abre una lección.
+
+**Legal 5.3**
+- «Datos comprobados a favor».
+- El botón dice «Ver oferta en X» solo si se contrata hoy desde España **y** está supervisada; en los demás casos dice «Ir a la web del proveedor (sales de RWAdar)».
+
+**Privacidad**
+- El «latido» de Firebase, en la web y en la app.
+- El registro de actividades, al día.
+
+**Otros**
+- Bandeja de avisos `AVISOS_BANDEJA_REMOTA`, apagada.
+- Noticia del 05/11 corregida (Casa de Outeiro).
+- Nuevos `BRECHAS-DE-DATOS.md`, los DPA de Netlify y Proton en `encargados/` y el borrador del formulario de Lettermint.
+
+**Necesita OTA:** `App.js`, `Ofertas.js`, `idioma-en.js` y `noticias-contenido.js`. El guardián lo permite con la base `fa30779…`.
+
+**Pendiente:**
+- La LSSI 22.2 sobre el latido, antes de encender el push.
+- Para que el correo de fallo del vigilante le llegue a Víctor: Actions › Vigilante diario › Disable y luego Enable.
+- `rest-cerrada` y el vigilante no se han probado contra el Supabase real.
+
 ## 6 de noviembre de 2026 (8) · Claude · plan para encender los avisos (orden decidido)
 
 Víctor: «Hacemos lo que tú como CEO creas que es mejor». Orden decidido en [`PLAN-CEO-2026-11-06.md`](PLAN-CEO-2026-11-06.md):

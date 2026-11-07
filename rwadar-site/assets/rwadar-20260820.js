@@ -1842,7 +1842,11 @@ function pintarEmisiones(){
    (e.vinc===false?'<p class="emi-aviso">Es una reserva sin desembolso, no una compra.</p>':'')+
    (e.res?'<p class="emi-nota">'+escHtml(e.res)+'</p>':'')+avance+
    '<div class="emi-pie"><span class="emi-ver">Cifras de la plataforma,<br>comprobadas el '+fechaES(e.ver)+'</span>'+ 
-   '<a class="emi-ir" href="'+escHtml(urlHttps(e.url))+'" target="_blank" rel="noopener nofollow'+(e.pat?' sponsored':'')+'">Ver oferta en '+escHtml(e.pl)+' ↗</a></div></article>';
+   '<a class="emi-ir" href="'+escHtml(urlHttps(e.url))+'" target="_blank" rel="noopener nofollow'+(e.pat?' sponsored':'')+'">'+
+   /* Revisión legal 06/11/2026, 5.3: «Ver oferta en» pide «Se contrata hoy desde
+      España» y «supervisada» en «Sí». Estas emisiones antiguas no traen la
+      comprobación de supervisión, así que el enlace siempre dice que sales. */
+   'Ir a la web del proveedor (sales de RWAdar) ↗</a></div></article>';
  }).join('');
 }
 function seccionReferenciasCatalogo(catalogo,coleccion){
@@ -2447,6 +2451,11 @@ function clavesOfertaLocal(o,secundario){
  return {destacado,auxiliares:preferidas.slice(0,2)};
 }
 const AVISO_GENERAL_OFERTA=/^Referencia editorial gratuita\b/;
+/* Revisión legal del 06/11/2026, punto 5.3: el enlace al proveedor de una
+   oferta que no consta que se contrate hoy desde España, o cuya entidad no
+   consta supervisada, no dice «Ver oferta en X»: dice que se sale de RWAdar
+   (igual en las fichas fijas y en la app). */
+const SALIR_AL_PROVEEDOR='Ir a la web del proveedor (sales de RWAdar)';
 /* Lo primero que piden los usuarios en una tarjeta: quién supervisa la
    plataforma. Sale del radar; sin promesas ni sellos que no consten. */
 const ICONO_SUPERVISOR='<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z"/></svg>';
@@ -2666,7 +2675,8 @@ function transparenciaDetalleHtml(o,resumen){
   '<ul class="escaparate-comprobaciones">'+comprobacionesOferta(o,resumen).map(c=>'<li class="'+(c.cumple?'cumple':'no-cumple')+'">'+
    '<span class="escaparate-comprobacion-marca" aria-hidden="true">'+(c.cumple?'✓':'✗')+'</span><div><b>'+escHtml(c.texto)+
    '<span class="solo-lector">'+(c.cumple?': sí':': no')+'</span></b>'+motivo(c)+(c.fuente?'<p class="escaparate-comprobacion-fuente">'+fuente(c.fuente,c.texto)+'</p>':'')+'</div></li>').join('')+'</ul>'+
-  (puntos.length?'<h4>Puntos fuertes, con su fuente</h4><ul class="escaparate-puntos-detalle">'+puntos.map(x=>'<li><b>'+escHtml(x.texto)+'</b>'+
+  /* «Datos comprobados a favor» (antes «Puntos fuertes»): revisión legal del 06/11/2026, punto 5.3. */
+  (puntos.length?'<h4>Datos comprobados a favor, con su fuente</h4><ul class="escaparate-puntos-detalle">'+puntos.map(x=>'<li><b>'+escHtml(x.texto)+'</b>'+
    (x.fuente&&urlHttps(x.fuente.url)?' '+fuente({url:urlHttps(x.fuente.url),titulo:textoLocal(x.fuente.titulo)},x.texto):'')+'</li>').join('')+'</ul>':'')+
   '</details>';
 }
@@ -2813,8 +2823,13 @@ function abrirDetalleOfertaLocal(slug){
  const supervisada=comprobacionesOferta(o,resumen).find(c=>c.id==='supervisada');
  const rel='noopener nofollow'+(o.patrocinada?' sponsored':'');
  const enlace=(url,texto,etiqueta)=>'<a class="emi-ir" href="'+escHtml(url)+'" target="_blank" rel="'+rel+'" aria-label="'+escHtml(etiqueta)+'">'+escHtml(texto)+' ↗</a>';
+ /* Revisión legal 06/11/2026, punto 5.3: «Ver oferta en X» solo si «Se contrata
+    hoy desde España» es «Sí» y la entidad que la ofrece está supervisada
+    («supervisada» en «Sí»); si no, el enlace dice que sales de RWAdar. */
+ const verOferta=comprobacionesOferta(o,resumen).some(c=>c.id==='contratable'&&c.cumple===true)&&!!supervisada&&supervisada.cumple===true;
+ const textoFicha=secundario?'Ficha oficial':verOferta?'Ver oferta en '+o.plataformaNombre:SALIR_AL_PROVEEDOR;
  const enlaces=(secundario&&urlMercado?enlace(urlMercado,'Abrir mercado','Abrir mercado de '+o.titulo+' en '+o.plataformaNombre):'')+
-  (urlFicha?enlace(urlFicha,secundario?'Ficha oficial':'Ver oferta en '+o.plataformaNombre,(secundario?'Ficha oficial':'Ver oferta en '+o.plataformaNombre)+': '+o.titulo):'');
+  (urlFicha?enlace(urlFicha,textoFicha,textoFicha+': '+o.titulo):'');
  /* Un precio o una rentabilidad solo salen si hay cifra publicable (nunca «Consultar fuente» en grande). */
  const cifra=vigente&&claves.destacado&&!/^(?:Consultar|Consúlta|No publicada)/.test(claves.destacado.valor)?claves.destacado:null;
  /* Sin cifra, una línea normal que dice dónde mirar. */
@@ -4173,6 +4188,15 @@ const Cuenta = (function(){
     web no pide ni muestra nada de estos avisos. */
  const AVISOS_NOVEDADES_REMOTOS=false;
  const AVISOS_NOVEDADES_DISPONIBLES=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_NOVEDADES_REMOTOS;
+ /* Bandeja de avisos sin correo ni push (07/11/2026). Interruptor aparte del
+    anterior, con el mismo nombre que el de la app (lib/modo-local.js), que se
+    enciende a la vez. Encendido, el panel de la cuenta enseña SOLO la lista de
+    avisos recibidos: la bienvenida y los anuncios publicados, que la base ya da
+    a cualquier cuenta confirmada (rpc/mis_avisos_recientes de db/30, por
+    /api/acceso/datos). Sin casilla, sin permiso, sin correo y sin push; la web
+    no guarda nada. Apagado, no pide ni muestra nada. */
+ const AVISOS_BANDEJA_REMOTA=false;
+ const AVISOS_BANDEJA_DISPONIBLE=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_BANDEJA_REMOTA;
  const VERSION_AVISOS_NOVEDADES='novedades-v2-2026-11-06';
  /* El mismo texto que la base, la app y la casilla de /acceso: cambiar una
     palabra obliga a crear una versión nueva. v2: revisión legal del 06/11/2026. */
@@ -4803,6 +4827,10 @@ const Cuenta = (function(){
    '<div><div class="quien" translate="no">'+esc(nom)+'</div><div class="correo" translate="no">'+esc(ses.correo||'')+'</div></div></div>'+
    (datosCuentaError?'<p class="perfil-nota" role="status">No se pudieron cargar los datos de tu cuenta. Tu sesión sigue abierta. <button id="pfReintentarCuenta" type="button">Reintentar datos de cuenta</button></p>':'')+
    '<div id="pfInversiones"></div>'+
+   (AVISOS_BANDEJA_DISPONIBLE
+     ? '<section class="perfil-bandeja" aria-labelledby="pfBandejaTit"><h3 id="pfBandejaTit">Avisos recibidos</h3>'+
+       '<p class="perfil-nota perfil-ayuda">La bienvenida de tu cuenta y los anuncios de RWAdar.</p><div id="pfBandeja"></div></section>'
+     : '')+
    '<details class="perfil-opciones"><summary>Cuenta y plataformas que sigues</summary>'+
    '<div class="perfil-cifras">'+
     '<div><span class="n">'+dias+'</span><span class="l">Días<br>de miembro</span></div>'+
@@ -4886,6 +4914,7 @@ const Cuenta = (function(){
   });
   const pfn=$('pfNovedades');
   if(pfn&&AVISOS_NOVEDADES_DISPONIBLES){pfn.addEventListener('change',cambiarNovedades);pintarNovedades();cargarNovedades().catch(()=>{});}
+  if(AVISOS_BANDEJA_DISPONIBLE){pintarBandeja();cargarBandeja().catch(()=>{});}
   /* Solo se anota la fecha de la primera descarga, en el propio perfil. */
   const m=$('pfManual'); if(m) m.addEventListener('click',()=>{
    rest('/rpc/marcar_manual_descargado',{method:'POST',body:'{}',keepalive:true}).catch(()=>{});
@@ -5056,6 +5085,64 @@ const Cuenta = (function(){
   }finally{
    if(vigente(cuenta)){novedadesGuardando=false;pintarNovedades();}
   }
+ }
+
+ /* --- bandeja de avisos (solo con AVISOS_BANDEJA_DISPONIBLE) ----- */
+ /* Lo que dice la base de esta cuenta, en memoria; nada se guarda en el
+    navegador. Las mismas reglas que la app (lib/avisos-cuenta.js): un aviso
+    con un campo raro no se enseña y un enlace solo vale si es de
+    https://rwadar.pages.dev. */
+ let bandeja=null,bandejaCuenta=-1,bandejaError=false;
+ const TIPOS_BANDEJA=['bienvenida','ofertas','actualizacion','novedad'];
+ const ENLACE_BANDEJA=/^https:\/\/rwadar\.pages\.dev(\/[A-Za-z0-9._~%-]+)*\/?([?#][A-Za-z0-9._~%=&-]*)?$/;
+ function avisoBandeja(f){
+  if(!f||typeof f!=='object'||Array.isArray(f)||!TIPOS_BANDEJA.includes(f.tipo))return null;
+  const bienvenida=f.tipo==='bienvenida';
+  if(typeof f.id!=='string'||!/^(?:bienvenida|[1-9]\d{0,18})$/.test(f.id)||(f.id==='bienvenida')!==bienvenida)return null;
+  const texto=(v,max)=>typeof v==='string'&&v.trim()&&v.length<=max&&!/[\u0000-\u001f\u007f-\u009f\u2028\u2029]/.test(v)?v.trim():'';
+  const titulo=texto(f.titulo,120),cuerpo=texto(f.texto,600);
+  if(!titulo||!cuerpo)return null;
+  let enlace='';
+  if(f.enlace!==null){
+   if(typeof f.enlace!=='string'||f.enlace.length>200||!ENLACE_BANDEJA.test(f.enlace))return null;
+   try{const u=new URL(f.enlace);if(u.username||u.password||u.port)return null;enlace=u.pathname+u.search+u.hash;}catch(e){return null;}
+  }
+  const valida=typeof f.creado_el==='string'&&f.creado_el.length<=40&&/^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}/.test(f.creado_el)&&Number.isFinite(Date.parse(f.creado_el));
+  if(!valida&&!(bienvenida&&f.creado_el===null))return null;
+  return {id:f.id,titulo,texto:cuerpo,enlace,fecha:valida?new Date(f.creado_el):null};
+ }
+ function pintarBandeja(){
+  const caja=$('pfBandeja');
+  if(!AVISOS_BANDEJA_DISPONIBLE||!caja)return;
+  /* Solo lo de la cuenta abierta: nunca la lista de otra que salió antes. */
+  const propia=bandejaCuenta===versionCuenta,lista=propia?bandeja:null;
+  const dos=n=>String(n).padStart(2,'0'),dia=d=>dos(d.getDate())+'/'+dos(d.getMonth()+1)+'/'+d.getFullYear();
+  const iso=d=>d.getFullYear()+'-'+dos(d.getMonth()+1)+'-'+dos(d.getDate());
+  caja.innerHTML=propia&&bandejaError
+   ?'<p class="perfil-nota" role="status">No se pudieron cargar tus avisos. Cierra y vuelve a abrir tu cuenta para reintentarlo.</p>'
+   :!lista?'<p class="perfil-nota" role="status">Cargando tus avisos…</p>'
+   :!lista.length?'<p class="perfil-nota">Aquí verás la bienvenida y los anuncios de RWAdar.</p>'
+   :'<ul class="bandeja-avisos">'+lista.map(a=>'<li><b>'+esc(a.titulo)+'</b><p>'+esc(a.texto)+'</p>'+
+     (a.fecha?'<time datetime="'+iso(a.fecha)+'">'+dia(a.fecha)+'</time>':'')+
+     (a.enlace?' <a href="'+esc(a.enlace)+'" aria-label="'+esc('Abrir '+a.titulo)+'">Abrir</a>':'')+'</li>').join('')+'</ul>';
+ }
+ async function cargarBandeja(){
+  if(!AVISOS_BANDEJA_DISPONIBLE||!identidadConfirmada||!ses)return;
+  /* Ya cargada o en camino para esta cuenta; tras un error, se reintenta. */
+  if(bandejaCuenta===versionCuenta&&!bandejaError)return;
+  const cuenta=versionCuenta;
+  bandejaCuenta=cuenta;bandeja=null;bandejaError=false;pintarBandeja();
+  try{
+   const filas=await rest('/rpc/mis_avisos_recientes',{method:'POST',body:JSON.stringify({p_limite:10})},cuenta);
+   if(!vigente(cuenta))return;
+   if(!Array.isArray(filas)||filas.length>50)throw new Error('Respuesta de avisos no válida.');
+   const vistos=new Set();
+   bandeja=filas.map(avisoBandeja).filter(a=>a&&!vistos.has(a.id)&&vistos.add(a.id)).slice(0,10);
+  }catch(e){
+   if(!vigente(cuenta))return;
+   bandejaError=true;
+  }
+  pintarBandeja();
  }
 
  /* --- estado del botón de la cabecera ----------------------------- */

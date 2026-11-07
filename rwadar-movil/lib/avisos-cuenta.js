@@ -419,8 +419,28 @@ function crearGestorAvisosNovedades({ avisosCuenta, usuarioId, push, almacen, ah
   };
 }
 
+/* Bandeja de avisos sin correo ni push (interruptor AVISOS_BANDEJA_REMOTA,
+   07/11/2026): solo la lista de avisos recibidos, la bienvenida y los
+   anuncios publicados, que la base da a cualquier cuenta confirmada
+   (mis_avisos_recientes, db/30). No lee ni cambia el permiso de avisos, no
+   toca el SDK de notificaciones ni registra el móvil. Qué avisos has leído se
+   guarda solo en este dispositivo, por cuenta, como con los avisos completos. */
+function crearBandejaAvisos({ avisosCuenta, usuarioId, almacen } = {}) {
+  if (!avisosCuenta || typeof avisosCuenta.recientes !== 'function' || !UUID.test(usuarioId || '')
+    || typeof almacen?.leidos !== 'function' || typeof almacen?.marcarLeidos !== 'function') throw fallo('sin_sesion', 401);
+  return {
+    async cargarRecientes(limite = 10) {
+      const [avisos, leidos] = await Promise.all([avisosCuenta.recientes(limite), almacen.leidos(usuarioId)]);
+      return { avisos, leidos };
+    },
+    marcarLeidos(ids) {
+      return almacen.marcarLeidos(usuarioId, ids);
+    },
+  };
+}
+
 module.exports = {
   VERSION_AVISOS, TEXTO_AVISOS_ES, TEXTO_AVISOS_EN, INFO_BASICA_ES, INFO_BASICA_EN, CODIGO_PUSH_MINIMO, TIPOS_AVISO,
   DESTINOS_AVISO, idiomaAvisos, capacidadPushNativa, tokenPushValido, enlaceAvisoValido, validarEstadoAvisos, validarAvisosRecientes,
-  aperturaDesdeDatosAviso, destinoAviso, crearAvisosCuenta, quitarPushConCliente, crearGestorAvisosNovedades,
+  aperturaDesdeDatosAviso, destinoAviso, crearAvisosCuenta, quitarPushConCliente, crearGestorAvisosNovedades, crearBandejaAvisos,
 };

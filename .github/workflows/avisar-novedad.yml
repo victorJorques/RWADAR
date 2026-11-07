@@ -67,6 +67,13 @@ concurrency:
   group: rwadar-avisar-novedad
   cancel-in-progress: false
 
+# Conexiones a Supabase siempre cifradas: con el «prefer» de libpq (lo que usa
+# psql si la dirección no lleva sslmode), alguien en medio que rechace TLS haría
+# seguir sin cifrar. Una sola regla para todos los flujos que usan
+# SUPABASE_DB_URL; la comprueba .github/flujos.test.mjs.
+env:
+  PGSSLMODE: require
+
 jobs:
   avisar:
     runs-on: ubuntu-24.04

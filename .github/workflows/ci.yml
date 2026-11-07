@@ -1,9 +1,20 @@
 name: Verificación
 
+# Solo en los PR (y a mano). Ya no corre otra vez al unir a main: lo que se une
+# es lo mismo que acaba de pasar en el PR, y ningún otro flujo espera este
+# resultado en main (07/11/2026, para ahorrar minutos de Actions).
+#
+# Si el PR solo cambia docs/** o archivos .md de la raíz, el escáner de
+# secretos corre igual (un documento también puede llevar una clave pegada),
+# pero la batería de pruebas se salta. Se salta con «if» y no con paths-ignore
+# a propósito: un trabajo saltado cuenta como correcto, y así un PR de
+# documentación nunca se queda con una comprobación «pendiente» si algún día se
+# exige en las reglas de la rama. Las pruebas sí corren si alguno de esos
+# documentos lo leen las pruebas o la compuerta de publicación (por ejemplo,
+# AGENTS.md, docs/INTERNO.md o los informes que cita estado.json).
 on:
-  push:
-    branches: [main]
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -16,9 +27,20 @@ jobs:
   secretos:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    outputs:
+      pruebas: ${{ steps.cambios.outputs.pruebas }}
     steps:
       - name: Descargar el código
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # En un PR se descarga la unión con la base; con su padre se ve qué cambia.
+          fetch-depth: 2
+
+      - name: Ver si el PR cambia algo más que documentación
+        id: cambios
+        shell: bash
+        # La regla está en el script para poder probarla: .github/flujos.test.mjs.
+        run: bash .github/cambios-ci.sh
 
       - name: Preparar escáner verificado
         shell: bash
@@ -42,6 +64,9 @@ jobs:
             --redact=100 --no-banner --no-color --ignore-gitleaks-allow
 
   pruebas:
+    needs: secretos
+    # Corre aunque el escáner encuentre algo, para ver los dos resultados.
+    if: ${{ !cancelled() && needs.secretos.outputs.pruebas == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -71,6 +96,9 @@ jobs:
       - name: Aplicar el parche de seguridad de Expo (uuidv5 en iOS)
         run: npm --prefix rwadar-movil run postinstall
 
+      # Incluye las pruebas de .github/ (vigilante, flujos, copias y detección
+      # de cambios): van al final de «npm --prefix rwadar-app test». No en el
+      # package.json de la raíz: el guardián de la OTA lo trata como nativo.
       - name: Ejecutar toda la batería local
         run: npm test
 

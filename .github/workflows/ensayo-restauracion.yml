@@ -1,0 +1,108 @@
+name: Ensayo de restauración
+
+# Comprueba que la última copia de seguridad se puede recuperar de verdad.
+# Descarga el último artefacto copia-rwadar-N de una ejecución correcta de
+# «Copia de seguridad», lo descifra con COPIA_CLAVE y lo restaura en un
+# Postgres 17 de usar y tirar que vive dentro de esta misma máquina de GitHub
+# (no toca Supabase ni nada en línea). Enseña solo recuentos de filas por
+# tabla y, al terminar, lo borra todo. Guía: docs/COPIAS-DE-SEGURIDAD.md
+#
+# El registro del contenedor de servicio sale entero en «Stop containers».
+# Por eso el script le pide al servidor que no apunte los errores de sus
+# conexiones (PGOPTIONS): si falla la carga de una tabla, ahí saldría la fila.
+#
+# Solo a mano (Run workflow): unos 3 minutos de Actions cada vez.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read   # leer las ejecuciones y descargar el artefacto
+  contents: read
+
+concurrency:
+  group: rwadar-ensayo-restauracion
+  cancel-in-progress: false
+
+jobs:
+  ensayo:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17@sha256:ff87138949ad9a46f32ff23bd6852b52ce024a13dffe9b4087be98292cdd3b4f # postgres:17 a 07/11/2026
+        env:
+          # Contraseña de un Postgres que solo existe durante este trabajo.
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Instalar pg_restore 17
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+
+      - name: Descargar la última copia correcta
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          umask 077
+          DESTINO="$RUNNER_TEMP/copia"
+          mkdir -p "$DESTINO"
+          # Ejecuciones correctas, de la más reciente a la más antigua. Las de
+          # modo «prueba» no guardan copia: se saltan solas.
+          # La lista se lee aparte: dentro de «< <(…)» un fallo de gh (permiso,
+          # red, flujo renombrado) no lo ve set -e y parecería que no hay copias.
+          LISTA="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow copia-seguridad.yml \
+                     --status success --limit 40 --json databaseId,createdAt \
+                     --jq '.[] | "\(.databaseId)\t\(.createdAt)"')" \
+            || { echo "No se han podido leer las ejecuciones de «Copia de seguridad» (permiso, red o flujo renombrado): ver el error de gh justo encima."; exit 1; }
+          EJECUCION=""
+          NOMBRE=""
+          while IFS=$'\t' read -r id creada; do
+            [ -n "$id" ] || continue
+            NOMBRE="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$id/artifacts" \
+              --jq '[.artifacts[] | select(.expired | not) | select(.name | test("^copia-rwadar-[0-9]+$"))][0].name // empty')"
+            if [ -n "$NOMBRE" ]; then EJECUCION="$id"; break; fi
+          done <<< "$LISTA"
+          [ -n "$EJECUCION" ] || { echo "No hay ninguna copia correcta sin caducar en «Copia de seguridad»."; exit 1; }
+          creada="${creada/T/ }"
+          creada="${creada%Z}"
+          echo "Copia elegida: $NOMBRE (ejecución del $creada UTC)."
+          gh run download "$EJECUCION" --repo "$GITHUB_REPOSITORY" --name "$NOMBRE" --dir "$DESTINO"
+          CIFRADA="$(find "$DESTINO" -name 'rwadar-*.dump.gpg' -type f | head -n 1)"
+          [ -n "$CIFRADA" ] || { echo "El artefacto $NOMBRE no trae ningún rwadar-*.dump.gpg."; exit 1; }
+          echo "CARPETA_COPIA=$(dirname "$CIFRADA")" >> "$GITHUB_ENV"
+          ls -l "$(dirname "$CIFRADA")"
+          {
+            echo "### Copia ensayada"
+            echo
+            echo "\`$NOMBRE\`, de la ejecución de «Copia de seguridad» del $creada UTC."
+            echo
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Restaurar en el Postgres de usar y tirar y comprobar
+        env:
+          COPIA_CLAVE: ${{ secrets.COPIA_CLAVE }}
+          PGHOST: localhost
+          PGPORT: '5432'
+          PGUSER: postgres
+          PGPASSWORD: postgres
+        run: bash rwadar-app/ensayo-restauracion.sh "$CARPETA_COPIA"
+
+      - name: Borrar la copia descargada
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/copia"

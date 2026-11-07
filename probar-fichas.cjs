@@ -12,6 +12,7 @@ const {ARCHIVOS_PUBLICABLES}=require('./rwadar-publicacion-segura');
 const raiz=__dirname;
 const catalogo=leerCatalogo();
 const salidas=construirSalidas();
+const TRANSPARENCIA_FICHAS=JSON.parse(fs.readFileSync(path.join(raiz,'rwadar-editorial-source/ofertas/transparencia.json'),'utf8'));
 let pruebas=0;
 function verificar(nombre,fn){fn();pruebas++;console.log('OK '+nombre);}
 verificar('fichas completas del manifiesto y tres destinos de método/novedades en lista cerrada',()=>{
@@ -196,10 +197,43 @@ verificar('la ficha fija enseña «Transparencia: lo que hemos comprobado» sin 
   assert(pagina.includes('Es una comprobación de la documentación, no una recomendación de inversión.'));
   assert.equal((pagina.match(/<li data-cumple="(?:si|no)">/g)||[]).length,5);
   assert(/<p data-campo="vigencia"[^>]*>Se comprueba al abrir la página/.test(pagina));
-  assert(pagina.includes('Puntos fuertes, con su fuente'));
+  assert(pagina.includes('<h3>Datos comprobados a favor, con su fuente</h3>'));
   assert(!/(?<![\d,.])[0-5]\s*\/\s*5(?!\d)/.test(pagina.replace(/<[^>]*>/g,' ')));
   const sinPuntos=salidas.get('ofertas/hausera-proximas-ofertas.html');
-  assert(sinPuntos.includes('Transparencia: lo que hemos comprobado')&&!sinPuntos.includes('Puntos fuertes, con su fuente'));
+  assert(sinPuntos.includes('Transparencia: lo que hemos comprobado')&&!sinPuntos.includes('Datos comprobados a favor'));
+});
+// Revisión legal 06/11/2026, punto 5.3: «Datos comprobados a favor» en vez de «Puntos fuertes»,
+// y «Ver oferta en X» solo donde «Se contrata hoy desde España» Y «supervisada» son «Sí».
+verificar('revisión legal 5.3: sin «Puntos fuertes» y el botón al proveedor según si se contrata hoy desde España y si la entidad está supervisada',()=>{
+  for(const [nombre,contenido] of salidas)if(nombre.endsWith('.html'))assert(!/Puntos fuertes/i.test(contenido),nombre);
+  const botones={};
+  for(const o of catalogo.ofertas){
+    const html=salidas.get('ofertas/'+o.slug+'.html');
+    const boton=[...html.matchAll(/<a class="boton"[^>]*data-campo="botonProveedor">([^<]*)<\/a>/g)].map(m=>m[1]);
+    assert.equal(boton.length,1,o.slug);
+    const si=/<li data-cumple="si"><strong><span class="comprobacion-marca">✓ Sí<\/span> Se contrata hoy desde España/.test(html)&&
+      /<li data-cumple="si"><strong><span class="comprobacion-marca">✓ Sí<\/span> La entidad que la ofrece está autorizada/.test(html);
+    assert.equal(boton[0],si?'Ver oferta en '+esc(o.plataformaNombre)+' ↗':'Ir a la web del proveedor (sales de RWAdar) ↗',o.slug);
+    if(o.disponibleEs!==true)assert(!si&&!html.includes('Ver oferta en'),o.slug+': no consta que se contrate desde España');
+    // Después de los avisos y de «Antes de invertir».
+    assert(html.indexOf('data-campo="botonProveedor"')>html.indexOf('id="riesgos"'),o.slug);
+    if(html.includes('id="avisos"'))assert(html.indexOf('data-campo="botonProveedor"')>html.indexOf('id="avisos"'),o.slug);
+    botones[o.slug]=boton[0];
+  }
+  assert.equal(botones.mtbill,'Ir a la web del proveedor (sales de RWAdar) ↗');
+  assert.equal(botones['boss-info'],'Ir a la web del proveedor (sales de RWAdar) ↗');
+  assert.equal(botones['hausera-proximas-ofertas'],'Ir a la web del proveedor (sales de RWAdar) ↗');
+  assert.equal(botones['robinhood-classic-stock-tokens'],'Ver oferta en Robinhood Europe ↗');
+  // Se contratan desde España, pero quien las vende no está supervisado: tampoco «Ver oferta en».
+  assert.equal(botones.aktionariat,'Ir a la web del proveedor (sales de RWAdar) ↗');
+  assert.equal(botones['prosegur-digital-gold'],'Ir a la web del proveedor (sales de RWAdar) ↗');
+  assert(Object.entries(botones).filter(([,b])=>b.startsWith('Ver oferta en')).every(([slug])=>TRANSPARENCIA_FICHAS.ofertas[slug]?.supervisada?.cumple===true),
+    'solo las supervisadas dicen «Ver oferta en»');
+  // Un catálogo donde la fuente no dice que se contrate desde España tampoco dice «Ver oferta en».
+  const sinEspana=structuredClone(catalogo);
+  for(const o of sinEspana.ofertas)o.disponibleEs=null;
+  const otras=construirSalidas({catalogo:sinEspana});
+  for(const o of sinEspana.ofertas)assert(!otras.get('ofertas/'+o.slug+'.html').includes('Ver oferta en'),o.slug);
 });
 // Corrección (03/11): la página fija enlaza la fuente de cada comprobación, con la misma fecha que la ficha
 // de la web, y lo que escribe RWAdar se traduce (class="ui"); solo transparencia.json y el catálogo van como fuente.
@@ -219,6 +253,7 @@ verificar('con la revisión vencida la página fija deja de afirmar que se contr
   const fila=()=>{const marca={textContent:'✓ Sí'};return {dataset:{cumple:'si'},marca,querySelector:()=>marca};};
   const filas={contratable:fila(),minimoSalida:fila(),vigencia:fila()};
   const campos=Object.fromEntries(Object.entries(filas).map(([n,f])=>[n,{textContent:'',parentElement:f,appendChild(){}}]));
+  campos.botonProveedor={textContent:'Ver oferta en Robinhood Europe ↗'};
   const oferta=catalogo.ofertas.find(o=>o.slug==='robinhood-classic-stock-tokens');
   const pagina={dataset:{oferta:JSON.stringify(oferta)},querySelector:selector=>campos[selector.match(/"([^"]+)"/)[1]]};
   let volver,reloj=new Date(oferta.verificadaEl+'T12:00:00Z');
@@ -228,9 +263,12 @@ verificar('con la revisión vencida la página fija deja de afirmar que se contr
     window:{setInterval:()=>{}}};
   vm.runInNewContext(codigo,contexto,{timeout:1000});
   assert.equal(filas.contratable.dataset.cumple,'si');assert.equal(filas.minimoSalida.dataset.cumple,'si');assert.equal(filas.vigencia.dataset.cumple,'si');
+  assert.equal(campos.botonProveedor.textContent,'Ver oferta en Robinhood Europe ↗');
   reloj=new Date(Date.parse(oferta.verificadaEl+'T12:00:00Z')+9*864e5);volver();
   for(const n of ['contratable','minimoSalida','vigencia']){assert.equal(filas[n].dataset.cumple,'no',n);assert.equal(filas[n].marca.textContent,'✗ No',n);}
   assert.match(campos.contratable.textContent,/^Pendiente de volver a comprobar: la revisión semanal ha caducado\.$/);
+  // Revisión legal 5.3: con «Se contrata hoy desde España» en «No», el botón dice que sales de RWAdar.
+  assert.equal(campos.botonProveedor.textContent,'Ir a la web del proveedor (sales de RWAdar) ↗');
   assert.match(campos.minimoSalida.textContent,/por volver a comprobar/);
 });
 // QA escritorio 04/11/2026, n.º 12: una API o una respuesta JSON no es una
