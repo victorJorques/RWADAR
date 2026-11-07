@@ -635,6 +635,28 @@ test('Privacidad: con el interruptor apagado, las frases de hoy; encendido, las 
   assert.match(v142, /Expo y Firebase Cloud Messaging/);
   assert.match(v142, /a través de Lettermint, sin píxel ni seguimiento de clics/);
   assert.doesNotMatch(v142, /Brevo/, 'Brevo se descartó: mete píxel en el correo transaccional');
+  // El «latido» de Firebase de la 1.4.2 (APK-1.4.2-NOTIFICACIONES.md, punto 3): se dice siempre,
+  // y mientras el botón esté oculto no se promete que exista.
+  for (const t of [hoy, v141, v142]) {
+    assert.match(t, /Componente de notificaciones de Google \(Firebase\)/);
+    assert.match(t, /Desde la versión 1\.4\.2, la app de Android lleva el componente de notificaciones de Google \(Firebase\)\./);
+    assert.match(t, /no envía nada a Google/);
+    assert.match(t, /las fechas recientes en que se abrió la app \(hasta 30\)/);
+    // Qué manda Firebase y para qué, según Google (firebase.google.com/docs/android/play-data-disclosure).
+    assert.match(t, /junto con qué componentes de Firebase lleva la app y sus versiones, y datos técnicos del móvil \(versión de Android, marca, modelo, tipo de dispositivo y tienda desde la que se instaló la app\)\./);
+    assert.match(t, /Según Google, los usa para sus estadísticas internas de uso de esos componentes, sin unirlos a un identificador de la persona ni del móvil\./);
+    assert.doesNotMatch(t, /para poder entregarlas|solo para ese componente/);
+    // El botón «Borrar datos de este dispositivo» de la misma pantalla no las borra.
+    assert.match(t, /Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android\. El botón «Borrar datos del dispositivo» de RWAdar no las borra\./);
+  }
+  for (const t of [hoy, v141]) assert.match(t, /hoy ese botón no aparece en la app/);
+  assert.doesNotMatch(v142, /hoy ese botón no aparece en la app/);
+  assert.match(v142, /Mientras no actives «Notificaciones en este móvil», no envía nada a Google\./);
+  for (const t of [hoy, v142]) {
+    const parrafo = t.match(/Desde la versión 1\.4\.2[^]*?de RWAdar no las borra\./)[0];
+    assert.notEqual(idioma.ingles(parrafo), parrafo, 'falta el inglés del párrafo de Firebase');
+  }
+  assert.equal(idioma.ingles('Componente de notificaciones de Google (Firebase)'), 'Google notifications component (Firebase)');
 });
 
 test('Perfil: con el interruptor, el panel de la cuenta sustituye a «Próximamente»', () => {
@@ -662,7 +684,8 @@ function variableApp(nombre) {
 }
 
 test('App: el enlace de baja de Inicio abre Perfil y Perfil baja hasta Avisos', () => {
-  assert.match(APP, /<TarjetaAvisosInicio[^>]*onDesactivar=\{irAAvisosPerfil\}/);
+  // Con la bandeja sola (AVISOS_BANDEJA_REMOTA) no hay Perfil › Avisos: sin enlace de baja.
+  assert.match(APP, /<TarjetaAvisosInicio[^>]*onDesactivar=\{AVISOS_NOVEDADES_ACTIVOS \? irAAvisosPerfil : undefined\}/);
   assert.match(APP, /enfocarAvisos=\{enfocarAvisosPerfil\}\s*onAvisosEnfocados=\{\(\) => setEnfocarAvisosPerfil\(false\)\}/);
   assert.match(APP, /<PanelAvisosNovedades[^>]*onPrivacidad=\{\(\) => abrirEnlace\(URL_PRIVACIDAD_AVISOS\)\}/);
   assert.match(APP, /const URL_PRIVACIDAD_AVISOS = `\$\{URL_PRIVACIDAD\}#avisos-novedades`;/);
@@ -719,10 +742,11 @@ test('App: solo con el interruptor se observan las novedades y se pinta la tarje
   }
   assert.match(APP, /const AVISOS_NOVEDADES_ACTIVOS = CUENTA_REMOTA_ACTIVA && AVISOS_NOVEDADES_REMOTOS === true;/);
   assert.match(APP, /useAvisosNovedades\(\{ cuenta, usuarioId: AVISOS_NOVEDADES_ACTIVOS \? usuarioAdmitido : null \}\)/);
-  assert.match(APP, /tarjetaAvisos=\{AVISOS_NOVEDADES_ACTIVOS \? \(/);
+  assert.match(APP, /const avisosInicio = AVISOS_NOVEDADES_ACTIVOS \? novedadesCuenta : BANDEJA_AVISOS_ACTIVA \? bandejaAvisos : null;/);
+  assert.match(APP, /tarjetaAvisos=\{avisosInicio \? \(/);
   assert.match(APP, /panelNovedades=\{AVISOS_NOVEDADES_ACTIVOS \? \(/);
-  assert.match(APP, /<TarjetaAvisosInicio[^>]*onMarcarLeidos=\{novedadesCuenta\.marcarTodosLeidos\}/);
-  assert.match(APP, /await borrarDatosDispositivo\(\);[\s\S]{0,200}if \(AVISOS_NOVEDADES_ACTIVOS\) novedadesCuenta\.recargar\(\);/);
+  assert.match(APP, /<TarjetaAvisosInicio[^>]*onMarcarLeidos=\{avisosInicio\.marcarTodosLeidos\}/);
+  assert.match(APP, /await borrarDatosDispositivo\(\);[\s\S]{0,200}avisosInicio\?\.recargar\(\);/);
   assert.match(APP, /<AccesoObligatorio[^>]*avisosNovedades=\{AVISOS_NOVEDADES_ACTIVOS\}/);
   assert.match(APP, /antesDeSalir: AVISOS_NOVEDADES_REMOTOS === true \? quitarPushAlSalir : null/);
   assert.match(fs.readFileSync(path.join(RAIZ, 'componentes', 'AccesoObligatorio.js'), 'utf8'), /avisosNovedades=\{avisosNovedades === true\}/);
@@ -734,7 +758,7 @@ test('App: solo con el interruptor se observan las novedades y se pinta la tarje
 });
 
 test('App: tocar una notificación lleva a inicio, a ofertas nuevas o a la Academy, y espera a la cuenta', () => {
-  const crear = new Function('destinoAvisoPendiente', 'cargando', 'usuarioAdmitido', 'setters', 'novedadesCuenta',
+  const crear = new Function('destinoAvisoPendiente', 'cargando', 'usuarioAdmitido', 'setters', 'avisosInicio',
     `const { setAbierta, setOfertaAbierta, setExplicando, setPrivacidad, setLeccion, setPestana, setOrdenOfertas,
       setGrupoOfertas, setTipoOferta, setProveedorOferta, setGrupoProveedorAbierto, setBusquedaOfertas, setVistaBuscar,
       setDestinoAvisoPendiente } = setters; return (${efectoApp('destinoAvisoPendiente || cargando')});`);
@@ -759,6 +783,130 @@ test('App: tocar una notificación lleva a inicio, a ofertas nuevas o a la Acade
   assert.deepEqual(ejecutar({ tipo: 'ofertas', destino: 'buscar' }, { cargando: true }).cambios, {});
   assert.deepEqual(ejecutar({ tipo: 'ofertas', destino: 'buscar' }, { usuario: null }).cambios, {});
   assert.deepEqual(ejecutar(null).cambios, {});
+});
+
+/* ---------------------------------------------------------------------
+   Bandeja de avisos sin correo ni push (AVISOS_BANDEJA_REMOTA, 07/11/2026)
+   --------------------------------------------------------------------- */
+function bandeja({ recientes = RECIENTES, fallo = false } = {}) {
+  const h = crearReact(), rpc = [], local = { leidos: [] };
+  const prohibido = (nombre) => () => assert.fail(`la bandeja no debe llamar a ${nombre}`);
+  const cliente = { rpc(nombre, args) {
+    rpc.push([nombre, args]);
+    if (nombre !== 'mis_avisos_recientes') assert.fail(`la bandeja no debe llamar a ${nombre}`);
+    return { abortSignal: async () => (fallo ? { data: null, error: { message: 'caída' }, status: 503 } : { data: recientes, error: null }) };
+  } };
+  const cuenta = { estado: () => ({ usuario: { id: UID } }), clienteCatalogo: async () => cliente,
+    suscribir(fn) { fn({ usuario: { id: UID } }); return () => {}; } };
+  const modulo = cargarComponente('AvisosNovedades.js', h.react, {
+    // Ni el SDK de notificaciones ni el token del móvil: solo los leídos.
+    '../lib/avisos': { capacidadPushNovedades: prohibido('capacidadPushNovedades'),
+      consultarPushNovedades: prohibido('consultarPushNovedades'), obtenerTokenNovedades: prohibido('obtenerTokenNovedades') },
+    '../lib/datos': {
+      avisosLeidos: async () => local.leidos,
+      marcarAvisosLeidos: async (_, ids) => { local.leidos = [...new Set([...ids, ...local.leidos])]; return local.leidos; },
+      tokenPushNovedades: prohibido('tokenPushNovedades'), guardarTokenPushNovedades: prohibido('guardarTokenPushNovedades'),
+      borrarTokenPushNovedades: prohibido('borrarTokenPushNovedades'), renovacionPushNovedades: prohibido('renovacionPushNovedades'),
+      marcarRenovacionPushNovedades: prohibido('marcarRenovacionPushNovedades'),
+    },
+  });
+  let ultimo;
+  const pintar = (usuarioId = UID) => { ultimo = h.pintar(() => modulo.useBandejaAvisos({ cuenta, usuarioId })); return ultimo; };
+  const esperar = async (usuarioId) => { for (let i = 0; i < 12; i++) { await new Promise((r) => setImmediate(r)); pintar(usuarioId); } return ultimo; };
+  return { modulo, rpc, local, pintar, esperar, h };
+}
+
+test('bandeja encendida: solo pide mis_avisos_recientes, enseña lo recibido y guarda los leídos en el móvil', async () => {
+  const b = bandeja();
+  const estado = await b.esperar();
+  assert.deepEqual(b.rpc, [['mis_avisos_recientes', { p_limite: 10 }]], 'ni estado_mis_avisos, ni permiso, ni push');
+  assert.equal(estado.activo, true);
+  assert.deepEqual(estado.avisos.map((x) => x.id), ['9', 'bienvenida'], 'el aviso con enlace ajeno no se enseña');
+  assert.equal(estado.noLeidos, 2);
+  assert.equal(estado.errorCarga, '');
+  // Sin interruptores de permiso ni de móvil.
+  for (const clave of ['servidor', 'movil', 'alternarNovedades', 'alternarMovil']) assert.equal(Object.hasOwn(estado, clave), false, clave);
+  await estado.marcarLeidos(['9']);
+  assert.deepEqual(b.local.leidos, ['9']);
+  assert.equal((await b.esperar()).noLeidos, 1);
+  await b.pintar().marcarTodosLeidos();
+  assert.equal((await b.esperar()).noLeidos, 0);
+  assert.deepEqual(b.local.leidos.sort(), ['9', 'bienvenida']);
+  // La tarjeta de Inicio, sin «¿No quieres estos avisos?»: no hay Perfil › Avisos que abrir.
+  const tarjeta = tarjetaViva()({ avisos: b.pintar().avisos, leidos: b.pintar().leidos });
+  assert.match(texto(tarjeta), /Te damos la bienvenida a RWAdar/);
+  assert.equal(boton(tarjeta, DESACTIVAR), undefined);
+  b.pintar().recargar();
+  await b.esperar();
+  assert.equal(b.rpc.length, 2, 'deslizar para actualizar vuelve a pedirlos');
+  b.h.desmontar();
+});
+
+test('bandeja: si la base falla se dice en la tarjeta, y sin cuenta (interruptor apagado) no se llama a nada', async () => {
+  const caida = bandeja({ fallo: true });
+  const estado = await caida.esperar();
+  assert.equal(estado.errorCarga, 'No se pudieron cargar tus avisos. Desliza hacia abajo para reintentar.');
+  assert.deepEqual(estado.avisos, []);
+  caida.h.desmontar();
+  const apagada = bandeja();
+  const sin = await apagada.esperar(null);
+  assert.equal(sin.activo, false);
+  assert.deepEqual(apagada.rpc, []);
+  await sin.marcarLeidos(['9']); sin.recargar(); await sin.marcarTodosLeidos();
+  await new Promise((r) => setImmediate(r));
+  assert.deepEqual(apagada.rpc, []);
+  assert.deepEqual(apagada.local.leidos, []);
+  apagada.h.desmontar();
+  // La pieza sin React: sin cuenta válida no arranca, y no ofrece nada del permiso ni del móvil.
+  assert.throws(() => avisosCuenta.crearBandejaAvisos({ avisosCuenta: { recientes() {} }, usuarioId: 'x', almacen: {} }));
+  const pieza = avisosCuenta.crearBandejaAvisos({ avisosCuenta: { recientes: async (n) => [n] }, usuarioId: UID,
+    almacen: { leidos: async () => ['bienvenida'], marcarLeidos: async (_, ids) => ids } });
+  assert.deepEqual(Object.keys(pieza).sort(), ['cargarRecientes', 'marcarLeidos']);
+  assert.deepEqual(await pieza.cargarRecientes(10), { avisos: [10], leidos: ['bienvenida'] });
+});
+
+test('App: la bandeja tiene su interruptor aparte, apagado; encendida solo pinta la tarjeta de Inicio', () => {
+  const modo = fs.readFileSync(path.join(RAIZ, 'lib', 'modo-local.js'), 'utf8');
+  assert.match(modo, /export const AVISOS_BANDEJA_REMOTA = false;/, 'la bandeja nace apagada');
+  assert.match(modo, /export const AVISOS_NOVEDADES_REMOTOS = false;/);
+  const activa = new Function('CUENTA_REMOTA_ACTIVA', 'AVISOS_BANDEJA_REMOTA', 'AVISOS_NOVEDADES_ACTIVOS',
+    `return (${variableApp('BANDEJA_AVISOS_ACTIVA')});`);
+  assert.equal(activa(true, false, false), false, 'apagada no hace nada');
+  assert.equal(activa(true, true, false), true, 'encendida, con cuenta');
+  assert.equal(activa(false, true, false), false, 'sin cuentas remotas, nada');
+  assert.equal(activa(true, true, true), false, 'con los avisos completos, ya la traen ellos');
+  const inicio = new Function('AVISOS_NOVEDADES_ACTIVOS', 'BANDEJA_AVISOS_ACTIVA', 'novedadesCuenta', 'bandejaAvisos',
+    `return (${variableApp('avisosInicio')});`);
+  const completa = { tipo: 'completa' }, sola = { tipo: 'bandeja' };
+  assert.equal(inicio(false, false, completa, sola), null, 'apagadas las dos: ni tarjeta ni insignia');
+  assert.equal(inicio(false, true, completa, sola), sola);
+  assert.equal(inicio(true, false, completa, sola), completa);
+  assert.match(APP, /useBandejaAvisos\(\{ cuenta, usuarioId: BANDEJA_AVISOS_ACTIVA \? usuarioAdmitido : null \}\)/);
+  assert.match(APP, /novedades=\{avisos\.length \+ \(avisosInicio \? avisosInicio\.noLeidos : 0\)\}/);
+  // La casilla del alta, Perfil › Avisos, el push y la salida siguen dependiendo solo de los avisos completos.
+  assert.match(APP, /<AccesoObligatorio[^>]*avisosNovedades=\{AVISOS_NOVEDADES_ACTIVOS\}/);
+  assert.match(APP, /panelNovedades=\{AVISOS_NOVEDADES_ACTIVOS \? \(/);
+  assert.match(APP, /avisosNovedades: AVISOS_NOVEDADES_REMOTOS === true,/);
+  assert.match(APP, /pushNovedades=\{AVISOS_NOVEDADES_ACTIVOS && capacidadPushNovedades\(\)\}/);
+  assert.match(APP, /\}, AVISOS_NOVEDADES_ACTIVOS \? \{\s*\/\/ Notificación de novedades/);
+  assert.doesNotMatch(APP, /AVISOS_BANDEJA_REMOTA[^\n]*(?:quitarPushAlSalir|capacidadPushNovedades|observarAperturasAvisos)/);
+  // El texto versionado del permiso no cambia.
+  assert.equal(avisosCuenta.VERSION_AVISOS, 'novedades-v2-2026-11-06');
+  // Privacidad: con la bandeja, una frase de lo que se ve y se guarda; sin ella, nada nuevo.
+  const entorno = { MODO_LOCAL: false, USUARIO_LOCAL: true, e: {}, C: {}, URL_PRIVACIDAD: 'https://rwadar.pages.dev/privacidad', abrirEnlace() {} };
+  for (const n of ['Modal', 'SafeAreaProvider', 'SafeAreaView', 'View', 'Text', 'ScrollView', 'Pressable', 'ActivityIndicator']) entorno[n] = n;
+  const Privacidad = funcionApp('Privacidad', entorno);
+  const FRASE = /En Inicio ves los avisos de tu cuenta: la bienvenida y los anuncios de RWAdar\. La app los lee de Supabase con tu sesión y qué avisos has leído se guarda solo en este dispositivo\. No se envían por correo ni como notificaciones\./;
+  const con = texto(Privacidad({ estadoCuenta: { disponible: true }, bandejaAvisos: true }));
+  const sin = texto(Privacidad({ estadoCuenta: { disponible: true } }));
+  assert.match(con, FRASE);
+  assert.doesNotMatch(sin, FRASE);
+  for (const t of [con, sin]) {
+    assert.match(t, /No se activan opiniones, publicidad, avisos por correo ni push al registrarte/);
+    assert.doesNotMatch(t, /Avisos de novedades|marcas su casilla/);
+  }
+  const frase = con.match(FRASE)[0];
+  assert.notEqual(idioma.ingles(frase), frase, 'falta el inglés de la frase de la bandeja');
 });
 
 test('todos los textos nuevos de la interfaz tienen su inglés en el diccionario compartido', () => {

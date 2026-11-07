@@ -3,6 +3,32 @@
   "nota": "Noticias de RWAdar para Inicio (web en el móvil y app). La más reciente arriba. Después de editar: node rwadar-noticias.js. Si la noticia se publicó también en una red social, añade \"red\": {\"nombre\": \"LinkedIn\", \"url\": \"https://…\"}.",
   "noticias": [
     {
+      "id": "academy-nueve-lecciones",
+      "fecha": "2026-11-06",
+      "etiqueta": "Academy",
+      "titulo": "RWAdar Academy ya tiene sus 9 lecciones",
+      "texto": "Publicamos las dos últimas: los doce documentos del expediente de tokenización y qué pasa después de emitir. Las lecciones se leen gratis con una cuenta; el índice y el tutorial 3D siguen abiertos sin registro. Cada lección trae un resumen de 30 segundos, un test corto y la fecha de su revisión legal.",
+      "resumen": "RWAdar Academy ya tiene sus 9 lecciones, gratis con una cuenta",
+      "destino": "academy"
+    },
+    {
+      "id": "app-android-1-4-2",
+      "fecha": "2026-11-06",
+      "etiqueta": "App",
+      "titulo": "App Android 1.4.2, preparada para las notificaciones del móvil",
+      "texto": "La versión 1.4.2 trae lo necesario para recibir notificaciones en el móvil, pero todavía no están activas. La app no pide permiso al abrirse: solo lo pedirá si las activas tú con su botón. Hasta entonces funciona igual que la 1.4.1, que avisa de la versión nueva. Se descarga desde GitHub; no está en Google Play.",
+      "resumen": "App Android 1.4.2: preparada para las notificaciones, que todavía no están activas"
+    },
+    {
+      "id": "catalogo-2026-11-05",
+      "fecha": "2026-11-05",
+      "etiqueta": "Ofertas",
+      "titulo": "Catálogo revisado: 22 ofertas y 25 plataformas",
+      "texto": "Volvimos a leer cada oferta en su fuente oficial. Quedan 22: 8 ofertas principales, 13 de reventa entre inversores y 1 próxima. Salen BILLA y Casa de Outeiro: su plazo de suscripción terminó sin llegar al mínimo y sus campañas no recogen ninguna ampliación. No entra ninguna de las 9 candidatas estudiadas.",
+      "resumen": "Catálogo revisado: salen BILLA y Casa de Outeiro, y no entra ninguna oferta nueva",
+      "destino": "ofertas"
+    },
+    {
       "id": "catalogo-2026-11-03",
       "fecha": "2026-11-03",
       "etiqueta": "Ofertas",

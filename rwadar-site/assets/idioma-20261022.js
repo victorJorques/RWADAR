@@ -70,6 +70,7 @@
           [/^Quitar de guardadas: (.+)$/,(m,n)=>'Remove from saved: '+n],
           [/^Ver oferta en (.+)$/,(m,n)=>'See the offer on '+n],
           [/^Ficha oficial: (.+)$/,(m,n)=>'Official page: '+n],
+          [/^Ir a la web del proveedor \(sales de RWAdar\): (.+)$/,(m,n)=>"Go to the provider's website (you leave RWAdar): "+n],
           [/^Paso (\d+): (.+)$/,(m,n,c)=>'Step '+n+': '+t(c)],
           [/^✕ No es esa\. La correcta es la ([A-D]): aquí tienes por qué\.$/,(m,l)=>'✕ Not that one. The correct answer is '+l+': here is why.'],
           [/^✓ Leída · (Test \d+\/\d+)$/,(m,x)=>'✓ Read · '+x],

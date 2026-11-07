@@ -1,0 +1,146 @@
+name: Correo Lettermint (prueba y bajas)
+
+# Dos acciones para el correo de los avisos a registrados, que sale por
+# Lettermint (migración 31). Ninguna aplica migraciones ni enciende nada.
+#
+# · prueba-correo: la prueba real antes de encender el correo (RUNBOOK,
+#   «Encender el correo», paso 10). Manda DOS correos al buzón que escribas
+#   en «destinatario»: uno por la ruta de servicio (la de por defecto, la de
+#   la bienvenida) y otro por la de difusión (route "broadcast", la de los
+#   anuncios), los dos sin seguimiento de aperturas ni de clics y desde el
+#   remitente guardado en Vault (RWADAR_REMITENTE, leído con una consulta
+#   de solo lectura) o el que escribas en «remitente». Enseña el código HTTP
+#   y el message_id de cada uno. Antes comprueba que la API REST pública de
+#   Supabase no expone los esquemas net ni vault (PGRST106), con la clave
+#   publicable que ya lleva la web. Secretos: LETTERMINT_API_TOKEN (token de
+#   proyecto) y, si el remitente sale de Vault, SUPABASE_DB_URL.
+#
+# · sincronizar-bajas: pide a Lettermint su lista de bajas («unsubscribe»)
+#   de las rutas de difusión y aplica cada una en RWAdar con
+#   rwadar_novedades.baja_por_correo (db/31_correo_lettermint_baja.sql).
+#   No toca a quien ya estaba de baja ni a quien se volvió a apuntar en
+#   RWAdar después; repetirla no cambia nada. Solo enseña recuentos, nunca
+#   correos. Secretos: LETTERMINT_TEAM_TOKEN (token DE EQUIPO de la Team API
+#   de Lettermint, que solo pueda leer supresiones: el de proyecto no sirve
+#   para listarlas) y SUPABASE_DB_URL. Si no hay ninguna baja, ni instala
+#   psql ni toca la base.
+#
+# A mano, las dos piden escribir AVISOS en «confirmar» (una manda correos de
+# verdad y la otra cambia la base), con orden de Víctor, y solo desde main.
+#
+# Programado: APAGADO. Para que sincronizar-bajas corra sola cada día (a las
+# 04:23 UTC, después de la copia de cada noche), crea la variable de
+# repositorio RWADAR_BAJAS_LETTERMINT_DIARIO con el valor «si» (Settings →
+# Secrets and variables → Actions → Variables). Sin ella, el horario se salta
+# el trabajo y no gasta minutos. Va en su propia cola, no en la de «Aplicar
+# catálogo»: un aviso por horario nunca cancela un catálogo en espera.
+#
+# Pasos: rwadar-app/correo-lettermint.sh. Pruebas:
+# rwadar-app/probar-avisos-registrados.mjs.
+
+on:
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: 'Qué hacer'
+        required: true
+        type: choice
+        options:
+          - prueba-correo
+          - sincronizar-bajas
+      confirmar:
+        description: 'Escribe AVISOS (prueba-correo manda correos de verdad; sincronizar-bajas cambia la base)'
+        required: false
+        type: string
+      destinatario:
+        description: 'Solo prueba-correo: buzón propio al que mandar los dos correos de prueba'
+        required: false
+        type: string
+      remitente:
+        description: 'Solo prueba-correo, opcional: dirección del dominio verificado en Lettermint. Vacío = la guardada en Vault (RWADAR_REMITENTE)'
+        required: false
+        type: string
+  schedule:
+    - cron: '23 4 * * *' # sincronizar-bajas a diario, SOLO con la variable RWADAR_BAJAS_LETTERMINT_DIARIO = si
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rwadar-correo-lettermint
+  cancel-in-progress: false
+
+# Conexiones a Supabase siempre cifradas: con el «prefer» de libpq (lo que usa
+# psql si la dirección no lleva sslmode), alguien en medio que rechace TLS haría
+# seguir sin cifrar. Una sola regla para todos los flujos que usan
+# SUPABASE_DB_URL; la comprueba .github/flujos.test.mjs.
+env:
+  PGSSLMODE: require
+
+jobs:
+  correo:
+    if: github.event_name != 'schedule' || vars.RWADAR_BAJAS_LETTERMINT_DIARIO == 'si'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "Este flujo solo se lanza desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Comprobar la acción
+        env:
+          EVENTO: ${{ github.event_name }}
+          ACCION: ${{ github.event_name == 'schedule' && 'sincronizar-bajas' || inputs.accion }}
+          CONFIRMAR: ${{ inputs.confirmar }}
+          DESTINATARIO: ${{ inputs.destinatario }}
+          REMITENTE: ${{ inputs.remitente }}
+        run: bash rwadar-app/correo-lettermint.sh comprobar
+
+      - name: Comprobar que la API REST de Supabase no expone net ni vault
+        if: env.ACCION == 'prueba-correo'
+        run: bash rwadar-app/correo-lettermint.sh rest-cerrada
+
+      - name: Pedir a Lettermint sus bajas (solo lee)
+        if: env.ACCION == 'sincronizar-bajas'
+        env:
+          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+        run: bash rwadar-app/correo-lettermint.sh listar-bajas
+
+      - name: Instalar psql 17 (misma versión que Supabase)
+        if: (env.ACCION == 'prueba-correo' && env.REMITENTE == '') || (env.ACCION == 'sincronizar-bajas' && env.BAJAS_LETTERMINT != '0')
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+
+      - name: Leer el remitente de Vault (solo lee)
+        if: env.ACCION == 'prueba-correo' && env.REMITENTE == ''
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: bash rwadar-app/correo-lettermint.sh remitente
+
+      - name: Enviar los dos correos de prueba
+        if: env.ACCION == 'prueba-correo'
+        env:
+          LETTERMINT_API_TOKEN: ${{ secrets.LETTERMINT_API_TOKEN }}
+        run: bash rwadar-app/correo-lettermint.sh enviar-prueba
+
+      - name: Aplicar las bajas en RWAdar
+        if: env.ACCION == 'sincronizar-bajas' && env.BAJAS_LETTERMINT != '0'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: bash rwadar-app/correo-lettermint.sh aplicar-bajas
+
+      - name: Borrar la lista temporal de bajas
+        if: always() && env.BAJAS_ARCHIVO != ''
+        run: bash rwadar-app/correo-lettermint.sh limpiar

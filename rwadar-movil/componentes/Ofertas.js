@@ -400,9 +400,16 @@ const ANTES_DE_INVERTIR = [
   'El registro de una empresa no cubre todos sus productos.',
 ];
 
+/* Revisión legal del 06/11/2026, punto 5.3: el botón de una oferta que no
+   consta que se contrate hoy desde España, o cuya entidad no consta
+   supervisada, dice que se sale de RWAdar, igual que la web
+   (SALIR_AL_PROVEEDOR de rwadar-20260820.js) y las fichas fijas. */
+export const SALIR_AL_PROVEEDOR = 'Ir a la web del proveedor (sales de RWAdar)';
+
 /* La ficha de la web final (abrirDetalleOfertaLocal, 04/11/2026): arriba «Lo
    esencial» y los avisos de la oferta; luego la imagen, «Antes de invertir»,
-   «No es una recomendación de inversión…» y «Ver oferta en <proveedor> ↗»;
+   «No es una recomendación de inversión…» y «Ver oferta en <proveedor> ↗»
+   (o, si no se contrata hoy desde España o no consta supervisada, SALIR_AL_PROVEEDOR);
    lo demás, plegado. Sin «Consultar fuente» en grande donde va el precio: una
    cifra solo sale si es publicable y, si no, una línea dice dónde mirar. */
 /* «Ficha completa» y «Compartir», como la web: la página fija /ofertas/<slug>
@@ -443,8 +450,12 @@ export function DetalleOferta({
       : oferta.tipo === 'secundario' ? ['Precio y condiciones', 'Consúltalos en su web']
         : oferta.tipo === 'valor' ? ['Precio', 'En la web del proveedor'] : null;
   const rentabilidadSec = rentabilidadSecundaria(oferta);
-  const supervisada = comprobacionesOferta(ofertaOriginal, resumen, { ahora, catalogoCaducado })
-    .find((c) => c.id === 'supervisada');
+  const comprobaciones = comprobacionesOferta(ofertaOriginal, resumen, { ahora, catalogoCaducado });
+  const supervisada = comprobaciones.find((c) => c.id === 'supervisada');
+  /* Revisión legal 06/11/2026, punto 5.3: «Ver oferta en X» solo si «Se contrata
+     hoy desde España» es «Sí» y la entidad que la ofrece está supervisada
+     («supervisada» en «Sí»); si no, el botón dice que sales de RWAdar (como la web). */
+  const verOferta = comprobaciones.some((c) => c.id === 'contratable' && c.cumple === true) && supervisada?.cumple === true;
   const cortos = Object.fromEntries(datosCortosOferta(ofertaOriginal, resumen, { catalogoCaducado }));
   // «válidas 6 días más» tras «Revisadas el …», como la web; en inglés, el patrón común.
   const validez = idiomaActual === 'en'
@@ -485,7 +496,8 @@ export function DetalleOferta({
   const urlMercado = oferta.tipo === 'secundario' && oferta.urlMercado ? oferta.urlMercado : '';
   const enlacePrincipal = urlMercado || oferta.url;
   const fichaOficial = urlMercado && oferta.url && oferta.url !== urlMercado ? oferta.url : '';
-  const textoEnlace = urlMercado ? traducir('Abrir mercado') : `${traducir('Ver oferta en')} ${oferta.plataformaNombre}`;
+  const textoEnlace = urlMercado ? traducir('Abrir mercado')
+    : verOferta ? `${traducir('Ver oferta en')} ${oferta.plataformaNombre}` : traducir(SALIR_AL_PROVEEDOR);
   const fuentesAdicionales = (documentacion
     ? [...new Set([...documentacion.fuentes, ...documentacion.referencias.map(r => r.fuente),
       ...(registro?.fuentes || []), oferta.url].filter(Boolean))]
@@ -608,11 +620,11 @@ export function DetalleOferta({
                 accessibilityLabel={`${textoEnlace}: ${enlacePrincipal || traducir('enlace no documentado')}`}
                 accessibilityState={{ disabled: !enlacePrincipal }}
               >
-                {urlMercado ? <Text style={e.enlaceTxt}>{'Abrir mercado'} ↗</Text> : (
+                {urlMercado ? <Text style={e.enlaceTxt}>{'Abrir mercado'} ↗</Text> : verOferta ? (
                   <Text style={e.enlaceTxt}>
                     Ver oferta en <Text noTraducir idiomaOriginal="es-ES">{oferta.plataformaNombre}</Text> ↗
                   </Text>
-                )}
+                ) : <Text style={e.enlaceTxt}>{SALIR_AL_PROVEEDOR} ↗</Text>}
               </Pressable>
               {fichaPublica ? (
                 <View style={e.fichaPermanente}>
@@ -800,7 +812,8 @@ function Transparencia({ oferta, resumen, ahora, catalogoCaducado, onAbrirEnlace
       ))}
       {puntos.length ? (
         <View style={e.puntosDetalle}>
-          <Text style={e.comprobacionTit}>Puntos fuertes, con su fuente</Text>
+          {/* «Datos comprobados a favor» (antes «Puntos fuertes»): revisión legal del 06/11/2026, punto 5.3. */}
+          <Text style={e.comprobacionTit}>Datos comprobados a favor, con su fuente</Text>
           {puntos.map((punto) => (
             <View key={punto.texto} style={e.puntoDetalle}>
               <Text style={e.punto}><Text style={e.puntoMarca}>✓ </Text>{punto.texto}</Text>

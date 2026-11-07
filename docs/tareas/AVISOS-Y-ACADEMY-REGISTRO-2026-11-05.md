@@ -663,9 +663,10 @@ de Víctor.
    están archivados en
    [`legal/encargados/`](../legal/encargados/README.md). La licencia escrita de Eric
    ya existe (06/11, la guarda Víctor fuera de Git).
-3. **Base de datos:** copia de seguridad; aplicar la 30 en el SQL Editor y
-   pasar el verificador. Desde ese momento corre el reloj diario de limpieza,
-   aunque todo siga apagado.
+3. **Base de datos:** ✅ la 30 se aplicó el 06/11/2026 con el flujo «Avisos a
+   registrados (base)», con copia previa, y pasó el verificador. Desde ese
+   momento corre el reloj diario de limpieza (`rwadar-novedades-limpieza`,
+   04:41 UTC), aunque todo siga apagado.
 4. **Casilla visible:**
    - plantilla de Auth puesta;
    - `30_avisos_registrados_activar_casilla.sql` y el verificador 30 («casilla
@@ -694,20 +695,65 @@ de Víctor.
       aparcados un tercero, a la venta en Afternic. `rwadar.es` también parece
       libre, pero Cloudflare no vende `.es`: habría que comprarlo en otro
       sitio. (Un `.app` solo abre webs con `https`; para el correo da igual.)
+      Precio: Cloudflare cobra lo que pide el registro, sin margen. Para
+      `.app`, unos 8 $ el primer año y unos 14 $ cada renovación
+      (cfdomainpricing.com, que no es de Cloudflare: «.app US$8.20
+      US$14.20», consultado el 07/11/2026). La página de Cloudflare no se
+      pudo abrir sin sesión: el precio exacto sale en el carrito
+      (**verificar** al pagar).
    2. **Crear la cuenta de Lettermint y un proyecto** («RWAdar»). Al crear la
       cuenta se acepta su contrato de encargo: apuntar la fecha en
       [`legal/encargados/README.md`](../legal/encargados/README.md). Usar un
       correo de cuenta que se revise: ahí avisan de brechas y de subencargados
       nuevos.
+
+      **Y pedir la verificación de la cuenta** con su formulario de
+      cumplimiento. Borrador de las respuestas:
+      [`LETTERMINT-VERIFICACION-RESPUESTAS.md`](LETTERMINT-VERIFICACION-RESPUESTAS.md).
+      Lettermint revisa cada equipo nuevo, y hasta que lo aprueba «Unverified
+      teams can only send to verified team members and test addresses»
+      (https://docs.lettermint.co/platform/onboarding/compliance-verification,
+      consultado el 07/11/2026). Su página no dice cuánto tarda. Mientras
+      tanto se puede avanzar con el dominio, los tokens, el Vault, las
+      plantillas y la privacidad (puntos 3 a 8.3), y hacer la prueba del
+      punto 10 al buzón de la cuenta de Víctor, pero **no el 5.8.4**: con la
+      cuenta sin aprobar, las confirmaciones y recuperaciones de la gente no
+      saldrían.
+
+      Lo que da el plan gratis (https://lettermint.co/pricing, consultado el
+      07/11/2026): **300 correos al mes en total**, sin límite diario; 1
+      dominio de envío, 1 proyecto y 1 usuario; sin seguimiento de aperturas
+      ni de clics; historial de mensajes de 28 días. Los 300 son para todo:
+      confirmaciones y recuperaciones de Auth, bienvenidas y anuncios (ver el
+      punto 11).
    3. **Añadir el dominio en Lettermint** y copiar los registros DNS que pida
       (normalmente SPF, DKIM y DMARC) en Cloudflare › el dominio › DNS.
       Esperar a que Lettermint lo dé por verificado.
-   4. **Crear el token del proyecto** en Lettermint. No se pega en ningún
-      chat, archivo ni captura.
-   5. **Guardarlo como secreto de GitHub** con el nombre
-      `LETTERMINT_API_TOKEN` (repositorio › Settings › Secrets and variables ›
-      Actions › New repository secret).
-   6. **Aplicar la 31.** GitHub › Actions › «Avisos a registrados (base)»:
+   4. **Crear dos tokens del proyecto** en Lettermint, uno para cada uso. Su
+      lista de comprobación para producción pide «a separate Project API token
+      for each app, worker, or environment»
+      (https://docs.lettermint.co/production-checklist, consultado el
+      07/11/2026), y un proyecto puede tener varios («Each project can have
+      multiple Project API tokens»). Así, si uno se filtra, se revoca solo ese:
+      - **«RWAdar base (API)»:** el de la base de datos. Va al secreto de
+        GitHub del punto 5 y de ahí al Vault (punto 7);
+      - **«RWAdar Auth (SMTP)»:** el de Supabase Auth. Víctor lo pega
+        **directamente** como contraseña en el panel de Supabase (punto
+        5.8.4). No pasa por GitHub.
+
+      Cada token se ve una sola vez al crearlo. No se pega en ningún chat,
+      archivo ni captura. Si se usa la sincronización automática de bajas
+      (punto 9), hace falta además un token **de equipo** (Team API), con el
+      menor permiso que deje leer las supresiones: el de proyecto no sirve
+      para listarlas. Los tokens de equipo tienen permisos por partes, pero la
+      página de supresiones solo nombra `write:suppressions`, que es para
+      borrarlas (**verificar** en el panel cuál basta para leer).
+   5. **Guardar el token «RWAdar base (API)» como secreto de GitHub** con el
+      nombre `LETTERMINT_API_TOKEN` (repositorio › Settings › Secrets and
+      variables › Actions › New repository secret).
+   6. **Aplicar la 31.** ✅ Hecho el 06/11/2026 (ensayo y aplicar con copia
+      previa; verificadores 30 y 31 «OK»; el correo sigue apagado). Si alguna
+      vez hay que repetirlo: GitHub › Actions › «Avisos a registrados (base)»,
       primero `ensayo-31` (la prueba y la deshace; no cambia nada) y después
       `aplicar-31` escribiendo `AVISOS` (hace una copia antes y pasa los
       verificadores). No enciende nada.
@@ -748,14 +794,27 @@ de Víctor.
 
          Publicar la web y, si cambia la app, enviar la OTA.
       3. **Seguimiento apagado en la ruta de servicio.** Por SMTP no van los
-         `settings` de la API: en el panel de Lettermint, la ruta de servicio
-         (la de por defecto) con el seguimiento de aperturas y de clics
-         apagado.
-      4. **El SMTP.** Supabase › Authentication › Emails › SMTP Settings:
-         - Host `smtp.lettermint.co` · Port `587`;
-         - Username `lettermint` · Password: el token del proyecto;
+         `settings` de la API. En el plan gratis Lettermint no ofrece el
+         seguimiento: su página de rutas dice «Email tracking is available on
+         paid plans» (https://docs.lettermint.co/platform/projects-and-routes/routes)
+         y la de precios marca «-» en aperturas y clics del plan Free (las dos,
+         consultadas el 07/11/2026). Aun así, mirar en el panel que la ruta de
+         servicio (la de por defecto) no lo tiene encendido. Si algún día se
+         pasa a un plan de pago, volver a comprobarlo aquí.
+      4. **El SMTP.** Solo cuando Lettermint haya **aprobado la verificación
+         de la cuenta** (punto 2): antes, los correos de Auth a la gente no
+         saldrían. Supabase › Authentication › Emails › SMTP Settings:
+         - Host `smtp.lettermint.co` · Port `587` (STARTTLS);
+         - Username `lettermint` · Password: el token **«RWAdar Auth (SMTP)»**
+           del punto 4, no el de la base;
          - Sender email: el mismo remitente, `avisos@<dominio>` · Sender
            name: `RWAdar`.
+
+         Datos del SMTP según https://lettermint.co/docs/guides/send-email-with-smtp
+         (consultado el 07/11/2026): host `smtp.lettermint.co`, puerto 587 con
+         STARTTLS o 465 con TLS directo, usuario `lettermint` y como contraseña
+         un token de proyecto. Sin la cabecera `X-Lettermint-Route`, el correo
+         va por la ruta por defecto del proyecto.
       5. **Prueba:** «¿Has olvidado tu contraseña?» con una cuenta propia. En
          el original del mensaje: ningún píxel, el enlace sin reescribir y el
          pie con la dirección postal. Si algo falla, se vuelve a poner el
@@ -767,10 +826,20 @@ de Víctor.
    9. **Pedir al soporte de Lettermint** que quite de la ruta de difusión su
       enlace de baja automático, porque RWAdar ya tiene su baja (enlace
       `/baja`, `mailto:` y `List-Unsubscribe` en cada aviso, y el interruptor
-      de Perfil). Mientras no lo quiten, antes de cada anuncio y, si
-      `ofertas_automaticas` está encendido, cada día: mirar en Lettermint su
-      lista de bajas (supresión) de la ruta de difusión y, por cada dirección
-      nueva, ejecutar en Supabase › SQL Editor
+      de Perfil). **Lo más probable es que en el plan gratis digan que no.**
+      Su página de rutas (consultada el 07/11/2026) dice que la baja alojada
+      «automatically adds an unsubscribe link to broadcast emails», que para
+      quitarla hay que escribir al soporte, que «This option is only granted
+      to trusted senders» y, en la lista de funciones, «Hosted unsubscribe
+      pages (can be disabled on higher plans)». Por eso la sincronización de
+      bajas se automatiza: flujo «Correo Lettermint», acción
+      `sincronizar-bajas` (preparado el 07/11/2026, apagado; usa el token de
+      equipo del punto 4). Pide a Lettermint sus bajas de las rutas de
+      difusión y aplica cada una con `rwadar_novedades.baja_por_correo`.
+      Hasta que esté encendido y probado, se hace a mano: antes de cada
+      anuncio y, si `ofertas_automaticas` está encendido, cada día, mirar en
+      Lettermint su lista de bajas (supresión) de la ruta de difusión y, por
+      cada dirección nueva, ejecutar en Supabase › SQL Editor
       `select rwadar_novedades.baja_por_correo('correo@de.la.persona');`.
       Con `ofertas_automaticas` encendido, el anuncio sale minutos después de
       aprobar el catálogo, sin un «antes» en el que mirar; si nadie puede
@@ -780,8 +849,12 @@ de Víctor.
       mismo que con las bajas que llegan por correo (RUNBOOK).
    10. **Prueba real a un buzón propio, antes de encender nada.** Enviar desde
        Lettermint dos correos a un buzón tuyo: uno por la ruta de servicio y
-       otro por la de difusión, con el seguimiento apagado. Claude o Codex lo
-       pueden lanzar en tu ordenador con el token en una variable, sin verlo:
+       otro por la de difusión, con el seguimiento apagado. Si la cuenta aún
+       no está verificada (punto 2), el buzón tiene que ser el de la cuenta de
+       Lettermint de Víctor: a cualquier otro no llegaría. Desde GitHub lo
+       hace el flujo «Correo Lettermint», acción `prueba-correo` (preparado
+       el 07/11/2026). Claude o Codex también lo pueden lanzar en tu
+       ordenador con el token en una variable, sin verlo:
 
        ```bash
        curl -sS https://api.lettermint.co/v1/send \
@@ -859,6 +932,16 @@ de Víctor.
 
        Con todo correcto, el reloj se queda encendido para todos y se cambian
        las frases de «Al encender el correo».
+
+       **El cupo de 300 al mes es compartido** (punto 2). Un anuncio gasta un
+       correo por persona apuntada, y lo que gaste ya no queda para las
+       confirmaciones y recuperaciones de ese mes. La página de precios no
+       dice qué pasa al llegar a 300 en el plan gratis (**verificar** si
+       Lettermint rechaza o retiene los envíos). Mientras se esté en el plan
+       gratis: antes de cada anuncio, mirar en el panel cuántos van ese mes y
+       no publicarlo si, con él, quedarían menos de unos 50 para las cuentas.
+       Si se queda corto, el siguiente plan es Starter (10 € al mes por 10.000
+       correos, según la misma página).
    - **Si Lettermint descarta nuestro `List-Unsubscribe`** (no llega al
      buzón): se quita del contrato (punto 3, «Baja») y de la privacidad, y la
      cabecera de `enviar_correos()` en una nueva versión de la 31 con su
@@ -869,36 +952,40 @@ de Víctor.
      reaplicar la 31 (`aplicar-31`). `activar-correo` se niega a encender sin
      ella.
 6. **Push:**
-   - proyecto de Firebase y credencial FCM V1 en EAS;
-   - APK 1.4.2 (guía);
-   - `30_avisos_registrados_activar_push.sql`;
-   - prueba en un móvil real.
+   - ✅ proyecto de Firebase y credencial FCM V1 en EAS (06/11/2026);
+   - ✅ APK 1.4.2 publicada el 06/11/2026 (guía);
+   - privacidad del push publicada, con el «latido» de Firebase, y su
+     revisión legal;
+   - OTA con `AVISOS_NOVEDADES_REMOTOS = true`;
+   - prueba en un Android físico (Víctor usa iPhone);
+   - `30_avisos_registrados_activar_push.sql`.
 7. **Aviso automático de ofertas,** si Víctor lo quiere:
    - antes, que Lettermint haya quitado su enlace de baja de la ruta de
-     difusión, o que alguien revise cada día su lista de bajas y el buzón
-     RWAdar@protonmail.com (punto 5.9 y RUNBOOK, «Bajas»): con el aviso
-     automático no hay un «antes de cada anuncio»;
+     difusión o que `sincronizar-bajas` corra cada día y esté probada (punto
+     5.9), y que alguien revise cada día el buzón RWAdar@protonmail.com
+     (RUNBOOK, «Bajas»): con el aviso automático no hay un «antes de cada
+     anuncio»;
+   - con el plan gratis, que el cupo de 300 al mes alcance (punto 5.11);
    - `update rwadar_novedades.configuracion set ofertas_automaticas = true`;
    - cambiar `AGENTS.md`, la skill y `CICLO-DIARIO-CATALOGO.md`.
 
 ## Pendiente de personas
 
-- **Eric:**
-  - visto bueno escrito para las lecciones solo con cuenta, con `noindex` y
-    fuera del sitemap;
-  - visto bueno para usar la Academy como reclamo del alta;
-  - licencia de las 9 lecciones para la web y la app.
-
-  Su especificación decía «sin cuentas» (`docs/academy/ESPECIFICACION_WEB.md:152`).
-  Se archiva en `docs/academy/`.
+- **Eric:** ✅ todo hecho el 06/11/2026: visto bueno para las lecciones solo
+  con cuenta (con `noindex` y fuera del sitemap) y para usar la Academy como
+  reclamo del alta, y licencia escrita de las 9 lecciones para la web y la
+  app (la guarda Víctor fuera de Git). Su especificación decía «sin cuentas»
+  (`docs/academy/ESPECIFICACION_WEB.md:152`); el visto bueno está en
+  `docs/academy/VISTO-BUENO-ERIC-2026-11-06.md`.
 - **Víctor:**
   - dominio propio;
-  - cuenta de Lettermint (paso 5);
-  - Firebase;
+  - cuenta de Lettermint y su verificación (paso 5.2; borrador de respuestas
+    en [`LETTERMINT-VERIFICACION-RESPUESTAS.md`](LETTERMINT-VERIFICACION-RESPUESTAS.md));
+  - ✅ Firebase (06/11/2026, proyecto `rwadar-14e3d`);
   - el contrato de encargo de GitHub
     ([`legal/encargados/`](../legal/encargados/README.md#github--hueco));
   - permiso para cada paso de la activación;
-  - si se publican las lecciones 8 y 9.
+  - ✅ lecciones 8 y 9: publicadas el 06/11/2026.
 - **Profesional (opcional):** la revisión legal la hizo Claude; lo que
   conviene confirmar con un profesional está en su apartado 6 (actividad
   económica y publicidad financiera si algún día hay ingresos).

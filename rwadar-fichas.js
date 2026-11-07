@@ -194,15 +194,36 @@ const riesgos = '<section aria-labelledby="riesgos"><h2 id="riesgos">Antes de in
   '<li><strong>Custodia:</strong> comprueba quién guarda el activo y qué derecho te da.</li>' +
   '<li><strong>Supervisión:</strong> que la plataforma esté registrada no cubre todos sus productos ni confirma que tú puedas invertir.</li></ul></section>';
 
+/* «Se contrata hoy desde España» (la primera comprobación de transparencia):
+   oferta principal, disponibleEs verdadero y acceso desde España con fuente. */
+function accesoContratable(o,r) {
+  const acceso = r.accesoEspana.estado==='si' && enlace(r.accesoEspana.fuente) ? {url:r.accesoEspana.fuente,fecha:r.accesoEspana.consultadaEl} : null;
+  return {acceso, contratable:o.coleccion==='principales' && o.disponibleEs===true && Boolean(acceso)};
+}
+const resumenDeLaRevision = (o,catalogo) => resumenOferta(o,catalogo.plataformas,new Date(o.verificadaEl+'T12:00:00Z'));
+/* «La entidad que la ofrece está autorizada por un supervisor de la UE e
+   inscrita en la CNMV» (comprobación editorial de transparencia.json, de la
+   misma revisión). Falla cerrado: sin entrada de esa fecha, no consta. */
+const supervisadaCumple = o => { const t = TRANSPARENCIA.ofertas[o.slug];
+  return Boolean(t && t.verificadaEl===o.verificadaEl && t.supervisada && t.supervisada.cumple===true); };
+/* Revisión legal del 06/11/2026, punto 5.3: «Ver oferta en X» solo donde «Se
+   contrata hoy desde España» es «Sí» Y la entidad que la ofrece está
+   supervisada («supervisada» en «Sí»): la revisión nombra las dos condiciones.
+   En las demás fichas, el enlace al proveedor dice que se sale de RWAdar.
+   ficha-pagina lo cambia también si al abrir la página «Se contrata hoy desde
+   España» pasa a «No». */
+const SALIR_AL_PROVEEDOR = 'Ir a la web del proveedor (sales de RWAdar)';
+const verOfertaEnProveedor = (o,catalogo) => accesoContratable(o,resumenDeLaRevision(o,catalogo)).contratable && supervisadaCumple(o);
+
 /* «Transparencia: lo que hemos comprobado», como en la ficha de la web. Falla
-   cerrado: sin entrada con la misma verificadaEl, no hay puntos fuertes y las
+   cerrado: sin entrada con la misma verificadaEl, no hay datos a favor y las
    dos comprobaciones editoriales salen en «No». Lo que depende de «hoy»
    (contratable, mínimo y salida, vigencia) lo vuelve a mirar ficha-pagina al
    abrir la página. Solo el texto de transparencia.json y los datos del
    catálogo van como texto de la fuente; lo que escribe RWAdar se traduce. */
 function transparenciaOferta(o,catalogo) {
   const t = TRANSPARENCIA.ofertas[o.slug], e = t && t.verificadaEl === o.verificadaEl ? t : null;
-  const r = resumenOferta(o,catalogo.plataformas,new Date(o.verificadaEl+'T12:00:00Z'));
+  const r = resumenDeLaRevision(o,catalogo);
   const texto = Object.fromEntries(TRANSPARENCIA.criterios.map(c=>[c.id,c.texto]));
   const minimo = Number.isFinite(r.minimo.euros) || Boolean(r.minimo.unidadDocumentada);
   const salida = !['Salida no documentada','Salida por volver a comprobar'].includes(r.salida.texto);
@@ -212,8 +233,7 @@ function transparenciaOferta(o,catalogo) {
     '<p'+(campo ? ' data-campo="'+campo+'"' : '')+(original ? ORIGINAL : ' class="ui"')+'>'+motivo+'</p>'+fuente(f)+'</li>';
   const editorial = id => e ? fila(id,e[id].cumple===true,esc(e[id].motivo),{...e[id].fuente,fecha:e[id].consultadaEl},{original:true}) :
     fila(id,false,esc('Todavía no hemos comprobado este punto en la revisión actual.'));
-  const acceso = r.accesoEspana.estado==='si' && enlace(r.accesoEspana.fuente) ? {url:r.accesoEspana.fuente,fecha:r.accesoEspana.consultadaEl} : null;
-  const contratable = o.coleccion==='principales' && o.disponibleEs===true && Boolean(acceso);
+  const {acceso, contratable} = accesoContratable(o,r);
   const dato = v => '<span'+ORIGINAL+'>'+esc(v)+'</span>';
   const textoMinimo = r.minimo.texto==='No documentado en euros' && r.minimo.unidadDocumentada ? r.minimo.unidadDocumentada : r.minimo.texto;
   const motivoMinimo = (minimo ? '<span>Mínimo:</span> '+dato(textoMinimo)+'.' : 'Mínimo sin documentar.')+' '+
@@ -230,7 +250,8 @@ function transparenciaOferta(o,catalogo) {
     editorial('supervisada')+editorial('documentoEspana')+
     fila('minimoSalida',minimo && salida,motivoMinimo,fuenteMinimo,{campo:'minimoSalida'})+
     fila('vigente',false,esc('Se comprueba al abrir la página con la fecha de hoy.'),null,{campo:'vigencia'})+'</ul>'+
-    (puntos.length ? '<h3>Puntos fuertes, con su fuente</h3><ul class="fuentes puntos">'+puntos.map(x=>'<li><strong>'+esc(x.texto)+'</strong>'+fuente(x.fuente)+'</li>').join('')+'</ul>' : '')+
+    /* «Datos comprobados a favor» (antes «Puntos fuertes»): revisión legal del 06/11/2026, punto 5.3. */
+    (puntos.length ? '<h3>Datos comprobados a favor, con su fuente</h3><ul class="fuentes puntos">'+puntos.map(x=>'<li><strong>'+esc(x.texto)+'</strong>'+fuente(x.fuente)+'</li>').join('')+'</ul>' : '')+
     '</section>';
 }
 
@@ -252,7 +273,7 @@ function paginaOferta(o,catalogo,imagen) {
   const p = catalogo.plataformas.find(p=>p.slug===o.plataformaSlug);
   /* Supervisión: si la comprobación «supervisada» se cumple, su motivo y su fuente
      (transparencia.json); si no, lo que diga la plataforma del radar. */
-  const t = TRANSPARENCIA.ofertas[o.slug], sup = t && t.verificadaEl===o.verificadaEl && t.supervisada && t.supervisada.cumple===true ? t.supervisada : null;
+  const sup = supervisadaCumple(o) ? TRANSPARENCIA.ofertas[o.slug].supervisada : null;
   const supervision = sup ? esc(sup.motivo)+(enlace(sup.fuente && sup.fuente.url) ? ' <a href="'+esc(enlace(sup.fuente.url))+'" target="_blank" rel="noopener noreferrer">Fuente ↗</a>' : '') :
     esc(p?.verificacionLocal?.licenciaRegistro?.detalle || 'Todavía no hemos evaluado esta plataforma. Que publiquemos esta oferta no significa que hayamos revisado al proveedor.');
   /* Los avisos de la oferta, tal cual y arriba; el genérico ya lo dice la línea del botón. */
@@ -271,9 +292,10 @@ function paginaOferta(o,catalogo,imagen) {
     '<div><dt>Acceso desde España</dt><dd data-campo="accesoEspana"'+ORIGINAL+'>Sin comprobar si se puede contratar desde España.</dd></div>'+
     '<div><dt>Costes</dt><dd data-campo="costes"'+ORIGINAL+'>Confirma los costes actuales con el proveedor.</dd></div></dl></section>'+
     '<section aria-labelledby="salida"><h2 id="salida">Cómo se recupera el dinero</h2><p data-campo="salida"'+ORIGINAL+'>La salida no se da por garantizada; consulta la documentación del proveedor.</p></section>'+riesgos+
-    /* El botón, con su línea, justo después de los riesgos (como en la ficha de la web). */
+    /* El botón, con su línea, justo después de los avisos y los riesgos (como en la ficha de la web). */
     '<p class="aviso">No es una recomendación de inversión. RWAdar no vende ni recibe tu dinero: confirma las condiciones con el proveedor.</p>'+
-    '<p><a class="boton" href="'+esc(enlace(o.url))+'" target="_blank" rel="noopener noreferrer">Ver oferta en '+esc(o.plataformaNombre)+' ↗</a></p>'+transparenciaOferta(o,catalogo)+
+    '<p><a class="boton" href="'+esc(enlace(o.url))+'" target="_blank" rel="noopener noreferrer" data-campo="botonProveedor">'+
+    (verOfertaEnProveedor(o,catalogo) ? 'Ver oferta en '+esc(o.plataformaNombre) : SALIR_AL_PROVEEDOR)+' ↗</a></p>'+transparenciaOferta(o,catalogo)+
     '<section aria-labelledby="fuentes"><h2 id="fuentes">Fuentes y fechas</h2><p>Revisamos esta ficha el <time datetime="'+esc(o.verificadaEl)+'">'+esc(corta(o.verificadaEl))+'</time>. Esa fecha no garantiza que las cifras sigan igual ni que la oferta siga abierta.</p>'+
     '<p>Cada fuente lleva el día en que la consultamos. El dato puede ser más antiguo, y algunas fuentes no dicen de qué fecha es.</p>'+
     (refs.length ? '<details><summary>Ver los '+refs.length+' datos consultados y sus fechas</summary><ul class="referencias"'+ORIGINAL+'>'+refs.map(r=>'<li><strong>'+esc(rotuloReferencia(r.etiqueta))+'</strong><br>Dato fechado: '+esc(corta(r.fechaDato))+' · Consulta: '+esc(corta(r.fechaConsulta))+'<br><a href="'+esc(enlace(r.fuente))+'" target="_blank" rel="noopener noreferrer">Abrir fuente ↗</a><p>'+esc(r.alcance || '')+'</p></li>').join('')+'</ul></details>' : '')+

@@ -24,6 +24,7 @@ RWAdar, qué funciona hoy y qué falta.
 | [`../SECURITY.md`](../SECURITY.md) | Cómo avisar de un fallo de seguridad |
 | [`seguridad/PRUEBAS-DE-ATAQUE-2026-10-01.md`](seguridad/PRUEBAS-DE-ATAQUE-2026-10-01.md) | Qué aguanta la web ante ataques y qué mejorar |
 | [`seguridad/RUNBOOK-REVOCACION-ROTACION.md`](seguridad/RUNBOOK-REVOCACION-ROTACION.md) | Qué hacer si se filtra una credencial |
+| [`legal/BRECHAS-DE-DATOS.md`](legal/BRECHAS-DE-DATOS.md) | Si hay datos personales afectados: plazos (72 horas) y a quién avisar |
 | [`seguridad/REVISION-SEGURIDAD-2026-09-27.md`](seguridad/REVISION-SEGURIDAD-2026-09-27.md) | Revisión previa al relanzamiento |
 | [`seguridad/INCIDENTE-P0-CREDENCIAL-HISTORICA-2026-09-21.md`](seguridad/INCIDENTE-P0-CREDENCIAL-HISTORICA-2026-09-21.md) | El token antiguo que apareció en Git (revocado) |
 
@@ -33,6 +34,15 @@ En [`comercial/`](comercial/) están las decisiones sobre ingresos, el plan del
 primer patrocinador, la revisión editorial y la guía para cargar el catálogo
 en Supabase. En [`plantillas/`](plantillas/) están los borradores de acuerdos,
 fichas y correos.
+
+| Documento | Para qué sirve |
+|---|---|
+| [`legal/REGISTRO-ACTIVIDADES-TRATAMIENTO.md`](legal/REGISTRO-ACTIVIDADES-TRATAMIENTO.md) | Qué datos personales trata RWAdar, para qué, con quién y cuánto tiempo |
+| [`legal/encargados/README.md`](legal/encargados/README.md) | El contrato de encargo de cada proveedor, con su copia en PDF |
+| [`legal/BRECHAS-DE-DATOS.md`](legal/BRECHAS-DE-DATOS.md) | Qué hacer si hay una brecha de datos, y su registro |
+| [`legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`](legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md) | Revisión legal de los avisos y de la Academy con cuenta |
+| [`tareas/PLAN-CEO-2026-11-06.md`](tareas/PLAN-CEO-2026-11-06.md) | El orden para encender los avisos (dominio, Lettermint, GitHub Team, push) |
+| [`tareas/LETTERMINT-VERIFICACION-RESPUESTAS.md`](tareas/LETTERMINT-VERIFICACION-RESPUESTAS.md) | Borrador de respuestas para que Lettermint verifique la cuenta |
 
 > Las pruebas automáticas leen algunos de estos archivos. Si cambias
 > `comercial/` o `plantillas/`, ejecuta después `npm --prefix rwadar-app test`.

@@ -8,12 +8,35 @@ name: Copia de seguridad
 #   SUPABASE_DB_URL  dirección del «Session pooler» con la contraseña
 #   COPIA_CLAVE      contraseña para cifrar la copia (16 caracteres o más)
 #
+# La copia de cada noche usa siempre los valores por defecto: esquemas
+# habituales (sin la cartera) y modo normal. A mano (Run workflow) se puede
+# elegir también la cartera y el modo «prueba», que hace la copia y la
+# comprueba igual pero NO la guarda en ningún sitio: sirve para ver sin riesgo
+# si el usuario de la copia puede leer la cartera (rwadar_cuentas_privadas).
+# La cartera solo se admite en modo prueba hasta que entre en la copia de
+# cada noche.
+#
 # Ojo: GitHub solo ejecuta los horarios desde la rama principal (main).
 
 on:
   schedule:
     - cron: '43 2 * * *' # todos los días a las 02:43 UTC
   workflow_dispatch:
+    inputs:
+      esquemas:
+        description: 'Qué copiar. «habituales» es lo de cada noche; «habituales-y-cartera» añade «Mis inversiones» (rwadar_cuentas_privadas)'
+        type: choice
+        default: habituales
+        options:
+          - habituales
+          - habituales-y-cartera
+      modo:
+        description: '«normal» guarda la copia 35 días; «prueba» la hace y la comprueba, pero no la guarda'
+        type: choice
+        default: normal
+        options:
+          - normal
+          - prueba
 
 permissions:
   contents: read
@@ -22,11 +45,27 @@ concurrency:
   group: rwadar-copia-seguridad
   cancel-in-progress: false
 
+# Conexiones a Supabase siempre cifradas: con el «prefer» de libpq (lo que usa
+# psql si la dirección no lleva sslmode), alguien en medio que rechace TLS haría
+# seguir sin cifrar. Una sola regla para todos los flujos que usan
+# SUPABASE_DB_URL; la comprueba .github/flujos.test.mjs.
+env:
+  PGSSLMODE: require
+
 jobs:
   copia:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
+      # Mientras la cartera no forme parte de la copia de cada noche (cambio
+      # aparte, ver la guía), solo se prueba: no se guarda una copia con ella.
+      - name: Comprobar lo elegido
+        if: inputs.esquemas == 'habituales-y-cartera' && inputs.modo != 'prueba'
+        run: |
+          echo "La cartera, de momento, solo se puede copiar en modo «prueba» (no se guarda)."
+          echo "Vuelve a lanzarlo con modo = prueba. Ver docs/COPIAS-DE-SEGURIDAD.md, «Probar la cartera»."
+          exit 1
+
       - name: Descargar el código
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
@@ -43,9 +82,12 @@ jobs:
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           COPIA_CLAVE: ${{ secrets.COPIA_CLAVE }}
+          # Vacío (cada noche y «habituales»): los esquemas por defecto del script.
+          COPIA_ESQUEMAS_EXTRA: ${{ inputs.esquemas == 'habituales-y-cartera' && 'rwadar_cuentas_privadas' || '' }}
         run: bash rwadar-app/copia-seguridad.sh copia-rwadar
 
       - name: Guardar la copia 35 días
+        if: inputs.modo != 'prueba'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: copia-rwadar-${{ github.run_number }}
@@ -53,3 +95,23 @@ jobs:
           retention-days: 35
           compression-level: 0
           if-no-files-found: error
+
+      - name: Prueba · borrar la copia sin guardarla
+        if: always() && inputs.modo == 'prueba'
+        env:
+          ESQUEMAS: ${{ inputs.esquemas }}
+          RESULTADO: ${{ job.status }}
+        run: |
+          set -euo pipefail
+          rm -rf copia-rwadar
+          {
+            echo "### Copia de prueba ($ESQUEMAS)"
+            echo
+            if [ "$RESULTADO" = success ]; then
+              echo "La copia se ha hecho y comprobado. **No se ha guardado**: era una prueba."
+            else
+              echo "La copia ha **fallado** (mira el paso «Hacer, comprobar y cifrar la copia»). No se ha guardado nada."
+            fi
+            echo
+            echo "Qué hacer según el resultado: docs/COPIAS-DE-SEGURIDAD.md, «Probar la cartera»."
+          } >> "$GITHUB_STEP_SUMMARY"

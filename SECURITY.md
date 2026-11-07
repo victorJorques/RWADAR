@@ -4,7 +4,9 @@
 
 Envía el informe de forma privada a `RWAdar@protonmail.com`, con asunto
 `[SEGURIDAD RWADAR]`. El mismo contacto figura en
-`/.well-known/security.txt` de la versión remediada.
+<https://rwadar.pages.dev/.well-known/security.txt> (válido hasta el
+22/08/2027) y en la política pública de reporte,
+<https://rwadar.pages.dev/privacidad#reporte-seguridad>.
 
 Incluye, si es posible:
 
@@ -23,16 +25,26 @@ corrección.
 
 Se pueden comunicar fallos de:
 
-- `rwadar.netlify.app` y su PWA;
-- autenticación, opiniones, moderación y borrado de cuenta;
+- la web `https://rwadar.pages.dev` y su servidor de sesión (Cloudflare);
+- cuentas: alta, entrada, sesión, recuperación de contraseña y borrado;
+- la Academy con cuenta, los avisos a registrados y la página de baja
+  (`/baja`), aunque los avisos sigan apagados;
 - API/RPC, RLS, permisos y funciones de Supabase;
-- aplicación móvil de RWAdar;
-- publicación, cabeceras, CSP, service worker y privacidad técnica.
+- la app Android de RWAdar (descargas en
+  <https://github.com/victorJorques/RWAdar-downloads>) y sus actualizaciones;
+- publicación, cabeceras, CSP, service worker y privacidad técnica;
+- `rwadar.netlify.app`, que hoy solo sirve la página que desinstala la app
+  web antigua.
 
-La producción pública y este repositorio no coinciden todavía. La web
-remediada y la migración 22 están validadas localmente, pero pendientes de
-despliegue/aplicación. Reporta un problema aunque parezca corregido en una sola
-de las dos versiones, indicando cuál probaste.
+Opiniones, comunidad y moderación están en pausa, con el acceso cerrado desde
+la web y la app. Si encuentras un fallo en lo que quede de ellas, también se
+puede reportar.
+
+La web se publica desde la rama `main` de este repositorio. La migración 22,
+que una versión anterior de este texto daba por pendiente, está aplicada y
+verificada; las últimas aplicadas en la base son la 30 y la 31 (06/11/2026,
+con los avisos apagados). Si ves una diferencia entre lo publicado y el
+repositorio, indica qué versión probaste.
 
 ## Prueba responsable
 
@@ -55,14 +67,20 @@ pronto como sea razonablemente posible.
 La clave publicable de Supabase aparece en cliente por diseño y no debe
 tratarse como un secreto. Sí son sensibles, entre otros:
 
-- tokens personales de Supabase o Netlify;
-- claves `service_role`;
+- tokens personales o de API de Supabase, Cloudflare, Expo, GitHub o Netlify;
+- la conexión de la base (`SUPABASE_DB_URL`) y las claves `service_role`;
+- la clave de las copias de seguridad (`COPIA_CLAVE`);
 - tokens de sesión de usuarios;
-- credenciales de proveedores de correo o push;
+- credenciales de proveedores de correo (Lettermint, la contraseña de
+  aplicación del Gmail) o de push (Firebase);
 - secretos de Vault y claves de firma.
 
 No los pegues en un issue, captura o repositorio. Si uno aparece expuesto,
-informa solo de su ubicación y los responsables lo revocarán/rotarán.
+informa solo de su ubicación y los responsables lo revocarán/rotarán
+([`docs/seguridad/RUNBOOK-REVOCACION-ROTACION.md`](docs/seguridad/RUNBOOK-REVOCACION-ROTACION.md)).
+Si puede haber datos personales afectados, se sigue además
+[`docs/legal/BRECHAS-DE-DATOS.md`](docs/legal/BRECHAS-DE-DATOS.md): hay 72
+horas para avisar a la AEPD.
 
 ## Responsables
 
@@ -74,5 +92,9 @@ RWAdar no tiene sociedad constituida. Gestionan conjuntamente los reportes:
 
 Contacto único: `RWAdar@protonmail.com`.
 
-El acuerdo de corresponsabilidad y los plazos internos siguen pendientes de
+El responsable del tratamiento de los datos personales es Víctor Manuel
+Jorques Granero (privacidad, apartado 1). Si Eric Almiñana y Samuel Rodriguez
+son además corresponsables en el sentido del RGPD (art. 26) está por decidir
+([registro de actividades](docs/legal/REGISTRO-ACTIVIDADES-TRATAMIENTO.md),
+apartado 1). Ese acuerdo y los plazos internos siguen pendientes de
 aprobación; esta política no los da por cerrados.

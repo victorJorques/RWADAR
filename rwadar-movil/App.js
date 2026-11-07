@@ -19,6 +19,7 @@ import {
 } from './lib/datos';
 import {
   MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, CUENTAS_REMOTAS, CORREO_AUTH_E2E, AVISOS_NOVEDADES_REMOTOS,
+  AVISOS_BANDEJA_REMOTA,
 } from './lib/modo-local';
 import { crearControladorCuentas } from './lib/cuentas';
 import { cuentaAdmitida } from './lib/acceso-obligatorio';
@@ -39,7 +40,7 @@ import Academy from './componentes/Academy';
 import Inicio from './componentes/Inicio';
 import Cuenta from './componentes/Cuenta';
 import {
-  useAvisosNovedades, PanelAvisosNovedades, TarjetaAvisosInicio, quitarPushAlSalir,
+  useAvisosNovedades, useBandejaAvisos, PanelAvisosNovedades, TarjetaAvisosInicio, quitarPushAlSalir,
 } from './componentes/AvisosNovedades';
 import { destinoAviso } from './lib/avisos-cuenta';
 import { LECCIONES } from './lib/academy-contenido';
@@ -67,6 +68,10 @@ const CUENTA_REMOTA_ACTIVA = MODO_LOCAL === false && CUENTAS_REMOTAS === true &&
 // Avisos de novedades a cuentas registradas (contrato del 05/11/2026). Apagado,
 // la app se ve y se comporta como antes.
 const AVISOS_NOVEDADES_ACTIVOS = CUENTA_REMOTA_ACTIVA && AVISOS_NOVEDADES_REMOTOS === true;
+// Bandeja de avisos sin correo ni push (lib/modo-local.js): solo la tarjeta
+// «Avisos» de Inicio con lo recibido. Con los avisos completos encendidos, ya
+// la traen ellos.
+const BANDEJA_AVISOS_ACTIVA = CUENTA_REMOTA_ACTIVA && AVISOS_BANDEJA_REMOTA === true && !AVISOS_NOVEDADES_ACTIVOS;
 
 async function abrirEnlace(url) {
   const valor = String(url || '').trim();
@@ -167,6 +172,12 @@ export default function App() {
   const seguridad = useBloqueoApp({ usuarioId: CUENTA_REMOTA_ACTIVA ? usuarioAdmitido : null });
   // Sin el interruptor, el hook no recibe cuenta y no llama a nada.
   const novedadesCuenta = useAvisosNovedades({ cuenta, usuarioId: AVISOS_NOVEDADES_ACTIVOS ? usuarioAdmitido : null });
+  // Igual con la bandeja: sin su interruptor no recibe cuenta y no llama a nada.
+  const bandejaAvisos = useBandejaAvisos({ cuenta, usuarioId: BANDEJA_AVISOS_ACTIVA ? usuarioAdmitido : null });
+  // Lo que pinta la tarjeta «Avisos» de Inicio y cuenta su insignia, si hay algo.
+  // Con la bandeja sola, la tarjeta no lleva «¿No quieres estos avisos?…»: sin
+  // Perfil › Avisos no hay nada que desactivar.
+  const avisosInicio = AVISOS_NOVEDADES_ACTIVOS ? novedadesCuenta : BANDEJA_AVISOS_ACTIVA ? bandejaAvisos : null;
   const restaurarAcceso = useCallback(async (controlador) => {
     if (!CUENTA_REMOTA_ACTIVA || !controlador || controladorActual.current !== controlador) return;
     setRestaurandoAcceso(true); setErrorRestauracion('');
@@ -372,7 +383,7 @@ export default function App() {
     } else {
       setPestana('inicio');
     }
-    novedadesCuenta.recargar();
+    avisosInicio?.recargar();
     setDestinoAvisoPendiente(null);
   }, [destinoAvisoPendiente, cargando, usuarioAdmitido]);
   useEffect(() => {
@@ -394,7 +405,7 @@ export default function App() {
 
   const refrescar = async () => {
     setRefrescando(true);
-    if (AVISOS_NOVEDADES_ACTIVOS) novedadesCuenta.recargar();
+    avisosInicio?.recargar();
     try {
       const actualizado = await traer();
       if (actualizado) tacto.novedad();
@@ -548,7 +559,7 @@ export default function App() {
               await borrarDatosDispositivo();
               setRevisionCartera(actual => actual + 1);
               // Leídos y token de este móvil pueden haber cambiado.
-              if (AVISOS_NOVEDADES_ACTIVOS) novedadesCuenta.recargar();
+              avisosInicio?.recargar();
               setRadar([]); setFuera([]); setOfertas([]); setSecundario([]); setEnCamino([]);
               setExclusionesOfertas([]); setSigo([]); setAvisos([]); setGuardadas([]);
               setEstadoDatos(MODO_LOCAL
@@ -633,7 +644,7 @@ export default function App() {
   /* Un aviso de Inicio se marca como leído y lleva a su sitio dentro de la
      app; si solo tiene un enlace de la web, lo abre. */
   const abrirAvisoInicio = (aviso) => {
-    novedadesCuenta.marcarLeidos([aviso.id]);
+    avisosInicio?.marcarLeidos([aviso.id]);
     const destino = destinoAviso(aviso);
     if (destino) irA(destino.destino, destino.url);
   };
@@ -784,11 +795,11 @@ export default function App() {
               onAbrirPlataforma={abrir}
               onAbrirOferta={(oferta) => { tacto.abrir(); setOfertaAbierta(oferta); }}
               onAbrirEnlace={abrirEnlace}
-              tarjetaAvisos={AVISOS_NOVEDADES_ACTIVOS ? (
-                <TarjetaAvisosInicio avisos={novedadesCuenta.avisos} leidos={novedadesCuenta.leidos}
-                  cargando={novedadesCuenta.cargando} error={novedadesCuenta.errorCarga}
-                  onAbrir={abrirAvisoInicio} onMarcarLeidos={novedadesCuenta.marcarTodosLeidos}
-                  onDesactivar={irAAvisosPerfil} />
+              tarjetaAvisos={avisosInicio ? (
+                <TarjetaAvisosInicio avisos={avisosInicio.avisos} leidos={avisosInicio.leidos}
+                  cargando={avisosInicio.cargando} error={avisosInicio.errorCarga}
+                  onAbrir={abrirAvisoInicio} onMarcarLeidos={avisosInicio.marcarTodosLeidos}
+                  onDesactivar={AVISOS_NOVEDADES_ACTIVOS ? irAAvisosPerfil : undefined} />
               ) : null}
             />
           ) : null}
@@ -1116,7 +1127,7 @@ export default function App() {
         <Navegacion
           activa={destinoBarra}
           guardados={sigo.length + guardadas.length}
-          novedades={avisos.length + (AVISOS_NOVEDADES_ACTIVOS ? novedadesCuenta.noLeidos : 0)}
+          novedades={avisos.length + (avisosInicio ? avisosInicio.noLeidos : 0)}
           onCambiar={cambiarPestana}
         />
 
@@ -1152,6 +1163,7 @@ export default function App() {
         <Privacidad visible={privacidad} onCerrar={() => setPrivacidad(false)} estadoCuenta={estadoCuenta} idioma={idioma}
           onBorrar={confirmarBorrado} borrando={borrandoDatos}
           avisosNovedades={AVISOS_NOVEDADES_ACTIVOS} estadoNovedades={novedadesCuenta.servidor}
+          bandejaAvisos={BANDEJA_AVISOS_ACTIVA}
           pushNovedades={AVISOS_NOVEDADES_ACTIVOS && capacidadPushNovedades()} />
       </SafeAreaView>
     </SafeAreaProvider>
@@ -1784,7 +1796,7 @@ function PiePrivacidad({ onAbrir }) {
    que dice la base (correo y push encendidos); pushNovedades: este binario
    puede pedir notificaciones (código 24 o más). Apagados, los textos de hoy. */
 function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idioma,
-  avisosNovedades = false, estadoNovedades = null, pushNovedades = false }) {
+  avisosNovedades = false, estadoNovedades = null, pushNovedades = false, bandejaAvisos = false }) {
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onCerrar}>
       <SafeAreaProvider>
@@ -1875,6 +1887,12 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                 <Text style={e.privacidadParrafo}>
                   No se solicitan permisos push, obtienen tokens ni registran instalaciones. Cambiar de catálogo local a conectado no activa estos servicios.
                 </Text>
+                {/* Bandeja de avisos sin correo ni push (AVISOS_BANDEJA_REMOTA). */}
+                {bandejaAvisos ? (
+                  <Text style={e.privacidadParrafo}>
+                    {'En Inicio ves los avisos de tu cuenta: la bienvenida y los anuncios de RWAdar. La app los lee de Supabase con tu sesión y qué avisos has leído se guarda solo en este dispositivo. No se envían por correo ni como notificaciones.'}
+                  </Text>
+                ) : null}
                   </>
                 )}
                 <Text style={e.privacidadTit}>Borrado limitado a esta versión</Text>
@@ -1906,6 +1924,20 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                 </Text>
               </>
             )}
+
+            {/* El «latido» de Firebase (docs/tareas/APK-1.4.2-NOTIFICACIONES.md, «Al día
+                06/11/2026, tarde», punto 3): ocurre ya en la 1.4.2 aunque el push esté
+                apagado. Mientras el botón siga oculto, no se promete nada que no exista. */}
+            {!MODO_LOCAL ? (
+              <>
+                <Text style={e.privacidadTit}>{'Componente de notificaciones de Google (Firebase)'}</Text>
+                <Text style={e.privacidadParrafo}>
+                  {pushNovedades
+                    ? 'Desde la versión 1.4.2, la app de Android lleva el componente de notificaciones de Google (Firebase). Mientras no actives «Notificaciones en este móvil», no envía nada a Google. Aun así, guarda en el móvil las fechas recientes en que se abrió la app (hasta 30). Si activas las notificaciones, Google recibe esas fechas junto con qué componentes de Firebase lleva la app y sus versiones, y datos técnicos del móvil (versión de Android, marca, modelo, tipo de dispositivo y tienda desde la que se instaló la app). Según Google, los usa para sus estadísticas internas de uso de esos componentes, sin unirlos a un identificador de la persona ni del móvil. Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android. El botón «Borrar datos del dispositivo» de RWAdar no las borra.'
+                    : 'Desde la versión 1.4.2, la app de Android lleva el componente de notificaciones de Google (Firebase). Mientras no se activen «Notificaciones en este móvil», no envía nada a Google; hoy ese botón no aparece en la app. Aun así, guarda en el móvil las fechas recientes en que se abrió la app (hasta 30). Si se activan las notificaciones, Google recibe esas fechas junto con qué componentes de Firebase lleva la app y sus versiones, y datos técnicos del móvil (versión de Android, marca, modelo, tipo de dispositivo y tienda desde la que se instaló la app). Según Google, los usa para sus estadísticas internas de uso de esos componentes, sin unirlos a un identificador de la persona ni del móvil. Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android. El botón «Borrar datos del dispositivo» de RWAdar no las borra.'}
+                </Text>
+              </>
+            ) : null}
 
             {!MODO_LOCAL ? (idioma === 'en' ? (
               <>

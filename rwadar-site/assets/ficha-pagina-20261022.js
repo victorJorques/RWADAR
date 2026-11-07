@@ -45,6 +45,9 @@
       fila.dataset.cumple='no'; nodo.textContent=motivo;
       const marca=fila.querySelector && fila.querySelector('.comprobacion-marca');
       if (marca) marca.textContent='✗ No';
+      // Revisión legal 06/11/2026, 5.3: si ya no consta que se contrate hoy desde España, el botón dice que sales de RWAdar.
+      const boton=campo==='contratable' && pagina.querySelector('[data-campo="botonProveedor"]');
+      if (boton) boton.textContent='Ir a la web del proveedor (sales de RWAdar) ↗';
     }
     // Quinta comprobación de transparencia: revisada esta semana y sin fuentes en conflicto.
     const vigencia=pagina.querySelector('[data-campo="vigencia"]');

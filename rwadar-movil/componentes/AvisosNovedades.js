@@ -3,7 +3,7 @@ import { ActivityIndicator, StyleSheet } from 'react-native';
 import { Pressable, Text, View } from './Idioma';
 import { C, F, R, T, UI } from '../lib/tema';
 import {
-  INFO_BASICA_ES, TEXTO_AVISOS_ES, crearAvisosCuenta, crearGestorAvisosNovedades, quitarPushConCliente,
+  INFO_BASICA_ES, TEXTO_AVISOS_ES, crearAvisosCuenta, crearBandejaAvisos, crearGestorAvisosNovedades, quitarPushConCliente,
 } from '../lib/avisos-cuenta';
 import { capacidadPushNovedades, consultarPushNovedades, obtenerTokenNovedades } from '../lib/avisos';
 import { obtenerIdioma } from '../lib/idioma';
@@ -16,7 +16,9 @@ import {
    Avisos de novedades de la cuenta (contrato del 05/11/2026)
    ---------------------------------------------------------------------
    Solo se usa con AVISOS_NOVEDADES_REMOTOS encendido: App no llama al hook
-   con una cuenta ni pinta estas piezas si está apagado.
+   con una cuenta ni pinta estas piezas si está apagado. La excepción es la
+   tarjeta de Inicio con AVISOS_BANDEJA_REMOTA (useBandejaAvisos, más abajo):
+   solo la lista de avisos recibidos, sin el enlace a Perfil › Avisos.
    - Perfil › Avisos: «Avisos de novedades (correo y móvil)», que es el
      permiso, y «Notificaciones en este móvil», que pide permiso al sistema y
      registra este móvil. En binarios por debajo del código 24 (la 1.4.1) el
@@ -186,6 +188,67 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
   }
   return { ...vista, activo: Boolean(cuenta && usuarioId), idsNoLeidos, noLeidos: idsNoLeidos.length,
     alternarNovedades, alternarMovil, marcarLeidos, marcarTodosLeidos, recargar };
+}
+
+/* Bandeja de avisos sin correo ni push (AVISOS_BANDEJA_REMOTA, 07/11/2026):
+   lo mismo que useAvisosNovedades para la tarjeta «Avisos» de Inicio (los
+   avisos recibidos y cuáles has leído), pero sin el permiso de avisos, sin el
+   móvil y sin renovar nada. App solo le pasa la cuenta con su interruptor
+   encendido; sin cuenta no llama a nada. */
+export function useBandejaAvisos({ cuenta, usuarioId }) {
+  const [vista, setVista] = useState(INICIAL);
+  const gestor = useRef(null);
+  const turno = useRef(0);
+  function actualizar(vuelta, cambios) {
+    if (vuelta !== turno.current) return;
+    setVista((antes) => ({ ...antes, ...(typeof cambios === 'function' ? cambios(antes) : cambios) }));
+  }
+  async function cargar(g, vuelta) {
+    actualizar(vuelta, { cargando: true, errorCarga: '' });
+    try {
+      actualizar(vuelta, { cargando: false, ...(await g.cargarRecientes(10)) });
+    } catch {
+      actualizar(vuelta, { cargando: false, errorCarga: MENSAJES.carga });
+    }
+  }
+  useEffect(() => {
+    const vuelta = ++turno.current;
+    setVista(INICIAL);
+    gestor.current = null;
+    if (!cuenta || !usuarioId) return undefined;
+    let avisosCuenta;
+    try {
+      avisosCuenta = crearAvisosCuenta({ cuenta, usuarioId });
+      gestor.current = crearBandejaAvisos({ avisosCuenta, usuarioId, almacen: ALMACEN });
+    } catch {
+      avisosCuenta?.destruir();
+      return undefined;
+    }
+    const g = gestor.current;
+    cargar(g, vuelta);
+    return () => {
+      turno.current += 1;
+      if (gestor.current === g) gestor.current = null;
+      avisosCuenta.destruir();
+    };
+  }, [cuenta, usuarioId]);
+  async function marcarLeidos(ids) {
+    const g = gestor.current, vuelta = turno.current;
+    if (!g || !Array.isArray(ids) || !ids.length) return;
+    actualizar(vuelta, (antes) => ({ leidos: [...new Set([...ids, ...antes.leidos])] }));
+    try {
+      const leidos = await g.marcarLeidos(ids);
+      actualizar(vuelta, { leidos });
+    } catch { /* El punto volverá a salir la próxima vez. */ }
+  }
+  function recargar() {
+    const g = gestor.current;
+    if (g) cargar(g, turno.current);
+  }
+  const idsNoLeidos = vista.avisos.filter((aviso) => !vista.leidos.includes(aviso.id)).map((aviso) => aviso.id);
+  return { avisos: vista.avisos, leidos: vista.leidos, cargando: vista.cargando, errorCarga: vista.errorCarga,
+    activo: Boolean(cuenta && usuarioId), idsNoLeidos, noLeidos: idsNoLeidos.length,
+    marcarLeidos, marcarTodosLeidos: () => marcarLeidos(idsNoLeidos), recargar };
 }
 
 function textoMovil(movil, servidor) {

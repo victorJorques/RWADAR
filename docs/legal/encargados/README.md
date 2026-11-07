@@ -1,6 +1,7 @@
 # Contratos de encargo · RWAdar
 
-**Fecha:** 06/11/2026.
+**Fecha:** 06/11/2026. **Al día:** 07/11/2026 (Netlify y Proton Mail
+comprobados; Apple, sin aplicar hoy).
 **Quién lo hace:** Claude (IA), a petición de Víctor Manuel Jorques Granero,
 titular de RWAdar. No es el dictamen de un abogado.
 
@@ -22,6 +23,10 @@ los efectos gráficos, porque sin eso cada PDF pesaba 17 MB; el texto del
 contrato está entero. Si un proveedor publica otra versión, se imprime de nuevo
 con la fecha nueva y la antigua se queda.
 
+Las del 07/11/2026: las dos de Netlify son sus propios PDF, descargados tal
+cual de su web; las dos de Proton se imprimieron con Chrome sin ventana, que
+pone arriba la fecha y abajo la dirección de cada página.
+
 El registro de actividades
 ([`../REGISTRO-ACTIVIDADES-TRATAMIENTO.md`](../REGISTRO-ACTIVIDADES-TRATAMIENTO.md),
 apartado 3) resume esto mismo y enlaza aquí.
@@ -38,6 +43,9 @@ apartado 3) resume esto mismo y enlaza aquí.
 | **Expo** | Actualizaciones de la app y push | Sí, en sus términos (§3.2). No hay contrato aparte | SCC módulo 2, y DPF «en revisión» |
 | **GitHub** | Código, flujos, copias y descargas del APK | **No. Es un hueco** | DPF |
 | **Lettermint** | Todos los correos de RWAdar (pendiente) | Sí, al crear la cuenta (pendiente) | No salen: todo en la UE |
+| **Netlify** | Página de limpieza en `rwadar.netlify.app` | Sí, dentro de su acuerdo de autoservicio. Nada que firmar | DPF y, si cae, SCC módulo 2 |
+| **Proton Mail** | Buzón RWAdar@protonmail.com | Sí, dentro de sus condiciones. Nada que firmar | Suiza, con decisión de adecuación de la UE |
+| **Apple (APNs)** | Nada hoy: no hay app de iPhone | No aplica | No aplica |
 
 ---
 
@@ -173,6 +181,47 @@ peor para los usuarios: con Supabase gratuito no habría ninguna otra copia.
 | **Su política de uso** | https://lettermint.co/acceptable-use exige: consentimiento y prueba de cuándo se dio; «Include your valid physical postal address in every email»; una baja clara en cada correo de marketing, que funcione al menos 30 días; atender las bajas en 10 días hábiles como máximo. Por eso el pie de cada correo lleva la dirección del aviso legal. |
 | **PDF** | [`2026-11-06-lettermint-dpa.pdf`](2026-11-06-lettermint-dpa.pdf), [`2026-11-06-lettermint-subencargados.pdf`](2026-11-06-lettermint-subencargados.pdf), [`2026-11-06-lettermint-terminos.pdf`](2026-11-06-lettermint-terminos.pdf) y [`2026-11-06-lettermint-uso-aceptable.pdf`](2026-11-06-lettermint-uso-aceptable.pdf) |
 
+## Netlify
+
+| | |
+|---|---|
+| **Qué hace** | Aloja en `rwadar.netlify.app` la página «Esta dirección ya no está en uso» y el `sw.js` que borra la app web antigua de los móviles donde se instaló (carpeta `rwadar-limpieza/`). Recibe la IP y los datos técnicos de quien abre esa dirección. Comprobado el 07/11/2026: responde 200 con esa página y la cabecera `server: Netlify`. |
+| **¿Sigue haciendo falta?** | **Sí, de momento.** La app web antigua pedía la página a la red antes que a su copia guardada: solo se borra cuando alguien la abre con internet y llega a esta página. Si se quita la dirección, esas instalaciones seguirían funcionando de memoria (comentario de `rwadar-limpieza/index.html`). No hay forma de saber cuántas quedan: la dirección no tiene analítica (RUM apagado). `AGENTS.md` dice que se conserva. Quitarla es decisión de Víctor. **Verificar** también si `https://rwadar.netlify.app/` sigue en Supabase › Authentication › URL Configuration: el traspaso del 08/10/2026 proponía quitarla de ahí, porque ya no sirve la aplicación. |
+| **Quién firma** | Netlify, Inc., sociedad de Delaware, 512 2nd Street, Suite 200, San Francisco, CA 94107 (EE. UU.) (acuerdo de autoservicio, primer párrafo; DPA, anexo). |
+| **Contrato** | Data Processing Agreement: https://www.netlify.com/pdf/netlify-dpa.pdf |
+| **Versión** | «Last Updated: June 9, 2026» (09/06/2026). |
+| **Cómo vincula** | Su «Self-Serve Subscription Agreement» (https://www.netlify.com/legal/self-serve-subscription-agreement/, «Last Updated: November 4, 2026») rige desde que se pulsa «Create Account» «or by using or accessing the Services», y cubre también el plan gratuito («Free Usage Tier», §5). Su §6.5: «The DPA applies to personal data that Netlify processes on Customer's behalf, including personal data in Customer Content, and is incorporated into this Agreement». «Customer Content» incluye los «logs of requests that end users make to those sites». Su página https://www.netlify.com/gdpr-ccpa/ lo resume: «Our DPA is incorporated by reference in Netlify's terms and conditions». **No hay que firmar nada.** |
+| **Transferencias** | DPA §14.2: Netlify dice estar certificada en el marco UE-EE. UU. (DPF) y las transferencias se basan en él. Si el DPF cayera o Netlify no renovara, §14.3: cláusulas tipo (SCC), módulo 2. **Verificar** su entrada en la lista oficial (https://www.dataprivacyframework.gov/list): el 07/11/2026 la página no se pudo leer sin navegador. |
+| **Brechas** | §10.1: avisa «without undue delay, but in any event within forty-eight (48) hours». |
+| **Subencargados** | https://www.netlify.com/legal/subprocessors/ (DPA §6.2). Avisa con 30 días de uno nuevo. |
+| **Contacto** | privacy@netlify.com (DPA, anexo: persona de contacto). El DPA nombra también security@netlify.com y legal@netlify.com para pedir auditorías (§8.4.2). |
+| **PDF** | [`2026-11-07-netlify-dpa.pdf`](2026-11-07-netlify-dpa.pdf) y [`2026-11-07-netlify-acuerdo-autoservicio.pdf`](2026-11-07-netlify-acuerdo-autoservicio.pdf) |
+
+## Proton Mail
+
+| | |
+|---|---|
+| **Qué hace** | El buzón RWAdar@protonmail.com: consultas, solicitudes de derechos, bajas por correo, empresas y reportes de seguridad. También es la dirección de respuesta de los avisos. |
+| **Quién firma** | Proton AG, Route de la Galaise 32, 1228 Plan-les-Ouates, Ginebra (Suiza), número CHE-354.686.492 (DPA, primer párrafo). |
+| **Contrato** | Data Processing Agreement: https://proton.me/legal/dpa |
+| **Versión** | «Last modified: February 10, 2026» (10/02/2026). |
+| **Cómo vincula** | El DPA «forms part of the Contract for Services under Proton AG's Terms and Conditions». Sus condiciones (https://proton.me/legal/terms, «Last modified: November 05, 2026»), apartado 7: «If, in the provision of the Services, the Company processes, on the user's behalf (where the user acts as a Data Controller), any personal data that is subject to the EU General Data Protection Regulation (GDPR), the company's data processing agreement shall apply». **No hay que firmar nada.** [INTERPRETABLE] El DPA llama «Company» a «any business or organization using the Services, regardless of its legal form»; RWAdar es un proyecto de una persona física. Como las condiciones aplican el DPA siempre que el usuario sea responsable del tratamiento, es razonable apoyarse en él. |
+| **Transferencias** | Suiza tiene decisión de adecuación de la UE: Decisión 2000/518/CE de la Comisión, de 26 de julio de 2000 (EUR-Lex, en vigor, consultada el 07/11/2026). Sigue valiendo con el RGPD (art. 45.9: «permanecerán en vigor hasta que sean modificadas, sustituidas o derogadas»). La Comisión la revisó en su informe del 15/01/2024 (COM(2024) 7 final) y concluyó que Suiza sigue dando una protección adecuada. Por eso no hacen falta cláusulas tipo para llevar datos a Suiza. DPA §11: Proton solo los lleva, «to the extent possible», a Suiza, la UE o países con adecuación; fuera de ahí, con cláusulas tipo. |
+| **Dónde están los datos** | Su privacidad («Last modified: 12th May 2026») dice que el servicio lo presta Proton AG en Suiza, pero **no dice dónde están guardados los buzones** (**verificar**). Cualquiera de los destinos que permite el DPA §11 está cubierto por la adecuación o por el RGPD. |
+| **Brechas** | DPA: «the Processor shall notify the Company without delay», con la información necesaria para que RWAdar cumpla sus obligaciones. No fija horas. |
+| **Subencargados** | El DPA da permiso general y remite a la lista de su privacidad (https://proton.me/legal/privacy): por ejemplo, Zendesk para el chat de soporte y Chargebee para los pagos. |
+| **Contacto** | security@proton.me (su `/.well-known/security.txt`, 07/11/2026). |
+| **PDF** | [`2026-11-07-proton-dpa.pdf`](2026-11-07-proton-dpa.pdf) y [`2026-11-07-proton-terminos.pdf`](2026-11-07-proton-terminos.pdf) |
+
+## Apple (APNs) · no aplica hoy
+
+No hay app de iPhone publicada ni cuenta de Apple Developer (`docs/INTERNO.md`,
+07/11/2026). En iPhone, RWAdar es la web, también la que se añade a la
+pantalla de inicio, y no usa notificaciones de Apple. Apple no recibe ningún
+dato de los usuarios por cuenta de RWAdar. Si algún día se publica la app de
+iPhone con notificaciones, se lee entonces el contrato de Apple, se archiva
+aquí y se añade al registro de actividades.
+
 ## Alternativas descartadas (solo como referencia)
 
 | Proveedor | Contrato | Por qué no |
@@ -186,10 +235,10 @@ No se archivó su contrato.
 PDF: [`2026-11-06-postmark-dpa.pdf`](2026-11-06-postmark-dpa.pdf) y
 [`2026-11-06-resend-dpa.pdf`](2026-11-06-resend-dpa.pdf).
 
-**Fuera de esta carpeta**, pendientes de verificar en el registro de
-actividades: Gmail (hoy envía los correos de Auth sin contrato; lo sustituye
-el SMTP de Lettermint en el paso 5 del contrato de avisos), Netlify, Proton
-Mail y Apple (push en iPhone, sin app publicada).
+**Fuera de esta carpeta** solo queda Gmail: hoy envía los correos de Auth sin
+contrato de encargo (cuenta de consumo); lo sustituye el SMTP de Lettermint en
+el paso 5.8 del contrato de avisos. Netlify, Proton Mail y Apple se
+comprobaron el 07/11/2026 (arriba).
 
 ---
 
@@ -216,12 +265,15 @@ Mail y Apple (push en iPhone, sin app publicada).
    [contrato de avisos](../../tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md)).
    Al crearla se acepta el contrato. Apuntar la fecha abajo. Usar como correo de
    la cuenta uno que se revise: ahí llegan los avisos de brechas (24 horas) y
-   de subencargados nuevos (30 días). Opcional: pedir la copia firmada del DPA
+   de subencargados nuevos (30 días). Pedir también la verificación de la
+   cuenta (contrato, punto 5.2). Opcional: pedir la copia firmada del DPA
    y guardarla aquí.
 4. **Supabase.** Nada que firmar. Opcional: en el panel, «Organization ›
    Legal Documents», descargar la evaluación de las transferencias si la
    ofrece, y guardarla aquí con la fecha.
-5. **Cloudflare y Expo.** Nada que firmar.
+5. **Cloudflare, Expo, Netlify y Proton.** Nada que firmar. En Netlify,
+   decidir algún día si se retira `rwadar.netlify.app` (ver arriba) y mirar si
+   sigue en la configuración de direcciones de Supabase.
 
 ## Fechas que hay que apuntar
 
@@ -229,6 +281,8 @@ Mail y Apple (push en iPhone, sin app publicada).
 |---|---|---|
 | Google Firebase | **06/11/2026** | Aceptadas en la consola al crear el proyecto `rwadar-14e3d` |
 | Lettermint | **pendiente** | Crear la cuenta |
+| Lettermint · verificación | **pendiente** | Fecha en que se pidió y fecha en que la aprobaron |
+| Netlify y Proton | **no consta** | Al crear cada cuenta (antes de este registro). Si se puede ver en el panel de cada una, apuntarla aquí |
 | GitHub | **pendiente**: organización `rwadar` con GitHub Team | Firmar el «GitHub Customer Agreement» en la organización |
 
 ---
@@ -249,3 +303,19 @@ Mail y Apple (push en iPhone, sin app publicada).
 - **Expo:** https://expo.dev/dpa y https://expo.dev/subprocessors dan 404.
 - **GitHub:** su privacidad («Effective date: April 27, 2026») dice que GitHub,
   Inc. o GitHub B.V. tratan los datos «as the "Data Controller"».
+
+## Cómo se comprobó (07/11/2026)
+
+- **Netlify:** su DPA y su acuerdo de autoservicio, descargados en PDF de su
+  web (los dos de esta carpeta), y su página https://www.netlify.com/gdpr-ccpa/.
+  `rwadar.netlify.app` abierto con `curl`: 200, página de limpieza,
+  `server: Netlify`.
+- **Proton:** DPA, condiciones y privacidad leídos en su web; los dos primeros,
+  impresos aquí. Contacto de seguridad de su `/.well-known/security.txt`.
+- **Suiza:** Decisión 2000/518/CE en EUR-Lex
+  (https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32000D0518), la
+  lista de decisiones de adecuación de la Comisión
+  (https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_en)
+  y su informe del 15/01/2024.
+- **No se pudo:** leer la lista oficial del DPF sin navegador (Netlify queda
+  como **verificar** allí) ni ver dónde guarda Proton los buzones.

@@ -198,6 +198,51 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS, academy } 
     '} };\n';
 }
 
-const RUTAS = Object.freeze({ version: 1, include: ['/*'], exclude: [] });
+/* _routes.json: qué peticiones pasan por el worker (07/11/2026).
+   Cada petición que entra en el worker gasta del cupo gratis de Pages
+   Functions (100.000 al día). Si se agota, Pages está en «fail open» y sirve
+   los archivos sin el worker: las lecciones de /academy/ saldrían sin pedir
+   cuenta. Por eso no se gasta el cupo en lo que no lo necesita.
+
+   Fuera del worker solo queda /assets/: hojas, scripts con huella, fuentes,
+   las imágenes de Leaflet y el JSON del mapa. Ahí el worker no decide nada:
+   sirve ASSETS tal cual (respeta la copia de conservación, ver
+   copiaConservadaRWAdar) y solo añade CABECERAS_SEGURIDAD, que _headers ya
+   pone en /* con los mismos valores (compilar.test.mjs exige que sean
+   idénticas, Referrer-Policy incluida; .github/comprobar-publicado.mjs prueba
+   tras publicar que «/assets/../academy/…» no abre una lección). Todo lo demás sigue dentro:
+   el HTML, /api/*, /academy/* (la puerta de las lecciones), las fichas y sus
+   imágenes (el 404 de las retiradas y de su copia de conservación), sw.js,
+   los iconos y el resto de archivos de la raíz.
+
+   Reglas de Cloudflare (developers.cloudflare.com/pages/functions/routing/):
+   version 1, al menos una regla en include, como mucho 100 reglas entre
+   include y exclude, cada una de 100 caracteres como mucho, y exclude manda
+   sobre include. comprobarRutas lo exige al cargar este archivo, y además que
+   cada exclusión sea un prefijo «/carpeta/*» de EXCLUSIONES_PERMITIDAS: añadir
+   otra carpeta es una decisión explícita, con su prueba. */
+const EXCLUSIONES_PERMITIDAS = Object.freeze(['/assets/']);
+const LIMITES_RUTAS = Object.freeze({ reglas: 100, caracteres: 100 });
+function comprobarRutas(rutas) {
+  if (!rutas || rutas.version !== 1 || !Array.isArray(rutas.include) || !Array.isArray(rutas.exclude) ||
+    Object.keys(rutas).sort().join() !== 'exclude,include,version') throw new Error('_routes.json: formato no válido.');
+  if (!rutas.include.length) throw new Error('_routes.json: include necesita al menos una regla.');
+  const reglas = [...rutas.include, ...rutas.exclude];
+  if (reglas.length > LIMITES_RUTAS.reglas) throw new Error('_routes.json: más de 100 reglas.');
+  for (const regla of reglas) {
+    if (typeof regla !== 'string' || !regla.startsWith('/') || regla.length > LIMITES_RUTAS.caracteres || /[\s?#]/.test(regla)) {
+      throw new Error('_routes.json: regla no válida: ' + regla);
+    }
+  }
+  if (new Set(reglas).size !== reglas.length) throw new Error('_routes.json: reglas repetidas.');
+  if (rutas.include.length !== 1 || rutas.include[0] !== '/*') throw new Error('_routes.json: include debe ser ["/*"].');
+  for (const regla of rutas.exclude) {
+    if (!regla.endsWith('/*') || !EXCLUSIONES_PERMITIDAS.includes(regla.slice(0, -1))) {
+      throw new Error('_routes.json: exclusión no permitida: ' + regla);
+    }
+  }
+  return rutas;
+}
+const RUTAS = Object.freeze(comprobarRutas({ version: 1, include: Object.freeze(['/*']), exclude: Object.freeze(['/assets/*']) }));
 module.exports = { construirWorker, RUTAS, CONFIGURACION_PUBLICA, CABECERAS_SEGURIDAD, CARPETAS_FICHAS, fichasPublicadas,
-  ACCESOS_ACADEMY, academyPublicada };
+  ACCESOS_ACADEMY, academyPublicada, comprobarRutas, EXCLUSIONES_PERMITIDAS, LIMITES_RUTAS };
