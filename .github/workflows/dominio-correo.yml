@@ -1,0 +1,160 @@
+name: Dominio de correo (Cloudflare y Lettermint)
+
+# Lo que de las rondas 1 y 2 del plan (docs/tareas/PLAN-CEO-2026-11-06.md)
+# solo necesita las claves de Víctor, sin que él toque ningún panel:
+#
+# · estado (solo lee): la zona rwadar.app en Cloudflare y sus registros DNS
+#   del correo (nombre y tipo, con el valor acortado); en Lettermint, la
+#   verificación de la cuenta, el proyecto «RWAdar», el dominio y cómo va
+#   cada registro, las rutas (con el seguimiento) y los nombres de los tokens.
+# · preparar-dominio: crea el dominio en Lettermint y lo asocia al proyecto;
+#   pone en Cloudflare SOLO los registros DNS que faltan (DNS only); y pide la
+#   verificación. Nunca borra ni cambia un registro que ya exista: si alguno
+#   choca (otro CNAME, otro SPF…), para antes de crear nada y lo explica.
+#   Repetirlo no cambia nada.
+# · verificar-dominio: pide a Lettermint que verifique y cuenta cada registro.
+# · ajustar-rutas: seguimiento de aperturas y clics apagado en todas las
+#   rutas (en el plan gratis no existe: es lo correcto) y prueba a quitar el
+#   enlace de baja de Lettermint en la de difusión (en el plan gratis lo
+#   rechazan: lo cubre «Correo Lettermint», sincronizar-bajas).
+# · crear-token-base: crea el token de proyecto «RWAdar base (API)» y lo
+#   guarda directamente en el Vault de la base, con el remitente
+#   (db/31_correo_lettermint_guardar.sql, el camino de «guardar-correo»).
+#   El token se enmascara al llegar y nunca se enseña ni se escribe. Si ya
+#   hay uno con ese nombre, solo crea otro con «rotar» = SI, y borra el viejo
+#   después de guardar el nuevo. No enciende el correo.
+#
+# Las acciones que cambian algo piden escribir CORREO en «confirmar» y orden
+# expresa de Víctor (AGENTS.md). Solo desde main.
+#
+# Secretos: CLOUDFLARE_DNS_TOKEN y LETTERMINT_TEAM_TOKEN (cómo se crean, con
+# los permisos justos: PLAN-CEO-2026-11-06.md, «Claves que da Víctor») y, solo
+# en crear-token-base, SUPABASE_DB_URL. Cada uno llega solo a los pasos que lo
+# usan. Pasos: rwadar-app/dominio-correo.mjs. Pruebas: .github/claves.test.mjs.
+
+on:
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: 'Qué hacer'
+        required: true
+        type: choice
+        options:
+          - estado
+          - preparar-dominio
+          - verificar-dominio
+          - ajustar-rutas
+          - crear-token-base
+      confirmar:
+        description: 'Escribe CORREO para las acciones que cambian algo (estado y verificar-dominio no lo necesitan)'
+        required: false
+        type: string
+      remitente:
+        description: 'Solo crear-token-base: dirección desde la que salen los avisos, del dominio rwadar.app (por ejemplo, avisos@rwadar.app)'
+        required: false
+        type: string
+      rotar:
+        description: 'Solo crear-token-base: escribe SI para cambiar el token si ya existe (el viejo se borra después de guardar el nuevo)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+# crear-token-base escribe en la base (Vault): va en la misma cola que
+# «Aplicar catálogo» y «Avisos a registrados (base)», nunca dos escrituras a
+# la vez. El resto, en su propia cola.
+concurrency:
+  group: ${{ inputs.accion == 'crear-token-base' && 'rwadar-aplicar-catalogo' || 'rwadar-dominio-correo' }}
+  cancel-in-progress: false
+
+# Conexiones a Supabase siempre cifradas: con el «prefer» de libpq (lo que usa
+# psql si la dirección no lleva sslmode), alguien en medio que rechace TLS haría
+# seguir sin cifrar. Una sola regla para todos los flujos que usan
+# SUPABASE_DB_URL; la comprueba .github/flujos.test.mjs.
+env:
+  PGSSLMODE: require
+
+jobs:
+  dominio:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    # Las entradas llegan por el entorno y las valida el script; nunca van
+    # dentro de un run:.
+    env:
+      ACCION: ${{ inputs.accion }}
+      CONFIRMAR: ${{ inputs.confirmar }}
+      REMITENTE: ${{ inputs.remitente }}
+      ROTAR: ${{ inputs.rotar }}
+    steps:
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "Este flujo solo se lanza desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            rwadar-app/dominio-correo.mjs
+            rwadar-app/claves-comun.mjs
+            rwadar-app/db/31_correo_lettermint_guardar.sql
+            rwadar-node-seguro.js
+          sparse-checkout-cone-mode: false
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          # Parche de seguridad de Node del 21/10/2026, como en el vigilante.
+          node-version: 22.23.4
+
+      - name: Comprobar que Node lleva el parche de seguridad
+        run: node rwadar-node-seguro.js
+
+      - name: Comprobar la acción
+        run: node rwadar-app/dominio-correo.mjs comprobar
+
+      - name: Ver cómo está (solo lee)
+        if: inputs.accion == 'estado'
+        env:
+          CLOUDFLARE_DNS_TOKEN: ${{ secrets.CLOUDFLARE_DNS_TOKEN }}
+          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+        run: node rwadar-app/dominio-correo.mjs ejecutar
+
+      - name: Preparar el dominio en Lettermint y el DNS en Cloudflare
+        if: inputs.accion == 'preparar-dominio'
+        env:
+          CLOUDFLARE_DNS_TOKEN: ${{ secrets.CLOUDFLARE_DNS_TOKEN }}
+          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+        run: node rwadar-app/dominio-correo.mjs ejecutar
+
+      - name: Verificar el dominio en Lettermint
+        if: inputs.accion == 'verificar-dominio'
+        env:
+          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+        run: node rwadar-app/dominio-correo.mjs ejecutar
+
+      - name: Ajustar las rutas de Lettermint
+        if: inputs.accion == 'ajustar-rutas'
+        env:
+          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+        run: node rwadar-app/dominio-correo.mjs ejecutar
+
+      - name: Instalar psql 17 (misma versión que Supabase)
+        if: inputs.accion == 'crear-token-base'
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+
+      - name: Crear el token de la base y guardarlo en Vault
+        if: inputs.accion == 'crear-token-base'
+        env:
+          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: node rwadar-app/dominio-correo.mjs ejecutar

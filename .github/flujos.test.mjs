@@ -25,7 +25,7 @@ test('todo flujo que usa SUPABASE_DB_URL exige TLS con PGSSLMODE=require para to
   const conBase = fs.readdirSync(FLUJOS).filter(n => /\.ya?ml$/.test(n))
     .filter(n => /secrets\.SUPABASE_DB_URL/.test(fs.readFileSync(path.join(FLUJOS, n), 'utf8'))).sort();
   assert.deepEqual(conBase, ['aplicar-catalogo.yml', 'avisar-novedad.yml', 'avisos-base.yml', 'copia-seguridad.yml',
-    'correo-lettermint.yml', 'vigilante.yml'], 'si se añade un flujo con la base, que entre en esta regla');
+    'correo-lettermint.yml', 'dominio-correo.yml', 'vigilante.yml'], 'si se añade un flujo con la base, que entre en esta regla');
   for (const n of conBase) {
     const flujo = fs.readFileSync(path.join(FLUJOS, n), 'utf8');
     assert.match(flujo, /^env:\n {2}PGSSLMODE: require\n/m, `${n}: env de nivel de flujo con PGSSLMODE: require`);
@@ -39,6 +39,9 @@ test('todo flujo que usa SUPABASE_DB_URL exige TLS con PGSSLMODE=require para to
   assert.match(leer('rwadar-app/correo-lettermint.sh'), /^export PGSSLMODE="\$\{PGSSLMODE:-require\}"$/m);
   assert.match(leer('rwadar-app/copia-seguridad.sh'), /URL="\$URL\?sslmode=require"/);
   assert.match(leer('.github/vigilante.mjs'), /PGSSLMODE: entorno\.PGSSLMODE \|\| 'require'/);
+  // dominio-correo.mjs (crear-token-base) llama a psql desde rwadar-app/claves-comun.mjs.
+  assert.match(leer('rwadar-app/claves-comun.mjs'), /PGSSLMODE: entorno\.PGSSLMODE \|\| 'require'/);
+  assert.doesNotMatch(leer('rwadar-app/claves-comun.mjs').replace(/^\s*(\/\/|\*|\/\*).*$/gm, ''), /sslmode=(disable|allow|prefer)/);
 });
 
 /* ---------- .github/cambios-ci.sh ---------- */
