@@ -139,7 +139,10 @@ export function crearPedir({ fetchImpl = globalThis.fetch, esperar = ms => new P
   };
 }
 
-const QUE_HACER_WEB = 'Abre la página en el navegador. Si tampoco carga, mira si Cloudflare tiene una incidencia ' +
+const QUE_HACER_GITHUB_CAIDO = 'GitHub no ha respondido ni a la tercera. Suele ser pasajero y no hay que tocar nada. ' +
+  'Si mañana vuelve a salir, mira https://www.githubstatus.com; si GitHub está bien, pide a Claude o a Codex que lo mire.';
+
+const QUE_HACER_WEB ='Abre la página en el navegador. Si tampoco carga, mira si Cloudflare tiene una incidencia ' +
   '(https://www.cloudflarestatus.com) o si falló el último despliegue (Cloudflare › Workers y Pages › rwadar › ' +
   'Despliegues). Si el problema es el último despliegue, vuelve a publicar desde main con el flujo «Publicar web» ' +
   '(primero preview, luego producción) o pide a Claude o a Codex que lo mire.';
@@ -222,6 +225,10 @@ async function comprobarVersionAndroid(pedir) {
     'Está explicado en rwadar-movil/LEEME.md.';
   try {
     const r = await pedir(VERSION_ANDROID, { redirect: 'follow', maxBytes: MAX_VERSION_BYTES });
+    // Un 5xx o un 429 tras los reintentos es GitHub caído, no el archivo mal
+    // escrito: no se manda a nadie a editar la release (08/11/2026: un 504 de
+    // GitHub dio aquí una falsa alarma).
+    if (r.estado >= 500 || r.estado === 429) return fallido(nombre, `GitHub no responde: da ${r.estado}`, QUE_HACER_GITHUB_CAIDO);
     if (r.estado !== 200) return fallido(nombre, `no se pudo descargar: da ${r.estado}`, queHacer);
     if (r.texto.length > MAX_VERSION_BYTES) return fallido(nombre, `ocupa más de ${MAX_VERSION_BYTES} bytes y la app lo rechaza`, queHacer);
     let datos;
@@ -229,7 +236,7 @@ async function comprobarVersionAndroid(pedir) {
     const problema = revisarVersionAndroid(datos);
     return problema ? fallido(nombre, problema, queHacer)
       : correcto(nombre, `versión ${datos.version} (código ${datos.versionCode})`);
-  } catch (e) { return fallido(nombre, e.message, queHacer); }
+  } catch (e) { return fallido(nombre, e.message, QUE_HACER_GITHUB_CAIDO); }
 }
 
 /* Lo mismo que la web: todas las filas con la misma fecha y plazo, tantas como

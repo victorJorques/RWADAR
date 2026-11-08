@@ -6,6 +6,32 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 8 de noviembre de 2026 (1) · Claude · web y OTA publicadas; el vigilante avisa con una incidencia
+
+**Publicado** con el permiso general de Víctor:
+- Sello de main (PR #86, `b13ddeb`). La primera publicación se paró con `[CONTENIDO_NO_APROBADO]`.
+- «Publicar web», preview y producción: runs 42469759275 y 42469926454, las dos en verde, con «Comprobar la web publicada».
+- OTA Android con base `fa30779…` (run 42470107925).
+
+Comprobado desde fuera:
+- Aktionariat dice «Ir a la web del proveedor (sales de RWAdar)» y Kraken, «Ver oferta en Kraken…».
+- La privacidad lleva `#firebase-android`.
+- `/assets/../academy/<lección>`, pedida tal cual, da 401, y `%2e%2e` da 404.
+
+**Vigilante, primera vuelta** (a mano; la de las 05:17 UTC del 08/11 no salió):
+- 6 de 7 en verde, pg_cron incluido, contra el Supabase real.
+- Falló `version-android.json` con un 504 de GitHub, que estaba caído. El «Qué hacer» mandaba a editar la release: falsa alarma.
+
+**Arreglado en esta rama:**
+- Un 5xx, un 429 o un corte de red en ese archivo dicen ahora que es pasajero, sin mandar a tocar nada.
+- Si algo falla, el flujo abre o comenta la incidencia «Vigilante: algo falla en RWAdar», que menciona a @victorJorques y enlaza la ejecución. Cuando vuelve a ir bien, la cierra.
+- Con esto Víctor no tiene que hacer Disable/Enable.
+
+**En marcha:**
+- Academy web difuminada con candado sin cuenta (rama `claude/academy-candado`, orden de Víctor del 08/11).
+- Flujos con las claves de Víctor (rama `claude/claves-0711`).
+- El documento para Víctor, «RWAdar: lo que queda y quién lo hace» (Claude Docs).
+
 ## 7 de noviembre de 2026 (1) · Claude · ahorro de minutos, vigilante diario, copias, correo Lettermint, textos legales
 
 Víctor: «todo lo que puedas hacer tú, todo lo haces». Rama `claude/apanarse-0711`. Lo hicieron agentes por zonas, con revisión adversarial: se confirmaron 22 de 29 hallazgos y se corrigieron todos. `npm test` de la raíz termina con código 0 (web 641/0, móvil 491/0 con 2 omitidas, acceso 217/217, `.github` 43/43, avisos 275/0).
