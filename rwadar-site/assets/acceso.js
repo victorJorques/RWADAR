@@ -263,10 +263,12 @@
       }).catch(() => { enlace = null; form.hidden = false; mensaje('El enlace no se pudo comprobar. Solicita uno nuevo.'); });
     }
   }
-  // Llegada desde la Academy sin sesión: se abre «Crear cuenta gratis».
+  // Llegada desde la Academy sin sesión: se abre «Crear cuenta gratis» o, con
+  // vista=entrar («Ya tengo cuenta: entrar» del candado del índice), «Entrar».
+  // Tras entrar, regresar() vuelve al «volver» de la dirección (/academy/).
   if (vieneDeAcademy && !hayRetorno) {
     $('introduccion').textContent = 'Las lecciones son gratis con cuenta. Si ya la tienes, entra.';
-    cambiar('registrar');
+    cambiar(new URLSearchParams(location.search).get('vista') === 'entrar' ? 'entrar' : 'registrar');
   }
   if (cierrePendiente) {
     mensaje('El cierre anterior todavía no se confirmó. Necesitas conexión para terminarlo antes de entrar.');

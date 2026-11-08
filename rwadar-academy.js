@@ -32,6 +32,11 @@ const DATOS_APP = path.join(RAIZ, 'rwadar-movil', 'lib', 'academy-contenido.js')
 const ORIGEN = 'https://rwadar.pages.dev';
 const CSS = '/assets/academy-20261002.css';
 const JS = '/assets/academy-20261002.js';
+/* Candado del índice y del bloque de la portada (petición de Víctor del
+   08/11/2026): sin sesión, las lecciones salen difuminadas y con un candado;
+   al entrar, se abren. Hoja y script propios, compartidos por las dos páginas. */
+const CANDADO_CSS = '/assets/academy-candado-20261108.css';
+const CANDADO_JS = '/assets/academy-candado-20261108.js';
 const ANALITICA = '/assets/analitica-20260927.js';
 const PALABRAS_POR_MINUTO = 200;
 const ESTADOS = new Set(['borrador', 'en_revision', 'publicado', 'retirado']);
@@ -43,6 +48,9 @@ const ROBOTS_CON_CUENTA = 'noindex, nofollow';
 /* Adónde lleva «Crea tu cuenta gratis»: /acceso abre «Crear cuenta gratis» y
    vuelve a la Academy al confirmar (contrato del 05/11/2026). */
 const ALTA_ACADEMY = '/acceso?volver=/academy/';
+/* «Ya tengo cuenta: entrar» del candado: el mismo sitio, abierto en «Entrar»
+   (acceso.js lee vista=entrar). Tras entrar, vuelve a /academy/. */
+const ENTRAR_ACADEMY = '/acceso?volver=/academy/&vista=entrar';
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto',
   'septiembre', 'octubre', 'noviembre', 'diciembre'];
 const ICONO = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'><rect width='104' height='104' rx='24' fill='%230B0A0A'/><g fill='none' stroke='%2325E39A' stroke-width='2.6' opacity='.55'><circle cx='52' cy='52' r='40'/><circle cx='52' cy='52' r='28'/></g><path d='M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z' fill='%2325E39A' opacity='.45'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z' fill='%2325E39A'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52Z' fill='%230F7A57'/></svg>";
@@ -652,7 +660,7 @@ function tituloPestana(titulo) {
   return titulo;
 }
 
-function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg, jsonLd, extraMeta = '', robots = ROBOTS_INDEXABLE }) {
+function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg, jsonLd, extraMeta = '', robots = ROBOTS_INDEXABLE, candado = false }) {
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -677,7 +685,7 @@ ${extraMeta}<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${ICONO}">
 <script src="/assets/idioma-previo-20261104.js"></script>
 <link rel="stylesheet" href="${CSS}">
-<link rel="stylesheet" href="/assets/idioma-20261022.css">
+${candado ? `<link rel="stylesheet" href="${CANDADO_CSS}">\n` : ''}<link rel="stylesheet" href="/assets/idioma-20261022.css">
 <script type="application/ld+json">
 ${JSON.stringify(jsonLd)}
 </script>
@@ -685,8 +693,34 @@ ${JSON.stringify(jsonLd)}
 <script src="/assets/idioma-en-20261022.js" defer></script>
 <script src="/assets/idioma-20261022.js" defer></script>
 <script src="/assets/idioma-web-20261022.js" defer></script>
-<script src="${JS}" defer></script>
+${candado ? `<script src="${CANDADO_JS}" defer></script>\n` : ''}<script src="${JS}" defer></script>
 </head>`;
+}
+
+/* Candado de las lecciones (petición de Víctor del 08/11/2026). Mismo HTML en
+   el índice /academy/ y en el bloque de la portada; lo abre
+   assets/academy-candado-20261108.js al confirmar la sesión. Nace BLOQUEADO:
+   sin script, o si la comprobación falla, las tarjetas siguen difuminadas, sin
+   poder pulsarse ni enfocarse (inert) y fuera del lector de pantalla
+   (aria-hidden); el lector oye solo el recuadro. Con "publico" no hay candado. */
+const CANDADO_SVG = '<svg class="candado-icono" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'
+  + '<rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.6v2.4"/></svg>';
+function htmlCandado(academy, { id, nivel, contenido }) {
+  if (academy.acceso !== 'cuenta') return contenido;
+  return `<div class="candado" data-academy-candado data-estado="bloqueado">
+      <div class="candado-capa" data-academy-candado-capa>
+        <section class="candado-caja" aria-labelledby="${id}Tit">
+          ${CANDADO_SVG}
+          <h${nivel} class="candado-tit" id="${id}Tit">Las lecciones se abren con tu cuenta gratuita</h${nivel}>
+          <p class="candado-txt">Es gratis: solo necesitas un correo y una contraseña.</p>
+          <p class="candado-acciones"><a class="candado-boton candado-boton-p" href="${esc(ALTA_ACADEMY)}">Crear cuenta gratis</a><a class="candado-boton candado-boton-s" href="${esc(ENTRAR_ACADEMY)}">Ya tengo cuenta: entrar</a></p>
+          <p class="candado-error" data-academy-candado-error role="status"></p>
+        </section>
+      </div>
+      <div class="candado-contenido" data-academy-candado-contenido inert aria-hidden="true">
+      ${contenido}
+      </div>
+    </div>`;
 }
 
 const MARCA_SVG = `<svg class="ac-marca-icono" width="32" height="32" viewBox="0 0 104 104" aria-hidden="true">
@@ -983,6 +1017,7 @@ function paginaIndice(academy) {
     canonica,
     tipoOg: 'website',
     jsonLd,
+    candado: conCuenta,
   })}
 <body class="ac-cuerpo-pagina">
 ${barraSuperior('academy')}
@@ -1012,7 +1047,7 @@ ${barraSuperior('academy')}
     </ol>
   </header>
 
-    ${niveles}
+    ${htmlCandado(academy, { id: 'candadoAcademy', nivel: 2, contenido: niveles })}
 
   <p class="ac-nota">Accedes con tu cuenta. Tu progreso (lecciones leídas y tests hechos) se guarda solo en este navegador, separado por cuenta; no se sincroniza entre dispositivos. Borrar los datos del navegador también lo borra.</p>
 
@@ -1058,9 +1093,9 @@ function bloquePortada(academy) {
     <div class="academia-lecciones-cab">
       ${cabecera}
     </div>
-    <div class="academia-niveles">
+    ${htmlCandado(academy, { id: 'candadoPortada', nivel: 4, contenido: `<div class="academia-niveles">
     ${niveles}
-    </div>
+    </div>` })}
     <a class="academia-ver-todo" href="/academy/">Ver todas las lecciones <span aria-hidden="true">→</span></a>
     <p class="academia-nota">Las lecciones son de texto. De momento no hay vídeos.</p>
   </div>
@@ -1223,6 +1258,13 @@ function comprobarLeccionesPublicadas(directorio, academy = cargarAcademy()) {
   };
   const indice = leer('academy/index.html');
   if (!indice || !indice.includes('data-academy-indice-pagina')) fallos.push('academy/index.html no es el índice de la Academy');
+  /* Con cuenta, el índice sale BLOQUEADO por defecto (candado del 08/11/2026):
+     las tarjetas, inert y aria-hidden; la hoja y el script del candado, con huella. */
+  else if (academy.acceso === 'cuenta' && (!indice.includes('<div class="candado" data-academy-candado data-estado="bloqueado">') ||
+      !indice.includes('<div class="candado-contenido" data-academy-candado-contenido inert aria-hidden="true">') ||
+      !conHuella(CANDADO_CSS).test(indice) || !conHuella(CANDADO_JS).test(indice))) {
+    fallos.push('academy/index.html no sale bloqueado por defecto (falta el candado, su hoja o su script con huella)');
+  }
   for (const l of publicadas(academy)) {
     const nombre = `academy/${l.slug}.html`;
     const pagina = leer(nombre);
@@ -1245,7 +1287,7 @@ function comprobarLeccionesPublicadas(directorio, academy = cargarAcademy()) {
 }
 
 module.exports = {
-  ORIGEN, CSS, JS, ACCESOS, ALTA_ACADEMY, ROBOTS_CON_CUENTA, cargarAcademy, construirSalidas, paginasAcademy, comprobar, generar,
+  ORIGEN, CSS, JS, CANDADO_CSS, CANDADO_JS, ACCESOS, ALTA_ACADEMY, ENTRAR_ACADEMY, ROBOTS_CON_CUENTA, cargarAcademy, construirSalidas, paginasAcademy, comprobar, generar,
   comprobarLeccionesPublicadas, parsearInline, parsearBloques, textoPlano, avisosRevision, ErrorAcademy, tituloPestana,
 };
 

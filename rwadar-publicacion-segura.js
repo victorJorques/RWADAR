@@ -128,6 +128,9 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'assets/acceso.js',
   'assets/acceso-privado.js',
   'assets/academy-20261002.js',
+  // Candado de las lecciones sin cuenta (índice y portada), 08/11/2026.
+  'assets/academy-candado-20261108.css',
+  'assets/academy-candado-20261108.js',
   'assets/analitica-20260927.js',
   'assets/baja-20261105.js',
   'assets/error-20260820.css',

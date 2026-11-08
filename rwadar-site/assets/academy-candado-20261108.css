@@ -1,0 +1,57 @@
+/* ===================================================================
+   RWAdar Academy · candado de las lecciones sin cuenta (08/11/2026)
+   -------------------------------------------------------------------
+   Lo usan el índice /academy/ y el bloque de lecciones de la portada, con el
+   mismo HTML (rwadar-academy.js, htmlCandado) y el mismo script
+   (academy-candado-20261108.js). El HTML nace BLOQUEADO:
+   data-estado="bloqueado" difumina las tarjetas y enseña el recuadro del
+   candado encima. Solo el script, al confirmar la sesión, lo pasa a
+   "abierto". Sin script, o si la comprobación falla, sigue bloqueado.
+   Colores propios para no depender de la hoja de cada página: negro cálido y
+   el verde de la marca. Contraste AA en todo el recuadro.
+   Sin estilos en línea: la política de seguridad los prohíbe.
+   =================================================================== */
+.candado{--candado-fondo:#171614;--candado-borde:rgba(37,227,154,.34);--candado-tx:#F7F5F0;
+ --candado-tx-2:#BBB5AB;--candado-verde:#25E39A;--candado-verde-cl:#6BF0C0;--candado-en-verde:#06140E;
+ --candado-aviso:#FFB454;--candado-arriba:max(84px,14vh);position:relative}
+.candado-capa{position:absolute;inset:0;z-index:5;display:flex;justify-content:center;align-items:flex-start;
+ padding:28px 12px 12px;pointer-events:none}
+.candado-capa[hidden]{display:none!important}
+.candado-caja{position:sticky;top:var(--candado-arriba);align-self:flex-start;pointer-events:auto;
+ width:100%;max-width:440px;padding:26px 24px 22px;border:1px solid var(--candado-borde);border-radius:16px;
+ background:var(--candado-fondo);color:var(--candado-tx);text-align:center;
+ box-shadow:0 0 0 1px rgba(0,0,0,.4),0 24px 48px -16px rgba(0,0,0,.85)}
+.candado-icono{display:block;width:44px;height:44px;margin:0 auto 12px;color:var(--candado-verde)}
+.candado .candado-tit{margin:0 0 8px;color:var(--candado-tx);font-size:1.25rem;line-height:1.3;font-weight:650;
+ letter-spacing:0;text-wrap:balance}
+.candado .candado-txt{margin:0 0 18px;color:var(--candado-tx-2);font-size:.9375rem;line-height:1.5}
+.candado .candado-acciones{display:flex;flex-direction:column;gap:10px;margin:0}
+.candado .candado-boton{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 18px;
+ border-radius:12px;font-size:.9375rem;font-weight:600;line-height:1.25;text-align:center;text-decoration:none;
+ transition:background-color .16s ease,color .16s ease,border-color .16s ease}
+.candado .candado-boton-p{background:var(--candado-verde);color:var(--candado-en-verde);border:1px solid var(--candado-verde)}
+.candado .candado-boton-p:hover{background:var(--candado-verde-cl);border-color:var(--candado-verde-cl);color:var(--candado-en-verde)}
+.candado .candado-boton-s{background:transparent;color:var(--candado-verde);border:1px solid var(--candado-borde)}
+.candado .candado-boton-s:hover{border-color:var(--candado-verde);color:var(--candado-verde-cl)}
+.candado .candado-boton:focus-visible{outline:2px solid var(--candado-verde-cl);outline-offset:3px}
+/* La línea del fallo de red: vacía no ocupa sitio; el script la rellena. */
+.candado .candado-error{margin:14px 0 0;color:var(--candado-aviso);font-size:.8125rem;line-height:1.45}
+.candado .candado-error:empty{margin:0}
+
+/* Bloqueado: las tarjetas se ven difuminadas, no se pueden pulsar ni
+   seleccionar (y en el HTML van con inert y aria-hidden). */
+.candado[data-estado="bloqueado"]{min-height:380px}
+.candado[data-estado="bloqueado"] .candado-contenido{filter:blur(7px);opacity:.5;pointer-events:none;
+ user-select:none;-webkit-user-select:none}
+.candado-contenido{transition:filter .35s ease,opacity .35s ease}
+.candado[data-estado="abierto"] .candado-contenido{filter:none;opacity:1}
+
+@media (max-width:640px){
+ .candado{--candado-arriba:max(76px,10vh)}
+ .candado-capa{padding:18px 0 8px}
+ .candado-caja{padding:22px 16px 18px}
+ .candado .candado-tit{font-size:1.125rem}
+}
+@media (prefers-reduced-motion:reduce){
+ .candado-contenido,.candado .candado-boton{transition:none}
+}

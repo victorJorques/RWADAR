@@ -6,6 +6,32 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 8 de noviembre de 2026 (1) · Claude · Academy con candado en la web (difuminada sin cuenta, se abre al entrar)
+
+Víctor: «Quiero que esté bloqueado Academy, que solo se desbloquee al crearse la cuenta, que salga difuminada la página y con un candado, y al registrarse y entrar ya se desbloquee». Rama `claude/academy-candado`. **Sin publicar.**
+
+**Qué hace**
+- Sin sesión, `/academy/` y el bloque de lecciones de la portada enseñan las tarjetas difuminadas, con `inert` y `aria-hidden` (no se pulsan, no se enfocan y el lector no las oye). Encima, un recuadro con un candado SVG, «Las lecciones se abren con tu cuenta gratuita», «Es gratis…», «Crear cuenta gratis» (`/acceso?volver=/academy/`) y «Ya tengo cuenta: entrar» (`/acceso?volver=/academy/&vista=entrar`).
+- El HTML nace bloqueado. `assets/academy-candado-20261108.js` lo abre solo si `RWADAR_ACCESO.verificar()` (la pasarela de siempre, `/api/acceso/sesion`) devuelve una cuenta. Con un 401 o una respuesta rara, sigue igual. Si la red o el servicio fallan, sigue bloqueado con «No hemos podido comprobar tu sesión. Recarga la página». Al volver con «Atrás» (caché del navegador) pregunta otra vez. En el WebView del tutorial de la app no pregunta.
+- Hoja y script nuevos con fecha 20261108, compartidos por las dos páginas. El HTML sale de `htmlCandado` en `rwadar-academy.js`. Con `"publico"` no hay candado.
+- `acceso.js`: `vista=entrar` abre «Entrar» cuando se llega desde la Academy.
+- El tutorial 3D sigue nítido y público. La puerta del servidor de las lecciones no cambia. La app no cambia: ya exige cuenta para todo (`AccesoObligatorio`).
+
+**`volver`, comprobado en el código**
+- Tras entrar con la contraseña: `regresar()` lee `volver=/academy/` y va a `/academy/`, que se abre.
+- Tras crear la cuenta: no se entra sola. El índice no guarda vuelta. Si después se pulsa «Entrar con mi cuenta» en esa misma pestaña, vuelve a `/academy/`.
+- Tras confirmar el correo: el enlace lleva a la raíz y de ahí a `/acceso`. «Continuar con esta cuenta» deja la sesión y va a la lección guardada o, si no hay, a `/academy/#cuenta-confirmada`, que se ve abierta y con «Cuenta confirmada: Academy desbloqueada».
+
+**Pruebas**
+- Nuevo `rwadar-acceso/academy-candado-navegador.test.mjs`, con 12 pruebas: el HTML, el script en una VM con la pasarela de verdad y Chromium con el worker local (incluye entrar desde el candado). La parte de Chromium se omite si no hay Playwright, como en CI.
+- Dos pruebas más en `alta-avisos-navegador.test.mjs` (`vista=entrar` y la vuelta tras el alta).
+- Ajustadas las pruebas de hojas y scripts de la portada (`probar-web.mjs`, `probar-web-escritorio.mjs`). `comprobar-publicado.mjs` comprueba ahora que el índice llega bloqueado.
+- `npm test` de la raíz termina con código 0: web 642/0, móvil 491/0 con 2 omitidas, acceso 231/231. El guardián de la OTA con la base `fa30779…` da `ok`.
+
+**Pendiente (Víctor):**
+- Publicar la web (preview y producción) cuando lo autorice.
+- `idioma-en.js` solo suma textos de la web que la app no enseña, así que no hace falta OTA por esto.
+
 ## 7 de noviembre de 2026 (1) · Claude · ahorro de minutos, vigilante diario, copias, correo Lettermint, textos legales
 
 Víctor: «todo lo que puedas hacer tú, todo lo haces». Rama `claude/apanarse-0711`. Lo hicieron agentes por zonas, con revisión adversarial: se confirmaron 22 de 29 hallazgos y se corrigieron todos. `npm test` de la raíz termina con código 0 (web 641/0, móvil 491/0 con 2 omitidas, acceso 217/217, `.github` 43/43, avisos 275/0).

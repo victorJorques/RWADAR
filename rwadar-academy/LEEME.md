@@ -81,6 +81,42 @@ inventada da 404 sin mirar la cookie. Si Supabase no responde, la lección da
 No es un candado: el texto va en el paquete de la app. Nunca se pone material
 privado en la Academy.
 
+### El candado del índice y de la portada (08/11/2026)
+
+Petición de Víctor: «que esté bloqueado Academy, que solo se desbloquee al
+crearse la cuenta, que salga difuminada la página y con un candado, y al
+registrarse y entrar ya se desbloquee». Con `"cuenta"`, el generador envuelve
+las tarjetas de las lecciones del índice `/academy/` y el bloque de lecciones
+de la portada (`htmlCandado` en `rwadar-academy.js`, el mismo HTML para las
+dos) en un candado:
+
+- **El HTML nace bloqueado:** `data-estado="bloqueado"`, las tarjetas con
+  `inert` y `aria-hidden="true"` (no se pulsan, no se enfocan con el teclado y
+  el lector de pantalla no las oye) y, encima, un recuadro con un candado,
+  «Las lecciones se abren con tu cuenta gratuita», «Crear cuenta gratis»
+  (`/acceso?volver=/academy/`) y «Ya tengo cuenta: entrar»
+  (`/acceso?volver=/academy/&vista=entrar`). Sin JavaScript sigue así.
+- **Solo se abre con una sesión confirmada:** `assets/academy-candado-20261108.js`
+  pregunta con la pasarela de siempre (`window.RWADAR_ACCESO.verificar()`, que
+  llama a `/api/acceso/sesion`). Si el servidor dice que sí, quita `inert`,
+  `aria-hidden` y el recuadro. Sin sesión (401) o con una respuesta rara, nada
+  cambia. Si la red o el servicio fallan, sigue bloqueado y lo dice en una
+  línea: «No hemos podido comprobar tu sesión. Recarga la página».
+- **El aspecto** está en `assets/academy-candado-20261108.css`: difuminado,
+  recuadro oscuro con el verde de la marca, sin animación con «reducir
+  movimiento». Las dos páginas cargan la misma hoja y el mismo script; las
+  lecciones no los cargan.
+- **El tutorial 3D sigue nítido y público** (decisión del 06/11/2026): queda
+  fuera del candado.
+- **No es la puerta:** la lección la sigue cerrando el servidor (303 o 401).
+  El candado solo cambia lo que se ve en el índice.
+
+Con `"publico"` el candado desaparece solo al regenerar (no se escribe ni la
+hoja ni el script en el índice). Pruebas:
+`rwadar-acceso/academy-candado-navegador.test.mjs` (HTML, script en una VM con
+la pasarela de verdad y, si Playwright está instalado, Chromium con el worker
+local).
+
 ### Volver a `"publico"`: lo que cambia solo y lo que hay que cambiar a mano
 
 Con `"publico"`, `node rwadar-academy.js` y el worker reabren solos las

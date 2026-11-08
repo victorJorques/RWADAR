@@ -255,6 +255,42 @@ test('el índice de la Academy (botón «Crea tu cuenta gratis» y puerta del tu
   }
 });
 
+// Candado del índice (08/11/2026): «Crear cuenta gratis» va a /acceso?volver=/academy/
+// y «Ya tengo cuenta: entrar» a /acceso?volver=/academy/&vista=entrar.
+test('«Ya tengo cuenta: entrar» del candado abre «Entrar» y, al entrar, vuelve a /academy/', async () => {
+  const p = pagina({ search: '?volver=%2Facademy%2F&vista=entrar' });
+  assert.equal(p.elemento('enviar').textContent, 'Entrar');
+  assert.equal(p.elemento('titulo').textContent, 'Tu radar, con tu cuenta');
+  assert.equal(p.elemento('campo-condiciones').hidden, true);
+  assert.equal(p.elemento('introduccion').textContent, 'Las lecciones son gratis con cuenta. Si ya la tienes, entra.');
+  p.elemento('correo').value = 'alta@example.test';
+  p.elemento('clave').value = 'una-clave-solo-de-prueba';
+  await p.elemento('formulario').eventos.submit({ preventDefault() {} });
+  assert.deepEqual(p.peticiones.map(x => x.ruta), ['/api/acceso/entrar', '/api/acceso/sesion'], 'entra y confirma la sesión antes de volver');
+  assert.deepEqual(p.destinos, ['/academy/']);
+  // vista=entrar solo cuenta llegando desde la Academy; cualquier otro valor abre el alta.
+  for (const search of ['?volver=%2Facademy%2F&vista=registrar', '?volver=%2Facademy%2F&vista=otra', '?vista=entrar&volver=%2Facademy%2F']) {
+    const q = pagina({ search });
+    assert.equal(q.elemento('enviar').textContent, search.includes('vista=entrar') ? 'Entrar' : 'Crear cuenta gratis', search);
+  }
+  assert.equal(pagina({ search: '?vista=entrar' }).elemento('introduccion').textContent, '', 'sin volver a la Academy, /acceso como siempre');
+});
+
+test('«Crear cuenta gratis» del candado: tras el alta, entrar en esa misma página vuelve a /academy/', async () => {
+  const p = pagina({ search: '?volver=%2Facademy%2F' });
+  assert.equal(p.elemento('enviar').textContent, 'Crear cuenta gratis');
+  await p.registrar();
+  assert.equal(p.elemento('siguiente-alta').hidden, false, 'ofrece «Entrar con mi cuenta» tras el alta');
+  assert.equal(p.guardado.has('rwadar.alta.volver'), false, 'el índice no guarda vuelta: al confirmar ya se va a /academy/');
+  // Ya confirmado el correo, «Entrar con mi cuenta» en la misma pestaña.
+  p.elemento('entrar-tras-alta').eventos.click();
+  assert.equal(p.elemento('enviar').textContent, 'Entrar');
+  p.elemento('correo').value = 'alta@example.test';
+  p.elemento('clave').value = 'una-clave-solo-de-prueba';
+  await p.elemento('formulario').eventos.submit({ preventDefault() {} });
+  assert.deepEqual(p.destinos, ['/academy/']);
+});
+
 test('sin almacenamiento el alta sigue y avisa igual de que revise el correo', async () => {
   const p = pagina({ search: '?volver=%2Facademy%2Fcomo-leer-el-radar', almacenRoto: true });
   await p.registrar();
