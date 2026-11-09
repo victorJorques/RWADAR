@@ -6,7 +6,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 8 y 9 de noviembre de 2026 · Claude · flujos con las claves de Víctor («Dominio de correo» y «Supabase (gestión de Auth)»)
+## 9 de noviembre de 2026 (2) · Claude · flujos con las claves de Víctor («Dominio de correo» y «Supabase (gestión de Auth)»)
 
 Rama `claude/claves-0711`, sin unir ni lanzar: **las claves aún no existen y no se ha llamado a ninguna API de verdad.** Primer commit `3989d2a` (los dos flujos); el segundo corrige 15 hallazgos de la revisión independiente y aplica la decisión de Víctor del 08/11.
 
@@ -34,6 +34,72 @@ Rama `claude/claves-0711`, sin unir ni lanzar: **las claves aún no existen y no
 - La CA de Supabase (arriba).
 - `prueba-correo` de «Correo Lettermint» aún lee el token del secreto `LETTERMINT_API_TOKEN`, que con `crear-token-base` ya no existe: cambiarla para que lo lea del Vault antes de la prueba real (`PLAN-CEO`, «después de la ronda 2»).
 - La primera ejecución real de cada flujo dirá si algún permiso o forma de respuesta de Lettermint no es como dice su documentación (están marcados «verificar»).
+## 9 de noviembre de 2026 (1) · Claude · candado de la Academy: arreglos de la revisión independiente
+
+Misma rama `claude/academy-candado`, encima del commit del candado (`3a1430a`). Revisores independientes confirmaron 9 hallazgos; están todos arreglados y cada uno tiene su prueba. **Sin publicar.**
+
+- **La primera pantalla de `/academy/` no enseñaba ni difuminado ni candado (lo que pidió Víctor).** Ahora el bloque del candado va justo debajo de la entradilla. Sin cuenta, al abrir la página ya se ven el candado, el título, «Crear cuenta gratis» y «Ya tengo cuenta: entrar» sobre las lecciones difuminadas, sin bajar (comprobado a 390×844, 1280×800 y 1920×1080). Los saltos «Nivel 1/2/3» van dentro de lo difuminado. El tutorial 3D sigue nítido y público, pero pasa a ir **detrás** del bloque. Para no obligar a recorrer todas las lecciones a ciegas, cerrado y sin cuenta lo difuminado se corta a 640 px y se desvanece, y el tutorial queda justo debajo. Mientras se pregunta por la sesión no se corta, para que quien la tiene y recarga a mitad de la lista vuelva a su sitio (probado). La fila «Gratis con tu cuenta / Crea tu cuenta gratis…» repetía el botón del recuadro: queda solo la sobrelínea «Gratis con tu cuenta», que con sesión pasa a «Lecciones desbloqueadas». Al volver de `/acceso`, la primera pantalla enseña los niveles nítidos. Con `"publico"`, el índice queda exactamente como antes.
+- **Redirección abierta en `volver` (ya existía, antes del candado).** `regresar()` de `acceso.js` y `retornoSeguro()` del servidor comprobaban la cadena, pero navegaban a la ruta ya normalizada. `/.//otra-web`, `/%2e//otra-web` o `/academy/..//otra-web` acababan en otra web tras entrar con la contraseña. Ahora también se rechaza la ruta normalizada que empiece por `//`. Pruebas en `servidor.test.mjs`, `alta-avisos-navegador.test.mjs` y Chromium (entrar con `volver=/.//atacante.test/` se queda en `/`).
+- **Quien ya tiene cuenta veía «Crear cuenta gratis» al cargar.** El script del candado va ahora en `<head>` sin `defer` (en el índice y en la portada). Marca `html.candado-comprobando` y el recuadro dice «Comprobando tu sesión…» hasta que el servidor responde. Con un 401, un fallo de red o a los 8 s salen los botones; sin JavaScript se ven desde el principio. **Lo que no se puede quitar:** con sesión, durante una ida y vuelta al servidor (unos 0,2-0,5 s) se ve el recuadro con «Comprobando tu sesión…» sobre las lecciones difuminadas, y luego se desvanece en 0,35 s. Como el candado va ahora en la primera pantalla, ese momento se ve más que antes. El HTML no puede nacer abierto sin que el servidor confirme la sesión. Si el foco estaba en el recuadro, pasa al primer enlace de lo que se abre.
+- **Con zoom al 200 % o 400 % el botón «entrar» quedaba cortado.** El recuadro solo es fijo con 600 px de alto o más. Por debajo queda arriba del bloque y más compacto. Medido a 683×319, 640×290 y 320×256: los dos botones se ven enteros.
+- **Los saltos «Nivel 1/2/3» llevaban a contenido oculto.** Ahora van dentro de lo difuminado e inerte. Desde la entradilla, el Tab va a «Crear cuenta gratis», «Ya tengo cuenta: entrar» y el tutorial 3D. Si se llega sin sesión con `#intermedio`, el foco pasa al título del recuadro y el Tab sigue en «Crear cuenta gratis». Chromium aplica el ancla al terminar de cargar, así que el foco se pone después de `load`.
+- **La portada con sesión seguía invitando a crear cuenta.** Ahora lleva `data-academy-sin-cuenta` y su versión `data-academy-con-cuenta`, que el script cambia al abrir. El índice usa las mismas marcas en su sobrelínea.
+- **«Cuenta confirmada: Academy desbloqueada»** solo sale con la sesión ya confirmada. Antes salía también con el candado cerrado o con la red caída. Probado en Chromium sin sesión, con la red caída y con sesión.
+- **Pruebas que faltaban:** `probar-precarga.cjs` rechaza tres índices mutados (abierto, sin `inert` o sin el script con huella). Con esa compuerta apagada en `comprobarLeccionesPublicadas`, la prueba falla. La parte de Chromium comprueba antes que `rwadar-publicado/` está construido con el código de hoy; si no, falla con «ejecuta antes npm run test:web».
+- Textos ES/EN en `idioma-en.js`, copiados a la web: «Lecciones desbloqueadas» y la frase con cuenta de la portada. «Gratis con tu cuenta» y «Comprobando tu sesión…» ya existían. La app no los enseña; el guardián de la OTA con la base `fa30779…` da `ok`.
+
+**Pendiente (Víctor):** publicar la web cuando lo autorice.
+
+## 8 de noviembre de 2026 (2) · Claude · Academy con candado en la web (difuminada sin cuenta, se abre al entrar)
+
+Víctor: «Quiero que esté bloqueado Academy, que solo se desbloquee al crearse la cuenta, que salga difuminada la página y con un candado, y al registrarse y entrar ya se desbloquee». Rama `claude/academy-candado`. **Sin publicar.**
+
+**Qué hace**
+- Sin sesión, `/academy/` y el bloque de lecciones de la portada enseñan las tarjetas difuminadas, con `inert` y `aria-hidden` (no se pulsan, no se enfocan y el lector no las oye). Encima, un recuadro con un candado SVG, «Las lecciones se abren con tu cuenta gratuita», «Es gratis…», «Crear cuenta gratis» (`/acceso?volver=/academy/`) y «Ya tengo cuenta: entrar» (`/acceso?volver=/academy/&vista=entrar`).
+- El HTML nace bloqueado. `assets/academy-candado-20261108.js` lo abre solo si `RWADAR_ACCESO.verificar()` (la pasarela de siempre, `/api/acceso/sesion`) devuelve una cuenta. Con un 401 o una respuesta rara, sigue igual. Si la red o el servicio fallan, sigue bloqueado con «No hemos podido comprobar tu sesión. Recarga la página». Al volver con «Atrás» (caché del navegador) pregunta otra vez. En el WebView del tutorial de la app no pregunta.
+- Hoja y script nuevos con fecha 20261108, compartidos por las dos páginas. El HTML sale de `htmlCandado` en `rwadar-academy.js`. Con `"publico"` no hay candado.
+- `acceso.js`: `vista=entrar` abre «Entrar» cuando se llega desde la Academy.
+- El tutorial 3D sigue nítido y público. La puerta del servidor de las lecciones no cambia. La app no cambia: ya exige cuenta para todo (`AccesoObligatorio`).
+
+**`volver`, comprobado en el código**
+- Tras entrar con la contraseña: `regresar()` lee `volver=/academy/` y va a `/academy/`, que se abre.
+- Tras crear la cuenta: no se entra sola. El índice no guarda vuelta. Si después se pulsa «Entrar con mi cuenta» en esa misma pestaña, vuelve a `/academy/`.
+- Tras confirmar el correo: el enlace lleva a la raíz y de ahí a `/acceso`. «Continuar con esta cuenta» deja la sesión y va a la lección guardada o, si no hay, a `/academy/#cuenta-confirmada`, que se ve abierta y con «Cuenta confirmada: Academy desbloqueada».
+
+**Pruebas**
+- Nuevo `rwadar-acceso/academy-candado-navegador.test.mjs`, con 12 pruebas: el HTML, el script en una VM con la pasarela de verdad y Chromium con el worker local (incluye entrar desde el candado). La parte de Chromium se omite si no hay Playwright, como en CI.
+- Dos pruebas más en `alta-avisos-navegador.test.mjs` (`vista=entrar` y la vuelta tras el alta).
+- Ajustadas las pruebas de hojas y scripts de la portada (`probar-web.mjs`, `probar-web-escritorio.mjs`). `comprobar-publicado.mjs` comprueba ahora que el índice llega bloqueado.
+- `npm test` de la raíz termina con código 0: web 642/0, móvil 491/0 con 2 omitidas, acceso 231/231. El guardián de la OTA con la base `fa30779…` da `ok`.
+
+**Pendiente (Víctor):**
+- Publicar la web (preview y producción) cuando lo autorice.
+- `idioma-en.js` solo suma textos de la web que la app no enseña, así que no hace falta OTA por esto.
+## 8 de noviembre de 2026 (1) · Claude · web y OTA publicadas; el vigilante avisa con una incidencia
+
+**Publicado** con el permiso general de Víctor:
+- Sello de main (PR #86, `b13ddeb`). La primera publicación se paró con `[CONTENIDO_NO_APROBADO]`.
+- «Publicar web», preview y producción: runs 42469759275 y 42469926454, las dos en verde, con «Comprobar la web publicada».
+- OTA Android con base `fa30779…` (run 42470107925).
+
+Comprobado desde fuera:
+- Aktionariat dice «Ir a la web del proveedor (sales de RWAdar)» y Kraken, «Ver oferta en Kraken…».
+- La privacidad lleva `#firebase-android`.
+- `/assets/../academy/<lección>`, pedida tal cual, da 401, y `%2e%2e` da 404.
+
+**Vigilante, primera vuelta** (a mano; la de las 05:17 UTC del 08/11 no salió):
+- 6 de 7 en verde, pg_cron incluido, contra el Supabase real.
+- Falló `version-android.json` con un 504 de GitHub, que estaba caído. El «Qué hacer» mandaba a editar la release: falsa alarma.
+
+**Arreglado en esta rama:**
+- Un 5xx, un 429 o un corte de red en ese archivo dicen ahora que es pasajero, sin mandar a tocar nada.
+- Si algo falla, el flujo abre o comenta la incidencia «Vigilante: algo falla en RWAdar», que menciona a @victorJorques y enlaza la ejecución. Cuando vuelve a ir bien, la cierra.
+- Con esto Víctor no tiene que hacer Disable/Enable.
+
+**En marcha:**
+- Academy web difuminada con candado sin cuenta (rama `claude/academy-candado`, orden de Víctor del 08/11).
+- Flujos con las claves de Víctor (rama `claude/claves-0711`).
+- El documento para Víctor, «RWAdar: lo que queda y quién lo hace» (Claude Docs).
 
 ## 7 de noviembre de 2026 (1) · Claude · ahorro de minutos, vigilante diario, copias, correo Lettermint, textos legales
 

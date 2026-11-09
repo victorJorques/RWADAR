@@ -159,11 +159,15 @@
 
   /* ---- índice de la Academy ---- */
   const portada = document.querySelector('[data-academy-indice-pagina]');
+  if (portada) await cuentaLista;
   /* Vuelta del correo de confirmación sin lección guardada (acceso.js):
-     /academy/#cuenta-confirmada. Se avisa una vez y se quita el fragmento. */
+     /academy/#cuenta-confirmada. Solo se avisa con la sesión ya confirmada
+     (la misma que abre el candado): sin ella, o con la red caída, el índice
+     sigue bloqueado y no puede decir «desbloqueada». El fragmento se quita
+     siempre. */
   if (portada && location.hash === '#cuenta-confirmada') {
     const cab = portada.querySelector('.ac-portada-cab');
-    if (cab) {
+    if (cab && CLAVE) {
       const aviso = document.createElement('p');
       aviso.className = 'ac-confirmada';
       aviso.setAttribute('role', 'status');
@@ -172,7 +176,6 @@
     }
     try { history.replaceState(history.state, '', location.pathname + location.search); } catch (_) {}
   }
-  if (portada) await cuentaLista;
   /* Con sesión, la invitación a crear cuenta ya no tiene sentido. */
   if (portada && CLAVE) {
     portada.querySelectorAll('.ac-acciones a[href^="/acceso"]').forEach(a => {

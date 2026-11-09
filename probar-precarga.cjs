@@ -128,6 +128,21 @@ prueba('el contenido de las lecciones de la base sellada se valida aunque produc
       assert.throws(()=>validarBase(base,recalcular()),new RegExp('Lecciones de la Academy incompletas en la base: '+ruta.replace(/[.]/g,'\\.')),cambio);
     }finally{fs.writeFileSync(p,original);}
   }
+  // Candado del índice (revisión del 08/11/2026): sin sesión, academy/index.html llega
+  // bloqueado. Si la base sellada lo trae abierto, sin inert o sin el script con huella,
+  // validarBase lo rechaza aunque el sello se recalcule.
+  const rutaIndice='academy/index.html', pIndice=path.join(base,rutaIndice), indiceOriginal=fs.readFileSync(pIndice,'utf8');
+  for(const [cambio,mutado] of [
+    ['abierto por defecto',indiceOriginal.replace('data-academy-candado data-estado="bloqueado"','data-academy-candado data-estado="abierto"')],
+    ['contenido sin inert ni aria-hidden',indiceOriginal.replace(' data-academy-candado-contenido inert aria-hidden="true">',' data-academy-candado-contenido>')],
+    ['sin el script del candado con huella',indiceOriginal.replace(/<script src="\/assets\/academy-candado-20261108\.[0-9a-f]{12}\.js"><\/script>\n?/,'')],
+  ]) {
+    assert.notEqual(mutado,indiceOriginal,cambio);
+    try{
+      fs.writeFileSync(pIndice,mutado);
+      assert.throws(()=>validarBase(base,recalcular()),/Lecciones de la Academy incompletas en la base: academy\/index\.html no sale bloqueado/,cambio);
+    }finally{fs.writeFileSync(pIndice,indiceOriginal);}
+  }
   assert.equal(validarBase(base,sello).sha256,sello.sha256);
 });
 prueba('sello recalculado no puede omitir ficha, fuente, JS o imagen propia',()=>{

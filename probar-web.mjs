@@ -683,9 +683,11 @@ const rutaScriptApp = '/assets/rwadar-20260820.js';
 const rutaAnalitica = '/assets/analitica-20260927.js';
 const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
 // El orden de los scripts (con idioma-previo en <head>) se prueba en rwadar-app/probar-web-escritorio.mjs.
-prueba('las cuatro hojas propias versionadas cargan en el orden declarado',
+// La quinta, el candado de las lecciones sin cuenta (08/11/2026), compartida con /academy/.
+prueba('las cinco hojas propias versionadas cargan en el orden declarado',
   JSON.stringify(estilos.map(estilo=>estilo[1])) === JSON.stringify([
-    '/assets/rwadar-20260820.css','/assets/cartera-cuenta-ui-20261028.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css']));
+    '/assets/rwadar-20260820.css','/assets/cartera-cuenta-ui-20261028.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css',
+    '/assets/academy-candado-20261108.css']));
 for (const recurso of [rutaScriptApp, rutaCatalogo, rutaAnalitica, estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
@@ -1844,8 +1846,9 @@ prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustrac
     esperadas.length > 0 && JSON.stringify([...new Set(conPropia)].sort()) === JSON.stringify(esperadas.sort()));
 }
 prueba('HTML conserva sus recursos con huella sin depender de un precache del worker',
-  recursoJSPublicado && hojasPublicadas.length === 5 &&
+  recursoJSPublicado && hojasPublicadas.length === 6 &&
   hojasPublicadas.filter(ruta => /\/mapa-buscar-20261027\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
+  hojasPublicadas.filter(ruta => /\/academy-candado-20261108\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   [recursoJSPublicado, recursoCatalogoPublicado,
     ...scriptsPublicados.map(s=>s[1]), ...hojasPublicadas,
     '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src), ...rutasPortada]
@@ -3342,9 +3345,11 @@ console.log('\n=== RWADAR ACADEMY ===');
     ldIndice['@type'] === 'CollectionPage' && !('hasPart' in ldIndice) && /gratis con tu cuenta/.test(ldIndice.description) &&
     !/academy\/[a-z]/.test(JSON.stringify(ldIndice)));
   const textoIndice = textoDe(indiceAcademy), bloqueAcademy = html.slice(html.indexOf('<!--academy:ini-->'), html.indexOf('<!--academy:fin-->'));
+  // En el índice, el que lleva a crear la cuenta es el recuadro del candado, justo bajo la
+  // entradilla (revisión del 08/11/2026); la cabecera ya no repite el enlace.
   prueba('el índice y la portada dicen «Gratis con tu cuenta» y llevan a crear la cuenta, sin prometer lecciones que no hay',
-    textoIndice.includes('Gratis con tu cuenta') && textoIndice.includes('Crea tu cuenta gratis para abrir las lecciones') &&
-    indiceAcademy.includes(`<a class="ac-accion" href="${academyMod.ALTA_ACADEMY}">`) && academyMod.ALTA_ACADEMY === '/acceso?volver=/academy/' &&
+    textoIndice.includes('Gratis con tu cuenta') && textoIndice.includes('Las lecciones se abren con tu cuenta gratuita') &&
+    indiceAcademy.includes(`<a class="candado-boton candado-boton-p" href="${academyMod.ALTA_ACADEMY}">Crear cuenta gratis</a>`) && academyMod.ALTA_ACADEMY === '/acceso?volver=/academy/' &&
     textoDe(bloqueAcademy).includes('Gratis con tu cuenta') && textoDe(bloqueAcademy).includes('Crea tu cuenta gratis para abrir las lecciones') &&
     textoDe(bloqueAcademy).includes(`${publicadasA.length} de ${academy.lecciones.length} lecciones disponibles`) &&
     !/\b9 lecciones (?:gratuitas|en 3 niveles)/.test(textoIndice + textoDe(bloqueAcademy)) &&
@@ -3396,6 +3401,16 @@ console.log('\n=== RWADAR ACADEMY ===');
       return /\/assets\/academy-20261002\.[0-9a-f]{12}\.css/.test(salida) &&
         /\/assets\/academy-20261002\.[0-9a-f]{12}\.js/.test(salida) && !salida.includes('/assets/academy-20261002.css');
     }));
+  // Candado de las lecciones sin cuenta (08/11/2026): índice y portada nacen bloqueados
+  // y llevan la misma hoja y el mismo script, con huella; las lecciones no los cargan.
+  prueba('el publicado sale bloqueado por defecto en el índice y la portada, con la hoja y el script del candado con huella',
+    ['academy/index.html', 'index.html'].every(nombre => {
+      const salida = fs.readFileSync(path.join(publicado, ...nombre.split('/')), 'utf8');
+      return salida.includes('<div class="candado" data-academy-candado data-estado="bloqueado">') &&
+        salida.includes('<div class="candado-contenido" data-academy-candado-contenido inert aria-hidden="true">') &&
+        /\/assets\/academy-candado-20261108\.[0-9a-f]{12}\.css/.test(salida) && /\/assets\/academy-candado-20261108\.[0-9a-f]{12}\.js/.test(salida) &&
+        !salida.includes('/assets/academy-candado-20261108.js"');
+    }) && publicadasA.every(l => !fs.readFileSync(path.join(publicado, 'academy', `${l.slug}.html`), 'utf8').includes('academy-candado')));
   let rechazoMarca = null, rechazoBoton = null;
   try { academyMod.parsearInline('texto **sin cerrar', 'prueba', {}); } catch (e) { rechazoMarca = e; }
   try { academyMod.parsearInline('**[Botón inventado →]**', 'prueba', {}); } catch (e) { rechazoBoton = e; }

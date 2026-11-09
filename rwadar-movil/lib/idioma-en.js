@@ -1880,7 +1880,16 @@
   "Cargando tus avisos…": "Loading your notices…",
   "No se pudieron cargar tus avisos. Cierra y vuelve a abrir tu cuenta para reintentarlo.": "Your notices could not be loaded. Close and reopen your account to try again.",
   "Aquí verás la bienvenida y los anuncios de RWAdar.": "Here you will see the welcome and RWAdar's announcements.",
-  "En Inicio ves los avisos de tu cuenta: la bienvenida y los anuncios de RWAdar. La app los lee de Supabase con tu sesión y qué avisos has leído se guarda solo en este dispositivo. No se envían por correo ni como notificaciones.": "On Home you see your account's notices: the welcome and RWAdar's announcements. The app reads them from Supabase with your session, and which notices you have read is stored only on this device. They are not sent by email or as notifications."
+  "En Inicio ves los avisos de tu cuenta: la bienvenida y los anuncios de RWAdar. La app los lee de Supabase con tu sesión y qué avisos has leído se guarda solo en este dispositivo. No se envían por correo ni como notificaciones.": "On Home you see your account's notices: the welcome and RWAdar's announcements. The app reads them from Supabase with your session, and which notices you have read is stored only on this device. They are not sent by email or as notifications.",
+  // Candado de las lecciones en la web sin cuenta (índice de la Academy y portada), 08/11/2026.
+  "Las lecciones se abren con tu cuenta gratuita": "Lessons open with your free account",
+  "Es gratis: solo necesitas un correo y una contraseña.": "It's free: all you need is an email address and a password.",
+  "Crear cuenta gratis": "Create a free account",
+  "Ya tengo cuenta: entrar": "I already have an account: sign in",
+  "No hemos podido comprobar tu sesión. Recarga la página.": "We couldn't check your session. Reload the page.",
+  // Revisión del candado (08/11/2026): textos con cuenta del índice y de la portada.
+  "Lecciones desbloqueadas": "Lessons unlocked",
+  "Cada nivel responde a una pregunta. Ya puedes abrir todas las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.": "Each level answers a question. You can now open every lesson: a 30-second summary, a short quiz and the latest legal review date."
 };
 if(typeof module==='object'&&module.exports)module.exports=Object.freeze(diccionario);else raiz.RWAdarEnglish=Object.freeze(diccionario);
 })(typeof globalThis==='object'?globalThis:this);

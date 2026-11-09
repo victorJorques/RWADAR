@@ -26,6 +26,12 @@ curso es gratis con cuenta. Cada lección exige una sesión confirmada, y eso
 lo comprueba **el servidor** (`rwadar-acceso/servidor.mjs`, compilado en
 `_worker.js`).
 
+**Cambio del 08/11/2026 (petición de Víctor):** sin sesión, el índice y el
+bloque de lecciones de la portada enseñan las lecciones difuminadas y con un
+candado; se abren al entrar con una cuenta confirmada. Detalle en
+`rwadar-academy/LEEME.md`, «El candado del índice y de la portada». La puerta
+del servidor no cambia.
+
 - **Ruta normalizada antes de decidir**, igual que `rutaNormalizadaRWAdar`:
   - se decodifica;
   - con `%2F`, `%5C` o `\`, o si no se puede decodificar, la respuesta es 400;

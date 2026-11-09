@@ -58,6 +58,9 @@ test('el comprobador de la web publicada pasa contra el worker compilado, sin re
     'el mapa del sitio lista el índice de la Academy y ninguna lección (van con cuenta)',
     'el índice de la Academy responde 200 y se puede indexar',
     'el índice dice que es gratis con cuenta y enlaza el alta con vuelta a la Academy',
+    // Candado del 08/11/2026: el índice llega bloqueado y su hoja y su script responden.
+    'el índice llega bloqueado sin sesión: candado, tarjetas inertes y fuera del lector',
+    'la hoja y el script del candado van con huella: 2',
     'rwadar-publicado/ es lo que está publicado (el índice de la Academy coincide byte a byte)',
     `las ${academy.lecciones.length} lecciones de rwadar-publicado/ llevan su contenido, su revisión legal y noindex`,
     'HEAD de una lección sin sesión: 303: 303',

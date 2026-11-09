@@ -32,6 +32,11 @@ const DATOS_APP = path.join(RAIZ, 'rwadar-movil', 'lib', 'academy-contenido.js')
 const ORIGEN = 'https://rwadar.pages.dev';
 const CSS = '/assets/academy-20261002.css';
 const JS = '/assets/academy-20261002.js';
+/* Candado del índice y del bloque de la portada (petición de Víctor del
+   08/11/2026): sin sesión, las lecciones salen difuminadas y con un candado;
+   al entrar, se abren. Hoja y script propios, compartidos por las dos páginas. */
+const CANDADO_CSS = '/assets/academy-candado-20261108.css';
+const CANDADO_JS = '/assets/academy-candado-20261108.js';
 const ANALITICA = '/assets/analitica-20260927.js';
 const PALABRAS_POR_MINUTO = 200;
 const ESTADOS = new Set(['borrador', 'en_revision', 'publicado', 'retirado']);
@@ -43,6 +48,9 @@ const ROBOTS_CON_CUENTA = 'noindex, nofollow';
 /* Adónde lleva «Crea tu cuenta gratis»: /acceso abre «Crear cuenta gratis» y
    vuelve a la Academy al confirmar (contrato del 05/11/2026). */
 const ALTA_ACADEMY = '/acceso?volver=/academy/';
+/* «Ya tengo cuenta: entrar» del candado: el mismo sitio, abierto en «Entrar»
+   (acceso.js lee vista=entrar). Tras entrar, vuelve a /academy/. */
+const ENTRAR_ACADEMY = '/acceso?volver=/academy/&vista=entrar';
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto',
   'septiembre', 'octubre', 'noviembre', 'diciembre'];
 const ICONO = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'><rect width='104' height='104' rx='24' fill='%230B0A0A'/><g fill='none' stroke='%2325E39A' stroke-width='2.6' opacity='.55'><circle cx='52' cy='52' r='40'/><circle cx='52' cy='52' r='28'/></g><path d='M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z' fill='%2325E39A' opacity='.45'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z' fill='%2325E39A'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52Z' fill='%230F7A57'/></svg>";
@@ -652,7 +660,7 @@ function tituloPestana(titulo) {
   return titulo;
 }
 
-function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg, jsonLd, extraMeta = '', robots = ROBOTS_INDEXABLE }) {
+function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg, jsonLd, extraMeta = '', robots = ROBOTS_INDEXABLE, candado = false }) {
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -676,8 +684,8 @@ function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg
 ${extraMeta}<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${ICONO}">
 <script src="/assets/idioma-previo-20261104.js"></script>
-<link rel="stylesheet" href="${CSS}">
-<link rel="stylesheet" href="/assets/idioma-20261022.css">
+${candado ? `<script src="${CANDADO_JS}"></script>\n` : ''}<link rel="stylesheet" href="${CSS}">
+${candado ? `<link rel="stylesheet" href="${CANDADO_CSS}">\n` : ''}<link rel="stylesheet" href="/assets/idioma-20261022.css">
 <script type="application/ld+json">
 ${JSON.stringify(jsonLd)}
 </script>
@@ -687,6 +695,33 @@ ${JSON.stringify(jsonLd)}
 <script src="/assets/idioma-web-20261022.js" defer></script>
 <script src="${JS}" defer></script>
 </head>`;
+}
+
+/* Candado de las lecciones (petición de Víctor del 08/11/2026). Mismo HTML en
+   el índice /academy/ y en el bloque de la portada; lo abre
+   assets/academy-candado-20261108.js al confirmar la sesión. Nace BLOQUEADO:
+   sin script, o si la comprobación falla, las tarjetas siguen difuminadas, sin
+   poder pulsarse ni enfocarse (inert) y fuera del lector de pantalla
+   (aria-hidden); el lector oye solo el recuadro. Con "publico" no hay candado. */
+const CANDADO_SVG = '<svg class="candado-icono" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'
+  + '<rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.6v2.4"/></svg>';
+function htmlCandado(academy, { id, nivel, contenido }) {
+  if (academy.acceso !== 'cuenta') return contenido;
+  return `<div class="candado" data-academy-candado data-estado="bloqueado">
+      <div class="candado-capa" data-academy-candado-capa>
+        <section class="candado-caja" aria-labelledby="${id}Tit">
+          ${CANDADO_SVG}
+          <h${nivel} class="candado-tit" id="${id}Tit">Las lecciones se abren con tu cuenta gratuita</h${nivel}>
+          <p class="candado-espera">Comprobando tu sesión…</p>
+          <p class="candado-txt">Es gratis: solo necesitas un correo y una contraseña.</p>
+          <p class="candado-acciones"><a class="candado-boton candado-boton-p" href="${esc(ALTA_ACADEMY)}">Crear cuenta gratis</a><a class="candado-boton candado-boton-s" href="${esc(ENTRAR_ACADEMY)}">Ya tengo cuenta: entrar</a></p>
+          <p class="candado-error" data-academy-candado-error role="status"></p>
+        </section>
+      </div>
+      <div class="candado-contenido" data-academy-candado-contenido inert aria-hidden="true">
+      ${contenido}
+      </div>
+    </div>`;
 }
 
 const MARCA_SVG = `<svg class="ac-marca-icono" width="32" height="32" viewBox="0 0 104 104" aria-hidden="true">
@@ -968,31 +1003,18 @@ function paginaIndice(academy) {
 
   /* Con cuenta no se dice «9 lecciones gratuitas»: puede haber lecciones
      «Próximamente» (hasta el 06/11/2026 eran 7 publicadas de 9) y se abren
-     con una cuenta gratis. */
+     con una cuenta gratis. Con cuenta, en lugar de la invitación a crearla
+     (que ya da el recuadro del candado, justo debajo), una sobrelínea que el
+     script del candado cambia por «Lecciones desbloqueadas» al abrir. */
   const entradilla = conCuenta
     ? `<p class="ac-entradilla">Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida. Lecciones en ${academy.niveles.length} niveles, con un resumen de 30 segundos y un test corto.</p>
-    <p class="ac-sobrelinea">Gratis con tu cuenta</p>
-    <p class="ac-acciones"><a class="ac-accion" href="${ALTA_ACADEMY}">Crea tu cuenta gratis para abrir las lecciones <span aria-hidden="true">→</span></a></p>`
+    <p class="ac-sobrelinea" data-academy-sin-cuenta>Gratis con tu cuenta</p>
+    <p class="ac-sobrelinea" data-academy-con-cuenta hidden>Lecciones desbloqueadas</p>`
     : `<p class="ac-entradilla">Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida. ${academy.lecciones.length} lecciones gratuitas en ${academy.niveles.length} niveles, con un resumen de 30 segundos y un test corto.</p>`;
-
-  return `${cabeceraHtml({
-    titulo: 'RWAdar Academy · Aprende a tokenizar sin promesas',
-    descripcion: conCuenta
-      ? 'Lecciones sobre tokenización de activos reales, gratis con tu cuenta: qué es, quién interviene, marco legal, costes, liquidez y cómo comparar proveedores.'
-      : 'Lecciones gratuitas sobre tokenización de activos reales: qué es, quién interviene, marco legal, costes, liquidez y cómo comparar proveedores.',
-    canonica,
-    tipoOg: 'website',
-    jsonLd,
-  })}
-<body class="ac-cuerpo-pagina">
-${barraSuperior('academy')}
-
-<main id="contenido" class="ac-envoltura ac-portada" data-academy-indice-pagina data-academy-total="${visibles.length}">
-  <header class="ac-portada-cab">
-    <p class="ac-sobrelinea">RWAdar Academy</p>
-    <h1>Entiende la tokenización <em>antes</em> de decidir</h1>
-    ${entradilla}
-    <section class="ac-extra ac-tutorial" aria-labelledby="extraTit">
+  /* El tutorial 3D es público: nítido y fuera del candado. Con cuenta va
+     después del bloque de lecciones (revisión del 08/11/2026), para que la
+     primera pantalla enseñe ya el candado sobre las lecciones difuminadas. */
+  const tutorial = `<section class="ac-extra ac-tutorial" aria-labelledby="extraTit">
       <span class="ac-extra-icono" aria-hidden="true">3D</span>
       <div>
         <p class="ac-sobrelinea">Academy · Tutorial guiado</p>
@@ -1002,17 +1024,45 @@ ${barraSuperior('academy')}
         <a class="ac-accion" href="/#explain">Empezar tutorial 3D <span aria-hidden="true">→</span></a>
         <p class="ac-tutorial-alternativa">Cuatro pasos, también en texto. A tu ritmo.</p>
       </div>
-    </section>
-    <div class="ac-progreso" data-academy-progreso hidden>
+    </section>`;
+  /* Con cuenta, los saltos «Nivel 1/2/3» van dentro de lo bloqueado (revisión
+     del 08/11/2026): difuminados e inertes con el candado cerrado, para que el
+     teclado y el lector no salten a un destino oculto saltándose el recuadro. */
+  const saltos = `<ol class="ac-saltos" aria-label="Niveles">
+      ${academy.niveles.map((n, k) => `<li><a href="#${n.id}"><span>Nivel ${k + 1}</span>${esc(n.nombre)} · ${esc(n.lema)}</a></li>`).join('\n      ')}
+    </ol>`;
+
+  return `${cabeceraHtml({
+    titulo: 'RWAdar Academy · Aprende a tokenizar sin promesas',
+    descripcion: conCuenta
+      ? 'Lecciones sobre tokenización de activos reales, gratis con tu cuenta: qué es, quién interviene, marco legal, costes, liquidez y cómo comparar proveedores.'
+      : 'Lecciones gratuitas sobre tokenización de activos reales: qué es, quién interviene, marco legal, costes, liquidez y cómo comparar proveedores.',
+    canonica,
+    tipoOg: 'website',
+    jsonLd,
+    candado: conCuenta,
+  })}
+<body class="ac-cuerpo-pagina">
+${barraSuperior('academy')}
+
+<main id="contenido" class="ac-envoltura ac-portada" data-academy-indice-pagina data-academy-total="${visibles.length}">
+  <header class="ac-portada-cab">
+    <p class="ac-sobrelinea">RWAdar Academy</p>
+    <h1>Entiende la tokenización <em>antes</em> de decidir</h1>
+    ${entradilla}
+    ${conCuenta ? '' : `${tutorial}
+    `}<div class="ac-progreso" data-academy-progreso hidden>
       <progress max="${visibles.length}" value="0" aria-labelledby="progresoTxt"></progress>
       <p id="progresoTxt"><b data-academy-progreso-n>0</b> de ${visibles.length} lecciones leídas en este navegador</p>
-    </div>
-    <ol class="ac-saltos" aria-label="Niveles">
-      ${academy.niveles.map((n, k) => `<li><a href="#${n.id}"><span>Nivel ${k + 1}</span>${esc(n.nombre)} · ${esc(n.lema)}</a></li>`).join('\n      ')}
-    </ol>
+    </div>${conCuenta ? '' : `
+    ${saltos}`}
   </header>
 
-    ${niveles}
+    ${htmlCandado(academy, { id: 'candadoAcademy', nivel: 2, contenido: conCuenta ? `${saltos}
+
+    ${niveles}` : niveles })}${conCuenta ? `
+
+    ${tutorial}` : ''}
 
   <p class="ac-nota">Accedes con tu cuenta. Tu progreso (lecciones leídas y tests hechos) se guarda solo en este navegador, separado por cuenta; no se sincroniza entre dispositivos. Borrar los datos del navegador también lo borra.</p>
 
@@ -1043,10 +1093,14 @@ function bloquePortada(academy) {
   }).join('\n    ');
   /* Con cuenta, el número que se da es el cierto (publicadas de total) y se
      dice cómo se abren: con una cuenta gratis. */
+  /* Con sesión, el script del candado oculta la invitación a crear cuenta
+     (data-academy-sin-cuenta) y enseña su versión con cuenta, como el índice. */
   const cabecera = academy.acceso === 'cuenta'
-    ? `<p class="etiq">Gratis con tu cuenta</p>
+    ? `<p class="etiq" data-academy-sin-cuenta>Gratis con tu cuenta</p>
+      <p class="etiq" data-academy-con-cuenta hidden>Lecciones desbloqueadas</p>
       <h3 id="academiaLeccionesTit">${visibles.length} de ${academy.lecciones.length} lecciones disponibles</h3>
-      <p>Cada nivel responde a una pregunta. Crea tu cuenta gratis para abrir las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>`
+      <p data-academy-sin-cuenta>Cada nivel responde a una pregunta. Crea tu cuenta gratis para abrir las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>
+      <p data-academy-con-cuenta hidden>Cada nivel responde a una pregunta. Ya puedes abrir todas las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>`
     : `<p class="etiq">${visibles.length} de ${academy.lecciones.length} lecciones disponibles</p>
       <h3 id="academiaLeccionesTit">${academy.lecciones.length} lecciones en ${academy.niveles.length} niveles</h3>
       <p>Cada nivel responde a una pregunta. Accede gratis con tu cuenta: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>`;
@@ -1058,9 +1112,9 @@ function bloquePortada(academy) {
     <div class="academia-lecciones-cab">
       ${cabecera}
     </div>
-    <div class="academia-niveles">
+    ${htmlCandado(academy, { id: 'candadoPortada', nivel: 4, contenido: `<div class="academia-niveles">
     ${niveles}
-    </div>
+    </div>` })}
     <a class="academia-ver-todo" href="/academy/">Ver todas las lecciones <span aria-hidden="true">→</span></a>
     <p class="academia-nota">Las lecciones son de texto. De momento no hay vídeos.</p>
   </div>
@@ -1223,6 +1277,13 @@ function comprobarLeccionesPublicadas(directorio, academy = cargarAcademy()) {
   };
   const indice = leer('academy/index.html');
   if (!indice || !indice.includes('data-academy-indice-pagina')) fallos.push('academy/index.html no es el índice de la Academy');
+  /* Con cuenta, el índice sale BLOQUEADO por defecto (candado del 08/11/2026):
+     las tarjetas, inert y aria-hidden; la hoja y el script del candado, con huella. */
+  else if (academy.acceso === 'cuenta' && (!indice.includes('<div class="candado" data-academy-candado data-estado="bloqueado">') ||
+      !indice.includes('<div class="candado-contenido" data-academy-candado-contenido inert aria-hidden="true">') ||
+      !conHuella(CANDADO_CSS).test(indice) || !conHuella(CANDADO_JS).test(indice))) {
+    fallos.push('academy/index.html no sale bloqueado por defecto (falta el candado, su hoja o su script con huella)');
+  }
   for (const l of publicadas(academy)) {
     const nombre = `academy/${l.slug}.html`;
     const pagina = leer(nombre);
@@ -1245,7 +1306,7 @@ function comprobarLeccionesPublicadas(directorio, academy = cargarAcademy()) {
 }
 
 module.exports = {
-  ORIGEN, CSS, JS, ACCESOS, ALTA_ACADEMY, ROBOTS_CON_CUENTA, cargarAcademy, construirSalidas, paginasAcademy, comprobar, generar,
+  ORIGEN, CSS, JS, CANDADO_CSS, CANDADO_JS, ACCESOS, ALTA_ACADEMY, ENTRAR_ACADEMY, ROBOTS_CON_CUENTA, cargarAcademy, construirSalidas, paginasAcademy, comprobar, generar,
   comprobarLeccionesPublicadas, parsearInline, parsearBloques, textoPlano, avisosRevision, ErrorAcademy, tituloPestana,
 };
 

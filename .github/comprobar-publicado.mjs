@@ -143,6 +143,19 @@ else ok('el índice de la Academy responde 200 y su HTML se puede indexar (en la
   indiceIndexable);
 if (conCuenta) ok('el índice dice que es gratis con cuenta y enlaza el alta con vuelta a la Academy',
   indice.texto.includes('Gratis con tu cuenta') && indice.texto.includes(`href="${academyMod.ALTA_ACADEMY}"`));
+/* Candado del 08/11/2026: sin sesión, el índice llega BLOQUEADO (tarjetas
+   difuminadas, inert y aria-hidden) y su hoja y su script responden. */
+if (conCuenta) {
+  const candado = [...indice.texto.matchAll(/(?:href|src)="(\/assets\/academy-candado-20261108\.[0-9a-f]{12}\.(?:css|js))"/g)].map(m => m[1]);
+  ok('el índice llega bloqueado sin sesión: candado, tarjetas inertes y fuera del lector',
+    indice.texto.includes('<div class="candado" data-academy-candado data-estado="bloqueado">') &&
+    indice.texto.includes('<div class="candado-contenido" data-academy-candado-contenido inert aria-hidden="true">'));
+  ok(`la hoja y el script del candado van con huella: ${candado.length}`, candado.length === 2);
+  for (const ruta of candado) {
+    const asset = await pedir(ruta);
+    ok(`${ruta} responde 200`, asset.estado === 200 && asset.texto.length > 500);
+  }
+}
 ok(`el índice muestra ${publicadas.length} lecciones disponibles y ${pendientes.length} «Próximamente»`,
   indice.texto.includes(`<progress max="${publicadas.length}"`) &&
   (indice.texto.match(/ac-tarjeta ac-tarjeta-pronto/g) || []).length === pendientes.length);
