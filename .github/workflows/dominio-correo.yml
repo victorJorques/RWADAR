@@ -1,13 +1,20 @@
 name: Dominio de correo (Cloudflare y Lettermint)
 
 # Lo que de las rondas 1 y 2 del plan (docs/tareas/PLAN-CEO-2026-11-06.md)
-# solo necesita las claves de Víctor, sin que él toque ningún panel:
+# se puede hacer con las claves de Víctor, sin que él toque ningún panel.
 #
-# · estado (solo lee): la zona rwadar.app en Cloudflare y sus registros DNS
-#   del correo (nombre y tipo, con el valor acortado); en Lettermint, la
-#   verificación de la cuenta, el proyecto «RWAdar», el dominio y cómo va
-#   cada registro, las rutas (con el seguimiento) y los nombres de los tokens.
-# · preparar-dominio: crea el dominio en Lettermint y lo asocia al proyecto;
+# Decisión del 08/11/2026: NO hay clave de Cloudflare. Los registros DNS de
+# Lettermint los copia en Cloudflare la sesión de Claude del PC de Víctor,
+# con su Chrome, mientras él mira. Todo funciona sin CLOUDFLARE_DNS_TOKEN
+# salvo preparar-dominio, que queda por si algún día existe y, sin ella,
+# para sin hacer ninguna petición.
+#
+# · estado (solo lee): en Lettermint, la verificación de la cuenta, el
+#   proyecto «RWAdar», el dominio y cómo va cada registro, las rutas (con el
+#   seguimiento) y los nombres de los tokens. Sin clave de Cloudflare dice
+#   que el DNS se pone a mano desde el panel; con ella, también la zona y
+#   sus registros DNS del correo (con el valor acortado).
+# · preparar-dominio (solo con CLOUDFLARE_DNS_TOKEN): crea el dominio en Lettermint y lo asocia al proyecto;
 #   pone en Cloudflare SOLO los registros DNS que faltan (DNS only); y pide la
 #   verificación. Nunca borra ni cambia un registro que ya exista: si alguno
 #   choca (otro CNAME, otro SPF…), para antes de crear nada y lo explica.
@@ -22,15 +29,20 @@ name: Dominio de correo (Cloudflare y Lettermint)
 #   (db/31_correo_lettermint_guardar.sql, el camino de «guardar-correo»).
 #   El token se enmascara al llegar y nunca se enseña ni se escribe. Si ya
 #   hay uno con ese nombre, solo crea otro con «rotar» = SI, y borra el viejo
-#   después de guardar el nuevo. No enciende el correo.
+#   después de guardar el nuevo. No enciende el correo. Necesita la CA de
+#   Supabase en rwadar-app/certificados/supabase-ca.crt: psql comprueba el
+#   certificado del servidor (verify-full) antes de mandarle el token.
 #
 # Las acciones que cambian algo piden escribir CORREO en «confirmar» y orden
 # expresa de Víctor (AGENTS.md). Solo desde main.
 #
-# Secretos: CLOUDFLARE_DNS_TOKEN y LETTERMINT_TEAM_TOKEN (cómo se crean, con
-# los permisos justos: PLAN-CEO-2026-11-06.md, «Claves que da Víctor») y, solo
-# en crear-token-base, SUPABASE_DB_URL. Cada uno llega solo a los pasos que lo
-# usan. Pasos: rwadar-app/dominio-correo.mjs. Pruebas: .github/claves.test.mjs.
+# Secretos: LETTERMINT_GESTION_TOKEN (cómo se crea, con los permisos justos:
+# PLAN-CEO-2026-11-06.md, «Claves que da Víctor»; no es el
+# LETTERMINT_TEAM_TOKEN de las bajas, que solo lee supresiones), SUPABASE_DB_URL
+# solo en crear-token-base y CLOUDFLARE_DNS_TOKEN, que no existe (si algún día
+# se crea, solo lo leen estado y preparar-dominio). Cada uno llega solo a los
+# pasos que lo usan. Pasos: rwadar-app/dominio-correo.mjs. Pruebas:
+# .github/claves.test.mjs.
 
 on:
   workflow_dispatch:
@@ -71,7 +83,9 @@ concurrency:
 # Conexiones a Supabase siempre cifradas: con el «prefer» de libpq (lo que usa
 # psql si la dirección no lleva sslmode), alguien en medio que rechace TLS haría
 # seguir sin cifrar. Una sola regla para todos los flujos que usan
-# SUPABASE_DB_URL; la comprueba .github/flujos.test.mjs.
+# SUPABASE_DB_URL; la comprueba .github/flujos.test.mjs. crear-token-base va
+# más allá: su psql (rwadar-app/claves-comun.mjs) usa verify-full con la CA de
+# Supabase, porque manda un token.
 env:
   PGSSLMODE: require
 
@@ -101,6 +115,7 @@ jobs:
             rwadar-app/dominio-correo.mjs
             rwadar-app/claves-comun.mjs
             rwadar-app/db/31_correo_lettermint_guardar.sql
+            rwadar-app/certificados/
             rwadar-node-seguro.js
           sparse-checkout-cone-mode: false
 
@@ -120,26 +135,26 @@ jobs:
         if: inputs.accion == 'estado'
         env:
           CLOUDFLARE_DNS_TOKEN: ${{ secrets.CLOUDFLARE_DNS_TOKEN }}
-          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+          LETTERMINT_GESTION_TOKEN: ${{ secrets.LETTERMINT_GESTION_TOKEN }}
         run: node rwadar-app/dominio-correo.mjs ejecutar
 
       - name: Preparar el dominio en Lettermint y el DNS en Cloudflare
         if: inputs.accion == 'preparar-dominio'
         env:
           CLOUDFLARE_DNS_TOKEN: ${{ secrets.CLOUDFLARE_DNS_TOKEN }}
-          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+          LETTERMINT_GESTION_TOKEN: ${{ secrets.LETTERMINT_GESTION_TOKEN }}
         run: node rwadar-app/dominio-correo.mjs ejecutar
 
       - name: Verificar el dominio en Lettermint
         if: inputs.accion == 'verificar-dominio'
         env:
-          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+          LETTERMINT_GESTION_TOKEN: ${{ secrets.LETTERMINT_GESTION_TOKEN }}
         run: node rwadar-app/dominio-correo.mjs ejecutar
 
       - name: Ajustar las rutas de Lettermint
         if: inputs.accion == 'ajustar-rutas'
         env:
-          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+          LETTERMINT_GESTION_TOKEN: ${{ secrets.LETTERMINT_GESTION_TOKEN }}
         run: node rwadar-app/dominio-correo.mjs ejecutar
 
       - name: Instalar psql 17 (misma versión que Supabase)
@@ -155,6 +170,6 @@ jobs:
       - name: Crear el token de la base y guardarlo en Vault
         if: inputs.accion == 'crear-token-base'
         env:
-          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+          LETTERMINT_GESTION_TOKEN: ${{ secrets.LETTERMINT_GESTION_TOKEN }}
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: node rwadar-app/dominio-correo.mjs ejecutar

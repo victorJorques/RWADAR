@@ -37,7 +37,16 @@ function tapar(valor, tokens) {
   if (valor && typeof valor === 'object') return Object.fromEntries(Object.entries(valor).map(([k, x]) => [k, tapar(x, tokens)]));
   return valor;
 }
-const paginar = (lista) => ({ data: lista, path: null, per_page: 100, next_cursor: null, next_page_url: null, prev_cursor: null, prev_page_url: null });
+/* Paginación por cursor, como la Team API (data + next_cursor). Con
+   lm.tamPagina se cortan las listas en páginas más pequeñas que las 100 que
+   se piden, para probar que el cliente sigue el cursor. */
+function paginar(lista, u, tam = 100) {
+  const desde = Number(u.searchParams.get('page[cursor]') || 0) || 0;
+  const porPagina = Math.min(Number(u.searchParams.get('page[size]') || 100) || 100, tam);
+  const lote = lista.slice(desde, desde + porPagina);
+  const siguiente = desde + porPagina < lista.length ? String(desde + porPagina) : null;
+  return { data: lote, path: null, per_page: porPagina, next_cursor: siguiente, next_page_url: null, prev_cursor: null, prev_page_url: null };
+}
 const nombreDNS = (n) => String(n ?? '').trim().toLowerCase().replace(/\.$/, '');
 const textoTXT = (c) => {
   const t = String(c ?? '').trim();
@@ -52,11 +61,16 @@ function lettermint(e, metodo, u, cab, cuerpo) {
   const ruta = u.pathname.replace(/^\/v1/, '');
   const sinPermiso = (lm.sinPermiso || []).find((p) => new RegExp(p).test(`${metodo} ${ruta}`));
   if (sinPermiso) return [403, { error: { code: 'ABILITY_NOT_HELD', message: 'The team API token does not have the required ability.' } }];
+  // Un error que repite la clave recibida (para probar que nunca se ve).
+  if ((lm.ecoClave || []).some((p) => new RegExp(p).test(`${metodo} ${ruta}`))) return [422, { message: `Invalid request with ${cab.authorization}` }];
+  const pag = (lista) => paginar(lista, u, lm.tamPagina || 100);
   const proyecto = (id) => lm.proyectos.find((p) => p.id === id);
   const dominio = (id) => lm.dominios.find((d) => d.id === id);
   const ruta1 = (id) => lm.rutas.find((r) => r.id === id);
+  // DomainData, como la especificación de la Team API: SIN «status» (solo lo
+  // trae el listado, DomainListData).
   const datosDominio = (d, incluir) => ({
-    id: d.id, domain: d.domain, status: d.status, dkim_mode: 'managed_cname', rotation_ready: false, status_changed_at: null, created_at: ahora(),
+    id: d.id, domain: d.domain, dkim_mode: 'managed_cname', rotation_ready: false, status_changed_at: null, created_at: ahora(),
     ...(incluir.includes('dnsRecords') ? { dns_records: d.dns_records } : {}),
     ...(incluir.includes('projects') ? { projects: d.project_ids.map((id) => ({ id, name: proyecto(id)?.name || '?' })) } : {}),
   });
@@ -74,7 +88,7 @@ function lettermint(e, metodo, u, cab, cuerpo) {
   }
   if (metodo === 'GET' && ruta === '/projects') {
     const busca = (u.searchParams.get('filter[search]') || '').toLowerCase();
-    return [200, paginar(lm.proyectos.filter((p) => p.name.toLowerCase().includes(busca)).map((p) => ({ ...datosProyecto(p), routes_count: 2, domains_count: 0, last_28_days: {} })))];
+    return [200, pag(lm.proyectos.filter((p) => p.name.toLowerCase().includes(busca)).map((p) => ({ ...datosProyecto(p), routes_count: 2, domains_count: 0, last_28_days: {} })))];
   }
   if ((m = /^\/projects\/([^/]+)$/.exec(ruta))) {
     const p = proyecto(m[1]);
@@ -83,7 +97,7 @@ function lettermint(e, metodo, u, cab, cuerpo) {
     if (metodo === 'PUT') { if (typeof cuerpo?.smtp_enabled === 'boolean') p.smtp_enabled = cuerpo.smtp_enabled; return [200, { data: datosProyecto(p), message: 'Project updated.' }]; }
   }
   if (metodo === 'GET' && (m = /^\/projects\/([^/]+)\/routes$/.exec(ruta))) {
-    return [200, paginar(lm.rutas.filter((r) => r.project_id === m[1]).map((r) => ({ id: r.id, slug: r.slug, name: r.name, route_type: r.route_type, is_default: r.is_default })))];
+    return [200, pag(lm.rutas.filter((r) => r.project_id === m[1]).map((r) => ({ id: r.id, slug: r.slug, name: r.name, route_type: r.route_type, is_default: r.is_default })))];
   }
   if ((m = /^\/routes\/([^/]+)$/.exec(ruta))) {
     const r = ruta1(m[1]);
@@ -103,7 +117,7 @@ function lettermint(e, metodo, u, cab, cuerpo) {
   }
   if (metodo === 'GET' && ruta === '/domains') {
     const busca = (u.searchParams.get('filter[domain]') || '').toLowerCase();
-    return [200, paginar(lm.dominios.filter((d) => d.domain.includes(busca)).map((d) => ({ id: d.id, domain: d.domain, status: d.status, dkim_mode: 'managed_cname', status_changed_at: null, created_at: ahora() })))];
+    return [200, pag(lm.dominios.filter((d) => d.domain.includes(busca)).map((d) => ({ id: d.id, domain: d.domain, status: d.status, dkim_mode: 'managed_cname', status_changed_at: null, created_at: ahora() })))];
   }
   if (metodo === 'POST' && ruta === '/domains') {
     if (lm.dominios.some((d) => d.domain === cuerpo?.domain)) return [422, { message: 'The domain has already been taken.', errors: { domain: ['taken'] } }];
@@ -140,6 +154,7 @@ function lettermint(e, metodo, u, cab, cuerpo) {
     const necesarios = d.dns_records.filter((r) => r.verification_scope === 'required');
     const fallan = necesarios.filter((r) => r.status !== 'active');
     d.status = !fallan.length ? 'verified' : (fallan.length < necesarios.length ? 'partially_verified' : 'failed_verification');
+    if (lm.verificar422) return [422, { message: 'Verification could not be completed.' }];
     if (!fallan.length) return [200, { message: 'All required DNS records are verified.', recommended_failed_records: [] }];
     return [422, { message: 'One or more required DNS records failed verification.', failed_records: fallan.map((r) => ({ id: r.id, type: r.type, name: r.hostname })),
       errors: fallan.map((r) => ({ record_id: r.id, error: 'Record not found' })), failed_count: fallan.length, total_count: necesarios.length }];
@@ -148,7 +163,7 @@ function lettermint(e, metodo, u, cab, cuerpo) {
     const p = proyecto(m[1]);
     if (!p) return [404, { error: { code: 'RESOURCE_NOT_FOUND', message: 'Not found' } }];
     const sinValor = ({ token, ...resto }) => resto;
-    if (metodo === 'GET') return [200, paginar(lm.tokens.filter((t) => t.project_id === p.id).map(sinValor))];
+    if (metodo === 'GET') return [200, pag(lm.tokens.filter((t) => t.project_id === p.id).map(sinValor))];
     if (metodo === 'POST') {
       const token = lm.tokenRaro || `lm_doble_${crypto.randomBytes(18).toString('hex')}`;
       const t = { id: `tok-${++lm.contador}`, project_id: p.id, name: cuerpo.name, short_token: false, created_via: 'api', allowed_ips: [], last_used_at: null, created_at: ahora(), token };
@@ -172,6 +187,7 @@ function cloudflare(e, metodo, u, cab, cuerpo) {
   const sobre = (result, extra = {}) => ({ success: true, errors: [], messages: [], result, ...extra });
   const error = (estado, code, message) => [estado, { success: false, errors: [{ code, message }], messages: [], result: null }];
   if (cab.authorization !== `Bearer ${cf.clave}`) return error(401, 10000, 'Authentication error');
+  if (cf.ecoClave) return error(400, 6003, `Invalid request headers: ${cab.authorization}`);
   const ruta = u.pathname.replace(/^\/client\/v4/, '');
   let m;
   if (metodo === 'GET' && ruta === '/zones') {
@@ -205,11 +221,19 @@ function supabase(e, metodo, u, cab, cuerpo) {
   if (cab.authorization !== `Bearer ${s.clave}`) return [401, { message: 'Unauthorized' }];
   const base = `/v1/projects/${s.ref}`;
   if (metodo === 'GET' && u.pathname === base) return [200, s.proyecto];
-  if (metodo === 'GET' && u.pathname === `${base}/upgrade/eligibility`) return s.elegibilidad ? [200, s.elegibilidad] : [404, { message: 'Not found' }];
+  if (metodo === 'GET' && u.pathname === `${base}/upgrade/eligibility`) {
+    if (s.sinDatabaseRead) return [403, { message: 'Your access token does not have the required permissions: database_read' }];
+    return s.elegibilidad ? [200, s.elegibilidad] : [404, { message: 'Not found' }];
+  }
   if (u.pathname === `${base}/config/auth`) {
-    if (metodo === 'GET') return [200, s.auth];
+    if (metodo === 'GET') return s.leerFallaTrasPatch && s.patchHecho ? [503, { message: 'Service Unavailable' }] : [200, s.auth];
     if (metodo === 'PATCH') {
+      // Un error que repite la contraseña de antes y la nueva (para probar que nunca se ven).
+      if (s.patchEco) return [400, { message: `Rejected: old smtp_pass ${s.auth.smtp_pass}, new ${cuerpo?.smtp_pass ?? '-'}` }];
       if (s.patchFalla) return [s.patchFalla, { message: 'Failed to update auth config' }];
+      s.patchHecho = true;
+      // 200 sin aplicar nada (para probar las lecturas de vuelta).
+      if (s.patchIgnora) return [200, s.auth];
       Object.assign(s.auth, cuerpo);
       return [200, s.auth];
     }
@@ -220,7 +244,7 @@ function authPublica(e, metodo, u, cab, cuerpo) {
   if (metodo === 'POST' && u.pathname === '/auth/v1/recover') {
     if (!/^sb_publishable_/.test(cab.apikey || '')) return [401, { message: 'Invalid API key' }];
     e.supa.recuperaciones.push(cuerpo?.email);
-    return [e.supa.recuperar || 200, {}];
+    return [e.supa.recuperar || 200, e.supa.recuperarCuerpo || {}];
   }
   return [404, { message: 'no previsto' }];
 }

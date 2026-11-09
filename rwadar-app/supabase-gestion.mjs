@@ -10,7 +10,10 @@
    CORREO_PRUEBA y ROTAR. Acciones:
 
    · estado (solo lee): estado del proyecto y versión de Postgres; si se puede
-     actualizar Postgres (GET …/upgrade/eligibility, resumido); de la
+     actualizar Postgres (GET …/upgrade/eligibility, resumido; Supabase pide
+     para eso el permiso Database (Read), que deja hacer consultas SQL de
+     lectura sobre toda la base, Vault incluido, así que el token NO lo lleva
+     y estado dice que no lo mira); de la
      configuración de Auth, SOLO smtp_host, smtp_port, smtp_user,
      smtp_admin_email, smtp_sender_name, rate_limit_email_sent y los asuntos de
      confirmación y de recuperación; y si las plantillas de confirmación y de
@@ -33,11 +36,16 @@
      SMTP de ahora (vuelta atrás) y cambia host, puerto, usuario, contraseña
      (el token), remitente y nombre («RWAdar»). Si hay CORREO_PRUEBA, pide a
      Supabase un correo real de recuperación a esa dirección y solo cuenta el
-     código HTTP. Si ya hay un token con ese nombre, no crea otro sin ROTAR =
-     SI; al rotar, borra el viejo solo después de que Supabase acepte el nuevo.
+     código HTTP y el error_code (si Supabase tiene el CAPTCHA encendido, no la
+     manda: se prueba desde la web). Si ya hay un token con ese nombre, no crea
+     otro sin ROTAR = SI (y si hay más de uno, para); al rotar, borra el viejo
+     solo después de que Supabase acepte el nuevo, y nunca si al leerlo de
+     vuelta se ve que no lo aplicó.
 
-   Claves (secretos de GitHub): SUPABASE_ACCESS_TOKEN y, en smtp-lettermint,
-   LETTERMINT_TEAM_TOKEN. Ninguna se escribe nunca: ver rwadar-app/claves-comun.mjs.
+   Claves (secretos de GitHub): SUPABASE_ACCESS_TOKEN (con alcance, solo este
+   proyecto: Auth Config y Project Settings en lectura y escritura) y, en
+   smtp-lettermint, LETTERMINT_GESTION_TOKEN. Ninguna se escribe nunca: ver
+   rwadar-app/claves-comun.mjs.
 
    Pruebas sin red: node --test .github/claves.test.mjs
    ===================================================================== */
@@ -198,6 +206,8 @@ async function estado({ entorno, salida }) {
       if (lista(d[campo]).length) salida.linea(`  ${texto} (${lista(d[campo]).length}): ${nombres(d[campo])}`);
     }
     salida.resumen(`**Postgres:** ${mostrar(db.version)} · se puede actualizar: ${d.eligible === true ? 'sí' : 'no'}.`);
+  } else if (e.estado === 403) {
+    salida.linea('¿Se puede actualizar Postgres?: no se mira. Supabase pide para eso el permiso Database (Read), que deja leer con SQL toda la base (Vault incluido), y el token no lo lleva a propósito. Si hace falta saberlo, se crea para ese momento un token aparte, de caducidad corta.');
   } else {
     salida.linea(`¿Se puede actualizar Postgres?: no se pudo consultar (${explicarHttp('Supabase', e)}). Esa consulta de Supabase está en beta.`);
   }
@@ -295,18 +305,23 @@ async function smtpLettermint({ entorno, entradas, salida }) {
   }
   salida.linea(`  Cuenta verificada (${fechaCorta(equipo.verified_at)}), ${DOMINIO} verificado y envío real.`);
 
-  salida.linea('4/7 · Supabase: el SMTP de ahora (para volver atrás)');
+  salida.linea('4/7 · Supabase: el SMTP de antes (para volver atrás)');
   mostrarCampos(a, CAMPOS_SMTP, salida);
   salida.resumen('**SMTP antes del cambio (vuelta atrás):**', ...CAMPOS_SMTP.map((k) => `- ${k}: ${mostrar(a[k])}`),
     '- smtp_pass: la contraseña de antes (la de aplicación de Gmail) no se guarda aquí.');
   const viejos = await tokensDelProyecto(lm, proyecto, TOKEN_SMTP);
+  const fechas = (lista) => lista.map((t) => `creado ${fechaCorta(t.created_at)}`).join(', ');
   const yaLettermint = a.smtp_host === SMTP.host && a.smtp_user === SMTP.usuario;
   if (!entradas.rotar && (viejos.length || yaLettermint)) {
+    if (viejos.length > 1) {
+      falla(`Hay ${viejos.length} tokens «${TOKEN_SMTP}» en Lettermint (${fechas(viejos)}) y Supabase solo puede usar uno: los demás siguen vivos y pueden enviar como ${DOMINIO}. ` +
+        `Relanza con «rotar» = SI (pone uno nuevo en Supabase y después borra todos los anteriores) o borra a mano los que sobren en Lettermint › Projects › ${PROYECTO_LETTERMINT} › API tokens.`);
+    }
     if (viejos.length && yaLettermint) {
       salida.linea(`Ya está hecho: Supabase usa el SMTP de Lettermint y hay un token «${TOKEN_SMTP}». No se crea otro. Para cambiarlo, relanza con «rotar» = SI.`);
       if (a.smtp_admin_email !== entradas.remitente) salida.linea(`  (Ojo: el remitente de ahora es ${mostrar(a.smtp_admin_email)}, no ${entradas.remitente}. Para cambiarlo, relanza con «rotar» = SI.)`);
       salida.resumen('**SMTP:** ya era Lettermint (no se ha cambiado nada).');
-      return pruebaRecuperacion(web, entradas, salida);
+      return pruebaRecuperacion(web, entradas, salida, a, false);
     }
     if (viejos.length) falla(`Ya hay un token «${TOKEN_SMTP}» en Lettermint, pero Supabase no usa el SMTP de Lettermint. No se crea otro sin permiso: relanza con «rotar» = SI (se crea uno nuevo, se pone en Supabase y después se borra el viejo).`);
     falla(`Supabase ya usa el SMTP de Lettermint, pero no hay ningún token «${TOKEN_SMTP}» (quizá se pegó a mano otro). No se sustituye sin permiso: relanza con «rotar» = SI; el que hay ahora, bórralo tú en Lettermint después (este flujo no sabe cuál es).`);
@@ -343,32 +358,59 @@ async function smtpLettermint({ entorno, entradas, salida }) {
       falla(`Supabase rechazó el cambio: el SMTP sigue como estaba. ${explicarHttp('Supabase', r)} ` +
         (borrado ? 'Se ha borrado el token nuevo: no queda ninguno sin usar.' : `El token nuevo NO se pudo borrar: bórralo en Lettermint › Projects › ${PROYECTO_LETTERMINT} › API tokens (el «${TOKEN_SMTP}» de hoy).`));
     }
-    falla(`No se sabe si Supabase aplicó el cambio (${explicarHttp('Supabase', r)}). No se borra ningún token, para no dejar Auth sin contraseña. Lanza «estado» para ver el SMTP: si no es el de Lettermint, relanza smtp-lettermint con «rotar» = SI.`);
+    falla(`No se sabe si Supabase aplicó el cambio (${explicarHttp('Supabase', r)}). No se borra ningún token, para no dejar Auth sin contraseña: ` +
+      `${viejos.length ? `siguen vivos el anterior (${fechas(viejos)}) y el nuevo de hoy` : 'el nuevo de hoy sigue vivo en Lettermint'}. ` +
+      'Lanza «estado» para ver el SMTP y relanza smtp-lettermint con «rotar» = SI: pone uno nuevo y después borra todos los anteriores.');
   }
-  const despues = await leerAuth(sb, salida);
+  // Supabase ha respondido 200. Se lee de vuelta: si se ve que NO lo aplicó,
+  // no se borra ningún token (Supabase puede seguir usando el anterior).
+  let despues = null, sinLeer = '';
+  try { despues = await leerAuth(sb, salida); } catch (e) { if (!(e instanceof Parada)) throw e; sinLeer = e.message; }
   const esperado = { smtp_host: SMTP.host, smtp_port: SMTP.puerto, smtp_user: SMTP.usuario, smtp_admin_email: entradas.remitente, smtp_sender_name: SMTP.nombre };
-  const distintos = Object.keys(esperado).filter((k) => String(despues[k] ?? '') !== esperado[k]);
-  salida.linea('  SMTP de ahora:');
-  mostrarCampos(despues, CAMPOS_SMTP, salida, '    ');
-  if (distintos.length) falla(`Supabase aceptó el cambio, pero al leerlo de vuelta no coincide: ${distintos.join(', ')}. Revísalo en Authentication › Emails › SMTP Settings.`);
+  if (despues) {
+    salida.linea('  SMTP de ahora (después del cambio):');
+    mostrarCampos(despues, CAMPOS_SMTP, salida, '    ');
+    const distintos = Object.keys(esperado).filter((k) => String(despues[k] ?? '') !== esperado[k]);
+    if (distintos.length) {
+      falla(`Supabase aceptó el cambio (HTTP 200), pero al leerlo de vuelta no coincide: ${distintos.join(', ')}. Puede que no lo haya aplicado, así que no se borra ningún token: ` +
+        `${viejos.length ? `siguen vivos en Lettermint el anterior (${fechas(viejos)}) y el nuevo de hoy` : 'el nuevo de hoy sigue vivo en Lettermint'}. ` +
+        'Revísalo en Authentication › Emails › SMTP Settings (o con «estado») y relanza smtp-lettermint con «rotar» = SI.');
+    }
+  }
+  // Aplicado (o sin poder leerlo de vuelta, que no comprobaría smtp_pass): el
+  // anterior ya no lo usa Supabase y se borra ahora, sobre todo si se rotaba
+  // porque se había filtrado.
   const quedan = [];
   for (const t of viejos) {
     if (await borrarTokenProyecto(lm, proyecto, t.id)) salida.linea(`  Borrado el token anterior (creado ${fechaCorta(t.created_at)}).`);
     else quedan.push(fechaCorta(t.created_at));
   }
+  const vivos = quedan.length ? ` NO se pudo borrar ${quedan.length === 1 ? 'el token anterior' : `${quedan.length} tokens anteriores`} (creado ${quedan.join(', ')}): sigue vivo y puede enviar como ${DOMINIO}; bórralo en Lettermint › Projects › ${PROYECTO_LETTERMINT} › API tokens.` : '';
+  if (sinLeer) {
+    falla(`${sinLeer} Supabase sí aceptó el cambio (HTTP 200), pero no se ha podido leer de vuelta: lanza «estado» para ver el SMTP.` +
+      `${viejos.length && !quedan.length ? ' El token anterior ya se ha borrado.' : ''}${vivos}`);
+  }
   salida.resumen(`**SMTP:** ahora Lettermint (${SMTP.host}:${SMTP.puerto}, remitente ${entradas.remitente}).`);
-  if (quedan.length) falla(`El SMTP ya usa el token nuevo, pero no se pudo borrar ${quedan.length === 1 ? 'el anterior' : `${quedan.length} anteriores`} (creado ${quedan.join(', ')}). Bórralo en Lettermint › Projects › ${PROYECTO_LETTERMINT} › API tokens.`);
-  return pruebaRecuperacion(web, entradas, salida);
+  if (quedan.length) falla(`El SMTP ya usa el token nuevo, pero${vivos}`);
+  return pruebaRecuperacion(web, entradas, salida, despues, true);
 }
 
 /* Un correo real de recuperación, pedido como lo pide la web (clave publicable).
-   Solo se cuenta el código HTTP: Supabase da 200 aunque la dirección no tenga cuenta. */
-async function pruebaRecuperacion(web, entradas, salida) {
+   Solo se cuentan el código HTTP y el error_code: Supabase da 200 aunque la
+   dirección no tenga cuenta. La web lo pide con el testigo del CAPTCHA
+   (conAntiRobots): si Supabase lo tiene encendido, desde aquí no se puede. */
+async function pruebaRecuperacion(web, entradas, salida, auth, recienCambiado) {
   if (!entradas.correoPrueba) {
     salida.linea('Sin «correo_prueba»: no se manda ningún correo. Para probarlo, relanza con tu dirección o usa «¿Has olvidado tu contraseña?» en la web.');
     return;
   }
-  let codigo = 0;
+  if (auth && auth.security_captcha_enabled === true) {
+    salida.linea('Supabase tiene encendido el CAPTCHA (security_captcha_enabled): sin su testigo rechazaría la petición, así que no se manda la prueba desde aquí. ' +
+      'Pruébalo con «¿Has olvidado tu contraseña?» en la web, que sí lo resuelve.');
+    salida.resumen(`**Prueba de recuperación:** no se manda desde aquí (CAPTCHA de Supabase encendido); probar desde la web.`);
+    return;
+  }
+  let codigo = 0, datos = null;
   try {
     const r = await fetch(`${web.url}/auth/v1/recover`, {
       method: 'POST', redirect: 'error', signal: AbortSignal.timeout(30000),
@@ -376,17 +418,35 @@ async function pruebaRecuperacion(web, entradas, salida) {
       body: JSON.stringify({ email: entradas.correoPrueba }),
     });
     codigo = r.status;
-    await r.arrayBuffer();
+    const texto = await r.text();
+    try { datos = texto ? JSON.parse(texto) : null; } catch { datos = null; }
   } catch { codigo = 0; }
-  salida.linea(`Correo de recuperación de prueba a ${entradas.correoPrueba}: HTTP ${codigo}.`);
-  salida.resumen(`**Prueba de recuperación** a ${entradas.correoPrueba}: HTTP ${codigo}.`);
+  // Solo el error_code (corto y sin nada raro), nunca la respuesta entera.
+  const tipo = datos && typeof datos === 'object' && typeof datos.error_code === 'string' ? acortar(datos.error_code.replace(/[^A-Za-z0-9_.-]/g, ''), 40) : '';
+  salida.linea(`Correo de recuperación de prueba a ${entradas.correoPrueba}: HTTP ${codigo}${tipo ? ` (${tipo})` : ''}.`);
+  salida.resumen(`**Prueba de recuperación** a ${entradas.correoPrueba}: HTTP ${codigo}${tipo ? ` (${tipo})` : ''}.`);
   if (codigo === 200) {
     salida.linea('Supabase lo ha aceptado. En el buzón, abre el original: sin píxel, el enlace sin reescribir y la dirección postal en el pie (contrato, punto 5.8.5).');
     return;
   }
-  falla(codigo === 429
-    ? 'Supabase no deja mandar más correos ahora (HTTP 429: hay un límite por dirección y por hora). Espera unos minutos y pruébalo con «¿Has olvidado tu contraseña?».'
-    : `Supabase no pudo mandar el correo de prueba (HTTP ${codigo}). Si el SMTP se acaba de cambiar, puede estar mal: mira «estado» y, si hace falta, vuelve a poner en Supabase › Authentication › Emails › SMTP Settings los datos de antes (están arriba, en «el SMTP de ahora»).`);
+  if (tipo === 'captcha_failed') {
+    falla('Supabase pide el CAPTCHA para mandar la prueba (HTTP 400, captcha_failed). No es un fallo del SMTP: no cambies nada. Pruébalo con «¿Has olvidado tu contraseña?» en la web.');
+  }
+  if (codigo === 429 || /rate_limit/.test(tipo)) {
+    falla(`Supabase no deja mandar más correos ahora (HTTP ${codigo}${tipo ? `, ${tipo}` : ''}: hay un límite por dirección y por hora). No es un fallo del SMTP. Espera unos minutos y pruébalo con «¿Has olvidado tu contraseña?».`);
+  }
+  if (codigo === 0) falla('Sin respuesta de Supabase al pedir la prueba (red o tiempo agotado). No indica un fallo del SMTP: relánzalo o pruébalo con «¿Has olvidado tu contraseña?» en la web.');
+  if (codigo >= 500 && !recienCambiado) {
+    falla(`Supabase no pudo mandar el correo de prueba (HTTP ${codigo}${tipo ? `, ${tipo}` : ''}): lo más probable es que falle el SMTP de Lettermint, que ya estaba puesto ` +
+      '(en esta ejecución no se ha cambiado nada). Mira «estado» y el panel de Lettermint. Si hay que volver a Gmail, sus datos están en el resumen de la ejecución que hizo el cambio, «SMTP antes del cambio (vuelta atrás)».');
+  }
+  if (codigo >= 500) {
+    falla(`Supabase no pudo mandar el correo de prueba (HTTP ${codigo}${tipo ? `, ${tipo}` : ''}): lo más probable es que falle el SMTP. Mira «estado» y, si hace falta volver atrás, ` +
+      'pon en Supabase › Authentication › Emails › SMTP Settings los datos de antes: están arriba, en el paso «4/7 · Supabase: el SMTP de antes (para volver atrás)», ' +
+      'y en el resumen del flujo, «SMTP antes del cambio (vuelta atrás)». La contraseña de Gmail no se guarda en ningún sitio: hace falta una contraseña de aplicación de Gmail ' +
+      '(si ya no la tienes, crea otra en tu cuenta de Google › Seguridad › Contraseñas de aplicaciones).');
+  }
+  falla(`Supabase rechazó la petición de prueba (HTTP ${codigo}${tipo ? `, ${tipo}` : ''}). No parece un fallo del SMTP: no cambies nada todavía. Mira «estado» y pruébalo con «¿Has olvidado tu contraseña?» en la web.`);
 }
 
 const HACER = { estado, plantillas, 'smtp-lettermint': smtpLettermint };

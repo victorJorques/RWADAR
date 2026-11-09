@@ -22,6 +22,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { ACCIONES as ACCIONES_DOMINIO, planificar, registrosPedidos, registroCF, textoTXT } from '../rwadar-app/dominio-correo.mjs';
 import { ACCIONES as ACCIONES_SUPABASE, CAMPOS_ESTADO, leerPlantillas } from '../rwadar-app/supabase-gestion.mjs';
+import { crearSalida, errorPsql } from '../rwadar-app/claves-comun.mjs';
 
 const raiz = fileURLToPath(new URL('..', import.meta.url));
 const leer = (relativa) => fs.readFileSync(path.join(raiz, relativa), 'utf8');
@@ -96,7 +97,11 @@ function estadoInicial(cambiar = () => {}) {
 }
 
 /* psql falso: comprueba la forma de la llamada y hace de Vault. Apunta en
-   psql.jsonl cada llamada, con el token reducido a una huella. */
+   psql.jsonl cada llamada, con el token reducido a una huella. Modos (en
+   psql.json): conectarFalla, sinVault, guardarFalla, guardarSinAviso (sale
+   con 0 sin el NOTICE y sin guardar), guardarYCorta (guarda y después corta
+   la conexión), caidaTrasGuardar (después de intentar guardar, la base ya no
+   responde) y ecoUrl (un error que repite la dirección de la base). */
 const PSQL_DOBLE = String.raw`#!/usr/bin/env node
 const fs = require('fs'), path = require('path'), crypto = require('crypto');
 const dir = path.join(path.dirname(fs.realpathSync(process.argv[1])), '..');
@@ -110,16 +115,26 @@ for (let i = 0; i < args.length; i++) if (args[i] === '-v') { const [k, ...v] = 
 const f = args.includes('-f') ? args[args.indexOf('-f') + 1] : '';
 const archivo = f === '-' ? 'stdin' : path.basename(f);
 fs.appendFileSync(path.join(dir, 'psql.jsonl'), JSON.stringify({ primero: args[0] === cfg.dbUrl ? 'dbUrl' : 'otro', PGSSLMODE: process.env.PGSSLMODE || '',
-  archivo, token: variables.token ? h(variables.token) : '', remitente: variables.remitente || '',
+  PGSSLROOTCERT: process.env.PGSSLROOTCERT || '', archivo, token: variables.token ? h(variables.token) : '', remitente: variables.remitente || '',
   heredaClaves: Object.keys(process.env).filter((k) => /TOKEN|DB_URL|DOBLE/.test(k)), soloLectura: /begin transaction read only;[\s\S]*rollback;/.test(entrada) }) + '\n');
 fs.appendFileSync(path.join(dir, 'orden.log'), 'psql ' + archivo + '\n');
-if (cfg.conectarFalla) { process.stderr.write('psql: error: connection to server at "aws-0-eu-west-1.pooler.supabase.com" failed: timeout expired\n'); process.exit(2); }
-if (archivo === 'stdin' && /vault\.secrets/.test(entrada)) { process.stdout.write((cfg.sinVault ? 'false' : 'true') + '|' + (cfg.vault.LETTERMINT_API_TOKEN ? 1 : 0) + '\n'); process.exit(0); }
+const guardar = (c) => fs.writeFileSync(cfgRuta, JSON.stringify(c));
+if (cfg.ecoUrl) { process.stderr.write('psql:31:1: ERROR:  no se pudo usar ' + args[0] + ' (doble)\n'); process.exit(3); }
+if (cfg.conectarFalla || cfg.caida) { process.stderr.write('psql: error: connection to server at "aws-0-eu-west-1.pooler.supabase.com" failed: timeout expired\n'); process.exit(2); }
+if (archivo === 'stdin' && /vault\.decrypted_secrets/.test(entrada)) {
+  const t = cfg.vault.LETTERMINT_API_TOKEN;
+  const huella = t ? crypto.createHash('sha256').update(t.trim(), 'utf8').digest('hex') : '-';
+  process.stdout.write((cfg.sinVault ? 'false' : 'true') + '|' + (t ? 1 : 0) + '|' + huella + '|' + (cfg.vault.RWADAR_REMITENTE || '-') + '\n');
+  process.exit(0);
+}
 if (archivo === '31_correo_lettermint_guardar.sql') {
+  if (cfg.caidaTrasGuardar) { cfg.caida = true; guardar(cfg); process.stderr.write('psql: error: connection to server at "aws-0-eu-west-1.pooler.supabase.com" failed: timeout expired\n'); process.exit(2); }
   if (cfg.guardarFalla) { process.stderr.write('psql:rwadar-app/db/31_correo_lettermint_guardar.sql:44: ERROR:  could not serialize access due to concurrent update\n'); process.exit(3); }
+  if (cfg.guardarSinAviso) { process.stdout.write('t\n'); process.exit(0); }
   if (!/^[!-~]{20,1024}$/.test(variables.token || '')) { process.stderr.write('ERROR:  avisos 31: el token de Lettermint falta o no tiene forma de token\n'); process.exit(3); }
   cfg.vault.LETTERMINT_API_TOKEN = variables.token; cfg.vault.RWADAR_REMITENTE = variables.remitente;
-  fs.writeFileSync(cfgRuta, JSON.stringify(cfg));
+  guardar(cfg);
+  if (cfg.guardarYCorta) { process.stderr.write('psql:rwadar-app/db/31_correo_lettermint_guardar.sql:94: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n'); process.exit(2); }
   process.stdout.write('t\n');
   process.stderr.write('psql:rwadar-app/db/31_correo_lettermint_guardar.sql:92: NOTICE:  avisos 31: LETTERMINT_API_TOKEN y RWADAR_REMITENTE guardados en Vault con forma válida. El correo sigue como estaba (para encenderlo: 30_avisos_registrados_activar_correo.sql).\n');
   process.exit(0);
@@ -137,6 +152,8 @@ function mundo(t, estado = estadoInicial(), psql = {}) {
   fs.writeFileSync(path.join(servidor, 'estado.json'), JSON.stringify(estado));
   fs.writeFileSync(path.join(servidor, 'psql.json'), JSON.stringify({ dbUrl: URL_DB, vault: {}, ...psql }));
   fs.writeFileSync(path.join(servidor, 'bin', 'psql'), PSQL_DOBLE, { mode: 0o755 });
+  // Una CA de mentira (la de verdad la sube la sesión de Claude del PC: rwadar-app/certificados/LEEME.md).
+  fs.writeFileSync(path.join(servidor, 'ca.crt'), '-----BEGIN CERTIFICATE-----\nMIIBdoble\n-----END CERTIFICATE-----\n');
   const lineas = (f) => (fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').filter(Boolean) : []);
   const m = {
     servidor, runner,
@@ -150,7 +167,8 @@ function mundo(t, estado = estadoInicial(), psql = {}) {
       for (const f of Object.values(archivosGH)) if (!fs.existsSync(f)) fs.writeFileSync(f, '');
       const env = Object.fromEntries(Object.entries({
         PATH: `${path.join(servidor, 'bin')}:${process.env.PATH}`, HOME: runner, TMPDIR: path.join(runner, 'tmp'), RUNNER_TEMP: path.join(runner, 'temp'),
-        GITHUB_REF: 'refs/heads/main', GITHUB_ACTIONS: 'true', DOBLE_DIR: servidor, PGSSLMODE: 'require', ...archivosGH, ...entorno,
+        GITHUB_REF: 'refs/heads/main', GITHUB_ACTIONS: 'true', DOBLE_DIR: servidor, PGSSLMODE: 'require', PGSSLROOTCERT: path.join(servidor, 'ca.crt'),
+        ...archivosGH, ...entorno,
       }).filter(([, v]) => v !== undefined));
       const r = spawnSync(process.execPath, ['--import', DOBLES, script, orden], { cwd: runner, env, encoding: 'utf8', timeout: 60000 });
       const archivos = {};
@@ -168,8 +186,10 @@ function mundo(t, estado = estadoInicial(), psql = {}) {
   };
   return m;
 }
-const dominio = (accion, extra = {}) => ({ ACCION: accion, CONFIRMAR: 'CORREO', CLOUDFLARE_DNS_TOKEN: CLAVE_CF, LETTERMINT_TEAM_TOKEN: CLAVE_LM, ...extra });
-const supabase = (accion, extra = {}) => ({ ACCION: accion, CONFIRMAR: 'SUPABASE', SUPABASE_ACCESS_TOKEN: CLAVE_SB, LETTERMINT_TEAM_TOKEN: CLAVE_LM, ...extra });
+const dominio = (accion, extra = {}) => ({ ACCION: accion, CONFIRMAR: 'CORREO', CLOUDFLARE_DNS_TOKEN: CLAVE_CF, LETTERMINT_GESTION_TOKEN: CLAVE_LM, ...extra });
+// Lo de ahora (08/11/2026): sin clave de Cloudflare.
+const sinCF = (accion, extra = {}) => dominio(accion, { CLOUDFLARE_DNS_TOKEN: undefined, ...extra });
+const supabase = (accion, extra = {}) => ({ ACCION: accion, CONFIRMAR: 'SUPABASE', SUPABASE_ACCESS_TOKEN: CLAVE_SB, LETTERMINT_GESTION_TOKEN: CLAVE_LM, ...extra });
 const BASE = { REMITENTE: 'avisos@rwadar.app', SUPABASE_DB_URL: URL_DB };
 const SMTP_OK = { CUENTA_VERIFICADA: 'SI', REMITENTE: 'avisos@rwadar.app' };
 const de = (r, metodo, patron, host) => r.peticiones.filter((p) => p.metodo === metodo && (!host || p.host === host) && (!patron || patron.test(p.ruta)));
@@ -205,12 +225,12 @@ const SHA_DE_LA_CASA = new Set(fs.readdirSync(path.join(raiz, '.github/workflows
 for (const [nombre, acciones, script, secretosPorPaso, palabra] of [
   ['dominio-correo.yml', ACCIONES_DOMINIO, 'rwadar-app/dominio-correo.mjs', {
     CLOUDFLARE_DNS_TOKEN: ['estado', 'preparar-dominio'],
-    LETTERMINT_TEAM_TOKEN: ['estado', 'preparar-dominio', 'verificar-dominio', 'ajustar-rutas', 'crear-token-base'],
+    LETTERMINT_GESTION_TOKEN: ['estado', 'preparar-dominio', 'verificar-dominio', 'ajustar-rutas', 'crear-token-base'],
     SUPABASE_DB_URL: ['crear-token-base'],
   }, 'CORREO'],
   ['supabase-gestion.yml', ACCIONES_SUPABASE, 'rwadar-app/supabase-gestion.mjs', {
     SUPABASE_ACCESS_TOKEN: ['estado', 'plantillas', 'smtp-lettermint'],
-    LETTERMINT_TEAM_TOKEN: ['smtp-lettermint'],
+    LETTERMINT_GESTION_TOKEN: ['smtp-lettermint'],
   }, 'SUPABASE'],
 ]) {
   test(`${nombre}: solo a mano y desde main, permisos de lectura, cola propia, acciones fijadas y cada secreto solo en su paso`, () => {
@@ -321,28 +341,29 @@ test('compuertas: la rama, la palabra de confirmar y las entradas se miran antes
 test('si falta un secreto, o está mal pegado, lo dice en llano antes de tocar nada', (t) => {
   const m = mundo(t);
   const casos = [
-    [SCRIPT_DOMINIO, dominio('preparar-dominio', { CLOUDFLARE_DNS_TOKEN: '' }), /Falta el secreto de GitHub CLOUDFLARE_DNS_TOKEN \(token de la API de Cloudflare con Zone:Read y DNS:Edit solo sobre rwadar\.app\)/],
-    [SCRIPT_DOMINIO, dominio('preparar-dominio', { LETTERMINT_TEAM_TOKEN: undefined }), /Falta el secreto de GitHub LETTERMINT_TEAM_TOKEN \(token DE EQUIPO/],
-    [SCRIPT_DOMINIO, dominio('verificar-dominio', { LETTERMINT_TEAM_TOKEN: `${CLAVE_LM}\n` }), /LETTERMINT_TEAM_TOKEN no tiene forma de token .*¿Se pegó con un espacio o un salto de línea/],
+    [SCRIPT_DOMINIO, dominio('preparar-dominio', { CLOUDFLARE_DNS_TOKEN: `${CLAVE_CF} ` }), /CLOUDFLARE_DNS_TOKEN no tiene forma de token/],
+    [SCRIPT_DOMINIO, dominio('preparar-dominio', { LETTERMINT_GESTION_TOKEN: undefined }), /Falta el secreto de GitHub LETTERMINT_GESTION_TOKEN \(token DE EQUIPO de Lettermint para gestionar/],
+    [SCRIPT_DOMINIO, dominio('verificar-dominio', { LETTERMINT_GESTION_TOKEN: `${CLAVE_LM}\n` }), /LETTERMINT_GESTION_TOKEN no tiene forma de token .*¿Se pegó con un espacio o un salto de línea/],
     [SCRIPT_DOMINIO, dominio('crear-token-base', { ...BASE, SUPABASE_DB_URL: '' }), /Falta el secreto de GitHub SUPABASE_DB_URL .*no se crea ninguno/],
     [SCRIPT_SUPABASE, supabase('estado', { SUPABASE_ACCESS_TOKEN: '' }), /Falta el secreto de GitHub SUPABASE_ACCESS_TOKEN \(token personal de Supabase/],
-    [SCRIPT_SUPABASE, supabase('smtp-lettermint', { ...SMTP_OK, LETTERMINT_TEAM_TOKEN: '' }), /Falta el secreto de GitHub LETTERMINT_TEAM_TOKEN/],
+    [SCRIPT_SUPABASE, supabase('smtp-lettermint', { ...SMTP_OK, LETTERMINT_GESTION_TOKEN: '' }), /Falta el secreto de GitHub LETTERMINT_GESTION_TOKEN/],
+    [SCRIPT_DOMINIO, sinCF('crear-token-base', { ...BASE, PGSSLROOTCERT: undefined }), /Falta el certificado de la CA de Supabase \(rwadar-app\/certificados\/supabase-ca\.crt\).*Download certificate/],
   ];
   for (const [script, entorno, esperado] of casos) {
     const r = m.correr(script, entorno);
     assert.equal(r.codigo, 1, String(esperado));
     assert.match(r.texto, esperado);
-    assert.match(r.texto, /Settings › Secrets and variables › Actions|SUPABASE_DB_URL/);
+    assert.match(r.texto, /Settings › Secrets and variables › Actions|SUPABASE_DB_URL|certificados/);
     assert.equal(r.peticiones.length + r.psql.length, 0, `${esperado}: nada antes de tener las claves`);
     sinFugas(r, []);
   }
-  // estado enseña lo que puede con una sola clave y acaba en rojo diciendo cuál falta.
-  const media = m.correr(SCRIPT_DOMINIO, dominio('estado', { CLOUDFLARE_DNS_TOKEN: '' }));
+  // estado sin la clave de Lettermint enseña lo que puede y acaba en rojo diciendo cuál falta.
+  const media = m.correr(SCRIPT_DOMINIO, dominio('estado', { LETTERMINT_GESTION_TOKEN: '' }));
   assert.equal(media.codigo, 1);
-  assert.match(media.texto, /Proyecto «RWAdar»: existe/);
-  assert.match(media.texto, /\(sin CLOUDFLARE_DNS_TOKEN: no se mira Cloudflare\)/);
-  assert.match(media.texto, /PARADO: Falta el secreto de GitHub CLOUDFLARE_DNS_TOKEN/);
-  assert.ok(media.peticiones.every((p) => p.host === 'api.lettermint.co' && p.metodo === 'GET'));
+  assert.match(media.texto, /Zona rwadar\.app: activa\./);
+  assert.match(media.texto, /\(sin LETTERMINT_GESTION_TOKEN: no se mira Lettermint\)/);
+  assert.match(media.texto, /PARADO: Falta el secreto de GitHub LETTERMINT_GESTION_TOKEN/);
+  assert.ok(media.peticiones.every((p) => p.host === 'api.cloudflare.com' && p.metodo === 'GET'));
 });
 
 /* ======================================================= preparar-dominio */
@@ -596,14 +617,20 @@ test('crear-token-base: comprueba la base, crea el token, lo enmascara, lo guard
   assert.ok(lugar(r, /^http POST .*api-tokens$/) < lugar(r, /^psql 31_correo_lettermint_guardar\.sql$/));
   assert.equal(r.psql.length, 2);
   assert.ok(r.psql[0].soloLectura, 'la comprobación es una transacción de solo lectura');
-  for (const p of r.psql) { assert.equal(p.primero, 'dbUrl'); assert.equal(p.PGSSLMODE, 'require'); }
+  for (const p of r.psql) {
+    assert.equal(p.primero, 'dbUrl');
+    assert.equal(p.PGSSLMODE, 'verify-full', 'comprueba el certificado del servidor, no solo cifra');
+    assert.equal(p.PGSSLROOTCERT, path.join(m.servidor, 'ca.crt'), 'con la CA de Supabase');
+  }
   assert.equal(r.psql[1].token, huellaDoble(token), 'a psql le llega el token, como variable');
   assert.equal(r.psql[1].remitente, 'avisos@rwadar.app');
   assert.match(r.texto, /Guardado en Vault: LETTERMINT_API_TOKEN y RWADAR_REMITENTE \(avisos@rwadar\.app\)\. El correo sigue apagado/);
   sinFugas(r, [token]);
-  // TLS obligatorio aunque el entorno no lo diga.
-  const sinTls = m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', { ...BASE, PGSSLMODE: undefined }));
-  assert.equal(sinTls.psql[0].PGSSLMODE, 'require');
+  // verify-full aunque el entorno pida menos.
+  const sinTls = m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', { ...BASE, PGSSLMODE: 'disable' }));
+  assert.equal(sinTls.psql[0].PGSSLMODE, 'verify-full');
+  // El usuario y la contraseña de la base, enmascarados sueltos en GitHub (no tapa trozos de un secreto).
+  for (const parte of ['postgres.abc', 'ContrasenaSecreta123']) assert.ok(r.stdout.split('\n').includes(`::add-mask::${parte}`), parte);
 });
 
 test('crear-token-base: no crea otro sin rotar = SI; al rotar, borra el viejo solo después de guardar el nuevo', (t) => {
@@ -612,7 +639,7 @@ test('crear-token-base: no crea otro sin rotar = SI; al rotar, borra el viejo so
   const viejo = m.estado().lm.tokens[0];
   const otra = m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', BASE));
   assert.equal(otra.codigo, 0, otra.texto);
-  assert.match(otra.texto, /Ya está hecho: hay un token «RWAdar base \(API\)» y Vault guarda un LETTERMINT_API_TOKEN\. No se crea otro\./);
+  assert.match(otra.texto, /Ya está hecho: hay un token «RWAdar base \(API\)» y Vault guarda un LETTERMINT_API_TOKEN con el remitente avisos@rwadar\.app\. No se crea otro\./);
   assert.equal(de(otra, 'POST', /api-tokens$/).length, 0);
   assert.equal(otra.psql.filter((p) => p.archivo !== 'stdin').length, 0);
   const rotar = m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', { ...BASE, ROTAR: 'SI' }));
@@ -634,7 +661,9 @@ test('crear-token-base: si guardar en Vault falla, borra el token recién creado
   m.cambiarPsql((c) => { c.guardarFalla = true; });
   const r = m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', { ...BASE, ROTAR: 'SI' }));
   assert.equal(r.codigo, 1);
-  assert.match(r.texto, /No se pudo guardar el token nuevo en el Vault \(psql:.*could not serialize access.*\)\. Se ha borrado el token recién creado en Lettermint: no queda ninguno sin usar\. El token anterior sigue como estaba/);
+  assert.match(r.texto, /No se pudo guardar el token nuevo en el Vault \(psql:.*could not serialize access.*\)\. Comprobado después, solo leyendo: Vault no lo guarda; sigue con el que tenía \(la misma huella que antes\)\. Se ha borrado el token recién creado en Lettermint: no queda ninguno sin usar\. El token anterior \(creado 2026-11-08\) sigue vivo en Lettermint, sin cambios\./);
+  assert.ok(r.psql.at(-1).soloLectura, 'antes de borrar el nuevo, mira Vault solo leyendo');
+  assert.ok(lugar(r, /^psql 31_correo/) < r.orden.lastIndexOf('psql stdin') && r.orden.lastIndexOf('psql stdin') < lugar(r, /^http DELETE /), 'mira Vault antes de borrar');
   const e = m.estado();
   assert.deepEqual(e.lm.tokens.map((x) => x.id), [viejo.id]);
   assert.equal(m.psqlConfig().vault.LETTERMINT_API_TOKEN, viejo.token);
@@ -647,7 +676,7 @@ test('crear-token-base: sin base que responda, o con un token o un Vault ya pues
   const caida = mundo(t, estadoInicial(), { conectarFalla: true });
   const r1 = caida.correr(SCRIPT_DOMINIO, dominio('crear-token-base', BASE));
   assert.equal(r1.codigo, 1);
-  assert.match(r1.texto, /No se pudo comprobar la base antes de crear nada \(psql: error: connection to server .* failed: timeout expired\)\. No se ha creado ningún token\./);
+  assert.match(r1.texto, /No se pudo comprobar la base antes de crear nada \(tiempo agotado al conectar con la base\)\. No se ha creado ningún token\./);
   assert.equal(r1.peticiones.length, 0);
   assert.equal(caida.estado().lm.tokens.length, 0);
   sinFugas(r1, []);
@@ -661,7 +690,7 @@ test('crear-token-base: sin base que responda, o con un token o un Vault ya pues
   assert.equal(r2.codigo, 1);
   assert.match(r2.texto, /Ya hay un token «RWAdar base \(API\)» en Lettermint, pero Vault no guarda ninguno\. No se crea otro sin permiso: relanza con «rotar» = SI/);
   assert.equal(de(r2, 'POST', /api-tokens$/).length, 0);
-  const vaultSinToken = mundo(t, estadoInicial(), { vault: { LETTERMINT_API_TOKEN: 'lm_guardado_con_guardar_correo_01' } });
+  const vaultSinToken = mundo(t, estadoInicial(), { vault: { LETTERMINT_API_TOKEN: 'lm_guardado_con_guardar_correo_01', RWADAR_REMITENTE: 'avisos@rwadar.app' } });
   const r3 = vaultSinToken.correr(SCRIPT_DOMINIO, dominio('crear-token-base', BASE));
   assert.equal(r3.codigo, 1);
   assert.match(r3.texto, /Vault ya guarda un LETTERMINT_API_TOKEN \(quizá de «guardar-correo»/);
@@ -672,7 +701,8 @@ test('crear-token-base: sin base que responda, o con un token o un Vault ya pues
   assert.equal(r4.codigo, 1);
   assert.match(r4.texto, /devolvió el token «RWAdar base \(API\)» con una forma inesperada: no se ha usado ni guardado y se ha intentado borrar/);
   assert.ok(!r4.texto.includes('token con espacios'));
-  assert.doesNotMatch(r4.stdout, /::add-mask::/);
+  assert.deepEqual(r4.stdout.split('\n').filter((l) => l.startsWith('::add-mask::')), ['::add-mask::postgres.abc', '::add-mask::ContrasenaSecreta123'],
+    'solo se enmascaran el usuario y la contraseña de la base, no el token raro');
   assert.equal(raro.estado().lm.tokens.length, 0);
   assert.equal(r4.psql.filter((p) => p.archivo !== 'stdin').length, 0);
 });
@@ -776,7 +806,7 @@ test('smtp-lettermint: activa el SMTP del proyecto, crea el token sin enseñarlo
   const antes = r.stdout.indexOf('  smtp_host: smtp.gmail.com'), cambio = r.stdout.indexOf('7/7 · Supabase: cambiar el SMTP');
   assert.ok(antes > 0 && antes < cambio);
   assert.match(r.resumen, /\*\*SMTP antes del cambio \(vuelta atrás\):\*\*\n- smtp_host: smtp\.gmail\.com\n- smtp_port: 465\n- smtp_user: rwadares@gmail\.com/);
-  assert.match(r.stdout, /SMTP de ahora:\n {4}smtp_host: smtp\.lettermint\.co\n {4}smtp_port: 587\n {4}smtp_user: lettermint\n {4}smtp_admin_email: avisos@rwadar\.app\n {4}smtp_sender_name: RWAdar/);
+  assert.match(r.stdout, /SMTP de ahora \(después del cambio\):\n {4}smtp_host: smtp\.lettermint\.co\n {4}smtp_port: 587\n {4}smtp_user: lettermint\n {4}smtp_admin_email: avisos@rwadar\.app\n {4}smtp_sender_name: RWAdar/);
   // La prueba: con la clave publicable de la web, y solo el código HTTP.
   const prueba = de(r, 'POST', /^\/auth\/v1\/recover$/, 'exgpmjpaaebyoolpwced.supabase.co');
   assert.equal(prueba.length, 1);
@@ -831,9 +861,340 @@ test('smtp-lettermint: si Supabase rechaza el cambio se borra el token nuevo; si
   assert.equal(de(r3, 'PATCH', /./).length, 0);
   assert.equal(otroSmtp.estado().lm.tokens.length, 0);
   // Si la prueba de recuperación falla, lo dice con el código y cómo volver atrás.
-  const prueba = mundo(t, listoParaSmtp((e) => { e.supa.recuperar = 500; }));
+  const prueba = mundo(t, listoParaSmtp((e) => { e.supa.recuperar = 500; e.supa.recuperarCuerpo = { code: 500, error_code: 'unexpected_failure', msg: 'Error sending recovery email' }; }));
   const r4 = prueba.correr(SCRIPT_SUPABASE, supabase('smtp-lettermint', { ...SMTP_OK, CORREO_PRUEBA: 'victor@ejemplo.test' }));
   assert.equal(r4.codigo, 1);
-  assert.match(r4.texto, /Supabase no pudo mandar el correo de prueba \(HTTP 500\)/);
+  assert.match(r4.texto, /Supabase no pudo mandar el correo de prueba \(HTTP 500, unexpected_failure\): lo más probable es que falle el SMTP/);
+  // Remite al bloque con los datos de ANTES (Gmail), no al de después (Lettermint).
+  assert.match(r4.stdout, /4\/7 · Supabase: el SMTP de antes \(para volver atrás\)\n {2}smtp_host: smtp\.gmail\.com/);
+  assert.match(r4.texto, /en el paso «4\/7 · Supabase: el SMTP de antes \(para volver atrás\)», y en el resumen del flujo, «SMTP antes del cambio \(vuelta atrás\)»\. La contraseña de Gmail no se guarda/);
+  assert.doesNotMatch(r4.texto, /el SMTP de ahora \(para volver atrás\)/);
+  // Relanzado sin cambiar nada («Ya está hecho»), no manda a «volver» a los datos de Lettermint.
+  const r5 = prueba.correr(SCRIPT_SUPABASE, supabase('smtp-lettermint', { ...SMTP_OK, CORREO_PRUEBA: 'victor@ejemplo.test' }));
+  assert.equal(r5.codigo, 1);
+  assert.match(r5.texto, /Ya está hecho/);
+  assert.match(r5.texto, /en esta ejecución no se ha cambiado nada\)\. Mira «estado» y el panel de Lettermint\. Si hay que volver a Gmail, sus datos están en el resumen de la ejecución que hizo el cambio/);
+  assert.doesNotMatch(r5.texto, /en el paso «4\/7/);
   sinFugas(r4, [prueba.estado().lm.tokens[0].token]);
+});
+
+/* ======================================================= sin clave de Cloudflare (decisión del 08/11/2026) */
+const conDominio = (cambiar = () => {}) => estadoInicial((e) => {
+  e.lm.dominios.push({ id: 'dom-1', domain: 'rwadar.app', status: 'pending_verification', project_ids: ['p-1'],
+    dns_records: REGISTROS_LM.map((x, i) => ({ id: `reg-${i}`, status: 'pending', required_for_verification: true, ...x })) });
+  cambiar(e);
+});
+
+test('sin clave de Cloudflare: estado lo dice en llano y sigue con Lettermint en verde; verificar, ajustar y crear-token-base funcionan', (t) => {
+  // El DNS ya copiado a mano en Cloudflare (lo que hará la sesión de Claude del PC).
+  const m = mundo(t, conDominio((e) => { e.cf.registros = REGISTROS_LM.map((x, i) => ({ id: `cf-${i}`, name: x.fqdn, type: x.type, content: x.content, proxied: false, ttl: 1 })); }));
+  const est = m.correr(SCRIPT_DOMINIO, sinCF('estado', { CONFIRMAR: '' }));
+  assert.equal(est.codigo, 0, est.texto);
+  assert.match(est.texto, /== Cloudflare ==\nSin clave de Cloudflare: el DNS se pone a mano desde el panel\.\n/);
+  assert.match(est.texto, /se copian sus registros en Cloudflare › rwadar\.app › DNS tal como los da Lettermint \(los CNAME en «DNS only», nube gris; si ya hay un SPF en rwadar\.app, se fusiona con él, nunca un segundo SPF\)/);
+  assert.match(est.texto, /Proyecto «RWAdar»: existe/);
+  // El estado del dominio sale del listado (GET /domains/{id} no lo trae).
+  assert.match(est.texto, /Dominio rwadar\.app: pendiente de verificar; asociado al proyecto «RWAdar»\./);
+  assert.match(est.resumen, /\*\*Estado \(solo lectura\):\*\* Cloudflare sin clave \(el DNS se pone a mano desde el panel\) · Lettermint dominio pendiente de verificar\./);
+  assert.doesNotMatch(est.texto, /PARADO|undefined|sin estado/);
+  assert.ok(est.peticiones.length > 0 && est.peticiones.every((p) => p.host === 'api.lettermint.co' && p.metodo === 'GET'), 'solo lee, y solo Lettermint');
+
+  const ver = m.correr(SCRIPT_DOMINIO, sinCF('verificar-dominio', { CONFIRMAR: '' }));
+  assert.equal(ver.codigo, 0, ver.texto);
+  assert.match(ver.texto, /Verificación de rwadar\.app en Lettermint: verificado\./);
+  assert.match(ver.resumen, /\*\*Verificación de rwadar\.app:\*\* verificado · necesarios verificados 4 de 4\./);
+  const aj = m.correr(SCRIPT_DOMINIO, sinCF('ajustar-rutas'));
+  assert.equal(aj.codigo, 0, aj.texto);
+  const base = m.correr(SCRIPT_DOMINIO, sinCF('crear-token-base', BASE));
+  assert.equal(base.codigo, 0, base.texto);
+  assert.equal(m.psqlConfig().vault.LETTERMINT_API_TOKEN, m.estado().lm.tokens[0].token);
+  for (const r of [est, ver, aj, base]) {
+    assert.ok(r.peticiones.every((p) => p.host !== 'api.cloudflare.com'), 'ninguna petición a Cloudflare');
+    sinFugas(r, r === base ? [m.estado().lm.tokens[0].token] : []);
+  }
+});
+
+test('sin clave de Cloudflare: preparar-dominio para con un mensaje claro y sin hacer ninguna petición', (t) => {
+  const m = mundo(t);
+  const r = m.correr(SCRIPT_DOMINIO, sinCF('preparar-dominio'));
+  assert.equal(r.codigo, 1);
+  assert.match(r.texto, /PARADO: preparar-dominio solo sirve con la clave de Cloudflare \(CLOUDFLARE_DNS_TOKEN\), y no existe: Víctor decidió el 08\/11\/2026 no crearla\. No se ha hecho ninguna petición\. El DNS se pone a mano desde el panel: En Lettermint › Domains se añade rwadar\.app/);
+  assert.match(r.texto, /Después, la acción verificar-dominio\./);
+  assert.equal(r.peticiones.length + r.psql.length, 0, 'ninguna petición');
+  // Igual con una clave vacía (el secreto de GitHub que no existe llega así).
+  const vacia = m.correr(SCRIPT_DOMINIO, dominio('preparar-dominio', { CLOUDFLARE_DNS_TOKEN: '' }));
+  assert.equal(vacia.codigo, 1);
+  assert.match(vacia.texto, /solo sirve con la clave de Cloudflare/);
+  assert.equal(vacia.peticiones.length, 0);
+});
+
+/* ======================================================= SUPABASE_DB_URL mal formada (hallazgo 1) */
+test('crear-token-base: una SUPABASE_DB_URL mal formada para sin enseñar nada de la contraseña y sin llamar a psql', (t) => {
+  const m = mundo(t);
+  for (const clave of ['Secr3t%Zz9pass', 'Secr3t/Zz9pass', 'Secr3t@Zz9pass', 'Secr3t?Zz9pass']) {
+    const url = `postgresql://postgres.abc:${clave}@aws-0-eu-west-1.pooler.supabase.com:5432/postgres`;
+    const r = m.correr(SCRIPT_DOMINIO, sinCF('crear-token-base', { ...BASE, SUPABASE_DB_URL: url }));
+    assert.equal(r.codigo, 1, clave);
+    assert.match(r.texto, /El secreto SUPABASE_DB_URL no tiene forma de dirección de Postgres válida \(.+\)\. No se enseña su valor\./);
+    assert.equal(r.psql.length + r.peticiones.length, 0, `${clave}: nada antes de validar`);
+    const sinMascaras = r.stdout.split('\n').filter((l) => !l.startsWith('::add-mask::')).join('\n');
+    for (const trozo of ['Secr3t', 'Zz9pass']) {
+      assert.ok(!sinMascaras.includes(trozo) && !r.stderr.includes(trozo) && !r.resumen.includes(trozo), `${clave}: no se ve ${trozo}`);
+    }
+  }
+  // Bien codificada (% como %25) sí vale; se enmascaran la contraseña tal cual y
+  // decodificada, escapadas para la orden de GitHub (que las desescapa).
+  const buena = 'postgresql://postgres.abc:Secr3t%25Zz9pass@aws-0-eu-west-1.pooler.supabase.com:5432/postgres';
+  const r = m.correr(SCRIPT_DOMINIO, sinCF('crear-token-base', { ...BASE, SUPABASE_DB_URL: buena }));
+  assert.equal(r.codigo, 0, r.texto);
+  const mascaras = r.stdout.split('\n').filter((l) => l.startsWith('::add-mask::'));
+  assert.ok(mascaras.includes('::add-mask::Secr3t%2525Zz9pass') && mascaras.includes('::add-mask::Secr3t%25Zz9pass'), mascaras.join(' | '));
+});
+
+test('errorPsql: nunca copia en crudo lo que libpq repite entre comillas (mensajes reales de psql 17.11)', () => {
+  const salida = crearSalida({}, { stdout: { write() {} } });
+  const casos = [
+    // Sacados de psql 17.11 de verdad, sin red, con contraseñas mal pegadas.
+    ['psql: error: invalid percent-encoded token: "Secr3t%Zz9pass"\n', /mal formada/],
+    ['psql: error: invalid integer value "Secr3t" for connection option "port"\n', /mal formada/],
+    ['psql: error: end of string reached when looking for matching "]" in IPv6 host address in URI: "postgresql://u:Secr3t@[::1/db"\n', /mal formada/],
+    ['psql: error: invalid URI query parameter: "Secr3t"\n', /mal formada/],
+    ['psql: error: could not translate host name "ss@nohost.invalid" to address: Name or service not known\n', /no se llega al servidor/],
+    ['psql: error: connection to server at "aws-0-eu-west-1.pooler.supabase.com" (192.0.2.1), port 5432 failed: FATAL:  password authentication failed for user "postgres.Secr3t"\n', /rechaza el usuario o la contraseña/],
+    ['psql: error: connection to server at "aws-0-eu-west-1.pooler.supabase.com" (192.0.2.1), port 5432 failed: SSL error: certificate verify failed\n', /TLS: no se pudo comprobar el certificado/],
+    ['psql:x.sql:3: ERROR:  syntax error at or near "Secr3t"\nLINE 1: Secr3t\n', /ERROR: syntax error at or near "…"/],
+  ];
+  for (const [error, esperado] of casos) {
+    const texto = errorPsql(salida, { codigo: 2, error, fallo: null });
+    assert.match(texto, esperado, error);
+    assert.ok(!texto.includes('Secr3t') && !texto.includes('ss@'), `${error} → ${texto}`);
+  }
+  assert.equal(errorPsql(salida, { codigo: null, error: '', fallo: 'ETIMEDOUT' }), 'psql no terminó en 120 s y se cortó');
+});
+
+/* ======================================================= Vault: respuesta no limpia (hallazgos 4 y 11) */
+test('crear-token-base: si psql guarda y después se corta, mira la huella de Vault y NO borra el token nuevo que ya está guardado', (t) => {
+  const m = mundo(t);
+  assert.equal(m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', BASE)).codigo, 0);
+  const viejo = m.estado().lm.tokens[0];
+  m.cambiarPsql((c) => { c.guardarYCorta = true; });
+  const r = m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', { ...BASE, ROTAR: 'SI' }));
+  assert.equal(r.codigo, 0, r.texto);
+  const e = m.estado();
+  const nuevo = e.lm.historial.at(-1);
+  assert.match(r.texto, /psql no respondió limpio \(la conexión con la base se cortó a medias\)\. Se mira, solo leyendo, qué guarda Vault ahora/);
+  assert.match(r.stdout, /^::warning::psql no respondió limpio \(la conexión con la base se cortó a medias\), pero Vault ya guarda el token nuevo \(comprobado por su huella SHA-256, solo leyendo\): se da por guardado\./m);
+  assert.deepEqual(e.lm.tokens.map((x) => x.token), [nuevo], 'el nuevo vivo, el viejo borrado');
+  assert.equal(m.psqlConfig().vault.LETTERMINT_API_TOKEN, nuevo, 'Vault guarda un token que sigue vivo en Lettermint');
+  assert.ok(!r.orden.some((l) => l.endsWith(`api-tokens/${e.lm.tokens[0].id}`)), 'nunca se pide borrar el nuevo');
+  assert.ok(r.orden.some((l) => l === `http DELETE api.lettermint.co/v1/projects/p-1/api-tokens/${viejo.id}`));
+  sinFugas(r, [nuevo]);
+});
+
+test('crear-token-base: si no se puede mirar Vault después de un fallo, no borra ningún token; si psql sale con 0 sin el aviso y no guardó, borra solo el nuevo', (t) => {
+  const m = mundo(t);
+  assert.equal(m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', BASE)).codigo, 0);
+  const viejo = m.estado().lm.tokens[0];
+  m.cambiarPsql((c) => { c.caidaTrasGuardar = true; });
+  const r = m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', { ...BASE, ROTAR: 'SI' }));
+  assert.equal(r.codigo, 1);
+  assert.match(r.texto, /No se sabe si el token nuevo quedó guardado en el Vault: .*No se borra ningún token, ni el nuevo ni el anterior.*relanza crear-token-base con «rotar» = SI/);
+  assert.equal(de(r, 'DELETE', /./).length, 0);
+  assert.equal(m.estado().lm.tokens.length, 2);
+  sinFugas(r, [m.estado().lm.historial.at(-1)]);
+
+  const m2 = mundo(t);
+  assert.equal(m2.correr(SCRIPT_DOMINIO, dominio('crear-token-base', BASE)).codigo, 0);
+  const viejo2 = m2.estado().lm.tokens[0];
+  m2.cambiarPsql((c) => { c.guardarSinAviso = true; });
+  const r2 = m2.correr(SCRIPT_DOMINIO, dominio('crear-token-base', { ...BASE, ROTAR: 'SI' }));
+  assert.equal(r2.codigo, 1);
+  assert.match(r2.texto, /No se pudo guardar el token nuevo en el Vault \(psql terminó sin decir que lo había guardado\)\. Comprobado después, solo leyendo: Vault no lo guarda; sigue con el que tenía/);
+  assert.deepEqual(m2.estado().lm.tokens.map((x) => x.id), [viejo2.id], 'el viejo sigue; el nuevo, borrado');
+  assert.equal(m2.psqlConfig().vault.LETTERMINT_API_TOKEN, viejo2.token);
+  assert.ok(viejo.id);
+});
+
+/* ======================================================= remitente y tokens de sobra (hallazgos 5 y 12) */
+test('crear-token-base: si el remitente pedido no es el que guarda Vault, lo dice y sale en rojo; con dos tokens del mismo nombre, para', (t) => {
+  const m = mundo(t);
+  assert.equal(m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', BASE)).codigo, 0);
+  const r = m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', { ...BASE, REMITENTE: 'hola@rwadar.app' }));
+  assert.equal(r.codigo, 1);
+  assert.match(r.texto, /Vault lo guarda, pero con el remitente avisos@rwadar\.app, no hola@rwadar\.app\. No se ha cambiado nada\. Para cambiar el remitente, relanza con «rotar» = SI/);
+  assert.equal(de(r, 'POST', /api-tokens$/).length, 0);
+  assert.equal(m.psqlConfig().vault.RWADAR_REMITENTE, 'avisos@rwadar.app');
+  // Con rotar = SI sí se cambia.
+  const rotar = m.correr(SCRIPT_DOMINIO, dominio('crear-token-base', { ...BASE, REMITENTE: 'hola@rwadar.app', ROTAR: 'SI' }));
+  assert.equal(rotar.codigo, 0, rotar.texto);
+  assert.equal(m.psqlConfig().vault.RWADAR_REMITENTE, 'hola@rwadar.app');
+
+  const dos = mundo(t, estadoInicial((e) => {
+    e.lm.tokens.push({ id: 'tok-a', project_id: 'p-1', name: 'RWAdar base (API)', token: 'lm_sobrante_numero_uno_000001', created_at: '2026-11-07T09:00:00Z' },
+      { id: 'tok-b', project_id: 'p-1', name: 'RWAdar base (API)', token: 'lm_sobrante_numero_dos_000002', created_at: '2026-11-08T09:00:00Z' });
+  }), { vault: { LETTERMINT_API_TOKEN: 'lm_sobrante_numero_dos_000002', RWADAR_REMITENTE: 'avisos@rwadar.app' } });
+  const r2 = dos.correr(SCRIPT_DOMINIO, dominio('crear-token-base', BASE));
+  assert.equal(r2.codigo, 1);
+  assert.match(r2.texto, /Hay 2 tokens «RWAdar base \(API\)» en Lettermint \(creado 2026-11-07, creado 2026-11-08\) y Vault solo puede guardar uno/);
+  assert.doesNotMatch(r2.texto, /Ya está hecho/);
+});
+
+test('smtp-lettermint: si la lectura de vuelta falla tras el 200, borra el token anterior y lo dice; con dos tokens del mismo nombre, no dice «Ya está hecho»', (t) => {
+  const m = mundo(t, listoParaSmtp());
+  assert.equal(m.correr(SCRIPT_SUPABASE, supabase('smtp-lettermint', SMTP_OK)).codigo, 0);
+  const viejo = m.estado().lm.tokens[0];
+  m.cambiar((e) => { e.supa.leerFallaTrasPatch = true; e.supa.patchHecho = false; });
+  const r = m.correr(SCRIPT_SUPABASE, supabase('smtp-lettermint', { ...SMTP_OK, ROTAR: 'SI' }));
+  assert.equal(r.codigo, 1);
+  assert.match(r.texto, /leer la configuración de Auth no salió bien.*HTTP 503.*Supabase sí aceptó el cambio \(HTTP 200\), pero no se ha podido leer de vuelta: lanza «estado» para ver el SMTP\. El token anterior ya se ha borrado\./);
+  const e = m.estado();
+  assert.deepEqual(e.lm.tokens.map((x) => x.id).includes(viejo.id), false, 'el anterior, borrado');
+  assert.equal(e.lm.tokens.length, 1);
+  assert.equal(e.supa.auth.smtp_pass, e.lm.tokens[0].token);
+  m.cambiar((x) => { x.supa.leerFallaTrasPatch = false; });
+  const otra = m.correr(SCRIPT_SUPABASE, supabase('smtp-lettermint', SMTP_OK));
+  assert.equal(otra.codigo, 0, otra.texto);
+  assert.match(otra.texto, /Ya está hecho/);
+
+  const dos = mundo(t, listoParaSmtp((x) => {
+    x.supa.auth = { ...x.supa.auth, smtp_host: 'smtp.lettermint.co', smtp_port: '587', smtp_user: 'lettermint', smtp_pass: 'lm_sobrante_numero_dos_000002', smtp_admin_email: 'avisos@rwadar.app' };
+    x.lm.tokens.push({ id: 'tok-a', project_id: 'p-1', name: 'RWAdar Auth (SMTP)', token: 'lm_sobrante_numero_uno_000001', created_at: '2026-11-07T09:00:00Z' },
+      { id: 'tok-b', project_id: 'p-1', name: 'RWAdar Auth (SMTP)', token: 'lm_sobrante_numero_dos_000002', created_at: '2026-11-08T09:00:00Z' });
+  }));
+  const r2 = dos.correr(SCRIPT_SUPABASE, supabase('smtp-lettermint', SMTP_OK));
+  assert.equal(r2.codigo, 1);
+  assert.match(r2.texto, /Hay 2 tokens «RWAdar Auth \(SMTP\)» en Lettermint \(creado 2026-11-07, creado 2026-11-08\) y Supabase solo puede usar uno: los demás siguen vivos y pueden enviar como rwadar\.app/);
+  assert.doesNotMatch(r2.texto, /Ya está hecho/);
+  assert.equal(de(r2, 'POST', /./).length + de(r2, 'PATCH', /./).length + de(r2, 'DELETE', /./).length, 0);
+});
+
+/* ======================================================= lecturas de vuelta (hallazgo 11) */
+test('si Supabase responde 200 pero no aplica el cambio, plantillas y smtp-lettermint salen en rojo y no borran el token anterior', (t) => {
+  const pl = mundo(t, estadoInicial((e) => { e.supa.patchIgnora = true; }));
+  const r1 = pl.correr(SCRIPT_SUPABASE, supabase('plantillas'));
+  assert.equal(r1.codigo, 1);
+  assert.match(r1.texto, /Supabase aceptó el cambio, pero al leerlo de vuelta alguna plantilla o asunto no coincide con el repositorio/);
+
+  const sm = mundo(t, listoParaSmtp((e) => {
+    e.supa.patchIgnora = true;
+    e.lm.tokens.push({ id: 'tok-a', project_id: 'p-1', name: 'RWAdar Auth (SMTP)', token: 'lm_pegado_a_mano_0000000001', created_at: '2026-11-07T09:00:00Z' });
+  }));
+  const r2 = sm.correr(SCRIPT_SUPABASE, supabase('smtp-lettermint', { ...SMTP_OK, ROTAR: 'SI' }));
+  assert.equal(r2.codigo, 1);
+  assert.match(r2.texto, /Supabase aceptó el cambio \(HTTP 200\), pero al leerlo de vuelta no coincide: smtp_host, smtp_port, smtp_user, smtp_admin_email\. Puede que no lo haya aplicado, así que no se borra ningún token: siguen vivos en Lettermint el anterior \(creado 2026-11-07\) y el nuevo de hoy\./);
+  assert.equal(de(r2, 'DELETE', /./).length, 0);
+  assert.ok(sm.estado().lm.tokens.some((x) => x.id === 'tok-a'), 'el anterior sigue');
+  sinFugas(r2, [sm.estado().lm.historial.at(-1)]);
+});
+
+test('verificar-dominio: si Lettermint responde 422 aunque todos los registros salgan bien, sale en rojo', (t) => {
+  const m = mundo(t, conDominio((e) => {
+    e.lm.verificar422 = true;
+    e.cf.registros = REGISTROS_LM.map((x, i) => ({ id: `cf-${i}`, name: x.fqdn, type: x.type, content: x.content, proxied: false, ttl: 1 }));
+  }));
+  const r = m.correr(SCRIPT_DOMINIO, sinCF('verificar-dominio', { CONFIRMAR: '' }));
+  assert.equal(r.codigo, 1);
+  assert.match(r.texto, /Necesarios verificados: 4 de 4\./);
+  assert.match(r.texto, /PARADO: Lettermint no ha confirmado la verificación de rwadar\.app \(no respondió 200\), aunque los 4 registros necesarios salen bien/);
+});
+
+/* ======================================================= prueba de recuperación y CAPTCHA (hallazgo 8) */
+test('smtp-lettermint: con el CAPTCHA de Supabase encendido no manda la prueba; un captcha_failed o un límite no se confunden con un fallo del SMTP', (t) => {
+  const conCaptcha = mundo(t, listoParaSmtp((e) => { e.supa.auth.security_captcha_enabled = true; }));
+  const r1 = conCaptcha.correr(SCRIPT_SUPABASE, supabase('smtp-lettermint', { ...SMTP_OK, CORREO_PRUEBA: 'victor@ejemplo.test' }));
+  assert.equal(r1.codigo, 0, r1.texto);
+  assert.match(r1.texto, /Supabase tiene encendido el CAPTCHA \(security_captcha_enabled\).*no se manda la prueba desde aquí\. Pruébalo con «¿Has olvidado tu contraseña\?» en la web/);
+  assert.equal(de(r1, 'POST', /recover$/).length, 0);
+  assert.equal(conCaptcha.estado().supa.auth.smtp_host, 'smtp.lettermint.co', 'el SMTP sí se cambia');
+
+  const captcha = mundo(t, listoParaSmtp((e) => { e.supa.recuperar = 400; e.supa.recuperarCuerpo = { code: 400, error_code: 'captcha_failed', msg: 'captcha protection: request disallowed (no captcha response)' }; }));
+  const r2 = captcha.correr(SCRIPT_SUPABASE, supabase('smtp-lettermint', { ...SMTP_OK, CORREO_PRUEBA: 'victor@ejemplo.test' }));
+  assert.equal(r2.codigo, 1);
+  assert.match(r2.texto, /HTTP 400 \(captcha_failed\)/);
+  assert.match(r2.texto, /No es un fallo del SMTP: no cambies nada/);
+  assert.doesNotMatch(r2.texto, /datos de antes|volver atrás\)», y en el resumen/);
+
+  const limite = mundo(t, listoParaSmtp((e) => { e.supa.recuperar = 429; e.supa.recuperarCuerpo = { code: 429, error_code: 'over_email_send_rate_limit', msg: 'email rate limit exceeded' }; }));
+  const r3 = limite.correr(SCRIPT_SUPABASE, supabase('smtp-lettermint', { ...SMTP_OK, CORREO_PRUEBA: 'victor@ejemplo.test' }));
+  assert.equal(r3.codigo, 1);
+  assert.match(r3.texto, /no deja mandar más correos ahora \(HTTP 429, over_email_send_rate_limit.*No es un fallo del SMTP/);
+});
+
+test('estado (Supabase): sin el permiso Database (Read) no mira si se puede actualizar Postgres, lo explica y sigue en verde', (t) => {
+  const m = mundo(t, estadoInicial((e) => { e.supa.sinDatabaseRead = true; }));
+  const r = m.correr(SCRIPT_SUPABASE, supabase('estado', { CONFIRMAR: '', LETTERMINT_GESTION_TOKEN: undefined }));
+  assert.equal(r.codigo, 0, r.texto);
+  assert.match(r.texto, /¿Se puede actualizar Postgres\?: no se mira\. Supabase pide para eso el permiso Database \(Read\), que deja leer con SQL toda la base \(Vault incluido\), y el token no lo lleva a propósito/);
+  assert.match(r.texto, /Plantilla de confirmación:/, 'sigue con Auth');
+});
+
+/* ======================================================= la capa que tapa claves (hallazgo 9) */
+test('si una API o psql repiten una clave en su error, sale «[oculto]» y nunca el valor', (t) => {
+  // Cloudflare devuelve la clave recibida en un 400.
+  const cf = mundo(t, estadoInicial((e) => { e.cf.ecoClave = true; }));
+  const r1 = cf.correr(SCRIPT_DOMINIO, dominio('estado', { CONFIRMAR: '' }));
+  assert.equal(r1.codigo, 1);
+  assert.match(r1.texto, /Cloudflare dice: «6003: Invalid request headers: Bearer \[oculto\]»/);
+  sinFugas(r1, []);
+  // Lettermint, en un 422.
+  const lm = mundo(t, estadoInicial((e) => { e.lm.ecoClave = ['^GET /projects$']; }));
+  const r2 = lm.correr(SCRIPT_DOMINIO, sinCF('verificar-dominio', { CONFIRMAR: '' }));
+  assert.equal(r2.codigo, 1);
+  assert.match(r2.texto, /Lettermint dice: «Invalid request with Bearer \[oculto\]»/);
+  sinFugas(r2, []);
+  // psql, con la dirección de la base entera (sin comillas) en un ERROR.
+  const ps = mundo(t, estadoInicial(), { ecoUrl: true });
+  const r3 = ps.correr(SCRIPT_DOMINIO, sinCF('crear-token-base', BASE));
+  assert.equal(r3.codigo, 1);
+  assert.match(r3.texto, /No se pudo comprobar la base antes de crear nada \(psql:31:1: ERROR: no se pudo usar \[oculto\] \(doble\)\)/);
+  assert.ok(!r3.texto.includes('pooler.supabase.com'), 'la dirección entera, tapada de una vez');
+  sinFugas(r3, []);
+  // Supabase repite la contraseña de antes (Gmail) y la nueva (el token de Lettermint) en un 400.
+  const sp = mundo(t, estadoInicial((e) => { e.supa.patchEco = true; }));
+  const r4 = sp.correr(SCRIPT_SUPABASE, supabase('plantillas'));
+  assert.equal(r4.codigo, 1);
+  assert.match(r4.texto, /Supabase dice: «Rejected: old smtp_pass \[oculto\], new -»/);
+  sinFugas(r4, []);
+  const sm = mundo(t, listoParaSmtp((e) => { e.supa.patchEco = true; }));
+  const r5 = sm.correr(SCRIPT_SUPABASE, supabase('smtp-lettermint', SMTP_OK));
+  assert.equal(r5.codigo, 1);
+  assert.match(r5.texto, /Supabase dice: «Rejected: old smtp_pass \[oculto\], new \[oculto\]»/);
+  sinFugas(r5, [sm.estado().lm.historial.at(-1)]);
+});
+
+/* ======================================================= paginación y DKIM (hallazgo 10) */
+test('preparar-dominio: lee todas las páginas de Cloudflare; un SPF ajeno en la página 2 es un conflicto y no se crea nada', (t) => {
+  const m = mundo(t, estadoInicial((e) => {
+    e.lm.registrosAlCrear.push(structuredClone(SPF_LM));
+    for (let i = 0; i < 149; i++) e.cf.registros.push({ id: `cf-a${i}`, name: `h${i}.rwadar.app`, type: 'A', content: '192.0.2.1', proxied: false, ttl: 1 });
+    e.cf.registros.push({ id: 'cf-spf', name: 'rwadar.app', type: 'TXT', content: '"v=spf1 include:_spf.google.com ~all"', proxied: false, ttl: 1 });
+  }));
+  const r = m.correr(SCRIPT_DOMINIO, dominio('preparar-dominio'));
+  assert.equal(r.codigo, 1);
+  assert.deepEqual(de(r, 'GET', /dns_records$/, 'api.cloudflare.com').map((p) => p.consulta), ['?per_page=100&page=1', '?per_page=100&page=2']);
+  assert.match(r.texto, /ya hay un SPF en ese nombre \(«v=spf1 include:_spf\.google\.com ~all»\)/);
+  assert.equal(de(r, 'POST', /dns_records$/).length, 0);
+  assert.equal(m.estado().cf.registros.length, 150);
+});
+
+test('crear-token-base: sigue el cursor de Lettermint; con el token en la página 2, no crea otro', (t) => {
+  const m = mundo(t, estadoInicial((e) => {
+    e.lm.tamPagina = 2;
+    e.lm.tokens.push({ id: 'tok-x', project_id: 'p-1', name: 'Otro uso', token: 'lm_otro_uso_000000000000001', created_at: '2026-11-01T09:00:00Z' },
+      { id: 'tok-y', project_id: 'p-1', name: 'Pruebas', token: 'lm_pruebas_00000000000000001', created_at: '2026-11-02T09:00:00Z' },
+      { id: 'tok-z', project_id: 'p-1', name: 'RWAdar base (API)', token: 'lm_base_en_pagina_dos_00001', created_at: '2026-11-03T09:00:00Z' });
+  }), { vault: { LETTERMINT_API_TOKEN: 'lm_base_en_pagina_dos_00001', RWADAR_REMITENTE: 'avisos@rwadar.app' } });
+  const r = m.correr(SCRIPT_DOMINIO, sinCF('crear-token-base', BASE));
+  assert.equal(r.codigo, 0, r.texto);
+  assert.match(r.texto, /Ya está hecho/);
+  assert.ok(de(r, 'GET', /api-tokens$/).some((p) => /page%5Bcursor%5D=2/.test(p.consulta)), 'pide la página 2');
+  assert.equal(de(r, 'POST', /api-tokens$/).length, 0);
+});
+
+test('planificar: otra clave DKIM por TXT en el mismo selector es un conflicto (dkim_mode legacy_txt)', () => {
+  const dom = { dns_records: [{ id: 'a', status: 'pending', verification_scope: 'required', type: 'TXT', fqdn: 'lm._domainkey.rwadar.app', content: 'v=DKIM1; k=rsa; p=NUEVA' }] };
+  const [p] = planificar(registrosPedidos(dom), [{ tipo: 'TXT', nombre: 'lm._domainkey.rwadar.app', valor: 'v=DKIM1; k=rsa; p=VIEJA', proxied: false }]);
+  assert.equal(p.decision, 'conflicto');
+  assert.match(p.explicacion, /ya hay otra clave DKIM en ese nombre .* No se sobrescribe/);
+  assert.equal(planificar(registrosPedidos(dom), [{ tipo: 'TXT', nombre: 'lm._domainkey.rwadar.app', valor: 'v=DKIM1; k=rsa; p=NUEVA', proxied: false }])[0].decision, 'ya');
 });

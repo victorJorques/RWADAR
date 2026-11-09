@@ -8,7 +8,8 @@ name: Supabase (gestión de Auth)
 #   la configuración de Auth, SOLO los campos del SMTP que no son secretos, el
 #   límite de correos y los dos asuntos; y si las plantillas de confirmación y
 #   de recuperación son iguales a las del repositorio (SHA-256). Nunca enseña
-#   smtp_pass ni ninguna clave.
+#   smtp_pass ni ninguna clave. Lo de actualizar Postgres no lo mira: Supabase
+#   pide para eso Database (Read), que deja leer toda la base con SQL.
 # · plantillas: pone los dos asuntos y las dos plantillas de
 #   rwadar-app/plantillas-auth/ (asuntos de su LEEME.md). Guarda antes las que
 #   había como artefacto del flujo (vuelta atrás). Si ya están, no cambia nada.
@@ -20,15 +21,19 @@ name: Supabase (gestión de Auth)
 #   privacidad publicada ya nombra a Lettermint (punto 5.8.2). Crea el token
 #   «RWAdar Auth (SMTP)» (enmascarado, nunca se enseña), enseña el SMTP de
 #   antes (vuelta atrás) y lo cambia. Con «correo_prueba», pide un correo real
-#   de recuperación a esa dirección y cuenta solo el código HTTP.
+#   de recuperación a esa dirección y cuenta solo el código HTTP y el
+#   error_code (con el CAPTCHA de Supabase encendido, no la manda: se prueba
+#   desde la web).
 #
 # Las acciones que cambian algo piden escribir SUPABASE en «confirmar» y orden
 # expresa de Víctor (AGENTS.md: «poner la plantilla de Auth» y tocar Supabase
 # en línea). Solo desde main. No usa la base (ni psql ni SUPABASE_DB_URL).
 #
-# Secretos: SUPABASE_ACCESS_TOKEN y, solo en smtp-lettermint,
-# LETTERMINT_TEAM_TOKEN (cómo se crean: PLAN-CEO-2026-11-06.md, «Claves que da
-# Víctor»). Pasos: rwadar-app/supabase-gestion.mjs. Pruebas: .github/claves.test.mjs.
+# Secretos: SUPABASE_ACCESS_TOKEN (con alcance, solo este proyecto: Auth
+# Config y Project Settings en lectura y escritura, sin Database) y, solo en
+# smtp-lettermint, LETTERMINT_GESTION_TOKEN (cómo se crean:
+# PLAN-CEO-2026-11-06.md, «Claves que da Víctor»). Pasos:
+# rwadar-app/supabase-gestion.mjs. Pruebas: .github/claves.test.mjs.
 
 on:
   workflow_dispatch:
@@ -140,5 +145,5 @@ jobs:
         if: inputs.accion == 'smtp-lettermint'
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-          LETTERMINT_TEAM_TOKEN: ${{ secrets.LETTERMINT_TEAM_TOKEN }}
+          LETTERMINT_GESTION_TOKEN: ${{ secrets.LETTERMINT_GESTION_TOKEN }}
         run: node rwadar-app/supabase-gestion.mjs ejecutar

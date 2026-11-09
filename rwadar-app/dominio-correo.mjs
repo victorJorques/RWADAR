@@ -9,13 +9,20 @@
 
    Entradas (en el entorno): ACCION, CONFIRMAR, REMITENTE y ROTAR. Acciones:
 
-   · estado (solo lee): la zona rwadar.app en Cloudflare y sus registros DNS
-     del correo (nombre y tipo, el valor acortado); en Lettermint, el plan y
-     la verificación de la cuenta, el proyecto «RWAdar», el dominio y cómo va
-     cada registro, las rutas (con el seguimiento) y los nombres de los tokens
-     del proyecto. Si hay las dos claves, también lo que haría
+   Decisión del 08/11/2026: Víctor NO crea la clave de Cloudflare. Los
+   registros DNS de Lettermint los copia en Cloudflare la sesión de Claude de
+   su PC, con su Chrome, mientras él mira. Todas las acciones salvo
+   preparar-dominio funcionan sin CLOUDFLARE_DNS_TOKEN; preparar-dominio
+   queda por si algún día existe, y sin ella para sin hacer ninguna petición.
+
+   · estado (solo lee): en Lettermint, el plan y la verificación de la
+     cuenta, el proyecto «RWAdar», el dominio y cómo va cada registro, las
+     rutas (con el seguimiento) y los nombres de los tokens del proyecto. Sin
+     clave de Cloudflare lo dice («el DNS se pone a mano desde el panel») y
+     sigue; con ella, también la zona rwadar.app, sus registros DNS del
+     correo (nombre y tipo, el valor acortado) y lo que haría
      preparar-dominio, sin hacerlo.
-   · preparar-dominio: crea en Lettermint el dominio rwadar.app si no existe
+   · preparar-dominio (solo con CLOUDFLARE_DNS_TOKEN): crea en Lettermint el dominio rwadar.app si no existe
      y lo asocia al proyecto «RWAdar»; pone en Cloudflare SOLO los registros
      que faltan (los CNAME en «DNS only», proxied false); y pide a Lettermint
      que los verifique. Nunca borra ni cambia un registro que ya exista: si
@@ -33,13 +40,18 @@
      guarda directamente en el Vault de la base con
      db/31_correo_lettermint_guardar.sql (el mismo camino que «guardar-correo»
      de «Avisos a registrados (base)»), junto con el remitente. Antes comprueba
-     que la base responde y tiene Vault, para no dejar un token sin dueño. Si
-     ya hay un token con ese nombre, no crea otro sin ROTAR = SI; al rotar,
-     borra el viejo solo DESPUÉS de guardar el nuevo. Si guardar falla, borra
-     el recién creado.
+     que la dirección de la base tiene buena forma, que está la CA de Supabase
+     (TLS verify-full) y que la base responde y tiene Vault, para no dejar un
+     token sin dueño. Si ya hay un token con ese nombre, no crea otro sin
+     ROTAR = SI (y si el remitente guardado es otro, lo dice y para); al
+     rotar, borra el viejo solo DESPUÉS de guardar el nuevo. Si psql no
+     responde limpio al guardar, mira (solo leyendo) la huella de lo que
+     guarda Vault: si es el nuevo, lo da por guardado; si no, borra el
+     recién creado; si no se puede mirar, no borra nada.
 
-   Claves (secretos de GitHub): CLOUDFLARE_DNS_TOKEN, LETTERMINT_TEAM_TOKEN y,
-   solo en crear-token-base, SUPABASE_DB_URL. Ninguna se escribe nunca: ver
+   Claves (secretos de GitHub): LETTERMINT_GESTION_TOKEN; SUPABASE_DB_URL solo
+   en crear-token-base; CLOUDFLARE_DNS_TOKEN no existe (solo lo usarían estado
+   y preparar-dominio si algún día se crea). Ninguna se escribe nunca: ver
    rwadar-app/claves-comun.mjs.
 
    Pruebas sin red: node --test .github/claves.test.mjs
@@ -47,9 +59,9 @@
 import fs from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import {
-  CLOUDFLARE, DOMINIO, PROYECTO_LETTERMINT, TOKEN_BASE, TOKEN_SMTP, Parada, falla, acortar, crearSalida, crearCliente,
+  CLOUDFLARE, DOMINIO, PROYECTO_LETTERMINT, TOKEN_BASE, TOKEN_SMTP, Parada, falla, acortar, huella, crearSalida, crearCliente,
   leerSecreto, explicarHttp, detalleError, objeto, clienteLettermint, listarLettermint, buscarProyecto, buscarDominio, tokensDelProyecto,
-  crearTokenProyecto, borrarTokenProyecto, fechaCorta, ejecutarPsql, remitenteDelDominio,
+  crearTokenProyecto, borrarTokenProyecto, fechaCorta, ejecutarPsql, errorPsql, comprobarDireccionBase, leerCA, remitenteDelDominio,
 } from './claves-comun.mjs';
 
 export const ACCIONES = ['estado', 'preparar-dominio', 'verificar-dominio', 'ajustar-rutas', 'crear-token-base'];
@@ -254,11 +266,17 @@ async function registrosDeLaZona(cf, zona) {
   }
   falla(`${DOMINIO} tiene más de 5000 registros DNS: revísalo a mano.`);
 }
+/* El camino de ahora (08/11/2026): sin clave de Cloudflare, el DNS lo pone a
+   mano en el panel la sesión de Claude del PC de Víctor. */
+const DNS_A_MANO = `En Lettermint › Domains se añade ${DOMINIO} y se asocia al proyecto «${PROYECTO_LETTERMINT}»; después se copian sus ` +
+  `registros en Cloudflare › ${DOMINIO} › DNS tal como los da Lettermint (los CNAME en «DNS only», nube gris; si ya hay un SPF en ${DOMINIO}, ` +
+  'se fusiona con él, nunca un segundo SPF). Lo hace la sesión de Claude del PC de Víctor, con su Chrome. Después, la acción verificar-dominio.';
 const zonaSinNombre = () => falla(`Cloudflare no tiene la zona ${DOMINIO}. Primero hay que comprar el dominio (Cloudflare › Domain Registration, ronda 1 del plan); si ya está comprado, el token CLOUDFLARE_DNS_TOKEN no tiene acceso a esa zona.`);
 const ESTADO_ZONA = { active: 'activa', pending: 'pendiente (Cloudflare aún no ve sus servidores de nombres)', initializing: 'preparándose', moved: 'movida a otro sitio', deleted: 'borrada', deactivated: 'desactivada' };
 
 /* ---------------------------------------------------------------- Lettermint */
 const ESTADO_DOMINIO = { verified: 'verificado', partially_verified: 'verificado a medias', pending_verification: 'pendiente de verificar', failed_verification: 'sin verificar (falló)' };
+const textoEstadoDominio = (s) => ESTADO_DOMINIO[s] || acortar(s || 'sin estado', 30);
 const ESTADO_REGISTRO = { active: 'verificado', failed: 'falla', pending: 'pendiente' };
 async function leerDominio(lm, id) {
   const d = objeto(lm.exigir(await lm.pedir('GET', `/domains/${encodeURIComponent(id)}`, { consulta: 'include=dnsRecords,projects' }), 200, `leer el dominio ${DOMINIO}`));
@@ -292,10 +310,13 @@ async function verificar(lm, dominio, salida) {
   const r = await lm.pedir('POST', `/domains/${encodeURIComponent(dominio.id)}/dns-records/verify`);
   if (r.estado !== 200 && r.estado !== 422) falla(`Lettermint: pedir la verificación no salió bien. ${explicarHttp('Lettermint', r)}`);
   const d = await leerDominio(lm, dominio.id);
+  // El estado del dominio, del listado (GET /domains/{id} no lo trae).
+  const resumen = await buscarDominio(lm);
+  const estadoDominio = textoEstadoDominio(resumen && resumen.id === dominio.id ? resumen.status : '');
   const pedidos = registrosPedidos(d);
   const necesarios = pedidos.filter((p) => p.necesario);
   const bien = necesarios.filter((p) => p.estado === 'active').length;
-  salida.linea(`Verificación de ${DOMINIO} en Lettermint: ${ESTADO_DOMINIO[d.status] || acortar(d.status || 'sin estado', 30)}.`);
+  salida.linea(`Verificación de ${DOMINIO} en Lettermint: ${estadoDominio}.`);
   for (const p of pedidos) salida.linea(lineaRegistro(p));
   const recomendadosMal = pedidos.filter((p) => p.alcance === 'recommended' && p.estado !== 'active').length;
   salida.linea(`Necesarios verificados: ${bien} de ${necesarios.length}.${recomendadosMal ? ` Recomendados que aún fallan: ${recomendadosMal} (no impiden enviar).` : ''}`);
@@ -303,26 +324,32 @@ async function verificar(lm, dominio, salida) {
     const mensaje = detalleError(r.datos);
     if (mensaje) salida.linea(`Lettermint dice: «${mensaje}».`);
   }
-  salida.resumen(`**Verificación de ${DOMINIO}:** ${ESTADO_DOMINIO[d.status] || '-'} · necesarios verificados ${bien} de ${necesarios.length}.`);
+  salida.resumen(`**Verificación de ${DOMINIO}:** ${estadoDominio} · necesarios verificados ${bien} de ${necesarios.length}.`);
   return { verificado: r.estado === 200 && bien === necesarios.length, bien, total: necesarios.length };
 }
 
 /* ---------------------------------------------------------------- acciones */
 async function estado({ entorno, salida }) {
   const faltan = [];
-  let cf = null, lm = null, zona = null, existentes = null, dominio = null;
-  try { cf = clienteCloudflare(entorno, salida); } catch (e) { if (!(e instanceof Parada)) throw e; faltan.push(e.message); }
+  let cf = null, lm = null, zona = null, existentes = null, dominio = null, estadoDominio = '';
+  // Sin clave de Cloudflare es lo normal (08/11/2026): no es un fallo.
+  if (entorno.CLOUDFLARE_DNS_TOKEN) {
+    try { cf = clienteCloudflare(entorno, salida); } catch (e) { if (!(e instanceof Parada)) throw e; faltan.push(e.message); }
+  }
   try { lm = clienteLettermint(entorno, salida); } catch (e) { if (!(e instanceof Parada)) throw e; faltan.push(e.message); }
 
   salida.linea('== Cloudflare ==');
-  if (cf) {
+  if (!entorno.CLOUDFLARE_DNS_TOKEN) {
+    salida.linea('Sin clave de Cloudflare: el DNS se pone a mano desde el panel.');
+    salida.linea(`  ${DNS_A_MANO}`);
+  } else if (cf) {
     zona = await buscarZona(cf);
     if (!zona) salida.linea(`No está la zona ${DOMINIO}: el dominio aún no está comprado en Cloudflare, o el token no tiene acceso a ella.`);
     else {
       salida.linea(`Zona ${DOMINIO}: ${ESTADO_ZONA[zona.status] || acortar(zona.status || 'sin estado', 30)}.`);
       existentes = await registrosDeLaZona(cf, zona);
     }
-  } else salida.linea('(sin CLOUDFLARE_DNS_TOKEN: no se mira Cloudflare)');
+  } else salida.linea('(CLOUDFLARE_DNS_TOKEN mal pegado: no se mira Cloudflare)');
 
   salida.linea('== Lettermint ==');
   let proyecto = null;
@@ -339,9 +366,11 @@ async function estado({ entorno, salida }) {
       const resumenDominio = await buscarDominio(lm);
       if (!resumenDominio) salida.linea(`Dominio ${DOMINIO}: no está añadido en Lettermint (lo añade preparar-dominio).`);
       else {
+        // El estado solo viene en el listado (DomainListData), no en GET /domains/{id}.
+        estadoDominio = textoEstadoDominio(resumenDominio.status);
         dominio = await leerDominio(lm, resumenDominio.id);
         const asociado = (dominio.projects || []).some((x) => x && x.id === proyecto.id);
-        salida.linea(`Dominio ${DOMINIO}: ${ESTADO_DOMINIO[dominio.status] || acortar(dominio.status || 'sin estado', 30)}; ${asociado ? `asociado al proyecto «${PROYECTO_LETTERMINT}»` : `SIN asociar al proyecto «${PROYECTO_LETTERMINT}» (lo hace preparar-dominio)`}.`);
+        salida.linea(`Dominio ${DOMINIO}: ${estadoDominio}; ${asociado ? `asociado al proyecto «${PROYECTO_LETTERMINT}»` : `SIN asociar al proyecto «${PROYECTO_LETTERMINT}» (lo hace preparar-dominio)`}.`);
         for (const r of registrosPedidos(dominio)) salida.linea(lineaRegistro(r));
       }
       const rutas = await rutasDelProyecto(lm, proyecto);
@@ -360,7 +389,7 @@ async function estado({ entorno, salida }) {
       }
       for (const n of [TOKEN_BASE, TOKEN_SMTP]) if (!tokens.some((t) => t.name === n)) salida.linea(`  (no hay ninguno «${n}»)`);
     }
-  } else salida.linea('(sin LETTERMINT_TEAM_TOKEN: no se mira Lettermint)');
+  } else salida.linea('(sin LETTERMINT_GESTION_TOKEN: no se mira Lettermint)');
 
   if (existentes) {
     const pedidos = dominio ? registrosPedidos(dominio) : [];
@@ -376,11 +405,17 @@ async function estado({ entorno, salida }) {
       for (const p of plan.filter((x) => x.decision === 'conflicto')) salida.linea(`  CONFLICTO en ${p.tipo} ${p.nombre}: ${p.explicacion}`);
     }
   }
-  salida.resumen(`**Estado (solo lectura):** Cloudflare ${zona ? `zona ${ESTADO_ZONA[zona.status] || zona.status}` : 'sin zona'} · Lettermint ${dominio ? `dominio ${ESTADO_DOMINIO[dominio.status] || dominio.status}` : 'sin dominio'}.`);
+  const cloudflare = !entorno.CLOUDFLARE_DNS_TOKEN ? 'sin clave (el DNS se pone a mano desde el panel)'
+    : (zona ? `zona ${ESTADO_ZONA[zona.status] || acortar(zona.status, 30)}` : 'sin zona');
+  salida.resumen(`**Estado (solo lectura):** Cloudflare ${cloudflare} · Lettermint ${dominio ? `dominio ${estadoDominio}` : 'sin dominio'}.`);
   if (faltan.length) falla(faltan.join(' '));
 }
 
 async function prepararDominio({ entorno, salida }) {
+  // Sin clave de Cloudflare (lo normal desde el 08/11/2026), para sin hacer ninguna petición.
+  if (!entorno.CLOUDFLARE_DNS_TOKEN) {
+    falla(`preparar-dominio solo sirve con la clave de Cloudflare (CLOUDFLARE_DNS_TOKEN), y no existe: Víctor decidió el 08/11/2026 no crearla. No se ha hecho ninguna petición. El DNS se pone a mano desde el panel: ${DNS_A_MANO}`);
+  }
   // Las dos claves antes de tocar nada.
   const cf = clienteCloudflare(entorno, salida);
   const lm = clienteLettermint(entorno, salida);
@@ -447,8 +482,11 @@ async function verificarDominio({ entorno, salida }) {
   const d = await buscarDominio(lm);
   if (!d) falla(`El dominio ${DOMINIO} no está en Lettermint: lanza antes preparar-dominio.`);
   const v = await verificar(lm, d, salida);
+  if (!v.verificado && v.bien === v.total) {
+    falla(`Lettermint no ha confirmado la verificación de ${DOMINIO} (no respondió 200), aunque los ${v.total} registros necesarios salen bien. Relánzalo dentro de un rato; si se repite, míralo en su panel (Domains › ${DOMINIO}).`);
+  }
   if (!v.verificado) {
-    falla(`${DOMINIO} todavía no está verificado del todo (${v.bien} de ${v.total} registros necesarios). Si los registros se acaban de poner, espera entre 10 y 30 minutos y relánzalo; si alguno sigue fallando, compáralo con Cloudflare (acción estado).`);
+    falla(`${DOMINIO} todavía no está verificado del todo (${v.bien} de ${v.total} registros necesarios). Si los registros se acaban de poner, espera entre 10 y 30 minutos y relánzalo; si alguno sigue fallando, compáralo con lo que hay en Cloudflare › ${DOMINIO} › DNS.`);
   }
   salida.linea(`${DOMINIO} verificado: ya se puede enviar desde él.`);
 }
@@ -498,42 +536,64 @@ async function ajustarRutas({ entorno, salida }) {
   salida.resumen(`**Seguimiento:** apagado o inexistente en las ${rutas.length} rutas de envío.`);
 }
 
-/* Comprueba la base sin cambiar nada: que responde, que tiene Vault y si ya
-   guarda un LETTERMINT_API_TOKEN (solo cuántos, nunca el valor). */
+/* Mira la base sin cambiar nada (transacción de solo lectura): que tiene
+   Vault, cuántos LETTERMINT_API_TOKEN guarda, la HUELLA SHA-256 del que
+   guarda (nunca el valor) y el remitente (RWADAR_REMITENTE, que no es
+   secreto). La huella sirve para saber, sin verlo, si el token de Vault es
+   el que se acaba de crear. */
 const CONSULTA_VAULT = [
   'begin transaction read only;',
   "select (to_regprocedure('vault.create_secret(text,text,text,uuid)') is not null",
   "    and to_regprocedure('vault.update_secret(uuid,text,text,text,uuid)') is not null)::text",
-  "  || '|' || (select count(*) from vault.secrets where name = 'LETTERMINT_API_TOKEN')::text;",
+  "  || '|' || (select count(*) from vault.secrets where name = 'LETTERMINT_API_TOKEN')::text",
+  "  || '|' || coalesce((select encode(sha256(convert_to(btrim(decrypted_secret), 'UTF8')), 'hex')",
+  "                        from vault.decrypted_secrets where name = 'LETTERMINT_API_TOKEN' limit 1), '-')",
+  "  || '|' || coalesce((select translate(btrim(decrypted_secret), E'|\\n\\r', '   ')",
+  "                        from vault.decrypted_secrets where name = 'RWADAR_REMITENTE' limit 1), '-');",
   'rollback;', ''].join('\n');
-const errorPsql = (salida, r) => (r.fallo === 'ENOENT' ? 'no está psql' : acortar(salida.limpio(r.error || `código ${r.codigo}`).replace(/\s+/g, ' ').trim(), 300));
+function consultarVault(entorno, dbUrl, ca) {
+  const r = ejecutarPsql(entorno, dbUrl, ['-f', '-'], { entrada: CONSULTA_VAULT, ca });
+  const m = r.codigo === 0 ? r.salida.split('\n').map((l) => /^(true|false)\|(\d+)\|([0-9a-f]{64}|-)\|(.*)$/.exec(l.trim())).find(Boolean) : null;
+  if (!m) return { r, vault: null };
+  return { r, vault: { tiene: m[1] === 'true', cuantos: Number(m[2]), huella: m[3] === '-' ? '' : m[3], remitente: m[4] === '-' ? '' : m[4].trim() } };
+}
+const GUARDADO = /guardados en Vault con forma válida/;
 
 async function crearTokenBase({ entorno, entradas, salida }) {
-  // Las dos claves antes de crear nada.
+  // Las claves, la dirección de la base y la CA antes de crear nada.
   const lm = clienteLettermint(entorno, salida);
   const dbUrl = entorno.SUPABASE_DB_URL || '';
   if (!dbUrl) {
     falla('Falta el secreto de GitHub SUPABASE_DB_URL (la dirección del «Session pooler» de Supabase, el mismo de «Copia de seguridad»). ' +
       'Sin él no se puede guardar el token en el Vault, así que no se crea ninguno.');
   }
-  salida.ocultar(dbUrl);
-  if (!/^postgres(ql)?:\/\/\S+$/.test(dbUrl)) falla('El secreto SUPABASE_DB_URL no tiene forma de dirección de Postgres (postgresql://…). No se crea ningún token.');
+  comprobarDireccionBase(dbUrl, salida);
+  const ca = leerCA(entorno);
 
-  salida.linea('1/4 · Base: que responde y tiene Vault (solo lee)');
-  const r = ejecutarPsql(entorno, dbUrl, ['-f', '-'], { entrada: CONSULTA_VAULT });
-  const m = r.codigo === 0 ? r.salida.split('\n').map((l) => /^(true|false)\|(\d+)$/.exec(l.trim())).find(Boolean) : null;
-  if (!m) falla(`No se pudo comprobar la base antes de crear nada (${errorPsql(salida, r)}). No se ha creado ningún token. Mira que SUPABASE_DB_URL sea la del «Session pooler» y que la base esté en marcha.`);
-  if (m[1] !== 'true') falla('La base no tiene Vault (vault.create_secret / vault.update_secret). No se ha creado ningún token.');
-  const enVault = Number(m[2]);
-  salida.linea(`  Responde. Vault ${enVault ? `ya guarda ${enVault === 1 ? 'un' : enVault} LETTERMINT_API_TOKEN` : 'no guarda ningún LETTERMINT_API_TOKEN'}.`);
+  salida.linea('1/4 · Base: que responde y tiene Vault (solo lee, con TLS que comprueba el certificado de Supabase)');
+  const antes = consultarVault(entorno, dbUrl, ca);
+  if (!antes.vault) falla(`No se pudo comprobar la base antes de crear nada (${errorPsql(salida, antes.r)}). No se ha creado ningún token. Mira que SUPABASE_DB_URL sea la del «Session pooler» y que la base esté en marcha.`);
+  if (!antes.vault.tiene) falla('La base no tiene Vault (vault.create_secret / vault.update_secret). No se ha creado ningún token.');
+  const enVault = antes.vault.cuantos;
+  salida.linea(`  Responde. Vault ${enVault ? `ya guarda ${enVault === 1 ? 'un' : enVault} LETTERMINT_API_TOKEN` : 'no guarda ningún LETTERMINT_API_TOKEN'}` +
+    `${antes.vault.remitente ? ` y el remitente ${acortar(antes.vault.remitente, 80)}` : ''}.`);
 
   salida.linea(`2/4 · Lettermint: proyecto «${PROYECTO_LETTERMINT}» y tokens «${TOKEN_BASE}»`);
   const proyecto = await buscarProyecto(lm);
   const viejos = await tokensDelProyecto(lm, proyecto, TOKEN_BASE);
-  salida.linea(`  ${viejos.length ? `Ya hay ${viejos.length}: ${viejos.map((t) => `creado ${fechaCorta(t.created_at)}`).join(', ')}.` : 'No hay ninguno.'}`);
+  const fechas = (lista) => lista.map((t) => `creado ${fechaCorta(t.created_at)}`).join(', ');
+  salida.linea(`  ${viejos.length ? `Ya hay ${viejos.length}: ${fechas(viejos)}.` : 'No hay ninguno.'}`);
   if (!entradas.rotar) {
+    if (viejos.length > 1) {
+      falla(`Hay ${viejos.length} tokens «${TOKEN_BASE}» en Lettermint (${fechas(viejos)}) y Vault solo puede guardar uno: los demás siguen vivos sin que nadie los use. ` +
+        `Relanza con «rotar» = SI (guarda uno nuevo y después borra todos los anteriores) o borra a mano los que sobren en Lettermint › Projects › ${PROYECTO_LETTERMINT} › API tokens.`);
+    }
     if (viejos.length && enVault) {
-      salida.linea(`Ya está hecho: hay un token «${TOKEN_BASE}» y Vault guarda un LETTERMINT_API_TOKEN. No se crea otro. Para cambiarlo por uno nuevo, relanza con «rotar» = SI.`);
+      if (antes.vault.remitente !== entradas.remitente) {
+        falla(`Ya hay un token «${TOKEN_BASE}» y Vault lo guarda, pero con el remitente ${acortar(antes.vault.remitente || '(ninguno)', 80)}, no ${entradas.remitente}. ` +
+          'No se ha cambiado nada. Para cambiar el remitente, relanza con «rotar» = SI y el remitente nuevo: se crea un token nuevo, se guardan los dos y después se borra el viejo.');
+      }
+      salida.linea(`Ya está hecho: hay un token «${TOKEN_BASE}» y Vault guarda un LETTERMINT_API_TOKEN con el remitente ${entradas.remitente}. No se crea otro. Para cambiarlo por uno nuevo, relanza con «rotar» = SI.`);
       salida.resumen(`**Token de la base:** ya estaba (no se ha creado otro).`);
       return;
     }
@@ -552,13 +612,29 @@ async function crearTokenBase({ entorno, entradas, salida }) {
   salida.linea('4/4 · Vault: guardarlo con el remitente (db/31_correo_lettermint_guardar.sql)');
   // El token va a psql como variable (-v), como en «guardar-correo»; el SQL
   // solo lo usa en un SELECT (set_config) y nunca lo escribe.
-  const g = ejecutarPsql(entorno, dbUrl, ['-v', `token=${nuevo.token}`, '-v', `remitente=${entradas.remitente}`, '-f', SQL_GUARDAR]);
-  if (g.codigo !== 0 || !/guardados en Vault con forma válida/.test(g.error)) {
-    const borrado = await borrarTokenProyecto(lm, proyecto, nuevo.id);
-    falla(`No se pudo guardar el token nuevo en el Vault (${errorPsql(salida, g)}). ` +
-      (borrado ? 'Se ha borrado el token recién creado en Lettermint: no queda ninguno sin usar.'
-        : `Y NO se pudo borrar el token recién creado: bórralo en Lettermint › Projects › ${PROYECTO_LETTERMINT} › API tokens (el «${TOKEN_BASE}» de hoy).`) +
-      (viejos.length ? ' El token anterior sigue como estaba, en Lettermint y en Vault.' : ''));
+  const g = ejecutarPsql(entorno, dbUrl, ['-v', `token=${nuevo.token}`, '-v', `remitente=${entradas.remitente}`, '-f', SQL_GUARDAR], { ca });
+  if (g.codigo !== 0 || !GUARDADO.test(g.error)) {
+    // Respuesta no limpia: psql pudo cortarse DESPUÉS del COMMIT. Antes de
+    // borrar nada, se mira (solo leyendo) qué token guarda Vault, por su huella.
+    const motivo = g.codigo === 0 ? 'psql terminó sin decir que lo había guardado' : errorPsql(salida, g);
+    salida.linea(`  psql no respondió limpio (${motivo}). Se mira, solo leyendo, qué guarda Vault ahora…`);
+    const despues = consultarVault(entorno, dbUrl, ca);
+    const anteriores = viejos.length ? ` El token anterior (${fechas(viejos)}) sigue vivo en Lettermint, sin cambios.` : '';
+    if (!despues.vault) {
+      falla(`No se sabe si el token nuevo quedó guardado en el Vault: psql no respondió limpio (${motivo}) y después tampoco se pudo leer la base (${errorPsql(salida, despues.r)}). ` +
+        'No se borra ningún token, ni el nuevo ni el anterior, para no dejar los avisos con un token borrado. Cuando la base responda, relanza crear-token-base con «rotar» = SI: ' +
+        `guarda uno nuevo y después borra todos los «${TOKEN_BASE}» anteriores, también el de hoy.`);
+    }
+    if (despues.vault.huella !== huella(nuevo.token)) {
+      const borrado = await borrarTokenProyecto(lm, proyecto, nuevo.id);
+      const queGuarda = !despues.vault.huella ? 'no guarda ninguno'
+        : (despues.vault.huella === antes.vault.huella ? 'sigue con el que tenía (la misma huella que antes)' : 'guarda otro, que no es ni el nuevo ni el de antes: revísalo');
+      falla(`No se pudo guardar el token nuevo en el Vault (${motivo}). Comprobado después, solo leyendo: Vault no lo guarda; ${queGuarda}. ` +
+        (borrado ? 'Se ha borrado el token recién creado en Lettermint: no queda ninguno sin usar.'
+          : `Y NO se pudo borrar el token recién creado: bórralo en Lettermint › Projects › ${PROYECTO_LETTERMINT} › API tokens (el «${TOKEN_BASE}» de hoy).`) + anteriores);
+    }
+    salida.aviso(`psql no respondió limpio (${motivo}), pero Vault ya guarda el token nuevo (comprobado por su huella SHA-256, solo leyendo): se da por guardado.`);
+    if (despues.vault.remitente !== entradas.remitente) salida.aviso(`El remitente que guarda Vault es ${acortar(despues.vault.remitente || '(ninguno)', 80)}, no ${entradas.remitente}: relanza con «rotar» = SI.`);
   }
   salida.linea(`  Guardado en Vault: LETTERMINT_API_TOKEN y RWADAR_REMITENTE (${entradas.remitente}). El correo sigue apagado (encenderlo es «activar-correo»).`);
 
@@ -569,7 +645,7 @@ async function crearTokenBase({ entorno, entradas, salida }) {
   }
   salida.resumen(`**Token de la base:** «${TOKEN_BASE}» creado y guardado en Vault${viejos.length ? `; ${viejos.length - quedan.length} anterior(es) borrado(s)` : ''}.`);
   if (quedan.length) {
-    falla(`El token nuevo ya funciona (está en Vault), pero no se pudo borrar ${quedan.length === 1 ? 'el anterior' : `${quedan.length} anteriores`} (creado ${quedan.join(', ')}). Bórralo en Lettermint › Projects › ${PROYECTO_LETTERMINT} › API tokens.`);
+    falla(`El token nuevo ya funciona (está en Vault), pero no se pudo borrar ${quedan.length === 1 ? 'el anterior' : `${quedan.length} anteriores`} (creado ${quedan.join(', ')}), que sigue vivo. Bórralo en Lettermint › Projects › ${PROYECTO_LETTERMINT} › API tokens.`);
   }
 }
 

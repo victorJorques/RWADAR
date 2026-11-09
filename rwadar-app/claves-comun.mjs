@@ -5,13 +5,19 @@
    .github/workflows/dominio-correo.yml) y rwadar-app/supabase-gestion.mjs
    (flujo «Supabase (gestión)», .github/workflows/supabase-gestion.yml).
 
-   Las tres claves (secretos de repositorio de GitHub que crea y pega Víctor;
+   Las claves (secretos de repositorio de GitHub que crea y pega Víctor;
    cómo, en docs/tareas/PLAN-CEO-2026-11-06.md, «Claves que da Víctor»):
-   - SUPABASE_ACCESS_TOKEN: token personal de Supabase (Management API);
-   - CLOUDFLARE_DNS_TOKEN: token de la API de Cloudflare, Zone:Read y
-     DNS:Edit solo sobre rwadar.app;
-   - LETTERMINT_TEAM_TOKEN: token de equipo de la Team API de Lettermint (el
-     mismo nombre que ya usa «Correo Lettermint» para sincronizar-bajas).
+   - SUPABASE_ACCESS_TOKEN: token personal de Supabase CON ALCANCE, solo del
+     proyecto exgpmjpaaebyoolpwced: Auth Config y Project Settings en
+     lectura y escritura (nada de Database);
+   - LETTERMINT_GESTION_TOKEN: token DE EQUIPO de la Team API de Lettermint
+     para gestionar el proyecto, el dominio y las rutas (read:team,
+     read/write:projects, read/write:domains, read/write:routes). No es el
+     LETTERMINT_TEAM_TOKEN de «Correo Lettermint» (sincronizar-bajas), que
+     solo lee las supresiones: uno por uso, para revocar uno sin romper el otro;
+   - CLOUDFLARE_DNS_TOKEN: NO se crea (decisión del 08/11/2026: el DNS lo
+     copia en Cloudflare la sesión de Claude del PC de Víctor, con su Chrome).
+     Solo lo usaría preparar-dominio si algún día existe.
 
    Reglas para no dejar ver ninguna clave:
    - las claves y los tokens que se crean solo viven en memoria: van a la API
@@ -20,17 +26,20 @@
      «Avisos a registrados (base)»;
    - un token nuevo se enmascara con ::add-mask:: en cuanto llega, antes de
      hacer nada más con él, y nunca se escribe en GITHUB_OUTPUT ni en
-     GITHUB_ENV;
+     GITHUB_ENV; de SUPABASE_DB_URL se enmascaran además el usuario y la
+     contraseña sueltos (GitHub no tapa trozos de un secreto);
    - todo lo que se escribe pasa por `limpio()`, que tapa cualquier clave
      conocida aunque llegara por error dentro de un mensaje de la API;
    - de las respuestas solo se enseñan campos elegidos uno a uno, nunca la
-     respuesta entera.
+     respuesta entera; de psql, nunca su error en crudo (ver errorPsql).
 
    Pruebas sin red: node --test .github/claves.test.mjs
    ===================================================================== */
 import { spawnSync } from 'node:child_process';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export const LETTERMINT = 'https://api.lettermint.co/v1';
 export const CLOUDFLARE = 'https://api.cloudflare.com/client/v4';
@@ -42,6 +51,11 @@ export const PROYECTO_LETTERMINT = 'RWAdar';
 export const TOKEN_BASE = 'RWAdar base (API)';
 export const TOKEN_SMTP = 'RWAdar Auth (SMTP)';
 export const CLAVES_DE_VICTOR = 'docs/tareas/PLAN-CEO-2026-11-06.md, «Claves que da Víctor»';
+const RAIZ = fileURLToPath(new URL('..', import.meta.url));
+/* La CA de Supabase (pública): Supabase › Project Settings › Database › SSL
+   Configuration › Download certificate. Con ella psql comprueba que habla
+   con el servidor de Supabase (verify-full) antes de mandarle nada. */
+export const CA_SUPABASE = 'rwadar-app/certificados/supabase-ca.crt';
 
 /* Una parada en llano: el flujo sale en rojo con este mensaje. */
 export class Parada extends Error {}
@@ -82,9 +96,16 @@ export function crearSalida(entorno = process.env, { stdout = process.stdout } =
        escribe nada y quien llama lo borra. */
     enmascarar(token) {
       if (!tokenValido(token)) return false;
-      stdout.write(`::add-mask::${token}\n`);
+      stdout.write(`::add-mask::${escaparAnotacion(token)}\n`);
       secretos.add(token);
       return true;
+    },
+    /* Un trozo de un secreto (el usuario o la contraseña de SUPABASE_DB_URL):
+       GitHub solo tapa el secreto entero, así que se enmascara aparte. */
+    enmascararParte(valor) {
+      if (typeof valor !== 'string' || valor.length < 4 || secretos.has(valor) || !/^[^\u0000-\u001f\u007f]+$/.test(valor)) return;
+      stdout.write(`::add-mask::${escaparAnotacion(valor)}\n`);
+      secretos.add(valor);
     },
     linea: escribir,
     aviso(texto) { stdout.write(`::warning::${escaparAnotacion(limpio(texto))}\n`); },
@@ -175,17 +196,19 @@ export function explicarHttp(servicio, { estado, datos, causa }) {
   return `Respuesta inesperada de ${servicio} (HTTP ${estado}).${dice}`;
 }
 
-/* La Team API de Lettermint devuelve unas veces el objeto suelto y otras
-   dentro de {data: …} (DomainData en GET /domains/{id}, RouteMutationResponse
-   en PUT /routes/{id}). Se aceptan las dos formas (verificar con la primera
-   respuesta real). */
+/* La Team API de Lettermint devuelve unas veces el objeto suelto (DomainData
+   en GET /domains/{id}, según su especificación) y otras dentro de {data: …}
+   (RouteMutationResponse en PUT /routes/{id}, la respuesta de PUT
+   /projects/{id}). Se aceptan las dos formas (verificar con la primera
+   respuesta real). Ojo: DomainData no trae «status»; el estado del dominio
+   solo viene en el listado (GET /domains, DomainListData). */
 export const objeto = (datos) => (datos && typeof datos === 'object' && !Array.isArray(datos)
   && datos.id === undefined && datos.data && typeof datos.data === 'object' && !Array.isArray(datos.data)) ? datos.data : datos;
 
 /* ---------------------------------------------------------------- Lettermint */
 export function clienteLettermint(entorno, salida) {
-  const token = leerSecreto(entorno, salida, 'LETTERMINT_TEAM_TOKEN',
-    'token DE EQUIPO de la Team API de Lettermint, no el de proyecto');
+  const token = leerSecreto(entorno, salida, 'LETTERMINT_GESTION_TOKEN',
+    'token DE EQUIPO de Lettermint para gestionar el proyecto, el dominio y las rutas; ni el de proyecto ni el LETTERMINT_TEAM_TOKEN de las bajas');
   return crearCliente({ servicio: 'Lettermint', base: LETTERMINT, cabeceras: { Authorization: `Bearer ${token}` }, salida });
 }
 
@@ -257,18 +280,91 @@ export async function borrarTokenProyecto(lm, proyecto, id) {
 export const fechaCorta = (iso) => (typeof iso === 'string' && /^\d{4}-\d{2}-\d{2}/.test(iso) ? iso.slice(0, 10) : 'sin fecha');
 
 /* ---------------------------------------------------------------- psql */
-/* psql de verdad, con TLS obligatorio (PGSSLMODE=require, como en el env de
-   los flujos: con el «prefer» de libpq, alguien en medio que rechace TLS haría
-   seguir sin cifrar) y un entorno mínimo: psql no hereda ninguna clave de
-   las APIs. La dirección de la base va como argumento, como en los demás
-   flujos; nunca se escribe. */
-export function ejecutarPsql(entorno, dbUrl, argumentos, { entrada = '' } = {}) {
+/* SUPABASE_DB_URL, antes de dársela a psql. Si está mal formada, libpq copia
+   en su error el trozo que no entiende, que puede ser la contraseña (probado
+   con psql 17: «invalid percent-encoded token: "…"», «invalid integer value
+   "…" for connection option "port"», «could not translate host name "…"»).
+   Por eso se exige una forma sin ambigüedad (la contraseña sin /, @, ?, # ni
+   espacios y con los % bien codificados) y, si no la tiene, se para SIN
+   escribir nada de su valor. Si la tiene, se enmascaran el usuario y la
+   contraseña sueltos, tal cual y decodificados. */
+const DIRECCION_BASE = /^postgres(?:ql)?:\/\/([^:@/?#\s]+):([^@/?#\s]+)@([A-Za-z0-9.-]+)(?::(\d{1,5}))?(?:\/[^\s?#/]*)?(?:\?[^\s#]*)?$/;
+export function comprobarDireccionBase(dbUrl, salida) {
+  salida.ocultar(dbUrl);
+  const mal = (por) => falla(`El secreto SUPABASE_DB_URL no tiene forma de dirección de Postgres válida (${por}). No se enseña su valor. ` +
+    'Debe ser postgresql://usuario:contraseña@host:puerto/base, la del «Session pooler» de Supabase (Project Settings › Database › Connection string), ' +
+    'con los caracteres especiales de la contraseña codificados (% como %25, / como %2F, @ como %40, ? como %3F, # como %23). ' +
+    'Vuelve a pegarla en GitHub › el repositorio › Settings › Secrets and variables › Actions. No se ha creado ningún token.');
+  const m = DIRECCION_BASE.exec(dbUrl);
+  if (!m) mal('le falta algo o la contraseña lleva / @ ? # o espacios sin codificar');
+  const [, usuario, clave, , puerto] = m;
+  for (const v of [usuario, clave]) salida.enmascararParte(v);
+  let usuarioLimpio = '', claveLimpia = '';
+  try {
+    if (/%(?![0-9A-Fa-f]{2})/.test(usuario + clave)) throw new Error('%');
+    usuarioLimpio = decodeURIComponent(usuario);
+    claveLimpia = decodeURIComponent(clave);
+    new URL(dbUrl); // eslint-disable-line no-new
+  } catch { mal('la contraseña o el usuario llevan un % que no es un código válido'); }
+  for (const v of [usuarioLimpio, claveLimpia]) salida.enmascararParte(v);
+  if (puerto !== undefined && (Number(puerto) < 1 || Number(puerto) > 65535)) mal('el puerto no es válido');
+}
+
+/* La CA de Supabase para comprobar el certificado del servidor. Sin ella no
+   se manda nada a la base: con «require», libpq cifra pero acepta cualquier
+   certificado, y alguien en medio leería el token que se guarda. */
+export function leerCA(entorno) {
+  const ruta = entorno.PGSSLROOTCERT || path.join(RAIZ, CA_SUPABASE);
+  let texto = '';
+  try { texto = fs.statSync(ruta).size < 65536 ? fs.readFileSync(ruta, 'utf8') : ''; } catch { texto = ''; }
+  if (!texto.includes('-----BEGIN CERTIFICATE-----')) {
+    falla(`Falta el certificado de la CA de Supabase (${CA_SUPABASE}), o no es un certificado. Sin él no se comprueba que la base sea de verdad ` +
+      'la de Supabase, y el token viajaría a quien se pusiera en medio. Lo descarga la sesión de Claude del PC de Víctor: Supabase › Project Settings › ' +
+      `Database › SSL Configuration › Download certificate, y se sube al repositorio como ${CA_SUPABASE} (es público). No se ha creado ningún token.`);
+  }
+  return ruta;
+}
+
+/* psql de verdad, con TLS que comprueba el certificado del servidor contra
+   la CA de Supabase (PGSSLMODE=verify-full y PGSSLROOTCERT): «require» solo
+   cifra y aceptaría el certificado de cualquiera que se pusiera en medio. Y
+   un entorno mínimo: psql no hereda ninguna clave de las APIs. La dirección
+   de la base va como argumento, como en los demás flujos; nunca se escribe. */
+export function ejecutarPsql(entorno, dbUrl, argumentos, { entrada = '', ca } = {}) {
+  if (!ca) falla('Falta la CA de Supabase para conectar con la base (error del flujo: pide a Claude o a Codex que lo revise).');
   const r = spawnSync('psql', [dbUrl, '-X', '-q', '-A', '-t', '-v', 'ON_ERROR_STOP=1', ...argumentos], {
     input: entrada, encoding: 'utf8', timeout: 120000, maxBuffer: 1024 * 1024,
     env: {
       PATH: entorno.PATH || '/usr/bin:/bin', HOME: entorno.HOME || '/tmp', LANG: 'C.UTF-8',
-      PGSSLMODE: entorno.PGSSLMODE || 'require', PGCONNECT_TIMEOUT: '15', PGAPPNAME: 'rwadar-claves',
+      PGSSLMODE: 'verify-full', PGSSLROOTCERT: ca, PGCONNECT_TIMEOUT: '15', PGAPPNAME: 'rwadar-claves',
     },
   });
   return { codigo: r.status, salida: r.stdout || '', error: r.stderr || '', fallo: r.error?.code || null };
+}
+
+/* Qué le pasó a psql, en llano y SIN copiar su error en crudo: libpq repite
+   entre comillas trozos de la dirección (y de la contraseña). Los fallos de
+   conexión se clasifican; de los demás (los del SQL) se dejan solo las
+   líneas ERROR/FATAL, sin nada de lo que vaya entre comillas. */
+const CLASES_PSQL = [
+  [/server closed the connection unexpectedly|terminating connection|connection to server was lost|SSL connection has been closed unexpectedly|no connection to the server/i,
+    'la conexión con la base se cortó a medias'],
+  [/password authentication failed|SASL authentication|no password supplied|Tenant or user not found/i, 'la base rechaza el usuario o la contraseña de SUPABASE_DB_URL'],
+  [/certificate|SSL error|SSL SYSCALL|root cert|channel binding/i,
+    `TLS: no se pudo comprobar el certificado del servidor con la CA de Supabase (${CA_SUPABASE})`],
+  [/timeout expired|timed out/i, 'tiempo agotado al conectar con la base'],
+  [/could not translate host name|could not connect|connection refused|no route to host|network is unreachable|name or service not known/i,
+    'no se llega al servidor de la base (el host de SUPABASE_DB_URL o la red)'],
+  [/invalid percent-encoded|invalid integer value|invalid URI|in URI|invalid connection option|connection info string|invalid sslmode/i,
+    'la dirección SUPABASE_DB_URL está mal formada'],
+];
+export function errorPsql(salida, r) {
+  if (r.fallo === 'ENOENT') return 'no está psql';
+  if (r.fallo === 'ETIMEDOUT' || r.codigo === null) return 'psql no terminó en 120 s y se cortó';
+  const texto = salida.limpio(r.error || '');
+  const clase = CLASES_PSQL.find(([patron]) => patron.test(texto));
+  if (clase) return clase[1];
+  const lineas = texto.split('\n').map((l) => l.trim()).filter((l) => /\b(ERROR|FATAL|PANIC|error):/.test(l)).slice(0, 2)
+    .map((l) => l.replace(/"[^"\n]*"/g, '"…"').replace(/'[^'\n]*'/g, "'…'"));
+  return lineas.length ? acortar(lineas.join(' · ').replace(/\s+/g, ' '), 300) : `psql salió con código ${r.codigo}`;
 }
