@@ -21,7 +21,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'><rect width='104' height='104' rx='24' fill='%230B0A0A'/><g fill='none' stroke='%2325E39A' stroke-width='2.6' opacity='.55'><circle cx='52' cy='52' r='40'/><circle cx='52' cy='52' r='28'/></g><path d='M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z' fill='%2325E39A' opacity='.45'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z' fill='%2325E39A'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52Z' fill='%230F7A57'/></svg>">
 <script src="/assets/idioma-previo-20261104.js"></script>
+<script src="/assets/academy-candado-20261108.js"></script>
 <link rel="stylesheet" href="/assets/academy-20261002.css">
+<link rel="stylesheet" href="/assets/academy-candado-20261108.css">
 <link rel="stylesheet" href="/assets/idioma-20261022.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CollectionPage","@id":"https://rwadar.pages.dev/academy/#academy","name":"RWAdar Academy","description":"Lecciones sobre tokenización de activos reales, gratis con tu cuenta, en tres niveles, con test de autoevaluación y fecha de revisión legal.","url":"https://rwadar.pages.dev/academy/","inLanguage":"es-ES","isPartOf":{"@type":"WebSite","name":"RWAdar","url":"https://rwadar.pages.dev/"}}
@@ -58,29 +60,31 @@
     <p class="ac-sobrelinea">RWAdar Academy</p>
     <h1>Entiende la tokenización <em>antes</em> de decidir</h1>
     <p class="ac-entradilla">Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida. Lecciones en 3 niveles, con un resumen de 30 segundos y un test corto.</p>
-    <p class="ac-sobrelinea">Gratis con tu cuenta</p>
-    <p class="ac-acciones"><a class="ac-accion" href="/acceso?volver=/academy/">Crea tu cuenta gratis para abrir las lecciones <span aria-hidden="true">→</span></a></p>
-    <section class="ac-extra ac-tutorial" aria-labelledby="extraTit">
-      <span class="ac-extra-icono" aria-hidden="true">3D</span>
-      <div>
-        <p class="ac-sobrelinea">Academy · Tutorial guiado</p>
-        <h2 id="extraTit">Mira cómo se tokeniza un edificio</h2>
-        <p>El edificio sigue entero. Sus derechos se representan en participaciones que pueden cambiar de titular.</p>
-        <p class="ac-tutorial-pasos">Activo → Participaciones → Titulares → Transmisión</p>
-        <a class="ac-accion" href="/#explain">Empezar tutorial 3D <span aria-hidden="true">→</span></a>
-        <p class="ac-tutorial-alternativa">Cuatro pasos, también en texto. A tu ritmo.</p>
-      </div>
-    </section>
+    <p class="ac-sobrelinea" data-academy-sin-cuenta>Gratis con tu cuenta</p>
+    <p class="ac-sobrelinea" data-academy-con-cuenta hidden>Lecciones desbloqueadas</p>
     <div class="ac-progreso" data-academy-progreso hidden>
       <progress max="9" value="0" aria-labelledby="progresoTxt"></progress>
       <p id="progresoTxt"><b data-academy-progreso-n>0</b> de 9 lecciones leídas en este navegador</p>
     </div>
-    <ol class="ac-saltos" aria-label="Niveles">
+  </header>
+
+    <div class="candado" data-academy-candado data-estado="bloqueado">
+      <div class="candado-capa" data-academy-candado-capa>
+        <section class="candado-caja" aria-labelledby="candadoAcademyTit">
+          <svg class="candado-icono" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.6v2.4"/></svg>
+          <h2 class="candado-tit" id="candadoAcademyTit">Las lecciones se abren con tu cuenta gratuita</h2>
+          <p class="candado-espera">Comprobando tu sesión…</p>
+          <p class="candado-txt">Es gratis: solo necesitas un correo y una contraseña.</p>
+          <p class="candado-acciones"><a class="candado-boton candado-boton-p" href="/acceso?volver=/academy/">Crear cuenta gratis</a><a class="candado-boton candado-boton-s" href="/acceso?volver=/academy/&amp;vista=entrar">Ya tengo cuenta: entrar</a></p>
+          <p class="candado-error" data-academy-candado-error role="status"></p>
+        </section>
+      </div>
+      <div class="candado-contenido" data-academy-candado-contenido inert aria-hidden="true">
+      <ol class="ac-saltos" aria-label="Niveles">
       <li><a href="#principiante"><span>Nivel 1</span>Principiante · Entender</a></li>
       <li><a href="#intermedio"><span>Nivel 2</span>Intermedio · Decidir</a></li>
       <li><a href="#avanzado"><span>Nivel 3</span>Avanzado · Ponerlo en marcha</a></li>
     </ol>
-  </header>
 
     <section class="ac-nivel" id="principiante" aria-labelledby="nivel-principiante-tit">
       <header class="ac-nivel-cab">
@@ -176,6 +180,20 @@
           <span class="ac-tarjeta-estado" data-academy-leida hidden>✓ Leída</span>
         </a></li>
       </ol>
+    </section>
+      </div>
+    </div>
+
+    <section class="ac-extra ac-tutorial" aria-labelledby="extraTit">
+      <span class="ac-extra-icono" aria-hidden="true">3D</span>
+      <div>
+        <p class="ac-sobrelinea">Academy · Tutorial guiado</p>
+        <h2 id="extraTit">Mira cómo se tokeniza un edificio</h2>
+        <p>El edificio sigue entero. Sus derechos se representan en participaciones que pueden cambiar de titular.</p>
+        <p class="ac-tutorial-pasos">Activo → Participaciones → Titulares → Transmisión</p>
+        <a class="ac-accion" href="/#explain">Empezar tutorial 3D <span aria-hidden="true">→</span></a>
+        <p class="ac-tutorial-alternativa">Cuatro pasos, también en texto. A tu ritmo.</p>
+      </div>
     </section>
 
   <p class="ac-nota">Accedes con tu cuenta. Tu progreso (lecciones leídas y tests hechos) se guarda solo en este navegador, separado por cuenta; no se sincroniza entre dispositivos. Borrar los datos del navegador también lo borra.</p>

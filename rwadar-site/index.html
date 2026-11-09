@@ -66,6 +66,7 @@
 </script>
 
 <script src="/assets/idioma-previo-20261104.js"></script>
+<script src="/assets/academy-candado-20261108.js"></script>
 <!-- La letra principal llega antes de la primera pintura: sin ella, el titular
      sale con la de reserva y se recoloca al cambiar (CLS). -->
 <link rel="preload" href="/assets/fuentes/geist-normal-6ab67a4f11f1.woff2" as="font" type="font/woff2" crossorigin>
@@ -73,6 +74,7 @@
 <link rel="stylesheet" href="/assets/cartera-cuenta-ui-20261028.css">
 <link rel="stylesheet" href="/assets/idioma-20261022.css">
 <link rel="stylesheet" href="/assets/mapa-buscar-20261027.css">
+<link rel="stylesheet" href="/assets/academy-candado-20261108.css">
 </head>
 <body>
 
@@ -1438,11 +1440,25 @@
   <!--academy:ini-->
   <div class="academia-lecciones" aria-labelledby="academiaLeccionesTit" data-academy-acceso="cuenta">
     <div class="academia-lecciones-cab">
-      <p class="etiq">Gratis con tu cuenta</p>
+      <p class="etiq" data-academy-sin-cuenta>Gratis con tu cuenta</p>
+      <p class="etiq" data-academy-con-cuenta hidden>Lecciones desbloqueadas</p>
       <h3 id="academiaLeccionesTit">9 de 9 lecciones disponibles</h3>
-      <p>Cada nivel responde a una pregunta. Crea tu cuenta gratis para abrir las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>
+      <p data-academy-sin-cuenta>Cada nivel responde a una pregunta. Crea tu cuenta gratis para abrir las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>
+      <p data-academy-con-cuenta hidden>Cada nivel responde a una pregunta. Ya puedes abrir todas las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>
     </div>
-    <div class="academia-niveles">
+    <div class="candado" data-academy-candado data-estado="bloqueado">
+      <div class="candado-capa" data-academy-candado-capa>
+        <section class="candado-caja" aria-labelledby="candadoPortadaTit">
+          <svg class="candado-icono" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.6v2.4"/></svg>
+          <h4 class="candado-tit" id="candadoPortadaTit">Las lecciones se abren con tu cuenta gratuita</h4>
+          <p class="candado-espera">Comprobando tu sesión…</p>
+          <p class="candado-txt">Es gratis: solo necesitas un correo y una contraseña.</p>
+          <p class="candado-acciones"><a class="candado-boton candado-boton-p" href="/acceso?volver=/academy/">Crear cuenta gratis</a><a class="candado-boton candado-boton-s" href="/acceso?volver=/academy/&amp;vista=entrar">Ya tengo cuenta: entrar</a></p>
+          <p class="candado-error" data-academy-candado-error role="status"></p>
+        </section>
+      </div>
+      <div class="candado-contenido" data-academy-candado-contenido inert aria-hidden="true">
+      <div class="academia-niveles">
     <section class="academia-nivel" aria-labelledby="academiaNivel1">
       <p class="academia-nivel-etiq">Nivel 1 · Entender</p>
       <h4 id="academiaNivel1">Principiante</h4>
@@ -1473,6 +1489,8 @@
         <li><a href="/academy/despues-de-emitir-ciclo-de-vida"><span class="academia-num">09</span><b>Después de emitir: gobierno, informes, impuestos y ciclo de vida del token</b><small>Post-emisión · 17 min</small></a></li>
       </ol>
     </section>
+    </div>
+      </div>
     </div>
     <a class="academia-ver-todo" href="/academy/">Ver todas las lecciones <span aria-hidden="true">→</span></a>
     <p class="academia-nota">Las lecciones son de texto. De momento no hay vídeos.</p>

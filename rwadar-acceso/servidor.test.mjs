@@ -110,7 +110,9 @@ test('configuración ausente falla cerrada y no inventa un usuario autenticado',
   assert.equal(e.served(), 0); assert.equal(e.calls.length, 0);
 });
 test('retorno no permite redirecciones externas, barras inversas ni Auth recursivo', () => {
-  for (const value of ['https://atacante.test', '//atacante.test', '/\\atacante.test', '/api/acceso/entrar', '/acceso', '/acceso.html', '/x\r\nLocation:evil']) assert.equal(retornoSeguro(value, ORIGIN), '/');
+  for (const value of ['https://atacante.test', '//atacante.test', '/\\atacante.test', '/api/acceso/entrar', '/acceso', '/acceso.html', '/x\r\nLocation:evil',
+    // Revisión del 08/11/2026: la cadena empieza por una sola barra, pero la ruta normalizada sale '//atacante.test'.
+    '/.//atacante.test', '/%2e//atacante.test', '/academy/..//atacante.test', '/./%2e/..//atacante.test/x']) assert.equal(retornoSeguro(value, ORIGIN), '/', value);
   assert.equal(retornoSeguro('/ofertas-editoriales/spiko?access_token=no#no', ORIGIN), '/ofertas-editoriales/spiko');
 });
 test('proxy público solo lee los cuatro recursos del catálogo sin reenviar sesión', async () => {

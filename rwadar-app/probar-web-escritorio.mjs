@@ -9,12 +9,17 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
   // que marcar el inglés antes de pintar); el resto, en orden clásico con defer.
   const scripts = [...html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/script>/gi)];
   const rutaIdiomaPrevio = '/assets/idioma-previo-20261104.js';
-  prueba('idioma previo en head; acceso, analítica, mapa, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
-    JSON.stringify(scripts.map(s=>s[1])) === JSON.stringify([rutaIdiomaPrevio, '/assets/analitica-20260927.js', '/assets/acceso-privado.js',
+  // El candado de las lecciones (08/11/2026) va en <head>, sin defer, detrás de
+  // idioma-previo: marca html.candado-comprobando antes de pintar (revisión del
+  // 08/11/2026) y pregunta por la sesión en DOMContentLoaded, con la pasarela ya cargada.
+  const rutaCandado = '/assets/academy-candado-20261108.js';
+  prueba('idioma previo y candado en head sin defer; analítica, acceso, mapa, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
+    JSON.stringify(scripts.map(s=>s[1])) === JSON.stringify([rutaIdiomaPrevio, rutaCandado, '/assets/analitica-20260927.js', '/assets/acceso-privado.js',
       '/assets/mapa-buscar-util-20261027.js','/assets/mapa-buscar-20261027.js','/assets/catalogo-publico-20261022.js',
       '/assets/ficha-editorial-20261022.js','/assets/idioma-en-20261022.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js','/assets/cartera-modelo-20261028.js','/assets/cartera-cuenta-20261028.js','/assets/cartera-cuenta-ui-20261028.js','/assets/rwadar-20260820.js']) &&
-    html.indexOf(rutaIdiomaPrevio) < html.indexOf('</head>') && !/\b(?:defer|async)\b/.test(scripts[0][0]) &&
-    scripts.slice(1).every(script => /\bdefer\b/.test(script[0]) && !/\basync\b/.test(script[0])));
+    html.indexOf(rutaIdiomaPrevio) < html.indexOf('</head>') && html.indexOf(rutaCandado) < html.indexOf('</head>') &&
+    scripts.slice(0, 2).every(script => !/\b(?:defer|async)\b/.test(script[0])) &&
+    scripts.slice(2).every(script => /\bdefer\b/.test(script[0]) && !/\basync\b/.test(script[0])));
   // QA escritorio 04/11/2026, n.º 1: la franja de cifras anima solo los números
   // y conserva el símbolo (antes «€0» acababa en «NaN» y «0 €» en «0»).
   {

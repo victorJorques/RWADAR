@@ -81,6 +81,81 @@ inventada da 404 sin mirar la cookie. Si Supabase no responde, la lección da
 No es un candado: el texto va en el paquete de la app. Nunca se pone material
 privado en la Academy.
 
+### El candado del índice y de la portada (08/11/2026)
+
+Petición de Víctor: «que esté bloqueado Academy, que solo se desbloquee al
+crearse la cuenta, que salga difuminada la página y con un candado, y al
+registrarse y entrar ya se desbloquee». Con `"cuenta"`, el generador envuelve
+las tarjetas de las lecciones del índice `/academy/` y el bloque de lecciones
+de la portada (`htmlCandado` en `rwadar-academy.js`, el mismo HTML para las
+dos) en un candado:
+
+- **El HTML nace bloqueado:** `data-estado="bloqueado"`, las tarjetas con
+  `inert` y `aria-hidden="true"` (no se pulsan, no se enfocan con el teclado y
+  el lector de pantalla no las oye) y, encima, un recuadro con un candado,
+  «Las lecciones se abren con tu cuenta gratuita», «Crear cuenta gratis»
+  (`/acceso?volver=/academy/`) y «Ya tengo cuenta: entrar»
+  (`/acceso?volver=/academy/&vista=entrar`). Sin JavaScript sigue así.
+- **Solo se abre con una sesión confirmada:** `assets/academy-candado-20261108.js`
+  pregunta con la pasarela de siempre (`window.RWADAR_ACCESO.verificar()`, que
+  llama a `/api/acceso/sesion`). Si el servidor dice que sí, quita `inert`,
+  `aria-hidden` y el recuadro. Sin sesión (401) o con una respuesta rara, nada
+  cambia. Si la red o el servicio fallan, sigue bloqueado y lo dice en una
+  línea: «No hemos podido comprobar tu sesión. Recarga la página».
+- **El aspecto** está en `assets/academy-candado-20261108.css`: difuminado,
+  recuadro oscuro con el verde de la marca, sin animación con «reducir
+  movimiento». Las dos páginas cargan la misma hoja y el mismo script; las
+  lecciones no los cargan.
+- **El tutorial 3D sigue nítido y público** (decisión del 06/11/2026): queda
+  fuera del candado (en el índice, justo detrás de él; ver abajo).
+- **No es la puerta:** la lección la sigue cerrando el servidor (303 o 401).
+  El candado solo cambia lo que se ve en el índice.
+
+Ajustes tras la revisión independiente (09/11/2026):
+
+- **El candado se ve sin bajar:** en el índice, el bloque del candado va justo
+  debajo de la entradilla. Sin cuenta, la primera pantalla enseña ya el
+  recuadro (candado, título y los dos botones) sobre las lecciones difuminadas.
+  La cabecera solo lleva la sobrelínea «Gratis con tu cuenta» (con sesión,
+  «Lecciones desbloqueadas»); no repite el botón del recuadro. Los saltos
+  «Nivel 1/2/3» van dentro de lo difuminado e inerte: con el candado cerrado no
+  llevan a un destino oculto.
+- **El tutorial 3D va detrás del bloque**, nítido y fuera del candado. Para que
+  quede cerca, cerrado y sin cuenta, lo difuminado se corta a 640 px y se
+  desvanece (`.ac-portada` en la hoja del candado). Mientras se pregunta por la
+  sesión no se corta: quien la tiene y recarga a mitad de la lista vuelve a su
+  sitio. Con `"publico"` el índice queda como antes (tutorial y saltos en la
+  cabecera).
+- **Mientras se pregunta por la sesión no se invita a crear cuenta:** el script
+  va en `<head>` sin `defer`, marca `html.candado-comprobando` antes de pintar
+  y el recuadro dice «Comprobando tu sesión…». Los botones salen con el 401,
+  con un fallo de red o a los 8 s; sin JavaScript se ven desde el principio.
+  **Lo que no se puede quitar:** con sesión, durante esa ida y vuelta al
+  servidor (unos 0,2-0,5 s) se ve el recuadro con «Comprobando tu sesión…»
+  sobre las lecciones difuminadas, en la primera pantalla, y luego se
+  desvanece. El HTML no puede nacer abierto sin que el servidor lo confirme.
+- **Foco:** si estaba en el recuadro al abrirse, pasa al primer enlace de lo
+  que se abre (el salto «Nivel 1»). Si se llega sin sesión con un ancla a un
+  nivel (`/academy/#intermedio`), pasa al título del recuadro, para que el Tab
+  siga en «Crear cuenta gratis».
+- **Con poca altura** (zoom al 200 % o al 400 %, móvil apaisado) el recuadro no
+  es fijo: queda arriba del bloque, más compacto, con los dos botones a la
+  vista.
+- **Lo que solo vale sin cuenta** lleva `data-academy-sin-cuenta`, y su versión
+  con cuenta, `data-academy-con-cuenta hidden`. El script cambia uno por otro al
+  abrir, en el índice y en la portada.
+- **«Cuenta confirmada: Academy desbloqueada»** (`/academy/#cuenta-confirmada`)
+  solo sale con la sesión ya confirmada, la misma que abre el candado.
+
+Con `"publico"` el candado desaparece solo al regenerar (no se escribe ni la
+hoja ni el script en el índice). Pruebas:
+`rwadar-acceso/academy-candado-navegador.test.mjs` (HTML, script en una VM con
+la pasarela de verdad y, si Playwright está instalado, Chromium con el worker
+local). La parte de Chromium falla si `rwadar-publicado/` no está construido con
+el código de hoy: lanzada sola, ejecuta antes `npm run test:web`.
+`probar-precarga.cjs` comprueba que `validarBase` rechaza un índice abierto, sin
+`inert` o sin el script del candado.
+
 ### Volver a `"publico"`: lo que cambia solo y lo que hay que cambiar a mano
 
 Con `"publico"`, `node rwadar-academy.js` y el worker reabren solos las
