@@ -6,6 +6,16 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 9 de noviembre de 2026 (3) · Claude · informe «Números de RWAdar»
+
+Víctor pidió las visitas y los números de la web y de la app. Nuevo flujo `numeros.yml` (a mano y los lunes a las 07:47 UTC) con `.github/numeros.mjs`. Solo lee y solo saca totales:
+- cuentas, en una transacción de solo lectura;
+- avisos por correo y cartera, que solo se cuentan si la protección (RLS) deja leerlos; si no, sale «—» en vez de un 0 falso;
+- descargas del APK, de la API pública de GitHub;
+- visitas, solo con el secreto opcional `CLOUDFLARE_ANALITICA_TOKEN`; no usa el de publicar.
+
+Lo publica en el resumen y como comentario en la incidencia «Números de RWAdar». Pruebas: `.github/numeros.test.mjs` (7) y la regla TLS de `flujos.test.mjs`.
+
 ## 9 de noviembre de 2026 (2) · Claude · flujos con las claves de Víctor («Dominio de correo» y «Supabase (gestión de Auth)»)
 
 Rama `claude/claves-0711`, sin unir ni lanzar: **las claves aún no existen y no se ha llamado a ninguna API de verdad.** Primer commit `3989d2a` (los dos flujos); el segundo corrige 15 hallazgos de la revisión independiente y aplica la decisión de Víctor del 08/11.

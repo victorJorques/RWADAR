@@ -1,0 +1,98 @@
+name: Números de RWAdar
+
+# Informe de SOLO LECTURA con los números de la web y de la app: cuentas
+# (solo totales, nunca correos), descargas del APK y, si existe la clave
+# opcional de analítica, visitas de la web. Sale en el resumen de la
+# ejecución y como comentario en la incidencia «Números de RWAdar», que
+# Víctor lee en la app de GitHub del móvil. Detalle: .github/numeros.mjs.
+#
+# Secretos: SUPABASE_DB_URL (el de las copias) y, opcional,
+# CLOUDFLARE_ANALITICA_TOKEN (Cloudflare › API Tokens, solo
+# «Account › Account Analytics › Read»). No usa el token de publicar.
+
+on:
+  schedule:
+    # Lunes a las 07:47 UTC: 08:47 en España en invierno, fuera de las horas
+    # punta de GitHub (06-09 h del Pacífico).
+    - cron: '47 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rwadar-numeros
+  cancel-in-progress: false
+
+# Conexiones a Supabase siempre cifradas (regla común, .github/flujos.test.mjs).
+env:
+  PGSSLMODE: require
+
+jobs:
+  numeros:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    # Permiso de incidencias solo para publicar el informe. El script no
+    # recibe ningún token de GitHub.
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "Este flujo solo corre desde main."
+          exit 1
+
+      - name: Descargar el script
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            .github/numeros.mjs
+            rwadar-node-seguro.js
+          sparse-checkout-cone-mode: false
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22.23.4
+
+      - name: Comprobar que Node lleva el parche de seguridad
+        run: node rwadar-node-seguro.js
+
+      - name: Instalar psql 17 (misma versión que Supabase)
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+
+      - name: Contar
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          CLOUDFLARE_ANALITICA_TOKEN: ${{ secrets.CLOUDFLARE_ANALITICA_TOKEN }}
+        run: node .github/numeros.mjs --salida "$RUNNER_TEMP/numeros.md"
+
+      # Solo totales: el informe no lleva datos de personas. La mención a
+      # Víctor va solo al crear la incidencia, no en cada comentario.
+      - name: Publicar en la incidencia «Números de RWAdar»
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          [ -s "$RUNNER_TEMP/numeros.md" ] || { echo "No hay informe que publicar."; exit 0; }
+          TITULO='Números de RWAdar'
+          NUM="$(gh issue list --state open --limit 100 --json number,title \
+            --jq "map(select(.title == \"$TITULO\")) | .[0].number // empty")"
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --body-file "$RUNNER_TEMP/numeros.md"
+          else
+            { echo "@victorJorques aquí saldrán cada lunes los números de RWAdar. Solo totales, nunca datos de personas."; echo; cat "$RUNNER_TEMP/numeros.md"; } > "$RUNNER_TEMP/primera.md"
+            gh issue create --title "$TITULO" --body-file "$RUNNER_TEMP/primera.md"
+          fi

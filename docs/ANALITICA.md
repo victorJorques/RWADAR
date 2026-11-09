@@ -11,6 +11,19 @@
   que instalaciones.
 - No hay ingresos por publicidad.
 
+## Verlo en el móvil
+
+- **Panel de Cloudflare:** el enlace de abajo se abre en el navegador del móvil
+  (Safari o Chrome) con la cuenta de Cloudflare. Elige 7 o 30 días.
+- **Informe «Números de RWAdar»:** cada lunes, el flujo del mismo nombre
+  (`.github/workflows/numeros.yml`) comenta en la incidencia «Números de
+  RWAdar» del repositorio. Se lee en la app de GitHub. Lleva solo totales:
+  cuentas (creadas, confirmadas, nuevas, que entraron, avisos y cartera),
+  descargas del APK y, si existe el secreto opcional
+  `CLOUDFLARE_ANALITICA_TOKEN` (Cloudflare › My Profile › API Tokens › Create
+  Custom Token › «Account › Account Analytics › Read», solo esta cuenta),
+  también las visitas. Sin ese secreto, el informe da el enlace del panel.
+
 ## Dónde entrar
 
 [Abrir el panel de RWAdar](https://dash.cloudflare.com/52d07be006e7a27f5f793c59e1796b13/web-analytics/overview?siteTag~in=ddbd2a3f31ab43dfaf0c854a02ab34d8&excludeBots=Yes).
