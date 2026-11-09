@@ -42,7 +42,10 @@ export function retornoSeguro(value, origin) {
   if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//') || /[\\\r\n\u0000]/.test(value)) return '/';
   try {
     const target = new URL(value, origin);
-    if (target.origin !== origin || /^\/(?:api\/|acceso(?:\.html)?(?:\/|$))/.test(target.pathname)) return '/';
+    // La ruta normalizada también: '/.//x' o '/a/..//x' dan el pathname '//x',
+    // que el navegador resolvería como otra web.
+    if (target.origin !== origin || !target.pathname.startsWith('/') || target.pathname.startsWith('//') ||
+      target.pathname.includes('\\') || /^\/(?:api\/|acceso(?:\.html)?(?:\/|$))/.test(target.pathname)) return '/';
     return target.pathname;
   } catch { return '/'; }
 }

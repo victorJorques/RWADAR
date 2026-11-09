@@ -684,7 +684,7 @@ function cabeceraHtml({ titulo, tituloOg = titulo, descripcion, canonica, tipoOg
 ${extraMeta}<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${ICONO}">
 <script src="/assets/idioma-previo-20261104.js"></script>
-<link rel="stylesheet" href="${CSS}">
+${candado ? `<script src="${CANDADO_JS}"></script>\n` : ''}<link rel="stylesheet" href="${CSS}">
 ${candado ? `<link rel="stylesheet" href="${CANDADO_CSS}">\n` : ''}<link rel="stylesheet" href="/assets/idioma-20261022.css">
 <script type="application/ld+json">
 ${JSON.stringify(jsonLd)}
@@ -693,7 +693,7 @@ ${JSON.stringify(jsonLd)}
 <script src="/assets/idioma-en-20261022.js" defer></script>
 <script src="/assets/idioma-20261022.js" defer></script>
 <script src="/assets/idioma-web-20261022.js" defer></script>
-${candado ? `<script src="${CANDADO_JS}" defer></script>\n` : ''}<script src="${JS}" defer></script>
+<script src="${JS}" defer></script>
 </head>`;
 }
 
@@ -712,6 +712,7 @@ function htmlCandado(academy, { id, nivel, contenido }) {
         <section class="candado-caja" aria-labelledby="${id}Tit">
           ${CANDADO_SVG}
           <h${nivel} class="candado-tit" id="${id}Tit">Las lecciones se abren con tu cuenta gratuita</h${nivel}>
+          <p class="candado-espera">Comprobando tu sesión…</p>
           <p class="candado-txt">Es gratis: solo necesitas un correo y una contraseña.</p>
           <p class="candado-acciones"><a class="candado-boton candado-boton-p" href="${esc(ALTA_ACADEMY)}">Crear cuenta gratis</a><a class="candado-boton candado-boton-s" href="${esc(ENTRAR_ACADEMY)}">Ya tengo cuenta: entrar</a></p>
           <p class="candado-error" data-academy-candado-error role="status"></p>
@@ -1002,12 +1003,34 @@ function paginaIndice(academy) {
 
   /* Con cuenta no se dice «9 lecciones gratuitas»: puede haber lecciones
      «Próximamente» (hasta el 06/11/2026 eran 7 publicadas de 9) y se abren
-     con una cuenta gratis. */
+     con una cuenta gratis. Con cuenta, en lugar de la invitación a crearla
+     (que ya da el recuadro del candado, justo debajo), una sobrelínea que el
+     script del candado cambia por «Lecciones desbloqueadas» al abrir. */
   const entradilla = conCuenta
     ? `<p class="ac-entradilla">Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida. Lecciones en ${academy.niveles.length} niveles, con un resumen de 30 segundos y un test corto.</p>
-    <p class="ac-sobrelinea">Gratis con tu cuenta</p>
-    <p class="ac-acciones"><a class="ac-accion" href="${ALTA_ACADEMY}">Crea tu cuenta gratis para abrir las lecciones <span aria-hidden="true">→</span></a></p>`
+    <p class="ac-sobrelinea" data-academy-sin-cuenta>Gratis con tu cuenta</p>
+    <p class="ac-sobrelinea" data-academy-con-cuenta hidden>Lecciones desbloqueadas</p>`
     : `<p class="ac-entradilla">Empieza viéndolo. Después, aprende qué compras, quién responde y qué condiciones tiene la salida. ${academy.lecciones.length} lecciones gratuitas en ${academy.niveles.length} niveles, con un resumen de 30 segundos y un test corto.</p>`;
+  /* El tutorial 3D es público: nítido y fuera del candado. Con cuenta va
+     después del bloque de lecciones (revisión del 08/11/2026), para que la
+     primera pantalla enseñe ya el candado sobre las lecciones difuminadas. */
+  const tutorial = `<section class="ac-extra ac-tutorial" aria-labelledby="extraTit">
+      <span class="ac-extra-icono" aria-hidden="true">3D</span>
+      <div>
+        <p class="ac-sobrelinea">Academy · Tutorial guiado</p>
+        <h2 id="extraTit">Mira cómo se tokeniza un edificio</h2>
+        <p>El edificio sigue entero. Sus derechos se representan en participaciones que pueden cambiar de titular.</p>
+        <p class="ac-tutorial-pasos">Activo → Participaciones → Titulares → Transmisión</p>
+        <a class="ac-accion" href="/#explain">Empezar tutorial 3D <span aria-hidden="true">→</span></a>
+        <p class="ac-tutorial-alternativa">Cuatro pasos, también en texto. A tu ritmo.</p>
+      </div>
+    </section>`;
+  /* Con cuenta, los saltos «Nivel 1/2/3» van dentro de lo bloqueado (revisión
+     del 08/11/2026): difuminados e inertes con el candado cerrado, para que el
+     teclado y el lector no salten a un destino oculto saltándose el recuadro. */
+  const saltos = `<ol class="ac-saltos" aria-label="Niveles">
+      ${academy.niveles.map((n, k) => `<li><a href="#${n.id}"><span>Nivel ${k + 1}</span>${esc(n.nombre)} · ${esc(n.lema)}</a></li>`).join('\n      ')}
+    </ol>`;
 
   return `${cabeceraHtml({
     titulo: 'RWAdar Academy · Aprende a tokenizar sin promesas',
@@ -1027,27 +1050,19 @@ ${barraSuperior('academy')}
     <p class="ac-sobrelinea">RWAdar Academy</p>
     <h1>Entiende la tokenización <em>antes</em> de decidir</h1>
     ${entradilla}
-    <section class="ac-extra ac-tutorial" aria-labelledby="extraTit">
-      <span class="ac-extra-icono" aria-hidden="true">3D</span>
-      <div>
-        <p class="ac-sobrelinea">Academy · Tutorial guiado</p>
-        <h2 id="extraTit">Mira cómo se tokeniza un edificio</h2>
-        <p>El edificio sigue entero. Sus derechos se representan en participaciones que pueden cambiar de titular.</p>
-        <p class="ac-tutorial-pasos">Activo → Participaciones → Titulares → Transmisión</p>
-        <a class="ac-accion" href="/#explain">Empezar tutorial 3D <span aria-hidden="true">→</span></a>
-        <p class="ac-tutorial-alternativa">Cuatro pasos, también en texto. A tu ritmo.</p>
-      </div>
-    </section>
-    <div class="ac-progreso" data-academy-progreso hidden>
+    ${conCuenta ? '' : `${tutorial}
+    `}<div class="ac-progreso" data-academy-progreso hidden>
       <progress max="${visibles.length}" value="0" aria-labelledby="progresoTxt"></progress>
       <p id="progresoTxt"><b data-academy-progreso-n>0</b> de ${visibles.length} lecciones leídas en este navegador</p>
-    </div>
-    <ol class="ac-saltos" aria-label="Niveles">
-      ${academy.niveles.map((n, k) => `<li><a href="#${n.id}"><span>Nivel ${k + 1}</span>${esc(n.nombre)} · ${esc(n.lema)}</a></li>`).join('\n      ')}
-    </ol>
+    </div>${conCuenta ? '' : `
+    ${saltos}`}
   </header>
 
-    ${htmlCandado(academy, { id: 'candadoAcademy', nivel: 2, contenido: niveles })}
+    ${htmlCandado(academy, { id: 'candadoAcademy', nivel: 2, contenido: conCuenta ? `${saltos}
+
+    ${niveles}` : niveles })}${conCuenta ? `
+
+    ${tutorial}` : ''}
 
   <p class="ac-nota">Accedes con tu cuenta. Tu progreso (lecciones leídas y tests hechos) se guarda solo en este navegador, separado por cuenta; no se sincroniza entre dispositivos. Borrar los datos del navegador también lo borra.</p>
 
@@ -1078,10 +1093,14 @@ function bloquePortada(academy) {
   }).join('\n    ');
   /* Con cuenta, el número que se da es el cierto (publicadas de total) y se
      dice cómo se abren: con una cuenta gratis. */
+  /* Con sesión, el script del candado oculta la invitación a crear cuenta
+     (data-academy-sin-cuenta) y enseña su versión con cuenta, como el índice. */
   const cabecera = academy.acceso === 'cuenta'
-    ? `<p class="etiq">Gratis con tu cuenta</p>
+    ? `<p class="etiq" data-academy-sin-cuenta>Gratis con tu cuenta</p>
+      <p class="etiq" data-academy-con-cuenta hidden>Lecciones desbloqueadas</p>
       <h3 id="academiaLeccionesTit">${visibles.length} de ${academy.lecciones.length} lecciones disponibles</h3>
-      <p>Cada nivel responde a una pregunta. Crea tu cuenta gratis para abrir las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>`
+      <p data-academy-sin-cuenta>Cada nivel responde a una pregunta. Crea tu cuenta gratis para abrir las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>
+      <p data-academy-con-cuenta hidden>Cada nivel responde a una pregunta. Ya puedes abrir todas las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>`
     : `<p class="etiq">${visibles.length} de ${academy.lecciones.length} lecciones disponibles</p>
       <h3 id="academiaLeccionesTit">${academy.lecciones.length} lecciones en ${academy.niveles.length} niveles</h3>
       <p>Cada nivel responde a una pregunta. Accede gratis con tu cuenta: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.</p>`;

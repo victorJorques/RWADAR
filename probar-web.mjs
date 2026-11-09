@@ -3345,9 +3345,11 @@ console.log('\n=== RWADAR ACADEMY ===');
     ldIndice['@type'] === 'CollectionPage' && !('hasPart' in ldIndice) && /gratis con tu cuenta/.test(ldIndice.description) &&
     !/academy\/[a-z]/.test(JSON.stringify(ldIndice)));
   const textoIndice = textoDe(indiceAcademy), bloqueAcademy = html.slice(html.indexOf('<!--academy:ini-->'), html.indexOf('<!--academy:fin-->'));
+  // En el índice, el que lleva a crear la cuenta es el recuadro del candado, justo bajo la
+  // entradilla (revisión del 08/11/2026); la cabecera ya no repite el enlace.
   prueba('el índice y la portada dicen «Gratis con tu cuenta» y llevan a crear la cuenta, sin prometer lecciones que no hay',
-    textoIndice.includes('Gratis con tu cuenta') && textoIndice.includes('Crea tu cuenta gratis para abrir las lecciones') &&
-    indiceAcademy.includes(`<a class="ac-accion" href="${academyMod.ALTA_ACADEMY}">`) && academyMod.ALTA_ACADEMY === '/acceso?volver=/academy/' &&
+    textoIndice.includes('Gratis con tu cuenta') && textoIndice.includes('Las lecciones se abren con tu cuenta gratuita') &&
+    indiceAcademy.includes(`<a class="candado-boton candado-boton-p" href="${academyMod.ALTA_ACADEMY}">Crear cuenta gratis</a>`) && academyMod.ALTA_ACADEMY === '/acceso?volver=/academy/' &&
     textoDe(bloqueAcademy).includes('Gratis con tu cuenta') && textoDe(bloqueAcademy).includes('Crea tu cuenta gratis para abrir las lecciones') &&
     textoDe(bloqueAcademy).includes(`${publicadasA.length} de ${academy.lecciones.length} lecciones disponibles`) &&
     !/\b9 lecciones (?:gratuitas|en 3 niveles)/.test(textoIndice + textoDe(bloqueAcademy)) &&

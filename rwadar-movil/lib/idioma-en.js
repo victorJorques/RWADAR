@@ -1886,7 +1886,10 @@
   "Es gratis: solo necesitas un correo y una contraseña.": "It's free: all you need is an email address and a password.",
   "Crear cuenta gratis": "Create a free account",
   "Ya tengo cuenta: entrar": "I already have an account: sign in",
-  "No hemos podido comprobar tu sesión. Recarga la página.": "We couldn't check your session. Reload the page."
+  "No hemos podido comprobar tu sesión. Recarga la página.": "We couldn't check your session. Reload the page.",
+  // Revisión del candado (08/11/2026): textos con cuenta del índice y de la portada.
+  "Lecciones desbloqueadas": "Lessons unlocked",
+  "Cada nivel responde a una pregunta. Ya puedes abrir todas las lecciones: un resumen de 30 segundos, un test corto y la fecha de la última revisión legal.": "Each level answers a question. You can now open every lesson: a 30-second summary, a short quiz and the latest legal review date."
 };
 if(typeof module==='object'&&module.exports)module.exports=Object.freeze(diccionario);else raiz.RWAdarEnglish=Object.freeze(diccionario);
 })(typeof globalThis==='object'?globalThis:this);
