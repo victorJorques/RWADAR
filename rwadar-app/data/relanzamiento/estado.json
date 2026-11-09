@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "07/11: legal 5.3 (botón al proveedor), latido de Firebase en privacidad, noticia del 05/11 corregida, /assets fuera del worker (PR #85)",
+  "nota": "09/11: Academy con candado en la web (difuminada sin cuenta, se abre al entrar; PR #89, orden de Víctor del 08/11)",
   "revisionAprobada": {
-    "commit": "b13ddebb8f93384b3226f98bf52dc446f151b649",
-    "contenidoSha256": "sha256:e7f99c5e30d9c348dd408ef49c473218f391a94467dc208376055516820ae6cd",
+    "commit": "60f9ac505a372313a2bb6ac73483204a4586db51",
+    "contenidoSha256": "sha256:7a531f0940bee45e98f4f00e20b7cccf33111248224e35939753f3ec83f1e336",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
