@@ -42,6 +42,16 @@ condition = "AND"
 paths = ['''(^|/)rwadar-acceso/[a-z0-9-]+\.test\.mjs$''']
 regexes = ['''^eyJ0ZXN0\.e30\.ZmlybWE$''', '''^eyJhbGciOiJIUzI1NiJ9\.eyJzdWIiOiIxIn0\.prueba$''']
 
+# Tokens inventados de las pruebas de los flujos con claves (09/11/2026): se
+# leen como inventados a propósito y no son de ningún servicio. Solo ESTOS
+# valores en ESE archivo; un lm_ real (lm_team_…, lm_live_…) sigue bloqueado.
+[[allowlists]]
+description = "Tokens ficticios de Lettermint en las pruebas de los flujos con claves"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''(^|/)\.github/claves\.test\.mjs$''']
+regexes = ['''^lm_valor_que_nunca_se_ve_0001$''', '''^lm_sobrante_numero_(uno|dos)_00000[12]$''']
+
 # Fuente pública de Brickwise: sus «tokenId» son direcciones de la cadena de
 # bloques (base58), visibles para cualquiera. Solo ESE archivo y ESA forma.
 [[allowlists]]
