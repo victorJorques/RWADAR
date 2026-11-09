@@ -276,6 +276,33 @@ test('«Ya tengo cuenta: entrar» del candado abre «Entrar» y, al entrar, vuel
   assert.equal(pagina({ search: '?vista=entrar' }).elemento('introduccion').textContent, '', 'sin volver a la Academy, /acceso como siempre');
 });
 
+// Revisión del 08/11/2026: regresar() validaba la cadena de «volver» pero navegaba a
+// su ruta normalizada; '/.//x' sale '//x', que el navegador abre como otra web.
+test('tras entrar, un «volver» cuya ruta normalizada empieza por // vuelve a la raíz, no a otra web', async () => {
+  for (const volver of ['/.//atacante.test/', '/%2e//atacante.test/', '/academy/..//atacante.test/', '/./%2e/..//atacante.test/x']) {
+    const p = pagina({ search: '?volver=' + encodeURIComponent(volver) + '&vista=entrar' });
+    p.elemento('correo').value = 'alta@example.test';
+    p.elemento('clave').value = 'una-clave-solo-de-prueba';
+    await p.elemento('formulario').eventos.submit({ preventDefault() {} });
+    assert.deepEqual(p.peticiones.map(x => x.ruta), ['/api/acceso/entrar', '/api/acceso/sesion'], volver);
+    assert.deepEqual(p.destinos, ['/'], volver);
+  }
+  // Sin codificar en la dirección, igual.
+  const q = pagina({ search: '?volver=/.//atacante.test/' });
+  q.vista('entrar').eventos.click();
+  q.elemento('correo').value = 'alta@example.test';
+  q.elemento('clave').value = 'una-clave-solo-de-prueba';
+  await q.elemento('formulario').eventos.submit({ preventDefault() {} });
+  assert.deepEqual(q.destinos, ['/']);
+  // Una ruta propia normal sigue funcionando.
+  const r = pagina({ search: '?volver=%2Facademy%2F.%2Fcomo-leer-el-radar' });
+  r.vista('entrar').eventos.click();
+  r.elemento('correo').value = 'alta@example.test';
+  r.elemento('clave').value = 'una-clave-solo-de-prueba';
+  await r.elemento('formulario').eventos.submit({ preventDefault() {} });
+  assert.deepEqual(r.destinos, ['/academy/como-leer-el-radar']);
+});
+
 test('«Crear cuenta gratis» del candado: tras el alta, entrar en esa misma página vuelve a /academy/', async () => {
   const p = pagina({ search: '?volver=%2Facademy%2F' });
   assert.equal(p.elemento('enviar').textContent, 'Crear cuenta gratis');

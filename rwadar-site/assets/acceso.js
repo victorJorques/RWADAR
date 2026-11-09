@@ -195,8 +195,12 @@
   function regresar() {
     const value = new URLSearchParams(location.search).get('volver') || '/';
     let path = '/';
+    // Se valida también la ruta ya normalizada: '/.//x', '/%2e//x' o '/a/..//x'
+    // pasan la comprobación de la cadena, pero su pathname sale '//x', que
+    // location.replace llevaría a otra web (revisión del 08/11/2026).
     try { const target = new URL(value, location.origin);
       if (value.startsWith('/') && !value.startsWith('//') && !/[\\\r\n\u0000]/.test(value) && target.origin === location.origin &&
+        target.pathname.startsWith('/') && !target.pathname.startsWith('//') && !target.pathname.includes('\\') &&
         !/^\/(?:api\/|acceso(?:\.html)?(?:\/|$))/.test(target.pathname)) path = target.pathname;
     } catch { /* Invalid destinations return to the protected home. */ }
     location.replace(path);

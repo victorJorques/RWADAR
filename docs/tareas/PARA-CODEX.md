@@ -6,6 +6,22 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 8 de noviembre de 2026 (2) · Claude · candado de la Academy: arreglos de la revisión independiente
+
+Misma rama `claude/academy-candado`, encima del commit del candado. Revisores independientes confirmaron 9 hallazgos; están todos arreglados y cada uno tiene su prueba. **Sin publicar.**
+
+- **Redirección abierta en `volver` (ya existía, antes del candado).** `regresar()` de `acceso.js` y `retornoSeguro()` del servidor comprobaban la cadena, pero navegaban a la ruta ya normalizada. `/.//otra-web`, `/%2e//otra-web` o `/academy/..//otra-web` acababan en otra web tras entrar con la contraseña. Ahora también se rechaza la ruta normalizada que empiece por `//`. Pruebas en `servidor.test.mjs`, `alta-avisos-navegador.test.mjs` y Chromium.
+- **Quien ya tiene cuenta veía «Crear cuenta gratis» al cargar.** El script del candado va ahora en `<head>` sin `defer` (en el índice y en la portada). Marca `html.candado-comprobando` y el recuadro dice «Comprobando tu sesión…» hasta que el servidor responde. Con un 401, un fallo de red o a los 8 s salen los botones; sin JavaScript se ven desde el principio. **Lo que queda:** con sesión, durante una ida y vuelta al servidor (unos 0,2-0,5 s) se ven las lecciones difuminadas con «Comprobando tu sesión…», y luego se desvanecen en 0,35 s. Si el foco estaba en el recuadro, pasa a la primera lección.
+- **Con zoom al 200 % o 400 % el botón «entrar» quedaba cortado.** El recuadro solo es fijo con 600 px de alto o más. Por debajo queda arriba del bloque y más compacto. Medido a 683×319, 640×290 y 320×256: los dos botones se ven enteros.
+- **Los saltos «Nivel 1/2/3» llevaban a contenido oculto.** Ahora van dentro de lo difuminado e inerte. Si se llega sin sesión con `#intermedio`, el foco pasa al título del recuadro y el Tab sigue en «Crear cuenta gratis». Chromium aplica el ancla al terminar de cargar, así que el foco se pone después de `load`.
+- **La primera pantalla no enseñaba el candado.** La fila «Gratis con tu cuenta / Crea tu cuenta gratis…» del índice es ahora un aviso con el candado, «Lecciones bloqueadas». Con sesión pasa a «Lecciones desbloqueadas», así que al volver de `/acceso` se ve arriba que se ha abierto. El tutorial 3D sigue nítido y fuera. En el escritorio, lo difuminado sigue empezando bajo el tutorial 3D, por debajo de la primera pantalla.
+- **La portada con sesión seguía invitando a crear cuenta.** Ahora lleva `data-academy-sin-cuenta` y su versión `data-academy-con-cuenta`, que el script cambia al abrir.
+- **«Cuenta confirmada: Academy desbloqueada»** solo sale con la sesión ya confirmada. Antes salía también con el candado cerrado.
+- **Pruebas que faltaban:** `probar-precarga.cjs` rechaza tres índices mutados (abierto, sin `inert` o sin el script con huella). Con esa compuerta apagada, la prueba falla. La parte de Chromium comprueba antes que `rwadar-publicado/` está construido con el código de hoy; si no, falla con «ejecuta antes npm run test:web».
+- Textos nuevos ES/EN en `idioma-en.js`, copiados a la web: «Lecciones bloqueadas», «Lecciones desbloqueadas» y dos frases con cuenta. «Comprobando tu sesión…» ya existía. La app no los enseña; el guardián de la OTA da `ok`.
+
+**Pendiente (Víctor):** publicar la web cuando lo autorice.
+
 ## 8 de noviembre de 2026 (1) · Claude · Academy con candado en la web (difuminada sin cuenta, se abre al entrar)
 
 Víctor: «Quiero que esté bloqueado Academy, que solo se desbloquee al crearse la cuenta, que salga difuminada la página y con un candado, y al registrarse y entrar ya se desbloquee». Rama `claude/academy-candado`. **Sin publicar.**

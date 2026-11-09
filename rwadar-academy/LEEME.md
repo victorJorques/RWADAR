@@ -111,11 +111,41 @@ dos) en un candado:
 - **No es la puerta:** la lección la sigue cerrando el servidor (303 o 401).
   El candado solo cambia lo que se ve en el índice.
 
+Ajustes tras la revisión independiente (08/11/2026):
+
+- **El candado se ve sin bajar:** en la cabecera del índice, la fila «Gratis
+  con tu cuenta / Crea tu cuenta gratis…» es ahora un aviso con el candado,
+  «Lecciones bloqueadas». Con sesión cambia a «Lecciones desbloqueadas» con el
+  candado abierto. Los saltos «Nivel 1/2/3» van dentro de lo difuminado e
+  inerte: con el candado cerrado no llevan a un destino oculto.
+- **Mientras se pregunta por la sesión no se invita a crear cuenta:** el script
+  va en `<head>` sin `defer`, marca `html.candado-comprobando` antes de pintar
+  y el recuadro dice «Comprobando tu sesión…». Los botones salen con el 401,
+  con un fallo de red o a los 8 s; sin JavaScript se ven desde el principio.
+  **Lo que no se puede quitar:** con sesión, durante esa ida y vuelta al
+  servidor (unos 0,2-0,5 s) se ven las lecciones difuminadas con el recuadro, y
+  luego se desvanecen. El HTML no puede nacer abierto sin que el servidor lo
+  confirme.
+- **Foco:** si estaba en el recuadro al abrirse, pasa a la primera lección. Si
+  se llega sin sesión con un ancla a un nivel (`/academy/#intermedio`), pasa al
+  título del recuadro, para que el Tab siga en «Crear cuenta gratis».
+- **Con poca altura** (zoom al 200 % o al 400 %, móvil apaisado) el recuadro no
+  es fijo: queda arriba del bloque, más compacto, con los dos botones a la
+  vista.
+- **Lo que solo vale sin cuenta** lleva `data-academy-sin-cuenta`, y su versión
+  con cuenta, `data-academy-con-cuenta hidden`. El script cambia uno por otro al
+  abrir, en el índice y en la portada.
+- **«Cuenta confirmada: Academy desbloqueada»** (`/academy/#cuenta-confirmada`)
+  solo sale con la sesión ya confirmada, la misma que abre el candado.
+
 Con `"publico"` el candado desaparece solo al regenerar (no se escribe ni la
 hoja ni el script en el índice). Pruebas:
 `rwadar-acceso/academy-candado-navegador.test.mjs` (HTML, script en una VM con
 la pasarela de verdad y, si Playwright está instalado, Chromium con el worker
-local).
+local). La parte de Chromium falla si `rwadar-publicado/` no está construido con
+el código de hoy: lanzada sola, ejecuta antes `npm run test:web`.
+`probar-precarga.cjs` comprueba que `validarBase` rechaza un índice abierto, sin
+`inert` o sin el script del candado.
 
 ### Volver a `"publico"`: lo que cambia solo y lo que hay que cambiar a mano
 
