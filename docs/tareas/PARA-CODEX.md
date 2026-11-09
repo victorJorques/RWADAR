@@ -6,6 +6,34 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 9 de noviembre de 2026 (2) · Claude · flujos con las claves de Víctor («Dominio de correo» y «Supabase (gestión de Auth)»)
+
+Rama `claude/claves-0711`, sin unir ni lanzar: **las claves aún no existen y no se ha llamado a ninguna API de verdad.** Primer commit `3989d2a` (los dos flujos); el segundo corrige 15 hallazgos de la revisión independiente y aplica la decisión de Víctor del 08/11.
+
+**Decisión del 08/11: no hay clave de Cloudflare.** Los registros DNS de Lettermint los copia en Cloudflare la sesión de Claude del PC de Víctor, con su Chrome, mientras él mira.
+- «Dominio de correo» (`dominio-correo.yml`, `rwadar-app/dominio-correo.mjs`): `estado`, `verificar-dominio`, `ajustar-rutas` y `crear-token-base` funcionan sin `CLOUDFLARE_DNS_TOKEN`. `estado` dice «Sin clave de Cloudflare: el DNS se pone a mano desde el panel» y sigue con Lettermint, en verde. `preparar-dominio` queda por si algún día existe la clave; sin ella, para sin hacer ninguna petición.
+- «Supabase (gestión de Auth)» (`supabase-gestion.yml`, `rwadar-app/supabase-gestion.mjs`): `estado`, `plantillas` y `smtp-lettermint`.
+
+**Las dos claves** (detalle: `PLAN-CEO-2026-11-06.md`, «Claves que da Víctor»):
+- `SUPABASE_ACCESS_TOKEN`: con alcance, solo `exgpmjpaaebyoolpwced`; Auth Config y Project Settings en lectura y escritura; **sin Database** (su «Read only query» lee toda la base, Vault incluido); un año de caducidad como mucho.
+- `LETTERMINT_GESTION_TOKEN` (nombre nuevo): `read:team` y lectura y escritura de projects, domains y routes. Se revoca al acabar la ronda 2.
+- `LETTERMINT_TEAM_TOKEN` se queda **solo** para `sincronizar-bajas` de «Correo Lettermint», con solo `read:suppressions`: uno por uso, y el trabajo diario no puede crear tokens que envían como `rwadar.app`.
+
+**Lo que cambió con la revisión**
+- `SUPABASE_DB_URL`: se comprueba su forma antes de llamar a psql, sin enseñar nada de ella; se enmascaran el usuario y la contraseña sueltos; el error de psql ya no se copia en crudo (libpq repetía la contraseña entre comillas: probado con psql 17.11).
+- psql de `crear-token-base` con `verify-full` y la CA de Supabase. **Pendiente:** la CA (`rwadar-app/certificados/supabase-ca.crt`) aún no está; la sube la sesión de Claude del PC (ver el `LEEME.md` de esa carpeta). Sin ella, `crear-token-base` para sin crear nada. Cuando funcione, pasar a `verify-full` los demás flujos con `SUPABASE_DB_URL`.
+- Si psql no responde limpio al guardar en Vault, se mira solo leyendo la huella SHA-256 de lo que guarda Vault antes de borrar nada; si no se puede mirar, no se borra ningún token.
+- Con dos tokens del mismo nombre, ya no dice «Ya está hecho»; un remitente distinto del guardado sale en rojo; si Supabase responde 200 pero al releer no coincide, no se borra el token anterior.
+- El estado del dominio se lee del listado de Lettermint (GET `/domains/{id}` no trae `status`), y el doble ya no se lo inventa.
+- La prueba de recuperación mira el CAPTCHA de Supabase y el `error_code`; solo un 5xx sugiere volver al SMTP de antes, y remite al bloque «el SMTP de antes».
+- RUNBOOK, «Encender el correo», pasos 3 a 9, reescritos con los flujos (`guardar-correo` queda como alternativa).
+
+**Pruebas:** `node --test .github/claves.test.mjs` 42/42 (eran 26). 21 mutaciones de la capa que tapa claves, la paginación, el DKIM, las relecturas y lo nuevo: todas las tumba alguna prueba. `npm test` de la raíz en verde.
+
+**Pendiente:**
+- La CA de Supabase (arriba).
+- `prueba-correo` de «Correo Lettermint» aún lee el token del secreto `LETTERMINT_API_TOKEN`, que con `crear-token-base` ya no existe: cambiarla para que lo lea del Vault antes de la prueba real (`PLAN-CEO`, «después de la ronda 2»).
+- La primera ejecución real de cada flujo dirá si algún permiso o forma de respuesta de Lettermint no es como dice su documentación (están marcados «verificar»).
 ## 9 de noviembre de 2026 (1) · Claude · candado de la Academy: arreglos de la revisión independiente
 
 Misma rama `claude/academy-candado`, encima del commit del candado (`3a1430a`). Revisores independientes confirmaron 9 hallazgos; están todos arreglados y cada uno tiene su prueba. **Sin publicar.**

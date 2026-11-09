@@ -217,7 +217,9 @@ Contratos de encargo: [`legal/encargados/README.md`](legal/encargados/README.md)
   escribir `AVISOS` y hacen una copia cifrada antes. Para el correo, además:
   `ensayo-31` y `aplicar-31` (la 31: el correo sale por Lettermint) y
   `guardar-correo` (copia al Vault el secreto de GitHub
-  `LETTERMINT_API_TOKEN` y guarda el remitente). **Si se reaplica la 30, hay
+  `LETTERMINT_API_TOKEN` y guarda el remitente; desde el 08/11 lo normal es
+  `crear-token-base` de «Dominio de correo», que guarda el token en el Vault
+  sin pasar por GitHub: ver «Encender el correo», abajo). **Si se reaplica la 30, hay
   que reaplicar la 31:** la 30 devuelve el envío al código de Brevo.
 - **Bajas que llegan por correo** (LSSI art. 22.1: basta con pedirlo al
   remitente). Mientras salgan avisos:
@@ -256,31 +258,63 @@ Contratos de encargo: [`legal/encargados/README.md`](legal/encargados/README.md)
      `rwadar.es` parece libre, pero Cloudflare no vende `.es`.
   2. Crear la cuenta y un proyecto en Lettermint. Con eso se acepta su
      contrato de encargo: apuntar la fecha en `legal/encargados/README.md`.
-  3. Añadir el dominio en Lettermint y poner sus registros DNS en Cloudflare.
-  4. Crear el token del proyecto (sin pegarlo en ningún sitio).
-  5. Guardarlo como secreto de GitHub `LETTERMINT_API_TOKEN`.
-  6. Flujo «Avisos a registrados (base)»: `ensayo-31` y después `aplicar-31`.
-  7. Mismo flujo: `guardar-correo`, con remitente `avisos@<dominio>`.
+  3. Añadir el dominio en Lettermint (Domains › Add domain, asociado al
+     proyecto «RWAdar») y copiar sus registros DNS en Cloudflare ›
+     `rwadar.app` › DNS: lo hace a mano la sesión de Claude del PC de Víctor,
+     con su Chrome, mientras él mira (no hay clave de Cloudflare: decisión
+     del 08/11/2026). Los CNAME en «DNS only»; si ya hay un SPF en la raíz,
+     se fusiona, nunca un segundo SPF. Después, flujo «Dominio de correo» ›
+     `verificar-dominio` hasta que salga verificado (`estado` enseña cómo va
+     cada registro). `preparar-dominio` solo sirve si algún día existe
+     `CLOUDFLARE_DNS_TOKEN`; sin él, para sin hacer nada.
+  4. Las dos claves de Víctor, como secretos de GitHub:
+     `LETTERMINT_GESTION_TOKEN` y `SUPABASE_ACCESS_TOKEN` (permisos y
+     caducidad: `tareas/PLAN-CEO-2026-11-06.md`, «Claves que da Víctor»).
+  5. Subir en un PR la CA de Supabase como
+     `rwadar-app/certificados/supabase-ca.crt` (Project Settings › Database ›
+     SSL Configuration › Download certificate; es pública). Sin ella,
+     `crear-token-base` no crea nada.
+  6. «Dominio de correo» › `ajustar-rutas` (seguimiento apagado; prueba a
+     quitar el enlace de baja de Lettermint, que en el plan gratis lo
+     rechazan: sus bajas se aplican a mano, arriba, o con `sincronizar-bajas`
+     de «Correo Lettermint», que usa su propio `LETTERMINT_TEAM_TOKEN` de solo
+     `read:suppressions`). Escribir al soporte para que lo quiten es opcional.
+  7. «Dominio de correo» › `crear-token-base`, con el remitente
+     `avisos@<dominio>`. Crea el token de proyecto «RWAdar base (API)» y lo
+     guarda **directamente** en el Vault con
+     `db/31_correo_lettermint_guardar.sql`; nadie lo ve ni lo copia. Si ya
+     hay uno, no crea otro sin `rotar` = `SI`. (La 31 ya está aplicada desde
+     el 06/11; si se reaplica, «Avisos a registrados (base)» › `ensayo-31` y
+     `aplicar-31`.) **Alternativa**, solo si estos flujos no se pueden usar:
+     crear el token a mano, guardarlo como secreto `LETTERMINT_API_TOKEN` y
+     lanzar `guardar-correo` de «Avisos a registrados (base)». No mezclar los
+     dos caminos: un token puesto a mano, `crear-token-base` no lo sabe
+     borrar al rotar (lo dice y hay que borrarlo en el panel).
   8. Pasar los correos de Auth (confirmación y recuperación) a Lettermint,
-     en este orden (detalle en el contrato, punto 5.8):
-     1. pegar en Supabase › Authentication › Emails › Templates las dos
-        plantillas de `rwadar-app/plantillas-auth/`, que llevan la dirección
-        postal en el pie (Lettermint la pide en cada correo);
+     con el flujo «Supabase (gestión de Auth)» y en este orden (detalle en el
+     contrato, punto 5.8):
+     1. `plantillas`: pone las dos de `rwadar-app/plantillas-auth/`, con la
+        dirección postal en el pie (Lettermint la pide en cada correo), y
+        guarda antes las de ahora como artefacto (vuelta atrás);
      2. dejar al día la privacidad (§6 y §8: Lettermint en vez de Gmail para
         estos correos) y la «Información básica», y publicarlas **antes** de
-        cambiar el SMTP;
-     3. en Lettermint, la ruta de servicio con el seguimiento apagado (por
-        SMTP no van los `settings` de la API);
-     4. Supabase › Authentication › Emails › SMTP Settings: host
-        `smtp.lettermint.co`, puerto `587`, usuario `lettermint`, contraseña
-        el token, remitente `avisos@<dominio>`;
-     5. probar una recuperación de contraseña y mirar el original (sin
-        píxel, enlace sin reescribir, dirección en el pie);
-     6. quitar el Gmail (`rwadares@gmail.com`), que no tiene contrato de
-        encargo.
-  9. Pedir al soporte de Lettermint que quite su enlace de baja automático de
-     la ruta de difusión (RWAdar tiene su baja). Mientras no lo hagan, sus
-     bajas se aplican a mano (arriba).
+        cambiar el SMTP (`smtp-lettermint` lo comprueba y, si no, para);
+     3. `smtp-lettermint`, con `cuenta_verificada` = `SI` (solo cuando
+        Lettermint haya aprobado la verificación de la cuenta), el remitente
+        `avisos@<dominio>` y `correo_prueba` = el buzón de Víctor. Crea el
+        token «RWAdar Auth (SMTP)», enseña el SMTP de antes (vuelta atrás) y
+        pone host `smtp.lettermint.co`, puerto `587` y usuario `lettermint`;
+     4. mirar el original del correo de prueba (sin píxel, enlace sin
+        reescribir, dirección en el pie). Si Supabase tiene el CAPTCHA
+        encendido, la prueba se hace con «¿Has olvidado tu contraseña?» en la
+        web;
+     5. quitar el Gmail (`rwadares@gmail.com`), que no tiene contrato de
+        encargo, y revocar `LETTERMINT_GESTION_TOKEN`.
+  9. Si algo de esto falla, el flujo sale en rojo y dice qué hacer. **A mano,
+     solo como alternativa**: pegar las plantillas en Supabase ›
+     Authentication › Emails › Templates y el SMTP en SMTP Settings, con un
+     token de proyecto creado en Lettermint que no se pega en ningún otro
+     sitio.
   10. Prueba real a un buzón propio: en el código fuente del correo, ningún
       píxel ni enlaces reescritos; la cabecera `List-Unsubscribe`; y que la
       ruta de difusión se llama `broadcast`.

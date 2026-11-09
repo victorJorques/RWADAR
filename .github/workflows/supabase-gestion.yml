@@ -1,0 +1,149 @@
+name: Supabase (gestión de Auth)
+
+# Supabase Auth y la versión de Postgres con la Management API, sin que
+# Víctor toque el panel (ronda 2 de docs/tareas/PLAN-CEO-2026-11-06.md):
+#
+# · estado (solo lee): estado del proyecto y versión de Postgres; si se puede
+#   actualizar Postgres (aquí no se actualiza: solo se dice si se puede); de
+#   la configuración de Auth, SOLO los campos del SMTP que no son secretos, el
+#   límite de correos y los dos asuntos; y si las plantillas de confirmación y
+#   de recuperación son iguales a las del repositorio (SHA-256). Nunca enseña
+#   smtp_pass ni ninguna clave. Lo de actualizar Postgres no lo mira: Supabase
+#   pide para eso Database (Read), que deja leer toda la base con SQL.
+# · plantillas: pone los dos asuntos y las dos plantillas de
+#   rwadar-app/plantillas-auth/ (asuntos de su LEEME.md). Guarda antes las que
+#   había como artefacto del flujo (vuelta atrás). Si ya están, no cambia nada.
+# · smtp-lettermint: pasa el SMTP de Auth a Lettermint. Exige SI en
+#   «cuenta_verificada»: solo cuando Lettermint haya APROBADO la verificación
+#   de la cuenta (antes, los correos de la gente no saldrían). Comprueba
+#   además, antes de crear nada, que el dominio está verificado, que las
+#   plantillas ya son las del repositorio (con la dirección postal) y que la
+#   privacidad publicada ya nombra a Lettermint (punto 5.8.2). Crea el token
+#   «RWAdar Auth (SMTP)» (enmascarado, nunca se enseña), enseña el SMTP de
+#   antes (vuelta atrás) y lo cambia. Con «correo_prueba», pide un correo real
+#   de recuperación a esa dirección y cuenta solo el código HTTP y el
+#   error_code (con el CAPTCHA de Supabase encendido, no la manda: se prueba
+#   desde la web).
+#
+# Las acciones que cambian algo piden escribir SUPABASE en «confirmar» y orden
+# expresa de Víctor (AGENTS.md: «poner la plantilla de Auth» y tocar Supabase
+# en línea). Solo desde main. No usa la base (ni psql ni SUPABASE_DB_URL).
+#
+# Secretos: SUPABASE_ACCESS_TOKEN (con alcance, solo este proyecto: Auth
+# Config y Project Settings en lectura y escritura, sin Database) y, solo en
+# smtp-lettermint, LETTERMINT_GESTION_TOKEN (cómo se crean:
+# PLAN-CEO-2026-11-06.md, «Claves que da Víctor»). Pasos:
+# rwadar-app/supabase-gestion.mjs. Pruebas: .github/claves.test.mjs.
+
+on:
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: 'Qué hacer'
+        required: true
+        type: choice
+        options:
+          - estado
+          - plantillas
+          - smtp-lettermint
+      confirmar:
+        description: 'Escribe SUPABASE para plantillas y smtp-lettermint (estado no lo necesita)'
+        required: false
+        type: string
+      cuenta_verificada:
+        description: 'Solo smtp-lettermint: escribe SI cuando Lettermint haya APROBADO la verificación de la cuenta'
+        required: false
+        type: string
+      remitente:
+        description: 'Solo smtp-lettermint: remitente de los correos de la cuenta, del dominio rwadar.app (por ejemplo, avisos@rwadar.app)'
+        required: false
+        type: string
+      correo_prueba:
+        description: 'Solo smtp-lettermint, opcional: buzón propio al que mandar un correo real de recuperación de contraseña'
+        required: false
+        type: string
+      rotar:
+        description: 'Solo smtp-lettermint: escribe SI para cambiar el token si ya existe (el viejo se borra después)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rwadar-supabase-gestion
+  cancel-in-progress: false
+
+jobs:
+  supabase:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    # Las entradas llegan por el entorno y las valida el script; nunca van
+    # dentro de un run:.
+    env:
+      ACCION: ${{ inputs.accion }}
+      CONFIRMAR: ${{ inputs.confirmar }}
+      CUENTA_VERIFICADA: ${{ inputs.cuenta_verificada }}
+      REMITENTE: ${{ inputs.remitente }}
+      CORREO_PRUEBA: ${{ inputs.correo_prueba }}
+      ROTAR: ${{ inputs.rotar }}
+    steps:
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "Este flujo solo se lanza desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            rwadar-app/supabase-gestion.mjs
+            rwadar-app/claves-comun.mjs
+            rwadar-app/plantillas-auth/LEEME.md
+            rwadar-app/plantillas-auth/confirmar-alta.html
+            rwadar-app/plantillas-auth/recuperar-acceso.html
+            rwadar-acceso/compilar.cjs
+            rwadar-node-seguro.js
+          sparse-checkout-cone-mode: false
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          # Parche de seguridad de Node del 21/10/2026, como en el vigilante.
+          node-version: 22.23.4
+
+      - name: Comprobar que Node lleva el parche de seguridad
+        run: node rwadar-node-seguro.js
+
+      - name: Comprobar la acción
+        run: node rwadar-app/supabase-gestion.mjs comprobar
+
+      - name: Ver cómo está (solo lee)
+        if: inputs.accion == 'estado'
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: node rwadar-app/supabase-gestion.mjs ejecutar
+
+      - name: Poner las plantillas y los asuntos de Auth
+        if: inputs.accion == 'plantillas'
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: node rwadar-app/supabase-gestion.mjs ejecutar
+
+      - name: Guardar las plantillas anteriores 35 días (vuelta atrás)
+        if: always() && inputs.accion == 'plantillas' && env.PLANTILLAS_ANTERIORES != ''
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: plantillas-anteriores-${{ github.run_number }}
+          path: ${{ env.PLANTILLAS_ANTERIORES }}
+          retention-days: 35
+          if-no-files-found: error
+
+      - name: Pasar el SMTP de Auth a Lettermint
+        if: inputs.accion == 'smtp-lettermint'
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          LETTERMINT_GESTION_TOKEN: ${{ secrets.LETTERMINT_GESTION_TOKEN }}
+        run: node rwadar-app/supabase-gestion.mjs ejecutar

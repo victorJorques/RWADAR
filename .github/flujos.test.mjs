@@ -1,5 +1,6 @@
 // Pruebas sin red de reglas comunes a los flujos de GitHub:
-// - todo flujo que se conecta a Supabase exige TLS (PGSSLMODE=require);
+// - todo flujo que se conecta a Supabase exige TLS (PGSSLMODE=require; el
+//   psql de claves-comun.mjs, verify-full con la CA de Supabase);
 // - la detección de «solo documentación» de ci.yml (.github/cambios-ci.sh),
 //   en repositorios git de usar y tirar;
 // - que las pruebas escriban entera la ruta de cada documento que leen (si
@@ -25,7 +26,7 @@ test('todo flujo que usa SUPABASE_DB_URL exige TLS con PGSSLMODE=require para to
   const conBase = fs.readdirSync(FLUJOS).filter(n => /\.ya?ml$/.test(n))
     .filter(n => /secrets\.SUPABASE_DB_URL/.test(fs.readFileSync(path.join(FLUJOS, n), 'utf8'))).sort();
   assert.deepEqual(conBase, ['aplicar-catalogo.yml', 'avisar-novedad.yml', 'avisos-base.yml', 'copia-seguridad.yml',
-    'correo-lettermint.yml', 'vigilante.yml'], 'si se añade un flujo con la base, que entre en esta regla');
+    'correo-lettermint.yml', 'dominio-correo.yml', 'vigilante.yml'], 'si se añade un flujo con la base, que entre en esta regla');
   for (const n of conBase) {
     const flujo = fs.readFileSync(path.join(FLUJOS, n), 'utf8');
     assert.match(flujo, /^env:\n {2}PGSSLMODE: require\n/m, `${n}: env de nivel de flujo con PGSSLMODE: require`);
@@ -39,6 +40,12 @@ test('todo flujo que usa SUPABASE_DB_URL exige TLS con PGSSLMODE=require para to
   assert.match(leer('rwadar-app/correo-lettermint.sh'), /^export PGSSLMODE="\$\{PGSSLMODE:-require\}"$/m);
   assert.match(leer('rwadar-app/copia-seguridad.sh'), /URL="\$URL\?sslmode=require"/);
   assert.match(leer('.github/vigilante.mjs'), /PGSSLMODE: entorno\.PGSSLMODE \|\| 'require'/);
+  // dominio-correo.mjs (crear-token-base) llama a psql desde rwadar-app/claves-comun.mjs,
+  // y como manda un token, va más allá: comprueba el certificado con la CA de
+  // Supabase (verify-full), siempre, sin que el entorno lo pueda rebajar.
+  assert.match(leer('rwadar-app/claves-comun.mjs'), /PGSSLMODE: 'verify-full', PGSSLROOTCERT: ca,/);
+  assert.doesNotMatch(leer('rwadar-app/claves-comun.mjs'), /entorno\.PGSSLMODE/, 'claves-comun.mjs no deja que el entorno rebaje el TLS');
+  assert.doesNotMatch(leer('rwadar-app/claves-comun.mjs').replace(/^\s*(\/\/|\*|\/\*).*$/gm, ''), /sslmode=(disable|allow|prefer)/);
 });
 
 /* ---------- .github/cambios-ci.sh ---------- */
