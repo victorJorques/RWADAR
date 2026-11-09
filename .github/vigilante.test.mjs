@@ -178,6 +178,21 @@ test('version-android.json: falta, no es JSON, forma mala o enlace ajeno, todo f
   }
 });
 
+test('version-android.json: GitHub caído (5xx, 429 o sin red) no manda a editar la release', async () => {
+  for (const [respuesta, esperado] of [
+    [() => new Response('<title>Unicorn! · GitHub</title>', { status: 504 }), /GitHub no responde: da 504/],
+    [() => new Response('lento', { status: 429 }), /GitHub no responde: da 429/],
+    [() => { throw new TypeError('fetch failed'); }, /no responde tras 3 intentos/],
+  ]) {
+    const r = buscar(await correr({ cambios: { [VERSION_ANDROID]: respuesta } }), 'version-android');
+    assert.equal(r.ok, false);
+    assert.match(r.detalle, esperado);
+    assert.match(r.queHacer, /pasajero/);
+    assert.match(r.queHacer, /githubstatus\.com/);
+    assert.doesNotMatch(r.queHacer, /edita esa release/);
+  }
+});
+
 test('version-android.json: la regla es la misma que la de la app', () => {
   const { validarVersionPublicada } = require('../rwadar-movil/lib/actualizaciones-app.js');
   const bueno = { plataforma: 'android', version: '1.4.2', versionCode: 24, apk: `${PREFIJO_APK}v1.4.2/RWAdar.apk` };
@@ -445,4 +460,34 @@ test('el flujo diario: horario fijo fuera de 06-09 h del Pacífico, solo lectura
   assert.match(flujo, /postgresql-client-17/);
   assert.match(flujo, /SUPABASE_DB_URL: \$\{\{ secrets\.SUPABASE_DB_URL \}\}/);
   for (const usa of flujo.match(/uses: \S+/g)) assert.match(usa, /@[0-9a-f]{40}$/, `${usa} va fijada por commit`);
+});
+
+test('el flujo diario avisa a Víctor con una incidencia y la cierra cuando todo va bien', () => {
+  const flujo = fs.readFileSync(path.join(raiz, '.github/workflows/vigilante.yml'), 'utf8');
+  // Solo el trabajo puede escribir incidencias; el script no recibe token.
+  assert.match(flujo, /^ {4}permissions:\n {6}contents: read\n {6}issues: write\n/m);
+  assert.equal((flujo.match(/issues: write/g) || []).length, 1);
+  const paso = (nombre) => {
+    const i = flujo.indexOf(`- name: ${nombre}`);
+    assert.ok(i >= 0, `falta el paso «${nombre}»`);
+    const siguiente = flujo.indexOf('\n      - name:', i + 1);
+    return flujo.slice(i, siguiente < 0 ? undefined : siguiente);
+  };
+  const vigilar = paso('Vigilar la web, las descargas y la base');
+  assert.doesNotMatch(vigilar, /GH_TOKEN|github\.token/);
+  const avisar = paso('Avisar a Víctor si algo falla');
+  assert.match(avisar, /if: failure\(\)/);
+  assert.match(avisar, /continue-on-error: true/);
+  assert.match(avisar, /@victorJorques/);
+  assert.match(avisar, /gh issue comment "\$NUM"/);
+  assert.match(avisar, /gh issue create --title "\$TITULO"/);
+  assert.doesNotMatch(avisar, /SUPABASE_DB_URL|secrets\./);
+  const cerrar = paso('Cerrar el aviso si ya está todo bien');
+  assert.match(cerrar, /if: success\(\)/);
+  assert.match(cerrar, /gh issue close "\$NUM"/);
+  assert.doesNotMatch(cerrar, /SUPABASE_DB_URL|secrets\./);
+  // El mismo título en los dos pasos, para que se encuentren.
+  const titulos = flujo.match(/TITULO='([^']+)'/g);
+  assert.equal(titulos.length, 2);
+  assert.equal(new Set(titulos).size, 1);
 });

@@ -12,12 +12,13 @@ name: Vigilante diario
 #
 # Necesita el secreto SUPABASE_DB_URL (el mismo de «Copia de seguridad»).
 #
-# Ojo: GitHub solo ejecuta los horarios desde main, y manda el correo de los
-# fallos a quien cambió por última vez la línea «cron» (o a quien volvió a
-# activar el flujo). Para asegurarte de que te llega a ti: Actions › Vigilante
-# diario › «…» › Disable workflow y después Enable workflow, y en tu perfil
-# de GitHub › Settings › Notifications › Actions, deja marcado el correo
-# («Only notify for failed workflows»).
+# Aviso a Víctor (08/11/2026): el correo de GitHub por un flujo en rojo va a
+# quien cambió por última vez la línea «cron», y eso no se controla bien. Por
+# eso, si algo falla, el propio flujo abre (o comenta) una incidencia en el
+# repositorio que menciona a @victorJorques, con el enlace a esta ejecución; le
+# llega por correo y en la app de GitHub sin que tenga que configurar nada.
+# Cuando vuelve a salir todo bien, la cierra sola. GitHub solo ejecuta los
+# horarios desde main.
 
 on:
   schedule:
@@ -44,6 +45,11 @@ jobs:
   vigilar:
     runs-on: ubuntu-24.04
     timeout-minutes: 8
+    # Permiso de incidencias solo para el aviso (abrir, comentar o cerrar
+    # «Vigilante: algo falla en RWAdar»). El script no recibe ningún token.
+    permissions:
+      contents: read
+      issues: write
     steps:
       # Solo lo que usa el vigilante: el script, la lista de lecciones y la
       # comprobación del parche de Node.
@@ -83,3 +89,35 @@ jobs:
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: node .github/vigilante.mjs
+
+      # El cuerpo solo lleva la mención y el enlace: el detalle (ya tapado) se
+      # queda en la página de la ejecución, que solo ve quien tiene acceso.
+      - name: Avisar a Víctor si algo falla
+        if: failure()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ENLACE: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          TITULO='Vigilante: algo falla en RWAdar'
+          NUM="$(gh issue list --state open --limit 100 --json number,title \
+            --jq "map(select(.title == \"$TITULO\")) | .[0].number // empty")"
+          CUERPO="@victorJorques el vigilante de hoy ha encontrado algo que falla. Abre este enlace: arriba sale qué falla y qué hacer, en llano. ${ENLACE}"
+          if [ -n "$NUM" ]; then gh issue comment "$NUM" --body "$CUERPO"
+          else gh issue create --title "$TITULO" --body "$CUERPO"; fi
+
+      - name: Cerrar el aviso si ya está todo bien
+        if: success()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ENLACE: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          TITULO='Vigilante: algo falla en RWAdar'
+          NUM="$(gh issue list --state open --limit 100 --json number,title \
+            --jq "map(select(.title == \"$TITULO\")) | .[0].number // empty")"
+          if [ -n "$NUM" ]; then gh issue close "$NUM" --comment "Hoy ha salido todo bien. La cierro sola. ${ENLACE}"; fi
