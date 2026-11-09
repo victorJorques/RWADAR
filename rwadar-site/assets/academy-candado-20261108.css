@@ -51,10 +51,10 @@
 html.candado-comprobando .candado .candado-espera{display:block}
 html.candado-comprobando .candado .candado-txt,html.candado-comprobando .candado .candado-acciones{display:none}
 
-/* Bloqueado: las tarjetas se ven difuminadas, no se pueden pulsar ni
-   seleccionar (y en el HTML van con inert y aria-hidden). */
+/* Bloqueado: las tarjetas se ven difuminadas (se reconocen, no se leen), no se
+   pueden pulsar ni seleccionar (y en el HTML van con inert y aria-hidden). */
 .candado[data-estado="bloqueado"]{min-height:380px}
-.candado[data-estado="bloqueado"] .candado-contenido{filter:blur(7px);opacity:.5;pointer-events:none;
+.candado[data-estado="bloqueado"] .candado-contenido{filter:blur(5px);opacity:.85;pointer-events:none;
  user-select:none;-webkit-user-select:none}
 .candado-contenido{transition:filter .35s ease,opacity .35s ease}
 .candado[data-estado="abierto"] .candado-contenido{filter:none;opacity:1}
@@ -71,8 +71,10 @@ html:not(.candado-comprobando) .ac-portada .candado[data-estado="bloqueado"] .ca
 
 @media (max-width:640px){
  .candado{--candado-arriba:max(76px,10vh)}
- .candado-capa{padding:18px 0 8px}
- .candado-caja{padding:22px 16px 18px}
+ /* Más estrecho y algo más abajo: a los lados y encima se ven las lecciones
+    difuminadas, no solo un recuadro sobre negro (revisión de capturas, 09/11). */
+ .candado-capa{padding:40px 0 8px}
+ .candado-caja{max-width:min(340px,calc(100% - 40px));padding:22px 16px 18px}
  .candado .candado-tit{font-size:1.125rem}
 }
 /* Pantalla baja: el recuadro, más compacto, cabe entero arriba del bloque. */

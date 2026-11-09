@@ -154,7 +154,12 @@ test('con "acceso": "publico" no hay candado en ninguna de las dos páginas', ()
 });
 
 test('el difuminado solo se aplica bloqueado, respeta el movimiento reducido y no usa estilos en línea', () => {
-  assert.match(candadoCSS, /\.candado\[data-estado="bloqueado"\] \.candado-contenido\{filter:blur\(7px\);opacity:\.5;pointer-events:none;\s*user-select:none/);
+  // Difuminado que se reconoce pero no se lee (09/11: con 7 px y opacidad 0,5
+  // en el móvil solo se veía un recuadro sobre negro).
+  const difuminado = candadoCSS.match(/\.candado\[data-estado="bloqueado"\] \.candado-contenido\{filter:blur\((\d+)px\);opacity:(\.\d+);pointer-events:none;\s*user-select:none/);
+  assert.ok(difuminado, 'falta la regla del difuminado bloqueado');
+  assert.ok(Number(difuminado[1]) >= 4, 'con menos de 4 px se leería el texto');
+  assert.ok(Number(difuminado[2]) >= 0.7 && Number(difuminado[2]) < 1, 'opacidad entre 0,7 y 1');
   assert.match(candadoCSS, /\.candado\[data-estado="abierto"\] \.candado-contenido\{filter:none;opacity:1\}/);
   assert.match(candadoCSS, /@media \(prefers-reduced-motion:reduce\)\{\s*\.candado-contenido,\.candado \.candado-boton\{transition:none\}/);
   assert.match(candadoCSS, /\.candado-capa\[hidden\]\{display:none!important\}/);
