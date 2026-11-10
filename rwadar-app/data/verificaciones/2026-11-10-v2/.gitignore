@@ -24,3 +24,10 @@ grupos/**/.inventario.jsonl
 grupos/acciones-oro-tesoro/fuentes/midas-app-llms-full.txt
 revision-independiente/fuentes/acciones-oro-tesoro/midas-app-llms-full.txt
 
+
+# Noticias del sector: los PDF y HTML originales quedan en disco con su SHA-256
+# en las notas de los analistas; en Git, el JSON, las notas y la verificación.
+noticias/**/*.pdf
+noticias/**/*.html
+noticias/**/*.htm
+noticias/**/crudo/
