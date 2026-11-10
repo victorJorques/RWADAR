@@ -14,11 +14,10 @@ con sus correcciones obligatorias aplicadas. Lo `rechazado` no entra.** Las
 correcciones de los revisores a expedientes de candidatas `no_admitir` valen
 como están en su informe (no se publican).
 
-**Dos entregas hoy.** Esta, `2026-11-10`, pone al día las 22 ofertas
-publicadas y no da ninguna alta. Las altas que superen el panel de tres
-revisores (regulación, producto y cifras/riesgos) irían en una entrega aparte,
-`2026-11-10.2`, con su imagen publicada antes de aplicar su SQL; así el
-catálogo no espera a una imagen nueva.
+**Una sola entrega hoy.** Esta, `2026-11-10`, pone al día las 22 ofertas
+publicadas y no da ninguna alta. Estaba previsto que las altas que superaran
+el panel de tres revisores (regulación, producto y cifras/riesgos) fueran en
+una entrega aparte, `2026-11-10.2`, pero ninguna candidata llega (§3).
 
 ## 1. Lo general
 
@@ -191,7 +190,10 @@ cambios):
 | Bergfürst · Reinvest24 | En liquidación · advertencia de la CNMV (09/06/2025). |
 | Coinbase, Amundi, Blockchain.com/Ondo, eToro, Gate | Ver expedientes de `candidatas-mercados` (solo ADGM, sin ISIN/KID, sin ESI en la CNMV, «próximamente», licencia solo de derivados). |
 | Robin des Fermes · Revario (Aktionariat) | Sin salida (sin recompra ni mercado entre accionistas). |
-| Alan Frei Company · Securitize Stocks | En el panel de tres revisores / en investigación: si entran, en la entrega `2026-11-10.2`. |
+| Alan Frei Company (Aktionariat) | Decisión editorial del coordinador (el panel de tres revisores no llegó a terminar: lo cortó el límite de uso de la cuenta). El revisor del grupo la dejó «confirmada con cambios», pero no cumple el enfoque de Víctor para los clientes: empresa pequeña en pérdidas (−245.285 CHF en 2025 con 99.230 CHF de ingresos), cuentas sin auditar, emisor sin supervisión y sin folleto, precio fijado por el propio emisor, recompra con solo 479,80 ZCHF y sin obligación, y un objeto social inscrito que mezcla actividades reales con otras en tono de broma. «Mejor pocas ofertas excelentes que muchas dudosas.» |
+| Securitize Stocks (Securitize Europe, S.V., CNMV n.º 327) | Pista de la segunda oleada; su investigación a fondo no terminó (límite de uso). Lo leído hoy no basta: ninguna fuente dice en claro que un particular en España pueda comprar hoy («to eligible investors in permitted jurisdictions, subject to onboarding»; la página abre con «tokenized stocks are here for U.S. investors»), solo se opera con un monedero propio de Solana en lista blanca y USDC (más que un KYC normal), no hay KID y el token no se reembolsa en efectivo. **Vigilar.** |
+
+Por eso hoy no hay entrega `2026-11-10.2`.
 
 ## 4. Datos personales
 
