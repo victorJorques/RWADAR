@@ -43,7 +43,7 @@ test('el worker compilado solo exporta funciones con nombre, además de default'
     const modulo = await import('data:text/javascript;base64,' + Buffer.from(construirWorker(undefined, opciones)).toString('base64') + '#' + marca);
     const conNombre = Object.keys(modulo).filter(nombre => nombre !== 'default');
     assert.deepEqual(conNombre.filter(nombre => typeof modulo[nombre] !== 'function'), [], marca + ': exportaciones que no son funciones');
-    assert.deepEqual(conNombre.sort(), ['crearAccesoServidor', 'crearCarteraServidor', 'retornoSeguro'], marca);
+    assert.deepEqual(conNombre.sort(), ['crearAccesoServidor', 'crearCarteraServidor', 'crearTokenizacionServidor', 'retornoSeguro'], marca);
     assert.equal(typeof modulo.default?.fetch, 'function', marca);
   }
 });
@@ -54,9 +54,12 @@ test('la compilación rechaza un servidor que exporta algo que no es una funció
     const raiz = path.join(temporal, 'rwadar-acceso');
     fs.mkdirSync(raiz); fs.mkdirSync(path.join(temporal, 'rwadar-movil', 'lib'), { recursive: true });
     fs.copyFileSync(path.join(AQUI, '..', 'rwadar-movil', 'lib', 'cartera.js'), path.join(temporal, 'rwadar-movil', 'lib', 'cartera.js'));
+    fs.copyFileSync(path.join(AQUI, '..', 'rwadar-movil', 'lib', 'tokenizacion.js'), path.join(temporal, 'rwadar-movil', 'lib', 'tokenizacion.js'));
     const servidor = fs.readFileSync(path.join(AQUI, 'servidor.mjs'), 'utf8');
     const cartera = fs.readFileSync(path.join(AQUI, 'cartera-servidor.mjs'), 'utf8');
-    const escribir = (s, c = cartera) => { fs.writeFileSync(path.join(raiz, 'servidor.mjs'), s); fs.writeFileSync(path.join(raiz, 'cartera-servidor.mjs'), c); };
+    const tokenizacion = fs.readFileSync(path.join(AQUI, 'tokenizacion-servidor.mjs'), 'utf8');
+    const escribir = (s, c = cartera, k = tokenizacion) => { fs.writeFileSync(path.join(raiz, 'servidor.mjs'), s);
+      fs.writeFileSync(path.join(raiz, 'cartera-servidor.mjs'), c); fs.writeFileSync(path.join(raiz, 'tokenizacion-servidor.mjs'), k); };
     escribir(servidor);
     assert.equal(construirWorker(raiz), construirWorker(), 'la copia sin cambios compila igual');
     for (const extra of ["export const VERSION_PRUEBA = 'x';", 'export let marca = 1;', 'export var activo = false;',
@@ -65,9 +68,16 @@ test('la compilación rechaza un servidor que exporta algo que no es una funció
       assert.throws(() => construirWorker(raiz), /servidor\.mjs solo puede exportar funciones/, extra);
       escribir(servidor, cartera + '\n' + extra + '\n');
       assert.throws(() => construirWorker(raiz), /cartera-servidor\.mjs solo puede exportar funciones/, extra);
+      escribir(servidor, cartera, tokenizacion + '\n' + extra + '\n');
+      assert.throws(() => construirWorker(raiz), /tokenizacion-servidor\.mjs solo puede exportar funciones/, extra);
     }
     escribir(servidor + '\nexport async function otraPrueba() {}\n');
     assert.doesNotThrow(() => construirWorker(raiz));
+    // El motor de la tokenización tiene que seguir siendo autónomo.
+    escribir(servidor);
+    const motor = path.join(temporal, 'rwadar-movil', 'lib', 'tokenizacion.js');
+    fs.appendFileSync(motor, "\nconst fs = require('node:fs');\n");
+    assert.throws(() => construirWorker(raiz), /El motor de la tokenización debe ser autónomo/);
   } finally { fs.rmSync(temporal, { recursive: true, force: true }); }
 });
 

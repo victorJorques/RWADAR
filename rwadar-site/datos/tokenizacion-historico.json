@@ -1,0 +1,3 @@
+{"version":1,"fuente":"CoinGecko","fotos":[
+{"fecha":"2026-11-10","actualizado":"2026-11-10T15:25:40.000Z","total":{"valor":49683537033,"cambio24h":-0.8626},"tipos":{"credito-privado":{"valor":27616399208,"cambio24h":-1.0263},"letras-tesoro":{"valor":8051081166,"cambio24h":-1.2268},"materias-primas":{"valor":5899167372,"cambio24h":-1.7744},"acciones":{"valor":2955382890,"cambio24h":-0.4036},"fondos-monetarios":{"valor":2452027227,"cambio24h":-4.2593},"otros-creditos":{"valor":1432461010,"cambio24h":-0.0083},"etf":{"valor":781159650,"cambio24h":4.7376},"inmuebles":{"valor":106118411,"cambio24h":-1.1581}},"oro":{"valor":5620076802,"cambio24h":-1.642}}
+]}

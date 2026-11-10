@@ -6,6 +6,89 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 10 de noviembre de 2026 (4) · Claude · «Noticias del sector»: correcciones de la revisión
+
+La revisora aprobó con cambios. Hecho, en un commit local encima del anterior. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**
+
+**Obligatorias**
+- «Hoy» ya no depende solo de `seccion`: `etiquetaReciente(n, hoyISO)` en `rwadar-movil/lib/noticias-sector.js` da «Hoy» solo si `seccion === 'hoy'` y la fecha es la de hoy, «Ayer» si es del día anterior y nada en el resto. `hoyISO` es la fecha local del dispositivo (`fechaLocal`, sin `Intl`). Web y app la usan en la tarjeta, en su nombre accesible y en el detalle. El 10/11: 1 «Hoy» y 2 «Ayer»; el 13/11, ninguna. Las de hoy siguen primero. «Ayer» → «Yesterday» en los dos `idioma-en`.
+- Ilustración del detalle entera: el lienzo se recorta a la franja del motivo (`RECORTE_DETALLE`: `viewBox 0 30 320 224`, `xMidYMid slice`, 10:7). Web: `.nt-dlg-arte` en 10:7 (a pantalla completa en el móvil; en escritorio, lámina centrada de 514 × 360). App: alto = ancho × 0,7. Comprobado en capturas de las 8 noticias a 390 y 1366 px.
+
+**Recomendadas hechas**
+- Titular con una sola sombra corta (sin el rectángulo oscuro). Tarjetas de escritorio de 280 px con letra de 1,25 rem y fundido en el borde que aún tiene tarjetas (clases `nt-pista--antes/--despues`).
+- Regulación con cuatro figuras (edificio, balanza, documento con sello, mazo); `variantes()` las reparte por turno dentro de cada categoría, así que dos vecinas nunca repiten.
+- Foco visible en alto contraste (`outline` transparente y `CanvasText` en `forced-colors`). La flecha ↗ va dentro del texto del botón, con espacio de no separación.
+- En inglés, «Original source text (Spanish)» encima del nombre de la fuente (web y app, con `FuenteOriginal`). Fuera `tituloInformativo` del detalle (repetía el titular); el dato sigue en el archivo y se valida.
+- La app mira `content-length` antes de leer el cuerpo y corta si no puede caber.
+- La sección de la app, vista con react-native-web (SSR) en capturas: tarjetas, «Hoy»/«Ayer», detalle en castellano e inglés. No es un dispositivo real.
+
+**Pruebas:** `noticias-sector.test.cjs` (14) y `rwadar-acceso/noticias-sector.test.mjs` (2, con reloj fijo el 10/11 y el 13/11). `npm test` de la raíz en verde; guardián de la OTA con la base `fa30779…`: `ok`.
+
+**Pendiente (Víctor):** publicar la web (`/datos/noticias.json`) **antes o a la vez** que la OTA; si la OTA va primero, la app dirá «Ahora no podemos mostrar las noticias» hasta que la web esté publicada.
+
+## 10 de noviembre de 2026 (3) · Claude · «Noticias del sector» en Inicio (web y app)
+
+Víctor pidió una sección pequeña de noticias, del día y las más importantes del sector, «muy visuales, solo el titular». Va en Inicio justo después de «La tokenización en el mundo», en la web y en la app, en un commit encima de ese módulo. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**
+
+**Qué hay**
+- Datos: `rwadar-site/datos/noticias.json`, copia exacta de las 8 noticias verificadas del ciclo del 10/11 (`noticias-2026-11-10.json` de la verificación `2026-11-10-v2`). Ningún texto cambiado. Se publica como recurso estático en `/datos/noticias.json` (en `ARCHIVOS_PUBLICABLES`; la regla de `/datos/*` de `_headers` ya da `max-age=0, must-revalidate` y `noindex`). En cada ciclo de investigación se sustituye este archivo.
+- Motor único `rwadar-movil/lib/noticias-sector.js` (web, app y generador): valida la forma entera (campos exactos, fechas, sección, categoría, ámbito, tipo de fuente, solo `https`, sin `<`/`>`, ids únicos), ordena (las de hoy primero, luego de la más nueva a la más antigua), elige los textos `en` en inglés, da fechas «10/11» / «10 Nov» y dibuja las ilustraciones. Copia web exacta: `node rwadar-app/noticias/copiar-modelo-web.cjs` (`assets/noticias-sector-modelo-20261110.js`). Entra en la huella del contenido aprobado.
+- `rwadar-publicar.js` valida `/datos/noticias.json` con ese motor y **se para** si no vale («rwadar-site/datos/noticias.json no vale: …»).
+- Ilustraciones propias en SVG, deterministas por noticia: una por categoría (regulación: institución con columnas; mercado: barras y tendencia; producto: fichas apiladas; riesgo: escudo agrietado) con el acento de su ámbito (España: anillos y barrido del radar en ámbar; UE: red de nodos en azul, sin estrellas; Mundo: globo de meridianos). Sin texto, logotipos, banderas, personas ni imágenes de terceros. Velo oscuro abajo para leer el titular.
+- Web: sección `#noticias` (`assets/noticias-sector-20261110.{js,css}`): «Noticias del sector» y «Actualizadas el 10/11»; carrusel con `scroll-snap`, tarjetas 4:5 que son botones con el titular entero como nombre (3 líneas a la vista con «…»), «Hoy» en las del día; flechas del teclado, Inicio/Fin y botones ‹ › con ratón. Al pulsar, un `<dialog>` modal: fecha · categoría · ámbito, titular, título informativo, resumen, «Por qué te importa», fuente con «Consultada el», «Leer en la fuente (sales de RWAdar) ↗» (`target=_blank`, `rel="noopener noreferrer"`) y «No es una recomendación». Escape, «×» o el fondo cierran y el foco vuelve a la tarjeta. Solo `textContent` y DOM de SVG; el navegador solo pide `/datos/noticias.json` (la CSP no cambia).
+- App: `componentes/NoticiasSector.js` en `Inicio.js` tras `TokenizacionMundo`; lee `https://rwadar.pages.dev/datos/noticias.json` (`lib/noticias-sector-remota.js`: sin cookies, 10 s de plazo, 256 kB como mucho, forma validada, reutiliza 10 min). `FlatList` horizontal con ajuste; el detalle en un `Modal` a pantalla completa; el enlace sale por `onAbrirEnlace` (solo https) con el texto «(sales de RWAdar)», como el resto. Con la red caída: aviso y «Reintentar». Solo JavaScript y `react-native-svg`: el guardián de la OTA con la base `fa30779…` da `ok`.
+- Inglés: 11 textos nuevos en `lib/idioma-en.js` (copiados a la web); los de cada noticia salen de sus campos `en`.
+
+**Pruebas:** `rwadar-movil/tests/noticias-sector.test.cjs` (11: forma y rechazos, textos por idioma, 12 ilustraciones distintas y solo formas, lectura sin cookies, caché de 10 min, la sección con React aislado, el detalle y su enlace, inglés, red caída y su sitio en Inicio), `rwadar-acceso/noticias-sector.test.mjs` (2: publicables, cabeceras, validación del generador, script sin `innerHTML` ni terceros; Chromium a 390 y 1366 px: 8 botones con su nombre, 3 líneas, sin desbordes, teclado, diálogo modal con su enlace, Escape devuelve el foco, inglés y archivo roto). Ajustadas `probar-web.mjs` (hojas, huellas y `/datos/noticias.json` publicado igual que la fuente) y `probar-web-escritorio.mjs` (orden de scripts). `npm test` de la raíz en verde. Capturas a 390×844 y 1366×900, en castellano e inglés, portada y diálogo.
+
+**Pendiente (Víctor):**
+- Unir la rama, sellar y publicar la web y la OTA cuando lo autorice (hacen falta las dos: la app lee el archivo de la web publicada; hasta entonces dirá «Ahora no podemos mostrar las noticias»).
+- En cada ciclo de investigación, copiar las noticias nuevas a `rwadar-site/datos/noticias.json` (el generador las rechaza si no tienen la forma).
+
+## 10 de noviembre de 2026 (2) · Claude · «La tokenización en el mundo»: correcciones de la revisión
+
+Dos revisoras (código y seguridad; diseño, datos y accesibilidad) aprobaron con cambios. Hecho, en un commit encima del anterior. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**
+
+**Obligatorias**
+- El generador ya no pierde la historia al publicar desde un ordenador: `rwadar-tokenizacion-historico.js` (nuevo, en la huella aprobada) usa `RWADAR_TOKENIZACION_HISTORICO` (publicar.yml) y, si no está, `git show origin/datos-tokenizacion:tokenizacion-historico.json`, validado igual. Si con `--preview` o `--produccion` solo hay semilla, sale un AVISO grande: «haz `git fetch origin datos-tokenizacion`». Prueba nueva en `.github/tokenizacion.test.mjs` (sin variable y con la ref; variable; enlace simbólico; ref rota o vacía).
+- Sin nombres de personas en lo que se publica o va en la app (index.html, motor y su copia web, servidor, flujo).
+- Línea de evolución con escala honesta (web y app, `alturasLinea` del motor): abarca como poco un 4 % del valor, sin área rellena hasta el suelo y con la escala escrita debajo («De 47.120 M$ (07/10/2025) a 49.684 M$ (10/11/2026) · +5,4 %», `textosLinea`).
+- Escritorio: la sección va en la columna de 720 px de sus vecinas (título alineado con los capítulos); solo los gráficos se abren al ancho de las tarjetas. La prueba de Chromium lo mide.
+- Orden de lectura: cada tabla para lectores de pantalla va justo detrás de su gráfico.
+
+**Recomendadas aplicadas**
+- Servidor: las peticiones simultáneas comparten una sola llamada a CoinGecko (20 a la vez → 1), y `User-Agent: RWAdar/1.0 (+https://rwadar.pages.dev)`.
+- Flujo diario: primer paso «Solo desde main», como publicar.yml. publicar.yml anota el commit de `datos-tokenizacion` en el registro.
+- Cápsulas: «desde 03/11» bajo cada cifra (con ±2 días, «7 días» puede ser 5 o 9); sin foto todavía, «disponible el 15/11» (`fechaLlegada`); con la foto guardada de otro día, «foto del 10/11» en «24 h». La quinta se llama «Histórico» («All time»).
+- «M$» explicado: «…, en millones de dólares (M$)»; el lector de pantalla oye «49.684 millones de dólares». Cifra grande sin fuente monoespaciada. Fechas en inglés «10 Nov 2026». «= 0,0 %» con espacio. Con una sola foto, una columna.
+- App: reutiliza una respuesta buena 10 minutos en la sesión (`REUSO_MS`); los fallos no se guardan. Pruebas nuevas: aviso de foto guardada, línea con varias fotos (onLayout a 320 px), «Reintentar» sin dígitos.
+
+**Para tener en cuenta (no cambiado)**
+- Cupo de Pages Functions: cada visita a la portada y cada apertura de Inicio en la app (como mucho una cada 10 min) es una llamada al worker; si falla la API, la web pide además `/datos/`, que también pasa por el worker. Al agotar las 100.000 diarias Pages sirve sin worker («fail open», ver `rwadar-acceso/compilar.cjs`) y las lecciones de /academy/ saldrían sin pedir cuenta. Vigilarlo en el panel de Cloudflare tras publicar.
+- La Cache API (`caches.default`) no hace nada en `*.pages.dev`: en producción probablemente solo funcione la caché en memoria de cada worker (más la unión de peticiones simultáneas). Comprobarlo en la preview mirando las llamadas a CoinGecko por hora.
+- `idioma-en-20261022.js` cambia sin cambiar de nombre, pero lo publicado lleva huella de contenido en el nombre (`idioma-en-20261022.<hash>.js`): `immutable` no sirve una copia vieja.
+
+## 10 de noviembre de 2026 · Claude · «La tokenización en el mundo» en Inicio (web y app)
+
+Víctor pidió en Inicio un gráfico muy visual de la evolución de la tokenización. Eligió: por **tipo de activo** (no por país ni por blockchain: no hay fuente gratis fiable), en la web y en la app, con datos **gratis de CoinGecko** y una foto diaria guardada por RWAdar para que 7 días, 30 días, 1 año y el total se rellenen solos. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**
+
+**Qué hay**
+- Motor único `rwadar-movil/lib/tokenizacion.js` (web, app, servidor y foto diaria): total = categoría `tokenized-products`; ocho tipos (crédito privado, letras del Tesoro, materias primas con el oro aparte, acciones, fondos monetarios, otros créditos, ETF, inmuebles). No usa `real-world-assets-rwa` ni `rwa-protocol`. Los cambios a 7 d, 30 d, 1 año y total se calculan **solo con fotos reales** a ±2 días; si no hay, «aún sin datos» con la fecha desde la que se guardan. Formato «49.684 M$» / «+1,2 %» (en: «$49,684M» / «+1.2%»).
+- Servidor web: `GET /api/tokenizacion` (`rwadar-acceso/tokenizacion-servidor.mjs`, compilado en `_worker.js` por `compilar.cjs`). Público, solo GET, sin parámetros, sin cookies. Lee CoinGecko desde el servidor (el navegador no habla con terceros: la CSP no cambia), caché de 30 min en memoria y Cache API, plazo de 6 s. Si CoinGecko falla o da 429: la última foto guardada con su fecha y `fuente: foto-guardada`, y no le vuelve a preguntar en 5 min (o su Retry-After, hasta 1 h). Sin nada: `sin-datos`, sin cifras.
+- Foto diaria: flujo nuevo `tokenizacion-diaria.yml` (06:23 UTC y a mano) con `rwadar-app/tokenizacion/foto-diaria.mjs`: 3 intentos con espera, 20 s por intento, valida la forma y añade la foto del día a `tokenizacion-historico.json` de la rama **`datos-tokenizacion`** (la crea huérfana desde la semilla; un commit por día; idempotente). `contents: write` solo en su trabajo; acciones por SHA.
+- Publicar: paso nuevo en `publicar.yml`, «Traer el histórico de la tokenización», que deja el archivo de la rama fuera del repositorio (árbol limpio) y lo pasa en `RWADAR_TOKENIZACION_HISTORICO`. `rwadar-publicar.js` lo valida, le suma la semilla y lo publica en `/datos/tokenizacion-historico.json`. Sin rama o roto: la semilla de main (`rwadar-site/datos/tokenizacion-historico.json`, la foto real del 10/11/2026 a las 15:25 UTC). Nunca bloquea la publicación.
+- Web: sección `#tokenizacion` en Inicio, tras «Recién añadidas» y antes del capítulo 01 (la portada sigue entera en la primera pantalla a 390×844). Cifra grande, cinco cápsulas con signo, flecha y palabra, barras por tipo con cuota y cambio en 24 h, línea con dos o más fotos, dos tablas para lectores de pantalla y «Datos: CoinGecko» con la hora. `assets/tokenizacion-20261110.{js,css}` y `assets/tokenizacion-modelo-20261110.js` (copia exacta del motor: `node rwadar-app/tokenizacion/copiar-modelo-web.cjs`). Si el servidor falla, lee `/datos/…` y, si tampoco, un estado vacío honesto.
+- App: `componentes/TokenizacionMundo.js` en `Inicio.js` tras «Recién añadidas», lee `https://rwadar.pages.dev/api/tokenizacion` (`lib/tokenizacion-remota.js`); con la red caída dice «Ahora no podemos mostrar…» y ofrece «Reintentar». Solo JavaScript y `react-native-svg` (ya instalado): el guardián de la OTA con la base `fa30779…` da `ok`.
+- Inglés: 36 textos nuevos en `lib/idioma-en.js` (copiados a la web).
+- `rwadar-movil/lib/tokenizacion.js` entra en la huella del contenido aprobado y los 4 archivos nuevos de la web, en `ARCHIVOS_PUBLICABLES`: **hace falta un sello nuevo** antes de publicar, como siempre.
+
+**Pruebas:** `rwadar-movil/tests/tokenizacion.test.cjs` (12: motor, formato, lectura y la sección con React aislado, también en inglés y con la red caída), `rwadar-acceso/tokenizacion.test.mjs` (8: la ruta, caché, 429, plazo, el worker compilado, la copia web y Chromium a 390 y 1366 px con CoinGecko simulado), `.github/tokenizacion.test.mjs` (4: el flujo y el paso de publicar ejecutados de verdad contra un «origin» de usar y tirar: rama huérfana, un commit por día, idempotente, main intacto). Ajustadas `probar-web.mjs`, `probar-web-escritorio.mjs` y `compilar.test.mjs`. `npm test` de la raíz en verde.
+
+**Pendiente (Víctor):**
+- Unir la rama. GitHub solo ejecuta el horario desde main: la primera foto diaria llega la mañana siguiente (o con «Run workflow»). Las cápsulas de 7 d, 30 d y 1 año se irán llenando con los días; la línea sale con la segunda foto.
+- Publicar la web (sello, preview y producción) y la OTA cuando lo autorice.
+- CoinGecko gratis tiene límite de peticiones por IP. Con la caché de 30 min se le pregunta como mucho unas 2 veces por hora y centro de datos; si da 429, se ve la foto guardada con su aviso. Si en `rwadar.pages.dev` la Cache API no funcionara, quedaría solo la caché en memoria de cada worker (más peticiones, el mismo comportamiento).
+
 ## 9 de noviembre de 2026 (3) · Claude · informe «Números de RWAdar»
 
 Víctor pidió las visitas y los números de la web y de la app. Nuevo flujo `numeros.yml` (a mano y los lunes a las 07:47 UTC) con `.github/numeros.mjs`. Solo lee y solo saca totales:

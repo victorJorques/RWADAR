@@ -1,0 +1,102 @@
+name: Foto diaria de la tokenización
+
+# «La tokenización en el mundo» de Inicio (10/11/2026).
+# Una vez al día lee CoinGecko (gratis, sin clave) y guarda la foto del día
+# (fecha UTC, valor total, tipos y hora del dato) en tokenizacion-historico.json
+# de la rama «datos-tokenizacion». Con esas fotos, la web y la app calculan los
+# cambios a 7 días, 30 días, 1 año y desde el principio, solo con datos reales.
+#
+# - Si la rama no existe, la crea huérfana (sin el código) a partir de la
+#   semilla de main (rwadar-site/datos/tokenizacion-historico.json).
+# - Un commit por día. Si ya hay foto de ese día, no hace nada.
+# - No publica nada: la web recoge el histórico la próxima vez que se publique
+#   (paso «Traer el histórico de la tokenización» de publicar.yml).
+# - No usa claves ni la base de datos. Su único permiso de escritura es el
+#   contenido del repositorio, y solo empuja a la rama «datos-tokenizacion».
+#
+# Script y pruebas: rwadar-app/tokenizacion/foto-diaria.mjs y
+# .github/tokenizacion.test.mjs. GitHub solo ejecuta los horarios desde main.
+
+on:
+  schedule:
+    # 06:23 UTC (07:23 en España en invierno), con un minuto que no es redondo
+    # para no coincidir con la hora punta de GitHub.
+    - cron: '23 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rwadar-tokenizacion-diaria
+  cancel-in-progress: false
+
+jobs:
+  foto:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    # Escribir solo hace falta para empujar la foto a «datos-tokenizacion».
+    permissions:
+      contents: write
+    steps:
+      # Como publicar.yml: a mano solo se lanza desde main. Así nadie ejecuta
+      # el código de otra rama con permiso de escritura.
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "La foto diaria solo se lanza desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      # Sin sparse-checkout a propósito: «git worktree add» copiaría sus
+      # patrones y la rama de datos saldría sin su archivo. Las credenciales
+      # se quedan (por defecto) solo para empujar la foto.
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          # Parche de seguridad de Node del 21/10/2026 (TLS, Brotli y certificados
+          # de eMudhra). Versión exacta: no se usa la que traiga en caché el runner.
+          node-version: 22.23.4
+
+      - name: Comprobar que Node lleva el parche de seguridad
+        run: node rwadar-node-seguro.js
+
+      - name: Preparar la rama de datos
+        run: |
+          set -euo pipefail
+          DATOS="$RUNNER_TEMP/datos-tokenizacion"
+          if git ls-remote --exit-code --heads origin datos-tokenizacion > /dev/null; then
+            git fetch --no-tags origin datos-tokenizacion
+            git worktree add --detach "$DATOS" FETCH_HEAD
+            echo "Rama datos-tokenizacion encontrada."
+          else
+            # Huérfana: sin historia ni archivos del código.
+            git worktree add --detach "$DATOS"
+            git -C "$DATOS" checkout -q --orphan datos-tokenizacion
+            git -C "$DATOS" rm -rfq .
+            git -C "$DATOS" clean -fdxq
+            echo "No existe la rama datos-tokenizacion: se crea a partir de la semilla de main."
+          fi
+          echo "DATOS=$DATOS" >> "$GITHUB_ENV"
+
+      - name: Leer CoinGecko y añadir la foto de hoy
+        id: foto
+        run: >
+          node rwadar-app/tokenizacion/foto-diaria.mjs "$DATOS/tokenizacion-historico.json"
+          --semilla rwadar-site/datos/tokenizacion-historico.json
+
+      - name: Guardar la foto (un commit por día)
+        if: steps.foto.outputs.cambiado == 'true'
+        env:
+          FECHA: ${{ steps.foto.outputs.fecha }}
+        run: |
+          set -euo pipefail
+          [[ "$FECHA" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] || { echo "Fecha no válida: $FECHA"; exit 1; }
+          cd "$DATOS"
+          git add tokenizacion-historico.json
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Foto de la tokenización del $FECHA (datos: CoinGecko)"
+          git push origin HEAD:refs/heads/datos-tokenizacion
+          echo "Foto del $FECHA guardada en la rama datos-tokenizacion."

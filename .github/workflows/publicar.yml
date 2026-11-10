@@ -69,6 +69,24 @@ jobs:
       - name: Comprobar la aprobación antes de tocar la red
         run: node rwadar-app/auditar-relanzamiento.mjs
 
+      # «La tokenización en el mundo» (10/11/2026): el histórico de fotos diarias
+      # vive en la rama datos-tokenizacion («Foto diaria de la tokenización»).
+      # Se deja fuera del repositorio, para que el árbol siga limpio, y
+      # rwadar-publicar.js lo valida y lo publica en /datos/. Si no hay rama o
+      # no se puede leer, se publica la semilla de main: nunca bloquea.
+      - name: Traer el histórico de la tokenización
+        run: |
+          if git ls-remote --exit-code --heads origin datos-tokenizacion > /dev/null &&
+            git fetch --no-tags -q origin datos-tokenizacion &&
+            git show FETCH_HEAD:tokenizacion-historico.json > "$RUNNER_TEMP/tokenizacion-historico.json"; then
+            echo "RWADAR_TOKENIZACION_HISTORICO=$RUNNER_TEMP/tokenizacion-historico.json" >> "$GITHUB_ENV"
+            echo "Histórico de la tokenización: rama datos-tokenizacion."
+            # Esta rama no la cubre el sello aprobado: su commit queda en el registro.
+            echo "datos-tokenizacion: $(git rev-parse FETCH_HEAD)"
+          else
+            echo "Sin la rama datos-tokenizacion: se publica la semilla de main."
+          fi
+
       - name: Publicar en ${{ inputs.destino }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

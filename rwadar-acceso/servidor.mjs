@@ -1,5 +1,6 @@
 // Public reading and private account API. No passwords, tokens or user data are logged.
 import { crearCarteraServidor } from './cartera-servidor.mjs';
+import { crearTokenizacionServidor } from './tokenizacion-servidor.mjs';
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ORIGEN_AUTH = 'https://exgpmjpaaebyoolpwced.supabase.co';
 const COOKIE = '__Host-rwadar-acceso';
@@ -195,8 +196,9 @@ async function leerTexto(result, maxBytes) {
 
 // avisosNovedades: solo para las pruebas, que encienden el interruptor sin
 // tocar el archivo. El worker y functions/_middleware.js no lo pasan.
+// cacheTokenizacion: solo para las pruebas (null, sin Cache API; o un doble).
 export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora = Date.now, academy = null,
-  avisosNovedades = AVISOS_NOVEDADES_REMOTOS } = {}) {
+  avisosNovedades = AVISOS_NOVEDADES_REMOTOS, cacheTokenizacion = undefined } = {}) {
   if (typeof avisosNovedades !== 'boolean') throw new Error('avisos_invalidos');
   const limitador = crearLimitador(ahora);
   // Sin configuración de la Academy (o con "publico") no hay puerta: como antes.
@@ -303,6 +305,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
     return new Response(servida.body, { status: servida.status, statusText: servida.statusText, headers });
   }
   const atenderCartera = crearCarteraServidor({ api, verificar, leerCookie, respuesta });
+  const atenderTokenizacion = crearTokenizacionServidor({ fetchImpl, ahora, cache: cacheTokenizacion, respuesta, leerTexto });
   async function atender(context) {
     const { request, env } = context; const url = new URL(request.url);
     const path = url.pathname.replace(/\/$/, '') || '/';
@@ -312,6 +315,13 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
       if (!endpoint || request.method !== 'POST') return respuesta({ error: 'metodo_no_permitido' }, 405);
       // Host-only cookies plus strict Origin and JSON prevent login/logout CSRF.
       if (request.headers.get('origin') !== url.origin || request.headers.get('sec-fetch-site') === 'cross-site') return respuesta({ error: 'origen_no_permitido' }, 403);
+    }
+    // La tokenización en el mundo (10/11/2026): pública, sin sesión, solo GET.
+    // activo lee un archivo del despliegue (el worker lo recibe de compilar.cjs;
+    // en Pages Functions, de env.ASSETS).
+    if (path === '/api/tokenizacion') {
+      const activo = context.activo || (env?.ASSETS ? ruta => env.ASSETS.fetch(new Request(ruta, { method: 'GET' })) : null);
+      return atenderTokenizacion({ request, url, activo, waitUntil: context.waitUntil });
     }
     // The catalog, the Academy index, sources, RSS and SEO pages are public;
     // Academy lessons may require an account (puertaAcademy). Only the
