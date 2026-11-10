@@ -1917,7 +1917,7 @@
   "Evolución del valor total": "Total value over time",
   "La línea de evolución aparecerá cuando haya dos fotos diarias guardadas.": "The trend line will appear once two daily snapshots have been saved.",
   "Los periodos sin datos se rellenarán solos con las fotos diarias que guarda RWAdar desde el": "Periods without data will fill in on their own with the daily snapshots RWAdar has been saving since",
-  "CoinGecko no responde ahora. Enseñamos la última foto guardada, del": "CoinGecko is not responding right now. We are showing the last saved snapshot, from",
+  "Cifras de la última foto diaria de RWAdar, del": "Figures from RWAdar’s latest daily snapshot, from",
   "Ahora no podemos mostrar los datos de CoinGecko. Vuelve a intentarlo más tarde.": "We can't show CoinGecko data right now. Please try again later.",
   "Cambio del valor total por periodo": "Change in total value by period",
   "Periodo": "Period",

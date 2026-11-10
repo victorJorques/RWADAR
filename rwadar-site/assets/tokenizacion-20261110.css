@@ -14,7 +14,7 @@
 .tk-cuerpo{margin-top:16px}
 .tk-cuerpo[aria-busy="true"]{min-height:360px}
 .tk-estado{padding:16px;border-radius:var(--r-m);background:var(--ton);color:var(--tx-2);font:400 .9375rem/1.45 var(--body)}
-.tk-aviso{margin-bottom:12px;padding:10px 12px;border-radius:var(--r-m);background:var(--aviso-t);color:var(--aviso);font:500 .8125rem/1.45 var(--body)}
+.tk-aviso{margin-bottom:12px;color:var(--tx-3);font:500 .8125rem/1.45 var(--body)}
 .tk-aviso b{font-weight:600}
 
 /* La cifra grande */

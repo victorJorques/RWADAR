@@ -6,6 +6,25 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 10 de noviembre de 2026 (5) · Claude · ciclo del catálogo completo, publicado; Inicio con tokenización y noticias
+
+Víctor: «Hazme la investigación en profundidad de RWAdar buscando nuevas ofertas y publica la actualización de hoy». Después pidió calidad y expertos, y para Inicio un gráfico de la tokenización y una sección de noticias. Informe: [`docs/INVESTIGACION-CATALOGO-2026-11-10.md`](../INVESTIGACION-CATALOGO-2026-11-10.md).
+
+**Publicado hoy** (con la orden de Víctor como permiso del ciclo):
+- PR #94: la entrega `2026-11-10`. «Aplicar catálogo» en verde: la publicada pasa de la `88d5a757` a la `dfdc4c85` (25/22, 8/13/1, verificada el 10/11, vale hasta el 17/11). Leído como visitante antes y después (`lectura-despues-de-aplicar/`).
+- PR #95: sincronización, transparencia (42 de 44 al 10/11), semilla, fichas, sello, y unión de las entradas (1) a (4) de abajo (tokenización y noticias). «Publicar web» en preview y producción; «OTA Android» con base `fa30779…`.
+- PR de cierre: la nota de la foto guardada de la tokenización pasa a ser neutra («Cifras de la última foto diaria de RWAdar, del …»). Desde Cloudflare, CoinGecko responde unas veces sí y otras no (comprobado en producción a las 17:49 UTC: en vivo en una petición y foto guardada en otra). Cuando falla, la web enseña la foto diaria con su fecha; el aviso naranja «CoinGecko no responde ahora» alarmaba sin motivo. Sello nuevo, web y OTA otra vez.
+
+**Cómo se hizo**: 8 grupos con revisor independiente, más una segunda oleada (registros, novedades, radar sin oferta, brókers). Montaje con el flujo nuevo `.claude/workflows/entrega-catalogo.js`: montador, tres revisores (SQL, contenido, cumplimiento), corrector y auditor; el SQL no cambió con las correcciones. Ninguna candidata entra (DECISIONES §3); a vigilar: pagarés tokenizados de Prosegur Cash, Securitize Stocks y Profitus.
+
+**Datos personales**: recortados en las copias de hoy y en copias antiguas ya en `main` (Brickwise, Switzerlend, Spiko, Banco de Lituania, wemakeit, Zefix).
+
+**Pendiente**:
+- El límite de uso de la cuenta cortó a media mañana el panel de Alan Frei y la investigación de Securitize; los decidió el coordinador (no entran hoy).
+- La foto diaria de la tokenización llega a la web solo al publicar. Si se quiere que la lectura en vivo no falle nunca, hace falta una clave Demo de CoinGecko (gratis) como secreto del servidor web: es una credencial, la decide Víctor.
+- Kraken (documentoEspana) y mTBILL (supervisada) siguen con fecha 05/11 en transparencia.
+- Desde la próxima entrega, «el responsable del proyecto» en `aprobada_referencia`.
+
 ## 10 de noviembre de 2026 (4) · Claude · «Noticias del sector»: correcciones de la revisión
 
 La revisora aprobó con cambios. Hecho, en un commit local encima del anterior. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**

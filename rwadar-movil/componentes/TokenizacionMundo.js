@@ -102,7 +102,7 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
       {d ? (
         <View>
           {d.fuente === 'foto-guardada' ? (
-            <Text style={e.aviso}>{'CoinGecko no responde ahora. Enseñamos la última foto guardada, del'} <Text noTraducir style={e.avisoFecha}>{horaDato(d.actualizado, idioma)}</Text></Text>
+            <Text style={e.aviso}>{'Cifras de la última foto diaria de RWAdar, del'} <Text noTraducir style={e.avisoFecha}>{horaDato(d.actualizado, idioma)}</Text></Text>
           ) : null}
           <View accessible {...a11y} accessibilityLabel={`${traducir('Valor total de los activos tokenizados')}: ${millonesHablados(d.total.valor, idioma)}`}>
             <Text noTraducir style={e.cifra} numberOfLines={1} adjustsFontSizeToFit>
@@ -195,7 +195,7 @@ const e = StyleSheet.create({
   estadoTxt: { ...T.menor, color: C.tx2 },
   b3: { minHeight: 44, borderRadius: R.m, paddingHorizontal: 8, marginLeft: -8, marginTop: 4, alignSelf: 'flex-start', justifyContent: 'center' },
   b3Txt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal },
-  aviso: { ...T.menor, marginTop: 16, padding: 12, borderRadius: R.m, backgroundColor: C.avisoT, color: C.aviso },
+  aviso: { ...T.menor, marginTop: 16, color: C.tx3 },
   avisoFecha: { fontFamily: F.semi },
   // Sin fuente monoespaciada: el punto de los miles no parece un hueco.
   cifra: { fontFamily: F.semi, fontVariant: ['tabular-nums'], letterSpacing: -0.8, marginTop: 16, fontSize: 40, lineHeight: 46, color: C.tx },
