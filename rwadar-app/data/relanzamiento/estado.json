@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "10/11: nota neutra de la foto diaria de la tokenización y cierre del ciclo del catálogo",
+  "nota": "10/11: Inicio por bloques (web y app), secciones /mercado/, /noticias/ y /aprende/, fotos editoriales en las noticias y titulares nuevos (peticiones de Víctor del 10/11)",
   "revisionAprobada": {
-    "commit": "5656adf00f808e6255b2a4f6697a9fd2671bb9d4",
-    "contenidoSha256": "sha256:a1ad76d95bf6eaefcb25563d183df3a0e3ce4a0a7e4f21c5dfabb750265ea827",
+    "commit": "578536c1fd583d262ad90d046f78e4fb705e2628",
+    "contenidoSha256": "sha256:2afb89a10184e4f3efaa459672bf7c5ca3c8da054d7a803c35a879cda6ffede4",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
