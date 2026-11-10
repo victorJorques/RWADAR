@@ -1,0 +1,210 @@
+Widget Terms
+         Preamble
+A.       The company indicated in the imprint of the website (the "Company") has issued part of its
+         shares as ledger-based securities ("Share Tokens"). The Share Tokens are governed by the
+         registration agreement as published on the website of the Company (the "Website"), as
+         amended from time to time (the "Registration Agreement").
+
+B.       The Share Tokens are locked in a smart contract on the Ethereum blockchain (the "SHA Smart
+         Contract") and for each locked Share Token, a placeholder token (the "SHA Token") is
+         generated. The SHA Token are governed by the common shareholder agreement as published
+         on the Website, as amended from time to time (the "Token SHA").
+
+C.       In order to make the sale and purchase of SHA Tokens of the Company easier, the Company
+         now wishes to offer certain smart contract based widgets on its website that facilitate (i) the sale
+         of SHA Tokens by the Company and/or the purchase of SHA Tokens by the Company at a price
+         pre-determined by the Company (the "BrokerBot"), and/or (ii) the offer of users to buy or sell
+         SHA Tokens at a price determined by the user, which can be accepted by the Company at its
+         sole discretion (the "Secondaries Module", together with the BrokerBot the "Widgets"),
+         subject to these terms (the "Terms"):
+
+
+1 Scope
+These Terms apply to all persons that interact with the Widgets through the Website (each a "User").
+The User acknowledges and agrees that the Registration Agreement and the Token SHA apply to the
+SHA Tokens.
+
+
+2 Functioning of Widgets
+2.1 Price discovery
+The Widgets have the following process to determine the price of SHA Tokens (the "Price"):
+
+     -    BrokerBot: On entering an amount of SHA Tokens to purchase or sell in the BrokerBot, the
+          BrokerBot displays a total price for the transaction based on the programmatic logic
+          determined by the Company (an "BrokerBot Offer").
+
+     -    Secondaries Module: Users can enter the amount of SHA Tokens they wish to sell or
+          purchase at a price selected by the User (a "Secondaries Offer"). This Offer is published on
+          the Website if it complies with the requirements of the Company. Other Users may indicate
+          interest in an Offer by clicking on the Offer and indicating the amount of SHA Tokens from the
+
+
+
+
+                                                                                                Page 1 of 5
+        Offer that they wish to buy or sell (a "Matching Offer", together with the BrokerBot Offer and
+        the Secondaries Offer each an "Offer").
+
+
+2.2 Conclusion of contract
+Each Offer is a binding offer by the User to the Company to enter into a purchase or sale agreement
+relating to the amount of SHA Tokens and the Price. Users may revoke an Offer at any time through
+the Widgets. The Company is free to accept or refuse any Offer in its sole discretion at any time. On
+acceptance of an Offer by the Company, a binding agreement to purchase or sell SHA Tokens at the
+indicated price is entered into by the User and the Company. All agreements are entered into between
+the Company and the User, also in the Secondaries Module. For the avoidance of doubt, the
+Company is free to accept or refuse a Secondaries Offer regardless of whether or not there is a
+Matching Offer.
+
+
+2.3 Payment terms
+For purchase transactions, the User shall pay the Price as per the selected payment methods. For sell
+transactions, the Company shall pay the Price to the User as per the selected payment method.
+
+The Company may change the available payment methods or refuse payments or certain payment
+methods in its sole discretion. Transaction fees and conversion fees are borne by the User. The Price
+paid by the User and effectively received by Company in CHF might differ and the number of SHA
+Tokens to be allocated shall be based on the amount actually received. The number of SHA Tokens
+will be rounded down by Company to the nearest integral number.
+
+In case of oversubscription or rounding down, the excessive amount that cannot be allocated shall be
+paid back to the User by Company, provided such difference exceeds (30) thirty Swiss francs (CHF).
+All the cost and expenses of the repayment are borne by the User.
+
+Only payments from eligible persons as set out on the Website and herein will be accepted by
+Company. Company, in its sole discretion, may refuse to accept any person as User and may request
+further information, e.g., for KYC purposes, at any time from a potential or existing User.
+
+In case an Offer is declined after the User has transferred funds or SHA Tokens, the Company shall
+refund the Price or the SHA Tokens to the User on first request to an account indicated by the User.
+
+
+2.4 Delivery of SHA Token
+The User is required to provide an Ethereum (ERC-20) compatible address of which the User is the
+beneficial owner (the "Recipient Address") for the delivery of the SHA Tokens. It is the User's sole
+responsibility to ensure that a correct address is provided.
+
+Subject to (i) the User meeting all participation criteria as determined by the Company, (ii) the
+successful completion of the Company's onboarding process, (iii) availability of SHA Tokens, (iv) the
+receipt of the Price, (v) the User providing a Recipient Address, and (vi) the acceptance by the
+
+
+
+
+                                                                                              Page 2 of 5
+Company of the User's offer to purchase the SHA Token, the Company shall deliver the Token
+Amount to the Recipient Address.
+
+
+3 Company Representations & Warranties
+The Company does not make any representations and warranties and all representations shall be
+fully excluded to the greatest extent permitted under applicable law. The User confirms that he/she
+has not relied upon any representation or warranty, express or implied, pertaining to the SHA Tokens,
+the Share Tokens and/or the Company.
+
+
+4 User Representations & Warranties
+The User represents and warrants as of the date of this Agreement that:
+
+    ●   The User is in full compliance with the eligibility criteria set out on the Website and these
+        Terms.
+
+    ●   The User purchases or sells the SHA Tokens in its own account and is not acting on behalf of
+        any third party as agent, nominee or in any other capacity;
+
+    ●   The User is the sole beneficial owner of the Recipient Address as well as the funds used to
+        pay the Price including all assets credited on Company's account;
+
+    ●   The User has carefully read, reviewed and fully understood these Terms including all
+        referenced documents as well as the disclaimers on the Website and is not relying up on any
+        representation, warranty, confirmations, promises or agreements except as set out in these
+        Terms;
+
+    ●   The User recognizes that an investment in the SHA Tokens involves substantial risk and can
+        lead to the complete loss of the Price;
+
+    ●   The User has not taken any action nor will it take any action in any country or jurisdiction that
+        would constitute a public offering of any Company SHA Tokens or require the registration of
+        any other offering material, nor will it distribute this offering or any other offering material in
+        any country or jurisdiction where action for that purpose is required;
+
+    ●   The User, nor any affiliates nor any person acting on its behalf (1) has offered or sold, or will
+        offer or sell, indirectly or directly, any SHA Tokens and/or distributed these Terms or any
+        materials to any US citizen (whether or not he/she lives in the United States of America), to
+        any US person pursuant the Section 902(k)(1) of the Securities Act of 19 33 ( i.e. any natural
+        person resident in the United States of America, any partnership or corporation organized or
+        incorporated under the laws of the United States of America, any estate of which any
+        executor or administrator is a US person, any trust of which any trustee is a US person, any
+        agency or branch of a foreign entity located in the United States of America, any
+        non-discretionary account or similar account (other than an estate or trust) held by a dealer or
+        other fiduciary for the benefit or account of a US person, any discretionary account or similar
+
+
+                                                                                              Page 3 of 5
+        account (other than an estate or trust) held by a dealer or other fiduciary organized,
+        incorporated, or (if an individual) resident in the United States of America, any partnership or
+        corporation if organized or incorporated under the laws of any foreign jurisdiction and formed
+        by a US person principally for the purpose of investing in securities not registered under the
+        Act, unless it is organized or incorporated, and owned, by accredited Users (as defined in
+        Rule 501(a) of the Securities Act) who are not natural persons, estates or trusts) nor to any
+        persons acting on a non-discretionary basis for US person or US citizen , in each case in a
+        manner that would require any such shares to be registered under the Securities Act, (2) has
+        engaged or will engage in any directed selling efforts (as that term is defined in Regulation S)
+        with respect to any SHA Tokens, or (3) has engaged or will engage in any form of general
+        solicitation or general advertising (as that term is used in Rule 502(c) under the Securities
+        Act) in connection with any offer or sale of any SHA Tokens or in any manner involving a
+        public offering in the United States of America;
+
+    ●   The User is not subject and is not a resident of a jurisdiction that is subject to economic
+        sanctions or trade embargoes imposed by (1) Switzerland, (2) the United Nations Security
+        Council, (3) the European Union or any member state of the European Union, (4) U.S.
+        authorities, in particular OFAC and the U.S. Department of State, (5) the country of residence
+        of the User, or (6) other economic sanctions or trade embargos issued by another authority
+        having jurisdiction over the User or his /her/its assets;
+
+    ●   The User has carefully read and understood the Terms and all referenced documents,
+        including the risk factors and disclaimers provided herein or on the Website.
+
+    ●   The User has had the opportunity to be advised by legal professionals or attorneys in relation
+        to these Terms and confirms that to have fully understood the legal implications of all the
+        clauses contained in these Terms.
+
+
+5 Taxes
+The User is solely responsible to determine what, if any, taxes apply to the transactions, including, for
+example, withholding and income taxes. It is also the User's sole responsibility to withhold, collect,
+report and remit the correct taxes to the appropriate tax authorities.
+
+
+6 Privacy
+The User acknowledges and agrees that the SHA Tokens are issued on a public blockchain that is
+pseudonymous, not anonymous, in nature, meaning that any person that can associate your
+Recipient Address with you can publicly view all token holdings, including SHA Tokens, of that
+Recipient Address. Relating to the contact details provided to the Company directly, the privacy policy
+as published on the Website applies.
+
+
+
+
+                                                                                            Page 4 of 5
+7 Miscellaneous
+Notices. All notices to either party shall be in writing (incl. by email).
+
+No assignment: Neither Party may assign any of its rights, obligations or claims under these Terms.
+
+Severability. If any term of these Terms or its application in any circumstance is held invalid or
+unenforceable, the invalidity or unenforceability will not affect any other terms of this Agreement which
+can be given effect without the invalid or unenforceable term nor the applicability of that term in any
+other circumstance.
+
+Governing Law and Jurisdiction. These Terms shall in all respects be governed by, and construed
+in accordance with, the substantive laws of Switzerland, to the exclusion of conflict of law principles
+and the UN Convention on the international sale of goods (CISG). Any dispute arising out of or in
+connection with this Agreement shall exclusively be referred to the courts competent at the seat of the
+Company, Switzerland.
+
+
+
+
+                                                                                            Page 5 of 5
+

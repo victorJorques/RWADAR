@@ -1,0 +1,42 @@
+KID mTBILL en español (GitBook, SHA-256 6c228709…). Extractos.
+
+Moneda de emisión              USD                                           Agente de Cálculo             Midas Software GmbH
+Moneda de suscripción          USDC                                          Cohorte de suscripción        1 Día Hábil
+Moneda de liquidación          USDC                                          Importe mínimo de             no aplicable
+                                                                             inversión
+Fecha de emisión inicial       13 de septiembre de 2024                      Importe máximo de             no aplicable
+
+
+El indicador resumido de riesgo es una guía del nivel de riesgo de este Producto en comparación con otros productos. Muestra las probabilidades de
+que el Producto pierda dinero debido a la evolución de los mercados o porque Midas Software GmbH no pueda pagarle. Hemos clasificado este
+Producto en la clase de riesgo 7 en una escala de 7, que es la clase de riesgo más alta. Esta evaluación califica la posibilidad de sufrir pérdidas en
+rentabilidades futuras como muy alta, y la probabilidad de que una mala coyuntura de mercado influya en la capacidad de Midas Software GmbH de
+
+
+     3. ¿Qué pasa si Midas Software GmbH no puede pagar?
+ Está expuesto al riesgo de que Midas Software GmbH no pueda cumplir sus obligaciones derivadas del Producto, incluso en caso de insolvencia,
+iliquidez, sobreendeudamiento o una orden administrativa. Midas Software GmbH no es un banco y no está autorizada ni supervisada como entidad
+financiera.
+
+   5. ¿Cuánto tiempo debo mantener la inversión, y puedo retirar dinero de manera anticipada?
+
+  Período de mantenimiento recomendado: 1 año
+Hemos elegido un período de mantenimiento recomendado de 1 año porque se espera que el VL del Producto aumente gradualmente a medida que
+las letras del Tesoro subyacentes se acercan a su vencimiento, y en períodos más cortos ese aumento gradual puede verse superado por las
+comisiones y costes del Emisor. Un período de mantenimiento más corto también aumenta el efecto proporcional de la comisión de reembolso
+inmediato. Puede solicitar el reembolso antes, con sujeción a los límites descritos a continuación. No se trata de un período mínimo de
+mantenimiento obligatorio y no existe período de bloqueo.
+Puede solicitar el reembolso cualquier Día Hábil, con sujeción a todo lo siguiente:
+  ● debe haber completado el proceso de alta (onboarding) y el Emisor debe haber incluido su dirección de wallet en la lista de direcciones
+      autorizadas (greenlist);
+  ● las solicitudes recibidas después de las 23:59 CET/CEST se consideran recibidas el siguiente Día Hábil;
+  ● el reembolso se valora por referencia al VL determinado tras un período de realización de un Día Hábil;
+  ● el Emisor no reembolsará más del 15 % de todos los Productos en circulación en ningún día de liquidación, por lo que su solicitud podrá
+      reducirse y trasladarse a una fecha posterior;
+  ● si utiliza el reembolso inmediato, podrá retenerse hasta el 50 % del importe que le corresponda, que solo se pagará tras una valoración
+      posterior, y el importe finalmente pagado podrá ser inferior al que espera;
+  ● en caso de perturbación del mercado, la valoración, el reembolso y la liquidación podrán aplazarse.
+El Emisor no está obligado a ofrecer el reembolso inmediato. El reembolso estándar no conlleva comisión de reembolso. El reembolso inmediato
+conlleva una comisión del 0,07 % del importe del reembolso; véase «¿Cuáles son los costes?».
+No existe un mercado de negociación para el Producto y no se ha solicitado ni se solicitará su admisión a negociación. El Producto solo puede
+transmitirse a una persona cuya dirección de wallet haya sido incluida por el Emisor en la lista de direcciones autorizadas tras el proceso de alta. No

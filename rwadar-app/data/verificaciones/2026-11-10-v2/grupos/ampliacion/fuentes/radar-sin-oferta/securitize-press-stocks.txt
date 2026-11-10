@@ -1,0 +1,189 @@
+URL: https://securitize.io/learn/press/securitize-launches-tokenized-us-stocks
+FINAL: https://securitize.io/learn/press/securitize-launches-tokenized-us-stocks
+HTTP: 200
+UTC: 2026-11-10T09:34:30Z
+
+Securitize Third Quarter 2026 Results
+
+Investments
+
+Solutions
+
+Resources
+
+Ecosystem
+
+Company
+
+Sign Up
+Log In
+← Back to Press Releases
+Securitize Launches Global Onchain Trading of U.S. Stocks with Security Entitlements
+Oct 8, 2026
+
+Trading on Securitize’s registered broker-dealer platform on Solana and on the upcoming NYSE ATS and OKXICE TSV, Securitize Stocks give eligible investors global access to 1:1-backed U.S. equities with the rights and economic benefits of the underlying shares
+
+
+
+
+MIAMI — OCTOBER 8, 2026 — Securitize, Inc. (NYSE: SECZ), the leading platform for tokenized assets, today announced the launch of Securitize Stocks, bringing some of the world’s most widely held U.S. equities onchain for eligible investors in the United States, European Union (EU) and other permitted jurisdictions worldwide.
+
+
+
+
+The initial offering on Securitize will include security entitlements to shares of AAPL, MSFT, NVDA, GOOG, TSLA, META, AMZN, NFLX, CRCL, SPCX, MSTR and PLTR. Securitize Stocks will initially launch on Solana and trade on Securitize’s registered broker-dealer platform.
+
+
+
+
+Securitize Stocks are also expected to trade on the new 24/7 digital trading venue being developed by the New York Stock Exchange (NYSE), subject to the venue’s launch and applicable regulatory and operational requirements. The planned connectivity would create another pathway for tokenized U.S. equities to trade through infrastructure being developed by one of the world’s leading exchange operators.
+
+
+
+
+Unlike products that primarily provide economic exposure to a stock’s price, Securitize Stocks are backed 1:1 by underlying shares, structured to preserve the investor rights and economic benefits associated with those shares, and convertible, where available, to direct ownership on the books of the issuer’s transfer agent. The offering is designed to accelerate adoption of issuer-sponsored tokenization as issuers increasingly embrace tokenization.
+
+
+
+
+“Tokenized stocks should give investors more than a price on a wrapper that tracks a stock and is only offered offshore,” said [persona física recortada], Chairman and CEO of Securitize. “The opportunity is to bring equities onchain without leaving behind the ownership, investor protections and market infrastructure that make U.S. capital markets work. Securitize Stocks are designed around that principle, while creating a bridge to a future where issuers themselves can participate directly in tokenization.”
+
+
+
+
+Securitize Stocks give investors:
+
+1:1 backing and security entitlements. Each token is backed one for one by an underlying share and represents a security entitlement under UCC Article 8, preserving applicable rights and economic benefits including dividends and, where the underlying class carries them, voting rights. This sets Securitize Stocks apart from products that are primarily designed to track a stock’s performance.
+Global availability. Securitize Stocks will be available to eligible investors in the U.S., EU and other permitted jurisdictions, subject to applicable securities laws, sanctions requirements and other restrictions.
+No share lending. Shares backing Securitize Stocks will not be lent out. The tokens are designed to support additional onchain utility over time, including supported lending and collateral markets like Aave.
+A bridge to issuer-sponsored tokenization. Securitize Stocks use a convertible entitlement token (CET) structure. When a company adopts issuer-sponsored tokenization, investors can convert their security entitlements into actual shares recorded on the company's register, through Securitize's partnerships with leading transfer agents.
+Compatibility with evolving U.S. market structure. The offering is designed to be consistent with SEC guidance on tokenized securities. Secondary market trading is offered for Securitize Stocks in a regulated manner through its broker-dealer, without the need for exemptions. Securitize Stocks are also expected to be eligible for trading on Tokenized Securities Venues (TSVs) as contemplated by the SEC’s Innovation Exemption.
+
+
+
+
+Securitize Stocks are also expected to be available on the OKXICE Tokenized Securities Venue (TSV), which combines OKX’s blockchain technology and global reach with the regulatory experience and institutional connectivity of Intercontinental Exchange (ICE), parent company of the New York Stock Exchange. The TSV will bring tokenized U.S. equities onchain in a compliant, permissioned environment, with plans to unlock 24/7 trading, instant settlement and self-custody of exchange-listed securities for a global audience.
+
+
+
+
+“Global demand for U.S. equities is undeniable. Investors everywhere want access to the world’s deepest, most innovative capital markets, on their terms and around the clock. OKXICE is being built for exactly this kind of product: unlocking 24/7 access to U.S. stocks for global investors while preserving the full shareholder rights, protections and economic benefits they expect,” said Governor [persona física recortada], Co-Chair of OKXICE.
+
+
+
+
+Securitize selected Solana as the launch network for Securitize Stocks onchain trading, with transactions settling in USDC. Solana is also one of the networks where Securitize's own tokenized common stock has traded since its NYSE listing in July.
+
+
+
+
+“Solana is the financial infrastructure for the 5.5 billion people on the internet. Tokenized equities give investors around the world access to investments they might otherwise never have had the opportunity to participate in, at internet scale,” said [persona física recortada], GM, Institutional, Solana Foundation. “Securitize Stocks demonstrate what becomes possible when real securities and shareholder rights are combined with fast, efficient blockchain infrastructure. We’re excited to see Securitize launch this offering on Solana as the Token Supercycle accelerates and more of the world’s capital markets move onchain.”
+
+
+
+
+Infrastructure for an Onchain U.S. Equities Market
+
+Securitize Stocks bring together infrastructure spanning blockchain, liquidity, brokerage, clearing, settlement and transfer agency to connect traditional U.S. securities markets with onchain markets.
+
+
+
+
+At launch, Securitize Stocks will be available through Securitize’s existing Solana PropAMM, with Jump Trading, which will serve as a market maker to support liquidity, price discovery and execution consistent with applicable market requirements. Trading will initially be available during extended hours, with plans to move toward 24/7 availability. Securitize Stocks will trade alongside issuer-sponsored tokenized equities including Securitize’s own stock, SECZ. Access will remain subject to onboarding, KYC/AML checks, jurisdictional eligibility and applicable securities laws.
+
+
+
+
+“Bringing U.S. equities onchain requires liquidity infrastructure capable of delivering the execution quality investors expect from modern markets,” said a spokesperson for Jump. “PropAMMs on Solana have demonstrated that onchain markets can deliver tight spreads, deep liquidity and transparent price discovery at significant scale. We’re excited to bring that technology on Securitize’s platform to Securitize Stocks and help build efficient, liquid markets for tokenized U.S. equities.”
+
+
+
+
+Institutional market participants are also expected to play a growing role as tokenized equities develop. Ripple Prime plans to support the launch of Securitize Stocks and explore opportunities to incorporate the assets into its broader institutional trading ecosystem.
+
+
+
+
+“Securitize has been a leader in bringing institutional assets onchain, and this launch represents an important next step for tokenized capital markets, requiring the issuance, collateral and liquidity that robust markets need,” said [persona física recortada], President, Ripple Prime. “As traditional and digital infrastructure converge, Ripple Prime is proud to work with partners driving how these assets become part of a broader institutional trading ecosystem.”
+
+
+
+
+Tokenized equities also create the potential for traditional securities to become more useful within onchain financial markets, including through supported lending and collateral applications.
+
+
+
+
+“Bringing high-quality assets onchain expands what is possible across decentralized finance,” said [persona física recortada], Founder of Aave. “Securitize has been a pioneer in connecting regulated financial assets with blockchain infrastructure, and Securitize Stocks represent an important step forward. As tokenized equities develop, we’re excited about the potential for these assets to become increasingly useful across onchain markets, including through lending and collateral applications.”
+
+
+
+
+Behind the onchain trading experience, Securitize Stocks will connect with established securities-market infrastructure for clearing, custody and settlement.
+
+
+
+
+“The evolution of tokenized equities depends on institutional-grade clearing, custody and settlement infrastructure that can support innovation while upholding the standards of the U.S. securities markets,” said [persona física recortada], CEO, RQD*. “We’re excited to support Securitize as it builds a framework designed to connect onchain markets with the infrastructure that underpins traditional equities today.”
+
+
+
+
+Learn more about Securitize Stocks at stocks.securitize.io.
+
+Back to Top
+↑
+Investments
+All Assets
+Public Stocks
+Solutions
+Tokenization As A Service
+Fund Administration
+Ecosystem
+Partner Ecosystem
+Resources
+Intro to Tokenization
+Whitepapers & Research
+Articles
+Videos
+About
+Company
+Media Coverage
+Press Releases
+Investor Relations
+Careers
+Media Kit ↓
+Developers
+APIs
+Bug Bounty
+Vault Registrar Sandbox
+
+© 2026 Securitize LLC.
+
+Disclosures
+Fee Schedule
+info@securitize.io
+
+Securitize Markets, LLC is an SEC-registered broker-dealer and member of FINRA/SIPC. Check the background of Securitize Markets on FINRA BrokerCheck.
+
+For covered orders in NMS securities, Securitize Markets' Rule 605 order execution quality reports are available here.
+
+Investing involves risk, including possible loss of principal. Digital asset securities may involve additional risks and may not be suitable for all investors.
+
+Securities are offered through Securitize Markets, LLC (“Securitize Markets”), a registered broker-dealer and member of FINRA/SIPC. Securitize Markets may provide recommendations at times but does not provide investment advice or ongoing monitoring. No communication herein, or in any medium, should be construed as investment advice or a recommendation to buy or sell any security.
+
+Securities offered on the Securitize Markets Alternative Trading System (ATS) are not registered under the Securities Act of 1933 and may not be offered or sold in the United States without registration or an applicable exemption. Digital assets or tokens utilizing blockchain technology are speculative, involve significant risk, may be illiquid or without value, have limited regulatory certainty, and may be subject to market manipulation. Private placements are also speculative and high-risk. Investors must be able to bear the loss of their entire investment.
+
+Eligibility to trade on the Securitize Markets ATS is determined solely by Securitize Markets. Any offer or solicitation can be made only through official offering documents describing the risks, fees, and expenses of the applicable securities. Investors should conduct their own due diligence and are encouraged to consult with a financial advisor, attorney, accountant, or tax advisor.
+
+Past performance is not indicative of future results. Neither the SEC nor any federal or state regulator has recommended or approved any investment or verified the accuracy or completeness of any information herein. Valuations provided by issuers may not reflect market or industry values, and Securitize Markets and its affiliates make no representations regarding such information. Securitize Markets may collect information about you to comply with securities regulations and the USA PATRIOT Act, which requires firms to obtain, verify, and record information that identifies each applicant. This information also helps us understand your investment profile and determine suitability. The term “Investors,” as used on this website, generally refers to accredited investors where applicable. If we cannot verify the information you provide, we may need to restrict or deny your account. Trading during extended hours carries unique risks, including higher volatility, lower liquidity, wider spreads, and reduced market visibility, and may not be appropriate for all investors. Diversification does not guarantee improved returns or prevent losses. Securitize Markets is regulated by FINRA and the SEC; however, membership and registration do not guarantee compliance with all rules. By accessing this site, you agree to our Terms of Service and Privacy Policy.
+
+Crypto services are provided by Zero Hash and are not associated with Securitize Markets or its affiliates. Crypto assets are not protected by SIPC, SIPA, or federal securities laws. SIPC protection does not apply to funds held at SIPC-member broker-dealers if such funds are unrelated to eligible securities transactions, intended for the purchase of crypto assets not recognized as securities under SIPA, or transferred to a crypto platform. Crypto assets are neither cash nor cash equivalents and are not covered by the FDIC. Their value is highly volatile, and they involve increased risks of fraud, cyberattack, and operational failures. Zero Hash LLC and Zero Hash Liquidity Services are licensed to engage in Virtual Currency Business Activity by the New York State Department of Financial Services.
+
+EU Disclosures
+
+In the European Union, investment services are offered by Securitize Europe Brokerage and Markets, S.V., S.A. (“Securitize Europe”), a Spanish investment firm.
+
+Securitize Europe, with Spanish tax identification number A13691464, has its registered office at Calle Don Ramón de la Cruz 38, 28001 Madrid, Spain and is registered with the Commercial Registry of Madrid in the sheet number M-794351, page 81 et seq., of volume 45141, section 8, and is authorized, registered and supervised by the Spanish Securities Market Commission, the Comisión Nacional del Mercado de Valores (“CNMV”), with registration number 327.
+
+Securitize Europe has permission to provide investment services in the countries of the European Union listed here.

@@ -1,0 +1,39 @@
+URL: https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es
+Busqueda: Revolut
+ConsultadoUtc: 2026-11-10T09:13:02Z
+
+Listado de entidades advertidas
+
+Pulse sobre la cabecera de la columna 'Fecha' o la columna 'Compañías sobre las que se advierte' para ordenar de forma ascendente/descendente por dicho concepto.
+
+Resultado de búsqueda de Advertencias de la CNMV
+Fecha	Compañías sobre las que se advierte	Documento	Documento (en inglés)	Observaciones
+08/04/2024	
+HTTPS://IMMEDIATE-REVOLUTION-360.COM/ES/
+HTTPS://IMMEDIATE-REVOLUTION-360-APP.COM/ES/
+IMMEDIATE REVOLUTION 360
+			 
+11/03/2024	
+HTTPS://ALGO-REVOLUTION.COM/
+ALGO-REVOLUTION
+			 
+11/12/2023	
+WWW.BTCREVOLUTION.CLOUD/ES/
+BITCOIN REVOLUTION LTD
+			 
+03/10/2022	
+HTTPS://REVOLUTEXPERT.LTD
+REVOLUT EXPERT
+			 
+06/09/2021	
+HTTPS://REVOLUTION-FX.IO/ES/
+			 
+29/06/2020	
+HTTPS://FXREVOLUTION.IO/ES
+			 
+15/10/2018	
+BITCOIN REVOLUTION
+			 
+
+Criterios de consulta: por tipo No autorizadas, de nombre Revolut.
+

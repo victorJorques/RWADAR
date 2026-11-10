@@ -1,0 +1,864 @@
+INFORME DE SOLVENCIA
+Diciembre 2025
+
+
+
+
+  SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+
+
+1. Requerimientos generales de información ..............................................................2
+      1.1 Introducción .................................................................................................................... 2
+      1.2 Información general sobre la Entidad .................................................................................. 2
+
+2 Políticas y objetivos de gestión del riesgo ...............................................................4
+      2.1 Estrategias y procesos para la gestión del riesgo .................................................................. 4
+         2.1.1. Riesgo para los Clientes (RtC) .................................................................................... 5
+         2.1.2. Riesgo para el Mercado (RtM) .................................................................................... 6
+         2.1.3. Riesgo para la Empresa (RtF) .................................................................................... 6
+         2.1.4. Riesgo relacionado con los gastos fijos generales ......................................................... 7
+         2.1.5. Riesgo de liquidez .................................................................................................... 7
+         2.1.6. Riesgo Operacional ................................................................................................... 7
+
+3. Información en materia de gobernanza ..................................................................8
+
+4. Fondos propios computables ..................................................................................9
+      4.1. Resumen de las principales características y condiciones de los instrumentos de capital de nivel
+      1 ordinario, de nivel 1 adicional y de nivel 2 .............................................................................. 9
+      4.2. Composición de los Fondos Propios Computables .............................................................. 11
+      4.3. Conciliación de los Fondos Propios Computables con el Balance de los estados financieros
+      auditados ........................................................................................................................... 12
+      4.4. Fondos Propios: principales características de los instrumentos propios emitidos ................... 13
+
+5. Requerimientos de Fondos Propios .......................................................................14
+      5.1. Requerimientos de fondos propios ................................................................................... 14
+
+6. Información en materia de remuneración ............................................................15
+
+
+
+
+                                                              1 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+
+1. Requerimientos generales de información
+1.1 Introducción
+
+El presente Informe de Solvencia (en adelante, el “Informe”) tiene su base regulatoria en el
+cumplimiento de lo contenido en el artículo 174 de la Ley 6/2023, de 17 de marzo, de los
+Mercados de Valores y de los Servicios de Inversión (en adelante, la “LMVSI”) y la parte VI del
+Reglamento (UE) 2019/2033, del Parlamento europeo y del Consejo, relativo a los requisitos
+prudenciales de las empresas de servicios de inversión (en adelante, “IFR”).
+
+
+El objetivo de este Informe es cumplir con los requerimientos de información y divulgación
+requeridos por la normativa vigente y persigue presentar una imagen concisa de la adecuación
+de capital y solvencia y de las políticas y objetivos de la gestión de riesgos realizados en la
+Entidad, permitiendo a los distintos agentes evaluar la suficiencia del capital de las entidades.
+
+
+El presente informe recoge los riesgos asumidos por Securitize Europe Brokerage and Markets,
+S.V., S.A (en adelante, “Securitize”, la “Entidad” o la “Sociedad”); será publicado con
+periodicidad anual y tras la aprobación de este por parte del Consejo de Administración de la
+Sociedad.
+
+
+En el presente documento, se detallan, a 31 de diciembre de 2025, los requerimientos de
+información, siendo estos una combinación de datos cuantitativos e información cualitativa sobre
+políticas de gestión del riesgo, políticas contables y metodologías.
+
+
+1.2 Información general sobre la Entidad
+
+Securitize es una entidad de derecho privado, sujeta a la normativa y regulación de las entidades
+de servicios de inversión operantes en España.
+
+
+La Sociedad, inscrita en los registros oficiales de la CNMV con el número 327, tiene por objeto
+exclusivo la prestación de servicios de inversión con carácter profesional, conforme a su régimen
+jurídico específico, realizando los servicios de inversión y los servicios auxiliares que
+seguidamente se reseñan de las previstas para las empresas de servicios de inversión en los
+artículos 125 y 126 de la Ley 6/2023, de 17 de marzo, de los Mercados de Valores y los Servicios
+de Inversión, conforme a su programa de actividades, pudiendo operar profesionalmente por
+cuenta ajena:
+
+
+        ❖   Servicios de Inversión:
+
+
+            o   Recepción y transmisión de órdenes de clientes.
+
+
+
+
+                                            2 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+             o    - Ejecución de órdenes de clientes.
+
+
+             o    - Colocación de instrumentos financieros.
+
+
+             o    - Gestión de sistemas multilaterales de negociación, únicamente como sistema
+                  de liquidación y negociación (SNL) bajo el Reglamento (UE) 2022/858.
+
+
+Adicionalmente, tiene autorizados como servicios auxiliares, la custodia y administración de
+instrumentos financieros, la concesión de créditos o préstamos a inversores1 y el asesoramiento
+a empresas. Por último, tiene autorizada como actividad que supone prolongación del negocio,
+la tokenización (digitalización de instrumentos financieros mediante tecnología DLT).
+
+
+Hay que destacar que todos los servicios de inversión y auxiliares que tienen autorizados la
+Sociedad se prestarán exclusivamente respecto de instrumentos financieros digitales, esto es
+representados mediante tecnología de registro distribuido.
+
+
+Los servicios de inversión o, en su caso, las actividades complementarias se prestarán sobre los
+siguientes instrumentos:
+
+
+             o    Valores negociables, entendiendo como tal cualquier derecho de contenido
+                  patrimonial, cualquiera que sea su denominación, que, por su configuración
+                  jurídica propia y régimen de transmisión, sea susceptible de tráfico generalizado
+                  e impersonal en un mercado financiero, incluyendo las siguientes categorías de
+                  valores, con excepción de los instrumentos de pago:
+
+
+                      1. Acciones de sociedades y otros valores equiparables a las acciones de
+                           sociedades, y recibos de depositario.
+
+
+                      2.   Bonos y obligaciones u otras formas de deuda titulizada, incluidos los
+                           recibos de depositario representativos de tales valores2.
+
+
+                      3. Los demás valores que dan derecho a adquirir o a vender tales valores
+                           negociables o que dan lugar a una liquidación en efectivo, determinada
+                           por referencia a valores negociables, divisas, tipos de interés o
+                           rendimientos, materias primas u otros índices o medidas.
+
+
+
+
+1
+  Hasta un importe de 1.000 euros por operación y cliente y a los solos efectos de adelantar los fondos
+remitidos por los clientes por transferencia bancaria mientras los importes de los clientes no hubieran sido
+aun efectivamente percibidos y asignados al cliente en la cuenta bancaria de la Sociedad.
+
+2
+  Se entenderá por representativos de acciones los valores negociables en el mercado de capitales, que
+representan la propiedad de los valores de un emisor no residente, y pueden ser admitidos a negociación
+en un mercado regulado y negociados con independencia de los valores del emisor no residente.
+
+
+                                                3 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+            o   Instrumentos del mercado monetario, entendiendo como tales las categorías de
+                instrumentos que se negocian habitualmente en el mercado monetario, como
+                letras del Tesoro, y efectos comerciales, excluidos los instrumentos de pago.
+
+
+            o   Participaciones y acciones en instituciones de inversión colectiva, así como de
+                las entidades de capital-riesgo y las entidades de inversión colectiva de tipo
+                cerrado, así como participaciones en fondos de capital riesgo europeos, fondos
+                de emprendimiento social europeos y fondos de inversión a largo plazo europeos.
+
+
+2 Políticas y objetivos de gestión del riesgo
+2.1 Estrategias y procesos para la gestión del riesgo
+
+La gestión efectiva del riesgo se presenta como uno de los elementos fundamentales de la
+estrategia de la Entidad, que permite maximizar el par rentabilidad-riesgo, dentro de los límites
+que cada entidad considere adecuados.
+
+
+El órgano de gobierno encargado de llevar a cabo este cometido es el Consejo de Administración,
+el cual a través de diversos comités supervisa el soporte de operaciones de activo, tutela el
+proceso de gestión del riesgo desde una perspectiva global y controla la aplicación de la Ley de
+Blanqueo de Capitales.
+
+
+El Consejo de Administración es la figura central del proceso de gestión del riesgo desde una
+perspectiva global, estando integrado por la Alta Dirección que con reuniones periódicas lleva a
+cabo las siguientes funciones:
+
+
+        ❖   Determinar el grado de exposición a las diferentes tipologías de riesgo,
+            estableciendo indicadores de gestión que permitan profundizar en su medición y
+            control.
+
+
+        ❖   Definir las políticas, procedimientos de medición interna y técnicas de gestión del
+            riesgo.
+
+
+        ❖   Proponer al menos anualmente a la Alta Dirección, para su elevación al Consejo de
+            Administración, las políticas de asunción y gestión de riesgos, así como los límites
+            establecidos para las posiciones de riesgo global de la Entidad en función de criterios
+            de solvencia y rentabilidad.
+
+
+        ❖   Promover una cultura corporativa que priorice el cumplimiento y la gestión prudente.
+
+
+        ❖   Establecer una estructura organizativa clara con líneas de responsabilidad bien
+            definidas (las famosas Tres Líneas de Defensa) y asegurar que las funciones de
+
+
+                                            4 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+            control (Gestión de Riesgos, Cumplimiento Normativo y Auditoría Interna) cuentan
+            con la autoridad, independencia y recursos necesarios.
+
+
+Securitize configura la cuantificación y gestión de los riesgos, como una tarea fundamental,
+poniendo especial énfasis en la identificación, medición, control y seguimiento de las diferentes
+tipologías de riesgo.
+
+
+2.1.1. Riesgo para los Clientes (RtC)
+
+Se refiere al conjunto de riesgos en los que pudiera llegar a incurrir la Entidad como
+consecuencia de los servicios de inversión prestados a sus clientes, incluso cuando la Entidad
+actuase como agente para sus clientes y no es parte directa en las operaciones resultantes, o si
+actúa como ordenante de las transacciones.
+
+
+Como aproximación a los riesgos asociados a las áreas de negocio de las que, a priori, cabe
+pensar que pueden generar perjuicios para los clientes en caso de problemas, se han definido
+una serie de factores K:
+
+
+    ❖   K-AUM refleja el riesgo de perjuicio que puede derivarse para los clientes de una
+        incorrecta gestión discrecional de las carteras de clientes o de una mala ejecución y
+        ofrece garantías y beneficios a los clientes en lo que se refiere a la continuidad del
+        servicio de gestión de carteras y asesoramiento de inversión en curso.
+
+
+    ❖   K-ASA refleja el riesgo de la custodia y la administración de activos de clientes, y
+        garantiza que la Entidad mantenga un capital proporcional a los correspondientes saldos,
+        independientemente de que sea en su propio balance o en cuentas de terceros.
+
+
+    ❖   K-CMH refleja el riesgo de perjuicio potencial que existe cuando la Entidad tiene en su
+        poder dinero de clientes, teniendo en cuenta si es en su propio balance o en cuentas de
+        terceros y siempre que el dinero de clientes esté protegido en caso de quiebra,
+        insolvencia o entrada en proceso de resolución o administración de la Entidad. K-CMH
+        excluye el dinero de clientes que esté depositado en una cuenta bancaria (de un
+        depositario) a nombre del propio cliente, cuando la Entidad tenga acceso al dinero del
+        cliente mediante mandato de un tercero.
+
+
+    ❖   K-COH refleja el riesgo potencial para los clientes de la Entidad cuando ésta ejecuta las
+        órdenes (en nombre del cliente, y no en nombre de la propia empresa de servicios de
+        inversión), por ejemplo, como parte de servicios exclusivamente de ejecución a los
+        clientes o como parte de una cadena en las órdenes de clientes.
+
+
+A fecha 31 de diciembre de 2025, la Entidad no había iniciado su actividad; por tanto, no
+presenta exposición a este tipo de riesgo.
+
+
+                                             5 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+2.1.2. Riesgo para el Mercado (RtM)
+
+Con carácter general, podemos definir riesgo de mercado como el riesgo de incurrir en pérdidas
+ante movimientos adversos en los precios de los activos en los que se mantengan posiciones,
+ya sea para la propia Entidad o para un cliente.
+
+
+Dentro del riesgo para el mercado se incluye tanto el riesgo de posición neta, como la garantía
+de compensación concedida.
+
+
+A fecha 31 de diciembre de 2025, la Entidad no tiene cartera de negociación; por tanto, no
+presenta exposición a este tipo de riesgo.
+
+
+2.1.3. Riesgo para la Empresa (RtF)
+
+Los riesgos para la empresa son aquellos que pretenden reflejar la exposición de la Entidad al
+impago de sus contrapartes (TCD), el riesgo de concentración de las grandes exposiciones de la
+cartera de negociación (CON) y los riesgos operativos derivados del flujo de negociación diario
+de la entidad (DTF). En concreto:
+
+
+    ❖   K-TCD refleja el riesgo para la Entidad de que sus contrapartes en derivados
+        extrabursátiles, operaciones con pacto de recompra, operaciones de préstamo o toma
+        en préstamo de valores o materias primas, operaciones con liquidación diferida,
+        operaciones de préstamo con reposición de la garantía, cualesquiera otras operaciones
+        de financiación de valores, así como receptores de préstamos concedidos por la propia
+        Entidad incumplan sus obligaciones, multiplicando el valor de las exposiciones.
+
+
+    ❖   K-CON refleja el riesgo de concentración en relación con contrapartes del sector privado
+        individuales o muy vinculadas entre sí frente a las que las empresas tengan exposiciones
+        superiores al 25 % de sus fondos propios, o a determinados umbrales alternativos
+        cuando se trate de entidades de crédito u otras empresas de servicios de inversión.
+
+
+    ❖   K-DTF refleja los riesgos operativos que existen para una Entidad en los grandes
+        volúmenes de transacciones realizadas por cuenta propia o por cuenta de clientes en su
+        propio nombre en un solo día, y que podrían resultar de la inadecuación o el incorrecto
+        funcionamiento de procedimientos, personal y sistemas internos o de acontecimientos
+        externos, sobre la base del valor nocional de las transacciones diarias, adaptado por el
+        tiempo restante hasta el vencimiento de los derivados sobre tipos de interés, con el fin
+        de limitar los incrementos de requisitos de fondos propios, en particular para los
+        contratos a corto plazo en los que los riesgos operativos percibidos son menores.
+
+
+
+
+                                             6 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+A fecha 31 de diciembre de 2025, la Entidad no había iniciado su actividad; por tanto, no
+presenta exposición a este tipo de riesgo.
+
+
+
+2.1.4. Riesgo relacionado con los gastos fijos generales
+
+Todas las entidades deben disponer de procedimientos internos para vigilar y gestionar
+adecuadamente los gastos de estructura en los que va a incurrir a lo largo del ejercicio. La
+Entidad debe contar con unos requisitos de solvencia que le permitan funcionar de manera
+ordenada en el tiempo, estimando los recursos mínimos, que, con independencia de la marcha
+del negocio, va a tener que asumir a lo largo del año.
+
+
+
+2.1.5. Riesgo de liquidez
+
+Todas las empresas de servicios de inversión deben disponer de procedimientos internos para
+vigilar y gestionar sus requisitos de liquidez. Con esos procedimientos se pretende contribuir a
+garantizar que la Entidad pueda funcionar de manera ordenada a lo largo del tiempo, sin
+necesidad de reservar liquidez específicamente para períodos de tensión.
+
+
+
+2.1.6. Riesgo Operacional
+
+El riesgo operacional se define como el riesgo de pérdida resultante de una falta de adecuación
+o de un fallo en los procesos, del personal, o de los sistemas internos, o bien como consecuencia
+de acontecimientos externos. El riesgo operacional incluye el riesgo legal pero no el reputacional,
+ni el estratégico.
+
+
+La Entidad ha definido y establecido diferentes medidas de control para mitigar en lo posible
+esta tipología de riesgo, tales como la formación continuada interna o externa del personal,
+organización de funciones y responsabilidades o el establecimiento de sistemas de seguridad
+informática.
+
+
+
+
+                                             7 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+
+
+3. Información en materia de gobernanza
+A continuación, se facilita la información pertinente sobre los mecanismos de gobernanza interna
+seguidos por la Entidad.
+
+
+A 31 de diciembre de 2025, hay 1 cargo de dirección que formen parte del Consejo de
+Administración de Securitize.
+
+
+En materia de diversidad en la selección de los miembros del órgano de dirección de la Entidad,
+no hay un porcentaje mínimo ni cuota establecida; pero en todo caso, los principios que rigen
+la Política de remuneración de Securitize garantizan la no discriminación entre mujeres y
+hombres y no fomentan la existencia de brecha salarial de género. Estos principios son los
+siguientes:
+
+
+La presente política ha de ser aplicada sobre la base de los siguientes principios:
+
+
+    -   Basarse en la función/puesto de trabajo e incorporar medidas destinadas a evitar los
+        conflictos de intereses que puedan surgir en cada uno de ellos.
+
+    -   Tener en cuenta el mérito, los conocimientos técnicos, las habilidades profesionales y el
+        desempeño.
+
+    -   Garantizar la igualdad, sin atender a criterios de sexo, raza e ideología.
+
+    -   Defender la transparencia, debiendo ser conocida por todos sus destinatarios.
+
+    -   Asegurar la flexibilidad en la estructura y adaptabilidad a los distintos colectivos y
+        circunstancias.
+
+    -   Favorecer la competitividad con respecto al mercado.
+
+
+
+
+                                            8 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+
+
+La Entidad no cuenta con un comité de riesgos, en tanto que no tiene obligación de constituir
+un comité de riesgos, ya que no supera los requisitos establecidos en el artículo 34, apartado 4,
+letra a) de la Directiva UE) 2019/2034 del Parlamento Europeo y del Consejo de 27 de noviembre
+de 2019 relativa al acceso a la actividad de las entidades de crédito y a la supervisión prudencial
+de las entidades de crédito, por la que se modifica la Directiva 2002/87/CE y se derogan las
+Directivas 2006/48/CE y 2006/49/CE.
+
+
+
+
+4. Fondos propios computables
+4.1. Resumen de las principales características y condiciones de
+los instrumentos de capital de nivel 1 ordinario, de nivel 1 adicional
+y de nivel 2
+
+A efectos del cálculo de sus requerimientos de capital, la Entidad considera como capital de nivel
+1 los elementos definidos como tales, considerando sus correspondientes deducciones, en el
+Capítulo 2 del Título I de la Parte Segunda del Reglamento (UE) nº 575/2013 (más conocido
+como Reglamento de Solvencia).
+
+
+El capital de nivel 1 ordinario se caracteriza por ser componente de los recursos propios que
+pueden ser utilizados inmediatamente y sin restricción para la cobertura de riesgos o de pérdidas
+en cuanto se produzcan éstos, estando registrada su cuantía libre de todo impuesto previsible
+en el momento en el que se calcula. Estos elementos muestran una estabilidad y permanencia
+en el tiempo, a priori superior a la de los recursos propios de segunda categoría que se explican
+a continuación.
+
+
+El capital de nivel 1 ordinario de Securitize, a 31 de diciembre de 2025, está formado
+básicamente por el capital efectivamente desembolsado, los resultados negativos de ejercicios
+anteriores, las pérdidas del ejercicio en curso y las aportaciones dinerarias de los socios.
+
+
+Por su parte, se considera capital de nivel 2 los elementos definidos en el Capítulo 4 del Título I
+de la Parte Segunda del Reglamento de Solvencia con los límites y deducciones correspondientes.
+Dicho capital o recursos propios, si bien se ajustan a la definición de recursos propios
+establecidos en la Norma vigente, se caracterizan por tener, a priori, una volatilidad o grado de
+permanencia menor que los elementos considerados como recursos propios básicos.
+
+
+A 31 de diciembre de 2025, Securitize no dispone de capital de nivel 2.
+
+
+
+
+                                            9 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+Entre los conceptos que, de acuerdo con lo dispuesto en la normativa de solvencia (IFR y el
+Reglamento de Solvencia), forman parte de los fondos propios existen algunos tales como
+reservas por beneficios no distribuidos, el resultado del ejercicio, ajustes por valoración positivos
+de activos financieros disponibles para la venta, etc., cuyas características y definición no varían,
+independientemente de la entidad que sea analizada.
+
+
+Securitize no presenta, a fecha de referencia de este Informe, ningún elemento de recursos
+propios computables con características específicas. Tampoco presenta ningún tipo de
+restricción que debiera ser aplicada al cálculo de los fondos propios computables.
+
+
+
+
+                                            10 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+
+4.2. Composición de los Fondos Propios Computables
+
+A continuación, se presenta el detalle a 31 de diciembre de 2025 de los fondos propios de
+Securitize, indicando cada uno de sus componentes y deducciones, y desglosado en capital de
+nivel 1 y capital de nivel 2:
+
+
+
+
+                                                                                                                                              a)                     b)
+                                                                                                                                                             Fuente basada en
+                                                                                                                                                                números de
+                                                                                                                                         Importes (mil
+                                                                                                                                                         referencia del balance en
+                                                                                                                                            EUR)
+                                                                                                                                                          los estados financieros
+                                                                                                                                                                 auditados
+                                                                    Capital de nivel 1 ordinario: instrumentos y reservas
+   1   FONDOS PROPIOS                                                                                                                       1.133
+   2   CAPITAL DE NIVEL 1                                                                                                                   1.133
+   3   CAPITAL DE NIVEL 1 ORDINARIO                                                                                                         1.133
+   4   Instrumentos de capital completamente desembolsados                                                                                  1.700                 Nota 8
+   5   Prima de emisión                                                                                                                       -
+   6   Ganancias acumuladas                                                                                                                   -
+   7   Otro resultado global acumulado                                                                                                      -722                  Nota 8
+   8   Otras reservas                                                                                                                         -
+   9   Intereses minoritarios reconocidos en el capital de nivel 1 ordinario                                                                  -
+  10   Ajustes del capital de nivel 1 ordinario debidos a filtros prudenciales                                                                -
+  11   Otros fondos                                                                                                                          560                  Nota 8
+  12   (−) TOTAL DE DEDUCCIONES EN EL CAPITAL ORDINARIO DE NIVEL 1                                                                          -404
+  13      (-) Instrumentos propios de capital de nivel 1 ordinario                                                                            -
+  14         (-) Tenencias directas de instrumentos de capital de nivel 1 ordinario                                                           -
+  15         (-) Tenencias indirectas de instrumentos de capital de nivel 1 ordinario                                                         -
+  16         (-) Tenencias sintéticas de instrumentos de capital de nivel 1 ordinario                                                         -
+  17      (-) Pérdidas del ejercicio en curso                                                                                               -404                  Nota 8
+  18      (-) Fondo de comercio                                                                                                               -
+  19      (-) Otros activos intangibles                                                                                                       -
+          (-) Activos por impuestos diferidos que dependan de rendimientos futuros y no se deriven de diferencias temporales,
+  20
+          netos de pasivos por impuestos conexos
+  21      (−) Participación cualificada fuera del sector financiero cuyo importe exceda del 15 % de los fondos propios                         -
+          (−) Participación cualificada total en empresas distintas de entes del sector financiero que supere el 60 % de sus fondos
+  22                                                                                                                                           -
+          propios
+          (-) Instrumentos de capital de nivel 1 ordinario de entes del sector financiero en los que la entidad no tiene una inversión
+  23                                                                                                                                           -
+          significativa
+          (-) Instrumentos de capital de nivel 1 ordinario de entes del sector financiero en los que la entidad tiene una inversión
+  24                                                                                                                                           -
+          significativa
+  25      (-) Activos de fondos de pensiones de prestaciones definidas                                                                         -
+  26      (-) Otras deducciones                                                                                                                -
+  27   CAPITAL DE NIVEL 1 ORDINARIO: Otros elementos de capital, deducciones y ajustes                                                         -
+  28   CAPITAL DE NIVEL 1 ADICIONAL                                                                                                            -
+  29   Instrumentos de capital completamente desembolsados y emitidos directamente                                                             -
+  30   Prima de emisión                                                                                                                        -
+  31   (-) TOTAL DE DEDUCCIONES EN EL CAPITAL DE NIVEL 1 ADICIONAL                                                                             -
+  32      (-) Instrumentos propios de capital de nivel 1 adicional                                                                             -
+  33         (-) Tenencias directas de instrumentos de capital de nivel 1 adicional                                                            -
+  34         (-) Tenencias indirectas de instrumentos de capital de nivel 1 adicional                                                          -
+  35         (-) Tenencias sintéticas de instrumentos de capital de nivel 1 adicional                                                          -
+          (-) Instrumentos de capital de nivel 1 adicional de entes del sector financiero en los que la entidad no tiene una inversión
+  36                                                                                                                                           -
+          significativa
+          (-) Instrumentos de capital de nivel 1 adicional de entes del sector financiero en los que la entidad tiene una inversión
+  37                                                                                                                                           -
+          significativa
+  38      (-) Otras deducciones                                                                                                                -
+  39   Capital de nivel 1 adicional: Otros elementos de capital, deducciones y ajustes                                                         -
+  40   CAPITAL DE NIVEL 2                                                                                                                      -
+  41   Instrumentos de capital completamente desembolsados y emitidos directamente                                                             -
+  42   Prima de emisión                                                                                                                        -
+  43   (−) TOTAL DE DEDUCCIONES EN EL CAPITAL DE NIVEL 2                                                                                       -
+  44      (-) Instrumentos propios de capital de nivel 2                                                                                       -
+  45         (-) Tenencias directas de instrumentos de capital de nivel 2                                                                      -
+  46         (-) Tenencias indirectas de instrumentos de capital de nivel 2                                                                    -
+  47         (-) Tenencias sintéticas de instrumentos de capital de nivel 2                                                                    -
+          (-) Instrumentos de capital de nivel 2 de entes del sector financiero en los que la entidad no tiene una inversión
+  48                                                                                                                                           -
+          significativa
+  49     (-) Instrumentos de capital de nivel 2 de entes del sector financiero en los que la entidad tiene una inversión significativa         -
+  50   Nivel 2: Otros elementos de capital, deducciones y ajustes                                                                              -
+
+
+
+
+                                                                                  11 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+
+
+4.3. Conciliación de los Fondos Propios Computables con el Balance
+de los estados financieros auditados
+A continuación, se presenta una conciliación, a 31 de diciembre de 2025, de los fondos propios
+de Securitize con el balance incluido en sus estados financieros auditados. Los importes están
+expresados en miles de euros:
+
+
+
+
+                                         12 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+
+4.4.          Fondos                 Propios:                  principales                    características                           de        los
+instrumentos propios emitidos
+A continuación, se presenta de manera informativa, a 31 de diciembre de 2025, las principales
+características de los fondos propios emitidos por la Entidad.
+
+                                                                                                                             a
+                                                                                                                         Texto libre
+     1      Emisor                                                                                   Securitize Europe Brokerage and Markets, S.V., S.A.
+
+            Identificador único (por ejemplo, CUSIP, ISIN o identificador Bloomberg para la
+     2                                                                                                                      n/p
+            colocación privada de valores)
+     3      Colocación pública o privada                                                                                  Privada
+                                                                                                     Real Decreto Legislativo 1/2010, de 2 de julio, por
+     4      Legislación aplicable al instrumento                                                     el que se aprueba el texto refundido de la Ley de
+                                                                                                                  Sociedades de Capital.
+                                                                                                          Instrumentos de capital completamente
+     5      Tipo de instrumento (cada país especificará los tipos pertinentes)
+                                                                                                                     desembolsados
+            Importe reconocido en el capital reglamentario (moneda en millones, en la fecha de la
+     6                                                                                                                      1,70
+            última notificación)
+    7       Importe nominal del instrumento                                                                              1.700.000
+    8       Precio de emisión                                                                                               1.000
+    9       Precio de reembolso                                                                                              0,67
+    10      Clasificación contable                                                                                    Patrimonio neto
+    11      Fecha de emisión inicial                                                                                     Abril 2025
+    12      Perpetuo o con vencimiento establecido                                                                        Perpetuo
+    13      Fecha de vencimiento inicial                                                                              Sin vencimiento
+            Opción de compra del emisor sujeta a la aprobación previa de las autoridades de
+    14                                                                                                                       No
+            supervisión
+            Fecha opcional de ejercicio de la opción de compra, fechas de ejercicio contingentes e
+    15                                                                                                                      n/p
+            importe a reembolsar
+    16      Fechas de ejercicio posteriores, si procede                                                                     n/p
+            Cupones/dividendos                                                                                              n/p
+    17      Dividendo o cupón fijo o variable                                                                             Variable
+    18      Tipo de interés del cupón y cualquier índice conexo                                                             n/p
+    19      Existencia de limitaciones al pago de dividendos                                                                No
+               Plenamente discrecional, parcialmente discrecional u obligatorio (en términos de
+    20                                                                                                                      n/p
+            calendario)
+               Plenamente discrecional, parcialmente discrecional u obligatorio (en términos de
+    21                                                                                                                      n/p
+            importe)
+    22         Existencia de un incremento del cupón u otros incentivos al reembolso                                        n/p
+    23         Acumulativo o no acumulativo                                                                                 n/p
+    24      Convertible o no convertible                                                                               No convertible
+    25         Si es convertible, factor(es) desencadenante(s) de la conversión                                             n/p
+    26         Si es convertible, total o parcialmente                                                                      n/p
+    27         Si es convertible, coeficiente de conversión                                                                 n/p
+    28         Si es convertible, conversión obligatoria u opcional                                                         n/p
+    29         Si es convertible, especifíquese el tipo de instrumento en que se puede convertir                            n/p
+    30         Si es convertible, especifíquese el emisor del instrumento en que se convierte                               n/p
+    31      Características de la amortización                                                                              No
+    32         En caso de amortización, factor(es) desencadenantes                                                          n/p
+    33         En caso de amortización, total o parcial                                                                     n/p
+    34         En caso de amortización, permanente o temporal                                                               n/p
+    35           Si la amortización es temporal, descripción del mecanismo de revalorización                                n/p
+    36      Características no conformes tras la transición                                                                 No
+    37      En caso afirmativo, especifíquense las características no conformes                                             n/p
+    38      Enlace a los términos y condiciones completos del instrumento (hiperenlace)                                     n/p
+(1) Introduzca «n/p» cuando la pregunta no proceda
+
+
+
+
+                                                                   13 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+
+
+5. Requerimientos de Fondos Propios
+5.1. Requerimientos de fondos propios
+
+La cuantificación de los riesgos de Securitize se realiza de acuerdo con lo establecido en el
+Reglamento (UE) 2019/2033 del Parlamento Europeo y del Consejo de 27 de noviembre de 2019
+relativo a los requisitos prudenciales de las empresas de servicios de inversión, y por el que se
+modifican los Reglamentos (UE) nº 1093/2010, (UE) nº 575/2013, (UE) nº 600/2014 y (UE) nº
+806/2014.
+
+Los requisitos de capital deberán fijarse siempre como la mayor de las siguientes cifras: a) el
+requisito basado en los gastos fijos generales, b) el requisito de capital mínimo permanente (en
+este caso, 750 miles de euros) y c) el requisito basado en el cálculo agregado de los factores K.
+
+A fecha de cierre de ejercicio 2025, la Entidad presentaba un superávit de recursos propios de
+383 miles de euros, lo que supone un ratio de solvencia del 151%, por encima de los límites
+legales.
+
+A continuación, se presenta el importe de los requerimientos de fondos propios basados en los
+factores K calculados, de forma agregada para el riesgo para los clientes (RtC), riesgo para el
+mercado (RtM) y riesgo para la empresa (RtF), así como los requerimientos debidos a los gastos
+fijos generales y el requisito de capital mínimo permanente.
+
+
+                                                                                Datos en EUROS
+
+   Requisitos de fondos propios                                                       750
+                                                                                       0
+   Requisito basado en los factores K
+     Riesgo para el Cliente (RtC)                                                      0
+     Riesgo para el mercado (RtM)                                                      0
+
+     Riesgo para la empresa (RtF)                                                      0
+   Requisito basado en los gastos fijos generales                                     381
+
+   Requisito de capital mínimo permanente                                             750
+
+
+
+
+A partir de estas magnitudes se haya el coeficiente de solvencia comparando los fondos propios
+computables con la magnitud resultante del mayor requerimiento de fondos propios, debiendo
+ser superior al mínimo legalmente exigido del 100%, resultando:
+
+
+
+
+                                                    14 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+
+                                                                                 Datos expresados en %
+                                                                                    y miles de euros
+
+    1    Ratio de capital de nivel 1 ordinario                                          151%
+
+    2    Superávit (+) / déficit (-) de capital de nivel 1 ordinario                     713
+
+    3    Ratio de capital de nivel 1                                                    151%
+
+    4    Superávit (+) / déficit (-) de capital de nivel 1                               571
+
+    5    Ratio de fondos propios                                                        151%
+
+   6     Superávit (+) / déficit (-) de capital total                                    383
+
+
+
+
+6. Información en materia de remuneración
+A continuación, se facilita la información pertinente en referencia a la práctica de remuneración
+para las categorías de personal, cuyas actividades inciden significativamente en el perfil de
+riesgo de la Entidad.
+
+
+En este sentido, se tienen establecidos unos mecanismos que, por un lado, fijan la retribución
+total del empleado a la vez que permiten la evaluación anual del desempeño de este y la
+medición de los objetivos conseguidos por éstos.
+
+
+Los criterios son establecidos y supervisados por la dirección de la Entidad para asegurar que
+los objetivos son específicos, comparables, alcanzables, realistas y tienen un horizonte temporal.
+
+
+La retribución se configura de forma flexible y se estructura en las siguientes componentes:
+
+
+    •   Salario fijo: es la retribución fija que tiene el empleado y se corresponde a las funciones
+        que desempeña en su puesto de trabajo en la organización.
+
+
+    •   Salario variable: es la retribución que varía en función del cumplimiento de los objetivos
+        asignados. El salario variable podrá oscilar entre un porcentaje máximo y mínimo del
+        salario fijo.
+
+
+Securitize mantendrá en todo momento un equilibrio entre los componentes fijo y variable de la
+remuneración, de forma que la estructura de la remuneración no favorezca los intereses de la
+propia Entidad o de las personas pertinentes en su seno, en detrimento de los intereses de los
+clientes. Para mantener esta proporcionalidad, la Entidad se basará en las siguientes directrices:
+
+
+    •   El componente fijo de la remuneración deberá constituir una parte suficientemente
+        elevada de la remuneración total, que permita una política plenamente flexible en lo que
+
+
+
+
+                                                        15 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+        se refiere al componente variable, contemplando la posibilidad de no abonar ninguna
+        remuneración variable en absoluto.
+
+
+    •   La remuneración variable garantizada tendrá carácter excepcional. En caso de que
+        exista, se limitará a las nuevas contrataciones y al primer año de empleo, y siempre que
+        la Entidad posea una base de capital sana y sólida.
+
+
+    •   El total de la remuneración variable no limitará la capacidad de la Entidad para reforzar
+        la solidez de su base de capital.
+
+
+    •   La política retributiva no podrá ofrecer incentivos para asumir riesgos incompatibles con
+        los intereses de los clientes.
+
+
+Anualmente será el Consejo de Administración el que a partir de una serie de criterios tanto
+cualitativos como cuantitativos y en aplicación del “principio de proporcionalidad”, determinará
+el componente variable.
+
+
+Los empleados que inciden de manera significativo en el riesgo son identificados para las
+sociedades sometidas a supervisión. La remuneración de todos los empleados de la Entidad se
+encuentra englobada dentro de las siguientes categorías:
+
+
+    •   Colectivo identificado (consejo de administración, alta dirección y empleados que
+        ejerzan funciones de control): está compuesta por 1 personas, con una remuneración
+        total global de 143,5 miles de euros, sin que haya habido remuneración variable. En
+        este caso, el porcentaje de remuneración fija respecto a la remuneración total asciende
+        al 100%.
+
+
+    •   Resto: 0 personas.
+
+
+Ningún empleado de la Entidad ha percibido en relación con el ejercicio 2025 una remuneración
+total superior al millón de euros.
+
+
+Hay que destacar que en el ejercicio 2025 no han existido concesiones de remuneración variable
+garantizada a ningún empleado ni cargo directivo.
+
+
+De acuerdo con los estatutos de la Sociedad, los miembros del órgano de administración pueden
+perciben remuneración por el ejercicio de dicho cargo.
+
+
+Al final del ejercicio 2025, no existen remuneraciones diferidas pendientes de pago, ni
+concedidas durante dicho ejercicio, pagadas y reducidas mediante ajustes por resultados, ni
+tampoco, tal y como se desprende de la remuneración total a los empleados, remuneraciones
+superiores al millón de euros.
+
+
+
+                                            16 de 17
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+Informe de Solvencia 2025
+
+
+Durante el periodo de referencia se han producido 1 alta.
+
+
+
+
+                                         17 de 17
+

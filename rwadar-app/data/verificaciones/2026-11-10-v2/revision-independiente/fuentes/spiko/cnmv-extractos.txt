@@ -1,0 +1,52 @@
+Extractos CNMV (10/11/2026)
+
+== cnmv-iicext-N0401205J.html
+Fuente: https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es
+Consulta: 2026-11-10T09:24:25Z · HTTP 200 · 151927 bytes · sha256 f89e280049cac415d9c8abb48ce8acb517550002b312806830bceb05d657da66
+  s | > | Información de vehículos de inversión extranjeros | Información de vehículos de inversión extranjeros | SPIKO SICAV | Nº Registro oficial | Fecha registro oficial | Tipo IIC | País | 2380 | 30/01/2026 | SICAV | FRANCIA | Datos generales | Entidades comercializadoras | Datos generales | IIC Comunitaria | IIC Sujeto a la directiva 2009/65/CE | Contacto | Mapa web | Nota legal | Política de cookies | Protección de datos | Accesibilidad | X | @CNMV_MEDIOS | X | @CNMV_IP |
+
+== cnmv-iicext-N0401205J-v18.html
+Fuente: https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&vista=18&lang=es
+Consulta: 2026-11-10T09:24:26Z · HTTP 200 · 152642 bytes · sha256 41b877f7a7d08b11a63d3a3f83f2c44c02e65e45118196f98ed308d2451a5da8
+  | FRANCIA | Datos generales | Entidades comercializadoras | Entidades comercializadoras | Denominación | ALDANA CAPITAL, SOCIEDAD ANONIMA AGENCIA DE VALORES | Contacto | Mapa web | Nota legal | Política de cookies | Protección de datos | Accesibilidad | X | @CNMV_MEDIOS | X | @CNMV_IP | X | @CNMV_IFI | Instagram | LinkedIn | YouTube | RSS | 
+
+== cnmv-esilp-5325.html
+Fuente: https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es
+Consulta: 2026-11-10T09:24:28Z · HTTP 200 · 218116 bytes · sha256 72b757d816dc194ed6729a900774802b0d82e76dfda07de5d5cc60667ebe9ad7
+  sión extranjeras en libre prestación | SPIKO FINANCE SASU | Empresas de Servicios de Inversión del Espacio Económico Europeo en Libre Prestación | Nº Registro Oficial | Fecha registro oficial | 5325 | 14/01/2026 | Datos generales | Sociedades gestionadas | Programa de actividades | Agentes | Datos generales | Dirección | País de origen | 16, rue des Immeubles Industriels - 75011 París (Francia) | FRANCIA | "La información disponible en los registros de empresas de servicios d
+
+== cnmv-esilp-5325-v17.html
+Fuente: https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&vista=17&lang=es
+Consulta: 2026-11-10T09:24:29Z · HTTP 200 · 220121 bytes · sha256 cb2a7fdad9b765adff552deb0479154aca38e7ec45356373671d2e3fd5faa836
+  ociedades gestionadas | Programa de actividades | Agentes | Servicios y actividades de inversión | 1. Recepción y transmisión de órdenes de clientes en relación con uno o más instrumentos financieros | 3) Participaciones y acciones en instituciones de inversión colectiva | Servicios auxiliares | 2. Concesión de créditos o préstamos a un inversor para permitirle la realización de una operación en uno o varios instrumentos financieros, cuando la empresa que concede el crédito o
+
+== cnmv-comercializadora-aldana.html
+Fuente: https://www.cnmv.es/portal/consultas/iic/comercializadora?nif=A87969739
+Consulta: 2026-11-10T09:24:31Z · HTTP 200 · 155238 bytes · sha256 ee78c26b0432308d3d5392b2c9e9f1bf798463d90a6160d9c5475d05bc313797
+  | LFDE FUNDS | NORDEN SRI | SICAV BDL | SICAV HMG FINANCE | SPIKO SICAV | Contacto | Mapa web | Nota legal | Política de cookies | Protección de datos | Accesibilidad | X | @CNMV_MEDIOS | X | @CNMV_IP | X | @CNMV_IFI | Instagram | LinkedIn | YouTube | RSS | 
+
+== cnmv-adv-spiko.html
+Fuente: https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Spiko
+Consulta: 2026-11-10T09:24:32Z · HTTP 200 · 212159 bytes · sha256 c97449f577ff46c405f42e971a3b877dadc3968e8c85683ee20dfe4732b561eb
+  de entidades advertidas | Listado de entidades advertidas | Criterios de consulta: por tipo No autorizadas, de nombre Spiko. | No hay datos disponibles. | Contacto | Mapa web | Nota legal | Política de cookies | Protección de datos | Accesibilidad | X | @CNMV_MEDIOS | X | @CNMV_IP | X | @CNMV_IFI | Instagram | LinkedIn | YouTube | RSS | 
+
+== cnmv-adv-twentyfirst.html
+Fuente: https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Twenty+First+Capital
+Consulta: 2026-11-10T09:24:34Z · HTTP 200 · 212489 bytes · sha256 8d3ddac539bedb89e58d0869a51ac10aa3060b931c18fabf76228f917d04f5c9
+  de entidades advertidas | Listado de entidades advertidas | Criterios de consulta: por tipo No autorizadas, de nombre Twenty First Capital. | No hay datos disponibles. | Contacto | Mapa web | Nota legal | Política de cookies | Protección de datos | Accesibilidad | X | @CNMV_MEDIOS | X | @CNMV_IP | X | @CNMV_IFI | Instagram | LinkedIn | YouTube | RSS | 
+
+== cnmv-adv-amundi.html
+Fuente: https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Amundi
+Consulta: 2026-11-10T09:28:58Z · HTTP 200 · 212181 bytes · sha256 1bb9e2e8c397da4f5180407cadd16145edbfb5bca4f84cdd09ad9054dbc0a014
+  de entidades advertidas | Listado de entidades advertidas | Criterios de consulta: por tipo No autorizadas, de nombre Amundi. | No hay datos disponibles. | Contacto | Mapa web | Nota legal | Política de cookies | Protección de datos | Accesibilidad | X | @CNMV_MEDIOS | X | @CNMV_IP | X | @CNMV_IFI | Instagram | LinkedIn | YouTube | RSS | 
+
+== cnmv-adv-aldana.html
+Fuente: https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aldana
+Consulta: 2026-11-10T09:29:01Z · HTTP 200 · 212181 bytes · sha256 76ed9af7329f7488cdcaf9011d61dc8daad121002ff156f4350fb12171463d76
+  de entidades advertidas | Listado de entidades advertidas | Criterios de consulta: por tipo No autorizadas, de nombre Aldana. | No hay datos disponibles. | Contacto | Mapa web | Nota legal | Política de cookies | Protección de datos | Accesibilidad | X | @CNMV_MEDIOS | X | @CNMV_IP | X | @CNMV_IFI | Instagram | LinkedIn | YouTube | RSS | 
+
+== cnmv-adv-control-trading.html
+Fuente: https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading
+Consulta: 2026-11-10T09:24:36Z · HTTP 200 · 237479 bytes · sha256 04d15f2be0ca025868a90364c6372bf8847e1c39c3fa795ce6baeee7b0f8bc45
+  cepto. | « | 1 | 2 | 3 | 4 | 5 | ... | » | Página 1 de 16 | Resultado de búsqueda de Advertencias de la CNMV | Fecha | Compañías sobre las que se advierte | Documento | Documento (en inglés) | Observaciones | 11/05/2026 | HTTPS://WWW.TRADINGEUROPEBV.COM (CLON) | TRADINGEUROPEBV (CLON) | NO GUARDA RELACIÓN CON JUMP TRADING EUROPE B.V., Y SU WEB HTTPS://WWW.JUMPTRADING.COM, DEBIDAMENTE REGISTRADA EN ESPAÑA COMO EMPRESA DE SERVICIOS DE INVERSIÓN DEL ESPACIO ECONÓMICO EUROPEO EN 
+

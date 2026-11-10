@@ -1,0 +1,60 @@
+Documento de oferta RTUK (Toketuk, S.A.U.) · https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/162/document/280
+09:43:15 UTC · HTTP 200 · 201.388 bytes · 8 páginas · sha256 2a16d9f3df5536e83f0056c742accaa1ffd24c43644a5be7dd904d78039213d0 (igual que el investigador)
+El PDF lleva nombres de los fundadores: no se conserva aquí. Extractos sin nombres:
+
+Fecha:                          4 de septiembre de 2026
+Valor nominal de cada Token:    200,00.- €
+Inversión mínima:               200,00.- €
+TOKETUK, S.A.U. informa que la emisión de derechos tokenizados no se realiza bajo lo
+establecido en el artículo 36 de la Ley 6/2023, de 17 de marzo, de los Mercados de Valores y
+de los Servicios de Inversión (LMVSI). Por lo tanto, este documento no se considera un folleto
+informativo según la LMVSI y, por lo tanto, no ha sido revisado por la Comisión Nacional de
+Mercado de Valores (CNMV). La emisión no se considerará una oferta pública de valores y los
+derechos emitidos no serán transmisibles y no tendrán consideración de valores bajo la LMVSI.
+En consecuencia, estos derechos tokenizados no serán emitidos ni custodiados por entidades
+legalmente autorizadas para prestar servicios de inversión. Por ello, el carácter de este
+documento es estrictamente privado y confidencial, y no debe ser comunicado a terceros por el
+   1.​ a través del presente documento, el Emisor pretende emitir derechos de participación en
+       los beneficios del Negocio de la Sociedad y ofrecer parte de ellas a aquellos a
+       determinados inversores seleccionados previamente por el Emisor de forma privada que
+       estuvieran interesados en participar en el Negocio. Los fondos captados serán
+       destinados a la participación en el desarrollo del Negocio del Emisor, según se define
+   ●​ Tipo y clase: Polygon PoS ERC-3643
+Los Tokens ofertados a los inversores serán lanzados en dos etapas:
+  ●​ Etapa 1: a partir de 04 de septiembre de 2026 hasta el 04 de marzo de 2027 y hasta un
+      total del 1.025 Tokens.
+  ●​ Etapa 2: a partir de 04 de marzo de 2027 hasta el 04 de septiembre de 2027 y hasta un
+      total del 1.025 Tokens.
+ Nº total de Tokens etapa                    1.025                           1.025
+
+
+ Capital objetivo etapa                   205.000 €                        205.000 €
+ Duración                                 31.12.2035                      31.12.2035
+
+
+ Rentabilidad mensual                         4%                              4%
+ provisional estimada sobre
+ la inversión (*)
+
+
+ Retorno anual estimado                      48%                             48%
+Los Tokens emitidos representan la participación en los resultados prósperos o adversos de la
+actividad desarrollada por el Emisor, en forma de cuenta en participación de carácter mercantil
+de conformidad con lo establecido en el artículo 239 y siguientes del código de comercio, así
+como de otra regulación que resulte aplicable. En este sentido, la Sociedad pretende suscribir
+con los inversores un contrato de cuenta en participación en los beneficios del Negocio, el cual
+dará lugar a que los inversores ostenten uno o varios derechos, dependiendo del importe de su
+aportación dineraria que estará representado mediante Tokens.
+
+2.1.8 Amortización del token.
+
+La amortización de la cuenta en participación tokenizada, tendrá lugar una vez finalizado
+totalmente el Negocio, esto es, a los ocho (8) años desde la fecha de finalización de las etapas
+de inversión y siempre acabando el ejercicio social completo, esto es, el 31 de diciembre de
+2035. A la finalización del Negocio se liquidará el contrato de cuenta en participación, sin que
+proceda devolución de las aportaciones de los inversores.
+2.1.9 Inversión mínima
+anticipada dependerá del cumplimiento de la Proyección Económica y, consiguientemente, de
+que la Sociedad tenga tesorería suficiente para hacer dicho pago. En caso de que el Negocio
+obtuviera pérdidas, los inversores asumirán como máxima pérdida el 100% de la cantidad
+aportada.

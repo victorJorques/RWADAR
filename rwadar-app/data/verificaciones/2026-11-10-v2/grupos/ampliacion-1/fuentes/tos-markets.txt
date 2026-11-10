@@ -1,0 +1,849 @@
+Securitize Third Quarter 2026 Results
+
+Investments
+
+Solutions
+
+Resources
+
+Ecosystem
+
+Company
+
+Sign Up
+Log In
+Securitize Markets ToS
+Last Update: October 2026
+
+
+
+
+
+
+PLEASE READ THESE TERMS OF SERVICE CAREFULLY BEFORE USING ANY TRADING OR ATS SERVICES. BY ACCESSING OR USING THIS SITE, YOU ACKNOWLEDGE THAT YOU HAVE READ AND UNDERSTAND THESE TERMS OF SERVICE AND THAT YOU CONSENT TO BE LEGALLY BOUND BY THE TERMS OF SERVICE.
+
+
+
+
+
+
+
+The following terms of service (these "Terms") are an agreement between you ("you," "your"), the user ("User") on your own behalf, if you register as an individual, or in your capacity as a representative of the company for which you work or represent, if you register as a company; and Securitize® as described in Section 1 (“Securitize,” “we,” “us,” or “our”), that sets forth the terms and conditions for your access and use of the www.securitize.io Website and Platform (collectively, the “Platform”).
+
+
+
+
+The Platform is being provided to you expressly subject to these Terms. By accessing and using the Platform, you acknowledge that you have read, understand and agree to be bound by these Terms (including all Securitize Policies applicable thereto) and to comply with all applicable laws and regulations. These Terms form an essential basis of the bargain between you and us. Please read these Terms carefully and keep a copy of them for your reference.
+
+
+
+
+IMPORTANT NOTICES
+
+
+
+
+Mandatory Arbitration and Class Action Waiver
+
+THESE TERMS ALSO INCLUDE A BINDING ARBITRATION CLAUSE AND CLASS ACTION WAIVER. SEE SECTION 15 FOR MORE INFORMATION. YOU HAVE THE RIGHT TO OPT OUT WITHIN 30 DAYS OF FIRST ACCEPTING THESE TERMS.
+
+
+
+
+Alternative Trading Service (“ATS”) Trading Fees
+
+A trade commission applies to secondary market transactions executed on the Securitize Markets ATS, calculated on the gross trade value, at the rate set forth in the fee schedule. Additional fees may apply for wire transfers, ACH chargebacks, and account funding. Credit and debit card funding is subject to a 4.5% processing fee imposed by our card processing partner. Foreign exchange conversion fees may apply to non-United States-dollar-denominated transactions. A commission applies to each purchase transaction in an Entitlement Token ("ET") and a Convertible Entitlement Token ("CET"), calculated on the gross transaction value, at the rate set forth in the fee schedule. No commission applies for sales transactions of Entitlement Tokens or Convertible Entitlement Tokens. For a complete fee schedule, visit: https://securitize.io/fee-schedule-table.
+
+
+
+
+Brokerage Services Only
+
+These terms govern broker-dealer and ATS trading services provided by Securitize Markets, LLC (“Securitize Markets”) and Securitize Europe Brokerage and Markets, S.A. (“Securitize Europe”). Transfer agent recording keeping services are governed by separate Terms of Service.
+
+
+
+
+Risk of Loss
+
+Investments in Digital Asset Securities involve significant risk, including the potential loss of your entire investment. Markets for Digital securities may be illiquid. Past performance is not indicative of future results.
+
+
+
+
+Identification and Contact
+
+
+
+
+United States (Securitize Markets LLC)
+
+In the United States and all jurisdictions not expressly listed below, broker-dealer services are provided by Securitize Markets LLC, a broker-dealer registered with the U.S. Securities and Exchange Commission ("SEC") and a member of the Financial Industry Regulatory Authority ("FINRA") and the Securities Investor Protection Corporation ("SIPC"). Securitize Markets LLC operates Securitize Markets ATS ("Securitize Markets ATS"), an alternative trading system regulated by the SEC pursuant to Regulation ATS. Registered address: 3500 S. Dupont Highway, Dover, DE 19901.
+
+
+
+
+European Union (Securitize Europe Brokerage and Markets, S.A.,)
+
+In the European Union, investment services are provided by Securitize Europe Brokerage and Markets, S.A., with registered offices at Calle Don Ramon de la Cruz 38, 28001 Madrid, Spain, supervised by the Spanish Securities Market Commission (Comision Nacional del Mercado de Valores, "CNMV"). Securitize Europe operates under MiFID II authorization and is subject to applicable EU financial regulation, including MiCA where applicable to crypto-asset services.
+
+
+
+
+For questions or support contact investorsupport@securitize.io.
+
+
+
+
+Acceptance of these Terms
+
+
+
+
+Please carefully review these Terms before accessing the Platform. If you do not agree to these Terms, you may not access, register, or otherwise use the Platform.
+
+By using the Platform, you represent and warrant that:
+
+
+
+
+you are at least eighteen (18) years of age and otherwise possess the legal capacity, authority, and right to enter into a binding agreement with us;
+you are not prohibited from accessing or using the Platform under any applicable law, rule, regulation or order;
+you are not located in, organized under the laws of, ordinarily a resident in, or accessing the Platform from any country or territory that is the subject of comprehensive sanctions or embargoes administered or enforced by the U.S. the U.K., the EU, or any other applicable governmental authority;
+you are not named on any sanctions or restricted party lists administered or maintained by OFAC, the U.S. Department of State, HM Treasury, the European Union, or other applicable governmental authority;
+if accessing or using the Platform on behalf of an entity, you are duly authorized to bind that entity to these Terms;
+all information and materials you provide are accurate, current, complete, and not misleading, and you agree to promptly update such information as necessary to maintain its accuracy; and
+your access to and use of the Platform will comply with all applicable laws, rules, regulations, and industry guidance, including all applicable anti-money laundering, anti-terrorist financing, sanctions, securities, and export control laws and regulations.
+
+The Platform is controlled, operated, and administered by Securitize and its affiliates from its offices within the U.S. By accessing or using the Platform, you do so on your own initiative and are solely responsible for compliance with all applicable local laws, rules, and regulations. You agree that you will not use the content accessed through the Platform in any country or in any manner prohibited by any applicable laws, restrictions, or regulations. Where registration requires you to click "I Agree" or take a substantially similar affirmative action, that action constitutes your electronic signature and manifests your assent to be bound by these Terms to the same extent as a handwritten signature, pursuant to the U.S. Electronic Signatures in Global and National Commerce Act, 15 U.S.C. § 7001 et seq., and applicable state law, including the Uniform Electronic Transactions Act as adopted in the relevant jurisdiction. These Terms form an essential basis of the bargain between you and us. Please read these Terms carefully and keep a copy of them for your reference.
+
+
+
+
+2.1 Modification of these Terms
+
+Securitize reserves the right, in its sole discretion, to modify or update these Terms, and any policies or disclosures incorporated herein, from time to time. If Securitize makes material changes to these Terms, we will provide at least thirty (30) day’s prior notice by posting the updated Terms on the Platform, sending an email notification, or other reasonable means. Non-material changes may become effective immediately upon posting. Unless otherwise stated, changes will become effective after the applicable notice period. Your continued access to or use of the Platform following the effective date of any revised Terms shall constitute your acceptance of the revised Terms. Notwithstanding the foregoing, changes necessary to comply with applicable law, regulation, regulatory guidance, or to address security, fraud prevention, or operational issues may become effective immediately upon notice or posting.
+
+
+
+
+Applicable Policies
+
+
+
+
+Your use of the Platform is subject to the following applicable policies and any product-specific disclosures (collectively, "Securitize Policies"), all of which are incorporated into these Terms by reference.
+
+
+
+
+3.1 FINRA and Regulatory Disclosures
+
+As a FINRA member broker-dealer, Securitize Markets LLC is required to maintain and provide certain regulatory disclosures. You may access BrokerCheck information about Securitize Markets LLC at www.finra.org/brokercheck. SIPC protection of up to $500,000 (including up to $250,000 for cash claims) applies to eligible securities accounts in the event of broker-dealer failure; it does not protect against market losses.
+
+
+
+
+3.2 MiCA and EU Digital Assets Disclosures
+
+Securitize Europe operates under applicable EU financial regulations, including Regulation (EU) 2023/1114 on Markets in Crypto-Assets ("MiCA"), which became fully applicable on December 30, 2024. Where digital asset securities fall within MiCA's scope, Securitize Europe will provide applicable MiCA disclosures, white papers, and investor protections. EU users should review applicable issuer white papers before investing.
+
+
+
+
+3.3 MiFID II
+
+Securitize Europe provides investment services under MiFID II (Directive 2014/65/EU) authorization. EU users are entitled to MiFID II protections, including appropriateness and suitability assessments, best execution policy, conflict of interest disclosures, and investor complaint procedures.
+
+
+
+
+3.4 Securitize Privacy Policy
+
+Securitize maintains a Global Privacy Policy setting out information regarding Securitize’s processing of your personal data. The Policy is available at https://securitize.io/disclosure/privacy-policy.
+
+
+
+
+Account Information and Security
+
+
+
+
+4.1 Account Creation
+
+To access the Platform, you must create a Securitize Account. Account creation requires a valid Login ID and password, identity verification, and completion of our KYC/AML onboarding process. We may decline to open an account or limit account types at our sole discretion.
+
+
+
+
+4.2 Accuracy and Updates
+
+You are solely responsible for the accuracy and completeness of your account information, including your address, tax identification number, and investor qualification status. You must promptly update your information if it changes. Providing false or misleading information is grounds for account suspension and may violate applicable law.
+
+
+
+
+4.3 Account Security
+
+You are responsible for maintaining the confidentiality of your Login ID and password. You may not share, assign, or transfer your account to any third party. If you suspect unauthorized access, immediately contact investorsupport@securitize.io.
+
+
+
+
+4.4 Third-Party Accounts and Services
+
+You may be able to connect your Securitize Account to third-party accounts or services. By doing so, you consent to sharing account information with those accounts or services in accordance with our Privacy Policy. We are not responsible for the data practices or security of third parties. Securitize may disclose information about your Securitize Account to such third parties when necessary to facilitate the operations and/or providing the use of the Platform to you based on your consent. You represent and warrant that you own or have obtained all the rights and authorizations necessary under applicable legislation to disclose to, or allow, Securitize to collect, use, preserve and communicate, where applicable, such information or personal data, including through technological systems and means such as APIs and Cookies in accordance with our Securitize Policies.
+
+
+
+
+4.5 Wallet Whitelisting Authorization
+
+When you submit, connect, register, or otherwise authorize a digital asset wallet address for whitelisting through the Platform (each, a "Whitelisted Wallet"), you authorize Securitize and its affiliates, including Securitize Transfer Agent, LLC, to associate that wallet address with your Securitize Account and to recognize and rely on it as an authorized wallet for your Securitize Account across the Platform and the Services for which you are eligible, including Convertible Entitlement Tokens, Entitlement Tokens, issuer-sponsored tokens, and other digital securities. Accordingly, a wallet whitelisted for one security, issuer, or Service may also be whitelisted or recognized for other securities, issuers, and Services without requiring you to separately authorize the same wallet each time.
+
+Whitelisting a wallet does not by itself make you eligible to purchase, hold, receive, or transfer any particular security. Each transaction remains subject to applicable law, investor qualification and offering eligibility requirements, issuer and transfer restrictions, the Securitize Policies and applicable product disclosures, our compliance controls, and any additional verification we may require, and we may decline to recognize a Whitelisted Wallet for any particular security or Service.
+
+You represent and warrant that you own or control, and have sole authority over, each Whitelisted Wallet, and that no other person has access to its private keys or other access credentials. You are solely responsible for the security of each Whitelisted Wallet. Because a Whitelisted Wallet may be recognized across multiple securities and Services, a compromise of that wallet may affect all of your holdings and activity associated with it. Subject to applicable law, we may treat any transaction or transfer initiated from or to a Whitelisted Wallet as authorized by you. If you believe that a Whitelisted Wallet has been compromised, or you no longer control it, you must immediately notify us at investorsupport@securitize.io. You may request that we remove a wallet from whitelisted status at any time. Removal will take effect once we have had a reasonable opportunity to act on your request and will not affect any transaction initiated before that time.
+
+We may suspend, restrict, or revoke the whitelisted status of any wallet, for some or all securities and Services, in the circumstances described in Section 5.8, if we identify sanctions, anti-money laundering, fraud, or security concerns associated with the wallet, or where required by an issuer’s restrictions or applicable law. Our processing of wallet addresses and related information, including screening, sharing with issuers and transfer agents, and recording on public blockchains, is described in the Privacy Policy referenced in Section 3.4.
+
+
+
+
+Broker-Dealer and ATS Services
+
+
+
+
+The Platform provides investment services and permits individuals to make investments in digital securities via the Platform (the “Services”). To invest with Securitize you do not necessarily have to meet a specific qualification criterion, though certain investments may be limited to qualified investors within the Platform. Qualification is based on applicable national securities laws and regulations governing the types of securities we offer and that must be observed.
+
+
+
+
+5.1 Scope of Services
+
+Securitize Markets and Securitize Europe provide the following Services through the Platform:
+
+
+
+
+Execution of trades in digital asset securities on the Securitize Markets ATS;
+Investor onboarding and qualification assessment;
+Order routing and matching through the ATS;
+Issuance of trade confirmations and account statements;
+Regulatory reporting and disclosure obligations; and
+Secondary market liquidity facilitation, subject to market conditions.
+
+
+
+
+5.2 ATS Operations and Regulation ATS Compliance
+
+Securitize Markets ATS operates as an alternative trading system regulated under the SEC's Regulation ATS (17 C.F.R. § 242.300 et seq.), as amended, including amendments effective 2024. Securities traded on the Securitize Markets ATS have not been registered under the Securities Act of 1933 and may only be offered or sold pursuant to an applicable exemption from registration. Assets listed herein, such as digital assets or tokens using blockchain, are speculative, involve a high degree of risk, are generally illiquid, may have no value, have limited regulatory certainty, are subject to potential market manipulation risks and may expose investors to loss of principal. Blockchain investing involves a degree of risk that can be different from traditional markets. These risks include, but are not limited to, risk of regulatory uncertainty, market adoption, market manipulation, market exiting, price volatility and security risk. Investments in private placements, start-up investments in particular, are also speculative and involve a high degree of risk. Investors must be able to afford the loss of their entire investment. Eligibility to trade on the ATS is determined by Securitize Markets in its sole discretion, subject to applicable law.
+
+
+
+
+5.3 Appropriateness Assessment
+
+All users must complete an appropriateness assessment prior to accessing investment opportunities, pursuant to applicable U.S. and EU law. For EU users, this assessment is conducted in accordance with MiFID II and ESMA guidelines on appropriateness and execution-only services. Results are documented and retained for the periods required by applicable law. Securitize relies on information you provide; we are not responsible for assessments based on inaccurate information. If the Platform's assessment determines that a particular investment may be inappropriate for you, we will notify you. You may choose to proceed, subject to applicable law and platform rules, but you do so at your own risk and without any reliance on our assessment as a recommendation.
+
+
+
+
+5.4 No Investment Advice
+
+Securitize does not act as an investment adviser, financial planner, or fiduciary to any investor. Nothing on the Platform constitutes investment advice, a recommendation, or a solicitation to buy or sell any security. Securitize does not guarantee the accuracy of information provided by issuers, their managers, or any third party. You are responsible for conducting your own due diligence and obtaining appropriate professional advice. Investments offered in the Platform may be speculative and involve a high degree of risk. Investors who cannot afford to lose their entire investment should not invest. Prospective investors should carefully consider the risks and disclosures for the respective investment offering. The value of an investment may go down and investors may lose their entire investment. Past performance is not indicative of future performance. An investment in a fund or investment vehicle is not the same as a deposit with a banking institution. Please refer to the respective issuer documentation for details about potential risks, conflicts, fees, and expenses. Additionally, investors will typically receive illiquid and/or restricted membership interests that may be subject to holding period requirements and/or liquidity concerns.
+
+
+
+
+5.5 Fees and Commissions
+
+
+
+
+ATS Trading Commission: A trade commission of 1% applies to each secondary market transaction executed on the Securitize Markets ATS, calculated on the gross transaction value.
+Card Processing Fees: Account funding using a credit or debit card is subject to a 4.5% processing fee imposed by our card processing partner. This fee is passed to the account holder and is separate from any cash advance fee or foreign transaction fee that your card issuer may charge. Securitize recommends reviewing your card agreement before funding via credit or debit card.
+Cash Advance Fees: Your credit card issuer may treat card-based account funding as a cash advance transaction, which may be subject to additional fees and higher interest rates under your card agreement. Securitize has no control over, and is not responsible for, fees charged by your credit card issuer.
+FX Conversion Fees: If you fund your account in a currency other than U.S. Dollars, or if your card is denominated in a non-USD currency, foreign exchange conversion fees may apply. These fees are separate from card processing fees and are determined by your card issuer or our payment processing partner. You are responsible for understanding applicable FX charges before initiating non-USD funding.
+Additional ATS Fees: Additional fees may apply for domestic and international wire transfers, ACH chargebacks, account recalls, and special services. A complete fee schedule is available at: https://securitize.io/fee-schedule.
+
+
+
+
+5.6 Investment Risks
+
+General Investment Risks: Investments in digital securities are speculative and involve significant risk. The value of investments may decline, and you may lose your entire investment. Past performance is not indicative of future results. You should only invest amounts you can afford to lose entirely.
+Tokenized Market Liquidity Risk: Digital asset securities markets may be illiquid. You may be unable to find a buyer on the Securitize Markets ATS or any other trading venue. Illiquid markets may feature wide bid-ask spreads and low trading volume. You may be required to hold digital securities for extended periods without the ability to sell. There is no guarantee of active, liquid markets for any digital security.
+ATS Risk Disclosure: Digital securities traded on the Securitize Markets ATS are generally exempt from registration under the Securities Act of 1933. They are speculative, involve high risk, may be illiquid, may have no intrinsic value, and are subject to limited regulatory certainty. Blockchain-based assets carry additional risks including smart contract vulnerabilities, regulatory uncertainty, market manipulation, price volatility, and loss of access due to private key mismanagement. All investments in private placements are speculative; investors must be able to bear the loss of their entire investment.
+Automated Decision-Making Disclosure (EU Users): Securitize Europe uses algorithmic tools, including automated appropriateness assessments and AML screening, in connection with Services. Pursuant to Article 22 of the GDPR, EU users have the right not to be subject to solely automated decisions with significant legal or similarly significant effects, the right to obtain human review of such decisions, and the right to contest such decisions. To exercise these rights, contact investorsupport@securitize.io.
+
+
+
+
+5.7 Service Availability
+
+Securitize does not guarantee uninterrupted availability of the Services. Planned outages will be communicated in advance where practicable. We are not liable for losses arising from service interruptions except as required by applicable law. For service issues, contact investorsupport@securitize.io.
+
+
+
+
+5.8 Account Suspension and Denial of Service
+
+We may suspend, restrict, or terminate Services if: (a) you have breached these Terms; (b) we suspect fraud, unauthorized activity, or AML violations; (c) a regulatory authority directs us to; (d) you no longer meet applicable investor qualification requirements; or (e) required by applicable law. We will notify you where permitted by law. In cases where suspension cannot be remediated, we reserve the right to terminate Services with immediate effect.
+
+
+
+
+5.9 Convertible Entitlement Tokens
+
+A "Convertible Entitlement Token" or "CET" is a digital token that represents your security entitlement under Article 8 of the Uniform Commercial Code, on a 1:1 basis, to a corresponding share of common stock of a publicly traded company (a "Reference Security"). The Reference Security is held in book-entry form through custodial and sub-custodial arrangements maintained by or on behalf of Securitize Markets for the benefit of its customers, and Securitize Markets credits a position in the Reference Security to your account on its books and records, separate from its proprietary holdings. CETs may be offered on the Platform under the name "Securitize Stocks." The Disclosure Document describes the liquidity and secondary-market risks that apply specifically to CETs.
+
+Each CET is, at initial launch, offered by Securitize Markets rather than by the issuer of the Reference Security, and the issuer of the Reference Security has not sponsored, endorsed, or participated in the CET. If an issuer later establishes an issuer-sponsored token program and identifies Securitize Markets as an authorized sponsor, outstanding CETs for that Reference Security may convert into issuer-sponsored tokens as described in the Disclosure Document. Before placing an order for a CET, you will be shown a disclosure at the point of order entry identifying the instrument as a CET and distinguishing it from an issuer-sponsored token, which you must acknowledge before your order can be submitted.
+
+As a holder of a CET, you receive the economic benefits and entitlements passed through from the Reference Security, including cash dividends, net of applicable tax withholding, and other distributions, as described in the Disclosure Document. Where the Reference Security carries voting rights, you may instruct Securitize Markets how to exercise the voting rights attributable to the Reference Security underlying your CETs. Because your CET represents a security entitlement credited to your account, the Reference Security is held for you as a customer of Securitize Markets for purposes of SIPC protection, subject to the limits described in Section 3.1. SIPC protection does not cover declines in market value or losses arising from the compromise of a Whitelisted Wallet.
+
+Access to CETs requires successful completion of Securitize's full Know Your Customer identity verification and Anti-Money Laundering screening. CETs may not be available in all jurisdictions or to all Users. The full terms governing CETs, including entitlements processing, conversion mechanics, and fees, are set out in the Disclosure Document. A commission of 2% applies to each CET purchase transaction, calculated on the gross transaction value, in lieu of the ATS trade commission described in Section 5.5. No commission applies to CET sale transactions. CETs offered to EU users are classified as financial instruments under MiFID II and are not crypto-assets under Regulation (EU) 2023/1114 on markets in crypto-assets.
+
+5.10 Entitlement Tokens
+
+An "Entitlement Token" is a digital token that represents a security entitlement to a Reference Security, where the Reference Security is held by Securitize Markets directly or by a third-party custodian in an account maintained for the benefit of Securitize Markets' customers. Securitize Markets, or its affiliated transfer agent acting as registrar on Securitize Markets' behalf, credits a specific position to you on its own books, separate from Securitize Markets' proprietary holdings and reconciled against the Reference Securities so held. Because a position is specifically referable to your Entitlement Token, you hold a security entitlement under Article 8 of the Uniform Commercial Code with respect to the Reference Security. Unlike a Convertible Entitlement Token, an Entitlement Token does not convert into direct registration of the Reference Security in your name.
+
+In connection with Entitlement Token transactions, Securitize Markets effects the purchase of the Reference Security as part of executing your specific order for the corresponding Entitlement Token, at a price matched to the then-current net asset value, and credits the resulting position to you as described above. Securitize Markets does not maintain an inventory position in a Reference Security beyond what is required to fulfill pending and open Entitlement Token orders, and does not use those Reference Securities for separate proprietary trading activity.
+
+Entitlement Tokens do not convert into an Issuer Sponsored Token or into a Convertible Entitlement Token, and are not affected by an issuer's later adoption of an issuer-sponsored token program. Before placing an order, you will be shown a disclosure identifying the instrument as an Entitlement Token and distinguishing it from a Convertible Entitlement Token and an issuer-sponsored token, which you must acknowledge before your order can be submitted.
+
+Access to Entitlement Tokens requires successful completion of Securitize's full Know Your Customer identity verification and Anti-Money Laundering screening. Entitlement Tokens may not be available in all jurisdictions or to all Users. The full terms governing Entitlement Tokens, including entitlements processing, fees, and the application of SIPC protection, are set out in the Disclosure Document and the Entitlement Token Documents. A commission of 2% applies to each Entitlement Token purchase transaction, calculated on the gross transaction value, in lieu of the ATS trade commission described in Section 5.5. No commission applies to Entitlement Token sale transactions.
+
+5.11 Peer-to-Peer Gift Transfers
+
+Where Securitize Markets makes peer-to-peer transfer functionality available for a CET or other digital security, an on-chain movement of the token from your Whitelisted Wallet to another wallet is an instruction to Securitize Markets and does not by itself transfer your security entitlement. The transfer takes effect only when Securitize Markets debits your account and credits the recipient's account on its books and records. The recipient must hold an eligible Securitize Account and Whitelisted Wallet.
+
+Peer-to-peer transfers are available only for gifts made without any payment or other consideration. By initiating a peer-to-peer transfer, you represent that no consideration has been or will be given for it, and any sale must be made through the Platform's trading functionality. Securitize Markets may reject, delay, or hold pending review any transfer instruction before recording it, including where it reasonably determines that additional information is required, that the instruction may be unauthorized or erroneous, that the recipient is not eligible to hold the security, or that the transfer may involve consideration, unlawful activity, or misuse.
+
+You are responsible for any tax filings arising from a gift you make, including any United States gift tax return. Recipients are responsible for any reporting obligations arising from gifts they receive. Securitize Markets does not provide tax advice.
+
+5.12 Pricing and Valuation
+
+Net Asset Value Pricing. For securities priced by reference to net asset value, including Entitlement Tokens, the net asset value displayed on the Platform is based on valuations and other information provided by the issuer, its fund administrator, or another authorized third party. We incorporate these updates into our systems using commercially reasonable efforts, and updates may be subject to processing or reporting delays. The displayed net asset value therefore may not reflect the most recent valuation. The price at which your order is executed is determined as described in Section 5.10 and the Disclosure Document, and not by the displayed net asset value.
+
+Publicly Traded Securities Pricing. For Convertible Entitlement Tokens and other securities that reference publicly traded securities, displayed prices are obtained from third-party market data providers on an as-available basis and generally reflect the midpoint between the prevailing bid and ask prices. Displayed prices are typically delayed by approximately fifteen minutes and may be delayed further depending on data availability, market conditions, and provider limitations. A displayed price is not a quotation and is not the price at which your order will be executed.
+
+Informational Purposes Only. Displayed prices are provided for informational purposes only and may differ from current market prices, official valuations, and the price applicable to your transaction. We do not guarantee that displayed pricing information is accurate, complete, or current. Nothing in this Section limits our obligations under applicable law or regulation, including with respect to the execution of your orders.
+
+
+
+
+
+
+
+Electronic Communications Consent
+
+
+
+
+6.1 Communications to Be Provided in Electronic Form
+
+By choosing to use the Platform, you will receive disclosures, notices, documents, and any other communication about our Platform from us (“Communications”), in accordance with our Securitize Policies. U.S. users consent to receive all required communications electronically pursuant to the Electronic Signatures in Global and National Commerce Act (E-SIGN Act, 15 U.S.C. § 7001 et seq.). Electronic communications have the same legal effect as paper communications. We can only give you the benefits of our Platform by conducting business through the Internet, and therefore we must send you Communications electronically. This section informs you of your rights when receiving electronic Communications from us. We may discontinue the electronic provision of Communications at any time at our sole discretion.
+
+
+
+
+6.2 Communications in Writing
+
+Your consent to these Terms means that electronic Communications shall be considered “in writing” and have the same meaning and effect as if provided in paper form, unless you have requested to receive Communications in paper or you withdraw your consent as stated below. You agree that we have no obligation to provide you Communications in paper format, although we reserve the right to do so at any time. Regarding fees and invoicing, you can always request paper copies of your invoices at investorsupport@securitize.io.
+
+
+
+
+6.3 Minimum Requirements
+
+You understand that, in order to view or retain copies of the electronic Communications, you need a computer or mobile device with an Internet connection and a commercially available browser, a valid email address, and sufficient storage space to save Communications or the capability to print the Communications from the device on which you view them.
+
+
+
+
+6.4 Withdrawing Consent
+
+You may withdraw your consent to receive non-mandatory Communications electronically as described in the footer of such Communications. If you withdraw your consent, the legal validity and enforceability of prior Communications delivered in electronic form will not be affected.
+
+
+
+
+Limitations of Use
+
+
+
+
+You agree to use the Platform only for lawful purposes and in compliance with all applicable laws, including U.S. federal securities laws, FINRA rules, EU financial regulation, and AML/sanctions requirements. You are prohibited from:
+
+
+
+
+Attempting to reverse engineer, decompile, or circumvent any Platform security feature;
+Using automated tools (bots, scrapers, spiders) to access the Platform other than as expressly permitted;
+Impairing, overloading, or disrupting the Platform or interfering with others' access;
+Mirroring or reproducing Securitize Materials without prior written consent;
+Removing or altering any copyright, trademark, or proprietary notices on the Platform;
+Removing or altering any branding, notices, or disclosures required by applicable regulatory obligations;
+Treating Platform content as investment advice, a recommendation, or a guarantee of any kind;
+Using Platform data or content for commercial purposes outside the scope of Services without prior written consent;
+Engaging in market manipulation, wash trading, front-running, or other conduct prohibited by applicable securities law;
+Submitting orders or transactions that violate U.S. securities laws, FINRA rules, ESMA guidelines, MiCA, or OFAC sanctions.
+
+
+
+
+Securitize reserves the right to take various actions against you if we believe you have engaged in activities restricted by these Terms or by applicable laws or regulations and Securitize also reserves the right to take action to protect Securitize, other Platform Users and other third parties from any liability, fees, fines or penalties. Those actions may include limiting or completely terminating your access to the Platform and Securitize Account, taking legal action against you and holding you liable for the amount of Securitize’s damages caused by your violation of these Terms.
+
+
+
+
+Third-Party Services and Linked Sites
+
+
+
+
+The Platform may provide access to third-party websites, protocols, and platforms ("Linked Sites"). Securitize does not control, endorse, or assume responsibility for Linked Sites or their content, reliability, or regulatory compliance. Linked Sites may be subject to different regulatory standards and investor protections than those applicable to Securitize.
+
+
+
+
+Securitize integrates third-party services (including payment processors, identity verification providers, and blockchain infrastructure providers) to deliver Services. By using the Platform, you consent to the necessary sharing of information with these service providers as described in our Privacy Policy.
+
+
+
+
+Disputes arising from third-party products or services must be resolved directly with the relevant third party. You may report concerns about third-party conduct to: investorsupport@securitize.io.
+
+
+
+
+Intellectual Property
+
+
+
+
+The Platform is owned and operated by Securitize. All content, visual interfaces, information, graphics, design, compilation, computer code, products, software, services, text, data, contents, names, trade names, trademarks, trade dress, service marks, layout, logos, designs, images, graphics, illustrations, artwork, icons, photographs, displays, sound, music, video, animation, organization, assembly, arrangement, interfaces, databases, software and/or technology and all intellectual property of any kind whatever and the selection and arrangement thereof (collectively, the “Securitize Materials”) are owned exclusively by Securitize or the licensors or suppliers of Securitize and are protected by U.S. and EU copyright, trade dress, patent, and trademark laws, international conventions, and all other relevant intellectual property and proprietary rights, and applicable laws. Nothing on the Platform should be construed as granting, by implication, estoppel or otherwise, any license or right to use any of the Securitize Materials displayed on the Platform without our prior written permission in each instance.
+
+
+
+
+As a User, you are granted a non-exclusive, non-transferable, revocable license to access and use the Platform strictly in accordance with these Terms. As a condition of your use of the Platform, you warrant to Securitize that you will not use the Platform for any purpose that is unlawful or otherwise prohibited by these Terms. You agree that you do not acquire any ownership rights in any Securitize Materials. We do not grant you any licenses, express or implied, to the intellectual property of Securitize or our licensors except as expressly authorized by these Terms.
+
+You agree to observe and abide by all copyright and other proprietary notices, legends, or other restrictions contained in any such content and will not make any changes thereto. You may not use, copy, display, distribute, modify or reproduce any of the Securitize Materials found on the Platform unless in accordance with written authorization by us. Securitize prohibits the use of any of the Securitize Materials as part of a link to or from the Platform unless the establishment of such a link is approved in writing by us in advance. All rights related to the Securitize Materials are hereby reserved.
+
+
+
+
+You agree that the Securitize Materials may not be copied, reproduced, distributed, republished, displayed, posted or transmitted in any form or by any means, including electronic, mechanical, photocopying, recording or otherwise, without the express prior written consent of Securitize. You acknowledge that the Securitize Materials are and shall remain the property of Securitize. You may not modify, participate in the sale or transfer of, or create derivative works based on any Securitize Materials in whole or in part.
+
+
+
+
+You will not modify, publish, transmit, reverse engineer, participate in the transfer or sale, create derivative works, or in any way exploit any of the content and/or Securitize Materials, in whole or in part, found on the Platform. Securitize Materials and/or content is not for resale. You will not claim any ownership right in any material, software or intellectual property displayed on, published by or otherwise available through the Securitize Platform.
+
+
+
+
+Disclaimer of Warranties and Limitation of Liability
+
+
+
+
+10.1 Disclaimer of Warranties
+
+THE SERVICES AND PLATFORM ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, SECURITIZE AND ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, AND SUCCESSORS ("SECURITIZE PARTIES") MAKE NO REPRESENTATIONS OR WARRANTIES OF ANY KIND, EXPRESS, STATUTORY, OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR TITLE. YOUR USE OF THE SERVICES IS AT YOUR SOLE RISK.
+
+
+
+
+IF YOU ARE A CALIFORNIA RESIDENT, YOU WAIVE CALIFORNIA CIVIL CODE SECTION 1542, WHICH PROVIDES THAT A GENERAL RELEASE DOES NOT EXTEND TO CLAIMS THAT THE RELEASING PARTY DOES NOT KNOW OR SUSPECT TO EXIST AT THE TIME OF EXECUTING THE RELEASE AND WHICH, IF KNOWN, WOULD HAVE MATERIALLY AFFECTED THE SETTLEMENT.
+
+
+
+
+THE SECURITIZE PARTIES MAKE NO REPRESENTATIONS, WARRANTIES OR GUARANTEES, EXPRESS OR IMPLIED, REGARDING THE ACCURACY, ADEQUACY, TIMELINESS, RELIABILITY, COMPLETENESS OR UTILITY OF ANY OF THE INFORMATION OR CONTENT ON THE PLATFORM AND EXPRESSLY DISCLAIM ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT OR TITLE. THE SECURITIZE PARTIES MAKE NO REPRESENTATION, WARRANTY OR GUARANTEE THAT THE PLATFORM IS FREE OF VIRUSES, BUGS, DEFECTS, ERRORS OR OTHER COMPUTING ROUTINES THAT CONTAIN DAMAGING OR OTHERWISE CONTAMINATING PROPERTIES OR PROGRAMS INTENDED TO INTERCEPT OR STEAL PERSONAL OR SYSTEM DATA.
+
+
+
+
+PLEASE NOTE THE ABILITY TO EXCLUDE WARRANTIES VARIES IN DIFFERENT JURISDICTIONS. TO THE EXTENT THAT A JURISDICTION PLACES LIMITS ON THE ABILITY FOR A PARTY TO EXCLUDE WARRANTIES, THESE EXCLUSIONS EXIST ONLY TO THE EXTENT PERMITTED BY APPLICABLE LAW. BECAUSE OF THIS JURISDICTIONAL VARIANCE, SOME OF THE ABOVE EXCLUSIONS MAY NOT APPLY TO YOU.
+
+
+
+
+No Legal, Tax, or Investment Advice Securitize does not act as a lawyer, tax advisor, or investment adviser and does not provide you with any legal, tax, or investment advice through the Platform. Securitize encourages you to consider consulting an accountant or other investment advisor aware of your individual circumstances before implementing any financial strategy or making other financial decisions. The information to which this Platform gives access does not constitute an offer or an invitation to purchase securities offered through the Securitize Services in the United States or in any other jurisdiction in which such offer or invitation is not authorized or to any person to whom it is unlawful to make such offer or invitation. Potential users of information obtained from issuers through the Platform are requested to inform themselves about and to observe any such restrictions. Securities cannot be offered or sold in certain jurisdictions, such as the United States, without registration and/or compliance with legal requirements. You agree that no joint venture, partnership, employment, or agency relationship exists between you and Securitize as a result of these Terms or use of the Platform.
+
+
+
+
+10.2 Limitation of Liability
+
+TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, THE SECURITIZE PARTIES WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATING TO YOUR USE OF THE SERVICES OR THE PLATFORM, HOWEVER CAUSED. IN NO EVENT SHALL THE SECURITIZE PARTIES' AGGREGATE LIABILITY EXCEED THE GREATER OF (A) THE FEES ACTUALLY PAID BY YOU TO SECURITIZE IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, OR (B) ONE THOUSAND U.S. DOLLARS (USD $1,000). THESE LIMITATIONS APPLY UNDER ALL THEORIES OF LIABILITY, INCLUDING CONTRACT, TORT, AND STATUTE. SOME JURISDICTIONS DO NOT PERMIT CERTAIN LIABILITY LIMITATIONS; THESE APPLY TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.
+
+
+
+
+SECURITIZE SHALL NOT BEAR ANY LIABILITY, WHATSOEVER, FOR ANY DAMAGE OR INTERRUPTIONS CAUSED BY ANY COMPUTER VIRUSES OR OTHER MALICIOUS CODE THAT MAY AFFECT YOUR COMPUTER OR OTHER EQUIPMENT, OR ANY PHISHING, SPOOFING OR OTHER ATTACKS. WE ADVISE THE REGULAR USE OF A REPUTABLE AND READILY AVAILABLE VIRUS SCREENING AND PREVENTION SOFTWARE. YOU SHOULD ALSO BE AWARE THAT SMS AND EMAIL SERVICES ARE VULNERABLE TO SPOOFING AND PHISHING ATTACKS AND SHOULD USE CARE IN REVIEWING MESSAGES. ALWAYS LOG INTO YOUR ACCOUNTS THROUGH THE SITE TO REVIEW ANY REQUIRED ACTIONS IF YOU HAVE ANY UNCERTAINTY REGARDING THE AUTHENTICITY OF ANY COMMUNICATION OR NOTICE.
+
+
+
+
+SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR THE LIMITATION OR EXCLUSION OF LIABILITY, INCLUDING LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES. ACCORDINGLY, SOME OF THE ABOVE LIMITATIONS SET FORTH ABOVE MAY NOT APPLY TO YOU AND NOTHING IN THESE TERMS LIMITS ANY LIABILITY WHICH CAN NOT LEGALLY BE LIMITED.
+
+
+
+
+Indemnification
+
+
+
+
+To the fullest extent permitted by applicable law, you agree to indemnify, defend, and hold harmless the Securitize Parties from and against any and all claims, losses, damages, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or relating to: (i) your violation of these Terms; (ii) your violation of applicable law, including securities laws, FINRA rules, Regulation ATS, MiFID II, MiCA, DORA, other EU financial regulations, or AML/sanctions requirements; (iii) your violation of any third-party right; (iv) inaccurate or misleading information you provide; (v) your engagement in prohibited trading activity, market manipulation, or fraudulent conduct; or (vi) any unauthorized use of your Securitize Account.
+
+
+
+
+We reserve the right to assume exclusive control of any indemnified matter, in which case you agree to cooperate fully with our defense. You shall cooperate as fully as reasonably required in the defense of any such claim and remain responsible to indemnify us for any settlement or judgment. You may not settle any indemnified claim without our prior written consent.
+
+
+
+
+Termination
+
+
+
+
+We may suspend or terminate your access the Platform at any time, with or without cause, with reasonable notice where practicable, except where immediate suspension is required for legal, compliance, or fraud-prevention reasons. You may terminate your account at any time by contacting investorsupport@securitize.io.
+
+
+
+
+Upon termination, the following Sections survive: 3 (Applicable Policies), 7 (Limitations of Use), 9 (Intellectual Property), 10 (Disclaimer of Warranties and Limitation of Liability), 11 (Indemnification), 15 (Dispute Resolution by Binding Arbitration), 16 (Severability), 17 (Waiver), and 18 (General Provisions).
+
+Securitize further reserves the right to modify or discontinue, either temporarily or permanently, any portions or all of the Platform at any time with or without notice.
+
+
+
+
+DORA and ICT Risk Disclosure (EU Users)
+
+
+
+
+Securitize Europe operates under the requirements of Regulation (EU) 2022/2554 on Digital Operational Resilience for the financial sector ("DORA"), which became fully applicable on January 17, 2025. Pursuant to DORA, Securitize Europe maintains:
+
+
+
+
+An ICT risk management framework covering identification, protection, detection, response, and recovery;
+An ICT-related incident classification and reporting program, including mandatory reporting to the Comisión Nacional del Mercado de Valores (“CNMV”) for significant incidents;
+Third-party ICT risk management procedures governing our technology providers, including blockchain infrastructure operators; and
+Digital operational resilience testing programs.
+
+
+
+
+You acknowledge that Securitize Europe's reliance on third-party ICT providers (including blockchain networks) introduces operational risks that are disclosed in our Privacy Policy and platform disclosures. Significant ICT incidents will be reported to users and the CNMV as required by DORA.
+
+
+
+
+Data Protection and Privacy Rights
+
+
+
+
+14.1 GDPR and EU Data Protection
+
+For EU users, Securitize Europe processes personal data as a data controller under Regulation (EU) 2016/679 ("GDPR") and applicable national data protection laws, including the Spanish Organic Law 3/2018 (LOPDGDD). Processing is carried out on the following lawful bases:
+
+
+
+
+Contract performance: to provide Services;
+Legal obligation: for AML/KYC compliance, regulatory reporting, and MiFID II/MiCA obligations;
+Legitimate interests: for fraud prevention, security, and platform improvement; and
+Consent: for marketing communications, where applicable.
+
+
+
+
+EU users have the right to access their personal data, correct inaccurate data, request erasure (subject to legal retention obligations), restrict processing, data portability, and object to processing. To exercise these rights, contact: dataprotection@securitize.io. EU users may also lodge a complaint with the Spanish Data Protection Agency (Agencia Espanola de Proteccion de Datos, "AEPD") at www.aepd.es.
+
+
+
+
+14.2 California Privacy Rights
+
+Applicability: If you are a California resident, the California Consumer Privacy Act of 2018, as amended by the California Privacy Rights Act of 2020 (collectively, "CCPA"), affords you specific rights regarding your personal information. This Section supplements the Securitize Privacy Policy and applies solely to California residents.
+Your Rights Under CCPA: Subject to certain exceptions, you have the following rights:
+Right to Know — You may request disclosure of the categories and specific pieces of personal information we have collected about you, the categories of sources from which it was collected, our business or commercial purpose for collecting it, and the categories of third parties with whom we share it.
+Right to Delete — You may request deletion of personal information we have collected from you, subject to exceptions including where retention is required for legal compliance, regulatory recordkeeping (including SEC and FINRA obligations), fraud prevention, or completion of a transaction.
+Right to Correct — You may request correction of inaccurate personal information we maintain about you.
+Right to Opt Out of Sale or Sharing — We do not sell your personal information for monetary consideration. To the extent we share personal information with third parties for cross-context behavioral advertising purposes, you may opt out by contacting dataprotection@securitize.io.
+Right to Limit Use of Sensitive Personal Information — You may direct us to limit the use of sensitive personal information (including government ID numbers and financial account data) to purposes necessary to provide the Services or as otherwise permitted by CCPA. Note that certain sensitive data processing is required for our AML/KYC and regulatory compliance obligations and cannot be limited.
+Right to Non-Discrimination — We will not discriminate against you for exercising any CCPA right. We may, however, decline to provide services where your personal information is necessary to perform them.
+How to Submit a Request: To exercise any of the above rights, contact us at: dataprotection@securitize.io, or by mail at: Securitize Markets LLC, 3500 S. Dupont Highway, Dover, DE 19901, Attn: Privacy. We will verify your identity before processing your request. We will respond within 45 days of receipt. When reasonably necessary, we may extend this period by an additional 45 days with prior notice.
+Authorized Agent: You may designate an authorized agent to submit CCPA requests on your behalf. We may require written proof of the agent's authorization and may verify your identity directly before processing the request.
+Data Breach Private Right of Action: California residents have the right to bring a civil action under California Civil Code § 1798.150 in the event of certain unauthorized disclosures of their personal information resulting from our failure to implement reasonable security measures. This right is separate from and in addition to any other remedies available under these Terms or applicable law.
+Shine the Light: California Civil Code § 1798.83 permits California residents to request information about personal information disclosed to third parties for direct marketing purposes during the preceding calendar year. We do not disclose personal information to third parties for their direct marketing purposes. For questions, contact: dataprotection@securitize.io.
+
+
+
+
+Dispute Resolution by Binding Arbitration
+
+
+
+
+IMPORTANT: THIS SECTION 15 LIMITS YOUR LEGAL RIGHTS. READ IT CAREFULLY. YOU HAVE THE RIGHT TO OPT OUT AS DESCRIBED IN SECTION 15.3.
+
+
+
+
+15.1 Election to Arbitrate
+
+You and Securitize agree that the sole and exclusive forum and remedy for resolution of a Claim shall be final and binding arbitration pursuant to this Arbitration Provision, unless you opt-out as provided in Section 15.3 below. As used in this Arbitration Provision, “Claim” shall include any past, present, or future claim, dispute or controversy involving you (or persons claiming through or connected with you), on the one hand, and any of the Securitize Parties, on the other hand, relating to or arising out of these Terms or your use of the Platform, including (except to the extent provided otherwise in the last sentence of Section 15.9 below) the validity or enforceability of this Arbitration Provision, any part thereof, or the entire Terms. Claims are subject to arbitration regardless of whether they arise from a contract, tort (intentional or otherwise), a constitution, statute, common law or principles of equity or otherwise. Claims include matters arising as initial claims, counter-claims, cross-claims, third-party claims or otherwise. The scope of this Arbitration Provision is to be given the broadest possible interpretation that is enforceable.
+
+
+
+
+15.2 Applicability of the Federal Arbitration Act; Arbitrator’s Powers
+
+This Arbitration Provision is made pursuant to a transaction involving interstate commerce and, if you are a citizen of or reside in the United States, shall be governed by and enforceable pursuant to FINRA rules administered by FINRA, when required, or under the Federal Arbitration Act (the “FAA”), conducted by a single neutral arbitrator and administered by the American Arbitration Association, or a similar arbitration service selected by the parties, in a location mutually agreed upon by the parties. The arbitrator will apply substantive law consistent with the FAA and applicable statutes of limitations. The arbitrator may award damages or other types of relief permitted by applicable substantive law, subject to the limitations set forth in this Arbitration Provision. The arbitrator will not be bound by judicial rules of procedure and evidence that would apply in a court. The arbitrator shall take steps to reasonably protect confidential information.
+
+
+
+
+15.3 Opt-Out of Arbitration Provision
+
+You may opt-out of this Arbitration Provision for all purposes by sending an arbitration opt-out notice to investorsupport@securitize.io within thirty (30) days of the date of your electronic acceptance of these Terms. The opt-out notice must clearly state that you are rejecting arbitration, provide your name, address, telephone number and Login ID; and be signed by you. You may send an opt-out notice in any manner you see fit as long as it is received at the specified address within the specified time. No other method can be used to opt-out of this Arbitration Provision. If the opt-out notice is sent on your behalf by a third party, such third party must include evidence of his or her authority to submit the opt-out notice on your behalf.
+
+
+
+
+15.4 Exclusion for Residents of the European Economic Area or the United Kingdom
+
+If you are a resident of the European Economic Area or the United Kingdom (collectively, the “EEA”), you may bring a Claim in a court with jurisdiction according to the laws of your country of residence, regardless of whether you have opted out of arbitration pursuant to Section 15.3. Alternatively, you may submit a dispute to the European Online Dispute Platform by visiting https://ec.europa.eu/consumers/odr/main/?event=main.home2.show.
+
+
+
+
+15.5 Informal Dispute Resolution
+
+If a Claim arises, our goal is to learn about and address your concerns and, if we are unable to do so to your satisfaction, to provide you with a neutral and cost-effective means of resolving the dispute quickly. You agree that before filing any Claim in arbitration or before a court with jurisdiction in accordance with section 15.4 above, you must seek informal resolution of the Claim by sending an email to investorsupport@securitize.io. In the event the Claim is not resolved to your reasonable satisfaction within thirty (30) business days of your email, you may proceed to arbitration or to bring the Claim in court. We will do the same before commencing arbitration or as we receive a court notice, emailing you at the email address you have provided as part of your Account Information.
+
+
+
+
+15.6 Arbitration Procedures
+
+The party initiating arbitration shall do so with the American Arbitration Association (the “AAA”) or Judicial Alternatives and Mediation Services (“JAMS”), unless FINRA rules, when a FINRA forum is required. The arbitration shall be conducted according to the rules and policies of the administrator selected, except to the extent the rules conflict with this Arbitration Provision or any countervailing law. If you have any questions concerning the AAA or would like to obtain a copy of the AAA arbitration rules, you may call +1 (800) 778-7879 or visit the AAA's website at: www.adr.org. If you have any questions concerning JAMS or would like to obtain a copy of the JAMS arbitration rules, you may call +1 (800) 352-5267 or visit their website at: www.jamsadr.com. In the case of a conflict between the rules and policies of the administrator and this Arbitration Provision, this Arbitration Provision shall control, subject to countervailing law, unless all parties to the arbitration consent to have the rules and policies of the administrator apply. The arbitration will be held through telephonic or video remote electronic means unless you or we request in-person proceedings, in which case the parties shall agree on, or in the absence of agreement the rules and policies of the administrator shall determine, the location.
+
+
+
+
+15.7 Arbitration Fees
+
+If we initiate arbitration, we shall pay all the administrator's filing costs and administrative fees (other than hearing fees). If you initiate arbitration, filing costs and administrative fees (other than hearing fees) shall be paid in accordance with the rules of the administrator selected, or in accordance with applicable law if contrary to the administrator's rules. We shall pay the administrator's hearing fees for one full day of arbitration hearings. Fees for hearings that exceed one day will be paid by the party requesting the hearing, unless the administrator's rules or applicable law require otherwise, or you request that we pay them, and we agree to do so. Each party shall bear the expense of its own attorneys’ fees, except that the arbitrator in his or her discretion may determine to award attorneys’ fees to the prevailing party if s/he determines that the Claim or the defense thereof was manifestly unjustified or unreasonable. If a statute gives you the right to recover any of these fees, these statutory rights shall apply in the arbitration notwithstanding anything to the contrary herein.
+
+
+
+
+15.8 Appeals
+
+Within thirty (30) days of a final award by the arbitrator, any party may appeal the award for reconsideration by a three-arbitrator panel selected according to the rules of the arbitrator administrator. In the event of such an appeal, any opposing party may cross-appeal within thirty (30) days after notice of the appeal. The panel will reconsider de novo all aspects of the initial award that are appealed. Costs and conduct of any appeal shall be borne by the party initiating the appeal unless it prevails in that appeal, in which case they shall be addressed in the same way as with the initial arbitration proceeding. Any award by the individual arbitrator that is not appealed, and any panel award on appeal, shall be final and binding, except as may be required by applicable law (if you are a citizen of or reside in the United States, the FAA), and may be entered as a judgment in any court of competent jurisdiction.
+
+
+
+
+15.9 No Class Actions
+
+NO ARBITRATION SHALL PROCEED ON A CLASS, REPRESENTATIVE, COLLECTIVE OR COORDINATED BASIS (INCLUDING AS PRIVATE ATTORNEY GENERAL ON BEHALF OF OTHERS), EVEN IF THE CLAIM OR CLAIMS THAT ARE THE SUBJECT OF THE ARBITRATION HAD PREVIOUSLY BEEN ASSERTED (OR COULD HAVE BEEN ASSERTED) IN A COURT AS CLASS REPRESENTATIVE, OR COLLECTIVE ACTIONS IN A COURT.
+
+
+
+
+Without limiting the generality of the foregoing (and as an illustrative but not exhaustive example), an arbitration shall be presumed to be a collective or coordinated arbitration if (i) two (2) or more similar Claims are filed concurrently by or on behalf of one or more claimants and (ii) counsel for the claimants are the same, share fees or otherwise coordinate across the arbitrations. “Concurrently” for purposes of this provision means that both arbitrations are pending (filed but not yet resolved) at the same time. Unless consented in writing by all parties to the arbitration, no party to the arbitration may join, consolidate, or otherwise bring Claims for or on behalf of two or more individuals or unrelated corporate entities in the same arbitration unless those persons are parties to a single transaction. Unless consented in writing by all parties to the arbitration, an award in arbitration shall determine the rights and obligations of the named parties only, and only with respect to the claims in arbitration, and shall not (a) determine the rights, obligations, or interests of anyone other than a named party, or resolve any Claim of anyone other than a named party; nor (b) make an award for the benefit of, or against, anyone other than a named party. No administrator or arbitrator shall have the power or authority to waive, modify, or fail to enforce this Section 15.9, and any attempt to do so, whether by rule, policy, arbitration decision or otherwise, shall be invalid and unenforceable. Any challenge to the validity of this Section 15.9 shall be determined exclusively by a court and not by the administrator or any arbitrator.
+
+
+
+
+15.10 Survival and Severability of Arbitration Provision
+
+This Arbitration Provision shall survive the termination of these Terms. If any portion of this Arbitration Provision other than Section 15.9 is deemed invalid or unenforceable, the remaining portions of this Arbitration Provision shall nevertheless remain valid and in force. If there is a final judicial determination that applicable law precludes enforcement of this Arbitration Provision’s limitations as to a particular claim for relief or particular term, then that claim (and only that claim) or that term (and only that term) must be severed from the Arbitration Provision and, in the case of a severed claim, may be brought in court. If an arbitration is brought on a class, representative, coordinated or collective basis, and the limitations on such proceedings in Section 15.9 are finally adjudicated pursuant to the last sentence of Section 15.9 to be unenforceable, then no arbitration shall be had. In no event shall any invalidation be deemed to authorize an arbitrator to determine Claims or make awards beyond those authorized in this Arbitration Provision.
+
+
+
+
+15.11 Judicial Forum for Claims
+
+Except as otherwise required by applicable law, in the event that this Arbitration Provision is found not to apply to you or your Claim, you and Securitize agree that any judicial proceeding (other than small claims actions) will be brought exclusively in the federal or state courts of New York, except for Claims brought by EEA residents, which are subject to Section 15.4. Both you and Securitize consent to the venue and personal jurisdiction there. We both agree to waive our right to a jury trial. Notwithstanding the remainder of this Arbitration Provision and the foregoing, you and we agree that either of us may bring a claim in a court of competent jurisdiction (which court shall include the federal or state courts of New York) for temporary injunctive or equitable relief to prevent, stop or mitigate imminent or ongoing harm until an arbitrator can be empaneled in accordance with this Arbitration Provision and determine whether to continue, modify or terminate such relief.
+
+
+
+
+15.12 Waiver of the Right to Litigate
+
+THE PARTIES ACKNOWLEDGE THAT THEY HAVE A RIGHT TO LITIGATE CLAIMS THROUGH A COURT BEFORE A JUDGE OR JURY, BUT WILL NOT HAVE THAT RIGHT (OTHER THAN IN SMALL-CLAIMS COURT OR TO SEEK TEMPORARY RELIEF AS ABOVE STATED) UNLESS YOU HAVE OPT OUT OF ARBITRATION PURSUANT TO THIS ARBITRATION PROVISION OR A RESIDENT OF THE EEA, IN WHICH CASE YOUR RIGHT TO A JUDICIAL FORUM IS SET OUT IN SECTION 15.4. ASIDE FROM THOSE EXCEPTIONS, THE PARTIES HEREBY KNOWINGLY AND VOLUNTARILY WAIVE THEIR RIGHTS TO LITIGATE SUCH CLAIMS IN A COURT BEFORE A JUDGE OR JURY.
+
+
+
+
+The arbitration award shall be final, and judgment may be entered upon it in any court having jurisdiction. In the event that any legal or equitable action, proceeding, or arbitration arises out of or concerns these Terms, the prevailing party shall be entitled to recover its costs and reasonable attorney's fees.
+
+
+
+
+Severability
+
+
+
+
+If any provision of these Terms is found invalid, unlawful, or unenforceable, such provision shall be modified to the minimum extent necessary to make it enforceable, and the remaining provisions shall continue in full force and effect.
+
+
+
+
+Waiver
+
+
+
+
+Failure by Securitize to enforce any provision of these Terms shall not constitute a waiver of that provision or any other right. Any waiver must be in writing and signed by an authorized representative of Securitize.
+
+
+
+
+General Provisions
+
+
+
+
+18.1 Entire Agreement
+
+These Terms, together with the Securitize Policies and any applicable regulatory disclosures, constitute the entire agreement between you and Securitize with respect to Platform and Services. These Terms supersede all prior agreements relating to the same subject matter.
+
+
+
+
+18.2 Governing Law
+
+For U.S. users and Securitize Markets LLC: these Terms are governed by the laws of the State of New York, without regard to conflict of laws principles. Disputes not subject to arbitration shall be resolved in the federal or state courts of New York, New York.
+
+
+
+
+For EU users and Securitize Europe Brokerage and Markets, S.A.: these Terms are governed by the laws of Spain. Disputes shall be resolved by the Courts of Madrid, Spain, subject to the rights of EU consumers to bring claims in their country of residence.
+
+
+
+
+18.3 Assignment
+
+You may not assign these Terms or your rights hereunder without our prior written consent. Securitize may assign these Terms, including in connection with a merger, acquisition, or regulatory reorganization, without your consent, subject to applicable law.
+
+
+
+
+18.4 Compliance with Law
+
+Our performance under these Terms is subject to applicable laws, regulations, and legal process. Nothing in these Terms limits Securitize's right to comply with regulatory, governmental, court, or law enforcement requirements.
+
+
+
+
+18.5 E-SIGN Admissibility
+
+Printed versions of these Terms and electronic notices shall be admissible in judicial or administrative proceedings to the same extent as documents originally generated in printed form.
+
+
+
+
+18.6 Construction
+
+The words "includes" and "including" mean "includes without limitation." Section headings are for convenience and do not affect interpretation. "Shall" is mandatory; "may" is permissive. These Terms shall be construed without regard to any presumption or rule requiring construction against the drafting party.
+
+
+
+
+18.7 Force Majeure
+
+Securitize shall not be liable for delays or failures in performance caused by events beyond our reasonable control, including acts of God, government actions, cyberattacks, infrastructure failures, pandemics, natural disasters, or other force majeure events. Force majeure shall not excuse Securitize from its obligations to: maintain required regulatory compliance, protect client assets, or meet mandatory reporting deadlines under applicable securities law.
+
+
+
+
+Contacting Us
+
+
+
+
+If you have questions regarding these Terms, please contact us by e-mail at investorsupport@securitize.io.
+
+
+
+
+
+
+
+Back to Top
+↑
+Investments
+All Assets
+Public Stocks
+Solutions
+Tokenization As A Service
+Fund Administration
+Ecosystem
+Partner Ecosystem
+Resources
+Intro to Tokenization
+Whitepapers & Research
+Articles
+Videos
+About
+Company
+Media Coverage
+Press Releases
+Investor Relations
+Careers
+Media Kit ↓
+Developers
+APIs
+Bug Bounty
+Vault Registrar Sandbox
+
+© 2026 Securitize LLC.
+
+Disclosures
+Fee Schedule
+info@securitize.io
+
+Securitize Markets, LLC is an SEC-registered broker-dealer and member of FINRA/SIPC. Check the background of Securitize Markets on FINRA BrokerCheck.
+
+For covered orders in NMS securities, Securitize Markets' Rule 605 order execution quality reports are available here.
+
+Investing involves risk, including possible loss of principal. Digital asset securities may involve additional risks and may not be suitable for all investors.
+
+Securities are offered through Securitize Markets, LLC (“Securitize Markets”), a registered broker-dealer and member of FINRA/SIPC. Securitize Markets may provide recommendations at times but does not provide investment advice or ongoing monitoring. No communication herein, or in any medium, should be construed as investment advice or a recommendation to buy or sell any security.
+
+Securities offered on the Securitize Markets Alternative Trading System (ATS) are not registered under the Securities Act of 1933 and may not be offered or sold in the United States without registration or an applicable exemption. Digital assets or tokens utilizing blockchain technology are speculative, involve significant risk, may be illiquid or without value, have limited regulatory certainty, and may be subject to market manipulation. Private placements are also speculative and high-risk. Investors must be able to bear the loss of their entire investment.
+
+Eligibility to trade on the Securitize Markets ATS is determined solely by Securitize Markets. Any offer or solicitation can be made only through official offering documents describing the risks, fees, and expenses of the applicable securities. Investors should conduct their own due diligence and are encouraged to consult with a financial advisor, attorney, accountant, or tax advisor.
+
+Past performance is not indicative of future results. Neither the SEC nor any federal or state regulator has recommended or approved any investment or verified the accuracy or completeness of any information herein. Valuations provided by issuers may not reflect market or industry values, and Securitize Markets and its affiliates make no representations regarding such information. Securitize Markets may collect information about you to comply with securities regulations and the USA PATRIOT Act, which requires firms to obtain, verify, and record information that identifies each applicant. This information also helps us understand your investment profile and determine suitability. The term “Investors,” as used on this website, generally refers to accredited investors where applicable. If we cannot verify the information you provide, we may need to restrict or deny your account. Trading during extended hours carries unique risks, including higher volatility, lower liquidity, wider spreads, and reduced market visibility, and may not be appropriate for all investors. Diversification does not guarantee improved returns or prevent losses. Securitize Markets is regulated by FINRA and the SEC; however, membership and registration do not guarantee compliance with all rules. By accessing this site, you agree to our Terms of Service and Privacy Policy.
+
+Crypto services are provided by Zero Hash and are not associated with Securitize Markets or its affiliates. Crypto assets are not protected by SIPC, SIPA, or federal securities laws. SIPC protection does not apply to funds held at SIPC-member broker-dealers if such funds are unrelated to eligible securities transactions, intended for the purchase of crypto assets not recognized as securities under SIPA, or transferred to a crypto platform. Crypto assets are neither cash nor cash equivalents and are not covered by the FDIC. Their value is highly volatile, and they involve increased risks of fraud, cyberattack, and operational failures. Zero Hash LLC and Zero Hash Liquidity Services are licensed to engage in Virtual Currency Business Activity by the New York State Department of Financial Services.
+
+EU Disclosures
+
+In the European Union, investment services are offered by Securitize Europe Brokerage and Markets, S.V., S.A. (“Securitize Europe”), a Spanish investment firm.
+
+Securitize Europe, with Spanish tax identification number A13691464, has its registered office at Calle Don Ramón de la Cruz 38, 28001 Madrid, Spain and is registered with the Commercial Registry of Madrid in the sheet number M-794351, page 81 et seq., of volume 45141, section 8, and is authorized, registered and supervised by the Spanish Securities Market Commission, the Comisión Nacional del Mercado de Valores (“CNMV”), with registration number 327.
+
+Securitize Europe has permission to provide investment services in the countries of the European Union listed here.

@@ -1,0 +1,91 @@
+Documento de emisión de Alicante 2 (SPV 10). https://drive.google.com/file/d/1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ · descarga 2026-11-10T09:23:26Z · 27 págs · SHA-256 d3d7dd400dc81c45f534d5164415afb22cfa8b30465ce6419466eea1607a2197. Extracto; nombres recortados.
+
+===== Portada (líneas 9-35 de pdftotext -layout) =====
+                 DOCUMENTO DE EMISIÓN DE OBLIGACIONES POR PARTE DE​
+         HAUSERA PROPERTY MANAGER SPV 10, S.A CON NOMBRE COMERCIAL “HAUSERA”
+
+
+
+Denominación del valor con tecnología DLT:                   ALICANTE 2
+
+Emisor                                                       HAUSERA PROPERTY MANAGER SPV 10, S.A
+
+Tipo de valor emitido:                                       Obligaciones
+
+Plazo de vencimiento de emisión:                            11/07/2028
+
+Número de valores:                                           51.960
+
+Valor nominal de cada valor:                                 100 €
+                                                             ​
+Entidad de Servicios de Inversión interviniente:             [nombre recortado] EAFN. (nº Registro 21)
+
+Entidad Responsable Inscripción y Registro (ERIR)            Ursus-3 Capital AV, S.A (nº Registro 251)
+
+Comisario Sindicato de Obligacionistas                       D. [nombre recortado]
+
+Dirección del Smart Contract (Polygon):                    0x853F6f994E26b8D75b451ff4A861290402f38BAe
+
+Información sobre la Inversión:
+
+
+===== Emisor (líneas 196-206 de pdftotext -layout) =====
+
+
+2.2.​ ¿Quién es el Emisor de los valores con tecnología DLT?​
+
+
+2.2.1.​ Identidad y datos de contacto del Emisor
+
+        ●​   Emisor: HAUSERA PROPERTY MANAGER SPV 10, S.A
+        ●​   Nombre comercial: Hausera
+        ●​   Website: https://www.hausera.io
+        ●​   Domicilio social: Casas del Retiro, 25 – Los Dolores – 30310 – Cartagena- Murcia
+
+===== Características y cuadro resumen (líneas 300-345 de pdftotext -layout) =====
+
+     ●​   Nº valores emitidos: 51.960
+
+     ●​   Fecha de Inscripción y Registro: fecha en la que los valores quedan registrados e inscritos
+          por la ERIR, una vez cumplidos los trámites administrativos/formales exigibles por la CNMV,
+          sin que dicha inscripción afecte al previo nacimiento de la obligación económica.
+
+     ●​   Plazo de Inversión: 20 meses computados desde el 11/11/2026 (inicio de la suscripción).
+
+     ●​   Importe total de la emisión: 5.196.000€
+
+   ●​   Hard Cap: 5.196.000€. Soft Cap para esta emisión será de un 70% que equivale a un importe
+        de 3.637.200€.
+
+
+
+​
+El presente resumen debe leerse como introducción al Documento de la Emisión y toda decisión
+de invertir en los valores debe estar basada en la consideración por parte del inversor del
+Documento de la Emisión en su conjunto, así como de la información pública del emisor
+disponible en cada momento:
+
+                         Emisión de instrumentos financieros – Obligaciones por un importe total
+Cantidad emitida:        de 5.196.000 euros, correspondientes a 51.960 valores con valor nominal
+                         unitario de 100,00 euros cada uno.
+
+
+                         A la par. Importe nominal unitario: 100,00 euros.
+Precio de emisión:
+                         Ticket mínimo: 100,00 euros
+
+
+                         Rentabilidad máxima estimada del 22,00% (equivalente a una Rentabilidad
+                         Anualizada Simple estimada del 13,20% ).​
+Retribución de las
+                         ​
+obligaciones:
+                         Base de cálculo utilizada para la equivalencia anualizada de la rentabilidad
+                         estimada: 365 días
+
+
+                         El periodo de suscripción se iniciará el 11/11/2026 y se extenderá hasta el
+                         30/6/2027.
+
+Periodo de
+                         Si a la fecha 18/11/2026 no se hubiera alcanzado al menos el 70% del

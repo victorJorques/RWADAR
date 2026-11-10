@@ -1,0 +1,60 @@
+URL: https://hausera.io/propiedad/alicante_3/
+Pestaña «Documentos» pulsada sin sesión (Playwright). Hora en la primera línea.
+
+2026-11-10T09:32:47.854Z goto https://hausera.io/propiedad/alicante_3/
+=== TAB Documentos 2026-11-10T09:32:57.383Z
+ue proporciona la información básica sobre la oportunidad, resumiendo características, ubicación, fotografías y aspectos destacados del proyecto.
+
+Descargar
+Mostrar
+Infome valoración de mercado
+
+Este documento refleja el estudio realizado para determinar el valor de mercado del inmueble, explicando el método realizado para la valoración del activo y desglosando toda la información correspondiente a la estimación.
+
+Descargar
+Mostrar
+Referencia catastral
+
+Este documento refleja la referencia catastral del inmueble
+
+Descargar
+Mostrar
+Acuerdo de suscripción
+
+Documento que recoge las condiciones del acuerdo y que regula la reserva de suscripción de los valores emitidos
+
+Descargar
+Mostrar
+Whitepaper
+
+El whitepaper es un documento informativo detallado que presenta de manera concisa y clara una oportunidad de inversión. Contiene todos los aspectos relativos al proyecto, incluyendo información sobre el inmueble, su valoración, beneficios potenciales y los aspectos concretos sobre el vehículo empleado.
+
+Descargar
+Mostrar
+
+contacto@hausera.io
+
+ACCESO RÁPIDO
+Registrarse
+Iniciar sesión
+Comunidad
+FAQs
+Blog
+Proyecto Solidario
+LEGAL
+Política de cookies
+Política de privacidad
+Términos y condiciones
+Canal Ético
+Contacto
+NUESTRA NEWSLETTER
+
+Entérate de todas las novedades: lanzamientos, promociones y mucho más.
+
+Enviar
+Quiero recibir comunicaciones de Hausera y acepto la Política de privacidad
+
+©2026, Hausera.io. Todos los derechos reservados
+
+Lugar El Buen Retiro, 25, Cartagena, 30310, Murcia
+LINKS ["https://drive.google.com/file/d/1rbAUwmHLF9O16aQd5i5eOohV9JrYSbPQ","https://drive.google.com/file/d/1Y25tV4zwsSbtNfU3IIv-tMgGH2DB6vUy/","https://drive.google.com/file/d/1t6HWg8-US6BqFRj24BZXFwohyfUnTih5","https://drive.google.com/file/d/1vfq0Ljr0c4o73S0l-b5QBOLWgan1Le8X/","https://drive.google.com/file/d/1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_"]

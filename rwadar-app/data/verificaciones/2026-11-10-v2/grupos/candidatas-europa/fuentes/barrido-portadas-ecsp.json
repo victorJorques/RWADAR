@@ -1,0 +1,642 @@
+{
+  "descripcion": "Barrido de portadas de los proveedores europeos de financiación participativa notificados en España (listado CNMV) y otros citados en el encargo, buscando menciones a tokenización. Las copias de texto están en crudo/ porque incluyen testimonios y nombres de personas.",
+  "sitios": [
+    {
+      "sitio": "afranga",
+      "url": "https://www.afranga.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/afranga.html.txt",
+      "sha256Copia": "a38743f62b8468ed5f5b132e99122ce4025723a123e6610d10d2100cb41aac0c",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "ascend",
+      "url": "https://ascend-finance.capital/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/ascend.html.txt",
+      "sha256Copia": "943ee4fd86bc4b9a3dc2ef6abb687bd1361fbfff786efb76467aaee47ef535f7",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "bergfuerst",
+      "url": "https://de.bergfuerst.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/bergfuerst.html.txt",
+      "sha256Copia": "b697971f0d187cde76d9ef0f37f5c57e0bd1a77a013a67f1e3a9c2fdd8f7afc1",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "bienpreter",
+      "url": "https://www.bienpreter.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/bienpreter.html.txt",
+      "sha256Copia": "0a0c48bf87abeb14ef8094994378efcef708bd1017d9a5ff9dcdbc7d3b0b1133",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "capitalia",
+      "url": "https://www.capitalia.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/capitalia.html.txt",
+      "sha256Copia": "1f3be08f4553b67071e480a0ed2775f50792ae1e8221de3502c816e852414034",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "citesia",
+      "url": "https://citesia.fr/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/citesia.html.txt",
+      "sha256Copia": "516177dc776dc389ab670755e5522fc87c11581a5501cbf427f512ba71791043",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "clubfunding",
+      "url": "https://www.clubfunding.fr/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/clubfunding.html.txt",
+      "sha256Copia": "263ddfc025eed3fc33f68b03434ded5e0982a06f76ee9772add5cd64ebea5e26",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "conda",
+      "url": "https://conda-capital.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/conda.html.txt",
+      "sha256Copia": "e4c9d038e20696b1fc1fe6877c2b9879857c098718f8a3c34df93da115799bf5",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "crowdbase",
+      "url": "https://www.crowdbase.eu/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/crowdbase.html.txt",
+      "sha256Copia": "5a19ef4ac63d5835a0898a71437767e1ce1b574abaee8e79684bccdddde4c404",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "crowdedhero",
+      "url": "https://www.crowdedhero.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/crowdedhero.html.txt",
+      "sha256Copia": "9b8f12d174c89146d55aa9de0ee08d0454ca3cb8d79cff142e888e6c1478055f",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "crowdestate",
+      "url": "https://crowdestate.eu/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/crowdestate.html.txt",
+      "sha256Copia": "26c223fb02d28891fc8e76f73cc9cd7bc25bcf54a62c7dba053de05a9198f07b",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "crowdmeup",
+      "url": "https://crowdmeup.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/crowdmeup.html.txt",
+      "sha256Copia": "850df7db59703905cc93cc9fd1079c83b22a0466a1a4c9476d087840f8973d84",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "digilo",
+      "url": "https://www.digilo.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/digilo.html.txt",
+      "sha256Copia": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "digilo",
+      "url": "https://www.digilo.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:06:04Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/digilo.render.txt",
+      "sha256Copia": "b723730fe583824baf3cefbaec521ea4714a43083de7a51272da19a2339bd65c",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "ektico",
+      "url": "https://ektico.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/ektico.html.txt",
+      "sha256Copia": "5788e1dedeb59b6617b4fa907c83e413f7463bb3f5f4bcceb750d71c651b49b9",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "ektico",
+      "url": "https://ektico.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:06:04Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/ektico.render.txt",
+      "sha256Copia": "4b69ef63784b9b4e7835d5c127deb27d77d396bd38f71af8b7505c9864083af8",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "ener2crowd",
+      "url": "https://www.ener2crowd.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/ener2crowd.html.txt",
+      "sha256Copia": "da085c532b746c70995e8b4cdc6b42c5cb9c54bf956f35f8c5e39385b6448852",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "enerfip",
+      "url": "https://www.enerfip.eu/es/",
+      "http": 403,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/enerfip.html.txt",
+      "sha256Copia": "ecc07ce6ca256f7a66c1a4c57d8b20e00d415e434df53b0f3e4ae1abd2a5054d",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "estateguru",
+      "url": "https://estateguru.co/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/estateguru.html.txt",
+      "sha256Copia": "81657c8c666c6d8d73e29ac72bc5dfc93288b3ccfa3e1efb2eff0e8d3a7baa7c",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "eurivex",
+      "url": "https://trade.eurivex.com/",
+      "http": 403,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/eurivex.html.txt",
+      "sha256Copia": "38d22ae63b3fad91a79d6fe49087d74f705fc315ed2df24002b41f56a777f87d",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "eurivex",
+      "url": "https://trade.eurivex.com/",
+      "http": 403,
+      "consultadoUtc": "2026-11-10T09:06:04Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/eurivex.render.txt",
+      "sha256Copia": "c6c1266b1b8854e014702a20b4d2b956f885b89fc66f21fad180d33a4c37467d",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "fundaus",
+      "url": "https://www.fundaus.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/fundaus.html.txt",
+      "sha256Copia": "29ea3d41e2badcf9ffa103eb7d7cb3183700fa4a0daa87d9db2fb1ee3e7dbb7b",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "goparity",
+      "url": "https://www.goparity.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/goparity.html.txt",
+      "sha256Copia": "16a53f596acdb93099cf6b329443095dae2bc12b2f2ba59da817310d93c69f60",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "greencrowd",
+      "url": "https://www.greencrowd.ie/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/greencrowd.html.txt",
+      "sha256Copia": "c92b6b5943215aa01b15ff1761f0fd7d7121c142cab010e6c5eefb7308253cde",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "homunity",
+      "url": "https://www.homunity.com/fr/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/homunity.html.txt",
+      "sha256Copia": "ee8ee0b40dc8a9c1d94cb02fc2f35526ced6d771435ebb5296d21e70ed3ef267",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "inrento",
+      "url": "https://www.inrento.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/inrento.html.txt",
+      "sha256Copia": "e49553e51782823c53e27732d303c0726b98f17fe84968922ea45f9a0fc20f3b",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "invesdor",
+      "url": "https://www.invesdor.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/invesdor.html.txt",
+      "sha256Copia": "6155a183efd7c097292602b3f5fb744abcadfd03d6b1c2a9f9f41e7b83955c50",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "joinshuttle",
+      "url": "https://www.joinshuttle.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/joinshuttle.html.txt",
+      "sha256Copia": "2a0b2d04e1fdf4c44491a701800b7a1cd47a72a53b7aa01afd43c977b4b5e59d",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "lande",
+      "url": "https://lande.finance/",
+      "http": 403,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/lande.html.txt",
+      "sha256Copia": "301dc171e5fa8c5fdeb69592a92a5c378f5f758f68d2338200235d60eb04b9ad",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "lande",
+      "url": "https://lande.finance/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:06:04Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/lande.render.txt",
+      "sha256Copia": "18cc2170662e7856471352f02c92aa7f306d778604eaf7640335f0caf96a3375",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "lendahand",
+      "url": "https://www.lendahand.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/lendahand.html.txt",
+      "sha256Copia": "646e8cd9c2965486101e897dc09201bde467c5dc3febce31f841829247d66eb0",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "lendermarket",
+      "url": "https://www.lendermarket.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/lendermarket.html.txt",
+      "sha256Copia": "09915bf0ddf3bab3b79a7272309a4533df0f16c0a5114c5589c75b9b030562c4",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "lendosphere",
+      "url": "https://www.lendosphere.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/lendosphere.html.txt",
+      "sha256Copia": "3ccded913d2abb4186ec1e02a07c42d424a0746ef8e06dbf854fa44f71bc0d0c",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "lesentrepreteurs",
+      "url": "https://www.lesentrepreteurs.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/lesentrepreteurs.html.txt",
+      "sha256Copia": "0cc1cab3a8b36671d343c5e8a9a54372cea8490c1b743ca89ba31638640d3f23",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "letsinvest",
+      "url": "https://letsinvest.eu/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/letsinvest.html.txt",
+      "sha256Copia": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "linkedfinance",
+      "url": "https://www.linkedfinance.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/linkedfinance.html.txt",
+      "sha256Copia": "846b9bbf67e9452f649a80d510666f47d987df4a410c2e9a95667e41d5a6c41d",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "nordstreet",
+      "url": "https://www.nordstreet.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/nordstreet.html.txt",
+      "sha256Copia": "94b94c462d3ff4b49a2de5c897909ff4ed6c777bd6fbb9f6124754dbc50b6c01",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "profitus",
+      "url": "https://www.profitus.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/profitus.html.txt",
+      "sha256Copia": "6dc91c4017525c0ccec2ddb3941c335287f02fd2f8bbf0b7283d08cef0c4ac90",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "propertybridges",
+      "url": "https://www.propertybridges.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/propertybridges.html.txt",
+      "sha256Copia": "658f941cc427ad54d8dfd5edb0f625a698c37a4b5f804b0bc984338b859ff712",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "raizers",
+      "url": "https://raizers.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/raizers.html.txt",
+      "sha256Copia": "08db69ede93395ea6b5020a1dee1961d8457a184fc3919af8e6eeab448f75e6b",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "sameningeld",
+      "url": "https://www.sameningeld.nl/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/sameningeld.html.txt",
+      "sha256Copia": "89d9f4250c35aaa04c4e81e3b111f810991f79b23c02e95e77a5281820dbe988",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "seedblink",
+      "url": "https://seedblink.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/seedblink.html.txt",
+      "sha256Copia": "824f689537e1ada0e14f28ea45adc34a95e34e3c954cda78597932a72da34a03",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "seedrs",
+      "url": "https://www.seedrs.com/",
+      "http": 403,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/seedrs.html.txt",
+      "sha256Copia": "301dc171e5fa8c5fdeb69592a92a5c378f5f758f68d2338200235d60eb04b9ad",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "stockestate",
+      "url": "https://www.stock.estate/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/stockestate.html.txt",
+      "sha256Copia": "8580234b458e367df3e89d7b2398485b2d19503c8e2c8a06d03fff8020289ba1",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "stockestate",
+      "url": "https://www.stock.estate/es",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:06:04Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/stockestate.render.txt",
+      "sha256Copia": "b1673f8c8393ee29ce7f556ce68dcf8d5afaafdca617cd9aed361b89ce20d4db",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "walliance",
+      "url": "https://www.walliance.eu/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/walliance.html.txt",
+      "sha256Copia": "e23edac3e6fe8f35be2d8b8c100b35eb19613b2428e0fc29f5668ea3f4f77b98",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "winwinner",
+      "url": "https://www.winwinner.be/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/winwinner.html.txt",
+      "sha256Copia": "de007c63ca825be327352bc7e90a589b10f472a262da383a000da578a87cad93",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "wiseed",
+      "url": "https://www.wiseed.com/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/wiseed.html.txt",
+      "sha256Copia": "b527332b30f0bd23b571ea3e1dedaaad034bf60cb4493873af5407ddd29e83ca",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    },
+    {
+      "sitio": "zonnepanelendelen",
+      "url": "https://www.zonnepanelendelen.nl/",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "copiaEnCrudo": "fuentes/crudo/portadas-texto/zonnepanelendelen.html.txt",
+      "sha256Copia": "246d0a27ccacd9babbb43450b2255d87b01ea0891853a7801aef240687a2494e",
+      "menciones": {
+        "tokeniz": 0,
+        "blockchain": 0,
+        "security token / digital securities": 0
+      }
+    }
+  ]
+}

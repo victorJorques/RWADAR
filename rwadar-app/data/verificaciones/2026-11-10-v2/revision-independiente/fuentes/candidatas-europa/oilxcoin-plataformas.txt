@@ -1,0 +1,10 @@
+Fuente: https://oilxcoin.us/en/support/videos
+Consultado: 2026-11-10T09:42:06Z · HTTP 200 · 36418 bytes · sha256 1a89b24f98bc6785cd50e35fc746035447d6a63d300232cf6b4bb74f0189b713
+Copia original en crudo/oilxcoin-videos.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+How to´s - Security-Plattformen
+Here you can find DIY videos about trading on security platforms and wallets
+Assetera
+Erste Schritte mit Assetera.com (DE)
+Archax
+First Steps with Archax.com (EN)

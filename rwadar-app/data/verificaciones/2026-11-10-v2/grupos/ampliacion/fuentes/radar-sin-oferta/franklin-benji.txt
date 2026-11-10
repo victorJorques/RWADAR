@@ -1,0 +1,239 @@
+URL: https://digitalassets.franklintempleton.com/benji/
+FINAL: https://digitalassets.franklintempleton.com/benji/
+HTTP: 200
+UTC: 2026-11-10T09:39:55Z
+
+New Collateral Mirroring Program is Launched!
+
+View Announcement
+
+BENJI token
+
+Invest
+
+Dev Hub
+
+Contracts
+
+Contact Us
+BENJI is the World’s First U.S.-Registered Money Market Fund, Onchain.
+
+We tokenized a traditional money market fund to leverage the efficiencies of blockchain technology for mutual fund record keeping, known as the Franklin OnChain U.S. Government Money Fund (FOBXX).
+
+Explore Benji Contracts
+1 share of FOBXX = 1 BENJI token
+
+The Fund’s transfer agent maintains the official record of share ownership via a proprietary blockchain-integrated system, known as the Benji® platform, that currently utilizes public blockchain networks for transaction activity.
+
+Token metrics
+Third party audited security
+
+We work with notable third-party security firms for smart contract code auditing.
+
+BENJI generates yield1
+The BENJI token can offer attractive yield, providing investors with the potential for income generation. 2
+Pioneering Digital Assets Technology
+
+We develop blockchain-enabled technologies to create efficiencies within traditional financial assets. Our proprietary tokenization platform, known as the Benji® technology platform, includes a digital asset transfer agent, management system for digital assets, and digital wallet infrastructure.
+
+Deployed Contracts
+Stellar
+
+Decentralized payment network with its own cryptocurrency.
+
+Availability
+Retail
+Institutional
+Polygon
+
+Scaling solutions for the Ethereum ecosystem.
+
+Availability
+Institutional
+Arbitrum
+
+An Ethereum layer 2 scaling solution using optimistic rollups for better speed, scalability and cost-efficiency.
+
+Availability
+Institutional
+Avalanche
+
+Decentralized blockchain for dApp scaling and interoperability.
+
+Availability
+Institutional
+Aptos
+
+Layer 1 PoS blockchain that employs a novel smart contract programming language called Move.
+
+Availability
+Institutional
+Ethereum
+
+Decentralized, smart contract blockchain with its own cryptocurrency.
+
+Availability
+Institutional
+Base
+
+An Ethereum layer 2 scaling solution using optimistic rollups for better speed, scalability and cost-efficiency.
+
+Availability
+Institutional
+Solana
+
+Decentralized, smart contract blockchain with its own cryptocurrency.
+
+Availability
+Institutional
+BNB Smart Chain
+
+Decentralized, smart contract blockchain with its own cryptocurrency.
+
+Availability
+Institutional
+Invest using the Benji mobile app, available for Android and iOS
+
+Shareholders can obtain or view account information and can conduct all transactions via the Benji mobile app.
+
+Peer-to-Peer Transfers
+
+Shareholders can transfer BENJI tokens directly to other shareholders on enabled public blockchains.
+
+Daily Yield Accrual & Distribution
+
+BENJI accrues yield daily through newly minted BENJI tokens that are airdropped directly into shareholders wallets.
+
+Multi-Network Availability
+
+BENJI is available on multiple public blockchains across the ecosystem.
+
+Natively OnChain
+
+All transaction records and share ownership are directly executed and stored on public blockchains.
+
+Use the Benji web platform for institutional investments
+The Benji platform allows investors to invest in the world’s first tokenized money fund that is natively issued on blockchains. Benji makes it easy to securely buy, sell, and view your account activities through the apps.
+Try Benji web platform
+A brief timeline of Benji milestones
+
+Learn about our evolution with building blockchain-powered technology to support tokenized assets
+
+article_shortcut
+2019
+April
+
+Initial presentation for the SEC
+
+handshake
+2019
+September
+
+Initial Registration statement filed with the SEC
+
+flowsheet
+2020
+August
+
+Research and business plan
+
+workspaces
+2020
+September
+
+Development team formed
+
+sdk
+2020
+October
+
+Developments begins
+
+2021
+April
+
+Stellar Network Available and FOBXX fund launched
+
+person_add
+2021
+August
+
+Development expansion
+
+touch_app
+2022
+February
+
+Benji Investments Mobile App launched to retail investors
+
+desktop_windows
+2023
+January
+
+Benji Institutional Web Interface launched
+
+2023
+April
+
+Polygon Network Available
+
+p2p
+2024
+April
+
+Peer-to-peer transferability live for institutional investors
+
+paid
+2024
+June
+
+USDC conversions enabled
+
+2024
+August
+
+Arbitrum Network Available
+
+2024
+August
+
+Avalanche Network Available
+
+2024
+September
+
+Ethereum Network Available
+
+2024
+September
+
+Aptos Network Available
+
+2024
+October
+
+Base Network Available
+
+2025
+February
+
+Solana Network Available
+
+install_mobile
+2025
+May
+
+Peer-Peer transferability live for retail investors on redesigned mobile app
+
+2025
+July
+
+BNB Smart Chain Network Available
+
+Access the Dev Hub
+Check out our latest guides on the Benji® platform, access our API, and more.
+Benji Dev Hub
+
+❶ The 7-day Current Yield represents net interest income generated by the investments for the past 7 days and assumes that the same income is generated each week over a 365-day period. The 7-day yield more closely reflects current fund earnings than does total returns. ❷ With Waiver means the performance quote reflects any applicable expense reductions and fee waivers. Past Performance is not an Indicator of Future Returns. Graphs are illustrative purposes only.
+
+© Franklin Templeton, 2024. All rights reserved.

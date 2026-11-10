@@ -1,0 +1,7 @@
+Fuente: https://oceanpoint.fi/terms
+Consultado: 2026-11-10T09:35:05Z · HTTP 200 · 35326 bytes · sha256 0dbb1ef431f3d58a3009e68ab4cf1a9dc004f35163b4f8dba1148be3ba267fc4
+Copia original en crudo/oceanpoint-terms.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+Last modified: February 16, 2022
+Please read this Agreement carefully as it governs your use of the Interface. This Agreement contains important information, including a binding arbitration provision and a class action waiver, both of which impact your rights as to how disputes are resolved. The Interface is only available to you — and you should only access the Interface — if you agree completely with these terms.
+The Interface is a purely non-custodial application, meaning you are solely responsible for the custody of the cryptographic private keys to the digital asset wallets you hold. This Agreement is not intended to, and does not, create or impose any fiduciary duties on us. To the fullest extent permitted by law, you acknowledge and agree that we owe no fiduciary duties or liabilities to you or any other party, and that to the extent any such duties or liabilities may exist at law or in equity, those duties and liabilities are hereby irrevocably disclaimed, waived, and eliminated.

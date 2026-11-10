@@ -1,0 +1,478 @@
+{
+  "slug": "aktionariat",
+  "tipoExpediente": "publicada",
+  "grupo": "suiza",
+  "proveedor": "Aktionariat (portal de inversores shares.aktionariat.com)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Aktionariat AG (el propio emisor vende sus acciones en su portal)",
+  "emisor": "Aktionariat AG, Erlenbach (ZH), UID CHE-453.438.437",
+  "vehiculo": "Sociedad anónima suiza (AG); sin SPV",
+  "token": "DAKS «Draggable Aktionariat AG Shares», ERC-20 en Ethereum, contrato 0x6f38e0f1a73c96cb3f42598613ea3474f09cb200 (0 decimales: 1 token = 1 acción). Contrato de venta del emisor 0x2f2c3cf0b2d6f4f6cd5f57665ae629eee813350b (Brokerbot v8). Contrato del mercado entre accionistas 0x2b0f2e58a4f00a617312c2b745a23dc677fc6a9c.",
+  "derechoAdquirido": "Acciones nominativas (nominal 0,10 CHF) emitidas como valores registrados en DLT (art. 973d CO), envueltas en DAKS y sujetas al Token Holder Agreement (arrastre con quórum del 75 % y acompañamiento). Voto y dividendo solo tras inscribirse en el libro registro del emisor.",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-453.438.437; token DAKS 0x6f38e0f1a73c96cb3f42598613ea3474f09cb200",
+  "moneda": "CHF (compra por transferencia) / ZCHF (Frankencoin, compra en cripto y mercado entre accionistas)",
+  "documentos": [
+    {
+      "titulo": "Registration Agreement (acciones AKS)",
+      "url": "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
+      "versionOFecha": "V1.0 – 2021-02-01; mismo archivo que el 05/11 (sha256 idéntico, descargado hoy a las 09:06:37Z)",
+      "paginas": 6,
+      "sha256": "9b4ebb70593a586110f6a61e316663c2fd0664e38b1753c0eec24d172bcb0d6b",
+      "leido": true
+    },
+    {
+      "titulo": "Token Holder Agreement (DAKS, arrastre 75 %)",
+      "url": "https://storage.googleapis.com/aktionariat/public/77/43cab283-21cc-413a-83d0-3b9322b46702/Token%20Holder%20Agreement.pdf",
+      "versionOFecha": "Version 1.0 – 2021-02-01; mismo archivo que el 05/11 (sha256 idéntico, 09:06:39Z)",
+      "paginas": 6,
+      "sha256": "650eec368bdd93f45bac1cd37d6034471c4fedc913f53e818af568318f3f6b53",
+      "leido": true
+    },
+    {
+      "titulo": "Disclaimer de Aktionariat (oferta solo Suiza y EEE)",
+      "url": "https://www.aktionariat.com/disclaimer",
+      "versionOFecha": "sin fecha; HTML idéntico al del 05/11 (sha256 del HTML, 09:05:37Z)",
+      "paginas": null,
+      "sha256": "06937b732cefe6d27a7891e0ad6d975f5e69a34d53324ad23cac3707b1414abb",
+      "leido": true
+    },
+    {
+      "titulo": "Investor Page Terms (condiciones del portal; enlace «Terms of Service» del pie)",
+      "url": "https://shares.aktionariat.com/investor-page-terms",
+      "versionOFecha": "Version 1.0 • October 30, 2026. El HTML cambia de sha256 respecto al 05/11 (d3ed3a3c… → efd5860f…), pero el texto es el mismo palabra por palabra (comparado sin espacios). Mismo HTML en los tres portales.",
+      "paginas": null,
+      "sha256": "efd5860fd906a1952c8da6e89d0849cc64d509974aefe8218c973c7b7eb458a6",
+      "leido": true
+    },
+    {
+      "titulo": "End User Terms and Conditions",
+      "url": "https://www.aktionariat.com/terms-of-service",
+      "versionOFecha": "Version 1.0; HTML idéntico al del 05/11 (09:05:38Z)",
+      "paginas": null,
+      "sha256": "3a86c49686d3eb9007144d17c95f2bdb6b0aa2d7c3b6b964e6e24cbdb029df23",
+      "leido": true
+    },
+    {
+      "titulo": "Folleto / ficha informativa",
+      "url": null,
+      "versionOFecha": "no existe: la oferta se acoge a umbrales de exención",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (ZefixREST)",
+      "entidad": "Aktionariat AG",
+      "numero": "CHE-453.438.437",
+      "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1438805.json",
+      "alcance": "EXISTIEREND, sede Erlenbach (ZH). Ficha idéntica a la del 05/11 (mismo sha256 b46ae864…). Es un registro mercantil, no una licencia financiera.",
+      "consultadoUtc": "2026-11-10T09:08:23Z"
+    },
+    {
+      "regulador": "FINMA · registro de entidades autorizadas",
+      "entidad": "Aktionariat",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "alcance": "Búsqueda «Aktionariat»: Count 0 (respuesta idéntica a la del 05/11). Controles del mismo buscador: «Maerki Baumann» = 1 (banco) y «Sygnum» = 1 (banco). No es una entidad autorizada por FINMA.",
+      "consultadoUtc": "2026-11-10T09:07:24Z"
+    },
+    {
+      "regulador": "PolyReg (organismo de autorregulación contra el blanqueo reconocido por FINMA)",
+      "entidad": "Aktionariat AG",
+      "numero": null,
+      "url": "https://api.polyreg.ch/api/membership-check?name=Aktionariat%20AG",
+      "alcance": "result=false: no figura como afiliada (control «Switzerlend AG» = true).",
+      "consultadoUtc": "2026-11-10T09:08:25Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Aktionariat",
+      "resultado": "sin coincidencias («No hay datos disponibles», tipo No autorizadas)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat",
+      "consultadoUtc": "2026-11-10T09:07:47Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Aktionariat AG",
+      "resultado": "sin coincidencias («No hay datos disponibles»); control «Capital» devuelve 40 páginas de entidades advertidas (09:08:05Z)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat+AG",
+      "consultadoUtc": "2026-11-10T09:07:49Z"
+    },
+    {
+      "regulador": "FINMA · lista de advertencias",
+      "busqueda": "aktionariat",
+      "resultado": "sin coincidencias (lista completa de 2.402 entradas, una más que el 05/11; búsqueda local por nombre; control «Midas» = 1)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-10T09:07:28Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "Direct Investment – Invest in Aktionariat AG by buying tokenized shares directly from the issuer at a fixed price.",
+      "dato": "abierta: venta directa del emisor activa",
+      "fuentePrimaria": "https://shares.aktionariat.com/",
+      "localizador": "Portada renderizada (09:03:54Z), bloque Direct Investment; /trade «DIRECT FROM ISSUER Buy DAKS at 7.25 CHF · bank transfer or crypto»; en cadena settings()=0x1 (bit BUYING_ENABLED) en 0x2f2c…350b, bloque 26383487 (09:03:07Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:03:54Z",
+      "alcanceYLimites": "Significado de los bits según el código verificado del Brokerbot v8 (Sourcify, sha256 idéntico al del 05/11: BUYING_ENABLED 0x1, SELLING_ENABLED 0x2). El contrato tiene hoy 16.737 DAKS y 928 ZCHF, igual que el 05/11.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "Price per DAKS 7.25 CHF",
+      "dato": "7,25 CHF por acción, fijado por el emisor; incremento 0",
+      "fuentePrimaria": "https://shares.aktionariat.com/invest",
+      "localizador": "/invest renderizado (09:04:03Z) + getPrice()=7,25e18 e increment()=0 en el contrato de venta (bloque 26383487, 09:03:07Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:04:03Z",
+      "alcanceYLimites": "Por transferencia se paga en CHF; en cripto, en ZCHF o ETH. Sin cambios desde el 01/11.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "actividad",
+      "literal": "31 Oct 2026 / 11:56 Direct Investment 7.25 ZCHF 1 DAKS",
+      "dato": "Última compra al emisor 31/10/2026 (1 acción). Ninguna operación nueva desde el 05/11: el historial completo (1.231 operaciones) es idéntico (mismo sha256). Entre el 10/11/2025 y el 10/11/2026: 24 compras al emisor (5.958 acciones) y 53 operaciones entre accionistas (3.460 acciones).",
+      "fuentePrimaria": "https://shares.aktionariat.com/api/secondarymarkets/getTrades",
+      "localizador": "getTrades company=77, historial completo (09:02:13Z); portada «Last trade • 31 Oct 2026, 11:56»",
+      "fechaDato": "2026-10-31",
+      "consultadoUtc": "2026-11-10T09:02:13Z",
+      "alcanceYLimites": "El 05/11 se contaron 25 compras al emisor en 12 meses; hoy salen 24 solo porque la ventana de 12 meses se ha movido cinco días. Último cruce entre accionistas: 30/09/2026 a 6,25 ZCHF.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "bankTransferLimit: enabled true, min 500 · cryptoPaymentsLimit: min 0",
+      "dato": "500 CHF por transferencia; en cripto, desde 1 acción (7,25 ZCHF)",
+      "fuentePrimaria": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+      "localizador": "API pública del portal (09:01:52Z); DAKS decimals()=0 en cadena (09:03:07Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:01:52Z",
+      "alcanceYLimites": "La orden por defecto es de 100 acciones (725 CHF en /invest). Pagar en cripto exige monedero propio con ZCHF o ETH. El sha256 de la respuesta cambia respecto al 05/11 (2 bytes menos), pero los campos citados (mínimos, textos de recompra, onlyBuySide, identityVerification) dicen lo mismo; el crudo del 05/11 no se conserva en disco para ver qué campo cambió (lo más probable, los tipos de cambio).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "The public offer to purchase the shares is exclusively addressed to persons domiciled or resident in Switzerland or the EEA. … The offer for persons from the EEA is limited to a total of €100,000.",
+      "dato": "Residentes en Suiza o el EEE (España incluida); tope conjunto EEE 100.000 €",
+      "fuentePrimaria": "https://www.aktionariat.com/disclaimer",
+      "localizador": "Disclaimer, «Offer only valid for persons in Switzerland and the EEA» (HTML idéntico al del 05/11); mismo texto en Investor Page Terms v1.0 (30/10/2026), §9.1",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:05:37Z",
+      "alcanceYLimites": "No se publica cuánto queda del tope. El emisor puede rechazar a cualquier inversor (Investor Page Terms §3.1: «may refuse to accept any person as User»). Exige registro en el portal (no probado).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "kyc",
+      "literal": "Register to Access Direct Investment · identityVerification: false",
+      "dato": "Registro obligatorio en el portal; verificación de identidad no activada por defecto",
+      "fuentePrimaria": "https://shares.aktionariat.com/invest",
+      "localizador": "/invest renderizado (09:04:03Z); brokerbotsettings identityVerification=false (09:01:52Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:04:03Z",
+      "alcanceYLimites": "Las Investor Page Terms permiten al emisor pedir datos de KYC en cualquier momento.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "As communicated to our shareholders, the sell-side of the Brokerbot will remain disabled for the foreseeable future. Feel free to post your sell offer on our secondaries widget below.",
+      "dato": "El emisor no recompra; solo se vende a otros accionistas en el mercado entre accionistas",
+      "fuentePrimaria": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+      "localizador": "disabledSellText; onlyBuySide=true (09:01:52Z); en cadena settings()=0x1 (bit 0x2 de recompra apagado, bloque 26383487)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:01:52Z",
+      "alcanceYLimites": "Sin fecha de reapertura.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "Bid/Ask 6.10 / 6.20 · Spread 1.61% · compras 6.10 (10), 6.00 (5), 5.00 (100), 4.50 (9), 4.00 (1)",
+      "dato": "Mejor oferta de compra 6,10 ZCHF por 10 acciones, igual que el 05/11. Libro completo de la API: 155 acciones demandadas entre 6,10 y 1,00 ZCHF (679,49 ZCHF en total; el 05/11 eran 156 y 682,49: ha desaparecido una orden de 1 acción a 3,00).",
+      "fuentePrimaria": "https://shares.aktionariat.com/trade",
+      "localizador": "/trade renderizado (09:04:12Z, 5 niveles por lado) y API getOrderBook company=77 (09:02:11Z, 8 niveles de compra)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:04:12Z",
+      "alcanceYLimites": "Se liquida solo en ZCHF con monedero propio. Las órdenes pueden retirarse en cualquier momento.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "Order Book … 7.20 1'000 · 6.90 10 · 6.80 40 · 6.25 1'389 · 6.20 356",
+      "dato": "Hay ventas entre accionistas por debajo del precio del emisor: la más barata, 6,20 ZCHF (356 acciones), frente a 7,25 CHF del emisor",
+      "fuentePrimaria": "https://shares.aktionariat.com/trade",
+      "localizador": "/trade renderizado (09:04:12Z), lado vendedor del libro; API getOrderBook (09:02:11Z, además 1 acción a 8,50)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:04:12Z",
+      "alcanceYLimites": "Ofertas en ZCHF; pueden retirarse en cualquier momento. Lado vendedor idéntico al del 05/11.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Sell · Order Summary … 6.2 ZCHF · Fee (1.9%): 0.12 ZCHF · Total Value: 6.08 ZCHF | API: buyerFeeRate 0, sellerFeeRate 0.0190 | tradingFeeBips() = 190",
+      "dato": "Mercado entre accionistas: el comprador paga 0 %; quien vende paga 1,9 % del importe. Gas de Ethereum y conversión a cargo del usuario.",
+      "fuentePrimaria": "https://shares.aktionariat.com/trade",
+      "localizador": "/trade con la pestaña «Sell» (09:04:15Z); /api/secondarymarketsettings?ticker=DAKS (09:01:54Z, sha256 idéntico al del 05/11); en cadena tradingFeeBips()=190 e isOpen()=true en 0x2b0f…6a9c (bloque 26383516, 09:08:53Z); Investor Page Terms §4.1 «Applicable fees are borne by the seller» y §4.3",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:04:15Z",
+      "alcanceYLimites": "Nuevo hoy: la comisión se lee también en el contrato. El de DAKS no tiene código verificado en Sourcify (404), pero responde a tradingFeeBips() con 190, la misma función que en el contrato verificado de LENDS, cuyo código dice «default trading fee is 1.9%», «always charged to the seller» y que el operador se compromete a no subirla por encima del 5 %.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "supervision",
+      "literal": "The secondary trading facilitated herein is considered a non-commercial trading facility … not subject to prudential supervision.",
+      "dato": "Sin supervisión financiera: no figura en el registro de autorizados de FINMA ni en PolyReg",
+      "fuentePrimaria": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "localizador": "Buscador FINMA «Aktionariat» = 0 resultados (09:07:24Z; controles Maerki Baumann = 1, Sygnum = 1); pie del portal",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:07:24Z",
+      "alcanceYLimites": "Ausencia de licencia comprobada hoy en el registro oficial.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "folleto",
+      "literal": "Such offers constitute a primary offering by the issuer and are governed by the Financial Services Act in Switzerland … Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus",
+      "dato": "Sin folleto ni KID; oferta acogida a umbrales de exención",
+      "fuentePrimaria": "https://shares.aktionariat.com/",
+      "localizador": "Pie «Direct Investment» de la portada renderizada (09:03:54Z)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:03:54Z",
+      "alcanceYLimites": "No se cita el artículo concreto de exención.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Acquisition Quorum 75%. During the Voting Period, the Acquisition Quorum is reached if at least 75% of all Drag-Along Tokens reside on addresses that voted \"yes\"",
+      "dato": "Arrastre: con el 75 % a favor, todos deben vender al comprador",
+      "fuentePrimaria": "https://storage.googleapis.com/aktionariat/public/77/43cab283-21cc-413a-83d0-3b9322b46702/Token%20Holder%20Agreement.pdf",
+      "localizador": "Token Holder Agreement v1.0, pág. 1",
+      "fechaDato": "2021-02-01",
+      "consultadoUtc": "2026-11-10T09:06:39Z",
+      "alcanceYLimites": "Mismo archivo que el 05/11.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "An investment in shares is associated with various risks and a loss of up to the entire capital invested may occur.",
+      "dato": "Riesgo de pérdida total; sin garantía de recompra ni de liquidez",
+      "fuentePrimaria": "https://www.aktionariat.com/disclaimer",
+      "localizador": "Disclaimer, «Risks»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:05:37Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accionistas",
+      "literal": "Shareholders 369 · Market Cap CHF 12'928'657 · Tokenized Shares 800'000 DAKS",
+      "dato": "369 accionistas",
+      "fuentePrimaria": "https://shares.aktionariat.com/",
+      "localizador": "Portada renderizada, Share Overview (09:03:54Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:03:54Z",
+      "alcanceYLimites": "Dato del portal; sin cambios desde el 01/11.",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Emisor inscrito en el registro mercantil suizo. Hoy (10/11) sigue sin figurar en el registro de autorizados de FINMA ni en PolyReg: no está supervisado. Sin advertencias de FINMA (2.402 entradas) ni de la CNMV (búsqueda por «Aktionariat» y «Aktionariat AG»)."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Venta directa activa en cadena a 7,25; última compra al emisor el 31/10/2026; 24 compras al emisor en los últimos 12 meses. Ninguna operación nueva desde el 05/11."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Aviso legal y condiciones del portal que admiten a residentes del EEE (tope 100.000 € sin consumo publicado), mínimo 500 CHF por transferencia, registro obligatorio. Sin recompra del emisor; vender entre accionistas cuesta un 1,9 % (portal, API y contrato)."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Pérdida total posible; sin folleto ni KID; emisor no supervisado; ventas entre accionistas por debajo del precio del emisor."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "metricas.Precio del emisor (fecha)",
+      "antes": "Precio del emisor · 05/11/2026: 7,25 CHF por acción (fijo)",
+      "ahora": "Precio del emisor · 10/11/2026: 7,25 CHF por acción (fijo), sin cambios (getPrice 7,25; incremento 0)",
+      "fuente": "https://shares.aktionariat.com/invest",
+      "critico": false
+    },
+    {
+      "campo": "metricas.Supervisor (fecha)",
+      "antes": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (05/11/2026)",
+      "ahora": "Igual con fecha 10/11/2026 (búsqueda «Aktionariat» = 0, 09:07:24Z)",
+      "fuente": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "critico": false
+    },
+    {
+      "campo": "aviso «vendedores por debajo del precio del emisor» (fecha)",
+      "antes": "(6,20 ZCHF frente a 7,25 CHF el 05/11/2026)",
+      "ahora": "(6,20 ZCHF frente a 7,25 CHF el 10/11/2026): mismo lado vendedor del libro",
+      "fuente": "https://shares.aktionariat.com/trade",
+      "critico": false
+    },
+    {
+      "campo": "comisión de venta entre accionistas (evidencia)",
+      "antes": "1,9 % leído en el portal y en su API; el contrato no se pudo leer",
+      "ahora": "1,9 % también en cadena: tradingFeeBips()=190 en el contrato del mercado de DAKS (sin cambio en la tarjeta)",
+      "fuente": "https://shares.aktionariat.com/api/secondarymarketsettings?ticker=DAKS",
+      "critico": false
+    },
+    {
+      "campo": "libro de órdenes (lado comprador)",
+      "antes": "9 niveles, 156 acciones demandadas (682,49 ZCHF) el 05/11",
+      "ahora": "8 niveles, 155 acciones (679,49 ZCHF): desaparece 1 acción a 3,00; mejor compra igual (6,10 por 10)",
+      "fuente": "https://shares.aktionariat.com/api/secondarymarkets/getOrderBook",
+      "critico": false
+    },
+    {
+      "campo": "resto (precio, mínimo, acceso, recompra cerrada, lado vendedor, operaciones, accionistas, documentos, registros)",
+      "antes": "lo publicado con datos del 05/11",
+      "ahora": "sin cambios en la consulta de 09:01–09:11 UTC del 10/11: historial de operaciones, PDF, aviso legal, ajustes del mercado, Zefix y PolyReg con sha256 idéntico; Investor Page Terms con el mismo texto",
+      "fuente": "https://shares.aktionariat.com/api/secondarymarkets/getTrades",
+      "critico": false
+    }
+  ],
+  "avisosConFecha": [
+    {
+      "avisoPublicado": "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 05/11/2026).",
+      "estadoHoy": "vigente",
+      "literal": "Bid/Ask 6.10 / 6.20 … 6.20 356 · Price per DAKS 7.25 CHF",
+      "fuente": "https://shares.aktionariat.com/trade",
+      "consultadoUtc": "2026-11-10T09:04:12Z",
+      "textoNuevo": "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 10/11/2026)."
+    },
+    {
+      "avisoPublicado": "No se publica cuánto queda del tope de 100.000 € para el EEE.",
+      "estadoHoy": "vigente",
+      "literal": "The offer for persons from the EEA is limited to a total of €100,000.",
+      "fuente": "https://www.aktionariat.com/disclaimer",
+      "consultadoUtc": "2026-11-10T09:05:37Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "El emisor no recompra acciones; la salida depende de que otro accionista compre, con muy poca demanda visible.",
+      "estadoHoy": "vigente",
+      "literal": "the sell-side of the Brokerbot will remain disabled for the foreseeable future",
+      "fuente": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+      "consultadoUtc": "2026-11-10T09:01:52Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "Sin folleto ni KID: la oferta se acoge a umbrales de exención y el emisor no está supervisado.",
+      "estadoHoy": "vigente",
+      "literal": "Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus",
+      "fuente": "https://shares.aktionariat.com/",
+      "consultadoUtc": "2026-11-10T09:03:54Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "El mercado secundario se liquida en Frankencoin (ZCHF) con monedero propio, sin transferencia bancaria.",
+      "estadoHoy": "vigente",
+      "literal": "Trade Aktionariat AG shares with other shareholders in secure on-chain transactions, instantly settled using Frankencoin (ZCHF).",
+      "fuente": "https://shares.aktionariat.com/",
+      "consultadoUtc": "2026-11-10T09:03:54Z",
+      "textoNuevo": null
+    },
+    {
+      "avisoPublicado": "Si vendes a otro accionista pagas una comisión del 1,9 %.",
+      "estadoHoy": "vigente",
+      "literal": "Fee (1.9%): 0.12 ZCHF · sellerFeeRate 0.0190 · tradingFeeBips 190",
+      "fuente": "https://shares.aktionariat.com/trade",
+      "consultadoUtc": "2026-11-10T09:04:15Z",
+      "textoNuevo": null
+    }
+  ],
+  "propuestaTarjeta": {
+    "titulo": "Aktionariat",
+    "categoria": "Acciones y capital privado",
+    "pais": "CH",
+    "tipo": "valor",
+    "coleccion": "principales",
+    "resumen": "Acciones tokenizadas de Aktionariat AG, empresa suiza de software para tokenizar acciones, vendidas directamente por el emisor a precio fijo. La recompra por el emisor está cerrada: para vender hay que encontrar comprador entre accionistas.",
+    "resumenTarjeta": {
+      "minimo": "500 CHF por transferencia; en cripto, desde 1 acción (7,25 ZCHF el 10/11)",
+      "accesoEspana": "Sí: la venta del emisor admite residentes en Suiza y el EEE, con un tope total de 100.000 € para el EEE",
+      "salida": "El emisor no recompra; vendes a otros accionistas en ZCHF, con un 1,9 % de comisión (mejor compra 6,10 el 10/11)"
+    },
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Precio del emisor · 10/11/2026",
+        "valor": "7,25 CHF por acción (fijo)"
+      },
+      {
+        "etiqueta": "Mínimo",
+        "valor": "500 CHF por transferencia"
+      },
+      {
+        "etiqueta": "Acceso",
+        "valor": "Residentes en Suiza o EEE; tope EEE 100.000 € en total"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (10/11/2026)"
+      },
+      {
+        "etiqueta": "Venta",
+        "valor": "Solo a otros accionistas; el emisor no recompra"
+      },
+      {
+        "etiqueta": "Moneda",
+        "valor": "CHF / ZCHF"
+      }
+    ],
+    "avisos": [
+      "Sin folleto ni KID: la oferta se acoge a umbrales de exención y el emisor no está supervisado.",
+      "El emisor no recompra acciones; la salida depende de que otro accionista compre, con muy poca demanda visible.",
+      "El mercado secundario se liquida en Frankencoin (ZCHF) con monedero propio, sin transferencia bancaria.",
+      "Si vendes a otro accionista pagas una comisión del 1,9 %.",
+      "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 10/11/2026).",
+      "No se publica cuánto queda del tope de 100.000 € para el EEE."
+    ],
+    "url": "https://shares.aktionariat.com/invest",
+    "fuentesActuales": [
+      "https://shares.aktionariat.com/invest",
+      "https://shares.aktionariat.com/trade",
+      "https://www.aktionariat.com/disclaimer",
+      "https://shares.aktionariat.com/investor-page-terms"
+    ],
+    "lugar": "Erlenbach · Suiza",
+    "pasos": [
+      "Registro en el portal",
+      "Compra al emisor",
+      "Venta entre accionistas"
+    ],
+    "concepto": "un libro registro de acciones convertido en cadena de bloques junto al lago de Zúrich"
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "500 CHF por transferencia (en cripto, desde 1 acción = 7,25 ZCHF)",
+    "supervisorVerificado": null,
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Venta directa abierta con precio comprobado en cadena (7,25, última compra 31/10/2026) y aviso legal que admite a residentes del EEE.",
+    "porQueNo": "Emisor sin supervisión (FINMA, 10/11/2026), sin folleto ni KID, tope EEE de consumo desconocido, sin recompra y un 1,9 % de comisión al vender entre accionistas."
+  },
+  "decision": "actualizar",
+  "motivoDecision": "Nada de fondo cambia desde el 05/11: mismo precio del emisor (7,25), mismo mínimo, mismo acceso Suiza + EEE, recompra cerrada, mismo lado vendedor y ninguna operación nueva (historial, PDF, aviso legal y registros con sha256 idéntico). Solo hay que pasar las fechas de la métrica «Precio del emisor», de «Supervisor» y del aviso de vendedores por debajo del emisor al 10/11 (las cifras del 05/11 vencen el 12/11). La comisión de venta del 1,9 % queda además confirmada en cadena. Sigue en «principales».",
+  "bloqueos": [
+    "No se probó el registro ni el KYC del portal (prohibido por el encargo).",
+    "No se publica cuánto queda del tope de 100.000 € para el EEE.",
+    "El contrato del mercado entre accionistas de DAKS sigue sin código verificado en Sourcify; la comisión se lee con la función del contrato verificado de LENDS (misma respuesta, 190)."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-10T09:01:35Z",
+    "finUtc": "2026-11-10T09:12:53Z"
+  }
+}

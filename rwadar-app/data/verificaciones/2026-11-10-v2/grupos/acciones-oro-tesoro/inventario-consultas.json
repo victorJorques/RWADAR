@@ -1,0 +1,732 @@
+[
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_tokens_kid_eu.pdf",
+  "archivo": "fuentes/robinhood-kid-eu.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:01:42Z",
+  "bytes": 177536,
+  "sha256": "d744e3ac63962771cb3ea745e2b8e72b3ccf9d0cd0fc3972b6e59733eecaee96",
+  "nota": ""
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/description_of_services_financial_instruments_and_risks_eu.pdf",
+  "archivo": "fuentes/robinhood-dos.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:01:42Z",
+  "bytes": 280879,
+  "sha256": "4e3ab0a266bbbaa2ab9e013acc75e515445ca2356a921699a4f4e73821cbf4f4",
+  "nota": ""
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+  "archivo": "fuentes/robinhood-fee.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:01:42Z",
+  "bytes": 77204,
+  "sha256": "614b0f5b0019b6b7a84a698a567258868072ce6450c262a36c78d7452c503228",
+  "nota": ""
+ },
+ {
+  "url": "https://robinhood.com/eu/es/invest",
+  "archivo": "fuentes/crudo/robinhood-invest-es.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:01:43Z",
+  "bytes": 256348,
+  "sha256": "4ca6e912ad07c58606999e8b0608c13cbc66ab920636d757337c05f594fd18c9",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/robinhood-invest-es.txt",
+  "texto": "fuentes/robinhood-invest-es.txt"
+ },
+ {
+  "url": "https://robinhood.com/eu/en/invest",
+  "archivo": "fuentes/crudo/robinhood-invest-en.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:01:43Z",
+  "bytes": 253097,
+  "sha256": "405c2e23282fc20ee1f970d2d2b5e1c972e85dcadcd432a94a447357f67e2722",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/robinhood-invest-en.txt",
+  "texto": "fuentes/robinhood-invest-en.txt"
+ },
+ {
+  "url": "https://www.lb.lt/en/sfi-financial-market-participants/robinhood-europe-uab",
+  "archivo": "fuentes/crudo/lb-robinhood-europe-uab.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:02:18Z",
+  "bytes": 156117,
+  "sha256": "383eb7650ff7f247a2d1c4bd464779deeacb6e6d430495917b0e4ab05cf7c50d",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/lb-robinhood-europe-uab.txt",
+  "texto": "fuentes/lb-robinhood-europe-uab.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299",
+  "archivo": "fuentes/crudo/cnmv-esi-lp-5299.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:02:19Z",
+  "bytes": 218078,
+  "sha256": "cd36b27873857b29fc972378abf883cd0c17ab0e1900c9279d1b922849b9ef89",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-esi-lp-5299.txt",
+  "texto": "fuentes/cnmv-esi-lp-5299.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5299&vista=17&lang=es",
+  "archivo": "fuentes/crudo/cnmv-esi-lp-5299-vista17.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:02:21Z",
+  "bytes": 232968,
+  "sha256": "9f058afcd1d56b421de355770c12be69731942aa7053a2fe779c09b2576f8c55",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-esi-lp-5299-vista17.txt",
+  "texto": "fuentes/cnmv-esi-lp-5299-vista17.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Robinhood",
+  "archivo": "fuentes/crudo/cnmv-advertencias-robinhood.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:02:22Z",
+  "bytes": 212247,
+  "sha256": "2629a27d1ac0621b6f566800ec436949332bd7edad084b99b0452eee2ffc28a0",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-advertencias-robinhood.txt",
+  "texto": "fuentes/cnmv-advertencias-robinhood.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+  "archivo": "fuentes/crudo/cnmv-advertencias-control-gemini.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:02:24Z",
+  "bytes": 217724,
+  "sha256": "dcff3dc1c7706a23b15d26e04974ea18110b69ecc883ff0782282359b27f80ec",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-advertencias-control-gemini.txt",
+  "texto": "fuentes/cnmv-advertencias-control-gemini.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/Docportal/Proveedores-Servicios-Criptoactivos/Listado_ProveedoresCriptoactivos.pdf",
+  "archivo": "fuentes/cnmv-listado-proveedores-criptoactivos.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:02:26Z",
+  "bytes": 482044,
+  "sha256": "188c6935e3b0dd615358aa031475b63a411557a87557a617333fb7175cc800b6",
+  "nota": ""
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf",
+  "archivo": "fuentes/robinhood-kid-es.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:03:11Z",
+  "bytes": 191487,
+  "sha256": "84f4f0a815734c1d7241f45fc458665ed92c849bf882ad3a15799b4d28a4f501",
+  "nota": ""
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/description_of_services_financial_instruments_and_risks_es.pdf",
+  "archivo": "fuentes/robinhood-dos-es.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:03:12Z",
+  "bytes": 308722,
+  "sha256": "75f905ae83716a4532611023a931dce9e8f6efb3a60918598f76eb7443ac748f",
+  "nota": ""
+ },
+ {
+  "url": "https://cdn.robinhood.com/assets/robinhood/legal/Robinhood%20Terms%20and%20Conditions.pdf",
+  "archivo": "fuentes/robinhood-terminos.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:03:12Z",
+  "bytes": 155453,
+  "sha256": "5993f8567daafcfefaf0e262ae33712a7669e2c6284fa093df06e449b2e78acb",
+  "nota": ""
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+  "archivo": "fuentes/crudo/esma-backed-no-ftws.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:03:56Z",
+  "bytes": 21243,
+  "sha256": "0f4a47c807f54c6a3cc9d252fc93fb52735e0a9e2f35cf5dde51a10bb93f4244",
+  "nota": ""
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*&wt=json&rows=200&sort=approval_filing_date%20desc",
+  "archivo": "fuentes/crudo/esma-backed-todos.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:03:58Z",
+  "bytes": 323204,
+  "sha256": "e9f1946ee47b203fffc51670fcd5689edecad89a69b5f34bd8fd992e46ca11a8",
+  "nota": ""
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "fuentes/backed-ft-SPYx.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:14Z",
+  "bytes": 1049054,
+  "sha256": "280159d434561e538f9bac487b0aac8da34f5962f740a3cac12d844fea82a653",
+  "nota": "PDF no copiado (>1 MB e idéntico al del ciclo anterior); sha256 y bytes son del PDF descargado; texto extraído con pdftotext."
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219187/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "fuentes/backed-ft-AAPLx.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:15Z",
+  "bytes": 1040640,
+  "sha256": "ad7f3be6ef79bd590e67d7b545227166bf4425808612f95be2734102373cd575",
+  "nota": "PDF no copiado (>1 MB e idéntico al del ciclo anterior); sha256 y bytes son del PDF descargado; texto extraído con pdftotext."
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "fuentes/backed-ft-NVDAx.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:17Z",
+  "bytes": 1040803,
+  "sha256": "f309dd9cb54d17218369aa74beaf42d4910864f6500bc93e347f59a82e4f9154",
+  "nota": "PDF no copiado (>1 MB e idéntico al del ciclo anterior); sha256 y bytes son del PDF descargado; texto extraído con pdftotext."
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667175/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+  "archivo": "fuentes/backed-ft-JBBBx.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:18Z",
+  "bytes": 1087150,
+  "sha256": "9ad0819cc4fbbc7441236e38cdd928909562d38eac0aa792880648718ffb6b69",
+  "nota": "PDF no copiado (>1 MB e idéntico al del ciclo anterior); sha256 y bytes son del PDF descargado; texto extraído con pdftotext."
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+  "archivo": "fuentes/backed-kid-es-SPYx.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:19Z",
+  "bytes": 228272,
+  "sha256": "d89ded598b12dca9660087cb3ef4e2216c3fe928b8a71d796e10f6ff1e0deefc",
+  "nota": ""
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219187/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+  "archivo": "fuentes/backed-kid-es-AAPLx.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:20Z",
+  "bytes": 225776,
+  "sha256": "c5cf5d2a01c28cf050ad751a4b71ad74d26fac5c249bd121374a5163587e1c98",
+  "nota": ""
+ },
+ {
+  "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+  "archivo": "fuentes/backed-kid-es-NVDAx.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:22Z",
+  "bytes": 225707,
+  "sha256": "cf3822f0c1f299b8af03822e35922d7afd1b772af3b8465f26e386797a7f0d57",
+  "nota": ""
+ },
+ {
+  "url": "https://eu.kraken.com/xstocks",
+  "archivo": "fuentes/crudo/kraken-eu-xstocks-en.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:46Z",
+  "bytes": 1411239,
+  "sha256": "b515390c6d422c42f48559b65abbad2c09c7e33b42f215df798f9cef24d1e5fa",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/kraken-eu-xstocks-en.txt",
+  "texto": "fuentes/kraken-eu-xstocks-en.txt"
+ },
+ {
+  "url": "https://eu.kraken.com/es/xstocks",
+  "archivo": "fuentes/crudo/kraken-eu-xstocks-es.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:46Z",
+  "bytes": 1407781,
+  "sha256": "dc8d548ab0acc050dbac836a1872afe35517ed8b981c66cedbfd95ab06a1fb8c",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/kraken-eu-xstocks-es.txt",
+  "texto": "fuentes/kraken-eu-xstocks-es.txt"
+ },
+ {
+  "url": "https://eu.kraken.com/legal/risk-disclosure",
+  "archivo": "fuentes/crudo/kraken-eu-risk-disclosure.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:47Z",
+  "bytes": 226880,
+  "sha256": "ab0205dc2f444a166254934c0b40c9f9d0c1b67c7cf77525ea8a819312a82edb",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/kraken-eu-risk-disclosure.txt",
+  "texto": "fuentes/kraken-eu-risk-disclosure.txt"
+ },
+ {
+  "url": "https://support.kraken.com/articles/xstocks-availability",
+  "archivo": "fuentes/crudo/kraken-support-xstocks-availability-en.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:47Z",
+  "bytes": 4122456,
+  "sha256": "e4ef81be15e3a864658cb6ae274ee5d1723d20b28dfb67543132f9bdf58c0931",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/kraken-support-xstocks-availability-en.txt",
+  "texto": "fuentes/kraken-support-xstocks-availability-en.txt"
+ },
+ {
+  "url": "https://support.kraken.com/articles/xstocks-faq",
+  "archivo": "fuentes/crudo/kraken-support-xstocks-faq-en.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:47Z",
+  "bytes": 1065702,
+  "sha256": "4c6aa0aaeb28114acb59b32536893f199b5783ab74be1774a454771886442e98",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/kraken-support-xstocks-faq-en.txt",
+  "texto": "fuentes/kraken-support-xstocks-faq-en.txt"
+ },
+ {
+  "url": "https://www.kraken.com/features/fee-schedule",
+  "archivo": "fuentes/crudo/kraken-fee-schedule-en.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:48Z",
+  "bytes": 657966,
+  "sha256": "e40381048bfdbbf0f5fbc174b99a1564714d0cb692dab564a5966db41b834b8b",
+  "nota": "Petición con Accept-Language es-ES: el servidor devolvió la versión española; la inglesa se leyó aparte (kraken-fee-schedule-en-langen). HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/kraken-fee-schedule-en.txt",
+  "texto": "fuentes/kraken-fee-schedule-en.txt"
+ },
+ {
+  "url": "https://www.kraken.com/es-es/features/fee-schedule",
+  "archivo": "fuentes/crudo/kraken-fee-schedule-es.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:48Z",
+  "bytes": 665539,
+  "sha256": "ed6f456535e392e5d7f22146f52bab02941d317159b19f389ccc668d42648367",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/kraken-fee-schedule-es.txt",
+  "texto": "fuentes/kraken-fee-schedule-es.txt"
+ },
+ {
+  "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+  "archivo": "fuentes/crudo/cysec-pedsl-45914.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:49Z",
+  "bytes": 651841,
+  "sha256": "7b648aeed6d24516cf011f33cfdce7117254a5db6b57d125be96ab6b653e65d2",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cysec-pedsl-45914.txt",
+  "texto": "fuentes/cysec-pedsl-45914.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
+  "archivo": "fuentes/crudo/cnmv-esi-lp-4474.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:52Z",
+  "bytes": 218255,
+  "sha256": "490c31b3a4c3b113c96227b99e7792d1a63d562cd224809db63a21604abe953e",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-esi-lp-4474.txt",
+  "texto": "fuentes/cnmv-esi-lp-4474.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474&vista=17",
+  "archivo": "fuentes/crudo/cnmv-esi-lp-4474-vista17.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:54Z",
+  "bytes": 252943,
+  "sha256": "62ada9620885b2f48b7e060f13817cb4911ac5c6575b41ec3ccb33c6f4a5575f",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-esi-lp-4474-vista17.txt",
+  "texto": "fuentes/cnmv-esi-lp-4474-vista17.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+  "archivo": "fuentes/crudo/cnmv-pasaportes-backed.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:56Z",
+  "bytes": 215530,
+  "sha256": "d99d668e84ef3bacc2a96ececf23ba88e3e7c839313649afa8200107db4ab620",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-pasaportes-backed.txt",
+  "texto": "fuentes/cnmv-pasaportes-backed.txt"
+ },
+ {
+  "url": "https://xstocks.fi/us",
+  "archivo": "fuentes/crudo/xstocks-fi-us.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:57Z",
+  "bytes": 142880,
+  "sha256": "f0ab616af9e12a06ec3b673519691a3c7c8406427b6405db93c709515cae66f9",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/xstocks-fi-us.txt",
+  "texto": "fuentes/xstocks-fi-us.txt"
+ },
+ {
+  "url": "https://assets.backed.fi/legal-documentation",
+  "archivo": "fuentes/crudo/backed-legal-documentation.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:04:57Z",
+  "bytes": 10606,
+  "sha256": "09f9d6e0c77ba1f47140eb4812f14d0c583dfcb3d35b55d776fd4b8ab117825b",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/backed-legal-documentation.txt",
+  "texto": "fuentes/backed-legal-documentation.txt"
+ },
+ {
+  "url": "https://www.kraken.com/features/fee-schedule",
+  "archivo": "fuentes/crudo/kraken-fee-schedule-en-langen.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:05:16Z",
+  "bytes": 650330,
+  "sha256": "ccfe68f58c2376315e75bce01e43fb90697a03b379091575ec845e628221f0af",
+  "nota": "Accept-Language: en-US (versión inglesa); HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/kraken-fee-schedule-en-langen.txt",
+  "texto": "fuentes/kraken-fee-schedule-en-langen.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Kraken",
+  "archivo": "fuentes/crudo/cnmv-advertencias-kraken.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:05:36Z",
+  "bytes": 212181,
+  "sha256": "df17e5c6382390bc94d38a1002ab921d5a5594d95fb3df15d5c267bcadcdbc31",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-advertencias-kraken.txt",
+  "texto": "fuentes/cnmv-advertencias-kraken.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Payward",
+  "archivo": "fuentes/crudo/cnmv-advertencias-payward.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:05:38Z",
+  "bytes": 212203,
+  "sha256": "1c9d8fff1bb978d9a60cd778daea98f973c221d3597a4bc8e9b8805a4f47fca6",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-advertencias-payward.txt",
+  "texto": "fuentes/cnmv-advertencias-payward.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Backed",
+  "archivo": "fuentes/crudo/cnmv-advertencias-backed.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:05:40Z",
+  "bytes": 212181,
+  "sha256": "660a3d25b7f9eb541029128a62c448d9eca17322b054ee2ba1d33842a1d6c785",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-advertencias-backed.txt",
+  "texto": "fuentes/cnmv-advertencias-backed.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=xStocks",
+  "archivo": "fuentes/crudo/cnmv-advertencias-xstocks.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:05:42Z",
+  "bytes": 212203,
+  "sha256": "545e76354c0ffa80e4c212848c42d5845df7c2b1e8c2439229c4c554c30ecdad",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-advertencias-xstocks.txt",
+  "texto": "fuentes/cnmv-advertencias-xstocks.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+  "archivo": "fuentes/crudo/cnmv-advertencias-midas.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:05:44Z",
+  "bytes": 212159,
+  "sha256": "db6a95fc2e030f6da6b5ab404c0c733652c9d135cbb8077067c1c9edb39c9b56",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-advertencias-midas.txt",
+  "texto": "fuentes/cnmv-advertencias-midas.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas+Software",
+  "archivo": "fuentes/crudo/cnmv-advertencias-midas-software.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:05:45Z",
+  "bytes": 212357,
+  "sha256": "bd1f75a4a5005fa54307f31025ac72bc8db970087b25dbf5f8549a93fcca7f45",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-advertencias-midas-software.txt",
+  "texto": "fuentes/cnmv-advertencias-midas-software.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur",
+  "archivo": "fuentes/crudo/cnmv-advertencias-prosegur.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:05:46Z",
+  "bytes": 212225,
+  "sha256": "5db5835ad399d3bf0c7e995acc0c6daa5144f4ee038ca2cc2f9aabac58452868",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-advertencias-prosegur.txt",
+  "texto": "fuentes/cnmv-advertencias-prosegur.txt"
+ },
+ {
+  "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur+Custodia",
+  "archivo": "fuentes/crudo/cnmv-advertencias-prosegur-custodia.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:05:48Z",
+  "bytes": 212423,
+  "sha256": "3cad3bccd69d150e2fde98d6fcc607daaea2402e8374ab5707e1f746082d6fba",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-advertencias-prosegur-custodia.txt",
+  "texto": "fuentes/cnmv-advertencias-prosegur-custodia.txt"
+ },
+ {
+  "url": "https://www.kraken.com/legal/xstocks",
+  "archivo": "fuentes/crudo/kraken-legal-xstocks.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:06:01Z",
+  "bytes": 626359,
+  "sha256": "457c444def56a4ae412524d7db16a5bf9024681c1cf48a00e084ccfa691b3872",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/kraken-legal-xstocks.txt",
+  "texto": "fuentes/kraken-legal-xstocks.txt"
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/about-us/faqs",
+  "archivo": "fuentes/crudo/prosegur-faqs.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:07:47Z",
+  "bytes": 46922,
+  "sha256": "9fbe805d93efbe6d88ba0cd13eca0add4dca695555514bc3d3e49abcef913ae3",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/prosegur-faqs.txt",
+  "texto": "fuentes/prosegur-faqs.txt"
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/transparency",
+  "archivo": "fuentes/crudo/prosegur-transparency.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:07:48Z",
+  "bytes": 27714,
+  "sha256": "d3ff840e258712f080bea593459a4e86b2d5fdea6f9a0297d94fdd0c738bbfec",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/prosegur-transparency.txt",
+  "texto": "fuentes/prosegur-transparency.txt"
+ },
+ {
+  "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+  "archivo": "fuentes/esma-casps.csv",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:07:54Z",
+  "bytes": 196605,
+  "sha256": "fd255f543d4c5746d96155744b3698c9a53acaf96168b028274bb06260896ca6",
+  "nota": ""
+ },
+ {
+  "url": "https://ethereum-rpc.publicnode.com (eth_call, solo lectura)",
+  "archivo": "fuentes/crudo/onchain-mtbill-20261110.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:08:39Z",
+  "bytes": 4569,
+  "sha256": "5268056ac1e5143e03a94ea9f4296e646b856630952ffa8268e3e14202d50ba2",
+  "nota": "oráculo 0x056339C0…, token 0xdd629e52…, vaults de emisión y reembolso; bloque 26383515"
+ },
+ {
+  "url": "https://docs.midas.app/llms-full.txt",
+  "archivo": "fuentes/crudo/midas-docs-llms-full.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:08:57Z",
+  "bytes": 217884,
+  "sha256": "aca8b6c7501587594d206d89edb086110ad086c11ad4d245f88890e3ac99932a",
+  "nota": ""
+ },
+ {
+  "url": "https://docs.midas.app/llms.txt",
+  "archivo": "fuentes/midas-docs-llms.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:08:57Z",
+  "bytes": 5537,
+  "sha256": "4defa0d35d2f7675b0991aac173ca6bec89b61002b77da705e3fa132ec832e6c",
+  "nota": ""
+ },
+ {
+  "url": "https://midas.app/llms.txt",
+  "archivo": "fuentes/midas-app-llms.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:08:58Z",
+  "bytes": 8256,
+  "sha256": "45bbcad034fe94fbd5d949c84e25dd6e108deb0864706957a93870504631a984",
+  "nota": ""
+ },
+ {
+  "url": "https://midas.app/",
+  "archivo": "fuentes/crudo/midas-app-root.html",
+  "http": 403,
+  "consultadoUtc": "2026-11-10T09:08:58Z",
+  "bytes": 5560,
+  "sha256": "b23353cbdbc8fce8320527c1a05a98c856276013c8046801e40c3f46d5fdbda5",
+  "nota": "Cloudflare (403), esperado; no se intentó sortear. HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/midas-app-root.txt",
+  "texto": "fuentes/midas-app-root.txt"
+ },
+ {
+  "url": "https://midas.app/mtbill",
+  "archivo": "fuentes/crudo/midas-app-mtbill.html",
+  "http": 403,
+  "consultadoUtc": "2026-11-10T09:08:58Z",
+  "bytes": 5578,
+  "sha256": "90cbad2b224f88b9ee08e9cd2ce448e2123c577e9b29769689f41e2cbba52cfb",
+  "nota": "Cloudflare (403), esperado; no se intentó sortear. HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/midas-app-mtbill.txt",
+  "texto": "fuentes/midas-app-mtbill.txt"
+ },
+ {
+  "url": "https://docs.midas.app/resources/legal-product-documentation/mtbill",
+  "archivo": "fuentes/crudo/midas-docs-mtbill.html",
+  "http": 403,
+  "consultadoUtc": "2026-11-10T09:08:58Z",
+  "bytes": 5782,
+  "sha256": "ecda0a64969d0ebddf8876f19b9e3f1ca94002bc2e658f359f79543e9b1c24e5",
+  "nota": "Cloudflare (403), esperado; no se intentó sortear. HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/midas-docs-mtbill.txt",
+  "texto": "fuentes/midas-docs-mtbill.txt"
+ },
+ {
+  "url": "https://docs.midas.app/legal/eligibility-and-compliance",
+  "archivo": "fuentes/crudo/midas-docs-eligibility.html",
+  "http": 403,
+  "consultadoUtc": "2026-11-10T09:08:59Z",
+  "bytes": 5724,
+  "sha256": "017a87282d4921e63884b6baa29226529b1e3b34ff3b97a88c3f958827e1a6b8",
+  "nota": "Cloudflare (403), esperado; no se intentó sortear. HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/midas-docs-eligibility.txt",
+  "texto": "fuentes/midas-docs-eligibility.txt"
+ },
+ {
+  "url": "https://midas.app/assets/main-C67ipI_t.js",
+  "archivo": "fuentes/crudo/midas-main-C67ipI_t.js",
+  "http": 404,
+  "consultadoUtc": "2026-11-10T09:09:06Z",
+  "bytes": 83,
+  "sha256": "7ceba24f8fd4ae21be9f6c74a73d2868e8efb2d413196b29c8aaa56958a83fbf",
+  "nota": "Bundle del 05/11: hoy 404 (midas.app sirve otro bundle, main-BSIncFBO.js)"
+ },
+ {
+  "url": "https://midas.app/llms-full.txt",
+  "archivo": "fuentes/crudo/midas-app-llms-full-index.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:10:33Z",
+  "bytes": 15445,
+  "sha256": "323ca7657f481f972ee9419a37d887a7c15703b8a1a19924c76d5356b9633105",
+  "nota": "La ruta devuelve el index SPA de midas.app; sirve para ver qué bundle JS carga hoy"
+ },
+ {
+  "url": "https://midas.app/assets/main-BSIncFBO.js",
+  "archivo": "fuentes/crudo/midas-app-main-BSIncFBO.js",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:10:41Z",
+  "bytes": 1948589,
+  "sha256": "bc05508e8195af97be2fd1241acaf8a82168a5d1e399e9558a2ec2f415093cfc",
+  "nota": "bundle JS público de midas.app servido hoy (referenciado por el index SPA)"
+ },
+ {
+  "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+  "archivo": "fuentes/mtbill-final-terms-20260717.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:11:53Z",
+  "bytes": 1248073,
+  "sha256": "b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a",
+  "nota": "PDF no copiado (>1 MB e idéntico al del ciclo anterior); sha256 y bytes son del PDF descargado; texto extraído con pdftotext."
+ },
+ {
+  "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media",
+  "archivo": "fuentes/mtbill-kid-es.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:11:53Z",
+  "bytes": 154610,
+  "sha256": "6c22870917cda81ef3f28b01a6ea857e7e024163f3910c0cc2a36dc9e87da545",
+  "nota": ""
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500BB00BN6D2B7C48*&wt=json&rows=200&sort=approval_filing_date%20desc",
+  "archivo": "fuentes/crudo/esma-midas-todos.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:12:10Z",
+  "bytes": 57763,
+  "sha256": "cab9224c8348253a7d3ec34591750d3ac3ab2f1499cff27fe8e91e769d365200",
+  "nota": ""
+ },
+ {
+  "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:CH1371002986&wt=json&rows=50&sort=approval_filing_date%20desc",
+  "archivo": "fuentes/crudo/esma-mtbill-isin.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:12:13Z",
+  "bytes": 4419,
+  "sha256": "69240abdff9c45b5bd5d98bfa379b9633168c32a4c88e70824a4a5ce1b9a1708",
+  "nota": ""
+ },
+ {
+  "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500BB00BN6D2B7C48",
+  "archivo": "fuentes/crudo/cnmv-pasaportes-midas.html",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:12:23Z",
+  "bytes": 217221,
+  "sha256": "de12b98ce93263d71b9a2a0c9334549e2562e972a4fe02a62117bdc7776c9270",
+  "nota": "HTML crudo en crudo/ (fuera de Git); texto extraído en fuentes/cnmv-pasaportes-midas.txt",
+  "texto": "fuentes/cnmv-pasaportes-midas.txt"
+ },
+ {
+  "url": "https://ws-api.llv.li/fire-wsapi/api/v1/search?query=Midas&registerNumber=&category=&searchType=ALL&law=&sortColumn=name&ascending=true&page=0",
+  "archivo": "fuentes/crudo/fma-li-midas.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:12:24Z",
+  "bytes": 48,
+  "sha256": "d01953a2c338e43cb5b682030a96fb7ddd5a12cf6692ce46cdcd60c46853693b",
+  "nota": ""
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/#/home",
+  "archivo": "fuentes/prosegur-app-home.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:06:20Z",
+  "bytes": 635,
+  "sha256": "e9f4574b9e6a289ec42e6f8620c8b171252283bce68383ddbdc7783216efc24d",
+  "nota": "playwright-chromium innerText; sha256TextoVisible 3aa8c01a4eb67be916744a828a03e7fd38f73fc7a28f61fae71f989916220947"
+ },
+ {
+  "url": "https://app.prosegurdigitalgold.com/#/terms-service",
+  "archivo": "fuentes/prosegur-terms-service.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:06:37Z",
+  "bytes": 72787,
+  "sha256": "20daaaf5691627063b68003a3a55a4b90249cbd060ce686cf318dd03903a5473",
+  "nota": "playwright-chromium innerText; sha256TextoVisible 1daaf31b99450cf526ca3f7cddefce8c87db8939e01ac03bac00ee284d28c4ea"
+ },
+ {
+  "url": "https://www.prosegurcrypto.com/digital-gold",
+  "archivo": "fuentes/prosegur-digital-gold-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:06:46Z",
+  "bytes": 8236,
+  "sha256": "b4593c78fd1c024bde56ccd0616dda361c2315beff6c82c58f12dbf2d0ec9600",
+  "nota": "playwright-chromium innerText; sha256TextoVisible 5fead4fda65683b501ddcad56915c29a6e89c64ff7596abee1a1255246be4bd2; Nombres de personas físicas recortados («[nombre recortado]»); textSha256 corresponde al texto original renderizado."
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/transparency",
+  "archivo": "fuentes/prosegur-transparency-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:07:01Z",
+  "bytes": 1891,
+  "sha256": "768bf10f6afc2aa6e5417dfd5cfd32868ff2916b8a17e45111132fa796890c71",
+  "nota": "playwright-chromium innerText; sha256TextoVisible 6394878960af27594ab8ba11f63260e9f7ba8a246ee1c9c684dd9ad52250fcb9"
+ },
+ {
+  "url": "https://prosegurdigitalgold.com/about-us/faqs",
+  "archivo": "fuentes/prosegur-faqs-render.json",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:07:12Z",
+  "bytes": 1566,
+  "sha256": "c95debfec590d593695170a2f023770cdbe0236f52910bcffac8aab32ba34da0",
+  "nota": "playwright-chromium innerText; sha256TextoVisible efbb8c28050e8f260ded9393efa886b9045026160b33d79aa5be49eaf464381c"
+ },
+ {
+  "url": "https://midas.app/mtbill",
+  "archivo": "fuentes/midas-app-mtbill-render.json",
+  "http": null,
+  "consultadoUtc": "2026-11-10T09:09:07Z",
+  "bytes": 746,
+  "sha256": "26508467b05f2ac324083cf66223c22ef559246c0ffa7eccd64c2ddb14f7fcd1",
+  "nota": "playwright-chromium innerText; sha256TextoVisible 69485c095cb8184b7a72f1e77ffbc5f2ca1937a2c79d41a3e886277dc72335f2; error: TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://midas.app/mtbill\", waiting until \"networkidle\"\u001b[22m\n"
+ },
+ {
+  "url": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+  "archivo": "fuentes/backed-folleto-base-2026-05-08.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:16:10Z",
+  "bytes": 1428039,
+  "sha256": "47be92729ffec7b9bae6c6b6141b1d16b571c787170b570a8f59a03459f008b3",
+  "nota": "PDF no copiado (>1 MB e idéntico al del ciclo anterior); sha256 y bytes son del PDF descargado; texto extraído con pdftotext."
+ },
+ {
+  "url": "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
+  "archivo": "fuentes/backed-supp68-2026-09-29.pdf",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:16:11Z",
+  "bytes": 290018,
+  "sha256": "acb0376b2b87f62de152d94130b4613badb17e64a06194c25ae27840f11a0a71",
+  "nota": ""
+ },
+ {
+  "url": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
+  "archivo": "fuentes/backed-ft-LITEx-159.txt",
+  "http": 200,
+  "consultadoUtc": "2026-11-10T09:16:32Z",
+  "bytes": 1365826,
+  "sha256": "85b56d11920c9641dcf95f28ca7aa030d53bef0f5729df8f2e252c1c9d0fde5a",
+  "nota": "PDF no copiado (>1 MB e idéntico al del ciclo anterior); sha256 y bytes son del PDF descargado; texto extraído con pdftotext."
+ },
+ {
+  "url": "WebSearch: «Robinhood Europe stock tokens available countries list EEA Spain support»",
+  "archivo": null,
+  "http": null,
+  "consultadoUtc": "2026-11-10T09:03:30Z",
+  "bytes": null,
+  "sha256": null,
+  "nota": "Solo descubrimiento: resultados de terceros, sin lista oficial de países de Robinhood; no se usa como fuente."
+ },
+ {
+  "url": "WebSearch: «Backed Assets xStocks final terms public offer Spain November 2026»",
+  "archivo": null,
+  "http": null,
+  "consultadoUtc": "2026-11-10T09:03:30Z",
+  "bytes": null,
+  "sha256": null,
+  "nota": "Solo descubrimiento: sin condiciones finales nuevas con España; no se usa como fuente."
+ }
+]

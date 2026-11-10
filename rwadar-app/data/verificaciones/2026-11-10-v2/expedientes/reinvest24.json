@@ -1,0 +1,137 @@
+{
+  "slug": "reinvest24",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-europa",
+  "proveedor": "Reinvest24",
+  "plataformaSlug": null,
+  "entidadComercializadora": "Reinvest24 OÜ (Estonia, código 14383364)",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": null,
+  "jurisdiccion": "EE",
+  "identificador": "14383364",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "CNMV · Advertencia al público sobre www.reinvest24.com / REINVEST24 OÜ",
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?e=ETcz7y5kevTZSix4R9t5%2bobgIfO3RtNU2TGg1f2UJVUILCnUAEn6Pt63MwWh%2bqV8",
+      "versionOFecha": "09/06/2025",
+      "paginas": 1,
+      "sha256": "4d9543c186583921d55232b2d80357ce1f2c40ccd53ff6d2f996d0cf82f53f6d",
+      "leido": true
+    },
+    {
+      "titulo": "Reinvest24 · portada",
+      "url": "https://reinvest24.com/",
+      "versionOFecha": "consultada 10/11/2026",
+      "paginas": null,
+      "sha256": "f2a09e8d573a4635bae4c92cd63918d2f3bfca6a82316ce48fb1d68640304e3d",
+      "leido": true,
+      "nota": "sha256 del texto renderizado"
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "ESMA (registro ECSP)",
+      "entidad": "Reinvest24",
+      "numero": null,
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_entityTypeCode:CSP&rows=400&wt=json",
+      "alcance": "Sin coincidencias entre 261 proveedores.",
+      "consultadoUtc": "2026-11-10T09:03:56Z"
+    },
+    {
+      "regulador": "CNMV (PSFP europeos que prestan servicios en España)",
+      "entidad": "Reinvest24",
+      "numero": null,
+      "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es",
+      "alcance": "No figura.",
+      "consultadoUtc": "2026-11-10T09:02:23Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reinvest24",
+      "resultado": "coincidencia: 09/06/2025 · WWW.REINVEST24.COM · REINVEST24 OÜ (entidad no autorizada para la actividad de plataforma de financiación participativa)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reinvest24",
+      "consultadoUtc": "2026-11-10T09:13:02Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "riesgos",
+      "literal": "REINVEST24 OÜ no está autorizada para desarrollar la actividad reservada a las plataformas de financiación participativa",
+      "dato": "advertencia de la CNMV del 09/06/2025",
+      "fuentePrimaria": "https://www.cnmv.es/webservices/verdocumento/ver?e=ETcz7y5kevTZSix4R9t5%2bobgIfO3RtNU2TGg1f2UJVUILCnUAEn6Pt63MwWh%2bqV8",
+      "localizador": "Advertencia al público de la CNMV, 1 página, 9 de junio de 2025",
+      "fechaDato": "2025-06-09",
+      "consultadoUtc": "2026-11-10T09:13:17Z",
+      "alcanceYLimites": "Base: art. 18.2 de la Ley 6/2023, Título V de la Ley 5/2015 y Reglamento (UE) 2020/1503.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "estado",
+      "literal": "Reinvest24 has stopped publishing new projects in November 2023 and does not accept new investments.",
+      "dato": "en cierre ordenado; sin inversiones nuevas desde noviembre de 2023",
+      "fuentePrimaria": "https://reinvest24.com/",
+      "localizador": "Portada (redirige a /en), preguntas frecuentes y pie legal",
+      "fechaDato": "2023-11",
+      "consultadoUtc": "2026-11-10T09:20:24Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "No es ECSP en ESMA ni está notificada en la CNMV; la CNMV advierte que no está autorizada."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "Sin proyectos nuevos desde noviembre de 2023; en cierre."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "No acepta inversiones nuevas."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_cumple",
+      "nota": "Advertencia de la CNMV del 09/06/2025."
+    }
+  },
+  "estadoOferta": "cerrada",
+  "disponibleEs": "excluido",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "advertencia CNMV",
+      "antes": "sin expediente (idea del encargo de hoy)",
+      "ahora": "la CNMV advirtió el 09/06/2025 que REINVEST24 OÜ no está autorizada como plataforma de financiación participativa; además, no acepta inversiones desde noviembre de 2023",
+      "fuente": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reinvest24",
+      "critico": true
+    }
+  ],
+  "propuestaTarjeta": null,
+  "resumenTarjeta": {
+    "minimo": null,
+    "accesoEspana": "No: la CNMV advierte que no está autorizada en España (09/06/2025)",
+    "salida": null
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Estaba en la lista de ideas del encargo.",
+    "porQueNo": "Advertencia de la CNMV y sin inversiones nuevas desde 2023."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir y no volver a proponer: la CNMV publicó el 09/06/2025 una advertencia sobre REINVEST24 OÜ (no autorizada como plataforma de financiación participativa) y la propia web dice que no acepta inversiones desde noviembre de 2023.",
+  "bloqueos": [],
+  "consulta": {
+    "inicioUtc": "2026-11-10T09:03:56Z",
+    "finUtc": "2026-11-10T09:26:29Z"
+  }
+}

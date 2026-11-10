@@ -1,0 +1,152 @@
+URL: https://superstate.com/investors
+FINAL: https://superstate.com/investors
+HTTP: 200
+UTC: 2026-11-10T09:40:43Z
+
+Issuers
+Investors
+Assets
+About
+Sign In
+Register
+INVESTOR OVERVIEW
+Investing with Superstate
+
+Superstate gives you access to the world’s leading tokenized assets, including company-issued equities and yield-bearing funds.
+
+View all assets
+Documentation
+Official shares
+
+These aren't derivatives or synthetic tokenized shares. These are legal shares of public companies, tokenized onchain.
+
+Works with DeFi
+
+Future opportunities to trade, use as collateral, or integrate into DeFi protocols. Enjoy 24/7 global access.
+
+Direct ownership
+
+Hold tokenized shares in your own wallet with the same legal rights as traditional stocks.
+
+As fast as a blockchain
+
+We've engineered our funds to allow for onchain settlement and continuous interest accrual, to match the speed of DeFi.
+
+Built for the crypto ecosystem
+
+Mint and burn effortlessly through the Protocol Mint and Redeem smart contracts, investor portal, or APIs.
+
+Institutional grade
+
+Assets are managed and segregated by established service providers, in a bankruptcy-remote trust structure.
+
+INVESTOR PORTAL
+Onboard, invest, and manage your assets with ease. Superstate's investor portal streamlines your entire investment journey.
+Sign up
+Learn more
+Stress-free onboarding
+
+Simple registration
+
+Get started in minutes with our intuitive onboarding tool. Submit standard KYC details for yourself or your investing entity — autosave ensures you can pause and return anytime without losing progress.
+
+Team collaboration
+
+Easily invite team members or third-party partners such as accountants and fund administrators. Manage roles and permissions to maintain control and transparency across your organization.
+
+Wallet configuration
+
+Add your Ethereum, Solana, or Plume wallet addresses to the Allowlist. Both custodial and non-custodial wallets are supported, enabling you to hold onchain equities and tokenized funds securely.
+
+Asset onboarding
+
+Once your account is active, you can seamlessly hold onchain equities. Qualified Purchasers can also apply to private funds such as USTB and USCC in just a few clicks.
+
+Flexible ownership
+
+Choice of format
+
+Shares can be minted onchain to any allowlist address that you control. Not ready for tokenized shares? Shares can be held in standard book-entry form, and you can choose to mint onchain later.
+
+Portable shares
+
+Migrate supported public equities from your brokerage account into Superstate and mint them onchain — or bridge shares back to a brokerage account.
+
+Robust primary liquidity
+
+Purchase or redeem tokenized funds using USDC or bank wire. Shares are issued, or proceeds disbursed, by the next business day — with onchain liquidity available for instant redemption where available.
+
+DeFi liquidity
+
+Connect an allowlisted wallet to access liquidity through supported decentralized exchanges (DEXs) and lending protocols.
+
+Powerful portfolio management
+
+Unified portfolio
+
+See a comprehensive view of all Superstate holdings across investing entities, allowlisted addresses, and integrated DeFi protocols — all in one place.
+
+Take action
+
+Initiate and manage transactions directly from the portal, including share redemptions, tokenizations, and other portfolio activities.
+
+Track transactions
+
+Monitor pending and completed transactions — including purchases, redemptions, transfers, mints, and bridge activity — with full transparency.
+
+Subaccounts
+
+Isolate balances, routing, and reporting across multiple subaccounts within a single entity, all without duplicating KYC or onboarding.
+
+Institutional recordkeeping
+
+Download official statements, fund materials, and key documentation whenever needed.
+
+GET STARTED WITH SUPERSTATE
+Invest in tokenized stocks and funds
+Register
+
+ISSUERS
+
+FundOS
+
+Opening Bell
+
+Integrations
+
+INVESTORS
+
+Overview
+
+USTB
+
+USCC
+
+CUSHY
+
+VBDC
+
+View all assets
+
+ABOUT
+
+Company
+
+Newsroom
+
+Pop Podcast
+
+Industry Council
+
+Documentation
+
+Careers
+
+Terms of Service
+
+Get Superstate news and updates
+Subscribe
+
+All content available on this Website is general in nature, not directed or tailored to any particular person, and is for informational purposes only. Neither the Website nor any of its content is offered as, nor should be relied on as providing, investment, tax or legal advice or a recommendation to purchase or sell any specific security. The information provided on this Website is not intended for distribution to, or use by, any person or entity in any jurisdiction or country where such distribution or use would be contrary to applicable law or regulation. For more important disclaimers, please visit superstate.com/terms#disclaimers.
+
+Superstate Advisers LLC is a registered investment adviser under the Investment Advisers Act of 1940. Information about Superstate can be found by visiting the SEC website adviserinfo.sec.gov and searching for our firm name. Superstate Services LLC is a registered transfer agent with the SEC. Superstate is a registered service mark of Superstate Inc.

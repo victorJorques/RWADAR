@@ -1,0 +1,146 @@
+Trade
+Earn
+Operate
+Tokenize
+Learn
+Blog
+Sign in
+Get started
+
+CONTENTS
+
+Introduction
+Modification
+Eligibility
+Proprietary rights
+Additional rights
+Privacy
+Prohibited activity
+No warranties
+Non-custodial
+Assumption of risk
+Limitation of liability
+Indemnity
+Dispute resolution
+Contact
+
+LEGAL DOCUMENT
+
+Terms of service
+
+Last modified: February 16, 2022
+
+Introduction
+
+Welcome to https://app.oceanpoint.fi, a website-hosted user interface (the "Interface" or "App") provided by Blocksquare ("we", "our", or "us"). The Interface provides access to a decentralized protocol on the Ethereum blockchain that allows users to earn certain digital assets ("the Oceanpoint protocol" or the "Protocol"). The Interface is one, but not the exclusive, means of accessing the Protocol.
+
+This Terms of Service Agreement (the "Agreement") explains the terms and conditions by which you may access and use the Interface. You must read this Agreement carefully. By accessing or using the Interface, you signify that you have read, understand, and agree to be bound by this Agreement in its entirety. If you do not agree, you are not authorized to access or use the Interface and should not use the Interface.
+
+NOTICE: Please read this Agreement carefully as it governs your use of the Interface. This Agreement contains important information, including a binding arbitration provision and a class action waiver, both of which impact your rights as to how disputes are resolved. The Interface is only available to you — and you should only access the Interface — if you agree completely with these terms.
+
+Modification
+
+We reserve the right, in our sole discretion, to modify this Agreement from time to time. If we make any modifications, we will notify you by updating the date at the top of the Agreement and by maintaining a current version of the Agreement at https://app.oceanpoint.fi/#terms. All modifications will be effective when they are posted, and your continued accessing or use of the Interface will serve as confirmation of your acceptance of those modifications. If you do not agree with any modifications to this Agreement, you must immediately stop accessing and using the Interface.
+
+Eligibility
+
+To access or use the Interface, you must be able to form a legally binding contract with us. Accordingly, you represent that you are at least the age of majority in your jurisdiction (e.g., eighteen years old) and have the full right, power, and authority to enter into and comply with the terms and conditions of this Agreement on behalf of yourself and any company or legal entity for which you may access or use the Interface.
+
+Proprietary rights
+
+We own all intellectual property and other rights in the Interface and its contents, including (but not limited to) software, text, images, trademarks, service marks, copyrights, patents, and designs. Unlike the Interface, version 0.1 of the Oceanpoint protocol is comprised entirely of open-source or source-available software running on the public Ethereum blockchain.
+
+Additional rights
+
+We reserve the following rights, which do not constitute obligations of ours: (a) with or without notice to you, to modify, substitute, eliminate or add to the Interface; (b) to review, modify, filter, disable, delete and remove any and all content and information from the Interface; and (c) to cooperate with any law enforcement, court or government investigation or order or third party requesting or directing that we disclose information or content or information that you provide.
+
+Privacy
+
+When you use the Interface, the only information we collect from you is your blockchain wallet address, completed transaction hashes, and the token names, symbols, or other blockchain identifiers of the tokens that you swap. We do not collect any personal information from you (e.g., your name or other identifiers that can be linked to you). We do, however, use third-party service providers, like Infura, Cloudflare, and Google Analytics, which may receive or independently obtain your personal information from publicly-available sources.
+
+We use the information we collect to detect, prevent, and mitigate financial crime and other illicit or harmful activities on the Interface. We do not retain the information we collect any longer than necessary for these purposes.
+
+Please note that when you use the Interface, you are interacting with the Ethereum blockchain, which provides transparency into your transactions. Blocksquare does not control and is not responsible for any information you make public on the Ethereum blockchain by taking actions through the Interface.
+
+Prohibited activity
+
+You agree not to engage in, or attempt to engage in, any of the following categories of prohibited activity:
+
+Intellectual property infringement. Activity that infringes on or violates any copyright, trademark, service mark, patent, right of publicity, right of privacy, or other proprietary or intellectual property rights under the law.
+Cyberattack. Activity that seeks to interfere with or compromise the integrity, security, or proper functioning of any computer, server, network, personal device, or other information technology system.
+Fraud and misrepresentation. Activity that seeks to defraud us or any other person or entity, including providing any false, inaccurate, or misleading information in order to unlawfully obtain the property of another.
+Market manipulation. Activity that violates any applicable law, rule, or regulation concerning the integrity of trading markets, including the manipulative tactics commonly known as spoofing and wash trading.
+Securities and derivatives violations. Activity that violates any applicable law, rule, or regulation concerning the trading of securities or derivatives.
+Any other unlawful conduct. Activity that violates any applicable law, rule, or regulation of the United States or another relevant jurisdiction.
+No warranties
+
+The Interface is provided on an "AS IS" and "AS AVAILABLE" basis. To the fullest extent permitted by law, we disclaim any representations and warranties of any kind, whether express, implied, or statutory, including (but not limited to) the warranties of merchantability and fitness for a particular purpose.
+
+Non-custodial
+
+The Interface is a purely non-custodial application, meaning you are solely responsible for the custody of the cryptographic private keys to the digital asset wallets you hold. This Agreement is not intended to, and does not, create or impose any fiduciary duties on us. To the fullest extent permitted by law, you acknowledge and agree that we owe no fiduciary duties or liabilities to you or any other party, and that to the extent any such duties or liabilities may exist at law or in equity, those duties and liabilities are hereby irrevocably disclaimed, waived, and eliminated.
+
+Assumption of risk
+
+By accessing and using the Interface, you represent that you are financially and technically sophisticated enough to understand the inherent risks associated with using cryptographic and blockchain-based systems, and that you have a working knowledge of the usage and intricacies of digital assets such as bitcoin (BTC), ether (ETH), and other digital tokens such as those following the Ethereum Token Standard (ERC-20). In particular, you understand that blockchain-based transactions are irreversible.
+
+Limitation of liability
+
+Under no circumstances shall we or any of our officers, directors, employees, contractors, agents, affiliates, or subsidiaries be liable to you for any indirect, punitive, incidental, special, consequential, or exemplary damages, including (but not limited to) damages for loss of profits, goodwill, use, data, or other intangible property, arising out of or relating to any access or use of the Interface, nor will we be responsible for any damage, loss, or injury resulting from hacking, tampering, or other unauthorized access or use of the Interface or the information contained within it.
+
+Under no circumstances shall we or any of our officers, directors, employees, contractors, agents, affiliates, or subsidiaries be liable to you for any claims, proceedings, liabilities, obligations, damages, losses, or costs in an amount exceeding the amount you paid to us in exchange for access to and use of the Interface, or USD $100.00, whichever is greater.
+
+Indemnity
+
+You agree to hold harmless, release, defend, and indemnify us and our officers, directors, employees, contractors, agents, affiliates, and subsidiaries from and against all claims, damages, obligations, losses, liabilities, costs, and expenses arising from: (a) your access and use of the Interface; (b) your violation of any term or condition of this Agreement, the right of any third party, or any other applicable law, rule, or regulation; and (c) any other party's access and use of the Interface with your assistance or using any device or account that you own or control.
+
+Dispute resolution
+
+We will use our best efforts to resolve any potential disputes through informal, good faith negotiations. If a potential dispute arises, you must contact us by sending an email to legal@blocksquare.io so that we can attempt to resolve it without resorting to formal dispute resolution. If we aren't able to reach an informal resolution within sixty days of your email, then you and we both agree to resolve the potential dispute according to the process set forth below.
+
+Any claim or controversy arising out of or relating to the Interface, this Agreement, or any other acts or omissions for which you may contend that we are liable, will be finally settled by binding arbitration in accordance with the JAMS Optional Expedited Arbitration Procedures. You understand that you are required to resolve all claims by arbitration on an individual basis and not on a class, collective, or representative action basis.
+
+Contact
+
+If you have any questions, please contact us at legal@blocksquare.io.
+
+Back to home
+
+The liquidity engine for tokenized real estate. Tokenized properties, DeFi yields, and global accessibility, all on-chain.
+
+Tokenize your property
+PLATFORM
+Trade
+Earn
+For businesses
+Tokenize a property
+Raise a VC round
+Liquidity providers
+Protocol statistics
+BST token
+Get started
+Sign in to your account
+Marketplace
+DeFi app
+LEARN
+Learn hub
+Glossary
+Tokenized real estate vs REITs
+FAQ
+Whitepaper
+AI podcast
+Documentation
+Blog
+YouTube channel
+COMMUNITY
+Events
+Ambassador program
+Become an ambassador
+Run and funded by Blocksquare
+COMPANY
+About
+Terms of service
+Protocol disclaimer
+© 2026 Oceanpoint. All rights reserved.
+Powered by
+Blocksquare

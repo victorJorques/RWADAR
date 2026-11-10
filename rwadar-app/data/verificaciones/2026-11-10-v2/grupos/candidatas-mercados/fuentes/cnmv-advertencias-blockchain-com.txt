@@ -1,0 +1,10 @@
+URL: https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es
+Busqueda: Blockchain.com
+ConsultadoUtc: 2026-11-10T09:11:39Z
+
+Listado de entidades advertidas
+
+Criterios de consulta: por tipo No autorizadas, de nombre Blockchain.com.
+
+No hay datos disponibles.
+

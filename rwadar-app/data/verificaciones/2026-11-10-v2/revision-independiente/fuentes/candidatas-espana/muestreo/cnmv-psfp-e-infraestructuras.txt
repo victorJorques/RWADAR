@@ -1,0 +1,40 @@
+CNMV · Proveedores de servicios de financiación participativa · https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es (09:45:06 UTC, HTTP 200)
+Comparación de las líneas con razón social frente a la copia del 03/11 (2026-11-03.3-v2/grupos/nuevas-espana/fuentes/cnmv-psfp-listado.txt): 29 líneas hoy, 29 el 03/11, diff vacío.
+
+ADVENTUREES CAPITAL PFP, SOCIEDAD LIMITADA
+BOLSA SOCIAL, S.L.
+BUECOR & PARTNERS, SOCIEDAD LIMITADA
+BUSINESS DREAM FACTORY PSFP, S.L.
+CITYPRIVE PSFP, S.L.
+CIVISLEND PSFP, S.A.
+CIVITAE CROWDFUNDING, S.L.
+CROWDCUBE EUROPE, SOCIEDAD LIMITADA
+CROWDFUNDING BIZKAIA, P.S.F.P., S.L.
+CROWPIRE, S.L.
+Consulta de Sociedades y Agencias de Valores, Sociedades Gestoras de Cartera y Empresas de Asesoramiento Financiero
+DOZEN INVESTMENTS PSFP, S.L.
+ECROWD INVEST PLATAFORMA DE FINANCIACION PARTICIPATIVA, S.L.
+EVENFI FINTECH, S.A.
+FELLOW FUNDERS PSFP, S.A.
+FLOBERS CROWDFUNDING SPAIN PFP, SOCIEDAD LIMITADA
+FUNDEEN PLATFORM, SOCIEDAD LIMITADA
+GOCROWD, SOCIEDAD LIMITADA
+MYTRIPLEA FINANCIACIÓN PFP, S.L.
+PFP CAPITAL CELL, S.L.
+SMART CREDIT PSFP, SOCIEDAD LIMITADA
+SOCIEDAD ECONOMICA PARA EL DESARROLLO DE LA FINANCIACIÓN ALTERNATIVA COLECTUAL, PSFP, S.L.
+SOCIOSINVERSORES 2010, S.L.
+SODACROWD, S.L.
+STARTUPXPLORE, PSFP, S.L.
+STOCKCROWD PLATFORM, S.L.
+Sociedades y Agencias de Valores (SAV), Sociedades Gestoras de Carteras (SGC) y Empresas de Asesoramiento Financiero (EAF)
+URBANITAE REAL ESTATE PLATFORM, S.L.
+URBIX, PSFP, S.L.
+
+CNMV · Infraestructuras de mercado · https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx?lang=es (09:45:11 UTC, HTTP 200)
+BIT2ME SECURITY TOKENS EXCHANGE STX, A.V., S.A.
+Bit2Me STX (SNL TRD)
+--
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.
+SECURITZE (SNL TRD)
+Igual que la copia del 05/11 (2026-11-05-v2/revision-independiente/fuentes/candidatas-espana/cnmv/infraestructuras.txt).

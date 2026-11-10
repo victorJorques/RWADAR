@@ -1,0 +1,7 @@
+Fuente: https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md
+Consultado: 2026-11-10T09:39:19Z · HTTP 200 · 28978 bytes · sha256 83cf037bcce3a453e4a8b1997382d5c97ea66ec2fc31a68eb1285277c90f1f12
+Copia original en crudo/blocksquare-terms-template.md (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+3.3. To start using our Services, you will need to register on our Marketplace and perform a Know Your Customer (“KYC”) identification and verification procedure.
+5.1. CP\_COMPANY is prohibited from transacting with individuals, companies and countries that are on prescribed sanctions lists. CP\_COMPANY will therefore screen against United Nations, European Union, UK Treasury and US Office of Foreign Assets Control (OFAC) sanctions lists in all jurisdictions in which we operate.
+21.5. These terms shall be governed by \_\_\_\_\_\_\_\_\_\_ law, except that (if you are a consumer and not a business user) there may be certain mandatory applicable laws of your country which apply for your benefit and protection in addition to or instead of certain provisions of \_\_\_\_\_\_\_\_\_\_\_ ("Applicable Law"). Subject to the Applicable Law, the courts of \_\_\_\_\_\_\_\_\_ have non-exclusive jurisdiction to settle any dispute arising from or connected with these Terms of Use (including a dispute relating to the existence, validity or termination of these Terms of Use or the consequences of their nullity or any non-contractual obligation arising out of or in connection with these Terms of Use).

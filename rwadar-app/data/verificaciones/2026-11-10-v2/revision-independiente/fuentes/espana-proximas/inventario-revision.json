@@ -1,0 +1,235 @@
+{
+ "grupo": "espana-proximas",
+ "revisor": "independiente",
+ "ciclo": "2026-11-10-v2",
+ "consultas": [
+  {
+   "url": "https://hausera.io/page-data/propiedad/alicante_2/page-data.json",
+   "archivo": "crudo/propiedad_alicante_2_page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:20:55Z",
+   "bytes": 158731,
+   "sha256": "73c8e2364129045956f0f44ef509a35765ded8715a92b33ae1dafa3419fcc9ba",
+   "nota": "status PRESALE_CLOSED; mismo SHA-256 que el investigador",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/page-data/propiedad/alicante_3/page-data.json",
+   "archivo": "crudo/propiedad_alicante_3_page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:20:55Z",
+   "bytes": 158508,
+   "sha256": "7a12fb34c9b63d3f28bfbb9b63f317d55808d36ee0baccfc6ed73002945b94da",
+   "nota": "status COMMINGSOON, presaleDate 18/11/2026, launchDate 25/11/2026, priceToken 100, feesPlatform 0; mismo SHA-256 que el investigador",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/page-data/oportunidades/page-data.json",
+   "archivo": "crudo/oportunidades_page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:20:55Z",
+   "bytes": 188786,
+   "sha256": "23352808ff58b3b2a8077d002f26d17f321c31359194f4d313e54b42ceb360bf",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/oportunidades/",
+   "archivo": "render-hausera-oportunidades.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:21:00Z",
+   "bytes": 4294,
+   "sha256": "57d9bd3174eb981d3e9437b49f1b14406111dcbcc33dcb2cd8f1334d57d0e0b6",
+   "nota": "Playwright, sin sesión"
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_2/",
+   "archivo": "render-hausera-propiedad-alicante-2.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:21:24Z",
+   "bytes": 947,
+   "sha256": "08656044f4b70fd0d43fd843b02ef08462f2c6e17beab84348414cb2b0a1cb76",
+   "nota": "networkidle agotó 60 s; texto leído tras la espera"
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_3/",
+   "archivo": "render-hausera-propiedad-alicante-3.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:22:28Z",
+   "bytes": 1046,
+   "sha256": "12f90d247002a20d3f965136dc9d5ebb0d1484262ff40134b8ccd907c55dbc1c",
+   "nota": "networkidle agotó 60 s; texto leído tras la espera"
+  },
+  {
+   "url": "https://hausera.io/",
+   "archivo": "render-hausera-home-cifras.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:31Z",
+   "bytes": 324,
+   "sha256": "95417cb5c7706dbcf4d6708d6624d1f4b090b1511c78d1e0af455fd3b98180a1"
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_3/ (pestaña Documentos)",
+   "archivo": "render-alicante3-pestana-documentos.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:32:57Z",
+   "bytes": 2124,
+   "sha256": "6d287386c687df47b35e6687dd8309508eeb2ca626ec99f4bf6f1a0f36fc958d",
+   "nota": "pestaña pulsada sin sesión"
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_2/ (pestaña Documentos)",
+   "archivo": "render-alicante2-pestana-documentos.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:33:10Z",
+   "bytes": 2124,
+   "sha256": "e1282e9ccc37a2eef33a110a644a8b3d503f4d95f140ac83867cadd0bf31c96a",
+   "nota": "pestaña pulsada sin sesión"
+  },
+  {
+   "url": "https://hausera.io/mercado-secundario/",
+   "archivo": "render-hausera-mercado-secundario.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:27:30Z",
+   "bytes": 2862,
+   "sha256": "481100217e59bc6cc2e227db67bad9ef21fb0566f297284a2336bcac2e4f2661"
+  },
+  {
+   "url": "https://hausera.io/terms/ y https://hausera.io/faq/",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:07Z",
+   "bytes": null,
+   "sha256": null,
+   "nota": "diff con las copias del revisor del 05/11: solo desaparece el banner «¡APÚNTATE A LA LISTA DE ALICANTE 2! / SOLICITAR TICKETS»; resto idéntico"
+  },
+  {
+   "url": "https://drive.google.com/file/d/1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_",
+   "archivo": "hausera-alicante-3-documento-emision-extracto.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:21Z",
+   "bytes": 16999,
+   "sha256": "3f5005f182022202ce7d6d48cafac4b9567297039d4c58e7049cbd39b65456f2",
+   "nota": "PDF 27 págs, SHA-256 9170562a579f34c217255504597895e5720a6dd479125cefacecb79e883447b4 (igual que el investigador); PDF no guardado"
+  },
+  {
+   "url": "https://drive.google.com/file/d/1vfq0Ljr0c4o73S0l-b5QBOLWgan1Le8X/",
+   "archivo": "hausera-alicante-3-acuerdo-reserva-extracto.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:23Z",
+   "bytes": 9027,
+   "sha256": "4ea744dbcad224fb4670823895df5919733a7f7f07cd0a88ecdd142069cc9c43",
+   "nota": "PDF 85 págs, SHA-256 69cbadaf3cb4f8522016e74f7911609aa12fddd9b431e474c1871c30d0eb09c8 (igual); PDF no guardado"
+  },
+  {
+   "url": "https://drive.google.com/file/d/1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+   "archivo": "hausera-alicante-2-documento-emision-extracto.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:26Z",
+   "bytes": 3964,
+   "sha256": "0f80b144d3919af55e12e291c52e1b3d48e61edeba5138246c8a3b31c53a31dd",
+   "nota": "PDF 27 págs, SHA-256 d3d7dd400dc81c45f534d5164415afb22cfa8b30465ce6419466eea1607a2197 (igual)"
+  },
+  {
+   "url": "https://drive.google.com/file/d/1Mg6Ax-_p6G-X4XdOluokmllWLOmNvr0b",
+   "archivo": "hausera-alicante-2-acuerdo-reserva-extracto.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:27Z",
+   "bytes": 2578,
+   "sha256": "5ad378407c773a92a2714c66b833e9fb3fa859996832d80d3e18ea59f634cccf",
+   "nota": "PDF 85 págs, SHA-256 ef9cff8c6f919951b4546731669ace6e092037d15c437c6e35c70874aede6cd3 (igual)"
+  },
+  {
+   "url": "https://polygon-bor-rpc.publicnode.com (eth_call)",
+   "archivo": "polygon-alicante-contratos.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:24:24Z",
+   "bytes": 1150,
+   "sha256": "26695dc6feccf454482da83b18e17c81b5578555929a4b45beb019c7ee456921",
+   "nota": "totalSupply 0 en ambos contratos; copia también en crudo/polygon.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es (+page=1..3)",
+   "archivo": "cnmv-erir-ursus3-emisiones.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:24:29Z",
+   "bytes": 3598,
+   "sha256": "21de191e2160c11ef7f4699b773f8f131e4174bc993c57c6fc5655319c141f69"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/afn?tipo=AFN&numero=21 (+vista=17)",
+   "archivo": "cnmv-eafn-21-programa.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:25:14Z",
+   "bytes": 800,
+   "sha256": "bb7579ce9dd878a80621001b88a6e1cbbf55504a74ebdf8708f1a745a67489de",
+   "nota": "HTML no conservado (persona física)"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera|Holdtx|Trading",
+   "archivo": "cnmv-advertencias.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:25:45Z",
+   "bytes": 594,
+   "sha256": "f487e407144834e2b24fc9cd4617bad80d11e18806ca99d7281e997125fcb4a6"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+   "archivo": "cnmv-psfp-listado.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:25:55Z",
+   "bytes": 1552,
+   "sha256": "f9f605a0c98cb6cd2f675a7f632c64a5b4b71a576987dfc1696d76b92c750b3b"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A86796182&lang=es",
+   "archivo": "cnmv-ursus3-datos.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:36Z",
+   "bytes": 234,
+   "sha256": "6d7378f1a08724be219c34d0c7ff65e02352a2509eca27f77d0fd2664d1612c1"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981 y nif=A56759137",
+   "archivo": "cnmv-erir-token-city-y-stx.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:29:37Z",
+   "bytes": 1509,
+   "sha256": "00acad50d17f3135ea5cd45ccacc156f162a72c5dd854da23df8a172e38ce5be"
+  },
+  {
+   "url": "https://valorix.com/invertir.html (+ docs/documento-de-emision.pdf)",
+   "archivo": "valorix-invertir-extracto.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:29:52Z",
+   "bytes": 1010,
+   "sha256": "6762090130324307f0c3f69d31005cb0f40a3ab4ca124518ad86259ee9ea8e9c",
+   "nota": "valorix.es: conexión reiniciada; stx.bit2me.com: 404"
+  },
+  {
+   "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "archivo": "bit2me-stx-blog-extracto.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:24Z",
+   "bytes": 771,
+   "sha256": "5d0f460423c9f0907f8045406298a0fc5b3fafc6a0e22d849724a7d2e4a4a293"
+  },
+  {
+   "url": "https://exchange.token-city.com/ (+ API count-by-status)",
+   "archivo": "token-city-cando1-extracto.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:12Z",
+   "bytes": 1083,
+   "sha256": "d40f7bbdb6e6797099a324cd948a74e3b6d0d73b90df3d9bd9295a608f831d22",
+   "nota": "API idéntica al investigador (SHA-256 859fab07…)"
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?status=campaign,private_campaign,pre_campaign,closed",
+   "archivo": "crudo/tc-count.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:07Z",
+   "bytes": 83,
+   "sha256": "859fab07ace1468e40226a8c50b6ab7242c397c46a6bf3e81a4bd18215e51b69",
+   "enGit": false
+  }
+ ]
+}

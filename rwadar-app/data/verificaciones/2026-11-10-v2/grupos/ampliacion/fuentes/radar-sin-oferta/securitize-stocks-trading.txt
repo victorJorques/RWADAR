@@ -1,0 +1,19 @@
+URL: https://stocks.securitize.io/trading
+FINAL: https://stocks.securitize.io/trading
+HTTP: 200
+UTC: 2026-11-10T09:35:01Z
+
+Trade tokenized stocksFAQ
+
+Buy and sell tokenized stocks with USDC from your own wallet.
+
+Pre-Market Trading
+Price deviation may be higher than usual
+You sell
+USDC
+You buy (est.)
+AAPL
+Exchange rate
+1 AAPL = 349.87 USDC
+Connect
+Solana Wallet

@@ -1,0 +1,189 @@
+DLT Pilot Regime 
+ Skip to main content
+ Search 
+ About ESMA
+ Toggle submenu 
+ Governance Structure
+ Toggle submenu 
+ Board of Supervisors
+ Management Board
+ Senior Management
+ Joint Committee
+ CCP Supervisory Committee
+ CCP Resolution Committee
+ Joint Monitoring Mechanism
+ Standing Committees
+ SMSG
+ Board of Appeal
+ Ethics and Conflicts of interest
+ Internal Organisation
+ Toggle submenu 
+ Strategy and Work Programme
+ Working Methods
+ Diversity, Equity and Inclusion
+ International Cooperation
+ Legal Notice and Data Protection
+ Transparency and Access to Documents
+ Agenda
+ Careers
+ Procurement Opportunities
+ ESMA's Activities
+ Toggle submenu 
+ Investors and Issuers
+ Toggle submenu 
+ Benchmark Administrators
+ Credit Rating Agencies
+ ESG Rating Providers
+ External Reviewers of European Green Bonds
+ Fund Management
+ Issuer Disclosure
+ Investment Services and Crowdfunding
+ Markets and Infrastructure
+ Toggle submenu 
+ Central Counterparties
+ Data Reporting Services Providers
+ Trading
+ Consolidated Tape Providers
+ Post-trading
+ Shortening the settlement cycle to T+1 in the EU
+ Market Integrity
+ Short Selling
+ Central Securities Depositories
+ Securitisation
+ Trade Repositories
+ Risk Analysis
+ Toggle submenu 
+ Risk Monitoring
+ Topical Analysis
+ Dashboards
+ Sustainable Finance
+ Toggle submenu 
+ Climate benchmarks and ESG disclosure
+ CRAs and Sustainability
+ Investment Services and Fund Management
+ Sustainability Reporting
+ Digital Finance and Innovation
+ Toggle submenu 
+ Digital Operational Resilience Act (DORA)
+ DLT Pilot Regime
+ Markets in Crypto-Assets Regulation (MiCA)
+ Supervision
+ Toggle submenu 
+ Registration with ESMA
+ Investigations and Inspections
+ Sanctions and Enforcement
+ Supervisory Convergence
+ Toggle submenu 
+ Supervisory Convergence Tools
+ Enforcement Convergence Initiatives
+ Peer Reviews
+ Breach of Union Law
+ Data
+ Toggle submenu 
+ Data Reporting
+ Databases and Registers
+ Data Quality and Use
+ Statistical Information
+ European Single Access Point (ESAP)
+ Listing Act
+ Simplification and Burden Reduction
+ News & Publications
+ Toggle submenu 
+ News
+ Documents
+ Speeches
+ Newsletter
+ Interactive Single Rulebook
+ Guidelines, Recommendations and Technical Standards
+ Risk Monitoring and Analysis
+ Questions and Answers
+ Investor Corner
+ Toggle submenu 
+ Is the firm regulated?
+ Get ready to invest
+ Frauds and Scams related to ESMA Logo and ID
+ Publications for Investors
+ Product Intervention
+ Make a complaint
+ Cost of Investment Products
+ Interact With ESMA
+ Toggle submenu 
+ Media Corner
+ Speaking Requests
+ Stakeholder Engagement
+ Toggle submenu 
+ Stakeholder Relations
+ Consultations
+ Events
+ Whistleblowers
+ Contact & Help
+ Toggle submenu 
+ Contact Information
+ FAQs
+ Glossary
+ Breadcrumb
+ Home 
+ ESMA's Activities 
+ Digital Finance and Innovation 
+ DLT Pilot Regime
+ DLT Pilot Regime 
+ The DLT Pilot Regime has started applying in the EU as of 23 March 2023. It provides the legal framework for trading and settlement of transactions in crypto-assets that qualify as financial instruments under MiFID II, while facilitating the set-up of new types of market infrastructures, including:
+ - DLT multilateral trading facility (DLT MTF) 
+- DLT settlement system (DLT SS) 
+- DLT trading and settlement system (DLT TSS) 
+ “Tokenisation”, digital representation of financial instruments on a Distributed Ledger Technology (DLT) or the issuance of traditional asset classes in tokenised form to enable those assets to be issued, stored and transferred on DLT, is expected to open opportunities for efficiency improvements in trading and post-trading processes.
+ main_blue_background
+ Objectives:  
+ Development of:
+ a) Crypto-assets that qualify as financial instruments and 
+ b) DLT market infrastructures, 
+ While preserving a high level of investor protection, market integrity, financial stability and transparency, and 
+ Avoiding regulatory arbitrage and loopholes.
+ white_background
+ DLT market infrastructures and their operators – who is eligible? 
+ Authorised investment firms and market operators may apply to operate a DLT multilateral trading facility (DLT MTF)
+ Authorised central securities depositories (CSDs) may apply to operate a DLT settlement system (DLT SS)
+ Both groups may apply to operate a combined DLT trading and settlement system (DLT TSS)
+ New entrants may apply for temporary authorisations as investment firms/ market operators or CSDs, alongside an application under the DLT Pilot Regime
+ white_background
+ Financial instruments in scope: 
+ Shares – market capitalisation/tentative market capitalisation below EUR 500 million 
+ Bonds – other forms of securitised debt, including depositary receipts in respect of such securities or money market instruments with an issuance size of less than EUR 1 billion (corporate bonds from issuers whose market capitalisation did not exceed EUR 200 million   at the time of their issuance are not subject to this threshold)
+ UCITS – market value of assets under management of less than EUR 500 million 
+ white_background
+ Long-term outlook for the DLT Pilot Regime: 
+ The DLT Pilot is set to run for a period of at least 3 years, with the possibility to be extended by the European Commission. 
+ The types of financial instruments covered by the DLT Pilot may also be extended.
+ If the DLT Pilot is successful, it could be made permanent by amending relevant Union financial services legislation to establish a single coherent framework.
+ white_background
+ ESMA’s role 
+ Under the DLT Pilot, national competent authorities will authorise and supervise firms, while ESMA will have an important coordination and convergence role. For example, ESMA has issued Guidelines and Q&As and will continue to guide on several aspects of the DLT Pilot and will be able to give opinions on the national authorisations.
+ ESMA will publish on its website (on an ongoing basis):
+ the list of DLT market infrastructures, the start and end dates of their specific permissions, the list of exemptions granted to each of them, and any lower thresholds set by the competent authorities for each of them;
+ the total number of requests for exemptions that have been made under the DLT Pilot, indicating the number and types of exemptions granted or refused, together with the justifications for any refusals (this information will be published on an anonymous basis).
+ white_background
+ primary_grey_background
+ Authorised DLT Market Infrastructures 
+ Under its mandates in Articles 8(11), 9(11) and 10(11) of the DLT Pilot Regime, ESMA is required to publish the list of all authorised DLT Market Infrastructures, the start and end dates of their specific permissions, the list of exemptions granted to each of them, and any lower thresholds set by the competent authorities. This table reflects the latest list of DLT Market Infrastructures authorised in the EU under the DLT Pilot Regime.
+ List of Authorised DLT Market Infrastructures 
+ white_background
+ primary_grey_background
+ primary_grey_background
+ ESMA Links
+ External Links
+ Guidelines on standard forms, formats and templates to apply for permission to operate a DLT Market Infrastructure 
+ Report on the call for evidence on the DLT Pilot Regime and compensatory measures on supervisory data 
+ Study on how financial instrument transactions are registered in various Distributed Ledger Technologies 
+ Study on extraction of transaction data 
+ Q&As on the implementation of the DLT Pilot Regime Regulation 
+ Letter to EU institutions on DLT Pilot Regime Implementation (03/04/2024) 
+ Letter from the European Commission on the DLT Pilot Regime Implementation (03/05/2024) 
+ Regulation (EU) 2022/858 (DLT Pilot Regime Regulation) 
+ ESMA is an authority of the European Union 
+ Careers 
+ ESMA Documents 
+ Contact & Help 
+ Media Corner 
+ Cookie Policy 
+ Data Protection 
+ Social Media

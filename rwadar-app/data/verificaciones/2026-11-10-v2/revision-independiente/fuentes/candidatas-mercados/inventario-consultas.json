@@ -1,0 +1,269 @@
+{
+ "grupo": "candidatas-mercados",
+ "revision": "independiente",
+ "ciclo": "2026-11-10-v2",
+ "consultas": [
+  {
+   "url": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:27:03Z",
+   "archivo": "coinbase-nvdac-folleto-extractos.txt",
+   "bytes": 1416333,
+   "sha256": "95df029ca061916d086273403b8caf25537450687867fc4184a141164e782f54",
+   "nota": "Redirige al PDF del ADGM. PDF no conservado (nombres de administradores); SHA-256 igual al del investigador."
+  },
+  {
+   "url": "https://blog.base.org/tokenized-stocks",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:27:22Z",
+   "archivo": "base-blog-extracto.txt",
+   "bytes": 105566,
+   "sha256": "91da65f13d7c2471e0515b87fbed0502a928a605a8ccfa3fb2a8751effd60a2c",
+   "nota": "SHA del HTML distinto al del investigador (contenido dinámico); el texto citado coincide."
+  },
+  {
+   "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/tokenized-stocks",
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:27:36Z",
+   "archivo": null,
+   "nota": "403 desde nuestra conexión; no se intentó eludir."
+  },
+  {
+   "url": "https://www.coinbase.com/es-es/blog",
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:27:36Z",
+   "archivo": null,
+   "nota": "403 desde nuestra conexión; no se intentó eludir."
+  },
+  {
+   "url": "https://www.coinbase.com/en-gb/stocks",
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:27:36Z",
+   "archivo": null,
+   "nota": "403 desde nuestra conexión; no se intentó eludir."
+  },
+  {
+   "url": "https://www.coinbase.com/es-es/tokenized-stocks",
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:27:36Z",
+   "archivo": null,
+   "nota": "403 desde nuestra conexión; no se intentó eludir."
+  },
+  {
+   "url": "https://www.base.org/stocks",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:28:46Z",
+   "archivo": "base-stocks-extracto.txt",
+   "bytes": 29226,
+   "sha256": "c42eb7a0079c0821e544a4d1031caa3f61f4b8e602a71432c0b4415b75f89184",
+   "nota": "Playwright: sin 'networkidle' en 60 s; texto leído tras 3 s."
+  },
+  {
+   "url": "https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:28:52Z",
+   "archivo": "amundi-nota-05-11-extracto.txt",
+   "bytes": 67743,
+   "sha256": "3a62cf07d01c983433f9cf95691bb30b35d0f7cbbae51083795ce3c49c649beb",
+   "nota": "HTML no conservado (contacto de prensa)."
+  },
+  {
+   "url": "https://int.media.amundi.com/files/nuxeo/dl/2d26bd65-d562-4a36-b0b0-14750be96ec7?inline=",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:28:52Z",
+   "archivo": "amundi-nota-05-11-extracto.txt",
+   "bytes": 123963,
+   "sha256": "c92bb075932cadf291e0c51a22b7399d9b951b19b25830c36852d7b369c41dd8",
+   "nota": "PDF de 2 páginas; no conservado (nombre, correo y teléfono de una persona). SHA igual al del investigador."
+  },
+  {
+   "url": "https://www.ledgerinsights.com/amundi-adds-tokenized-share-class-to-e22-8bn-european-equity-index-fund/",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:29:17Z",
+   "archivo": null,
+   "bytes": 102973,
+   "sha256": "1c07adb50312811c5dd29fa89d5f55b4199aeeacbef56a86651a1bd4ac05824b",
+   "nota": "Prensa, de pago; solo para descubrir. No conservado."
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:29:29Z",
+   "archivo": "crudo/esma-prospectos-ondo-gm-sin-ft.json",
+   "bytes": 4506,
+   "sha256": "e14b8df8478efc7f0b067485f522b0d0dec1d9f69b7ba02a483bbae449f52508",
+   "nota": "3 documentos: BPWO-68 (11/11/2025) y suplementos 05/05 y 28/08/2026; los tres con España en member_states."
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:29:39Z",
+   "archivo": "ondo-stocks-eligibility.md",
+   "bytes": 9141,
+   "sha256": "76916fd4a05b595e731a7288f8cffb36620e849478a06b3f8cc815571ba8ed61",
+   "nota": "Mismo SHA-256 que el 05/11 y que el del investigador."
+  },
+  {
+   "url": "https://www.gettex.de/en/news-overview/newsdetail/eqs-news-blockchaincom-amp-ondo-finance-launch-onchain-tokenized-us-stocks-across-europe",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:29:51Z",
+   "archivo": "gettex-blockchaincom-ondo-extracto.txt",
+   "bytes": 113329,
+   "sha256": "01590a9b23a15063b944d1930a6cfcab1b0bfca5d3d941896f48f80f712b823f",
+   "nota": "HTML no conservado (nombres de personas)."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:29:59Z",
+   "archivo": "cnmv-esi-eee-lp-extracto.txt",
+   "bytes": 1991636,
+   "sha256": "b09b266c8a879fbcbc83174b13013d9aad6bfdb65ffda5e70b7afdfee5eca17f"
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:12Z",
+   "archivo": "esma-mica-casps-extracto.txt",
+   "bytes": 196605,
+   "sha256": "fd255f543d4c5746d96155744b3698c9a53acaf96168b028274bb06260896ca6",
+   "nota": "CSV completo no conservado; solo filas de interés."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:33:48Z/09:39:27Z",
+   "archivo": "cnmv-advertencias.txt",
+   "nota": "Playwright; búsquedas Gate.io 09:33:48, Blockchain.com 09:34:03, Coinbase 09:35:20, eToro 09:35:34, Amundi 09:35:48, Ondo 09:36:21, Gate.com 09:37:04, OKX 09:39:27 (lista «No autorizadas»)."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5063&vista=17&lang=es",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:37:09Z",
+   "archivo": "cnmv-esi-5063-gate-programa-extracto.txt",
+   "bytes": 234174,
+   "sha256": "2ccf77bcae3290d226586a821de29fe76e3e655cd4565ad9f3abc0664d79166c"
+  },
+  {
+   "url": "https://www.gate.com/xstocks",
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:37:26Z",
+   "archivo": null,
+   "nota": "403 con curl; no se intentó eludir."
+  },
+  {
+   "url": "https://www.gate.com/en-eu",
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:37:26Z",
+   "archivo": null,
+   "nota": "403 con curl; no se intentó eludir."
+  },
+  {
+   "url": "https://www.gate.com/eu",
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:37:26Z",
+   "archivo": null,
+   "nota": "403 con curl; no se intentó eludir."
+  },
+  {
+   "url": "https://www.gate.com/legal/user-agreement",
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:37:26Z",
+   "archivo": null,
+   "nota": "403 con curl; no se intentó eludir."
+  },
+  {
+   "url": "https://www.gate.com/en-eu",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:37Z (aprox., WebFetch no da hora exacta)",
+   "archivo": null,
+   "nota": "WebFetch: muestra el sello «MiCA&PSD2 Licensed»; no menciona xStocks ni acciones tokenizadas ni la entidad. Resumen de herramienta, no copia literal."
+  },
+  {
+   "url": "https://www.gate.com/xstocks",
+   "http": 404,
+   "consultadoUtc": "2026-11-10T09:37Z (aprox., WebFetch no da hora exacta)",
+   "archivo": null,
+   "nota": "WebFetch devolvió 404."
+  },
+  {
+   "url": "https://www.etoro.com/investing/tokenized-stocks/",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:37:54Z",
+   "archivo": "etoro-extractos.txt",
+   "bytes": 257194,
+   "sha256": "d49ff5ebbf3d13406f319e1e886cab7bf65dfb312bccefa1cae5265d885801b5",
+   "nota": "HTML no conservado (nombre del autor). Servida con aviso de visitante de EE. UU."
+  },
+  {
+   "url": "https://www.etoro.com/news-and-analysis/press-releases/etoro-continues-journey-towards-a-tokenized-future-with-launch-of-24-5-trading-futures-and-tokenized-stocks",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:37:54Z",
+   "archivo": "etoro-extractos.txt",
+   "bytes": 247224,
+   "sha256": "421f7adfb3519d536c149b639bb32947dbc61d10bba1f92bdbe5e90758c99e08",
+   "nota": "HTML no conservado (nombres de personas)."
+  },
+  {
+   "url": "https://crypto.com/document/fccy-tokenised-equities-terms",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:38:36Z",
+   "archivo": null,
+   "bytes": 217691,
+   "sha256": "1169bff5d9a4deaf72885cf185e5134274089e0534fb43eab0ba8cdd37421c6f",
+   "nota": "Mismo SHA-256 que el 05/11 (1169bff5…). No conservado (ya está en la carpeta del grupo)."
+  },
+  {
+   "url": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:38:37Z",
+   "archivo": null,
+   "bytes": 1288473,
+   "sha256": "ec0458b62412448cca96249786b0c3453a7459e3bf9151a89d1cd1ac881dade9",
+   "nota": "Mismo SHA-256 que el 05/11 (ec0458b6…). No conservado (nombres de administradores)."
+  },
+  {
+   "url": "https://crypto.com/eea/financialservices/disclosures",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:39:27Z",
+   "archivo": null,
+   "bytes": 221915,
+   "sha256": "03392bb44014bf219a1da353a030448889cf0f7096cf8e838a48a9b9e5edbaab",
+   "nota": "Sin texto de KID; los enlaces de «Tokenized Stocks» llevan a crypto.com/us/onchain. No conservado."
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:41:02Z",
+   "archivo": "esma-mica-casps-extracto.txt",
+   "bytes": 276,
+   "sha256": "fa1ef4da123e3d49642c69f90a81a88f6c2cc2a0b9471b2108e4dfc635ca7c67",
+   "nota": "Solo cabecera; mismo SHA-256 que el del investigador."
+  },
+  {
+   "url": "https://support.gemini.com/hc/en-us/articles/46255474469275",
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:41:21Z",
+   "archivo": null,
+   "nota": "403 con curl y con WebFetch."
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/secondary-market-restrictions.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:42:13Z",
+   "archivo": "ondo-stocks-secondary-market-restrictions.md",
+   "bytes": 7972,
+   "sha256": "f186c2fd6998ced290715ca8bffcb67a5aa844fd1e18efcbb0bf2097c4f01a0a",
+   "nota": "Mismo SHA-256 que el 05/11."
+  },
+  {
+   "url": "https://www.gemini.com/areas-of-operation",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:42:55Z",
+   "archivo": "gemini-areas-of-operation-extracto.txt",
+   "bytes": 528753,
+   "sha256": "d0f643921ee46a04bded2cb4f5bbae7e0266a6fef2feb982c85c02d9f6265c63",
+   "nota": "HTML no conservado."
+  }
+ ]
+}

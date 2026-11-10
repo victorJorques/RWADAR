@@ -1,0 +1,331 @@
+{
+  "slug": "reental-rentas-4",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-espana",
+  "proveedor": "Reental",
+  "plataformaSlug": "reental",
+  "entidadComercializadora": "Rental Token, S.L. (opera www.reental.co en España; según el memorando «podrá coordinar la captación de fondos» en España) por cuenta de Reental America LLC (Florida), gestora del emisor",
+  "emisor": "Series RNT SPV-25, LLC (Florida, constituida el 15/06/2026, documento L26000327470), nombre comercial «Rentas 4»",
+  "vehiculo": "LLC de Florida que destina el 100 % de lo captado a un préstamo a AURA INMOINVERSION, S.L. (NIF B05580113, Sevilla, sociedad del grupo Reental) al 12 % fijo anual y 36 meses, para compraventa con reforma de inmuebles en España (flipping)",
+  "token": "RET-4 («Reental-RET-4»), máximo 20.000 tokens; red y contrato en la API pública (guardados en fuentes/crudo, no se copian aquí)",
+  "derechoAdquirido": "Participación de membresía en la LLC emisora representada por un token; no da derecho directo sobre el préstamo ni sobre los inmuebles",
+  "jurisdiccion": "US-FL (emisor); préstamo a sociedad española",
+  "identificador": null,
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Memorando informativo de oferta privada (PPM) Series RNT SPV-25 «Rentas 4»",
+      "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793788204244_whitepaper.pdf",
+      "versionOFecha": "fechado 23/10/2026, «V. Revisada a 04/11/2026»",
+      "paginas": null,
+      "sha256": "327323cf1ea0c60bf07914f8410644ad96c905a814bbddbd76e491db58787bbd",
+      "leido": true,
+      "nota": "Leído en las partes de oferta, préstamo, distribución, liquidez y gestora. PDF no conservado en Git (contiene nombres de personas); texto recortado en fuentes/reental/."
+    },
+    {
+      "titulo": "Acuerdo de suscripción confidencial de Rentas 4 (plantilla)",
+      "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793779352063_acuerdo_de_suscripcion.pdf",
+      "versionOFecha": "PPM aplicable de 23/10/2026; versión de archivo 27/10/2026",
+      "paginas": null,
+      "sha256": "f9d25105f44ea1dbe7bf51e59f8db17f6a342717ecf32fec1d7d036bec5b9873",
+      "leido": true
+    },
+    {
+      "titulo": "Certificado de revisión del documento de emisión (EAF nacional nº 21)",
+      "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793792807997_certificado_revision_rnt_spv_25.pdf",
+      "versionOFecha": "04/11/2026",
+      "paginas": null,
+      "sha256": "37859c0b661ac80751ab16b39c9972a56c335a6faed73b2481d3bb423edb731a",
+      "leido": true,
+      "nota": "La firma electrónica incluye un DNI: el PDF no se conserva; solo texto recortado."
+    },
+    {
+      "titulo": "Dosier comercial Rentas 4",
+      "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793787110786_dosier.pdf",
+      "versionOFecha": "sin fecha visible",
+      "paginas": null,
+      "sha256": "23e0dc5925829dc926cf3b0bdadd0481d3c1b91f417d7ccf91f37b3598351612",
+      "leido": true,
+      "nota": "Leído el aviso legal final; no se usa para cifras (material comercial). PDF fuera de Git (nombres del equipo)."
+    },
+    {
+      "titulo": "Operating Agreement de Series RNT SPV-25, LLC",
+      "url": null,
+      "versionOFecha": null,
+      "paginas": null,
+      "sha256": null,
+      "leido": false,
+      "nota": "El acuerdo dice que se pone a disposición con la suscripción; no es público."
+    },
+    {
+      "titulo": "API pública de Reental (getProjects, getPublicProperties, getCrowdfundingListing)",
+      "url": "https://backend.reental.co/graphql",
+      "versionOFecha": "consultas 10/11/2026 09:07:40–09:23:06 UTC",
+      "paginas": null,
+      "sha256": "899034574bcaa31dade93c12c1daf52e28e0658946234f1bbe42c39caa637b0d",
+      "leido": true,
+      "nota": "Respuestas crudas en fuentes/crudo/ (sha256 de cada una en el inventario)."
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "Rental Token / Reental",
+      "numero": "Sin registro",
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "alcance": "Buscador de registros oficiales por entidad: «No se han encontrado resultados» para «Rental Token» y para «Reental» (validado con «Bit2Me»: 2 resultados). No consta como PSFP, ESI ni entidad del régimen piloto.",
+      "consultadoUtc": "2026-11-10T09:25:20Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "EAF nacional nº 21 ([nombre recortado], persona física)",
+      "numero": "EAFN nº 21, registro 12/01/2024",
+      "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=13&lang=es",
+      "alcance": "Solo firma un certificado de revisión del documento de emisión. No coloca ni custodia la emisión.",
+      "consultadoUtc": "2026-11-10T09:23:21Z"
+    },
+    {
+      "regulador": "CNMV",
+      "entidad": "Registro ERIR",
+      "numero": "Sin inscripción de Series RNT SPV-25 ni de AURA",
+      "url": "https://www.cnmv.es/Portal/Consultas/ERIR.aspx?lang=es",
+      "alcance": "Las emisiones inscritas hoy en Ursus-3 (23), Minos Securities (1) y Token City (1) no incluyen Rentas 4. La API marca isErir=false.",
+      "consultadoUtc": "2026-11-10T09:02:17Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental",
+      "resultado": "sin coincidencias («No hay datos disponibles») en no autorizadas; sin coincidencias en «otras entidades»",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental",
+      "consultadoUtc": "2026-11-10T09:10:00Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas», validado hoy con «Gemini» (2 entidades advertidas, 09:09:58 UTC). «Otras entidades»: lista oficial en PDF (Advertencias_CNMV_Otras.pdf, sha256 5e63b537…, 09:09:39 UTC), validada con «Comunitae» (sí figura). No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Rental Token",
+      "resultado": "sin coincidencias («No hay datos disponibles») en no autorizadas; sin coincidencias en «otras entidades»",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Rental%20Token",
+      "consultadoUtc": "2026-11-10T09:10:01Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas», validado hoy con «Gemini» (2 entidades advertidas, 09:09:58 UTC). «Otras entidades»: lista oficial en PDF (Advertencias_CNMV_Otras.pdf, sha256 5e63b537…, 09:09:39 UTC), validada con «Comunitae» (sí figura). No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Reental America",
+      "resultado": "sin coincidencias («No hay datos disponibles») en no autorizadas; sin coincidencias en «otras entidades»",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental%20America",
+      "consultadoUtc": "2026-11-10T09:10:02Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas», validado hoy con «Gemini» (2 entidades advertidas, 09:09:58 UTC). «Otras entidades»: lista oficial en PDF (Advertencias_CNMV_Otras.pdf, sha256 5e63b537…, 09:09:39 UTC), validada con «Comunitae» (sí figura). No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Aura Inmoinversion",
+      "resultado": "sin coincidencias («No hay datos disponibles») en no autorizadas; sin coincidencias en «otras entidades»",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aura%20Inmoinversion",
+      "consultadoUtc": "2026-11-10T09:10:03Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas», validado hoy con «Gemini» (2 entidades advertidas, 09:09:58 UTC). «Otras entidades»: lista oficial en PDF (Advertencias_CNMV_Otras.pdf, sha256 5e63b537…, 09:09:39 UTC), validada con «Comunitae» (sí figura). No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Series RNT",
+      "resultado": "sin coincidencias («No hay datos disponibles») en no autorizadas; sin coincidencias en «otras entidades»",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Series%20RNT",
+      "consultadoUtc": "2026-11-10T09:10:04Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas», validado hoy con «Gemini» (2 entidades advertidas, 09:09:58 UTC). «Otras entidades»: lista oficial en PDF (Advertencias_CNMV_Otras.pdf, sha256 5e63b537…, 09:09:39 UTC), validada con «Comunitae» (sí figura). No aparecer no equivale a estar autorizado."
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "status: TOKENS_ON_SALE · typeOfSale: PRIVATE · crowdfunding.active: true · listingTime 1793815200 · available 11853.44705175",
+      "dato": "A la venta desde el 04/11/2026 18:00 UTC; quedan 11.853,45 de 20.000 tokens",
+      "fuentePrimaria": "https://backend.reental.co/graphql",
+      "localizador": "getProjects (Rentas 4) y getCrowdfundingListing(projectId 7c77a956-…)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:23:05Z",
+      "alcanceYLimites": "Venta marcada «PRIVATE»: sin sesión no se puede ver qué usuarios la ven ni comprarla.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Cada Token representa una participación de membresía en el Emisor. … El Inversor adquiere participaciones del Emisor y no directamente el préstamo ni derechos de propiedad sobre los inmuebles.",
+      "dato": "Participación en una LLC de Florida",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793779352063_acuerdo_de_suscripcion.pdf",
+      "localizador": "Acuerdo de suscripción, sección 1.1",
+      "fechaDato": "2026-10-27",
+      "consultadoUtc": "2026-11-10T09:08:22Z",
+      "alcanceYLimites": "Derechos societarios según el Operating Agreement, que no es público.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "vehiculo",
+      "literal": "AURA INMOINVERSION, SL abonará al Emisor una remuneración fija anual equivalente al doce por ciento (12 %) … Al vencimiento de treinta y seis (36) meses, AURA … deberá devolver al Emisor dos millones de euros",
+      "dato": "Préstamo intragrupo al 12 % fijo, 36 meses",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793788204244_whitepaper.pdf",
+      "localizador": "PPM, apartado de uso de fondos (primeras páginas)",
+      "fechaDato": "2026-11-04",
+      "consultadoUtc": "2026-11-10T09:08:22Z",
+      "alcanceYLimites": "AURA es del grupo Reental y es la única obligada: «sin garantía de Reental America LLC ni de otras sociedades del grupo».",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Los inversores no estadounidenses que participen bajo el Reglamento S podrán adquirir un mínimo de un (1) ReentalToken, por un total de EUR 100.",
+      "dato": "100 EUR",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793788204244_whitepaper.pdf",
+      "localizador": "PPM, portada",
+      "fechaDato": "2026-11-04",
+      "consultadoUtc": "2026-11-10T09:08:22Z",
+      "alcanceYLimites": "Mínimo de una colocación privada; no se propone como mínimo de tarjeta.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "preparado por Reental America LLC … para su uso por ciertos potenciales inversores calificados … En determinadas jurisdicciones, como España, podrá coordinar la captación de fondos … a través de Rental Token S.L.",
+      "dato": "Colocación privada; capta en España a través de una sociedad no registrada en la CNMV",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793788204244_whitepaper.pdf",
+      "localizador": "PPM, portada y apartado del emisor",
+      "fechaDato": "2026-11-04",
+      "consultadoUtc": "2026-11-10T09:08:22Z",
+      "alcanceYLimites": "No define «inversores calificados» para España ni cita ninguna exención del Reglamento de folletos de la UE. Ninguna autoridad ha revisado la oferta.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Uso Exclusivo para Inversores Profesionales · Este dossier … se dirige exclusivamente a inversores profesionales.",
+      "dato": "El dosier comercial se dirige solo a inversores profesionales",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793787110786_dosier.pdf",
+      "localizador": "Dosier Rentas 4, «AVISO LEGAL» (última página)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:08:24Z",
+      "alcanceYLimites": "Choca con el mínimo de 100 EUR para inversores no estadounidenses del PPM y con la venta en la plataforma a usuarios con KYC. Conflicto sin resolver.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "supervision",
+      "literal": "NINGUNA AUTORIDAD, INCLUYENDO LA SECURITIES AND EXCHANGE COMMISSION (SEC) … NINGUNA AUTORIDAD EXTRANJERA EN MATERIA DE VALORES … HA APROBADO O DESAPROBADO LAS PARTICIPACIONES",
+      "dato": "Sin aprobación de ningún supervisor",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793788204244_whitepaper.pdf",
+      "localizador": "PPM, portada",
+      "fechaDato": "2026-11-04",
+      "consultadoUtc": "2026-11-10T09:08:22Z",
+      "alcanceYLimites": "El certificado de una EAF nacional revisa el documento, no lo aprueba.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "Rentas 4 prevé distribuciones mensuales durante treinta y seis (36) meses, con rentabilidades anuales fijas por categoría del 10 % para Reentel, 11 % para ReentelPro y 12 % para SuperReentel.",
+      "dato": null,
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793788204244_whitepaper.pdf",
+      "localizador": "PPM, «Mitigación de riesgos y opciones de liquidez»",
+      "fechaDato": "2026-11-04",
+      "consultadoUtc": "2026-11-10T09:08:22Z",
+      "alcanceYLimites": "Es lo previsto si AURA paga; depende del nivel del inversor y no está garantizado. No se propone como cifra de tarjeta.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "La comisión de lanzamiento del ocho por ciento (8 %) será facturada separadamente por Reental America LLC a AURA … La comisión periódica del dos por ciento (2 %) anual tendrá las bonificaciones por categoría previstas en el PPM.",
+      "dato": "8 % de lanzamiento (a cargo de AURA) y 2 % anual con bonificaciones",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793779352063_acuerdo_de_suscripcion.pdf",
+      "localizador": "Acuerdo de suscripción, «Comisiones aplicables»",
+      "fechaDato": "2026-10-27",
+      "consultadoUtc": "2026-11-10T09:08:22Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "No existe garantía de admisión a negociación, mercado secundario, recompra, rescate ni posibilidad de transmitir los Tokens antes de la liquidación o disolución del Emisor.",
+      "dato": "Devolución prevista a los 36 meses si AURA devuelve el préstamo; antes, solo el P2P de Reental, sin garantía",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793779352063_acuerdo_de_suscripcion.pdf",
+      "localizador": "Acuerdo de suscripción, sección 7.3; PPM, «opciones de liquidez» (P2P y Reenlever «de carácter voluntario … no están garantizados»)",
+      "fechaDato": "2026-10-27",
+      "consultadoUtc": "2026-11-10T09:08:22Z",
+      "alcanceYLimites": "Transmisiones sujetas a aprobación del gestor y lista blanca.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "ley",
+      "literal": "Este Acuerdo se regirá e interpretará de conformidad con las leyes del Estado de Florida … Tribunal de Circuito del Condado de Miami-Dade",
+      "dato": "Ley de Florida; tribunales de Miami-Dade",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793779352063_acuerdo_de_suscripcion.pdf",
+      "localizador": "Acuerdo de suscripción, 9.8 y 9.9",
+      "fechaDato": "2026-10-27",
+      "consultadoUtc": "2026-11-10T09:08:22Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "la adquisición de Tokens implica un alto grado de riesgo, iliquidez, posibles restricciones de transmisión, ausencia de mercado secundario y la posibilidad de pérdida parcial o total del capital",
+      "dato": "Riesgo alto; pérdida total posible",
+      "fuentePrimaria": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793779352063_acuerdo_de_suscripcion.pdf",
+      "localizador": "Acuerdo de suscripción, 4.6",
+      "fechaDato": "2026-10-27",
+      "consultadoUtc": "2026-11-10T09:08:22Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Ni el emisor (LLC de Florida), ni su gestora, ni Rental Token, S.L. constan en ningún registro de la CNMV (búsqueda de hoy). Una EAF nacional solo certifica la revisión del documento. No está inscrita en ninguna ERIR."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "A la venta desde el 04/11/2026 (API), 11.853 de 20.000 tokens disponibles hoy; venta «PRIVATE»."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Mínimo 100 EUR, plazo 36 meses, comisiones documentadas. Pero es una colocación privada para «inversores calificados», con ley de Florida, sin mercado secundario garantizado. El dosier comercial dice que se dirige «exclusivamente a inversores profesionales» (conflicto con el mínimo de 100 EUR)."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Riesgos descritos en PPM y acuerdo. Sin advertencias de la CNMV para Reental, Rental Token, Reental America, AURA ni Series RNT (09:10 UTC). Riesgo de concentración: un único prestatario del propio grupo."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "estado",
+      "antes": "Sin expediente previo: emisión nueva (creada en la API el 03/11/2026 17:22 UTC, a la venta desde el 04/11/2026 18:00 UTC). La plataforma Reental está en el radar sin oferta concreta comprobada (05/11).",
+      "ahora": "Rentas 4 abierta en privado, con 11.853 de 20.000 tokens disponibles el 10/11 a las 09:23 UTC. Miami 7, la otra emisión privada abierta, tiene 4.563 disponibles (8.948 el 01/11).",
+      "fuente": "https://backend.reental.co/graphql",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": {
+    "nota": "No se propone tarjeta (no_admitir). Solo los tres datos de hoy como referencia interna.",
+    "resumenTarjeta": {
+      "minimo": "Desde 100 € en una colocación privada (10/11)",
+      "accesoEspana": "No confirmado: oferta privada; el dosier dice que es solo para inversores profesionales",
+      "salida": "Devolución prevista a los 36 meses si la prestataria paga; sin mercado secundario garantizado"
+    }
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "100 EUR (colocación privada)",
+    "supervisorVerificado": null,
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Préstamo en euros a 36 meses para reformas de vivienda en España, con documentos públicos de hoy y mínimo de 100 EUR.",
+    "porQueNo": "Colocación privada de una LLC de Florida sin entidad registrada en la CNMV, que su propio dosier reserva a inversores profesionales, con un único prestatario del grupo."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Es la emisión nueva de Reental y está abierta hoy, pero repite el esquema de Miami 7: colocación privada (Regulation S) de una LLC de Florida para «inversores calificados», sin ninguna entidad registrada en la CNMV que la coloque, sin inscripción ERIR, con ley de Florida, un dosier «exclusivamente» para inversores profesionales y un único prestatario del propio grupo (AURA). No cumple el criterio de entidad regulada.",
+  "bloqueos": [
+    "Sin sesión no se puede comprobar qué significa «PRIVATE» (quién ve y puede comprar la emisión).",
+    "Operating Agreement no publicado; no leído.",
+    "No hay ficha pública de Rentas 4 en reental.co/properties que se haya podido enlazar; la fuente es la API y los PDF.",
+    "PDF con nombres de personas (y un DNI en la firma del certificado): no se conservan en Git; solo texto recortado y sha256."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-10T09:07:40Z",
+    "finUtc": "2026-11-10T09:27:01Z"
+  }
+}

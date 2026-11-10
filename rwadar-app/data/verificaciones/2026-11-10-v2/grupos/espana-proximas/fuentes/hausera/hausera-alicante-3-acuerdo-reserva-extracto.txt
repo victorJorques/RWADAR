@@ -1,0 +1,300 @@
+Extracto del «Acuerdo de reserva de suscripción» de Alicante 3 (publicado como «Acuerdo de suscripción» en la ficha de Hausera).
+Copia parcial: cláusulas 1 a 6 del acuerdo y condiciones de la emisión de la escritura notarial anexa. Nombres, DNI e IBAN recortados.
+
+===== Acuerdo de reserva, cláusulas 1 a 6 =====
+​   ALICANTE 3 – Acuerdo de reserva de suscripción
+    ​
+    Este Acuerdo tiene lugar en Cartagena, en la fecha de desembolso del importe
+    reservado por parte del inversor.
+
+    ​
+    REUNIDOS​
+
+
+    De una parte,                                                                                                       ,
+    mayor de edad, provisto de documento de identidad número                                                          , en
+    adelante, el "Inversor".​
+
+
+    De otra parte, HAUSERA PROPERTY MANAGER SPV 11, S.A., con domicilio social en
+    Casas del Retiro, 25 – Los Dolores – 30310 – Cartagena- Murcia, provista de CIF
+    A88963426, en adelante, el "Emisor".
+
+    Ambas partes, reconociéndose plena capacidad legal para suscribir el presente acuerdo
+
+    ​
+
+
+    EXPONEN​
+
+
+        1.​ Que el Emisor tiene previsto la emisión valores con tecnología DLT en el marco
+            del proyecto ALICANTE 3, cuya información queda recogida en el Documento de
+            Emisión de Obligaciones (ver Anexo).​
+
+
+        2.​ Que el Inversor, tras haber recibido la información necesaria, maniﬁesta su
+            interés en participar en la futura emisión, aceptando la reserva anticipada de
+            suscripción de los valores mediante la aportación de fondos.​
+
+
+        3.​ Que ambas partes, en virtud de la autonomía de la voluntad y conforme a la
+            normativa vigente, acuerdan formalizar el presente contrato, el cual se regirá por
+            las siguientes
+
+
+
+
+                                                                                                                             1
+    ​
+
+         ​      HAUSERA PROPERTY MANAGER SPV 11, S.A. Casas del Retiro, 25 – Los Dolores – 30310 Cartagena (Murcia)
+
+​
+CLÁUSULAS​
+
+
+1. Objeto del Acuerdo​
+
+
+El presente acuerdo tiene por objeto regular la reserva de suscripción de los valores con
+tecnología DLT emitidos por el Emisor en el marco del proyecto ALICANTE 3.
+Mediante este contrato, el Inversor acuerda anticipar fondos en concepto de reserva
+para la futura suscripción de los valores, en los términos aquí establecidos.
+​
+2. Importe y Forma de Pago​
+
+
+El Inversor acuerda entregar al Emisor la cantidad de                     euros (€), en
+concepto de reserva, mediante transferencia bancaria a la cuenta titularidad del Emisor
+con IBAN [IBAN recortado]. ​
+
+
+3. Uso de los Fondos​
+
+
+Los fondos anticipados podrán ser gestionados por el Emisor con el ﬁn de avanzar en el
+desarrollo del proyecto mientras se completa el proceso de formalización de la emisión,
+garantizando su correcta aplicación a los ﬁnes del mismo.
+
+En caso de que la emisión no llegue a formalizarse conforme al Documento de Emisión,
+el Emisor procederá a la devolución íntegra de los importes reservados, sin devengo de
+intereses​
+
+
+4. Conversión en Valores con Tecnología DLT​
+
+
+Una vez la emisión quede válidamente constituida conforme al Documento de Emisión
+y, en particular, alcanzado el importe mínimo previsto (Soft Cap) en la fecha establecida
+al efecto, la reserva de suscripción se convertirá automáticamente en valores con
+tecnología DLT, conforme a las condiciones y derechos estipulados en el Documento de
+Emisión.​
+
+
+5. Plazo de Formalización y Alternativas
+
+El Periodo de Suscripción de los instrumentos ﬁnancieros con tecnología DLT
+comenzará el día 25 de noviembre de 2026, fecha de inicio del periodo de suscripción
+                                                                                                                 2
+​
+
+    ​      HAUSERA PROPERTY MANAGER SPV 11, S.A. Casas del Retiro, 25 – Los Dolores – 30310 Cartagena (Murcia)
+
+conforme al Documento de Emisión, y finalizará el 30 de junio de 2027, sin perjuicio de
+que el Emisor pueda darlo por finalizado con anterioridad en caso de alcanzarse el
+importe máximo de la emisión (Hard Cap).
+
+En caso de que a fecha 2 de diciembre de 2026 no se hubiera alcanzado al menos el
+50% del importe total previsto (Soft Cap), la emisión no se entenderá válidamente
+constituida, procediéndose a la devolución de los importes desembolsados conforme a
+lo previsto en el Documento de Emisión.
+
+No obstante, el Emisor podrá suspender, cancelar o terminar anticipadamente el
+Periodo de Suscripción conforme a lo previsto en el Documento de Emisión y en la
+normativa aplicable.​
+
+
+6. Naturaleza de la Reserva​
+
+
+El presente acuerdo no conﬁere al Inversor derechos de inversión hasta hasta que la
+emisión quede válidamente constituida conforme al Documento de Emisión y se
+produzca conversión de la reserva en valores con tecnología DLT.
+
+Hasta dicho momento, la relación entre las partes tendrá el carácter de un compromiso
+de reserva ﬁnanciera, sin generar derechos sobre el capital social ni sobre la dirección
+del Emisor.
+
+​
+
+===== Escritura de emisión: condiciones (a) a (v) =====
+        (a) Naturaleza y denominación de los valores: valores con
+
+carácter de obligaciones no convertibles tokenizados de una única
+
+serie, que se indica se basan en tecnología DLT y con denominación
+
+ALICANTE 3. 
+
+
+
+
+        - 10 -
+
+        (b) Importe nominal y efectivo de la Emisión: CINCO
+
+MILLONES CIENTO NOVENTA Y SEIS MIL EUROS (5.196.000,00
+
+€). 
+
+        (c) Divisa de la Emisión: Euro. 
+
+        (d) Garantía: La Emisión no cuenta con garantías personales
+
+ni reales. 
+
+        (e) Número de valores: un máximo de 51.960. 
+
+        (f) Nominal del valor: CIEN EUROS (100,00 €). 
+
+        (g) Forma de representación: obligaciones representadas
+
+mediante sistemas basados en tecnología de registros distribuidos
+
+(Tokens). 
+
+        (h) Precio de emisión por valor: el tipo de emisión es el
+
+100% del nominal por valor. 
+
+        (i) Comisiones y gastos para el suscriptor: la emisión está
+
+libre de comisiones y gastos para el suscriptor. 
+
+        (j) Fecha de vencimiento: la fecha de vencimiento es el día
+
+25 de julio de 2028. 
+
+        (k) Precio de reembolso por valor: El reembolso será a la
+
+par que el vencimiento, salvo en caso de que sean íntegramente
+
+amortizados con anterioridad a la fecha de vencimiento en los
+
+
+
+
+                                                                                     - 11 -
+
+términos previstos en el documento de Oferta de emisión
+
+incorporado. 
+
+        (l) Tipo de interés o derechos económicos: Distribución de
+
+intereses, hasta un máximo del 22% sobre el importe invertido
+
+(13,20% nominal anual). Si la plusvalía generada supera el 22%, la
+
+diferencia será retenida por la sociedad emisora (con nombre
+
+comercial Hausera) como beneficio de búsqueda de oportunidad,
+
+gestión y comercialización del producto. 
+
+        (m) Fecha de pago: El pago de la rentabilidad variable se
+
+devengará en la fecha de finalización de la emisión, esto es en la
+
+fecha de vencimiento de la emisión. 
+
+        (n) Colectivo de potenciales inversores: La emisión irá
+
+dirigida tanto a inversores cualificados como a determinadas
+
+personas que no tengan la consideración de inversores cualificados
+
+pero que la sociedad emisora considere que tienen la suficiente
+
+experiencia y conocimientos financieros para considerarlos idóneos
+
+para realizar la inversión. 
+
+        (o) Periodo de Suscripción: El periodo de suscripción se
+
+iniciará el 25 de noviembre de 2026 y se extenderá hasta el 30 de
+
+junio de 2027. 
+
+        No obstante si a fecha 2 de diciembre de 2026 no se hubiera
+
+alcanzado al menos el 70% del importe total previsto para la emisión
+
+(softcap), la emisión no se entenderá válidamente constituida,
+
+procediéndose a la devolución de las cantidades aportadas por los
+
+
+
+
+        - 12 -
+
+inversores. 
+
+        (p) Tramitación de la suscripción: Directamente a través de
+
+la plataforma propia de la sociedad emisora (nombre comercial
+
+HAUSERA), www.hausera.io 
+
+        (q) Fecha de emisión y desembolso: La fecha de emisión
+
+será la coincidente con el otorgamiento de esta escritura, 27 de
+
+octubre de 2026, sin perjuicio de su inscripción posterior. 
+
+        (r) Suscripción mínima: La presente emisión tiene un
+
+importe de suscripción mínima que asciende al 50% del importe total
+
+emitido, esto es de DOS MILLONES QUINIENTOS NOVENTA Y
+
+OCHO MIL EUROS (2.598.000,00 €). 
+
+        (s) Procedimiento de adjudicación y colocación de los
+
+valores: La Emisión, de acuerdo con los términos y condiciones
+
+establecidos en el documento de Oferta de Emisión, se encuentra
+
+sometida a restricciones a la venta de los valores constitutivos de la
+
+misma en los términos recogidos en la citada documentación. 
+
+        (t) Liquidez: No hay entidades que estén comprometidas con
+
+el emisor para suministrar liquidez a la Emisión. 
+
+        (u) Orden de Prelación: Los valores correspondientes a la
+
+Emisión serán obligaciones directas, no subordinadas y sin garantía
+
+
+
+
+                                                                                   - 13 -
+
+real de la sociedad, y los valores tendrán en todo momento el mismo
+
+rango a efectos de prelación de créditos entre ellos, sujeto a
+
+cualesquiera excepciones o privilegios legales que fueran de
+
+aplicación. 
+
+        (v) Amortización anticipada: en los supuestos que figuran en
+
+los términos y condiciones del documento de Oferta de Emisión,
+
+correspondientes a la Emisión. 

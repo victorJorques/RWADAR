@@ -1,0 +1,88 @@
+Investment Mandate | Spiko Tech Docs
+Skip to main content
+Products Spiko Direct Spiko Embedded API Reference
+Search
+Our products
+Overview
+Spiko T-Bills
+What is an MMF?
+Spiko MMFs
+Investment Mandate
+Fee Structure
+Stakeholders
+Legal Documentation
+Safeguarding of Assets
+Spiko Smart Cash
+Spiko Cash & Carry
+Fund Availability
+Onboarding Restrictions
+Account management
+Account creation
+Multi-User Access Management
+Deposits and Withdrawals
+Currency Exchange
+Accounting and Tax Treatment
+Tokenization
+Explaining Tokenization
+Transfers & Redemptions
+Addresses
+Security Audits
+NAV Data Feed
+Legal
+Legal Notice
+Regulatory Information
+Terms of Use
+Privacy Policy
+Our products
+Spiko T-Bills
+Investment Mandate
+On this page
+Investment Mandate
+Spiko T-Bills Euro ​
+The Fund targets a net return aligned with the Euro Short-Term Rate (€STR). To achieve this objective, the Fund invests exclusively in Treasury Bills with maturities of less than 6 months issued by high credit rating ("investment grade") Eurozone member states, such as Germany and France. Besides, the average portfolio maturity cannot exceed 2 months. The Fund maintains a residual cash balance (up to 10% of assets) in EUR to facilitate deposit and withdrawal processing.
+BENCHMARK INFORMATION
+The Euro Short-Term Rate (€STR):
+is calculated and published by the European Central Bank
+updates daily on business days
+can be referenced on the ECB's official website
+Spiko T-Bills Dollar ​
+The Fund targets a net return aligned with the Effective Federal Funds Rate (EFFR). To achieve this objective, the Fund invests exclusively in United States Treasury Bills (U.S. T-Bills) with maturities of less than 6 months. Besides, the average portfolio maturity cannot exceed 2 months. The Fund maintains a residual cash balance (up to 10% of assets) in USD to facilitate deposit and withdrawal processing.
+BENCHMARK INFORMATION
+The Effective Federal Funds Rate (EFFR):
+is calculated and published by the Federal Reserve Bank of New York
+updates daily on business days
+can be referenced on the NY Fed's official website
+Spiko T-Bills Pound ​
+The Fund targets a net return aligned with the Sterling Overnight Index Average (SONIA). To achieve this objective, the Fund invests exclusively in United Kingdom Treasury Bills (UK T-Bills) with maturities of less than 6 months. Besides, the average portfolio maturity cannot exceed 2 months. The Fund maintains a residual cash balance (up to 10% of assets) in GBP to facilitate deposit and withdrawal processing.
+BENCHMARK INFORMATION
+The Sterling Overnight Index Average (SONIA):
+is calculated and published by the Bank of England
+updates daily on business days
+can be referenced on the Bank of England's official website
+Previous
+Spiko MMFs
+Next
+Fee Structure
+Spiko T-Bills Euro
+Spiko T-Bills Dollar
+Spiko T-Bills Pound
+Documentation
+Products
+Spiko Direct
+Spiko Embedded
+API Reference
+APIs
+Public API
+Investor API
+Distributor API
+Legal
+Legal notice
+Regulatory information
+Terms of use
+Privacy policy
+Spiko
+spiko.io
+Spiko app
+Contact
+LinkedIn
+© 2026 Spiko. All rights reserved.

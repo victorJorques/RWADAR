@@ -1,0 +1,309 @@
+URL: https://securitize.io/invest
+FINAL: https://securitize.io/invest
+HTTP: 200
+UTC: 2026-11-10T09:34:30Z
+
+Securitize Third Quarter 2026 Results
+
+Investments
+
+Solutions
+
+Resources
+
+Ecosystem
+
+Company
+
+Sign Up
+Log In
+Tokenized
+Real-World Assets
+
+$4B+
+
+Tokenized Assets ¹
+
+580,000+
+
+Investor Accounts ²
+
+All Opportunities
+U.S. Treasury
+Private Equity
+Private Credit
+Secondary Trading
+Venture Capital
+Offered by Securitize Markets
+ARK Venture Fund
+
+Exposure to leading private and public innovators across disruptive technology, from artificial intelligence to space, robotics, and next-generation finance.
+
+Asset Class
+Venture Capital
+Min. Investment
+$500
+Investor Type
+Retail
+Liquidity
+Quarterly
+Private Credit
+Offered by Securitize Capital
+Neuberger Securitize High Income Tokenized Fund
+
+Attractive high current income from high yield bonds, CLOs, and bank loans.
+
+Asset Class
+Fixed Income
+Min. Investment
+$100k
+Investor Type
+Qualified Purchaser
+Liquidity
+Daily
+Private Equity
+Offered by Securitize Capital
+Securitize Tokenized AAA CLO Fund
+
+Attractive income from AAA-rated CLOs with capital preservation and seamless tokenized access.
+
+Asset Class
+Fixed Income
+Min. Investment
+$100k
+Investor Type
+Accredited Investor
+Liquidity
+Daily
+Private Equity
+Offered by Securitize Capital
+Hamilton Lane Senior Credit Opportunities Securitize Fund
+
+Evergreen private credit fund seeking risk-adjusted returns and attractive floating cash yield.
+
+Asset Class
+Senior Credit
+Min. Investment
+$10K
+Investor Type
+Qualified Purchaser
+Redemptions
+On-Demand
+U.S. Treasury
+Offered by Securitize Markets
+VanEck Treasury Fund
+
+Earn stable yield with daily liquidity by investing in short-term U.S. Treasuries via blockchain.
+
+Asset Class
+Fixed Income
+Min. Investment
+$100k
+Investor Type
+Qualified Purchaser
+Redemptions
+Instant
+Private Equity
+Offered by Securitize Capital
+Securitize Tokenized Apollo Diversified Credit Fund
+
+Evergreen credit fund seeking to generate a return comprised of both current income and capital appreciation.
+
+Asset Class
+Diversified Credit
+Min. Investment
+$50K
+Investor Type
+Accredited Investor
+Redemptions
+Quarterly
+U.S. Treasury
+Securitize Markets Exclusive
+BlackRock USD Institutional Digital Liquidity Fund (BUIDL)
+
+The first tokenized fund issued on a public blockchain by the world's largest asset manager.
+
+Asset Class
+U.S. Treasury
+Min. Investment
+$5M
+Investor Type
+Qualified Purchaser
+Redemptions
+Instant
+Private Equity
+Offered by Securitize Capital
+KKR Health Care Strategic Growth II Securitize Fund
+
+Institutional healthcare growth equity, focused on scale, innovation, and long-term value creation.
+
+Asset Class
+Private Equity
+Min. Investment
+$20k
+Investor Type
+Qualified Purchaser
+Lock-Up
+12 Months
+U.S. Treasury
+Offered by Securitize Markets
+Arca U.S. Treasury Fund
+
+Access yield in a 40 Act fund derived from a portfolio of 80%+ U.S. Treasury securities.
+
+Asset Class
+U.S. Treasuries
+Min. Investment
+$1k
+Investor Type
+Retail Investor
+Redemptions
+Instant
+Fund Type
+40 Act | SEC Listing
+Secondary Trading
+Blockchain Capital
+
+Leading VC firm in the blockchain industry investing in 150+ crypto companies across all stages. *Currently open for non-US investors.
+
+Asset Class
+Venture Capital
+Token
+BCAP
+Investor Type
+Accredited Investor
+Misc
+15c2-11 Info
+Secondary Trading
+Securitize Markets Exclusive
+Science Blockchain
+
+VC firm investing in seed-stage, early-stage, and later-stage companies based in the US.
+
+Asset Class
+Venture Capital
+Token
+SCI2
+Investor Type
+Accredited Investor
+Misc
+15c2-11 Info
+Secondary Trading
+SPiCE VC
+
+VC firm investing in blockchain and tokenization-focused companies. *Currently open for non-US investors.
+
+Asset Class
+Venture Capital
+Token
+SPiCE
+Investor Type
+Accredited Investor
+Misc
+15c2-11 Info
+Secondary Trading
+Protos
+
+Fund investing in digital tokens, cryptocurrency and other crypto related assets.
+
+Asset Class
+Venture Capital
+Token
+PRTS
+Investor Type
+Accredited Investor
+Misc
+15c2-11 Info
+Secondary Trading
+Securitize Markets Exclusive
+Cosimo X
+
+Fund investing in early-stage blockchain opportunities with a 1-4 year horizon.
+
+Asset Class
+Venture Capital
+Token
+COSX
+Investor Type
+Accredited Investor
+Misc
+15c2-11 Info
+Secondary Trading
+Securitize Markets Exclusive
+22x
+
+Portfolio of 500 Startups Accelerator and leading institutions and angels, with 2% acceptance rate.
+
+Asset Class
+Venture Capital
+Token
+22x
+Investor Type
+Accredited Investor
+Misc
+15c2-11 Info
+Tokenize Your Portfolio
+with Securitize
+Get in Touch
+→
+
+Disclosures
+
+1 Total dollar amount (USD) invested through the Securitize platform since inception, across broker-dealer and transfer agent entities. Data as of April 2026.
+
+2 Data as of April 2026.
+
+Investments
+All Assets
+Public Stocks
+Solutions
+Tokenization As A Service
+Fund Administration
+Ecosystem
+Partner Ecosystem
+Resources
+Intro to Tokenization
+Whitepapers & Research
+Articles
+Videos
+About
+Company
+Media Coverage
+Press Releases
+Investor Relations
+Careers
+Media Kit ↓
+Developers
+APIs
+Bug Bounty
+Vault Registrar Sandbox
+
+© 2026 Securitize LLC.
+
+Disclosures
+Fee Schedule
+info@securitize.io
+
+Securitize Markets, LLC is an SEC-registered broker-dealer and member of FINRA/SIPC. Check the background of Securitize Markets on FINRA BrokerCheck.
+
+For covered orders in NMS securities, Securitize Markets' Rule 605 order execution quality reports are available here.
+
+Investing involves risk, including possible loss of principal. Digital asset securities may involve additional risks and may not be suitable for all investors.
+
+Securities are offered through Securitize Markets, LLC (“Securitize Markets”), a registered broker-dealer and member of FINRA/SIPC. Securitize Markets may provide recommendations at times but does not provide investment advice or ongoing monitoring. No communication herein, or in any medium, should be construed as investment advice or a recommendation to buy or sell any security.
+
+Securities offered on the Securitize Markets Alternative Trading System (ATS) are not registered under the Securities Act of 1933 and may not be offered or sold in the United States without registration or an applicable exemption. Digital assets or tokens utilizing blockchain technology are speculative, involve significant risk, may be illiquid or without value, have limited regulatory certainty, and may be subject to market manipulation. Private placements are also speculative and high-risk. Investors must be able to bear the loss of their entire investment.
+
+Eligibility to trade on the Securitize Markets ATS is determined solely by Securitize Markets. Any offer or solicitation can be made only through official offering documents describing the risks, fees, and expenses of the applicable securities. Investors should conduct their own due diligence and are encouraged to consult with a financial advisor, attorney, accountant, or tax advisor.
+
+Past performance is not indicative of future results. Neither the SEC nor any federal or state regulator has recommended or approved any investment or verified the accuracy or completeness of any information herein. Valuations provided by issuers may not reflect market or industry values, and Securitize Markets and its affiliates make no representations regarding such information. Securitize Markets may collect information about you to comply with securities regulations and the USA PATRIOT Act, which requires firms to obtain, verify, and record information that identifies each applicant. This information also helps us understand your investment profile and determine suitability. The term “Investors,” as used on this website, generally refers to accredited investors where applicable. If we cannot verify the information you provide, we may need to restrict or deny your account. Trading during extended hours carries unique risks, including higher volatility, lower liquidity, wider spreads, and reduced market visibility, and may not be appropriate for all investors. Diversification does not guarantee improved returns or prevent losses. Securitize Markets is regulated by FINRA and the SEC; however, membership and registration do not guarantee compliance with all rules. By accessing this site, you agree to our Terms of Service and Privacy Policy.
+
+Crypto services are provided by Zero Hash and are not associated with Securitize Markets or its affiliates. Crypto assets are not protected by SIPC, SIPA, or federal securities laws. SIPC protection does not apply to funds held at SIPC-member broker-dealers if such funds are unrelated to eligible securities transactions, intended for the purchase of crypto assets not recognized as securities under SIPA, or transferred to a crypto platform. Crypto assets are neither cash nor cash equivalents and are not covered by the FDIC. Their value is highly volatile, and they involve increased risks of fraud, cyberattack, and operational failures. Zero Hash LLC and Zero Hash Liquidity Services are licensed to engage in Virtual Currency Business Activity by the New York State Department of Financial Services.
+
+EU Disclosures
+
+In the European Union, investment services are offered by Securitize Europe Brokerage and Markets, S.V., S.A. (“Securitize Europe”), a Spanish investment firm.
+
+Securitize Europe, with Spanish tax identification number A13691464, has its registered office at Calle Don Ramón de la Cruz 38, 28001 Madrid, Spain and is registered with the Commercial Registry of Madrid in the sheet number M-794351, page 81 et seq., of volume 45141, section 8, and is authorized, registered and supervised by the Spanish Securities Market Commission, the Comisión Nacional del Mercado de Valores (“CNMV”), with registration number 327.
+
+Securitize Europe has permission to provide investment services in the countries of the European Union listed here.

@@ -1,0 +1,13 @@
+URL: https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4
+HTTP 200 · consultadoUtc 2026-11-10T09:29:59Z · SHA-256 HTML b09b266c8a879fbcbc83174b13013d9aad6bfdb65ffda5e70b7afdfee5eca17f
+
+BITSTAMP FINANCIAL SERVICES LTD | Número y fecha de registro oficial: 5284 - 14/01/2025 | Dirección: Dalmatinova ulica 2 - 1000 Ljubljana | País: ESLOVENIA
+COINBASE FINANCIAL SERVICES EUROPE LTD | Número y fecha de registro oficial: 4854 - 23/10/2019 | Dirección: 67 FRANKLIN ROOSEVELT AVENUE, LIMA CARNA BUILDING - 3011 LIMASSOL | País: CHIPRE
+ETORO (EUROPE) LIMITED | Número y fecha de registro oficial: 2534 - 13/04/2010 | Dirección: Neocleous Tower 199 Archbishop Makarios III Av - 3030 LIMASSOL | País: CHIPRE
+GATE SECURITIES (CYPRUS) LTD | Número y fecha de registro oficial: 5063 - 17/05/2021 | Dirección: 331,28th October Avenue Lido House Block 2 Unit365 - 3106 Limassol | País: CHIPRE
+GEMINI INTERGALACTIC EU ARTEMIS, LTD | Número y fecha de registro oficial: 5304 - 04/07/2025 | Dirección: Q2, Office C, Tigne` Point -  Sliema | País: MALTA
+OKX EUROPE MARKETS LIMITED | Número y fecha de registro oficial: 5024 - 14/01/2021 | Dirección: Piazzetta Business Plaza, Office number 4, Floor 2 - SLM 1562 Triq Ghar il-Lembi, Sliema | País: MALTA
+REVOLUT SECURITIES EUROPE UAB | Número y fecha de registro oficial: 5175 - 17/04/2023 | Dirección: Quadrum South, Konstitucijos ave. 21B - LT-08130 Vilnius | País: LITUANIA
+
+Entradas con «BLOCKCHAIN»: 0
+Entradas con «BYBIT»: 0

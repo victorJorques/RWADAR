@@ -1,0 +1,47 @@
+URL HTML: https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds (HTTP 200, 09:28:52Z, SHA-256 HTML 3a62cf07d01c983433f9cf95691bb30b35d0f7cbbae51083795ce3c49c649beb)
+URL PDF: https://int.media.amundi.com/files/nuxeo/dl/2d26bd65-d562-4a36-b0b0-14750be96ec7?inline= (HTTP 200, 2 páginas, SHA-256 c92bb075932cadf291e0c51a22b7399d9b951b19b25830c36852d7b369c41dd8, igual que el del investigador)
+PDF no conservado: trae el nombre, correo y teléfono de una persona de prensa. Texto del cuerpo hasta antes del bloque de contacto:
+
+    Amundi unveils tokenised access to one of its flagship
+                        index funds
+Paris, November 5th 2026 - Amundi, European leading asset manager and ETF provider1,
+announces the launch of a tokenised share class of one of its flagship European equity
+index fund, Amundi Core STOXX Europe 600, a core European equity strategy widely used
+as a building block for portfolio allocation.
+
+With this launch, Amundi extends tokenisation beyond cash management solutions into
+index investing, marking a new milestone in its digital asset strategy. By bringing a flagship
+broad-market equity exposure into a tokenised format, Amundi takes a further step
+towards connecting traditional investment solutions with emerging digital market
+infrastructure.
+
+The new share class has been issued on the public Ethereum blockchain. It remains fully
+integrated into the fund’s existing operating model, and the fund continues to be available
+also through traditional channels. Developed in collaboration with CACEIS, the solution
+leverages CACEIS’s technology and infrastructure for the tokenisation of fund units.
+
+This initiative reflects Amundi’s conviction that tokenisation can progressively support a
+broader range of mainstream investment uses across asset classes. It follows the launch
+over the past few months of Amundi’s first tokenised share class of a money market fund,
+subscription via stablecoins as well as a series of partnerships with digital players, large
+corporates and financial institutions to test concrete applications of distributed ledger
+technology.
+
+This phased approach reflects Amundi’s commitment to innovation within a robust
+regulatory, operational and risk management framework. It also supports Amundi’s
+ambition to progressively develop a range of tokenised funds to respond to the evolving
+needs of institutional clients and digital platforms, leveraging its potential to deliver
+greater operational efficiency through the automation of certain processes, improved
+accessibility, fast settlement and transparency.
+
+As market infrastructure and regulatory frameworks continue to develop, tokenised fund
+shares will create new opportunities for digital distribution and applications across asset
+classes. By extending tokenisation to index funds, Amundi contributes to lay the
+foundations to bridge traditional finance and digital finance.
+
+
+
+1
+ Source: IPE “Top 500 Asset Managers” published in June 2026, based on assets under management as at
+31/12/2025.
+

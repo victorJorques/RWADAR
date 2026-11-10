@@ -1,0 +1,84 @@
+URL: https://alanfrei.com/investor
+Descarga: 2026-11-10T09:47:47Z (HTML 274.484 bytes, sha256 d9a5427b4689849ea487c046de7664ff15f8e59947b544952892e51ec14846b9, en crudo/alanfrei-investor.html)
+Texto extraído; nombre de persona física recortado.
+
+BECOME A SHAREHOLDER OF THE ALAN FREI COMPANY (AFC)
+WHAT DO WE DO AT THE ALAN FREI COMPANY?
+The AFC is built on 3 pillars:
+Content
+Community
+Products
+We create interesting, educational, and entertaining content on lifehacking, optimization, and building startups. 
+Through our content, we aim to build a community of entrepreneurs, life hackers, and optimizers. We are currently in the process of designing great products specifically for our community. 
+And we go even further: For those who believe in our vision, we have created the opportunity to become shareholders and influence the future direction of the company. Therefore, you, consumers of our products and content, can become co-owners. With this, we believe we have closed the gap and aligned the incentives for customers, employees, and shareholders.
+Our goal is to become a worldwide next-generation business-to-consumer (B2C/D2C) brand that creates smart products and content for urban travellers and life hackers.
+Our approach to building the company in this way is very hard to copy, and therefore margins don’t erode over time. We plan to create a fantastic company over the next years that makes life easier while adding adventure.
+ Buy Shares
+what is the alan frei company worth? 
+Currently, the Alan Frei Company is valued at 10.5 million shares outstanding times the current share price. 
+We are raising capital for the company by selling 5-10%.
+You can find the Registration Agreement and the Token Shareholder Agreement here. 
+WHAT IS INCLUDED, WHAT NOT? 
+The goal is to completely align the interests and incentives of [nombre recortado], the private individual, with those of the Alan Frei Company, and therefore with all its shareholders.
+Therefore, it is very important for us to be fully transparent with all shareholders. The goal is that all future income will be directed into the Alan Frei Company.
+Today, this includes all events, parties, speaking engagements, product sales, ad revenues, and even [nombre recortado]'s Uber Eats rides.
+This setup excludes [nombre recortado]'s previous investments in startups and real estate.
+Down the road, we might explore starting a venture fund to invest in startups on behalf of the AFC instead of doing so privately.
+Please note: The capital you invest as an investor is what we use to fund our operations. Concretely, this means creating a lot of good content scalably on social media, building a community with events, and making the first digital and physical products. We are still investing in these things and haven’t started making profits yet.
+DISCOVER YOUR RIGHTS AS A SHAREHOLDER
+All shares are linked to the Alan Frei token. For this setup, we collaborated with Aktionariat. To date, over 70 Swiss companies operate this way thanks to Aktionariat.
+For shareholders, that means: 
+Protection. AFC shares are directly linked to Alan Frei tokens. Token owners are shareholders of the AFC and are protected by Swiss shareholder rights. 
+Flexibility. You can trade tokens in a few clicks whenever there's liquidity.
+No minimum investment. There's no set amount to start with.
+Transparency. Every transaction is transparently recorded on the blockchain.
+Real-time transactions. Selling and buying happen in real-time.
+Over the next 20 years, we expect to grow into a global brand and watch our share prices climb along with us. Want more information? 
+ Click to read the first Investor Letter!
+FINANCIAL STATEMENTS
+ 2022
+Financial Statement
+Protocol
+ 2023
+Financial Statement
+General Assembly
+ 2024
+Financial Statement
+General Assembly
+Meeting Notes
+ 2025
+Financial Statement
+General Assembly
+Meeting Notes
+Q&A
+ How can I invest in the AFC?
+To purchase shares via bank transfer, all you need is an Ethereum wallet to receive the share tokens. For optimal interaction with the Aktionariat Brokerbot (the share dispenser), we recommend using the dedicated Aktionariat Portfolio Wallet, available on iOS or Android. This wallet was specifically developed for seamless integration with the Brokerbot. Alternatively, you can connect the Brokerbot with MetaMask or any WalletConnect - compatible portfolio app.
+If you prefer to pay for the share tokens using Ether (ETH) or Cryptofrancs (XCHF), make sure you have the corresponding amount available in your wallet. Through the Aktionariat Portfolio Wallet, you can conveniently purchase Ether via bank transfer.
+ Is investing anonymous?
+Investors' personal data, including their names, addresses, and email addresses, are not disclosed publicly. To be included in the share ledger of the respective company, investors are required to register with their names and addresses.
+The Ethereum address associated with the ownership of share tokens is stored on the Ethereum blockchain and is accessible to anyone. However, it’s important to note that personal data is not stored on the blockchain and remains unlinked to the Ethereum address.
+ How can I resell my tokens?
+With Aktionariat AG, the issuer has the opportunity to establish a liquidity pool by setting aside a portion of the funds collected from investors for share buybacks within the brokerbot. In this scenario, investors follow the same process as when purchasing shares: they connect their Ethereum wallet to the brokerbot and select the "Sell" tab instead of the "Buy" tab. This allows investors to effortlessly sell their shares or a portion of them back to the company.
+Moreover, transferring shares from one investor's wallet to another is also possible. To do this using the Shareholder Portfolio App:
+The investor navigates to the "Portfolio" tab.
+They select the corresponding asset.
+Under "Positions," they choose the desired sender address.
+Next, they click on "Transfer."
+For the "To Address" field, the investor can select either their own Ethereum address or an external one. They can then initiate the transfer of the desired number of share tokens by scanning the QR code or manually entering the recipient's Ethereum address. It's important to note that payment for the transferred tokens is a separate process and can be conducted outside the blockchain ecosystem.
+Important: The new holder of the share tokens must register through the Aktionariat Portfolio App to be recorded in the share register. If using a different Ethereum wallet, the investor can register in the share ledger by using the registration widget. For more information, please visit Aktionariat.com
+ How can I register to buy shares?
+You can register here to buy shares in the Alan Frei Company and connect your wallet. 
+Disclaimer
+ Public Offering
+Public offering is only open to persons domiciled in Switzerland and in the EEA: This offering to purchase the shares is only open to persons domiciled or resident in Switzerland or in the EEA. Persons from other countries are expressly excluded and it is prohibited to distribute this offering in any way in such countries. The offering is limited in Switzerland to CHF 8,000,000 per year and in the EEA to €100,000 per year.
+ No Guarantee Regarding Forecasts 
+This website contains forward-looking statements and forecasts relating to the future development of the company and its business. These forecasts are estimates that we have made on the basis of all the information available to us at the present time. Should the assumptions underlying these forecasts fail to occur or if risks should materialize, then actual developments and outcomes might deviate from current forecasts.
+ No Investment Advice Or Recommendation
+This website contains general information on the offering. This information does not constitute any replacement for financial advice based on the investor's individual circumstances and knowledge. Each person has sole responsibility for seeking the advice of qualified experts in order to assess the suitability of the offering and the associated risks for his or her own financial situation, as well as the tax consequences of potential participation in the offering.
+ Risks
+An investment in the company involves significant risk, such as (i) risks related to the business and industry in which the company operates, (ii) operational and financial risks, (iii) risks relating to laws and regulations and (iv) risks relating to the shares in the company. Several factors could adversely affect the business, legal or financial position of the company or the value of its securities. Should one or more of these or other risks and uncertainties materialize, actual results may vary significantly from those described on this website and the offering material. An investment in the company is suitable only for investors who understand the risk factors associated with this type of investment and who can afford a loss of all or part of their investment.
+ Registration And Token Shareholder Agreement
+You can find the Registration Agreement and the Token Shareholder Agreement here. 
+ Terms
+The Widget Terms apply to the use of the BrokerBot and the Secondaries Module (the "Widgets"). Please read the Widget Terms carefully before using the Widgets. All transactions through the Widgets are solely between the company and the user. Any price indicated on the Widgets may be arbitrary and does not indicate that this is a "fair market value" of the shares. Any shares sold through the Widget are sold without any representations or warranties whatsoever.
+ Buy Shares

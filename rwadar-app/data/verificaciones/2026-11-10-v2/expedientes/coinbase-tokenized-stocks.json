@@ -1,0 +1,235 @@
+{
+ "slug": "coinbase-tokenized-stocks",
+ "tipoExpediente": "candidata",
+ "grupo": "candidatas-mercados",
+ "proveedor": "Coinbase Tokenized Stocks (red Base)",
+ "plataformaSlug": null,
+ "entidadComercializadora": "Ninguna en la UE. El folleto ofrece los valores solo en el ADGM (Abu Dabi) y solo a «Authorised Participants» (clientes profesionales); después circulan en mercados DeFi.",
+ "emisor": "Coinbase Onchain SPV Ltd (sociedad del Abu Dhabi Global Market, ADGM)",
+ "vehiculo": "Certificados sobre acciones («CB Certificates») de una sociedad vehículo del ADGM; la acción subyacente la custodia Alpaca Securities LLC (EE. UU.)",
+ "token": "Tokens B20 (extensión de ERC-20) en Base: NVDAc, AAPLc, METAc, GOOGLc, AMZNc, MSFTc, MSTRc y otros; contratos listados en base.org/stocks (no copiados)",
+ "derechoAdquirido": "Certificado que representa un derecho beneficiario sobre una acción custodiada. Solo los «Vested Holders» pueden pedir el reembolso por la acción; los demás tenedores dependen de vender en DeFi.",
+ "jurisdiccion": "AE (ADGM)",
+ "identificador": "Folleto de NVDAc aprobado por la FSRA del ADGM el 04/08/2026, válido hasta el 03/08/2027",
+ "moneda": null,
+ "documentos": [
+  {
+   "titulo": "Folleto «NVIDIA CB Certificates» de Coinbase Onchain SPV Ltd (ADGM)",
+   "url": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "versionOFecha": "4 August 2026 (aprobado por la FSRA ese día; válido hasta el 03/08/2027)",
+   "paginas": null,
+   "sha256": "95df029ca061916d086273403b8caf25537450687867fc4184a141164e782f54",
+   "leido": true,
+   "nota": "El enlace de base.org redirige a https://www.adgm.com/globalassets/market-disclosure/content/prospectus/coinbase-onchain-spv-ltd---nvidia-cb-certificates---prospectus-20260804_08_04_2026_16-18-58.pdf. Se leyó el de NVDAc como muestra; los demás tickers enlazan a folletos equivalentes. En fuentes/ solo queda el texto extraído, con los nombres de los administradores recortados."
+  },
+  {
+   "titulo": "Base blog · «Stocks just got updated.»",
+   "url": "https://blog.base.org/tokenized-stocks",
+   "versionOFecha": "Aug 24, 2026",
+   "paginas": null,
+   "sha256": "77b5948fb6a342ad19f550544cba096f14515657ee360bbdcf713a4ac3816514",
+   "leido": true
+  },
+  {
+   "titulo": "base.org/stocks (lista de valores, folletos y aviso de jurisdicciones)",
+   "url": "https://www.base.org/stocks",
+   "versionOFecha": "consultada hoy (texto renderizado)",
+   "paginas": null,
+   "sha256": "9ca999772e2d96b35c69db141ab36940512c9d53245051f7111589af959029a8",
+   "leido": true
+  },
+  {
+   "titulo": "Coinbase blog · hub de tokenización en Abu Dabi",
+   "url": "https://www.coinbase.com/en-ca/blog/coinbase-establishes-its-tokenization-hub-in-abu-dhabi",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false,
+   "nota": "HTTP 403 desde nuestra conexión; no se intentó eludir. No hace falta para la decisión."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "FSRA (ADGM, Abu Dabi)",
+   "entidad": "Coinbase Onchain SPV Ltd",
+   "numero": "Aprobación del folleto de NVDAc el 04/08/2026",
+   "url": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "alcance": "Aprobación del folleto por la FSRA como autoridad de admisión del ADGM. No es un pasaporte europeo: el folleto no está notificado a ninguna autoridad del EEE.",
+   "consultadoUtc": "2026-11-10T09:07:03Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "COINBASE FINANCIAL SERVICES EUROPE LTD",
+   "numero": "4854 (23/10/2019)",
+   "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+   "alcance": "ESI chipriota en libre prestación en España. No es la oferente de estos tokens: ninguna fuente de hoy la vincula al producto.",
+   "consultadoUtc": "2026-11-10T09:08:03Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Coinbase",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "consultadoUtc": "2026-11-10T09:11:07Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "emisor",
+   "literal": "COINBASE ONCHAIN SPV LTD a private company limited by shares incorporated in the ADGM",
+   "dato": "Coinbase Onchain SPV Ltd (ADGM)",
+   "fuentePrimaria": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "localizador": "Folleto NVDAc, portada, p. 1",
+   "fechaDato": "2026-08-04",
+   "consultadoUtc": "2026-11-10T09:07:03Z",
+   "alcanceYLimites": "Emisor fuera del EEE",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "registro",
+   "literal": "This Prospectus has been approved by the FSRA as the Listing Authority of the ADGM ... on 4 August 2026.",
+   "dato": "Folleto aprobado por la FSRA (ADGM) el 04/08/2026",
+   "fuentePrimaria": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "localizador": "Folleto NVDAc, p. 1",
+   "fechaDato": "2026-08-04",
+   "consultadoUtc": "2026-11-10T09:07:03Z",
+   "alcanceYLimites": "Aprobación del ADGM; sin pasaporte en el EEE",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "is not for distribution in any jurisdiction other than in the ADGM",
+   "dato": "No se ofrece en España: solo en el ADGM",
+   "fuentePrimaria": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "localizador": "Folleto NVDAc, p. 1 (aviso de distribución)",
+   "fechaDato": "2026-08-04",
+   "consultadoUtc": "2026-11-10T09:07:03Z",
+   "alcanceYLimites": "Vale para el folleto leído (NVDAc); base.org dice además «Available only in eligible jurisdictions outside the US» sin lista de países",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "The Securities will be offered in the ADGM and only to Authorised Participants.",
+   "dato": "Oferta primaria solo en el ADGM y a participantes autorizados",
+   "fuentePrimaria": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "localizador": "Folleto NVDAc, p. 69, «Country(ies) of offer(s)»",
+   "fechaDato": "2026-08-04",
+   "consultadoUtc": "2026-11-10T09:07:03Z",
+   "alcanceYLimites": "Los participantes autorizados son clientes profesionales o contrapartes de mercado (p. 26)",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "estado",
+   "literal": "tokenized stocks issued by Coinbase, built on the B20 standard, are now live natively on Base",
+   "dato": "Activos en Base desde el 24/08/2026",
+   "fuentePrimaria": "https://blog.base.org/tokenized-stocks",
+   "localizador": "Base blog, 24/08/2026",
+   "fechaDato": "2026-08-24",
+   "consultadoUtc": "2026-11-10T09:06:22Z",
+   "alcanceYLimites": "Activo en la red, no como oferta a particulares de la UE",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "custodia",
+   "literal": "Alpaca Securities LLC, an SEC-registered broker-dealer ... acting as Custodian and Broker to the Issuer",
+   "dato": "Custodio: Alpaca Securities LLC (EE. UU.)",
+   "fuentePrimaria": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "localizador": "Folleto NVDAc, p. 6 (definiciones)",
+   "fechaDato": "2026-08-04",
+   "consultadoUtc": "2026-11-10T09:07:03Z",
+   "alcanceYLimites": null,
+   "estado": "respaldado"
+  },
+  {
+   "campo": "salida",
+   "literal": "Vested Holders have the right to redeem Securities ... Unvested Holders are not entitled to redeem Securities or withdraw Underlying.",
+   "dato": "Reembolso solo para «Vested Holders»; el resto depende de vender en DeFi",
+   "fuentePrimaria": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "localizador": "Folleto NVDAc, p. 16",
+   "fechaDato": "2026-08-04",
+   "consultadoUtc": "2026-11-10T09:07:03Z",
+   "alcanceYLimites": null,
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Holders can in no circumstances rely on the opportunity to sell Securities at a specific price or time.",
+   "dato": "Sin garantía de poder vender a un precio o momento",
+   "fuentePrimaria": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "localizador": "Folleto NVDAc, p. 26",
+   "fechaDato": "2026-08-04",
+   "consultadoUtc": "2026-11-10T09:07:03Z",
+   "alcanceYLimites": null,
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimo",
+   "literal": "—",
+   "dato": null,
+   "fuentePrimaria": "https://www.base.org/stocks",
+   "localizador": "base.org/stocks y folleto: sin mínimo para particulares",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-10T09:06:34Z",
+   "alcanceYLimites": "No hay canal de compra para particulares de la UE; no se publica mínimo",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_cumple",
+   "nota": "Emisor y folleto del ADGM; ninguna entidad con licencia en la UE ofrece el producto en España."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Tokens activos en Base desde el 24/08/2026; folleto de NVDAc válido hasta el 03/08/2027."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "Oferta solo en el ADGM y a participantes profesionales; el folleto no se distribuye fuera del ADGM; tenencia en wallet propia y compra en DeFi."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Sin advertencias de la CNMV para «Coinbase». Riesgos de liquidez y de reembolso descritos en el folleto."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "excluido",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "expediente",
+   "antes": "sin expediente",
+   "ahora": "estudiada hoy por primera vez: folleto del ADGM sin pasaporte europeo; no se ofrece en España",
+   "fuente": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": null,
+ "resumenTarjeta": {
+  "minimo": null,
+  "accesoEspana": "No: el folleto solo ofrece estos tokens en Abu Dabi (ADGM)",
+  "salida": "Solo reembolsan los tenedores autorizados; el resto vende en mercados DeFi"
+ },
+ "resumenTarjetaNota": "Interno: los tres datos tal como se ven hoy; no es propuesta de tarjeta (decisión no_admitir). null = no respaldado hoy en fuente primaria.",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": null,
+  "supervisorVerificado": "FSRA del ADGM (aprobación del folleto); ninguno en la UE",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "parcial",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Acciones de EE. UU. tokenizadas 1:1 por Coinbase con folleto público, custodia en Alpaca y dividendos por multiplicador.",
+  "porQueNo": "El folleto solo permite la oferta en el ADGM y a participantes profesionales; no hay distribuidor con licencia en la UE ni pasaporte a España."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No se admite. Es un producto de Abu Dabi: el folleto (FSRA, 04/08/2026) dice que solo se ofrece en el ADGM y a participantes autorizados profesionales, y que no se distribuye en otras jurisdicciones. No hay entidad con licencia en la UE que lo venda en España; un particular solo podría conseguirlo en DeFi con wallet propia, fuera del criterio de RWAdar.",
+ "bloqueos": [
+  "coinbase.com/blog devuelve 403 desde nuestra conexión (no hace falta para la decisión).",
+  "No hay lista pública de «eligible jurisdictions» en base.org; el folleto excluye la distribución fuera del ADGM."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-10T09:06:22Z",
+  "finUtc": "2026-11-10T09:19:57Z"
+ }
+}

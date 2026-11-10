@@ -1,0 +1,508 @@
+{
+ "fuente": "https://api.app.brickwise.at/api/v1/assets (offers[], status=open) y https://api.app.brickwise.at/api/v2/assets",
+ "consultadoUtc": "2026-11-10T09:20:39Z / 09:20:40Z",
+ "nota": "Calculado por el revisor independiente con sus propias descargas (SHA-256 idéntico a las del investigador de las 09:01-09:02 y a su control de las 09:17). Sin carteras ni identificadores de usuario. Fechas de orden en UTC (AAAA-MM-DDTHH:MM). 'ventaMinOrdenes' y 'compraMaxOrdenes': [cantidad, creada, actualizada].",
+ "activos": {
+  "AT0000A2RAH5": {
+   "titulo": "Wohnung, Plüddemanngasse 101, Graz",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "availableBricksSecondary": 335,
+   "sharePrice": 76,
+   "rentalReturn": 3.96,
+   "nVentas": 22,
+   "nCompras": 3,
+   "enVenta": 335,
+   "ventaMin": 75,
+   "ventaMinCantidad": 2,
+   "ventaMinOrdenes": [
+    [
+     2,
+     "2026-11-04T19:57",
+     "2026-11-04T19:58"
+    ]
+   ],
+   "compraMax": 20,
+   "compraMaxOrdenes": [
+    [
+     1,
+     "2026-04-23T18:23",
+     "2026-08-14T13:51"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 0,
+    "availableBricksSecondary": 335,
+    "lowestOfferPrice": 75
+   }
+  },
+  "AT0000A2T4D7": {
+   "titulo": "Wohnung, Sonnleithnergasse 2, Wien 10.",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "availableBricksSecondary": 97,
+   "sharePrice": 69,
+   "rentalReturn": 3.72,
+   "nVentas": 39,
+   "nCompras": 9,
+   "enVenta": 97,
+   "ventaMin": 75,
+   "ventaMinCantidad": 11,
+   "ventaMinOrdenes": [
+    [
+     11,
+     "2026-04-28T18:36",
+     "2026-04-28T18:37"
+    ]
+   ],
+   "compraMax": 65,
+   "compraMaxOrdenes": [
+    [
+     1,
+     "2026-10-16T05:08",
+     "2026-11-06T16:02"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 0,
+    "availableBricksSecondary": 97,
+    "lowestOfferPrice": 75
+   }
+  },
+  "AT0000A2U5V3": {
+   "titulo": "Trafik, Kohldorfer Straße 102, Klagenfurt",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "availableBricksSecondary": 302,
+   "sharePrice": 88,
+   "rentalReturn": 3.73,
+   "nVentas": 47,
+   "nCompras": 3,
+   "enVenta": 302,
+   "ventaMin": 95,
+   "ventaMinCantidad": 16,
+   "ventaMinOrdenes": [
+    [
+     5,
+     "2026-03-21T16:44",
+     "2026-03-21T16:44"
+    ],
+    [
+     10,
+     "2026-03-30T21:03",
+     "2026-03-30T21:03"
+    ],
+    [
+     1,
+     "2026-11-05T05:44",
+     "2026-11-05T05:45"
+    ]
+   ],
+   "compraMax": 15,
+   "compraMaxOrdenes": [
+    [
+     1,
+     "2026-09-21T09:51",
+     "2026-11-08T14:14"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 0,
+    "availableBricksSecondary": 302,
+    "lowestOfferPrice": 95
+   }
+  },
+  "AT0000A2WCD0": {
+   "titulo": "Wohnung, Stallhofstraße 28, Gratwein",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "availableBricksSecondary": 317,
+   "sharePrice": 69.96,
+   "rentalReturn": 4.11,
+   "nVentas": 88,
+   "nCompras": 12,
+   "enVenta": 317,
+   "ventaMin": 68.8,
+   "ventaMinCantidad": 1,
+   "ventaMinOrdenes": [
+    [
+     1,
+     "2026-11-08T10:11",
+     "2026-11-08T10:11"
+    ]
+   ],
+   "compraMax": 30,
+   "compraMaxOrdenes": [
+    [
+     1,
+     "2026-07-01T20:40",
+     "2026-07-01T20:41"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 0,
+    "availableBricksSecondary": 317,
+    "lowestOfferPrice": 68.8
+   }
+  },
+  "AT0000A2WCE8": {
+   "titulo": "Wohnung, Schwarzer Weg 18, Graz",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "availableBricksSecondary": 300,
+   "sharePrice": 60,
+   "rentalReturn": 4.04,
+   "nVentas": 75,
+   "nCompras": 7,
+   "enVenta": 300,
+   "ventaMin": 65,
+   "ventaMinCantidad": 1,
+   "ventaMinOrdenes": [
+    [
+     1,
+     "2026-11-09T19:44",
+     "2026-11-09T21:44"
+    ]
+   ],
+   "compraMax": 35,
+   "compraMaxOrdenes": [
+    [
+     1,
+     "2026-07-01T20:39",
+     "2026-09-11T05:44"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 0,
+    "availableBricksSecondary": 300,
+    "lowestOfferPrice": 65
+   }
+  },
+  "AT0000A2YPQ0": {
+   "titulo": "Drautalresidenz, Paternion",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "availableBricksSecondary": 150,
+   "sharePrice": 70,
+   "rentalReturn": 4.68,
+   "nVentas": 32,
+   "nCompras": 9,
+   "enVenta": 150,
+   "ventaMin": 70,
+   "ventaMinCantidad": 3,
+   "ventaMinOrdenes": [
+    [
+     3,
+     "2026-10-18T13:52",
+     "2026-10-18T13:52"
+    ]
+   ],
+   "compraMax": 60,
+   "compraMaxOrdenes": [
+    [
+     1,
+     "2026-11-05T17:00",
+     "2026-11-05T17:00"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 0,
+    "availableBricksSecondary": 150,
+    "lowestOfferPrice": 70
+   }
+  },
+  "AT0000A2ZT84": {
+   "titulo": "Randhartingergasse 9, Wien",
+   "stage": "secondary",
+   "availableBricks": 374,
+   "availableBricksSecondary": 189,
+   "sharePrice": 75,
+   "rentalReturn": 2.47,
+   "nVentas": 33,
+   "nCompras": 9,
+   "enVenta": 189,
+   "ventaMin": 78,
+   "ventaMinCantidad": 21,
+   "ventaMinOrdenes": [
+    [
+     20,
+     "2026-06-29T19:30",
+     "2026-07-18T12:00"
+    ],
+    [
+     1,
+     "2026-11-02T13:59",
+     "2026-11-02T13:59"
+    ]
+   ],
+   "compraMax": 46,
+   "compraMaxOrdenes": [
+    [
+     1,
+     "2026-11-09T18:18",
+     "2026-11-09T18:18"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 374,
+    "availableBricksSecondary": 189,
+    "lowestOfferPrice": 78
+   }
+  },
+  "AT0000A31KP7": {
+   "titulo": "Ferien-Appartement, Hinterstoder 50",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "availableBricksSecondary": 265,
+   "sharePrice": 65,
+   "rentalReturn": 5.37,
+   "nVentas": 38,
+   "nCompras": 6,
+   "enVenta": 265,
+   "ventaMin": 75,
+   "ventaMinCantidad": 5,
+   "ventaMinOrdenes": [
+    [
+     5,
+     "2026-11-08T17:17",
+     "2026-11-08T17:22"
+    ]
+   ],
+   "compraMax": 20,
+   "compraMaxOrdenes": [
+    [
+     1,
+     "2025-05-19T18:41",
+     "2025-05-19T18:41"
+    ],
+    [
+     3,
+     "2026-09-29T19:23",
+     "2026-09-29T19:25"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 0,
+    "availableBricksSecondary": 265,
+    "lowestOfferPrice": 75
+   }
+  },
+  "AT0000A324B4": {
+   "titulo": "Wohnung, Pottendorfer Straße 62 TOP 2.06, Wr. Neustadt",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "availableBricksSecondary": 107,
+   "sharePrice": 64,
+   "rentalReturn": 4.74,
+   "nVentas": 20,
+   "nCompras": 13,
+   "enVenta": 107,
+   "ventaMin": 74,
+   "ventaMinCantidad": 1,
+   "ventaMinOrdenes": [
+    [
+     1,
+     "2026-11-09T19:46",
+     "2026-11-09T19:46"
+    ]
+   ],
+   "compraMax": 19,
+   "compraMaxOrdenes": [
+    [
+     3,
+     "2025-11-06T05:38",
+     "2025-11-06T05:39"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 0,
+    "availableBricksSecondary": 107,
+    "lowestOfferPrice": 74
+   }
+  },
+  "AT0000A35A42": {
+   "titulo": "Investieren in eine Ferienimmobilie mit Fixpacht in Hinterstoder!",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "availableBricksSecondary": 68,
+   "sharePrice": 98,
+   "rentalReturn": -0.11,
+   "nVentas": 9,
+   "nCompras": 11,
+   "enVenta": 68,
+   "ventaMin": 94.9,
+   "ventaMinCantidad": 1,
+   "ventaMinOrdenes": [
+    [
+     1,
+     "2026-11-10T07:09",
+     "2026-11-10T07:10"
+    ]
+   ],
+   "compraMax": 90,
+   "compraMaxOrdenes": [
+    [
+     2,
+     "2026-11-04T22:02",
+     "2026-11-04T22:02"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 0,
+    "availableBricksSecondary": 68,
+    "lowestOfferPrice": 94.9
+   }
+  },
+  "AT0000A38J32": {
+   "titulo": "Photovoltaik Anlage GreenPoint mit Überschussbeteiligung",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "availableBricksSecondary": 351,
+   "sharePrice": 89,
+   "rentalReturn": 6.87,
+   "nVentas": 16,
+   "nCompras": 7,
+   "enVenta": 351,
+   "ventaMin": 100,
+   "ventaMinCantidad": 5,
+   "ventaMinOrdenes": [
+    [
+     5,
+     "2026-09-20T13:30",
+     "2026-09-20T13:31"
+    ]
+   ],
+   "compraMax": 84,
+   "compraMaxOrdenes": [
+    [
+     1,
+     "2026-06-23T21:04",
+     "2026-06-23T21:05"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 0,
+    "availableBricksSecondary": 351,
+    "lowestOfferPrice": 100
+   }
+  },
+  "AT0000A38J40": {
+   "titulo": "Photovoltaik Anlage Cohotel mit Überschussbeteiligung",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "availableBricksSecondary": 65,
+   "sharePrice": 120,
+   "rentalReturn": 5.11,
+   "nVentas": 5,
+   "nCompras": 5,
+   "enVenta": 65,
+   "ventaMin": 110,
+   "ventaMinCantidad": 35,
+   "ventaMinOrdenes": [
+    [
+     31,
+     "2025-02-07T18:44",
+     "2026-07-13T16:28"
+    ],
+    [
+     4,
+     "2026-05-07T12:56",
+     "2026-05-07T12:56"
+    ]
+   ],
+   "compraMax": 3,
+   "compraMaxOrdenes": [
+    [
+     1,
+     "2024-11-23T19:54",
+     "2024-11-23T19:54"
+    ]
+   ],
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 0,
+    "availableBricksSecondary": 65,
+    "lowestOfferPrice": 110
+   }
+  },
+  "AT0000A3AAY4": {
+   "titulo": "Ferienapartment mit Fixpacht in einer Skiregion - Hinterstoder Teil 2",
+   "stage": "deleted",
+   "availableBricks": 1631,
+   "availableBricksSecondary": 0,
+   "sharePrice": 100,
+   "rentalReturn": 0.2,
+   "nVentas": 0,
+   "nCompras": 0,
+   "enVenta": 0,
+   "v2": {
+    "stage": null,
+    "availableBricks": null,
+    "availableBricksSecondary": null,
+    "lowestOfferPrice": null
+   }
+  },
+  "AT0000A3AAX6": {
+   "titulo": "Vermietete Neubau-Investmentwohnung im 22. Bezirk Nähe Donauzentrum",
+   "stage": "deleted",
+   "availableBricks": 1760,
+   "availableBricksSecondary": 0,
+   "sharePrice": 100,
+   "rentalReturn": -0.97,
+   "nVentas": 0,
+   "nCompras": 0,
+   "enVenta": 0,
+   "v2": {
+    "stage": null,
+    "availableBricks": null,
+    "availableBricksSecondary": null,
+    "lowestOfferPrice": null
+   }
+  },
+  "AT0000A3E842": {
+   "titulo": "Photovoltaik Anlage mit Schnellladestation im Parkhaus Quartier Mitte St. Pölten",
+   "stage": "secondary",
+   "availableBricks": 219,
+   "availableBricksSecondary": 0,
+   "sharePrice": 507.62,
+   "rentalReturn": 6.12,
+   "nVentas": 0,
+   "nCompras": 0,
+   "enVenta": 0,
+   "v2": {
+    "stage": "secondary",
+    "availableBricks": 219,
+    "availableBricksSecondary": 0,
+    "lowestOfferPrice": 507.62
+   }
+  },
+  "AT0000A3SE89": {
+   "titulo": "Betriebsgrundstück mit langfristigem BILLA-Mietvertrag",
+   "stage": "primary",
+   "availableBricks": 6322,
+   "availableBricksSecondary": 0,
+   "sharePrice": 100,
+   "rentalReturn": 5.07,
+   "nVentas": 0,
+   "nCompras": 0,
+   "enVenta": 0,
+   "v2": {
+    "stage": "primary",
+    "availableBricks": 6322,
+    "availableBricksSecondary": null,
+    "lowestOfferPrice": null
+   }
+  }
+ }
+}

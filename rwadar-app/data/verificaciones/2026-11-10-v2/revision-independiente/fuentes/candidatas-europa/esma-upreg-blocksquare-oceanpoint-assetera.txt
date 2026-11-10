@@ -1,0 +1,6 @@
+Fuente: https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_entityName:*Blocksquare*%20OR%20ae_entityName:*Oceanpoint*%20OR%20ae_entityName:*Assetera*&rows=50&wt=json
+Consultado: 2026-11-10T09:44:38Z · HTTP 200 · 1445 bytes · sha256 1078406f6bd52fe46bca31de9b5649fe68c30c54d13bd8e63735782e4c44004a
+Copia original en crudo/esma-upreg-blocksquare-assetera.json (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+numFound=1
+{"ae_entityName": "ASSETERA GmbH", "ae_entityTypeLabel": "Investment firm", "ae_status": "Active", "ae_homeMemberState": "AUSTRIA", "ae_competentAuthority": "Austrian Financial Market Authority (FMA)"}

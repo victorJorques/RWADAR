@@ -1,0 +1,661 @@
+{
+ "slug": "spiko-smart-cash-euro",
+ "tipoExpediente": "publicada",
+ "grupo": "spiko",
+ "proveedor": "Spiko",
+ "plataformaSlug": "spiko",
+ "entidadComercializadora": "Spiko Finance SAS (ACPR CIB 19183; CNMV ESI del EEE en libre prestación n.º 5325 desde el 14/01/2026), único establecimiento que recibe las órdenes según el folleto. En la CNMV, la comercializadora inscrita de SPIKO SICAV es ALDANA CAPITAL, S.A., A.V. (n.º 280).",
+ "emisor": "SPIKO SICAV, compartimento SPIKO AMUNDI OVERNIGHT SWAP FUND (SAFO); sociedad gestora y productor del KID: TWENTY FIRST CAPITAL (AMF GP-11000029); gestor financiero delegado: Amundi Asset Management; depositario: CACEIS Bank",
+ "vehiculo": "Compartimento de SICAV UCITS; no es fondo monetario (KID: «Clasificación AMF: No aplicable»; GECO: «Classification : Autre Fonds»). Cartera de acciones y bonos cubierta con permutas de rendimiento total (TRS) con bancos.",
+ "token": "Acción EUR registrada en DLT (símbolo eurSAFO) en varias redes; direcciones en el folleto y en la API (copias en grupos/spiko/fuentes/crudo/, fuera de Git)",
+ "derechoAdquirido": "Acciones de capitalización de la clase EUR FR0014015LD3 (nombre comercial «Spiko Euro», gama Smart Cash), inscritas a nombre del titular en un registro DLT; el valor sigue el valor liquidativo diario.",
+ "jurisdiccion": "FR",
+ "identificador": "ISIN FR0014015LD3 · AMF SCV20260075 (compartimento, código nacional FDS107932, LEI 9695002CD3L0PN3WRT07) / SCV20240012 (SICAV) · LEI gestora 969500WSBA6KS8V1OR80",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Documento de Datos Fundamentales (KID PRIIPs) en español · SPIKO AMUNDI OVERNIGHT SWAP FUND – participación EUR",
+   "url": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+   "versionOFecha": "Publicado el 1 de septiembre de 2026; SHA-256 idéntico al publicado el 05/11 (descargado 09:05:35Z; copia en fuentes/pdf/)",
+   "paginas": 3,
+   "sha256": "53effea21c5fd26ddc78cb7e1e877c3f9f74d965013bd4e1b051fbf46907a322",
+   "leido": true
+  },
+  {
+   "titulo": "KID en inglés · eurSAFO",
+   "url": "https://cdn.spiko.finance/legal_docs/EN/KID_eurSAFO_EN.pdf",
+   "versionOFecha": "Published on 1 September 2026; SHA-256 idéntico al 05/11 (09:05:35Z)",
+   "paginas": 3,
+   "sha256": "b1461391b41c7ac308236bbfdd765026c24d698631544f3fd06b485949266420",
+   "leido": true
+  },
+  {
+   "titulo": "KID en francés · eurSAFO",
+   "url": "https://cdn.spiko.finance/legal_docs/FR/KID_eurSAFO_FR.pdf",
+   "versionOFecha": "Primera descarga en estos ciclos (09:05:38Z); sin huella anterior con la que comparar",
+   "paginas": null,
+   "sha256": "08d700730f76ddbd4be95573e557b5ea874475a2c39aa028d79863260d2326b2",
+   "leido": false
+  },
+  {
+   "titulo": "Folleto de SPIKO SICAV en francés publicado en la base GECO de la AMF",
+   "url": "https://geco.amf-france.org/back-office/document/download/438274",
+   "versionOFecha": "Spiko SICAV_Prospectus vFR 2026.09.01 (creado 27/08/2026, efecto 01/09/2026); SHA-256 idéntico al 05/11 (09:05:42Z); sigue siendo el último folleto que lista GECO",
+   "paginas": 84,
+   "sha256": "940559b4976a6837791e72725bc4ac3bf4c5faf579592bed7d36ac9d215f74fe",
+   "leido": true
+  },
+  {
+   "titulo": "Folleto en francés alojado por Spiko",
+   "url": "https://cdn.spiko.finance/legal_docs/FR/Prospectus_Spiko_SICAV_FR.pdf",
+   "versionOFecha": "Prospectus vFR (01.09.2026); SHA-256 idéntico al 05/11 (09:05:39Z)",
+   "paginas": 84,
+   "sha256": "474f836f40c135bde0288e51372696900cf4ed173cc87087f2e46cdcfd7fd106",
+   "leido": true
+  },
+  {
+   "titulo": "Certificado de autorización de la AMF (Agreement Certificate) de SPIKO SICAV y sus compartimentos",
+   "url": "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+   "versionOFecha": "París, 23/02/2026; SHA-256 idéntico al 05/11 (09:05:41Z). Sigue siendo el destino del botón «Verificar la aprobación →» de la web",
+   "paginas": 2,
+   "sha256": "709e0585259a5e461710633ae97475c2273c985aa99ae96d7c8fda746cd96c77",
+   "leido": true
+  },
+  {
+   "titulo": "Spiko SICAV – Prospectus vEN",
+   "url": "https://cdn.spiko.finance/legal_docs/EN/Prospectus_Spiko_SICAV_EN.pdf",
+   "versionOFecha": "Publication date 1 September 2026; SHA-256 idéntico al 05/11 (descargado 09:05:38Z; PDF fuera de Git en fuentes/crudo/pdf/)",
+   "paginas": 82,
+   "sha256": "7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35",
+   "leido": true
+  },
+  {
+   "titulo": "Folleto en español (enlace «es» de la API legal-documents para SAFO)",
+   "url": "https://cdn.spiko.finance/legal_docs/ES/Prospectus_Spiko_SICAV_ES.pdf",
+   "versionOFecha": "HTTP 403 AccessDenied (09:05:41Z), igual que el 05/11",
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  },
+  {
+   "titulo": "Página comercial Spiko Euro (español)",
+   "url": "https://www.spiko.io/es/spiko-euro",
+   "versionOFecha": "Render 09:03:32Z (fuentes/spiko-web-es-spiko-euro.json) y HTML 09:05:25Z (crudo). Texto de producto igual que el 05/11 salvo cifras, cartera de colateral, «Crédit Agricole CACEIS» y el capital social de Spiko Finance en el pie (10.000.000 €)",
+   "paginas": null,
+   "sha256": "988387333b008086afca270fc96d676776143038271471a27c8ad3ca5acfeee2",
+   "leido": true
+  },
+  {
+   "titulo": "Página «Particulares» (español)",
+   "url": "https://www.spiko.io/es/usos-principales/particulares",
+   "versionOFecha": "Render 09:03:45Z y HTML 09:05:25Z; sigue con «No existen límites de retirada»",
+   "paginas": null,
+   "sha256": "20ad0274a91478986606fe13acf51838775bfa47c2938320a64da894320f5831",
+   "leido": true
+  },
+  {
+   "titulo": "docs.spiko.io · Smart Cash Funds",
+   "url": "https://docs.spiko.io/documentation/product_overview/smart_cash/funds",
+   "versionOFecha": "Texto idéntico al 03/11 (09:06:16Z)",
+   "paginas": null,
+   "sha256": "a5d9fdccf6dd94eb3067083e021bae949b433a1bcff0d3f46b9a55db82b516c4",
+   "leido": true
+  },
+  {
+   "titulo": "Fund Availability (países por fondo)",
+   "url": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+   "versionOFecha": "«Last updated: October 23, 2026.» Texto extraído idéntico al de la copia del 03/11 (09:06:14Z); los bytes del HTML cambian (marcado de la web), no el contenido",
+   "paginas": null,
+   "sha256": "c17ef8df4f1fcd21cc5d211fe1cd9e0ac103606332da91d758580ae411327651",
+   "leido": true
+  },
+  {
+   "titulo": "Onboarding Restrictions",
+   "url": "https://docs.spiko.io/documentation/product_overview/onboarding_restrictions",
+   "versionOFecha": "Texto idéntico al 03/11 (09:06:14Z); España no figura entre los países excluidos",
+   "paginas": null,
+   "sha256": "f71b42e6e61d09da114883d853160ead614f543fb529482e5051eff3218bb9d1",
+   "leido": true
+  },
+  {
+   "titulo": "Deposits and Withdrawals",
+   "url": "https://docs.spiko.io/documentation/account_management/deposits_withdrawals",
+   "versionOFecha": "Texto idéntico al 03/11 (09:06:15Z)",
+   "paginas": null,
+   "sha256": "c636c966f53eb8004f8acc8a1c6dbbd8aac49a34d65b35c2f4c442b3f77f4130",
+   "leido": true
+  },
+  {
+   "titulo": "Spiko Finance – Terms of Use",
+   "url": "https://cdn.spiko.finance/legal_docs/EN/Terms_of_Use_EN.pdf",
+   "versionOFecha": "Version 2.2, 30 June 2026; SHA-256 idéntico al 05/11 (09:05:41Z)",
+   "paginas": 27,
+   "sha256": "71dd7ba10600e4fe87478ce01ce2a0d9c6d49bf32586cd825ba84c670ddbd883",
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "AMF (GECO, ficha del compartimento)",
+   "entidad": "SPIKO AMUNDI OVERNIGHT SWAP FUND (SICAV SPIKO SICAV)",
+   "numero": "Agrément SCV20260075, «Date d'autorisation : 17/02/2026»; código nacional FDS107932; SICAV SCV20240012",
+   "url": "https://geco.amf-france.org/produit-d-epargne/c124199",
+   "alcance": "NUEVO: la ficha ya está publicada. Render (09:07:34Z): «OPC : SPIKO AMUNDI OVERNIGHT SWAP FUND · Société de gestion : TWENTY FIRST CAPITAL · Dépositaire : CACEIS Bank · Type d’autorisation : Agrément · N° Agrément/Visa : SCV20260075 · Date d'autorisation : 17/02/2026 · Statut : Vivant · Classification : Autre Fonds · Date de création : 12/01/2026 · Code ISIN part principale : FR0014015LD3 · Type de souscripteurs : Tous souscripteurs». Sigue sin clases: «Aucune part disponible» y API /shares «[]»; lastVl FR0014015LD3 vacío (0 bytes, 09:07:05Z). API /funds/compartment/c124199 (09:07:02Z): «published»: true, dtDataHub 2026-11-09T04:50:45 (el 05/11 a las 08:06–08:12Z devolvía idInterne 0 y published false; el control inexistente c999999991 sigue igual que entonces, 09:07:04Z). En la lista de GECO, «SPIKO» da hoy 4 compartimentos (antes 2) y SCV20260075, FR0014015LD3 y «OVERNIGHT SWAP» dan 1 (antes 0) (09:08:46Z–09:08:47Z). GECO no publica a qué países se ha notificado el fondo.",
+   "consultadoUtc": "2026-11-10T09:07:34Z"
+  },
+  {
+   "regulador": "AMF (GECO, documentos de SPIKO SICAV)",
+   "entidad": "SPIKO SICAV (producto p79397)",
+   "numero": "Folleto vFR con efecto 01/09/2026 (docId 669408, idInterne 438274)",
+   "url": "https://geco.amf-france.org/back-office/document/download/438274",
+   "alcance": "La API de documentos para c124199 (09:07:07Z) lista los estatutos 2025.05 y el folleto 01/09/2026 (SHA-256 idéntico al 05/11), que incluye SPIKO AMUNDI OVERNIGHT SWAP FUND con la Action EUR FR0014015LD3, mínimo 1 EUR y «Tous souscripteurs».",
+   "consultadoUtc": "2026-11-10T09:07:07Z"
+  },
+  {
+   "regulador": "AMF (certificado de autorización alojado por Spiko)",
+   "entidad": "SPIKO SICAV · compartimento SPIKO AMUNDI OVERNIGHT SWAP FUND",
+   "numero": "SCV20260075 (compartimento); SICAV SCV20240012",
+   "url": "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+   "alcance": "Documento de la AMF fechado el 23/02/2026 (SHA-256 idéntico); hoy lo respalda también la ficha pública de GECO.",
+   "consultadoUtc": "2026-11-10T09:05:41Z"
+  },
+  {
+   "regulador": "CNMV (registro de IIC extranjeras comercializadas en España)",
+   "entidad": "SPIKO SICAV",
+   "numero": "2380 (fecha de registro 30/01/2026)",
+   "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+   "alcance": "«SPIKO SICAV · 2380 · 30/01/2026 · SICAV · FRANCIA · IIC Comunitaria · IIC Sujeto a la directiva 2009/65/CE». Comercializadora inscrita (vista 18, 09:09:05Z): ALDANA CAPITAL, SOCIEDAD ANONIMA AGENCIA DE VALORES. Solo vistas «Datos generales» y «Entidades comercializadoras»; no desglosa compartimentos ni clases. Control: otras dos SICAV francesas de la misma comercializadora (LAZARD FUNDS n.º 1991 y CM-AM SICAV n.º 1904) tampoco muestran compartimentos (09:09:54Z–09:09:56Z), así que la vista pública de la CNMV no los enseña para ninguna. «Hechos relevantes» de SPIKO SICAV: «No se han encontrado datos disponibles» (09:10:11Z). Sin cambios respecto al 05/11.",
+   "consultadoUtc": "2026-11-10T09:09:04Z"
+  },
+  {
+   "regulador": "CNMV (comercializadora de IIC extranjeras)",
+   "entidad": "ALDANA CAPITAL, SOCIEDAD ANONIMA AGENCIA DE VALORES",
+   "numero": "Sociedades y Agencias de Valores n.º 280 (06/04/2018)",
+   "url": "https://www.cnmv.es/portal/consultas/iic/comercializadora?nif=A87969739",
+   "alcance": "Lista 18 «IIC extranjeras comercializadas», la última «SPIKO SICAV»; no lista compartimentos ni clases. Su web (09:12:17Z) no menciona Spiko y se presenta como especializada en «Inversores Institucionales/Profesionales». Sin cambios respecto al 05/11.",
+   "consultadoUtc": "2026-11-10T09:09:09Z"
+  },
+  {
+   "regulador": "CNMV (ESI del EEE en libre prestación)",
+   "entidad": "SPIKO FINANCE SASU",
+   "numero": "5325 (fecha de registro 14/01/2026)",
+   "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es",
+   "alcance": "Programa de actividades (vista 17, 09:09:08Z): «1. Recepción y transmisión de órdenes de clientes en relación con uno o más instrumentos financieros · 3) Participaciones y acciones en instituciones de inversión colectiva»; auxiliares: crédito ligado a la operación y cambio de divisas. Es la empresa que recibe las órdenes, no la aprobación del fondo. Sin cambios.",
+   "consultadoUtc": "2026-11-10T09:09:06Z"
+  },
+  {
+   "regulador": "ACPR (REGAFI, API pública)",
+   "entidad": "Spiko Finance (SIREN 980659585, LEI 969500NW8QTZA7UG8M82)",
+   "numero": "CIB 19183 (15/12/2025), «Entreprise d'Investissement», «Agrément»; pasaporte de libre prestación a España desde 08/01/2026 (A1:C3) y auxiliares B2:C3 y B4:C3 desde 16/06/2026",
+   "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+   "alcance": "Hoy leído con curl a la API pública (entidad 09:10:40Z; pasaportes 09:11:34Z, al cuarto intento tras tres «connection reset» del proxy). approval_withdrawal_process «False». Copias en fuentes/crudo/regafi-*.json. Sin cambios respecto al 05/11.",
+   "consultadoUtc": "2026-11-10T09:11:34Z"
+  },
+  {
+   "regulador": "ESMA (base de comercialización transfronteriza de fondos)",
+   "entidad": "SPIKO SICAV / Spiko",
+   "numero": "sin resultados",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_funds_cbdif/select?q=*Spiko*&wt=json&rows=20",
+   "alcance": "numFound 0 para «Spiko» (09:12:08Z). No concluyente: la base solo tiene 1.237 fondos domiciliados en Francia (09:12:10Z); sí aparecen fondos luxemburgueses de Twenty First Capital.",
+   "consultadoUtc": "2026-11-10T09:12:08Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Spiko",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Spiko",
+   "consultadoUtc": "2026-11-10T09:10:23Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Twenty First Capital",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Twenty+First+Capital",
+   "consultadoUtc": "2026-11-10T09:10:25Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Amundi",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Amundi",
+   "consultadoUtc": "2026-11-10T09:10:27Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Aldana",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aldana",
+   "consultadoUtc": "2026-11-10T09:10:29Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Trading (control positivo)",
+   "resultado": "control correcto: «Página 1 de 16» de advertencias",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "consultadoUtc": "2026-11-10T09:10:31Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "day 2026-11-09 · amount 1.016874 EUR · numberOfHolders 11080",
+   "dato": "abierta (VL diaria publicada; 11.080 titulares)",
+   "fuentePrimaria": "https://public-api.spiko.io/v0/share-classes/eurSAFO/totals",
+   "localizador": "API /share-classes/eurSAFO/totals y /net-asset-values/eurSAFO/latest (09:01:43Z–09:01:44Z); web «Crea tu cuenta»; data.spiko.io «USERS 11,080»; GECO «Statut : Vivant»",
+   "fechaDato": "2026-11-09",
+   "consultadoUtc": "2026-11-10T09:01:44Z",
+   "alcanceYLimites": "Sin alta por nuestra parte. GECO aún no publica la VL de este ISIN (lastVl vacío, 09:07:05Z).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "registro",
+   "literal": "N° Agrément/Visa : SCV20260075 · Date d'autorisation : 17/02/2026 · Statut : Vivant · Code ISIN part principale : FR0014015LD3",
+   "dato": "Compartimento autorizado por la AMF (SCV20260075, 17/02/2026) y con ficha pública en GECO",
+   "fuentePrimaria": "https://geco.amf-france.org/produit-d-epargne/c124199",
+   "localizador": "Ficha GECO c124199 (render 09:07:34Z) y API /funds/compartment/c124199 (09:07:02Z); certificado AMF del 23/02/2026; folleto vFR 01/09/2026 en GECO",
+   "fechaDato": "2026-11-09",
+   "consultadoUtc": "2026-11-10T09:07:34Z",
+   "alcanceYLimites": "fechaDato = dtDataHub de la ficha en GECO. La ficha aún no lista clases de acciones («Aucune part disponible») ni VL. No dice en qué países se comercializa.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "dailyYield \"0.0284\" · weeklyYield \"0.0284\" · monthlyYield \"0.0284\" · previousYieldTimestamp 2026-11-09T17:19:16Z",
+   "dato": "2,84 % neto anualizado (devengo del último día, VL del 09/11/2026)",
+   "fuentePrimaria": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+   "localizador": "API pública Spiko v0 (copia en fuentes/crudo/spiko-api-eurSAFO-yield.json; su updatedAt es la hora de la petición, 09:01:43Z); web ES «Interés a tipo fijo 2,84%» y «2,84% Rendimiento neto actual» (09:03:32Z); portada ES «2,84% rentabilidad neta en EUR» (09:03:56Z); data.spiko.io «30D YIELD 2.84%» (09:04:18Z)",
+   "fechaDato": "2026-11-09",
+   "consultadoUtc": "2026-11-10T09:01:43Z",
+   "alcanceYLimites": "Es el tipo que se devenga cada día, neto de la comisión del 0,25 %. Método del recálculo con la serie de VL de la API (/net-asset-values/eurSAFO?startDay=2026-09-20, 09:01:44Z): la VL del viernes ya incluye el devengo del fin de semana (06/11: +3 días), así que del 06/11 (1,016796 €) al 09/11 (1,016874 €) hay 1 día de devengo: (1,016874 / 1,016796)^365 − 1 = 2,839 %. A 7 días (02/11 → 09/11) = 2,835 %; a 28 días (12/10 → 09/11) = 2,833 %. Una ventana de 31 días que empiece en la VL del viernes 09/10 da 2,648 % porque esa VL ya lleva tres días de devengo: no es comparable. €STR del 09/11/2026: 2,442 % (BCE, 09:12:24Z): la cifra queda 0,40 puntos por encima, como dice la web («€STR + un 0,40%»). Variable y no garantizado. Spiko la recalcula hoy a las 19:30 UTC.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "objetivo",
+   "literal": "obtener una rentabilidad anualizada neta al menos igual al indicador de referencia €STR + 0,50 %",
+   "dato": "Objetivo de gestión ligado al €STR; no es una rentabilidad",
+   "fuentePrimaria": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+   "localizador": "KID ES p. 1 «Objetivos»",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-10T09:05:35Z",
+   "alcanceYLimites": "Siguen las versiones distintas: KID ES y folleto €STR + 0,50 %; docs.spiko.io «€STR + 0.25%» (09:06:16Z); data.spiko.io y API «Capitalized €STR + 0.50%»; la web dice que BNP Paribas paga «€STR + un 0,40%». No publicar el objetivo como cifra.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Action EUR FR0014015LD3 ... 1 EUR ... Tous souscripteurs",
+   "dato": "1 EUR (suscripción inicial y siguientes)",
+   "fuentePrimaria": "https://geco.amf-france.org/back-office/document/download/438274",
+   "localizador": "Folleto vFR 01/09/2026 alojado en GECO (SHA-256 idéntico), tabla de clases del compartimento SAFO; API /share-classes eurSAFO minimumInitialSubscription \"1\" (09:01:45Z); web «Depósito inicial mínimo €1 · Minimum redemption €1» (09:05:25Z); data.spiko.io «MINIMUM INITIAL SUBSCRIPTION 1 EUR»",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-10T09:05:42Z",
+   "alcanceYLimites": "Clase EUR FR0014015LD3. No prueba que el alta sea aceptada.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Frais de gestion financière ... 0,25% TTC · Frais de fonctionnement et autres services 0,10% TTC maximum · Commission de souscription/rachat : Néant",
+   "dato": "Gestión 0,25 % anual; gastos de funcionamiento hasta 0,10 %; 0 % de entrada y de salida",
+   "fuentePrimaria": "https://geco.amf-france.org/back-office/document/download/438274",
+   "localizador": "Folleto vFR 01/09/2026, compartimento SAFO; API managementFees \"0.0025\"; data.spiko.io «MANAGEMENT FEES 0.25% · SUBSCRIPTION FEES 0.00% · REDEMPTION FEES 0.00%»; web Particulares «La única comisión por usar Spiko Euro es una comisión de gestión anual del 0,25%»",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-10T09:05:42Z",
+   "alcanceYLimites": "El rendimiento publicado ya es neto de comisiones. Comisiones de red DLT a cargo del inversor.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "salida",
+   "literal": "Las solicitudes de suscripción ... y de reembolso ... son centralizadas por Spiko Finance a más tardar a las 15:00 (hora de París). Estas solicitudes se ejecutan sobre la base del valor liquidativo establecido el día de su centralización.",
+   "dato": "Reembolso diario: orden antes de las 15:00 (París), ejecución a la VL del día y abono el día hábil siguiente (J+1)",
+   "fuentePrimaria": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+   "localizador": "KID ES p. 1 y p. 3 (SHA-256 idéntico); folleto vFR «S’agissant des rachats, le règlement intervient en J+1»; docs.spiko.io «Cut-off time 3pm Paris time» (09:06:16Z)",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-10T09:05:35Z",
+   "alcanceYLimites": "Después de las 15:00 pasa al día hábil siguiente. El 11/11 es festivo en Francia (nonOperatingDays de la API).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "salida_limite",
+   "literal": "le plafonnement des rachats peut être déclenché par la société de gestion lorsqu’un seuil de 25 % de l’actif net est atteint ... 20 valeurs liquidatives sur 3 mois",
+   "dato": "Gate a partir del 25 % del patrimonio neto; máx. 20 VL en 3 meses",
+   "fuentePrimaria": "https://geco.amf-france.org/back-office/document/download/438274",
+   "localizador": "Folleto vFR 01/09/2026, compartimento SAFO, «Dispositif de plafonnement des rachats»; folleto EN «a threshold of 25% of net assets»",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-10T09:05:42Z",
+   "alcanceYLimites": "Mecanismo excepcional; el KID lo menciona («Gates») sin cifra.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "salida_publicidad",
+   "literal": "Las solicitudes realizadas después de las 15:00 o en días no hábiles llegarán el segundo día hábil (T+2). No existen límites de retirada.",
+   "dato": "La página «Particulares» sigue diciendo que no hay límites de retirada, en contra del límite del 25 % del folleto",
+   "fuentePrimaria": "https://www.spiko.io/es/usos-principales/particulares",
+   "localizador": "Página «Particulares», pregunta «¿Cuánto tarda un reembolso?» (HTML 09:05:25Z, también en sus datos estructurados FAQ)",
+   "fechaDato": "2026-11-10",
+   "consultadoUtc": "2026-11-10T09:05:25Z",
+   "alcanceYLimites": "Prevalece el folleto. Sostiene el aviso publicado sobre el límite del 25 %.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "salida_instantanea",
+   "literal": "The instant withdrawal feature allows you to withdraw your funds from Spiko Euro and Spiko T-Bills Euro ... up to €500,000 per day",
+   "dato": "Retirada instantánea SEPA, gratis, hasta 500.000 EUR/día",
+   "fuentePrimaria": "https://docs.spiko.io/documentation/account_management/deposits_withdrawals",
+   "localizador": "docs.spiko.io «Deposits and Withdrawals» (texto idéntico al 03/11); web Particulares «Las transferencias son instantáneas hasta 500 000 € al día»; Terms of Use v2.2 art. 12",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-10T09:06:15Z",
+   "alcanceYLimites": "Servicio de Spiko Finance, sujeto a sus condiciones; por encima del límite, retirada normal.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "🇪🇸 Spain ✅ (Smart Cash) ... The Smart Cash column covers all four share classes: Spiko Euro, Spiko Dollar, Spiko Pound and Spiko Swiss Franc · Last updated: October 23, 2026.",
+   "dato": "España incluida para Spiko Euro según el emisor",
+   "fuentePrimaria": "https://docs.spiko.io/documentation/product_overview/fund_availability",
+   "localizador": "docs.spiko.io «Fund Availability», tabla por país (texto idéntico al 03/11)",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-10T09:06:14Z",
+   "alcanceYLimites": "Es una fuente del emisor. La misma página dice «A share class created later needs its own registration before it can be distributed there». España no está en la lista de exclusiones de alta (09:06:14Z). KYC; U.S. Persons excluidas.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana_registro",
+   "literal": "CNMV: «SPIKO SICAV · 2380 · 30/01/2026 · SICAV · FRANCIA» (solo «Datos generales» y «Entidades comercializadoras»); GECO c124199: «Date d'autorisation : 17/02/2026 ... Aucune part disponible»",
+   "dato": null,
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+   "localizador": "CNMV registro de IIC extranjeras (09:09:04Z y vista 18 09:09:05Z); controles LAZARD FUNDS y CM-AM SICAV (09:09:54Z–09:09:56Z); hechos relevantes de SPIKO SICAV (09:10:11Z); listado completo de UCITS de la CNMV (09:11:59Z, solo nivel IIC); CNMV ficha de Aldana Capital A.V. (09:09:09Z); GECO c124199 (09:07:02Z–09:07:34Z); ESMA (09:12:08Z); web de Aldana Capital (09:12:17Z); búsquedas web (discovery) sin resultados",
+   "fechaDato": "2026-11-10",
+   "consultadoUtc": "2026-11-10T09:09:04Z",
+   "alcanceYLimites": "Pendiente del 05/11 sin resolver: nadie lo confirma ni lo niega. La CNMV no publica compartimentos de ninguna SICAV extranjera (comprobado con dos controles), no tiene hechos relevantes de SPIKO SICAV y su listado de UCITS es solo por IIC. La AMF ya publica la ficha del compartimento, pero GECO no dice en qué países se ha notificado. El compartimento se autorizó el 17/02/2026, después de la inscripción de la SICAV en la CNMV (30/01/2026), y la propia Spiko dice que una clase creada después necesita su propia notificación. Aldana Capital no menciona Spiko y trabaja con inversores institucionales/profesionales; ESMA no tiene Spiko pero está incompleta para Francia.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "accesoEspana_particulares",
+   "literal": "El Producto está dirigido a todo tipo de inversores que deseen rentabilizar una colocación de tesorería a corto plazo.",
+   "dato": "Admite particulares",
+   "fuentePrimaria": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+   "localizador": "KID ES p. 1 «Inversores objetivo»; folleto y GECO «Tous souscripteurs»",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-10T09:05:35Z",
+   "alcanceYLimites": "El mismo párrafo: el capital no está garantizado y el inversor debe poder asumir pérdidas.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Hemos clasificado este Producto en el indicador de riesgo 1 de 7 ... Riesgo(s) significativo(s) para el Producto no tenidos en cuenta en este indicador: Riesgo de contraparte",
+   "dato": "Riesgo 1/7 sin contar el riesgo de contraparte; plazo recomendado 3 meses; capital no garantizado",
+   "fuentePrimaria": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+   "localizador": "KID ES p. 2; «No existe rentabilidad mínima garantizada. Podría perder la totalidad o parte de su inversión.»",
+   "fechaDato": "2026-09-01",
+   "consultadoUtc": "2026-11-10T09:05:35Z",
+   "alcanceYLimites": "Escenarios del KID a 3 meses con 10.000 EUR: 9.980, 9.990, 9.990 (moderado) y 10.100 EUR.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos_publicidad",
+   "literal": "Interés a tipo fijo 2,84% Garantizado por contrapartes Pagado diariamente",
+   "dato": "La web sigue presentando «tipo fijo» y «garantizado por contrapartes»; el KID dice que no hay rentabilidad mínima garantizada",
+   "fuentePrimaria": "https://www.spiko.io/es/spiko-euro",
+   "localizador": "Página comercial Spiko Euro (ES), bloque superior (render 09:03:32Z y HTML 09:05:25Z); además «Spiko Euro recibe a cambio un rendimiento diario garantizado»",
+   "fechaDato": "2026-11-10",
+   "consultadoUtc": "2026-11-10T09:03:32Z",
+   "alcanceYLimites": "Prevalece el KID. Sostiene el aviso publicado.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "gestion",
+   "literal": "Sociedad gestora Amundi Asset Management (web) · Société de gestion : TWENTY FIRST CAPITAL (GECO)",
+   "dato": "Gestora Twenty First Capital; gestión financiera delegada en Amundi Asset Management",
+   "fuentePrimaria": "https://geco.amf-france.org/produit-d-epargne/c124199",
+   "localizador": "GECO c124199 (09:07:34Z); KID ES p. 1 «Productor de este producto: TWENTY FIRST CAPITAL»; web ES «Sociedad gestora Amundi Asset Management» (09:05:25Z)",
+   "fechaDato": "2026-11-09",
+   "consultadoUtc": "2026-11-10T09:07:34Z",
+   "alcanceYLimites": "La web sigue sin ser exacta: la gestora es Twenty First Capital (ahora también en la ficha de la AMF).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "patrimonio",
+   "literal": "API: totalAssets 1753625915.58 EUR · data.spiko.io: AUM €2,004,837,973 · web: «Activos totales del fondo €2.292 M»",
+   "dato": null,
+   "fuentePrimaria": "https://public-api.spiko.io/v0/share-classes/eurSAFO/totals",
+   "localizador": "API /share-classes/eurSAFO/totals (09:01:44Z) frente a data.spiko.io/safo-eur (09:04:18Z) y web ES (09:03:32Z)",
+   "fechaDato": "2026-11-09",
+   "consultadoUtc": "2026-11-10T09:01:44Z",
+   "alcanceYLimites": "Tres cifras distintas de Spiko (la web puede ser del fondo con todas sus clases). Los titulares sí coinciden (11.080). No se publica.",
+   "estado": "en_conflicto"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Spiko Finance inscrita en la CNMV (n.º 5325) y en REGAFI; gestora Twenty First Capital; SICAV inscrita en la CNMV (n.º 2380, comercializadora Aldana Capital A.V.). Novedad: el compartimento ya tiene ficha pública en GECO (SCV20260075, autorizado el 17/02/2026, vivo, todos los suscriptores), aunque sin clases ni VL. Sigue sin constar en un registro público su comercialización en España."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple",
+   "nota": "VL del 09/11/2026 publicada; 11.080 titulares; rendimiento recalculado hoy con la serie de VL."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "cumple_con_limites",
+   "nota": "España ✅ en la tabla del emisor (23/10/2026), KID en español, desde 1 EUR, 0,25 % anual, reembolso diario con corte 15:00 y abono J+1. Límites: ningún registro público confirma la comercialización del compartimento en España; gate del 25 %; KYC."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "KID ES con riesgo 1/7 y riesgo de contraparte fuera del indicador; sin advertencias de la CNMV. La web sigue con «Interés a tipo fijo» / «Garantizado por contrapartes», «Sociedad gestora Amundi» y «No existen límites de retirada», en contra del KID, del folleto y de la AMF."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "confirmado",
+ "avisosConFecha": [
+  {
+   "aviso": "Métrica «Rentabilidad publicada · neta y variable · 04/11/2026»: 2,84 %",
+   "estado": "cambia",
+   "textoNuevo": "Rentabilidad publicada · neta y variable · 09/11/2026: 2,84 %",
+   "fuente": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+   "literal": "dailyYield \"0.0284\" · monthlyYield \"0.0284\" · previousYieldTimestamp 2026-11-09T17:19:16Z"
+  },
+  {
+   "aviso": "Spiko dice que se puede contratar desde España, pero no hemos podido confirmar en ningún registro público de la CNMV ni de la AMF (Francia) que este fondo esté dado de alta para venderse aquí: la CNMV solo muestra la sociedad Spiko SICAV, no sus fondos uno a uno.",
+   "estado": "sigue_vigente",
+   "fuente": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+   "literal": "SPIKO SICAV · 2380 · 30/01/2026 · SICAV · FRANCIA · Datos generales · Entidades comercializadoras (09:09:04Z). GECO publica ya el fondo, pero no los países donde se comercializa."
+  },
+  {
+   "aviso": "No es una cuenta ni un depósito. La web de Spiko dice «Interés a tipo fijo» y «Garantizado por contrapartes», pero el KID dice que no hay rentabilidad mínima garantizada y que puedes perder parte o toda la inversión: el rendimiento depende del €STR, que cambia cada día.",
+   "estado": "sigue_vigente",
+   "fuente": "https://www.spiko.io/es/spiko-euro",
+   "literal": "Interés a tipo fijo 2,84% Garantizado por contrapartes Pagado diariamente (web, 09:03:32Z) · «No existe rentabilidad mínima garantizada. Podría perder la totalidad o parte de su inversión.» (KID, SHA-256 idéntico)"
+  },
+  {
+   "aviso": "No es un fondo monetario: invierte en acciones, bonos y otros títulos y cede lo que rinden a uno o varios bancos, que a cambio le pagan el €STR más un margen. Si un banco falla, el fondo podría quedar expuesto a esos títulos, que pueden bajar, y las garantías podrían no cubrir la pérdida. El riesgo 1 de 7 del KID no tiene en cuenta este riesgo.",
+   "estado": "sigue_vigente",
+   "fuente": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+   "literal": "Riesgo(s) significativo(s) para el Producto no tenidos en cuenta en este indicador: Riesgo de contraparte"
+  },
+  {
+   "aviso": "Si un mismo día los inversores piden sacar, entre todos y descontado lo que entra, el 25 % del fondo o más, la gestora puede pagar solo una parte y pasar el resto al siguiente día hábil (como mucho 20 días en 3 meses), aunque la página de Spiko para particulares diga «No existen límites de retirada».",
+   "estado": "sigue_vigente",
+   "fuente": "https://www.spiko.io/es/usos-principales/particulares",
+   "literal": "No existen límites de retirada. (página Particulares, HTML 09:05:25Z) · «seuil de 25 % de l’actif net» (folleto, SHA-256 idéntico)"
+  },
+  {
+   "aviso": "La web de Spiko presenta a Amundi Asset Management como «Sociedad gestora», pero la gestora es Twenty First Capital, según el KID y el certificado de la AMF; el folleto dice que delega en Amundi la gestión de las inversiones. Las reclamaciones se dirigen a Twenty First Capital.",
+   "estado": "sigue_vigente",
+   "fuente": "https://www.spiko.io/es/spiko-euro",
+   "literal": "Sociedad gestora Amundi Asset Management (web, 09:05:25Z) · «Société de gestion : TWENTY FIRST CAPITAL» (GECO, 09:07:34Z)"
+  },
+  {
+   "aviso": "El enlace de la web de Spiko para «Verificar la autorización» lleva a la base pública de la AMF (GECO), pero allí este fondo todavía no tiene ficha publicada. Su autorización consta en el folleto que publica la AMF y en un certificado de la AMF que aloja Spiko.",
+   "estado": "ya_no_aplica",
+   "textoNuevo": null,
+   "fuente": "https://geco.amf-france.org/produit-d-epargne/c124199",
+   "literal": "«Verificar la autorización» → geco.amf-france.org/produit-d-epargne/c124199: «OPC : SPIKO AMUNDI OVERNIGHT SWAP FUND … N° Agrément/Visa : SCV20260075 · Date d'autorisation : 17/02/2026 · Statut : Vivant» (09:07:34Z); API «published»: true. Solo falta la lista de clases («Aucune part disponible»), que pasa a la métrica «Supervisor»."
+  }
+ ],
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "aviso 7 («Verificar la autorización» lleva a una ficha de GECO sin publicar)",
+   "antes": "El enlace de la web de Spiko para «Verificar la autorización» lleva a la base pública de la AMF (GECO), pero allí este fondo todavía no tiene ficha publicada. Su autorización consta en el folleto que publica la AMF y en un certificado de la AMF que aloja Spiko.",
+   "ahora": "Ya no aplica: la ficha de GECO está publicada (SCV20260075, autorizado el 17/02/2026, vivo, todos los suscriptores, gestora Twenty First Capital). Propuesta: quitar el aviso y llevar el matiz «aún sin clases de acciones ni valor liquidativo en GECO» a la métrica «Supervisor»",
+   "fuente": "https://geco.amf-france.org/produit-d-epargne/c124199",
+   "critico": true
+  },
+  {
+   "campo": "métrica «Supervisor»",
+   "antes": "AMF (Francia): n.º SCV20260075, aún sin ficha pública en su base GECO · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España",
+   "ahora": "AMF (Francia): n.º SCV20260075, autorizado el 17/02/2026 (ficha en su base GECO, aún sin clases de acciones ni valor liquidativo) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España",
+   "fuente": "https://geco.amf-france.org/produit-d-epargne/c124199",
+   "critico": true
+  },
+  {
+   "campo": "rentabilidad.literal (fecha)",
+   "antes": "«…(valor liquidativo del 04/11/2026; consultado el 05/11/2026)…»",
+   "ahora": "«…(valor liquidativo del 09/11/2026; consultado el 10/11/2026)…»; la cifra sigue en 2,84 %",
+   "fuente": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+   "critico": true
+  },
+  {
+   "campo": "métrica «Rentabilidad publicada · neta y variable · 04/11/2026»",
+   "antes": "2,84 % · 04/11/2026",
+   "ahora": "2,84 % · 09/11/2026",
+   "fuente": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+   "critico": true
+  },
+  {
+   "campo": "acceso desde España (pendiente del 05/11)",
+   "antes": "No confirmado en ningún registro público (aviso 2)",
+   "ahora": "Sigue igual: ni la CNMV, ni la AMF, ni Aldana Capital, ni ESMA lo confirman ni lo niegan. El aviso 2 se mantiene y no se propone retirar",
+   "fuente": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+   "critico": false
+  },
+  {
+   "campo": "documentacion-ofertas.json · descripción y referencia «Aprobación del compartimento»",
+   "antes": "«autorizado por la AMF con el n.º SCV20260075 (así figura en un certificado de la AMF del 23/02/2026)» · referencia «AMF, SCV20260075 (certificado del 23/02/2026)»",
+   "ahora": "«autorizado por la AMF el 17/02/2026 con el n.º SCV20260075 (ficha pública en GECO y certificado de la AMF del 23/02/2026)»; fuente https://geco.amf-france.org/produit-d-epargne/c124199, consulta 10/11/2026",
+   "fuente": "https://geco.amf-france.org/produit-d-epargne/c124199",
+   "critico": false
+  },
+  {
+   "campo": "documentacion-ofertas.json · referencia «Rendimiento neto publicado»",
+   "antes": "2,84 % · fechaDato 04/11/2026 · consulta 05/11/2026",
+   "ahora": "2,84 % · fechaDato 09/11/2026 · consulta 10/11/2026",
+   "fuente": "https://data.spiko.io/safo-eur",
+   "critico": false
+  },
+  {
+   "campo": "valor liquidativo y titulares",
+   "antes": "1,016485 EUR; 10.871 titulares (04/11/2026)",
+   "ahora": "1,016874 EUR; 11.080 titulares (09/11/2026)",
+   "fuente": "https://public-api.spiko.io/v0/share-classes/eurSAFO/totals",
+   "critico": false
+  },
+  {
+   "campo": "documentos",
+   "antes": "KID ES/EN 01/09/2026, folleto vFR en GECO 01/09/2026, certificado AMF 23/02/2026, docs.spiko.io",
+   "ahora": "Sin cambios: mismos SHA-256 que el 05/11; texto de docs.spiko.io idéntico al 03/11; folleto ES sigue en 403",
+   "fuente": "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "Spiko Euro (Smart Cash): fondo en euros ligado al €STR",
+  "categoria": "Tesoro y fondos",
+  "pais": "FR",
+  "tipo": "rendimiento",
+  "coleccion": "principales",
+  "resumen": "Fondo de inversión UCITS en euros de Spiko que busca el €STR (el tipo a un día del euro) más un margen mediante permutas (swaps) con bancos; no es un fondo monetario ni un depósito. Su valor cambia cada día y el capital no está garantizado.",
+  "rentabilidad": {
+   "mostrada": "2,84 %",
+   "literal": "Cifra que publica Spiko, ya descontadas sus comisiones: lo que creció el fondo en su último día de cálculo, pasado a un año (valor liquidativo del 09/11/2026; consultado el 10/11/2026). Variable: sigue al €STR; no es un tipo fijo ni está garantizado."
+  },
+  "metricas": [
+   {
+    "etiqueta": "Mínimo",
+    "valor": "1 EUR"
+   },
+   {
+    "etiqueta": "Qué es",
+    "valor": "Fondo de inversión europeo (UCITS) que invierte en acciones, bonos y otros títulos y cambia lo que rinden con bancos por el €STR más un margen; no es un fondo monetario"
+   },
+   {
+    "etiqueta": "Supervisor",
+    "valor": "AMF (Francia): n.º SCV20260075, autorizado el 17/02/2026 (ficha en su base GECO, aún sin clases de acciones ni valor liquidativo) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España"
+   },
+   {
+    "etiqueta": "Gestora",
+    "valor": "Twenty First Capital (gestión de las inversiones delegada en Amundi)"
+   },
+   {
+    "etiqueta": "Comisiones",
+    "valor": "0,25 % anual de gestión y hasta 0,10 % de gastos de funcionamiento; 0 % de entrada y de salida"
+   },
+   {
+    "etiqueta": "Reembolso",
+    "valor": "Diario; puede limitarse si un día las salidas netas llegan al 25 % del fondo. Orden antes de las 15:00 (hora de París) y pago al día hábil siguiente"
+   },
+   {
+    "etiqueta": "Riesgo KID",
+    "valor": "1 de 7, sin contar el riesgo de contraparte (el KID lo deja fuera); plazo recomendado: 3 meses"
+   },
+   {
+    "etiqueta": "Rentabilidad publicada · neta y variable · 09/11/2026",
+    "valor": "2,84 %"
+   }
+  ],
+  "avisos": [
+   "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+   "Spiko dice que se puede contratar desde España, pero no hemos podido confirmar en ningún registro público de la CNMV ni de la AMF (Francia) que este fondo esté dado de alta para venderse aquí: la CNMV solo muestra la sociedad Spiko SICAV, no sus fondos uno a uno.",
+   "No es una cuenta ni un depósito. La web de Spiko dice «Interés a tipo fijo» y «Garantizado por contrapartes», pero el KID dice que no hay rentabilidad mínima garantizada y que puedes perder parte o toda la inversión: el rendimiento depende del €STR, que cambia cada día.",
+   "No es un fondo monetario: invierte en acciones, bonos y otros títulos y cede lo que rinden a uno o varios bancos, que a cambio le pagan el €STR más un margen. Si un banco falla, el fondo podría quedar expuesto a esos títulos, que pueden bajar, y las garantías podrían no cubrir la pérdida. El riesgo 1 de 7 del KID no tiene en cuenta este riesgo.",
+   "Si un mismo día los inversores piden sacar, entre todos y descontado lo que entra, el 25 % del fondo o más, la gestora puede pagar solo una parte y pasar el resto al siguiente día hábil (como mucho 20 días en 3 meses), aunque la página de Spiko para particulares diga «No existen límites de retirada».",
+   "La web de Spiko presenta a Amundi Asset Management como «Sociedad gestora», pero la gestora es Twenty First Capital, según el KID y el certificado de la AMF; el folleto dice que delega en Amundi la gestión de las inversiones. Las reclamaciones se dirigen a Twenty First Capital."
+  ],
+  "resumenTarjeta": {
+   "minimo": "Desde 1 €",
+   "accesoEspana": "Según Spiko, sí para residentes en España tras alta y KYC; ningún registro público confirma este fondo aquí.",
+   "salida": "Reembolso diario: orden antes de las 15:00 (París) y abono al día hábil siguiente; puede limitarse (25 % del fondo)."
+  },
+  "url": "https://www.spiko.io/es/spiko-euro",
+  "fuentesActuales": [
+   "https://www.spiko.io/es/spiko-euro",
+   "https://data.spiko.io/safo-eur",
+   "https://cdn.spiko.finance/legal_docs/ES/KID_eurSAFO_ES.pdf",
+   "https://geco.amf-france.org/produit-d-epargne/c124199",
+   "https://geco.amf-france.org/back-office/document/download/438274",
+   "https://cdn.spiko.finance/legal_docs/EN/SAFO_Letter_EN.pdf",
+   "https://docs.spiko.io/documentation/product_overview/fund_availability",
+   "https://www.spiko.io/es/usos-principales/particulares",
+   "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es"
+  ],
+  "lugar": "París · Francia",
+  "pasos": [
+   "Abres cuenta con KYC",
+   "Transfieres euros",
+   "Reembolso diario"
+  ],
+  "concepto": "una cesta de acciones bajo una campana de cristal mientras un banco deja cada día una pequeña ficha de interés sobre la mesa"
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "si",
+  "minimoEntrada": "1 EUR",
+  "supervisorVerificado": "AMF: ficha GECO SCV20260075 (autorizado 17/02/2026) · CNMV IIC extranjera n.º 2380 (SICAV) · CNMV ESI n.º 5325 (Spiko Finance) · ACPR/REGAFI CIB 19183",
+  "documentacionClara": "si",
+  "salidaExplicada": "si",
+  "cifraRecienteVerificada": "si",
+  "porQueDestaca": "UCITS en euros con KID en español del 01/09/2026, ficha pública de la AMF, desde 1 EUR, 0,25 % anual, reembolso diario y retirada instantánea hasta 500.000 €/día; 11.080 titulares.",
+  "porQueNo": "No es un fondo monetario: depende de swaps con bancos; ningún registro público confirma su comercialización en España y la web habla de «tipo fijo» y «garantizado» en contra del KID."
+ },
+ "decision": "actualizar",
+ "motivoDecision": "La cifra no cambia (2,84 %), pero se vuelve a fechar con la VL del 09/11/2026 y la consulta de hoy (recalculada con la serie de VL). Novedad: la AMF ya publica la ficha del compartimento en GECO (SCV20260075, autorizado el 17/02/2026, vivo, todos los suscriptores), así que el aviso 7 ya no aplica y la métrica «Supervisor» debe decirlo. El pendiente de España sigue igual: la CNMV no muestra compartimentos de ninguna SICAV extranjera, la AMF no publica países de comercialización y Aldana Capital no dice nada; nadie lo niega, así que el aviso 2 se mantiene y no se propone retirar. Los avisos 3 a 6 siguen vigentes con las mismas frases de la web. Documentos idénticos al 05/11.",
+ "bloqueos": [
+  "Comercialización del compartimento en España sin confirmar en fuente pública: la CNMV no publica compartimentos de SICAV extranjeras (comprobado con LAZARD FUNDS y CM-AM SICAV) ni tiene hechos relevantes de SPIKO SICAV; GECO no publica países de comercialización; ESMA está incompleta para Francia; Aldana Capital no menciona Spiko. Solo lo cerraría un escrito de la CNMV, de la AMF o de la comercializadora.",
+  "Folleto en español: 403 AccessDenied (09:05:41Z); se leyeron el francés (GECO y CDN) y el inglés.",
+  "Patrimonio en conflicto entre la API (1.753,63 M EUR), data.spiko.io (2.004,84 M EUR) y la web (2.292 M EUR): no se publica.",
+  "GECO aún no publica las clases de acciones ni la VL del compartimento."
+ ],
+ "notaParaCoordinador": "Si se prefiere no tocar la lista de avisos, el aviso 7 podría reescribirse en vez de quitarse: «La AMF ya muestra este fondo en su base pública (GECO), autorizado el 17/02/2026, pero esa ficha todavía no enseña sus clases de acciones ni su valor liquidativo.» Lo que no puede quedarse es «allí este fondo todavía no tiene ficha publicada», porque hoy es falso.",
+ "consulta": {
+  "inicioUtc": "2026-11-10T09:01:43Z",
+  "finUtc": "2026-11-10T09:19:20Z"
+ }
+}

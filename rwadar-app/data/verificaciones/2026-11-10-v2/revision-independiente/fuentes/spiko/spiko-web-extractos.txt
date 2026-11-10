@@ -1,0 +1,50 @@
+Extractos literales de páginas públicas de Spiko (10/11/2026). Sin testimonios ni nombres de personas.
+
+== web-es-eutbl.html
+Fuente: https://www.spiko.io/es/spiko-letras-del-tesoro-euro
+Consulta: 2026-11-10T09:22:56Z · HTTP 200 · 188588 bytes · sha256 d220ef0d1aae487063b0005c9ff69f1343a20efec9a6a2602532586d6f8d916d
+  «Rendimiento neto actual» → os | Crea tu cuenta | Disponible en la divisa de tu elección | EUR | USD | GBP | Las cifras clave | €424 M | Tesorería en Spiko Letras de Tesoro Euro | 2,44% | Rendimiento neto actual | €18 M | Intereses abonados | €5.674 M | Depósitos y reembolsos totales | *Rentabilidades netas anualizadas (después de comisiones) de los últimos 31 días. Las rentabilidades 
+  «últimos 31 días» → imiento neto actual | €18 M | Intereses abonados | €5.674 M | Depósitos y reembolsos totales | *Rentabilidades netas anualizadas (después de comisiones) de los últimos 31 días. Las rentabilidades se actualizan a diario y pueden variar ligeramente en función del rendimiento de las letras del Tesoro. Las rentabilidades pasadas no garantizan resultados futuros.
+  «Depósito inicial mínimo» → ntos generados por las letras del Tesoro. | Capitalización | Método de distribución a los inversores de los rendimientos generados por las letras del Tesoro. | Depósito inicial mínimo | €1 | Domicilio | Francia | Fecha de lanzamiento | 15/05/2024 | Sociedad gestora | Twenty First Capital | Regulador | Autoridad Francesa de los Mercados Financieros (AMF) | Ve
+  «Sociedad gestora» →  inversores de los rendimientos generados por las letras del Tesoro. | Depósito inicial mínimo | €1 | Domicilio | Francia | Fecha de lanzamiento | 15/05/2024 | Sociedad gestora | Twenty First Capital | Regulador | Autoridad Francesa de los Mercados Financieros (AMF) | Verificar la autorización→ | Preguntas frecuentes | ¿Cómo se calculan mis intereses diarios
+
+== web-es-ustbl.html
+Fuente: https://www.spiko.io/es/spiko-letras-del-tesoro-dollar
+Consulta: 2026-11-10T09:22:56Z · HTTP 200 · 195204 bytes · sha256 da4d37cea7f5f93f36944bd093a7bc7d0a322e04f3b036cd755d3da5cbc09581
+  «Rendimiento neto actual» →  | Crea tu cuenta | Disponible en la divisa de tu elección | EUR | USD | GBP | Las cifras clave | $174 M | Tesorería en Spiko Letras de Tesoro Dollar | 4,09% | Rendimiento neto actual | $10 M | Intereses abonados | $1.191 M | Depósitos y reembolsos totales | Rentabilidades | netas anualizadas | (después de comisiones) de los últimos 31 días. Las rentabilidad
+  «últimos 31 días» → ento neto actual | $10 M | Intereses abonados | $1.191 M | Depósitos y reembolsos totales | Rentabilidades | netas anualizadas | (después de comisiones) de los últimos 31 días. Las rentabilidades se actualizan a diario y pueden variar ligeramente en función del rendimiento de las letras del Tesoro. Las rentabilidades pasadas no garantizan resultados futuros.
+  «sin preaviso y sin límite de importe» → ercado de divisas. Esa elevada liquidez permite vender letras del Tesoro en grandes volúmenes, asegurando que podamos atender cualquier solicitud de reembolso, sin preaviso y sin límite de importe. | ¿Dónde puedo encontrar la documentación legal? | Puedes encontrar el prospecto y el documento de datos fundamentales (KID) | aquí | . | ¿Aún tienes alguna pregu
+  «Depósito inicial mínimo» → ntos generados por las letras del Tesoro. | Capitalización | Método de distribución a los inversores de los rendimientos generados por las letras del Tesoro. | Depósito inicial mínimo | $1 | Domicilio | Francia | Fecha de lanzamiento | 15/05/2024 | Sociedad gestora | Twenty First Capital | Regulador | Autoridad Francesa de los Mercados Financieros (AMF) | Ve
+
+== web-es-spiko-euro.html
+Fuente: https://www.spiko.io/es/spiko-euro
+Consulta: 2026-11-10T09:22:57Z · HTTP 200 · 268282 bytes · sha256 988387333b008086afca270fc96d676776143038271471a27c8ad3ca5acfeee2
+  «Interés a tipo fijo» →  crecer tus euros cada día, impulsado por los bancos más confiables del mundo. | Habla con nosotros | Crea tu cuenta | Gestión de efectivo sin interrupciones | Interés a tipo fijo | 2,84% | Garantizado por contrapartes | Pagado diariamente | --:--:-- | Próximo devengo | Tu dinero siempre accesible | 100% | liquidez nocturna | *Tipo neto de comisiones abonado
+  «rendimiento diario garantizado» → ancieros a los que desea exponerse. | Cada día, los rendimientos de la cartera se transfieren al banco seleccionado, mientras que Spiko Euro recibe a cambio un rendimiento diario garantizado. Este acuerdo contractual entre Spiko Euro y el banco se conoce como Total Return Swap (Swap de Retorno Total). | En el improbable caso de que un banco incumpla sus obli
+  «paga diariamente a Spiko Euro» → l déficit para que Spiko Euro pueda recomprar acciones y devolver la cesta a su valor inicial. | Independientemente de las condiciones del mercado, BNP Paribas paga diariamente a Spiko Euro € STR + un 0,40%. | Ejemplos numéricos de Spiko Euro, basados en una cesta de acciones valorada en 100€: | Escenario 1: Basket termina el día en 95€: BNP Paribas paga 5€ 
+  «Sociedad gestora | Amundi» → los rendimientos generados por Spiko Euro. | Depósito inicial mínimo | €1 | Minimum redemption | €1 | Domicilio | Francia | Fecha de lanzamiento | 03/03/2026 | Sociedad gestora | Amundi Asset Management | Regulador | Autoridad Francesa de los Mercados Financieros (AMF) | Verificar la autorización | Registrado | Comisión Nacional del Mercado de Valores (CNMV)
+  «Registrado | Comisión» → ento | 03/03/2026 | Sociedad gestora | Amundi Asset Management | Regulador | Autoridad Francesa de los Mercados Financieros (AMF) | Verificar la autorización | Registrado | Comisión Nacional del Mercado de Valores (CNMV) | Verificar la autorización | Preguntas frecuentes | ¿Cuáles son las comisiones por usar Spiko Euro? | La única comisión por usar Spiko Eur
+
+== web-es-particulares.html
+Fuente: https://www.spiko.io/es/usos-principales/particulares
+Consulta: 2026-11-10T09:22:57Z · HTTP 200 · 159403 bytes · sha256 20ad0274a91478986606fe13acf51838775bfa47c2938320a64da894320f5831
+  «No existen límites de retirada» → n un día hábil llegarán el siguiente día hábil (T+1). Las solicitudes realizadas después de las 15:00 o en días no hábiles llegarán el segundo día hábil (T+2). No existen límites de retirada. | ¿Cuáles son las comisiones por usar Spiko Euro? | La única comisión por usar Spiko Euro es una comisión de gestión anual del 0,25% sobre los fondos depositados, que s
+
+== data-eutbl.html
+Fuente: https://data.spiko.io/eutbl/
+Consulta: 2026-11-10T09:22:58Z · HTTP 200 · 50788 bytes · sha256 b83103385a3da43bd1eb3b0807be1ae349e1b56f16b2bd98439c9d136e07dc94
+  «2.44%» →  Money Market Fund | on spiko.io. | AUM | €424.20M | €424,197,611 | Users | 2,819 | 1d yield | 2.54% | Annualised | 7d yield | 2.62% | Annualised | 30d yield | 2.44% | Annualised | Latest NAV | 1.0626 | 2026-11-09 | NAV, last 2 months | Daily net asset value per share, in EUR. | AUM, last 2 months | Total AUM in this product, in EUR. | Users, last 2 months |
+
+== data-ustbl.html
+Fuente: https://data.spiko.io/ustbl/
+Consulta: 2026-11-10T09:22:58Z · HTTP 200 · 50945 bytes · sha256 6cd14e1a3fe0abe7545814b87aeeddd871ae4d4ccd2a485de7df58462e65efc2
+  «4.09%» → ls Money Market Fund | on spiko.io. | AUM | $174.70M | $174,704,295 | Users | 875 | 1d yield | 3.55% | Annualised | 7d yield | 4.23% | Annualised | 30d yield | 4.09% | Annualised | Latest NAV | 1.1024 | 2026-11-09 | NAV, last 2 months | Daily net asset value per share, in USD. | AUM, last 2 months | Total AUM in this product, in USD. | Users, last 2 months |
+
+== data-safo-eur.html
+Fuente: https://data.spiko.io/safo-eur
+Consulta: 2026-11-10T09:22:58Z · HTTP 200 · 48779 bytes · sha256 8688f80c7f63ad382c0c4c5e1b9fe6bc10d2f317984b4a80f244a4ceb07e8050
+  «2.84%» → 5LD3 | Spiko Smart Cash EUR | EUR UCITS | Learn more about | Spiko Smart Cash EUR | on spiko.io. | AUM | €2.00B | €2,004,837,973 | Users | 11,080 | 30d yield | 2.84% | Annualised | Latest NAV | 1.0169 | 2026-11-09 | NAV, last 2 months | Daily net asset value per share, in EUR. | AUM, last 2 months | Total AUM in this product, in EUR. | Users, last 2 months |
+
+Enlaces a reguladores en web-es-eutbl.html: https://geco.amf-france.org/produit-d-epargne/c79399
+Enlaces a reguladores en web-es-ustbl.html: https://geco.amf-france.org/produit-d-epargne/c79398
+Enlaces a reguladores en web-es-spiko-euro.html: https://geco.amf-france.org/produit-d-epargne/c124199 ; https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es

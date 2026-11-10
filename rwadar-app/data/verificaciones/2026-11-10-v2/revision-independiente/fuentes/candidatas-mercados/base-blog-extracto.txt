@@ -1,0 +1,7 @@
+URL: https://blog.base.org/tokenized-stocks
+HTTP 200 · consultadoUtc 2026-11-10T09:27:22Z · SHA-256 HTML 91da65f13d7c2471e0515b87fbed0502a928a605a8ccfa3fb2a8751effd60a2c (difiere del del investigador por contenido dinámico; el texto citado coincide)
+ Stocks just got updated. | Base Trade, lend, and borrow stocks 24/7 on Base. Trade stocks 24/7 on Base. Learn More about stocks on Base Base Ope
+...
+bring the world's economy onchain: a new financial system where any asset can be traded, borrowed against, and available globally, 24/7. Today, we took a big step towards that vision as tokenized stocks issued by Coinbase, built on the B20 standard, are now live natively on Base. These are real shares, held 1:1 by a regulated custodian, owned outright by whoever holds the token. Billions of dollars of traditional assets have already moved onchain, from fiat to treasuries, be
+...
+d a direct claim on the share. Coinbase Tokenized Stocks are the real deal. For a user that means: Globally accessible: Non-US users in eligible jurisdictions with an internet connection and a wallet can get exposure to leading US stocks without a brokerage account, local market access, or settlement delays. Available 24/7: Markets shouldn't sleep. Tokenized stocks can trade across always-on AMM pools, so

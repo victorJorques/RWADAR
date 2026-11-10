@@ -1,0 +1,14 @@
+EN
+Welcome! Let's Create Your Securitize ID
+
+Please enter your first and last name
+
+First Name
+First Name
+Last Name
+Last Name
+Next
+
+Already have an account? Log in
+
+Country ResidencePhone NumberEntity's NameEntity's Registered Country

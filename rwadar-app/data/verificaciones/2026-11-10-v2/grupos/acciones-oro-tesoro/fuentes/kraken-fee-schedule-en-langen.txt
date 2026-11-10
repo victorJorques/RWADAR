@@ -1,0 +1,443 @@
+Fee Structures | Explore our trading fees | Kraken
+Kraken
+Pro
+Wallet
+Prime
+VIP
+Markets
+About
+EN
+Search
+/
+EN
+Search
+/
+Kraken
+Pro
+Wallet
+Prime
+VIP
+Markets
+About
+Features
+Stocks
+Stocks
+Borrow
+Borrow
+Onchain
+Onchain
+Auto earn
+Auto earn
+Resources
+Kraken+
+Kraken+
+Dollar Cost Averaging
+Dollar Cost Averaging
+Crypto card
+Crypto card
+Dive in
+Buy crypto
+Buy crypto
+Buy stocks
+Buy stocks
+Features
+Crypto spot
+Crypto spot
+Margin
+Margin
+Perps
+Perps
+Stocks
+Stocks
+Staking
+Staking
+Resources
+Pro fees
+Pro fees
+Liquidity providers
+Liquidity providers
+Prop funding
+Prop funding
+Desktop app
+Desktop app
+TradingView
+TradingView
+CLI trading
+CLI trading
+Dive in
+Trade markets
+Trade markets
+OTC
+OTC
+Rewards hub
+Rewards hub
+Features
+Portfolio, earn, swap
+Portfolio, earn, swap
+Your keys
+Your keys
+Multi-chain
+Multi-chain
+Resources
+Seed phrase wallets
+Seed phrase wallets
+Embedded wallets
+Embedded wallets
+Features
+OTC
+OTC
+Custody
+Custody
+Staking
+Staking
+Resources
+Prime eligibility
+Prime eligibility
+Features
+What you'll receive
+What you'll receive
+Resources
+Who qualifies
+Who qualifies
+Browse
+Crypto prices
+Crypto prices
+View in app
+Stocks & ETFs
+Stocks & ETFs
+Spot
+Spot
+Margin
+Margin
+Perps
+Perps
+Futures
+Futures
+Features
+Why Kraken
+Why Kraken
+Leading security
+Leading security
+Deep liquidity
+Deep liquidity
+Proof of reserves
+Proof of reserves
+Resources
+Affiliates
+Affiliates
+Learn
+Learn
+Support
+Support
+Media
+Payward newsroom
+Payward newsroom
+English
+Kraken
+Pro
+Wallet
+Prime
+VIP
+Markets
+About
+EN
+EN
+Kraken
+Pro
+Wallet
+Prime
+VIP
+Markets
+About
+Features
+Stocks
+Stocks
+Borrow
+Borrow
+Onchain
+Onchain
+Auto earn
+Auto earn
+Resources
+Kraken+
+Kraken+
+Dollar Cost Averaging
+Dollar Cost Averaging
+Crypto card
+Crypto card
+Dive in
+Buy crypto
+Buy crypto
+Buy stocks
+Buy stocks
+Features
+Crypto spot
+Crypto spot
+Margin
+Margin
+Perps
+Perps
+Stocks
+Stocks
+Staking
+Staking
+Resources
+Pro fees
+Pro fees
+Liquidity providers
+Liquidity providers
+Prop funding
+Prop funding
+Desktop app
+Desktop app
+TradingView
+TradingView
+CLI trading
+CLI trading
+Dive in
+Trade markets
+Trade markets
+OTC
+OTC
+Rewards hub
+Rewards hub
+Features
+Portfolio, earn, swap
+Portfolio, earn, swap
+Your keys
+Your keys
+Multi-chain
+Multi-chain
+Resources
+Seed phrase wallets
+Seed phrase wallets
+Embedded wallets
+Embedded wallets
+Features
+OTC
+OTC
+Custody
+Custody
+Staking
+Staking
+Resources
+Prime eligibility
+Prime eligibility
+Features
+What you'll receive
+What you'll receive
+Resources
+Who qualifies
+Who qualifies
+Browse
+Crypto prices
+Crypto prices
+View in app
+Stocks & ETFs
+Stocks & ETFs
+Spot
+Spot
+Margin
+Margin
+Perps
+Perps
+Futures
+Futures
+Features
+Why Kraken
+Why Kraken
+Leading security
+Leading security
+Deep liquidity
+Deep liquidity
+Proof of reserves
+Proof of reserves
+Resources
+Affiliates
+Affiliates
+Learn
+Learn
+Support
+Support
+Media
+Payward newsroom
+Payward newsroom
+English
+Fee Schedule
+Fees as low as 0%
+Industry leading fees across all our products
+Whether you’re just getting started on your investing journey or you’re a seasoned crypto trader, you’ll find a Kraken product that fits your needs at a competitive price point you’ll love. Browse the table below to learn more about the fee structure for each of our offerings.
+Kraken
+Instant Buy/Sell
+Instantly buy, sell or convert Bitcoin
+or other cryptocurrencies on Kraken.com or via the Kraken App.*
+Kraken Fees
+When you buy, sell, or convert cryptocurrencies or fiat on Kraken, fees apply. These include:
+Trading Fees : Kraken charges a 1% trading fee on instant and recurring trades and a 1.5% fee on custom orders. Small instant trades carry a fee of up to $2 instead of the 1% fee. All trading fees are waived for Kraken+ members on trading volume up to $10,000 per month (details below).
+Payment Fees : Additional fees may apply depending on your chosen payment method, such as using a credit/debit card, Apple Pay/Google Pay ACH transfer, or your Kraken account balance.
+For small balance conversions using the “Convert Small Balances” feature, a fixed 3% fee applies to amounts below the minimum order size.
+Spread
+When using Kraken’s Instant Buy/Sell Services, including custom and recurring purchases, the price you see includes a spread, the difference between the market rate and the rate you receive. This spread ensures price certainty at the time of order execution.
+Kraken may retain any excess spread from a transaction. Please note that the spread may vary for similar transactions. The size of the spread varies based on factors such as: market volatility, asset type, order size and type, Kraken VIP status, and overall account activity.
+Kraken+
+Zero Trading Fees : Kraken+ members enjoy zero trading fees on up to $10,000 USD (or the local currency equivalent) in monthly trading volume for major currencies (USD, GBP, CAD, AUD, EUR, CHF).
+This benefit applies only to trades made through the Buy, Sell, or Convert features on the Kraken app or web, and does not include Spot, Futures, API, or OTC trades on Kraken Pro.
+Note: While trading fees are waived, spreads and card processing fees still apply.
+*Currently the Kraken App is only available in the countries listed in the “Requirements” section of this article
+.
+On-chain Staking
+On-chain staking utilizes blockchain Proof-of-Stake protocol to generate rewards through a process typically called “staking”.
+Benefits of On-chain staking on Kraken:
+Start earning rewards instantly — no waiting or bonding periods
+One of the highest returns in the industry
+Stake your assets in just three clicks from your Kraken balances
+Instant un-staking when using Flexible terms
+There are currently no transaction fees for Rewards staking or unstaking. On-chain staking commissions apply and are deducted from the rewards earned on your staked assets.
+Flexible staking and Auto Earn on assets with an on-chain unbonding period and staked assets in our Rewards program is subject to a 30% commission.
+Bonded staking and flexible staking on assets with no on-chain unbonding period are subject to commissions based on total balances.
+For more information, please see Fees in our On-chain staking support page.
+*Availability can be found here
+. If On-chain staking is not showing as an option on your account, you may not be eligible.
+Deposit & Withdrawal
+Kraken may adjust its deposit and withdrawal fees in response to changes in the underlying costs, market conditions, or user activity. Clients are encouraged to review the account deposit or withdrawal page on Kraken's website and app for the most current information regarding deposit and withdrawal fees.
+Kraken’s deposit and withdrawal transaction fees are based on the method and currency used.
+Funding Fees can be both Static (fixed) and Dynamic (variable) in order to reflect the network and processing fees associated with a specific transaction as well as different costs incurred by Kraken.
+Kraken may implement a percentage-based fee to accurately reflect different costs incurred by Kraken.
+Funding Fees can be both coin-denominated or percentage-based.
+Fees displayed upon confirmation of a transaction are always the fees incurred by clients.
+For more information please check our article on Cryptocurrency deposit fees and minimums
+, Cryptocurrency withdrawal fees and minimums
+, Cash deposit options
+, and Cash withdrawal options
+.
+Stocks
+Kraken offers commission-free 1 trading in the US and the EEA
+US: 11,000+ US-listed stocks and ETFs
+EEA: 7,000+ US-listed stocks
+Regulatory agencies may charge fees that are passed to the investor. Learn more here.
+1 Other fees may apply
+xStocks
+There are no trading fees when purchasing xStocks with USDG or USD on Kraken.
+The standard 1% instant buy/sell trading fee applies when purchasing xStocks using other assets.
+To lock in a price, a spread may be included in the asset price for each transaction.
+*Availability can be found here
+. If xStocks is not showing as an option on your account, you may not be eligible.
+Perps
+A simple, flexible way to trade on where you think prices are headed on — without needing to own the underlying asset.
+A 0.25% fee is applied to the notional value of the trade to open the position.
+A 0.25% fee is applied to the closed notional value of the trade to close the position.
+*Currently available in certain geos
+Get started with Kraken
+Kraken
+Sign up
+Create account
+Create account
+Sign in
+Create account
+Create account
+Sign in
+Features →
+Buy Crypto
+Sell Crypto
+Margin Trading
+Crypto perpetuals
+OTC Trading
+Prime brokerage
+API Trading
+Staking Rewards
+Recurring buys
+Kraken Borrow
+Kraken Funded
+About Kraken →
+Kraken Security
+Kraken Careers
+Kraken Blog
+Kraken Developer
+Affiliate Program
+Asset Listings
+Kraken Status
+Support Center
+Complaints
+Crypto Prices →
+Bitcoin Price
+Ethereum Price
+Dogecoin Price
+XRP Price
+Cardano Price
+Solana Price
+Litecoin Price
+Crypto categories
+Price predictions
+Convert Crypto →
+BTC to USD
+ETH to USD
+XRP to USD
+BNB to USD
+SOL to USD
+DOGE to USD
+ADA to USD
+TRX to USD
+LTC to USD
+Buy Crypto →
+Buy Bitcoin
+Buy Ethereum
+Buy Dogecoin
+Buy XRP
+Buy Cardano
+Buy Solana
+Buy Litecoin
+Buy Stocks →
+Buy Nvidia
+Buy Tesla
+Buy Apple
+Buy Amazon
+Buy Palantir
+Buy Microsoft
+Buy Tokenized Equities →
+Buy NVDAx
+Buy TSLAx
+Buy AAPLx
+Buy SPYx
+Buy AMZNx
+Financial Education →
+What is cryptocurrency?
+What are Smart Contracts?
+What is Bitcoin?
+What is tokenization
+Best Crypto apps
+Best crypto exchanges
+Kraken vs Coinbase
+Privacy Hub
+Privacy Notice
+Cookies Policy
+Do Not Sell/Share
+Compliance Hub
+Terms of Service
+Exchange Trading Rules
+Disclosures
+Candidate Privacy Notice
+by PAYWARD
+© 2011–2026 Payward, Inc.
+Trading
+Kraken
+Kraken Pro
+NinjaTrader
+Breakout
+VIP
+API Trading
+|
+Services
+Payward Services
+xStocks
+CF Benchmarks
+Reap
+|
+Banking
+Krak
+Prime
+OTC
+Custody
+|
+Asset Management
+These materials are for general information purposes only and are not investment or financial product advice or a recommendation or solicitation to buy, sell, stake or hold any cryptoasset or to engage in any specific trading strategy. Kraken does not and will not work to increase or decrease the price of any particular cryptoasset it makes available. The unpredictable nature of the crypto-asset markets can lead to loss of funds. Tax may be payable on any return and/or on any increase in the value of your cryptoassets and you should seek independent advice on your taxation position. Geographic restrictions may apply. Some crypto products and markets are unregulated. Kraken’s regulatory status for its various products and services differs per jurisdiction and you may not be protected by government compensation and/or regulatory protection schemes. See Legal Disclosures
+for each jurisdiction.

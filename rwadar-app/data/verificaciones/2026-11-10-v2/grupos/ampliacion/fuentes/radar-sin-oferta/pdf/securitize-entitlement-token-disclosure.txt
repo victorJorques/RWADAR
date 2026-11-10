@@ -1,0 +1,313 @@
+                               Entitlement Token Disclosure Document
+
+                                  Effective Date: September 15, 2026
+
+1. Purpose and Incorporation by Reference
+This Entitlement Token Disclosure Document (this “Disclosure Document”) is incorporated by reference
+into, and forms part of, the Securitize Markets, LLC (“SM,” “we,” “us,” or “our”) Terms of Service (the
+“Terms”). This Disclosure Document applies to your purchase, holding, and disposition of any Convertible
+Entitlement Token (“CET”) or Entitlement Token (“ET”) made available on the Platform. Capitalized terms
+not defined in this Disclosure Document have the meanings given to them in the Terms.
+
+In the event of a conflict between this Disclosure Document and Sections 5.9 or 5.10 of the Terms with
+respect to CETs or ETs specifically, this Disclosure Document shall control.
+
+2. Defined Terms
+
+    ● Convertible Entitlement Token (“CET”) means a digital token that represents a security
+      entitlement, within the meaning of Article 8 of the Uniform Commercial Code (“UCC”), to a
+      Reference Security held in book-entry form by SM on your behalf, together with a right to convert
+      that entitlement into direct registration of the Reference Security if and when an issuer-sponsored
+      token program becomes available for that Reference Security, as further described in Section 4
+      below.
+
+    ● Entitlement Token (“ET”) means a digital token that represents a security entitlement to a
+      Reference Security, credited to you on the books of SM or its affiliated transfer agent as described
+      in Section 5 below, where the Reference Security is held by SM directly or in custody by a third-
+      party custodian on behalf of SM.
+
+    ● Issuer Sponsored Token (“IST”) means a digital token issued directly by or at the direction of the
+      issuer of the underlying security, representing the issuer’s own shares in a tokenized, digitally
+      native form.
+
+    ● Reference Security means the underlying security to which a CET or ET relates.
+
+3. General Risks Applicable to CETs and ETs
+The following risks apply generally to both CETs and ETs. Product-specific risks are described in Sections
+4 and 5 below.
+
+    3.1 No Guarantee of Value. The value of a CET or ET is derived from the value of the underlying
+    Reference Security. An investment in a CET or ET may lose value, including total loss of principal, in
+    the same manner as a direct investment in the Reference Security.
+
+    3.2 NAV Timing Risk. Where a Reference Security is valued by reference to a net asset value (“NAV”)
+    published periodically (for example, daily) rather than a continuously quoted market price, the number
+    of CETs or ETs, or the redemption proceeds, you receive in connection with an order will be
+    determined by the NAV published following your order, not the NAV in effect at the time you submit
+    your order. Any estimate shown to you at the point of order entry is illustrative only and your actual
+    position may differ once the applicable NAV is published.
+    3.3 Liquidity Risk. CETs and ETs may not have a continuous public trading market. To the extent a
+    secondary market exists for a CET or ET, it currently consists solely of trading conducted on SM's own
+    alternative trading system or execution venue; there is no independent, unaffiliated secondary market
+    for CETs or ETs, and no market maker or other party is obligated to make a market in, or otherwise
+    provide liquidity for, your CET or ET position. As a result, you may not be able to sell your position at
+    any particular time, in any particular size, or at a price that reflects the then-current NAV or public
+    market price of the Reference Security, and the bid-ask spread or other execution cost on any available
+    secondary market may be wider than what is typically available for the Reference Security itself, where
+    the Reference Security trades on a national securities exchange. Where the Reference Security is itself
+    subject to periodic or restricted redemption (for example, an interval fund with limited redemption
+    windows), that restriction may further limit SM's ability to process your order, including a sale on any
+    available secondary market, on your requested timeline. SM intends to expand the venues on which
+    CETs and ETs may be traded over time, including through additional alternative trading systems,
+    subject to receipt of all necessary regulatory approvals, including from the SEC. No assurance can be
+    given as to whether or when any such additional venue will become available, and until it does, the
+    limitations on secondary-market liquidity described above will continue to apply
+
+    3.4 Technology and Custody Risk. CETs and ETs are recorded and transferred using blockchain-based
+    technology and are subject to the risks described in the Terms, including smart contract risk, network
+    risk, and the risks associated with self-custody wallets, as applicable.
+
+    3.5 Issuer and Fund-Specific Risk. You should review the applicable issuer or fund disclosure
+    documents for the Reference Security, including any prospectus or offering memorandum, before
+    investing. Those documents may describe risks specific to the Reference Security that are not repeated
+    in this Disclosure Document.
+
+    3.6 System Availability Risk. SM's platform, including its order-entry, wallet-linking, and account
+    interfaces, may from time to time be unavailable or degraded due to maintenance, technical failure, or
+    other causes outside SM's control. SM does not currently offer an alternative order-submission channel
+    if the platform is unavailable at a time you wish to place an order, and you may be unable to place,
+    modify, or cancel an order during any such period of unavailability.
+
+4. Convertible Entitlement Tokens (CETs)
+    4.1 Structure. A CET represents a security entitlement to the Reference Security, held in book-entry
+    form by SM on your behalf and credited to you specifically on SM's books, separate from SM's
+    proprietary holdings. Because SM holds an underlying share specifically referable to your CET
+    position, your CET position is expected to be treated as a customer securities position for purposes of
+    SIPC coverage, subject to SIPC's rules, coverage limits, and eligibility requirements. As the holder of a
+    security entitlement to the Reference Security, you are the beneficial owner of the Reference Security
+    underlying your CET position.
+
+    4.2 Restriction on Transfer and Conversion. The Reference Security underlying your CET will be
+    restricted from trading or transfer while the CET is outstanding. If an issuer later establishes an issuer-
+    sponsored token program and identifies SM as an authorized sponsor for that Reference Security, your
+    outstanding CET may convert into an issuer-sponsored token, as described in the applicable issuer
+    materials. Before placing an order for a CET, you will be shown a disclosure at the point of order entry
+    identifying the instrument as a CET and distinguishing it from an issuer-sponsored token, which you
+    must acknowledge before your order can be submitted. You may also separately request a book-entry
+    conversion and transfer to another broker-dealer as described in Section 4.6 below.
+    4.3 Access. Access to CETs requires successful completion of SM's full Know Your Customer identity
+    verification and Anti-Money Laundering screening, which may be in addition to the account-level
+    verification otherwise required to use the Platform. CETs may not be available in all jurisdictions or to
+    all Users.
+
+    4.5 No Cash Redemption. A CET is not redeemable for cash. You may realize the value of your CET
+    position only by (a) selling the CET on the Platform, subject to Section 3.3 above, or (b) converting the
+    CET as described in Section 4.2 or Section 4.6 below.
+
+    4.6 Book-Entry Conversion and Transfer to Another Broker-Dealer. In addition to the conversion right
+    described in Section 4.2 above, you may separately request that SM convert your CET position into
+    directly registered book-entry shares of the Reference Security and transfer those shares, through the
+    Direct Registration System ("DRS"), to another broker-dealer that is a member of DTCC and agrees to
+    accept the position. This right is available regardless of whether an issuer-sponsored token program is
+    available for the Reference Security. SM will process such a request in accordance with its then-current
+    procedures, which may include additional processing time and fees as described in Section 7 below.
+
+5. Entitlement Tokens (ETs)
+    5.1 Structure. An ET represents a security entitlement to the Reference Security. SM, or its affiliated
+    transfer agent acting as registrar on SM's behalf, credits a specific position to you on its own books,
+    separate from SM's proprietary holdings, and reconciled against the Reference Securities held by SM
+    directly or through a third-party custodian for the benefit of SM. Unlike a CET holder, you are not the
+    beneficial owner of the Reference Security underlying your ET position. Your ET represents a security
+    entitlement giving you the economic rights described in this Disclosure Document, but does not confer
+    beneficial ownership of the Reference Security itself.
+
+    5.2 No Conversion Right. Unlike a CET, an ET does not convert into direct registration of the
+    Reference Security in your name. SM redeems an ET for cash at a price matched to the then-current
+    NAV or market price of the Reference Security, subject to Section 3.2 above, and then provides you
+    with an equivalent amount in USDC.
+
+    5.3 Registration Status of the Reference Security. Because a Reference Security underlying an ET is
+    registered under the Securities Act of 1933 and is not offered or sold in reliance on a private placement
+    exemption, the risk disclosures applicable to unregistered securities offered on the Securitize Markets
+    ATS do not describe the Reference Security underlying an ET. Liquidity and secondary-market risk
+    specific to ETs are instead described in Section 3.3 above.
+
+    5.4 No Relationship to Issuer-Sponsored Tokens. ETs do not convert into an Issuer Sponsored Token
+    or into a CET and are not affected by an issuer's later adoption of an issuer-sponsored token program
+    with respect to the Reference Security.
+
+    5.5 Access. Access to ETs requires successful completion of SM's full Know Your Customer identity
+    verification and Anti-Money Laundering screening, which may be in addition to the account-level
+    verification otherwise required to use the Platform. ETs may not be available in all jurisdictions or to
+    all Users.
+
+6. Order Process; Use of Funds
+    6.1 Point-of-Order Acknowledgment. As described in Sections 4.2 and 5.4 above, before placing an
+    order for a CET or an ET, you will be shown a disclosure identifying the specific instrument type and
+    distinguishing it from the other token types described in this Disclosure Document, which you must
+    affirmatively acknowledge before your order can be submitted.
+    6.2 Use of Funds — CETs. Funds you submit in connection with a CET order, net of any applicable
+    fees charged pursuant to Section 7 below, are used solely to fund the corresponding purchase of the
+    underlying share held for your benefit, at a price matched to the trading day’s published NAV or
+    market price, as applicable, and are not available to SM for general corporate or working-capital
+    purposes prior to that purchase. Applicable fees are deducted from the funds you submit prior to that
+    purchase and are retained by SM as compensation for its services, and SM may use such fees for its
+    general corporate or working-capital purposes upon deduction. SM does not use shares held for the
+    benefit of CET holders to fund proprietary trading activity unrelated to those holders' positions.
+
+    6.3 Use of Funds — ETs. Funds you submit in connection with an ET order, net of any applicable fees
+    charged pursuant to Section 7 below, are used solely to fund the corresponding purchase of the
+    Reference Security executed to fulfill your order, at a price matched to the trading day’s published
+    NAV or market price, as applicable, and are not available to SM for general corporate or working-
+    capital purposes prior to that purchase. Applicable fees are deducted from the funds you submit prior to
+    that purchase and are retained by SM as compensation for its services, and SM may use such fees for its
+    general corporate or working-capital purposes upon deduction. SM does not use Reference Securities
+    held to fulfill ET orders to fund separate proprietary trading activity unrelated to outstanding ET
+    orders.
+
+    6.4 Minimum Order Size. The minimum order size for a CET or ET purchase is typically 1 USDC, but
+    may vary by product. SM may change this minimum from time to time; the current minimum will be
+    reflected at the point of order entry.
+
+    6.5 Wallet Whitelisting and On-Chain Transfers. Your wallet must first be added to an allow-list
+    associated with your Account, which requires you to complete SM's Know Your Customer identity
+    verification and Anti-Money Laundering screening applicable to that wallet, link the wallet to your
+    Account, and sign a wallet-verification transaction to confirm your control of it. You are responsible
+    for any network ("gas") fee associated with a transfer to or from a whitelisted wallet; SM does not
+    charge a separate fee for whitelisting a wallet.
+
+    6.6 Jurisdiction-Specific Restrictions. SM may impose additional or different restrictions on the
+    purchase, sale, or transfer of CETs or ETs for Users in specific jurisdictions, which may include
+    restricting certain transactions to the Platform. CETs and ETs may not be available, or may be available
+    only on modified terms, in all jurisdictions or to all Users.
+
+7. Fees
+A commission applies to each CET or ET transactions, calculated on the gross transaction value, in lieu of
+the trade commission otherwise described in the Terms. This commission is deducted from the funds you
+submit prior to the corresponding transaction of the Reference Security, consistent with Section 6 above.
+For a complete fee schedule, visit: https://securitize.io/fee-schedule-table.
+
+No separate tokenization or minting fee applies to the issuance of a CET, or to the direct registration of
+shares upon conversion of a CET as described in Section 4.2 or Section 4.6 above. No ongoing custody fee
+currently applies to CET or ET positions. If SM adopts a custody fee in the future, it will be disclosed in
+SM's fee schedule and, to the extent required, in an updated version of this Disclosure Document.
+
+A fee of $30.00 applies to each request to convert a CET position into directly registered book-entry shares
+of the Reference Security and transfer those shares through DRS to another broker-dealer, as described in
+Section 4.6 above (the "DRS Transfer Fee"). The DRS Transfer Fee is in addition to any fee charged by the
+receiving broker-dealer, which SM does not control.
+If you transfer a CET or ET to or from a self-custody wallet as described in Section 6.5 above, you are
+responsible for the associated blockchain network ("gas") fee. SM does not charge a separate transfer fee for
+wallet whitelisting or for the transfer itself, but SM does not control, and is not responsible for, the amount
+of the network fee, which is set by the underlying blockchain network.
+
+8. Corporate Actions
+     8.1 General Principles.
+
+        (a) Pass-through of economics. Subject to this Section 8, SM intends to pass through to you the
+        economic Entitlements attaching to securities and Reference Securities held in your Account, net of
+        any fees, taxes, or adjustments disclosed in Section 7 above.
+
+        (b) Reliance on third parties. SM processes Corporate Actions based on information received from
+        issuers, their agents, the Depository Trust Company (“DTC”), and other custodians, clearing
+        agencies, and data providers. SM is not the source of this information and does not independently
+        verify its accuracy or completeness before acting on it.
+
+        (c) No guarantee of timing. The timing of SM's processing of a Corporate Action, including
+        crediting of cash or securities to your Account, will generally follow the timing established by the
+        issuer, its agents, or DTC, but may be delayed by SM's own operational and reconciliation
+        processes, or by the timing of the underlying transfer agent's or issuer's processing.
+
+        (d) Discretion absent instructions. For Voluntary Corporate Actions (as defined below), if SM does
+        not receive your election by the applicable Election Deadline, SM may, in its sole discretion, take
+        no action, allow the offer to lapse with respect to your position, or take such other action as it deems
+        appropriate on your behalf. SM's typical practice absent instructions is to take no action, such that
+        the offer lapses and you retain your existing position unchanged, but SM is not obligated to follow
+        that practice in every case.
+
+        (e) No investment advice. SM's notification of a Corporate Action, and any information SM
+        provides about it, is for informational purposes only and does not constitute investment, tax, or legal
+        advice or a recommendation as to how you should respond.
+
+     8.2 Mandatory and Voluntary Corporate Actions.
+
+     A “Mandatory Corporate Action” (such as a cash dividend, stock split, or mandatory merger exchange)
+     is processed automatically, without requiring instructions from you. A “Voluntary Corporate Action”
+     (such as a tender offer, exchange offer, or rights offering) requires an affirmative election. Because SM
+     must aggregate and submit elections on behalf of multiple accountholders through DTC or other
+     intermediaries, SM's internal election deadline (an “Election Deadline”) will in most cases be earlier
+     than the deadline set by the issuer or DTC, and instructions received after SM's Election Deadline may
+     not be processed even if received before the issuer's or DTC's own deadline. SM is under no obligation
+     to exercise any right, option, or election on your behalf in the absence of timely instructions from you.
+
+     8.3 Fractional Entitlements; Cash Distributions; Dividend Reinvestment.
+
+     Where a Corporate Action would otherwise result in a fractional share or fractional unit being credited
+     to your Account, you may receive cash in lieu of the share should the resulting share not meet SM’s
+     default minimum.
+
+     Cash dividends and other cash distributions will be paid to you in SM's designated settlement
+     stablecoin, consistent with the Terms. A Corporate Action processing fee may be applied and should
+the cash dividend or distribution be less than the processing fee, no payment will be made. For a
+complete fee schedule, visit: https://securitize.io/fee-schedule-table.
+
+8.4 Notification.
+
+SM will notify you of Corporate Actions affecting securities or Reference Securities in your Account
+through the methods specified in the Terms, which may include electronic notice through the platform,
+email, or posting on the applicable product page. SM will use commercially reasonable efforts to
+provide notice as far in advance of the Record Date or Election Deadline as practicable, but does not
+guarantee a minimum notice period. You are responsible for reviewing notices provided by SM and for
+submitting any required instructions by the applicable Election Deadline.
+
+8.5 Processing Model: Issuer Sponsored Tokens, CETs, and ETs.
+
+(a) Issuer Sponsored Tokens. Where Securities and Other Assets are held as Issuer Sponsored Tokens,
+Corporate Actions are processed directly against the token in accordance with the issuer's and its
+transfer agent's procedures, because the IST itself represents the underlying share.
+
+(b) CETs. Where Securities and Other Assets are held as CETs, Corporate Actions are processed
+against the underlying book-entry shares held by SM, and the resulting adjustment is reflected in your
+CET position or Account balance by SM or its affiliated transfer agent. You acknowledge that timing
+differences may exist between when a Corporate Action is effected against the underlying shares and
+when the corresponding adjustment is reflected in your CET position, and SM shall have no liability for
+such timing differences to the extent they result from the transfer agent's or issuer's processing timeline.
+
+(c) ETs. Where Securities and Other Assets are held as ETs, Corporate Actions are processed against
+the Reference Securities held by SM directly or through a third-party custodian, and the resulting
+adjustment is reflected in your ET position, credited on the books of SM or its affiliated transfer agent
+as described in Section 5 above, on a pass-through basis reflecting the economic terms of the Corporate
+Action. You acknowledge that timing differences may exist between when a Corporate Action is
+effected against the Reference Security and when a corresponding adjustment is reflected in your ET
+position, and SM shall have no liability for such timing differences to the extent they result from the
+transfer agent's, custodian's, or issuer's processing timeline.
+
+8.6 Voting Rights.
+
+CET votes are expected to pass through to you, with SM voting in accordance with SM's proxy voting
+policy on uninstructed CET positions. For a copy of SM’s proxy voting policy, please contact
+investorsupport@securitize.io.
+
+8.7 Conversion Events.
+
+Where a Reference Security underlying a CET transitions to an IST program, the treatment of any
+pending or unresolved Corporate Action as of the conversion date will be governed by the Terms and
+the applicable product terms. ETs do not convert into an IST or into a CET, and the treatment of an ET
+position is not affected by an issuer's adoption of an IST program with respect to the Reference
+Security.
+
+8.8 Fees; Limitation of Liability.
+
+SM may charge fees in connection with the processing of certain Corporate Actions, including
+Voluntary Corporate Actions requiring an election, in addition to the commission described in Section
+7 above. Any such fees will be disclosed in SM's fee schedule or in the notice provided for the specific
+    Corporate Action. SM will use commercially reasonable efforts to process Corporate Actions in
+    accordance with this Section 8, but relies on information and processing timelines controlled by
+    issuers, their agents, DTC, and other third parties, and is not liable for delays, errors, or omissions
+    caused by those third parties. Nothing in this Section 8 modifies or expands SM's liability beyond what
+    is set forth in the Terms.
+
+9. Amendments
+SM may amend this Disclosure Document from time to time by posting an updated version on the Platform.
+Material changes will be communicated to you in accordance with Section 18 of the Terms.
+

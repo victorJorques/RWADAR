@@ -1,0 +1,10 @@
+URL: https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es
+Busqueda: Coinbase
+ConsultadoUtc: 2026-11-10T09:11:07Z
+
+Listado de entidades advertidas
+
+Criterios de consulta: por tipo No autorizadas, de nombre Coinbase.
+
+No hay datos disponibles.
+

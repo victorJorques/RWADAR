@@ -1,0 +1,7 @@
+  Robinhood Classic Stock Tokens
+
+  Trading and FX Fees                                         Robinhood Europe applies a 0.10% currency conversion fee for each
+                                                              transaction based on the value in euros of the executed currency
+                                                              exchange transaction. Euros are converted to U.S. dollars when buy
+                                                              orders are executed, and U.S. dollars are converted to euros when sell
+                                                              orders are executed. Robinhood Europe does not apply any other fees

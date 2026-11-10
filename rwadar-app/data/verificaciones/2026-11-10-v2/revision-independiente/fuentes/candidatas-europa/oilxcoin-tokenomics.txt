@@ -1,0 +1,39 @@
+Fuente: https://oilxcoin.us/en/token/tokenomics
+Consultado: 2026-11-10T09:34:33Z · HTTP 200 · 38740 bytes · sha256 7c4cb7fc9f3b05fb8e2968adca890bf9e7664af11d63939feebdc97c6622faf7
+Copia original en crudo/oilxcoin-token-tokenomics.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+Token Name
+OilXCoin
+Ticker Symbol
+OXC
+Base Currency
+USD
+Asset Class
+Real World Asset (RWA)
+Token Type
+Security Token*
+Underlying Assets
+Oil-in-Place (OIP) & Gas-in-Place (GIP)
+Legal Form
+Investment Token (issued on a contractual basis)
+Start of Token Issuance
+Q2 2025 (only in select jursidictions)
+Maximum Token Supply
+100,000,000
+Minimum
+transaction
+size
+None
+Custody
+Fees
+None
+Native
+Transaction
+Fee
+0.75%
+Blockchain Protocol
+Ethereum (EVM and 2
+nd
+layer solutions to follow)
+Smart Contract Address
+0xc269dcA99Fa95C0E67303efF60EFEc6a3643F8d2

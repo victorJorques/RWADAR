@@ -1,0 +1,101 @@
+{
+ "fuente": "https://backend.reental.co/graphql (POST, mismos cuerpos que fuentes/crudo/consultas-post.json del investigador)",
+ "consultadoUtc": {
+  "getProjects": "2026-11-10T09:35:22Z / 09:35:23Z",
+  "getCrowdfundingListing": "2026-11-10T09:35:24Z"
+ },
+ "nota": "Resumen sin direcciones de contrato ni carteras (las respuestas crudas están en crudo/, fuera de Git).",
+ "totalProyectos": 130,
+ "porEstado": {
+  "TOKENS_ON_SALE": 2,
+  "FUNDED": 3,
+  "UNDER_RENOVATION": 19,
+  "RENOVATING": 1,
+  "IN_OPERATION": 49,
+  "UNDER_CONSTRUCTION": 4,
+  "CLOSED": 51,
+  "COMING_SOON": 1
+ },
+ "isErir": {
+  "False": 130
+ },
+ "abiertosOProximos": [
+  {
+   "name": "Rentas 4",
+   "status": "TOKENS_ON_SALE",
+   "typeOfSale": "PRIVATE",
+   "isErir": false,
+   "tokenPrice": {
+    "value": 100,
+    "currency": "EUR"
+   },
+   "emittedTokens": 20000,
+   "country": "USA",
+   "tokenIssuanceCountry": "USA",
+   "investmentDuration": {
+    "value": 36,
+    "period": "MONTHS"
+   },
+   "estimatedApr": "12.0000",
+   "incomeType": "MONTHLY",
+   "createdAt": "2026-11-03T17:22:44.457Z",
+   "tokenSymbol": "Reental-RET-4"
+  },
+  {
+   "name": "Miami 7",
+   "status": "TOKENS_ON_SALE",
+   "typeOfSale": "PRIVATE",
+   "isErir": false,
+   "tokenPrice": {
+    "value": 100,
+    "currency": "USD"
+   },
+   "emittedTokens": 20000,
+   "country": "USA",
+   "tokenIssuanceCountry": "USA",
+   "investmentDuration": {
+    "value": 36,
+    "period": "MONTHS"
+   },
+   "estimatedApr": "12.0000",
+   "incomeType": "BULLET",
+   "createdAt": "2026-10-15T08:48:16.379Z",
+   "tokenSymbol": "Reental-MIA-7"
+  },
+  {
+   "name": "Murcia 1",
+   "status": "COMING_SOON",
+   "typeOfSale": "PRIVATE",
+   "isErir": false,
+   "tokenPrice": {
+    "value": 100,
+    "currency": "EUR"
+   },
+   "emittedTokens": 15278,
+   "country": "ESP",
+   "tokenIssuanceCountry": "USA",
+   "investmentDuration": {
+    "value": 21,
+    "period": "MONTHS"
+   },
+   "estimatedApr": "11.0500",
+   "incomeType": "BOTH",
+   "createdAt": "2025-01-21T18:22:26.721Z",
+   "tokenSymbol": "Reental-MUR-1"
+  }
+ ],
+ "crowdfunding": {
+  "Rentas 4": {
+   "active": true,
+   "listingTime": "1793815200",
+   "listingTimeUtc": "2026-11-04T18:00:00+00:00",
+   "available": 11852.94783454
+  },
+  "Miami 7": {
+   "active": true,
+   "listingTime": "1792170000",
+   "listingTimeUtc": "2026-10-16T17:00:00+00:00",
+   "available": 4561.00393825
+  }
+ }
+}

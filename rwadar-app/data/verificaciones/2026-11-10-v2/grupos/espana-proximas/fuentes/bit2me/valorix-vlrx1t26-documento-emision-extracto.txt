@@ -1,0 +1,312 @@
+Extracto del «Documento de oferta de emisión de bono de deuda tokenizados» de VALORIX DIGITAL, S.A. (Valorix token VLRX1T26), enlazado hoy desde valorix.com/invertir.html.
+Copia parcial; nombres de personas físicas y DNI recortados.
+
+===== Portada (págs. 1–2) =====
+               DOCUMENTO DE OFERTA DE EMISIÓN DE BONO DE DEUDA
+                                   TOKENIZADOS
+
+                                  POR PARTE DE                      [nombre recortado] Firmado
+                                                                                digitalmente por
+                                                                    [nombre recortado] VALORIX DIGITAL, S.A.                [nombre recortado] Fecha: 2026.01.13
+                                                                    - [nombre recortado] 22:21:09 +01'00'
+                         CON NOMBRE COMERCIAL “VALORIX”
+
+
+
+
+Denominación del Token:       Valorix token (VLRX1T26)
+
+
+Dirección    del     Smart 0x92eE12Ed8A9c22bC7b983d7B81b47B4b2b78dD8e
+Contract de la emisión del
+Token:                     Link:
+                              https://polygonscan.com/address/0x92eE12Ed8A9c22b
+                              C7b983d7B81b47B4b2b78dD8e
+
+
+Emisor                        VALORIX DIGITAL, S.A
+
+Tipo de valor emitido:
+                              Bono de Deuda
+
+
+Numero de Instrumentos 250
+Financieros
+
+Valor nominal     de     cada 2.000 €
+Token:
+
+Entidad de Servicios de [nombre recortado] EAFN. (nº Registro 21)
+Inversión interviniente:
+
+ERIR                          Ursus-3 Capital AV, S.A
+
+                                     DOCUMENTO DE LA EMISIÓN                     Página
+                                      Bono Valorix Token 1T 2026                 2 de 39
+
+
+
+
+                            Información sobre la Inversión:
+
+La emisión del Bono de Deuda tokenizado por parte de VALORIX DIGITAL, S.A.. se
+realiza al amparo de lo dispuesto en la ley 6/2023 de los Mercados de Valores y de los
+Servicios de Inversión.
+
+El presente documento no es considerado un folleto informativo ni ha sido
+revisado por parte de la Comisión del Mercado de Valores ni ninguna otra
+autoridad competente o administrativa, según lo establecido en el artículo 35.2.b de
+la Ley de Mercado de Valores. El emisor del token es el único responsable del contenido
+de este documento. La emisión del Bono de Deuda tokenizado se va a producir en la
+infraestructura propia de VALORIX DIGITAL, S.A.
+
+La presente emisión no precisa publicación de folleto según lo establecido en el artículo
+35 de la Ley del Mercado de Valores, al no estar sujeta la oferta a notificación de
+conformidad con el artículo 4.b) del Reglamento (UE) nº2017/1129 del Parlamento
+Europeo y del Consejo, de 14 de junio de 2017, por estar dirigida la emisión a menos
+de 150 personas físicas o jurídicas por Estado miembro, sin contar con los inversores
+cualificados, y por tanto tiene la consideración de oferta pública.
+
+El presente documento ha sido validado por una entidad autorizada para la prestación
+de servicios de inversión, e igualmente el proceso de comercialización de los tokens va
+a ser supervisado por dicha entidad autorizada. La validación del presente documento
+por parte de la empresa de servicios de inversión se ha realizado sobre la información
+a entregar a los inversores, que deberá ser clara, imparcial y no engañosa y referirse a
+las características y riesgos de los valores emitidos, así como a la situación jurídica y
+económico-financiera del emisor de una manera suficientemente detallada para permitir
+que el inversor pueda tomar una decisión de inversión. Las inversiones que se
+describen en el presente documento de oferta de emisión de valores tokenizados (en
+adelante, el “Documento de Oferta” y la “Oferta” respectivamente) pueden conllevar
+una pérdida de las cantidades invertidas.
+
+El contenido del Documento de Oferta y el mecanismo de inversión cumple con los
+requerimientos vigentes de la legislación nacional y es responsabilidad de los inversores
+potenciales fuera de la jurisdicción española comprobar que este instrumento no infringe
+ninguna legislación local en el país de residencia del inversor potencial antes de la
+formalización del presente acuerdo; asimismo VALORIX DIGITAL, S.A. se compromete
+a dejar a salvo a [nombre recortado] EAFN de cualquier posible sanción, multa o
+penalidad derivada de la omisión voluntaria o involuntaria de las responsabilidades
+legales y/o fiscales aplicables en su país.
+
+                                                              DOCUMENTO DE LA EMISIÓN                                                        Página
+                                                               Bono Valorix Token 1T 2026                                                   3 de 39
+
+
+
+===== Cuadro de la emisión y periodo de suscripción =====
+      •    Importe total de la emisión: 500.000€
+
+                                   DOCUMENTO DE LA EMISIÓN                     Página
+                                    Bono Valorix Token 1T 2026                13 de 39
+
+
+
+   •   Soft Cap: 300.000 Eur (150 Tokens)
+
+   En caso de que el importe de la emisión no alcance el umbral mínimo de suscripción
+   (“Soft Cap”), VALORIX procederá a la devolución íntegra del importe suscrito por cada
+   inversor, utilizando para ello el mismo medio de pago empleado en la suscripción. Esta
+   devolución se realizará en un plazo máximo de 10 días hábiles desde la fecha de cierre
+   de la emisión sin alcanzar el umbral mínimo. En ningún caso se generarán intereses o
+   compensaciones adicionales. El token suscrito será automáticamente anulado
+   (quemado) antes del reembolso, quedando dicha cancelación registrada en el smart
+   contract correspondiente.
+
+2.3.2 Características principales de la Emisión del Bono.
+
+
+                    VALORIX DIGITAL, S.A. (VALORIX)
+Emisor:
+                    NIF: A19952605 Código LEI: 959800TMTRTH4CDZG202
+
+
+Denominación de     Emisión de instrumentos financieros – Bono de Deuda hasta un
+la Emisión:         importe de 500.000 euros (250 títulos)
+
+
+Naturaleza de los
+                    Bonos de Deuda
+Bonos:
+
+
+                    La inversión está respaldada por una garantía constituida a favor de
+                    VALORIX consistente en:
+
+                       •   Un pagaré emitido por RAPICREDIT a favor de VALORIX,
+                           con su correspondiente carta de instrucciones, ejecutable
+Garante y
+                           conforme a la legislación colombiana.
+naturaleza de la
+                       •   Una garantía mobiliaria sobre una cartera de créditos activos
+garantía
+                           originados por RAPICREDIT, con un valor equivalente al
+                           120% del importe emitido.
+
+                    VALORIX, como beneficiario de estas garantías, se compromete
+                    mediante contrato privado a ceder contractualmente a los inversores
+
+                                       DOCUMENTO DE LA EMISIÓN                    Página
+                                       Bono Valorix Token 1T 2026                 14 de 39
+
+
+
+                      sus derechos sobre dicha posición garantizada. La ejecución
+                      efectiva de estas garantías estará sujeta a la legislación aplicable
+                      en Colombia, sin que medie inscripción registral internacional.
+
+                      Cabe resaltar que el Token suscrito por el inversor no confiere un
+                      derecho directo frente al deudor subyacente (Rapicredit), sino frente
+                      a VALORIX, en su condición de Emisor
+
+Divisa:               EURO (€)
+
+
+                      La emisión tendrá una duración de 10 días desde la fecha de inicio
+Plazo      de      la del periodo de suscripción conforme a lo indicado por el Emisor
+Emisión               momento en el cual se iniciará la contabilización de los Tokens por
+                      parte de la ERIR conforme a lo previsto en la Ley 6/2023.
+
+                      VALORIX emite el presente Documento de Emisión para formalizar
+                      la captación de fondos que se destinarán, directa o indirectamente,
+                      a los fines generales de financiación empresarial que determine el
+Finalidad:
+                      Emisor y, en particular, a la financiación de RAPICREDIT, en el
+                      marco de su actividad habitual como entidad de crédito alternativa
+                      en Colombia.
+
+Importe nominal       Importe nominal total: Hasta 500.000,00 euros
+y efectivo de la
+Emisión:              Importe efectivo total: Ídem
+
+
+Importe unitario
+nominal y             Importe nominal unitario: 2.000,00 euros
+
+efectivo de los       Importe efectivo unitario: 2.000,00 euros
+Bonos:
+
+
+Ticket mínimo:        2.000,00 euros
+
+
+2.3.3 Derechos Políticos y Económicos asociados.
+
+                                      DOCUMENTO DE LA EMISIÓN                     Página
+                                      Bono Valorix Token 1T 2026                  15 de 39
+
+
+
+Los instrumentos financieros emitidos con tecnología TRD no confieren derechos políticos
+a los inversores. La titularidad de estos valores no otorga participación en la gestión, toma
+de decisiones o control del Emisor.
+
+En relación con la forma de pago de los intereses a los suscriptores, VALORIX pondrá a
+disposición del inversor la posibilidad de retirar los intereses generados a través de la
+plataforma Valorix.
+
+Los intereses generados por los bonos se abonarán en dos pagos trimestrales, conforme a
+un tipo de interés del 12% anual. El segundo pago incluirá tanto los intereses
+correspondientes al segundo trimestre como la devolución íntegra del capital invertido
+(amortización bullet). Capital e intereses serán abonados en EURR.
+
+2.3.4 Garantías.
+
+Para garantizar el pago de las obligaciones derivadas de esta emisión, el Emisor dispone
+de los siguientes instrumentos de garantía:
+
+   •   Un pagaré en blanco, acompañado de su correspondiente carta de instrucciones,
+       emitido por RAPICREDIT a favor de VALORIX, o de quien ostente la titularidad de
+       los derechos derivados del mismo. Tanto el pagaré como la carta de instrucciones
+       están limitados al importe total recogido en los Anexos de Distribución.
+   •   Una garantía mobiliaria constituida a favor de VALORIX sobre una cartera de
+       créditos en estado activo de cobro, cuyo valor agregado deberá alcanzar, como
+       mínimo, el 120% del importe total de la deuda asumida en esta emisión.
+
+El Emisor se compromete a ceder contractualmente a los inversores su posición jurídica
+frente a dichas garantías, mediante contrato privado, a efectos de asegurar el derecho de
+repetición en caso de incumplimiento. La ejecución de estas garantías está sujeta
+exclusivamente a la legislación colombiana. En caso de impago por parte del deudor, los
+inversores podrán solicitar al Emisor que, actuando en su nombre y conforme al contrato
+de cesión de garantías suscrito, inicie las acciones legales pertinentes en Colombia. Esta
+ejecución se realizará conforme a los procedimientos judiciales o extrajudiciales aplicables
+en dicho país, sin perjuicio de que los derechos económicos del inversor estén protegidos
+bajo la legislación española en cuanto a la relación contractual con el Emisor. La
+
+                                     DOCUMENTO DE LA EMISIÓN                  Página
+                                      Bono Valorix Token 1T 2026             16 de 39
+
+
+
+recuperación de la garantía en Colombia puede implicar plazos procesales variables,
+usualmente superiores a 6 meses, dependiendo del tipo de proceso (ejecutivo o
+extrajudicial), carga judicial y mecanismos de notificación
+
+Los inversores podrán acceder a una copia del pagaré y de la carta de instrucciones
+mediante solicitud expresa a través del área privada de la plataforma Valorix, previa
+verificación de su condición de bonista registrado en la emisión correspondiente. Esta
+documentación estará disponible en formato digital, con las debidas medidas de protección
+y trazabilidad.
+
+El presente resumen debe leerse como introducción al Documento de la Emisión y
+toda decisión de invertir en los valores debe estar basada en la consideración por
+parte del inversor del Documento de la Emisión en su conjunto, así como de la
+información pública del emisor disponible en cada momento:
+
+
+Emisor               VALORIX DIGITAL, S.A. (VALORIX).
+
+
+Tipo de
+                     Bono de deuda tokenizado (token ERC20 con whitelist).
+Instrumento
+
+
+                     Emisión de instrumentos financieros – Obligaciones por un importe
+Importe total de
+                     total de 500.000, correspondientes a 250 valores con valor nominal
+la emisión:
+                     unitario de 2.000 euros cada uno.
+
+
+                     Tasa del 12,00% anualizado (TAE) con abono de intereses
+Rentabilidad:
+                     trimestrales.
+
+                     Base de cálculo para el devengo de intereses: 365
+
+
+Precio de            A la par. Importe nominal unitario: 2.000,00 euros.
+
+emisión:             Ticket mínimo: 2.000,00 euros.
+
+                                  DOCUMENTO DE LA EMISIÓN                     Página
+                                  Bono Valorix Token 1T 2026                 17 de 39
+
+
+
+
+                 El periodo de suscripción se iniciará el 14 de enero de 2026 y tendrá
+Periodo de       una duración de diez (10) días naturales. El Emisor podrá suspender,
+suscripción:     cancelar o finalizar anticipadamente dicho periodo a su entera
+                 discreción.
+
+
+Plazo de
+vencimiento de   10 días para el periodo de captación o suscripción de los tokens.
+emisión:
+
+
+Plazo de la
+                 6 meses desde la fecha de cierre de la emisión.
+inversión
+
+                 Capital e intereses se abonarán en EURR (token de dinero
+                 electrónico referenciado al euro), en la wallet del inversor en Bit2Me,
+                 emitido por Membrane Finance, entidad con autorización como
+                 proveedor de servicios de criptoactivos conforme al Reglamento (UE)
+                 2023/1114 (MiCA), registrada en Luxemburgo y supervisada por la
+                 CSSF (Commission de Surveillance du Secteur Financier). El abono
+                 se realizará en la cuenta del usuario en Bit2Me.
+
+                 El abono se realizará en la cuenta del usuario en Bit2Me, quien actúa
+                 como proveedor de infraestructura de custodia, mediante su wallet

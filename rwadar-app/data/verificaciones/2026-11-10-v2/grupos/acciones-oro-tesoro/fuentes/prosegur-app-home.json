@@ -1,0 +1,10 @@
+{
+ "url": "https://app.prosegurdigitalgold.com/#/home",
+ "finalUrl": "https://app.prosegurdigitalgold.com/#/home",
+ "http": 200,
+ "consultadoUtc": "2026-11-10T09:06:20Z",
+ "metodo": "playwright-chromium innerText",
+ "error": null,
+ "text": "Tokens\nIniciar sesión\nES\nProsegur Digital Gold\nProsegur Crypto\nPrecio de compra\n122.33 €\nEmitida\nComprar\n+ info\n© 2026 PROSEGUR DIGITAL GOLD\n|\nPolítica de privacidad\n|\nAviso Legal\n|\nAviso Legal y Condiciones del Servicio\n|\nPolítica de cookies\n|\nConfiguración de cookies\n|\nSoporte",
+ "textSha256": "3aa8c01a4eb67be916744a828a03e7fd38f73fc7a28f61fae71f989916220947"
+}

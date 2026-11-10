@@ -1,0 +1,13 @@
+Listado_ProveedoresCriptoactivos.pdf (CreationDate 09/11/2026 07:08 UTC, SHA-256 188c6935…)
+                                                           Recepción y transmisión órdenes
+                                                           Gestión de carteras
+                                                           Servicios de transferencia
+                                                           Custodia y administración
+                              PSC EN RÉGIMEN DE LP (País   Gestión plataforma de negociación
+  PIONEW IRELAND LIMITED                                                                          01/05/2026
+                                  de origen: IRLANDA)      Canje criptos por fondos
+                                                           Servicios de transferencia
+                                                           Custodia y administración
+
+ESMA CASPS.csv:
+Comision Nacional del Mercado de Valores (CNMV),ES,PROSEGUR CUSTODIA DE ACTIVOS DIGITALES S.L.U.,59800G0P3PV13KLX615,ES,PROSEGUR CRYPTO,Calle Herberto Gut 12 Madrid 28007,www.prosegurcrypto.com,,30/06/2026,,a. providing custody and administration of crypto-assets on behalf of clients.|g. reception and transmission of orders for crypto-assets on behalf of clients. |j. providing transfer services for crypto-assets on behalf of clients.,ES,,30/06/2026,Article 63,,

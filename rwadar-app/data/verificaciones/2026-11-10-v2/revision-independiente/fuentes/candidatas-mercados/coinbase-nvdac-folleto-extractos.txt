@@ -1,0 +1,114 @@
+Revisor independiente · candidatas-mercados · 10/11/2026
+URL: https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf
+Redirige a: https://www.adgm.com/globalassets/market-disclosure/content/prospectus/coinbase-onchain-spv-ltd---nvidia-cb-certificates---prospectus-20260804_08_04_2026_16-18-58.pdf
+HTTP 200 · 509 páginas · consultadoUtc 2026-11-10T09:27:03Z
+SHA-256 del PDF descargado: 95df029ca061916d086273403b8caf25537450687867fc4184a141164e782f54 (igual que el del investigador)
+PDF no conservado: incluye nombres de los administradores. Solo extractos literales (pdftotext -layout), sin nombres.
+
+[Portada, líneas 1-52 del texto]
+                                               PROSPECTUS
+
+  Issued in accordance with the Abu Dhabi Global Market’s (“ADGM”) Financial Services and Markets
+   Regulations 2015, as amended (“FSMR”) and the ADGM Financial Services Regulatory Authority’s
+                           (“FSRA”) Market Rulebook (the “Market Rules”)
+
+   for the offer of NVIDIA CB Certificates (Certificates over Shares) representing beneficial interests in
+            shares of common stock of NVIDIA Corporation (Ticker: NVDA) (the “Securities”)
+
+                                                       of
+
+                                     COINBASE ONCHAIN SPV LTD
+
+   a private company limited by shares incorporated in the ADGM and subject to the ADGM Companies
+                              Regulations 2020, as amended (the “Issuer”)
+
+                                                     dated
+
+                                                4 August 2026
+
+                                              (the “Prospectus”)
+
+This Prospectus has been approved by the FSRA as the Listing Authority of the ADGM under section 61(2)
+of FSMR and section 4.6.2 of the Market Rules on 4 August 2026.
+
+[...]
+
+The Prospectus does not constitute an offer of, or the solicitation of an offer to buy or to subscribe for (i)
+Securities to any person in any jurisdiction to whom or in which jurisdiction such offer or solicitation is
+unlawful and, in particular, is not for distribution in any jurisdiction other than in the ADGM, in each case
+except in compliance with applicable securities laws, or (ii) shares of common stock of NVIDIA Corporation
+to any person in any jurisdiction.
+                                       VALIDITY OF PROSPECTUS
+
+This Prospectus is valid until its expiry on 3 August 2027. If there is (i) a significant change in, or a material
+
+[Definiciones: Vested / Unvested Holder, líneas 491-509]
+Unvested Holder             A Holder who has not satisfied the Vesting Conditions, as determined by the
+                            Tokenisation Entity, acting on behalf of the Issuer.
+
+Unvested Securities         Securities held in the Wallet of an Unvested Holder.
+
+U.S.                        United States.
+
+
+
+                                                10
+USD or US$           U.S. dollars.
+
+Vested Holder        A Holder who has satisfied the Vesting Conditions, as determined by the
+                     Tokenisation Entity, acting on behalf of the Issuer.
+
+Vested Securities    Securities held in the Wallet of a Vested Holder.
+
+Vesting Conditions   The conditions that must be satisfied by a Holder to become a Vested Holder,
+                     as defined in Condition 2.4(c) of the Terms and Conditions.
+
+[Resumen: reembolso, líneas 748-752]
+ Redemption           Vested Holders have the right to redeem Securities by submitting a
+                      Redemption Order to the Tokenisation Entity to redeem Securities for the
+                      Underlying, or via one of the prescribed alternative settlement methods.
+                      Unvested Holders are not entitled to redeem Securities or withdraw
+                      Underlying.
+
+[Condición 2.4(c) Vesting Conditions, líneas 4494-4515]
+(c)   Vesting Conditions
+
+      The Tokenisation Entity, acting on behalf of the Issuer, shall determine the conditions that must be
+      satisfied by Holders with respect to vesting of Securities from time to time, which may include:
+
+      (i)     completion of all Compliance Procedures in effect from time to time;
+
+      (ii)    verification of a Holder’s control of a Wallet;
+
+      (iii)   nomination of one or more bank accounts for the payment and receipt of cash amounts in
+              connection with such Holder’s possession and ownership of Securities;
+
+      (iv)    demonstration by the Holder that neither the Holder, nor any Wallet such Holder is
+              transacting with or from, is subject to any sanctions, restrictions, or prohibitions under
+              Applicable Law that would prevent or restrict such Holder from possessing, owning, or
+              exercising rights in respect of the Securities or the Underlying; and
+
+      (v)     satisfaction of such other conditions as may be specified by the Issuer, Tokenisation Entity,
+              or Custodian from time to time,
+
+      (such conditions, collectively, the “Vesting Conditions”).
+
+
+[Riesgo de liquidez, líneas 1313-1316]
+      except as otherwise set out explicitly in the Authorised Participant Agreement. Holders can in no
+      circumstances rely on the opportunity to sell Securities at a specific price or time. Furthermore,
+      Authorised Participants are not obliged to secure a certain minimum level rate, purchasing unlimited
+      numbers of Securities or certain minimum volume in abnormal market conditions.
+
+[Oferta: países y destinatarios, líneas 3865-3875]
+        which the Securities     Client or Market Counterparty, and (ii) be approved and engaged by the
+        are offered:             Issuer to participate in the primary Offer of the Securities.
+                                 Authorised Participants do not offer the Securities under this Prospectus.
+                                 Following issuance, Authorised Participants may make Securities
+
+                                                     68
+                        available in DeFi Markets, including to retail investors, subject to and in
+                        accordance with the Terms and Conditions and Applicable Law.
+Country(ies) of         The Securities will be offered in the ADGM and only to Authorised
+offer(s):               Participants.
+Offer period:           The Offer of Securities will remain open on a continuous basis for the

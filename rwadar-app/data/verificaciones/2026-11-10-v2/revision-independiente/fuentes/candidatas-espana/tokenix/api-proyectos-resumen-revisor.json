@@ -1,0 +1,153 @@
+{
+ "fuente": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/expand/images,type,campaign,campaign_progress,project_asset,total_invested,extra_fields,documents?limit=50",
+ "consultadoUtc": "2026-11-10T09:43:14Z",
+ "http": 200,
+ "bytes": 66965,
+ "sha256": "9c4688a8370a3ab9a23061ce939f34d9f4016a34c64a4fd62c9f650407034836",
+ "nota": "Mismo sha256 que la consulta del investigador de las 09:15:38 UTC. Resumen sin descripciones largas, nombres ni contratos.",
+ "proyectos": [
+  {
+   "id": 177,
+   "titulo": "Tu Asiento VIP en la Revolución Financiera",
+   "campaign_status": "PRE_CAMPAIGN",
+   "start_date": null,
+   "end_date": "2027-10-13",
+   "activo": "Tokenix Equity",
+   "simbolo": "TKX-EQ",
+   "precio": "1.00",
+   "minimo": 50,
+   "max_supply": 1000000,
+   "progreso": {
+    "booked": 112776,
+    "invested": 0,
+    "supply": 1000000,
+    "invested_tokens": 0
+   },
+   "documentos": []
+  },
+  {
+   "id": 162,
+   "titulo": "Expansión Las Palmas: Flota Cruceros Hito 1",
+   "campaign_status": "CAMPAIGN",
+   "start_date": "2026-10-30",
+   "end_date": "2027-01-31",
+   "activo": "Toketuk RWA 1",
+   "simbolo": "RTUK",
+   "precio": "200.00",
+   "minimo": 200,
+   "max_supply": 1025,
+   "progreso": {
+    "booked": 78400,
+    "invested": 181800,
+    "supply": 1025,
+    "invested_tokens": 909
+   },
+   "documentos": [
+    "Whitepaper_RTUK.pdf"
+   ]
+  },
+  {
+   "id": 94,
+   "titulo": "Tokenix Fitness",
+   "campaign_status": "CLOSED",
+   "start_date": "2026-03-31",
+   "end_date": "2026-09-30",
+   "activo": "Tokenix Fit",
+   "simbolo": "TKNXF",
+   "precio": "100.00",
+   "minimo": 100,
+   "max_supply": 1987,
+   "progreso": {
+    "booked": 32901,
+    "invested": 198700,
+    "supply": 1987,
+    "invested_tokens": 1987
+   },
+   "documentos": []
+  },
+  {
+   "id": 70,
+   "titulo": "7 ISLAS LA PALMA Y LA GOMERA (Concesión)",
+   "campaign_status": "CLOSED",
+   "start_date": "2025-12-12",
+   "end_date": "2026-08-31",
+   "activo": "7ISLAS TOK",
+   "simbolo": "TKNXC",
+   "precio": "250.00",
+   "minimo": 250,
+   "max_supply": 1716,
+   "progreso": {
+    "booked": 40002,
+    "invested": 429000,
+    "supply": 1716,
+    "invested_tokens": 1716
+   },
+   "documentos": [
+    "Certificado_Revision_Emision_Tokens firmado TKNXC.pdf",
+    "White Paper TKNXC.pdf"
+   ]
+  },
+  {
+   "id": 69,
+   "titulo": "7 ISLAS LA PALMA Y LA GOMERA  (Propiedad)",
+   "campaign_status": "CAMPAIGN",
+   "start_date": "2025-12-12",
+   "end_date": "2026-08-31",
+   "activo": "7ISLAS TOK",
+   "simbolo": "TKNXP",
+   "precio": "550.00",
+   "minimo": 550,
+   "max_supply": 300,
+   "progreso": {
+    "booked": 6153,
+    "invested": 165000,
+    "supply": 300,
+    "invested_tokens": 300
+   },
+   "documentos": [
+    "Certificado_Revision_Emision_Tokens firmado TKNXP.pdf",
+    "White Paper TKNXP.pdf"
+   ]
+  },
+  {
+   "id": 67,
+   "titulo": "TOKE TUK (LAS PALMAS DE GRAN CANARIA 1)",
+   "campaign_status": "CLOSED",
+   "start_date": "2025-10-10",
+   "end_date": null,
+   "activo": "Tuk Token 2",
+   "simbolo": "TKTUK2",
+   "precio": "50.00",
+   "minimo": 50,
+   "max_supply": 7000,
+   "progreso": {
+    "booked": 42701,
+    "invested": 350000,
+    "supply": 7000,
+    "invested_tokens": 7000
+   },
+   "documentos": []
+  },
+  {
+   "id": 61,
+   "titulo": "TOKE TUK (S/C DE TENERIFE)",
+   "campaign_status": "CLOSED",
+   "start_date": "2025-09-02",
+   "end_date": "2025-10-31",
+   "activo": "Tuk Token",
+   "simbolo": "TKTUK",
+   "precio": "50.00",
+   "minimo": 50,
+   "max_supply": 14112,
+   "progreso": {
+    "booked": 2000,
+    "invested": 705600,
+    "supply": 14112,
+    "invested_tokens": 14112
+   },
+   "documentos": []
+  }
+ ],
+ "proyecto177_extracto": "Tokenix Global abre una ronda de preventa exclusiva de 1.000.000 de acciones a 1€ (con un valor de salida al público de 2€) para financiar su innovador modelo de \"efecto rueda\". El capital se destinará a adquirir negocios, llevarlos a la rentabilidad y, una vez consolidados, tokenizarlos en la plataforma. Esto permite ofrecer a los usuarios finales inversiones sin periodos de carencia ni riesgos o",
+ "proyecto162_reclamo": "imo (Cap): Seguirás recibiendo estos beneficios de forma automática y transparente en tu wallet hasta alcanzar un 400% de retorno sobre tu inversión inicial. (¡Multiplicas tu inversión por 4!). ¿Por q"
+}

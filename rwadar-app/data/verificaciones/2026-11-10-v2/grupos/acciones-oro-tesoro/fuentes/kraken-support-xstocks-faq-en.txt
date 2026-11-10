@@ -1,0 +1,244 @@
+xStocks Frequently Asked Questions | Kraken Support
+Los xStocks no están disponibles en EE.UU.. Se aplican restricciones geográficas. Consulta kraken.com/legal/xstocks
+para obtener más información.
+ES
+ES
+Compra cripto en minutos
+Descargar la aplicación de Kraken
+ES
+Preguntar a la IA
+All
+Filtrar por:
+Seleccionar producto
+¿Cómo deposito efectivo en mi cuenta?
+Necesito ayuda con la verificación de la cuenta
+¿Por qué no puedo acceder a mi cuenta?
+¿Existen comisiones por retirar criptomonedas?
+Necesito ayuda para iniciar sesión en mi cuenta
+Atención al cliente
+xStocks
+xStocks en Kraken
+Preguntas frecuentes sobre xStocks
+Última actualización: 30 de octubre de 2026
+Vista general
+¿Qué son los xStocks?
+Los xStocks son representaciones tokenizadas de acciones reales de EE. UU. y ETFs. Cada xStock está respaldado 1:1 por el capital subyacente, mantenido bajo custodia regulada y emitido como token on-chain en Solana, Ethereum, TON e Ink.
+¿En qué se diferencian los xStocks de las acciones tradicionales?
+Los xStocks no otorgan derechos de accionista, como voto o dividendos en efectivo. Ofrecen exposición al precio del activo subyacente y trasladan el beneficio económico de los dividendos a través de un mecanismo de rebase, no derechos directos de accionista.
+A diferencia de los modelos de bróker tradicionales, los xStocks eliminan fricciones, comisiones elevadas, horarios de mercado restringidos e incorporaciones complejas, y ofrecen liquidación instantánea, inversiones fraccionadas, acceso al mercado 24/7 (para activos seleccionados) y autocustodia. Los xStocks se basan en blockchain y utilizan contratos inteligentes para garantizar transparencia, automatización y eficiencia de costes.
+Característica
+Acciones tradicionales
+xStocks
+Horario de trading
+Limitado al horario del mercado
+24/7* para activos seleccionados en Kraken Pro; 24/7 on-chain
+Tiempo de liquidación
+1 día hábil
+Instantáneo o casi instantáneo mediante contratos inteligentes
+Accesibilidad
+Limitado por geografía e intermediarios
+Disponible en más de 110 países (excluidos EE. UU., Reino Unido, Canadá, Australia y jurisdicciones sancionadas)
+Transparencia
+Depende de terceros
+Registros inmutables en blockchain
+Utilidad DeFi
+Ninguno
+Utilizables como colateral, prestables y transferibles entre monederos
+¿Quién puede comprar xStocks?
+Los xStocks están disponibles para clientes no estadounidenses que cumplan los requisitos en más de 110 países. No están disponibles en EE. UU. (ni para personas estadounidenses), Canadá, Reino Unido ni Australia.
+¿Qué xStocks están disponibles?
+131 activos en total: 100 acciones, 27 ETFs y 4 activos especializados.
+Listado completo en xstocks.fi
+o desde la aplicación de Kraken.
+Compra y trading
+¿Cuándo puedo operar con xStocks?
+Los siguientes 10 xStocks operan 24/7 en Kraken Pro: $TSLAx, $QQQx, $SPYx, $NVDAx, $CRCLx, $AAPLx, $HOODx, $MSTRx, $GLDx, $GOOGLx.
+El resto de xStocks opera 24/5 y no está disponible los fines de semana. Al retirarlos a un monedero propio, los xStocks pueden negociarse 24/7 on-chain mediante integraciones con DEX.
+¿Cómo deposito fondos en mi cuenta para comprar xStocks?
+Puedes comprar xStocks con dinero fiduciario, cripto o stablecoins (incluidos USDC y USDG). Kraken gestiona la conversión durante la operación. Nota: USDT no está disponible directamente; conviértelo primero a USDC o USD.
+¿Cuál es la inversión mínima de los xStocks?
+Las xStocks permiten compras fraccionadas desde tan solo 1 USD.
+¿Existen comisiones de trading?
+En Kraken:
+Sin comisiones de trading al comprar xStocks con USDG o USD.
+Al comprar con otros activos, se aplican las comisiones de trading estándar de Instant Buy.
+El precio del activo puede incluir un spread para fijar el precio de cada transacción.
+En Kraken Pro:
+Libro de órdenes spot: reembolso de comisiones de -2 pb para makers, 10 pb para takers.
+Estructura de comisiones completa
+.
+Conversiones:
+Al convertir xStocks se aplica una comisión de trading fija del 1%.
+¿Qué es un multiplicador?
+El multiplicador determina la relación entre una xStock y su token on-chain subyacente. Los emisores de tokens (Backed Assets (JE) Limited) actualizan el multiplicador cuando se producen acciones corporativas como dividendos o splits de acciones.
+Ejemplo de dividendo: Cuando una empresa paga un dividendo, el emisor del token lo reinvierte adquiriendo más activo subyacente y actualiza el multiplicador para que tus tenencias de xStocks reflejen el mayor capital. Tu saldo de xStocks aumenta mientras la cantidad de tokens on-chain se mantiene igual.
+Compras 1 $AAPLx con un multiplicador de 1,0 → equivale a 1 token on-chain.
+Se paga un dividendo equivalente a 0,1 acciones, y el multiplicador se actualiza a 1,1.
+Tu saldo de $AAPLx muestra ahora 1,1 acciones. Si retiras, recibes 1 token on-chain, que ahora equivale a 1,1 $AAPLx.
+Ejemplo de split de acciones: En un split 4:1, el multiplicador se multiplica por 4. Los saldos de todos los poseedores se actualizan automáticamente. No se requiere ninguna acción.
+¿Por qué ha cambiado la cantidad de mi orden?
+La cantidad de tu orden de xStock ejecutada puede diferir de la cantidad que ordenaste por dos razones:
+El multiplicador cambió mientras tu orden estaba abierta.
+Para mantener la misma cantidad on-chain, el importe de xStock se actualiza si cambia el multiplicador.
+Por ejemplo:
+1
+Introduces una orden de compra de 1 AAPLx a 200 $ con un multiplicador de 1,0 → equivale a 1 token on-chain.
+2
+Se paga un dividendo equivalente a 0,1 acciones mientras tu orden está abierta, por lo que el multiplicador se actualiza a 1,1.
+3
+Tu orden muestra ahora 1,1 AAPLx, pero sigue representando 1 token on-chain.
+La cantidad se calcula a partir de tokens on-chain
+Al introducir una orden de xStock, la cantidad se divide entre el multiplicador y se redondea a 8 decimales para obtener la cantidad de tokens on-chain. Esto puede generar ligeras desviaciones en la cantidad final mostrada.
+Por ejemplo:
+1
+Introduces una orden de compra de 1 TSLAx con un multiplicador de 1,3 → equivale a 0,76923076 tokens on-chain.
+2
+Al convertirlo de nuevo, se refleja como 0,99999999 TSLAx, no exactamente 1.
+Precio y dividendos
+¿Cómo supervisan los xStocks el precio de las acciones reales?
+Durante el horario habitual de mercado, los precios de las xStocks están anclados al precio oficial del activo subyacente en el exchange. Los creadores de mercado cotizan alrededor del precio de referencia en tiempo real, lo que garantiza una estrecha sincronización.
+Fuera del horario de mercado (horario ampliado y fines de semana), los creadores de mercado utilizan fuentes de datos alternativas, como plataformas ATS, futuros sobre índices y modelos internos, para aproximar el valor razonable. Los spreads son más amplios fuera del horario de mercado. Cuando los mercados reabren, cualquier desviación de precio se corrige rápidamente mediante arbitraje; históricamente, la desviación en la apertura del lunes ha sido inferior al 1%.
+¿Recibiré dividendos de los xStocks?
+Sí, aunque no en efectivo. Los dividendos se reinvierten automáticamente en más del activo subyacente, y tu saldo de xStocks aumenta para reflejar el dividendo a través del mecanismo de rebasing/multiplicador. No existe ningún abono en efectivo ni línea de detalle separada; el incremento se refleja como un mayor saldo efectivo de tokens en tu cartera.
+El cálculo del rebasing: Dividendo neto (tras la retención fiscal del 30% en EE. UU.) dividido entre el precio de cierre de la acción subyacente del día anterior. El multiplicador se actualiza aproximadamente a las 20:00 EST del día anterior a la fecha ex-dividendo.
+Retiros y otras plataformas
+¿Puedo retirar xStocks a un monedero de criptomonedas?
+Sí, se admite la autocustodia. Puedes retirar tus xStocks a un monedero compatible en Solana, Ethereum, TON o Ink. Los tokens de xStocks no requieren permisos y son transferibles libremente on-chain.
+¿Puedo retirar mis xStocks y operarlos en plataformas de finanzas tradicionales como IBKR?
+No. Los xStocks son tokens on-chain y no pueden transferirse a una cuenta de intermediación tradicional. Mantener xStocks no equivale a comprar acciones de la empresa subyacente. Los xStocks ofrecen exposición al valor de la acción, pero no otorgan derechos de accionista, derechos de voto ni ninguna reclamación legal sobre las acciones o los activos residuales de la empresa subyacente en caso de liquidación.
+¿Puedo usar xStocks en DeFi?
+Sí. Los xStocks son tokens on-chain sin permisos y pueden utilizarse en diversos protocolos de DeFi:
+Como colateral: Deposita $TSLAx o $SPYx en Kamino (Solana) o Morpho (Ethereum) y pide prestado sobre ellos sin cerrar tu posición.
+Provisión de liquidez: Añade xStocks a grupos de liquidez en Raydium, Orca o Byreal para ganar comisiones.
+Mercados de préstamo: Presta xStocks para obtener rendimientos a través de Kamino, Loopscale, JupLend (Solana) o Euler (Ethereum).
+Gana xPoints: Mantén xStocks, aporta liquidez o usa mercados de préstamo para ganar xPoints, el programa de incentivos on-chain de Kraken (activo desde el 17 de marzo de 2026).
+Seguridad
+¿Los xStocks son seguros?
+Kraken y Backed Assets (JE) Limited utilizan custodia segura, reservas auditadas e infraestructura blockchain para garantizar la seguridad y la transparencia de las tenencias de xStocks.
+Medidas de protección clave:
+Custodia: Las acciones subyacentes están custodiadas por Alpaca Securities LLC (regulada por FINRA, miembro de SIPC), con cobertura adicional de Lloyd's of London de hasta 175 M $ en total. InCore Bank actúa como custodio secundario.
+Prueba de reservas: Publicada semanalmente on-chain y verificada por auditores externos.
+Auditorías: Auditorías de aseguramiento ISAE 3000 con periodicidad trimestral.
+Blindaje frente a insolvencia: La estructura SPV está diseñada para que, en caso de quiebra de Kraken o Backed, los usuarios puedan reclamar el valor subyacente de sus activos directamente a Alpaca.
+Aun así, invertir en xStocks conlleva cierto riesgo. Consulta la divulgación de riesgos de xStocks
+de Kraken, el Folleto Base y los Términos Finales
+correspondientes.
+Para obtener la información más actualizada, consulta la divulgación de riesgos de xStocks
+y https://assets.backed.fi/legal-documentation
+.
+Vista general
+Compra y trading
+Precio y dividendos
+Retiros y otras plataformas
+Seguridad
+Crear una cuenta
+Crear una cuenta
+Iniciar sesión
+Crear una cuenta
+Crear una cuenta
+Iniciar sesión
+Funciones →
+Comprar criptos
+Vender criptos
+Margin trading
+Trading de futuros
+Trading OTC
+Instituciones
+API trading
+Recompensas de staking
+Compras recurrentes
+Kraken Borrow
+Kraken Funded
+Acerca de Kraken →
+Seguridad de Kraken
+Trabaja en Kraken
+Blog de Kraken
+Kraken para desarrolladores
+Sala de prensa
+Programa de afiliados
+Listados de activos
+Estado de Kraken
+Centro de Atención al cliente
+Quejas
+Precios de las criptomonedas →
+Precio de Bitcoin
+Precio de Ethereum
+Precio de Dogecoin
+Precio de Ripple
+Precio de Cardano
+Precio de Solana
+Precio de Litecoin
+Categorías de criptos
+Predicciones de precios
+Convertir criptos →
+BTC a USD
+ETH a USD
+XRP a USD
+BNB a USD
+SOL a USD
+DOGE a USD
+ADA a USD
+TRX a USD
+LTC a USD
+Comprar criptos →
+Compre Bitcoin
+Comprar Ethereum
+Comprar Dogecoin
+Comprar XRP
+Comprar Cardano
+Comprar Solana
+Comprar Litecoin
+Compra acciones →
+Comprar Nvidia
+Comprar Tesla
+Comprar Apple
+Comprar Amazon
+Comprar Palantir
+Comprar Microsoft
+Comprar renta variable tokenizada →
+Comprar NVDAx
+Comprar TSLAx
+Comprar AAPLx
+Comprar SPYx
+Comprar AMZNx
+Educación financiera →
+¿Qué es una criptomoneda?
+¿Qué son los contratos inteligentes?
+¿Qué es Bitcoin?
+¿Qué es la tokenización?
+Mejores apps de cripto
+Mejores exchanges de criptomonedas
+Kraken y Coinbase
+Centro de privacidad
+Aviso de privacidad
+Configuración de cookies
+No vender/compartir
+Centro de cumplimiento
+Términos de servicio
+Normas de trading en el exchange
+Divulgaciones
+by PAYWARD
+© 2011–2026 Payward, Inc.
+Trading
+Kraken
+Kraken Pro
+NinjaTrader
+Breakout
+VIP
+API Trading
+|
+Services
+Payward Services
+xStocks
+CF Benchmarks
+Reap
+|
+Banking
+Krak
+Prime
+OTC
+Custody
+|
+Asset Management
+Estos materiales ofrecen únicamente información general y no deben entenderse como asesoramiento sobre inversiones o productos financieros ni como una recomendación o una solicitud para comprar, vender, hacer staking ni mantener ningún criptoactivo, ni para participar en ninguna estrategia de trading específica. Kraken no trabaja ni trabajará para aumentar o disminuir el precio de ningún criptoactivo en particular de los que ofrece. Los mercados de criptoactivos son impredecibles y, por tanto, la inversión en este tipo de activos puede suponer la pérdida de capital. Es posible que la rentabilidad o el incremento del valor de tus criptoactivos estén sujetos a impuestos. Pueden aplicarse restricciones geográficas. Algunos productos y mercados de criptomonedas no están regulados. El estado normativo de Kraken para sus productos y sus servicios difiere según la jurisdicción y es posible que la compensación gubernamental o los sistemas de protección normativa no te protejan. Consulta las divulgaciones legales
+de cada jurisdicción.

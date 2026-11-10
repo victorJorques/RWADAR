@@ -1,0 +1,8 @@
+Fuente: https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv
+Consultado: 2026-11-10T09:35:06Z · HTTP 200 · 196605 bytes · sha256 fd255f543d4c5746d96155744b3698c9a53acaf96168b028274bb06260896ca6
+Copia original en crudo/esma-mica-casps.csv (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+ae_competentAuthority,ae_homeMemberState,ae_lei_name,ae_lei,ae_lei_cou_code,ae_commercial_name,ae_address,ae_website,ae_website_platform,ac_authorisationNotificationDate,ac_authorisationEndDate,ac_serviceCode,ac_serviceCode_cou,ac_comments,ac_lastupdate,ac_legal_basis,,
+Finanzmarktaufsicht (FMA),LI,SMART VALOR AG,254900S56908SP1E8O53,LI,SMART VALOR,Birkenweg 6 - 9490 Vaduz,https://smartvalor.com/en/,,01/07/2026,,a. providing custody and administration of crypto-assets on behalf of clients | b. operation of a trading platform for crypto-assets | c. exchange of crypto-assets for funds | d. exchange of crypto-assets for other crypto-assets | j. providing transfer se
+Commission de Surveillance du Secteur Financier (CSSF),LU,STOKR S.A.,984500BA521C5EMR1D63,LU,STOKR,"9 rue du Laboratoire, 1911 Luxembourg",https://stokr.io/,,22/06/2026,,a. providing custody and administration of crypto-assets on behalf of clients | j. providing transfer services for crypto-assets on behalf of clients,AT|BE|BG|HR|CY|CZ|DK|EE|EL |FI|FR|DE|HU|IS|IE|IT|LV|LI|LT|MT|NL|NO|PL|PT|RO|SK|S
+Blocksquare/Oceanpoint: 0 coincidencias

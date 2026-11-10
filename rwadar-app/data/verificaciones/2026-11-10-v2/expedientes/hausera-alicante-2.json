@@ -1,0 +1,262 @@
+{
+ "slug": "hausera-alicante-2",
+ "tipoExpediente": "candidata",
+ "grupo": "espana-proximas",
+ "proveedor": "Hausera",
+ "plataformaSlug": "hausera",
+ "entidadComercializadora": "El propio emisor, a través de la plataforma hausera.io (titular: HOLDTX SPAIN, S.L., que declara no ser ESI)",
+ "emisor": "HAUSERA PROPERTY MANAGER SPV 10, S.A (CIF A88963418), Cartagena (Murcia)",
+ "vehiculo": "Sociedad anónima vehículo de un solo proyecto (CRV en La Zenia, Orihuela Costa); escritura de emisión de obligaciones no convertibles de 27/10/2026",
+ "token": "«ALICANTE 2»: 51.960 obligaciones de 100 € representadas con TRD en Polygon; contrato «Alicante_2» con suministro 0 el 10/11/2026 (dirección y respuesta en fuentes/crudo/)",
+ "derechoAdquirido": "Obligaciones no convertibles sin garantías: devolución del capital y retribución variable (tope del 22 % estimado) solo tras vender el inmueble",
+ "jurisdiccion": "ES",
+ "identificador": null,
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Documento de emisión de obligaciones de HAUSERA PROPERTY MANAGER SPV 10, S.A · ALICANTE 2 (en la ficha: «Whitepaper»)",
+   "url": "https://drive.google.com/file/d/1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+   "versionOFecha": "firma electrónica 2026-10-23; descarga 2026-11-10T09:04:26Z",
+   "paginas": 27,
+   "sha256": "d3d7dd400dc81c45f534d5164415afb22cfa8b30465ce6419466eea1607a2197",
+   "leido": true,
+   "nota": "Público sin sesión desde la ficha. PDF no guardado (datos personales); extracto recortado en grupos/espana-proximas/fuentes/hausera/hausera-alicante-2-documento-emision-extracto.txt."
+  },
+  {
+   "titulo": "Acuerdo de reserva de suscripción de ALICANTE 2, con el documento de emisión y la escritura de emisión de obligaciones no convertibles (27/10/2026) como anexos",
+   "url": "https://drive.google.com/file/d/1Mg6Ax-_p6G-X4XdOluokmllWLOmNvr0b",
+   "versionOFecha": "escritura 2026-10-27; descarga 2026-11-10T09:04:23Z",
+   "paginas": 85,
+   "sha256": "ef9cff8c6f919951b4546731669ace6e092037d15c437c6e35c70874aede6cd3",
+   "leido": true,
+   "nota": "PDF no guardado (nombres, DNI e IBAN); extracto recortado en fuentes/hausera/hausera-alicante-2-acuerdo-reserva-extracto.txt."
+  },
+  {
+   "titulo": "Dossier de Alicante 2",
+   "url": "https://drive.google.com/file/d/1mOfx79tIL9f4Cd9BTML76RblubfZ7otH",
+   "versionOFecha": "descarga 2026-11-10T09:04:28Z",
+   "paginas": 19,
+   "sha256": "70ed0aaae611bd1146a7fe0c02e22d03db1f70e50fa645942aa3637bbb815ef5",
+   "leido": true,
+   "nota": "8,7 MB, no guardado."
+  },
+  {
+   "titulo": "Ficha de Alicante 2 (cabecera y pestañas)",
+   "url": "https://hausera.io/propiedad/alicante_2/",
+   "versionOFecha": "consulta 2026-11-10T09:02:36Z",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Cabecera «FINANCIADA»; sin botón de reserva. Copias en fuentes/hausera/nav-hausera-alicante-2*-2026-11-10.txt."
+  },
+  {
+   "titulo": "Datos públicos de la ficha (JSON estático)",
+   "url": "https://hausera.io/page-data/propiedad/alicante_2/page-data.json",
+   "versionOFecha": "consulta 2026-11-10T09:02:01Z",
+   "paginas": null,
+   "sha256": "73c8e2364129045956f0f44ef509a35765ded8715a92b33ae1dafa3419fcc9ba",
+   "leido": true,
+   "nota": "status PRESALE_CLOSED; isin null; is_secondary_market false. El 05/11 el estado era PRESALE (SHA-256 b2a63ccc…)."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "URSUS-3 CAPITAL, A.V., S.A. (ERIR designada)",
+   "numero": "Agencia de valores nº 251",
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+   "alcance": "La emisión de la SPV 10 no figura todavía entre las emisiones inscritas (última fecha 23/10/2026).",
+   "consultadoUtc": "2026-11-10T09:06:22Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "EAFN nº 21 (persona física, nombre recortado), «entidad de servicios de inversión interviniente»",
+   "numero": "EAFN nº 21 (registro 12/01/2024)",
+   "url": "https://www.cnmv.es/portal/consultas/esi/afn?tipo=AFN&numero=21&lang=es",
+   "alcance": "Autorizada para asesoramiento en materia de inversión y servicios auxiliares; no para colocación.",
+   "consultadoUtc": "2026-11-10T09:10:35Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "HOLDTX SPAIN, S.L. / Hausera",
+   "numero": null,
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+   "alcance": "No es PSFP ni ESI.",
+   "consultadoUtc": "2026-11-10T09:06:29Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Hausera",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+   "consultadoUtc": "2026-11-10T09:06:32Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Holdtx",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx",
+   "consultadoUtc": "2026-11-10T09:06:35Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "Alicante 2 · FINANCIADA · CRV · Importe a financiar: 5.196.000€ · Inicio de preventa: 04/11/2026 · Inicio de oferta pública: 11/11/2026",
+   "dato": "Financiada en preventa; no se puede reservar ni suscribir el 10/11/2026",
+   "fuentePrimaria": "https://hausera.io/propiedad/alicante_2/",
+   "localizador": "Cabecera de la ficha; buscador de Oportunidades; datos públicos status PRESALE_CLOSED",
+   "fechaDato": "2026-11-10",
+   "consultadoUtc": "2026-11-10T09:01:42Z",
+   "alcanceYLimites": "El documento abre la suscripción el 11/11/2026 hasta el 30/06/2027 «sin perjuicio de que el Emisor pueda darlo por finalizado con anterioridad en caso de alcanzarse el importe máximo»: la ficha indica que ya está cubierta.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "emisor",
+   "literal": "Emisor: HAUSERA PROPERTY MANAGER SPV 10, S.A … CIF: A88963418",
+   "dato": "HAUSERA PROPERTY MANAGER SPV 10, S.A",
+   "fuentePrimaria": "https://drive.google.com/file/d/1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+   "localizador": "Documento de emisión, pág. 1 y 2.2.1",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-10T09:04:26Z",
+   "alcanceYLimites": null,
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Ticket mínimo: 100,00 euros",
+   "dato": "100 €",
+   "fuentePrimaria": "https://drive.google.com/file/d/1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+   "localizador": "Documento de emisión, cuadro resumen (2.3.1)",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-10T09:04:26Z",
+   "alcanceYLimites": "EUR",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "se dirigirá, tanto a inversores cualificados … como a determinadas personas físicas y jurídicas que no tengan la condición de inversor cualificado",
+   "dato": "Particulares si el emisor los considera idóneos",
+   "fuentePrimaria": "https://drive.google.com/file/d/1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+   "localizador": "Documento de emisión, 5.7",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-10T09:04:26Z",
+   "alcanceYLimites": "Ley española; sin lista de países.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "salida",
+   "literal": "La devolución del principal y, en su caso, la retribución … se realizará únicamente una vez se haya producido la venta efectiva del inmueble",
+   "dato": "Cobro al vender (previsto 20 meses desde el 11/11/2026, vencimiento objetivo 11/07/2028, sin fecha cierta); transmisión solo a compradores autorizados",
+   "fuentePrimaria": "https://drive.google.com/file/d/1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+   "localizador": "Documento de emisión, 2.3.5, 2.3.7 y 6",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-10T09:04:26Z",
+   "alcanceYLimites": null,
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "la emisión está libre de comisiones y gastos para el suscriptor",
+   "dato": "Ninguna",
+   "fuentePrimaria": "https://drive.google.com/file/d/1Mg6Ax-_p6G-X4XdOluokmllWLOmNvr0b",
+   "localizador": "Escritura anexa, condición (i)",
+   "fechaDato": "2026-10-27",
+   "consultadoUtc": "2026-11-10T09:04:23Z",
+   "alcanceYLimites": null,
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimoEmision",
+   "literal": "Si a la fecha 18/11/2026 no se hubiera alcanzado al menos el 70% del importe total previsto para la emisión (softcap), la emisión no se entenderá válidamente constituida",
+   "dato": "Mínimo de la emisión: 70 % (3.637.200 €) a 18/11/2026",
+   "fuentePrimaria": "https://drive.google.com/file/d/1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+   "localizador": "Documento de emisión, 5.9; escritura (o) y (r) coinciden",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-10T09:04:26Z",
+   "alcanceYLimites": null,
+   "estado": "respaldado"
+  },
+  {
+   "campo": "registro",
+   "literal": "La inscripción y registro de los valores será realizada por la Entidad Responsable de la Inscripción y Registro (ERIR) una vez cumplidos los trámites",
+   "dato": "No inscrita en la CNMV el 10/11/2026",
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+   "localizador": "CNMV, emisiones inscritas de Ursus-3 (págs. 1 a 3)",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-10T09:06:22Z",
+   "alcanceYLimites": null,
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "La inversión no garantiza la devolución del capital ni la obtención de rentabilidad",
+   "dato": "Pérdida total o parcial posible",
+   "fuentePrimaria": "https://drive.google.com/file/d/1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+   "localizador": "Resumen ejecutivo y apartado 8",
+   "fechaDato": "2026-10-23",
+   "consultadoUtc": "2026-11-10T09:04:26Z",
+   "alcanceYLimites": null,
+   "estado": "respaldado"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_cumple",
+   "nota": "Emisor identificado y ERIR registrada, pero la comercializa el propio emisor por una plataforma que no es ESI ni PSFP; la EAFN interviniente solo está autorizada para asesorar. Emisión no inscrita."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_cumple",
+   "nota": "El 10/11/2026 figura como financiada (PRESALE_CLOSED): no está abierta antes ni a partir de su fecha de oferta pública (11/11)."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Documento público: mínimo 100 €, sin comisiones, particulares tras test, salida al vender."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Riesgos descritos en el documento; sin advertencias de la CNMV."
+  }
+ },
+ "estadoOferta": "cerrada",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "estado",
+   "antes": "05/11: preventa en curso; oferta pública anunciada para el 11/11/2026 (sin ficha propia en RWAdar)",
+   "ahora": "10/11: «FINANCIADA» (PRESALE_CLOSED); no se puede reservar",
+   "fuente": "https://hausera.io/propiedad/alicante_2/",
+   "critico": true
+  },
+  {
+   "campo": "documentoEmision",
+   "antes": "No público",
+   "ahora": "Público sin sesión (documento de emisión, acuerdo de reserva y escritura)",
+   "fuente": "https://drive.google.com/file/d/1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+   "critico": true
+  }
+ ],
+ "propuestaTarjeta": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": "100 EUR",
+  "supervisorVerificado": null,
+  "documentacionClara": "si",
+  "salidaExplicada": "si",
+  "cifraRecienteVerificada": "si",
+  "porQueDestaca": "Primera operación de Hausera con documento de emisión, emisor y condiciones públicos antes de abrir.",
+  "porQueNo": "Ya está financiada: no se puede comprar. Además, sin entidad supervisada que la coloque y sin inscribir."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Hoy sí hay documento de emisión público, emisor identificado (SPV 10) y condiciones (100 € de mínimo, sin comisiones, salida al vender), pero Alicante 2 ya figura como financiada el 10/11, antes de su oferta pública del 11/11: no se puede comprar. Además, la coloca el propio emisor sin ESI ni PSFP y la emisión no está inscrita en la CNMV. La siguiente operación, Alicante 3, se sigue en hausera-proximas-ofertas.",
+ "bloqueos": [
+  "No consta cuánto se reservó ni en qué fecha se cerró la preventa.",
+  "Emisión aún no inscrita en el registro ERIR de la CNMV."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-10T09:01:21Z",
+  "finUtc": "2026-11-10T09:17:08Z"
+ }
+}

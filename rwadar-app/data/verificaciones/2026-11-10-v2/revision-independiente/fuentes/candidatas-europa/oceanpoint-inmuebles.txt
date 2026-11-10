@@ -1,0 +1,14 @@
+Fuente: https://oceanpoint.fi/
+Consultado: 2026-11-10T09:35:04Z · HTTP 200 · 77365 bytes · sha256 30513461268a7c3a9347f526257ffde040230a12d6ec0c21cd0b096d4e4301d1
+Copia original en crudo/oceanpoint-portada.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+Datos estructurados que la propia portada incrusta en su HTML (no son el texto visible).
+
+BSPT-OCN-15 · status=TRADING · Student house Vrhovci, Ljubljana, Slovenia · location=Slovenia · yieldPct=5.87 · valuationUsd=764000
+BSPT-OCN-39 · status=LISTED · The Bank, Multipurpose building, Brugge, Belgium · location=Belgium · yieldPct=10 · valuationUsd=1805123
+BSPT-OCN-1 · status=TRADING · Co-living student house with 24 rooms in Ljubljana, Slovenia · location=Ljubljana, Slovenia · yieldPct=6.36 · valuationUsd=950000
+BSPT-OCN-3 · status=LISTED · Guesthouse Groeninghe in Bruges · location=Belgium · yieldPct=7.5 · valuationUsd=705000
+BSPT-OCN-5 · status=LISTED · Guesthouse with shop in Bruges · location=Belgium · yieldPct=10.3 · valuationUsd=1190000
+BSPT-OCN-4 · status=LISTED · Guesthouse Dijver in Bruges · location=Belgium · yieldPct=7.5 · valuationUsd=640000
+BSPT-OCN-0 · status=TRADING · Single underground parking space for rent in Techpark Ljubljana, Slovenia · location=Stavba F, Slovenia · yieldPct=4.65 · valuationUsd=23000
+BSPT-OCN-2 · status=LISTED · Guesthouse Aubrey in Bruges · location=Belgium · yieldPct=7.8 · valuationUsd=540000
+tradingCount: "tradingCount":3

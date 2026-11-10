@@ -1,0 +1,191 @@
+{
+ "slug": "blockchain-com-ondo-stocks",
+ "tipoExpediente": "candidata",
+ "grupo": "candidatas-mercados",
+ "proveedor": "Blockchain.com DeFi wallet · Ondo Stocks (EEE)",
+ "plataformaSlug": null,
+ "entidadComercializadora": "Ninguna con licencia MiFID en España: la compra se hace desde la wallet de autocustodia de Blockchain.com",
+ "emisor": "Ondo Global Markets (BVI) Limited",
+ "vehiculo": "Tokens «Ondo Stocks» del folleto base de Ondo Global Markets (FMA de Liechtenstein, BPWO-68)",
+ "token": "Ondo Stocks (más de 200 acciones y ETF de EE. UU.); red y contratos no copiados",
+ "derechoAdquirido": "Token de deuda del emisor ligado al precio de la acción o ETF; sin voto. El reembolso exige el KYC del emisor.",
+ "jurisdiccion": "VG (emisor) · LI (folleto)",
+ "identificador": "Folleto base BPWO-68 (aprobado el 11/11/2025)",
+ "moneda": null,
+ "documentos": [
+  {
+   "titulo": "Blockchain.com & Ondo Finance Launch Onchain Tokenized U.S. Stocks Across Europe (nota de la empresa vía EQS)",
+   "url": "https://www.gettex.de/en/news-overview/newsdetail/eqs-news-blockchaincom-amp-ondo-finance-launch-onchain-tokenized-us-stocks-across-europe",
+   "versionOFecha": "03.02.2026",
+   "paginas": null,
+   "sha256": "8a8bc2795aa6baf1f5f831446b7864a2dedeef307726bb6adcb89396c06cae17",
+   "leido": true,
+   "nota": "Texto de la empresa («The issuer is solely responsible for the content»). El enlace directo de PR Newswire probado dio 404."
+  },
+  {
+   "titulo": "Ondo Stocks · Eligibility",
+   "url": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "versionOFecha": "sin fecha; mismo SHA-256 que el 05/11/2026",
+   "paginas": null,
+   "sha256": "76916fd4a05b595e731a7288f8cffb36620e849478a06b3f8cc815571ba8ed61",
+   "leido": true
+  },
+  {
+   "titulo": "ESMA · folletos de Ondo Global Markets (sin condiciones finales)",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "versionOFecha": "consulta de hoy",
+   "paginas": null,
+   "sha256": "bc8be9d6b3b251bd22a93ca4e919d2d119bc7ee593067d2acbe064d1ef81bfaf",
+   "leido": true,
+   "nota": "Copia en fuentes/crudo/."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "Blockchain.com (ninguna entidad del grupo)",
+   "numero": null,
+   "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+   "alcance": "El listado de ESI del EEE en libre prestación en España no contiene ninguna entidad «Blockchain» hoy.",
+   "consultadoUtc": "2026-11-10T09:08:03Z"
+  },
+  {
+   "regulador": "ESMA / FMA (Liechtenstein)",
+   "entidad": "Ondo Global Markets (BVI) Limited (LEI 984500Z0Q6A5E8BE2B61)",
+   "numero": "BPWO-68 (11/11/2025); suplementos del 05/05/2026 y del 28/08/2026",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "alcance": "No hay folleto base nuevo hoy. Por la regla general de 12 meses del Reglamento de Folletos, el de 11/11/2025 deja de valer para ofertas nuevas a partir del 11/11/2026 salvo que se apruebe otro.",
+   "consultadoUtc": "2026-11-10T09:15:27Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Blockchain.com",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "consultadoUtc": "2026-11-10T09:11:39Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Ondo",
+   "resultado": "solo coincidencias ajenas por parecido de texto (London…); ninguna sobre Ondo",
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "consultadoUtc": "2026-11-10T09:11:49Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "Users across 30 EEA states can now buy, sell, and hold over 200 tokenized U.S. stocks and ETFs via the DeFi wallet.",
+   "dato": "Anunciado el 03/02/2026 para 30 Estados del EEE",
+   "fuentePrimaria": "https://www.gettex.de/en/news-overview/newsdetail/eqs-news-blockchaincom-amp-ondo-finance-launch-onchain-tokenized-us-stocks-across-europe",
+   "localizador": "Nota de prensa del 03/02/2026",
+   "fechaDato": "2026-02-03",
+   "consultadoUtc": "2026-11-10T09:17:06Z",
+   "alcanceYLimites": "Afirmación de la empresa; no dice qué entidad con licencia presta el servicio",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "custodia",
+   "literal": "providing self-custody solutions through our DeFi wallet",
+   "dato": "Wallet de autocustodia (DeFi), sin cuenta de valores",
+   "fuentePrimaria": "https://www.gettex.de/en/news-overview/newsdetail/eqs-news-blockchaincom-amp-ondo-finance-launch-onchain-tokenized-us-stocks-across-europe",
+   "localizador": "Nota de prensa del 03/02/2026 (cita del consejero delegado de Blockchain.com)",
+   "fechaDato": "2026-02-03",
+   "consultadoUtc": "2026-11-10T09:17:06Z",
+   "alcanceYLimites": null,
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Any Member State of the European Economic Area | \"Professional Client\" under MiFID II, Annex II, Section I; or \"Qualified Investor\"",
+   "dato": "El emisor solo emite en el EEE a clientes profesionales o inversores cualificados",
+   "fuentePrimaria": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "localizador": "Ondo Stocks · Eligibility, tabla de jurisdicciones",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-10T09:15:26Z",
+   "alcanceYLimites": "Un particular en España no cumple el requisito; mismo texto que el 05/11/2026 (mismo SHA-256)",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "registro",
+   "literal": "BPWO 2025-11-11 · SUPP 2026-05-05 · SUPP 2026-08-28",
+   "dato": "Folleto base de 11/11/2025 sin sustituto hoy",
+   "fuentePrimaria": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "localizador": "ESMA, registro de folletos (consulta por LEI)",
+   "fechaDato": "2026-08-28",
+   "consultadoUtc": "2026-11-10T09:15:27Z",
+   "alcanceYLimites": "Ver nota de validez de 12 meses en registros",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimo",
+   "literal": "—",
+   "dato": null,
+   "fuentePrimaria": "https://www.gettex.de/en/news-overview/newsdetail/eqs-news-blockchaincom-amp-ondo-finance-launch-onchain-tokenized-us-stocks-across-europe",
+   "localizador": "Nota de prensa: sin mínimo",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-10T09:17:06Z",
+   "alcanceYLimites": null,
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_cumple",
+   "nota": "Ninguna entidad de Blockchain.com figura en la CNMV como ESI del EEE; la compra es desde una wallet de autocustodia."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Anunciado el 03/02/2026; el folleto base de Ondo cumple 12 meses el 11/11/2026 sin sustituto en ESMA hoy."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "Ondo solo emite en el EEE a profesionales o cualificados; sin mínimo publicado."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Sin advertencias de la CNMV para Blockchain.com ni para Ondo."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "excluido",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "expediente",
+   "antes": "sin expediente (Ondo Stocks se rechazó el 05/11 en assetera-ondo-stocks)",
+   "ahora": "estudiado hoy otro canal de Ondo Stocks (wallet de Blockchain.com): mismo bloqueo del emisor y sin licencia MiFID en España",
+   "fuente": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": null,
+ "resumenTarjeta": {
+  "minimo": null,
+  "accesoEspana": "No como particular: el emisor solo emite en el EEE a clientes profesionales",
+  "salida": null
+ },
+ "resumenTarjetaNota": "Interno: los tres datos tal como se ven hoy; no es propuesta de tarjeta (decisión no_admitir). null = no respaldado hoy en fuente primaria.",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "parcial",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Más de 200 acciones y ETF de EE. UU. tokenizados en una wallet muy usada.",
+  "porQueNo": "Sin entidad con licencia MiFID en España, compra desde wallet de autocustodia y el emisor excluye a minoristas del EEE."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No se admite. Blockchain.com anunció el 03/02/2026 Ondo Stocks en su wallet de autocustodia para 30 Estados del EEE, pero ninguna entidad suya figura en la CNMV como empresa de inversión del EEE, el propio emisor solo emite en el EEE a profesionales o cualificados (página de elegibilidad, sin cambios) y su folleto base cumple 12 meses el 11/11/2026 sin sustituto en ESMA.",
+ "bloqueos": [
+  "Sin entidad con licencia MiFID identificada para el servicio en el EEE.",
+  "Folleto base de Ondo a punto de cumplir 12 meses sin uno nuevo en ESMA.",
+  "Mínimo y costes no publicados."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-10T09:11:39Z",
+  "finUtc": "2026-11-10T09:20:59Z"
+ }
+}

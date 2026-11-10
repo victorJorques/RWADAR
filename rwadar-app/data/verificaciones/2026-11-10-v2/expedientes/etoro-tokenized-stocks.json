@@ -1,0 +1,151 @@
+{
+ "slug": "etoro-tokenized-stocks",
+ "tipoExpediente": "candidata",
+ "grupo": "candidatas-mercados",
+ "proveedor": "eToro · acciones tokenizadas (ERC-20)",
+ "plataformaSlug": null,
+ "entidadComercializadora": "eToro (Europe) Ltd (Chipre, CySEC 109/10); CNMV nº 2534",
+ "emisor": null,
+ "vehiculo": null,
+ "token": "Anunciadas como tokens ERC-20 en Ethereum; sin contratos publicados",
+ "derechoAdquirido": null,
+ "jurisdiccion": "CY",
+ "identificador": "CNMV ESI del EEE nº 2534 (13/04/2010)",
+ "moneda": null,
+ "documentos": [
+  {
+   "titulo": "eToro Continues Journey Towards a Tokenized Future With Launch of 24/5 Trading, Futures and Tokenized Stocks",
+   "url": "https://www.etoro.com/news-and-analysis/press-releases/etoro-continues-journey-towards-a-tokenized-future-with-launch-of-24-5-trading-futures-and-tokenized-stocks",
+   "versionOFecha": "Jul 29, 2025",
+   "paginas": null,
+   "sha256": "3eacf38c2e5ef58ea9cdf3a75bbc274cd080ad271c21df8809e35a19c3f6c3e3",
+   "leido": true
+  },
+  {
+   "titulo": "eToro · Tokenized stocks (página explicativa)",
+   "url": "https://www.etoro.com/investing/tokenized-stocks/",
+   "versionOFecha": "consultada hoy",
+   "paginas": null,
+   "sha256": "1b31058dfb0c1e95e8aeba3480515666fa09a339d9f6d800cae9e9e3578f5135",
+   "leido": true
+  },
+  {
+   "titulo": "Términos, KID o folleto de acciones tokenizadas de eToro",
+   "url": null,
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false,
+   "nota": "No localizados hoy."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "ETORO (EUROPE) LIMITED",
+   "numero": "2534 (13/04/2010)",
+   "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+   "alcance": "ESI chipriota en libre prestación en España. El pie de eToro cita la licencia CySEC 109/10.",
+   "consultadoUtc": "2026-11-10T09:08:03Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "eToro",
+   "resultado": "solo una coincidencia ajena por parecido: «VETOROBANC / HTTPS://VETORO.IO/» (13/01/2020); ninguna sobre eToro",
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "consultadoUtc": "2026-11-10T09:11:17Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "etoro today announced the forthcoming launch of US-listed equities as ERC20 tokens on the Ethereum blockchain.",
+   "dato": "Anunciado el 29/07/2025 como lanzamiento próximo",
+   "fuentePrimaria": "https://www.etoro.com/news-and-analysis/press-releases/etoro-continues-journey-towards-a-tokenized-future-with-launch-of-24-5-trading-futures-and-tokenized-stocks",
+   "localizador": "Nota de prensa del 29/07/2025",
+   "fechaDato": "2025-07-29",
+   "consultadoUtc": "2026-11-10T09:09:44Z",
+   "alcanceYLimites": "No da fecha ni países",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "estado",
+   "literal": "On etoro’s platform, investors will be able to access tokenized versions of popular stocks alongside traditional trading options.",
+   "dato": "La página de hoy sigue en futuro: no hay producto activo descrito",
+   "fuentePrimaria": "https://www.etoro.com/investing/tokenized-stocks/",
+   "localizador": "Página «Tokenized stocks», apartado «How To Invest in Tokenized Stocks With etoro»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-10T09:09:46Z",
+   "alcanceYLimites": "Sin términos, KID, emisor ni lista de valores",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "—",
+   "dato": null,
+   "fuentePrimaria": "https://www.etoro.com/investing/tokenized-stocks/",
+   "localizador": "Sin mínimo publicado",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-10T09:09:46Z",
+   "alcanceYLimites": null,
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "eToro (Europe) figura en la CNMV (nº 2534); falta saber quién emitiría los tokens."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_cumple",
+   "nota": "Anunciado en 2025; hoy la web lo describe en futuro y no hay documentos del producto."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Sin condiciones, mínimo ni salida publicados."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Sin advertencias de la CNMV sobre eToro (solo una web ajena por parecido)."
+  }
+ },
+ "estadoOferta": "proxima",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "expediente",
+   "antes": "sin expediente",
+   "ahora": "estudiada hoy por primera vez: producto anunciado, sin documentos ni lanzamiento comprobable",
+   "fuente": "https://www.etoro.com/investing/tokenized-stocks/",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": null,
+ "resumenTarjeta": {
+  "minimo": null,
+  "accesoEspana": null,
+  "salida": null
+ },
+ "resumenTarjetaNota": "Interno: los tres datos tal como se ven hoy; no es propuesta de tarjeta (decisión no_admitir). null = no respaldado hoy en fuente primaria.",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": "CNMV nº 2534 (ESI del EEE, Chipre)",
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Bróker muy usado en España que anunció acciones tokenizadas en Ethereum con salida a wallet propia.",
+  "porQueNo": "No hay producto activo comprobable ni términos, KID, emisor o mínimo publicados hoy."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No se admite: eToro anunció en julio de 2025 acciones tokenizadas ERC-20 «de próximo lanzamiento», pero su página de hoy lo sigue describiendo en futuro y no hay términos, KID, emisor, mínimo ni salida publicados. Revisar si eToro publica el producto con documentos.",
+ "bloqueos": [
+  "Sin documentos del producto ni fecha de lanzamiento comprobable."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-10T09:09:44Z",
+  "finUtc": "2026-11-10T09:21:21Z"
+ }
+}

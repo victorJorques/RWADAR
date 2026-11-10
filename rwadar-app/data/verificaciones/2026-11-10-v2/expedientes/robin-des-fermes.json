@@ -1,0 +1,169 @@
+{
+  "slug": "robin-des-fermes",
+  "tipoExpediente": "candidata",
+  "grupo": "suiza",
+  "proveedor": "Aktionariat (widget en robindesfermes.ch)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Robin des Fermes SA (vende sus propias acciones con el widget de Aktionariat AG en su web)",
+  "emisor": "Robin des Fermes SA",
+  "vehiculo": "Sociedad anónima suiza (SA); sin SPV",
+  "token": "RDFS, ERC-20 en Ethereum; contrato de venta del emisor 0x7d2d4dd8bfc7239d5a36fd2f5e37d8dd5c5ec41c (Brokerbot)",
+  "derechoAdquirido": "Acciones tokenizadas del emisor (acuerdos no leídos hoy: no hacía falta para decidir)",
+  "jurisdiccion": "CH",
+  "identificador": "token RDFS",
+  "moneda": "CHF / ZCHF",
+  "documentos": [
+    {
+      "titulo": "Página «Investir» del emisor (aviso de oferta pública, mínimo, riesgos)",
+      "url": "https://www.robindesfermes.ch/investir",
+      "versionOFecha": "sin fecha; leída el 10/11/2026",
+      "paginas": null,
+      "sha256": null,
+      "leido": true
+    },
+    {
+      "titulo": "Registration Agreement / acuerdo de accionistas",
+      "url": null,
+      "versionOFecha": "no leídos hoy",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "FINMA · registro de entidades autorizadas",
+      "entidad": "Robin des Fermes",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "alcance": "Count 0: no es entidad autorizada.",
+      "consultadoUtc": "2026-11-10T09:28:29Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Robin des Fermes",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Robin+des+Fermes",
+      "consultadoUtc": "2026-11-10T09:28:30Z"
+    },
+    {
+      "regulador": "FINMA · lista de advertencias",
+      "busqueda": "robin des fermes / robindesfermes",
+      "resultado": "sin coincidencias (2.402 entradas)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-10T09:07:28Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "settings()=1 · getPrice()=4,5 · token.balanceOf(bot)=820",
+      "dato": "Venta del emisor activa a 4,50 CHF; el contrato tiene 820 acciones para entregar",
+      "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al contrato 0x7d2d4dd8bfc7239d5a36fd2f5e37d8dd5c5ec41c",
+      "localizador": "bloque leído a las 09:17:41Z",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:17:41Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "actividad",
+      "literal": "última PRIMARY 2026-11-02T08:32:47Z, 200 acciones a 4,5",
+      "dato": "Última compra al emisor 02/11/2026; 22 compras en 12 meses (15.741 acciones). Ninguna operación entre accionistas en todo el historial (176 operaciones).",
+      "fuentePrimaria": "https://shares.aktionariat.com/api/secondarymarkets/getTrades",
+      "localizador": "POST {\"companySlug\":\"robindesfermes\"} (09:25:42Z)",
+      "fechaDato": "2026-11-02",
+      "consultadoUtc": "2026-11-10T09:25:42Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Offre publique réservée uniquement aux personnes résidant en Suisse et dans l'EEE. … L'offre est limitée en Suisse à un montant total de 8 000 000 CHF et dans l'EEE à un montant total de 100 000 €.",
+      "dato": "Residentes en Suiza o el EEE; tope EEE 100.000 €",
+      "fuentePrimaria": "https://www.robindesfermes.ch/investir",
+      "localizador": "Aviso legal al pie de la página «Investir» (09:25:45Z)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:25:45Z",
+      "alcanceYLimites": "No se publica cuánto queda del tope.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Le nombre minimum d'actions que tu peux acheter correspond à un investissement de 225 CHF, soit 50 actions. … le montant maximum est de 50'000 CHF",
+      "dato": "225 CHF (50 acciones); máximo 50.000 CHF",
+      "fuentePrimaria": "https://www.robindesfermes.ch/investir",
+      "localizador": "Preguntas frecuentes de la página «Investir»; brokerbotsettings bankTransferLimit.min=225 (09:28:28Z)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:25:45Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "settings()=1 (recompra apagada) · getOrderBook: bids [] asks []",
+      "dato": "Sin salida visible hoy: el emisor no recompra y no hay ninguna orden de compra entre accionistas; nunca ha habido una operación entre accionistas",
+      "fuentePrimaria": "https://shares.aktionariat.com/api/secondarymarkets/getOrderBook",
+      "localizador": "POST {\"companySlug\":\"robindesfermes\"} (09:28:27Z); settings() en cadena (09:17:41Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:28:27Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Un investissement en actions comporte divers risques, et des pertes allant jusqu'au montant total de l'investissement peuvent survenir.",
+      "dato": "Pérdida total posible",
+      "fuentePrimaria": "https://www.robindesfermes.ch/investir",
+      "localizador": "Aviso legal",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:25:45Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sin licencia FINMA; sin advertencias de la CNMV ni de FINMA. Registro mercantil no consultado hoy."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Venta del emisor activa; última compra 02/11/2026."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "Acceso Suiza + EEE y mínimo de 225 CHF, pero no hay salida: ni recompra ni compradores."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Pérdida total posible; sin folleto; sin liquidez."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "cambiosRespectoPublicado": [],
+  "avisosConFecha": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "225 CHF (50 acciones)",
+    "supervisorVerificado": null,
+    "documentacionClara": "parcial",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Venta abierta con compras recientes y acceso Suiza + EEE dicho por el emisor.",
+    "porQueNo": "No hay forma visible de recuperar el dinero: el emisor no recompra, no hay compradores y nunca ha habido una operación entre accionistas."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Nunca estudiada antes. Se puede comprar desde España (225 CHF), pero hoy no hay salida: recompra apagada en el contrato, libro de órdenes vacío y ninguna operación entre accionistas en 176 operaciones. No cumple «salida explicada». Revisable si el emisor activa la recompra con fondos o aparece mercado entre accionistas.",
+  "bloqueos": [
+    "Acuerdos y registro mercantil no leídos hoy (no hacían falta para decidir)."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-10T09:17:06Z",
+    "finUtc": "2026-11-10T09:30:39Z"
+  }
+}

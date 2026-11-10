@@ -1,0 +1,8 @@
+Fuente: https://www.assetera.com/
+Consultado: 2026-11-10T09:42:25Z · HTTP 200 · 113134 bytes · sha256 b842c2ea138ccf6d4a2cc44ae43eb89db05b2f42201fdb2d77185dab2ecbbbda
+Copia original en crudo/assetera-portada.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+Assetera is a EU-regulated, blockchain-powered platform for issuing, buying and selling securities on-chain for institutional and retail investors.
+30 Countries
+Regulatory notifications across the EU and EEA
+MiFID II license

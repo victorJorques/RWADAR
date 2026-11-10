@@ -1,0 +1,1420 @@
+{
+  "grupo": "candidatas-europa",
+  "ciclo": "2026-11-10-v2",
+  "consultas": [
+    {
+      "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es",
+      "archivo": "fuentes/crudo/html/cnmv-psfp-europeos.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:02:23Z",
+      "bytes": 176901,
+      "sha256": "3bee1f28035b8a639e2f066ebd922b6459a671959388b1a108d73a3f30a4a4b7",
+      "archivoTexto": "fuentes/cnmv-psfp-europeos.html.txt",
+      "sha256Texto": "36d361aed8e91a5cd68e7adb5a5434cdfa227bac6b7e99c3ef3718526e6fe7c5"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=4",
+      "archivo": "fuentes/crudo/html/cnmv-listado-esi-eee-lp.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:02:24Z",
+      "bytes": 1991636,
+      "sha256": "b09b266c8a879fbcbc83174b13013d9aad6bfdb65ffda5e70b7afdfee5eca17f",
+      "archivoTexto": "fuentes/cnmv-listado-esi-eee-lp.html.txt",
+      "sha256Texto": "7d6afb3294f8cb3d9e48089dd260c27565605e3291fecc62db061f944d09db7c"
+    },
+    {
+      "url": "https://www.esma.europa.eu/document/register-crowdfunding-services-providers",
+      "archivo": "fuentes/crudo/html/esma-ecsp-register-pagina.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:03:02Z",
+      "bytes": 11783,
+      "sha256": "f9b1a76d4b51c9978b5ddced3d6830d247b96b555285cb02ef972f38ec8c6aa3",
+      "archivoTexto": "fuentes/esma-ecsp-register-pagina.html.txt",
+      "sha256Texto": "f0452ae46b41b031c718aec0ecd8af7daf9d5a99a1b542affea9d0631bf488f6"
+    },
+    {
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_entityTypeCode:CSP&rows=400&wt=json",
+      "archivo": "fuentes/crudo/esma-ecsp-todos.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:03:56Z",
+      "bytes": 363724,
+      "sha256": "dbec4d3022a521a2fa80d88ee19c50d7ce4551ac38809fb412a84bfd600ad790"
+    },
+    {
+      "url": "https://ektico.com/",
+      "archivo": "fuentes/crudo/html/portadas/ektico.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 176873,
+      "sha256": "8e267dab9572af2e0467580932b47aaa3486be3d9f9e0a4e0d6560e8f0ee2ca8",
+      "archivoTexto": "fuentes/crudo/portadas-texto/ektico.html.txt",
+      "sha256Texto": "5788e1dedeb59b6617b4fa907c83e413f7463bb3f5f4bcceb750d71c651b49b9"
+    },
+    {
+      "url": "https://lande.finance/",
+      "archivo": "fuentes/crudo/html/portadas/lande.html",
+      "http": 403,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 5564,
+      "sha256": "0ca497d7e641019b80ef816d99cf3b87efa393b61ba2d07b6c2ea1f1f5e160aa",
+      "archivoTexto": "fuentes/crudo/portadas-texto/lande.html.txt",
+      "sha256Texto": "301dc171e5fa8c5fdeb69592a92a5c378f5f758f68d2338200235d60eb04b9ad"
+    },
+    {
+      "url": "https://www.digilo.com/",
+      "archivo": "fuentes/crudo/html/portadas/digilo.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 114,
+      "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+      "archivoTexto": "fuentes/crudo/portadas-texto/digilo.html.txt",
+      "sha256Texto": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://www.enerfip.eu/es/",
+      "archivo": "fuentes/crudo/html/portadas/enerfip.html",
+      "http": 403,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 20269,
+      "sha256": "e3b0e94790303e510537b2ad1c36beddc99089a7a52675c3781a212656266470",
+      "archivoTexto": "fuentes/crudo/portadas-texto/enerfip.html.txt",
+      "sha256Texto": "ecc07ce6ca256f7a66c1a4c57d8b20e00d415e434df53b0f3e4ae1abd2a5054d"
+    },
+    {
+      "url": "https://www.capitalia.com/",
+      "archivo": "fuentes/crudo/html/portadas/capitalia.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 104251,
+      "sha256": "d4da75813f91e9feff47bea99c9611e47529f60320de827fc761eac480f7340c",
+      "archivoTexto": "fuentes/crudo/portadas-texto/capitalia.html.txt",
+      "sha256Texto": "1f3be08f4553b67071e480a0ed2775f50792ae1e8221de3502c816e852414034"
+    },
+    {
+      "url": "https://letsinvest.eu/",
+      "archivo": "fuentes/crudo/html/portadas/letsinvest.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 7280,
+      "sha256": "4c8bb20e910871e447dbc6a6f71b6df8223b90887e7cb4055f5671bd33a0e47c",
+      "archivoTexto": "fuentes/crudo/portadas-texto/letsinvest.html.txt",
+      "sha256Texto": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://trade.eurivex.com/",
+      "archivo": "fuentes/crudo/html/portadas/eurivex.html",
+      "http": 403,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 1662,
+      "sha256": "c219b3641bb4428bfbfe66f9e5f0c1bc5c2dd2873cfd66f9d457abc387a100b6",
+      "archivoTexto": "fuentes/crudo/portadas-texto/eurivex.html.txt",
+      "sha256Texto": "38d22ae63b3fad91a79d6fe49087d74f705fc315ed2df24002b41f56a777f87d"
+    },
+    {
+      "url": "https://ascend-finance.capital/",
+      "archivo": "fuentes/crudo/html/portadas/ascend.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 1070,
+      "sha256": "f22152fe2c6c2a4c5c82e74dc10e89de34ef9f4d8ed0cdd5cb6c785ef9be44f9",
+      "archivoTexto": "fuentes/crudo/portadas-texto/ascend.html.txt",
+      "sha256Texto": "943ee4fd86bc4b9a3dc2ef6abb687bd1361fbfff786efb76467aaee47ef535f7"
+    },
+    {
+      "url": "https://www.walliance.eu/",
+      "archivo": "fuentes/crudo/html/portadas/walliance.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 178219,
+      "sha256": "9225a90b936cb66f9214e01be1deadc63a69c267bc2c1a60b5c8e8592e0730de",
+      "archivoTexto": "fuentes/crudo/portadas-texto/walliance.html.txt",
+      "sha256Texto": "e23edac3e6fe8f35be2d8b8c100b35eb19613b2428e0fc29f5668ea3f4f77b98"
+    },
+    {
+      "url": "https://www.stock.estate/",
+      "archivo": "fuentes/crudo/html/portadas/stockestate.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 1019819,
+      "sha256": "d68c0a433b11abd47c18a20181c96c8996795f10db2963235c86b3745276946e",
+      "archivoTexto": "fuentes/crudo/portadas-texto/stockestate.html.txt",
+      "sha256Texto": "8580234b458e367df3e89d7b2398485b2d19503c8e2c8a06d03fff8020289ba1"
+    },
+    {
+      "url": "https://crowdestate.eu/",
+      "archivo": "fuentes/crudo/html/portadas/crowdestate.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 226004,
+      "sha256": "55879544ea7f67760bf7bce27ab679da770ca5359e512c42dca49dcc0e4d587f",
+      "archivoTexto": "fuentes/crudo/portadas-texto/crowdestate.html.txt",
+      "sha256Texto": "26c223fb02d28891fc8e76f73cc9cd7bc25bcf54a62c7dba053de05a9198f07b"
+    },
+    {
+      "url": "https://de.bergfuerst.com/",
+      "archivo": "fuentes/crudo/html/portadas/bergfuerst.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 22131,
+      "sha256": "39a4ea1a300a9ca88e56ad808a02da54b1bc7cabf1e604f183ac442ddc43becb",
+      "archivoTexto": "fuentes/crudo/portadas-texto/bergfuerst.html.txt",
+      "sha256Texto": "b697971f0d187cde76d9ef0f37f5c57e0bd1a77a013a67f1e3a9c2fdd8f7afc1"
+    },
+    {
+      "url": "https://estateguru.co/",
+      "archivo": "fuentes/crudo/html/portadas/estateguru.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 299798,
+      "sha256": "092e6c2bebe8e0bb33e7e6ba01b9e6b7f78963e7abec7128474feca624756e30",
+      "archivoTexto": "fuentes/crudo/portadas-texto/estateguru.html.txt",
+      "sha256Texto": "81657c8c666c6d8d73e29ac72bc5dfc93288b3ccfa3e1efb2eff0e8d3a7baa7c"
+    },
+    {
+      "url": "https://www.lendermarket.com/",
+      "archivo": "fuentes/crudo/html/portadas/lendermarket.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 95489,
+      "sha256": "31101455fc7b90babd5447fb0d1db666ab9b30e9812f3e34cb7890d2961978d2",
+      "archivoTexto": "fuentes/crudo/portadas-texto/lendermarket.html.txt",
+      "sha256Texto": "09915bf0ddf3bab3b79a7272309a4533df0f16c0a5114c5589c75b9b030562c4"
+    },
+    {
+      "url": "https://www.fundaus.com/",
+      "archivo": "fuentes/crudo/html/portadas/fundaus.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 97022,
+      "sha256": "13a38d16596e69f6618b03f8d87e8a3b662f29dd5296b82275c7cca75a9bd2cd",
+      "archivoTexto": "fuentes/crudo/portadas-texto/fundaus.html.txt",
+      "sha256Texto": "29ea3d41e2badcf9ffa103eb7d7cb3183700fa4a0daa87d9db2fb1ee3e7dbb7b"
+    },
+    {
+      "url": "https://www.profitus.com/",
+      "archivo": "fuentes/crudo/html/portadas/profitus.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 311533,
+      "sha256": "2b38591e91631bc4f1bfa83e0f6c340adeeaa6e40f2fd6e88a1a10a77ab4cd89",
+      "archivoTexto": "fuentes/crudo/portadas-texto/profitus.html.txt",
+      "sha256Texto": "6dc91c4017525c0ccec2ddb3941c335287f02fd2f8bbf0b7283d08cef0c4ac90"
+    },
+    {
+      "url": "https://seedblink.com/",
+      "archivo": "fuentes/crudo/html/portadas/seedblink.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 191598,
+      "sha256": "761654699697abf66aa942d60765643e06300f3843253926ed8a7c77c5ba7901",
+      "archivoTexto": "fuentes/crudo/portadas-texto/seedblink.html.txt",
+      "sha256Texto": "824f689537e1ada0e14f28ea45adc34a95e34e3c954cda78597932a72da34a03"
+    },
+    {
+      "url": "https://www.nordstreet.com/",
+      "archivo": "fuentes/crudo/html/portadas/nordstreet.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 103361,
+      "sha256": "043c49e5e3d983e04ec4b54ab8328952bb918550f4d5dfe48d27bb3a213974e4",
+      "archivoTexto": "fuentes/crudo/portadas-texto/nordstreet.html.txt",
+      "sha256Texto": "94b94c462d3ff4b49a2de5c897909ff4ed6c777bd6fbb9f6124754dbc50b6c01"
+    },
+    {
+      "url": "https://conda-capital.com/",
+      "archivo": "fuentes/crudo/html/portadas/conda.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 195216,
+      "sha256": "ce8601687682152c1b86e26ff7b2622b8e1d400045013f8d067cc19dce556685",
+      "archivoTexto": "fuentes/crudo/portadas-texto/conda.html.txt",
+      "sha256Texto": "e4c9d038e20696b1fc1fe6877c2b9879857c098718f8a3c34df93da115799bf5"
+    },
+    {
+      "url": "https://www.crowdbase.eu/",
+      "archivo": "fuentes/crudo/html/portadas/crowdbase.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 1597999,
+      "sha256": "fc44f1e7c75491aff0fbc20b031cde9c11cb351328025491bb81b84e59a6e585",
+      "archivoTexto": "fuentes/crudo/portadas-texto/crowdbase.html.txt",
+      "sha256Texto": "5a19ef4ac63d5835a0898a71437767e1ce1b574abaee8e79684bccdddde4c404"
+    },
+    {
+      "url": "https://www.afranga.com/",
+      "archivo": "fuentes/crudo/html/portadas/afranga.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 60843,
+      "sha256": "f4cd8a2a99aaeb469af6ea813c52c05a7ebc4cb66b1dba22cbd4013bdbcd6f2b",
+      "archivoTexto": "fuentes/crudo/portadas-texto/afranga.html.txt",
+      "sha256Texto": "a38743f62b8468ed5f5b132e99122ce4025723a123e6610d10d2100cb41aac0c"
+    },
+    {
+      "url": "https://www.lendahand.com/",
+      "archivo": "fuentes/crudo/html/portadas/lendahand.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 46099,
+      "sha256": "e45d535e0ee5df2475b8ae2d1fcd3eb55e687cdadd86f7c23e2c0302b743f1ce",
+      "archivoTexto": "fuentes/crudo/portadas-texto/lendahand.html.txt",
+      "sha256Texto": "646e8cd9c2965486101e897dc09201bde467c5dc3febce31f841829247d66eb0"
+    },
+    {
+      "url": "https://www.ener2crowd.com/",
+      "archivo": "fuentes/crudo/html/portadas/ener2crowd.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 81843,
+      "sha256": "50c0222e72c8cff3e861371edd73f2ae0bc746b0489871a9c87acdde8ebbe1c2",
+      "archivoTexto": "fuentes/crudo/portadas-texto/ener2crowd.html.txt",
+      "sha256Texto": "da085c532b746c70995e8b4cdc6b42c5cb9c54bf956f35f8c5e39385b6448852"
+    },
+    {
+      "url": "https://www.inrento.com/",
+      "archivo": "fuentes/crudo/html/portadas/inrento.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:04:32Z",
+      "bytes": 45872,
+      "sha256": "301ba738e2a41ae54485e0b7c0da432afcb4d407a6418fb96e2d84a53bf63482",
+      "archivoTexto": "fuentes/crudo/portadas-texto/inrento.html.txt",
+      "sha256Texto": "e49553e51782823c53e27732d303c0726b98f17fe84968922ea45f9a0fc20f3b"
+    },
+    {
+      "url": "https://www.digilo.com/",
+      "finalUrl": "https://forsale.godaddy.com/forsale/www.digilo.com?utm_source=TDFS_DASLNC&utm_medium=parkedpages&utm_campaign=x_corp_tdfs-daslnc_base&traffic_type=TDFS_DASLNC&traffic_id=daslnc&",
+      "archivo": "fuentes/crudo/portadas-texto/digilo.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:06:04Z",
+      "bytes": 224,
+      "sha256": "b723730fe583824baf3cefbaec521ea4714a43083de7a51272da19a2339bd65c",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://trade.eurivex.com/",
+      "finalUrl": "https://trade.eurivex.com/",
+      "archivo": "fuentes/crudo/portadas-texto/eurivex.render.txt",
+      "http": 403,
+      "consultadoUtc": "2026-11-10T09:06:04Z",
+      "bytes": 19,
+      "sha256": "c6c1266b1b8854e014702a20b4d2b956f885b89fc66f21fad180d33a4c37467d",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://ektico.com/",
+      "finalUrl": "https://ektico.com/",
+      "archivo": "fuentes/crudo/portadas-texto/ektico.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:06:04Z",
+      "bytes": 1638,
+      "sha256": "4b69ef63784b9b4e7835d5c127deb27d77d396bd38f71af8b7505c9864083af8",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.stock.estate/es",
+      "finalUrl": "https://stock.estate/es/",
+      "archivo": "fuentes/crudo/portadas-texto/stockestate.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:06:04Z",
+      "bytes": 12257,
+      "sha256": "b1673f8c8393ee29ce7f556ce68dcf8d5afaafdca617cd9aed361b89ce20d4db",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://lande.finance/",
+      "finalUrl": "https://lande.finance/es",
+      "archivo": "fuentes/crudo/portadas-texto/lande.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:06:04Z",
+      "bytes": 10882,
+      "sha256": "18cc2170662e7856471352f02c92aa7f306d778604eaf7640335f0caf96a3375",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=DeXentra",
+      "archivo": "fuentes/crudo/html/advertencias/adv-dexentra.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:09:00Z",
+      "bytes": 212225,
+      "sha256": "9952ee3dabc75d203d031660dbffaa3a142d29d654486a070cf35607e9b39250",
+      "archivoTexto": "fuentes/advertencias/adv-dexentra.html.txt",
+      "sha256Texto": "94a0993fa112dc748ac364478bf4c4b00f1678e2c6ff4dae63eec102c886a7e2",
+      "sha256Copia": "62f0fca1a253d258837959403396a072c04e2bacf6708c6d39de76cfd3f1be12",
+      "nota": "copia guardada con nombres de personas recortados o movida; sha256 = respuesta original"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=OilXCoin",
+      "archivo": "fuentes/crudo/html/advertencias/adv-oilxcoin.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:09:01Z",
+      "bytes": 212225,
+      "sha256": "466e328b7c88150575c2f28ca1f5bdcbb6b31bc8cf3495d8e1aa86c25bf4965c",
+      "archivoTexto": "fuentes/advertencias/adv-oilxcoin.html.txt",
+      "sha256Texto": "0b4324d793debb8d767fc194ee2d6687163fbe2b03fd50cb0432ca2c0609d386",
+      "sha256Copia": "19596b758910ef41f93aae4c817074f91991519b520e6ad8724945b611ac6e5b",
+      "nota": "copia guardada con nombres de personas recortados o movida; sha256 = respuesta original"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=OKX",
+      "archivo": "fuentes/crudo/html/advertencias/adv-okx.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:09:18Z",
+      "bytes": 217569,
+      "sha256": "7c89bfe1409d074f772c46fae8a860615bdd7fe29f2322e988e6e82eb02d81c5",
+      "archivoTexto": "fuentes/advertencias/adv-okx.html.txt",
+      "sha256Texto": "2fe6920ff1b9a1cbf0c6296876918a4420035de4ed37dcb6cd5847246ca055d1"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=OKX",
+      "archivo": "fuentes/crudo/html/advertencias/adv-okx.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:09:28Z",
+      "bytes": 217569,
+      "sha256": "7c89bfe1409d074f772c46fae8a860615bdd7fe29f2322e988e6e82eb02d81c5",
+      "archivoTexto": "fuentes/advertencias/adv-okx.html.txt",
+      "sha256Texto": "2fe6920ff1b9a1cbf0c6296876918a4420035de4ed37dcb6cd5847246ca055d1"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=DeXentra",
+      "archivo": "fuentes/crudo/html/advertencias/adv-dexentra.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:09:29Z",
+      "bytes": 212225,
+      "sha256": "62f0fca1a253d258837959403396a072c04e2bacf6708c6d39de76cfd3f1be12",
+      "archivoTexto": "fuentes/advertencias/adv-dexentra.html.txt",
+      "sha256Texto": "94a0993fa112dc748ac364478bf4c4b00f1678e2c6ff4dae63eec102c886a7e2"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=OilXCoin",
+      "archivo": "fuentes/crudo/html/advertencias/adv-oilxcoin.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:09:31Z",
+      "bytes": 212225,
+      "sha256": "19596b758910ef41f93aae4c817074f91991519b520e6ad8724945b611ac6e5b",
+      "archivoTexto": "fuentes/advertencias/adv-oilxcoin.html.txt",
+      "sha256Texto": "0b4324d793debb8d767fc194ee2d6687163fbe2b03fd50cb0432ca2c0609d386"
+    },
+    {
+      "url": "https://oilxcoin.io/",
+      "finalUrl": "https://oilxcoin.us/en",
+      "archivo": "fuentes/oilxcoin/oilxcoin-portada.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:09:37Z",
+      "bytes": 3430,
+      "sha256": "eeef01f431f4d72678ce43a07f82fc2c7ab3b3fe80ba98f742bf2ca7a719506b",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://stokr.io/",
+      "finalUrl": "https://stokr.io/",
+      "archivo": "fuentes/stokr/stokr-portada.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:10:35Z",
+      "bytes": 12423,
+      "sha256": "8a95f8fbef427b329d73c10c55b0ce1850faa14311aea5873e81c33d501ff2c9",
+      "metodo": "playwright-render",
+      "sha256Copia": "5fb178574c345feef96c368c7dd05a3a5eb46e471142172b1d6162936429b7aa",
+      "nota": "copia guardada con nombres de personas recortados o movida; sha256 = respuesta original"
+    },
+    {
+      "url": "https://stokr.io/products",
+      "finalUrl": "https://stokr.io/page-not-found",
+      "archivo": "fuentes/stokr/stokr-products.render.txt",
+      "http": 404,
+      "consultadoUtc": "2026-11-10T09:10:35Z",
+      "bytes": 2472,
+      "sha256": "dc182c8037d9d621d65c6e57095992c6b18e2183c1e7ee8afe2d488d56cfaa86",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://blocksquare.io/sitemap.xml",
+      "archivo": "fuentes/blocksquare/sitemap.xml",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:10:54Z",
+      "bytes": 5138,
+      "sha256": "d8c6bf0a64b15a6df71ea2eca4bdf004b571f101fb4527e228ed2ba70355814b",
+      "archivoTexto": "fuentes/blocksquare/sitemap.xml.txt",
+      "sha256Texto": "3209d0d7a484770f518507c333d51b8a9bdcf1dd57ca1c1e397333c3a91b6e3c"
+    },
+    {
+      "url": "https://blocksquare.io/",
+      "finalUrl": "https://blocksquare.io/",
+      "archivo": "fuentes/blocksquare/blocksquare-portada.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:11:04Z",
+      "bytes": 5039,
+      "sha256": "4ac160dbafc9e205b10cfee6ba8f13ace2efadd43a9fc25432d9e5afa443ced1",
+      "metodo": "playwright-render",
+      "sha256Copia": "539772061f7a951ffbeddec10242ea29e354b752bd750a8a23f6f3e524a5f8bf",
+      "nota": "copia guardada con nombres de personas recortados o movida; sha256 = respuesta original"
+    },
+    {
+      "url": "https://oceanpoint.fi/",
+      "finalUrl": "https://oceanpoint.fi/",
+      "archivo": "fuentes/blocksquare/oceanpoint-portada.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:11:30Z",
+      "bytes": 6445,
+      "sha256": "8c17070feb26632f4f6f26652cf3f4e30000e6830acadd6f72465c51b5d651a7",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://oceanpoint.fi/stats",
+      "finalUrl": "https://oceanpoint.fi/stats",
+      "archivo": "fuentes/blocksquare/oceanpoint-stats.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:01Z",
+      "bytes": 4061,
+      "sha256": "6bcc4c5b07ad011aadd0fd152fef3237145150597543da00c51da605146c8138",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://oceanpoint.fi/terms",
+      "finalUrl": "https://oceanpoint.fi/terms",
+      "archivo": "fuentes/blocksquare/oceanpoint-terms.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:02Z",
+      "bytes": 10605,
+      "sha256": "9064eb935bfa723d0088ed1e58fa528e3113819ae1a0bf19d3df60d54ffe24e1",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://oceanpoint.fi/disclaimer",
+      "finalUrl": "https://oceanpoint.fi/disclaimer",
+      "archivo": "fuentes/blocksquare/oceanpoint-disclaimer.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:01Z",
+      "bytes": 3070,
+      "sha256": "dc21846ff15ee3709ba0865964fc4df22d40d460a021c0e6938bd799eed3f3fe",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://oceanpoint.fi/faq",
+      "finalUrl": "https://oceanpoint.fi/faq",
+      "archivo": "fuentes/blocksquare/oceanpoint-faq.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:02Z",
+      "bytes": 6049,
+      "sha256": "62232258465e151f0ef1ebe5b9236c66681e60b74e4d9e8dc283727f6a92e89b",
+      "metodo": "playwright-render",
+      "sha256Copia": "8e7028b8a57a5377659ad96241f11c8343c9d819b0a960881f3e8cabd3a3c40f",
+      "nota": "copia guardada con nombres de personas recortados o movida; sha256 = respuesta original"
+    },
+    {
+      "url": "https://marketplace.oceanpoint.fi/",
+      "finalUrl": "https://marketplace.oceanpoint.fi/oceanpoint/auth/sign-in",
+      "archivo": "fuentes/blocksquare/oceanpoint-marketplace.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:01Z",
+      "bytes": 184,
+      "sha256": "d005e0188421ac96734a7e5878341ffccd9c4f0fe262aae07a7214f581f00507",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+      "archivo": "fuentes/crudo/esma-mica-casps.csv",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:32Z",
+      "bytes": 196605,
+      "sha256": "fd255f543d4c5746d96155744b3698c9a53acaf96168b028274bb06260896ca6"
+    },
+    {
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv",
+      "archivo": "fuentes/crudo/esma-mica-other.csv",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:33Z",
+      "bytes": 253090,
+      "sha256": "db9193137c841aa327c92f16306b3ae2929a4506e7f4eb66bb0202e37797e1e1"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Blocksquare",
+      "archivo": "fuentes/crudo/html/advertencias/adv-blocksquare.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:40Z",
+      "bytes": 212291,
+      "sha256": "bc5d08f69704da75a3633f7b2a6d62c2c058c246be538b33f8cc141b71d4b296",
+      "archivoTexto": "fuentes/advertencias/adv-blocksquare.html.txt",
+      "sha256Texto": "5c8bca16a5a63bc6f3b538f5ecc73fc5e3cee51dbbb4fb1c4982a4032ae3b7b8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Oceanpoint",
+      "archivo": "fuentes/crudo/html/advertencias/adv-oceanpoint.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:41Z",
+      "bytes": 212269,
+      "sha256": "3317a295422e034ba969c35014bdb9498168567ebe0cb758551c00f8aedc2d35",
+      "archivoTexto": "fuentes/advertencias/adv-oceanpoint.html.txt",
+      "sha256Texto": "b83696f5b682f12beef49e5d1169b184e69f9b49a9d7eb87df4c4f30b30b47a6"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Stokr",
+      "archivo": "fuentes/crudo/html/advertencias/adv-stokr.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:43Z",
+      "bytes": 212159,
+      "sha256": "e863d3a64941045b336fe570fee669bb811cd8a875e5773235dac8bbdc7e2b01",
+      "archivoTexto": "fuentes/advertencias/adv-stokr.html.txt",
+      "sha256Texto": "ba09f29a8f420270d59507e1d37c5ee47843789902a1a4ce24179d57fff32daf"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Smart%20Valor",
+      "archivo": "fuentes/crudo/html/advertencias/adv-smart_valor.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:44Z",
+      "bytes": 212291,
+      "sha256": "ea5fe17033e7bf06964049d6f60fb72ddb8c12bc384ab31c5d60f9b2230b19a3",
+      "archivoTexto": "fuentes/advertencias/adv-smart_valor.html.txt",
+      "sha256Texto": "fffaa0f8ae46606e7030a941ee9c1440d8deba5df340b7738409b75a1bb9b833"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bergf%C3%BCrst",
+      "archivo": "fuentes/crudo/html/advertencias/adv-bergfrst.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:45Z",
+      "bytes": 212293,
+      "sha256": "b03a03a5c394106b6089bdbae1f89f338b5e855c5ba871054b479eb985e9c796",
+      "archivoTexto": "fuentes/advertencias/adv-bergfrst.html.txt",
+      "sha256Texto": "8419d2724a0d92a472782c78459fd58c91f4dd79ebc67681b38e57dce3bbd460"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bergfurst",
+      "archivo": "fuentes/crudo/html/advertencias/adv-bergfurst.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:46Z",
+      "bytes": 212247,
+      "sha256": "4729dd3412497dbe1fd285c8dd1985bb50307600936bf1977c9c3a1f4df3547b",
+      "archivoTexto": "fuentes/advertencias/adv-bergfurst.html.txt",
+      "sha256Texto": "3f369e305982b5e185b5863aaca04cf3b33ab4dd8037349a2f4eb080c0bfd559"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lande",
+      "archivo": "fuentes/crudo/html/advertencias/adv-lande.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:47Z",
+      "bytes": 219530,
+      "sha256": "3eaaf95be89f9d533f3d7cfe6bd3b2976235adaca5fe85243fc69a7e279f4a69",
+      "archivoTexto": "fuentes/advertencias/adv-lande.html.txt",
+      "sha256Texto": "d7fc6129da5187c80a781ccd272d92f6fc07ea257468c3626e09f846d160ce01"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Stock.estate",
+      "archivo": "fuentes/crudo/html/advertencias/adv-stock.estate.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:49Z",
+      "bytes": 212313,
+      "sha256": "0fbccf49fba3bcd50bdeca212365bdb472abaecef85ce1e4e5e296d3c1636b57",
+      "archivoTexto": "fuentes/advertencias/adv-stock.estate.html.txt",
+      "sha256Texto": "af81d697c5b06b23558371c79df7d268f62e24a313d92fafc789b04b99bae1b3"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Stockestate",
+      "archivo": "fuentes/crudo/html/advertencias/adv-stockestate.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:50Z",
+      "bytes": 212291,
+      "sha256": "9387ddcc3a2e48d1459fd1898fabcef413c5719f4402e186eb53fce3f2b7e234",
+      "archivoTexto": "fuentes/advertencias/adv-stockestate.html.txt",
+      "sha256Texto": "a57f6faac3d7720f14b0db6184888c9fc25b539b9a96e145aed3b246b2c3512a"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Exporo",
+      "archivo": "fuentes/crudo/html/advertencias/adv-exporo.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:51Z",
+      "bytes": 212181,
+      "sha256": "05c25c6bad80280ee045e9b8d2ef7d6b83d3e35b91a4f1c050b04dd31c313bb7",
+      "archivoTexto": "fuentes/advertencias/adv-exporo.html.txt",
+      "sha256Texto": "56e5ce06b98f628a1c68cfb561d2f6b315845a6c92917af4caa27b54e6069a0b"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Indemo",
+      "archivo": "fuentes/crudo/html/advertencias/adv-indemo.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:52Z",
+      "bytes": 212181,
+      "sha256": "fce08f6a457f5b6a282cf28729cc1bd4f9ea4ac5408259e2048eea868c93ad0d",
+      "archivoTexto": "fuentes/advertencias/adv-indemo.html.txt",
+      "sha256Texto": "ab6e86a0aa1ad49ade8d1cfbd0336d3862474756db742f941b870aaeb9bb3263"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Mintos",
+      "archivo": "fuentes/crudo/html/advertencias/adv-mintos.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:53Z",
+      "bytes": 212181,
+      "sha256": "cd894a3d73909a964448a1410ee54226f25d10dd8c72a0a9a978908a92977a0c",
+      "archivoTexto": "fuentes/advertencias/adv-mintos.html.txt",
+      "sha256Texto": "9a83c3dcdd0aadbb2654c108b5b3871cd2f0e9145c16030bb5647e0f9f06a4f4"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Estateguru",
+      "archivo": "fuentes/crudo/html/advertencias/adv-estateguru.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:54Z",
+      "bytes": 212269,
+      "sha256": "a1045850f53b3f3978aa068cf148ac18854ab0f644fbdbc64abf87a32c37f123",
+      "archivoTexto": "fuentes/advertencias/adv-estateguru.html.txt",
+      "sha256Texto": "c2eb418bf3027ad123fb1e76cc3a40f9e83089876cfb4e3070e016e30fb6b9e5"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Realtyfi",
+      "archivo": "fuentes/crudo/html/advertencias/adv-realtyfi.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:55Z",
+      "bytes": 212225,
+      "sha256": "0428d6f3cdbf43bf53a540d6d75b463f5b635c26c132d10c6cdf12d3966496bf",
+      "archivoTexto": "fuentes/advertencias/adv-realtyfi.html.txt",
+      "sha256Texto": "71bd7cbee144c0d1cfaf8910deb68ca1834eee97eef0b45823e4fcb5f249ba82"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Tokenise",
+      "archivo": "fuentes/crudo/html/advertencias/adv-tokenise.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:56Z",
+      "bytes": 212225,
+      "sha256": "1e1f3466d3bc6c3be9c28fd0ce31cf615689711f645d2e95e0ef7d8bc04b41ae",
+      "archivoTexto": "fuentes/advertencias/adv-tokenise.html.txt",
+      "sha256Texto": "66f5c0d2fb546987648e61624bfb2f97a0bfcf679586a47e3f0cd33e645d1ae4"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bitbond",
+      "archivo": "fuentes/crudo/html/advertencias/adv-bitbond.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:58Z",
+      "bytes": 212203,
+      "sha256": "fa986c9a976a401db179059fc92183f19507b0ad33ca07ee8f6ab674acacc4f4",
+      "archivoTexto": "fuentes/advertencias/adv-bitbond.html.txt",
+      "sha256Texto": "7c4505ea5ee64576918918ccc41555b6f63dfd02710c08cd6fa1e85c791f357e"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cashlink",
+      "archivo": "fuentes/crudo/html/advertencias/adv-cashlink.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:12:59Z",
+      "bytes": 212225,
+      "sha256": "89faacedb9aad7bcd1e95bf1f214d1cb57c0d613caea69bae471b21c5b0915cd",
+      "archivoTexto": "fuentes/advertencias/adv-cashlink.html.txt",
+      "sha256Texto": "6dcce96c589a774019396a81fd24539a1302332261927ba22f566636963daab8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Tokentus",
+      "archivo": "fuentes/crudo/html/advertencias/adv-tokentus.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:13:00Z",
+      "bytes": 212225,
+      "sha256": "922db250032ea6cb726c622495026b8ef4202333dc14b0ac0e7efddb575b2b11",
+      "archivoTexto": "fuentes/advertencias/adv-tokentus.html.txt",
+      "sha256Texto": "87fc26f34288037065709de265b6e03b49df9aaa674e16503acc0f4aae127a7a"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Rendity",
+      "archivo": "fuentes/crudo/html/advertencias/adv-rendity.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:13:01Z",
+      "bytes": 212203,
+      "sha256": "4258cac51d57bc7df6a25134a380fff1f3c822d34675e0f5122d50aac4e46c9e",
+      "archivoTexto": "fuentes/advertencias/adv-rendity.html.txt",
+      "sha256Texto": "4f01f9702c1521ee43908b647f4c3c62acf9e6939ba3ab4acbbd0b78e46c79dd"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reinvest24",
+      "archivo": "fuentes/crudo/html/advertencias/adv-reinvest24.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:13:02Z",
+      "bytes": 215433,
+      "sha256": "050ef4a0a9930d1bbcdd4fb8e6192827735d5dd0029377fe1bba97bd23dc3a59",
+      "archivoTexto": "fuentes/advertencias/adv-reinvest24.html.txt",
+      "sha256Texto": "b25a8d62bf240ca4a40cf72b3f0db54b72b4d51a172fa55ee80d0f6285ed8a5f"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Ecoligo",
+      "archivo": "fuentes/crudo/html/advertencias/adv-ecoligo.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:13:03Z",
+      "bytes": 212203,
+      "sha256": "53d955fd06eb56e8b74c77db95dbf9e50e9da0035210bc7212cf0b26f2e213a9",
+      "archivoTexto": "fuentes/advertencias/adv-ecoligo.html.txt",
+      "sha256Texto": "6592e900a0ceb837360a445cd71dc4f63ca8f072f711241f86d8d52962de5467"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bettervest",
+      "archivo": "fuentes/crudo/html/advertencias/adv-bettervest.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:13:04Z",
+      "bytes": 212269,
+      "sha256": "1c080c912ef384692aaf4d942ebc328a1c6d5d9c8e6c38f027b14a59bfd92c95",
+      "archivoTexto": "fuentes/advertencias/adv-bettervest.html.txt",
+      "sha256Texto": "24b5ff37bbebcfff492961f9bd74f9a88918767c528fa1c06194d9984f8a7b1a"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Inveniam",
+      "archivo": "fuentes/crudo/html/advertencias/adv-inveniam.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:13:05Z",
+      "bytes": 212225,
+      "sha256": "537c461cdeceb56049b1ccb3eca379e614cf7d87574486d5fe719e327b0d98f5",
+      "archivoTexto": "fuentes/advertencias/adv-inveniam.html.txt",
+      "sha256Texto": "cd6909367e6f71e3f1f4a16861ed08ef7713c3730fe0063ce5487241d9b39224"
+    },
+    {
+      "url": "https://www.cnmv.es/webservices/verdocumento/ver?e=ETcz7y5kevTZSix4R9t5%2bobgIfO3RtNU2TGg1f2UJVUILCnUAEn6Pt63MwWh%2bqV8",
+      "archivo": "fuentes/advertencias/cnmv-advertencia-reinvest24-2025-06-09.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:13:17Z",
+      "bytes": 93271,
+      "sha256": "4d9543c186583921d55232b2d80357ce1f2c40ccd53ff6d2f996d0cf82f53f6d"
+    },
+    {
+      "url": "https://de.bergfuerst.com/impressum",
+      "finalUrl": "https://bergfuerst.com/de/impressum",
+      "archivo": "fuentes/bergfuerst/bergfuerst-impressum.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:13:30Z",
+      "bytes": 3107,
+      "sha256": "e37459a11944a7926be51f22351623c96d871a6a384281900d678db4aa75e58d",
+      "metodo": "playwright-render",
+      "sha256Copia": "b3de0c9f195f2d2a558905de3ad119ce02f894263590e4adada28cb753e9baba",
+      "nota": "copia guardada con nombres de personas recortados o movida; sha256 = respuesta original"
+    },
+    {
+      "url": "https://www.bergfuerst.com/",
+      "finalUrl": "https://bergfuerst.com/es",
+      "archivo": "fuentes/bergfuerst/bergfuerst-www.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:13:30Z",
+      "bytes": 254,
+      "sha256": "6a93a56c62d685b5ef785de5ba2a061222f62547d57e228dc74bd7e554dd0811",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.linkedfinance.com/",
+      "archivo": "fuentes/crudo/html/portadas/linkedfinance.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 99450,
+      "sha256": "e45e4c5b81ef3d443aad9b65cab42e8cb59ba47423ef2e1961cab792ace8fdde",
+      "archivoTexto": "fuentes/crudo/portadas-texto/linkedfinance.html.txt",
+      "sha256Texto": "846b9bbf67e9452f649a80d510666f47d987df4a410c2e9a95667e41d5a6c41d"
+    },
+    {
+      "url": "https://www.joinshuttle.com/",
+      "archivo": "fuentes/crudo/html/portadas/joinshuttle.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 125016,
+      "sha256": "ae67694b91c016ad85c92d8df11938473470447993da68c266ae2fef72373de1",
+      "archivoTexto": "fuentes/crudo/portadas-texto/joinshuttle.html.txt",
+      "sha256Texto": "2a0b2d04e1fdf4c44491a701800b7a1cd47a72a53b7aa01afd43c977b4b5e59d"
+    },
+    {
+      "url": "https://www.winwinner.be/",
+      "archivo": "fuentes/crudo/html/portadas/winwinner.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 84078,
+      "sha256": "bc850894be9b9a711b3b038090113fdf2803dacfdbb3d98986f10a765a07e5e1",
+      "archivoTexto": "fuentes/crudo/portadas-texto/winwinner.html.txt",
+      "sha256Texto": "de007c63ca825be327352bc7e90a589b10f472a262da383a000da578a87cad93"
+    },
+    {
+      "url": "https://www.seedrs.com/",
+      "archivo": "fuentes/crudo/html/portadas/seedrs.html",
+      "http": 403,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 5612,
+      "sha256": "e923375085980dfd9d161c62eecc21e66b391e48d56ee072f936832727c5662a",
+      "archivoTexto": "fuentes/crudo/portadas-texto/seedrs.html.txt",
+      "sha256Texto": "301dc171e5fa8c5fdeb69592a92a5c378f5f758f68d2338200235d60eb04b9ad"
+    },
+    {
+      "url": "https://www.propertybridges.com/",
+      "archivo": "fuentes/crudo/html/portadas/propertybridges.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 98110,
+      "sha256": "bbb5db289e1736acff9ee6a8f42f4ae6355a8792465e124a60071f7191c4ae2d",
+      "archivoTexto": "fuentes/crudo/portadas-texto/propertybridges.html.txt",
+      "sha256Texto": "658f941cc427ad54d8dfd5edb0f625a698c37a4b5f804b0bc984338b859ff712"
+    },
+    {
+      "url": "https://www.wiseed.com/",
+      "archivo": "fuentes/crudo/html/portadas/wiseed.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 63779,
+      "sha256": "e54d56bb496114de003725a4d081afb54050daa1821fdac5a55762930e10253c",
+      "archivoTexto": "fuentes/crudo/portadas-texto/wiseed.html.txt",
+      "sha256Texto": "b527332b30f0bd23b571ea3e1dedaaad034bf60cb4493873af5407ddd29e83ca"
+    },
+    {
+      "url": "https://www.lesentrepreteurs.com/",
+      "archivo": "fuentes/crudo/html/portadas/lesentrepreteurs.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 196597,
+      "sha256": "5ab2fb4dc66347026ebce4525e20812366d660d4a62dad87bb259f09930b17b9",
+      "archivoTexto": "fuentes/crudo/portadas-texto/lesentrepreteurs.html.txt",
+      "sha256Texto": "0cc1cab3a8b36671d343c5e8a9a54372cea8490c1b743ca89ba31638640d3f23"
+    },
+    {
+      "url": "https://www.invesdor.com/",
+      "archivo": "fuentes/crudo/html/portadas/invesdor.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 104882,
+      "sha256": "241457f4564bb246010b8d4b8f50db1df15e73d104463fa421b330f1dbefc63e",
+      "archivoTexto": "fuentes/crudo/portadas-texto/invesdor.html.txt",
+      "sha256Texto": "6155a183efd7c097292602b3f5fb744abcadfd03d6b1c2a9f9f41e7b83955c50"
+    },
+    {
+      "url": "https://www.zonnepanelendelen.nl/",
+      "archivo": "fuentes/crudo/html/portadas/zonnepanelendelen.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 114179,
+      "sha256": "3fdef548bb7dfe45085bb4dae2430b9bb147e4daeb1b9fa9fbdced13d2effa96",
+      "archivoTexto": "fuentes/crudo/portadas-texto/zonnepanelendelen.html.txt",
+      "sha256Texto": "246d0a27ccacd9babbb43450b2255d87b01ea0891853a7801aef240687a2494e"
+    },
+    {
+      "url": "https://citesia.fr/",
+      "archivo": "fuentes/crudo/html/portadas/citesia.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 756034,
+      "sha256": "1a57cfcb103cb7f1271fa7ef8cea1b1d8d41d423160ae5b8bed14e0a1b12d371",
+      "archivoTexto": "fuentes/crudo/portadas-texto/citesia.html.txt",
+      "sha256Texto": "516177dc776dc389ab670755e5522fc87c11581a5501cbf427f512ba71791043"
+    },
+    {
+      "url": "https://www.crowdedhero.com/",
+      "archivo": "fuentes/crudo/html/portadas/crowdedhero.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 98671,
+      "sha256": "21f17a35b59d3c39c83c274161e9b76568b28358140255e156eb8c3541194fe3",
+      "archivoTexto": "fuentes/crudo/portadas-texto/crowdedhero.html.txt",
+      "sha256Texto": "9b8f12d174c89146d55aa9de0ee08d0454ca3cb8d79cff142e888e6c1478055f"
+    },
+    {
+      "url": "https://www.lendosphere.com/",
+      "archivo": "fuentes/crudo/html/portadas/lendosphere.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 134956,
+      "sha256": "991de44659f1658522b88e3923a924830dd170be3e6ae4f18203b09ffde6a4c5",
+      "archivoTexto": "fuentes/crudo/portadas-texto/lendosphere.html.txt",
+      "sha256Texto": "3ccded913d2abb4186ec1e02a07c42d424a0746ef8e06dbf854fa44f71bc0d0c"
+    },
+    {
+      "url": "https://www.bienpreter.com/",
+      "archivo": "fuentes/crudo/html/portadas/bienpreter.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 77346,
+      "sha256": "1339aecf1307dcabae660dcd185c3d1660a103080f1f70a08d190eee6c0507bc",
+      "archivoTexto": "fuentes/crudo/portadas-texto/bienpreter.html.txt",
+      "sha256Texto": "0a0c48bf87abeb14ef8094994378efcef708bd1017d9a5ff9dcdbc7d3b0b1133"
+    },
+    {
+      "url": "https://www.goparity.com/",
+      "archivo": "fuentes/crudo/html/portadas/goparity.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 254071,
+      "sha256": "cf03208391868b7d9a7fa2ebcce6e5fe6f281ea8a771e5f61c805d847dbf388a",
+      "archivoTexto": "fuentes/crudo/portadas-texto/goparity.html.txt",
+      "sha256Texto": "16a53f596acdb93099cf6b329443095dae2bc12b2f2ba59da817310d93c69f60"
+    },
+    {
+      "url": "https://crowdmeup.com/",
+      "archivo": "fuentes/crudo/html/portadas/crowdmeup.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 117928,
+      "sha256": "152a1470cee8b61f4ece9f918884d7655dcb9211824a6f69ce4ed92e3f6c096f",
+      "archivoTexto": "fuentes/crudo/portadas-texto/crowdmeup.html.txt",
+      "sha256Texto": "850df7db59703905cc93cc9fd1079c83b22a0466a1a4c9476d087840f8973d84"
+    },
+    {
+      "url": "https://www.homunity.com/fr/",
+      "archivo": "fuentes/crudo/html/portadas/homunity.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 207421,
+      "sha256": "6669b8376088766a1505e80f0ec0a2423ccc6ab658ff63052ccf96b06f6cbaac",
+      "archivoTexto": "fuentes/crudo/portadas-texto/homunity.html.txt",
+      "sha256Texto": "ee8ee0b40dc8a9c1d94cb02fc2f35526ced6d771435ebb5296d21e70ed3ef267"
+    },
+    {
+      "url": "https://www.clubfunding.fr/",
+      "archivo": "fuentes/crudo/html/portadas/clubfunding.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 308856,
+      "sha256": "c4f98e96fa690347b63228276fed21d786748fbf6ff0c2526cc37fbd8beea1e3",
+      "archivoTexto": "fuentes/crudo/portadas-texto/clubfunding.html.txt",
+      "sha256Texto": "263ddfc025eed3fc33f68b03434ded5e0982a06f76ee9772add5cd64ebea5e26"
+    },
+    {
+      "url": "https://www.greencrowd.ie/",
+      "archivo": "fuentes/crudo/html/portadas/greencrowd.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 831251,
+      "sha256": "6f05167ffc6e6806131f233f694a01dfd8a4febcdd493bfb40c8ae5cdce90166",
+      "archivoTexto": "fuentes/crudo/portadas-texto/greencrowd.html.txt",
+      "sha256Texto": "c92b6b5943215aa01b15ff1761f0fd7d7121c142cab010e6c5eefb7308253cde"
+    },
+    {
+      "url": "https://www.sameningeld.nl/",
+      "archivo": "fuentes/crudo/html/portadas/sameningeld.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 538318,
+      "sha256": "b052161c8b06ff2d06cd6a625df493c5cf69d53c8606b06755c936667c6dbbdb",
+      "archivoTexto": "fuentes/crudo/portadas-texto/sameningeld.html.txt",
+      "sha256Texto": "89d9f4250c35aaa04c4e81e3b111f810991f79b23c02e95e77a5281820dbe988"
+    },
+    {
+      "url": "https://raizers.com/",
+      "archivo": "fuentes/crudo/html/portadas/raizers.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 305138,
+      "sha256": "5aa4fa1f33eacdcefd76a44c7aadb3bc6c14aec74e60026907b2bd03591ce7bb",
+      "archivoTexto": "fuentes/crudo/portadas-texto/raizers.html.txt",
+      "sha256Texto": "08db69ede93395ea6b5020a1dee1961d8457a184fc3919af8e6eeab448f75e6b"
+    },
+    {
+      "url": "https://www.fundaus.eu/",
+      "archivo": null,
+      "http": 0,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": "curl: (56) CONNECT tunnel failed, response 502",
+      "nota": "sin respuesta: bloqueo de red registrado (ver error)"
+    },
+    {
+      "url": "https://www.wetakepart.com/",
+      "archivo": null,
+      "http": 0,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": "curl: (56) CONNECT tunnel failed, response 502",
+      "nota": "sin respuesta: bloqueo de red registrado (ver error)"
+    },
+    {
+      "url": "https://www.gamevestor.com/",
+      "archivo": null,
+      "http": 0,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": "curl: (56) CONNECT tunnel failed, response 502",
+      "nota": "sin respuesta: bloqueo de red registrado (ver error)"
+    },
+    {
+      "url": "https://blastangels.com/",
+      "archivo": null,
+      "http": 0,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": "curl: (56) CONNECT tunnel failed, response 502",
+      "nota": "sin respuesta: bloqueo de red registrado (ver error)"
+    },
+    {
+      "url": "https://acredius.ch/",
+      "archivo": null,
+      "http": 0,
+      "consultadoUtc": "2026-11-10T09:14:09Z",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": "curl: (35) Recv failure: Connection reset by peer",
+      "nota": "sin respuesta: bloqueo de red registrado (ver error)"
+    },
+    {
+      "url": "https://oilxcoin.us/en/token",
+      "finalUrl": "https://oilxcoin.us/en/token",
+      "archivo": "fuentes/oilxcoin/oilxcoin-token.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:16:18Z",
+      "bytes": 1388,
+      "sha256": "bd823d569831c544fb0460bea965ccfbf87eadaab0d70345ce3177058e874a7e",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://oilxcoin.us/en/token/prospectus",
+      "finalUrl": "https://oilxcoin.us/en/token/prospectus",
+      "archivo": "fuentes/oilxcoin/oilxcoin-prospectus.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:16:18Z",
+      "bytes": 5873,
+      "sha256": "7ef8d262643222b632e0b663e73f9c335de7111641f3e2031a20ab1ebea9026e",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://oilxcoin.us/en/support/faq",
+      "finalUrl": "https://oilxcoin.us/en/support/faq",
+      "archivo": "fuentes/oilxcoin/oilxcoin-faq.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:16:18Z",
+      "bytes": 4963,
+      "sha256": "1005d73f6b95ef491bd94f217021cbd568eb5fc62af841b2f3becb57bdcf2217",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+      "archivo": "fuentes/crudo/oilxcoin-resumen-es-2026.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:16:48Z",
+      "bytes": 447050,
+      "sha256": "861d53f3963ab7efd15acf247f34ba4de28bb134bfaa702c357d3e287282571f"
+    },
+    {
+      "url": "https://oilxcoin.us/media/312/download/2026%2004%2010_OilXCoin_EU_Growth_Prospectus%202026%20-%20Full%20Version_ENGLISH_FINAL_signed.pdf?v=1",
+      "archivo": "fuentes/crudo/oilxcoin-folleto-2026-en.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:16:49Z",
+      "bytes": 4390501,
+      "sha256": "758eefce2987c16be358d95102edddd5b13e31d8eb68c56e8cac447b08b8f1cc"
+    },
+    {
+      "url": "https://www.profitus.com/documents",
+      "finalUrl": "https://www.profitus.com/documents",
+      "archivo": "fuentes/profitus/profitus-documents.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:17:44Z",
+      "bytes": 2798,
+      "sha256": "7760b1c6083612baf099729515535281026ed4753c8eb59e9b2b2de1384647da",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.profitus.com/fees",
+      "finalUrl": "https://www.profitus.com/fees",
+      "archivo": "fuentes/profitus/profitus-fees.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:17:44Z",
+      "bytes": 5568,
+      "sha256": "8077c669efb38bbeddcc4c8eeadc982404eb16c8bad60863a1860cb2ea7e929f",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.profitus.com/bonds",
+      "finalUrl": "https://www.profitus.com/bonds",
+      "archivo": "fuentes/profitus/profitus-bonds.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:17:44Z",
+      "bytes": 6878,
+      "sha256": "7d2afc89228a43e2e6d27de0f7dea481d9d0fb14e8b49e619a5fab0e3afd9d5b",
+      "metodo": "playwright-render",
+      "sha256Copia": "130d33786f454031005ee9f645c595faae65dd0b9d0b889d7ea330edc6ab8061",
+      "nota": "copia guardada con nombres de personas recortados o movida; sha256 = respuesta original"
+    },
+    {
+      "url": "https://www.profitus.com/frequently-asked-questions",
+      "finalUrl": "https://www.profitus.com/frequently-asked-questions",
+      "archivo": "fuentes/profitus/profitus-faq.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:17:45Z",
+      "bytes": 2876,
+      "sha256": "1d5c1ffe64274f84445a0552f080f90b2f02e3537d25c866302e064814675a1e",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.profitus.com/investment-offers",
+      "finalUrl": "https://www.profitus.com/investment-offers",
+      "archivo": "fuentes/profitus/profitus-offers.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:17:45Z",
+      "bytes": 4484,
+      "sha256": "416b3002fa96c8727ff107d65493677cad38b49b422cc71e18b1164b676b0f67",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.profitus.com/es",
+      "finalUrl": "https://www.profitus.es/",
+      "archivo": "fuentes/profitus/profitus-es.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:17:45Z",
+      "bytes": 6641,
+      "sha256": "7f364383826323cfe5c573222c877f60cd61cc62e49e05d88e1495db779d8163",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.profitus.com/news",
+      "finalUrl": "https://www.profitus.com/news",
+      "archivo": "fuentes/profitus/profitus-news.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:18:42Z",
+      "bytes": 4898,
+      "sha256": "fe483108256a82188083278cdbd2fa53f814e99bf0a72b4b861c23577c578138",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://lcx.com/lcxt7",
+      "finalUrl": "https://lcx.com/en/lcxt7",
+      "archivo": "fuentes/lcx/lcx-lcxt7.render.txt",
+      "http": 404,
+      "consultadoUtc": "2026-11-10T09:19:09Z",
+      "bytes": 2050,
+      "sha256": "7924161324a21e53f655ba5d3803f16cb433b0a0f4adbfbecae704fa2c10b667",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.lcx.com/earn",
+      "finalUrl": "https://lcx.com/en/earn",
+      "archivo": "fuentes/lcx/lcx-earn.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:19:09Z",
+      "bytes": 876,
+      "sha256": "f8fa11e1db0a8a74e7a3cb8afa9811b5021aca55ee96422cea1847463fccdcc0",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/dlt-pilot-regime",
+      "archivo": "fuentes/crudo/html/profitus/esma-dlt-pilot.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:19:47Z",
+      "bytes": 64073,
+      "sha256": "b8449dca76133e7262666b0f5af781f4decff4ca7a9b77418fdb5892831a4a71",
+      "archivoTexto": "fuentes/profitus/esma-dlt-pilot.html.txt",
+      "sha256Texto": "92a1381770a201c74d5114b065134b2c5720753ef2cba81980f91e154c35fb52"
+    },
+    {
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf",
+      "archivo": "fuentes/profitus/esma-dlt-autorizadas.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:19:53Z",
+      "bytes": 229280,
+      "sha256": "8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc"
+    },
+    {
+      "url": "https://oceanpoint.fi/about",
+      "finalUrl": "https://oceanpoint.fi/about",
+      "archivo": "fuentes/blocksquare/oceanpoint-about.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:20:01Z",
+      "bytes": 3362,
+      "sha256": "c872659bf5c78f7828a969187b47b9af98b5400a1df77419e62be984a1b31aa0",
+      "metodo": "playwright-render",
+      "sha256Copia": "cb197d2dc5fb55601ce5c39f7204d48223d3f870688a3d06de33cd2d13f44085",
+      "nota": "copia guardada con nombres de personas recortados o movida; sha256 = respuesta original"
+    },
+    {
+      "url": "https://oceanpoint.fi/trade",
+      "finalUrl": "https://oceanpoint.fi/trade",
+      "archivo": "fuentes/blocksquare/oceanpoint-trade.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:20:01Z",
+      "bytes": 2891,
+      "sha256": "85553c24cc323514fd79c8ac658e7ed92bfd7e09df98ddf75b5ae18b801a1b29",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://reinvest24.com/",
+      "finalUrl": "https://www.reinvest24.com/en",
+      "archivo": "fuentes/reinvest24/reinvest24-portada.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:20:24Z",
+      "bytes": 1939,
+      "sha256": "f2a09e8d573a4635bae4c92cd63918d2f3bfca6a82316ce48fb1d68640304e3d",
+      "metodo": "playwright-render"
+    },
+    {
+      "url": "https://www.nn-group.com/site/binaries/content/assets/nn-group/nn-bank/bonds/covered-bonds/digital-final-terms-terms--conditions.pdf",
+      "archivo": "fuentes/bancos/nn-bank-digital-final-terms.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:20:48Z",
+      "bytes": 736726,
+      "sha256": "66430f24e4b3be7c7fa1cf681b25be0dbb7a16747b1e7975bf0c359583ac72c8"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=50670069463VM690ML91",
+      "archivo": "fuentes/crudo/html/oilxcoin/cnmv-pasaportes-dexentra.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:20:56Z",
+      "bytes": 218993,
+      "sha256": "daad7b71b48385d6b246818699b3046f0240183c658ac2094a8d752c144d1763",
+      "archivoTexto": "fuentes/oilxcoin/cnmv-pasaportes-dexentra.html.txt",
+      "sha256Texto": "fccdf44b8085f2acb644f964100eece641f8ff97c816d2e360a18ebab93033f7"
+    },
+    {
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*DeXentra*&wt=json&rows=20",
+      "archivo": "fuentes/crudo/esma-prospectos-dexentra.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:22:34Z",
+      "bytes": 4805,
+      "sha256": "b48c958a5c07e443bf4ea78613448fb79790e2671f8dc71587b0db7186f89bca"
+    },
+    {
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=member_states:*SPAIN*%20AND%20approval_filing_date:%5B2025-11-10T00:00:00Z%20TO%20*%5D%20AND%20(document_type:STDA%20OR%20document_type:BPWO%20OR%20document_type:BPWI)%20AND%20-home_member_state_code:ES&wt=json&rows=2000&fl=party_name,home_member_state_code,document_type,approval_filing_date,id,national_document_id",
+      "archivo": "fuentes/crudo/esma-folletos-pasaportados-es-desde-2025-11-10.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:22:35Z",
+      "bytes": 63112,
+      "sha256": "c7cdeb3f384764a4803d7b596baa1cb3da331819f4c04e5636ea04158c209cb9"
+    },
+    {
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*S01*Issuer*%20OR%20party_name:*NOEMON*%20OR%20party_name:*Floin*%20OR%20party_name:*Indemo*%20OR%20party_name:*Exporo*%20OR%20party_name:*Tokentus*&wt=json&rows=200&sort=approval_filing_date%20desc",
+      "archivo": "fuentes/crudo/esma-prospectos-otros.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:22:39Z",
+      "bytes": 262988,
+      "sha256": "368c29d72da4de271501517fec20e0356eaf6765674c1d56d0fcb6c680b38673"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Profitus",
+      "archivo": "fuentes/crudo/html/advertencias/adv-profitus.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:23:49Z",
+      "bytes": 212225,
+      "sha256": "9ff6e002355b90253eee9e6033d663068d370c6b17890103e97c2b590d572434",
+      "archivoTexto": "fuentes/advertencias/adv-profitus.html.txt",
+      "sha256Texto": "6e4abd3f17f5543accf3ddd3c66eb5e464033b6da70183563ace6e246f022c2c"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Axiology",
+      "archivo": "fuentes/crudo/html/advertencias/adv-axiology.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:23:50Z",
+      "bytes": 212225,
+      "sha256": "b5fbf90686668c9962838f038492d21189a286dbb0a49c7d49d6aa104c88f397",
+      "archivoTexto": "fuentes/advertencias/adv-axiology.html.txt",
+      "sha256Texto": "4dbe94876f20b983582b0699d5248ba7eaf5dda472987a1997af3d20b050019a"
+    },
+    {
+      "url": "https://api.profitus.com/api/v1/ss/locale/countries",
+      "archivo": "fuentes/crudo/profitus-api-paises.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:23:52Z",
+      "bytes": 1285,
+      "sha256": "46164aad5b4ac6eb7b8757f79145892c4761ffa228dc4c46fb66950969498da3"
+    },
+    {
+      "url": "https://www.profitus.com/frequently-asked-questions (pestaña Bonds)",
+      "archivo": "fuentes/profitus/profitus-faq-bonos.render.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:24:18Z",
+      "bytes": 3490,
+      "sha256": "87da6cf983553e3cc8f8687c513f1d9f35ba34416aa4563298bac50761d53f46",
+      "metodo": "playwright-render-clic"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=MetaWealth",
+      "archivo": "fuentes/crudo/html/advertencias/adv-metawealth.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:26:48Z",
+      "bytes": 212269,
+      "sha256": "9e4f03168e3260b2432228d3c0c65d9ac43da603cc411f6b638f5df932b56026",
+      "archivoTexto": "fuentes/advertencias/adv-metawealth.html.txt",
+      "sha256Texto": "67cd759a5f9be4c592eb667a2a0d7f6ece53a824e306855aec2b4e5e96961ba3"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bricks.co",
+      "archivo": "fuentes/crudo/html/advertencias/adv-bricks.co.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-10T09:26:49Z",
+      "bytes": 212247,
+      "sha256": "0260b5c86f59d4131f4f49047e3f9717246174d1c3496ffebde8405b07aecdc2",
+      "archivoTexto": "fuentes/advertencias/adv-bricks.co.html.txt",
+      "sha256Texto": "6ef2ec5f2599987c0ccbd580ed9ed5e139f5e44a8ffd6e0c856137cfac8b6857"
+    },
+    {
+      "url": "https://www.wetakepart.com/",
+      "archivo": null,
+      "http": 0,
+      "consultadoUtc": "2026-11-10T09:28:32Z",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": "curl: (56) CONNECT tunnel failed, response 502",
+      "nota": "sin respuesta: bloqueo de red registrado (ver error)"
+    },
+    {
+      "url": "https://www.gamevestor.com/",
+      "archivo": null,
+      "http": 0,
+      "consultadoUtc": "2026-11-10T09:29:00Z",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": "curl: (56) CONNECT tunnel failed, response 502",
+      "nota": "sin respuesta: bloqueo de red registrado (ver error)"
+    },
+    {
+      "url": "https://blastangels.com/",
+      "archivo": null,
+      "http": 0,
+      "consultadoUtc": "2026-11-10T09:29:27Z",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": "curl: (56) CONNECT tunnel failed, response 502",
+      "nota": "sin respuesta: bloqueo de red registrado (ver error)"
+    },
+    {
+      "url": "https://www.acredius.ch/",
+      "archivo": null,
+      "http": 0,
+      "consultadoUtc": "2026-11-10T09:29:54Z",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": "curl: (35) Recv failure: Connection reset by peer",
+      "nota": "sin respuesta: bloqueo de red registrado (ver error)"
+    },
+    {
+      "url": "https://www.acredius.pt/",
+      "archivo": null,
+      "http": 0,
+      "consultadoUtc": "2026-11-10T09:30:36Z",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": "curl: (56) CONNECT tunnel failed, response 502",
+      "nota": "sin respuesta: bloqueo de red registrado (ver error)"
+    }
+  ],
+  "descubrimiento": [
+    {
+      "herramienta": "WebSearch",
+      "uso": "descubrir pistas (no se usa como fuente de ninguna afirmación)",
+      "consultas": [
+        "registro ESMA de proveedores ECSP",
+        "plataformas ECSP tokenizadas con pasaporte a España",
+        "Bergfürst Kryptowertpapier",
+        "stock.estate tokenización",
+        "STOKR ofertas 2026",
+        "Blocksquare marketplaces",
+        "Exporo EPH Investment ECSP",
+        "bonos tokenizados para minoristas con pasaporte CNMV",
+        "Indemo SPV Issuer",
+        "issuance.swiss",
+        "DeXentra / OilXCoin",
+        "Fundaro",
+        "NOEMON TECH",
+        "Eurivex",
+        "Ektico",
+        "Digilo",
+        "iMAPS ETI",
+        "Floin AG",
+        "S01 Issuer",
+        "Axiology / Profitus",
+        "DN Funding Zeta",
+        "Nectaro Alpha",
+        "Realtyfi",
+        "Tokenise",
+        "bonos digitales bancarios para minoristas"
+      ]
+    },
+    {
+      "herramienta": "WebFetch",
+      "uso": "leer fichas del registro de folletos notificados de la AFM (Países Bajos) para DeXentra (id=12206), S01 Issuer (id=12235) y NOEMON TECH (id=12118), y el directorio de thecrowdspace.com; solo como pista",
+      "consultas": [
+        "https://www.afm.nl/en/sector/registers/meldingenregisters/genotificeerde-prospectussen/details?id=12206",
+        "https://www.afm.nl/en/sector/registers/meldingenregisters/genotificeerde-prospectussen/details?id=12235",
+        "https://www.afm.nl/en/sector/registers/meldingenregisters/genotificeerde-prospectussen/details?id=12118",
+        "https://thecrowdspace.com/directory/tokenized-real-estate-crowdfunding-platforms/"
+      ]
+    }
+  ]
+}

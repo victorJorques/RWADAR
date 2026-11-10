@@ -1,0 +1,29 @@
+URL: https://exchange.token-city.com/ · render 2026-11-10T09:30:12Z
+API https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/count-by-status?... (09:30:07Z): {"issuances_count":{"CAMPAIGN":1,"PRIVATE_CAMPAIGN":0,"PRE_CAMPAIGN":0,"CLOSED":2}} · SHA-256 859fab07ace1468e40226a8c50b6ab7242c397c46a6bf3e81a4bd18215e51b69
+
+lanzaremos próximamente.
+
+Inmobiliario
+
+CANDO1
+
+(CDO1)
+
+En estudio
+CANDO Senior Living
+
+Bajo la marca comercial CANDO, la Sociedad LORNIN IBÉRICA S.L. ha promovido y desarrollado un complejo de Senior Living premium en La Moraleja (Madrid), compuesto por 76 apartamentos ubicados sobre suelo dotacional, concebido para personas senior activas que buscan combinar vivienda privada de alta calidad, servicios integrales, comunidad y bienestar. La tenencia de las unidades por parte de los residentes se articula mediante la adquisición de derechos de uso o derecho de habitación de larga duración.
+
+Objetivo de emisión
+1.971.000 €
+Token
+1.971
+TIR bruta estimada
+~11,7% anual
+Inversión mínima
+657 €
+Lista prioritaria
+Servicios
+Integrales
+
+Solu

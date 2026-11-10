@@ -1,0 +1,380 @@
+                                                                                      2 October 2026
+
+                              NOTICE OF PROPOSED AMENDMENTS
+
+                               Robinhood Assets (Jersey) Limited
+                       (a private limited company incorporated in Jersey, with
+                                      registered number 162428)
+                                    LEI: 984500ADFHQZ9D6B9A29
+                                 Tokenised Products Programme
+
+This notice (hereafter, this “Notice”) relates to each Series of Products listed in the Schedule hereto
+(each, a “Series”) issued by the Issuer pursuant to its Tokenised Products Programme for the issue of
+tokenised securities (the “Programme”). Reference is made to the terms and conditions of each
+Series as set out in the Base Prospectus dated 25 June 2026 (the “Base Prospectus”) relating to the
+Programme, as completed by the Final Terms relating to each Series (in respect of each Series, the
+“Terms and Conditions”). Terms used in this Notice and not otherwise defined shall have the meaning
+given to them in the Terms and Conditions.
+
+Proposed modifications
+
+The Issuer proposes to revise the Programme to allow actively managed exchange traded products
+(“Actively Managed ETPs”) to be specified as an Underlying for one or more future series of Products.
+When making such revisions, the Issuer plans to amend and/or supplement the Terms and Conditions
+relating to each existing Series of Products, to reflect the items set out further below. Such
+amendments will apply to all future series of products issued under the Programme, in addition to
+each existing Series of Products. As noted in “Conditionality” further below, the aforementioned
+proposed changes are subject to further legal and regulatory evaluation, and the Issuer securing any
+relevant regulatory approvals or notifications.
+
+The amendments and/or supplements to the Terms and Conditions relating to each Series of
+Products will be made in accordance with Condition 34.1 (Modifications of the Terms and Conditions
+and Final Terms), without the consent of Investors of each Series. Such amendments and/or
+supplements are expected to:
+
+  •    Add further disruption events, to reflect features specific to Actively Managed ETPs; and
+
+  •    Make any other consequential and related changes,
+
+together, the “Terms and Conditions Proposed Amendments”.
+
+In accordance with Condition 34.1 (Modifications of the Terms and Conditions and Final Terms), the
+Issuer reserves the right (but is not expected) to amend or supplement the Final Terms for some or all
+Series of Products without the consent of Investors of each Series, to make consequential
+adjustments to account for the Terms and Conditions Proposed Amendments (the “Final Terms
+Proposed Amendments”). The Terms and Conditions Proposed Amendments and the Final Terms
+Proposed Amendments are collectively referred to herein as the “Proposed Amendments”. The Issuer
+may alter or supplement the Proposed Amendments described in this Notice before the publication of
+the Supplement and the Final Terms Proposed Amendments Effective Date (each as defined further
+below) as it deems necessary or appropriate, without publishing a further notice to Investors.
+
+
+
+
+                                                                                      20261002-5985326-19057661
+Investors should additionally note that the Issuer may amend or supplement the Base Prospectus to
+make further revisions which do not constitute amendments to the Terms and Conditions or the Final
+Terms for any Series and therefore do not fall within Condition 34.1 (Modifications of the Terms and
+Conditions and Final Terms) or form part of the Proposed Amendments described in this Notice. Any
+such amendments and/or supplements shall be set out in and implemented by way of a supplement
+or update to the Base Prospectus (a “Supplement”).
+
+Notice to Investors
+
+This Notice has been published on the Issuer Website on 2 October 2026 and shall constitute prior
+written notice to Investors of the details of the Proposed Amendments for the purposes of Condition
+34.4 (Modifications of the Terms and Conditions and Final Terms).
+
+The specific changes that will comprise the Terms and Conditions Proposed Amendments shall be
+set out in and implemented in the Supplement approved by the FMA, as competent authority under
+the Prospectus Regulation. Accordingly, the Terms and Conditions Proposed Amendments shall be
+deemed to be effective from, and including, the date on which the Issuer publishes the FMA approved
+Supplement on the Issuer Website (the “Terms and Conditions Proposed Amendments Effective
+Date”) and shall be deemed to be accepted by Investors of each Series who hold Products as of such
+date. For the avoidance of doubt, the Terms and Conditions Proposed Amendments Effective Date
+shall be no less than thirty (30) Calendar Days after the date of the publication of this Notice.
+
+The specific changes that will comprise the Final Terms Proposed Amendments, if any, are expected
+to be set out in and implemented by way of amended and restated Final Terms (the “Amended and
+Restated Final Terms”). Accordingly, the Final Terms Proposed Amendments shall be deemed to be
+effective from, and including, the date on which the Issuer publishes the Amended and Restated Final
+Terms on the Issuer Website (the “Final Terms Proposed Amendments Effective Date”), which is
+expected to occur on or after the Terms and Conditions Proposed Amendments Effective Date, and
+shall be deemed to be accepted by Investors of each Series who hold Products as of such date. The
+Issuer intends to publish a subsequent notice to the Investors of each Series on or around the Final
+Terms Proposed Amendments Effective Date, which will confirm that the Final Terms Proposed
+Amendments to each Series have been made.
+
+Investors that purchase Products during the period between the publication of this Notice and the
+Terms and Conditions Proposed Amendments Effective Date or the Final Terms Proposed
+Amendment Effective Date (as applicable) are deemed to have read and understood its contents.
+
+The Issuer hereby confirms that it has determined that Investors in each Series will not incur any
+significant financial loss as a consequence of the Proposed Amendments, as required by Condition
+34.1 (Modifications of the Terms and Conditions and Final Terms).
+
+Conditionality
+
+The implementation of the Proposed Amendments is conditional on the Issuer securing or making any
+relevant regulatory approvals or notifications, including, without limitation, the FMA’s approval of the
+Supplement and any required JFSC approvals or notifications in respect of the Proposed
+Amendments. The Issuer reserves the right to implement some or all of the Proposed Amendments in
+respect of one or more Series or, as applicable, all Series, on the relevant Terms and Conditions
+Proposed Amendments Effective Date and/or the relevant Final Terms Proposed Amendments
+Effective Date (as applicable). Nothing in this Notice shall oblige the Issuer to implement any of the
+
+
+
+                                                   2
+
+
+                                                                                       20261002-5985326-19057661
+Proposed Amendments, and the Issuer does not guarantee that the Proposed Amendments will be
+implemented, in whole or in part, on any effective date or at all.
+This Notice is given by the Issuer.
+
+For further information contact:
+
+Robinhood Assets (Jersey) Limited
+c/o Cavendish Fiduciary (Jersey) Limited
+First Floor, La Chasse Chambers, Ten La Chasse
+St. Helier
+JE2 4UE, Jersey
+
+For the attention of: The Directors
+Telephone: +44 800 069 6478
+Email: robinhood@CavendishJersey.com
+
+Date of publication: 2 October 2026
+
+
+
+
+                                                 3
+
+
+                                                                            20261002-5985326-19057661
+                   SCHEDULE: THE SERIES
+
+    ISIN                                 Title of Series
+JE00BX9C6J83             Series 1 Products linked to NVIDIA Corporation
+JE00BX9H9721           Series 2 Products linked to Micron Technology, Inc.
+JE00BX9H9838                  Series 3 Products linked to Tesla, Inc.
+JE00BX9H9945             Series 4 Products linked to Sandisk Corporation
+JE00BX9H9B61        Series 5 Products linked to Advanced Micro Devices, Inc.
+JE00BX9H9C78   Series 6 Products linked to State Street SPDR S&P 500 ETF Trust
+JE00BX9H9D85            Series 7 Products linked to Microsoft Corporation
+JE00BX9H9F00          Series 8 Products linked to Palantir Technologies Inc.
+JE00BX9H9G17                   Series 9 Products linked to Intel Corporation
+JE00BX9H9H24             Series 10 Products linked to Invesco QQQ Trust
+JE00BX9H9J48             Series 11 Products linked to iShares Silver Trust
+JE00BX9H9K52            Series 12 Products linked to Circle Internet Group
+JE00BX9H9L69            Series 13 Products linked to Meta Platforms, Inc.
+JE00BX9H9M76                  Series 14 Products linked to Apple Inc.
+JE00BX9H9N83           Series 15 Products linked to Alphabet Inc. Class A
+JE00BX9H9P08         Series 16 Products linked to United States Oil Fund, LP
+JE00BX9H9Q15              Series 17 Products linked to Amazon.com, Inc.
+JE00BX9H9R22              Series 18 Products linked to CoreWeave, Inc.
+JE00BX9H9S39             Series 19 Products linked to Oracle Corporation
+JE00BX9H9T46     Series 20 Products linked to Class A common stock of Space
+                              Exploration Technologies Corporation
+JE00BX9H9V67   Series 21 Products linked to iShares 0-3 Month Treasury Bond ETF
+JE00BX9H9W74         Series 22 Products linked to Bloom Energy Corporation
+JE00BX9H9X81            Series 23 Products linked to USA Rare Earth, Inc.
+JE00BX9HBC12           Series 24 Products linked to Coinbase Global, Inc.
+JE00BX9HBB05       Series 25 Products linked to Alibaba Group Holding Limited
+JE00BX9HB870          Series 26 Products linked to Rocket Lab Corporation
+JE00BX9HB987               Series 27 Products linked to Cerebras Systems Inc.
+JE00BX9HBF43         Series 31 Products linked to QUALCOMM Incorporated
+JE00BX9HBG59          Series 32 Products linked to Lumentum Holdings Inc.
+JE00BX9HBH66           Series 33 Products linked to Dell Technologies Inc.
+JE00BX9HBJ80          Series 34 Products linked to Marvell Technology, Inc.
+JE00BX9HDZ88          Series 35 Products linked to Quantum Computing Inc.
+JE00BX9HBK95          Series 36 Products linked to POET Technologies Inc.
+JE00BX9HBL03                Series 37 Products linked to Strategy Inc.
+JE00BX9HBM10            Series 38 Products linked to Corning Incorporated
+JE00BX9HBP41           Series 40 Products linked to D-Wave Quantum Inc.
+JE00BX9HBQ57           Series 41 Products linked to Rigetti Computing, Inc.
+JE00BX9HBR64    Series 42 Products linked to United Microelectronics Corporation
+JE00BX9HBS71   Series 43 Products linked to Taiwan Semiconductor Manufacturing
+                                        Company Limited
+JE00BX9HBT88            Series 44 Products linked to Applied Optoelectronics, Inc.
+
+JE00BX9HBV01              Series 45 Products linked to GameStop Corp.
+JE00BX9HBW18                Series 46 Products linked to IREN Limited
+JE00BX9HBX25       Series 47 Products linked to Costco Wholesale Corporation
+JE00BX9HBY32    Series 48 Products linked to Navitas Semiconductor Corporation
+JE00BX9HBZ49                Series 49 Products linked to Zscaler, Inc.
+JE00BX9HC068        Series 50 Products linked to iShares Semiconductor ETF
+JE00BX9HC175              Series 51 Products linked to CleanSpark, Inc.
+JE00BX9HC282   Series 52 Products linked to State Street Technology Select Sector
+                                           SPDR ETF
+JE00BX9HC399        Series 53 Products linked to Super Micro Computer, Inc.
+JE00BX9HF079      Series 54 Products linked to iShares MSCI South Korea ETF
+
+
+                                4
+
+
+                                                                   20261002-5985326-19057661
+JE00BX9HC514               Series 56 Products linked to Nebius Group N.V.
+JE00BX9HC621                Series 57 Products linked to ServiceNow, Inc.
+JE00BX9HC738            Series 58 Products linked to AST SpaceMobile, Inc.
+JE00BX9HC845            Series 59 Products linked to SoFi Technologies, Inc.
+JE00BX9HC951                 Series 60 Products linked to Broadcom, Inc.
+JE00BX9HCB79                   Series 61 Products linked to Netflix, Inc.
+JE00BX9HCC86                    Series 62 Products linked to IonQ, Inc.
+JE00BX9HF186          Series 63 Products linked to Applied Digital Corporation
+JE00BX9HCD93               Series 64 Products linked to ASML Holding N.V.
+JE00BX9HCF18          Series 65 Products linked to CrowdStrike Holdings, Inc.
+JE00BX9HCG25           Series 66 Products linked to Exxon Mobil Corporation
+JE00BX9HCH32                Series 67 Products linked to Nu Holdings Ltd.
+JE00BX9HCJ55             Series 68 Products linked to Applied Materials, Inc.
+JE00BX9HCK60             Series 69 Products linked to Celsius Holdings, Inc.
+JE00BX9HCL77              Series 70 Products linked to Redwire Corporation
+JE00BX9HCM84             Series 71 Products linked to Eli Lilly and Company
+JE00BX9HCN91     Series 72 Products linked to Take-Two Interactive Software, Inc.
+JE00BX9HCP16            Series 73 Products linked to Intuitive Machines, Inc.
+JE00BX9HCQ23                 Series 74 Products linked to MongoDB, Inc.
+JE00BX9HCR30                        Series 75 Products linked to Intuit Inc.
+JE00BX9HCS47    Series 76 Products linked to Xanadu Quantum Technologies Limited
+JE00BX9HF293             Series 77 Products linked to EchoStar Corporation
+JE00BX9HCT53                   Series 78 Products linked to Shopify Inc.
+JE00BX9HCV75      Series 79 Products linked to Invesco S&P 500 Momentum ETF
+JE00BX9HCW82          Series 80 Products linked to Tower Semiconductor Ltd.
+JE00BX9HCX99              Series 81 Products linked to Ford Motor Company
+JE00BX9HCY07       Series 82 Products linked to Permian Resources Corporation
+JE00BX9HCZ14             Series 83 Products linked to lululemon athletica inc.
+JE00BX9HD033                  Series 84 Products linked to Datadog, Inc.
+JE00BX9HD140                  Series 85 Products linked to Innodata Inc.
+JE00BX9HD256             Series 86 Products linked to The Boeing Company
+JE00BX9HD363         Series 87 Products linked to Zoom Communications, Inc.
+JE00BX9HD470             Series 88 Products linked to Futu Holdings Limited
+JE00BX9HD587                Series 89 Products linked to MaxLinear, Inc.
+JE00BX9HD694              Series 90 Products linked to Fluence Energy, Inc.
+JE00BX9HD702            Series 91 Products linked to Rivian Automotive, Inc.
+JE00BX9HD819                Series 92 Products linked to e.l.f. Beauty, Inc.
+JE00BX9HD926                   Series 93 Products linked to Reddit, Inc.
+JE00BX9HDB45                 Series 94 Products linked to Workday, Inc.
+JE00BX9HDC51                 Series 95 Products linked to Everpure, Inc.
+JE00BX9HDD68           Series 96 Products linked to Carnival Corporation Ltd.
+JE00BX9HDF82          Series 97 Products linked to United Parcel Service, Inc.
+JE00BX9HDG99               Series 98 Products linked to Roblox Corporation
+JE00BX9HDH07          Series 99 Products linked to NANO Nuclear Energy Inc.
+JE00BX9HDJ21            Series 100 Products linked to Penguin Solutions, Inc.
+JE00BXS3SN08                 Series 101 Products linked to SK hynix Inc.
+ JE00BSLV3646        Series 102 Products linked to Western Digital Corporation
+JE00BVY6V963               Series 103 Products linked to Astera Labs, Inc.
+JE00BVY6VB89    Series 104 Products linked to Credo Technology Group Holding Ltd
+JE00BVY6VC96              Series 105 Products linked to AeroVironment, Inc.
+JE00BVY6VD04                  Series 106 Products linked to Adobe Inc.
+JE00BVY6VF28                 Series 107 Products linked to TeraWulf Inc.
+JE00BVY6VG35                  Series 108 Products linked to Figma, Inc.
+JE00BVY6VH42         Series 109 Products linked to NuScale Power Corporation
+ JE00BVY6VJ65              Series 110 Products linked to KLA Corporation
+JE00BVY6VK70               Series 111 Products linked to Planet Labs PBC
+JE00BVY6VL87                   Series 112 Products linked to AXT, Inc.
+JE00BVY6VM94                Series 113 Products linked to T1 Energy Inc.
+
+
+                                5
+
+
+                                                                  20261002-5985326-19057661
+JE00BVY6VN02             Series 114 Products linked to Webull Corporation
+JE00BVY6VP26              Series 115 Products linked to Joby Aviation, Inc.
+JE00BVY6VQ33               Series 116 Products linked to Tempus AI, Inc.
+JE00BVY6VR40         Series 117 Products linked to Lam Research Corporation
+JE00BVY6VS56                Series 118 Products linked to Coherent Corp.
+                Series 119 Products linked to Kratos Defense & Security Solutions,
+JE00BVY6VT63
+                                                 Inc.
+JE00BVY6VV85         Series 120 Products linked to Zeta Global Holdings Corp.
+JE00BVY6VW92            Series 121 Products linked to Axon Enterprise, Inc.
+JE00BVY6VX00                Series 122 Products linked to Salesforce, Inc.
+JE00BVY6VY17            Series 123 Products linked to Firefly Aerospace Inc.
+JE00BVY6VZ24                Series 124 Products linked to WhiteFiber, Inc.
+JE00BVY6W045            Series 125 Products linked to The Trade Desk, Inc.
+JE00BVY6W151           Series 126 Products linked to Red Cat Holdings, Inc.
+JE00BVY6W268                 Series 127 Products linked to Infleqtion, Inc.
+JE00BVY6W375                  Series 128 Products linked to Ouster, Inc.
+JE00BVY6W482       Series 129 Products linked to ON Semiconductor Corporation
+JE00BVY6W599            Series 130 Products linked to Fair Isaac Corporation
+                  Series 131 Products linked to International Business Machines
+JE00BVY6W607
+                                             Corporation
+JE00BVY6W714           Series 132 Products linked to Amkor Technology, Inc.
+JE00BVY6W821              Series 133 Products linked to Ciena Corporation
+JE00BVY6W938          Series 134 Products linked to Hims & Hers Health, Inc.
+JE00BVY6WB54                 Series 135 Products linked to Celestica Inc.
+JE00BVY6WC61                Series 136 Products linked to Teradyne, Inc.
+JE00BVY6WD78            Series 137 Products linked to SoundHound AI, Inc.
+JE00BVY6WF92                  Series 138 Products linked to UiPath, Inc.
+JE00BVY6WG00           Series 139 Products linked to Aehr Test Systems, Inc.
+JE00BVY6WH17                 Series 140 Products linked to Moderna, Inc.
+JE00BVY6WJ31                    Series 141 Products linked to Oklo Inc.
+JE00BVY6WK46              Series 142 Products linked to Vertiv Holdings Co
+JE00BVY6WL52       Series 143 Products linked to Monolithic Power Systems, Inc.
+JE00BVY6WM69                   Series 144 Products linked to Fiserv, Inc.
+JE00BVY6WN76                 Series 145 Products linked to Galaxy Digital
+JE00BVY6WP90                Series 146 Products linked to Snowflake Inc.
+JE00BVY6WQ08            Series 147 Products linked to Atlassian Corporation
+JE00BVY6WR15                   Series 148 Products linked to Snap Inc.
+JE00BVY6WS22                  Series 149 Products linked to Sunrun Inc.
+JE00BVY6WT39              Series 150 Products linked to BlackBerry Limited
+JE00BVY6WV50     Series 151 Products linked to SELLAS Life Sciences Group, Inc.
+JE00BVY6WW67               Series 152 Products linked to GE Vernova Inc.
+JE00BVY6WX74            Series 153 Products linked to AppLovin Corporation
+JE00BVY6WY81        Series 154 Products linked to Lockheed Martin Corporation
+JE00BVY6WZ98      Series 155 Products linked to Constellation Energy Corporation
+ JE00BVY6X019               Series 156 Products linked to GE Aerospace
+ JE00BVY6X126          Series 157 Products linked to Howmet Aerospace Inc.
+ JE00BVY6X233   Series 158 Products linked to Hewlett Packard Enterprise Company
+ JE00BVY6X340                 Series 159 Products linked to Viasat, Inc.
+ JE00BVY6X456                 Series 160 Products linked to Vistra Corp.
+ JE00BVY6X563                 Series 161 Products linked to Navan, Inc.
+ JE00BVY6X670              Series 162 Products linked to ImmunityBio, Inc.
+ JE00BVY6X787        Series 163 Products linked to Comfort Systems USA, Inc.
+ JE00BVY6X894        Series 164 Products linked to L3Harris Technologies, Inc.
+ JE00BVY6X902                 Series 165 Products linked to Fortinet, Inc.
+ JE00BVY6XB20          Series 166 Products linked to Palo Alto Networks, Inc.
+JE00BVY6XC37             Series 167 Products linked to Onto Innovation Inc.
+JE00BVY6XD44             Series 168 Products linked to Arista Networks, Inc.
+ JE00BVY6XF67          Series 169 Products linked to Aurora Innovation, Inc.
+
+
+                                6
+
+
+                                                                   20261002-5985326-19057661
+                  Series 170 Products linked to Cognizant Technology Solutions
+JE00BVY6XG74
+                                            Corporation
+JE00BVY6XH81              Series 171 Products linked to Vicor Corporation
+                   Series 172 Products linked to MACOM Technology Solutions
+JE00BVY6XJ06
+                                           Holdings, Inc.
+JE00BVY6XK11      Series 173 Products linked to Huntington Ingalls Industries, Inc.
+JE00BVY6XL28             Series 174 Products linked to Cisco Systems, Inc.
+JE00BVY6XM35                  Series 175 Products linked to Pfizer Inc.
+JE00BVY6XN42              Series 176 Products linked to Quantinuum Inc.
+JE00BVY6XP65   Series 177 Products linked to Silicon Motion Technology Corporation
+JE00BVY6XQ72         Series 178 Products linked to DigitalOcean Holdings, Inc.
+JE00BVY6XR89             Series 179 Products linked to Johnson & Johnson
+JE00BVY6XS96      Series 180 Products linked to UnitedHealth Group Incorporated
+JE00BVY6XT04               Series 181 Products linked to Cloudflare, Inc.
+JE00BVY6XV26               Series 182 Products linked to Ambarella, Inc.
+JE00BVY6XW33           Series 183 Products linked to AbCellera Biologics Inc.
+JE00BVY6XX40        Series 184 Products linked to VanEck Semiconductor ETF
+                 Series 185 Products linked to Vanguard Morningstar Total Stock
+JE00BVY6XY56
+                                            Market ETF
+JE00BVY6XZ63             Series 186 Products linked to SPDR Gold Shares
+JE00BVY6Y082     Series 187 Products linked to Schwab U.S. Dividend Equity ETF
+                 Series 188 Products linked to Vanguard Total Bond Market Index
+JE00BVY6Y199
+                                             Fund ETF
+JE00BVY6Y207          Series 189 Products linked to iShares MSCI India ETF
+JE00BVY6Y314         Series 190 Products linked to iShares MSCI Taiwan ETF
+JE00BVY6Y421     Series 191 Products linked to AMC Entertainment Holdings, Inc.
+JE00BVY6Y538                Series 192 Products linked to Carvana Co.
+                 Series 193 Products linked to Trump Media & Technology Group
+JE00BVY6Y645
+                                               Corp.
+JE00BVY6Y751             Series 194 Products linked to Kohl's Corporation
+JE00BVY6Y868      Series 195 Products linked to Clover Health Investments, Corp.
+JE00BVY6Y975      Series 196 Products linked to Modine Manufacturing Company
+JE00BVY6YB94            Series 197 Products linked to Quanta Services, Inc.
+JE00BVY6YC02      Series 198 Products linked to Advanced Energy Industries, Inc.
+JE00BVY6YD19            Series 199 Products linked to Powell Industries, Inc.
+JE00BVY6YF33                  Series 200 Products linked to Jabil Inc.
+JE00BVY6YG40    Series 201 Products linked to iShares 1-3 Year Treasury Bond ETF
+
+
+
+
+                                7
+
+
+                                                                   20261002-5985326-19057661
+

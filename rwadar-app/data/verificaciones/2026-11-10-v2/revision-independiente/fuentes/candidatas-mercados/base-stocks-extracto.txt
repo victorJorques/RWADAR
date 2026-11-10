@@ -1,0 +1,3 @@
+URL: https://www.base.org/stocks (texto renderizado con Playwright; la carga no llegó a 'networkidle' en 60 s, se leyó el texto tras 3 s más)
+consultadoUtc 2026-11-10T09:28:46Z
+Línea 53: Available only in eligible jurisdictions outside the US. Read the prospectus & legal disclosures.

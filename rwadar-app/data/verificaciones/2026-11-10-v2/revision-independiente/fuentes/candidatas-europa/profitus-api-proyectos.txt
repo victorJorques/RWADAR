@@ -1,0 +1,16 @@
+Fuente: https://api.profitus.com/api/v1/landing/projects?limit=50&page=1
+Consultado: 2026-11-10T09:36:53Z · HTTP 200 · 51762 bytes · sha256 8b95473a4817dfeb400969c9cbed2f4d956da91cc786fa553c2689363433137e
+Copia original en crudo/profitus-api-projects.json (fuera de Git). Extracto literal; nombres de personas omitidos.
+Páginas 2 a 11: crudo/profitus-api-projects-p2..p11.json (09:37 UTC).
+
+545 proyectos
+status: {"open_for_investments": 5, "confirmed": 538, "funded": 2}
+loan_type: {"standard": 544, "bonds": 1}
+Abiertos hoy:
+  P00001717 · House at Silainiai, Kaunas (II) · open_for_investments · loan_type=standard · país=lt
+  P00001488-2 · Apartment Petesos st., Vilnius II · open_for_investments · loan_type=standard · país=lt
+  P00001399-8 · Edificio Arenys, Barcelona VIII · open_for_investments · loan_type=standard · país=es
+  P00001680-6 · Apartments Lietaviskiu st., Vilnius V · open_for_investments · loan_type=standard · país=lt
+  P00001663-2 · Infinity Villas Altea, Alicante reg. II · open_for_investments · loan_type=standard · país=es
+Con loan_type distinto de standard:
+  P00001567 · "Gesons" Bonds · confirmed · loan_type=bonds

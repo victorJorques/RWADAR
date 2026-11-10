@@ -1,0 +1,166 @@
+{
+ "slug": "amundi-core-stoxx-europe-600-tokenizada",
+ "tipoExpediente": "candidata",
+ "grupo": "candidatas-mercados",
+ "proveedor": "Amundi · clase tokenizada de Amundi Core STOXX Europe 600",
+ "plataformaSlug": null,
+ "entidadComercializadora": null,
+ "emisor": "Amundi (gestora); tokenización de las participaciones con CACEIS",
+ "vehiculo": "Clase de participaciones tokenizada del fondo indicado Amundi Core STOXX Europe 600 (UCITS); compartimento y SICAV no identificados en lo leído hoy",
+ "token": "Participaciones registradas en Ethereum (red pública); contrato no publicado en lo leído",
+ "derechoAdquirido": "Participación del fondo indexado al STOXX Europe 600, en formato token",
+ "jurisdiccion": null,
+ "identificador": null,
+ "moneda": null,
+ "documentos": [
+  {
+   "titulo": "Amundi unveils tokenised access to one of its flagship index funds (nota de prensa)",
+   "url": "https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds",
+   "versionOFecha": "Paris, November 5th 2026",
+   "paginas": null,
+   "sha256": "24ddfde18d4e8e7757afbb3e2945d2486bce6641ad4e1cbf5b1e79c6eaa16eeb",
+   "leido": true
+  },
+  {
+   "titulo": "Nota de prensa en PDF (misma)",
+   "url": "https://int.media.amundi.com/files/nuxeo/dl/2d26bd65-d562-4a36-b0b0-14750be96ec7?inline=",
+   "versionOFecha": "05/11/2026",
+   "paginas": 1,
+   "sha256": "c92bb075932cadf291e0c51a22b7399d9b951b19b25830c36852d7b369c41dd8",
+   "leido": true,
+   "nota": "El PDF trae datos de contacto de una persona; no se conserva la copia PDF, solo el texto recortado."
+  },
+  {
+   "titulo": "Folleto, KID e ISIN de la clase tokenizada",
+   "url": null,
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": null,
+   "leido": false,
+   "nota": "No localizados en fuentes públicas hoy; la nota de prensa no los cita."
+  }
+ ],
+ "registros": [],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Amundi",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "consultadoUtc": "2026-11-10T09:11:28Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "The new share class has been issued on the public Ethereum blockchain.",
+   "dato": "Clase tokenizada emitida en Ethereum",
+   "fuentePrimaria": "https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds",
+   "localizador": "Nota de prensa del 05/11/2026, párr. 3",
+   "fechaDato": "2026-11-05",
+   "consultadoUtc": "2026-11-10T09:07:40Z",
+   "alcanceYLimites": null,
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "to respond to the evolving needs of institutional clients and digital platforms",
+   "dato": "Dirigida a clientes institucionales y plataformas digitales; sin canal para particulares",
+   "fuentePrimaria": "https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds",
+   "localizador": "Nota de prensa del 05/11/2026, párr. 5",
+   "fechaDato": "2026-11-05",
+   "consultadoUtc": "2026-11-10T09:07:40Z",
+   "alcanceYLimites": "La nota no nombra distribuidores, países ni tipo de inversor admitido en la clase tokenizada",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "derecho",
+   "literal": "It remains fully integrated into the fund’s existing operating model, and the fund continues to be available also through traditional channels.",
+   "dato": "Misma cartera del fondo; el fondo sigue en sus canales tradicionales",
+   "fuentePrimaria": "https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds",
+   "localizador": "Nota de prensa del 05/11/2026, párr. 3",
+   "fechaDato": "2026-11-05",
+   "consultadoUtc": "2026-11-10T09:07:40Z",
+   "alcanceYLimites": "El canal tradicional es el ETF/fondo de siempre, no la clase tokenizada",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimo",
+   "literal": "—",
+   "dato": null,
+   "fuentePrimaria": "https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds",
+   "localizador": "Nota de prensa: sin mínimo ni ISIN",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-10T09:07:40Z",
+   "alcanceYLimites": null,
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "salida",
+   "literal": "—",
+   "dato": null,
+   "fuentePrimaria": "https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds",
+   "localizador": "Nota de prensa: sin condiciones de reembolso de la clase tokenizada",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-10T09:07:40Z",
+   "alcanceYLimites": null,
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_verificable",
+   "nota": "Gestora conocida, pero no se identifican hoy el compartimento, la clase, su ISIN ni su registro en la CNMV."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Clase emitida según la nota del 05/11/2026; tamaño no publicado."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "Pensada para institucionales y plataformas digitales; sin distribuidor para particulares, sin mínimo y sin KID localizados."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Sin advertencias de la CNMV para «Amundi»."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "expediente",
+   "antes": "sin expediente",
+   "ahora": "estudiada hoy por primera vez (nota de prensa del 05/11/2026)",
+   "fuente": "https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": null,
+ "resumenTarjeta": {
+  "minimo": null,
+  "accesoEspana": "Sin canal para particulares: Amundi la dirige a institucionales y plataformas digitales",
+  "salida": null
+ },
+ "resumenTarjetaNota": "Interno: los tres datos tal como se ven hoy; no es propuesta de tarjeta (decisión no_admitir). null = no respaldado hoy en fuente primaria.",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": null,
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Primera clase tokenizada de un gran fondo indexado europeo (STOXX Europe 600), de la mayor gestora europea.",
+  "porQueNo": "No hay ISIN, KID, mínimo ni distribuidor para particulares; la nota la dirige a institucionales y plataformas digitales."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No se admite hoy. La nota de prensa de Amundi (05/11/2026) confirma la clase tokenizada en Ethereum, pero la dirige a «institutional clients and digital platforms» y no publica ISIN, KID, mínimo, reembolso ni distribuidor. Un particular en España puede comprar el fondo por los canales de siempre, no la clase tokenizada. Revisar si aparece una plataforma con licencia que la venda a minoristas.",
+ "bloqueos": [
+  "Sin folleto, KID ni ISIN públicos de la clase tokenizada.",
+  "Sin distribuidor identificado para particulares en España."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-10T09:06:23Z",
+  "finUtc": "2026-11-10T09:20:21Z"
+ }
+}

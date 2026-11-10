@@ -1,0 +1,3140 @@
+URL: https://www.base.org/stocks
+URLFinal: https://www.base.org/stocks
+ConsultadoUtc: 2026-11-10T09:06:34Z
+Metodo: Playwright (Chromium) innerText
+
+Offer your customers stablecoin yield and loans on Base.
+
+Learn More
+about stablecoin yield and loans on Base
+
+Base
+b
+a
+s
+e
+b
+a
+s
+e
+
+Solutions
+
+Ecosystem
+
+Developers
+
+Resources
+
+Get Started
+
+Stocks
+
+Stocks just got updated.
+
+Trade, lend, and borrow stocks 24/7 across the Base ecosystem. Starting with Coinbase Tokenized Stocks.
+
+Explore Stocks
+Integrate Stocks
+
+About
+
+What are Coinbase Tokenized Stocks?
+
+Coinbase Tokenized Stocks are individual US company shares brought onchain, issued by Coinbase and backed 1:1 by shares held in regulated custody.
+
+Backed by a real share
+
+Each token is a beneficial claim on a real share, held in regulated, bankruptcy-remote custody separate from Coinbase.
+
+Issued by Coinbase
+
+Coinbase issues a matching token 1:1 against the share it holds, so the token tracks real economic exposure to the underlying stock.
+
+Tokenized & usable across DeFi
+
+The token is issued as a B20 token on Base, then held in a self-custodial wallet and used across the Base DeFi ecosystem.
+
+Available only in eligible jurisdictions outside the US. Read the prospectus & legal disclosures.
+
+Features
+
+Stocks that do more.
+
+On Base, stocks do more than sit in a brokerage account. Through participating apps and supported protocols, they can be self-custodied, traded around the clock, and put to work across DeFi.
+
+Stocks meet DeFi
+
+Hold tokenized stocks, then lend, borrow, or use them as collateral across the Base DeFi ecosystem.
+
+Trade 24/7, 365
+
+Trade tokenized stocks any hour of any day, including weekends and US market holidays.
+
+Your keys, your stocks
+
+Hold your tokenized stocks in a wallet only you control. No brokerage account needed.
+
+Listings
+
+Stocks on Base.
+
+View All
+
+TICKER
+
+STOCK
+
+PROSPECTUS
+
+CONTRACT
+
+NVDAc
+
+NVIDIA
+
+View Prospectus
+
+0xb200...108C
+
+METAc
+
+Meta
+
+View Prospectus
+
+0xb200...707C
+
+AAPLc
+
+Apple
+
+View Prospectus
+
+0xb200...d1fb
+
+GOOGLc
+
+Alphabet
+
+View Prospectus
+
+0xb200...58B7
+
+AMZNc
+
+Amazon
+
+View Prospectus
+
+0xb200...C2E8
+
+MSFTc
+
+Microsoft
+
+View Prospectus
+
+0xB200...872B
+
+MSTRc
+
+Strategy
+
+View Prospectus
+
+0xb200...883d
+
+SNDKc
+
+SanDisk
+
+View Prospectus
+
+0xb200...10c5
+
+SPCXc
+
+SpaceX
+
+View Prospectus
+
+0xb200...CBd5
+
+TSLAc
+
+Tesla
+
+View Prospectus
+
+0xb200...0cD0
+
+AALc
+
+American Airlines Group Inc.
+
+View Prospectus
+
+0xB200...08Bb
+
+AAOIc
+
+Applied Optoelectronics Inc
+
+View Prospectus
+
+0xb200...205c
+
+ABNBc
+
+Airbnb, Inc.
+
+View Prospectus
+
+0xb200...7664
+
+ACHRc
+
+Archer Aviation Inc.
+
+View Prospectus
+
+0xb200...55d6
+
+ADBEc
+
+Adobe Inc.
+
+View Prospectus
+
+0xB200...2Cd4
+
+ADIc
+
+Analog Devices, Inc.
+
+View Prospectus
+
+0xB200...7917
+
+AEHRc
+
+Aehr Test Systems
+
+View Prospectus
+
+0xb200...E527
+
+AEOc
+
+American Eagle Outfitters, Inc.
+
+View Prospectus
+
+0xB200...2294
+
+AFRMc
+
+Affirm Holdings, Inc.
+
+View Prospectus
+
+0xb200...9bCe
+
+AIc
+
+C3.ai, Inc.
+
+View Prospectus
+
+0xb200...A2a5
+
+ALABc
+
+Astera Labs, Inc.
+
+View Prospectus
+
+0xb200...2794
+
+ALNTc
+
+Allient Inc.
+
+View Prospectus
+
+0xB200...9156
+
+AMATc
+
+Applied Materials, Inc.
+
+View Prospectus
+
+0xb200...b197
+
+AMCc
+
+AMC Entertainment Holdings, Inc.
+
+View Prospectus
+
+0xB200...2BB5
+
+AMDc
+
+Advanced Micro Devices, Inc.
+
+View Prospectus
+
+0xB200...A47B
+
+AMGNc
+
+Amgen Inc.
+
+View Prospectus
+
+0xB200...3381
+
+AMKRc
+
+Amkor Technology, Inc.
+
+View Prospectus
+
+0xb200...81a0
+
+ANETc
+
+Arista Networks, Inc.
+
+View Prospectus
+
+0xB200...51cb
+
+ANFc
+
+Abercrombie & Fitch Co.
+
+View Prospectus
+
+0xb200...8A24
+
+APLDc
+
+Applied Digital Corporation
+
+View Prospectus
+
+0xb200...1721
+
+APPc
+
+AppLovin Corporation
+
+View Prospectus
+
+0xb200...c168
+
+ARMc
+
+Arm Holdings plc
+
+View Prospectus
+
+0xB200...043f
+
+ASSTc
+
+Strive, Inc.
+
+View Prospectus
+
+0xb200...c330
+
+ASTSc
+
+AST SpaceMobile, Inc.
+
+View Prospectus
+
+0xB200...288a
+
+AURc
+
+Aurora Innovation, Inc.
+
+View Prospectus
+
+0xb200...2F96
+
+AVGOc
+
+Broadcom Inc.
+
+View Prospectus
+
+0xB200...5a4c
+
+AXONc
+
+Axon Enterprise, Inc.
+
+View Prospectus
+
+0xb200...1d33
+
+AXTIc
+
+AXT Inc
+
+View Prospectus
+
+0xb200...b484
+
+BAc
+
+The Boeing Company
+
+View Prospectus
+
+0xB200...5C2F
+
+BACc
+
+Bank of America Corporation
+
+View Prospectus
+
+0xB200...959d
+
+BALLc
+
+Ball Corporation
+
+View Prospectus
+
+0xb200...510B
+
+BBAIc
+
+BigBear.ai Holdings, Inc.
+
+View Prospectus
+
+0xb200...845C
+
+BEc
+
+Bloom Energy Corporation
+
+View Prospectus
+
+0xb200...122b
+
+BIDUc
+
+Baidu, Inc.
+
+View Prospectus
+
+0xb200...6BEf
+
+BIIBc
+
+Biogen Inc.
+
+View Prospectus
+
+0xB200...c0b4
+
+BILIc
+
+Bilibili Inc.
+
+View Prospectus
+
+0xb200...5eb6
+
+BIRDc
+
+Smartbird, Inc.
+
+View Prospectus
+
+0xB200...FD96
+
+BJc
+
+BJ's Wholesale Club Holdings, Inc.
+
+View Prospectus
+
+0xB200...f438
+
+BKSYc
+
+BlackSky Technology Inc.
+
+View Prospectus
+
+0xB200...1d06
+
+BLNKc
+
+Blink Charging Co.
+
+View Prospectus
+
+0xB200...72F9
+
+BMNRc
+
+BitMine Immersion Technologies, Inc.
+
+View Prospectus
+
+0xB200...279C
+
+BNCc
+
+BNB Standard Corporation
+
+View Prospectus
+
+0xb200...818a
+
+BOOTc
+
+Boot Barn Holdings, Inc.
+
+View Prospectus
+
+0xB200...DD7b
+
+BRK.Bc
+
+Berkshire Hathaway Inc. Class B
+
+View Prospectus
+
+0xb200...bCb4
+
+BROSc
+
+Dutch Bros Inc.
+
+View Prospectus
+
+0xB200...B544
+
+BUDc
+
+Anheuser-Busch InBev SA/NV
+
+View Prospectus
+
+0xB200...6cA2
+
+BXc
+
+Blackstone Inc.
+
+View Prospectus
+
+0xB200...1682
+
+BYNDc
+
+Beyond Meat, Inc.
+
+View Prospectus
+
+0xB200...3423
+
+BZFDc
+
+BuzzFeed, Inc.
+
+View Prospectus
+
+0xB200...515B
+
+CAKEc
+
+Cheesecake Factory Inc
+
+View Prospectus
+
+0xb200...176B
+
+CANc
+
+Canaan Inc.
+
+View Prospectus
+
+0xB200...Fbfd
+
+CATc
+
+Caterpillar Inc.
+
+View Prospectus
+
+0xB200...c070
+
+CAVAc
+
+CAVA Group, Inc.
+
+View Prospectus
+
+0xb200...EDCf
+
+CBRSc
+
+Cerebras Systems Inc.
+
+View Prospectus
+
+0xb200...93E2
+
+CEGc
+
+Constellation Energy Corporation
+
+View Prospectus
+
+0xb200...91b5
+
+CELHc
+
+Celsius Holdings, Inc.
+
+View Prospectus
+
+0xB200...1511
+
+CGNXc
+
+Cognex Corporation
+
+View Prospectus
+
+0xB200...308D
+
+CHPTc
+
+ChargePoint Holdings, Inc.
+
+View Prospectus
+
+0xB200...D3CC
+
+CHWYc
+
+Chewy, Inc.
+
+View Prospectus
+
+0xb200...b118
+
+CIENc
+
+Ciena Corporation
+
+View Prospectus
+
+0xB200...4A19
+
+CIFRc
+
+Cipher Digital Inc.
+
+View Prospectus
+
+0xB200...6286
+
+CLFc
+
+Cleveland-Cliffs Inc.
+
+View Prospectus
+
+0xb200...2614
+
+CLOVc
+
+Clover Health Investments, Corp.
+
+View Prospectus
+
+0xb200...7A36
+
+CLSKc
+
+CleanSpark, Inc.
+
+View Prospectus
+
+0xB200...bB95
+
+CMCSAc
+
+Comcast Corporation
+
+View Prospectus
+
+0xb200...8B16
+
+CMGc
+
+Chipotle Mexican Grill, Inc.
+
+View Prospectus
+
+0xB200...8c2b
+
+COHRc
+
+Coherent Corp.
+
+View Prospectus
+
+0xB200...4715
+
+COMPc
+
+Compass, Inc.
+
+View Prospectus
+
+0xB200...8811
+
+COPc
+
+ConocoPhillips
+
+View Prospectus
+
+0xB200...3b21
+
+CORZc
+
+Core Scientific, Inc.
+
+View Prospectus
+
+0xB200...2c5E
+
+CRCLc
+
+Circle Internet Group Inc.
+
+View Prospectus
+
+0xB200...2e4D
+
+CRMc
+
+Salesforce, Inc.
+
+View Prospectus
+
+0xB200...8DBB
+
+CROXc
+
+Crocs, Inc.
+
+View Prospectus
+
+0xb200...d130
+
+CRWDc
+
+CrowdStrike Holdings, Inc.
+
+View Prospectus
+
+0xb200...C58c
+
+CRWVc
+
+CoreWeave, Inc.
+
+View Prospectus
+
+0xB200...87E6
+
+CSCOc
+
+Cisco Systems, Inc.
+
+View Prospectus
+
+0xb200...F034
+
+CVNAc
+
+Carvana Co.
+
+View Prospectus
+
+0xb200...8274
+
+CVXc
+
+Chevron Corporation
+
+View Prospectus
+
+0xB200...431a
+
+DASHc
+
+DoorDash, Inc.
+
+View Prospectus
+
+0xb200...CedB
+
+DAVEc
+
+Dave Inc.
+
+View Prospectus
+
+0xb200...F8e7
+
+DDOGc
+
+Datadog, Inc.
+
+View Prospectus
+
+0xb200...73E6
+
+DELLc
+
+Dell Technologies Inc.
+
+View Prospectus
+
+0xb200...E8fD
+
+DISc
+
+The Walt Disney Company
+
+View Prospectus
+
+0xb200...F7DF
+
+DJTc
+
+Trump Media & Technology Group Corp.
+
+View Prospectus
+
+0xb200...692B
+
+DNAc
+
+Ginkgo Bioworks Holdings, Inc.
+
+View Prospectus
+
+0xB200...1499
+
+DNUTc
+
+Krispy Kreme, Inc.
+
+View Prospectus
+
+0xB200...9072
+
+DUOLc
+
+Duolingo, Inc.
+
+View Prospectus
+
+0xb200...1Db7
+
+EATc
+
+Brinker International, Inc.
+
+View Prospectus
+
+0xB200...Da61
+
+EBAYc
+
+eBay Inc.
+
+View Prospectus
+
+0xB200...0EB4
+
+ELFc
+
+e.l.f. Beauty, Inc.
+
+View Prospectus
+
+0xb200...E251
+
+EMRc
+
+Emerson Electric Co.
+
+View Prospectus
+
+0xB200...5481
+
+ENPHc
+
+Enphase Energy, Inc.
+
+View Prospectus
+
+0xB200...35A8
+
+Fc
+
+Ford Motor Company
+
+View Prospectus
+
+0xB200...359b
+
+FIGc
+
+Figma, Inc.
+
+View Prospectus
+
+0xb200...Fed8
+
+FIGRc
+
+Figure Technology Solutions, Inc.
+
+View Prospectus
+
+0xb200...9850
+
+FIZZc
+
+National Beverage Corp.
+
+View Prospectus
+
+0xB200...A0DC
+
+FLNCc
+
+Fluence Energy, Inc.
+
+View Prospectus
+
+0xB200...A070
+
+FLYc
+
+Firefly Aerospace Inc.
+
+View Prospectus
+
+0xB200...D633
+
+FSLRc
+
+First Solar, Inc.
+
+View Prospectus
+
+0xb200...9617
+
+FUBOc
+
+FuboTV Inc.
+
+View Prospectus
+
+0xB200...8D0F
+
+FUNc
+
+Six Flags Entertainment Corporation
+
+View Prospectus
+
+0xb200...909e
+
+FWDIc
+
+Forward Industries, Inc.
+
+View Prospectus
+
+0xB200...8FB7
+
+GAMEc
+
+GameSquare Holdings, Inc.
+
+View Prospectus
+
+0xb200...6271
+
+GAPc
+
+The Gap, Inc.
+
+View Prospectus
+
+0xb200...66c0
+
+GEc
+
+General Electric Company
+
+View Prospectus
+
+0xb200...348d
+
+GEMIc
+
+Gemini Space Station, Inc.
+
+View Prospectus
+
+0xB200...5fd6
+
+GILDc
+
+Gilead Sciences, Inc.
+
+View Prospectus
+
+0xb200...9a0D
+
+GLWc
+
+Corning Incorporated
+
+View Prospectus
+
+0xB200...c982
+
+GLXYc
+
+Galaxy Digital Inc.
+
+View Prospectus
+
+0xB200...03ac
+
+GMEc
+
+GameStop Corp.
+
+View Prospectus
+
+0xb200...D935
+
+GPROc
+
+GoPro, Inc.
+
+View Prospectus
+
+0xB200...11C8
+
+GSATc
+
+Globalstar, Inc.
+
+View Prospectus
+
+0xb200...032f
+
+GSc
+
+The Goldman Sachs Group, Inc.
+
+View Prospectus
+
+0xB200...D141
+
+GTLBc
+
+GitLab Inc.
+
+View Prospectus
+
+0xb200...982d
+
+HDc
+
+The Home Depot, Inc.
+
+View Prospectus
+
+0xB200...fBa7
+
+HIMSc
+
+Hims & Hers Health, Inc.
+
+View Prospectus
+
+0xB200...f336
+
+HOGc
+
+Harley-Davidson, Inc.
+
+View Prospectus
+
+0xB200...eDE5
+
+HPEc
+
+Hewlett Packard Enterprise Company
+
+View Prospectus
+
+0xB200...125d
+
+HPQc
+
+HP Inc.
+
+View Prospectus
+
+0xB200...fA98
+
+HSAIc
+
+Hesai Group
+
+View Prospectus
+
+0xb200...3b64
+
+HSYc
+
+The Hershey Company
+
+View Prospectus
+
+0xb200...86A8
+
+HTZc
+
+Hertz Global Holdings, Inc.
+
+View Prospectus
+
+0xb200...a168
+
+HUTc
+
+Hut 8 Corp.
+
+View Prospectus
+
+0xb200...2e09
+
+HYMCc
+
+Hycroft Mining Holding Corporation
+
+View Prospectus
+
+0xb200...1A5E
+
+IBMc
+
+International Business Machines Corporation
+
+View Prospectus
+
+0xb200...1EC8
+
+IBRXc
+
+ImmunityBio, Inc.
+
+View Prospectus
+
+0xB200...1c5A
+
+INFQc
+
+Infleqtion, Inc.
+
+View Prospectus
+
+0xb200...A9B1
+
+INFYc
+
+Infosys Limited
+
+View Prospectus
+
+0xb200...41FC
+
+INTCc
+
+Intel Corporation
+
+View Prospectus
+
+0xB200...dFBc
+
+INTUc
+
+Intuit Inc.
+
+View Prospectus
+
+0xb200...E845
+
+IONQc
+
+IonQ, Inc.
+
+View Prospectus
+
+0xb200...b0ec
+
+IRONc
+
+Disc Medicine, Inc.
+
+View Prospectus
+
+0xb200...AF03
+
+ISRGc
+
+Intuitive Surgical, Inc.
+
+View Prospectus
+
+0xB200...4214
+
+ITc
+
+Gartner, Inc.
+
+View Prospectus
+
+0xB200...3774
+
+JACKc
+
+Jack in the Box Inc.
+
+View Prospectus
+
+0xb200...7037
+
+JNJc
+
+Johnson & Johnson
+
+View Prospectus
+
+0xb200...f5C2
+
+JPMc
+
+JPMorgan Chase & Co.
+
+View Prospectus
+
+0xB200...5156
+
+KLACc
+
+KLA Corporation
+
+View Prospectus
+
+0xB200...66C0
+
+KOc
+
+The Coca-Cola Company
+
+View Prospectus
+
+0xb200...d6A3
+
+KODKc
+
+Eastman Kodak Company
+
+View Prospectus
+
+0xb200...6B88
+
+KRMNc
+
+Karman Holdings Inc.
+
+View Prospectus
+
+0xB200...03B0
+
+KSSc
+
+Kohl's Corporation
+
+View Prospectus
+
+0xB200...C5De
+
+LCIDc
+
+Lucid Group, Inc.
+
+View Prospectus
+
+0xB200...f527
+
+LEUc
+
+Centrus Energy Corp.
+
+View Prospectus
+
+0xB200...8eF1
+
+LFMDc
+
+LifeMD, Inc.
+
+View Prospectus
+
+0xB200...AB99
+
+LIc
+
+Li Auto Inc.
+
+View Prospectus
+
+0xb200...f9eB
+
+LITEc
+
+Lumentum Holdings Inc
+
+View Prospectus
+
+0xB200...838f
+
+LLYc
+
+Eli Lilly & Co
+
+View Prospectus
+
+0xB200...4718
+
+LOVEc
+
+The Lovesac Company
+
+View Prospectus
+
+0xb200...8CbF
+
+LRCXc
+
+Lam Research Corporation
+
+View Prospectus
+
+0xB200...AAb9
+
+LULUc
+
+lululemon athletica inc.
+
+View Prospectus
+
+0xB200...7734
+
+LUNRc
+
+Intuitive Machines, Inc.
+
+View Prospectus
+
+0xB200...B309
+
+LUVc
+
+Southwest Airlines Company
+
+View Prospectus
+
+0xb200...CAB0
+
+LYFTc
+
+Lyft, Inc.
+
+View Prospectus
+
+0xB200...c782
+
+LYVc
+
+Live Nation Entertainment, Inc.
+
+View Prospectus
+
+0xb200...f3e0
+
+MARAc
+
+MARA Holdings, Inc.
+
+View Prospectus
+
+0xB200...Fb2d
+
+MCDc
+
+McDonald's Corporation
+
+View Prospectus
+
+0xb200...44BB
+
+MDBc
+
+MongoDB, Inc.
+
+View Prospectus
+
+0xB200...F1D8
+
+MEDc
+
+Medifast, Inc.
+
+View Prospectus
+
+0xb200...aC73
+
+MNSTc
+
+Monster Beverage Corporation
+
+View Prospectus
+
+0xb200...FEF9
+
+MPc
+
+MP Materials Corp.
+
+View Prospectus
+
+0xB200...F9d3
+
+MRKc
+
+Merck & Co., Inc.
+
+View Prospectus
+
+0xb200...f034
+
+MRNAc
+
+Moderna, Inc.
+
+View Prospectus
+
+0xB200...2468
+
+MRVLc
+
+Marvell Technology, Inc.
+
+View Prospectus
+
+0xB200...9813
+
+MUc
+
+Micron Technology Inc.
+
+View Prospectus
+
+0xb200...5211
+
+MVISc
+
+MicroVision, Inc.
+
+View Prospectus
+
+0xB200...1919
+
+NDSNc
+
+Nordson Corporation
+
+View Prospectus
+
+0xb200...edDd
+
+NEMc
+
+Newmont Corporation
+
+View Prospectus
+
+0xb200...Da88
+
+NFLXc
+
+Netflix Inc
+
+View Prospectus
+
+0xb200...dFE6
+
+NIOc
+
+NIO Inc.
+
+View Prospectus
+
+0xb200...bA06
+
+NKEc
+
+NIKE, Inc.
+
+View Prospectus
+
+0xB200...9Beb
+
+NNEc
+
+NANO Nuclear Energy Inc.
+
+View Prospectus
+
+0xB200...8dAC
+
+NOKc
+
+Nokia Corporation
+
+View Prospectus
+
+0xB200...409c
+
+NOWc
+
+ServiceNow, Inc.
+
+View Prospectus
+
+0xB200...08Df
+
+NTLAc
+
+Intellia Therapeutics, Inc.
+
+View Prospectus
+
+0xB200...2125
+
+NVAXc
+
+Novavax Inc
+
+View Prospectus
+
+0xB200...d3a8
+
+NVOc
+
+Novo Nordisk A/S
+
+View Prospectus
+
+0xb200...dC58
+
+NVTSc
+
+Navitas Semiconductor Corporation
+
+View Prospectus
+
+0xb200...8983
+
+OKLOc
+
+Oklo Inc.
+
+View Prospectus
+
+0xB200...c81e
+
+OKTAc
+
+Okta, Inc.
+
+View Prospectus
+
+0xb200...F771
+
+ONc
+
+ON Semiconductor Corporation
+
+View Prospectus
+
+0xB200...F613
+
+ONDSc
+
+Ondas Inc.
+
+View Prospectus
+
+0xB200...5f25
+
+OPADc
+
+Offerpad Solutions Inc.
+
+View Prospectus
+
+0xB200...25Da
+
+OPENc
+
+Opendoor Technologies Inc.
+
+View Prospectus
+
+0xb200...E7d7
+
+OPNWc
+
+OpenWorld, Inc.
+
+View Prospectus
+
+0xb200...eD94
+
+OPRAc
+
+Opera Limited
+
+View Prospectus
+
+0xB200...432d
+
+ORCLc
+
+Oracle Corporation
+
+View Prospectus
+
+0xb200...b63C
+
+OUSTc
+
+Ouster, Inc.
+
+View Prospectus
+
+0xB200...766a
+
+PANWc
+
+Palo Alto Networks, Inc.
+
+View Prospectus
+
+0xb200...e90f
+
+PATHc
+
+UiPath, Inc.
+
+View Prospectus
+
+0xB200...2bD2
+
+PDDc
+
+PDD Holdings Inc.
+
+View Prospectus
+
+0xB200...8563
+
+PENGc
+
+Penguin Solutions, Inc.
+
+View Prospectus
+
+0xb200...b24e
+
+PEPc
+
+PepsiCo, Inc.
+
+View Prospectus
+
+0xB200...099D
+
+PFEc
+
+Pfizer Inc
+
+View Prospectus
+
+0xB200...B528
+
+PLAYc
+
+Dave & Buster’s Entertainment, Inc.
+
+View Prospectus
+
+0xB200...A5F6
+
+PLc
+
+Planet Labs PBC
+
+View Prospectus
+
+0xB200...1556
+
+PLNTc
+
+Planet Fitness, Inc.
+
+View Prospectus
+
+0xb200...7F1c
+
+PLTRc
+
+Palantir Technologies Inc.
+
+View Prospectus
+
+0xb200...Abbe
+
+PLUGc
+
+Plug Power Inc.
+
+View Prospectus
+
+0xB200...E056
+
+PMc
+
+Philip Morris International Inc.
+
+View Prospectus
+
+0xB200...7b66
+
+PRc
+
+Permian Resources Corporation
+
+View Prospectus
+
+0xB200...c72B
+
+PTONc
+
+Peloton Interactive, Inc.
+
+View Prospectus
+
+0xB200...Aa84
+
+PUMPc
+
+ProPetro Holding Corp.
+
+View Prospectus
+
+0xB200...1813
+
+PURRc
+
+Hyperliquid Strategies Inc
+
+View Prospectus
+
+0xB200...E976
+
+PYPLc
+
+PayPal Holdings, Inc.
+
+View Prospectus
+
+0xb200...6c6E
+
+PZZAc
+
+Papa John’s International, Inc.
+
+View Prospectus
+
+0xb200...9Cd4
+
+QBTSc
+
+D-Wave Quantum Inc.
+
+View Prospectus
+
+0xb200...3d06
+
+QCOMc
+
+Qualcomm Incorporated
+
+View Prospectus
+
+0xB200...4665
+
+QNTc
+
+Quantinuum Inc.
+
+View Prospectus
+
+0xb200...9bfc
+
+QSc
+
+QuantumScape Corporation
+
+View Prospectus
+
+0xb200...c5A1
+
+QUBTc
+
+Quantum Computing Inc.
+
+View Prospectus
+
+0xb200...5bC3
+
+QXOc
+
+QXO, Inc.
+
+View Prospectus
+
+0xB200...f88a
+
+RBLXc
+
+Roblox Corporation
+
+View Prospectus
+
+0xB200...9Bb5
+
+RCATc
+
+Red Cat Holdings, Inc.
+
+View Prospectus
+
+0xB200...6C1D
+
+RDDTc
+
+Reddit, Inc.
+
+View Prospectus
+
+0xb200...B7A1
+
+RDWc
+
+Redwire Corporation
+
+View Prospectus
+
+0xB200...f103
+
+REGNc
+
+Regeneron Pharmaceuticals, Inc.
+
+View Prospectus
+
+0xb200...9ae5
+
+RGTIc
+
+Rigetti Computing, Inc.
+
+View Prospectus
+
+0xb200...b39A
+
+RHc
+
+RH
+
+View Prospectus
+
+0xB200...762C
+
+RIOTc
+
+Riot Platforms, Inc.
+
+View Prospectus
+
+0xb200...81A6
+
+RIVNc
+
+Rivian Automotive, Inc.
+
+View Prospectus
+
+0xB200...37d9
+
+RKLBc
+
+Rocket Lab Corporation
+
+View Prospectus
+
+0xb200...1a3C
+
+RKTc
+
+Rocket Companies, Inc.
+
+View Prospectus
+
+0xb200...102d
+
+ROKc
+
+Rockwell Automation, Inc.
+
+View Prospectus
+
+0xb200...cF59
+
+ROOTc
+
+Root, Inc.
+
+View Prospectus
+
+0xB200...bF5D
+
+RRc
+
+Richtech Robotics Inc.
+
+View Prospectus
+
+0xB200...8a67
+
+RTXc
+
+RTX Corporation
+
+View Prospectus
+
+0xB200...DAD5
+
+RUMc
+
+RUM Group Inc.
+
+View Prospectus
+
+0xb200...835B
+
+RUNc
+
+Sunrun Inc.
+
+View Prospectus
+
+0xb200...A8cF
+
+RXRXc
+
+Recursion Pharmaceuticals, Inc.
+
+View Prospectus
+
+0xb200...7656
+
+SAMc
+
+The Boston Beer Company, Inc.
+
+View Prospectus
+
+0xb200...Aee0
+
+SANc
+
+Banco Santander, S.A.
+
+View Prospectus
+
+0xB200...3A99
+
+SAPc
+
+SAP SE
+
+View Prospectus
+
+0xb200...27E0
+
+SBETc
+
+Sharplink, Inc.
+
+View Prospectus
+
+0xb200...36eA
+
+SBUXc
+
+Starbucks Corporation
+
+View Prospectus
+
+0xb200...1e64
+
+SEc
+
+Sea Limited
+
+View Prospectus
+
+0xB200...AaAC
+
+SERVc
+
+Serve Robotics Inc.
+
+View Prospectus
+
+0xB200...F3C0
+
+SEZLc
+
+Sezzle Inc.
+
+View Prospectus
+
+0xb200...a762
+
+SGc
+
+Sweetgreen, Inc.
+
+View Prospectus
+
+0xB200...90D0
+
+SHAZc
+
+SharonAI Holdings Inc.
+
+View Prospectus
+
+0xB200...7fE5
+
+SIDUc
+
+Sidus Space, Inc.
+
+View Prospectus
+
+0xb200...8079
+
+SKHYc
+
+SK hynix Inc.
+
+View Prospectus
+
+0xb200...a7d2
+
+SKYDc
+
+Skydance Corporation
+
+View Prospectus
+
+0xB200...2B73
+
+SLDPc
+
+Solid Power, Inc.
+
+View Prospectus
+
+0xb200...9122
+
+SLSc
+
+SELLAS Life Sciences Group, Inc.
+
+View Prospectus
+
+0xB200...Ea31
+
+SMCIc
+
+Super Micro Computer, Inc.
+
+View Prospectus
+
+0xB200...bB84
+
+SMPLc
+
+The Simply Good Foods Company
+
+View Prospectus
+
+0xB200...72b7
+
+SMRc
+
+NuScale Power Corporation
+
+View Prospectus
+
+0xb200...cbC6
+
+SNAPc
+
+Snap Inc.
+
+View Prospectus
+
+0xb200...9AC0
+
+SNOWc
+
+Snowflake Inc.
+
+View Prospectus
+
+0xB200...Cc7f
+
+SOFIc
+
+SoFi Technologies, Inc.
+
+View Prospectus
+
+0xB200...482A
+
+SONYc
+
+Sony Group Corporation
+
+View Prospectus
+
+0xb200...7f6C
+
+SOUNc
+
+SoundHound AI, Inc.
+
+View Prospectus
+
+0xB200...4e88
+
+SPCEc
+
+Virgin Galactic Holdings, Inc.
+
+View Prospectus
+
+0xb200...8C56
+
+SRPTc
+
+Sarepta Therapeutics, Inc.
+
+View Prospectus
+
+0xB200...70B5
+
+STZc
+
+Constellation Brands, Inc.
+
+View Prospectus
+
+0xB200...f3Ac
+
+SWBIc
+
+Smith & Wesson Brands, Inc.
+
+View Prospectus
+
+0xb200...9E74
+
+SYMc
+
+Symbotic Inc.
+
+View Prospectus
+
+0xb200...fcF9
+
+TAPc
+
+Molson Coors Beverage Company
+
+View Prospectus
+
+0xb200...412F
+
+TEAMc
+
+Atlassian Corporation
+
+View Prospectus
+
+0xB200...b7B8
+
+TEMc
+
+Tempus AI, Inc.
+
+View Prospectus
+
+0xb200...107b
+
+TERc
+
+Teradyne, Inc.
+
+View Prospectus
+
+0xB200...0A2d
+
+TGTc
+
+Target Corporation
+
+View Prospectus
+
+0xb200...c67d
+
+TKOc
+
+TKO Group Holdings, Inc.
+
+View Prospectus
+
+0xB200...6B2c
+
+TKRc
+
+The Timken Company
+
+View Prospectus
+
+0xB200...02ff
+
+TRONc
+
+Tron Inc.
+
+View Prospectus
+
+0xb200...57DA
+
+TTDc
+
+The Trade Desk, Inc.
+
+View Prospectus
+
+0xB200...743f
+
+TTWOc
+
+Take-Two Interactive Software, Inc.
+
+View Prospectus
+
+0xB200...67Da
+
+UAAc
+
+Under Armour, Inc.
+
+View Prospectus
+
+0xb200...7d71
+
+UBERc
+
+Uber Technologies, Inc.
+
+View Prospectus
+
+0xb200...e24c
+
+Uc
+
+Unity Software Inc.
+
+View Prospectus
+
+0xB200...49F7
+
+ULc
+
+Unilever Plc
+
+View Prospectus
+
+0xB200...7476
+
+ULTAc
+
+Ulta Beauty, Inc.
+
+View Prospectus
+
+0xb200...D1e4
+
+UMACc
+
+Unusual Machines, Inc.
+
+View Prospectus
+
+0xb200...B1DE
+
+UNHc
+
+UnitedHealth Group Incorporated
+
+View Prospectus
+
+0xb200...82A2
+
+UPSTc
+
+Upstart Holdings, Inc.
+
+View Prospectus
+
+0xB200...036D
+
+USARc
+
+USA Rare Earth, Inc.
+
+View Prospectus
+
+0xB200...20F6
+
+USDEc
+
+StablecoinX Inc.
+
+View Prospectus
+
+0xB200...f343
+
+VALEc
+
+Vale S.A.
+
+View Prospectus
+
+0xB200...B489
+
+Vc
+
+Visa Inc.
+
+View Prospectus
+
+0xB200...D4EF
+
+VKTXc
+
+Viking Therapeutics, Inc.
+
+View Prospectus
+
+0xb200...58b1
+
+VOYGc
+
+Voyager Technologies, Inc.
+
+View Prospectus
+
+0xb200...eE54
+
+VPGc
+
+Vishay Precision Group, Inc.
+
+View Prospectus
+
+0xb200...CAf6
+
+VRTc
+
+Vertiv Holdings Co
+
+View Prospectus
+
+0xB200...B158
+
+VRTXc
+
+Vertex Pharmaceuticals Incorporated
+
+View Prospectus
+
+0xb200...a456
+
+VSTc
+
+Vistra Corp.
+
+View Prospectus
+
+0xB200...110f
+
+VSXYc
+
+Victoria's Secret & Co.
+
+View Prospectus
+
+0xB200...1304
+
+VVVc
+
+Valvoline Inc
+
+View Prospectus
+
+0xb200...7627
+
+Wc
+
+Wayfair Inc.
+
+View Prospectus
+
+0xb200...2AdB
+
+WDCc
+
+Western Digital Corporation
+
+View Prospectus
+
+0xb200...eC0b
+
+WENc
+
+Wendy's Co
+
+View Prospectus
+
+0xB200...E57a
+
+WINGc
+
+Wingstop Inc.
+
+View Prospectus
+
+0xB200...D94B
+
+WKHSc
+
+Workhorse Group Inc.
+
+View Prospectus
+
+0xb200...D187
+
+WMTc
+
+Walmart Inc.
+
+View Prospectus
+
+0xb200...7106
+
+WOLFc
+
+Wolfspeed, Inc.
+
+View Prospectus
+
+0xB200...A2a5
+
+WOOFc
+
+Petco Health and Wellness Company, Inc.
+
+View Prospectus
+
+0xB200...60Dd
+
+WRDc
+
+WeRide Inc.
+
+View Prospectus
+
+0xb200...f0dA
+
+WTIc
+
+W&T Offshore, Inc.
+
+View Prospectus
+
+0xb200...4690
+
+WULFc
+
+TeraWulf Inc.
+
+View Prospectus
+
+0xb200...Ec82
+
+WWc
+
+WW International, Inc.
+
+View Prospectus
+
+0xb200...2515
+
+XOMc
+
+ExxonMobil Holdings Corporation
+
+View Prospectus
+
+0xb200...4Bfd
+
+XXIc
+
+Twenty One Capital, Inc.
+
+View Prospectus
+
+0xB200...04Db
+
+XYZc
+
+Block, Inc.
+
+View Prospectus
+
+0xB200...9924
+
+YETIc
+
+YETI Holdings, Inc.
+
+View Prospectus
+
+0xb200...189B
+
+YUMc
+
+YUM! Brands, Inc.
+
+View Prospectus
+
+0xB200...134a
+
+ZBRAc
+
+Zebra Technologies Corporation
+
+View Prospectus
+
+0xb200...c776
+
+ZMc
+
+Zoom Communications, Inc.
+
+View Prospectus
+
+0xB200...9213
+
+ZSc
+
+Zscaler, Inc.
+
+View Prospectus
+
+0xB200...78F6
+
+The full list of Coinbase Tokenized Stocks on Base. Match the contract address before you buy. If a token is not on this list, Coinbase did not issue it.
+
+Explore
+
+Available everywhere you DeFi on Base.
+
+Trade, lend, hold, and explore stocks across your favorite Base ecosystem apps and protocols.
+
+Aerodrome
+
+Deep liquidity for tokenized stock trading pairs.
+
+Aave
+
+Lend and borrow against tokenized stock positions.
+
+Chainlink
+
+Price feeds and data infrastructure for tokenized stocks.
+
+Bitwise
+
+Institutional crypto asset management.
+
+Coinbase
+
+The issuer of tokenized stocks on Base.
+
+0x
+
+Swap tokenized stocks with aggregated DEX liquidity.
+
+Morpho
+
+Lend and borrow tokenized stocks with optimized rates.
+
+1inch
+
+Find the best rates across Base DEXs for stock swaps.
+
+Euler
+
+Modular lending and borrowing for tokenized stocks.
+
+KyberSwap
+
+Efficient token swaps with concentrated liquidity.
+
+CoW Swap
+
+MEV-protected trading for tokenized stock orders.
+
+Beefy
+
+Auto-compounding vaults for tokenized stock yields.
+
+Glider
+
+Track performance and automate portfolio strategies.
+
+Superform
+
+Cross-chain yield strategies with tokenized stocks.
+
+LI.FI
+
+Bridge and swap tokenized stocks across chains.
+
+Virtuals
+
+AI agents for automated tokenized stock strategies.
+
+Banana Gun
+
+Fast sniping and trading for tokenized stocks.
+
+Steakhouse
+
+Risk analytics and portfolio insights for onchain stocks.
+
+Bitget Wallet
+
+Mobile wallet for managing tokenized stock positions.
+
+Definitive
+
+One-click DeFi execution for tokenized stocks.
+
+Fusion
+
+Smart order routing for tokenized stock trades.
+
+SoSoValue
+
+Research and analytics for tokenized stock markets.
+
+Grow
+
+Simplified DeFi investing with tokenized stocks.
+
+Liminal Cash
+
+Onchain cash management with tokenized stocks.
+
+Maestro
+
+Automated trading bots for tokenized stocks.
+
+Matcha
+
+DEX aggregator for the best token swap prices.
+
+Avici
+
+Social trading platform for tokenized stocks.
+
+Sigma
+
+Advanced trading terminal for tokenized stocks.
+
+Zoth
+
+Institutional-grade RWA infrastructure.
+
+Clearstar
+
+Compliance infrastructure for tokenized securities.
+
+Reserve
+
+Stablecoin infrastructure powering stock settlements.
+
+Origin
+
+Yield-bearing strategies for tokenized stock holders.
+
+Dialectic
+
+Quantitative research and trading strategies.
+
+01 exchange
+
+Decentralized exchange for tokenized stock trading.
+
+Bankr
+
+Social trading and portfolio management for stocks.
+
+Centrifuge
+
+Real-world asset financing infrastructure.
+
+Flaunch
+
+Token launch and trading platform.
+
+Jumper
+
+Cross-chain bridging and swaps for tokenized stocks.
+
+OKX Wallet
+
+Multi-chain wallet for managing tokenized stocks.
+
+Tau Labs
+
+Decentralized infrastructure for tokenized assets.
+
+Treasures
+
+Portfolio tools for tokenized stock holders.
+
+Wasabi
+
+Perps and options for tokenized stocks.
+
+Ample.Money
+
+Save in stablecoins and automatically enter prize draws.
+
+Castar
+
+Compliance and analytics for tokenized securities.
+
+Coinbase Wallet
+
+The best place to trade on web and mobile.
+
+Enso
+
+DeFi infrastructure for tokenized stock strategies.
+
+Fomo
+
+Mobile-first wallet for tokenized stocks.
+
+Gauntlet
+
+Risk management and optimization for DeFi protocols.
+
+Makina
+
+Vault infrastructure for institutional-grade onchain strategies.
+
+True Markets
+
+Transparent trading infrastructure for tokenized assets.
+
+ZyfAI
+
+AI-powered portfolio tools for tokenized stocks.
+
+Aerodrome
+
+Deep liquidity for tokenized stock trading pairs.
+
+Aave
+
+Lend and borrow against tokenized stock positions.
+
+Chainlink
+
+Price feeds and data infrastructure for tokenized stocks.
+
+Bitwise
+
+Institutional crypto asset management.
+
+Coinbase
+
+The issuer of tokenized stocks on Base.
+
+0x
+
+Swap tokenized stocks with aggregated DEX liquidity.
+
+Morpho
+
+Lend and borrow tokenized stocks with optimized rates.
+
+1inch
+
+Find the best rates across Base DEXs for stock swaps.
+
+Euler
+
+Modular lending and borrowing for tokenized stocks.
+
+KyberSwap
+
+Efficient token swaps with concentrated liquidity.
+
+CoW Swap
+
+MEV-protected trading for tokenized stock orders.
+
+Beefy
+
+Auto-compounding vaults for tokenized stock yields.
+
+Glider
+
+Track performance and automate portfolio strategies.
+
+Superform
+
+Cross-chain yield strategies with tokenized stocks.
+
+LI.FI
+
+Bridge and swap tokenized stocks across chains.
+
+Virtuals
+
+AI agents for automated tokenized stock strategies.
+
+Banana Gun
+
+Fast sniping and trading for tokenized stocks.
+
+Steakhouse
+
+Risk analytics and portfolio insights for onchain stocks.
+
+Bitget Wallet
+
+Mobile wallet for managing tokenized stock positions.
+
+Definitive
+
+One-click DeFi execution for tokenized stocks.
+
+Fusion
+
+Smart order routing for tokenized stock trades.
+
+SoSoValue
+
+Research and analytics for tokenized stock markets.
+
+Grow
+
+Simplified DeFi investing with tokenized stocks.
+
+Liminal Cash
+
+Onchain cash management with tokenized stocks.
+
+Maestro
+
+Automated trading bots for tokenized stocks.
+
+Matcha
+
+DEX aggregator for the best token swap prices.
+
+Avici
+
+Social trading platform for tokenized stocks.
+
+Sigma
+
+Advanced trading terminal for tokenized stocks.
+
+Zoth
+
+Institutional-grade RWA infrastructure.
+
+Clearstar
+
+Compliance infrastructure for tokenized securities.
+
+Reserve
+
+Stablecoin infrastructure powering stock settlements.
+
+Origin
+
+Yield-bearing strategies for tokenized stock holders.
+
+Dialectic
+
+Quantitative research and trading strategies.
+
+01 exchange
+
+Decentralized exchange for tokenized stock trading.
+
+Bankr
+
+Social trading and portfolio management for stocks.
+
+Centrifuge
+
+Real-world asset financing infrastructure.
+
+Flaunch
+
+Token launch and trading platform.
+
+Jumper
+
+Cross-chain bridging and swaps for tokenized stocks.
+
+OKX Wallet
+
+Multi-chain wallet for managing tokenized stocks.
+
+Tau Labs
+
+Decentralized infrastructure for tokenized assets.
+
+Treasures
+
+Portfolio tools for tokenized stock holders.
+
+Wasabi
+
+Perps and options for tokenized stocks.
+
+Ample.Money
+
+Save in stablecoins and automatically enter prize draws.
+
+Castar
+
+Compliance and analytics for tokenized securities.
+
+Coinbase Wallet
+
+The best place to trade on web and mobile.
+
+Enso
+
+DeFi infrastructure for tokenized stock strategies.
+
+Fomo
+
+Mobile-first wallet for tokenized stocks.
+
+Gauntlet
+
+Risk management and optimization for DeFi protocols.
+
+Makina
+
+Vault infrastructure for institutional-grade onchain strategies.
+
+True Markets
+
+Transparent trading infrastructure for tokenized assets.
+
+ZyfAI
+
+AI-powered portfolio tools for tokenized stocks.
+
+FAQs
+
+Tokenized stocks introduce new possibilities and new considerations. Always review the product and venue documentation before using them.
+
+What is a tokenized stock?
+
+An onchain token that gives eligible users direct economic exposure to a listed stock. On Base, tokenized stocks are issued as B20 tokens by a regulated issuer, backed 1:1 by a real underlying share held in regulated custody.
+
+What are Coinbase Tokenized Stocks, and what is Base's role?
+
+How is this different from other tokenized stock products?
+
+Who is eligible?
+
+What is B20?
+
+How are dividends and splits handled?
+
+Who can mint or redeem tokens?
+
+Can these stocks be traded around the clock?
+
+How do I verify a contract address?
+
+This page is informational and is not an offer, solicitation, or recommendation to buy or sell any security. Coinbase Tokenized Stocks are issued by Coinbase and offered under Regulation S; only available in eligible jurisdictions outside of the US. Availability, features, and rights vary by product, jurisdiction, and venue. Base is neutral, permissionless infrastructure; it does not issue, sell, or endorse these tokens, and listing a venue is not an endorsement. Verify contract addresses before interacting with any token. Ticker availability, format, and timing are subject to regulatory approval.
+
+Start building on Base.
+
+Build on the open economy. Fast, liquid and always on.
+
+Build on Base
+Contact Us
+
+All Systems Operational
+
+Build the future on Base.
+
+Solutions
+
+Trading
+
+Earn & Borrow
+
+Payments
+
+Agents
+
+Developers
+
+Documentation
+
+Dashboard
+
+Block Explorer
+
+Bug Bounty
+
+Ecosystem
+
+Explore
+
+Base Ecosystem Fund
+
+Resources
+
+Vision
+
+Assets
+
+Jobs
+
+Blog
+
+Events
+
+Brand Guidelines
+
+© 2026
+
+Terms of Service
+
+·
+
+Privacy Policy
+
+We use cookies to make your interactions with our website more meaningful. They help us better understand how our websites are used, so we can tailor content for you. For more information about the different cookies we are using, read the Cookie Policy. To change your cookie settings and preferences, click the Customize Cookies button.
+Customize Cookies
+Reject
+Accept

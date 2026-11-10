@@ -1,0 +1,93 @@
+Currency Exchange | Spiko Tech Docs
+Skip to main content
+Products Spiko Direct Spiko Embedded API Reference
+Search
+Our products
+Overview
+Spiko T-Bills
+Spiko Smart Cash
+Spiko Cash & Carry
+Fund Availability
+Onboarding Restrictions
+Account management
+Account creation
+Multi-User Access Management
+Deposits and Withdrawals
+Currency Exchange
+Accounting and Tax Treatment
+Tokenization
+Explaining Tokenization
+Transfers & Redemptions
+Addresses
+Security Audits
+NAV Data Feed
+Legal
+Legal Notice
+Regulatory Information
+Terms of Use
+Privacy Policy
+Account management
+Currency Exchange
+On this page
+Currency Exchange
+Our products are available in multiple currencies. Spiko lets you deposit, withdraw, and move between different currencies directly on the platform. This page explains how this is achieved, and what FX rates you can expect.
+Currency Risk
+Exchanging currencies exposes you to exchange rate fluctuations. Currency markets are volatile, and you may lose money due to changes in exchange rates. Please make sure you fully understand this risk before making any decisions.
+Depositing and withdrawing in a different currency ​
+Spiko Smart Cash (EUR, USD, GBP, CHF) ​
+Smart Cash accepts deposits and withdrawals in any supported currency.
+Deposits: When depositing funds on Spiko Smart Cash products, they are automatically routed to the product of the same currency. As soon as the funds have been received, it is possible to redirect them towards another product instead, effectively enabling depositing into any Smart Cash product from any supported currency. This must be performed before the daily cutoff, which happens at 3 PM Paris time on business days. If you do nothing, your funds simply settle in the product they were routed to, and you can do a currency switch at any time afterwards.
+MISSED THE CUTOFF?
+If you wanted to deposit into a Smart Cash product in a different currency but missed the cutoff, you can still move your funds between products at any time using the Transfer flow described below.
+Withdrawals: Spiko Smart Cash products support withdrawing funds to your personal bank accounts in any supported currency.
+Important note on withdrawals
+Spiko Smart Cash products require that the withdrawal amount be expressed in the product's original currency (i.e. EUR for Spiko Euro, USD for Spiko Dollar...). As such, if you want to withdraw USD from Spiko Euro, you must still enter the amount in EUR. The final transfer will be performed in USD, but the rate is not known in advance when placing the order, so the exact amount received will only be known when the order executes.
+For more details on the FX rate used for executing orders, refer to the last section of this article.
+Spiko T-Bills (EUR, USD, GBP) ​
+You can fund any T-Bills product in euros, regardless of the product's base currency. When you deposit euros into a USD or GBP product, your funds are automatically converted at execution. The same applies in reverse: you can always withdraw back to euros from any foreign-currency T-Bills product.
+Transferring across currencies within your portfolio ​
+French tax residents
+An internal transfer between products is a taxable event.
+Spiko Smart Cash (EUR, USD, GBP, CHF) ​
+You can switch your position from one currency class to another (for example, from EUR to USD) in a single instruction. Both legs execute within the same fund on the same day: such transfers therefore settle in one business day.
+Spiko T-Bills (EUR, USD, GBP) ​
+You can transfer your holdings between any two T-Bills products. Unlike Smart Cash, the two legs of a transfer between T-Bills products cannot be grouped together in a single instruction, so the total operation typically takes 2 business days to settle.
+Timeline
+The cutoff for T-Bills products is 11:30 AM Paris time . Orders placed before the cutoff execute the same day, whilst those placed after execute on the next business day. For example: a transfer from Spiko T-Bills Euro to Spiko T-Bills Dollar initiated at 9:00 AM on a Monday will have its first leg executed on Monday and its second leg on Tuesday. The same transfer placed at 2:00 PM on a Monday (after cutoff) will have its first leg executed on Tuesday and its second leg on Wednesday.
+Cross-product transfers ​
+Spiko also supports transferring funds between Smart Cash and T-Bills products. In this case, the execution mechanics and FX conversion depend on the exact operation that is being performed. The rule applied is that the currency conversion is performed in the first leg of the transfer (i.e. in the source product) if possible, and in the second leg otherwise.
+Exchange rates ​
+Spiko takes no fee and charges no conversion rates when performing cross-currency operations. Direct market rates are applied, with the exact rate depending on the product:
+Spiko Smart Cash: WM/Reuters fixing at 4:00 PM London time (WMCO) on the day your order is processed.
+Spiko T-Bills: Bloomberg BFIX index rate at 11:30 AM Paris time on the day your order is processed. For more information on how the BFIX rate is calculated, see Bloomberg's official methodology documentation .
+The day your order is processed is the day on which it passed cutoff and was made definitive. In any case, the executed rate is confirmed and visible in your order history after daily processing.
+Previous
+Deposits and Withdrawals
+Next
+French Tax Residents
+Depositing and withdrawing in a different currency Spiko Smart Cash (EUR, USD, GBP, CHF)
+Spiko T-Bills (EUR, USD, GBP)
+Transferring across currencies within your portfolio Spiko Smart Cash (EUR, USD, GBP, CHF)
+Spiko T-Bills (EUR, USD, GBP)
+Cross-product transfers
+Exchange rates
+Documentation
+Products
+Spiko Direct
+Spiko Embedded
+API Reference
+APIs
+Public API
+Investor API
+Distributor API
+Legal
+Legal notice
+Regulatory information
+Terms of use
+Privacy policy
+Spiko
+spiko.io
+Spiko app
+Contact
+LinkedIn
+© 2026 Spiko. All rights reserved.

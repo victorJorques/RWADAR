@@ -1,0 +1,905 @@
+{
+ "grupo": "candidatas-mercados",
+ "ciclo": "2026-11-10-v2",
+ "consultas": [
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-bitstamp.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:04:24Z",
+   "bytes": 246,
+   "sha256": "4a8bf2089c7db76eb9a510696141f4b72177f02be5a0d629713ebb967e77e45f",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Bitstamp» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-bitstamp.txt"
+   ]
+  },
+  {
+   "url": "https://blog.base.org/tokenized-stocks",
+   "urlFinal": "https://www.base.org/blog/tokenized-stocks",
+   "archivo": [
+    "fuentes/base-blog-tokenized-stocks.html",
+    "fuentes/base-blog-tokenized-stocks.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:06:22Z",
+   "bytes": 105566,
+   "sha256": "77b5948fb6a342ad19f550544cba096f14515657ee360bbdcf713a4ac3816514",
+   "contentType": "text/html; charset=utf-8",
+   "archivoConservado": [
+    "fuentes/base-blog-tokenized-stocks.html",
+    "fuentes/base-blog-tokenized-stocks.txt"
+   ]
+  },
+  {
+   "url": "https://www.coinbase.com/en-ca/blog/coinbase-establishes-its-tokenization-hub-in-abu-dhabi",
+   "urlFinal": "https://www.coinbase.com/en-ca/blog/coinbase-establishes-its-tokenization-hub-in-abu-dhabi",
+   "archivo": [
+    "fuentes/coinbase-blog-adgm-hub.html",
+    "fuentes/coinbase-blog-adgm-hub.txt"
+   ],
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:06:22Z",
+   "bytes": 5910,
+   "sha256": "f03a15ca5762c59fd825d90e607c69d5e38f5a46df906e60bd51c4b5f115b543",
+   "contentType": "text/html; charset=UTF-8",
+   "archivoConservado": [
+    "fuentes/coinbase-blog-adgm-hub.html",
+    "fuentes/coinbase-blog-adgm-hub.txt"
+   ]
+  },
+  {
+   "url": "https://www.ledgerinsights.com/amundi-adds-tokenized-share-class-to-e22-8bn-european-equity-index-fund/",
+   "urlFinal": "https://www.ledgerinsights.com/amundi-adds-tokenized-share-class-to-e22-8bn-european-equity-index-fund/",
+   "archivo": [
+    "fuentes/ledgerinsights-amundi-stoxx600.html",
+    "fuentes/ledgerinsights-amundi-stoxx600.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:06:23Z",
+   "bytes": 102973,
+   "sha256": "1c07adb50312811c5dd29fa89d5f55b4199aeeacbef56a86651a1bd4ac05824b",
+   "contentType": "text/html; charset=UTF-8",
+   "nota": "Prensa: solo para descubrir",
+   "archivoConservado": [
+    "fuentes/ledgerinsights-amundi-stoxx600.html",
+    "fuentes/ledgerinsights-amundi-stoxx600.txt"
+   ]
+  },
+  {
+   "url": "https://www.base.org/stocks",
+   "urlFinal": "https://www.base.org/stocks",
+   "archivo": [
+    "fuentes/base-stocks-render.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:06:34Z",
+   "bytes": 29406,
+   "sha256": "9ca999772e2d96b35c69db141ab36940512c9d53245051f7111589af959029a8",
+   "nota": "Texto renderizado con Playwright",
+   "archivoConservado": [
+    "fuentes/base-stocks-render.txt"
+   ]
+  },
+  {
+   "url": "https://api.coinbase.com/v1/tokenized-stocks/prospectus/NVDAc.pdf",
+   "urlFinal": "https://www.adgm.com/globalassets/market-disclosure/content/prospectus/coinbase-onchain-spv-ltd---nvidia-cb-certificates---prospectus-20260804_08_04_2026_16-18-58.pdf",
+   "archivo": [
+    "fuentes/coinbase-nvdac-prospectus.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:07:03Z",
+   "bytes": 1416333,
+   "sha256": "95df029ca061916d086273403b8caf25537450687867fc4184a141164e782f54",
+   "contentType": "application/pdf",
+   "nota": "coinbase-nvdac-prospectus.pdf: PDF no conservado: incluye nombres de administradores; se conserva el texto recortado. · coinbase-nvdac-prospectus.txt: copia con nombres de personas recortados («[nombre recortado]»); el sha256 es el de lo descargado.",
+   "archivoConservado": [
+    "fuentes/coinbase-nvdac-prospectus.txt"
+   ]
+  },
+  {
+   "url": "https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds",
+   "urlFinal": "https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds",
+   "archivo": [
+    "fuentes/amundi-pr-stoxx600-tokenised-render.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:07:40Z",
+   "bytes": 5951,
+   "sha256": "24ddfde18d4e8e7757afbb3e2945d2486bce6641ad4e1cbf5b1e79c6eaa16eeb",
+   "nota": "Texto renderizado con Playwright",
+   "archivoConservado": [
+    "fuentes/amundi-pr-stoxx600-tokenised-render.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+   "urlFinal": "https://www.cnmv.es/portal/Consultas/listadoentidad?id=1&tipoent=4",
+   "archivo": [
+    "fuentes/cnmv-listado-esi-eee-lp.html",
+    "fuentes/cnmv-listado-esi-eee-lp.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:08:03Z",
+   "bytes": 1991636,
+   "sha256": "b09b266c8a879fbcbc83174b13013d9aad6bfdb65ffda5e70b7afdfee5eca17f",
+   "contentType": "text/html; charset=utf-8",
+   "archivoConservado": [
+    "fuentes/cnmv-listado-esi-eee-lp.html",
+    "fuentes/cnmv-listado-esi-eee-lp.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5063",
+   "urlFinal": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5063",
+   "archivo": [
+    "fuentes/cnmv-esi-lp-5063-gate.html",
+    "fuentes/cnmv-esi-lp-5063-gate.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:09:16Z",
+   "bytes": 218192,
+   "sha256": "82b0c9d3f878b8bf68c81b12e4107ca79bb7eb36c1dcf7cfddb245557f465cf0",
+   "contentType": "text/html; charset=utf-8",
+   "archivoConservado": [
+    "fuentes/cnmv-esi-lp-5063-gate.html",
+    "fuentes/cnmv-esi-lp-5063-gate.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5063&vista=17&lang=es",
+   "urlFinal": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5063&vista=17&lang=es",
+   "archivo": [
+    "fuentes/cnmv-esi-lp-5063-gate-programa.html",
+    "fuentes/cnmv-esi-lp-5063-gate-programa.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:09:18Z",
+   "bytes": 234174,
+   "sha256": "24232b93d5a0fea0034b5bbeac4ac895c41af7f02bca65936bd0f8d10338d89d",
+   "contentType": "text/html; charset=utf-8",
+   "archivoConservado": [
+    "fuentes/cnmv-esi-lp-5063-gate-programa.html",
+    "fuentes/cnmv-esi-lp-5063-gate-programa.txt"
+   ]
+  },
+  {
+   "url": "https://www.etoro.com/news-and-analysis/press-releases/etoro-continues-journey-towards-a-tokenized-future-with-launch-of-24-5-trading-futures-and-tokenized-stocks",
+   "urlFinal": "https://www.etoro.com/news-and-analysis/press-releases/etoro-continues-journey-towards-a-tokenized-future-with-launch-of-24-5-trading-futures-and-tokenized-stocks/",
+   "archivo": [
+    "fuentes/etoro-pr-tokenized-stocks.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:09:44Z",
+   "bytes": 247224,
+   "sha256": "3eacf38c2e5ef58ea9cdf3a75bbc274cd080ad271c21df8809e35a19c3f6c3e3",
+   "contentType": "text/html; charset=UTF-8",
+   "nota": "etoro-pr-tokenized-stocks.html: HTML no conservado: incluye nombres de personas; se conserva el texto recortado. · etoro-pr-tokenized-stocks.txt: copia con nombres de personas recortados («[nombre recortado]»); el sha256 es el de lo descargado.",
+   "archivoConservado": [
+    "fuentes/etoro-pr-tokenized-stocks.txt"
+   ]
+  },
+  {
+   "url": "https://www.etoro.com/investing/tokenized-stocks/",
+   "urlFinal": "https://www.etoro.com/investing/tokenized-stocks/",
+   "archivo": [
+    "fuentes/etoro-tokenized-stocks-explainer.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:09:46Z",
+   "bytes": 257194,
+   "sha256": "1b31058dfb0c1e95e8aeba3480515666fa09a339d9f6d800cae9e9e3578f5135",
+   "contentType": "text/html; charset=UTF-8",
+   "nota": "etoro-tokenized-stocks-explainer.html: HTML no conservado: incluye nombres de personas; se conserva el texto recortado. · etoro-tokenized-stocks-explainer.txt: copia con nombres de personas recortados («[nombre recortado]»); el sha256 es el de lo descargado.",
+   "archivoConservado": [
+    "fuentes/etoro-tokenized-stocks-explainer.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-coinbase.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:11:07Z",
+   "bytes": 246,
+   "sha256": "766e8412e12b84342b5dc0b229185d9c82e9d64305f928707237eea48aa6017c",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Coinbase» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-coinbase.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-etoro.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:11:17Z",
+   "bytes": 568,
+   "sha256": "b7f6eaa9429578460e6b5a89d8a75c7541774b05aa7875d6c752f8cc29815f20",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «eToro» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-etoro.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-amundi.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:11:28Z",
+   "bytes": 242,
+   "sha256": "b07dd753344ad87297a24ad8102be9c92ce448476dbf37b7561ad080ce9c73f7",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Amundi» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-amundi.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-blockchain-com.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:11:39Z",
+   "bytes": 258,
+   "sha256": "dc2783414119bed9a84d45c176b21e293eda4b9329c75d2b2e17093fd8bb3260",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Blockchain.com» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-blockchain-com.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-ondo.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:11:49Z",
+   "bytes": 1444,
+   "sha256": "3fb313ddb8d3374bf1c53f9c6001335eb2d3600e37093538ee0f91cc83427a9f",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Ondo» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-ondo.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-gate.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:12:00Z",
+   "bytes": 1137,
+   "sha256": "48c39429feb3edb78027730d980fa098e86fcc3f09ccc253f5e4ed05aad1a2dc",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Gate» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-gate.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-okx.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:12:12Z",
+   "bytes": 608,
+   "sha256": "38c211a5afa85824b272230011df5b3ecb442aefb089d65d6f1bf61fb7505b64",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «OKX» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-okx.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-gate-io.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:12:30Z",
+   "bytes": 116,
+   "sha256": "35ad6cd0c87f3c79ff18eab20c473581e7df4c835f5f5409ad9b87a86de4598d",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Gate.io» (todas las listas) · cnmv-advertencias-gate-io.txt: consulta repetida; el archivo se sobrescribió con la consulta posterior del inventario (esta primera vuelta no cargó resultados).",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-gate-io.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-gemini.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:12:41Z",
+   "bytes": 115,
+   "sha256": "cbdf26611a3d411fa44a9a25ced03419f509f5ffd9a567e4be0ef9724594d38b",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Gemini» (todas las listas) · cnmv-advertencias-gemini.txt: consulta repetida; el archivo se sobrescribió con la consulta posterior del inventario (esta primera vuelta no cargó resultados).",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-gemini.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-bitpanda.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:12:52Z",
+   "bytes": 246,
+   "sha256": "840d23ae67208fb85116a503f5dbf6f590abdfef288c823a408cfa15f8dc436c",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Bitpanda» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-bitpanda.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-revolut.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:02Z",
+   "bytes": 973,
+   "sha256": "993566badf8e250d46ccb66b91012314cc316a925ba5758a7459ed9ea88bb7ef",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Revolut» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-revolut.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-trade-republic.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:12Z",
+   "bytes": 990,
+   "sha256": "b8d225540d70e4f341b726d2d0a004304595796c592f06ea7ce1e1e8ad585059",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Trade Republic» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-trade-republic.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-wisdomtree.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:22Z",
+   "bytes": 119,
+   "sha256": "3561c8c9e334b0ed975e227ba0bfc38a5f8a08d649f53090f9df4a5e9ea8c44b",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «WisdomTree» (todas las listas) · cnmv-advertencias-wisdomtree.txt: consulta repetida; el archivo se sobrescribió con la consulta posterior del inventario (esta primera vuelta no cargó resultados).",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-wisdomtree.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-generali.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:34Z",
+   "bytes": 246,
+   "sha256": "1714b3d960e865281282a6f7c99275fd8e63be83844ee44c865761f2c88693d9",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Generali» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-generali.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-gate-io.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:56Z",
+   "bytes": 116,
+   "sha256": "1722c28c09a9f2165c6df2d4bcd60ba165a841966c09f4862d88c6b5206532ae",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Gate.io» (todas las listas) · cnmv-advertencias-gate-io.txt: consulta repetida; el archivo se sobrescribió con la consulta posterior del inventario (esta primera vuelta no cargó resultados).",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-gate-io.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-gemini.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:14:04Z",
+   "bytes": 115,
+   "sha256": "435d6d00920ebe5eb9763fd13fe00e59f38b0a18b613e4899cd84629b882c580",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Gemini» (todas las listas) · cnmv-advertencias-gemini.txt: consulta repetida; el archivo se sobrescribió con la consulta posterior del inventario (esta primera vuelta no cargó resultados).",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-gemini.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-wisdomtree.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:14:11Z",
+   "bytes": 119,
+   "sha256": "3e4315af3e820e661b2888bfd54a77d1945df06eeb554862d79ede84a553124e",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «WisdomTree» (todas las listas) · cnmv-advertencias-wisdomtree.txt: consulta repetida; el archivo se sobrescribió con la consulta posterior del inventario (esta primera vuelta no cargó resultados).",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-wisdomtree.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-gate-io.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:14:48Z",
+   "bytes": 571,
+   "sha256": "254ee2d4dabac22981d58005c2ab064d4b72d9dafa4e2c7cdd840b94494779b0",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Gate.io» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-gate-io.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-gemini.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:14:57Z",
+   "bytes": 641,
+   "sha256": "8c130bef0194cc743ea076f2698f8ae1b2e36c928ec0c66ba960d8b320a72ff0",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «Gemini» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-gemini.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "archivo": [
+    "fuentes/cnmv-advertencias-wisdomtree.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:05Z",
+   "bytes": 250,
+   "sha256": "065527beab7a5af580cc10c84d4cb66c6e8d4f452462b01a3029179b06d97899",
+   "nota": "Formulario de advertencias de la CNMV con Playwright; búsqueda «WisdomTree» (todas las listas)",
+   "archivoConservado": [
+    "fuentes/cnmv-advertencias-wisdomtree.txt"
+   ]
+  },
+  {
+   "url": "https://crypto.com/eea/financialservices/disclosures",
+   "urlFinal": "https://crypto.com/us",
+   "archivo": [
+    "fuentes/cryptocom-kid-disclosures.html",
+    "fuentes/cryptocom-kid-disclosures.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:26Z",
+   "bytes": 221915,
+   "sha256": "6096194fdb007f933a669d4f8166e096141090f4a710ca6417485c6bba61d251",
+   "contentType": "text/html; charset=utf-8",
+   "archivoConservado": [
+    "fuentes/cryptocom-kid-disclosures.html",
+    "fuentes/cryptocom-kid-disclosures.txt"
+   ]
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "urlFinal": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "archivo": [
+    "fuentes/ondo-stocks-eligibility.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:26Z",
+   "bytes": 9141,
+   "sha256": "76916fd4a05b595e731a7288f8cffb36620e849478a06b3f8cc815571ba8ed61",
+   "contentType": "text/markdown; charset=utf-8",
+   "archivoConservado": [
+    "fuentes/ondo-stocks-eligibility.txt"
+   ]
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "urlFinal": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500Z0Q6A5E8BE2B61*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "archivo": [
+    "fuentes/crudo/esma-prospectos-ondo-gm-sin-ft.json"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:27Z",
+   "bytes": 4506,
+   "sha256": "bc8be9d6b3b251bd22a93ca4e919d2d119bc7ee593067d2acbe064d1ef81bfaf",
+   "contentType": "application/json;charset=utf-8",
+   "archivoConservado": [
+    "fuentes/crudo/esma-prospectos-ondo-gm-sin-ft.json"
+   ]
+  },
+  {
+   "url": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "urlFinal": "https://www.franklintempleton.com.es/download/es-es/prospectus/ab6e8b12-2e71-41f4-b88d-d1ccc0f1e6bb/FT-OnChain-prospectus-en.pdf",
+   "archivo": [
+    "fuentes/ft-onchain-folleto.pdf",
+    "fuentes/ft-onchain-folleto.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:28Z",
+   "bytes": 1288473,
+   "sha256": "ec0458b62412448cca96249786b0c3453a7459e3bf9151a89d1cd1ac881dade9",
+   "contentType": "application/pdf",
+   "nota": "ft-onchain-folleto.pdf: Copia no conservada: incluye nombres de administradores; solo se comparó el SHA-256 con el del 05/11. · ft-onchain-folleto.txt: Copia no conservada: incluye nombres de administradores; solo se comparó el SHA-256 con el del 05/11.",
+   "archivoConservado": []
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+   "urlFinal": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+   "archivo": [
+    "fuentes/crudo/esma-mica-ARTZZ.csv"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:29Z",
+   "bytes": 276,
+   "sha256": "fa1ef4da123e3d49642c69f90a81a88f6c2cc2a0b9471b2108e4dfc635ca7c67",
+   "contentType": "text/csv",
+   "archivoConservado": [
+    "fuentes/crudo/esma-mica-ARTZZ.csv"
+   ]
+  },
+  {
+   "url": "https://paxos.com/paxgold/",
+   "urlFinal": "https://www.paxos.com/assets/paxg",
+   "archivo": [
+    "fuentes/paxos-paxgold.html",
+    "fuentes/paxos-paxgold.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:29Z",
+   "bytes": 782899,
+   "sha256": "1c529ef299872c9bd0f9ba61279ff0d36dc507973853c086bff1de1709dc8988",
+   "contentType": "text/html",
+   "archivoConservado": [
+    "fuentes/paxos-paxgold.html",
+    "fuentes/paxos-paxgold.txt"
+   ]
+  },
+  {
+   "url": "https://www.gemini.com/tokenizedstocks",
+   "urlFinal": "https://www.gemini.com/tokenizedstocks",
+   "archivo": [
+    "fuentes/gemini-tokenizedstocks.html",
+    "fuentes/gemini-tokenizedstocks.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:49Z",
+   "bytes": 777010,
+   "sha256": "4ea4a1a91e200363256c94a784ebfc23b43918d22ac4e3bee9bba2433520ddd5",
+   "contentType": "text/html; charset=utf-8",
+   "archivoConservado": [
+    "fuentes/gemini-tokenizedstocks.html",
+    "fuentes/gemini-tokenizedstocks.txt"
+   ]
+  },
+  {
+   "url": "https://www.bitpanda.com/en/stocks",
+   "urlFinal": "https://www.bitpanda.com/en/stocks",
+   "archivo": [
+    "fuentes/bitpanda-stocks-en.html",
+    "fuentes/bitpanda-stocks-en.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:49Z",
+   "bytes": 682411,
+   "sha256": "d9315891e0c2e7a1a24892d3c51688e0996647edd77aee69b89cab8eafb5477f",
+   "contentType": "text/html; charset=utf-8",
+   "archivoConservado": [
+    "fuentes/bitpanda-stocks-en.html",
+    "fuentes/bitpanda-stocks-en.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5304&vista=17&lang=es",
+   "urlFinal": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5304&vista=17&lang=es",
+   "archivo": [
+    "fuentes/cnmv-esi-lp-5304-gemini-programa.html",
+    "fuentes/cnmv-esi-lp-5304-gemini-programa.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:50Z",
+   "bytes": 218374,
+   "sha256": "91ea7232ad17a443f77daddab86e90d2150a746f5ba4f67ce44dcc2fcd28fea3",
+   "contentType": "text/html; charset=utf-8",
+   "archivoConservado": [
+    "fuentes/cnmv-esi-lp-5304-gemini-programa.html",
+    "fuentes/cnmv-esi-lp-5304-gemini-programa.txt"
+   ]
+  },
+  {
+   "url": "https://int.media.amundi.com/files/nuxeo/dl/2d26bd65-d562-4a36-b0b0-14750be96ec7?inline=",
+   "urlFinal": "https://int.media.amundi.com/files/nuxeo/dl/2d26bd65-d562-4a36-b0b0-14750be96ec7?inline=",
+   "archivo": [
+    "fuentes/amundi-pr-stoxx600-tokenised-pdf.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:16:45Z",
+   "bytes": 123963,
+   "sha256": "c92bb075932cadf291e0c51a22b7399d9b951b19b25830c36852d7b369c41dd8",
+   "contentType": "application/pdf",
+   "nota": "amundi-pr-stoxx600-tokenised-pdf.pdf: PDF no conservado: incluye datos de contacto de una persona; se conserva el texto recortado. · amundi-pr-stoxx600-tokenised-pdf.txt: copia con nombres de personas recortados («[nombre recortado]»); el sha256 es el de lo descargado.",
+   "archivoConservado": [
+    "fuentes/amundi-pr-stoxx600-tokenised-pdf.txt"
+   ]
+  },
+  {
+   "url": "https://www.prnewswire.com/news-releases/blockchaincom--ondo-finance-launch-onchain-tokenized-us-stocks-across-europe-302677212.html",
+   "urlFinal": "https://www.prnewswire.com/news-releases/blockchaincom--ondo-finance-launch-onchain-tokenized-us-stocks-across-europe-302677212.html",
+   "archivo": [
+    "fuentes/blockchaincom-ondo-pr.html",
+    "fuentes/blockchaincom-ondo-pr.txt"
+   ],
+   "http": 404,
+   "consultadoUtc": "2026-11-10T09:16:59Z",
+   "bytes": 157796,
+   "sha256": "e35a8364c10d72d6052130be64a7ab7af9072cc5171c0c813d9777b43aa29e1d",
+   "contentType": "text/html",
+   "archivoConservado": [
+    "fuentes/blockchaincom-ondo-pr.html",
+    "fuentes/blockchaincom-ondo-pr.txt"
+   ]
+  },
+  {
+   "url": "https://www.gettex.de/en/news-overview/newsdetail/eqs-news-blockchaincom-amp-ondo-finance-launch-onchain-tokenized-us-stocks-across-europe",
+   "urlFinal": "https://www.gettex.de/en/news-overview/newsdetail/eqs-news-blockchaincom-amp-ondo-finance-launch-onchain-tokenized-us-stocks-across-europe",
+   "archivo": [
+    "fuentes/blockchaincom-ondo-eqs-gettex.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:17:06Z",
+   "bytes": 113329,
+   "sha256": "8a8bc2795aa6baf1f5f831446b7864a2dedeef307726bb6adcb89396c06cae17",
+   "contentType": "text/html; charset=utf-8",
+   "nota": "Nota de prensa de Blockchain.com/Ondo distribuida por EQS (texto de la empresa) · blockchaincom-ondo-eqs-gettex.html: HTML no conservado: incluye nombres de personas; se conserva el texto recortado. · blockchaincom-ondo-eqs-gettex.txt: copia con nombres de personas recortados («[nombre recortado]»); el sha256 es el de lo descargado.",
+   "archivoConservado": [
+    "fuentes/blockchaincom-ondo-eqs-gettex.txt"
+   ]
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5284&vista=17&lang=es",
+   "urlFinal": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5284&vista=17&lang=es",
+   "archivo": [
+    "fuentes/cnmv-esi-lp-5284-bitstamp-programa.html",
+    "fuentes/cnmv-esi-lp-5284-bitstamp-programa.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:17:23Z",
+   "bytes": 238765,
+   "sha256": "98f01bdab2bb8c40208c2e48d2c668bfb892813a2d1d000e8584a0c64df1024f",
+   "contentType": "text/html; charset=utf-8",
+   "archivoConservado": [
+    "fuentes/cnmv-esi-lp-5284-bitstamp-programa.html",
+    "fuentes/cnmv-esi-lp-5284-bitstamp-programa.txt"
+   ]
+  },
+  {
+   "url": "https://www.axiology.xyz/",
+   "urlFinal": "https://www.axiology.lt/",
+   "archivo": [
+    "fuentes/axiology-portada-render.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:17:39Z",
+   "bytes": 4540,
+   "sha256": "d6dbf5c5d3ca818ffd143d26ba1170ca261371b269469d1f7192170d35d828fb",
+   "nota": "Texto renderizado con Playwright · axiology-portada-render.txt: copia con nombres de personas recortados («[nombre recortado]»); el sha256 es el de lo descargado.",
+   "archivoConservado": [
+    "fuentes/axiology-portada-render.txt"
+   ]
+  },
+  {
+   "url": "https://www.wisdomtreeprime.com/faq/",
+   "urlFinal": "https://www.wisdomtreeprime.com/faq/",
+   "archivo": [
+    "fuentes/wisdomtree-prime-faq.html",
+    "fuentes/wisdomtree-prime-faq.txt"
+   ],
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:18:00Z",
+   "bytes": 5669,
+   "sha256": "45b1d72e197c588eec32ee6ed9f237c648ea01186f59eaf765ad1f9f8a00b619",
+   "contentType": "text/html; charset=UTF-8",
+   "archivoConservado": [
+    "fuentes/wisdomtree-prime-faq.html",
+    "fuentes/wisdomtree-prime-faq.txt"
+   ]
+  },
+  {
+   "url": "https://www.sgforge.com/",
+   "urlFinal": "https://www.sgforge.com/",
+   "archivo": [
+    "fuentes/sgforge-portada.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:18:00Z",
+   "bytes": 47821,
+   "sha256": "81aef4162578afb7c2edd5d94e7c15e13ee8de415172e57a0d9f961ead5f56b1",
+   "contentType": "text/html; charset=UTF-8",
+   "nota": "sgforge-portada.html: HTML no conservado: incluye nombres de personas; se conserva el texto recortado. · sgforge-portada.txt: copia con nombres de personas recortados («[nombre recortado]»); el sha256 es el de lo descargado.",
+   "archivoConservado": [
+    "fuentes/sgforge-portada.txt"
+   ]
+  },
+  {
+   "url": "https://www.revolut.com/es-ES/invest/",
+   "urlFinal": "https://www.revolut.com/es-ES/invest/",
+   "archivo": [
+    "fuentes/revolut-invest-es.html",
+    "fuentes/revolut-invest-es.txt"
+   ],
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:18:01Z",
+   "bytes": 818326,
+   "sha256": "518c604ba41fd304d4ba1021d7480748d3a168e138e9f1428d5701e156905823",
+   "contentType": "text/html; charset=UTF-8",
+   "archivoConservado": [
+    "fuentes/revolut-invest-es.html",
+    "fuentes/revolut-invest-es.txt"
+   ]
+  },
+  {
+   "url": "https://traderepublic.com/es-es",
+   "urlFinal": "https://traderepublic.com/es-es",
+   "archivo": [
+    "fuentes/traderepublic-es.html",
+    "fuentes/traderepublic-es.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:18:01Z",
+   "bytes": 59277,
+   "sha256": "ea1ca025a4ff242b5487a218a42fe444c50af3e06a00affe205f8c186662e583",
+   "contentType": "text/html; charset=utf-8",
+   "archivoConservado": [
+    "fuentes/traderepublic-es.html",
+    "fuentes/traderepublic-es.txt"
+   ]
+  },
+  {
+   "url": "https://www.sgforge.com/flatexdegiro-sg-sgforge-join-seturion-boerse-stuttgart-groups/",
+   "urlFinal": "https://www.sgforge.com/flatexdegiro-sg-sgforge-join-seturion-boerse-stuttgart-groups/",
+   "archivo": [
+    "fuentes/sgforge-seturion-degiro.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:18:14Z",
+   "bytes": 47923,
+   "sha256": "fcd0a768db51db27baee03664038eb883397974ecbd40df812a3f4618b438514",
+   "contentType": "text/html; charset=UTF-8",
+   "nota": "sgforge-seturion-degiro.html: HTML no conservado: incluye nombres de personas; se conserva el texto recortado. · sgforge-seturion-degiro.txt: copia con nombres de personas recortados («[nombre recortado]»); el sha256 es el de lo descargado.",
+   "archivoConservado": [
+    "fuentes/sgforge-seturion-degiro.txt"
+   ]
+  },
+  {
+   "url": "https://www.wisdomtreeprime.com/",
+   "urlFinal": "https://www.wisdomtreeprime.com/",
+   "archivo": [
+    "fuentes/wisdomtree-prime-portada-render.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:18:27Z",
+   "bytes": 7297,
+   "sha256": "08808f2237a72ff84ed34d882b3cfc053106e509061f178d798bb2427bd838ee",
+   "nota": "Texto renderizado con Playwright",
+   "archivoConservado": [
+    "fuentes/wisdomtree-prime-portada-render.txt"
+   ]
+  },
+  {
+   "url": "https://www.gate.com/xstocks",
+   "urlFinal": "https://www.gate.com/xstocks",
+   "archivo": [
+    "fuentes/gate-xstocks.html",
+    "fuentes/gate-xstocks.txt"
+   ],
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:21:28Z",
+   "bytes": 373,
+   "sha256": "9813adb625a1f4bbda04084874c9e538c06d0e4fe46ef38e508ea10e3d46fb35",
+   "contentType": "text/html",
+   "archivoConservado": [
+    "fuentes/gate-xstocks.html",
+    "fuentes/gate-xstocks.txt"
+   ]
+  },
+  {
+   "url": "https://www.gate.com/eu",
+   "urlFinal": "https://www.gate.com/eu",
+   "archivo": [
+    "fuentes/gate-eu-portada.html",
+    "fuentes/gate-eu-portada.txt"
+   ],
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:21:28Z",
+   "bytes": 366,
+   "sha256": "153461980051648d594ff012507b1853ad54d95470c2915a63fda17ef8c9566e",
+   "contentType": "text/html",
+   "archivoConservado": [
+    "fuentes/gate-eu-portada.html",
+    "fuentes/gate-eu-portada.txt"
+   ]
+  },
+  {
+   "url": "https://www.azvalor.com/azvalor-carta-a-inversores-2s2025",
+   "urlFinal": "https://www.azvalor.com/wp-content/uploads/2026/02/Azvalor-Carta-a-inversores-2S2025.pdf",
+   "archivo": [
+    "fuentes/azvalor-carta-2s2025.pdf",
+    "fuentes/azvalor-carta-2s2025.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:22:44Z",
+   "bytes": 172854,
+   "sha256": "c7e5c605711842e71ea5dbe3ad854d91605ec2fcf0cc69274ffe6f9ebd1dd0dd",
+   "contentType": "application/pdf",
+   "archivoConservado": [
+    "fuentes/azvalor-carta-2s2025.pdf",
+    "fuentes/azvalor-carta-2s2025.txt"
+   ]
+  },
+  {
+   "url": "https://www.azvalor.com/fondos-de-inversion/",
+   "urlFinal": "https://www.azvalor.com/fondos-de-inversion/",
+   "archivo": [
+    "fuentes/azvalor-fondos-de-inversion.html",
+    "fuentes/azvalor-fondos-de-inversion.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:08Z",
+   "bytes": 219556,
+   "sha256": "e0fdf14c3817f6e95cd8fcb9c57f2685e542e23146267a250d24dd4a80c3d22f",
+   "contentType": "text/html; charset=UTF-8",
+   "archivoConservado": [
+    "fuentes/azvalor-fondos-de-inversion.html",
+    "fuentes/azvalor-fondos-de-inversion.txt"
+   ]
+  },
+  {
+   "url": "https://crypto.com/document/fccy-tokenised-equities-terms",
+   "urlFinal": "https://crypto.com/document/fccy-tokenised-equities-terms",
+   "archivo": [
+    "fuentes/cryptocom-terms.pdf",
+    "fuentes/cryptocom-terms.txt"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:27Z",
+   "bytes": 217691,
+   "sha256": "1169bff5d9a4deaf72885cf185e5134274089e0534fb43eab0ba8cdd37421c6f",
+   "contentType": "application/pdf",
+   "archivoConservado": [
+    "fuentes/cryptocom-terms.pdf",
+    "fuentes/cryptocom-terms.txt"
+   ]
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=approval_filing_date:%5B2026-09-01T00:00:00Z%20TO%20*%5D%20AND%20member_states:*SPAIN*%20AND%20-document_type:FTWS%20AND%20-document_type:SUPP&wt=json&rows=1000&fl=party_name,document_type,approval_filing_date,home_member_state_code,national_document_id&sort=approval_filing_date%20desc",
+   "urlFinal": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=approval_filing_date:%5B2026-09-01T00:00:00Z%20TO%20*%5D%20AND%20member_states:*SPAIN*%20AND%20-document_type:FTWS%20AND%20-document_type:SUPP&wt=json&rows=1000&fl=party_name,document_type,approval_filing_date,home_member_state_code,national_document_id&sort=approval_filing_date%20desc",
+   "archivo": [
+    "fuentes/crudo/esma-folletos-pasaporte-es-desde-sep2026.json"
+   ],
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:45Z",
+   "bytes": 10706,
+   "sha256": "8829b1f51588b4027090c74681fb72a2dc5b76598c8860bba69827e52cf81008",
+   "contentType": "application/json;charset=utf-8",
+   "archivoConservado": [
+    "fuentes/crudo/esma-folletos-pasaporte-es-desde-sep2026.json"
+   ]
+  }
+ ]
+}

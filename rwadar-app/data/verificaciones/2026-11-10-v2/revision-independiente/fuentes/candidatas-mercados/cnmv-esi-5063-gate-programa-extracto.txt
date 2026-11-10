@@ -1,0 +1,36 @@
+URL: https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5063&vista=17&lang=es
+HTTP 200 · consultadoUtc 2026-11-10T09:37:09Z · SHA-256 HTML 2ccf77bcae3290d226586a821de29fe76e3e655cd4565ad9f3abc0664d79166c
+GATE SECURITIES (CYPRUS) LTD · 5063 · 17/05/2021
+
+Servicios y actividades de inversión
+1. Recepción y transmisión de órdenes de clientes en relación con uno o más instrumentos financieros
+4) Contratos de opciones, futuros, permutas (swaps), acuerdos de tipos de interés a plazo y otros contratos de derivados relacionados con valores, divisas, tipos de interés o rendimientos, derechos de emisión u otros instrumentos derivados, índices financieros o medidas financieras que puedan liquidarse en especie o en efectivo
+5) Contratos de opciones, futuros, permutas (swaps), contratos a plazo y otros contratos de derivados relacionados con materias primas que deban liquidarse en efectivo o que puedan liquidarse en efectivo a elección de una de las partes por motivos distintos al incumplimiento o a otro suceso que lleve a la rescisión del contrato
+9) Contratos financieros por diferencias
+2. Ejecución de órdenes por cuenta de clientes
+4) Contratos de opciones, futuros, permutas (swaps), acuerdos de tipos de interés a plazo y otros contratos de derivados relacionados con valores, divisas, tipos de interés o rendimientos, derechos de emisión u otros instrumentos derivados, índices financieros o medidas financieras que puedan liquidarse en especie o en efectivo
+5) Contratos de opciones, futuros, permutas (swaps), contratos a plazo y otros contratos de derivados relacionados con materias primas que deban liquidarse en efectivo o que puedan liquidarse en efectivo a elección de una de las partes por motivos distintos al incumplimiento o a otro suceso que lleve a la rescisión del contrato
+9) Contratos financieros por diferencias
+3. Negociación por cuenta propia
+4) Contratos de opciones, futuros, permutas (swaps), acuerdos de tipos de interés a plazo y otros contratos de derivados relacionados con valores, divisas, tipos de interés o rendimientos, derechos de emisión u otros instrumentos derivados, índices financieros o medidas financieras que puedan liquidarse en especie o en efectivo
+5) Contratos de opciones, futuros, permutas (swaps), contratos a plazo y otros contratos de derivados relacionados con materias primas que deban liquidarse en efectivo o que puedan liquidarse en efectivo a elección de una de las partes por motivos distintos al incumplimiento o a otro suceso que lleve a la rescisión del contrato
+9) Contratos financieros por diferencias
+4. Gestión de carteras
+4) Contratos de opciones, futuros, permutas (swaps), acuerdos de tipos de interés a plazo y otros contratos de derivados relacionados con valores, divisas, tipos de interés o rendimientos, derechos de emisión u otros instrumentos derivados, índices financieros o medidas financieras que puedan liquidarse en especie o en efectivo
+5) Contratos de opciones, futuros, permutas (swaps), contratos a plazo y otros contratos de derivados relacionados con materias primas que deban liquidarse en efectivo o que puedan liquidarse en efectivo a elección de una de las partes por motivos distintos al incumplimiento o a otro suceso que lleve a la rescisión del contrato
+9) Contratos financieros por diferencias
+5. Asesoramiento en materia de inversión
+4) Contratos de opciones, futuros, permutas (swaps), acuerdos de tipos de interés a plazo y otros contratos de derivados relacionados con valores, divisas, tipos de interés o rendimientos, derechos de emisión u otros instrumentos derivados, índices financieros o medidas financieras que puedan liquidarse en especie o en efectivo
+5) Contratos de opciones, futuros, permutas (swaps), contratos a plazo y otros contratos de derivados relacionados con materias primas que deban liquidarse en efectivo o que puedan liquidarse en efectivo a elección de una de las partes por motivos distintos al incumplimiento o a otro suceso que lleve a la rescisión del contrato
+9) Contratos financieros por diferencias
+Servicios auxiliares
+1. Custodia y administración de instrumentos financieros por cuenta de clientes, incluidos la custodia y servicios conexos como la gestión de tesorería y de garantías y excluido el mantenimiento de cuentas de valores en el nivel más alto
+4) Contratos de opciones, futuros, permutas (swaps), acuerdos de tipos de interés a plazo y otros contratos de derivados relacionados con valores, divisas, tipos de interés o rendimientos, derechos de emisión u otros instrumentos derivados, índices financieros o medidas financieras que puedan liquidarse en especie o en efectivo
+5) Contratos de opciones, futuros, permutas (swaps), contratos a plazo y otros contratos de derivados relacionados con materias primas que deban liquidarse en efectivo o que puedan liquidarse en efectivo a elección de una de las partes por motivos distintos al incumplimiento o a otro suceso que lleve a la rescisión del contrato
+9) Contratos financieros por diferencias
+4. Servicios de cambio de divisas cuando estos estén relacionados con la prestación de servicios de inversión
+5. Informes de inversiones y análisis financieros u otras formas de recomendación general relativa a las operaciones en instrumentos financieros
+4) Contratos de opciones, futuros, permutas (swaps), acuerdos de tipos de interés a plazo y otros contratos de derivados relacionados con valores, divisas, tipos de interés o rendimientos, derechos de emisión u otros instrumentos derivados, índices financieros o medidas financieras que puedan liquidarse en especie o en efectivo
+5) Contratos de opciones, futuros, permutas (swaps), contratos a plazo y otros contratos de derivados relacionados con materias primas que deban liquidarse en efectivo o que puedan liquidarse en efectivo a elección de una de las partes por motivos distintos al incumplimiento o a otro suceso que lleve a la rescisión del contrato
+9) Contratos financieros por diferencias
+"La información disponible en los registros de empresas de servicios de inversión del Espacio Económico Europeo que operan en España con o sin establecimiento, es remitida a la CNMV por las Autoridades Nacionales Competentes del Estado Miembro de origen que corresponda, autoridades que son las responsables de garantizar que la información remitida sea exacta y ajustada a normativa."

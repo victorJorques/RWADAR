@@ -1,0 +1,376 @@
+              CIRCULAR Nº2/2025
+TRADING VOLATILITY CONTROL, TICK SIZES & RATIO OF
+              UNEXECUTED ORDERS
+
+
+                     July 2025
+
+
+
+
+                         1
+This Circular summarizes the standards to be taken by Securitize during
+periods of unexpected price movements. Also, it will determine the tick sizes
+of the financial instruments admitted to trading in the market and the
+calculation of the ratio regarding unexecuted orders to transactions.
+
+
+
+
+All the participants of Securitize will understand the actions that will be
+taken by the market whenever significant price movements occur.
+
+
+
+
+Chapters 11 and 15 of the Securitize Handbook and ESMA Supervisory
+Briefing on the Calibration of circuit breakers.
+
+
+
+
+This Circular shall enter into force on the day following its publication.
+
+
+
+
+If you have any questions, you can contact Securitize via e-mail at:
+support-eu@securitize.io
+
+Volatility refers to price movements that occur over a specific period of time.
+Specifically, in statistical terminology, volatility refers to the measure of
+variability in a market or security's annualized returns during a specific
+timeframe. It essentially quantifies the speed at which the price of the asset
+rises or falls. Therefore, when the price of an asset experiences swift and
+frequent fluctuations within a brief timeframe, reaching both higher and lower
+points, it is considered to have high volatility. On the other hand, if the price
+changes at a slower pace, either increasing or decreasing, or remains
+
+                                        2
+relatively steady, it is described as having low volatility. The factors that
+cause volatility are multiple, for instance, political and economic factors,
+industry and sector factors or the performance of the company issuing the
+financial instrument amongst others.
+
+For this purpose, ESMA expects that a trading venue puts in place two types
+of mechanisms (i) trading halts or price collars referenced to a static
+reference price (static circuit breakers) and (ii) trading halts or price collars
+referenced to a dynamic reference price (dynamic circuit breakers).
+
+Each trading venue may adopt any of the above-mentioned mechanisms, as
+long as it can effectively prove that it can control volatility with the
+aforementioned mechanisms.
+
+In this sense, and, taking as a reference the definition provided for by ESMA
+in the Supervisory Briefing on the “Calibration of circuit breakers”, Securitize
+shall establish trading halts in the form of mechanisms that interrupt
+continuous trading and that cause trading to stope on a certain security for a
+certain time period, in which no trades are executed and no new prices are
+determined”.
+
+
+Due to its close connection to volatility, this Circular also aims to clarify the
+tick sizes settled for the Financial Instruments that will be negotiated in
+Securitize, following the mandate of Commission Implementing Regulation
+(EU) 2016/824 of 25 May 2016 laying down implementing technical
+standards with regard to the content and format of the description of the
+functioning of multilateral trading facilities and organized trading facilities
+and the notification to the European Securities and Markets Authority
+according to Directive 2014/65/EU of the European Parliament and of the
+Council on markets in financial instruments (“Implementing Regulation (EU)
+2016/824”).
+
+The calculation of the ratio of unexecuted orders to transactions is also
+specified in this Circular. Its importance lies on the fact that trading facilities
+like the one operated by Securitize, operate high-speed systems, and as
+orders are submitted, executed or canceled, the data is updated and
+processed in real time. Therefore, the calculation allows tracking of the total
+number of outstanding or unexecuted orders and the total number of
+executed transactions. This ratio is fundamental to providing up-to-date
+information on the current market conditions, liquidity, and trading activity.
+
+
+
+                                         3
+This Circular, therefore, aims to explain how Securitize will proceed whenever
+significant and unexpected price movements due to extraordinary market
+volatility are experienced. Specifically, the circumstance in which the market
+will temporarily interrupt or halt continuous trading for a certain time period.
+Also, how Tick Prices will be settled and how calculations of the ratio of
+unexecuted orders to transactions will be made on a daily basis.
+
+
+
+
+                                       4
+                          TABLE OF CONTENTS
+
+
+
+
+SECTION 1: TRADING HALTS TO CONTROL VOLATILITY​               6
+SECTION 2: MONITORING CIRCUIT BREAKERS​                       6
+SECTION 3: CALIBRATING CIRCUIT BREAKERS​                      7
+SECTION 4: TRANSPARENCY REQUIREMENTS​                         8
+SECTION 5: REPORTING​                                         8
+SECTION 6: PRICE TICKS​                                       8
+SECTION 7: CALCULATION OF THE RATIO OF UNEXECUTED ORDERS TO
+TRANSACTIONS.​                                                9
+RATIOS CALCULATION FORMULA​                                   10
+
+
+
+
+                                    5
+SECTION 1: TRADING HALTS TO CONTROL VOLATILITY
+
+The Market shall temporarily halt trading of a Negotiable Financial Instrument
+if there is a significant fluctuation in its price in respect to the percentage
+thresholds set out for the static and dynamic ranges to safeguard against
+market volatility.
+
+For the purposes of this section, the dynamic range will be defined as the
+maximum variation allowed with respect to the last traded price of a
+Negotiable Financial Instrument expressed in variation percentage (+/-).
+Securitize will establish, review, adjust and publish on the Market Platform
+(on an ongoing basis) the percentage thresholds for the dynamic range.
+
+Additionally, for the purposes of this section, the static range will be defined
+as the maximum variation allowed with respect to a static reference price of a
+Negotiable Financial Instrument expressed in variation percentage (+/-).
+Securitize will establish, review, adjust and publish on the Market Platform
+(on an ongoing basis) the percentage thresholds for the static range. Each
+time the dynamic or static range is exceeded during the trading session, a
+trading halt will be activated and the trading for the Negotiable Financial
+Instrument affected will be halted for as long as the Market considers
+depending on the volatility of the prices. During the trading halt, it will be
+possible to cancel and place Orders, but their execution will not be allowed.
+Once the trading halt has elapsed, the new reference price for the Negotiable
+Financial Instrument will be the price that triggered the dynamic range halt.
+
+When a trading halt is activated, trading will be stopped for fifteen minutes,
+according to Section 3 of this Circular.
+
+Actions taken by the Securitize in accordance with the provisions set out in
+this section will be publicly disseminated in the public announcement area,
+the Market Member’s private area and via email to the Market Participants
+
+SECTION 2: MONITORING CIRCUIT BREAKERS
+
+Securitize shall have in place mechanisms to ensure that short-term volatility
+episodes are adequately managed. For this purpose, Securitize shall trigger
+each time the dynamic range is exceeded during the trading session. These
+halts temporarily stop trading, providing market participants with time to
+reflect on their assessment of fundamentals. .
+
+
+
+
+                                           6
+For this reason, Securitize shall consider the following elements when
+assessing the necessity of adapting its systems:
+
+         a)​ The liquidity of the various classes and sub-classes of assets, as
+             well as the quotation levels of negotiable financial instruments; and
+         b)​ The nature of the market model and the types of users, including
+             any changes to the trading venue’s mode or rules that may affect
+             internal references. .
+
+SECTION 3: CALIBRATING CIRCUIT BREAKERS
+
+Securitize shall calibrate its circuit breakers according to pre- defined,
+statistically supported methodology. As such, Securitize shall consider the
+following elements:
+
+   a)​ the liquidity profile and the quotation level of the financial instrument;
+   b)​ the volatility profile of the financial instrument;
+   c)​   the internal references;
+   d)​ the external references;
+   e)​ the number of times the mechanism was used in the previous years on
+       the platform.
+
+When a trading halt is triggered, Securitize shall adjust the reference price
+that triggered the halt.
+
+For this purpose, Securitize shall determine the following:
+
+         a)​ the price variation allowed by the dynamic and static thresholds;
+
+         b)​ the dynamic and static reference price to be used;
+
+         c)​ the frequency of their updates (In the case of the dynamic
+             reference price, it will be updated intraday. The static reference
+             price will be updated based on the last closing price of the previous
+             trading session).
+
+To calculate the applicable static and dynamic ranges, the following
+information shall be considered:
+
+         PRODUCT             STATIC RANGE       DYNAMIC RANGE        HALT TIME
+
+
+
+
+                                            7
+    Equity                        +/- 20%                  +/- 15%             15 Minutes
+    Debt                          +/- 20%                  +/- 15%             15 Minutes
+    Funds (UCITs)                 +/- 20%                  +/- 15%             15 Minutes
+
+
+
+
+SECTION 4: TRANSPARENCY REQUIREMENTS
+
+Securitize shall make public its policies and arrangements in respect of
+mechanisms to manage volatility by publishing the mentioned information on
+its website on a clear and concise manner as well as the effects of trading
+halts being triggered1.
+
+This information should, as a minimum, include the following:
+
+           a)​ a general description of the mechanism with possible scenarios in
+               case a circuit breaker is triggered as well as explaining when the
+               triggering would result in a trading halt;
+           b)​ an explanation on the static and dynamic reference price used and
+               the circumstances which would lead to the triggering of the
+               mechanism;
+           c)​ the duration of the halt should be indicated as well as an
+               explanation on the price formation following trade resumption;
+           d)​ statistics on the number of times the circuit breakers were
+               triggered at least with an annual frequency.
+           e)​ information on the level of thresholds that trigger the mechanism.
+
+SECTION 5: REPORTING
+
+As per Article 48(5) of MiFID II, Securitize shall annually provide to the CNMV
+technical details regarding the functioning of the circuit breakers and
+material changes that affect the implemented mechanism. These reports
+should include relevant details such as the triggering events, duration of
+trading halts, and any significant market developments during the halt period.
+
+SECTION 6: PRICE TICKS
+
+The smallest price movement or increment by which the price of a financial
+instrument can fluctuate is referred to as the tick size of a market. More
+
+1
+ Except for sensitive information or any other information that may cause Market Participants to
+misuse it according to Article 18(4) of RTS 7.
+
+                                               8
+precisely, the minimum price change in a financial instrument from which it
+can be inferred that there is a price increment or decrement in the asset’s
+value. Therefore, the tick size is relevant when identifying and predicting price
+movements, being closely related to market volatility.
+
+According to the Implementing Regulation (EU) 2016/824, multilateral trading
+facilities like Securitize must provide to its competent authorities information
+regarding the systems, procedures and arrangements to ensure compliance
+with the conditions of Articles 48 and 49 of Directive 2014/65/EU (MiFID II
+Regulation). Specifically, Article 49 refers to tick sizes and the need of
+markets to adopt tick size regimes.
+
+Specifically, in the case of Securitize, for Equity, the price tick will be
+determined following the provisions set out in the Delegated Regulation (EU)
+2017/588. For Debt Financial Instruments the price tick will be set at 0.01.
+
+Regarding Equity, exchange traded funds where the underlying are equities
+subject to the tick size regime or a basket of such equities, under the
+provisions set out in the abovementioned Delegated Regulation, specifies
+that the tick size that trading venues shall apply to orders in shares or
+depositary receipts is to be equal to or greater than the one corresponding
+to:
+
+      (a)​ the liquidity band in the table in the Annex corresponding to average
+         daily number of transactions in the most relevant market in terms of
+         liquidity for that instrument; and
+
+
+      (b)​the price range in that liquidity band corresponding to the price of the
+         order.
+
+For instance, whenever the daily number of transactions is below 10, and the
+price ranges stands between 0 ≤ price < 0,1, the tick size will stand in 0,0005.
+
+Regarding the tick size settled for Debt Financial Instruments at 0.01
+percentage points, it means that the minimum price movement or increment
+allowed for these instruments is 0.01 percentage points of the currency in
+which they are denominated.
+
+
+
+
+                                          9
+SECTION 7: CALCULATION OF THE RATIO OF UNEXECUTED ORDERS TO
+TRANSACTIONS.
+
+The Operator shall calculate the ratio of unexecuted Orders to transactions
+effectively entered in the Market Platform by each Market Member for every
+Negotiable Financial Instrument traded.
+
+The calculation will be made reacting to each new order creation or deletion
+in accordance with the methodology set out in article 3 of the Commission
+Delegated Regulation (EU) 2017/566, as follows:
+
+
+
+
+                         RATIOS CALCULATION FORMULA
+
+
+
+     In terms of volume       (total volume of Orders/total volume of
+                                          transactions)-1
+
+
+         In terms of          (total number of Orders/total number of
+           number                         transactions)-1
+
+Securitize shall consider that a Market Member has exceeded the maximum
+ratio between its unexecuted orders and its transactions as calculated by
+Securitize upon each transaction, if the trading activity of that Market
+Member in relation to a specific financial instrument, taking into account all
+phases of trading, exceeds one or both of the ratios (ratio) obtained in respect
+of the Ratios Calculation Formula Table referred to at the beginning of this
+section. The maximum ratios will be reviewed on an ongoing basis and
+adjusted if necessary.
+
+To calculate the maximum ratios, the following formula shall be used (taking
+into account the expected liquidity in the Market):
+
+   a)​ In terms of volume
+
+Instrument    Floor    Members Maximum
+Shares        1                  125.000
+Bonds         1                  125.000
+
+                                       10
+ UCITs          1                 125.000
+
+   b)​ In terms of number
+
+ Instrument         Floor   Members Maximum
+ Shares             1            250.000
+ Bonds              1            250.000
+ UCITs              1            250.000
+
+
+
+
+In any case, Securitize shall inform such Market Member when it reaches a
+figure equivalent to 80% of the ratio calculated by volume and number of
+transactions.
+
+After the creation or deletion of orders, Securitize shall re-calculate that ratio.
+In the event that the aforementioned 80% threshold is exceeded, no specific
+consequences are foreseen beyond the inability to create new orders until
+previous unexecuted orders are eliminated. .
+
+In case a Market Member exceeds the maximum ratios set out in this section,
+the Operator will notify the Market Member through the Market Platform.
+
+
+
+
+                                        11
+

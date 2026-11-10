@@ -1,0 +1,6 @@
+Fuente: https://oilxcoin.io/
+Consultado: 2026-11-10T09:33:44Z · HTTP 200 · 60634 bytes · sha256 359d367ca3a1eff75ebc899cbaeaf5cbd268ffce42dc672908c7edc0057c368d
+Copia original en crudo/oilxcoin-portada.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+OilXCoin connects regulated capital markets with real oil & gas  production. The token represents an economic exposure linked to hydrocarbons under contract — issued on Ethereum, structured under European securities law, and designed for accredited and qualified investors worldwide.
+*EU Growth Prospectus approved by the FMA Liechtenstein under Regulation (EU) 2017/1129. Approval relates to the prospectus, not to the merits of the token or the issuer.

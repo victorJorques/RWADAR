@@ -1,0 +1,5 @@
+Fuente: https://api.profitus.com/api/v1/ss/locale/countries
+Consultado: 2026-11-10T09:35:59Z · HTTP 200 · 1285 bytes · sha256 46164aad5b4ac6eb7b8757f79145892c4761ffa228dc4c46fb66950969498da3
+Copia original en crudo/profitus-api-paises.json (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+{"primary_countries":["lt","lv","ee","es"],"secondary_countries":["ad","ae","af","ag","ai","al","am","ao","aq","ar","as" […]

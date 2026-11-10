@@ -1,0 +1,197 @@
+{
+  "slug": "profitus-axiology-bonos-digitales",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-europa",
+  "proveedor": "Profitus (bonos registrados en Axiology)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "UAB \"Profitus Crowdfunding\" (Lituania), proveedor europeo de financiación participativa",
+  "emisor": "Cada emisión tiene su propio emisor (empresa que se financia); hoy no hay ninguna emisión de bonos abierta",
+  "vehiculo": "Bono corporativo de cada emisor",
+  "token": "Bono digital registrado en Axiology DLT TSS (UAB Axiology DLT, Lituania)",
+  "derechoAdquirido": "Bono (deuda) del emisor, anotado en la cuenta de valores que Axiology abre al inversor",
+  "jurisdiccion": "LT",
+  "identificador": null,
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Profitus · Bonds (página para emisores)",
+      "url": "https://www.profitus.com/bonds",
+      "versionOFecha": "sin fecha",
+      "paginas": null,
+      "sha256": "7d2afc89228a43e2e6d27de0f7dea481d9d0fb14e8b49e619a5fab0e3afd9d5b",
+      "leido": true,
+      "nota": "sha256 del texto renderizado original; la copia en fuentes/profitus/ lleva el nombre de una persona recortado"
+    },
+    {
+      "titulo": "Profitus · Investment offers",
+      "url": "https://www.profitus.com/investment-offers",
+      "versionOFecha": "10/11/2026",
+      "paginas": null,
+      "sha256": "416b3002fa96c8727ff107d65493677cad38b49b422cc71e18b1164b676b0f67",
+      "leido": true,
+      "nota": "sha256 del texto renderizado"
+    },
+    {
+      "titulo": "ESMA · List of Authorised DLT Market Infrastructures",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf",
+      "versionOFecha": "2026-01",
+      "paginas": null,
+      "sha256": "8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc",
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV (PSFP europeos que prestan servicios en España)",
+      "entidad": "UAB \"PROFITUS CROWDFUNDING\"",
+      "numero": "21",
+      "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es",
+      "alcance": "Lituania; fecha de inicio en España 28/12/2023.",
+      "consultadoUtc": "2026-11-10T09:02:23Z"
+    },
+    {
+      "regulador": "ESMA (registro ECSP) / Banco de Lituania",
+      "entidad": "UAB \"Profitus Crowdfunding\"",
+      "numero": null,
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_entityTypeCode:CSP&rows=400&wt=json",
+      "alcance": "Activo; autorizado el 10/11/2023.",
+      "consultadoUtc": "2026-11-10T09:03:56Z"
+    },
+    {
+      "regulador": "ESMA (régimen piloto DLT) / Banco de Lituania",
+      "entidad": "UAB Axiology DLT",
+      "numero": "Axiology DLT TSS",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf",
+      "alcance": "Sistema de negociación y liquidación DLT; permiso desde el 9 de julio de 2025.",
+      "consultadoUtc": "2026-11-10T09:19:53Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Profitus",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Profitus",
+      "consultadoUtc": "2026-11-10T09:23:49Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Axiology",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Axiology",
+      "consultadoUtc": "2026-11-10T09:23:50Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "derecho",
+      "literal": "We partner with Axiology ... to distribute bonds. ... Axiology offers PROFITUS, a service that opens investment accounts for investors, in which the bonds they have purchased are registered.",
+      "dato": "bonos distribuidos por Profitus y anotados en Axiology",
+      "fuentePrimaria": "https://www.profitus.com/bonds",
+      "localizador": "Página Bonds, bloque «PARTNERS»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:17:44Z",
+      "alcanceYLimites": "Página dirigida a emisores; plazo hasta 60 meses e intereses del 6 % al 13 % según riesgo (son condiciones generales, no de una emisión).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "estado",
+      "literal": "Real estate loans investment opportunities",
+      "dato": "hoy solo hay préstamos con garantía inmobiliaria abiertos; ninguna emisión de bonos",
+      "fuentePrimaria": "https://www.profitus.com/investment-offers",
+      "localizador": "Página Investment offers: 5 préstamos abiertos y 4 completados, sin bonos",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:17:45Z",
+      "alcanceYLimites": "Los préstamos de Profitus no son tokenizados y quedan fuera del criterio de RWAdar.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "\"primary_countries\":[\"lt\",\"lv\",\"ee\",\"es\"]",
+      "dato": "España es uno de los cuatro países principales de la plataforma",
+      "fuentePrimaria": "https://api.profitus.com/api/v1/ss/locale/countries",
+      "localizador": "API pública de la web de inversión (lista de países)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:23:52Z",
+      "alcanceYLimites": "Junto con la notificación a la CNMV (nº 21) y la web en español (profitus.es), apoya el acceso desde España a la plataforma; no dice nada de una emisión concreta de bonos.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimo",
+      "literal": null,
+      "dato": null,
+      "fuentePrimaria": "https://www.profitus.com/bonds",
+      "localizador": "No hay emisión abierta; el mínimo de los bonos no figura en las páginas públicas leídas",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:17:44Z",
+      "alcanceYLimites": "La prensa cita 500 € por bono; no se usa por no ser fuente primaria.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "salida",
+      "literal": null,
+      "dato": null,
+      "fuentePrimaria": "https://www.profitus.com/bonds",
+      "localizador": "Sin emisión abierta; no hay condiciones de reventa de bonos publicadas",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:17:44Z",
+      "alcanceYLimites": "",
+      "estado": "no_verificable"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple",
+      "nota": "Profitus: ECSP en ESMA y notificado a la CNMV (nº 21). Axiology: DLT TSS autorizado por el Banco de Lituania (lista de ESMA)."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "Hoy no hay ninguna emisión de bonos abierta; solo préstamos no tokenizados."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Sin emisión no hay mínimo, precio, plazo ni documento (ficha de datos fundamentales de la inversión)."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sin advertencias de la CNMV para Profitus ni Axiology."
+    }
+  },
+  "estadoOferta": "no_verificable",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "expediente",
+      "antes": "sin expediente",
+      "ahora": "vía nueva: un proveedor europeo con pasaporte en España que distribuye bonos digitales anotados en un sistema DLT autorizado; hoy sin emisión abierta",
+      "fuente": "https://www.profitus.com/bonds",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": null,
+  "resumenTarjeta": {
+    "minimo": null,
+    "accesoEspana": "Plataforma con pasaporte en España (CNMV nº 21); hoy no hay bonos a la venta",
+    "salida": null
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": "Banco de Lituania (ECSP; CNMV nº 21) y Axiology DLT TSS (lista de ESMA, 09/07/2025)",
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Es la única vía encontrada hoy de deuda tokenizada con proveedor del EEE notificado en España y sistema DLT autorizado.",
+    "porQueNo": "Hoy no hay ninguna emisión de bonos abierta, así que no hay producto concreto que publicar."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir hoy: no hay ninguna emisión de bonos abierta en Profitus (solo préstamos no tokenizados). Vigilar: si abre una emisión registrada en Axiology, tendría entidad regulada con pasaporte en España, sistema DLT autorizado y ficha de la oferta.",
+  "bloqueos": [
+    "La ficha de cada oferta (KIIS) y las condiciones de reventa de bonos solo se ven con cuenta; no se intentó.",
+    "No se encontró en la web pública una lista de emisiones de bonos pasadas ni futuras."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-10T09:17:44Z",
+    "finUtc": "2026-11-10T09:25:35Z"
+  }
+}

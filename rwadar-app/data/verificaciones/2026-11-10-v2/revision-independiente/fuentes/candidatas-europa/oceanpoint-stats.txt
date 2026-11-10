@@ -1,0 +1,36 @@
+Fuente: https://oceanpoint.fi/stats
+Consultado: 2026-11-10T09:35:05Z · HTTP 200 · 46448 bytes · sha256 1974a465dca9c2f9aef2e7403f17ebc2497ecaedae2338fef86da32fe483d1df
+Copia original en crudo/oceanpoint-stats.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+Oceanpoint marketplace
+The on-chain record
+Properties trading on the Oceanpoint marketplace, Ethereum mainnet. Record pulled Sep 2026; every figure is verifiable on Etherscan.
+On-chain volume since 2024
+Sep 2026
+$4.6M
+$1.7M
+in 2024 and
+$2.8M
+in 2025.
+Turnover in 2025
+Sep 2026
+5.4
+×
+2025 volume over the value tokenized.
+Properties trading
+Live
+3
+$514K tokenized, of $1.9M in property value (Sep 2026).
+Marketplace fills
+Sep 2026
+451
+Settled on the KYC-gated order book.
+Wallets
+Sep 2026
+64
+53
+% of buyers bought again.
+Paid to holders, 2024–25
+Sep 2026
+$226K
+Rent and rewards, in USD at the claim date.

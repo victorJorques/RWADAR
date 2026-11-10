@@ -1,0 +1,698 @@
+{
+ "slug": "kraken-xstocks",
+ "tipoExpediente": "publicada",
+ "grupo": "acciones-oro-tesoro",
+ "proveedor": "Kraken (UE)",
+ "plataformaSlug": "kraken",
+ "entidadComercializadora": "Payward Europe Digital Solutions (CY) Limited (antes I.F. Greenfields Wealth Ltd), HE 356603, licencia CySEC 342/17",
+ "emisor": "Backed Assets (JE) Limited (Jersey; LEI 984500001AB7C6C7F577), filial 100 % de Backed Finance AG, a su vez 100 % de Payward Europe Limited (grupo Payward/Kraken)",
+ "vehiculo": "SPV de Jersey que emite certificados tracker abiertos (sin vencimiento) bajo el folleto base BPWO-80 aprobado por la FMA-LI el 08/05/2026, con suplementos de 04/08/2026 y 29/09/2026 (SUPP-68); sin suplementos nuevos en ESMA a 10/11/2026",
+ "token": "xStocks, p. ej. AAPLx (ISIN CH1436219187), SPYx (CH1436219716) y NVDAx (CH1436219195), emitidos en varias redes (Solana, Ethereum y otras)",
+ "derechoAdquirido": "Certificado tracker tokenizado (Registerwertrecht suizo) que replica 1:1 el precio de una acción o ETF de EE. UU.; deuda del emisor garantizada por el subyacente custodiado y subordinada frente al resto; sin voto ni derecho a dividendos (se incorporan netos por rebasing); derecho de reembolso frente al emisor",
+ "jurisdiccion": "CY",
+ "identificador": "CySEC 342/17 · CNMV 4474 · folleto FMA-LI BPWO-80 · ISIN por xStock (AAPLx CH1436219187, SPYx CH1436219716, NVDAx CH1436219195)",
+ "moneda": "USD (precio y venta); compra con euros u otra moneda fiduciaria en el EEE",
+ "documentos": [
+  {
+   "titulo": "Folleto base de Backed Assets (JE) Limited (copia publicada por la MFSA)",
+   "url": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+   "versionOFecha": "08/05/2026, válido hasta 07/05/2027; SHA-256 idéntico al 03/11 y al 05/11 (descargado de nuevo el 10/11 a las 09:16 UTC); ESMA no registra suplementos nuevos (último SUPP 29/09/2026)",
+   "paginas": 160,
+   "sha256": "47be92729ffec7b9bae6c6b6141b1d16b571c787170b570a8f59a03459f008b3",
+   "leido": true
+  },
+  {
+   "titulo": "Segundo suplemento SUPP-68 (participantes autorizados del grupo Payward)",
+   "url": "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
+   "versionOFecha": "29/09/2026; SHA-256 idéntico al 03/11 y al 05/11 (descargado de nuevo el 10/11 a las 09:16 UTC); ESMA no registra suplementos nuevos (último SUPP 29/09/2026)",
+   "paginas": 14,
+   "sha256": "acb0376b2b87f62de152d94130b4613badb17e64a06194c25ae27840f11a0a71",
+   "leido": true
+  },
+  {
+   "titulo": "Condiciones finales y resumen · SP500 xStock SPYx, producto n.º 71",
+   "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+   "versionOFecha": "08/05/2026; ESMA FTWS-874; SHA-256 idéntico al 03/11 y 05/11 (consulta 10/11 09:04:14Z)",
+   "paginas": 164,
+   "sha256": "280159d434561e538f9bac487b0aac8da34f5962f740a3cac12d844fea82a653",
+   "leido": true
+  },
+  {
+   "titulo": "Condiciones finales y resumen · Apple xStock AAPLx, producto n.º 18",
+   "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219187/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+   "versionOFecha": "08/05/2026; ESMA FTWS-966; SHA-256 idéntico al 05/11 (consulta 10/11 09:04:15Z)",
+   "paginas": 162,
+   "sha256": "ad7f3be6ef79bd590e67d7b545227166bf4425808612f95be2734102373cd575",
+   "leido": true
+  },
+  {
+   "titulo": "Condiciones finales y resumen · NVIDIA xStock NVDAx, producto n.º 19",
+   "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+   "versionOFecha": "08/05/2026; ESMA FTWS-864; SHA-256 idéntico al 05/11 (consulta 10/11 09:04:17Z)",
+   "paginas": 162,
+   "sha256": "f309dd9cb54d17218369aa74beaf42d4910864f6500bc93e347f59a82e4f9154",
+   "leido": true
+  },
+  {
+   "titulo": "Condiciones finales más recientes · Janus Henderson B-BBB CLO xStock JBBBx, producto n.º 1.542",
+   "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667175/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+   "versionOFecha": "03/11/2026 (ESMA FTWS-2799); SHA-256 idéntico al 05/11 (consulta 10/11 09:04:18Z); siguen siendo las condiciones finales más recientes del emisor en ESMA",
+   "paginas": 167,
+   "sha256": "9ad0819cc4fbbc7441236e38cdd928909562d38eac0aa792880648718ffb6b69",
+   "leido": true
+  },
+  {
+   "titulo": "Condiciones finales más recientes · Cboe Global Markets xStock CBOEx, producto n.º 424",
+   "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1580494602/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+   "versionOFecha": "03/11/2026 (ESMA FTWS-2827); no se volvió a descargar hoy (ESMA no registra documentos nuevos del emisor desde el 04/11)",
+   "paginas": 166,
+   "sha256": "65ccdd4d560d3940abc348fca9e054173f0e82ab2a2d08d9f4ffa502665625ff",
+   "leido": false
+  },
+  {
+   "titulo": "Condiciones finales n.º 159 (LITEx), web oficial del emisor (contenedor de xstocks.fi), citadas en la ficha",
+   "url": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
+   "versionOFecha": "26/03/2026, emitidas con el folleto de 2025; SHA-256 idéntico al 03/11 y 05/11 (descargado de nuevo el 10/11 a las 09:16:32 UTC); misma cláusula de países de oferta",
+   "paginas": 162,
+   "sha256": "85b56d11920c9641dcf95f28ca7aa030d53bef0f5729df8f2e252c1c9d0fde5a",
+   "leido": true
+  },
+  {
+   "titulo": "KID en español · SPYx",
+   "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+   "versionOFecha": "«Este documento tiene fecha 09 nov. 2026» (el 05/11 era de 04/11); riesgo 5/7 igual; solo cambian cifras de escenarios",
+   "paginas": 3,
+   "sha256": "d89ded598b12dca9660087cb3ef4e2216c3fe928b8a71d796e10f6ff1e0deefc",
+   "leido": true
+  },
+  {
+   "titulo": "KID en español · AAPLx",
+   "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219187/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+   "versionOFecha": "09/11/2026; riesgo 5/7 igual",
+   "paginas": 3,
+   "sha256": "c5cf5d2a01c28cf050ad751a4b71ad74d26fac5c249bd121374a5163587e1c98",
+   "leido": true
+  },
+  {
+   "titulo": "KID en español · NVDAx",
+   "url": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219195/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+   "versionOFecha": "09/11/2026; riesgo 6/7 igual",
+   "paginas": 3,
+   "sha256": "cf3822f0c1f299b8af03822e35922d7afd1b772af3b8465f26e386797a7f0d57",
+   "leido": true
+  },
+  {
+   "titulo": "Página xStocks de Kraken UE (inglés y español)",
+   "url": "https://eu.kraken.com/xstocks",
+   "versionOFecha": "consultada 10/11/2026 09:04 UTC; texto visible igual al del 05/11 (es y en)",
+   "paginas": null,
+   "sha256": "b515390c6d422c42f48559b65abbad2c09c7e33b42f215df798f9cef24d1e5fa",
+   "leido": true
+  },
+  {
+   "titulo": "Risk Disclosure · PEDSL",
+   "url": "https://eu.kraken.com/legal/risk-disclosure",
+   "versionOFecha": "Updated : 27 January 2026 (sin cambios el 10/11)",
+   "paginas": null,
+   "sha256": "ab0205dc2f444a166254934c0b40c9f9d0c1b67c7cf77525ea8a819312a82edb",
+   "leido": true
+  },
+  {
+   "titulo": "Soporte Kraken · disponibilidad de xStocks",
+   "url": "https://support.kraken.com/articles/xstocks-availability",
+   "versionOFecha": "Última actualización 18/06/2026 (sin cambios el 10/11)",
+   "paginas": null,
+   "sha256": "e4ef81be15e3a864658cb6ae274ee5d1723d20b28dfb67543132f9bdf58c0931",
+   "leido": true
+  },
+  {
+   "titulo": "Soporte Kraken · preguntas frecuentes sobre xStocks",
+   "url": "https://support.kraken.com/articles/xstocks-faq",
+   "versionOFecha": "Última actualización 30/10/2026 (sin cambios el 10/11)",
+   "paginas": null,
+   "sha256": "4c6aa0aaeb28114acb59b32536893f199b5783ab74be1774a454771886442e98",
+   "leido": true
+  },
+  {
+   "titulo": "Kraken · Estructura de comisiones (inglés)",
+   "url": "https://www.kraken.com/features/fee-schedule",
+   "versionOFecha": "consultada 10/11/2026 09:05:16 UTC con idioma inglés (la petición con idioma español devuelve la versión española)",
+   "paginas": null,
+   "sha256": "ccfe68f58c2376315e75bce01e43fb90697a03b379091575ec845e628221f0af",
+   "leido": true
+  },
+  {
+   "titulo": "Kraken · Estructura de comisiones (español)",
+   "url": "https://www.kraken.com/es-es/features/fee-schedule",
+   "versionOFecha": "consultada 10/11/2026 09:04:48 UTC",
+   "paginas": null,
+   "sha256": "ed6f456535e392e5d7f22146f52bab02941d317159b19f389ccc668d42648367",
+   "leido": true
+  },
+  {
+   "titulo": "Web del emisor xstocks.fi (pie legal)",
+   "url": "https://xstocks.fi/us",
+   "versionOFecha": "consultada 10/11/2026 09:04:57 UTC; mismo texto",
+   "paginas": null,
+   "sha256": "f0ab616af9e12a06ec3b673519691a3c7c8406427b6405db93c709515cae66f9",
+   "leido": true
+  },
+  {
+   "titulo": "Documentación legal en la web del emisor",
+   "url": "https://assets.backed.fi/legal-documentation",
+   "versionOFecha": "10/11/2026 09:04:57 UTC: sigue en «Access Restricted» (bloqueo por país, salida por EE. UU.); no se intentó sortear",
+   "paginas": null,
+   "sha256": null,
+   "leido": false
+  },
+  {
+   "titulo": "Kraken · términos legales de xStocks (fuera de la UE)",
+   "url": "https://www.kraken.com/legal/xstocks",
+   "versionOFecha": "consultada 10/11/2026 09:06:01 UTC; describe la venta por Payward Digital Solutions Ltd. (Bermudas), no por la entidad europea: no explica la venta en España",
+   "paginas": null,
+   "sha256": "457c444def56a4ae412524d7db16a5bf9024681c1cf48a00e084ccfa691b3872",
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CySEC",
+   "entidad": "Payward Europe Digital Solutions (CY) Limited (ex I.F. Greenfields Wealth Ltd)",
+   "numero": "Licencia 342/17 (13/11/2017)",
+   "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+   "alcance": "ESI chipriota: recepción y transmisión, ejecución y negociación por cuenta propia sobre los instrumentos 1 a 10, y custodia; dominio aprobado eu.kraken.com; España en la lista de servicios transfronterizos (sin cambios el 10/11: licencia 342/17, dominio eu.kraken.com, España en la lista)",
+   "consultadoUtc": "2026-11-10T09:04:49Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "PAYWARD EUROPE DIGITAL SOLUTIONS (CY) LIMITED",
+   "numero": "4474 (05/01/2018)",
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474&vista=17",
+   "alcance": "ESI del EEE en libre prestación en España; programa con negociación por cuenta propia sobre «1) Valores negociables» (sin cambios el 10/11)",
+   "consultadoUtc": "2026-11-10T09:04:54Z"
+  },
+  {
+   "regulador": "FMA Liechtenstein (vía ESMA y CNMV)",
+   "entidad": "Backed Assets (JE) Limited",
+   "numero": "Folleto base BPWO-80 (08/05/2026); suplementos SUPP-62 (04/08/2026) y SUPP-68 (29/09/2026)",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*%20AND%20-document_type:FTWS&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "alcance": "Aprobación de folleto de valores de deuda para minoristas, pasaportada a España (CNMV, 11/05/2026). Sin suplementos nuevos desde el 29/09/2026 (consulta 10/11). No es licencia del emisor ni aval del producto. Los registros de condiciones finales (FTWS) listan SPAIN en «member_states» por el pasaporte del folleto; el país de oferta lo fijan las propias condiciones finales.",
+   "consultadoUtc": "2026-11-10T09:03:56Z"
+  },
+  {
+   "regulador": "CNMV (pasaportes recibidos)",
+   "entidad": "BACKED ASSETS (JE) LIMITED",
+   "numero": "BPWO-80, notificado el 11/05/2026, con traducción de la nota de síntesis y suplementos",
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+   "alcance": "Notificación del folleto para oferta pública en España; la CNMV no realiza procedimiento sobre documentos notificados (sin cambios el 10/11: una sola entrada, BPWO-80 de 11/05/2026)",
+   "consultadoUtc": "2026-11-10T09:04:56Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Kraken",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Kraken",
+   "consultadoUtc": "2026-11-10T09:05:36Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Payward",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Payward",
+   "consultadoUtc": "2026-11-10T09:05:38Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Backed",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Backed",
+   "consultadoUtc": "2026-11-10T09:05:40Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "xStocks",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=xStocks",
+   "consultadoUtc": "2026-11-10T09:05:42Z"
+  },
+  {
+   "regulador": "CNMV (control)",
+   "busqueda": "Gemini",
+   "resultado": "coincidencia: GEMINI LTD FX y GEMINI OPTION LTD (la búsqueda funciona)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+   "consultadoUtc": "2026-11-10T09:02:24Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "minimo",
+   "literal": "Puedes comenzar con tan solo 1 EUR y no hace falta que pagues todo lo que cuesta una acción.",
+   "dato": "1 EUR",
+   "fuentePrimaria": "https://eu.kraken.com/xstocks",
+   "localizador": "eu.kraken.com/xstocks (es), bloque de ventajas; FAQ «Los xStocks permiten a los clientes comprar acciones fraccionadas de activos con una inversión de tan solo 1 EUR»",
+   "fechaDato": "2026-11-10",
+   "consultadoUtc": "2026-11-10T09:04:46Z",
+   "alcanceYLimites": "Mínimo del distribuidor (PEDSL-CY). El mínimo de suscripción directa con el emisor es de 5.000 USD (condiciones finales SPYx, p. 11) y no aplica al cliente de Kraken.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Los xStocks están disponibles para clientes de PEDSL-CY ubicados en la UE que hayan completado con éxito la evaluación de idoneidad obligatoria o que sean inversores profesionales.",
+   "dato": "según Kraken: clientes en la UE tras su evaluación",
+   "fuentePrimaria": "https://eu.kraken.com/xstocks",
+   "localizador": "eu.kraken.com/xstocks (es), FAQ «¿Quién puede comprar xStocks?»",
+   "fechaDato": "2026-11-10",
+   "consultadoUtc": "2026-11-10T09:04:46Z",
+   "alcanceYLimites": "Kraken no nombra España. PEDSL-CY tiene España en su pasaporte CySEC y está inscrita en la CNMV (n.º 4474). La divulgación de riesgos habla de test de conveniencia («Appropriateness»).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Si resides en el EEE, debes completar y aprobar un cuestionario antes de obtener acceso al trading de xStocks. Una vez aprobados, los clientes del EEE pueden comprar, vender y convertir xStocks utilizando solo fiat.",
+   "dato": "EEE: cuestionario previo y solo dinero fiduciario",
+   "fuentePrimaria": "https://support.kraken.com/articles/xstocks-availability",
+   "localizador": "support.kraken.com, disponibilidad de xStocks, última actualización 18/06/2026",
+   "fechaDato": "2026-06-18",
+   "consultadoUtc": "2026-11-10T09:04:47Z",
+   "alcanceYLimites": "Excluye EE. UU., Australia, Canadá, Reino Unido y regiones prohibidas (Bélgica aparece en una de las dos listas). España no figura excluida.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "The Products will be offered in Liechtenstein and Switzerland (only to Swiss Professional Investors). The right to offer in other jurisdictions is explicitly reserved.",
+   "dato": "condiciones finales vigentes de SPYx, AAPLx y NVDAx: países de oferta LI y CH (en CH solo profesionales); España no",
+   "fuentePrimaria": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+   "localizador": "Condiciones finales SPYx (08/05/2026), parte B «Additional Information», p. 35; AAPLx y NVDAx (08/05/2026), p. 33, mismo texto",
+   "fechaDato": "2026-05-08",
+   "consultadoUtc": "2026-11-10T09:04:14Z",
+   "alcanceYLimites": "«Country(ies) where the Base Prospectus has been notified» sí lista España (justo debajo). El folleto (p. 7) solo permite la oferta pública en un Estado del EEE si las condiciones finales la especifican. Pendiente sin resolver el 10/11: mismas condiciones finales (SHA-256 idéntico) y ninguna nueva en ESMA desde el 03/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "The Products will be offered in Liechtenstein and Switzerland (only to Swiss Professional Investors). The right to offer in other jurisdictions is explicitly reserved.",
+   "dato": "las condiciones finales más recientes (03/11/2026) tampoco incluyen España",
+   "fuentePrimaria": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667175/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+   "localizador": "Condiciones finales JBBBx (03/11/2026, FTWS-2799), p. 34; CBOEx (03/11/2026, FTWS-2827), p. 33",
+   "fechaDato": "2026-11-03",
+   "consultadoUtc": "2026-11-10T09:04:18Z",
+   "alcanceYLimites": "JBBBx releída hoy (SHA-256 idéntico, p. 34 de la versión impresa; línea «Country(ies) of offer(s)»). ESMA no registra condiciones finales del emisor posteriores al 03/11/2026 (consulta 10/11 09:03:58Z: último lote de 44 el 03/11, actualizado el 04/11). Plantilla del folleto (p. 141): «offered in Liechtenstein [and Switzerland…]».",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Backed Assets (JE) Limited offers its Products mainly in Liechtenstein and for the European Union (\"EU\") in Austria, … Spain, Sweden and the Netherlands.",
+   "dato": "el folleto nombra España entre sus mercados principales",
+   "fuentePrimaria": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+   "localizador": "Folleto base 08/05/2026, 3.2.2 «Principal Markets», p. 57",
+   "fechaDato": "2026-05-08",
+   "consultadoUtc": "2026-11-10T09:16:10Z",
+   "alcanceYLimites": "Declaración de mercados del emisor; la oferta pública concreta depende de las condiciones finales (folleto p. 7 y p. 130). SHA-256 idéntico el 10/11; ESMA no registra suplementos nuevos (consulta 10/11 09:03:56Z).",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "11/05/2026 · BACKED ASSETS (JE) LIMITED · LIECHTENSTEIN · BPWO-80 · 08/05/2026 · Sí · Sí",
+   "dato": "folleto base notificado a la CNMV el 11/05/2026",
+   "fuentePrimaria": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+   "localizador": "CNMV, Pasaportes recibidos, búsqueda por LEI 984500001AB7C6C7F577",
+   "fechaDato": "2026-05-11",
+   "consultadoUtc": "2026-11-10T09:04:56Z",
+   "alcanceYLimites": "Pasaporte del folleto, no autorización del producto ni del distribuidor. Sin entradas nuevas el 10/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "distribucion",
+   "literal": "Currently, the Issuer has Authorized Participant Agreements with Payward Digital Solutions Ltd and Payward Europe Digital Solutions (CY) Limited, both group companies of the Issuer",
+   "dato": "PEDSL-CY es participante autorizado del emisor",
+   "fuentePrimaria": "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
+   "localizador": "SUPP-68 (29/09/2026), definición «Authorized Participant», p. 2",
+   "fechaDato": "2026-09-29",
+   "consultadoUtc": "2026-11-10T09:16:11Z",
+   "alcanceYLimites": "SHA-256 idéntico al 03/11. SHA-256 idéntico el 10/11; ESMA no registra suplementos nuevos (consulta 10/11 09:03:56Z).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "distribucion",
+   "literal": "Authorized Participants may offer the Products to all segments of Investors.",
+   "dato": "los participantes autorizados pueden vender a minoristas",
+   "fuentePrimaria": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+   "localizador": "Folleto base 08/05/2026, «Authorized Participant(s) · Function», p. 67",
+   "fechaDato": "2026-05-08",
+   "consultadoUtc": "2026-11-10T09:16:10Z",
+   "alcanceYLimites": "Con el límite de la p. 7: oferta pública en un Estado del EEE solo si las condiciones finales la especifican. SHA-256 idéntico el 10/11; ESMA no registra suplementos nuevos (consulta 10/11 09:03:56Z).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "derecho",
+   "literal": "xStocks are debt securities in tokenised format",
+   "dato": "certificado de deuda tokenizado, sin voto ni dividendos en efectivo",
+   "fuentePrimaria": "https://eu.kraken.com/legal/risk-disclosure",
+   "localizador": "Risk Disclosure PEDSL, apartado xStocks (Updated : 27 January 2026)",
+   "fechaDato": "2026-01-27",
+   "consultadoUtc": "2026-11-10T09:04:47Z",
+   "alcanceYLimites": "Resumen en español de las condiciones finales SPYx: sin derechos de accionista.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "dividendos",
+   "literal": "Dividendo neto (tras la retención fiscal del 30% en EE. UU.) dividido entre el precio de cierre de la acción subyacente del día anterior.",
+   "dato": "dividendos netos (retención 30 % EE. UU.) incorporados al saldo por rebasing",
+   "fuentePrimaria": "https://support.kraken.com/articles/xstocks-faq",
+   "localizador": "support.kraken.com, preguntas frecuentes de xStocks, última actualización 30/10/2026",
+   "fechaDato": "2026-10-30",
+   "consultadoUtc": "2026-11-10T09:04:47Z",
+   "alcanceYLimites": "Condiciones finales SPYx p. 7: «included, net of taxes … by way of Rebasing».",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Hemos clasificado este producto en la clase de riesgo 5 en una escala de 7",
+   "dato": "SPYx 5/7, AAPLx 5/7, NVDAx 6/7",
+   "fuentePrimaria": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+   "localizador": "KID en español, fecha 09/11/2026, p. 2 (SPYx); AAPLx y NVDAx con la misma fecha",
+   "fechaDato": "2026-11-09",
+   "consultadoUtc": "2026-11-10T09:04:19Z",
+   "alcanceYLimites": "La ficha publicada no usa el KID a propósito (revisión 03.4). Sin cambios de clase frente al 04/11; solo cambian cifras de escenarios.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "BY INVESTING IN xSTOCKS, YOU CAN LOSE YOUR ENTIRE INVESTMENT.",
+   "dato": "producto complejo; posible pérdida total",
+   "fuentePrimaria": "https://eu.kraken.com/legal/risk-disclosure",
+   "localizador": "Risk Disclosure PEDSL, apartado xStocks («Updated : 27 January 2026»)",
+   "fechaDato": "2026-01-27",
+   "consultadoUtc": "2026-11-10T09:04:47Z",
+   "alcanceYLimites": "Sin cambios. Riesgo de crédito de PEDSL y de Backed.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "The Issuer is currently not profitable and depends on capital and financing from its Parent",
+   "dato": "emisor no rentable y dependiente de su grupo",
+   "fuentePrimaria": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+   "localizador": "Folleto base p. 30; SUPP-68 p. 4 «Financial dependency on Payward Group companies»",
+   "fechaDato": "2026-09-29",
+   "consultadoUtc": "2026-11-10T09:16:10Z",
+   "alcanceYLimites": "Documentos con SHA-256 idéntico al 03/11; no hay suplemento nuevo con cuentas. SHA-256 idéntico el 10/11; ESMA no registra suplementos nuevos (consulta 10/11 09:03:56Z).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "only suitable for acquisition by a person who: (i) has a significantly substantial asset base … and (ii) is sufficiently financially sophisticated",
+   "dato": "aviso de idoneidad del folleto (Jersey)",
+   "fuentePrimaria": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+   "localizador": "Folleto base 08/05/2026, p. 5",
+   "fechaDato": "2026-05-08",
+   "consultadoUtc": "2026-11-10T09:16:10Z",
+   "alcanceYLimites": "Sin cambios. SHA-256 idéntico el 10/11; ESMA no registra suplementos nuevos (consulta 10/11 09:03:56Z).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "The standard 1% instant buy/sell trading fee applies when purchasing xStocks using other assets. To lock in a price, a spread may be included in the asset price for each transaction.",
+   "dato": "con euros: 1 % de compra instantánea más diferencial",
+   "fuentePrimaria": "https://www.kraken.com/features/fee-schedule",
+   "localizador": "Kraken, Fee Schedule (inglés), apartado xStocks; «Small instant trades carry a fee of up to $2 instead of the 1% fee»",
+   "fechaDato": "2026-11-10",
+   "consultadoUtc": "2026-11-10T09:05:16Z",
+   "alcanceYLimites": "La versión española sigue sin la frase de los 2 USD («Se aplicara la comisión de trading por compraventa instantánea estándar…»). Página global de Kraken. Diferencial sin cifra.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "salida",
+   "literal": "Sí, puedes abandonar tu posición cuando quieras. En Kraken, elige el xStock de tu cartera y toca “Vender” para convertir los tokens de nuevo a USD al precio de mercado actual. También puedes retirar tus xStocks a un monedero compatible",
+   "dato": "venta a PEDSL en USD o retirada a wallet propia",
+   "fuentePrimaria": "https://eu.kraken.com/xstocks",
+   "localizador": "eu.kraken.com/xstocks (es), FAQ «¿Puedo revender mis xStocks?»",
+   "fechaDato": "2026-11-10",
+   "consultadoUtc": "2026-11-10T09:04:46Z",
+   "alcanceYLimites": "Venta en USD (riesgo de cambio). Horario: «se operan 24/5, con acceso 24/7 para determinados activos en Kraken Pro». El reembolso directo con el emisor cuesta hasta 0,5 % y al menos 100 USD (condiciones finales SPYx, p. 5–6).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "estado",
+   "literal": "Kraken ofrece acceso a más de 130 acciones y ETF de EE. UU., incluidos nombres como Tesla (TSLAx), Apple (AAPLx), SpaceX (SPCXx) y GameStop (GMEx).",
+   "dato": "abierta; más de 130 subyacentes",
+   "fuentePrimaria": "https://eu.kraken.com/xstocks",
+   "localizador": "eu.kraken.com/xstocks (es), FAQ",
+   "fechaDato": "2026-11-10",
+   "consultadoUtc": "2026-11-10T09:04:46Z",
+   "alcanceYLimites": "Sin alta por nuestra parte. El emisor sigue registrando condiciones finales nuevas (44 el 03/11/2026).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "afiliacion",
+   "literal": "El emisor de xStocks no está afiliado al Grupo Kraken.",
+   "dato": "la web de Kraken sigue diciendo «no afiliado»",
+   "fuentePrimaria": "https://eu.kraken.com/xstocks",
+   "localizador": "eu.kraken.com/xstocks (es), pie legal",
+   "fechaDato": "2026-11-10",
+   "consultadoUtc": "2026-11-10T09:04:46Z",
+   "alcanceYLimites": "Contradice el folleto (3.3, p. 57) y SUPP-68 (p. 2): Backed es del grupo Payward. Prevalece el folleto aprobado.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "documentos",
+   "literal": "Access Restricted … you are trying to access our website from a restricted country.",
+   "dato": null,
+   "fuentePrimaria": "https://assets.backed.fi/legal-documentation",
+   "localizador": "assets.backed.fi redirige a /geoblock",
+   "fechaDato": "2026-11-10",
+   "consultadoUtc": "2026-11-10T09:04:57Z",
+   "alcanceYLimites": "Sigue bloqueado por país (salida por EE. UU.); no se intentó sortear. Documentos leídos en la MFSA, el servicio documental del emisor (l-p-a.com) y el contenedor de xstocks.fi.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "PEDSL-CY: licencia CySEC 342/17 con España en su pasaporte e inscrita en la CNMV (n.º 4474). Folleto del emisor aprobado por la FMA-LI y notificado a la CNMV. Pero ninguna condición final vigente leída (ni las más recientes, del 03/11) incluye España como país de oferta pública; el 10/11 ESMA no registra condiciones finales ni suplementos nuevos."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple",
+   "nota": "Página de Kraken UE activa el 10/11/2026 (09:04 UTC) con más de 130 xStocks; KID en español re-fechados el 09/11/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Según Kraken, clientes en la UE tras su evaluación; en el EEE solo con dinero fiduciario. Desde 1 €. 1 % de compra instantánea (hasta 2 USD en compras pequeñas, versión inglesa) más diferencial. Venta en USD a PEDSL o retirada a wallet. Las condiciones finales no ofrecen el producto en España."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Producto complejo con posible pérdida total; emisor no rentable y del mismo grupo que el vendedor; riesgo de cambio. Sin advertencias de la CNMV para Kraken, Payward, Backed ni xStocks el 10/11."
+  }
+ },
+ "estadoOferta": "abierta",
+ "disponibleEs": "confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "accesoEspana (pendiente del 03/11 y del 05/11)",
+   "antes": "Condiciones finales: solo Liechtenstein y Suiza (en Suiza solo profesionales); España no es país de oferta",
+   "ahora": "Sigue igual el 10/11: SPYx, AAPLx, NVDAx (08/05/2026) y JBBBx (03/11/2026) con el mismo SHA-256 y la misma cláusula; ESMA no registra condiciones finales ni suplementos del emisor posteriores al 03/11. El primer aviso no se puede quitar",
+   "fuente": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667175/BF%20Final%20Terms%20AND%20Summary%20(PDF)",
+   "critico": false
+  },
+  {
+   "campo": "KID en español",
+   "antes": "Fechados el 04/11/2026",
+   "ahora": "Fechados el 09/11/2026 (SHA-256 nuevo); misma clase de riesgo (5/7 SPYx y AAPLx, 6/7 NVDAx); solo cambian cifras de escenarios. La ficha no los usa",
+   "fuente": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/%5Bes%5D%20BF%20Key%20Information%20Document%20(PDF)",
+   "critico": false
+  },
+  {
+   "campo": "página, comisiones, registros y advertencias",
+   "antes": "Desde 1 €, más de 130 subyacentes, 24/5, 1 % (+ hasta 2 USD en inglés), CySEC 342/17, CNMV 4474, sin advertencias",
+   "ahora": "Sin cambios el 10/11 (09:04–09:06 UTC)",
+   "fuente": "https://eu.kraken.com/xstocks",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "xStocks: certificados tokenizados que siguen el precio de acciones de EE. UU.",
+  "categoria": "Acciones y capital privado",
+  "pais": "CY",
+  "tipo": "valor",
+  "coleccion": "principales",
+  "resumen": "Certificados de deuda de Backed Assets (JE), sociedad de Jersey del grupo de Kraken, que siguen el precio de más de 130 acciones y ETF de EE. UU. No son las acciones: dependen de la solvencia del emisor. Los vende Kraken UE desde Chipre.",
+  "metricas": [
+   {
+    "etiqueta": "Mínimo",
+    "valor": "Desde 1 €"
+   },
+   {
+    "etiqueta": "Qué compras",
+    "valor": "Certificado de deuda de Backed Assets (JE), no la acción"
+   },
+   {
+    "etiqueta": "Vendedor y supervisor",
+    "valor": "Payward Europe Digital Solutions (CY) · CySEC 342/17 · CNMV n.º 4474"
+   },
+   {
+    "etiqueta": "Folleto",
+    "valor": "Aprobado por la FMA de Liechtenstein y notificado a la CNMV (11/05/2026); no cubre su venta en España"
+   },
+   {
+    "etiqueta": "Condiciones finales",
+    "valor": "Solo ofrecen el producto en Liechtenstein y Suiza (en Suiza, solo a profesionales); España no figura como país de oferta"
+   },
+   {
+    "etiqueta": "Compra con euros",
+    "valor": "1 % por compra instantánea, o hasta 2 USD en compras pequeñas según la versión inglesa de la tabla, más un diferencial que Kraken no publica"
+   },
+   {
+    "etiqueta": "Salida",
+    "valor": "Venta a Kraken en USD (24/5) o retirada a wallet"
+   }
+  ],
+  "url": "https://eu.kraken.com/xstocks",
+  "fuentesActuales": [
+   "https://eu.kraken.com/xstocks",
+   "https://eu.kraken.com/legal/risk-disclosure",
+   "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=4474",
+   "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/45914/",
+   "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+   "https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_priii_documents",
+   "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"
+  ],
+  "rentabilidad": null,
+  "avisos": [
+   "Referencia editorial gratuita. El proveedor comprueba admisión, condiciones y riesgos; RWAdar no recibe dinero de inversiones.",
+   "Kraken UE lo vende a particulares en España, pero las condiciones finales del emisor solo ofrecen el producto en Liechtenstein y Suiza: el folleto no cubre su venta en España.",
+   "RWAdar no ha encontrado ningún documento oficial que explique en qué se basa la venta en España.",
+   "No compras la acción: es un certificado de deuda de Backed Assets (JE), sin voto ni dividendos en efectivo.",
+   "Riesgo de contraparte: si el emisor o Kraken fallan, puedes perder parte o todo. El emisor no es rentable y depende de su grupo.",
+   "Emisor y vendedor son del mismo grupo (Payward/Kraken), aunque la web de Kraken diga que no está afiliado.",
+   "Producto complejo: puedes perder toda la inversión.",
+   "El folleto advierte que solo es adecuado para quien pueda soportar cualquier pérdida y tenga conocimientos financieros.",
+   "Precio y venta en USD: si el dólar baja frente al euro, pierdes aunque la acción no se mueva.",
+   "Los dividendos no se cobran: se suman al saldo, netos de una retención del 30 % en EE. UU."
+  ],
+  "resumenTarjeta": {
+   "minimo": "Desde 1 € (compras fracciones del certificado)",
+   "accesoEspana": "Kraken UE lo vende a clientes de la UE tras su test, pero las condiciones finales no incluyen España",
+   "salida": "Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo"
+  },
+  "lugar": "Limasol · Chipre",
+  "pasos": [
+   "Abres cuenta y test",
+   "Compras con euros",
+   "Vendes o retiras"
+  ],
+  "concepto": "fichas digitales con siluetas de rascacielos financieros que viajan entre una pantalla y una cartera de mano"
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "si",
+  "minimoEntrada": "1 EUR",
+  "supervisorVerificado": "CySEC licencia 342/17 · CNMV ESI EEE libre prestación n.º 4474 · folleto FMA-LI BPWO-80 notificado a la CNMV",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "si",
+  "cifraRecienteVerificada": "si",
+  "porQueDestaca": "Distribuidor MiFID con pasaporte a España, desde 1 € y token que se puede sacar a una wallet propia.",
+  "porQueNo": "Ninguna condición final, ni siquiera las del 03/11/2026, ofrece el producto en España; diferencial sin publicar; venta en USD; emisor no rentable y del mismo grupo que el vendedor."
+ },
+ "decision": "mantener",
+ "motivoDecision": "El pendiente no se resuelve el 10/11: las condiciones finales vigentes de SPYx, AAPLx y NVDAx (08/05/2026) y las más recientes (JBBBx, 03/11/2026) tienen el mismo SHA-256 y siguen ofreciendo el producto solo en Liechtenstein y Suiza; ESMA no registra condiciones finales ni suplementos del emisor posteriores al 03/11. El primer aviso se queda. Página de Kraken, comisiones, CySEC, CNMV, pasaporte del folleto y advertencias sin cambios; los KID en español se re-fecharon al 09/11 sin cambios de riesgo.",
+ "bloqueos": [
+  "assets.backed.fi sigue bloqueada por país (salida por EE. UU.); no se intentó sortear. Documentos leídos en el servicio documental del emisor (l-p-a.com), ESMA y la MFSA.",
+  "ESMA puede tardar en registrar condiciones finales nuevas: el registro se consultó el 10/11 a las 09:03 UTC (última actualización de documentos del emisor: 04/11).",
+  "Diferencial (spread) de Kraken sin cifra publicada.",
+  "No hay documento oficial que explique la base de la venta en España (ni de Kraken UE ni del emisor)."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-10T09:02:24Z",
+  "finUtc": "2026-11-10T09:16:11Z"
+ },
+ "avisosConFecha": [
+  {
+   "avisoPublicado": "Kraken UE lo vende a particulares en España, pero las condiciones finales del emisor solo ofrecen el producto en Liechtenstein y Suiza: el folleto no cubre su venta en España.",
+   "estadoHoy": "vigente",
+   "literal": "The Products will be offered in Liechtenstein and Switzerland (only to Swiss Professional Investors). The right to offer in other jurisdictions is explicitly reserved.",
+   "fuente": "https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1436219716/BF%20Final%20Terms%20AND%20Summary%20(PDF) (línea «Country(ies) of offer(s)»); también https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667175/BF%20Final%20Terms%20AND%20Summary%20(PDF) (03/11/2026); ESMA sin condiciones finales nuevas a 10/11",
+   "consultadoUtc": "2026-11-10T09:04:14Z",
+   "textoNuevo": null
+  },
+  {
+   "avisoPublicado": "RWAdar no ha encontrado ningún documento oficial que explique en qué se basa la venta en España.",
+   "estadoHoy": "vigente",
+   "literal": "Ni el folleto, ni las condiciones finales (08/05/2026 y 03/11/2026), ni Kraken UE (FAQ: «clientes de PEDSL-CY ubicados en la UE»), ni los términos de xStocks de kraken.com (venta por la entidad de Bermudas) explican la base de la venta en España",
+   "fuente": "https://eu.kraken.com/xstocks",
+   "consultadoUtc": "2026-11-10T09:06:01Z",
+   "textoNuevo": null
+  },
+  {
+   "avisoPublicado": "Riesgo de contraparte: si el emisor o Kraken fallan, puedes perder parte o todo. El emisor no es rentable y depende de su grupo.",
+   "estadoHoy": "vigente",
+   "literal": "The Issuer is currently not profitable and depends on capital and financing from its Parent (folleto p. 30; SUPP-68 p. 4); sin suplemento nuevo en ESMA a 10/11",
+   "fuente": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+   "consultadoUtc": "2026-11-10T09:16:10Z",
+   "textoNuevo": null
+  },
+  {
+   "avisoPublicado": "Emisor y vendedor son del mismo grupo (Payward/Kraken), aunque la web de Kraken diga que no está afiliado.",
+   "estadoHoy": "vigente",
+   "literal": "El emisor de xStocks no está afiliado al Grupo Kraken (pie de eu.kraken.com/xstocks) frente a «both group companies of the Issuer» (SUPP-68, p. 2)",
+   "fuente": "https://eu.kraken.com/xstocks",
+   "consultadoUtc": "2026-11-10T09:04:46Z",
+   "textoNuevo": null
+  },
+  {
+   "avisoPublicado": "Los dividendos no se cobran: se suman al saldo, netos de una retención del 30 % en EE. UU.",
+   "estadoHoy": "vigente",
+   "literal": "Dividendo neto (tras la retención fiscal del 30% en EE. UU.) … Última actualización: 30 de octubre de 2026",
+   "fuente": "https://support.kraken.com/articles/xstocks-faq",
+   "consultadoUtc": "2026-11-10T09:04:47Z",
+   "textoNuevo": null
+  },
+  {
+   "avisoPublicado": "Métrica «Folleto»: Aprobado por la FMA de Liechtenstein y notificado a la CNMV (11/05/2026); no cubre su venta en España",
+   "estadoHoy": "vigente",
+   "literal": "11/05/2026 · BACKED ASSETS (JE) LIMITED · LIECHTENSTEIN · BPWO-80 · 08/05/2026",
+   "fuente": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500001AB7C6C7F577",
+   "consultadoUtc": "2026-11-10T09:04:56Z",
+   "textoNuevo": null
+  },
+  {
+   "avisoPublicado": "Métrica «Compra con euros»: 1 % por compra instantánea, o hasta 2 USD en compras pequeñas según la versión inglesa de la tabla, más un diferencial que Kraken no publica",
+   "estadoHoy": "vigente",
+   "literal": "Small instant trades carry a fee of up to $2 instead of the 1% fee",
+   "fuente": "https://www.kraken.com/features/fee-schedule",
+   "consultadoUtc": "2026-11-10T09:05:16Z",
+   "textoNuevo": null
+  },
+  {
+   "avisoPublicado": "No compras la acción: es un certificado de deuda de Backed Assets (JE), sin voto ni dividendos en efectivo.",
+   "estadoHoy": "vigente",
+   "literal": "xStocks are debt securities in tokenised format",
+   "fuente": "https://eu.kraken.com/legal/risk-disclosure",
+   "consultadoUtc": "2026-11-10T09:04:47Z",
+   "textoNuevo": null
+  },
+  {
+   "avisoPublicado": "Producto complejo: puedes perder toda la inversión.",
+   "estadoHoy": "vigente",
+   "literal": "BY INVESTING IN xSTOCKS, YOU CAN LOSE YOUR ENTIRE INVESTMENT.",
+   "fuente": "https://eu.kraken.com/legal/risk-disclosure",
+   "consultadoUtc": "2026-11-10T09:04:47Z",
+   "textoNuevo": null
+  },
+  {
+   "avisoPublicado": "Precio y venta en USD: si el dólar baja frente al euro, pierdes aunque la acción no se mueva.",
+   "estadoHoy": "vigente",
+   "literal": "toca “Vender” para convertir los tokens de nuevo a USD al precio de mercado actual",
+   "fuente": "https://eu.kraken.com/xstocks",
+   "consultadoUtc": "2026-11-10T09:04:46Z",
+   "textoNuevo": null
+  },
+  {
+   "avisoPublicado": "El folleto advierte que solo es adecuado para quien pueda soportar cualquier pérdida y tenga conocimientos financieros.",
+   "estadoHoy": "vigente",
+   "literal": "only suitable for acquisition by a person who: (i) has a significantly substantial asset base … (folleto p. 5; sin suplemento que lo cambie a 10/11)",
+   "fuente": "https://www.mfsa.mt/wp-content/uploads/2026/05/Backed-Assets-JE-Limited-Base-Prospectus-Document-dated-08-May-2026.pdf",
+   "consultadoUtc": "2026-11-10T09:16:10Z",
+   "textoNuevo": null
+  }
+ ]
+}

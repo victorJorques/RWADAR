@@ -1,0 +1,79 @@
+What is Smart Cash? | Spiko Tech Docs
+Skip to main content
+Products Spiko Direct Spiko Embedded API Reference
+Search
+Our products
+Overview
+Spiko T-Bills
+Spiko Smart Cash
+What is Smart Cash?
+Smart Cash Fund
+Fee Structure
+Stakeholders
+Legal Documentation
+Spiko Cash & Carry
+Fund Availability
+Onboarding Restrictions
+Account management
+Account creation
+Multi-User Access Management
+Deposits and Withdrawals
+Currency Exchange
+Accounting and Tax Treatment
+Tokenization
+Explaining Tokenization
+Transfers & Redemptions
+Addresses
+Security Audits
+NAV Data Feed
+Legal
+Legal Notice
+Regulatory Information
+Terms of Use
+Privacy Policy
+Our products
+Spiko Smart Cash
+What is Smart Cash?
+On this page
+What is Smart Cash?
+Spiko Smart Cash (Spiko Amundi Overnight Swap Fund) is a UCITS fund that generates a yield above the risk-free rate by combining a portfolio of liquid securities with a Total Return Swap (TRS) executed with a major international bank.
+Unlike a money market fund that holds Treasury bills, Smart Cash holds a portfolio of equities. But your return does not depend on the stock market . The TRS fully neutralizes the equity exposure, replacing it with a stable, predictable daily yield.
+How It Works in 3 Steps ​
+Step 1: The fund buys a diversified equity portfolio.
+The fund acquires shares of large publicly traded companies (MSCI World, S&P 500, STOXX Europe 600). These securities are fully owned by the fund and held at CACEIS Bank, the fund's depositary.
+Step 2: The fund enters a Total Return Swap (TRS) with a Tier 1 bank.
+Under this contract, the fund passes on the daily performance (gains and losses) of its equity portfolio to the bank counterparty.
+Step 3: The bank pays the fund the risk-free rate + a spread.
+In return for receiving the equity performance, the bank pays the fund a predetermined daily yield: the overnight risk-free rate of the share class currency, plus an agreed spread (typically between 0.30% and 0.60%). Investors receive a different spread: see the fund table for the performance benchmark of each share class. The difference between what the bank pays and what investors receive covers the fund's fees and Spiko's intermediaries for this fund, such as Amundi.
+WHY DO BANKS PAY THE SPREAD?
+Under Basel III regulations, banks must maintain a strict leverage ratio that limits their balance sheet size relative to equity. Buying equities directly is expensive in capital terms. Through the TRS, banks gain economic exposure to equities without expanding their balance sheet , and they compensate the fund with a spread for this "balance sheet service."
+Daily Reset: Limiting Counterparty Risk ​
+The TRS resets to zero every business day . At end of each business day, the portfolio performance is exchanged between the fund and the bank. This means:
+In the unlikely event of bank default, the fund's exposure is limited to just one day of market variation.
+The fund retains full ownership of its securities portfolio at all times: these assets are held at the depositary bank (CACEIS), not at the swap counterparty.
+Previous
+Safeguarding of Assets
+Next
+Smart Cash Fund
+How It Works in 3 Steps
+Daily Reset: Limiting Counterparty Risk
+Documentation
+Products
+Spiko Direct
+Spiko Embedded
+API Reference
+APIs
+Public API
+Investor API
+Distributor API
+Legal
+Legal notice
+Regulatory information
+Terms of use
+Privacy policy
+Spiko
+spiko.io
+Spiko app
+Contact
+LinkedIn
+© 2026 Spiko. All rights reserved.

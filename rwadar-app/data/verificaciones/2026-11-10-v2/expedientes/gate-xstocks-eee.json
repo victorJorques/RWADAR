@@ -1,0 +1,150 @@
+{
+ "slug": "gate-xstocks-eee",
+ "tipoExpediente": "candidata",
+ "grupo": "candidatas-mercados",
+ "proveedor": "Gate (gate.com) · sección xStocks",
+ "plataformaSlug": null,
+ "entidadComercializadora": "Ninguna habilitada en España para valores: Gate Securities (Cyprus) Ltd (CNMV nº 5063) solo tiene derivados y CFD en su programa",
+ "emisor": "Backed Assets (JE) Limited (xStocks), según la prensa; no comprobado hoy en fuente de Gate",
+ "vehiculo": "Certificados xStocks (los mismos que en Kraken y OKX)",
+ "token": "xStocks (p. ej. NVDAx, AAPLx)",
+ "derechoAdquirido": null,
+ "jurisdiccion": "CY",
+ "identificador": "CNMV ESI del EEE nº 5063 (17/05/2021)",
+ "moneda": null,
+ "documentos": [
+  {
+   "titulo": "Gate · sección xStocks",
+   "url": "https://www.gate.com/xstocks",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": "9813adb625a1f4bbda04084874c9e538c06d0e4fe46ef38e508ea10e3d46fb35",
+   "leido": false,
+   "nota": "HTTP 403 («You don't have permission») desde nuestra conexión; también gate.com/eu. No se intentó eludir."
+  },
+  {
+   "titulo": "CNMV · Gate Securities (Cyprus) Ltd · programa de actividades",
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5063&vista=17&lang=es",
+   "versionOFecha": "consulta de hoy",
+   "paginas": null,
+   "sha256": "24232b93d5a0fea0034b5bbeac4ac895c41af7f02bca65936bd0f8d10338d89d",
+   "leido": true
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "GATE SECURITIES (CYPRUS) LTD",
+   "numero": "5063 (17/05/2021)",
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5063&vista=17&lang=es",
+   "alcance": "ESI chipriota en libre prestación. Programa: recepción, ejecución, cuenta propia, gestión, asesoramiento y custodia solo sobre derivados (apartados 4, 5 y 9: opciones, futuros, swaps y CFD). Sin valores negociables (apartado 1).",
+   "consultadoUtc": "2026-11-10T09:09:18Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Gate.io",
+   "resultado": "coincidencia: «HTTPS://WWW.GATE.IO/ GATE.IO» (07/02/2022) en la lista de entidades no autorizadas",
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "consultadoUtc": "2026-11-10T09:14:48Z"
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Gate",
+   "resultado": "solo coincidencias ajenas por parecido (Gateway Affiliate Markets, Cryptgatemarket, Capital Gates…); 2 páginas, se leyó la primera",
+   "url": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "consultadoUtc": "2026-11-10T09:12:00Z"
+  }
+ ],
+ "claims": [
+  {
+   "campo": "registro",
+   "literal": "3. Negociación por cuenta propia · 4) … 5) … 9) Contratos financieros por diferencias",
+   "dato": "Pasaporte en España solo para derivados y CFD",
+   "fuentePrimaria": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5063&vista=17&lang=es",
+   "localizador": "CNMV, ESI 5063, vista «Programa de actividades»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-10T09:09:18Z",
+   "alcanceYLimites": "Los xStocks son valores negociables; ese apartado no figura",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "07/02/2022 · HTTPS://WWW.GATE.IO/ · GATE.IO",
+   "dato": "Advertencia de la CNMV sobre gate.io vigente hoy",
+   "fuentePrimaria": "https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es",
+   "localizador": "CNMV, buscador de advertencias, «Gate.io», no autorizadas",
+   "fechaDato": "2022-02-07",
+   "consultadoUtc": "2026-11-10T09:14:48Z",
+   "alcanceYLimites": "La marca actual usa gate.com; la advertencia recae sobre gate.io",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "—",
+   "dato": null,
+   "fuentePrimaria": "https://www.gate.com/xstocks",
+   "localizador": "Página bloqueada (403)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-10T09:21:28Z",
+   "alcanceYLimites": null,
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "no_cumple",
+   "nota": "La única ESI de Gate en la CNMV solo tiene derivados; no puede vender xStocks en España."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "La sección xStocks de gate.com da 403 desde nuestra conexión."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Sin acceso a condiciones para el EEE."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_cumple",
+   "nota": "La CNMV mantiene la advertencia sobre gate.io del 07/02/2022."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "expediente",
+   "antes": "sin expediente",
+   "ahora": "estudiada hoy por primera vez: sin pasaporte para valores y con advertencia de la CNMV",
+   "fuente": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5063&vista=17&lang=es",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": null,
+ "resumenTarjeta": {
+  "minimo": null,
+  "accesoEspana": "No: la entidad de Gate en la CNMV solo puede ofrecer derivados y CFD",
+  "salida": null
+ },
+ "resumenTarjetaNota": "Interno: los tres datos tal como se ven hoy; no es propuesta de tarjeta (decisión no_admitir). null = no respaldado hoy en fuente primaria.",
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": null,
+  "supervisorVerificado": "CNMV nº 5063 (solo derivados)",
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Otro canal de los xStocks de Backed.",
+  "porQueNo": "Sin pasaporte para valores negociables y con advertencia de la CNMV sobre gate.io."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No se admite: Gate Securities (Cyprus) Ltd figura en la CNMV (nº 5063) solo para derivados y CFD, no para valores negociables como los xStocks, y la CNMV mantiene desde el 07/02/2022 una advertencia sobre gate.io. La web de xStocks de Gate no se pudo leer (403).",
+ "bloqueos": [
+  "gate.com/xstocks y gate.com/eu devuelven 403 desde nuestra conexión."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-10T09:09:16Z",
+  "finUtc": "2026-11-10T09:21:50Z"
+ }
+}

@@ -1,0 +1,146 @@
+Rentas 4 (Reental) · extractos literales leídos por el revisor el 10/11/2026 (09:35:58–09:36:01 UTC)
+Los PDF completos llevan nombres de personas (y el certificado, un DNI en la firma): no se conservan aquí. Solo SHA-256 y extractos sin nombres.
+
+== PPM (memorando de oferta privada) · https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793788204244_whitepaper.pdf
+sha256 327323cf1ea0c60bf07914f8410644ad96c905a814bbddbd76e491db58787bbd (igual que el investigador)
+                           MEMORANDO INFORMATIVO DE OFERTA PRIVADA​
+                                          RENTAS 4​
+                                  A FECHA 23 de octubre de 2026
+                                     Series RNT SPV-25, LLC “RENTAS 4”
+                                             V. Revisada a 04/11/2026
+[...]
+                     La inversión mínima para personas de EE. UU. será de 10.000 EUR.
+Este memorando informativo de oferta privada (según sea modificado y complementado ocasionalmente, este
+“Memorando”) ha sido preparado por Reental America LLC, una sociedad de responsabilidad limitada de Florida
+(“Reental America”, “nosotros”, “nuestro” o la “Compañía”), para su uso por ciertos potenciales inversores
+calificados (“Inversores”) a quienes la Compañía ofrece (esta “Oferta”) la oportunidad de adquirir hasta un máximo de
+VEINTE MIL (20,000) participaciones de membresía de sociedad de responsabilidad limitada (“Participaciones”) de
+la Series RNT SPV-25, LLC (el “Emisor”).
+Las compras de los ReentalTokens RET-4 podrán realizarse en euros o en otros medios de pago admitidos por la
+Plataforma y convertidos a euros. El precio de oferta de cada ReentalToken es de EUR 100 (el “Precio de Oferta”), y
+el importe máximo de la Oferta es de EUR 2.000.000.
+Los ReentalTokens no se han registrado ni se registrarán bajo la Ley de Valores de 1933, en su versión modificada (la
+“Ley de Valores”), y no podrán ofrecerse ni venderse dentro de Estados Unidos ni a, ni por cuenta, ni en beneficio de
+personas estadounidenses, salvo en virtud de una exención de los requisitos de registro de la Ley de Valores o en una
+transacción no sujeta a ellos. Por consiguiente, los ReentalTokens se ofrecen y venden únicamente (i) a “inversores
+acreditados” (según se define en la Regla 501 del Reglamento D de la Ley de Valores) de conformidad con el
+Reglamento D, y (ii) en transacciones extraterritoriales a personas que no sean “personas estadounidenses” (según se
+define en el Reglamento S) de conformidad con el Reglamento S.
+Véase “Plan de Distribución”. Las personas estadounidenses que deseen invertir deberán proporcionar evidencia
+documental de su condición de inversor acreditado que sea satisfactoria para la Compañía.
+   Los inversores estadounidenses adquirirán un mínimo de cien (100) ReentalTokens, por un total de 10.000 EUR, salvo
+   aceptación de un importe inferior por Reental America LLC. Los inversores no estadounidenses que participen bajo el
+   Reglamento S podrán adquirir un mínimo de un (1) ReentalToken, por un total de EUR 100.
+   Los posibles inversores deben informarse sobre los requisitos legales y las consecuencias fiscales en los países de su
+   ciudadanía, residencia, domicilio y lugar de negocios respecto a la adquisición, tenencia o disposición de las
+   Participaciones, así como sobre cualquier restricción de cambio de divisas y obligaciones de calificación, presentación
+   y reporte que puedan ser relevantes al respecto.
+[...]
+     La presente Oferta se abrirá el 23 de octubre de 2026 y permanecerá vigente hasta que se produzca el primero
+     de los siguientes supuestos:
+     (i) la suscripción íntegra del importe objetivo de dos millones de euros (EUR 2.000.000);
+     (ii) noventa (90) días después de la fecha de lanzamiento de la Oferta, salvo que se prorrogue a discreción
+     exclusiva de Reental America; o
+[...]
+
+REENTAL AMERICA LLC, ACTUANDO COMO GESTOR DE LA Series RNT SPV-25 “RENTAS 4”, LLC, PODRÁ
+DESIGNAR PLATAFORMAS DE TERCEROS O AFILIADAS —INCLUYENDO RENTAL TOKEN S.L., UNA
+ENTIDAD ESPAÑOLA QUE OPERA EN WWW.REENTAL.CO— PARA ASISTIR EN LA INCORPORACIÓN DE
+INVERSORES Y LA CAPTACIÓN DE CAPITAL EN JURISDICCIONES ESPECÍFICAS. DICHAS PARTES NO
+ACTÚAN COMO ASESORES DE INVERSIÓN NI COMO INTERMEDIARIOS DE VALORES Y NO ESTÁN
+AUTORIZADAS A REALIZAR DECLARACIONES MÁS ALLÁ DE LAS CONTENIDAS EN ESTE MEMORANDO.
+[...]
+CONOCIMIENTO Y EXPERIENCIA EN INVERSIONES DE ESTE TIPO Y QUE PUEDE SOPORTAR EL RIESGO
+ECONÓMICO DE ESTA INVERSIÓN DURANTE UN PERÍODO INDEFINIDO.
+
+NO SE HA REALIZADO NINGUNA ACCIÓN EN NINGUNA JURISDICCIÓN PARA PERMITIR UNA OFERTA
+PÚBLICA DE LOS VALORES. NO EXISTE UN MERCADO PÚBLICO PARA LOS VALORES Y NO SE ESPERA QUE
+SE DESARROLLE EN EL FUTURO. CUALQUIER SUMA INVERTIDA EN LA COMPAÑÍA TAMBIÉN ESTÁ
+SUJETA A IMPORTANTES RESTRICCIONES DE RETIRO Y TRANSFERENCIA. LOS VALORES OFRECIDOS POR
+EL PRESENTE DEBEN SER ADQUIRIDOS ÚNICAMENTE POR COMPRADORES QUE NO NECESITEN LIQUIDEZ
+EN SU INVERSIÓN.
+[...]
+       otros destinos inmobiliarios generadores de rendimientos y para la gestión de tesorería prevista en este
+       Memorando.
+
+       Series RNT SPV-25, LLC es gestionada por Reental America LLC, en virtud de un contrato de gestión
+       debidamente suscrito. Reental America LLC supervisa, entre otras funciones, la incorporación de inversores
+       (onboarding), el cumplimiento normativo, la estructuración de las operaciones subyacentes y la gestión
+       administrativa integral del Emisor. En determinadas jurisdicciones, como España, podrá coordinar la captación
+       de fondos y las comunicaciones con inversores a través de Rental Token S.L., entidad vinculada que opera la
+       plataforma de inversión www.reental.co.
+[...]
+AVISO A RESIDENTES DEL ESPACIO ECONÓMICO EUROPEO
+
+CON RESPECTO A LAS RESTRICCIONES DE VENTA DE OFERTA PÚBLICA BAJO LA DIRECTIVA DE UN
+PROSPECTO EN RELACIÓN CON CADA ESTADO MIEMBRO DEL ESPACIO ECONÓMICO EUROPEO QUE
+HAYA IMPLEMENTADO (CADA UNO, UN “ESTADO MIEMBRO RELEVANTE”), A PARTIR DE LA FECHA
+EN QUE LA DIRECTIVA DE PROSPECTO SEA IMPLEMENTADA EN ESE ESTADO MIEMBRO
+RELEVANTE (LA “FECHA DE IMPLEMENTACIÓN RELEVANTE”), LA COMPAÑÍA NO HA REALIZADO NI
+REALIZARÁ UNA OFERTA DE REENTALTOKENS OBJETO DE LA OFERTA CONTEMPLADA POR ESTE
+MEMORANDO AL PÚBLICO EN ESE ESTADO MIEMBRO RELEVANTE, SALVO QUE PUEDA, A PARTIR
+DE LA FECHA DE IMPLEMENTACIÓN RELEVANTE, REALIZAR UNA OFERTA DE DICHOS
+REENTALTOKENS AL PÚBLICO EN ESE ESTADO MIEMBRO RELEVANTE:
+
+(A) INVERSORES CUALIFICADOS: A CUALQUIER ENTIDAD LEGAL QUE SEA UN INVERSOR
+CUALIFICADO SEGÚN LA DEFINICIÓN DE LA DIRECTIVA DE PROSPECTO;
+
+(B) MENOS DE 100 OFERENTES: A MENOS DE 100 O, SI EL ESTADO MIEMBRO RELEVANTE HA
+IMPLEMENTADO LA DISPOSICIÓN RELEVANTE DE LA DIRECTIVA DE ENMIENDA PD 2010, 150
+PERSONAS FÍSICAS O JURÍDICAS (QUE NO SEAN INVERSORES CUALIFICADOS SEGÚN LA
+DEFINICIÓN DE LA DIRECTIVA DE PROSPECTO), SEGÚN LO PERMITIDO POR LA DIRECTIVA DE
+PROSPECTO; O
+
+(C) OTRAS OFERTAS EXENTAS: EN CUALQUIER OTRA CIRCUNSTANCIA COMPRENDIDA EN EL
+
+== Acuerdo de suscripción · .../1793779352063_acuerdo_de_suscripcion.pdf
+sha256 f9d25105f44ea1dbe7bf51e59f8db17f6a342717ecf32fec1d7d036bec5b9873 (igual)
+Fecha y versión del PPM                    23 de octubre de 2026; versión de archivo de 27 de octubre de 2026
+1.1 Suscripción. El Inversor se suscribe y se obliga a adquirir del Emisor el número de tokens indicado en
+la Ficha de Suscripción (los "Tokens de Compra") por el precio total allí establecido (el "Precio de
+Compra"). Cada Token representa una participación de membresía en el Emisor. La Oferta RET-4
+comprende un máximo de veinte mil (20.000) Tokens de cien euros (EUR 100) cada uno, por un importe
+máximo de dos millones de euros (EUR 2.000.000). El mínimo será de un (1) Token para inversores no
+estadounidenses bajo la Regulación S y de cien (100) Tokens para inversores estadounidenses, salvo
+aceptación de un importe inferior por Reental America LLC conforme al PPM. El Emisor destinará el cien
+por cien (100 %) del capital efectivamente captado a un préstamo a AURA INMOINVERSION, SL. El
+Inversor adquiere participaciones del Emisor y no directamente el préstamo ni derechos de propiedad
+sobre los inmuebles. La apertura, duración, prórroga y terminación de la Oferta se regirán por el PPM.
+238:7.3 Ausencia de liquidez. No existe garantía de admisión a negociación, mercado secundario, recompra,
+rescate ni posibilidad de transmitir los Tokens antes de la liquidación o disolución del Emisor.
+                                                 SECCIÓN 8
+Comisiones aplicables. Las establecidas en el PPM y el Operating Agreement. La comisión de
+lanzamiento del ocho por ciento (8 %) será facturada separadamente por Reental America LLC a AURA y
+no se deducirá del capital captado ni del préstamo. La comisión periódica del dos por ciento (2 %) anual
+tendrá las bonificaciones por categoría previstas en el PPM. Para cada pago de rendimientos se aplicará la
+9.8 Ley aplicable. Este Acuerdo se regirá e interpretará de conformidad con las leyes del Estado de
+Florida, sin aplicación de sus normas de conflicto de leyes.
+9.9 Jurisdicción. Las partes acuerdan que cualquier demanda, acción o procedimiento para hacer cumplir
+este Acuerdo, o que surja de él o de las transacciones contempladas en el mismo, ya sea en contrato,
+agravio o de otro modo, se presentará en el Tribunal de Circuito del Condado de Miami-Dade, Florida,
+siempre que dicho tribunal tenga jurisdicción sobre la materia. Cada parte consiente irrevocablemente la
+
+== Dosier comercial · .../1793787110786_dosier.pdf
+sha256 23e0dc5925829dc926cf3b0bdadd0481d3c1b91f417d7ccf91f37b3598351612 (igual)
+AVISO LEGAL
+Uso Exclusivo para Inversores Profesionales
+Este dossier tiene fines meramente informativos y se dirige exclusivamente a inversores
+profesionales. No constituye una oferta, recomendación o asesoramiento de inversión, ni debe ser
+considerado como base para tomar decisiones sin consultar previamente con asesores financieros
+
+== Certificado de revisión (EAF nacional nº 21, persona física) · .../1793792807997_certificado_revision_rnt_spv_25.pdf
+sha256 37859c0b661ac80751ab16b39c9972a56c335a6faed73b2481d3bb423edb731a (igual)
+En Madrid a 4 de noviembre de 2026
+
+Certificado de Revisión de Documento de Emisión de Tokens y Comercialización del mismo
+[...] inscrita en el registro de la Comisión Nacional del Mercado de Valores bajo el número 21, certifica que ha llevado a cabo la revisión del Documento de Emisión de Tokens [...]
+       ●    Regulación aplicada para la comercialización de la misma a Inversores Españoles
+            según la Regulation S (página 1 y 36).
+DE EMISIÓN DE SERIES RNT SPV-25 LLC cumple con los estándares de comercialización y
+regulación y normativos exigidos en la jurisdicción aplicable, en la medida de las competencias
+y alcance de esta revisión.
+
+
+Esta certificación no constituye ninguna garantía sobre el éxito financiero del proyecto ni una
+aprobación o validación respecto a los aspectos legales fuera del alcance de la revisión
+mencionada.

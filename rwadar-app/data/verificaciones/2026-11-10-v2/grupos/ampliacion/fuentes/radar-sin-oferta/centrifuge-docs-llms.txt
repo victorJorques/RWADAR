@@ -1,0 +1,193 @@
+# Centrifuge Documentation
+
+> Centrifuge is infrastructure for running investment products onchain. Asset managers use it to issue a fund
+> as a token, take subscriptions and redemptions, publish prices and control who can invest, across many blockchains.
+
+## Overview
+
+Centrifuge does not originate assets, manage money or issue financial products. The asset manager does that and
+remains responsible for the product. More than $3.5B in real-world assets have been tokenized through the protocol.
+Institutions including Apollo, Janus Henderson, New York Life, Schroders and S&P Dow Jones Indices run products on Centrifuge, and tokens
+issued on Centrifuge are used in onchain markets such as Sky, Aave and Morpho.
+
+## Key concepts
+
+- **Pool:** the product's onchain record. It holds the balance sheet and defines one or more share classes.
+- **Share token:** one token per share class, the unit of ownership. Issued when a subscription is dealt and
+  cancelled (burned) when a redemption is dealt. What it legally represents is set by the product's documents.
+- **Vault:** a smart contract that takes deposits and issues shares. A vault can be an access point to a fund
+  whose portfolio sits elsewhere (most products today), or the product itself, holding and managing the portfolio.
+- **Pricing:** net asset value per share, published onchain by the manager. Request-based orders are normally
+  dealt at the next valuation point (forward pricing). Instant subscriptions use the latest published price.
+- **Access:** an allowlist of approved wallets per share class and network, with restriction profiles that set
+  which actions (subscribe, redeem, transfer) require approval. Managers can freeze addresses and recover tokens.
+- **Custody:** tokens can be held in self-custody, by a custodian in a segregated wallet, or in an omnibus wallet
+  held by a distributor as nominee. The product's documents say whether the token ledger is the register of shareholders.
+
+## Where to start
+
+- **New to tokenized funds:** https://docs.centrifuge.io/getting-started/how-it-works
+- **Typical fund setups:** https://docs.centrifuge.io/getting-started/use-cases
+- **Security and trust:** https://docs.centrifuge.io/getting-started/security
+- **Concepts in depth:** https://docs.centrifuge.io/user/concepts
+- **Launching and operating a product:** https://docs.centrifuge.io/user/manager
+- **Vault Development Kit (preview, in audit):** https://docs.centrifuge.io/developer/vault-development-kit/overview/
+
+## Architecture
+
+Hub-and-spoke design. Each pool selects a single hub network as its source of truth, then issues tokens and
+vaults across any number of spoke networks.
+
+- **Hub:** Central orchestration layer handling pool management, double-entry accounting, holdings tracking,
+  share class management, and crosschain message coordination.
+- **Spoke:** Local registry on each network managing token instances, vaults, escrows, and balance sheets.
+  Factory-based deployment of tokens, vaults, and escrows.
+- **Crosschain messaging:** Multi-adapter aggregation (LayerZero, Wormhole, Chainlink, Axelar) with
+  automatic batching, gas subsidies, and built-in retries.
+
+## Vault Standards
+
+- **Asynchronous vaults (ERC-7540):** Request-based deposits and redemptions processed through the Hub.
+- **Synchronous deposit vaults (ERC-4626 + ERC-7540):** Instant deposits via ERC-4626, async redemptions.
+- **Pooled vaults (ERC-7575):** Multiple investment assets per share token, single aggregated balance sheet.
+
+## Developer Tools
+
+### Centrifuge SDK
+TypeScript/JavaScript client (`@centrifuge/sdk`) for investments, redemptions, reports, and pool management.
+Runs client-side and server-side. Supports full investment lifecycle: quote, deposit, claim, and reporting.
+
+### Centrifuge API
+Public read-only GraphQL endpoint at `https://api.centrifuge.io`. Indexed data from the multichain protocol
+deployment. No authentication required. Entities include pools, tokens, vaults, holdings, investor transactions,
+snapshots, and crosschain messages.
+
+## Deployments
+
+Protocol v3.3 deployed on 14 networks: Ethereum, Base, Arbitrum, Avalanche, Plume, BNB Smart Chain, Optimism, HyperEVM, Monad, Pharos, X Layer, Arc, Solana and Stellar.
+Core contracts deployed at identical addresses across all chains. 
+Security: 38 protocol security reviews to date. Full list: https://docs.centrifuge.io/developer/security/audits
+
+## Resources
+
+- **Documentation:** https://docs.centrifuge.io
+- **SDK:** https://www.npmjs.com/package/@centrifuge/sdk
+- **API:** https://api.centrifuge.io
+- **Protocol source:** https://github.com/centrifuge/protocol
+
+## Getting Started
+
+- [Welcome to Centrifuge](https://docs.centrifuge.io/)
+- [Centrifuge governance](https://docs.centrifuge.io/getting-started/cfg-governance)
+- [Glossary](https://docs.centrifuge.io/getting-started/glossary)
+- [How a tokenized fund works](https://docs.centrifuge.io/getting-started/how-it-works)
+- [Blockchains and wallets](https://docs.centrifuge.io/getting-started/how-it-works/blockchains-and-wallets)
+- [The product onchain](https://docs.centrifuge.io/getting-started/how-it-works/product-onchain)
+- [A subscription, step by step](https://docs.centrifuge.io/getting-started/how-it-works/subscription)
+- [Tokens and tokenization](https://docs.centrifuge.io/getting-started/how-it-works/tokens)
+- [Legacy](https://docs.centrifuge.io/getting-started/legacy)
+- [Centrifuge V1 (Tinlake)](https://docs.centrifuge.io/getting-started/legacy/centrifuge-v1)
+- [Centrifuge V2](https://docs.centrifuge.io/getting-started/legacy/centrifuge-v2)
+- [Resources](https://docs.centrifuge.io/getting-started/resources)
+- [Mission and history](https://docs.centrifuge.io/getting-started/resources/mission-and-history)
+- [Security and trust](https://docs.centrifuge.io/getting-started/security)
+- [The CFG token](https://docs.centrifuge.io/getting-started/token-summary)
+- [Use cases](https://docs.centrifuge.io/getting-started/use-cases)
+
+## User Documentation
+
+- [Concepts](https://docs.centrifuge.io/user/concepts)
+- [Access and permissions](https://docs.centrifuge.io/user/concepts/access-permissions)
+- [Custody and records](https://docs.centrifuge.io/user/concepts/custody-and-records)
+- [Distribution across networks](https://docs.centrifuge.io/user/concepts/distribution)
+- [Pools and tokens](https://docs.centrifuge.io/user/concepts/pools)
+- [Pricing](https://docs.centrifuge.io/user/concepts/pricing)
+- [Vaults](https://docs.centrifuge.io/user/concepts/vaults)
+- [Investor](https://docs.centrifuge.io/user/investor)
+- [Manager](https://docs.centrifuge.io/user/manager)
+- [Assets and liquidity](https://docs.centrifuge.io/user/manager/asset-liquidity)
+- [Launching a product](https://docs.centrifuge.io/user/manager/launching-a-product)
+- [NAV and share prices](https://docs.centrifuge.io/user/manager/nav)
+- [Onchain portfolio management](https://docs.centrifuge.io/user/manager/onchain-portfolio)
+- [Token management](https://docs.centrifuge.io/user/manager/token-management)
+- [Vaults and orders](https://docs.centrifuge.io/user/manager/vaults-and-orders)
+- [Overview](https://docs.centrifuge.io/user/overview)
+
+## Developer Documentation
+
+- [Centrifuge API](https://docs.centrifuge.io/developer/centrifuge-api)
+- [Buy and sell DeFi assets](https://docs.centrifuge.io/developer/centrifuge-sdk/buying-or-selling-defi-assets)
+- [Invest into a vault](https://docs.centrifuge.io/developer/centrifuge-sdk/invest-into-a-vault)
+- [Manage NAV and orders](https://docs.centrifuge.io/developer/centrifuge-sdk/manage-nav-and-orders)
+- [Overview](https://docs.centrifuge.io/developer/centrifuge-sdk/overview)
+- [Query data of a pool](https://docs.centrifuge.io/developer/centrifuge-sdk/query-data-of-a-pool)
+- [Centrifuge POD](https://docs.centrifuge.io/developer/legacy/pod)
+- [Querying V2 data](https://docs.centrifuge.io/developer/legacy/querying-v2-data)
+- [Tinlake smart contracts](https://docs.centrifuge.io/developer/legacy/tinlake)
+- [Overview](https://docs.centrifuge.io/developer/overview)
+- [Hub](https://docs.centrifuge.io/developer/protocol/architecture/hub)
+- [Investment flows](https://docs.centrifuge.io/developer/protocol/architecture/investment-flows)
+- [Messaging scheme](https://docs.centrifuge.io/developer/protocol/architecture/messaging)
+- [Overview](https://docs.centrifuge.io/developer/protocol/architecture/overview)
+- [Spoke](https://docs.centrifuge.io/developer/protocol/architecture/spoke)
+- [Vaults](https://docs.centrifuge.io/developer/protocol/architecture/vaults)
+- [Deployments](https://docs.centrifuge.io/developer/protocol/deployments)
+- [Multichain asset management](https://docs.centrifuge.io/developer/protocol/features/chain-abstraction)
+- [Standards-based composability](https://docs.centrifuge.io/developer/protocol/features/composability)
+- [Modular extensions](https://docs.centrifuge.io/developer/protocol/features/modularity)
+- [Onchain accounting](https://docs.centrifuge.io/developer/protocol/features/onchain-accounting)
+- [Onchain execution policy](https://docs.centrifuge.io/developer/protocol/features/onchain-execution-policy)
+- [Bridge share tokens](https://docs.centrifuge.io/developer/protocol/guides/bridge-share-tokens)
+- [Create a pool](https://docs.centrifuge.io/developer/protocol/guides/create-a-pool)
+- [Deploy vaults](https://docs.centrifuge.io/developer/protocol/guides/deploy-vaults)
+- [Invest into a vault](https://docs.centrifuge.io/developer/protocol/guides/invest-into-a-vault)
+- [Process investment requests](https://docs.centrifuge.io/developer/protocol/guides/manage-a-pool)
+- [Manage assets](https://docs.centrifuge.io/developer/protocol/guides/manage-assets)
+- [NAV and oracles](https://docs.centrifuge.io/developer/protocol/guides/publish-nav-and-oracles)
+- [Set up onchain valuation](https://docs.centrifuge.io/developer/protocol/guides/setup-onchain-valuation)
+- [Batch cross-chain transactions](https://docs.centrifuge.io/developer/protocol/integration-patterns/batch-cross-chain-transactions)
+- [Custom balance sheet managers](https://docs.centrifuge.io/developer/protocol/integration-patterns/custom-balance-sheet-managers)
+- [Sync parameters across chains](https://docs.centrifuge.io/developer/protocol/integration-patterns/sync-parameters-across-chains)
+- [Write integration tests](https://docs.centrifuge.io/developer/protocol/integration-patterns/write-integration-tests)
+- [On/off ramp manager](https://docs.centrifuge.io/developer/protocol/managers/on-offramp-manager)
+- [Onchain Portfolio Manager](https://docs.centrifuge.io/developer/protocol/managers/onchain-portfolio-manager)
+- [Overview](https://docs.centrifuge.io/developer/protocol/overview)
+- [Application security](https://docs.centrifuge.io/developer/security/application-security)
+- [Audits](https://docs.centrifuge.io/developer/security/audits)
+- [Guardian](https://docs.centrifuge.io/developer/security/guardian)
+- [Operational security](https://docs.centrifuge.io/developer/security/operational-security)
+- [Overview](https://docs.centrifuge.io/developer/security/overview)
+- [Pool access levels](https://docs.centrifuge.io/developer/security/pool-access-levels)
+- [Architecture](https://docs.centrifuge.io/developer/vault-development-kit/architecture)
+- [Custom hooks](https://docs.centrifuge.io/developer/vault-development-kit/compliance/custom-hooks)
+- [Token compliance](https://docs.centrifuge.io/developer/vault-development-kit/compliance/token-compliance)
+- [Integrating](https://docs.centrifuge.io/developer/vault-development-kit/integrating)
+- [Changing terms and retiring a vault](https://docs.centrifuge.io/developer/vault-development-kit/operations/changing-terms)
+- [Incident response](https://docs.centrifuge.io/developer/vault-development-kit/operations/incident-response)
+- [Keepers and automation](https://docs.centrifuge.io/developer/vault-development-kit/operations/keepers-and-automation)
+- [Launch checklist](https://docs.centrifuge.io/developer/vault-development-kit/operations/launch-checklist)
+- [Roles and control](https://docs.centrifuge.io/developer/vault-development-kit/operations/roles-and-control)
+- [Running the portfolio](https://docs.centrifuge.io/developer/vault-development-kit/operations/running-the-portfolio)
+- [Overview](https://docs.centrifuge.io/developer/vault-development-kit/overview)
+- [Plugins](https://docs.centrifuge.io/developer/vault-development-kit/plugins)
+- [Instant policies](https://docs.centrifuge.io/developer/vault-development-kit/plugins/instant-policies)
+- [Liquidity routes](https://docs.centrifuge.io/developer/vault-development-kit/plugins/liquidity-routes)
+- [Oracles](https://docs.centrifuge.io/developer/vault-development-kit/plugins/oracles)
+- [Request managers](https://docs.centrifuge.io/developer/vault-development-kit/plugins/request-managers)
+- [Request observers](https://docs.centrifuge.io/developer/vault-development-kit/plugins/request-observers)
+- [Request policies](https://docs.centrifuge.io/developer/vault-development-kit/plugins/request-policies)
+- [Settlement observers](https://docs.centrifuge.io/developer/vault-development-kit/plugins/settlement-observers)
+- [Quickstart](https://docs.centrifuge.io/developer/vault-development-kit/quickstart)
+- [Specification and security](https://docs.centrifuge.io/developer/vault-development-kit/specification)
+- [Tutorials](https://docs.centrifuge.io/developer/vault-development-kit/tutorials)
+- [Add a notice period](https://docs.centrifuge.io/developer/vault-development-kit/tutorials/add-a-notice-period)
+- [Add swing pricing](https://docs.centrifuge.io/developer/vault-development-kit/tutorials/add-swing-pricing)
+- [Build a buffered fund](https://docs.centrifuge.io/developer/vault-development-kit/tutorials/build-a-buffered-fund)
+- [Build a daily NAV fund](https://docs.centrifuge.io/developer/vault-development-kit/tutorials/build-a-daily-nav-fund)
+- [Build a fund-of-funds vault](https://docs.centrifuge.io/developer/vault-development-kit/tutorials/build-a-fund-of-funds-vault)
+- [Build a staking vault](https://docs.centrifuge.io/developer/vault-development-kit/tutorials/build-a-staking-vault)
+- [Build a tranched credit product](https://docs.centrifuge.io/developer/vault-development-kit/tutorials/build-a-tranched-credit-product)
+- [Build an epoch fund with a redemption queue](https://docs.centrifuge.io/developer/vault-development-kit/tutorials/build-an-epoch-fund-with-a-redemption-queue)
+- [Fill selected requests](https://docs.centrifuge.io/developer/vault-development-kit/tutorials/fill-selected-requests)
+- [Launch a distribution vault](https://docs.centrifuge.io/developer/vault-development-kit/tutorials/launch-a-distribution-vault)
+- [Restrict requests with sponsors and the share token hook](https://docs.centrifuge.io/developer/vault-development-kit/tutorials/restrict-requests-with-sponsors)

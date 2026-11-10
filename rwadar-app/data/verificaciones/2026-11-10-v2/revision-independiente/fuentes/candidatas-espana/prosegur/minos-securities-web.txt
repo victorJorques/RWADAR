@@ -1,0 +1,40 @@
+Minos Securities · https://minos-securities.com/ (Playwright, 09:42:33 UTC; se sirvió en inglés con textos sin traducir)
+Investment Services
+Financial instruments
+ACTIVITIES_HEADER
+Contact
+SLIDER_TITLE_1_1
+SLIDER_TITLE_1_2
+SLIDER_TITLE_1_3
+SLIDER_BANNER_TEXT
+ More info
+The CNMV has registered Minos Securities, A.V., S.A. in the Register of Investment Services Firms under number 333. The list of investment services and activities, ancillary services, and financial instruments, as well as ancillary activities, shall include—under the terms set out in Law 6/2023 of 17 March on Securities Markets and Investment Services—the provision, while holding funds in instrumental and transitional accounts in the name of its clients, of the following services and activities, in accordance with the terms established in said list:
+CNMV Registration
+Investment Services
+SERVICES_INVESTMENT_HEADER
+SERVICES_INVESTMENT_SUBTITLE
+Receiving and transmitting client orders relating to one or more financial instruments.
+Executing orders on behalf of clients.
+Placing financial instruments without a firm commitment.
+SERVICES_AUXILIARY_HEADER
+SERVICES_AUXILIARY_SUBTITLE
+SERVICES_AUXILIARY_1
+SERVICES_AUXILIARY_2
+Financial instruments
+Financial instruments
+FINANCIAL_INSTRUMENTS_SUBTITLE
+Negotiable securities
+Money market instruments
+Units and shares in:
+ACTIVITY_TITLE
+ACTIVITY_TITLE
+ACTIVITY_SUBTITLE
+ACTIVITY_TEXT_1
+Contact us in info@minos-securities.com
+Investment Services
+Financial instruments
+ACTIVITIES_HEADER
+Contact
+© Minos Securities 2026 | Legal Notice | CNMV Registration | Solvency Report
+
+https://www.minossecurities.com/ (sin guion): curl 09:42:21 UTC → «Recv failure: Connection reset by peer»

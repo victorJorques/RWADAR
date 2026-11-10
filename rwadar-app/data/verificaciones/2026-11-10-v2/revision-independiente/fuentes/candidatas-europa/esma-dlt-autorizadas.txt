@@ -1,0 +1,14 @@
+Fuente: https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf
+Consultado: 2026-11-10T09:36:00Z · HTTP 200 · 229280 bytes · sha256 8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc
+Copia original en crudo/esma-dlt-autorizadas.pdf (fuera de Git). Extracto literal; nombres de personas omitidos.
+Metadatos del PDF: CreationDate 2026-11-04 17:04:13 UTC, ModDate 2026-11-05 08:45:40 UTC (la URL conserva «2026-01»).
+
+CSD Prague (Centrální  |  Article 35 on communication procedures with participants and other
+21X AG  |  21X DLT-TSS  |  DLT Trading & Settlement  |  Germany  |  Federal Financial Supervisory Authority (BaFin) 3 December 2024  |  n/a  |  n/a
+360X AG  |  360X DLT MTF  |  Germany  |  Federal Financial Supervisory Authority (BaFin) 29 April 2025  |  n/a  |  n/a  |  n/a
+UAB Axiology DLT  |  Axiology DLT TSS  |  DLT Trading & Settlement  |  Lithuania  |  Lietuvos bankas (Bank of Lithuania)  |  9 July 2025  |  n/a  |  n/a
+LISE SA  |  LISE DLT TSS  |  France  |  13 October 2025  |  n/a  |  Article 6 on 'measures to prevent settlement fails'  |  n/a
+Securitize Europe Brokerage  |  DLT Trading & Settlement  |  Comisión Nacional del Mercado de Valores  |  Article 7 on 'measures to address settlement fails'
+Securitize Europe DLT TSS  |  Spain  |  26 November 2025  |  n/a  |  n/a
+BIT2ME SECURITY TOKENS  |  DLT Trading & Settlement  |  Comisión Nacional del Mercado de Valores  |  Article 7 on 'measures to address settlement fails'
+Bit2Me STX DLT TSS  |  Spain  |  27 October 2026  |  n/a  |  n/a
