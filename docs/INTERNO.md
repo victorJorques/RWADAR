@@ -70,8 +70,7 @@ app). **Sin publicar:** el vídeo promocional del 28/10, pendiente de valoració
      Securitize Stocks y los bonos digitales de Profitus: si publican
      condiciones para particulares en España, estudiarlos como candidatas.
    - Kraken xStocks: si el emisor publica condiciones finales con España, se
-     quita el aviso. Y volver a leer las fuentes exactas de transparencia de
-     Kraken (documentoEspana) y mTBILL (supervisada), que siguen al 05/11.
+     quita el aviso.
    - Spiko Smart Cash Euro: si la CNMV, la AMF o Aldana Capital confirman su
      alta en España, se quita el primer aviso (si lo niegan, se retira).
    - Bono Valorix (Bit2Me STX) y CANDO1 (Token City), cuando publiquen su
