@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "10/11: catálogo 2026-11-10 (dfdc4c85) y, en Inicio, «La tokenización en el mundo» y «Noticias del sector» (peticiones de Víctor del 10/11)",
+  "nota": "10/11: nota neutra de la foto diaria de la tokenización y cierre del ciclo del catálogo",
   "revisionAprobada": {
-    "commit": "5e8a5a894c6dc970072f4ba740c64ed26cd49d20",
-    "contenidoSha256": "sha256:e9ef7e60bef592820f950bda7242bf5c5406fa7a14f70b4d0cc7373d464a257f",
+    "commit": "5656adf00f808e6255b2a4f6697a9fd2671bb9d4",
+    "contenidoSha256": "sha256:a1ad76d95bf6eaefcb25563d183df3a0e3ce4a0a7e4f21c5dfabb750265ea827",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
