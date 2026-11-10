@@ -32,6 +32,9 @@ const { comprobar: comprobarFichas } = require('./rwadar-fichas');
 const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 const { construirWorker, RUTAS: RUTAS_ACCESO } = require('./rwadar-acceso/compilar.cjs');
 const { exigirCatalogoPublico } = require('./rwadar-acceso/comprobar-produccion.cjs');
+const tokenizacionModelo = require('./rwadar-movil/lib/tokenizacion');
+const { historicoTokenizacion } = require('./rwadar-tokenizacion-historico');
+const noticiasModelo = require('./rwadar-movil/lib/noticias-sector');
 const {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
@@ -501,6 +504,11 @@ const nFuera  = (capturado.outlist.match(/class="fila"/g) || []).length;
 const nEmisiones = (capturado.emiLista.match(/<article class="emi/g) || []).length;
 console.log(`Pre-renderizado: ${nFichas} fichas, ${nFuera} descartadas y ${nEmisiones} emisiones escritas en el HTML (${kb} kB).`);
 
+/* ---- 4b · histórico de «La tokenización en el mundo» (10/11/2026) ----
+   rwadar-tokenizacion-historico.js: el de publicar.yml
+   (RWADAR_TOKENIZACION_HISTORICO), si no el de origin/datos-tokenizacion y,
+   si no, la semilla de main. Validado entero; nunca bloquea la web. */
+
 /* ---- 5 · construir el árbol desechable que sí se puede subir ---- */
 function construirSalida() {
   if (path.dirname(SALIDA) !== path.resolve(__dirname) || path.basename(SALIDA) !== 'rwadar-publicado') {
@@ -528,6 +536,30 @@ function construirSalida() {
         }
       }
     }
+    const tokenizacion = historicoTokenizacion({ dirSitio: DIR });
+    if (tokenizacion.soloSemilla && (preview || produccion)) {
+      console.warn('\n' + '!'.repeat(72) + '\nAVISO: se publica solo la semilla del histórico de la tokenización.\n' +
+        'La web perdería los cambios a 7 días, 30 días, 1 año y el histórico.\n' +
+        'Antes de publicar: git fetch origin datos-tokenizacion\n' + '!'.repeat(72) + '\n');
+    }
+    fs.writeFileSync(path.join(temporal, 'datos', 'tokenizacion-historico.json'),
+      tokenizacionModelo.serializarHistorico(tokenizacion.historico), 'utf8');
+    const fotosTokenizacion = tokenizacion.historico.fotos;
+    console.log(`Tokenización: ${fotosTokenizacion.length} foto(s) diaria(s) de ${tokenizacion.origen}` +
+      (fotosTokenizacion.length ? `, del ${fotosTokenizacion[0].fecha} al ${fotosTokenizacion.at(-1).fecha}.` : '.'));
+    /* «Noticias del sector» (10/11/2026): /datos/noticias.json se publica tal
+       cual, pero solo si tiene la forma que leen la web y la app
+       (rwadar-movil/lib/noticias-sector.js). Una noticia mal formada para la
+       publicación: mejor eso que una sección rota en la web y en la app. */
+    const textoNoticias = fs.readFileSync(path.join(temporal, 'datos', 'noticias.json'), 'utf8');
+    let noticias;
+    try {
+      if (Buffer.byteLength(textoNoticias, 'utf8') > 256 * 1024) throw new Error('ocupa más de 256 kB');
+      noticias = noticiasModelo.validarNoticias(JSON.parse(textoNoticias));
+    } catch (e) {
+      throw new Error(`rwadar-site/datos/noticias.json no vale: ${e.message}`);
+    }
+    console.log(`Noticias del sector: ${noticias.noticias.length}, actualizadas el ${noticias.actualizadoEl}.`);
     /* Las cuatro ilustraciones viven en una fuente única compartida con
        Expo. Se copian una a una desde el manifiesto validado; nunca se copia
        el directorio completo ni se incluyen las 52 imágenes sin derechos. */
