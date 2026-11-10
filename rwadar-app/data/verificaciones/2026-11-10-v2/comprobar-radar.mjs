@@ -41,8 +41,11 @@ for (const f of radar.fuentes) {
   const entrada = { id: f.id, url: f.url, estado: r?.estado ?? r?.error ?? 'sin captura',
     metodo: r?.metodo || 'navegador', capturadoEl: r?.capturadoEl || r?.hora || null };
   const manual = (CAMBIOS.verificacionesManuales || {})[f.id];
-  if (manual && !texto) {
-    // La página no carga hoy: vale la lectura manual del mismo registro, con su método y sus literales.
+  // 10/11: la página de REGAFI carga, pero solo con el menú (sin los datos de la entidad); también
+  // vale entonces la lectura manual del mismo registro, siempre que la página no diga lo que respalda.
+  const sinDatos = !texto || (patrones || []).some(p => !new RegExp(p, 'i').test(texto));
+  if (manual && sinDatos) {
+    // La página no carga hoy (o carga sin datos): vale la lectura manual del mismo registro, con su método y sus literales.
     Object.assign(entrada, { ok: true, metodo: manual.metodo, urlLeida: manual.url, literales: manual.literales, manual: manual.motivo });
   } else if (!patrones) { bloqueos.push(`${f.id}: sin comprobaciones`); entrada.ok = false; }
   else if (!texto) { bloqueos.push(`${f.id}: no se pudo leer ${f.url} (${entrada.estado})`); entrada.ok = false; }

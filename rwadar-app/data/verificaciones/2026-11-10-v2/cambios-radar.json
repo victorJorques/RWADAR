@@ -1,7 +1,44 @@
 {
   "fecha": "2026-11-10",
-  "nota": "Cambios del radar comprobados a mano el 10/11/2026. La comprobación automática (comprobar-radar.mjs) los aplica antes de contrastar y preparar-entrega.mjs los lleva al lote.",
+  "nota": "Cambios del radar comprobados a mano el 10/11/2026. La comprobación automática (comprobar-radar.mjs) los aplica antes de contrastar y preparar-entrega.mjs los lleva al lote. Hoy no cambia ninguna dirección ni ningún texto del radar.",
   "fuentes": {},
   "plataformas": {},
-  "verificacionesManuales": {}
+  "comprobacionesCambiadas": {
+    "spiko-access": {
+      "antes": ["19183", "ORIAS", "CACEIS"],
+      "ahora": ["19183", "redeem fund shares", "CACEIS"],
+      "motivo": "El 10/11/2026 (captura de las 08:59 UTC y curl a las 09:04:38 UTC) el pie legal de https://www.spiko.io/use-cases/web3 ya no menciona ORIAS: dice «Spiko Finance is licensed as an investment firm by the French Prudential Control and Resolution Authority (ACPR) under no. 19183» y «our banking partner, CACEIS Bank» (copia en radar-manual/spiko-web3-pie-legal.txt). Esta fuente solo respalda el estado operativo de Spiko («sigue mostrando productos de tesorería, con suscripción y reembolso»), que la página sigue diciendo: «Subscribe to and redeem fund shares directly in USDC or EURC». Se cambia la comprobación ORIAS por esa frase; el texto del radar no cambia."
+    }
+  },
+  "verificacionesManuales": {
+    "spiko-regafi": {
+      "motivo": "La página de REGAFI (https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211) carga el 10/11/2026 sin los datos de la entidad (el navegador solo recibe el menú) y el proxy corta curl a su API de entidades (09:05–09:06 UTC, cuatro intentos). Se leyó la API pública del mismo registro, de la que se alimenta la página.",
+      "metodo": "API pública de REGAFI (prd-banque-entites), leída con WebFetch el 10/11/2026 hacia las 09:07 UTC",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D751211",
+      "literales": [
+        "denomination: \"Spiko Finance\"",
+        "cib: [{\"code\": \"19183\", \"date\": \"2025-12-15\"}]",
+        "nature_autorisation: \"Agrément\"; approval_withdrawal_process: \"False\""
+      ]
+    },
+    "spiko-regafi-pasaporte-es": {
+      "motivo": "Misma página de REGAFI sin datos. Se leyó la API pública de pasaportes salientes del mismo registro.",
+      "metodo": "API pública de REGAFI (prd-banque-passeports-sortants), leída con curl el 10/11/2026 a las 09:05 UTC; copia en radar-manual/regafi-spiko-pasaporte-espagne.json (SHA-256 fdf10d2d445b2cc90fec0c31215cd065cdab7c0a325cba03fceb47d2a7de66c6)",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+      "literales": [
+        "\"type_passeport\": \"Libre prestation de services\"",
+        "\"pays\": \"ESPAGNE\", \"date_debut\": \"2026-01-08\"",
+        "\"A1\": {\"C3\": {\"date_debut\": \"2026-01-08\", \"value\": true}"
+      ]
+    },
+    "paxg-occ": {
+      "motivo": "En la captura con navegador del 10/11/2026 la dirección no devolvió un PDF. Con curl, a las 09:04:38 UTC, devuelve el PDF (HTTP 200, application/pdf, 97.944 bytes, SHA-256 90b526aa1814ab6bcdd584809fb8ab3592c3837f0465e1bb85689eab74fa9b1d).",
+      "metodo": "curl y pdftotext el 10/11/2026 a las 09:04 UTC; texto en radar-manual/occ-trust-by-name.txt",
+      "url": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+      "literales": [
+        "Trust Banks Active As of 9/30/2026",
+        "25379 Paxos Trust Company, National Association 71 Fifth Avenue New York NY"
+      ]
+    }
+  }
 }
