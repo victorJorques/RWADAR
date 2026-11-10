@@ -310,8 +310,33 @@ function alturasLinea(valores, alto, m) {
   return v.map(n => alto - m - ((n - lo) / rango) * (alto - 2 * m));
 }
 
+/* La tarjeta compacta de Inicio (rediseño del 10/11/2026): el total, su
+   cambio en 24 h y una sola barra apilada con los 3 tipos mayores y «Otros»
+   (el resto del total, que incluye los demás tipos). Las cuotas salen del
+   mismo resumen que /mercado/; aquí no se calcula ninguna cifra nueva salvo
+   el resto. Devuelve null sin datos. */
+const COLORES_COMPACTO = Object.freeze(['#25E39A', '#32C9F5', '#F2B23C', '#6E6A64']);
+function resumenCompacto(d, cuantos = 3) {
+  if (!resumenValido(d) || d.fuente === 'sin-datos' || !d.total) return null;
+  const mayores = d.tipos.slice().sort((a, b) => b.valor - a.valor).slice(0, cuantos);
+  const sumaCuota = mayores.reduce((s, t) => s + t.cuota, 0);
+  const sumaValor = mayores.reduce((s, t) => s + t.valor, 0);
+  const segmentos = mayores.map((t, i) => ({ clave: t.clave, nombre: t.nombre, valor: t.valor, cuota: t.cuota, color: COLORES_COMPACTO[i] }));
+  const resto = redondear(Math.max(0, 100 - sumaCuota), 2);
+  if (resto > 0) segmentos.push({ clave: 'otros', nombre: 'Otros', valor: Math.max(0, d.total.valor - sumaValor), cuota: resto, color: COLORES_COMPACTO[3] });
+  return { fuente: d.fuente, fecha: d.fecha, actualizado: d.actualizado, total: d.total.valor, cambio24h: d.total.cambio24h, segmentos };
+}
+/* El color de un tipo en las barras de /mercado/: el mismo que su tramo de la
+   barra apilada de Inicio (los 3 mayores) y el gris de «Otros» para el resto,
+   para que se reconozcan de una pantalla a otra (revisión del 10/11/2026). */
+function colorTipo(d, clave, cuantos = 3) {
+  const r = resumenCompacto(d, cuantos);
+  const i = r ? r.segmentos.findIndex((s) => s.clave === clave && s.clave !== 'otros') : -1;
+  return i >= 0 ? COLORES_COMPACTO[i] : COLORES_COMPACTO[3];
+}
+
 module.exports = { FUENTE, TOTAL, TIPOS, ORO, PERIODOS, MARGEN_DIAS, historicoVacio, extraerFoto, validarFoto, validarHistorico,
   anadirFoto, serializarHistorico, resumir, resumenValido, millones, porcentaje, cuota, direccion, fechaCorta, fechaBreve, horaDato, fechaDe,
-  fechaLlegada, alturasLinea, textosLinea, millonesHablados, cambioPct };
+  fechaLlegada, alturasLinea, textosLinea, millonesHablados, cambioPct, resumenCompacto, colorTipo, COLORES_COMPACTO };
 
 window.RWAdarTokenizacionModelo=module.exports; })();

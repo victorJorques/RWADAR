@@ -4,7 +4,7 @@ import Svg, { Circle, Polyline } from 'react-native-svg';
 import { Pressable, Text, View, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
 import { cargarTokenizacion } from '../lib/tokenizacion-remota';
-import { FUENTE, alturasLinea, cuota, direccion, fechaBreve, fechaCorta, fechaLlegada, horaDato, millones, millonesHablados, porcentaje,
+import { FUENTE, alturasLinea, colorTipo, cuota, resumenCompacto, direccion, fechaBreve, fechaCorta, fechaLlegada, horaDato, millones, millonesHablados, porcentaje,
   textosLinea } from '../lib/tokenizacion';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
@@ -22,7 +22,15 @@ import { tacto } from '../lib/tacto';
    «aún sin datos». Si la red falla, la sección lo
    dice y ofrece reintentar; el resto de Inicio no se entera. La atribución
    «Datos: CoinGecko» se ve siempre. El inglés va en lib/idioma-en.js.
+
+   Con `compacta` (Inicio, rediseño del 10/11/2026) solo enseña la cifra
+   total, su cambio en 24 h y una sola barra apilada con los 3 tipos mayores
+   y «Otros» (resumenCompacto, el mismo de la web), la fuente y la hora, y
+   «Ver el mercado →» (onVerMas), que abre la pantalla con todo lo demás.
    --------------------------------------------------------------------- */
+// Los tramos de la barra apilada, como la web: verde, cian, ámbar y gris.
+const TRAMOS = ['#25E39A', '#32C9F5', '#F2B23C'];
+const TRAMO_OTROS = '#6E6A64';
 const FLECHA = { sube: '▲', baja: '▼', igual: '=' };
 const PALABRA = { sube: 'sube', baja: 'baja', igual: 'sin cambios' };
 
@@ -62,7 +70,7 @@ function Linea({ serie, idioma }) {
   );
 }
 
-export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokenizacion }) {
+export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokenizacion, compacta = false, onVerMas, textos = null, pantalla = false }) {
   const idioma = useIdioma();
   const [estado, setEstado] = useState({ fase: 'cargando', datos: null });
   const vivo = useRef(true);
@@ -82,12 +90,17 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
   const hoyUTC = new Date().toISOString().slice(0, 10);
   const [cifraTotal, unidad] = total.split(' ');
   const conDatosPendientes = d && d.periodos.some((p) => p.clave !== '24h' && p.estado !== 'ok');
-  return (
-    <View style={e.seccion}>
-      <Text style={e.ante}>Datos de mercado</Text>
-      <Text style={e.titulo} accessibilityRole="header">La tokenización en el mundo</Text>
-      <Text style={e.sub}>Valor de mercado de los tokens que representan activos reales (deuda, fondos, materias primas, acciones, inmuebles). Las categorías pueden solaparse. No es una recomendación.</Text>
-
+  const fuenteEnlace = (
+    <Pressable onPress={() => { tacto.abrir(); onAbrirEnlace?.(FUENTE.url); }} style={({ pressed }) => [e.fuente, pressed && pulsado('b3')]}
+      accessibilityRole="link" {...a11y} accessibilityLabel={`${traducir('Datos:')} CoinGecko${d ? ` · ${traducir(d.fuente === 'coingecko' ? 'Dato del' : 'Foto guardada del')} ${horaDato(d.actualizado, idioma)}` : ''}`}>
+      <Text style={e.fuenteTxt}>
+        {'Datos:'} <Text noTraducir style={e.fuenteEnlace}>CoinGecko</Text>
+        {d ? <Text style={e.fuenteTxt}>{' · '}{d.fuente === 'coingecko' ? 'Dato del' : 'Foto guardada del'} <Text noTraducir>{horaDato(d.actualizado, idioma)}</Text></Text> : null}
+      </Text>
+    </Pressable>
+  );
+  const estados = (
+    <>
       {estado.fase === 'cargando' ? <Text style={e.estado}>Cargando los datos de CoinGecko…</Text> : null}
       {estado.fase === 'error' || estado.fase === 'vacio' ? (
         <View style={e.estadoCaja}>
@@ -98,6 +111,68 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
           </Pressable>
         </View>
       ) : null}
+    </>
+  );
+
+  if (compacta) {
+    const r = d ? resumenCompacto(d) : null;
+    const dir = r ? direccion(r.cambio24h) : 'sin-datos';
+    const reparto = r ? r.segmentos.map((t) => `${traducir(t.nombre)} ${cuota(t.cuota, idioma)}`).join(', ') : '';
+    return (
+      <View style={e.bloque}>
+        <Text noTraducir style={e.bloqueTit} accessibilityRole="header">{textos?.titulo || 'El mercado hoy'}</Text>
+        {textos?.sub ? <Text noTraducir style={e.bloqueSub}>{textos.sub}</Text> : null}
+        {estados}
+        {r ? (
+          <View style={e.mini}>
+            <View style={e.miniFila} accessible {...a11y}
+              accessibilityLabel={`${traducir('Valor total de los activos tokenizados')}: ${millonesHablados(r.total, idioma)}${dir === 'sin-datos' ? '' : `, ${traducir(PALABRA[dir])} ${porcentaje(r.cambio24h, idioma)} ${traducir('en 24 h')}`}`}>
+              <Text noTraducir style={e.miniCifra} numberOfLines={1} adjustsFontSizeToFit>
+                {cifraTotal}{unidad ? <Text style={e.unidad}>{' ' + unidad}</Text> : null}
+              </Text>
+              {dir === 'sin-datos' ? null : (
+                <View style={[e.capsula, dir === 'sube' && e.periodoSube, dir === 'baja' && e.periodoBaja]}>
+                  <Text noTraducir style={[e.capsulaTxt, { color: colorDe(dir) }]}>{FLECHA[dir]} {porcentaje(r.cambio24h, idioma)}</Text>
+                  <Text style={e.capsulaEtq}>en 24 h</Text>
+                </View>
+              )}
+            </View>
+            <Text style={e.cifraEtq}>Valor total de los activos tokenizados, en millones de dólares (M$)</Text>
+            {/* Una sola barra apilada: cada tramo, su cuota del total. */}
+            <View style={e.apilada} accessible {...a11y} accessibilityLabel={`${traducir('Reparto por tipo de activo')}: ${reparto}`}>
+              {r.segmentos.map((t, i) => (
+                <View key={t.clave} style={[e.tramo, { flexGrow: Math.max(1, t.cuota), backgroundColor: t.clave === 'otros' ? TRAMO_OTROS : TRAMOS[i] }]} />
+              ))}
+            </View>
+            <View style={e.leyenda} accessible={false} importantForAccessibility="no-hide-descendants">
+              {r.segmentos.map((t, i) => (
+                <View key={t.clave} style={e.leyendaItem}>
+                  <View style={[e.leyendaPunto, { backgroundColor: t.clave === 'otros' ? TRAMO_OTROS : TRAMOS[i] }]} />
+                  <Text style={e.leyendaNom}>{t.nombre}</Text>
+                  <Text noTraducir style={e.leyendaCuota}>{cuota(t.cuota, idioma)}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+        ) : null}
+        {fuenteEnlace}
+        {onVerMas ? (
+          <Pressable onPress={() => { tacto.abrir(); onVerMas(); }} style={({ pressed }) => [e.ver, pressed && pulsado('b3')]}
+            accessibilityRole="button" noTraducir accessibilityLabel={textos?.ver || 'Ver el mercado'}>
+            <Text noTraducir style={e.verTxt}>{textos?.ver || 'Ver el mercado'}{' →'}</Text>
+          </Pressable>
+        ) : null}
+      </View>
+    );
+  }
+  return (
+    // En su pantalla («El mercado hoy»), el cuerpo ya da el margen: sin otro margen ni otra raya.
+    <View style={[e.seccion, pantalla && e.seccionPantalla]}>
+      <Text style={e.ante}>Datos de mercado</Text>
+      <Text style={e.titulo} accessibilityRole="header">La tokenización en el mundo</Text>
+      <Text style={e.sub}>Valor de mercado de los tokens que representan activos reales (deuda, fondos, materias primas, acciones, inmuebles). Las categorías pueden solaparse. No es una recomendación.</Text>
+
+      {estados}
 
       {d ? (
         <View>
@@ -131,7 +206,7 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
                   </Text>
                   {dir === 'sin-datos'
                     ? (llega
-                      ? <Text style={e.periodoNota} numberOfLines={3}>{'disponible el'} <Text noTraducir>{breve(llega)}</Text></Text>
+                      ? <Text style={e.periodoNota} numberOfLines={4}>{'disponible el'} <Text noTraducir>{breve(llega)}</Text></Text>
                       : <Text style={e.periodoNota} numberOfLines={2}>aún sin datos</Text>)
                     : <Text noTraducir style={[e.periodoNota, { color }]} numberOfLines={1}>{FLECHA[dir]} {traducir(PALABRA[dir])}</Text>}
                   {pie ? <Text style={e.periodoDesde} numberOfLines={3}>{pie[0]} <Text noTraducir>{breve(pie[1])}</Text></Text> : null}
@@ -143,7 +218,9 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
             <Text style={e.nota}>{'Los periodos sin datos se rellenarán solos con las fotos diarias que guarda RWAdar desde el'} <Text noTraducir style={e.notaFecha}>{fechaCorta(d.guardadoDesde || d.fecha, idioma)}</Text></Text>
           ) : null}
 
-          <Text style={e.h3} accessibilityRole="header">Por tipo de activo</Text>
+          {/* Cada gráfico, en la piel de las tarjetas (como /mercado/ en la web). */}
+          <View style={e.tarjetaGrafico}>
+          <Text style={[e.h3, e.h3Tarjeta]} accessibilityRole="header">Por tipo de activo</Text>
           {d.tipos.map((t) => {
             const dir = direccion(t.cambio24h);
             const cambio = dir === 'sin-datos' ? '—' : `${FLECHA[dir]} ${porcentaje(t.cambio24h, idioma)}`;
@@ -158,7 +235,8 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
                   <Text noTraducir style={e.tipoValor}>{millones(t.valor, idioma)}</Text>
                 </View>
                 <View style={e.barra}>
-                  <View style={[e.relleno, { width: `${Math.max(1.5, Math.min(100, t.cuota)).toFixed(2)}%` }]} />
+                  {/* El color de su tramo en la barra apilada de Inicio (como la web). */}
+                  <View style={[e.relleno, { width: `${Math.max(1.5, Math.min(100, t.cuota)).toFixed(2)}%`, backgroundColor: colorTipo(d, t.clave) }]} />
                 </View>
                 <View style={e.tipoPie}>
                   <Text style={e.tipoPieTxt}><Text noTraducir style={e.tipoCuota}>{cuota(t.cuota, idioma)}</Text> {'del total'}</Text>
@@ -168,19 +246,16 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
               </View>
             );
           })}
+          </View>
 
-          <Text style={e.h3} accessibilityRole="header">Evolución del valor total</Text>
-          <View style={e.lineaCaja}><Linea serie={d.serie} idioma={idioma} /></View>
+          <View style={e.tarjetaGrafico}>
+            <Text style={[e.h3, e.h3Tarjeta]} accessibilityRole="header">Evolución del valor total</Text>
+            <View style={e.lineaCaja}><Linea serie={d.serie} idioma={idioma} /></View>
+          </View>
         </View>
       ) : null}
 
-      <Pressable onPress={() => { tacto.abrir(); onAbrirEnlace?.(FUENTE.url); }} style={({ pressed }) => [e.fuente, pressed && pulsado('b3')]}
-        accessibilityRole="link" {...a11y} accessibilityLabel={`${traducir('Datos:')} CoinGecko${d ? ` · ${traducir(d.fuente === 'coingecko' ? 'Dato del' : 'Foto guardada del')} ${horaDato(d.actualizado, idioma)}` : ''}`}>
-        <Text style={e.fuenteTxt}>
-          {'Datos:'} <Text noTraducir style={e.fuenteEnlace}>CoinGecko</Text>
-          {d ? <Text style={e.fuenteTxt}>{' · '}{d.fuente === 'coingecko' ? 'Dato del' : 'Foto guardada del'} <Text noTraducir>{horaDato(d.actualizado, idioma)}</Text></Text> : null}
-        </Text>
-      </Pressable>
+      {fuenteEnlace}
     </View>
   );
 }
@@ -213,8 +288,11 @@ const e = StyleSheet.create({
   notaFecha: { fontFamily: F.media, color: C.tx2 },
   h3: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.tx, marginTop: 24, marginBottom: 12 },
   tipo: { marginBottom: 14 },
+  tarjetaGrafico: { marginTop: 24, paddingHorizontal: 16, paddingTop: 18, paddingBottom: 4, borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1 },
+  h3Tarjeta: { marginTop: 0, marginBottom: 14, fontFamily: F.negrita, fontSize: 17, lineHeight: 22 },
+  seccionPantalla: { paddingHorizontal: 0, paddingTop: 16, borderTopWidth: 0 },
   tipoCab: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', gap: 12 },
-  tipoNom: { flexShrink: 1, fontFamily: F.media, fontSize: 15, lineHeight: 20, color: C.tx },
+  tipoNom: { flexShrink: 1, fontFamily: F.media, fontSize: 16, lineHeight: 21, color: C.tx },
   tipoValor: { ...T.instrumento, fontSize: 14, lineHeight: 20, color: C.tx },
   barra: { height: 10, marginTop: 6, borderRadius: R.p, backgroundColor: C.ton, overflow: 'hidden' },
   relleno: { height: '100%', borderRadius: R.p, backgroundColor: C.tx2 },
@@ -222,10 +300,29 @@ const e = StyleSheet.create({
   tipoPieTxt: { fontFamily: F.regular, fontSize: 13, lineHeight: 18, color: C.tx3 },
   tipoCuota: { ...T.instrumento, fontSize: 13, color: C.tx2 },
   tipoCambio: { ...T.instrumento, fontSize: 13 },
-  lineaCaja: { padding: 12, borderRadius: R.m, backgroundColor: C.ton },
+  lineaCaja: { padding: 12, marginBottom: 14, borderRadius: R.m, backgroundColor: C.ton },
   eje: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 6 },
   ejeTxt: { ...T.instrumento, fontSize: 12, color: C.tx3 },
   lineaNota: { fontFamily: F.regular, fontSize: 13, lineHeight: 18, color: C.tx2, marginTop: 8 },
+  // Inicio: la tarjeta compacta, con el mismo título que los demás bloques.
+  bloque: { marginTop: 36, paddingTop: 32, borderTopWidth: 1, borderTopColor: C.bd },
+  bloqueTit: { fontFamily: F.negrita, fontSize: 24, lineHeight: 29, letterSpacing: -0.4, color: C.tx },
+  bloqueSub: { ...T.menor, fontSize: 16, lineHeight: 23, color: C.tx2, marginTop: 4 },
+  mini: { marginTop: 16, padding: 18, borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1 },
+  miniFila: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 10 },
+  miniCifra: { fontFamily: F.semi, fontVariant: ['tabular-nums'], letterSpacing: -0.8, fontSize: 36, lineHeight: 42, color: C.tx, flexShrink: 1 },
+  capsula: { flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 10, paddingVertical: 5, borderRadius: R.p, backgroundColor: C.ton },
+  capsulaTxt: { ...T.instrumento, fontSize: 13, lineHeight: 17 },
+  capsulaEtq: { fontFamily: F.regular, fontSize: 13, lineHeight: 17, color: C.tx3 },
+  apilada: { flexDirection: 'row', gap: 2, height: 14, marginTop: 16, borderRadius: R.p, overflow: 'hidden', backgroundColor: C.ton },
+  tramo: { flexBasis: 0, height: '100%', minWidth: 3 },
+  leyenda: { flexDirection: 'row', flexWrap: 'wrap', columnGap: 14, rowGap: 6, marginTop: 10 },
+  leyendaItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  leyendaPunto: { width: 10, height: 10, borderRadius: 3 },
+  leyendaNom: { fontFamily: F.media, fontSize: 13, lineHeight: 18, color: C.tx2 },
+  leyendaCuota: { ...T.instrumento, fontSize: 13, lineHeight: 18, color: C.tx },
+  ver: { minHeight: UI.tactil, justifyContent: 'center', alignSelf: 'flex-start', marginLeft: -8, paddingHorizontal: 8, borderRadius: R.m },
+  verTxt: { fontFamily: F.semi, fontSize: 16, lineHeight: 21, color: C.senal },
   fuente: { minHeight: 44, justifyContent: 'center', marginTop: 12, marginLeft: -8, paddingHorizontal: 8, borderRadius: R.m, alignSelf: 'flex-start' },
   fuenteTxt: { fontFamily: F.regular, fontSize: 13, lineHeight: 18, color: C.tx3 },
   fuenteEnlace: { fontFamily: F.media, color: C.senal, textDecorationLine: 'underline' },

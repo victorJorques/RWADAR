@@ -5,8 +5,6 @@
    se publicó en redes, el enlace a esa publicación). Este script lo
    comprueba y escribe:
 
-     rwadar-site/index.html                 la franja de novedades de Inicio
-                                            (la última noticia, en una línea)
      rwadar-movil/lib/noticias-contenido.js las mismas noticias para la app
 
    Uso:  node rwadar-noticias.js              genera
@@ -136,13 +134,13 @@ function reemplazarEntreMarcas(textoActual, ini, fin, nuevo, donde) {
   return textoActual.slice(0, lineaIni) + nuevo + textoActual.slice(b + fin.length);
 }
 
+/* Desde el rediseño de Inicio (10/11/2026) las novedades salen de Inicio:
+   en la web siguen en /cambios (rwadar-fichas.js) y en la app, en Perfil.
+   Aquí solo se escribe el módulo de la app; Inicio no debe llevar la franja. */
 function construirSalidas(noticias = cargarNoticias()) {
   const index = fs.readFileSync(INDEX_WEB, 'utf8');
-  return new Map([
-    [INDEX_WEB, reemplazarEntreMarcas(index, '<!--noticias:ini-->', '<!--noticias:fin-->', bloqueWeb(noticias),
-      'rwadar-site/index.html')],
-    [DATOS_APP, moduloApp(noticias)],
-  ]);
+  if (index.includes('<!--noticias:ini-->')) throw new ErrorNoticias('rwadar-site/index.html: la franja de novedades ya no va en Inicio');
+  return new Map([[DATOS_APP, moduloApp(noticias)]]);
 }
 
 function comprobar(noticias = cargarNoticias()) {

@@ -40,6 +40,25 @@
 /academy/*
   Cache-Control: public, max-age=0, must-revalidate
 
+# Secciones de Inicio (rediseño del 10/11/2026): el detalle del mercado, las noticias y los seis capítulos.
+/mercado
+  Cache-Control: public, max-age=0, must-revalidate
+
+/mercado/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/noticias
+  Cache-Control: public, max-age=0, must-revalidate
+
+/noticias/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/aprende
+  Cache-Control: public, max-age=0, must-revalidate
+
+/aprende/*
+  Cache-Control: public, max-age=0, must-revalidate
+
 /para-empresas.html
   Cache-Control: public, max-age=0, must-revalidate
   X-Robots-Tag: noindex, nofollow
@@ -59,6 +78,10 @@
   Cache-Control: public, max-age=0, must-revalidate
 
 /ofertas-editoriales/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Fotos editoriales de las noticias (IA, ilustrativas): las comparten la web y la app.
+/noticias-editoriales/*
   Cache-Control: public, max-age=0, must-revalidate
 
 /sw.js

@@ -77,6 +77,7 @@
 <link rel="stylesheet" href="/assets/academy-candado-20261108.css">
 <link rel="stylesheet" href="/assets/tokenizacion-20261110.css">
 <link rel="stylesheet" href="/assets/noticias-sector-20261110.css">
+<link rel="stylesheet" href="/assets/secciones-20261110.css">
 </head>
 <body>
 
@@ -134,482 +135,104 @@
 <section class="movil-panel" id="movilPanelInicio" data-movil-panel="inicio"
          role="tabpanel" aria-labelledby="movilTabInicio" tabindex="-1" hidden>
   <div class="movil-panel-cuerpo inicio-cuerpo rel">
-    <!-- Inicio cuenta una historia en seis capítulos (HISTORIA-v2 y ESPEC-INICIO,
-         04/11/2026). Por decisión de Víctor, el texto va limpio, sin llamadas:
-         cada apartado acaba en «Fuentes de este apartado», que abre su grupo
-         en la lista del final. Las cifras del catálogo (ofertas, plataformas,
-         descartadas, fechas, mínimos y la Selección) las pone pintarInicio();
-         en el HTML no hay ninguna. -->
+    <!-- Inicio es una portada por bloques cortos (rediseño del 10/11/2026);
+         la historia en seis capítulos (HISTORIA-v2 y ESPEC-INICIO) vive ahora
+         en /aprende/, con sus «Saber más» y sus fuentes. -->
 
-    <!-- Portada: el radar real, el titular, un solo b1 y el aviso pegado. -->
-    <section class="rel-portada" id="relPortada" aria-labelledby="inicioPortadaTit">
+    <!-- Rediseño del 10/11/2026 (encargo de Víctor: «mucho lío en Inicio»).
+         Inicio es una portada por bloques cortos, el mismo orden que la app:
+         Cabecera, Ofertas, El mercado hoy, Noticias, Aprende y Pie. Cada
+         bloque es un resumen con su enlace «Ver …» a su sección, donde está
+         el detalle (/mercado/, /noticias/, /aprende/). Nada se repite: una
+         cifra o una oferta sale en un solo bloque. Un solo aviso de riesgo,
+         en la cabecera. Las cifras del catálogo las pone pintarInicio(); en
+         el HTML no hay ninguna. -->
+
+    <!-- 1 · Cabecera: la frase de marca, tres cifras, el botón y el aviso. -->
+    <section class="rel-portada ini-cab" id="relPortada" aria-labelledby="inicioPortadaTit">
       <div class="rel-radar inicio-radar-caja" data-inicio-radar>
         <svg class="inicio-radar" id="inicioRadar" viewBox="-14 6 416 388" aria-hidden="true" focusable="false"></svg>
-        <ul class="inicio-hud" id="inicioCifras" aria-label="El catálogo en cifras"></ul>
       </div>
       <ul class="solo-lector" id="inicioRadarLista" aria-label="Plataformas por tipo de activo"></ul>
       <div class="rel-portada-txt">
         <p class="rel-ante">Independiente y gratis · Tokenización en España</p>
-        <h2 class="rel-portada-tit" id="inicioPortadaTit">La blockchain nació para pagar sin bancos. Hoy la usan los propios bancos.</h2>
-        <p class="rel-portada-sub">Mueven con ella acciones, bonos y dinero. <span data-rel-plantilla="Aquí ves las {ofertas} ofertas del radar, con su fuente y su fecha." data-rel-plantilla-en="Here you can see the radar's {ofertas} offers, each with its source and date." data-rel-sin="Aquí ves las ofertas del radar, con su fuente y su fecha.">Aquí ves las ofertas del radar, con su fuente y su fecha.</span></p>
-        <button class="b1 rel-cta" type="button" data-movil-ir="emisiones" data-rel-plantilla="Ver las {ofertas} ofertas" data-rel-plantilla-en="See the {ofertas} offers" data-rel-sin="Ver las ofertas">Ver las ofertas</button>
+        <h2 class="rel-portada-tit" id="inicioPortadaTit">Ofertas y plataformas tokenizadas, contrastadas con su fuente.</h2>
+        <ul class="ini-cifras" id="inicioCifras" aria-label="El catálogo en cifras"></ul>
+        <button class="b1 rel-cta" type="button" data-movil-ir="emisiones">Ver las ofertas</button>
         <p class="rel-aviso">Invertir tiene riesgos: puedes perder parte o todo lo que inviertas. RWAdar informa, no asesora ni vende.</p>
-        <div class="rel-portada-pie">
-          <button class="b3 rel-explorar" type="button" data-inicio-radar>Explorar el radar<span class="rel-flecha" aria-hidden="true"></span></button>
-          <a class="b3 rel-fuentes" href="#fuentes-portada" data-rel-fuentes="portada">Fuentes<span class="rel-flecha" aria-hidden="true"></span></a>
-        </div>
       </div>
     </section>
 
-    <!-- Recién añadidas (04/11/2026): las altas del radar de los últimos 30
-         días, de la más nueva a la más antigua y 6 como mucho. La fecha de
-         alta es un hecho (anadidaEl de transparencia.json); las pinta
-         pintarInicio(). Sin ninguna, o con el catálogo caducado, no sale.
-         Nace visible: en escritorio asoma bajo la portada y, si naciera
-         oculta, el capítulo 01 que asoma en su lugar saltaría al pintarla. -->
-    <section class="rel-nuevas" id="relNuevas" aria-labelledby="relNuevasTit">
-      <h2 class="rel-nuevas-tit" id="relNuevasTit">Recién añadidas</h2>
-      <p class="rel-nuevas-sub">Las últimas ofertas que hemos revisado y añadido al radar</p>
-      <ul class="rel-tarjetas" id="relNuevasLista" aria-label="Recién añadidas"></ul>
+    <!-- 2 · Ofertas: un solo carrusel con las recién añadidas y las que pasan
+         las 5 comprobaciones, sin duplicados (4–6 tarjetas; las pinta
+         pintarInicio). Sin catálogo vigente, no sale. -->
+    <section class="ini-bloque ini-ofertas" id="relNuevas" aria-labelledby="relNuevasTit">
+      <div class="ini-bloque-cab">
+        <h2 class="ini-bloque-tit" id="relNuevasTit">Ofertas</h2>
+        <p class="ini-bloque-sub">Las últimas añadidas y las que pasan nuestras 5 comprobaciones</p>
+      </div>
+      <ul class="rel-tarjetas" id="relNuevasLista" aria-label="Ofertas destacadas"></ul>
+      <details class="ini-cinco" id="relEscaparate">
+        <summary>¿Qué son las 5 comprobaciones?</summary>
+        <ol class="rel-cinco" id="inicioCriterios" aria-label="Las 5 comprobaciones"></ol>
+        <p class="ini-cinco-nota">Pasarlas no hace a una oferta más segura ni más rentable. No es una recomendación de inversión.</p>
+        <a class="b3 rel-fuentes" href="/aprende/#fuentes-seleccion">Fuentes de este apartado<span class="rel-flecha" aria-hidden="true"></span></a>
+      </details>
       <p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>
-      <button class="b3 rel-nuevas-todas" type="button" data-emi-orden="nuevas" data-movil-ir="emisiones">Ver todas las ofertas nuevas<span class="rel-flecha" aria-hidden="true"></span></button>
+      <a class="ini-ver" href="#emisiones" data-movil-ir="emisiones"><span>Ver todas las ofertas</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
     </section>
 
-    <!-- La tokenización en el mundo (10/11/2026). Valor de
-         mercado de los tokens de activos reales, por tipo, con datos gratis de
-         CoinGecko que lee nuestro servidor (/api/tokenizacion): el navegador no
-         habla con nadie más. Los cambios a 7 días, 30 días, 1 año y el total
-         salen solo de fotos diarias guardadas por RWAdar. Lo pinta
-         assets/tokenizacion-20261110.js; aquí no hay ninguna cifra. Va detrás de
-         «Recién añadidas»: no empuja la portada fuera de la primera pantalla. -->
-    <section class="tk" id="tokenizacion" aria-labelledby="tkTit" data-tokenizacion>
-      <p class="tk-ante">Datos de mercado</p>
-      <h2 class="tk-tit" id="tkTit">La tokenización en el mundo</h2>
-      <p class="tk-sub">Valor de mercado de los tokens que representan activos reales (deuda, fondos, materias primas, acciones, inmuebles). Las categorías pueden solaparse. No es una recomendación.</p>
+    <!-- 3 · El mercado hoy: la tarjeta compacta (cifra total, 24 h y una barra
+         apilada con los 3 tipos mayores y «otros»), con datos de CoinGecko
+         que lee nuestro servidor. Todo lo demás está en /mercado/. La pinta
+         assets/tokenizacion-20261110.js; aquí no hay ninguna cifra. -->
+    <section class="ini-bloque tk tk--compacta" id="tokenizacion" aria-labelledby="tkTit" data-tokenizacion="compacta">
+      <div class="ini-bloque-cab">
+        <h2 class="ini-bloque-tit" id="tkTit">El mercado hoy</h2>
+        <p class="ini-bloque-sub">Valor de los activos reales tokenizados en el mundo</p>
+      </div>
       <div class="tk-cuerpo" id="tkCuerpo" aria-busy="true">
         <p class="tk-estado" id="tkEstado">Cargando los datos de CoinGecko…</p>
       </div>
       <p class="tk-fuente"><span>Datos:</span> <a href="https://www.coingecko.com/" target="_blank" rel="noopener nofollow" translate="no">CoinGecko</a><span class="tk-hora" id="tkHora"></span></p>
+      <a class="ini-ver" href="/mercado/"><span>Ver el mercado</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
     </section>
 
-    <!-- Noticias del sector (10/11/2026): las del día y las más importantes,
-         seleccionadas y verificadas en cada ciclo de investigación. Solo el
-         titular sobre una ilustración propia (sin fotos de prensa); al
-         pulsar, el detalle con su fuente. Lo pinta
-         assets/noticias-sector-20261110.js desde /datos/noticias.json; aquí no
-         hay ninguna noticia. -->
-    <section class="nt" id="noticias" aria-labelledby="ntTit" data-noticias>
-      <div class="nt-cab">
-        <div>
-          <h2 class="nt-tit" id="ntTit">Noticias del sector</h2>
-          <p class="nt-sub" id="ntFecha" hidden></p>
-        </div>
-        <div class="nt-mandos" id="ntMandos" hidden>
-          <button class="nt-mando" type="button" data-nt-paso="-1" aria-controls="ntLista" aria-label="Noticias anteriores"><span aria-hidden="true">‹</span></button>
-          <button class="nt-mando" type="button" data-nt-paso="1" aria-controls="ntLista" aria-label="Noticias siguientes"><span aria-hidden="true">›</span></button>
-        </div>
+    <!-- 4 · Noticias: tres tarjetas grandes con foto editorial y solo el
+         titular; todas, con su detalle, en /noticias/. Lo pinta
+         assets/noticias-sector-20261110.js desde /datos/noticias-v2.json. -->
+    <section class="ini-bloque nt nt--portada" id="noticias" aria-labelledby="ntTit" data-noticias="portada">
+      <div class="ini-bloque-cab">
+        <h2 class="ini-bloque-tit" id="ntTit">Noticias</h2>
+        <p class="ini-bloque-sub" id="ntFecha" hidden></p>
       </div>
-      <ul class="nt-pista" id="ntLista" aria-labelledby="ntTit" hidden></ul>
+      <ul class="nt-portada" id="ntLista" aria-labelledby="ntTit" hidden></ul>
       <p class="nt-estado" id="ntEstado" role="status">Cargando las noticias…</p>
-      <p class="nt-nota" id="ntNota" hidden>Ilustraciones de RWAdar, no fotos de la noticia. Selección editorial con enlace a la fuente; no es una recomendación.</p>
-      <dialog class="nt-dialogo" id="ntDialogo" aria-labelledby="ntDlgTit">
-        <div class="nt-dlg-marco">
-          <div class="nt-dlg-cab">
-            <span class="nt-dlg-etq">Noticia del sector</span>
-            <button class="nt-dlg-cerrar" type="button" data-nt-cerrar aria-label="Cerrar la noticia"><span aria-hidden="true">×</span></button>
-          </div>
-          <div class="nt-dlg-cuerpo" id="ntDlgCuerpo"></div>
-        </div>
-      </dialog>
+      <p class="nt-nota" id="ntNota" hidden>Imágenes ilustrativas generadas con IA, no fotos de la noticia.</p>
+      <a class="ini-ver" href="/noticias/"><span>Todas las noticias</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
     </section>
 
-    <!-- 01 · De dónde viene. El titular y, justo debajo, qué es. -->
-    <section class="rel-cap" id="relCap1" aria-labelledby="relCap1Tit">
-      <p class="rel-num rel-revela"><span class="rel-num-n">01</span><span>De dónde viene</span></p>
-      <h2 class="rel-tit rel-revela" id="relCap1Tit">Empezó con un titular de periódico.</h2>
-      <div class="rel-define rel-revela">
-        <p class="rel-define-et">Qué es</p>
-        <p class="rel-define-txt">La blockchain es un registro compartido. Tokenizar es apuntar en ella una acción, un bono o un fondo.</p>
+    <!-- 5 · Aprende: una sola tarjeta; los seis capítulos, en /aprende/. -->
+    <section class="ini-bloque ini-aprende" aria-labelledby="iniAprendeTit">
+      <div class="ini-bloque-cab">
+        <h2 class="ini-bloque-tit" id="iniAprendeTit">Aprende</h2>
       </div>
-      <p class="rel-txt rel-revela">En el primer bloque de bitcoin, de enero de 2009, quedó grabado un titular de The Times.</p>
-      <figure class="rel-bloque rel-revela" aria-label="Bloque génesis de bitcoin, 03/01/2009">
-        <svg class="rel-bloque-cadena" viewBox="0 0 326 24" aria-hidden="true" focusable="false">
-          <g class="rel-b-1"><path class="rel-cubo" d="M10 2l9 5v10l-9 5-9-5V7z"/><path class="rel-cubo-a" d="M1 7l9 5 9-5M10 12v10"/></g>
-          <path class="rel-b-l" d="M19 12h42"/>
-          <g><path class="rel-cubo" d="M70 2l9 5v10l-9 5-9-5V7z"/><path class="rel-cubo-a" d="M61 7l9 5 9-5M70 12v10"/></g>
-          <path class="rel-b-l" d="M79 12h42"/>
-          <g><path class="rel-cubo" d="M130 2l9 5v10l-9 5-9-5V7z"/><path class="rel-cubo-a" d="M121 7l9 5 9-5M130 12v10"/></g>
-          <path class="rel-b-l" d="M139 12h42"/>
-          <g class="rel-b-t1"><path class="rel-cubo" d="M190 2l9 5v10l-9 5-9-5V7z"/><path class="rel-cubo-a" d="M181 7l9 5 9-5M190 12v10"/></g>
-          <path class="rel-b-l rel-b-t1" d="M199 12h42"/>
-          <g class="rel-b-t2"><path class="rel-cubo" d="M250 2l9 5v10l-9 5-9-5V7z"/><path class="rel-cubo-a" d="M241 7l9 5 9-5M250 12v10"/></g>
-          <path class="rel-b-l rel-b-t2" d="M259 12h66"/>
-        </svg>
-        <div class="rel-bloque-cab"><span>Bloque génesis</span><time datetime="2009-01-03">03/01/2009</time></div>
-        <blockquote class="rel-bloque-txt" lang="en" translate="no"><p>«The Times 03/Jan/2009 Chancellor on brink of second bailout for banks»</p></blockquote>
-        <figcaption class="rel-bloque-fuente">«El ministro de Hacienda, al borde de un segundo rescate a los bancos».</figcaption>
-      </figure>
-      <details class="rel-mas">
-        <summary>Saber más</summary>
-        <ul>
-          <li>A veces el token es el activo y otras, solo un contrato que sigue su precio.</li>
-          <li>En España, la ley admite desde 2023 registrar así los valores, además de las anotaciones en cuenta y los títulos de siempre.</li>
-          <li>Satoshi Nakamoto presentó el documento técnico de bitcoin el 31/10/2008, en plena crisis financiera. Proponía pagos directos de una persona a otra, «sin pasar por una institución financiera».</li>
-          <li>En 2016, Don y Alex Tapscott escribieron en TIME: «No hablamos de la web social, la inteligencia artificial, el big data, la robótica, ni siquiera de los coches autónomos. Hablamos de la blockchain».</li>
-          <li>El economista Nouriel Roubini lo ve al revés: «la tecnología más sobrevalorada —y menos útil— de la historia de la humanidad». Lo escribió en 2018, ante el Comité Bancario del Senado de EE. UU.</li>
-        </ul>
-      </details>
-      <a class="b3 rel-fuentes" href="#fuentes-cap1" data-rel-fuentes="cap1">Fuentes de este apartado<span class="rel-flecha" aria-hidden="true"></span></a>
+      <a class="ini-aprende-tarjeta" href="/aprende/">
+        <span class="ini-aprende-pasos" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span></span>
+        <span class="ini-aprende-tit">¿Qué es tokenizar? Te lo contamos en 6 pasos</span>
+        <span class="ini-aprende-sub">De dónde viene, qué cambia, quién lo usa, sus riesgos y para qué sirve el radar.</span>
+        <span class="ini-ver ini-ver--tarjeta"><span>Empezar</span><span class="ini-ver-flecha" aria-hidden="true">→</span></span>
+      </a>
     </section>
 
-    <!-- 02 · Qué cambia: la ruta de hoy frente a la de un registro compartido. -->
-    <section class="rel-cap" id="relCap2" aria-labelledby="relCap2Tit">
-      <p class="rel-num rel-revela"><span class="rel-num-n">02</span><span>Qué cambia</span></p>
-      <h2 class="rel-tit rel-revela" id="relCap2Tit">Menos intermediarios, menos esperas.</h2>
-      <figure class="rel-cadena rel-revela" aria-label="Comparativa: hoy frente a lo que permite la blockchain">
-        <p class="rel-cadena-col">Hoy</p>
-        <p class="rel-cadena-col rel-cadena-col-2">Lo que permite la blockchain</p>
-        <ol class="rel-ruta rel-ruta-hoy" aria-label="Hoy: de ti al activo, paso a paso">
-          <li class="rel-nodo rel-nodo-fin">Tú</li>
-          <li class="rel-nodo">Bróker</li>
-          <li class="rel-nodo">Cámara de compensación</li>
-          <li class="rel-nodo">Custodio</li>
-          <li class="rel-nodo rel-nodo-fin">Activo</li>
-        </ol>
-        <ol class="rel-ruta rel-ruta-man" aria-label="Con la blockchain: de ti al activo, con menos pasos">
-          <li class="rel-nodo rel-nodo-fin">Tú</li>
-          <li class="rel-nodo">Plataforma</li>
-          <li class="rel-nodo rel-nodo-reg">Registro compartido<span class="rel-nodo-sub">con quien crea el producto y quien guarda el activo</span></li>
-          <li class="rel-nodo rel-nodo-fin">Activo</li>
-        </ol>
-        <div class="rel-dato"><p class="rel-dato-et">Liquidación</p><p>Compras el lunes; en Europa, se completa el miércoles</p></div>
-        <div class="rel-dato rel-dato-2"><p class="rel-dato-et">Liquidación</p><p>Pagas y recibes a la vez</p></div>
-        <div class="rel-dato"><p class="rel-dato-et">Horario</p><p>Solo en horario de bolsa</p></div>
-        <div class="rel-dato rel-dato-2"><p class="rel-dato-et">Horario</p><p>A cualquier hora, cualquier día</p></div>
-        <figcaption class="rel-cadena-pie">Esquema simplificado: menos intermediarios no quiere decir ninguno.</figcaption>
-      </figure>
-      <details class="rel-mas">
-        <summary>Saber más</summary>
-        <ul>
-          <li>Larry Fink, consejero delegado de BlackRock, lo resumió en su carta de 2025: «Si SWIFT es el correo postal, la tokenización es el correo electrónico». SWIFT es la red que usan los bancos para los pagos internacionales. Lo dice quien vende fondos tokenizados, y BlackRock no tiene relación con RWAdar.</li>
-          <li>El BCE es más prudente: que los activos se puedan programar «podría reducir el número de intermediarios y de operaciones». Lo ve como un beneficio posible, aún sin medir.</li>
-          <li>En los pagos entre países, las monedas estables «a menudo» cambian unos intermediarios por otros. Son monedas digitales ligadas a una divisa, casi siempre el dólar. Lo concluyen tres autores del Banco de Pagos Internacionales (BIS) en un documento de trabajo de octubre de 2026, a título personal.</li>
-          <li>No se trata de salir del euro: las operaciones que pasan por Pontes, el sistema del BCE, se pagan en euros del propio banco central.</li>
-          <li>La UE también acortará los plazos: desde el 11/10/2027, una compra de acciones se completará en un día hábil, y no en dos.</li>
-        </ul>
-      </details>
-      <a class="b3 rel-fuentes" href="#fuentes-cap2" data-rel-fuentes="cap2">Fuentes de este apartado<span class="rel-flecha" aria-hidden="true"></span></a>
-    </section>
-
-    <!-- 03 · Quién lo usa ya: dos frases y un solo carrusel; los demás datos,
-         en «Saber más». -->
-    <section class="rel-cap" id="relCap3" aria-labelledby="relCap3Tit">
-      <p class="rel-num rel-revela"><span class="rel-num-n">03</span><span>Quién lo usa ya</span></p>
-      <h2 class="rel-tit rel-revela" id="relCap3Tit">Ya no es solo cosa de cripto.</h2>
-      <p class="rel-txt rel-revela">Desde el 28 de octubre, la DTCC, donde se guardan las acciones y los bonos de EE. UU., ofrece tokenizar parte de ellos.</p>
-      <p class="rel-txt rel-revela">En Europa, el BCE permite a las grandes entidades pagar estas operaciones con Pontes, y Santander, Cecabank y ABANCA ya participan.</p>
-
-      <!-- Quién más se ha movido: solo texto, sin logotipos, sin fotos y sin
-           botones de oferta. Los hechos, con su cifra; las opiniones y las
-           previsiones van rotuladas en «Saber más». -->
-      <section class="rel-quien rel-revela" aria-labelledby="relQuienTit">
-        <div class="rel-quien-cab">
-          <h3 class="rel-quien-tit" id="relQuienTit">Quién más se ha movido</h3>
-          <p class="rel-quien-pos" aria-hidden="true"><span id="relQuienPos">1</span> de <span id="relQuienTotal">5</span></p>
-          <div class="rel-quien-mandos">
-            <button class="bi rel-quien-ant" type="button" aria-label="Tarjeta anterior" aria-controls="relQuienLista" disabled><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
-            <button class="bi rel-quien-sig" type="button" aria-label="Tarjeta siguiente" aria-controls="relQuienLista"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg></button>
-          </div>
-        </div>
-        <p class="rel-quien-nota">Ninguna tiene relación con RWAdar ni paga por aparecer.</p>
-        <ul class="rel-quien-lista" id="relQuienLista" tabindex="0" aria-label="Quién más se ha movido: 5 entidades">
-          <li class="rel-q"><p class="rel-q-cab"><b>Banca europea</b><time datetime="2026-10-14">14/10/2026</time></p>
-            <p class="rel-q-cifra">37 bancos</p><p class="rel-q-pie">de 15 países, siete de ellos españoles</p>
-            <p class="rel-q-txt">Su consorcio, Qivalis, tiene licencia para emitir una moneda digital en euros, pero aún no lo ha hecho.</p></li>
-          <li class="rel-q"><p class="rel-q-cab"><b>JPMorgan</b><time datetime="2026">2026</time></p>
-            <p class="rel-q-cifra">7.000 millones</p><p class="rel-q-pie">de dólares al día, de media, en su red Kinexys, según el propio banco (datos de 2025)</p>
-            <p class="rel-q-txt">Jamie Dimon, su presidente: «Tenemos que lanzar nuestra propia tecnología blockchain».</p></li>
-          <li class="rel-q"><p class="rel-q-cab"><b>MEDE</b><time datetime="2026-10">octubre de 2026</time></p>
-            <p class="rel-q-cifra">1.000 millones</p><p class="rel-q-pie">de euros, en un bono digital pagado a través de Pontes</p>
-            <p class="rel-q-txt">Lo emitió el Mecanismo Europeo de Estabilidad, con el Bundesbank a cargo de la emisión y los pagos.</p></li>
-          <li class="rel-q"><p class="rel-q-cab"><b>Visa</b><time datetime="2026-10">octubre de 2026</time></p>
-            <p class="rel-q-cifra">25.000 millones</p><p class="rel-q-pie">de dólares al año, saldados con monedas digitales ligadas a una divisa</p>
-            <p class="rel-q-txt">Es su ritmo actual: diez veces más que hace un año, pero poco frente a todo lo que mueve Visa.</p></li>
-          <li class="rel-q"><p class="rel-q-cab"><b>Swift</b><time datetime="2026-07">julio de 2026</time></p>
-            <p class="rel-q-cifra">17 bancos</p><p class="rel-q-pie">en un piloto de la red de pagos internacionales</p>
-            <p class="rel-q-txt">Prueban a mover depósitos convertidos en token entre países, a cualquier hora. El pago final sigue por la vía de siempre.</p></li>
-        </ul>
-      </section>
-      <details class="rel-mas">
-        <summary>Saber más</summary>
-        <ul>
-          <li>Al servicio de la DTCC se han apuntado 20 entidades, entre ellas J.P. Morgan.</li>
-          <li>Con Pontes, estas operaciones se pagan en euros del propio banco central. Tres de sus 13 primeros participantes son españoles.</li>
-          <li>El mercado de letras del Tesoro de EE. UU. tokenizadas es hoy 125 veces mayor que en enero de 2023: de 114 millones de dólares a unos 14.230 millones (03/11/2026). En los últimos 30 días ha bajado un 3,9 %. Es el tamaño del mercado, no lo que rinde.</li>
-          <li>Los siete bancos españoles de Qivalis son BBVA, CaixaBank, ABANCA, Sabadell, Bankinter, Cecabank y Kutxabank.</li>
-          <li>Opinión. Piero Cipollone, del Comité Ejecutivo del BCE, habló en agosto de 2026 de una «revolución copernicana». Pero admite que los activos reales tokenizados siguen siendo «diminutos» y poco líquidos frente a los mercados mundiales.</li>
-          <li>Opinión. Larry Fink y Rob Goldstein, de BlackRock, escribieron a finales de 2025: «Creemos que la tokenización puede estar hoy más o menos donde estaba internet en 1996». Fink lo recoge en su carta de 2026 y avisa: «No sustituirá de la noche a la mañana el sistema financiero actual».</li>
-          <li>Previsión. Paul Atkins, presidente de la SEC, el supervisor de la bolsa de EE. UU., en diciembre de 2025: «Así va a ser el mundo… Quizá ni siquiera tarde diez años; quizá incluso mucho menos, quizá un par de años».</li>
-        </ul>
-      </details>
-      <a class="b3 rel-fuentes" href="#fuentes-cap3" data-rel-fuentes="cap3">Fuentes de este apartado<span class="rel-flecha" aria-hidden="true"></span></a>
-    </section>
-
-    <!-- 04 · Por qué te importa -->
-    <section class="rel-cap" id="relCap4" aria-labelledby="relCap4Tit">
-      <p class="rel-num rel-revela"><span class="rel-num-n">04</span><span>Por qué te importa</span></p>
-      <h2 class="rel-tit rel-revela" id="relCap4Tit">Hoy, invertir en bolsa es cosa de pocos.</h2>
-      <figure class="rel-par rel-revela" aria-label="El 34,6 % del 10 % de hogares con más renta y menos del 2 % del 20 % con menos renta tienen acciones en bolsa">
-        <div class="rel-par-fila"><p class="rel-par-n">34,6 %</p><p class="rel-par-et">del 10 % de hogares con más renta</p><span class="rel-barra-pista"><span class="rel-barra-rel rel-barra-alta"></span></span></div>
-        <div class="rel-par-fila"><p class="rel-par-n">menos del 2 %</p><p class="rel-par-et">del 20 % con menos renta</p><span class="rel-barra-pista"><span class="rel-barra-rel rel-barra-baja"></span></span></div>
-        <figcaption class="rel-par-pie">tienen acciones en bolsa (España, finales de 2024)</figcaption>
-      </figure>
-      <p class="rel-txt rel-revela">Para el economista jefe de la OCDE, trocear un activo en tokens podría facilitar la entrada de pequeños inversores, pero aún no a gran escala.</p>
-      <p class="rel-txt rel-revela" id="relMinimos" data-rel-plantilla="En el radar, {minimos} de las {ofertas} ofertas tienen un mínimo documentado de 1 €{usd}." data-rel-plantilla-en="On the radar, {minimos} of the {ofertas} offers have a documented minimum of €1{usd}." data-rel-sin="" hidden></p>
-      <p class="rel-aviso rel-revela" id="relMinimosAviso" hidden>Sin contar comisiones ni el cambio de divisa. Y un mínimo bajo no significa un riesgo bajo.</p>
-      <details class="rel-mas">
-        <summary>Saber más</summary>
-        <ul>
-          <li>Lo dijo Stefano Scarpetta en el simposio económico de Jackson Hole, en EE. UU. (agosto de 2026). Añadió que los límites legales y los de la infraestructura de los mercados aún lo impiden a gran escala.</li>
-          <li>Larry Fink escribió en 2025 que la tokenización hace que invertir sea «mucho más democrático», siempre que se resuelva «un problema crítico: la verificación de identidad». Lo dice quien vende fondos tokenizados: hoy, el de BlackRock pide un mínimo de 5 millones de dólares y tiene unos 100 titulares.</li>
-          <li>En EE. UU., solo alrededor de una de cada ocho personas cumple los requisitos de «inversor acreditado» que piden ciertas ofertas privadas, según un estudio de técnicos de la SEC, el supervisor de la bolsa de EE. UU. (2025).</li>
-        </ul>
-      </details>
-      <a class="b3 rel-fuentes" href="#fuentes-cap4" data-rel-fuentes="cap4">Fuentes de este apartado<span class="rel-flecha" aria-hidden="true"></span></a>
-    </section>
-
-    <!-- 05 · Los riesgos -->
-    <section class="rel-cap" id="relCap5" aria-labelledby="relCap5Tit">
-      <p class="rel-num rel-revela"><span class="rel-num-n">05</span><span>Los riesgos</span></p>
-      <h2 class="rel-tit rel-revela" id="relCap5Tit">Lo que no sale en el anuncio.</h2>
-      <table class="rel-tabla rel-revela">
-        <thead><tr><th scope="col">Ventajas</th><th scope="col">Riesgos</th></tr></thead>
-        <tbody>
-          <tr><td>Más horas para operar</td><td>No siempre podrás vender cuando quieras, ni al precio que esperas</td></tr>
-          <tr><td>Mínimos de 1 € en algunas ofertas</td><td>Puedes perder parte o todo lo que inviertas</td></tr>
-          <tr><td>Menos pasos en cada operación</td><td>Un token no siempre te hace dueño del activo</td></tr>
-        </tbody>
-      </table>
-      <p class="rel-txt rel-revela">En 2025, la CNMV publicó 458 advertencias sobre chiringuitos financieros: empresas que ofrecen invertir sin autorización.</p>
-      <p class="rel-txt rel-caso rel-revela"><span class="etq">Caso</span> RealT vendió en tokens partes de unos 700 inmuebles de Detroit y en 2026 dejó de pagar casi todas las rentas.</p>
-      <p class="rel-txt rel-revela"><a class="rel-enlace" href="#fuera" data-movil-ir="fuera">Está en «Descartadas», con su motivo</a></p>
-      <details class="rel-mas">
-        <summary>Saber más</summary>
-        <ul>
-          <li>En febrero de 2026, RealT escribió a sus inversores: «El modelo ya no funciona». Dejó de pagarles casi todas las rentas semanales y en julio anunció una liquidación voluntaria.</li>
-          <li>Las 458 advertencias de la CNMV son más de una al día de media, y no solo sobre cripto.</li>
-          <li>Robinhood lo dice por escrito en su web europea: «No compras las acciones reales: compras contratos tokenizados que siguen su precio». Legalmente, es un contrato derivado con Robinhood Europe.</li>
-          <li>Kraken dice de sus xStocks que no dan «derechos de accionista», ni de voto, ni ningún derecho legal sobre las acciones.</li>
-          <li>La CNMV recoge una conclusión de los supervisores europeos: los nombres de estos productos «pueden generar confusión, al no tratarse de acciones», sobre todo porque un inversor sin conocimientos accede a ellos con facilidad. Suelen ser contratos entre dos partes.</li>
-          <li>Para el FMI (octubre de 2026), estos mercados son «relativamente ilíquidos»: puede costar vender rápido sin que baje el precio. Además, sus precios se mueven más que en los mercados tradicionales.</li>
-          <li>En cripto no hay un fondo de garantía que te cubra, ni siquiera con MiCA, el reglamento europeo de criptoactivos. Lo avisan los tres supervisores europeos: EBA, EIOPA y ESMA (2025).</li>
-        </ul>
-      </details>
-      <a class="b3 rel-fuentes" href="#fuentes-cap5" data-rel-fuentes="cap5">Fuentes de este apartado<span class="rel-flecha" aria-hidden="true"></span></a>
-      <p class="rel-puente rel-revela">Por eso existe RWAdar.</p>
-    </section>
-
-    <!-- 06 · Para qué sirve: el dato que frena, la línea de riesgo y, junto a
-         ella, el radar y las ofertas. -->
-    <section class="rel-cap" id="relCap6" aria-labelledby="relCap6Tit">
-      <p class="rel-num rel-revela"><span class="rel-num-n">06</span><span>Para qué sirve</span></p>
-      <h2 class="rel-tit rel-revela" id="relCap6Tit">Antes de invertir en nada, mira el radar.</h2>
-      <p class="rel-txt rel-revela">La tokenización aún está empezando: los supervisores de valores la llaman «incipiente».</p>
-      <div class="rel-cifra rel-revela">
-        <p class="rel-cifra-n">0 €</p>
-        <p class="rel-cifra-pie">lo que paga una empresa por salir en el radar. Ni vendemos ni asesoramos.</p>
-      </div>
-      <p class="rel-aviso rel-revela"><span id="relVigencia" data-rel-plantilla="Catálogo revisado el {revisado}. Próxima revisión: {hasta}." data-rel-plantilla-en="Catalogue reviewed {revisado}. Next review: {hasta}." data-rel-sin="" hidden></span> <span>Invertir tiene riesgos: puedes perder parte o todo lo que inviertas.</span></p>
-      <div class="rel-pie-6 rel-revela">
-        <button class="b3 rel-explorar-2" type="button" data-inicio-radar>Explorar el radar<span class="rel-flecha" aria-hidden="true"></span></button>
-        <button class="b3 rel-ver-ofertas" type="button" data-movil-ir="emisiones"><span data-rel-plantilla="Ver las {ofertas} ofertas" data-rel-plantilla-en="See the {ofertas} offers" data-rel-sin="Ver las ofertas">Ver las ofertas</span><span class="rel-flecha" aria-hidden="true"></span></button>
-      </div>
-      <details class="rel-mas">
-        <summary>Saber más</summary>
-        <ul>
-          <li>Cada oferta lleva su fuente y la fecha en que la consultamos. Y las plataformas que descartamos no desaparecen: las publicamos en «Descartadas», con el motivo y la fuente.</li>
-          <li>Nadie paga por estar en el radar ni por aparecer más arriba. Y si inviertes, tu dinero nunca pasa por RWAdar.</li>
-          <li>IOSCO, que reúne a los supervisores de valores, entre ellos la CNMV, lo dijo en noviembre de 2025: «La tokenización crece, pero sigue siendo incipiente».</li>
-          <li>Según el BCE, es una fracción mínima de los activos del mundo: unos 38.000 millones de euros en blockchains públicas (febrero de 2026), frente a 241 billones de euros (millones de millones) en total (finales de 2025). Por nuestra cuenta, no llega a 2 céntimos de cada 100 euros.</li>
-        </ul>
-      </details>
-      <a class="b3 rel-fuentes" href="#fuentes-cap6" data-rel-fuentes="cap6">Fuentes de este apartado<span class="rel-flecha" aria-hidden="true"></span></a>
-    </section>
-
-    <!-- Novedades: una línea con la última noticia (la escribe rwadar-noticias.js).
-         Separa el capítulo 06 de la Selección. -->
-    <!--noticias:ini-->
-    <section class="rel-novedades" aria-label="Novedades">
-      <p><time datetime="2026-11-06">06/11/2026</time><span aria-hidden="true"> · </span><span>RWAdar Academy ya tiene sus 9 lecciones, gratis con una cuenta.</span></p>
-      <a class="b3 rel-novedades-todas" href="/cambios">Todas las novedades<span class="rel-flecha" aria-hidden="true"></span></a>
-    </section>
-    <!--noticias:fin-->
-
-    <!-- Selección: las ofertas con las 5 comprobaciones (las pinta pintarInicio
-         desde el catálogo). Las 5 comprobaciones, a la vista y antes de las tarjetas. -->
-    <section class="rel-escaparate" id="relEscaparate" aria-labelledby="relEscTit" hidden>
-      <p class="rel-ante rel-revela">Selección RWAdar</p>
-      <h2 class="rel-tit rel-revela" id="relEscTit" data-rel-plantilla="Las {seleccion} que pasan nuestras 5 comprobaciones." data-rel-plantilla-en="The {seleccion} that pass our 5 checks." data-rel-sin="Las que pasan nuestras 5 comprobaciones.">Las que pasan nuestras 5 comprobaciones.</h2>
-      <p class="rel-txt rel-revela" id="relEscTxt" data-rel-plantilla="Son las mejor documentadas de las {ofertas} ofertas a {revisado}." data-rel-plantilla-en="They are the best documented of the {ofertas} offers as of {revisado}." data-rel-sin="Son las mejor documentadas del radar.">Son las mejor documentadas del radar.</p>
-      <ol class="rel-cinco rel-revela" id="inicioCriterios" aria-label="Las 5 comprobaciones"></ol>
-      <ul class="rel-tarjetas" id="relTarjetas" aria-label="Selección RWAdar"></ul>
-      <p class="rel-aviso">Pasar las 5 comprobaciones no hace a una oferta más segura ni más rentable. No es una recomendación de inversión.</p>
-      <p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>
-      <a class="b3 rel-fuentes" href="#fuentes-seleccion" data-rel-fuentes="seleccion">Fuentes de este apartado<span class="rel-flecha" aria-hidden="true"></span></a>
-    </section>
-
-    <!-- Por dónde seguir. La app va aparte, como b3 y con su nota. -->
-    <section class="rel-empieza" aria-labelledby="relEmpiezaTit">
-      <h2 class="rel-tit rel-revela" id="relEmpiezaTit">Mira, compara y decide tú.</h2>
-      <div class="rel-botones rel-revela">
-        <button class="b1" type="button" data-movil-ir="emisiones" data-rel-plantilla="Ver las {ofertas} ofertas" data-rel-plantilla-en="See the {ofertas} offers" data-rel-sin="Ver las ofertas">Ver las ofertas</button>
-        <button class="b2" type="button" data-movil-ir="tool" data-rel-plantilla="Ver las {plataformas} plataformas" data-rel-plantilla-en="See the {plataformas} platforms" data-rel-sin="Ver las plataformas">Ver las plataformas</button>
-      </div>
-      <p class="rel-aviso rel-revela">Invertir tiene riesgos: puedes perder parte o todo lo que inviertas.</p>
-      <!--academy-inicio:ini-->
-      <a class="b3 rel-academia rel-revela" href="/academy/" data-movil-cambiar="academy"><span><span>¿Empiezas de cero?</span> <span>9 lecciones gratis en Academy</span></span><span class="rel-flecha" aria-hidden="true"></span></a>
-      <!--academy-inicio:fin-->
-      <div class="rel-app rel-revela">
-        <a class="b3 rel-app-enlace" href="/android"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5M5 19h14"/></svg>App gratis para Android</a>
-        <p class="rel-app-nota">Se descarga en rwadar.pages.dev/android, no en Google Play.</p>
-      </div>
-    </section>
-
-    <!-- Fuentes: agrupadas por apartado (las escribe
-         rwadar-editorial-source/inicio/fuentes.mjs desde fuentes.json). -->
-    <section class="rel-refs-sec" aria-labelledby="relRefsTit">
-      <details class="rel-refs" id="relRefs">
-        <summary id="relRefsTit">Fuentes</summary>
-        <!--fuentes:ini-->
-        <p class="rel-refs-nota"><span>Agrupadas por apartado.</span> <span>Consultadas el</span> <time datetime="2026-11-03">03/11/2026</time> <span>salvo que se diga otra cosa.</span></p>
-        <section class="rel-refs-grupo" id="fuentes-portada" tabindex="-1" aria-labelledby="fuentes-portada-tit">
-          <h3 id="fuentes-portada-tit">Portada</h3>
-          <ul>
-            <li data-fuente="9"><p lang="es" translate="no" data-fuente-es>BCE, «Eurosystem brings central bank money to tokenised finance» (lanzamiento de Pontes), 21/09/2026.</p><p lang="en" translate="no" data-fuente-en>ECB, «Eurosystem brings central bank money to tokenised finance» (launch of Pontes), 21/09/2026.</p><a class="rel-refs-url" href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260921~e754847a7b.en.html" target="_blank" rel="noopener nofollow" translate="no">ecb.europa.eu/…/ecb.pr260921~e754847a7b.en.html</a></li>
-            <li data-fuente="10"><p lang="es" translate="no" data-fuente-es>DTCC, «DTCC Tokenization Service Goes Live», 28/10/2026.</p><p lang="en" translate="no" data-fuente-en>DTCC, «DTCC Tokenization Service Goes Live», 28/10/2026.</p><a class="rel-refs-url" href="https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live" target="_blank" rel="noopener nofollow" translate="no">dtcc.com/…/dtcc-tokenization-service…</a></li>
-            <li data-fuente="14"><p lang="es" translate="no" data-fuente-es>J.P. Morgan, página de Kinexys. Cifras del propio banco (2025).</p><p lang="en" translate="no" data-fuente-en>J.P. Morgan, Kinexys page. The bank's own figures (2025).</p><a class="rel-refs-url" href="https://www.jpmorgan.com/kinexys/index" target="_blank" rel="noopener nofollow" translate="no">jpmorgan.com/…/index</a></li>
-            <li data-fuente="18"><p lang="es" translate="no" data-fuente-es>Clearstream, bono del MEDE liquidado en Pontes con el Bundesbank, 26/10/2026.</p><p lang="en" translate="no" data-fuente-en>Clearstream, ESM bond settled on Pontes with the Bundesbank, 26/10/2026.</p><a class="rel-refs-url" href="https://www.clearstream.com/clearstream-en/newsroom/261026-5660778" target="_blank" rel="noopener nofollow" translate="no">clearstream.com/…/261026-5660778</a></li>
-          </ul>
-          <button class="b3 rel-refs-volver" type="button" hidden>Volver al texto</button>
-        </section>
-        <section class="rel-refs-grupo" id="fuentes-cap1" tabindex="-1" aria-labelledby="fuentes-cap1-tit">
-          <h3 id="fuentes-cap1-tit">01 · De dónde viene</h3>
-          <ul>
-            <li data-fuente="38"><p lang="es" translate="no" data-fuente-es>Ley 6/2023, de 17 de marzo, de los Mercados de Valores y de los Servicios de Inversión, artículos 6.1 y 8.4. BOE, texto consolidado del 07/10/2026.</p><p lang="en" translate="no" data-fuente-en>Law 6/2023 of 17 March on Securities Markets and Investment Services, articles 6.1 and 8.4. BOE, consolidated text of 07/10/2026.</p><a class="rel-refs-url" href="https://www.boe.es/buscar/act.php?id=BOE-A-2023-7053" target="_blank" rel="noopener nofollow" translate="no">boe.es/…/act.php</a></li>
-            <li data-fuente="1"><p lang="es" translate="no" data-fuente-es>Satoshi Nakamoto, «Bitcoin: A Peer-to-Peer Electronic Cash System», 31/10/2008. Bloque génesis del 03/01/2009, según la Bitcoin Wiki (fuente secundaria).</p><p lang="en" translate="no" data-fuente-en>Satoshi Nakamoto, «Bitcoin: A Peer-to-Peer Electronic Cash System», 31/10/2008. Genesis block of 03/01/2009, according to the Bitcoin Wiki (secondary source).</p><a class="rel-refs-url" href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener nofollow" translate="no">bitcoin.org/bitcoin.pdf</a><a class="rel-refs-url" href="https://en.bitcoin.it/wiki/Genesis_block" target="_blank" rel="noopener nofollow" translate="no">en.bitcoin.it/…/Genesis_block</a></li>
-            <li data-fuente="2"><p lang="es" translate="no" data-fuente-es>Don y Alex Tapscott, «How the Tech Behind Bitcoin Will Change Your Life», TIME, 06/05/2016.</p><p lang="en" translate="no" data-fuente-en>Don and Alex Tapscott, «How the Tech Behind Bitcoin Will Change Your Life», TIME, 06/05/2016.</p><a class="rel-refs-url" href="https://time.com/4320254/blockchain-tech-behind-bitcoin/" target="_blank" rel="noopener nofollow" translate="no">time.com/…/blockchain-tech-behind-bitcoin</a></li>
-            <li data-fuente="3"><p lang="es" translate="no" data-fuente-es>Nouriel Roubini, testimonio escrito ante el Comité Bancario del Senado de EE. UU., 11/10/2018.</p><p lang="en" translate="no" data-fuente-en>Nouriel Roubini, written testimony before the US Senate Banking Committee, 11/10/2018.</p><a class="rel-refs-url" href="https://www.banking.senate.gov/imo/media/doc/Roubini%20Testimony%2010-11-18.pdf" target="_blank" rel="noopener nofollow" translate="no">banking.senate.gov/…/Roubini Testimony 10-11-18.pdf</a></li>
-          </ul>
-          <button class="b3 rel-refs-volver" type="button" hidden>Volver al texto</button>
-        </section>
-        <section class="rel-refs-grupo" id="fuentes-cap2" tabindex="-1" aria-labelledby="fuentes-cap2-tit">
-          <h3 id="fuentes-cap2-tit">02 · Qué cambia</h3>
-          <ul>
-            <li data-fuente="4"><p lang="es" translate="no" data-fuente-es>BIS, Informe Económico Anual 2025, capítulo III, «The next-generation monetary and financial system», 24/06/2025.</p><p lang="en" translate="no" data-fuente-en>BIS, Annual Economic Report 2025, chapter III, «The next-generation monetary and financial system», 24/06/2025.</p><a class="rel-refs-url" href="https://www.bis.org/publ/arpdf/ar2025e3.htm" target="_blank" rel="noopener nofollow" translate="no">bis.org/…/ar2025e3.htm</a></li>
-            <li data-fuente="5"><p lang="es" translate="no" data-fuente-es>Reglamento (UE) 2025/2075, de 08/10/2025: la UE pasa de dos días (T+2) a uno (T+1) el 11/10/2027. Ficha de la Národná banka Slovenska.</p><p lang="en" translate="no" data-fuente-en>Regulation (EU) 2025/2075 of 08/10/2025: the EU moves from two days (T+2) to one (T+1) on 11/10/2027. Summary by Národná banka Slovenska.</p><a class="rel-refs-url" href="https://nbs.sk/en/dohlad-nad-financnym-trhom/legislativa/legislativa/detail-dokumentu/regulation-eu-2025-2075-of-the-european-parliament-and-of-the-council-of-8-october-2025-amending-regulation-eu-no-909-2014-as-regards-a-shorter-settlement-cycle-in-the-union/" target="_blank" rel="noopener nofollow" translate="no">nbs.sk/…/regulation-eu-2025-2075-of…</a></li>
-            <li data-fuente="16"><p lang="es" translate="no" data-fuente-es>The Block, piloto de Swift con 17 bancos, 09/07/2026.</p><p lang="en" translate="no" data-fuente-en>The Block, Swift pilot with 17 banks, 09/07/2026.</p><a class="rel-refs-url" href="https://www.theblock.co/post/407687/swift-launches-blockchain-ledger-for-tokenized-deposit-pilot-with-17-banks" target="_blank" rel="noopener nofollow" translate="no">theblock.co/…/swift-launches-blockchain…</a></li>
-            <li data-fuente="25"><p lang="es" translate="no" data-fuente-es>FMI, «What Is Needed for Tokenization to Deliver», 08/10/2026.</p><p lang="en" translate="no" data-fuente-en>IMF, «What Is Needed for Tokenization to Deliver», 08/10/2026.</p><a class="rel-refs-url" href="https://www.imf.org/en/blogs/articles/2026/10/08/blog-what-is-needed-for-tokenization-to-deliver" target="_blank" rel="noopener nofollow" translate="no">imf.org/…/blog-what-is-needed-for-to…</a></li>
-            <li data-fuente="7"><p lang="es" translate="no" data-fuente-es>BCE, Macroprudential Bulletin n.º 33, «Towards an efficient and integrated digital capital market in Europe», 13/04/2026. La cuenta de «menos de 2 céntimos de cada 100 euros» es de RWAdar.</p><p lang="en" translate="no" data-fuente-en>ECB, Macroprudential Bulletin No. 33, «Towards an efficient and integrated digital capital market in Europe», 13/04/2026. The «less than 2 cents in every 100 euros» calculation is RWAdar's.</p><a class="rel-refs-url" href="https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_02.en.html" target="_blank" rel="noopener nofollow" translate="no">ecb.europa.eu/…/ecb.mpbu202604_02.en.html</a></li>
-            <li data-fuente="27"><p lang="es" translate="no" data-fuente-es>Kraken, «xStocks FAQ». Emisor: Backed Assets (JE) Limited; acciones en custodia de Alpaca Securities LLC; Kraken es la plataforma.</p><p lang="en" translate="no" data-fuente-en>Kraken, «xStocks FAQ». Issuer: Backed Assets (JE) Limited; the shares are held in custody by Alpaca Securities LLC; Kraken is the platform.</p><a class="rel-refs-url" href="https://support.kraken.com/articles/xstocks-faq" target="_blank" rel="noopener nofollow" translate="no">support.kraken.com/…/xstocks-faq</a></li>
-            <li data-fuente="35"><p lang="es" translate="no" data-fuente-es>Spiko, «Use cases: Web3»: fondos monetarios UCITS aprobados por la AMF francesa, con el dinero en CACEIS Bank.</p><p lang="en" translate="no" data-fuente-en>Spiko, «Use cases: Web3»: UCITS money market funds approved by the French AMF, with the money held at CACEIS Bank.</p><a class="rel-refs-url" href="https://www.spiko.io/use-cases/web3" target="_blank" rel="noopener nofollow" translate="no">spiko.io/…/web3</a></li>
-            <li data-fuente="6"><p lang="es" translate="no" data-fuente-es>Larry Fink, carta anual a los inversores de 2025, BlackRock, 31/03/2025 (fecha según la prensa).</p><p lang="en" translate="no" data-fuente-en>Larry Fink, 2025 annual letter to investors, BlackRock, 31/03/2025 (date according to the press).</p><a class="rel-refs-url" href="https://www.blackrock.com/corporate/investor-relations/2025-larry-fink-annual-chairmans-letter" target="_blank" rel="noopener nofollow" translate="no">blackrock.com/…/2025-larry-fink-annual-cha…</a></li>
-            <li data-fuente="8"><p lang="es" translate="no" data-fuente-es>Du, Huang y Scharfstein, «Competing rails for cross-border payments», BIS Working Paper n.º 1385, octubre de 2026. Opinan en su nombre, no necesariamente en el del BIS.</p><p lang="en" translate="no" data-fuente-en>Du, Huang and Scharfstein, «Competing rails for cross-border payments», BIS Working Paper No. 1385, October 2026. The authors give their own views, not necessarily those of the BIS.</p><a class="rel-refs-url" href="https://www.bis.org/publications/working-paper-1385-competing-rails-crossborder-payments-banks-fintechs-and-stablecoins.pdf" target="_blank" rel="noopener nofollow" translate="no">bis.org/…/working-paper-1385-competi…</a></li>
-            <li data-fuente="9"><p lang="es" translate="no" data-fuente-es>BCE, «Eurosystem brings central bank money to tokenised finance» (lanzamiento de Pontes), 21/09/2026.</p><p lang="en" translate="no" data-fuente-en>ECB, «Eurosystem brings central bank money to tokenised finance» (launch of Pontes), 21/09/2026.</p><a class="rel-refs-url" href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260921~e754847a7b.en.html" target="_blank" rel="noopener nofollow" translate="no">ecb.europa.eu/…/ecb.pr260921~e754847a7b.en.html</a></li>
-          </ul>
-          <button class="b3 rel-refs-volver" type="button" hidden>Volver al texto</button>
-        </section>
-        <section class="rel-refs-grupo" id="fuentes-cap3" tabindex="-1" aria-labelledby="fuentes-cap3-tit">
-          <h3 id="fuentes-cap3-tit">03 · Quién lo usa ya</h3>
-          <ul>
-            <li data-fuente="10"><p lang="es" translate="no" data-fuente-es>DTCC, «DTCC Tokenization Service Goes Live», 28/10/2026.</p><p lang="en" translate="no" data-fuente-en>DTCC, «DTCC Tokenization Service Goes Live», 28/10/2026.</p><a class="rel-refs-url" href="https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live" target="_blank" rel="noopener nofollow" translate="no">dtcc.com/…/dtcc-tokenization-service…</a></li>
-            <li data-fuente="9"><p lang="es" translate="no" data-fuente-es>BCE, «Eurosystem brings central bank money to tokenised finance» (lanzamiento de Pontes), 21/09/2026.</p><p lang="en" translate="no" data-fuente-en>ECB, «Eurosystem brings central bank money to tokenised finance» (launch of Pontes), 21/09/2026.</p><a class="rel-refs-url" href="https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260921~e754847a7b.en.html" target="_blank" rel="noopener nofollow" translate="no">ecb.europa.eu/…/ecb.pr260921~e754847a7b.en.html</a></li>
-            <li data-fuente="11"><p lang="es" translate="no" data-fuente-es>rwa.xyz, panel «Tokenized U.S. Treasuries», 03/11/2026. Dato de enero de 2023: CoinGecko, vía Cointelegraph, 21/03/2024.</p><p lang="en" translate="no" data-fuente-en>rwa.xyz, «Tokenized U.S. Treasuries» dashboard, 03/11/2026. January 2023 figure: CoinGecko, via Cointelegraph, 21/03/2024.</p><a class="rel-refs-url" href="https://app.rwa.xyz/treasuries" target="_blank" rel="noopener nofollow" translate="no">app.rwa.xyz/treasuries</a><a class="rel-refs-url" href="https://cointelegraph.com/news/tokenized-us-treasuries-845-market-cap-2023-coingecko" target="_blank" rel="noopener nofollow" translate="no">cointelegraph.com/…/tokenized-us-treasuries-84…</a></li>
-            <li data-fuente="17"><p lang="es" translate="no" data-fuente-es>Qivalis, licencia de entidad de dinero electrónico de De Nederlandsche Bank, 14/10/2026.</p><p lang="en" translate="no" data-fuente-en>Qivalis, electronic money institution licence from De Nederlandsche Bank, 14/10/2026.</p><a class="rel-refs-url" href="https://qivalis.eu/press/news/qivalis-receives-authorisation-as-an-electronic-money-institution-from-de-nederlandsche-bank" target="_blank" rel="noopener nofollow" translate="no">qivalis.eu/…/qivalis-receives-authorisa…</a></li>
-            <li data-fuente="13"><p lang="es" translate="no" data-fuente-es>Helene Braun, CoinDesk, 06/04/2026, sobre la carta anual de Jamie Dimon (JPMorgan). Fuente secundaria.</p><p lang="en" translate="no" data-fuente-en>Helene Braun, CoinDesk, 06/04/2026, on Jamie Dimon's annual letter (JPMorgan). Secondary source.</p><a class="rel-refs-url" href="https://www.coindesk.com/markets/2026/04/06/jamie-dimon-says-jpmorgan-must-move-faster-as-tokenization-reshapes-finance" target="_blank" rel="noopener nofollow" translate="no">coindesk.com/…/jamie-dimon-says-jpmorgan…</a></li>
-            <li data-fuente="14"><p lang="es" translate="no" data-fuente-es>J.P. Morgan, página de Kinexys. Cifras del propio banco (2025).</p><p lang="en" translate="no" data-fuente-en>J.P. Morgan, Kinexys page. The bank's own figures (2025).</p><a class="rel-refs-url" href="https://www.jpmorgan.com/kinexys/index" target="_blank" rel="noopener nofollow" translate="no">jpmorgan.com/…/index</a></li>
-            <li data-fuente="18"><p lang="es" translate="no" data-fuente-es>Clearstream, bono del MEDE liquidado en Pontes con el Bundesbank, 26/10/2026.</p><p lang="en" translate="no" data-fuente-en>Clearstream, ESM bond settled on Pontes with the Bundesbank, 26/10/2026.</p><a class="rel-refs-url" href="https://www.clearstream.com/clearstream-en/newsroom/261026-5660778" target="_blank" rel="noopener nofollow" translate="no">clearstream.com/…/261026-5660778</a></li>
-            <li data-fuente="15"><p lang="es" translate="no" data-fuente-es>Visa, llamada de resultados del 4.º trimestre del ejercicio 2026, 27/10/2026. Transcripción de Motley Fool.</p><p lang="en" translate="no" data-fuente-en>Visa, fourth-quarter fiscal 2026 earnings call, 27/10/2026. Transcript by Motley Fool.</p><a class="rel-refs-url" href="https://www.fool.com/earnings/call-transcripts/2026/10/28/visa-v-q4-2026-earnings-call-transcript/" target="_blank" rel="noopener nofollow" translate="no">fool.com/…/visa-v-q4-2026-earnings-ca…</a></li>
-            <li data-fuente="16"><p lang="es" translate="no" data-fuente-es>The Block, piloto de Swift con 17 bancos, 09/07/2026.</p><p lang="en" translate="no" data-fuente-en>The Block, Swift pilot with 17 banks, 09/07/2026.</p><a class="rel-refs-url" href="https://www.theblock.co/post/407687/swift-launches-blockchain-ledger-for-tokenized-deposit-pilot-with-17-banks" target="_blank" rel="noopener nofollow" translate="no">theblock.co/…/swift-launches-blockchain…</a></li>
-            <li data-fuente="19"><p lang="es" translate="no" data-fuente-es>Piero Cipollone (BCE), «From vision to delivery: building Europe's tokenised financial market», Fráncfort, 26/08/2026.</p><p lang="en" translate="no" data-fuente-en>Piero Cipollone (ECB), «From vision to delivery: building Europe's tokenised financial market», Frankfurt, 26/08/2026.</p><a class="rel-refs-url" href="https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260826~3641116314.en.html" target="_blank" rel="noopener nofollow" translate="no">ecb.europa.eu/…/ecb.sp260826~3641116314.en.html</a></li>
-            <li data-fuente="12"><p lang="es" translate="no" data-fuente-es>Larry Fink, carta anual a los inversores de 2026, BlackRock, 23/03/2026 (fecha según la prensa).</p><p lang="en" translate="no" data-fuente-en>Larry Fink, 2026 annual letter to investors, BlackRock, 23/03/2026 (date according to the press).</p><a class="rel-refs-url" href="https://www.blackrock.com/corporate/investor-relations/larry-fink-annual-chairmans-letter" target="_blank" rel="noopener nofollow" translate="no">blackrock.com/…/larry-fink-annual-chairman…</a></li>
-            <li data-fuente="20"><p lang="es" translate="no" data-fuente-es>Fox Business, «Mornings with Maria», entrevista a Paul Atkins, presidente de la SEC, 03/12/2025.</p><p lang="en" translate="no" data-fuente-en>Fox Business, «Mornings with Maria», interview with Paul Atkins, Chairman of the SEC, 03/12/2025.</p><a class="rel-refs-url" href="https://www.foxbusiness.com/media/atkins-predicts-us-financial-system-may-shift-tokenization-within-couple-years" target="_blank" rel="noopener nofollow" translate="no">foxbusiness.com/…/atkins-predicts-us-financi…</a></li>
-          </ul>
-          <button class="b3 rel-refs-volver" type="button" hidden>Volver al texto</button>
-        </section>
-        <section class="rel-refs-grupo" id="fuentes-cap4" tabindex="-1" aria-labelledby="fuentes-cap4-tit">
-          <h3 id="fuentes-cap4-tit">04 · Por qué te importa</h3>
-          <ul>
-            <li data-fuente="21"><p lang="es" translate="no" data-fuente-es>Stefano Scarpetta, economista jefe de la OCDE, discurso en Jackson Hole, 28/08/2026.</p><p lang="en" translate="no" data-fuente-en>Stefano Scarpetta, chief economist of the OECD, speech at Jackson Hole, 28/08/2026.</p><a class="rel-refs-url" href="https://www.oecd.org/content/dam/oecd/en/about/directorates/eco/ce-insights/Stefano%20Scarpetta%20speech_Jackson%20Hole_August%202026.pdf" target="_blank" rel="noopener nofollow" translate="no">oecd.org/…/Stefano Scarpetta speech_J…</a></li>
-            <li data-fuente="22"><p lang="es" translate="no" data-fuente-es>Banco de España, Encuesta Financiera de las Familias 2024 (Documento Ocasional 2610), abril de 2026.</p><p lang="en" translate="no" data-fuente-en>Banco de España, Spanish Survey of Household Finances 2024 (Occasional Paper 2610), April 2026.</p><a class="rel-refs-url" href="https://www.bde.es/f/webbe/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosOcasionales/26/Fich/do2610.pdf" target="_blank" rel="noopener nofollow" translate="no">bde.es/…/do2610.pdf</a></li>
-            <li data-fuente="34"><p lang="es" translate="no" data-fuente-es>RWAdar, «Cómo verificamos» y los criterios de transparencia de cada revisión del catálogo. Fuente propia.</p><p lang="en" translate="no" data-fuente-en>RWAdar, «How we verify» and the transparency criteria of each catalogue review. Our own source.</p><a class="rel-refs-url" href="https://rwadar.pages.dev/metodologia" target="_blank" rel="noopener nofollow" translate="no">rwadar.pages.dev/metodologia</a></li>
-            <li data-fuente="6"><p lang="es" translate="no" data-fuente-es>Larry Fink, carta anual a los inversores de 2025, BlackRock, 31/03/2025 (fecha según la prensa).</p><p lang="en" translate="no" data-fuente-en>Larry Fink, 2025 annual letter to investors, BlackRock, 31/03/2025 (date according to the press).</p><a class="rel-refs-url" href="https://www.blackrock.com/corporate/investor-relations/2025-larry-fink-annual-chairmans-letter" target="_blank" rel="noopener nofollow" translate="no">blackrock.com/…/2025-larry-fink-annual-cha…</a></li>
-            <li data-fuente="23"><p lang="es" translate="no" data-fuente-es>rwa.xyz, ficha de BUIDL (BlackRock), 03/11/2026.</p><p lang="en" translate="no" data-fuente-en>rwa.xyz, BUIDL page (BlackRock), 03/11/2026.</p><a class="rel-refs-url" href="https://app.rwa.xyz/assets/BUIDL" target="_blank" rel="noopener nofollow" translate="no">app.rwa.xyz/…/BUIDL</a></li>
-            <li data-fuente="24"><p lang="es" translate="no" data-fuente-es>SEC, Office of the Investor Advocate, «Exploring Accredited Investors and Private Market Securities Ownership», junio de 2025.</p><p lang="en" translate="no" data-fuente-en>SEC, Office of the Investor Advocate, «Exploring Accredited Investors and Private Market Securities Ownership», June 2025.</p><a class="rel-refs-url" href="https://www.sec.gov/files/exploring-accredited-investors-june-2025.pdf" target="_blank" rel="noopener nofollow" translate="no">sec.gov/…/exploring-accredited-inves…</a></li>
-          </ul>
-          <button class="b3 rel-refs-volver" type="button" hidden>Volver al texto</button>
-        </section>
-        <section class="rel-refs-grupo" id="fuentes-cap5" tabindex="-1" aria-labelledby="fuentes-cap5-tit">
-          <h3 id="fuentes-cap5-tit">05 · Los riesgos</h3>
-          <ul>
-            <li data-fuente="25"><p lang="es" translate="no" data-fuente-es>FMI, «What Is Needed for Tokenization to Deliver», 08/10/2026.</p><p lang="en" translate="no" data-fuente-en>IMF, «What Is Needed for Tokenization to Deliver», 08/10/2026.</p><a class="rel-refs-url" href="https://www.imf.org/en/blogs/articles/2026/10/08/blog-what-is-needed-for-tokenization-to-deliver" target="_blank" rel="noopener nofollow" translate="no">imf.org/…/blog-what-is-needed-for-to…</a></li>
-            <li data-fuente="31"><p lang="es" translate="no" data-fuente-es>EBA, EIOPA y ESMA, «Advertencia sobre los criptoactivos», 06/10/2025. Versión española difundida por la CNMV el 08/10/2025.</p><p lang="en" translate="no" data-fuente-en>EBA, EIOPA and ESMA, «Warning on crypto-assets», 06/10/2025. Spanish version published by the CNMV on 08/10/2025.</p><a class="rel-refs-url" href="https://www.cnmv.es/webservices/verdocumento/ver?t=%7B0cd6d50d-00f1-42b4-9b5b-0a230e0e7e80%7D" target="_blank" rel="noopener nofollow" translate="no">cnmv.es/…/ver</a><a class="rel-refs-url" href="https://www.esma.europa.eu/sites/default/files/2025-10/Joint_ESAs_revised_warning_on_crypto-assets.pdf" target="_blank" rel="noopener nofollow" translate="no">esma.europa.eu/…/Joint_ESAs_revised_warning…</a></li>
-            <li data-fuente="26"><p lang="es" translate="no" data-fuente-es>Robinhood Europe, «Stock Tokens FAQ».</p><p lang="en" translate="no" data-fuente-en>Robinhood Europe, «Stock Tokens FAQ».</p><a class="rel-refs-url" href="https://www.robinhood.com/eu/en/support/articles/stock-tokens-faq" target="_blank" rel="noopener nofollow" translate="no">robinhood.com/…/stock-tokens-faq</a></li>
-            <li data-fuente="27"><p lang="es" translate="no" data-fuente-es>Kraken, «xStocks FAQ». Emisor: Backed Assets (JE) Limited; acciones en custodia de Alpaca Securities LLC; Kraken es la plataforma.</p><p lang="en" translate="no" data-fuente-en>Kraken, «xStocks FAQ». Issuer: Backed Assets (JE) Limited; the shares are held in custody by Alpaca Securities LLC; Kraken is the platform.</p><a class="rel-refs-url" href="https://support.kraken.com/articles/xstocks-faq" target="_blank" rel="noopener nofollow" translate="no">support.kraken.com/…/xstocks-faq</a></li>
-            <li data-fuente="28"><p lang="es" translate="no" data-fuente-es>CNMV, Resumen del Informe Anual 2025, mayo de 2026.</p><p lang="en" translate="no" data-fuente-en>CNMV, Summary of the 2025 Annual Report, May 2026.</p><a class="rel-refs-url" href="https://www.cnmv.es/DocPortal/Publicaciones/Informes/Resumen_InformeAnualCNMV2025.pdf" target="_blank" rel="noopener nofollow" translate="no">cnmv.es/…/Resumen_InformeAnualCNMV2025.pdf</a></li>
-            <li data-fuente="29"><p lang="es" translate="no" data-fuente-es>Aaron Mondry, Michigan Public y Outlier Media, 20/03/2026, y Outlier Media, 16/07/2026.</p><p lang="en" translate="no" data-fuente-en>Aaron Mondry, Michigan Public and Outlier Media, 20/03/2026, and Outlier Media, 16/07/2026.</p><a class="rel-refs-url" href="https://www.michiganpublic.org/social-justice/2026-03-20/the-model-no-longer-works-crypto-landlords-detroit-enterprise-is-crumbling" target="_blank" rel="noopener nofollow" translate="no">michiganpublic.org/…/the-model-no-longer-works…</a><a class="rel-refs-url" href="https://outliermedia.org/?p=56405" target="_blank" rel="noopener nofollow" translate="no">outliermedia.org</a></li>
-            <li data-fuente="30"><p lang="es" translate="no" data-fuente-es>CNMV, «Informe sobre el estado de los activos digitales», Documento de Trabajo n.º 94, enero de 2026.</p><p lang="en" translate="no" data-fuente-en>CNMV, «Informe sobre el estado de los activos digitales» (report on the state of digital assets), Working Paper No. 94, January 2026.</p><a class="rel-refs-url" href="https://www.cnmv.es/DocPortal/Publicaciones/MONOGRAFIAS/InformeActivosDigitales.pdf" target="_blank" rel="noopener nofollow" translate="no">cnmv.es/…/InformeActivosDigitales.pdf</a></li>
-          </ul>
-          <button class="b3 rel-refs-volver" type="button" hidden>Volver al texto</button>
-        </section>
-        <section class="rel-refs-grupo" id="fuentes-cap6" tabindex="-1" aria-labelledby="fuentes-cap6-tit">
-          <h3 id="fuentes-cap6-tit">06 · Para qué sirve</h3>
-          <ul>
-            <li data-fuente="7"><p lang="es" translate="no" data-fuente-es>BCE, Macroprudential Bulletin n.º 33, «Towards an efficient and integrated digital capital market in Europe», 13/04/2026. La cuenta de «menos de 2 céntimos de cada 100 euros» es de RWAdar.</p><p lang="en" translate="no" data-fuente-en>ECB, Macroprudential Bulletin No. 33, «Towards an efficient and integrated digital capital market in Europe», 13/04/2026. The «less than 2 cents in every 100 euros» calculation is RWAdar's.</p><a class="rel-refs-url" href="https://www.ecb.europa.eu/press/financial-stability-publications/macroprudential-bulletin/html/ecb.mpbu202604_02.en.html" target="_blank" rel="noopener nofollow" translate="no">ecb.europa.eu/…/ecb.mpbu202604_02.en.html</a></li>
-            <li data-fuente="32"><p lang="es" translate="no" data-fuente-es>IOSCO, informe final «Tokenization of Financial Assets», 11/11/2025, en la nota de Mondo Visione.</p><p lang="en" translate="no" data-fuente-en>IOSCO, final report «Tokenization of Financial Assets», 11/11/2025, in the Mondo Visione note.</p><a class="rel-refs-url" href="https://mondovisione.com/news/iosco-publishes-final-report-on-financial-asset-tokenization-20251111" target="_blank" rel="noopener nofollow" translate="no">mondovisione.com/…/iosco-publishes-final-repo…</a></li>
-            <li data-fuente="33"><p lang="es" translate="no" data-fuente-es>RWAdar, «Transparencia comercial». Fuente propia.</p><p lang="en" translate="no" data-fuente-en>RWAdar, «Commercial transparency». Our own source.</p><a class="rel-refs-url" href="https://rwadar.pages.dev/transparencia-comercial" target="_blank" rel="noopener nofollow" translate="no">rwadar.pages.dev/transparencia-comercial</a></li>
-            <li data-fuente="34"><p lang="es" translate="no" data-fuente-es>RWAdar, «Cómo verificamos» y los criterios de transparencia de cada revisión del catálogo. Fuente propia.</p><p lang="en" translate="no" data-fuente-en>RWAdar, «How we verify» and the transparency criteria of each catalogue review. Our own source.</p><a class="rel-refs-url" href="https://rwadar.pages.dev/metodologia" target="_blank" rel="noopener nofollow" translate="no">rwadar.pages.dev/metodologia</a></li>
-            <li data-fuente="36"><p lang="es" translate="no" data-fuente-es>RWAdar, «Novedades y revisiones». Fuente propia.</p><p lang="en" translate="no" data-fuente-en>RWAdar, «Updates and reviews». Our own source.</p><a class="rel-refs-url" href="https://rwadar.pages.dev/cambios" target="_blank" rel="noopener nofollow" translate="no">rwadar.pages.dev/cambios</a></li>
-          </ul>
-          <button class="b3 rel-refs-volver" type="button" hidden>Volver al texto</button>
-        </section>
-        <section class="rel-refs-grupo" id="fuentes-seleccion" tabindex="-1" aria-labelledby="fuentes-seleccion-tit">
-          <h3 id="fuentes-seleccion-tit">Selección RWAdar</h3>
-          <ul>
-            <li data-fuente="34"><p lang="es" translate="no" data-fuente-es>RWAdar, «Cómo verificamos» y los criterios de transparencia de cada revisión del catálogo. Fuente propia.</p><p lang="en" translate="no" data-fuente-en>RWAdar, «How we verify» and the transparency criteria of each catalogue review. Our own source.</p><a class="rel-refs-url" href="https://rwadar.pages.dev/metodologia" target="_blank" rel="noopener nofollow" translate="no">rwadar.pages.dev/metodologia</a></li>
-            <li data-fuente="26"><p lang="es" translate="no" data-fuente-es>Robinhood Europe, «Stock Tokens FAQ».</p><p lang="en" translate="no" data-fuente-en>Robinhood Europe, «Stock Tokens FAQ».</p><a class="rel-refs-url" href="https://www.robinhood.com/eu/en/support/articles/stock-tokens-faq" target="_blank" rel="noopener nofollow" translate="no">robinhood.com/…/stock-tokens-faq</a></li>
-            <li data-fuente="35"><p lang="es" translate="no" data-fuente-es>Spiko, «Use cases: Web3»: fondos monetarios UCITS aprobados por la AMF francesa, con el dinero en CACEIS Bank.</p><p lang="en" translate="no" data-fuente-en>Spiko, «Use cases: Web3»: UCITS money market funds approved by the French AMF, with the money held at CACEIS Bank.</p><a class="rel-refs-url" href="https://www.spiko.io/use-cases/web3" target="_blank" rel="noopener nofollow" translate="no">spiko.io/…/web3</a></li>
-          </ul>
-          <button class="b3 rel-refs-volver" type="button" hidden>Volver al texto</button>
-        </section>
-        <section class="rel-refs-grupo" id="fuentes-legal" tabindex="-1" aria-labelledby="fuentes-legal-tit">
-          <h3 id="fuentes-legal-tit">Nota legal</h3>
-          <ul>
-            <li data-fuente="31"><p lang="es" translate="no" data-fuente-es>EBA, EIOPA y ESMA, «Advertencia sobre los criptoactivos», 06/10/2025. Versión española difundida por la CNMV el 08/10/2025.</p><p lang="en" translate="no" data-fuente-en>EBA, EIOPA and ESMA, «Warning on crypto-assets», 06/10/2025. Spanish version published by the CNMV on 08/10/2025.</p><a class="rel-refs-url" href="https://www.cnmv.es/webservices/verdocumento/ver?t=%7B0cd6d50d-00f1-42b4-9b5b-0a230e0e7e80%7D" target="_blank" rel="noopener nofollow" translate="no">cnmv.es/…/ver</a><a class="rel-refs-url" href="https://www.esma.europa.eu/sites/default/files/2025-10/Joint_ESAs_revised_warning_on_crypto-assets.pdf" target="_blank" rel="noopener nofollow" translate="no">esma.europa.eu/…/Joint_ESAs_revised_warning…</a></li>
-            <li data-fuente="37"><p lang="es" translate="no" data-fuente-es>ESMA, «Statement on the End of Transitional Periods under MiCA», 17/04/2026.</p><p lang="en" translate="no" data-fuente-en>ESMA, «Statement on the End of Transitional Periods under MiCA», 17/04/2026.</p><a class="rel-refs-url" href="https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf" target="_blank" rel="noopener nofollow" translate="no">esma.europa.eu/…/ESMA75-113276571-1679_Stat…</a></li>
-          </ul>
-          <button class="b3 rel-refs-volver" type="button" hidden>Volver al texto</button>
-        </section>
-        <!--fuentes:fin-->
-      </details>
-    </section>
-
-    <!-- Nota legal y advertencia de riesgo (misma letra que el texto). -->
-    <section class="rel-legal" aria-labelledby="relLegalTit">
-      <h2 class="rel-legal-tit" id="relLegalTit">Nota legal y advertencia de riesgo</h2>
-      <p>RWAdar no asesora ni vende, y nadie paga por aparecer. No es una recomendación de inversión. Invertir tiene riesgos: puedes perder parte o todo lo que inviertas.</p>
-      <details class="rel-legal-mas">
-        <summary>Leer nota legal completa</summary>
-        <p>RWAdar es un registro editorial independiente y gratuito. No es una entidad autorizada por la CNMV. No presta servicios de inversión y no puede asesorar ni hacer publicidad de inversiones por cuenta de otros.</p>
-        <p>No vende ni recibe dinero de las inversiones, y ninguna empresa paga por aparecer en el radar.</p>
-        <p>Esta página da la misma información general a todo el mundo. No tiene en cuenta tu situación y no es una recomendación de inversión.</p>
-        <p>Con muchos criptoactivos, como avisan los supervisores europeos (EBA, EIOPA y ESMA), «puedes perder buena parte del dinero invertido o incluso todo». Un mínimo bajo no significa un riesgo bajo.</p>
-        <p>Antes de contratar, comprueba la entidad en los registros de la CNMV y de ESMA. Lee también su documento legal: el KID o el folleto y, en cripto, el libro blanco.</p>
-        <p>Las entidades citadas no tienen relación con RWAdar. Sus nombres se usan solo para citar datos públicos, sin logotipos. Las citas en español son traducción de RWAdar, y el original está en las fuentes. Las cifras de mercado son de terceros, a 03/11/2026, y cambian a diario.</p>
-      </details>
-      <a class="b3 rel-fuentes" href="#fuentes-legal" data-rel-fuentes="legal">Fuentes de este apartado<span class="rel-flecha" aria-hidden="true"></span></a>
-    </section>
-
-    <p class="movil-nota-final">RWAdar no pide datos bancarios, claves de monedero ni frases de recuperación.</p>
+    <!-- 6 · Pie: una línea legal y la nota completa (en /aprende/). Es un
+         div con role="note" y no un elemento footer: en el móvil, la hoja
+         principal esconde los footer fuera de la pestaña «Buscar». En
+         escritorio no sale: el pie del sitio ya lleva la nota legal. -->
+    <div class="ini-pie" role="note" aria-label="Nota legal">
+      <p>RWAdar no asesora ni vende, y nadie paga por aparecer. No es una recomendación de inversión. RWAdar no pide datos bancarios, claves de monedero ni frases de recuperación.</p>
+      <a class="ini-ver ini-ver--pie" href="/aprende/#nota-legal"><span>Nota legal completa</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
+    </div>
   </div>
   <div class="rel-progreso" id="relProgreso" aria-hidden="true"><span></span></div>
 </section>

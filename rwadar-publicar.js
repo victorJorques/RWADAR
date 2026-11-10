@@ -25,6 +25,7 @@ const entornoSincronizacion = { ...process.env };
 delete process.env.RWADAR_CATALOGO_ACCESS_TOKEN;
 const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
+const { cargarFotosNoticias } = require('./rwadar-noticias-editoriales');
 const { cargarRegistro: cargarPrecargas, unirActivos } = require('./rwadar-precargar-imagenes');
 const { comprobar: comprobarAcademy, paginasAcademy, comprobarLeccionesPublicadas } = require('./rwadar-academy');
 const { comprobar: comprobarNoticias } = require('./rwadar-noticias');
@@ -35,9 +36,11 @@ const { exigirCatalogoPublico } = require('./rwadar-acceso/comprobar-produccion.
 const tokenizacionModelo = require('./rwadar-movil/lib/tokenizacion');
 const { historicoTokenizacion } = require('./rwadar-tokenizacion-historico');
 const noticiasModelo = require('./rwadar-movil/lib/noticias-sector');
+const noticiasV1 = require('./rwadar-app/noticias/noticias-v1.cjs');
 const {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
+  PAGINAS_SECCIONES,
   PROYECTO_CLOUDFLARE,
   comprobarConfiguracionAuth,
   comprobarEstadoLegalPublicacion,
@@ -55,7 +58,7 @@ const FILE = path.join(DIR, 'index.html');
 /* Todas las páginas HTML propias: pasan la misma CSP estricta y reciben los
    nombres versionados de los assets. */
 const PAGINAS_HTML = ['index.html', 'privacidad.html', 'transparencia-comercial.html', 'para-empresas.html', '404.html', 'acceso.html',
-  'baja.html', ...PAGINAS_ACADEMY, ...PAGINAS_FICHAS.filter(nombre => nombre.endsWith('.html'))];
+  'baja.html', ...PAGINAS_SECCIONES, ...PAGINAS_ACADEMY, ...PAGINAS_FICHAS.filter(nombre => nombre.endsWith('.html'))];
 const SALIDA = path.join(__dirname, 'rwadar-publicado');
 const WRANGLER_VERSION = '4.125.0';
 const modos = ['--local', '--preview', '--produccion'].filter(x => process.argv.includes(x));
@@ -168,6 +171,13 @@ catch (e) { console.error('ACTIVOS EDITORIALES BLOQUEADOS:', e.message); process
 try { activosEditoriales = { ...activosEditoriales,
   publicables: unirActivos(activosEditoriales.publicables, cargarPrecargas(__dirname).publicables) }; }
 catch (e) { console.error('PRECARGAS EDITORIALES BLOQUEADAS:', e.message); process.exit(2); }
+/* Fotos editoriales de las noticias (rediseño de Inicio, 10/11/2026): cada
+   clave que usa /datos/noticias-v2.json, con su WebP comprobado (bytes,
+   sha256 y tamaño). Sin ellas no se publica, tampoco en local: así las
+   pruebas ven lo mismo que verá la web. */
+let fotosNoticias;
+try { fotosNoticias = cargarFotosNoticias(__dirname); }
+catch (e) { console.error('FOTOS DE LAS NOTICIAS BLOQUEADAS:', e.message); process.exit(2); }
 if (remoto && activosEditoriales.manifiesto.estadoUso !== 'aprobado-para-publicacion') {
   console.error('PUBLICACION REMOTA BLOQUEADA: las ilustraciones editoriales siguen pendientes de aprobación legal.');
   process.exit(2);
@@ -285,7 +295,34 @@ const scriptCatalogo = fs.readFileSync(path.join(DIR, rutaCatalogo.slice(1)), 'u
 // Acorn interpreta solo datos literales y el contrato exige el lote íntegro.
 // La VM de pre-renderizado recibe exactamente esa misma copia ya validada.
 const { leerBloquesCatalogo, validarCatalogoSnapshot } = require('./rwadar-fichas');
-validarCatalogoSnapshot(leerBloquesCatalogo(scriptCatalogo));
+const catalogoValidado = validarCatalogoSnapshot(leerBloquesCatalogo(scriptCatalogo));
+/* /aprende/ no carga el catálogo (rediseño de Inicio, 10/11/2026), pero su
+   capítulo 04 dice cuántas ofertas tienen un mínimo documentado de 1 € o 1 $ y
+   el 06, cuándo se revisó. Esas cifras se calculan aquí como en Inicio
+   (cifrasInicio de rwadar-20260820.js: ofertas del lote, mínimo corto de
+   transparencia.json con la misma fecha de verificación) y se escriben en el
+   <main> de /aprende/; aprende-20261110.js las enseña mientras la revisión
+   siga vigente (hasta «hasta» incluido). */
+function cifrasCatalogoAprende(catalogo) {
+  const transparencia = JSON.parse(fs.readFileSync(path.join(__dirname, 'rwadar-editorial-source', 'ofertas', 'transparencia.json'), 'utf8'));
+  const p0 = catalogo.plataformas[0] || {};
+  const revisado = /^\d{4}-\d\d-\d\d$/.test(p0.verificado_lote_el || '') ? p0.verificado_lote_el : '';
+  const dias = Number.isInteger(p0.vigencia_lote_dias) && p0.vigencia_lote_dias > 0 ? p0.vigencia_lote_dias : 0;
+  const ofertas = catalogo.ofertas.filter(o => o && o.catalogo === true);
+  const corto = o => { const e = transparencia.ofertas && Object.hasOwn(transparencia.ofertas, o.slug) ? transparencia.ofertas[o.slug] : null;
+    return e && e.verificadaEl === o.verificadaEl && typeof e.minimoCorto === 'string' ? e.minimoCorto : ''; };
+  const minimos = ofertas.filter(o => ['1 €', '1 USD'].includes(corto(o)));
+  if (!revisado || !dias || ofertas.length !== catalogo.ofertas.length || !ofertas.length) return null;
+  return { ofertas: ofertas.length, minimos: minimos.length, usd: minimos.filter(o => corto(o) === '1 USD').length, revisado,
+    hasta: new Date(Date.parse(revisado + 'T00:00:00Z') + dias * 86400000).toISOString().slice(0, 10) };
+}
+function escribirCifrasAprende(html, cifras) {
+  const raiz = '<main id="contenido" class="sec-aprende inicio-cuerpo rel">';
+  if ((html.split(raiz).length - 1) !== 1) throw new Error('aprende/index.html: falta su <main> para las cifras del catálogo');
+  if (!cifras) return html;
+  return html.replace(raiz, raiz.replace('>', ` data-catalogo-ofertas="${cifras.ofertas}" data-catalogo-minimos="${cifras.minimos}"` +
+    ` data-catalogo-usd="${cifras.usd}" data-catalogo-revisado="${cifras.revisado}" data-catalogo-hasta="${cifras.hasta}">`));
+}
 
 /* ---- 1b · ¿compila? -------------------------------------------------
    Un error de sintaxis no rompe el pre-renderizado: el simulador ejecuta
@@ -528,6 +565,10 @@ function construirSalida() {
       // La baja de avisos no usa la cuenta: no lleva el ayudante de sesión.
       if (PAGINAS_HTML.includes(nombre) && !['acceso.html', 'baja.html', 'privacidad.html', 'transparencia-comercial.html'].includes(nombre)) {
         let pagina = fs.readFileSync(destino, 'utf8');
+        if (nombre === 'aprende/index.html') {
+          pagina = escribirCifrasAprende(pagina, cifrasCatalogoAprende(catalogoValidado));
+          fs.writeFileSync(destino, pagina, 'utf8');
+        }
         if (!pagina.includes('/assets/acceso-privado.js')) {
           if (!/<head(?:\s[^>]*)?>/i.test(pagina)) throw new Error(`Falta head en ${nombre}`);
           pagina = pagina.replace(/<head(?:\s[^>]*)?>/i,
@@ -547,23 +588,35 @@ function construirSalida() {
     const fotosTokenizacion = tokenizacion.historico.fotos;
     console.log(`Tokenización: ${fotosTokenizacion.length} foto(s) diaria(s) de ${tokenizacion.origen}` +
       (fotosTokenizacion.length ? `, del ${fotosTokenizacion[0].fecha} al ${fotosTokenizacion.at(-1).fecha}.` : '.'));
-    /* «Noticias del sector» (10/11/2026): /datos/noticias.json se publica tal
-       cual, pero solo si tiene la forma que leen la web y la app
-       (rwadar-movil/lib/noticias-sector.js). Una noticia mal formada para la
-       publicación: mejor eso que una sección rota en la web y en la app. */
-    const textoNoticias = fs.readFileSync(path.join(temporal, 'datos', 'noticias.json'), 'utf8');
+    /* «Noticias del sector» (10/11/2026): /datos/noticias-v2.json se publica
+       tal cual, pero solo si tiene la forma que leen la web y la app nuevas
+       (rwadar-movil/lib/noticias-sector.js) y si cada noticia trae su foto
+       (al leer es opcional; al publicar, no). /datos/noticias.json es el
+       mismo sin «imagen», para la app ya instalada: tiene que coincidir con
+       el v2 y pasar el motor congelado de esa app
+       (rwadar-app/noticias/noticias-v1.cjs). Una noticia mal formada para la
+       publicación: mejor eso que una sección rota en la web o en la app. */
+    const textoNoticias = fs.readFileSync(path.join(temporal, 'datos', 'noticias-v2.json'), 'utf8');
     let noticias;
     try {
       if (Buffer.byteLength(textoNoticias, 'utf8') > 256 * 1024) throw new Error('ocupa más de 256 kB');
       noticias = noticiasModelo.validarNoticias(JSON.parse(textoNoticias));
+      const sinFoto = noticiasModelo.noticiasSinFoto(JSON.parse(textoNoticias));
+      if (sinFoto.length) throw new Error(`noticias sin «imagen»: ${sinFoto.join(', ')}`);
     } catch (e) {
-      throw new Error(`rwadar-site/datos/noticias.json no vale: ${e.message}`);
+      throw new Error(`rwadar-site/datos/noticias-v2.json no vale: ${e.message}`);
     }
-    console.log(`Noticias del sector: ${noticias.noticias.length}, actualizadas el ${noticias.actualizadoEl}.`);
+    const textoNoticiasV1 = fs.readFileSync(path.join(temporal, 'datos', 'noticias.json'), 'utf8');
+    if (textoNoticiasV1 !== noticiasV1.derivarV1(textoNoticias)) {
+      throw new Error('rwadar-site/datos/noticias.json no es noticias-v2.json sin «imagen» (ejecuta node rwadar-app/noticias/noticias-v1.cjs)');
+    }
+    try { noticiasV1.validarComoAppInstalada(textoNoticiasV1); }
+    catch (e) { throw new Error(`la app instalada no aceptaría /datos/noticias.json: ${e.message}`); }
+    console.log(`Noticias del sector: ${noticias.noticias.length}, actualizadas el ${noticias.actualizadoEl} (v2 con fotos y v1 para la app instalada).`);
     /* Las cuatro ilustraciones viven en una fuente única compartida con
        Expo. Se copian una a una desde el manifiesto validado; nunca se copia
        el directorio completo ni se incluyen las 52 imágenes sin derechos. */
-    for (const activo of activosEditoriales.publicables) {
+    for (const activo of [...activosEditoriales.publicables, ...fotosNoticias.publicables]) {
       const destino = path.join(temporal, ...activo.salida.split('/'));
       fs.mkdirSync(path.dirname(destino), { recursive: true });
       fs.copyFileSync(activo.origen, destino);
@@ -609,6 +662,7 @@ function construirSalida() {
     const salidaEsperada = [
       ...ARCHIVOS_PUBLICABLES.map(nombre => referencias.get('/' + nombre)?.slice(1) || nombre),
       ...activosEditoriales.publicables.map(activo => activo.salida),
+      ...fotosNoticias.publicables.map(activo => activo.salida),
       '_worker.js', '_routes.json',
     ].sort();
 
