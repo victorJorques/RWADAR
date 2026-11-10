@@ -1,0 +1,6 @@
+URL: https://courtyard.io/
+FINAL: https://courtyard.io/
+HTTP: 403
+UTC: 2026-11-10T09:39:55Z
+
+403 Forbidden

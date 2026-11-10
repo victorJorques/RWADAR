@@ -1,0 +1,1004 @@
+                            Customer Brokerage Account Agreement
+
+This Agreement sets forth the terms and conditions under which Securitize Markets, LLC (“SM”)
+will maintain an account (“Account”) for the Customer(s) set forth below (all or any of which shall
+be hereinafter referred to as “you” “your” or “yours”) and receive from you orders for the purchase
+and sale of tokenized equity securities, including Issuer Sponsored Tokens, Custodial Entitlement
+Tokens and Entitlement Tokens, each as described in Section 29, together with the stablecoins used
+to settle transactions in such securities and other related property (“Securities and Other Assets”).
+Your Account is a fully paid brokerage account, meaning that transactions must be fully funded at
+the time of execution and settlement, and no extension of credit is provided by SM; however,
+settlement may occur using stablecoins or other permitted digital assets, and Securities and Other
+Assets may be held either (i) in custody by SM, or other qualified custodian, or (ii) in a self-custody
+wallet linked by you to the platform and approved by SM (a “Self-Custody Wallet”), as further
+described in this Agreement. Your account maintained by SM will be designated as either SM
+Custody, Self Custody, or Both, depending on whether you request SM to open an SM Custody
+account on the UI.
+
+This Agreement shall not become effective until accepted by SM, and such acceptance may only be
+evidenced by internal records maintained by SM. Your acceptance of this Agreement may be given
+electronically, including by clicking "I Agree" or a substantially similar affirmative action
+presented to you during onboarding, and such electronic acceptance constitutes your signature and
+agreement to be bound by this Agreement to the same extent as a handwritten signature, pursuant to
+the U.S. Electronic Signatures in Global and National Commerce Act, 15 U.S.C. § 7001 et seq., and
+applicable state law, including the Uniform Electronic Transactions Act as adopted in the relevant
+jurisdiction. This Agreement supersedes any previous agreements you may have made individually
+with SM regarding your Account, and if it is held jointly or in other combinations, it supersedes any
+previous agreements made with SM by the same parties regarding your Account to the extent the
+subject matter is covered by this Agreement. YOU SHOULD RETAIN A COPY OF THIS
+AGREEMENT.
+
+   1. Applicable Laws and Regulations. All transactions in your Account shall be subject to all
+      applicable U.S. and foreign laws, and the rules and regulations of applicable federal, state
+      and self-regulatory agencies, including but not limited to the U.S. Securities and Exchange
+      Commission (“SEC”), the Financial Industry Regulatory Authority, Inc. (“FINRA”), and
+      the rules, regulations, customs and usages of the exchanges, markets, alternative trading
+      systems, transfer agents, blockchain-based settlement systems and clearing agencies where
+      transactions are executed, cleared, and settled for your Account (“Applicable Law”).
+
+   2. Non-disclosure of Confidential and Material, Non-public Information. SM and its
+      affiliates provide a variety of services to their customers. In connection with providing
+      these services, employees of SM and its affiliates may come into possession, from time to
+      time, of confidential and material, non-public information. You understand and agree that,
+      in certain circumstances, employees of SM and its affiliates will have knowledge of certain
+      confidential and material, non-public information which, if disclosed, might affect your
+      decision to buy, sell or hold a security, but that they shall be prohibited from
+
+                                                  1
+
+                                                                                               V1.0
+   communicating such information to you. You also understand and agree that SM shall have
+   no responsibility or liability to you for its failing to disclose such information to you as a
+   result of following those of its policies and procedures that are designed to provide
+   reasonable assurances that it is complying with Applicable Law.
+
+3. Services Provided by SM. You agree that SM may provide certain brokerage, execution,
+   routing, custody, wallet administration, conversion, or other services to you with or through
+   its affiliates. Your Account may be established so that Securities and Other Assets are held
+   in one or more wallets or accounts created or maintained by or for SM or, if permitted by
+   SM, in a Self-Custody Wallet linked by you to the platform and approved by SM. All rights
+   and limitations on liability and obligations of SM in this Agreement are for the benefit of
+   SM and each of its present and future affiliates, which, for those purposes, shall be third
+   party beneficiaries of this Agreement.
+
+4. Background Check. You authorize SM and any agent it selects to obtain reports and
+   conduct background checks concerning you, including without limitation your identity,
+   source of funds, sanctions status and business conduct, and to use, verify and confirm any
+   and all information you provide. You also authorize SM and any of its affiliates to share
+   among themselves such information and any other confidential information SM or its
+   affiliates may have about you or your Accounts. You agree that without notifying you, SM
+   and its agents may conduct additional background checks in connection with any review or
+   renewal of your Account
+
+5. Compliance; Freezes and Blocks. You must promptly provide any information and
+   documentation SM reasonably requests in connection with legal, regulatory, compliance,
+   operational, or risk matters, including information relating to your identity, beneficial
+   ownership, control persons, source of funds, source of assets, transactions, linked wallets,
+   and use of the Services. SM may monitor Accounts and activity to comply with Applicable
+   Law and internal risk policies, and may report activity to regulators, law enforcement,
+   governmental authorities, self-regulatory organizations, issuers, transfer agents, or other
+   appropriate parties where required or appropriate under Applicable Law. SM may refuse to
+   process, may delay, may condition, may freeze or block any Direction, Order, deposit,
+   withdrawal, transfer, or other activity, or may freeze assets in an Account or close an
+   Account, if SM reasonably believes that: (a) a Direction, Order, or transaction is
+   unauthorized, fraudulent, erroneous, suspicious, incomplete, inconsistent with SM’s
+   procedures, or unlawful; (b) Account activity violates this Agreement or Applicable Law;
+   (c) continuing the relationship poses undue operational, legal, regulatory, reputational,
+   credit, settlement, or other risk; or (d) SM is required or requested to do so by law,
+   regulation, court order, transfer agent, issuer, blockchain protocol requirement, or other
+   competent authority. SM shall have no liability for any action taken in good faith under this
+   Section.
+
+6. Transfer of Securities and Other Assets into Account. You agree that all Securities and
+   Other Assets deposited into your Account will be in Good Deliverable Form. “Good
+   Deliverable Form” includes freely transferable, properly endorsed, registered and fully
+   negotiable, and, with respect to tokenized securities, stablecoins and other blockchain-
+   based Securities and Other Assets, transferred to a wallet address or other location
+   acceptable to SM and not subject to technological, legal or transfer restrictions that would
+                                             2
+
+                                                                                         V1.0
+   impair transfer, settlement or delivery. You agree to give SM timely and accurate
+   information relating to any restrictions on the sale or transfer of any Securities and Other
+   Assets, including restrictions on the sale or transfer of any securities that are subject to
+   restrictions on resale under Applicable Law, contract or otherwise, including without
+   limitation securities subject to Rules 144 or 145(d) under the Securities Act of 1933
+   (“Restricted Securities”). You further agree to timely satisfy all legal transfer requirements
+   and to furnish all necessary documents before and after securities are transferred.
+
+7. SM as Securities Intermediary. With respect to any Securities and Other Assets held in
+   SM Custody and credited to you as described in this Agreement and in SM's Custodial
+   Entitlement Token and Entitlement Token Disclosure Document, SM acts as a “securities
+   intermediary” within the meaning of Section 8-102(a)(14) of the Uniform Commercial
+   Code as in effect in the State of New York (“UCC Article 8”), and the parties intend for this
+   Agreement to constitute the agreement referenced in UCC Section 8-501(d) to the extent
+   applicable. You are the “entitlement holder,” within the meaning of UCC Section 8-102(a)
+   (7), with respect to each security entitlement credited to your Account, and SM's
+   obligations to you with respect to such security entitlements are governed by UCC Article
+   8, including Sections 8-503 through 8-508. SM's internal books and records constitute the
+   authoritative record of your security entitlements for purposes of UCC Article 8. A transfer
+   of a Custodial Entitlement Token or Entitlement Token via the applicable blockchain
+   network shall constitute your “entitlement order,” within the meaning of UCC Section 8-
+   102(a)(8), directing SM to make a corresponding debit and credit on its books, and the
+   security entitlement shall be transferred, within the meaning of UCC Section 8-507, upon
+   SM's recording of that debit and credit on its own books and records, which SM shall use
+   commercially reasonable efforts to effect substantially contemporaneously with the on-
+   chain transaction.
+
+8. Your Responsibility for Your Account. You assume full financial responsibility with
+   respect to all transactions in your Account and your investment decisions. You
+   acknowledge that SM does not provide tax, accounting or legal advice and that you and
+   your advisers are responsible for these matters. You should consult with your tax adviser
+   regarding tax consequences of your investment decisions. You represent that you are
+   capable of evaluating, and have independently evaluated, the merits and risks of
+   transactions in tokenized securities, stablecoins, and related blockchain-based systems, and
+   that you are making and will make your own independent decisions to use the Services and
+   to enter into transactions, based on your own judgment and, as applicable, independent
+   professional advice. Your Account, to the extent it holds Securities and Other Assets
+   credited to you as described above, constitutes a “securities account” within the meaning of
+   UCC Section 8-501, and each Security or Other Asset so credited is a “financial asset”
+   within the meaning of UCC Section 8-102(a)(9).
+
+9. Payment and Settlement.
+      a. You agree that you will pay for any Securities and Other Assets purchased for your
+         Account on or before the settlement date set forth on the confirmation for that
+         transaction or the standard settlement date in the market on which those securities
+         are traded. You further agree that each item sold will be delivered to SM in Good
+         Deliverable Form on or before settlement date. Proceeds of any sale will not be paid
+         to you before the time at which SM has received the Securities and Other Assets in
+                                             3
+
+                                                                                         V1.0
+   Good Deliverable Form and the settlement of the Securities and Other Assets is
+   complete. You agree that transactions in your Account must be fully funded at the
+   time of execution and settlement, no margin is permitted, and no short sales are
+   permitted. You further acknowledge that, where supported by SM, certain
+   transactions may settle by means of blockchain-based atomic settlement, in which
+   case execution and settlement may occur simultaneously and irrevocably upon
+   recording of the applicable transaction or state change on the relevant blockchain or
+   settlement system. Where your Account is established for SM custody, SM may
+   hold stablecoins for you in one or more accounts or wallets established by SM, or
+   other qualified custodian for that purpose, and may convert U.S. dollars to
+   stablecoins or stablecoins to U.S. dollars in connection with settlement and
+   withdrawals. Where your Account is enabled for self-custody, you acknowledge
+   that you remain a brokerage customer of SM, but Securities and Other Assets may
+   be transferred away from SM to a whitelisted Self-Custody Wallet, linked to SM
+   but controlled solely by you, and SM will treat such assets as held away from SM
+   for custody purposes, even though they remain relevant to your brokerage
+   relationship with SM.
+
+b. You acknowledge and agree that you are solely responsible for the establishment,
+   maintenance, security, and control of any Self-Custody Wallet, including the
+   safeguarding of private keys, seed phrases, credentials, and access devices, and SM
+   shall have no access to or control over such Self-Custody Wallet or the assets held
+   therein. SM does not act as custodian, fiduciary, or agent with respect to any Self-
+   Custody Wallet or assets held therein, and has no responsibility for the safekeeping,
+   loss, theft, compromise, or unavailability of such assets. You further acknowledge
+   that any transfer of Securities and Other Assets to or from a Self-Custody Wallet is
+   effected based solely on your instructions and at your direction, and SM shall be
+   entitled to rely on such instructions without liability, provided such instructions
+   reasonably appear to be authentic. Once transferred to a Self-Custody Wallet, such
+   assets are outside the custody and control of SM, and SM shall have no obligation or
+   ability to recover, replace, or otherwise access such assets. SM’s role with respect to
+   Self-Custody Wallets is limited to (i) recognizing such wallets for purposes of
+   trading, settlement, and recordkeeping, (ii) enforcing applicable whitelisting or
+   transfer restrictions, and (iii) facilitating the submission and processing of
+   transactions in accordance with your instructions and Applicable Law. You
+   acknowledge that the accuracy of wallet addresses and transfer instructions is solely
+   your responsibility, and SM shall have no liability for transfers to incorrect, invalid,
+   or unintended wallet addresses.
+
+c. You agree that in the event that you direct SM to enter into any transaction
+   denominated in a stablecoin, or that your Account receives a dividend payment
+   denominated in a stablecoin: (i) any profit or loss arising from a fluctuation in the
+   exchange rate affecting such stablecoin will be entirely for your Account and risk,
+   (ii) all deposits shall be made in stablecoins or other assets acceptable to SM, in
+   such amounts as SM may, in its sole discretion, require, and (iii) SM is authorized to
+   convert funds in your Account into and from such stablecoin in accordance with
+   Section 24, and you will reimburse SM for any expenses incurred in connection
+   therewith.
+                                      4
+
+                                                                                   V1.0
+       d. You acknowledge and agree that SM, as broker-dealer and operator of any
+          applicable platform or execution channel, does not guarantee settlement of any
+          transaction merely by receiving, routing, matching, or executing an Order.
+          Settlement remains subject to the availability and delivery of the required Securities
+          and Other Assets, the functioning of the relevant wallet, custodian, transfer agent,
+          blockchain network, smart contract, settlement system, and any applicable third-
+          party intermediaries. In the case of self-custody, you acknowledge that SM may
+          share order, settlement, and wallet information with your custodian, wallet
+          provider, transfer agent, or other relevant service providers, as applicable, for
+          purposes of carrying out settlement and post-trade processing, and that SM shall not
+          be liable for a failure of any transaction to settle to the extent such failure arises
+          from causes beyond SM’s reasonable control.
+
+10. Rule 144 or 145(d) Restricted or Control Securities. Prior to placing an order for the sale
+    or transfer of Restricted Securities, you agree that you will advise SM of the status of the
+    securities and furnish SM with the necessary documents (including opinions of legal
+    counsel, if SM so requests) or any other required waivers or consents necessary to satisfy
+    legal transfer requirements. These securities may not be sold or transferred until they
+    satisfy legal transfer requirements. Even if the necessary documents are furnished in a
+    timely manner, there may be delays in the processing of these securities, which may result
+    in delays in the delivery of securities and the crediting of sale proceeds to your Account.
+    You are responsible for, and shall reimburse SM for, any delays, expenses, losses and
+    damages (including reasonable attorneys’ fees and court costs and expenses) (“Losses”)
+    incurred by SM that are associated with compliance or failure to comply with all the
+    requirements and rules relating to Restricted Securities.
+
+11. Abandoned Property. If your account statement is returned to SM as undeliverable for
+    three (3) consecutive statement periods, and we are unable to contact you through
+    reasonable efforts, your account assets may be deemed to be abandoned property, and a
+    quarterly abandoned account safekeeping fee will be charged to your account. These
+    charges fairly represent our costs for managing, maintaining and controlling Abandoned
+    Property assets and are non-refundable. If your Account remains inactive, or your account
+    statements remain undeliverable, for the period specified under applicable state unclaimed
+    property law, SM may be required to escheat the Securities and Other Assets in your
+    Account to the applicable state’s unclaimed property administrator in accordance with
+    Applicable Law, notwithstanding any other provision of this Section.
+
+12. Internet Communications. SM will take measures that it believes appropriate to protect
+    the confidentiality of information that it transmits to you over the Internet. You
+    acknowledge, however, that the Internet is not a secure network and that communications
+    transmitted over the Internet may be accessed by unauthorized or unintended third parties.
+    You acknowledge that you should not transmit any personal or identifying information
+    (such as account numbers, credit or debit card numbers, Social Security numbers, passport
+    or visa numbers or passwords) via the Internet unless you are certain that the transmission
+    will be secure and encrypted. You further acknowledge that SM may be unable to assist you
+    with problems that result from difficulties that you may encounter while logging on to or
+    accessing your electronic communications via the Internet. You further acknowledge that
+                                             5
+
+                                                                                        V1.0
+   blockchain networks, smart contracts, wallet software and related digital asset systems
+   present additional operational and cybersecurity risks, including the risk of irreversible
+   transactions.
+
+13. Finality and Transmittal of Reports, Statements and Notices. Confirmations of
+    transactions and statements of your Account shall be binding if you do not object, in
+    writing, within three calendar days in the case of confirmations and ten calendar days in the
+    case of statements after transmittal to you by mail, electronic delivery or otherwise. Notices
+    or other communications, including confirmations, account statements and other
+    communications, delivered, mailed or otherwise transmitted to you at the address specified
+    below shall, until SM has received notice in writing of a different address, be deemed to
+    have been personally delivered to and received by you, and you agree to waive all claims
+    resulting from any failure to receive such communications. Statements may reflect
+    positions and balances held in SM custody, transfers to and from linked Self-Custody
+    Wallets, and other activity relevant to your brokerage relationship with SM.
+
+14. Communications with SM. You agree that SM may designate the manner in which you
+    must send different types of communications (including changes in your contact
+    information) to SM and the addresses to be used for that purpose. SM need not act upon any
+    communications transmitted in a manner inconsistent with such designations, and SM shall
+    be permitted a reasonable amount of time, as appropriate under the circumstances, to act in
+    response to any communications if it elects to do so. SM will have no liability for relying on
+    any directions from, or document signed by, any person that SM reasonably believes to be
+    you or to be authorized by you to give the direction or sign the document (including a
+    direction given or document electronically signed or accepted through the platform or other
+    electronic means), whether or not the person has the authority to do so. Communications
+    regarding your Account should be sent to SM unless you are otherwise notified.
+
+       a. You consent, to the fullest extent permitted by law, to receive confirmations,
+          account statements, notices, disclosures, amendments, tax forms, regulatory
+          communications, and other documents and communications electronically,
+          including by email, secure portal, mobile application, or other electronic means
+          made available by SM. Such communications shall be deemed delivered when sent
+          or made available by SM, whether or not you actually access or review them. You
+          are responsible for maintaining accurate contact information and for the hardware,
+          software, internet access, and other capabilities necessary to receive and retain such
+          communications. Withdrawal of consent to electronic delivery may, at SM’s
+          discretion, limit the Services available to you or require closure of the Account.
+          This consent constitutes your affirmative consent to conduct business electronically
+          and to receive electronic disclosures under the U.S. Electronic Signatures in Global
+          and National Commerce Act, 15 U.S.C. § 7001 et seq., and applicable state law.
+          Before consenting, you should confirm that you have the hardware and software
+          described above and the ability to access and retain electronic records in a form that
+          you may keep for future reference. You may withdraw this consent at any time,
+          without charge, by notifying SM at investorsupport@securitize.io, and you may
+          request a paper copy of any electronically delivered document by contacting SM at
+          that address, which SM may provide subject to a reasonable fee. Withdrawal of
+          consent will apply only to communications sent after SM has had a reasonable
+                                              6
+
+                                                                                          V1.0
+            opportunity to process your request and will not affect the legal effectiveness of any
+            electronic communication, acceptance, or signature made before withdrawal.
+
+15. Oral Authorization. You hereby agree that SM shall incur no liability in acting upon oral
+    instructions given to it concerning your Account, provided such instructions reasonably
+    appear to be genuine. SM, however, reserves the right to require that you make requests for
+    any transaction or for any withdrawal from your Account, in writing.
+
+16. Power of Attorney or Trading Authorization to Third Party. If you grant a power of
+    attorney or trading authorization to a third party with respect to your Account at SM, you
+    agree that SM may follow the instructions of that third party in accordance with the
+    authorization. You shall indemnify and hold SM harmless from and pay promptly any and
+    all Losses arising therefrom or debit balance due thereon. This indemnity shall be in
+    addition to, and in no way limit or restrict, any rights which SM may have under such power
+    of attorney or trading authorization or under this or any other agreement between you and
+    SM, or otherwise. SM may, with respect to questions of law, apply for and obtain the advice
+    and opinion of counsel, at its expense, and shall be fully protected with respect to anything
+    SM does or refrains from doing in good faith in conformity with such advice or opinion.
+    You may provide SM with the name and contact information of a trusted contact person
+    (“TCP”) who is at least 18 years of age. Designating a TCP is optional. By providing a TCP,
+    you authorize SM to contact the TCP and disclose Account information to address possible
+    financial exploitation, confirm your current contact information, or identify a legal
+    guardian, executor, trustee, or holder of a power of attorney, as permitted under FINRA
+    Rule 2165 and Applicable Law. A TCP has no authority to transact in, or receive
+    disbursements from, your Account. You authorize SM to place a temporary hold on
+    disbursements or transactions if SM reasonably believes financial exploitation has been
+    attempted or has occurred, and to report such belief to applicable state or federal authorities.
+
+17. Publications. SM may make available information about securities and investment
+    strategies, including its own research reports and market commentaries as well as materials
+    prepared by others. None of this information is personalized or in any way tailored to reflect
+    your personal financial circumstances or investment objectives and the securities or
+    investment strategies discussed might not be suitable for you. Therefore, you should not
+    view the fact that SM is making this information available to you to be a recommendation to
+    you of any particular security or investment strategy. To the extent that your transactions
+    differ from a specific recommendation made by SM to you with respect to the security, size,
+    price and timing of a recommended transaction, or to the extent there have been variations
+    in the facts relevant to the transaction, you agree that SM has no responsibility for
+    determining the suitability of these transactions to you.
+
+18. Security Interest and Lien. You agree that SM will have, and you grant to SM, a
+    continuing security interest in all Securities and Other Assets in which you have an interest,
+    including any after-acquired property, held by or carried by it or its agents in your Account,
+    as security for payment of all your existing or future obligations and liabilities to SM,
+    without regard to whether SM has made loans with respect to such Securities and Other
+    Assets. All such Securities and Other Assets shall be subject to a first priority perfected
+    lien, security interest and right of set-off and are held as security by SM or its agents for the
+    discharge of any indebtedness or any other obligation you may have to SM, however such
+                                               7
+
+                                                                                             V1.0
+   obligation may have arisen. Notwithstanding the foregoing, with respect to Securities and
+   Other Assets held in any Self-Custody Wallets or locations that are linked by you to the
+   platform but are not held by or carried by SM or its agents, SM shall not be deemed to have
+   possession or control. SM’s lien and security interest under this Section shall not attach to
+   Securities and Other Assets held in a Self-Custody Wallet, except to the extent SM
+   otherwise obtains a security interest in such assets under a separate written control
+   agreement. In enforcing its security interest, SM shall have the discretion to determine
+   which Securities and Other Assets are to be sold and the order in which they are to be sold
+   and shall have all the rights and remedies available to a secured creditor under the Uniform
+   Commercial Code of New York as then in effect, in addition to the rights and remedies
+   provided herein or otherwise by Applicable Law. You agree that the Securities and Other
+   Assets are of a kind or type customarily sold on recognized markets, are subject to standard
+   price quotations, and may decline speedily in value, such that we shall not be required to
+   provide you with notice of such sale. You also agree that if we liquidate the Securities and
+   Other Assets, it would be commercially reasonable for us to do so using the procedures we
+   customarily use for liquidating assets like the Securities and Other Assets.
+
+19. Sell-Outs, Buy-Ins and Cancellation of Orders. SM is authorized in case of your death or
+    whenever, in its discretion, SM deems it necessary or appropriate for its protection, without
+    notice to you or your personal representative, and without regard to any tax or other
+    consequences to you, to sell any and all Securities and Other Assets in your Account (either
+    individually or jointly with others), to borrow or buy in any or all Securities and Other
+    Assets which may be short in such Account or to cancel all outstanding transactions and to
+    offset any indebtedness in your Account against any other account you may have (either
+    individually or jointly with others). Any such sales or purchases may be made at SM’s sole
+    discretion on any exchange or market where such business is usually transacted, or at public
+    auction or private sale; and SM may be the purchaser for its own account. Such sales or
+    purchases may be public or private and may be made without notice or advertisement and in
+    such manner as SM may, in its discretion, determine. It shall be understood that a prior
+    demand, or call, or prior notice of the time and place of such sale or purchase shall not be
+    considered a waiver of SM’s right to sell or buy without demand or notice as provided
+    herein. At any such sale or purchase, SM may purchase or sell the property free of any right
+    of redemption, and you agree to be liable for any deficiency in your Account. If the
+    proceeds from such purchase or sale satisfy your indebtedness to SM, any money or
+    Securities and Other Assets in your Account in excess of your indebtedness to SM will be
+    held for your Account. Notwithstanding the foregoing, SM shall have no obligation to and
+    may have no ability to liquidate, buy in or otherwise take possession of Securities and Other
+    Assets held in any self-custodied wallets (including the Self-Custody Wallet) not controlled
+    by SM.
+
+20. Order Execution.
+    You agree that, subject to the terms of an order, the method of execution of that order is in
+    the sole discretion of SM. SM may reject and pre-review your orders or take any other
+    action (which may delay the execution of the order) for any reason, including market
+    conditions, system outages, capacity limitations, pending proprietary or customer orders in
+    the same security, regulatory restrictions and restrictions imposed by SM with respect to
+    transactions in the particular security. You authorize SM to submit your orders jointly with
+    orders for other customers, and you acknowledge that the average price for executions
+                                              8
+
+                                                                                         V1.0
+   resulting from bunched orders will be assigned to your Account. At your request, SM will
+   make available the underlying records reflecting the actual transaction prices. You
+   acknowledge that SM may execute transactions on an ATS, by means of a request-for-
+   quote or similar process, or by routing orders to a third party venue, and that certain
+   transactions may settle by smart contract or blockchain-based atomic settlement.
+
+       a. Without liability to you, SM retains the right, in its reasonable discretion and
+          subject to Applicable Law, to reject, decline to process, cancel, correct, or break any
+          Order or transaction, including if SM determines that such Order or transaction is
+          erroneous, duplicative, unauthorized, inconsistent with market conditions, exceeds
+          applicable limits, cannot be settled as contemplated, is based on inaccurate
+          information, or violates this Agreement, Applicable Law, or applicable market,
+          platform, transfer agent, or blockchain requirements. Although SM will use
+          commercially reasonable efforts to implement your instructions to modify, replace,
+          or cancel an Order before execution or matching, you acknowledge and agree that
+          such procedures may not be effective and that SM shall have no liability for any
+          failure or mistake in implementing such instructions except to the extent resulting
+          from SM’s gross negligence or willful misconduct.
+
+21. Corporate Actions. You acknowledge that Securities and Other Assets in your Account
+    may be subject to corporate actions, including dividends, splits, mergers, and similar
+    events, which SM or its affiliated transfer agent will process in accordance with SM's
+    Entitlement Token Disclosure Document, as amended from time to time and made
+    available to you through the platform. Elections, fractional-entitlement treatment, and
+    dividend reinvestment mechanics are governed by that Disclosure Document and any
+    applicable program terms. Dividends and other cash distributions will be paid to you in
+    SM's designated settlement stablecoin, consistent with Section 24, subject to the risks
+    described in Section 29.
+
+   SM's Entitlement Token Disclosure Document is incorporated into this Agreement by
+   reference. SM may amend the Disclosure Document from time to time, in its
+   discretion, by posting an updated version on the platform, and such posting shall
+   constitute sufficient notice of the amendment. Amendments to the Disclosure
+   Document shall not require the notice procedures otherwise applicable to
+   amendments of this Agreement under the section entitled "Waiver, Assignment and
+   Modification." Your continued use of your Account following the posting of an
+   updated Disclosure Document shall constitute your acceptance of the updated
+   Disclosure Document. In the event of a conflict between this Agreement and the
+   Disclosure Document, this Agreement shall control.
+
+22. SM as Agent. You understand that SM is acting as your agent, unless SM notifies you, in
+    writing, at or before the settlement date for the transaction that SM is acting as a dealer for
+    its own account or as agent for another party. Unless we have expressly agreed otherwise,
+    SM is not acting as a financial adviser or fiduciary with respect to your Account or any
+    related transactions.
+
+
+
+                                              9
+
+                                                                                           V1.0
+23. SM’s Positions in Securities and Other Assets. SM may, for its own account, have long
+    or short positions in, and actively buy or sell, the Securities and Other Assets purchased or
+    sold for your Account or derivatives of these products and related Securities and Other
+    Assets.
+
+24. Stablecoins and Conversion Services. SM may establish and charge, in its sole discretion
+    at any time, the different minimum balance, transaction, conversion or other requirements
+    that will apply to stablecoins and related settlement assets made available in connection
+    with your Account. Stablecoins and other settlement assets made available through or in
+    connection with your Account may have different fees, limitations, timing, conversion
+    mechanics, custody arrangements, and operational requirements.
+
+   In connection with an Entitlement Token order funded in a stablecoin, SM will convert the
+   stablecoin submitted for your order into U.S. dollars only after your order is no longer
+   revocable by you in accordance with the cancellation procedures described in the
+   applicable product disclosure supplement, at a rate of one unit of the applicable stablecoin
+   to $1.00 USD, without markup or spread. Because this conversion occurs only once your
+   order is irrevocable, SM does not expect to reverse or unwind a completed conversion in the
+   ordinary course; if SM is nonetheless required to do so, SM will return to you an amount in
+   the applicable stablecoin equal to the amount originally converted, at the same fixed rate
+   described above, and neither party will bear any fee or spread-related cost in connection
+   with that reversal.
+
+   The specific terms, restrictions, charges, expenses, and conversion mechanics applicable to
+   a particular stablecoin, product, or order type are set forth in the applicable product
+   disclosure supplement, and you should review such information carefully before placing an
+   order. SM reserves the right in its discretion to vary minimums or service features for an
+   Account based upon a variety of factors, including the overall relationship with SM, type of
+   account, legal or regulatory restrictions, operational limitations, or any other factors
+   relevant to the relationship. In addition, SM reserves the right, in its sole discretion, to set
+   earlier cutoff times for deposits, withdrawals, conversions or settlement activity than might
+   otherwise apply in the relevant market or network.
+
+25. [Reserved.]
+
+26. SM as Custodian; Election of Custody Model. You authorize SM to serve as custodian
+    and to select appropriate third parties as custodians for the Securities and Other Assets in
+    your Account and to register any Securities and Other Assets in your Account in the name
+    of SM or any nominee, including sub-custodians, or to cause the Securities and Other
+    Assets to be registered in the name of, or in the name of any nominee of, a blockchain-based
+    omnibus or segregated wallet arrangement maintained by SM or its designee. You
+    acknowledge, however, that you may elect to hold certain or all Securities and Other Assets
+    in self-custody through one or more Self-Custody Wallets linked by you to the platform and
+    approved and whitelisted by SM. If you elect SM custody, SM will establish and maintain a
+    custodial wallet or account structure for your stablecoins and tokens and will administer
+    your Account in a manner generally consistent with a traditional brokerage custody and
+    brokerage relationship, subject to the blockchain-based and tokenized nature of the assets
+    and systems involved. If, however, you elect the self-custody option and link a Self-
+                                             10
+
+                                                                                           V1.0
+   Custody Wallet to the platform, you acknowledge that you remain a brokerage customer of
+   SM, but all Securities and Other Assets held in such linked Self-Custody Wallet shall be
+   treated as held away from SM for custody purposes, and your rights and SM’s
+   responsibilities with respect to such Securities and Other Assets shall be limited
+   accordingly. You further acknowledge that the wallet or wallets you link to your Account
+   may determine whether you are set up for SM Custody, self-custody, or both, and that each
+   such wallet may be subject to whitelisting, transfer and operational requirements
+   established by SM and its affiliated transfer agent.
+
+27. Transfer Agent, Corporate Actions and Token Maintenance. In addition to the
+    Corporate Actions provision above, where Securities and Other Assets are held as Issuer
+    Sponsored Tokens, corporate actions are generally processed directly against the token in
+    accordance with the issuer's and its transfer agent's procedures, since the Issuer Sponsored
+    Token itself represents the underlying share. Where Securities and Other Assets are held as
+    Custodial Entitlement Tokens, corporate actions are processed against the underlying
+    book-entry shares held by SM, and the resulting adjustment is reflected in your Custodial
+    Entitlement Token position or Account balance by SM or its affiliated transfer agent.
+    Where Securities and Other Assets are held as Entitlement Tokens, by contrast, the
+    underlying shares are held by SM or in custody by a third-party custodian on behalf of SM,
+    and SM, or its affiliated transfer agent acting as registrar on SM's behalf, credits a specific
+    Reference Security position to you on its own books, separate from SM's proprietary
+    holdings, reconciled against the Reference Securities held by SM directly or through a
+    third-party custodian. Corporate actions with respect to Entitlement Tokens are processed
+    by the custodian in accordance with its own procedures, and any resulting adjustment to
+    your Entitlement Token position is made by SM based on information provided by the
+    custodian or its transfer agent, on a pass-through basis reflecting the economic terms of the
+    underlying corporate action. You acknowledge that timing differences may exist between
+    when a corporate action is effected against the underlying shares and when a corresponding
+    adjustment is reflected in your Custodial Entitlement Token or Entitlement Token position,
+    and SM shall have no liability for such timing differences to the extent they result from the
+    transfer agent's, custodian's, or issuer's processing timeline.
+
+28. Forks, Airdrops, Token Migrations and Network Events. With respect to tokenized
+    securities, stablecoins, and other blockchain-based Securities and Other Assets, if the
+    relevant blockchain network, protocol, token, or smart contract is subject to a fork, airdrop,
+    token migration, protocol change, validator event, or similar event, SM may, in its sole
+    discretion, determine whether and how to support, claim, process, allocate, disregard, or
+    make available any resulting asset, entitlement, right, or functionality. SM may support one
+    or more resulting networks or assets, decline to support any resulting network or asset,
+    suspend Services in whole or in part while assessing or implementing changes, or attempt
+    to deliver a resulting asset or right to you, in each case subject to Applicable Law and
+    additional fees, procedures, or operational requirements. Unless SM expressly agrees
+    otherwise in writing, SM shall have no obligation to pursue, support, credit, deliver, or
+    make available any such asset, right, or functionality, and shall not be liable for any loss of
+    value arising from its good faith decisions regarding such events.
+
+29. Risk Disclosures Regarding Tokenized Securities, Stablecoins and Blockchain-Based
+    Systems. You acknowledge and agree that transactions in tokenized securities, stablecoins,
+                                              11
+
+                                                                                           V1.0
+and other blockchain-based assets that may constitute Securities and Other Assets under
+this Agreement involve significant risks, in addition to the risks associated with traditional
+securities transactions. Without limiting the generality of the foregoing, you acknowledge
+and agree that: (a) tokenized securities and stablecoins may be volatile and may lose all or
+substantially all of their value, potentially in a very short period of time; (b) blockchain
+networks, wallet software, smart contracts, validators, bridges, and related systems may
+contain defects, be subject to hacks, cyberattacks, manipulation, congestion, forks,
+airdrops, protocol changes, outages, delays, and other disruptions, any of which may affect
+the availability, transferability, settlement, functionality, or value of such tokenized
+securities, stablecoins, and other blockchain-based assets; (c) blockchain transactions may
+be irreversible, and if tokenized securities, stablecoins, or other blockchain-based assets are
+sent to an incorrect, unauthorized, or unintended address, recovery may be impossible; (d)
+laws, regulations, and regulatory interpretations relating to tokenized securities,
+stablecoins, blockchain networks, and digital asset activities are evolving and may
+materially affect the legality, characterization, transferability, value, custody, or treatment
+of such assets (including, where applicable, their status as Securities and Other Assets), or
+SM’s ability to provide Services; (e) tokenized securities, stablecoins, and other
+blockchain-based assets held in any self-custodied wallets (including the Self-Custody
+Wallet) are held away from SM, are not in the custody or control of SM, and are subject to
+the risks of loss, theft, compromise, destruction, inaccessibility, or misuse of private keys,
+seed phrases, credentials, devices, and third-party wallet software or infrastructure; (f)
+certain blockchain-based assets or rights arising from forks, airdrops, token migrations,
+protocol changes, or similar events may not be supported by SM, and SM shall have no
+obligation to support, claim, credit, deliver, or make available any such asset or right unless
+SM expressly agrees otherwise; (g) the value or functionality of tokenized securities or
+stablecoins may depend on technology, intermediaries, service providers, market
+participants, or liquidity that may cease to exist or operate as expected; and (h)
+technological difficulties experienced by SM, its affiliates, transfer agents, custodians,
+liquidity providers, or third-party service providers may delay or prevent access to, transfer
+of, or settlement in tokenized securities, stablecoins, or other blockchain-based assets
+constituting Securities and Other Assets.
+
+   a. You further acknowledge and agree that stablecoins and other non-security crypto
+      assets may not be protected by SIPC, and that certain tokenized securities may not
+      be treated as "securities" for all purposes under SIPA.
+   b. You further acknowledge and understand the following distinctions among the
+      token types that may be held in your Account:
+
+               (i) Issuer Sponsored Tokens ("ISTs") are actual shares of the Issuer in
+               digital form. As registered securities held at a SIPC member, ISTs are
+               expected to be treated as customer securities positions for purposes of SIPC
+               coverage, subject to SIPC's rules, coverage limits, and eligibility
+               requirements.
+
+               (ii) Custodial Entitlement Tokens represent traditional book-entry shares
+               held by SM on your behalf. The underlying shares will be restricted from
+               trading or transfer while the Convertible Entitlement Token is outstanding,
+               and will become freely tradable or transferable once the token is burned.
+                                          12
+
+                                                                                       V1.0
+                 Because SM holds an underlying share specifically referable to your
+                 Custodial Entitlement Token position, such positions are expected to be
+                 treated as customer securities positions for purposes of SIPC coverage,
+                 subject to SIPC's rules, coverage limits, and eligibility requirements.
+
+                 Funds you submit in connection with a Custodial Entitlement Token order,
+                 net of any applicable fees charged pursuant to Section 35 (Fees and
+                 Charges), are used solely to fund the corresponding purchase of the
+                 underlying share held for your benefit, at a price matched to the then-current
+                 net asset value or market price, as applicable, and are not available to SM for
+                 general corporate or working-capital purposes prior to that purchase.
+                 Applicable fees are deducted from the funds you submit prior to that
+                 purchase and are retained by SM as compensation for its services, and SM
+                 may use such fees for its general corporate or working-capital purposes
+                 upon deduction. SM does not use shares held for the benefit of Custodial
+                 Entitlement Token holders to fund proprietary trading activity unrelated to
+                 those holders' positions.
+
+                 (iii) Entitlement Tokens represent a security entitlement to the underlying
+                 Reference Security. SM, or its affiliated transfer agent acting as registrar on
+                 SM's behalf, credits a specific position to you on its own books, separate
+                 from SM's proprietary holdings, and reconciled against the Reference
+                 Securities held by SM directly or through a third-party custodian. Because
+                 SM (or its affiliated transfer agent) credits a position specifically referable
+                 to your Entitlement Token, such positions are expected to be treated as
+                 customer securities positions for purposes of SIPC coverage, subject to
+                 SIPC's rules, coverage limits, and eligibility requirements.
+
+          Funds you submit in connection with an Entitlement Token order, net of any
+          applicable fees charged pursuant to Section 35 (Fees and Charges), are used solely
+          to fund the corresponding purchase of the Reference Security executed to fulfill
+          your order, at a price matched to the then-current net asset value and are not
+          available to SM for general corporate or working-capital purposes prior to that
+          purchase. Applicable fees are deducted from the funds you submit prior to that
+          purchase and are retained by SM as compensation for its services, and SM may use
+          such fees for its general corporate or working-capital purposes upon deduction. SM
+          does not use Reference Securities held to fulfill Entitlement Token orders to fund
+          separate proprietary trading activity unrelated to outstanding Entitlement Token
+          orders.
+
+30. You acknowledge that transferring Digital Asset Securities to be used as collateral
+    may put you at risk for liquidations by the protocol holding the collateral based on
+    their terms of service. SM cannot be held liable for any losses that arise from
+    collateral liquidations. Because tokenized securities and certain other Securities and
+    Other Assets in your Account may have no continuous public market, values reflected
+    on your Account statement may not represent achievable market value and may be
+    based on issuer-reported, third-party, or model-derived valuations that are
+    periodically updated rather than continuously priced. You acknowledge that the
+                                           13
+
+                                                                                        V1.0
+   resale value of such Securities and Other Assets, if realizable at all, may be
+   substantially lower than the value shown on your Account statement, and that SM
+   does not verify, and makes no representation regarding the accuracy of, such
+   valuations.
+
+31. Deposits to Assure Performance. If at any time SM considers it necessary or appropriate
+    for its protection, it may, in its discretion, require you to deposit stablecoins or other
+    collateral acceptable to SM in your Account to assure due performance by you of your open
+    contractual commitments.
+
+32. Debit Balances. SM may charge you interest on debit balances in your Account in
+    accordance with SM’s established rules and policies, as disclosed to you. In this
+    Agreement, “Debit Balances” means Account balances representing money owed to SM.
+    You agree to satisfy, promptly upon demand, any indebtedness, to pay any Debit Balance in
+    your Account, and to satisfy all other outstanding obligations relating to your Account.
+
+33. Provisions in the Event of Failure to Pay or Deliver. Whenever you do not, on or before
+    the settlement date, pay in full the cost of any security purchased, or deliver in full any
+    security(ies) sold, for your Account, SM is authorized, subject to Applicable Law, to sell
+    any or all Securities and Other Assets which SM may hold for you (either individually or
+    jointly with others), or to buy in any or all Securities and Other Assets required to make
+    delivery for your Account, or to cancel any or all outstanding orders or commitments for
+    your Account.
+
+34. No Free Riding. You will at all times comply with all applicable rules regarding free riding
+    (i.e., paying for the purchase of securities with the proceeds of their subsequent sale) and
+    will not violate Regulation T of the Federal Reserve Board. Failure to do so will result in,
+    among other things, your Account being restricted or closed.
+
+35. Fees and Charges. You understand that SM may charge commissions and other fees for
+    execution of transactions to purchase and sell Securities and Other Assets, and you hereby
+    agree to pay such commissions and fees at SM’s then prevailing rates. You also understand
+    that such commission and fee rates may be changed from time to time without notice to
+    you, and you agree to be bound thereby.
+
+36. “Long” Sales; Authorization to Purchase or Borrow Securities. You agree that, in
+    giving orders to sell in your Account, all such orders must be for securities owned by you
+    and intended to be delivered by you, and all such orders will be designated as “long” at that
+    time by you. By placing the order, you affirm that you own the security and will deliver it
+    on or before the settlement date. SM does not offer or permit short sales in your Account.
+    The designation of a sale order as “long” shall constitute, among other things, a
+    representation on your part that you own the security, and if the security is not in SM’s
+    possession at the time of the contract for sale, you agree to deliver it to SM by the settlement
+    date. If SM effects a sale of any security at your direction and is unable to make delivery to
+    the purchaser because of your failure to supply such security, then SM is authorized to
+    purchase or borrow any such security necessary to make delivery thereof. In that event, you
+    will be responsible for any Losses which SM may sustain thereby and any premiums which
+
+                                              14
+
+                                                                                            V1.0
+   it may be required to pay, and for any Losses which SM may sustain because of its inability
+   to purchase or borrow the security sold.
+
+37. Transfer of Excess Funds. You hereby authorize SM to transfer excess funds from your
+    accounts to any of your other Accounts for any reason, including to satisfy obligations
+    relating to your Account, to the extent permitted by Applicable Law.
+
+38. Satisfaction of Indebtedness; Termination. You may terminate this Agreement at any
+    time by written notice to SM at 78 SW 7th St, Ste 500, Miami FL 33130 or by email at
+    investorsupport@securitize.io. You agree to satisfy, on demand, any indebtedness, and to
+    pay any debit balance remaining when your Account is closed, either partially or totally.
+    Your Account may not be closed without SM first receiving all Securities and Other Assets
+    for which your Account is short and all funds to pay in full for all Securities and Other
+    Assets in which your Account is long. SM may at any time, with or without notice to you,
+    terminate your Account or any of its features or change their nature, composition or
+    availability. Termination of the Account or any feature will be effective immediately or at a
+    later time if so specified by SM, except that the relevant parts of this Agreement will remain
+    in effect with respect to all transactions then outstanding.
+
+39. Costs of Collection. In the event that SM employs counsel or a collection agency to collect
+    any debit balance which you owe, you agree to pay the reasonable costs of collection,
+    including but not limited to attorneys’ fees, court costs and expenses incurred by SM in
+    connection with its efforts to collect monies owed to it.
+
+40. Voting of Proxies for Securities in Your Account. SM may, in accordance with
+    Applicable Law, vote proxies for securities we hold as your nominee where SM has not
+    received voting instructions from you on a timely basis. You agree that SM will not be
+    responsible or liable for failing or refraining to vote any proxies where SM has not received
+    proxies or related shareholder communications on a timely basis.
+
+41. Waiver, Assignment and Modification. You agree that SM may change the terms of this
+    Agreement by giving you notice of the new terms. You agree that you and your Account
+    will be bound by the changes through any subsequent use of your Account, or if you do not
+    close your Account, within fifteen (15) calendar days of being notified of the changes.
+    Except as specifically permitted in this Agreement, no provision of this Agreement will be
+    deemed waived, altered, modified or amended unless agreed to in writing by SM. SM’s
+    failure to insist on strict compliance with this Agreement or any other course of conduct on
+    our part will not be deemed a waiver of SM’s rights under this Agreement. You may not
+    assign this Agreement to any third party without the written consent of SM. Any
+    assignment in violation of this Agreement shall be void. SM may assign any of its rights
+    and obligations in this Agreement to its affiliates and successors without giving you notice.
+
+42. Governing Law. This Agreement shall be deemed to have been made in the State of New
+    York and shall be construed, and the rights and liabilities of the parties determined, in
+    accordance with the laws of the State of New York without giving effect to the choice of
+    law or conflict of laws provisions thereof but giving effect to the 2022 UCC Emerging
+    Technology Amendments as adopted by the State of New York, whether or not in effect.
+
+                                             15
+
+                                                                                          V1.0
+43. Restrictions on Trading. You understand that SM may, in its sole discretion, prohibit or
+    restrict trading of Securities and Other Assets or substitution of Securities and Other Assets
+    in your Account.
+
+44. Binding upon Customer’s Estate. If you are a natural person, you agree that your estate
+    shall promptly notify SM in writing of your death and your guardian shall promptly notify
+    SM in writing upon your incompetence. You hereby agree that this Agreement and all the
+    terms thereof shall be binding upon your heirs, executors, administrators, guardians,
+    personal representatives and permitted assigns.
+
+45. Age and Employment Affiliations. You represent that you are of the age of majority. You
+    also represent that you are not (a) an employee of, or affiliated with any national securities
+    exchange or FINRA, another member firm of a national securities exchange or FINRA, or a
+    bank, trust company or insurance company, or (b) a director, 10% beneficial shareholder,
+    policy-making officer, or otherwise an affiliate (as that term is defined in Rule 144 under
+    the Securities Act of 1933) of a publicly traded company, unless you have notified SM to
+    that effect, and that you will promptly notify SM if you become so employed or affiliated.
+
+46. Severability, Non-Waiver. If any provision of this Agreement is held to be invalid, void or
+    unenforceable by reason of any law, rule, administrative order or judicial decision, that
+    determination shall not affect the validity of the remaining provisions of this Agreement.
+
+47. Entire Understanding. This Agreement together with any other agreements you and we
+    enter into, as amended or supplemented from time to time, relating to your Account or to
+    particular products or services, any procedures established by SM with respect to the use of
+    your Account and terms contained on statements and confirmations sent to you by or on
+    behalf of SM contain the entire understanding between you and SM concerning the subject
+    matter of this Agreement. This Agreement is in addition to (and in no way limits or
+    restricts) any of the provisions of or the rights which you or any of your affiliates may have
+    under any other agreements between you or any of your affiliates and SM.
+
+   Shareholder Communications. Under SEC Rule 14b-1(c), SM is required to disclose to
+   an issuer, upon request, the name, address and security positions of customers who are
+   beneficial owners of that issuer’s securities unless the customer specifically objects to
+   such disclosure. Therefore, if you object to SM’s disclosing to an issuer, upon request,
+   your name, address and security positions to those companies of which you are a
+   beneficial owner please contact SM at investorsupport@securitize.io. If you do not
+   contact SM to object to SM’s disclosing to an issuer, upon request, your name, address
+   and security positions to those companies of which you are a beneficial owner then you
+   do not need to do anything.
+
+48. Joint Account (Applicable to Joint Accounts Only).
+       a. You agree that each of you has the authority on behalf of this Account to buy, sell
+           and otherwise deal in Securities and Other Assets; to receive for the Account
+           confirmations, statements and other communications of every kind; to receive and
+           dispose of for the Account Securities and Other Assets; to make for the Account
+           agreements relating to these matters and to terminate or modify them or waive any
+           of the provisions thereof; and generally to deal with SM as if each of you alone were
+                                             16
+
+                                                                                          V1.0
+            the owner of the Account, all without notice to the other joint Account owner(s).
+            Your liability for the Account shall be joint and several.
+       b.   You agree that SM may follow the instructions of any of you concerning this
+            Account and make deliveries to any of you of any or all Securities and Other Assets
+            in your Account, and make payments to any of you of any or all monies in the
+            Account, as any of you may order or direct, even if such deliveries and payments
+            shall be made to one of you personally, and not for the Account. SM shall be under
+            no obligation to inquire into the purpose of any such demand for delivery of
+            Securities and Other Assets or payment and shall not be bound to see to the
+            application of disposition of the Securities and Other Assets and monies so
+            delivered or paid to any of you.
+       c.   In the event of the death of any of you, the survivor(s) shall immediately give SM
+            written notice thereof, and SM may, before or after receiving such notice, take such
+            action, require such documents, retain such portion or restrict transactions in the
+            Account as it may deem necessary or appropriate to protect itself against any tax,
+            liability, penalty or loss under any present or future laws or otherwise. The estate of
+            any of you who shall have died shall be liable and each survivor will be liable,
+            jointly and severally, to SM for any debt or loss in this Account resulting from the
+            completion of transactions initiated prior to SM’s receipt of a written notice of such
+            death or incurred in the liquidation of the Account or the adjustment of the interests
+            of the respective parties.
+       d.   Any taxes or other expenses becoming a lien against or payable out of the Account
+            as the result of the death of any of you, or through the exercise by the estate or
+            representatives of any rights in the Account shall be chargeable against the interest
+            of the survivor(s) as well as against the interest of the estate of the decedent. This
+            provision shall not release the decedent’s estate from any liability provided for in
+            this Agreement.
+       e.   State laws regulating joint tenancy, community property and tenancy by the
+            entireties vary.
+       f.   Designation of Tenancy. Laws governing joint ownership of property vary from
+            state to state. You understand that you are responsible for verifying that the joint
+            registration you select is valid in your state. If there is more than one accountholder,
+            your obligations and ownership under this Agreement shall be as selected by you
+            during onboarding, whether by electronic selection on the platform or other means
+            made available by SM,: Joint Tenants with Rights of Survivorship; Tenants in
+            Common; or Tenants by the Entirety, on the same terms reflected in the account
+            opening documentation.
+
+49. Bankruptcy or Attachment. You agree to promptly notify SM in writing in the event of
+    your bankruptcy or insolvency, and if you are not a natural person, of your reorganization,
+    dissolution, termination or similar condition. If your Account is a joint account with two or
+    more owners, each person indicated in the title to the Account who executes this Agreement
+    (including by electronic acceptance as described above) (each, a “Joint Owner”), agrees to
+    give SM written notice in the event of bankruptcy, insolvency, reorganization, dissolution
+    or similar condition of any other Joint Owner. In the event that: (a) SM is advised of your
+    involuntary application for protection under the applicable bankruptcy laws or the
+    appointment of a receiver for you or otherwise is informed of your insolvency,
+    reorganization, dissolution or similar condition or (b) SM is served with any lien, levy,
+                                              17
+
+                                                                                            V1.0
+   garnishment or similar process with respect to you or your Account, then SM may, but is
+   not required to, immediately take any action which SM in its sole discretion may believe
+   necessary or appropriate for its own protection, including without limitation, selling out
+   any positions in your Account to satisfy any obligations you have to SM, without regard to
+   any tax or other consequences of such action to you, with or without notice to you and
+   without liability therefor.
+
+50. LIMITED LIABILITY. SM SHALL NOT BE LIABLE IN CONNECTION WITH THE
+    ENTERING, EXECUTION, HANDLING, SELLING OR PURCHASING OF
+    SECURITIES AND OTHER ASSETS OR TAKING ANY OTHER ACTION FOR YOUR
+    ACCOUNTS, EXCEPT FOR GROSS NEGLIGENCE OR WILLFUL MISCONDUCT
+    ON ITS PART. SM’S LIABILITY IN ANY SUCH EVENT SHALL BE LIMITED TO
+    ACTUAL DAMAGES PROVEN WITH REASONABLE CERTAINTY, RESULTING
+    SOLELY AND DIRECTLY FROM SUCH GROSS NEGLIGENCE OR WILLFUL
+    MISCONDUCT, THAT ARE PROVEN TO HAVE BEEN WITHIN THE
+    CONTEMPLATION OF THE PARTIES AS OF THE DATE OF EXECUTION OF THIS
+    AGREEMENT. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING,
+    SM SHALL NOT BE LIABLE FOR ANY INDIRECT, SPECIAL, INCIDENTAL OR
+    CONSEQUENTIAL DAMAGES OR OTHER LOSSES (REGARDLESS OF WHETHER
+    SUCH DAMAGES OR LOSSES WERE REASONABLY FORESEEABLE). WITHOUT
+    LIMITING THE FOREGOING, SM SHALL NOT BE LIABLE FOR LOSSES ARISING
+    FROM BLOCKCHAIN NETWORK FAILURES, SMART CONTRACT FAILURES,
+    HACKS, FORKS, AIRDROPS, TRANSFER AGENT ACTIONS, WHITELISTING
+    FAILURES, OR THE LOSS, COMPROMISE OR MISUSE OF PRIVATE KEYS OR
+    CREDENTIALS WITH RESPECT TO ANY SELF-CUSTODIED WALLETS
+    (INCLUDING THE SELF-CUSTODY WALLET), EXCEPT TO THE EXTENT
+    CAUSED BY SM’S GROSS NEGLIGENCE OR WILLFUL MISCONDUCT.
+
+51. Indemnity. SM shall not be liable for and you agree to reimburse, indemnify and hold SM
+    and each of its directors, officers and employees and any person controlling or controlled
+    by SM harmless from Losses that result from: (a) you or your agent’s misrepresentation, act
+    or omission or alleged misrepresentation, act or omission, (b) SM’s following your or your
+    agent’s directions or failing to follow your or their unlawful or unreasonable directions, (c)
+    any of your actions or the actions of your previous advisers or custodian, and (d) the failure
+    by any person not controlled by SM to perform any obligations to you.
+
+52. Force Majeure. SM shall not be liable for losses caused directly or indirectly by
+    government restrictions, exchange or market rulings, suspension of trading, war, acts of
+    terrorism, strikes, failures of the mails or other communications systems, mechanical or
+    electronic failure, failure of third parties to follow instructions, for other causes commonly
+    known as “acts of God,” or for any other cause not reasonably within SM’s control, whether
+    or not such cause was reasonably foreseeable. SM shall not be liable for losses caused by
+    general market conditions that were not directly related to SM’s violation of this
+    Agreement. For the avoidance of doubt, failures or disruptions of blockchain networks,
+    validators, smart contracts, wallet infrastructure or digital asset service providers not
+    controlled by SM shall be deemed causes not reasonably within SM’s control.
+
+
+                                             18
+
+                                                                                          V1.0
+53. Monitoring. You acknowledge and agree that SM may monitor and record telephone and
+    any other communications between SM and you that occur over any network, including
+    telephone, cable and wireless networks and the Internet, and SM may use the resulting
+    information for internal purposes or as may be required by Applicable Law. Any such
+    monitoring and recording will be carried out consistent with SM’s privacy policy.
+54. Headings. The heading of each provision of this Agreement is for descriptive purposes
+    only and shall not be deemed to modify or qualify any of the rights or obligations set forth
+    in each such provision.
+
+55. Counterparts. This Agreement may be executed in any number of counterparts by you,
+    each of which will constitute an original, and all of which, when taken together, shall
+    constitute one and the same instrument.
+
+56. SIPC. SM is a member of the Securities Investor Protection Corporation (“SIPC”). SIPC
+    protects certain securities and cash in your Account up to applicable statutory limits.
+    Neither SIPC nor any additional coverage, if any, protects against the market risks
+    associated with investing. Securities and other assets held in your Account are not insured
+    by the Federal Deposit Insurance Corporation (“FDIC”), and all Securities and Other
+    Assets are subject to investment risks, including possible loss of the principal amount
+    invested. Positions that are held away, including Securities and Other Assets held in any
+    self-custodied wallets (including the Self-Custody Wallet) and not in the custody or control
+    of SM, are not in the custody or control of SM and are not covered by SIPC through SM.
+    The application of SIPC coverage to Issuer Sponsored Tokens, Custodial Entitlement
+    Tokens, and Entitlement Tokens differs by token type, as described in Section 29.
+    Stablecoins and other non-security crypto assets are not covered by SIPC. Neither SIPC nor
+    SM guarantees or represents the availability of SIPC coverage with respect to any specific
+    Security or Other Asset held in your Account. To obtain information on SIPC, including the
+    SIPC Brochure, go to www.sipc.org or contact SIPC directly.
+
+57. Arbitration. This Agreement contains a pre-dispute arbitration clause. By signing
+    an arbitration agreement, the parties agree as follows: For purposes of this arbitration
+    clause, your electronic acceptance of this Agreement as described above, including by
+    clicking "I Agree" or a substantially similar affirmative action, constitutes your signature
+    to this arbitration agreement and evidences your specific awareness of, and agreement to,
+    this clause.
+        a. All parties to this agreement are giving up the right to sue each other in court,
+             including the right to a trial by jury, except as provided by the rules of the
+             arbitration forum in which a claim is filed.
+        b. Arbitration awards are generally final and binding; a party’s ability to have a
+             court reverse or modify an arbitration award is very limited.
+        c. The ability of the parties to obtain documents, witness statements and other
+             discovery is generally more limited in arbitration than in court proceedings.
+        d. The arbitrators do not have to explain the reason(s) for their award, unless, in
+             an eligible case, a joint request for an explained decision has been submitted
+             by all parties to the panel at least twenty (20) days prior to the first scheduled
+             hearing date.
+
+                                             19
+
+                                                                                         V1.0
+    e. The panel of arbitrators will typically include a minority of arbitrators who
+       were or are affiliated with the securities industry.
+    f. The rules of some arbitration forums may impose time limits for bringing a
+       claim in arbitration. In some cases, a claim that is ineligible for arbitration
+       may be brought in court.
+    g. The rules of the arbitration forum in which the claim is filed, and any
+       amendments thereto, shall be incorporated into this agreement.
+
+Subject to the preceding disclosures, you agree that any and all controversies which
+may arise between you and SM concerning your Accounts, any transaction or the
+construction, performance or breach of this or any other agreement between you and
+SM, whether entered into prior, on or subsequent to the date hereof, shall be
+determined by arbitration. Any arbitration under this Agreement shall be
+determined before FINRA Dispute Resolution, Inc. (“FINRA-DR”) or an exchange
+of which SM is a member in accordance with the rules of that particular regulatory
+agency then in effect. You may elect in the first instance whether arbitration shall be
+by FINRA-DR or a specific national securities exchange of which SM is a member,
+but if you fail to make such election by registered letter or telegram to SM at its main
+office within five days after you receive a written request from SM that you make
+such election, then SM shall make the election as to the arbitration forum which will
+have jurisdiction over the dispute. Judgment upon arbitration awards may be
+entered in any court, state or federal, having jurisdiction.
+
+No person shall bring a putative or certified class action to arbitration, seek to
+enforce any pre-dispute arbitration agreement against any person who has initiated
+in court a putative class action; or who is a member of a putative class who has not
+opted out of the class with respect to any claims encompassed by the putative class
+action until: (i) the class certification is denied; or (ii) the class is decertified; or (iii)
+you are excluded from the class by the court. Such forbearance to enforce an
+agreement to arbitrate shall not constitute a waiver of any rights under this
+agreement except to the extent stated herein.
+
+
+
+
+                                          20
+
+                                                                                        V1.0
+

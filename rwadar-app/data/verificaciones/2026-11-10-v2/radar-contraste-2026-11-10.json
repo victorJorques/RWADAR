@@ -1,0 +1,901 @@
+{
+  "fecha": "2026-11-10",
+  "fuentes": 69,
+  "correctas": 69,
+  "bloqueos": [],
+  "contraste": [
+    {
+      "id": "addx-web",
+      "url": "https://addx.co/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "t Available with Get in touch 4.6 stars Licensed by MAS For illustrative purposes only OUR KEY ",
+        "est About Institutions Promotion Log in Sign up Invest beyond stocks and bonds Diversif"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "addx-acceso",
+      "url": "https://www.addx.co/en/inside-addx/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "y Authority of Singapore (MAS), ADDX is open to all non-U.S. accredited and institutional investors. More accessible Lower minimums and mor"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "addx-mas",
+      "url": "https://eservices.mas.gov.sg/fid/institution/detail/246926-ADDX-PTE-LTD",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "l Financial Institutions Directory Home ADDX PTE. LTD. Incorporated in Singapore Licence Type",
+        "orated in Singapore Licence Type/Status Capital Markets Services Licensee Dealing In Capital Markets Products Sec",
+        "ollective Investment Schemes Securities Recognised Market Operator Key Personnel Chief Executive Officer H"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "archax-web",
+      "url": "https://archax.com/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "ehensive digital asset platform that is regulated in the UK and EU. Find Your Region Learn About Archax Co",
+        "entity for the UK market. Visit UK site Archax Europe Our Spanish regulated entity for the EU"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "archax-permisos",
+      "url": "https://uk.archax.com/regulatory-permissions",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "Regulatory Permissions | FCA FRN 838656 | Archax Part of Archax Grou"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "archax-cnmv",
+      "url": "https://www.cnmv.es/portal/consultas/listadoentidad?id=1&tipoent=0",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        ". EDIFICIO 2. PLANTA 1ª. - 28033 MADRID ARCHAX MARKETS EUROPE, S.V., S.A. Número y fecha de registro oficial: 289",
+        ".A. Número y fecha de registro oficial: 289 - 08/08/2019 Dirección: CALLE PINAR 5, 5º - 28006 MA"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "archax-eu",
+      "url": "https://eu.archax.com/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "truments. All services are currently in pre-launch preparation. Pre-launch Multilateral Tr",
+        "stribution of securities products to EU professional and institutional clients across all EEA jurisdictions. L",
+        "ompany Contact Us Archax Europe English Register Interest CNMV AUTHORISED · MIFID II · SOCIEDAD D"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "backed-web",
+      "url": "https://backed.fi/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "- Tokenized Assets Docs Issuer Platform xStocks Ecosystem Company News Contact DeFi Da"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "xstocks-legal",
+      "url": "https://docs.xstocks.fi/docs/product-legal-overview",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "uctured financial instruments issued by Backed Assets (JE) Limited, a Jersey company registered with the J",
+        "regated accounts with no commingling. A base prospectus approved by the Liechtenstein FMA is passportable across the EEA. Iss",
+        ". Distribution Restrictions xStocks are not marketed, offered, or solicited in the United States, to U.S. Persons, or in any other prohi"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "blocksquare-web",
+      "url": "https://blocksquare.io/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "Blocksquare | Tokenization infrastructure for real estate. Products TOKENIZATION PROTOCOL Spring ",
+        "m Announcements, articles and more Docs Send Inquiry Tokenization infrastructure for real es"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "blocksquare-terms",
+      "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        " <mark style=\"background-color:yellow;\">CP\\_COMPANY</mark> Account (“Account”) or using any",
+        "nd US Office of Foreign Assets Control (OFAC) sanctions lists in all jurisdictions i",
+        "_\\_\\_\\_\\_\\_\\_\\_\\_. 14.2. CP\\_COMPANY is not a financial institution in terms of the banking regulations or "
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "centrifuge-web",
+      "url": "https://centrifuge.io/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "Centrifuge | Infrastructure for Onchain Asset Management Janus Henderson and Centrifuge launch J"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "centrifuge-terms",
+      "url": "https://centrifuge.io/terms",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "ements in respect of that jurisdiction. Neither Centrifuge nor any affiliated entity is licensed in your jurisdiction and we do not prom",
+        "r may be restricted to certain types of sophisticated, accredited or qualified investors. Signing up for any free or subscriptio"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "courtyard-web",
+      "url": "https://courtyard.io/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "Courtyard | Digital Packs, Physical Cards. Vaulted and insured. T",
+        "rtyard | Digital Packs, Physical Cards. Vaulted and insured. The thrill of the rip - "
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "courtyard-terms",
+      "url": "https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "herein as “you”, “your”, or “User”) and Courtyard Inc., a Delaware Corporation with an office at 1550 Mission Street, "
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "figure-web",
+      "url": "https://figure.com/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "Figure - Fast, Easy Online HELOC Lender Lending Markets Partnerships Abo"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "figure-open",
+      "url": "https://www.figuremarkets.com/disclosures/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "isclosures Figure Markets Cookie Policy Figure Securities, Inc. Disclosures Form CRS Relationship Summa",
+        "st Policy Exchange and ATS Trading Fees Figure Markets Ireland Terms Of Use Customer Agreement Privacy"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "figure-finra",
+      "url": "https://files.brokercheck.finra.org/firm/firm_307093.pdf",
+      "estado": "pdf",
+      "metodo": "http",
+      "capturadoEl": null,
+      "literales": [
+        " BrokerCheck Report FIGURE SECURITIES, INC. CRD# 307093 Section Title Page(s) Repor",
+        "eck Report FIGURE SECURITIES, INC. CRD# 307093 Section Title Page(s) Report Summary 1 ",
+        " and territories Is this brokerage firm currently suspended with any regulator? No This firm conducts 3 types of businesse"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "fireblocks-web",
+      "url": "https://fireblocks.com/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "Fireblocks | Digital Asset & Stablecoin Infrastructure Sign in Products Solutions Developers R"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "fireblocks-trust",
+      "url": "https://www.fireblocks.com/trustco",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "y Fireblocks’ Cutting-Edge Technology | Fireblocks Trust Company Sign in Products Solutions Deve"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "nydfs-virtual",
+      "url": "https://www.dfs.ny.gov/apps_and_licensing/virtual_currency_businesses",
+      "estado": 200,
+      "metodo": "http",
+      "capturadoEl": null,
+      "literales": [
+        " and Money Transmitter Licenses 2023-02 Fireblocks Trust Company, LLC Limited Purpose Trust Charter 2024-08 GalaxyOne Prime NY LLC Virtual "
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "franklin-benji",
+      "url": "https://digitalassets.franklintempleton.com/benji/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "lin OnChain U.S. Government Money Fund (FOBXX). Explore Benji Contracts 1 share of FO",
+        "y Fund (FOBXX). Explore Benji Contracts 1 share of FOBXX = 1 BENJI token The Fund’s transfer agent maintai"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "franklin-prospectus",
+      "url": "https://www.franklintempleton.com/forms-literature/download-preview/9001-P",
+      "estado": "pdf",
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        " FRANKLIN ONCHAIN U.S. GOVERNMENT MONEY FUND™ FRANKLIN TEMPLETON TRUST Prospectus Au",
+        "adian residents. Similarly, the Fund is not registered, and shares of the Fund have not been qualified for distribution, in any member country of the European Union (EU) or European Economic Area (EEA), a"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "inx-web",
+      "url": "https://inx.co/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "INX One Platform Trade Republic offerings Get Started Login Buy ● Sell "
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "inx-finra",
+      "url": "https://files.brokercheck.finra.org/firm/firm_162182.pdf",
+      "estado": "pdf",
+      "metodo": "http",
+      "capturadoEl": null,
+      "literales": [
+        " BrokerCheck Report INX SECURITIES, LLC CRD# 162182 Section Title Page(s) Repor",
+        "erCheck Report INX SECURITIES, LLC CRD# 162182 Section Title Page(s) Report Summary 1 ",
+        " and territories Is this brokerage firm currently suspended with any regulator? No This firm conducts 3 types of businesse"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "inx-disclosure",
+      "url": "https://inx.co/funds-availability-disclosure",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "sclaimers Funds Availability Disclosure INX SECURITIES, LLC (“INX SECURITIES”) PLATFORM FUNDS ",
+        "the INX Securities platform are held by BMO Harris Bank (“BMO”). All decisions and "
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "lofty-web",
+      "url": "https://lofty.ai/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "AI Investing App About Lofty Lofty is a fractional U.S. real estate investing platform where visitors can b"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "lofty-terms",
+      "url": "https://www.lofty.ai/terms",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "with the SEC or Any Other Agency We are not registered with the U.S. Securities and Exchange Commission as a national securities exchange or in any other capacity. You understand and acknowledge that we"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "maple-web",
+      "url": "https://maple.finance/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "liquid asset, open to global investors (non-US) Start Earning Maple Institutional - Se"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "maple-terms",
+      "url": "https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "ure or error-free basis. The Company is not registered in any capacity with any regulatory body in any jurisdiction. You understand and"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "maple-institutional",
+      "url": "https://maple.finance/earn/maple-institutional",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "Maple Institutional - Secured Lending Maple Brings Onchain "
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "midas-web",
+      "url": "https://midas.app/llms.txt",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "y and native composability across DeFi. Midas issues mTokens: permissionless, yield-bearing tokens t",
+        ") and instant liquidity. ## Products - [mTBILL](https://midas.app/mtbill): The mTBILL ",
+        "es deployed across on-chain markets. - [mF-ONE](https://midas.app/mfone): The mF-ONE t",
+        "ve Debt strategy, the same portfolio as mGLOBAL: short-duration, investment-grade asset"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "midas-mtbill",
+      "url": "https://www.mfsa.mt/wp-content/uploads/2026/07/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2026.pdf",
+      "estado": "pdf",
+      "metodo": "http",
+      "capturadoEl": null,
+      "literales": [
+        "ctus is dated 17 July 2026 and has been approved by the Liechtenstein Financial Market Authority (FMA) as competent authority under Regu",
+        "SIS CH1392624172 mHyperBTC DE000A4AQV70 mTBILL CH1371002986 mRe7ETH DE000A4AT408 mEDGE CH1423036651"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "midas-old-prospectus",
+      "url": "https://www.mfsa.mt/wp-content/uploads/2024/11/Midas-Software-GmbH-Base-Prospectus-Document-dated-17-July-2024.pdf",
+      "estado": "pdf",
+      "metodo": "http",
+      "capturadoEl": null,
+      "literales": [
+        " This Base Prospectus is dated 17 July 2024 and has been approved by the Liechtenst"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "ondo-web",
+      "url": "https://ondo.finance/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "freely transferable and usable in DeFi. Not Available in US Discover Ondo Stocks USDY The world's l",
+        "ot Available in US Discover Ondo Stocks USDY The world's leading permissionless yiel",
+        "ield. Not Available in US Discover USDY OUSG Built for institutional investors, OUSG"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "ondo-usdy-access",
+      "url": "https://docs.ondo.finance/general-access-products/usdy/eligibility",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "er State of the European Economic Area ”Professional Client” under MiFID II, Annex II, Section I; o"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "openeden-web",
+      "url": "https://openeden.com/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "urely. Regulated. World-Class. Trusted. TBILL $295.44M USDO $12.76M HYBOND $5.03M Ope"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "openeden-intro",
+      "url": "https://docs.openeden.com/tbill/introduction",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "”). The TBILL token's token issuer is a registered professional fund (“Fund”) regulated by the British Virgi"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "openeden-onboarding",
+      "url": "https://docs.openeden.com/tbill/investor-onboarding",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "nvestor Onboarding The TBILL Vault is a permissioned protocol, meaning an Investor must meet specific",
+        "t Business Act 2010 (“SIBA”) and to US “Accredited Investors” within the meaning of Rule 501(a) of R"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "paxg-web",
+      "url": "https://www.paxg.com/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "ved. For EU visitors: PAXG is currently not available to residents of the European Union. Any mention of third-party companies, ",
+        "S. national trust bank regulated by the Office of the Comptroller of the Currency. Reserves are held bankruptcy-remote an"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "paxg-nydfs",
+      "url": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1909051",
+      "estado": 200,
+      "metodo": "http",
+      "capturadoEl": null,
+      "literales": [
+        "cked Virtual Currency in New York State Paxos Trust Company LLC, an Existing DFS Licensee, is Now A",
+        "S Licensee, is Now Authorized to Offer “PAX Gold” DFS Also Authorizes Paxos to Offer “BU"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "reental-web",
+      "url": "https://reental.co/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "orma de inversión inmuebles tokenizados Proyectos Token $RNT Wealth Reental Club About Us"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "reental-faq",
+      "url": "https://www.reental.co/en/faqs",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "tate sector quickly, easily and safely. Any adult user can register and invest after passing the KYC (Know Your Custom",
+        "ited States, they are required to be an accredited investor. ‍ What is the investment process like?"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "reental-emision",
+      "url": "https://www.reental.co/en/corporate/reental-lanza-la-primera-emision-de-un-security-token-inmobiliario-en-espana-autorizado-por-la-cnmv",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "Reental launches the first real estate Security Token in Spain | Reental Projects RNT Token W",
+        "urity token in Spain, authorized by the CNMV Reental launches the first issue of a r"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "republic-web",
+      "url": "https://help.republic.com/en/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "Home | Republic Europe Help Center Skip to main content Advice",
+        "aye and 1 other 7 articles 3. Exploring investment opportunities You're all set! Learn mor"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "republic-entities",
+      "url": "https://www.finra.org/about/entities-we-regulate/funding-portals-we-regulate",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "ncoln Street, Floor 29 Boston, MA 02111 OpenDeal Portal LLC SEC File No.: 7-167 Other Name(s): Repu",
+        "02111 OpenDeal Portal LLC SEC File No.: 7-167 Other Name(s): Republic Website URL(s):",
+        " LLC SEC File No.: 7-167 Other Name(s): Republic Website URL(s): https://republic.co; ht"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "republic-finra",
+      "url": "https://files.brokercheck.finra.org/firm/firm_291387.pdf",
+      "estado": "pdf",
+      "metodo": "http",
+      "capturadoEl": null,
+      "literales": [
+        " BrokerCheck Report OPENDEAL BROKER LLC CRD# 291387 Section Title Page(s) Repor",
+        "erCheck Report OPENDEAL BROKER LLC CRD# 291387 Section Title Page(s) Report Summary 1 ",
+        " and territories Is this brokerage firm currently suspended with any regulator? No This firm conducts 5 types of businesse"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "securitize-web",
+      "url": "https://securitize.io/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "Securitize | The Leading Tokenization Platform Sec"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "securitize-finra",
+      "url": "https://files.brokercheck.finra.org/firm/firm_283256.pdf",
+      "estado": "pdf",
+      "metodo": "http",
+      "capturadoEl": null,
+      "literales": [
+        " BrokerCheck Report SECURITIZE MARKETS, LLC CRD# 283256 Section Title Page(s) Repor",
+        "eck Report SECURITIZE MARKETS, LLC CRD# 283256 Section Title Page(s) Report Summary 1 ",
+        " and territories Is this brokerage firm currently suspended with any regulator? No This firm conducts 3 types of businesse"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "spiko-web",
+      "url": "https://spiko.io/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "nder EU rules Our flagship products are UCITS approved by the French regulatory authorities. Spiko is a MiFID-authorized investment"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "spiko-access",
+      "url": "https://www.spiko.io/use-cases/web3",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "d Resolution Authority (ACPR) under no. 19183. This regulatory authorization may be v",
+        " zero transaction fees Subscribe to and redeem fund shares directly in USDC or EURC. No need for o",
+        "ent legislation by our banking partner, CACEIS Bank, a subsidiary of the Crédit Agrico"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "spiko-amf",
+      "url": "https://geco.amf-france.org/back-office/funds/compartment/c79399",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "c79399\",\"cmpAmfId\":\"FDS79399\",\"cmpNom\":\"SPIKO EU T-BILLS MONEY MARKET FUND\",\"typeDernAuto\":\"AGR\"",
+        "\",\"cmpStatutCode\":\"VIV\",\"cmpStatutLib\":\"Vivant\",\"cmpSouscrDedCode\":\"TOUS\",\"cmpSouscrDe",
+        "ouscrDedCode\":\"TOUS\",\"cmpSouscrDedLib\":\"Tous souscripteurs\",\"prdId\":\"p79397\",\"cmpClssFndAmfCode\":\""
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "superstate-web",
+      "url": "https://superstate.co/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "r global 24/7 access and DeFi use-cases FundOS Reach new investors with a platform bui"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "superstate-ustb",
+      "url": "https://superstate.com/assets/ustb",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "Superstate - USTB - Invesco Short Duration US Government Securities Fund Issuers Investors Assets About Sign In ",
+        "ent Securities Fund (the \"Fund\") offers Accredited Investors and Qualified Purchasers access to short-duration Treasury Bills",
+        "ersely affect Shareholders. The Fund is not registered as an investment company under the Investment Company Act and is"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "swarm-web",
+      "url": "https://docs.swarm.com/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "C REFERENCE Smart contracts Audits APIs KYC Select ABOUT About us Careers Terms Pri"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "swarm-terms",
+      "url": "https://docs.swarm.com/about/terms/tos",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "ship (“Swarm Markets Contract“) between Swarm Capital GmbH (“Swarm Markets“) with its current addr",
+        "ional Sale of Goods. 11.4 The courts of Berlin, Germany have exclusive jurisdiction to"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "taurus-web",
+      "url": "https://taurushq.com/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "mpromising speed or security. Regulated FINMA, DORA compliant. Scrutinized like a ban",
+        "urus SA - securities firm license), and CySEC (Taurus Europe - MiFID license), audite",
+        "xchange Commission (license no 465/26). TDX is an organized trading facility operated by Taurus SA, not a stock exchange. Please note that"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "taurus-disclosure",
+      "url": "https://www.taurushq.com/legal/taurus-sa-terms/important-risk-regulatory-disclosure/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "inancial Market Supervisory Authority (“FINMA”), Laupenstrasse 27, CH-3003 Bern, Swit",
+        "ovides financial services solely on an “execution-only” basis. Consequently, clients are infor"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "taurus-finma",
+      "url": "https://www.finma.ch/en/~/media/finma/dokumente/bewilligungstraeger/pdf/beh.pdf",
+      "estado": "pdf",
+      "metodo": "http",
+      "capturadoEl": null,
+      "literales": [
+        "and Bank 3 Sygnum Bank AG Zürich Bank 5 Taurus SA Genève Securities firm 5 Thurgauer Kantonalbank Weinfelden Ban"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "tokeny-web",
+      "url": "https://tokeny.com/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        " Finance Operating System Home Products T-REX Platform T-REX Engine Solutions Tokeniz"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "tokeny-terms",
+      "url": "https://tokeny.com/general-terms-of-service/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "he Services are intended to be provided solely to professional clients, not consumers. Having considered the characteristics "
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "tzero-web",
+      "url": "https://tzero.com/",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "ite of services, we are an SEC-licensed transfer agent, providing real-time time investor mana"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "tzero-company",
+      "url": "https://tzero.com/company",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "ative Trading System (ATS), operated by tZERO Securities, LLC, is SEC-regulated for the trading of di",
+        "gor: Registered Broker-Dealer Custodian tZERO Digital Asset Securities, LLC is authorized to custody, clear, and se"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "tzero-finra",
+      "url": "https://files.brokercheck.finra.org/firm/firm_123421.pdf",
+      "estado": "pdf",
+      "metodo": "http",
+      "capturadoEl": null,
+      "literales": [
+        " BrokerCheck Report TZERO SECURITIES, LLC CRD# 123421 Section Title Page(s) Repor",
+        "Check Report TZERO SECURITIES, LLC CRD# 123421 Section Title Page(s) Report Summary 1 ",
+        " and territories Is this brokerage firm currently suspended with any regulator? No This firm conducts 7 types of businesse"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "paxg-occ",
+      "url": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+      "estado": "la respuesta no es un PDF",
+      "metodo": "curl y pdftotext el 10/11/2026 a las 09:04 UTC; texto en radar-manual/occ-trust-by-name.txt",
+      "capturadoEl": null,
+      "ok": true,
+      "urlLeida": "https://www.occ.treas.gov/topics/charters-and-licensing/financial-institution-lists/trust-by-name.pdf",
+      "literales": [
+        "Trust Banks Active As of 9/30/2026",
+        "25379 Paxos Trust Company, National Association 71 Fifth Avenue New York NY"
+      ],
+      "manual": "En la captura con navegador del 10/11/2026 la dirección no devolvió un PDF. Con curl, a las 09:04:38 UTC, devuelve el PDF (HTTP 200, application/pdf, 97.944 bytes, SHA-256 90b526aa1814ab6bcdd584809fb8ab3592c3837f0465e1bb85689eab74fa9b1d)."
+    },
+    {
+      "id": "spiko-regafi",
+      "url": "https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211",
+      "estado": 200,
+      "metodo": "API pública de REGAFI (prd-banque-entites), leída con WebFetch el 10/11/2026 hacia las 09:07 UTC",
+      "capturadoEl": null,
+      "ok": true,
+      "urlLeida": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D751211",
+      "literales": [
+        "denomination: \"Spiko Finance\"",
+        "cib: [{\"code\": \"19183\", \"date\": \"2025-12-15\"}]",
+        "nature_autorisation: \"Agrément\"; approval_withdrawal_process: \"False\""
+      ],
+      "manual": "La página de REGAFI (https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211) carga el 10/11/2026 sin los datos de la entidad (el navegador solo recibe el menú) y el proxy corta curl a su API de entidades (09:05–09:06 UTC, cuatro intentos). Se leyó la API pública del mismo registro, de la que se alimenta la página."
+    },
+    {
+      "id": "spiko-regafi-pasaporte-es",
+      "url": "https://www.regafi.fr/pages/fiche-banque/?refine.id_referentiel=751211",
+      "estado": 200,
+      "metodo": "API pública de REGAFI (prd-banque-passeports-sortants), leída con curl el 10/11/2026 a las 09:05 UTC; copia en radar-manual/regafi-spiko-pasaporte-espagne.json (SHA-256 fdf10d2d445b2cc90fec0c31215cd065cdab7c0a325cba03fceb47d2a7de66c6)",
+      "capturadoEl": null,
+      "ok": true,
+      "urlLeida": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+      "literales": [
+        "\"type_passeport\": \"Libre prestation de services\"",
+        "\"pays\": \"ESPAGNE\", \"date_debut\": \"2026-01-08\"",
+        "\"A1\": {\"C3\": {\"date_debut\": \"2026-01-08\", \"value\": true}"
+      ],
+      "manual": "Misma página de REGAFI sin datos. Se leyó la API pública de pasaportes salientes del mismo registro."
+    },
+    {
+      "id": "spiko-cnmv-iic",
+      "url": "https://www.cnmv.es/portal/consultas/iic/iicextranjera?nif=N0401205J&lang=es",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "de vehículos de inversión extranjeros - SPIKO SICAV - Datos generales Aviso de cookies Este",
+        "al Fecha registro oficial Tipo IIC País 2380 30/01/2026 SICAV FRANCIA Datos generales Entidades",
+        "0/01/2026 SICAV FRANCIA Datos generales Entidades comercializadoras Datos generales IIC Comunitaria IIC Suj"
+      ],
+      "faltan": [],
+      "ok": true
+    },
+    {
+      "id": "spiko-cnmv-lps",
+      "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp?tipo=CLP&numero=5325&lang=es",
+      "estado": 200,
+      "metodo": "navegador",
+      "capturadoEl": null,
+      "literales": [
+        "rsión extranjeras en libre prestación - SPIKO FINANCE SASU - Datos generales Aviso de cookies Este",
+        "Registro Oficial Fecha registro oficial 5325 14/01/2026 Datos generales Sociedades gestionadas ",
+        "e servicios de inversión extranjeras en libre prestación - SPIKO FINANCE SASU - Datos generales "
+      ],
+      "faltan": [],
+      "ok": true
+    }
+  ]
+}

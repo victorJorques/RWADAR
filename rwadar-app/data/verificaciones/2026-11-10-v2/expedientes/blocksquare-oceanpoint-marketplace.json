@@ -1,0 +1,229 @@
+{
+  "slug": "blocksquare-oceanpoint-marketplace",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-europa",
+  "proveedor": "Oceanpoint (red Blocksquare)",
+  "plataformaSlug": "blocksquare",
+  "entidadComercializadora": "Blocksquare S.à r.l. (Luxemburgo), en cambio de nombre a Oceanpoint S.à r.l.; la interfaz y los términos los firma «Blocksquare»",
+  "emisor": "Blocksquare S.à r.l. emite los BSPT de cada inmueble (marco luxemburgués de 2025, según prensa; no se encontró documento de emisión público)",
+  "vehiculo": "No consta vehículo por inmueble en documentos públicos",
+  "token": "BSPT (Blocksquare Property Token), ERC-20 en Ethereum, hasta 100.000 por inmueble",
+  "derechoAdquirido": "Según la FAQ, «fractional ownership» del inmueble y derecho a repartos de alquiler; no hay documento público que lo concrete",
+  "jurisdiccion": "LU (operador) · SI (Blocksquare d.o.o., tecnología) · BE (inmuebles que se ven hoy)",
+  "identificador": null,
+  "moneda": "USDC / cripto",
+  "documentos": [
+    {
+      "titulo": "Oceanpoint · Terms of service",
+      "url": "https://oceanpoint.fi/terms",
+      "versionOFecha": "Last modified: February 16, 2022",
+      "paginas": null,
+      "sha256": "9064eb935bfa723d0088ed1e58fa528e3113819ae1a0bf19d3df60d54ffe24e1",
+      "leido": true,
+      "nota": "sha256 del texto renderizado (fuentes/blocksquare/oceanpoint-terms.render.txt)"
+    },
+    {
+      "titulo": "Oceanpoint · Protocol disclaimer",
+      "url": "https://oceanpoint.fi/disclaimer",
+      "versionOFecha": "sin fecha",
+      "paginas": null,
+      "sha256": "dc21846ff15ee3709ba0865964fc4df22d40d460a021c0e6938bd799eed3f3fe",
+      "leido": true,
+      "nota": "sha256 del texto renderizado"
+    },
+    {
+      "titulo": "Oceanpoint · FAQ",
+      "url": "https://oceanpoint.fi/faq",
+      "versionOFecha": "sin fecha",
+      "paginas": null,
+      "sha256": "62232258465e151f0ef1ebe5b9236c66681e60b74e4d9e8dc283727f6a92e89b",
+      "leido": true,
+      "nota": "sha256 del texto renderizado original; la copia en fuentes/blocksquare/ lleva nombres de personas recortados"
+    },
+    {
+      "titulo": "Oceanpoint · Stats",
+      "url": "https://oceanpoint.fi/stats",
+      "versionOFecha": "datos «Sep 2026» y foto de red del 10/11/2026 08:55 UTC",
+      "paginas": null,
+      "sha256": "6bcc4c5b07ad011aadd0fd152fef3237145150597543da00c51da605146c8138",
+      "leido": true,
+      "nota": "sha256 del texto renderizado"
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "ESMA (registro provisional MiCA de CASP)",
+      "entidad": "Blocksquare / Oceanpoint",
+      "numero": null,
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+      "alcance": "Sin coincidencias para «Blocksquare» ni «Oceanpoint».",
+      "consultadoUtc": "2026-11-10T09:12:32Z"
+    },
+    {
+      "regulador": "ESMA (registro de proveedores de financiación participativa, ECSP)",
+      "entidad": "Blocksquare / Oceanpoint",
+      "numero": null,
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_entityTypeCode:CSP&rows=400&wt=json",
+      "alcance": "Sin coincidencias (261 entidades revisadas).",
+      "consultadoUtc": "2026-11-10T09:03:56Z"
+    },
+    {
+      "regulador": "CNMV (PSFP europeos que prestan servicios en España)",
+      "entidad": "Blocksquare / Oceanpoint",
+      "numero": null,
+      "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es",
+      "alcance": "No figura entre los 48 proveedores notificados.",
+      "consultadoUtc": "2026-11-10T09:02:23Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Blocksquare",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Blocksquare",
+      "consultadoUtc": "2026-11-10T09:12:40Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Oceanpoint",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Oceanpoint",
+      "consultadoUtc": "2026-11-10T09:12:41Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "3 properties trading on Oceanpoint · $4.6M on-chain volume since 2024",
+      "dato": "3 inmuebles en el mercado de Oceanpoint (Brujas, Bélgica, entre ellos)",
+      "fuentePrimaria": "https://oceanpoint.fi/trade",
+      "localizador": "Página Trade, cabecera y tarjeta «Guesthouse Groeninghe in Bruges · 7.5% yield · Live»; la portada muestra «The Bank, Multipurpose building, Brugge · 10.0% yield · Live»",
+      "fechaDato": "2026-09",
+      "consultadoUtc": "2026-11-10T09:20:01Z",
+      "alcanceYLimites": "Las cifras de rendimiento son de portada, sin base ni documento; no se publican. El mercado (marketplace.oceanpoint.fi) pide iniciar sesión.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "entidad",
+      "literal": "Oceanpoint is a Luxembourg company (registered as Blocksquare S.à r.l., being renamed Oceanpoint S.à r.l.)",
+      "dato": "Blocksquare S.à r.l. (LU)",
+      "fuentePrimaria": "https://oceanpoint.fi/faq",
+      "localizador": "FAQ, «Who is behind Oceanpoint?»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:12:02Z",
+      "alcanceYLimites": "Ninguna página cita licencia ni supervisor.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "licencia",
+      "literal": "The Interface is a purely non-custodial application ... we owe no fiduciary duties",
+      "dato": "sin servicio regulado declarado",
+      "fuentePrimaria": "https://oceanpoint.fi/terms",
+      "localizador": "Terms of service (16/02/2022), apartado «Non-custodial»; arbitraje JAMS y renuncia a acciones colectivas",
+      "fechaDato": "2022-02-16",
+      "consultadoUtc": "2026-11-10T09:12:02Z",
+      "alcanceYLimites": "Términos de 2022 pensados para un protocolo DeFi; no hablan de valores ni de la compra de BSPT.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Buying and holding BSPTs requires an account and KYC verification on a marketplace, and some countries are not supported.",
+      "dato": null,
+      "fuentePrimaria": "https://oceanpoint.fi/faq",
+      "localizador": "FAQ, «Do I need KYC?»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:12:02Z",
+      "alcanceYLimites": "No se publica la lista de países; no se sabe si España está admitida.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Buy tokenized real estate properties from global marketplaces, starting from any amount.",
+      "dato": null,
+      "fuentePrimaria": "https://oceanpoint.fi/",
+      "localizador": "Portada, bloque «01 / TRADE»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:11:30Z",
+      "alcanceYLimites": "Frase comercial sin cifra; el precio por token solo se ve dentro del mercado.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "salida",
+      "literal": "Resell BSPTs on the marketplace, with instant swaps to stablecoins coming via the POINT liquidity pool.",
+      "dato": "reventa en el mercado con KYC; la liquidez con POINT aún no existe",
+      "fuentePrimaria": "https://oceanpoint.fi/",
+      "localizador": "Portada, «How it works», paso 04; FAQ: POINT «has not launched yet»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:11:30Z",
+      "alcanceYLimites": "64 wallets y 451 operaciones desde 2024 según Stats (dato de septiembre de 2026): mercado muy pequeño.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "custodia",
+      "literal": "you are solely responsible for the custody of the cryptographic private keys",
+      "dato": "autocustodia",
+      "fuentePrimaria": "https://oceanpoint.fi/terms",
+      "localizador": "Terms of service, «Non-custodial»",
+      "fechaDato": "2022-02-16",
+      "consultadoUtc": "2026-11-10T09:12:02Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Ninguna licencia: no está en ESMA como ECSP ni como CASP, ni notificada en la CNMV. Los términos son de un protocolo DeFi (2022)."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "3 inmuebles en mercado (datos de septiembre de 2026); 18 mercados socios en la red Blocksquare."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "Sin documento de emisión, sin lista de países, sin mínimo en público; se paga con cripto."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sin advertencias de la CNMV; sin documento de riesgos del producto."
+    }
+  },
+  "estadoOferta": "solo_reventa",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "Blocksquare (plataforma del radar)",
+      "antes": "01/11: no_admitir por falta de oferta concreta (expediente blocksquare-marketplaces-sin-oferta-concreta)",
+      "ahora": "hay oferta concreta (3 inmuebles belgas en Oceanpoint, el mercado propio de la red), pero sin licencia, sin documentos de emisión públicos y sin acceso a España confirmado",
+      "fuente": "https://oceanpoint.fi/trade",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": null,
+  "resumenTarjeta": {
+    "minimo": null,
+    "accesoEspana": "Sin confirmar: pide KYC y dice que algunos países no se admiten, sin lista",
+    "salida": "Reventa a otro usuario en su mercado; la liquidez prometida aún no existe"
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": null,
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Es la oferta concreta de la red Blocksquare (plataforma del radar): inmuebles en Brujas con tokens BSPT.",
+    "porQueNo": "Sin licencia ni supervisor, sin documento de emisión público y sin lista de países."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir. Responde al pendiente del encargo: sí hay hoy una oferta concreta de la red Blocksquare (Oceanpoint, 3 inmuebles en Brujas), pero el operador no tiene licencia ECSP, MiFID ni CASP, no publica documento de emisión ni lista de países, y sus términos (2022) son de un protocolo DeFi sin deberes hacia el inversor.",
+  "bloqueos": [
+    "El mercado (marketplace.oceanpoint.fi) exige iniciar sesión: precio por token, documentos de cada inmueble y países admitidos no son públicos.",
+    "No se revisaron los 18 mercados socios uno a uno: la red no publica su lista en abierto en las páginas consultadas."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-10T09:10:54Z",
+    "finUtc": "2026-11-10T09:23:40Z"
+  }
+}

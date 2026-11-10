@@ -1,0 +1,111 @@
+Trade
+Earn
+Operate
+Tokenize
+Learn
+Blog
+Sign in
+Get started
+
+CONTENTS
+
+Who we are
+Team
+Oceanpoint and Blocksquare
+BST ecosystem
+Contact
+
+ABOUT
+
+About Oceanpoint
+
+The liquidity engine for tokenized real estate, built by the core team of Blocksquare.
+
+Who we are
+
+Oceanpoint is the liquidity engine for tokenized real estate: owners sell a slice of a building as property tokens and keep the rest, and a buyer funded by the buildings' rent stands ready to buy. Property tokens trade on the Oceanpoint marketplace today; the liquidity engine, built around POINT, is next.
+
+Oceanpoint is a Luxembourg company, registered as Blocksquare S.à r.l. and being renamed Oceanpoint S.à r.l. It is built by the core team of Blocksquare, a real estate tokenization pioneer since 2018, as a new venture running on established rails.
+
+Team
+[nombre recortado], CEO and co-founder
+[nombre recortado], PhD, CCO and co-founder
+[nombre recortado], CTO
+[nombre recortado], COO
+[nombre recortado], CMO
+[nombre recortado], asset onboarding and risk
+[nombre recortado] and [nombre recortado], Web3 engineering
+Oceanpoint and Blocksquare
+
+Oceanpoint: the marketplace, the liquidity engine and its treasury, and the Oceanpoint dApp. app.oceanpoint.fi
+
+Blocksquare d.o.o. (Ljubljana, Slovenia): a separate, related company that develops the tokenization infrastructure and licenses it to Oceanpoint. blocksquare.io
+
+Oceanpoint and Blocksquare share founders, so they are related parties. Figures for the wider Blocksquare network, such as all properties tokenized on Blocksquare-powered marketplaces, are Blocksquare's, and this site labels them that way.
+
+BST ecosystem
+
+Oceanpoint's dApp also hosts the staking and governance pools of the Blocksquare ecosystem, built around BST, Blocksquare's protocol token:
+
+2018: BST (Blocksquare Token) deployed on Ethereum: 100,000,000 total supply.
+February 2022: the first governance pool goes live: stake BST, receive sBST.
+2022–2024: asset pools open real estate staking; liquidity pools bootstrap BST:ETH depth.
+April 2025: the Oceanpoint whitepaper ([nombre recortado]) sets out POINT, a liquidity token for tokenized real estate, rolling out in phases.
+
+sBST holders vote on proposals for these pools via Snapshot. Read the whitepaper →
+
+Contact
+
+Oceanpoint: dp@oceanpoint.fi · Blocksquare marketplace partnerships: future@blocksquare.io · Blocksquare ambassador program: ambassadors@blocksquare.io · Legal: legal@blocksquare.io
+
+Community: Discord · Telegram · X · LinkedIn · YouTube
+
+Build on Blocksquare
+
+Blocksquare licenses its tokenization infrastructure to marketplace operators.
+
+See how
+Join the community
+
+The ambassador program, run and funded by Blocksquare, grows the Oceanpoint community.
+
+Go to Advocate
+
+The liquidity engine for tokenized real estate. Tokenized properties, DeFi yields, and global accessibility, all on-chain.
+
+Tokenize your property
+PLATFORM
+Trade
+Earn
+For businesses
+Tokenize a property
+Raise a VC round
+Liquidity providers
+Protocol statistics
+BST token
+Get started
+Sign in to your account
+Marketplace
+DeFi app
+LEARN
+Learn hub
+Glossary
+Tokenized real estate vs REITs
+FAQ
+Whitepaper
+AI podcast
+Documentation
+Blog
+YouTube channel
+COMMUNITY
+Events
+Ambassador program
+Become an ambassador
+Run and funded by Blocksquare
+COMPANY
+About
+Terms of service
+Protocol disclaimer
+© 2026 Oceanpoint. All rights reserved.
+Powered by
+Blocksquare

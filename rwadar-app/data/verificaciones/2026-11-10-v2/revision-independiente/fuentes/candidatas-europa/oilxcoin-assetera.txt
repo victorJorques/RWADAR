@@ -1,0 +1,34 @@
+Fuente: https://marketplace.assetera.com/
+Consultado: 2026-11-10T09:43:46Z · HTTP 200 · 344902 bytes · sha256 80a526c1b3fcc5407035e26d1cdf85ba4d6ee2e3cc4d8556c96b242c034060e1
+Copia original en crudo/assetera-marketplace.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+Render con Playwright: crudo/assetera-marketplace.render.txt (2026-11-10T09:42:41Z).
+
+Registro del mercado OXC en el HTML servido:
+{"marketId":656,"chain":{"caip2":"eip155:1","namespace":"eip155","reference":"1","evmChainId":1},"chainLabel":"Ethereum","assetChain":{"caip2":"eip155:1","namespace":"eip155","reference":"1","evmChainId":1},"primarySaleChain":"$undefined","imageSrc":"https://stasseteraassetsprod.blob.core.windows.net/images/21/d00ead40d49ed912731b0de5bf2c35cad190857777ebf42e1b065b33b68a76b2.png","imageAlt":"","imageWidth":640,"imageHeight":640,"logoSrc":"https://stasseteraassetsprod.blob.core.windows.net/images/21/ca62603791f24a07b5a71086030312f0ae90da6d0508c11e5d6e974e6670ff8d.png","coin":"assetera","assetName":"OilXCoin","baseSymbol":"OXC","quoteSymbol":"USDC","typeLabel":"Bond","description":"OilXCoin","assetClass":"Derivatives \u0026 structured products","assetClassId":5,"sectorId":null,"accessType":"Realtime","accessTypeShort":"Realtime","accessCategory":"realtime","accessKinds":["realtime"],"issuer":{"name":"DeXentra GmbH","logoUrl":null},"permissioned":false,"market":"Primary","marketCategory":"primary","offersPrimary":true,"offersSecondary":false,"instrumentType":"tokenized-security","price":"—","priceValue":null,"priceUnit":null,"priceDisplayDecimals":null,"priceOriginal":null,"priceFx":null,"quoteFx":{"rate":"0.893147502904","from":"USDC","to":"EUR","asOf":"2026-11-09T13:15:00.000Z"},"priceSource":null,"priceObservedAt":null,"feedPrice":null,"feedCurrency":null,"feedObservedAt":null,"marketNature":"private","primarySalePrice":null,"primarySaleCurrency":null,"tradingStartAt":null,"primarySaleEndAt":null,"primaryExecutionKind":"onchain_primary_mint","primaryBuyMethodCount":1,"listingPhase":"live","listingBadge":"$undefined","buyLabel":"$undefined","hideBuy":false},
+
+Texto de la tarjeta en el render:
+OXC / USDC
+Bond
+OilXCoin
+Asset class
+Derivatives & structured products
+Access type
+Realtime
+Market
+Primary
+Last purchase price
+1.80 USDC
+24h Change
+—
+
+Cabecera del render:
+Marketplace
+589
+RWAs available
+577
+Public Market Token
+5
+Private Market Token
+7
+Portfolio
+Available to Buy/Sell

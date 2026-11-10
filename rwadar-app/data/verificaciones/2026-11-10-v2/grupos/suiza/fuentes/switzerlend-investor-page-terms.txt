@@ -1,0 +1,271 @@
+URL: https://shares.lend.ch/investor-page-terms
+
+Investor Page Terms
+[This page is available in English only.]
+Investor Page Terms
+Version 1.0 • October 30, 2026
+Preamble
+A. The company indicated in the imprint of the website (the "Company") has
+issued part of its shares as ledger-based securities ("Share Tokens"). The
+Share Tokens are governed by the registration agreement as published on the website of the
+Company (the "Website") and as amended from time to time (the "Registration Agreement").
+B. The Share Tokens can be locked in other smart contracts, for example for the purpose of
+bridging them to another blockchain or to technically enforce a shareholder agreement. In such
+cases, for each locked Share Token, a placeholder token ("Wrapped Token") is
+generated, allowing the holder to indirectly control the underlying Share Token. Wrapped
+Tokens can be bound to additional agreements as published on the Website and as amended from
+time to time ("Token Agreements", such as token holder agreements). When
+Wrapped Tokens are offered or traded, the acquirer implicitly agrees with all applicable Token
+Agreements as well as the Registration Agreement.
+C. The Website includes a page dedicated to shareholder relations (the "Investor Page"), typically available under a subdomain like shares.domain.com, where domain.com refers to
+the main page of the Company. Through the Investor Page, the Company informs about the issued
+securities and allows Share Token holders to register themselves as shareholders. It further
+can, without being obliged to, offer its own shares publicly or privately for sale ("Direct Investment") or enable the free trading of shares between interested parties ("Secondary Trading"). The functionality of the Investor Page is governed by the present Investor Page Terms
+(the "Terms").
+1 Scope
+These Terms apply to all persons that interact with the Investor Page (each a "User"). The User acknowledges and agrees that the Registration Agreement and the Token Agreements
+apply to the respective tokens.
+2 Shareholder Registration
+The Investor Page offers functionality for Users to register themselves as shareholders. Users
+agree to provide truthful information and to keep their information up to date. See also
+section 8 "Personal Data" for how the Company handles personal data.
+3 Direct Investment
+The Company may offer its own shares for sale, or offer to repurchase outstanding shares,
+determined at the sole discretion of the Company ("Primary Offer"). The
+offered shares can be in the form of Share Tokens or Wrapped Tokens ("Offered Tokens"). Primary Offers are non-binding until they are settled. The Company is free to return any
+bank transfers made by the Users instead of delivering shares in its sole discretion at any
+time and for any reason. The Company is also free to selectively make Primary Offers to some
+Users but not to others and to adjust the offered prices ("Primary Price")
+over time at its sole discretion, as long as it respects the rule of equal treatment of
+shareholders. All Primary Offers are settled directly between the User and the Company,
+without intermediary.
+3.1 Payment Terms
+For purchase transactions, the User shall pay the Primary Price as per the selected payment
+methods. The Company may change the available payment methods or refuse payments or certain
+payment methods in its sole discretion. Transaction fees and conversion fees are borne by the
+User. The Primary Price paid by the User and effectively received by Company in CHF might
+differ and the number of Offered Tokens to be allocated shall be based on the amount actually
+received.
+In case of oversubscription or rounding down, the excessive amount that cannot be allocated
+shall be paid back to the User by Company, provided such difference exceeds thirty (30) Swiss
+francs (CHF). All the cost and expenses of the repayment are borne by the User.
+Only payments from eligible persons as set out on the Website and herein will be accepted by
+Company. Company, in its sole discretion, may refuse to accept any person as User and may
+request further information, e.g., for KYC purposes, at any time from a potential or existing
+User.
+In case the Company declines a purchase after the User has transferred funds, the Company
+shall refund the User on first request to an account indicated by the User.
+3.2 Token Delivery
+The User is required to provide an address that is compatible with the relevant blockchain,
+such as Ethereum or a supported Layer 2 network, of which the User is the beneficial owner
+(the "Recipient Address") for the delivery of the Offered Tokens. It is the
+User's sole responsibility to ensure that a correct address is provided and that the address
+is valid on the relevant blockchain.
+Subject to (i) the User meeting all participation criteria as determined by the Company, (ii)
+the successful completion of the Company's onboarding process, (iii) availability of the
+Offered Tokens, (iv) the receipt of the Primary Price, (v) the User providing a Recipient
+Address, and (vi) the acceptance by the Company of the User's offer to purchase the Offered
+Token, the Company shall deliver the Offered Tokens to the Recipient Address.
+4 Secondary Trading
+At its sole discretion, the Company may enable and disable the possibility to trade Share
+Tokens or Wrapped Tokens ("Traded Tokens"), using blockchain-based smart
+contracts to settle trades between buyers and sellers without counterparty risk ("Trade Contracts"). The Trade Contracts are provided ‘as is’ and ‘as available’ in the spirit of a public
+utility for shareholders of the Company and the User acknowledges and agrees that the
+Company has only very limited control over the Trade Contracts. The Investor Page merely
+visualizes the information available on the blockchain and proposes transactions which the
+User then can independently communicate to the blockchain via its own wallet software. The
+Company can only suspend trading and cancel stale trades. The applicable fees are shown on
+the Investor Page. At no point has the Company any power of disposal over the Traded Tokens
+or the settlement currency. It also cannot override the price limits electronically signed
+by the Users. Neither being a shareholder nor performing individual trades constitutes
+financial intermediation or an ongoing business relationship between the User and the
+Company. If the Company requires identity verification for Secondary Trading, the User must
+complete it before placing orders. Secondary Trades are settled in supported
+cryptocurrencies only. Bank transfers are not available for Secondary Trading.
+4.1 Order Matching and Price Determination
+When entering an order, the User electronically signs structured data that includes an
+amount, a limit price, and an expiration date ("Signed Constraints").
+Unexpired and funded orders are partially or fully executed as soon as there is a matching
+order on the other side that results in the bid-ask-spread being crossed after taking fees
+into account (if any) ("Secondary Trade"). Applicable fees are borne by the
+seller. If the cross exceeds what is necessary to cover the fees, the settlement price is
+chosen for the benefit of the more recent order. In case of multiple concurrent orders, the
+outcome of submitting an order can deviate from what was indicated on the Investor Page.
+Matching Signed Constraints are automatically routed to Trade Contracts for execution. The
+Trade Contracts are programmed such that they cannot allow a violation of the Signed
+Constraints.
+The Users of the Trade Contracts are free to conclude purchase and sale agreements
+bilaterally outside of the Investor Page relating to the terms of the Secondary Trade, such
+as representations and warranties relating to the Traded Tokens. Unless expressly stated
+otherwise by the trading parties, the seller excludes all representations or warranties in
+relation to the Traded Tokens.
+4.2 Settlement and Delivery
+Secondary Trades are settled in one atomic transaction, ensuring that the Traded Tokens
+cannot be delivered without a payment and vice versa, eliminating the counterparty risk. The
+Traded Tokens and the settlement currency are withdrawn from one party and delivered to the
+other party within the same atomic transaction, to the respective address from which the
+order was signed. It is the responsibility of the User to ensure that they are using a
+wallet that supports the Traded Tokens as well as the settlement currency.
+4.3 Fees
+To cover its costs relating to the operation of the Investor Page and the setup and
+maintenance of the Trade Contracts, the Company may charge a fee on Secondary Trades. The
+fees are displayed on the Investor Page and directly subtracted from the settlement
+currency. For purposes of accounting, the fees are deemed to be paid by the seller.
+4.4 Risk disclaimers
+The Trade Contracts execute any Secondary Trades automatically based on the publicly
+available software code in accordance with its programmatic logic. Neither the Company nor
+any third party has the ability to reverse any Secondary Trades or otherwise impact the
+execution of the Secondary Trades in any way. The User acknowledges and agrees that it uses
+the Trade Contracts fully at its own risk without any liability or recourse whatsoever
+against the Company or any third party. Any claims against the counterparty of a Secondary
+Trade are the User’s sole responsibility and the User acknowledges and agrees that, beyond a
+blockchain address, there may be no information relating to the counterparty available.
+The description of the functionality of the Trade Contracts in these Terms and on the
+Investor Page describes the intended functionality. However, the Trade Contracts may have
+known and/or unknown bugs, vulnerabilities or other malfunctions and may not work as
+described.
+The Company is under no obligation to inform any Users of specific risks relating to
+individual Secondary Trades, including but not limited to high gas fees, mispricing or other
+potential errors or malfunctions.
+The User further acknowledges that the technical functionality of the blockchain is such
+that frontrunning and other interventions by malicious actors may occur.
+Neither the Company nor the Trade Contracts are subject to any regulatory approval or
+supervision relating to any trades conducted through the Trade Contracts and the Users are
+not protected by the financial market conduct rules applicable to the trading on supervised
+venues.
+5 Company Representations & Warranties
+The Company does not make any representations and warranties and all representations shall be
+fully excluded to the greatest extent permitted under applicable law. The User confirms that
+he/she has not relied upon any representation or warranty, express or implied, pertaining to
+the Share Tokens, the Wrapped Tokens, the Secondary Trades and/or the Company.
+The Company provides the Investor Page "as is" without any warranty for its accuracy and often
+without human verification. The content is compiled using not only information entered by the
+Company, but also sources such as the public trade registry, public blockchains, Users (as
+governed by the separate privacy policy), market data providers, and others.
+6 User Representations & Warranties
+The User represents and warrants as of the date of its acceptance of these Terms that:
+The User only enters data that is truthful to his or her best knowledge, keeps his or her
+personal records up to date, and promptly reports discovered inaccuracies or errors on the
+Investor Page to the Company, regardless of whether the inaccuracies or errors concern the
+User’s, the Company’s, or anyone else's data.
+The User is in full compliance with the eligibility criteria set out on the Website and
+these Terms.
+The User purchases or sells the Offered Tokens and/or Traded Tokens for its own account and
+is not acting on behalf of any third party as agent, nominee or in any other capacity;
+The User is the sole beneficial owner of the Recipient Address as well as the funds used to
+pay the Primary Price including all assets credited on Company's account;
+The User has carefully read, reviewed and fully understood these Terms including all
+referenced documents as well as the disclaimers on the Website and is not relying upon any
+representation, warranty, confirmations, promises or agreements except as set out in these
+Terms;
+The User recognizes that an investment in the Share Tokens involves substantial risk and can
+lead to the complete loss of the Primary Price;
+The User has not taken any action nor will it take any action in any country or jurisdiction
+that would constitute a public offering of any Share Tokens or require the registration of
+any other offering material, nor will it distribute this offering or any other offering
+material in any country or jurisdiction where action for that purpose is required;
+Neither the User, nor any affiliates nor any person acting on its behalf (1) has offered or
+sold, or will offer or sell, indirectly or directly, any Share Tokens and/or distributed
+these Terms or any materials to any US citizen (whether or not he/she lives in the United
+States of America), to any US person pursuant to the Section 902(k)(1) of the U.S.
+Securities Act of 1933 (the "Securities Act") ( i.e. any natural person resident in the
+United States of America, any partnership or corporation organized or incorporated under the
+laws of the United States of America, any estate of which any executor or administrator is a
+US person, any trust of which any trustee is a US person, any agency or branch of a foreign
+entity located in the United States of America, any non-discretionary account or similar
+account (other than an estate or trust) held by a dealer or other fiduciary for the benefit
+or account of a US person, any discretionary account or similar account (other than an
+estate or trust) held by a dealer or other fiduciary organized, incorporated, or (if an
+individual) resident in the United States of America, any partnership or corporation if
+organized or incorporated under the laws of any foreign jurisdiction and formed by a US
+person principally for the purpose of investing in securities not registered under the Act,
+unless it is organized or incorporated, and owned, by accredited investors (as defined in
+Rule 501(a) of the Securities Act) who are not natural persons, estates or trusts) nor to
+any persons acting on a non-discretionary basis for US person or US citizen, in each case in
+a manner that would require any such shares to be registered under the Securities Act, (2)
+has engaged or will engage in any directed selling efforts (as that term is defined in
+Regulation S) with respect to any Share Tokens, or (3) has engaged or will engage in any
+form of general solicitation or general advertising (as that term is used in Rule 502(c)
+under the Securities Act) in connection with any offer or sale of any Share Tokens or in any
+manner involving a public offering in the United States of America;
+The User is not subject and is not a resident of a jurisdiction that is subject to economic
+sanctions or trade embargoes imposed by (1) Switzerland, (2) the United Nations Security
+Council, (3) the European Union or any member state of the European Union, (4) U.S.
+authorities, in particular OFAC and the U.S. Department of State, (5) the country of
+residence of the User, or (6) other economic sanctions or trade embargos issued by another
+authority having jurisdiction over the User or his/her/its assets;
+The User has had the opportunity to be advised by legal professionals or attorneys in
+relation to these Terms and confirms that it has fully understood the legal implications of
+all the clauses contained in these Terms.
+7 Taxes
+The User is solely responsible to determine what, if any, taxes apply to the transactions,
+including, for example, withholding and income taxes. The User takes note that securities
+dealers (legal entities owning more than 10 million Swiss francs worth of securities) owe a
+0.15% stamp duty when making use of the Secondary Trading. It is also the User's sole
+responsibility to withhold, collect, report and remit the correct taxes to the appropriate tax
+authorities.
+8 Personal Data
+The User acknowledges and agrees that the Share Tokens and/or Wrapped Tokens are issued on a
+public blockchain that is pseudonymous, not anonymous, in nature, meaning that any person that
+can associate the User's Recipient Address with the User can publicly view all token holdings,
+including Share Tokens and Wrapped Tokens associated with that Recipient Address, including
+the full history. By using the Investor Page, the User acknowledges and agrees that the
+Company processes personal data for the purpose of maintaining and administrating shareholder
+registries. The Company is legally obliged to collect, process and retain all information
+required for the shareholder registry in accordance with applicable laws and regulations. In
+particular, Swiss law requires shareholder data to be retained for 10 years even after the
+person ceased to be a shareholder.
+The Company may use third party services to manage shareholder data. In particular, the
+Company can use the shareholder management tools provided by Aktionariat to store and maintain
+all data governed by these Terms. Users can manage their data through the Website or also
+through the Aktionariat Portfolio App. The User agrees to his registration data being
+synchronized with other issuers that manage their shareholder (or more generally token holder)
+registry for the purpose of keeping data consistent across issuers. The User further agrees to
+be automatically registered as a token holder with the respective issuer when receiving tokens
+from issuers that manage their token holder registry with Aktionariat.
+Further information on how Aktionariat processes personal data, including details on data
+categories, purposes, legal bases, and data subject rights, can be found in Aktionariat’s
+Privacy Policy (
+aktionariat.com/privacy-policy
+). Note that Aktionariat is not party to these Terms and only bound to the Aktionariat
+Privacy Policy when handling shareholder data.
+9 Investor Eligibility and Risks
+Please read this important information carefully before taking any decision involving
+investment activity.
+9.1 Offer only valid for persons in Switzerland and the EEA
+The public offer to purchase the shares from the Company (Direct Investment) is exclusively
+addressed to persons domiciled or resident in Switzerland or the EEA. Persons from other
+countries are expressly excluded and it is prohibited to distribute this offer in any way in
+such countries. The offer for persons from the EEA is limited to a total of €100,000.
+9.2 No guarantee for future forecasts
+The Website may contain statements and forecasts relating to the future development of the
+Company and its business areas. These forecasts represent estimates that the Company has made
+on the basis of all the information available to it at the present time. Should the
+assumptions underlying the forecasts fail to materialize or risks materialize, actual
+developments and results may differ from current expectations.
+9.3 No investment advice or recommendation
+The Website contains general information on the offer. This information is not a substitute
+for financial advice based on the individual circumstances and knowledge of the investor. Each
+person is responsible for consulting suitable experts in order to assess the suitability of
+the offer and the associated risks for his or her own financial situation as well as the tax
+consequences of an investment.
+9.4 Risks
+An investment in shares is associated with various risks and a loss of up to the entire
+capital invested may occur.
+10 Miscellaneous
+Notices. All notices to either party shall be in writing (incl. by email).
+No assignment: Neither the User nor the Company may assign any of its rights, obligations
+or claims under these Terms.
+Severability. If any term of these Terms or its application in any circumstance
+is held invalid or unenforceable, the invalidity or unenforceability will not affect any other terms
+of these Terms which can be given effect without the invalid or unenforceable term nor the applicability
+of that term in any other circumstance.
+Governing Law and Jurisdiction. These Terms shall in all respects be governed by,
+and construed in accordance with, the substantive laws of Switzerland, to the exclusion of conflict
+of law principles and the UN Convention on the international sale of goods (CISG). Any dispute arising
+out of or in connection with these Terms shall exclusively be referred to the courts competent at
+the seat of the Company, Switzerland.
+en
+de-ch
+fr
+it

@@ -1,0 +1,105 @@
+URL: https://shares.bossinfo.com/trade
+Renderizado (Chromium): 2026-11-10T09:04:43Z
+
+English
+Sign In
+Home
+Secondary Trading
+Boss Info AG Shares BOSS
+CHF 8.4
+1W
+1M
+6M
+1Y
+All
+6 CHF
+8 CHF
+10 CHF
+12 CHF
+Spread
+13.10%
+24h Vol
+CHF 0
+Market Cap
+CHF 89'367'004
+Bid/Ask
+7.30 / 8.40
+Order Book
+Price (ZCHF)	Amount (BOSS)	Total (ZCHF)
+
+
+
+
+8.40	103	865.2
+Spread: 1.10 (13.10%)
+
+
+7.30	1'000	7'300
+
+
+6.51	1'500	9'765
+DIRECT FROM ISSUER
+Buy BOSS at 8.502 CHF · bank transfer or crypto
+Buy directly
+All Trades
+Date / Time	Type	Price	Amount	Total
+
+
+5 Nov 2026 / 13:35	Secondary Trade	8.40 ZCHF	1 BOSS	8.4 ZCHF
+
+
+28 Sep 2026 / 11:32	Secondary Trade	6.70 ZCHF	474 BOSS	3'175.8 ZCHF
+
+
+28 Sep 2026 / 11:32	Secondary Trade	6.75 ZCHF	2 BOSS	13.5 ZCHF
+
+
+28 Sep 2026 / 11:11	Secondary Trade	6.80 ZCHF	1'000 BOSS	6'800 ZCHF
+
+
+28 Sep 2026 / 11:11	Secondary Trade	6.81 ZCHF	1 BOSS	6.81 ZCHF
+
+
+28 Sep 2026 / 11:11	Secondary Trade	6.90 ZCHF	518 BOSS	3'574.2 ZCHF
+
+
+28 Sep 2026 / 11:11	Secondary Trade	6.91 ZCHF	2 BOSS	13.82 ZCHF
+
+
+29 Aug 2026 / 17:58	Secondary Trade	8.44 ZCHF	100 BOSS	844 ZCHF
+
+
+18 Aug 2026 / 06:42	Secondary Trade	8.20 ZCHF	850 BOSS	6'970 ZCHF
+
+
+7 Aug 2026 / 13:39	Secondary Trade	6.90 ZCHF	482 BOSS	3'325.8 ZCHF
+Page 1 of 32
+1
+2
+3
+4
+5
+…
+32
+Buy
+Sell
+Number of Shares
+BOSS
+Limit Price
+ZCHF
+Order Summary
+1 BOSS
+Matched instantly
+8.4 ZCHF
+Fee (0%):
+0.00 ZCHF
+Total Value:
+8.40 ZCHF
+Register to Access Secondary Trading
+Boss Info AG
+Terms of Use: This page is hosted by Boss Info using technology licensed from Aktionariat. Some content is automatically compiled from other sources than Boss Info and provided "AS IS" without further verification. These sources include the public trade registry, website users, and the Ethereum blockchain and related systems. Boss Info assumes no responsibility for the accuracy of any of this data. All shareholder registration data is stored and processed in Switzerland by Aktionariat, which maintains the shareholder registry for Boss Info. Shareholder registration data must by retained for ten years by law. Relevant shareholder registration data such as the current name and address is automatically synchronized with other issuers that use Aktionariat to maintain their shareholder registry.
+Direct Investment: The website may offer the possibility to directly buy securities issued by Boss Info. Such offers constitute a primary offering by the issuer and are governed by the Financial Services Act in Switzerland, or equivalent laws for visitors of other countries. Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus in order to continue the offering.
+Secondary Trading: The website may offer the possibility to openly trade securities issued by Boss Info using blockchain-based smart contracts to settle trades between buyers and sellers without counterparty risk. As the operator of this website, Boss Info may charge a fee on trades. Neither being a shareholder nor performing individual trades constitute an ongoing business relationship between the shareholder and the operator under the AML act. The secondary trading facilitated herein is considered a non-commercial trading facility operated by Boss Info under the Financial Market Infrastructure Act and is therefore not subject to prudential supervision. As a consequence, buyers and sellers are not protected by the financial market conduct rules applicable to the trading on supervised venues.
+©2026 Boss Info (site content) and Aktionariat (site template). All rights reserved.
+Terms of Service
+Privacy Policy

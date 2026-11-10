@@ -1,0 +1,163 @@
+                                                                                                                                                           Starting date of specific
+      Name of Market              Name of DLT Market       Type of DLT Market                                                                                                             Ending date of                                                                                Any lower thresholds set by NCAs in accordance wih Article 3(6) of
+                                                                                        Jurisdiction          National Competent Authority                 permission under DLTR                                List of exemptions granted under DLTR (Regulation (EU) 2022/858)
+  Infrastructure Operator           Infrastructure           Infrastructure                                                                                                             specific permission                                                                                             DLTR (Regulation (EU) 2022/858)
+                                                                                                                                                         (Regulation (EU) 2022/858)
+
+                                                                                                                                                                                                              Exemptions from Regulation (EU) No 909/2014 (CSDR):
+                                                                                                                                                                                                              Article 6 on measures to prevent settlement fails;
+                                                                                                                                                                                                              Article 7 on measures to address settlement fails;
+CSD Prague (Centrální                                                                                                                                                                                         Article 35 on communication procedures with participants and other
+depozitář cenných papírů,   DLT Register               DLT Settlement System      Czech Republic       Czech National Bank                            11 October 2024                  n/a                    market                                                                   n/a
+a.s.)                                                                                                                                                                                                         infrastructures;
+                                                                                                                                                                                                              Article 38 on the segregation of assets;
+                                                                                                                                                                                                              Article 39 on settlement finality;
+                                                                                                                                                                                                              Article 40 on cash settlement.
+
+
+                                                                                                                                                                                                              Exemptions from Directive 2014/65/EU (MiFID II):
+                                                                                                                                                                                                              Article 53(3) and Article 19(2) on access to an MTF
+
+                                                                                                                                                                                                              Exemptions from Regulation (EU) No 909/2014 (CSDR):
+                                                                                                                                                                                                              Article 2(1) point 4 on 'dematerilalised form'
+                                                                                                                                                                                                              Article 2(1) point 9 on 'transfer order'
+                                                                                                                                                                                                              Artcile 2(1) point 19 on 'participant'
+                                                                                                                                                                                                              Article 2(1) point 28 on 'securities account'
+                                                                                                                                                                                                              Article 3 on 'book-entry form'
+                                                                                                                                                                                                              Article 6 on 'measures to prevent settlement fails'
+                                                                                                                                                                                                              Article 7 on 'measures to address settlement fails'
+21X AG                      21X DLT-TSS                DLT Trading & Settlement   Germany              Federal Financial Supervisory Authority (BaFin) 3 December 2024                 n/a                                                                                             n/a
+                                                                                                                                                                                                              Article 33 on 'requirements for participation'
+                                                       System
+                                                                                                                                                                                                              Article 34 on 'transparency'
+                                                                                                                                                                                                              Article 35 on 'communication procedures with participants and other
+                                                                                                                                                                                                              market infrastructures'
+                                                                                                                                                                                                              Article 37 on "integrity of the issue'
+                                                                                                                                                                                                              Article 38 on 'account segregation'
+                                                                                                                                                                                                              Article 39 on 'settlement finality'
+                                                                                                                                                                                                              Article 40 on 'cash settlement'
+                                                                                                                                                                                                              Article 50 on 'standard link access'
+                                                                                                                                                                                                              Article 51 on 'customised link access'
+                                                                                                                                                                                                              Article 53 on 'access between a CSD and another market infrastructure'
+
+
+                                                       DLT Multilateral Trading
+360X AG                     360X DLT MTF                                          Germany              Federal Financial Supervisory Authority (BaFin) 29 April 2025                   n/a                    n/a                                                                      n/a
+                                                       Facility
+
+
+                                                                                                                                                                                                              Exemptions from Regulation (EU) No 909/2014 (CSDR):
+                                                                                                                                                                                                              Article 2(1) point 4 on 'dematerilalised form'
+                                                                                                                                                                                                              Article 2(1) point 9 on 'transfer order'
+                                                                                                                                                                                                              Article 2(1) point 28 on 'securities account'
+                                                                                                                                                                                                              Article 3 on 'book-entry form'
+                                                                                                                                                                                                              Article 6 on 'measures to prevent settlement fails'
+                                                                                                                                                                                                              Article 7 on 'measures to address settlement fails'
+                                                                                                                                                                                                              Article 35 on 'communication procedures with participants and other
+UAB Axiology DLT            Axiology DLT TSS           DLT Trading & Settlement   Lithuania            Lietuvos bankas (Bank of Lithuania)            9 July 2025                      n/a                                                                                             n/a
+                                                                                                                                                                                                              market infrastructures'
+                                                       System
+                                                                                                                                                                                                              Article 37 on 'integrity of the issue'
+                                                                                                                                                                                                              Article 38 on 'account segregation'
+                                                                                                                                                                                                              Article 39 on 'settlement finality'
+                                                                                                                                                                                                              Article 40 on 'cash settlement'
+                                                                                                                                                                                                              Article 50 on 'standard link access'
+                                                                                                                                                                                                              Article 51 on 'customised link access'
+                                                                                                                                                                                                              Article 53 on 'access between a CSD and another market infrastructure'
+                                                                                                                                                                       Exemptions from Directive 2014/65/EU (MiFID II):            Article
+                                                                                                                                                                       53(3) and Article 19(2) on 'access to an MTF'
+
+                                                                                                                                                                       Exemptions from Regulation (EU) No 600/2014 (MiFIR) :
+                                                                                                                                                                       Article 26 on 'transaction reporting'
+
+                                                                                                                                                                       Exemptions from Regulation (EU) No 909/2014 (CSDR):
+                                                                                                                                                                       Article 2(1) point 4 on 'dematerilalised form'
+                                                                                                                                                                       Article 2(1) point 9 on 'transfer order'
+                                                                                                                                                                       Artcile 2(1) point 19 on 'participant'
+                                                                                                                                                                       Article 2(1) point 28 on 'securities account'
+                                                                                                                                                                       Article 3 on 'book-entry form'
+                                                          DLT Trading & Settlement             Autorité de Contrôle Prudentiel et de
+LISE SA                       LISE DLT TSS                                           France                                                  13 October 2025     n/a   Article 6 on 'measures to prevent settlement fails'                      n/a
+                                                          System                               Résolution (ACPR)
+                                                                                                                                                                       Article 7 on 'measures to address settlement fails'
+                                                                                                                                                                       Article 33 on 'requirements for participation'
+                                                                                                                                                                       Article 34 on 'transparency'
+                                                                                                                                                                       Article 35 on 'communication procedures with participants and other
+                                                                                                                                                                       market infrastructures'
+                                                                                                                                                                       Article 37 on "integrity of the issue'
+                                                                                                                                                                       Article 38 on 'account segregation'
+                                                                                                                                                                       Article 39 on 'settlement finality'
+                                                                                                                                                                       Article 40 on 'cash settlement'
+                                                                                                                                                                       Article 50 on 'standard link access'
+                                                                                                                                                                       Article 51 on 'customised link access'
+                                                                                                                                                                       Article 53 on 'access between a CSD and another market infrastructure'
+
+                                                                                                                                                                       Exemptions from Directive 2014/65/EU (MiFID II):            Article
+                                                                                                                                                                       53(3) and Article 19(2) on 'access to an MTF'
+
+                                                                                                                                                                       Exemptions from Regulation (EU) No 909/2014 (CSDR):
+                                                                                                                                                                       Article 2(1) point 4 on 'dematerilalised form'
+                                                                                                                                                                       Article 2(1) point 9 on 'transfer order'
+                                                                                                                                                                       Artcile 2(1) point 19 on 'participant'
+                                                                                                                                                                       Article 2(1) point 28 on 'securities account'
+                                                                                                                                                                       Article 3 on 'book-entry form'
+                                                                                                                                                                       Article 6 on 'measures to prevent settlement fails'
+Securitize Europe Brokerage                               DLT Trading & Settlement             Comisión Nacional del Mercado de Valores                                Article 7 on 'measures to address settlement fails'
+                              Securitize Europe DLT TSS                              Spain                                                   26 November 2025    n/a                                                                            n/a
+and Markets SV SA                                         System                               (CNMV)                                                                  Article 33 on 'requirements for participation'
+                                                                                                                                                                       Article 34 on 'transparency'
+                                                                                                                                                                       Article 35 on 'communication procedures with participants and other
+                                                                                                                                                                       market infrastructures'
+                                                                                                                                                                       Article 37 on "integrity of the issue'
+                                                                                                                                                                       Article 38 on 'account segregation'
+                                                                                                                                                                       Article 39 on 'settlement finality'
+                                                                                                                                                                       Article 40 on 'cash settlement'
+                                                                                                                                                                       Article 50 on 'standard link access'
+                                                                                                                                                                       Article 51 on 'customised link access'
+                                                                                                                                                                       Article 53 on 'access between a CSD and another market infrastructure'
+
+
+
+                                                                                                                                                                       Exemptions from Directive 2014/65/EU (MiFID II): n/a
+
+                                                                                                                                                                       Exemptions from Regulation (EU) No 909/2014 (CSDR):
+                                                                                                                                                                       Article 2(1) No 4 on 'dematerilalised form'
+                                                                                                                                                                       Article 2(1) No 9 on 'transfer order'
+                                                                                                                                                                       Article 2(1) No 28 on 'securities account'
+                                                                                                                                                                       Article 3 on 'book-entry form'
+Baden-Württembergische                                    DLT Trading & Settlement
+                              Seturion                                               Germany   Federal Financial Supervisory Authority (BaFin) 16 October 2026   n/a   Article 6 on 'measures to prevent settlement fails'                      n/a
+Wertpapierbörse GmbH                                      System
+                                                                                                                                                                       Article 7 on 'measures to address settlement fails'
+                                                                                                                                                                       Article 33 on 'requirements for participation'
+                                                                                                                                                                       Article 35 on 'communication procedures with participants and other
+                                                                                                                                                                       market infrastructures'
+                                                                                                                                                                       Article 39 on 'settlement finality'
+                                                                                                                                                                       Article 40 on 'cash settlement' (re the additional use of EMTs)
+                                                                                                                                                                       Article 50 on 'standard link access'
+                                                                                                                                                                       Article 51 on 'customised link access'
+                                                                                                                                                                       Article 53 on 'access between a CSD and another market infrastructure'
+                                                                                                                                                      Exemptions from Directive 2014/65/EU (MiFID II):            Article
+                                                                                                                                                      53(3) and Article 19(2) on 'access to an MTF'
+
+                                                                                                                                                      Exemptions from Regulation (EU) No 909/2014 (CSDR):
+                                                                                                                                                      Article 2(1) point 4 on 'dematerilalised form'
+                                                                                                                                                      Article 2(1) point 9 on 'transfer order'
+                                                                                                                                                      Artcile 2(1) point 19 on 'participant'
+                                                                                                                                                      Article 2(1) point 28 on 'securities account'
+                                                                                                                                                      Article 3 on 'book-entry form'
+                                                                                                                                                      Article 6 on 'measures to prevent settlement fails'
+BIT2ME SECURITY TOKENS                          DLT Trading & Settlement           Comisión Nacional del Mercado de Valores                           Article 7 on 'measures to address settlement fails'
+                           Bit2Me STX DLT TSS                              Spain                                              27 October 2026   n/a                                                                            n/a
+EXCHANGE STX, A.V., S.A.                        System                             (CNMV)                                                             Article 33 on 'requirements for participation'
+                                                                                                                                                      Article 34 on 'transparency'
+                                                                                                                                                      Article 35 on 'communication procedures with participants and other
+                                                                                                                                                      market infrastructures'
+                                                                                                                                                      Article 37 on "integrity of the issue'
+                                                                                                                                                      Article 38 on 'account segregation'
+                                                                                                                                                      Article 39 on 'settlement finality'
+                                                                                                                                                      Article 40 on 'cash settlement'
+                                                                                                                                                      Article 50 on 'standard link access'
+                                                                                                                                                      Article 51 on 'customised link access'
+                                                                                                                                                      Article 53 on 'access between a CSD and another market infrastructure'
+

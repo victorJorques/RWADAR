@@ -1,0 +1,8 @@
+Fuente: https://www.profitus.com/bonds
+Consultado: 2026-11-10T09:35:58Z · HTTP 200 · 299344 bytes · sha256 623ddf7da1161429639dce6a548735d394d93677166d032648db5c36e0e2f88d
+Copia original en crudo/profitus-bonds.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+Interest rates range from 6% to 13%, depending on the emissions risk category
+We partner with Axiology, a capital markets technology provider, to distribute bonds.
+12–60 months
+Fees charged by the issuance registration partner (Axiology)

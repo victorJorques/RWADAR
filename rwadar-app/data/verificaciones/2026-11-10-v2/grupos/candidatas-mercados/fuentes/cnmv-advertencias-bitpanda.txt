@@ -1,0 +1,10 @@
+URL: https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es
+Busqueda: Bitpanda
+ConsultadoUtc: 2026-11-10T09:12:52Z
+
+Listado de entidades advertidas
+
+Criterios de consulta: por tipo No autorizadas, de nombre Bitpanda.
+
+No hay datos disponibles.
+

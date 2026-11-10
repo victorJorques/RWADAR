@@ -1,0 +1,270 @@
+{
+ "revisor": "independiente · lente producto real hoy",
+ "asunto": "alta alan-frei-company",
+ "fecha": "2026-11-10",
+ "consultas": [
+  {
+   "url": "https://shares.alanfrei.com/api/brokerbotsettings?ticker=AFS",
+   "archivo": "crudo/brokerbotsettings.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:47:46Z",
+   "bytes": 1389,
+   "sha256": "1e3f589636f4f84e8f7a03f4e3681f71d98060adccefd5058cffc57884d32c34"
+  },
+  {
+   "url": "https://shares.alanfrei.com/api/secondarymarketsettings?ticker=AFS",
+   "archivo": "crudo/secondarymarketsettings.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:47:47Z",
+   "bytes": 477,
+   "sha256": "a76c624a629170789f661d86a76e16baa3d9d6927c98c8d7ed93f955ab21fd9f"
+  },
+  {
+   "url": "https://shares.alanfrei.com/investor-page-terms",
+   "archivo": "crudo/investor-page-terms.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:47:47Z",
+   "bytes": 26190,
+   "sha256": "efd5860fd906a1952c8da6e89d0849cc64d509974aefe8218c973c7b7eb458a6"
+  },
+  {
+   "url": "https://alanfrei.com/investor",
+   "archivo": "crudo/alanfrei-investor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:47:47Z",
+   "bytes": 274484,
+   "sha256": "d9a5427b4689849ea487c046de7664ff15f8e59947b544952892e51ec14846b9"
+  },
+  {
+   "url": "https://shares.alanfrei.com/",
+   "archivo": "crudo/portal-portada.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:47:48Z",
+   "bytes": 92891,
+   "sha256": "f06d3ee2c4a5e4dff3439127c0ba01c6ff91b6bbc62114d4b35d90e3f4c2e349"
+  },
+  {
+   "url": "https://www.alanfrei.com/investor/registration",
+   "archivo": "crudo/alanfrei-investor-registration.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:48:09Z",
+   "bytes": 521562,
+   "sha256": "df76bb8bf82550b5c6ffb73c1d664ff7cdc7e47186d2bcf79afcaa1bf234437a"
+  },
+  {
+   "url": "https://hub.aktionariat.com/documents/terms/20241205_Widget_Terms_EN_V002.pdf",
+   "archivo": "crudo/widget-terms-v002.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:48:10Z",
+   "bytes": 83613,
+   "sha256": "925c4d4abb40f50e7539daa9db95d508b04441029eebfbb39b49eb9b1551d38f"
+  },
+  {
+   "url": "https://www.alanfrei.com/s/Registration-Agreement-Alan-Frei-Company-AG-Final.pdf",
+   "archivo": "crudo/registration-agreement.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:48:10Z",
+   "bytes": 180362,
+   "sha256": "f046305cdc370f4b2566704036944297c86f08d7d4dbd562344f8d2970e53772"
+  },
+  {
+   "url": "https://www.alanfrei.com/s/Token-Shareholder-Agreement-Alan-Frei-Company-AG.pdf",
+   "archivo": "crudo/token-shareholder-agreement.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:48:11Z",
+   "bytes": 131040,
+   "sha256": "9b8b77209c5079ac3d5bf70f844b1d5a4768fb0029bfd91598aa16e9848405d2"
+  },
+  {
+   "url": "https://hub.aktionariat.com/documents/terms/InsiderTradingRules.pdf",
+   "archivo": "crudo/insider-trading-rules.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:48:11Z",
+   "bytes": 76340,
+   "sha256": "6896ac2cb9b3942da8243b15d8f69e879b295a2bbb8938bbded8366406aded7b"
+  },
+  {
+   "url": "https://www.alanfrei.com/sitemap.xml",
+   "archivo": "crudo/alanfrei-sitemap.xml",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:53:29Z",
+   "bytes": 89581,
+   "sha256": "08135fc269b0adb4b5f5b2032736e17cdd773bb976e40036eeada64fcfb6093e"
+  },
+  {
+   "url": "https://shares.alanfrei.com/api/secondarymarkets/getOrderBook",
+   "metodo": "POST",
+   "cuerpo": "{\"company\":4183}",
+   "archivo": "crudo/getOrderBook.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:54:05Z",
+   "bytes": 253,
+   "sha256": "eeafb9b3bc9e4f0491feb3cb5b526069c3dff7f75d5b7c4b40dc3b8bf1e9f99b"
+  },
+  {
+   "url": "https://shares.alanfrei.com/api/secondarymarkets/getTrades",
+   "metodo": "POST",
+   "cuerpo": "{\"company\":4183}",
+   "archivo": "crudo/getTrades.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:54:05Z",
+   "bytes": 6113,
+   "sha256": "96b494ab2c92b9793f40eff86fe1ce3eedb548d671b5f7b058f1469d62d319fc"
+  },
+  {
+   "url": "https://shares.alanfrei.com/api/secondarymarkets/getTrades",
+   "metodo": "POST",
+   "cuerpo": "{company:4183,skip:0,limit:1000}",
+   "archivo": "crudo/getTrades-todas.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:54:26Z",
+   "bytes": 277598,
+   "sha256": "25032a1775c715a729e4c9d87f3afde1fcc5ff8d7cee79d40dffdb97adf853fe"
+  },
+  {
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2023-7053",
+   "archivo": "crudo/boe-ley-6-2023.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:57:01Z",
+   "bytes": 1317091,
+   "sha256": "adc0b15defc742391b47f5e9b6f874441b8aa4c2f3a6cb8557a81320fcea4f6d"
+  },
+  {
+   "url": "https://shares.alanfrei.com/_app/immutable/chunks/nEoMmxWB.js",
+   "archivo": "crudo/portal-js-nEoMmxWB.js",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:58:28Z",
+   "bytes": 3771,
+   "sha256": "8161b7f2721d2fa9ca640d06df04f263eef55dc0bf68554bce76a37c687d1223"
+  },
+  {
+   "url": "https://shares.alanfrei.com/_app/immutable/chunks/MODrHaug.js",
+   "archivo": "crudo/portal-js-MODrHaug.js",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:58:28Z",
+   "bytes": 75424,
+   "sha256": "49d3862a241d28e17cd21ffd4354570062d00ca9ec7594feefd246304d4bce1c"
+  },
+  {
+   "url": "https://shares.alanfrei.com/_app/immutable/chunks/Dfhn0ikI.js",
+   "archivo": "crudo/portal-js-Dfhn0ikI.js",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:58:29Z",
+   "bytes": 87662,
+   "sha256": "c5e2091cbac1228d5bc1616ebe3460523790c0cc638d69ac43a1dd6dae5a02fc"
+  },
+  {
+   "url": "https://shares.alanfrei.com/_app/immutable/nodes/11.CVgCYbey.js",
+   "archivo": "crudo/portal-js-node11.js",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:58:29Z",
+   "bytes": 44213,
+   "sha256": "56172534c5457d87050aef1e1a89af32ac3a4bc0ccb25e5cd7e0be675a2410dc"
+  },
+  {
+   "url": "https://shares.alanfrei.com/",
+   "archivo": "render-portal-portada.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:48:35Z",
+   "bytes": 4588,
+   "sha256": "742982f8debc03b5933924de95ac439aa0e63371da53a524e00a1810e4d5be91",
+   "nota": "Chromium renderizado (texto + captura .png)"
+  },
+  {
+   "url": "https://shares.alanfrei.com/invest",
+   "archivo": "render-portal-invest.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:48:48Z",
+   "bytes": 2742,
+   "sha256": "0cda7316fd3027c2cd5d8bf0b403c421cd852ec01c4ddcb52266d4076e3d232e",
+   "nota": "Chromium renderizado: solo «Buy»"
+  },
+  {
+   "url": "https://shares.alanfrei.com/trade",
+   "archivo": "render-portal-trade.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:48:59Z",
+   "bytes": 3808,
+   "sha256": "89ddff05cfb7d9fb424b91cb600d6d2532b6c45640bb8bdac98d0b744e4d185e",
+   "nota": "Chromium renderizado: libro 1,50×50 / 1,60×100"
+  },
+  {
+   "url": "https://www.alanfrei.com/investor/registration",
+   "archivo": "render-alanfrei-registration.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:49:10Z",
+   "bytes": 34936,
+   "sha256": "6a802f815e393cce1f29ea57c7e8d5acafc2e25711e4e9c247670188609a2fc3",
+   "nota": "widget de registro: campos y lista de países (no se rellenó nada)"
+  },
+  {
+   "url": "https://shares.alanfrei.com/trade",
+   "archivo": "render-portal-trade-pestana-sell.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:59:23Z",
+   "bytes": 3672,
+   "sha256": "a8a3bd83b1c5c706a288589703439cbf58c4f11244d9e811429e1f50dc8907f5",
+   "nota": "pestaña Sell vista: «To be matched later», Fee (1.9%)"
+  },
+  {
+   "url": "https://ethereum-rpc.publicnode.com",
+   "archivo": "crudo/cadena-ethereum-rpc.publicnode.com.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:52:05Z",
+   "bytes": 6078,
+   "sha256": "05f63cf579247115adb95b95c449728c7dbc0a9f571aa711a40fe548ca9398f7",
+   "nota": "eth_call bloque 26383731 (2026-11-10T09:51:59Z)"
+  },
+  {
+   "url": "https://eth.drpc.org",
+   "archivo": "crudo/direccion-operaciones-emisor-12m.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:56:04Z",
+   "bytes": 10507,
+   "sha256": "e2c6672dcb1ebb669abcbcdd2dee37b9543c5e546bb2702ff5ce247eda86bc95",
+   "nota": "eth_getTransactionReceipt de las 94 operaciones PRIMARY de 12 meses (09:56:04–09:56:20Z)"
+  },
+  {
+   "archivo": "alanfrei-investor.txt",
+   "derivado": true,
+   "bytes": 9626,
+   "sha256": "d6b8595d5b5ee12cda6ca1f8fa34f210c7ed4692a0677acf9513d272fa769293",
+   "nota": "texto de crudo/alanfrei-investor.html, nombre de persona recortado"
+  },
+  {
+   "archivo": "investor-page-terms.txt",
+   "derivado": true,
+   "bytes": 21460,
+   "sha256": "64a0a930464191678ab998af205cf01955f69a1c945adff9da5b95ae87fa804d",
+   "nota": "texto de crudo/investor-page-terms.html"
+  },
+  {
+   "archivo": "registration-agreement.txt",
+   "derivado": true,
+   "bytes": 16015,
+   "sha256": "5d9f92aa38f796734d2ff1ebfee598a4c2a53b5af16a81df8c5d6b6941437a10",
+   "nota": "pdftotext de crudo/registration-agreement.pdf; nombre del firmante recortado tras calcular el sha256 del PDF"
+  },
+  {
+   "archivo": "token-shareholder-agreement.txt",
+   "derivado": true,
+   "bytes": 23868,
+   "sha256": "e4df7d23c3e5899120718ce74e0728104e8b3ffae80ed6f560c59fd3aca18409",
+   "nota": "pdftotext de crudo/token-shareholder-agreement.pdf"
+  },
+  {
+   "archivo": "widget-terms-v002.txt",
+   "derivado": true,
+   "bytes": 12716,
+   "sha256": "f23b3336e05435f90d6ad538d1e06d02a8c4f306bf64b7a9951251d79c91f80f",
+   "nota": "pdftotext de crudo/widget-terms-v002.pdf"
+  },
+  {
+   "archivo": "portal-js-extractos.txt",
+   "derivado": true,
+   "bytes": 2121,
+   "sha256": "a4495feaa12c200eae0e68681048493bd8c394659e5f73c9f99b55569475d6c9",
+   "nota": "extractos del JS del portal"
+  }
+ ]
+}

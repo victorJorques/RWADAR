@@ -1,0 +1,129 @@
+URL: https://backed.fi/
+FINAL: https://backed.fi/
+HTTP: 200
+UTC: 2026-11-10T09:39:55Z
+
+Docs
+Issuer
+Platform
+xStocks
+Ecosystem
+Company
+News
+Contact
+DeFi Dashboard
+XSTOCKS ARE HERE
+Investing Designed
+for Everyone
+
+The future of finance is onchain. Backed brings stocks and ETFs to blockchain rails. xStocks are now live on multiple venues. We’re taking the next leap for onchain investing.
+
+
+Go to xStocks.fi
+xStocks Dashboard
+
+The xStocks Dashboard provides information about products, proof-of-reserves, and the xStocks bridge. xStocks are built to be usable and composable - and the dashboard has everything users need in one place.
+
+
+Go to Dashboard
+SPYx
+SP500 xStock
+Tokenized Equities
+1Y 14.85%
+COINx
+Coinbase xStock
+Tokenized Equities
+1Y -14.84%
+NVDAx
+NVIDIA xStock
+Tokenized Equities
+1Y 27.38%
+TSLAx
+Tesla xStock
+Tokenized Equities
+1Y 4.04%
+Historical performance is not an indication of future performance. Not investment advice, for informational purposes only.
+xStocks
+
+Composable tokenized securities that track the value of RWAs such as Stocks and ETFs. Powering a new age of decentralized finance.
+
+Built for Decentralization
+
+Freely transferable tokens
+
+Composable with DeFi protocols
+
+Multichain support
+
+Real Value
+
+Each token is 1:1 backed by the underlying asset
+
+3rd-party licensed custodians hold the underlying assets
+
+Redeemable for the underlying asset’s cash value
+
+Compliant regulatory framework, based on Swiss DLT act
+
+Ecosystem
+
+We’re building an ecosystem for tokenized assets, working with leading DeFi protocols, financial service providers, and investment firms to realize our vision.
+
+Kraken is one of the world’s longest-standing and most secure crypto platforms. Our mission is to accelerate the global adoption of crypto, so that everyone can achieve financial freedom and inclusion. Globally, Kraken clients trade more than 200 digital assets and 6 different national currencies.
+
+kraken.com
+
+Bybit has emerged as a leading cryptocurrency exchange, offering a comprehensive suite of tailored crypto services and product solutions meticulously crafted for retail and institutional traders alike. Trusted by millions worldwide, Bybit continues to push the boundaries of innovation, consistently refining and expanding its multi-spectral product offerings.
+
+bybit.com
+
+Solana is a blockchain platform that uses a proof-of-stake mechanism to provide smart contract functionality. Its native cryptocurrency is SOL.
+
+solana.com
+
+Solflare is one of the fastest-growing crypto wallets in the world. Their app has around 3 million active users per month, holding over 16 billion dollars in digital assets in Solflare. The vision of Solflare is for every person in the world to have a Web3 wallet, giving them complete control over what is truly theirs.
+
+solflare.com
+
+Jupiter is a decentralized swap aggregator built on the Solana blockchain. It helps users swap tokens quickly and with minimal slippage by routing trades across multiple DEXs. Jupiter also offers a comprehensive suite of trading apps and APIs for more advanced cryptocurrency traders.
+
+jup.ag
+
+Today, Kamino is a first-of-its-kind DeFi protocol that unifies Lending, Liquidity, and Leverage into a single, secure DeFi product suite. On Kamino, users can: borrow and lend their assets, provide leveraged liquidity to concentrated liquidity DEXs, build their own automated liquidity strategies, and use concentrated liquidity positions as collateral.
+
+app.kamino.finance
+View Ecosystem
+Build on Backed
+
+xStocks are the next step in financial markets. From increased accessibility to collateralized lending, our products solve common issues for a globally connected financial market.
+
+Get in Touch
+External links
+Docs
+Issuer
+xStocks DeFi Dashboard
+bTokens DeFi Dashboard
+About Backed
+Ecosystem
+Company
+Careers
+News
+Newsletter
+Please tick this box to receive news and updates about our services. Your data will be processed per our privacy policy. You can unsubscribe at any time by clicking the link in every email or by emailing privacy@backed.fi
+© 2023 Backed Finance. All rights reserved.
+Privacy Notice
+Terms of Service
+
+The information contained on the Site is not intended to solicit you to purchase any financial product directly from us. Tokenized financial assets are NOT offered by us or by any affiliated entity of ours directly to the public and will only be offered to “Qualified Investors”. Backed tokenized financial assets have not been and will not be registered under the U.S. Securities Act of 1933 or with any securities regulatory authority of any State or other jurisdiction of the U.S and (i) may not be offered, sold or delivered within the U.S to, or for the account or benefit of U.S. Persons, and (ii) may be offered, sold or otherwise delivered at any time only to transferees that are Non-U.S Persons.This website may contain advertising materials.
+
+Important Notice: NOT available for UK Clients
+The products are not promoted or offered to clients based in the UK. Certain products will only be available to UK professional clients subject to prior validation of their status and approval by Backed Assets.
+
+We strongly recommend that potential investors read the prospectus filed to the Liechtenstein FMA before making an investment decision in order to fully understand the potential risks and rewards. The prospectus documents can be found at this link. The approval of the prospectus should not be understood as an endorsement of the products offered by any competent authority.
+
+I understand
+Close Cookie Popup
+Cookie Settings
+By clicking “Accept All Cookies”, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage and assist in our marketing efforts. For more information on our use of cookies please see our Privacy Notice
+Accept All Cookies
+Cookie Settings

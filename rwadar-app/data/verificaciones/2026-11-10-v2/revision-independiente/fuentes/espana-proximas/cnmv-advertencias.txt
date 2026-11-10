@@ -1,0 +1,12 @@
+Buscador de entidades advertidas de la CNMV (control: «Trading» devuelve resultados).
+
+--- https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera (09:25:45Z)
+Criterios de consulta: por tipo No autorizadas,  de nombre Hausera.
+No hay datos disponibles.
+
+--- https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx (09:25:46Z)
+Criterios de consulta: por tipo No autorizadas,  de nombre Holdtx.
+No hay datos disponibles.
+
+--- https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading (09:25:48Z)
+Criterios de consulta: por tipo No autorizadas,  de nombre Trading.

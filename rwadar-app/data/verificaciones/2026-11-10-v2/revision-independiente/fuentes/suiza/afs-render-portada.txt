@@ -1,0 +1,95 @@
+English
+Sign In
+Alan Frei Company
+Buy Shares
+More info: alanfrei.com/investor
+About Alan Frei Company
+New Adventures•Founded in 2022, Zürich, Switzerland
+The AFC is built on three pillars: Content, Community, and Products. We create educational and entertaining content around lifehacking, optimization, and building startups. Through this, we are building a community of entrepreneurs and life hackers. For this community, we are developing smart products that make life easier and add more adventure. Members can also become shareholders and co-owners. Our goal is to build a worldwide next-generation B2C/D2C brand for urban travelers and life hackers, with customers, employees, and shareholders aligned around the same vision.
+Alan Frei SHA (AFS)
+Historic market prices and access to blockchain-powered secondary trading.
+Market Price
+Price history of Alan Frei SHA
+1W
+1M
+6M
+1Y
+All
+Price
+Volume
+Jan 2026
+Mar 2026
+May 2026
+Jul 2026
+Sep 2026
+Nov 2026
+0 CHF
+0.5 CHF
+1 CHF
+1.5 CHF
+2 CHF
+Direct Investment
+Invest in Alan Frei Company by buying tokenized shares directly from the issuer at a fixed price.
+Direct Funding
+Bank Transfer
+Pay with Frankencoin
+Buy Shares
+Secondary Trading
+Trade Alan Frei Company shares with other shareholders in secure on-chain transactions, instantly settled using Frankencoin (ZCHF).
+Real-time Trading
+Open Order Book
+Instant Settlement
+Open Secondary Trading
+All Trades
+Date / Time	Type	Price	Amount	Total
+
+
+20 Oct 2026 / 17:07	Direct Investment	1.60 ZCHF	50 AFS	80.14 ZCHF
+
+
+20 Oct 2026 / 17:07	Direct Investment	1.60 ZCHF	10 AFS	16.03 ZCHF
+
+
+16 Oct 2026 / 16:00	Direct Investment	1.60 ZCHF	100 AFS	160.27 ZCHF
+
+
+8 Oct 2026 / 10:44	Secondary Trade	1.60 ZCHF	222 AFS	355.2 ZCHF
+
+
+8 Oct 2026 / 10:43	Secondary Trade	1.59 ZCHF	1 AFS	1.59 ZCHF
+Page 1 of 176
+1
+2
+3
+4
+5
+…
+176
+Your Shareholder Balance
+Overview of your registered and tokenized shares
+Register to View your Balance
+Share Overview
+Key details and on-chain references for this token
+Current Price
+CHF 1.6
+Primary Market
+Total Shares
+10'500'000
+Market Cap
+CHF 16'382'476
+Tokenized Shares
+750'000 AFS
+Shareholders
+683
+Legal Documents
+Registration Agreement
+Token Holder Agreement
+Share Smart Contracts
+0x5652…f9a1
+Alan Frei Company
+Terms of Use: This page is hosted by Alan Frei Company using technology licensed from Aktionariat. Some content is automatically compiled from other sources than Alan Frei Company and provided "AS IS" without further verification. These sources include the public trade registry, website users, and the Ethereum blockchain and related systems. Alan Frei Company assumes no responsibility for the accuracy of any of this data. All shareholder registration data is stored and processed in Switzerland by Aktionariat, which maintains the shareholder registry for Alan Frei Company. Shareholder registration data must by retained for ten years by law. Relevant shareholder registration data such as the current name and address is automatically synchronized with other issuers that use Aktionariat to maintain their shareholder registry.
+Direct Investment: The website may offer the possibility to directly buy securities issued by Alan Frei Company. Such offers constitute a primary offering by the issuer and are governed by the Financial Services Act in Switzerland, or equivalent laws for visitors of other countries. Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus in order to continue the offering.
+Secondary Trading: The website may offer the possibility to openly trade securities issued by Alan Frei Company using blockchain-based smart contracts to settle trades between buyers and sellers without counterparty risk. As the operator of this website, Alan Frei Company may charge a fee on trades. Neither being a shareholder nor performing individual trades constitute an ongoing business relationship between the shareholder and the operator under the AML act. The secondary trading facilitated herein is considered a non-commercial trading facility operated by Alan Frei Company under the Financial Market Infrastructure Act and is therefore not subject to prudential supervision. As a consequence, buyers and sellers are not protected by the financial market conduct rules applicable to the trading on supervised venues.
+©2026 Alan Frei Company (site content) and Aktionariat (site template). All rights reserved.
+Terms of Service
+Privacy Policy

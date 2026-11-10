@@ -1,0 +1,234 @@
+{
+  "slug": "tokenix-toketuk-flota-cruceros-hito-1",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-espana",
+  "proveedor": "Tokenix",
+  "plataformaSlug": null,
+  "entidadComercializadora": "TOKENIX GLOBAL, S.A.U. (NIF A22872261, Santa Cruz de Tenerife), operador de la plataforma tokenix.eu (marca blanca de Token City)",
+  "emisor": "TOKETUK, S.A.U. (CIF A-22955652; inscripción en el Registro Mercantil «Pendiente» según el documento)",
+  "vehiculo": "Cuenta en participación mercantil (art. 239 del Código de Comercio) en el negocio de alquiler turístico de tuk-tuks eléctricos",
+  "token": "RTUK, ERC-3643 en Polygon PoS (contrato en el documento; no se copia)",
+  "derechoAdquirido": "Derecho de participación en los beneficios del negocio, no transmisible y que según el emisor no es un valor negociable",
+  "jurisdiccion": "ES",
+  "identificador": null,
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Documento de oferta de emisión de derechos de participación en los beneficios del negocio tokenizados (Whitepaper_RTUK)",
+      "url": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/162/document/280",
+      "versionOFecha": "4 de septiembre de 2026",
+      "paginas": null,
+      "sha256": "2a16d9f3df5536e83f0056c742accaa1ffd24c43644a5be7dd904d78039213d0",
+      "leido": true,
+      "nota": "Contiene nombres de los fundadores: el PDF no se conserva en Git; solo texto recortado."
+    },
+    {
+      "titulo": "API pública de proyectos de Tokenix (Token City SaaS)",
+      "url": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/expand/images,type,campaign,campaign_progress,project_asset,total_invested,extra_fields,documents?limit=50",
+      "versionOFecha": "consulta 10/11/2026 09:15:38 UTC",
+      "paginas": null,
+      "sha256": "9c4688a8370a3ab9a23061ce939f34d9f4016a34c64a4fd62c9f650407034836",
+      "leido": true,
+      "nota": "Respuesta cruda en fuentes/crudo/tokenix-projects-api.json; sha256 completo en el inventario."
+    },
+    {
+      "titulo": "Términos y condiciones de Tokenix (02/12/2024)",
+      "url": "https://www.tokenix.eu/legal/20241202_TOKENIX_T%26C.pdf",
+      "versionOFecha": "2024-12-02",
+      "paginas": null,
+      "sha256": "cc7514c021687b73a3cc377f3584182d4a692f94a11689d67022ade77802a670",
+      "leido": true
+    },
+    {
+      "titulo": "Aviso legal de Tokenix (02/12/2024)",
+      "url": "https://www.tokenix.eu/legal/20241202_TOKENIX_AvisoLegal.pdf",
+      "versionOFecha": "2024-12-02",
+      "paginas": null,
+      "sha256": "4d3f65b01cc49e2cab24e324933c88fd812d5b1c7ca52e11a54bbdf2685044bf",
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV",
+      "entidad": "Tokenix / Toketuk",
+      "numero": "Sin registro",
+      "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad",
+      "alcance": "«No se han encontrado resultados» para «Tokenix» (09:25:45 UTC) y «Toketuk» (09:25:57 UTC); buscador validado con «Bit2Me». La emisión RTUK no figura en ninguna ERIR. Tokenix Global, S.A. sí tiene 5.000.000 de acciones clase B propias inscritas con Ursus-3 (08/05/2026), que no son esta oferta.",
+      "consultadoUtc": "2026-11-10T09:25:57Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Tokenix",
+      "resultado": "sin coincidencias («No hay datos disponibles») en no autorizadas; sin coincidencias en «otras entidades»",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Tokenix",
+      "consultadoUtc": "2026-11-10T09:26:35Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas», validado hoy con «Gemini» (2 entidades advertidas, 09:09:58 UTC). «Otras entidades»: lista oficial en PDF (Advertencias_CNMV_Otras.pdf, sha256 5e63b537…, 09:09:39 UTC). No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Toketuk",
+      "resultado": "sin coincidencias («No hay datos disponibles») en no autorizadas; sin coincidencias en «otras entidades»",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Toketuk",
+      "consultadoUtc": "2026-11-10T09:26:36Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas», validado hoy con «Gemini» (2 entidades advertidas, 09:09:58 UTC). «Otras entidades»: lista oficial en PDF (Advertencias_CNMV_Otras.pdf, sha256 5e63b537…, 09:09:39 UTC). No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Toke Tuk",
+      "resultado": "sin coincidencias («No hay datos disponibles») en no autorizadas; sin coincidencias en «otras entidades»",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Toke%20Tuk",
+      "consultadoUtc": "2026-11-10T09:26:38Z",
+      "alcance": "Buscador de advertencias de la CNMV, tipo «No autorizadas», validado hoy con «Gemini» (2 entidades advertidas, 09:09:58 UTC). «Otras entidades»: lista oficial en PDF (Advertencias_CNMV_Otras.pdf, sha256 5e63b537…, 09:09:39 UTC). No aparecer no equivale a estar autorizado."
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "title: Expansión Las Palmas: Flota Cruceros Hito 1 · campaign_status: CAMPAIGN · start_date 2026-10-30 · end_date 2027-01-31 · invested 181800 · invested_tokens 909 · supply 1025",
+      "dato": "Abierta; 909 de 1.025 derechos vendidos (181.800 EUR)",
+      "fuentePrimaria": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/expand/images,type,campaign,campaign_progress,project_asset,total_invested,extra_fields,documents?limit=50",
+      "localizador": "proyecto 162",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:15:38Z",
+      "alcanceYLimites": "El documento fija la etapa 1 del 04/09/2026 al 04/03/2027; la API dice 30/10/2026–31/01/2027.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "supervision",
+      "literal": "la emisión de derechos tokenizados no se realiza bajo lo establecido en el artículo 36 de la Ley 6/2023 … no ha sido revisado por la Comisión Nacional de Mercado de Valores … no serán emitidos ni custodiados por entidades legalmente autorizadas para prestar servicios de inversión",
+      "dato": "Sin supervisión ni entidad autorizada",
+      "fuentePrimaria": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/162/document/280",
+      "localizador": "Documento de oferta, página 1",
+      "fechaDato": "2026-09-04",
+      "consultadoUtc": "2026-11-10T09:22:07Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "La emisión no se considerará una oferta pública de valores y los derechos emitidos no serán transmisibles y no tendrán consideración de valores bajo la LMVSI.",
+      "dato": "Cuenta en participación no transmisible",
+      "fuentePrimaria": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/162/document/280",
+      "localizador": "Documento de oferta, página 1 y apartado 2.1.7",
+      "fechaDato": "2026-09-04",
+      "consultadoUtc": "2026-11-10T09:22:07Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Inversión mínima: 200,00.- €",
+      "dato": "200 EUR",
+      "fuentePrimaria": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/162/document/280",
+      "localizador": "Documento de oferta, portada y 2.1.9",
+      "fechaDato": "2026-09-04",
+      "consultadoUtc": "2026-11-10T09:22:07Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "el Emisor pretende emitir derechos de participación … a determinados inversores seleccionados previamente por el Emisor de forma privada",
+      "dato": "Colocación privada; la web acepta registro con KYC",
+      "fuentePrimaria": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/162/document/280",
+      "localizador": "Documento de oferta, apartado 1",
+      "fechaDato": "2026-09-04",
+      "consultadoUtc": "2026-11-10T09:22:07Z",
+      "alcanceYLimites": "La web de Tokenix invita a cualquiera a registrarse («desde 50€»), lo que choca con la colocación «privada» del documento.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "salida",
+      "literal": "A la finalización del Negocio se liquidará el contrato de cuenta en participación, sin que proceda devolución de las aportaciones de los inversores.",
+      "dato": "No se devuelve lo aportado al final (31/12/2035); solo se cobran los repartos de beneficios",
+      "fuentePrimaria": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/162/document/280",
+      "localizador": "Documento de oferta, 2.1.8",
+      "fechaDato": "2026-09-04",
+      "consultadoUtc": "2026-11-10T09:22:07Z",
+      "alcanceYLimites": "Derechos no transmisibles: no hay salida anticipada.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "Rentabilidad mensual provisional estimada sobre la inversión (*) 4% · Retorno anual estimado sobre la inversión (*) 48%",
+      "dato": null,
+      "fuentePrimaria": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/162/document/280",
+      "localizador": "Documento de oferta, tabla de 2.1.6",
+      "fechaDato": "2026-09-04",
+      "consultadoUtc": "2026-11-10T09:22:07Z",
+      "alcanceYLimites": "Estimación del emisor, no una rentabilidad. La web la anuncia como «¡Multiplicas tu inversión por 4!». No se usa.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "En caso de que el Negocio obtuviera pérdidas, los inversores asumirán como máxima pérdida el 100% de la cantidad aportada.",
+      "dato": "Pérdida total posible",
+      "fuentePrimaria": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/162/document/280",
+      "localizador": "Documento de oferta, 2.1.10",
+      "fechaDato": "2026-09-04",
+      "consultadoUtc": "2026-11-10T09:22:07Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Ni Tokenix ni Toketuk constan en la CNMV; el propio documento dice que no intervienen entidades autorizadas."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "En campaña hoy (API), con fechas que no coinciden con el documento."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "Derechos no transmisibles, sin devolución del capital al final y colocación «privada»."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_cumple",
+      "nota": "Sin advertencias de la CNMV (09:26 UTC), pero el reclamo comercial («retorno anual estimado 48 %», «multiplicas tu inversión por 4») es una señal de alerta."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "estado",
+      "antes": "Sin expediente previo. El 03/11 se anotó «7 Islas Tok» (ERIR de Ursus-3) con plataforma sin identificar.",
+      "ahora": "La plataforma es Tokenix (tokenix.eu, sobre Token City): «7 Islas La Palma y La Gomera» vendió 429.000 + 165.000 EUR (coincide con la ERIR de 7 Islas Tok) y hoy tiene abierta otra campaña, RTUK, sin ERIR ni supervisión.",
+      "fuente": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/expand/images,type,campaign,campaign_progress,project_asset,total_invested,extra_fields,documents?limit=50",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": {
+    "nota": "No se propone tarjeta (no_admitir). Tres datos de hoy como referencia interna.",
+    "resumenTarjeta": {
+      "minimo": "Desde 200 € (10/11)",
+      "accesoEspana": "No confirmado: oferta privada sin entidad supervisada por la CNMV",
+      "salida": "No hay: derechos no transmisibles y sin devolución de lo aportado al final"
+    }
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "200 EUR",
+    "supervisorVerificado": null,
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Campaña española abierta hoy con documento público y API con cifras del día.",
+    "porQueNo": "No es un valor, no hay entidad supervisada, no se devuelve lo aportado y el reclamo de rentabilidad es desproporcionado."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Oferta abierta de una plataforma española, pero el propio documento dice que no es un valor, que no la revisa la CNMV, que no interviene ninguna entidad autorizada, que los derechos no se pueden transmitir y que al final no se devuelve lo aportado. No cumple ninguno de los criterios de confianza.",
+  "bloqueos": [
+    "La ficha del proyecto en tokenix.eu exige iniciar sesión; se leyó la API pública y el documento.",
+    "El PDF contiene nombres de personas: no se conserva en Git."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-10T09:14:21Z",
+    "finUtc": "2026-11-10T09:26:38Z"
+  }
+}

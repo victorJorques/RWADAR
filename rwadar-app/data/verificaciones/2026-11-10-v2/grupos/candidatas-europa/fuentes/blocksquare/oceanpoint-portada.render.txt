@@ -1,0 +1,309 @@
+Trade
+Earn
+Operate
+Tokenize
+Learn
+Blog
+Sign in
+Get started
+
+OCEANPOINT PROTOCOL
+
+Real estate, unbound.
+— Oceanpoint, the liquidity engine for tokenized real estate
+
+Oceanpoint is the liquidity engine for tokenized real estate, built by the core team of Blocksquare. Invest in real properties token by token and earn yield from real rental income, with instant liquidity coming via POINT.
+
+Get started
+Read whitepaper
+
+The Bank, Multipurpose building, Brugge, Belgium
+
+Belgium
+
+10.0% yield
+Live
+
+ON-CHAIN VOLUME SINCE 2024
+
+$4.6M
+
+Traded on the Oceanpoint marketplace, every transfer on Etherscan (as of Sep 2026).
+
+INSTANT EXIT VIA POINT
+
+Upcoming
+BSPT
+POINT
+USDC
+
+POINT will let you swap property tokens for stablecoins in seconds, with no waiting for a buyer.
+
+PROPERTIES TRADING
+
+0
+
+TURNOVER IN 2025
+
+0.0×
+
+WALLETS SINCE 2024
+
+0
+
+PICK YOUR PATH
+
+Find your path
+
+Oceanpoint serves different goals. Pick the one that fits you.
+
+01 / TRADE
+Start trading real estate tokens
+
+Buy tokenized real estate properties from global marketplaces, starting from any amount.
+
+Start trading
+02 / EARN
+Earn yield on your assets
+
+Earn on-chain yield backed by real rental income.
+
+Start earning
+03 / TOKENIZE
+List your property
+
+Sell a 20–30% slice of your property as tokens on the Oceanpoint marketplace and keep running it.
+
+Start listing
+SR
+MS
++
+DV
+LN
+04 / ADVOCATE
+Join the community
+
+Become a regional ambassador and help others discover tokenized real estate.
+
+Join the community
+
+LEARN THE BASICS
+
+What is tokenized real estate?
+
+A real property is legally structured on-chain and divided into tokens. Each token is backed by the real-world asset, and anyone can own one.
+
+STEP 1
+One real property
+
+A building with verified legal ownership is prepared for tokenization on Blocksquare's audited contracts.
+
+STEP 2
+Divided into BSPT tokens
+
+The property is issued as BSPTs: on-chain tokens representing fractional ownership, each backed by the asset.
+
+AK
+MS
+JT
+RW
+EP
++
+STEP 3
+Owned by investors worldwide
+
+Investors buy tokens from any amount, collect rental income, and trade their share at any time.
+
+See how to buy your first token
+Tokenized real estate vs REITs
+Every term, defined
+
+PROTOCOL
+
+One protocol. Three layers.
+
+Oceanpoint is the DeFi layer that connects tokenized real estate to global liquidity. Built on Blocksquare's smart contract stack, it powers marketplaces, staking pools, and governance, all on-chain.
+
+Owners sell a slice of a building as property tokens and keep the rest; a buyer funded by the buildings' rent will stand ready to buy.
+
+Read the technical architecture
+
+LAYER 3
+
+Marketplaces
+
+Buy tokenized properties from around the world, starting from any amount
+
+LAYER 2
+
+Oceanpoint Protocol
+
+The marketplace and liquidity engine for its property tokens
+
+LAYER 1
+
+Blocksquare Infrastructure
+
+Audited smart contracts, tokenization, compliance
+
+THE BLOCKSQUARE NETWORK
+
+The infrastructure Oceanpoint runs on
+
+Live figures across every Blocksquare-powered marketplace, not Oceanpoint's own: properties tokenized, total value on-chain, average yield, and rental income distributed to token holders. Oceanpoint licenses this infrastructure from Blocksquare, a separate company.
+
+PROPERTIES TOKENIZED
+
+Live
+0
+
+TOTAL TOKENIZED VALUE
+
+Live
+$0.0M
+
+AVERAGE YIELD
+
+Live
+0.00%
+
+INCOME DISTRIBUTED
+
+Live
+€0.0K
+Oceanpoint and Blocksquare network statistics
+
+HOW IT WORKS
+
+From browsing to earning in four steps
+01
+Browse properties
+
+Explore tokenized properties on the Oceanpoint marketplace.
+
+02
+Buy BSPTs
+
+Purchase property tokens with crypto. Each BSPT represents your fractional share.
+
+03
+Hold and earn
+
+Collect your share of the rental income for as long as you hold.
+
+04
+Exit your position
+
+Resell BSPTs on the marketplace, with instant swaps to stablecoins coming via the POINT liquidity pool.
+
+Questions? Read the FAQ
+
+TOKEN SYSTEM
+
+Two tokens. One system.
+
+Every action on Oceanpoint touches one of two tokens. Here's how they connect.
+
+BSPT
+Blocksquare Property Token
+Own
+
+Each BSPT represents fractional ownership in a real property. Buy on the Oceanpoint marketplace and hold for rental income.
+
+POINT
+Liquidity Token · Upcoming
+Exit
+
+Oceanpoint’s own token, planned and not yet issued. Designed as the liquidity layer that lets you swap BSPTs for cash without waiting for a buyer.
+
+THE ECONOMIC LOOP
+
+BSPT
+Property token
+POINT pool
+Liquidity layer
+USDC
+Stablecoin
+
+Once live, the POINT liquidity layer will let you swap property tokens for stablecoins, with no escrow and no delays.
+
+Full token architecture
+
+TOKENIZE
+
+Own a property? Bring it on-chain.
+
+Your building holds value that is hard to reach: selling takes months and loans cost interest. Tokenization turns that equity into digital property tokens investors can buy, without giving up the asset.
+
+Unlock capital, keep the keys
+Sell fractions of your property to investors instead of taking on bank debt or selling the whole building. You decide how much equity to offer.
+Reach investors everywhere
+Tokenized properties are open to a global pool of investors from any amount, so your asset is no longer limited to local buyers and long sales cycles.
+Stay in control of your asset
+You keep operating the property exactly as before. Investors hold tokens, and ownership records live transparently on-chain.
+Tokenize your property
+See how it works
+free online application
+·
+saved as you go
+·
+typically a few weeks to a decision
+
+INFRASTRUCTURE
+
+The Blocksquare network
+
+Oceanpoint runs on infrastructure licensed from Blocksquare, a separate company whose tokenization stack also powers these partner marketplaces.
+
+Visit Blocksquare
+
+PARTNER MARKETPLACES
+
+18 live
+
+COMMUNITY
+
+Join the movement
+
+A global community of ambassadors, investors, and builders is growing the protocol together.
+
+Join the community
+
+The liquidity engine for tokenized real estate. Tokenized properties, DeFi yields, and global accessibility, all on-chain.
+
+Tokenize your property
+PLATFORM
+Trade
+Earn
+For businesses
+Tokenize a property
+Raise a VC round
+Liquidity providers
+Protocol statistics
+BST token
+Get started
+Sign in to your account
+Marketplace
+DeFi app
+LEARN
+Learn hub
+Glossary
+Tokenized real estate vs REITs
+FAQ
+Whitepaper
+AI podcast
+Documentation
+Blog
+YouTube channel
+COMMUNITY
+Events
+Ambassador program
+Become an ambassador
+Run and funded by Blocksquare
+COMPANY
+About
+Terms of service
+Protocol disclaimer
+© 2026 Oceanpoint. All rights reserved.
+Powered by
+Blocksquare

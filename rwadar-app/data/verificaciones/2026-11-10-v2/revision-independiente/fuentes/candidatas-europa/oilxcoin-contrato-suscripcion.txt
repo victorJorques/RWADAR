@@ -1,0 +1,8 @@
+Fuente: https://oilxcoin.us/en/token/token-subscription-agreement
+Consultado: 2026-11-10T09:34:35Z · HTTP 200 · 62333 bytes · sha256 526585883c29e51ca4e58f07caa00c14f05cc9eec037360de874a4deb75a7541
+Copia original en crudo/oilxcoin-token-token-subscription-agreement.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+") are set out in full in the EU Growth Prospectus for the public offering of OilXCoin, as approved by the Financial Market Authority (FMA) of Liechtenstein on 28 February 2025, and as supplemented by a prospectus supplement approved by the FMA on 21 March 2025 (together, the “
+" means the price (denominated in ETH, the native cryptocurrency of the Ethereum blockchain or in fiat currency, at the option of the Issuer) at which the OilXCoins are sold to the Buyer, as displayed on the Website at the final step of the order process.
+(i)           The Buyer is resident in one of the following jurisdictions: Austria; Belgium; Cyprus; Czechia; Denmark; France; Germany; Hungary; Ireland; Italy; Liechtenstein; Luxembourg; Malta; Netherlands; Norway; Poland; Portugal; Romania; Spain; Sweden; Switzerland; United States of America.
+(ii)          For Buyers that are persons in the United States of America: The Buyer is an "accredited investor” as defined in Regulation D and will provide the Issuer with proof of its status as an accredited investor which the Issuer will take reasonable steps to verify.

@@ -1,0 +1,7 @@
+URL: https://www.gettex.de/en/news-overview/newsdetail/eqs-news-blockchaincom-amp-ondo-finance-launch-onchain-tokenized-us-stocks-across-europe
+HTTP 200 · consultadoUtc 2026-11-10T09:29:51Z · SHA-256 HTML 01590a9b23a15063b944d1930a6cfcab1b0bfca5d3d941896f48f80f712b823f (HTML no conservado: incluye nombres de personas)
+ Finance Launch Onchain Tokenized U.S. Stocks Across Europe 03.02.2026 / 19:50 CET/CESTThe issuer is solely responsible for the content of this announcement. In partnership with Ondo Global Markets, NYSE-listed equities and ETFs are now accessible to millions of eligible users across Europe directly via the Blockchain.com wallet LONDON and NEW YORK, Feb. 3, 2026 /PRNewswire/ -- Blockchain.com and Ondo Fin
+...
+Users across 30 EEA states can now buy, sell, and hold over 200 tokenized U.S. stocks and ETFs via the DeFi wallet. Assets are managed directly within the familiar Blockchain.com Wallet interface, removing the friction of trad
+...
+le companies. "By bringing U.S. equities onchain for our European users, we are providing self-custody solutions through our DeFi wallet that are faster, more efficient and completely self-owned that remain unmatched by traditional banks," said [nombre recortado]

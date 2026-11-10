@@ -1,0 +1,438 @@
+{
+  "slug": "alan-frei-company",
+  "tipoExpediente": "candidata",
+  "grupo": "suiza",
+  "proveedor": "Aktionariat (portal de inversores shares.alanfrei.com)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Alan Frei Company AG (vende sus propias acciones en un portal con tecnología de Aktionariat AG)",
+  "emisor": "Alan Frei Company AG, Zúrich, UID CHE-482.713.456",
+  "vehiculo": "Sociedad anónima suiza (AG); sin SPV",
+  "token": "AFS «Alan Frei SHA», ERC-20 en Ethereum, contrato 0x56528c1df17fd5451451eb6efde297758bc8f9a1 (0 decimales), que envuelve el token de acciones AF 0x5a90e48b81edf50813192e5f5da0ed934bf94c93 (el que cita el Registration Agreement; wrapped() lo confirma en cadena y las 750.000 AF están dentro de AFS). Contrato de venta y recompra del emisor 0x4d1b3c1e3306dd3adc0b5e07230348c19032ca3c (Brokerbot v8). Mercado entre accionistas 0x66584155f3decdf67eb57f828c8ad311a39ed345.",
+  "derechoAdquirido": "Acciones nominativas de Alan Frei Company AG sin restricción de transmisión (nominal 0,01 CHF según las cuentas 2025), emitidas como valores registrados en DLT (art. 973d CO) y envueltas en AFS bajo el Token Shareholder Agreement V2.0 (arrastre con el 75 %, acompañamiento si se vende el 50 % o más). Derechos de socio tras inscribirse en el libro registro.",
+  "jurisdiccion": "CH",
+  "identificador": "UID CHE-482.713.456; token AFS 0x56528c1df17fd5451451eb6efde297758bc8f9a1",
+  "moneda": "CHF (transferencia) / ZCHF (cripto, recompra y mercado entre accionistas)",
+  "documentos": [
+    {
+      "titulo": "Registration Agreement Alan Frei Company AG",
+      "url": "https://storage.googleapis.com/aktionariat/public/4183/e4aa8c60-ad0e-4e6f-bdad-26da46f2cce4/Registration%2BAgreement%2BAlan%2BFrei%2BCompany%2BAG%2BFinal.pdf",
+      "versionOFecha": "aprobado por el consejo el 27/06/2023 (PDF del 27/06/2023); el mismo archivo (sha256 idéntico) está en alanfrei.com/s/Registration-Agreement-Alan-Frei-Company-AG-Final.pdf",
+      "paginas": 6,
+      "sha256": "f046305cdc370f4b2566704036944297c86f08d7d4dbd562344f8d2970e53772",
+      "leido": true
+    },
+    {
+      "titulo": "Token Shareholder Agreement Alan Frei Company AG",
+      "url": "https://storage.googleapis.com/aktionariat/public/4183/8d41cc5b-82ae-477d-a8b3-62b333d1e317/Token%2BShareholder%2BAgreement%2BAlan%2BFrei%2BCompany%2BAG.pdf",
+      "versionOFecha": "V 2.0 – 17 March 2023; el mismo archivo (sha256 idéntico) está en alanfrei.com",
+      "paginas": 8,
+      "sha256": "9b8b77209c5079ac3d5bf70f844b1d5a4768fb0029bfd91598aa16e9848405d2",
+      "leido": true
+    },
+    {
+      "titulo": "Investor Page Terms del portal shares.alanfrei.com",
+      "url": "https://shares.alanfrei.com/investor-page-terms",
+      "versionOFecha": "Version 1.0 • October 30, 2026; mismo HTML que en los portales de Aktionariat, Boss Info y Switzerlend",
+      "paginas": null,
+      "sha256": "efd5860fd906a1952c8da6e89d0849cc64d509974aefe8218c973c7b7eb458a6",
+      "leido": true
+    },
+    {
+      "titulo": "Página de inversores del emisor (aviso de oferta pública, preguntas, cuentas)",
+      "url": "https://alanfrei.com/investor",
+      "versionOFecha": "sin fecha; leída el 10/11/2026",
+      "paginas": null,
+      "sha256": "d9a5427b4689849ea487c046de7664ff15f8e59947b544952892e51ec14846b9",
+      "leido": true
+    },
+    {
+      "titulo": "Jahresrechnung 2025 (cuentas anuales del 01/01 al 31/12/2025), enlazada como «Financial Statement» 2025",
+      "url": "https://drive.google.com/file/d/1-WgjiKoJWvgJinbqMHrTdXJJsI25VDvE/view?usp=sharing",
+      "versionOFecha": "fechadas en Zúrich el 04/06/2026; sin informe de auditoría (Zefix no inscribe órgano de revisión)",
+      "paginas": 7,
+      "sha256": "dfa4fc0b96c14d285d48207bc2a6f5738b4d0f1112ee3e7f595df79d61909e52",
+      "leido": true
+    },
+    {
+      "titulo": "Folleto / ficha informativa",
+      "url": null,
+      "versionOFecha": "no existe: la oferta se acoge a umbrales de exención (8 M CHF al año en Suiza, 100.000 € al año en el EEE, según la web del emisor)",
+      "paginas": null,
+      "sha256": null,
+      "leido": false
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "Registro mercantil suizo (ZefixREST)",
+      "entidad": "Alan Frei Company AG",
+      "numero": "CHE-482.713.456",
+      "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1527753.json",
+      "alcance": "EXISTIEREND, sede Zúrich; última publicación SHAB del 08/07/2024 (cambio de estatutos y objeto social). Sin órgano de revisión inscrito (auditFirms vacío). Es un registro mercantil, no una licencia financiera.",
+      "consultadoUtc": "2026-11-10T09:18:30Z"
+    },
+    {
+      "regulador": "FINMA · registro de entidades autorizadas",
+      "entidad": "Alan Frei",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "alcance": "Búsqueda «Alan Frei»: Count 0 (controles del mismo buscador hoy: «Maerki Baumann» = 1, «Sygnum» = 1). No es entidad autorizada.",
+      "consultadoUtc": "2026-11-10T09:22:04Z"
+    },
+    {
+      "regulador": "PolyReg (autorregulación contra el blanqueo)",
+      "entidad": "Alan Frei Company AG",
+      "numero": null,
+      "url": "https://api.polyreg.ch/api/membership-check?name=Alan%20Frei%20Company%20AG",
+      "alcance": "result=false: no afiliada (control «Switzerlend AG» = true).",
+      "consultadoUtc": "2026-11-10T09:22:10Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Alan Frei",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alan+Frei",
+      "consultadoUtc": "2026-11-10T09:22:05Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Alan Frei Company AG",
+      "resultado": "sin coincidencias («No hay datos disponibles»); control «Capital» con 40 páginas de resultados (09:08:05Z)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alan+Frei+Company+AG",
+      "consultadoUtc": "2026-11-10T09:22:08Z"
+    },
+    {
+      "regulador": "FINMA · lista de advertencias",
+      "busqueda": "alan frei / alanfrei",
+      "resultado": "sin coincidencias (2.402 entradas, búsqueda local)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-10T09:07:28Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "DIRECT FROM ISSUER Buy AFS at 1.6027 CHF · bank transfer or crypto",
+      "dato": "abierta: venta directa del emisor activa",
+      "fuentePrimaria": "https://shares.alanfrei.com/trade",
+      "localizador": "/trade renderizado (09:19:36Z); en cadena settings()=3 (0x1 venta activa y 0x2 recompra activa) en 0x4d1b…ca3c, que tiene 278.469 AFS (bloque 26383566, 09:18:53Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:19:36Z",
+      "alcanceYLimites": "Significado de los bits según el código verificado del Brokerbot v8 (Sourcify, 09:11:19Z).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "precio",
+      "literal": "Price per AFS 1.6 CHF · getPrice()=1,60274188",
+      "dato": "1,6027 CHF por acción, fijado por el emisor; sube 0,0000008 por acción vendida",
+      "fuentePrimaria": "https://shares.alanfrei.com/invest",
+      "localizador": "/invest renderizado (09:19:26Z: orden por defecto de 1.000 acciones = 1.603,14 CHF) + getPrice() e increment()=8e11 (bloque 26383566)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:19:26Z",
+      "alcanceYLimites": "Precio que decide el emisor, no de mercado. En «secundario» no va como precio de la tarjeta.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "actividad",
+      "literal": "20 Oct 2026 / 17:07 Direct Investment 1.60 ZCHF 50 AFS · 16 Oct 2026 / 16:00 Direct Investment 1.60 ZCHF 100 AFS",
+      "dato": "Última compra al emisor 20/10/2026. Entre el 10/11/2025 y el 10/11/2026: 94 operaciones con el contrato del emisor (61.961 acciones) y 18 entre accionistas (2.680 acciones; la última el 08/10/2026, 222 acciones a 1,60). 683 accionistas.",
+      "fuentePrimaria": "https://shares.alanfrei.com/api/secondarymarkets/getTrades",
+      "localizador": "getTrades company=4183, historial completo de 877 operaciones desde el 19/09/2023 (09:18:26Z); portada renderizada «Shareholders 683» (09:19:17Z)",
+      "fechaDato": "2026-10-20",
+      "consultadoUtc": "2026-11-10T09:18:26Z",
+      "alcanceYLimites": "La API marca «PRIMARY» toda operación con el contrato del emisor y no distingue compra de recompra; las últimas tres salen en el portal como «Direct Investment» (compras).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "minimo",
+      "literal": "bankTransferLimit: enabled true, min 1 · cryptoPaymentsLimit: min 1 · «No minimum investment. There's no set amount to start with.»",
+      "dato": "Desde 1 acción (1,60 CHF); sin mínimo publicado",
+      "fuentePrimaria": "https://shares.alanfrei.com/api/brokerbotsettings?ticker=AFS",
+      "localizador": "API pública del portal (09:18:24Z); AFS decimals()=0 (bloque 26383566); página de inversores del emisor, «Discover your rights as a shareholder» (09:20:03Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:18:24Z",
+      "alcanceYLimites": "La orden por defecto del portal es de 1.000 acciones (1.603,14 CHF). Las comisiones de transferencia y de cambio corren a cargo del comprador (Investor Page Terms §3.1).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Public offering is only open to persons domiciled in Switzerland and in the EEA … The offering is limited in Switzerland to CHF 8,000,000 per year and in the EEA to €100,000 per year.",
+      "dato": "Residentes en Suiza o el EEE (España incluida); tope de 100.000 € al año para el EEE",
+      "fuentePrimaria": "https://alanfrei.com/investor",
+      "localizador": "Página de inversores del emisor, «Disclaimer · Public Offering» (09:20:03Z); lo mismo en las Investor Page Terms del portal v1.0 (30/10/2026), §9.1 (09:18:28Z), con tope «total» de 100.000 €",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:20:03Z",
+      "alcanceYLimites": "Lo dice el propio emisor en su web, no solo la plantilla del portal (el bloqueo del 01/11 era justo la falta de esta fuente). No se publica cuánto queda del tope. El emisor puede rechazar a cualquier inversor (Investor Page Terms §3.1). Registro en el portal no probado.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "settings()=3 · ZCHF.balanceOf(bot)=479,80 · getSellPrice(1000)=1.602,34 ZCHF · onlyBuySide false, disabledSellText «»",
+      "dato": "Hoy el emisor también recompra en su contrato (a unos 1,60 ZCHF), pero solo tiene 479,80 ZCHF para hacerlo",
+      "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al contrato 0x4d1b3c1e3306dd3adc0b5e07230348c19032ca3c",
+      "localizador": "settings(), getSellPrice(1000) y ZCHF.balanceOf, bloque 26383566 (09:18:53Z); brokerbotsettings (09:18:24Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:18:53Z",
+      "alcanceYLimites": "Los fondos para recomprar cambian con cada compra y venta. No se ha probado una venta (exige monedero y registro).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "The Issuer is under no obligation to offer or repurchase the Share Tokens and may stop the Open Trading at any time or limit the Open Trading to selling or buying only.",
+      "dato": "El acuerdo no obliga al emisor a recomprar; puede parar la recompra cuando quiera",
+      "fuentePrimaria": "https://storage.googleapis.com/aktionariat/public/4183/8d41cc5b-82ae-477d-a8b3-62b333d1e317/Token%2BShareholder%2BAgreement%2BAlan%2BFrei%2BCompany%2BAG.pdf",
+      "localizador": "Token Shareholder Agreement V2.0, §1.4 «Open Trading & Issuance of New Share Tokens»",
+      "fechaDato": "2023-03-17",
+      "consultadoUtc": "2026-11-10T09:20:02Z",
+      "alcanceYLimites": "La página de inversores lo explica como un «liquidity pool» que el emisor puede dotar con parte de lo recaudado.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "salida",
+      "literal": "Bid/Ask 1.50 / 1.60 · Spread 6.25% · 1.60 100 · 1.50 50",
+      "dato": "Mercado entre accionistas: mejor compra 1,50 ZCHF por 50 acciones; mejor venta 1,60 por 100",
+      "fuentePrimaria": "https://shares.alanfrei.com/trade",
+      "localizador": "/trade renderizado (09:19:36Z) y API getOrderBook company=4183 (09:18:26Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:19:36Z",
+      "alcanceYLimites": "Se liquida solo en ZCHF con monedero propio; las órdenes pueden retirarse en cualquier momento.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Sell · 1.6 ZCHF · Fee (1.9%): 0.03 ZCHF · Total Value: 1.57 ZCHF | sellerFeeRate 0.0190, buyerFeeRate 0 | tradingFeeBips() = 190",
+      "dato": "Entre accionistas: el comprador paga 0 %; quien vende paga 1,9 %",
+      "fuentePrimaria": "https://shares.alanfrei.com/trade",
+      "localizador": "/trade con la pestaña «Sell» (09:19:39Z); /api/secondarymarketsettings?ticker=AFS (09:18:25Z); en cadena tradingFeeBips()=190 e isOpen()=true en 0x6658…d345 (bloque 26383566)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:19:39Z",
+      "alcanceYLimites": "Gas de Ethereum y conversión a cargo del usuario.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Instrument Registered shares (Namenaktien) of the Issuer without restricted transferability (Vinkulierung) · Smart Contract 0x5a90E48b81Edf50813192E5F5Da0ED934Bf94c93 … named \"Alan Frei\" with symbol \"AF\" · \"Alan Frei SHA\" (AFS) is a wrapper token",
+      "dato": "Acciones nominativas DLT sin restricción de transmisión, envueltas en AFS",
+      "fuentePrimaria": "https://storage.googleapis.com/aktionariat/public/4183/e4aa8c60-ad0e-4e6f-bdad-26da46f2cce4/Registration%2BAgreement%2BAlan%2BFrei%2BCompany%2BAG%2BFinal.pdf",
+      "localizador": "Registration Agreement, §1 General Information; comprobado en cadena: AFS.wrapped() = 0x5a90…4c93 y AF.balanceOf(AFS) = 750.000 = AF.totalSupply() (bloque 26383577, 09:21:10Z)",
+      "fechaDato": "2023-06-27",
+      "consultadoUtc": "2026-11-10T09:20:01Z",
+      "alcanceYLimites": "Lo que dicen los documentos coincide con los contratos en uso (no hay migración sin explicar, como pasó con ART Leasing el 03/11).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Drag-Along Quorum 75% of all Shares during the Voting Period … granting the Token Holders a tag-along right",
+      "dato": "Arrastre con el 75 % y acompañamiento si alguien vende el 50 % o más",
+      "fuentePrimaria": "https://storage.googleapis.com/aktionariat/public/4183/8d41cc5b-82ae-477d-a8b3-62b333d1e317/Token%2BShareholder%2BAgreement%2BAlan%2BFrei%2BCompany%2BAG.pdf",
+      "localizador": "Token Shareholder Agreement V2.0, pág. 1 y §2–3",
+      "fechaDato": "2023-03-17",
+      "consultadoUtc": "2026-11-10T09:20:02Z",
+      "alcanceYLimites": "Solo 750.000 de 10.500.000 acciones están tokenizadas (portada).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "cuentas",
+      "literal": "Nettoerlös 99’230 · Jahresergebnis -245’285 · Total Eigenkapital 325’644 · Flüssige Mittel 159’080 (31.12.2025)",
+      "dato": "2025: ingresos 99.230 CHF, pérdida 245.285 CHF (2024: pérdida 190.178 CHF); patrimonio neto 325.644 CHF y caja 159.080 CHF a 31/12/2025",
+      "fuentePrimaria": "https://drive.google.com/file/d/1-WgjiKoJWvgJinbqMHrTdXJJsI25VDvE/view?usp=sharing",
+      "localizador": "Jahresrechnung 2025, Bilanz (pág. 3) y Erfolgsrechnung (pág. 4); enlazada como «Financial Statement» 2025 en la página de inversores",
+      "fechaDato": "2025-12-31",
+      "consultadoUtc": "2026-11-10T09:21:25Z",
+      "alcanceYLimites": "Cuentas del propio emisor, sin informe de auditoría (no hay órgano de revisión inscrito en Zefix). La página de inversores dice: «We are still investing in these things and haven’t started making profits yet».",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "supervision",
+      "literal": "The secondary trading facilitated herein is considered a non-commercial trading facility … not subject to prudential supervision.",
+      "dato": "Sin supervisión financiera: no figura en FINMA ni en PolyReg",
+      "fuentePrimaria": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "localizador": "Buscador FINMA «Alan Frei» = 0 (09:22:04Z); PolyReg false (09:22:10Z); pie del portal",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:22:04Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "folleto",
+      "literal": "Once certain thresholds are reached, it is the responsibility of the issuer to publish a prospectus in order to continue the offering. · limited in Switzerland to CHF 8,000,000 per year and in the EEA to €100,000 per year",
+      "dato": "Sin folleto ni KID; oferta dentro de umbrales de exención",
+      "fuentePrimaria": "https://alanfrei.com/investor",
+      "localizador": "Página de inversores, «Disclaimer»; pie «Direct Investment» del portal (09:19:17Z)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:20:03Z",
+      "alcanceYLimites": "No se cita el artículo de exención.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "An investment in the company is suitable only for investors who understand the risk factors … and who can afford a loss of all or part of their investment.",
+      "dato": "Pérdida total posible",
+      "fuentePrimaria": "https://alanfrei.com/investor",
+      "localizador": "Página de inversores, «Disclaimer · Risks»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:20:03Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "moneda_pago",
+      "literal": "If you prefer to pay for the share tokens using Ether (ETH) or Cryptofrancs (XCHF) … | portal: baseCryptoCurrency ZCHF (Frankencoin)",
+      "dato": "La página de preguntas del emisor habla de pagar en XCHF; el portal usa hoy ZCHF (Frankencoin)",
+      "fuentePrimaria": "https://alanfrei.com/investor",
+      "localizador": "Q&A «How can I invest in the AFC?»; brokerbotsettings (09:18:24Z)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:20:03Z",
+      "alcanceYLimites": "Mismo desajuste que en Boss Info: texto antiguo en la web del emisor.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "objetoSocial",
+      "literal": "Zusätzlich fokussiert sich das Unternehmen auf die Digitalisierung und den elektronischen Versand von Darmwinden. … Langeweile soll stets vermieden werden.",
+      "dato": "El objeto social inscrito (estatutos del 27/06/2024) mezcla el desarrollo de productos y servicios con fines en tono de broma",
+      "fuentePrimaria": "https://www.zefix.ch/ZefixREST/api/v1/firm/1527753.json",
+      "localizador": "Campo purpose y publicación SHAB del 08/07/2024",
+      "fechaDato": "2024-07-08",
+      "consultadoUtc": "2026-11-10T09:18:30Z",
+      "alcanceYLimites": "No afecta a los derechos de las acciones; se anota porque resta seriedad a la ficha para el inversor.",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sociedad inscrita en el registro mercantil de Zúrich; no autorizada por FINMA ni afiliada a PolyReg (10/11/2026). Sin advertencias de la CNMV (dos búsquedas) ni de FINMA. Sin órgano de revisión inscrito."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Venta del emisor activa en cadena a 1,6027; última compra el 20/10/2026; 94 operaciones con el contrato del emisor y 18 entre accionistas en 12 meses; 683 accionistas."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "cumple_con_limites",
+      "nota": "La web del emisor y las condiciones del portal abren la oferta a residentes en Suiza y el EEE (tope de 100.000 € al año en el EEE, consumo no publicado). Sin mínimo: desde 1 acción. Registro obligatorio; el emisor puede rechazar a cualquiera."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Pérdida total posible; sin folleto ni KID; emisor no supervisado; empresa en pérdidas (−245.285 CHF en 2025 con 99.230 CHF de ingresos) y cuentas sin auditar; recompra activa pero con 479,80 ZCHF y sin obligación; secundario en ZCHF con un 1,9 % al vender."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "confirmado",
+  "notaDisponibleEs": "Confirmado por la web del propio emisor y por las condiciones del portal. Si entra en «secundario», la base de datos exige disponibleEs = null: el acceso va en el aviso y en resumenTarjeta.",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "acceso desde España (motivo del no_admitir del 01/11)",
+      "antes": "«No hay fuente que admita a residentes en España»",
+      "ahora": "La página de inversores del emisor dice «Public offering is only open to persons domiciled in Switzerland and in the EEA … in the EEA to €100,000 per year», y las condiciones del portal (v1.0, 30/10/2026, §9.1) dicen lo mismo",
+      "fuente": "https://alanfrei.com/investor",
+      "critico": true
+    },
+    {
+      "campo": "acuerdos (motivo del no_admitir del 01/11)",
+      "antes": "Registration Agreement y Token Shareholder Agreement no leídos",
+      "ahora": "Leídos y cuadrados con la cadena: AFS envuelve el token AF que cita el Registration Agreement; arrastre 75 %; el emisor no está obligado a recomprar",
+      "fuente": "https://storage.googleapis.com/aktionariat/public/4183/e4aa8c60-ad0e-4e6f-bdad-26da46f2cce4/Registration%2BAgreement%2BAlan%2BFrei%2BCompany%2BAG%2BFinal.pdf",
+      "critico": true
+    },
+    {
+      "campo": "recompra del emisor",
+      "antes": "no estudiada el 01/11",
+      "ahora": "Activa en el contrato (settings 3), con 479,80 ZCHF de fondos el 10/11",
+      "fuente": "https://shares.alanfrei.com/api/brokerbotsettings?ticker=AFS",
+      "critico": false
+    },
+    {
+      "campo": "cuentas",
+      "antes": "no leídas",
+      "ahora": "2025: pérdida de 245.285 CHF con 99.230 CHF de ingresos; patrimonio neto 325.644 CHF (31/12/2025), sin auditar",
+      "fuente": "https://drive.google.com/file/d/1-WgjiKoJWvgJinbqMHrTdXJJsI25VDvE/view?usp=sharing",
+      "critico": false
+    }
+  ],
+  "avisosConFecha": [],
+  "propuestaTarjeta": {
+    "titulo": "Alan Frei Company",
+    "categoria": "Acciones y capital privado",
+    "pais": "CH",
+    "tipo": "valor",
+    "coleccion": "secundario",
+    "resumen": "Acciones tokenizadas de Alan Frei Company AG, empresa suiza de contenidos y productos para emprendedores fundada en 2022. El emisor las vende a un precio que fija él y hoy también recompra, con pocos fondos; la empresa aún no gana dinero.",
+    "resumenTarjeta": {
+      "minimo": "Desde 1 acción comprada al emisor (1,60 CHF el 10/11)",
+      "accesoEspana": "Sí: su web abre la oferta a residentes en Suiza y el EEE, con un tope de 100.000 € al año en el EEE",
+      "salida": "El emisor recompra, pero solo con 479,80 ZCHF de fondos (10/11); si no, vendes a accionistas con un 1,9 %"
+    },
+    "rentabilidad": null,
+    "metricas": [
+      {
+        "etiqueta": "Mínimo de inversión",
+        "valor": "1 acción (1,60 CHF el 10/11)"
+      },
+      {
+        "etiqueta": "Acceso desde España",
+        "valor": "Sí: residentes en Suiza o EEE (tope EEE 100.000 € al año)"
+      },
+      {
+        "etiqueta": "Salida",
+        "valor": "Recompra del emisor con fondos limitados, o venta a otros accionistas con un 1,9 % de comisión"
+      },
+      {
+        "etiqueta": "Supervisor",
+        "valor": "Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (10/11/2026)"
+      },
+      {
+        "etiqueta": "Cuentas 2025 (del emisor, sin auditar)",
+        "valor": "Ingresos 99.230 CHF; pérdida 245.285 CHF"
+      }
+    ],
+    "avisos": [
+      "Según su web, la oferta es solo para residentes en Suiza o el EEE, con un tope de 100.000 € al año para el EEE; no se publica cuánto queda.",
+      "Sin folleto ni KID: la oferta se acoge a umbrales de exención y el emisor no está supervisado.",
+      "La empresa perdió 245.285 CHF en 2025 con 99.230 CHF de ingresos; sus cuentas no están auditadas.",
+      "El emisor recompra hoy, pero solo tenía 479,80 ZCHF para ello el 10/11/2026 y el acuerdo firmado no le obliga a recomprar.",
+      "El mercado entre accionistas se liquida en Frankencoin (ZCHF) con monedero propio; si vendes a otro accionista pagas un 1,9 %.",
+      "La página de preguntas del emisor habla de pagar en XCHF, pero el portal usa ZCHF (Frankencoin).",
+      "El precio del emisor y las ofertas entre accionistas cambian: compruébalos en el portal antes de operar."
+    ],
+    "url": "https://shares.alanfrei.com/",
+    "fuentesActuales": [
+      "https://shares.alanfrei.com/invest",
+      "https://shares.alanfrei.com/trade",
+      "https://shares.alanfrei.com/investor-page-terms",
+      "https://alanfrei.com/investor",
+      "https://storage.googleapis.com/aktionariat/public/4183/8d41cc5b-82ae-477d-a8b3-62b333d1e317/Token%2BShareholder%2BAgreement%2BAlan%2BFrei%2BCompany%2BAG.pdf"
+    ],
+    "lugar": "Zúrich · Suiza",
+    "pasos": [
+      "Registro en el portal",
+      "Compra al emisor",
+      "Recompra o reventa"
+    ],
+    "concepto": "una mochila de viajero urbano de la que salen pequeñas fichas digitales de acciones sobre un plano de Zúrich"
+  },
+  "notaColeccion": "Propongo «secundario» como Boss Info y Switzerlend, aunque la venta del emisor está activa y es reciente: así el precio que fija el emisor no sale como cifra principal de una empresa que aún pierde dinero. Si el coordinador prefiere «principales» (como Aktionariat), la métrica sería «Precio del emisor · 10/11/2026: 1,6027 CHF por acción» con disponibleEs = true.",
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "si",
+    "minimoEntrada": "1 acción (1,60 CHF el 10/11/2026)",
+    "supervisorVerificado": null,
+    "documentacionClara": "parcial",
+    "salidaExplicada": "si",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Entrada desde 1,60 CHF, acceso Suiza + EEE dicho por el propio emisor, compras al emisor recientes (20/10/2026) y recompra del emisor activa; publica sus cuentas y sus juntas.",
+    "porQueNo": "Empresa pequeña en pérdidas (−245.285 CHF en 2025, 99.230 CHF de ingresos), cuentas sin auditar, emisor no supervisado, sin folleto, recompra con solo 479,80 ZCHF y sin obligación, y un objeto social inscrito que mezcla actividades reales con otras en tono de broma."
+  },
+  "decision": "admitir_propuesta",
+  "motivoDecision": "Los dos bloqueos del 01/11 se resuelven hoy con fuente primaria: la web del emisor (y las condiciones del portal) abren la oferta a residentes en Suiza y el EEE, y los acuerdos están leídos y cuadran con los contratos en cadena. Todo lo esencial está respaldado hoy: entidad inscrita (sin licencia FINMA, comprobado), venta abierta (última compra 20/10/2026), mínimo de 1 acción (1,60 CHF), salida (recompra del emisor activa con fondos limitados y mercado entre accionistas con un 1,9 %), riesgos y cuentas 2025, y sin advertencias de la CNMV ni de FINMA. Propongo admitirla en «secundario», con avisos claros sobre pérdidas, cuentas sin auditar y recompra limitada. Es una oferta de alto riesgo: si el coordinador prefiere solo ofertas «excelentes», el motivo para no admitirla serían las cuentas, no la falta de datos.",
+  "bloqueos": [
+    "No se probó el registro, el KYC ni una venta al emisor (prohibido por el encargo).",
+    "No se publica cuánto queda del tope de 100.000 € al año para el EEE.",
+    "La API de operaciones no distingue compras al emisor de recompras; se usa la etiqueta del portal para las últimas.",
+    "Las cuentas 2025 son del propio emisor y no están auditadas."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-10T09:16:40Z",
+    "finUtc": "2026-11-10T09:27:54Z"
+  }
+}

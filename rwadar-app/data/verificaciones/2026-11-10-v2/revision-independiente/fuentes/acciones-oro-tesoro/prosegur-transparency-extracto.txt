@@ -1,0 +1,24 @@
+https://prosegurdigitalgold.com/transparency · Playwright 2026-11-10T09:27:07Z · http 200
+
+… digital control in the Prosegur Crypto cryptographic bunker with cold storage.
+
+Audits
+
+Independent audits verify that each 1:1 token is backed by physical gold held …
+
+… he Prosegur Crypto cryptographic bunker with cold storage.
+
+Audits
+
+Independent audits verify that each 1:1 token is backed by physical gold held in custody by Prosegur and that the on-chain record reflects this correspondence. Token ↔ bullion reports and mappings are available for public download with their verification hash.
+
+Characteristics of Gold
+Underlying asset	1 kg gold bar, purity 999.9
+Fractioni …
+
+… purity 999.9
+Fractioning	1,000 tokens per bar, each representing 1 gram of gold
+Red blockchain	Polygon (Ethereum-compatible layer 2)
+Token standard	ERC-3643
+Physical gold custody	Prosegur Cash bunker
+Compliance c …

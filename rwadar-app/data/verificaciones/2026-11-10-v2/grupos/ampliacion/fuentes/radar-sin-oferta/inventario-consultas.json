@@ -1,0 +1,700 @@
+{
+ "grupo": "ampliacion",
+ "tarea": "barrido de plataformas del radar sin oferta publicada",
+ "fecha": "2026-11-10",
+ "consultas": [
+  {
+   "url": "https://securitize.io/",
+   "archivo": "fuentes/radar-sin-oferta/securitize-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:45Z",
+   "bytes": 3038,
+   "sha256": "ab6b47b7f0aa239cf122aad0321a986e4fac3a5a18befb875f621d1fabd69235"
+  },
+  {
+   "url": "https://docs.swarm.com/",
+   "archivo": "fuentes/radar-sin-oferta/swarm-docs.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:45Z",
+   "bytes": 376371,
+   "sha256": "581cec1f67b52696a8b31acd7d19cf6a4dd5f475f0bfa781b943ae961e6c34eb"
+  },
+  {
+   "url": "https://www.paxg.com/",
+   "archivo": "fuentes/radar-sin-oferta/paxg-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:45Z",
+   "bytes": 655802,
+   "sha256": "c535110846f5555eea508f39662b10aeea6b60ba00a875e0ca464486eb127656"
+  },
+  {
+   "url": "https://www.addx.co/en/inside-addx/",
+   "archivo": "fuentes/radar-sin-oferta/addx-inside.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:45Z",
+   "bytes": 284913,
+   "sha256": "d66d7cd16938319aad2ec7d338153f2b41759f7948f45431f7a98011f971bbaf"
+  },
+  {
+   "url": "https://www.taurushq.com/",
+   "archivo": "fuentes/radar-sin-oferta/taurus-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:45Z",
+   "bytes": 480186,
+   "sha256": "f4c92e5277a7fd6ef36b2bec1e0faeb3e335499299ede0e96fe2edd7648e5ad0"
+  },
+  {
+   "url": "https://eu.archax.com/",
+   "archivo": "fuentes/radar-sin-oferta/archax-eu.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:45Z",
+   "bytes": 1523,
+   "sha256": "afee8c754d202191f6fa5515ecfeaa0aa8f7bffa711adb43397d68c6e81482e2"
+  },
+  {
+   "url": "https://archax.com/",
+   "archivo": "fuentes/radar-sin-oferta/archax-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:45Z",
+   "bytes": 1541,
+   "sha256": "ab3561e161c250b2b12ec88bdc27607d38d4f8e394508fd3d5e2fd832e194ecb"
+  },
+  {
+   "url": "https://swarm.com/",
+   "archivo": "fuentes/radar-sin-oferta/swarm-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:45Z",
+   "bytes": 4194,
+   "sha256": "cff270c278039006aa391b2c7c561145dda091572be3174ec2d7672d2258f7e3"
+  },
+  {
+   "url": "https://archax.com/",
+   "archivo": "fuentes/radar-sin-oferta/archax-home.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:02Z",
+   "bytes": 2358,
+   "sha256": "c8b47fcdf32a675855634fa9a041e21dbb78c1609457621cf4084fb0503dc001",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://eu.archax.com/",
+   "archivo": "fuentes/radar-sin-oferta/archax-eu.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:02Z",
+   "bytes": 3675,
+   "sha256": "4d32ca2bb4f0c07d92d6abc518a1390c0a75cc2d871e64af24ed1947be8d3e75",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://securitize.io/",
+   "archivo": "fuentes/radar-sin-oferta/securitize-home.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:02Z",
+   "bytes": 8953,
+   "sha256": "fd29e3d1e3e3ef74819c166e9c0fe495d6de2535dcba6ed05be594c2a6e322ce",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://swarm.com/",
+   "archivo": "fuentes/radar-sin-oferta/swarm-home.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:02Z",
+   "bytes": 124,
+   "sha256": "425df631ce59486f5df16812acc2596544dc370cc9a58a970840ae9580b151b7",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://stocks.securitize.io/",
+   "archivo": "fuentes/radar-sin-oferta/securitize-stocksapp.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:30Z",
+   "bytes": 10099,
+   "sha256": "969b539089e98316f026da18c8c151dbf4e51271e9aaa43f410a56e2b7d0e8e6",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://securitize.io/disclosure-library",
+   "archivo": "fuentes/radar-sin-oferta/securitize-disclosures.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:30Z",
+   "bytes": 6323,
+   "sha256": "86373897a4e62ad0f76371b1d57aadf3306d9b4aeb8d4ff1df7be5ba3d1df51a",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://securitize.io/investments/stocks",
+   "archivo": "fuentes/radar-sin-oferta/securitize-stocks.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:30Z",
+   "bytes": 9397,
+   "sha256": "ef83467f8034f970159c3f36760f24ad8e9e718665976cb526bd30f5577b34b3",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://securitize.io/learn/press/securitize-launches-tokenized-us-stocks",
+   "archivo": "fuentes/radar-sin-oferta/securitize-press-stocks.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:30Z",
+   "bytes": 14736,
+   "sha256": "a38d3d018dd0502c43b833e2324992f950e4c8e6defb303d99b88c9f228042ee",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://securitize.io/invest",
+   "archivo": "fuentes/radar-sin-oferta/securitize-invest.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:30Z",
+   "bytes": 9788,
+   "sha256": "42e03e36dc1e454bf620ac4524a5b8a2b0b7845c0307bd5c75ea91e1fb52bbfa",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&vista=12&lang=en",
+   "archivo": "fuentes/radar-sin-oferta/cnmv-securitize-esi.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:40Z",
+   "bytes": 245749,
+   "sha256": "0b744b6757c32c3b2e223c59f0a039398f226b27685e5c2f58c7b57d3d407af2"
+  },
+  {
+   "url": "https://stocks.securitize.io/faq",
+   "archivo": "fuentes/radar-sin-oferta/securitize-stocks-faq.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:58Z",
+   "bytes": 3052,
+   "sha256": "75bcd1e15e4c657e2957e9d0ecf74cbebfeb53a9f4927a116072b48b9b79325b",
+   "via": "playwright (acordeón, una a una)"
+  },
+  {
+   "url": "https://stocks.securitize.io/asset/AAPL",
+   "archivo": "fuentes/radar-sin-oferta/securitize-stocks-aapl.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:01Z",
+   "bytes": 7355,
+   "sha256": "cfa10e0d968948b678403fffe449b40de318f442c6928075a73207ad40545f0f",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://stocks.securitize.io/trading",
+   "archivo": "fuentes/radar-sin-oferta/securitize-stocks-trading.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:01Z",
+   "bytes": 363,
+   "sha256": "751b1ed935f0921c7d9cf43aa3cc1efb12f254a2ce18d8ced815e4f988112e8f",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://securitize.io/disclosure/terms-of-service",
+   "archivo": "fuentes/radar-sin-oferta/securitize-tos.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:01Z",
+   "bytes": 61616,
+   "sha256": "691e2be3b638471cdc6207a8f3753edd232f271f14df057cc604dce898aa241e",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://cdn.builder.io/o/assets%2Fd39b51a544e84e2fbb2445f58c6c6f2c%2Fbcb532b340874b2b83b3c72649493612?alt=media&[token recortado]",
+   "archivo": "fuentes/radar-sin-oferta/pdf/securitize-entitlement-token-disclosure.pdf",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:08Z",
+   "bytes": 88519,
+   "sha256": "e3aceac091dde13d633c142f7141c4ef7e352e57de22ea47d18027d9404d8a5f",
+   "nota": "URL firmada recortada (enlace de descarga del CDN de builder.io desde securitize.io/disclosure-library)"
+  },
+  {
+   "url": "https://cdn.builder.io/o/assets%2Fd39b51a544e84e2fbb2445f58c6c6f2c%2F4f56315e975b4dfc8864c613954c3e6d?alt=media&[token recortado]",
+   "archivo": "fuentes/radar-sin-oferta/pdf/securitize-eu-mifid-precontractual.pdf",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:08Z",
+   "bytes": 206531,
+   "sha256": "141e121af4f3899a4681b77603839cbcb0903bf0659a7cc5b1bff03b3b258095",
+   "nota": "URL firmada recortada (enlace de descarga del CDN de builder.io desde securitize.io/disclosure-library)"
+  },
+  {
+   "url": "https://internet.cnmv.es/portal/consultas/esi/esis?nif=A13691464&vista=17",
+   "archivo": "fuentes/radar-sin-oferta/cnmv-securitize-programa.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:08Z",
+   "bytes": 266193,
+   "sha256": "08fe0f7381f4cd77df2cea652f1de127f2221667216594b50baaf18ed515bdb1"
+  },
+  {
+   "url": "https://cdn.builder.io/o/assets%2Fd39b51a544e84e2fbb2445f58c6c6f2c%2F3e634c4b7a1043a7a5afe7d86f8e6668?alt=media&[token recortado]",
+   "archivo": "fuentes/radar-sin-oferta/pdf/securitize-eu-terms.pdf",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:08Z",
+   "bytes": 279535,
+   "sha256": "677b3b737f0293db13ee4437e627d75d3d0b1575520df1928de3b7040a8d498f",
+   "nota": "URL firmada recortada (enlace de descarga del CDN de builder.io desde securitize.io/disclosure-library)"
+  },
+  {
+   "url": "https://securitize.io/fee-schedule-table",
+   "archivo": "fuentes/radar-sin-oferta/securitize-fees.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:39Z",
+   "bytes": 6418,
+   "sha256": "543b5d4efefd408bbed828a6cae743d7e7e497f078290cde214123db13bcdc40",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Securitize",
+   "archivo": "fuentes/radar-sin-oferta/cnmv-adv-securitize.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:13Z",
+   "bytes": 204535,
+   "sha256": "9a80d842ac99383d8c4be3debde00b21cd8669e9e5d8a190275a47e89b4a9f08"
+  },
+  {
+   "url": "https://www.paxg.com/",
+   "archivo": "fuentes/radar-sin-oferta/paxg-home2.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:35Z",
+   "bytes": 655802,
+   "sha256": "c535110846f5555eea508f39662b10aeea6b60ba00a875e0ca464486eb127656"
+  },
+  {
+   "url": "https://docs.swarm.com/getting-started/faq.md",
+   "archivo": "fuentes/radar-sin-oferta/swarm-faq.md",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:35Z",
+   "bytes": 11081,
+   "sha256": "9723e04f6e6cea4c41c9ab94b3e513f0283be89391bd70fac89ba6f804c0dcb9"
+  },
+  {
+   "url": "https://docs.swarm.com/about/terms/imprint.md",
+   "archivo": "fuentes/radar-sin-oferta/swarm-imprint.md",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:35Z",
+   "bytes": 8514,
+   "sha256": "6a58aa22bb7074ff8b446d0b496853b4e8145473833d1e905d1ae2466b5e647f"
+  },
+  {
+   "url": "https://swarm.com/wp-json/wp/v2/pages?per_page=5",
+   "archivo": "fuentes/crudo/swarm-wp.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:35Z",
+   "bytes": 4194,
+   "sha256": "cff270c278039006aa391b2c7c561145dda091572be3174ec2d7672d2258f7e3"
+  },
+  {
+   "url": "https://courtyard.io/",
+   "archivo": "fuentes/radar-sin-oferta/courtyard-home.txt",
+   "http": "403",
+   "consultadoUtc": "2026-11-10T09:39:55Z",
+   "bytes": 106,
+   "sha256": "3105ba22d156d96cb1bb801ccb5a5022bb13490fd7cc2b8fc2c816dae35ce3b9",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://centrifuge.io/",
+   "archivo": "fuentes/radar-sin-oferta/centrifuge-home.txt",
+   "http": "403",
+   "consultadoUtc": "2026-11-10T09:40:43Z",
+   "bytes": 789,
+   "sha256": "fee05ae5210647deff34f74fbbf6a05d679482413f538ae1200ab821a682730f",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://digitalassets.franklintempleton.com/benji/",
+   "archivo": "fuentes/radar-sin-oferta/franklin-benji.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:55Z",
+   "bytes": 5349,
+   "sha256": "3d981c9197cacec61c7525a4f4e77d2070898bff0bf0ca3cd985de80932d011e",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://backed.fi/",
+   "archivo": "fuentes/radar-sin-oferta/backed-home.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:55Z",
+   "bytes": 5847,
+   "sha256": "a9178b43be4455564d918ef3b722df8f7c4415f15686260d71f863c74b9ea956",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://lofty.ai/",
+   "archivo": "fuentes/radar-sin-oferta/lofty-home.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:55Z",
+   "bytes": 8513,
+   "sha256": "d159595f1b41c8b4ba5f677aac8cc9a7320527b0f4bf564c18afdaf08749eed3",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://inx.co/",
+   "archivo": "fuentes/radar-sin-oferta/inx-home.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:55Z",
+   "bytes": 5932,
+   "sha256": "d33079dee3f7d8e8b2e38583406777ea1c7bf1e84bdee9e813c32ba310148f6d",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://www.fireblocks.com/",
+   "archivo": "fuentes/radar-sin-oferta/fireblocks-home.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:55Z",
+   "bytes": 3561,
+   "sha256": "495af04c947b2710c2d51cb4a4678034c27433d48cbccb6cb63bd37384eb5df6",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://figure.com/",
+   "archivo": "fuentes/radar-sin-oferta/figure-home.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:55Z",
+   "bytes": 20519,
+   "sha256": "42ecf74740cbbaca0fe858f3fdef1ad6b604c667f11d316e971222548a455b85",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://centrifuge.io/",
+   "archivo": "fuentes/radar-sin-oferta/centrifuge-home.html",
+   "http": "403",
+   "consultadoUtc": "2026-11-10T09:40:27Z",
+   "bytes": 5948,
+   "sha256": "0038ddabaa9798f065f2a914ec898a3218aad8232f089f29ef91412bda207e21"
+  },
+  {
+   "url": "https://centrifuge.io/terms",
+   "archivo": "fuentes/radar-sin-oferta/centrifuge-terms.html",
+   "http": "403",
+   "consultadoUtc": "2026-11-10T09:40:27Z",
+   "bytes": 5949,
+   "sha256": "39b177209077f076302942d022f33ad809ae1e95258edeb656a2ee8258bb3869"
+  },
+  {
+   "url": "https://maple.finance/",
+   "archivo": "fuentes/radar-sin-oferta/maple-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:40:27Z",
+   "bytes": 212113,
+   "sha256": "91e5e35b88ae72d1535ca48f42c354cf433dffb374197b21eb45a6c7325aed5d"
+  },
+  {
+   "url": "https://courtyard.io/",
+   "archivo": "fuentes/radar-sin-oferta/courtyard-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:40:27Z",
+   "bytes": 282311,
+   "sha256": "e49c9fc2456888577904ecad050eab35fc6f07e86ac98399141654d11554c1fe"
+  },
+  {
+   "url": "https://superstate.com/",
+   "archivo": "fuentes/radar-sin-oferta/superstate-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:40:27Z",
+   "bytes": 115149,
+   "sha256": "f2dafb53f11b49e0edb21a148b04ce604504fe96727722db6641609ff3a3b17d"
+  },
+  {
+   "url": "https://docs.courtyard.io/courtyard/logistics-and-legal/user-agreements/terms-of-service",
+   "archivo": "fuentes/radar-sin-oferta/courtyard-terms.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:40:27Z",
+   "bytes": 832707,
+   "sha256": "78c3a714ad5cae5e0c1cbddeb08571cfc5412ef03a82f1302ae5b6fb37fa5568"
+  },
+  {
+   "url": "https://tzero.com/",
+   "archivo": "fuentes/radar-sin-oferta/tzero-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:40:27Z",
+   "bytes": 512198,
+   "sha256": "98ceb432d2ddc30d258b4fdeac6b01cf38d3c4b7db3757ad25dd08cd5b78bc37"
+  },
+  {
+   "url": "https://tokeny.com/",
+   "archivo": "fuentes/radar-sin-oferta/tokeny-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:40:27Z",
+   "bytes": 253014,
+   "sha256": "de37b7af1db74890e50112934a33d19f862754a413e26609db9a7a925b29cc4c"
+  },
+  {
+   "url": "https://ondo.finance/",
+   "archivo": "fuentes/radar-sin-oferta/ondo-home.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:40:43Z",
+   "bytes": 16465,
+   "sha256": "70f415495fb3ebe952b23b19673aefc4f8ac399fc2353bd3dca00b8401b5c3a0",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://docs.centrifuge.io/",
+   "archivo": "fuentes/radar-sin-oferta/centrifuge-docs.txt",
+   "http": "403",
+   "consultadoUtc": "2026-11-10T09:40:43Z",
+   "bytes": 799,
+   "sha256": "0ddbd11c1122e67ac14ecbde18ef366837502674151d314433b53f012cc960af",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://superstate.com/investors",
+   "archivo": "fuentes/radar-sin-oferta/superstate-investors.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:40:43Z",
+   "bytes": 5063,
+   "sha256": "bbf2193cf5b2f6861dced4108d91b143b0e72b86c5492cdc33a52be94042791a",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://openeden.com/",
+   "archivo": "fuentes/radar-sin-oferta/openeden-home.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:40:43Z",
+   "bytes": 11639,
+   "sha256": "0f99af465ffbb8ca1b98d90cb0a3f32200ddb79b0b53f0b86e98f454103f280f",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://europe.republic.com/",
+   "archivo": "fuentes/radar-sin-oferta/republic-eu.txt",
+   "http": "403",
+   "consultadoUtc": "2026-11-10T09:40:43Z",
+   "bytes": 374,
+   "sha256": "e863c2ad3c57b432aae31e0999d0ed997cd235847b046b45bf93e30da77c1d1c",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://republic.com/",
+   "archivo": "fuentes/radar-sin-oferta/republic-home.txt",
+   "http": "403",
+   "consultadoUtc": "2026-11-10T09:40:43Z",
+   "bytes": 353,
+   "sha256": "f92381527df43fcc61769adfd20813d2b95c45b6d2bb8f3a7882395febdc77d4",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://ondo.finance/blog/introducing-ondo-intelligent-portfolios",
+   "archivo": "fuentes/radar-sin-oferta/ondo-ip-blog.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:41:18Z",
+   "bytes": 9655,
+   "sha256": "68633f56611e9c630a1a246088af4d5fa5c0b78f3251b107a681bb47622619a2",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://ondo.finance/intelligent-portfolios",
+   "archivo": "fuentes/radar-sin-oferta/ondo-ip.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:41:18Z",
+   "bytes": 12459,
+   "sha256": "a1122d23f8d6ab4bd43a1426c37f7606a198c8b1f5cd96ba203a7712578f626b",
+   "via": "playwright (texto visible)"
+  },
+  {
+   "url": "https://docs.ondo.finance/llms.txt",
+   "archivo": "fuentes/radar-sin-oferta/ondo-docs-llms.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:41:34Z",
+   "bytes": 20354,
+   "sha256": "45f783f73475e3b09b0d3d08f5049e24d193a4e3b2948cd9a98a6997d85583b8"
+  },
+  {
+   "url": "https://docs.ondo.finance/intelligent-portfolios/eligibility.md",
+   "archivo": "fuentes/radar-sin-oferta/ondo-ip-eligibility.md",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:41:40Z",
+   "bytes": 1200,
+   "sha256": "5be4bbb528b0eedf12ad67eb2b475b4f7102e12f1fa0738e66fec913f8e3fe5e"
+  },
+  {
+   "url": "https://docs.ondo.finance/intelligent-portfolios/legal-regulatory.md",
+   "archivo": "fuentes/radar-sin-oferta/ondo-ip-legal.md",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:41:41Z",
+   "bytes": 718,
+   "sha256": "a7883fd4f9941f9d73015be92d4c0e4b6de270e0f6201de52ea12d40959c4ce0"
+  },
+  {
+   "url": "https://docs.ondo.finance/ondo-stocks/eligibility.md",
+   "archivo": "fuentes/radar-sin-oferta/ondo-stocks-eligibility.md",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:41:46Z",
+   "bytes": 9141,
+   "sha256": "76916fd4a05b595e731a7288f8cffb36620e849478a06b3f8cc815571ba8ed61"
+  },
+  {
+   "url": "https://help.republic.com/en/",
+   "archivo": "fuentes/radar-sin-oferta/republic-help.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:41:59Z",
+   "bytes": 102887,
+   "sha256": "9daa8bf3f4d10f1315e9fbc0680f4f820f367efb47941bcd25fe3c705ef6f79b"
+  },
+  {
+   "url": "https://europe.republic.com/legal",
+   "archivo": "fuentes/radar-sin-oferta/republic-eu-legal.html",
+   "http": "403",
+   "consultadoUtc": "2026-11-10T09:41:59Z",
+   "bytes": 5627,
+   "sha256": "c7f12e3d9e3f9fdb71216127e62fde5826890c887c333817229c07bdbb843043"
+  },
+  {
+   "url": "https://help.republic.com/en/?q=mirror",
+   "archivo": "fuentes/radar-sin-oferta/republic-help-q-mirror.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:42:37Z",
+   "bytes": 59698,
+   "sha256": "632b29719c57699e075531465ba10802fddb8baeeead6378a6f47bbe439ba2f3"
+  },
+  {
+   "url": "https://help.republic.com/en/?q=token",
+   "archivo": "fuentes/radar-sin-oferta/republic-help-q-token.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:42:37Z",
+   "bytes": 56064,
+   "sha256": "09acfccbc8e9b004182e40fad96a2b54ee789296c4ce646f1e6d393b671f739d"
+  },
+  {
+   "url": "https://help.republic.com/en/?q=spain",
+   "archivo": "fuentes/radar-sin-oferta/republic-help-q-spain.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:42:38Z",
+   "bytes": 58899,
+   "sha256": "666c423cd0939a9ad05d9c7a59459d38d83762f0f656deb3b0ed25c2d771655c"
+  },
+  {
+   "url": "https://help.republic.com/en/articles/1913261-types-of-campaigns",
+   "archivo": "fuentes/radar-sin-oferta/republic-types-of-campaigns.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:42:54Z",
+   "bytes": 104745,
+   "sha256": "6778e6e51da4d9d3be47c845ccd2f822531633dcd642a2d4a4b22817ff2c0004"
+  },
+  {
+   "url": "https://docs.centrifuge.io/llms.txt",
+   "archivo": "fuentes/radar-sin-oferta/centrifuge-docs-llms.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:43:05Z",
+   "bytes": 14816,
+   "sha256": "2d58c3462e192adc72c5f29fa544d96b7e6f872028f73da1298edc21f1648b48"
+  },
+  {
+   "url": "https://app.centrifuge.io/",
+   "archivo": "fuentes/radar-sin-oferta/centrifuge-app.html",
+   "http": "403",
+   "consultadoUtc": "2026-11-10T09:43:05Z",
+   "bytes": 5948,
+   "sha256": "0b62a62637dde2b3832b92c1f794b179ebb4cafedf043fcd856d123b3bbf5403"
+  },
+  {
+   "url": "https://centrifuge.io/llms.txt",
+   "archivo": "fuentes/radar-sin-oferta/centrifuge-llms.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:43:05Z",
+   "bytes": 12404,
+   "sha256": "7aa9653e8a8e4e9bc723f6009d5db044ed0b4a0aeb84bfc863d36092d5f0d80b"
+  },
+  {
+   "url": "https://docs.maple.finance/legal/interface-terms-of-use-syrupusdc-and-syrupusdt",
+   "archivo": "fuentes/radar-sin-oferta/maple-terms.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:43:28Z",
+   "bytes": 577506,
+   "sha256": "817bd44a284035dfb07c54cc1d0231a9bf9d4ff8a45190612ccb47fa34dac6c6"
+  },
+  {
+   "url": "https://www.lofty.ai/terms",
+   "archivo": "fuentes/radar-sin-oferta/lofty-terms.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:43:28Z",
+   "bytes": 122398,
+   "sha256": "bc992de0e90fe293c5eacc2bb013cc78130fb5e95ae122c041db128dbba156a7"
+  },
+  {
+   "url": "https://www.figuremarkets.com/disclosures/",
+   "archivo": "fuentes/radar-sin-oferta/figure-disclosures.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:43:29Z",
+   "bytes": 90231,
+   "sha256": "a8d674f843cda374b814e3e2e99c15f9f9a9a7178e42f8741c3f7ddfbdbc164c"
+  },
+  {
+   "url": "https://docs.openeden.com/tbill/investor-onboarding",
+   "archivo": "fuentes/radar-sin-oferta/openeden-onboarding.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:43:29Z",
+   "bytes": 447359,
+   "sha256": "019f9776fc7665f1abf9a55aed863ecc1e7cebb953b41d15ccb258242e2309fd"
+  },
+  {
+   "url": "https://blocksquare.io/",
+   "archivo": "fuentes/radar-sin-oferta/blocksquare-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:44:41Z",
+   "bytes": 5138,
+   "sha256": "d8c6bf0a64b15a6df71ea2eca4bdf004b571f101fb4527e228ed2ba70355814b"
+  },
+  {
+   "url": "https://www.reental.co/es",
+   "archivo": "fuentes/radar-sin-oferta/reental-home.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:44:41Z",
+   "bytes": 278431,
+   "sha256": "ebc987292f934c638cee83185d796a9439dd3222e0d11200fdf2010ef7a00463"
+  },
+  {
+   "url": "https://www.superstate.com/opening-bell",
+   "archivo": "fuentes/radar-sin-oferta/superstate-opening-bell.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:44:43Z",
+   "bytes": 127766,
+   "sha256": "03fb46437578f0baac93914f47093c61173f25071e54f44c1d2130d21405e7ff"
+  },
+  {
+   "url": "(texto extraído con pdftotext -layout de pdf/securitize-eu-mifid-precontractual.pdf)",
+   "archivo": "fuentes/radar-sin-oferta/pdf/securitize-eu-mifid-precontractual.txt",
+   "http": "-",
+   "consultadoUtc": null,
+   "bytes": 21843,
+   "sha256": "775517880292f253830cefff8296b61964b3627cea4936d65a0f1e31eb04d402"
+  },
+  {
+   "url": "(texto extraído con pdftotext -layout de pdf/securitize-eu-terms.pdf)",
+   "archivo": "fuentes/radar-sin-oferta/pdf/securitize-eu-terms.txt",
+   "http": "-",
+   "consultadoUtc": null,
+   "bytes": 37313,
+   "sha256": "33bc3dc769395566532683e9626acf3fbeb690a24f1a59a8f0d56d684f07a384"
+  },
+  {
+   "url": "(texto extraído con pdftotext -layout de pdf/securitize-entitlement-token-disclosure.pdf)",
+   "archivo": "fuentes/radar-sin-oferta/pdf/securitize-entitlement-token-disclosure.txt",
+   "http": "-",
+   "consultadoUtc": null,
+   "bytes": 23389,
+   "sha256": "9bdec43e1345d0c5bbbe949ac70e439a81c05b6a8cba9799cef40c0badd78a16"
+  }
+ ],
+ "nota": "Rutas relativas a grupos/ampliacion/. Los .txt de Playwright son el texto visible de la página renderizada; los .rendered.html, el DOM final. WebSearch y WebFetch solo se usaron para descubrir (Republic Europe en prensa, Figure Markets Ireland, Securitize Europe en prensa); no respaldan ninguna afirmación.",
+ "webfetchWebsearch": [
+  {
+   "herramienta": "WebSearch",
+   "consulta": "Republic Europe ECSP crowdfunding licence tokenized offering EU investors 2026",
+   "uso": "descubrir"
+  },
+  {
+   "herramienta": "WebFetch",
+   "url": "https://letsdatascience.com/news/republic-europe-expands-retail-access-to-private-markets-600d3a16",
+   "uso": "descubrir (prensa, no primaria)"
+  },
+  {
+   "herramienta": "WebFetch",
+   "url": "https://centrifuge.io/",
+   "resultado": "403 (Cloudflare), igual que curl y Playwright"
+  },
+  {
+   "herramienta": "WebSearch",
+   "consulta": "\"Securitize Europe\" retail investors EU Securitize Stocks onboarding wallet help",
+   "uso": "descubrir"
+  },
+  {
+   "herramienta": "WebSearch",
+   "consulta": "\"Figure Markets Ireland\" Central Bank of Ireland authorisation EU customers",
+   "uso": "descubrir (solo ofertas de empleo; no primaria)"
+  }
+ ]
+}

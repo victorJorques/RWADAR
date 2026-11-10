@@ -1,0 +1,377 @@
+{
+ "revisor": "revisión independiente · lente regulación y acceso legal",
+ "slug": "alan-frei-company",
+ "fecha": "2026-11-10",
+ "nota": "crudo/ no va a Git (PDF con firmas, JSON de Zefix con nombres de personas). Solo lecturas públicas; sin sesión, KYC ni monedero.",
+ "consultas": [
+  {
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2023-7053",
+   "archivo": "crudo/boe-ley-6-2023.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:48:27Z",
+   "bytes": 1317091,
+   "sha256": "47c52c96083bbe40a741e536349c0e8f5598baa8875e9f6664f6eb219a1d4235"
+  },
+  {
+   "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1527753.json",
+   "archivo": "crudo/zefix-1527753.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:48:29Z",
+   "bytes": 9544,
+   "sha256": "a9714a85ca42d1d8b79301f6c3a07125cb34a716df941309bd12ad75b8916817"
+  },
+  {
+   "url": "https://alanfrei.com/investor",
+   "archivo": "crudo/alanfrei-investor.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:48:30Z",
+   "bytes": 274484,
+   "sha256": "d9a5427b4689849ea487c046de7664ff15f8e59947b544952892e51ec14846b9"
+  },
+  {
+   "url": "https://shares.alanfrei.com/investor-page-terms",
+   "archivo": "crudo/shares-alanfrei-investor-page-terms.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:48:30Z",
+   "bytes": 26190,
+   "sha256": "efd5860fd906a1952c8da6e89d0849cc64d509974aefe8218c973c7b7eb458a6"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alan+Frei",
+   "archivo": "crudo/cnmv-adv-Alan_Frei.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:49:30Z",
+   "bytes": 211414,
+   "sha256": "6d28c9407d63793e45e436d8794397a03fa7f5745235d76e8328afd8cfb5bf97"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alan+Frei+Company",
+   "archivo": "crudo/cnmv-adv-Alan_Frei_Company.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:49:33Z",
+   "bytes": 211590,
+   "sha256": "e9113dbebf3f8c6ae38b0b8924882f813721ea7fd7d053b64eb8147605b4b944"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=alanfrei",
+   "archivo": "crudo/cnmv-adv-alanfrei.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:49:37Z",
+   "bytes": 211392,
+   "sha256": "0b0d1e117c050dc39a985d130da1a43a7ba91aa85bbd839b12e348a5c6697bbb"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat",
+   "archivo": "crudo/cnmv-adv-Aktionariat.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:49:40Z",
+   "bytes": 211458,
+   "sha256": "5a5b1976b0f7325f69880172b5dd03631429d125e195c14f8f5861f8b4061e40"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=shares.alanfrei.com",
+   "archivo": "crudo/cnmv-adv-shares_alanfrei_com.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:49:43Z",
+   "bytes": 211634,
+   "sha256": "d5989568486166d1e3b57a9af913932675d05b97e564275e5586daba5d72d41b"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Capital",
+   "archivo": "crudo/cnmv-adv-control-Capital.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:49:47Z",
+   "bytes": 239757,
+   "sha256": "cde8c722a7b1be7d9ace1581bf8f200291d67e9d8436ec11e521900f3ffee27e"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/sistemas-multilaterales-negociacion/ofertas-exentos-folleto",
+   "archivo": "crudo/cnmv-ofertas-exentas-folleto.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:50:02Z",
+   "bytes": 213992,
+   "sha256": "f37106c4a5a5bf55cb0a7b6f4c6e177fe66df8f470d57cad4ea952ce9d2a9bc3"
+  },
+  {
+   "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:02017R1129-20241204",
+   "archivo": "crudo/eurlex-pr-consolidado-20241204.html",
+   "http": "202",
+   "consultadoUtc": "2026-11-10T09:50:15Z",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "nota": "curl: 202 vacío (desafío de EUR-Lex); no leído"
+  },
+  {
+   "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32024R2809",
+   "archivo": "crudo/eurlex-listing-act-2024-2809.html",
+   "http": "202",
+   "consultadoUtc": "2026-11-10T09:50:15Z",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "nota": "curl: 202 vacío; leído después con Playwright"
+  },
+  {
+   "url": "https://storage.googleapis.com/aktionariat/public/4183/e4aa8c60-ad0e-4e6f-bdad-26da46f2cce4/Registration%2BAgreement%2BAlan%2BFrei%2BCompany%2BAG%2BFinal.pdf",
+   "archivo": "crudo/alanfrei-RegistrationAgreement.pdf",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:51:15Z",
+   "bytes": 180362,
+   "sha256": "f046305cdc370f4b2566704036944297c86f08d7d4dbd562344f8d2970e53772"
+  },
+  {
+   "url": "https://storage.googleapis.com/aktionariat/public/4183/8d41cc5b-82ae-477d-a8b3-62b333d1e317/Token%2BShareholder%2BAgreement%2BAlan%2BFrei%2BCompany%2BAG.pdf",
+   "archivo": "crudo/alanfrei-TokenShareholderAgreement.pdf",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:51:16Z",
+   "bytes": 131040,
+   "sha256": "9b8b77209c5079ac3d5bf70f844b1d5a4768fb0029bfd91598aa16e9848405d2"
+  },
+  {
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "metodo": "POST",
+   "cuerpo": "query=Alan%20Frei&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4",
+   "archivo": "crudo/finma-aut-Alan-Frei.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:51:45Z",
+   "bytes": 464,
+   "sha256": "1ce5386b80e5b53081ddbf098eab2def18199ec65f8f9987a67a42a4e7ad3e24"
+  },
+  {
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "metodo": "POST",
+   "cuerpo": "query=Aktionariat&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4",
+   "archivo": "crudo/finma-aut-Aktionariat.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:51:46Z",
+   "bytes": 466,
+   "sha256": "5bc7a55233cd9af8d8a4590b8e74c16f7d435697c9e13b880f0d2439425da2c6"
+  },
+  {
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "metodo": "POST",
+   "cuerpo": "query=Sygnum&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4",
+   "archivo": "crudo/finma-aut-Sygnum.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:51:47Z",
+   "bytes": 1086,
+   "sha256": "07fee30eaefe2fb8763822859034ae6485c5b67df8b2f86a5ba49ded97f62aa5"
+  },
+  {
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "metodo": "POST",
+   "cuerpo": "ds={1C6B8731-638C-4003-A93C-A625BF7A6800}&Order=4",
+   "archivo": "crudo/finma-advertencias.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:51:47Z",
+   "bytes": 823798,
+   "sha256": "b7cf5d1e227c8ea643f971cac38c07e0d82ba139c9f93ecc6b303804240d12b6"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad?nombre=Alan%20Frei",
+   "archivo": "crudo/cnmv-entidad-Alan_Frei.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:52:11Z",
+   "bytes": 212636,
+   "sha256": "31ed50d730adfdc1ccd944ad867d3eefcda2afdc6e927e414401d263ffe18004",
+   "nota": "GET con ?nombre= no ejecuta la búsqueda (formulario); ver cnmv-entidad-pw-*"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad?nombre=Aktionariat",
+   "archivo": "crudo/cnmv-entidad-Aktionariat.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:52:13Z",
+   "bytes": 212674,
+   "sha256": "47a97fb031b0c79ea76777f25ebcf2bf8470c9e7fa1698cac3fb6b1827e5cafb",
+   "nota": "ídem"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad?nombre=Sygnum",
+   "archivo": "crudo/cnmv-entidad-control-Sygnum.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:52:16Z",
+   "bytes": 212577,
+   "sha256": "6b814b46472232568ee7d2f2edd264a498b480af6ef106ab41da211f8aedfac3",
+   "nota": "ídem"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=Alan%20Frei&lei=",
+   "archivo": "crudo/cnmv-pasaportes-Alan_Frei.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:52:18Z",
+   "bytes": 212629,
+   "sha256": "f742c43f2198cdfd590f281bfb99aa11796d5341b5b9e2c39bb51625666b2fd5"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=Backed&lei=",
+   "archivo": "crudo/cnmv-pasaportes-control-Backed.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:52:21Z",
+   "bytes": 219960,
+   "sha256": "2f0d28d26cd83f2e8c4e5b9a6898241eb91791352ef5f89ea2779e04e99fcc5b"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=2&nombre=Alan+Frei",
+   "archivo": "crudo/cnmv-adv-tipo2-Alan_Frei.html",
+   "http": "400",
+   "consultadoUtc": "2026-11-10T09:55:17Z",
+   "bytes": 12063,
+   "sha256": "5ad0bf15f5ac1ae1918599f27226e82b8129d34507284b60ea5efb0180385031",
+   "nota": "tipo=2 no válido (página de error); no cuenta como consulta"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=3&nombre=Alan+Frei",
+   "archivo": "crudo/cnmv-adv-tipo3-Alan_Frei.html",
+   "http": "400",
+   "consultadoUtc": "2026-11-10T09:55:19Z",
+   "bytes": 12063,
+   "sha256": "5ad0bf15f5ac1ae1918599f27226e82b8129d34507284b60ea5efb0180385031",
+   "nota": "tipo=3 no válido (página de error); no cuenta como consulta"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=4&nombre=Alan+Frei",
+   "archivo": "crudo/cnmv-adv-tipo4-Alan_Frei.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:55:21Z",
+   "bytes": 211438,
+   "sha256": "1bdd27c137d2d46ee632b132e21a5099a6fa762b8460ce1ac88fb683b00900eb"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*Frei*&wt=json&rows=50",
+   "archivo": "crudo/esma-prospectus-Frei.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:55:31Z",
+   "bytes": 7981,
+   "sha256": "374ed6f26ce4d68c4486e1ea34aea64f0a0d3f25f343e92672c8f98e52997c2e"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*Backed*&wt=json&rows=1",
+   "archivo": "crudo/esma-prospectus-control-Backed.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:55:34Z",
+   "bytes": 1298,
+   "sha256": "201d5abc7e7f308d79281bbd7aed135511e6f3d8e98edd0ba872cb717385a9b8"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Servicios-Financiacion-Participativa/Listado-Proveedores-Europeos.aspx",
+   "archivo": "crudo/cnmv-psfp-europeos.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:56:43Z",
+   "bytes": 176083,
+   "sha256": "36eb075387c4555b7ea4fd4629bb3879fac3064f9cee019770b4e22c8dd35977"
+  },
+  {
+   "url": "https://www.cnmv.es/DocPortal/Fintech/QAsFinTech.pdf",
+   "archivo": "crudo/cnmv-QAsFinTech.pdf",
+   "http": "404",
+   "consultadoUtc": "2026-11-10T09:57:23Z",
+   "bytes": 103,
+   "sha256": "90b2d35cd5e08370ed20db81197dd9da1a4dbb421f71293fd5733ea49eb7b3e1",
+   "nota": "404 en la URL antigua DocPortal/Fintech/QAsFinTech.pdf"
+  },
+  {
+   "url": "https://www.cnmv.es/docportal/Legislacion/FAQ/QAsFinTech.pdf",
+   "archivo": "crudo/cnmv-QAsFinTech.pdf",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:57:50Z",
+   "bytes": 312435,
+   "sha256": "4ed4c0ba3e2c6d02f3aecf07fcfdd4e13c5617af0ce7afe8e27353d9e3138566"
+  },
+  {
+   "url": "https://api.polyreg.ch/api/membership-check?name=Alan%20Frei%20Company%20AG",
+   "archivo": "crudo/polyreg-alan-frei-company-ag.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:58:25Z",
+   "bytes": 83,
+   "sha256": "b2de0a9c9759d8988438206d57423bb8a6ed6483a8a9990dc5b01570a8cbb890"
+  },
+  {
+   "url": "https://api.polyreg.ch/api/membership-check?name=Switzerlend%20AG",
+   "archivo": "crudo/polyreg-control-switzerlend-ag.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:58:25Z",
+   "bytes": 76,
+   "sha256": "d7ca18f4bbcdc568a8a77674c41057e7fd39a391de3e999e8ca7a8a3c33b5d77"
+  },
+  {
+   "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32024R2809",
+   "archivo": "crudo/eurlex-listing-act-2024-2809.txt",
+   "http": "render",
+   "consultadoUtc": "2026-11-10T09:50:31Z",
+   "bytes": 297960,
+   "sha256": "b45cf8bb6f8b126343c7c4cd8de12923253c4150eb2a284f2125dea116522c24",
+   "nota": "Playwright; curl daba 202 vacío (desafío). innerText del Reglamento (UE) 2024/2809"
+  },
+  {
+   "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32014R1286",
+   "archivo": "crudo/eurlex-priips-1286-2014.txt",
+   "http": "render",
+   "consultadoUtc": "2026-11-10T09:58:42Z",
+   "bytes": 105529,
+   "sha256": "ca065f609cc0a6e040d3d333a0b40159f6160bf6a41c6de29e9fbbb00cae0efd",
+   "nota": "Playwright; innerText del Reglamento PRIIPs"
+  },
+  {
+   "url": "https://shares.alanfrei.com/",
+   "archivo": "crudo/render-shares_alanfrei_com_.txt",
+   "http": "render",
+   "consultadoUtc": "2026-11-10T09:56:24Z",
+   "bytes": 4433,
+   "sha256": "b0925eaa78c3decc3466399350725f87a42f6e1dfeb78b64630e5b371b8f3d97",
+   "nota": "Playwright, portada renderizada"
+  },
+  {
+   "url": "https://shares.alanfrei.com/invest",
+   "archivo": "crudo/render-shares_alanfrei_com_invest.txt",
+   "http": "render",
+   "consultadoUtc": "2026-11-10T09:56:32Z",
+   "bytes": 2504,
+   "sha256": "71d8edf226bc2cdf94a2a05dbb1cd08989e930346431bb1bf3164ae5b475fa29",
+   "nota": "Playwright, /invest renderizado"
+  },
+  {
+   "url": "https://www.aktionariat.com/disclaimer",
+   "archivo": "crudo/render-aktionariat-disclaimer.txt",
+   "http": "render",
+   "consultadoUtc": "2026-11-10T09:58:11Z",
+   "bytes": 1933,
+   "sha256": "451719c7b48fa2174e5ba0dfa35ad70b463a0a027c766287900da3e909c50b3b",
+   "nota": "Playwright"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario: Aktionariat)",
+   "archivo": "crudo/cnmv-entidad-pw-Aktionariat.txt",
+   "http": "render",
+   "consultadoUtc": "2026-11-10T09:54:34Z",
+   "bytes": 2330,
+   "sha256": "d70ca01c4059d54ce9ea00e2ec0a959c89b3b4cbf4f79b9d04a8bfd8337036c2",
+   "nota": "Playwright, formulario ctl00_ContentPrincipal_txtBusqueda"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario: Alan Frei)",
+   "archivo": "crudo/cnmv-entidad-pw-Alan_Frei.txt",
+   "http": "render",
+   "consultadoUtc": "2026-11-10T09:54:52Z",
+   "bytes": 2330,
+   "sha256": "d70ca01c4059d54ce9ea00e2ec0a959c89b3b4cbf4f79b9d04a8bfd8337036c2",
+   "nota": "Playwright"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario: Renta 4, control)",
+   "archivo": "crudo/cnmv-entidad-pw-Renta_4.txt",
+   "http": "render",
+   "consultadoUtc": "2026-11-10T09:55:06Z",
+   "bytes": 5103,
+   "sha256": "fe0bb5dbc9b64cb94edf4f0d925b5c650f86a85b4a879e46d51e7f28a8e36230",
+   "nota": "Playwright; control con 89 resultados"
+  },
+  {
+   "url": null,
+   "archivo": "extractos-regulacion.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 19648,
+   "sha256": "946921c3de11a14cc0dfead9588a3c012a6d7d93ae096d9ca76e98f20ba88466",
+   "nota": "extractos literales de las fuentes de arriba; sin datos personales"
+  }
+ ]
+}

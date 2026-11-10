@@ -1,0 +1,150 @@
+{
+  "slug": "revario",
+  "tipoExpediente": "candidata",
+  "grupo": "suiza",
+  "proveedor": "Aktionariat (widget en revario.ch)",
+  "plataformaSlug": "aktionariat",
+  "entidadComercializadora": "Revario SA (vende sus propias acciones con el widget de Aktionariat AG en su web)",
+  "emisor": "Revario SA",
+  "vehiculo": "Sociedad anónima suiza (SA); sin SPV",
+  "token": "RSAS, ERC-20 en Ethereum; contrato de venta del emisor 0x5deb1aa15df2325c9274cd87003804c5d0874dfe (Brokerbot)",
+  "derechoAdquirido": "Acciones tokenizadas del emisor (acuerdos no leídos hoy: no hacía falta para decidir)",
+  "jurisdiccion": "CH",
+  "identificador": "token RSAS",
+  "moneda": "CHF / ZCHF",
+  "documentos": [
+    {
+      "titulo": "Página «Crowdinvesting» del emisor (campaña 2026)",
+      "url": "https://www.revario.ch/pages/crowdinvesting",
+      "versionOFecha": "sin fecha; leída el 10/11/2026 (HTML y renderizada)",
+      "paginas": null,
+      "sha256": null,
+      "leido": true
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "FINMA · registro de entidades autorizadas",
+      "entidad": "Revario",
+      "numero": null,
+      "url": "https://www.finma.ch/en/finma-public/authorised-institutions-individuals-and-products/",
+      "alcance": "Count 0: no es entidad autorizada.",
+      "consultadoUtc": "2026-11-10T09:28:32Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Revario",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Revario",
+      "consultadoUtc": "2026-11-10T09:28:32Z"
+    },
+    {
+      "regulador": "FINMA · lista de advertencias",
+      "busqueda": "revario",
+      "resultado": "sin coincidencias (2.402 entradas)",
+      "url": "https://www.finma.ch/en/finma-public/warnungen/warning-list/",
+      "consultadoUtc": "2026-11-10T09:07:28Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "settings()=1 · getPrice()=40 · token.balanceOf(bot)=9.131",
+      "dato": "Venta del emisor activa a 40 CHF",
+      "fuentePrimaria": "Ethereum, eth_call vía https://ethereum-rpc.publicnode.com al contrato 0x5deb1aa15df2325c9274cd87003804c5d0874dfe",
+      "localizador": "bloque leído a las 09:17:41Z",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:17:41Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "actividad",
+      "literal": "última PRIMARY 2026-10-26T16:10:23Z, 200 acciones a 40",
+      "dato": "Última compra al emisor 26/10/2026; 173 compras en 12 meses (9.111 acciones). Ninguna operación entre accionistas en todo el historial (435 operaciones).",
+      "fuentePrimaria": "https://shares.aktionariat.com/api/secondarymarkets/getTrades",
+      "localizador": "POST {\"companySlug\":\"revario\"} (09:25:43Z)",
+      "fechaDato": "2026-10-26",
+      "consultadoUtc": "2026-11-10T09:25:43Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "minimo",
+      "literal": "bankTransferLimit: enabled true, min 500 · cryptoPaymentsLimit min 50000000",
+      "dato": "500 CHF por transferencia (el pago en cripto queda en la práctica cerrado)",
+      "fuentePrimaria": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=RSAS",
+      "localizador": "API pública (09:28:29Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:28:29Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "(sin texto sobre países, EEE ni residencia en la página de la campaña)",
+      "dato": null,
+      "fuentePrimaria": "https://www.revario.ch/pages/crowdinvesting",
+      "localizador": "Búsqueda de «EEE», «économique», «résid», «domicil», «100 000» en el HTML (09:25:44Z) y en la página renderizada (09:29:49Z): sin resultados",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:29:49Z",
+      "alcanceYLimites": "No se sabe si admite a residentes en España.",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "salida",
+      "literal": "settings()=1 (recompra apagada) · getOrderBook: bids [] asks []",
+      "dato": "Sin salida visible hoy: ni recompra ni compradores; nunca ha habido una operación entre accionistas",
+      "fuentePrimaria": "https://shares.aktionariat.com/api/secondarymarkets/getOrderBook",
+      "localizador": "POST {\"companySlug\":\"revario\"} (09:28:28Z)",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-10T09:28:28Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sin licencia FINMA; sin advertencias de la CNMV ni de FINMA."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple",
+      "nota": "Venta del emisor muy activa (173 compras en 12 meses; última 26/10/2026)."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_verificable",
+      "nota": "No publica acceso para el EEE; sin salida."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "no_verificable",
+      "nota": "No se leyeron acuerdos ni riesgos: la decisión no depende de ellos."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [],
+  "avisosConFecha": [],
+  "propuestaTarjeta": null,
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "500 CHF",
+    "supervisorVerificado": null,
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "si",
+    "porQueDestaca": "Es la emisora con más compras al emisor del directorio de Aktionariat en el último año.",
+    "porQueNo": "No dice si admite a residentes en España y no hay salida visible (ni recompra ni compradores)."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "Nunca estudiada antes. Venta del emisor muy activa, pero su página no dice qué países pueden comprar (ni en el HTML ni renderizada) y no hay salida: recompra apagada, libro vacío y ninguna operación entre accionistas en 435 operaciones.",
+  "bloqueos": [
+    "Acuerdos, registro mercantil y riesgos no leídos hoy (no hacían falta para decidir)."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-10T09:17:06Z",
+    "finUtc": "2026-11-10T09:30:39Z"
+  }
+}

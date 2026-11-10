@@ -1,0 +1,155 @@
+{
+  "slug": "bergfuerst",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-europa",
+  "proveedor": "BERGFÜRST",
+  "plataformaSlug": null,
+  "entidadComercializadora": "BERGFÜRST AG i.L. (en liquidación), Berlín",
+  "emisor": null,
+  "vehiculo": null,
+  "token": null,
+  "derechoAdquirido": "Su licencia ECSP solo cubre intermediación de préstamos (no valores ni tokens)",
+  "jurisdiccion": "DE",
+  "identificador": "HRB 139567 B (Amtsgericht Charlottenburg)",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "BERGFÜRST · Impressum",
+      "url": "https://de.bergfuerst.com/impressum",
+      "versionOFecha": "consultado 10/11/2026",
+      "paginas": null,
+      "sha256": "e37459a11944a7926be51f22351623c96d871a6a384281900d678db4aa75e58d",
+      "leido": true,
+      "nota": "sha256 del texto renderizado original; la copia en fuentes/bergfuerst/ lleva recortados los nombres de liquidadores y consejeros"
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "CNMV (PSFP europeos que prestan servicios en España)",
+      "entidad": "BERGFÜRST AG",
+      "numero": "47",
+      "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es",
+      "alcance": "Alemania; inicio en España el 20/12/2025. El listado no indica la liquidación.",
+      "consultadoUtc": "2026-11-10T09:02:23Z"
+    },
+    {
+      "regulador": "ESMA (registro ECSP) / BaFin",
+      "entidad": "BERGFÜRST AG y Bergfürst AG (dos entradas)",
+      "numero": null,
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_entityTypeCode:CSP&rows=400&wt=json",
+      "alcance": "Ambas «Active», autorizadas el 28/03/2024 (última actualización 02/06/2026 y 17/04/2024). No indica la liquidación.",
+      "consultadoUtc": "2026-11-10T09:03:56Z"
+    },
+    {
+      "regulador": "BaFin (según el aviso legal de la propia web)",
+      "entidad": "BERGFÜRST AG i.L.",
+      "numero": "48448",
+      "url": "https://de.bergfuerst.com/impressum",
+      "alcance": "Erlaubnis como Schwarmfinanzierungsdienstleister solo para «Vermittlung von Krediten» (art. 2.1.a.i del Reglamento 2020/1503).",
+      "consultadoUtc": "2026-11-10T09:13:30Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "Bergfürst",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bergf%C3%BCrst",
+      "consultadoUtc": "2026-11-10T09:12:45Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Bergfurst",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bergfurst",
+      "consultadoUtc": "2026-11-10T09:12:46Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "BERGFÜRST AG i.L. (in Liquidation)",
+      "dato": "sociedad en liquidación",
+      "fuentePrimaria": "https://de.bergfuerst.com/impressum",
+      "localizador": "Impressum, «Name und Sitz»; también al pie de bergfuerst.com/es: «© 2011-2026 BERGFÜRST AG I.L. (EN LIQUIDACIÓN)»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:13:30Z",
+      "alcanceYLimites": "No se buscó la fecha de entrada en liquidación (registro mercantil alemán no consultado).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "licencia",
+      "literal": "Erlaubnis als Schwarmfinanzierungsdienstleister ... im Hinblick auf die Vermittlung von Krediten",
+      "dato": "ECSP solo para préstamos",
+      "fuentePrimaria": "https://de.bergfuerst.com/impressum",
+      "localizador": "Impressum, «Status Schwarmfinanzierungsplattform»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:13:30Z",
+      "alcanceYLimites": "No cubre valores negociables ni tokens.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "BERGFÜRST AG · ALEMANIA · 47 · 20/12/2025",
+      "dato": "notificada en España desde el 20/12/2025",
+      "fuentePrimaria": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es",
+      "localizador": "Listado CNMV de PSFP europeos",
+      "fechaDato": "2025-12-20",
+      "consultadoUtc": "2026-11-10T09:02:23Z",
+      "alcanceYLimites": "La web en español solo muestra el acceso de clientes; no hay ofertas a la vista.",
+      "estado": "respaldado_con_alcance"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "ECSP de BaFin notificado a la CNMV, pero solo para préstamos y la sociedad está en liquidación."
+    },
+    "actividadYFecha": {
+      "veredicto": "no_cumple",
+      "nota": "En liquidación; la web solo muestra el acceso de clientes."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "No hay oferta ni producto tokenizado."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sin advertencias de la CNMV."
+    }
+  },
+  "estadoOferta": "desaparecida",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "expediente",
+      "antes": "sin expediente (idea del encargo de hoy)",
+      "ahora": "BERGFÜRST AG está en liquidación y su licencia solo cubre préstamos; la CNMV (nº 47) y ESMA la siguen listando sin indicarlo",
+      "fuente": "https://de.bergfuerst.com/impressum",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": null,
+  "resumenTarjeta": {
+    "minimo": null,
+    "accesoEspana": "Notificada en España (CNMV nº 47), pero la sociedad está en liquidación",
+    "salida": null
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": null,
+    "supervisorVerificado": "BaFin (ECSP, solo préstamos); CNMV nº 47",
+    "documentacionClara": "no",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Estaba en la lista de ideas y figura en el listado de la CNMV.",
+    "porQueNo": "Está en liquidación, solo intermediaba préstamos y no tokeniza nada."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir: BERGFÜRST AG está en liquidación («i.L.») según su propio aviso legal, su licencia ECSP solo cubre préstamos y no hay producto tokenizado ni oferta abierta.",
+  "bloqueos": [],
+  "consulta": {
+    "inicioUtc": "2026-11-10T09:02:23Z",
+    "finUtc": "2026-11-10T09:26:29Z"
+  }
+}

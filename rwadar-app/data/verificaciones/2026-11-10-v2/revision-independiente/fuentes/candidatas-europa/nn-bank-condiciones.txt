@@ -1,0 +1,7 @@
+Fuente: https://www.nn-group.com/site/binaries/content/assets/nn-group/nn-bank/bonds/covered-bonds/digital-final-terms-terms--conditions.pdf
+Consultado: 2026-11-10T09:41:33Z · HTTP 200 · 736726 bytes · sha256 66430f24e4b3be7c7fa1cf681b25be0dbb7a16747b1e7975bf0c359583ac72c8
+Copia original en crudo/nn-bank-final-terms.pdf (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+Dated 26 May 2026
+Covered Bond Programme, a fictional tokenised programme based on Nationale-Nederlanden Bank N.V.’s Covered Bond
+PROHIBITION OF SALES TO EEA RETAIL INVESTORS – The Tokenised Covered Bonds are not intended to be

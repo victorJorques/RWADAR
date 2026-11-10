@@ -1,0 +1,12 @@
+Buscador de advertencias de la CNMV (tipo=1, no autorizadas). URL: https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=<nombre>
+
+cnmv-adv-Axiology.html · 2026-11-10T09:38:30Z · Criterios de consulta: por tipo No autorizadas,  de nombre Axiology. · SIN COINCIDENCIAS («No hay datos disponibles.»)
+cnmv-adv-BergfC3BCrst.html · 2026-11-10T09:38:33Z · Criterios de consulta: por tipo No autorizadas,  de nombre Bergfürst. · SIN COINCIDENCIAS («No hay datos disponibles.»)
+cnmv-adv-Bergfurst.html · 2026-11-10T09:38:34Z · Criterios de consulta: por tipo No autorizadas,  de nombre Bergfurst. · SIN COINCIDENCIAS («No hay datos disponibles.»)
+cnmv-adv-Blocksquare.html · 2026-11-10T09:38:25Z · Criterios de consulta: por tipo No autorizadas,  de nombre Blocksquare. · SIN COINCIDENCIAS («No hay datos disponibles.»)
+cnmv-adv-DeXentra.html · 2026-11-10T09:38:22Z · Criterios de consulta: por tipo No autorizadas,  de nombre DeXentra. · SIN COINCIDENCIAS («No hay datos disponibles.»)
+cnmv-adv-Oceanpoint.html · 2026-11-10T09:38:27Z · Criterios de consulta: por tipo No autorizadas,  de nombre Oceanpoint. · SIN COINCIDENCIAS («No hay datos disponibles.»)
+cnmv-adv-OilXCoin.html · 2026-11-10T09:38:24Z · Criterios de consulta: por tipo No autorizadas,  de nombre OilXCoin. · SIN COINCIDENCIAS («No hay datos disponibles.»)
+cnmv-adv-Okx.html · 2026-11-10T09:38:36Z · Criterios de consulta: por tipo No autorizadas,  de nombre Okx. · FILAS: 18/05/2026 / HTTPS://WWW.AAYOKX.COM/ / AAYOKX / 04/04/2022 / HTTPS://WWW.OKX.COM/ / OKX
+cnmv-adv-Profitus.html · 2026-11-10T09:38:29Z · Criterios de consulta: por tipo No autorizadas,  de nombre Profitus. · SIN COINCIDENCIAS («No hay datos disponibles.»)
+cnmv-adv-reinvest24.html · 2026-11-10T09:32:54Z · Criterios de consulta: por tipo No autorizadas,  de nombre Reinvest24. · FILAS: 09/06/2025 / WWW.REINVEST24.COM / REINVEST24 OÜ

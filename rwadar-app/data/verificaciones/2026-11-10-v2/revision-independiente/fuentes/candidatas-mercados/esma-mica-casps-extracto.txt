@@ -1,0 +1,12 @@
+URL: https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv (registro provisional MiCA de ESMA, proveedores de servicios de criptoactivos)
+HTTP 200 · consultadoUtc 2026-11-10T09:30:12Z · SHA-256 CSV fd255f543d4c5746d96155744b3698c9a53acaf96168b028274bb06260896ca6 (CSV completo no conservado: solo filas de interés)
+
+Bybit EU GmbH | Austrian Financial Market Authority (FMA) | LEI 5299005V5GBSN2A4C303 | autorización 28/05/2025 | fin — | web https://www.bybit.eu | España en pasaporte: sí | última actualización 28/05/2025
+eToro (Europe) Ltd | Cyprus Securities and Exchange Commission (CySEC) | LEI 213800GIFQMSV7HROS23 | autorización 16/01/2025 | fin — | web www.etoro.com | España en pasaporte: sí | última actualización 10/09/2025
+Coinbase Luxembourg S.A. | Commission de Surveillance du Secteur Financier (CSSF) | LEI 984500F14CA4571AAC11 | autorización 20/06/2025 | fin — | web https.//coinbase.com | España en pasaporte: sí | última actualización 22/01/2026
+OKX Europe Limited | Malta Financial Services Authority (MFSA) | LEI 54930069NLWEIGLHXU42 | autorización 27/01/2025 | fin — | web www.okx.com | España en pasaporte: sí | última actualización 28/11/2025
+Foris DAX MT Limited | Malta Financial Services Authority (MFSA) | LEI 2549005CVR5HH70FDO07 | autorización 27/01/2025 | fin — | web crypto.com | España en pasaporte: sí | última actualización 06/02/2025
+Gate Technology Limited | Malta Financial Services Authority (MFSA) | LEI 984500D6A0F945BB5A15 | autorización 29/09/2025 | fin — | web www.gate.com/en-eu | España en pasaporte: sí | última actualización 21/10/2025
+Blockchain.com Operations (Malta) Limited | Malta Financial Services Authority (MFSA) | LEI 254900GDCT8070R2VV26 | autorización 22/10/2025 | fin — | web www.blockchain.com | España en pasaporte: sí | última actualización 26/08/2026
+
+URL: https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv · HTTP 200 · 09:41:02Z · SHA-256 fa1ef4da123e3d49642c69f90a81a88f6c2cc2a0b9471b2108e4dfc635ca7c67 · 1 línea (solo cabecera, ninguna ficha referenciada a activos autorizada)

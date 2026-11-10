@@ -1,0 +1,32 @@
+Cifras de la API pública de Spiko y recálculo del revisor (10/11/2026)
+
+== EUTBL
+Fuente: https://public-api.spiko.io/v0/share-classes/EUTBL/yield
+Consulta: 2026-11-10T09:22:25Z · HTTP 200 · 259 bytes · sha256 cbce69ed63880cc4cd8f1635657fc31b76e7a421cef063bc93390e52d862bebf
+  dailyYield 0.0254 · weeklyYield 0.0262 · monthlyYield 0.0244 · updatedAt 2026-11-09T16:23:58.145Z
+  VL más reciente: 1.062624 EUR · day 2026-11-09 · updatedAt 2026-11-09T16:23:58.090Z
+  desde 2026-10-08 (1.060378) a 2026-11-09 (1.062624), 32 días: compuesto 2.443 %
+  desde 2026-10-11 (1.060588) a 2026-11-09 (1.062624), 29 días: compuesto 2.443 %
+  desde 2026-11-02 (1.062097) a 2026-11-09 (1.062624), 7 días: compuesto 2.620 %
+  desde 2026-11-08 (1.062551) a 2026-11-09 (1.062624), 1 días: compuesto 2.539 %
+
+== USTBL
+Fuente: https://public-api.spiko.io/v0/share-classes/USTBL/yield
+Consulta: 2026-11-10T09:22:27Z · HTTP 200 · 259 bytes · sha256 d837e020afb7adafba2c3a03443bbb2f0e0946612f6504644e09f6247d50d73d
+  dailyYield 0.0355 · weeklyYield 0.0423 · monthlyYield 0.0409 · updatedAt 2026-11-09T16:23:50.640Z
+  VL más reciente: 1.102439 USD · day 2026-11-09 · updatedAt 2026-11-09T16:23:50.566Z
+  desde 2026-10-08 (1.098576) a 2026-11-09 (1.102439), 32 días: compuesto 4.085 %
+  desde 2026-10-09 (1.098694) a 2026-11-09 (1.102439), 31 días: compuesto 4.088 %
+  desde 2026-11-02 (1.101564) a 2026-11-09 (1.102439), 7 días: compuesto 4.227 %
+  desde 2026-11-06 (1.102123) a 2026-11-09 (1.102439), 3 días: compuesto 3.549 %
+
+== eurSAFO
+Fuente: https://public-api.spiko.io/v0/share-classes/eurSAFO/yield
+Consulta: 2026-11-10T09:22:28Z · HTTP 200 · 259 bytes · sha256 9d45c1bd874c23c7363c0b69e28f86e46928eca5d53f352e6c9b5d4ce7c31fc9
+  dailyYield 0.0284 · weeklyYield 0.0284 · monthlyYield 0.0284 · updatedAt 2026-11-10T09:22:29.065Z
+  VL más reciente: 1.016874 EUR · day 2026-11-09 · updatedAt 2026-11-09T17:19:16.225Z
+  desde 2026-10-08 (1.014386) a 2026-11-09 (1.016874), 32 días: compuesto 2.834 %
+  desde 2026-10-09 (1.014619) a 2026-11-09 (1.016874), 31 días: compuesto 2.648 %
+  desde 2026-11-02 (1.016329) a 2026-11-09 (1.016874), 7 días: compuesto 2.835 %
+  desde 2026-11-06 (1.016796) a 2026-11-09 (1.016874), 3 días: compuesto 0.938 %
+

@@ -1,0 +1,363 @@
+        CIRCULAR Nº 3
+MATCHING & SETTLEMENT SERVICE
+
+
+
+
+          July 2025
+1. Introduction​                                                  3
+2. Common features in both Classic Trading Mode and Web 3 Mode​   3
+2.1 Order matching​                                               3
+2.2 Trading time​                                                 4
+2.3 Execution​                                                    4
+2.4 Settlement finality​                                          4
+3. Classic Trading Mode​                                          5
+3.1Execution​                                                     5
+3.2Settlement procedures​                                         5
+4. Web 3 Mode​                                                    6
+4.1 Execution​                                                    6
+4.2 Settlement procedures​                                        8
+5. Insolvency of Market Members​                                  8
+
+
+
+
+2
+1.​ Introduction
+
+The purpose of this circular is to describe the procedures to manage the delivery
+of transferable securities (tokens in all cases) and their payment (tokens in web 3
+trading mode and cash in a cash account in classic mode) and the determination
+of the settlement finality for the change of ownership1.
+
+Securitize's market provides settlement services for the matching of orders traded
+between Issuers and Market Members.
+
+There are two distinct trading modes: Classic Mode and Web 3 Mode. These
+modes are not interchangeable. The transfer of securities occurs through the
+registration of the transfer in the registry system, which is equivalent to the
+delivery of the security. Please note that in any case securities are always onchain.
+
+2.​ Common features in both Classic Trading Mode and Web 3 Mode
+
+2.1.​ Order matching
+
+Orders introduced in the market shall be limited orders, where Market Members
+specify the maximum execution price for the purchases and the minimum
+execution price for sales2.
+
+
+Matching takes place off-chain, regardless of the market mode, in Securitize’s
+Platform. Then, the orderbook informs us of a match between two orders. Orders at
+the same price are ranked and executed based on strict time priority.
+
+
+The order is executed only if the market reaches this limit price for order execution.
+If the maximum price is reached but there is an insufficient volume or
+counterparties of digital securities at that price, the order will be partially executed,
+and the remaining amount remains in the order book available for a potential
+subsequent match.
+
+
+
+
+1
+  Chapter VI of the ERIR document (“Functions of Securitize as entity responsible for the registration
+of financial instruments”) includes a description of documentation requirements for special transactions
+over financial instruments as regards the change of ownership in both trading modes through a variety
+of transactions such as sale, donation, exchange, pledge, preventive seizure notation, embargo,
+forced execution, inheritance, and credit compensation.
+​
+2
+  For further information, refer to the Rulebook, Chapter 15 “Secondary Market”.
+
+
+
+      3
+Orders on digital securities may be suspended or canceled at the beginning of the
+trading session, if deemed appropriate by the Operator, when certain corporate
+events are announced or occur, which may cause significant volatility or material
+changes in the valuation of the securities. This action cancels any open orders,
+ensuring that there is no settlement risk3.
+The following corporate events are deemed significant for the purposes of
+triggering the suspension and the cancellation of existing or announced orders:
+      a)​ initiation of insolvency proceedings;
+      b)​ corporate transactions that entail a “significant gross change” in
+          accordance with the provisions of Commission Delegated Regulation (EU)
+          2019/980 of 14 March 2019, which supplements Regulation (EU) 2017/1129
+          of the European Parliament and of the Council as regards the format,
+          content, scrutiny, and approval of the prospectus to be published in the
+          case of a public offer or admission to trading of securities on a regulated
+          market, and repealing Commission Regulation (EC) No 809/2004;
+      c)​ announcements of special or extraordinary dividends that are significantly
+          larger than the issuer's regular dividend payments;
+      d)​ announcements of significant capital restructuring, including but not limited
+          to stock splits, reverse stock splits, or significant changes in the capital
+          structure.
+
+
+2.2.​Trading time
+
+Trading in both Web3 and Classic modes will follow the continuous quotation
+method during market hours (08:00 to 20:00 CET, Monday to Friday). Securitize
+will act as the entity responsible for the administration and registration of Digital
+Securities. Orders registered in the order book will be executed according to strict
+price priority4.
+
+2.3.​Execution
+
+Transactions take place via swaps, and if any of the required elements are not
+present (pre-fund), the transaction will not be executed. In the case of the Classic
+Mode, there are no risks of this occurring because the securities are held in
+custody by the Securitize's omnibus account; however, in the case of the Web 3
+Mode, this is addressed through the design of the platform's Smart Contracts and
+automatic procedures, which have detailed rules assigned that define the
+
+3
+    For further information, refer to the Rulebook, Chapter 11 “Orders” and ERIR document.
+4
+    For further information, refer to the Rulebook, Chapter 12 “Execution”.
+
+
+        4
+conditions under which the transfer can be executed, and therefore, if these
+conditions are not met, the transaction will not be executed. This process is carried
+out in almost real time using distributed ledger technology (DLT) Avalanche.
+
+2.4.​Settlement finality
+
+The maximum time, depending on the traffic, for initiating the transaction in the
+Avalanche network is 30 seconds.
+
+Once the transaction has been executed, the time required to consider a
+transaction final (that is, every view of the blockchain shows the same transaction)
+in the Avalanche DLT is less than 2 seconds. This is the moment when SF1-SF2
+and SF3 (as defined by the EU Settlement Finality Directive) are simultaneously
+reached.
+
+         ●​ SF1 - the moment of the entry into the system of settlement
+            instructions;
+         ●​ SF2 - the moment of the irrevocability of settlement instructions
+            introduced in the system and properly validated
+         ●​ SF3 - the time of settlement finality
+
+The settlement finality moments occur simultaneously, and finality are reached
+almost in real time following matching once the transaction is executed, recorded
+and final on the DLT.
+
+Please note that Securitize uses Avalanche blockchain, which is network with
+deterministic finality with 1 block and less than 2 seconds for finality. Once a block
+has been confirmed it becomes irreversible and cannot be modified or reverted.
+
+3.​ Classic Trading Mode
+
+3.1.​ Execution
+
+Delivery vs payment: The execution is atomic and immediate upon a match. Cash
+settlement is simultaneous and inseparable from securities settlement, with no
+risk that one leg of the trade is settled while the other fails as the assets involved
+are under Securitize’s custody, thus not available to be withdrawn by Market
+Members until settlement has been recorded.
+
+
+
+
+     5
+3.2.​​ Settlement procedures
+
+Once the order is admitted in the orderbook (off-chain), Market Members are
+informed both via email and on the platform.​ Then, the execution of these steps is
+immediate and with no settlement risk. Cash settlement is simultaneous and
+inseparable from securities settlement, with no risk that one leg of the trade is
+settled while the other fails as the assets involved are under Securitize’s custody,
+thus not available to be withdrawn by Market Members until settlement has been
+recorded on chain. the steps of the procedure, upon a match notification from the
+orderbook, are:
+
+
+
+1.​       Transfer Security Tokens: Securitize internally records the change of
+          ownership of the security tokens: Security tokens change of ownership
+          from the seller’s Securities Client Account to the buyers’ by updating the
+          internal record.
+2.​       Transfer Cash Balance: Securitize records the change of cash ownership,
+          updating the personal cash balances of the Market Members involved.
+          There are no cash movements resulting from settlement in the omnibus
+          account opened with the credit institution, but in the individual balances
+          recognized in Securitize as 'investment firm' for each Market Member.
+3.​       Trade fees collection: Securitize records the change of ownership of the
+          cash equivalent to the amount of the fees that had been communicated to
+          the Market Members when the orders were created: The seller receives as
+          cash the matched amount minus the fees. The amount of the fees is
+          transferred to the Securitize's Fee Collection Account.
+
+
+Finally, The DLT will be notified of the settlement via an event. In addition, the
+platform records and updates transactions on the blockchain once settlement is
+confirmed by creating and submitting an emitMatchEvent() transaction. And then,
+this transaction emits a MatchPerformed() event to reflect the change in asset
+ownership due to the trade. Investors are informed of the on-chain record via the
+Securitize platform and email.
+
+These changes of ownership will be almost automatically less, in normal
+circumstances, than 2 seconds (maximum block time in Avalanche)- and
+simultaneously recorded in Securitize’s records on-chain and off-chain.
+
+
+
+
+      6
+These records ensure ongoing reconciliation between the ERIR registers and the
+securities account balances in Classic Trading Mode.
+
+After recording the settlement finality, if the buyer wants to withdraw his security
+tokens to a personal wallet, he can request it on the platform and Securitize will
+perform an ERC20 transfer to this effect (assuming the assets can be withdrawn
+because they are not subject to any kind of restriction, for instance due to open
+orders). Likewise, from the moment the settlement has been recorded on the
+blockchain, the seller can request the withdrawal of his cash in Securitize’s
+frontend and Securitize will send via transfer the cash to the buyer’s bank
+account.
+
+4.​ Web 3 Mode
+
+4.1.​ Execution
+
+The orderbook informs internally of a potential match between two orders. At this
+point, none of the orders are considered as matched because Securitize needs to
+verify that the allowance and balance of e-money/security tokens in each wallet is
+enough for proceeding with the execution (This verification is done twice: one
+pre-execution attempt, and the second one after the execution attempt). This stage
+prevents racing conditions leading to the failure of the execution due to unilateral
+reductions of e-money/security tokens, balance or allowance by the participants.
+This is not a settlement failure because settlement takes place after the execution
+success. None of the participants are notified yet about a match of their orders.
+Next, a verification is conducted, using a Blockchain node, for checking that all
+wallets participating count with enough balance and allowance for the trade. If an
+inconsistency is detected, an internal alert is created, and any order from a wallet
+that doesn’t meet the balance/allowance requirements is removed from the
+orderbook. The timeframe for this, is the size of milliseconds. After this step, the
+potential match is declared a confirmed match.
+Finally, the Smart Contract is notified to process the atomic execution. When the
+smart contract receives this instruction, the following actions are executed
+atomically as part of a single transaction within a single “blockchain block”:
+         ●​ Verify that there are sufficient tokens (both cash and securities) to
+            execute
+         ●​ Transfer security tokens from the seller wallet to the buyer wallet in
+            the amount defined by the matched orders - by executing an ERC20
+
+
+
+     7
+            transferFrom operation on the security token smart contract, which will
+            allow the transfer of the tokens due to the pre-existing allowance
+            provided by the wallet holder during order creation.
+         ●​ Transfer cash tokens from the buyer wallet to the seller wallet in the
+            amount defined by the matched orders (excluding the fee amount) - by
+            executing an ERC20 transferFrom operation on the security token
+            smart contract, which will allow the transfer of the tokens due to the
+            pre-existing allowance provided by the wallet holder during order
+            creation.
+         ●​ Transfer cash tokens from the buyer's wallet to a wallet controlled by
+            the market operator in the amount defined by the fees (those
+            corresponding to buyer and seller – seller receives net cash amount)
+            communicated to investors - by executing an ERC20 transferFrom
+            operation on the security token smart contract, which will allow the
+            transfer of the tokens due to the pre-existing allowance provided by
+            the wallet holder during order creation.
+After the match notification, the trade may not be executed if either of the Market
+Members (i) have reduced their allowance linked to the transaction, or (ii) directly
+withdrawn the secutity tokens or emoney tokens required by the transaction, from
+their personal wallet. So there is no risk that any of the Market Members would
+lose their security tokens or emoney tokens. The timeframe for the execution is
+2-32 seconds. In this extremely rare eventuality, the order that caused the failure
+will be removed from the orderbook, and the consistent one will remain unaltered,
+with no harm done to the rightful participant order.
+4.2.​Settlement procedures
+
+When the execution is successful, the settlement is recorded and published by the
+blockchain, constituting the public record for the trade.
+
+Once the transaction has been executed, the time required to consider a
+transaction final (that is, every view of the blockchain shows the same transaction)
+in the Avalanche DLT is lower than 2 seconds. This is the moment when SF1-SF2
+and SF31 are simultaneously reached.
+
+Also, fully matched orders are removed, partially matched orders remain (with their
+amount reduced) and their matching preference unaltered, and market members
+are informed in Securitize’s platform and via email.
+
+
+
+
+     8
+When the execution is not successful because any of the smart contract
+transactions failed in the execution stage, the operator creates an internal alert
+and a record and removes the order that caused the execution failure. This implies
+that (1) No Security tokens have been transferred, (2) No e-money tokens have
+been transferred, (3) Consistent orders are still on the orderbook keeping their
+matching preference, (4) non-consistent orders have been removed from the
+orderbook.
+
+Finally, records of the trade and order updates are stored and kept for post trade
+obligations.
+
+    5.​ Insolvency of Market Members
+
+Securitize settlement system has not been designated under the provisions of
+Directive 98/26/EC on settlement finality in payment and securities settlement
+systems (hereinafter, "Settlement Finality Directive"). Consequently, transactions
+settled through this system are not subject to the protections provided by the
+Directive, which safeguards against the retroaction of transactions in the event of
+the insolvency of a market member.
+
+      Should a Market Member (either acting on its own account or as an
+Intermediary5) be involved in any insolvency proceedings, the following procedures
+must be followed:
+
+      ●​       Obligation of the Market Member to Notify Securitize: In the event that a
+               Market Member becomes insolvent or bankrupt, or any insolvency
+               proceedings are initiated, the Market Member must immediately notify
+               Securitize. Failure to notify will be considered a material breach of the
+               Market Member’s obligations6.
+
+      ●​ Account and Order Management: Securitize will promptly lock the SiD
+         account of the insolvent Market Member, halting all access to the platform.
+         All pending purchase and sale orders, including those submitted prior to
+         notification, will be cancelled. Orders placed in a Web3 mode configured
+         trading asset will also be annulled.
+
+5
+  For further information, refer to the Rulebook, Chapter 5 “Specific rules for market members acting
+for the account of market investors (intermediaries)”.
+6
+ For further information, refer to the Rulebook, Chapter 4 “Market Members” and Chapter 18 “Rules of
+conduct, Supervision and Monitoring”.
+
+
+           9
+●​    Operational restrictions: The insolvent Member will also be blocked from
+      placing any new purchase or sale orders on the Securitize platform.
+      Operational access to the securities and the market through the platform
+      will be restricted, and the functionalities available to the securities holder
+
+●​    Asset blocking: Securitize shall immediately block the securities and cash
+      balances of the affected Market Member in its system (note that in the
+      Web3 mode cash balances cannot be technically blocked, only the security
+      tokens). Any balance not secured within an order will be safeguarded by the
+      Operator to prevent sales or transfers.
+
+●​    Protection of Final Clients: In the event that the Market Member is acting on
+      behalf of final clients, Securitize shall take all necessary measures to
+      protect those clients' assets, including the segregation of securities and
+      cash balances that belong to clients from those of the affected Market
+      Member. It should be noted that the CNMV has the authority to order,
+      without delay and at no cost to the Market Members, the transfer of
+      securities to another entity authorized to perform such activities. Should no
+      entity be available, Securitize itself may provisionally provide this service.
+
+
+
+
+     10
+

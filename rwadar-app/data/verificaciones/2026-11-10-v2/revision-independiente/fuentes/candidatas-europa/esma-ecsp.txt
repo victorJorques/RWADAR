@@ -1,0 +1,20 @@
+Fuente: https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_entityTypeCode:CSP&rows=400&wt=json
+Consultado: 2026-11-10T09:33:11Z · HTTP 200 · 363725 bytes · sha256 13e527f5a5b4b6c9b027f54996adb6a8e5b59d127c8b18c19bebf54661c5acdc
+Copia original en crudo/esma-ecsp-todos.json (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+numFound=261 · {'Active': 239, 'Inactive': 22}
+[profitus] 1 coincidencias
+   {"ae_entityName": "UAB \"Profitus Crowdfunding\"", "ae_commercialName": "Profitus", "ae_status": "Active", "ae_homeMemberState": "LITHUANIA", "ae_hostMemberState": "ESTONIA,SPAIN,GERMANY,LATVIA", "ae_authorisationNotificationDateStr": "10/11/2023", "ae_lastUpdateStr": "25/02/2026", "ae_website": "www.profitus.lt"}
+[bergf] 2 coincidencias
+   {"ae_entityName": "Bergfürst AG", "ae_commercialName": "Bergfürst", "ae_status": "Active", "ae_homeMemberState": "GERMANY", "ae_hostMemberState": "", "ae_authorisationNotificationDateStr": "28/03/2024", "ae_lastUpdateStr": "17/04/2024", "ae_website": "https://de.bergfuerst.com/"}
+   {"ae_entityName": "BERGFÜRST AG", "ae_commercialName": "BERGFÜRST", "ae_status": "Active", "ae_homeMemberState": "GERMANY", "ae_hostMemberState": "SPAIN", "ae_authorisationNotificationDateStr": "28/03/2024", "ae_lastUpdateStr": "02/06/2026", "ae_website": "www.bergfuerst.com"}
+[exporo] 1 coincidencias
+   {"ae_entityName": "EPH Investment GmbH", "ae_commercialName": "Exporo", "ae_status": "Active", "ae_homeMemberState": "GERMANY", "ae_hostMemberState": "", "ae_authorisationNotificationDateStr": "05/12/2023", "ae_lastUpdateStr": "16/02/2024", "ae_website": "www.exporo.com"}
+[reinvest] 0 coincidencias
+[blocksquare] 0 coincidencias
+[oceanpoint] 0 coincidencias
+[stokr] 0 coincidencias
+[rendity] 0 coincidencias
+[ecoligo] 0 coincidencias
+[bettervest] 0 coincidencias
+[metawealth] 0 coincidencias

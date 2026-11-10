@@ -1,0 +1,83 @@
+URL: https://www.wisdomtreeprime.com/
+URLFinal: https://www.wisdomtreeprime.com/
+ConsultadoUtc: 2026-11-10T09:18:27Z
+Metodo: Playwright (Chromium) innerText
+
+Skip to content
+ABOUT
+DIGITAL FUNDS
+INSIGHTS
+SUPPORT
+FAQ
+Get the app
+Wisdom Is
+Your Edge.
+
+WisdomTree Prime puts the future of finance in your hands—real assets, programmable money, and always-on access.
+
+Get the app
+
+Tokenized RWAs
+
+Get the app
+
+On/Off Ramps
+
+Digital Funds
+
+Learn more
+Get the app
+
+Gold
+
+Learn more
+
+24/7 Access
+
+Security
+
+Learn more
+ABOUT
+DIGITAL FUNDS
+INSIGHTS
+SUPPORT
+FAQ
+
+PRODUCTS AND SERVICES AVAILABLE VIA WISDOMTREE PRIME:
+NOT FDIC INSURED | NO BANK GUARANTEE | NOT A BANK DEPOSIT | MAY LOSE VALUE | NOT SIPC PROTECTED | NOT INSURED BY ANY GOVERNMENT AGENCY
+
+The products and services available through the WisdomTree Prime app are not endorsed, indemnified or guaranteed by any regulatory agency.
+
+The WisdomTree Prime Digital wallet and digital asset services are offered through WisdomTree Digital Movement, Inc., a federally registered money services business, state-licensed money transmitter and financial technology company (NMLS ID: 2372500) or WisdomTree Digital Trust Company, LLC, in select U.S. jurisdictions and may be limited where prohibited by law (each applicable entity, “WisdomTree Digital”). WisdomTree Digital Trust Company, LLC is chartered as a limited purpose trust company by the New York State Department of Financial Services to engage in virtual currency business.
+
+WisdomTree Digital is not a bank and does not itself take deposits. Digital assets held in WisdomTree Digital accounts are not legal tender and are not covered by FDIC protections.
+
+Digital assets (e.g., bitcoin and ether) are considered to be highly speculative, involve a high degree of risk and have the potential for loss of the entire investment. USDC is a digital asset and is not legal tender. Digital assets are subject to a number of risks, including price volatility. Transactions in digital assets may be irreversible, and accordingly, losses due to fraudulent or accidental transactions may not be recoverable. Legislative and regulatory changes or actions at the state, federal, or international level may adversely affect the use, transfer, exchange and value of virtual currency. The stablecoin conversion service provided by WisdomTree Digital does not imply any endorsement of USDC, including that it is stable or otherwise appropriate for the user or holder.
+
+References to “onchain gold” refer to the WisdomTree Gold Token, a digital token recorded on the blockchain representing electronic document of title to physical gold. The price of gold does fluctuate and may be affected by numerous factors including supply and demand, the global financial markets and other political, financial, or economic events, which may negatively impact gold prices and the value of a WisdomTree Gold Token.
+
+There are risks associated with investing, including possible loss of principal
+
+A blockchain is an open, distributed ledger that digitally records transactions in a verifiable and immutable (i.e., permanent) way using cryptography. A distributed ledger is a database in which data is stored in a decentralized manner. Cryptography is a method of storing and transmitting data in a particular form so that only those for whom it is intended can read and process it. A blockchain stores transaction data in “blocks” that are linked together to form a “chain”, and hence the name blockchain. Blockchain technology is a relatively new and untested technology, with little regulation. Blockchain systems could be vulnerable to fraud, particularly if a significant minority of participants colluded to defraud the rest. Potential risks also include vulnerability to theft, or inaccessibility, and future regulatory developments could affect its viability.
+
+The information provided is for informational purposes only and intended solely for U.S. persons over the age of 18. The images, screens, graphs, and tools portrayed are for illustrative purposes, as the WisdomTree Prime app, capabilities, products, digital assets, digital wallet and other services (collectively, “Products and Services”) and related screens are expected to change over time. A variety of Products and Services made available via the app are offered through certain wholly owned subsidiaries of WisdomTree, Inc., a public company listed on the New York Stock Exchange (NYSE) (ticker symbol: WT). It is anticipated that the app will be free to download, but that accounts, transactions, services and/or products made available via the app will be subject to fees and other requirements.
+
+The information is not intended to serve as a recommendation to buy, hold or sell any asset, including crypto or digital assets, gold or digital gold or Digital Funds, or to engage in any investment or trading strategy or to use any service. The information herein should not be relied on and is not a substitute for the skill, judgment and experience of the user when making investment and other business decisions. All information is impersonal and not tailored to the needs of any person, entity or group of persons. None of the information constitutes an offer to sell or a solicitation of an offer to buy, any security or other asset, financial product or other investment vehicle or any trading strategy, or service, and should not be viewed as trading or investment advice. Potential Products and Services, as well as applicable launch timing and associated fees, are in development, will require third party relationships (e.g., banking relationships), and may change or may never become available, including due to regulatory considerations. Any information provided and/or plans associated herewith are subject to change without notice and WisdomTree is under no obligation to provide additional information.
+
+Spending, paying bills and making purchases will require actions to be taken in the discretion of the user which require user actions outside of the domain or functionality of the app and which rely on third parties for which the user will need to have a separate relationship. Certain Products (including Digital Funds) and Services are made available through third parties, including affiliates of WisdomTree Digital in the case of Digital Funds.
+
+WisdomTree expressly disclaims all liability arising from your use of this website or reliance on the information provided. To the fullest extent permitted by applicable law, all warranties, whether express or implied, are hereby disclaimed by WisdomTree. By using this website, you agree to this disclaimer and acknowledge receipt of the terms set forth in our privacy policy.
+
+WisdomTree Digital Movement, Inc., 250 W 34th Street, 3rd Floor, New York, NY 10119
+Customer Support Phone Number: (212) 658-0090
+
+©2026 WisdomTree Digital Movement, Inc. or its affiliates. All rights reserved.
+
+Please see disclosures, privacy policy and cookie policy here. Review your Privacy Choices here.
+
+This website uses cookies
+
+We use third-party cookies and tracking technologies that collect information about your use of this site. These third parties may use your information for their own purposes, as described in our Privacy Policy.
+
+Accept All Cookies
+Customize

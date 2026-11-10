@@ -1,0 +1,760 @@
+{
+  "tipo": "revision_integral",
+  "fecha": "2026-11-10",
+  "etiqueta": "2026-11-10",
+  "revisionAnterior": "88d5a757-3481-f70e-dc7c-6272704a00b3",
+  "revisionNueva": "dfdc4c85-7f2f-fc4a-de27-a9f4a63f7656",
+  "decision": "Víctor, 10/11/2026: «Hazme la investigación en profundidad de RWAdar buscando nuevas ofertas y publica la actualización de hoy». Lo que entra: DECISIONES-COORDINADOR.md.",
+  "archivos": {
+    "DECISIONES-COORDINADOR.md": "147d4307006c9b0ee7316743dc2ea1035c828b100f4516bf5e8c286306c8efb8",
+    "radar-contraste-2026-11-10.json": "639649dd3547a4fcc841e1f1e32b37761aa1e94a9694d87c0d42c143188bc7e1",
+    "cambios-radar.json": "c28fda063c358b588092c7b5f78a046d28ebb2e3d152b34206fff1af4de2dbf6"
+  },
+  "radar": {
+    "fuentes": 69,
+    "correctas": 69,
+    "verificacionesManuales": [
+      "spiko-regafi",
+      "spiko-regafi-pasaporte-es",
+      "paxg-occ"
+    ],
+    "comprobacionesCambiadas": {
+      "spiko-access": {
+        "antes": [
+          "19183",
+          "ORIAS",
+          "CACEIS"
+        ],
+        "ahora": [
+          "19183",
+          "redeem fund shares",
+          "CACEIS"
+        ],
+        "motivo": "El 10/11/2026 (captura de las 08:59 UTC y curl a las 09:04:38 UTC) el pie legal de https://www.spiko.io/use-cases/web3 ya no menciona ORIAS: dice «Spiko Finance is licensed as an investment firm by the French Prudential Control and Resolution Authority (ACPR) under no. 19183» y «our banking partner, CACEIS Bank» (copia en radar-manual/spiko-web3-pie-legal.txt). Esta fuente solo respalda el estado operativo de Spiko («sigue mostrando productos de tesorería, con suscripción y reembolso»), que la página sigue diciendo: «Subscribe to and redeem fund shares directly in USDC or EURC». Se cambia la comprobación ORIAS por esa frase; el texto del radar no cambia."
+      }
+    },
+    "cambios": {
+      "fuentes": {},
+      "plataformas": {}
+    }
+  },
+  "cifras": {
+    "spiko-letras-del-tesoro-euro": {
+      "antes": "2,39 %",
+      "despues": "2,44 %",
+      "valorLiquidativo": "2026-11-09",
+      "consulta": "2026-11-10"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "antes": "3,99 %",
+      "despues": "4,09 %",
+      "valorLiquidativo": "2026-11-09",
+      "consulta": "2026-11-10"
+    },
+    "spiko-smart-cash-euro": {
+      "antes": "2,84 %",
+      "despues": "2,84 %",
+      "valorLiquidativo": "2026-11-09",
+      "consulta": "2026-11-10"
+    }
+  },
+  "vigencia": {
+    "verificadaEl": "2026-11-10",
+    "vigenciaDias": 7,
+    "ultimoDiaVigente": "2026-11-17"
+  },
+  "cambios": [
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "rentabilidad",
+      "antes": "2,39 % · Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 04/11/2026 (VL del 04/11/2026); consultado el 05/11/2026. Variable y no garantizado.",
+      "despues": "2,44 % · Rendimiento neto anualizado de los últimos 31 días publicado por Spiko el 09/11/2026 (VL del 09/11/2026); consultado el 10/11/2026. Variable y no garantizado."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "métrica",
+      "antes": "Rentabilidad publicada · 31 días · 04/11/2026: 2,39 %",
+      "despues": "Rentabilidad publicada · 31 días · 09/11/2026: 2,44 %"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Rentabilidad publicada · 31 días: 2,39 %",
+      "despues": "Rentabilidad publicada · 31 días: 2,44 %"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "rentabilidad",
+      "antes": "3,99 % · Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 04/11/2026 (VL del 04/11/2026); consultado el 05/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado.",
+      "despues": "4,09 % · Rendimiento neto anualizado en dólares de los últimos 31 días publicado por Spiko el 09/11/2026 (VL del 09/11/2026); consultado el 10/11/2026. No incluye la variación del euro frente al dólar. Variable y no garantizado."
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "métrica",
+      "antes": "Rentabilidad publicada · 31 días · 04/11/2026 · en USD: 3,99 %",
+      "despues": "Rentabilidad publicada · 31 días · 09/11/2026 · en USD: 4,09 %"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "referencia de la ficha",
+      "antes": "Rentabilidad publicada · 31 días: 3,99 %",
+      "despues": "Rentabilidad publicada · 31 días: 4,09 %"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "rentabilidad",
+      "antes": "2,84 % · Cifra que publica Spiko, ya descontadas sus comisiones: lo que creció el fondo en su último día de cálculo, pasado a un año (valor liquidativo del 04/11/2026; consultado el 05/11/2026). Variable: sigue al €STR; no es un tipo fijo ni está garantizado.",
+      "despues": "2,84 % · Cifra que publica Spiko, ya descontadas sus comisiones: lo que creció el fondo en su último día de cálculo, pasado a un año (valor liquidativo del 09/11/2026; consultado el 10/11/2026). Variable: sigue al €STR; no es un tipo fijo ni está garantizado."
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "métrica",
+      "antes": "Rentabilidad publicada · neta y variable · 04/11/2026: 2,84 %",
+      "despues": "Rentabilidad publicada · neta y variable · 09/11/2026: 2,84 %"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Rendimiento neto publicado: 2,84 %",
+      "despues": "Rendimiento neto publicado: 2,84 %"
+    },
+    {
+      "slug": "spiko-letras-del-tesoro-dolar",
+      "campo": "aviso",
+      "antes": "Capital no garantizado; el reembolso puede limitarse si las solicitudes superan el 10 % del patrimonio.",
+      "despues": "Capital no garantizado; el reembolso puede limitarse si las solicitudes superan el 10 % del patrimonio, aunque la web de Spiko diga que no hay límite de importe."
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "aviso",
+      "antes": "El enlace de la web de Spiko para «Verificar la autorización» lleva a la base pública de la AMF (GECO), pero allí este fondo todavía no tiene ficha publicada. Su autorización consta en el folleto que publica la AMF y en un certificado de la AMF que aloja Spiko.",
+      "despues": null
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "métrica",
+      "antes": "Supervisor: AMF (Francia): n.º SCV20260075, aún sin ficha pública en su base GECO · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España",
+      "despues": "Supervisor: AMF (Francia): n.º SCV20260075, autorizado el 17/02/2026 (ficha en su base GECO, aún sin clases de acciones ni valor liquidativo) · Spiko SICAV inscrita en la CNMV (n.º 2380); la CNMV no muestra qué fondos de la SICAV están dados de alta en España"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "descripción",
+      "antes": "autorizado por la AMF con el n.º SCV20260075 (así figura en un certificado de la AMF del 23/02/2026)",
+      "despues": "autorizado por la AMF el 17/02/2026 con el n.º SCV20260075 (ficha pública en GECO y certificado de la AMF del 23/02/2026)"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "referencia de la ficha",
+      "antes": "Aprobación del compartimento: AMF, SCV20260075 (certificado del 23/02/2026)",
+      "despues": "Aprobación del compartimento: Autorizado por la AMF el 17/02/2026 con el n.º SCV20260075 (ficha pública en GECO y certificado de la AMF del 23/02/2026)"
+    },
+    {
+      "slug": "spiko-smart-cash-euro",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://geco.amf-france.org/produit-d-epargne/c124199"
+    },
+    {
+      "slug": "mtbill",
+      "campo": "métrica",
+      "antes": "Valor por token · 04/11/2026: 1,0773 USD (oráculo del emisor)",
+      "despues": "Valor por token · 09/11/2026: 1,0776 USD (oráculo del emisor)"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "métrica",
+      "antes": "Precio del emisor · 05/11/2026: 7,25 CHF por acción (fijo)",
+      "despues": "Precio del emisor · 10/11/2026: 7,25 CHF por acción (fijo)"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "métrica",
+      "antes": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (05/11/2026)",
+      "despues": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (10/11/2026)"
+    },
+    {
+      "slug": "aktionariat",
+      "campo": "aviso",
+      "antes": "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 05/11/2026).",
+      "despues": "Entre accionistas hay vendedores por debajo del precio del emisor (6,20 ZCHF frente a 7,25 CHF el 10/11/2026)."
+    },
+    {
+      "slug": "boss-info",
+      "campo": "resumen",
+      "antes": "Acciones tokenizadas de Boss Info AG, integrador informático suizo. El emisor vende a 8,50 por acción, pero la última operación fue en el mercado entre accionistas a 6,70 el 28/09/2026.",
+      "despues": "Acciones tokenizadas de Boss Info AG, integrador informático suizo. El emisor vende a 8,50 CHF, pero nadie le compra desde el 29/06/2026; la última operación fue entre accionistas, 1 acción a 8,40 ZCHF el 05/11/2026."
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Último cruce publicado: 6,70 CHF",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Última operación publicada · 22/10/2026: 6,70 CHF (28/09/2026)",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": "Último cruce secundario · 22/10/2026: 6,70 ZCHF (28/09/2026)",
+      "despues": null
+    },
+    {
+      "slug": "boss-info",
+      "campo": "referencia de la ficha",
+      "antes": null,
+      "despues": "Última operación · 10/11/2026: 8,40 ZCHF (1 acción, 05/11/2026)"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "aviso",
+      "antes": "El precio del emisor está por encima de la mejor oferta de venta entre accionistas.",
+      "despues": "El precio del emisor está por encima de la mejor oferta de venta entre accionistas (venta más barata 8,40 ZCHF el 10/11/2026)."
+    },
+    {
+      "slug": "boss-info",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: 100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 05/11)",
+      "despues": "Mínimo de inversión: 100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 10/11)"
+    },
+    {
+      "slug": "boss-info",
+      "campo": "métrica",
+      "antes": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (05/11/2026)",
+      "despues": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (10/11/2026)"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "aviso",
+      "antes": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 05/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF).",
+      "despues": "Su web dice que el emisor recompra acciones si tiene liquidez, pero el acuerdo firmado no le obliga y el 10/11/2026 la recompra seguía desactivada y casi sin fondos (0,03 ZCHF)."
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "aviso",
+      "antes": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 05/11/2026).",
+      "despues": "Entre accionistas hay vendedores por debajo del precio del emisor (venta más barata 67,00 ZCHF el 10/11/2026)."
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: 1 acción (68,01 CHF el 05/11)",
+      "despues": "Mínimo de inversión: 1 acción (68,01 CHF el 10/11)"
+    },
+    {
+      "slug": "switzerlend",
+      "campo": "métrica",
+      "antes": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (05/11/2026); afiliada a PolyReg solo a efectos de blanqueo",
+      "despues": "Supervisor: Sin supervisión prudencial: no figura en el registro de autorizados de FINMA (10/11/2026); afiliada a PolyReg solo a efectos de blanqueo"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 77 € la participación en reventa (05/11)",
+      "despues": "Mínimo de inversión: Desde 75 € la participación en reventa (10/11)"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 05/11/2026: 77,00 € por participación (5 a ese precio)",
+      "despues": "Venta más barata · 10/11/2026: 75,00 € por participación (5 a ese precio, orden del 08/11/2026)"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 05/11/2026: 258",
+      "despues": "Participaciones en venta · 10/11/2026: 265"
+    },
+    {
+      "slug": "apartamento-vacacional-hinterstoder-50",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 05/11/2026: 65,00 € (1 participación, orden del 30/09/2026)",
+      "despues": "Mejor oferta de compra · 10/11/2026: 20,00 € (4 participaciones en 2 órdenes; la más antigua del 19/05/2025)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 66,67 € la participación en reventa (05/11)",
+      "despues": "Mínimo de inversión: Desde 65 € la participación en reventa (10/11)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 05/11/2026: 66,67 € por participación (6 a ese precio)",
+      "despues": "Venta más barata · 10/11/2026: 65,00 € por participación (1 a ese precio, orden del 09/11/2026)"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 05/11/2026: 305",
+      "despues": "Participaciones en venta · 10/11/2026: 300"
+    },
+    {
+      "slug": "vivienda-schwarzer-weg-18-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 05/11/2026: 35,00 € (1 participación, orden del 01/07/2026)",
+      "despues": "Mejor oferta de compra · 10/11/2026: 35,00 € (1 participación, orden del 01/07/2026)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 69,90 € la participación en reventa (05/11)",
+      "despues": "Mínimo de inversión: Desde 68,80 € la participación en reventa (10/11)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 05/11/2026: 69,90 € por participación (1 a ese precio)",
+      "despues": "Venta más barata · 10/11/2026: 68,80 € por participación (1 a ese precio, orden del 08/11/2026)"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 05/11/2026: 313",
+      "despues": "Participaciones en venta · 10/11/2026: 317"
+    },
+    {
+      "slug": "vivienda-stallhofstra-e-28-gratwein",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 05/11/2026: 30,00 € (1 participación, orden del 01/07/2026)",
+      "despues": "Mejor oferta de compra · 10/11/2026: 30,00 € (1 participación, orden del 01/07/2026)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 70 € la participación en reventa (05/11)",
+      "despues": "Mínimo de inversión: Desde 70 € la participación en reventa (10/11)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 05/11/2026: 70,00 € por participación (3 a ese precio)",
+      "despues": "Venta más barata · 10/11/2026: 70,00 € por participación (3 a ese precio, orden del 18/10/2026)"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 05/11/2026: 150",
+      "despues": "Participaciones en venta · 10/11/2026: 150"
+    },
+    {
+      "slug": "drautalresidenz-paternion",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 05/11/2026: 54,00 € (1 participación, orden del 31/10/2026)",
+      "despues": "Mejor oferta de compra · 10/11/2026: 60,00 € (1 participación, orden del 05/11/2026)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 110 € la participación en reventa (05/11)",
+      "despues": "Mínimo de inversión: Desde 110 € la participación en reventa (10/11)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 05/11/2026: 110,00 € por participación (35 a ese precio)",
+      "despues": "Venta más barata · 10/11/2026: 110,00 € por participación (35 a ese precio, en 2 órdenes)"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 05/11/2026: 65",
+      "despues": "Participaciones en venta · 10/11/2026: 65"
+    },
+    {
+      "slug": "fotovoltaica-cohotel",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 05/11/2026: 3,00 € (1 participación, orden del 23/11/2024)",
+      "despues": "Mejor oferta de compra · 10/11/2026: 3,00 € (1 participación, orden del 23/11/2024)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 100 € la participación en reventa (05/11)",
+      "despues": "Mínimo de inversión: Desde 100 € la participación en reventa (10/11)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 05/11/2026: 100,00 € por participación (5 a ese precio)",
+      "despues": "Venta más barata · 10/11/2026: 100,00 € por participación (5 a ese precio, orden del 20/09/2026)"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 05/11/2026: 351",
+      "despues": "Participaciones en venta · 10/11/2026: 351"
+    },
+    {
+      "slug": "fotovoltaica-greenpoint",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 05/11/2026: 89,00 € (1 participación, orden del 01/11/2026)",
+      "despues": "Mejor oferta de compra · 10/11/2026: 84,00 € (1 participación, orden del 23/06/2026)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 78 € la participación en reventa (05/11)",
+      "despues": "Mínimo de inversión: Desde 78 € la participación en reventa (10/11)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 05/11/2026: 78,00 € por participación (21 a ese precio)",
+      "despues": "Venta más barata · 10/11/2026: 78,00 € por participación (21 a ese precio, en 2 órdenes)"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 05/11/2026: 184",
+      "despues": "Participaciones en venta · 10/11/2026: 189"
+    },
+    {
+      "slug": "randhartingergasse-9-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 05/11/2026: 40,50 € (10 participaciones, orden del 22/04/2026)",
+      "despues": "Mejor oferta de compra · 10/11/2026: 46,00 € (1 participación, orden del 09/11/2026)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 95 € la participación en reventa (05/11)",
+      "despues": "Mínimo de inversión: Desde 95 € la participación en reventa (10/11)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 05/11/2026: 95,00 € por participación (16 a ese precio)",
+      "despues": "Venta más barata · 10/11/2026: 95,00 € por participación (16 a ese precio, en 3 órdenes)"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 05/11/2026: 302",
+      "despues": "Participaciones en venta · 10/11/2026: 302"
+    },
+    {
+      "slug": "local-de-estanco-klagenfurt",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 05/11/2026: 15,00 € (1 participación, orden del 21/09/2026)",
+      "despues": "Mejor oferta de compra · 10/11/2026: 15,00 € (1 participación, orden del 21/09/2026)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 75 € la participación en reventa (05/11)",
+      "despues": "Mínimo de inversión: Desde 75 € la participación en reventa (10/11)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 05/11/2026: 75,00 € por participación (2 a ese precio)",
+      "despues": "Venta más barata · 10/11/2026: 75,00 € por participación (2 a ese precio, orden del 04/11/2026)"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 05/11/2026: 335",
+      "despues": "Participaciones en venta · 10/11/2026: 335"
+    },
+    {
+      "slug": "vivienda-pluddemanngasse-101-graz",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 05/11/2026: 20,00 € (1 participación, orden del 23/04/2026)",
+      "despues": "Mejor oferta de compra · 10/11/2026: 20,00 € (1 participación, orden del 23/04/2026)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 74 € la participación en reventa (05/11)",
+      "despues": "Mínimo de inversión: Desde 74 € la participación en reventa (10/11)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 05/11/2026: 74,00 € por participación (1 a ese precio)",
+      "despues": "Venta más barata · 10/11/2026: 74,00 € por participación (1 a ese precio, orden del 09/11/2026)"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 05/11/2026: 107",
+      "despues": "Participaciones en venta · 10/11/2026: 107"
+    },
+    {
+      "slug": "vivienda-pottendorfer-stra-e-62-wr-neustadt",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 05/11/2026: 19,00 € (3 participaciones, orden del 06/11/2025)",
+      "despues": "Mejor oferta de compra · 10/11/2026: 19,00 € (3 participaciones, orden del 06/11/2025)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: Desde 75 € la participación en reventa (05/11)",
+      "despues": "Mínimo de inversión: Desde 75 € la participación en reventa (10/11)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Venta más barata · 05/11/2026: 75,00 € por participación (11 a ese precio)",
+      "despues": "Venta más barata · 10/11/2026: 75,00 € por participación (11 a ese precio, orden del 28/04/2026)"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Participaciones en venta · 05/11/2026: 97",
+      "despues": "Participaciones en venta · 10/11/2026: 97"
+    },
+    {
+      "slug": "vivienda-sonnleithnergasse-2-viena",
+      "campo": "referencia de la ficha",
+      "antes": "Mejor oferta de compra · 05/11/2026: 65,00 € (1 participación, orden del 16/10/2026)",
+      "despues": "Mejor oferta de compra · 10/11/2026: 65,00 € (1 participación, orden del 16/10/2026)"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "resumen",
+      "antes": "Seguimiento de las operaciones inmobiliarias de Hausera. El 05/11/2026 Alicante 2 estaba en preventa desde el 04/11 y anunciaba la oferta pública para el 11/11/2026; sin documento de emisión público.",
+      "despues": "Seguimiento de las operaciones inmobiliarias de Hausera. El 10/11/2026 Alicante 2 ya figuraba como financiada; la siguiente, Alicante 3 (14 viviendas en Orihuela Costa), abre la preventa el 18/11 y la suscripción el 25/11/2026."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "métrica",
+      "antes": "Próxima operación: Alicante 2 · preventa desde el 04/11/2026, oferta pública 11/11/2026",
+      "despues": "Próxima operación: Alicante 3 · preventa desde el 18/11/2026, suscripción del 25/11/2026 al 30/06/2027"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "métrica",
+      "antes": null,
+      "despues": "Emisor: HAUSERA PROPERTY MANAGER SPV 11, S.A (documento de emisión de Alicante 3)"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "métrica",
+      "antes": "Supervisor: No registrada en la CNMV (sus términos dicen que no es empresa de servicios de inversión)",
+      "despues": "Supervisor: Hausera no está registrada en la CNMV; emisión sin folleto, pendiente de inscribir por Ursus-3 Capital A.V. (CNMV n.º 251)"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "métrica",
+      "antes": "Coste de Hausera: Sin comisión por invertir (FAQ)",
+      "despues": "Comisiones: Ninguna para el suscriptor; Hausera cobra con la plusvalía que supere el tope del inversor"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "aviso",
+      "antes": "Apuntarte a la preventa no te obliga, pero si firmas el acuerdo de reserva debes transferir el dinero en el plazo fijado. El 05/11/2026 el documento de emisión de Alicante 2 y su emisor no eran públicos.",
+      "despues": "Si firmas el acuerdo de reserva, transfieres el dinero antes de que la emisión esté inscrita y el emisor puede usarlo en el proyecto; solo se devuelve, sin intereses, si la emisión no sale adelante."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "El documento de emisión no es un folleto y la CNMV no lo ha revisado. El 10/11/2026 Alicante 3 aún no estaba inscrita en el registro de la CNMV."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "aviso",
+      "antes": null,
+      "despues": "Las operaciones pueden cubrirse en la preventa: Alicante 2 ya figuraba como financiada el 10/11/2026, antes de su oferta pública del 11/11."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "fuentes de la oferta",
+      "antes": "https://hausera.io/oportunidades/ · https://hausera.io/terms/",
+      "despues": "https://hausera.io/oportunidades/ · https://hausera.io/propiedad/alicante_3/ · https://drive.google.com/file/d/1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_ · https://hausera.io/terms/ · https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://hausera.io/propiedad/alicante_3/"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://drive.google.com/file/d/1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "fuente de la ficha",
+      "antes": null,
+      "despues": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "característica",
+      "antes": "Emisor: SPV del Grupo Hausera identificada en cada documento de emisión (para Alicante 2, no publicada)",
+      "despues": "Emisor: Una sociedad por operación, identificada en su documento de emisión; la de Alicante 3 es HAUSERA PROPERTY MANAGER SPV 11, S.A"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "referencia de la ficha",
+      "antes": "Rentabilidad anualizada anunciada · 19/10/2026: 12,00 % (15,00 % sobre la inversión en 15 meses)",
+      "despues": null
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "referencia de la ficha",
+      "antes": "Rentabilidad anualizada anunciada · 20/10/2026: 12,00 % (15,00 % sobre la inversión en 15 meses)",
+      "despues": null
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "referencia de la ficha",
+      "antes": "Rentabilidad anualizada anunciada · 21/10/2026: 12,00 % (15,00 % sobre la inversión en 15 meses)",
+      "despues": null
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "referencia de la ficha",
+      "antes": "Historial publicado · 22/10/2026: 41 operaciones, 23 terminadas, 122 M EUR financiados",
+      "despues": "Historial publicado · 10/11/2026: 42 operaciones, 24 terminadas, 128 M€ financiados"
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "tarjeta",
+      "antes": "Mínimo de inversión: 100 € según la FAQ de Hausera (05/11); las condiciones de Alicante 2 están en su documento de emisión, aún no público.",
+      "despues": "Mínimo de inversión: Desde 100 € en Alicante 3, según su documento de emisión (10/11); la preventa abre el 18/11."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "tarjeta",
+      "antes": null,
+      "despues": "Acceso desde España: Emisión española para particulares que pasen el test de idoneidad del emisor; Hausera no está registrada en la CNMV."
+    },
+    {
+      "slug": "hausera-proximas-ofertas",
+      "campo": "tarjeta",
+      "antes": null,
+      "despues": "Salida: Cobras cuando se venden las viviendas (previsto en 20 meses, sin fecha cierta); sin mercado secundario garantizado."
+    }
+  ],
+  "tarjetaConservadasDeMasDe120": [],
+  "tarjetas": {
+    "spiko-letras-del-tesoro-euro": {
+      "Mínimo de inversión (clase EUTBL)": "Desde 1 €",
+      "Acceso desde España": "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "Reembolso": "Diario en días hábiles, con corte a las 11:30 (hora de París); puede limitarse si se pide más del 10 % del fondo"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "Mínimo de inversión": "1 USD",
+      "Acceso desde España": "Disponible para residentes en España tras el alta y la verificación (KYC) del proveedor.",
+      "Reembolso": "Diario en días hábiles de Francia y EE. UU., con corte a las 11:30 (hora de París)"
+    },
+    "robinhood-classic-stock-tokens": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Disponible para residentes en España: Robinhood Europe está inscrita en la CNMV en libre prestación (n.º 5299).",
+      "Salida": "Cierras con Robinhood Europe (24/5 según su web; horario ampliado no siempre disponible); el cierre puede suspenderse"
+    },
+    "mtbill": {},
+    "prosegur-digital-gold": {
+      "Mínimo de inversión": "1 gramo de oro",
+      "Acceso desde España": "Disponible para clientes residentes en España; las operaciones se liquidan en euros.",
+      "Reembolso": "Solo recompra por Prosegur; normalmente de 1 a 7 días hábiles, y puede suspenderse"
+    },
+    "aktionariat": {
+      "Mínimo de inversión": "500 CHF por transferencia bancaria",
+      "Acceso desde España": "Disponible para residentes en Suiza y el Espacio Económico Europeo, con un tope total de 100.000 € para el EEE.",
+      "Salida": "Venta solo a otros accionistas; el emisor no recompra"
+    },
+    "boss-info": {
+      "Mínimo de inversión": "100 CHF por transferencia al emisor; en cripto, desde 2 acciones (unos 17 ZCHF el 10/11)",
+      "Salida": "El emisor no recompra ahora; vendes a otros accionistas en ZCHF si hay comprador",
+      "Acceso desde España": "Sí para comprar al emisor, según las condiciones del portal: admite Suiza y EEE, con tope total de 100.000 € en el EEE"
+    },
+    "switzerlend": {
+      "Mínimo de inversión": "1 acción (68,01 CHF el 10/11)",
+      "Salida": "El emisor no recompra hoy (su web dice lo contrario); vendes a otros accionistas en ZCHF si hay comprador",
+      "Acceso desde España": "Sí para comprar al emisor, según las condiciones del portal: admite Suiza y EEE, con tope total de 100.000 € en el EEE"
+    },
+    "hausera-proximas-ofertas": {
+      "Mínimo de inversión": "Desde 100 € en Alicante 3, según su documento de emisión (10/11); la preventa abre el 18/11.",
+      "Acceso desde España": "Emisión española para particulares que pasen el test de idoneidad del emisor; Hausera no está registrada en la CNMV.",
+      "Salida": "Cobras cuando se venden las viviendas (previsto en 20 meses, sin fecha cierta); sin mercado secundario garantizado."
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (10/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (10/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "local-de-estanco-klagenfurt": {
+      "Mínimo de inversión": "Desde 95 € la participación en reventa (10/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "Mínimo de inversión": "Desde 68,80 € la participación en reventa (10/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "Mínimo de inversión": "Desde 65 € la participación en reventa (10/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "drautalresidenz-paternion": {
+      "Mínimo de inversión": "Desde 70 € la participación en reventa (10/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "randhartingergasse-9-viena": {
+      "Mínimo de inversión": "Desde 78 € la participación en reventa (10/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "Mínimo de inversión": "Desde 75 € la participación en reventa (10/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Sin reembolso: vendes en el tablón de la app si hay comprador (1,5 % de comisión)"
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "Mínimo de inversión": "Desde 74 € la participación en reventa (10/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Primera cancelación a los 15 años de la emisión; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-greenpoint": {
+      "Mínimo de inversión": "Desde 100 € la participación en reventa (10/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "fotovoltaica-cohotel": {
+      "Mínimo de inversión": "Desde 110 € la participación en reventa (10/11)",
+      "Acceso desde España": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+      "Salida": "Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+    },
+    "kraken-xstocks": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Según Kraken UE, disponible para sus clientes en la UE que superen su evaluación o sean inversores profesionales",
+      "Salida": "Vendes a Kraken en USD, con diferencial, 24/5, o retiras el token a tu wallet; sin plazo fijo"
+    },
+    "spiko-smart-cash-euro": {
+      "Mínimo de inversión": "Desde 1 €",
+      "Acceso desde España": "Disponible para particulares residentes en España según Spiko, tras el alta y la verificación de identidad (KYC)",
+      "Reembolso": "Diario, con orden antes de las 15:00 (París) y abono al día hábil siguiente; puede limitarse (25 % del fondo)"
+    }
+  },
+  "sinCambios": [
+    "las 25 plataformas del radar y sus textos, salvo las fechas de consulta",
+    "public.plataformas y public.fuentes (el SQL no las toca)",
+    "colecciones 8/13/1, estados de revisión e imágenes",
+    "Robinhood, Kraken y Prosegur Digital Gold: solo las fechas"
+  ],
+  "altas": [],
+  "retiradas": [],
+  "colecciones": {
+    "principales": 8,
+    "secundario": 13,
+    "en_camino": 1
+  }
+}

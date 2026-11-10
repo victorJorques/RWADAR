@@ -1,0 +1,10 @@
+Fuente: https://oceanpoint.fi/faq
+Consultado: 2026-11-10T09:35:04Z · HTTP 200 · 41285 bytes · sha256 ce575ae9eb924ab7ff5a4f736efb38ff737a1db46921f79a2b3a8a348f5dc5ee
+Copia original en crudo/oceanpoint-faq.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+Oceanpoint is a Luxembourg company built by the core team of Blocksquare, on tokenization infrastructure it licenses from Blocksquare.
+will be a free-floating crypto-asset on Ethereum, offered by Oceanpoint S.à r.l. (currently Blocksquare S.à r.l.). It is
+Oceanpoint plans to pay POINT when it acquires USDC, EURC or ETH for its own account. A crypto-asset white paper will be published before the offer starts, and POINT has not launched yet. Liquidity providers can register on the
+Buying and holding BSPTs requires an account and KYC verification on a marketplace, and some countries are not supported. Staking BST and participating in DAO governance does not require KYC.
+Luxembourg company
+(registered as Blocksquare S.à r.l., being renamed Oceanpoint S.à r.l.), led by CEO [nombre omitido], a real estate tokenization pioneer since 2018.

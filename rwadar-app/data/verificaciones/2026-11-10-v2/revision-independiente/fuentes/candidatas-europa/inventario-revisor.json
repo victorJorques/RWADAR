@@ -1,0 +1,580 @@
+{
+ "grupo": "candidatas-europa",
+ "revisor": "revisión independiente",
+ "ciclo": "2026-11-10",
+ "nota": "Respuestas originales en crudo/ (fuera de Git). Los .txt de esta carpeta son extractos literales sin nombres de personas.",
+ "consultas": [
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reinvest24",
+   "archivo": "crudo/cnmv-adv-reinvest24.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:32:54Z",
+   "bytes": 215433,
+   "sha256": "050ef4a0a9930d1bbcdd4fb8e6192827735d5dd0029377fe1bba97bd23dc3a59"
+  },
+  {
+   "url": "https://www.cnmv.es/webservices/verdocumento/ver?e=ETcz7y5kevTZSix4R9t5%2bobgIfO3RtNU2TGg1f2UJVUILCnUAEn6Pt63MwWh%2bqV8",
+   "archivo": "crudo/cnmv-advertencia-reinvest24.pdf",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:32:55Z",
+   "bytes": 93271,
+   "sha256": "4d9543c186583921d55232b2d80357ce1f2c40ccd53ff6d2f996d0cf82f53f6d"
+  },
+  {
+   "url": "https://reinvest24.com/",
+   "archivo": "crudo/reinvest24-portada.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:32:56Z",
+   "bytes": 29381,
+   "sha256": "91579a1b9514f4528e756ce225eda10026e9f505c1562246ac9a150e23b603a5"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_entityTypeCode:CSP&rows=400&wt=json",
+   "archivo": "crudo/esma-ecsp-todos.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:11Z",
+   "bytes": 363725,
+   "sha256": "13e527f5a5b4b6c9b027f54996adb6a8e5b59d127c8b18c19bebf54661c5acdc"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es",
+   "archivo": "crudo/cnmv-psfp-europeos.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:12Z",
+   "bytes": 176901,
+   "sha256": "3bee1f28035b8a639e2f066ebd922b6459a671959388b1a108d73a3f30a4a4b7"
+  },
+  {
+   "url": "https://de.bergfuerst.com/impressum",
+   "archivo": "crudo/bergfuerst-impressum.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:32Z",
+   "bytes": 27831,
+   "sha256": "b5c371025b9881296daf92e019ef691b413b74d497237618e3570600105e240b"
+  },
+  {
+   "url": "https://www.bergfuerst.com/es",
+   "archivo": "crudo/bergfuerst-es.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:34Z",
+   "bytes": 22131,
+   "sha256": "39a4ea1a300a9ca88e56ad808a02da54b1bc7cabf1e604f183ac442ddc43becb"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*DeXentra*&wt=json&rows=20",
+   "archivo": "crudo/esma-prospectos-dexentra.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:42Z",
+   "bytes": 4804,
+   "sha256": "e8e308781ad77d18395b7fcdc93ff0a4e9c0d735d72612d57f04b23f01210abc"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=50670069463VM690ML91",
+   "archivo": "crudo/cnmv-pasaportes-dexentra.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:43Z",
+   "bytes": 218993,
+   "sha256": "daad7b71b48385d6b246818699b3046f0240183c658ac2094a8d752c144d1763"
+  },
+  {
+   "url": "https://oilxcoin.io/",
+   "archivo": "crudo/oilxcoin-portada.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:44Z",
+   "bytes": 60634,
+   "sha256": "359d367ca3a1eff75ebc899cbaeaf5cbd268ffce42dc672908c7edc0057c368d"
+  },
+  {
+   "url": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+   "archivo": "crudo/oilxcoin-resumen-es.pdf",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:33:46Z",
+   "bytes": 447050,
+   "sha256": "861d53f3963ab7efd15acf247f34ba4de28bb134bfaa702c357d3e287282571f"
+  },
+  {
+   "url": "https://oilxcoin.us/en/token",
+   "archivo": "crudo/oilxcoin-token.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:15Z",
+   "bytes": 32538,
+   "sha256": "2ff8c4b025410e6062d34f6d85276abdcf19b912dc519053b3e177b9422e0a65"
+  },
+  {
+   "url": "https://oilxcoin.us/en/tokenomics",
+   "archivo": "crudo/oilxcoin-tokenomics.html",
+   "http": "404",
+   "consultadoUtc": "2026-11-10T09:34:28Z",
+   "bytes": 34321,
+   "sha256": "f54678dc5d680ef34cc5d4abd213119453e6e07097f7690fba0d690da75efd96",
+   "nota": "404 (ruta equivocada); copia descartada. La buena es /en/token/tokenomics"
+  },
+  {
+   "url": "https://oilxcoin.us/en/token/tokenomics",
+   "archivo": "crudo/oilxcoin-token-tokenomics.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:33Z",
+   "bytes": 38740,
+   "sha256": "7c4cb7fc9f3b05fb8e2968adca890bf9e7664af11d63939feebdc97c6622faf7"
+  },
+  {
+   "url": "https://oilxcoin.us/en/token/prospectus",
+   "archivo": "crudo/oilxcoin-token-prospectus.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:34Z",
+   "bytes": 71319,
+   "sha256": "48e050773dcbb32c0f88cd5aa2ff9054055df317753a7b1ca5fc75b40e7aa474"
+  },
+  {
+   "url": "https://oilxcoin.us/en/token/token-subscription-agreement",
+   "archivo": "crudo/oilxcoin-token-token-subscription-agreement.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:34:35Z",
+   "bytes": 62333,
+   "sha256": "526585883c29e51ca4e58f07caa00c14f05cc9eec037360de874a4deb75a7541"
+  },
+  {
+   "url": "https://oceanpoint.fi/",
+   "archivo": "crudo/oceanpoint-portada.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:04Z",
+   "bytes": 77365,
+   "sha256": "30513461268a7c3a9347f526257ffde040230a12d6ec0c21cd0b096d4e4301d1"
+  },
+  {
+   "url": "https://oceanpoint.fi/faq",
+   "archivo": "crudo/oceanpoint-faq.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:04Z",
+   "bytes": 41285,
+   "sha256": "ce575ae9eb924ab7ff5a4f736efb38ff737a1db46921f79a2b3a8a348f5dc5ee"
+  },
+  {
+   "url": "https://oceanpoint.fi/trade",
+   "archivo": "crudo/oceanpoint-trade.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:05Z",
+   "bytes": 45159,
+   "sha256": "b4e15f10c21d59340f2fc5dd99cdea8c3eeb562f6234c4b4b82768159c93e168"
+  },
+  {
+   "url": "https://oceanpoint.fi/terms",
+   "archivo": "crudo/oceanpoint-terms.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:05Z",
+   "bytes": 35326,
+   "sha256": "0dbb1ef431f3d58a3009e68ab4cf1a9dc004f35163b4f8dba1148be3ba267fc4"
+  },
+  {
+   "url": "https://oceanpoint.fi/stats",
+   "archivo": "crudo/oceanpoint-stats.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:05Z",
+   "bytes": 46448,
+   "sha256": "1974a465dca9c2f9aef2e7403f17ebc2497ecaedae2338fef86da32fe483d1df"
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+   "archivo": "crudo/esma-mica-casps.csv",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:06Z",
+   "bytes": 196605,
+   "sha256": "fd255f543d4c5746d96155744b3698c9a53acaf96168b028274bb06260896ca6"
+  },
+  {
+   "url": "https://marketplace.oceanpoint.fi/",
+   "archivo": "crudo/oceanpoint-marketplace.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:48Z",
+   "bytes": 1705,
+   "sha256": "84830373693535a6edc09e695780844365def9591be1669b1f24e0232e180480"
+  },
+  {
+   "url": "https://www.profitus.com/bonds",
+   "archivo": "crudo/profitus-bonds.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:58Z",
+   "bytes": 299344,
+   "sha256": "623ddf7da1161429639dce6a548735d394d93677166d032648db5c36e0e2f88d"
+  },
+  {
+   "url": "https://www.profitus.com/investment-offers",
+   "archivo": "crudo/profitus-offers.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:59Z",
+   "bytes": 187890,
+   "sha256": "031aeaacc25980b08e7ed671ed74fdf975bfd6148e29d81079a959dc1a776b8e"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/ss/locale/countries",
+   "archivo": "crudo/profitus-api-paises.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:35:59Z",
+   "bytes": 1285,
+   "sha256": "46164aad5b4ac6eb7b8757f79145892c4761ffa228dc4c46fb66950969498da3"
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf",
+   "archivo": "crudo/esma-dlt-autorizadas.pdf",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:36:00Z",
+   "bytes": 229280,
+   "sha256": "8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "archivo": "crudo/profitus-api-projects.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:36:53Z",
+   "bytes": 51762,
+   "sha256": "8b95473a4817dfeb400969c9cbed2f4d956da91cc786fa553c2689363433137e"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=600&page=1",
+   "archivo": "crudo/profitus-api-projects-todos.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:37:35Z",
+   "bytes": 51762,
+   "sha256": "8b95473a4817dfeb400969c9cbed2f4d956da91cc786fa553c2689363433137e"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=2",
+   "archivo": "crudo/profitus-api-projects-p2.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:37:46Z",
+   "bytes": 51463,
+   "sha256": "36ec1dc634b3c94cd33c9640fdb3f890e040db44205d2836c3e3ecac6616f366"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=3",
+   "archivo": "crudo/profitus-api-projects-p3.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:37:48Z",
+   "bytes": 51659,
+   "sha256": "6921700047067e69b792e48616bf7d2cf11b738ae15fffbd380712918d55dce0"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=4",
+   "archivo": "crudo/profitus-api-projects-p4.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:37:51Z",
+   "bytes": 51527,
+   "sha256": "69ee0b6c9f93f6da32b5531b94f7d8f5c610ceda77c3fb1bd57ceec109a8d2b6"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=5",
+   "archivo": "crudo/profitus-api-projects-p5.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:37:53Z",
+   "bytes": 113449,
+   "sha256": "d95dac40645d469df8a271ea70cbb8b5c259fb4006b7f7e7ddfbde790a153e97"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=6",
+   "archivo": "crudo/profitus-api-projects-p6.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:37:56Z",
+   "bytes": 122788,
+   "sha256": "e97c9afdc9532f42a7c23fc41f2df726256fd3e2f5ff038edd83aa660b2b5557"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=7",
+   "archivo": "crudo/profitus-api-projects-p7.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:37:58Z",
+   "bytes": 121955,
+   "sha256": "28ee73da86e44f0e02be29da8bf06bb61e9d47370a14959d1efc05857f966c99"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=8",
+   "archivo": "crudo/profitus-api-projects-p8.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:01Z",
+   "bytes": 122255,
+   "sha256": "923632f5c194513d85d1af15aca851f28eebd5bc81235857bfbede4d3c488458"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=9",
+   "archivo": "crudo/profitus-api-projects-p9.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:04Z",
+   "bytes": 122056,
+   "sha256": "6aae69213e8982ea505f78c59bf284de5cfea46f4428cf30b1e03a46f15a2030"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=10",
+   "archivo": "crudo/profitus-api-projects-p10.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:06Z",
+   "bytes": 121956,
+   "sha256": "9691015d8920fbb755e96cdb74c700f14931ef628a03326d0bd394ee28cc3085"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=11",
+   "archivo": "crudo/profitus-api-projects-p11.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:09Z",
+   "bytes": 107280,
+   "sha256": "b8c7117e8ce67030f6f730c610877b3c51ca9c6b525e3616209283f958df96ce"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=DeXentra",
+   "archivo": "crudo/cnmv-adv-DeXentra.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:22Z",
+   "bytes": 212225,
+   "sha256": "9952ee3dabc75d203d031660dbffaa3a142d29d654486a070cf35607e9b39250"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=OilXCoin",
+   "archivo": "crudo/cnmv-adv-OilXCoin.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:24Z",
+   "bytes": 212225,
+   "sha256": "19596b758910ef41f93aae4c817074f91991519b520e6ad8724945b611ac6e5b"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Blocksquare",
+   "archivo": "crudo/cnmv-adv-Blocksquare.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:25Z",
+   "bytes": 212291,
+   "sha256": "bc5d08f69704da75a3633f7b2a6d62c2c058c246be538b33f8cc141b71d4b296"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Oceanpoint",
+   "archivo": "crudo/cnmv-adv-Oceanpoint.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:27Z",
+   "bytes": 212269,
+   "sha256": "3317a295422e034ba969c35014bdb9498168567ebe0cb758551c00f8aedc2d35"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Profitus",
+   "archivo": "crudo/cnmv-adv-Profitus.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:29Z",
+   "bytes": 212225,
+   "sha256": "9ff6e002355b90253eee9e6033d663068d370c6b17890103e97c2b590d572434"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Axiology",
+   "archivo": "crudo/cnmv-adv-Axiology.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:30Z",
+   "bytes": 212225,
+   "sha256": "37a7e87a15cb142ba03fc9c6576b90f3764b0b1e2f862f0851ee4f2c3f433db7"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bergf%C3%BCrst",
+   "archivo": "crudo/cnmv-adv-BergfC3BCrst.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:33Z",
+   "bytes": 212293,
+   "sha256": "3dad49c243a9bd783fdcebb7706db8bdaec5633ad4f9def759de3b6714949288"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bergfurst",
+   "archivo": "crudo/cnmv-adv-Bergfurst.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:34Z",
+   "bytes": 212247,
+   "sha256": "e26462535049b9d273ed43edda4806a638b41f797d34538732bdb2dd3f016732"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Okx",
+   "archivo": "crudo/cnmv-adv-Okx.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:38:36Z",
+   "bytes": 217569,
+   "sha256": "43937a8623ecd3b7a2c3a2b48e4f98cb996b3fe551f7248ee42527e4fe50ceec"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=2&nombre=DeXentra",
+   "archivo": "crudo/cnmv-adv-t2-DeXentra.html",
+   "http": "400",
+   "consultadoUtc": "2026-11-10T09:38:51Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=2&nombre=OilXCoin",
+   "archivo": "crudo/cnmv-adv-t2-OilXCoin.html",
+   "http": "400",
+   "consultadoUtc": "2026-11-10T09:38:52Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=2&nombre=Blocksquare",
+   "archivo": "crudo/cnmv-adv-t2-Blocksquare.html",
+   "http": "400",
+   "consultadoUtc": "2026-11-10T09:38:53Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=2&nombre=Profitus",
+   "archivo": "crudo/cnmv-adv-t2-Profitus.html",
+   "http": "400",
+   "consultadoUtc": "2026-11-10T09:38:54Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=3&nombre=DeXentra",
+   "archivo": "crudo/cnmv-adv-t3-DeXentra.html",
+   "http": "400",
+   "consultadoUtc": "2026-11-10T09:38:55Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=3&nombre=OilXCoin",
+   "archivo": "crudo/cnmv-adv-t3-OilXCoin.html",
+   "http": "400",
+   "consultadoUtc": "2026-11-10T09:38:55Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=3&nombre=Blocksquare",
+   "archivo": "crudo/cnmv-adv-t3-Blocksquare.html",
+   "http": "400",
+   "consultadoUtc": "2026-11-10T09:38:56Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=3&nombre=Profitus",
+   "archivo": "crudo/cnmv-adv-t3-Profitus.html",
+   "http": "400",
+   "consultadoUtc": "2026-11-10T09:38:57Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  },
+  {
+   "url": "https://www.lcx.com/en/earn",
+   "archivo": "crudo/lcx-earn.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:18Z",
+   "bytes": 279742,
+   "sha256": "cda49271e115b4ee70d4ff9c287bd192a8412365229e4a024f1c49db9548c68f"
+  },
+  {
+   "url": "https://blocksquare.io/",
+   "archivo": "crudo/blocksquare-portada.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:19Z",
+   "bytes": 5138,
+   "sha256": "d8c6bf0a64b15a6df71ea2eca4bdf004b571f101fb4527e228ed2ba70355814b"
+  },
+  {
+   "url": "https://docs.blocksquare.io/certified-partners/legal/terms-of-service.md",
+   "archivo": "crudo/blocksquare-terms-template.md",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:39:19Z",
+   "bytes": 28978,
+   "sha256": "83cf037bcce3a453e4a8b1997382d5c97ea66ec2fc31a68eb1285277c90f1f12"
+  },
+  {
+   "url": "https://www.nn-group.com/site/binaries/content/assets/nn-group/nn-bank/bonds/covered-bonds/digital-final-terms-terms--conditions.pdf",
+   "archivo": "crudo/nn-bank-final-terms.pdf",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:41:33Z",
+   "bytes": 736726,
+   "sha256": "66430f24e4b3be7c7fa1cf681b25be0dbb7a16747b1e7975bf0c359583ac72c8"
+  },
+  {
+   "url": "https://oilxcoin.us/en/support/videos",
+   "archivo": "crudo/oilxcoin-videos.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:42:06Z",
+   "bytes": 36418,
+   "sha256": "1a89b24f98bc6785cd50e35fc746035447d6a63d300232cf6b4bb74f0189b713"
+  },
+  {
+   "url": "https://www.assetera.com/",
+   "archivo": "crudo/assetera-portada.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:42:25Z",
+   "bytes": 113134,
+   "sha256": "b842c2ea138ccf6d4a2cc44ae43eb89db05b2f42201fdb2d77185dab2ecbbbda"
+  },
+  {
+   "url": "https://marketplace.assetera.com/api/markets/stats24h?ids=28,30,71,142,153,155,156,633,634,635,636,637,641,642,647,648,654,655,656,657",
+   "archivo": "crudo/assetera-stats24h.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:42:46Z",
+   "bytes": 7657,
+   "sha256": "ec3236b7894ccdbb0dd7733522ed6dcbc8e0d0fe63084cf29927fc33f554deec"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=4",
+   "archivo": "crudo/cnmv-esi-eee-lp.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:43:06Z",
+   "bytes": 1991636,
+   "sha256": "ad4959a8b45c98bd0f4a193f17a189d8e283d419165efa71db49b837c22eb239"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5216",
+   "archivo": "crudo/cnmv-esi-5216-assetera.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:43:17Z",
+   "bytes": 218092,
+   "sha256": "8b61d91aae71334683d2b70b2ac3f19f417f155b79f82b4d2b927375540a7fc1"
+  },
+  {
+   "url": "https://marketplace.assetera.com/",
+   "archivo": "crudo/assetera-marketplace.html",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:43:46Z",
+   "bytes": 344902,
+   "sha256": "80a526c1b3fcc5407035e26d1cdf85ba4d6ee2e3cc4d8556c96b242c034060e1"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_entityName:*Blocksquare*%20OR%20ae_entityName:*Oceanpoint*%20OR%20ae_entityName:*Assetera*&rows=50&wt=json",
+   "archivo": "crudo/esma-upreg-blocksquare-assetera.json",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:44:38Z",
+   "bytes": 1445,
+   "sha256": "1078406f6bd52fe46bca31de9b5649fe68c30c54d13bd8e63735782e4c44004a"
+  },
+  {
+   "url": "https://www.profitus.com/investment-offers",
+   "archivo": "crudo/profitus-offers.render.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:36:46Z",
+   "nota": "render Playwright; los proyectos se cargan desde api.profitus.com/api/v1/landing/projects",
+   "bytes": 4480,
+   "sha256": "2a046f1037d856e4d8311091a4bdef168de7ca33e6e09dd54ef00fdf37003a71"
+  },
+  {
+   "url": "https://marketplace.assetera.com/",
+   "archivo": "crudo/assetera-marketplace.render.txt",
+   "http": "200",
+   "consultadoUtc": "2026-11-10T09:42:41Z",
+   "nota": "render Playwright",
+   "bytes": 3798,
+   "sha256": "8ff80b7f7ea7a645f43436a18f91c8783bfe90ce8e006a3f1b3c6606bfd5aced"
+  }
+ ],
+ "busquedasDescubrimiento": [
+  {
+   "herramienta": "WebSearch",
+   "consulta": "Profitus bonds Axiology issue 2026",
+   "uso": "solo descubrimiento: bono de 3,4 M EUR de mayo de 2026 en prensa; no se usa como fuente"
+  },
+  {
+   "herramienta": "WebFetch",
+   "url": "https://thecrowdspace.com/offering/gesons-bonds/",
+   "uso": "agregador; solo para localizar el bono Gesons en la API de Profitus"
+  },
+  {
+   "herramienta": "WebSearch",
+   "consulta": "Assetera OilXCoin OXC trading",
+   "uso": "solo descubrimiento: pista de que OXC está en Assetera; comprobado en marketplace.assetera.com y en la CNMV"
+  }
+ ]
+}

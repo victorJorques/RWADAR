@@ -10,7 +10,7 @@
 
 
 
-            Name: Florian Kübler-Lichtenstein
+            Name: [persona física recortada]
 
             Date: 5/8/2024
 
@@ -19,7 +19,7 @@
 
 
 
-            Name: Stefan Andri Jaecklin
+            Name: [persona física recortada]
 
             Date:
 
@@ -28,7 +28,7 @@
 
 
 
-            Name: Michel Lalive d'Epinay
+            Name: [persona física recortada]
 
             Date: 5/10/2024
 
@@ -37,7 +37,7 @@
 
 
 
-            Name: Pascal Widmer
+            Name: [persona física recortada]
                     5/13/2024
             Date:
 
@@ -55,7 +55,7 @@
 
 
 
-            Name: Samuel Hügli
+            Name: [persona física recortada]
                     5/8/2024
             Date:
 
@@ -64,7 +64,7 @@
 
 
 
-            Name: Krzysztof Bialkowski
+            Name: [persona física recortada]
 
             Date: 5/13/2024
 

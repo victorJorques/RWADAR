@@ -1,0 +1,216 @@
+URL: https://www.etoro.com/investing/tokenized-stocks/
+ConsultadoUtc: 2026-11-10T09:09:46Z
+
+ 
+ What Are Tokenized Stocks | eToro 
+ Log in 
+ Go to etoro Platform etoro Platform 
+ Search 
+ Search All" " 
+ Sorry. No results match your search criteria.
+ Explore by topic 
+ Investing 
+ Trading 
+ Stocks 
+ Crypto 
+ Guides 
+ Courses 
+ Tutorials 
+ Digest & Invest 
+ Loud Investing 
+ Experts 
+ Editorial Hub 
+ Contributors 
+ Market Analysts 
+ Financial Review Board 
+ Editorial Policy 
+ Help 
+ Log in Sign Up Download the App 
+ Search 
+ Log in Sign Up Go to etoro Platform etoro Platform 
+ WHAT ARE 
+ TOKENIZED STOCKS 
+ By: [persona física recortada] 
+ [persona física recortada]
+ Head of Compliance, Purecontent Media Limited
+ [Autor] is a seasoned trader with over two decades of industry experience. He has written on all aspects of trading and investing, and is able to simplify complex financial topics for everyday investors.
+ Full Bio 
+ LinkedIn 
+ × 
+ Reviewed by: Sam North 
+ Sam North
+ Market Analyst & Podcast Host for Digest & Invest
+ Follow 
+ Sam North is a market analyst and podcast host at etoro. With over 10 years of trading experience, he’s mentored aspiring traders and contributed to various financial publications. His Digest & Invest podcast has garnered over 1.7 million views. 
+ Full Bio 
+ LinkedIn 
+ X 
+ × 
+ Table of Contents 
+ What Are Tokenized Stocks? 
+ How Do Tokenized Stocks Work? 
+ What Companies Have Tokenized Stocks? 
+ Advantages and Risks of Tokenized Stocks 
+ What Is Tokenized Equity? 
+ How To Invest in Tokenized Stocks With etoro 
+ What Is the Future for Tokenized Stocks? 
+ Final thoughts 
+ FAQs 
+ Updated: 08/09/2026 • Intermediate • 12 min 
+ Investing 
+ The financial world is witnessing a revolutionary merger between traditional equity markets and blockchain technology. Tokenized stocks represent a groundbreaking innovation that is transforming how we think about share ownership.
+ Tokenized stocks could be about to transform the financial markets, offering 24/7 trading and democratising access to global markets. As this technology gains momentum, understanding tokenized stocks will become essential for traders looking to stay ahead in an evolving investment landscape.
+ What Are Tokenized Stocks?
+ Tokenized stocks are digital representations of traditional company shares that exist on a blockchain. Each token corresponds to a real share of stock, maintaining the same value and often providing similar rights as traditional equity ownership .
+ Think of tokenized stocks as digital certificates that prove your ownership of actual company shares, but are stored on blockchain technology rather than in conventional brokerage accounts . When you purchase a tokenized stock, you are buying a token that represents ownership in a company.
+ Tip: The underlying shares are typically held by a regulated custodian.
+ The technology emerged as financial institutions recognised blockchain’s potential to revolutionise securities trading . By tokenizing stocks, companies can offer fractional ownership, enable round-the-clock trading, and reduce settlement times from the traditional T+2 (trade date plus two days) to near-instantaneous transactions.
+ How Do Tokenized Stocks Work?
+ Tokenized stocks are blockchain based digital assets where investors are given digital tokens that represent exposure to traditional stocks. The process involves industry participants working together to ensure regulatory compliance and maintaining the link between digital tokens and real shares .
+ First, a licensed financial institution or custodian purchases and holds the actual shares of a company. These shares are then “locked” in a secure account, serving as collateral for the tokens. For every share held, an equivalent number of tokens is created on a blockchain platform , typically using smart contracts to automate the process and ensure transparency.
+ When you buy a tokenized stock, you’re purchasing these blockchain-based tokens through a regulated platform. The smart contract ensures that each token maintains a 1:1 relationship with the underlying share, meaning if Apple stock trades at $190, the tokenized Apple stock should also trade at approximately $190.
+ The tokens can be traded 24/7 on compatible platforms, transferred between wallets, and even used as collateral in DeFi protocols, depending on the platform’s capabilities.
+ Tip: Verify that tokenized stocks are backed by a reputable custodian and that the platform you’re using is properly regulated.
+ What Companies Have Tokenized Stocks?
+ The tokenized stock market has expanded significantly, with major companies and leading stock indices spearheading the charge in adoption.
+ Tokenized Stocks
+ NVIDIA ( NVDA ), Tesla ( TSLA ), and Apple ( AAPL ) are among the most popular tokenized stocks, reflecting their strong presence in traditional markets. These companies’ shares attract significant trading volume in both conventional and tokenized formats.
+ Microsoft ( MSFT ), Amazon ( AMZN ), and Google parent Alphabet ( GOOG ) also feature prominently in tokenized offerings, providing investors with exposure to the world’s largest tech firms through blockchain technology .
+ Tokenized Stock Indices
+ Beyond individual stocks, major indices have also been tokenized which offers ways to invest in instruments with built-in diversification.
+ The S&P 500 (SPX500) and Nasdaq (NSDQ100) indices are available to trade as tokenized assets, allowing traders to gain broad market exposure through a single token. This development has potentially made index investing more accessible to global investors who might otherwise face barriers in traditional markets.
+ The list of tokenized stocks continues to grow, with platforms regularly adding new tokenized stocks based on demand. Financial institutions like JPMorgan and Bank of America, consumer brands like Coca-Cola and Nike, and entertainment companies like Disney have all seen their shares tokenized.
+ Advantages and Risks of Tokenized Stocks
+ Understanding both the benefits and potential drawbacks of tokenized stocks is crucial for making better-informed investment decisions. The new functionality features will suit some, but not all investors.
+ Advantages 
+ Trade outside of traditional market hours – potentially on a 24/7 basis
+ Tokenization can divide equity into smaller, more affordable units, enabling fractional ownership, which opens up stock markets to a new type of client
+ Global access and transparent cross-border transactions using blockchain technology
+ Lower transaction costs
+ A decentralized, peer-to-peer exchange system allows for faster, almost immediate, settlement times
+ Disadvantages 
+ Regulatory uncertainty and lack of clarity how different jurisdictions will react
+ Lower liquidity resulting in wider bid-offer spreads
+ Potential hacking of smart contracts and counterparty risk of custodians
+ Divergence between tokenized and traditional stock prices when core markets are closed
+ No actual ownership means a lack of voting rights
+ What Is Tokenized Equity?
+ Tokenized equity represents a broader category that encompasses not just publicly traded stocks , but also private company shares and other equity-like instruments . In theory, any appropriately structured company can create an equity token as long as it complies with the rules and regulations.
+ The way that tokenization of equity makes it easier to transfer ownership to a wider market could be particularly revolutionary for traditionally illiquid assets.
+ Start up companies – Privately owned companies typically undergo lengthy and expensive legal processes called IPOs to make their stock available to the general public. Tokenization of their equity could allow them to be traded off-exchange and in small size.
+ Illiquid assets – Asset classes such as real estate investment trusts (REITs) allow investors to own part of a property asset. Tokenization would also allow multiple investors to own fractions of commercial or residential properties, but democratize the process by allowing retail investors to take part in deals previously reserved for institutional investors or high-net-worth individuals.
+ How To Invest in Tokenized Stocks With etoro
+ etoro has positioned itself at the forefront of the tokenized trading revolution, launching innovative features that blend traditional and digital asset trading .
+ The platform’s journey towards a tokenized future includes the introduction of 24/5 trading for futures and tokenized stocks, breaking the constraints of traditional market hours. On etoro’s platform, investors will be able to access tokenized versions of popular stocks alongside traditional trading options .
+ Tip: The etoro platform provides real-time pricing, market analysis tools, and educational resources to help you make better-informed decisions.
+ What Is the Future for Tokenized Stocks?
+ The trajectory of tokenized stocks points towards mainstream adoption and integration with traditional financial systems.
+ Industry experts predict that tokenization will become a standard feature of the equity markets within the next decade. Major financial institutions are investing heavily in blockchain infrastructure , with banks like JPMorgan and Goldman Sachs developing their own tokenization platforms.
+ “Tokenization of assets is the next generation for markets, and it’s going to happen relatively quickly.”
+ [nombre recortado], CEO of BlackRock 
+ Regulatory frameworks are evolving to accommodate these digital assets , with jurisdictions like Switzerland, Singapore, and the UK leading in creating clear guidelines for tokenized securities.
+ The future likely holds increased interoperability between different blockchain networks , allowing tokenized stocks to move seamlessly across platforms. We may see the emergence of decentralised stock exchanges operating entirely on blockchain, offering peer-to-peer trading without traditional intermediaries. As CBDCs become a reality, the integration of tokenized stocks with digital currencies could create entirely new financial ecosystems .
+ Final thoughts
+ Tokenized stocks bridge the gap between traditional finance and the crypto ecosystem and represent a significant evolution in how we approach equity ownership and trading.
+ By combining the stability and familiarity of traditional stocks with the innovation and accessibility of blockchain technology, they offer unique advantages for modern investors .
+ However, as with any emerging technology, it is essential to understand both the opportunities and risks involved. The key is to approach tokenized stocks with the same diligence and risk management strategies you would apply to any investment , while remaining open to the transformative potential they represent.
+ Visit the etoro Academy to learn more about new ways of investing.
+ FAQs
+ Are tokenized stocks the same as fractional shares? 
+ No, while both tokenized stocks and fractional shares allow you to own portions of expensive stocks, they operate differently. Fractional shares are portions of traditional stocks held by your broker, while tokenized stocks are blockchain-based tokens representing ownership of actual shares held by a custodian. Tokenized stocks can be traded 24/7 and transferred between compatible platforms, whereas fractional shares remain within your brokerage account.
+ DO tokenized stocks use blockchain technology? 
+ Yes, tokenized stocks are built entirely on blockchain technology. They use smart contracts to create digital tokens that represent ownership of real company shares. The blockchain provides a transparent, immutable record of ownership and enables features like 24/7 trading and near-instant settlement that aren’t possible with traditional stock systems.
+ Are tokenized stocks safe? 
+ Tokenized stocks carry both traditional investment risks and additional technology-related risks. While reputable platforms use secure blockchain technology and regulated custodians, risks include smart contract vulnerabilities, regulatory uncertainty, and potential liquidity issues, such as slippage . Always use regulated platforms and never invest more than you can afford to lose.
+ Can anyone invest in tokenized stocks? 
+ Access to tokenized stocks depends on your jurisdiction and the platform’s regulatory status. Many platforms require users to pass KYC ( Know Your Customer ) verification and may restrict access based on local regulations. Some countries have clearer frameworks for tokenized securities than others, so availability varies globally.
+ Do crypto and tokenized stocks use the same blockchain? 
+ Not necessarily. While both use blockchain technology, they often operate on different networks. Cryptocurrencies like Bitcoin use their own blockchains, while tokenized stocks typically use platforms like Ethereum , Polygon , or purpose-built securities blockchains. Some platforms are developing interoperability solutions to allow assets to move between different blockchains.
+ This information is for educational purposes only and should not be taken as investment advice, personal recommendation, or an offer of, or solicitation to, buy or sell any financial instruments.
+ This material has been prepared without regard to any particular investment objectives or financial situation and has not been prepared in accordance with the legal and regulatory requirements to promote independent research.
+ Not all of the financial instruments and services referred to are offered by etoro and any references to past performance of a financial instrument, index, or a packaged investment product are not, and should not be taken as, a reliable indicator of future results. The availability of all the above-mentioned products and services may vary by jurisdiction and country. 
+ etoro makes no representation and assumes no liability as to the accuracy or completeness of the content of this guide. Make sure you understand the risks involved in trading before committing any capital. Never risk more than you are prepared to lose.
+ Related Articles
+ Stock Trading and Investing For Beginners
+ Beginner’s Guide to Investing in Crypto
+ Crypto Coins vs Crypto Tokens
+ How to Buy Ethereum (ETH)
+ With innovative investment tools and a collaborative trading community, etoro empowers millions of users in over 75 countries to trade and invest in a simple and transparent way. 
+ Find us on
+ Download our app from the stores
+ INVEST 
+ Stocks 
+ Crypto 
+ ETFs 
+ Commodities 
+ Indices 
+ PLATFORM 
+ CopyTrader™ 
+ $100K Demo Account 
+ Smart Portfolios 
+ Fee Schedule 
+ SUPPORT 
+ Help Center 
+ How to Deposit 
+ Open an Account 
+ Risk Disclosure 
+ Responsible Trading 
+ ABOUT US 
+ About etoro 
+ Investor Relations 
+ Careers 
+ etoro Awards 
+ etoro Logo 
+ LEGAL 
+ Regulation & License 
+ Privacy Policy 
+ Terms & Conditions 
+ Cookie Policy 
+ PARTNERS 
+ Invite a Friend 
+ Affiliate Program 
+ etoro Club 
+ CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. 55% of retail investor accounts lose money when trading CFDs with this provider. You should consider whether you understand how CFDs work, and whether you can afford to take the high risk of losing your money. 
+ Cryptocurrencies markets are unregulated services which are not governed by any specific European regulatory framework (including MiFID) or in Seychelles. Therefore, when using our Cryptocurrencies Trading Service, you will not benefit from the protections available to clients receiving MiFID regulated investment services, such as access to the Cyprus Investor Compensation Fund (ICF)/the Financial Services Compensation Scheme (FSCS) and the Financial Ombudsman Service for dispute resolution, or the protections available under Seychelles regulatory framework (as applicable). 
+ etoro (Europe) Ltd., a Financial Services Company authorised and regulated by the Cyprus Securities Exchange Commission (CySEC) under the license # 109/10.
+Registered in Cyprus under Company No. HE 200585. Registered Office: Neocleous Tower, 199 Archbishop Makarios III Avenue,  9th Floor,  Limassol 3030, Cyprus
+etoro (UK) Ltd, a Financial Services Company authorised and regulated by the Financial Conduct Authority (FCA) under the license FRN 583263.
+Registered Office: 24th floor, One Canada Square, Canary Wharf, London E14 5AB
+etoro AUS Capital Limited is authorised by the Australian Securities and Investments Commission (ASIC) to provide financial services under Australian Financial Services License 491139
+Registered Office: Level 3, 60 Castlereagh Street, Sydney NSW 2000, Australia
+etoro (Seychelles) Ltd. is licenced by the Financial Services Authority Seychelles ("FSAS") to provide broker-dealer services under the Securities Act 2007 License #SD076
+Registered Office: Suite 18, 3rd Floor, Vairam Building, Providence, Mahe, Seychelles, is licensed to deal in securities either as an agent or principal.
+etoro (ME) Limited, is licensed and regulated by the Abu Dhabi Global Market (“ADGM”)’s Financial Services Regulatory Authority ("FSRA") as an Authorised Person to conduct the Regulated Activities of (a) Dealing in Investments as Principal (Matched), (b) Arranging Deals in Investments, (c) Providing Custody, (d) Arranging Custody and (e) Managing Assets (under Financial Services Permission Number 220073) under the Financial Services and Market Regulations 2015 (“FSMR”). Its registered office and its principal place of business is at 25th Floor, Al Sila Tower, ADGM Square, Al Maryah Island, Abu Dhabi, United Arab Emirates ("UAE").
+ Past performance is not an indication of future results.
+ General Risk Disclosure | Terms & Conditions 
+ You should seek advice from an independent and suitably licensed financial advisor and ensure that you have the risk appetite, relevant experience and knowledge before you decide to trade. Under no circumstances shall etoro have any liability to any person or entity for (a) any loss or damage in whole or part caused by, resulting from, or relating to any transactions related to CFDs or (b) any direct, indirect, special, consequential or incidental damages whatsoever. 
+ Trading with etoro by following and/or copying or replicating the trades of other traders involves a high level of risks, even when following and/or copying or replicating the top-performing traders. Such risks include the risk that you may be following/copying the trading decisions of possibly inexperienced/unprofessional traders, or traders whose ultimate purpose or intention, or financial status may differ from yours. Past performance of an etoro Community Member is not a reliable indicator of his future performance. Content on etoro's social trading platform is generated by members of its community and does not contain advice or recommendations by or on behalf of etoro - Your Social Investment Network.
+Copyright © 2006-2026 etoro - Your Social Investment Network, All rights reserved.
+ Great job!
+ Great job! You've completed 50% of the course.
+ Keep it up! Only 2 lessons left to finish.
+ Continue 
+ It looks like you're in the United States. View our US site.
+ Go to etoro USA 
+ Select Your Language
+ English 
+ Before we continue…
+ This course is available exclusively for etoro users.
+ To continue learning, please log in.
+Not an etoro user yet? Sign up now and gain free access to our Academy courses.
+ Log in 
+ Sign Up 
+ Not a good time? Explore etoro Academy and join us later!
+ Gain an edge in trading
+ Join etoro and get access to exclusive etoro Academy content such as online courses, inspirational webinars, financial guides and monthly insights directly to your inbox.
+ Log in 
+ Sign up 
+ Not a good time? Explore etoro Academy and join us later!
+ Exclusive Content for Higher Tier Members
+ This course is reserved for etoro Club members of __CLUBTIER__ tier and above.
+ To access this content, you’ll need to upgrade your etoro Club membership. Explore the benefits of our higher tiers and unlock a world of exclusive learning opportunities.
+ Explore Club Tiers 
+ Return to Academy 
+ You’re in!
+ Ready to begin learning?
+ Let's go 

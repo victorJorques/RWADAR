@@ -1,0 +1,8 @@
+Casa de Outeiro (Alius / Token City) · API pública
+https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress
+09:44:57 UTC · HTTP 200 · 48.606 bytes · sha256 ebffd3e4728f877aa8c8c82d2febb2827ac3aa13528d34e2c68c71492d62b3c7 (igual que el investigador a las 09:06:19)
+campaign_status: CAMPAIGN · start_date: 2026-07-01 · end_date: 2026-10-31 · extend_days: None
+campaign_progress: {'booked': 1695350, 'invested': 1123000, 'supply': 128800, 'invested_tokens': 44920}
+minimum_revenue_money: 2000000 · maximum_revenue_money: 3220000
+05/11 (expediente 2026-11-05-v2/expedientes/casa-de-outeiro.json): invested 1121000; invested_tokens 44840
+Pestañas: https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/tabs · 09:44:40 UTC · sha256 3ec67c48c55af62f0a3769e31d5fd989850a6b001b94c48f85754169d19fb741 (igual que el investigador)

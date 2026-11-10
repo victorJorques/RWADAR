@@ -1,0 +1,123 @@
+{
+ "url": "https://data.spiko.io/",
+ "status": 200,
+ "consultadoUtc": "2026-11-10T09:04:25Z",
+ "finUtc": "2026-11-10T09:04:32Z",
+ "titulo": "Spiko Dashboard",
+ "texto": "Log in\nSign up\nAll products\nSmart Cash EUR\nSmart Cash USD\nSmart Cash GBP\nSmart Cash CHF\nEU T-Bills\nUS T-Bills\nUK T-Bills\nCash & Carry EUR\nCash & Carry USD\nOFFICIAL · POWERED BY THE SPIKO PUBLIC API\nSpiko Dashboard\n\nAll information related to our products is available on spiko.io.\n\nTOTAL AUM\n$3.26B\nAcross all Spiko products\nTOTAL USERS\n16,906\nAcross all Spiko products\nMOM AUM GROWTH\n+14.45%\nΔ +$411.18M vs 30d ago\nMOM USER GROWTH\n+12.36%\nΔ +1,860 vs 30d ago\nTotal AUM\n\nUSD-normalised.\n\n2024-06-19\n2024-09-11\n2024-12-03\n2025-02-26\n2025-05-22\n2025-08-14\n2025-11-05\n2026-01-27\n2026-04-22\n2026-07-27\n2026-11-10\n$0\n$900M\n$1.8B\n$2.7B\n$3.6B\nTotal users\n\nSum of users across all Spiko products.\n\n2024-06-29\n2024-09-22\n2024-12-14\n2025-03-07\n2025-05-30\n2025-08-22\n2025-11-11\n2026-01-31\n2026-04-24\n2026-07-28\n2026-11-10\n0\n5,000\n10,000\n18,258\nAUM per product\n\nUSD-normalised. Each band represents a single product.\n\n2024-06-19\n2024-09-11\n2024-12-03\n2025-02-26\n2025-05-22\n2025-08-14\n2025-11-05\n2026-01-27\n2026-04-22\n2026-07-27\n2026-11-10\n$0\n$900M\n$1.8B\n$2.7B\n$3.6B\nSmart Cash CHFSmart Cash GBPSmart Cash USDSmart Cash EURCash & Carry USDUK T-BillsCash & Carry EURUS T-BillsEU T-Bills\nPer product\nSmart Cash EUR\nEUR\n\nSpiko Smart Cash EUR\n\nAUM\n€2.00B\nUSERS\n11,080\n30D YIELD\n2.84%\nNAV\n1.0169\nFR0014015LD3\nView factsheet →\nSmart Cash USD\nUSD\n\nSpiko Smart Cash USD\n\nAUM\n$249.04M\nUSERS\n1,229\n30D YIELD\n4.37%\nNAV\n1.0274\nFR0014015LE1\nView factsheet →\nSmart Cash GBP\nGBP\n\nSpiko Smart Cash GBP\n\nAUM\n£44.05M\nUSERS\n453\n30D YIELD\n4.17%\nNAV\n1.0274\nFR0014015LF8\nView factsheet →\nSmart Cash CHF\nCHF\n\nSpiko Smart Cash CHF\n\nAUM\n₣10.41M\nUSERS\n25\n30D YIELD\n0.24%\nNAV\n1.0003\nFR0014015LG6\nView factsheet →\nEU T-Bills\nEUR\n\nSpiko EU T-Bills Money Market Fund\n\nAUM\n€424.20M\nUSERS\n2,819\n30D YIELD\n2.44%\nNAV\n1.0626\nFR001400ODL1\nView factsheet →\nUS T-Bills\nUSD\n\nSpiko US T-Bills Money Market Fund\n\nAUM\n$174.70M\nUSERS\n875\n30D YIELD\n4.09%\nNAV\n1.1024\nFR001400ODM9\nView factsheet →\nUK T-Bills\nGBP\n\nSpiko UK T-Bills Money Market Fund\n\nAUM\n£9.10M\nUSERS\n358\n30D YIELD\n3.54%\nNAV\n1.0356\nFR0014012MN7\nView factsheet →\nCash & Carry EUR\nEUR\n\nSpiko Digital Assets Cash & Carry (EUR)\n\nAUM\n€20.49M\nUSERS\n51\n30D YIELD\n2.23%\nNAV\n1.0022\nFR0014010ON7\nView factsheet →\nCash & Carry USD\nUSD\n\nSpiko Digital Assets Cash & Carry (USD)\n\nAUM\n$6.32M\nUSERS\n16\n30D YIELD\n3.91%\nNAV\n1.0295\nFR0014010OM9\nView factsheet →\n\nCumulative interest accrued across all products, all-time: $49.54M ($49,538,915)\n\n© Spiko 2026\nLegal Notice\nTerms of Use\nPrivacy\nDune workspace ↗\n$0",
+ "enlaces": [
+  {
+   "t": "",
+   "h": "https://data.spiko.io/"
+  },
+  {
+   "t": "Log in",
+   "h": "https://app.spiko.io/"
+  },
+  {
+   "t": "Sign up",
+   "h": "https://app.spiko.io/signup"
+  },
+  {
+   "t": "All products",
+   "h": "https://data.spiko.io/"
+  },
+  {
+   "t": "Smart Cash EUR",
+   "h": "https://data.spiko.io/safo-eur"
+  },
+  {
+   "t": "Smart Cash USD",
+   "h": "https://data.spiko.io/safo-usd"
+  },
+  {
+   "t": "Smart Cash GBP",
+   "h": "https://data.spiko.io/safo-gbp"
+  },
+  {
+   "t": "Smart Cash CHF",
+   "h": "https://data.spiko.io/safo-chf"
+  },
+  {
+   "t": "EU T-Bills",
+   "h": "https://data.spiko.io/eutbl"
+  },
+  {
+   "t": "US T-Bills",
+   "h": "https://data.spiko.io/ustbl"
+  },
+  {
+   "t": "UK T-Bills",
+   "h": "https://data.spiko.io/uktbl"
+  },
+  {
+   "t": "Cash & Carry EUR",
+   "h": "https://data.spiko.io/eurspkcc"
+  },
+  {
+   "t": "Cash & Carry USD",
+   "h": "https://data.spiko.io/spkcc"
+  },
+  {
+   "t": "spiko.io",
+   "h": "https://www.spiko.io/"
+  },
+  {
+   "t": "Smart Cash EUR\nEUR\n\nSpiko Smart Cash EUR\n\nAUM\n€2.00B\nUSERS\n11,080\n30D YIELD\n2.84",
+   "h": "https://data.spiko.io/safo-eur"
+  },
+  {
+   "t": "Smart Cash USD\nUSD\n\nSpiko Smart Cash USD\n\nAUM\n$249.04M\nUSERS\n1,229\n30D YIELD\n4.3",
+   "h": "https://data.spiko.io/safo-usd"
+  },
+  {
+   "t": "Smart Cash GBP\nGBP\n\nSpiko Smart Cash GBP\n\nAUM\n£44.05M\nUSERS\n453\n30D YIELD\n4.17%\n",
+   "h": "https://data.spiko.io/safo-gbp"
+  },
+  {
+   "t": "Smart Cash CHF\nCHF\n\nSpiko Smart Cash CHF\n\nAUM\n₣10.41M\nUSERS\n25\n30D YIELD\n0.24%\nN",
+   "h": "https://data.spiko.io/safo-chf"
+  },
+  {
+   "t": "EU T-Bills\nEUR\n\nSpiko EU T-Bills Money Market Fund\n\nAUM\n€424.20M\nUSERS\n2,819\n30D",
+   "h": "https://data.spiko.io/eutbl"
+  },
+  {
+   "t": "US T-Bills\nUSD\n\nSpiko US T-Bills Money Market Fund\n\nAUM\n$174.70M\nUSERS\n875\n30D Y",
+   "h": "https://data.spiko.io/ustbl"
+  },
+  {
+   "t": "UK T-Bills\nGBP\n\nSpiko UK T-Bills Money Market Fund\n\nAUM\n£9.10M\nUSERS\n358\n30D YIE",
+   "h": "https://data.spiko.io/uktbl"
+  },
+  {
+   "t": "Cash & Carry EUR\nEUR\n\nSpiko Digital Assets Cash & Carry (EUR)\n\nAUM\n€20.49M\nUSERS",
+   "h": "https://data.spiko.io/eurspkcc"
+  },
+  {
+   "t": "Cash & Carry USD\nUSD\n\nSpiko Digital Assets Cash & Carry (USD)\n\nAUM\n$6.32M\nUSERS\n",
+   "h": "https://data.spiko.io/spkcc"
+  },
+  {
+   "t": "© Spiko 2026",
+   "h": "https://www.spiko.io/"
+  },
+  {
+   "t": "Legal Notice",
+   "h": "https://support.spiko.io/hc/en-us/articles/45293604949009-Legal-Notice"
+  },
+  {
+   "t": "Terms of Use",
+   "h": "https://support.spiko.io/hc/en-us/articles/45293573063057-Terms-of-Use"
+  },
+  {
+   "t": "Privacy",
+   "h": "https://support.spiko.io/hc/en-us/articles/45293614056593-Privacy-Policy"
+  },
+  {
+   "t": "Dune workspace ↗",
+   "h": "https://dune.com/spiko"
+  }
+ ],
+ "error": null
+}

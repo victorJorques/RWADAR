@@ -1,0 +1,1 @@
+https://midas.app/llms-full.txt devuelve la página de inicio de la web, que carga: assets/main-BSIncFBO.js

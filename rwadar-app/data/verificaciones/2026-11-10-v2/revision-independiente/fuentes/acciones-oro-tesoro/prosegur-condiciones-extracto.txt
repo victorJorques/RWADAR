@@ -1,0 +1,54 @@
+https://app.prosegurdigitalgold.com/#/terms-service · Playwright 2026-11-10T09:26:43Z · 71548 caracteres · sha256 texto 7351083badb1b41ceedec18825bf73f8d1df1434cf1ae21cfd7965f598471407
+Igual al texto del investigador salvo el banner de cookies.
+
+… uestra Política de Cookies.
+
+Ver nuestros socios
+Configurar
+Acepto todas las Cookies
+Tokens
+Iniciar sesión
+ES
+Aviso Legal y Condiciones del Servicio
+TÉRMINOS Y CONDICIONES GENERALES | PROSEGUR GOLD | Actualizado el 08/07/2026
+
+“PROSEGUR CUSTODIA DE ACTIVOS DIGITALES, S.L.U.”, con CIF B88610126, y domicilio social en la calle Herberto Gut, 12, 28007 Madrid (España), e inscrita en el Registro Mercantil de Madrid (Tomo 40353 …
+
+… do Tokens de Oro:
+
+Operación	Referencia	Ajuste sobre el precio LBMA	Precio aplicado al cliente
+Compra de tokens	Precio de compra (cliente adquiere tokens de oro)	4% por encima del precio LBMA del día	Precio LBMA diario + 4%
+Venta de tokens	Precio de venta (cliente entrega tokens a cambio de dinero)	6% por debajo del precio LBMA del día	Precio LBMA diario - 6%
+5.5. MONEDA DE LIQUIDACIÓN:
+
+Salvo que se indique otra moneda …
+
+… adquiere tokens de oro)	4% por encima del precio LBMA del día	Precio LBMA diario + 4%
+Venta de tokens	Precio de venta (cliente entrega tokens a cambio de dinero)	6% por debajo del precio LBMA del día	Precio LBMA diario - 6%
+5.5. MONEDA DE LIQUIDACIÓN:
+
+Salvo que se indique otra moneda en la plataforma o se acuerde con el Cliente, todas las transacciones económicas se realizarán en EUROS para los Clientes residentes en e …
+
+… plicable.
+
+6.4. PLAZO DE PAGO:
+
+Prosegur Crypto procurará efectuar el pago de la recompra con la mayor celeridad posible. En condiciones normales, las órdenes de recompra se procesarán en un plazo de 1 a 7 días hábiles aproximadamente desde su solicitud (contando el tiempo necesario para validar la autenticidad de la orden y completar la transferencia de fondos). En casos excepcionales, si por volumen u otras circu …
+
+… MENTO DE INVERSIÓN. NO ESTÁ CONSIDERADO UN VALOR NEGOCIABLE Y LIBREMENTE TRANSMISIBLE. LOS TOKENS NO REPRESENTAN NINGÚN VALOR NEGOCIABLE Y NO PUEDEN SER CONSIDERADOS, EN NINGÚN CASO, SECURITY TOKENS. SOLO PUEDEN REVENDERSE A PROSEGUR CRYPTO SIN QUE SEA POSIBLE TRANSMITIRLOS A NINGÚN TERCERO. LOS TOKENS DE ORO NO SON MONEDA DE CURSO LEGAL.
+
+SU COMERCIALIZACIÓN NO ESTÁ SUJETA A LA SUPERVISIÓN DE NINGÚN REGULADOR FINANCIERO, SIN PERJUICIO …
+
+… mantenga en todo momento una correspondencia 1:1 entre los Tokens emitidos y el oro físico custodiado y no se vea afectada la posición económica ni los derechos del Cliente.
+No obstante lo anterior, si el Cliente reúne Tokens de Oro suficientes equivalentes a un lingote (en total, 1.000 Tokens de Oro corresponden a un lingote), podrá, a su discreción, optar entre: (i) revender dichos Tokens de Oro a Prosegur Crypto al precio y en las condic …
+
+… r Crypto esté facultada para ello, por sí misma o a través de colaboradores locales, según corresponda, y cumpla la normativa aplicable, sin limitarse al territorio español.
+
+EL PRODUCTO TOKEN DE ORO NO ES UN PRODUCTO FINANCIERO NI INSTRUMENTO DE INVERSIÓN. NO ESTÁ CONSIDERADO UN VALOR NEGOCIABLE Y LIBREMENTE TRANSMISIBLE. LOS TOKENS NO REPRESENTAN NINGÚN VALOR NEGOCIABLE Y NO PUEDEN SER CONSIDERADOS, EN NINGÚN CASO, SECURIT …
+
+… recio LBMA del día	Precio LBMA diario - 6%
+5.5. MONEDA DE LIQUIDACIÓN:
+
+Salvo que se indique otra moneda en la plataforma o se acuerde con el Cliente, todas las transacciones económicas se realizarán en EUROS para los Clientes residentes en el Espacio Económico Europeo. En el caso de Clientes situados fuera del Espacio Económico Europeo, las liquidaciones podrán realizarse en la moneda de curso legal utilizada por el Cliente para efe …
+
+… digital que representa porciones de Oro Físico real custodiado por Prosegur Crypto. Cada Token representa la fracción de una porción equivalente y verificada de un lingote de oro físico dentro de un inventario segregado de naturaleza fungible. Los tokens son emitidos sobre tecnología blockchain (Ethereum, estándar ERC-1155) y cada Token de Oro tiene un respaldo en oro tangible equivalente, almacenado en instalaciones de seguridad. El Clie …

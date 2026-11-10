@@ -1,0 +1,21 @@
+midas.app/assets/main-BSIncFBO.js (SHA-256 bc05508e…). Extractos.
+
+[Aviso de entrada]
+,a,i]);return Hs({queryKey:c,queryFn:l,enabled:o.length>0,refetchInterval:t?_D:!1,refetchOnWindowFocus:!1,refetchOnReconnect:!1})}var lOe=`1.0.2`,T8=[{title:`Eligibility & Jurisdiction`,copy:`The information on this website is directed only at persons who are resident or located in the following jurisdictions: Austria, Belgium, France, Germany, Ireland, Italy, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Spain, and Sweden (the “Permitted Jurisdictions”).`},{title:`No Offer or Solicitation`,copy:`The information provided on this website does not constitute an offer to sell, or a solicitation of an offer to buy, any securities, nor an invitation to engage in any investment activity, in any jurisdiction where such offer, solicitation, or activity would be unlawful or would require any registration, approval, or licence. Persons accessing this website from outside the Permitted Jurisdictions must
+
+[Mapa de ofertas]
+artment:`(Compartment mGLOeuro)`,framework:`Offer exempt from prospectus obligation under EU Prospectus Regulation`,offer:`exempt`},Hpe={id:`aureum`,name:kQ,compartment:`acting in respect of compartment mWIN`,framework:`Exempt Offer`,offer:`exempt`},MQ={[V.MTBILL]:AQ,[V.MHYPER]:AQ,[V.SOLMHYPER]:AQ,[V.MHYPERBTC]:AQ,[V.MRE7]:AQ,[V.MHYPERETH]:AQ,[V.MAPOLLO]:AQ,[V.MXRP]:AQ,[V.MEDGE]:AQ,[V.MSYRUPUSDP]:AQ,[V.MMEV]:AQ,[V.MEVUSD]:AQ,[V.MBASIS]:AQ,[V.MRE7BTC]:AQ,[V.MARB]:AQ,[V.MARBETH]:AQ,[V.MARBBTC]:AQ,[V.MROX]:AQ,[V.MF
+
+[Ficha mTBILL]
+ading providers of investment, advisory and strategy management solutions
+
+Superstate builds investment products that benefit from the speed, programmability, and compliance advantages of blockchain tokenisation.`,links:[{name:`BUIDL BlackRock`,url:`https://securitize.io/blackrock/buidl`},{name:`USTB SuperState`,url:`https://superstate.com/`}]},yieldType:{value:e0,tooltip:t0},priceUpdates:{value:`Updated every business day ${t}`},rewardsDistribution:`Via price update`,redemptionTimeline:_0(i,r),capacitySchedule:`50% of supply, replenished in 3 days`,transferability:s0,instantLiquidity:a,custodyAndSecurity:`Protected by Fireblocks, Fordefi and DFNS.`,custodyAndSecurityTooltipText:`Fordefi, DFNS and Fireblocks are technical service providers. Midas tokens are self-custodied. Users are responsible for managing their wallets`,eligibility:{value:c0,tooltip:p0},risks:{value:u0,tooltip:d0},smartContracts:f0},[V.MBASIS]:{strategyDetails:`Crypto funding rates strategy`,riskManager:v0(`Edge Capital`),yieldType:{value:e0,toolt
+
+[Textos de elegibilidad]
+ormance. There is a risk of principal loss due to asset devaluation.`,n0=`Updated twice per week`,r0=`1-2 times a week`,i0=`Updates several times per week`,a0=`Updated weekly`,o0=`Updated once a month`,s0=`Fully transferable token, no restrictions.`,c0=`Accessible to investors in eligible jurisdictions.`,l0=`Accessible only to qualified investors or those investing at least $150,000.`,u0=`Tokens have substantial risks; returns are not guaranteed.`,d0=`Investing in Midas-issued tokens involves risk, including potential los
+
+[Ventana de inversor cualificado]
+ren:[(0,J.jsx)(A,{className:`w-full`,disabled:a,onClick:t,children:`Confirm & Continue`}),(0,J.jsx)(`p`,{className:`text-center text-xs text-[#25272AB2]`,children:`By continuing, you acknowledge and accept the above disclosure`})]})]})})},hOe=`eligibility_accepted`,D8=e=>`${hOe}_v2_${e}`,O8={title:`Confirm your investor eligibility`,intro:`The products in this offering are complex financial instruments and are not intended to be offered to the public. Access to this offering is restricted.`,instruction:`To proceed, please select the statement that applies to you and confirm that you either:`,options:[{id:`qualified_investor`,
+
+[Productos con requiresEligibilityCheck]
+nvestment product tracking a Portofino strategy`},[V.MKRALPHA]:{name:`mKRalpha`,description:"Liquid Token tracking Keyrock`s Absolute Alpha Strategy",overrides:{requiresEligibilityCheck:!0}},[V.MROX]:{name:`mROX`,description:`Liquid Yield Token tracking a RockawayX yield strategy`},[V.MM1USD]:{name:`mM1-USD`,description:`Onchain investme

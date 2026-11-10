@@ -1,0 +1,1662 @@
+{
+ "grupo": "candidatas-espana",
+ "ciclo": "2026-11-10-v2",
+ "nota": "Consultas reales del 10/11/2026 entre las 09:01 y las 09:29 UTC (hora de cada una en consultadoUtc). Sin inicio de sesión, formularios de alta, KYC ni wallets. Los originales HTML/PDF están en fuentes/crudo/originales/ (fuera de Git) porque pueden contener nombres de personas; en fuentes/ quedan los textos extraídos, con nombres y DNI recortados. El PDF del certificado de revisión de Rentas 4 se borró porque la firma incluye un DNI. Las respuestas de API con direcciones, UUID o contratos están en fuentes/crudo/. Hay consultas repetidas (por ejemplo, Gemini) porque se validó el buscador antes y después de ajustar el analizador.",
+ "consultas": [
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ERIR.aspx?lang=es",
+   "archivo": "fuentes/crudo/originales/cnmv/erir-indice.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:01:40Z",
+   "bytes": 154535,
+   "sha256": "eebd88eac23d049351c2bf6318f2715806fc0dd639764f8fa6a61db4dafd9697",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/cnmv/erir-indice.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es",
+   "archivo": "fuentes/crudo/originales/cnmv/erir-ursus3-p0.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:01:41Z",
+   "bytes": 183044,
+   "sha256": "bc39c56a2d448f67fe6720ded3e81fca7c6aa96c7e4716b6addd2838cd8a5993",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/cnmv/erir-ursus3-p0.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1",
+   "archivo": "fuentes/crudo/originales/cnmv/erir-ursus3-p1.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:01:44Z",
+   "bytes": 182838,
+   "sha256": "287f1432915b4b8e9373fd949a05bba87ce880645501ea0444fa1dab2878ea65",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/cnmv/erir-ursus3-p1.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+   "archivo": "fuentes/crudo/originales/cnmv/erir-ursus3-p2.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:01:46Z",
+   "bytes": 162258,
+   "sha256": "4cdaee361403c68aec4dd3d5c5a5cf8008815d71573288829743597e0a0f320c",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/cnmv/erir-ursus3-p2.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=3",
+   "archivo": "fuentes/crudo/originales/cnmv/erir-ursus3-p3.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:01:48Z",
+   "bytes": 153549,
+   "sha256": "7a076857f90d08b53e90de228b6eac0eb4f400626d27fdeebdc55dcd5895f57d",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/cnmv/erir-ursus3-p3.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "archivo": "fuentes/crudo/originales/cnmv/erir-A23875529.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:02:16Z",
+   "bytes": 153198,
+   "sha256": "c86799de78da4d2973cec3d98aadee67e8323becf565126c37ed1ef9fcdfcf42",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/cnmv/erir-A23875529.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A25988981&lang=es",
+   "archivo": "fuentes/crudo/originales/cnmv/erir-A25988981.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:02:17Z",
+   "bytes": 153264,
+   "sha256": "22b443f1a8b3742ac5d7d8ce537f8aed8808bd5662a95a5e186a4e78b66cbdca",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/cnmv/erir-A25988981.txt"
+  },
+  {
+   "url": "https://www.minossecurities.com/",
+   "archivo": "fuentes/minos/minossecurities-home.html",
+   "http": 0,
+   "consultadoUtc": "2026-11-10T09:02:51Z",
+   "bytes": 0,
+   "sha256": null,
+   "error": "curl: (35) Recv failure: Connection reset by peer"
+  },
+  {
+   "url": "https://minossecurities.com/",
+   "archivo": "fuentes/minos/minossecurities-home2.html",
+   "http": 0,
+   "consultadoUtc": "2026-11-10T09:03:16Z",
+   "bytes": 0,
+   "sha256": null,
+   "error": "curl: (35) Recv failure: Connection reset by peer"
+  },
+  {
+   "url": "https://www.minos.global/",
+   "archivo": "fuentes/crudo/originales/minos/minos-global-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:03:27Z",
+   "bytes": 11041,
+   "sha256": "77f4211a4ba00779f5238952b7f6c2f1f5a24fc153a4545d4789241fa4d2721f",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.prosegurcash.com/",
+   "archivo": "fuentes/crudo/originales/minos/prosegurcash-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:03:28Z",
+   "bytes": 67077,
+   "sha256": "14fab62476cd2f9158abf60f937045d0525eff66e908e7cd545a75b529ec77b1",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.prosegurcash.com/accionistas-inversores/comunicaciones-cnmv",
+   "archivo": "fuentes/crudo/originales/minos/prosegurcash-comunicaciones-cnmv.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:03:43Z",
+   "bytes": 50956,
+   "sha256": "804fefcd0cc650396a1b2f0e39a232e60aede540afe643955c5cb09a36da3be4",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.prosegurcash.com/accionistas-inversores/informacion-financiera",
+   "archivo": "fuentes/crudo/originales/minos/prosegurcash-info-financiera.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:03:44Z",
+   "bytes": 51749,
+   "sha256": "5e321ad41ecb21d84added9679e04a6d95ad4c4e24899e9aadbed191491518f1",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.prosegurcash.com/accionistas-inversores/comunicaciones-cnmv",
+   "archivo": "fuentes/crudo/originales/minos/nav-prosegurcash-cnmv.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:04:06Z",
+   "bytes": 442601,
+   "sha256": "319ce0cceec7e341e12fa35dccc51f1e5a526ce30f7404d891f9074b0320c1d0",
+   "textoExtraido": "fuentes/minos/nav-prosegurcash-cnmv.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.prosegurcash.com/media/sala-prensa",
+   "archivo": "fuentes/crudo/originales/minos/nav-prosegurcash-prensa.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-10T09:04:37Z",
+   "bytes": 126364,
+   "sha256": "28bc9aee4c2851719b7e3da03db9994835aace043a68fd04703fc573a3266eb6",
+   "textoExtraido": "fuentes/minos/nav-prosegurcash-prensa.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.prosegurcash.com/media/prensa",
+   "archivo": "fuentes/crudo/originales/minos/nav-prosegurcash-prensa.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:04:54Z",
+   "bytes": 142461,
+   "sha256": "0893c6487ba0ee7c780f73ac2665c4c15f50d2f0269e26b4c3f494cca8ee35d6",
+   "textoExtraido": "fuentes/minos/nav-prosegurcash-prensa.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://exchange.token-city.com/",
+   "archivo": "fuentes/crudo/originales/tokencity/nav-exchange-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:05:11Z",
+   "bytes": 101118,
+   "sha256": "5e5c9a3b129dbdb29fda7ab79ff5761031854998ae34671f5661fa6f8c3e87a6",
+   "textoExtraido": "fuentes/tokencity/nav-exchange-home.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.token-city.com/es/marketplace",
+   "archivo": "fuentes/crudo/originales/tokencity/nav-marketplace.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:05:26Z",
+   "bytes": 1348117,
+   "sha256": "1bda222d65f8483c2fd018ab844dd74395e6e5ab7f36f98437c5ed238102495a",
+   "textoExtraido": "fuentes/crudo/originales/tokencity/nav-marketplace.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://aliuscap.com/projects",
+   "archivo": "fuentes/crudo/originales/alius/nav-projects.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:05:47Z",
+   "bytes": 88774,
+   "sha256": "ecc15bc26243e8040f7fb33afea9f28c09ed2c48459e1ccfda20820ad5a9a103",
+   "textoExtraido": "fuentes/alius/nav-projects.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/slug/casa-de-outeiro/expand/documents,extra_fields,asset_issuance_relational,asset,type,campaign,campaign_progress",
+   "archivo": "fuentes/crudo/alius-casa-de-outeiro-api.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:06:19Z",
+   "bytes": 48606,
+   "sha256": "ebffd3e4728f877aa8c8c82d2febb2827ac3aa13528d34e2c68c71492d62b3c7",
+   "enGit": false
+  },
+  {
+   "url": "https://saas-pfp-base-api.token-city.com/v3/dashboard/issuance/71/tabs",
+   "archivo": "fuentes/crudo/alius-casa-de-outeiro-tabs.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:06:20Z",
+   "bytes": 32513,
+   "sha256": "3ec67c48c55af62f0a3769e31d5fd989850a6b001b94c48f85754169d19fb741",
+   "enGit": false
+  },
+  {
+   "url": "https://backend.reental.co/graphql",
+   "metodo": "POST",
+   "cuerpo": "consulta GraphQL POST; cuerpo exacto en fuentes/crudo/consultas-post.json",
+   "archivo": "fuentes/crudo/reental-getPublicProperties.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:07:40Z",
+   "bytes": 66396,
+   "sha256": "53a7b6b2a211bb39bda81cfeec1e79507a8148a7353c44645655bfe37933a889",
+   "enGit": false
+  },
+  {
+   "url": "https://backend.reental.co/graphql",
+   "metodo": "POST",
+   "cuerpo": "consulta GraphQL POST; cuerpo exacto en fuentes/crudo/consultas-post.json",
+   "archivo": "fuentes/crudo/reental-getProjects-0.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:07:42Z",
+   "bytes": 1460942,
+   "sha256": "0e277fdb379d2d7568a9b52943340c65a6dc08e6a4d46f89a1f9e8abae7630b4",
+   "enGit": false
+  },
+  {
+   "url": "https://backend.reental.co/graphql",
+   "metodo": "POST",
+   "cuerpo": "consulta GraphQL POST; cuerpo exacto en fuentes/crudo/consultas-post.json",
+   "archivo": "fuentes/crudo/reental-getProjects-100.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:07:44Z",
+   "bytes": 221069,
+   "sha256": "3cfbc2307c48984a044598c164ca0aae2010b4ea9d7b76196408165427234000",
+   "enGit": false
+  },
+  {
+   "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793779352063_acuerdo_de_suscripcion.pdf",
+   "archivo": "fuentes/crudo/originales/reental/ret-4-1793779352063_acuerdo_de_suscripcion.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:08:22Z",
+   "bytes": 267053,
+   "sha256": "f9d25105f44ea1dbe7bf51e59f8db17f6a342717ecf32fec1d7d036bec5b9873",
+   "textoExtraido": "fuentes/reental/ret-4-1793779352063_acuerdo_de_suscripcion.txt",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793788204244_whitepaper.pdf",
+   "archivo": "fuentes/crudo/originales/reental/ret-4-1793788204244_whitepaper.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:08:22Z",
+   "bytes": 1561789,
+   "sha256": "327323cf1ea0c60bf07914f8410644ad96c905a814bbddbd76e491db58787bbd",
+   "textoExtraido": "fuentes/reental/ret-4-1793788204244_whitepaper.txt",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793792807997_certificado_revision_rnt_spv_25.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:08:23Z",
+   "bytes": 421851,
+   "sha256": "37859c0b661ac80751ab16b39c9972a56c335a6faed73b2481d3bb423edb731a",
+   "textoExtraido": "fuentes/reental/ret-4-1793792807997_certificado_revision_rnt_spv_25.txt",
+   "enGit": false,
+   "nota": "Original borrado: la firma incluye un DNI."
+  },
+  {
+   "url": "https://d23t4e7dm0xzj0.cloudfront.net/properties/7c77a956-50ba-461e-90ce-4f42ccab4b5a/docs/1793787110786_dosier.pdf",
+   "archivo": "fuentes/crudo/originales/reental/ret-4-1793787110786_dosier.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:08:24Z",
+   "bytes": 1301497,
+   "sha256": "23e0dc5925829dc926cf3b0bdadd0481d3c1b91f417d7ccf91f37b3598351612",
+   "textoExtraido": "fuentes/reental/ret-4-1793787110786_dosier.txt",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Gemini.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:08:47Z",
+   "bytes": 217724,
+   "sha256": "79d6ac43e4debd6c079a7528bc975564be78627b7c38706cfe2202aa51acf079",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Gemini.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:09:01Z",
+   "bytes": 217724,
+   "sha256": "dcff3dc1c7706a23b15d26e04974ea18110b69ecc883ff0782282359b27f80ec",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=2&nombre=Gemini",
+   "archivo": "fuentes/advertencias/adv2-Gemini.html",
+   "http": 400,
+   "consultadoUtc": "2026-11-10T09:09:02Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Binance",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Binance.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:09:02Z",
+   "bytes": 215178,
+   "sha256": "d02a1116ab9b9fa39c4eeb1770fa6fa123be71d80929bc8d5abaac7f6cf2475d",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=2&nombre=Binance",
+   "archivo": "fuentes/advertencias/adv2-Binance.html",
+   "http": 400,
+   "consultadoUtc": "2026-11-10T09:09:04Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db"
+  },
+  {
+   "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+   "archivo": "fuentes/crudo/originales/advertencias/Advertencias_CNMV_Otras.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:09:39Z",
+   "bytes": 254225,
+   "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+   "textoExtraido": "fuentes/advertencias/Advertencias_CNMV_Otras.txt",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Gemini.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:09:58Z",
+   "bytes": 217724,
+   "sha256": "79d6ac43e4debd6c079a7528bc975564be78627b7c38706cfe2202aa51acf079",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Comunitae",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Comunitae.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:09:59Z",
+   "bytes": 212247,
+   "sha256": "c58ebbd92889d38dc96580c2171a8ddc957e971188466a716c82af93725eb7c0",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Reental.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:00Z",
+   "bytes": 212203,
+   "sha256": "65d4d907cdd7f3c831a218fdc7de815c18616da81fab3b376e150aa3f927f9c7",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Rental%20Token",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Rental_Token.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:01Z",
+   "bytes": 212313,
+   "sha256": "325c7d0f9fe34a9a27e5a62a45bfb1760bba2fa995425b0164be0e4208fb0817",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental%20America",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Reental_America.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:02Z",
+   "bytes": 212379,
+   "sha256": "153246b1a88ebe02bbd75c4f39b1cddead013c1164cc778c808b4cf7ed79ca40",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aura%20Inmoinversion",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Aura_Inmoinversion.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:03Z",
+   "bytes": 212445,
+   "sha256": "1f95f681bb96db996b40802283b4791e7c7ad628cb448da401ef09745c3152cc",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Series%20RNT",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Series_RNT.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:04Z",
+   "bytes": 212269,
+   "sha256": "25713c41f62bfa8422e2c5e3affd8f1337918f8ab210ebb5430dce7a7460cd6c",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur%20Cash",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Prosegur_Cash.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:05Z",
+   "bytes": 212335,
+   "sha256": "c46c2ba685da71cdff598e79c947e52c14d6285c85bc088fb2f315ac0a113047",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Minos",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Minos.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:06Z",
+   "bytes": 212159,
+   "sha256": "2956b55555f4f878a17d010cea20f4399af3c6da29e1c01975b7545a1352d020",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Series%20A%20Grupo%20UAE",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Series_A_Grupo_UAE.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:07Z",
+   "bytes": 212445,
+   "sha256": "e0ac6509712fb1824ea3053f2c198b3401fe682fe6e517e1d815b62da14be683",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Token_City.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:08Z",
+   "bytes": 212269,
+   "sha256": "bc537fb0bcb8e73a6360ce681d2179392bc0b68a6cee7174a26144518ba841fa",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Adventurees",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Adventurees.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:10Z",
+   "bytes": 212291,
+   "sha256": "c0daa5f62a38016925d16edcca78af29290a062b3330640f76a5f1e325e12031",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Alius.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:11Z",
+   "bytes": 212159,
+   "sha256": "52aaec363f30b7217a36a6506186d3ead8ed911a1e74f23b3c997173a4141cfc",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://urbanitae.com/es/",
+   "archivo": "fuentes/crudo/originales/urbanitae/home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:38Z",
+   "bytes": 515328,
+   "sha256": "970fbd03f8c078089a84a1eeb7591df6b150b3ac109f1b2d06570a471f165f86",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/urbanitae/home.txt"
+  },
+  {
+   "url": "https://www.housers.com/es",
+   "archivo": "fuentes/crudo/originales/housers/home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:39Z",
+   "bytes": 3467,
+   "sha256": "4ea95658239b8b9f87c418c78b8cb837512437a9c82c632f30572dc489f390b6",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/housers/home.txt"
+  },
+  {
+   "url": "https://www.brickken.com/",
+   "archivo": "fuentes/crudo/originales/brickken/home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:40Z",
+   "bytes": 243458,
+   "sha256": "2e838ecb8ea09cf232223ab584f02cf3790028331a13475fc3b0cea7d4ca8aa8",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://bit2me.com/es/stx",
+   "archivo": "fuentes/crudo/originales/bit2me/stx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:41Z",
+   "bytes": 529323,
+   "sha256": "0bc119502f29e29639a1338850bc03e755319746dd4763664f74af3e95ecadec",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/bit2me/stx.txt"
+  },
+  {
+   "url": "https://criptan.com/es/",
+   "archivo": "fuentes/crudo/originales/criptan/home.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-10T09:10:42Z",
+   "bytes": 221579,
+   "sha256": "7619032dced907630c7a60b7f78fc4e8c040703cda64f87ea62259b30730803c",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://onyze.com/",
+   "archivo": "fuentes/crudo/originales/onyze/home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:10:44Z",
+   "bytes": 3330,
+   "sha256": "5e24b13cfa5c42b86ee83e301d59cbb97eaf084ea542c0632ad344908a7b41fe",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/onyze/home.txt"
+  },
+  {
+   "url": "https://betoken.io/",
+   "archivo": "fuentes/betoken/home.html",
+   "http": 0,
+   "consultadoUtc": "2026-11-10T09:11:14Z",
+   "bytes": 0,
+   "sha256": null,
+   "error": "curl: (35) Recv failure: Connection reset by peer"
+  },
+  {
+   "url": "https://mintable.app/",
+   "archivo": "fuentes/crudo/originales/mintable/home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:11:33Z",
+   "bytes": 8646,
+   "sha256": "9790036d3f2ecaca92e4e8b0dfdb31cc4a0435cc36575b6d3e9cb0f6557a6ae9",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.vottun.com/",
+   "archivo": "fuentes/crudo/originales/vottun/home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:11:34Z",
+   "bytes": 134289,
+   "sha256": "eea05ea12f152ece86217c1187edfdacc2736e0323cf4d5e29b48d3394600f12",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/vottun/home.txt"
+  },
+  {
+   "url": "https://urbanitae.com/es/",
+   "archivo": "fuentes/crudo/originales/urbanitae/nav-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:11:48Z",
+   "bytes": 730704,
+   "sha256": "7a92f4214cf9e0aaecbdba9c2011eb58d262a8566e563d877ef77536a3b6ad01",
+   "textoExtraido": "fuentes/urbanitae/nav-home.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.housers.com/es",
+   "archivo": "fuentes/crudo/originales/housers/nav-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:11:59Z",
+   "bytes": 124767,
+   "sha256": "f2ecb6608220259824834aaf5da92e32cf90f1b3d1ce43515d98be7cac0d6fa9",
+   "textoExtraido": "fuentes/housers/nav-home.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://mintable.app/",
+   "archivo": "fuentes/crudo/originales/mintable/nav-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:12:10Z",
+   "bytes": 8990,
+   "sha256": "47859dce1ada24f80bd7f94839898115726c5d81568056a5f7568c216921eeae",
+   "textoExtraido": "fuentes/crudo/originales/mintable/nav-home.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://onyze.com/",
+   "archivo": "fuentes/crudo/originales/onyze/nav-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:12:18Z",
+   "bytes": 44856,
+   "sha256": "1a296d7a299eb53d2bf47ed4f18e7cdb9bc55bc745f719c0956a1405a246fc12",
+   "textoExtraido": "fuentes/crudo/originales/onyze/nav-home.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.brickken.com/live-tokenizations",
+   "archivo": "fuentes/crudo/originales/brickken/nav-live-tokenizations.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:12:43Z",
+   "bytes": 260993,
+   "sha256": "41736c10fbff98526c01f4952d02b8994f03cb292865c0ac905d81482509104e",
+   "textoExtraido": "fuentes/crudo/originales/brickken/nav-live-tokenizations.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://stx.bit2me.com/",
+   "archivo": "fuentes/crudo/originales/bit2me/nav-stx-app.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-10T09:12:52Z",
+   "bytes": 39,
+   "sha256": "a7fe83ec64bb23eb28090598db3d166ed98e52e39d1afbbfd74c579553f93e4e",
+   "textoExtraido": "fuentes/bit2me/nav-stx-app.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.tendenciatotal.com/",
+   "archivo": "fuentes/crudo/originales/brickken/nav-tendenciatotal.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:21Z",
+   "bytes": 373861,
+   "sha256": "63b8bf0bfe4cd7b152602722c545569a08780d90ace105b1e91824000d0cfe52",
+   "textoExtraido": "fuentes/crudo/originales/brickken/nav-tendenciatotal.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.docenergy.eu/",
+   "archivo": "fuentes/crudo/originales/brickken/nav-docenergy.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:32Z",
+   "bytes": 88568,
+   "sha256": "b0f8d6adfcc28a389634ebdfea00ca26190f1900a13d428466bae354f97baca3",
+   "textoExtraido": "fuentes/crudo/originales/brickken/nav-docenergy.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://elgloboexperience.es/",
+   "archivo": "fuentes/crudo/originales/brickken/nav-elglobo.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:42Z",
+   "bytes": 162947,
+   "sha256": "3f01e39d0b8f3fdf329a89e754a30648160231c4ae3f267cfa9370ff85c3c797",
+   "textoExtraido": "fuentes/crudo/originales/brickken/nav-elglobo.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.openteca.es",
+   "archivo": "fuentes/crudo/originales/brickken/nav-openteca.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:51Z",
+   "bytes": 9439,
+   "sha256": "c6a9bd02a3f54cafcd4805bc3fd2d21c795d977425ec41f95524f21fe33663e0",
+   "textoExtraido": "fuentes/crudo/originales/brickken/nav-openteca.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "http://www.ebrickfinance.com",
+   "archivo": "fuentes/crudo/originales/brickken/nav-ebrick.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:59Z",
+   "bytes": 148419,
+   "sha256": "afaff214603494f4b0f40307d1319a72c05d44c33d67a147cce53edb062c461f",
+   "textoExtraido": "fuentes/crudo/originales/brickken/nav-ebrick.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.bosko.es",
+   "archivo": "fuentes/crudo/originales/brickken/nav-bosko.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:14:11Z",
+   "bytes": 1656821,
+   "sha256": "ed02b8cf344a36a7a770f60b0f198bcbad93b15c3f8351fef6f368deb985b33d",
+   "textoExtraido": "fuentes/crudo/originales/brickken/nav-bosko.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "http://www.tokenix.eu",
+   "archivo": "fuentes/crudo/originales/brickken/nav-tokenix.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:14:21Z",
+   "bytes": 59559,
+   "sha256": "9e0adf39a9deb9da301a56c97e5139d9b5afc4ed7ff494a037a18e8391109282",
+   "textoExtraido": "fuentes/crudo/originales/brickken/nav-tokenix.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://tokencrowd.io",
+   "archivo": "fuentes/crudo/originales/brickken/nav-tokencrowd.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:14:30Z",
+   "bytes": 500554,
+   "sha256": "380fd4c53a011d40217b04a8678236dafe7da5458e3b34cb4c48ba4df5209b7c",
+   "textoExtraido": "fuentes/crudo/originales/brickken/nav-tokencrowd.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.tokenix.eu/legal/20241202_TOKENIX_T%26C.pdf",
+   "archivo": "fuentes/crudo/originales/tokenix/tokenix-TyC-20241202.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:05Z",
+   "bytes": 107702,
+   "sha256": "cc7514c021687b73a3cc377f3584182d4a692f94a11689d67022ade77802a670",
+   "textoExtraido": "fuentes/tokenix/tokenix-TyC-20241202.txt",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.tokenix.eu/legal/20241202_TOKENIX_AvisoLegal.pdf",
+   "archivo": "fuentes/crudo/originales/tokenix/tokenix-aviso-legal-20241202.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:06Z",
+   "bytes": 87208,
+   "sha256": "4d3f65b01cc49e2cab24e324933c88fd812d5b1c7ca52e11a54bbdf2685044bf",
+   "textoExtraido": "fuentes/tokenix/tokenix-aviso-legal-20241202.txt",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.tokenix.eu/",
+   "archivo": "fuentes/crudo/originales/tokenix/nav-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:19Z",
+   "bytes": 59559,
+   "sha256": "88a9efa3143080f5c4f6668604a7bba62cda8196fce407a69414910fa7fad65d",
+   "textoExtraido": "fuentes/crudo/originales/tokenix/nav-home.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/expand/images,type,campaign,campaign_progress,project_asset,total_invested,extra_fields,documents?limit=50",
+   "archivo": "fuentes/crudo/tokenix-projects-api.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:38Z",
+   "bytes": 66965,
+   "sha256": "9c4688a8370a3ab9a23061ce939f34d9f4016a34c64a4fd62c9f650407034836",
+   "enGit": false
+  },
+  {
+   "url": "https://www.bbva.com/es/economia-y-finanzas/bbva-asset-management-da-un-paso-mas-en-la-tokenizacion-de-activos-junto-a-hamilton-lane-allfunds-blockchain-y-apex-group/",
+   "archivo": "fuentes/crudo/originales/bancos/bbva-am-hamilton-lane.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:16:29Z",
+   "bytes": 154323,
+   "sha256": "81b48635d6e232e41f0fadf662d1478338cd37bd7159ffd02650c8afc22c5709",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+   "archivo": "fuentes/crudo/originales/cnmv/psfp-listado.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:16:47Z",
+   "bytes": 165407,
+   "sha256": "373a20b2b7f4aa63a9edaa403461974f03787b95b406b841e16a9f4e4ff660c1",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/cnmv/psfp-listado.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx?lang=es",
+   "archivo": "fuentes/crudo/originales/cnmv/infraestructuras.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:16:48Z",
+   "bytes": 260219,
+   "sha256": "8086a7643364f4ac5ee6e399a13fd449431a184da68e96521d0950485f7b70ca",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/cnmv/infraestructuras.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/Proveedores-Servicios-Criptoactivos.aspx?lang=es",
+   "archivo": "fuentes/crudo/originales/cnmv/casp-listado.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:16:54Z",
+   "bytes": 267570,
+   "sha256": "f4439afcb12dce876c4949e609b4992478cf62e1dde30f19a54d123fde26a8b6",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/cnmv/casp-listado.txt"
+  },
+  {
+   "url": "https://www.minossecurities.com/",
+   "archivo": "fuentes/crudo/originales/minos/nav-minossecurities.html",
+   "http": 502,
+   "consultadoUtc": "2026-11-10T09:17:18Z",
+   "bytes": 174,
+   "sha256": "9d25629d26cd3d047df9b9d431d9764e2b718796255de95d9452e37c8fa05742",
+   "textoExtraido": "fuentes/minos/nav-minossecurities.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.minos.global/",
+   "archivo": "fuentes/crudo/originales/minos/nav-minos-global.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:17:25Z",
+   "bytes": 79263,
+   "sha256": "060dc07b246c84cfb2d2a662c96d3aa9a71d5aa7b478fcff0c6c359d86d567a5",
+   "textoExtraido": "fuentes/minos/nav-minos-global.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://minos-securities.com/",
+   "archivo": "fuentes/crudo/originales/minos/nav-minos-securities.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:17:38Z",
+   "bytes": 25349,
+   "sha256": "0177e86f395faec1adf54c407fa21d7df93a7f6be8fbe8d351332366afc430e7",
+   "textoExtraido": "fuentes/minos/nav-minos-securities.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A23875529&lang=es",
+   "archivo": "fuentes/crudo/originales/cnmv/esi-minos.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:17:56Z",
+   "bytes": 223362,
+   "sha256": "46d252ff26f13b7798c67f81f4b8ea5690540f306228dcc52a06fb80e6013bb6",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/cnmv/esi-minos.txt"
+  },
+  {
+   "url": "https://stx-landing-2026.pages.dev/es/index.html",
+   "archivo": "fuentes/crudo/originales/bit2me/nav-stx-landing-es.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:18:42Z",
+   "bytes": 84535,
+   "sha256": "449d03cd3cbf6d60f52048bd04e7ee4555f281bb78cee500aecd46278136196b",
+   "textoExtraido": "fuentes/bit2me/nav-stx-landing-es.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://openbrick.es/",
+   "archivo": "fuentes/otros/openbrick-home.html",
+   "http": 0,
+   "consultadoUtc": "2026-11-10T09:19:25Z",
+   "bytes": 0,
+   "sha256": null,
+   "error": "curl: (56) CONNECT tunnel failed, response 502"
+  },
+  {
+   "url": "https://www.beselfbrands.com/",
+   "archivo": "fuentes/crudo/originales/betoken/beselfbrands-home.html",
+   "http": 522,
+   "consultadoUtc": "2026-11-10T09:19:34Z",
+   "bytes": 7270,
+   "sha256": "a472a3fccac1902b4c8be30ed4ed1b2a75126dcf8b72d88e1bd1d83860700296",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://betoken-1.gitbook.io/papers/whitepaper/periodo-de-venta.md",
+   "archivo": "fuentes/betoken/gitbook-periodo-de-venta.md",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:19:54Z",
+   "bytes": 1005,
+   "sha256": "9e7c77f45cf16809d947c8f3f32263a39e75cab2cae31ae0c1f9786b28515be1"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/IIC/Fondo?nif=V87393237",
+   "archivo": "fuentes/crudo/originales/bancos/cnmv-azvalor-iberia.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:20:17Z",
+   "bytes": 223403,
+   "sha256": "d1a62eb97ee613b0888b8185a70d5c27c02ce8539a41ef2f669cdfb29eae4bb9",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/IIC/sgiic.aspx?nif=A85347557&vista=1",
+   "archivo": "fuentes/crudo/originales/bancos/cnmv-azvalor-sgiic-fondos.html",
+   "http": 400,
+   "consultadoUtc": "2026-11-10T09:20:28Z",
+   "bytes": 12096,
+   "sha256": "40c43d71d9797d57ae294364c80c54b399cc1390f9d8c02ac1ae123fe5cc51db",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/bancos/cnmv-azvalor-sgiic-fondos.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/IIC/sgiic.aspx?nif=A85347557",
+   "archivo": "fuentes/crudo/originales/bancos/cnmv-azvalor-sgiic.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:20:34Z",
+   "bytes": 223012,
+   "sha256": "4ed8422b1f35e01adfed642563946dcc576b19ca688ea8c76de96ae009a2dcb0",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/IIC/sgiic.aspx?nif=A85347557&vista=5",
+   "archivo": "fuentes/crudo/originales/bancos/cnmv-azvalor-sgiic-fondos.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:20:46Z",
+   "bytes": 227030,
+   "sha256": "16a9e0329bc01784c4068c9295783208c6bfb00b943146ba8b0f62b7dd82f60e",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/bancos/cnmv-azvalor-sgiic-fondos.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/IIC/fondo.aspx?nif=V23815566",
+   "archivo": "fuentes/crudo/originales/bancos/cnmv-azvalor-blockchain.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:20:54Z",
+   "bytes": 218883,
+   "sha256": "ef5773d561a9696f22be70bf958917bb927591d43cf18824b6121cceb2b50e25",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba.",
+   "textoExtraido": "fuentes/bancos/cnmv-azvalor-blockchain.txt"
+  },
+  {
+   "url": "https://www.azvalor.com/",
+   "archivo": "fuentes/crudo/originales/bancos/nav-azvalor-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:21:10Z",
+   "bytes": 314324,
+   "sha256": "49734ebb42976782f9499e1285d8e93be45be358860150dd9c82840edfb0a0e1",
+   "textoExtraido": "fuentes/crudo/originales/bancos/nav-azvalor-home.txt",
+   "metodo": "playwright-chromium",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/IIC/fondo.aspx?nif=V87393237&vista=1",
+   "archivo": "fuentes/crudo/originales/bancos/cnmv-azvalor-iberia-v1.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:21:23Z",
+   "bytes": 226446,
+   "sha256": "168225f05c9d89a788f0b3fac527ff57c94296f6c6a6e45ef569faa326701055",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://saas-tokenix2-base-api.token-city.com/v2/pfp/project/162/document/280",
+   "archivo": "fuentes/crudo/originales/tokenix/whitepaper-rtuk-doc280.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:22:07Z",
+   "bytes": 201388,
+   "sha256": "2a16d9f3df5536e83f0056c742accaa1ffd24c43644a5be7dd904d78039213d0",
+   "textoExtraido": "fuentes/tokenix/whitepaper-rtuk-doc280.txt",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://backend.reental.co/graphql",
+   "metodo": "POST",
+   "cuerpo": "consulta GraphQL POST; cuerpo exacto en fuentes/crudo/consultas-post.json",
+   "archivo": "fuentes/crudo/reental-crowdfunding-ret4.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:05Z",
+   "bytes": 831,
+   "sha256": "899034574bcaa31dade93c12c1daf52e28e0658946234f1bbe42c39caa637b0d",
+   "enGit": false
+  },
+  {
+   "url": "https://backend.reental.co/graphql",
+   "metodo": "POST",
+   "cuerpo": "consulta GraphQL POST; cuerpo exacto en fuentes/crudo/consultas-post.json",
+   "archivo": "fuentes/crudo/reental-crowdfunding-mia7.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:06Z",
+   "bytes": 829,
+   "sha256": "341a782bf121fb6552972b4c44313250b6fa0411fac653b8fb0af68015feb599",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=13&lang=es",
+   "archivo": "fuentes/crudo/originales/cnmv/listado-eafn.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:21Z",
+   "bytes": 274199,
+   "sha256": "8f0a0853701e3a4701ce03a3a6d23a8d5ec22355b210c3517b9eab7a96247859",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, nombre=Bit2Me)",
+   "archivo": "fuentes/cnmv/entidades-Bit2Me.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:25:07Z",
+   "bytes": 1497,
+   "sha256": "7ab14f0eaca07ff8306469d5420b559f4acc4241cb17ac47f2c443630aaf3b25",
+   "metodo": "playwright-chromium"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, nombre=Rental Token)",
+   "archivo": "fuentes/cnmv/entidades-Rental_Token.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:25:20Z",
+   "bytes": 1422,
+   "sha256": "298eed7a9b8fd3a8845dbbcdf1eb0da1ef8e3f68061440ea7ed809fac28b3303",
+   "metodo": "playwright-chromium"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, nombre=Reental)",
+   "archivo": "fuentes/cnmv/entidades-Reental.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:25:32Z",
+   "bytes": 1422,
+   "sha256": "298eed7a9b8fd3a8845dbbcdf1eb0da1ef8e3f68061440ea7ed809fac28b3303",
+   "metodo": "playwright-chromium"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, nombre=Tokenix)",
+   "archivo": "fuentes/cnmv/entidades-Tokenix.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:25:45Z",
+   "bytes": 1422,
+   "sha256": "298eed7a9b8fd3a8845dbbcdf1eb0da1ef8e3f68061440ea7ed809fac28b3303",
+   "metodo": "playwright-chromium"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, nombre=Toketuk)",
+   "archivo": "fuentes/cnmv/entidades-Toketuk.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:25:57Z",
+   "bytes": 1422,
+   "sha256": "298eed7a9b8fd3a8845dbbcdf1eb0da1ef8e3f68061440ea7ed809fac28b3303",
+   "metodo": "playwright-chromium"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, nombre=Prosegur Cash)",
+   "archivo": "fuentes/cnmv/entidades-Prosegur_Cash.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:09Z",
+   "bytes": 1938,
+   "sha256": "8c9522f93deddedca17c4b3e95352c0e4b3df15e3a7da21ca10f6c50c204763c",
+   "metodo": "playwright-chromium"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Tokenix",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Tokenix.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:35Z",
+   "bytes": 212203,
+   "sha256": "bd989a3f377eed5ae5a0115a97690a775f6a96ad5b7ee213d759c682a0485f19",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Toketuk",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Toketuk.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:36Z",
+   "bytes": 212203,
+   "sha256": "c6fd850aa296d4e008d4e750aae0cfd6f0a88ab9d5447d87cb228887cea01ec2",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Toke%20Tuk",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Toke_Tuk.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:38Z",
+   "bytes": 212225,
+   "sha256": "24e6a19053b514cafa54c18f899cb46be9f50a2c8a61c5b3a70a3a0795b11737",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=TokenCrowd",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-TokenCrowd.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:40Z",
+   "bytes": 212269,
+   "sha256": "ad3de236d9069c734946ee9b2e348fd5ad2ab48ab51c10b73d996bcb48d5f386",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bosko",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Bosko.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:41Z",
+   "bytes": 212159,
+   "sha256": "20034cd0bd9536fa2ef841cd2e0febc6c8aed70b59de319899455c431f9a4527",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Beself",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Beself.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:42Z",
+   "bytes": 212181,
+   "sha256": "824dbc54360005251f914ab223ecae3d2cdb6652efe8d6f9d71a8d762210adb6",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Betoken",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Betoken.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:43Z",
+   "bytes": 212203,
+   "sha256": "44e2ab7d99a8b979c20bc978c572f7a1e8be5e77dc0b70e1d0dc4ad9c37ee2ed",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Urbanitae",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Urbanitae.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:45Z",
+   "bytes": 212247,
+   "sha256": "6c573334c8ea5138b71d4a95c0e7a56f45b2e216f15f5a0e373b7848f550207d",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Housers",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Housers.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:46Z",
+   "bytes": 212203,
+   "sha256": "3bcf446cae514a0e3fc8f0f1999ba49e29c06589d1b1b526d8912de42c6f3da0",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickken",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Brickken.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:48Z",
+   "bytes": 212225,
+   "sha256": "8ae6bd47dc44d9ad55db460b2ca55074f772d6557cb15a5507c535863bee2d44",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Onyze",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Onyze.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:52Z",
+   "bytes": 212159,
+   "sha256": "5202271f40e385c0275cc263642f911daba76d9fbaef199d5a8818c10c499681",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Vottun",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Vottun.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:54Z",
+   "bytes": 212181,
+   "sha256": "a3df66500f3ec7f318f9a049ce12cd067efda1c297513cfe95a0d8ee5fe7a13e",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Criptan",
+   "archivo": "fuentes/crudo/originales/advertencias/adv1-Criptan.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:26:55Z",
+   "bytes": 212203,
+   "sha256": "621a4c670ca8e8ccce75a839b4a8727585adc4b137479e937e737ce9efa338e5",
+   "enGit": false,
+   "nota": "Original fuera de Git (crudo/): puede contener nombres de personas; el texto recortado sigue en fuentes/ si se usó como prueba."
+  },
+  {
+   "url": "https://www.prosegurcash.com/.rest/dam/endpoint/Prosegur/CORP/Cash/pdf/accionistas-e-inversores/otra-informacion-relevante?lang=all",
+   "archivo": "fuentes/crudo/prosegurcash-oir.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:28:15Z",
+   "bytes": 325530,
+   "sha256": "e1bb810f4eaa4a32833ad05727338cbcb41c1e703956aba73e9115a889676e2c",
+   "enGit": false
+  }
+ ],
+ "advertenciasCnmv": {
+  "metodo": "No autorizadas: buscador web (ResultadoBusqueda?tipo=1), validado con «Gemini» (2 advertidas). Otras entidades: la URL tipo=2 da HTTP 400, así que se usa la lista oficial en PDF Advertencias_CNMV_Otras.pdf (sha256 5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0, 09:09:39 UTC), validada con «Comunitae» (sí figura).",
+  "resultados": [
+   {
+    "nombre": "Gemini",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:09:58Z",
+     "archivo": "fuentes/advertencias/adv1-Gemini.html",
+     "resultado": "coincidencia: 04/09/2023 GEMINI LTD FX HTTPS://GEMINILTDFX.COM/   29/03/2021 GEMINI OPTION LTD HTTPS://GEMINIOPTION.COM/"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Comunitae",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Comunitae",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:09:59Z",
+     "archivo": "fuentes/advertencias/adv1-Comunitae.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "coincidencia: COMUNITAE, SL comunitae.com"
+    }
+   },
+   {
+    "nombre": "Reental",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:10:00Z",
+     "archivo": "fuentes/advertencias/adv1-Reental.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Rental Token",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Rental%20Token",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:10:01Z",
+     "archivo": "fuentes/advertencias/adv1-Rental_Token.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Reental America",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Reental%20America",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:10:02Z",
+     "archivo": "fuentes/advertencias/adv1-Reental_America.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Aura Inmoinversion",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aura%20Inmoinversion",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:10:03Z",
+     "archivo": "fuentes/advertencias/adv1-Aura_Inmoinversion.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Series RNT",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Series%20RNT",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:10:04Z",
+     "archivo": "fuentes/advertencias/adv1-Series_RNT.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Prosegur Cash",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur%20Cash",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:10:05Z",
+     "archivo": "fuentes/advertencias/adv1-Prosegur_Cash.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Minos",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Minos",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:10:06Z",
+     "archivo": "fuentes/advertencias/adv1-Minos.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Series A Grupo UAE",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Series%20A%20Grupo%20UAE",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:10:07Z",
+     "archivo": "fuentes/advertencias/adv1-Series_A_Grupo_UAE.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Token City",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:10:08Z",
+     "archivo": "fuentes/advertencias/adv1-Token_City.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Adventurees",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Adventurees",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:10:10Z",
+     "archivo": "fuentes/advertencias/adv1-Adventurees.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Alius",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Alius",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:10:11Z",
+     "archivo": "fuentes/advertencias/adv1-Alius.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Tokenix",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Tokenix",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:35Z",
+     "archivo": "fuentes/advertencias/adv1-Tokenix.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Toketuk",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Toketuk",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:36Z",
+     "archivo": "fuentes/advertencias/adv1-Toketuk.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Toke Tuk",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Toke%20Tuk",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:38Z",
+     "archivo": "fuentes/advertencias/adv1-Toke_Tuk.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "TokenCrowd",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=TokenCrowd",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:40Z",
+     "archivo": "fuentes/advertencias/adv1-TokenCrowd.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Bosko",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bosko",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:41Z",
+     "archivo": "fuentes/advertencias/adv1-Bosko.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Beself",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Beself",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:42Z",
+     "archivo": "fuentes/advertencias/adv1-Beself.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Betoken",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Betoken",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:43Z",
+     "archivo": "fuentes/advertencias/adv1-Betoken.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Urbanitae",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Urbanitae",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:45Z",
+     "archivo": "fuentes/advertencias/adv1-Urbanitae.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Housers",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Housers",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:46Z",
+     "archivo": "fuentes/advertencias/adv1-Housers.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Brickken",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickken",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:48Z",
+     "archivo": "fuentes/advertencias/adv1-Brickken.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Onyze",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Onyze",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:52Z",
+     "archivo": "fuentes/advertencias/adv1-Onyze.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Vottun",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Vottun",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:54Z",
+     "archivo": "fuentes/advertencias/adv1-Vottun.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   },
+   {
+    "nombre": "Criptan",
+    "noAutorizadas": {
+     "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Criptan",
+     "http": 200,
+     "consultadoUtc": "2026-11-10T09:26:55Z",
+     "archivo": "fuentes/advertencias/adv1-Criptan.html",
+     "resultado": "sin coincidencias («No hay datos disponibles»)"
+    },
+    "otrasEntidades": {
+     "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+     "consultadoUtc": "2026-11-10T09:09:39Z",
+     "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+     "resultado": "sin coincidencias"
+    }
+   }
+  ]
+ }
+}

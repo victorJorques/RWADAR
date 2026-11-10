@@ -1,0 +1,59 @@
+{
+  "tipo": "ensayo_despues_de_aplicar",
+  "ejecutadoEl": "2026-11-10T16:58Z",
+  "como": "Repetido tras las correcciones de la revisión de la entrega (sección «Correcciones aplicadas» de INFORME-ENTREGA.md). Copia aparte nueva del repositorio (git clone de la carpeta en 47ccb66 a /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/ensayo-2026-11-10-r2), con los archivos de esta entrega copiados encima (2026-11-10-v2/ entera y catalogo-2026-11-10-v2/) y node_modules enlazados. comprobar-entrega.mjs --exportar=DIR aplica el SQL en PGlite sobre la cadena de producción (lotes del 22/10 a la 2026-11-05.2) y guarda lo que leería un visitante por REST (/tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/rest-2026-11-10-r2); ensayo-rest-simulado.cjs (copia del de la 2026-11-05) sirve esos datos a sincronizar.js y volcar-seed.js. Como lectura «después de aplicar» (la que exige la prueba de la app ofertas-presentacion.test.cjs) se usaron las mismas vistas exportadas, copiadas en lectura-despues-de-aplicar/ SOLO en la copia. Nada sale a la red ni toca Supabase; en la carpeta de trabajo no se cambió nada fuera de 2026-11-10-v2/.",
+  "revision": "dfdc4c85-7f2f-fc4a-de27-a9f4a63f7656",
+  "sha256AplicarYAprobar": "60feef2cf10d648d01e9b7acef1811f2416522eaab419194a1b411d9bd05383a",
+  "pasos": [
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-10-v2/comprobar-entrega.mjs --exportar=DIR",
+      "salida": "exit 0 · «resultado: correcto» · 19 comprobaciones y 6 casos de fallo · revisión dfdc4c85-7f2f-fc4a-de27-a9f4a63f7656 · SHA 60feef2c…383a (el mismo de antes de las correcciones) · vistas exportadas iguales a las del primer ensayo salvo los plataforma_id que PGlite genera al azar"
+    },
+    {
+      "orden": "Antes de sincronizar, en la carpeta de trabajo: node rwadar-app/data/verificaciones/2026-11-10-v2/despues-de-aplicar.mjs",
+      "salida": "Se niega: «AssertionError: el catálogo sincronizado no es la revisión dfdc4c85-7f2f-fc4a-de27-a9f4a63f7656: aplica antes el SQL y ejecuta node rwadar-app/sincronizar.js». transparencia.json, el mismo SHA-256 antes y después (be173302…25ba)."
+    },
+    {
+      "orden": "RWADAR_REST_SIMULADO=DIR node -r ensayo-rest-simulado.cjs rwadar-app/sincronizar.js",
+      "salida": "exit 0 · «Sincronizado desde Supabase: 25 plataformas verificadas, 5 descartadas y 22 ofertas clasificadas. rwadar.csv regenerado: 30 filas.» (rwadar.csv sin diferencias)"
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-10-v2/despues-de-aplicar.mjs",
+      "salida": "exit 0 · «transparencia.json: revisión, lote, fechas del 10/11, motivo nuevo de «documentoEspana» de Hausera, mínimos cortos de Brickwise, Hausera y Switzerlend, salida corta de Hausera y fecha de los puntos con fuente consultada hoy» · «Comprobaciones de transparencia al 10/11: 42 de 44». Con su fecha anterior: kraken-xstocks documentoEspana y mtbill supervisada (su dirección no aparece entera entre las consultas del expediente de hoy). transparencia.json → SHA 7c527aaf…86ee. La primera versión del motivo de Hausera, con «(50 % o 70 %)», la rechazó cargarTransparencia («usa una palabra o un signo prohibido (%|…)») sin escribir nada; el motivo final va sin cifras."
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-10-v2/despues-de-aplicar.mjs (otra vez)",
+      "salida": "exit 0 · «Nada que cambiar: ya estaba hecho.» · mismo SHA 7c527aaf…86ee"
+    },
+    {
+      "orden": "RWADAR_REST_SIMULADO=DIR node -r ensayo-rest-simulado.cjs rwadar-app/volcar-seed.js",
+      "salida": "exit 0 · «02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13 fuentes.» Sin diferencias (hoy no se toca public.plataformas ni public.fuentes)."
+    },
+    {
+      "orden": "node rwadar-editorial-source/ofertas/transparencia.mjs",
+      "salida": "exit 0 · «Transparencia escrita: 22 ofertas con transparencia»"
+    },
+    {
+      "orden": "node rwadar-fichas.js",
+      "salida": "exit 0 · «Archivos actualizados: 55» (22 fichas de oferta, 25 de plataforma y 5 de descartadas, más cambios.html, metodologia.html y sitemap.xml). Ninguna ficha nueva ni retirada."
+    },
+    {
+      "orden": "npm test (con la lectura «después de aplicar» simulada en la copia)",
+      "salida": "exit 0 en 3 min 22 s · base de datos: 28 scripts con «0 fallidas» (1.161 comprobaciones), «30 comprobaciones SQL correctas, sin red», node --test 11/11 y 94/94 · web: «Pre-renderizado: 25 fichas, 5 descartadas y 22 emisiones», «642 correctas, 0 fallidas», «70 verificaciones de páginas y RSS correctas», «39 pruebas de precarga correctas» · QR correcto · móvil 491 + 2 omitidas de 493, 0 fallos · acceso 237/237 · herramientas: «fichas.json: 22 fichas (22 con foto), catálogo 2026-11-10-v2», «Transparencia al día: 22 ofertas con transparencia», «Diferencias: 0». (No se repitió la pasada sin esa lectura: en el primer ensayo fallaba solo ofertas-presentacion.test.cjs, como se esperaba.)"
+    },
+    {
+      "orden": "«Lo esencial» de la app (datosCortosOferta de rwadar-movil/lib/transparencia.js con resumenOferta y el catálogo sincronizado de la copia)",
+      "salida": "Hausera: Mínimo «Desde 100 € en Alicante 3 (10/11)» · España «Sin confirmar» · Salida «Al vender las viviendas, sin fecha fija». Switzerlend: Mínimo «1 acción (68,01 CHF, 10/11)» · España «Sí, según la fuente» · Salida «Venta a otros accionistas»."
+    }
+  ],
+  "archivosQueCambian": [
+    "M rwadar-editorial-source/ofertas/transparencia.json (revisión, lote, 42 fechas de consulta, 13 mínimos cortos, la salida corta y el motivo de «documentoEspana» de Hausera, 11 títulos de puntos de Brickwise)",
+    "M rwadar-movil/lib/transparencia-contenido.js",
+    "M rwadar-site/assets/catalogo-publico-20261022.js",
+    "M rwadar-site/assets/rwadar-20260820.js (bloque de transparencia)",
+    "M rwadar-site/index.html (pre-render, lo regenera npm test)",
+    "M rwadar-site/ofertas/*.html (22), rwadar-site/plataformas/*.html (25), rwadar-site/fuera-del-radar/*.html (5)",
+    "M rwadar-site/cambios.html, rwadar-site/metodologia.html, rwadar-site/sitemap.xml",
+    "sin cambios: rwadar-app/db/02_seed.sql, rwadar-site/rwadar.csv, rwadar-fichas-manifiesto.js e imágenes (no hay altas ni retiradas)"
+  ]
+}

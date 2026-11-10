@@ -1,0 +1,197 @@
+Trade
+Earn
+Operate
+Tokenize
+Learn
+Blog
+Sign in
+Get started
+
+BY THE NUMBERS
+
+Oceanpoint, measured.
+
+First, Oceanpoint's own record: the properties trading on the Oceanpoint marketplace and their on-chain activity. Below it, live figures for the wider Blocksquare network that Oceanpoint runs on, kept separate because they are Blocksquare's, not Oceanpoint's.
+
+OCEANPOINT MARKETPLACE
+
+The on-chain record
+
+Properties trading on the Oceanpoint marketplace, Ethereum mainnet. Record pulled Sep 2026; every figure is verifiable on Etherscan.
+
+ON-CHAIN VOLUME SINCE 2024
+
+Sep 2026
+$4.6M
+
+$1.7M in 2024 and $2.8M in 2025.
+
+TURNOVER IN 2025
+
+Sep 2026
+5.4×
+
+2025 volume over the value tokenized.
+
+PROPERTIES TRADING
+
+Live
+3
+
+$514K tokenized, of $1.9M in property value (Sep 2026).
+
+MARKETPLACE FILLS
+
+Sep 2026
+451
+
+Settled on the KYC-gated order book.
+
+WALLETS
+
+Sep 2026
+64
+
+53% of buyers bought again.
+
+PAID TO HOLDERS, 2024–25
+
+Sep 2026
+$226K
+
+Rent and rewards, in USD at the claim date.
+
+THE BLOCKSQUARE NETWORK
+
+The infrastructure Oceanpoint runs on
+
+Live figures across every Blocksquare-powered marketplace, not Oceanpoint's own. Blocksquare is a separate company that licenses its infrastructure to Oceanpoint. Snapshot generated 2026-11-10 08:55 UTC.
+
+TOTAL TOKENIZED VALUE
+
+Live on-chain
+$216.9M
+
+Combined valuation of active tokenized properties, on-chain.
+
+PROPERTIES TOKENIZED
+
+Live on-chain
+172
+
+Active properties with live BSPT token contracts.
+
+COUNTRIES
+
+Live on-chain
+30
+
+Countries with at least one active tokenized property.
+
+RENTAL INCOME DISTRIBUTED
+
+Live
+€86K
+
+Cumulative income paid out to property token holders.
+
+AVERAGE PROJECTED YIELD
+
+Live
+7.00%
+
+Value-weighted across listed properties. Projected, not guaranteed.
+
+PARTNER MARKETPLACES
+
+Live
+18
+
+Live marketplaces on Blocksquare infrastructure.
+
+BST STAKED
+
+Live on-chain
+27.7M
+
+BST in the main governance pool (principal plus compounded rewards).
+
+BST HOLDERS
+
+Live on-chain
+4,429
+
+Unique addresses holding the Blocksquare Token.
+
+STAKING YIELDS
+
+Current pool yields
+
+Trailing annualized rates over the last ten days, computed the same way the dApp computes them. Yields are variable, set by protocol activity and governance — never fixed, never guaranteed.
+
+STAKE BSPT (ASSET POOL)
+3.36%
+
+Property tokens staked for BST rewards. How real estate staking works
+
+STAKE BST (GOVERNANCE POOL)
+4.00%
+
+BST staked for sBST: protocol rewards plus voting power.
+
+PROVIDE LIQUIDITY (BST:ETH)
+46.10%
+
+Uniswap BST:ETH LP tokens staked for BST rewards.
+
+METHODOLOGY
+
+Where these numbers come from
+On-chain figures
+
+Tokenized value, property and country counts, BST holders, staked BST, and pool yields are read from the Blocksquare protocol contracts on Ethereum mainnet via the open-source Blocksquare indexer. Yields are trailing ten-day annualized rates. Anyone can verify every figure independently on-chain.
+
+Marketplace figures
+
+Rental income distributed, average projected yield, and marketplace counts come from the protocol's public marketplace API, aggregated across all Blocksquare-powered marketplaces. A JSON version of the on-chain figures is available at /api/protocol/stats.
+
+Citation welcome: “Source: Oceanpoint statistics (https://oceanpoint.fi/stats)”. Cite Blocksquare network figures as Blocksquare's. Figures refresh every five minutes; historical values are verifiable on-chain. Educational content, not financial advice.
+
+The liquidity engine for tokenized real estate. Tokenized properties, DeFi yields, and global accessibility, all on-chain.
+
+Tokenize your property
+PLATFORM
+Trade
+Earn
+For businesses
+Tokenize a property
+Raise a VC round
+Liquidity providers
+Protocol statistics
+BST token
+Get started
+Sign in to your account
+Marketplace
+DeFi app
+LEARN
+Learn hub
+Glossary
+Tokenized real estate vs REITs
+FAQ
+Whitepaper
+AI podcast
+Documentation
+Blog
+YouTube channel
+COMMUNITY
+Events
+Ambassador program
+Become an ambassador
+Run and funded by Blocksquare
+COMPANY
+About
+Terms of service
+Protocol disclaimer
+© 2026 Oceanpoint. All rights reserved.
+Powered by
+Blocksquare

@@ -1,0 +1,28 @@
+AMF GECO y REGAFI (10/11/2026) · solo campos del fondo/entidad
+
+== geco-c124199.json
+Fuente: https://geco.amf-france.org/back-office/funds/compartment/c124199
+Consulta: 2026-11-10T09:23:15Z · HTTP 200 · 3622 bytes · sha256 073398c86fadb7bcbbc607d82c5840d548cf2e75976c560355d5a11c10762671
+  cmpNom: SPIKO AMUNDI OVERNIGHT SWAP FUND
+  cmpId: c124199
+  numDernAuto: SCV20260075
+  dateDernAuto: 2026-02-17
+  typeDernAutoLib: Agrément
+  cmpStatutLib: Vivant
+  cmpSouscrDedLib: Tous souscripteurs
+  gestionnaire: TWENTY FIRST CAPITAL
+  nomDepositaire: CACEIS Bank
+  cmpCodeParPrincp: FR0014015LD3
+  cmpClssFndAmfLib: Autre Fonds
+  cmpDateCreation: 2026-01-12
+  published: True
+  dtDataHub: 2026-11-09T04:50:45.087
+  sharesIsins: []
+== geco-c124199-shares.json: []  Fuente: https://geco.amf-france.org/back-office/funds/compartment/c124199/shares · Consulta: 2026-11-10T09:23:16Z · HTTP 200 · 2 bytes · sha256 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+== geco-lastvl-FR0014015LD3.json: (respuesta vacía, 0 bytes)  Fuente: https://geco.amf-france.org/back-office/funds/lastVl/FR0014015LD3 · Consulta: 2026-11-10T09:23:17Z · HTTP 200 · 0 bytes · sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+== lastVl FR001400ODL1: valuationDate 2026-11-09 · netAssetValue 1.06262 · netAssetValueInCurrency 1.06262 EUR
+== lastVl FR001400ODM9: valuationDate 2026-11-09 · netAssetValue 0.98495 · netAssetValueInCurrency 1.10244 USD
+== REGAFI entidad: {"denomination": "Spiko Finance", "cib": "[{\"code\": \"19183\", \"date\": \"2025-12-15\"}]", "siren": "980659585", "categorie": ["Entreprise d'Investissement"]}
+  Fuente: https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D751211 · Consulta: 2026-11-10T09:26:38Z · HTTP 200 · 816 bytes · sha256 62ab887b074058421fd6aaf90cc82190b9ed356166fbcea878a8b96dbf2dbb26
+== REGAFI pasaporte: {"pays": "ESPAGNE", "type_passeport": "Libre prestation de services", "sous_type": "Sortant", "categorie": "Entreprise d'Investissement", "date_debut": "2026-01-08"} · servicio A1 (recepción y transmisión de órdenes) sobre instrumentos C3 (participaciones de IIC), activo: {'date_debut': '2026-01-08', 'value': True}
+  Fuente: https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22 · Consulta: 2026-11-10T09:25:56Z · HTTP 200 · 9252 bytes · sha256 fdf10d2d445b2cc90fec0c31215cd065cdab7c0a325cba03fceb47d2a7de66c6

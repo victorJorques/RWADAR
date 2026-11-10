@@ -1,0 +1,496 @@
+{
+ "grupo": "ampliacion",
+ "tarea": "barrido-registros (buscador de pistas por registros oficiales)",
+ "fecha": "2026-11-10",
+ "nota": "consultadoUtc = hora de escritura del archivo (fin de la descarga). Las lecturas con navegador (Profitus ofertas, LISE portada y mercado, CONDA portada) que no figuran aquí no se guardaron. WebSearch se usó solo para descubrir. Advertencias CNMV: buscador ResultadoBusqueda?tipo=1, control positivo con OKX.",
+ "consultas": [
+  {
+   "url": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
+   "archivo": "fuentes/esma-mica-pagina.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:45Z",
+   "bytes": 90289,
+   "sha256": "4348135309ded19619303e3fc3eda923f012239ddbfc081c35682193dc87d569"
+  },
+  {
+   "url": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/dlt-pilot-regime",
+   "archivo": "fuentes/esma-dlt-pagina.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:45Z",
+   "bytes": 64073,
+   "sha256": "b8449dca76133e7262666b0f5af781f4decff4ca7a9b77418fdb5892831a4a71"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_crowdfunding/select?q=*:*&rows=2000&wt=json",
+   "archivo": "fuentes/crudo/esma-ecsp.json",
+   "http": 404,
+   "consultadoUtc": "2026-11-10T09:13:45Z",
+   "bytes": 96,
+   "sha256": "bcde9ea372f1255bb53751e10ca622f745be0670ee67214afd4cb1859c45f24e"
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/ARTZZ.csv",
+   "archivo": "fuentes/crudo/mica-ARTZZ.csv",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:58Z",
+   "bytes": 276,
+   "sha256": "fa1ef4da123e3d49642c69f90a81a88f6c2cc2a0b9471b2108e4dfc635ca7c67"
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/NCASP.csv",
+   "archivo": "fuentes/crudo/mica-NCASP.csv",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:58Z",
+   "bytes": 29533,
+   "sha256": "fad69d4381651420b9cf034c12307431ffd0134b833c5774768e819a46135bd5"
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/CASPS.csv",
+   "archivo": "fuentes/crudo/mica-CASPS.csv",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:58Z",
+   "bytes": 196605,
+   "sha256": "fd255f543d4c5746d96155744b3698c9a53acaf96168b028274bb06260896ca6"
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/OTHER.csv",
+   "archivo": "fuentes/crudo/mica-OTHER.csv",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:58Z",
+   "bytes": 253090,
+   "sha256": "db9193137c841aa327c92f16306b3ae2929a4506e7f4eb66bb0202e37797e1e1"
+  },
+  {
+   "url": "https://www.esma.europa.eu/sites/default/files/2026-01/Authorised_DLT_Market_Infrastructures.pdf",
+   "archivo": "fuentes/esma-dlt-autorizadas.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:13:58Z",
+   "bytes": 229280,
+   "sha256": "8f223820d3223598b284c30a0556177fb40c0a9c31053d1a8f549055a830c1fc"
+  },
+  {
+   "url": "(pdftotext de esma-dlt-autorizadas.pdf)",
+   "archivo": "fuentes/esma-dlt-autorizadas.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:14:03Z",
+   "bytes": 31704,
+   "sha256": "c8b4659cfb8f3026c95a4b09349a31e8fffb718c77041e0709db9bd42855d191"
+  },
+  {
+   "url": "https://www.esma.europa.eu/esmas-activities/investors-and-issuers/investment-services-and-crowdfunding",
+   "archivo": "fuentes/esma-ecsp-pagina.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:15:33Z",
+   "bytes": 97759,
+   "sha256": "83bed60e30105b53740561a40c2d9107575a3727c13c1cf1017fc6a44721574f"
+  },
+  {
+   "url": "https://www.esma.europa.eu/document/register-crowdfunding-services-providers",
+   "archivo": "fuentes/esma-ecsp-documento.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:16:17Z",
+   "bytes": 11783,
+   "sha256": "f9b1a76d4b51c9978b5ddced3d6830d247b96b555285cb02ef972f38ec8c6aa3"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_upreg/select?q=ae_entityTypeCode:CSP%20AND%20type_s:parent&rows=500&wt=json&fl=*,%5Bchild%20limit=200%5D",
+   "archivo": "fuentes/crudo/esma-ecsp-entidades.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:17:28Z",
+   "bytes": 1477925,
+   "sha256": "6edec2cc8d6d941c832145ecf62aea51cc613856ca68846392621b8c7a0c6918"
+  },
+  {
+   "url": "https://www.profitus.lt/en",
+   "archivo": "fuentes/profitus/home-en.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:18:44Z",
+   "bytes": 311619,
+   "sha256": "2892f7079076e944f3568f01374bb34f2d828fa5ab41d45940a99a0cd123fb2a"
+  },
+  {
+   "url": "https://axiology.xyz",
+   "archivo": "fuentes/axiology/home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:18:45Z",
+   "bytes": 1575783,
+   "sha256": "6296a117cb9c1a8fda5105dbc61d4360238b04e79b9a78e6a0a2937a75f625f0"
+  },
+  {
+   "url": "https://www.clubpatrimoine.com/contenus/actions-tokenisees-lise",
+   "archivo": "fuentes/lise/clubpatrimoine.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:18:47Z",
+   "bytes": 211408,
+   "sha256": "1965f4f53760a24ba1a872faed6d63132e96884050ab89ea648bcab8a4a35be6"
+  },
+  {
+   "url": "https://www.profitus.lt/en/bonds",
+   "archivo": "fuentes/profitus/bonds-en.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:19:02Z",
+   "bytes": 299343,
+   "sha256": "06fd74a2e94c4625e526fcf4b99830ace70a16ee5bb696438983e1e458cd15dd"
+  },
+  {
+   "url": "https://www.profitus.lt/en/investment-offers",
+   "archivo": "fuentes/profitus/offers-en.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:19:03Z",
+   "bytes": 187890,
+   "sha256": "2fa820f9ee0da5321d45edb9384004e77d9364102f273351bb5d2825aa800121"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "archivo": "fuentes/crudo/profitus-projects.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:20:58Z",
+   "bytes": 51762,
+   "sha256": "78a52e89d0df1749ec4fda2f7b3e4935e5972297a4773a23295396314687a10d"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes",
+   "archivo": "fuentes/cnmv/folletos-pasaportes.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:23:11Z",
+   "bytes": 226433,
+   "sha256": "91af80e99cd57b0de3dc5b174cd3079caf7fc6bd328f222d7f73d887f7339d78"
+  },
+  {
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=type_s:parent&fq=member_states:*SPAIN*&fq=approval_filing_date:[2026-07-01T00:00:00Z TO NOW]&fq=-document_type:FTWS&fq=-document_type:FTNS&rows=3000&wt=json",
+   "archivo": "fuentes/crudo/esma-folletos-es-2026h2.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:24:47Z",
+   "bytes": 114159,
+   "sha256": "09cf3dc5fa44bdac81b38c242f689c389e9a81bc7063458271b3551b725096e2"
+  },
+  {
+   "url": "https://verdanteurope.com/site/assets/files/1172/apf_digital_agrifund_cr_crypto-asset_white_paper_eng.pdf",
+   "archivo": "fuentes/pdf/apf-agrifund-whitepaper.pdf",
+   "http": 403,
+   "consultadoUtc": "2026-11-10T09:25:59Z",
+   "bytes": 358,
+   "sha256": "415ff807abb2fd49ce840d67bf14cb4d647e78afa9ab115c2b2dd8c8614928dd"
+  },
+  {
+   "url": "https://www.lise.com/rules/conditions-generales-d-utilisation (Playwright, texto renderizado)",
+   "archivo": "fuentes/crudo/lise-cgu-render.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:28:32Z",
+   "bytes": 6884,
+   "sha256": "60e8c373781b47ef3f26676dd7b19ed006b82a049e8115afc6c051ec375c01ee"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/listadoentidad.aspx?id=1&tipoent=4",
+   "archivo": "fuentes/cnmv/esi-eee-libre-prestacion.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:28:53Z",
+   "bytes": 1991636,
+   "sha256": "ad4959a8b45c98bd0f4a193f17a189d8e283d419165efa71db49b837c22eb239"
+  },
+  {
+   "url": "(texto de cnmv/esi-eee-libre-prestacion.html)",
+   "archivo": "fuentes/cnmv/esi-eee-libre-prestacion.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:28:53Z",
+   "bytes": 140430,
+   "sha256": "e5fbee2cfd1f21dcd63e63bff784a169bb422c389ca001f59a47cf28aed202b9"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Servicios-Financiacion-Participativa/Listado-Proveedores.aspx",
+   "archivo": "fuentes/cnmv/psfp-espanoles.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:29:19Z",
+   "bytes": 165399,
+   "sha256": "2d6fb8c178ca6d728139c75bef36babbf04563bb112358f0c1ad77e2db612677"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Servicios-Financiacion-Participativa/Listado-Proveedores-Europeos.aspx",
+   "archivo": "fuentes/cnmv/psfp-europeos.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:29:19Z",
+   "bytes": 176893,
+   "sha256": "58b1d0f46c25b7dca5232eecc53c65b434d7fb21e0b6da3e6c4ec2a759ce3b9e"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/Rectoras/ListadosIM.aspx",
+   "archivo": "fuentes/cnmv/infraestructuras.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:29:24Z",
+   "bytes": 260211,
+   "sha256": "5eccb8513e4cb5ce796c0873a605d115176c3c3ef44f74f69d3050ce98e292c5"
+  },
+  {
+   "url": "(texto)",
+   "archivo": "fuentes/cnmv/psfp-europeos.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:29:24Z",
+   "bytes": 15518,
+   "sha256": "6ea0ee0629806199feff7db7200bc2aedd07675d9f0ce7385be5dd5e168e6805"
+  },
+  {
+   "url": "(texto)",
+   "archivo": "fuentes/cnmv/psfp-espanoles.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:29:24Z",
+   "bytes": 15039,
+   "sha256": "0f31e324de3126d19d1bea636b59afabc8e08766b27c50456f67ea77c4913294"
+  },
+  {
+   "url": "(texto)",
+   "archivo": "fuentes/cnmv/infraestructuras.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:29:24Z",
+   "bytes": 17035,
+   "sha256": "0a52a43d83d021db642faa7cdc5f7dd6220653ea064fd854aaf1b6ee22b6bb2f"
+  },
+  {
+   "url": "https://www.crowdedhero.com",
+   "archivo": "fuentes/crowdedhero/home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:11Z",
+   "bytes": 98671,
+   "sha256": "dfe1ed1c4a6487b1e734c161c69836048378e2d489a6797b2b80c4b16c256d50"
+  },
+  {
+   "url": "(texto)",
+   "archivo": "fuentes/crowdedhero/home.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:30:11Z",
+   "bytes": 13878,
+   "sha256": "6839a8b8fc76c71323953ecbaa9b5c0e3d3db6ffaca81a7354d6aba2798e5bc6"
+  },
+  {
+   "url": "https://www.crowdedhero.com/legal?category=dlt",
+   "archivo": "fuentes/crowdedhero/legal-dlt.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:22Z",
+   "bytes": 92695,
+   "sha256": "6a34db197f420efb4a6fe8c7c35cd73fd59ff9efaea697b45f0162d502e2002c"
+  },
+  {
+   "url": "https://www.crowdedhero.com/project/view?id=45",
+   "archivo": "fuentes/crowdedhero/project-45.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:22Z",
+   "bytes": 92619,
+   "sha256": "3d0e9be99694056a05f593f34cf5ad1626f9b0c69ddb11fa8e74c1aeb9f0b547"
+  },
+  {
+   "url": "https://www.crowdedhero.com/pricelist/investor-pricelist",
+   "archivo": "fuentes/crowdedhero/pricelist.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:22Z",
+   "bytes": 44146,
+   "sha256": "27f161fa227ed5965e53a3baf01a73a45ab93dd7fec006fba999d421c750d97b"
+  },
+  {
+   "url": "https://www.crowdedhero.com/faq?category=investor",
+   "archivo": "fuentes/crowdedhero/faq-investor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:22Z",
+   "bytes": 53630,
+   "sha256": "d8c66fec7572fa48fbf368d37e42b436f8a860fcad76962a0a36b6b9a36da333"
+  },
+  {
+   "url": "https://www.crowdedhero.com/project/view?id=44",
+   "archivo": "fuentes/crowdedhero/project-44.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:23Z",
+   "bytes": 71331,
+   "sha256": "fdb07172be647b7bd9276a423f23513a7d7aead17918c199aee3cedc53179b61"
+  },
+  {
+   "url": "https://www.crowdedhero.com/project/view?id=49",
+   "archivo": "fuentes/crowdedhero/project-49.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:23Z",
+   "bytes": 104652,
+   "sha256": "55398a24c953dd178a48a02c80cdb17bff57045014316a5b64237e6eae64a7b8"
+  },
+  {
+   "url": "https://www.crowdedhero.com/project/view?id=50",
+   "archivo": "fuentes/crowdedhero/project-50.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:30:23Z",
+   "bytes": 73357,
+   "sha256": "d6c03e219f2705a447743161ffbc80abfbd686fd41ffb7b4c124d4d7956e7dbe"
+  },
+  {
+   "url": "(texto extraído)",
+   "archivo": "fuentes/crowdedhero/project-44.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:30:23Z",
+   "bytes": 8369,
+   "sha256": "2db4893bec94a82f8f734be2abacb3566d0c866bbff408b47d09a8084f92f974"
+  },
+  {
+   "url": "(texto extraído)",
+   "archivo": "fuentes/crowdedhero/project-45.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:30:23Z",
+   "bytes": 12873,
+   "sha256": "a2a71f6393be7f474df122ab8ef1878abcc7e28acd4d5a2462af7ea8c106aa91"
+  },
+  {
+   "url": "(texto extraído)",
+   "archivo": "fuentes/crowdedhero/project-49.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:30:23Z",
+   "bytes": 14825,
+   "sha256": "92beed2ef57219015150ced139069442b3fc5d00c831564438dd3d693f0e74c3"
+  },
+  {
+   "url": "(texto extraído)",
+   "archivo": "fuentes/crowdedhero/project-50.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:30:23Z",
+   "bytes": 8421,
+   "sha256": "165cba2c7cd79b8d4f8ef0619178c20142fcb1d70580658191c9b62e0bea29b7"
+  },
+  {
+   "url": "(texto extraído)",
+   "archivo": "fuentes/crowdedhero/legal-dlt.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:30:35Z",
+   "bytes": 20547,
+   "sha256": "9887ddd1912762b69ce0c7f32c1d86eee27f62255329d6eefa95d7c4bebc12b6"
+  },
+  {
+   "url": "(texto extraído)",
+   "archivo": "fuentes/crowdedhero/faq-investor.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:30:35Z",
+   "bytes": 4855,
+   "sha256": "231487a5a37da9cc62a530eb61e86acec82a11dbe567670f61cf8fa0abe36aca"
+  },
+  {
+   "url": "(texto extraído)",
+   "archivo": "fuentes/crowdedhero/pricelist.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:30:35Z",
+   "bytes": 4538,
+   "sha256": "f4860f3c2f4210f6bbcf5de09dd95c6772409b4d061c56f041447262185dd792"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=CrowdedHero",
+   "archivo": "fuentes/advertencias/adv-CrowdedHero.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:06Z",
+   "bytes": 212291,
+   "sha256": "f8a1582731b231b56d2b1a912bd2849e5c14ee408406df678bba94f62684850d"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Simpleros",
+   "archivo": "fuentes/advertencias/adv-Simpleros.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:06Z",
+   "bytes": 212247,
+   "sha256": "3d3f21f20f0bec3b1a75870c53b3ccee1f1f0f01b0175639720e6ea80509b728"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Nyala",
+   "archivo": "fuentes/advertencias/adv-Nyala.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:06Z",
+   "bytes": 212159,
+   "sha256": "0e619dddb860c02b1bf4e4dae823f42e16ac32fcf49cf857abb199d16b5bf89c"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Profitus",
+   "archivo": "fuentes/advertencias/adv-Profitus.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:06Z",
+   "bytes": 212225,
+   "sha256": "18de0fac55a53ec1d76d1e5469e3f8afe8a4e8310c3051963c828d967fbb98ba"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Crowded",
+   "archivo": "fuentes/advertencias/adv-Crowded.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:06Z",
+   "bytes": 212203,
+   "sha256": "be5d7f14d0fe89409d6e1915bca8f7def30d28fc2a3acd7f4ae90c17fcc1c1ef"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lise",
+   "archivo": "fuentes/advertencias/adv-Lise.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:06Z",
+   "bytes": 212137,
+   "sha256": "af6bed34b8c0eefbd03a8c0bee6d5cf981c82a6b403a6c9798090307ae8adb0d"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Balvora",
+   "archivo": "fuentes/advertencias/adv-Balvora.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:06Z",
+   "bytes": 212203,
+   "sha256": "a8353c4ba8578a153ccb9645127603170cc55f7717e2029c430bb958a03f3c06"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Axiology",
+   "archivo": "fuentes/advertencias/adv-Axiology.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:07Z",
+   "bytes": 212225,
+   "sha256": "37a7e87a15cb142ba03fc9c6576b90f3764b0b1e2f862f0851ee4f2c3f433db7"
+  },
+  {
+   "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+   "archivo": "fuentes/advertencias/Advertencias_CNMV_Otras.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:07Z",
+   "bytes": 254225,
+   "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0"
+  },
+  {
+   "url": "(texto extraído)",
+   "archivo": "fuentes/advertencias/otras.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:31:07Z",
+   "bytes": 17610,
+   "sha256": "bbe7e6fc61f7c8be67328b234fe579d4ab1de7cc9428931c4c34b3e6f91834ec"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=OKX",
+   "archivo": "fuentes/advertencias/adv-control-OKX.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:16Z",
+   "bytes": 217569,
+   "sha256": "7c89bfe1409d074f772c46fae8a860615bdd7fe29f2322e988e6e82eb02d81c5"
+  },
+  {
+   "url": "https://www.cnmv.es/Docportal/Proveedores-Servicios-Criptoactivos/Listado_ProveedoresCriptoactivos.pdf",
+   "archivo": "fuentes/cnmv/listado-casp.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:31:39Z",
+   "bytes": 482044,
+   "sha256": "188c6935e3b0dd615358aa031475b63a411557a87557a617333fb7175cc800b6"
+  },
+  {
+   "url": "(texto extraído)",
+   "archivo": "fuentes/cnmv/listado-casp.txt",
+   "http": null,
+   "consultadoUtc": "2026-11-10T09:31:45Z",
+   "bytes": 93330,
+   "sha256": "5c351575cfdbf8313af3969a46b85479b769c0ef018cdacac361c4b91500da34"
+  },
+  {
+   "url": "https://conda-capital.com/kampagnen/devolo-solutions-gmbh-anleihe (Playwright, texto renderizado)",
+   "archivo": "fuentes/navegador/conda-devolo-solutions-gmbh-anleihe.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:33:15Z",
+   "bytes": 9100,
+   "sha256": "f06a99126531f8b5829e114a1da97eca243f94a0b2b451481869b1c2538efd8e"
+  },
+  {
+   "url": "https://conda-capital.com/kampagnen/cooee-alpin-nachrangige-anleihe-der-you-will-like-it-hotels-gmbh (Playwright, texto renderizado)",
+   "archivo": "fuentes/navegador/conda-cooee-alpin-nachrangige-anleihe-der-you-will-like-it-hotels-gmbh.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-10T09:33:29Z",
+   "bytes": 10556,
+   "sha256": "90dca09eedc59932f7fb5726e691fa3c26f2234831e0e49b1f3f125e7f5b9f85"
+  }
+ ]
+}

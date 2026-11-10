@@ -1,0 +1,28 @@
+Fuente: https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=50670069463VM690ML91
+Consultado: 2026-11-10T09:33:43Z · HTTP 200 · 218993 bytes · sha256 daad7b71b48385d6b246818699b3046f0240183c658ac2094a8d752c144d1763
+Copia original en crudo/cnmv-pasaportes-dexentra.html (fuera de Git). Extracto literal; nombres de personas omitidos.
+
+Fecha notificación
+Entidad
+Autoridad
+Identificador nacional del folleto
+Fecha aprobación folleto
+Traducción de la Nota de Síntesis
+Suplementos
+10/04/2026
+DeXentra GmbH
+LIECHTENSTEIN
+STDA-91
+10/04/2026
+21/03/2025
+DeXentra GmbH
+LIECHTENSTEIN
+STDA-79
+28/02/2025
+Sí
+21/03/2025
+DeXentra GmbH
+LIECHTENSTEIN
+STDA-79
+28/02/2025
+Sí

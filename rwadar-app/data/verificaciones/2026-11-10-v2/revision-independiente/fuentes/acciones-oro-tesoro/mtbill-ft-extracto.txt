@@ -1,0 +1,29 @@
+Condiciones Finales mTBILL (GitBook, SHA-256 b1e58001…). Extractos sin datos personales.
+
+              Oracle / publication source for        Ethereum:
+              NAV per mToken                         0x056339C044055819E8Db84E71f5f2E1F536b2E5b
+
+
+              Minimum Investment Amount              not applicable
+
+              Redemption Gates                       25% of the aggregate number of outstanding mTokens per
+                                                     settlement day
+
+              Holdback Percentage                    up to 5%
+
+              Offer Period                    until end of validity of the Base Prospectus
+
+              Countr(y)(ies) Where the        Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy,
+              Offer(s) to the Public          Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany
+              Takes Place
+
+
+              Prohibition of Sales to         not applicable
+              EEA Retail Investors
+
+              Target market under             eligible counterparties, professional clients and retail clients
+              MiFID II
+
+             The financial year 2025 ended with a reported deficit not covered by equity of EUR 5’778’815.22.
+             Liabilities to affiliated companies amounted to EUR 14’873’900.58 and related to amounts drawn
+             under two framework loans granted by the parent company, Midas Protocol Limited, with an aggregate

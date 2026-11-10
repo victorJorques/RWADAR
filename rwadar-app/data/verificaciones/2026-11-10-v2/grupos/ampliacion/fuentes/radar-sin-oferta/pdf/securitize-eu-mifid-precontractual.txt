@@ -1,0 +1,395 @@
+                                         EU MiFID II Pre-Contractual Information Document
+                                                                                     April 2026
+
+
+
+
+1.​ About Securitize Europe
+
+1.1.​   For any EU-based investors, investment and ancillary services are offered by
+        Securitize Europe Brokerage and Markets, S.V., S.A. (“Securitize Europe”).
+
+1.2.​   Securitize Europe is a Spanish investment firm authorized and supervised by the
+        Spanish Securities Market Commission, the Comisión Nacional del Mercado de
+        Valores (“CNMV”), under registration number 327. The CNMV can be contacted at
+        Edison 4, 28006 Madrid or via their website www.cnmv.es or phone (+34 900 535
+        015).
+
+1.3.​   Securitize Europe is registered with the Commercial Registry of Madrid at Volume
+        45141, Section 8, Sheet 81, Page M-794351, and holds the Tax Identification Number
+        A13691464. Securitize Europe’s registered office is at Calle Don Ramón de la Cruz
+        38, 28001 Madrid, Spain.
+
+1.4.​   Securitize Europe is authorized to provide the following investment services as
+        defined in Annex I, Section A of MiFID II:
+
+        1.4.1.​ Reception and transmission of orders in relation to one or more financial
+                instruments;
+        1.4.2.​ Execution of orders on behalf of clients;
+        1.4.3.​ Placing of financial instruments without a firm commitment basis; and
+        1.4.4.​ Operation of an MTF.
+
+1.5.​   Securitize Europe is authorized to provide the following ancillary services, as defined
+        in Annex I, Section B of MiFID II:
+
+        1.5.1.​ Safekeeping and administration of financial instruments for the account of
+                clients;
+
+        1.5.2.​ Granting credits or loans to an investor to allow him to carry out a transaction
+                in one or more financial instruments, where the firm granting the credit or loan
+                is involved in the transaction; and
+
+        1.5.3.​ Advice to undertakings on capital structure, industrial strategy and related
+                matters and advice and services relating to mergers and the purchase of
+                undertakings.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                           1
+                                          EU MiFID II Pre-Contractual Information Document
+                                                                                          April 2026
+
+
+
+1.6.​   Currently, Securitize Europe only offers the service of reception and transmission of
+        orders in relation to one or more financial instruments (hereinafter, the “RTO
+        Service”).
+
+1.7.​   Securitize Europe will only provide investment or ancillary services in connection with
+        financial instruments defined in Annex I, Section C of MiFID II, that are represented
+        on distributed ledgers, i.e. tokenized financial instruments (hereinafter, the “Financial
+        Instrument(s)” or the “Product(s)”).
+
+2.​ Client Classification
+
+2.1.​   Securitize Europe will notify Clients of their classification as retail clients, professional
+        clients, or eligible counterparties at the time of onboarding:
+
+        2.1.1.​ Retail clients receive the highest level of protection under MiFID II, which
+                includes thorough suitability and appropriateness assessments, as well as
+                comprehensive pre- and post-contractual documentation and information that
+                must be made available to them.
+
+        2.1.2.​ Professional clients, such as institutional investors, large corporations, and
+                regional public entities, are afforded an intermediate level of protection. This is
+                based on the assumption that they possess sufficient knowledge of financial
+                markets to make their own investment decisions and to understand and
+                accept the associated risks.
+
+        2.1.3.​ Eligible   counterparties,   including   credit   institutions,   investment   firms,
+                investment and pension funds, central banks, national governments, and their
+                respective agencies, are granted the minimum level of protection. This reflects
+                their nature as entities required to act normally in financial markets.
+
+2.2.​   The Client has a right to request a different client classification subject to written
+        confirmation from Securitize Europe to the Client. Securitize Europe will consider any
+        requests received on a case-by-case basis against the criteria set out in the
+        applicable regulations, but it is not obliged to agree to such a request and may
+        decline to act.
+
+3.​ Appropriateness
+
+3.1.​   Securitize Europe will assess whether the Financial Instruments offered under the
+        RTO Service are appropriate for the Client. This involves determining whether the
+        Client possesses the necessary experience and knowledge to understand the risks
+        associated with the Financial Instrument being offered or requested.
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                                2
+                                         EU MiFID II Pre-Contractual Information Document
+                                                                                      April 2026
+
+
+
+3.2.​   Securitize Europe will be entitled to assume that a Client that has been classified as a
+        professional client has the necessary experience and knowledge in order to
+        understand the risks involved in relation to the particular types of Financial
+        Instruments for which the Client is classified as a professional client.
+
+3.3.​   The Client undertakes to provide to Securitize Europe on request all information to
+        enable Securitize Europe to conduct an assessment of appropriateness, including
+        information about the Client’s knowledge and experience.
+
+3.4.​   Where Securitize Europe considers, on the basis of the information received from the
+        Client, that the Financial Instrument offered is not appropriate to the Client, Securitize
+        Europe will warn the client or potential client. In such a case, the Client will be
+        provided with access to a website containing informational materials about the
+        Products offered and distributed ledger technology, so that, should the Client wish,
+        they may further their understanding of the subject. Securitize Europe will not allow
+        the Client to receive the RTO Service in respect of a Financial Instrument unless that
+        Financial Instrument has been deemed appropriate for the Client.
+
+3.5.​   Where the Client does not provide the information requested on their knowledge and
+        experience, or where they provide insufficient information regarding their knowledge
+        and experience, Securitize Europe will warn the Client that Securitize Europe is not in
+        a position to determine whether the Financial Instrument envisaged is appropriate for
+        them. Securitize Europe will not allow the Client to receive the RTO Service in respect
+        of a Financial Instrument unless that Financial Instrument has been deemed
+        appropriate for the Client.
+
+3.6.​   Securitize Europe will be entitled to rely on the information provided by the Client. The
+        Client acknowledges that failure to provide Securitize Europe with up-to-date
+        information may impact Securitize Europe’s ability to ensure that the Financial
+        Instruments are appropriate for the Client. The Client represents and warrants that
+        such information will remain complete and accurate in all material respects on an
+        ongoing basis.
+
+3.7.​   Securitize Europe will provide the Client with the results of any appropriateness
+        assessment carried out for the Client in connection with any Financial Instruments.
+
+4.​ Notices and Communications
+
+4.1.​   Should the Client require assistance, or should Securitize Europe need to reach the
+        Client, communications shall primarily be conducted through the messaging
+        functionality available on the Securitize website. In addition, Securitize Europe may
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                             3
+                                          EU MiFID II Pre-Contractual Information Document
+                                                                                       April 2026
+
+
+
+        contact the Client via email or text message; therefore, the Client is expected to
+        monitor these channels on a regular basis.
+
+4.2.​   These channels constitute the official means by which Securitize Europe will provide
+        information regarding the Client’s investment account, including notifications of any
+        actual or suspected fraudulent activity. Securitize Europe will also use these channels
+        to alert the Client to any security risks affecting the account. The Client must regularly
+        access the Securitize website to review such information.
+
+4.3.​   The language of all communications between Securitize Europe and the Client shall
+        be English or Spanish, and the Client will receive documents and other information
+        from Securitize Europe in English or Spanish.
+
+5.​ Customer Service
+
+5.1.​   Any complaint or claim will be dealt with by our Customer Service Department, which
+        may be contacted at: support-eu@securitize.io
+
+5.2.​   Securitize Europe has implemented:
+
+        5.2.1.​   A durable record-keeping mechanism, ensuring that the formulation,
+                  submission, and content of any inquiries, complaints, claims, or incidents are
+                  duly recorded and preserved on a durable medium, providing the Client with
+                  reliable evidence of such communications.
+
+        5.2.2.​   An accessible tracking system – enabling the Client to monitor the status of
+                  any ongoing procedure that was not resolved through telephone or electronic
+                  means during the initial interaction. This system is designed to be intelligible,
+                  feasible, simple, free of charge, and easily accessible, taking into account
+                  the specific characteristics and needs of the Client across all formats.
+
+5.3.​   Further information can be found in our Customer Defence Regulation, published on
+        our website on securitize.io/disclosure-library.
+
+5.4.​   Provided that the Customer Service Department cannot settle the Client’s complaint,
+        the Client can refer to the CNMV Claims Service:​
+        https://www.cnmv.es/portal/inversor/reclamaciones?lang=en
+
+6.​ Client Reporting
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                              4
+                                         EU MiFID II Pre-Contractual Information Document
+                                                                                        April 2026
+
+
+
+6.1.​   When Securitize Europe has provided the RTO Service in connection with an order
+        on behalf of a client will, in respect of that order, promptly provide the Client, in a
+        durable medium, with the essential information concerning the execution of that order.
+
+6.2.​   Securitize Europe will make available to the Client annual reports on costs and
+        charges in connection with the RTO Service provided during the precedent year.
+
+7.​ Inducements
+
+7.1.​   Securitize Europe may provide or receive fees, commissions or non-monetary
+        benefits, as defined in MiFID II, in connection with the provision of the RTO Service to
+        the Client as long as they are designed to enhance the quality of the service to the
+        Client and do not impair Securitize Europe’s ability to act in the Client’s best interests.
+
+7.2.​   Securitize Europe may make payments to third-parties which enable or are necessary
+        for the provision of the RTO Service to the Client including, without limitation, in
+        respect of brokerage costs, taxes, settlement and exchange fees. Third-party costs, in
+        particular brokers’ commissions, are normally charged to the Client. Such costs shall
+        not be considered as inducements as defined in MiFID II and will be disclosed to the
+        Client in accordance with MiFID II and the applicable regulations.
+
+7.3.​   Unless otherwise notified to the Client in writing, Securitize Europe will not charge to
+        the Client any research costs in respect of any research provided by third-parties but
+        will pay for any such research out of Securitize Europe’s own funds, and such
+        payments shall not be treated as inducements.
+
+8.​ Investor Compensation Scheme
+
+8.1.​   Securitize Europe is a member of the Spanish Financial Services Compensation
+        Scheme (“FOGAIN”). FOGAIN provides compensation to investors with member
+        entities in certain cases of insolvency of the entity offering investment services, for the
+        money and securities deposited with or entrusted to the entity.
+
+8.2.​   FOGAIN guarantees Retail Clients of Securitize Europe the recovery of cash and
+        Financial Instruments delivered to Securitize Europe and which it holds, administers,
+        or manages on behalf of the Retail Client, up to a maximum of EUR 100,000 per
+        Retail Client, when Securitize Europe cannot return them due to any of the following
+        circumstances:
+
+        8.2.1.​   Insolvency proceedings, such as “Concurso de acreedores”.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                               5
+                                            EU MiFID II Pre-Contractual Information Document
+                                                                                         April 2026
+
+
+
+        8.2.2.​   Administrative declaration by the CNMV stating that Securities Europe is
+                  unable to fulfil its obligations to Clients due to financial circumstances.
+
+8.3.​   FOGAIN does not cover losses in the value of investments resulting from market
+        performance or due to the insolvency of the issuer.
+
+9.​ Fees and Payments by the Client
+
+9.1.​   The RTO Service is subject to the fees, charges, costs and other expenses set out in
+        the Fee Schedule. The Fee Schedule is available on Securitize Europe website at
+        securitize.io/fee-schedule-table.
+
+10.​Conflicts of Interest
+
+10.1.​ Securitize Europe has a Conflicts of Interest Policy and specific procedures designed
+        to prevent, identify, record, manage, and, where avoidance is not possible, inform its
+        clients about potential conflict of interest situations that may be detrimental to them.
+        The Conflicts of Interest Policy and its related procedures aim to:
+
+        10.1.1.​ Identify relationships, services, activities or operations where conflicts of
+                  interest may arise.
+
+        10.1.2.​ Facilitate the implementation of measures to prevent conflicts of interest
+                  wherever possible.
+
+        10.1.3.​ Establish a process to identify and assess the significance of conflicts,
+                  determine the steps to mitigate them, and communicate any relevant (actual
+                  or potential) conflict of interest.
+
+        10.1.4.​ Set out how to manage an unavoidable conflict of interest and how to inform
+                  the affected individual or entity.
+
+        10.1.5.​ Properly document the application of measures in place to address the
+                  above objectives, so that they can be monitored internally and explained to
+                  regulators.
+
+10.2.​ To request further information about the Conflicts of Interest Policy, you may use any
+        of the communication channels with Securitize Europe mentioned above.
+
+11.​Best Execution and Client Order Handling
+
+11.1.​ When providing the RTO Service to the Client, Securitize Europe acknowledges it
+        owes a duty to the Client to take sufficient steps to obtain the best possible result
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                              6
+                                       EU MiFID II Pre-Contractual Information Document
+                                                                                    April 2026
+
+
+
+       taking into account various execution factors. To that end, Securitize Europe will apply
+       its Best Execution and Client Order Handling Policy, unless any specific instructions
+       are received from the Client regarding the order or any specific aspects of the order.
+
+11.2.​ Securitize Europe will provide appropriate information to Clients on Securitize
+       Europe’s Best Execution and Client Order Handling Policy. In particular, a summary of
+       the Best Execution and Client Order Handling Policy is available on Securitize Europe
+       website, explaining clearly, in sufficient detail and in a way that can be easily
+       understood by Clients, how orders will be executed or transmitted by Securitize
+       Europe. Securitize Europe will also inform Clients of any material changes to the Best
+       Execution and Client Order Handling Policy or to its execution arrangements.
+
+11.3.​ Upon reasonable request, Securitize Europe will provide Clients with information
+       about entities where the orders are transmitted or placed for execution.
+
+11.4.​ By agreeing to Securitize Europe’s Terms and Conditions and submitting an order
+       through this website, the Client consents to Securitize Europe’s Best Execution and
+       Client Order Handling Policy.
+
+11.5.​ In addition, Securitize Europe informs the Client and the Client accepts that any Client
+       orders may be executed outside an EU trading venue, such as in a US execution
+       venue or platform, or through a counterparty that can be located within or outside the
+       EU.
+
+12.​Information on Financial Instruments
+
+12.1.​ As mentioned before, Securitize Europe will only provide investment or ancillary
+       services in connection with financial instruments defined in Annex I, Section C of
+       MiFID II, that are represented on distributed ledgers, i.e. tokenized financial
+       instruments (hereinafter, the “Financial Instrument(s)” or the “Product(s)”).
+
+12.2.​ Currently, Securitize Europe only offers American Tokenized Shares, which is a type
+       of Financial Instrument representing equity of American companies and is
+       denominated United States dollars (“USD”).
+
+
+
+
+                                   6/6
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                             7
+                                        EU MiFID II Pre-Contractual Information Document
+                                                                                     April 2026
+
+
+
+
+                         This number is indicative of the risk
+                         associated with the product, with 1/6
+                         indicating the lowest level of risk and 6/6
+                         representing the highest level of risk.
+
+12.3.​ All Financial Instruments offered by Securitize Europe involve risk, including the risk
+       of losing the entire investment. The value of investments and the income derived from
+       them can fall as well as rise and is not guaranteed. Yields and income on investments
+       are not guaranteed and as such may fall or rise. Changes in exchange rates may
+       have an adverse effect on the value, price or income of an investment.
+
+12.4.​ Where Securitize Europe has disclosed past performance on Financial Instruments,
+       the Client should be aware that past performance is no guarantee of future results.
+       Any references to taxation are based on current understanding and may change. The
+       Client should consult their investment or tax advisor if in any doubt about proceeding
+       with any investment services provided by Securitize Europe.
+
+12.5.​ The Client’s attention is also specifically drawn to the following types of transactions
+       which Securitize Europe may effect on behalf of the Client and the risks associated
+       with such transactions.
+
+       12.5.1.​ Equity securities and shares: Ownership of an equity security represents a
+                direct stake in the company concerned and participates fully in the economic
+                risk of the company. The volatility of equity markets can change and cannot
+                be assumed to follow historic trends. Equity investments can be impacted by
+                the size of the company, seasonality or cyclicality of income sources and
+                geographical location. The value of equity securities can fall as well as rise.
+
+       12.5.2.​ Investment Denominated in Foreign Currencies: If a liability of the Client in
+                one currency is to be matched by an asset in a different currency, or if
+                Securitize Europe provides services relating to an investment denominated
+                in a foreign currency, a movement in exchange rates may have an effect
+                which may be either favourable or unfavourable on the investment, which
+                effect may be separate from the gain or loss otherwise experienced on such
+                investment.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                               8
+

@@ -1,0 +1,86 @@
+Trade
+Earn
+Operate
+Tokenize
+Learn
+Blog
+Sign in
+Get started
+
+CONTENTS
+
+Overview
+As-is basis
+Governance
+No liability
+
+LEGAL DOCUMENT
+
+Protocol disclaimer
+
+Please read carefully before using the protocol.
+
+Overview
+
+This disclaimer contains important information about the risks associated with using the Oceanpoint protocol. By using the protocol, you acknowledge that you have read and understood this disclaimer in full.
+
+Oceanpoint is a decentralized protocol that people can use to earn BST by performing various actions that may involve the use of various ERC-20 tokens. The Oceanpoint protocol is made up of free, public, open-source or source-available software, including a set of smart contracts that are deployed on the Ethereum Blockchain.
+
+Your use of the Oceanpoint protocol involves various risks, including, but not limited to, losses while digital assets are being supplied to the Oceanpoint protocol and losses due to the fluctuation of prices of tokens in a pool. Before using the Oceanpoint protocol, you should review the relevant documentation to make sure you understand how the Oceanpoint protocol works.
+
+Additionally, just as you can access email protocols such as SMTP through multiple email clients, you can access the Oceanpoint protocol through dozens of web or mobile interfaces. You are responsible for doing your own diligence on those interfaces to understand the fees and risks they present.
+
+As-is basis
+
+THE OCEANPOINT PROTOCOL IS PROVIDED "AS IS", AT YOUR OWN RISK, AND WITHOUT WARRANTIES OF ANY KIND.
+
+Governance
+
+Although Blocksquare d.o.o. ("Blocksquare") developed much of the initial code for the Oceanpoint protocol, it does not provide, own, or control the Oceanpoint protocol, which is run by smart contracts deployed on the Ethereum blockchain.
+
+Upgrades and modifications to the protocol are managed in a community-driven way by holders of the sBST governance token. No single party, including Blocksquare, has unilateral control over the protocol.
+
+No liability
+
+No developer or entity involved in creating the Oceanpoint protocol will be liable for any claims or damages whatsoever associated with your use, inability to use, or your interaction with other users of, the Oceanpoint protocol, including any direct, indirect, incidental, special, exemplary, punitive or consequential damages, or loss of profits, cryptocurrencies, tokens, or anything else of value.
+
+Back to home
+
+The liquidity engine for tokenized real estate. Tokenized properties, DeFi yields, and global accessibility, all on-chain.
+
+Tokenize your property
+PLATFORM
+Trade
+Earn
+For businesses
+Tokenize a property
+Raise a VC round
+Liquidity providers
+Protocol statistics
+BST token
+Get started
+Sign in to your account
+Marketplace
+DeFi app
+LEARN
+Learn hub
+Glossary
+Tokenized real estate vs REITs
+FAQ
+Whitepaper
+AI podcast
+Documentation
+Blog
+YouTube channel
+COMMUNITY
+Events
+Ambassador program
+Become an ambassador
+Run and funded by Blocksquare
+COMPANY
+About
+Terms of service
+Protocol disclaimer
+© 2026 Oceanpoint. All rights reserved.
+Powered by
+Blocksquare

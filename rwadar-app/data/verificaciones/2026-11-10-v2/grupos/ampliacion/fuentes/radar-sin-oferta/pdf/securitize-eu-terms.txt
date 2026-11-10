@@ -1,0 +1,690 @@
+                                                                  EU Terms and Conditions
+                                                                                   April 2026
+
+
+
+
+1.​ About Securitize Europe
+
+1.1.​   For any EU-based investors, investment and ancillary services are offered by
+        Securitize Europe Brokerage and Markets, S.V., S.A. (“Securitize Europe”).
+
+1.2.​   Securitize Europe is a Spanish investment firm authorized and supervised by the
+        Spanish Securities Market Commission, the Comisión Nacional del Mercado de
+        Valores (“CNMV”), under registration number 327. The CNMV can be contacted at
+        Edison 4, 28006 Madrid or via their website www.cnmv.es or phone (+34 900 535
+        015).
+
+1.3.​   Securitize Europe is registered with the Commercial Registry of Madrid at Volume
+        45141, Section 8, Sheet 81, Page M-794351, and holds the Tax Identification Number
+        A13691464. Securitize Europe’s registered office is at Calle Don Ramón de la Cruz
+        38, 28001 Madrid, Spain.
+
+2.​ Scope of Services
+
+2.1.​   Securitize Europe will provide the Client with the investment service of reception and
+        transmission of orders (“RTO Service”).
+
+2.2.​   These Terms and Conditions are applicable only in respect of financial instruments as
+        defined in Annex I, Section C of MiFID II. In particular, Securitize Europe will only
+        provide investment or ancillary services in connection with financial instruments
+        represented on distributed ledgers, i.e. tokenized financial instruments (hereinafter,
+        the “Financial Instrument(s)” or the “Product(s)”).
+
+2.3.​   Securitize Europe may also provide additional products and services, as agreed
+        between Securitize Europe and the Client.
+
+3.​ Definitions and Interpretations
+
+3.1.​   “AML Regulations”: Means the following regulations regarding anti-money
+        laundering and combating the financing of terrorism:
+
+        3.1.1.​   Directive (EU) 2015/849 of the European Parliament and of the Council of 20
+                  May 2015 on the prevention of the use of the financial system for the
+                  purposes of money laundering or terrorist financing, amending Regulation
+                  (EU) No 648/2012 of the European Parliament and of the Council, and
+                  repealing Directive 2005/60/EC of the European Parliament and of the
+                  Council and Commission Directive 2006/70/EC, as amended from time to
+                  time.
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                         1
+                                                                     EU Terms and Conditions
+                                                                                      April 2026
+
+
+
+        3.1.2.​   Law 10/2010, of 28 April, on the prevention of money laundering and terrorist
+                  financing.
+
+        3.1.3.​   Royal Decree 304/2014, of 5 May, approving the Regulations of Law
+                  10/2010, of 28 April, on the prevention of money laundering and terrorist
+                  financing.
+
+3.2.​   “Best Execution and Client Order Handling Policy”: Securitize Europe’s Best
+        Execution and Client Order Handling Policy as referred to in Clause 7 of these Terms
+        and Conditions. A summary of the Best Execution and Client Order Handling Policy is
+        available on Securitize Europe website at securitize.io/fee-schedule-table.
+
+3.3.​   “Client”: Means any individual, or legal entity that has accepted these Securitize
+        Europe’s Terms and Conditions for the provision of investment or ancillary services,
+        including but not limited to the RTO Service, as defined in Clause 3.9. The Client may
+        be classified as either a Retail Client or a Professional Client, as defined in Clause 4,
+        in accordance with MiFID II and the LMVSI.
+
+3.4.​   “Client Account”: Means the unique account created on Securitize Europe’s website
+        by a Client to access and use the RTO Service through Securitize Europe’s platform.
+        This account includes a designated login ID and password and serves as the primary
+        credential for authentication and interaction with Securitize Europe and its platform.
+        The Client Account is distinct from any transactional or custody arrangements and is
+        required for initiating and managing activities within the platform.
+
+3.5.​   “CNMV”: The Spanish Securities Market Commission, ‘Comisión Nacional del
+        Mercado de Valores’, the Spanish national competent authority for the supervision
+        and inspection of the activity of firms providing investment services in Spain. The
+        CNMV can be contacted at Edison 4, 28006 Madrid or via their website www.cnmv.es
+        or phone (+34 900 535 015).
+
+3.6.​   “Customer Service Department”: Refers to the team or organizational unit within
+        Securitize Europe responsible for addressing and resolving client enquiries,
+        complaints, and requests for information. The Customer Service Department acts as
+        the main point of contact for clients, ensuring prompt, fair, and effective support in
+        accordance with Securitize Europe’s Customer Service Regulation. The Customer
+        Service Department can be contacted at: support-eu@securitize.io
+
+3.7.​   “Customer Service Regulation”: Means the set of rules, procedures, and standards
+        established by Securitize Europe to ensure the effective, fair, and transparent
+        handling of all client enquiries, complaints, and requests for information. The
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                            2
+                                                                    EU Terms and Conditions
+                                                                                      April 2026
+
+
+
+        Customer Service Regulation outlines the rights and obligations of clients as well as
+        the responsibilities of Securitize Europe in relation to customer support, and is
+        published on Securitize Europe’s website at support-eu@securitize.io
+
+3.8.​   “Conflicts of Interest Policy”: Means the policy describing all organizational and
+        administrative arrangements that Securitize Europe has put in place to identify,
+        prevent and manage any potential conflicts of interest.
+
+3.9.​   “Eligible Counterparty”: Clients classified as defined in article 30(2) MiFID II.
+
+3.10.​ “E-Money Tokens”: means a type of crypto-asset that purports to maintain a stable
+        value by referencing the value of one official currency, as defined in article 3(1)(7) of
+        MiCA.
+
+3.11.​ “Fee Schedule”: Means the fee schedule document published in Securitize Europe’s
+        website, which details all the fees, charges, costs and other expenses that will be
+        incurred by the Client in relation to the RTO Service. The Fee Schedule is available
+        on Securitize Europe website at securitize.io/fee-schedule-table.
+
+3.12.​ “Financial Instruments” or “Products”: Any financial instruments as defined in
+        Annex I, Section C of MiFID II that are represented on distributed ledgers (i.e.
+        tokenized financial instruments) and offered by Securitize Europe.
+
+3.13.​ “FOGAIN”: Means “Fondo General de Garantía de Inversiones”, the Spanish
+        Financial Services Compensation Scheme, Spain’s investors compensation scheme
+        for customers of authorized investment firms. Further information about compensation
+        arrangements       is    available     from     the       FOGAIN      in     Spain     at
+        https://www.fogain.com/ingles/.
+
+3.14.​ “GDPR”: Regulation (EU) 2016/679 of the European Parliament and of the Council of
+        27 April 2016 on the protection of natural persons with regard to the processing of
+        personal data and on the free movement of such data, and repealing Directive
+        95/46/EC (“General Data Protection Regulation”).
+
+3.15.​ “Linked Wallet”: Means any Client’s digital wallet connected to a Client Account on
+        Securitize Europe’s platform, which is used for the custody, receipt, or transfer of
+        Financial Instruments and E-Money Tokens.
+
+3.16.​ “LMVSI”: Spanish Law 6/2023, of March 17, of the Securities Markets and Investment
+        Services.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                            3
+                                                                     EU Terms and Conditions
+                                                                                         April 2026
+
+
+
+3.17.​ “MiCA”: Regulation (EU) 2023/1114 of the European Parliament and of the Council
+       of 31 May 2023 on markets in crypto-assets, and amending Regulations (EU) No
+       1093/2010 and (EU) No 1095/2010 and Directives 2013/36/EU and (EU) 2019/1937.
+
+3.18.​ “MiFID II”: Directive 2014/65/EU of the European Parliament and of the Council of 15
+       May 2014 on markets in financial instruments and amending Directive 2002/92/EC
+       and Directive 2011/61/EU, as amended from time to time.
+
+3.19.​ “Parties”: Means collectively Securitize Europe and the Client, each a “Party” to
+       these Terms and Conditions.
+
+3.20.​ “Professional Client”: Clients classified as defined in article 4(1)(10) and Annex II of
+       MiFID II.
+
+3.21.​ “Retail Client”: Clients classified as defined in article 4(1)(11) of MiFID II.
+
+3.22.​ “RTO Service”: the investment service of reception and transmission of orders in
+       relation to one or more financial instruments as defined in Annex I, Section A, Point
+       (1) of MiFID II, offered by Securitize Europe.
+
+3.23.​ “Securitize Europe”: Securitize Europe Brokerage and Markets, S.V., S.A., a
+       Spanish investment firm authorized and supervised by the CNMV, under registration
+       number 327, registered with the Commercial Registry of Madrid at Volume 45141,
+       Section 8, Sheet 81, Page M-794351, holding the Tax Identification Number
+       A13691464, and with registered office at Calle Don Ramón de la Cruz 38, 28001
+       Madrid, Spain.
+
+3.24.​ “Termination Date”: Means the date on which the termination of the agreement and
+       the closure of the Client Account take effect, being either the day specified in the
+       written termination notice or, if no date is specified, thirty (30) days after the other
+       Party receives the written termination notice, as detailed in Clause 11.
+
+3.25.​ “Terms and Conditions”: Means this document, which sets out the contractual
+       terms, rules, and provisions governing the relationship between Securitize Europe
+       and the Client in connection with the provision of investment or ancillary services,
+       including the RTO Service, as defined in Clause 3.9. The Terms and Conditions
+       outline the rights and obligations of both Parties, as well as the procedures and
+       requirements applicable to the services offered by Securitize Europe.
+
+3.26.​ “Tokens”: Means Financial Instruments or E-Money Tokens.
+
+4.​ Client Information
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                              4
+                                                                     EU Terms and Conditions
+                                                                                      April 2026
+
+
+
+4.1.​   By accepting these Terms and Conditions, the Client acknowledges having received
+        clear and adequate information regarding:
+
+        4.1.1.​   Securitize Europe and the services it provides;
+
+        4.1.2.​   The Financial Instruments and their risks;
+
+        4.1.3.​   The Best Execution and Client Order Handling Policy;
+
+        4.1.4.​   The Customer Service Regulation;
+
+        4.1.5.​   The Conflicts of Interest Policy; and
+
+        4.1.6.​   The Fee Schedule.
+
+4.2.​   The purpose of this information is to ensure that the Client understands the nature
+        and risks of the RTO Service and the Financial Instruments under these Terms and
+        Conditions, enabling the Client to make fully informed investment decisions.
+
+5.​ Client Classification
+
+5.1.​   Securitize Europe will notify Clients of their classification as Retail Clients,
+        Professional Clients, or Eligible Counterparties at the time of onboarding.
+
+5.2.​   The Client has a right to request a different client classification subject to written
+        confirmation from Securitize Europe to the Client. Securitize Europe will consider any
+        requests received on a case-by-case basis against the criteria set out in the LMVSI,
+        but it is not obliged to agree to such a request and may decline to act.
+
+6.​ Appropriateness
+
+6.1.​   Securitize Europe will assess whether the Financial Instruments offered under the
+        RTO Service are appropriate for the Client. This involves determining whether the
+        Client possesses the necessary experience and knowledge to understand the risks
+        associated with the Financial Instrument being offered or requested.
+
+6.2.​   Securitize Europe will be entitled to assume that a Client that has been classified as a
+        professional client has the necessary experience and knowledge in order to
+        understand the risks involved in relation to the particular types of Financial
+        Instruments for which the Client is classified as a professional client.
+
+6.3.​   The Client undertakes to provide to Securitize Europe on request all information to
+        enable Securitize Europe to conduct an assessment of appropriateness, including
+        information about the Client’s knowledge and experience.
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                           5
+                                                                     EU Terms and Conditions
+                                                                                      April 2026
+
+
+
+6.4.​   Where Securitize Europe considers, on the basis of the information received from the
+        Client, that the Financial Instrument offered is not appropriate to the Client, Securitize
+        Europe will warn the client or potential client. In such a case, the Client will be
+        provided with access to a website containing informational materials about the
+        Products offered and distributed ledger technology, so that, should the Client wish,
+        they may further their understanding of the subject. Securitize Europe will not allow
+        the Client to receive the RTO Service in respect of a Financial Instrument unless that
+        Financial Instrument has been deemed appropriate for the Client.
+
+6.5.​   Where the Client does not provide the information requested on their knowledge and
+        experience, or where they provide insufficient information regarding their knowledge
+        and experience, Securitize Europe will warn the Client that Securitize Europe is not in
+        a position to determine whether the Financial Instrument envisaged is appropriate for
+        them. Securitize Europe will not allow the Client to receive the RTO Service in respect
+        of a Financial Instrument unless that Financial Instrument has been deemed
+        appropriate for the Client.
+
+6.6.​   Securitize Europe will be entitled to rely on the information provided by the Client. The
+        Client acknowledges that failure to provide Securitize Europe with up-to-date
+        information may impact Securitize Europe’s ability to ensure that the Financial
+        Instruments are appropriate for the Client. The Client represents and warrants that
+        such information will remain complete and accurate in all material respects on an
+        ongoing basis.
+
+6.7.​   Securitize Europe will provide the Client with the results of any appropriateness
+        assessment carried out for the Client in connection with any Financial Instruments.
+
+7.​ Best Execution and Client Order Handling
+
+7.1.​   When providing the RTO Service to the Client, Securitize Europe acknowledges it
+        owes a duty to the Client to take sufficient steps to obtain the best possible result
+        taking into account various execution factors. To that end, Securitize Europe will apply
+        its Best Execution and Client Order Handling Policy, unless any specific instructions
+        are received from the Client regarding the order or any specific aspects of the order.
+
+7.2.​   Securitize Europe will provide appropriate information to Clients on Securitize
+        Europe’s Best Execution and Client Order Handling Policy. In particular, a summary of
+        the Best Execution and Client Order Handling Policy will be available on Securitize
+        Europe website, explaining clearly, in sufficient detail and in a way that can be easily
+        understood by Clients, how orders will be executed or transmitted by Securitize
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                              6
+                                                                    EU Terms and Conditions
+                                                                                      April 2026
+
+
+
+        Europe. Securitize Europe will also inform Clients of any material changes to the Best
+        Execution and Client Order Handling Policy or to its execution arrangements.
+
+7.3.​   Upon reasonable request, Securitize Europe will provide Clients with information
+        about entities where the orders are transmitted or placed for execution.
+
+7.4.​   By agreeing to these Terms and Conditions and submitting an order through this
+        website, the Client consents to Securitize Europe’s Best Execution and Client Order
+        Handling Policy.
+
+7.5.​   In addition, Securitize Europe informs the Client and the Client accepts that any Client
+        orders may be executed outside an EU trading venue, such as in a US execution
+        venue or platform, or through a counterparty that can be located within or outside the
+        EU.
+
+8.​ Fees and Payments by the Client
+
+8.1.​   The Client agrees to pay fees and other charges to Securitize Europe for the RTO
+        Service as set out in these Terms and Conditions which shall be calculated in
+        accordance with the Fee Schedule (or as otherwise agreed with the Client).
+
+8.2.​   Fees and other charges which are payable by the Client under these Terms and
+        Conditions will be deducted from the Client’s Linked Wallet immediately at the time of
+        each transaction and by submitting a transaction, the Client authorizes Securitize
+        Europe to make such deduction. If the Client does not have enough Tokens in its
+        Linked Wallet, the transaction will not be carried out, unless the Client selects or adds
+        another Linked Wallet with enough Tokens to execute the requested transaction.
+
+8.3.​   Securitize Europe may amend the Fee Schedule by giving the Client a thirty (30) days
+        prior written notice in accordance with Clause 14.
+
+8.4.​   The Client shall reimburse Securitize Europe for any expenses or liability which it may
+        incur in properly carrying out its duties under these Terms and Conditions.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                            7
+                                                                      EU Terms and Conditions
+                                                                                        April 2026
+
+
+
+
+9.​ Anti-Money Laundering
+
+9.1.​   Securitize Europe is obliged to put in place certain safeguards to ensure that its
+        service is not used for criminal purposes. By accepting the Terms and Conditions, the
+        Client agrees to Securitize Europe carrying out the following checks:
+
+        9.1.1.​   Securitize Europe is required by statute to obtain certain evidence of identity
+                  and beneficial owner from the Client. This may involve checking the Client’s
+                  name electronically against specialized databases.
+
+        9.1.2.​   In the case of a Client being a legal entity, Securitize Europe is required by
+                  statute to verify and confirm the identification of all relevant parties to such
+                  Client, including but not limited to, beneficiaries, directors and shareholders.
+
+9.2.​   Securitize Europe reserves the right not to supply the RTO Service unless and until it
+        is satisfied that all such requirements have been and continue to be complied with.
+        Securitize Europe further reserves the right to withdraw the RTO Service and close
+        the Client’s Account without explanation if Securitize Europe believes or has reason
+        to believe that the RTO Service may be or have been used for any illegal purposes.
+
+9.3.​   Securitize Europe reserves the right to restrict or prevent Client transactions where:
+
+        9.3.1.​   Securitize Europe believes or has reason to believe that its services may be,
+                  have been, or will be used for any illegal purposes.
+
+        9.3.2.​   The Client is not providing Securitize Europe with complete and accurate
+                  information as required under the AML Regulations.
+
+10.​Conflicts of Interest
+
+10.1.​ The Conflicts of Interest Policy set out how Securitize Europe identifies and manages
+        any potential conflicts of interest that may arise. The Client acknowledges that a
+        summary of the Conflicts of Interest Policy has been made available to the Client
+        within the Pre-contractual Information.
+
+11.​Custody of Financial Instruments
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                                  8
+                                                                    EU Terms and Conditions
+                                                                                         April 2026
+
+
+
+11.1.​ The custody of Financial Instruments will be provided using Web3 technology and
+       compatible wallets either by third-party custodians or through self-custody by the
+       Client. Securitize Europe does not currently offer custody services and does not hold,
+       control, or manage any private keys or access credentials on behalf of the Client.
+
+11.2.​ Securitize Europe shall bear no responsibility or liability whatsoever for the
+       safekeeping, loss, theft, compromise, or unauthorized access to Financial
+       Instruments or any digital tokens held by the Client or any third-party custodian. The
+       Client acknowledges and accepts that the security of private keys, wallets, and any
+       related technology used for self-custody is solely the Client’s responsibility.
+
+11.3.​ The Client understands and agrees that:
+
+      11.3.1.​ Self-custody involves significant risks, including but not limited to loss of
+                private keys, device compromise, and irreversible transactions.
+
+      11.3.2.​ The Client is responsible for verifying that any third-party custodian is duly
+                authorized to provide custody services in respect of Financial Instruments
+                within the relevant jurisdiction. Securitize Europe shall have no duty to
+                exercise due skill, care and diligence in the selection, appointment and
+                review of the Client’s appointed third-party custodian.
+
+      11.3.3.​ Third-party custodians operate independently from Securitize Europe, and
+                any failure, insolvency, or breach affecting such custodians shall not create
+                liability for Securitize Europe.
+
+      11.3.4.​ Securitize Europe does not guarantee the performance, security, or
+                regulatory compliance of any third-party custodian selected by the Client.
+                Securitize Europe is not liable for the acts or omissions of any third-party
+                custodian.
+
+      11.3.5.​ The Client shall ensure that any custody arrangements comply with
+                applicable laws and regulations and shall implement appropriate security
+                measures to protect their assets.
+
+12.​Client Reporting
+
+12.1.​ When Securitize Europe has provided the RTO Service in connection with an order
+       on behalf of a client will, in respect of that order, promptly provide the Client, in a
+       durable medium, with the essential information concerning the execution of that order.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                              9
+                                                                    EU Terms and Conditions
+                                                                                     April 2026
+
+
+
+12.2.​ Securitize Europe will make available to the Client annual reports on costs and
+       charges in connection with the RTO Service provided during the precedent year.
+
+13.​Notices and Communications
+
+13.1.​ Should the Client require assistance, or should Securitize Europe need to reach the
+       Client in connection with any matter arising from or related to these Terms and
+       Conditions, communications shall primarily be conducted through the messaging
+       functionality available on the Securitize website. In addition, Securitize Europe may
+       contact the Client via email or text message; therefore, the Client is expected to
+       monitor these channels on a regular basis.
+
+13.2.​ These channels constitute the official means by which Securitize Europe will provide
+       information regarding the Client’s investment account, including notifications of any
+       actual or suspected fraudulent activity. Securitize Europe will also use these channels
+       to alert the Client to any security risks affecting the account. The Client must regularly
+       access the Securitize website to review such information.
+
+13.3.​ All communications issued by Securitize Europe are intended exclusively for the
+       Client. The Client shall bear sole responsibility for safeguarding the confidentiality and
+       privacy of any information received.
+
+13.4.​ The language of all communications between Securitize Europe and the Client shall
+       be English or Spanish, and the Client will receive documents and other information
+       from Securitize Europe in English or Spanish.
+
+13.5.​ The Client acknowledges and consents to Securitize Europe recording all telephone
+       conversations (including, via electronic communication tools) between Securitize
+       Europe and the Client and storing and retaining such recording as it sees fit or where
+       required by applicable regulations. The Client has the right to request a copy of such
+       records.
+
+13.6.​ The Client, on a continuing basis, undertakes to promptly update Securitize Europe of
+       any material changes to any information which was provided to Securitize Europe as
+       part of the onboarding process, including but not limited to any information to
+       evidence their identity.
+
+14.​Termination of the RTO Service
+
+14.1.​ The RTO Service and these Terms and Conditions may be terminated by either Party
+       by giving not less than thirty (30) days’ written notice of termination to the other Party
+       at any time. Termination and the closure of the Client Account shall take effect on the
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                           10
+                                                                    EU Terms and Conditions
+                                                                                      April 2026
+
+
+
+       day specified in the termination notice or, if no date is specified, thirty (30) days after
+       the other Party receives the notice (the “Termination Date”).
+
+14.2.​ Nevertheless, Securitize Europe may terminate the agreement with the Client without
+       applying the 30-day notice period in the event of (i) non-payment of amounts due
+       under this agreement, (ii) non-compliance with AML Regulations or (iii) actual or
+       alleged market abuse.
+
+14.3.​ Termination will not affect existing transactions, but Securitize Europe will not execute
+       any further transactions for the Client.
+
+14.4.​ Termination shall not affect any outstanding or accrued fees, charges, costs and
+       expenses owing to Securitize Europe up to the Termination Date or any such date as
+       agreed between Securitize Europe and the Client.
+
+15.​Amendments to the Terms and Conditions
+
+15.1.​ Securitize Europe may change, alter or modify these Terms or the Schedules hereto,
+       including but not limited to the fees and charges disclosed in the Fee Schedule, by
+       notice in writing, to the Client, giving at least thirty (30) business days’ notice of the
+       change, alteration or modification.
+
+15.2.​ Should the Client not agree to the amendments, the Client may give notice to
+       immediately terminate the agreement and close the Client Account within the thirty
+       (30) day notice period, as detailed in Clause 11.
+
+16.​Customer Service
+
+16.1.​ Any complaint or claim will be dealt with by our Customer Service Department, which
+       may be contacted at support-eu@securitize.io.
+
+16.2.​ Securitize Europe has implemented:
+
+       16.2.1.​ A durable record-keeping mechanism, ensuring that the formulation,
+                submission, and content of any inquiries, complaints, claims, or incidents are
+                duly recorded and preserved on a durable medium, providing the Client with
+                reliable evidence of such communications.
+
+       16.2.2.​ An accessible tracking system – enabling the Client to monitor the status of
+                any ongoing procedure that was not resolved through telephone or electronic
+                means during the initial interaction. This system is designed to be intelligible,
+                feasible, simple, free of charge, and easily accessible, taking into account
+                the specific characteristics and needs of the Client across all formats.
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                            11
+                                                                         EU Terms and Conditions
+                                                                                           April 2026
+
+
+
+16.3.​ Further information can be found in our Customer Service Regulation, published on
+         our website at securitize.io/disclosure-library.
+
+16.4.​ Provided that the Customer Service Department cannot settle the Client’s complaint,
+         the Client can refer to the CNMV Claims Service at​
+         https://www.cnmv.es/portal/inversor/reclamaciones?lang=en.
+
+17.​Investor Compensation Scheme
+
+17.1.​   Securitize Europe is a member of the Spanish Financial Services Compensation
+         Scheme (“FOGAIN”). FOGAIN provides compensation to investors with member
+         entities in certain cases of insolvency of the entity offering investment services, for the
+         money and securities deposited with or entrusted to the entity.
+
+17.2.​ FOGAIN guarantees Retail Clients of Securitize Europe the recovery of cash and
+         Financial Instruments delivered to Securitize Europe and which it holds, administers,
+         or manages on behalf of the Retail Client, up to a maximum of EUR 100,000 per
+         Retail Client, when Securitize Europe cannot return them due to any of the following
+         circumstances:
+
+         17.2.1.​ Insolvency proceedings, such as “Concurso de acreedores”.
+
+         17.2.2.​ Administrative declaration by the CNMV stating that Securities Europe is
+                    unable to fulfil its obligations to Clients due to financial circumstances.
+
+17.3.​ FOGAIN does not cover losses in the value of investments resulting from market
+         performance or due to the insolvency of the issuer.
+
+18.​Data Protection
+
+18.1.​ Securitize Europe shall process personal data in accordance with GDPR. Personal
+         data will be collected, used, and stored for the purposes of performing the services
+         under this agreement, fulfilling legal and regulatory obligations, and maintaining client
+         relationship management.
+
+18.2.​ Securitize Europe acts as data controller for the personal data provided by the Client
+         or obtained through interactions, third parties, or public sources. The Client warrants
+         that any personal data shared with the Securitize Europe is lawfully obtained and that
+         any necessary consents have been secured.
+
+18.3.​ Processing of personal data will be based on:
+
+         18.3.1.​    Performance of contractual obligations.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                               12
+                                                                      EU Terms and Conditions
+                                                                                      April 2026
+
+
+
+       18.3.2.​   Compliance with legal and regulatory requirements.
+
+       18.3.3.​   Legitimate business interests, except where overridden by the Client’s
+                  rights.
+
+       18.3.4.​   Consent, where required for specific categories of data.
+
+18.4.​ Personal data may be disclosed to:
+
+       18.4.1.​   Public authorities, regulators, courts, or law enforcement agencies where
+                  required by law.
+
+       18.4.2.​   Group companies, affiliates, and service providers assisting in service
+                  delivery.
+
+       18.4.3.​   Third parties involved in payment processing or custodial arrangements.​
+                  Where transfers occur outside the EEA, appropriate safeguards will be
+                  implemented.
+
+18.5.​ Personal data will be retained for the period required by applicable law or as
+       necessary to fulfill contractual and regulatory obligations.
+
+18.6.​ The Client may exercise the following rights:
+
+       18.6.1.​   Access, rectification, and erasure of personal data.
+
+       18.6.2.​   Restriction or objection to processing.
+
+       18.6.3.​   Data portability.
+
+       18.6.4.​   Withdrawal of consent, where applicable.
+
+       18.6.5.​   Requests may be submitted to dataprotection@securitize.io
+
+18.7.​ The   Client    may    contact   Securitize   Europe’s    Data    Protection   Officer   at
+       dataprotection@securitize.io.
+
+       The Client also has the right to lodge a complaint with the Spanish Data Protection
+       Agency (AEPD) via https://www.aepd.es.
+
+18.8.​ By accepting these Terms and Conditions, the Client expressly consents to the
+       processing of personal data, including special categories of data where necessary for
+       service provision or compliance with legal obligations.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                             13
+                                                                     EU Terms and Conditions
+                                                                                       April 2026
+
+
+
+
+19.​Inducements
+
+19.1.​ Securitize Europe may provide or receive fees, commissions or non-monetary
+       benefits, as defined in MiFID II, in connection with the provision of the RTO Service to
+       the Client as long as they are designed to enhance the quality of the service to the
+       Client and do not impair Securitize Europe’s ability to act in the Client’s best interests.
+
+19.2.​ Securitize Europe may make payments to third-parties which enable or are necessary
+       for the provision of the RTO Service to the Client including, without limitation, in
+       respect of brokerage costs, taxes, settlement and exchange fees. Third-party costs, in
+       particular brokers’ commissions, are normally charged to the Client. Such costs shall
+       not be considered as inducements as defined in MiFID II and will be disclosed to the
+       Client in accordance with MiFID II and the LMVSI.
+
+19.3.​ Unless otherwise notified to the Client in writing, Securitize Europe will not charge to
+       the Client any research costs in respect of any research provided by third-parties but
+       will pay for any such research out of Securitize Europe’s own funds, and such
+       payments shall not be treated as inducements under these Terms and Conditions.
+
+20.​Governing Law and Jurisdiction
+
+20.1.​ These Terms and Conditions are subject to Spanish law and the Parties hereby
+       submit to the exclusive jurisdiction of the Spanish Courts in respect of it.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                            14
+

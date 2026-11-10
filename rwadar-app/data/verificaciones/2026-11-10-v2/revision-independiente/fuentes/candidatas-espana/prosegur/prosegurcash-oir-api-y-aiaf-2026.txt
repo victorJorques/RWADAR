@@ -1,0 +1,28 @@
+API de la lista OIR: https://www.prosegurcash.com/.rest/dam/endpoint/Prosegur/CORP/Cash/pdf/accionistas-e-inversores/otra-informacion-relevante?lang=all
+09:41:33 UTC · HTTP 200 · 325.530 bytes · sha256 e1bb810f4eaa4a32833a… (igual que el investigador)
+Últimos de 2026: 16/02 reducción de capital · 25/02 convocatoria JGO · 19/03 información convocatoria · 31/03 Centauro 2 · 31/03 tercera novación acuerdo marco · 29/04 acuerdos JGO · 16/06 «OIR-Programa-de-Pagar-s-AIAF--ESP--2026.pdf»
+
+== OIR del 16/06/2026 (Programa de Pagarés AIAF 2026), extracto
+                                                           Madrid, 16 de junio de 2026
+PROSEGUR CASH, S.A. (la “Sociedad”), de conformidad con lo previsto en el artículo
+227 de la Ley 6/2023, de 17 de marzo, de los Mercados de Valores y de los Servicios
+de Inversión y normativa de desarrollo, comunica y hace pública la siguiente:
+             COMUNICACIÓN DE OTRA INFORMACIÓN RELEVANTE
+La Sociedad anuncia que en el día de hoy ha registrado en AIAF, Mercado de Renta
+Fija, S.A. ("AIAF") un programa de pagarés denominado "Programa de Pagarés AIAF
+PROSEGUR CASH 2026" por un importe máximo en cada momento de hasta
+cuatrocientos millones de euros (400.000.000 €) (el “Programa”), una vez vencido el
+“Programa de Pagarés AIAF PROSEGUR CASH 2025” (cuyo registro fue notificado
+como Comunicación de Otra Información Relevante el 16 de junio de 2025 y número de
+registro 35.305).
+Los pagarés tendrán un importe nominal unitario de cien mil euros (100.000 €) y tendrán
+vencimientos mínimos de tres (3) días hábiles y máximos de trescientos sesenta y cuatro
+(364) días naturales y podrán ofrecerse exclusivamente a clientes profesionales,
+contrapartes elegibles e inversores cualificados de acuerdo con lo previsto en los
+artículos 194 y 196 de la Ley de los Mercados de Valores y de los Servicios de Inversión
+y en el artículo 2.e) del Reglamento (UE) 2017/1129 del Parlamento Europeo y del
+Consejo, de 14 de junio de 2017, sobre el folleto que debe publicarse en caso de oferta
+pública o admisión a cotización de valores en un mercado regulado y por el que se
+deroga la Directiva 2003/71/CE, respectivamente.
+[firmante recortado]
+sha256 del PDF: 2f45aa52df5b9a7c4c31291ff431c8953eef49a361918f8a93c53f0ad7ee27b3

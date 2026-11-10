@@ -1,0 +1,104 @@
+URL: https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds
+URLFinal: https://int.media.amundi.com/article/amundi-unveils-tokenised-access-one-its-flagship-index-funds
+ConsultadoUtc: 2026-11-10T09:07:40Z
+Metodo: Playwright (Chromium) innerText
+
+Skip to main content
+ABOUT AMUNDI
+RESEARCH CENTER
+JOURNALIST
+COUNTRIES❯
+Main menu - Classic
+Press releases
+Contacts
+Products & Solutions
+Amundi unveils tokenised access to one of its flagship index funds
+11.05.26
+Amundi unveils tokenised access to one of its flagship index funds
+
+Amundi, European leading asset manager and ETF provider1, announces the launch of a tokenised share class of one of its flagship European equity index fund, Amundi Core STOXX Europe 600, a core European equity strategy widely used as a building block for portfolio allocation.
+
+With this launch, Amundi extends tokenisation beyond cash management solutions into index investing, marking a new milestone in its digital asset strategy. By bringing a flagship broad-market equity exposure into a tokenised format, Amundi takes a further step towards connecting traditional investment solutions with emerging digital market infrastructure.
+
+The new share class has been issued on the public Ethereum blockchain. It remains fully integrated into the fund’s existing operating model, and the fund continues to be available also through traditional channels. Developed in collaboration with CACEIS, the solution leverages CACEIS’s technology and infrastructure for the tokenisation of fund units.
+
+This initiative reflects Amundi’s conviction that tokenisation can progressively support a broader range of mainstream investment uses across asset classes. It follows the launch over the past few months of Amundi’s first tokenised share class of a money market fund, subscription via stablecoins as well as a series of partnerships with digital players, large corporates and financial institutions to test concrete applications of distributed ledger technology. 
+
+This phased approach reflects Amundi’s commitment to innovation within a robust regulatory, operational and risk management framework. It also supports Amundi’s ambition to progressively develop a range of tokenised funds to respond to the evolving needs of institutional clients and digital platforms, leveraging its potential to deliver greater operational efficiency through the automation of certain processes, improved accessibility, fast settlement and transparency.
+
+As market infrastructure and regulatory frameworks continue to develop, tokenised fund shares will create new opportunities for digital distribution and applications across asset classes. By extending tokenisation to index funds, Amundi contributes to lay the foundations to bridge traditional finance and digital finance. 
+
+ 
+
+  Source: IPE “Top 500 Asset Managers” published in June 2026, based on assets under management as at 31/12/2025.
+
+To secure its communication, Amundi certifies its contents on Wiztrust.
+
+You can check the authenticity on the website www.wiztrust.com
+
+Download documents
+11.05.26
+11.05.2026 - PR- Amundi unveils tokenised access to one of its flagship index funds
+122 KB
+PDF
+Download
+Share
+LinkedIn
+About Amundi
+
+Amundi, the leading European asset manager, ranking among the top 10 global players1, offers over 200 million investors a complete range of savings and investment solutions in active and passive management, in listed and private assets. Developed for a range of distributors (banks, wealth managers, financial advisors…) as well as for institutional investors and corporates, this offering is enhanced by services and technology tools covering the entire savings value chain. A subsidiary of the Crédit Agricole group and listed on the stock exchange, Amundi currently manages close to €2.6 trillion of assets2.
+
+Its six international investment hubs3, its financial and extra-financial research capabilities and its long-standing commitment to responsible investment make Amundi a leading player in the international asset management landscape.
+
+Thanks to its strong local presence, particularly in Europe and Asia, Amundi offers its clients the expertise and advice of 5,400 professionals across 34 countries.
+
+Amundi, a trusted partner, working every day in the interest of its clients and society
+
+www.amundi.com
+
+Footnotes
+
+Source: IPE “Top 500 Asset Managers” published in June 2026, based on assets under management as at 31/12/2025
+Amundi data as at 30/09/2026
+Paris, London, Dublin, Milan, Tokyo and San Antonio (via our strategic partnership with Victory Capital)
+Latest publications
+10.23.26
+Products & Solutions
+Amundi expands its active ETF range with three new active equity ETFs
+Read more
+10.20.26
+Products & Solutions
+Amundi completes first closing of its fifth-generation private debt fund
+Read more
+10.13.26
+Products & Solutions
+Amundi continues to reinforce its thematic ETF offering with three new solutions
+Read more
+Pagination
+Previous page
+Next page
+Menu Footer Top
+Press contacts
+Press releases
+YouTube
+LinkedIn
+
+© 2026 Amundi
+
+Menu Footer Bottom
+Contact us
+Legal documentation
+Mentions légales
+Human Resources
+
+This site uses cookies that allow us to offer you optimal navigation, to measure the site's audience and to share some of our content on social networks.
+
+ More info
+Necessary
+Necessary cookies help make a website usable by enabling basic functions like page navigation and access to secure areas of the website. The website cannot function properly without these cookies.
+Preference
+Preference cookies enable a website to remember information that changes the way the website behaves or looks, like your preferred language or the region that you are in.
+Statistic
+Statistic cookies help website owners to understand how visitors interact with websites by collecting and reporting information anonymously.
+Allow all cookies
+Allow selection

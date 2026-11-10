@@ -1,0 +1,31 @@
+URLs: https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es y &page=1..3 (page=3 sin filas)
+Consulta UTC: 2026-11-10T09:24:29Z-09:24:53Z
+Fecha de inscripción en la CNMV | emisor | importe; fecha en el Registro Mercantil
+
+--- cnmv-erir-ursus3.html
+23/10/2026 | HAUSERA PROPERTY MANAGER SPV 7, SA | 7.991.000 euros; RM 6 de agosto de 2026
+23/10/2026 | HAUSERA PROPERTY MANAGER SPV 8, S.A. | 7.769.000 euros; RM 9 de septiembre de 2026
+31/07/2026 | HAUSERA PROPERTY MANAGER SPV 5, S.A. | 6.776.300 euros; RM 4 de junio de 2026
+24/07/2026 | GESTION DE INVERSIONES Y PROYECTOS INMOBILIARIOS 2025, S.A. | 1.347.000 euros; RM 18 de mayo de 2026
+24/07/2026 | GESTION DE INVERSIONES Y PROYECTOS INMOBILIARIOS 2025, S.A. | 1.347.000 euros; RM 18 de mayo de 2026
+24/07/2026 | HAUSERA PROPERTY MANAGER SPV 6 SA | 7.934.000 euros; RM 24 de junio de 2026
+19/06/2026 | 7 ISLAS TOK, S.A. | Inscribir en el Registro Oficial de la Comisión Nacional del Mercado de Valores previsto en el artículo 2.b) del Real Decreto 815/2023, de 8 de noviembre, por e
+19/06/2026 | HAUSERA PROPERTY MANAGER SPV 2 SA | 6.788.000 euros; RM 18 de marzo de 2026
+19/06/2026 | HAUSERA PROPERTY MANAGER SPV 3 SA | 6.344.000 euros; RM 17 de abril de 2026
+19/06/2026 | HAUSERA PROPERTY MANAGER SPV 4, S.A. | 5.817.600 euros; RM 29 de abril de 2026
+--- cnmv-erir-ursus3-p1.html
+14/05/2026 | HAUSERA PROPERTY MANAGER SPV, S.A. | 5.065.500 euros; RM 18 de febrero de 2026
+08/05/2026 | TOKENIX GLOBAL, S.L. | Inscribir en el Registro Oficial de la Comisión Nacional del Mercado de Valores previsto en el artículo 2.b) del Real Decreto 815/2023, de 8 de noviembre, por e
+17/04/2026 | OTESA SPV CAL, S.L.U | 1.000.000 euros; RM 17 de febrero de 2026
+17/04/2026 | HISPANIA DEFENSE SOLUTIONS, S.A. | Inscribir en el Registro Oficial de la Comisión Nacional del Mercado de Valores previsto en el artículo 2.b) del Real Decreto 815/2023, de 8 de noviembre, por e
+20/03/2026 | RONA HABITAT, S.A. | 209.900 euros; RM 29 de diciembre de 2025
+13/02/2026 | ARCA HABITATUM CAPITAL S.A. | Inscribir en el Registro Oficial de la Comisión Nacional del Mercado de Valores previsto en el artículo 2.b) del Real Decreto 815/2023, de 8 de noviembre, por e
+19/12/2025 | REENTAL TOURIST HOMES, S.A.U. | Inscribir en el Registro Oficial de la Comisión Nacional del Mercado de Valores previsto en el artículo 2.b) del Real Decreto 815/2023, de 8 de noviembre, por e
+12/12/2025 | PROPTECH SPV SP S.A. | Inscribir en el Registro Oficial de la Comisión Nacional del Mercado de Valores previsto en el artículo 2.b) del Real Decreto 815/2023, de 8 de noviembre, por e
+12/12/2025 | PROPTECH SPV2 BUSINESS S.A. | Inscribir en el Registro Oficial de la Comisión Nacional del Mercado de Valores previsto en el artículo 2.b) del Real Decreto 815/2023, de 8 de noviembre, por e
+12/12/2025 | PROPTECH SPV TRES, S.A. | Inscribir en el Registro Oficial de la Comisión Nacional del Mercado de Valores previsto en el artículo 2.b) del Real Decreto 815/2023, de 8 de noviembre, por e
+--- cnmv-erir-ursus3-p2.html
+31/10/2025 | VALORIX DIGITAL, S.A. | Inscribir en el Registro Oficial de la Comisión Nacional del Mercado de Valores previsto en el artículo 2.b) del Real Decreto 815/2023, de 8 de noviembre, por e
+11/07/2025 | BESELF BRANDS, S.L. | Emisión de acciones por importe de 7.962.816€ y transformación en S.A. inscrita en el Registro Mercantil el 8/5/2025:
+07/02/2025 | DIANELUM, S.A. | Emisión de obligaciones no convertibles por importe de 5.000.000€, e inscrita en el Registro Mercantil el 27/12/2024:
+--- cnmv-erir-ursus3-p3.html

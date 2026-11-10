@@ -1,0 +1,14 @@
+Buscador de registros oficiales de la CNMV por entidad
+https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, con Playwright), 10/11/2026
+
+09:39:12 UTC  «Bit2Me» (control): «Han sido encontrados: 2 resultados» · BIT2ME SECURITY TOKENS EXCHANGE STX, A.V., S.A. · BIT2ME STOCKS, S.L.U.
+09:39:18 UTC  «Reental»: «No se han encontrado resultados»
+09:41:01 UTC  «Rental Token»: «No se han encontrado resultados» (el primer intento, 09:39:54, no devolvió texto de resultado)
+09:40:29 UTC  «Tokenix»: «No se han encontrado resultados»
+09:40:35 UTC  «Toketuk»: «No se han encontrado resultados»
+09:40:50 UTC  «Minos»: «Han sido encontrados: 6 resultados» · MINOS SECURITIES, A.V.,S.A. · (el resto son SICAV y fondos «Caminos»)
+09:41:18 UTC  «Prosegur»: «Han sido encontrados: 3 resultados» · PROSEGUR, COMPAÑIA DE SEGURIDAD, S.A. · PROSEGUR CASH, S.A. · PROSEGUR CUSTODIA DE ACTIVOS DIGITALES, S.L.
+              («Prosegur Cash» a secas no devolvió texto de resultado en dos intentos, 09:40:42 y 09:41:07)
+
+Listado de EAF nacionales: https://www.cnmv.es/portal/consultas/listadoentidad.aspx?id=1&tipoent=13&lang=es (09:46:10 UTC)
+  «Número y fecha de registro oficial: 21 - 12/01/2024» · titular: persona física [nombre y dirección recortados]

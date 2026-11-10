@@ -60,6 +60,23 @@ del mismo registro o con WebFetch y regístralo en `cambios-radar.json`
 mismo, cambia la fuente ahí y su comprobación en
 `rwadar-app/data/comprobaciones-fuentes.json` (edición mínima, sin reformatear).
 
+**Noticias del sector (desde el 10/11/2026, petición de Víctor).** En cada
+ciclo se renuevan las noticias de Inicio: flujo con dos analistas (regulación
+España/UE; mercado, productos y riesgos), un redactor jefe y un verificador
+independiente (modelo: `rwadar-app/data/verificaciones/2026-11-10-v2/noticias/`,
+con `EDICION.md` y `VERIFICACION.md`). «Hoy» = 2–3 del día o del anterior (si
+no hay ninguna con fuente, ninguna); «Lo más importante» = 4–5 de los últimos
+30 días. Titulares propios con gancho y sin engañar (≤ 70 caracteres, lo que
+cambia para el lector primero, con cifra o consecuencia; nada de promesas ni
+exageraciones), comprobados contra el resumen y la fuente. El JSON verificado
+se copia a `rwadar-site/datos/noticias.json` (lo valida `rwadar-publicar.js`)
+y sale con «Publicar web»; la app lo lee de la web. Sin nombres de personas;
+PDF y HTML de las fuentes, fuera de Git.
+
+**La tokenización en el mundo** (Inicio) no necesita nada del ciclo: el flujo
+«Tokenización diaria» guarda una foto de CoinGecko cada día en la rama
+`datos-tokenizacion` y «Publicar web» la incluye.
+
 ## 2 · Decidir y montar (60–90 min)
 
 1. Lee los resultados (diario `journal.jsonl` de cada flujo) y escribe

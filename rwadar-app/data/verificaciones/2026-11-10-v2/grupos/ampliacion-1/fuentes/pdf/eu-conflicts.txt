@@ -1,0 +1,458 @@
+CONFLICT OF INTEREST
+      POLICY
+
+
+
+
+       March 2024
+                               TABLE OF CONTENTS
+
+
+SECTION 1: OBJECTIVES, OWNERSHIP AND GOVERNANCE​                                   3
+ 1.1​OBJETIVES OF THE POLICY​                                                       3
+ 1.2​SCOPE AND OWNERSHIP​                                                           3
+   1.2.1​Scope​                                                                     3
+   1.2.2​Ownership​                                                                 3
+ 1.3​   GOVERNANCE​                                                                 4
+   1.3.1​ Responsibility and tasks of the Supervisory Board in connection with this
+   policy​
+   4
+   1.3.2​ Responsibility and tasks of the Managing Board in connection with this
+   policy​
+   4
+   1.3.3​Reporting on this policy​                                                  4
+SECTION 2: DETAILED REQUIREMENTS​                                                  4
+ 2.1​DEFINITIONS AND ACTIONS CONSTITUTING CONFLICTS OF INTERESTS​                   4
+   2.1.1​Definitions and Actions​                                                   4
+   2.1.2​General Principles​                                                        6
+ 2.2​EMPLOYEE CONFLICTS OF INTEREST​                                                6
+   2.2.1​Monitoring of Outside Activity​                                            6
+   2.2.2​Employees reporting obligations for selection process​                     8
+ 2.3​INSTITUTIONAL CONFLICTS OF INTEREST​                                           8
+SECTION 3: ROLES AND RESPONSIBILITIES​                                          10
+ 3.1​EMPLOYEES​                                                                 10
+ 3.2​MANAGERS​                                                                  10
+ 3.3​COMPLIANCE STAFF MEMBERS​                                                  11
+ 3.4​COMPLICANCE MANAGEMENT​                                                    11
+SECTION 4: DISCLOSURE AND ESCALATION​                                              11
+SECTION 5: RESOLUTION OF CONFLICTS​                                             12
+SECTION 6: RETENTION OF RECORD OF CONFLICTS OF INTERST​                         12
+SECTION 1: OBJECTIVES, OWNERSHIP AND GOVERNANCE
+
+1.1​ OBJECTIVES OF THE POLICY
+
+The company is dedicated to upholding the highest standards of ethical
+behaviour, which includes addressing all conflicts of interest responsibly.
+Securitize manages regulated markets and commercial businesses that may
+offer concerns of conflicts of interest. Conflicts of interest involve substantial
+regulatory difficulties and may result in serious reputational harm if they are
+not avoided or controlled.
+
+Consequently, the principal objective of the Conflicts of Interest Policy is to
+prevent situations of conflicts, ensure that Employees understand what a
+conflict of interest is, and therefore, offer counsel to Employees on how to
+manage such conflicts.
+
+1.2​ SCOPE AND OWNERSHIP
+
+1.2.1​ Scope
+
+This policy applies to Securitize Europe Brokerage and Markets, S.V. S.A.
+(“Securitize Europe”) and its majority-owned subsidiaries (collectively referred
+to as the “Company”) and to all Securitize Europe employees including
+consultants (among which interns and temporary staff) and agents of
+Securitize Europe (collectively “You” or “Employees”).
+
+The scope of this Policy is to:
+
+   (i)​     Guarantee that conflict of interests is understood by Employees, in
+            its many forms;
+   (ii)​    To ensure prevention and avoidance of conflicts through the
+            clarification of roles and responsibilities of Employees;
+   (iii)​   Offer counsel to Employees on how to manage situations of
+            interest of conflicts.
+
+1.2.2​ Ownership
+
+The owner of this policy is the Securitize Europe Brokerage and Markets, S.V.
+S.A Managing Board. Compliance oversees the Policy and accompanying
+paperwork up to date. The Policy should be evaluated and modified on an
+annual basis in accordance with Securitize Europe group criteria.
+1.3​ GOVERNANCE
+
+1.3.1​   Responsibility and tasks of the Supervisory Board in connection with
+this policy
+
+The Company’s Audit Committee and/or the Chairman of the Supervisory
+Board can evaluate and solve conflict specific situations escalated by
+Compliance management.
+
+1.3.2​ Responsibility and tasks of the Managing Board in connection with
+this policy
+
+The framework for managing conflicts of interest is overseen by the
+Managing Board of Securitize Europe. This comprises organizational controls
+and procedures for identifying, preventing, and managing conflicts of interest,
+setting risk appetite boundaries regarding outside activities (see section 2.2.1
+below), and approving policy revisions. Compliance oversees the day-to-day
+implementation, monitoring, and maintenance.
+
+1.3.3​ Reporting on this policy
+
+Employees must report prospective, suspected, or real conflicts of interest to
+the Compliance department for appropriate measures to be taken. If a
+disclosed conflict cannot be resolved at the Compliance management level,
+escalation to the Managing Board of Securitize Europe or, as appropriate,
+under certain specific circumstances defined by Compliance, to the
+Company's Audit Committee and/or Chairman of the Supervisory Board is
+mandatory.
+
+SECTION 2: DETAILED REQUIREMENTS
+
+2.1​     DEFINITIONS AND ACTIONS CONSTITUTING CONFLICTS OF
+INTERESTS
+
+2.1.1​ Definitions and Actions
+
+A “conflict of interest” is defined as a situation in which a person or business
+or firm has an incentive to serve one interest at the expense of another
+interest or obligation. It is not essential for such impairment to occur to
+consider the existence of a conflict of interest; rather, it is sufficient that such
+impairment may occur in the future. It is also insufficient to receive a benefit
+if there is no potential disadvantage.
+
+The Group will identify certain situations as conflicts of interest, including but
+not limited to cases where any of its member companies, as well as their
+directors, executives, employees, and affiliated representatives, or any
+individual associated
+with them through control, find themselves in any of the scenarios outlined
+below, (and which will be furthered detailed):
+
+   (i)​ At the expense of the client, they may acquire a financial benefit or
+           avoid a financial loss.
+   (ii)​ Has a vested interest in the outcome of a service given to the
+           customer or a transaction carried out on the customer's behalf that
+           differs from the customer's own interest in the outcome; or
+   (iii)​Has financial or other incentives to prefer the interests of another
+           client or group of clients over the client's interests;
+   (iv)​Engages in the same professional activity as that of the client;
+   (v)​ Receives or is about to receive an inducement in the form of money,
+           goods, or services from a person other than the client in conjunction
+           with a service rendered to the client, other than the customary
+           commission or distribution for that service.
+
+Such scenarios may include:
+
+   (i)​       “Employee Conflict” an employee serving his own interests over
+              that of the Company
+   (ii)​      “Institutional Conflict” an employee favouring one Business Partner
+              over others, or serving two Business Partners that have conflicting
+              interests or,
+
+   “Outside Activity” refers to any tasks that are carried out during official
+   working hours, whether or not they are paid, such as serving on boards,
+   holding board positions, engaging in external jobs or tasks, including
+   standard teaching obligations or working for an organization, as well as
+   any activity during non-office hours that could potentially pose a conflict
+   of interest with the Company.
+
+   “Office hours” are, in the context of this policy, refer to the hours stated in
+   the employee's employment contract or communicated to them by Human
+   Resources, except during notified holiday periods. If the specified office
+   hours are not mentioned in the contract or a Human Resources
+   notification, and only for enforcing the conflict-of-interest policy, office
+   hours will be considered from 8 am to 8 pm, Monday to Friday, except for
+   any notified holidays, which must be communicated by the employee to
+   Human Resources.
+
+   “Third-Party” refers to any third-party and/or external party to Securitize
+   Europe, including for example:
+(i)​   Any current or prospective client, customer, vendor, provider, or
+       supplier of Securitize, such terms to be interpreted broadly to
+       include
+any person or entity that provides a service to the Company or from which the
+Company obtains revenues.
+    (ii)​    Any issuers, listed companies, market members, external market
+             participants,
+    (iii)​   Any Business Partner (as defined below),
+    (iv)​    Any Public Official (as defined notably in the Anti-bribery Policy),
+    (v)​     Any employee, representative, agent, intermediaries, or other
+             individual associated directly or indirectly with the above,
+    (vi)​    ​Any Securitize Europe Employees’ family members and relatives,
+             irrespective such Third-Party is in a business relationship with the
+             Company or not.
+
+    “Business Partner” constitutes any Third-party falling into category 1. to 5.
+    above.
+
+    2.1.2​ General Principles
+
+    Anyone subject to one of the general situations portrayed in 2.1.1 or the
+    specific scenarios which apply to each category of individuals, must act in
+    accordance with the following principles:
+
+    (i)​     Independence: They must behave with independence of judgment,
+             loyalty to the Group, and disregard for their own or outside interests
+    (ii)​    Abstention: They must refrain from interfering with or influencing
+             decision-making that may affect individuals or entities with whom
+             they have a conflict, as well as from accessing confidential
+             information that may have an impact on such conflict.
+    (iii)​   Information: They must notify the Supervisory Body and the person
+             in charge of the relevant area of any circumstances impacting them
+             that may give rise to a conflict of interest.
+
+    2.2​EMPLOYEE CONFLICTS OF INTEREST
+
+    As mentioned, they are intrinsic conflicts of interests which are
+    represented by certain situations which are considered inconsistent with
+    the obligations of Employees.
+
+    2.2.1​ Monitoring of Outside Activity
+
+    Employees are expected to dedicate all their professional time, attention,
+    and energies to the Company's business during normal office hours.
+
+    Rules are as follows:
+(i)​       Any Outside Activity performed during office hours, even if unpaid,
+           is prohibited. However, any deviation from this provision must be
+           explicitly documented by both the Compliance and Human
+           Resources departments and approved by the Managing Board.
+           Board memberships, external activities on behalf of Securitize
+           Europe or its subsidiaries shall be reported before acceptance with
+           no delay to both Compliance and Human Resources departments
+           for assessment.
+(ii)​      During Office hours activities performed for the development of
+           ESG strategy will not qualify as outside activity as long as time
+           dedicated to this program does not exceed the cap defined by
+           Human Resources Services.
+
+In those situations where non-employment activities do not interfere with
+the performance of their obligation to the Company and do not raise an
+actual or potential conflicts of interest with the Company, Employees are
+free to engage in activities during non-office hours. Those activities which
+would constitute a conflict of interest situation should be communicated
+to the Compliance Department to seek approval. Any doubt regarding the
+potential constitution of a conflict of interest situation can be solved by
+contacting Compliance.
+
+Examples of reportable positions:
+
+-​ The representation of Securitize Europe within Regulators/banking
+        authorities’ Committee or working groups, committees, or board seats
+        of various entities such as:
+           o​ Clearing houses
+           o​ Depositaries
+           o​ Indexes producers
+           o​ FESE
+           o​ WFE
+           o​ Other international, national, local Bodies linked with Securitize
+              activities (cash, derivatives, commodities, listing…);
+-​ Teaching sessions in educational institutions when they are performed
+        during office hours;
+-​ Proposition as an individual, board member, leading position,
+        consulting mission or any committee/working group within:
+           o​ A listed or to be listed company
+           o​ A private equity house or similar investment activity
+           o​ A Market Member or an indirect market participant
+o​ A Securitize Europe Provider or a technology provider acting in
+   the field of Finances
+o​ A competitor or other exchanges, market, or platform operator
+      o​ Other regulators
+-​ A board membership in any company, non-governmental organisation,
+   charity, political organisation and governmental bodies or political
+   bodies
+-​ Intention to be elected as representative;
+-​ Any use of Company resources, including Company information,
+   facilities, equipment, personnel and supplies to perform an Outside
+   Activity
+
+2.2.2​Employees reporting obligations for selection process.
+
+When an Employee is involved during the selection of a vendor, a supplier,
+consultant or any other third party for business with the Company and
+knows or has reason to believe that either he, a family member or anyone
+with whom he has a financial or personal relationship may have a personal
+(financial) interest in the outcome of the selection decision, must comply
+with the notification requirements and must report to their manager and
+Compliance.
+
+2.3​INSTITUTIONAL CONFLICTS OF INTEREST
+
+Because of its nature of market operator, the Company is potentially
+subject to face conflict of interest with its Business Partners. Some
+examples of the possible conflicts between the Company and its Business
+Partners are provided to facilitate the identification by Employees:
+
+-​ Important Business Partners such as members of its market centres
+   and issuer admitted to listing/trading on its markets, may be the
+   shareholders that own the Company;
+-​ The Company is obligated in various countries in which it operates to
+   perform regulatory functions and take disciplinary measures against
+   its Business Partners, members or issuers in order to achieve its
+   objective to operate tis markets, regulated or not in a fair and orderly
+   manner. To achieve the same objective, the Company is also entitled to
+   take disciplinary measures against its Business Partners, members or
+   issuers;
+-​ The Company may engage into contractual relationships with
+   numerous business partners to provide similar products or services.
+-​ Single Company's business leader may be in charge of competing
+   businesses or other tasks.
+-​ There may be sharing of customer information, trade data, or other
+  knowledge between business units that should be kept separate;
+-​ The Company may be instructed to advise, develop, or otherwise
+  provide services to two different Business Partners that compete with
+  one another, as there may be multiple relationships with one Business
+  Partner.
+When evaluating the risks that an Institutional Conflict presents,
+Employees and manager should consider the severity of the risks, the
+nature of the relationship with the affected Business Partner and in case if
+the conflict may be inconsistent with the Company’s corporate strategy.
+
+There are organizational controls and procedures in place to identify,
+prevent and manage Institutional Conflicts of Interests such as:
+
+(i)​     Administrative and Organizational Structure: The Company's
+         various business units have been structured to minimize both
+         potential conflicts within reporting lines and the flow of information
+         among competing units. Senior management and the Managing
+         Board are responsible for reviewing the Company's organizational
+         structure on a regular basis, including when new business lines or
+         types of activities are developed, in order to maintain a corporate
+         governance structure that minimizes the potential for conflicts of
+         interest among business units.
+
+
+(ii)​    Information Barriers: In terms of business partner relationships, the
+         Company follows a stringent confidentiality strategy. Employees
+         whose roles include either business or regulatory/compliance
+         functions involving members, issuers, or other business partners
+         are responsible for keeping the information obtained during the
+         course of their duties confidential. Employees can meet this
+         requirement in a variety of ways, based on the functions done, the
+         communications needed among business areas to perform those
+         functions, and whether the information exists in hard or soft form.
+                i.​ These means include restrictions on the use and content
+                   of electronic communications; restrictions on access to
+                   documents     and   office   areas;   information   security
+                   measures designed to protect electronically stored
+                   information; restrictions on communication of customer
+                   information    among      specified    departments;     and
+                   contractual provisions requiring confidentiality.
+(iii)​   Disclosure to Business Partner or Regulator: If a conflict occurs in
+         which a resolution would be detrimental to a Business Partner, the
+         manager of the affected business unit is responsible for disclosing
+         the conflict and resolution. The disclosure should be timely, clear,
+         accurate, and comprehensive enough to allow the business partner
+         to act in its own best interests. In addition, the manager, in
+         collaboration with Compliance management and, if necessary, the
+Legal Department, should evaluate whether disclosure to the
+relevant regulator is necessary.
+(iv)​    Contractual provisions: As previously stated, certain kinds of
+         conflicts of interest between the Company and a Business Partner
+         are possible. Contracts with Business Partners for such activities
+         should state that if a specific conflict occurs, it will be handled in a
+         specific manner or at the Company's discretion. Depending on the
+         Business Partner, the head of the relevant business unit should
+         collaborate with the Legal and Procurement Departments or the
+         Vendor Management Office to ensure the inclusion of a suitable
+         provision.
+(v)​     Rulemaking disclosure that validates or resolves certain possible
+         conflicts: The Company runs regulated markets, and subject to the
+         authorization of the relevant authorities, the Company can
+         implement rules that provide trading or other opportunities to
+         members who access those markets. Members who meet certain
+         criteria, for example, receive financial rebates for liquidity that they
+         post in their allocated securities to execute against inbound orders,
+         whereas other members do not.
+
+SECTION 3: ROLES AND RESPONSIBILITIES
+
+3.1​ EMPLOYEES
+
+All Employees are responsible for:
+
+(i)​     Avoiding activities or relationships that may present an actual or
+         potential conflict of interest;
+(ii)​    Identifying and promptly disclosing a potential conflict of interest to
+         their manager and Compliance Department;
+(iii)​   Working cooperatively with their manager and Compliance to
+         achieve a resolution;
+(iv)​    Whenever there is a material change in relevant circumstances, a
+         new clearance for previously approved activities has to be sought.
+
+3.2​MANAGERS
+
+Managers are responsible for:
+
+(i)​     Making sure that appropriate and effective procedures are in place
+         to prevent, identify, address or mitigate conflicts of interest;
+(ii)​    Reviewing and take the appropriate measures with respect to a
+         reported conflict in consultation with Compliance.
+Informing and consulting with Compliance regarding potential conflicts of
+interest and their problem or concern, as well as requesting Compliance's
+input in determining a resolution.
+3.3​COMPLIANCE STAFF MEMBERS
+
+Compliance staff members are responsible for:
+
+(i)​     Offering counsel relating to conflicts of interest to Employees
+         including management;
+(ii)​    Facilitating the determination of the appropriate resolution to the
+         conflict or adequate measures that can be taken to mitigate the
+         effects of conflict of interest that require Compliance review;
+(iii)​   Elevating any conflicts that cannot be resolved at the level of
+         Compliance staff member to Compliance management;
+(iv)​    Maintaining in a log all reported conflicts of interest matters.
+
+3.4​COMPLICANCE MANAGEMENT
+
+Compliance Management is responsible for:
+
+(i)​     Establishing the adequate measures that should be taken to reduce
+         or resolve conflicts of interest that have been escalated to this level
+         for review;
+(ii)​    Monitoring the log of reported conflicts of interest on a quarterly
+         basis and evidencing that review;
+(iii)​   Escalating any reported conflicts that cannot be resolved at the
+         Compliance Management level to the Managing Board of Securitize
+         or, as appropriate, under certain specific circumstances determined
+         by Compliance, to the Company’s Audit Committee and/or the
+         Chairman of the Supervisory Board.
+
+Where not forbidden by local laws and regulations, the information for
+each conflict situation must include, at a minimum, the following:
+
+(i)​     a description of the disclosed conflict;
+(ii)​    the interrelated individuals and entities;
+(iii)​   important dates during which the conflict arises and exists;
+(iv)​    any related Company requirements; and
+(v)​     the decision taken, the actions done to mitigate or resolve the
+         conflict, and the identities of those involved in reaching the
+         decision.
+
+SECTION 4: DISCLOSURE AND ESCALATION
+
+Employees who are unsure whether they are in a conflict of interest
+situation should notify their manager and Compliance Department in
+order for the previously mentioned procedures to be followed. The
+preceding section is important for disclosure and escalation.
+SECTION 5: RESOLUTION OF CONFLICTS
+
+Resolutions​ may​ include​ some​ of​ the​ following,​ depending​ on​
+the circumstances faced:
+
+(i)​     approval of the underlying activity;
+(ii)​    prohibition of engagement in an activity or entering into a business
+         transaction;
+(iii)​   removal of the Employee from a position of decision-making
+         authority with respect to the conflict situation;
+(iv)​    potential actions by the Company;
+(v)​     suspension or termination of a vendor, consultant or other
+         third-party contract; and
+(vi)​    regulatory reporting.
+
+SECTION 6: RETENTION OF RECORD OF CONFLICTS OF INTEREST
+
+The log and any supporting documentation shall be retained for the periods
+required in each jurisdiction in which the Company operates.
+

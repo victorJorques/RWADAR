@@ -1,0 +1,160 @@
+URL: https://www.axiology.xyz/
+URLFinal: https://www.axiology.lt/
+ConsultadoUtc: 2026-11-10T09:17:39Z
+Metodo: Playwright (Chromium) innerText
+
+Skip to Main Content
+PRODUCTS
+SERVICES
+NEWS
+AXIOLOGY TSS
+GET STARTED
+Capital Markets
+Made Easy
+
+DLT-powered issuance, custody, trading
+and settlement for fixed-income instruments
+
+GET IN TOUCH
+EU-Licensed
+Financial Market Infrastructure
+Capital Market with Axiology
+Current Capital Market
+Capital markets. Reinvented
+
+Issuance, custody, trading and settlement — all under one roof. Giving you simpler, cheaper, and more open access to capital markets.
+
+BOOK A DEMO
+Capital markets solutions for:
+Banks and Brokers
+
+Gain new revenue streams with integrated trading and settlement system for tokenised securities. Made for licensed brokers and investment services providers.
+
+Shareholders
+
+Manage your equity smarter. Track ownership, automate corporate actions and stay compliant - all in one regulated solution.
+
+Crowdfunds
+
+Unlock minibonds and secondary market potential while streamlining custody and settlement. Top up your funding rounds by leveraging our regulated network to access broader capital across Europe.
+
+Partnerships
+
+Whether you need issuance, custody, trading, or settlement, you can access everything under one roof or choose the services that fit your exact needs.
+
+BOOK A DEMO
+Fully Licensed. Fully Compliant.
+
+Axiology’s infrastructure is fully compliant and provides tokenised bonds with the same regulatory certainty and capital treatment as traditional assets
+
+DLT Trading and Settlement System (TSS)
+
+Authorised under Regulation (EU) 2022/858.
+
+Financial Brokerage Firm Licence
+
+MIFID Investment firm authorised by the Bank of Lithuania.
+
+ISO 27001 Certification
+
+International information security standard and full DORA compliance.
+
+ESG Accreditation
+
+Sustainability recognised by TDH.
+
+Technology
+
+Axiology’s DLT TSS combines advanced blockchain technology with a focus on efficiency, compliance, and accessibility, transforming how tokenized assets are managed and traded. Permissioned infrastructure built on the XRP Ledger.
+
+Secure Access
+
+A private, permissioned infrastructure ensures only licensed entities can operate nodes, maintaining security and regulatory compliance.
+
+Instant Settlement & Custody
+
+Real-time settlement and secure custody of tokenised assets simplify asset management and eliminate settlement risks.
+
+Integrated Secondary Market
+
+A built-in decentralised exchange (DEX) provides liquidity and market access, allowing seamless trading of tokenized securities on a single platform.
+
+Latest news from Axiology
+Back to basics: tokenisation in financial markets
+Tokenised stocks of well-known companies are still out of reach for EU investors, but the reason is not technology or regulation. [nombre recortado], Axiology’s Chief Compliance Officer, explains the main tokenisation models, how DLT market infrastructure changes settlement and why on-chain central bank money shifts the picture.
+9 hours ago
+10 min read
+Axiology partners with VIALET to bring tokenised money market funds to client safeguarding
+VIALET, a Lithuanian electronic money institution, will use Axiology's infrastructure to diversify its client safeguarding with tokenised money market funds. A separate arrangement with an eligible liquidity provider gives it cash intraday, so funds stay available when payments need to settle.
+Oct 27
+2 min read
+Tokenisation’s biggest misconception is that institutions want decentralisation
+Institutional investors want what distributed ledgers deliver, such as T+0 settlement and programmability, without giving up custody, investor protection or supervised venues. Axiology CEO [nombre recortado] explains why tokenisation is advancing in a regulated Web2.5 middle ground.
+Oct 22
+4 min read
+1
+2
+3
+4
+5
+Get in touch
+
+Have a question, want a quote, or curious how Axiology could support your capital markets needs? You can email us directly or book a time that suits you for an online call — we’ll make it easy to connect and get the answers you need.
+
+BOOK A CALL
+
+Supervised under EU law by
+
+ABOUT US
+
+Team
+
+Careers
+
+News
+
+Licences and Certifications
+
+Press kit
+
+TECHNOLOGY
+
+Infrastructure
+
+XRP Ledger
+
+Interoperability
+
+Security
+
+Technology Compliance
+
+LEGAL
+
+Privacy & Cookie Policy
+
+Whistleblowing
+
+Regulatory Compliance
+
+Liabilities Insurance
+
+Complaints
+
+Imprint
+
+CONTACTS
+
+Aukštaičių g. 7,
+
+Vilnius, LT-11341
+
+Lithuania
+
++370 625 13 762
+
+info@axiology.xyz
+
+For shareholder registry: 
+
+akcijuapskaita@axiology.lt

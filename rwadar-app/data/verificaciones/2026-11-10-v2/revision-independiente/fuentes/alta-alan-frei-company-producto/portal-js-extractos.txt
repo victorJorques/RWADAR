@@ -1,0 +1,17 @@
+Extractos del código público del portal shares.alanfrei.com (SvelteKit, plantilla de Aktionariat).
+Descargados el 2026-11-10 entre 09:58:28Z y 09:58:29Z (archivos completos en crudo/). Además, a las 09:53–09:55Z se
+revisaron las 181 respuestas JS (con repeticiones) que cargan /invest, /trade y /, más 26 archivos que no se cargan sin sesión
+(las 13 rutas nodes/0–12 y 13 dependencias).
+
+== chunks/nEoMmxWB.js sha256 8161b7f2721d2fa9ca640d06df04f263eef55dc0bf68554bce76a37c687d1223 (listas de países por defecto)
+p=["CU","IR","KP","RU","BY","VE","MM","UA"],_=["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","IS","LI","NO"],g=["CH","GB",..._],m=["CH","DE","LI","AT"],I=["US","AS","GU","MP","PR","VI","UM","JP","CA","NZ","AU"],E=["US","RU","BY"],T=({country
+
+== chunks/MODrHaug.js sha256 49d3862a241d28e17cd21ffd4354570062d00ca9ec7594feefd246304d4bce1c (regla de elegibilidad por defecto: Ln=sancionados p, Nn=residencias admitidas g, Bn=nacionalidades m)
+import{f as Rn,S as Ln,E as Nn,N as Bn}from"./nEoMmxWB.js";v
+const rl=({country:e,nationality:t})=>e?Ln.includes(e)?{eligible:!1,reason:"SANCTIONED"}:Nn.includes(e)?{eligible:!0}:t?Bn.includes(t)?{eligible:!0}:{eligible:!1,reason:"RESIDENCE"}:{eligible:!1,reason:"NATIONALITY_UNKNOWN"}:{eligible:!0};function Gl(e,t){return t?(Rn(e)?.eligibility??rl)(t):{eligible:!0}}export{ql as A,Wl as I,
+xr=e=>`Due to regulatory restrictions, ${e?.company} shares are unfortunately not available in your country of residence at this time.`,Cr=e=>`Aus regulatorischen Gründen
+
+== chunks/Dfhn0ikI.js sha256 c5e2091cbac1228d5bc1616ebe3460523790c0cc638d69ac43a1dd6dae5a02fc (única llamada al contrato del emisor: precio de COMPRA)
+{h(this.#n,void 0),h(this.#f,void 0);try{const e=this.amount,t=await a(this.#e).brokerbotContract.getBuyPrice(this.amount),s=await this.#k(t
+En todo lo revisado, la única función del contrato del emisor que se llama es getBuyPrice (3 apariciones, mismo archivo repetido); getSellPrice solo aparece dentro de ABI; ninguna llamada de venta al emisor.
+

@@ -1,0 +1,10 @@
+URL: https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es
+Busqueda: Bitstamp
+ConsultadoUtc: 2026-11-10T09:04:24Z
+
+Listado de entidades advertidas
+
+Criterios de consulta: por tipo No autorizadas, de nombre Bitstamp.
+
+No hay datos disponibles.
+

@@ -1,0 +1,151 @@
+Trade
+Earn
+Operate
+Tokenize
+Learn
+Blog
+Sign in
+Get started
+
+CONTENTS
+
+What is Oceanpoint?
+What is a property token (BSPT)?
+What is BST?
+Where can I buy BST?
+What is sBST?
+What is POINT, and is it a stablecoin?
+How do I earn on Oceanpoint?
+Do I need KYC?
+Which blockchain does Oceanpoint run on?
+How does governance work?
+Who is behind Oceanpoint?
+How do I become an ambassador?
+
+FREQUENTLY ASKED QUESTIONS
+
+Oceanpoint FAQ
+
+Straight answers about the protocol, its tokens, and how to take part.
+
+What is Oceanpoint?
+
+Oceanpoint is the liquidity engine for tokenized real estate: owners sell a slice of a building as property tokens, and a buyer funded by the buildings' rent stands ready to buy. Property tokens trade on the Oceanpoint marketplace today; the liquidity engine, built around POINT, is next.
+
+Oceanpoint is a Luxembourg company built by the core team of Blocksquare, on tokenization infrastructure it licenses from Blocksquare.
+
+What is a property token (BSPT)?
+
+A BSPT (Blocksquare Property Token) is an ERC-20 token representing fractional ownership in a specific real property, issued through Blocksquare's tokenization infrastructure. Each property is divided into up to 100,000 tokens, and holding them makes you eligible for rental income distributions from that property.
+
+You can buy BSPTs on the Oceanpoint Marketplace or any partner marketplace. See Trade for a walkthrough.
+
+What is BST?
+
+BST (Blocksquare Token) is the governance and utility token of the Blocksquare ecosystem, an ERC-20 deployed on Ethereum in 2018 with a total supply of 100,000,000 BST. It rewards ecosystem participants and, when staked, grants governance power.
+
+Contract: 0x509A38b7a1cC0dcd83Aa9d06214663D9eC7c7F4a
+
+See BST for the full picture: what it is used for, live supply and staking figures, and where to buy it.
+
+Where can I buy BST?
+
+BST trades on centralized exchanges (Gate.io, BitMart, MEXC), decentralized venues (Uniswap, 1inch, Matcha) and brokers (Stormrake in AUD, Coinmetro in EUR). The BST page lists every venue with its trading pair and a direct link.
+
+Always check the token against the official contract before swapping — BST is an ERC-20 on Ethereum mainnet only.
+
+Contract: 0x509A38b7a1cC0dcd83Aa9d06214663D9eC7c7F4a
+
+What is sBST?
+
+sBST is what you receive when you stake BST in Oceanpoint's main governance pool. It represents your share of the pool, accrues protocol rewards, and carries voting power over Oceanpoint Improvement Proposals (OIPs). Return sBST to withdraw your underlying BST.
+
+There is a 48-hour lock after depositing; beyond gas there are no deposit or withdrawal fees. See Earn for every strategy, or BST for the staking flow in detail.
+
+What is POINT, and is it a stablecoin?
+
+POINT will be a free-floating crypto-asset on Ethereum, offered by Oceanpoint S.à r.l. (currently Blocksquare S.à r.l.). It is not a stablecoin. Its price will be set by the market. POINT will carry no right and no claim against anyone, including no right to be exchanged back, and it is not linked to any property.
+
+Oceanpoint plans to pay POINT when it acquires USDC, EURC or ETH for its own account. A crypto-asset white paper will be published before the offer starts, and POINT has not launched yet. Liquidity providers can register on the liquidity providers page.
+
+How do I earn on Oceanpoint?
+
+Three ways:
+
+Hold BSPTs to collect rental income distributions from the property.
+Stake BSPTs to convert that income stream into BST rewards.
+Stake BST to receive sBST, which accrues protocol rewards and voting power. Liquidity providers can also stake BST:ETH LP tokens.
+
+All yields are variable and set by protocol activity and governance. Oceanpoint does not promise fixed APYs. See Earn.
+
+Do I need KYC?
+
+Buying and holding BSPTs requires an account and KYC verification on a marketplace, and some countries are not supported. Staking BST and participating in DAO governance does not require KYC.
+
+Which blockchain does Oceanpoint run on?
+
+Oceanpoint's smart contracts are deployed on the Ethereum mainnet. BST, sBST, and BSPTs are all ERC-20 tokens.
+
+How does governance work?
+
+Stake BST to receive sBST, then vote on Oceanpoint Improvement Proposals (OIPs) on Snapshot. A six-member governance board (founders, advisors, and community representatives) executes decisions via multisig, with a roadmap toward fully on-chain governance.
+
+Who is behind Oceanpoint?
+
+Oceanpoint is a Luxembourg company (registered as Blocksquare S.à r.l., being renamed Oceanpoint S.à r.l.), led by CEO [nombre recortado] and built by the core team of Blocksquare, a real estate tokenization pioneer since 2018.
+
+Blocksquare d.o.o. (Ljubljana, Slovenia) is a separate, related company that licenses its tokenization infrastructure to Oceanpoint. More on the team and the relationship on the About page.
+
+How do I become an ambassador?
+
+Apply through the Advocate page. Ambassadors organize into Regional Hubs; each active hub earns a share of a quarterly BST pool (4,000 BST per participating member, up to 20,000 per hub), split by contribution points for events, referrals, KYC-verified onboarding and tokenized properties.
+
+Want the deeper technical picture?
+
+The whitepaper covers the token architecture, the POINT roadmap, and risk management in full.
+
+Read the whitepaper
+Still have a question?
+
+The community answers fast: ask in Discord, or browse the developer docs.
+
+Join Discord
+
+The liquidity engine for tokenized real estate. Tokenized properties, DeFi yields, and global accessibility, all on-chain.
+
+Tokenize your property
+PLATFORM
+Trade
+Earn
+For businesses
+Tokenize a property
+Raise a VC round
+Liquidity providers
+Protocol statistics
+BST token
+Get started
+Sign in to your account
+Marketplace
+DeFi app
+LEARN
+Learn hub
+Glossary
+Tokenized real estate vs REITs
+FAQ
+Whitepaper
+AI podcast
+Documentation
+Blog
+YouTube channel
+COMMUNITY
+Events
+Ambassador program
+Become an ambassador
+Run and funded by Blocksquare
+COMPANY
+About
+Terms of service
+Protocol disclaimer
+© 2026 Oceanpoint. All rights reserved.
+Powered by
+Blocksquare

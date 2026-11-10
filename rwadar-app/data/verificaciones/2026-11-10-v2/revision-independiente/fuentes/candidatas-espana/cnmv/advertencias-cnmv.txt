@@ -1,0 +1,18 @@
+Buscador de advertencias de la CNMV, tipo «No autorizadas» (https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=...), 10/11/2026 09:37:37–09:37:58 UTC
+
+Gemini: 04/09/2023 / GEMINI LTD FX / HTTPS://GEMINILTDFX.COM/ / 29/03/2021 / GEMINI OPTION LTD / HTTPS://GEMINIOPTION.COM/  (sha256 dcff3dc1c7706a23…)
+Reental: No hay datos disponibles.  (sha256 4d3a4ecfa9b9b16a…)
+Rental Token: No hay datos disponibles.  (sha256 11689992d806bda6…)
+Reental America: No hay datos disponibles.  (sha256 153246b1a88ebe02…)
+Aura Inmoinversion: No hay datos disponibles.  (sha256 1f95f681bb96db99…)
+Series RNT: No hay datos disponibles.  (sha256 25713c41f62bfa84…)
+Prosegur Cash: No hay datos disponibles.  (sha256 c46c2ba685da71cd…)
+Minos: No hay datos disponibles.  (sha256 2956b55555f4f878…)
+Tokenix: No hay datos disponibles.  (sha256 bd989a3f377eed5a…)
+Toketuk: No hay datos disponibles.  (sha256 c6fd850aa296d4e0…)
+Toke Tuk: No hay datos disponibles.  (sha256 24e6a19053b514ca…)
+Series A Grupo UAE: No hay datos disponibles.  (sha256 e0ac6509712fb182…)
+
+Pestaña «Otras entidades» (tipo=2): https://www.cnmv.es/portal/ResultadoBusqueda?tipo=2&nombre=Gemini → 302 a /portal/error (HTTP 400), 09:37:58 UTC.
+Lista oficial en PDF: https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf → HTTP 200, 254.225 bytes, sha256 5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0 (09:38:10 UTC), igual que el del investigador.
+Coincidencias en el PDF: COMUNITAE 1 (control); REENTAL 0; RENTAL TOKEN 0; AURA 0; SERIES RNT 0; PROSEGUR 0; MINOS 0; TOKENIX 0; TOKETUK 0; TOKE TUK 0; SERIES A GRUPO 0; TOKEN CITY 0.

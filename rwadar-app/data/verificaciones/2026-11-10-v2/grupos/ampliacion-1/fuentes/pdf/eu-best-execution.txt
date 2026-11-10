@@ -1,0 +1,321 @@
+                                                    Best Execution and Client Order Handling Policy
+                                                                                                         April 2026
+
+
+
+
+    1.​ Introduction
+
+The Directive 2014/65/EU of the European Parliament and of the Council of 15 May 2014
+on markets in financial instruments (“MiFID II”) requires investment firms to take all
+sufficient steps to obtain, when executing orders, the best possible result for their clients
+taking into account price, costs, speed, likelihood of execution and settlement, size, nature
+or any other consideration relevant to the execution of the order.
+
+In addition, MiFID II also imposes the obligation for investment firms authorized to execute
+orders on behalf of clients to implement procedures and arrangements which provide for
+the prompt, fair and expeditious execution of client orders, relative to other client orders or
+the trading interests of the investment firm.
+
+These obligations have been developed by the Commission Delegated Regulation (EU)
+2017/565 of 25 April 2016 supplementing Directive 2014/65/EU of the European
+Parliament and of the Council as regards organizational requirements and operating
+conditions for investment firms and defined terms for the purposes of that Directive (the
+“Delegated Regulation 2017/565”) on its Chapter III, Sections 5 and 6.
+
+In Spain, these requirements have been transposed into Law 6/2023, of 17 March, on
+Securities Markets and Investment Services (“Law 6/2023”), on its Title VIII, Chapter I,
+Section 8, and developed by article 141 of Royal Decree 813/2023, of 8 November, on the
+legal regime governing investment firms and other entities providing investment services
+(“Royal Decree 813/2023”).
+
+    2.​ Scope
+
+This Best Execution and Client Order Handling Policy (hereinafter, the “Policy”) is
+applicable to Securitize Europe Brokerage and Markets, S.V., S.A. (hereinafter, “Securitize
+Europe”) when offering any of the following investment services to its clients:
+
+    (a)​ Reception and transmission of orders: when Securitize Europe transmits client
+         orders to a third party for execution.
+    (b)​ Execution of orders: when Securitize Europe executes client orders directly on an
+         execution venue1.
+
+
+
+1
+  In accordance with article 64(1) of Delegated Regulation 2017/565, an ‘execution venue’ includes a regulated
+market, a multilateral trading facility, an organized trading facility, a systematic internalizer, or a market maker or
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                                                  1
+                                                    Best Execution and Client Order Handling Policy
+                                                                                                         April 2026
+
+
+
+Currently, Securitize Europe does not hold authorization to provide dealing on own
+account or portfolio management services.
+
+Securitize Europe applies the Policy when providing investment services (a) and (b)
+indicated above to professional and retail clients. This Policy will not be applicable to
+clients classified as eligible counterparties, as per art. 30(1) MiFID II.
+
+The Policy is applicable only in respect of financial instruments as defined in Annex I,
+Section C of MiFID II. In particular, Securitize Europe will only provide investment services
+in connection with financial instruments represented on distributed ledgers, i.e. tokenized
+financial instruments.
+
+    3.​ Execution criteria
+
+When executing client orders, Securitize Europe will consider the following criteria for
+determining the relative importance of the factors referred to in article 27(1) MiFID II:
+
+    (a)​ The characteristics of the client, including the categorization of the client as retail
+         or professional.
+    (b)​ The characteristics of the client order.
+    (c)​ The characteristics of financial instruments that are the subject of that order.
+    (d)​ The characteristics of the execution venues to which that order can be directed.
+
+To that effect, where Securitize Europe executes an order on behalf of a retail client, the
+best possible result will be determined in terms of the total consideration, representing
+the price of the financial instrument and the costs relating to execution, including all
+expenses incurred by the client which are directly relating to the execution of the order,
+such as execution venue fees, any other fees paid to third parties involved in the execution
+of the order. Securitize Europe will not structure or charge their commissions in such a
+way as to discriminate unfairly between execution venues.
+
+For professional clients, the best possible result will be determined by the likelihood of
+execution and settlement, as well as speed, owing to the currently limited availability of
+tokenized financial instruments.
+
+
+
+
+other liquidity provider or an entity that performs a similar function in a third country to the functions performed by
+any of the foregoing.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                                                  2
+                                          Best Execution and Client Order Handling Policy
+                                                                                     April 2026
+
+
+
+Lastly, Securitize Europe will be complying with its best execution obligation under article
+27(1) MiFID II to the extent that it executes an order or a specific aspect of an order
+following specific instructions from the client relating to the order or the specific aspect
+of the order. At the same time, Securitize Europe reserves the right not to accept specific
+instructions from clients regarding the orders received, or with respect to certain aspects
+thereof.
+
+
+
+
+   4.​ Broker / execution venue selection
+
+When Securitize Europe executes orders in over-the counter products, including bespoke
+products, Securitize will check the fairness of the price proposed to the client, by
+gathering market data used in the estimation of the price of such product and, where
+possible, by comparing with similar or comparable products.
+
+   5.​ Client order handling
+
+Securitize Europe, when carrying out client orders will:
+
+   (i)​     ensure that orders executed on behalf of clients are promptly and accurately
+            recorded and allocated;
+   (ii)​    carry out otherwise comparable client orders sequentially and promptly unless
+            the characteristics of the order or prevailing market conditions make this
+            impracticable, or the interests of the client require otherwise; and
+   (iii)​   inform a retail client about any material difficulty relevant to the proper carrying
+            out of orders promptly upon becoming aware of the difficulty.
+
+Where Securitize Europe is responsible for overseeing or arranging the settlement of an
+executed order, it will take all reasonable steps to ensure that any client financial
+instruments or client funds or tokens received in settlement of that executed order are
+promptly and correctly delivered to the account of the appropriate client.
+
+Securitize Europe will under no circumstances aggregate client orders with own account
+transactions, nor with other client orders. Given that Securitize Europe exclusively
+provides investment services in relation to tokenized financial instruments, client orders
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                           3
+                                         Best Execution and Client Order Handling Policy
+                                                                                  April 2026
+
+
+
+are received, transmitted, and executed individually and strictly in the order in which they
+are received.
+
+
+
+
+   6.​ Disclosure of the Policy and prior client consent
+
+Securitize Europe will provide appropriate information to any clients and potential clients
+on the Policy. Annex I of this Policy includes the summary of the Policy that will be
+available on Securitize Europe website, explaining clearly, in sufficient detail and in a way
+that can be easily understood by clients, how orders will be executed or transmitted by
+Securitize Europe. Securitize Europe will also inform its clients of any material changes to
+the Policy or to its execution arrangements.
+
+Upon reasonable request, Securitize Europe will provide its clients or potential clients with
+information about entities where the orders are transmitted or placed for execution.
+
+Before delivering any investment services, Securitize Europe will obtain the client’s prior
+consent to the Policy, through the acceptance of Securitize Europe’s Terms and
+Conditions. Securitize Europe is also able to demonstrate to clients, upon request, that
+their orders were carried out according to the Policy.
+
+Securitize Europe informs clients that there is a possibility their orders may be executed
+outside an EU trading venue, such as in a US execution venue or platform, or through a
+counterparty that can be located within or outside the EU. In accordance with art. 27(5)
+MiFID II, Securitize Europe will obtain the prior express consent of clients before
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                        4
+                                              Best Execution and Client Order Handling Policy
+                                                                                          April 2026
+
+
+
+proceeding to execute orders outside an EU trading venue. This consent will be
+incorporated into a general agreement through acceptance of Securitize Europe’s Terms
+and Conditions, and also several disclaimers will appear during the order submission
+process, ensuring clients are fully aware of and agree to this execution possibility at all
+times.
+
+      7.​ Review of the Policy
+
+Securitize Europe will review the Policy, its annexes and execution arrangements annually,
+or whenever material changes2 arise that can impact its ability to achieve the best
+outcome for clients. Securitize Europe will determine if a material change has occurred
+and may adjust execution venues or entities to maintain best execution.
+
+Securitize Europe will inform its clients of any material changes to the Policy or to its
+execution arrangements.
+
+Securitize Europe will also monitor on a regular basis the execution quality of the entities
+and execution venues to identify and correct any potential deficiencies.
+
+
+
+                 Annex I. Summary of the Policy for clients and potential clients
+
+      A.​ Introduction
+
+This document sets out a summary of the Best Execution and Client Order Handling Policy
+(hereinafter, the “Best Execution Policy”) that Securitize Europe Brokerage and Markets,
+S.V., S.A. (hereinafter, “Securitize Europe”) maintains to obtain the best possible execution
+result for your orders.
+
+This document further explains our Terms and Conditions regarding best execution and
+client order handling, and you should be aware that by agreeing to our Terms and
+Conditions and submitting an order through this website you are consenting to our Best
+Execution and Client Order Handling Policy.
+
+      B.​ Scope of the Best Execution and Client Order Handling Policy
+
+
+2
+    A material change shall be a significant event that could impact parameters of best execution such
+as cost, price, speed, likelihood of execution and settlement, size, nature or any other consideration
+relevant to the execution of the order.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                                 5
+                                          Best Execution and Client Order Handling Policy
+                                                                                    April 2026
+
+
+
+The Best Execution Policy is applicable to Securitize Europe when offering the service of
+reception and transmission of orders to clients. That means that it is applicable to when
+Securitize Europe receives your orders and transmits them to a third party for their
+execution. At present, Securitize Europe does not offer any other investment services to
+clients.
+
+The Best Execution Policy will be applicable to your orders as long as you have been
+classified by Securitize Europe as a retail client or a professional client.
+
+Securitize Europe only offers investment services in connection with financial instruments
+represented on distributed ledgers, commonly known as tokenized financial instruments.
+
+    C.​ Execution criteria
+
+When Securitize Europe executes an order on behalf of a retail client, the best possible
+result will be determined in terms of the total consideration, representing the price of the
+financial instrument and the costs relating to execution, including all expenses incurred by
+the client which are directly relating to the execution of the order, such as execution venue
+fees, any other fees paid to third parties involved in the execution of the order. Securitize
+Europe will not structure or charge their commissions in such a way as to discriminate
+unfairly between execution venues.
+
+For professional clients, the best possible result will be determined by the likelihood of
+execution and settlement, as well as speed, owing to the currently limited availability of
+tokenized financial instruments.
+
+Please note that any specific instructions you provide regarding your orders may prevent
+Securitize Europe from taking the measures it has established and implemented in its
+Best Execution Policy to achieve the best possible outcome in the execution of those
+orders, with respect to the elements affected by such instructions. For this reason,
+Securitize Europe reserves the right not to accept specific instructions regarding client
+orders.
+
+    D.​ List of execution venues
+
+At present, Securitize Europe is not a member of any execution venue. It achieves the best
+execution of its clients’ orders by transmitting those orders to third parties for execution.
+
+    E.​ Execution outside an EU trading venue
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                             6
+                                         Best Execution and Client Order Handling Policy
+                                                                                   April 2026
+
+
+
+Securitize Europe informs clients that there is a possibility their orders may be executed
+outside an EU trading venue, such as in a US execution venue or platform, or through a
+counterparty that can be located within or outside the EU. In accordance with art. 27(5)
+MiFID II, Securitize Europe will obtain the prior express consent of clients before
+proceeding to execute orders outside an EU trading venue. This consent will be
+incorporated into a general agreement through acceptance of Securitize Europe’s Terms
+and Conditions, and also several disclaimers will appear during the order submission
+process, ensuring clients are fully aware of and agree to this execution possibility at all
+times.
+
+   F.​ Selection of execution venues
+
+With regard to the selection of execution venues for the execution of its clients’ orders,
+Securitize will prioritize the availability of tokenized financial instruments both within the
+European Union and abroad.
+
+   G.​ Review of the Best Execution Policy
+
+Securitize Europe will review the Best Execution Policy and execution arrangements
+annually, or whenever material changes arise that can impact its ability to achieve the best
+outcome for clients. Securitize Europe will determine if a material change has occurred
+and may adjust execution venues or entities to maintain best execution.
+
+Securitize Europe will inform its clients of any material changes to the Policy or to its
+execution arrangements.
+
+
+
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.                                         7
+

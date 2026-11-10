@@ -1,0 +1,155 @@
+Fuente: https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1
+Consultado: 2026-11-10T09:33:46Z · HTTP 200 · 447050 bytes · sha256 861d53f3963ab7efd15acf247f34ba4de28bb134bfaa702c357d3e287282571f
+Copia original en crudo/oilxcoin-resumen-es.pdf (fuera de Git). Extracto literal; nombres de personas omitidos.
+Líneas de pdftotext -layout; se omite la sección 2.1 (accionistas y dirección) porque nombra a personas.
+
+        NOTA DE SÍNTESIS ESPECÍFICA DEL FOLLETO DE LA UNIÓN DE CRECIMIENTO
+        (de conformidad con el Anexo 23 del Reglamento Delegado (UE) 2019/980)
+
+                               SECCIÓN 1 – INTRODUCCIÓN
+1.1        ISIN                  CH1376324914
+1.2        Identidad y datos de DeXentra GmbH
+           contacto del Emisor Landis + Gyr-Strasse 1, 6300 Zug, Suiza
+           (“Issuer”):
+
+           LEI                   50670069463VM690ML91
+1.3        Autoridad             Finanzmarktaufsicht Liechtenstein (FMA)
+           competente            Landstrasse 109, LI-9490 Vaduz
+[...]
+              las demás partes del Folleto de Crecimiento para la Unión Europea, o cuando,
+              al leerse junto con las demás partes del Folleto de Crecimiento para la Unión
+              Europea, no proporcione información clave para ayudar a los inversores a
+              considerar si invertir en dichos valores;
+           e. El inversor está a punto de adquirir un producto que no es sencillo y puede
+              resultar difícil de comprender.
+
+[...]
+        El emisor fue constituido el 20 de noviembre de 2023 y solicitó un primer ejercicio
+        financiero ampliado que finaliza el 31 de diciembre de 2024, de conformidad con el § 76,
+        apartado 3, de la ley fiscal del cantón de Zug. El emisor ha preparado estados financieros
+        auditados correspondientes al período comprendido entre el 20 de noviembre de 2023 y
+        el 31 de diciembre de 2024. A 31 de diciembre de 2024, el emisor informa de ingresos por
+        importe de 1.368.872 USD (1.217.858 CHF), activos totales por importe de 515.369 USD
+        (458.513 CHF), patrimonio neto por importe de 50.910,46 USD (45.294 CHF), así como
+        efectivo y equivalentes de efectivo por importe de 154.707 USD (137.640 CHF). A la fecha
+        de este folleto, no se dispone de estados financieros correspondientes al ejercicio
+        financiero 2025.
+2.2.1   El requisito de información comparativa del balance se cumple mediante la presentación
+[...]
+                             Los OilXCoins serán representados por los Tokens y emitidos
+                             en forma de valores basados en tecnología de registro
+                             distribuido conforme al Artículo 973d del Schweizerisches
+                             Obligationenrecht.
+b)      Moneda,              Moneda
+        denominación,        USD
+        número         de
+        valores emitidos y Denominación
+                           1 OilXCoin. La inversión mínima es de 100 OilXCoin.
+
+
+[...]
+                         sujetos a la oferta (“Offering”).
+
+                      Plazo y Terminación
+                      Los OilXCoins podrán darse por terminados (i) cada 15 años,
+                      a opción del Emisor, (ii) tras el voto afirmativo de más del 90%
+                      de los Titulares de Tokens (“Token Holder”) relevantes que
+                      hayan aprobado dicha Terminación (“Termination”),
+                      entendiéndose por “Titulares de Tokens relevantes” todos los
+[...]
+        información          mismo rango que todas las demás obligaciones no
+        sobre el nivel de garantizadas presentes y futuras del Emisor de igual
+        subordinación de antigüedad, salvo aquellas preferencias que establezcan
+        los valores          cualquier disposición de aplicación obligatoria de la ley.
+e)      cuando proceda, Los OilXCoins no proporcionan un rendimiento fijo ni
+        política        de periódico ni ante la ocurrencia de una Terminación.
+        dividendos y de Ante la ocurrencia de una Terminación, los Tenedores de
+        distribución    de OilXCoin pueden ejercer los derechos financieros resumidos
+        resultados           en la sección “Derechos asociados a los valores” anterior. El
+[...]
+                             algún pago.
+3.2     ¿Dónde cotizarán los valores?
+3.2.1   Antes de la oferta, no existía ningún mercado para los Tokens.
+
+
+
+
+                                                                                           5
+        A la fecha del presente Prospecto, el Emisor no ha tomado ninguna decisión de
+        solicitar la admisión de los Tokens a negociación en un mercado regulado u otro
+        centro de negociación que requiera una decisión formal de admisión.
+        Cualquier transferencia secundaria o negociación de los Tokens, en caso de que
+        tenga lugar, podrá realizarse a través de mecanismos facilitados por terceros,
+        incluidos mecanismos no centralizados o de tipo peer-to-peer, y no existe
+        garantía alguna de que dichos mecanismos estén disponibles o se mantengan, ni
+        de que se desarrolle un mercado activo o líquido para los Tokens.
+3.3     No hay garantías asociadas a los valores.
+[...]
+                                                                                           6
+  SECCIÓN 4 – INFORMACIÓN FUNDAMENTAL SOBRE LA OFERTA PÚBLICA DE VALORES
+4.1                       ¿En qué plazos y condiciones puedo invertir en este valor?
+
+Periodo de oferta
+El prospecto anterior fue aprobado por la Finanzmarktaufsicht Liechtenstein el 28/02/2025.
+
+El presente prospecto es, por tanto, un prospecto recientemente aprobado, en virtud del cual se
+continuará la oferta pública iniciada bajo el prospecto previamente aprobado.
+
+El período de oferta del prospecto anterior comenzó el 23 de abril de 2025 (UTC 13:00) y finalizó el
+27 de febrero de 2026. El nuevo período de oferta basado en el prospecto recientemente aprobado
+comienza el 10 de abril de 2026 y permanecerá abierto por tiempo indefinido hasta que sea
+terminado por decisión del Emisor o, a más tardar, al final de un año natural contado desde la
+aprobación de este prospecto de valores por la FMA Liechtenstein.
+
+Mercados objetivo
+Este valor se ofrece en principio al público en todo el EEE y Suiza. Inicialmente, los
+principales mercados objetivo previstos son: Alemania, Austria, Bélgica,Croacia, Chipre,
+Dinamarca, Eslovaquia, Eslovenia, España, Finlandia, Francia, Hungría, Irlanda, Italia,
+Letonia, Liechtenstein, Luxemburgo, Malta, Noruega, Países Bajos, Polonia, Portugal,
+República Checa, Rumanía y Suecia. Se podrán presentar notificaciones adicionales dentro
+del EEE en una fecha posterior.
+
+Precio de emisión
+El precio del OilXCoin será fijado por la dirección del Emisor en función de la demanda de los
+inversores, incluida la información recibida en contratos directos entre el Emisor y los inversores, y
+podrá tener en cuenta la información disponible públicamente, incluidos los precios observados en
+plataformas de negociación secundarias, cuando proceda. El precio aplicable se publicará en el sitio
+web del Emisor.
+El precio máximo será de 100 USD.
+
+Modalidades de pago
+El precio de emisión de los OilXCoins deberá pagarse (1) en Ethereum, mediante
+transferencia a la Dirección de Cartera (Wallet address) proporcionada al momento de la
+compra (Checkout) en el sitio web del Emisor, (2) en moneda fiduciaria, mediante
+transferencia bancaria al IBAN proporcionado al momento de la compra en el sitio web del
+Emisor, o (3) en stablecoins denominadas en dólares estadounidenses (incluidos USDC y USDT),
+exclusivamente como medio técnico de liquidación y transmisión de pagos, y no como
+denominación, valor de referencia ni base subyacente del precio de emisión. El Emisor se reserva el
+derecho, a su sola discreción y de conformidad con la legislación aplicable, de añadir, restringir,
+suspender o dejar de aceptar determinados criptoactivos como medio de pago.
+
+Entrega de los OilXCoins
+Los OilXCoins se entregarán a los inversores dentro de los tres días hábiles posteriores al
+pago del precio de compra y tras la aprobación de la información de conocimiento del cliente
+(know-your-customer) que se haya proporcionado. Los OilXCoins se emiten como valores
+basados en registro (ledger-based securities) conforme al derecho suizo, y por tanto se registrarán
+como Tokens en la Ethereum Blockchain. Los OilXCoins se entregarán al inversor en la cartera
+digital de Ethereum que dicho inversor haya proporcionado en el sitio web del Emisor. Los
+
+                                                                                                     7
+inversores necesitarán una cartera compatible con Ethereum para participar en la oferta y
+recibir OilXCoins.
+
+Vesting de los OilXCoins
+Todos los OilXCoins vendidos en esta oferta pública que comienza el 10 de abril de 2026 no están
+sujetos a un período de vesting.
+
+Todos los OilXCoins vendidos durante los primeros veinte (20) días de la oferta pública iniciada el 23
+de marzo de 2025 estuvieron sujetos a un calendario de vesting en diez fases. Los Tokens adquiridos
+[...]
+                                                            bajo      condiciones     que
+                                                            podrían no estar disponibles
+                                                            para otros Titulares de
+                                                            OilXCoins.
+4.3                         ¿Quién es el oferente y/o la persona que solicita la admisión
+[...]

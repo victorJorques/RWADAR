@@ -1,0 +1,26 @@
+URL: https://stocks.securitize.io/faq
+HTTP: 200
+UTC: 2026-11-10T09:35:58Z
+(cada pregunta desplegada una a una)
+
+## How do I get started, and who can trade?
+Trading is supported using third party self-custody wallets only. To be enabled for trading you are required to set up a Securitize account (and go through the KYC process) and once approved, connect your third party wallet. Once this process is completed, Securitize will whitelist your wallet address, allowing this wallet to interact with the platform. Securities can only move between whitelisted wallets on the platform.
+
+## When can I trade?
+Trading is available on our site from 4:00 AM to 5:30 PM ET.
+
+## What fees does the platform charge?
+The platform charges a fee of .10% of trade amount in USDC. The platform fee covers any gas charges associated with the execution.
+
+## What order type is used?
+Your order is entered as a market order, which means it is executed immediately at the best available market price, subject to certain price protection conditions. Stock prices can change frequently, and the price may move between the time you submit the order and when the order is executed. To protect against large price moves, every order will have a fixed price protection band of 0.10%. The price you see when you confirm your order is a price based on the NBBO*, not the execution price. If the current price at the time of execution is not more than 0.10% away from the NBBO (the offer or ask when buying, the bid when selling), the order is executed. If the current stock price at the time of execution moves beyond the order protected price (higher when buying, lower when selling), the order is automatically rejected. If the order is rejected, you can re-enter a new order should you choose to do so.
+*NBBO means the National Best Bid and Offer. It is the best publicly displayed bid and the best publicly displayed offer available across U.S. exchanges for an NMS security.
+
+## How do I create an order?
+After connecting your wallet, sign in to your wallet account. This is the first step and authenticates you before you create an order.
+You will get a sign-in request from your wallet provider to authenticate your wallet account. You need to confirm to move forward.
+Tell us how much USDC you are willing to spend. Based on the current stock price we will tell you how many shares you should expect to receive.
+Review your order in the confirmation window. You are presented with the reference price, the estimated share quantity, and the total USDC amount, together with the0.10% price protection band. Click “Accept Conditions” to submit the order for execution.
+You will get a single request from your wallet provider to approve the transaction. You need to confirm to move forward.
+Within seconds of order submission you will be notified of either a successful transaction or that your order was rejected. If successful, the execution price and time are available at Securitize.io, on the blockchain, and additionally in an email confirmation sent at execution.
+

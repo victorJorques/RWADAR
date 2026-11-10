@@ -1,0 +1,530 @@
+        NOTA DE SÍNTESIS ESPECÍFICA DEL FOLLETO DE LA UNIÓN DE CRECIMIENTO
+        (de conformidad con el Anexo 23 del Reglamento Delegado (UE) 2019/980)
+
+                               SECCIÓN 1 – INTRODUCCIÓN
+1.1        ISIN                  CH1376324914
+1.2        Identidad y datos de DeXentra GmbH
+           contacto del Emisor Landis + Gyr-Strasse 1, 6300 Zug, Suiza
+           (“Issuer”):
+
+           LEI                   50670069463VM690ML91
+1.3        Autoridad             Finanzmarktaufsicht Liechtenstein (FMA)
+           competente            Landstrasse 109, LI-9490 Vaduz
+                                 Tel: +423 236 7373; Fax: +423 236 7374;
+                                 Email: info@fma-li.li
+1.4        Fecha de aprobación   El prospecto anterior fue aprobado por la Autoridad de
+                                 Supervisión de los Mercados Financieros de Liechtenstein
+                                 (Finanzmarktaufsicht Liechtenstein – FMA) el 28 de
+                                 febrero de 2025.
+
+                                 El presente prospecto constituye, por tanto, un prospecto
+                                 nuevamente aprobado, en virtud del cual se continúa la
+                                 oferta pública iniciada con base en el prospecto
+                                 previamente aprobado. El prospecto fue aprobado los días
+                                 10 de abril de 2026.
+1.5        Advertencias
+1.5.1      a. El resumen debe leerse como una introducción al Folleto de Crecimiento para
+              la Unión Europea y cualquier decisión de invertir en los valores debe basarse
+              en una consideración del Folleto de Crecimiento para la Unión Europea en su
+              totalidad por parte del inversor;
+           b. El inversor podría perder la totalidad o parte del capital invertido;
+           c. Cuando se interponga una reclamación relacionada con la información
+              contenida en un Folleto de Crecimiento para la Unión Europea ante un
+              tribunal, el inversor demandante podrá, conforme a la legislación nacional de
+              los Estados miembros, tener que asumir los costos de traducir el Folleto de
+              Crecimiento para la Unión Europea antes de que se inicien los procedimientos
+              judiciales;
+           d. La responsabilidad civil recae únicamente sobre aquellas personas que hayan
+              presentado el resumen, incluida cualquier traducción del mismo, pero solo
+              cuando el resumen sea engañoso, inexacto o incoherente al leerse junto con
+              las demás partes del Folleto de Crecimiento para la Unión Europea, o cuando,
+              al leerse junto con las demás partes del Folleto de Crecimiento para la Unión
+              Europea, no proporcione información clave para ayudar a los inversores a
+              considerar si invertir en dichos valores;
+           e. El inversor está a punto de adquirir un producto que no es sencillo y puede
+              resultar difícil de comprender.
+
+              SECCIÓN 2 – INFORMACIÓN FUNDAMENTAL SOBRE EL EMISOR
+
+
+                                                                                         1
+2.1     ¿Quién es el emisor de los valores?
+        El Emisor es DeXentra GmbH, con su domicilio social en Zug y dirección comercial
+        en Landis + Gyr-Strasse 1, 6300 Zug, Suiza. El Emisor está inscrito en el registro
+        mercantil de Zug bajo el número CHE-410.926.349.
+
+2.1.1   Información            Forma jurídica:
+        sobre el emisor:       Sociedad de Responsabilidad Limitada (Gesellschaft mit
+                               beschränkter Haftung, GmbH);
+                               ley bajo la cual opera: legislación suiza;
+                               país de constitución: Suiza.
+                               DeXentra GmbH podrá ser transformada en una sociedad anónima
+                               (Aktiengesellschaft, AG) en una etapa posterior.
+
+                               Actividades principales
+                               El Emisor ejerce actividades, de forma directa o a través de
+                               filiales, en la exploración, extracción y venta de petróleo
+                               crudo y gas natural.
+
+                               Accionista(s) de control
+                               [nombre recortado] (56%), [nombre recortado] (34%),
+                               [nombre recortado] (10%).
+
+                               Director general (o equivalente)
+                               [nombre recortado].
+
+2.2     ¿Cuál es la información financiera fundamental relativa al emisor?
+
+        El emisor fue constituido el 20 de noviembre de 2023 y solicitó un primer ejercicio
+        financiero ampliado que finaliza el 31 de diciembre de 2024, de conformidad con el § 76,
+        apartado 3, de la ley fiscal del cantón de Zug. El emisor ha preparado estados financieros
+        auditados correspondientes al período comprendido entre el 20 de noviembre de 2023 y
+        el 31 de diciembre de 2024. A 31 de diciembre de 2024, el emisor informa de ingresos por
+        importe de 1.368.872 USD (1.217.858 CHF), activos totales por importe de 515.369 USD
+        (458.513 CHF), patrimonio neto por importe de 50.910,46 USD (45.294 CHF), así como
+        efectivo y equivalentes de efectivo por importe de 154.707 USD (137.640 CHF). A la fecha
+        de este folleto, no se dispone de estados financieros correspondientes al ejercicio
+        financiero 2025.
+2.2.1   El requisito de información comparativa del balance se cumple mediante la presentación
+        de la información del balance al cierre del ejercicio a 31 de diciembre de 2024. Los estados
+        financieros se refieren a un ejercicio financiero ampliado y no se dispone de información
+        comparativa del balance para ejercicios financieros anteriores.
+2.3     ¿Cuáles son los principales riesgos específicos del emisor?
+2.3.1   Riesgos clave específicos del Emisor
+
+            1. El Emisor es una sociedad en fase inicial con un historial operativo limitado y datos
+                financieros restringidos, lo que dificulta que los inversores evalúen su negocio y
+                sus perspectivas futuras. El éxito del Emisor es incierto y depende de su
+
+
+
+                                                                                                  2
+                capacidad para superar los desafíos de inicio típicos en la industria del
+                petróleo y gas, que es competitiva y requiere altos niveles de capital.
+           2.   Las fluctuaciones de precios en el petróleo crudo y el gas natural pueden
+                impactar significativamente los ingresos del Emisor y el valor de los Tokens,
+                ya que las actividades del Emisor y los valores de sus activos están
+                estrechamente ligados a los precios de estas materias primas.
+           3.   Acontecimientos geopolíticos como conflictos, sanciones o desastres
+                pueden perturbar la logística, las cadenas de suministro y la demanda de
+                energía, afectando potencialmente el negocio del Emisor y el valor de los
+                Tokens.
+           4.   La incertidumbre geológica en la exploración de petróleo y gas puede llevar
+                a pozos improductivos y evaluaciones inexactas de recursos recuperables,
+                lo cual podría impactar negativamente el negocio del Emisor y el valor de
+                los Tokens.
+           5.   Retrasos o problemas en la finalización de proyectos de producción de
+                petróleo pueden reducir los volúmenes de producción y afectar
+                negativamente el valor de los Tokens.
+           6.   Cambios frecuentes y significativos en la legislación de petróleo y gas
+                pueden plantear desafíos regulatorios y operativos para el Emisor,
+                afectando potencialmente su negocio, situación financiera y operaciones.
+           7.   Los estados financieros del Emisor pueden no ser auditados y, aun si lo
+                fueran, podrían no cumplir con normas internacionales como U.S. GAAP o
+                IFRS, reduciendo la transparencia y la confianza de los inversores.
+           8.   Las operaciones en mercados emergentes exponen al Emisor a la
+                inestabilidad política, volatilidad económica y cambios regulatorios, que
+                pueden afectar negativamente su desempeño financiero y estabilidad, y
+                potencialmente generar menores rendimientos para los inversores.
+
+          SECCIÓN 3 – INFORMACIÓN FUNDAMENTAL SOBRE LOS VALORES
+3.1     ¿Cuáles son las principales características de los valores?
+3.1.1   Información sobre los valores:
+a)      Tipo y clase         Valor de deuda representado por Tokens digitales en virtud
+                             del cual los Tenedores de OilXCoins tienen un derecho
+                             contingente frente al Emisor relacionado con el valor de
+                             Activos vinculados a petróleo/gas natural, y que se espera
+                             proporcione a los inversores una exposición a la cadena de
+                             valor de dichos Activos.
+
+                             Los OilXCoins serán representados por los Tokens y emitidos
+                             en forma de valores basados en tecnología de registro
+                             distribuido conforme al Artículo 973d del Schweizerisches
+                             Obligationenrecht.
+b)      Moneda,              Moneda
+        denominación,        USD
+        número         de
+        valores emitidos y Denominación
+                           1 OilXCoin. La inversión mínima es de 100 OilXCoin.
+
+
+                                                                                           3
+     vencimiento    de
+     los mismos          Número
+                         100 millones de Tokens, de los cuales hasta 60 millones están
+                         sujetos a la oferta (“Offering”).
+
+                      Plazo y Terminación
+                      Los OilXCoins podrán darse por terminados (i) cada 15 años,
+                      a opción del Emisor, (ii) tras el voto afirmativo de más del 90%
+                      de los Titulares de Tokens (“Token Holder”) relevantes que
+                      hayan aprobado dicha Terminación (“Termination”),
+                      entendiéndose por “Titulares de Tokens relevantes” todos los
+                      Titulares de Tokens que no sean el Emisor, o sus directores,
+                      empleados o accionistas actuales, o (iii) automáticamente al
+                      producirse un evento de incumplimiento, entendiéndose por
+                      tal (x) que el Emisor sea insolvente o esté en quiebra o sea
+                      incapaz de pagar sus deudas, o suspenda o interrumpa el
+                      pago de sus deudas en general, proponga un acuerdo o
+                      convenio para el beneficio de los acreedores pertinentes
+                      respecto de sus deudas, o se acuerde o declare una moratoria
+                      respecto de, o que afecte, todas o sustancialmente todas las
+                      deudas del Emisor; o (y) que se nombre un administrador , se
+                      dicte o adopte una resolución efectiva para la liquidación o
+                      disolución del Emisor y dicha orden no sea rescindida o
+                      cancelada en un plazo de 90 días, o que el Emisor cese sus
+                      operaciones en su totalidad o de manera sustancial, salvo en
+                      caso de fusión, consolidación u otra forma de combinación
+                      con otra sociedad, o en relación con una reestructuración y la
+                      nueva u otra sociedad asuma todas las obligaciones
+                      contraídas por el Emisor en relación con los OilXCoins.
+c)   Derechos         Derechos financieros
+     inherentes a los Ante la ocurrencia de una Terminación, el Emisor estará
+     valores          obligado a pagar un monto a los Titulares de Tokens (la
+                      “Contingent Claim”), cuyo importe será, a opción del Emisor,
+                      ya sea:
+                          a. Los ingresos netos provenientes de la enajenación
+                               efectiva de los Activos Relevantes, en cuyo caso, si el
+                               Emisor elige esta opción, deberá usar sus mejores
+                               esfuerzos para enajenar los Activos Relevantes (o
+                               asegurar que se enajenen) dentro de los seis meses
+                               posteriores a la resolución. Una vez que todos o una
+                               parte significativa de los Activos Relevantes hayan
+                               sido enajenados, el Emisor deberá distribuir los
+                               ingresos netos de dicha enajenación a los Tenedores.
+                               Los “ingresos netos” son los ingresos resultantes de la
+                               enajenación de los Activos Relevantes tras:
+                               - el pago de los impuestos a cargo de DeXentra; y
+
+
+
+                                                                                    4
+                                    -   el pago de todos los demás acreedores de
+                                        DeXentra (incluidos empleados, directores y
+                                        funcionarios)
+                                 b. Un monto equivalente a la valoración de los Activos
+                                    Relevantes, para lo cual el Emisor encargará a un
+                                    perito independiente y de buena reputación la
+                                    tasación de los Activos Relevantes y pagará a los
+                                    Titulares de Tokens el valor que dicho perito atribuya
+                                    a los activos relevantes, deducidos los impuestos que
+                                    correspondan a DeXentra por dicha operación.
+
+                             Modalidad de pago
+                             Cada Titular tiene derecho a una participación en los Ingresos
+                             Netos Relevantes o en la Valoración de los Ingresos
+                             Relevantes (según corresponda), asignada de forma
+                             prorrateada, basándose en el porcentaje del total de
+                             OilXCoins en circulación que dicho Titular posea.
+
+                             Derechos de gobernanza
+                             Los Titulares de Tokens no tendrán derechos de gobernanza
+                             con respecto al Emisor o los activos relevantes.
+d)      Prelación relativa Los       OilXCoin      constituyen    obligaciones      directas,
+        de los valores incondicionales y no garantizadas del emisor.
+        dentro de la Los OilXCoin están subordinados a los Pasivos Relevantes
+        estructura      de (“Relevant Liabilities”), según se definen en los Términos y
+        capital del emisor Condiciones (“Terms of Conditions”).
+        en      caso    de Los OilXCoin deberán en todo momento tener el mismo rango
+        insolvencia,         (pari passu) y sin ninguna preferencia entre sí.
+        incluida, cuando Las obligaciones de pago del Emisor en virtud de los Términos
+        proceda,             (“Terms”) deberán en todo momento tener, al menos, el
+        información          mismo rango que todas las demás obligaciones no
+        sobre el nivel de garantizadas presentes y futuras del Emisor de igual
+        subordinación de antigüedad, salvo aquellas preferencias que establezcan
+        los valores          cualquier disposición de aplicación obligatoria de la ley.
+e)      cuando proceda, Los OilXCoins no proporcionan un rendimiento fijo ni
+        política        de periódico ni ante la ocurrencia de una Terminación.
+        dividendos y de Ante la ocurrencia de una Terminación, los Tenedores de
+        distribución    de OilXCoin pueden ejercer los derechos financieros resumidos
+        resultados           en la sección “Derechos asociados a los valores” anterior. El
+                             ejercicio de estos derechos financieros puede dar lugar a un
+                             pago a los Tenedores de OilXCoin, si bien no existe garantía
+                             de que los Tenedores de OilXCoin reciban efectivamente
+                             algún pago.
+3.2     ¿Dónde cotizarán los valores?
+3.2.1   Antes de la oferta, no existía ningún mercado para los Tokens.
+
+
+
+
+                                                                                           5
+        A la fecha del presente Prospecto, el Emisor no ha tomado ninguna decisión de
+        solicitar la admisión de los Tokens a negociación en un mercado regulado u otro
+        centro de negociación que requiera una decisión formal de admisión.
+        Cualquier transferencia secundaria o negociación de los Tokens, en caso de que
+        tenga lugar, podrá realizarse a través de mecanismos facilitados por terceros,
+        incluidos mecanismos no centralizados o de tipo peer-to-peer, y no existe
+        garantía alguna de que dichos mecanismos estén disponibles o se mantengan, ni
+        de que se desarrolle un mercado activo o líquido para los Tokens.
+3.3     No hay garantías asociadas a los valores.
+3.4     ¿Cuáles son los principales riesgos específicos de los valores?
+3.4.1   Riesgos clave específicos de los Tokens
+
+           a. Los Titulares de OilXCoin Tokens no poseen derechos de propiedad ni de
+                gobernanza sobre el Emisor ni sus activos, únicamente un derecho
+                limitado a terminar los OilXCoin Términos y recibir un pago vinculado al
+                valor de los activos relevantes. Este derecho de Terminación es similar a
+                los derechos de los accionistas sobre los resultados de una liquidación,
+                pero no otorga ninguna influencia sobre la gestión de los activos.
+           b.   El Emisor puede contraer una deuda significativa y utilizar los Activos
+                Relevantes como garantía, lo que podría reducir los ingresos netos
+                disponibles para los Titulares de Tokens en caso de una Terminación. Esta
+                deuda podría agotar potencialmente los fondos disponibles para
+                distribuir a los Titulares de Tokens, dejándoles muy poco o nada.
+           c.   El pago a los Titulares de Tokens tras una Terminación es incierto y puede
+                no reflejar el valor real de los Activos Relevantes debido a la dificultad
+                para venderlos y a la dependencia de valoraciones de terceros. Además,
+                los Titulares de Tokens recibirán el pago únicamente después de que se
+                satisfagan todos los demás acreedores, lo que puede dejar pocos o
+                ningún fondo para distribuir.
+           d.   Los Tokens presentan términos complejos y no estándar, lo que dificulta
+                que los Titulares de Tokens evalúen con precisión los rendimientos
+                potenciales y los riesgos. Es posible que los métodos de valoración
+                habituales no sean efectivos, generando incertidumbre sobre el
+                momento y el importe de cualquier eventual pago.
+           e.   Los Tokens se gestionan a través de un contrato inteligente en la
+                blockchain de Ethereum, que puede contener errores o fallos que
+                perjudiquen a los Titulares de Tokens o afecten la funcionalidad de los
+                Tokens. Si el contrato inteligente falla, el Emisor puede cancelar y volver a
+                emitir los Tokens, lo que complicaría la transferencia y el ejercicio de los
+                derechos asociados.
+           f.   Una sustitución del Emisor podría derivar en un tratamiento fiscal
+                desfavorable, la suspensión de los derechos de los Titulares de Tokens, un
+                mayor riesgo de incumplimiento por parte del Emisor Sustituto y
+                condiciones legales, políticas y económicas menos favorables en la nueva
+                jurisdicción. Estos cambios podrían también disminuir las garantías o la
+                protección global para los Titulares de Tokens.
+
+
+                                                                                           6
+  SECCIÓN 4 – INFORMACIÓN FUNDAMENTAL SOBRE LA OFERTA PÚBLICA DE VALORES
+4.1                       ¿En qué plazos y condiciones puedo invertir en este valor?
+
+Periodo de oferta
+El prospecto anterior fue aprobado por la Finanzmarktaufsicht Liechtenstein el 28/02/2025.
+
+El presente prospecto es, por tanto, un prospecto recientemente aprobado, en virtud del cual se
+continuará la oferta pública iniciada bajo el prospecto previamente aprobado.
+
+El período de oferta del prospecto anterior comenzó el 23 de abril de 2025 (UTC 13:00) y finalizó el
+27 de febrero de 2026. El nuevo período de oferta basado en el prospecto recientemente aprobado
+comienza el 10 de abril de 2026 y permanecerá abierto por tiempo indefinido hasta que sea
+terminado por decisión del Emisor o, a más tardar, al final de un año natural contado desde la
+aprobación de este prospecto de valores por la FMA Liechtenstein.
+
+Mercados objetivo
+Este valor se ofrece en principio al público en todo el EEE y Suiza. Inicialmente, los
+principales mercados objetivo previstos son: Alemania, Austria, Bélgica,Croacia, Chipre,
+Dinamarca, Eslovaquia, Eslovenia, España, Finlandia, Francia, Hungría, Irlanda, Italia,
+Letonia, Liechtenstein, Luxemburgo, Malta, Noruega, Países Bajos, Polonia, Portugal,
+República Checa, Rumanía y Suecia. Se podrán presentar notificaciones adicionales dentro
+del EEE en una fecha posterior.
+
+Precio de emisión
+El precio del OilXCoin será fijado por la dirección del Emisor en función de la demanda de los
+inversores, incluida la información recibida en contratos directos entre el Emisor y los inversores, y
+podrá tener en cuenta la información disponible públicamente, incluidos los precios observados en
+plataformas de negociación secundarias, cuando proceda. El precio aplicable se publicará en el sitio
+web del Emisor.
+El precio máximo será de 100 USD.
+
+Modalidades de pago
+El precio de emisión de los OilXCoins deberá pagarse (1) en Ethereum, mediante
+transferencia a la Dirección de Cartera (Wallet address) proporcionada al momento de la
+compra (Checkout) en el sitio web del Emisor, (2) en moneda fiduciaria, mediante
+transferencia bancaria al IBAN proporcionado al momento de la compra en el sitio web del
+Emisor, o (3) en stablecoins denominadas en dólares estadounidenses (incluidos USDC y USDT),
+exclusivamente como medio técnico de liquidación y transmisión de pagos, y no como
+denominación, valor de referencia ni base subyacente del precio de emisión. El Emisor se reserva el
+derecho, a su sola discreción y de conformidad con la legislación aplicable, de añadir, restringir,
+suspender o dejar de aceptar determinados criptoactivos como medio de pago.
+
+Entrega de los OilXCoins
+Los OilXCoins se entregarán a los inversores dentro de los tres días hábiles posteriores al
+pago del precio de compra y tras la aprobación de la información de conocimiento del cliente
+(know-your-customer) que se haya proporcionado. Los OilXCoins se emiten como valores
+basados en registro (ledger-based securities) conforme al derecho suizo, y por tanto se registrarán
+como Tokens en la Ethereum Blockchain. Los OilXCoins se entregarán al inversor en la cartera
+digital de Ethereum que dicho inversor haya proporcionado en el sitio web del Emisor. Los
+
+                                                                                                     7
+inversores necesitarán una cartera compatible con Ethereum para participar en la oferta y
+recibir OilXCoins.
+
+Vesting de los OilXCoins
+Todos los OilXCoins vendidos en esta oferta pública que comienza el 10 de abril de 2026 no están
+sujetos a un período de vesting.
+
+Todos los OilXCoins vendidos durante los primeros veinte (20) días de la oferta pública iniciada el 23
+de marzo de 2025 estuvieron sujetos a un calendario de vesting en diez fases. Los Tokens adquiridos
+por cada Tenedor quedarán liberados en tramos del diez por ciento (10 %) cada mes, a partir del 1
+de julio de 2025, según se ilustra en la tabla siguiente:
+
+      1 de julio 2025                   10%
+     1 de agosto 2025                   10%
+  1 de septiembre 2025                  10%
+    1 de octubre 2025                   10%
+  1 de noviembre 2025                   10%
+   1 de diciembre 2025                  10%
+     1 de enero 2026                    10%
+    1 de febrero 2026                   10%
+     1 de marzo 2026                    10%
+    1 de abril de 2026                  10%
+
+
+Ingresos
+El Emisor, como empresa emergente con un modelo de negocio novedoso y una propuesta
+de venta única, no es directamente comparable con otros emisores de productos financieros
+similares. En consecuencia, no es posible la validación de estimaciones de ingresos brutos
+basadas en precedentes.
+
+El Emisor prevé que la oferta de OilXCoin genere unos ingresos brutos aproximados de USD
+10.000.000 a más tardar el 31 de diciembre de 2026. Esta proyección refleja supuestos actualizados
+basados en la experiencia del Emisor hasta la fecha y en las condiciones de mercado vigentes.
+Teniendo en cuenta los costes estimados de la emisión, se prevé que los ingresos netos
+relacionados con la venta de OilXCoin asciendan a aproximadamente 9.500.000 USD. Los
+ingresos netos procedentes de la emisión de los tokens serán utilizados por el Emisor
+principalmente para financiar sus actividades empresariales. En particular, los ingresos se
+destinarán a los siguientes fines:
+a. costes legales y regulatorios, incluidos los gastos de cumplimiento normativo,
+estructuración y documentación;
+b. actividades de marketing y comunicación con inversores;
+c. desarrollo del producto;
+d. costes de personal e infraestructuras;
+e. adquisición de concesiones adicionales (leases);
+
+
+                                                                                                    8
+f. financiación de pagos de arrendamiento operativo en relación con las actividades del
+Emisor;
+g. constitución de reservas estatutarias obligatorias exigidas por la ley;
+h. servicios de consultoría y asesoramiento;
+i. fines corporativos generales.
+La asignación de los ingresos podrá ajustarse a discreción del Emisor, con sujeción a la
+legislación aplicable y a las necesidades operativas del Emisor.
+4.2                              ¿Por qué se presenta este Folleto de Crecimiento de la Unión
+                                 Europea?
+4.2.1                            Breve descripción de los motivos de la oferta, así como,
+                                 cuando proceda:
+a)                               Uso y monto neto                Uso de los ingresos
+                                                                 Se prevé actualmente que el
+                                                                 Emisor destine los ingresos
+                                                                 netos esperados de la oferta
+                                                                 a      fines     corporativos
+                                                                 generales. Esto incluye, sin
+                                                                 limitarse a:
+                                                                     a. adquisición         de
+                                                                         arrendamientos de
+                                                                         petróleo y gas y/o
+                                                                         financiación       de
+                                                                         filiales o empresas
+                                                                         conjuntas        para
+                                                                         adquirir       dichos
+                                                                         arrendamientos;
+                                                                     b. inversiones         en
+                                                                         nuevas tecnologías;
+                                                                     c. infraestructura       y
+                                                                         ciberseguridad;
+                                                                     d. asuntos
+                                                                         legales/regulatorios;
+                                                                     e. marketing;
+                                                                     f. gastos operativos.
+
+                                                                Cantidad      de     Tokens
+                                                                Ofrecidos
+                                                                Se ofrecen hasta 60 millones
+                                                                de Tokens por medio de esta
+                                                                oferta.
+
+                                                                Asignación de suministro
+                                                                La oferta total de 100
+                                                                millones de Tokens se asigna
+                                                                y/o reserva de la siguiente
+                                                                manera:
+
+
+                                                                                             9
+   a. Titulares de NFT: 20
+      millones;
+   b. Fundadores
+      (asignados): 8,2
+      millones;
+   c. Primeros seguidores
+      (asignados): 1,58
+      millones;
+   d. Empleados, asesores,
+      supervisores
+      (reservados): 3,92
+      millones;
+   e. Proveedores de
+      servicios
+      (parcialmente
+      reservados): 3,51
+      millones;
+   f. Programas          de
+      recomendaciones
+      futuras (reservados):
+      2,79 millones.
+
+Sitio web
+Los Tokens serán ofrecidos al
+mercado público por medio
+del sitio web del Emisor:
+https://oilxcoin.io.
+
+Ingresos
+El Emisor, como una empresa
+emergente con un modelo
+de negocio novedoso y una
+propuesta de venta única, no
+es directamente comparable
+con otros emisores de
+productos         financieros
+similares. Por consiguiente,
+no es posible validar
+estimaciones de ingresos
+brutos       basadas       en
+precedentes. El Emisor prevé
+unos ingresos brutos de USD
+10.000.000 a más tardar el 31
+de diciembre de 2026, con unos
+ingresos netos (tras considerar
+los costes de la oferta) de
+aproximadamente            USD
+9.500.000.
+
+                            10
+b)                          Contrato de suscripción         El Emisor no celebró ningún
+                                                            acuerdo de suscripción.
+c)                          Conflicto de interés            El Emisor puede celebrar
+                                                            contratos con empresas en
+                                                            las que los miembros de la
+                                                            administración del Emisor
+                                                            tengan un interés, como
+                                                            Surgitech Inc. y una empresa
+                                                            planificada en los Emiratos
+                                                            Árabes Unidos, lo que podría
+                                                            dar     lugar    a    posibles
+                                                            conflictos de interés. Los
+                                                            miembros           de       la
+                                                            administración del Emisor
+                                                            pueden poseer OilXCoins y
+                                                            tener acceso a información
+                                                            material no pública sobre los
+                                                            OilXCoins, lo que les
+                                                            permitiría comerciar con los
+                                                            OilXCoins en momentos o
+                                                            bajo      condiciones     que
+                                                            podrían no estar disponibles
+                                                            para otros Titulares de
+                                                            OilXCoins.
+4.3                         ¿Quién es el oferente y/o la persona que solicita la admisión
+                            a cotización?
+El Emisor es el oferente.
+
+
+
+
+                                                                                       11
+

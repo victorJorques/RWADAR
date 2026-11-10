@@ -1,0 +1,57 @@
+URL: https://www.cnmv.es/portal/BusquedaAdvertencias?lang=es
+Busqueda: Gate
+ConsultadoUtc: 2026-11-10T09:12:00Z
+
+Listado de entidades advertidas
+
+Pulse sobre la cabecera de la columna 'Fecha' o la columna 'Compañías sobre las que se advierte' para ordenar de forma ascendente/descendente por dicho concepto.
+
+«
+1
+2
+»
+Página 1 de 2
+Resultado de búsqueda de Advertencias de la CNMV
+Fecha	Compañías sobre las que se advierte	Documento	Documento (en inglés)	Observaciones
+19/01/2026	
+HTTPS://GATEWAYAFFILIATEMARKETS.ONLINE
+GATEWAY AFFILIATE MARKETS
+GATEWAYAFFILIATEMARKET
+			 
+24/11/2025	
+HTTPS://CRYPTGATEMARKET.COM
+CRYPTGATEMARKET LTD
+			 
+22/01/2024	
+HTTPS://CAPITALGATES.IO
+CAPITAL GATES
+			 
+23/10/2023	
+HTTPS://WWW.FERGATEX.IO
+FERGATEX
+			 
+09/10/2023	
+WWW.CAPITAL-GATEWAYCG.COM
+CAPITAL-GATEWAYCG
+			 
+25/09/2023	
+HTTPS://GATEWAYCAPITALCG.COM/ES
+GATEWAYCAPITALCG
+			 
+17/04/2023	
+HTTPS://IPGATE.TRADE/
+			 
+21/03/2022	
+HTTPS://GOLDENGATES.GLOBAL/ES/
+			 
+07/02/2022	
+HTTPS://WWW.GATE.IO/
+GATE.IO
+			 
+27/09/2021	
+HTTPS://MINERGATE.ES/
+MINERGATE
+			 
+
+Criterios de consulta: por tipo No autorizadas, de nombre Gate.
+

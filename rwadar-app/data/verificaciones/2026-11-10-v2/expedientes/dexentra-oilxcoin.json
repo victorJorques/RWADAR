@@ -1,0 +1,236 @@
+{
+  "slug": "dexentra-oilxcoin",
+  "tipoExpediente": "candidata",
+  "grupo": "candidatas-europa",
+  "proveedor": "OilXCoin (DeXentra)",
+  "plataformaSlug": null,
+  "entidadComercializadora": "DeXentra GmbH (vende directamente en su web; no consta intermediario regulado)",
+  "emisor": "DeXentra GmbH (Zug, Suiza; registro mercantil CHE-410.926.349; LEI 50670069463VM690ML91)",
+  "vehiculo": "Valor de deuda del propio emisor, sin vehículo separado",
+  "token": "OilXCoin (ERC-20, Ethereum), valor basado en registro conforme al art. 973d del Código de Obligaciones suizo",
+  "derechoAdquirido": "Derecho contingente, no garantizado y subordinado frente al emisor, ligado al valor de unos activos de petróleo y gas; sin cupón ni rendimiento periódico; solo cobra si se da por terminado el token (cada 15 años a opción del emisor, por voto de más del 90 % de titulares o por insolvencia)",
+  "jurisdiccion": "CH (emisor) · LI (autoridad que aprobó el folleto)",
+  "identificador": "ISIN CH1376324914",
+  "moneda": "USD",
+  "documentos": [
+    {
+      "titulo": "OilXCoin EU Growth Prospectus 2026 (versión completa en inglés)",
+      "url": "https://oilxcoin.us/media/312/download/2026%2004%2010_OilXCoin_EU_Growth_Prospectus%202026%20-%20Full%20Version_ENGLISH_FINAL_signed.pdf?v=1",
+      "versionOFecha": "aprobado por la FMA de Liechtenstein el 10/04/2026 (STDA-91)",
+      "paginas": 84,
+      "sha256": "758eefce2987c16be358d95102edddd5b13e31d8eb68c56e8cac447b08b8f1cc",
+      "leido": true,
+      "nota": "4,4 MB: copia en fuentes/crudo/ (fuera de Git); leídas las secciones de oferta, precio y riesgos"
+    },
+    {
+      "titulo": "Nota de síntesis en español del folleto de crecimiento 2026",
+      "url": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+      "versionOFecha": "2026 (fichero fechado 29/01/2026; remite a la aprobación del 10/04/2026)",
+      "paginas": 11,
+      "sha256": "861d53f3963ab7efd15acf247f34ba4de28bb134bfaa702c357d3e287282571f",
+      "leido": true,
+      "nota": "PDF en fuentes/crudo/ porque nombra a personas físicas; texto recortado en fuentes/oilxcoin/oilxcoin-resumen-es-2026.txt"
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "FMA Liechtenstein (vía registro de folletos de ESMA)",
+      "entidad": "DeXentra GmbH",
+      "numero": "STDA-91",
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*DeXentra*&wt=json&rows=20",
+      "alcance": "Folleto independiente aprobado el 10/04/2026 y pasaportado a 26 Estados, entre ellos SPAIN. Es aprobación de un folleto, no una licencia de la entidad.",
+      "consultadoUtc": "2026-11-10T09:22:34Z"
+    },
+    {
+      "regulador": "CNMV (pasaportes recibidos)",
+      "entidad": "DeXentra GmbH",
+      "numero": "STDA-91",
+      "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=50670069463VM690ML91",
+      "alcance": "La CNMV recibió la notificación el 10/04/2026 (folleto aprobado el 10/04/2026). La columna «Traducción de la Nota de Síntesis» aparece vacía para STDA-91 (sí la tenía el folleto anterior STDA-79).",
+      "consultadoUtc": "2026-11-10T09:20:56Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "DeXentra",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=DeXentra",
+      "consultadoUtc": "2026-11-10T09:09:29Z"
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "OilXCoin",
+      "resultado": "sin coincidencias",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=OilXCoin",
+      "consultadoUtc": "2026-11-10T09:09:31Z"
+    }
+  ],
+  "claims": [
+    {
+      "campo": "estado",
+      "literal": "El nuevo período de oferta ... comienza el 10 de abril de 2026 y permanecerá abierto por tiempo indefinido hasta que sea terminado por decisión del Emisor o, a más tardar, al final de un año",
+      "dato": "oferta pública abierta desde el 10/04/2026 hasta como mucho el 10/04/2027",
+      "fuentePrimaria": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+      "localizador": "Nota de síntesis en español, sección 4.1 «Periodo de oferta»",
+      "fechaDato": "2026-04-10",
+      "consultadoUtc": "2026-11-10T09:16:48Z",
+      "alcanceYLimites": "No hay en la web una cifra de lo ya colocado en 2026 ni un aviso de cierre; no se ha comprobado dentro del área de compra (requiere cuenta).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Este valor se ofrece en principio al público en todo el EEE y Suiza. ... los principales mercados objetivo previstos son: Alemania, Austria, ... España ...",
+      "dato": "España figura entre los mercados de la oferta pública",
+      "fuentePrimaria": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+      "localizador": "Nota de síntesis en español, sección 4.1 «Mercados objetivo»",
+      "fechaDato": "2026-04-10",
+      "consultadoUtc": "2026-11-10T09:16:48Z",
+      "alcanceYLimites": "Conflicto: la portada de la web dice que el token está «designed for accredited and qualified investors worldwide».",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "issued on Ethereum, structured under European securities law, and designed for accredited and qualified investors worldwide",
+      "dato": "la web lo dirige a inversores acreditados y cualificados",
+      "fuentePrimaria": "https://oilxcoin.io/",
+      "localizador": "Portada (redirige a oilxcoin.us/en), bloque «The World’s First Oil & Gas Token»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-10T09:09:37Z",
+      "alcanceYLimites": "Contradice la oferta pública al EEE del folleto; no se sabe qué aplica hoy a un particular en España.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Denominación 1 OilXCoin. La inversión mínima es de 100 OilXCoin.",
+      "dato": "100 OilXCoin",
+      "fuentePrimaria": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+      "localizador": "Nota de síntesis en español, sección 3.1.1 b)",
+      "fechaDato": "2026-04-10",
+      "consultadoUtc": "2026-11-10T09:16:48Z",
+      "alcanceYLimites": "El importe en dinero depende del precio, que fija el emisor (máximo 100 USD por OilXCoin) y que no se encontró publicado en las páginas públicas consultadas.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "precio",
+      "literal": "El precio del OilXCoin será fijado por la dirección del Emisor en función de la demanda ... El precio máximo será de 100 USD.",
+      "dato": null,
+      "fuentePrimaria": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+      "localizador": "Nota de síntesis en español, sección 4.1 «Precio de emisión»",
+      "fechaDato": "2026-04-10",
+      "consultadoUtc": "2026-11-10T09:16:48Z",
+      "alcanceYLimites": "Precio vigente no visible en la web pública (oilxcoin.us/en/token no lo muestra).",
+      "estado": "no_verificable"
+    },
+    {
+      "campo": "salida",
+      "literal": "el Emisor no ha tomado ninguna decisión de solicitar la admisión de los Tokens a negociación ... no existe garantía alguna de que dichos mecanismos estén disponibles",
+      "dato": "sin mercado regulado ni recompra; reventa solo P2P o por terceros, sin garantía",
+      "fuentePrimaria": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+      "localizador": "Nota de síntesis en español, sección 3.2.1",
+      "fechaDato": "2026-04-10",
+      "consultadoUtc": "2026-11-10T09:16:48Z",
+      "alcanceYLimites": "El cobro solo llega con una «Terminación» (cada 15 años a opción del emisor, voto >90 % o insolvencia) y después de pagar a todos los demás acreedores.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "Los OilXCoins no proporcionan un rendimiento fijo ni periódico",
+      "dato": "sin rendimiento",
+      "fuentePrimaria": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+      "localizador": "Nota de síntesis en español, sección 3.1.1 e)",
+      "fechaDato": "2026-04-10",
+      "consultadoUtc": "2026-11-10T09:16:48Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "custodia",
+      "literal": "Los inversores necesitarán una cartera compatible con Ethereum para participar en la oferta y recibir OilXCoins.",
+      "dato": "autocustodia en wallet propia",
+      "fuentePrimaria": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+      "localizador": "Nota de síntesis en español, sección 4.1 «Entrega de los OilXCoins»",
+      "fechaDato": "2026-04-10",
+      "consultadoUtc": "2026-11-10T09:16:48Z",
+      "alcanceYLimites": "Pago en ETH, transferencia bancaria o USDC/USDT en la web del emisor.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "A 31 de diciembre de 2024, el emisor informa de ... patrimonio neto por importe de 50.910,46 USD ... no se dispone de estados financieros correspondientes al ejercicio financiero 2025",
+      "dato": "emisor de 2023 con fondos propios de unos 51.000 USD a 31/12/2024",
+      "fuentePrimaria": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+      "localizador": "Nota de síntesis en español, sección 2.2",
+      "fechaDato": "2024-12-31",
+      "consultadoUtc": "2026-11-10T09:16:48Z",
+      "alcanceYLimites": "Obligaciones no garantizadas y subordinadas; el emisor puede endeudarse con los activos como garantía (sección 3.4.1 b).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "El inversor está a punto de adquirir un producto que no es sencillo y puede resultar difícil de comprender.",
+      "dato": "producto complejo",
+      "fuentePrimaria": "https://oilxcoin.us/media/325/download/260129_OilXCoin_EU_Growth_Prospectus%202026-%20Summary_SPANISH.pdf?v=1",
+      "localizador": "Nota de síntesis en español, sección 1.5.1 e)",
+      "fechaDato": "2026-04-10",
+      "consultadoUtc": "2026-11-10T09:16:48Z",
+      "alcanceYLimites": "",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "no_cumple",
+      "nota": "Hay folleto aprobado por la FMA de Liechtenstein y notificado a la CNMV, pero el emisor suizo vende directamente en su web, sin una entidad con licencia MiFID o ECSP que comercialice en España."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Oferta pública abierta desde el 10/04/2026 según el folleto; precio vigente y lo colocado no se ven en público."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "Conflicto entre folleto (oferta al público del EEE, España incluida) y web (inversores acreditados y cualificados); mínimo de 100 tokens sin precio publicado; sin salida organizada."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Sin advertencias de la CNMV para DeXentra ni OilXCoin; riesgos muy altos según el propio folleto (emisor nuevo, deuda subordinada, sin rendimiento, sin mercado)."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "no_confirmado",
+  "cambiosRespectoPublicado": [
+    {
+      "campo": "expediente",
+      "antes": "sin expediente (no estudiada; hallada hoy en el registro de folletos de ESMA pasaportados a España)",
+      "ahora": "folleto de crecimiento STDA-91 (FMA, 10/04/2026) notificado a la CNMV; no se propone por falta de comercializador regulado, conflicto de destinatarios y ausencia de salida",
+      "fuente": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=50670069463VM690ML91",
+      "critico": false
+    }
+  ],
+  "propuestaTarjeta": null,
+  "resumenTarjeta": {
+    "minimo": "100 tokens; el precio lo fija el emisor (máx. 100 USD) y no se ve publicado (10/11)",
+    "accesoEspana": "El folleto incluye España, pero la web lo dirige a inversores acreditados",
+    "salida": "Sin mercado ni recompra: solo cobras si el token se da por terminado"
+  },
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no_confirmado",
+    "minimoEntrada": "100 OilXCoin (precio en USD no publicado)",
+    "supervisorVerificado": "FMA Liechtenstein aprobó el folleto STDA-91; la CNMV recibió el pasaporte el 10/04/2026. El emisor no tiene licencia.",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "no",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Es un valor tokenizado ligado a petróleo y gas con folleto aprobado en el EEE y notificado a la CNMV.",
+    "porQueNo": "Lo vende el propio emisor sin intermediario regulado, la web lo dirige a acreditados, no hay salida y el emisor es muy pequeño."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "No admitir. El folleto (FMA, 10/04/2026) está notificado a la CNMV, pero: 1) lo vende directamente un emisor suizo sin licencia de servicios de inversión; 2) la web lo dirige a «accredited and qualified investors», en conflicto con el folleto; 3) no hay rendimiento, ni mercado, ni recompra: solo se cobra si se termina el token; 4) emisor nuevo con unos 51.000 USD de fondos propios (31/12/2024) y deuda subordinada; 5) precio vigente no publicado.",
+  "bloqueos": [
+    "Precio vigente y cuántos tokens quedan: solo dentro del área de compra (requiere cuenta); no se intentó.",
+    "No se confirmó si un particular residente en España puede completar el KYC de la web."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-10T09:09:00Z",
+    "finUtc": "2026-11-10T09:22:52Z"
+  }
+}

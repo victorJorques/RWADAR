@@ -2330,7 +2330,7 @@ linear 1.332,64
 -133,26AfA 1.132,75
 199,89
 0,00
-4-0 Endmontage Klimaanl. Polizei Schreiner Ing. Christian,
+4-0 Endmontage Klimaanl. Polizei [persona física recortada],
 Climanova Air Conditioning,
 Leobersdorf
 14.09.2020

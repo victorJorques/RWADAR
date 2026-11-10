@@ -1,0 +1,65 @@
+URL: https://blog.base.org/tokenized-stocks
+ConsultadoUtc: 2026-11-10T09:06:22Z
+
+ Stocks just got updated. | Base 
+ Trade, lend, and borrow stocks 24/7 on Base. 
+ Trade stocks 24/7 on Base. 
+ Learn More about stocks on Base 
+ Base Open menu 
+ Base 
+ b 
+ a 
+ s 
+ e 
+ b a s e 
+ Solutions
+ Ecosystem
+ Developers
+ Resources
+ Get Started
+ Product Launches
+ Stocks just got updated.
+ Base · Aug 24, 2026 
+ Base exists to bring the world's economy onchain: a new financial system where any asset can be traded, borrowed against, and available globally, 24/7. Today, we took a big step towards that vision as tokenized stocks issued by Coinbase, built on the B20 standard, are now live natively on Base. These are real shares, held 1:1 by a regulated custodian, owned outright by whoever holds the token.
+ Billions of dollars of traditional assets have already moved onchain, from fiat to treasuries, because the technology is faster and cheaper. Stocks are next. Users can now hold tokenized, fractional shares of companies like Apple and NVIDIA directly in their self-custody wallets, access deep liquidity on Aerodrome , and use them across the Base DeFi ecosystem. That opens up new opportunities for builders.
+ Why this matters for builders
+ A chain is only as useful as the assets that live on it. 
+ For a decade the best assets onchain were crypto-native, so what you could build was mostly limited to crypto. Now household-name equities are here too, and they can be integrated into the same financial rails builders already use. Here are some of the things this opens up:
+ New products, new customers. You can build things that weren't possible with only crypto assets, like an app where someone holds Apple next to their stablecoins and borrows against it. And you can serve people who want stocks rather than crypto, reaching a much larger global market.
+ Better raw material for DeFi. Stocks bring yield: they pay dividends, and lending shares to other investors is one of the oldest and largest yield businesses in finance, with trillions of dollars of stock on loan at any time. Stocks can also be better collateral for securing loans, powered by Aave on Base. This significantly widens the product set that lending protocols can serve.
+ Your work compounds. Because these are standard tokens on Base, what you build plugs into what everyone else builds. A stock in a DEX pool can be borrowed against in a lending market, and that position can sit inside a structured product someone else runs. And this is only the first wave. More stocks are coming so what you build now is set up for every asset that follows.
+ Whole industries are moving onchain. The large businesses of traditional finance are moving onchain: market making, stock lending, margin and credit, indexing, derivatives, and more. Every business built on TradFi rails is up for grabs onchain.
+ What no one has built yet. Agents are becoming paying customers on Base ( the agentic economy ). Programmable, always-on tokenized stocks are a new primitive for the agentic economy, and what gets built with them is still wide open. Teams like Virtuals and Treasures are already wiring tokenized assets into agentic trading.
+ If you're looking for funding, the Base Ecosystem Fund is backing teams in these areas, from portfolio-backed credit to new onchain markets ( Request for Builders ).
+ The Base ecosystem showed up for day one
+ We're launching alongside a deep ecosystem of builders. Everything that makes a stock accessible and useful onchain is live on Base today. The following third-party protocols and services have publicly announced support for the B20 standard.
+ Third-party incentive programs from participating protocols may be available around the ecosystem covering trading, liquidity, and other incentives. A list of venues and contract addresses is at base.org/stocks.
+ Why stocks are better on Base
+ A Coinbase Tokenized Stock is a real share that you actually own, onchain. Authorized participants, which are institutional market makers, buy the shares. Those shares go to Alpaca , a regulated broker and custodian, in a bankruptcy-remote structure supervised by Abu Dhabi Global Market’s (ADGM) regulatory authority. If you hold the token, you hold a direct claim on the share. Coinbase Tokenized Stocks are the real deal.
+ For a user that means:
+ Globally accessible: Non-US users in eligible jurisdictions with an internet connection and a wallet can get exposure to leading US stocks without a brokerage account, local market access, or settlement delays.
+ Available 24/7: Markets shouldn't sleep. Tokenized stocks can trade across always-on AMM pools, so users can react to an earnings call at 3am, a macro event, or weekend news, instead of trading hours designed for a pre-internet era.
+ Built for DeFi: Traditional stocks sit idle in a brokerage account. On Base, they become liquid, programmable building blocks. Use your tokenized NVIDIA stock as collateral for an onchain loan on Aave, supply Apple to a decentralized exchange to earn yield, or build automated trading strategies.
+ Once minted, these are standard B20 tokens: hold, transfer, and trade, with no whitelisted wallets and no platform lock-in. B20 extends the ERC-20 standard, so they already work with the wallets, routers, and protocols you run today. Dividends and splits are handled by an onchain multiplier, so balances never change and DeFi positions don't break. Full integration details are in the technical docs .
+ This is just the beginning
+ We've seen this before. In September 2018, Coinbase and Circle launched USDC. To many, it felt inevitable that the world would want a dollar that was global, programmable, and onchain, and it was: stablecoins have grown to hundreds of billions in market cap, they move trillions a year, and financial institutions around the world now use them.
+ Tokenized stocks bring the same properties onchain - global access, 24/7 trading, and full composability across DeFi - capabilities not possible with a traditional share.
+ The best assets in the world are coming onchain, and they are coming to Base, because this is where the liquidity, the users, and the builders already are. More Coinbase tokenized stocks will land over the coming weeks, and other real-world assets are also coming to Base soon. 
+ The financial system is being rebuilt onchain, and the builders on Base are the ones making it happen. To get started go to base.org/stocks .
+ Let's build.
+ *Disclaimer: Tokenized equities accessible through Base and its launch partners may be subject to issuer-imposed eligibility requirements, KYC, whitelisting, or jurisdictional restrictions. Tokenized Stocks are only available in eligible jurisdictions outside of the U.S. You are solely responsible for conducting your own research and for compliance with applicable restrictions in your jurisdiction. Nothing in this post constitutes investment advice or a solicitation to transact in any tokenized security.  
+ References to third-party protocols, applications, services, and incentive programs are informational only, independent of Base and Coinbase, and do not constitute an endorsement, partnership, or warranty; third-party products and rewards are subject to their own terms and are not offered, funded, or guaranteed by Base or Coinbase, and users should conduct their own diligence. Base is a public, permissionless blockchain and does not issue, offer, sell, custody, or make markets in any tokenized security referenced in this post. Forward-looking statements reflect current expectations only and actual outcomes may differ materially; digital assets, tokenized securities, and DeFi activity carry risk of loss, including total loss of principal, and smart contract, protocol, and market risk. 
+ Start building on Base.
+ Build on the open economy. Fast, liquid and always on.
+ Build on Base Contact Us 
+ More from Latest
+ The Agentic Economy Is Here
+ TL;DR Agents are becoming the internet’s newest paying customers, and the economy serving them is moving fast. On Base, agents already use wallets and stablecoins to pay for…
+ May 29, 2026 
+ Introducing Base MCP: Your agent’s gateway to Base
+ TL;DR Base MCP is live. Connect your Base Account to your agent and use simple prompts to swap, transfer, track your portfolio, and tap into the Base Ecosystem from chat…
+ May 26, 2026 
+ The Base App Is Now Open To Everyone, Everywhere
+ TLDR: The new Base App is available in more than 140 countries. It’s an everything app for social, trading, and payments with countless ways to earn. Download it today to discover…
+ Dec 17, 2025 
+ 

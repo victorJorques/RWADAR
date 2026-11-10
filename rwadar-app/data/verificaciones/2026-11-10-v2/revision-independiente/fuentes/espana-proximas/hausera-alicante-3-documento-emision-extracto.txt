@@ -1,0 +1,304 @@
+Documento de emisión de Alicante 3 (HAUSERA PROPERTY MANAGER SPV 11, S.A). https://drive.google.com/file/d/1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_ · descarga 2026-11-10T09:23:21Z · 27 págs · SHA-256 9170562a579f34c217255504597895e5720a6dd479125cefacecb79e883447b4. Extracto; nombres de personas físicas y DNI recortados. PDF no guardado.
+
+===== Portada y avisos legales (líneas 7-72 de pdftotext -layout) =====
+
+
+
+                         DOCUMENTO DE EMISIÓN DE OBLIGACIONES POR PARTE DE​
+                 HAUSERA PROPERTY MANAGER SPV 11, S.A CON NOMBRE COMERCIAL “HAUSERA”
+
+
+
+  Denominación del valor con tecnología DLT:                   ALICANTE 3
+
+  Emisor                                                       HAUSERA PROPERTY MANAGER SPV 11, S.A
+
+  Tipo de valor emitido:                                       Obligaciones
+
+  Plazo de vencimiento de emisión:                            25/07/2028
+
+  Número de valores:                                           51.960
+
+  Valor nominal de cada valor:                                 100 €
+                                                               ​
+  Entidad de Servicios de Inversión interviniente:             [nombre recortado] EAFN. (nº Registro 21)
+
+  Entidad Responsable Inscripción y Registro (ERIR)            Ursus-3 Capital AV, S.A (nº Registro 251)
+
+  Comisario Sindicato de Obligacionistas                       D. [nombre recortado]
+
+  Dirección del Smart Contract (Polygon):                    0xbc10da132a553447e1080376fFB1FcbE94BeC265
+
+  Información sobre la Inversión:
+
+  La emisión de los derechos y obligaciones de instrumentos financieros con tecnología DLT por parte de
+  HAUSERA PROPERTY MANAGER SPV 11, S.A., se realiza al amparo de lo dispuesto en la ley 6/2023 de los
+  Mercados de Valores y de los Servicios de Inversión.
+
+  El presente documento no es considerado un folleto informativo ni ha sido revisado por parte de la Comisión
+  del Mercado de Valores ni ninguna otra autoridad competente o administrativa, según lo establecido en el
+  artículo 35.2 de la Ley de Mercado de Valores y Empresas de Servicios de Inversión (LMVSI). El emisor del
+  instrumento financiero es el único responsable del contenido de este documento. La emisión de los derechos
+  y obligaciones de los instrumentos financieros con tecnología DLT se realizará en la infraestructura propia de
+  HAUSERA PROPERTY MANAGER SPV 11, S.A.
+
+  La presente oferta está exenta de la obligación de publicar un folleto informativo conforme al artículo 35 de la
+  Ley 6/2023, de 17 de marzo, de los Mercados de Valores y de los Servicios de Inversión, en relación con el
+  artículo 3.2, letras a) y b), del Reglamento (UE) 2017/1129, en la redacción dada por el artículo 1, apartado 3, del
+  Reglamento (UE) 2024/2809 del Parlamento Europeo y del Consejo, de 23 de octubre de 2024, al no estar
+  sujeta a notificación de conformidad con el artículo 25 del Reglamento (UE) 2017/1129 y ser el importe
+  agregado total en la Unión de los valores ofertados inferior a doce millones de euros por emisor u oferente,
+  calculado sobre un período de doce meses conforme a las reglas de cómputo establecidas en el artículo 3.2
+  quater del citado Reglamento. Esta exención de la obligación de publicar un folleto informativo no excluye la
+  consideración de la oferta como oferta pública de valores..
+
+  El presente documento ha sido validado por una entidad autorizada para la prestación de servicios de
+  inversión, e igualmente el proceso de comercialización de los valores con tecnología DLT va a ser supervisado
+  por dicha entidad autorizada. La validación del presente documento por parte de la empresa de servicios de
+  inversión se ha realizado sobre la información a entregar a los inversores, que deberá ser clara, imparcial y no
+  engañosa y referirse a las características y riesgos de los valores emitidos, así como a la situación jurídica y
+  económico-financiera del emisor de una manera suficientemente detallada para permitir que el inversor
+  pueda tomar una decisión de inversión. Las inversiones que se describen en el presente documento de oferta
+  de emisión de valores con tecnología DLT (en adelante, el “Documento de Oferta” y la “Oferta”
+  respectivamente) pueden conllevar una pérdida de las cantidades invertidas.
+
+  El contenido del Documento de Oferta y el mecanismo de inversión cumplen con los requerimientos vigentes
+  de la legislación nacional. Es responsabilidad de los inversores potenciales fuera de la jurisdicción española
+  verificar que este instrumento no infringe ninguna normativa local en su país de residencia antes de la
+  formalización del presente acuerdo. Asimismo, HAUSERA PROPERTY MANAGER SPV 11, S.A. asume la
+  responsabilidad de eximir de cualquier sanción, multa o penalidad a [nombre recortado] EAFN.
+
+===== Características y cuadro resumen (líneas 286-370 de pdftotext -layout) =====
+
+Las Obligaciones DLT son valores negociables representados mediante tecnología de registros
+distribuidos (DLT), emitidos conforme a la Ley 6/2023, de los Mercados de Valores y de los Servicios de
+Inversión (LMVSI). No confieren derechos políticos ni de gestión sobre el Emisor y otorgan
+exclusivamente derechos de contenido económico.
+
+Las Obligaciones DLT no garantizan rentabilidad fija ni pagos periódicos. La eventual retribución para
+el inversor depende exclusivamente de la plusvalía que, en su caso, se obtenga con la venta del
+inmueble subyacente, existiendo riesgo de pérdida parcial o total del capital invertido.
+
+     ●​   Denominación: ALICANTE 3
+
+     ●​   Moneda: Euros (€)
+
+     ●​   Valor nominal: 100€
+
+     ●​   Nº valores emitidos: 51.960
+
+     ●​   Fecha de Inscripción y Registro: fecha en la que los valores quedan registrados e inscritos
+          por la ERIR, una vez cumplidos los trámites administrativos/formales exigibles por la CNMV,
+          sin que dicha inscripción afecte al previo nacimiento de la obligación económica.
+
+     ●​   Plazo de Inversión: 20 meses computados desde el 25/11/2026 (inicio de la suscripción).
+
+     ●​   Importe total de la emisión: 5.196.000€
+
+   ●​   Hard Cap: 5.196.000€. Soft Cap para esta emisión será de un 50% que equivale a un importe
+        de 2.598.000€.
+
+
+
+​
+El presente resumen debe leerse como introducción al Documento de la Emisión y toda decisión
+de invertir en los valores debe estar basada en la consideración por parte del inversor del
+Documento de la Emisión en su conjunto, así como de la información pública del emisor
+disponible en cada momento:
+
+                     Emisión de instrumentos financieros – Obligaciones por un importe total
+Cantidad emitida:    de 5.196.000 euros, correspondientes a 51.960 valores con valor nominal
+                     unitario de 100,00 euros cada uno.
+
+
+                     A la par. Importe nominal unitario: 100,00 euros.
+Precio de emisión:
+                     Ticket mínimo: 100,00 euros
+
+
+                     Rentabilidad máxima estimada del 22,00% (equivalente a una Rentabilidad
+                     Anualizada Simple estimada del 13,20% ).​
+Retribución de las
+                     ​
+obligaciones:
+                     Base de cálculo utilizada para la equivalencia anualizada de la rentabilidad
+                     estimada: 365 días
+
+
+                     El periodo de suscripción se iniciará el 25/11/2026 y se extenderá hasta el
+                     30/6/2027.
+
+Periodo de
+                     Si a fecha 02/12/2026 no se hubiera alcanzado al menos el 50% del importe
+suscripción:
+                     total previsto para la emisión (softcap), la emisión no se entenderá
+                     válidamente constituida, procediéndose a la devolución de las cantidades
+                     aportadas por los inversores.
+
+
+Fecha de             25/07/2028
+vencimiento
+
+Ley aplicable:       Las obligaciones están sometidas a normativa española
+
+                     La inscripción y registro de los valores será realizada por la Entidad
+Inscripción y
+                     Responsable de la Inscripción y Registro (ERIR) una vez cumplidos los
+Registro:
+                     trámites administrativos aplicables conforme a la normativa vigente.
+
+
+                     Invertir en obligaciones implica ciertos riesgos. Los principales factores de
+                     riesgo que pueden afectar la capacidad de la Emisora para cumplir con sus
+Factores de
+                     obligaciones. ​
+riesgo:
+                     ​
+
+===== Distribución de pagos, duración, amortización (líneas 440-505 de pdftotext -layout) =====
+
+        costes asociados. El emisor se reserva el derecho a realizar algún pago a los inversores antes de
+        que se realice la venta completa del activo inmobiliario. ​
+
+   ●​   El pago se efectuará mediante transferencia bancaria en euros (€) a la cuenta designada por
+        cada inversor.​
+
+   ●​   Hausera pondrá a disposición de los inversores una plataforma digital donde podrán visualizar
+        su participación, la evolución del proyecto y el estado de los pagos.​
+
+
+
+Distribución de Pagos:
+
+El pago a los inversores estará condicionado a la venta efectiva del activo inmobiliario. En caso de que
+el proyecto no genere suficiente plusvalía, los inversores podrían recibir menos del 100% de su capital
+invertido.​
+​
+Si la plusvalía generada supera el 22%, la diferencia será retenida por Hausera en concepto de
+búsqueda de oportunidad, gestión y comercialización del producto.
+
+
+2.3.5.​ Duración de la Inversión
+
+La inversión tendrá una duración estimada de veinte (20) meses, sin constituir obligación de
+vencimiento en fecha cierta, computados desde el inicio de la suscripción, periodo durante el cual se
+llevará a cabo la compra, trámites administrativos, construcción y venta del inmueble objeto del
+proyecto ALICANTE 3.
+
+La duración indicada tiene carácter estimado y no constituye un compromiso de amortización en
+fecha cierta, dado que la devolución del principal y, en su caso, la retribución, quedan condicionadas a
+la venta efectiva del inmueble.
+
+Extensión del Plazo de Inversión:
+
+En caso de que la venta del inmueble no se haya realizado dentro del período inicial de 20 meses
+debido a diferentes causas como retrasos en los trámites administrativos, ejecución de la obra,
+ausencia de compradores finales de los inmuebles u otros factores adicionales , el Emisor podrá
+prorrogar el plazo de la inversión por un máximo de cuatro (4) meses adicionales, aplicando un
+incremento del 1,1% adicional de rentabilidad sobre el capital invertido por cada mes de prórroga, de
+manera proporcional al número de días, siempre que exista plusvalía suficiente para atender dicho
+incremento. Este incremento no constituye un interés fijo ni una rentabilidad garantizada.
+
+Transcurrido este plazo, Hausera se reserva el derecho a prorrogar por periodos adicionales, siempre
+que dichas prórrogas respondan a criterios de maximización del valor del activo y sean debidamente
+comunicadas a los inversores hasta lograr su venta efectiva.
+
+
+2.3.6.​ Nacimiento de la obligación y devengo
+
+Al inicio de la suscripción, siempre que se hubiera alcanzado el Soft Cap, quedará constituida la
+obligación de deuda asumida por la Sociedad Emisora a favor de los inversores que hayan suscrito y
+desembolsado los valores.
+
+Desde dicha fecha comenzará el cómputo del plazo de inversión de veinte (20) meses y, en su caso, la
+determinación de la eventual rentabilidad conforme al resultado económico del proyecto.
+
+El nacimiento de la obligación económica no quedará condicionado al momento de formalización de
+la inscripción y registro gestionado por la ERIR.
+
+2.3.7.​ Amortización del principal y liquidación condicionada a la venta del inmueble
+
+La devolución del principal y, en su caso, la retribución asociada a las Obligaciones DLT se realizará
+únicamente una vez se haya producido la venta efectiva del inmueble objeto del proyecto y se haya
+podido determinar el resultado económico final de la operación.
+
+
+===== Comercialización, tipos de inversores, suscripción (líneas 900-960 de pdftotext -layout) =====
+
+Para la presente emisión, ha sido designado como Comisario del Sindicato D. [nombre recortado]
+Suárez, quien comparecerá en la escritura de emisión y firmará en nombre del Sindicato. La Asamblea
+General de Obligacionistas podrá, en su caso, modificar esta designación de acuerdo con los
+procedimientos establecidos en el reglamento del sindicato.
+
+El Reglamento del Sindicato de Obligacionistas detalla los derechos y obligaciones de los
+obligacionistas, así como los mecanismos de actuación, toma de decisiones y representación, y se
+encuentra disponible en el Anexo 1 del presente documento.
+
+5.5.​ Dirección y Gestión del Proyecto
+
+Tanto la captación como la gestión de los fondos se llevará a cabo a través del Emisor.
+
+
+5.6.​ Comercialización y colocación de los instrumentos financieros con tecnología DLT a
+      inversores
+
+El Emisor llevará a cabo la comercialización de los valores con tecnología DLT entre inversores a
+través de la plataforma www.hausera.io
+
+Respecto a los potenciales inversores, se llevará a cabo la categorización de los mismos según los
+criterios establecidos por la normativa financiera.
+
+En concreto, se determinará si el potencial inversor puede ser tratado como inversor profesional y, en
+caso contrario (inversor minorista), se evaluará su experiencia y conocimientos para la suscripción de
+dichos instrumentos financieros con tecnología DLT en la presente Emisión. Con respecto a los
+inversores que tengan la condición de minoristas, HAUSERA PROPERTY MANAGER SPV 11, S.A será
+responsable de determinar si invertir en el presente proyecto le resulta conveniente.
+
+Igualmente, será necesario por parte de los potenciales inversores completar el proceso de
+identificación formal habilitado en la plataforma www.hausera.io/onboard para validar la información
+recibida por los potenciales inversores en materia de identificación formal y prevención del blanqueo
+de capitales (PBC-FT), pudiendo subcontratar los servicios de terceros para el proceso KYC.
+
+Estos inversores iniciales serán incluidos en una “Whitelist o Lista Blanca” o listado aprobado de
+inversores tras haber superado los procesos de KYC y PBC definidos anteriormente. Esta Whitelist
+será confeccionada en el momento en el que los posibles inversores superen con éxito los procesos
+de KYC y PBC del Emisor.
+
+En relación con la categorización de los posibles inversores, su identificación y la información relativa
+a (PBC-FT), HAUSERA PROPERTY MANAGER SPV 11, S.A será responsable del tratamiento de dichos
+datos personales, que se ajustarán a las políticas de privacidad estipuladas por el propio Emisor.
+
+
+5.7.​ Tipos de inversores a los que va dirigida la Emisión
+
+La oferta de los instrumentos financieros con tecnología DLT se dirigirá, tanto a inversores
+cualificados, entendiendo por tales, los inversores profesionales según la definición de los mismos
+que hace mención el artículo 205 LMVSI y su reglamento de desarrollo, como a determinadas
+personas físicas y jurídicas que no tengan la condición de inversor cualificado. En estos últimos casos,
+HAUSERA PROPERTY MANAGER SPV 11, S.A analizará la información provista por el inversor a fin de
+determinar que el inversor tiene la suficiente experiencia y conocimientos financieros como para
+considerarlo idóneo para realizar la inversión en los valores con tecnología DLT.
+
+
+5.8.​ Suscripción de los instrumentos financieros con tecnología DLT
+
+El compromiso de suscripción de los instrumentos financieros con tecnología DLT se llevará a cabo
+durante el periodo de suscripción, definido en la cláusula 5.9 del presente documento, en la
+plataforma www.hausera.io. Los inversores pueden optar por suscribir un Acuerdo de Reserva de
+
+===== Transmisibilidad (líneas 985-990 de pdftotext -layout) =====
+descuentos en la emisión.
+
+
+5.12.​Distribución de los instrumentos financieros con tecnología DLT
+
+Los instrumentos financieros con tecnología DLT serán distribuidos a las carteras digitales de los
+
+===== Riesgo de iliquidez (líneas 1130-1136 de pdftotext -layout) =====
+    ●​   Desviaciones presupuestarias: Aunque se realiza un análisis detallado de los costos previstos,
+         es posible que algunos rubros no contemplados inicialmente incrementen el presupuesto
+         total, reduciendo el margen de rentabilidad esperada y afectando la distribución de
+         rendimientos a los inversores.
+
+Dado que la viabilidad económica del proyecto depende de la correcta ejecución de la obra y posterior
+venta del activo, cualquier desfase en los costos o retraso en la ejecución puede impactar
