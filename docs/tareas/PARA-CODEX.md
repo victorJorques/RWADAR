@@ -6,6 +6,25 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 10 de noviembre de 2026 (3) · Claude · «Noticias del sector» en Inicio (web y app)
+
+Víctor pidió una sección pequeña de noticias, del día y las más importantes del sector, «muy visuales, solo el titular». Va en Inicio justo después de «La tokenización en el mundo», en la web y en la app, en un commit encima de ese módulo. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**
+
+**Qué hay**
+- Datos: `rwadar-site/datos/noticias.json`, copia exacta de las 8 noticias verificadas del ciclo del 10/11 (`noticias-2026-11-10.json` de la verificación `2026-11-10-v2`). Ningún texto cambiado. Se publica como recurso estático en `/datos/noticias.json` (en `ARCHIVOS_PUBLICABLES`; la regla de `/datos/*` de `_headers` ya da `max-age=0, must-revalidate` y `noindex`). En cada ciclo de investigación se sustituye este archivo.
+- Motor único `rwadar-movil/lib/noticias-sector.js` (web, app y generador): valida la forma entera (campos exactos, fechas, sección, categoría, ámbito, tipo de fuente, solo `https`, sin `<`/`>`, ids únicos), ordena (las de hoy primero, luego de la más nueva a la más antigua), elige los textos `en` en inglés, da fechas «10/11» / «10 Nov» y dibuja las ilustraciones. Copia web exacta: `node rwadar-app/noticias/copiar-modelo-web.cjs` (`assets/noticias-sector-modelo-20261110.js`). Entra en la huella del contenido aprobado.
+- `rwadar-publicar.js` valida `/datos/noticias.json` con ese motor y **se para** si no vale («rwadar-site/datos/noticias.json no vale: …»).
+- Ilustraciones propias en SVG, deterministas por noticia: una por categoría (regulación: institución con columnas; mercado: barras y tendencia; producto: fichas apiladas; riesgo: escudo agrietado) con el acento de su ámbito (España: anillos y barrido del radar en ámbar; UE: red de nodos en azul, sin estrellas; Mundo: globo de meridianos). Sin texto, logotipos, banderas, personas ni imágenes de terceros. Velo oscuro abajo para leer el titular.
+- Web: sección `#noticias` (`assets/noticias-sector-20261110.{js,css}`): «Noticias del sector» y «Actualizadas el 10/11»; carrusel con `scroll-snap`, tarjetas 4:5 que son botones con el titular entero como nombre (3 líneas a la vista con «…»), «Hoy» en las del día; flechas del teclado, Inicio/Fin y botones ‹ › con ratón. Al pulsar, un `<dialog>` modal: fecha · categoría · ámbito, titular, título informativo, resumen, «Por qué te importa», fuente con «Consultada el», «Leer en la fuente (sales de RWAdar) ↗» (`target=_blank`, `rel="noopener noreferrer"`) y «No es una recomendación». Escape, «×» o el fondo cierran y el foco vuelve a la tarjeta. Solo `textContent` y DOM de SVG; el navegador solo pide `/datos/noticias.json` (la CSP no cambia).
+- App: `componentes/NoticiasSector.js` en `Inicio.js` tras `TokenizacionMundo`; lee `https://rwadar.pages.dev/datos/noticias.json` (`lib/noticias-sector-remota.js`: sin cookies, 10 s de plazo, 256 kB como mucho, forma validada, reutiliza 10 min). `FlatList` horizontal con ajuste; el detalle en un `Modal` a pantalla completa; el enlace sale por `onAbrirEnlace` (solo https) con el texto «(sales de RWAdar)», como el resto. Con la red caída: aviso y «Reintentar». Solo JavaScript y `react-native-svg`: el guardián de la OTA con la base `fa30779…` da `ok`.
+- Inglés: 11 textos nuevos en `lib/idioma-en.js` (copiados a la web); los de cada noticia salen de sus campos `en`.
+
+**Pruebas:** `rwadar-movil/tests/noticias-sector.test.cjs` (11: forma y rechazos, textos por idioma, 12 ilustraciones distintas y solo formas, lectura sin cookies, caché de 10 min, la sección con React aislado, el detalle y su enlace, inglés, red caída y su sitio en Inicio), `rwadar-acceso/noticias-sector.test.mjs` (2: publicables, cabeceras, validación del generador, script sin `innerHTML` ni terceros; Chromium a 390 y 1366 px: 8 botones con su nombre, 3 líneas, sin desbordes, teclado, diálogo modal con su enlace, Escape devuelve el foco, inglés y archivo roto). Ajustadas `probar-web.mjs` (hojas, huellas y `/datos/noticias.json` publicado igual que la fuente) y `probar-web-escritorio.mjs` (orden de scripts). `npm test` de la raíz en verde. Capturas a 390×844 y 1366×900, en castellano e inglés, portada y diálogo.
+
+**Pendiente (Víctor):**
+- Unir la rama, sellar y publicar la web y la OTA cuando lo autorice (hacen falta las dos: la app lee el archivo de la web publicada; hasta entonces dirá «Ahora no podemos mostrar las noticias»).
+- En cada ciclo de investigación, copiar las noticias nuevas a `rwadar-site/datos/noticias.json` (el generador las rechaza si no tienen la forma).
+
 ## 10 de noviembre de 2026 (2) · Claude · «La tokenización en el mundo»: correcciones de la revisión
 
 Dos revisoras (código y seguridad; diseño, datos y accesibilidad) aprobaron con cambios. Hecho, en un commit encima del anterior. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**

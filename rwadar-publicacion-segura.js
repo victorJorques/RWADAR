@@ -86,6 +86,8 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-movil/lib/tokenizacion.js',
   // Y de dónde saca rwadar-publicar.js el histórico que publica en /datos/.
   'rwadar-tokenizacion-historico.js',
+  // Motor de «Noticias del sector» (10/11/2026): valida /datos/noticias.json y dibuja las ilustraciones.
+  'rwadar-movil/lib/noticias-sector.js',
   'rwadar-movil/lib/ficha-editorial.js',
   'rwadar-movil/lib/idioma.js',
   'rwadar-movil/lib/idioma-en.js',
@@ -176,6 +178,13 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'assets/tokenizacion-20261110.js',
   'assets/tokenizacion-20261110.css',
   'datos/tokenizacion-historico.json',
+  // «Noticias del sector» en Inicio (10/11/2026): el motor (copia de
+  // rwadar-movil/lib/noticias-sector.js), la sección, su hoja y las noticias
+  // verificadas del último ciclo (rwadar-publicar.js las valida antes de publicar).
+  'assets/noticias-sector-modelo-20261110.js',
+  'assets/noticias-sector-20261110.js',
+  'assets/noticias-sector-20261110.css',
+  'datos/noticias.json',
   'c9417d2d5003bb9a41fee63c7f5ec00f.txt',
   'google6b2e3e5f58b7e557.html',
   'icono-192.png',

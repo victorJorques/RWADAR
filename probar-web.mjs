@@ -684,11 +684,11 @@ const rutaAnalitica = '/assets/analitica-20260927.js';
 const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
 // El orden de los scripts (con idioma-previo en <head>) se prueba en rwadar-app/probar-web-escritorio.mjs.
 // La quinta, el candado de las lecciones sin cuenta (08/11/2026), compartida con /academy/.
-// La sexta, «La tokenización en el mundo» de Inicio (10/11/2026).
-prueba('las seis hojas propias versionadas cargan en el orden declarado',
+// La sexta, «La tokenización en el mundo» de Inicio (10/11/2026); la séptima, «Noticias del sector» (10/11/2026).
+prueba('las siete hojas propias versionadas cargan en el orden declarado',
   JSON.stringify(estilos.map(estilo=>estilo[1])) === JSON.stringify([
     '/assets/rwadar-20260820.css','/assets/cartera-cuenta-ui-20261028.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css',
-    '/assets/academy-candado-20261108.css','/assets/tokenizacion-20261110.css']));
+    '/assets/academy-candado-20261108.css','/assets/tokenizacion-20261110.css','/assets/noticias-sector-20261110.css']));
 for (const recurso of [rutaScriptApp, rutaCatalogo, rutaAnalitica, estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
@@ -1847,7 +1847,8 @@ prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustrac
     esperadas.length > 0 && JSON.stringify([...new Set(conPropia)].sort()) === JSON.stringify(esperadas.sort()));
 }
 prueba('HTML conserva sus recursos con huella sin depender de un precache del worker',
-  recursoJSPublicado && hojasPublicadas.length === 7 &&
+  recursoJSPublicado && hojasPublicadas.length === 8 &&
+  hojasPublicadas.filter(ruta => /\/noticias-sector-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/mapa-buscar-20261027\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/tokenizacion-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/academy-candado-20261108\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
@@ -1884,6 +1885,27 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
     tkPublicados.length === 2 && /^\/assets\/tokenizacion-modelo-20261110\.[a-f0-9]{12}\.js$/.test(tkPublicados[0]) &&
     /^\/assets\/tokenizacion-20261110\.[a-f0-9]{12}\.js$/.test(tkPublicados[1]) &&
     scriptsPublicados.findIndex(s => s[1] === tkPublicados[1]) < scriptsPublicados.findIndex(s => s[1] === recursoCatalogoPublicado));
+}
+/* «Noticias del sector» en Inicio (10/11/2026). */
+{
+  const nt = require('./rwadar-movil/lib/noticias-sector.js');
+  const inicio = html.indexOf('<section class="nt" id="noticias"'), fin = html.indexOf('</section>', inicio);
+  const seccion = html.slice(inicio, fin);
+  const fuente = lee('datos/noticias.json');
+  const datosNt = nt.validarNoticias(JSON.parse(fuente));
+  prueba('las noticias del sector van en Inicio justo tras «La tokenización en el mundo», antes del capítulo 01, y el HTML no trae ninguna',
+    inicio > html.indexOf('id="tokenizacion"') && inicio < html.indexOf('id="relCap1"') &&
+    seccion.includes('<h2 class="nt-tit" id="ntTit">Noticias del sector</h2>') && seccion.includes('<dialog class="nt-dialogo" id="ntDialogo"') &&
+    datosNt.noticias.every(n => !seccion.includes(n.titulo)));
+  prueba('/datos/noticias.json se publica tal cual y con la forma que leen la web y la app',
+    fs.readFileSync(path.join(publicado, 'datos', 'noticias.json'), 'utf8') === fuente && datosNt.noticias.length > 0 &&
+    /noticiasModelo\.validarNoticias/.test(publicador));
+  const ntPublicados = scriptsPublicados.map(s => s[1]).filter(r => /\/noticias-sector-/.test(r));
+  prueba('el motor y la sección de las noticias salen con huella, tras la tokenización y antes del snapshot del catálogo',
+    ntPublicados.length === 2 && /^\/assets\/noticias-sector-modelo-20261110\.[a-f0-9]{12}\.js$/.test(ntPublicados[0]) &&
+    /^\/assets\/noticias-sector-20261110\.[a-f0-9]{12}\.js$/.test(ntPublicados[1]) &&
+    scriptsPublicados.findIndex(s => /\/tokenizacion-20261110\./.test(s[1])) < scriptsPublicados.findIndex(s => s[1] === ntPublicados[0]) &&
+    scriptsPublicados.findIndex(s => s[1] === ntPublicados[1]) < scriptsPublicados.findIndex(s => s[1] === recursoCatalogoPublicado));
 }
 prueba('el worker generado conserva la retirada efectiva de cachés y no deja copias offline',
   await probarRetiradaOffline(swPublicado));

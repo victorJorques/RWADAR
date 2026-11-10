@@ -76,6 +76,7 @@
 <link rel="stylesheet" href="/assets/mapa-buscar-20261027.css">
 <link rel="stylesheet" href="/assets/academy-candado-20261108.css">
 <link rel="stylesheet" href="/assets/tokenizacion-20261110.css">
+<link rel="stylesheet" href="/assets/noticias-sector-20261110.css">
 </head>
 <body>
 
@@ -189,6 +190,37 @@
         <p class="tk-estado" id="tkEstado">Cargando los datos de CoinGecko…</p>
       </div>
       <p class="tk-fuente"><span>Datos:</span> <a href="https://www.coingecko.com/" target="_blank" rel="noopener nofollow" translate="no">CoinGecko</a><span class="tk-hora" id="tkHora"></span></p>
+    </section>
+
+    <!-- Noticias del sector (10/11/2026): las del día y las más importantes,
+         seleccionadas y verificadas en cada ciclo de investigación. Solo el
+         titular sobre una ilustración propia (sin fotos de prensa); al
+         pulsar, el detalle con su fuente. Lo pinta
+         assets/noticias-sector-20261110.js desde /datos/noticias.json; aquí no
+         hay ninguna noticia. -->
+    <section class="nt" id="noticias" aria-labelledby="ntTit" data-noticias>
+      <div class="nt-cab">
+        <div>
+          <h2 class="nt-tit" id="ntTit">Noticias del sector</h2>
+          <p class="nt-sub" id="ntFecha" hidden></p>
+        </div>
+        <div class="nt-mandos" id="ntMandos" hidden>
+          <button class="nt-mando" type="button" data-nt-paso="-1" aria-controls="ntLista" aria-label="Noticias anteriores"><span aria-hidden="true">‹</span></button>
+          <button class="nt-mando" type="button" data-nt-paso="1" aria-controls="ntLista" aria-label="Noticias siguientes"><span aria-hidden="true">›</span></button>
+        </div>
+      </div>
+      <ul class="nt-pista" id="ntLista" aria-labelledby="ntTit" hidden></ul>
+      <p class="nt-estado" id="ntEstado" role="status">Cargando las noticias…</p>
+      <p class="nt-nota" id="ntNota" hidden>Ilustraciones de RWAdar, no fotos de la noticia. Selección editorial con enlace a la fuente; no es una recomendación.</p>
+      <dialog class="nt-dialogo" id="ntDialogo" aria-labelledby="ntDlgTit">
+        <div class="nt-dlg-marco">
+          <div class="nt-dlg-cab">
+            <span class="nt-dlg-etq">Noticia del sector</span>
+            <button class="nt-dlg-cerrar" type="button" data-nt-cerrar aria-label="Cerrar la noticia"><span aria-hidden="true">×</span></button>
+          </div>
+          <div class="nt-dlg-cuerpo" id="ntDlgCuerpo"></div>
+        </div>
+      </dialog>
     </section>
 
     <!-- 01 · De dónde viene. El titular y, justo debajo, qué es. -->
@@ -1823,6 +1855,8 @@
 <script src="/assets/mapa-buscar-20261027.js" defer></script>
 <script src="/assets/tokenizacion-modelo-20261110.js" defer></script>
 <script src="/assets/tokenizacion-20261110.js" defer></script>
+<script src="/assets/noticias-sector-modelo-20261110.js" defer></script>
+<script src="/assets/noticias-sector-20261110.js" defer></script>
 <script src="/assets/catalogo-publico-20261022.js" defer></script>
 <script src="/assets/ficha-editorial-20261022.js" defer></script>
 <script src="/assets/idioma-en-20261022.js" defer></script>

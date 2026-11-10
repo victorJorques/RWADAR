@@ -13,10 +13,10 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
   // idioma-previo: marca html.candado-comprobando antes de pintar (revisión del
   // 08/11/2026) y pregunta por la sesión en DOMContentLoaded, con la pasarela ya cargada.
   const rutaCandado = '/assets/academy-candado-20261108.js';
-  // La tokenización en el mundo (10/11/2026): su motor y su sección, antes del snapshot.
-  prueba('idioma previo y candado en head sin defer; analítica, acceso, mapa, tokenización, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
+  // La tokenización en el mundo y las noticias del sector (10/11/2026): su motor y su sección, antes del snapshot.
+  prueba('idioma previo y candado en head sin defer; analítica, acceso, mapa, tokenización, noticias, snapshot, helper, idioma y comportamiento cargan en orden clásico con defer',
     JSON.stringify(scripts.map(s=>s[1])) === JSON.stringify([rutaIdiomaPrevio, rutaCandado, '/assets/analitica-20260927.js', '/assets/acceso-privado.js',
-      '/assets/mapa-buscar-util-20261027.js','/assets/mapa-buscar-20261027.js','/assets/tokenizacion-modelo-20261110.js','/assets/tokenizacion-20261110.js','/assets/catalogo-publico-20261022.js',
+      '/assets/mapa-buscar-util-20261027.js','/assets/mapa-buscar-20261027.js','/assets/tokenizacion-modelo-20261110.js','/assets/tokenizacion-20261110.js','/assets/noticias-sector-modelo-20261110.js','/assets/noticias-sector-20261110.js','/assets/catalogo-publico-20261022.js',
       '/assets/ficha-editorial-20261022.js','/assets/idioma-en-20261022.js','/assets/idioma-20261022.js','/assets/idioma-web-20261022.js','/assets/cartera-modelo-20261028.js','/assets/cartera-cuenta-20261028.js','/assets/cartera-cuenta-ui-20261028.js','/assets/rwadar-20260820.js']) &&
     html.indexOf(rutaIdiomaPrevio) < html.indexOf('</head>') && html.indexOf(rutaCandado) < html.indexOf('</head>') &&
     scripts.slice(0, 2).every(script => !/\b(?:defer|async)\b/.test(script[0])) &&

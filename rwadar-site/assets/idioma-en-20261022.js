@@ -1934,6 +1934,18 @@
   "disponible el": "available on",
   "Valor total de los activos tokenizados, en millones de dólares (M$)": "Total value of tokenised assets, in millions of US dollars ($M)",
   "Valor por tipo de activo (millones de dólares)": "Value by asset type (millions of US dollars)",
+  // «Noticias del sector» de Inicio (10/11/2026), web y app. Los textos de cada noticia llevan su inglés en /datos/noticias.json.
+  "Noticias del sector": "Industry news",
+  "Actualizadas el": "Updated on",
+  "Cargando las noticias…": "Loading the news…",
+  "Ahora no podemos mostrar las noticias. Vuelve a intentarlo más tarde.": "We can't show the news right now. Please try again later.",
+  "Noticias anteriores": "Previous stories",
+  "Noticias siguientes": "Next stories",
+  "Noticia del sector": "Industry news story",
+  "Cerrar la noticia": "Close the story",
+  "Leer en la fuente (sales de RWAdar)": "Read at the source (you leave RWAdar)",
+  "Ilustraciones de RWAdar, no fotos de la noticia. Selección editorial con enlace a la fuente; no es una recomendación.": "RWAdar illustrations, not news photos. An editorial selection with a link to the source; this is not a recommendation.",
+  "Selección editorial de RWAdar con enlace a la fuente. No es una recomendación.": "An RWAdar editorial selection with a link to the source. This is not a recommendation.",
 };
 if(typeof module==='object'&&module.exports)module.exports=Object.freeze(diccionario);else raiz.RWAdarEnglish=Object.freeze(diccionario);
 })(typeof globalThis==='object'?globalThis:this);

@@ -7,6 +7,7 @@ import Radar from './Radar';
 import { ImagenOferta } from './Ofertas';
 import RecienAnadidas from './RecienAnadidas';
 import TokenizacionMundo from './TokenizacionMundo';
+import NoticiasSector from './NoticiasSector';
 import { recienAnadidas } from '../lib/recien-anadidas';
 import { LECCIONES } from '../lib/academy-contenido';
 import { DESTINOS_NOTICIAS, NOTICIAS } from '../lib/noticias-contenido';
@@ -330,6 +331,10 @@ export default function Inicio({
           CoinGecko a través de rwadar.pages.dev. Si la red falla, solo esta
           sección lo dice; el resto de Inicio sigue igual. */}
       <TokenizacionMundo onAbrirEnlace={onAbrirEnlace} />
+
+      {/* Noticias del sector (10/11/2026), como la web: /datos/noticias.json de
+          rwadar.pages.dev. Los enlaces a la fuente salen por onAbrirEnlace. */}
+      <NoticiasSector onAbrirEnlace={onAbrirEnlace} />
 
       {/* Avisos de la cuenta (solo con AVISOS_NOVEDADES_REMOTOS): la tarjeta
           llega hecha desde App, que tiene la cuenta y su estado. */}
