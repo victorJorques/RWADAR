@@ -58,7 +58,8 @@ test('el rediseño conserva radar, ofertas, 3D, detalle, descartes, avisos y pri
     'alternarOfertaGuardada', 'ofertasGuardadas',
   ]) assert.ok(codigo.includes(pieza), `el rediseño perdió ${pieza}`);
 
-  assert.match(leer('componentes', 'Inicio.js'), /Explicado con una animación 3D/);
+  // Desde el rediseño de Inicio (10/11/2026), la explicación 3D va en la pantalla «Aprende».
+  assert.match(leer('componentes', 'AprendeInicio.js'), /Explicado con una animación 3D/);
   assert.match(codigo, /accessibilityLabel="Buscar plataforma o palabra clave"/);
   assert.match(codigo, /accessibilityLabel=\{sigue \? `Dejar de seguir/);
   assert.match(codigo, /accessibilityLiveRegion="polite"/);
@@ -124,12 +125,18 @@ test('Perfil reúne lo guardado y anuncia los avisos como próximamente', () => 
   assert.match(datos, /PROGRESO_ACADEMY,\s*OFERTAS_GUARDADAS,\s*\];/);
 });
 
-test('Inicio muestra las mismas noticias que la web y no enseña la comunidad mientras esté apagada', () => {
+test('las novedades de RWAdar salen de Inicio a Perfil (las mismas que la web) y no se enseña la comunidad', () => {
+  // Rediseño del 10/11/2026: «que no se repita». Inicio son bloques cortos;
+  // las novedades de RWAdar van en Perfil, con enlace a /cambios de la web.
   const inicio = leer('componentes', 'Inicio.js');
+  const app = leer('App.js');
   const noticias = leer('lib', 'noticias-contenido.js');
   assert.match(noticias, /GENERADO por rwadar-noticias\.js/);
-  assert.match(inicio, /from '\.\.\/lib\/noticias-contenido'/);
-  assert.match(inicio, /Cuando se abran las cuentas, cada cuenta podrá compartir aquí una publicación al día/);
+  assert.doesNotMatch(inicio, /noticias-contenido|Comunidad|compartir aquí una publicación/);
+  assert.match(app, /import \{ NOTICIAS as NOVEDADES_RWADAR \} from '\.\/lib\/noticias-contenido';/);
+  assert.match(app, /const URL_NOVEDADES = 'https:\/\/rwadar\.pages\.dev\/cambios';/);
+  assert.match(app, /titulo="Novedades de RWAdar"/);
+  assert.match(app, /onNovedades=\{\(\) => abrirEnlace\(URL_NOVEDADES\)\}/);
   assert.doesNotMatch(inicio, /TextInput|fetch\(|supabase/);
   const fuente = JSON.parse(fs.readFileSync(path.join(RAIZ, '..', 'rwadar-noticias', 'noticias.json'), 'utf8'));
   for (const n of fuente.noticias) assert.ok(noticias.includes(n.titulo), `falta la noticia ${n.id} en la app`);

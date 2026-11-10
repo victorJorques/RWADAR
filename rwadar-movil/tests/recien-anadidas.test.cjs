@@ -83,3 +83,19 @@ test('con el catálogo publicado, las altas recientes son las de transparencia.j
   const lista = r.recienAnadidas(EMI, { ahora });
   assert.deepEqual(lista.map((o) => o.slug), esperadas);
 });
+
+test('Ofertas de Inicio (rediseño del 10/11/2026): nuevas y Selección en un solo carrusel, sin duplicados y 6 como mucho', () => {
+  const o = (slug) => ({ slug });
+  const { ofertasDestacadas } = r;
+  assert.deepEqual(ofertasDestacadas([o('a'), o('b')], [o('b'), o('c')]).map((x) => x.slug), ['a', 'b', 'c'], 'primero las nuevas; la repetida, una vez');
+  // Con muchas nuevas, la Selección conserva sus huecos (3 como mucho).
+  assert.deepEqual(ofertasDestacadas([o('1'), o('2'), o('3'), o('4'), o('5')], [o('6'), o('7')]).map((x) => x.slug), ['1', '2', '3', '4', '6', '7']);
+  assert.deepEqual(ofertasDestacadas([o('1'), o('2'), o('3'), o('4'), o('5'), o('6'), o('7')], [o('a'), o('b'), o('c'), o('d')]).map((x) => x.slug),
+    ['1', '2', '3', 'a', 'b', 'c']);
+  assert.deepEqual(ofertasDestacadas([o('1'), o('2')], [o('1')]).map((x) => x.slug), ['1', '2'], 'una nueva de la Selección cuenta una vez');
+  assert.deepEqual(ofertasDestacadas([], []), []);
+  assert.deepEqual(ofertasDestacadas(null, [o('x'), null, { slug: 7 }]).map((x) => x.slug), ['x'], 'lo que no tiene slug no entra');
+  // La web hace lo mismo (ofertasInicio de rwadar-20260820.js).
+  const web = fs.readFileSync(path.join(RAIZ, '../rwadar-site/assets/rwadar-20260820.js'), 'utf8');
+  assert.match(web, /function ofertasInicio\(c,nuevas\)\{[\s\S]*?\.slice\(0,3\)[\s\S]*?\[\.\.\.nuevas\.slice\(0,6-resto\.length\),\.\.\.resto\][\s\S]*?lista\.length===6/);
+});

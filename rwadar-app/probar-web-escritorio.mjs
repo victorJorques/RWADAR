@@ -192,7 +192,8 @@ export function probarEscritorio({ js, html, lee, prueba, ARCHIVOS_PUBLICABLES, 
       telefono.inicial === 'movil-relato' && telefono.cargada === '' && apaisado.inicial === 'movil-relato' &&
       otras.every(r => r.inicial === ''));
     const principal = html.slice(html.indexOf('<main id="top">'), html.indexOf('</main>'));
-    const portada = (html.match(/<section class="rel-nuevas" id="relNuevas"[^>]*>/) || [''])[0];
+    // Desde el rediseño de Inicio (10/11/2026), «Recién añadidas» es el bloque «Ofertas» (mismo id).
+    const portada = (html.match(/<section class="ini-bloque ini-ofertas" id="relNuevas"[^>]*>/) || [''])[0];
     const letra = (css.match(/font-family:'Geist';font-style:normal;[^}]*src:url\(([^)]+)\)/) || [])[1];
     prueba('el panel de Inicio va el primero en <main>, se ve con [hidden] (también en el móvil antes del JS) y «Recién añadidas» no aparece de golpe',
       /^<main id="top">\s*(?:<!--[\s\S]*?-->\s*)?<section class="movil-panel" id="movilPanelInicio"/.test(principal) &&

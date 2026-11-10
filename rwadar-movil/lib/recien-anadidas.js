@@ -55,3 +55,23 @@ export function recienAnadidas(ofertas, { ahora = new Date(), catalogoCaducado =
   return ordenarMasNuevas((Array.isArray(ofertas) ? ofertas : [])
     .filter((o) => (o?.coleccion ?? 'principales') === 'principales' && esNueva(o, { ahora, dias, tabla })), tabla).slice(0, max);
 }
+
+/* Ofertas de Inicio (rediseño del 10/11/2026, como ofertasInicio de la
+   web): un solo carrusel con las recién añadidas y las de la Selección (las
+   que pasan las 5 comprobaciones), sin duplicados y 6 como mucho. Primero
+   las nuevas, en su orden; después, las de la Selección que no estén ya,
+   con 3 huecos guardados para ellas aunque haya muchas nuevas. */
+export function ofertasDestacadas(nuevas = [], seleccion = [], max = MAX_RECIEN) {
+  const n = (Array.isArray(nuevas) ? nuevas : []).filter((o) => o && typeof o.slug === 'string');
+  const enNuevas = new Set(n.map((o) => o.slug));
+  const resto = (Array.isArray(seleccion) ? seleccion : []).filter((o) => o && typeof o.slug === 'string' && !enNuevas.has(o.slug)).slice(0, 3);
+  const vistas = new Set();
+  const lista = [];
+  for (const o of [...n.slice(0, max - resto.length), ...resto]) {
+    if (vistas.has(o.slug)) continue;
+    vistas.add(o.slug);
+    lista.push(o);
+    if (lista.length === max) break;
+  }
+  return lista;
+}

@@ -12,10 +12,10 @@
    Ninguna cifra del catálogo va escrita aquí: {ofertas}, {plataformas},
    {descartadas}, {seleccion}, {minimos}, {usd}, {revisado} y {hasta} llegan
    en cada carga (las funciones de abajo). Sin catálogo vigente, las frases
-   con cifra se ocultan o quedan sin número (ESPEC §2.10). Las cifras de
-   mercado (125 veces, 14.230 millones, −3,9 %) son de rwa.xyz a 03/11/2026,
-   van en `cap3.mercado` (el hueco `null` de su «Saber más») y se vuelven a
-   fechar en cada ciclo del catálogo.
+   con cifra se ocultan o quedan sin número (ESPEC §2.10). Desde el rediseño
+   de Inicio (10/11/2026) el 03 ya no lleva cifras de mercado: el hueco `null`
+   de su «Saber más» es un enlace a la pantalla «El mercado hoy»
+   (`bloques.enlaceMercado`), donde están al día y con su fuente.
    --------------------------------------------------------------------- */
 
 const es = {
@@ -127,8 +127,6 @@ const es = {
           texto: 'Prueban a mover depósitos convertidos en token entre países, a cualquier hora. El pago final sigue por la vía de siempre.',
         },
       ],
-      mercado: 'El mercado de letras del Tesoro de EE. UU. tokenizadas es hoy 125 veces mayor que en enero de 2023: de 114 millones de dólares a unos 14.230 millones (03/11/2026). En los últimos 30 días ha bajado un 3,9 %. Es el tamaño del mercado, no lo que rinde.',
-      sinCifra: 'Nuestra última cifra del mercado de letras del Tesoro de EE. UU. tokenizadas tiene más de 7 días, así que la hemos quitado. La de hoy está en su fuente, rwa.xyz.',
       saberMas: [
         'Al servicio de la DTCC se han apuntado 20 entidades, entre ellas J.P. Morgan.',
         'Con Pontes, estas operaciones se pagan en euros del propio banco central. Tres de sus 13 primeros participantes son españoles.',
@@ -204,6 +202,43 @@ const es = {
         'IOSCO, que reúne a los supervisores de valores, entre ellos la CNMV, lo dijo en noviembre de 2025: «La tokenización crece, pero sigue siendo incipiente».',
         'Según el BCE, es una fracción mínima de los activos del mundo: unos 38.000 millones de euros en blockchains públicas (febrero de 2026), frente a 241 billones de euros (millones de millones) en total (finales de 2025). Por nuestra cuenta, no llega a 2 céntimos de cada 100 euros.',
       ],
+    },
+  },
+  /* Inicio por bloques (rediseño del 10/11/2026, el mismo orden que la web):
+     Cabecera, Ofertas, El mercado hoy, Noticias, Aprende y Pie. Los seis
+     capítulos van en la pantalla «Aprende». */
+  bloques: {
+    titular: 'Ofertas y plataformas tokenizadas, contrastadas con su fuente.',
+    cifras: { ofertas: 'Ofertas', plataformas: 'Plataformas', revisado: 'Revisado el', pendiente: 'Revisión pendiente', ultima: 'Última revisión' },
+    ofertas: {
+      titulo: 'Ofertas',
+      sub: 'Las últimas añadidas y las que pasan nuestras 5 comprobaciones',
+      cinco: '¿Qué son las 5 comprobaciones?',
+      cincoNota: 'Pasarlas no hace a una oferta más segura ni más rentable. No es una recomendación de inversión.',
+      etiquetaCinco: 'Pasa las 5 comprobaciones',
+      nueva: 'Nueva',
+      anadida: 'Añadida el',
+      verFicha: 'Ver ficha de',
+      ver: (n) => (n ? `Ver las ${n} ofertas` : 'Ver las ofertas'),
+    },
+    mercado: { titulo: 'El mercado hoy', sub: 'Valor de los activos reales tokenizados en el mundo', ver: 'Ver el mercado' },
+    noticias: { titulo: 'Noticias', ver: 'Todas las noticias' },
+    aprende: {
+      titulo: 'Aprende',
+      tarjeta: '¿Qué es tokenizar? Te lo contamos en 6 pasos',
+      sub: 'De dónde viene, qué cambia, quién lo usa, sus riesgos y para qué sirve el radar.',
+      empezar: 'Empezar',
+    },
+    pie: 'RWAdar no asesora ni vende, y nadie paga por aparecer. No es una recomendación de inversión. RWAdar no pide datos bancarios, claves de monedero ni frases de recuperación.',
+    notaLegal: 'Nota legal completa',
+    volver: 'Volver a Inicio',
+    aprendeAnte: 'Aprende · 6 pasos',
+    aprendeIntro: 'La blockchain nació para pagar sin bancos. Hoy la usan los propios bancos: mueven con ella acciones, bonos y dinero.',
+    enlaceMercado: 'Las cifras del mercado tokenizado, al día y con su fuente, están en «El mercado hoy»',
+    academy: {
+      titulo: '¿Quieres ir más allá? RWAdar Academy',
+      texto: (n) => `${n} ${n === 1 ? 'lección gratis' : 'lecciones gratis'} en tres niveles: qué compras, quién responde y cómo se sale. Con un resumen de 30 segundos y un test corto.`,
+      boton: 'Abrir la Academy',
     },
   },
   novedades: 'Todas las novedades',
@@ -366,8 +401,6 @@ const en = {
           texto: 'They are testing moving deposits turned into tokens across borders, at any hour. Final payment still goes the usual way.',
         },
       ],
-      mercado: 'The market for tokenized US Treasuries is now 125 times larger than in January 2023: from $114 million to about $14,230 million (03/11/2026). It is down 3.9% over the last 30 days. It measures the size of the market, not a return.',
-      sinCifra: 'Our latest figure for the tokenized US Treasuries market is more than 7 days old, so we have removed it. Today\'s figure is at its source, rwa.xyz.',
       saberMas: [
         'Twenty firms have signed up to DTCC\'s service, J.P. Morgan among them.',
         'With Pontes, these transactions are paid in the central bank\'s own euros. Three of its first 13 participants are Spanish.',
@@ -442,6 +475,40 @@ const en = {
       ],
     },
   },
+  bloques: {
+    titular: 'Tokenised offers and platforms, checked against their source.',
+    cifras: { ofertas: 'Offers', plataformas: 'Platforms', revisado: 'Reviewed on', pendiente: 'Review pending', ultima: 'Last review' },
+    ofertas: {
+      titulo: 'Offers',
+      sub: 'The latest additions and those that pass our 5 checks',
+      cinco: 'What are the 5 checks?',
+      cincoNota: 'Passing them does not make an offer safer or more profitable. This is not an investment recommendation.',
+      etiquetaCinco: 'Passes the 5 checks',
+      nueva: 'New',
+      anadida: 'Added on',
+      verFicha: 'View details of',
+      ver: (n) => (n ? `See the ${n} offers` : 'See the offers'),
+    },
+    mercado: { titulo: 'The market today', sub: 'Value of tokenised real-world assets worldwide', ver: 'See the market' },
+    noticias: { titulo: 'News', ver: 'All the news' },
+    aprende: {
+      titulo: 'Learn',
+      tarjeta: 'What is tokenisation? We explain it in 6 steps',
+      sub: 'Where it comes from, what changes, who uses it, its risks and what the radar is for.',
+      empezar: 'Start',
+    },
+    pie: 'RWAdar does not advise or sell, and nobody pays to appear. This is not an investment recommendation. RWAdar never asks for bank details, wallet keys or recovery phrases.',
+    notaLegal: 'Full legal notice',
+    volver: 'Back to Home',
+    aprendeAnte: 'Learn · 6 steps',
+    aprendeIntro: 'Blockchain was born to pay without banks. Today the banks themselves use it: they move shares, bonds and money with it.',
+    enlaceMercado: 'Up-to-date figures for the tokenised market, with their source, are in “The market today”',
+    academy: {
+      titulo: 'Want to go further? RWAdar Academy',
+      texto: (n) => `${n} free ${n === 1 ? 'lesson' : 'lessons'} in three levels: what you buy, who is responsible and how you get out. With a 30-second summary and a short quiz.`,
+      boton: 'Open the Academy',
+    },
+  },
   novedades: 'All updates',
   seleccion: {
     antetitulo: 'RWAdar selection',
@@ -494,10 +561,5 @@ const en = {
 };
 
 export const INICIO = Object.freeze({ es, en });
-/* Día en que se consultaron las cifras de mercado del 03 (125 veces, 14.230
-   millones, −3,9 %), las de rwa.xyz. Pasados 7 días se quitan y queda la frase
-   sin cifra (ESPEC-INICIO §9): la app no se publica en cada ciclo como la web,
-   así que lo comprueba ella al enseñarlas. Se cambia a la vez que el texto. */
-export const CIFRAS_MERCADO_EL = '2026-11-03';
 export const CAPITULOS_INICIO = Object.freeze(['cap1', 'cap2', 'cap3', 'cap4', 'cap5', 'cap6']);
 export const textosInicio = (idioma) => (idioma === 'en' ? en : es);

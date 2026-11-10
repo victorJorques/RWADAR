@@ -1,55 +1,62 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { FlatList, Modal, StyleSheet, useWindowDimensions } from 'react-native';
+import { Image, Modal, StyleSheet, useWindowDimensions } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Defs, Ellipse, Line, LinearGradient, Path, Polygon, Polyline, RadialGradient, Rect, Stop } from 'react-native-svg';
+import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { FuenteOriginal, Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
 import { cargarNoticias } from '../lib/noticias-sector-remota';
-import { RECORTE_DETALLE, etiquetaAmbito, etiquetaCategoria, etiquetaReciente, fechaBreve, fechaCorta, fechaLocal, ilustracion, textos, variantes }
+import { URL_FOTOS, etiquetaAmbito, etiquetaCategoria, etiquetaReciente, fechaBreve, fechaCorta, fechaLocal, rutaFoto, textos }
   from '../lib/noticias-sector';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 
 /* ---------------------------------------------------------------------
-   «Noticias del sector» en Inicio (10/11/2026), como la web
+   «Noticias del sector» (10/11/2026; rediseño de Inicio, el mismo día),
+   como la web
    ---------------------------------------------------------------------
    Lee /datos/noticias.json de rwadar.pages.dev (lib/noticias-sector-remota.js).
-   Un carrusel horizontal (FlatList con ajuste) de tarjetas grandes: la
-   ilustración propia de su categoría y ámbito (lib/noticias-sector.js, la
-   misma que la web), solo el titular encima, en 3 líneas como mucho, y «Hoy»
-   o «Ayer» según el día de quien mira (etiquetaReciente). Cada tarjeta es un botón con el titular entero como
-   nombre. Al pulsar, el detalle en un modal: fecha, titular, resumen, «Por
-   qué te importa», la fuente y «Leer en la fuente (sales de RWAdar) ↗», que
-   abre el enlace con onAbrirEnlace (el de App.js: solo https). Con la red
-   caída, la sección lo dice y ofrece reintentar. Los textos de cada noticia
-   salen del archivo en el idioma elegido; los de la interfaz, de
-   lib/idioma-en.js.
+   Dos modos:
+   - `portada` (Inicio): las 3 primeras en tarjetas grandes con su foto
+     editorial y solo el titular encima, sobre un degradado oscuro para que
+     se lea, y «Hoy» o «Ayer» según el día de quien mira. Al tocar una,
+     onAbrir(noticia) abre la pantalla «Noticias» con su detalle.
+   - `lista` (pantalla «Noticias»): las 8, cada una con su foto, la fecha,
+     la categoría y el ámbito, el titular y el resumen. Al tocar, el detalle
+     en un modal: fecha, titular, resumen, «Por qué te importa», la fuente y
+     «Leer en la fuente (sales de RWAdar) ↗», que abre el enlace con
+     onAbrirEnlace (el de App.js: solo https). `abrirId` abre esa al entrar.
+   Las fotos son ilustrativas, generadas con IA, y se cargan de
+   https://rwadar.pages.dev/noticias-editoriales/<clave>.webp (el campo
+   «imagen»), como las de las ofertas. Si una no carga, queda el fondo oscuro.
+   Con la red caída, la sección lo dice y ofrece reintentar. Los textos de
+   cada noticia salen del archivo en el idioma elegido; los de la interfaz,
+   de lib/idioma-en.js.
    --------------------------------------------------------------------- */
-const COMPONENTES = { rect: Rect, circle: Circle, ellipse: Ellipse, path: Path, line: Line, polyline: Polyline, polygon: Polygon };
-const GRADIENTES = { linearGradient: LinearGradient, radialGradient: RadialGradient };
-const SEPARACION = 12;
+const EN_PORTADA = 3;
 
-/* El dibujo de una noticia, el mismo que la web (sin texto, solo formas). */
-export function Ilustracion({ noticia, ancho, alto, velo = false, encuadre = 'xMidYMid slice', viewBox, variante }) {
-  const d = ilustracion(noticia, { velo, prefijo: velo ? 'ntt' : 'ntd', variante });
+/* La foto de una noticia, decorativa (el titular ya lo dice todo). */
+export function FotoNoticia({ noticia, estilo, velo = false }) {
+  const [fallo, setFallo] = useState(false);
+  const uri = rutaFoto(noticia, { base: URL_FOTOS });
   return (
-    <Svg width={ancho} height={alto} viewBox={viewBox || `0 0 ${d.ancho} ${d.alto}`} preserveAspectRatio={encuadre}
-      accessible={false} importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
-      <Defs>
-        {d.defs.map((g) => {
-          const Gradiente = GRADIENTES[g.el];
-          return (
-            <Gradiente key={g.a.id} {...g.a}>
-              {g.stops.map((s, i) => <Stop key={i} offset={s.offset} stopColor={s.color} stopOpacity={s.opacity} />)}
-            </Gradiente>
-          );
-        })}
-      </Defs>
-      {d.formas.map((f, i) => {
-        const Forma = COMPONENTES[f.el];
-        return Forma ? <Forma key={i} {...f.a} /> : null;
-      })}
-    </Svg>
+    <View style={[e.foto, estilo]} accessible={false} importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
+      {uri && !fallo ? (
+        <Image source={{ uri }} style={StyleSheet.absoluteFill} resizeMode="cover" onError={() => setFallo(true)}
+          accessible={false} importantForAccessibility="no" />
+      ) : null}
+      {velo ? (
+        <Svg style={StyleSheet.absoluteFill} width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 10 10">
+          <Defs>
+            <LinearGradient id="ntVelo" x1="0" y1="0" x2="0" y2="1">
+              <Stop offset="0.3" stopColor="#0B0A0A" stopOpacity="0" />
+              <Stop offset="0.55" stopColor="#0B0A0A" stopOpacity="0.55" />
+              <Stop offset="1" stopColor="#0B0A0A" stopOpacity="0.94" />
+            </LinearGradient>
+          </Defs>
+          <Rect x="0" y="0" width="10" height="10" fill="url(#ntVelo)" />
+        </Svg>
+      ) : null}
+    </View>
   );
 }
 
@@ -64,28 +71,49 @@ function Etiqueta({ cual, enDetalle = false }) {
   );
 }
 
-function Tarjeta({ noticia, ancho, idioma, onAbrir, hoyISO, variante }) {
+function Tarjeta({ noticia, idioma, onAbrir, hoyISO, grande = false }) {
   const t = textos(noticia, idioma);
-  const alto = Math.round(ancho * 1.25);
   const reciente = etiquetaReciente(noticia, hoyISO);
   return (
     <Pressable onPress={() => { tacto.abrir(); onAbrir(noticia); }}
-      style={({ pressed }) => [e.tarjeta, { width: ancho, height: alto }, pressed && e.tarjetaPulsada]}
+      style={({ pressed }) => [e.tarjeta, grande ? e.tarjetaGrande : e.tarjetaNormal, pressed && e.tarjetaPulsada]}
       accessibilityRole="button" noTraducir idiomaOriginal={idioma === 'en' ? 'en-US' : 'es-ES'}
       // El nombre es el titular entero (el «…» de la tarjeta es solo visual) y, después, «Hoy» o «Ayer».
       accessibilityLabel={reciente ? `${t.titulo}. ${traducir(reciente)}` : t.titulo}>
-      <View style={StyleSheet.absoluteFill} pointerEvents="none">
-        <Ilustracion noticia={noticia} ancho={ancho} alto={alto} velo variante={variante} />
-      </View>
+      <FotoNoticia noticia={noticia} estilo={StyleSheet.absoluteFill} velo />
       <Etiqueta cual={reciente} />
       <View style={e.titularCaja}>
-        <Text noTraducir style={e.titular} numberOfLines={3} ellipsizeMode="tail">{t.titulo}</Text>
+        <Text noTraducir style={[e.titular, grande && e.titularGrande]} numberOfLines={3} ellipsizeMode="tail">{t.titulo}</Text>
       </View>
     </Pressable>
   );
 }
 
-function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace, hoyISO, variante }) {
+/* La pantalla «Noticias»: cada una con su foto, fecha, titular y resumen. */
+function Fila({ noticia, idioma, onAbrir, hoyISO }) {
+  const t = textos(noticia, idioma);
+  const reciente = etiquetaReciente(noticia, hoyISO);
+  const lengua = idioma === 'en' ? 'en-US' : 'es-ES';
+  const meta = `${fechaCorta(noticia.fecha, idioma)} · ${etiquetaCategoria(noticia.categoria, idioma)} · ${etiquetaAmbito(noticia.ambito, idioma)}`;
+  return (
+    <Pressable onPress={() => { tacto.abrir(); onAbrir(noticia); }} style={({ pressed }) => [e.fila, pressed && e.filaPulsada]}
+      accessibilityRole="button" noTraducir idiomaOriginal={lengua}
+      accessibilityLabel={[t.titulo, meta, reciente ? traducir(reciente) : null].filter(Boolean).join('. ')}>
+      <FotoNoticia noticia={noticia} estilo={e.filaFoto} />
+      <View style={e.filaTexto}>
+        <View style={e.meta}>
+          <Text noTraducir style={e.metaTxt}>{meta}</Text>
+          <Etiqueta cual={reciente} enDetalle />
+        </View>
+        <Text noTraducir style={e.filaTit}>{t.titulo}</Text>
+        <Text noTraducir style={e.filaResumen} numberOfLines={3}>{t.resumen}</Text>
+        <Text style={e.filaLeer}>{'Leer el detalle'}<Text noTraducir>{' →'}</Text></Text>
+      </View>
+    </Pressable>
+  );
+}
+
+function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace, hoyISO }) {
   const { width } = useWindowDimensions();
   if (!noticia) return null;
   const t = textos(noticia, idioma);
@@ -105,11 +133,7 @@ function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace, hoyISO, variante })
             </Pressable>
           </View>
           <ScrollView contentContainerStyle={e.detalle}>
-            <View style={e.arte}>
-              {/* Apaisado (10:7): el lienzo se recorta a la franja del motivo, que se ve entero. */}
-              <Ilustracion noticia={noticia} ancho={anchoArte} alto={Math.round(anchoArte * RECORTE_DETALLE.proporcion)}
-                viewBox={RECORTE_DETALLE.viewBox} encuadre="xMidYMid slice" variante={variante} />
-            </View>
+            <FotoNoticia noticia={noticia} estilo={[e.arte, { width: anchoArte, height: Math.round(anchoArte / 1.6) }]} />
             <View style={e.texto}>
               <View style={e.meta} accessible noTraducir idiomaOriginal={lengua}
                 accessibilityLabel={[fechaCorta(noticia.fecha, idioma), etiquetaCategoria(noticia.categoria, idioma),
@@ -147,31 +171,36 @@ function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace, hoyISO, variante })
   );
 }
 
-export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias, ahora = () => new Date() }) {
+export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias, ahora = () => new Date(), modo = 'portada', onAbrir, abrirId = null,
+  textosBloque = null }) {
   const idioma = useIdioma();
-  const { width } = useWindowDimensions();
   const [estado, setEstado] = useState({ fase: 'cargando', datos: null });
   const [abierta, setAbierta] = useState(null);
   const vivo = useRef(true);
+  const pendiente = useRef(abrirId);
   const pedir = useCallback(() => {
     setEstado((s) => ({ fase: 'cargando', datos: s.datos }));
     return Promise.resolve().then(() => cargar())
-      .then((datos) => { if (vivo.current) setEstado({ fase: 'listo', datos }); })
+      .then((datos) => {
+        if (!vivo.current) return;
+        setEstado({ fase: 'listo', datos });
+        // Llegando desde una tarjeta de Inicio: se abre esa noticia en cuanto hay datos.
+        if (modo === 'lista' && pendiente.current) {
+          const n = datos.noticias.find((x) => x.id === pendiente.current);
+          pendiente.current = null;
+          if (n) setAbierta(n);
+        }
+      })
       .catch(() => { if (vivo.current) setEstado((s) => ({ fase: s.datos ? 'listo' : 'error', datos: s.datos })); });
-  }, [cargar]);
+  }, [cargar, modo]);
   useEffect(() => { vivo.current = true; pedir(); return () => { vivo.current = false; }; }, [pedir]);
 
   const d = estado.fase === 'listo' ? estado.datos : null;
-  // «Hoy» y «Ayer» con el día local del móvil; la figura de cada noticia, sin repetir entre vecinas.
+  // «Hoy» y «Ayer» con el día local del móvil.
   const hoyISO = fechaLocal(ahora());
-  const figuras = d ? variantes(d.noticias) : {};
-  // Una tarjeta grande y el borde de la siguiente, que invita a deslizar.
-  const ancho = Math.min(340, Math.round((width - UI.margen * 2) * 0.8));
-  return (
-    <View style={e.seccion}>
-      <Text style={e.titulo} accessibilityRole="header">Noticias del sector</Text>
-      {d ? <Text style={e.sub}>{'Actualizadas el'} <Text noTraducir>{fechaBreve(d.actualizadoEl, idioma)}</Text></Text> : null}
-
+  const lista = modo === 'lista';
+  const estados = (
+    <>
       {estado.fase === 'cargando' && !d ? <Text style={e.estado}>Cargando las noticias…</Text> : null}
       {estado.fase === 'error' ? (
         <View style={e.estadoCaja}>
@@ -182,39 +211,73 @@ export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias,
           </Pressable>
         </View>
       ) : null}
+    </>
+  );
+  const fecha = d ? <Text style={e.sub}>{'Actualizadas el'} <Text noTraducir>{fechaBreve(d.actualizadoEl, idioma)}</Text></Text> : null;
+  const nota = <Text style={e.nota}>Imágenes ilustrativas generadas con IA, no fotos de la noticia.</Text>;
 
+  if (lista) {
+    return (
+      <View>
+        {fecha}
+        {estados}
+        {d ? (
+          <View style={e.listaFilas}>
+            {d.noticias.map((n) => <Fila key={n.id} noticia={n} idioma={idioma} onAbrir={setAbierta} hoyISO={hoyISO} />)}
+          </View>
+        ) : null}
+        {d ? nota : null}
+        <Detalle noticia={abierta} idioma={idioma} onCerrar={() => setAbierta(null)} onAbrirEnlace={onAbrirEnlace} hoyISO={hoyISO} />
+      </View>
+    );
+  }
+  return (
+    <View style={e.seccion}>
+      <Text noTraducir style={e.titulo} accessibilityRole="header">{textosBloque?.titulo || 'Noticias'}</Text>
+      {fecha}
+      {estados}
       {d ? (
-        <View>
-          <FlatList horizontal data={d.noticias} keyExtractor={(n) => n.id} extraData={`${idioma}|${hoyISO}`}
-            renderItem={({ item }) => <Tarjeta noticia={item} ancho={ancho} idioma={idioma} onAbrir={setAbierta} hoyISO={hoyISO} variante={figuras[item.id]} />}
-            ItemSeparatorComponent={Separador} showsHorizontalScrollIndicator={false}
-            decelerationRate="fast" snapToInterval={ancho + SEPARACION} snapToAlignment="start" disableIntervalMomentum
-            style={e.pista} contentContainerStyle={e.pistaContenido}
-            accessibilityLabel={traducir('Noticias del sector')} />
-          <Text style={e.nota}>Ilustraciones de RWAdar, no fotos de la noticia. Selección editorial con enlace a la fuente; no es una recomendación.</Text>
+        <View style={e.portada}>
+          {d.noticias.slice(0, EN_PORTADA).map((n, i) => (
+            <Tarjeta key={n.id} noticia={n} idioma={idioma} onAbrir={(x) => onAbrir?.(x)} hoyISO={hoyISO} grande={i === 0} />
+          ))}
+          {nota}
         </View>
       ) : null}
-
-      <Detalle noticia={abierta} idioma={idioma} onCerrar={() => setAbierta(null)} onAbrirEnlace={onAbrirEnlace} hoyISO={hoyISO}
-        variante={abierta ? figuras[abierta.id] : undefined} />
+      <Pressable onPress={() => { tacto.abrir(); onAbrir?.(null); }} style={({ pressed }) => [e.ver, pressed && pulsado('b3')]}
+        accessibilityRole="button" noTraducir accessibilityLabel={textosBloque?.ver || 'Todas las noticias'}>
+        <Text noTraducir style={e.verTxt}>{textosBloque?.ver || 'Todas las noticias'}{' →'}</Text>
+      </Pressable>
     </View>
   );
 }
 
-function Separador() { return <View style={{ width: SEPARACION }} />; }
 
 const e = StyleSheet.create({
-  seccion: { paddingHorizontal: UI.margen, paddingTop: 32, paddingBottom: 16, borderTopWidth: 1, borderTopColor: C.bd },
-  titulo: { ...T.seccion, color: C.tx },
+  // Los bloques de Inicio: el mismo título y el mismo espacio.
+  seccion: { marginTop: 36, paddingTop: 32, borderTopWidth: 1, borderTopColor: C.bd },
+  titulo: { fontFamily: F.negrita, fontSize: 24, lineHeight: 29, letterSpacing: -0.4, color: C.tx },
+  portada: { marginTop: 16, gap: 12 },
+  foto: { overflow: 'hidden', backgroundColor: C.s2 },
+  ver: { minHeight: UI.tactil, justifyContent: 'center', alignSelf: 'flex-start', marginLeft: -8, marginTop: 4, paddingHorizontal: 8, borderRadius: R.m },
+  verTxt: { fontFamily: F.semi, fontSize: 16, lineHeight: 21, color: C.senal },
+  tarjetaGrande: { width: '100%', aspectRatio: 4 / 3 },
+  tarjetaNormal: { width: '100%', aspectRatio: 16 / 10 },
+  titularGrande: { fontFamily: F.negrita, fontSize: 24, lineHeight: 29 },
+  listaFilas: { marginTop: 16, gap: 16 },
+  fila: { borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1, overflow: 'hidden' },
+  filaPulsada: { backgroundColor: C.s2 },
+  filaFoto: { width: '100%', aspectRatio: 16 / 9 },
+  filaTexto: { padding: 16 },
+  filaTit: { fontFamily: F.negrita, fontSize: 20, lineHeight: 25, letterSpacing: -0.3, color: C.tx, marginTop: 6 },
+  filaResumen: { ...T.menor, fontSize: 15, lineHeight: 22, color: C.tx2, marginTop: 8 },
+  filaLeer: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal, marginTop: 10 },
   sub: { ...T.menor, color: C.tx2, marginTop: 4 },
   estado: { ...T.menor, color: C.tx2, marginTop: 16, padding: 16, borderRadius: R.m, backgroundColor: C.ton },
   estadoCaja: { marginTop: 16, padding: 16, borderRadius: R.m, backgroundColor: C.ton },
   estadoTxt: { ...T.menor, color: C.tx2 },
   b3: { minHeight: 44, borderRadius: R.m, paddingHorizontal: 8, marginLeft: -8, marginTop: 4, alignSelf: 'flex-start', justifyContent: 'center' },
   b3Txt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal },
-  // De borde a borde, como «Recién añadidas».
-  pista: { marginHorizontal: -UI.margen, marginTop: 16 },
-  pistaContenido: { paddingHorizontal: UI.margen },
   tarjeta: { borderRadius: R.l, overflow: 'hidden', backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd },
   tarjetaPulsada: { opacity: 0.88 },
   hoy: { position: 'absolute', top: 12, left: 12, flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, paddingLeft: 8,
@@ -227,8 +290,8 @@ const e = StyleSheet.create({
   ayerPunto: { backgroundColor: C.tx2 },
   ayerTxt: { color: C.tx },
   titularCaja: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 16, paddingTop: 16, paddingBottom: 18 },
-  titular: { fontFamily: F.semi, fontSize: 20, lineHeight: 25, letterSpacing: -0.3, color: C.tx,
-    textShadowColor: 'rgba(0,0,0,0.6)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 10 },
+  titular: { fontFamily: F.negrita, fontSize: 20, lineHeight: 25, letterSpacing: -0.3, color: C.tx,
+    textShadowColor: 'rgba(0,0,0,0.6)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 6 },
   nota: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, marginTop: 10 },
   modal: { flex: 1, backgroundColor: C.s1 },
   cab: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: UI.margen + 2, paddingRight: 10,
@@ -237,7 +300,7 @@ const e = StyleSheet.create({
   cerrar: { width: 44, height: 44, borderRadius: R.p, backgroundColor: C.ton, alignItems: 'center', justifyContent: 'center' },
   cerrarTxt: { fontFamily: F.regular, fontSize: 26, lineHeight: 28, color: C.tx },
   detalle: { paddingBottom: 32, alignItems: 'center' },
-  arte: { width: '100%', maxWidth: 640, overflow: 'hidden', backgroundColor: C.s0, alignItems: 'center' },
+  arte: { maxWidth: 640 },
   texto: { width: '100%', maxWidth: 640, paddingHorizontal: UI.margen + 4 },
   meta: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', marginTop: 14 },
   metaTxt: { ...T.dato, color: C.tx3 },

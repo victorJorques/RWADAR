@@ -62,14 +62,20 @@ test('una noticia mal formada no pasa: campos de más o de menos, fechas, catego
   assert.throws(roto(d => { d.noticias[0].fuente.tipo = 'blog'; }), /tipo de fuente/);
   assert.throws(roto(d => { d.noticias[1].id = d.noticias[0].id; }), /id repetido/);
   assert.throws(roto(d => { d.noticias[0].id = 'Con Mayúsculas'; }), /id no válido/);
+  // «imagen» (rediseño del 10/11/2026): obligatoria y solo una clave [a-z0-9-]+, nunca una dirección.
+  assert.throws(roto(d => { delete d.noticias[0].imagen; }), /falta «imagen»/);
+  for (const mala of ['', 'Alerta-Fraude', 'alerta_fraude', 'alerta fraude', '../alerta', 'alerta.webp', 'https://x.test/a.webp', 'x'.repeat(61), 7, null]) {
+    assert.throws(roto(d => { d.noticias[0].imagen = mala; }), /clave de foto no válida/, String(mala));
+  }
   assert.equal(m.noticiasValidas({}), false);
   assert.equal(m.noticiasValidas(ARCHIVO), true);
 });
 
 test('textos y fechas en el idioma elegido: los campos «en» en inglés', () => {
   const n = m.validarNoticias(ARCHIVO).noticias[0];
-  assert.equal(m.textos(n).titulo, 'Clones de XTB y PJT: la CNMV alerta de 9 webs y apps sin licencia');
-  assert.equal(m.textos(n, 'en').titulo, 'XTB and PJT clones: Spain’s CNMV flags 9 unlicensed sites and apps');
+  // Titulares del ciclo del 10/11 reescritos para atraer (encargo de Víctor), tal cual del archivo.
+  assert.equal(m.textos(n).titulo, 'La CNMV destapa un clon de XTB y otros 8 chiringuitos');
+  assert.equal(m.textos(n, 'en').titulo, 'CNMV exposes an XTB clone and 8 other unlicensed firms');
   assert.equal(m.textos(n, 'en').porQueImporta, ARCHIVO.noticias[0].en.porQueImporta);
   assert.equal(m.fechaCorta('2026-11-10'), '10/11/2026');
   assert.equal(m.fechaCorta('2026-11-10', 'en'), '10 Nov 2026');
@@ -105,56 +111,26 @@ test('«Hoy» y «Ayer» dependen del día de quien mira, no solo de la sección
   assert.equal(d[0].seccion, 'hoy');
 });
 
-test('las ilustraciones: una por categoría y ámbito, deterministas, solo formas (sin texto ni imágenes de fuera)', () => {
-  const PERMITIDOS = new Set(['rect', 'circle', 'ellipse', 'path', 'line', 'polyline', 'polygon']);
-  const dibujos = [];
-  for (const categoria of Object.keys(m.CATEGORIAS)) {
-    for (const ambito of Object.keys(m.AMBITOS)) {
-      const n = { id: `${categoria}-x`, categoria, ambito };
-      const a = m.ilustracion(n, { velo: true }), b = m.ilustracion(n, { velo: true });
-      assert.deepEqual(a, b, 'la misma noticia, el mismo dibujo');
-      assert.ok(a.formas.every(f => PERMITIDOS.has(f.el)), 'solo formas');
-      const texto = JSON.stringify(a);
-      assert.doesNotMatch(texto, /"(?:text|image|tspan|use|foreignObject)"|href|https?:/);
-      // Los degradados que usa el dibujo existen y llevan el prefijo de la noticia.
-      const ids = new Set(a.defs.map(g => g.a.id));
-      for (const [, id] of texto.matchAll(/url\(#([^)]+)\)/g)) assert.ok(ids.has(id), id);
-      assert.ok([...ids].every(id => id.startsWith(`nt-${categoria}-x-`)), 'ids únicos por noticia');
-      assert.ok(a.defs.some(g => g.a.id.endsWith('-velo')) && !m.ilustracion(n).defs.some(g => g.a.id.endsWith('-velo')));
-      dibujos.push(JSON.stringify(m.ilustracion(n).formas));
-    }
-  }
-  assert.equal(new Set(dibujos).size, 12, 'doce dibujos distintos');
-  // Todo cae dentro del lienzo y los números son finitos.
-  const todos = JSON.stringify(Object.keys(m.CATEGORIAS).map(c => m.ilustracion({ id: 'a', categoria: c, ambito: 'UE' })));
-  assert.doesNotMatch(todos, /NaN|Infinity|undefined/);
-  // Las ocho noticias del archivo: ocho dibujos distintos (aunque compartan categoría y ámbito).
-  const ocho = m.validarNoticias(ARCHIVO).noticias.map(n => JSON.stringify(m.ilustracion(n).formas));
-  assert.equal(new Set(ocho).size, 8);
-});
-
-test('regulación tiene cuatro figuras y dos noticias vecinas de la misma categoría no la repiten', () => {
+test('las fotos: cada noticia trae su clave y la foto sale de rwadar.pages.dev, sin ilustraciones SVG', () => {
   const d = m.validarNoticias(ARCHIVO).noticias;
-  const figuras = m.variantes(d);
-  assert.deepEqual(m.variantes(d), figuras, 'determinista');
-  assert.equal(m.VARIANTES.regulacion, 4);
-  // Cuatro dibujos distintos para la misma noticia de regulación, uno por figura.
-  const n = d.find(x => x.categoria === 'regulacion');
-  assert.equal(new Set([0, 1, 2, 3].map(v => JSON.stringify(m.ilustracion(n, { variante: v }).formas))).size, 4);
-  for (const v of [0, 1, 2, 3]) {
-    const a = m.ilustracion(n, { variante: v, velo: true });
-    assert.equal(a.variante, v);
-    assert.doesNotMatch(JSON.stringify(a), /NaN|Infinity|undefined|"(?:text|image|tspan|use|foreignObject)"|href|https?:/);
-  }
-  // Las cinco de regulación, por orden: ninguna igual que la anterior de su categoría.
-  const reg = d.filter(x => x.categoria === 'regulacion').map(x => figuras[x.id]);
-  assert.equal(reg.length, 5);
-  for (let i = 1; i < reg.length; i++) assert.notEqual(reg[i], reg[i - 1], `regulación ${i} y ${i + 1}`);
-  assert.ok(new Set(reg).size >= 4, 'se usan las cuatro figuras');
-  // El detalle recorta el lienzo a la franja del motivo, en 10:7.
-  assert.equal(m.RECORTE_DETALLE.viewBox, '0 30 320 224');
-  assert.equal(m.RECORTE_DETALLE.proporcion, 0.7);
-  assert.equal(224 / 320, m.RECORTE_DETALLE.proporcion);
+  // La clave de cada noticia, tal cual del archivo verificado; varias pueden compartir foto.
+  assert.deepEqual(d.map(n => n.imagen), ARCHIVO.noticias.map(n => n.imagen));
+  assert.ok(d.every(n => m.CLAVE_FOTO.test(n.imagen)));
+  assert.equal(m.rutaFoto(d[0]), '/noticias-editoriales/alerta-fraude.webp');
+  assert.equal(m.rutaFoto(d[0], { base: m.URL_FOTOS }), 'https://rwadar.pages.dev/noticias-editoriales/alerta-fraude.webp');
+  assert.equal(m.rutaFoto({ imagen: '../x' }), null);
+  assert.equal(m.rutaFoto(null), null);
+  assert.deepEqual(m.clavesFotos(ARCHIVO), [...new Set(ARCHIVO.noticias.map(n => n.imagen))]);
+  assert.equal(m.NOTA_FOTOS.es, 'Imágenes ilustrativas generadas con IA, no fotos de la noticia.');
+  // Las ilustraciones SVG ya no existen: ni en el motor ni en el componente.
+  for (const viejo of ['ilustracion', 'variantes', 'RECORTE_DETALLE', 'VARIANTES']) assert.equal(m[viejo], undefined, viejo);
+  const componente = fs.readFileSync(path.join(RAIZ, 'componentes/NoticiasSector.js'), 'utf8');
+  assert.doesNotMatch(componente, /ilustracion|Ilustracion|Polygon|Ellipse/);
+  assert.match(componente, /rutaFoto\(noticia, \{ base: URL_FOTOS \}\)/);
+  // Ni la web ni la app piden la foto a nadie más que a RWAdar.
+  const web = fs.readFileSync(path.join(RAIZ, '../rwadar-site/assets/noticias-sector-20261110.js'), 'utf8');
+  assert.match(web, /modelo\.rutaFoto\(n\)/);
+  assert.doesNotMatch(web, /https?:\/\/(?!rwadar)/);
 });
 
 /* ---- Lectura de /datos/noticias.json ---- */
@@ -252,7 +228,7 @@ function cargarSeccion(react) {
   const absoluto = path.join(RAIZ, 'componentes', 'NoticiasSector.js');
   const original = Module._load, extension = Module._extensions['.js'];
   const nativo = { StyleSheet: { create: (s) => s, absoluteFill: {} }, Platform: { OS: 'android' }, useWindowDimensions: () => ({ width: 390, height: 844 }) };
-  for (const tipo of ['Text', 'View', 'Pressable', 'ScrollView']) nativo[tipo] = tipo;
+  for (const tipo of ['Text', 'View', 'Pressable', 'ScrollView', 'Image']) nativo[tipo] = tipo;
   // FlatList pinta sus elementos con renderItem; Modal, su contenido si está visible.
   nativo.FlatList = (p) => ({ type: 'FlatList', props: p, children: p.data.map((item, index) => p.renderItem({ item, index })) });
   nativo.Modal = ({ children, ...p }) => ({ type: 'Modal', props: p, children: p.visible ? [children] : [] });
@@ -285,52 +261,56 @@ const DATOS = m.validarNoticias(ARCHIVO);
 const EL_10 = () => new Date(2026, 10, 10, 12, 0);
 const EL_13 = () => new Date(2026, 10, 13, 12, 0);
 
-test('Inicio en la app: cargando, después el carrusel con solo el titular, «Hoy» o «Ayer» y el titular entero como nombre', async () => {
+const fotos = (arbol) => buscar(arbol, n => n.type === 'Image').map(n => n.props.source.uri);
+
+test('Inicio en la app: cargando, después 3 tarjetas grandes con foto y solo el titular, y «Todas las noticias →»', async () => {
   const { react, pintar } = crearReact();
   const Seccion = cargarSeccion(react);
-  const props = { cargar: async () => DATOS, onAbrirEnlace() {}, ahora: EL_10 };
+  const abiertas = [];
+  const props = { cargar: async () => DATOS, onAbrirEnlace() {}, ahora: EL_10, modo: 'portada', onAbrir: (n) => abiertas.push(n && n.id),
+    textosBloque: { titulo: 'Noticias', ver: 'Todas las noticias' } };
   let arbol = pintar(Seccion, props);
-  assert.match(textoDe(arbol), /Noticias del sector/);
+  assert.match(textoDe(arbol), /Noticias/);
   assert.match(textoDe(arbol), /Cargando las noticias…/);
   await esperar(); await esperar();
   arbol = pintar(Seccion, props);
   const texto = textoDe(arbol);
   assert.match(texto, /Actualizadas el 10\/11/);
   assert.doesNotMatch(texto, /Cargando/);
-  const lista = buscar(arbol, n => n.type === 'FlatList')[0];
-  assert.equal(lista.props.horizontal, true);
-  assert.ok(lista.props.snapToInterval > 0 && lista.props.decelerationRate === 'fast');
-  const tarjetas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button' && n.props.accessibilityLabel !== 'Cerrar la noticia');
-  assert.equal(tarjetas.length, 8);
-  assert.equal(tarjetas[0].props.accessibilityLabel, 'Clones de XTB y PJT: la CNMV alerta de 9 webs y apps sin licencia. Hoy');
-  assert.equal(tarjetas[3].props.accessibilityLabel, 'Pagarés de Prosegur Cash en DLT: 500.000 € inscritos en la CNMV');
+  const tarjetas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button' && n.props.accessibilityLabel !== 'Todas las noticias');
+  assert.equal(tarjetas.length, 3, 'solo 3 en Inicio');
+  assert.equal(tarjetas[0].props.accessibilityLabel, 'La CNMV destapa un clon de XTB y otros 8 chiringuitos. Hoy');
   assert.equal(tarjetas[1].props.accessibilityLabel, `${DATOS.noticias[1].titulo}. Ayer`);
   assert.equal(tarjetas[2].props.accessibilityLabel, `${DATOS.noticias[2].titulo}. Ayer`);
   // En la tarjeta, solo el titular (3 líneas como mucho) y «Hoy» o «Ayer»: ni resumen ni fuente.
-  const titulares = buscar(arbol, n => n.type === 'Text' && n.props.numberOfLines === 3);
-  assert.equal(titulares.length, 8);
+  assert.equal(buscar(arbol, n => n.type === 'Text' && n.props.numberOfLines === 3).length, 3);
   assert.doesNotMatch(texto, /La CNMV avisa de que nueve webs/);
-  // El 10/11: una de hoy y dos de ayer (las del 09/11).
-  assert.equal(buscar(arbol, n => n.type === 'Text' && textoDe(n) === 'Hoy').length, 1);
-  assert.equal(buscar(arbol, n => n.type === 'Text' && textoDe(n) === 'Ayer').length, 2);
-  // Cada tarjeta lleva su dibujo, oculto para el lector de pantalla y sin texto.
-  const dibujos = buscar(arbol, n => n.type === 'Svg');
-  assert.equal(dibujos.length, 8);
-  assert.ok(dibujos.every(s => s.props.accessible === false && s.props.importantForAccessibility === 'no-hide-descendants'));
-  assert.equal(buscar(arbol, n => n.type === 'Modal').length, 0, 'el detalle no se monta cerrado');
-  assert.match(texto, /Ilustraciones de RWAdar, no fotos de la noticia/);
+  // Cada tarjeta, su foto de rwadar.pages.dev, oculta al lector de pantalla, con el degradado encima.
+  assert.deepEqual(fotos(arbol), DATOS.noticias.slice(0, 3).map(n => `https://rwadar.pages.dev/noticias-editoriales/${n.imagen}.webp`));
+  assert.equal(buscar(arbol, n => n.type === 'Svg').length, 3, 'un degradado por tarjeta');
+  assert.match(texto, /Imágenes ilustrativas generadas con IA, no fotos de la noticia\./);
+  assert.equal(buscar(arbol, n => n.type === 'Modal').length, 0, 'en Inicio no hay detalle');
+  // Tocar una abre la pantalla con su detalle; «Todas las noticias», la pantalla.
+  tarjetas[1].props.onPress();
+  buscar(arbol, n => n.props?.accessibilityLabel === 'Todas las noticias')[0].props.onPress();
+  assert.deepEqual(abiertas, [DATOS.noticias[1].id, null]);
 });
 
-test('el detalle: fecha, titular, resumen, «Por qué te importa», la fuente y el enlace que sale de RWAdar', async () => {
+test('la pantalla «Noticias»: las 8 con foto, fecha, titular y resumen; al tocar, su detalle', async () => {
   const { react, pintar } = crearReact();
   const Seccion = cargarSeccion(react);
   const enlaces = [];
-  const props = { cargar: async () => DATOS, onAbrirEnlace: (u) => enlaces.push(u), ahora: EL_10 };
+  const props = { cargar: async () => DATOS, onAbrirEnlace: (u) => enlaces.push(u), ahora: EL_10, modo: 'lista' };
   pintar(Seccion, props);
   await esperar(); await esperar();
   let arbol = pintar(Seccion, props);
-  const tarjeta = buscar(arbol, n => n.type === 'Pressable' && /^Europa busca/.test(n.props.accessibilityLabel || ''))[0];
-  tarjeta.props.onPress();
+  const filas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button');
+  assert.equal(filas.length, 8);
+  assert.equal(fotos(arbol).length, 8);
+  assert.match(textoDe(arbol), /La CNMV avisa de que nueve webs/, 'en la lista, el resumen');
+  assert.equal(filas[0].props.accessibilityLabel, 'La CNMV destapa un clon de XTB y otros 8 chiringuitos. 10/11/2026 · Riesgo · España. Hoy');
+  const fila = filas.find(f => /^Europa busca/.test(f.props.accessibilityLabel));
+  fila.props.onPress();
   arbol = pintar(Seccion, props);
   const modal = buscar(arbol, n => n.type === 'Modal')[0];
   assert.ok(modal && modal.props.visible);
@@ -339,11 +319,7 @@ test('el detalle: fecha, titular, resumen, «Por qué te importa», la fuente y 
   assert.match(texto, /09\/11\/2026 · Regulación · UE/);
   assert.equal(buscar(modal, x => x.props?.accessibilityLabel === '09/11/2026 · Regulación · UE · Ayer').length, 1, 'el 10/11 es de ayer');
   assert.ok(!texto.includes(n.tituloInformativo), 'sin repetir el titular con otras palabras');
-  // La ilustración apaisada: el lienzo recortado a la franja del motivo, en 10:7.
-  const arte = buscar(modal, x => x.type === 'Svg')[0];
-  assert.equal(arte.props.viewBox, '0 30 320 224');
-  assert.equal(arte.props.preserveAspectRatio, 'xMidYMid slice');
-  assert.equal(arte.props.height, Math.round(arte.props.width * 0.7));
+  assert.deepEqual(fotos(modal), [`https://rwadar.pages.dev/noticias-editoriales/${n.imagen}.webp`]);
   for (const parte of [n.titulo, n.resumen, 'Por qué te importa', n.porQueImporta, 'Fuente', n.fuente.nombre, 'Consultada el', '10/11/2026',
     'Leer en la fuente (sales de RWAdar)', 'Selección editorial de RWAdar con enlace a la fuente. No es una recomendación.']) {
     assert.ok(texto.includes(parte), parte);
@@ -361,26 +337,39 @@ test('el detalle: fecha, titular, resumen, «Por qué te importa», la fuente y 
   assert.equal(buscar(arbol, x => x.type === 'Modal').length, 0);
 });
 
+test('llegando desde una tarjeta de Inicio, la pantalla abre esa noticia', async () => {
+  const { react, pintar } = crearReact();
+  const Seccion = cargarSeccion(react);
+  const props = { cargar: async () => DATOS, onAbrirEnlace() {}, ahora: EL_10, modo: 'lista', abrirId: 'prosegur-cash-pagares-dlt' };
+  pintar(Seccion, props);
+  await esperar(); await esperar();
+  pintar(Seccion, props);
+  const arbol = pintar(Seccion, props);
+  const modal = buscar(arbol, n => n.type === 'Modal')[0];
+  assert.ok(modal, 'el detalle se abre solo');
+  assert.ok(textoDe(modal).includes('Prosegur Cash tokeniza 500.000 € en pagarés'));
+});
+
 test('en inglés: los campos «en», la fecha y la interfaz del diccionario', async () => {
   await idioma.cambiarIdioma('en');
   try {
     const { react, pintar } = crearReact();
     const Seccion = cargarSeccion(react);
-    const props = { cargar: async () => DATOS, onAbrirEnlace() {}, ahora: EL_10 };
+    const props = { cargar: async () => DATOS, onAbrirEnlace() {}, ahora: EL_10, modo: 'lista' };
     pintar(Seccion, props);
     await esperar(); await esperar();
     let arbol = pintar(Seccion, props);
     let texto = textoDe(arbol);
-    assert.match(texto, /Industry news/);
     assert.match(texto, /Updated on 10 Nov/);
-    assert.match(texto, /XTB and PJT clones: Spain’s CNMV flags 9 unlicensed sites and apps/);
-    assert.doesNotMatch(texto, /Clones de XTB/);
-    const tarjetas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button');
-    assert.equal(tarjetas[0].props.accessibilityLabel, 'XTB and PJT clones: Spain’s CNMV flags 9 unlicensed sites and apps. Today');
-    tarjetas[0].props.onPress();
+    assert.match(texto, /CNMV exposes an XTB clone and 8 other unlicensed firms/);
+    assert.match(texto, /Illustrative AI-generated images, not photos of the news\./);
+    assert.match(texto, /Read the details/);
+    assert.doesNotMatch(texto, /La CNMV destapa/);
+    const filas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button');
+    assert.equal(filas[0].props.accessibilityLabel, 'CNMV exposes an XTB clone and 8 other unlicensed firms. 10 Nov 2026 · Risk · Spain. Today');
+    filas[0].props.onPress();
     arbol = pintar(Seccion, props);
     texto = textoDe(buscar(arbol, n => n.type === 'Modal')[0]);
-    assert.equal(tarjetas[1].props.accessibilityLabel, `${ARCHIVO.noticias[1].en.titulo}. Yesterday`);
     for (const parte of ['10 Nov 2026 · Risk · Spain', 'Why it matters to you', ARCHIVO.noticias[0].en.porQueImporta, 'Source', 'Checked on',
       'Read at the source (you leave RWAdar)', 'This is not a recommendation.']) assert.ok(texto.includes(parte), parte);
   } finally { await idioma.cambiarIdioma('es'); }
@@ -389,7 +378,7 @@ test('en inglés: los campos «en», la fecha y la interfaz del diccionario', as
 test('con el reloj el 13/11 (sin ciclo nuevo), ninguna tarjeta dice «Hoy» ni «Ayer»; las de hoy siguen primero', async () => {
   const { react, pintar } = crearReact();
   const Seccion = cargarSeccion(react);
-  const props = { cargar: async () => DATOS, onAbrirEnlace() {}, ahora: EL_13 };
+  const props = { cargar: async () => DATOS, onAbrirEnlace() {}, ahora: EL_13, modo: 'portada', onAbrir() {} };
   pintar(Seccion, props);
   await esperar(); await esperar();
   const arbol = pintar(Seccion, props);
@@ -403,23 +392,24 @@ test('con la red caída: lo dice, sin noticias, y «Reintentar» vuelve a pregun
   const { react, pintar } = crearReact();
   const Seccion = cargarSeccion(react);
   let fallar = true, llamadas = 0;
-  const props = { cargar: async () => { llamadas++; if (fallar) throw new Error('sin red'); return DATOS; }, onAbrirEnlace() {} };
+  const props = { cargar: async () => { llamadas++; if (fallar) throw new Error('sin red'); return DATOS; }, onAbrirEnlace() {}, modo: 'portada', onAbrir() {} };
   pintar(Seccion, props);
   await esperar(); await esperar();
   let arbol = pintar(Seccion, props);
   assert.match(textoDe(arbol), /Ahora no podemos mostrar las noticias\. Vuelve a intentarlo más tarde\./);
-  assert.equal(buscar(arbol, n => n.type === 'FlatList').length, 0);
+  assert.equal(fotos(arbol).length, 0);
   fallar = false;
   buscar(arbol, n => n.props?.accessibilityLabel === 'Reintentar')[0].props.onPress();
   await esperar(); await esperar();
   arbol = pintar(Seccion, props);
   assert.equal(llamadas, 2);
-  assert.equal(buscar(arbol, n => n.type === 'FlatList').length, 1);
+  assert.equal(fotos(arbol).length, 3);
 });
 
-test('Inicio pinta las noticias justo después de «La tokenización en el mundo», con el mismo onAbrirEnlace', () => {
+test('Inicio pinta las noticias después de «El mercado hoy» y antes de «Aprende», y abre su pantalla', () => {
   const inicio = fs.readFileSync(path.join(RAIZ, 'componentes/Inicio.js'), 'utf8');
-  const tk = inicio.indexOf('<TokenizacionMundo onAbrirEnlace={onAbrirEnlace} />'), nt = inicio.indexOf('<NoticiasSector onAbrirEnlace={onAbrirEnlace} />');
-  assert.ok(tk > 0 && nt > tk);
-  assert.doesNotMatch(inicio.slice(tk + 10, nt).replace(/\{\/\*[\s\S]*?\*\/\}/g, ''), /<[A-Z]/, 'nada entre las dos secciones');
+  const tk = inicio.indexOf('<TokenizacionMundo compacta'), nt = inicio.indexOf('<NoticiasSector modo="portada"'), ap = inicio.indexOf("abrir('aprende')");
+  assert.ok(tk > 0 && nt > tk && ap > nt, 'el orden de la web: mercado, noticias, aprende');
+  assert.match(inicio, /onAbrir=\{\(noticia\) => abrir\('noticias', \{ noticia: noticia\?\.id \|\| null \}\)\}/);
+  assert.match(inicio, /<NoticiasSector modo="lista" abrirId=\{noticiaId\} onAbrirEnlace=\{onAbrirEnlace\} \/>/);
 });

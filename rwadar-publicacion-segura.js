@@ -88,6 +88,9 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-tokenizacion-historico.js',
   // Motor de «Noticias del sector» (10/11/2026): valida /datos/noticias.json y dibuja las ilustraciones.
   'rwadar-movil/lib/noticias-sector.js',
+  // Fotos editoriales de las noticias (rediseño de Inicio, 10/11/2026): la biblioteca y su cargador.
+  'rwadar-editorial-source/noticias',
+  'rwadar-noticias-editoriales.js',
   'rwadar-movil/lib/ficha-editorial.js',
   'rwadar-movil/lib/idioma.js',
   'rwadar-movil/lib/idioma-en.js',
@@ -119,6 +122,14 @@ const PAGINAS_ACADEMY = Object.freeze([
   'academy/despues-de-emitir-ciclo-de-vida.html',
 ].sort());
 
+/* Las secciones de Inicio (rediseño del 10/11/2026): el detalle del
+   mercado, las noticias y los seis capítulos que antes iban en Inicio. */
+const PAGINAS_SECCIONES = Object.freeze([
+  'mercado/index.html',
+  'noticias/index.html',
+  'aprende/index.html',
+]);
+
 const ARCHIVOS_PUBLICABLES = Object.freeze([
   '.well-known/security.txt',
   '_headers',
@@ -128,6 +139,7 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   // Baja de los avisos de novedades sin cuenta (contrato del 05/11/2026).
   'baja.html',
   ...PAGINAS_ACADEMY,
+  ...PAGINAS_SECCIONES,
   ...PAGINAS_FICHAS,
   'assets/academy-20261002.css',
   'assets/acceso.css',
@@ -185,6 +197,9 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'assets/noticias-sector-20261110.js',
   'assets/noticias-sector-20261110.css',
   'datos/noticias.json',
+  // Inicio por bloques y sus secciones (rediseño del 10/11/2026).
+  'assets/secciones-20261110.css',
+  'assets/aprende-20261110.js',
   'c9417d2d5003bb9a41fee63c7f5ec00f.txt',
   'google6b2e3e5f58b7e557.html',
   'icono-192.png',
@@ -831,6 +846,7 @@ async function comprobarConfiguracionAuth({
 module.exports = {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
+  PAGINAS_SECCIONES,
   CONTROLES_RELANZAMIENTO,
   CAPACIDADES_COMERCIALES,
   controlesExigidosPorPerfil,

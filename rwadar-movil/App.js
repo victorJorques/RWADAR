@@ -58,9 +58,13 @@ import { imagenEditorialOferta } from './fixtures/imagenes-editoriales';
 import { resumenOferta } from './lib/ficha-editorial';
 import { enSeleccionOferta } from './lib/transparencia';
 import { esNueva, ordenarMasNuevas } from './lib/recien-anadidas';
+import { NOTICIAS as NOVEDADES_RWADAR } from './lib/noticias-contenido';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
 const URL_PRIVACIDAD_AVISOS = `${URL_PRIVACIDAD}#avisos-novedades`;
+// Las novedades de RWAdar salieron de Inicio con el rediseño del 10/11/2026:
+// en la app, en Perfil; la lista entera, en la web (/cambios, como siempre).
+const URL_NOVEDADES = 'https://rwadar.pages.dev/cambios';
 const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
 const USUARIO_LOCAL = MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true;
 // Las cuentas son independientes del seguimiento y los avisos de instalaciones.
@@ -1103,6 +1107,8 @@ export default function App() {
               onExplicar={() => { tacto.abrir(); setExplicando(true); }}
               onPrivacidad={() => setPrivacidad(true)}
               onPolitica={() => abrirEnlace(URL_PRIVACIDAD)}
+              ultimaNovedad={NOVEDADES_RWADAR[0] ? (NOVEDADES_RWADAR[0].resumen || NOVEDADES_RWADAR[0].titulo) : ''}
+              onNovedades={() => abrirEnlace(URL_NOVEDADES)}
               onContacto={() => abrirEnlace('mailto:RWAdar@protonmail.com')}
               onBorrar={confirmarBorrado}
               inversionInicial={inversionInicial}
@@ -1299,7 +1305,7 @@ function PantallaPerfil({
   refrescando, borrando, onActualizar, onAbrirEmpresa, onAbrirOferta, onExplorar, onActivarAvisos, onAjustes,
   onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar, inversionInicial, onConsumirInversion,
   idioma, textosVersion, comprobandoVersion, onActualizarApp, avisosNovedades = false, panelNovedades = null,
-  enfocarAvisos = false, onAvisosEnfocados,
+  enfocarAvisos = false, onAvisosEnfocados, ultimaNovedad = '', onNovedades,
 }) {
   const total = seguidas.length + ofertasGuardadas.length;
   /* Desde el enlace de baja de Inicio: se baja hasta Avisos cada vez que se
@@ -1424,6 +1430,12 @@ function PantallaPerfil({
           titulo="Cómo funciona la tokenización"
           subtitulo="Abrir la explicación animada en 3D"
           onPress={onExplicar}
+        />
+        <FilaMenu
+          icono="enlace"
+          titulo="Novedades de RWAdar"
+          subtitulo={ultimaNovedad || 'Lo último de la web y la app'}
+          onPress={onNovedades}
         />
         <FilaMenu
           icono="actualizar"

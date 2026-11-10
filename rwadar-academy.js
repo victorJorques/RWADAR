@@ -8,6 +8,7 @@
      rwadar-site/academy/index.html          índice de la Academy
      rwadar-site/academy/<slug>.html         una página por lección publicada
      rwadar-site/index.html                  el bloque de lecciones de la portada
+     rwadar-site/aprende/index.html          la tarjeta de la Academy al final de /aprende/
      rwadar-site/sitemap.xml                 las URL de la Academy
      rwadar-movil/lib/academy-contenido.js   las mismas lecciones para la app
 
@@ -26,6 +27,9 @@ const DIR_FUENTE = path.join(RAIZ, 'rwadar-academy');
 const DIR_LECCIONES = path.join(DIR_FUENTE, 'lecciones');
 const DIR_WEB = path.join(RAIZ, 'rwadar-site', 'academy');
 const INDEX_WEB = path.join(RAIZ, 'rwadar-site', 'index.html');
+/* Desde el rediseño de Inicio (10/11/2026), la tarjeta de la Academy va al
+   final de los seis capítulos, en /aprende/. */
+const APRENDE_WEB = path.join(RAIZ, 'rwadar-site', 'aprende', 'index.html');
 const SITEMAP = path.join(RAIZ, 'rwadar-site', 'sitemap.xml');
 const DATOS_APP = path.join(RAIZ, 'rwadar-movil', 'lib', 'academy-contenido.js');
 
@@ -1121,15 +1125,17 @@ function bloquePortada(academy) {
   <!--academy:fin-->`;
 }
 
-/* El enlace discreto de Inicio a la Academy (decisión de Víctor del 04/11/2026),
-   con el número real de lecciones publicadas. Solo se ve en pantallas de
-   menos de 768 px, donde cambia a la pestaña Academy; sin JavaScript abre /academy/.
-   En escritorio no aparece: Academy está en el menú de arriba y en su propia
-   sección de la portada. */
+/* La tarjeta de la Academy al final de /aprende/ (rediseño de Inicio del
+   10/11/2026; antes, un enlace discreto en Inicio), con el número real de
+   lecciones publicadas. */
 function bloqueInicio(academy) {
   const n = publicadas(academy).length;
   return `      <!--academy-inicio:ini-->
-      <a class="b3 rel-academia rel-revela" href="/academy/" data-movil-cambiar="academy"><span><span>¿Empiezas de cero?</span> <span>${n} ${n === 1 ? 'lección gratis' : 'lecciones gratis'} en Academy</span></span><span class="rel-flecha" aria-hidden="true"></span></a>
+    <section class="apr-academy" aria-labelledby="aprAcademyTit">
+      <h2 id="aprAcademyTit">¿Quieres ir más allá? RWAdar Academy</h2>
+      <p>${n} ${n === 1 ? 'lección gratis' : 'lecciones gratis'} en tres niveles: qué compras, quién responde y cómo se sale. Con un resumen de 30 segundos y un test corto.</p>
+      <a class="b1" href="/academy/">Abrir la Academy</a>
+    </section>
       <!--academy-inicio:fin-->`;
 }
 
@@ -1209,8 +1215,9 @@ function construirSalidas(academy = cargarAcademy()) {
   const index = fs.readFileSync(INDEX_WEB, 'utf8');
   const conLecciones = reemplazarEntreMarcas(index, '<!--academy:ini-->', '<!--academy:fin-->',
     bloquePortada(academy), 'rwadar-site/index.html');
-  salidas.set(INDEX_WEB, reemplazarEntreMarcas(conLecciones, '<!--academy-inicio:ini-->', '<!--academy-inicio:fin-->',
-    bloqueInicio(academy), 'rwadar-site/index.html'));
+  salidas.set(INDEX_WEB, conLecciones);
+  salidas.set(APRENDE_WEB, reemplazarEntreMarcas(fs.readFileSync(APRENDE_WEB, 'utf8'), '<!--academy-inicio:ini-->', '<!--academy-inicio:fin-->',
+    bloqueInicio(academy), 'rwadar-site/aprende/index.html'));
   const sitemap = fs.readFileSync(SITEMAP, 'utf8');
   salidas.set(SITEMAP, reemplazarEntreMarcas(sitemap, '<!-- academy:ini', '<!-- academy:fin -->',
     bloqueSitemap(academy), 'rwadar-site/sitemap.xml'));

@@ -1,76 +1,89 @@
 /* =====================================================================
-   RWAdar · «Noticias del sector» en Inicio (10/11/2026)
+   RWAdar · «Noticias del sector» (10/11/2026; rediseño de Inicio, el mismo día)
    ---------------------------------------------------------------------
-   Tarjetas grandes de imagen con solo el titular encima (velo oscuro del
-   propio dibujo y una sombra suave: contraste AA sobre cualquier zona),
-   carrusel con ajuste y un diálogo de lectura. Solo tokens de
-   rwadar-20260820.css; el verde de la señal, para el foco, «Hoy» y el
-   enlace. Sin estilos en línea: la CSP no lleva 'unsafe-inline'.
+   Inicio: tres tarjetas grandes con foto editorial y solo el titular, sobre
+   un degradado oscuro (contraste AA en cualquier foto). /noticias/: las 8,
+   cada una con su foto, fecha, titular y resumen, y un diálogo de lectura.
+   Solo tokens de rwadar-20260820.css; el verde de la señal, para el foco,
+   «Hoy» y el enlace. Sin estilos en línea: la CSP no lleva 'unsafe-inline'.
    ===================================================================== */
-.nt{padding:32px 0 24px;border-top:var(--bd)}
-.nt-cab{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
-.nt-tit{color:var(--tx);font:600 1.25rem/1.3 var(--display);letter-spacing:-.01em}
-.nt-sub{margin-top:4px;color:var(--tx-2);font:400 .9375rem/1.45 var(--body)}
 .nt-fecha{font-variant-numeric:tabular-nums;white-space:nowrap}
 .nt-estado{margin-top:16px;padding:16px;border-radius:var(--r-m);background:var(--ton);color:var(--tx-2);font:400 .9375rem/1.45 var(--body)}
 .nt-nota{margin-top:10px;color:var(--tx-3);font:400 .75rem/1.45 var(--body)}
 
-/* Botones ‹ › (solo con ratón; con el dedo se desliza y con el teclado, Tab o flechas). */
-.nt-mandos{display:flex;gap:8px;flex:none}
-.nt-mandos[hidden]{display:none}
-.nt-mando{display:grid;place-items:center;width:40px;height:40px;padding:0;border:var(--bd);border-radius:var(--r-p);background:var(--s1);
-  color:var(--tx);font:500 1.375rem/1 var(--body);cursor:pointer;transition:var(--tr)}
-.nt-mando:hover:not(:disabled){background:var(--s2)}
-.nt-mando:disabled{color:var(--tx-3);opacity:.45;cursor:default}
-.nt-mando:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
-@media (hover:none),(pointer:coarse){.nt-mandos{display:none}}
+/* La foto: cubre su caja; si no carga, queda un fondo oscuro con el halo de la marca. */
+.nt-foto,.nt-art-foto,.nt-dlg-arte{display:block;overflow:hidden;
+  background:radial-gradient(120% 90% at 70% 10%,rgba(37,227,154,.12),transparent 60%),var(--s2)}
+.nt-foto img,.nt-art-foto img,.nt-dlg-arte img{display:block;width:100%;height:100%;object-fit:cover}
 
-/* El carrusel: de borde a borde en el móvil, como «Recién añadidas». */
-.nt-pista{display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:12px;margin:16px calc(-1*var(--movil-margen,16px)) 0;
-  padding:4px var(--movil-margen,16px) 8px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;
-  scroll-padding-inline:var(--movil-margen,16px);scrollbar-width:none;overscroll-behavior-x:contain;scroll-behavior:smooth}
-.nt-pista[hidden]{display:none}
-.nt-pista::-webkit-scrollbar{display:none}
-.nt-item{min-width:0;scroll-snap-align:start}
-
-.nt-tarjeta{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:4/5;overflow:hidden;
-  border-radius:var(--r-l);background:var(--s1);box-shadow:inset 0 0 0 1px var(--linea);cursor:pointer;isolation:isolate;
+/* ---- Inicio: tres tarjetas grandes ---- */
+.nt-portada{display:grid;gap:12px;margin:16px 0 0;padding:0;list-style:none}
+.nt-portada[hidden]{display:none}
+.nt-item{min-width:0}
+.nt-tarjeta{position:relative;display:block;width:100%;aspect-ratio:16/10;overflow:hidden;border-radius:var(--r-l);
+  background:var(--s1);box-shadow:inset 0 0 0 1px var(--linea);color:var(--tx);text-decoration:none;isolation:isolate;
   -webkit-tap-highlight-color:transparent}
-.nt-arte{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;transition:transform calc(400ms * var(--pm)) var(--ease)}
-.nt-tarjeta:hover .nt-arte{transform:scale(1.035)}
-.nt-tarjeta:active .nt-arte{transform:scale(1.015)}
-.nt-tarjeta:focus-visible{box-shadow:inset 0 0 0 2px var(--senal),0 0 0 2px var(--s0);outline:2px solid transparent;outline-offset:-2px}
-/* En alto contraste (forced-colors) las sombras desaparecen: el contorno lo pinta el sistema. */
+.nt-tarjeta .nt-foto{position:absolute;inset:0;z-index:-2;transition:transform calc(400ms * var(--pm,1)) var(--ease)}
+/* El degradado: de transparente arriba a casi negro abajo, donde va el titular. */
+.nt-tarjeta::after{content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(11,10,10,0) 30%,rgba(11,10,10,.55) 55%,rgba(11,10,10,.94) 100%)}
+.nt-tarjeta:hover .nt-foto{transform:scale(1.035)}
+.nt-tarjeta:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
 @media (forced-colors:active){.nt-tarjeta:focus-visible{outline:2px solid CanvasText}}
-.nt-titular{position:absolute;left:0;right:0;bottom:0;padding:16px 16px 18px}
-/* Como mucho 3 líneas; si no cabe, «…» solo a la vista: el nombre del botón y el detalle llevan el titular entero.
-   El velo del dibujo ya da el contraste; la sombra es corta para que el recorte de la caja (overflow) no se note. */
+.nt-titular{position:absolute;left:0;right:0;bottom:0;padding:16px 16px 16px}
 .nt-titular-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden;
-  color:var(--tx);font:600 1.25rem/1.25 var(--display);letter-spacing:-.015em;text-wrap:pretty;
-  text-shadow:0 1px 2px rgba(0,0,0,.55)}
+  color:var(--tx);font:700 1.25rem/1.22 var(--display);letter-spacing:-.015em;text-wrap:balance;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.nt-item--grande .nt-tarjeta{aspect-ratio:4/3}
+.nt-item--grande .nt-titular-txt{font-size:1.5rem;line-height:1.16}
 .nt-hoy{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 8px;
-  border-radius:var(--r-p);background:rgba(11,10,10,.78);color:var(--senal);font:600 .75rem/1.2 var(--body);letter-spacing:.02em;
+  border-radius:var(--r-p);background:rgba(11,10,10,.8);color:var(--senal);font:600 .75rem/1.2 var(--body);letter-spacing:.02em;
   box-shadow:inset 0 0 0 1px var(--senal-18)}
 .nt-hoy::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--senal);box-shadow:0 0 0 3px var(--senal-t)}
-/* «Ayer», más discreta que «Hoy». */
 .nt-hoy--ayer{color:var(--tx);box-shadow:inset 0 0 0 1px var(--linea)}
 .nt-hoy--ayer::before{background:var(--tx-2);box-shadow:none}
-
-/* Escritorio: en la columna del relato, como sus vecinas; el carrusel se
-   abre al ancho de las tarjetas y enseña unas tres a la vez, grandes. Por el
-   borde que aún tiene tarjetas, un fundido: la última no se corta en seco. */
-@media (min-width:900px){
-  .nt-tit{font-size:1.75rem}
-  .nt-pista{grid-auto-columns:minmax(280px,calc((100% - 24px)/3.2));gap:12px}
-  .escritorio-relato .nt-pista{width:var(--rel-ancho);margin:24px 0 0 calc((var(--rel-col) - var(--rel-ancho))/2);padding:4px 0 8px;scroll-padding-inline:0}
-  .nt-pista--despues{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 64px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 64px),transparent)}
-  .nt-pista--antes{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px);mask-image:linear-gradient(90deg,transparent,#000 40px)}
-  .nt-pista--antes.nt-pista--despues{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 64px),transparent);
-    mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 64px),transparent)}
+@media (max-width:380px){.nt-titular-txt{font-size:1.125rem}.nt-item--grande .nt-titular-txt{font-size:1.3125rem}}
+/* Desde 768 px: la primera, grande a la izquierda; las otras dos, apiladas. */
+@media (min-width:768px){
+  .nt-portada{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-rows:1fr 1fr;gap:16px}
+  .nt-item--grande{grid-row:span 2}
+  .nt-item--grande .nt-tarjeta{aspect-ratio:auto;height:100%;min-height:420px}
+  .nt-item--grande .nt-titular{padding:24px}
+  .nt-item--grande .nt-titular-txt{font-size:2rem;line-height:1.1;letter-spacing:-.025em}
+  .nt-item:not(.nt-item--grande) .nt-tarjeta{aspect-ratio:auto;height:100%;min-height:202px}
 }
-@media (max-width:380px){.nt-titular-txt{font-size:1.125rem}}
 
-/* El diálogo de lectura */
+/* ---- /noticias/: la lista ---- */
+.nt-lista{display:grid;gap:16px;margin:24px 0 0;padding:0;list-style:none}
+.nt-lista[hidden]{display:none}
+.nt-fila{min-width:0;scroll-margin-top:96px}
+.nt-art{position:relative;display:grid;grid-template-rows:auto 1fr;height:100%;overflow:hidden;border:var(--bd);border-radius:var(--r-l);background:var(--s1);transition:border-color var(--t-2) var(--ease)}
+.nt-art:hover{border-color:var(--tx-3)}
+.nt-art-foto{aspect-ratio:16/9}
+.nt-art-txt{display:flex;flex-direction:column;padding:16px 16px 14px}
+.nt-art-meta,.nt-dlg-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;color:var(--tx-3);font:500 .8125rem/1.4 var(--body)}
+.nt-art-meta time,.nt-dlg-meta time{font-variant-numeric:tabular-nums}
+.nt-art-tit{margin:6px 0 0;color:var(--tx);font:700 1.25rem/1.22 var(--display);letter-spacing:-.015em;text-wrap:balance}
+.nt-art-abrir{all:unset;cursor:pointer;-webkit-tap-highlight-color:transparent}
+/* Toda la tarjeta abre el detalle. */
+.nt-art-abrir::after{content:'';position:absolute;inset:0;border-radius:var(--r-l)}
+.nt-art-abrir:focus-visible::after{outline:2px solid var(--senal);outline-offset:-2px}
+.nt-art-abrir:active::after{background:var(--ton)}
+.nt-art-resumen{margin:8px 0 0;color:var(--tx-2);font:400 .9375rem/1.5 var(--body);
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.nt-art-leer{display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;color:var(--senal);font:600 .9375rem/1.3 var(--body)}
+.nt-hoy--dlg{position:static;margin-left:4px}
+@media (min-width:768px){
+  .nt-lista{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .nt-fila:first-child{grid-column:1/-1}
+  .nt-fila:first-child .nt-art{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:auto}
+  .nt-fila:first-child .nt-art-leer{margin-top:10px}
+  .nt-fila:first-child .nt-art-foto{aspect-ratio:auto;min-height:320px}
+  .nt-fila:first-child .nt-art-txt{justify-content:center;padding:32px}
+  .nt-fila:first-child .nt-art-tit{font-size:1.875rem;line-height:1.12}
+  .nt-art-txt{padding:20px 20px 18px}
+}
+
+/* ---- El diálogo de lectura ---- */
 html.nt-dialogo-abierto{overflow:hidden}
 .nt-dialogo{position:fixed;inset:0;width:min(640px,calc(100% - 24px));max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 32px);
   margin:auto;padding:0;overflow:hidden;border:0;border-radius:var(--r-xl);background:var(--s1);color:var(--tx);box-shadow:var(--e-2)}
@@ -83,34 +96,27 @@ html.nt-dialogo-abierto{overflow:hidden}
 .nt-dlg-cerrar:hover{background:var(--ton-2)}
 .nt-dlg-cerrar:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
 .nt-dlg-cuerpo{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 0 24px}
-/* La ilustración apaisada (10:7) es la franja del motivo del dibujo: se ve entera. */
-.nt-dlg-arte{position:relative;isolation:isolate;aspect-ratio:10/7;width:100%;overflow:hidden;background:var(--s0)}
-.nt-dlg-arte::after{content:'';position:absolute;inset:auto 0 0;height:14%;background:linear-gradient(transparent,var(--s1))}
+.nt-dlg-arte{position:relative;aspect-ratio:16/10;width:100%}
 .nt-dlg-art>:not(.nt-dlg-arte){margin-inline:20px}
-.nt-dlg-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-top:4px;color:var(--tx-3);font:500 .8125rem/1.4 var(--body)}
-.nt-dlg-meta time{font-variant-numeric:tabular-nums}
-.nt-hoy--dlg{position:static;margin-left:4px}
-.nt-dlg-tit{margin-top:8px;color:var(--tx);font:600 1.5rem/1.22 var(--display);letter-spacing:-.02em;text-wrap:balance}
+.nt-dlg-meta{margin-top:14px}
+.nt-dlg-tit{margin-top:8px;color:var(--tx);font:700 1.5rem/1.2 var(--display);letter-spacing:-.02em;text-wrap:balance}
 .nt-dlg-resumen{margin-top:14px;color:var(--tx);font:400 1rem/1.6 var(--body)}
 .nt-dlg-bloque{margin-top:18px;padding:14px 16px;border-radius:var(--r-m);background:var(--ton)}
-.nt-dlg-bloque h3{margin-bottom:6px;color:var(--tx);font:600 .875rem/1.3 var(--body)}
-.nt-dlg-bloque p{color:var(--tx-2);font:400 .9375rem/1.55 var(--body)}
+.nt-dlg-bloque h3{margin:0 0 6px;color:var(--tx);font:600 .875rem/1.3 var(--body)}
+.nt-dlg-bloque p{margin:0;color:var(--tx-2);font:400 .9375rem/1.55 var(--body)}
 .nt-dlg-importa{background:var(--senal-t)}
 .nt-dlg-importa h3{color:var(--senal)}
 .nt-dlg-importa p{color:var(--tx)}
-.nt-dlg-fuente-idioma{margin-bottom:2px;color:var(--tx-3)!important;font-size:.8125rem!important}
-.nt-dlg-consulta{margin-top:4px;color:var(--tx-3)!important;font-size:.8125rem!important}
+.nt-dlg-fuente-idioma{margin-bottom:2px!important;color:var(--tx-3)!important;font-size:.8125rem!important}
+.nt-dlg-consulta{margin-top:4px!important;color:var(--tx-3)!important;font-size:.8125rem!important}
 .nt-dlg-ir{display:flex;align-items:center;justify-content:center;gap:6px;min-height:52px;margin-top:20px;padding:0 20px;border-radius:var(--r-m);
   background:var(--senal);color:var(--en-senal);font:600 1rem/1.3 var(--body);text-align:center;text-decoration:none;transition:var(--tr)}
 .nt-dlg-ir-flecha{white-space:nowrap}
 .nt-dlg-ir:hover{background:var(--senal-p)}
 .nt-dlg-ir:focus-visible{outline:2px solid var(--senal);outline-offset:3px}
 .nt-dlg-aviso{margin-top:12px;color:var(--tx-3);font:400 .8125rem/1.45 var(--body)}
-/* En la ventana de escritorio, la ilustración es una lámina centrada de 514 × 360. */
 @media (min-width:601px){
-  .nt-dlg-arte{width:min(calc(100% - 40px),514px);margin:18px auto 0;border-radius:var(--r-l);outline:1px solid var(--linea);outline-offset:-1px}
-  .nt-dlg-arte::after{display:none}
-  .nt-dlg-meta{margin-top:16px}
+  .nt-dlg-arte{width:calc(100% - 40px);margin:18px auto 0;border-radius:var(--r-l)}
 }
 @media (max-width:600px){
   .nt-dialogo{width:100%;max-width:100%;max-height:100dvh;height:100dvh;border-radius:0}
@@ -118,4 +124,4 @@ html.nt-dialogo-abierto{overflow:hidden}
   .nt-dlg-cuerpo{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
   .nt-dlg-tit{font-size:1.375rem}
 }
-@media (prefers-reduced-motion:reduce){.nt-arte{transition:none}.nt-pista{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.nt-tarjeta .nt-foto{transition:none}.nt-tarjeta:hover .nt-foto{transform:none}}

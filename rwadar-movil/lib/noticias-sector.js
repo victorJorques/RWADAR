@@ -13,12 +13,10 @@
    ninguna noticia: solo se comprueba la forma, se ordena (las de hoy
    primero) y se eligen los textos del idioma.
 
-   Ilustraciones: dibujos propios, deterministas, uno por categoría
-   (regulación, mercado, producto, riesgo) con el acento de su ámbito
-   (España, UE, Mundo). Sin texto, logotipos, banderas ni personas, y sin
-   fotos de prensa: no hay derechos y cargarlas de terceros filtraría la IP
-   de quien mira. `ilustracion()` devuelve una descripción en datos que la
-   web pinta con el DOM de SVG y la app con react-native-svg.
+   Fotos (rediseño de Inicio, 10/11/2026): cada noticia lleva en «imagen» la
+   clave de una foto editorial propia (WebP generado con IA, sin texto,
+   logotipos ni personas), servida desde rwadar.pages.dev: nunca de terceros,
+   que verían la IP de quien mira. Sustituyen a las ilustraciones SVG.
    --------------------------------------------------------------------- */
 const RUTA = '/datos/noticias.json';
 const URL_DATOS = 'https://rwadar.pages.dev/datos/noticias.json';
@@ -74,7 +72,8 @@ function urlFuente(valor, donde) {
 function validarNoticia(n, i, actualizadoEl) {
   const donde = `noticia ${i + 1}`;
   claves(n, ['id', 'fecha', 'seccion', 'categoria', 'ambito', 'titulo', 'resumen', 'porQueImporta', 'en', 'fuente', 'consultadaEl',
-    'tituloInformativo'], ['id', 'fecha', 'seccion', 'categoria', 'ambito', 'titulo', 'resumen', 'porQueImporta', 'en', 'fuente', 'consultadaEl'], donde);
+    'tituloInformativo', 'imagen'], ['id', 'fecha', 'seccion', 'categoria', 'ambito', 'titulo', 'resumen', 'porQueImporta', 'en', 'fuente', 'consultadaEl',
+    'imagen'], donde);
   if (typeof n.id !== 'string' || n.id.length > 80 || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(n.id)) throw new Error(`${donde}: id no válido`);
   const salida = { id: n.id };
   salida.fecha = fecha(n.fecha, `${donde}, fecha`);
@@ -99,6 +98,7 @@ function validarNoticia(n, i, actualizadoEl) {
   claves(n.fuente, ['nombre', 'url', 'tipo'], ['nombre', 'url', 'tipo'], `${donde}, fuente`);
   if (!TIPOS_FUENTE.includes(n.fuente.tipo)) throw new Error(`${donde}: tipo de fuente desconocido`);
   salida.fuente = { nombre: texto(n.fuente.nombre, `${donde}, fuente.nombre`, MAX.nombre), url: urlFuente(n.fuente.url, `${donde}, fuente.url`), tipo: n.fuente.tipo };
+  salida.imagen = claveFoto(n.imagen, `${donde}, imagen`);
   return salida;
 }
 
@@ -175,269 +175,37 @@ function etiquetaReciente(n, hoyISO) {
   return null;
 }
 
-/* ---- Ilustraciones ---- */
-/* Mezcla dos colores #RRGGBB (t = 0, el primero; t = 1, el segundo). */
-function mezclar(a, b, t) {
-  const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
-  const x = p(a), y = p(b);
-  return '#' + x.map((v, i) => Math.round(v + (y[i] - v) * t).toString(16).padStart(2, '0')).join('');
-}
-/* Azar con semilla (FNV-1a + mulberry32): la misma noticia, el mismo dibujo. */
-function azar(semilla) {
-  let h = 2166136261;
-  for (const c of String(semilla)) { h ^= c.codePointAt(0); h = Math.imul(h, 16777619) >>> 0; }
-  return () => {
-    h = (h + 0x6D2B79F5) >>> 0;
-    let t = h;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-const r1 = n => Math.round(n * 10) / 10;
-const ANCHO = 320, ALTO = 400;
-const FONDO = '#0B0A0A', TINTA = '#F7F5F0';
-
-function motivoAmbito(ambito, color, cx, cy, rnd, f) {
-  if (ambito === 'Mundo') {
-    // Un globo de meridianos y paralelos, sin continentes ni banderas.
-    const R = 96;
-    f.push({ el: 'circle', a: { cx, cy, r: R, fill: 'none', stroke: color, strokeOpacity: 0.5, strokeWidth: 1.5 } });
-    for (const k of [0.32, 0.68]) f.push({ el: 'ellipse', a: { cx, cy, rx: r1(R * k), ry: R, fill: 'none', stroke: color, strokeOpacity: 0.3, strokeWidth: 1 } });
-    f.push({ el: 'ellipse', a: { cx, cy, rx: R, ry: r1(R * 0.3), fill: 'none', stroke: color, strokeOpacity: 0.3, strokeWidth: 1 } });
-    for (const dy of [-0.62, 0.62]) {
-      const y = cy + R * dy, w = R * Math.sqrt(1 - dy * dy);
-      f.push({ el: 'line', a: { x1: r1(cx - w), y1: r1(y), x2: r1(cx + w), y2: r1(y), stroke: color, strokeOpacity: 0.26, strokeWidth: 1 } });
-    }
-    f.push({ el: 'ellipse', a: { cx, cy, rx: R + 26, ry: r1((R + 26) * 0.26), fill: 'none', stroke: color, strokeOpacity: 0.4, strokeWidth: 1.2, strokeDasharray: '2 6', strokeLinecap: 'round' } });
-  } else if (ambito === 'UE') {
-    // Una red de nodos enlazados: plataformas que se conectan. Ni estrellas ni círculo de doce.
-    const n = 8, nodos = [];
-    for (let i = 0; i < n; i++) {
-      const ang = (i / n) * Math.PI * 2 + rnd() * 0.5 - 0.25;
-      const rad = 0.78 + rnd() * 0.3;
-      nodos.push([r1(cx + Math.cos(ang) * 122 * rad), r1(cy + Math.sin(ang) * 92 * rad)]);
-    }
-    const enlaces = nodos.map((p, i) => [p, nodos[(i + 1) % n]]).concat([[nodos[0], nodos[3]], [nodos[2], nodos[6]], [nodos[5], nodos[1]]]);
-    f.push({ el: 'path', a: { d: enlaces.map(([a, b]) => `M${a[0]} ${a[1]}L${b[0]} ${b[1]}`).join(''), fill: 'none', stroke: color, strokeOpacity: 0.32, strokeWidth: 1.2 } });
-    nodos.forEach((p, i) => {
-      const r = i % 3 === 0 ? 5 : 3.2;
-      f.push({ el: 'circle', a: { cx: p[0], cy: p[1], r: r * 2.6, fill: color, fillOpacity: 0.14 } });
-      f.push({ el: 'circle', a: { cx: p[0], cy: p[1], r, fill: color, fillOpacity: 0.9 } });
-    });
-  } else {
-    // España: los anillos y el barrido del radar de RWAdar, en ámbar.
-    for (const [r, o] of [[70, 0.34], [108, 0.24], [146, 0.16], [184, 0.1]]) {
-      f.push({ el: 'circle', a: { cx, cy, r, fill: 'none', stroke: color, strokeOpacity: o, strokeWidth: 1.2, ...(r === 146 ? { strokeDasharray: '3 7', strokeLinecap: 'round' } : {}) } });
-    }
-    const a0 = -2.2 + rnd() * 0.6, a1 = a0 + 0.75, R = 184;
-    f.push({ el: 'path', a: { d: `M${cx} ${cy}L${r1(cx + Math.cos(a0) * R)} ${r1(cy + Math.sin(a0) * R)}A${R} ${R} 0 0 1 ${r1(cx + Math.cos(a1) * R)} ${r1(cy + Math.sin(a1) * R)}Z`,
-      fill: `url(#${f.id}-barrido)` } });
-    f.push({ el: 'line', a: { x1: cx, y1: cy, x2: r1(cx + Math.cos(a1) * R), y2: r1(cy + Math.sin(a1) * R), stroke: color, strokeOpacity: 0.55, strokeWidth: 1.5, strokeLinecap: 'round' } });
+/* ---- Fotos ---- */
+/* Cada noticia trae en «imagen» la clave de una foto editorial de la
+   biblioteca por tema (rwadar-editorial-source/noticias/fotos.json). La web la
+   sirve en /noticias-editoriales/<clave>.webp y la app la carga de
+   rwadar.pages.dev, como las imágenes de las ofertas. Son ilustrativas,
+   generadas con IA, sin texto, logotipos ni personas: no son fotos de la
+   noticia, y así se dice debajo de la sección. */
+const RUTA_FOTOS = '/noticias-editoriales/';
+const URL_FOTOS = 'https://rwadar.pages.dev/noticias-editoriales/';
+const CLAVE_FOTO = /^[a-z0-9-]+$/;
+const NOTA_FOTOS = Object.freeze({
+  es: 'Imágenes ilustrativas generadas con IA, no fotos de la noticia.',
+  en: 'Illustrative AI-generated images, not photos of the news.',
+});
+function claveFoto(valor, donde) {
+  if (typeof valor !== 'string' || valor.length > 60 || !CLAVE_FOTO.test(valor)) {
+    throw new Error(`${donde}: clave de foto no válida`);
   }
+  return valor;
 }
-
-/* Regulación tiene varias figuras: así dos tarjetas vecinas de la misma
-   categoría no repiten dibujo. Se elige con el id de la noticia. */
-const VARIANTES = Object.freeze({ regulacion: 4, mercado: 1, producto: 1, riesgo: 1 });
-/* Un rectángulo girado (ángulo en radianes) como lista de puntos. */
-function girado(cx, cy, largo, grueso, ang) {
-  const u = [Math.cos(ang), Math.sin(ang)], v = [-Math.sin(ang), Math.cos(ang)];
-  return [[1, 1], [1, -1], [-1, -1], [-1, 1]]
-    .map(([a, b]) => `${r1(cx + u[0] * largo / 2 * a + v[0] * grueso / 2 * b)},${r1(cy + u[1] * largo / 2 * a + v[1] * grueso / 2 * b)}`).join(' ');
+/* La ruta (web) o la dirección completa (app) de la foto de una noticia. */
+function rutaFoto(n, { base = RUTA_FOTOS } = {}) {
+  if (!n || typeof n.imagen !== 'string' || !CLAVE_FOTO.test(n.imagen)) return null;
+  return `${base}${n.imagen}.webp`;
 }
-
-function motivoCategoria(categoria, color, cx, cy, rnd, f, variante = 0) {
-  const claro = mezclar(color, TINTA, 0.45), oscuro = mezclar(color, FONDO, 0.55), sombra = mezclar(color, FONDO, 0.78);
-  if (categoria === 'regulacion' && variante === 1) {
-    // Una balanza: el fiel, el brazo algo inclinado y dos platillos.
-    const by = cy - 58, tilt = r1((rnd() < 0.5 ? -1 : 1) * (5 + rnd() * 6));
-    f.push({ el: 'ellipse', a: { cx, cy: cy + 100, rx: 92, ry: 8, fill: FONDO, fillOpacity: 0.5 } });
-    f.push({ el: 'rect', a: { x: cx - 6, y: cy - 76, width: 12, height: 152, rx: 4, fill: `url(#${f.id}-cuerpo)` } });
-    f.push({ el: 'rect', a: { x: cx - 2, y: cy - 70, width: 3, height: 140, rx: 1.5, fill: TINTA, fillOpacity: 0.22 } });
-    f.push({ el: 'path', a: { d: `M${cx - 58} ${cy + 92}L${cx - 30} ${cy + 72}L${cx + 30} ${cy + 72}L${cx + 58} ${cy + 92}Z`, fill: `url(#${f.id}-cuerpo)` } });
-    f.push({ el: 'rect', a: { x: cx - 72, y: cy + 92, width: 144, height: 9, rx: 3, fill: oscuro, fillOpacity: 0.95 } });
-    const extremos = [[cx - 94, r1(by + tilt)], [cx + 94, r1(by - tilt)]];
-    for (const [x, y] of extremos) {
-      const py = r1(y + 76);
-      f.push({ el: 'path', a: { d: `M${x} ${y}L${x - 38} ${py}M${x} ${y}L${x + 38} ${py}`, fill: 'none', stroke: claro, strokeOpacity: 0.6, strokeWidth: 1.5 } });
-      f.push({ el: 'path', a: { d: `M${x - 44} ${py}Q${x} ${r1(py + 46)} ${x + 44} ${py}Z`, fill: `url(#${f.id}-cuerpo)` } });
-      f.push({ el: 'ellipse', a: { cx: x, cy: py, rx: 44, ry: 6, fill: claro, fillOpacity: 0.85 } });
-    }
-    f.push({ el: 'line', a: { x1: extremos[0][0], y1: extremos[0][1], x2: extremos[1][0], y2: extremos[1][1], stroke: claro, strokeWidth: 7, strokeLinecap: 'round' } });
-    for (const [x, y] of extremos) f.push({ el: 'circle', a: { cx: x, cy: y, r: 5, fill: TINTA, fillOpacity: 0.85 } });
-    f.push({ el: 'circle', a: { cx, cy: by, r: 12, fill: claro } });
-    f.push({ el: 'circle', a: { cx, cy: by, r: 4.5, fill: sombra } });
-    f.push({ el: 'circle', a: { cx, cy: cy - 84, r: 8, fill: `url(#${f.id}-cuerpo)` } });
-  } else if (categoria === 'regulacion' && variante === 2) {
-    // Un documento oficial con su sello: renglones abstractos, sin letras.
-    const x0 = cx - 76, x1 = cx + 66, y0 = cy - 100, y1 = cy + 68, doblez = 26;
-    f.push({ el: 'rect', a: { x: x0 + 10, y: y0 + 10, width: x1 - x0, height: y1 - y0, rx: 8, fill: FONDO, fillOpacity: 0.45 } });
-    f.push({ el: 'path', a: { d: `M${x0 + 8} ${y0}H${x1 - doblez}L${x1} ${y0 + doblez}V${y1 - 8}Q${x1} ${y1} ${x1 - 8} ${y1}H${x0 + 8}Q${x0} ${y1} ${x0} ${y1 - 8}V${y0 + 8}Q${x0} ${y0} ${x0 + 8} ${y0}Z`,
-      fill: `url(#${f.id}-cuerpo)` } });
-    f.push({ el: 'path', a: { d: `M${x1 - doblez} ${y0}V${y0 + doblez - 4}Q${x1 - doblez} ${y0 + doblez} ${x1 - doblez + 4} ${y0 + doblez}H${x1}Z`, fill: claro, fillOpacity: 0.75 } });
-    f.push({ el: 'rect', a: { x: x0 + 18, y: y0 + 24, width: 74, height: 9, rx: 4.5, fill: TINTA, fillOpacity: 0.5 } });
-    for (let i = 0; i < 6; i++) {
-      const w = r1((i === 5 ? 52 : 92) + rnd() * 16);
-      f.push({ el: 'rect', a: { x: x0 + 18, y: y0 + 50 + i * 17, width: w, height: 6, rx: 3, fill: TINTA, fillOpacity: 0.24 } });
-    }
-    const sx = x1 - 8, sy = y1 - 8, puntas = 18;
-    const roseta = Array.from({ length: puntas * 2 }, (_, k) => {
-      const r = k % 2 ? 26 : 31, a = (k * Math.PI) / puntas;
-      return `${r1(sx + Math.cos(a) * r)},${r1(sy + Math.sin(a) * r)}`;
-    }).join(' ');
-    for (const lado of [-1, 1]) {
-      const bx = sx + lado * 14;
-      f.push({ el: 'polygon', a: { points: `${sx + lado * 4},${sy + 10} ${bx + lado * 12},${sy + 10} ${bx + lado * 10},${sy + 40} ${bx + lado * 2},${sy + 32} ${bx - lado * 6},${sy + 40}`,
-        fill: oscuro } });
-    }
-    f.push({ el: 'polygon', a: { points: roseta, fill: claro } });
-    f.push({ el: 'circle', a: { cx: sx, cy: sy, r: 20, fill: `url(#${f.id}-cuerpo)` } });
-    f.push({ el: 'circle', a: { cx: sx, cy: sy, r: 14, fill: 'none', stroke: TINTA, strokeOpacity: 0.35, strokeWidth: 1.5 } });
-    f.push({ el: 'path', a: { d: `M${sx - 7} ${sy}L${sx - 2} ${sy + 5}L${sx + 8} ${sy - 6}`, fill: 'none', stroke: TINTA, strokeOpacity: 0.85, strokeWidth: 2.5,
-      strokeLinecap: 'round', strokeLinejoin: 'round' } });
-  } else if (categoria === 'regulacion' && variante === 3) {
-    // Un mazo sobre su bloque.
-    const bx = cx - 26, by = cy + 64, brx = 66, bry = 16, grosor = 16;
-    f.push({ el: 'ellipse', a: { cx: bx, cy: by + grosor + 10, rx: brx + 14, ry: 9, fill: FONDO, fillOpacity: 0.5 } });
-    f.push({ el: 'path', a: { d: `M${bx - brx} ${by}L${bx - brx} ${by + grosor}A${brx} ${bry} 0 0 0 ${bx + brx} ${by + grosor}L${bx + brx} ${by}Z`, fill: oscuro } });
-    f.push({ el: 'ellipse', a: { cx: bx, cy: by, rx: brx, ry: bry, fill: `url(#${f.id}-cuerpo)` } });
-    f.push({ el: 'ellipse', a: { cx: bx, cy: by, rx: brx - 14, ry: bry - 5, fill: 'none', stroke: sombra, strokeOpacity: 0.5, strokeWidth: 2 } });
-    const ang = -0.5 - rnd() * 0.12, hx = cx - 4, hy = cy - 34;
-    const v = [-Math.sin(ang), Math.cos(ang)];
-    f.push({ el: 'polygon', a: { points: girado(r1(hx + v[0] * 70), r1(hy + v[1] * 70), 12, 128, ang), fill: claro, fillOpacity: 0.9, stroke: claro, strokeOpacity: 0.9,
-      strokeWidth: 4, strokeLinejoin: 'round' } });
-    f.push({ el: 'polygon', a: { points: girado(hx, hy, 116, 46, ang), fill: `url(#${f.id}-cuerpo)`, stroke: `url(#${f.id}-cuerpo)`, strokeWidth: 10, strokeLinejoin: 'round' } });
-    const u = [Math.cos(ang), Math.sin(ang)];
-    for (const k of [-42, 42]) f.push({ el: 'polygon', a: { points: girado(r1(hx + u[0] * k), r1(hy + u[1] * k), 7, 56, ang), fill: claro, fillOpacity: 0.85 } });
-    f.push({ el: 'polygon', a: { points: girado(r1(hx - v[0] * 12), r1(hy - v[1] * 12), 96, 4, ang), fill: TINTA, fillOpacity: 0.22 } });
-  } else if (categoria === 'regulacion') {
-    // Una institución: frontón, cuatro columnas y escalones.
-    const top = cy - 92;
-    f.push({ el: 'path', a: { d: `M${cx - 92} ${top + 46}L${cx} ${top}L${cx + 92} ${top + 46}Z`, fill: `url(#${f.id}-cuerpo)` } });
-    f.push({ el: 'circle', a: { cx, cy: top + 30, r: 7, fill: sombra, fillOpacity: 0.7 } });
-    f.push({ el: 'rect', a: { x: cx - 96, y: top + 50, width: 192, height: 12, rx: 3, fill: claro, fillOpacity: 0.9 } });
-    for (const dx of [-74, -32, 14, 56]) {
-      f.push({ el: 'rect', a: { x: cx + dx, y: top + 68, width: 18, height: 96, rx: 3, fill: `url(#${f.id}-cuerpo)` } });
-      f.push({ el: 'rect', a: { x: cx + dx + 3, y: top + 72, width: 3, height: 88, rx: 1.5, fill: TINTA, fillOpacity: 0.22 } });
-    }
-    f.push({ el: 'rect', a: { x: cx - 102, y: top + 168, width: 204, height: 10, rx: 3, fill: claro, fillOpacity: 0.75 } });
-    f.push({ el: 'rect', a: { x: cx - 114, y: top + 182, width: 228, height: 10, rx: 3, fill: oscuro, fillOpacity: 0.9 } });
-  } else if (categoria === 'mercado') {
-    // Barras que suben y la línea de tendencia con su punto final.
-    const n = 7, base = cy + 92, ancho = 22, paso = 32, x0 = cx - ((n - 1) * paso) / 2 - ancho / 2;
-    const tops = [];
-    for (let i = 0; i < n; i++) {
-      const h = 46 + i * 15 + rnd() * 26;
-      const x = x0 + i * paso, y = r1(base - h);
-      tops.push([r1(x + ancho / 2), y]);
-      f.push({ el: 'rect', a: { x: r1(x), y, width: ancho, height: r1(h), rx: 5, fill: `url(#${f.id}-cuerpo)`, fillOpacity: 0.55 + i * 0.06 } });
-    }
-    f.push({ el: 'line', a: { x1: cx - 128, y1: base + 4, x2: cx + 128, y2: base + 4, stroke: TINTA, strokeOpacity: 0.16, strokeWidth: 1 } });
-    const linea = tops.map(([x, y]) => `${x},${r1(y - 18)}`).join(' ');
-    f.push({ el: 'polyline', a: { points: linea, fill: 'none', stroke: claro, strokeOpacity: 0.35, strokeWidth: 9, strokeLinejoin: 'round', strokeLinecap: 'round' } });
-    f.push({ el: 'polyline', a: { points: linea, fill: 'none', stroke: claro, strokeWidth: 3, strokeLinejoin: 'round', strokeLinecap: 'round' } });
-    const [ux, uy] = tops[n - 1];
-    f.push({ el: 'circle', a: { cx: ux, cy: r1(uy - 18), r: 15, fill: claro, fillOpacity: 0.22 } });
-    f.push({ el: 'circle', a: { cx: ux, cy: r1(uy - 18), r: 6, fill: TINTA } });
-  } else if (categoria === 'producto') {
-    // Tres fichas apiladas (tokens) y una pequeña que flota.
-    const rx = 80, ry = 24, grosor = 16;
-    for (const dy of [56, 22, -12]) {
-      const y = cy + dy;
-      f.push({ el: 'path', a: { d: `M${cx - rx} ${y}L${cx - rx} ${y + grosor}A${rx} ${ry} 0 0 0 ${cx + rx} ${y + grosor}L${cx + rx} ${y}Z`, fill: oscuro } });
-      f.push({ el: 'ellipse', a: { cx, cy: y, rx, ry, fill: `url(#${f.id}-cuerpo)` } });
-      f.push({ el: 'ellipse', a: { cx, cy: y, rx: 52, ry: 15, fill: 'none', stroke: sombra, strokeOpacity: 0.55, strokeWidth: 2 } });
-      f.push({ el: 'ellipse', a: { cx, cy: y, rx: 22, ry: 6.5, fill: TINTA, fillOpacity: 0.18 } });
-    }
-    const hx = r1(cx + 84 + rnd() * 10), hy = r1(cy - 72 + rnd() * 10), hr = 18;
-    const hex = [0, 1, 2, 3, 4, 5].map(k => `${r1(hx + Math.cos(Math.PI / 6 + (k * Math.PI) / 3) * hr)},${r1(hy + Math.sin(Math.PI / 6 + (k * Math.PI) / 3) * hr)}`).join(' ');
-    f.push({ el: 'polygon', a: { points: hex, fill: color, fillOpacity: 0.22, stroke: claro, strokeWidth: 1.5, strokeLinejoin: 'round' } });
-    for (const [dx, dy, r] of [[-104, -58, 3], [-86, -84, 2], [110, 10, 2.5]]) f.push({ el: 'circle', a: { cx: cx + dx, cy: cy + dy, r, fill: claro, fillOpacity: 0.8 } });
-  } else {
-    // Riesgo: un escudo agrietado entre ondas de alarma.
-    for (const [r, o] of [[118, 0.28], [150, 0.16]]) f.push({ el: 'circle', a: { cx, cy: cy - 6, r, fill: 'none', stroke: color, strokeOpacity: o, strokeWidth: 1.4, strokeDasharray: '4 8', strokeLinecap: 'round' } });
-    const t = cy - 88, b = cy + 96;
-    const escudo = (m) => `M${cx} ${t + m}C${cx + 40 - m} ${t + 16 + m} ${cx + 66 - m} ${t + 20 + m} ${cx + 78 - m} ${t + 22 + m}L${cx + 78 - m} ${cy + 4}` +
-      `C${cx + 78 - m} ${cy + 50} ${cx + 44 - m} ${b - 22} ${cx} ${b - m}C${cx - 44 + m} ${b - 22} ${cx - 78 + m} ${cy + 50} ${cx - 78 + m} ${cy + 4}` +
-      `L${cx - 78 + m} ${t + 22 + m}C${cx - 66 + m} ${t + 20 + m} ${cx - 40 + m} ${t + 16 + m} ${cx} ${t + m}Z`;
-    f.push({ el: 'path', a: { d: escudo(0), fill: `url(#${f.id}-cuerpo)` } });
-    f.push({ el: 'path', a: { d: escudo(12), fill: 'none', stroke: TINTA, strokeOpacity: 0.18, strokeWidth: 1.5 } });
-    const grieta = [[cx + 2, t + 4]];
-    let x = cx + 2;
-    for (let y = t + 30; y < b - 8; y += 26) { x = cx + (grieta.length % 2 ? -1 : 1) * (8 + rnd() * 14); grieta.push([r1(x), y]); }
-    grieta.push([cx - 3, b - 4]);
-    const pts = grieta.map(p => p.join(',')).join(' ');
-    f.push({ el: 'polyline', a: { points: pts, fill: 'none', stroke: FONDO, strokeOpacity: 0.85, strokeWidth: 5, strokeLinejoin: 'miter', strokeLinecap: 'round' } });
-    f.push({ el: 'polyline', a: { points: pts, fill: 'none', stroke: claro, strokeOpacity: 0.7, strokeWidth: 1.2, strokeLinejoin: 'miter' } });
-    for (const [dx, dy, s] of [[-104, -40, 9], [98, -62, 7], [112, 30, 6]]) {
-      f.push({ el: 'polygon', a: { points: `${cx + dx},${cy + dy - s} ${cx + dx + s},${cy + dy + s} ${cx + dx - s},${cy + dy + s * 0.6}`, fill: color, fillOpacity: 0.5 } });
-    }
-  }
+/* Las claves distintas que usan las noticias (para el generador). */
+function clavesFotos(datos) {
+  const lista = Array.isArray(datos?.noticias) ? datos.noticias : [];
+  return [...new Set(lista.map(n => n && n.imagen).filter(v => typeof v === 'string'))];
 }
-
-/* La ilustración de una noticia: { id, ancho, alto, defs, formas }. Cada
-   elemento es { el, a } (y { stops } en los degradados), con nombres de
-   atributo en camelCase, como react-native-svg; la web los pasa a SVG.
-   Con velo: true, un degradado oscuro abajo para leer el titular encima. */
-function ilustracion(noticia, { velo = false, prefijo = 'nt', variante: elegida } = {}) {
-  const cat = CATEGORIAS[noticia?.categoria] ? noticia.categoria : 'mercado';
-  const amb = AMBITOS[noticia?.ambito] ? noticia.ambito : 'Mundo';
-  const color = CATEGORIAS[cat].color, acento = AMBITOS[amb].color;
-  const rnd = azar(`${noticia?.id || ''}|${cat}|${amb}`);
-  const id = `${prefijo}-${String(noticia?.id || 'x').replace(/[^a-z0-9-]/gi, '')}`;
-  const cx = r1(160 + (rnd() - 0.5) * 16), cy = r1(142 + (rnd() - 0.5) * 12);
-  const esquina = rnd() < 0.5 ? 0.12 : 0.88;
-  const variante = Number.isInteger(elegida) ? ((elegida % VARIANTES[cat]) + VARIANTES[cat]) % VARIANTES[cat]
-    : Math.floor(azar(`${noticia?.id || ''}|variante`)() * VARIANTES[cat]);
-  const defs = [
-    { el: 'linearGradient', a: { id: `${id}-fondo`, x1: 0, y1: 0, x2: 0, y2: 1 },
-      stops: [{ offset: 0, color: mezclar(FONDO, color, 0.2), opacity: 1 }, { offset: 0.65, color: mezclar(FONDO, color, 0.06), opacity: 1 }, { offset: 1, color: FONDO, opacity: 1 }] },
-    { el: 'radialGradient', a: { id: `${id}-halo`, cx: r1(cx / ANCHO * 100) / 100, cy: r1(cy / ALTO * 100) / 100, r: 0.62 },
-      stops: [{ offset: 0, color, opacity: 0.42 }, { offset: 0.55, color, opacity: 0.1 }, { offset: 1, color, opacity: 0 }] },
-    { el: 'radialGradient', a: { id: `${id}-acento`, cx: esquina, cy: 0.06, r: 0.7 },
-      stops: [{ offset: 0, color: acento, opacity: 0.34 }, { offset: 1, color: acento, opacity: 0 }] },
-    { el: 'linearGradient', a: { id: `${id}-cuerpo`, x1: 0, y1: 0, x2: 0, y2: 1 },
-      stops: [{ offset: 0, color: mezclar(color, TINTA, 0.22), opacity: 1 }, { offset: 1, color: mezclar(color, FONDO, 0.5), opacity: 1 }] },
-    { el: 'linearGradient', a: { id: `${id}-barrido`, x1: 0, y1: 0, x2: 1, y2: 1 },
-      stops: [{ offset: 0, color: acento, opacity: 0.2 }, { offset: 1, color: acento, opacity: 0 }] },
-  ];
-  const formas = [];
-  formas.id = id;
-  formas.push({ el: 'rect', a: { x: 0, y: 0, width: ANCHO, height: ALTO, fill: `url(#${id}-fondo)` } });
-  formas.push({ el: 'rect', a: { x: 0, y: 0, width: ANCHO, height: ALTO, fill: `url(#${id}-acento)` } });
-  // Una rejilla finísima, como la del radar.
-  let rejilla = '';
-  for (let x = 32; x < ANCHO; x += 32) rejilla += `M${x} 0V${ALTO}`;
-  for (let y = 32; y < ALTO; y += 32) rejilla += `M0 ${y}H${ANCHO}`;
-  formas.push({ el: 'path', a: { d: rejilla, fill: 'none', stroke: TINTA, strokeOpacity: 0.04, strokeWidth: 1 } });
-  formas.push({ el: 'rect', a: { x: 0, y: 0, width: ANCHO, height: ALTO, fill: `url(#${id}-halo)` } });
-  motivoAmbito(amb, acento, cx, cy, rnd, formas);
-  motivoCategoria(cat, color, cx, cy, rnd, formas, variante);
-  if (velo) {
-    defs.push({ el: 'linearGradient', a: { id: `${id}-velo`, x1: 0, y1: 0, x2: 0, y2: 1 },
-      stops: [{ offset: 0, color: FONDO, opacity: 0 }, { offset: 0.4, color: FONDO, opacity: 0 }, { offset: 0.62, color: FONDO, opacity: 0.8 }, { offset: 1, color: FONDO, opacity: 0.97 }] });
-    formas.push({ el: 'rect', a: { x: 0, y: 0, width: ANCHO, height: ALTO, fill: `url(#${id}-velo)` } });
-  }
-  return { id, ancho: ANCHO, alto: ALTO, variante, defs, formas: formas.slice() };
-}
-/* La figura de cada noticia de una lista: dentro de cada categoría, por
-   turno y empezando por una elegida con el id de la primera. Dos noticias
-   seguidas de la misma categoría nunca llevan la misma figura (si la
-   categoría tiene más de una). Devuelve { id: variante }. */
-function variantes(noticias) {
-  const salida = {}, turno = {};
-  for (const n of Array.isArray(noticias) ? noticias : []) {
-    const total = VARIANTES[n?.categoria] || 1;
-    if (!Object.hasOwn(turno, n.categoria)) turno[n.categoria] = Math.floor(azar(`${n.id}|variante`)() * total);
-    salida[n.id] = turno[n.categoria] % total;
-    turno[n.categoria]++;
-  }
-  return salida;
-}
-/* El detalle es apaisado (10:7): se recorta el lienzo a la franja del
-   motivo (y = 30–254), donde caben enteras todas las figuras. */
-const RECORTE_DETALLE = Object.freeze({ viewBox: '0 30 320 224', proporcion: 0.7 });
 
 module.exports = { RUTA, URL_DATOS, MAX_NOTICIAS, SECCIONES, CATEGORIAS, AMBITOS, TIPOS_FUENTE, MAX, validarNoticias, noticiasValidas,
-  textos, etiquetaCategoria, etiquetaAmbito, fechaCorta, fechaBreve, fechaLocal, etiquetaReciente, ilustracion, variantes, RECORTE_DETALLE, VARIANTES, mezclar };
+  textos, etiquetaCategoria, etiquetaAmbito, fechaCorta, fechaBreve, fechaLocal, etiquetaReciente,
+  RUTA_FOTOS, URL_FOTOS, CLAVE_FOTO, NOTA_FOTOS, rutaFoto, clavesFotos };

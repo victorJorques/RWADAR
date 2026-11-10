@@ -446,9 +446,43 @@ test('Inicio en la app: sin datos («sin-datos») ofrece «Reintentar» y no ens
   assert.doesNotMatch(textoDe(arbol), /\d/, 'ningún dígito');
 });
 
-test('Inicio pinta la sección justo después de «Recién añadidas» y le pasa el abridor de enlaces', () => {
+const barraTexto = (r) => r.segmentos.map((x) => `${x.nombre} ${t.cuota(x.cuota)}`).join(', ');
+test('la tarjeta compacta de Inicio: total, 24 h, una barra apilada con los 3 mayores y «Otros», fuente y «Ver el mercado →»', async () => {
+  // El reparto sale del mismo resumen (resumenCompacto, compartido con la web).
+  const r = t.resumenCompacto(RESUMEN);
+  assert.deepEqual(r.segmentos.map((t) => t.clave), ['credito-privado', 'letras-tesoro', 'materias-primas', 'otros']);
+  const suma = r.segmentos.reduce((s, t) => s + t.cuota, 0);
+  assert.ok(Math.abs(suma - 100) < 0.01, `las cuotas suman 100 (${suma})`);
+  assert.equal(r.segmentos[3].cuota, Math.round((100 - RESUMEN.tipos.slice(0, 3).reduce((s, t) => s + t.cuota, 0)) * 100) / 100);
+  assert.equal(t.resumenCompacto({ version: 1, fuente: "sin-datos" }), null);
+  const { react, pintar } = crearReact();
+  const Seccion = cargarSeccion(react);
+  let abierto = 0;
+  const props = { cargar: async () => RESUMEN, onAbrirEnlace() {}, compacta: true, onVerMas: () => { abierto++; },
+    textos: { titulo: 'El mercado hoy', sub: 'Valor de los activos reales tokenizados en el mundo', ver: 'Ver el mercado' } };
+  pintar(Seccion, props); await esperar(); await esperar();
+  const arbol = pintar(Seccion, props);
+  const texto = textoDe(arbol);
+  assert.match(texto, /El mercado hoy/);
+  assert.match(texto, /49\.684/);
+  assert.match(texto, /−0,9\s%/);
+  assert.match(texto, /Crédito privado .*Letras del Tesoro .*Materias primas .*Otros/);
+  assert.match(barraTexto(r), /^Crédito privado 55,6\s%, Letras del Tesoro 16,2\s%, Materias primas 11,9\s%, Otros 16,4\s%$/);
+  assert.match(texto, /Datos:.*CoinGecko/);
+  // Lo demás está en su pantalla: ni periodos, ni barras por tipo, ni línea, ni «Inmuebles».
+  assert.doesNotMatch(texto, /7 días|Histórico|Por tipo de activo|Evolución|Inmuebles|De ello, oro/);
+  const barra = nodos(arbol).find((n) => n?.type === 'View' && /^Reparto por tipo de activo: /.test(n.props.accessibilityLabel || ''));
+  assert.equal(barra.props.accessibilityLabel, `Reparto por tipo de activo: ${r.segmentos.map((x) => `${x.nombre} ${t.cuota(x.cuota)}`).join(', ')}`);
+  const ver = nodos(arbol).find((n) => n?.type === 'Pressable' && n.props.accessibilityLabel === 'Ver el mercado');
+  ver.props.onPress();
+  assert.equal(abierto, 1);
+});
+
+test('Inicio pinta la tarjeta compacta tras «Ofertas» y la pantalla «El mercado hoy» con la sección entera', () => {
   const inicio = fs.readFileSync(path.join(RAIZ, 'componentes/Inicio.js'), 'utf8');
   assert.match(inicio, /import TokenizacionMundo from '\.\/TokenizacionMundo';/);
-  const recien = inicio.indexOf('<RecienAnadidas'), seccion = inicio.indexOf('<TokenizacionMundo onAbrirEnlace={onAbrirEnlace} />');
-  assert.ok(recien > 0 && seccion > recien && seccion < inicio.indexOf('{tarjetaAvisos}'));
+  const ofertas = inicio.indexOf('<RecienAnadidas'), compacta = inicio.indexOf('<TokenizacionMundo compacta');
+  assert.ok(ofertas > 0 && compacta > ofertas);
+  assert.match(inicio, /<TokenizacionMundo compacta textos=\{b\.mercado\} onAbrirEnlace=\{onAbrirEnlace\} onVerMas=\{\(\) => abrir\('mercado'\)\} \/>/);
+  assert.match(inicio, /<PantallaInicio visible=\{seccion === 'mercado'\}[\s\S]*?<TokenizacionMundo onAbrirEnlace=\{onAbrirEnlace\} \/>/);
 });

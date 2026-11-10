@@ -225,7 +225,7 @@ function cargarPlaywright() {
 const playwright = cargarPlaywright();
 const sinNavegador = playwright ? false : 'Playwright no está instalado (en CI no lo está): se omite la prueba en Chromium';
 
-test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tablas accesibles, en inglés y con CoinGecko caído', { skip: sinNavegador, timeout: 180000 }, async () => {
+test('en Chromium: /mercado/ pinta la sección entera sin desbordes a 390 y 1366 px, con tablas accesibles, en inglés y con CoinGecko caído; Inicio, la tarjeta compacta', { skip: sinNavegador, timeout: 180000 }, async () => {
   let estado = 'vivo';
   // Las fuentes, sin huellas: el worker se compila desde rwadar-acceso/.
   const local = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, responder: async (url) => {
@@ -238,14 +238,42 @@ test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tabla
       const pagina = await navegador.newPage({ viewport: { width: ancho, height: alto } });
       const errores = [];
       pagina.on('pageerror', e => errores.push(e.message));
+      // Inicio (rediseño del 10/11/2026): la tarjeta compacta, con el total, 24 h, una barra apilada y «Ver el mercado →».
       await pagina.goto(local.url + '/', { waitUntil: 'load' });
+      await pagina.waitForSelector('#tokenizacion[data-tokenizacion-estado="coingecko"]', { timeout: 20000 });
+      const c = await pagina.evaluate(() => {
+        const s = document.querySelector('#tokenizacion');
+        const fuera = [...s.querySelectorAll('*')].filter(n => !n.closest('.solo-lector'))
+          .filter(n => { const b = n.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5); });
+        const tramos = [...s.querySelectorAll('.tk-tramo')].map(t => t.getBoundingClientRect().width);
+        return { compacta: s.dataset.tokenizacion, total: s.querySelector('.tk-total-cifra').textContent, capsula: s.querySelector('.tk-capsula')?.textContent,
+          tramos, ancho: s.querySelector('.tk-apilada').getBoundingClientRect().width, leyenda: [...s.querySelectorAll('.tk-leyenda-item')].map(l => l.textContent),
+          periodos: s.querySelectorAll('.tk-periodo,.tk-tipo,.tk-linea').length, ver: s.querySelector('a.ini-ver[href="/mercado/"]')?.textContent.trim(),
+          hora: document.getElementById('tkHora').textContent, fuera: fuera.length, anchoPagina: document.documentElement.scrollWidth,
+          trasOfertas: document.getElementById('relNuevas').compareDocumentPosition(s) & Node.DOCUMENT_POSITION_FOLLOWING };
+      });
+      assert.equal(c.compacta, 'compacta');
+      assert.equal(c.total, '49.684\u00a0M$');
+      assert.match(c.capsula, /^▼ −0,9\s%\sen 24 h$/);
+      assert.equal(c.tramos.length, 4, 'los 3 tipos mayores y «Otros»');
+      assert.ok(c.tramos.every(w => w >= 3) && c.tramos[0] > c.tramos[1], `cada tramo, su cuota (${c.tramos})`);
+      assert.ok(Math.abs(c.tramos.reduce((a, b) => a + b, 0) + 6 - c.ancho) < 3, 'la barra suma el 100 %');
+      assert.deepEqual(c.leyenda.map(t => t.replace(/[\s\u00a0\u202f]+/g, ' ')), ['Crédito privado 55,6 %', 'Letras del Tesoro 16,2 %', 'Materias primas 11,9 %', 'Otros 16,4 %']);
+      assert.equal(c.periodos, 0, 'ni periodos, ni tipos, ni línea: están en /mercado/');
+      assert.equal(c.ver, 'Ver el mercado→');
+      assert.match(c.hora, /Dato del 10\/11\/2026, 15:25 UTC/);
+      assert.equal(c.fuera, 0);
+      assert.equal(c.anchoPagina, ancho);
+      assert.ok(c.trasOfertas, 'después de «Ofertas»');
+      // /mercado/: la sección entera, como estaba en Inicio.
+      await pagina.goto(local.url + '/mercado/', { waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion[data-tokenizacion-estado="coingecko"]', { timeout: 20000 });
       const m = await pagina.evaluate(() => {
         const s = document.querySelector('#tokenizacion');
         const fuera = [...s.querySelectorAll('*')].filter(n => !n.closest('.solo-lector'))
           .filter(n => { const b = n.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5); });
         const enlace = s.querySelector('.tk-fuente a');
-        const portada = document.querySelector('#relPortada').getBoundingClientRect();
+        const portada = document.querySelector('h1').getBoundingClientRect();
         return { fuera: fuera.length, anchoPagina: document.documentElement.scrollWidth, total: s.querySelector('.tk-total-cifra').textContent,
           capsulas: [...s.querySelectorAll('.tk-periodo')].map(p => p.className.split(' ').pop()),
           barras: s.querySelectorAll('.tk-tipo').length, tablas: [...s.querySelectorAll('.solo-lector table caption')].map(c => c.textContent),
@@ -261,9 +289,9 @@ test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tabla
           etiquetaTotal: s.querySelector('.tk-total-etq').textContent,
           notasPeriodos: [...s.querySelectorAll('.tk-periodo')].map(p => p.querySelector('.tk-periodo-nota').textContent),
           unaColumna: s.querySelector('.tk-graficos').classList.contains('tk-graficos--una'),
-          // Escritorio: el título en la columna del relato, como «Recién añadidas» y los capítulos.
+          // El título de la sección, alineado con el de la página.
           izquierdaTitulo: document.getElementById('tkTit').getBoundingClientRect().left,
-          izquierdaCapitulo: document.querySelector('#relCap1 .rel-num').getBoundingClientRect().left };
+          izquierdaCapitulo: document.querySelector('h1').getBoundingClientRect().left };
       });
       assert.deepEqual(errores, [], `${ancho}: sin errores de JavaScript`);
       assert.equal(m.fuera, 0, `${ancho}: nada se sale por los lados`);
@@ -280,12 +308,12 @@ test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tabla
       // Sin fotos todavía: cuándo llegará cada periodo (la semilla es del 10/11/2026).
       assert.deepEqual(m.notasPeriodos.slice(1), ['disponible el 15/11', 'disponible el 08/12', 'disponible el 08/11/2027', 'disponible el 11/11']);
       assert.equal(m.unaColumna, true, 'con una foto, una columna');
-      if (ancho >= 900) assert.ok(Math.abs(m.izquierdaTitulo - m.izquierdaCapitulo) < 1, `título alineado con los capítulos (${m.izquierdaTitulo} y ${m.izquierdaCapitulo})`);
+      assert.ok(Math.abs(m.izquierdaTitulo - m.izquierdaCapitulo) < 1, `título alineado con el de la página (${m.izquierdaTitulo} y ${m.izquierdaCapitulo})`);
       assert.equal(m.filas, 6 + 9);
       assert.equal(m.visualOculto, true);
       assert.equal(m.enlace, 'https://www.coingecko.com/');
       assert.match(m.hora, /Dato del 10\/11\/2026, 15:25 UTC/);
-      assert.ok(m.seccionDespuesDePortada, 'no empuja la portada');
+      assert.ok(m.seccionDespuesDePortada, 'va tras el título de la página');
       assert.notEqual(m.ancho1, '0px', 'las barras tienen su ancho (CSSOM, sin style en línea)');
       // El enlace a CoinGecko se alcanza con el teclado y se ve el foco.
       await pagina.focus('#tokenizacion .tk-fuente a');
@@ -310,10 +338,10 @@ test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tabla
     for (const [ancho, alto] of [[390, 844], [1366, 900]]) {
       const pagina = await navegador.newPage({ viewport: { width: ancho, height: alto } });
       await pagina.route('**/api/tokenizacion', r => r.fulfill({ status: 200, contentType: 'application/json', body: conFotos }));
-      await pagina.goto(local.url + '/', { waitUntil: 'load' });
+      await pagina.goto(local.url + '/mercado/', { waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion .tk-linea-svg', { timeout: 20000 });
       const l = await pagina.evaluate(() => {
-        const s = document.querySelector('#tokenizacion'), col = document.querySelector('#relCap1').getBoundingClientRect().width;
+        const s = document.querySelector('#tokenizacion'), col = 720;
         const ys = s.querySelector('.tk-linea-trazo').getAttribute('points').split(' ').map(p => Number(p.split(',')[1]));
         return { area: s.querySelectorAll('.tk-linea-area, .tk-linea-svg path').length, ys, nota: s.querySelector('.tk-linea-nota').textContent,
           desde: [...s.querySelectorAll('.tk-periodo-desde')].map(n => n.textContent), anchoGraficos: s.querySelector('.tk-graficos').getBoundingClientRect().width, col,
@@ -325,7 +353,7 @@ test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tabla
       assert.deepEqual(l.desde, ['desde 07/11']);
       assert.equal(l.una, false);
       assert.equal(l.anchoPagina, ancho, `${ancho}: sin desplazamiento horizontal con la línea`);
-      if (ancho >= 900) assert.ok(l.anchoGraficos > l.col + 100, `en escritorio, los gráficos más anchos que la columna (${l.anchoGraficos} y ${l.col})`);
+      if (ancho >= 900) assert.ok(l.anchoGraficos > l.col + 100, `en escritorio, los gráficos a lo ancho de la página (${l.anchoGraficos})`);
       await pagina.close();
     }
     // CoinGecko da 429: la última foto guardada, con su aviso y su fecha.
@@ -334,7 +362,7 @@ test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tabla
       (url.hostname === 'api.coingecko.com' ? new Response('{}', { status: 429 }) : null) });
     try {
       const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 } });
-      await pagina.goto(local2.url + '/', { waitUntil: 'load' });
+      await pagina.goto(local2.url + '/mercado/', { waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion[data-tokenizacion-estado="foto-guardada"]', { timeout: 20000 });
       assert.match(await pagina.textContent('#tokenizacion .tk-aviso'), /Cifras de la última foto diaria de RWAdar, del 10\/11\/2026, 15:25 UTC/);
       // Sin servidor y sin histórico: estado vacío honesto, sin una sola cifra.
@@ -345,7 +373,7 @@ test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tabla
       const vacio = await pagina.textContent('#tkCuerpo');
       assert.match(vacio, /Ahora no podemos mostrar los datos de CoinGecko/);
       assert.doesNotMatch(vacio, /\d/);
-      assert.ok(await pagina.isVisible('#relPortada'), 'el resto de Inicio sigue');
+      assert.ok(await pagina.isVisible('h1'), 'el resto de la página sigue');
       await pagina.close();
     } finally { await local2.cerrar(); }
   } finally { await navegador.close(); await local.cerrar(); }

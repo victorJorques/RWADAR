@@ -104,10 +104,14 @@ test('las cifras del catálogo no se escriben a mano y faltan si no hay catálog
 });
 
 test('cada capítulo acaba en «Fuentes de este apartado» y las 38 fuentes van agrupadas con enlace', () => {
-  const inicio = leer('componentes', 'Inicio.js');
-  for (const cap of contenido.CAPITULOS_INICIO) assert.match(inicio, new RegExp(`irAFuentes\\('${cap}'\\)`), cap);
-  assert.match(inicio, /irAFuentes\('portada'\)/);
-  assert.match(inicio, /irAFuentes\('seleccion'\)/);
+  // Rediseño del 10/11/2026: los seis capítulos y sus fuentes van en la
+  // pantalla «Aprende» (AprendeInicio.js), como /aprende/ en la web.
+  const aprende = leer('componentes', 'AprendeInicio.js');
+  for (const cap of contenido.CAPITULOS_INICIO) assert.match(aprende, new RegExp(`irAFuentes\\('${cap}'\\)`), cap);
+  assert.match(aprende, /irAFuentes\('portada'\)/);
+  assert.match(aprende, /irAFuentes\('legal'\)/);
+  // Inicio ya no lleva capítulos ni fuentes: solo los bloques cortos.
+  assert.doesNotMatch(leer('componentes', 'Inicio.js'), /irAFuentes|<Bloque n=\{/);
   const numeros = new Set(fuentes.FUENTES_INICIO.map((f) => f.n));
   assert.equal(numeros.size, 38);
   const usados = new Set(fuentes.GRUPOS_FUENTES_INICIO.flatMap((g) => g.fuentes));
@@ -123,7 +127,8 @@ test('cada capítulo acaba en «Fuentes de este apartado» y las 38 fuentes van 
 
 test('el aviso de riesgo va pegado al botón de la portada y, en pantallas bajas, antes', () => {
   const inicio = leer('componentes', 'Inicio.js');
-  const portada = inicio.slice(inicio.indexOf('<View style={[e.accionPortada'), inicio.indexOf('{/* 01 · De dónde viene */}'));
+  const portada = inicio.slice(inicio.indexOf('<View style={[e.accionPortada'), inicio.indexOf('{/* Avisos de la cuenta'));
+  assert.ok(portada.length > 100, 'el bloque del botón está en la cabecera');
   assert.match(portada, /avisoPrimero \? <Text noTraducir style=\{e\.avisoPortada\}>\{t\.portada\.aviso\}<\/Text> : null/);
   assert.match(portada, /onDestino\('ofertas'\)/);
   // Revisión del 04/11 (ESPEC-INICIO §3, «si se ve el botón, se ve el aviso»):
@@ -137,7 +142,7 @@ test('el aviso de riesgo va pegado al botón de la portada y, en pantallas bajas
     'Invertir tiene riesgos: puedes perder parte o todo lo que inviertas. RWAdar informa, no asesora ni vende.');
 });
 
-test('la Selección sale en el orden de la web, siempre con nota de riesgo y con «1 $»', () => {
+test('la Selección sale en el orden de la web y va en el carrusel «Ofertas» con sus 5 comprobaciones', () => {
   const { es, en } = contenido.INICIO;
   const src = fs.readFileSync(path.join(RAIZ, '..', 'rwadar-site', 'assets', 'catalogo-publico-20261022.js'), 'utf8');
   const { P, FUERA, EMI } = new Function(`${src};return {P,FUERA,EMI};`)();
@@ -149,28 +154,36 @@ test('la Selección sale en el orden de la web, siempre con nota de riesgo y con
   assert.deepEqual(puestos, [...puestos].sort((a, b) => a - b), 'Robinhood, Euro y Dólar, como la web (ESPEC §2.8)');
   assert.equal(es.seleccion.letraRespaldo, 'Puedes perder parte o todo lo que inviertas.');
   assert.equal(en.seleccion.letraRespaldo, 'You can lose some or all of what you invest.');
+  // Rediseño del 10/11/2026: la Selección va en el carrusel «Ofertas» de
+  // Inicio, junto a las recién añadidas y sin duplicados; cada tarjeta lleva
+  // su nota propia si la tiene, «Pasa las 5 comprobaciones» y, plegadas
+  // debajo, las 5 comprobaciones con su aviso.
   const inicio = leer('componentes', 'Inicio.js');
-  assert.match(inicio, /t\.seleccion\.letraPequena\[o\.slug\] \|\| t\.seleccion\.letraRespaldo/);
-  assert.match(inicio, /\.replace\(\/\^\(\\d\+\(\?:,\\d\+\)\?\) USD\$\/, '\$1 \$'\)/);
+  assert.match(inicio, /ofertasDestacadas\(nuevas, cifras\.seleccion\)/);
+  const carrusel = leer('componentes', 'RecienAnadidas.js');
+  assert.match(carrusel, /t\.seleccion\.letraPequena\[o\.slug\] \|\| ''/);
+  assert.match(carrusel, /t\.seleccion\.criterios\.map/);
+  assert.match(carrusel, /b\.cincoNota/);
+  assert.equal(es.bloques.ofertas.cincoNota, 'Pasarlas no hace a una oferta más segura ni más rentable. No es una recomendación de inversión.');
 });
 
-test('las cifras de mercado del 03 se quitan pasados 7 días aunque no haya OTA (ESPEC §9)', () => {
+test('el 03 ya no lleva cifras de mercado: un enlace abre «El mercado hoy» (rediseño del 10/11/2026)', () => {
   const { es, en } = contenido.INICIO;
-  assert.equal(contenido.CIFRAS_MERCADO_EL, '2026-11-03');
-  const [a, m, d] = contenido.CIFRAS_MERCADO_EL.split('-');
-  // Desde la versión final de la web (04/11/2026) la cifra va en el «Saber más»
-  // del 03: el hueco null de la lista se llena con ella o, caducada, sin cifra.
+  // Una cifra, en un solo sitio: las del mercado están al día en su pantalla.
+  assert.equal(contenido.CIFRAS_MERCADO_EL, undefined);
   for (const t of [es, en]) {
-    assert.ok(t.capitulos.cap3.mercado.includes(`${d}/${m}/${a}`), 'la fecha va también en el texto');
-    assert.equal(t.capitulos.cap3.saberMas.filter((p) => p === null).length, 1);
+    assert.equal(t.capitulos.cap3.mercado, undefined);
+    assert.equal(t.capitulos.cap3.sinCifra, undefined);
+    assert.equal(t.capitulos.cap3.saberMas.filter((p) => p === null).length, 1, 'el hueco de la cifra sigue, para el enlace');
+    assert.doesNotMatch(t.capitulos.cap3.saberMas.filter(Boolean).join(' '), /14\.230|125 veces|125 times|3,9 %|3\.9%/);
+    assert.match(t.bloques.enlaceMercado, /El mercado hoy|The market today/);
   }
+  const aprende = leer('componentes', 'AprendeInicio.js');
+  assert.match(aprende, /onMercado\?\.\(\)/);
+  assert.match(aprende, /b\.enlaceMercado/);
+  assert.doesNotMatch(aprende, /mercadoAlDia|CIFRAS_MERCADO_EL/);
+  // La función sigue en lib por si vuelve una cifra con caducidad.
   const dia = (iso) => new Date(`${iso}T12:00:00`);
-  assert.equal(cifras.mercadoAlDia('2026-11-03', dia('2026-11-03')), true);
   assert.equal(cifras.mercadoAlDia('2026-11-03', dia('2026-11-10')), true);
   assert.equal(cifras.mercadoAlDia('2026-11-03', dia('2026-11-11')), false);
-  assert.equal(cifras.mercadoAlDia('', dia('2026-11-04')), false, 'sin fecha, falla cerrado');
-  for (const t of [es, en]) assert.doesNotMatch(t.capitulos.cap3.sinCifra, /\d{3}|%|125/);
-  const inicio = leer('componentes', 'Inicio.js');
-  assert.match(inicio, /const mercado = mercadoAlDia\(CIFRAS_MERCADO_EL\);/);
-  assert.match(inicio, /p \?\? \(mercado \? cap\.cap3\.mercado : cap\.cap3\.sinCifra\)/);
 });

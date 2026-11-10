@@ -685,10 +685,11 @@ const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
 // El orden de los scripts (con idioma-previo en <head>) se prueba en rwadar-app/probar-web-escritorio.mjs.
 // La quinta, el candado de las lecciones sin cuenta (08/11/2026), compartida con /academy/.
 // La sexta, «La tokenización en el mundo» de Inicio (10/11/2026); la séptima, «Noticias del sector» (10/11/2026).
-prueba('las siete hojas propias versionadas cargan en el orden declarado',
+prueba('las ocho hojas propias versionadas cargan en el orden declarado',
   JSON.stringify(estilos.map(estilo=>estilo[1])) === JSON.stringify([
     '/assets/rwadar-20260820.css','/assets/cartera-cuenta-ui-20261028.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css',
-    '/assets/academy-candado-20261108.css','/assets/tokenizacion-20261110.css','/assets/noticias-sector-20261110.css']));
+    '/assets/academy-candado-20261108.css','/assets/tokenizacion-20261110.css','/assets/noticias-sector-20261110.css',
+    '/assets/secciones-20261110.css']));
 for (const recurso of [rutaScriptApp, rutaCatalogo, rutaAnalitica, estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
@@ -1584,31 +1585,48 @@ const panelHTML = id => {
 const panelInicioHTML = panelHTML('movilPanelInicio');
 const panelAcademyHTML = panelHTML('movilPanelAcademy');
 const panelPerfilHTML = panelHTML('movilPanelMas');
-// Inicio cuenta una historia (decisión de Víctor, 04/11/2026; ESPEC-INICIO §1 y §8):
-// la franja de novedades, la nota legal, las fuentes y los botones al catálogo; la comunidad pasa a Perfil.
-// Sin fijar frases: «ese tipo de reglas quítalas» (decisión de Víctor, 04/11/2026); la redacción la cuida la revisión editorial.
-prueba('Inicio trae la historia, la franja de novedades, las fuentes, la nota legal y los botones al catálogo, sin buscador',
-  /<!--noticias:ini-->\s*<section class="rel-novedades"[\s\S]*?href="\/cambios"[\s\S]*?<!--noticias:fin-->/.test(panelInicioHTML) &&
-  ['relPortada','relCap1','relCap2','relCap3','relCap4','relCap5','relCap6','relEscaparate','relRefs'].every(id=>panelInicioHTML.includes(`id="${id}"`)) &&
-  /<section class="rel-legal"/.test(panelInicioHTML) && !/<(?:textarea|input|form|select)\b/i.test(panelInicioHTML) &&
-  /data-movil-ir="emisiones" data-rel-plantilla="Ver las \{ofertas\} ofertas"/.test(panelInicioHTML) &&
-  /data-movil-ir="tool" data-rel-plantilla="Ver las \{plataformas\} plataformas"/.test(panelInicioHTML) &&
-  !/inicioEmpezarTit|data-movil-action="academy"|data-movil-ir="metodo"|inicioComunidad/.test(panelInicioHTML) &&
-  /<section class="movil-menu-grupo" id="perfilComunidad"[^>]*\shidden>/.test(panelPerfilHTML));
-// Inicio como historia (decisión de Víctor, 04/11/2026): cada apartado lleva a su grupo de fuentes y la
-// lista tiene todas las fuentes de HISTORIA-v2 §4. Sin pruebas de redacción (decisión de Víctor, 04/11/2026).
+// Inicio por bloques (rediseño del 10/11/2026, encargo de Víctor: «mucho lío en Inicio»): Cabecera,
+// Ofertas, El mercado hoy, Noticias, Aprende y Pie, cada uno con su «Ver …» a su sección. La historia en
+// seis capítulos, sus fuentes y la nota legal completa van en /aprende/; nada se repite.
+const aprendeHTML = lee('aprende/index.html');
+{
+  const orden = ['id="relPortada"', 'id="relNuevas"', 'id="tokenizacion"', 'id="noticias"', 'id="iniAprendeTit"', 'class="ini-pie"'].map(x => panelInicioHTML.indexOf(x));
+  prueba('Inicio son bloques cortos en orden (Cabecera, Ofertas, El mercado hoy, Noticias, Aprende y Pie), cada uno con su «Ver …», sin buscador',
+    orden.every((x, i) => x > 0 && (i === 0 || x > orden[i - 1])) &&
+    ['href="/mercado/"', 'href="/noticias/"', 'href="/aprende/"', 'href="/aprende/#nota-legal"'].every(x => panelInicioHTML.includes(x)) &&
+    /data-movil-ir="emisiones" data-rel-plantilla="Ver las \{ofertas\} ofertas"/.test(panelInicioHTML) &&
+    !/<(?:textarea|input|form|select)\b/i.test(panelInicioHTML) &&
+    !/inicioEmpezarTit|data-movil-action="academy"|data-movil-ir="metodo"|inicioComunidad/.test(panelInicioHTML) &&
+    /<section class="movil-menu-grupo" id="perfilComunidad"[^>]*\shidden>/.test(panelPerfilHTML));
+  prueba('Inicio no repite: sin capítulos, sin franja de novedades, sin escaparate aparte y un solo aviso de riesgo',
+    !/id="relCap\d"|rel-novedades|noticias:ini|rel-refs|rel-empieza|class="rel-escaparate"|relTarjetas/.test(panelInicioHTML) &&
+    (panelInicioHTML.match(/Invertir tiene riesgos/g) || []).length === 1 &&
+    (panelInicioHTML.match(/class="ini-bloque-tit"/g) || []).length === 4);
+  prueba('/aprende/ trae los seis capítulos, su carrusel, la Academy, las fuentes y la nota legal, sin cifras de mercado en el 03',
+    ['relCap1', 'relCap2', 'relCap3', 'relCap4', 'relCap5', 'relCap6', 'relQuienLista', 'relRefs', 'nota-legal', 'notaLegalCompleta'].every(id => aprendeHTML.includes(`id="${id}"`)) &&
+    /<!--academy-inicio:ini-->[\s\S]*href="\/academy\/"[\s\S]*<!--academy-inicio:fin-->/.test(aprendeHTML) &&
+    /<a class="rel-enlace" href="\/mercado\/">El mercado hoy<\/a>/.test(aprendeHTML) &&
+    !/14\.230|125 veces|3,9 %/.test(aprendeHTML) &&
+    !/data-movil-ir|data-inicio-radar|data-rel-plantilla/.test(aprendeHTML) &&
+    /<script src="\/assets\/aprende-20261110\.js" defer><\/script>/.test(aprendeHTML) &&
+    /<link rel="canonical" href="https:\/\/rwadar\.pages\.dev\/aprende\/">/.test(aprendeHTML));
+}
+// Cada apartado lleva a su grupo de fuentes y la lista tiene todas las de HISTORIA-v2 §4 (ahora en /aprende/;
+// la Selección, desde las 5 comprobaciones de Inicio). Sin pruebas de redacción (decisión de Víctor, 04/11/2026).
 {
   const f=JSON.parse(fs.readFileSync(path.join(raiz,'rwadar-editorial-source/inicio/fuentes.json'),'utf8'));
-  const ir=[...panelInicioHTML.matchAll(/<a class="b3 rel-fuentes" href="#fuentes-(\w+)" data-rel-fuentes="\1">([^<]+)</g)];
-  const grupos=new Set([...panelInicioHTML.matchAll(/<section class="rel-refs-grupo" id="fuentes-(\w+)"/g)].map(m=>m[1]));
-  const enlaces=[...panelInicioHTML.matchAll(/<a class="rel-refs-url"([^>]*)>/g)].map(m=>m[1]);
-  prueba('Inicio: cada apartado lleva a su grupo de fuentes y están todas las de HISTORIA-v2 §4, con enlace',
-    f.fuentes.length===38&&['portada','cap1','cap2','cap3','cap4','cap5','cap6','seleccion','legal'].every(g=>ir.some(m=>m[1]===g))&&
-    ir.every(m=>grupos.has(m[1]))&&f.fuentes.every(x=>panelInicioHTML.includes(`data-fuente="${x.n}"`))&&
+  const ir=[...aprendeHTML.matchAll(/<a class="b3 rel-fuentes" href="#fuentes-(\w+)" data-rel-fuentes="\1">([^<]+)</g)];
+  const grupos=new Set([...aprendeHTML.matchAll(/<section class="rel-refs-grupo" id="fuentes-(\w+)"/g)].map(m=>m[1]));
+  const enlaces=[...aprendeHTML.matchAll(/<a class="rel-refs-url"([^>]*)>/g)].map(m=>m[1]);
+  prueba('Aprende: cada apartado lleva a su grupo de fuentes y están todas las de HISTORIA-v2 §4, con enlace',
+    f.fuentes.length===38&&['portada','cap1','cap2','cap3','cap4','cap5','cap6','legal'].every(g=>ir.some(m=>m[1]===g))&&
+    /href="\/aprende\/#fuentes-seleccion"/.test(panelInicioHTML)&&grupos.has('seleccion')&&
+    ir.every(m=>grupos.has(m[1]))&&f.fuentes.every(x=>aprendeHTML.includes(`data-fuente="${x.n}"`))&&
     enlaces.length>=f.fuentes.length&&enlaces.every(a=>/href="https:\/\//.test(a)&&/target="_blank"/.test(a)&&/rel="noopener nofollow"/.test(a))&&
-    (panelInicioHTML.match(/class="b3 rel-refs-volver" type="button" hidden>/g)||[]).length===grupos.size);
+    (aprendeHTML.match(/class="b3 rel-refs-volver" type="button" hidden>/g)||[]).length===grupos.size);
   prueba('los enlaces de siempre siguen: emisiones, tool, fuera, el radar, los hash, la barra y las fichas',
-    ['data-movil-ir="emisiones"','data-movil-ir="tool"','data-movil-ir="fuera"','data-inicio-radar'].every(x=>panelInicioHTML.includes(x))&&
+    ['data-movil-ir="emisiones"','data-inicio-radar'].every(x=>panelInicioHTML.includes(x))&&
+    ['href="/#tool"','href="/#fuera"','href="/#emisiones"'].every(x=>aprendeHTML.includes(x))&&
     /if\(destino==='emisiones'\)verEnBuscar\('ofertas'\);\s*else if\(DE_PLATAFORMAS\.has\(destino\)\)verEnBuscar\('plataformas'\);/.test(codigoShellMovil)&&
     /verEnBuscar\(typeof location!=='undefined'&&DE_PLATAFORMAS\.has\(\(location\.hash\|\|''\)\.slice\(1\)\)\?'plataformas':'ofertas'\)/.test(codigoShellMovil)&&
     /function elegirTab\(tab\)\{\s*if\(tab\.dataset\.navVista\)verEnBuscar\(tab\.dataset\.navVista\);\s*cambiar\(tab\.dataset\.movilTab\);/.test(codigoShellMovil)&&
@@ -1847,7 +1865,8 @@ prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustrac
     esperadas.length > 0 && JSON.stringify([...new Set(conPropia)].sort()) === JSON.stringify(esperadas.sort()));
 }
 prueba('HTML conserva sus recursos con huella sin depender de un precache del worker',
-  recursoJSPublicado && hojasPublicadas.length === 8 &&
+  recursoJSPublicado && hojasPublicadas.length === 9 &&
+  hojasPublicadas.filter(ruta => /\/secciones-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/noticias-sector-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/mapa-buscar-20261027\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/tokenizacion-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
@@ -1862,12 +1881,27 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
   const tk = require('./rwadar-movil/lib/tokenizacion.js');
   const inicio = html.indexOf('<section class="tk" id="tokenizacion"'), fin = html.indexOf('</section>', inicio);
   const seccion = html.slice(inicio, fin);
-  prueba('la tokenización en el mundo va en Inicio tras la portada y «Recién añadidas», antes del capítulo 01, y el HTML no trae cifras',
-    inicio > html.indexOf('id="relPortada"') && inicio > html.indexOf('id="relNuevas"') && inicio < html.indexOf('id="relCap1"') &&
-    seccion.includes('<h2 class="tk-tit" id="tkTit">La tokenización en el mundo</h2>') &&
-    seccion.includes('Las categorías pueden solaparse. No es una recomendación.') &&
-    /<span>Datos:<\/span> <a href="https:\/\/www\.coingecko\.com\/" target="_blank" rel="noopener nofollow" translate="no">CoinGecko<\/a>/.test(seccion) &&
-    !/\d/.test(seccion.replace(/<[^>]*>/g, '')));
+  // Rediseño del 10/11/2026: en Inicio, la tarjeta compacta «El mercado hoy» (tras «Ofertas»); entera, en /mercado/.
+  const mercadoHTML = lee('mercado/index.html');
+  const ini2 = mercadoHTML.indexOf('<section class="tk" id="tokenizacion"'), seccionMercado = mercadoHTML.slice(ini2, mercadoHTML.indexOf('</section>', ini2));
+  prueba('«El mercado hoy» va en Inicio tras «Ofertas», compacto y con «Ver el mercado →»; el HTML no trae cifras',
+    inicio < 0 && html.indexOf('data-tokenizacion="compacta"') > html.indexOf('id="relNuevas"') &&
+    html.indexOf('data-tokenizacion="compacta"') < html.indexOf('id="noticias"') && !html.includes('id="relCap1"'));
+  {
+    const a2 = html.indexOf('<section class="ini-bloque tk tk--compacta" id="tokenizacion"'), compacta = html.slice(a2, html.indexOf('</section>', a2));
+    prueba('la tarjeta compacta del mercado: título de bloque, la fuente CoinGecko a la vista y el enlace a /mercado/, sin cifras en el HTML',
+      a2 > 0 && compacta.includes('<h2 class="ini-bloque-tit" id="tkTit">El mercado hoy</h2>') &&
+      /<span>Datos:<\/span> <a href="https:\/\/www\.coingecko\.com\/" target="_blank" rel="noopener nofollow" translate="no">CoinGecko<\/a>/.test(compacta) &&
+      /<a class="ini-ver" href="\/mercado\/">/.test(compacta) && !/\d/.test(compacta.replace(/<[^>]*>/g, '')));
+  }
+  prueba('/mercado/ trae «La tokenización en el mundo» entera, con su fuente y sin cifras en el HTML',
+    ini2 > 0 && seccionMercado.includes('<h2 class="tk-tit" id="tkTit">La tokenización en el mundo</h2>') &&
+    !/data-tokenizacion="compacta"/.test(seccionMercado) &&
+    mercadoHTML.includes('Las categorías pueden solaparse. No es una recomendación.') &&
+    /<span>Datos:<\/span> <a href="https:\/\/www\.coingecko\.com\/" target="_blank" rel="noopener nofollow" translate="no">CoinGecko<\/a>/.test(seccionMercado) &&
+    !/\d/.test(seccionMercado.replace(/<[^>]*>/g, '')) &&
+    /<script src="\/assets\/tokenizacion-20261110\.js" defer><\/script>/.test(mercadoHTML) &&
+    /<link rel="canonical" href="https:\/\/rwadar\.pages\.dev\/mercado\/">/.test(mercadoHTML));
   const historicoPublicado = fs.readFileSync(path.join(publicado, 'datos', 'tokenizacion-historico.json'), 'utf8');
   const semillaTk = tk.validarHistorico(JSON.parse(lee('datos/tokenizacion-historico.json')));
   // Sin la variable de publicar.yml, el generador usa origin/datos-tokenizacion si este clon la tiene.
@@ -1893,10 +1927,19 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
   const seccion = html.slice(inicio, fin);
   const fuente = lee('datos/noticias.json');
   const datosNt = nt.validarNoticias(JSON.parse(fuente));
-  prueba('las noticias del sector van en Inicio justo tras «La tokenización en el mundo», antes del capítulo 01, y el HTML no trae ninguna',
-    inicio > html.indexOf('id="tokenizacion"') && inicio < html.indexOf('id="relCap1"') &&
-    seccion.includes('<h2 class="nt-tit" id="ntTit">Noticias del sector</h2>') && seccion.includes('<dialog class="nt-dialogo" id="ntDialogo"') &&
-    datosNt.noticias.every(n => !seccion.includes(n.titulo)));
+  // Rediseño del 10/11/2026: en Inicio, 3 tarjetas con foto (las pinta el script); las 8 y su detalle, en /noticias/.
+  const noticiasHTML = lee('noticias/index.html');
+  const enLista = noticiasHTML.slice(noticiasHTML.indexOf('<section class="nt nt--lista"'), noticiasHTML.indexOf('</section>', noticiasHTML.indexOf('<section class="nt nt--lista"')));
+  prueba('las noticias van en Inicio tras «El mercado hoy», con «Todas las noticias →», y el HTML no trae ninguna',
+    inicio < 0 && html.indexOf('data-noticias="portada"') > html.indexOf('id="tokenizacion"') && html.indexOf('data-noticias="portada"') < html.indexOf('id="iniAprendeTit"') &&
+    /<section class="ini-bloque nt nt--portada" id="noticias"[^>]*data-noticias="portada">/.test(html) &&
+    /<a class="ini-ver" href="\/noticias\/">/.test(html) && !/ntDialogo/.test(panelInicioHTML) &&
+    panelInicioHTML.includes('Imágenes ilustrativas generadas con IA, no fotos de la noticia.') &&
+    datosNt.noticias.every(n => !html.includes(n.titulo)));
+  prueba('/noticias/ trae la lista y el diálogo del detalle, sin ninguna noticia escrita en el HTML',
+    /data-noticias="lista"/.test(enLista) && enLista.includes('<dialog class="nt-dialogo" id="ntDialogo"') &&
+    enLista.includes('<ul class="nt-lista" id="ntLista"') && datosNt.noticias.every(n => !noticiasHTML.includes(n.titulo)) &&
+    /<link rel="canonical" href="https:\/\/rwadar\.pages\.dev\/noticias\/">/.test(noticiasHTML));
   prueba('/datos/noticias.json se publica tal cual y con la forma que leen la web y la app',
     fs.readFileSync(path.join(publicado, 'datos', 'noticias.json'), 'utf8') === fuente && datosNt.noticias.length > 0 &&
     /noticiasModelo\.validarNoticias/.test(publicador));
@@ -2255,19 +2298,24 @@ for(const [nombre,alterar] of [
       o.estadoRevision==='actual'&&!r.vencida;};
   const esperadas=emi.filter(cinco).map(o=>o.slug).sort();
   vm.runInContext("huellaInicio='';emiColeccion='principales';emiCat='';emiBusquedaLocal='';pintarEmisiones()",c);
-  const inicioSel=[...p.obtiene('relTarjetas').innerHTML.matchAll(/data-perfil-oferta="([^"]+)"/g)].map(m=>m[1]).sort();
+  // Desde el rediseño de Inicio (10/11/2026) la Selección va en el carrusel «Ofertas», con «Pasa las 5 comprobaciones».
+  const tarjetasInicio=p.obtiene('relNuevasLista').innerHTML.split('<li class="rel-tarjeta').slice(1);
+  const inicioSel=tarjetasInicio.filter(t=>/Pasa las 5 comprobaciones/.test(t)).map(t=>(t.match(/data-perfil-oferta="([^"]+)"/)||[])[1]).sort();
   const lista=p.obtiene('emiLista').innerHTML;
   const bloqueSel=lista.slice(lista.indexOf('catalogo-seleccion'),lista.indexOf('emiRestoTit'));
   const buscarSel=[...bloqueSel.matchAll(/data-oferta-detalle="([^"]+)"/g)].map(m=>m[1]).sort();
   // Sin fijar la redacción de los avisos (decisión de Víctor, 04/11/2026).
-  prueba('la Selección son las ofertas con las 5 comprobaciones, en Inicio y en Principales',
+  prueba('la Selección son las ofertas con las 5 comprobaciones, en el carrusel de Inicio y en Principales',
     esperadas.length>0&&JSON.stringify(inicioSel)===JSON.stringify(esperadas)&&JSON.stringify(buscarSel)===JSON.stringify(esperadas)&&
     p.obtiene('relEscaparate').hidden===false&&lista.indexOf('catalogo-seleccion')<lista.indexOf('emiRestoTit'));
   const criterios=p.obtiene('inicioCriterios').innerHTML;
   // ESPEC-INICIO §2.8: las 5 comprobaciones van abiertas y en llano, en el orden del archivo.
-  prueba('Inicio enseña las 5 comprobaciones abiertas, en llano y en el orden de transparencia.json',
+  // Rediseño del 10/11/2026: sin superlativo («las mejor documentadas»); la tarjeta dice «Pasa las 5
+  // comprobaciones» y, justo debajo del carrusel, «¿Qué son las 5 comprobaciones?» las enseña con su aviso.
+  prueba('Inicio enseña las 5 comprobaciones bajo las ofertas, en llano y en el orden de transparencia.json',
     (criterios.match(/<li>/g)||[]).length===5&&transparencia.criterios.every((k,i)=>vm.runInContext('CRITERIOS_INICIO',c)[k.id]===(criterios.match(/<li>([^<]+)<\/li>/g)||[])[i]?.slice(4,-5))&&
-    /<ol class="rel-cinco rel-revela" id="inicioCriterios"/.test(html));
+    /<details class="ini-cinco" id="relEscaparate">\s*<summary>¿Qué son las 5 comprobaciones\?<\/summary>\s*<ol class="rel-cinco" id="inicioCriterios"/.test(html)&&
+    !/mejor documentadas/.test(panelInicioHTML));
   // Falla cerrado: con otra verificadaEl la oferta pierde sus puntos fuertes y sale de la Selección.
   const sacada=esperadas[0];
   const cerrado=vm.runInContext(`(()=>{const e=TRANSPARENCIA_POR_SLUG['${sacada}'],antes=e.verificadaEl;e.verificadaEl='2000-01-01';
@@ -2304,34 +2352,42 @@ for(const [nombre,alterar] of [
   const minimos=emi.filter(o=>['1 €','1 USD'].includes(transparencia.ofertas[o.slug]?.minimoCorto));
   prueba('Inicio calcula sus cifras, mínimos y vigencia del catálogo, sin números escritos en el HTML',
     cifras.includes('<b>'+n[0]+'</b> <span>ofertas</span>')&&cifras.includes('<b>'+n[1]+'</b> <span>plataformas</span>')&&
-    cifras.includes('<b>'+n[2]+'</b> <span>descartadas</span>')&&ci.minimos===minimos.length&&ci.usd===minimos.filter(o=>/USD/.test(transparencia.ofertas[o.slug].minimoCorto)).length&&
+    (cifras.match(/<li /g)||[]).length===3&&/<span>revisado el<\/span>/.test(cifras)&&!/descartadas/.test(cifras)&&ci.minimos===minimos.length&&ci.usd===minimos.filter(o=>/USD/.test(transparencia.ofertas[o.slug].minimoCorto)).length&&
     pl('Ver las {ofertas} ofertas',false)==='Ver las '+n[0]+' ofertas'&&pl('See the {plataformas} platforms',true)==='See the '+n[1]+' platforms'&&
     /^Catálogo revisado el \d\d\/\d\d\/\d{4}\. Próxima revisión: \d\d\/\d\d\/\d{4}\.$/.test(pl('Catálogo revisado el {revisado}. Próxima revisión: {hasta}.',false))&&
-    (htmlInicio.match(/data-rel-plantilla="/g)||[]).length>=8&&p.obtiene('relMinimos').hidden===false&&p.obtiene('relVigencia').hidden===false&&
-    /<ul class="inicio-hud" id="inicioCifras" aria-label="El catálogo en cifras"><\/ul>/.test(htmlInicio)&&
+    (htmlInicio.match(/data-rel-plantilla="/g)||[]).length>=2&&
+    /<ul class="ini-cifras" id="inicioCifras" aria-label="El catálogo en cifras"><\/ul>/.test(htmlInicio)&&
     !new RegExp(`\\b(?:${n.join('|')}) (?:ofertas|plataformas|descartadas)\\b`).test(texto(htmlInicio)));
   vm.runInContext("CATALOGO_CADUCADO=true;huellaInicio='';pintarInicio()",c);
-  const sinCifras=['inicioCifras','inicioRadar','relTarjetas'].map(id=>p.obtiene(id).innerHTML);
-  prueba('con el catálogo caducado Inicio no enseña cifras ni Selección y la línea de riesgo se queda',
+  const sinCifras=['inicioCifras','inicioRadar','relNuevasLista'].map(id=>p.obtiene(id).innerHTML);
+  prueba('con el catálogo caducado Inicio no enseña cifras ni ofertas y la línea de riesgo se queda',
     !/<b>\d+<\/b>/.test(sinCifras[0])&&/Revisión pendiente/.test(sinCifras[0])&&!/ir-et-n/.test(sinCifras[1])&&!sinCifras[2]&&
-    ['relEscaparate','relMinimos','relVigencia'].every(id=>p.obtiene(id).hidden===true)&&pl('Ver las {ofertas} ofertas',false)===null);
+    ['relEscaparate','relNuevas'].every(id=>p.obtiene(id).hidden===true)&&pl('Ver las {ofertas} ofertas',false)===null&&
+    /Invertir tiene riesgos/.test(panelInicioHTML));
   // Sin cifras, cada frase vuelve a su texto en castellano del HTML (data-rel-sin), no al que hubiera en pantalla
   // (si la web arrancó en inglés, ese texto ya estaba traducido y se quedaba en inglés al pasar a castellano).
   const conPlantilla=[...htmlInicio.matchAll(/<[^>]*\sdata-rel-plantilla="[^>]*>/g)].map(m=>m[0]);
   prueba('sin cifras, las frases con plantilla vuelven a su texto en castellano y el idioma lo traduce',
-    conPlantilla.length>=8&&conPlantilla.every(t=>/\sdata-rel-sin="/.test(t))&&/\?\?el\.getAttribute\('data-rel-sin'\)/.test(js)&&!/relInicial/.test(js));
+    conPlantilla.length>=2&&conPlantilla.every(t=>/\sdata-rel-sin="/.test(t))&&/\?\?el\.getAttribute\('data-rel-sin'\)/.test(js)&&!/relInicial/.test(js));
   vm.runInContext("CATALOGO_CADUCADO=false;huellaInicio='';pintarInicio()",c);
   // Recién añadidas (04/11): altas de los últimos 30 días, de la más nueva a la más antigua y 6 como mucho; sin ninguna, oculto.
   const alta=o=>transparencia.ofertas[o.slug]?.anadidaEl||'',dA=o=>Math.round((Date.UTC(ahora.getFullYear(),ahora.getMonth(),ahora.getDate())-Date.parse(alta(o)+'T00:00:00Z'))/864e5);
   const altas=emi.filter(o=>o.coleccion==='principales'&&alta(o)&&dA(o)>=0&&dA(o)<30).sort((a,b)=>alta(b).localeCompare(alta(a))||a.plataformaNombre.localeCompare(b.plataformaNombre,'es')||
-    a.titulo.localeCompare(b.titulo,'es')).slice(0,6).map(o=>o.slug),carrusel=()=>[...p.obtiene('relNuevasLista').innerHTML.matchAll(/data-perfil-oferta="([^"]+)"/g)].map(m=>m[1]);
+    a.titulo.localeCompare(b.titulo,'es')).slice(0,6).map(o=>o.slug),
+    // El carrusel «Ofertas» (rediseño del 10/11/2026): las altas y, en sus 3 huecos, la Selección que no esté ya.
+    destacadas=JSON.parse(vm.runInContext("JSON.stringify(ofertasInicio(cifrasInicio(),ofertasRecienAnadidas()).map(o=>o.slug))",c)),carrusel=()=>[...p.obtiene('relNuevasLista').innerHTML.matchAll(/data-perfil-oferta="([^"]+)"/g)].map(m=>m[1]);
   const conAltas=carrusel(),oculto=p.obtiene('relNuevas').hidden;
   vm.runInContext("var _a=Object.values(TRANSPARENCIA_POR_SLUG).map(e=>[e,e.anadidaEl]);_a.forEach(([e])=>e.anadidaEl='2000-01-01');huellaInicio='';pintarInicio()",c);
-  const sinAltas=[carrusel().length,p.obtiene('relNuevas').hidden];
+  const sinAltas=[carrusel(),p.obtiene('relNuevas').hidden];
+  const selInicio=JSON.parse(vm.runInContext("JSON.stringify(cifrasInicio().seleccion.slice(0,3).map(o=>o.slug))",c));
   vm.runInContext("_a.forEach(([e,f])=>e.anadidaEl=f);huellaInicio='';pintarInicio()",c);
-  prueba('Inicio: «Recién añadidas» son las altas de los últimos 30 días, ordenadas, y no sale sin ninguna',
-    JSON.stringify(conAltas)===JSON.stringify(altas)&&oculto===!altas.length&&sinAltas[0]===0&&sinAltas[1]===true&&
-    /id="relPortada"[\s\S]*id="relNuevas"[\s\S]*id="relCap1"/.test(panelInicioHTML));
+  prueba('Inicio: «Ofertas» une las altas de los últimos 30 días, ordenadas, y la Selección, sin duplicados y 6 como mucho',
+    JSON.stringify(conAltas)===JSON.stringify(destacadas)&&conAltas.length<=6&&new Set(conAltas).size===conAltas.length&&
+    altas.slice(0,6-selInicio.filter(x=>!altas.includes(x)).length).every((x,i)=>conAltas[i]===x)&&
+    selInicio.every(x=>conAltas.includes(x))&&oculto===!conAltas.length&&
+    // Sin altas, quedan las de la Selección.
+    JSON.stringify(sinAltas[0])===JSON.stringify(selInicio)&&sinAltas[1]===!selInicio.length&&
+    /id="relPortada"[\s\S]*id="relNuevas"[\s\S]*id="tokenizacion"/.test(panelInicioHTML));
   // La prueba de notas «x/5» y la del título exacto fijaban redacción: fuera (decisión de Víctor, 04/11/2026).
   vm.runInContext(`abrirDetalleOfertaLocal('${sacada}')`,c);
   const detalle=p.obtiene('escaparateDetalleLocal').innerHTML;
@@ -2343,7 +2399,7 @@ for(const [nombre,alterar] of [
       atributoHTML(m[1],'target')==='_blank'&&/\bnoopener\b/.test(atributoHTML(m[1],'rel')||'')));
   // Ninguna etiqueta encima de las imágenes y la línea de honestidad a la vista.
   const cajasFila=[...lista.matchAll(/<div class="escaparate-imagen">([\s\S]*?)<\/div>/g)].map(m=>m[1]);
-  const cajasInicio=[...p.obtiene('relTarjetas').innerHTML.matchAll(/<div class="rel-tarjeta-img">([\s\S]*?)<\/div>/g)].map(m=>m[1]);
+  const cajasInicio=[...p.obtiene('relNuevasLista').innerHTML.matchAll(/<div class="rel-tarjeta-img">([\s\S]*?)<\/div>/g)].map(m=>m[1]);
   const cajaDetalle=(detalle.match(/<div class="escaparate-dialogo-imagen">([\s\S]*?)<\/div>/)||['',''])[1];
   prueba('ninguna etiqueta encima de las imágenes y la línea «Imágenes ilustrativas…» presente',
     cajasFila.length>0&&cajasFila.every(h=>/^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*>(?:<button [^>]*data-guardar-oferta[^>]*>[^<]*<\/button>)?$/.test(h))&&
@@ -2351,7 +2407,7 @@ for(const [nombre,alterar] of [
     /^<img [^>]*alt="Ilustración editorial[^"]*"[^>]*>$/.test(cajaDetalle)&&
     lista.includes('<p class="nota-ilustrativa catalogo-nota-imagenes">Imágenes ilustrativas, no fotos del activo</p>')&&
     detalle.includes('<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>')&&
-    (htmlInicio.match(/<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo<\/p>/g)||[]).length===2&&
+    (htmlInicio.match(/<p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo<\/p>/g)||[]).length===1&&
     !/Ilustración(?: editorial)?<\/span>/.test(p.obtiene('grid').innerHTML+lista)&&
     !/(?:font-size|font)\s*:[^;]*\.[0-6]\d*rem/.test(declaracionesCSS(css,'.nota-ilustrativa').join(';')));
   // Chips de categoría: orden fijo, nombre corto y sin cortar; recuentos en Plataformas.
@@ -2375,9 +2431,10 @@ for(const [nombre,alterar] of [
   // Corrección (03/11), con el Inicio nuevo (04/11): Selección, aviso crítico y radar para el lector.
   const dc=s=>declaracionesCSS(css,s).join(';'),stop=vm.runInContext(`(()=>{const o={...EMI.find(x=>x.slug==='${sacada}')};
     o.avisos=[...(o.avisos||[]),{tono:'stop',texto:'AVISO_STOP'}];return {sel:enSeleccionOferta(o)}})()`,c);
-  prueba('Selección de Inicio: tarjetas que encogen, del mismo ancho, con su nota y nunca una oferta con aviso crítico',
+  const conNota=JSON.parse(vm.runInContext("JSON.stringify(ofertasInicio(cifrasInicio(),ofertasRecienAnadidas()).filter(o=>NOTAS_SELECCION[o.slug]).length)",c));
+  prueba('Ofertas de Inicio: tarjetas que encogen, del mismo ancho, con su nota propia y nunca una Selección con aviso crítico',
     /min-width:0/.test(dc('.rel-tarjeta'))&&/grid-auto-columns:\d+%/.test(dc('.rel-tarjetas'))&&!stop.sel&&vm.runInContext(`enSeleccionOferta(EMI.find(x=>x.slug==='${sacada}'))`,c)===true&&
-    (p.obtiene('relTarjetas').innerHTML.match(/<p class="rel-tarjeta-nota">[^<]+</g)||[]).length===esperadas.length);
+    (p.obtiene('relNuevasLista').innerHTML.match(/<p class="rel-tarjeta-nota">[^<]+</g)||[]).length===conNota);
   prueba('radar: recuentos para el lector',
     /<li><span>(?:Inmobiliario|Crédito|Tesoro|Acciones|Materias primas|Infraestructura)<\/span> <span>\d+ plataformas?<\/span><\/li>/.test(p.obtiene('inicioRadarLista').innerHTML)&&
     /<ul class="solo-lector" id="inicioRadarLista" aria-label="Plataformas por tipo de activo"><\/ul>/.test(htmlInicio)&&!/data-inicio-buscar/.test(htmlInicio));
@@ -3367,7 +3424,8 @@ console.log('\n=== RWADAR ACADEMY ===');
     (salidaPendiente('academy/index.html').match(/ac-tarjeta ac-tarjeta-pronto/g) || []).length === 1 &&
     !salidaPendiente('academy/index.html').includes('href="/academy/despues-de-emitir-ciclo-de-vida"') &&
     salidaPendiente('index.html').includes('<h3 id="academiaLeccionesTit">8 de 9 lecciones disponibles</h3>') &&
-    salidaPendiente('index.html').includes('<span>8 lecciones gratis en Academy</span>') &&
+    // Desde el rediseño de Inicio (10/11/2026), la tarjeta de la Academy va al final de /aprende/.
+    salidaPendiente('aprende/index.html').includes('<p>8 lecciones gratis en tres niveles:') &&
     !salidaPendiente('index.html').includes('href="/academy/despues-de-emitir-ciclo-de-vida"') &&
     !academyMod.paginasAcademy(academyPendiente).includes('academy/despues-de-emitir-ciclo-de-vida.html'));
   prueba('el índice muestra los tres niveles, el progreso local y las pendientes como «Próximamente»',
@@ -3433,7 +3491,7 @@ console.log('\n=== RWADAR ACADEMY ===');
     publicador.indexOf('comprobarLeccionesPublicadas(temporal)') < publicador.indexOf("'pages', 'deploy', SALIDA"));
   prueba('la baja de avisos se publica con su script con huella y sin el ayudante de sesión',
     ARCHIVOS_PUBLICABLES.includes('baja.html') && ARCHIVOS_PUBLICABLES.includes('assets/baja-20261105.js') &&
-    /'baja\.html', \.\.\.PAGINAS_ACADEMY/.test(publicador) &&
+    /'baja\.html', \.\.\.PAGINAS_SECCIONES,/.test(publicador) &&
     /\['acceso\.html', 'baja\.html', 'privacidad\.html', 'transparencia-comercial\.html'\]\.includes\(nombre\)/.test(publicador) &&
     /\/assets\/baja-20261105\.[0-9a-f]{12}\.js/.test(fs.readFileSync(path.join(publicado, 'baja.html'), 'utf8')) &&
     !fs.readFileSync(path.join(publicado, 'baja.html'), 'utf8').includes('/assets/acceso-privado'));

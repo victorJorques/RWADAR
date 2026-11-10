@@ -5,7 +5,7 @@
 // su grupo. Cada fuente lleva su nombre, su fecha y su enlace, con su
 // descripción en castellano («texto») y en inglés («texto_en»).
 //
-// Escribe la lista de la web (index.html, entre las marcas) y la misma lista
+// Escribe la lista de la web (aprende/index.html, entre las marcas) y la misma lista
 // para la app (rwadar-movil/lib/inicio-fuentes.js).
 //
 //   node rwadar-editorial-source/inicio/fuentes.mjs             escribe
@@ -19,7 +19,8 @@ import { fileURLToPath } from 'node:url';
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const RAIZ = path.resolve(AQUI, '..', '..');
 export const FUENTE = path.join(AQUI, 'fuentes.json');
-export const INDEX = path.join(RAIZ, 'rwadar-site', 'index.html');
+// Desde el rediseño de Inicio (10/11/2026), los seis capítulos y sus fuentes van en /aprende/.
+export const INDEX = path.join(RAIZ, 'rwadar-site', 'aprende', 'index.html');
 export const APP = path.join(RAIZ, 'rwadar-movil', 'lib', 'inicio-fuentes.js');
 const INI = '<!--fuentes:ini-->', FIN = '<!--fuentes:fin-->';
 const TIPOS = new Set(['catalogo', 'mercado', 'fechado']);
@@ -116,7 +117,7 @@ ${grupos}
 
 export function aplicar(html, nuevo) {
   const a = html.indexOf(INI), b = html.indexOf(FIN);
-  if (a < 0 || b < a || html.indexOf(INI, a + 1) >= 0) falla('index.html: faltan las marcas de fuentes (o están repetidas)');
+  if (a < 0 || b < a || html.indexOf(INI, a + 1) >= 0) falla('aprende/index.html: faltan las marcas de fuentes (o están repetidas)');
   return html.slice(0, html.lastIndexOf('\n', a) + 1) + nuevo + html.slice(b + FIN.length);
 }
 

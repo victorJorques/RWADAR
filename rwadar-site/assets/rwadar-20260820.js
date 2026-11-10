@@ -2000,17 +2000,6 @@ function plantillaInicio(p,c,en){
  const claves=[...String(p||'').matchAll(/\{(\w+)\}/g)].map(m=>m[1]);
  return !p||c.sin||claves.some(k=>!(k in v)||(k!=='usd'&&!v[k]))?null:p.replace(/\{(\w+)\}/g,(_,k)=>String(v[k]));
 }
-function tarjetaSeleccionHtml(o,i){
- /* En inglés, la moneda delante: «€1», «$1». */
- const corto=minimoCortoInicio(o),min=idiomaInicio()==='en'?corto.replace(/^(\d+(?:,\d+)?) ([€$])$/,(_,n,m)=>m+n.replace(',','.')):corto;
- const img=imagenOfertaLocal(o),id='relTarjeta'+i,t=String(o.titulo||'');
- return '<li class="rel-tarjeta"><article aria-labelledby="'+id+'">'+
-  (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
-  '<div class="rel-tarjeta-cuerpo">'+(o.plataformaNombre&&t.indexOf(o.plataformaNombre)!==0?'<p class="rel-tarjeta-plat" translate="no">'+escHtml(o.plataformaNombre)+'</p>':'')+
-  '<h3 id="'+id+'" lang="es" translate="no">'+escHtml(t)+'</h3><p class="rel-tarjeta-nota">'+escHtml(NOTAS_SELECCION[o.slug]||'Puedes perder parte o todo lo que inviertas.')+'</p>'+
-  (min?'<p class="rel-tarjeta-min"><span>Mínimo documentado:</span> <span translate="no">'+escHtml(min)+'</span></p>':'')+
-  '<button class="b3 rel-tarjeta-ver" type="button" data-perfil-oferta="'+escHtml(o.slug)+'" aria-label="Ver ficha de '+escHtml(t)+'">Ver ficha<span class="rel-flecha" aria-hidden="true"></span></button></div></article></li>';
-}
 /* «Recién añadidas» de Inicio (04/11/2026): altaOferta, ofertaNueva y
    masNuevasPrimero van junto a transparenciaOferta. Solo Principales: es la
    lista que abre «Ver todas las ofertas nuevas». */
@@ -2032,6 +2021,31 @@ function tarjetaNuevaHtml(o,i){
   '<p class="rel-tarjeta-nota">'+escHtml(NOTAS_SELECCION[o.slug]||'Puedes perder parte o todo lo que inviertas.')+'</p>'+
   (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
   '<p class="rel-nueva-meta">'+(ofertaNueva(o)?'<span class="etq etq-ok">Nueva</span> ':'')+'<span><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></span></p></div></article></li>';
+}
+/* Ofertas de Inicio (rediseño del 10/11/2026): un solo carrusel con las
+   recién añadidas y las que pasan las 5 comprobaciones, sin duplicados y
+   6 como mucho. Primero las nuevas (de la más nueva a la más antigua);
+   después, las de la Selección que no estén ya, con 3 huecos guardados para
+   ellas aunque haya muchas nuevas. Cada tarjeta dice por qué está («Nueva»,
+   «Pasa las 5 comprobaciones») y abre su ficha. */
+function ofertasInicio(c,nuevas){
+ const enNuevas=new Set(nuevas.map(o=>o.slug)),resto=c.seleccion.filter(o=>o&&!enNuevas.has(o.slug)).slice(0,3);
+ const vistas=new Set(),lista=[];
+ for(const o of [...nuevas.slice(0,6-resto.length),...resto]){if(!o||vistas.has(o.slug))continue;vistas.add(o.slug);lista.push(o);if(lista.length===6)break;}
+ return lista;
+}
+function tarjetaInicioHtml(o,i,seleccion){
+ const img=imagenOfertaLocal(o),id='relNueva'+i,t=String(o.titulo||''),f=altaOferta(o),nueva=ofertaNueva(o,30),sel=seleccion.has(o.slug);
+ const bloqueo=avisoBloqueoOferta(o),nota=NOTAS_SELECCION[o.slug];
+ return '<li class="rel-tarjeta rel-nueva"><article aria-labelledby="'+id+'">'+
+  (img?'<div class="rel-tarjeta-img"><img data-src="'+escHtml(img.src)+'" alt="'+escHtml(img.alt)+'"'+respaldoImagen(img)+' width="640" height="440" loading="lazy" decoding="async"></div>':'')+
+  '<div class="rel-tarjeta-cuerpo"><p class="rel-nueva-meta">'+(nueva?'<span class="etq etq-ok">Nueva</span>':'')+(sel?'<span class="etq ini-etq-cinco">Pasa las 5 comprobaciones</span>':'')+'</p>'+
+  '<h3 id="'+id+'" lang="es" translate="no"><button class="rel-nueva-abrir" type="button" data-perfil-oferta="'+escHtml(o.slug)+'"><span>'+escHtml(t)+'</span></button></h3>'+
+  '<p class="rel-tarjeta-plat"><span translate="no" lang="es">'+escHtml(o.plataformaNombre||'')+'</span>'+(img&&img.lugar?' · '+lugarTarjetaHtml(img.lugar):'')+'</p>'+
+  (nota?'<p class="rel-tarjeta-nota">'+escHtml(nota)+'</p>':'')+
+  (bloqueo?'<p class="rel-nueva-aviso rel-nueva-bloqueo"><b>Importante</b> · <span lang="es" translate="no">'+escHtml(textoLocal(bloqueo.texto))+'</span></p>':'')+
+  (nueva&&f?'<p class="rel-nueva-fecha"><span>Añadida el</span> <time datetime="'+escHtml(f)+'">'+escHtml(fechaES(f))+'</time></p>':'')+
+  '</div></article></li>';
 }
 /* Las fotos de la Selección se piden al acercarse a la pantalla: con solo
    loading=lazy el navegador las adelanta 1250 px. */
@@ -2063,12 +2077,12 @@ function pintarInicio(){
   return n?'<li><span>'+escHtml(catCorta(k))+'</span> <span>'+n+(n===1?' plataforma':' plataformas')+'</span></li>':''}).join(''));
  const fecha=fechaBarras(c.revisado)||ultimaRevision();
  const t=c.revisado?'<time datetime="'+escHtml(c.revisado)+'">'+escHtml(fecha)+'</time>':escHtml(fecha);
- pon('inicioCifras',CATALOGO_EMBEBIDO_BLOQUEADO?'<li class="inicio-hud-1 inicio-hud-aviso"><b>Catálogo no disponible</b> <span>Volverá en cuanto se publique de nuevo</span></li>':
-  sin?'<li class="inicio-hud-1 inicio-hud-aviso"><b>Revisión pendiente</b> <span>Sin cifras hasta renovarla</span></li><li class="inicio-hud-4"><span>última revisión</span> <b>'+t+'</b></li>':
-  (c.ofertas?'<li class="inicio-hud-1"><b>'+c.ofertas+'</b> <span>ofertas</span></li>':'')+
-  '<li class="inicio-hud-2"><b>'+c.plataformas+'</b> <span>plataformas</span></li>'+
-  '<li class="inicio-hud-3"><b>'+c.descartadas+'</b> <span>descartadas</span></li>'+
-  '<li class="inicio-hud-4"><span>revisado el</span> <b>'+t+'</b></li>');
+ /* Tres cifras clave en la cabecera: ofertas, plataformas y fecha de revisión. */
+ pon('inicioCifras',CATALOGO_EMBEBIDO_BLOQUEADO?'<li class="ini-cifra ini-cifra-aviso"><b>Catálogo no disponible</b> <span>Volverá en cuanto se publique de nuevo</span></li>':
+  sin?'<li class="ini-cifra ini-cifra-aviso"><b>Revisión pendiente</b> <span>Sin cifras hasta renovarla</span></li><li class="ini-cifra ini-cifra-fecha"><b>'+t+'</b> <span>última revisión</span></li>':
+  (c.ofertas?'<li class="ini-cifra"><b>'+c.ofertas+'</b> <span>ofertas</span></li>':'')+
+  '<li class="ini-cifra"><b>'+c.plataformas+'</b> <span>plataformas</span></li>'+
+  '<li class="ini-cifra ini-cifra-fecha"><b>'+t+'</b> <span>revisado el</span></li>');
  if(typeof panel.querySelectorAll==='function')[...panel.querySelectorAll('[data-rel-plantilla]')].forEach(el=>{
   /* Sin cifras, la frase en castellano de data-rel-sin (el idioma la traduce
      si hace falta): no la que hubiera en pantalla, que puede estar en inglés. */
@@ -2078,11 +2092,11 @@ function pintarInicio(){
  ocultar('relMinimos',sin||!c.minimos||!c.ofertas);
  ocultar('relMinimosAviso',sin||!c.minimos||!c.ofertas);
  ocultar('relVigencia',sin||!c.revisado||!c.hasta);
- ocultar('relEscaparate',sin||!c.seleccion.length);
+ const destacadas=sin?[]:ofertasInicio(c,nuevas),enSeleccion=new Set(c.seleccion.map(o=>o.slug));
+ ocultar('relEscaparate',sin||!destacadas.some(o=>enSeleccion.has(o.slug)));
  pon('inicioCriterios',criteriosTransparencia().map(k=>'<li>'+escHtml(CRITERIOS_INICIO[k.id]||k.texto)+'</li>').join(''));
- pon('relTarjetas',sin?'':c.seleccion.map(tarjetaSeleccionHtml).join(''));
- ocultar('relNuevas',!nuevas.length);
- pon('relNuevasLista',nuevas.map(tarjetaNuevaHtml).join(''));
+ ocultar('relNuevas',!destacadas.length);
+ pon('relNuevasLista',destacadas.map((o,i)=>tarjetaInicioHtml(o,i,enSeleccion)).join(''));
  diferirFotosInicio();
  if(relatoInicio)relatoInicio.repintar();
 }

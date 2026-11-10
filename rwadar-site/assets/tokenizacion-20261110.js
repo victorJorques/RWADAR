@@ -13,6 +13,10 @@
      con su escala escrita debajo (de cuánto a cuánto y el cambio);
    - y, para lectores de pantalla, las mismas cifras en dos tablas, cada una
      justo detrás de su gráfico.
+   Con data-tokenizacion="compacta" (la tarjeta de Inicio, rediseño del
+   10/11/2026) solo pinta la cifra total, su cambio en 24 h y una barra
+   apilada con los 3 tipos mayores y «Otros» (modelo.resumenCompacto); el
+   resto está en /mercado/, que usa el modo completo.
    Si el servidor no responde, usa el histórico estático del despliegue
    (/datos/tokenizacion-historico.json) con su fecha; si tampoco, un estado
    vacío honesto. Ninguna cifra se inventa. Todo se escribe con
@@ -193,6 +197,40 @@
     return caja;
   }
 
+  /* La tarjeta compacta de Inicio: total, 24 h y una barra apilada. */
+  function compacta(d) {
+    const r = modelo.resumenCompacto(d);
+    const caja = el('div', 'tk-mini');
+    const fila = el('div', 'tk-mini-fila');
+    const [cifraTotal, unidad] = modelo.millones(r.total, idioma()).split('\u00a0');
+    const grande = el('span', 'tk-total-cifra', cifraTotal);
+    if (unidad) grande.append(el('span', 'tk-total-unidad', '\u00a0' + unidad));
+    grande.setAttribute('aria-hidden', 'true');
+    const hablado = el('span', 'solo-lector', modelo.millonesHablados(r.total, idioma()));
+    hablado.setAttribute('translate', 'no');
+    fila.append(grande, hablado, cambio(r.cambio24h, true));
+    fila.lastChild.classList.add('tk-capsula');
+    caja.append(fila, el('p', 'tk-total-etq', 'Valor total de los activos tokenizados, en millones de dólares (M$)'));
+    // Una sola barra apilada: cada tramo, su cuota del total (CSSOM, sin style en línea).
+    const barra = el('div', 'tk-apilada');
+    barra.setAttribute('aria-hidden', 'true');
+    const leyenda = el('ul', 'tk-leyenda');
+    leyenda.setAttribute('aria-label', 'Reparto por tipo de activo');
+    r.segmentos.forEach((t, i) => {
+      const tramo = el('span', 'tk-tramo tk-tramo-' + (t.clave === 'otros' ? 'otros' : i + 1));
+      // La cuota, como peso del tramo: los tramos y sus huecos llenan la barra justa.
+      tramo.style.setProperty('--tk-peso', Math.max(1, Math.min(100, t.cuota)).toFixed(2));
+      barra.append(tramo);
+      const li = el('li', 'tk-leyenda-item tk-leyenda-' + (t.clave === 'otros' ? 'otros' : i + 1));
+      const cuota = el('b', '', modelo.cuota(t.cuota, idioma()));
+      cuota.setAttribute('translate', 'no');
+      li.append(el('span', 'tk-leyenda-nom', t.nombre), ' ', cuota);
+      leyenda.append(li);
+    });
+    caja.append(barra, leyenda);
+    return caja;
+  }
+
   function pintar() {
     if (!cuerpo) return;
     // El motor de idioma carga después que este script (defer, en orden): la
@@ -206,6 +244,11 @@
     seccion.dataset.tokenizacionEstado = d ? d.fuente : 'sin-datos';
     if (!d || d.fuente === 'sin-datos') {
       cuerpo.append(el('p', 'tk-estado', 'Ahora no podemos mostrar los datos de CoinGecko. Vuelve a intentarlo más tarde.'));
+      return;
+    }
+    if (seccion.dataset.tokenizacion === 'compacta') {
+      cuerpo.append(compacta(d));
+      ponerHora(d);
       return;
     }
     if (d.fuente === 'foto-guardada') {
@@ -241,6 +284,9 @@
     evolucion.append(el('h3', 'tk-h3', 'Evolución del valor total'), linea(d));
     graficos.append(porTipo, evolucion);
     cuerpo.append(graficos);
+    ponerHora(d);
+  }
+  function ponerHora(d) {
     hora.append(' · ', el('span', '', d.fuente === 'coingecko' ? 'Dato del' : 'Foto guardada del'), ' ',
       el('time', '', modelo.horaDato(d.actualizado, idioma())));
     hora.lastChild.dateTime = d.actualizado;

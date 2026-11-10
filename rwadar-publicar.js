@@ -25,6 +25,7 @@ const entornoSincronizacion = { ...process.env };
 delete process.env.RWADAR_CATALOGO_ACCESS_TOKEN;
 const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
+const { cargarFotosNoticias } = require('./rwadar-noticias-editoriales');
 const { cargarRegistro: cargarPrecargas, unirActivos } = require('./rwadar-precargar-imagenes');
 const { comprobar: comprobarAcademy, paginasAcademy, comprobarLeccionesPublicadas } = require('./rwadar-academy');
 const { comprobar: comprobarNoticias } = require('./rwadar-noticias');
@@ -38,6 +39,7 @@ const noticiasModelo = require('./rwadar-movil/lib/noticias-sector');
 const {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
+  PAGINAS_SECCIONES,
   PROYECTO_CLOUDFLARE,
   comprobarConfiguracionAuth,
   comprobarEstadoLegalPublicacion,
@@ -55,7 +57,7 @@ const FILE = path.join(DIR, 'index.html');
 /* Todas las páginas HTML propias: pasan la misma CSP estricta y reciben los
    nombres versionados de los assets. */
 const PAGINAS_HTML = ['index.html', 'privacidad.html', 'transparencia-comercial.html', 'para-empresas.html', '404.html', 'acceso.html',
-  'baja.html', ...PAGINAS_ACADEMY, ...PAGINAS_FICHAS.filter(nombre => nombre.endsWith('.html'))];
+  'baja.html', ...PAGINAS_SECCIONES, ...PAGINAS_ACADEMY, ...PAGINAS_FICHAS.filter(nombre => nombre.endsWith('.html'))];
 const SALIDA = path.join(__dirname, 'rwadar-publicado');
 const WRANGLER_VERSION = '4.125.0';
 const modos = ['--local', '--preview', '--produccion'].filter(x => process.argv.includes(x));
@@ -168,6 +170,16 @@ catch (e) { console.error('ACTIVOS EDITORIALES BLOQUEADOS:', e.message); process
 try { activosEditoriales = { ...activosEditoriales,
   publicables: unirActivos(activosEditoriales.publicables, cargarPrecargas(__dirname).publicables) }; }
 catch (e) { console.error('PRECARGAS EDITORIALES BLOQUEADAS:', e.message); process.exit(2); }
+/* Fotos editoriales de las noticias (rediseño de Inicio, 10/11/2026): cada
+   clave que usa /datos/noticias.json, con su WebP comprobado (bytes, sha256 y
+   tamaño). Un destino remoto no sale sin ellas; en local, mientras se hacen,
+   se avisa y la web enseña el fondo oscuro de la tarjeta en su lugar. */
+let fotosNoticias = { publicables: [] };
+try { fotosNoticias = cargarFotosNoticias(__dirname); }
+catch (e) {
+  if (remoto) { console.error('FOTOS DE LAS NOTICIAS BLOQUEADAS:', e.message); process.exit(2); }
+  console.warn(`AVISO (solo en local): fotos de las noticias sin publicar: ${e.message}`);
+}
 if (remoto && activosEditoriales.manifiesto.estadoUso !== 'aprobado-para-publicacion') {
   console.error('PUBLICACION REMOTA BLOQUEADA: las ilustraciones editoriales siguen pendientes de aprobación legal.');
   process.exit(2);
@@ -563,7 +575,7 @@ function construirSalida() {
     /* Las cuatro ilustraciones viven en una fuente única compartida con
        Expo. Se copian una a una desde el manifiesto validado; nunca se copia
        el directorio completo ni se incluyen las 52 imágenes sin derechos. */
-    for (const activo of activosEditoriales.publicables) {
+    for (const activo of [...activosEditoriales.publicables, ...fotosNoticias.publicables]) {
       const destino = path.join(temporal, ...activo.salida.split('/'));
       fs.mkdirSync(path.dirname(destino), { recursive: true });
       fs.copyFileSync(activo.origen, destino);
@@ -609,6 +621,7 @@ function construirSalida() {
     const salidaEsperada = [
       ...ARCHIVOS_PUBLICABLES.map(nombre => referencias.get('/' + nombre)?.slice(1) || nombre),
       ...activosEditoriales.publicables.map(activo => activo.salida),
+      ...fotosNoticias.publicables.map(activo => activo.salida),
       '_worker.js', '_routes.json',
     ].sort();
 
