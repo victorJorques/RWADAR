@@ -2,9 +2,12 @@
 
 Preparada el 10/11/2026 por Claude (montador de datos y SQL). **Nada aplicado en
 Supabase, nada publicado, sin OTA, ningún flujo lanzado, sin commit ni push.**
-Estado: **preparada y probada en local** (PGlite y un ensayo completo de
-«después de aplicar» en una copia aparte). Falta la revisión independiente de
-la entrega (`REVISION-ENTREGA.md`).
+Estado: **preparada, revisada y corregida; probada en local** (PGlite y un
+ensayo completo de «después de aplicar» en una copia aparte). La revisaron
+tres revisores independientes (`REVISION-ENTREGA-sql.md`,
+`REVISION-ENTREGA-contenido.md` y `REVISION-ENTREGA-cumplimiento.md`), los tres
+«aprobado con cambios». Sus correcciones obligatorias están aplicadas (§9) y
+**no cambian el SQL**: la revisión, la huella y el SHA-256 son los mismos.
 
 Lo que entra es la lista cerrada de `DECISIONES-COORDINADOR.md`: solo lo que el
 revisor de cada grupo dejó confirmado, con sus correcciones obligatorias. Los
@@ -139,7 +142,9 @@ Alicante 2 se cubrió en la preventa; el seguimiento pasa a **Alicante 3**.
   suscripción el 25/11/2026.»
 - Métricas: «Próxima operación: Alicante 3 · preventa desde el 18/11/2026,
   suscripción del 25/11/2026 al 30/06/2027», «Emisor: HAUSERA PROPERTY MANAGER
-  SPV 11, S.A (documento de emisión de Alicante 3)» (nueva), «Supervisor: Hausera
+  SPV 11, S.A (documento de emisión de Alicante 3)» (nueva; la característica
+  «Emisor» de la documentación dice lo mismo, ratificado en DECISIONES por SQL-1),
+  «Supervisor: Hausera
   no está registrada en la CNMV; emisión sin folleto, pendiente de inscribir por
   Ursus-3 Capital A.V. (CNMV n.º 251)» y «Comisiones: Ninguna para el
   suscriptor; Hausera cobra con la plusvalía que supere el tope del inversor»
@@ -186,15 +191,21 @@ transacción** `begin isolation level serializable; … commit;`:
 | 284 `insert … on conflict do nothing` | Solo en `rwadar_catalogo`: 1 en `revisiones`, 25 en `plataformas`, 69 en `fuentes`, 107 en `plataforma_fuentes`, 25 en `alertas`, 35 en `alerta_fuentes` y 22 en `ofertas`. Todas de la revisión nueva. |
 | `do $aprobar$` | Comprueba 25 plataformas y 22 ofertas (8/13/1) y aprueba la revisión (solo `update rwadar_catalogo.revisiones`). Si no queda publicable o publicada, deshace todo. |
 
-Sin DDL, borrados, permisos, Auth ni funciones. Nada en `public.*`.
+Sin DDL, borrados, permisos, Auth ni funciones. El texto del SQL no escribe en
+`public.*`; al aprobar, como en todos los lotes, los disparadores mueven el
+puntero `rwadar_catalogo.publicacion_v2` y tocan
+`public.catalogo_publicacion.actualizado_el` (`retirado` sigue en `false` y
+`motivo` en `null`).
 
 ## 5. Pruebas (salida real)
 
-1. **`preparar-entrega.mjs`, dos veces** → las 8 salidas tienen el mismo SHA-256
+1. **`preparar-entrega.mjs`, dos veces** (repetido tras las correcciones) → las 8 salidas tienen el mismo SHA-256
    las dos veces (`radar-canonico-26.json` `451941b4…`,
    `escaparate-publicacion.json` `424be5af…`, `documentacion-ofertas.json`
    `633ed15f…`, `manifiesto-catalogo.json` `c2c51919…`,
-   `contraste-2026-11-10.json` `d642cc95…`, `catalogo.sql` `b4c2bb7e…`,
+   `contraste-2026-11-10.json` `a1eb33d1…` (antes de las correcciones,
+   `d642cc95…`: solo cambia el SHA-256 de DECISIONES que guarda),
+   `catalogo.sql` `b4c2bb7e…`,
    `aplicar-y-aprobar.sql` `60feef2c…`, `revision.json` `2ddb1fef…`). Salida:
    `{"revisionId":"dfdc4c85-…","sha256":"60feef2c…","plataformas":25,"fuentesRadar":69,"ofertas":22,"colecciones":{"principales":8,"secundario":13,"en_camino":1},"cambios":95}`.
 2. **`comprobar-entrega.mjs --exportar=DIR`** (PGlite, cadena de producción
@@ -225,7 +236,7 @@ Sin DDL, borrados, permisos, Auth ni funciones. Nada en `public.*`.
 4. **Ensayo «después de aplicar»** en una copia aparte (`ensayo-despues.json`):
    - `sincronizar.js` con el REST simulado → «25 plataformas verificadas, 5
      descartadas y 22 ofertas clasificadas. rwadar.csv regenerado: 30 filas.»;
-   - `despues-de-aplicar.mjs` → «Comprobaciones de transparencia al 10/11: 41 de
+   - `despues-de-aplicar.mjs` → «Comprobaciones de transparencia al 10/11: 42 de
      44»; repetido → «Nada que cambiar: ya estaba hecho.» (mismo SHA-256);
    - `volcar-seed.js` → «25 en el radar, 5 descartadas, 13 fuentes», sin
      diferencias;
@@ -235,18 +246,19 @@ Sin DDL, borrados, permisos, Auth ni funciones. Nada en `public.*`.
      (`ofertas-presentacion.test.cjs`, «sin lectura en línea de la revisión
      dfdc4c85…»: exige la lectura pública de la revisión nueva). Con esa
      lectura simulada en `lectura-despues-de-aplicar/` (solo en la copia):
-     **exit 0 en 3 min 02 s** (base de datos 28 scripts «0 fallidas» y 30 SQL,
+     **exit 0 en 3 min 22 s** tras las correcciones (base de datos 28 scripts
+     «0 fallidas» y 30 SQL,
      web 642, fichas y RSS 70, precarga 39, móvil 491 + 2 omitidas, acceso 237,
      «fichas.json: 22 fichas (22 con foto), catálogo 2026-11-10-v2»,
      «Transparencia al día: 22 ofertas», «Diferencias: 0»).
 
 ## 6. Lo que no se aplicó tal cual (y por qué)
 
-1. **Hausera, transparencia «documentoEspana»: no se re-fecha.** La regla de
-   DECISIONES (fecha 10/11 donde el expediente volvió a consultar la fuente)
-   pondría fecha de hoy a un motivo que ya no es cierto («Alicante 2 no tiene
-   documento de emisión público: su ficha pide iniciar sesión»). Se queda con
-   la del 05/11. El criterio (folleto o KID) sigue sin cumplirse.
+1. **Hausera, transparencia «documentoEspana».** En la primera versión no se
+   re-fechaba porque su motivo («Alicante 2 no tiene documento de emisión
+   público: su ficha pide iniciar sesión») ya no era cierto. **Resuelto** con
+   las correcciones SQL-2, C2 y O2 (§9): motivo nuevo sobre el documento de
+   Alicante 3, consultado el 10/11. Sigue «no cumple».
 2. **Boss Info, aviso de vendedores.** DECISIONES dice «… (venta más barata
    8,40 ZCHF el 10/11/2026)». Se leyó «…» como el texto publicado: queda «El
    precio del emisor está por encima de la mejor oferta de venta entre
@@ -260,25 +272,36 @@ Sin DDL, borrados, permisos, Auth ni funciones. Nada en `public.*`.
    publicada)», que contradice la métrica «Emisor» decidida. Pasa a «Una
    sociedad por operación, identificada en su documento de emisión; la de
    Alicante 3 es HAUSERA PROPERTY MANAGER SPV 11, S.A» (texto del expediente).
-   Es lo único fuera de la letra de DECISIONES; **confirmarlo en la revisión**.
+   Estaba fuera de la letra de DECISIONES; **ya está ratificado** allí (SQL-1).
 5. **Spiko Dólar, aviso:** «se añade al final» se hizo antes del punto final.
 6. **Notas de los revisores que no están en DECISIONES:** no entran. Son el KID
    en español de Robinhood en las fuentes, el mínimo en cripto de Aktionariat, la
    mejor compra en la salida de Boss Info y Aktionariat, y el «Desistimiento» de
-   Brickwise (se queda con su fecha del 05/11).
+   Brickwise (se queda con su fecha del 05/11). Las referencias «Venta más
+   barata» y «Participaciones en venta · 10/11/2026» de Brickwise ya están
+   ratificadas en DECISIONES (SQL-1).
+7. **Kraken y mTBILL en `transparencia.json`:** se quedan con la fecha del 05/11
+   en «documentoEspana» y «supervisada». En la primera versión decía que el
+   expediente no volvió a leer esas fuentes; no es exacto para Kraken (R3 de
+   contenido): el expediente volvió a bajar las condiciones finales n.º 159 hoy,
+   pero el script corta la dirección en el «)» de «(LITEx)» y no la reconoce.
+   Quedarse en el 05/11 es prudente, no falso; el mensaje del script ya dice
+   solo que la dirección no aparece entera entre las consultas de hoy.
 
 ## 7. Pendiente
 
-- Revisión independiente de esta entrega (`REVISION-ENTREGA.md`).
-- **Switzerlend, mínimo corto de la tarjeta** (`transparencia.json`): sigue
-  «1 acción (68,01 CHF, 05/11)». El precio es el mismo hoy, pero DECISIONES solo
-  pide los mínimos cortos de Brickwise y Hausera. Decidir si pasa a «(…, 10/11)».
-- **Hausera, motivo de «documentoEspana»** (apartado 6.1): decidir un texto
-  nuevo (por ejemplo, que el documento de emisión de Alicante 3 es público pero
-  no es un folleto ni lo revisa la CNMV).
-- Datos personales en copias de los grupos: correcciones obligatorias de los
-  revisores de spiko, acciones-oro-tesoro, suiza y brickwise (las copias del
-  05/11 ya en Git incluidas). Lo hace el coordinador antes del commit.
+- **El coordinador confirma lo que el montador escribió en DECISIONES** por las
+  correcciones (SQL-1, SQL-2/C2/O2, C1, C3/O1 y la lista de datos personales de su §4). Si no ratifica
+  la característica «Emisor» de Hausera (SQL-1 a), hay que deshacerla en
+  `preparar-entrega.mjs`, regenerar (cambia el SHA-256) y repetir las pruebas y
+  la revisión.
+- Un auditor comprueba que las correcciones no colaron nada más (diff de
+  `despues-de-aplicar.mjs`, `DECISIONES-COORDINADOR.md` y los recortes).
+- Datos personales: los 22 archivos de §9 (SQL-3 y O3) están recortados y
+  gitleaks no encuentra nada en los 792 archivos que irán a Git. Las
+  correcciones de los revisores de grupo (spiko, acciones-oro-tesoro, suiza y
+  brickwise, también en copias del 05/11 ya en Git) las cierra el coordinador
+  antes del commit, si queda alguna.
 - Vigilar Hausera el 18/11 (preventa) y el 25/11 (suscripción), y el registro
   ERIR de Ursus-3.
 - Tras aplicar, guardar la lectura pública en `lectura-despues-de-aplicar/`
@@ -286,12 +309,18 @@ Sin DDL, borrados, permisos, Auth ni funciones. Nada en `public.*`.
 
 ## 8. Pasos para aplicarla (ciclo autorizado por la orden de Víctor)
 
-1. Pasar la revisión independiente y confirmar que el SHA-256 de
-   `aplicar-y-aprobar.sql` sigue siendo `60feef2c…383a`.
+1. Confirmar en `main` que el SHA-256 de `aplicar-y-aprobar.sql` sigue siendo
+   `60feef2c…383a`.
 2. Antes del **17/11/2026**, volver a leer como visitante: tiene que seguir
-   publicada la `88d5a757-3481-f70e-dc7c-6272704a00b3`. Si no, parar.
+   publicada la `88d5a757-3481-f70e-dc7c-6272704a00b3`. Si no, parar. La
+   guarda usa `current_date`, que en Supabase va en UTC: aceptaría el lote hasta
+   la 01:00 (hora de Madrid) del 18/11. Mejor aplicar con margen.
 3. Aplicar exactamente `rwadar-app/data/importaciones/catalogo-2026-11-10-v2/aplicar-y-aprobar.sql`
-   con el acceso autorizado (una transacción; si falla, no seguir).
+   con el acceso autorizado («Aplicar catálogo»; una transacción; si falla, no
+   seguir). Nunca `catalogo.sql`: no lleva guarda y solo crea un borrador. El
+   paso «Leer el lote publicado» de `aplicar-catalogo.yml` ordena por id y
+   enseñará otras revisiones: la prueba de que se aplicó es la lectura pública
+   del paso 4.
 4. Leer como visitante las vistas v2 y guardarlo en
    `lectura-despues-de-aplicar/`: revisión `dfdc4c85-…`, 25/22 (8/13/1),
    `verificada_el` 10/11 y los cambios de §3.
@@ -300,7 +329,100 @@ Sin DDL, borrados, permisos, Auth ni funciones. Nada en `public.*`.
    `node rwadar-app/volcar-seed.js` (sin diferencias),
    `node rwadar-editorial-source/ofertas/transparencia.mjs`,
    `node rwadar-fichas.js` y `npm test`.
-6. Publicar la web y, si cambia lo que lleva la app, la OTA.
+6. Publicar la web y **enviar la OTA** justo después (O1): la app lleva
+   `transparencia.json` empaquetado, y sin OTA seguiría enseñando el motivo
+   viejo de Hausera y su salida recortada.
+
+## 9. Correcciones aplicadas
+
+Copia del SQL de antes, por si hay que comparar:
+`/tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/sql-antes-correcciones-2026-11-10/`
+(los tres archivos). **Ninguna corrección cambia el SQL:** `aplicar-y-aprobar.sql`
+`60feef2c…383a`, `catalogo.sql` `b4c2bb7e…` y `revision.json` `2ddb1fef…` son
+idénticos a esa copia; la revisión sigue siendo la `dfdc4c85-7f2f-fc4a-de27-a9f4a63f7656`
+con la misma huella. Solo cambia `contraste-2026-11-10.json`, porque guarda el
+SHA-256 de `DECISIONES-COORDINADOR.md` (`147d4307…`).
+
+### Obligatorias
+
+- **SQL-1 · Ratificar en DECISIONES lo que no estaba en su letra.** Añadidos a
+  DECISIONES §2, con el texto del revisor tal cual: en Hausera, la
+  característica «Emisor» y la métrica «Coste de Hausera» sustituida por
+  «Comisiones»; en Brickwise, las referencias «Venta más barata · 10/11/2026» y
+  «Participaciones en venta · 10/11/2026». Las escribe el montador por encargo
+  del coordinador; queda que él lo confirme (§7). El SQL no cambia.
+- **SQL-2, C2 y O2 · Hausera, «documentoEspana».** En `despues-de-aplicar.mjs`
+  sale la excepción `NO_REFECHAR` y su `assert`; entra una reescritura que solo
+  actúa si encuentra el texto de partida (o ya el nuevo) y que exige en el
+  expediente de hoy la portada del documento, el conflicto de los documentos y
+  que la emisión no estaba inscrita el 10/11. Queda `cumple: false`, consulta
+  del 10/11/2026 y:
+  - motivo (256 caracteres): «El documento de emisión de Alicante 3 es
+    público, pero no es un folleto ni un KID: la CNMV no lo ha revisado y el
+    10/11/2026 la emisión aún no estaba inscrita. Además, sus documentos no
+    coinciden en cuánto hay que colocar para que la emisión siga adelante.»;
+  - fuente: «Hausera · documento de emisión de Alicante 3 (portada: «no es
+    considerado un folleto informativo»)», `https://drive.google.com/file/d/1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_`.
+
+  Une los tres textos propuestos: la primera frase es la de SQL-2 (que incluye
+  la de C2), el título de la fuente es el de C2 y la segunda frase es la de O2.
+  **Sin «(50 % o 70 %)»:** la primera prueba con esas cifras la rechazó
+  `cargarTransparencia` («usa una palabra o un signo prohibido (%|…)») sin
+  escribir nada, y además DECISIONES no publica el mínimo de la emisión. El
+  motivo nuevo también va en DECISIONES §1. Resultado: «42 de 44».
+- **SQL-3 y O3 · Nombres de personas físicas en lo que irá a Git.** En 22
+  copias de texto de `grupos/` y `revision-independiente/fuentes/` cada nombre
+  pasa a «[persona física recortada]» y se conserva el cargo (254 recortes; en
+  `rhj_ft_aal.txt`, también las formas en búlgaro y letón y un nombre partido
+  entre dos líneas). Son los archivos de las dos listas, más un tercer
+  testimonio de la portada de Brickwise y los demás testimonios de xstocks-fi-us
+  que estaban junto a los señalados. `info-AT0000A324B4.pdf.txt`, línea 2044,
+  ya estaba recortado. Ningún nombre estaba en `expedientes/` ni en los
+  informes de los revisores (solo en copias `crudo/`, que no van a Git). Lista
+  añadida a DECISIONES §4. Después: gitleaks 8.30.1 con
+  `rwadar-app/gitleaks.toml` sobre los 792 archivos que irán a Git y los cuatro
+  cambiados de esta carpeta: «no leaks found». Búsqueda de nombres repetida: 0
+  restos de la lista; un barrido de nombres junto a cargos («CEO», «Founder»,
+  «said», «Mr.»…) solo da falsos positivos (nombres de empresas, menús y una
+  ficha de Brickwise llamada «Oskars Hundehütte»).
+- **C1 · Switzerlend, mínimo corto.** `despues-de-aplicar.mjs` exige que la
+  ficha diga «1 acción (68,01 CHF el 10/11)» y pasa el mínimo corto de «1
+  acción (68,01 CHF, 05/11)» a «1 acción (68,01 CHF, 10/11)».
+- **C3 y O1 · Hausera, salida corta.** `despues-de-aplicar.mjs` exige la
+  salida decidida en la ficha y escribe `salidaCorta` «Al vender las viviendas,
+  sin fecha fija» (39 caracteres). «Lo esencial» de la app, calculado con su
+  código y el catálogo del ensayo: Mínimo «Desde 100 € en Alicante 3 (10/11)» ·
+  España «Sin confirmar» · Salida «Al vender las viviendas, sin fecha fija». La
+  OTA pasa a ser obligatoria tras aplicar (§8, paso 6).
+
+### Recomendadas
+
+Aplicadas (no amplían DECISIONES ni cambian cifras):
+- SQL, 1.ª: confirmar el SHA-256 en `main`, volver a leer como visitante y
+  aplicar solo `aplicar-y-aprobar.sql` con «Aplicar catálogo» (§8).
+- SQL, 2.ª: anotado en §8 que «Leer el lote publicado» del flujo enseñará otras
+  revisiones y que la prueba es la lectura pública. El flujo no se toca hoy.
+- SQL, 3.ª: anotado en §8 que la guarda va en UTC y conviene aplicar con margen.
+  Usar la fecha de Madrid queda para lotes futuros (cambiaría el SQL).
+- SQL, 4.ª, y R12 de cumplimiento: cubiertas por C1.
+- SQL, 5.ª: §4 precisa qué toca la aprobación en `public.*`.
+- R3 de contenido: corregida la nota sobre Kraken (§6.7) y el mensaje del
+  script. No se cambia la expresión de direcciones: hoy daría 43 de 44 y los
+  revisores esperan 42.
+
+No aplicadas:
+- SQL, 6.ª (comparar la ruta sin pasarla a minúsculas): el revisor la deja para
+  lotes futuros; hoy no cambia ninguna fecha.
+- Contenido R1, R2, R4, R5 y R8; cumplimiento R2, R3, R4, R5, R6, R7, R8, R9 y
+  R11: cambian textos del SQL que DECISIONES no recoge (acceso, avisos,
+  referencias o métricas). Varios revisores las dejan para otra entrega.
+- Contenido R6 (ilustración de Hausera): hoy no se tocan imágenes.
+- Contenido R7 (texto de origen del radar): DECISIONES no cambia el radar hoy.
+- Cumplimiento R1 (botón de la regla 5.3): cambio de código en la web y la app,
+  con orden aparte.
+- Cumplimiento R10 (nombre de pila del titular en el comentario del SQL y en la
+  aprobación): el revisor lo pide para lotes futuros. Cambiarlo hoy cambiaría el
+  SHA-256 revisado; es una tabla interna que no sale en las vistas públicas.
 
 ## Archivos
 
@@ -311,3 +433,5 @@ Sin DDL, borrados, permisos, Auth ni funciones. Nada en `public.*`.
   `contraste-2026-11-10.json`.
 - SQL: `rwadar-app/data/importaciones/catalogo-2026-11-10-v2/{catalogo.sql,aplicar-y-aprobar.sql,revision.json}`.
 - Pruebas: `pruebas-locales.json` (PGlite) y `ensayo-despues.json` (copia aparte).
+- Revisión: `REVISION-ENTREGA-sql.md`, `REVISION-ENTREGA-contenido.md` y
+  `REVISION-ENTREGA-cumplimiento.md`.

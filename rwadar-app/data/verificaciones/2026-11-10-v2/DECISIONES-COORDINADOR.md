@@ -49,6 +49,27 @@ una entrega aparte, `2026-11-10.2`, pero ninguna candidata llega (§3).
 - **`transparencia.json`** se pone al día **después de aplicar** el SQL
   (`despues-de-aplicar.mjs`): fecha 10/11 solo donde el expediente de hoy volvió
   a consultar esa misma fuente; mínimos cortos nuevos de Brickwise y Hausera.
+  Además, por las correcciones obligatorias de la revisión de la entrega
+  (`REVISION-ENTREGA-*.md`; las escribe aquí el montador por encargo del
+  coordinador, «aplica todas las obligatorias», y no cambian el SQL):
+  - **Hausera, «documentoEspana»** (SQL-2, C2 y O2): sigue «no cumple», con
+    motivo «El documento de emisión de Alicante 3 es público, pero no es un
+    folleto ni un KID: la CNMV no lo ha revisado y el 10/11/2026 la emisión aún
+    no estaba inscrita. Además, sus documentos no coinciden en cuánto hay que
+    colocar para que la emisión siga adelante.», fuente «Hausera ·
+    documento de emisión de Alicante 3 (portada: «no es considerado un folleto
+    informativo»)» (`https://drive.google.com/file/d/1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_`)
+    y consulta del 10/11/2026. Sustituye al motivo del 05/11 sobre Alicante 2,
+    que ya no es cierto. Sin las cifras «50 % o 70 %» que proponía O2: las reglas
+    de `transparencia.mjs` no admiten «%» en estos textos y así no se publica
+    ninguno de los dos mínimos; basta con decir que los documentos no coinciden.
+  - **Switzerlend, mínimo corto** (C1): «1 acción (68,01 CHF, 10/11)», como la
+    ficha («…el 10/11»).
+  - **Hausera, salida corta** (C3 y O1): «Al vender las viviendas, sin fecha
+    fija». Sin ella, «Lo esencial» recortaba la salida a «Cobras cuando se venden
+    las viviendas…».
+  - La app lleva `transparencia.json` empaquetado: después de aplicar, **la OTA
+    hace falta** (O1), además de publicar la web.
 
 ## 2. Por oferta (antes → ahora)
 
@@ -146,6 +167,12 @@ día en la API pública, idéntica a las 09:01 y a las 09:17 UTC):
   Greenpoint 89 → 84 €; las demás, con fecha nueva si se volvieron a leer.
 - Acceso, salida, comisión (1,5 %) y avisos de alquiler: sin cambios
   (comprobados hoy).
+- Ratificado por la corrección SQL-1 de la revisión de la entrega (texto del
+  revisor, tal cual; no cambia el SQL): Referencias del libro de órdenes con la
+  lectura del 10/11 confirmada por el revisor: «Venta más barata · 10/11/2026»
+  (precio de la tabla, con la fecha o el número de órdenes) y «Participaciones
+  en venta · 10/11/2026» (Stallhofstraße 313 → 317, Schwarzer Weg 305 → 300,
+  Randhartingergasse 184 → 189, Hinterstoder 258 → 265; las demás, iguales).
 
 ### Hausera · próximas ofertas (en camino)
 Alicante 2 se cubrió en la preventa y el seguimiento pasa a **Alicante 3** (14
@@ -173,6 +200,16 @@ cambios):
   como cifras del promotor (10/11). Fuentes: las del expediente (oportunidades,
   ficha de Alicante 3, documento de emisión, términos, ERIR de la CNMV).
 - **No se publica** el mínimo de emisión de Alicante 3 (conflicto 50 % / 70 %).
+  (El motivo nuevo de «documentoEspana», §1, dice que sus documentos no
+  coinciden, sin cifras; el SQL sigue sin ninguna de las dos.)
+- Ratificado por la corrección SQL-1 de la revisión de la entrega (texto del
+  revisor, tal cual; no cambia el SQL): Documentación, característica «Emisor»:
+  «SPV del Grupo Hausera identificada en cada documento de emisión (para
+  Alicante 2, no publicada)» → «Una sociedad por operación, identificada en su
+  documento de emisión; la de Alicante 3 es HAUSERA PROPERTY MANAGER SPV 11,
+  S.A» (expediente, campo emisor; revisión: emisor confirmado). Sale la métrica
+  «Coste de Hausera» («Sin comisión por invertir (FAQ)»), sustituida por
+  «Comisiones».
 
 ## 3. Candidatas (ninguna entra en esta entrega)
 
@@ -202,3 +239,25 @@ Brickwise, Spiko (firmante de la carta de la AMF), Switzerlend, Profitus,
 Rabobank/NN, Reental, eToro y el menú del Banco de Lituania, también en las
 copias antiguas ya en `main`. Los PDF y HTML con nombres van a `crudo/` (fuera
 de Git) con su SHA-256 en el inventario.
+
+Añadidos por las correcciones SQL-3 y O3 de la revisión de la entrega (rutas
+desde esta carpeta; cada nombre pasa a «[persona física recortada]» y se
+conserva el cargo):
+- `grupos/ampliacion/fuentes/crowdedhero/home.txt`, `project-44.txt`,
+  `project-45.txt`, `project-49.txt` y `project-50.txt`;
+- `grupos/candidatas-mercados/fuentes/coinbase-nvdac-prospectus.txt`;
+- `grupos/ampliacion-1/fuentes/press-stocks.txt` y `stocks-aapl.txt`;
+- `grupos/ampliacion/fuentes/radar-sin-oferta/securitize-press-stocks.txt`,
+  `securitize-stocks-aapl.txt`, `securitize-home.txt`, `ondo-home.txt` y
+  `lofty-home.txt`;
+- `grupos/ampliacion/fuentes/novedades/rhj_ft_aal.txt` (también las formas en
+  búlgaro y letón), `rhj_base_prospectus.txt` y
+  `rhj_base_prospectus_supplement_09_november_2026.txt`;
+- `grupos/ampliacion/fuentes/navegador/conda-cooee-alpin-nachrangige-anleihe-der-you-will-like-it-hotels-gmbh.txt`;
+- `grupos/acciones-oro-tesoro/fuentes/xstocks-fi-us.txt`;
+- Brickwise: `grupos/brickwise/fuentes/brickwise/web-home-2026-11-10.txt`,
+  `revision-independiente/fuentes/brickwise/web-home-revisor-2026-11-10.txt`,
+  `grupos/brickwise/fuentes/reguladores/fma-busqueda-web-investor-warning.txt`
+  y `revision-independiente/fuentes/brickwise/reguladores/fma-busqueda-investor-warning.txt`.
+  `grupos/brickwise/fuentes/brickwise/info-AT0000A324B4.pdf.txt` (línea 2044)
+  ya estaba recortado.

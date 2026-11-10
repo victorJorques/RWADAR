@@ -1,6 +1,6 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-10T15:37:48.458Z",
+  "ejecutadoEl": "2026-11-10T16:56:40.045Z",
   "etiqueta": "2026-11-10",
   "revisionAnterior": "88d5a757-3481-f70e-dc7c-6272704a00b3",
   "revisionNueva": "dfdc4c85-7f2f-fc4a-de27-a9f4a63f7656",
@@ -17,7 +17,7 @@
     "vigencia: el lector de la web (validarLotePublicoV2) lo acepta el 10/11 y el 17/11 y lo da por caducado el 18/11; las 22 tarjetas ocultan cifras desde el 18/11; el lector de la app (adaptarCatalogoV2) lo acepta (25/22, 1 en camino)",
     "tarjetas (resumenOferta, 10/11): las 22 en castellano, sin citas en otro idioma y sin «por participación» en el mínimo; cambian 14: boss-info, switzerlend, apartamento-vacacional-hinterstoder-50, drautalresidenz-paternion, fotovoltaica-cohotel, fotovoltaica-greenpoint, randhartingergasse-9-viena, local-de-estanco-klagenfurt, vivienda-pluddemanngasse-101-graz, vivienda-pottendorfer-stra-e-62-wr-neustadt, vivienda-schwarzer-weg-18-graz, vivienda-sonnleithnergasse-2-viena, vivienda-stallhofstra-e-28-gratwein, hausera-proximas-ofertas; Brickwise «Desde X € la participación en reventa (10/11)» (Hinterstoder 75, Schwarzer Weg 65, Stallhofstraße 68,80); Boss Info y Switzerlend con fecha del 10/11; Hausera «Desde 100 € en Alicante 3, según su documento de emisión (10/11); la preventa abre el 18/11.» · «Sin comprobar si se puede contratar desde España» · «Salida: Cobras cuando se venden las viviendas (previsto en 20 meses, sin fecha cierta); sin mercado secundario garantizado.»",
     "sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de 30 filas), todas de la revisión nueva y verificadas el 10/11; las fichas salen con la lista cerrada de siempre (52 páginas, ninguna nueva ni retirada) y cambian 52 por la revisión, las fechas y los textos; la ficha web de Hausera ya habla de Alicante 3",
-    "exportado a /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/rest-2026-11-10 lo que leería un visitante después de aplicar",
+    "exportado a /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/rest-2026-11-10-r2 lo que leería un visitante después de aplicar",
     "si la revisión nueva ya estaba importada como borrador, el aplicador la aprueba y la publica sin duplicar filas",
     "falla y no deja nada: la publicada no es la 88d5a757 (es la anterior, cede1f27) → Publicación distinta de la revisión anterior prevista: cede1f27-b5eb-36d3-e223-eb4155df2572. No aplicar este lote.",
     "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
