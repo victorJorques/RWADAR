@@ -261,3 +261,28 @@ conserva el cargo):
   y `revision-independiente/fuentes/brickwise/reguladores/fma-busqueda-investor-warning.txt`.
   `grupos/brickwise/fuentes/brickwise/info-AT0000A324B4.pdf.txt` (línea 2044)
   ya estaba recortado.
+
+## 5. Ratificación del coordinador (10/11/2026, 17:20 UTC)
+
+Tras la revisión de la entrega (`REVISION-ENTREGA-sql.md`, `-contenido.md` y
+`-cumplimiento.md`) y la auditoría final (`VERIFICACION-ENTREGA.md`,
+«conforme»), el coordinador **ratifica expresamente**, sin cambiar el SQL
+(SHA-256 de `aplicar-y-aprobar.sql`: `60feef2c…383a`, revisión `dfdc4c85`):
+
+- (a) Hausera, característica «Emisor» de la documentación: «Una sociedad por
+  operación, identificada en su documento de emisión; la de Alicante 3 es
+  HAUSERA PROPERTY MANAGER SPV 11, S.A» (el texto anterior decía «para Alicante
+  2, no publicada» y hoy sería falso).
+- (b) Brickwise, referencias del libro de órdenes leídas el 10/11 y confirmadas
+  por su revisor: «Venta más barata · 10/11/2026» con el detalle de órdenes y
+  «Participaciones en venta · 10/11/2026» (Stallhofstraße 313 → 317, Schwarzer
+  Weg 305 → 300, Randhartingergasse 184 → 189, Hinterstoder 258 → 265).
+- (c) Hausera: sale la métrica «Coste de Hausera» («Sin comisión por invertir
+  (FAQ)»), sustituida por «Comisiones» (§2).
+- Hausera, `documentoEspana` de `transparencia.json`: el motivo unido que
+  aplicó el corrector (SQL-2, C2 y O2), sin las cifras del mínimo de emisión,
+  que no se publican por estar en conflicto.
+- El nombre de pila del responsable del proyecto en la referencia interna de
+  aprobación (`aprobada_referencia`, no sale en las vistas públicas) se
+  mantiene hoy como en todos los lotes; desde el próximo, «el responsable del
+  proyecto» (recomendación R10).
