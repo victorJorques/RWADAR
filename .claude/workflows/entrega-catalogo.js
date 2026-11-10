@@ -1,10 +1,10 @@
 export const meta = {
   name: 'entrega-catalogo',
-  description: 'RWAdar: monta la entrega del catálogo (datos, SQL, ensayo en PGlite y «después de aplicar»), la revisan dos expertos independientes (SQL e integridad; contenido y tarjetas), se corrige y un verificador comprueba que la corrección no coló nada más',
+  description: 'RWAdar: monta la entrega del catálogo (datos, SQL, ensayo en PGlite y «después de aplicar»), la revisan tres expertos independientes (SQL e integridad; contenido y tarjetas; cumplimiento), se corrige y un auditor comprueba que la corrección no coló nada más',
   whenToUse: 'Dentro del ciclo «haz la investigación» (skill investigacion-catalogo), cuando DECISIONES-COORDINADOR.md está cerrado. No aplica nada en Supabase ni publica.',
   phases: [
     { title: 'Montar', detail: 'montador de datos y SQL: preparar, comprobar en PGlite, después de aplicar y ensayo en una copia' },
-    { title: 'Revisar', detail: 'dos revisores independientes: SQL e integridad; contenido, tarjetas y fuentes' },
+    { title: 'Revisar', detail: 'tres revisores independientes: SQL e integridad; contenido, tarjetas y fuentes; cumplimiento normativo' },
     { title: 'Corregir', detail: 'aplica las correcciones obligatorias y repite las pruebas' },
     { title: 'Verificar', detail: 'diff normalizado del SQL, mismas sentencias, solo lo pedido; pruebas otra vez' },
   ],
@@ -64,7 +64,7 @@ Prohibido: tocar Supabase o cualquier servicio remoto, publicar, lanzar flujos d
 
 const promptMontar = `${CONTEXTO}
 
-Eres el MONTADOR de datos y SQL (experto en el catálogo de RWAdar, su importador y PGlite). Escribe en ${CICLO}/:
+Eres el MONTADOR de datos y SQL: ingeniero de datos sénior, experto en PostgreSQL, PGlite y en el importador del catálogo de RWAdar (rwadar-app/catalogo-publico.js). Trabajas con el rigor de quien publica datos financieros: cada cambio con su assert, nada implícito. Escribe en ${CICLO}/:
 1. preparar-entrega.mjs: sin red, reproducible byte a byte (ninguna salida depende de la hora). Comprueba que la «${DESDE}» local da exactamente la revisión y la huella publicadas, que el catálogo sincronizado de la web (rwadar-site/assets/catalogo-publico-20261022.js) es esa revisión y que la lectura pública de hoy coincide con la base local. Aplica SOLO lo de DECISIONES (cada texto «antes» se exige tal cual con assert: si no está, falla). Genera escaparate-publicacion.json, documentacion-ofertas.json, radar-canonico-26.json, manifiesto-catalogo.json y ${IMPORT}/{catalogo.sql,aplicar-y-aprobar.sql,revision.json}, con la guarda (publicada exacta, huella, no retirado, fecha tope ${ULTIMO}).
 2. comprobar-entrega.mjs (PGlite, sin red, sobre la misma cadena que producción, como el del modelo): inventario de todas las sentencias y tablas (solo rwadar_catalogo y la aprobación); antes de aplicar, PGlite enseña lo leído hoy como visitante; después, la revisión nueva con sus cantidades, colecciones, fechas y vigencia; idempotencia; public.plataformas, public.fuentes y el historial intactos; cada cifra y texto cambiado; lo que verá el inversor en cada tarjeta (resumenOferta de rwadar-site/assets/ficha-editorial-20261022.js: mínimo, España y salida); lo que leen la web y la app; y los casos de fallo (otra publicada, otra huella, catálogo retirado, después del ${ULTIMO}) sin dejar nada. Con --exportar=DIR guarda lo que leería un visitante después de aplicar.
 3. despues-de-aplicar.mjs: pone al día rwadar-editorial-source/ofertas/transparencia.json (fecha nueva solo donde el expediente de hoy volvió a consultar esa misma fuente; mínimos cortos nuevos que salen del texto largo del catálogo) y se niega a tocar nada si el catálogo sincronizado no es la revisión nueva. Repetible.
@@ -75,7 +75,7 @@ Tu respuesta final es el objeto estructurado, con la salida real de cada prueba.
 
 const promptRevisarSql = m => `${CONTEXTO}
 
-Eres el REVISOR INDEPENDIENTE de SQL e integridad (experto en PostgreSQL, Supabase y el importador del catálogo). No montaste esta entrega. El montador dice: ${JSON.stringify(m)}.
+Eres el REVISOR INDEPENDIENTE de SQL e integridad: DBA sénior de PostgreSQL y Supabase, especialista en auditar cambios de datos en producción (transacciones, aislamiento, guardas, idempotencia, permisos). No montaste esta entrega. El montador dice: ${JSON.stringify(m)}.
 Intenta tumbarla:
 - Inventaría TODAS las sentencias de ${IMPORT}/aplicar-y-aprobar.sql y catalogo.sql y las tablas que tocan (no busques palabras: cuéntalas y clasifícalas). Solo datos editoriales de la revisión nueva en rwadar_catalogo y su aprobación; nada de usuarios, Auth, RLS, ACL, funciones, esquema, capacidades, servicios ni credenciales.
 - La guarda: publicada exacta (${PREVIA.revisionId}), huella, no retirado, fecha tope ${ULTIMO}, transacción serializable, que falle sin dejar nada.
@@ -86,7 +86,7 @@ Escribe ${CICLO}/REVISION-ENTREGA-sql.md (español llano: qué ejecutaste y qué
 
 const promptRevisarContenido = m => `${CONTEXTO}
 
-Eres el REVISOR INDEPENDIENTE de contenido (experto en producto financiero para el inversor particular en España, en las normas de las tarjetas de RWAdar y en el castellano llano). No montaste esta entrega. El montador dice: ${JSON.stringify(m)}.
+Eres el REVISOR INDEPENDIENTE de contenido: analista sénior de producto financiero para el inversor particular en España, experto en las normas de las tarjetas de RWAdar y en explicar en castellano llano sin perder exactitud. No montaste esta entrega. El montador dice: ${JSON.stringify(m)}.
 Intenta tumbarla, ficha por ficha:
 - Cada cambio de DECISIONES está aplicado tal cual, con su fuente y su fecha de dato y de consulta; nada más cambia.
 - Cada texto visible nuevo o cambiado (resumen, métricas, avisos, referencias de la tarjeta, mínimo, acceso desde España y salida) está en castellano llano, respaldado, sin promesas, con fechas DD/MM correctas y ≤ 120 caracteres donde toca. En reventa y próximas, ni rentabilidad ni precio principal; en el mínimo nunca «por participación/token/acción».
@@ -94,6 +94,17 @@ Intenta tumbarla, ficha por ficha:
 - Abre tú hoy, por muestreo, la fuente primaria de al menos 4 cifras cambiadas (rentabilidad de Spiko, un precio de reventa de Brickwise, el oráculo de mTBILL y el documento de Hausera, o las que hayan cambiado) y comprueba que la cifra y la fecha publicadas coinciden.
 - Avisos con fecha: no se ha re-fechado ninguno que no se comprobara hoy.
 Escribe ${CICLO}/REVISION-ENTREGA-contenido.md (español llano: hechos con URL, literal corto y hora UTC; correcciones obligatorias con el texto exacto). No edites nada más. Tu respuesta final es el objeto estructurado.`
+
+const promptRevisarCumplimiento = m => `${CONTEXTO}
+
+Eres el REVISOR INDEPENDIENTE de cumplimiento normativo: jurista experto en MiFID II, MiCA, el Reglamento de Folletos (UE) 2017/1129, el Reglamento de financiación participativa (UE) 2020/1503, el régimen piloto DLT y la Circular 2/2020 de la CNMV sobre publicidad de productos de inversión. RWAdar es un medio editorial gratuito, sin comisiones ni publicidad. No montaste esta entrega. El montador dice: ${JSON.stringify(m)}.
+Intenta tumbarla desde tu especialidad, ficha por ficha de lo que cambia o entra:
+- Ningún texto presenta como hecho lo que solo dice el emisor; ninguna promesa de rentabilidad, garantía o liquidez; las rentabilidades llevan base, fecha y que no garantizan nada; los riesgos importantes (pérdida del capital, liquidez, emisor no supervisado, sin folleto/KID, conflictos de fuentes) están en los avisos.
+- El acceso desde España se apoya en una fuente primaria que de verdad lo diga (pasaporte o notificación a la CNMV, condiciones con lista de países, folleto con España como país de oferta pública); si no, lo dice como «sin confirmar».
+- Las normas legales del sitio: el botón dice «Ver oferta en X» solo si se contrata hoy desde España Y está supervisada; si no, «Ir a la web del proveedor (sales de RWAdar)» (busca la regla en rwadar-site/ y en docs/legal/). Comprueba qué saldrá para cada ficha que cambie o entre.
+- Advertencias de la CNMV sobre cada entidad nueva o con cambios de acceso: búscalas tú hoy.
+- Datos personales: ninguno en lo que va a Git.
+Escribe ${CICLO}/REVISION-ENTREGA-cumplimiento.md (español llano: hechos con URL, literal corto y hora UTC; correcciones obligatorias con el texto exacto). No edites nada más. Tu respuesta final es el objeto estructurado.`
 
 const promptCorregir = (m, revs) => `${CONTEXTO}
 
@@ -103,7 +114,7 @@ Aplica TODAS las correcciones obligatorias, y las recomendadas solo si no amplí
 
 const promptVerificar = (antes, despues, revs) => `${CONTEXTO}
 
-Eres el VERIFICADOR final (independiente: no montaste ni corregiste). Antes de las correcciones: ${JSON.stringify(antes)}. Después: ${JSON.stringify(despues)}. Correcciones pedidas: ${JSON.stringify(revs.map(r => ({ lente: r.lente, obligatorias: r.obligatorias })))}.
+Eres el VERIFICADOR final: auditor independiente de cambios en producción (no montaste ni corregiste). Antes de las correcciones: ${JSON.stringify(antes)}. Después: ${JSON.stringify(despues)}. Correcciones pedidas: ${JSON.stringify(revs.map(r => ({ lente: r.lente, obligatorias: r.obligatorias })))}.
 Comprueba:
 1. Diff normalizado entre ${SCRATCH}/sql-antes-correcciones-${ETQ}/aplicar-y-aprobar.sql y ${IMPORT}/aplicar-y-aprobar.sql (normaliza identificadores de revisión, huellas y fechas de generación): mismo inventario de sentencias, y las únicas diferencias son las correcciones pedidas. Cualquier otra, hallazgo.
 2. Ejecuta tú preparar-entrega.mjs (dos veces, mismos SHA-256 que dice el montador) y comprobar-entrega.mjs: todo en verde.
@@ -112,27 +123,28 @@ Comprueba:
 Escribe ${CICLO}/VERIFICACION-ENTREGA.md en español llano. Tu respuesta final es el objeto estructurado (conforme solo si todo está bien).`
 
 phase('Montar')
-const m1 = await agent(promptMontar, { label: 'montar', phase: 'Montar', schema: RESUMEN })
+const m1 = await agent(promptMontar, { label: 'montar', phase: 'Montar', schema: RESUMEN, effort: 'xhigh' })
 if (!m1) throw new Error('El montador no devolvió resultado')
 log(`Montada: revisión ${m1.revisionId}, ${m1.ofertas} ofertas (${m1.colecciones}), ${m1.sentencias} sentencias, SHA ${m1.sha256AplicarYAprobar.slice(0, 12)}…`)
 
 phase('Revisar')
 const revs = (await parallel([
-  () => agent(promptRevisarSql(m1), { label: 'revisar:sql', phase: 'Revisar', schema: REVISION }),
-  () => agent(promptRevisarContenido(m1), { label: 'revisar:contenido', phase: 'Revisar', schema: REVISION }),
+  () => agent(promptRevisarSql(m1), { label: 'revisar:sql', phase: 'Revisar', schema: REVISION, effort: 'max' }),
+  () => agent(promptRevisarContenido(m1), { label: 'revisar:contenido', phase: 'Revisar', schema: REVISION, effort: 'max' }),
+  () => agent(promptRevisarCumplimiento(m1), { label: 'revisar:cumplimiento', phase: 'Revisar', schema: REVISION, effort: 'max' }),
 ])).filter(Boolean)
 for (const r of revs) log(`Revisión ${r.lente}: ${r.veredicto}, ${r.obligatorias.length} obligatorias`)
-if (revs.length < 2) throw new Error('Falta una de las dos revisiones independientes')
+if (revs.length < 3) throw new Error('Falta una de las tres revisiones independientes')
 if (revs.some(r => r.veredicto === 'rechazado')) return { estado: 'rechazada', montaje: m1, revisiones: revs }
 
 const obligatorias = revs.flatMap(r => r.obligatorias)
 if (!obligatorias.length && revs.every(r => !r.recomendadas.length)) return { estado: 'aprobada', montaje: m1, revisiones: revs }
 
 phase('Corregir')
-const m2 = await agent(promptCorregir(m1, revs), { label: 'corregir', phase: 'Corregir', schema: RESUMEN })
+const m2 = await agent(promptCorregir(m1, revs), { label: 'corregir', phase: 'Corregir', schema: RESUMEN, effort: 'xhigh' })
 if (!m2) throw new Error('El corrector no devolvió resultado')
 
 phase('Verificar')
-const v = await agent(promptVerificar(m1, m2, revs), { label: 'verificar', phase: 'Verificar', schema: VERIF })
+const v = await agent(promptVerificar(m1, m2, revs), { label: 'verificar', phase: 'Verificar', schema: VERIF, effort: 'max' })
 log(`Verificación: ${v ? v.veredicto : 'sin resultado'}`)
 return { estado: v && v.veredicto === 'conforme' ? 'aprobada_con_correcciones' : 'pendiente_de_verificacion', montaje: m1, revisiones: revs, correccion: m2, verificacion: v }
