@@ -210,7 +210,7 @@ registration agreements (if any) concerning the same ledger.
 
 
 
-Name: Johannes Gees
+Name: [persona física recortada]
 
 Date:
 
@@ -218,7 +218,7 @@ Role: Presient of the Board of Directors
 
 
 
-Name: Rea Eggli
+Name: [persona física recortada]
 
 Date:
 
@@ -226,7 +226,7 @@ Role: Member of the Board of Directors
 
 
 
-Name: Hannes Gassert
+Name: [persona física recortada]
 
 Date:
 
@@ -234,7 +234,7 @@ Role: Member of the Board of Directors
 
 
 
-Name: Melina Maret-Roshard
+Name: [persona física recortada]
 
 Date:
 
@@ -242,7 +242,7 @@ Role: Member of the Board of Directors
 
 
 
-Name: Leoandro Davis
+Name: [persona física recortada]
 
 Date:
 
@@ -252,7 +252,7 @@ Role: Member of the Board of Directors
 
 
                                     Registration Agreement                           Page 5 of 6
-Name: Cèline Fallet
+Name: [persona física recortada]
 
 Date:
 
