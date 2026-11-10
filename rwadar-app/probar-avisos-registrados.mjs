@@ -1339,7 +1339,19 @@ const token = (n) => `ExponentPushToken[${`prueba${n}`.padEnd(22, 'x')}]`;
   }
   malos.push(await codigo(() => db.query("select public.registrar_aviso_push($1, 'windows')", [token(1)])));
   paso('registrar_aviso_push rechaza tokens y plataformas fuera de formato (22023)', malos.every((c) => c === '22023'));
-  for (let i = 1; i <= 7; i++) await rpc("select public.registrar_aviso_push($1, 'android') r", [token(i)]);
+  // La función se queda con los 5 móviles actualizados más recientemente. PGlite mide el reloj al
+  // milisegundo y dos registros seguidos pueden empatar (la CI falló así el 10/11/2026): cada móvil
+  // recibe aquí una fecha distinta y creciente (de la última hora) justo después de registrarse,
+  // para que la prueba compruebe la regla y no el reloj.
+  for (let i = 1; i <= 7; i++) {
+    await como(luis);
+    await rpc("select public.registrar_aviso_push($1, 'android') r", [token(i)]);
+    await sesion(db);
+    await db.query(`update rwadar_novedades.dispositivos
+      set creado_el = now() - interval '1 hour' + make_interval(mins => $2),
+          actualizado_el = now() - interval '1 hour' + make_interval(mins => $2)
+      where token = $1`, [token(i), i]);
+  }
   await sesion(db);
   const deLuis = (await filas(db, 'select token from rwadar_novedades.dispositivos where usuario_id = $1', [luis.id]))
     .map((f) => f.token).sort();

@@ -18,7 +18,8 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 **Prueba intermitente (anterior a hoy):** `rwadar-app/probar-avisos-registrados.mjs`, «como mucho 5 móviles por cuenta: los dos más antiguos dejan su sitio».
 - Falló una vez en la CI del PR #98, que solo toca documentación. En local pasa 3 de 3, y el mismo código pasó en la CI del #97.
 - Causa probable: registra 7 móviles seguidos en un bucle, y si dos caen en el mismo instante, el orden «más antiguo» queda empatado.
-- Arreglo pendiente: dar fechas distintas a cada registro en la prueba, o desempatar en la función por un segundo criterio.
+- **Arreglado el mismo día** (orden de Víctor, «arréglalo tú lo que falta»): en la prueba, cada móvil recibe una fecha distinta y creciente de la última hora justo después de registrarse. La función no cambia. Pasa 5 de 5 seguidas, y con la regla al revés (`asc`) falla, así que sigue comprobando lo que debe.
+- **Transparencia de Kraken (documentoEspana) y mTBILL (supervisada)**: el coordinador volvió a leer sus fuentes exactas el 10/11 a las 21:38–21:39 UTC; dicen lo mismo y pasan a `consultadaEl` 2026-11-10 (`rwadar-app/data/verificaciones/2026-11-10-v2/remates/TRANSPARENCIA-KRAKEN-MTBILL.md`). Web y OTA publicadas otra vez.
 
 ## 10 de noviembre de 2026 (7) · Claude · Rediseño de Inicio: fin de las correcciones de la revisión y pulido visual
 

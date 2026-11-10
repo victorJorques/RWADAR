@@ -97,8 +97,7 @@ Carpeta completa: `rwadar-app/data/verificaciones/2026-11-10-v2/`
   inscripción en el ERIR de Ursus-3.
 - Prosegur Cash (pagarés), Securitize Stocks y Profitus: vigilar si publican
   condiciones para particulares.
-- Kraken (documentoEspana) y mTBILL (supervisada) siguen con la comprobación
-  del 05/11 en transparencia: la próxima entrega debe volver a leer esas
-  fuentes exactas.
+- Kraken (documentoEspana) y mTBILL (supervisada): resuelto el mismo 10/11 por
+  la noche, releídas sus fuentes exactas (`remates/TRANSPARENCIA-KRAKEN-MTBILL.md`).
 - Desde la próxima entrega, la referencia interna del SQL dirá «el responsable
   del proyecto».

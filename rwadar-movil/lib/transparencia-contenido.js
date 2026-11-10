@@ -272,7 +272,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "Backed Assets (JE) · Condiciones finales n.º 159 (LITEx), apartado «Country(ies) of offer(s)»",
         "url": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf"
       },
-      "consultadaEl": "2026-11-05"
+      "consultadaEl": "2026-11-10"
     },
     "minimoCorto": "1 €",
     "salidaCorta": "Venta a Kraken, 24/5",
@@ -329,7 +329,7 @@ export const TRANSPARENCIA_POR_SLUG = {
         "titulo": "BaFin · Base de datos de empresas (búsqueda «Midas»: solo una sociedad danesa distinta)",
         "url": "https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Midas&sucheButtonInstitut=Suche"
       },
-      "consultadaEl": "2026-11-05"
+      "consultadaEl": "2026-11-10"
     },
     "documentoEspana": {
       "cumple": true,
