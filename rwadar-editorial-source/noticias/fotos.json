@@ -1,0 +1,210 @@
+{
+ "versionEsquema": 1,
+ "nota": "Biblioteca de fotos editoriales de las noticias del sector, por tema: cada noticia elige una clave en su campo «imagen». Son escenas genéricas generadas con IA, no fotos de la noticia: sin texto, letras, logotipos, marcas, banderas ni personas. «concepto» completa el texto alternativo («Imagen ilustrativa generada con IA: …»); «retoque», si lo hay, desenfoca zonas de la toma (una pantalla, un rótulo falso) o la voltea en espejo, y dice por qué; «encuadre» es la posición (x% y%) del recorte 3:2 sobre la toma del modelo, para dejar el sujeto en el tercio derecho. fotografiar.py genera cada toma con el modelo, la recorta, la exporta a fotos/<clave>.webp (1200×800, como mucho 160 kB) y apunta aquí la semilla, los bytes y el sha256.",
+ "modelos": {
+  "realvisxl": {
+   "nombre": "RealVisXL V5.0 Lightning (SG161222)",
+   "licencia": "CreativeML Open RAIL++-M",
+   "fuente": "https://huggingface.co/SG161222/RealVisXL_V5.0_Lightning",
+   "ajustes": {
+    "ancho": 1344,
+    "alto": 768,
+    "pasos": 6,
+    "cfg": 1.5,
+    "muestreador": "DPM++ SDE Karras",
+    "precision": "bfloat16 en CPU"
+   },
+   "estilo": "editorial magazine photo, cinematic night lighting, deep dark shadows, emerald and teal accents, sharp focus, highly detailed",
+   "negativo": "text, letters, words, numbers, watermark, logo, brand, signage, flag, people, person, face, hands, crowd, cartoon, illustration, 3d render, blurry, lowres, deformed, distorted, oversaturated, frame",
+   "entorno": "Python 3.13, torch 2.15.0+cpu, diffusers 0.42.1, transformers 5.22.2 (con otras versiones o en GPU, la misma semilla puede dar otra toma)"
+  }
+ },
+ "salida": {
+  "formato": "WebP sin metadatos",
+  "ancho": 1200,
+  "alto": 800,
+  "maxBytes": 160000
+ },
+ "fotos": {
+  "alerta-fraude": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "un móvil sobre una mesa oscura con un gráfico de bolsa genérico en rojo de alerta y luces rojas y verdes desenfocadas al fondo",
+   "prompt": "Smartphone bathed in intense red alarm light on the right side of a dark stone table at night, blurred red glowing screen with an abstract falling chart, red haze, red reflections, dark empty left side",
+   "semilla": 37,
+   "encuadre": "0% 50%",
+   "retoque": {
+    "motivo": "desenfocar los rótulos falsos de la barra superior y de la esquina de la pantalla; espejo para llevar el móvil a la derecha",
+    "difuminar": [
+     {
+      "puntos": [
+       [
+        332,
+        266
+       ],
+       [
+        778,
+        278
+       ],
+       [
+        778,
+        320
+       ],
+       [
+        332,
+        314
+       ]
+      ],
+      "radio": 8
+     },
+     {
+      "puntos": [
+       [
+        742,
+        530
+       ],
+       [
+        812,
+        530
+       ],
+       [
+        812,
+        558
+       ],
+       [
+        742,
+        558
+       ]
+      ],
+      "radio": 8
+     }
+    ],
+    "espejo": true
+   },
+   "bytes": 64072,
+   "sha256": "67500be754f9ae251cb19979fa41782e24369c4a677ca1832bd294ae85ec51ff"
+  },
+  "acciones-eeuu": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "las columnas iluminadas de la fachada neoclásica de un edificio genérico de un distrito financiero estadounidense al anochecer",
+   "prompt": "Neoclassical columned stone facade of an American financial district building at dusk, blue hour sky, golden lights, blurred glowing stock ticker screens as bokeh, wet street",
+   "semilla": 11,
+   "encuadre": "100% 50%",
+   "bytes": 104324,
+   "sha256": "54f471b62eb96dbdfdf7277855c35f76d337c38bc2071d4c27bd588465714cbf"
+  },
+  "red-europea": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "una red de líneas de luz verde azulada que une los barrios de una ciudad europea genérica de noche, vista desde el aire",
+   "prompt": "Aerial night view of a historic European city, bright thin glowing teal laser lines arcing between rooftops forming a network with glowing nodes, river, warm city lights, dark sky",
+   "semilla": 51,
+   "encuadre": "50% 50%",
+   "bytes": 132148,
+   "sha256": "f435c627b58f895e11b1ba7e7597a50725c7e687f409978c5d3851475cf03b48"
+  },
+  "pagares-deuda": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "una hoja en blanco, una pluma y dos tinteros sobre un escritorio oscuro de noche, con un leve brillo verde esmeralda",
+   "prompt": "Still life on a dark walnut desk at night, a stack of blank cream paper sheets, a black fountain pen and a wooden handled rubber stamp, soft emerald glow, dark empty left side",
+   "semilla": 5,
+   "encuadre": "100% 50%",
+   "retoque": {
+    "motivo": "desenfocar el dibujo de la etiqueta del tintero, que podría leerse como un logotipo",
+    "difuminar": [
+     {
+      "puntos": [
+       [
+        1030,
+        452
+       ],
+       [
+        1096,
+        461
+       ],
+       [
+        1116,
+        540
+       ],
+       [
+        1030,
+        532
+       ]
+      ],
+      "radio": 5
+     }
+    ]
+   },
+   "bytes": 73762,
+   "sha256": "b33ca719242d6839bcc342b90ed2dc8e03eb9bccf2d7279887173b3a8c78a16c"
+  },
+  "instituciones-ue": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "un edificio institucional europeo moderno de cristal a la hora azul, genérico y no reconocible",
+   "prompt": "Modern European institutional building with a curved glass facade at blue hour, warm interior lights, deep blue sky, reflections in a water pool on an empty plaza",
+   "semilla": 23,
+   "encuadre": "0% 50%",
+   "bytes": 115752,
+   "sha256": "805347de8dca4ae434b634cc8648f609b6a9f7f5b39c5c2fed9a2585596aadf7"
+  },
+  "bolsa-madrid": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "el horizonte de un distrito de negocios con rascacielos al atardecer, de aire madrileño pero genérico",
+   "prompt": "Skyline of a business district with tall glass skyscrapers at sunset in a Spanish city, orange and violet sky, city lights glowing, telephoto view, open sky on the left",
+   "semilla": 11,
+   "encuadre": "0% 50%",
+   "bytes": 94994,
+   "sha256": "6f893db6348b1712eb7afb723de0b555a0f2493cddf3d2f128922737bc39fe02"
+  },
+  "pago-online": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "un portátil sobre una mesa de noche con una página de pago genérica desenfocada y una luz cálida",
+   "prompt": "Open laptop on the right side of a wooden table at night, its screen an extremely blurred generic payment page glowing amber, warm orange warning light, bokeh, dark room, empty left side",
+   "semilla": 5,
+   "encuadre": "100% 50%",
+   "retoque": {
+    "motivo": "desenfocar la pantalla y el marco del portátil para que la página de pago genérica no se lea",
+    "difuminar": [
+     {
+      "puntos": [
+       [
+        818,
+        236
+       ],
+       [
+        1272,
+        230
+       ],
+       [
+        1200,
+        628
+       ],
+       [
+        748,
+        592
+       ]
+      ],
+      "radio": 12
+     }
+    ]
+   },
+   "bytes": 44176,
+   "sha256": "aa2b98fe08b181c6260e08cc34368cb908ea8fe391b163f7c9bb4687e40d1eb9"
+  },
+  "regulador-espana": {
+   "modelo": "realvisxl",
+   "licencia": "CreativeML Open RAIL++-M",
+   "concepto": "la esquina de piedra de un edificio oficial clásico de aire madrileño de noche, con balcones de hierro y luz cálida y verde azulada, genérica",
+   "prompt": "Classical stone facade of an official building in Madrid at blue hour, columns, iron balconies, lit windows, warm street lamps, deep blue sky, wet cobblestones",
+   "semilla": 37,
+   "encuadre": "0% 50%",
+   "bytes": 151954,
+   "sha256": "9054c21d6de37ef4dc91fff500526e636129e26ac6d39b02701b573efeaf312b"
+  }
+ }
+}
