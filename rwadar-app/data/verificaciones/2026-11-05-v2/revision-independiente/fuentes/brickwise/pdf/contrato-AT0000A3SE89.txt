@@ -216,7 +216,7 @@ Stand: 16.02.2026
           12).
                                                                     siert. Token sind digitale (Wert-)Einheiten in
           Gemeinsamer Vertreter: [persona física recortada]                       Form eines Datensatzes, die aufgrund eines
-          [recortado], Rechtsanwalt, Tigergasse 3/20,                  Protokolls in einer Blockchain ausschließlich
+          [recortado], Rechtsanwalt, [dirección recortada],                  Protokolls in einer Blockchain ausschließlich
           1080 Wien, ausschließlich für die Eintragung              von der Emittentin erstellt und an den Inve-
           und Löschung des Investorenpfandrechts.                   stor übertragen werden. Die Tokenisierung
                                                                     erfolgt durch Einräumung eines Miteigen-
