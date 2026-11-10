@@ -6,6 +6,20 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 10 de noviembre de 2026 (8) · Claude · Inicio rediseñado, publicado; una prueba intermitente
+
+**Publicado** (orden de Víctor, que pidió el rediseño):
+- PR #97 unido. «Publicar web» en preview y producción y «OTA Android» con la base `fa30779…`, todo en verde.
+- Comprobado en producción a 390 y 1366: /, /mercado/, /noticias/ y /aprende/ dan 200, sin desbordes ni errores de JavaScript; las 8 fotos de `/noticias-editoriales/` dan 200 (WebP).
+- `/datos/noticias.json` sigue sin «imagen», para las apps que ya están instaladas.
+- Inicio en el móvil: unos 3.400 px (antes, 10.300).
+- El catálogo sigue en la revisión `dfdc4c85`.
+
+**Prueba intermitente (anterior a hoy):** `rwadar-app/probar-avisos-registrados.mjs`, «como mucho 5 móviles por cuenta: los dos más antiguos dejan su sitio».
+- Falló una vez en la CI del PR #98, que solo toca documentación. En local pasa 3 de 3, y el mismo código pasó en la CI del #97.
+- Causa probable: registra 7 móviles seguidos en un bucle, y si dos caen en el mismo instante, el orden «más antiguo» queda empatado.
+- Arreglo pendiente: dar fechas distintas a cada registro en la prueba, o desempatar en la función por un segundo criterio.
+
 ## 10 de noviembre de 2026 (7) · Claude · Rediseño de Inicio: fin de las correcciones de la revisión y pulido visual
 
 Encima de (6). Las correcciones de las dos revisoras independientes se cortaron a medias por el límite de uso (commit «Rediseño de Inicio: correcciones de la revisión (en curso…)»); este commit las termina y añade el pulido visual que pidió Víctor («hazlo bonito, acorde con la app y la web; bien guapo, fácil de leer y bien organizado»). Commits **locales**, sin publicar, sin flujos, sin Supabase y sin claves. Rama `rediseno-inicio`.
