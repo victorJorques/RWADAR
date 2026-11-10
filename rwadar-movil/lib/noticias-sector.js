@@ -152,6 +152,29 @@ function fechaBreve(iso, idioma = 'es') {
   return idioma === 'en' ? `${Number(d)} ${MESES_EN[Number(m) - 1]}` : `${d}/${m}`;
 }
 
+/* ---- «Hoy» y «Ayer» ---- */
+/* La fecha local del dispositivo en AAAA-MM-DD (sin Intl, por Hermes). */
+function fechaLocal(d = new Date()) {
+  if (!(d instanceof Date) || Number.isNaN(d.getTime())) return '';
+  const dos = v => String(v).padStart(2, '0');
+  return `${d.getFullYear()}-${dos(d.getMonth() + 1)}-${dos(d.getDate())}`;
+}
+function diaAnterior(iso) {
+  const d = new Date(iso + 'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate() - 1);
+  return d.toISOString().slice(0, 10);
+}
+/* La etiqueta de la tarjeta según el día de quien mira, no el del archivo:
+   «Hoy» solo si la noticia es de la sección de hoy y de esa misma fecha;
+   «Ayer» si es del día anterior; nada en los demás casos. Así no se queda
+   vieja si pasan días sin ciclo nuevo. */
+function etiquetaReciente(n, hoyISO) {
+  if (!n || !fechaValida(n.fecha) || !fechaValida(hoyISO)) return null;
+  if (n.seccion === 'hoy' && n.fecha === hoyISO) return 'Hoy';
+  if (n.fecha === diaAnterior(hoyISO)) return 'Ayer';
+  return null;
+}
+
 /* ---- Ilustraciones ---- */
 /* Mezcla dos colores #RRGGBB (t = 0, el primero; t = 1, el segundo). */
 function mezclar(a, b, t) {
@@ -214,9 +237,81 @@ function motivoAmbito(ambito, color, cx, cy, rnd, f) {
   }
 }
 
-function motivoCategoria(categoria, color, cx, cy, rnd, f) {
+/* Regulación tiene varias figuras: así dos tarjetas vecinas de la misma
+   categoría no repiten dibujo. Se elige con el id de la noticia. */
+const VARIANTES = Object.freeze({ regulacion: 4, mercado: 1, producto: 1, riesgo: 1 });
+/* Un rectángulo girado (ángulo en radianes) como lista de puntos. */
+function girado(cx, cy, largo, grueso, ang) {
+  const u = [Math.cos(ang), Math.sin(ang)], v = [-Math.sin(ang), Math.cos(ang)];
+  return [[1, 1], [1, -1], [-1, -1], [-1, 1]]
+    .map(([a, b]) => `${r1(cx + u[0] * largo / 2 * a + v[0] * grueso / 2 * b)},${r1(cy + u[1] * largo / 2 * a + v[1] * grueso / 2 * b)}`).join(' ');
+}
+
+function motivoCategoria(categoria, color, cx, cy, rnd, f, variante = 0) {
   const claro = mezclar(color, TINTA, 0.45), oscuro = mezclar(color, FONDO, 0.55), sombra = mezclar(color, FONDO, 0.78);
-  if (categoria === 'regulacion') {
+  if (categoria === 'regulacion' && variante === 1) {
+    // Una balanza: el fiel, el brazo algo inclinado y dos platillos.
+    const by = cy - 58, tilt = r1((rnd() < 0.5 ? -1 : 1) * (5 + rnd() * 6));
+    f.push({ el: 'ellipse', a: { cx, cy: cy + 100, rx: 92, ry: 8, fill: FONDO, fillOpacity: 0.5 } });
+    f.push({ el: 'rect', a: { x: cx - 6, y: cy - 76, width: 12, height: 152, rx: 4, fill: `url(#${f.id}-cuerpo)` } });
+    f.push({ el: 'rect', a: { x: cx - 2, y: cy - 70, width: 3, height: 140, rx: 1.5, fill: TINTA, fillOpacity: 0.22 } });
+    f.push({ el: 'path', a: { d: `M${cx - 58} ${cy + 92}L${cx - 30} ${cy + 72}L${cx + 30} ${cy + 72}L${cx + 58} ${cy + 92}Z`, fill: `url(#${f.id}-cuerpo)` } });
+    f.push({ el: 'rect', a: { x: cx - 72, y: cy + 92, width: 144, height: 9, rx: 3, fill: oscuro, fillOpacity: 0.95 } });
+    const extremos = [[cx - 94, r1(by + tilt)], [cx + 94, r1(by - tilt)]];
+    for (const [x, y] of extremos) {
+      const py = r1(y + 76);
+      f.push({ el: 'path', a: { d: `M${x} ${y}L${x - 38} ${py}M${x} ${y}L${x + 38} ${py}`, fill: 'none', stroke: claro, strokeOpacity: 0.6, strokeWidth: 1.5 } });
+      f.push({ el: 'path', a: { d: `M${x - 44} ${py}Q${x} ${r1(py + 46)} ${x + 44} ${py}Z`, fill: `url(#${f.id}-cuerpo)` } });
+      f.push({ el: 'ellipse', a: { cx: x, cy: py, rx: 44, ry: 6, fill: claro, fillOpacity: 0.85 } });
+    }
+    f.push({ el: 'line', a: { x1: extremos[0][0], y1: extremos[0][1], x2: extremos[1][0], y2: extremos[1][1], stroke: claro, strokeWidth: 7, strokeLinecap: 'round' } });
+    for (const [x, y] of extremos) f.push({ el: 'circle', a: { cx: x, cy: y, r: 5, fill: TINTA, fillOpacity: 0.85 } });
+    f.push({ el: 'circle', a: { cx, cy: by, r: 12, fill: claro } });
+    f.push({ el: 'circle', a: { cx, cy: by, r: 4.5, fill: sombra } });
+    f.push({ el: 'circle', a: { cx, cy: cy - 84, r: 8, fill: `url(#${f.id}-cuerpo)` } });
+  } else if (categoria === 'regulacion' && variante === 2) {
+    // Un documento oficial con su sello: renglones abstractos, sin letras.
+    const x0 = cx - 76, x1 = cx + 66, y0 = cy - 100, y1 = cy + 68, doblez = 26;
+    f.push({ el: 'rect', a: { x: x0 + 10, y: y0 + 10, width: x1 - x0, height: y1 - y0, rx: 8, fill: FONDO, fillOpacity: 0.45 } });
+    f.push({ el: 'path', a: { d: `M${x0 + 8} ${y0}H${x1 - doblez}L${x1} ${y0 + doblez}V${y1 - 8}Q${x1} ${y1} ${x1 - 8} ${y1}H${x0 + 8}Q${x0} ${y1} ${x0} ${y1 - 8}V${y0 + 8}Q${x0} ${y0} ${x0 + 8} ${y0}Z`,
+      fill: `url(#${f.id}-cuerpo)` } });
+    f.push({ el: 'path', a: { d: `M${x1 - doblez} ${y0}V${y0 + doblez - 4}Q${x1 - doblez} ${y0 + doblez} ${x1 - doblez + 4} ${y0 + doblez}H${x1}Z`, fill: claro, fillOpacity: 0.75 } });
+    f.push({ el: 'rect', a: { x: x0 + 18, y: y0 + 24, width: 74, height: 9, rx: 4.5, fill: TINTA, fillOpacity: 0.5 } });
+    for (let i = 0; i < 6; i++) {
+      const w = r1((i === 5 ? 52 : 92) + rnd() * 16);
+      f.push({ el: 'rect', a: { x: x0 + 18, y: y0 + 50 + i * 17, width: w, height: 6, rx: 3, fill: TINTA, fillOpacity: 0.24 } });
+    }
+    const sx = x1 - 8, sy = y1 - 8, puntas = 18;
+    const roseta = Array.from({ length: puntas * 2 }, (_, k) => {
+      const r = k % 2 ? 26 : 31, a = (k * Math.PI) / puntas;
+      return `${r1(sx + Math.cos(a) * r)},${r1(sy + Math.sin(a) * r)}`;
+    }).join(' ');
+    for (const lado of [-1, 1]) {
+      const bx = sx + lado * 14;
+      f.push({ el: 'polygon', a: { points: `${sx + lado * 4},${sy + 10} ${bx + lado * 12},${sy + 10} ${bx + lado * 10},${sy + 40} ${bx + lado * 2},${sy + 32} ${bx - lado * 6},${sy + 40}`,
+        fill: oscuro } });
+    }
+    f.push({ el: 'polygon', a: { points: roseta, fill: claro } });
+    f.push({ el: 'circle', a: { cx: sx, cy: sy, r: 20, fill: `url(#${f.id}-cuerpo)` } });
+    f.push({ el: 'circle', a: { cx: sx, cy: sy, r: 14, fill: 'none', stroke: TINTA, strokeOpacity: 0.35, strokeWidth: 1.5 } });
+    f.push({ el: 'path', a: { d: `M${sx - 7} ${sy}L${sx - 2} ${sy + 5}L${sx + 8} ${sy - 6}`, fill: 'none', stroke: TINTA, strokeOpacity: 0.85, strokeWidth: 2.5,
+      strokeLinecap: 'round', strokeLinejoin: 'round' } });
+  } else if (categoria === 'regulacion' && variante === 3) {
+    // Un mazo sobre su bloque.
+    const bx = cx - 26, by = cy + 64, brx = 66, bry = 16, grosor = 16;
+    f.push({ el: 'ellipse', a: { cx: bx, cy: by + grosor + 10, rx: brx + 14, ry: 9, fill: FONDO, fillOpacity: 0.5 } });
+    f.push({ el: 'path', a: { d: `M${bx - brx} ${by}L${bx - brx} ${by + grosor}A${brx} ${bry} 0 0 0 ${bx + brx} ${by + grosor}L${bx + brx} ${by}Z`, fill: oscuro } });
+    f.push({ el: 'ellipse', a: { cx: bx, cy: by, rx: brx, ry: bry, fill: `url(#${f.id}-cuerpo)` } });
+    f.push({ el: 'ellipse', a: { cx: bx, cy: by, rx: brx - 14, ry: bry - 5, fill: 'none', stroke: sombra, strokeOpacity: 0.5, strokeWidth: 2 } });
+    const ang = -0.5 - rnd() * 0.12, hx = cx - 4, hy = cy - 34;
+    const v = [-Math.sin(ang), Math.cos(ang)];
+    f.push({ el: 'polygon', a: { points: girado(r1(hx + v[0] * 70), r1(hy + v[1] * 70), 12, 128, ang), fill: claro, fillOpacity: 0.9, stroke: claro, strokeOpacity: 0.9,
+      strokeWidth: 4, strokeLinejoin: 'round' } });
+    f.push({ el: 'polygon', a: { points: girado(hx, hy, 116, 46, ang), fill: `url(#${f.id}-cuerpo)`, stroke: `url(#${f.id}-cuerpo)`, strokeWidth: 10, strokeLinejoin: 'round' } });
+    const u = [Math.cos(ang), Math.sin(ang)];
+    for (const k of [-42, 42]) f.push({ el: 'polygon', a: { points: girado(r1(hx + u[0] * k), r1(hy + u[1] * k), 7, 56, ang), fill: claro, fillOpacity: 0.85 } });
+    f.push({ el: 'polygon', a: { points: girado(r1(hx - v[0] * 12), r1(hy - v[1] * 12), 96, 4, ang), fill: TINTA, fillOpacity: 0.22 } });
+  } else if (categoria === 'regulacion') {
     // Una institución: frontón, cuatro columnas y escalones.
     const top = cy - 92;
     f.push({ el: 'path', a: { d: `M${cx - 92} ${top + 46}L${cx} ${top}L${cx + 92} ${top + 46}Z`, fill: `url(#${f.id}-cuerpo)` } });
@@ -285,7 +380,7 @@ function motivoCategoria(categoria, color, cx, cy, rnd, f) {
    elemento es { el, a } (y { stops } en los degradados), con nombres de
    atributo en camelCase, como react-native-svg; la web los pasa a SVG.
    Con velo: true, un degradado oscuro abajo para leer el titular encima. */
-function ilustracion(noticia, { velo = false, prefijo = 'nt' } = {}) {
+function ilustracion(noticia, { velo = false, prefijo = 'nt', variante: elegida } = {}) {
   const cat = CATEGORIAS[noticia?.categoria] ? noticia.categoria : 'mercado';
   const amb = AMBITOS[noticia?.ambito] ? noticia.ambito : 'Mundo';
   const color = CATEGORIAS[cat].color, acento = AMBITOS[amb].color;
@@ -293,6 +388,8 @@ function ilustracion(noticia, { velo = false, prefijo = 'nt' } = {}) {
   const id = `${prefijo}-${String(noticia?.id || 'x').replace(/[^a-z0-9-]/gi, '')}`;
   const cx = r1(160 + (rnd() - 0.5) * 16), cy = r1(142 + (rnd() - 0.5) * 12);
   const esquina = rnd() < 0.5 ? 0.12 : 0.88;
+  const variante = Number.isInteger(elegida) ? ((elegida % VARIANTES[cat]) + VARIANTES[cat]) % VARIANTES[cat]
+    : Math.floor(azar(`${noticia?.id || ''}|variante`)() * VARIANTES[cat]);
   const defs = [
     { el: 'linearGradient', a: { id: `${id}-fondo`, x1: 0, y1: 0, x2: 0, y2: 1 },
       stops: [{ offset: 0, color: mezclar(FONDO, color, 0.2), opacity: 1 }, { offset: 0.65, color: mezclar(FONDO, color, 0.06), opacity: 1 }, { offset: 1, color: FONDO, opacity: 1 }] },
@@ -316,14 +413,31 @@ function ilustracion(noticia, { velo = false, prefijo = 'nt' } = {}) {
   formas.push({ el: 'path', a: { d: rejilla, fill: 'none', stroke: TINTA, strokeOpacity: 0.04, strokeWidth: 1 } });
   formas.push({ el: 'rect', a: { x: 0, y: 0, width: ANCHO, height: ALTO, fill: `url(#${id}-halo)` } });
   motivoAmbito(amb, acento, cx, cy, rnd, formas);
-  motivoCategoria(cat, color, cx, cy, rnd, formas);
+  motivoCategoria(cat, color, cx, cy, rnd, formas, variante);
   if (velo) {
     defs.push({ el: 'linearGradient', a: { id: `${id}-velo`, x1: 0, y1: 0, x2: 0, y2: 1 },
       stops: [{ offset: 0, color: FONDO, opacity: 0 }, { offset: 0.4, color: FONDO, opacity: 0 }, { offset: 0.62, color: FONDO, opacity: 0.8 }, { offset: 1, color: FONDO, opacity: 0.97 }] });
     formas.push({ el: 'rect', a: { x: 0, y: 0, width: ANCHO, height: ALTO, fill: `url(#${id}-velo)` } });
   }
-  return { id, ancho: ANCHO, alto: ALTO, defs, formas: formas.slice() };
+  return { id, ancho: ANCHO, alto: ALTO, variante, defs, formas: formas.slice() };
 }
+/* La figura de cada noticia de una lista: dentro de cada categoría, por
+   turno y empezando por una elegida con el id de la primera. Dos noticias
+   seguidas de la misma categoría nunca llevan la misma figura (si la
+   categoría tiene más de una). Devuelve { id: variante }. */
+function variantes(noticias) {
+  const salida = {}, turno = {};
+  for (const n of Array.isArray(noticias) ? noticias : []) {
+    const total = VARIANTES[n?.categoria] || 1;
+    if (!Object.hasOwn(turno, n.categoria)) turno[n.categoria] = Math.floor(azar(`${n.id}|variante`)() * total);
+    salida[n.id] = turno[n.categoria] % total;
+    turno[n.categoria]++;
+  }
+  return salida;
+}
+/* El detalle es apaisado (10:7): se recorta el lienzo a la franja del
+   motivo (y = 30–254), donde caben enteras todas las figuras. */
+const RECORTE_DETALLE = Object.freeze({ viewBox: '0 30 320 224', proporcion: 0.7 });
 
 module.exports = { RUTA, URL_DATOS, MAX_NOTICIAS, SECCIONES, CATEGORIAS, AMBITOS, TIPOS_FUENTE, MAX, validarNoticias, noticiasValidas,
-  textos, etiquetaCategoria, etiquetaAmbito, fechaCorta, fechaBreve, ilustracion, mezclar };
+  textos, etiquetaCategoria, etiquetaAmbito, fechaCorta, fechaBreve, fechaLocal, etiquetaReciente, ilustracion, variantes, RECORTE_DETALLE, VARIANTES, mezclar };

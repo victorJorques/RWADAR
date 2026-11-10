@@ -6,7 +6,8 @@
    propio despliegue; el navegador no habla con nadie más):
    - un carrusel horizontal con ajuste (scroll-snap) de tarjetas grandes:
      la ilustración propia de su categoría y ámbito, solo el titular encima
-     (3 líneas como mucho, con «…» solo a la vista) y «Hoy» si es del día;
+     (3 líneas como mucho, con «…» solo a la vista) y «Hoy» o «Ayer» según
+     la fecha de quien mira (modelo.etiquetaReciente);
    - cada tarjeta es un botón cuyo nombre es el titular entero; con el
      teclado, Tab o las flechas recorren el carrusel; con ratón, ‹ y ›;
    - al pulsar, un <dialog> con la fecha, el titular, el resumen, «Por qué
@@ -22,9 +23,15 @@
   const modelo = globalThis.RWAdarNoticiasModelo;
   const RUTA = '/datos/noticias.json', PLAZO_MS = 10000;
   const SVG = 'http://www.w3.org/2000/svg';
-  let seccion, lista, estado, fecha, nota, mandos, dialogo, cuerpoDlg, datos = null, abierta = null, origenFoco = null, suscrito = false;
+  let seccion, lista, estado, fecha, nota, mandos, dialogo, cuerpoDlg, datos = null, abierta = null, origenFoco = null, suscrito = false, figuras = {};
 
   const idioma = () => (globalThis.RWAdarIdioma?.obtenerIdioma?.() === 'en' ? 'en' : 'es');
+  // «Hoy» y «Ayer» se cuentan con el día local de quien mira.
+  const hoy = () => modelo.fechaLocal(new Date());
+  function etiqueta(n, clase) {
+    const cual = modelo.etiquetaReciente(n, hoy());
+    return cual ? el('span', `nt-hoy${cual === 'Ayer' ? ' nt-hoy--ayer' : ''}${clase ? ' ' + clase : ''}`, cual) : null;
+  }
   function el(etiqueta, clase, texto) {
     const n = document.createElement(etiqueta);
     if (clase) n.className = clase;
@@ -39,10 +46,10 @@
     return n;
   }
   const kebab = k => k.replace(/[A-Z]/g, c => '-' + c.toLowerCase());
-  function dibujo(noticia, { velo, clase, encuadre }) {
-    const d = modelo.ilustracion(noticia, { velo, prefijo: velo ? 'ntt' : 'ntd' });
+  function dibujo(noticia, { velo, clase, encuadre, viewBox }) {
+    const d = modelo.ilustracion(noticia, { velo, prefijo: velo ? 'ntt' : 'ntd', variante: figuras[noticia.id] });
     const s = document.createElementNS(SVG, 'svg');
-    s.setAttribute('viewBox', `0 0 ${d.ancho} ${d.alto}`);
+    s.setAttribute('viewBox', viewBox || `0 0 ${d.ancho} ${d.alto}`);
     s.setAttribute('preserveAspectRatio', encuadre);
     s.setAttribute('class', clase);
     s.setAttribute('aria-hidden', 'true');
@@ -89,13 +96,15 @@
     tit.append(dato('span', 'nt-titular-txt', t.titulo));
     b.append(tit);
     // El nombre del botón es el titular entero (el «…» es solo visual) y,
-    // después, «Hoy»: la etiqueta va detrás en el DOM y arriba a la vista.
-    if (n.seccion === 'hoy') b.append(el('span', 'nt-hoy', 'Hoy'));
+    // después, «Hoy» o «Ayer»: la etiqueta va detrás en el DOM y arriba a la vista.
+    const reciente = etiqueta(n);
+    if (reciente) b.append(reciente);
     li.append(b);
     return li;
   }
 
   function pintarLista() {
+    figuras = modelo.variantes(datos.noticias);
     lista.replaceChildren(...datos.noticias.map(tarjeta));
     actualizarMandos();
   }
@@ -136,6 +145,9 @@
     const [antes, despues] = mandos.querySelectorAll('[data-nt-paso]');
     antes.disabled = lista.scrollLeft <= 4;
     despues.disabled = lista.scrollLeft >= max - 4;
+    // Fundido en el borde por el que quedan tarjetas (solo en escritorio, en el CSS).
+    lista.classList.toggle('nt-pista--antes', max > 4 && !antes.disabled);
+    lista.classList.toggle('nt-pista--despues', max > 4 && !despues.disabled);
   }
   function paso(direccion) {
     const primera = lista.querySelector('.nt-item');
@@ -159,35 +171,41 @@
     const lengua = idioma(), t = modelo.textos(n, lengua);
     const marco = el('article', 'nt-dlg-art');
     const arte = el('div', 'nt-dlg-arte');
-    arte.append(dibujo(n, { velo: false, clase: 'nt-arte', encuadre: 'xMidYMin slice' }));
+    // Apaisado: el lienzo se recorta a la franja del motivo, que se ve entero.
+    arte.append(dibujo(n, { velo: false, clase: 'nt-arte', encuadre: 'xMidYMid slice', viewBox: modelo.RECORTE_DETALLE.viewBox }));
     const meta = el('p', 'nt-dlg-meta');
     const cuando = dato('time', '', modelo.fechaCorta(n.fecha, lengua));
     cuando.dateTime = n.fecha;
     meta.append(cuando, ' · ', dato('span', '', modelo.etiquetaCategoria(n.categoria, lengua)), ' · ', dato('span', '', modelo.etiquetaAmbito(n.ambito, lengua)));
-    if (n.seccion === 'hoy') meta.append(' ', el('span', 'nt-hoy nt-hoy--dlg', 'Hoy'));
+    const reciente = etiqueta(n, 'nt-hoy--dlg');
+    if (reciente) meta.append(' ', reciente);
     const titulo = dato('h2', 'nt-dlg-tit', t.titulo);
     titulo.id = 'ntDlgTit';
-    marco.append(arte, meta, titulo);
-    if (t.tituloInformativo) marco.append(dato('p', 'nt-dlg-entradilla', t.tituloInformativo));
-    marco.append(dato('p', 'nt-dlg-resumen', t.resumen));
+    // Sin «tituloInformativo»: repetía el titular con otras palabras.
+    marco.append(arte, meta, titulo, dato('p', 'nt-dlg-resumen', t.resumen));
     const importa = el('section', 'nt-dlg-bloque nt-dlg-importa');
     importa.append(el('h3', '', 'Por qué te importa'), dato('p', '', t.porQueImporta));
     const fuente = el('section', 'nt-dlg-bloque nt-dlg-fuente');
-    // El nombre de la fuente va como lo escribe RWAdar, en castellano.
+    // El nombre de la fuente va como lo escribe RWAdar, en castellano; en
+    // inglés se avisa, como hace FuenteOriginal en la app.
     const nombre = el('p', 'nt-dlg-fuente-nombre', n.fuente.nombre);
     nombre.lang = 'es'; nombre.setAttribute('translate', 'no');
+    const enCastellano = lengua === 'en' ? el('p', 'nt-dlg-fuente-idioma', 'Texto original de la fuente (en castellano)') : null;
     const consulta = el('p', 'nt-dlg-consulta');
     const dia = el('time', '', modelo.fechaCorta(n.consultadaEl, lengua));
     dia.dateTime = n.consultadaEl; dia.setAttribute('translate', 'no');
     consulta.append(el('span', '', 'Consultada el'), ' ', dia);
-    fuente.append(el('h3', '', 'Fuente'), nombre, consulta);
+    fuente.append(el('h3', '', 'Fuente'), ...(enCastellano ? [enCastellano] : []), nombre, consulta);
     const ir = el('a', 'nt-dlg-ir');
     ir.href = n.fuente.url;
     ir.target = '_blank';
     ir.rel = 'noopener noreferrer';
-    ir.append(el('span', '', 'Leer en la fuente (sales de RWAdar)'), ' ');
-    const flecha = el('span', '', '↗'); flecha.setAttribute('aria-hidden', 'true');
-    ir.append(flecha);
+    // La flecha va dentro del mismo texto, pegada a la última palabra con un
+    // espacio de no separación: si el texto pasa a dos líneas, baja con ella.
+    const leer = el('span', 'nt-dlg-ir-txt', 'Leer en la fuente (sales de RWAdar)');
+    const flecha = el('span', 'nt-dlg-ir-flecha', '\u00a0↗'); flecha.setAttribute('aria-hidden', 'true');
+    leer.append(flecha);
+    ir.append(leer);
     const aviso = el('p', 'nt-dlg-aviso', 'Selección editorial de RWAdar con enlace a la fuente. No es una recomendación.');
     marco.append(importa, fuente, ir, aviso);
     cuerpoDlg.replaceChildren(marco);

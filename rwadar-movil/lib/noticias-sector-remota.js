@@ -24,6 +24,11 @@ export async function cargarNoticias({ fetchImpl = (...args) => fetch(...args), 
     const r = await fetchImpl(URL_NOTICIAS, { method: 'GET', credentials: 'omit', headers: { Accept: 'application/json' },
       ...(abort ? { signal: abort.signal } : {}) });
     if (!r || !r.ok) throw new Error('noticias_http_' + (r?.status ?? 0));
+    // Si el servidor anuncia un cuerpo que no puede caber, ni se lee: se corta
+    // la descarga. Cada carácter (unidad UTF-16) ocupa como mucho 3 bytes en
+    // UTF-8, así que más de 3 × 256 k bytes nunca cabe en 256 k caracteres.
+    const anunciado = Number(r.headers?.get?.('content-length'));
+    if (Number.isFinite(anunciado) && anunciado > MAX_CARACTERES * 3) { abort?.abort(); throw new Error('noticias_tamano'); }
     const texto = await r.text();
     if (typeof texto !== 'string' || texto.length > MAX_CARACTERES) throw new Error('noticias_tamano');
     let datos;

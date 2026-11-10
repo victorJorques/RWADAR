@@ -68,6 +68,8 @@ test('en Chromium: carrusel de tarjetas-botón, teclado, diálogo con su fuente,
   try {
     for (const [ancho, alto] of [[390, 844], [1366, 900]]) {
       const pagina = await navegador.newPage({ viewport: { width: ancho, height: alto } });
+      // Reloj fijo: el 10/11/2026 a mediodía, el día del ciclo («Hoy» y «Ayer» dependen de él).
+      await pagina.clock.setFixedTime(new Date(2026, 10, 10, 12, 0));
       const errores = [], terceros = [];
       pagina.on('pageerror', e => errores.push(e.message));
       pagina.on('request', r => { const u = new URL(r.url()); if (u.origin !== new URL(local.url).origin) terceros.push(u.href); });
@@ -83,7 +85,8 @@ test('en Chromium: carrusel de tarjetas-botón, teclado, diálogo con su fuente,
           .filter(n => { const b = n.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5); });
         return {
           n: botones.length, tipos: botones.map(b => b.tagName + ':' + b.type), conEtiqueta: botones.filter(b => b.hasAttribute('aria-label')).length,
-          hoy: botones.filter(b => b.querySelector('.nt-hoy')).length, svgOcultos: botones.every(b => b.querySelector('svg').getAttribute('aria-hidden') === 'true'),
+          hoy: botones.filter(b => b.querySelector('.nt-hoy')?.textContent === 'Hoy').length,
+          ayer: botones.filter(b => b.querySelector('.nt-hoy--ayer')?.textContent === 'Ayer').length, svgOcultos: botones.every(b => b.querySelector('svg').getAttribute('aria-hidden') === 'true'),
           textoSvg: l.querySelectorAll('svg text, svg image, svg foreignObject, img').length,
           snap: getComputedStyle(l).scrollSnapType, desborda: l.scrollWidth > l.clientWidth, anchoPagina: document.documentElement.scrollWidth,
           clamp: estilo.webkitLineClamp, lineas: Math.round(tit.getBoundingClientRect().height / parseFloat(estilo.lineHeight)),
@@ -91,7 +94,8 @@ test('en Chromium: carrusel de tarjetas-botón, teclado, diálogo con su fuente,
           fecha: document.getElementById('ntFecha').textContent, cabecera: document.getElementById('ntTit').textContent,
           traTk: document.getElementById('tokenizacion').compareDocumentPosition(s) & Node.DOCUMENT_POSITION_FOLLOWING,
           // El titular se lee sobre el velo oscuro del dibujo: texto claro y sombra.
-          color: estilo.color, sombra: estilo.textShadow !== 'none',
+          color: estilo.color, sombra: estilo.textShadow !== 'none', sombraCorta: !/,/.test(estilo.textShadow.replace(/rgba?\([^)]*\)/g, '')),
+          anchoTarjeta: b0.width, letra: parseFloat(estilo.fontSize),
         };
       });
       assert.deepEqual(errores, [], `${ancho}: sin errores de JavaScript`);
@@ -99,7 +103,10 @@ test('en Chromium: carrusel de tarjetas-botón, teclado, diálogo con su fuente,
       assert.equal(m.n, 8);
       assert.ok(m.tipos.every(t => t === 'BUTTON:button'));
       assert.equal(m.conEtiqueta, 0, 'el nombre sale del titular visible, no de un aria-label');
-      assert.equal(m.hoy, 3);
+      assert.equal(m.hoy, 1, 'el 10/11, «Hoy» solo en la del 10/11');
+      assert.equal(m.ayer, 2, 'y «Ayer» en las dos del 09/11');
+      assert.ok(m.anchoTarjeta >= 278, `tarjetas grandes (${m.anchoTarjeta} px)`);
+      assert.equal(m.letra, 20);
       assert.ok(m.svgOcultos && m.textoSvg === 0, 'ilustraciones decorativas, sin texto ni imágenes');
       assert.equal(m.snap, 'x mandatory');
       assert.ok(m.desborda, 'es un carrusel');
@@ -112,10 +119,11 @@ test('en Chromium: carrusel de tarjetas-botón, teclado, diálogo con su fuente,
       assert.equal(m.fecha, 'Actualizadas el 10/11');
       assert.ok(m.traTk, 'después de «La tokenización en el mundo»');
       assert.equal(m.color, 'rgb(247, 245, 240)');
-      assert.ok(m.sombra);
-      // Nombre accesible: el titular entero (aunque se recorte a la vista) y «Hoy».
+      assert.ok(m.sombra && m.sombraCorta, 'una sola sombra corta: la de 16 px se recortaba en la caja');
+      // Nombre accesible: el titular entero (aunque se recorte a la vista) y «Hoy» o «Ayer».
       for (const n of DATOS.noticias) {
-        const nombre = n.seccion === 'hoy' ? `${n.titulo} Hoy` : n.titulo;
+        const cual = modelo.etiquetaReciente(n, '2026-11-10');
+        const nombre = cual ? `${n.titulo} ${cual}` : n.titulo;
         assert.equal(await pagina.getByRole('button', { name: nombre, exact: true }).count(), 1, nombre);
       }
       // Teclado: Tab llega a la primera tarjeta con el foco visible; las flechas recorren el carrusel.
@@ -138,18 +146,28 @@ test('en Chromium: carrusel de tarjetas-botón, teclado, diálogo con su fuente,
         const dlg = document.getElementById('ntDialogo'), a = dlg.querySelector('.nt-dlg-ir'), b = dlg.getBoundingClientRect();
         return { modal: dlg.matches(':modal'), foco: document.activeElement.getAttribute('aria-label'), titulo: document.getElementById('ntDlgTit')?.textContent,
           etiquetado: dlg.getAttribute('aria-labelledby'), texto: dlg.textContent, href: a.href, target: a.target, rel: a.rel, enlace: a.textContent,
-          dentro: b.left >= -0.5 && b.right <= innerWidth + 0.5, arte: dlg.querySelectorAll('.nt-dlg-arte svg [fill]').length > 10 };
+          dentro: b.left >= -0.5 && b.right <= innerWidth + 0.5, arte: dlg.querySelectorAll('.nt-dlg-arte svg [fill]').length > 10,
+          viewBox: dlg.querySelector('.nt-dlg-arte svg').getAttribute('viewBox'), encuadre: dlg.querySelector('.nt-dlg-arte svg').getAttribute('preserveAspectRatio'),
+          proporcion: (r => r.height / r.width)(dlg.querySelector('.nt-dlg-arte').getBoundingClientRect()),
+          flechaSola: a.querySelector('.nt-dlg-ir-flecha').parentElement === a };
       });
       assert.equal(d.modal, true);
       assert.equal(d.foco, 'Cerrar la noticia');
       assert.equal(d.etiquetado, 'ntDlgTit');
       assert.equal(d.titulo, n.titulo);
-      for (const parte of ['09/11/2026', 'Producto', 'UE', 'Hoy', n.tituloInformativo, n.resumen, 'Por qué te importa', n.porQueImporta, 'Fuente', n.fuente.nombre,
+      assert.ok(!d.texto.includes('Hoy') && d.texto.includes('Ayer'), 'del 09/11: «Ayer», no «Hoy»');
+      assert.ok(!d.texto.includes(n.tituloInformativo), 'sin repetir el titular con otras palabras');
+      // La ilustración apaisada (10:7) es la franja del motivo: se ve entero.
+      assert.equal(d.viewBox, '0 30 320 224');
+      assert.equal(d.encuadre, 'xMidYMid slice');
+      assert.ok(Math.abs(d.proporcion - 0.7) < 0.01, `10:7 (${d.proporcion})`);
+      assert.equal(d.flechaSola, false, 'la flecha va dentro del texto del botón');
+      for (const parte of ['09/11/2026', 'Producto', 'UE', 'Ayer', n.resumen, 'Por qué te importa', n.porQueImporta, 'Fuente', n.fuente.nombre,
         'Consultada el 10/11/2026', 'Selección editorial de RWAdar con enlace a la fuente. No es una recomendación.']) assert.ok(d.texto.includes(parte), parte);
       assert.equal(d.href, n.fuente.url);
       assert.equal(d.target, '_blank');
       assert.equal(d.rel, 'noopener noreferrer');
-      assert.equal(d.enlace.trim(), 'Leer en la fuente (sales de RWAdar) ↗');
+      assert.equal(d.enlace.trim(), 'Leer en la fuente (sales de RWAdar)\u00a0↗');
       assert.ok(d.dentro && d.arte);
       // Escape cierra y el foco vuelve a la tarjeta.
       await pagina.keyboard.press('Escape');
@@ -171,8 +189,22 @@ test('en Chromium: carrusel de tarjetas-botón, teclado, diálogo con su fuente,
       await pagina.waitForSelector('#ntDialogo[open]');
       const dEn = await pagina.evaluate(() => document.getElementById('ntDialogo').textContent);
       for (const parte of ['10 Nov 2026', 'Risk', 'Spain', DATOS.noticias[0].en.resumen, 'Why it matters to you', DATOS.noticias[0].en.porQueImporta,
-        'Checked on', 'Read at the source (you leave RWAdar)']) assert.ok(dEn.includes(parte), parte);
+        'Checked on', 'Read at the source (you leave RWAdar)', 'Original source text (Spanish)']) assert.ok(dEn.includes(parte), parte);
       await pagina.keyboard.press('Escape');
+      await pagina.click(`#ntLista [data-nt-id="${DATOS.noticias[1].id}"]`);
+      await pagina.waitForSelector('#ntDialogo[open]');
+      assert.ok((await pagina.textContent('#ntDialogo')).includes('9 Nov 2026 · Product · EU Yesterday'), 'en inglés, «Yesterday»');
+      await pagina.keyboard.press('Escape');
+      await pagina.close();
+    }
+    // El 13/11, sin ciclo nuevo: ni «Hoy» ni «Ayer», y las de hoy siguen primero.
+    {
+      const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 } });
+      await pagina.clock.setFixedTime(new Date(2026, 10, 13, 12, 0));
+      await pagina.goto(local.url + '/', { waitUntil: 'load' });
+      await pagina.waitForSelector('#noticias[data-noticias-estado="listo"]', { timeout: 20000 });
+      assert.equal(await pagina.locator('#ntLista .nt-hoy').count(), 0);
+      assert.equal(await pagina.getAttribute('#ntLista .nt-tarjeta', 'data-nt-id'), DATOS.noticias[0].id);
       await pagina.close();
     }
     // Sin el archivo: lo dice, sin ninguna noticia ni cifra, y el resto de Inicio sigue.

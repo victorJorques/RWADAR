@@ -1946,6 +1946,8 @@
   "Leer en la fuente (sales de RWAdar)": "Read at the source (you leave RWAdar)",
   "Ilustraciones de RWAdar, no fotos de la noticia. Selección editorial con enlace a la fuente; no es una recomendación.": "RWAdar illustrations, not news photos. An editorial selection with a link to the source; this is not a recommendation.",
   "Selección editorial de RWAdar con enlace a la fuente. No es una recomendación.": "An RWAdar editorial selection with a link to the source. This is not a recommendation.",
+  "Ayer": "Yesterday",
+  "Texto original de la fuente (en castellano)": "Original source text (Spanish)",
 };
 if(typeof module==='object'&&module.exports)module.exports=Object.freeze(diccionario);else raiz.RWAdarEnglish=Object.freeze(diccionario);
 })(typeof globalThis==='object'?globalThis:this);

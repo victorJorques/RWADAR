@@ -39,24 +39,34 @@
 .nt-arte{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;transition:transform calc(400ms * var(--pm)) var(--ease)}
 .nt-tarjeta:hover .nt-arte{transform:scale(1.035)}
 .nt-tarjeta:active .nt-arte{transform:scale(1.015)}
-.nt-tarjeta:focus-visible{box-shadow:inset 0 0 0 2px var(--senal),0 0 0 2px var(--s0)}
+.nt-tarjeta:focus-visible{box-shadow:inset 0 0 0 2px var(--senal),0 0 0 2px var(--s0);outline:2px solid transparent;outline-offset:-2px}
+/* En alto contraste (forced-colors) las sombras desaparecen: el contorno lo pinta el sistema. */
+@media (forced-colors:active){.nt-tarjeta:focus-visible{outline:2px solid CanvasText}}
 .nt-titular{position:absolute;left:0;right:0;bottom:0;padding:16px 16px 18px}
-/* Como mucho 3 líneas; si no cabe, «…» solo a la vista: el nombre del botón y el detalle llevan el titular entero. */
+/* Como mucho 3 líneas; si no cabe, «…» solo a la vista: el nombre del botón y el detalle llevan el titular entero.
+   El velo del dibujo ya da el contraste; la sombra es corta para que el recorte de la caja (overflow) no se note. */
 .nt-titular-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden;
   color:var(--tx);font:600 1.25rem/1.25 var(--display);letter-spacing:-.015em;text-wrap:pretty;
-  text-shadow:0 1px 2px rgba(0,0,0,.55),0 2px 16px rgba(0,0,0,.5)}
+  text-shadow:0 1px 2px rgba(0,0,0,.55)}
 .nt-hoy{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 8px;
   border-radius:var(--r-p);background:rgba(11,10,10,.78);color:var(--senal);font:600 .75rem/1.2 var(--body);letter-spacing:.02em;
   box-shadow:inset 0 0 0 1px var(--senal-18)}
 .nt-hoy::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--senal);box-shadow:0 0 0 3px var(--senal-t)}
+/* «Ayer», más discreta que «Hoy». */
+.nt-hoy--ayer{color:var(--tx);box-shadow:inset 0 0 0 1px var(--linea)}
+.nt-hoy--ayer::before{background:var(--tx-2);box-shadow:none}
 
 /* Escritorio: en la columna del relato, como sus vecinas; el carrusel se
-   abre al ancho de las tarjetas y enseña unas cuatro a la vez. */
+   abre al ancho de las tarjetas y enseña unas tres a la vez, grandes. Por el
+   borde que aún tiene tarjetas, un fundido: la última no se corta en seco. */
 @media (min-width:900px){
   .nt-tit{font-size:1.75rem}
-  .nt-pista{grid-auto-columns:minmax(240px,calc((100% - 36px)/4.15));gap:12px}
+  .nt-pista{grid-auto-columns:minmax(280px,calc((100% - 24px)/3.2));gap:12px}
   .escritorio-relato .nt-pista{width:var(--rel-ancho);margin:24px 0 0 calc((var(--rel-col) - var(--rel-ancho))/2);padding:4px 0 8px;scroll-padding-inline:0}
-  .nt-titular-txt{font-size:1.125rem;line-height:1.28}
+  .nt-pista--despues{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 64px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 64px),transparent)}
+  .nt-pista--antes{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px);mask-image:linear-gradient(90deg,transparent,#000 40px)}
+  .nt-pista--antes.nt-pista--despues{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 64px),transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 64px),transparent)}
 }
 @media (max-width:380px){.nt-titular-txt{font-size:1.125rem}}
 
@@ -73,14 +83,14 @@ html.nt-dialogo-abierto{overflow:hidden}
 .nt-dlg-cerrar:hover{background:var(--ton-2)}
 .nt-dlg-cerrar:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
 .nt-dlg-cuerpo{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 0 24px}
-.nt-dlg-arte{position:relative;isolation:isolate;aspect-ratio:4/3;max-height:300px;width:100%;overflow:hidden;background:var(--s0)}
-.nt-dlg-arte::after{content:'';position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(transparent,var(--s1))}
+/* La ilustración apaisada (10:7) es la franja del motivo del dibujo: se ve entera. */
+.nt-dlg-arte{position:relative;isolation:isolate;aspect-ratio:10/7;width:100%;overflow:hidden;background:var(--s0)}
+.nt-dlg-arte::after{content:'';position:absolute;inset:auto 0 0;height:14%;background:linear-gradient(transparent,var(--s1))}
 .nt-dlg-art>:not(.nt-dlg-arte){margin-inline:20px}
 .nt-dlg-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin-top:4px;color:var(--tx-3);font:500 .8125rem/1.4 var(--body)}
 .nt-dlg-meta time{font-variant-numeric:tabular-nums}
 .nt-hoy--dlg{position:static;margin-left:4px}
 .nt-dlg-tit{margin-top:8px;color:var(--tx);font:600 1.5rem/1.22 var(--display);letter-spacing:-.02em;text-wrap:balance}
-.nt-dlg-entradilla{margin-top:10px;color:var(--tx-2);font:500 1rem/1.45 var(--body)}
 .nt-dlg-resumen{margin-top:14px;color:var(--tx);font:400 1rem/1.6 var(--body)}
 .nt-dlg-bloque{margin-top:18px;padding:14px 16px;border-radius:var(--r-m);background:var(--ton)}
 .nt-dlg-bloque h3{margin-bottom:6px;color:var(--tx);font:600 .875rem/1.3 var(--body)}
@@ -88,12 +98,20 @@ html.nt-dialogo-abierto{overflow:hidden}
 .nt-dlg-importa{background:var(--senal-t)}
 .nt-dlg-importa h3{color:var(--senal)}
 .nt-dlg-importa p{color:var(--tx)}
+.nt-dlg-fuente-idioma{margin-bottom:2px;color:var(--tx-3)!important;font-size:.8125rem!important}
 .nt-dlg-consulta{margin-top:4px;color:var(--tx-3)!important;font-size:.8125rem!important}
 .nt-dlg-ir{display:flex;align-items:center;justify-content:center;gap:6px;min-height:52px;margin-top:20px;padding:0 20px;border-radius:var(--r-m);
   background:var(--senal);color:var(--en-senal);font:600 1rem/1.3 var(--body);text-align:center;text-decoration:none;transition:var(--tr)}
+.nt-dlg-ir-flecha{white-space:nowrap}
 .nt-dlg-ir:hover{background:var(--senal-p)}
 .nt-dlg-ir:focus-visible{outline:2px solid var(--senal);outline-offset:3px}
 .nt-dlg-aviso{margin-top:12px;color:var(--tx-3);font:400 .8125rem/1.45 var(--body)}
+/* En la ventana de escritorio, la ilustración es una lámina centrada de 514 × 360. */
+@media (min-width:601px){
+  .nt-dlg-arte{width:min(calc(100% - 40px),514px);margin:18px auto 0;border-radius:var(--r-l);outline:1px solid var(--linea);outline-offset:-1px}
+  .nt-dlg-arte::after{display:none}
+  .nt-dlg-meta{margin-top:16px}
+}
 @media (max-width:600px){
   .nt-dialogo{width:100%;max-width:100%;max-height:100dvh;height:100dvh;border-radius:0}
   .nt-dlg-cab{padding-top:calc(10px + env(safe-area-inset-top))}

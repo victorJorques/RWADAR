@@ -2,10 +2,11 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { FlatList, Modal, StyleSheet, useWindowDimensions } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Defs, Ellipse, Line, LinearGradient, Path, Polygon, Polyline, RadialGradient, Rect, Stop } from 'react-native-svg';
-import { Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
+import { FuenteOriginal, Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
 import { cargarNoticias } from '../lib/noticias-sector-remota';
-import { etiquetaAmbito, etiquetaCategoria, fechaBreve, fechaCorta, ilustracion, textos } from '../lib/noticias-sector';
+import { RECORTE_DETALLE, etiquetaAmbito, etiquetaCategoria, etiquetaReciente, fechaBreve, fechaCorta, fechaLocal, ilustracion, textos, variantes }
+  from '../lib/noticias-sector';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 
@@ -16,7 +17,7 @@ import { tacto } from '../lib/tacto';
    Un carrusel horizontal (FlatList con ajuste) de tarjetas grandes: la
    ilustración propia de su categoría y ámbito (lib/noticias-sector.js, la
    misma que la web), solo el titular encima, en 3 líneas como mucho, y «Hoy»
-   si es del día. Cada tarjeta es un botón con el titular entero como
+   o «Ayer» según el día de quien mira (etiquetaReciente). Cada tarjeta es un botón con el titular entero como
    nombre. Al pulsar, el detalle en un modal: fecha, titular, resumen, «Por
    qué te importa», la fuente y «Leer en la fuente (sales de RWAdar) ↗», que
    abre el enlace con onAbrirEnlace (el de App.js: solo https). Con la red
@@ -29,10 +30,10 @@ const GRADIENTES = { linearGradient: LinearGradient, radialGradient: RadialGradi
 const SEPARACION = 12;
 
 /* El dibujo de una noticia, el mismo que la web (sin texto, solo formas). */
-export function Ilustracion({ noticia, ancho, alto, velo = false, encuadre = 'xMidYMid slice' }) {
-  const d = ilustracion(noticia, { velo, prefijo: velo ? 'ntt' : 'ntd' });
+export function Ilustracion({ noticia, ancho, alto, velo = false, encuadre = 'xMidYMid slice', viewBox, variante }) {
+  const d = ilustracion(noticia, { velo, prefijo: velo ? 'ntt' : 'ntd', variante });
   return (
-    <Svg width={ancho} height={alto} viewBox={`0 0 ${d.ancho} ${d.alto}`} preserveAspectRatio={encuadre}
+    <Svg width={ancho} height={alto} viewBox={viewBox || `0 0 ${d.ancho} ${d.alto}`} preserveAspectRatio={encuadre}
       accessible={false} importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
       <Defs>
         {d.defs.map((g) => {
@@ -52,25 +53,31 @@ export function Ilustracion({ noticia, ancho, alto, velo = false, encuadre = 'xM
   );
 }
 
-function Tarjeta({ noticia, ancho, idioma, onAbrir }) {
+function Etiqueta({ cual, enDetalle = false }) {
+  if (!cual) return null;
+  const ayer = cual === 'Ayer';
+  return (
+    <View style={[e.hoy, ayer && e.ayer, enDetalle && e.hoyDetalle]}>
+      <View style={[e.hoyPunto, ayer && e.ayerPunto]} />
+      <Text style={[e.hoyTxt, ayer && e.ayerTxt]}>{cual}</Text>
+    </View>
+  );
+}
+
+function Tarjeta({ noticia, ancho, idioma, onAbrir, hoyISO, variante }) {
   const t = textos(noticia, idioma);
   const alto = Math.round(ancho * 1.25);
-  const hoy = noticia.seccion === 'hoy';
+  const reciente = etiquetaReciente(noticia, hoyISO);
   return (
     <Pressable onPress={() => { tacto.abrir(); onAbrir(noticia); }}
       style={({ pressed }) => [e.tarjeta, { width: ancho, height: alto }, pressed && e.tarjetaPulsada]}
       accessibilityRole="button" noTraducir idiomaOriginal={idioma === 'en' ? 'en-US' : 'es-ES'}
-      // El nombre es el titular entero (el «…» de la tarjeta es solo visual) y, después, «Hoy».
-      accessibilityLabel={hoy ? `${t.titulo}. ${traducir('Hoy')}` : t.titulo}>
+      // El nombre es el titular entero (el «…» de la tarjeta es solo visual) y, después, «Hoy» o «Ayer».
+      accessibilityLabel={reciente ? `${t.titulo}. ${traducir(reciente)}` : t.titulo}>
       <View style={StyleSheet.absoluteFill} pointerEvents="none">
-        <Ilustracion noticia={noticia} ancho={ancho} alto={alto} velo />
+        <Ilustracion noticia={noticia} ancho={ancho} alto={alto} velo variante={variante} />
       </View>
-      {hoy ? (
-        <View style={e.hoy}>
-          <View style={e.hoyPunto} />
-          <Text style={e.hoyTxt}>Hoy</Text>
-        </View>
-      ) : null}
+      <Etiqueta cual={reciente} />
       <View style={e.titularCaja}>
         <Text noTraducir style={e.titular} numberOfLines={3} ellipsizeMode="tail">{t.titulo}</Text>
       </View>
@@ -78,12 +85,13 @@ function Tarjeta({ noticia, ancho, idioma, onAbrir }) {
   );
 }
 
-function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace }) {
+function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace, hoyISO, variante }) {
   const { width } = useWindowDimensions();
   if (!noticia) return null;
   const t = textos(noticia, idioma);
   const lengua = idioma === 'en' ? 'en-US' : 'es-ES';
   const anchoArte = Math.min(width, 640);
+  const reciente = etiquetaReciente(noticia, hoyISO);
   return (
     <Modal visible animationType="slide" presentationStyle="fullScreen" onRequestClose={onCerrar}
       statusBarTranslucent={false} navigationBarTranslucent={false}>
@@ -98,24 +106,20 @@ function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace }) {
           </View>
           <ScrollView contentContainerStyle={e.detalle}>
             <View style={e.arte}>
-              <Ilustracion noticia={noticia} ancho={anchoArte} alto={Math.round(anchoArte * 0.75)} encuadre="xMidYMin slice" />
+              {/* Apaisado (10:7): el lienzo se recorta a la franja del motivo, que se ve entero. */}
+              <Ilustracion noticia={noticia} ancho={anchoArte} alto={Math.round(anchoArte * RECORTE_DETALLE.proporcion)}
+                viewBox={RECORTE_DETALLE.viewBox} encuadre="xMidYMid slice" variante={variante} />
             </View>
             <View style={e.texto}>
               <View style={e.meta} accessible noTraducir idiomaOriginal={lengua}
                 accessibilityLabel={[fechaCorta(noticia.fecha, idioma), etiquetaCategoria(noticia.categoria, idioma),
-                  etiquetaAmbito(noticia.ambito, idioma), noticia.seccion === 'hoy' ? traducir('Hoy') : null].filter(Boolean).join(' · ')}>
+                  etiquetaAmbito(noticia.ambito, idioma), reciente ? traducir(reciente) : null].filter(Boolean).join(' · ')}>
                 <Text noTraducir style={e.metaTxt}>
                   {`${fechaCorta(noticia.fecha, idioma)} · ${etiquetaCategoria(noticia.categoria, idioma)} · ${etiquetaAmbito(noticia.ambito, idioma)}`}
                 </Text>
-                {noticia.seccion === 'hoy' ? (
-                  <View style={[e.hoy, e.hoyDetalle]}>
-                    <View style={e.hoyPunto} />
-                    <Text style={e.hoyTxt}>Hoy</Text>
-                  </View>
-                ) : null}
+                <Etiqueta cual={reciente} enDetalle />
               </View>
               <Text noTraducir idiomaOriginal={lengua} style={e.dTitulo} accessibilityRole="header">{t.titulo}</Text>
-              {t.tituloInformativo ? <Text noTraducir idiomaOriginal={lengua} style={e.entradilla}>{t.tituloInformativo}</Text> : null}
               <Text noTraducir idiomaOriginal={lengua} style={e.resumen}>{t.resumen}</Text>
               <View style={[e.bloque, e.importa]}>
                 <Text style={e.importaTit} accessibilityRole="header">Por qué te importa</Text>
@@ -123,7 +127,8 @@ function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace }) {
               </View>
               <View style={e.bloque}>
                 <Text style={e.bloqueTit} accessibilityRole="header">Fuente</Text>
-                <Text noTraducir idiomaOriginal="es-ES" style={e.bloqueTxt}>{noticia.fuente.nombre}</Text>
+                {/* El nombre de la fuente está en castellano; en inglés, FuenteOriginal lo avisa. */}
+                <FuenteOriginal idiomaOriginal="es-ES" style={e.bloqueTxt}>{noticia.fuente.nombre}</FuenteOriginal>
                 <Text style={e.consulta}>{'Consultada el'} <Text noTraducir>{fechaCorta(noticia.consultadaEl, idioma)}</Text></Text>
               </View>
               {/* El mismo aviso de salida que el resto de enlaces externos de la app. */}
@@ -131,7 +136,7 @@ function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace }) {
                 style={({ pressed }) => [e.ir, pressed && pulsado('b1')]}
                 accessibilityRole="link" noTraducir idiomaOriginal={lengua}
                 accessibilityLabel={`${traducir('Leer en la fuente (sales de RWAdar)')}: ${noticia.fuente.url}`}>
-                <Text style={e.irTxt}>{'Leer en la fuente (sales de RWAdar)'}<Text noTraducir>{' ↗'}</Text></Text>
+                <Text style={e.irTxt}>{'Leer en la fuente (sales de RWAdar)'}<Text noTraducir>{'\u00a0↗'}</Text></Text>
               </Pressable>
               <Text style={e.aviso}>Selección editorial de RWAdar con enlace a la fuente. No es una recomendación.</Text>
             </View>
@@ -142,7 +147,7 @@ function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace }) {
   );
 }
 
-export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias }) {
+export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias, ahora = () => new Date() }) {
   const idioma = useIdioma();
   const { width } = useWindowDimensions();
   const [estado, setEstado] = useState({ fase: 'cargando', datos: null });
@@ -157,6 +162,9 @@ export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias 
   useEffect(() => { vivo.current = true; pedir(); return () => { vivo.current = false; }; }, [pedir]);
 
   const d = estado.fase === 'listo' ? estado.datos : null;
+  // «Hoy» y «Ayer» con el día local del móvil; la figura de cada noticia, sin repetir entre vecinas.
+  const hoyISO = fechaLocal(ahora());
+  const figuras = d ? variantes(d.noticias) : {};
   // Una tarjeta grande y el borde de la siguiente, que invita a deslizar.
   const ancho = Math.min(340, Math.round((width - UI.margen * 2) * 0.8));
   return (
@@ -177,8 +185,8 @@ export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias 
 
       {d ? (
         <View>
-          <FlatList horizontal data={d.noticias} keyExtractor={(n) => n.id} extraData={idioma}
-            renderItem={({ item }) => <Tarjeta noticia={item} ancho={ancho} idioma={idioma} onAbrir={setAbierta} />}
+          <FlatList horizontal data={d.noticias} keyExtractor={(n) => n.id} extraData={`${idioma}|${hoyISO}`}
+            renderItem={({ item }) => <Tarjeta noticia={item} ancho={ancho} idioma={idioma} onAbrir={setAbierta} hoyISO={hoyISO} variante={figuras[item.id]} />}
             ItemSeparatorComponent={Separador} showsHorizontalScrollIndicator={false}
             decelerationRate="fast" snapToInterval={ancho + SEPARACION} snapToAlignment="start" disableIntervalMomentum
             style={e.pista} contentContainerStyle={e.pistaContenido}
@@ -187,7 +195,8 @@ export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias 
         </View>
       ) : null}
 
-      <Detalle noticia={abierta} idioma={idioma} onCerrar={() => setAbierta(null)} onAbrirEnlace={onAbrirEnlace} />
+      <Detalle noticia={abierta} idioma={idioma} onCerrar={() => setAbierta(null)} onAbrirEnlace={onAbrirEnlace} hoyISO={hoyISO}
+        variante={abierta ? figuras[abierta.id] : undefined} />
     </View>
   );
 }
@@ -213,6 +222,10 @@ const e = StyleSheet.create({
   hoyDetalle: { position: 'relative', top: 0, left: 0, marginLeft: 8 },
   hoyPunto: { width: 6, height: 6, borderRadius: 3, backgroundColor: C.senal },
   hoyTxt: { fontFamily: F.semi, fontSize: 12, lineHeight: 15, color: C.senal },
+  // «Ayer», más discreta que «Hoy».
+  ayer: { borderColor: C.bd },
+  ayerPunto: { backgroundColor: C.tx2 },
+  ayerTxt: { color: C.tx },
   titularCaja: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 16, paddingTop: 16, paddingBottom: 18 },
   titular: { fontFamily: F.semi, fontSize: 20, lineHeight: 25, letterSpacing: -0.3, color: C.tx,
     textShadowColor: 'rgba(0,0,0,0.6)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 10 },
@@ -229,7 +242,6 @@ const e = StyleSheet.create({
   meta: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', marginTop: 14 },
   metaTxt: { ...T.dato, color: C.tx3 },
   dTitulo: { fontFamily: F.semi, fontSize: 24, lineHeight: 30, letterSpacing: -0.5, color: C.tx, marginTop: 8 },
-  entradilla: { fontFamily: F.media, fontSize: 16, lineHeight: 23, color: C.tx2, marginTop: 10 },
   resumen: { ...T.cuerpo, color: C.tx, marginTop: 14 },
   bloque: { marginTop: 18, padding: 14, borderRadius: R.m, backgroundColor: C.ton },
   importa: { backgroundColor: C.senalT },

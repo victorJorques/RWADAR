@@ -6,6 +6,26 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 10 de noviembre de 2026 (4) · Claude · «Noticias del sector»: correcciones de la revisión
+
+La revisora aprobó con cambios. Hecho, en un commit local encima del anterior. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**
+
+**Obligatorias**
+- «Hoy» ya no depende solo de `seccion`: `etiquetaReciente(n, hoyISO)` en `rwadar-movil/lib/noticias-sector.js` da «Hoy» solo si `seccion === 'hoy'` y la fecha es la de hoy, «Ayer» si es del día anterior y nada en el resto. `hoyISO` es la fecha local del dispositivo (`fechaLocal`, sin `Intl`). Web y app la usan en la tarjeta, en su nombre accesible y en el detalle. El 10/11: 1 «Hoy» y 2 «Ayer»; el 13/11, ninguna. Las de hoy siguen primero. «Ayer» → «Yesterday» en los dos `idioma-en`.
+- Ilustración del detalle entera: el lienzo se recorta a la franja del motivo (`RECORTE_DETALLE`: `viewBox 0 30 320 224`, `xMidYMid slice`, 10:7). Web: `.nt-dlg-arte` en 10:7 (a pantalla completa en el móvil; en escritorio, lámina centrada de 514 × 360). App: alto = ancho × 0,7. Comprobado en capturas de las 8 noticias a 390 y 1366 px.
+
+**Recomendadas hechas**
+- Titular con una sola sombra corta (sin el rectángulo oscuro). Tarjetas de escritorio de 280 px con letra de 1,25 rem y fundido en el borde que aún tiene tarjetas (clases `nt-pista--antes/--despues`).
+- Regulación con cuatro figuras (edificio, balanza, documento con sello, mazo); `variantes()` las reparte por turno dentro de cada categoría, así que dos vecinas nunca repiten.
+- Foco visible en alto contraste (`outline` transparente y `CanvasText` en `forced-colors`). La flecha ↗ va dentro del texto del botón, con espacio de no separación.
+- En inglés, «Original source text (Spanish)» encima del nombre de la fuente (web y app, con `FuenteOriginal`). Fuera `tituloInformativo` del detalle (repetía el titular); el dato sigue en el archivo y se valida.
+- La app mira `content-length` antes de leer el cuerpo y corta si no puede caber.
+- La sección de la app, vista con react-native-web (SSR) en capturas: tarjetas, «Hoy»/«Ayer», detalle en castellano e inglés. No es un dispositivo real.
+
+**Pruebas:** `noticias-sector.test.cjs` (14) y `rwadar-acceso/noticias-sector.test.mjs` (2, con reloj fijo el 10/11 y el 13/11). `npm test` de la raíz en verde; guardián de la OTA con la base `fa30779…`: `ok`.
+
+**Pendiente (Víctor):** publicar la web (`/datos/noticias.json`) **antes o a la vez** que la OTA; si la OTA va primero, la app dirá «Ahora no podemos mostrar las noticias» hasta que la web esté publicada.
+
 ## 10 de noviembre de 2026 (3) · Claude · «Noticias del sector» en Inicio (web y app)
 
 Víctor pidió una sección pequeña de noticias, del día y las más importantes del sector, «muy visuales, solo el titular». Va en Inicio justo después de «La tokenización en el mundo», en la web y en la app, en un commit encima de ese módulo. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**
