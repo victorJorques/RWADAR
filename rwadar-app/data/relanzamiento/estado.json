@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "10/11: Inicio por bloques (web y app), secciones /mercado/, /noticias/ y /aprende/, fotos editoriales en las noticias y titulares nuevos (peticiones de Víctor del 10/11)",
+  "nota": "10/11: transparencia de Kraken y mTBILL releída; prueba de los avisos sin empates",
   "revisionAprobada": {
-    "commit": "578536c1fd583d262ad90d046f78e4fb705e2628",
-    "contenidoSha256": "sha256:2afb89a10184e4f3efaa459672bf7c5ca3c8da054d7a803c35a879cda6ffede4",
+    "commit": "d8ff785c3152a9050afd9db8001b1024f56b6b31",
+    "contenidoSha256": "sha256:f32a190b4d3bc01d84106da408652ac900b6f3f9c3ff48c6367762333a521547",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
