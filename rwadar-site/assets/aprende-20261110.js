@@ -71,6 +71,42 @@
     }
     addEventListener('hashchange', ancla);
     ancla();
+    /* Las frases con cifras del catálogo (04: «En el radar, N de las M ofertas
+       tienen un mínimo documentado de 1 €» y su aviso; 06: «Catálogo revisado
+       el…»). /aprende/ no carga el catálogo: rwadar-publicar.js escribe sus
+       cifras en <main> (data-catalogo-ofertas, -minimos, -usd, -revisado y
+       -hasta) al publicar. Como en Inicio, solo se enseñan mientras la
+       revisión siga vigente (hasta data-catalogo-hasta incluido, en UTC); sin
+       cifras o caducadas, las frases se esconden. */
+    const fecha = iso => { const p = String(iso || '').split('-'); return p.length === 3 ? `${p[2]}/${p[1]}/${p[0]}` : ''; };
+    const esFecha = iso => /^\d{4}-\d\d-\d\d$/.test(iso || '') && Number.isFinite(Date.parse(iso + 'T00:00:00Z'));
+    const entero = v => (/^\d{1,4}$/.test(v || '') ? Number(v) : NaN);
+    function cifras() {
+      const d = raiz.dataset, ofertas = entero(d.catalogoOfertas), minimos = entero(d.catalogoMinimos), usd = entero(d.catalogoUsd);
+      const hoy = new Date(), hoyUTC = Date.UTC(hoy.getUTCFullYear(), hoy.getUTCMonth(), hoy.getUTCDate());
+      const vigente = esFecha(d.catalogoRevisado) && esFecha(d.catalogoHasta) && d.catalogoRevisado <= d.catalogoHasta &&
+        hoyUTC <= Date.parse(d.catalogoHasta + 'T00:00:00Z') && ofertas > 0;
+      return { vigente, ofertas, minimos: minimos > 0 && minimos <= ofertas ? minimos : 0, usd: usd >= 0 && usd <= minimos ? usd : 0,
+        revisado: fecha(d.catalogoRevisado), hasta: fecha(d.catalogoHasta) };
+    }
+    function pintarCifras() {
+      const c = cifras(), en = globalThis.RWAdarIdioma?.obtenerIdioma?.() === 'en';
+      const poner = (el, ver, valores) => {
+        if (!el) return;
+        const p = el.getAttribute(en ? 'data-rel-plantilla-en' : 'data-rel-plantilla') || '';
+        const texto = ver ? p.replace(/\{(\w+)\}/g, (_, k) => String(valores[k] ?? '')) : (el.getAttribute('data-rel-sin') || '');
+        if (el.textContent !== texto) el.textContent = texto;
+        el.hidden = !ver;
+      };
+      const conMinimos = c.vigente && c.minimos > 0;
+      poner($('relMinimos'), conMinimos, { minimos: c.minimos, ofertas: c.ofertas, usd: c.usd ? (en ? ' or $1' : ' o de 1 $') : '' });
+      if ($('relMinimosAviso')) $('relMinimosAviso').hidden = !conMinimos;
+      poner($('relVigencia'), c.vigente, { revisado: c.revisado, hasta: c.hasta });
+    }
+    pintarCifras();
+    /* El idioma se carga después (idioma-20261022.js va detrás, con defer). */
+    const conIdioma = () => { try { globalThis.RWAdarIdioma?.suscribirIdioma?.(pintarCifras); } catch { /* sin idioma, en castellano */ } pintarCifras(); };
+    if (globalThis.RWAdarIdioma) conIdioma(); else document.addEventListener('DOMContentLoaded', conIdioma, { once: true });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar, { once: true });
   else iniciar();

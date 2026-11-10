@@ -1611,10 +1611,12 @@ const aprendeHTML = lee('aprende/index.html');
     /<!--academy-inicio:ini-->[\s\S]*href="\/academy\/"[\s\S]*<!--academy-inicio:fin-->/.test(aprendeHTML) &&
     /<a class="rel-enlace" href="\/mercado\/">El mercado hoy<\/a>/.test(aprendeHTML) &&
     !/14\.230|125 veces|3,9 %/.test(aprendeHTML) &&
-    // Sin las frases con cifras del catálogo (mínimos y vigencia): /aprende/ no carga el catálogo
-    // y no sabría si siguen vigentes. La app tampoco lleva la de los mínimos (10/11/2026).
-    !/relMinimos|relVigencia/.test(aprendeHTML) &&
-    !/data-movil-ir|data-inicio-radar|data-rel-plantilla/.test(aprendeHTML) &&
+    // Las frases con cifras del catálogo (04: mínimos de 1 € y su aviso; 06: vigencia), escondidas en la fuente:
+    // rwadar-publicar.js escribe las cifras en <main> y aprende-20261110.js las enseña mientras la revisión siga vigente.
+    ['relMinimos', 'relMinimosAviso', 'relVigencia'].every(id => new RegExp(`id="${id}"[^>]*\\shidden>`).test(aprendeHTML)) &&
+    (aprendeHTML.match(/data-rel-plantilla="[^"]*" data-rel-plantilla-en="[^"]*" data-rel-sin="" hidden>/g) || []).length === 2 &&
+    /<main id="contenido" class="sec-aprende inicio-cuerpo rel">/.test(aprendeHTML) &&
+    !/data-movil-ir|data-inicio-radar/.test(aprendeHTML) &&
     /<script src="\/assets\/aprende-20261110\.js" defer><\/script>/.test(aprendeHTML) &&
     /<link rel="canonical" href="https:\/\/rwadar\.pages\.dev\/aprende\/">/.test(aprendeHTML));
 }
@@ -1957,6 +1959,14 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
   try { v1Acepta = v1.validarComoAppInstalada(publicadoV1).noticias.length === datosNt.noticias.length; } catch { v1Acepta = false; }
   prueba('/datos/noticias.json se publica sin «imagen» y lo acepta el motor de la app instalada',
     publicadoV1 === v1.derivarV1(fuente) && publicadoV1 === lee('datos/noticias.json') && v1Acepta && !/"imagen"/.test(publicadoV1));
+  // Las herramientas de las noticias, aquí y no en test:tools: un cambio en el package.json de la raíz
+  // obliga al guardián de la OTA a pedir otro APK (rediseño de Inicio, 10/11/2026).
+  for (const args of [['--check', 'rwadar-noticias-editoriales.js'], ['rwadar-noticias-editoriales.js', '--comprobar'],
+    ['--check', 'rwadar-app/noticias/noticias-v1.cjs'], ['rwadar-app/noticias/noticias-v1.cjs', '--comprobar'],
+    ['rwadar-app/noticias/copiar-modelo-web.cjs', '--comprobar']]) {
+    const r = spawnSync(process.execPath, args, { cwd: raiz, encoding: 'utf8' });
+    prueba(`node ${args.join(' ')} pasa`, r.status === 0);
+  }
   // Las fotos: cada «imagen» tiene su WebP en noticias-editoriales/, con los bytes y el sha256 de fotos.json, y no sobra ninguno.
   const fotosNt = JSON.parse(fs.readFileSync(path.join(raiz, 'rwadar-editorial-source/noticias/fotos.json'), 'utf8')).fotos;
   const dirFotos = path.join(publicado, 'noticias-editoriales');
@@ -2385,6 +2395,10 @@ for(const [nombre,alterar] of [
     !/data-rel-plantilla="/.test(htmlInicio)&&
     /<ul class="ini-cifras" id="inicioCifras" aria-label="El catálogo en cifras"><\/ul>/.test(htmlInicio)&&
     !new RegExp(`\\b(?:${n.join('|')}) (?:ofertas|plataformas|descartadas)\\b`).test(texto(htmlInicio)));
+  // /aprende/ publicada lleva en <main> las mismas cifras que calcula Inicio (mínimos, ofertas y vigencia).
+  const mainAprende=(fs.readFileSync(path.join(publicado,'aprende','index.html'),'utf8').match(/<main id="contenido"[^>]*>/)||[''])[0];
+  prueba('/aprende/ publicada lleva las cifras del catálogo de Inicio para los mínimos del 04 y la vigencia del 06',
+    ci.minimos>0&&mainAprende===`<main id="contenido" class="sec-aprende inicio-cuerpo rel" data-catalogo-ofertas="${ci.ofertas}" data-catalogo-minimos="${ci.minimos}" data-catalogo-usd="${ci.usd}" data-catalogo-revisado="${ci.revisado}" data-catalogo-hasta="${ci.hasta}">`);
   vm.runInContext("CATALOGO_CADUCADO=true;huellaInicio='';pintarInicio()",c);
   const sinCifras=['inicioCifras','inicioRadar','relNuevasLista'].map(id=>p.obtiene(id).innerHTML);
   prueba('con el catálogo caducado Inicio no enseña cifras ni ofertas y la línea de riesgo se queda',

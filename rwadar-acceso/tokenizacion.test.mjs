@@ -390,6 +390,35 @@ test('en Chromium: /mercado/ pinta la sección entera sin desbordes a 390 y 1366
       assert.doesNotMatch(vacio, /\d/);
       assert.ok(await pagina.isVisible('h1'), 'el resto de la página sigue');
       await pagina.close();
+      // /aprende/: las frases con cifras del catálogo (04: mínimos de 1 € y su aviso; 06: vigencia). Las cifras
+      // las escribe rwadar-publicar.js en <main>; aquí se simulan, vigentes y caducadas, sobre la fuente.
+      const raizAprende = '<main id="contenido" class="sec-aprende inicio-cuerpo rel">';
+      const conCifras = hasta => async r => {
+        const resp = await r.fetch(); const html = await resp.text();
+        assert.ok(html.includes(raizAprende), '/aprende/ tiene su <main> para las cifras');
+        await r.fulfill({ response: resp, body: html.replace(raizAprende, raizAprende.replace('>',
+          ` data-catalogo-ofertas="22" data-catalogo-minimos="5" data-catalogo-usd="1" data-catalogo-revisado="2026-11-10" data-catalogo-hasta="${hasta}">`)) });
+      };
+      const leerCifras = p => p.evaluate(() => ['relMinimos', 'relMinimosAviso', 'relVigencia'].map(id => {
+        const n = document.getElementById(id); return { visible: !n.hidden && n.offsetHeight > 0, texto: n.textContent };
+      }));
+      const aprende = await navegador.newPage({ viewport: { width: 390, height: 844 } });
+      const erroresAprende = []; aprende.on('pageerror', e => erroresAprende.push(e.message));
+      await aprende.route(u => u.pathname === '/aprende/', conCifras('2999-12-31'));
+      await aprende.goto(local2.url + '/aprende/', { waitUntil: 'load' });
+      const vigentes = await leerCifras(aprende);
+      assert.deepEqual(vigentes, [
+        { visible: true, texto: 'En el radar, 5 de las 22 ofertas tienen un mínimo documentado de 1 € o de 1 $.' },
+        { visible: true, texto: 'Sin contar comisiones ni el cambio de divisa. Y un mínimo bajo no significa un riesgo bajo.' },
+        { visible: true, texto: 'Catálogo revisado el 10/11/2026. Próxima revisión: 31/12/2999.' }]);
+      await aprende.unrouteAll(); await aprende.route(u => u.pathname === '/aprende/', conCifras('2000-01-01'));
+      await aprende.reload({ waitUntil: 'load' });
+      assert.ok((await leerCifras(aprende)).every(c => !c.visible), 'con la revisión caducada, ninguna cifra del catálogo');
+      await aprende.unrouteAll();
+      await aprende.reload({ waitUntil: 'load' });
+      assert.ok((await leerCifras(aprende)).every(c => !c.visible && !c.texto.includes('22')), 'sin cifras (la fuente sin publicar), nada');
+      assert.deepEqual(erroresAprende, []);
+      await aprende.close();
     } finally { await local2.cerrar(); }
   } finally { await navegador.close(); await local.cerrar(); }
 });

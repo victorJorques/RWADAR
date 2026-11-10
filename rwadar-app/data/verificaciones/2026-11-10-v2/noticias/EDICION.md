@@ -132,3 +132,39 @@ opiniones, precios de criptomonedas, notas sin fuente primaria y autobombo.
 
 Nada de esto es una recomendación. Ninguna noticia da precios ni promete
 rentabilidad.
+
+## Adenda del 10/11/2026 (tarde) · titulares v2 (rediseño de Inicio)
+
+Víctor, el 10/11: «los titulares no atraen nada». El coordinador de la sesión
+del rediseño de Inicio (Claude) reescribió los 8 `titulo` y `en.titulo` de
+`noticias-2026-11-10.json` (commit «Inicio por bloques (web y app) y fotos en
+las noticias») y los cotejó con el `resumen`, el `porQueImporta` y la fuente de
+cada noticia (las frases literales están en `VERIFICACION.md`, en el apartado
+de cada una). No cambia ningún dato, cifra, fecha ni fuente: solo el titular.
+`tituloInformativo` se conserva tal cual: es el titular neutro de la
+verificación y sigue sirviendo de referencia. El de la UE se ajustó después,
+en las correcciones de la revisión (commit «Rediseño de Inicio: correcciones
+de la revisión»): «la UE quiere» pasó a «los Veintisiete quieren», que es más
+exacto (la fuente es la posición del Consejo, es decir, de los Estados) y casa
+con el inglés «EU states want».
+
+| # | Antes (verificado por la mañana) | Ahora | En qué se apoya (VERIFICACION.md) |
+|---|---|---|---|
+| 1 | Clones de XTB y PJT: la CNMV alerta de 9 webs y apps sin licencia · *XTB and PJT clones: Spain’s CNMV flags 9 unlicensed sites and apps* | La CNMV destapa un clon de XTB y otros 8 chiringuitos · *CNMV exposes an XTB clone and 8 other unlicensed firms* | §1: nueve entidades «no figuran inscritas … no están autorizadas para prestar servicios de inversión»; una dice no guardar relación con XTB (clon). 1 clon de XTB + otras 8 = 9. «Chiringuito» es la palabra corriente en España para una entidad no autorizada. |
+| 2 | Stock Tokens de Robinhood: el emisor podrá restar tokens por costes · *Robinhood Stock Tokens: the issuer may cut tokens to cover costs* | Los Stock Tokens de Robinhood podrán cobrarse costes en tokens · *Robinhood’s Stock Tokens may charge costs in tokens* | §2, punto (1)(C) del suplemento: el emisor puede repercutir costes al inversor, «which may include proportionately reducing the number of Products held». |
+| 3 | Europa busca un idioma común para los mercados tokenizados · *Europe seeks a common language for tokenised markets* | Europa busca el idioma común de los tokens · *Europe seeks a common language for tokens* | §3: el ETSG nace para «develop common standards for an interconnected tokenised financial ecosystem». |
+| 4 | Pagarés de Prosegur Cash en DLT: 500.000 € inscritos en la CNMV · *Prosegur Cash paper on DLT: €500,000 issue registered in Spain* | Prosegur Cash tokeniza 500.000 € en pagarés · *Prosegur Cash tokenises €500,000 of commercial paper* | §4: inscripción en la CNMV de la emisión de pagarés de 500.000 € anotada en registro DLT; el aviso de que inscribir no valida sus condiciones sigue en el `porQueImporta`. |
+| 5 | Los Estados de la UE quieren multiplicar por 50 el tope DLT · *EU states want a 50-fold rise in the DLT Pilot Regime cap* | Mercados tokenizados: los Veintisiete quieren un límite 50 veces mayor · *Tokenised markets: EU states want a cap 50 times higher* | §5, considerando 76: de 6.000 a 300.000 millones de euros («the aggregate cap should be raised to EUR 300 billion»): 50 veces. Posición del Consejo (los Estados), no ley aprobada. |
+| 6 | España suma su segundo mercado de valores tokenizados: Bit2Me STX · *Spain gets its second tokenised securities market: Bit2Me STX* | España ya tiene dos mercados de valores tokenizados · *Spain now has two tokenised securities markets* | §6: nota de la CNMV del 28/10 y lista de ESMA, con solo dos infraestructuras españolas (Securitize y Bit2Me STX). |
+| 7 | ¿Te piden pagar antes de ver los proyectos? ESMA ve un riesgo · *Asked to pay before seeing the projects? ESMA sees a risk* | ¿Te cobran antes de enseñarte el proyecto? Ojo, avisa ESMA · *Charged before you see the project? ESMA says watch out* | §7, Q&A 2950: cobrar una cuota de acceso antes de ver la información clave puede perjudicar al inversor. |
+| 8 | La CNMV quiere atender tus quejas contra cripto y crowdfunding · *Spain’s CNMV wants to handle your complaints on crypto and crowdfunding* | La CNMV abre la puerta a tus quejas contra plataformas cripto · *Spain’s CNMV opens the door to your crypto platform complaints* | §8: proyecto de Circular en consulta para ampliar el procedimiento de reclamaciones a los proveedores cripto y a las plataformas de financiación participativa; el `resumen` dice que es una consulta. |
+
+Notas de las revisoras independientes, para quien edite el próximo ciclo (no
+se ha cambiado nada por ellas):
+
+- 1: de las otras 8, dos también son clones (de PJT Partners); el titular
+  anterior lo decía. «Chiringuito» es más llano, pero menos exacto.
+- 2: el inglés («may charge costs in tokens») hace sujeto a los tokens; la
+  fuente dice que el emisor puede restar tokens al inversor para cubrir costes.
+- 3 y 8: «el idioma común de los tokens» es vago, y «abre la puerta» suena a
+  hecho cuando es un proyecto en consulta (el resumen lo aclara).

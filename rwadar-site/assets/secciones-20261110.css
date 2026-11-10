@@ -8,12 +8,14 @@
    ===================================================================== */
 
 /* ---- Bloques de Inicio ---- */
-.ini-bloque{padding:40px 0 8px;border-top:var(--bd)}
-.ini-bloque.tk,.ini-bloque.nt{padding:40px 0 8px}
+/* Pulido visual (10/11/2026): el mismo ritmo en todos los bloques, con aire
+   también debajo del «Ver …» antes de la raya del siguiente. */
+.ini-bloque{padding:40px 0 24px;border-top:var(--bd)}
+.ini-bloque.tk,.ini-bloque.nt{padding:40px 0 24px}
 .rel-portada+.ini-bloque,.rel-portada+.ini-bloque[hidden]+.ini-bloque{border-top:0}
 .ini-bloque-cab{display:flex;flex-direction:column;gap:4px}
 .ini-bloque-tit{margin:0;color:var(--tx);font:700 1.5rem/1.2 var(--display);letter-spacing:-.02em}
-.ini-bloque-sub{margin:0;color:var(--tx-2);font:400 .9375rem/1.45 var(--body)}
+.ini-bloque-sub{margin:0;color:var(--tx-2);font:400 1rem/1.5 var(--body)}
 .ini-bloque-sub[hidden]{display:none}
 /* «Ver …»: un enlace claro, con flecha, al final de cada bloque. */
 .ini-ver{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin:8px 0 0 -8px;padding:0 8px;border-radius:var(--r-m);
@@ -42,15 +44,26 @@
 
 /* ---- 2 · Ofertas ---- */
 .ini-ofertas .rel-tarjetas{margin-top:16px}
-/* Cada tarjeta, su alto: las que no llevan la línea de «qué es» no se estiran
-   hasta la más alta ni dejan un hueco en medio (revisión del 10/11/2026). */
-.ini-ofertas .rel-tarjetas{align-items:start}
-.ini-ofertas .rel-tarjeta article{height:auto}
-.ini-ofertas .rel-nueva-fecha{margin-top:0}
+/* Como la lista de Ofertas (.emis-rejilla): las tarjetas de una fila miden lo
+   mismo y «Añadida el …» baja al pie. Con cada tarjeta a su alto (revisión del
+   10/11/2026), el carrusel del móvil dejaba un vacío bajo las cortas, fuera de
+   la tarjeta (pulido visual del 10/11/2026). */
+.ini-ofertas .rel-nueva-fecha{margin-top:auto}
 .ini-ofertas .rel-nueva-meta{display:flex;flex-wrap:wrap;gap:6px;min-height:0;margin:0 0 6px}
 .ini-ofertas .rel-nueva-meta:empty{display:none}
 .ini-etq-cinco{color:var(--senal);background:var(--senal-t)}
 .rel-nueva-fecha{margin-top:auto;padding-top:10px;color:var(--tx-3);font:400 .8125rem/1.4 var(--body);font-variant-numeric:tabular-nums}
+/* La piel de las tarjetas de Ofertas (.escaparate-oferta): «Nueva» y «Pasa las
+   5 comprobaciones» van sobre la foto, en su píldora oscura, y los títulos de
+   una fila empiezan a la misma altura; el título, en la letra de los titulares. */
+.ini-ofertas .rel-tarjeta article{position:relative}
+.ini-ofertas .rel-tarjeta-img+.rel-tarjeta-cuerpo .rel-nueva-meta{position:absolute;z-index:2;top:10px;left:10px;right:10px;margin:0;pointer-events:none}
+.ini-ofertas .rel-tarjeta-img+.rel-tarjeta-cuerpo .rel-nueva-meta .etq{padding:4px 10px;border-radius:var(--r-p);background:rgba(11,10,10,.72);
+  color:var(--senal);font:600 .75rem/1.3 var(--body)}
+.ini-ofertas .rel-tarjeta-cuerpo{padding:16px 18px 14px}
+.ini-ofertas .rel-tarjeta h3{margin-top:0;font:700 1.0625rem/1.3 var(--display);letter-spacing:-.01em;text-wrap:balance}
+.ini-ofertas .rel-tarjeta-plat{margin-top:6px}
+.ini-ofertas .rel-tarjeta-nota{margin-top:10px;color:var(--tx-2);font-size:1rem;line-height:1.5}
 .ini-cinco{margin-top:12px}
 .ini-cinco>summary{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-left:-8px;padding:0 8px;border-radius:var(--r-m);
   color:var(--tx-2);font:500 .9375rem/1.3 var(--body);cursor:pointer;list-style:none}
@@ -72,7 +85,7 @@
   color:var(--tx-3);font:600 .6875rem/1 var(--mono)}
 .ini-aprende-pasos span:first-child{background:var(--senal);box-shadow:none;color:var(--en-senal)}
 .ini-aprende-tit{color:var(--tx);font:700 1.25rem/1.25 var(--display);letter-spacing:-.015em;text-wrap:balance}
-.ini-aprende-sub{color:var(--tx-2);font:400 .9375rem/1.5 var(--body)}
+.ini-aprende-sub{color:var(--tx-2);font:400 1rem/1.5 var(--body)}
 .ini-ver--tarjeta{margin-top:0}
 
 /* ---- 6 · Pie ---- */
@@ -82,7 +95,9 @@
 
 /* ---- Inicio en tableta y escritorio ---- */
 @media (min-width:768px){
-  .escritorio-relato .rel>.ini-bloque,.escritorio-relato .rel>.ini-pie{max-width:var(--rel-ancho);margin-inline:auto}
+  /* Los bloques, a lo ancho de la portada: el mismo borde izquierdo que el
+     título de Inicio, la cabecera del sitio y la lista de Ofertas. */
+  .escritorio-relato .rel>.ini-bloque,.escritorio-relato .rel>.ini-pie{max-width:none;margin-inline:0}
   .escritorio-relato .rel-portada.ini-cab{min-height:0;padding:40px 0 48px}
   .escritorio-relato .ini-cab .rel-radar{height:clamp(320px,calc(100svh - 360px),440px)}
   .escritorio-relato .rel .ini-cab .rel-radar .inicio-radar{inset:0;height:100%}
@@ -92,7 +107,7 @@
   .escritorio-relato .ini-cifra-fecha b{font-size:1.25rem;line-height:2}
   .escritorio-relato .ini-cifra span{font-size:.8125rem}
   .escritorio-relato .ini-cab .rel-aviso{font-size:.875rem}
-  .ini-bloque,.ini-bloque.tk,.ini-bloque.nt{padding:72px 0 8px}
+  .ini-bloque,.ini-bloque.tk,.ini-bloque.nt{padding:72px 0 40px}
   .ini-bloque-tit{font-size:2rem}
   .ini-bloque-sub{font-size:1.0625rem}
   .escritorio-relato .ini-ofertas .rel-tarjetas{width:auto;margin:24px 0 0}
@@ -101,7 +116,8 @@
   .escritorio-relato .rel .ini-ofertas .rel-tarjetas>li:nth-child(n):nth-child(n){grid-column:auto}
   .escritorio-relato .ini-ofertas .rel-tarjetas:has(>li:nth-child(4):last-child){grid-template-columns:repeat(4,minmax(0,1fr))}
   .escritorio-relato .ini-ofertas .rel-tarjetas:has(>li:nth-child(5):last-child){grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-  .escritorio-relato .ini-ofertas .rel-tarjetas:has(>li:nth-child(5):last-child) .rel-tarjeta-cuerpo{padding:14px 14px 8px}
+  .escritorio-relato .ini-ofertas .rel-tarjetas:has(>li:nth-child(5):last-child) .rel-tarjeta-cuerpo{padding:14px 16px 12px}
+  .escritorio-relato .ini-ofertas .rel-tarjetas:has(>li:nth-child(5):last-child) .rel-tarjeta-nota{font-size:.9375rem}
   .ini-aprende-tarjeta{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;column-gap:32px;padding:28px 32px}
   .ini-aprende-pasos{grid-row:1/3}
   .ini-aprende-tit{font-size:1.5rem}
@@ -167,12 +183,18 @@
   .sec-entradilla{font-size:1.125rem}
   .sec-sigue{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-/* /mercado/: la sección entera, sin el borde de arriba. */
+/* /mercado/: la sección entera, sin el borde de arriba. Cada gráfico, en la
+   piel de las tarjetas (fondo, borde y radio de las de Ofertas). */
 .sec .tk{padding-top:24px;border-top:0}
 .sec .tk-tit{font-size:1.25rem}
+.sec .tk-bloque{padding:18px 16px;border:var(--bd);border-radius:var(--r-l);background:var(--s1)}
+.sec .tk-h3{margin-top:0;margin-bottom:14px;font:700 1.0625rem/1.3 var(--display);letter-spacing:-.01em}
+.sec .tk-tipo-nom{font-size:1rem}
+@media (min-width:768px){.sec .tk-bloque{padding:24px}}
 /* /aprende/: los capítulos como estaban en Inicio, en su columna de lectura. */
 .sec-aprende.rel{padding-bottom:64px}
 .sec-aprende .rel-portada.apr-entrada{display:block;min-height:0;margin:0;padding:8px 0 24px;border-bottom:0;background:none}
+.sec-aprende .rel-mas li{font-size:1rem;line-height:1.55}
 .sec-aprende .rel-mercado-enlace{display:inline-flex;align-items:center;gap:6px;color:var(--senal);font-weight:600;text-decoration:none}
 .apr-academy{margin-top:48px;padding:24px 20px;border:var(--bd);border-radius:var(--r-l);background:var(--s1)}
 .apr-academy h2{margin:0;color:var(--tx);font:700 1.375rem/1.2 var(--display);letter-spacing:-.015em}

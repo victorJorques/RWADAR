@@ -295,7 +295,34 @@ const scriptCatalogo = fs.readFileSync(path.join(DIR, rutaCatalogo.slice(1)), 'u
 // Acorn interpreta solo datos literales y el contrato exige el lote íntegro.
 // La VM de pre-renderizado recibe exactamente esa misma copia ya validada.
 const { leerBloquesCatalogo, validarCatalogoSnapshot } = require('./rwadar-fichas');
-validarCatalogoSnapshot(leerBloquesCatalogo(scriptCatalogo));
+const catalogoValidado = validarCatalogoSnapshot(leerBloquesCatalogo(scriptCatalogo));
+/* /aprende/ no carga el catálogo (rediseño de Inicio, 10/11/2026), pero su
+   capítulo 04 dice cuántas ofertas tienen un mínimo documentado de 1 € o 1 $ y
+   el 06, cuándo se revisó. Esas cifras se calculan aquí como en Inicio
+   (cifrasInicio de rwadar-20260820.js: ofertas del lote, mínimo corto de
+   transparencia.json con la misma fecha de verificación) y se escriben en el
+   <main> de /aprende/; aprende-20261110.js las enseña mientras la revisión
+   siga vigente (hasta «hasta» incluido). */
+function cifrasCatalogoAprende(catalogo) {
+  const transparencia = JSON.parse(fs.readFileSync(path.join(__dirname, 'rwadar-editorial-source', 'ofertas', 'transparencia.json'), 'utf8'));
+  const p0 = catalogo.plataformas[0] || {};
+  const revisado = /^\d{4}-\d\d-\d\d$/.test(p0.verificado_lote_el || '') ? p0.verificado_lote_el : '';
+  const dias = Number.isInteger(p0.vigencia_lote_dias) && p0.vigencia_lote_dias > 0 ? p0.vigencia_lote_dias : 0;
+  const ofertas = catalogo.ofertas.filter(o => o && o.catalogo === true);
+  const corto = o => { const e = transparencia.ofertas && Object.hasOwn(transparencia.ofertas, o.slug) ? transparencia.ofertas[o.slug] : null;
+    return e && e.verificadaEl === o.verificadaEl && typeof e.minimoCorto === 'string' ? e.minimoCorto : ''; };
+  const minimos = ofertas.filter(o => ['1 €', '1 USD'].includes(corto(o)));
+  if (!revisado || !dias || ofertas.length !== catalogo.ofertas.length || !ofertas.length) return null;
+  return { ofertas: ofertas.length, minimos: minimos.length, usd: minimos.filter(o => corto(o) === '1 USD').length, revisado,
+    hasta: new Date(Date.parse(revisado + 'T00:00:00Z') + dias * 86400000).toISOString().slice(0, 10) };
+}
+function escribirCifrasAprende(html, cifras) {
+  const raiz = '<main id="contenido" class="sec-aprende inicio-cuerpo rel">';
+  if ((html.split(raiz).length - 1) !== 1) throw new Error('aprende/index.html: falta su <main> para las cifras del catálogo');
+  if (!cifras) return html;
+  return html.replace(raiz, raiz.replace('>', ` data-catalogo-ofertas="${cifras.ofertas}" data-catalogo-minimos="${cifras.minimos}"` +
+    ` data-catalogo-usd="${cifras.usd}" data-catalogo-revisado="${cifras.revisado}" data-catalogo-hasta="${cifras.hasta}">`));
+}
 
 /* ---- 1b · ¿compila? -------------------------------------------------
    Un error de sintaxis no rompe el pre-renderizado: el simulador ejecuta
@@ -538,6 +565,10 @@ function construirSalida() {
       // La baja de avisos no usa la cuenta: no lleva el ayudante de sesión.
       if (PAGINAS_HTML.includes(nombre) && !['acceso.html', 'baja.html', 'privacidad.html', 'transparencia-comercial.html'].includes(nombre)) {
         let pagina = fs.readFileSync(destino, 'utf8');
+        if (nombre === 'aprende/index.html') {
+          pagina = escribirCifrasAprende(pagina, cifrasCatalogoAprende(catalogoValidado));
+          fs.writeFileSync(destino, pagina, 'utf8');
+        }
         if (!pagina.includes('/assets/acceso-privado.js')) {
           if (!/<head(?:\s[^>]*)?>/i.test(pagina)) throw new Error(`Falta head en ${nombre}`);
           pagina = pagina.replace(/<head(?:\s[^>]*)?>/i,

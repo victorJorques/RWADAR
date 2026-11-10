@@ -484,5 +484,6 @@ test('Inicio pinta la tarjeta compacta tras «Ofertas» y la pantalla «El merca
   const ofertas = inicio.indexOf('<RecienAnadidas'), compacta = inicio.indexOf('<TokenizacionMundo compacta');
   assert.ok(ofertas > 0 && compacta > ofertas);
   assert.match(inicio, /<TokenizacionMundo compacta textos=\{b\.mercado\} onAbrirEnlace=\{onAbrirEnlace\} onVerMas=\{\(\) => abrir\('mercado'\)\} \/>/);
-  assert.match(inicio, /<PantallaInicio visible=\{seccion === 'mercado'\}[\s\S]*?<TokenizacionMundo onAbrirEnlace=\{onAbrirEnlace\} \/>/);
+  // En su pantalla, sin el margen ni la raya de bloque de Inicio (el cuerpo de la pantalla ya los da).
+  assert.match(inicio, /<PantallaInicio visible=\{seccion === 'mercado'\}[\s\S]*?<TokenizacionMundo pantalla onAbrirEnlace=\{onAbrirEnlace\} \/>/);
 });

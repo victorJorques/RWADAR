@@ -45,7 +45,7 @@ import path from 'node:path';
 const require = createRequire(import.meta.url);
 const academyMod = require('../rwadar-academy.js');
 const paginasFichas = require('../rwadar-fichas-manifiesto.js');
-const {ARCHIVOS_PUBLICABLES} = require('../rwadar-publicacion-segura.js');
+const {ARCHIVOS_PUBLICABLES, PAGINAS_SECCIONES} = require('../rwadar-publicacion-segura.js');
 
 const base = String(process.argv[2] || '').replace(/\/$/, '');
 const prueba = process.env.RWADAR_COMPROBAR_LOCAL === '1' && /^http:\/\/127\.0\.0\.1:\d+$/.test(base);
@@ -311,6 +311,36 @@ for (const nombre of imagenesRetiradas) {
   const imagen = await pedir('/ofertas-editoriales/' + nombre, { method: 'HEAD' });
   const revalidada = await pedir('/ofertas-editoriales/' + nombre, { method: 'HEAD', headers: { 'If-None-Match': '"rwadar-comprobacion"' } });
   ok(`ilustración retirada /ofertas-editoriales/${nombre} da 404: ${imagen.estado} / ${revalidada.estado}`, imagen.estado === 404 && revalidada.estado === 404);
+}
+
+/* Rediseño de Inicio (10/11/2026): las secciones /mercado/, /noticias/ y
+   /aprende/; las noticias en sus dos formas (v2 con foto para la web y la app
+   nuevas, v1 sin «imagen» para la app ya instalada) y cada foto que usan, con
+   los bytes de fotos.json. */
+for (const nombre of PAGINAS_SECCIONES) {
+  const ruta = '/' + nombre.replace(/index\.html$/, '');
+  const pagina = await pedir(ruta);
+  ok(`sección ${ruta} publicada con su canonical`, pagina.estado === 200 &&
+    pagina.texto.includes(`<link rel="canonical" href="https://rwadar.pages.dev${ruta}">`) &&
+    (pagina.texto.match(/<h1\b[^>]*>/g) || []).length === 1 && /script-src 'self'/.test(pagina.cabeceras.get('content-security-policy') || ''));
+}
+const noticiasV2 = await pedir('/datos/noticias-v2.json');
+const noticiasV1 = await pedir('/datos/noticias.json');
+let datosV2 = null;
+try { datosV2 = JSON.parse(noticiasV2.texto); } catch {}
+ok('/datos/noticias-v2.json es el del build', noticiasV2.estado === 200 && noticiasV2.texto === leerPublicado('datos/noticias-v2.json'));
+ok('/datos/noticias.json (app instalada) es el del build y no lleva «imagen»', noticiasV1.estado === 200 &&
+  noticiasV1.texto === leerPublicado('datos/noticias.json') && !/"imagen"\s*:/.test(noticiasV1.texto));
+const bibliotecaFotos = JSON.parse(fs.readFileSync(fileURLToPath(new URL('../rwadar-editorial-source/noticias/fotos.json', import.meta.url)), 'utf8')).fotos;
+const clavesUsadas = [...new Set((datosV2?.noticias || []).map(n => n && n.imagen).filter(c => typeof c === 'string'))];
+ok('las noticias publicadas usan alguna foto', clavesUsadas.length > 0);
+for (const clave of clavesUsadas) {
+  const respuesta = await fetch(`${base}/noticias-editoriales/${clave}.webp`, { cache: 'no-store' });
+  const bytes = Buffer.from(await respuesta.arrayBuffer());
+  const foto = bibliotecaFotos[clave];
+  ok(`foto /noticias-editoriales/${clave}.webp publicada, WebP y con el sha256 de fotos.json`, respuesta.status === 200 &&
+    /^image\/webp\b/.test(respuesta.headers.get('content-type') || '') && Boolean(foto) && bytes.length === foto.bytes &&
+    crypto.createHash('sha256').update(bytes).digest('hex') === foto.sha256);
 }
 
 console.log(`\n${correctas} correctas, ${fallos.length} fallidas`);

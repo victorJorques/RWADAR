@@ -146,6 +146,8 @@ const es = {
       ],
       cifrasPie: 'tienen acciones en bolsa (España, finales de 2024)',
       texto: 'Para el economista jefe de la OCDE, trocear un activo en tokens podría facilitar la entrada de pequeños inversores, pero aún no a gran escala.',
+      minimos: (m, n, usd) => `En el radar, ${m} de las ${n} ofertas tienen un mínimo documentado de 1 €${usd > 0 ? ' o de 1 $' : ''}.`,
+      aviso: 'Sin contar comisiones ni el cambio de divisa. Y un mínimo bajo no significa un riesgo bajo.',
       saberMas: [
         'Lo dijo Stefano Scarpetta en el simposio económico de Jackson Hole, en EE. UU. (agosto de 2026). Añadió que los límites legales y los de la infraestructura de los mercados aún lo impiden a gran escala.',
         'Larry Fink escribió en 2025 que la tokenización hace que invertir sea «mucho más democrático», siempre que se resuelva «un problema crítico: la verificación de identidad». Lo dice quien vende fondos tokenizados: hoy, el de BlackRock pide un mínimo de 5 millones de dólares y tiene unos 100 titulares.',
@@ -419,6 +421,8 @@ const en = {
       ],
       cifrasPie: 'hold listed shares (Spain, end of 2024)',
       texto: 'For the OECD\'s chief economist, splitting an asset into tokens could make it easier for small investors to get in, but not yet at scale.',
+      minimos: (m, n, usd) => `On the radar, ${m} of the ${n} offers have a documented minimum of €1${usd > 0 ? ' or $1' : ''}.`,
+      aviso: 'Not counting fees or currency exchange. And a low minimum does not mean low risk.',
       saberMas: [
         'Stefano Scarpetta said it at the Jackson Hole economic symposium in the US (August 2026). He added that legal and market-infrastructure limits still prevent it at scale.',
         'Larry Fink (2025): "Perhaps most importantly, tokenization makes investing much more democratic", "provided we crack one critical problem: identity verification". This comes from someone who sells tokenized funds: today BlackRock\'s tokenized fund asks for a $5 million minimum and has about 100 holders.',

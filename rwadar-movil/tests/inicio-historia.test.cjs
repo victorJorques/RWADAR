@@ -76,10 +76,11 @@ test('las cifras del catálogo no se escriben a mano y faltan si no hay catálog
   assert.equal(es.portada.boton(0), 'Ver las ofertas');
   assert.equal(en.portada.boton(0), 'See the offers');
   assert.match(es.portada.subtitulo(0), /Aquí ves las ofertas del radar/);
-  // Rediseño (10/11/2026): /aprende/ (web y app) ya no lleva la frase de los mínimos del catálogo.
-  assert.equal(es.capitulos.cap4.minimos, undefined);
-  assert.equal(en.capitulos.cap4.minimos, undefined);
-  assert.doesNotMatch(fs.readFileSync(path.join(RAIZ, 'componentes', 'AprendeInicio.js'), 'utf8'), /cap4\.minimos|cap4\.aviso/);
+  // El 04 de Aprende (web y app) conserva la frase de los mínimos del catálogo y su aviso, solo con catálogo vigente.
+  assert.equal(es.capitulos.cap4.minimos(5, 22, 1), 'En el radar, 5 de las 22 ofertas tienen un mínimo documentado de 1 € o de 1 $.');
+  assert.equal(en.capitulos.cap4.minimos(5, 22, 0), 'On the radar, 5 of the 22 offers have a documented minimum of €1.');
+  assert.match(fs.readFileSync(path.join(RAIZ, 'componentes', 'AprendeInicio.js'), 'utf8'),
+    /cifras\.vigente && cifras\.minimos \? <>[\s\S]*cap4\.minimos\(cifras\.minimos, cifras\.ofertas, cifras\.usd\)[\s\S]*cap4\.aviso/);
   for (const t of cadenas({ a: es.portada.antetitulo, b: es.portada.titular, c: es.capitulos.cap6, d: es.seleccion.criterios })) {
     assert.doesNotMatch(t, /\b(?:24|26) (?:ofertas|plataformas)\b/, t);
   }

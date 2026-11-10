@@ -222,6 +222,10 @@
           <figcaption class="rel-par-pie">tienen acciones en bolsa (España, finales de 2024)</figcaption>
         </figure>
         <p class="rel-txt rel-revela">Para el economista jefe de la OCDE, trocear un activo en tokens podría facilitar la entrada de pequeños inversores, pero aún no a gran escala.</p>
+        <!-- Las cifras de estas dos frases (y la vigencia del 06) salen del catálogo publicado: rwadar-publicar.js
+             las escribe en <main> (data-catalogo-*) y aprende-20261110.js las enseña mientras la revisión siga vigente. -->
+        <p class="rel-txt rel-revela" id="relMinimos" data-rel-plantilla="En el radar, {minimos} de las {ofertas} ofertas tienen un mínimo documentado de 1 €{usd}." data-rel-plantilla-en="On the radar, {minimos} of the {ofertas} offers have a documented minimum of €1{usd}." data-rel-sin="" hidden></p>
+        <p class="rel-aviso rel-revela" id="relMinimosAviso" hidden>Sin contar comisiones ni el cambio de divisa. Y un mínimo bajo no significa un riesgo bajo.</p>
         <details class="rel-mas">
           <summary>Saber más</summary>
           <ul>
@@ -274,7 +278,7 @@
           <p class="rel-cifra-n">0 €</p>
           <p class="rel-cifra-pie">lo que paga una empresa por salir en el radar. Ni vendemos ni asesoramos.</p>
         </div>
-        <p class="rel-aviso rel-revela">Invertir tiene riesgos: puedes perder parte o todo lo que inviertas.</p>
+        <p class="rel-aviso rel-revela"><span id="relVigencia" data-rel-plantilla="Catálogo revisado el {revisado}. Próxima revisión: {hasta}." data-rel-plantilla-en="Catalogue reviewed {revisado}. Next review: {hasta}." data-rel-sin="" hidden></span> <span>Invertir tiene riesgos: puedes perder parte o todo lo que inviertas.</span></p>
         <div class="rel-pie-6 rel-revela">
           <a class="b3 rel-explorar-2" href="/#tool">Explorar el radar<span class="rel-flecha" aria-hidden="true"></span></a>
           <a class="b3 rel-ver-ofertas" href="/#emisiones">Ver las ofertas<span class="rel-flecha" aria-hidden="true"></span></a>

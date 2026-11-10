@@ -70,7 +70,7 @@ function Linea({ serie, idioma }) {
   );
 }
 
-export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokenizacion, compacta = false, onVerMas, textos = null }) {
+export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokenizacion, compacta = false, onVerMas, textos = null, pantalla = false }) {
   const idioma = useIdioma();
   const [estado, setEstado] = useState({ fase: 'cargando', datos: null });
   const vivo = useRef(true);
@@ -166,7 +166,8 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
     );
   }
   return (
-    <View style={e.seccion}>
+    // En su pantalla («El mercado hoy»), el cuerpo ya da el margen: sin otro margen ni otra raya.
+    <View style={[e.seccion, pantalla && e.seccionPantalla]}>
       <Text style={e.ante}>Datos de mercado</Text>
       <Text style={e.titulo} accessibilityRole="header">La tokenización en el mundo</Text>
       <Text style={e.sub}>Valor de mercado de los tokens que representan activos reales (deuda, fondos, materias primas, acciones, inmuebles). Las categorías pueden solaparse. No es una recomendación.</Text>
@@ -205,7 +206,7 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
                   </Text>
                   {dir === 'sin-datos'
                     ? (llega
-                      ? <Text style={e.periodoNota} numberOfLines={3}>{'disponible el'} <Text noTraducir>{breve(llega)}</Text></Text>
+                      ? <Text style={e.periodoNota} numberOfLines={4}>{'disponible el'} <Text noTraducir>{breve(llega)}</Text></Text>
                       : <Text style={e.periodoNota} numberOfLines={2}>aún sin datos</Text>)
                     : <Text noTraducir style={[e.periodoNota, { color }]} numberOfLines={1}>{FLECHA[dir]} {traducir(PALABRA[dir])}</Text>}
                   {pie ? <Text style={e.periodoDesde} numberOfLines={3}>{pie[0]} <Text noTraducir>{breve(pie[1])}</Text></Text> : null}
@@ -217,7 +218,9 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
             <Text style={e.nota}>{'Los periodos sin datos se rellenarán solos con las fotos diarias que guarda RWAdar desde el'} <Text noTraducir style={e.notaFecha}>{fechaCorta(d.guardadoDesde || d.fecha, idioma)}</Text></Text>
           ) : null}
 
-          <Text style={e.h3} accessibilityRole="header">Por tipo de activo</Text>
+          {/* Cada gráfico, en la piel de las tarjetas (como /mercado/ en la web). */}
+          <View style={e.tarjetaGrafico}>
+          <Text style={[e.h3, e.h3Tarjeta]} accessibilityRole="header">Por tipo de activo</Text>
           {d.tipos.map((t) => {
             const dir = direccion(t.cambio24h);
             const cambio = dir === 'sin-datos' ? '—' : `${FLECHA[dir]} ${porcentaje(t.cambio24h, idioma)}`;
@@ -243,9 +246,12 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
               </View>
             );
           })}
+          </View>
 
-          <Text style={e.h3} accessibilityRole="header">Evolución del valor total</Text>
-          <View style={e.lineaCaja}><Linea serie={d.serie} idioma={idioma} /></View>
+          <View style={e.tarjetaGrafico}>
+            <Text style={[e.h3, e.h3Tarjeta]} accessibilityRole="header">Evolución del valor total</Text>
+            <View style={e.lineaCaja}><Linea serie={d.serie} idioma={idioma} /></View>
+          </View>
         </View>
       ) : null}
 
@@ -282,8 +288,11 @@ const e = StyleSheet.create({
   notaFecha: { fontFamily: F.media, color: C.tx2 },
   h3: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.tx, marginTop: 24, marginBottom: 12 },
   tipo: { marginBottom: 14 },
+  tarjetaGrafico: { marginTop: 24, paddingHorizontal: 16, paddingTop: 18, paddingBottom: 4, borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1 },
+  h3Tarjeta: { marginTop: 0, marginBottom: 14, fontFamily: F.negrita, fontSize: 17, lineHeight: 22 },
+  seccionPantalla: { paddingHorizontal: 0, paddingTop: 16, borderTopWidth: 0 },
   tipoCab: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', gap: 12 },
-  tipoNom: { flexShrink: 1, fontFamily: F.media, fontSize: 15, lineHeight: 20, color: C.tx },
+  tipoNom: { flexShrink: 1, fontFamily: F.media, fontSize: 16, lineHeight: 21, color: C.tx },
   tipoValor: { ...T.instrumento, fontSize: 14, lineHeight: 20, color: C.tx },
   barra: { height: 10, marginTop: 6, borderRadius: R.p, backgroundColor: C.ton, overflow: 'hidden' },
   relleno: { height: '100%', borderRadius: R.p, backgroundColor: C.tx2 },
@@ -291,14 +300,14 @@ const e = StyleSheet.create({
   tipoPieTxt: { fontFamily: F.regular, fontSize: 13, lineHeight: 18, color: C.tx3 },
   tipoCuota: { ...T.instrumento, fontSize: 13, color: C.tx2 },
   tipoCambio: { ...T.instrumento, fontSize: 13 },
-  lineaCaja: { padding: 12, borderRadius: R.m, backgroundColor: C.ton },
+  lineaCaja: { padding: 12, marginBottom: 14, borderRadius: R.m, backgroundColor: C.ton },
   eje: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 6 },
   ejeTxt: { ...T.instrumento, fontSize: 12, color: C.tx3 },
   lineaNota: { fontFamily: F.regular, fontSize: 13, lineHeight: 18, color: C.tx2, marginTop: 8 },
   // Inicio: la tarjeta compacta, con el mismo título que los demás bloques.
   bloque: { marginTop: 36, paddingTop: 32, borderTopWidth: 1, borderTopColor: C.bd },
   bloqueTit: { fontFamily: F.negrita, fontSize: 24, lineHeight: 29, letterSpacing: -0.4, color: C.tx },
-  bloqueSub: { ...T.menor, fontSize: 15, lineHeight: 22, color: C.tx2, marginTop: 4 },
+  bloqueSub: { ...T.menor, fontSize: 16, lineHeight: 23, color: C.tx2, marginTop: 4 },
   mini: { marginTop: 16, padding: 18, borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1 },
   miniFila: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 10 },
   miniCifra: { fontFamily: F.semi, fontVariant: ['tabular-nums'], letterSpacing: -0.8, fontSize: 36, lineHeight: 42, color: C.tx, flexShrink: 1 },

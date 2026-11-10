@@ -151,7 +151,7 @@ export default function Inicio({
       ) : null}
 
       {/* 2 · Ofertas: recién añadidas y Selección, sin duplicados. */}
-      <RecienAnadidas ofertas={destacadas} seleccion={enSeleccion} total={n}
+      <RecienAnadidas ofertas={destacadas} seleccion={enSeleccion}
         onAbrirOferta={onAbrirOferta} onVerTodas={() => onDestino('ofertas')} />
 
       {/* 3 · El mercado hoy: la tarjeta compacta; el resto, en su pantalla. */}
@@ -191,7 +191,7 @@ export default function Inicio({
 
     <PantallaInicio visible={seccion === 'mercado'} titulo={b.mercado.titulo} volver={b.volver} onCerrar={cerrar}>
       <ScrollView contentContainerStyle={e.pantallaCuerpo}>
-        <TokenizacionMundo onAbrirEnlace={onAbrirEnlace} />
+        <TokenizacionMundo pantalla onAbrirEnlace={onAbrirEnlace} />
       </ScrollView>
     </PantallaInicio>
     <PantallaInicio visible={seccion === 'noticias'} titulo={b.noticias.titulo} volver={b.volver} onCerrar={cerrar}>
@@ -245,7 +245,7 @@ const e = StyleSheet.create({
   pasoTxt: { ...T.instrumento, fontSize: 11, lineHeight: 14, color: C.tx3 },
   pasoTxtOn: { color: C.enSenal },
   aprendeTit: { fontFamily: F.negrita, fontSize: 20, lineHeight: 25, letterSpacing: -0.3, color: C.tx },
-  aprendeSub: { ...T.menor, fontSize: 15, lineHeight: 22, color: C.tx2 },
+  aprendeSub: { ...T.menor, fontSize: 16, lineHeight: 23, color: C.tx2 },
   pie: { marginTop: 36, paddingTop: 20, borderTopWidth: 1, borderTopColor: C.bd },
   pieTxt: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx3 },
   seccion: { marginTop: 26 },
