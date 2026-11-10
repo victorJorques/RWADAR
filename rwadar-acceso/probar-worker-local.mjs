@@ -70,7 +70,12 @@ export const USUARIO_PRUEBA = Object.freeze({ id: '00000000-0000-4000-8000-00000
 export function crearAuthSimulado({ registro = [], responder = null } = {}) {
   return async function fetchSupabase(entrada, init = {}) {
     const url = new URL(String(entrada));
-    if (url.origin !== ORIGEN_SUPABASE) throw new Error('El arnés local no sale a la red: ' + url.origin);
+    if (url.origin !== ORIGEN_SUPABASE) {
+      // Otro origen (CoinGecko, para /api/tokenizacion) solo si responder lo simula.
+      const simulada = responder && await responder(url, init);
+      if (simulada) return simulada;
+      throw new Error('El arnés local no sale a la red: ' + url.origin);
+    }
     const metodo = init.method || 'GET';
     let cuerpo = null;
     try { cuerpo = init.body ? JSON.parse(init.body) : null; } catch { cuerpo = null; }

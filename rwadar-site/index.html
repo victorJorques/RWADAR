@@ -75,6 +75,7 @@
 <link rel="stylesheet" href="/assets/idioma-20261022.css">
 <link rel="stylesheet" href="/assets/mapa-buscar-20261027.css">
 <link rel="stylesheet" href="/assets/academy-candado-20261108.css">
+<link rel="stylesheet" href="/assets/tokenizacion-20261110.css">
 </head>
 <body>
 
@@ -171,6 +172,23 @@
       <ul class="rel-tarjetas" id="relNuevasLista" aria-label="Recién añadidas"></ul>
       <p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>
       <button class="b3 rel-nuevas-todas" type="button" data-emi-orden="nuevas" data-movil-ir="emisiones">Ver todas las ofertas nuevas<span class="rel-flecha" aria-hidden="true"></span></button>
+    </section>
+
+    <!-- La tokenización en el mundo (petición de Víctor del 10/11/2026). Valor de
+         mercado de los tokens de activos reales, por tipo, con datos gratis de
+         CoinGecko que lee nuestro servidor (/api/tokenizacion): el navegador no
+         habla con nadie más. Los cambios a 7 días, 30 días, 1 año y el total
+         salen solo de fotos diarias guardadas por RWAdar. Lo pinta
+         assets/tokenizacion-20261110.js; aquí no hay ninguna cifra. Va detrás de
+         «Recién añadidas»: no empuja la portada fuera de la primera pantalla. -->
+    <section class="tk" id="tokenizacion" aria-labelledby="tkTit" data-tokenizacion>
+      <p class="tk-ante">Datos de mercado</p>
+      <h2 class="tk-tit" id="tkTit">La tokenización en el mundo</h2>
+      <p class="tk-sub">Valor de mercado de los tokens que representan activos reales (deuda, fondos, materias primas, acciones, inmuebles). Las categorías pueden solaparse. No es una recomendación.</p>
+      <div class="tk-cuerpo" id="tkCuerpo" aria-busy="true">
+        <p class="tk-estado" id="tkEstado">Cargando los datos de CoinGecko…</p>
+      </div>
+      <p class="tk-fuente"><span>Datos:</span> <a href="https://www.coingecko.com/" target="_blank" rel="noopener nofollow" translate="no">CoinGecko</a><span class="tk-hora" id="tkHora"></span></p>
     </section>
 
     <!-- 01 · De dónde viene. El titular y, justo debajo, qué es. -->
@@ -1803,6 +1821,8 @@
 <script src="/assets/acceso-privado.js" defer></script>
 <script src="/assets/mapa-buscar-util-20261027.js" defer></script>
 <script src="/assets/mapa-buscar-20261027.js" defer></script>
+<script src="/assets/tokenizacion-modelo-20261110.js" defer></script>
+<script src="/assets/tokenizacion-20261110.js" defer></script>
 <script src="/assets/catalogo-publico-20261022.js" defer></script>
 <script src="/assets/ficha-editorial-20261022.js" defer></script>
 <script src="/assets/idioma-en-20261022.js" defer></script>

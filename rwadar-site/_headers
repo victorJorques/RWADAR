@@ -50,6 +50,11 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Histórico de «La tokenización en el mundo»: cambia con cada publicación.
+/datos/*
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: noindex
+
 /plataformas/*
   Cache-Control: public, max-age=0, must-revalidate
 

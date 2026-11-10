@@ -6,6 +6,7 @@ import { Icono } from './Navegacion';
 import Radar from './Radar';
 import { ImagenOferta } from './Ofertas';
 import RecienAnadidas from './RecienAnadidas';
+import TokenizacionMundo from './TokenizacionMundo';
 import { recienAnadidas } from '../lib/recien-anadidas';
 import { LECCIONES } from '../lib/academy-contenido';
 import { DESTINOS_NOTICIAS, NOTICIAS } from '../lib/noticias-contenido';
@@ -324,6 +325,11 @@ export default function Inicio({
           vean ofertas de verdad. Sin catálogo vigente, nada. */}
       <RecienAnadidas ofertas={recienAnadidas(ofertas, { catalogoCaducado: !cifras.vigente })}
         onAbrirOferta={onAbrirOferta} onVerTodas={() => onDestino('ofertas-nuevas')} />
+
+      {/* La tokenización en el mundo (10/11/2026), como la web: datos de
+          CoinGecko a través de rwadar.pages.dev. Si la red falla, solo esta
+          sección lo dice; el resto de Inicio sigue igual. */}
+      <TokenizacionMundo onAbrirEnlace={onAbrirEnlace} />
 
       {/* Avisos de la cuenta (solo con AVISOS_NOVEDADES_REMOTOS): la tarjeta
           llega hecha desde App, que tiene la cuenta y su estado. */}

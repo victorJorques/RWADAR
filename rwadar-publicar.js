@@ -32,6 +32,7 @@ const { comprobar: comprobarFichas } = require('./rwadar-fichas');
 const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 const { construirWorker, RUTAS: RUTAS_ACCESO } = require('./rwadar-acceso/compilar.cjs');
 const { exigirCatalogoPublico } = require('./rwadar-acceso/comprobar-produccion.cjs');
+const tokenizacionModelo = require('./rwadar-movil/lib/tokenizacion');
 const {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
@@ -501,6 +502,32 @@ const nFuera  = (capturado.outlist.match(/class="fila"/g) || []).length;
 const nEmisiones = (capturado.emiLista.match(/<article class="emi/g) || []).length;
 console.log(`Pre-renderizado: ${nFichas} fichas, ${nFuera} descartadas y ${nEmisiones} emisiones escritas en el HTML (${kb} kB).`);
 
+/* ---- 4b · histórico de «La tokenización en el mundo» (10/11/2026) ----
+   El flujo «Foto diaria de la tokenización» guarda una foto al día en la rama
+   datos-tokenizacion; publicar.yml deja su tokenizacion-historico.json fuera
+   del repositorio y pasa la ruta en RWADAR_TOKENIZACION_HISTORICO (el árbol
+   sigue limpio para las compuertas). Se valida entero, se le suman las fotos
+   de la semilla de main y se publica en /datos/. Sin rama, o si no es válido,
+   se publica la semilla (rwadar-site/datos/tokenizacion-historico.json): la
+   web no deja de construirse por un dato. */
+function historicoTokenizacion() {
+  const semilla = tokenizacionModelo.validarHistorico(JSON.parse(
+    fs.readFileSync(path.join(DIR, 'datos', 'tokenizacion-historico.json'), 'utf8')));
+  const ruta = process.env.RWADAR_TOKENIZACION_HISTORICO;
+  if (!ruta) return { historico: semilla, origen: 'la semilla de main' };
+  try {
+    const estado = fs.lstatSync(ruta);
+    if (!estado.isFile() || estado.size > 2 * 1024 * 1024) throw new Error('no es un archivo normal de 2 MB como mucho');
+    let historico = tokenizacionModelo.validarHistorico(JSON.parse(fs.readFileSync(ruta, 'utf8')));
+    if (!historico.fotos.length) throw new Error('no tiene ninguna foto');
+    for (const foto of semilla.fotos) historico = tokenizacionModelo.anadirFoto(historico, foto).historico;
+    return { historico, origen: 'la rama datos-tokenizacion' };
+  } catch (e) {
+    console.warn(`AVISO: el histórico de la tokenización de ${ruta} no vale (${e.message}); se publica la semilla de main.`);
+    return { historico: semilla, origen: 'la semilla de main' };
+  }
+}
+
 /* ---- 5 · construir el árbol desechable que sí se puede subir ---- */
 function construirSalida() {
   if (path.dirname(SALIDA) !== path.resolve(__dirname) || path.basename(SALIDA) !== 'rwadar-publicado') {
@@ -528,6 +555,12 @@ function construirSalida() {
         }
       }
     }
+    const tokenizacion = historicoTokenizacion();
+    fs.writeFileSync(path.join(temporal, 'datos', 'tokenizacion-historico.json'),
+      tokenizacionModelo.serializarHistorico(tokenizacion.historico), 'utf8');
+    const fotosTokenizacion = tokenizacion.historico.fotos;
+    console.log(`Tokenización: ${fotosTokenizacion.length} foto(s) diaria(s) de ${tokenizacion.origen}` +
+      (fotosTokenizacion.length ? `, del ${fotosTokenizacion[0].fecha} al ${fotosTokenizacion.at(-1).fecha}.` : '.'));
     /* Las cuatro ilustraciones viven en una fuente única compartida con
        Expo. Se copian una a una desde el manifiesto validado; nunca se copia
        el directorio completo ni se incluyen las 52 imágenes sin derechos. */

@@ -1,0 +1,145 @@
+[
+ {
+  "id": "bitcoin-ecosystem",
+  "name": "Bitcoin Ecosystem",
+  "market_cap": null,
+  "market_cap_change_24h": null,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": null,
+  "updated_at": null
+ },
+ {
+  "id": "real-world-assets-rwa",
+  "name": "Real World Assets (RWA)",
+  "market_cap": 73179041924.88818,
+  "market_cap_change_24h": -1.0607233949932853,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 2506025594.806498,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ },
+ {
+  "id": "rwa-protocol",
+  "name": "RWA Protocol",
+  "market_cap": 10839367833.006506,
+  "market_cap_change_24h": -1.1247135257574579,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 469242502.2110903,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ },
+ {
+  "id": "tokenized-products",
+  "name": "Tokenized Assets",
+  "market_cap": 49683537033.1498,
+  "market_cap_change_24h": -0.8625877601771115,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 1601019192.904623,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ },
+ {
+  "id": "tokenized-private-credit",
+  "name": "Tokenized Private Credit",
+  "market_cap": 27616399207.928894,
+  "market_cap_change_24h": -1.0263205271727531,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 23716315.667095523,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ },
+ {
+  "id": "tokenized-treasuries",
+  "name": "Tokenized Treasuries",
+  "market_cap": 8051081165.668503,
+  "market_cap_change_24h": -1.226837716997664,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 3176057.905194175,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ },
+ {
+  "id": "tokenized-commodities",
+  "name": "Tokenized Commodities",
+  "market_cap": 5899167372.111653,
+  "market_cap_change_24h": -1.7744489109897466,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 275014554.51933926,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ },
+ {
+  "id": "tokenized-gold",
+  "name": "Tokenized Gold",
+  "market_cap": 5620076802.113862,
+  "market_cap_change_24h": -1.6419942747512652,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 268801160.0245899,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ },
+ {
+  "id": "tokenized-stock",
+  "name": "Tokenized Stocks",
+  "market_cap": 2955382889.569059,
+  "market_cap_change_24h": -0.4036422309772237,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 1014991656.6726105,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ },
+ {
+  "id": "tokenized-money-market-fund-mmfs",
+  "name": "Tokenized Money Market Fund (MMFs)",
+  "market_cap": 2452027227.174604,
+  "market_cap_change_24h": -4.259270013156415,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 0,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ },
+ {
+  "id": "tokenized-exchange-traded-funds-etfs",
+  "name": "Tokenized Exchange-Traded Funds (ETFs)",
+  "market_cap": 781159650.0990983,
+  "market_cap_change_24h": 4.737605033438806,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 230544627.37861744,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ },
+ {
+  "id": "tokenized-credit",
+  "name": "Tokenized Credit",
+  "market_cap": 1432461010.0070894,
+  "market_cap_change_24h": -0.008273987275418134,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 0,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ },
+ {
+  "id": "real-estate",
+  "name": "Tokenized Real Estate",
+  "market_cap": 106118411.36198649,
+  "market_cap_change_24h": -1.1581401491548033,
+  "content": "",
+  "top_3_coins_id": [],
+  "top_3_coins": [],
+  "volume_24h": 1711915.4641588754,
+  "updated_at": "2026-11-10T15:25:40.000Z"
+ }
+]

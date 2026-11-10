@@ -6,6 +6,27 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 10 de noviembre de 2026 · Claude · «La tokenización en el mundo» en Inicio (web y app)
+
+Víctor pidió en Inicio un gráfico muy visual de la evolución de la tokenización. Eligió: por **tipo de activo** (no por país ni por blockchain: no hay fuente gratis fiable), en la web y en la app, con datos **gratis de CoinGecko** y una foto diaria guardada por RWAdar para que 7 días, 30 días, 1 año y el total se rellenen solos. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**
+
+**Qué hay**
+- Motor único `rwadar-movil/lib/tokenizacion.js` (web, app, servidor y foto diaria): total = categoría `tokenized-products`; ocho tipos (crédito privado, letras del Tesoro, materias primas con el oro aparte, acciones, fondos monetarios, otros créditos, ETF, inmuebles). No usa `real-world-assets-rwa` ni `rwa-protocol`. Los cambios a 7 d, 30 d, 1 año y total se calculan **solo con fotos reales** a ±2 días; si no hay, «aún sin datos» con la fecha desde la que se guardan. Formato «49.684 M$» / «+1,2 %» (en: «$49,684M» / «+1.2%»).
+- Servidor web: `GET /api/tokenizacion` (`rwadar-acceso/tokenizacion-servidor.mjs`, compilado en `_worker.js` por `compilar.cjs`). Público, solo GET, sin parámetros, sin cookies. Lee CoinGecko desde el servidor (el navegador no habla con terceros: la CSP no cambia), caché de 30 min en memoria y Cache API, plazo de 6 s. Si CoinGecko falla o da 429: la última foto guardada con su fecha y `fuente: foto-guardada`, y no le vuelve a preguntar en 5 min (o su Retry-After, hasta 1 h). Sin nada: `sin-datos`, sin cifras.
+- Foto diaria: flujo nuevo `tokenizacion-diaria.yml` (06:23 UTC y a mano) con `rwadar-app/tokenizacion/foto-diaria.mjs`: 3 intentos con espera, 20 s por intento, valida la forma y añade la foto del día a `tokenizacion-historico.json` de la rama **`datos-tokenizacion`** (la crea huérfana desde la semilla; un commit por día; idempotente). `contents: write` solo en su trabajo; acciones por SHA.
+- Publicar: paso nuevo en `publicar.yml`, «Traer el histórico de la tokenización», que deja el archivo de la rama fuera del repositorio (árbol limpio) y lo pasa en `RWADAR_TOKENIZACION_HISTORICO`. `rwadar-publicar.js` lo valida, le suma la semilla y lo publica en `/datos/tokenizacion-historico.json`. Sin rama o roto: la semilla de main (`rwadar-site/datos/tokenizacion-historico.json`, la foto real del 10/11/2026 a las 15:25 UTC). Nunca bloquea la publicación.
+- Web: sección `#tokenizacion` en Inicio, tras «Recién añadidas» y antes del capítulo 01 (la portada sigue entera en la primera pantalla a 390×844). Cifra grande, cinco cápsulas con signo, flecha y palabra, barras por tipo con cuota y cambio en 24 h, línea con dos o más fotos, dos tablas para lectores de pantalla y «Datos: CoinGecko» con la hora. `assets/tokenizacion-20261110.{js,css}` y `assets/tokenizacion-modelo-20261110.js` (copia exacta del motor: `node rwadar-app/tokenizacion/copiar-modelo-web.cjs`). Si el servidor falla, lee `/datos/…` y, si tampoco, un estado vacío honesto.
+- App: `componentes/TokenizacionMundo.js` en `Inicio.js` tras «Recién añadidas», lee `https://rwadar.pages.dev/api/tokenizacion` (`lib/tokenizacion-remota.js`); con la red caída dice «Ahora no podemos mostrar…» y ofrece «Reintentar». Solo JavaScript y `react-native-svg` (ya instalado): el guardián de la OTA con la base `fa30779…` da `ok`.
+- Inglés: 36 textos nuevos en `lib/idioma-en.js` (copiados a la web).
+- `rwadar-movil/lib/tokenizacion.js` entra en la huella del contenido aprobado y los 4 archivos nuevos de la web, en `ARCHIVOS_PUBLICABLES`: **hace falta un sello nuevo** antes de publicar, como siempre.
+
+**Pruebas:** `rwadar-movil/tests/tokenizacion.test.cjs` (12: motor, formato, lectura y la sección con React aislado, también en inglés y con la red caída), `rwadar-acceso/tokenizacion.test.mjs` (8: la ruta, caché, 429, plazo, el worker compilado, la copia web y Chromium a 390 y 1366 px con CoinGecko simulado), `.github/tokenizacion.test.mjs` (4: el flujo y el paso de publicar ejecutados de verdad contra un «origin» de usar y tirar: rama huérfana, un commit por día, idempotente, main intacto). Ajustadas `probar-web.mjs`, `probar-web-escritorio.mjs` y `compilar.test.mjs`. `npm test` de la raíz en verde.
+
+**Pendiente (Víctor):**
+- Unir la rama. GitHub solo ejecuta el horario desde main: la primera foto diaria llega la mañana siguiente (o con «Run workflow»). Las cápsulas de 7 d, 30 d y 1 año se irán llenando con los días; la línea sale con la segunda foto.
+- Publicar la web (sello, preview y producción) y la OTA cuando lo autorice.
+- CoinGecko gratis tiene límite de peticiones por IP. Con la caché de 30 min se le pregunta como mucho unas 2 veces por hora y centro de datos; si da 429, se ve la foto guardada con su aviso. Si en `rwadar.pages.dev` la Cache API no funcionara, quedaría solo la caché en memoria de cada worker (más peticiones, el mismo comportamiento).
+
 ## 9 de noviembre de 2026 (3) · Claude · informe «Números de RWAdar»
 
 Víctor pidió las visitas y los números de la web y de la app. Nuevo flujo `numeros.yml` (a mano y los lunes a las 07:47 UTC) con `.github/numeros.mjs`. Solo lee y solo saca totales:
