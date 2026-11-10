@@ -336,7 +336,7 @@ test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tabla
       const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 } });
       await pagina.goto(local2.url + '/', { waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion[data-tokenizacion-estado="foto-guardada"]', { timeout: 20000 });
-      assert.match(await pagina.textContent('#tokenizacion .tk-aviso'), /CoinGecko no responde ahora\. Enseñamos la última foto guardada, del 10\/11\/2026, 15:25 UTC/);
+      assert.match(await pagina.textContent('#tokenizacion .tk-aviso'), /Cifras de la última foto diaria de RWAdar, del 10\/11\/2026, 15:25 UTC/);
       // Sin servidor y sin histórico: estado vacío honesto, sin una sola cifra.
       await pagina.route('**/api/tokenizacion', r => r.abort());
       await pagina.route('**/datos/tokenizacion-historico.json', r => r.abort());

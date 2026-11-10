@@ -210,7 +210,7 @@
     }
     if (d.fuente === 'foto-guardada') {
       const aviso = el('p', 'tk-aviso');
-      aviso.append(el('span', '', 'CoinGecko no responde ahora. Enseñamos la última foto guardada, del'), ' ',
+      aviso.append(el('span', '', 'Cifras de la última foto diaria de RWAdar, del'), ' ',
         el('b', '', modelo.horaDato(d.actualizado, idioma())));
       aviso.lastChild.setAttribute('translate', 'no');
       cuerpo.append(aviso);

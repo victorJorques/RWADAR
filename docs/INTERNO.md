@@ -29,11 +29,12 @@ consulta. Entrar en el radar es gratis para las plataformas.
 
 | | Estado |
 |---|---|
-| **Web** | Publicada en **https://rwadar.pages.dev** (Cloudflare Pages, con un servidor web propio que gestiona la sesión). Se publica desde `main` con el flujo de GitHub «Publicar web», primero en revisión y después en producción. Última publicación: **06/11/2026** (Academy con cuenta y privacidad que nombra a Lettermint). |
-| **Catálogo** | Investigado y publicado el **05/11/2026**: **22 ofertas** (8 principales, 13 de reventa y 1 en camino) y **25 plataformas** en el radar (5 descartadas). Vale hasta el **12/11/2026** incluido; desde el 13/11 (00:00 UTC) se ve con aviso y sin cifras. Las cifras se ven 7 días desde su comprobación. Ver [`INVESTIGACION-CATALOGO-2026-11-05.md`](INVESTIGACION-CATALOGO-2026-11-05.md). |
+| **Web** | Publicada en **https://rwadar.pages.dev** (Cloudflare Pages, con un servidor web propio que gestiona la sesión). Se publica desde `main` con el flujo de GitHub «Publicar web», primero en revisión y después en producción. Última publicación: **10/11/2026** (catálogo del 10/11 y, en Inicio, «La tokenización en el mundo» y «Noticias del sector»). |
+| **Catálogo** | Investigado y publicado el **10/11/2026**: **22 ofertas** (8 principales, 13 de reventa y 1 en camino) y **25 plataformas** en el radar (5 descartadas). Vale hasta el **17/11/2026** incluido; desde el 18/11 (00:00 UTC) se ve con aviso y sin cifras. Las cifras se ven 7 días desde su comprobación. Ver [`INVESTIGACION-CATALOGO-2026-11-10.md`](INVESTIGACION-CATALOGO-2026-11-10.md). |
 | **Cuentas** | Abiertas y gratis. En la web, la cuenta confirmada hace falta para las funciones personales (lista de seguimiento, «Mis inversiones») y para leer las lecciones de la Academy; el resto se consulta sin registro. La app pide cuenta para todo desde la 1.4.1. El fallo que devolvía a la pantalla de acceso quedó resuelto el 29/10. El servidor web limita los intentos por IP; el CAPTCHA (Turnstile) está preparado y apagado. |
 | **Correo de las cuentas** | La confirmación y la recuperación de contraseña salen hoy por un **Gmail sin contrato de encargo**: es el riesgo legal más alto que queda. Se pasa a Lettermint en la ronda 2 del [plan](tareas/PLAN-CEO-2026-11-06.md). |
 | **App Android** | **[Versión 1.4.2](https://github.com/victorJorques/RWAdar-downloads/releases/tag/v1.4.2)** publicada el **06/11/2026** (código 24). Lleva Firebase para las notificaciones del móvil, sin arranque automático: en el emulador, al abrirla, no hubo ninguna conexión a Firebase. Hasta que se enciendan los avisos funciona igual que la 1.4.1. Las actualizaciones automáticas (OTA) van ya a la 1.4.2; la 1.4.1 sigue funcionando y avisa de la versión nueva. No está en Google Play. Pendiente menor: unos textos de Lettermint de la app (ocultos mientras el correo esté apagado) irán en la próxima OTA. |
+| **Inicio: datos y noticias** | Desde el **10/11/2026**, en la web y en la app. **La tokenización en el mundo:** valor de los activos tokenizados por tipo, con datos de CoinGecko (gratis, citados) que lee el servidor web; el flujo «Tokenización diaria» guarda una foto cada día (rama `datos-tokenizacion`) y la semana, el mes, el año y el histórico se rellenan solos al publicar la web. **Noticias del sector:** 8 noticias verificadas con su fuente; se renuevan en cada investigación del catálogo. |
 | **App iPhone** | No hay. Solo se compiló para el simulador y no hay cuenta de Apple Developer. En iPhone, RWAdar es la web (también añadida a la pantalla de inicio). |
 | **RWAdar Academy** | Las **9 lecciones** de Eric, publicadas desde el 06/11/2026. En la web, cada lección pide una cuenta gratis; el índice y el tutorial 3D siguen abiertos. **Preparado el 08/11, sin publicar:** sin sesión, el índice y el bloque de lecciones de la portada enseñan las lecciones difuminadas y con un candado, que se abre al entrar (ver [`rwadar-academy/LEEME.md`](../rwadar-academy/LEEME.md)). Eric dio su visto bueno y su licencia escrita el 06/11 (la guarda Víctor). La revisión legal de las lecciones vale hasta el **02/04/2027**. |
 | **Avisos a registrados** | **Preparados y apagados.** La base (migraciones 30 y 31) está aplicada desde el 06/11/2026; no sale ningún correo ni notificación y la casilla del alta no se ve. Para encenderlos: [`tareas/PLAN-CEO-2026-11-06.md`](tareas/PLAN-CEO-2026-11-06.md) (ver «Lo que falta», punto 2). |
@@ -61,12 +62,16 @@ app). **Sin publicar:** el vídeo promocional del 28/10, pendiente de valoració
 
 ## Lo que falta, por orden
 
-1. **Renovar el catálogo antes del 12 de noviembre.** Con la orden de Víctor,
+1. **Renovar el catálogo antes del 17 de noviembre.** Con la orden de Víctor,
    cualquier día. Lo que conviene mirar:
-   - Hausera: la oferta pública de Alicante 2 se anuncia para el **11/11**;
-     revisar si publica el documento de emisión y el emisor.
+   - Hausera: preventa de Alicante 3 el **18/11** y suscripción desde el
+     **25/11**; su inscripción en la CNMV (ERIR de Ursus-3).
+   - Pagarés tokenizados de Prosegur Cash (inscritos en la CNMV el 06/11),
+     Securitize Stocks y los bonos digitales de Profitus: si publican
+     condiciones para particulares en España, estudiarlos como candidatas.
    - Kraken xStocks: si el emisor publica condiciones finales con España, se
-     quita el aviso.
+     quita el aviso. Y volver a leer las fuentes exactas de transparencia de
+     Kraken (documentoEspana) y mTBILL (supervisada), que siguen al 05/11.
    - Spiko Smart Cash Euro: si la CNMV, la AMF o Aldana Capital confirman su
      alta en España, se quita el primer aviso (si lo niegan, se retira).
    - Bono Valorix (Bit2Me STX) y CANDO1 (Token City), cuando publiquen su

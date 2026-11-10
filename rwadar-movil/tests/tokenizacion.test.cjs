@@ -399,7 +399,7 @@ test('Inicio en la app: con la foto guardada, el aviso con su fecha, «24 h» di
   pintar(Seccion, props); await esperar(); await esperar();
   const arbol = pintar(Seccion, props);
   const texto = textoDe(arbol);
-  assert.match(texto, /CoinGecko no responde ahora\. Enseñamos la última foto guardada, del\s+10\/11\/2026, 15:25 UTC/);
+  assert.match(texto, /Cifras de la última foto diaria de RWAdar, del\s+10\/11\/2026, 15:25 UTC/);
   assert.match(texto, /7 días \+1,0\s%\s▲\s+sube\s+desde\s+01\/11/);
   const periodos = nodos(arbol).filter((n) => n?.type === 'View' && n.props.accessible && /^(24 h|7 días|30 días|1 año|Histórico): /.test(n.props.accessibilityLabel));
   const etiquetas = periodos.map((n) => n.props.accessibilityLabel);
