@@ -155,6 +155,47 @@ test('formato español e inglés: «49.684 M$», «+1,2 %», signo menos de verd
   assert.equal(t.fechaCorta('2026-11-10'), '10/11/2026');
   assert.equal(t.horaDato('2026-11-10T15:25:40.000Z'), '10/11/2026, 15:25 UTC');
   assert.equal(t.horaDato('mal'), '—');
+  // En inglés, sin el 10/11 que en EE. UU. se lee como 11 de octubre.
+  assert.equal(t.fechaCorta('2026-11-10', 'en'), '10 Nov 2026');
+  assert.equal(t.horaDato('2026-11-10T15:25:40.000Z', 'en'), '10 Nov 2026, 15:25 UTC');
+  assert.equal(t.fechaBreve('2026-11-15', 'es', '2026-11-10'), '15/11');
+  assert.equal(t.fechaBreve('2026-11-15', 'en', '2026-11-10'), '15 Nov');
+  assert.equal(t.fechaBreve('2027-11-08', 'es', '2026-11-10'), '08/11/2027', 'con el año si no es el mismo');
+  assert.equal(t.millonesHablados(49683537033), '49.684 millones de dólares');
+  assert.equal(t.millonesHablados(49683537033, 'en'), '49,684 million dollars');
+  assert.equal(t.porcentaje(0.01), '0,0 %');
+  assert.equal(t.PERIODOS[4].nombre, 'Histórico');
+});
+
+test('cuándo llega cada periodo: el histórico al día siguiente; 7 días, 30 días y 1 año con el margen de ±2 días', () => {
+  assert.equal(t.fechaLlegada('2026-11-10', 'total', '2026-11-10'), '2026-11-11');
+  assert.equal(t.fechaLlegada('2026-11-10', '7d', '2026-11-10'), '2026-11-15');
+  assert.equal(t.fechaLlegada('2026-11-10', '30d', '2026-11-10'), '2026-12-08');
+  assert.equal(t.fechaLlegada('2026-11-10', '1a', '2026-11-10'), '2027-11-08');
+  assert.equal(t.fechaLlegada('2026-11-10', '24h', '2026-11-10'), null);
+  // Si esa fecha ya pasó y sigue sin dato (faltan fotos), no se promete nada.
+  assert.equal(t.fechaLlegada('2026-11-10', '7d', '2026-11-20'), null);
+  assert.equal(t.fechaLlegada(null, '7d', '2026-11-10'), null);
+  // Coherente con resumir(): el día que dice, el periodo ya sale.
+  const h = historico(foto('2026-11-10', 100));
+  assert.equal(t.resumir({ historico: h, actual: foto('2026-11-15', 101) }).periodos[1].estado, 'ok');
+  assert.equal(t.resumir({ historico: h, actual: foto('2026-11-14', 101) }).periodos[1].estado, 'sin-datos');
+});
+
+test('la línea: un cambio pequeño se ve pequeño (escala mínima del 4 %) y la escala va escrita', () => {
+  const H = 112, M = 8;
+  const casiIguales = t.alturasLinea([49683537033, 49683537033 * 1.003], H, M);
+  assert.ok(Math.abs(casiIguales[0] - casiIguales[1]) < H / 2, 'un 0,3 % no ocupa toda la altura');
+  assert.ok(casiIguales.every(y => y >= M && y <= H - M));
+  const lejos = t.alturasLinea([40e9, 50e9], H, M);
+  assert.equal(Math.round(lejos[0]), H - M);
+  assert.equal(Math.round(lejos[1]), M, 'un cambio grande sí usa toda la altura');
+  assert.deepEqual(t.alturasLinea([5e9, 5e9], H, M).map(Math.round), [56, 56], 'iguales: en medio');
+  const serie = [{ fecha: '2025-10-07', valor: 47120e6 }, { fecha: '2026-11-10', valor: 49684e6 }];
+  assert.equal(t.textosLinea(serie).nota, 'De 47.120 M$ (07/10/2025) a 49.684 M$ (10/11/2026) · +5,4 %');
+  assert.equal(t.textosLinea(serie, 'en').nota, 'From $47,120M (7 Oct 2025) to $49,684M (10 Nov 2026) · +5.4%');
+  assert.equal(t.textosLinea(serie).etiqueta, 'Valor total del 07/10/2025 al 10/11/2026: de 47.120 M$ a 49.684 M$, +5,4 %, 2 fotos diarias');
+  assert.equal(t.textosLinea(serie.slice(0, 1)), null);
 });
 
 /* ---- Lectura de /api/tokenizacion ---- */
@@ -174,7 +215,9 @@ const RESUMEN = (() => { const f = t.extraerFoto(COINGECKO, { ahora: AHORA }); r
 test('la app lee https://rwadar.pages.dev/api/tokenizacion sin cookies y rechaza lo que no tiene forma', async () => {
   const llamadas = [];
   const responde = (status, cuerpo) => async (url, init) => { llamadas.push([url, init]); return { ok: status === 200, status, text: async () => cuerpo }; };
+  remota.olvidarTokenizacion();
   assert.deepEqual(await remota.cargarTokenizacion({ fetchImpl: responde(200, JSON.stringify(RESUMEN)) }), RESUMEN);
+  remota.olvidarTokenizacion();
   assert.equal(llamadas[0][0], 'https://rwadar.pages.dev/api/tokenizacion');
   assert.equal(llamadas[0][1].credentials, 'omit');
   assert.equal(llamadas[0][1].method, 'GET');
@@ -186,6 +229,25 @@ test('la app lee https://rwadar.pages.dev/api/tokenizacion sin cookies y rechaza
   // Con la red colgada, el plazo corta la espera.
   const colgada = (url, init) => new Promise((_, rechazar) => init.signal.addEventListener('abort', () => rechazar(new Error('abortada'))));
   await assert.rejects(remota.cargarTokenizacion({ fetchImpl: colgada, plazoMs: 20 }), /abortada/);
+});
+
+test('la app reutiliza una respuesta buena 10 minutos en la sesión; los fallos no se guardan', async () => {
+  remota.olvidarTokenizacion();
+  let llamadas = 0, ahora = AHORA, estado = 503;
+  const fetchImpl = async () => { llamadas++; return { ok: estado === 200, status: estado, text: async () => JSON.stringify(RESUMEN) }; };
+  const cargar = () => remota.cargarTokenizacion({ fetchImpl, ahora: () => ahora });
+  await assert.rejects(cargar(), /tokenizacion_http_503/);
+  estado = 200;
+  assert.deepEqual(await cargar(), RESUMEN, 'tras un fallo, «Reintentar» sí pregunta');
+  assert.equal(llamadas, 2);
+  ahora += 9 * 60000;
+  await cargar();
+  assert.equal(llamadas, 2, 'dentro de 10 minutos no vuelve a preguntar');
+  ahora += 2 * 60000;
+  await cargar();
+  assert.equal(llamadas, 3);
+  assert.equal(remota.REUSO_MS, 600000);
+  remota.olvidarTokenizacion();
 });
 
 /* ---- La sección, con React aislado ---- */
@@ -260,16 +322,20 @@ test('Inicio en la app: cargando, después la cifra, los periodos, las barras y 
   assert.match(texto, /La tokenización en el mundo/);
   assert.match(texto, /49\.684/);
   assert.match(texto, /−0,9 %/);
-  assert.match(texto, /aún sin datos/);
+  assert.match(texto, /disponible el/);
+  assert.match(texto, /15\/11/, 'cuándo llegarán los 7 días');
+  assert.match(texto, /en millones de dólares \(M\$\)/);
   assert.match(texto, /Crédito privado/);
   assert.match(texto, /Inmuebles/);
   assert.match(texto, /De ello, oro:/);
   assert.match(texto, /10\/11\/2026, 15:25 UTC/);
   assert.match(texto, /La línea de evolución aparecerá cuando haya dos fotos diarias guardadas\./);
   assert.match(texto, /Las categorías pueden solaparse\. No es una recomendación\./);
-  const periodos = nodos(arbol).filter((n) => n?.type === 'View' && n.props.accessible && /^(24 h|7 días|30 días|1 año|Total): /.test(n.props.accessibilityLabel));
-  assert.deepEqual(periodos.map((n) => n.props.accessibilityLabel), ['24 h: baja −0,9 %', '7 días: aún sin datos', '30 días: aún sin datos',
-    '1 año: aún sin datos', 'Total: aún sin datos']);
+  const periodos = nodos(arbol).filter((n) => n?.type === 'View' && n.props.accessible && /^(24 h|7 días|30 días|1 año|Histórico): /.test(n.props.accessibilityLabel));
+  assert.deepEqual(periodos.map((n) => n.props.accessibilityLabel), ['24 h: baja −0,9 %', '7 días: disponible el 15/11/2026',
+    '30 días: disponible el 08/12/2026', '1 año: disponible el 08/11/2027', 'Histórico: disponible el 11/11/2026']);
+  const total = nodos(arbol).find((n) => n?.type === 'View' && /^Valor total de los activos tokenizados: /.test(n.props.accessibilityLabel || ''));
+  assert.equal(total.props.accessibilityLabel, 'Valor total de los activos tokenizados: 49.684 millones de dólares');
   const enlace = nodos(arbol).find((n) => n?.type === 'Pressable' && n.props.accessibilityRole === 'link');
   assert.match(enlace.props.accessibilityLabel, /^Datos: CoinGecko · Dato del 10\/11\/2026, 15:25 UTC$/);
   enlace.props.onPress();
@@ -306,11 +372,78 @@ test('Inicio en la app: en inglés, cifras en su formato y etiquetas accesibles 
     assert.match(texto, /Tokenisation worldwide/);
     assert.match(texto, /\$49,684M/);
     assert.match(texto, /Private credit/);
-    assert.match(texto, /no data yet/);
+    assert.match(texto, /available on/);
+    assert.match(texto, /All time/);
+    assert.match(texto, /10 Nov 2026, 15:25 UTC/);
     const total = nodos(arbol).find((n) => n?.type === 'View' && /^Total value of tokenised assets: /.test(n.props.accessibilityLabel || ''));
-    assert.equal(total.props.accessibilityLabel, 'Total value of tokenised assets: $49,684M');
+    assert.equal(total.props.accessibilityLabel, 'Total value of tokenised assets: 49,684 million dollars');
+    const periodos = nodos(arbol).filter((n) => n?.type === 'View' && n.props.accessible && /^(24 h|7 days|All time): /.test(n.props.accessibilityLabel));
+    assert.deepEqual(periodos.map((n) => n.props.accessibilityLabel), ['24 h: down −0.9%', '7 days: available on 15 Nov 2026', 'All time: available on 11 Nov 2026']);
     assert.equal(total.props.accessibilityLanguage, 'en-US');
   } finally { await idioma.cambiarIdioma('es'); }
+});
+
+/* Un resumen con varias fotos guardadas y CoinGecko caído. */
+const RESUMEN_GUARDADO = (() => {
+  const f = t.extraerFoto(COINGECKO, { ahora: AHORA });
+  const dia = (fecha, factor) => ({ ...f, fecha, actualizado: fecha + 'T06:20:00.000Z', total: { ...f.total, valor: Math.round(f.total.valor * factor) } });
+  const h = historico(dia('2026-10-01', 0.95), dia('2026-10-26', 0.98), dia('2026-11-01', 0.99), f);
+  return t.resumir({ historico: h });
+})();
+
+test('Inicio en la app: con la foto guardada, el aviso con su fecha, «24 h» dice de qué día y cada periodo «desde» qué foto', async () => {
+  assert.equal(RESUMEN_GUARDADO.fuente, 'foto-guardada');
+  const { react, pintar } = crearReact();
+  const Seccion = cargarSeccion(react);
+  const props = { cargar: async () => RESUMEN_GUARDADO };
+  pintar(Seccion, props); await esperar(); await esperar();
+  const arbol = pintar(Seccion, props);
+  const texto = textoDe(arbol);
+  assert.match(texto, /CoinGecko no responde ahora\. Enseñamos la última foto guardada, del\s+10\/11\/2026, 15:25 UTC/);
+  assert.match(texto, /7 días \+1,0\s%\s▲\s+sube\s+desde\s+01\/11/);
+  const periodos = nodos(arbol).filter((n) => n?.type === 'View' && n.props.accessible && /^(24 h|7 días|30 días|1 año|Histórico): /.test(n.props.accessibilityLabel));
+  const etiquetas = periodos.map((n) => n.props.accessibilityLabel);
+  if (new Date().toISOString().slice(0, 10) !== '2026-11-10') assert.equal(etiquetas[0], '24 h: baja −0,9 %, foto del 10/11/2026');
+  else assert.equal(etiquetas[0], '24 h: baja −0,9 %');
+  assert.equal(etiquetas[1], '7 días: sube +1,0 %, desde 01/11/2026', 'con ±2 días, «7 días» puede ser 9: se dice');
+  assert.equal(etiquetas[2], '30 días: aún sin datos', 'la fecha de llegada ya pasó: no se promete nada');
+  assert.equal(etiquetas[4], 'Histórico: sube +5,3 %, desde 01/10/2026');
+  const enlace = nodos(arbol).find((n) => n?.type === 'Pressable' && n.props.accessibilityRole === 'link');
+  assert.match(enlace.props.accessibilityLabel, /Foto guardada del 10\/11\/2026, 15:25 UTC$/);
+});
+
+test('Inicio en la app: con dos o más fotos dibuja la línea (sin relleno) al ancho medido y escribe la escala', async () => {
+  const { react, pintar } = crearReact();
+  const Seccion = cargarSeccion(react);
+  const props = { cargar: async () => RESUMEN_GUARDADO };
+  pintar(Seccion, props); await esperar(); await esperar();
+  let arbol = pintar(Seccion, props);
+  const caja = nodos(arbol).find((n) => n?.type === 'View' && typeof n.props.onLayout === 'function');
+  assert.ok(caja, 'la línea mide su caja');
+  assert.equal(caja.props.accessibilityLabel, 'Valor total del 01/10/2026 al 10/11/2026: de 47.199 M$ a 49.684 M$, +5,3 %, 4 fotos diarias');
+  caja.props.onLayout({ nativeEvent: { layout: { width: 320 } } });
+  arbol = pintar(Seccion, props);
+  const tipos = nodos(arbol).map((n) => n?.type);
+  assert.ok(tipos.includes('Svg') && tipos.includes('Polyline') && tipos.includes('Circle'));
+  assert.ok(!tipos.includes('Path'), 'sin área rellena hasta el suelo');
+  const linea = nodos(arbol).find((n) => n?.type === 'Polyline');
+  const ys = linea.props.points.split(' ').map((p) => Number(p.split(',')[1]));
+  assert.equal(ys.length, 4);
+  assert.ok(ys.every((y) => y >= 8 && y <= 104));
+  assert.match(textoDe(arbol), /De 47\.199 M\$ \(01\/10\/2026\) a 49\.684 M\$ \(10\/11\/2026\) · \+5,3 %/);
+});
+
+test('Inicio en la app: sin datos («sin-datos») ofrece «Reintentar» y no enseña ninguna cifra', async () => {
+  const { react, pintar } = crearReact();
+  const Seccion = cargarSeccion(react);
+  const vacio = t.resumir({ historico: t.historicoVacio() });
+  assert.equal(vacio.fuente, 'sin-datos');
+  const props = { cargar: async () => vacio };
+  pintar(Seccion, props); await esperar(); await esperar();
+  const arbol = pintar(Seccion, props);
+  assert.ok(nodos(arbol).some((n) => n?.type === 'Pressable' && n.props.accessibilityLabel === 'Reintentar'));
+  assert.match(textoDe(arbol), /Ahora no podemos mostrar los datos de CoinGecko\./);
+  assert.doesNotMatch(textoDe(arbol), /\d/, 'ningún dígito');
 });
 
 test('Inicio pinta la sección justo después de «Recién añadidas» y le pasa el abridor de enlaces', () => {

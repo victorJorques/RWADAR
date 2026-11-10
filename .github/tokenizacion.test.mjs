@@ -50,6 +50,10 @@ test('el flujo: a diario a un minuto no redondo y a mano; lectura por defecto y 
   assert.deepEqual(permisos, [[0, 'contents: read'], [4, 'contents: write']], 'el único permiso de más es escribir contenido, en el trabajo');
   assert.equal((sinComentarios(FLUJO).match(/permissions:/g) || []).length, 2);
   assert.match(FLUJO, /timeout-minutes: \d+/);
+  // A mano, solo desde main: es el primer paso, antes de descargar el código.
+  const pasos = [...sinComentarios(FLUJO).matchAll(/\n {6}- name: (.+)/g)].map(m => m[1]);
+  assert.equal(pasos[0], 'Solo desde main');
+  assert.match(paso(FLUJO, 'Solo desde main'), /if: github\.ref != 'refs\/heads\/main'[\s\S]*exit 1/);
   const casa = new Set(fs.readdirSync(path.join(raiz, '.github/workflows')).filter(n => n !== 'tokenizacion-diaria.yml')
     .flatMap(n => [...leer(`.github/workflows/${n}`).matchAll(/uses: ([\w./-]+@[0-9a-f]{40})/g)].map(m => m[1])));
   for (const usa of sinComentarios(FLUJO).match(/uses: \S+/g)) {
@@ -170,7 +174,55 @@ test('publicar.yml lleva el histórico de la rama fuera del árbol; sin rama, la
   assert.equal(repo.git(repo.trabajo, 'status', '--porcelain').trim(), '');
   // El paso va antes de publicar y no toca nada más del flujo.
   assert.ok(PUBLICAR.indexOf('- name: Traer el histórico de la tokenización') < PUBLICAR.indexOf('- name: Publicar en'));
-  assert.match(leer('rwadar-publicar.js'), /process\.env\.RWADAR_TOKENIZACION_HISTORICO/);
+  assert.match(leer('rwadar-tokenizacion-historico.js'), /entorno\.RWADAR_TOKENIZACION_HISTORICO/);
+  assert.match(PUBLICAR, /echo "datos-tokenizacion: \$\(git rev-parse FETCH_HEAD\)"/, 'el commit de la rama queda en el registro');
+});
+
+test('el generador de la web: variable de publicar.yml; sin ella, origin/datos-tokenizacion; si no, la semilla y aviso', async (t) => {
+  const { historicoTokenizacion } = require('../rwadar-tokenizacion-historico.js');
+  const repo = repoDePrueba();
+  t.after(() => fs.rmSync(repo.dir, { recursive: true, force: true }));
+  const dirSitio = path.join(repo.trabajo, 'rwadar-site');
+  const semilla = fs.readFileSync(SEMILLA, 'utf8');
+  const avisos = [];
+  const generar = (entorno = {}, extra = {}) => historicoTokenizacion({ dirSitio, entorno, cwd: repo.trabajo, avisar: m => avisos.push(m), ...extra });
+  // Sin variable ni rama: la semilla, marcada para el aviso de --preview/--produccion.
+  let r = generar();
+  assert.equal(r.soloSemilla, true);
+  assert.equal(modelo.serializarHistorico(r.historico), semilla);
+  assert.deepEqual(avisos, []);
+  // La rama con dos días, y el clon la trae con «git fetch» (como en un ordenador).
+  await repo.ejecutar({ fetchImpl: coingecko(), ahora: AHORA });
+  await repo.ejecutar({ fetchImpl: coingecko('2026-11-11T06:20:00.000Z', 1.01), ahora: Date.parse('2026-11-11T06:23:30Z') });
+  repo.git(repo.trabajo, 'update-ref', '-d', 'refs/remotes/origin/datos-tokenizacion');
+  r = generar();
+  assert.equal(r.soloSemilla, true, 'sin la ref local: la semilla');
+  repo.git(repo.trabajo, 'fetch', '-q', 'origin', 'datos-tokenizacion');
+  r = generar();
+  assert.equal(r.origen, 'origin/datos-tokenizacion');
+  assert.equal(r.soloSemilla, false);
+  assert.deepEqual(r.historico.fotos.map(f => f.fecha), ['2026-11-10', '2026-11-11']);
+  // La variable de publicar.yml manda sobre la ref.
+  const archivo = path.join(repo.dir, 'h.json');
+  fs.writeFileSync(archivo, semilla);
+  r = generar({ RWADAR_TOKENIZACION_HISTORICO: archivo });
+  assert.equal(r.origen, 'la rama datos-tokenizacion');
+  assert.equal(r.historico.fotos.length, 1);
+  // Un enlace simbólico no vale: la semilla, con aviso.
+  const enlace = path.join(repo.dir, 'enlace.json');
+  fs.symlinkSync(archivo, enlace);
+  r = generar({ RWADAR_TOKENIZACION_HISTORICO: enlace });
+  assert.equal(r.soloSemilla, true);
+  assert.match(avisos.at(-1), /no es un archivo normal/);
+  // Una ref con un histórico roto: la semilla, con aviso; nunca bloquea.
+  r = generar({}, { leerRama: () => '{"roto": true}' });
+  assert.equal(r.soloSemilla, true);
+  assert.match(avisos.at(-1), /origin\/datos-tokenizacion no vale/);
+  r = generar({}, { leerRama: () => '{"version":1,"fuente":"CoinGecko","fotos":[]}' });
+  assert.equal(r.soloSemilla, true);
+  assert.match(avisos.at(-1), /no tiene ninguna foto/);
+  // Y el generador avisa bien alto si un destino remoto lleva solo la semilla.
+  assert.match(leer('rwadar-publicar.js'), /soloSemilla && \(preview \|\| produccion\)[\s\S]{0,200}se publica solo la semilla[\s\S]{0,200}git fetch origin datos-tokenizacion/);
 });
 
 test('foto-diaria.mjs: reintentos con espera (Retry-After hasta 2 min), nada escrito si falla, histórico roto intacto, exige TLS', async (t) => {

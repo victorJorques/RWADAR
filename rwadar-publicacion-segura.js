@@ -84,6 +84,8 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-movil/lib/cartera.js',
   // Motor de «La tokenización en el mundo» (10/11/2026): lo usan la web, el worker y la app.
   'rwadar-movil/lib/tokenizacion.js',
+  // Y de dónde saca rwadar-publicar.js el histórico que publica en /datos/.
+  'rwadar-tokenizacion-historico.js',
   'rwadar-movil/lib/ficha-editorial.js',
   'rwadar-movil/lib/idioma.js',
   'rwadar-movil/lib/idioma-en.js',

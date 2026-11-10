@@ -1927,6 +1927,13 @@
   "Tipo de activo": "Asset type",
   "Cuota del total": "Share of total",
   "Cambio en 24 h": "Change in 24 h",
+  // Revisión del 10/11/2026: la quinta cápsula, la foto con la que se compara, cuándo llega cada periodo y la unidad.
+  "Histórico": "All time",
+  "desde": "since",
+  "foto del": "snapshot of",
+  "disponible el": "available on",
+  "Valor total de los activos tokenizados, en millones de dólares (M$)": "Total value of tokenised assets, in millions of US dollars ($M)",
+  "Valor por tipo de activo (millones de dólares)": "Value by asset type (millions of US dollars)",
 };
 if(typeof module==='object'&&module.exports)module.exports=Object.freeze(diccionario);else raiz.RWAdarEnglish=Object.freeze(diccionario);
 })(typeof globalThis==='object'?globalThis:this);

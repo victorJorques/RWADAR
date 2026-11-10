@@ -33,6 +33,7 @@ const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 const { construirWorker, RUTAS: RUTAS_ACCESO } = require('./rwadar-acceso/compilar.cjs');
 const { exigirCatalogoPublico } = require('./rwadar-acceso/comprobar-produccion.cjs');
 const tokenizacionModelo = require('./rwadar-movil/lib/tokenizacion');
+const { historicoTokenizacion } = require('./rwadar-tokenizacion-historico');
 const {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
@@ -503,30 +504,9 @@ const nEmisiones = (capturado.emiLista.match(/<article class="emi/g) || []).leng
 console.log(`Pre-renderizado: ${nFichas} fichas, ${nFuera} descartadas y ${nEmisiones} emisiones escritas en el HTML (${kb} kB).`);
 
 /* ---- 4b · histórico de «La tokenización en el mundo» (10/11/2026) ----
-   El flujo «Foto diaria de la tokenización» guarda una foto al día en la rama
-   datos-tokenizacion; publicar.yml deja su tokenizacion-historico.json fuera
-   del repositorio y pasa la ruta en RWADAR_TOKENIZACION_HISTORICO (el árbol
-   sigue limpio para las compuertas). Se valida entero, se le suman las fotos
-   de la semilla de main y se publica en /datos/. Sin rama, o si no es válido,
-   se publica la semilla (rwadar-site/datos/tokenizacion-historico.json): la
-   web no deja de construirse por un dato. */
-function historicoTokenizacion() {
-  const semilla = tokenizacionModelo.validarHistorico(JSON.parse(
-    fs.readFileSync(path.join(DIR, 'datos', 'tokenizacion-historico.json'), 'utf8')));
-  const ruta = process.env.RWADAR_TOKENIZACION_HISTORICO;
-  if (!ruta) return { historico: semilla, origen: 'la semilla de main' };
-  try {
-    const estado = fs.lstatSync(ruta);
-    if (!estado.isFile() || estado.size > 2 * 1024 * 1024) throw new Error('no es un archivo normal de 2 MB como mucho');
-    let historico = tokenizacionModelo.validarHistorico(JSON.parse(fs.readFileSync(ruta, 'utf8')));
-    if (!historico.fotos.length) throw new Error('no tiene ninguna foto');
-    for (const foto of semilla.fotos) historico = tokenizacionModelo.anadirFoto(historico, foto).historico;
-    return { historico, origen: 'la rama datos-tokenizacion' };
-  } catch (e) {
-    console.warn(`AVISO: el histórico de la tokenización de ${ruta} no vale (${e.message}); se publica la semilla de main.`);
-    return { historico: semilla, origen: 'la semilla de main' };
-  }
-}
+   rwadar-tokenizacion-historico.js: el de publicar.yml
+   (RWADAR_TOKENIZACION_HISTORICO), si no el de origin/datos-tokenizacion y,
+   si no, la semilla de main. Validado entero; nunca bloquea la web. */
 
 /* ---- 5 · construir el árbol desechable que sí se puede subir ---- */
 function construirSalida() {
@@ -555,7 +535,12 @@ function construirSalida() {
         }
       }
     }
-    const tokenizacion = historicoTokenizacion();
+    const tokenizacion = historicoTokenizacion({ dirSitio: DIR });
+    if (tokenizacion.soloSemilla && (preview || produccion)) {
+      console.warn('\n' + '!'.repeat(72) + '\nAVISO: se publica solo la semilla del histórico de la tokenización.\n' +
+        'La web perdería los cambios a 7 días, 30 días, 1 año y el histórico.\n' +
+        'Antes de publicar: git fetch origin datos-tokenizacion\n' + '!'.repeat(72) + '\n');
+    }
     fs.writeFileSync(path.join(temporal, 'datos', 'tokenizacion-historico.json'),
       tokenizacionModelo.serializarHistorico(tokenizacion.historico), 'utf8');
     const fotosTokenizacion = tokenizacion.historico.fotos;

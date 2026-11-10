@@ -64,7 +64,7 @@ test('GET /api/tokenizacion: total, tipos y periodos de CoinGecko fusionados con
   assert.deepEqual(d.periodos.map(p => p.estado), ['ok', 'sin-datos', 'sin-datos', 'sin-datos', 'sin-datos']);
   // A CoinGecko no llega nada del visitante: ni su cookie ni ninguna credencial.
   assert.equal(m.llamadas.length, 1);
-  assert.deepEqual(m.llamadas[0].init.headers, { Accept: 'application/json' });
+  assert.deepEqual(m.llamadas[0].init.headers, { Accept: 'application/json', 'User-Agent': 'RWAdar/1.0 (+https://rwadar.pages.dev)' });
   assert.equal(m.llamadas[0].init.redirect, 'manual');
   assert.deepEqual(m.activos, [ORIGEN + '/datos/tokenizacion-historico.json']);
   // La ruta con barra final es la misma.
@@ -101,6 +101,29 @@ test('caché de 30 minutos (memoria del worker y Cache API); después se vuelve 
   const otro = montar({ cache, reloj: () => AHORA + 32 * 60000 });
   assert.equal((await (await otro.pedir()).json()).fuente, 'coingecko');
   assert.equal(otro.llamadas.length, 0);
+});
+
+test('las peticiones simultáneas con la caché fría hacen una sola llamada a CoinGecko', async () => {
+  let soltar;
+  const espera = new Promise(r => { soltar = r; });
+  const m = montar({ coingecko: async () => { await espera; return new Response(COINGECKO, { status: 200 }); } });
+  const pendientes = Array.from({ length: 20 }, () => m.pedir());
+  await new Promise(r => setTimeout(r, 10));
+  soltar();
+  const respuestas = await Promise.all(pendientes);
+  assert.equal(m.llamadas.length, 1);
+  for (const r of respuestas) assert.equal((await r.json()).fuente, 'coingecko');
+  // Y si esa única llamada falla, todas reciben la foto guardada y no se insiste.
+  let soltarMal;
+  const esperaMal = new Promise(r => { soltarMal = r; });
+  const caido = montar({ coingecko: async () => { await esperaMal; return new Response('{}', { status: 503 }); } });
+  const malas = Array.from({ length: 10 }, () => caido.pedir());
+  await new Promise(r => setTimeout(r, 10));
+  soltarMal();
+  for (const r of await Promise.all(malas)) assert.equal((await r.json()).fuente, 'foto-guardada');
+  assert.equal(caido.llamadas.length, 1);
+  await caido.pedir();
+  assert.equal(caido.llamadas.length, 1, 'tras el fallo espera 5 minutos');
 });
 
 test('si CoinGecko falla o da 429: la última foto con su fecha y «foto-guardada», y no se le insiste', async () => {
@@ -229,7 +252,18 @@ test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tabla
           filas: s.querySelectorAll('.solo-lector table tr').length, visualOculto: [...s.querySelectorAll('.tk-periodos,.tk-tipos')].every(n => n.getAttribute('aria-hidden') === 'true'),
           enlace: enlace && enlace.href, hora: document.getElementById('tkHora').textContent,
           seccionDespuesDePortada: s.getBoundingClientRect().top + scrollY >= portada.bottom + scrollY - 1,
-          ancho1: getComputedStyle(s.querySelector('.tk-barra-relleno')).width };
+          ancho1: getComputedStyle(s.querySelector('.tk-barra-relleno')).width,
+          // Cada tabla, justo detrás de su gráfico (orden de lectura).
+          tablaTrasPeriodos: s.querySelector('.tk-periodos').nextElementSibling?.querySelector('caption')?.textContent || null,
+          tablaEnSuBloque: [...s.querySelectorAll('.tk-bloque')].find(b => b.querySelector('h3')?.textContent === 'Por tipo de activo')
+            ?.querySelector('.tk-tipos + .solo-lector caption')?.textContent || null,
+          hablado: s.querySelector('.tk-total .solo-lector')?.textContent, cifraOculta: s.querySelector('.tk-total-cifra').getAttribute('aria-hidden'),
+          etiquetaTotal: s.querySelector('.tk-total-etq').textContent,
+          notasPeriodos: [...s.querySelectorAll('.tk-periodo')].map(p => p.querySelector('.tk-periodo-nota').textContent),
+          unaColumna: s.querySelector('.tk-graficos').classList.contains('tk-graficos--una'),
+          // Escritorio: el título en la columna del relato, como «Recién añadidas» y los capítulos.
+          izquierdaTitulo: document.getElementById('tkTit').getBoundingClientRect().left,
+          izquierdaCapitulo: document.querySelector('#relCap1 .rel-num').getBoundingClientRect().left };
       });
       assert.deepEqual(errores, [], `${ancho}: sin errores de JavaScript`);
       assert.equal(m.fuera, 0, `${ancho}: nada se sale por los lados`);
@@ -237,7 +271,16 @@ test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tabla
       assert.equal(m.total, '49.684\u00a0M$');
       assert.deepEqual(m.capsulas, ['tk-baja', 'tk-sin-datos', 'tk-sin-datos', 'tk-sin-datos', 'tk-sin-datos']);
       assert.equal(m.barras, 8);
-      assert.deepEqual(m.tablas, ['Cambio del valor total por periodo', 'Valor por tipo de activo']);
+      assert.deepEqual(m.tablas, ['Cambio del valor total por periodo', 'Valor por tipo de activo (millones de dólares)']);
+      assert.equal(m.tablaTrasPeriodos, 'Cambio del valor total por periodo');
+      assert.equal(m.tablaEnSuBloque, 'Valor por tipo de activo (millones de dólares)');
+      assert.equal(m.hablado, '49.684 millones de dólares');
+      assert.equal(m.cifraOculta, 'true');
+      assert.equal(m.etiquetaTotal, 'Valor total de los activos tokenizados, en millones de dólares (M$)');
+      // Sin fotos todavía: cuándo llegará cada periodo (la semilla es del 10/11/2026).
+      assert.deepEqual(m.notasPeriodos.slice(1), ['disponible el 15/11', 'disponible el 08/12', 'disponible el 08/11/2027', 'disponible el 11/11']);
+      assert.equal(m.unaColumna, true, 'con una foto, una columna');
+      if (ancho >= 900) assert.ok(Math.abs(m.izquierdaTitulo - m.izquierdaCapitulo) < 1, `título alineado con los capítulos (${m.izquierdaTitulo} y ${m.izquierdaCapitulo})`);
       assert.equal(m.filas, 6 + 9);
       assert.equal(m.visualOculto, true);
       assert.equal(m.enlace, 'https://www.coingecko.com/');
@@ -254,6 +297,35 @@ test('en Chromium: la sección se pinta sin desbordes a 390 y 1366 px, con tabla
       const en = await pagina.evaluate(() => ({ total: document.querySelector('.tk-total-cifra').textContent,
         nota: document.querySelector('.tk-periodo-nota').textContent, caption: document.querySelector('#tokenizacion caption').textContent }));
       assert.deepEqual(en, { total: '$49,684M', nota: '▼ down', caption: 'Change in total value by period' });
+      await pagina.close();
+    }
+    // Con varias fotos guardadas (las dos últimas casi iguales): la línea sin
+    // relleno y con su escala escrita, «desde» en las cápsulas y, en
+    // escritorio, barras y línea lado a lado más anchas que la columna.
+    const f = modelo.extraerFoto(JSON.parse(COINGECKO), { ahora: AHORA });
+    const dia = (fecha, factor) => ({ ...f, fecha, actualizado: fecha + 'T06:20:00.000Z', total: { ...f.total, valor: Math.round(f.total.valor * factor) } });
+    let h = modelo.historicoVacio();
+    for (const foto of [dia('2026-11-07', 0.998), dia('2026-11-08', 0.999), dia('2026-11-09', 0.997)]) h = modelo.anadirFoto(h, foto).historico;
+    const conFotos = JSON.stringify(modelo.resumir({ historico: h, actual: f }));
+    for (const [ancho, alto] of [[390, 844], [1366, 900]]) {
+      const pagina = await navegador.newPage({ viewport: { width: ancho, height: alto } });
+      await pagina.route('**/api/tokenizacion', r => r.fulfill({ status: 200, contentType: 'application/json', body: conFotos }));
+      await pagina.goto(local.url + '/', { waitUntil: 'load' });
+      await pagina.waitForSelector('#tokenizacion .tk-linea-svg', { timeout: 20000 });
+      const l = await pagina.evaluate(() => {
+        const s = document.querySelector('#tokenizacion'), col = document.querySelector('#relCap1').getBoundingClientRect().width;
+        const ys = s.querySelector('.tk-linea-trazo').getAttribute('points').split(' ').map(p => Number(p.split(',')[1]));
+        return { area: s.querySelectorAll('.tk-linea-area, .tk-linea-svg path').length, ys, nota: s.querySelector('.tk-linea-nota').textContent,
+          desde: [...s.querySelectorAll('.tk-periodo-desde')].map(n => n.textContent), anchoGraficos: s.querySelector('.tk-graficos').getBoundingClientRect().width, col,
+          anchoPagina: document.documentElement.scrollWidth, una: s.querySelector('.tk-graficos').classList.contains('tk-graficos--una') };
+      });
+      assert.equal(l.area, 0, 'sin área rellena hasta el suelo');
+      assert.ok(Math.max(...l.ys) - Math.min(...l.ys) < 112 / 2, `un 0,3 % no ocupa toda la altura (${l.ys})`);
+      assert.equal(l.nota, 'De 49.584 M$ (07/11/2026) a 49.684 M$ (10/11/2026) · +0,2 %');
+      assert.deepEqual(l.desde, ['desde 07/11']);
+      assert.equal(l.una, false);
+      assert.equal(l.anchoPagina, ancho, `${ancho}: sin desplazamiento horizontal con la línea`);
+      if (ancho >= 900) assert.ok(l.anchoGraficos > l.col + 100, `en escritorio, los gráficos más anchos que la columna (${l.anchoGraficos} y ${l.col})`);
       await pagina.close();
     }
     // CoinGecko da 429: la última foto guardada, con su aviso y su fecha.

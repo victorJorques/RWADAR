@@ -1,6 +1,6 @@
 import tokenizacionModelo from '../rwadar-movil/lib/tokenizacion.js';
 
-/* GET /api/tokenizacion (petición de Víctor del 10/11/2026): la tokenización
+/* GET /api/tokenizacion (10/11/2026): la tokenización
    en el mundo para la portada de la web y para la app. Público, sin sesión y
    sin cookies: nunca lee ni reenvía la cookie de nadie.
 
@@ -25,6 +25,9 @@ const ESPERA_FALLO_MS = 5 * 60000;
 const ESPERA_MAX_MS = 3600000;
 const MAX_COINGECKO = 4 * 1024 * 1024;
 const MAX_HISTORICO = 2 * 1024 * 1024;
+// Fijo y neutro: sin datos del visitante. Las subpeticiones del worker no
+// llevan ninguno y la API gratuita limita antes a los clientes anónimos.
+const USER_AGENT = 'RWAdar/1.0 (+https://rwadar.pages.dev)';
 
 function entradaValida(e) {
   if (!e || typeof e !== 'object' || Array.isArray(e)) return null;
@@ -39,6 +42,9 @@ export function crearTokenizacionServidor({ fetchImpl, ahora = Date.now, plazoMs
   // undefined: la Cache API del worker si existe; null: sin Cache API (pruebas).
   const cacheApi = () => (cache !== undefined ? cache : globalThis.caches?.default || null);
   let memoria = null;
+  // Las peticiones que llegan a la vez con la caché fría comparten una sola
+  // lectura de CoinGecko: así la portada no provoca un 429 por sí sola.
+  let enVuelo = null;
 
   async function leerCache(origen) {
     const c = cacheApi();
@@ -63,7 +69,7 @@ export function crearTokenizacionServidor({ fetchImpl, ahora = Date.now, plazoMs
     try {
       // Sin cookies ni cabeceras del visitante; las redirecciones no se siguen.
       const r = await fetchImpl(tokenizacionModelo.FUENTE.api, { method: 'GET', redirect: 'manual', signal: abort.signal,
-        headers: { Accept: 'application/json' } });
+        headers: { Accept: 'application/json', 'User-Agent': USER_AGENT } });
       if (!r.ok) {
         const error = new Error('coingecko_' + r.status);
         const retry = r.headers.get('retry-after') || '';
@@ -82,8 +88,11 @@ export function crearTokenizacionServidor({ fetchImpl, ahora = Date.now, plazoMs
     if (entrada.foto && t - entrada.leidaEn >= 0 && t - entrada.leidaEn < FRESCA_MS) return { foto: entrada.foto, fuente: 'coingecko' };
     if (!(entrada.reintentarDesde > t)) {
       try {
-        const foto = await pedirCoinGecko();
-        guardar(origen, { foto, leidaEn: t, reintentarDesde: 0 }, waitUntil);
+        const nueva = !enVuelo;
+        if (nueva) enVuelo = pedirCoinGecko().finally(() => { enVuelo = null; });
+        const pendiente = enVuelo;
+        const foto = await pendiente;
+        if (nueva) guardar(origen, { foto, leidaEn: t, reintentarDesde: 0 }, waitUntil);
         return { foto, fuente: 'coingecko' };
       } catch (error) {
         guardar(origen, { ...entrada, reintentarDesde: t + (error.esperaMs || ESPERA_FALLO_MS) }, waitUntil);

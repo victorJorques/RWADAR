@@ -1868,9 +1868,17 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
     /<span>Datos:<\/span> <a href="https:\/\/www\.coingecko\.com\/" target="_blank" rel="noopener nofollow" translate="no">CoinGecko<\/a>/.test(seccion) &&
     !/\d/.test(seccion.replace(/<[^>]*>/g, '')));
   const historicoPublicado = fs.readFileSync(path.join(publicado, 'datos', 'tokenizacion-historico.json'), 'utf8');
-  prueba('el histórico de la tokenización se publica en /datos/, validado y con la semilla de main sin la rama',
-    historicoPublicado === tk.serializarHistorico(tk.validarHistorico(JSON.parse(lee('datos/tokenizacion-historico.json')))) &&
-    /RWADAR_TOKENIZACION_HISTORICO/.test(publicador) && /tokenizacionModelo\.validarHistorico/.test(publicador));
+  const semillaTk = tk.validarHistorico(JSON.parse(lee('datos/tokenizacion-historico.json')));
+  // Sin la variable de publicar.yml, el generador usa origin/datos-tokenizacion si este clon la tiene.
+  const conRamaTk = spawnSync('git', ['rev-parse', '--verify', '-q', 'origin/datos-tokenizacion'], { cwd: raiz }).status === 0;
+  const publicadoTk = (() => { try { return tk.validarHistorico(JSON.parse(historicoPublicado)); } catch { return null; } })();
+  const moduloTk = fs.readFileSync(path.join(raiz, 'rwadar-tokenizacion-historico.js'), 'utf8');
+  prueba('el histórico de la tokenización se publica en /datos/, validado; sin la rama, la semilla de main',
+    publicadoTk !== null && historicoPublicado === tk.serializarHistorico(publicadoTk) &&
+    (conRamaTk ? semillaTk.fotos.every(f => publicadoTk.fotos.some(p => p.fecha === f.fecha))
+      : historicoPublicado === tk.serializarHistorico(semillaTk)) &&
+    /historicoTokenizacion\(\{ dirSitio: DIR \}\)/.test(publicador) && /se publica solo la semilla/.test(publicador) &&
+    /RWADAR_TOKENIZACION_HISTORICO/.test(moduloTk) && /'show', `\$\{REF\}:tokenizacion-historico\.json`/.test(moduloTk));
   const tkPublicados = scriptsPublicados.map(s => s[1]).filter(r => /\/tokenizacion-/.test(r));
   prueba('el motor y la sección de la tokenización salen con huella, antes del snapshot del catálogo',
     tkPublicados.length === 2 && /^\/assets\/tokenizacion-modelo-20261110\.[a-f0-9]{12}\.js$/.test(tkPublicados[0]) &&

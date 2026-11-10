@@ -5,11 +5,14 @@
    Pinta la sección #tokenizacion con lo que devuelve /api/tokenizacion
    (nuestro servidor lee CoinGecko; el navegador no habla con nadie más):
    - la cifra grande del valor total;
-   - una cápsula por periodo (24 h · 7 días · 30 días · 1 año · Total), con
-     flecha, signo y color (verde sube, rojo baja; nunca solo el color);
+   - una cápsula por periodo (24 h · 7 días · 30 días · 1 año · Histórico),
+     con flecha, signo y color (verde sube, rojo baja; nunca solo el color),
+     la fecha de la foto con la que se compara o, sin ella, cuándo llegará;
    - una barra por tipo de activo con su cuota y su cambio en 24 h;
-   - la línea de evolución con las fotos diarias guardadas (con dos o más);
-   - y, para lectores de pantalla, las mismas cifras en dos tablas.
+   - la línea de evolución con las fotos diarias guardadas (con dos o más),
+     con su escala escrita debajo (de cuánto a cuánto y el cambio);
+   - y, para lectores de pantalla, las mismas cifras en dos tablas, cada una
+     justo detrás de su gráfico.
    Si el servidor no responde, usa el histórico estático del despliegue
    (/datos/tokenizacion-historico.json) con su fecha; si tampoco, un estado
    vacío honesto. Ninguna cifra se inventa. Todo se escribe con
@@ -61,11 +64,20 @@
   function cambio(p, conTexto) {
     const dir = modelo.direccion(p), n = el('span', 'tk-cambio tk-' + dir);
     if (dir === 'sin-datos') { n.textContent = '—'; return n; }
-    n.append(el('span', 'tk-flecha', FLECHA[dir]), el('span', 'tk-cifra', modelo.porcentaje(p, idioma())));
+    n.append(el('span', 'tk-flecha', FLECHA[dir]), ' ', el('span', 'tk-cifra', modelo.porcentaje(p, idioma())));
     n.firstChild.setAttribute('aria-hidden', 'true');
     if (conTexto) n.append(' ', el('span', 'tk-cambio-etq', 'en 24 h'));
     return n;
   }
+  /* «desde 03/11», «foto del 10/11», «disponible el 15/11»: una etiqueta y su fecha. */
+  function conFecha(clase, texto, fecha) {
+    const n = el('span', clase);
+    const f = el('span', 'tk-fecha', modelo.fechaBreve(fecha, idioma(), datos?.fecha || null));
+    f.setAttribute('translate', 'no');
+    n.append(el('span', '', texto), ' ', f);
+    return n;
+  }
+  const hoyUTC = () => new Date().toISOString().slice(0, 10);
   function periodos(d) {
     const lista = el('ul', 'tk-periodos');
     lista.setAttribute('aria-hidden', 'true');
@@ -73,12 +85,20 @@
       const dir = p.estado === 'ok' ? modelo.direccion(p.cambio) : 'sin-datos';
       const li = el('li', 'tk-periodo tk-' + dir);
       li.append(el('span', 'tk-periodo-nom', p.nombre));
-      if (dir === 'sin-datos') li.append(el('span', 'tk-periodo-cifra', '—'), el('span', 'tk-periodo-nota', 'aún sin datos'));
-      else {
+      if (dir === 'sin-datos') {
+        li.append(el('span', 'tk-periodo-cifra', '—'));
+        // Sin foto todavía: cuándo llegará, si se sabe (y si no, «aún sin datos»).
+        const llega = modelo.fechaLlegada(d.guardadoDesde, p.clave, d.fecha);
+        li.append(llega ? conFecha('tk-periodo-nota', 'disponible el', llega) : el('span', 'tk-periodo-nota', 'aún sin datos'));
+      } else {
         // Signo en la cifra; flecha y palabra debajo: el color nunca va solo.
         const nota = el('span', 'tk-periodo-nota');
         nota.append(el('span', 'tk-flecha', FLECHA[dir]), ' ', el('span', '', dir === 'sube' ? 'sube' : dir === 'baja' ? 'baja' : 'sin cambios'));
         li.append(el('span', 'tk-periodo-cifra', modelo.porcentaje(p.cambio, idioma())), nota);
+        // Con qué foto se compara (con ±2 días, «7 días» puede ser 5 o 9).
+        if (p.desde) li.append(conFecha('tk-periodo-desde', 'desde', p.desde));
+        // La foto guardada de otro día enseña el cambio en 24 h de aquel día.
+        else if (p.clave === '24h' && d.fuente === 'foto-guardada' && d.fecha !== hoyUTC()) li.append(conFecha('tk-periodo-desde', 'foto del', d.fecha));
       }
       lista.append(li);
     }
@@ -117,27 +137,30 @@
       return caja;
     }
     const W = 320, H = 112, M = 8;
-    const t = serie.map(p => Date.parse(p.fecha + 'T00:00:00Z')), v = serie.map(p => p.valor);
-    const t0 = t[0], t1 = t[t.length - 1], min = Math.min(...v), max = Math.max(...v);
+    const t = serie.map(p => Date.parse(p.fecha + 'T00:00:00Z'));
+    const t0 = t[0], t1 = t[t.length - 1];
     const x = i => M + (t1 > t0 ? (t[i] - t0) / (t1 - t0) : 0) * (W - 2 * M);
-    const y = i => H - M - (max > min ? (v[i] - min) / (max - min) : 0.5) * (H - 2 * M);
-    const puntos = serie.map((_, i) => x(i).toFixed(1) + ',' + y(i).toFixed(1));
+    // Escala mínima del 4 % y sin relleno hasta el suelo: el suelo no es cero.
+    const alturas = modelo.alturasLinea(serie.map(p => p.valor), H, M);
+    const puntos = serie.map((_, i) => x(i).toFixed(1) + ',' + alturas[i].toFixed(1));
     const dibujo = svg('svg', { viewBox: `0 0 ${W} ${H}`, class: 'tk-linea-svg', role: 'img', focusable: 'false' });
-    const ini = modelo.fechaCorta(serie[0].fecha), fin = modelo.fechaCorta(serie[serie.length - 1].fecha);
-    const v0 = modelo.millones(v[0], idioma()), v1 = modelo.millones(v[v.length - 1], idioma());
-    dibujo.setAttribute('aria-label', idioma() === 'en'
-      ? `Total value from ${ini} to ${fin}: from ${v0} to ${v1}, ${serie.length} daily snapshots`
-      : `Valor total del ${ini} al ${fin}: de ${v0} a ${v1}, ${serie.length} fotos diarias`);
-    dibujo.append(svg('path', { class: 'tk-linea-area', d: `M${x(0).toFixed(1)},${H - M} L${puntos.join(' L')} L${x(serie.length - 1).toFixed(1)},${H - M} Z` }),
-      svg('polyline', { class: 'tk-linea-trazo', points: puntos.join(' ') }),
-      svg('circle', { class: 'tk-linea-punto', cx: x(serie.length - 1).toFixed(1), cy: y(serie.length - 1).toFixed(1), r: 4 }));
+    const textos = modelo.textosLinea(serie, idioma());
+    dibujo.setAttribute('aria-label', textos.etiqueta);
+    dibujo.append(svg('polyline', { class: 'tk-linea-trazo', points: puntos.join(' ') }),
+      svg('circle', { class: 'tk-linea-punto', cx: x(serie.length - 1).toFixed(1), cy: alturas[serie.length - 1].toFixed(1), r: 4 }));
     const eje = el('div', 'tk-linea-eje');
     eje.setAttribute('aria-hidden', 'true');
-    eje.append(el('span', '', ini), el('span', '', fin));
-    caja.append(dibujo, eje);
+    eje.append(el('span', '', modelo.fechaCorta(serie[0].fecha, idioma())), el('span', '', modelo.fechaCorta(serie[serie.length - 1].fecha, idioma())));
+    // La escala, en cifras y a la vista (el dibujo ya la lleva en su etiqueta).
+    const nota = el('p', 'tk-nota tk-linea-nota', textos.nota);
+    nota.setAttribute('translate', 'no');
+    nota.setAttribute('aria-hidden', 'true');
+    caja.append(dibujo, eje, nota);
     return caja;
   }
-  function tablas(d) {
+  /* Las tablas para lectores de pantalla van justo detrás de su gráfico
+     (que lleva aria-hidden), para que se lean en su sitio. */
+  function tablaPeriodos(d) {
     const caja = el('div', 'solo-lector');
     const t1 = el('table'); t1.append(el('caption', '', 'Cambio del valor total por periodo'));
     const c1 = el('tr'); c1.append(el('th', '', 'Periodo'), el('th', '', 'Cambio'), el('th', '', 'Desde'));
@@ -145,11 +168,17 @@
     for (const p of d.periodos) {
       const fila = el('tr'), ok = p.estado === 'ok' && finito(p.cambio);
       fila.append(el('th', '', p.nombre), el('td', '', ok ? modelo.porcentaje(p.cambio, idioma()) : 'aún sin datos'),
-        el('td', '', p.desde ? modelo.fechaCorta(p.desde) : '—'));
+        el('td', '', p.desde ? modelo.fechaCorta(p.desde, idioma()) : '—'));
       fila.firstChild.setAttribute('scope', 'row');
       t1.append(fila);
     }
-    const t2 = el('table'); t2.append(el('caption', '', 'Valor por tipo de activo'));
+    for (const th of c1.children) th.setAttribute('scope', 'col');
+    caja.append(t1);
+    return caja;
+  }
+  function tablaTipos(d) {
+    const caja = el('div', 'solo-lector');
+    const t2 = el('table'); t2.append(el('caption', '', 'Valor por tipo de activo (millones de dólares)'));
     const c2 = el('tr'); c2.append(el('th', '', 'Tipo de activo'), el('th', '', 'Valor'), el('th', '', 'Cuota del total'), el('th', '', 'Cambio en 24 h'));
     t2.append(c2);
     for (const t of d.tipos) {
@@ -159,8 +188,8 @@
       fila.firstChild.setAttribute('scope', 'row');
       t2.append(fila);
     }
-    for (const fila of [c1, c2]) for (const th of fila.children) th.setAttribute('scope', 'col');
-    caja.append(t1, t2);
+    for (const th of c2.children) th.setAttribute('scope', 'col');
+    caja.append(t2);
     return caja;
   }
 
@@ -182,7 +211,8 @@
     if (d.fuente === 'foto-guardada') {
       const aviso = el('p', 'tk-aviso');
       aviso.append(el('span', '', 'CoinGecko no responde ahora. Enseñamos la última foto guardada, del'), ' ',
-        el('b', '', modelo.horaDato(d.actualizado)));
+        el('b', '', modelo.horaDato(d.actualizado, idioma())));
+      aviso.lastChild.setAttribute('translate', 'no');
       cuerpo.append(aviso);
     }
     const total = el('div', 'tk-total');
@@ -190,24 +220,31 @@
     const [cifraTotal, unidad] = modelo.millones(d.total.valor, idioma()).split('\u00a0');
     const grande = el('span', 'tk-total-cifra', cifraTotal);
     if (unidad) grande.append(el('span', 'tk-total-unidad', '\u00a0' + unidad));
-    total.append(grande,
-      el('span', 'tk-total-etq', 'Valor total de los activos tokenizados'));
-    cuerpo.append(total, periodos(d));
+    // El lector de pantalla oye «49.684 millones de dólares», no «M dólar».
+    grande.setAttribute('aria-hidden', 'true');
+    const hablado = el('span', 'solo-lector', modelo.millonesHablados(d.total.valor, idioma()));
+    hablado.setAttribute('translate', 'no');
+    total.append(grande, hablado,
+      el('span', 'tk-total-etq', 'Valor total de los activos tokenizados, en millones de dólares (M$)'));
+    cuerpo.append(total, periodos(d), tablaPeriodos(d));
     if (d.periodos.some(p => p.clave !== '24h' && p.estado !== 'ok')) {
       const nota = el('p', 'tk-nota');
       nota.append(el('span', '', 'Los periodos sin datos se rellenarán solos con las fotos diarias que guarda RWAdar desde el'), ' ',
-        el('b', '', modelo.fechaCorta(d.guardadoDesde || d.fecha)));
+        el('b', '', modelo.fechaCorta(d.guardadoDesde || d.fecha, idioma())));
+      nota.lastChild.setAttribute('translate', 'no');
       cuerpo.append(nota);
     }
-    const graficos = el('div', 'tk-graficos');
+    // Con menos de dos fotos no hay línea: una sola columna, sin hueco al lado.
+    const graficos = el('div', 'tk-graficos' + (d.serie.length < 2 ? ' tk-graficos--una' : ''));
     const porTipo = el('div', 'tk-bloque'), evolucion = el('div', 'tk-bloque');
-    porTipo.append(el('h3', 'tk-h3', 'Por tipo de activo'), tipos(d));
+    porTipo.append(el('h3', 'tk-h3', 'Por tipo de activo'), tipos(d), tablaTipos(d));
     evolucion.append(el('h3', 'tk-h3', 'Evolución del valor total'), linea(d));
     graficos.append(porTipo, evolucion);
-    cuerpo.append(graficos, tablas(d));
+    cuerpo.append(graficos);
     hora.append(' · ', el('span', '', d.fuente === 'coingecko' ? 'Dato del' : 'Foto guardada del'), ' ',
-      el('time', '', modelo.horaDato(d.actualizado)));
+      el('time', '', modelo.horaDato(d.actualizado, idioma())));
     hora.lastChild.dateTime = d.actualizado;
+    hora.lastChild.setAttribute('translate', 'no');
   }
 
   async function iniciar() {

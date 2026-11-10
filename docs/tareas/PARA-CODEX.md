@@ -6,6 +6,29 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 10 de noviembre de 2026 (2) · Claude · «La tokenización en el mundo»: correcciones de la revisión
+
+Dos revisoras (código y seguridad; diseño, datos y accesibilidad) aprobaron con cambios. Hecho, en un commit encima del anterior. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**
+
+**Obligatorias**
+- El generador ya no pierde la historia al publicar desde un ordenador: `rwadar-tokenizacion-historico.js` (nuevo, en la huella aprobada) usa `RWADAR_TOKENIZACION_HISTORICO` (publicar.yml) y, si no está, `git show origin/datos-tokenizacion:tokenizacion-historico.json`, validado igual. Si con `--preview` o `--produccion` solo hay semilla, sale un AVISO grande: «haz `git fetch origin datos-tokenizacion`». Prueba nueva en `.github/tokenizacion.test.mjs` (sin variable y con la ref; variable; enlace simbólico; ref rota o vacía).
+- Sin nombres de personas en lo que se publica o va en la app (index.html, motor y su copia web, servidor, flujo).
+- Línea de evolución con escala honesta (web y app, `alturasLinea` del motor): abarca como poco un 4 % del valor, sin área rellena hasta el suelo y con la escala escrita debajo («De 47.120 M$ (07/10/2025) a 49.684 M$ (10/11/2026) · +5,4 %», `textosLinea`).
+- Escritorio: la sección va en la columna de 720 px de sus vecinas (título alineado con los capítulos); solo los gráficos se abren al ancho de las tarjetas. La prueba de Chromium lo mide.
+- Orden de lectura: cada tabla para lectores de pantalla va justo detrás de su gráfico.
+
+**Recomendadas aplicadas**
+- Servidor: las peticiones simultáneas comparten una sola llamada a CoinGecko (20 a la vez → 1), y `User-Agent: RWAdar/1.0 (+https://rwadar.pages.dev)`.
+- Flujo diario: primer paso «Solo desde main», como publicar.yml. publicar.yml anota el commit de `datos-tokenizacion` en el registro.
+- Cápsulas: «desde 03/11» bajo cada cifra (con ±2 días, «7 días» puede ser 5 o 9); sin foto todavía, «disponible el 15/11» (`fechaLlegada`); con la foto guardada de otro día, «foto del 10/11» en «24 h». La quinta se llama «Histórico» («All time»).
+- «M$» explicado: «…, en millones de dólares (M$)»; el lector de pantalla oye «49.684 millones de dólares». Cifra grande sin fuente monoespaciada. Fechas en inglés «10 Nov 2026». «= 0,0 %» con espacio. Con una sola foto, una columna.
+- App: reutiliza una respuesta buena 10 minutos en la sesión (`REUSO_MS`); los fallos no se guardan. Pruebas nuevas: aviso de foto guardada, línea con varias fotos (onLayout a 320 px), «Reintentar» sin dígitos.
+
+**Para tener en cuenta (no cambiado)**
+- Cupo de Pages Functions: cada visita a la portada y cada apertura de Inicio en la app (como mucho una cada 10 min) es una llamada al worker; si falla la API, la web pide además `/datos/`, que también pasa por el worker. Al agotar las 100.000 diarias Pages sirve sin worker («fail open», ver `rwadar-acceso/compilar.cjs`) y las lecciones de /academy/ saldrían sin pedir cuenta. Vigilarlo en el panel de Cloudflare tras publicar.
+- La Cache API (`caches.default`) no hace nada en `*.pages.dev`: en producción probablemente solo funcione la caché en memoria de cada worker (más la unión de peticiones simultáneas). Comprobarlo en la preview mirando las llamadas a CoinGecko por hora.
+- `idioma-en-20261022.js` cambia sin cambiar de nombre, pero lo publicado lleva huella de contenido en el nombre (`idioma-en-20261022.<hash>.js`): `immutable` no sirve una copia vieja.
+
 ## 10 de noviembre de 2026 · Claude · «La tokenización en el mundo» en Inicio (web y app)
 
 Víctor pidió en Inicio un gráfico muy visual de la evolución de la tokenización. Eligió: por **tipo de activo** (no por país ni por blockchain: no hay fuente gratis fiable), en la web y en la app, con datos **gratis de CoinGecko** y una foto diaria guardada por RWAdar para que 7 días, 30 días, 1 año y el total se rellenen solos. **Sin publicar, sin lanzar flujos, sin Supabase y sin claves.**

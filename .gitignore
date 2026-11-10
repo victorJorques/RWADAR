@@ -45,6 +45,8 @@
 !/rwadar-arrancar.js
 !/rwadar-capturar-portadas.mjs
 !/rwadar-publicar.js
+# Histórico de «La tokenización en el mundo» que publica rwadar-publicar.js (10/11/2026).
+!/rwadar-tokenizacion-historico.js
 !/rwadar-precargar-imagenes.js
 !/probar-precarga.cjs
 !/rwadar-publicacion-segura.js

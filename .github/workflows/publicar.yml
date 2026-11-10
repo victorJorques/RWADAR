@@ -81,6 +81,8 @@ jobs:
             git show FETCH_HEAD:tokenizacion-historico.json > "$RUNNER_TEMP/tokenizacion-historico.json"; then
             echo "RWADAR_TOKENIZACION_HISTORICO=$RUNNER_TEMP/tokenizacion-historico.json" >> "$GITHUB_ENV"
             echo "Histórico de la tokenización: rama datos-tokenizacion."
+            # Esta rama no la cubre el sello aprobado: su commit queda en el registro.
+            echo "datos-tokenizacion: $(git rev-parse FETCH_HEAD)"
           else
             echo "Sin la rama datos-tokenizacion: se publica la semilla de main."
           fi

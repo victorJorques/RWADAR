@@ -1,6 +1,6 @@
 name: Foto diaria de la tokenización
 
-# «La tokenización en el mundo» de Inicio (petición de Víctor del 10/11/2026).
+# «La tokenización en el mundo» de Inicio (10/11/2026).
 # Una vez al día lee CoinGecko (gratis, sin clave) y guarda la foto del día
 # (fecha UTC, valor total, tipos y hora del dato) en tokenizacion-historico.json
 # de la rama «datos-tokenizacion». Con esas fotos, la web y la app calculan los
@@ -39,6 +39,14 @@ jobs:
     permissions:
       contents: write
     steps:
+      # Como publicar.yml: a mano solo se lanza desde main. Así nadie ejecuta
+      # el código de otra rama con permiso de escritura.
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "La foto diaria solo se lanza desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
       # Sin sparse-checkout a propósito: «git worktree add» copiaría sus
       # patrones y la rama de datos saldría sin su archivo. Las credenciales
       # se quedan (por defecto) solo para empujar la foto.

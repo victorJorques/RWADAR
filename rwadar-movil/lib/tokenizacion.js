@@ -1,6 +1,6 @@
 'use strict';
 /* ---------------------------------------------------------------------
-   «La tokenización en el mundo» (petición de Víctor del 10/11/2026)
+   «La tokenización en el mundo» (10/11/2026)
    ---------------------------------------------------------------------
    Un solo motor para la web, la app, el servidor web (_worker.js, donde
    rwadar-acceso/compilar.cjs lo copia tal cual) y la foto diaria
@@ -38,7 +38,8 @@ const PERIODOS = Object.freeze([
   Object.freeze({ clave: '7d', dias: 7, nombre: '7 días' }),
   Object.freeze({ clave: '30d', dias: 30, nombre: '30 días' }),
   Object.freeze({ clave: '1a', dias: 365, nombre: '1 año' }),
-  Object.freeze({ clave: 'total', dias: null, nombre: 'Total' }),
+  // «Histórico» (y no «Total»): no se confunde con el valor total de encima.
+  Object.freeze({ clave: 'total', dias: null, nombre: 'Histórico' }),
 ]);
 const MARGEN_DIAS = 2;
 const MAX_FOTOS = 5000;
@@ -229,6 +230,12 @@ function millones(valor, idioma = 'es') {
   const m = valor / 1e6, decimales = m >= 100 ? 0 : 1;
   return idioma === 'en' ? '$' + numero(m, decimales, 'en') + 'M' : numero(m, decimales, 'es') + ' M$';
 }
+/* Para lectores de pantalla: «49.684 millones de dólares», no «M dólar». */
+function millonesHablados(valor, idioma = 'es') {
+  if (typeof valor !== 'number' || !Number.isFinite(valor)) return '—';
+  const m = valor / 1e6, decimales = m >= 100 ? 0 : 1;
+  return idioma === 'en' ? numero(m, decimales, 'en') + ' million dollars' : numero(m, decimales, 'es') + ' millones de dólares';
+}
 function direccion(p) {
   if (typeof p !== 'number' || !Number.isFinite(p)) return 'sin-datos';
   if (Math.abs(p) < 0.05) return 'igual';
@@ -245,13 +252,63 @@ function cuota(p, idioma = 'es') {
   if (typeof p !== 'number' || !Number.isFinite(p)) return '—';
   return (p > 0 && p < 0.1 ? (idioma === 'en' ? '<0.1' : '<0,1') : numero(p, 1, idioma)) + (idioma === 'en' ? '%' : ' %');
 }
-function fechaCorta(fecha) {
-  return msFecha(fecha) === null ? '—' : fecha.slice(8, 10) + '/' + fecha.slice(5, 7) + '/' + fecha.slice(0, 4);
+/* Fechas: «10/11/2026» en castellano; en inglés, «10 Nov 2026», que no se
+   confunde con el 11 de octubre al otro lado del Atlántico. */
+const MESES_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function fechaCorta(fecha, idioma = 'es') {
+  if (msFecha(fecha) === null) return '—';
+  if (idioma === 'en') return Number(fecha.slice(8, 10)) + ' ' + MESES_EN[Number(fecha.slice(5, 7)) - 1] + ' ' + fecha.slice(0, 4);
+  return fecha.slice(8, 10) + '/' + fecha.slice(5, 7) + '/' + fecha.slice(0, 4);
 }
-function horaDato(iso) {
+/* «15/11» (o «15 Nov»); con el año solo si no es el de «referencia». */
+function fechaBreve(fecha, idioma = 'es', referencia = null) {
+  if (msFecha(fecha) === null) return '—';
+  const mismoAnio = typeof referencia === 'string' && referencia.slice(0, 4) === fecha.slice(0, 4);
+  if (!mismoAnio) return fechaCorta(fecha, idioma);
+  return idioma === 'en' ? Number(fecha.slice(8, 10)) + ' ' + MESES_EN[Number(fecha.slice(5, 7)) - 1]
+    : fecha.slice(8, 10) + '/' + fecha.slice(5, 7);
+}
+function horaDato(iso, idioma = 'es') {
   if (typeof iso !== 'string' || !ISO.test(iso)) return '—';
-  return fechaCorta(iso.slice(0, 10)) + ', ' + iso.slice(11, 16) + ' UTC';
+  return fechaCorta(iso.slice(0, 10), idioma) + ', ' + iso.slice(11, 16) + ' UTC';
+}
+
+/* El primer día en que un periodo puede tener dato, si se guarda una foto
+   cada día desde «guardadoDesde»: el total, al día siguiente; 7 días, 30
+   días y 1 año, en cuanto haya una foto a ±2 días de la fecha buscada. Si
+   esa fecha ya pasó (faltan fotos), null: se dice «aún sin datos». */
+function fechaLlegada(guardadoDesde, clavePeriodo, hoy) {
+  const desde = msFecha(guardadoDesde), p = PERIODOS.find(x => x.clave === clavePeriodo);
+  if (desde === null || !p || p.clave === '24h') return null;
+  const llega = fechaDe(desde + (p.dias === null ? 1 : Math.max(1, p.dias - MARGEN_DIAS)) * DIA_MS);
+  return msFecha(hoy) !== null && llega <= hoy ? null : llega;
+}
+
+/* Los textos de la línea de evolución, ya en el idioma elegido: la nota
+   visible bajo el dibujo (la escala en cifras) y su etiqueta accesible. */
+function textosLinea(serie, idioma = 'es') {
+  if (!Array.isArray(serie) || serie.length < 2) return null;
+  const a = serie[0], b = serie[serie.length - 1];
+  const v0 = millones(a.valor, idioma), v1 = millones(b.valor, idioma);
+  const f0 = fechaCorta(a.fecha, idioma), f1 = fechaCorta(b.fecha, idioma);
+  const cambio = porcentaje(cambioPct(b.valor, a.valor), idioma);
+  return idioma === 'en'
+    ? { nota: `From ${v0} (${f0}) to ${v1} (${f1}) · ${cambio}`, etiqueta: `Total value from ${f0} to ${f1}: from ${v0} to ${v1}, ${cambio}, ${serie.length} daily snapshots` }
+    : { nota: `De ${v0} (${f0}) a ${v1} (${f1}) · ${cambio}`, etiqueta: `Valor total del ${f0} al ${f1}: de ${v0} a ${v1}, ${cambio}, ${serie.length} fotos diarias` };
+}
+
+/* La escala vertical de la línea de evolución. El eje no empieza en cero ni
+   se estira de la foto más baja a la más alta: abarca como poco un 4 % del
+   valor, así que un cambio del 0,3 % se ve casi plano y no como un desplome.
+   Devuelve la «y» de cada valor en un dibujo de alto «alto» con margen «m». */
+function alturasLinea(valores, alto, m) {
+  const v = valores.filter(n => typeof n === 'number' && Number.isFinite(n));
+  if (!v.length) return [];
+  const min = Math.min(...v), max = Math.max(...v);
+  const rango = Math.max(max - min, Math.abs(max) * 0.04) || 1, lo = (min + max) / 2 - rango / 2;
+  return v.map(n => alto - m - ((n - lo) / rango) * (alto - 2 * m));
 }
 
 module.exports = { FUENTE, TOTAL, TIPOS, ORO, PERIODOS, MARGEN_DIAS, historicoVacio, extraerFoto, validarFoto, validarHistorico,
-  anadirFoto, serializarHistorico, resumir, resumenValido, millones, porcentaje, cuota, direccion, fechaCorta, horaDato, fechaDe };
+  anadirFoto, serializarHistorico, resumir, resumenValido, millones, porcentaje, cuota, direccion, fechaCorta, fechaBreve, horaDato, fechaDe,
+  fechaLlegada, alturasLinea, textosLinea, millonesHablados, cambioPct };
