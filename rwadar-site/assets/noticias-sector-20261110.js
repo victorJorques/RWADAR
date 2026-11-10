@@ -2,8 +2,8 @@
 /* =====================================================================
    RWAdar · «Noticias del sector» (10/11/2026; rediseño de Inicio, el mismo día)
    ---------------------------------------------------------------------
-   Pinta la sección [data-noticias] con /datos/noticias.json (estático, del
-   propio despliegue; el navegador no habla con nadie más). Dos modos:
+   Pinta la sección [data-noticias] con /datos/noticias-v2.json (estático,
+   del propio despliegue; el navegador no habla con nadie más). Dos modos:
    - data-noticias="portada" (Inicio): las 3 primeras, en tarjetas grandes
      con su foto editorial y solo el titular encima, sobre un degradado
      oscuro para que se lea. Cada tarjeta es un enlace a su detalle en
@@ -16,7 +16,8 @@
      abre esa noticia.
    Las fotos son ilustrativas, generadas con IA y servidas por RWAdar en
    /noticias-editoriales/<clave>.webp (la clave es el campo «imagen»). Si una
-   no carga, queda el fondo oscuro y el titular sigue legible.
+   no carga o la noticia no trae «imagen», queda el fondo oscuro y el titular
+   sigue legible.
    Los textos de cada noticia salen del archivo en el idioma elegido (los
    campos «en» en inglés) y no pasan por el diccionario; los de la interfaz
    los traduce idioma-web con lib/idioma-en.js. Todo se escribe con
@@ -24,7 +25,7 @@
    ===================================================================== */
 (() => {
   const modelo = globalThis.RWAdarNoticiasModelo;
-  const RUTA = '/datos/noticias.json', PLAZO_MS = 10000, EN_PORTADA = 3;
+  const RUTA = '/datos/noticias-v2.json', PLAZO_MS = 10000, EN_PORTADA = 3;
   let seccion, modo, lista, estado, fecha, nota, dialogo, cuerpoDlg, datos = null, abierta = null, origenFoco = null, suscrito = false;
 
   const idioma = () => (globalThis.RWAdarIdioma?.obtenerIdioma?.() === 'en' ? 'en' : 'es');
@@ -54,7 +55,7 @@
     const caja = el('span', clase);
     caja.setAttribute('aria-hidden', 'true');
     const ruta = modelo.rutaFoto(n);
-    if (!ruta) return caja;
+    if (!ruta) { caja.classList.add('nt-foto--sin'); return caja; }
     const img = document.createElement('img');
     img.alt = '';
     img.width = ancho; img.height = alto;

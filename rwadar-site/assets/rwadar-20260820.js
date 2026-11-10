@@ -2077,21 +2077,20 @@ function pintarInicio(){
   return n?'<li><span>'+escHtml(catCorta(k))+'</span> <span>'+n+(n===1?' plataforma':' plataformas')+'</span></li>':''}).join(''));
  const fecha=fechaBarras(c.revisado)||ultimaRevision();
  const t=c.revisado?'<time datetime="'+escHtml(c.revisado)+'">'+escHtml(fecha)+'</time>':escHtml(fecha);
- /* Tres cifras clave en la cabecera: ofertas, plataformas y fecha de revisión. */
+ /* Tres cifras clave en la cabecera: ofertas, plataformas y fecha de revisión.
+    El rótulo va antes que el valor en el DOM, en el orden en que se ve: el
+    lector de pantalla dice «revisado el 10/11/2026» (WCAG 1.3.2). */
  pon('inicioCifras',CATALOGO_EMBEBIDO_BLOQUEADO?'<li class="ini-cifra ini-cifra-aviso"><b>Catálogo no disponible</b> <span>Volverá en cuanto se publique de nuevo</span></li>':
-  sin?'<li class="ini-cifra ini-cifra-aviso"><b>Revisión pendiente</b> <span>Sin cifras hasta renovarla</span></li><li class="ini-cifra ini-cifra-fecha"><b>'+t+'</b> <span>última revisión</span></li>':
-  (c.ofertas?'<li class="ini-cifra"><b>'+c.ofertas+'</b> <span>ofertas</span></li>':'')+
-  '<li class="ini-cifra"><b>'+c.plataformas+'</b> <span>plataformas</span></li>'+
-  '<li class="ini-cifra ini-cifra-fecha"><b>'+t+'</b> <span>revisado el</span></li>');
+  sin?'<li class="ini-cifra ini-cifra-aviso"><b>Revisión pendiente</b> <span>Sin cifras hasta renovarla</span></li><li class="ini-cifra ini-cifra-fecha"><span>última revisión</span> <b>'+t+'</b></li>':
+  (c.ofertas?'<li class="ini-cifra"><span>ofertas</span> <b>'+c.ofertas+'</b></li>':'')+
+  '<li class="ini-cifra"><span>plataformas</span> <b>'+c.plataformas+'</b></li>'+
+  '<li class="ini-cifra ini-cifra-fecha"><span>revisado el</span> <b>'+t+'</b></li>');
  if(typeof panel.querySelectorAll==='function')[...panel.querySelectorAll('[data-rel-plantilla]')].forEach(el=>{
   /* Sin cifras, la frase en castellano de data-rel-sin (el idioma la traduce
      si hace falta): no la que hubiera en pantalla, que puede estar en inglés. */
   const texto=plantillaInicio(el.getAttribute(en&&el.hasAttribute('data-rel-plantilla-en')?'data-rel-plantilla-en':'data-rel-plantilla'),c,en)??el.getAttribute('data-rel-sin')??'';
   if(el.textContent!==texto)el.textContent=texto;
  });
- ocultar('relMinimos',sin||!c.minimos||!c.ofertas);
- ocultar('relMinimosAviso',sin||!c.minimos||!c.ofertas);
- ocultar('relVigencia',sin||!c.revisado||!c.hasta);
  const destacadas=sin?[]:ofertasInicio(c,nuevas),enSeleccion=new Set(c.seleccion.map(o=>o.slug));
  ocultar('relEscaparate',sin||!destacadas.some(o=>enSeleccion.has(o.slug)));
  pon('inicioCriterios',criteriosTransparencia().map(k=>'<li>'+escHtml(CRITERIOS_INICIO[k.id]||k.texto)+'</li>').join(''));

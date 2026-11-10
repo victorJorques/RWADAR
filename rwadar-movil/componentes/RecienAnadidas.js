@@ -21,7 +21,7 @@ import { tacto } from '../lib/tacto';
    tarjeta de Ofertas desde el 05/11/2026: los demás avisos, en la ficha),
    «Nueva» y «Pasa las 5 comprobaciones» si toca y «Añadida el dd/mm/aaaa»,
    y abre su ficha. Debajo, qué son las 5 comprobaciones (plegado: el
-   superlativo solo vale con ellas delante) y «Ver las N ofertas ›». Sin
+   superlativo solo vale con ellas delante) y «Ver todas las ofertas ›». Sin
    ninguna oferta no se pinta nada.
    --------------------------------------------------------------------- */
 export default function RecienAnadidas({ ofertas = [], seleccion = new Set(), total = 0, onAbrirOferta, onVerTodas }) {
@@ -120,7 +120,8 @@ const e = StyleSheet.create({
   sub: { ...T.menor, fontSize: 15, lineHeight: 22, color: C.tx2, marginTop: 4 },
   // De borde a borde, como el carrusel de la web.
   pista: { marginHorizontal: -UI.margen, marginTop: 16 },
-  pistaContenido: { paddingHorizontal: UI.margen, gap: 12 },
+  // Cada tarjeta, su alto (como la web): sin estirarse hasta la más alta ni dejar un hueco en medio.
+  pistaContenido: { paddingHorizontal: UI.margen, gap: 12, alignItems: 'flex-start' },
   // La tarjeta de la Selección (Inicio.js, tarjetaSel).
   tarjeta: { borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1, overflow: 'hidden' },
   tarjetaPulsada: { backgroundColor: C.s2 },

@@ -13,6 +13,8 @@ const {sincronizar} = require('./rwadar-app/sincronizar');
 const {adelgazarJS} = require('./rwadar-adelgazar');
 const {construirWorker, RUTAS: RUTAS_ACCESO, academyPublicada} = require('./rwadar-acceso/compilar.cjs');
 const {comprobarLeccionesPublicadas} = require('./rwadar-academy');
+const {cargarFotosNoticias, RUTA_PUBLICA_BASE: RUTA_FOTOS_NOTICIAS} = require('./rwadar-noticias-editoriales');
+const {clavesFotos} = require('./rwadar-movil/lib/noticias-sector');
 const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 const ARTEFACTOS_ACCESO = Object.freeze(['_worker.js','_routes.json']);
 const RAIZ = __dirname;
@@ -136,9 +138,30 @@ function rutasBaseObligatorias(base, excluirLote) {
     const b=fs.readFileSync(archivoSeguro(base,i.salida));
     assert(b.length===i.bytes&&sha(b)===i.hashSha256,'Precarga anterior modificada');rutas.push(i.salida);
   }
+  rutas.push(...fotosNoticiasBase(base));
   const obligatorias=new Set(rutas);
   for(const o of c.ofertas) assert(obligatorias.has('ofertas-editoriales/oferta-'+o.slug+'.webp'),'Falta imagen propia de una oferta base');
   return [...obligatorias].sort();
+}
+/* Fotos de las noticias (rediseño de Inicio, 10/11/2026). El publicador copia
+   la biblioteca entera a noticias-editoriales/<clave>.webp. En la base, cada
+   una tiene que ser exactamente la de fotos.json (bytes y sha256: una foto ya
+   publicada no se cambia bajo la misma clave) y tienen que estar todas las que
+   usa su datos/noticias-v2.json. Una base anterior al rediseño no lleva ni
+   el v2 ni las fotos, y sigue valiendo. */
+function fotosNoticiasBase(base) {
+  const prefijo=RUTA_FOTOS_NOTICIAS+'/';
+  const presentes=seguridad.listarArchivosRegulares(base).filter(r=>r.startsWith(prefijo));
+  const v2=path.join(base,'datos','noticias-v2.json');
+  const usadas=fs.existsSync(v2)?clavesFotos(JSON.parse(fs.readFileSync(archivoSeguro(base,'datos/noticias-v2.json'),'utf8'))):[];
+  if(!presentes.length&&!usadas.length) return [];
+  const biblioteca=new Map(cargarFotosNoticias(RAIZ,{claves:[]}).publicables.map(f=>[f.salida,f]));
+  for(const ruta of presentes) {
+    const f=biblioteca.get(ruta), b=fs.readFileSync(archivoSeguro(base,ruta));
+    assert(f&&b.length===f.bytes&&sha(b)===f.hashSha256,'Foto de noticia base distinta de fotos.json: '+ruta);
+  }
+  for(const clave of usadas) assert(presentes.includes(prefijo+clave+'.webp'),'Falta la foto de una noticia base: '+clave);
+  return presentes;
 }
 function validarBase(base, sello, {excluirLote}={}) {
   claves(sello,['versionEsquema','origen','commit','despliegueId','archivos','sha256']);
@@ -150,7 +173,8 @@ function validarBase(base, sello, {excluirLote}={}) {
     assert(rutaValida(a.ruta)&&!rutas.has(a.ruta)&&Number.isSafeInteger(a.bytes)&&a.bytes>=0&&shaValida(a.sha256),'Inventario inválido');
     rutas.add(a.ruta);
     const original=a.ruta.replace(/\.[a-f0-9]{12}(\.(?:js|css))$/,'$1');
-    assert(seguridad.ARCHIVOS_PUBLICABLES.includes(original)||ARTEFACTOS_ACCESO.includes(a.ruta)||/^ofertas-editoriales\/(?:manifest\.json|[a-z0-9-]+\.webp)$/.test(a.ruta),'Archivo base fuera de la lista cerrada');
+    assert(seguridad.ARCHIVOS_PUBLICABLES.includes(original)||ARTEFACTOS_ACCESO.includes(a.ruta)||/^ofertas-editoriales\/(?:manifest\.json|[a-z0-9-]+\.webp)$/.test(a.ruta)||
+      /^noticias-editoriales\/[a-z0-9-]+\.webp$/.test(a.ruta),'Archivo base fuera de la lista cerrada');
   }
   for(const esencial of ['index.html','sw.js','_headers','_redirects',...ARTEFACTOS_ACCESO]) assert(rutas.has(esencial),'Base incompleta');
   const obligatorias=rutasBaseObligatorias(base,excluirLote);

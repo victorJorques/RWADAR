@@ -1594,7 +1594,11 @@ const aprendeHTML = lee('aprende/index.html');
   prueba('Inicio son bloques cortos en orden (Cabecera, Ofertas, El mercado hoy, Noticias, Aprende y Pie), cada uno con su «Ver …», sin buscador',
     orden.every((x, i) => x > 0 && (i === 0 || x > orden[i - 1])) &&
     ['href="/mercado/"', 'href="/noticias/"', 'href="/aprende/"', 'href="/aprende/#nota-legal"'].every(x => panelInicioHTML.includes(x)) &&
-    /data-movil-ir="emisiones" data-rel-plantilla="Ver las \{ofertas\} ofertas"/.test(panelInicioHTML) &&
+    // La cifra de ofertas sale una vez (en las cifras): ni el botón ni el enlace del carrusel la repiten.
+    /<button class="b1 rel-cta" type="button" data-movil-ir="emisiones">Ver las ofertas<\/button>/.test(panelInicioHTML) &&
+    /<span>Ver todas las ofertas<\/span>/.test(panelInicioHTML) && !/\{ofertas\}/.test(panelInicioHTML) &&
+    // El pie no es un <footer>: en el móvil, la hoja principal esconde los <footer> fuera de «Buscar».
+    /<div class="ini-pie" role="note" aria-label="Nota legal">/.test(panelInicioHTML) && !/<footer\b/.test(panelInicioHTML) &&
     !/<(?:textarea|input|form|select)\b/i.test(panelInicioHTML) &&
     !/inicioEmpezarTit|data-movil-action="academy"|data-movil-ir="metodo"|inicioComunidad/.test(panelInicioHTML) &&
     /<section class="movil-menu-grupo" id="perfilComunidad"[^>]*\shidden>/.test(panelPerfilHTML));
@@ -1607,6 +1611,9 @@ const aprendeHTML = lee('aprende/index.html');
     /<!--academy-inicio:ini-->[\s\S]*href="\/academy\/"[\s\S]*<!--academy-inicio:fin-->/.test(aprendeHTML) &&
     /<a class="rel-enlace" href="\/mercado\/">El mercado hoy<\/a>/.test(aprendeHTML) &&
     !/14\.230|125 veces|3,9 %/.test(aprendeHTML) &&
+    // Sin las frases con cifras del catálogo (mínimos y vigencia): /aprende/ no carga el catálogo
+    // y no sabría si siguen vigentes. La app tampoco lleva la de los mínimos (10/11/2026).
+    !/relMinimos|relVigencia/.test(aprendeHTML) &&
     !/data-movil-ir|data-inicio-radar|data-rel-plantilla/.test(aprendeHTML) &&
     /<script src="\/assets\/aprende-20261110\.js" defer><\/script>/.test(aprendeHTML) &&
     /<link rel="canonical" href="https:\/\/rwadar\.pages\.dev\/aprende\/">/.test(aprendeHTML));
@@ -1925,7 +1932,7 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
   const nt = require('./rwadar-movil/lib/noticias-sector.js');
   const inicio = html.indexOf('<section class="nt" id="noticias"'), fin = html.indexOf('</section>', inicio);
   const seccion = html.slice(inicio, fin);
-  const fuente = lee('datos/noticias.json');
+  const fuente = lee('datos/noticias-v2.json');
   const datosNt = nt.validarNoticias(JSON.parse(fuente));
   // Rediseño del 10/11/2026: en Inicio, 3 tarjetas con foto (las pinta el script); las 8 y su detalle, en /noticias/.
   const noticiasHTML = lee('noticias/index.html');
@@ -1940,9 +1947,27 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
     /data-noticias="lista"/.test(enLista) && enLista.includes('<dialog class="nt-dialogo" id="ntDialogo"') &&
     enLista.includes('<ul class="nt-lista" id="ntLista"') && datosNt.noticias.every(n => !noticiasHTML.includes(n.titulo)) &&
     /<link rel="canonical" href="https:\/\/rwadar\.pages\.dev\/noticias\/">/.test(noticiasHTML));
-  prueba('/datos/noticias.json se publica tal cual y con la forma que leen la web y la app',
-    fs.readFileSync(path.join(publicado, 'datos', 'noticias.json'), 'utf8') === fuente && datosNt.noticias.length > 0 &&
-    /noticiasModelo\.validarNoticias/.test(publicador));
+  prueba('/datos/noticias-v2.json se publica tal cual y con la forma que leen la web y la app nuevas, todas con su foto',
+    fs.readFileSync(path.join(publicado, 'datos', 'noticias-v2.json'), 'utf8') === fuente && datosNt.noticias.length > 0 &&
+    nt.noticiasSinFoto(JSON.parse(fuente)).length === 0 && /noticiasModelo\.validarNoticias/.test(publicador));
+  // La app ya instalada (OTA sobre 26664c9) rechaza cualquier campo nuevo: lee /datos/noticias.json sin «imagen».
+  const v1 = require('./rwadar-app/noticias/noticias-v1.cjs');
+  const publicadoV1 = fs.readFileSync(path.join(publicado, 'datos', 'noticias.json'), 'utf8');
+  let v1Acepta = false;
+  try { v1Acepta = v1.validarComoAppInstalada(publicadoV1).noticias.length === datosNt.noticias.length; } catch { v1Acepta = false; }
+  prueba('/datos/noticias.json se publica sin «imagen» y lo acepta el motor de la app instalada',
+    publicadoV1 === v1.derivarV1(fuente) && publicadoV1 === lee('datos/noticias.json') && v1Acepta && !/"imagen"/.test(publicadoV1));
+  // Las fotos: cada «imagen» tiene su WebP en noticias-editoriales/, con los bytes y el sha256 de fotos.json, y no sobra ninguno.
+  const fotosNt = JSON.parse(fs.readFileSync(path.join(raiz, 'rwadar-editorial-source/noticias/fotos.json'), 'utf8')).fotos;
+  const dirFotos = path.join(publicado, 'noticias-editoriales');
+  const publicadas = fs.existsSync(dirFotos) ? fs.readdirSync(dirFotos).sort() : [];
+  prueba('las fotos de las noticias se publican en /noticias-editoriales/ tal cual fotos.json, sin que falte ni sobre ninguna',
+    publicadas.join('|') === Object.keys(fotosNt).map(k => k + '.webp').sort().join('|') &&
+    nt.clavesFotos(datosNt).every(k => publicadas.includes(k + '.webp')) &&
+    Object.entries(fotosNt).every(([k, f]) => {
+      const b = fs.readFileSync(path.join(dirFotos, k + '.webp'));
+      return b.length === f.bytes && crypto.createHash('sha256').update(b).digest('hex') === f.sha256;
+    }));
   const ntPublicados = scriptsPublicados.map(s => s[1]).filter(r => /\/noticias-sector-/.test(r));
   prueba('el motor y la sección de las noticias salen con huella, tras la tokenización y antes del snapshot del catálogo',
     ntPublicados.length === 2 && /^\/assets\/noticias-sector-modelo-20261110\.[a-f0-9]{12}\.js$/.test(ntPublicados[0]) &&
@@ -2351,11 +2376,13 @@ for(const [nombre,alterar] of [
   const htmlInicio=panelInicioHTML.replace(/<!--noticias:ini-->[\s\S]*<!--noticias:fin-->/,'');
   const minimos=emi.filter(o=>['1 €','1 USD'].includes(transparencia.ofertas[o.slug]?.minimoCorto));
   prueba('Inicio calcula sus cifras, mínimos y vigencia del catálogo, sin números escritos en el HTML',
-    cifras.includes('<b>'+n[0]+'</b> <span>ofertas</span>')&&cifras.includes('<b>'+n[1]+'</b> <span>plataformas</span>')&&
-    (cifras.match(/<li /g)||[]).length===3&&/<span>revisado el<\/span>/.test(cifras)&&!/descartadas/.test(cifras)&&ci.minimos===minimos.length&&ci.usd===minimos.filter(o=>/USD/.test(transparencia.ofertas[o.slug].minimoCorto)).length&&
+    // El rótulo antes que el valor, en el orden en que se ve (WCAG 1.3.2), y la fecha en <time datetime>.
+    cifras.includes('<span>ofertas</span> <b>'+n[0]+'</b>')&&cifras.includes('<span>plataformas</span> <b>'+n[1]+'</b>')&&
+    (cifras.match(/<li /g)||[]).length===3&&/<span>revisado el<\/span> <b><time datetime="\d{4}-\d\d-\d\d">/.test(cifras)&&!/descartadas/.test(cifras)&&ci.minimos===minimos.length&&ci.usd===minimos.filter(o=>/USD/.test(transparencia.ofertas[o.slug].minimoCorto)).length&&
     pl('Ver las {ofertas} ofertas',false)==='Ver las '+n[0]+' ofertas'&&pl('See the {plataformas} platforms',true)==='See the '+n[1]+' platforms'&&
     /^Catálogo revisado el \d\d\/\d\d\/\d{4}\. Próxima revisión: \d\d\/\d\d\/\d{4}\.$/.test(pl('Catálogo revisado el {revisado}. Próxima revisión: {hasta}.',false))&&
-    (htmlInicio.match(/data-rel-plantilla="/g)||[]).length>=2&&
+    // Las frases con cifra ya no viven en Inicio: la cifra de ofertas sale una sola vez, en las cifras.
+    !/data-rel-plantilla="/.test(htmlInicio)&&
     /<ul class="ini-cifras" id="inicioCifras" aria-label="El catálogo en cifras"><\/ul>/.test(htmlInicio)&&
     !new RegExp(`\\b(?:${n.join('|')}) (?:ofertas|plataformas|descartadas)\\b`).test(texto(htmlInicio)));
   vm.runInContext("CATALOGO_CADUCADO=true;huellaInicio='';pintarInicio()",c);
@@ -2367,8 +2394,10 @@ for(const [nombre,alterar] of [
   // Sin cifras, cada frase vuelve a su texto en castellano del HTML (data-rel-sin), no al que hubiera en pantalla
   // (si la web arrancó en inglés, ese texto ya estaba traducido y se quedaba en inglés al pasar a castellano).
   const conPlantilla=[...htmlInicio.matchAll(/<[^>]*\sdata-rel-plantilla="[^>]*>/g)].map(m=>m[0]);
+  // Desde el rediseño (10/11/2026) Inicio no lleva frases con plantilla (la cifra sale una vez, en las cifras);
+  // el mecanismo se queda para la que vuelva, y cualquiera necesita su data-rel-sin.
   prueba('sin cifras, las frases con plantilla vuelven a su texto en castellano y el idioma lo traduce',
-    conPlantilla.length>=2&&conPlantilla.every(t=>/\sdata-rel-sin="/.test(t))&&/\?\?el\.getAttribute\('data-rel-sin'\)/.test(js)&&!/relInicial/.test(js));
+    conPlantilla.every(t=>/\sdata-rel-sin="/.test(t))&&/\?\?el\.getAttribute\('data-rel-sin'\)/.test(js)&&!/relInicial/.test(js));
   vm.runInContext("CATALOGO_CADUCADO=false;huellaInicio='';pintarInicio()",c);
   // Recién añadidas (04/11): altas de los últimos 30 días, de la más nueva a la más antigua y 6 como mucho; sin ninguna, oculto.
   const alta=o=>transparencia.ofertas[o.slug]?.anadidaEl||'',dA=o=>Math.round((Date.UTC(ahora.getFullYear(),ahora.getMonth(),ahora.getDate())-Date.parse(alta(o)+'T00:00:00Z'))/864e5);

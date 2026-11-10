@@ -24,7 +24,7 @@ export { enlaceCorto };
    cortos, cada uno con su enlace «Ver …» a su sección, donde está el
    detalle; nada se repite:
    1. Cabecera: el radar compacto, la frase de marca, tres cifras (ofertas,
-      plataformas y fecha de revisión), «Ver las N ofertas» y un solo aviso
+      plataformas y fecha de revisión), «Ver las ofertas» y un solo aviso
       de riesgo, corto, pegado al botón (si se ve el botón, se ve el aviso).
    2. Ofertas: un solo carrusel con las recién añadidas y las que pasan las
       5 comprobaciones, sin duplicados (RecienAnadidas).
@@ -79,7 +79,6 @@ export default function Inicio({
   const avisoPrimero = compacta || (altoVisible > 0 && finAccion > altoVisible);
   const cifras = cifrasInicio({ ofertas, plataformas, descartadas: fuera, fechaCatalogo,
     orden: Object.keys(t.seleccion.letraPequena) });
-  const n = cifras.vigente ? cifras.ofertas : 0;
   const nuevas = recienAnadidas(ofertas, { catalogoCaducado: !cifras.vigente });
   const destacadas = cifras.vigente ? ofertasDestacadas(nuevas, cifras.seleccion) : [];
   const enSeleccion = new Set(cifras.seleccion.map((o) => o.slug));
@@ -134,8 +133,9 @@ export default function Inicio({
           {avisoPrimero ? <Text noTraducir style={e.avisoPortada}>{t.portada.aviso}</Text> : null}
           <Pressable onPress={() => { tacto.abrir(); onDestino('ofertas'); }}
             style={({ pressed }) => [e.b1, pressed && pulsado('b1')]} accessibilityRole="button" noTraducir
-            accessibilityLabel={t.portada.boton(n)}>
-            <Text noTraducir style={e.b1Txt}>{t.portada.boton(n)}</Text>
+            accessibilityLabel={t.portada.boton(0)}>
+            {/* Sin cifra: el número de ofertas ya está justo encima, en las cifras (que no se repita). */}
+            <Text noTraducir style={e.b1Txt}>{t.portada.boton(0)}</Text>
           </Pressable>
           {avisoPrimero ? null : <Text noTraducir style={e.avisoPortada}>{t.portada.aviso}</Text>}
         </View>

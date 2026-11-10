@@ -1,6 +1,7 @@
 /* «Noticias del sector» (10/11/2026; rediseño de Inicio, el mismo día):
-   /datos/noticias.json como recurso estático (publicables, cabeceras y
-   validación en el generador), la copia web del motor, el script sin
+   /datos/noticias-v2.json como recurso estático, y /datos/noticias.json sin
+   «imagen» para la app ya instalada (publicables, cabeceras y validación en
+   el generador, con el motor congelado de esa app), la copia web del motor, el script sin
    innerHTML ni terceros, y en Chromium a 390 × 844 y 1366 × 900: en Inicio,
    3 tarjetas grandes con foto y solo el titular, que llevan a su detalle; en
    /noticias/, las 8 con su detalle en un diálogo accesible con su enlace que
@@ -18,14 +19,14 @@ const require = createRequire(import.meta.url);
 const modelo = require('../rwadar-movil/lib/noticias-sector.js');
 const copiaWeb = require('../rwadar-app/noticias/copiar-modelo-web.cjs');
 const RAIZ = fileURLToPath(new URL('..', import.meta.url));
-const TEXTO = fs.readFileSync(path.join(RAIZ, 'rwadar-site/datos/noticias.json'), 'utf8');
+const TEXTO = fs.readFileSync(path.join(RAIZ, 'rwadar-site/datos/noticias-v2.json'), 'utf8');
 const DATOS = modelo.validarNoticias(JSON.parse(TEXTO));
 const lee = r => fs.readFileSync(path.join(RAIZ, r), 'utf8');
 
-test('/datos/noticias.json se publica como recurso estático, validado, con su caché y la copia exacta del motor', () => {
+test('/datos/noticias-v2.json (y el v1 de la app instalada) se publican como recurso estático, validados, con su caché y la copia exacta del motor', () => {
   assert.equal(copiaWeb.alDia(), true, 'ejecuta node rwadar-app/noticias/copiar-modelo-web.cjs');
   const { ARCHIVOS_PUBLICABLES, RUTAS_CONTENIDO_APROBADO } = require('../rwadar-publicacion-segura.js');
-  for (const archivo of ['datos/noticias.json', 'assets/noticias-sector-modelo-20261110.js', 'assets/noticias-sector-20261110.js', 'assets/noticias-sector-20261110.css']) {
+  for (const archivo of ['datos/noticias.json', 'datos/noticias-v2.json', 'assets/noticias-sector-modelo-20261110.js', 'assets/noticias-sector-20261110.js', 'assets/noticias-sector-20261110.css']) {
     assert.ok(ARCHIVOS_PUBLICABLES.includes(archivo), archivo);
   }
   assert.ok(RUTAS_CONTENIDO_APROBADO.includes('rwadar-movil/lib/noticias-sector.js'));
@@ -33,11 +34,31 @@ test('/datos/noticias.json se publica como recurso estático, validado, con su c
   // El generador valida la forma antes de publicar y se para si no vale.
   const publicador = lee('rwadar-publicar.js');
   assert.match(publicador, /noticiasModelo\.validarNoticias\(JSON\.parse\(textoNoticias\)\)/);
-  assert.match(publicador, /throw new Error\(`rwadar-site\/datos\/noticias\.json no vale: /);
+  assert.match(publicador, /throw new Error\(`rwadar-site\/datos\/noticias-v2\.json no vale: /);
+  // Al publicar, cada noticia lleva su foto; al leer, «imagen» es opcional (fondo oscuro).
+  assert.match(publicador, /noticiasModelo\.noticiasSinFoto\(/);
+  const { imagen, ...sinFoto } = JSON.parse(TEXTO).noticias[0];
+  assert.ok(imagen);
+  const leida = modelo.validarNoticias({ ...JSON.parse(TEXTO), noticias: [sinFoto] });
+  assert.equal(modelo.rutaFoto(leida.noticias[0]), null);
+  assert.deepEqual(modelo.noticiasSinFoto({ noticias: [sinFoto] }), [sinFoto.id]);
+  // El v1 (/datos/noticias.json) es el v2 sin «imagen» y lo acepta el motor congelado de la app instalada (26664c9).
+  const v1 = require('../rwadar-app/noticias/noticias-v1.cjs');
+  assert.deepEqual(v1.comprobar(), []);
+  const textoV1 = lee('rwadar-site/datos/noticias.json');
+  assert.equal(textoV1, v1.derivarV1(TEXTO));
+  assert.equal(v1.validarComoAppInstalada(textoV1).noticias.length, DATOS.noticias.length);
+  assert.throws(() => v1.validarComoAppInstalada(TEXTO), /forma inesperada \(«imagen»\)/, 'la app instalada rechaza el v2: por eso hay dos archivos');
+  assert.match(publicador, /noticiasV1\.validarComoAppInstalada\(textoNoticiasV1\)/);
+  // Con la historia de Git a mano, la copia congelada es la de 26664c9 byte a byte (su sha256 ya va fijado en noticias-v1.cjs).
+  let original = null;
+  try { original = execSync('git show 26664c9:rwadar-movil/lib/noticias-sector.js', { cwd: RAIZ, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }); } catch { /* sin historia */ }
+  if (original !== null) assert.equal(original, lee('rwadar-app/noticias/motor-app-26664c9.cjs'));
+  assert.ok(RUTAS_CONTENIDO_APROBADO.includes('rwadar-app/noticias/noticias-v1.cjs') && RUTAS_CONTENIDO_APROBADO.includes('rwadar-app/noticias/motor-app-26664c9.cjs'));
   // El script de la sección no usa innerHTML ni habla con nadie más que con su propio sitio.
   const js = lee('rwadar-site/assets/noticias-sector-20261110.js');
   assert.doesNotMatch(js, /innerHTML|insertAdjacentHTML|outerHTML|document\.write|https?:\/\/(?!www\.w3\.org\/2000\/svg')/);
-  assert.deepEqual([...js.matchAll(/'(\/(?:api|datos)\/[^']+)'/g)].map(m => m[1]), ['/datos/noticias.json']);
+  assert.deepEqual([...js.matchAll(/'(\/(?:api|datos)\/[^']+)'/g)].map(m => m[1]), ['/datos/noticias-v2.json']);
   assert.match(js, /rel = 'noopener noreferrer'/);
   // En el HTML no hay ninguna noticia: en Inicio, el bloque tras «El mercado hoy» y antes de «Aprende»; en /noticias/, la lista.
   const html = lee('rwadar-site/index.html');
@@ -53,7 +74,10 @@ test('/datos/noticias.json se publica como recurso estático, validado, con su c
   assert.match(publicador, /cargarFotosNoticias\(__dirname\)/);
   assert.match(publicador, /\.\.\.fotosNoticias\.publicables\.map\(activo => activo\.salida\)/);
   assert.match(lee('rwadar-site/_headers'), /\n\/noticias-editoriales\/\*\n {2}Cache-Control: public, max-age=0, must-revalidate\n/);
-  assert.ok(RUTAS_CONTENIDO_APROBADO.includes('rwadar-editorial-source/noticias') && RUTAS_CONTENIDO_APROBADO.includes('rwadar-noticias-editoriales.js'));
+  // Se aprueba lo que se publica (manifiesto y WebP), no el script que genera las fotos.
+  assert.ok(RUTAS_CONTENIDO_APROBADO.includes('rwadar-editorial-source/noticias/fotos.json') &&
+    RUTAS_CONTENIDO_APROBADO.includes('rwadar-editorial-source/noticias/fotos') && RUTAS_CONTENIDO_APROBADO.includes('rwadar-noticias-editoriales.js'));
+  assert.ok(!RUTAS_CONTENIDO_APROBADO.includes('rwadar-editorial-source/noticias'));
   const fotos = require('../rwadar-noticias-editoriales.js');
   assert.equal(fotos.RUTA_PUBLICA_BASE, 'noticias-editoriales');
   assert.deepEqual(fotos.clavesUsadas(RAIZ), modelo.clavesFotos(DATOS));
@@ -203,14 +227,15 @@ test('en Chromium: Inicio con 3 tarjetas de foto y solo el titular; /noticias/ c
       assert.ok(d.dentro);
       // Escape cierra y el foco vuelve al titular.
       await lista.keyboard.press('Escape');
-      await lista.waitForSelector('#ntDialogo:not([open])', { state: 'attached' });
+      // La clase se quita en «close», que llega después de quitar [open]: se esperan las dos.
+      await lista.waitForFunction(() => !document.getElementById('ntDialogo').open && !document.documentElement.classList.contains('nt-dialogo-abierto'));
       assert.equal(await lista.evaluate(() => document.activeElement.dataset.ntId), n.id);
       assert.equal(await lista.evaluate(() => document.documentElement.classList.contains('nt-dialogo-abierto')), false);
       // Con el ratón: la tarjeta entera abre; «×» cierra.
       await lista.click(`#ntLista #${DATOS.noticias[3].id} .nt-art`, { position: { x: 30, y: 30 } });
       await lista.waitForSelector('#ntDialogo[open]');
       await lista.click('#ntDialogo [data-nt-cerrar]');
-      await lista.waitForSelector('#ntDialogo:not([open])', { state: 'attached' });
+      await lista.waitForFunction(() => !document.getElementById('ntDialogo').open && !document.documentElement.classList.contains('nt-dialogo-abierto'));
       // En inglés: los campos «en» de cada noticia y la interfaz del diccionario.
       await lista.evaluate(() => document.querySelector('[data-elegir-idioma="en"]').click());
       await lista.waitForFunction(() => document.querySelector('h1').textContent === 'News');
@@ -252,7 +277,7 @@ test('en Chromium: Inicio con 3 tarjetas de foto y solo el titular; /noticias/ c
     }
     // Sin el archivo: lo dice, sin ninguna noticia, y el resto de Inicio sigue.
     const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 } });
-    await pagina.route('**/datos/noticias.json', r => r.fulfill({ status: 200, contentType: 'application/json', body: '{"version":1,"noticias":[]}' }));
+    await pagina.route('**/datos/noticias-v2.json', r => r.fulfill({ status: 200, contentType: 'application/json', body: '{"version":1,"noticias":[]}' }));
     await pagina.goto(local.url + '/', { waitUntil: 'load' });
     await pagina.waitForSelector('#noticias[data-noticias-estado="sin-datos"]', { timeout: 20000 });
     assert.equal(await pagina.textContent('#ntEstado'), 'Ahora no podemos mostrar las noticias. Vuelve a intentarlo más tarde.');

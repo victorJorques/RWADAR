@@ -30,7 +30,7 @@
 .rel .ini-cab .rel-radar .inicio-radar{inset:0;height:100%}
 .ini-cab .rel-portada-tit{margin-top:2px;font-size:1.75rem;line-height:1.12}
 .ini-cifras{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:0 20px;margin:16px 0 0;padding:14px 0 0;border-top:var(--bd);list-style:none}
-.ini-cifra{display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:2px;min-width:0}
+.ini-cifra{display:flex;flex-direction:column;justify-content:flex-start;gap:2px;min-width:0}
 .ini-cifra b{color:var(--tx);font:600 1.625rem/1.05 var(--mono);letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .ini-cifra span{color:var(--tx-3);font:500 .75rem/1.3 var(--body)}
 .ini-cifra span::first-letter{text-transform:uppercase}
@@ -42,6 +42,11 @@
 
 /* ---- 2 · Ofertas ---- */
 .ini-ofertas .rel-tarjetas{margin-top:16px}
+/* Cada tarjeta, su alto: las que no llevan la línea de «qué es» no se estiran
+   hasta la más alta ni dejan un hueco en medio (revisión del 10/11/2026). */
+.ini-ofertas .rel-tarjetas{align-items:start}
+.ini-ofertas .rel-tarjeta article{height:auto}
+.ini-ofertas .rel-nueva-fecha{margin-top:0}
 .ini-ofertas .rel-nueva-meta{display:flex;flex-wrap:wrap;gap:6px;min-height:0;margin:0 0 6px}
 .ini-ofertas .rel-nueva-meta:empty{display:none}
 .ini-etq-cinco{color:var(--senal);background:var(--senal-t)}
@@ -71,7 +76,7 @@
 .ini-ver--tarjeta{margin-top:0}
 
 /* ---- 6 · Pie ---- */
-.ini-pie{margin-top:40px;padding:24px 0 8px;border-top:var(--bd);background:none}
+.ini-pie{display:block;margin-top:40px;padding:24px 0 8px;border-top:var(--bd);background:none}
 .ini-pie p{margin:0;letter-spacing:0;color:var(--tx-3);font:400 .8125rem/1.5 var(--body)}
 .ini-ver--pie{font-size:.9375rem}
 
@@ -104,9 +109,9 @@
   .ini-ver--tarjeta{grid-column:3;grid-row:1/3}
   .ini-aprende-pasos{display:grid;grid-template-columns:repeat(3,36px);gap:8px}
   .ini-aprende-pasos span{width:36px;height:36px;font-size:.75rem}
-  .ini-pie{margin-top:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-  .ini-pie p{max-width:72ch}
-  .ini-ver--pie{flex:none;margin:0}
+  /* En escritorio, el pie del sitio ya lleva la nota legal: aquí no se repite
+     ni corta la página entre Inicio y el catálogo. */
+  .escritorio-relato .ini-pie{display:none}
 }
 @media (max-width:359px){.ini-cifras{gap:0 12px}.ini-cifra b{font-size:1.375rem}.ini-cab .rel-portada-tit{font-size:1.5rem}}
 /* Pantallas bajas del móvil: radar más pequeño para que el botón se vea. */
@@ -127,7 +132,15 @@
   font:500 .875rem/1.2 var(--body);text-decoration:none}
 .sec-nav a[aria-current="page"]{color:var(--senal)}
 @media (hover:hover){.sec-nav a:hover{color:var(--tx);background:var(--ton)}}
-@media (max-width:767px){.sec-nav a:not([aria-current="page"]):not(.sec-nav-inicio){display:none}}
+/* En el móvil, la marca ya lleva a Inicio: debajo, una fila con las otras
+   secciones y Ofertas (se desliza si no cabe). */
+@media (max-width:767px){
+  .sec-cab-in{flex-wrap:wrap;row-gap:0;padding-bottom:4px}
+  .sec-nav{order:3;width:calc(100% + 16px);margin:0 -8px;overflow-x:auto;scrollbar-width:none}
+  .sec-nav::-webkit-scrollbar{display:none}
+  .sec-nav a{flex:none;padding:0 8px}
+  .sec-nav .sec-nav-inicio{display:none}
+}
 .sec{max-width:1180px;margin:0 auto;padding:16px 16px 64px}
 .sec-estrecha{max-width:760px}
 .sec-volver{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-left:-8px;padding:0 8px;color:var(--tx-2);

@@ -5,7 +5,7 @@
    La biblioteca está en rwadar-editorial-source/noticias/: fotos.json (por
    clave: modelo, licencia, prompt, semilla, encuadre, concepto, bytes y
    sha256) y fotos/<clave>.webp (1200 × 800, WebP, como mucho 160 kB). Cada
-   noticia de rwadar-site/datos/noticias.json elige una en su campo «imagen».
+   noticia de rwadar-site/datos/noticias-v2.json elige una en su campo «imagen».
 
    rwadar-publicar.js las copia una a una a /noticias-editoriales/<clave>.webp,
    como /ofertas-editoriales/; la app las carga de
@@ -43,7 +43,7 @@ function regular(ruta, descripcion) {
 /* Las claves que usan las noticias publicadas (sin validar el resto: eso lo
    hace rwadar-movil/lib/noticias-sector.js). */
 function clavesUsadas(raiz) {
-  const datos = JSON.parse(fs.readFileSync(path.join(raiz, 'rwadar-site', 'datos', 'noticias.json'), 'utf8'));
+  const datos = JSON.parse(fs.readFileSync(path.join(raiz, 'rwadar-site', 'datos', 'noticias-v2.json'), 'utf8'));
   const lista = Array.isArray(datos.noticias) ? datos.noticias : [];
   return [...new Set(lista.map(n => n && n.imagen).filter(v => typeof v === 'string'))];
 }

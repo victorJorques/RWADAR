@@ -265,6 +265,21 @@ test('en Chromium: /mercado/ pinta la sección entera sin desbordes a 390 y 1366
       assert.equal(c.fuera, 0);
       assert.equal(c.anchoPagina, ancho);
       assert.ok(c.trasOfertas, 'después de «Ofertas»');
+      // El pie de Inicio: en el móvil se ve y el teclado llega de la tarjeta de Aprende a «Nota legal completa»;
+      // en escritorio no sale (el pie del sitio ya lleva la nota legal).
+      const pie = await pagina.evaluate(() => {
+        const p = document.querySelector('.ini-pie');
+        return { alto: p.offsetHeight, display: getComputedStyle(p).display, rol: p.getAttribute('role'), etiqueta: p.tagName };
+      });
+      assert.equal(pie.rol, 'note');
+      assert.equal(pie.etiqueta, 'DIV');
+      if (ancho < 768) {
+        assert.ok(pie.alto > 0, `390: el pie se ve (alto ${pie.alto}, display ${pie.display})`);
+        await pagina.focus('.ini-aprende-tarjeta');
+        await pagina.keyboard.press('Tab');
+        const foco = await pagina.evaluate(() => ({ texto: document.activeElement.textContent.trim(), href: document.activeElement.getAttribute('href') }));
+        assert.deepEqual(foco, { texto: 'Nota legal completa→', href: '/aprende/#nota-legal' }, 'Tab llega a «Nota legal completa»');
+      } else assert.equal(pie.display, 'none', '1366: el pie de Inicio no repite la nota legal del sitio');
       // /mercado/: la sección entera, como estaba en Inicio.
       await pagina.goto(local.url + '/mercado/', { waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion[data-tokenizacion-estado="coingecko"]', { timeout: 20000 });

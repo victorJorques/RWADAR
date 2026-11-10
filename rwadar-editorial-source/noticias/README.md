@@ -9,8 +9,10 @@ No son fotos de la noticia: son escenas genéricas generadas con IA, de revista
 financiera, nocturnas o de hora azul, con el tema oscuro de RWAdar. El sujeto va
 en el tercio derecho para que el titular se lea a la izquierda o abajo, sobre un
 degradado oscuro. Debajo de las tarjetas va la línea «Imágenes ilustrativas
-generadas con IA, no fotos de la noticia», y el texto alternativo es
-«Imagen ilustrativa generada con IA: » + el `concepto` de la foto.
+generadas con IA, no fotos de la noticia». En la web y en la app la foto es
+decorativa (`alt=""`, oculta al lector de pantalla): el titular ya es el nombre
+del enlace. El `concepto` describe lo que se ve, para quien revisa la
+biblioteca.
 
 ## Reglas
 
@@ -22,7 +24,11 @@ generadas con IA, no fotos de la noticia», y el texto alternativo es
   madrileño» sí; la sede real de una institución, no.
 - Sin cifras ni promesas: la foto acompaña al titular, no lo sustituye.
 - El `concepto` describe lo que **se ve** en la foto elegida, no lo que se
-  pidió: si el modelo no dibujó el sello, el texto alternativo no lo nombra.
+  pidió: si el modelo no dibujó el sello, el `concepto` no lo nombra.
+- **Una foto ya publicada no se cambia bajo la misma clave**: una toma nueva
+  va con una clave nueva (`acciones-eeuu-2`) y se cambia el campo `imagen` de
+  las noticias. La precarga de imágenes comprueba la web publicada contra
+  `fotos.json` y se pararía con una foto distinta bajo una clave ya servida.
 - La descripción y el estilo juntos caben en 77 fichas de CLIP (lo que pasa de
   ahí el modelo lo ignora sin avisar); `fotografiar.py` se para si no caben.
 - Un `retoque` solo desenfoca zonas concretas de la toma (una pantalla o una
@@ -45,6 +51,17 @@ generadas con IA, no fotos de la noticia», y el texto alternativo es
 - `fotografiar.py`: genera las tomas con el modelo en el ordenador, sin
   servicios de pago, las recorta y exporta, y apunta semilla, bytes y sha256.
 
+## Licencia y transparencia
+
+RealVisXL V5.0 Lightning se distribuye con la licencia CreativeML Open RAIL++-M.
+Su anexo A prohíbe, entre otros usos, generar contenido para engañar o
+desinformar, suplantar a personas, difamar, o dar consejo médico o jurídico
+automatizado. Aquí solo se generan escenas genéricas, sin personas ni marcas,
+que acompañan a un titular verificado. Los WebP **no llevan marca legible por
+máquina** (ni C2PA ni el `trainedAlgorithmicMedia` de IPTC: se exportan sin
+metadatos). La transparencia es la línea visible bajo las tarjetas y este
+archivo.
+
 Las tomas originales del modelo (PNG de 1344×768,
 `<clave>-<semilla>-<huella>.png`; la huella cambia si cambia la descripción) y
 el propio modelo (unos 7 GB) **no van en Git**: viven en `RWADAR_MAESTRAS` y `RWADAR_MODELO`.
@@ -66,14 +83,14 @@ python rwadar-editorial-source/noticias/fotografiar.py --exportar              #
 
 Para un tema nuevo: añade su clave en `fotos.json` con `prompt`, `concepto`,
 `encuadre` y una semilla, genera candidatas, míralas y exporta la elegida.
-Cambiar una foto cambia su `sha256` en `fotos.json`.
+Cambiar una foto cambia su `sha256` en `fotos.json`; si ya está publicada, va con otra clave (ver «Reglas»).
 
 ## Temas
 
 | Clave | Escena |
 | --- | --- |
 | `alerta-fraude` | Un móvil sobre una mesa oscura con un gráfico de bolsa genérico en rojo de alerta y luces rojas y verdes desenfocadas detrás (pantalla retocada y en espejo). |
-| `acciones-eeuu` | Las columnas iluminadas de la fachada neoclásica genérica de un distrito financiero estadounidense al anochecer. |
+| `acciones-eeuu` | Un escritorio de operaciones de noche con dos monitores con gráficos de bolsa genéricos (barras y tablas desenfocadas) y las luces de una ciudad detrás. Sustituye, antes de publicarse, a la fachada de columnas, que repetía el motivo de las tarjetas de ofertas. |
 | `red-europea` | Una red de líneas de luz que une los edificios de una ciudad europea genérica de noche, vista aérea. |
 | `pagares-deuda` | Una hoja en blanco, una pluma y dos tinteros en un escritorio oscuro con un leve brillo esmeralda (etiqueta del tintero desenfocada). |
 | `instituciones-ue` | Un edificio institucional europeo moderno de cristal a la hora azul, genérico. |

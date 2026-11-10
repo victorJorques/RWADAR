@@ -24,8 +24,7 @@
         "tipo": "regulador"
       },
       "consultadaEl": "2026-11-10",
-      "tituloInformativo": "La CNMV advierte de nueve entidades sin registro, entre ellas clones de XTB y PJT Partners",
-      "imagen": "alerta-fraude"
+      "tituloInformativo": "La CNMV advierte de nueve entidades sin registro, entre ellas clones de XTB y PJT Partners"
     },
     {
       "id": "robinhood-stock-tokens-suplemento",
@@ -48,8 +47,7 @@
         "tipo": "empresa"
       },
       "consultadaEl": "2026-11-10",
-      "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor",
-      "imagen": "acciones-eeuu"
+      "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor"
     },
     {
       "id": "etsg-estandares-tokenizacion",
@@ -72,8 +70,7 @@
         "tipo": "regulador"
       },
       "consultadaEl": "2026-11-10",
-      "tituloInformativo": "BCE, Comisión y ESMA buscan a la industria para crear estándares europeos de tokenización",
-      "imagen": "red-europea"
+      "tituloInformativo": "BCE, Comisión y ESMA buscan a la industria para crear estándares europeos de tokenización"
     },
     {
       "id": "prosegur-cash-pagares-dlt",
@@ -96,8 +93,7 @@
         "tipo": "regulador"
       },
       "consultadaEl": "2026-11-10",
-      "tituloInformativo": "La CNMV inscribe una emisión de pagarés de Prosegur Cash anotada en registro DLT",
-      "imagen": "pagares-deuda"
+      "tituloInformativo": "La CNMV inscribe una emisión de pagarés de Prosegur Cash anotada en registro DLT"
     },
     {
       "id": "consejo-ue-tope-regimen-piloto-dlt",
@@ -105,7 +101,7 @@
       "seccion": "importante",
       "categoria": "regulacion",
       "ambito": "UE",
-      "titulo": "Mercados tokenizados: la UE quiere un límite 50 veces mayor",
+      "titulo": "Mercados tokenizados: los Veintisiete quieren un límite 50 veces mayor",
       "resumen": "Los embajadores de los Estados (Coreper) aprobaron la posición del Consejo: quitar los topes por activo y elevar a 300.000 millones de euros el valor máximo que puede registrar o negociar cada infraestructura DLT.",
       "porQueImporta": "Hoy el tope es de 6.000 millones y frena a los grandes participantes. Es una posición negociadora, no una ley: falta pactarla con el Parlamento Europeo.",
       "en": {
@@ -120,8 +116,7 @@
         "tipo": "regulador"
       },
       "consultadaEl": "2026-11-10",
-      "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT",
-      "imagen": "instituciones-ue"
+      "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT"
     },
     {
       "id": "cnmv-autoriza-bit2me-stx",
@@ -144,8 +139,7 @@
         "tipo": "regulador"
       },
       "consultadaEl": "2026-11-10",
-      "tituloInformativo": "La CNMV autoriza Bit2Me STX, el segundo mercado español para valores tokenizados",
-      "imagen": "bolsa-madrid"
+      "tituloInformativo": "La CNMV autoriza Bit2Me STX, el segundo mercado español para valores tokenizados"
     },
     {
       "id": "esma-cuotas-financiacion-participativa",
@@ -168,8 +162,7 @@
         "tipo": "regulador"
       },
       "consultadaEl": "2026-11-10",
-      "tituloInformativo": "ESMA señala riesgos en las plataformas de financiación participativa con cuota de acceso",
-      "imagen": "pago-online"
+      "tituloInformativo": "ESMA señala riesgos en las plataformas de financiación participativa con cuota de acceso"
     },
     {
       "id": "cnmv-reclamaciones-cripto-financiacion-participativa",
@@ -192,8 +185,7 @@
         "tipo": "regulador"
       },
       "consultadaEl": "2026-11-10",
-      "tituloInformativo": "La CNMV propone atender quejas contra plataformas de financiación participativa y cripto",
-      "imagen": "regulador-espana"
+      "tituloInformativo": "La CNMV propone atender quejas contra plataformas de financiación participativa y cripto"
     }
   ]
 }

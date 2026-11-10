@@ -87,12 +87,101 @@
   "acciones-eeuu": {
    "modelo": "realvisxl",
    "licencia": "CreativeML Open RAIL++-M",
-   "concepto": "las columnas iluminadas de la fachada neoclásica de un edificio genérico de un distrito financiero estadounidense al anochecer",
-   "prompt": "Neoclassical columned stone facade of an American financial district building at dusk, blue hour sky, golden lights, blurred glowing stock ticker screens as bokeh, wet street",
-   "semilla": 11,
+   "concepto": "un escritorio de operaciones de noche con dos monitores que muestran gráficos de bolsa genéricos y las luces de una ciudad desenfocadas detrás",
+   "prompt": "Dark trading desk on the right side at night, two monitors glowing with extremely blurred abstract green candlestick charts, city lights bokeh through glass, empty dark left side",
+   "semilla": 37,
    "encuadre": "100% 50%",
-   "bytes": 104324,
-   "sha256": "54f471b62eb96dbdfdf7277855c35f76d337c38bc2071d4c27bd588465714cbf"
+   "retoque": {
+    "motivo": "desenfocar las barras y las tablas de los monitores, que dejarían leer rótulos falsos",
+    "difuminar": [
+     {
+      "puntos": [
+       [
+        262,
+        266
+       ],
+       [
+        812,
+        266
+       ],
+       [
+        812,
+        290
+       ],
+       [
+        262,
+        290
+       ]
+      ],
+      "radio": 8
+     },
+     {
+      "puntos": [
+       [
+        262,
+        456
+       ],
+       [
+        812,
+        456
+       ],
+       [
+        812,
+        518
+       ],
+       [
+        262,
+        518
+       ]
+      ],
+      "radio": 10
+     },
+     {
+      "puntos": [
+       [
+        824,
+        266
+       ],
+       [
+        1198,
+        264
+       ],
+       [
+        1198,
+        294
+       ],
+       [
+        824,
+        296
+       ]
+      ],
+      "radio": 8
+     },
+     {
+      "puntos": [
+       [
+        824,
+        458
+       ],
+       [
+        1198,
+        458
+       ],
+       [
+        1198,
+        568
+       ],
+       [
+        824,
+        568
+       ]
+      ],
+      "radio": 10
+     }
+    ]
+   },
+   "bytes": 83156,
+   "sha256": "049a926005a41abf1eca4e87049e2a293e8543896439f9d6c86e0938d5e90f79"
   },
   "red-europea": {
    "modelo": "realvisxl",

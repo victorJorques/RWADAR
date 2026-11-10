@@ -1,9 +1,9 @@
 'use strict';
 
 /* «Noticias del sector» (10/11/2026): el motor compartido (forma, orden,
-   textos por idioma e ilustraciones), la lectura de /datos/noticias.json y
+   textos por idioma e ilustraciones), la lectura de /datos/noticias-v2.json y
    la sección de Inicio con React aislado. Sin red: las noticias son las
-   verificadas del ciclo del 10/11/2026 (rwadar-site/datos/noticias.json). */
+   verificadas del ciclo del 10/11/2026 (rwadar-site/datos/noticias-v2.json). */
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -17,7 +17,7 @@ const idioma = require('../lib/idioma');
 const m = require('../lib/noticias-sector');
 
 const RAIZ = path.resolve(__dirname, '..');
-const TEXTO = fs.readFileSync(path.join(RAIZ, '../rwadar-site/datos/noticias.json'), 'utf8');
+const TEXTO = fs.readFileSync(path.join(RAIZ, '../rwadar-site/datos/noticias-v2.json'), 'utf8');
 const ARCHIVO = JSON.parse(TEXTO);
 const copia = () => JSON.parse(TEXTO);
 
@@ -62,8 +62,14 @@ test('una noticia mal formada no pasa: campos de más o de menos, fechas, catego
   assert.throws(roto(d => { d.noticias[0].fuente.tipo = 'blog'; }), /tipo de fuente/);
   assert.throws(roto(d => { d.noticias[1].id = d.noticias[0].id; }), /id repetido/);
   assert.throws(roto(d => { d.noticias[0].id = 'Con Mayúsculas'; }), /id no válido/);
-  // «imagen» (rediseño del 10/11/2026): obligatoria y solo una clave [a-z0-9-]+, nunca una dirección.
-  assert.throws(roto(d => { delete d.noticias[0].imagen; }), /falta «imagen»/);
+  // «imagen» (rediseño del 10/11/2026): al leer es opcional (sin ella, fondo oscuro; al publicar se exige)
+  // y, si está, solo una clave [a-z0-9-]+, nunca una dirección.
+  const sinFoto = JSON.parse(TEXTO); delete sinFoto.noticias[0].imagen;
+  const leida = m.validarNoticias(sinFoto).noticias.find(n => n.id === sinFoto.noticias[0].id);
+  assert.equal(Object.hasOwn(leida, 'imagen'), false);
+  assert.equal(m.rutaFoto(leida), null);
+  assert.deepEqual(m.noticiasSinFoto(sinFoto), [sinFoto.noticias[0].id]);
+  assert.deepEqual(m.noticiasSinFoto(JSON.parse(TEXTO)), []);
   for (const mala of ['', 'Alerta-Fraude', 'alerta_fraude', 'alerta fraude', '../alerta', 'alerta.webp', 'https://x.test/a.webp', 'x'.repeat(61), 7, null]) {
     assert.throws(roto(d => { d.noticias[0].imagen = mala; }), /clave de foto no válida/, String(mala));
   }
@@ -133,7 +139,7 @@ test('las fotos: cada noticia trae su clave y la foto sale de rwadar.pages.dev, 
   assert.doesNotMatch(web, /https?:\/\/(?!rwadar)/);
 });
 
-/* ---- Lectura de /datos/noticias.json ---- */
+/* ---- Lectura de /datos/noticias-v2.json ---- */
 function cargarLib(ruta, mocks) {
   const nombre = path.join(RAIZ, ruta);
   const codigo = babel.transformSync(fs.readFileSync(nombre, 'utf8'), { filename: nombre, babelrc: false, configFile: false, plugins: [commonjs] }).code;
@@ -146,14 +152,14 @@ function cargarLib(ruta, mocks) {
 }
 const remota = cargarLib('lib/noticias-sector-remota.js', { './noticias-sector': m });
 
-test('la app lee https://rwadar.pages.dev/datos/noticias.json sin cookies, con plazo, y rechaza lo que no tiene forma', async () => {
+test('la app lee https://rwadar.pages.dev/datos/noticias-v2.json sin cookies, con plazo, y rechaza lo que no tiene forma', async () => {
   const llamadas = [];
   const responde = (status, cuerpo) => async (url, init) => { llamadas.push([url, init]); return { ok: status === 200, status, text: async () => cuerpo }; };
   remota.olvidarNoticias();
   const d = await remota.cargarNoticias({ fetchImpl: responde(200, TEXTO) });
   assert.deepEqual(d, m.validarNoticias(ARCHIVO));
   remota.olvidarNoticias();
-  assert.equal(llamadas[0][0], 'https://rwadar.pages.dev/datos/noticias.json');
+  assert.equal(llamadas[0][0], 'https://rwadar.pages.dev/datos/noticias-v2.json');
   assert.equal(llamadas[0][1].credentials, 'omit');
   assert.equal(llamadas[0][1].method, 'GET');
   assert.ok(!('Authorization' in llamadas[0][1].headers) && !('Cookie' in llamadas[0][1].headers));

@@ -7,19 +7,23 @@
    generador de la web (rwadar-publicar.js valida con él /datos/noticias.json
    antes de publicar). Sin dependencias, sin red y sin Intl (Hermes).
 
-   Datos: rwadar-site/datos/noticias.json, la selección verificada de cada
-   ciclo de investigación. La web lo sirve en /datos/noticias.json y la app
-   lo lee de https://rwadar.pages.dev/datos/noticias.json. Aquí no se escribe
-   ninguna noticia: solo se comprueba la forma, se ordena (las de hoy
-   primero) y se eligen los textos del idioma.
+   Datos: rwadar-site/datos/noticias-v2.json, la selección verificada de
+   cada ciclo de investigación. La web lo sirve en /datos/noticias-v2.json y
+   la app lo lee de https://rwadar.pages.dev/datos/noticias-v2.json. Aquí no
+   se escribe ninguna noticia: solo se comprueba la forma, se ordena (las de
+   hoy primero) y se eligen los textos del idioma.
 
    Fotos (rediseño de Inicio, 10/11/2026): cada noticia lleva en «imagen» la
    clave de una foto editorial propia (WebP generado con IA, sin texto,
    logotipos ni personas), servida desde rwadar.pages.dev: nunca de terceros,
-   que verían la IP de quien mira. Sustituyen a las ilustraciones SVG.
+   que verían la IP de quien mira. Sustituyen a las ilustraciones SVG. Al
+   leer, «imagen» es opcional (sin ella, la tarjeta queda con su fondo
+   oscuro, como cuando la foto no carga); al publicar, rwadar-publicar.js la
+   exige en todas. /datos/noticias.json sigue publicándose sin «imagen» para
+   la app ya instalada (rwadar-app/noticias/noticias-v1.cjs).
    --------------------------------------------------------------------- */
-const RUTA = '/datos/noticias.json';
-const URL_DATOS = 'https://rwadar.pages.dev/datos/noticias.json';
+const RUTA = '/datos/noticias-v2.json';
+const URL_DATOS = 'https://rwadar.pages.dev/datos/noticias-v2.json';
 const MAX_NOTICIAS = 24;
 const SECCIONES = Object.freeze(['hoy', 'importante']);
 const CATEGORIAS = Object.freeze({
@@ -72,8 +76,8 @@ function urlFuente(valor, donde) {
 function validarNoticia(n, i, actualizadoEl) {
   const donde = `noticia ${i + 1}`;
   claves(n, ['id', 'fecha', 'seccion', 'categoria', 'ambito', 'titulo', 'resumen', 'porQueImporta', 'en', 'fuente', 'consultadaEl',
-    'tituloInformativo', 'imagen'], ['id', 'fecha', 'seccion', 'categoria', 'ambito', 'titulo', 'resumen', 'porQueImporta', 'en', 'fuente', 'consultadaEl',
-    'imagen'], donde);
+    'tituloInformativo', 'imagen'], ['id', 'fecha', 'seccion', 'categoria', 'ambito', 'titulo', 'resumen', 'porQueImporta', 'en', 'fuente', 'consultadaEl'],
+    donde);
   if (typeof n.id !== 'string' || n.id.length > 80 || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(n.id)) throw new Error(`${donde}: id no válido`);
   const salida = { id: n.id };
   salida.fecha = fecha(n.fecha, `${donde}, fecha`);
@@ -98,7 +102,7 @@ function validarNoticia(n, i, actualizadoEl) {
   claves(n.fuente, ['nombre', 'url', 'tipo'], ['nombre', 'url', 'tipo'], `${donde}, fuente`);
   if (!TIPOS_FUENTE.includes(n.fuente.tipo)) throw new Error(`${donde}: tipo de fuente desconocido`);
   salida.fuente = { nombre: texto(n.fuente.nombre, `${donde}, fuente.nombre`, MAX.nombre), url: urlFuente(n.fuente.url, `${donde}, fuente.url`), tipo: n.fuente.tipo };
-  salida.imagen = claveFoto(n.imagen, `${donde}, imagen`);
+  if (n.imagen !== undefined) salida.imagen = claveFoto(n.imagen, `${donde}, imagen`);
   return salida;
 }
 
@@ -200,6 +204,11 @@ function rutaFoto(n, { base = RUTA_FOTOS } = {}) {
   if (!n || typeof n.imagen !== 'string' || !CLAVE_FOTO.test(n.imagen)) return null;
   return `${base}${n.imagen}.webp`;
 }
+/* Las noticias sin foto (para el generador, que las exige al publicar). */
+function noticiasSinFoto(datos) {
+  const lista = Array.isArray(datos?.noticias) ? datos.noticias : [];
+  return lista.filter(n => !n || typeof n.imagen !== 'string').map(n => (n && n.id) || '?');
+}
 /* Las claves distintas que usan las noticias (para el generador). */
 function clavesFotos(datos) {
   const lista = Array.isArray(datos?.noticias) ? datos.noticias : [];
@@ -208,4 +217,4 @@ function clavesFotos(datos) {
 
 module.exports = { RUTA, URL_DATOS, MAX_NOTICIAS, SECCIONES, CATEGORIAS, AMBITOS, TIPOS_FUENTE, MAX, validarNoticias, noticiasValidas,
   textos, etiquetaCategoria, etiquetaAmbito, fechaCorta, fechaBreve, fechaLocal, etiquetaReciente,
-  RUTA_FOTOS, URL_FOTOS, CLAVE_FOTO, NOTA_FOTOS, rutaFoto, clavesFotos };
+  RUTA_FOTOS, URL_FOTOS, CLAVE_FOTO, NOTA_FOTOS, rutaFoto, clavesFotos, noticiasSinFoto };

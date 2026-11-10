@@ -3,8 +3,10 @@
    ---------------------------------------------------------------------
    Solo tokens de rwadar-20260820.css: superficies, grises cálidos, el
    verde de la señal para «sube» y el rojo suave de alarma para «baja».
-   Las barras van en gris: el color queda solo para el sentido del cambio,
-   y nunca va solo (flecha, signo y la palabra «sube»/«baja»).
+   El cambio lleva el verde o el rojo, y nunca va solo (flecha, signo y la
+   palabra «sube»/«baja»). Las barras por tipo llevan el color de su tramo
+   en la barra apilada de Inicio (los 3 mayores) y el gris de «Otros» el
+   resto; su cifra va siempre escrita al lado.
    ===================================================================== */
 .tk{padding:32px 0 24px;border-top:var(--bd)}
 .rel-portada+.tk,.rel-nuevas[hidden]+.tk{border-top:0}
@@ -50,7 +52,7 @@
 .tk-tipo-nom{min-width:0;color:var(--tx);font:500 .9375rem/1.3 var(--body)}
 .tk-tipo-valor{color:var(--tx);font:500 .875rem/1.3 var(--mono);white-space:nowrap}
 .tk-barra{height:10px;margin-top:6px;border-radius:var(--r-p);background:var(--ton);overflow:hidden}
-.tk-barra-relleno{display:block;width:var(--tk-ancho,0);height:100%;border-radius:inherit;background:var(--tx-2);
+.tk-barra-relleno{display:block;width:var(--tk-ancho,0);height:100%;border-radius:inherit;background:var(--tk-color,var(--tx-2));
   transition:width calc(600ms * var(--pm)) var(--ease)}
 .tk-tipo-pie{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:5px;color:var(--tx-3);font:400 .8125rem/1.3 var(--body)}
 .tk-tipo-cuota b{color:var(--tx-2);font:500 .8125rem/1.3 var(--mono)}

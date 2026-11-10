@@ -1,7 +1,7 @@
 import { URL_DATOS, validarNoticias } from './noticias-sector';
 
 /* «Noticias del sector» en la app (10/11/2026): la app lee el mismo archivo
-   estático que la web, /datos/noticias.json de rwadar.pages.dev. Sin cookies,
+   estático que la web, /datos/noticias-v2.json de rwadar.pages.dev. Sin cookies,
    sin sesión y sin datos del usuario. Diez segundos como mucho; si falla, la
    sección lo dice y ofrece reintentar, y el resto de Inicio sigue igual.
    Una respuesta buena se reutiliza 10 minutos en la misma sesión (como la

@@ -158,7 +158,7 @@
         <p class="rel-ante">Independiente y gratis · Tokenización en España</p>
         <h2 class="rel-portada-tit" id="inicioPortadaTit">Ofertas y plataformas tokenizadas, contrastadas con su fuente.</h2>
         <ul class="ini-cifras" id="inicioCifras" aria-label="El catálogo en cifras"></ul>
-        <button class="b1 rel-cta" type="button" data-movil-ir="emisiones" data-rel-plantilla="Ver las {ofertas} ofertas" data-rel-plantilla-en="See the {ofertas} offers" data-rel-sin="Ver las ofertas">Ver las ofertas</button>
+        <button class="b1 rel-cta" type="button" data-movil-ir="emisiones">Ver las ofertas</button>
         <p class="rel-aviso">Invertir tiene riesgos: puedes perder parte o todo lo que inviertas. RWAdar informa, no asesora ni vende.</p>
       </div>
     </section>
@@ -179,7 +179,7 @@
         <a class="b3 rel-fuentes" href="/aprende/#fuentes-seleccion">Fuentes de este apartado<span class="rel-flecha" aria-hidden="true"></span></a>
       </details>
       <p class="nota-ilustrativa">Imágenes ilustrativas, no fotos del activo</p>
-      <a class="ini-ver" href="#emisiones" data-movil-ir="emisiones"><span data-rel-plantilla="Ver las {ofertas} ofertas" data-rel-plantilla-en="See the {ofertas} offers" data-rel-sin="Ver las ofertas">Ver las ofertas</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
+      <a class="ini-ver" href="#emisiones" data-movil-ir="emisiones"><span>Ver todas las ofertas</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
     </section>
 
     <!-- 3 · El mercado hoy: la tarjeta compacta (cifra total, 24 h y una barra
@@ -200,7 +200,7 @@
 
     <!-- 4 · Noticias: tres tarjetas grandes con foto editorial y solo el
          titular; todas, con su detalle, en /noticias/. Lo pinta
-         assets/noticias-sector-20261110.js desde /datos/noticias.json. -->
+         assets/noticias-sector-20261110.js desde /datos/noticias-v2.json. -->
     <section class="ini-bloque nt nt--portada" id="noticias" aria-labelledby="ntTit" data-noticias="portada">
       <div class="ini-bloque-cab">
         <h2 class="ini-bloque-tit" id="ntTit">Noticias</h2>
@@ -225,11 +225,14 @@
       </a>
     </section>
 
-    <!-- 6 · Pie: una línea legal y la nota completa (en /aprende/). -->
-    <footer class="ini-pie" aria-label="Nota legal">
+    <!-- 6 · Pie: una línea legal y la nota completa (en /aprende/). Es un
+         div con role="note" y no un elemento footer: en el móvil, la hoja
+         principal esconde los footer fuera de la pestaña «Buscar». En
+         escritorio no sale: el pie del sitio ya lleva la nota legal. -->
+    <div class="ini-pie" role="note" aria-label="Nota legal">
       <p>RWAdar no asesora ni vende, y nadie paga por aparecer. No es una recomendación de inversión. RWAdar no pide datos bancarios, claves de monedero ni frases de recuperación.</p>
       <a class="ini-ver ini-ver--pie" href="/aprende/#nota-legal"><span>Nota legal completa</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
-    </footer>
+    </div>
   </div>
   <div class="rel-progreso" id="relProgreso" aria-hidden="true"><span></span></div>
 </section>

@@ -86,10 +86,16 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-movil/lib/tokenizacion.js',
   // Y de dónde saca rwadar-publicar.js el histórico que publica en /datos/.
   'rwadar-tokenizacion-historico.js',
-  // Motor de «Noticias del sector» (10/11/2026): valida /datos/noticias.json y dibuja las ilustraciones.
+  // Motor de «Noticias del sector» (10/11/2026): valida /datos/noticias-v2.json.
   'rwadar-movil/lib/noticias-sector.js',
-  // Fotos editoriales de las noticias (rediseño de Inicio, 10/11/2026): la biblioteca y su cargador.
-  'rwadar-editorial-source/noticias',
+  // /datos/noticias.json sin «imagen» para la app ya instalada, validado con
+  // la copia congelada del motor de esa app (rediseño de Inicio, 10/11/2026).
+  'rwadar-app/noticias/noticias-v1.cjs',
+  'rwadar-app/noticias/motor-app-26664c9.cjs',
+  // Fotos editoriales de las noticias (rediseño de Inicio, 10/11/2026): solo
+  // lo que se publica (el manifiesto y los WebP), no el script que las genera.
+  'rwadar-editorial-source/noticias/fotos.json',
+  'rwadar-editorial-source/noticias/fotos',
   'rwadar-noticias-editoriales.js',
   'rwadar-movil/lib/ficha-editorial.js',
   'rwadar-movil/lib/idioma.js',
@@ -192,11 +198,14 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'datos/tokenizacion-historico.json',
   // «Noticias del sector» en Inicio (10/11/2026): el motor (copia de
   // rwadar-movil/lib/noticias-sector.js), la sección, su hoja y las noticias
-  // verificadas del último ciclo (rwadar-publicar.js las valida antes de publicar).
+  // verificadas del último ciclo (rwadar-publicar.js las valida antes de publicar):
+  // noticias-v2.json con la foto de cada una (web y app nuevas) y noticias.json
+  // sin «imagen», con la forma que acepta la app ya instalada.
   'assets/noticias-sector-modelo-20261110.js',
   'assets/noticias-sector-20261110.js',
   'assets/noticias-sector-20261110.css',
   'datos/noticias.json',
+  'datos/noticias-v2.json',
   // Inicio por bloques y sus secciones (rediseño del 10/11/2026).
   'assets/secciones-20261110.css',
   'assets/aprende-20261110.js',

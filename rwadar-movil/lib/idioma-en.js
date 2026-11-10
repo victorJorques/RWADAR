@@ -1165,6 +1165,7 @@
   "Nueva": "New",
   "Añadida el": "Added on",
   "Ver todas las ofertas nuevas": "See all new offers",
+  "Ver todas las ofertas": "See all offers",
   "Más nuevas primero": "Newest first",
   "Primero, las que hemos añadido al radar más recientemente. El orden no depende de pagos ni de rentabilidades.": "First, the ones we added to the radar most recently. The order does not depend on payments or returns.",
   "Mapa de activos documentados": "Map of documented assets",

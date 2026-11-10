@@ -4,7 +4,7 @@ import Svg, { Circle, Polyline } from 'react-native-svg';
 import { Pressable, Text, View, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
 import { cargarTokenizacion } from '../lib/tokenizacion-remota';
-import { FUENTE, alturasLinea, cuota, resumenCompacto, direccion, fechaBreve, fechaCorta, fechaLlegada, horaDato, millones, millonesHablados, porcentaje,
+import { FUENTE, alturasLinea, colorTipo, cuota, resumenCompacto, direccion, fechaBreve, fechaCorta, fechaLlegada, horaDato, millones, millonesHablados, porcentaje,
   textosLinea } from '../lib/tokenizacion';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
@@ -232,7 +232,8 @@ export default function TokenizacionMundo({ onAbrirEnlace, cargar = cargarTokeni
                   <Text noTraducir style={e.tipoValor}>{millones(t.valor, idioma)}</Text>
                 </View>
                 <View style={e.barra}>
-                  <View style={[e.relleno, { width: `${Math.max(1.5, Math.min(100, t.cuota)).toFixed(2)}%` }]} />
+                  {/* El color de su tramo en la barra apilada de Inicio (como la web). */}
+                  <View style={[e.relleno, { width: `${Math.max(1.5, Math.min(100, t.cuota)).toFixed(2)}%`, backgroundColor: colorTipo(d, t.clave) }]} />
                 </View>
                 <View style={e.tipoPie}>
                   <Text style={e.tipoPieTxt}><Text noTraducir style={e.tipoCuota}>{cuota(t.cuota, idioma)}</Text> {'del total'}</Text>

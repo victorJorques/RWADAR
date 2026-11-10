@@ -118,6 +118,8 @@
       const barra = el('div', 'tk-barra'), relleno = el('span', 'tk-barra-relleno');
       // CSSOM, no un atributo style: la CSP sigue sin 'unsafe-inline'.
       relleno.style.setProperty('--tk-ancho', Math.max(1.5, Math.min(100, t.cuota)).toFixed(2) + '%');
+      // El color de su tramo en la barra apilada de Inicio (los 3 mayores; el resto, el gris de «Otros»).
+      relleno.style.setProperty('--tk-color', modelo.colorTipo(d, t.clave));
       barra.append(relleno);
       const pie = el('div', 'tk-tipo-pie');
       const cuota = el('span', 'tk-tipo-cuota');

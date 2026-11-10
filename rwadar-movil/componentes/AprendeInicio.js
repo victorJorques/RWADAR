@@ -300,11 +300,9 @@ export default function AprendeInicio({
           <Text noTraducir style={e.nota}>{cap.cap4.cifrasPie}</Text>
         </View>
         <Text noTraducir style={e.texto}>{cap.cap4.texto}</Text>
-        {/* Los mínimos y su aviso, solo con catálogo vigente (como la web). */}
-        {cifras.vigente && cifras.minimos ? <>
-          <Text noTraducir style={e.texto}>{cap.cap4.minimos(cifras.minimos, cifras.ofertas, cifras.usd)}</Text>
-          <Text noTraducir style={e.aviso}>{cap.cap4.aviso}</Text>
-        </> : null}
+        {/* Rediseño de Inicio (10/11/2026): fuera la frase «En el radar, N de las M
+            ofertas tienen un mínimo de 1 €» y su aviso, como en /aprende/ de la web,
+            que no carga el catálogo y no podría saber si la cifra sigue vigente. */}
       </Bloque>
 
       {/* 05 · Los riesgos: la cifra en una frase y el caso corto. */}

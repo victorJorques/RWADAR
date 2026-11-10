@@ -36,6 +36,7 @@ const { exigirCatalogoPublico } = require('./rwadar-acceso/comprobar-produccion.
 const tokenizacionModelo = require('./rwadar-movil/lib/tokenizacion');
 const { historicoTokenizacion } = require('./rwadar-tokenizacion-historico');
 const noticiasModelo = require('./rwadar-movil/lib/noticias-sector');
+const noticiasV1 = require('./rwadar-app/noticias/noticias-v1.cjs');
 const {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
@@ -171,15 +172,12 @@ try { activosEditoriales = { ...activosEditoriales,
   publicables: unirActivos(activosEditoriales.publicables, cargarPrecargas(__dirname).publicables) }; }
 catch (e) { console.error('PRECARGAS EDITORIALES BLOQUEADAS:', e.message); process.exit(2); }
 /* Fotos editoriales de las noticias (rediseño de Inicio, 10/11/2026): cada
-   clave que usa /datos/noticias.json, con su WebP comprobado (bytes, sha256 y
-   tamaño). Un destino remoto no sale sin ellas; en local, mientras se hacen,
-   se avisa y la web enseña el fondo oscuro de la tarjeta en su lugar. */
-let fotosNoticias = { publicables: [] };
+   clave que usa /datos/noticias-v2.json, con su WebP comprobado (bytes,
+   sha256 y tamaño). Sin ellas no se publica, tampoco en local: así las
+   pruebas ven lo mismo que verá la web. */
+let fotosNoticias;
 try { fotosNoticias = cargarFotosNoticias(__dirname); }
-catch (e) {
-  if (remoto) { console.error('FOTOS DE LAS NOTICIAS BLOQUEADAS:', e.message); process.exit(2); }
-  console.warn(`AVISO (solo en local): fotos de las noticias sin publicar: ${e.message}`);
-}
+catch (e) { console.error('FOTOS DE LAS NOTICIAS BLOQUEADAS:', e.message); process.exit(2); }
 if (remoto && activosEditoriales.manifiesto.estadoUso !== 'aprobado-para-publicacion') {
   console.error('PUBLICACION REMOTA BLOQUEADA: las ilustraciones editoriales siguen pendientes de aprobación legal.');
   process.exit(2);
@@ -559,19 +557,31 @@ function construirSalida() {
     const fotosTokenizacion = tokenizacion.historico.fotos;
     console.log(`Tokenización: ${fotosTokenizacion.length} foto(s) diaria(s) de ${tokenizacion.origen}` +
       (fotosTokenizacion.length ? `, del ${fotosTokenizacion[0].fecha} al ${fotosTokenizacion.at(-1).fecha}.` : '.'));
-    /* «Noticias del sector» (10/11/2026): /datos/noticias.json se publica tal
-       cual, pero solo si tiene la forma que leen la web y la app
-       (rwadar-movil/lib/noticias-sector.js). Una noticia mal formada para la
-       publicación: mejor eso que una sección rota en la web y en la app. */
-    const textoNoticias = fs.readFileSync(path.join(temporal, 'datos', 'noticias.json'), 'utf8');
+    /* «Noticias del sector» (10/11/2026): /datos/noticias-v2.json se publica
+       tal cual, pero solo si tiene la forma que leen la web y la app nuevas
+       (rwadar-movil/lib/noticias-sector.js) y si cada noticia trae su foto
+       (al leer es opcional; al publicar, no). /datos/noticias.json es el
+       mismo sin «imagen», para la app ya instalada: tiene que coincidir con
+       el v2 y pasar el motor congelado de esa app
+       (rwadar-app/noticias/noticias-v1.cjs). Una noticia mal formada para la
+       publicación: mejor eso que una sección rota en la web o en la app. */
+    const textoNoticias = fs.readFileSync(path.join(temporal, 'datos', 'noticias-v2.json'), 'utf8');
     let noticias;
     try {
       if (Buffer.byteLength(textoNoticias, 'utf8') > 256 * 1024) throw new Error('ocupa más de 256 kB');
       noticias = noticiasModelo.validarNoticias(JSON.parse(textoNoticias));
+      const sinFoto = noticiasModelo.noticiasSinFoto(JSON.parse(textoNoticias));
+      if (sinFoto.length) throw new Error(`noticias sin «imagen»: ${sinFoto.join(', ')}`);
     } catch (e) {
-      throw new Error(`rwadar-site/datos/noticias.json no vale: ${e.message}`);
+      throw new Error(`rwadar-site/datos/noticias-v2.json no vale: ${e.message}`);
     }
-    console.log(`Noticias del sector: ${noticias.noticias.length}, actualizadas el ${noticias.actualizadoEl}.`);
+    const textoNoticiasV1 = fs.readFileSync(path.join(temporal, 'datos', 'noticias.json'), 'utf8');
+    if (textoNoticiasV1 !== noticiasV1.derivarV1(textoNoticias)) {
+      throw new Error('rwadar-site/datos/noticias.json no es noticias-v2.json sin «imagen» (ejecuta node rwadar-app/noticias/noticias-v1.cjs)');
+    }
+    try { noticiasV1.validarComoAppInstalada(textoNoticiasV1); }
+    catch (e) { throw new Error(`la app instalada no aceptaría /datos/noticias.json: ${e.message}`); }
+    console.log(`Noticias del sector: ${noticias.noticias.length}, actualizadas el ${noticias.actualizadoEl} (v2 con fotos y v1 para la app instalada).`);
     /* Las cuatro ilustraciones viven en una fuente única compartida con
        Expo. Se copian una a una desde el manifiesto validado; nunca se copia
        el directorio completo ni se incluyen las 52 imágenes sin derechos. */

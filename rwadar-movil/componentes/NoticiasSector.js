@@ -14,7 +14,7 @@ import { tacto } from '../lib/tacto';
    «Noticias del sector» (10/11/2026; rediseño de Inicio, el mismo día),
    como la web
    ---------------------------------------------------------------------
-   Lee /datos/noticias.json de rwadar.pages.dev (lib/noticias-sector-remota.js).
+   Lee /datos/noticias-v2.json de rwadar.pages.dev (lib/noticias-sector-remota.js).
    Dos modos:
    - `portada` (Inicio): las 3 primeras en tarjetas grandes con su foto
      editorial y solo el titular encima, sobre un degradado oscuro para que

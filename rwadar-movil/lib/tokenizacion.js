@@ -325,7 +325,15 @@ function resumenCompacto(d, cuantos = 3) {
   if (resto > 0) segmentos.push({ clave: 'otros', nombre: 'Otros', valor: Math.max(0, d.total.valor - sumaValor), cuota: resto, color: COLORES_COMPACTO[3] });
   return { fuente: d.fuente, fecha: d.fecha, actualizado: d.actualizado, total: d.total.valor, cambio24h: d.total.cambio24h, segmentos };
 }
+/* El color de un tipo en las barras de /mercado/: el mismo que su tramo de la
+   barra apilada de Inicio (los 3 mayores) y el gris de «Otros» para el resto,
+   para que se reconozcan de una pantalla a otra (revisión del 10/11/2026). */
+function colorTipo(d, clave, cuantos = 3) {
+  const r = resumenCompacto(d, cuantos);
+  const i = r ? r.segmentos.findIndex((s) => s.clave === clave && s.clave !== 'otros') : -1;
+  return i >= 0 ? COLORES_COMPACTO[i] : COLORES_COMPACTO[3];
+}
 
 module.exports = { FUENTE, TOTAL, TIPOS, ORO, PERIODOS, MARGEN_DIAS, historicoVacio, extraerFoto, validarFoto, validarHistorico,
   anadirFoto, serializarHistorico, resumir, resumenValido, millones, porcentaje, cuota, direccion, fechaCorta, fechaBreve, horaDato, fechaDe,
-  fechaLlegada, alturasLinea, textosLinea, millonesHablados, cambioPct, resumenCompacto, COLORES_COMPACTO };
+  fechaLlegada, alturasLinea, textosLinea, millonesHablados, cambioPct, resumenCompacto, colorTipo, COLORES_COMPACTO };

@@ -72,6 +72,22 @@ prueba('archivo extra no puede viajar por compartir carpeta/extensión',()=>{
   const extra=path.join(dirRegistro,'extra.webp');fs.writeFileSync(extra,'extra');assert.throws(()=>cargarRegistro(temporal));fs.unlinkSync(extra);
 });
 prueba('base sellada valida el árbol completo incluida configuración',()=>assert.equal(validarBase(base,sello).sha256,sello.sha256));
+prueba('fotos de las noticias: la base las lleva todas y con los bytes de fotos.json',()=>{
+  // Rediseño de Inicio (10/11/2026): el publicador copia la biblioteca a noticias-editoriales/.
+  const fotos=archivos.filter(a=>/^noticias-editoriales\/[a-z0-9-]+\.webp$/.test(a.ruta));
+  assert(fotos.length>=3,'El build local debe llevar las fotos de las noticias');
+  const recalcular=()=>{const archivos=inventario(base);return {...sello,archivos,sha256:huellaInventario(archivos)};};
+  const p=path.join(base,fotos[0].ruta), original=fs.readFileSync(p);
+  try{
+    fs.writeFileSync(p,Buffer.concat([original,Buffer.from('cambio')]));
+    assert.throws(()=>validarBase(base,recalcular()),/Foto de noticia base distinta de fotos\.json/);
+    fs.unlinkSync(p);
+    assert.throws(()=>validarBase(base,recalcular()),/Falta la foto de una noticia base/);
+    fs.writeFileSync(path.join(base,'noticias-editoriales/inventada.webp'),original);
+    assert.throws(()=>validarBase(base,recalcular()),/Foto de noticia base distinta de fotos\.json/);
+  }finally{fs.writeFileSync(p,original);fs.rmSync(path.join(base,'noticias-editoriales/inventada.webp'),{force:true});}
+  assert.equal(validarBase(base,sello).sha256,sello.sha256);
+});
 prueba('un alta ya añadida al manifiesto no invalida la base: el worker esperado sale de sus fichas',()=>{
   // El ciclo añade la ruta del alta al manifiesto antes de precargar su imagen.
   const selloArchivo=path.join(temporal,'sello-alta.json');fs.writeFileSync(selloArchivo,JSON.stringify(sello));
