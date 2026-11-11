@@ -8,35 +8,40 @@
    baja; siempre con signo, flecha y texto. Solo tokens de rwadar-20260820.css
    y sin estilos en línea (la CSP no lleva 'unsafe-inline').
    ===================================================================== */
+/* Un solo rojo: #FF6B5E pasa AA como texto sobre s0 (7,1) y s1 (6,5), así que
+   la línea y las cifras que bajan usan el mismo (revisión de diseño del 11/11). */
 .mk{--mk-sube:var(--senal);--mk-baja:#FF6B5E;--mk-igual:var(--tx-2)}
 .mk-sube{--mk-color-dir:var(--mk-sube)}
 .mk-baja{--mk-color-dir:var(--mk-baja)}
 .mk-igual,.mk-sin-datos{--mk-color-dir:var(--mk-igual)}
 .mk-estado{margin-top:16px;padding:16px;border-radius:var(--r-m);background:var(--ton);color:var(--tx-2);font:400 .9375rem/1.45 var(--body)}
-.mk-cambio{display:inline-flex;align-items:baseline;gap:4px;color:var(--mk-color-dir);font:600 1rem/1.3 var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
-.mk-cambio.mk-baja{color:var(--alarma)}
+/* El cambio, en la misma letra que la cifra (en Mono, «+8 , 3  %»). */
+.mk-cambio{display:inline-flex;align-items:baseline;gap:4px;color:var(--mk-color-dir);font:600 1rem/1.3 var(--body);font-variant-numeric:tabular-nums;white-space:nowrap}
 .mk-flecha{font-size:.75em}
 
 /* ---- /mercado/: cabecera ---- */
-.mk-tit{margin:4px 0 0;color:var(--tx);font:700 1.75rem/1.12 var(--display);letter-spacing:-.025em;text-wrap:balance}
+.mk-tit{max-width:none;margin:4px 0 0;color:var(--tx);font:700 1.75rem/1.12 var(--display);letter-spacing:-.025em;text-wrap:balance}
+@media (max-width:767px){.mk-tit{font-size:1.375rem;line-height:1.2}}
 .mk-cuerpo{margin-top:6px}
-.mk-cab{padding:12px 0 14px;border-bottom:var(--bd)}
+.mk-cab{padding:8px 0 14px;border-bottom:var(--bd)}
+.mk-sub{margin:2px 0 6px;color:var(--tx-2);font:500 .875rem/1.35 var(--body)}
 .mk-cifra{margin:0;color:var(--tx)}
 .mk-cifra-num{font:600 2.5rem/1.05 var(--body);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .mk-cifra-unidad{color:var(--tx-2);font:500 1.25rem/1 var(--body);letter-spacing:0}
 .mk-linea-cambio{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:6px 0 0}
 .mk-linea-cambio .mk-cambio{font-size:1.125rem}
 .mk-periodo{color:var(--tx-2);font:500 1rem/1.3 var(--body)}
-.mk-alcance{color:var(--tx-3);font:400 .875rem/1.3 var(--body)}
-@media (max-width:767px){.mk-alcance{flex-basis:100%}.mk-sep{display:none}}
+.mk-explica{margin:6px 0 0;color:var(--tx-2);font:400 .8125rem/1.45 var(--body);max-width:62ch}
 .mk-aviso{margin:8px 0 0;color:var(--tx-3);font:400 .8125rem/1.45 var(--body)}
+.mk-aviso-tokens{color:var(--tx-2)}
+.mk-total-cat{margin:8px 0 0;color:var(--tx-3);font:400 .8125rem/1.45 var(--body);max-width:72ch}
 
 /* ---- Pestañas ---- */
-.mk-pestanas{display:flex;gap:2px;margin:12px -6px 0;overflow-x:auto;scrollbar-width:none}
+.mk-pestanas{display:flex;gap:2px;margin:12px 0 0;overflow-x:auto;scrollbar-width:none}
 .mk-pestanas::-webkit-scrollbar{display:none}
 .mk-pestana{flex:1 0 auto;min-width:44px;min-height:40px;padding:0 10px;border:0;border-radius:var(--r-p);background:transparent;
-  color:var(--tx-2);font:600 .9375rem/1 var(--body);letter-spacing:.01em;cursor:pointer;transition:var(--tr);-webkit-tap-highlight-color:transparent}
-.mk-pestana[aria-pressed="true"]{background:var(--s3);color:var(--tx);box-shadow:inset 0 0 0 1px var(--ton-2)}
+  color:var(--tx-2);font:500 .9375rem/1 var(--body);letter-spacing:.01em;cursor:pointer;transition:var(--tr);-webkit-tap-highlight-color:transparent}
+.mk-pestana[aria-pressed="true"]{background:var(--s3);color:var(--tx);font-weight:700}
 .mk-pestana:disabled{color:var(--tx-3);opacity:.5;cursor:not-allowed}
 .mk-pestana:focus-visible{outline:2px solid var(--senal);outline-offset:1px}
 @media (hover:hover){.mk-pestana:not(:disabled):not([aria-pressed="true"]):hover{background:var(--ton);color:var(--tx)}}
@@ -44,25 +49,30 @@
 
 /* ---- El gráfico ---- */
 .mk-graf-marco{margin-top:8px}
-.mk-graf{position:relative;width:100%;min-height:240px;touch-action:pan-y;cursor:crosshair;border-radius:var(--r-s);-webkit-tap-highlight-color:transparent;user-select:none}
+.mk-graf{position:relative;width:100%;min-height:270px;touch-action:pan-y;cursor:crosshair;border-radius:var(--r-s);-webkit-tap-highlight-color:transparent;user-select:none}
 .mk-graf:focus-visible{outline:2px solid var(--senal);outline-offset:4px}
 .mk-svg{display:block;overflow:visible}
 .mk-rejilla line{stroke:rgba(255,255,255,.07);stroke-width:1;shape-rendering:crispEdges}
 .mk-rejilla .mk-suelo{stroke:rgba(255,255,255,.16)}
 .mk-stop{stop-color:var(--mk-color-dir)}
 .mk-linea{fill:none;stroke:var(--mk-color-dir);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
-.mk-puente{fill:none;stroke:var(--mk-color-dir);stroke-width:1.25;stroke-dasharray:2 3;opacity:.45}
+.mk-linea--densa{stroke-width:1.5}
+.mk-puente{fill:none;stroke:var(--mk-color-dir);stroke-width:1.5;stroke-dasharray:2 3;opacity:.7}
 .mk-base{stroke:var(--tx-3);stroke-width:1;stroke-dasharray:2 4;opacity:.8}
-.mk-eje text{fill:var(--tx-2);font:500 12px/1 var(--mono);font-variant-numeric:tabular-nums}
+.mk-eje text{fill:var(--tx-2);font:500 12px/1 var(--body);font-variant-numeric:tabular-nums}
 .mk-eje .mk-eje-unidad{fill:var(--tx-3);font-size:11px}
-.mk-cruz line{stroke:var(--tx-2);stroke-width:1;stroke-dasharray:3 3}
+/* El último valor, en una píldora del color de la línea a su altura en el eje. */
+.mk-ultimo rect{fill:var(--mk-color-dir)}
+.mk-ultimo text{fill:var(--s0);font:600 12px/1 var(--body);font-variant-numeric:tabular-nums}
+/* La cruz: solo vertical y continua; la burbuja va en la franja de arriba, sin tapar la línea. */
+.mk-cruz line{stroke:rgba(247,245,240,.45);stroke-width:1}
 .mk-cruz circle{fill:var(--mk-color-dir);stroke:var(--s0);stroke-width:2}
-.mk-burbuja{position:absolute;top:0;left:0;z-index:2;transform:translateX(var(--mk-x,0));display:grid;gap:1px;min-width:132px;padding:6px 10px;
-  border-radius:var(--r-s);background:rgba(23,22,20,.94);box-shadow:var(--e-2);pointer-events:none}
+.mk-burbuja{position:absolute;top:0;left:0;z-index:2;transform:translateX(var(--mk-x,0));display:flex;align-items:baseline;gap:8px;min-width:0;padding:5px 10px;
+  white-space:nowrap;border-radius:var(--r-p);background:var(--s3);pointer-events:none}
 .mk-burbuja[hidden]{display:none}
 .mk-burbuja-fecha{color:var(--tx-2);font:500 .75rem/1.3 var(--body);font-variant-numeric:tabular-nums}
-.mk-burbuja-valor{color:var(--tx);font:600 1rem/1.25 var(--mono);font-variant-numeric:tabular-nums}
-.mk-burbuja-cambio{color:var(--tx-3);font:400 .75rem/1.3 var(--body)}
+.mk-burbuja-valor{color:var(--tx);font:600 .9375rem/1.2 var(--body);font-variant-numeric:tabular-nums}
+.mk-burbuja-cambio{color:var(--tx-2);font:500 .75rem/1.3 var(--body);font-variant-numeric:tabular-nums}
 .mk-nota{margin:10px 0 0;color:var(--tx-3);font:400 .8125rem/1.45 var(--body)}
 .mk-como{margin:2px 0 0;color:var(--tx-3);font:400 .8125rem/1.45 var(--body)}
 .mk-como-tit{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--tx-2);font-weight:500;cursor:pointer;list-style:none}
@@ -79,6 +89,9 @@
 .mk-clave dd{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;margin:0;color:var(--tx);font:600 1rem/1.3 var(--mono);font-variant-numeric:tabular-nums}
 .mk-clave-texto dd{font-family:var(--body)}
 .mk-clave dd small{color:var(--tx-3);font:400 .75rem/1.3 var(--body)}
+.mk-clave .mk-cambio{font-family:var(--mono)}
+/* El último dato (un texto, no una cifra) ocupa la fila entera: sin huecos en la rejilla. */
+.mk-clave-texto{grid-column:1/-1}
 .mk-fuente{margin:12px 0 0;color:var(--tx-3);font:400 .8125rem/1.5 var(--body)}
 .mk-fuente a{color:var(--senal);text-underline-offset:2px}
 .mk-fuente a:focus-visible{outline:2px solid var(--senal);outline-offset:2px;border-radius:2px}
@@ -89,15 +102,26 @@
 .mk-h2{margin:0;color:var(--tx);font:700 1.25rem/1.2 var(--display);letter-spacing:-.015em}
 .mk-h2-sub{margin:4px 0 0;color:var(--tx-3);font:400 .875rem/1.45 var(--body)}
 .mk-tipos{margin-top:32px}
+/* En el móvil, la lista va plegada con un avance de los dos mayores; en escritorio, abierta. */
+.mk-tipos-sum{display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px;min-height:44px;margin-top:6px;color:var(--tx-2);font:500 .9375rem/1.35 var(--body);
+  cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
+.mk-tipos-sum::-webkit-details-marker{display:none}
+.mk-tipos-ver{color:var(--tx)}
+.mk-tipos-ver::after{content:' ▾';color:var(--tx-3)}
+.mk-tipos-det[open] .mk-tipos-ver::after{content:' ▴'}
+.mk-tipos-avance{color:var(--tx-3);font-size:.8125rem}
+.mk-tipos-sum:focus-visible{outline:2px solid var(--senal);outline-offset:2px;border-radius:4px}
+@media (min-width:768px){.mk-tipos-sum{display:none}}
 .mk-tipos-lista{display:grid;gap:12px;margin:14px 0 0;padding:0;list-style:none}
 .mk-tipo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:baseline}
 .mk-tipo-nom{color:var(--tx);font:500 .9375rem/1.3 var(--body)}
-.mk-tipo-valor{color:var(--tx);font:600 .875rem/1.3 var(--mono);font-variant-numeric:tabular-nums}
+/* Las cifras, alineadas a la derecha como en una tabla financiera. */
+.mk-tipo-valor{justify-self:end;text-align:right;color:var(--tx);font:600 .875rem/1.3 var(--mono);font-variant-numeric:tabular-nums}
 .mk-tipo-barra{grid-column:1/-1;display:block;height:6px;border-radius:var(--r-p);background:var(--ton);overflow:hidden}
 .mk-tipo-relleno{display:block;width:var(--mk-ancho,0);height:100%;border-radius:var(--r-p);background:var(--mk-color,var(--tx-2))}
 .mk-tipo-cuota{color:var(--tx-3);font:400 .8125rem/1.3 var(--body)}
-.mk-tipo-24h{justify-self:end;color:var(--mk-color-dir);font:500 .8125rem/1.3 var(--mono);white-space:nowrap}
-.mk-tipo-24h.mk-baja{color:var(--alarma)}
+.mk-tipo-24h{justify-self:end;color:var(--tx-3);font:400 .8125rem/1.3 var(--body);white-space:nowrap}
+.mk-tipo-24h-cifra{color:var(--mk-color-dir);font-weight:500;font-variant-numeric:tabular-nums}
 .mk-tipo-oro{grid-column:1/-1;color:var(--tx-3);font:400 .8125rem/1.3 var(--body)}
 @media (min-width:768px){.mk-tipos-lista{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 32px}}
 
@@ -110,7 +134,10 @@
 .mk-noticias .nt-art-foto{grid-column:2;grid-row:1;aspect-ratio:1;border-radius:var(--r-m)}
 .mk-noticias .nt-art-txt{grid-column:1;grid-row:1;padding:0}
 .mk-noticias .nt-art-tit{margin-top:4px;font-size:1.1875rem;line-height:1.25}
-.mk-noticias .nt-art-resumen{margin-top:6px;font-size:.9375rem;line-height:1.45;-webkit-line-clamp:1;line-clamp:1}
+.mk-noticias .nt-art-resumen{margin-top:6px;font-size:.9375rem;line-height:1.45;-webkit-line-clamp:2;line-clamp:2}
+/* La primera noticia dice por qué te importa, no el resumen (el detalle lleva los dos). */
+.mk-noticias .nt-art-importa{-webkit-line-clamp:3;line-clamp:3}
+.nt-art-importa-rot{color:var(--senal);font-weight:600}
 .mk-noticias .nt-art-meta{font-size:.75rem}
 .mk-noticias .nt-art-abrir::after{border-radius:var(--r-s)}
 .mk-noticias .nt-art-abrir:active::after{background:var(--ton)}
@@ -133,10 +160,15 @@
 @media (min-width:768px){
   .mk-tit{font-size:2.25rem}
   .mk-cifra-num{font-size:3rem}
-  .mk-pestanas{justify-content:flex-start;margin-left:0}
+  .mk-pestanas{justify-content:flex-start}
   .mk-pestana{flex:0 0 auto;min-width:56px}
-  .mk-graf{min-height:300px}
+  .mk-graf{min-height:330px}
 }
+
+/* ---- Inicio: «Mercado» en la cabecera de escritorio. Por debajo de 1280 px
+   la cabecera se partía en dos filas: ahí no sale (el bloque de Inicio y su
+   «Ver mercado y noticias» siguen). ---- */
+@media (max-width:1279px){.hdr-link--mercado{display:none}}
 
 /* ---- Inicio: tarjeta tipo cotización ---- */
 .mk--inicio .mk-cuerpo{margin-top:16px}
@@ -153,8 +185,14 @@
 .mk-ct-cifra{color:var(--tx);font:600 1.125rem/1.2 var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 .mk-ct-cambio{font-size:.875rem}
 .mk-ct-periodo{color:var(--tx-3);font:400 .75rem/1.2 var(--body);white-space:nowrap}
-.mk-ct-alcance{color:var(--tx-3);font:400 .6875rem/1.2 var(--body);white-space:nowrap}
+.mk-ct-explica{margin-top:10px}
 @media (max-width:380px){.mk-mini-svg{width:76px}.mk-ct{gap:10px;padding:14px}}
+/* Escritorio: el minigráfico ocupa el centro de la tarjeta (antes, 112 px apretados a la derecha). */
+@media (min-width:768px){
+  .mk-ct{grid-template-columns:minmax(200px,1fr) minmax(0,2fr) auto;gap:32px;padding:20px 24px}
+  .mk-mini-svg{width:100%;height:56px}
+  .mk-mini-svg path,.mk-mini-svg line{vector-effect:non-scaling-stroke}
+}
 
 /* Inicio: noticias compactas, foto pequeña y titular. */
 .nt-compacta{display:grid;gap:0;margin:12px 0 0;padding:0;list-style:none}

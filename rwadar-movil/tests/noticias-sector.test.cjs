@@ -3,7 +3,7 @@
 /* «Noticias del sector» (10/11/2026): el motor compartido (forma, orden,
    textos por idioma e ilustraciones), la lectura de /datos/noticias-v2.json y
    la sección de Inicio con React aislado. Sin red: las noticias son las
-   verificadas del ciclo del 10/11/2026 (rwadar-site/datos/noticias-v2.json). */
+   verificadas del ciclo del 11/11/2026 (rwadar-site/datos/noticias-v2.json). */
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -21,11 +21,11 @@ const TEXTO = fs.readFileSync(path.join(RAIZ, '../rwadar-site/datos/noticias-v2.
 const ARCHIVO = JSON.parse(TEXTO);
 const copia = () => JSON.parse(TEXTO);
 
-test('el archivo publicado tiene la forma: 8 noticias, las de hoy primero y de la más nueva a la más antigua', () => {
+test('el archivo publicado tiene la forma: 6 noticias, las de hoy primero y de la más nueva a la más antigua', () => {
   const d = m.validarNoticias(ARCHIVO);
-  assert.equal(d.actualizadoEl, '2026-11-10');
-  assert.equal(d.noticias.length, 8);
-  assert.deepEqual(d.noticias.map(n => n.seccion), ['hoy', 'hoy', 'hoy', 'importante', 'importante', 'importante', 'importante', 'importante']);
+  assert.equal(d.actualizadoEl, '2026-11-11');
+  assert.equal(d.noticias.length, 6);
+  assert.deepEqual(d.noticias.map(n => n.seccion), ['hoy', 'importante', 'importante', 'importante', 'importante', 'importante']);
   assert.deepEqual(d.noticias.map(n => n.id), ARCHIVO.noticias.map(n => n.id), 'el archivo ya viene en ese orden');
   // Ninguna noticia se reescribe: los textos son los del archivo, letra a letra.
   for (const [i, n] of d.noticias.entries()) {
@@ -51,7 +51,7 @@ test('una noticia mal formada no pasa: campos de más o de menos, fechas, catego
   assert.throws(roto(d => { d.noticias[0].ambito = 'EEUU'; }), /ámbito desconocido/);
   assert.throws(roto(d => { d.noticias[0].seccion = 'portada'; }), /sección desconocida/);
   assert.throws(roto(d => { d.noticias[0].fecha = '2026-02-30'; }), /fecha no válida/);
-  assert.throws(roto(d => { d.noticias[0].fecha = '2026-11-11'; }), /posterior a la actualización/);
+  assert.throws(roto(d => { d.noticias[0].fecha = '2026-11-12'; }), /posterior a la actualización/);
   assert.throws(roto(d => { d.noticias[2].consultadaEl = '2026-11-01'; }), /consultada antes/);
   assert.throws(roto(d => { d.noticias[0].titulo = '<img src=x onerror=alert(1)>'; }), /caracteres no permitidos/);
   assert.throws(roto(d => { d.noticias[0].titulo = 'x'.repeat(81); }), /más de 80/);
@@ -79,9 +79,9 @@ test('una noticia mal formada no pasa: campos de más o de menos, fechas, catego
 
 test('textos y fechas en el idioma elegido: los campos «en» en inglés', () => {
   const n = m.validarNoticias(ARCHIVO).noticias[0];
-  // Titulares del ciclo del 10/11 reescritos para atraer (encargo de Víctor), tal cual del archivo.
-  assert.equal(m.textos(n).titulo, 'La CNMV destapa un clon de XTB y otros 8 chiringuitos');
-  assert.equal(m.textos(n, 'en').titulo, 'CNMV exposes an XTB clone and 8 other unlicensed firms');
+  // Titulares del ciclo del 11/11, tal cual del archivo verificado.
+  assert.equal(m.textos(n).titulo, 'La CNMV destapa clones de XTB y PJT entre 9 chiringuitos');
+  assert.equal(m.textos(n, 'en').titulo, 'CNMV exposes XTB and PJT clones among 9 unlicensed firms');
   assert.equal(m.textos(n, 'en').porQueImporta, ARCHIVO.noticias[0].en.porQueImporta);
   assert.equal(m.fechaCorta('2026-11-10'), '10/11/2026');
   assert.equal(m.fechaCorta('2026-11-10', 'en'), '10 Nov 2026');
@@ -95,11 +95,12 @@ test('textos y fechas en el idioma elegido: los campos «en» en inglés', () =>
 test('«Hoy» y «Ayer» dependen del día de quien mira, no solo de la sección', () => {
   const d = m.validarNoticias(ARCHIVO).noticias;
   const etiquetas = hoy => d.map(n => m.etiquetaReciente(n, hoy));
-  // El 10/11: la de la CNMV es de hoy; las dos del 09/11 (aunque estén en «hoy») son de ayer.
-  assert.deepEqual(etiquetas('2026-11-10'), ['Hoy', 'Ayer', 'Ayer', null, null, null, null, null]);
+  // El 10/11: la de la CNMV es de hoy; la del 09/11 (en «importante») es de ayer.
+  assert.deepEqual(etiquetas('2026-11-10'), ['Hoy', 'Ayer', null, null, null, null]);
+  // El 11/11, el día del ciclo: la de la CNMV (del 10/11) ya es de ayer.
+  assert.deepEqual(etiquetas('2026-11-11'), ['Ayer', null, null, null, null, null]);
   // Días después, sin ciclo nuevo, ninguna se queda diciendo «Hoy».
-  assert.deepEqual(etiquetas('2026-11-11'), ['Ayer', null, null, null, null, null, null, null]);
-  assert.deepEqual(etiquetas('2026-11-13'), [null, null, null, null, null, null, null, null]);
+  assert.deepEqual(etiquetas('2026-11-13'), [null, null, null, null, null, null]);
   // «Ayer» también para una de la sección «importante», y el cambio de mes y de año.
   assert.equal(m.etiquetaReciente({ fecha: '2026-11-06', seccion: 'importante' }, '2026-11-07'), 'Ayer');
   assert.equal(m.etiquetaReciente({ fecha: '2026-10-31', seccion: 'hoy' }, '2026-11-01'), 'Ayer');
@@ -175,7 +176,7 @@ test('la app lee https://rwadar.pages.dev/datos/noticias-v2.json sin cookies, co
   assert.equal(leido, false);
   const anunciaBien = async () => ({ ok: true, status: 200, headers: { get: k => (k === 'content-length' ? String(Buffer.byteLength(TEXTO)) : null) },
     text: async () => TEXTO });
-  assert.equal((await remota.cargarNoticias({ fetchImpl: anunciaBien })).noticias.length, 8);
+  assert.equal((await remota.cargarNoticias({ fetchImpl: anunciaBien })).noticias.length, 6);
   remota.olvidarNoticias();
   const colgada = (url, init) => new Promise((_, rechazar) => init.signal.addEventListener('abort', () => rechazar(new Error('abortada'))));
   await assert.rejects(remota.cargarNoticias({ fetchImpl: colgada, plazoMs: 20 }), /abortada/);
@@ -263,8 +264,9 @@ function cargarSeccion(react) {
 }
 const esperar = () => new Promise((r) => setTimeout(r, 0));
 const DATOS = m.validarNoticias(ARCHIVO);
-// Un reloj fijo: el 10/11/2026 a mediodía (hora local), el día del ciclo.
+// Un reloj fijo: el 11/11/2026 a mediodía (hora local), el día del ciclo; y el 10/11, para «Hoy».
 const EL_10 = () => new Date(2026, 10, 10, 12, 0);
+const EL_11 = () => new Date(2026, 10, 11, 12, 0);
 const EL_13 = () => new Date(2026, 10, 13, 12, 0);
 
 const fotos = (arbol) => buscar(arbol, n => n.type === 'Image').map(n => n.props.source.uri);
@@ -282,10 +284,16 @@ test('Inicio en la app («Mercado y noticias»): cargando, después 3 filas comp
   assert.doesNotMatch(texto, /Cargando/);
   const filas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button');
   assert.equal(filas.length, 3, 'solo 3 en Inicio');
-  assert.equal(filas[0].props.accessibilityLabel, 'La CNMV destapa un clon de XTB y otros 8 chiringuitos. CNMV · 10/11/2026. Hoy');
+  assert.equal(filas[0].props.accessibilityLabel, 'La CNMV destapa clones de XTB y PJT entre 9 chiringuitos. CNMV · 10/11/2026. Hoy');
   assert.equal(filas[1].props.accessibilityLabel, `${DATOS.noticias[1].titulo}. Robinhood Assets (Jersey) Limited · 09/11/2026. Ayer`);
-  // Titular (3 líneas como mucho), fuente y fecha: sin resumen.
+  // Titular (3 líneas como mucho), fuente y fecha: sin resumen. «Hoy» o «Ayer» van delante de la fuente,
+  // que se corta en una línea: la etiqueta ya no cae sola en otra línea.
   assert.equal(buscar(arbol, n => n.type === 'Text' && n.props.numberOfLines === 3).length, 3);
+  const meta = buscar(filas[1], n => n.type === 'View' && Array.isArray(n.props.style) && n.props.style.some(x => x && x.flexWrap === 'nowrap'))[0];
+  assert.ok(meta, 'la fila de la fuente no se parte');
+  const hijos = buscar(meta, n => n.type === 'Text');
+  assert.equal(textoDe(hijos[0]), 'Ayer', 'la etiqueta, delante');
+  assert.equal(hijos[1].props.numberOfLines, 1, 'la fuente, en una línea');
   assert.doesNotMatch(texto, /La CNMV avisa de que nueve webs/);
   assert.match(texto, /CNMV · 10\/11\/2026/);
   assert.deepEqual(fotos(arbol), DATOS.noticias.slice(0, 3).map(n => `https://rwadar.pages.dev/noticias-editoriales/${n.imagen}.webp`));
@@ -296,32 +304,37 @@ test('Inicio en la app («Mercado y noticias»): cargando, después 3 filas comp
   assert.deepEqual(abiertas, [DATOS.noticias[1].id]);
 });
 
-test('debajo del gráfico: las 8 con la fuente y la fecha, el titular, una línea de resumen y la foto; al tocar, su detalle', async () => {
+test('debajo del gráfico: las 6 con la fuente y la fecha, el titular, «Por qué te importa» en la primera y dos líneas de resumen en las demás, y la foto; al tocar, su detalle', async () => {
   const { react, pintar } = crearReact();
   const Seccion = cargarSeccion(react);
   const enlaces = [];
-  const props = { cargar: async () => DATOS, onAbrirEnlace: (u) => enlaces.push(u), ahora: EL_10, modo: 'lista' };
+  const props = { cargar: async () => DATOS, onAbrirEnlace: (u) => enlaces.push(u), ahora: EL_11, modo: 'lista' };
   pintar(Seccion, props);
   await esperar(); await esperar();
   let arbol = pintar(Seccion, props);
   const filas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button');
-  assert.equal(filas.length, 8);
-  assert.equal(fotos(arbol).length, 8);
-  assert.match(textoDe(arbol), /La CNMV avisa de que nueve webs/, 'en la lista, el resumen');
-  assert.equal(filas[0].props.accessibilityLabel, 'La CNMV destapa un clon de XTB y otros 8 chiringuitos. CNMV · 10/11/2026. Hoy');
-  assert.equal(buscar(arbol, n => n.type === 'Text' && n.props.numberOfLines === 1).length, 7, 'una línea de resumen (la primera, dos)');
-  const fila = filas.find(f => /^Europa busca/.test(f.props.accessibilityLabel));
+  assert.equal(filas.length, 6);
+  assert.equal(fotos(arbol).length, 6);
+  assert.equal(filas[0].props.accessibilityLabel, 'La CNMV destapa clones de XTB y PJT entre 9 chiringuitos. CNMV · 10/11/2026. Ayer', 'el 11/11, la del 10/11 es de ayer');
+  // La primera dice ya por qué te importa; las demás, su resumen en dos líneas.
+  const importa = buscar(arbol, n => n.props?.testID === 'noticia-importa');
+  assert.equal(importa.length, 1);
+  assert.equal(textoDe(importa[0]).replace(/\s+/g, ' '), `Por qué te importa : ${DATOS.noticias[0].porQueImporta}`.replace(/\s+/g, ' '));
+  assert.doesNotMatch(textoDe(arbol), /La CNMV avisa de que nueve webs/, 'en la primera, no el resumen');
+  assert.ok(textoDe(arbol).includes(DATOS.noticias[1].resumen), 'en las demás, el resumen');
+  assert.equal(buscar(arbol, n => n.type === 'Text' && n.props.numberOfLines === 2).length, 5, 'dos líneas de resumen');
+  const fila = filas.find(f => /^Mercados DLT/.test(f.props.accessibilityLabel));
   fila.props.onPress();
   arbol = pintar(Seccion, props);
   const modal = buscar(arbol, n => n.type === 'Modal')[0];
   assert.ok(modal && modal.props.visible);
   const texto = textoDe(modal);
-  const n = DATOS.noticias.find(x => x.id === 'etsg-estandares-tokenizacion');
-  assert.match(texto, /09\/11\/2026 · Regulación · UE/);
-  assert.equal(buscar(modal, x => x.props?.accessibilityLabel === '09/11/2026 · Regulación · UE · Ayer').length, 1, 'el 10/11 es de ayer');
+  const n = DATOS.noticias.find(x => x.id === 'consejo-ue-tope-regimen-piloto-dlt');
+  assert.match(texto, /04\/11\/2026 · Regulación · UE/);
+  assert.equal(buscar(modal, x => x.props?.accessibilityLabel === '04/11/2026 · Regulación · UE').length, 1, 'del 04/11: ni «Hoy» ni «Ayer»');
   assert.ok(!texto.includes(n.tituloInformativo), 'sin repetir el titular con otras palabras');
   assert.deepEqual(fotos(modal), [`https://rwadar.pages.dev/noticias-editoriales/${n.imagen}.webp`]);
-  for (const parte of [n.titulo, n.resumen, 'Por qué te importa', n.porQueImporta, 'Fuente', n.fuente.nombre, 'Consultada el', '10/11/2026',
+  for (const parte of [n.titulo, n.resumen, 'Por qué te importa', n.porQueImporta, 'Fuente', n.fuente.nombre, 'Consultada el', '11/11/2026',
     'Leer en la fuente (sales de RWAdar)', 'Selección editorial de RWAdar con enlace a la fuente. No es una recomendación.']) {
     assert.ok(texto.includes(parte), parte);
   }
@@ -361,12 +374,13 @@ test('en inglés: los campos «en», la fecha y la interfaz del diccionario', as
     await esperar(); await esperar();
     let arbol = pintar(Seccion, props);
     let texto = textoDe(arbol);
-    assert.match(texto, /Updated on 10 Nov/);
-    assert.match(texto, /CNMV exposes an XTB clone and 8 other unlicensed firms/);
+    assert.match(texto, /Updated on 11 Nov/);
+    assert.match(texto, /CNMV exposes XTB and PJT clones among 9 unlicensed firms/);
+    assert.match(texto, /Why it matters to you : Clones copy the names of real firms/, '«Por qué te importa», del diccionario, en la primera');
     assert.match(texto, /Illustrative AI-generated images, not photos of the news\./);
     assert.doesNotMatch(texto, /La CNMV destapa/);
     const filas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button');
-    assert.equal(filas[0].props.accessibilityLabel, 'CNMV exposes an XTB clone and 8 other unlicensed firms. CNMV · 10 Nov 2026. Today');
+    assert.equal(filas[0].props.accessibilityLabel, 'CNMV exposes XTB and PJT clones among 9 unlicensed firms. CNMV · 10 Nov 2026. Today');
     filas[0].props.onPress();
     arbol = pintar(Seccion, props);
     texto = textoDe(buscar(arbol, n => n.type === 'Modal')[0]);

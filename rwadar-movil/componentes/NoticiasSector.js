@@ -61,11 +61,11 @@ export function FotoNoticia({ noticia, estilo, velo = false }) {
   );
 }
 
-function Etiqueta({ cual, enDetalle = false }) {
+function Etiqueta({ cual, enDetalle = false, primero = false }) {
   if (!cual) return null;
   const ayer = cual === 'Ayer';
   return (
-    <View style={[e.hoy, ayer && e.ayer, enDetalle && e.hoyDetalle]}>
+    <View style={[e.hoy, ayer && e.ayer, enDetalle && e.hoyDetalle, primero && e.hoyPrimero]}>
       <View style={[e.hoyPunto, ayer && e.ayerPunto]} />
       <Text style={[e.hoyTxt, ayer && e.ayerTxt]}>{cual}</Text>
     </View>
@@ -88,17 +88,19 @@ function Compacta({ noticia, idioma, onAbrir, hoyISO, ultima }) {
       <FotoNoticia noticia={noticia} estilo={e.compactaFoto} />
       <View style={e.compactaTexto}>
         <Text noTraducir style={e.compactaTit} numberOfLines={3}>{t.titulo}</Text>
-        <View style={e.meta}>
-          <Text noTraducir style={e.metaPeq}>{meta}</Text>
-          <Etiqueta cual={reciente} enDetalle />
+        {/* «Hoy» o «Ayer» delante y la fuente en una línea: la etiqueta ya no cae sola en otra línea. */}
+        <View style={[e.meta, e.metaCompacta]}>
+          <Etiqueta cual={reciente} enDetalle primero />
+          <Text noTraducir style={[e.metaPeq, e.metaCorta]} numberOfLines={1}>{meta}</Text>
         </View>
       </View>
     </Pressable>
   );
 }
 
-/* Debajo del gráfico: la fuente y la fecha en pequeño, el titular grande, una
-   línea de resumen y la foto a la derecha; la primera, con la foto arriba. */
+/* Debajo del gráfico: la fuente y la fecha en pequeño, el titular grande, dos
+   líneas de resumen y la foto a la derecha; la primera, con la foto arriba y
+   «Por qué te importa» en lugar del resumen (el detalle lleva los dos). */
 function Fila({ noticia, idioma, onAbrir, hoyISO, primera }) {
   const t = textos(noticia, idioma);
   const reciente = etiquetaReciente(noticia, hoyISO);
@@ -115,7 +117,11 @@ function Fila({ noticia, idioma, onAbrir, hoyISO, primera }) {
           <Etiqueta cual={reciente} enDetalle />
         </View>
         <Text noTraducir style={[e.filaTit, primera && e.filaTitPrimera]}>{t.titulo}</Text>
-        <Text noTraducir style={e.filaResumen} numberOfLines={primera ? 2 : 1}>{t.resumen}</Text>
+        {primera ? (
+          <Text noTraducir style={e.filaResumen} numberOfLines={3} testID="noticia-importa">
+            <Text style={e.importaRot}>{'Por qué te importa'}</Text>{': '}{t.porQueImporta}
+          </Text>
+        ) : <Text noTraducir style={e.filaResumen} numberOfLines={2}>{t.resumen}</Text>}
       </View>
       {primera ? null : <FotoNoticia noticia={noticia} estilo={e.filaFoto} />}
     </Pressable>
@@ -280,6 +286,10 @@ const e = StyleSheet.create({
   hoy: { position: 'absolute', top: 12, left: 12, flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, paddingLeft: 8,
     paddingRight: 10, borderRadius: R.p, backgroundColor: 'rgba(11,10,10,0.78)', borderWidth: 1, borderColor: C.senal20 },
   hoyDetalle: { position: 'relative', top: 0, left: 0, marginLeft: 8 },
+  hoyPrimero: { marginLeft: 0, marginRight: 8 },
+  metaCompacta: { flexWrap: 'nowrap' },
+  metaCorta: { flexShrink: 1 },
+  importaRot: { fontFamily: F.semi, color: C.senal },
   hoyPunto: { width: 6, height: 6, borderRadius: 3, backgroundColor: C.senal },
   hoyTxt: { fontFamily: F.semi, fontSize: 12, lineHeight: 15, color: C.senal },
   // «Ayer», más discreta que «Hoy».

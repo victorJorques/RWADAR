@@ -52,6 +52,14 @@ test('una respuesta rara no da cifras: sin total, total no numérico, sin hora, 
   const f = t.extraerFoto(parcial, { ahora: AHORA });
   assert.equal(f.tipos.inmuebles, undefined);
   assert.equal(f.tipos.acciones.cambio24h, null);
+  // El 11/11/2026 CoinGecko daba +124 % en 24 h para toda la categoría con el mercado plano: no se guarda ni se enseña.
+  assert.equal(t.CAMBIO_24H_MAX, 25);
+  const disparate = t.extraerFoto(cambiar({ market_cap_change_24h: 124.415 }), { ahora: AHORA });
+  assert.equal(disparate.total.cambio24h, null);
+  assert.equal(disparate.total.valor, 49683537033, 'el valor sí se queda');
+  assert.equal(t.extraerFoto(cambiar({ market_cap_change_24h: -24.9 }), { ahora: AHORA }).total.cambio24h, -24.9);
+  assert.equal(t.extraerFoto(cambiar({ market_cap_change_24h: 25 }), { ahora: AHORA }).total.cambio24h, null);
+  assert.deepEqual([12.5, -30, 124.4, NaN, null, '3'].map(t.cambio24hCreible), [12.5, null, null, null, null, null]);
 });
 
 test('el histórico: ordenado, sin repetidos, sin campos de más; una foto por día e idempotente', () => {
@@ -263,6 +271,15 @@ test('serie: los 40 mayores de la lista de CoinGecko y su cuota del total; desca
   assert.equal(r.mayores[0].id, 'token-0');
   assert.ok(!r.mayores.some((m) => m.id === 'MAL ID' || m.id === 'sin-valor'));
   assert.equal(r.cobertura, Math.round(r.mayores.reduce((s, m) => s + m.valor, 0) / r.total * 1000) / 10);
+  // Un solo denominador: el total de la categoría (el de la cabecera y los tipos), si llega y no es menor que la lista.
+  const suma = r.total;
+  const conCategoria = t.elegirMayores(lista, 40, suma * 1.25);
+  assert.equal(conCategoria.total, Math.round(suma * 1.25));
+  assert.equal(conCategoria.cobertura, Math.round(r.mayores.reduce((s, m) => s + m.valor, 0) / (suma * 1.25) * 1000) / 10);
+  assert.equal(t.elegirMayores(lista, 40, suma / 2).total, suma, 'un total menor que la lista no vale: la suma de la lista');
+  assert.equal(t.elegirMayores(lista, 40, 'x').total, suma);
+  // La historia pide 366 días: con 365, CoinGecko empezaba un día tarde y «1 A» se quedaba en 364.
+  assert.match(t.urlHistoria('figure-heloc'), /\/coins\/figure-heloc\/market_chart\?vs_currency=usd&days=366&interval=daily$/);
   assert.throws(() => t.elegirMayores([{ id: 'a', market_cap: 1e9 }]), /muy pocos tokens/);
   assert.throws(() => t.elegirMayores('x'), /no es válida/);
 });
@@ -318,16 +335,30 @@ test('serie: el archivo se valida entero, una línea por día, y se rechaza lo q
   assert.equal(mal((s) => { s.puntos[0].valor = '1'; }), false);
 });
 
-test('serie: pestañas 1 S · 1 M · 3 M · 6 M · YTD · 1 A, 1 M por defecto; YTD parte del cierre del año anterior', () => {
-  assert.deepEqual(t.PESTANAS.map((p) => p.corto), ['1 S', '1 M', '3 M', '6 M', 'YTD', '1 A']);
+test('serie: pestañas 1 S · 1 M · 3 M · 6 M · 2026 · 1 A (en inglés, YTD), 1 M por defecto; la del año parte del 1 de enero', () => {
+  assert.deepEqual(t.PESTANAS.map((p) => p.corto), ['1 S', '1 M', '3 M', '6 M', 'Año', '1 A']);
   assert.equal(t.PESTANA_INICIAL, '1m');
+  // «YTD» no se entiende en castellano: el año de la serie, y el nombre accesible contiene lo que se ve (WCAG 2.5.3).
+  assert.deepEqual(t.etiquetaPestana('ytd', 'es', SERIE), { corto: '2026', nombre: 'En 2026' });
+  assert.deepEqual(t.etiquetaPestana('ytd', 'en', SERIE), { corto: 'YTD', nombre: 'YTD, year to date' });
+  assert.deepEqual(t.etiquetaPestana('1m', 'es', SERIE), { corto: '1 M', nombre: '1 mes' });
+  assert.deepEqual(t.etiquetaPestana('1a', 'en', SERIE), { corto: '1Y', nombre: '1 year' });
+  assert.equal(t.etiquetaPestana('ytd', 'es', null, Date.parse('2027-03-01T00:00:00Z')).corto, '2027', 'sin serie, el año del reloj');
+  for (const lengua of ['es', 'en']) {
+    const et = t.etiquetaPestana('ytd', lengua, SERIE);
+    assert.ok(et.nombre.includes(et.corto), `${lengua}: el nombre accesible contiene «${et.corto}»`);
+  }
+  assert.equal(t.etiquetaPestana('nada'), null);
   const puntos = [...Array(60)].map((_, i) => ({ fecha: t.fechaDe(Date.parse('2025-12-01T00:00:00Z') + i * DIA), valor: (40 + i) * 1e9, tokens: 1 }));
   const ultimo = puntos.at(-1).fecha;
   assert.equal(ultimo, '2026-01-29');
   assert.equal(t.tramo(puntos, '1s')[0].fecha, '2026-01-22');
   assert.equal(t.tramo(puntos, '1s').length, 8);
   assert.equal(t.tramo(puntos, '1m')[0].fecha, '2025-12-30');
-  assert.equal(t.tramo(puntos, 'ytd')[0].fecha, '2025-12-31');
+  // El dato de las 00:00 UTC del 1 de enero es el cierre del 31/12: el año se mide desde él (QA del 11/11/2026).
+  assert.equal(t.tramo(puntos, 'ytd')[0].fecha, '2026-01-01');
+  assert.equal(t.tramo(puntos.filter((p) => p.fecha !== '2026-01-01'), 'ytd')[0].fecha, '2026-01-02', 'sin el 01/01, el primero del año');
+  assert.equal(t.tramo(SERIE.puntos, 'ytd')[0].fecha, '2026-01-01');
   assert.equal(t.tramo(puntos, '1a')[0].fecha, '2025-12-01', 'con menos de un año, desde el primer día que hay');
   assert.equal(t.tramo(puntos.slice(0, 1), '1m'), null);
   const e = t.estadisticasTramo(t.tramo(puntos, '1s'));
@@ -351,15 +382,24 @@ test('serie: donde falta un día la línea se corta en tramos, el área de fondo
   assert.ok(t.tramosSeguidos(real).length > 1, 'la semilla real tiene días sin pintar');
 });
 
-test('serie: el eje de valores lleva 4 o 5 marcas redondas que abarcan el tramo y no empieza en cero', () => {
+test('serie: el eje va del mínimo al máximo con un 8 % de aire (sin bandas vacías) y lleva marcas redondas dentro; no empieza en cero', () => {
   for (const [min, max] of [[46.1e9, 48.3e9], [20e9, 47e9], [46.70e9, 46.75e9], [1.2e9, 1.9e9], [49.6e9, 49.6e9], [37.6e9, 39.9e9], [23.9e9, 49.7e9]]) {
     const esc = t.escalaValores(min, max);
-    assert.ok(esc.marcas.length >= 4 && esc.marcas.length <= 5, `${min}-${max}: ${esc.marcas.length}`);
-    assert.ok(esc.lo <= min && esc.hi >= max && esc.lo > 0);
+    assert.ok(esc.marcas.length >= 3 && esc.marcas.length <= 6, `${min}-${max}: ${esc.marcas.length}`);
+    assert.ok(esc.lo < min && esc.hi > max && esc.lo > 0);
+    assert.ok(esc.marcas.every((m) => m >= esc.lo && m <= esc.hi), 'las marcas, dentro del dibujo');
+    const rango = Math.max(max - min, (min + max) / 2 * 0.01);
+    assert.ok(Math.abs((esc.hi - esc.lo) - rango * 1.16) < rango * 1e-6, `${min}-${max}: un 8 % arriba y abajo, nada más`);
     const f = esc.paso / 10 ** Math.floor(Math.log10(esc.paso));
     assert.ok([1, 2, 2.5, 5, 10].some((x) => Math.abs(f - x) < 1e-9), 'paso redondo');
     assert.ok((esc.hi - esc.lo) >= (min + max) / 2 * 0.01 - 1, 'un tramo casi plano no parece un desplome');
   }
+  // Con la serie real, 4 o 5 marcas en cada pestaña; en 1 A, de 25.000 a 40.000 (antes, de 20.000 a 50.000 con un 30 % vacío).
+  for (const p of t.PESTANAS) {
+    const g = t.graficoPestana(SERIE, p.clave);
+    assert.ok(g.marcasValores.length >= 4 && g.marcasValores.length <= 5, `${p.clave}: ${g.marcasValores.length}`);
+  }
+  assert.deepEqual(t.graficoPestana(SERIE, '1a').marcasValores.map((m) => m.texto), ['25.000', '30.000', '35.000', '40.000']);
   assert.equal(t.marcaValor(48e9, 1e9), '48.000');
   assert.equal(t.marcaValor(48e9, 1e9, 'en'), '48,000');
   assert.equal(t.marcaValor(46.75e9, 5e7), '46.750');
@@ -384,12 +424,12 @@ test('serie: las fechas de abajo, de 2 a 6 y legibles; el gráfico de cada pesta
   }
   assert.equal(t.graficoPestana(SERIE, '1m').periodoTexto, 'último mes');
   assert.equal(t.graficoPestana(SERIE, '1m', 'en').periodoTexto, 'past month');
-  assert.match(t.graficoPestana(SERIE, '1a').marcasFechas[0].texto, /^[a-z]{3} \u2019\d{2}$/);
+  assert.match(t.graficoPestana(SERIE, '1a').marcasFechas[0].texto, /^[a-z]{3} \d{4}$/, '«dic 2025», con el año entero');
   const seguidos = [...Array(10)].map((_, i) => ({ fecha: t.fechaDe(Date.parse('2026-11-01T00:00:00Z') + i * DIA), valor: 4e10, tokens: 1 }));
   const base = { ...SERIE, pedidos: 40, incluidos: 40, discontinuos: 0, tokens: [...Array(40)].map((_, i) => 'tk-' + i), cobertura: 93.2, puntos: seguidos };
-  assert.equal(t.notaSerie(base), 'Suma de los 40 mayores tokens de activos reales que sigue CoinGecko (93\u00a0% del total de hoy). Si un token empezó a cotizar dentro del periodo, entra ese día.');
+  assert.equal(t.notaSerie(base), 'Suma de los 40 mayores tokens de activos reales que sigue CoinGecko (93\u00a0% del total de la categoría hoy). Si un token empezó a cotizar dentro del periodo, entra ese día.');
   assert.match(t.notaSerie({ ...base, incluidos: 32, discontinuos: 8, tokens: base.tokens.slice(0, 32), cobertura: 86.3 }),
-    /^Suma de 32 de los 40 mayores tokens de activos reales que sigue CoinGecko \(86\s% del total de hoy\)\. Si un token empezó a cotizar dentro del periodo, entra ese día\. Quedan fuera 8 a los que les faltan días en CoinGecko\.$/);
+    /^Suma de 32 de los 40 mayores tokens de activos reales que sigue CoinGecko \(86\s% del total de la categoría hoy\)\. Si un token empezó a cotizar dentro del periodo, entra ese día\. Quedan fuera 8 a los que les faltan días en CoinGecko\.$/);
   assert.match(t.notaSerie({ ...base, incluidos: 37, discontinuos: 1, tokens: base.tokens.slice(0, 37) }), /Quedan fuera 1 a los que les faltan días en CoinGecko\. No se pudieron leer 2\.$/);
   assert.match(t.notaSerie({ ...base, incluidos: 39, tokens: base.tokens.slice(0, 39) }, 'en'), /^Sum of 39 of the 40 largest .* 1 could not be read\.$/);
   assert.match(t.notaSerie({ ...base, puntos: seguidos.filter((_, i) => i !== 4 && i !== 6) }), /\. Faltan el \d\d\/\d\d\/\d{4} y el \d\d\/\d\d\/\d{4}: esos días no hay dato completo y no se pintan\.$/);
@@ -400,7 +440,9 @@ test('serie: las fechas de abajo, de 2 a 6 y legibles; el gráfico de cada pesta
 test('serie: el cambio dice a qué se refiere (la suma de los N mayores, no la cifra total) y avisa si en el periodo entran tokens nuevos', () => {
   const g1m = t.graficoPestana(SERIE, '1m'), g1a = t.graficoPestana(SERIE, '1a'), g1aEn = t.graficoPestana(SERIE, '1a', 'en');
   assert.equal(g1m.cambioFrase, 'en el último mes');
-  assert.equal(t.graficoPestana(SERIE, 'ytd').cambioFrase, 'en lo que va de año');
+  assert.equal(t.graficoPestana(SERIE, 'ytd').cambioFrase, 'en 2026', 'el año, como en la pestaña');
+  assert.equal(t.graficoPestana(SERIE, 'ytd').periodoTexto, 'en 2026');
+  assert.equal(t.graficoPestana(SERIE, 'ytd', 'en').cambioFrase, 'year to date');
   assert.equal(t.graficoPestana(SERIE, '1m', 'en').cambioFrase, 'past month');
   assert.equal(g1m.alcance, `suma de los ${SERIE.incluidos} mayores`);
   assert.equal(t.graficoPestana(SERIE, '1m', 'en').alcance, `sum of the ${SERIE.incluidos} largest`);
@@ -437,6 +479,69 @@ test('serie: si se queda vieja (más de 3 días antes del dato de hoy) se dice; 
   const muchos = { ...SERIE, pedidos: 40, incluidos: 40, discontinuos: 0, tokens: [...Array(40)].map((_, i) => 'tk-' + i), cobertura: 93.2,
     puntos: seguidos.filter((_, i) => i < 2 || i > 6) };
   assert.match(t.notaSerie(muchos), /Los días sin dato completo no se pintan \(5 en la serie\)\.$/, 'más de 3: se cuentan');
+});
+
+test('cabecera: la cifra grande es el último punto de la serie (el de la cruz en el último día) y nunca supera el máximo de ninguna pestaña', () => {
+  const vivo = { ...RESUMEN, total: { valor: 49690e6, cambio24h: 124.415 } };
+  const c = t.cifraGrande(SERIE, vivo);
+  const ultimo = SERIE.puntos[SERIE.puntos.length - 1];
+  assert.deepEqual(c, { valor: ultimo.valor, fecha: ultimo.fecha, fuente: 'serie' }, 'la serie, aunque el total en vivo sea otro (49.690 M$)');
+  for (const p of t.PESTANAS) {
+    const g = t.graficoPestana(SERIE, p.clave);
+    assert.equal(g.puntos[g.puntos.length - 1].valor, c.valor, `${p.clave}: la línea acaba en la cifra grande`);
+    assert.ok(g.estadisticas.max.valor >= c.valor, `${p.clave}: el máximo (${g.estadisticas.max.valor}) ≥ la cifra grande (${c.valor})`);
+    assert.ok(g.estadisticas.min.valor <= c.valor);
+  }
+  // Sin serie, el total de la categoría (quien pinta lo avisa); sin nada, null.
+  assert.deepEqual(t.cifraGrande(null, vivo), { valor: 49690e6, fecha: RESUMEN.fecha, fuente: 'total' });
+  assert.equal(t.cifraGrande(null, null), null);
+  assert.equal(t.cifraGrande({ puntos: [] }, { total: null }), null);
+});
+
+test('cabecera: «Cambio en 24 h» sale de la serie si sus dos últimos días son seguidos; si no, el de CoinGecko solo si |x| < 25 %; si no, «—»', () => {
+  const u = SERIE.puntos[SERIE.puntos.length - 1], a = SERIE.puntos[SERIE.puntos.length - 2];
+  const vivo = { ...RESUMEN, total: { valor: 49690e6, cambio24h: 124.415 } };
+  assert.deepEqual(t.cambio24h(SERIE, vivo), { cambio: t.cambioPct(u.valor, a.valor), fuente: 'serie', desde: a.fecha, hasta: u.fecha });
+  assert.equal(t.porcentaje(t.cambio24h(SERIE, vivo).cambio), '−0,1\u00a0%', 'hoy: −0,09 %, nunca el +124 %');
+  const conHueco = { ...SERIE, puntos: [...SERIE.puntos.slice(0, -2), u] };
+  assert.deepEqual(t.cambio24h(conHueco, vivo), { cambio: null, fuente: null, desde: null, hasta: null }, 'serie con hueco y CoinGecko disparatado: «—»');
+  assert.deepEqual(t.cambio24h(conHueco, { ...vivo, total: { valor: 1, cambio24h: -0.8626 } }), { cambio: -0.8626, fuente: 'coingecko', desde: null, hasta: null });
+  assert.equal(t.cambio24h(null, null).cambio, null);
+});
+
+test('cabecera: el total de la categoría va debajo, con su hora («hoy» solo si es de hoy), y lo que mide el % del periodo', () => {
+  const hoy = Date.parse('2026-11-11T12:00:00Z');
+  const vivo = { ...RESUMEN, fuente: 'coingecko', actualizado: '2026-11-11T09:57:00.000Z', total: { valor: 49690e6, cambio24h: null } };
+  assert.equal(t.esHoy('2026-11-11T09:57:00.000Z', hoy), true);
+  assert.equal(t.esHoy('2026-11-10T15:25:40.000Z', hoy), false);
+  assert.equal(t.cuandoDato(vivo, 'es', hoy), 'hoy, 09:57 UTC');
+  assert.equal(t.cuandoDato(vivo, 'en', hoy), 'today, 09:57 UTC');
+  assert.equal(t.cuandoDato({ ...vivo, actualizado: '2026-11-10T15:25:40.000Z' }, 'es', hoy), 'dato del 10/11/2026, 15:25 UTC', 'si no es de hoy, no dice «hoy»');
+  assert.equal(t.cuandoDato({ ...vivo, fuente: 'foto-guardada', actualizado: '2026-11-10T15:25:40.000Z' }, 'es', hoy), 'última foto guardada, del 10/11/2026, 15:25 UTC');
+  assert.equal(t.lineaTotalCategoria(SERIE, vivo, 'es', hoy),
+    `Total de la categoría en CoinGecko, con todos sus tokens: 49.690\u00a0M$ (hoy, 09:57 UTC). La cifra grande y el gráfico suman los ${SERIE.incluidos} mayores con historia completa.`);
+  assert.equal(t.lineaTotalCategoria(SERIE, vivo, 'en', hoy),
+    `CoinGecko category total, all tokens: $49,690M (today, 09:57 UTC). The large figure and the chart add up the ${SERIE.incluidos} largest with a complete history.`);
+  assert.equal(t.lineaTotalCategoria(null, vivo), '', 'sin serie, la cifra grande ya es ese total');
+  assert.equal(t.lineaTotalCategoria(SERIE, null), '');
+  assert.equal(t.explicacionCambio(), 'Mide cuánto vale en total el mercado: sube también cuando se emiten tokens nuevos. No es lo que habría ganado una inversión.');
+  assert.equal(t.explicacionCambio('en'), 'It measures the total size of the market, which also grows when new tokens are issued. It is not the return on any investment.');
+  assert.equal(t.subtituloCifra(SERIE), `Suma de los ${SERIE.incluidos} mayores tokens · ${t.fechaCorta(SERIE.puntos[SERIE.puntos.length - 1].fecha)}`);
+  assert.equal(t.subtituloCifra(null), 'Total de la categoría en CoinGecko, con todos sus tokens');
+  // La misma cuota, con el mismo redondeo, en la nota, «Cómo se calcula» y los datos clave.
+  assert.equal(t.coberturaTexto(SERIE), '86 %');
+  assert.ok(t.notaCorta(SERIE).includes(t.coberturaTexto(SERIE)) && t.notaSerie(SERIE).includes(t.coberturaTexto(SERIE)));
+});
+
+test('«Cómo se calcula» dice cuántos entran a mitad del periodo elegido (13 de los 29 en 1 A y en 2026; ninguno en 1 M)', () => {
+  assert.equal(t.entranAMitad(SERIE, '1a'), 13);
+  assert.equal(t.entranAMitad(SERIE, 'ytd'), 13);
+  assert.equal(t.entranAMitad(SERIE, '1m'), 0);
+  assert.equal(t.entranAMitad({ version: 9 }, '1a'), 0);
+  assert.ok(t.notaSerie(SERIE, 'es', '1a').includes(`En este periodo, 13 de los ${SERIE.incluidos} entran a mitad (desde el día en que CoinGecko los sigue).`));
+  assert.ok(t.notaSerie(SERIE, 'en', '1a').includes(`In this period, 13 of the ${SERIE.incluidos} join midway (from the day CoinGecko starts tracking them).`));
+  assert.ok(!/a mitad/.test(t.notaSerie(SERIE, 'es', '1m')));
+  assert.ok(!/a mitad/.test(t.notaSerie(SERIE)), 'sin pestaña, sin esa frase');
 });
 
 const serieRemota = cargarLib('lib/tokenizacion-serie-remota.js', { './tokenizacion': t });
@@ -503,7 +608,7 @@ function cargarMercado(react) {
       if (pedido === './Idioma') return soporteIdioma(react, nativo);
       if (pedido === 'react') return react;
       if (pedido === 'react-native') return nativo;
-      if (pedido === 'react-native-svg') return { __esModule: true, default: 'Svg', Circle: 'Circle', Defs: 'Defs', Line: 'Line', LinearGradient: 'LinearGradient', Path: 'Path', Stop: 'Stop', Text: 'SvgText' };
+      if (pedido === 'react-native-svg') return { __esModule: true, default: 'Svg', Circle: 'Circle', Defs: 'Defs', Line: 'Line', LinearGradient: 'LinearGradient', Path: 'Path', Rect: 'Rect', Stop: 'Stop', Text: 'SvgText' };
       if (pedido === '../lib/tema') return tema;
       if (pedido === '../lib/tacto') return { tacto: { eleccion() {}, abrir() {} } };
       if (pedido === '../lib/tokenizacion-remota') return { cargarTokenizacion: async () => { throw new Error('sin red en las pruebas'); } };
@@ -523,7 +628,10 @@ const esperar = () => new Promise((r) => setTimeout(r, 0));
 /* Pinta otra vez cada componente de función que haya dentro (el gráfico mide su ancho con onLayout). */
 const conAncho = (arbol, ancho) => { for (const n of nodos(arbol)) if (n?.props?.onLayout) n.props.onLayout({ nativeEvent: { layout: { width: ancho, height: 240 } } }); };
 
-test('la pantalla «Mercado y noticias»: cifra de hoy, cambio del mes con signo y texto, pestañas, gráfico, datos clave, tipos y noticias', async () => {
+const ULTIMO = SERIE.puntos[SERIE.puntos.length - 1];
+const NUM = (texto) => Number(String(texto).match(/\d[\d.]*/)[0].replace(/\./g, ''));
+
+test('la pantalla «Mercado y noticias»: la cifra grande es el final de la línea, el cambio dice qué mide, el total de la categoría debajo, pestañas, datos clave, tipos y noticias', async () => {
   const { react, pintar } = crearReact();
   const { MercadoPantalla } = cargarMercado(react);
   const enlaces = [];
@@ -534,58 +642,85 @@ test('la pantalla «Mercado y noticias»: cifra de hoy, cambio del mes con signo
   arbol = pintar(MercadoPantalla, props);
   const texto = textoDe(arbol);
   const g = t.graficoPestana(SERIE, '1m');
+  const porId = (id, a = arbol) => nodos(a).find((n) => n?.props?.testID === id);
   assert.match(texto, /Mercado de activos tokenizados/);
-  assert.match(texto, /49\.684/, 'la cifra de hoy, en vivo');
+  // La cifra grande: el último punto de la serie (42.947 M$), no el total en vivo (49.684 M$), que va debajo con su nombre.
+  const cifraVista = () => textoDe(porId('mercado-cifra')).replace(/\s+/g, ' ');
+  assert.equal(cifraVista(), '42.947 M$', 'la cifra y su unidad, más pequeña');
+  assert.equal(t.millones(ULTIMO.valor), '42.947\u00a0M$');
+  assert.equal(textoDe(porId('mercado-subtitulo')), `Suma de los ${SERIE.incluidos} mayores tokens · ${t.fechaCorta(ULTIMO.fecha)}`);
   assert.ok(texto.includes(g.cambioTexto) && texto.includes('en el último mes'), 'el cambio del mes con su signo y su texto');
-  assert.ok(texto.includes(`· suma de los ${SERIE.incluidos} mayores`),
-    'el % dice a qué se refiere: la suma de los N mayores, no la cifra total');
-  const cabecera = nodos(arbol).find((n) => typeof n?.props?.accessibilityLabel === 'string' && n.props.accessibilityLabel.startsWith('49.684 millones'));
-  assert.match(cabecera.props.accessibilityLabel, new RegExp(`, (sube|baja|sin cambios) \\S+\\s% en el último mes, suma de los ${SERIE.incluidos} mayores$`));
-  assert.ok(!nodos(arbol).some((n) => n?.props?.testID === 'mercado-aviso-tokens'), '1 M: mismos tokens al principio y al final, sin aviso');
-  assert.ok(!nodos(arbol).some((n) => n?.props?.testID === 'mercado-serie-vieja'));
+  assert.equal(textoDe(porId('mercado-explica')), t.explicacionCambio(), 'qué mide el %: no es una rentabilidad');
+  assert.equal(textoDe(porId('mercado-total-categoria')), t.lineaTotalCategoria(SERIE, RESUMEN, 'es'));
+  assert.match(textoDe(porId('mercado-total-categoria')), /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \(.+UTC\)\. La cifra grande y el gráfico suman los 29 mayores con historia completa\.$/);
+  const cabecera = nodos(arbol).find((n) => typeof n?.props?.accessibilityLabel === 'string' && n.props.accessibilityLabel.startsWith('Suma de los'));
+  assert.match(cabecera.props.accessibilityLabel, new RegExp(`^Suma de los ${SERIE.incluidos} mayores tokens · \\S+: 42\\.947 millones de dólares, (sube|baja|sin cambios) \\S+\\s% en el último mes$`));
+  assert.ok(!porId('mercado-aviso-tokens'), '1 M: mismos tokens al principio y al final, sin aviso');
+  assert.ok(!porId('mercado-serie-vieja'));
   assert.ok(texto.includes(`${{ sube: '▲', baja: '▼', igual: '=' }[g.direccion]} ${g.cambioTexto}`), 'flecha y signo: el color nunca va solo');
   const pestanas = nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab');
-  assert.deepEqual(pestanas.map((n) => n.props.accessibilityLabel), ['1 semana', '1 mes', '3 meses', '6 meses', 'Este año', '1 año']);
+  assert.deepEqual(pestanas.map((n) => n.props.accessibilityLabel), ['1 semana', '1 mes', '3 meses', '6 meses', 'En 2026', '1 año']);
+  assert.deepEqual(pestanas.map((n) => textoDe(n)), ['1 S', '1 M', '3 M', '6 M', '2026', '1 A'], '«2026» en lugar de «YTD»');
   assert.deepEqual(pestanas.map((n) => n.props.accessibilityState.selected), [false, true, false, false, false, false]);
   assert.ok(nodos(arbol).some((n) => n?.props?.accessibilityRole === 'tablist'));
-  for (const r of ['Valor total hoy', 'Cambio en 24 h', 'Máximo del periodo', 'Mínimo del periodo', 'Tokens en el gráfico', 'Tipo mayor']) assert.match(texto, new RegExp(r));
+  // Datos clave: dos cifras con su nombre; 24 h de la serie (−0,1 %, nunca el +124 % de CoinGecko).
+  const claves = nodos(arbol).filter((n) => n?.props?.style?.[0]?.width === '47%').map((n) => n.props.accessibilityLabel);
+  assert.deepEqual(claves.map((c) => c.split(':')[0]), [`Valor hoy (${SERIE.incluidos} mayores)`, 'Total de la categoría hoy', 'Cambio en 24 h', 'Máximo del periodo',
+    'Mínimo del periodo', 'Tokens en el gráfico', 'El tipo que más pesa']);
+  assert.equal(claves[0], `Valor hoy (${SERIE.incluidos} mayores): 42.947\u00a0M$: ${t.fechaCorta(ULTIMO.fecha)}`);
+  assert.equal(claves[1], 'Total de la categoría hoy: 49.684\u00a0M$: todos los tokens · CoinGecko');
+  assert.equal(claves[2], `Cambio en 24 h: ▼ −0,1\u00a0%: ${SERIE.incluidos} mayores`);
+  assert.equal(claves[5], `Tokens en el gráfico: ${SERIE.incluidos}: 86 % del total`, 'el mismo 86 % que la nota');
+  assert.ok(NUM(claves[3].split(': ')[1]) >= NUM(claves[0].split(': ')[1]), 'el máximo del periodo no es menor que el valor de hoy');
   assert.match(texto, /Por tipo de activo/);
-  assert.match(texto, /Crédito privado/);
+  const tipos = porId('mercado-tipos');
+  assert.equal(tipos.props.accessibilityState.expanded, false, 'los tipos, plegados: las noticias quedan más arriba');
+  assert.match(textoDe(tipos), /^Ver los 8 tipos ▾\s+Crédito privado 55,6\s%…$/);
   assert.match(texto, /Noticias relacionadas/);
   assert.match(texto, /NOTICIAS/, 'las noticias van debajo, en la misma pantalla');
   assert.ok(texto.includes(t.notaCorta(SERIE)), 'la nota corta del gráfico, a la vista');
-  assert.ok(!texto.includes(t.notaSerie(SERIE)), 'el resto, plegado');
-  const como = nodos(arbol).find((n) => n?.props?.testID === 'mercado-como');
+  assert.ok(!texto.includes(t.notaSerie(SERIE, 'es', '1m')), 'el resto, plegado');
+  const como = porId('mercado-como');
   assert.equal(como.props.accessibilityState.expanded, false);
   como.props.onPress();
+  tipos.props.onPress();
   arbol = pintar(MercadoPantalla, props);
-  assert.ok(textoDe(arbol).includes(t.notaSerie(SERIE)), '«Cómo se calcula» despliega la nota entera');
-  assert.equal(nodos(arbol).find((n) => n?.props?.testID === 'mercado-como').props.accessibilityState.expanded, true);
+  assert.ok(textoDe(arbol).includes(t.notaSerie(SERIE, 'es', '1m')), '«Cómo se calcula» despliega la nota entera');
+  assert.equal(porId('mercado-como').props.accessibilityState.expanded, true);
+  assert.equal(nodos(arbol).filter((n) => /^(Crédito privado|Letras del Tesoro): /.test(n?.props?.accessibilityLabel || '')).length, 2, 'desplegados, los tipos');
   const fuente = nodos(arbol).find((n) => n?.props?.accessibilityRole === 'link');
-  assert.match(fuente.props.accessibilityLabel, /^Datos: CoinGecko · dato de hoy del 10\/11\/2026, 15:25 UTC · serie diaria hasta el /);
+  assert.equal(fuente.props.accessibilityLabel, `En millones de dólares (M$). Datos: CoinGecko · serie diaria hasta el ${t.fechaCorta(ULTIMO.fecha)} · total de la categoría: ${t.cuandoDato(RESUMEN, 'es')}`);
   fuente.props.onPress();
   assert.deepEqual(enlaces, ['https://www.coingecko.com/']);
-  // Otra pestaña: el gráfico cambia de tramo.
-  pestanas[0].props.onPress();
+  // La cruz en el último día dice la cifra grande; en cada pestaña, el máximo es ≥ la cifra grande.
+  conAncho(arbol, 358);
   arbol = pintar(MercadoPantalla, props);
-  assert.ok(textoDe(arbol).includes('en la última semana'));
-  assert.deepEqual(nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab').map((n) => n.props.accessibilityState.selected), [true, false, false, false, false, false]);
-  // 1 A: de 16 a 29 tokens. El aviso de que parte de la subida son tokens nuevos, a la vista y para el lector.
-  nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab')[5].props.onPress();
+  nodos(arbol).find((n) => n?.props?.accessibilityRole === 'adjustable').props.onResponderGrant({ nativeEvent: { locationX: 10000 } });
   arbol = pintar(MercadoPantalla, props);
+  const burbuja = nodos(arbol).find((n) => n?.props?.importantForAccessibility === 'no-hide-descendants' && n.type === 'View');
+  assert.ok(textoDe(burbuja).replace(/\s+/g, ' ').includes(cifraVista()), `la burbuja del último día (${textoDe(burbuja)}) = la cifra grande (${cifraVista()})`);
+  for (let i = 0; i < t.PESTANAS.length; i++) {
+    nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab')[i].props.onPress();
+    arbol = pintar(MercadoPantalla, props);
+    const max = nodos(arbol).find((n) => n?.props?.accessibilityLabel?.startsWith?.('Máximo del periodo:')).props.accessibilityLabel;
+    assert.ok(NUM(max.split(': ')[1]) >= NUM(cifraVista()), `${t.PESTANAS[i].clave}: ${max} ≥ ${cifraVista()}`);
+  }
+  // 2026 y 1 A: de 16 a 29 tokens. El aviso, a la vista y para el lector; «Cómo se calcula» dice cuántos entran a mitad.
   const g1a = t.graficoPestana(SERIE, '1a');
-  const aviso = nodos(arbol).find((n) => n?.props?.testID === 'mercado-aviso-tokens');
+  assert.ok(textoDe(arbol).includes('en el último año'));
+  const aviso = porId('mercado-aviso-tokens');
   assert.equal(textoDe(aviso), g1a.avisoTokens.charAt(0).toUpperCase() + g1a.avisoTokens.slice(1) + '.');
   assert.match(textoDe(aviso), /^De 16 a 29 tokens: parte de la subida son tokens nuevos\.$/);
-  assert.ok(nodos(arbol).find((n) => n?.props?.accessibilityLabel?.startsWith?.('49.684 millones')).props.accessibilityLabel.endsWith('. De 16 a 29 tokens: parte de la subida son tokens nuevos'));
+  assert.ok(nodos(arbol).find((n) => n?.props?.accessibilityLabel?.startsWith?.('Suma de los')).props.accessibilityLabel.endsWith('. De 16 a 29 tokens: parte de la subida son tokens nuevos'));
+  assert.ok(textoDe(arbol).includes('En este periodo, 13 de los 29 entran a mitad'));
   conAncho(arbol, 358);
   arbol = pintar(MercadoPantalla, props);
   assert.ok(nodos(arbol).some((n) => n?.props?.testID === 'mercado-puente'), 'el hueco del 29/07 se une con un trazo de puntos');
   assert.deepEqual(nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab').map((n) => n.props.accessibilityState.selected), [false, false, false, false, false, true]);
 });
 
-test('la serie vieja (más de 3 días antes del dato de hoy): ni la pantalla ni la tarjeta ponen su cambio junto a la cifra en vivo y lo dicen', async () => {
-  const fin = SERIE.puntos[SERIE.puntos.length - 1].fecha;
+test('la serie vieja (más de 3 días antes del dato de hoy): la cifra grande y el cambio son de su último día, y la pantalla y la tarjeta lo dicen', async () => {
+  const fin = ULTIMO.fecha;
   const tarde = { ...RESUMEN, actualizado: new Date(Date.parse(fin + 'T00:00:00Z') + 5 * DIA).toISOString() };
   const props = { cargarVivo: async () => tarde, cargarLaSerie: async () => SERIE };
   for (const nombre of ['MercadoPantalla', 'MercadoCotizacion']) {
@@ -595,13 +730,13 @@ test('la serie vieja (más de 3 días antes del dato de hoy): ni la pantalla ni 
     await esperar(); await esperar();
     const arbol = pintar(Componente, props);
     const texto = textoDe(arbol), g = t.graficoPestana(SERIE, '1m');
-    assert.ok(!texto.includes(g.cambioTexto), `${nombre}: sin el cambio de una serie vieja`);
-    assert.ok(texto.includes(nombre === 'MercadoPantalla' ? `Serie hasta el ${t.fechaCorta(fin)}: el cambio del periodo no se pone junto a la cifra de hoy.` : `serie hasta el ${t.fechaCorta(fin)}`), nombre);
-    assert.match(texto, /49\.684/, 'la cifra en vivo sigue');
+    assert.ok(texto.includes(g.cambioTexto), `${nombre}: el cambio cuadra con la cifra (las dos son de la serie)`);
+    assert.ok(texto.includes(nombre === 'MercadoPantalla' ? `La serie llega hasta el ${t.fechaCorta(fin)}: la cifra grande y el gráfico son de ese día.` : `serie hasta el ${t.fechaCorta(fin)}`), nombre);
+    assert.match(texto, /42\.947/, 'la cifra grande es la del último día de la serie');
   }
 });
 
-test('el gráfico de la app: área con degradado, línea, eje a la derecha, fechas abajo, línea de partida y la cruz al arrastrar o con el lector', (ctx) => {
+test('el gráfico de la app: área con degradado, línea, eje a la derecha con el último valor en una píldora, fechas abajo, línea de partida y la cruz (solo vertical) al arrastrar o con el lector', (ctx) => {
   ctx.mock.timers.enable({ apis: ['setTimeout'] });
   const { react, pintar } = crearReact();
   const { GraficoBolsa } = cargarMercado(react);
@@ -613,22 +748,37 @@ test('el gráfico de la app: área con degradado, línea, eje a la derecha, fech
   assert.ok(raiz, 'ajustable: el lector de pantalla recorre los días');
   assert.match(raiz.props.accessibilityLabel, /^Gráfico del mercado\. Suma de los \d+ mayores tokens, último mes: de /);
   assert.equal(raiz.props.accessibilityValue.text, `${t.fechaCorta(g.puntos.at(-1).fecha)}: ${t.millonesHablados(g.puntos.at(-1).valor)}`);
+  assert.equal(raiz.props.style.height, 270, 'con la franja de 40 px para la burbuja');
   const caminos = nodos(arbol).filter((n) => n?.type === 'Path');
   assert.equal(caminos.length, 2, 'el área y la línea');
   assert.equal(caminos[0].props.fill, 'url(#mkDeg)');
   assert.equal(caminos[1].props.strokeWidth, 2);
+  assert.equal(nodos(arbol).filter((n) => n?.type === 'Stop').length, 3, 'el degradado con una parada intermedia');
   const textosEje = nodos(arbol).filter((n) => n?.type === 'SvgText').map((n) => textoDe(n.children));
-  for (const m of g.marcasValores) assert.ok(textosEje.includes(m.texto), m.texto);
+  // El último valor, en su píldora; las marcas que chocarían con ella no se escriben.
+  const pildora = nodos(arbol).find((n) => n?.props?.testID === 'mercado-ultimo');
+  assert.ok(pildora && pildora.type === 'Rect');
+  assert.ok(textosEje.includes('42.947'), 'la píldora dice la cifra grande');
+  const yUltimo = pildora.props.y + 9;
+  const escritas = g.marcasValores.filter((m) => textosEje.includes(m.texto));
+  assert.ok(escritas.length >= 3 && escritas.length < g.marcasValores.length + 1);
+  assert.ok(!textosEje.includes('43.000'), 'la marca de 43.000, junto a la píldora (42.947), no se escribe encima');
   for (const m of g.marcasFechas) assert.ok(textosEje.includes(m.texto), m.texto);
   assert.ok(textosEje.includes('M$'));
+  void yUltimo;
+  const suelo = nodos(arbol).find((n) => n?.type === 'Line' && n.props.stroke === 'rgba(255,255,255,0.16)');
+  assert.ok(suelo.props.x2 < 358 - 50, 'el suelo acaba donde el dibujo: no tacha la marca más baja');
   assert.ok(nodos(arbol).some((n) => n?.type === 'Line' && n.props.strokeDasharray === '2 4'), 'la línea de puntos del valor de partida');
   assert.ok(!nodos(arbol).some((n) => n?.type === 'Circle'), 'sin cruz hasta que se toca');
+  const lineasAntes = nodos(arbol).filter((n) => n?.type === 'Line').length;
   // Arrastre: la cruz con la fecha y el valor del punto más cercano.
   raiz.props.onResponderGrant({ nativeEvent: { locationX: 0 } });
   arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
   assert.ok(nodos(arbol).some((n) => n?.type === 'Circle'));
+  assert.equal(nodos(arbol).filter((n) => n?.type === 'Line').length, lineasAntes + 1, 'la cruz es solo una raya vertical');
   assert.ok(textoDe(arbol).includes(t.fechaCorta(g.puntos[0].fecha)) && textoDe(arbol).includes(t.millones(g.puntos[0].valor)));
-  assert.match(textoDe(arbol), /0,0\s% desde el inicio/);
+  assert.ok(nodos(arbol).some((n) => n?.type === 'Text' && /^0,0\s%$/.test(textoDe(n))), 'la burbuja, en una línea: fecha · valor · cambio');
+  assert.doesNotMatch(textoDe(arbol), /desde el inicio/);
   // El lector: «subir» avanza un día.
   nodos(arbol).find((n) => n?.props?.accessibilityRole === 'adjustable').props.onAccessibilityAction({ nativeEvent: { actionName: 'increment' } });
   arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
@@ -652,9 +802,17 @@ test('el gráfico de la app: área con degradado, línea, eje a la derecha, fech
   ctx.mock.timers.tick(2000);
   arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
   assert.ok(nodos(arbol).some((n) => n?.type === 'Circle'), 'el segundo toque reinicia los 3 s');
+  // Con muchos puntos, la línea algo más fina.
+  const { react: r2, pintar: p2 } = crearReact();
+  const G2 = cargarMercado(r2).GraficoBolsa;
+  const g1a = t.graficoPestana(SERIE, '1a');
+  let a2 = p2(G2, { g: g1a, idioma: 'es' });
+  conAncho(a2, 358);
+  a2 = p2(G2, { g: g1a, idioma: 'es' });
+  assert.equal(nodos(a2).filter((n) => n?.type === 'Path' && n.props.fill === 'none' && !n.props.strokeDasharray)[0].props.strokeWidth, 1.5);
 });
 
-test('la tarjeta de Inicio: nombre, cifra, cambio del mes y minigráfico; al tocar abre la pantalla. En inglés, en su formato', async () => {
+test('la tarjeta de Inicio: la misma cifra que el final de su minigráfico, «Los 29 mayores · CoinGecko», cambio del mes y lo que mide; al tocar abre la pantalla. En inglés, en su formato', async () => {
   for (const lengua of ['es', 'en']) {
     idioma.cambiarIdioma(lengua);
     try {
@@ -670,12 +828,17 @@ test('la tarjeta de Inicio: nombre, cifra, cambio del mes y minigráfico; al toc
       assert.ok(tarjeta);
       const texto = textoDe(arbol);
       assert.ok(texto.includes(lengua === 'en' ? 'Tokenised assets' : 'Activos tokenizados'));
-      assert.ok(texto.includes(t.millones(RESUMEN.total.valor, lengua)));
+      assert.ok(texto.includes(lengua === 'en' ? `${SERIE.incluidos} largest · CoinGecko` : `Los ${SERIE.incluidos} mayores · CoinGecko`));
+      assert.doesNotMatch(texto, /Mercado mundial|Global market/);
+      assert.equal(g.puntos[g.puntos.length - 1].valor, ULTIMO.valor);
+      assert.ok(texto.includes(t.millones(ULTIMO.valor, lengua)), 'la cifra del final del minigráfico');
+      assert.ok(!texto.includes(t.millones(RESUMEN.total.valor, lengua)), 'y no el total de la categoría');
       assert.ok(texto.includes(g.cambioTexto) && texto.includes(lengua === 'en' ? 'past month' : 'último mes'));
-      assert.ok(texto.includes(lengua === 'en' ? `sum of the ${SERIE.incluidos} largest` : `suma de los ${SERIE.incluidos} mayores`), 'a qué se refiere el %');
-      assert.ok(tarjeta.props.accessibilityLabel.includes(lengua === 'en' ? ` past month, sum of the ${SERIE.incluidos} largest.` : ` en el último mes, suma de los ${SERIE.incluidos} mayores.`));
+      assert.ok(texto.includes(t.explicacionCambio(lengua)), 'qué mide el %, también en Inicio');
       assert.ok(nodos(arbol).some((n) => n?.type === 'Svg'), 'el minigráfico del mes');
-      assert.match(tarjeta.props.accessibilityLabel, lengua === 'en' ? /^Tokenised asset market: 49,684 million dollars, (up|down|unchanged) / : /^Mercado de activos tokenizados: 49\.684 millones de dólares, (sube|baja|sin cambios) /);
+      assert.match(tarjeta.props.accessibilityLabel, lengua === 'en'
+        ? new RegExp(`^Tokenised asset market, sum of the ${SERIE.incluidos} largest tokens: 42,947 million dollars, (up|down|unchanged) \\S+ past month\\. See the chart$`)
+        : new RegExp(`^Mercado de activos tokenizados, suma de los ${SERIE.incluidos} mayores tokens: 42\\.947 millones de dólares, (sube|baja|sin cambios) \\S+\\s% en el último mes\\. Ver el gráfico$`));
       tarjeta.props.onPress();
       assert.equal(abierta, 1);
     } finally { idioma.cambiarIdioma('es'); }

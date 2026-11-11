@@ -8,19 +8,25 @@
      CoinGecko) y los tipos; si falla, la última foto diaria guardada
      (/datos/tokenizacion-historico.json), con su fecha;
    - /datos/tokenizacion-serie.json: la serie diaria de un año, suma de los
-     40 mayores tokens de la categoría (rwadar-app/tokenizacion/serie-diaria.mjs).
+     mayores tokens de la categoría con historia completa en CoinGecko (hoy
+     29 de los 40 mayores; rwadar-app/tokenizacion/serie-diaria.mjs).
+   La cifra grande es el último punto de la serie (QA del 11/11/2026): la
+   misma que el final de la línea, la cruz en el último día, el cambio, el
+   máximo y el mínimo. El total de la categoría, con todos sus tokens, va
+   debajo en gris y en los datos clave, con su hora.
    Dos modos:
    - data-mercado="completo" (/mercado/): el nombre, la cifra grande y el
-     cambio del periodo (signo, flecha y texto: el color nunca va solo),
-     pestañas 1 S · 1 M · 3 M · 6 M · YTD · 1 A (1 M por defecto), el gráfico
-     de área SVG propio (eje de valores a la derecha, fechas abajo, rejilla
+     cambio del periodo (signo, flecha y texto: el color nunca va solo) con
+     lo que mide, pestañas 1 S · 1 M · 3 M · 6 M · 2026 · 1 A (1 M por
+     defecto; en inglés, «YTD»), el gráfico de área SVG propio (eje de
+     valores a la derecha con el último valor marcado, fechas abajo, rejilla
      suave, línea de puntos en el valor de partida y una cruz con la fecha y
      el valor al pasar el ratón, al arrastrar el dedo o con las flechas del
      teclado), su tabla para lectores de pantalla, los datos clave y las
      barras por tipo. Las noticias, debajo, las pinta noticias-sector.
    - data-mercado="inicio": la tarjeta tipo cotización de Inicio (nombre,
-     cifra, cambio del mes y un minigráfico del último mes), que lleva a
-     /mercado/.
+     cifra, cambio del mes y un minigráfico del último mes: la misma cifra
+     que el final del minigráfico), que lleva a /mercado/.
    Todos los cálculos están en rwadar-movil/lib/tokenizacion.js (copiado en
    tokenizacion-modelo): aquí solo se dibuja. Ninguna cifra se inventa.
    Los textos se escriben ya en el idioma elegido (translate="no") y se
@@ -37,6 +43,8 @@
   // Tras un toque, la cruz se queda 3 s (o hasta otro toque fuera del gráfico).
   const CRUZ_FIJA_MS = 3000;
   let cruzFija = null, tactil = null;
+  // Los desplegables siguen como los dejó quien lee al cambiar de pestaña o de idioma.
+  let tiposAbierto = null, comoAbierto = false;
 
   const idioma = () => (globalThis.RWAdarIdioma?.obtenerIdioma?.() === 'en' ? 'en' : 'es');
   const tx = (es, en) => (idioma() === 'en' ? en : es);
@@ -91,27 +99,27 @@
     caja.append(grande, el('span', 'solo-lector', modelo.millonesHablados(valor, idioma())));
     return caja;
   }
-  function valorHoy() {
-    if (vivo?.total) return { valor: vivo.total.valor, en: vivo.actualizado, fuente: vivo.fuente };
-    const ultimo = serie?.puntos.at(-1);
-    return ultimo ? { valor: ultimo.valor, en: null, fuente: 'serie' } : null;
-  }
-  // La serie vieja (más de 3 días antes del dato de hoy) no pone su cambio al lado de la cifra en vivo.
+  // La cifra grande: el último punto de la serie; sin serie, el total de la categoría.
+  const valorHoy = () => modelo.cifraGrande(serie, vivo);
+  // La serie vieja (más de 3 días antes del dato de hoy): la cifra grande y el gráfico son de su último día, y se dice.
   const atrasada = () => !!(vivo && serie && modelo.serieAtrasada(serie, vivo.actualizado));
-  const avisoAtrasada = () => tx('Serie hasta el ', 'Series to ') + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma()) +
-    tx(': el cambio del periodo no se pone junto a la cifra de hoy.', ": the period change isn't shown next to today's figure.");
-  function lineaFuente({ conSerie = true } = {}) {
+  const avisoAtrasada = () => tx('La serie llega hasta el ', 'The series ends on ') + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma()) +
+    tx(': la cifra grande y el gráfico son de ese día.', ': the large figure and the chart are from that day.');
+  /* La fuente: CoinGecko, hasta qué día llega la serie y, en /mercado/, de
+     cuándo es el total de la categoría («hoy, …» solo si es de hoy). */
+  function lineaFuente({ conTotal = true } = {}) {
     const p = el('p', 'mk-fuente');
+    if (conTotal) p.append(el('span', '', tx('En millones de dólares (M$).', 'In millions of dollars ($M).')), ' ');
     p.append(el('span', '', tx('Datos:', 'Data:')), ' ');
     const a = el('a', '', 'CoinGecko');
     a.href = modelo.FUENTE.url; a.target = '_blank'; a.rel = 'noopener nofollow';
     p.append(a);
-    if (vivo) {
-      const cuando = el('time', '', modelo.horaDato(vivo.actualizado, idioma()));
+    if (serie) p.append(' · ', el('span', '', tx('serie diaria hasta el', 'daily series to') + ' ' + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma())));
+    if (vivo && conTotal) {
+      const cuando = el('time', '', modelo.cuandoDato(vivo, idioma()));
       cuando.dateTime = vivo.actualizado;
-      p.append(' · ', el('span', '', vivo.fuente === 'coingecko' ? tx('dato de hoy del', "today's figure from") : tx('última foto guardada, del', 'last saved snapshot, from')), ' ', cuando);
+      p.append(' · ', el('span', '', tx('total de la categoría:', 'category total:')), ' ', cuando);
     }
-    if (serie && conSerie) p.append(' · ', el('span', '', tx('serie diaria hasta el', 'daily series to') + ' ' + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma())));
     return p;
   }
 
@@ -120,14 +128,16 @@
     const ancho = Math.round(caja.clientWidth);
     if (ancho < 120) return;
     const escritorio = matchMedia('(min-width:768px)').matches;
-    const EJE = escritorio ? 64 : 54, ALTO = escritorio ? 300 : 240, ARRIBA = 10, ABAJO = 28;
+    // ARRIBA: una franja libre de 40 px para la burbuja de la cruz, que así no tapa la línea.
+    const EJE = escritorio ? 64 : 54, ALTO = escritorio ? 330 : 270, ARRIBA = 40, ABAJO = 28;
     const PW = ancho - EJE, PH = ALTO - ARRIBA - ABAJO;
     const coords = modelo.coordenadas(g, PW, PH).map(c => ({ x: c.x, y: c.y + ARRIBA }));
     const yDe = v => ARRIBA + PH - (v - g.escala.lo) / (g.escala.hi - g.escala.lo) * PH;
     const dibujo = svg('svg', { width: ancho, height: ALTO, viewBox: `0 0 ${ancho} ${ALTO}`, class: 'mk-svg', 'aria-hidden': 'true', focusable: 'false' });
     const id = 'mkDeg' + Math.random().toString(36).slice(2, 8);
     const defs = svg('defs'), deg = svg('linearGradient', { id, x1: 0, y1: 0, x2: 0, y2: 1 });
-    deg.append(svg('stop', { offset: '0', class: 'mk-stop', 'stop-opacity': '0.34' }), svg('stop', { offset: '1', class: 'mk-stop', 'stop-opacity': '0' }));
+    deg.append(svg('stop', { offset: '0', class: 'mk-stop', 'stop-opacity': '0.34' }), svg('stop', { offset: '0.6', class: 'mk-stop', 'stop-opacity': '0.08' }),
+      svg('stop', { offset: '1', class: 'mk-stop', 'stop-opacity': '0' }));
     defs.append(deg);
     dibujo.append(defs);
     // Rejilla muy suave: una raya por marca de valor y por fecha.
@@ -140,7 +150,8 @@
       const x = coords[m.indice].x;
       rejilla.append(svg('line', { x1: x.toFixed(1), x2: x.toFixed(1), y1: ARRIBA, y2: ARRIBA + PH }));
     }
-    rejilla.append(svg('line', { class: 'mk-suelo', x1: 0, x2: ancho, y1: ARRIBA + PH, y2: ARRIBA + PH }));
+    // El suelo acaba donde el dibujo: no tacha la marca más baja del eje.
+    rejilla.append(svg('line', { class: 'mk-suelo', x1: 0, x2: PW, y1: ARRIBA + PH, y2: ARRIBA + PH }));
     dibujo.append(rejilla);
     // El área (degradado del color de la línea a transparente) y la línea de 2 px.
     // Tramo a tramo: donde falta un día, la línea se corta (no se une con una recta).
@@ -151,10 +162,14 @@
     // La línea de puntos con el valor de partida del periodo, como en bolsa.
     const yBase = yDe(g.estadisticas.inicio);
     dibujo.append(svg('line', { class: 'mk-base', x1: 0, x2: PW, y1: yBase.toFixed(1), y2: yBase.toFixed(1) }));
-    dibujo.append(svg('path', { class: 'mk-linea', d: trazo }));
-    // Ejes: valores a la derecha, fechas abajo.
+    // Con muchos puntos (6 M, 2026 y 1 A), una línea algo más fina: a 2 px parecía peluda.
+    dibujo.append(svg('path', { class: 'mk-linea' + (g.puntos.length > 120 ? ' mk-linea--densa' : ''), d: trazo }));
+    // Ejes: valores a la derecha, fechas abajo. El último valor, en una píldora a su altura
+    // (es la cifra grande); las marcas que chocarían con ella no se escriben.
+    const yUltimo = coords[coords.length - 1].y;
     const textos = svg('g', { class: 'mk-eje' });
     for (const m of g.marcasValores) {
+      if (Math.abs(yDe(m.valor) - yUltimo) < 15) continue;
       const t = svg('text', { x: PW + 8, y: (yDe(m.valor) + 4).toFixed(1) });
       t.textContent = m.texto;
       textos.append(t);
@@ -170,36 +185,43 @@
       textos.append(t);
     });
     dibujo.append(textos);
-    // La cruz: una raya vertical, una horizontal y el punto. Oculta hasta que se usa.
+    const pildora = svg('g', { class: 'mk-ultimo' });
+    const anchoP = EJE - 6;
+    pildora.append(svg('rect', { x: PW + 3, y: (yUltimo - 9).toFixed(1), width: anchoP, height: 18, rx: 9 }));
+    const tu = svg('text', { x: (PW + 3 + anchoP / 2).toFixed(1), y: (yUltimo + 4).toFixed(1), 'text-anchor': 'middle' });
+    tu.textContent = modelo.marcaValor(g.estadisticas.fin, g.estadisticas.fin >= 1e8 ? 1e6 : 1e5, idioma());
+    pildora.append(tu);
+    dibujo.append(pildora);
+    // La cruz: solo la raya vertical (dos rayas discontinuas se confundían con la
+    // línea de partida) y el punto. Oculta hasta que se usa.
     const grupo = svg('g', { class: 'mk-cruz', visibility: 'hidden' });
-    const v = svg('line', { y1: ARRIBA, y2: ARRIBA + PH }), h = svg('line', { x1: 0, x2: PW }), punto = svg('circle', { r: 5 });
-    grupo.append(v, h, punto);
+    const v = svg('line', { y1: ARRIBA - 10, y2: ARRIBA + PH }), punto = svg('circle', { r: 5 });
+    grupo.append(v, punto);
     dibujo.append(grupo);
     caja.querySelector('.mk-svg')?.remove();
     caja.prepend(dibujo);
-    cruz = { coords, grupo, v, h, punto, PW, ancho, g };
+    cruz = { coords, grupo, v, punto, PW, ancho, g };
   }
 
   function ponerCruz(caja, burbuja, i) {
     if (!cruz) return;
-    const { coords, grupo, v, h, punto, PW, ancho, g } = cruz;
+    const { coords, grupo, v, punto, ancho, g } = cruz;
     const k = Math.max(0, Math.min(coords.length - 1, i)), c = coords[k], p = g.puntos[k];
     v.setAttribute('x1', c.x.toFixed(1)); v.setAttribute('x2', c.x.toFixed(1));
-    h.setAttribute('y1', c.y.toFixed(1)); h.setAttribute('y2', c.y.toFixed(1));
     punto.setAttribute('cx', c.x.toFixed(1)); punto.setAttribute('cy', c.y.toFixed(1));
     grupo.setAttribute('visibility', 'visible');
     const lengua = idioma();
+    // En una línea, encima del dibujo: fecha · valor · cambio desde el primer día del periodo.
     const desdeInicio = modelo.porcentaje(modelo.cambioPct(p.valor, g.estadisticas.inicio), lengua);
     burbuja.replaceChildren(el('span', 'mk-burbuja-fecha', modelo.fechaCorta(p.fecha, lengua)), el('b', 'mk-burbuja-valor', modelo.millones(p.valor, lengua)),
-      el('span', 'mk-burbuja-cambio', desdeInicio + ' ' + tx('desde el inicio', 'since start')));
+      el('span', 'mk-burbuja-cambio', desdeInicio));
     burbuja.hidden = false;
     // La burbuja sigue a la cruz sin salirse del gráfico (CSSOM, sin style en línea).
-    const anchoB = burbuja.offsetWidth || 150;
-    burbuja.style.setProperty('--mk-x', Math.max(0, Math.min(Math.max(0, PW - anchoB), c.x - anchoB / 2)).toFixed(0) + 'px');
+    const anchoB = burbuja.offsetWidth || 200;
+    burbuja.style.setProperty('--mk-x', Math.max(0, Math.min(Math.max(0, ancho - anchoB), c.x - anchoB / 2)).toFixed(0) + 'px');
     caja.setAttribute('aria-valuenow', String(k));
     caja.setAttribute('aria-valuetext', `${modelo.fechaCorta(p.fecha, lengua)}: ${modelo.millonesHablados(p.valor, lengua)}`);
     caja.dataset.indice = String(k);
-    void ancho;
   }
   function quitarCruz(caja, burbuja) {
     clearTimeout(cruzFija); cruzFija = null; tactil = null;
@@ -271,7 +293,7 @@
   function tablaSerie(g) {
     const caja = el('div', 'solo-lector');
     const t = el('table');
-    t.append(el('caption', '', tx('Valor diario, ', 'Daily value, ') + g.periodoTexto + tx(' (suma de los mayores tokens)', ' (sum of the largest tokens)')));
+    t.append(el('caption', '', tx('Valor diario, ', 'Daily value, ') + g.periodoTexto + ' (' + g.alcance + tx(' tokens', ' tokens') + ')'));
     const cab = el('tr');
     cab.append(el('th', '', tx('Fecha', 'Date')), el('th', '', tx('Valor', 'Value')));
     for (const th of cab.children) th.setAttribute('scope', 'col');
@@ -298,35 +320,53 @@
       lista.append(d);
     };
     const hoy = valorHoy(), lengua = idioma();
-    fila(tx('Valor total hoy', 'Total value today'), hoy ? modelo.millones(hoy.valor, lengua) : '—');
-    if (vivo && finito(vivo.total.cambio24h)) {
-      const dir = modelo.direccion(vivo.total.cambio24h);
+    // Dos cifras distintas, cada una con su nombre: la de la serie (la cifra grande) y la de toda la categoría.
+    if (serie && hoy?.fuente === 'serie') fila(tx(`Valor hoy (${serie.incluidos} mayores)`, `Value today (${serie.incluidos} largest)`), modelo.millones(hoy.valor, lengua), modelo.fechaCorta(hoy.fecha, lengua));
+    fila(tx('Total de la categoría hoy', 'Category total today'), vivo ? modelo.millones(vivo.total.valor, lengua) : '—',
+      vivo ? tx('todos los tokens · CoinGecko', 'all tokens · CoinGecko') : null);
+    // 24 h: el de la serie si sus dos últimos días son seguidos; si no, el de CoinGecko si es creíble; si no, «—».
+    const c24 = modelo.cambio24h(serie, vivo);
+    if (c24.cambio !== null) {
+      const dir = modelo.direccion(c24.cambio);
       const c = el('span', 'mk-cambio mk-' + dir);
       const f = el('span', 'mk-flecha', FLECHA[dir] || ''); f.setAttribute('aria-hidden', 'true');
-      c.append(f, el('span', '', modelo.porcentaje(vivo.total.cambio24h, lengua)));
-      fila(tx('Cambio en 24 h', '24 h change'), c);
+      c.append(f, el('span', '', modelo.porcentaje(c24.cambio, lengua)));
+      fila(tx('Cambio en 24 h', '24 h change'), c, c24.fuente === 'serie' ? tx(`${serie.incluidos} mayores`, `${serie.incluidos} largest`) : tx('toda la categoría', 'whole category'));
     } else fila(tx('Cambio en 24 h', '24 h change'), '—');
     if (g) {
       const e = g.estadisticas;
       fila(tx('Máximo del periodo', 'Period high'), modelo.millones(e.max.valor, lengua), modelo.fechaCorta(e.max.fecha, lengua));
       fila(tx('Mínimo del periodo', 'Period low'), modelo.millones(e.min.valor, lengua), modelo.fechaCorta(e.min.fecha, lengua));
     }
+    // La misma cuota y con el mismo redondeo que la nota del gráfico («86 %»).
     if (serie) fila(tx('Tokens en el gráfico', 'Tokens in the chart'), `${serie.incluidos}`,
-      tx(`${modelo.cuota(serie.cobertura, lengua)} del total`, `${modelo.cuota(serie.cobertura, lengua)} of the total`));
+      tx(`${modelo.coberturaTexto(serie, lengua)} del total`, `${modelo.coberturaTexto(serie, lengua)} of the total`));
     const mayor = vivo?.tipos?.[0];
-    if (mayor) fila(tx('Tipo mayor', 'Largest type'), traducirTipo(mayor.nombre), tx(`${modelo.cuota(mayor.cuota, lengua)} del total`, `${modelo.cuota(mayor.cuota, lengua)} of the total`), true);
+    if (mayor) fila(tx('El tipo que más pesa', 'Largest asset type'), traducirTipo(mayor.nombre), tx(`${modelo.cuota(mayor.cuota, lengua)} del total`, `${modelo.cuota(mayor.cuota, lengua)} of the total`), true);
     return lista;
   }
   const TIPOS_EN = { 'Crédito privado': 'Private credit', 'Letras del Tesoro': 'Treasury bills', 'Materias primas': 'Commodities', Acciones: 'Stocks',
     'Fondos monetarios': 'Money market funds', 'Otros créditos': 'Other credit', ETF: 'ETFs', Inmuebles: 'Real estate', Otros: 'Other' };
   const traducirTipo = nombre => (idioma() === 'en' ? TIPOS_EN[nombre] || nombre : nombre);
 
+  /* Por tipo de activo. En el móvil, la lista va plegada (las noticias quedan
+     más arriba) con un avance de los dos mayores; en escritorio, abierta.
+     Solo la cifra del cambio va en color. */
   function porTipo() {
     const caja = el('section', 'mk-tipos');
     caja.setAttribute('aria-labelledby', 'mkTiposTit');
     const h = el('h2', 'mk-h2', tx('Por tipo de activo', 'By asset type'));
     h.id = 'mkTiposTit';
-    caja.append(h, el('p', 'mk-h2-sub', tx('Hoy. Las categorías de CoinGecko pueden solaparse.', "Today. CoinGecko's categories can overlap.")));
+    caja.append(h, el('p', 'mk-h2-sub', tx('Hoy. Un mismo token puede contar en dos tipos, así que las cifras no suman el total.',
+      "Today. A token can count in two types, so the figures don't add up to the total.")));
+    const plegable = el('details', 'mk-tipos-det');
+    plegable.open = tiposAbierto ?? matchMedia('(min-width:768px)').matches;
+    plegable.addEventListener('toggle', () => { tiposAbierto = plegable.open; });
+    const [t1, t2] = vivo.tipos;
+    const resumen = el('summary', 'mk-tipos-sum');
+    resumen.append(el('span', 'mk-tipos-ver', tx(`Ver los ${vivo.tipos.length} tipos`, `See the ${vivo.tipos.length} types`)),
+      el('span', 'mk-tipos-avance', `${traducirTipo(t1.nombre)} ${modelo.cuota(t1.cuota, idioma())}` + (t2 ? ` · ${traducirTipo(t2.nombre)} ${modelo.cuota(t2.cuota, idioma())}…` : '')));
+    plegable.append(resumen);
     const lista = el('ul', 'mk-tipos-lista');
     for (const t of vivo.tipos) {
       const li = el('li', 'mk-tipo');
@@ -338,20 +378,26 @@
       barra.append(relleno);
       barra.setAttribute('aria-hidden', 'true');
       const cuota = el('span', 'mk-tipo-cuota', modelo.cuota(t.cuota, idioma()) + ' ' + tx('del total', 'of the total'));
-      const c = el('span', 'mk-tipo-24h mk-' + dir, dir === 'sin-datos' ? '—' : `${FLECHA[dir]} ${modelo.porcentaje(t.cambio24h, idioma())} ${tx('en 24 h', 'in 24 h')}`);
+      const c = el('span', 'mk-tipo-24h');
+      if (dir === 'sin-datos') c.append(el('span', '', '—'));
+      else c.append(el('span', 'mk-tipo-24h-cifra mk-' + dir, `${FLECHA[dir]} ${modelo.porcentaje(t.cambio24h, idioma())}`), ' ', el('span', '', tx('en 24 h', 'in 24 h')));
       li.append(barra, cuota, c);
       if (t.clave === 'materias-primas' && vivo.oro && finito(vivo.oro.valor)) li.append(el('span', 'mk-tipo-oro', tx('De ello, oro: ', 'Of which gold: ') + modelo.millones(vivo.oro.valor, idioma())));
       lista.append(li);
     }
-    caja.append(lista);
+    plegable.append(lista);
+    caja.append(plegable);
     return caja;
   }
 
-  /* La nota bajo el gráfico: una línea corta a la vista y el resto en «Cómo se calcula». */
+  /* La nota bajo el gráfico: una línea corta a la vista y el resto en «Cómo
+     se calcula», con cuántos entran a mitad del periodo elegido. */
   function notaGrafico() {
     const caja = el('div', 'mk-nota-caja');
     const como = el('details', 'mk-como');
-    como.append(el('summary', 'mk-como-tit', tx('Cómo se calcula', 'How it is calculated')), el('p', 'mk-nota-larga', modelo.notaSerie(serie, idioma())));
+    como.open = comoAbierto;
+    como.addEventListener('toggle', () => { comoAbierto = como.open; });
+    como.append(el('summary', 'mk-como-tit', tx('Cómo se calcula', 'How it is calculated')), el('p', 'mk-nota-larga', modelo.notaSerie(serie, idioma(), pestana)));
     caja.append(el('p', 'mk-nota', modelo.notaCorta(serie, idioma())), como);
     return caja;
   }
@@ -370,33 +416,32 @@
     raiz.dataset.mercadoEstado = vivo ? vivo.fuente + (serie ? '+serie' : '') : 'solo-serie';
     const g = serie ? modelo.graficoPestana(serie, pestana, idioma()) : null;
     const cab = el('div', 'mk-cab');
-    cab.append(cifraGrande(hoy.valor, 'mk-cifra'));
-    const linea = el('p', 'mk-linea-cambio');
-    const vieja = atrasada();
-    if (g && !vieja) {
-      // El % es el de la suma de la serie (los N mayores), no el de la cifra total de arriba: se dice.
-      const alcance = el('span', 'mk-alcance');
-      alcance.setAttribute('translate', 'no');
-      alcance.append(el('span', 'mk-sep', '· '), g.alcance);
-      linea.append(cambio(g), ' ', el('span', 'mk-periodo', g.cambioFrase), ' ', alcance);
+    // Qué suma la cifra grande y de qué día; la cifra es el último punto de la línea.
+    cab.append(el('p', 'mk-sub', modelo.subtituloCifra(serie, idioma())), cifraGrande(hoy.valor, 'mk-cifra'));
+    if (g) {
+      const linea = el('p', 'mk-linea-cambio');
+      linea.append(cambio(g), ' ', el('span', 'mk-periodo', g.cambioFrase));
       linea.setAttribute('aria-live', 'polite');
-    } else linea.append(el('span', 'mk-periodo', tx('Valor total, en millones de dólares', 'Total value, in millions of dollars')));
-    cab.append(linea);
-    if (g && !vieja && g.avisoTokens) cab.append(el('p', 'mk-aviso mk-aviso-tokens', g.avisoTokens[0].toUpperCase() + g.avisoTokens.slice(1) + '.'));
-    if (vieja) cab.append(el('p', 'mk-aviso mk-aviso-serie', avisoAtrasada()));
-    if (!vivo) cab.append(el('p', 'mk-aviso', tx('Sin el dato de hoy: la cifra es la suma de los mayores tokens del último día de la serie.',
-      "Without today's figure: this is the sum of the largest tokens on the series' last day.")));
-    else if (vivo.fuente === 'foto-guardada') cab.append(el('p', 'mk-aviso', tx('Cifra de la última foto diaria de RWAdar, del ', "Figure from RWAdar's last daily snapshot, ") + modelo.horaDato(vivo.actualizado, idioma())));
-    // Pestañas: botones con aria-pressed (el seleccionado, marcado y con su raya).
+      // Qué mide ese % (no es una rentabilidad) y, si en el periodo entran tokens, que parte de la subida es eso.
+      cab.append(linea, el('p', 'mk-explica', modelo.explicacionCambio(idioma())));
+      if (g.avisoTokens) cab.append(el('p', 'mk-aviso mk-aviso-tokens', g.avisoTokens[0].toUpperCase() + g.avisoTokens.slice(1) + '.'));
+    }
+    if (atrasada()) cab.append(el('p', 'mk-aviso mk-aviso-serie', avisoAtrasada()));
+    const total = modelo.lineaTotalCategoria(serie, vivo, idioma());
+    if (total) cab.append(el('p', 'mk-total-cat', total));
+    else if (hoy.fuente === 'total') cab.append(el('p', 'mk-aviso', tx('Sin la serie diaria, la cifra es el total de la categoría en CoinGecko (', "Without the daily series, the figure is CoinGecko's category total (") +
+      modelo.cuandoDato(vivo, idioma()) + ').'));
+    // Pestañas: botones con aria-pressed (el seleccionado, marcado). El nombre accesible contiene lo que se ve.
     const pestanas = el('div', 'mk-pestanas');
     pestanas.setAttribute('role', 'group');
     pestanas.setAttribute('aria-label', tx('Periodo del gráfico', 'Chart period'));
     for (const p of modelo.PESTANAS) {
-      const b = el('button', 'mk-pestana', idioma() === 'en' ? { '1s': '1W', '1m': '1M', '3m': '3M', '6m': '6M', ytd: 'YTD', '1a': '1Y' }[p.clave] : p.corto);
+      const et = modelo.etiquetaPestana(p.clave, idioma(), serie);
+      const b = el('button', 'mk-pestana', et.corto);
       b.type = 'button';
       b.dataset.pestana = p.clave;
       b.setAttribute('aria-pressed', String(p.clave === pestana));
-      b.setAttribute('aria-label', idioma() === 'en' ? { '1s': '1 week', '1m': '1 month', '3m': '3 months', '6m': '6 months', ytd: 'Year to date', '1a': '1 year' }[p.clave] : p.nombre);
+      b.setAttribute('aria-label', et.nombre);
       const sinDatos = !serie || !modelo.tramo(serie.puntos, p.clave);
       if (sinDatos) b.disabled = true;
       pestanas.append(b);
@@ -422,7 +467,8 @@
     const coords = modelo.coordenadas(g, W - 2 * M, H - 2 * M).map(c => ({ x: c.x + M, y: c.y + M }));
     const { linea: d, area, puentes } = modelo.trazosSvg(coords, modelo.tramosSeguidos(g), H);
     const id = 'mkMini' + Math.random().toString(36).slice(2, 8);
-    const s = svg('svg', { class: 'mk-mini-svg mk-' + g.direccion, width: W, height: H, viewBox: `0 0 ${W} ${H}`, 'aria-hidden': 'true', focusable: 'false' });
+    // preserveAspectRatio="none": en escritorio se estira a lo ancho de su columna sin engordar la línea.
+    const s = svg('svg', { class: 'mk-mini-svg mk-' + g.direccion, width: W, height: H, viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'none', 'aria-hidden': 'true', focusable: 'false' });
     const defs = svg('defs'), deg = svg('linearGradient', { id, x1: 0, y1: 0, x2: 0, y2: 1 });
     deg.append(svg('stop', { offset: '0', class: 'mk-stop', 'stop-opacity': '0.3' }), svg('stop', { offset: '1', class: 'mk-stop', 'stop-opacity': '0' }));
     defs.append(deg);
@@ -442,24 +488,31 @@
         "We can't show CoinGecko's data right now. Please try again later.")));
       return;
     }
-    const g = serie && !atrasada() ? modelo.graficoPestana(serie, '1m', idioma()) : null;
+    // La misma cifra que el final del minigráfico: el último punto de la serie.
+    const g = serie ? modelo.graficoPestana(serie, '1m', idioma()) : null;
     const a = el('a', 'mk-ct');
     a.href = '/mercado/';
     const izq = el('span', 'mk-ct-izq');
-    izq.append(el('span', 'mk-ct-nom', tx('Activos tokenizados', 'Tokenised assets')), el('span', 'mk-ct-sub', tx('Mercado mundial', 'Global market')));
+    izq.append(el('span', 'mk-ct-nom', tx('Activos tokenizados', 'Tokenised assets')),
+      el('span', 'mk-ct-sub', serie ? tx(`Los ${serie.incluidos} mayores · CoinGecko`, `${serie.incluidos} largest · CoinGecko`) : tx('Toda la categoría · CoinGecko', 'Whole category · CoinGecko')));
     const der = el('span', 'mk-ct-der');
     der.append(el('span', 'mk-ct-cifra', modelo.millones(hoy.valor, idioma())));
-    if (g) {
-      const c = cambio(g, 'mk-ct-cambio');
-      der.append(c, el('span', 'mk-ct-periodo', g.periodoTexto), el('span', 'mk-ct-alcance', g.alcance));
-    } else if (atrasada()) der.append(el('span', 'mk-ct-periodo', tx('serie hasta el ', 'series to ') + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma())));
+    if (g) der.append(cambio(g, 'mk-ct-cambio'), el('span', 'mk-ct-periodo', g.periodoTexto));
+    if (atrasada()) der.append(el('span', 'mk-ct-periodo mk-ct-hasta', tx('serie hasta el ', 'series to ') + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma())));
     a.append(izq);
     if (g) a.append(minigrafico(g));
     a.append(der);
-    a.setAttribute('aria-label', tx('Mercado de activos tokenizados', 'Tokenised asset market') + ': ' + modelo.millonesHablados(hoy.valor, idioma()) +
-      (g ? ', ' + (g.direccion === 'sube' ? tx('sube', 'up') : g.direccion === 'baja' ? tx('baja', 'down') : tx('sin cambios', 'unchanged')) + ' ' + g.cambioTexto + ' ' + g.cambioFrase + ', ' + g.alcance + (g.avisoTokens ? '; ' + g.avisoTokens : '') : '') +
+    a.setAttribute('aria-label', tx('Mercado de activos tokenizados', 'Tokenised asset market') + ', ' +
+      (serie ? tx(`suma de los ${serie.incluidos} mayores tokens`, `sum of the ${serie.incluidos} largest tokens`) : tx('total de la categoría', 'category total')) + ': ' +
+      modelo.millonesHablados(hoy.valor, idioma()) +
+      (g ? ', ' + (g.direccion === 'sube' ? tx('sube', 'up') : g.direccion === 'baja' ? tx('baja', 'down') : tx('sin cambios', 'unchanged')) + ' ' + g.cambioTexto + ' ' + g.cambioFrase + (g.avisoTokens ? '; ' + g.avisoTokens : '') : '') +
+      (atrasada() ? '; ' + tx('serie hasta el ', 'series to ') + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma()) : '') +
       '. ' + tx('Ver el gráfico', 'See the chart'));
-    cuerpo.replaceChildren(a, lineaFuente({ conSerie: false }));
+    const partes = [a];
+    // El % del mes es del tamaño del mercado, no una rentabilidad: también aquí.
+    if (g) partes.push(el('p', 'mk-explica mk-ct-explica', modelo.explicacionCambio(idioma())));
+    partes.push(lineaFuente({ conTotal: false }));
+    cuerpo.replaceChildren(...partes);
   }
 
   function pintar() {

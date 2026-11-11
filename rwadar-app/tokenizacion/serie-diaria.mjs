@@ -7,18 +7,23 @@
 
      node rwadar-app/tokenizacion/serie-diaria.mjs RUTA/tokenizacion-serie.json
 
-   1. /coins/markets de la categoría «tokenized-products»: los 40 mayores de
-      hoy y su cuota del total (unos 93 %).
-   2. /coins/{id}/market_chart de cada uno (365 días, diario), con 13 s
+   1. /coins/categories: el total de la categoría «tokenized-products», el
+      mismo que enseñan la cabecera y los tipos. Es el denominador de las
+      cuotas (si no responde, la suma de la lista, y lo dice el registro).
+   2. /coins/markets de la categoría: los 40 mayores de hoy.
+   3. /coins/{id}/market_chart de cada uno (366 días, diario), con 13 s
       entre llamadas (unos 9 minutos en total) para no pasar del límite
       gratuito: con 3 s CoinGecko daba 429 una vez sí y otra no. Si CoinGecko responde
       429, se espera (Retry-After, como mucho 2 minutos) y se reintenta.
-   3. La suma diaria (rwadar-movil/lib/tokenizacion.js, construirSerie).
+   4. La suma diaria (rwadar-movil/lib/tokenizacion.js, construirSerie) de
+      los mayores con historia completa (el 11/11/2026, 29 de los 40).
 
    Si un token no se puede leer, queda fuera de toda la serie y se dice
-   cuántos entran. Si faltan tantos que pesan más del 5 % del total, o falla
-   la lista, NO se escribe nada (se conserva la serie anterior) y termina con
-   el código 3. Si a un token le faltan en CoinGecko más de 3 días de su
+   cuántos entran. Si faltan tantos que pesan más del 1 % del total (QA del
+   11/11/2026: con un 5 %, si fallaba Ondo, del 4,8 %, salía una serie nueva
+   con un −5,6 % de golpe que el mercado no había tenido), o falla la lista,
+   NO se escribe nada (se conserva la serie anterior) y termina con el
+   código 3. Si a un token le faltan en CoinGecko más de 3 días de su
    historia (huecos de más de 3 días o una historia que acaba antes de hoy),
    también queda fuera («discontinuos») y la nota del gráfico lo dice; si
    así la serie no llega al 75 % del total, tampoco se escribe. Exige TLS. No publica, no usa claves y solo escribe el
@@ -37,7 +42,7 @@ const INTENTOS = 3;
 const ESPERA_429_MS = 60000;
 const ESPERA_MAX_MS = 120000;
 const MAX_BYTES = 4 * 1024 * 1024;
-const PERDIDA_MAX_PCT = 5;
+const PERDIDA_MAX_PCT = 1;
 const COBERTURA_MIN_PCT = 75;
 
 const dormir = ms => new Promise(r => setTimeout(r, ms));
@@ -68,10 +73,26 @@ async function pedirJSON(url, { fetchImpl, esperar, avisar }) {
 }
 
 /* La serie nueva, o lanza si no se puede construir con garantías. */
+/* El total de la categoría (/coins/categories) o null si no se puede leer. */
+async function totalCategoria({ fetchImpl, esperar, avisar }) {
+  try {
+    const lista = await pedirJSON(modelo.FUENTE.api, { fetchImpl, esperar, avisar });
+    const c = Array.isArray(lista) ? lista.find(x => x && x.id === modelo.SERIE.categoria) : null;
+    const v = c?.market_cap;
+    if (typeof v === 'number' && Number.isFinite(v) && v > 0) return v;
+    throw new Error('sin el valor de la categoría');
+  } catch (e) {
+    avisar(`Total de la categoría: no se pudo leer (${e.message}); las cuotas usan la suma de la lista.`);
+    return null;
+  }
+}
+
 export async function reconstruir({ fetchImpl = fetch, esperar = dormir, ahora = Date.now, avisar = () => {}, pausaMs = PAUSA_MS } = {}) {
+  const categoria = await totalCategoria({ fetchImpl, esperar, avisar });
+  await esperar(pausaMs);
   const lista = await pedirJSON(modelo.SERIE.apiMercados, { fetchImpl, esperar, avisar });
-  const { mayores, total, cobertura } = modelo.elegirMayores(lista);
-  avisar(`Lista de CoinGecko: ${mayores.length} mayores, ${cobertura} % del total.`);
+  const { mayores, total, cobertura } = modelo.elegirMayores(lista, modelo.SERIE.mayores, categoria);
+  avisar(`Lista de CoinGecko: ${mayores.length} mayores, ${cobertura} % del total${categoria ? ' de la categoría' : ' de la lista'}.`);
   const historias = [], incluidos = [], fallidos = [], discontinuos = [];
   const hoy = new Date(ahora()).toISOString().slice(0, 10);
   for (const t of mayores) {

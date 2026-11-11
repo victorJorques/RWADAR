@@ -4,7 +4,7 @@
    el generador, con el motor congelado de esa app), la copia web del motor, el script sin
    innerHTML ni terceros, y en Chromium a 390 × 844 y 1366 × 900: en Inicio,
    dentro de «Mercado y noticias» (11/11/2026), 3 noticias compactas que
-   llevan a su detalle; en /mercado/, debajo del gráfico, las 8 con su detalle
+   llevan a su detalle; en /mercado/, debajo del gráfico, las 6 con su detalle
    en un diálogo accesible con su enlace que sale de RWAdar, teclado,
    /mercado/#id, /noticias/#id (lleva a /mercado/#id), inglés y archivo caído. Sin red. */
 import test from 'node:test';
@@ -102,7 +102,7 @@ async function conFotos(pagina, pedidas) {
   await pagina.route('**/noticias-editoriales/*.webp', r => { pedidas.push(new URL(r.request().url()).pathname); return r.fulfill({ status: 200, contentType: 'image/webp', body: FOTO_PRUEBA }); });
 }
 
-test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /mercado/ con las 8, teclado, diálogo, #id, /noticias/#id, inglés y archivo caído', { skip: sinNavegador, timeout: 180000 }, async () => {
+test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /mercado/ con las 6, teclado, diálogo, #id, /noticias/#id, inglés y archivo caído', { skip: sinNavegador, timeout: 180000 }, async () => {
   // El dato de hoy no importa aquí: su API se corta y la cotización usa la copia estática.
   const local = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0,
     responder: async url => (url.hostname === 'api.coingecko.com' ? new Response('{}', { status: 429 }) : null) });
@@ -151,7 +151,7 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
       assert.deepEqual(m.href, DATOS.noticias.slice(0, 3).map(n => `/mercado/#${n.id}`));
       assert.equal(m.conEtiqueta, 0, 'el nombre sale del texto visible, no de un aria-label');
       assert.equal(m.hoy, 1, 'el 10/11, «Hoy» solo en la del 10/11');
-      assert.equal(m.ayer, 2, 'y «Ayer» en las dos del 09/11');
+      assert.equal(m.ayer, 1, 'y «Ayer» en la del 09/11');
       assert.equal(m.meta[0], 'CNMV · 10/11/2026 Hoy', 'la fuente y la fecha, en pequeño');
       assert.deepEqual(m.fotos, DATOS.noticias.slice(0, 3).map(n => `/noticias-editoriales/${n.imagen}.webp`));
       assert.ok(pedidas.length >= 1 && pedidas.every(r => /^\/noticias-editoriales\/[a-z0-9-]+\.webp$/.test(r)));
@@ -165,7 +165,7 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
       assert.equal(m.color, 'rgb(247, 245, 240)');
       assert.equal(m.bloque, 'Mercado y noticias');
       assert.equal(m.cabecera, 'Noticias');
-      assert.equal(m.fecha, 'Actualizadas el 10/11');
+      assert.equal(m.fecha, 'Actualizadas el 11/11');
       assert.equal(m.ver, 'Ver mercado y noticias→');
       assert.equal(m.nota, 'Imágenes ilustrativas generadas con IA, no fotos de la noticia.');
       assert.ok(m.traCotizacion, 'debajo de la cotización');
@@ -204,11 +204,11 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
         };
       });
       assert.deepEqual(erroresL, []);
-      assert.equal(l.n, 8, 'las 8');
+      assert.equal(l.n, 6, 'las 6');
       assert.ok(l.botones.every(b => b === 'BUTTON:button'));
       assert.ok(l.titulos.every(t => t === 'H3'), 'bajo «Noticias relacionadas» (h2), los titulares son h3');
-      assert.equal(l.resumen, DATOS.noticias[0].resumen);
-      assert.equal(l.unaLinea, '1', 'una línea de resumen');
+      assert.equal(l.resumen, `Por qué te importa: ${DATOS.noticias[0].porQueImporta}`, 'la primera dice ya por qué te importa');
+      assert.equal(l.unaLinea, '2', 'las demás, dos líneas de resumen (con una, se cortaba a media palabra)');
       assert.equal(l.meta, 'CNMV · 10/11/2026 Hoy');
       assert.ok(l.fotoDerecha, 'la foto a la derecha');
       assert.equal(l.anchoPagina, ancho);
@@ -236,7 +236,7 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
       assert.ok(!d.texto.includes(n.tituloInformativo), 'sin repetir el titular con otras palabras');
       assert.equal(d.flechaSola, false, 'la flecha va dentro del texto del botón');
       for (const parte of ['09/11/2026', 'Producto', 'UE', 'Ayer', n.resumen, 'Por qué te importa', n.porQueImporta, 'Fuente', n.fuente.nombre,
-        'Consultada el 10/11/2026', 'Selección editorial de RWAdar con enlace a la fuente. No es una recomendación.']) assert.ok(d.texto.includes(parte), parte);
+        'Consultada el 11/11/2026', 'Selección editorial de RWAdar con enlace a la fuente. No es una recomendación.']) assert.ok(d.texto.includes(parte), parte);
       assert.equal(d.href, n.fuente.url);
       assert.equal(d.target, '_blank');
       assert.equal(d.rel, 'noopener noreferrer');
@@ -258,7 +258,7 @@ test('en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»; /m
       const en = await lista.evaluate(() => ({ fecha: document.getElementById('ntFecha').textContent,
         primero: document.querySelector('#ntLista .nt-art-tit').textContent, hoy: document.querySelector('#ntLista .nt-hoy').textContent,
         nota: document.getElementById('ntNota').textContent, h1: document.querySelector('h1').textContent }));
-      assert.deepEqual(en, { fecha: 'Updated on 10 Nov', primero: DATOS.noticias[0].en.titulo, hoy: 'Today',
+      assert.deepEqual(en, { fecha: 'Updated on 11 Nov', primero: DATOS.noticias[0].en.titulo, hoy: 'Today',
         nota: 'Illustrative AI-generated images, not photos of the news.', h1: 'Tokenised asset market' });
       await lista.click(`#ntLista [data-nt-id="${DATOS.noticias[0].id}"]`);
       await lista.waitForSelector('#ntDialogo[open]');

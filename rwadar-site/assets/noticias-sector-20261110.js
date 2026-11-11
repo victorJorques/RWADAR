@@ -115,8 +115,9 @@
     li.append(a);
     return li;
   }
-  /* /mercado/: la fuente y la fecha, el titular, una línea de resumen y la
-     foto; el titular es un botón que abre el detalle entero (toda la fila). */
+  /* /mercado/: la fuente y la fecha, el titular, dos líneas de resumen (la
+     primera, «Por qué te importa») y la foto; el titular es un botón que abre
+     el detalle entero (toda la fila). */
   function tarjetaLista(n, i) {
     const t = modelo.textos(n, idioma());
     const li = el('li', 'nt-fila');
@@ -135,7 +136,12 @@
     b.dataset.ntId = n.id;
     b.append(dato('span', '', t.titulo));
     h.append(b);
-    texto.append(m, h, dato('p', 'nt-art-resumen', t.resumen));
+    // La primera dice ya por qué te importa (el detalle lleva el resumen y eso); las demás, dos líneas de resumen.
+    if (i === 0) {
+      const importa = el('p', 'nt-art-resumen nt-art-importa');
+      importa.append(el('span', 'nt-art-importa-rot', 'Por qué te importa'), ': ', dato('span', '', t.porQueImporta));
+      texto.append(m, h, importa);
+    } else texto.append(m, h, dato('p', 'nt-art-resumen', t.resumen));
     art.append(texto);
     li.append(art);
     return li;

@@ -232,6 +232,11 @@ const playwright = cargarPlaywright();
 const sinNavegador = playwright ? false : 'Playwright no está instalado (en CI no lo está): se omite la prueba en Chromium';
 
 const SERIE = modelo.validarSerie(JSON.parse(fs.readFileSync(path.join(RAIZ, 'rwadar-site/datos/tokenizacion-serie.json'), 'utf8')));
+const ULTIMO = SERIE.puntos.at(-1);
+// El dato en vivo que sirve el servidor local: la respuesta real de CoinGecko del 10/11/2026 a las 15:25 UTC.
+const VIVO = { fuente: 'coingecko', actualizado: '2026-11-10T15:25:40.000Z', total: { valor: 49683537033 } };
+const plano = t => String(t).replace(/\s+/g, ' ').trim();
+const NUM = t => Number(String(t).match(/\d[\d.]*/)[0].replace(/\./g, ''));
 test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio con la cotización; /mercado/ con pestañas, gráfico, cruz con ratón y teclado, tabla, datos clave, inglés y CoinGecko caído', { skip: sinNavegador, timeout: 180000 }, async () => {
   // Las fuentes, sin huellas: el worker se compila desde rwadar-acceso/.
   const local = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, responder: async (url) => {
@@ -253,22 +258,26 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
         const fuera = [...s.querySelectorAll('*')].filter(n => !n.closest('.solo-lector'))
           .filter(n => { const b = n.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5); });
         const a = s.querySelector('a.mk-ct');
-        return { href: a.getAttribute('href'), nombre: a.querySelector('.mk-ct-nom').textContent, cifra: a.querySelector('.mk-ct-cifra').textContent,
-          cambio: a.querySelector('.mk-cambio').textContent, periodo: a.querySelector('.mk-ct-periodo').textContent, alcance: a.querySelector('.mk-ct-alcance')?.textContent, mini: !!a.querySelector('svg.mk-mini-svg .mk-linea'),
+        return { href: a.getAttribute('href'), nombre: a.querySelector('.mk-ct-nom').textContent, sub: a.querySelector('.mk-ct-sub').textContent, cifra: a.querySelector('.mk-ct-cifra').textContent,
+          cambio: a.querySelector('.mk-cambio').textContent, periodo: a.querySelector('.mk-ct-periodo').textContent, alcance: a.querySelector('.mk-ct-alcance')?.textContent ?? null, mini: !!a.querySelector('svg.mk-mini-svg .mk-linea'),
+          explica: s.querySelector('.mk-ct-explica')?.textContent, cabecera: [...document.querySelectorAll('.hdr-nav a.hdr-link')].map(x => x.getAttribute('href')),
           etiqueta: a.getAttribute('aria-label'), ver: s.querySelector('a.ini-ver[href="/mercado/"]')?.textContent.trim(), fuente: s.querySelector('.mk-fuente').textContent,
           fuera: fuera.length, anchoPagina: document.documentElement.scrollWidth,
           trasOfertas: document.getElementById('relNuevas').compareDocumentPosition(s) & Node.DOCUMENT_POSITION_FOLLOWING };
       });
       assert.equal(c.href, '/mercado/');
       assert.equal(c.nombre, 'Activos tokenizados');
-      assert.equal(c.cifra, '49.684 M$', 'la cifra de hoy, en vivo');
+      assert.equal(c.sub, `Los ${SERIE.incluidos} mayores · CoinGecko`, 'qué suma la cifra (antes, «Mercado mundial»)');
+      assert.equal(c.cifra, modelo.millones(ULTIMO.valor), 'la misma cifra que el final del minigráfico (42.947 M$), no el total en vivo (49.684 M$)');
       assert.equal(c.cambio, { sube: '▲', baja: '▼', igual: '=' }[g1m.direccion] + g1m.cambioTexto, 'el cambio del mes, con flecha y signo');
       assert.equal(c.periodo, 'último mes');
-      assert.equal(c.alcance, `suma de los ${SERIE.incluidos} mayores`, 'el % es de la suma de los N mayores, no de la cifra total');
+      assert.equal(c.alcance, null);
+      assert.equal(c.explica, modelo.explicacionCambio(), 'qué mide el %, también en Inicio');
       assert.ok(c.mini, 'el minigráfico del mes');
-      assert.match(c.etiqueta, new RegExp(`^Mercado de activos tokenizados: 49\\.684 millones de dólares, (sube|baja|sin cambios) \\S+\\s% en el último mes, suma de los ${SERIE.incluidos} mayores\\. Ver el gráfico$`));
+      assert.match(c.etiqueta, new RegExp(`^Mercado de activos tokenizados, suma de los ${SERIE.incluidos} mayores tokens: 42\\.947 millones de dólares, (sube|baja|sin cambios) \\S+\\s% en el último mes\\. Ver el gráfico$`));
       assert.equal(c.ver, 'Ver mercado y noticias→');
-      assert.match(c.fuente, /^Datos: CoinGecko · dato de hoy del 10\/11\/2026, 15:25 UTC$/);
+      assert.equal(c.fuente, `Datos: CoinGecko · serie diaria hasta el ${modelo.fechaCorta(ULTIMO.fecha)}`);
+      assert.deepEqual(c.cabecera, ['#emisiones', '/mercado/', '#tool', '/academy/', '/android'], 'la cabecera de Inicio lleva a «Mercado y noticias»');
       assert.equal(c.fuera, 0);
       assert.equal(c.anchoPagina, ancho);
       assert.ok(c.trasOfertas, 'después de «Ofertas»');
@@ -297,9 +306,16 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
           .filter(n => { const b = n.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5); });
         const eje = [...svg.querySelectorAll('.mk-eje text')];
         const anchoSvg = svg.getBoundingClientRect().width;
-        return { h1: document.querySelector('h1').textContent, cifra: s.querySelector('.mk-cifra-num').textContent, hablado: s.querySelector('.mk-cifra .solo-lector').textContent,
+        const dd = rotulo => [...s.querySelectorAll('.mk-clave-item')].find(d => d.querySelector('dt').textContent === rotulo)?.querySelector('dd').textContent ?? null;
+        const ultimo = s.querySelector('.mk-ultimo rect'), tit = document.querySelector('h1').getBoundingClientRect();
+        return { h1: document.querySelector('h1').textContent, h1Alto: tit.height, cifra: s.querySelector('.mk-cifra-num').textContent, hablado: s.querySelector('.mk-cifra .solo-lector').textContent,
+          sub: s.querySelector('.mk-sub').textContent, explica: s.querySelector('.mk-explica')?.textContent, totalCat: s.querySelector('.mk-total-cat')?.textContent,
           cambio: s.querySelector('.mk-linea-cambio .mk-cambio').textContent, periodo: s.querySelector('.mk-periodo').textContent,
-          alcance: s.querySelector('.mk-alcance')?.textContent, avisoTokens: s.querySelector('.mk-aviso-tokens')?.textContent ?? null,
+          alcance: s.querySelector('.mk-alcance')?.textContent ?? null, avisoTokens: s.querySelector('.mk-aviso-tokens')?.textContent ?? null,
+          pildora: s.querySelector('.mk-ultimo text')?.textContent, pildoraY: ultimo ? Number(ultimo.getAttribute('y')) + 9 : null,
+          suelo: Number(svg.querySelector('.mk-suelo').getAttribute('x2')), cruzH: svg.querySelectorAll('.mk-cruz line').length,
+          maximo: dd('Máximo del periodo'), valorHoy: dd('Valor hoy (29 mayores)'), total: dd('Total de la categoría hoy'), c24: dd('Cambio en 24 h'), tokens: dd('Tokens en el gráfico'),
+          tiposAbiertos: s.querySelector('.mk-tipos-det')?.open, tiposSum: s.querySelector('.mk-tipos-sum')?.textContent,
           puentes: svg.querySelectorAll('.mk-puente').length, cortesArea: (svg.querySelector('.mk-area').getAttribute('d').match(/M/g) || []).length,
           pestanas: [...s.querySelectorAll('.mk-pestana')].map(b => [b.textContent, b.getAttribute('aria-pressed'), b.tagName, b.getAttribute('aria-label')]),
           grupo: s.querySelector('.mk-pestanas').getAttribute('role'),
@@ -317,33 +333,52 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       let m = await leer();
       assert.deepEqual(errores, [], `${ancho}: sin errores de JavaScript`);
       assert.equal(m.h1, 'Mercado de activos tokenizados');
-      assert.equal(m.cifra, '49.684 M$');
-      assert.equal(m.hablado, '49.684 millones de dólares');
+      assert.ok(m.h1Alto < 50, `${ancho}: el título, en una línea (${m.h1Alto} px)`);
+      // La cifra grande es el último punto de la serie (42.947 M$); el total de la categoría (49.684 M$) va debajo, con su nombre y su hora.
+      assert.equal(plano(m.cifra), plano(modelo.millones(ULTIMO.valor)));
+      assert.equal(m.hablado, '42.947 millones de dólares');
+      assert.equal(m.sub, `Suma de los ${SERIE.incluidos} mayores tokens · ${modelo.fechaCorta(ULTIMO.fecha)}`);
       assert.equal(m.cambio, { sube: '▲', baja: '▼', igual: '=' }[g1m.direccion] + g1m.cambioTexto);
       assert.equal(m.periodo, 'en el último mes');
-      assert.equal(m.alcance, `· suma de los ${SERIE.incluidos} mayores`, 'a qué se refiere el %: la suma de los N mayores, no la cifra total');
+      assert.equal(m.alcance, null, 'el subtítulo ya dice qué suma');
+      assert.equal(m.explica, 'Mide cuánto vale en total el mercado: sube también cuando se emiten tokens nuevos. No es lo que habría ganado una inversión.');
+      assert.equal(m.totalCat, modelo.lineaTotalCategoria(SERIE, VIVO, 'es'));
+      assert.match(m.totalCat, /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \((dato del 10\/11\/2026, 15:25|hoy, 15:25) UTC\)\. La cifra grande y el gráfico suman los 29 mayores con historia completa\.$/);
       assert.equal(m.avisoTokens, null, '1 M: mismos tokens al principio y al final');
+      // Datos clave: dos cifras con su nombre; el valor de hoy no supera el máximo; 24 h de la serie (nunca el +124 %).
+      assert.equal(plano(m.valorHoy), plano(modelo.millones(ULTIMO.valor) + modelo.fechaCorta(ULTIMO.fecha)));
+      assert.equal(plano(m.total), plano('49.684 M$todos los tokens · CoinGecko'));
+      assert.equal(plano(m.c24), plano('▼−0,1 %29 mayores'));
+      assert.equal(plano(m.tokens), plano(`${SERIE.incluidos}86 % del total`), 'el mismo 86 % que la nota');
+      assert.ok(NUM(m.maximo) >= NUM(m.cifra), `máximo ${m.maximo} ≥ cifra ${m.cifra}`);
       assert.equal(m.grupo, 'group');
-      assert.deepEqual(m.pestanas.map(p => p[0]), ['1 S', '1 M', '3 M', '6 M', 'YTD', '1 A']);
+      assert.deepEqual(m.pestanas.map(p => p[0]), ['1 S', '1 M', '3 M', '6 M', '2026', '1 A'], '«2026» en lugar de «YTD»');
       assert.deepEqual(m.pestanas.map(p => p[1]), ['false', 'true', 'false', 'false', 'false', 'false'], '1 M por defecto');
       assert.ok(m.pestanas.every(p => p[2] === 'BUTTON'));
-      assert.deepEqual(m.pestanas.map(p => p[3]), ['1 semana', '1 mes', '3 meses', '6 meses', 'Este año', '1 año']);
+      assert.deepEqual(m.pestanas.map(p => p[3]), ['1 semana', '1 mes', '3 meses', '6 meses', 'En 2026', '1 año']);
+      // El último valor, en su píldora a la altura del final de la línea; el suelo no tacha el eje; la cruz, solo vertical.
+      assert.equal(m.pildora, '42.947');
+      assert.ok(m.suelo < m.anchoSvg - 50, 'el suelo acaba donde el dibujo');
+      assert.equal(m.cruzH, 1, 'la cruz es una sola raya, vertical');
+      assert.equal(m.tiposAbiertos, ancho >= 768, ancho >= 768 ? 'en escritorio, los tipos abiertos' : 'en el móvil, plegados: las noticias suben');
+      if (ancho < 768) assert.match(m.tiposSum, /^Ver los 8 tiposCrédito privado 55,6\s% · Letras del Tesoro/);
       assert.equal(m.trazo, g1m.direccion === 'baja' ? 'rgb(255, 107, 94)' : g1m.direccion === 'sube' ? 'rgb(37, 227, 154)' : 'rgb(187, 181, 171)', 'verde si sube, rojo si baja');
       assert.equal(m.grosor, '2px');
       assert.match(m.area, /^url\(#mkDeg/);
       assert.notEqual(m.base, 'none', 'la línea de puntos del valor de partida');
-      assert.deepEqual(m.valoresDerecha, g1m.marcasValores.map(x => x.texto), 'el eje de valores, a la derecha');
-      assert.ok(m.valoresDerecha.length >= 4 && m.valoresDerecha.length <= 5);
+      assert.ok(m.valoresDerecha.every(v => g1m.marcasValores.some(x => x.texto === v)) && m.valoresDerecha.length >= 3, 'el eje de valores, a la derecha');
+      assert.ok(!m.valoresDerecha.includes('43.000'), 'la marca que chocaría con la píldora (42.947) no se escribe');
       assert.deepEqual(m.fechas, g1m.marcasFechas.map(x => x.texto));
-      assert.equal(m.altoSvg, ancho < 768 ? 240 : 300);
+      assert.equal(m.altoSvg, ancho < 768 ? 270 : 330, 'con una franja de 40 px arriba para la burbuja');
       assert.ok(Math.abs(m.anchoSvg - m.anchoCaja) < 2, 'a todo el ancho');
       assert.equal(m.rol, 'slider');
       assert.equal(m.tabla, g1m.puntos.length + 1, 'la tabla equivalente, con todos los días');
-      assert.equal(m.caption, 'Valor diario, último mes (suma de los mayores tokens)');
+      assert.equal(m.caption, `Valor diario, último mes (suma de los ${SERIE.incluidos} mayores tokens)`);
       assert.equal(m.nota, modelo.notaCorta(SERIE), 'una línea corta a la vista');
-      assert.equal(m.notaLarga, modelo.notaSerie(SERIE));
+      assert.equal(m.notaLarga, modelo.notaSerie(SERIE, 'es', '1m'));
       assert.deepEqual(m.como, ['Cómo se calcula', false], 'el resto, en un desplegable cerrado');
-      assert.deepEqual(m.clave, ['Valor total hoy', 'Cambio en 24 h', 'Máximo del periodo', 'Mínimo del periodo', 'Tokens en el gráfico', 'Tipo mayor']);
+      assert.deepEqual(m.clave, [`Valor hoy (${SERIE.incluidos} mayores)`, 'Total de la categoría hoy', 'Cambio en 24 h', 'Máximo del periodo', 'Mínimo del periodo',
+        'Tokens en el gráfico', 'El tipo que más pesa']);
       assert.equal(m.tipos, 8);
       assert.equal(m.fuente, 'https://www.coingecko.com/');
       assert.equal(m.fuera, 0, `${ancho}: nada se sale por los lados`);
@@ -356,10 +391,14 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
         await pagina.waitForSelector('#tokenizacion .mk-svg');
         m = await leer();
         assert.equal(m.avisoTokens, g.avisoTokens ? g.avisoTokens[0].toUpperCase() + g.avisoTokens.slice(1) + '.' : null, `${p.clave}: aviso de tokens nuevos`);
+        assert.ok(NUM(m.maximo) >= NUM(m.cifra), `${p.clave}: máximo ${m.maximo} ≥ cifra grande ${m.cifra}`);
+        assert.equal(plano(m.cifra), plano(modelo.millones(ULTIMO.valor)), `${p.clave}: la cifra grande no cambia de pestaña`);
+        assert.equal(m.notaLarga, modelo.notaSerie(SERIE, 'es', p.clave), `${p.clave}: «Cómo se calcula», con los que entran a mitad`);
         assert.equal(m.puentes, modelo.tramosSeguidos(g).length > 1 ? 1 : 0, `${p.clave}: el hueco, con un trazo de puntos`);
         assert.equal(m.cortesArea, 1, `${p.clave}: el área de fondo no se corta`);
         if (p.clave === '1a') assert.equal(m.avisoTokens, 'De 16 a 29 tokens: parte de la subida son tokens nuevos.');
-        assert.equal(m.pestanas.find(x => x[0] === p.corto)[1], 'true', p.clave);
+        if (p.clave === '1a') assert.ok(m.notaLarga.includes('En este periodo, 13 de los 29 entran a mitad'));
+        assert.equal(m.pestanas.find(x => x[0] === modelo.etiquetaPestana(p.clave, 'es', SERIE).corto)[1], 'true', p.clave);
         assert.equal(m.tabla, g.puntos.length + 1, p.clave);
         assert.deepEqual(m.fechas, g.marcasFechas.map(x => x.texto), p.clave);
         assert.equal(m.fuera, 0, p.clave);
@@ -372,8 +411,10 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       await pagina.mouse.move(caja.x + 2, caja.y + caja.height / 2);
       await pagina.waitForSelector('.mk-burbuja:not([hidden])');
       const cruz = await pagina.evaluate(() => ({ fecha: document.querySelector('.mk-burbuja-fecha').textContent, valor: document.querySelector('.mk-burbuja-valor').textContent,
-        visible: document.querySelector('.mk-cruz').getAttribute('visibility') }));
-      assert.deepEqual(cruz, { fecha: modelo.fechaCorta(g1m.puntos[0].fecha), valor: modelo.millones(g1m.puntos[0].valor), visible: 'visible' });
+        cambio: document.querySelector('.mk-burbuja-cambio').textContent, visible: document.querySelector('.mk-cruz').getAttribute('visibility'),
+        encima: document.querySelector('.mk-burbuja').getBoundingClientRect().bottom <= document.querySelector('.mk-svg').getBoundingClientRect().top + 40 }));
+      assert.deepEqual(cruz, { fecha: modelo.fechaCorta(g1m.puntos[0].fecha), valor: modelo.millones(g1m.puntos[0].valor), cambio: '0,0' + '\u00a0%', visible: 'visible', encima: true },
+        'la burbuja, en una línea en la franja de arriba: no tapa la línea');
       await pagina.mouse.move(0, 0);
       await pagina.waitForSelector('.mk-burbuja[hidden]', { state: 'attached' });
       // Con el teclado: Tab hasta el gráfico (con foco visible) y las flechas recorren los días.
@@ -388,12 +429,20 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.equal(await pagina.getAttribute('.mk-graf', 'aria-valuetext'), `${modelo.fechaCorta(g1m.puntos[n - 3].fecha)}: ${modelo.millonesHablados(g1m.puntos[n - 3].valor)}`);
       await pagina.keyboard.press('Home');
       assert.equal(await pagina.getAttribute('.mk-graf', 'aria-valuenow'), '0');
+      // La cruz en el último día dice la cifra grande.
+      await pagina.keyboard.press('End');
+      const fin = await pagina.evaluate(() => ({ burbuja: document.querySelector('.mk-burbuja-valor').textContent, cifra: document.querySelector('.mk-cifra-num').textContent }));
+      assert.equal(plano(fin.burbuja), plano(fin.cifra), 'la burbuja del último día = la cifra grande');
       // En inglés: textos y cifras en su formato.
       await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="en"]').click());
       await pagina.waitForFunction(() => document.querySelector('h1').textContent === 'Tokenised asset market');
-      const en = await pagina.evaluate(() => ({ cifra: document.querySelector('.mk-cifra-num').textContent, periodo: document.querySelector('.mk-periodo').textContent + ' ' + document.querySelector('.mk-alcance').textContent,
-        pestanas: [...document.querySelectorAll('.mk-pestana')].map(b => b.textContent), clave: document.querySelector('.mk-clave dt').textContent }));
-      assert.deepEqual(en, { cifra: '$49,684M', periodo: `past month · sum of the ${SERIE.incluidos} largest`, pestanas: ['1W', '1M', '3M', '6M', 'YTD', '1Y'], clave: 'Total value today' });
+      const en = await pagina.evaluate(() => ({ cifra: document.querySelector('.mk-cifra-num').textContent, periodo: document.querySelector('.mk-periodo').textContent,
+        sub: document.querySelector('.mk-sub').textContent, explica: document.querySelector('.mk-explica').textContent,
+        pestanas: [...document.querySelectorAll('.mk-pestana')].map(b => b.textContent), ytd: document.querySelector('[data-pestana="ytd"]').getAttribute('aria-label'),
+        clave: document.querySelector('.mk-clave dt').textContent }));
+      assert.deepEqual(en, { cifra: '$42,947M', periodo: 'past month', sub: `Sum of the ${SERIE.incluidos} largest tokens · ${modelo.fechaCorta(ULTIMO.fecha, 'en')}`,
+        explica: 'It measures the total size of the market, which also grows when new tokens are issued. It is not the return on any investment.',
+        pestanas: ['1W', '1M', '3M', '6M', 'YTD', '1Y'], ytd: 'YTD, year to date', clave: `Value today (${SERIE.incluidos} largest)` });
       await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="es"]').click());
       await pagina.close();
     }
@@ -421,12 +470,14 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       await pagina.route('**/datos/tokenizacion-serie.json', r => r.fulfill({ contentType: 'application/json', body: JSON.stringify(vieja) }));
       await pagina.reload({ waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion .mk-svg', { timeout: 20000 });
-      assert.equal(await pagina.locator('#tokenizacion .mk-linea-cambio .mk-cambio').count(), 0, 'sin el cambio de una serie vieja');
-      assert.equal(await pagina.textContent('#tokenizacion .mk-aviso-serie'), 'Serie hasta el 05/11/2026: el cambio del periodo no se pone junto a la cifra de hoy.');
+      // La cifra grande y el cambio son los del último día de la serie (cuadran entre sí) y se dice de qué día son.
+      assert.equal(plano(await pagina.textContent('#tokenizacion .mk-cifra-num')), plano(modelo.millones(vieja.puntos.at(-1).valor)));
+      assert.equal(await pagina.locator('#tokenizacion .mk-linea-cambio .mk-cambio').count(), 1);
+      assert.equal(await pagina.textContent('#tokenizacion .mk-aviso-serie'), 'La serie llega hasta el 05/11/2026: la cifra grande y el gráfico son de ese día.');
       await pagina.goto(local.url + '/', { waitUntil: 'load' });
       await pagina.waitForSelector('#mercado .mk-ct', { timeout: 20000 });
-      assert.equal(await pagina.locator('#mercado .mk-ct .mk-cambio').count(), 0);
-      assert.equal(await pagina.textContent('#mercado .mk-ct-periodo'), 'serie hasta el 05/11/2026');
+      assert.equal(await pagina.locator('#mercado .mk-ct .mk-cambio').count(), 1);
+      assert.equal(await pagina.textContent('#mercado .mk-ct-hasta'), 'serie hasta el 05/11/2026');
       await contexto.close();
     }
     // CoinGecko da 429: la última foto guardada, con su aviso y su fecha; el gráfico sigue con la serie.
@@ -436,14 +487,16 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 } });
       await pagina.goto(local2.url + '/mercado/', { waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion[data-mercado-estado="foto-guardada+serie"]', { timeout: 20000 });
-      assert.match(await pagina.textContent('#tokenizacion .mk-aviso'), /Cifra de la última foto diaria de RWAdar, del 10\/11\/2026, 15:25 UTC/);
+      assert.match(await pagina.textContent('#tokenizacion .mk-total-cat'), /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \(última foto guardada, del 10\/11\/2026, 15:25 UTC\)\./);
       assert.equal(await pagina.locator('#tokenizacion .mk-svg').count(), 1);
       // Sin la serie: la cifra de hoy sigue y el gráfico lo dice.
       await pagina.route('**/datos/tokenizacion-serie.json', r => r.abort());
       await pagina.reload({ waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion[data-mercado-estado="foto-guardada"]', { timeout: 20000 });
       assert.match(await pagina.textContent('#mkCuerpo'), /El gráfico no está disponible ahora\. La cifra de hoy sí\./);
-      assert.equal(await pagina.textContent('.mk-cifra-num'), '49.684 M$');
+      assert.equal(plano(await pagina.textContent('.mk-cifra-num')), '49.684 M$', 'sin serie, la cifra grande es el total de la categoría');
+      assert.equal(await pagina.textContent('.mk-sub'), 'Total de la categoría en CoinGecko, con todos sus tokens');
+      assert.match(await pagina.textContent('#mkCuerpo'), /Sin la serie diaria, la cifra es el total de la categoría en CoinGecko \(última foto guardada, del 10\/11\/2026, 15:25 UTC\)\./);
       // Sin servidor, sin histórico y sin serie: estado vacío honesto, sin una sola cifra.
       await pagina.route('**/api/tokenizacion', r => r.abort());
       await pagina.route('**/datos/tokenizacion-historico.json', r => r.abort());

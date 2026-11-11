@@ -2,8 +2,9 @@ import { serieValida, validarSerie } from './tokenizacion';
 
 /* La serie de un año del gráfico «estilo bolsa» (11/11/2026): la app lee lo
    mismo que la web, el archivo estático /datos/tokenizacion-serie.json de
-   rwadar.pages.dev (la suma diaria de los 40 mayores tokens de CoinGecko,
-   que rehace cada día el flujo «Foto diaria de la tokenización»). Sin
+   rwadar.pages.dev (la suma diaria de los mayores tokens con historia
+   completa en CoinGecko, hoy 29 de los 40 mayores, que rehace cada día el
+   flujo «Foto diaria de la tokenización»). Sin
    cookies, sin sesión y sin datos del usuario. Diez segundos como mucho; si
    falla, el gráfico lo dice y la cifra de hoy sigue. Una respuesta buena se
    reutiliza 30 minutos en la misma sesión (la serie cambia una vez al día). */

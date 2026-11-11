@@ -1985,6 +1985,8 @@
   "Las cifras del mercado tokenizado, al día y con su fuente, están en": "Up-to-date figures for the tokenised market, with their source, are in",
   // «Mercado y noticias» al estilo de una app de bolsa (11/11/2026), web y app.
   "Mercado y noticias": "Market and news",
+  // La entrada corta de la cabecera de escritorio de Inicio (QA del 11/11/2026).
+  "Mercado": "Market",
   "El valor de los activos reales tokenizados y lo que pasa en el sector": "The value of tokenised real-world assets and what is happening in the sector",
   "Ver mercado y noticias": "See market and news",
   "Mercado de activos tokenizados": "Tokenised asset market",
