@@ -11,9 +11,9 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Ciclo 11/11: catálogo 24b5f7de, «Mercado y noticias», calculadora, noticias y guía de acceso",
+  "nota": "Ciclo 11/11 en main (squash de #101): catálogo 24b5f7de, «Mercado y noticias», calculadora, noticias y guía de acceso",
   "revisionAprobada": {
-    "commit": "aa4f65b36df362199b0767b202dfb650dfc22247",
+    "commit": "974477609a20bb06b041a88438081e8fc488b8e8",
     "contenidoSha256": "sha256:1c82e5c68617d1ad959ee0498066422b4863d5b56ffa1d6a021a36e1a6fbc550",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
