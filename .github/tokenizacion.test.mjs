@@ -67,7 +67,7 @@ test('el flujo: a diario a un minuto no redondo y a mano; lectura por defecto y 
   assert.match(FLUJO, /node rwadar-node-seguro\.js/);
   assert.match(FLUJO, /node-version: 22\.23\.4/);
   // La fecha que llega al mensaje del commit se comprueba antes.
-  assert.match(bloque(FLUJO, 'Guardar la foto (un commit por día)'), /\[\[ "\$FECHA" =~ \^\[0-9\]\{4\}-\[0-9\]\{2\}-\[0-9\]\{2\}\$ \]\]/);
+  assert.match(bloque(FLUJO, 'Guardar la foto y la serie (un commit por día)'), /\[\[ "\$FECHA" =~ \^\[0-9\]\{4\}-\[0-9\]\{2\}-\[0-9\]\{2\}\$ \]\]/);
 });
 
 /* ---- El flujo de verdad contra un «origin» de usar y tirar ---- */
@@ -109,7 +109,7 @@ function repoDePrueba() {
     const outputs = Object.fromEntries(fs.readFileSync(salida, 'utf8').trim().split('\n').filter(Boolean).map(l => l.split('=')));
     let guardar = null;
     if (codigo === 0 && outputs.cambiado === 'true') {
-      guardar = bash(bloque(FLUJO, 'Guardar la foto (un commit por día)'), { DATOS, FECHA: outputs.fecha });
+      guardar = bash(bloque(FLUJO, 'Guardar la foto y la serie (un commit por día)'), { DATOS, FECHA: outputs.fecha });
       assert.equal(guardar.codigo, 0, guardar.texto);
     }
     return { codigo, outputs, registro, preparar, guardar };
@@ -130,7 +130,7 @@ test('flujo: crea la rama huérfana con la semilla, una foto por día, idempoten
   assert.equal(repo.rama('rev-list', '--count', 'datos-tokenizacion').trim(), '1');
   assert.equal(repo.rama('log', '-1', '--format=%P', 'datos-tokenizacion').trim(), '', 'huérfana: sin padre');
   assert.equal(repo.rama('ls-tree', '--name-only', 'datos-tokenizacion').trim(), 'tokenizacion-historico.json', 'solo el histórico, sin el código');
-  assert.equal(repo.rama('log', '-1', '--format=%s', 'datos-tokenizacion').trim(), 'Foto de la tokenización del 2026-11-10 (datos: CoinGecko)');
+  assert.equal(repo.rama('log', '-1', '--format=%s', 'datos-tokenizacion').trim(), 'Foto y serie de la tokenización del 2026-11-10 (datos: CoinGecko)');
   assert.equal(repo.rama('show', 'datos-tokenizacion:tokenizacion-historico.json'), fs.readFileSync(SEMILLA, 'utf8'));
   // Otra vez el mismo día: no cambia nada ni hace commit.
   r = await repo.ejecutar({ fetchImpl: coingecko('2026-11-10T18:00:00.000Z', 2), ahora: AHORA + 3 * 3600000 });
@@ -252,4 +252,137 @@ test('foto-diaria.mjs: reintentos con espera (Retry-After hasta 2 min), nada esc
   // Sin semilla ni histórico: empieza vacío y guarda la foto del día.
   assert.equal(await principal([path.join(dir, 'vacio.json')], { ...base, fetchImpl: coingecko() }), 0);
   assert.equal(modelo.validarHistorico(JSON.parse(fs.readFileSync(path.join(dir, 'vacio.json'), 'utf8'))).fotos.length, 1);
+  // El 11/11/2026 CoinGecko daba +124 % en 24 h para toda la categoría con el mercado plano: la foto lo guarda como null (CAMBIO_24H_MAX).
+  const disparate = async () => new Response(JSON.stringify(JSON.parse(COINGECKO).map(c => ({ ...c, updated_at: '2026-11-10T15:25:40.000Z',
+    ...(c.id === 'tokenized-products' ? { market_cap_change_24h: 124.415 } : {}) }))), { status: 200 });
+  assert.equal(await principal([path.join(dir, 'disparate.json')], { ...base, fetchImpl: disparate }), 0);
+  const guardada = modelo.validarHistorico(JSON.parse(fs.readFileSync(path.join(dir, 'disparate.json'), 'utf8'))).fotos[0];
+  assert.equal(guardada.total.cambio24h, null, `nunca se guarda un cambio de ±${modelo.CAMBIO_24H_MAX} % o más en un día`);
+  assert.equal(guardada.total.valor, 49683537033);
+});
+
+/* ---- La serie de un año del gráfico «estilo bolsa» (11/11/2026) ---- */
+const { principal: principalSerie } = await import('../rwadar-app/tokenizacion/serie-diaria.mjs');
+const DIA_MS = 86400000;
+/* CoinGecko simulado: el total de la categoría, la lista de 45 tokens y un año y un día de market_caps de
+   cada uno. Con «pesos», el valor de cada token de la lista (por defecto, (100 − i) × 1e8). */
+const TOTAL_CATEGORIA = 4000e8;
+function coingeckoSerie({ fallan = [], listaFalla = false, conHueco = [], categoriaFalla = false, pesos = i => (100 - i) * 1e8, totalCategoria = TOTAL_CATEGORIA } = {}) {
+  const llamadas = [];
+  const fin = Date.parse('2026-11-11T00:00:00Z');
+  const fetchImpl = async (url) => {
+    llamadas.push(url);
+    if (url === modelo.FUENTE.api) {
+      if (categoriaFalla) return new Response('{}', { status: 503 });
+      return new Response(JSON.stringify([{ id: 'otra', market_cap: 1e12 }, { id: 'tokenized-products', market_cap: totalCategoria }]), { status: 200 });
+    }
+    if (url.includes('/coins/markets')) {
+      if (listaFalla) return new Response('{}', { status: 503 });
+      return new Response(JSON.stringify([...Array(45)].map((_, i) => ({ id: 'token-' + i, market_cap: pesos(i) }))), { status: 200 });
+    }
+    const id = url.match(/\/coins\/([a-z0-9-]+)\/market_chart/)[1];
+    if (fallan.includes(id)) return new Response('{}', { status: 429, headers: { 'retry-after': '1' } });
+    const n = Number(id.split('-')[1]);
+    // Con hueco: CoinGecko no da 12 días seguidos de su historia (del día 200 al 211).
+    // Como la API pública con days=365: del día de hace 364 a hoy (a days=366 responde 401).
+    const puntos = [...Array(365)].map((_, k) => [fin - (364 - k) * DIA_MS, (100 - n) * 1e8 * (1 + k / 3650)]).filter((_, k) => !conHueco.includes(id) || k < 201 || k > 212);
+    return new Response(JSON.stringify({ market_caps: puntos }), { status: 200 });
+  };
+  return { fetchImpl, llamadas };
+}
+
+test('serie diaria: 42 llamadas con pausa (el total de la categoría, la lista y los 40 mayores), un punto por día y su resumen; exige TLS', async (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-serie-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const destino = path.join(dir, 'tokenizacion-serie.json'), salida = path.join(dir, 'salida');
+  fs.writeFileSync(salida, '');
+  const { fetchImpl, llamadas } = coingeckoSerie();
+  const pausas = [], registro = [];
+  const codigo = await principalSerie([destino], { entorno: { GITHUB_OUTPUT: salida }, fetchImpl, esperar: async ms => { pausas.push(ms); },
+    ahora: () => Date.parse('2026-11-11T07:00:00Z'), log: m => registro.push(m), error: m => registro.push(m) });
+  assert.equal(codigo, 0, registro.join('\n'));
+  assert.equal(llamadas.length, 42);
+  assert.equal(llamadas[0], modelo.FUENTE.api, 'primero, el total de la categoría: el denominador de las cuotas');
+  assert.match(llamadas[1], /category=tokenized-products&order=market_cap_desc&per_page=250$/);
+  assert.ok(llamadas.slice(2).every(u => /\/market_chart\?vs_currency=usd&days=365&interval=daily$/.test(u)), 'un año: la API pública no da más (401 a days=366)');
+  assert.equal(pausas.filter(ms => ms === 13000).length, 41, '13 s entre llamadas');
+  const serie = modelo.validarSerie(JSON.parse(fs.readFileSync(destino, 'utf8')));
+  assert.equal(fs.readFileSync(destino, 'utf8'), modelo.serializarSerie(serie));
+  assert.deepEqual([serie.pedidos, serie.incluidos, serie.discontinuos, serie.puntos.length, serie.puntos.at(-1).fecha], [40, 40, 0, 365, '2026-11-11']);
+  assert.equal(serie.puntos[0].fecha, '2025-11-12', '«1 A»: los 365 días que da la API pública');
+  const sumaMayores = [...Array(40)].reduce((s, _, i) => s + (100 - i) * 1e8, 0);
+  assert.equal(serie.cobertura, Math.round(sumaMayores / TOTAL_CATEGORIA * 1000) / 10, 'la cuota, sobre el total de la categoría');
+  assert.equal(fs.readFileSync(salida, 'utf8'), 'serie=true\n');
+  assert.match(registro.at(-1), /^Serie del mercado: 365 días, del 12\/11\/2025 al 11\/11\/2026; 40 de 40 tokens .*0 fuera por huecos/);
+  assert.equal(await principalSerie([destino], { entorno: { NODE_TLS_REJECT_UNAUTHORIZED: '0' }, error: () => {} }), 1);
+  // Sin el total de la categoría, la cuota usa la suma de la lista y el registro lo dice; la serie sale igual.
+  const sinCategoria = [];
+  assert.equal(await principalSerie([destino], { entorno: {}, fetchImpl: coingeckoSerie({ categoriaFalla: true }).fetchImpl, esperar: async () => {},
+    ahora: () => Date.parse('2026-11-11T07:00:00Z'), log: m => sinCategoria.push(m), error: m => sinCategoria.push(m) }), 0);
+  assert.ok(sinCategoria.some(l => /Total de la categoría: no se pudo leer .*la suma de la lista/.test(l)), sinCategoria.join('\n'));
+});
+
+test('serie diaria: si falla un token de menos del 1 % entra sin él y lo dice; si falla la lista o los que fallan pesan más del 1 %, conserva la anterior (código 3)', async (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-serie-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const destino = path.join(dir, 'tokenizacion-serie.json');
+  const opciones = (fetchImpl, salida) => ({ entorno: { GITHUB_OUTPUT: salida }, fetchImpl, esperar: async () => {}, ahora: () => Date.parse('2026-11-11T07:00:00Z'), log: () => {}, error: () => {} });
+  const salida = path.join(dir, 'salida');
+  fs.writeFileSync(salida, '');
+  // token-39 pesa 61e8 de un total de 4.000e8: el 1,5 %. Con un 1 % de tope, no entra sin él (QA del 11/11/2026: con un 5 %,
+  // si fallaba Ondo, del 4,8 %, salía una serie con un −5,6 % de golpe que el mercado no había tenido).
+  assert.equal(await principalSerie([destino], opciones(coingeckoSerie({ fallan: ['token-39'] }).fetchImpl, salida)), 3);
+  assert.equal(fs.existsSync(destino), false, 'nada escrito');
+  fs.writeFileSync(salida, '');
+  // Un token mayor muy grande y los demás pequeños: token-39 pesa el 0,25 % y la serie entra sin él.
+  const pesos = i => (i === 0 ? 2000e8 : (100 - i) * 1e8 / 10);
+  assert.equal(await principalSerie([destino], opciones(coingeckoSerie({ fallan: ['token-39'], pesos, totalCategoria: 2400e8 }).fetchImpl, salida)), 0);
+  const serie = modelo.validarSerie(JSON.parse(fs.readFileSync(destino, 'utf8')));
+  assert.deepEqual([serie.pedidos, serie.incluidos], [40, 39]);
+  assert.ok(!serie.tokens.includes('token-39'));
+  assert.match(modelo.notaSerie(serie), /^Suma de 39 de los 40 mayores .* No se pudo leer 1\.$/);
+  const antes = fs.readFileSync(destino, 'utf8');
+  fs.writeFileSync(salida, '');
+  assert.equal(await principalSerie([destino], opciones(coingeckoSerie({ listaFalla: true }).fetchImpl, salida)), 3);
+  assert.equal(await principalSerie([destino], opciones(coingeckoSerie({ fallan: ['token-0', 'token-1'] }).fetchImpl, salida)), 3);
+  // Uno de entre el 1 % y el 5 % (como Ondo, el 4,8 %): también se conserva la anterior.
+  assert.equal(await principalSerie([destino], opciones(coingeckoSerie({ fallan: ['token-20'], pesos: i => (i === 20 ? 190e8 : (100 - i) * 1e8) }).fetchImpl, salida)), 3);
+  assert.equal(fs.readFileSync(destino, 'utf8'), antes, 'la serie anterior se conserva');
+  assert.equal(fs.readFileSync(salida, 'utf8'), 'serie=false\nserie=false\nserie=false\n');
+});
+
+test('el flujo rehace la serie sin bloquear la foto y publicar.yml la trae de la rama', () => {
+  const pasoSerie = paso(FLUJO, 'Rehacer la serie de un año (mayores tokens con historia completa)');
+  assert.match(pasoSerie, /continue-on-error: true/);
+  const limitePaso = Number(pasoSerie.match(/^\s*timeout-minutes: (\d+)\s*$/m)?.[1]);
+  const limiteTrabajo = Number(FLUJO.match(/^    timeout-minutes: (\d+)\s*$/m)?.[1]);
+  assert.ok(limitePaso > 0, 'el paso de la serie tiene su propio timeout-minutes');
+  assert.ok(limitePaso < limiteTrabajo, `el límite del paso (${limitePaso}) es menor que el del trabajo (${limiteTrabajo})`);
+  assert.ok(limitePaso >= 12 && limitePaso <= 14, `el paso, de 12 a 14 minutos (${limitePaso}): con 13 s entre 42 llamadas hacen falta unos 9`);
+  assert.ok(limiteTrabajo >= 25 && limiteTrabajo <= 30, `el trabajo, de 25 a 30 minutos (${limiteTrabajo})`);
+  // Las constantes del script, las del encargo: 13 s entre llamadas y un 1 % de pérdida como mucho.
+  const script = leer('rwadar-app/tokenizacion/serie-diaria.mjs');
+  assert.match(script, /^const PAUSA_MS = 13000;$/m);
+  assert.match(script, /^const PERDIDA_MAX_PCT = 1;$/m);
+  assert.match(pasoSerie, /node rwadar-app\/tokenizacion\/serie-diaria\.mjs "\$DATOS\/tokenizacion-serie\.json"/);
+  assert.match(paso(FLUJO, 'Guardar la foto y la serie (un commit por día)'), /steps\.foto\.outputs\.cambiado == 'true' \|\| steps\.serie\.outputs\.serie == 'true'/);
+  assert.match(bloque(FLUJO, 'Guardar la foto y la serie (un commit por día)'), /git add tokenizacion-serie\.json/);
+  assert.match(PUBLICAR, /git show FETCH_HEAD:tokenizacion-serie\.json > "\$RUNNER_TEMP\/tokenizacion-serie\.json"/);
+  assert.match(PUBLICAR, /RWADAR_TOKENIZACION_SERIE=\$RUNNER_TEMP\/tokenizacion-serie\.json/);
+});
+
+test('serie diaria: un token al que CoinGecko le faltan más de 3 días queda fuera de toda la serie (sin días cortados ni hundimientos) y la nota lo dice', async (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-serie-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const destino = path.join(dir, 'tokenizacion-serie.json'), registro = [];
+  const codigo = await principalSerie([destino], { entorno: {}, fetchImpl: coingeckoSerie({ conHueco: ['token-5'] }).fetchImpl, esperar: async () => {},
+    ahora: () => Date.parse('2026-11-11T07:00:00Z'), log: m => registro.push(m), error: m => registro.push(m) });
+  assert.equal(codigo, 0, registro.join('\n'));
+  const serie = modelo.validarSerie(JSON.parse(fs.readFileSync(destino, 'utf8')));
+  assert.deepEqual([serie.incluidos, serie.discontinuos, serie.puntos.length], [39, 1, 365]);
+  assert.ok(!serie.tokens.includes('token-5'));
+  assert.ok(registro.some(l => /token-5: fuera, le faltan 9 días en CoinGecko/.test(l)), registro.join('\n'));
+  assert.match(modelo.notaSerie(serie), /Quedan fuera 1 a los que les faltan días en CoinGecko\.$/);
+  // Sin días cortados: cada día suma los mismos 39.
+  assert.ok(serie.puntos.every(p => p.tokens === 39));
 });

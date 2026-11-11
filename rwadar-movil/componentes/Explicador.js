@@ -122,7 +122,22 @@ const SOLO_EL_EXPLICADOR = `
   true;
 `;
 
-export default function Explicador({ onCerrar, obtenerAcceso, onPrimeraLeccion }) {
+/* «Calcula con tus números →» (11/11/2026): la calculadora de la web enseña
+   ese enlace dentro de la app solo si la app sabe abrir la suya; esta marca,
+   puesta antes de que cargue la página y otra vez al terminar (por si al
+   principio aún no había <html>), se lo dice. Al tocarlo, la página manda
+   'rwadar:tutorial-calculadora' y la app lleva a la calculadora de Inicio.
+   La app ya instalada no pone la marca: allí el enlace no sale. */
+export const CON_CALCULADORA = `
+  (function(){
+    window.RWAdarCalculadoraApp = true;
+    try { document.documentElement.setAttribute('data-rwadar-calculadora-app', ''); } catch (e) {}
+    try { var ir = document.getElementById('calcIrInicio'); if (ir) ir.hidden = false; } catch (e) {}
+  })();
+  true;
+`;
+
+export default function Explicador({ onCerrar, obtenerAcceso, onPrimeraLeccion, onCalculadora }) {
   const [cargando, setCargando] = useState(true);
   const [fallo, setFallo] = useState(false);
   const [acceso, setAcceso] = useState(null);
@@ -139,7 +154,7 @@ export default function Explicador({ onCerrar, obtenerAcceso, onPrimeraLeccion }
   }, [obtenerAcceso]);
 
   /* La copia interna no intenta abrir la antigua dirección pública. */
-  if (MODO_LOCAL || fallo) return <ExplicadorNativo onCerrar={onCerrar} />;
+  if (MODO_LOCAL || fallo) return <ExplicadorNativo onCerrar={onCerrar} onCalculadora={onCalculadora} />;
 
   return (
     <View style={e.pantalla}>
@@ -159,11 +174,13 @@ export default function Explicador({ onCerrar, obtenerAcceso, onPrimeraLeccion }
         {acceso && <WebView
           ref={web}
           source={acceso}
-          injectedJavaScript={SOLO_EL_EXPLICADOR}
+          injectedJavaScript={onCalculadora ? CON_CALCULADORA + SOLO_EL_EXPLICADOR : SOLO_EL_EXPLICADOR}
+          injectedJavaScriptBeforeContentLoaded={onCalculadora ? CON_CALCULADORA : undefined}
           onMessage={(evento) => {
             if (evento?.nativeEvent?.data === 'rwadar:explicador-no-disponible') setFallo(true);
             if (evento?.nativeEvent?.data === 'rwadar:tutorial-finalizado') onCerrar();
             if (evento?.nativeEvent?.data === 'rwadar:tutorial-primera-leccion') onPrimeraLeccion?.();
+            if (evento?.nativeEvent?.data === 'rwadar:tutorial-calculadora') onCalculadora?.();
           }}
           onLoadEnd={(evento) => {
             if (evento?.nativeEvent?.url === 'https://rwadar.pages.dev/api/acceso/tutorial' && acceso.headers) {

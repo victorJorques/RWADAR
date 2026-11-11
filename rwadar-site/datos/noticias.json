@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "actualizadoEl": "2026-11-10",
+  "actualizadoEl": "2026-11-11",
   "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
   "noticias": [
     {
@@ -9,11 +9,11 @@
       "seccion": "hoy",
       "categoria": "riesgo",
       "ambito": "España",
-      "titulo": "La CNMV destapa un clon de XTB y otros 8 chiringuitos",
+      "titulo": "La CNMV destapa clones de XTB y PJT entre 9 chiringuitos",
       "resumen": "La CNMV avisa de que nueve webs y apps no están autorizadas para prestar servicios de inversión. Una se hace pasar por XTB y dos apps, por PJT Partners; no tienen relación con esas firmas registradas.",
       "porQueImporta": "Los clones copian el nombre de firmas reales. Antes de invertir, comprueba en la CNMV la entidad y también la web o la app exacta.",
       "en": {
-        "titulo": "CNMV exposes an XTB clone and 8 other unlicensed firms",
+        "titulo": "CNMV exposes XTB and PJT clones among 9 unlicensed firms",
         "resumen": "The CNMV says nine websites and apps are not authorised to provide investment services. One poses as XTB and two apps as PJT Partners; they have no link to those registered firms.",
         "porQueImporta": "Clones copy the names of real firms. Before investing, check both the firm and the exact website or app in the CNMV registers.",
         "tituloInformativo": "Spain's CNMV warns of nine unregistered entities, including clones of XTB and PJT Partners"
@@ -23,20 +23,20 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b512d6e8c-0490-4a9b-a9f3-b44776391f76%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-10",
+      "consultadaEl": "2026-11-11",
       "tituloInformativo": "La CNMV advierte de nueve entidades sin registro, entre ellas clones de XTB y PJT Partners"
     },
     {
       "id": "robinhood-stock-tokens-suplemento",
       "fecha": "2026-11-09",
-      "seccion": "hoy",
+      "seccion": "importante",
       "categoria": "producto",
       "ambito": "UE",
-      "titulo": "Los Stock Tokens de Robinhood podrán cobrarse costes en tokens",
+      "titulo": "Robinhood: su emisor podrá restar Stock Tokens por costes",
       "resumen": "La FMA de Liechtenstein aprobó un suplemento al folleto de estos tokens de deuda ligados a acciones y ETF de EE. UU., notificado a España. Deja al emisor repercutir costes, incluso restando tokens a cada inversor.",
       "porQueImporta": "En España, Robinhood solo vende hoy los «Classic». Que su filial europea sea participante autorizado es un plan que el folleto ya recogía en junio.",
       "en": {
-        "titulo": "Robinhood’s Stock Tokens may charge costs in tokens",
+        "titulo": "Robinhood Stock Tokens: the issuer may cut tokens for costs",
         "resumen": "Liechtenstein's FMA approved a supplement to the prospectus of these tokenised debt securities tied to US shares and ETFs, notified to Spain. It lets the issuer pass on costs, even by cutting each investor's tokens.",
         "porQueImporta": "In Spain, Robinhood only sells the Classic tokens today. Making its EU subsidiary an authorised participant is a plan the prospectus already set out in June.",
         "tituloInformativo": "Robinhood's Stock Tokens issuer may pass certain costs on to investors"
@@ -46,31 +46,8 @@
         "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
         "tipo": "empresa"
       },
-      "consultadaEl": "2026-11-10",
+      "consultadaEl": "2026-11-11",
       "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor"
-    },
-    {
-      "id": "etsg-estandares-tokenizacion",
-      "fecha": "2026-11-09",
-      "seccion": "hoy",
-      "categoria": "regulacion",
-      "ambito": "UE",
-      "titulo": "Europa busca el idioma común de los tokens",
-      "resumen": "Abren la convocatoria del European Tokenisation Standards Group, que fijará estándares comunes para que las plataformas tokenizadas se conecten entre sí. Lo presidirá la industria; candidaturas hasta el 27/11.",
-      "porQueImporta": "Es un paso hacia un mercado tokenizado europeo conectado, pero se dirige a la industria mayorista: hoy no cambia lo que puede comprar un particular.",
-      "en": {
-        "titulo": "Europe seeks a common language for tokens",
-        "resumen": "They opened nominations for the European Tokenisation Standards Group, which will set common standards so tokenised platforms can connect. Industry will chair it; applications close on 27 November.",
-        "porQueImporta": "It is a step towards a connected EU tokenised market, but it targets wholesale industry: it does not change what a retail investor can buy today.",
-        "tituloInformativo": "ECB, Commission and ESMA call on industry to build EU tokenisation standards"
-      },
-      "fuente": {
-        "nombre": "ESMA, noticia del 09/11/2026",
-        "url": "https://www.esma.europa.eu/press-news/esma-news/eu-seeks-nominations-stakeholder-group-tokenisation-standards-finance",
-        "tipo": "regulador"
-      },
-      "consultadaEl": "2026-11-10",
-      "tituloInformativo": "BCE, Comisión y ESMA buscan a la industria para crear estándares europeos de tokenización"
     },
     {
       "id": "prosegur-cash-pagares-dlt",
@@ -92,7 +69,7 @@
         "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-10",
+      "consultadaEl": "2026-11-11",
       "tituloInformativo": "La CNMV inscribe una emisión de pagarés de Prosegur Cash anotada en registro DLT"
     },
     {
@@ -101,11 +78,11 @@
       "seccion": "importante",
       "categoria": "regulacion",
       "ambito": "UE",
-      "titulo": "Mercados tokenizados: los Veintisiete quieren un límite 50 veces mayor",
+      "titulo": "Mercados DLT: los Veintisiete piden un tope 50 veces mayor",
       "resumen": "Los embajadores de los Estados (Coreper) aprobaron la posición del Consejo: quitar los topes por activo y elevar a 300.000 millones de euros el valor máximo que puede registrar o negociar cada infraestructura DLT.",
       "porQueImporta": "Hoy el tope es de 6.000 millones y frena a los grandes participantes. Es una posición negociadora, no una ley: falta pactarla con el Parlamento Europeo.",
       "en": {
-        "titulo": "Tokenised markets: EU states want a cap 50 times higher",
+        "titulo": "DLT markets: EU states want a cap 50 times higher",
         "resumen": "Member states' ambassadors (Coreper) approved the Council's position: drop the per-asset caps and raise to €300bn the maximum value each DLT market infrastructure can record or trade.",
         "porQueImporta": "Today's cap is €6bn and holds back large players. This is a negotiating position, not law: it still has to be agreed with the European Parliament.",
         "tituloInformativo": "EU countries want to raise the DLT Pilot Regime cap from €6bn to €300bn"
@@ -115,7 +92,7 @@
         "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-10",
+      "consultadaEl": "2026-11-11",
       "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT"
     },
     {
@@ -138,31 +115,8 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-10",
+      "consultadaEl": "2026-11-11",
       "tituloInformativo": "La CNMV autoriza Bit2Me STX, el segundo mercado español para valores tokenizados"
-    },
-    {
-      "id": "esma-cuotas-financiacion-participativa",
-      "fecha": "2026-10-16",
-      "seccion": "importante",
-      "categoria": "regulacion",
-      "ambito": "UE",
-      "titulo": "¿Te cobran antes de enseñarte el proyecto? Ojo, avisa ESMA",
-      "resumen": "ESMA aclara que cobrar cuota de registro o de socio no impide ser una plataforma abierta al público, pero puede perjudicar al inversor si se paga antes de ver la información clave o no se dice a quién va.",
-      "porQueImporta": "Si una plataforma te pide pagar antes de enseñarte los proyectos, o no explica a dónde va esa cuota, ESMA lo considera un riesgo para ti.",
-      "en": {
-        "titulo": "Charged before you see the project? ESMA says watch out",
-        "resumen": "ESMA says charging registration or membership fees does not by itself stop a platform being public, but it can harm investors if paid before seeing key information or if its recipient is not disclosed.",
-        "porQueImporta": "If a platform asks you to pay before showing you its projects, or does not explain where the fee goes, ESMA sees that as a risk to you.",
-        "tituloInformativo": "ESMA flags risks at crowdfunding platforms that charge access fees"
-      },
-      "fuente": {
-        "nombre": "ESMA, pregunta y respuesta 2950 (16/10/2026)",
-        "url": "https://www.esma.europa.eu/publications-data/questions-answers/2950",
-        "tipo": "regulador"
-      },
-      "consultadaEl": "2026-11-10",
-      "tituloInformativo": "ESMA señala riesgos en las plataformas de financiación participativa con cuota de acceso"
     },
     {
       "id": "cnmv-reclamaciones-cripto-financiacion-participativa",
@@ -170,11 +124,11 @@
       "seccion": "importante",
       "categoria": "regulacion",
       "ambito": "España",
-      "titulo": "La CNMV abre la puerta a tus quejas contra plataformas cripto",
+      "titulo": "Quejas contra plataformas cripto: la CNMV quiere atenderlas",
       "resumen": "La CNMV somete a consulta un proyecto de Circular que amplía su servicio de reclamaciones a los proveedores de servicios de criptoactivos y a las plataformas de financiación participativa. Comentarios hasta el 16/11.",
       "porQueImporta": "Algunas emisiones tokenizadas se venden por estas plataformas. Si sale adelante, podrías reclamar ante la CNMV. Por ahora es un proyecto.",
       "en": {
-        "titulo": "Spain’s CNMV opens the door to your crypto platform complaints",
+        "titulo": "Spain's CNMV proposes taking your crypto platform complaints",
         "resumen": "The CNMV opened a consultation on a draft Circular extending its complaints service to crypto-asset service providers and crowdfunding platforms. Comments are accepted until 16 November.",
         "porQueImporta": "Some tokenised issues are sold through these platforms. If adopted, you could complain to the CNMV. For now it is only a draft.",
         "tituloInformativo": "Spain's CNMV proposes handling complaints against crowdfunding and crypto providers"
@@ -184,7 +138,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcff2b57d-5b54-44e2-98db-057d90acc64b%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-10",
+      "consultadaEl": "2026-11-11",
       "tituloInformativo": "La CNMV propone atender quejas contra plataformas de financiación participativa y cripto"
     }
   ]

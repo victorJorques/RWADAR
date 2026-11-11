@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>El mercado de la tokenización · RWAdar</title>
-<meta name="description" content="Valor de mercado de los activos reales tokenizados por tipo, con su evolución y datos de CoinGecko. No es una recomendación.">
+<title>Mercado y noticias · RWAdar</title>
+<meta name="description" content="El mercado de activos reales tokenizados en un gráfico de un año, con datos de CoinGecko, y las noticias del sector con su fuente. No es una recomendación.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://rwadar.pages.dev/mercado/">
 <meta name="theme-color" content="#0B0A0A">
@@ -13,8 +13,8 @@
 <meta property="og:locale" content="es_ES">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rwadar.pages.dev/mercado/">
-<meta property="og:title" content="El mercado de la tokenización · RWAdar">
-<meta property="og:description" content="Valor de mercado de los activos reales tokenizados por tipo, con su evolución y datos de CoinGecko. No es una recomendación.">
+<meta property="og:title" content="Mercado y noticias · RWAdar">
+<meta property="og:description" content="El mercado de activos reales tokenizados en un gráfico de un año, con datos de CoinGecko, y las noticias del sector con su fuente. No es una recomendación.">
 <meta property="og:image" content="https://rwadar.pages.dev/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,14 +23,17 @@
 <script src="/assets/idioma-previo-20261104.js"></script>
 <link rel="stylesheet" href="/assets/rwadar-20260820.css">
 <link rel="stylesheet" href="/assets/idioma-20261022.css">
-<link rel="stylesheet" href="/assets/tokenizacion-20261110.css">
+<link rel="stylesheet" href="/assets/noticias-sector-20261110.css">
 <link rel="stylesheet" href="/assets/secciones-20261110.css">
+<link rel="stylesheet" href="/assets/mercado-20261111.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://rwadar.pages.dev/mercado/#pagina","name":"El mercado de la tokenización","description":"Valor de mercado de los activos reales tokenizados por tipo, con su evolución y datos de CoinGecko. No es una recomendación.","url":"https://rwadar.pages.dev/mercado/","inLanguage":"es-ES","isPartOf":{"@type":"WebSite","name":"RWAdar","url":"https://rwadar.pages.dev/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://rwadar.pages.dev/mercado/#pagina","name":"Mercado y noticias","description":"El mercado de activos reales tokenizados en un gráfico de un año, con datos de CoinGecko, y las noticias del sector con su fuente. No es una recomendación.","url":"https://rwadar.pages.dev/mercado/","inLanguage":"es-ES","isPartOf":{"@type":"WebSite","name":"RWAdar","url":"https://rwadar.pages.dev/"}}
 </script>
 <script src="/assets/analitica-20260927.js" defer></script>
 <script src="/assets/tokenizacion-modelo-20261110.js" defer></script>
-<script src="/assets/tokenizacion-20261110.js" defer></script>
+<script src="/assets/mercado-20261111.js" defer></script>
+<script src="/assets/noticias-sector-modelo-20261110.js" defer></script>
+<script src="/assets/noticias-sector-20261110.js" defer></script>
 <script src="/assets/idioma-en-20261022.js" defer></script>
 <script src="/assets/idioma-20261022.js" defer></script>
 <script src="/assets/idioma-web-20261022.js" defer></script>
@@ -50,8 +53,7 @@
     </a>
     <nav class="sec-nav" aria-label="Secciones">
       <a href="/" class="sec-nav-inicio">Inicio</a>
-      <a href="/mercado/" aria-current="page">El mercado</a>
-      <a href="/noticias/">Noticias</a>
+      <a href="/mercado/" aria-current="page">Mercado y noticias</a>
       <a href="/aprende/">Aprende</a>
       <a href="/#emisiones">Ofertas</a>
     </nav>
@@ -61,23 +63,41 @@
 
 <main id="contenido" class="sec">
   <a class="sec-volver" href="/"><span aria-hidden="true">←</span> Inicio</a>
-  <p class="sec-ante">Datos de mercado</p>
-  <h1 class="sec-tit">El mercado hoy</h1>
-  <p class="sec-entradilla">Valor de mercado de los tokens que representan activos reales (deuda, fondos, materias primas, acciones, inmuebles), por tipo y en el tiempo. Las categorías pueden solaparse. No es una recomendación.</p>
-
-  <!-- «La tokenización en el mundo» entera (lo que hasta el 10/11/2026 iba en
-       Inicio): la cifra total, los periodos, los tipos y la evolución, con
-       datos gratis de CoinGecko que lee nuestro servidor (/api/tokenizacion).
-       Lo pinta assets/tokenizacion-20261110.js; aquí no hay ninguna cifra. -->
-  <section class="tk" id="tokenizacion" aria-labelledby="tkTit" data-tokenizacion>
-    <h2 class="tk-tit" id="tkTit">La tokenización en el mundo</h2>
-    <div class="tk-cuerpo" id="tkCuerpo" aria-busy="true">
-      <p class="tk-estado" id="tkEstado">Cargando los datos de CoinGecko…</p>
+  <p class="sec-ante">Mercado y noticias</p>
+  <!-- «Mercado y noticias» al estilo de una app de bolsa (11/11/2026): la cifra
+       de hoy (el último punto de la serie), el cambio del periodo, las
+       pestañas, el gráfico de área de un año (suma diaria de los mayores
+       tokens con historia completa en CoinGecko, hoy 29 de los 40 mayores,
+       /datos/tokenizacion-serie.json),
+       los datos clave y las barras por tipo, con datos de CoinGecko. Lo pinta
+       assets/mercado-20261111.js; aquí no hay ninguna cifra. -->
+  <section class="mk mk--completo" id="tokenizacion" aria-labelledby="mkTit" data-mercado="completo">
+    <h1 class="mk-tit" id="mkTit">Mercado de activos tokenizados</h1>
+    <div class="mk-cuerpo" id="mkCuerpo" aria-busy="true">
+      <p class="mk-estado">Cargando los datos de CoinGecko…</p>
     </div>
-    <p class="tk-fuente"><span>Datos:</span> <a href="https://www.coingecko.com/" target="_blank" rel="noopener nofollow" translate="no">CoinGecko</a><span class="tk-hora" id="tkHora"></span></p>
+  </section>
+
+  <!-- Noticias relacionadas, debajo del gráfico (antes en /noticias/, que
+       lleva aquí). Las pinta assets/noticias-sector-20261110.js desde
+       /datos/noticias-v2.json; /mercado/#<id> abre esa noticia. -->
+  <section class="mk-noticias nt nt--lista" id="noticias" aria-labelledby="ntTit" data-noticias="lista" data-noticias-nivel="3">
+    <h2 class="mk-h2" id="ntTit">Noticias relacionadas</h2>
+    <p class="mk-h2-sub"><span>Lo que importa de la tokenización, con su fuente. Selección editorial; no es una recomendación.</span> <span class="nt-sub" id="ntFecha" hidden></span></p>
+    <ul class="nt-lista" id="ntLista" aria-labelledby="ntTit" hidden></ul>
+    <p class="nt-estado" id="ntEstado" role="status">Cargando las noticias…</p>
+    <p class="nt-nota" id="ntNota" hidden>Imágenes ilustrativas generadas con IA, no fotos de la noticia.</p>
+    <dialog class="nt-dialogo" id="ntDialogo" aria-labelledby="ntDlgTit">
+      <div class="nt-dlg-marco">
+        <div class="nt-dlg-cab">
+          <span class="nt-dlg-etq">Noticia del sector</span>
+          <button class="nt-dlg-cerrar" type="button" data-nt-cerrar aria-label="Cerrar la noticia"><span aria-hidden="true">×</span></button>
+        </div>
+        <div class="nt-dlg-cuerpo" id="ntDlgCuerpo"></div>
+      </div>
+    </dialog>
   </section>
   <ul class="sec-sigue" aria-label="Sigue por aquí">
-    <li><a href="/noticias/"><span>Todas las noticias</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a></li>
     <li><a href="/aprende/"><span>Aprende en 6 pasos</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a></li>
     <li><a href="/#emisiones"><span>Ver las ofertas</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a></li>
   </ul>

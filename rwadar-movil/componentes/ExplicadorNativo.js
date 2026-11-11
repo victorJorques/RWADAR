@@ -82,7 +82,7 @@ function Bloque({ i, paso }) {
   );
 }
 
-export default function ExplicadorNativo({ onCerrar }) {
+export default function ExplicadorNativo({ onCerrar, onCalculadora }) {
   const [paso, setPaso] = useState(0);
   const [reducirMovimiento, setReducirMovimiento] = useState(true);
   const { height: alto } = useWindowDimensions();
@@ -158,6 +158,14 @@ export default function ExplicadorNativo({ onCerrar }) {
             <Text style={e.mandoTexto}>{paso === PASOS.length - 1 ? 'Volver a Academy' : 'Siguiente →'}</Text>
           </Pressable>
         </View>
+        {/* El local de 300.000 € es un ejemplo: «Calcula tus números», en Inicio, deja poner los tuyos. */}
+        {onCalculadora ? (
+          <Pressable onPress={() => { tacto.abrir(); onCalculadora(); }} accessibilityRole="link"
+            style={({ pressed }) => [e.irCalculadora, pressed && e.irCalculadoraPulsado]} testID="explicador-calculadora">
+            <Text style={e.irCalculadoraTxt}>Calcula con tus números</Text>
+            <Text noTraducir style={e.irCalculadoraTxt} accessibilityElementsHidden importantForAccessibility="no">{' →'}</Text>
+          </Pressable>
+        ) : null}
         <Text style={e.nota}>
           El token no protege frente a insolvencia, fraude o falta de liquidez.
           Consulta la entidad, el contrato y el alcance de los permisos de cada producto.
@@ -221,4 +229,7 @@ const e = StyleSheet.create({
   pasoTit: { ...T.seccion, color: C.tx, marginBottom: 9 },
   pasoDes: { ...T.cuerpo, color: C.tx2 },
   nota: { ...T.menor, color: C.tx3, marginTop: 22 },
+  irCalculadora: { flexDirection: 'row', alignSelf: 'flex-start', alignItems: 'center', minHeight: 44, marginTop: 18, marginLeft: -8, paddingHorizontal: 8, borderRadius: R.m },
+  irCalculadoraPulsado: { backgroundColor: C.senalT },
+  irCalculadoraTxt: { fontFamily: F.semi, fontSize: 16, lineHeight: 21, color: C.senal },
 });

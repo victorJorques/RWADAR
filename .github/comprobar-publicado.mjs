@@ -313,17 +313,23 @@ for (const nombre of imagenesRetiradas) {
   ok(`ilustración retirada /ofertas-editoriales/${nombre} da 404: ${imagen.estado} / ${revalidada.estado}`, imagen.estado === 404 && revalidada.estado === 404);
 }
 
-/* Rediseño de Inicio (10/11/2026): las secciones /mercado/, /noticias/ y
+/* Rediseño de Inicio (10/11/2026): las secciones /mercado/, /noticias/ (que
+   desde el 11/11/2026 lleva a /mercado/) y
    /aprende/; las noticias en sus dos formas (v2 con foto para la web y la app
    nuevas, v1 sin «imagen» para la app ya instalada) y cada foto que usan, con
    los bytes de fotos.json. */
 for (const nombre of PAGINAS_SECCIONES) {
   const ruta = '/' + nombre.replace(/index\.html$/, '');
   const pagina = await pedir(ruta);
+  // Desde el 11/11/2026, /noticias/ lleva a /mercado/ (las noticias van debajo del gráfico).
+  const canonica = ruta === '/noticias/' ? '/mercado/' : ruta;
   ok(`sección ${ruta} publicada con su canonical`, pagina.estado === 200 &&
-    pagina.texto.includes(`<link rel="canonical" href="https://rwadar.pages.dev${ruta}">`) &&
+    pagina.texto.includes(`<link rel="canonical" href="https://rwadar.pages.dev${canonica}">`) &&
     (pagina.texto.match(/<h1\b[^>]*>/g) || []).length === 1 && /script-src 'self'/.test(pagina.cabeceras.get('content-security-policy') || ''));
 }
+// «Mercado y noticias» (11/11/2026): la serie de un año del gráfico es la del build.
+const serieMercado = await pedir('/datos/tokenizacion-serie.json');
+ok('/datos/tokenizacion-serie.json es el del build', serieMercado.estado === 200 && serieMercado.texto === leerPublicado('datos/tokenizacion-serie.json'));
 const noticiasV2 = await pedir('/datos/noticias-v2.json');
 const noticiasV1 = await pedir('/datos/noticias.json');
 let datosV2 = null;

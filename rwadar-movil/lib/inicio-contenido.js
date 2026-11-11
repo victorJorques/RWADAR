@@ -205,7 +205,7 @@ const es = {
     },
   },
   /* Inicio por bloques (rediseño del 10/11/2026, el mismo orden que la web):
-     Cabecera, Ofertas, El mercado hoy, Noticias, Aprende y Pie. Los seis
+     Cabecera, Ofertas, Mercado y noticias (11/11/2026), Aprende y Pie. Los seis
      capítulos van en la pantalla «Aprende». */
   bloques: {
     titular: 'Ofertas y plataformas tokenizadas, contrastadas con su fuente.',
@@ -222,8 +222,7 @@ const es = {
       // Sin cifra: el número de ofertas ya sale en las cifras de la cabecera (que no se repita).
       ver: () => 'Ver todas las ofertas',
     },
-    mercado: { titulo: 'El mercado hoy', sub: 'Valor de los activos reales tokenizados en el mundo', ver: 'Ver el mercado' },
-    noticias: { titulo: 'Noticias', ver: 'Todas las noticias' },
+    mercado: { titulo: 'Mercado y noticias', sub: 'El valor de los activos reales tokenizados y lo que pasa en el sector', ver: 'Ver mercado y noticias' },
     aprende: {
       titulo: 'Aprende',
       tarjeta: '¿Qué es tokenizar? Te lo contamos en 6 pasos',
@@ -235,7 +234,7 @@ const es = {
     volver: 'Volver a Inicio',
     aprendeAnte: 'Aprende · 6 pasos',
     aprendeIntro: 'La blockchain nació para pagar sin bancos. Hoy la usan los propios bancos: mueven con ella acciones, bonos y dinero.',
-    enlaceMercado: 'Las cifras del mercado tokenizado, al día y con su fuente, están en «El mercado hoy»',
+    enlaceMercado: 'Las cifras del mercado tokenizado, al día y con su fuente, están en «Mercado y noticias»',
     academy: {
       titulo: '¿Quieres ir más allá? RWAdar Academy',
       texto: (n) => `${n} ${n === 1 ? 'lección gratis' : 'lecciones gratis'} en tres niveles: qué compras, quién responde y cómo se sale. Con un resumen de 30 segundos y un test corto.`,
@@ -490,8 +489,7 @@ const en = {
       verFicha: 'View details of',
       ver: () => 'See all offers',
     },
-    mercado: { titulo: 'The market today', sub: 'Value of tokenised real-world assets worldwide', ver: 'See the market' },
-    noticias: { titulo: 'News', ver: 'All the news' },
+    mercado: { titulo: 'Market and news', sub: 'The value of tokenised real-world assets and what is happening in the sector', ver: 'See market and news' },
     aprende: {
       titulo: 'Learn',
       tarjeta: 'What is tokenisation? We explain it in 6 steps',
@@ -503,7 +501,7 @@ const en = {
     volver: 'Back to Home',
     aprendeAnte: 'Learn · 6 steps',
     aprendeIntro: 'Blockchain was born to pay without banks. Today the banks themselves use it: they move shares, bonds and money with it.',
-    enlaceMercado: 'Up-to-date figures for the tokenised market, with their source, are in “The market today”',
+    enlaceMercado: 'Up-to-date figures for the tokenised market, with their source, are in “Market and news”',
     academy: {
       titulo: 'Want to go further? RWAdar Academy',
       texto: (n) => `${n} free ${n === 1 ? 'lesson' : 'lessons'} in three levels: what you buy, who is responsible and how you get out. With a 30-second summary and a short quiz.`,

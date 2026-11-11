@@ -18,17 +18,11 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  <!-- Secciones de Inicio (rediseño del 10/11/2026) -->
+  <!-- Secciones de Inicio (rediseño del 10/11/2026; desde el 11/11/2026 las noticias van dentro de /mercado/) -->
   <url>
     <loc>https://rwadar.pages.dev/mercado/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://rwadar.pages.dev/noticias/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>

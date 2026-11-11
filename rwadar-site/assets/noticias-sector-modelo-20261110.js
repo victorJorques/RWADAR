@@ -216,8 +216,25 @@ function clavesFotos(datos) {
   return [...new Set(lista.map(n => n && n.imagen).filter(v => typeof v === 'string'))];
 }
 
+/* La fuente, como en una app de bolsa: lo que va antes de la primera coma de
+   su nombre, tal como lo escribe RWAdar («CNMV», «ESMA»…). En inglés, los
+   organismos con nombre propio en ese idioma se traducen («Consejo de la UE»
+   salía sin traducir: revisión del 11/11/2026); las siglas y las empresas
+   quedan como están. */
+const FUENTES_EN = Object.freeze({
+  'Consejo de la UE': 'Council of the EU', 'Comisión Europea': 'European Commission', 'Parlamento Europeo': 'European Parliament',
+  'Banco Central Europeo': 'European Central Bank', 'Banco de España': 'Bank of Spain', 'Tesoro Público': 'Spanish Treasury',
+  'Ministerio de Economía': 'Spanish Ministry of Economy', 'Bolsa de Madrid': 'Madrid Stock Exchange',
+});
+function fuenteCorta(noticia, idioma = 'es') {
+  const corta = String(noticia?.fuente?.nombre || '').split(',')[0].trim();
+  return idioma === 'en' && FUENTES_EN[corta] ? FUENTES_EN[corta] : corta;
+}
+/* ¿Está «fuenteCorta» en inglés? (para el atributo lang de la web). */
+const fuenteTraducida = (noticia, idioma = 'es') => fuenteCorta(noticia, idioma) !== fuenteCorta(noticia, 'es');
+
 module.exports = { RUTA, URL_DATOS, MAX_NOTICIAS, SECCIONES, CATEGORIAS, AMBITOS, TIPOS_FUENTE, MAX, validarNoticias, noticiasValidas,
   textos, etiquetaCategoria, etiquetaAmbito, fechaCorta, fechaBreve, fechaLocal, etiquetaReciente,
-  RUTA_FOTOS, URL_FOTOS, CLAVE_FOTO, NOTA_FOTOS, rutaFoto, clavesFotos, noticiasSinFoto };
+  RUTA_FOTOS, URL_FOTOS, CLAVE_FOTO, NOTA_FOTOS, rutaFoto, clavesFotos, noticiasSinFoto, FUENTES_EN, fuenteCorta, fuenteTraducida };
 
 window.RWAdarNoticiasModelo=module.exports; })();
