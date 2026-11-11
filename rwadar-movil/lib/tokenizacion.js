@@ -13,9 +13,10 @@
    No se usan «real-world-assets-rwa» ni «rwa-protocol»: incluyen tokens de
    gobierno de protocolos, que no representan activos reales.
 
-   Ninguna cifra se inventa. El cambio en 24 h es el que da CoinGecko; el de
-   7 días, 30 días, 1 año y el total se calcula SOLO con fotos diarias
-   guardadas por RWAdar. Si no hay una foto a ±2 días de la fecha buscada,
+   Ninguna cifra se inventa. El cambio en 24 h es el que da CoinGecko (solo
+   si es creíble: menos de un ±25 %; el 11/11/2026 su categoría daba +124 %
+   con el mercado plano); el de 7 días, 30 días, 1 año y el total se calcula
+   SOLO con fotos diarias guardadas por RWAdar. Si no hay una foto a ±2 días de la fecha buscada,
    ese periodo sale «aún sin datos», con la fecha desde la que se guardan.
    --------------------------------------------------------------------- */
 const FUENTE = Object.freeze({ nombre: 'CoinGecko', url: 'https://www.coingecko.com/',
@@ -49,6 +50,10 @@ const FECHA = /^\d{4}-\d{2}-\d{2}$/;
 const ISO = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/;
 // Un valor de mercado creíble para una categoría: más de 0 $ y menos de 100 billones.
 const VALOR_MAX = 1e14;
+// Un cambio en 24 h de más del ±25 % en todo un mercado es un fallo de la
+// categoría de CoinGecko, no del mercado (el 11/11/2026 daba +124 % cuando la
+// foto guardada y la serie se movían un 0,1 %): no se guarda ni se enseña.
+const CAMBIO_24H_MAX = 25;
 
 function exigir(ok, mensaje) { if (!ok) throw new Error(mensaje); }
 function esObjeto(v) { return !!v && typeof v === 'object' && !Array.isArray(v); }
@@ -60,11 +65,17 @@ function msFecha(fecha) {
 function fechaDe(ms) { return new Date(ms).toISOString().slice(0, 10); }
 function redondear(n, decimales) { const f = 10 ** decimales; return Math.round(n * f) / f; }
 
-/* Un dato {valor, cambio24h}: valor en dólares (entero) y cambio en % o null. */
+/* El cambio en 24 h si es creíble (|x| < 25 %); si no, null. */
+function cambio24hCreible(c) {
+  return typeof c === 'number' && Number.isFinite(c) && Math.abs(c) < CAMBIO_24H_MAX ? c : null;
+}
+/* Un dato {valor, cambio24h}: valor en dólares (entero) y cambio en % o null.
+   Un cambio no creíble se guarda como null (la foto diaria tampoco lo guarda);
+   validarDato sigue aceptando hasta el 10.000 % para no tirar fotos antiguas. */
 function dato(valor, cambio) {
   if (typeof valor !== 'number' || !Number.isFinite(valor) || valor <= 0 || valor >= VALOR_MAX) return null;
-  const c = typeof cambio === 'number' && Number.isFinite(cambio) && cambio > -100 && cambio < 10000 ? redondear(cambio, 4) : null;
-  return { valor: Math.round(valor), cambio24h: c };
+  const creible = cambio24hCreible(cambio);
+  return { valor: Math.round(valor), cambio24h: creible === null ? null : redondear(creible, 4) };
 }
 function validarDato(d, donde) {
   exigir(esObjeto(d) && Object.keys(d).sort().join() === 'cambio24h,valor', donde + ': forma no válida');
