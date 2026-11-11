@@ -1,0 +1,520 @@
+{
+ "slug": "arttrade-attram-03",
+ "tipoExpediente": "candidata",
+ "grupo": "profunda-1",
+ "proveedor": "arttrade",
+ "plataformaSlug": null,
+ "entidadComercializadora": "arttrade GmbH (Düsseldorf), agente vinculado de Effecta GmbH (Florstadt)",
+ "emisor": "arttrade custody 004 UG (haftungsbeschränkt), Düsseldorf, HRB 103466",
+ "vehiculo": "Sociedad vehículo filial de arttrade GmbH que compra, guarda y vende obras de arte (cartera ATTRAM#03)",
+ "token": "Un token en Polygon por bono; criptovalor eWpG inscrito en el registro de Cashlink Technologies GmbH (contrato no publicado)",
+ "derechoAdquirido": "Bono al portador subordinado con bloqueo previo a la insolvencia: interés variable (50 % de los ingresos por gestión de las obras) y, al vencimiento, 100 % del nominal más el 90 % de la plusvalía neta de venta. Sin voto ni propiedad de las obras.",
+ "jurisdiccion": "DE",
+ "identificador": "ISIN DE000A4AG7X0 / WKN A4AG7X",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Basisinformationsblatt (KID) ATTRAM#03",
+   "url": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Basisinformationsblatt.pdf",
+   "versionOFecha": "Erstellungsdatum 08.12.2025",
+   "paginas": 3,
+   "sha256": "f6914ec191013a461bbd0ab181fcaef891bddf1fba0238259503544f885ae5fa",
+   "leido": true,
+   "nota": "Mismo SHA-256 que la copia del estratega de hoy (10:04 UTC). Solo en alemán."
+  },
+  {
+   "titulo": "Anleihebedingungen der Serie ATTRAM#03 (ISIN DE000A4AG7X0)",
+   "url": "https://arttrade.de/wp-content/uploads/2025/05/240604_ATTRAM03_Anleihebedingungen.pdf",
+   "versionOFecha": "PDF del 26.05.2025; plazo desde el 04.06.2024",
+   "paginas": 7,
+   "sha256": "735721abfe0ffc178be15186fec51f30f8611413a383d333d8e497a761625630",
+   "leido": true,
+   "nota": "Mismo SHA-256 que la copia del estratega. Solo el texto alemán es vinculante (ap. 12.4)."
+  },
+  {
+   "titulo": "Verbraucherinformationen ATTRAM#03",
+   "url": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Verbraucherinformationen.pdf",
+   "versionOFecha": "PDF del 08.12.2025 (remite al KID «Stand: 08.12.2025»)",
+   "paginas": 5,
+   "sha256": "5a0c23636e4ad60097b65a0a76a41046cce6ca7a2ffdeb3f2cf3ccf6be976bad",
+   "leido": true
+  },
+  {
+   "titulo": "Risikofaktoren ATTRAM#03",
+   "url": "https://arttrade.de/wp-content/uploads/2025/05/240604_ATTRAM03_Risikofaktoren.pdf",
+   "versionOFecha": "PDF del 26.05.2025",
+   "paginas": 5,
+   "sha256": "f3210cfaebecda7488879a5e8f5f2c7057ad320b871cad9399eed804754ff666",
+   "leido": true,
+   "nota": "Contiene nombres de personas físicas; copia solo en crudo/."
+  },
+  {
+   "titulo": "Nutzungsbedingungen (AGB) de arttrade GmbH",
+   "url": "https://arttrade.de/nutzungsbedingungen/",
+   "versionOFecha": "Stand Januar 2025",
+   "paginas": null,
+   "sha256": "d87ed95b4f1f4b1a3fd0d650e0a630c3eb074d74edde621e5b70c8d202015413",
+   "leido": true,
+   "nota": "SHA-256 de la página HTML descargada hoy."
+  },
+  {
+   "titulo": "Página «Art Investment»",
+   "url": "https://arttrade.de/art-investment/",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": "bbc7eeb0865fabc53395a08f358a942d3903fda38cd267af221f5b4f4ed371d4",
+   "leido": true,
+   "nota": "Mismo SHA-256 que la copia del estratega (bbc7eeb0…)."
+  },
+  {
+   "titulo": "Kundeninformationen der Effecta GmbH",
+   "url": "https://cashlink-connect.docs.cashlink-files.de/documents/75c0c196-8fe1-46a2-8d09-bc4559825e73.pdf",
+   "versionOFecha": "Stand 08/2019",
+   "paginas": 4,
+   "sha256": "adc7b517bdb74f99187b96cb87e1650a92c105a3445ad40c239fc9d862ae5b44",
+   "leido": true,
+   "nota": "Enlazado por la API pública https://arttrade-investments.de/api/config/?distribution_platform_name=arttrade"
+  },
+  {
+   "titulo": "Effecta AGBs",
+   "url": "https://cashlink-connect.docs.cashlink-files.de/documents/1585f737-9f7d-461f-a777-9e4e313c6844.pdf",
+   "versionOFecha": "PDF del 02.03.2023",
+   "paginas": 3,
+   "sha256": "989cc47430daab3bdcbace54a0e08e6e95c5ef88cc40642138e6a57a6019085c",
+   "leido": true
+  },
+  {
+   "titulo": "Basisinformationsblatt Günther Uecker 001 (ISIN DE000A383HL2)",
+   "url": "https://arttrade.de/wp-content/uploads/2024/05/2404_arttrade_BIB_Guenther-Uecker-001.pdf",
+   "versionOFecha": "Erstellungsdatum 16.04.2024",
+   "paginas": null,
+   "sha256": "a45f2225f9b4858dad06209be91f8059f3ce04d5c7e24e475d966ac0caacc5d5",
+   "leido": true,
+   "nota": "Serie anterior; KID sin revisar desde abril de 2024. Solo contexto."
+  },
+  {
+   "titulo": "Anleihebedingungen Günther Uecker 001",
+   "url": "https://arttrade.de/wp-content/uploads/2024/05/2404_arttrade_Anleihebedingungen_Guenther-Uecker-001.pdf",
+   "versionOFecha": "2024-04",
+   "paginas": null,
+   "sha256": "016626977a86ffc24e524091bfeaa5e87c55b233fcd654ec473b4bdbe0dcd0b6",
+   "leido": false,
+   "nota": "Descargado; no leído en detalle (serie anterior)."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Effecta GmbH",
+   "numero": "BaFin-ID 10133261",
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "alcance": "Wertpapierinstitut: Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG) y Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG) desde el 26.06.2021; «Stand der Daten: 10.11.2026». Es la entidad responsable de arttrade; no acredita al emisor ni al producto. Nota: la pista daba a Effecta el n.º 80175757, que es el de arttrade como agente.",
+   "consultadoUtc": "2026-11-11T10:12:45Z"
+  },
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "arttrade GmbH",
+   "numero": "80175757",
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (búsqueda por nombre «arttrade»)",
+   "alcance": "Vertraglich gebundener Vermittler con Effecta GmbH como entidad responsable; «Tätig ab 01.12.2021», sin «Tätig bis», Meldedatum 12.03.2026; «Stand der Daten: 10.11.2026». Sin licencia propia (búsqueda «arttrade» en InstInfo: «Keine Ergebnisse», 10:14:28 UTC).",
+   "consultadoUtc": "2026-11-11T10:12:22Z"
+  },
+  {
+   "regulador": "CNMV (España)",
+   "entidad": "EFFECTA GmbH",
+   "numero": "5003 (registro 11/11/2020)",
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=17",
+   "alcance": "ESI del EEE en libre prestación; programa: «Recepción y transmisión de órdenes» sobre valores negociables y participaciones de IIC. Pestaña «Agentes»: «No se han encontrado datos disponibles». arttrade no consta como agente para España.",
+   "consultadoUtc": "2026-11-11T10:13:00Z"
+  },
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "CASHLINK Technologies GmbH",
+   "numero": "BaFin-ID 10160302",
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=160302",
+   "alcance": "Kryptowertpapierregisterführung desde el 26.06.2024 y qualifiziertes Kryptoverwahrgeschäft desde el 30.12.2024; «Stand der Daten: 10.11.2026». Registro eWpG de la emisión.",
+   "consultadoUtc": "2026-11-11T10:14:36Z"
+  },
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Tangany GmbH",
+   "numero": "BaFin-ID 50085612",
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=157349",
+   "alcance": "qualifiziertes Kryptoverwahrgeschäft desde el 30.12.2024; custodia y transferencia de criptoactivos según MiCA desde el 08.08.2025; «Stand der Daten: 10.11.2026». Custodio de la cartera colectiva.",
+   "consultadoUtc": "2026-11-11T10:14:35Z"
+  },
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Agitarex GmbH",
+   "numero": "80176491",
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (búsqueda por nombre «agitarex»)",
+   "alcance": "Agente vinculado de Effecta GmbH, «Tätig ab 24.03.2022», Meldedatum 07.07.2026. Distribuye la serie ATTDAP#01 de arttrade (ficha con contraseña).",
+   "consultadoUtc": "2026-11-11T10:15:43Z"
+  },
+  {
+   "regulador": "Handelsregister (Alemania)",
+   "entidad": "arttrade custody 004 UG (haftungsbeschränkt)",
+   "numero": "HRB 103466 (Amtsgericht Düsseldorf)",
+   "url": null,
+   "alcance": "Número tomado de la información al consumidor; no consultado en el registro. El emisor no está supervisado.",
+   "consultadoUtc": null
+  },
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Lista de criptovalores (§ 20 eWpG)",
+   "numero": "ISIN DE000A4AG7X0",
+   "url": "https://www.bafin.de/DE/PublikationenDaten/Datenbanken/Kryptowertpapiere/kryptowerte_node.html",
+   "alcance": "No verificable hoy: la página no muestra la lista (portada genérica) y las rutas alternativas dan 404/403.",
+   "consultadoUtc": "2026-11-11T10:13:52Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "arttrade (buscador de entidades advertidas)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=arttrade",
+   "consultadoUtc": "2026-11-11T10:13:03Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve advertencias, «Página 1 de 16»; 10:13:01 UTC). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Effecta (buscador de entidades advertidas)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "consultadoUtc": "2026-11-11T10:13:05Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve advertencias, «Página 1 de 16»; 10:13:01 UTC). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "arttrade custody (buscador de entidades advertidas)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=arttrade+custody",
+   "consultadoUtc": "2026-11-11T10:13:07Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve advertencias, «Página 1 de 16»; 10:13:01 UTC). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Cashlink (buscador de entidades advertidas)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cashlink",
+   "consultadoUtc": "2026-11-11T10:13:08Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve advertencias, «Página 1 de 16»; 10:13:01 UTC). No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Tangany (buscador de entidades advertidas)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Tangany",
+   "consultadoUtc": "2026-11-11T10:13:10Z",
+   "alcance": "Buscador validado hoy con «Trading» (devuelve advertencias, «Página 1 de 16»; 10:13:01 UTC). No aparecer no equivale a estar autorizado."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "accesoEspana",
+   "literal": "Nutzer, die über die Plattform Finanzinstrumente erwerben wollen, müssen ihren Sitz bzw. Wohnsitz in Deutschland haben und dürfen die Plattform nur auf eigene Rechnung nutzen.",
+   "dato": "Excluido: solo pueden comprar personas con residencia o domicilio en Alemania.",
+   "fuentePrimaria": "https://arttrade.de/nutzungsbedingungen/",
+   "localizador": "Nutzungsbedingungen (AGB de arttrade GmbH), «Stand Januar 2025», punto 4 «Vermittlung von Finanzinstrumenten»",
+   "fechaDato": "2025-01",
+   "consultadoUtc": "2026-11-11T10:09:03Z",
+   "alcanceYLimites": "Condición general de la plataforma por la que se suscriben todas sus emisiones; un residente en España no puede comprar. Es el motivo principal del no_admitir.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Das Institut setzt ausschließlich in Deutschland vertraglich gebundene Vermittler im Sinne von § 3 Abs. 2 WpIG ein",
+   "dato": "Effecta declara que solo usa agentes vinculados en Alemania.",
+   "fuentePrimaria": "https://cashlink-connect.docs.cashlink-files.de/documents/75c0c196-8fe1-46a2-8d09-bc4559825e73.pdf",
+   "localizador": "«Kundeninformationen der Effecta GmbH», Stand 08/2019, p. 2, apartado 5 «Vertraglich gebundene Vermittler» (documento enlazado hoy por la API pública del portal de arttrade)",
+   "fechaDato": "2019-08",
+   "consultadoUtc": "2026-11-11T10:11:59Z",
+   "alcanceYLimites": "Documento antiguo (08/2019) pero servido hoy por la plataforma como información de cliente de Effecta. Coherente con la CNMV: Effecta n.º 5003 sin agentes notificados.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Agentes: No se han encontrado datos disponibles",
+   "dato": "Effecta no tiene agentes notificados en España: arttrade no consta como agente para España.",
+   "fuentePrimaria": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=8",
+   "localizador": "CNMV, ESI del EEE en libre prestación, EFFECTA GmbH (n.º 5003), pestaña «Agentes»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-11T10:12:58Z",
+   "alcanceYLimites": "El pasaporte de Effecta en España es en libre prestación y solo para recepción y transmisión de órdenes (valores negociables e IIC).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "idioma",
+   "literal": "Die Kapitalanlage wird nur in deutscher Sprache angeboten und die Kommunikation zwischen der Emittentin und dem Anleihegläubiger wird während der Laufzeit … in deutscher Sprache erfolgen.",
+   "dato": "Solo en alemán (oferta, documentos y comunicación).",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Verbraucherinformationen.pdf",
+   "localizador": "Verbraucherinformationen ATTRAM#03, apartado 1.1.9 «Vertragssprache», p. 3",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:42Z",
+   "alcanceYLimites": "Las condiciones (Anleihebedingungen, ap. 12.4) también dicen que solo el texto alemán es vinculante. No hay versión inglesa ni española de la web (arttrade.de/en/ y /es/ dan 404).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "estado",
+   "literal": "Verfügbare Investitionsangebote können ausschließlich von registrierten Nutzern eingesehen werden.",
+   "dato": null,
+   "fuentePrimaria": "https://arttrade.de/art-investment/",
+   "localizador": "Página «Art Investment», bloque «Der Investitionsprozess», paso 1",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-11T10:08:38Z",
+   "alcanceYLimites": "No se puede saber sin registrarse qué emisión está abierta hoy. El portal arttrade-investments.de redirige a /login (Playwright, 10:11 UTC) y su invest_now_url (arttrade.io/assets/) redirige a la portada. No se inició sesión ni se creó cuenta.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "estado",
+   "literal": "Erstellungsdatum des Basisinformationsblattes: 08.12.2025",
+   "dato": "KID de ATTRAM#03 revisado el 08/12/2025; plazo de los bonos desde el 04/06/2024.",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Basisinformationsblatt.pdf",
+   "localizador": "KID ATTRAM#03, p. 1, «Produkt» (PDF creado el 08/12/2025, 3 páginas)",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:06Z",
+   "alcanceYLimites": "Que el KID se revisara en diciembre de 2025 sugiere que la serie seguía comercializándose entonces, pero ninguna fuente pública dice que la suscripción esté abierta hoy ni cuánto queda por colocar (máximo 1.000.000 €). El KID de Günther Uecker 001 es del 16/04/2024 y no se ha actualizado.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "estado",
+   "literal": "Arttrade ATTDAP#01 Kunstportfolio | Agitarex … Passwortgeschützt",
+   "dato": "Otra serie (ATTDAP#01) se distribuye por Agitarex, pero su ficha está protegida con contraseña.",
+   "fuentePrimaria": "https://agitarex.com/arttrade-dap-01/",
+   "localizador": "Ficha de Agitarex (título y aviso de contraseña); Agitarex GmbH es agente vinculado de Effecta (BaFin n.º 80176491, activo desde el 24/03/2022)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-11T10:15:14Z",
+   "alcanceYLimites": "Pista de prensa del 10/02/2025 (btc-echo, solo descubrimiento). Sin KID ni condiciones públicos de ATTDAP#01; la serie no figura en la lista de KID de arttrade.de. No sirve como vía alternativa verificable.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Bereits ab 1.000 € investieren Sie anteilig in ausgewählte Einzelwerke oder breit gestreute Kunstportfolios.",
+   "dato": "Desde 1.000 € (según la web comercial), más el 2 % de agio.",
+   "fuentePrimaria": "https://arttrade.de/art-investment/",
+   "localizador": "Página «Art Investment», bloque «Anteilige Investments»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-11T10:08:38Z",
+   "alcanceYLimites": "Ni el KID ni las condiciones ni la información al consumidor de ATTRAM#03 fijan un mínimo: solo dicen que cada bono vale 1,00 € nominal. El mínimo de 1.000 € es de la web comercial y no se puede ligar a una emisión abierta concreta.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "precio",
+   "literal": "Der Erwerbspreis pro Schuldverschreibung beträgt 1,00 Euro. Zusätzlich zum Anlagebetrag hat der Anleihegläubiger ein Agio als Aufgeld zu leisten. Das Agio beträgt 2,0 % des gezeichneten Nennbetrages.",
+   "dato": "1,00 € por bono + 2,0 % de agio",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Verbraucherinformationen.pdf",
+   "localizador": "Verbraucherinformationen ATTRAM#03, ap. 1.1.4, p. 2",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:42Z",
+   "alcanceYLimites": "Precio de suscripción en el mercado primario; no hay precio de mercado.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Einstiegskosten 2,0 % … Verwaltungsgebühren und sonstige Verwaltungs- oder Betriebskosten 2,0 % p.a. … Erfolgsgebühren und Carried Interest 10 % des Veräußerungsgewinns",
+   "dato": "Entrada 2,0 %; gestión 2,0 % anual sobre el capital; 10 % del beneficio de venta; sin comisión de salida",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Basisinformationsblatt.pdf",
+   "localizador": "KID ATTRAM#03, p. 3, «Zusammensetzung der Kosten»",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:06Z",
+   "alcanceYLimites": "Ejemplo del KID con 10.000 € y escenario moderado a 5 años: costes totales 1.893 € (2,6 % anual). Las condiciones (ap. 1.6) añaden que el emisor retiene además el 50 % de los ingresos por gestión de las obras (exposiciones).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Aufwände für Versicherung, Lagerung und Management sind bereits im Emissionsvolumen berücksichtigt sind – somit entfallen laufende Kosten für den Anleger.",
+   "dato": "La web dice que no hay costes corrientes; el KID y las condiciones fijan un 2,0 % anual.",
+   "fuentePrimaria": "https://arttrade.de/art-investment/",
+   "localizador": "Página «Art Investment», FAQ «Welche Kosten entstehen für mich?»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-11T10:08:38Z",
+   "alcanceYLimites": "Conflicto: la web comercial contradice al KID (08/12/2025, p. 3) y a las condiciones (ap. 1.6 b: «laufende Verwaltungsgebühr in Höhe von 2,0 % p.a.»). Prevalecen los documentos legales.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "salida",
+   "literal": "Eine ordentliche Kündigung durch den Anleihegläubiger vor dem Ablauf der Laufzeit ist ausgeschlossen. … Es existiert noch kein liquider Zweitmarkt für die Schuldverschreibungen.",
+   "dato": "Sin reembolso anticipado ni mercado secundario: se cobra al vencimiento (03/06/2029, ampliable a 03/06/2031).",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Basisinformationsblatt.pdf",
+   "localizador": "KID ATTRAM#03, p. 3, «Wie lange sollte ich die Anlage halten…»",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:06Z",
+   "alcanceYLimites": "Las condiciones (ap. 4.1–4.2) fijan el plazo del 04/06/2024 al 03/06/2029, ampliable dos años por decisión unilateral del emisor, y el pago dentro del mes siguiente, sujeto a subordinación y a la «vorinsolvenzliche Durchsetzungssperre». Solo cabe resolución extraordinaria por causa grave (ap. 8).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "salida",
+   "literal": "Langfristig arbeitet arttrade an einem eigenen Zweitmarkt … Da der Start jedoch nicht absehbar ist … sollten Sie mit einem Anlagezeitraum von mindestens 5 Jahren rechnen.",
+   "dato": "Mercado secundario propio solo planeado, sin fecha.",
+   "fuentePrimaria": "https://arttrade.de/art-investment/",
+   "localizador": "Página «Art Investment», FAQ «Kann ich meine Anteile vorzeitig verkaufen?»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-11T10:08:38Z",
+   "alcanceYLimites": "Conflicto de presentación: la portada y la misma página dicen que los valores son «digital handelbar»/«handelbar, depotfähig», pero el KID y los riesgos (ap. 1.3.1) dicen que no cotizan y que puede ser imposible venderlos.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "derecho",
+   "literal": "Bis zu 1.000.000 Stück qualifiziert nachrangige Schuldverschreibungen im Nennbetrag von je 1,00 Euro … ISIN: DE000A4AG7X0 / WKN: A4AG7X",
+   "dato": "Bonos al portador subordinados, criptovalores eWpG; interés variable (50 % de los ingresos por gestión de las obras) y al vencimiento 100 % del nominal más el 90 % de la plusvalía de venta.",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Basisinformationsblatt.pdf",
+   "localizador": "KID ATTRAM#03, p. 1, «Produkt» y «Ziele/Verzinsung/Rückzahlung»; Anleihebedingungen ap. 1, 3 y 4",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:06Z",
+   "alcanceYLimites": "Derecho de crédito contra la sociedad vehículo, no propiedad de las obras; sin voto. El emisor puede comprar y vender obras y reinvertir (ap. 1.5).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+   "dato": "Riesgo 6 de 7; posible pérdida total; sin garantía ni fondo de garantía.",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Basisinformationsblatt.pdf",
+   "localizador": "KID ATTRAM#03, p. 2, «Risikoindikator»; Verbraucherinformationen ap. 1.1.11",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:06Z",
+   "alcanceYLimites": "Escenarios del KID a 5 años con 10.000 €: tensión 5.908 € (-10 % anual), desfavorable 11.618 €, moderado 15.034 €, favorable 17.981 €. Son escenarios, no rentabilidad.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Die Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin) ist für die Aufsicht der Emittentin im Zusammenhang mit dem Basisinformationsblatt zuständig. Eine laufende Aufsicht besteht nicht.",
+   "dato": "El emisor no está supervisado; la BaFin solo es competente respecto al KID.",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Basisinformationsblatt.pdf",
+   "localizador": "KID ATTRAM#03, p. 1",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:06Z",
+   "alcanceYLimites": "La información al consumidor añade: «Die Emittentin unterliegt keiner gesonderten staatlichen Aufsichtsbehörde.» Oferta sin folleto aprobado.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Die vorinsolvenzliche Durchsetzungssperre bewirkt eine Wesensänderung der Geldhingabe vom Fremdkapital mit unbedingter Rückzahlungsverpflichtung hin zu einer unternehmerischen Beteiligung.",
+   "dato": "Subordinación con bloqueo previo a la insolvencia: el pago puede suspenderse por tiempo ilimitado si el emisor no puede pagar.",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Verbraucherinformationen.pdf",
+   "localizador": "Verbraucherinformationen ATTRAM#03, ap. 1.1.1, p. 2",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:42Z",
+   "alcanceYLimites": "Los riesgos (240604_ATTRAM03_Risikofaktoren) añaden: valoración sin método estándar, falsificación, daño, venta de las obras, conflictos de interés (el emisor puede comprar obras a su matriz), dependencia de dos personas clave y colocación inferior a lo previsto.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Das Produkt zielt auf Anleger mit erweiterten Kenntnissen und Erfahrungen mit Finanzprodukten sowie zu tokenbasierten Produkten und deren Verwahrung in Wallets ab.",
+   "dato": "Público objetivo: inversores con conocimientos y experiencia ampliados.",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Basisinformationsblatt.pdf",
+   "localizador": "KID ATTRAM#03, p. 1, «Kleinanleger-Zielgruppe»",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:06Z",
+   "alcanceYLimites": "No es un producto para el inversor particular común.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "custodia",
+   "literal": "Die den Token zugeordneten privaten kryptografischen Schlüssel der Anleihegläubiger werden in eine Sammel-Wallet bei der Tangany GmbH, München eingebucht.",
+   "dato": "Registro eWpG en Cashlink Technologies (Polygon); claves en una cartera colectiva de Tangany GmbH.",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Verbraucherinformationen.pdf",
+   "localizador": "Verbraucherinformationen ATTRAM#03, ap. 1.1.6; KID p. 1 (registro: Cashlink Technologies GmbH)",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:42Z",
+   "alcanceYLimites": "Ambas entidades tienen licencia de la BaFin (ver registros). Direcciones de los documentos distintas de las del registro de la BaFin (Cashlink: Sandweg 94 frente a Wiesenhüttenplatz 25; Tangany: Agnes-Pockels-Bogen 1 frente a Brienner Straße 53).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "entidad",
+   "literal": "Die arttrade GmbH ist vertraglich gebundener Vermittler im Sinne des § 3 (2) WpIG und wird … ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+   "dato": "arttrade GmbH (Düsseldorf), agente vinculado de Effecta GmbH; BaFin n.º 80175757.",
+   "fuentePrimaria": "https://arttrade.de/imprint/",
+   "localizador": "Impressum, «Hinweis gemäß § 3 (2) WpIG»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-11T10:09:01Z",
+   "alcanceYLimites": "Contrastado hoy con el registro de agentes vinculados de la BaFin (activo desde el 01/12/2021, notificado el 12/03/2026). arttrade no tiene licencia propia (BaFin InstInfo: «Keine Ergebnisse»). Las AGB y la API dan otra dirección (Immermannstraße 19) que la del Impressum y la BaFin (Schinkelstraße 38-40).",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "emisor",
+   "literal": "Eingetragen im Handelsregister des Amtsgerichts Düsseldorf unter der Nr. HRB 103466.",
+   "dato": "arttrade custody 004 UG (haftungsbeschränkt), Düsseldorf, HRB 103466, filial de arttrade GmbH.",
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Verbraucherinformationen.pdf",
+   "localizador": "Verbraucherinformationen ATTRAM#03, p. 1",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:42Z",
+   "alcanceYLimites": "Número tomado del documento; el Handelsregister no se consultó (acceso con formulario). Sociedad limitada con capital mínimo (UG).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "Wenn Sie zum Ende der empfohlenen Haltedauer aussteigen, wird Ihre durchschnittliche Rendite pro Jahr voraussichtlich 11,1 % vor Kosten und 8,5 % nach Kosten betragen.",
+   "dato": null,
+   "fuentePrimaria": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Basisinformationsblatt.pdf",
+   "localizador": "KID ATTRAM#03, p. 3, «Kosten im Zeitverlauf» (escenario moderado)",
+   "fechaDato": "2025-12-08",
+   "consultadoUtc": "2026-11-11T10:09:06Z",
+   "alcanceYLimites": "Es un escenario del KID, no un rendimiento ni un objetivo. La web cita además un 7,8 % anual del índice de los 100 artistas principales desde 2000, que no es del producto. No se publica cifra.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "registroEwpg",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://www.bafin.de/DE/PublikationenDaten/Datenbanken/Kryptowertpapiere/kryptowerte_node.html",
+   "localizador": "Lista pública de criptovalores de la BaFin (§ 20 eWpG)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-11T10:13:52Z",
+   "alcanceYLimites": "La URL devuelve hoy la portada genérica de bases de datos, sin la lista; las rutas en inglés y alemán dan 404 y el buscador de la BaFin da 403. La ISIN DE000A4AG7X0 no aparece fuera de los documentos de arttrade. La inscripción solo consta en los documentos del emisor.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "arttrade es agente vinculado activo de Effecta (BaFin), que tiene pasaporte en España solo para recibir y transmitir órdenes y sin agentes notificados. El emisor es una UG no supervisada; Cashlink y Tangany tienen licencia de la BaFin. La inscripción del criptovalor solo consta en los documentos del emisor."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Las ofertas abiertas solo se ven tras registrarse; el portal redirige al login. El KID de ATTRAM#03 se revisó el 08/12/2025, pero nada público confirma que la suscripción siga abierta el 11/11/2026."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_cumple",
+   "nota": "Las AGB de arttrade (enero de 2025) exigen residencia en Alemania para comprar; la oferta y la comunicación son solo en alemán. Mínimo de 1.000 € solo en la web comercial. Costes: 2 % de entrada, 2 % anual y 10 % de la plusvalía (la web dice que no hay costes corrientes: conflicto)."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple",
+   "nota": "Riesgos documentados con claridad (KID 6/7, subordinación, bloqueo previo a la insolvencia, sin mercado secundario, plazo de 5 años ampliable a 7, público con conocimientos ampliados). Sin advertencias de la CNMV para arttrade, Effecta, el emisor, Cashlink ni Tangany."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "excluido",
+ "cambiosRespectoPublicado": [],
+ "propuestaTarjeta": null,
+ "propuestaPlataforma": null,
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no",
+  "minimoEntrada": "1.000 € según la web comercial (más 2 % de agio); no consta en el KID ni en las condiciones",
+  "supervisorVerificado": "BaFin: Effecta GmbH (BaFin-ID 10133261) y arttrade GmbH como agente vinculado n.º 80175757; CNMV: Effecta n.º 5003 (libre prestación, solo recepción y transmisión de órdenes, sin agentes). Comprobado el 11/11/2026",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "si",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Bonos de arte con KID PRIIPs, criptovalor eWpG con registrador y custodio con licencia de la BaFin, y una entidad responsable con pasaporte a España.",
+  "porQueNo": "Las condiciones de la plataforma exigen residencia en Alemania, la oferta abierta no es visible sin registrarse, todo está solo en alemán y el emisor es una sociedad vehículo pequeña no supervisada con bonos subordinados sin mercado secundario."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Un particular residente en España no puede comprar: las condiciones de uso de arttrade (Stand enero 2025, punto 4) exigen «Sitz bzw. Wohnsitz in Deutschland», Effecta declara usar agentes vinculados solo en Alemania y la CNMV no tiene agentes de Effecta notificados. Además, no se puede comprobar sin registrarse qué emisión está abierta hoy y la oferta solo existe en alemán.",
+ "bloqueos": [
+  "Acceso desde España excluido por las AGB de la plataforma (residencia en Alemania obligatoria).",
+  "Estado de la emisión no verificable: las ofertas abiertas solo se ven tras registrarse; no se inició sesión.",
+  "Lista pública de criptovalores de la BaFin (§ 20 eWpG) no accesible hoy; la ISIN solo consta en documentos del emisor.",
+  "Handelsregister del emisor no consultado (acceso con formulario).",
+  "Conflictos internos: costes corrientes (web: ninguno; KID: 2 % anual) y negociabilidad (web: «handelbar»; KID: sin mercado secundario)."
+ ],
+ "correccionesALaPista": [
+  "Effecta GmbH tiene el BaFin-ID 10133261; el n.º 80175757 es el de arttrade GmbH en el registro de agentes vinculados.",
+  "El KID de ATTRAM#03 se creó el 08/12/2025; el 04/06/2024 es el inicio del plazo de los bonos.",
+  "La «Emissionsgebühr» del 2 % es un agio sobre el nominal; además hay un 2 % anual de gestión y un 10 % de la plusvalía, que la web omite.",
+  "La pista no conocía la restricción de residencia: las AGB la resuelven en contra."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-11T10:08:24Z",
+  "finUtc": "2026-11-11T10:18:59Z"
+ }
+}
