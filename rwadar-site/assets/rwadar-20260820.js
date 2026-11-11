@@ -966,48 +966,68 @@ document.getElementById('exPrimeraLeccion')?.addEventListener('click',event=>{
 /* =================================================================
    LA CALCULADORA DEL EXPLICADOR
    -----------------------------------------------------------------
-   El ejemplo es fijo y con números redondos a propósito: un local de
-   300.000 € partido en 3.000 trozos de 100 €, alquilado por 1.500 € al
-   mes. Son 0,50 € de alquiler por trozo y mes. No hay más magia, y esa
-   es justamente la idea: que se pueda seguir la cuenta con los dedos.
+   El ejemplo de partida sigue siendo de números redondos: un local de
+   300.000 € partido en trozos de 100 €. Desde el 11/11/2026 el valor del
+   activo y el precio de cada trozo se pueden cambiar, y la cuenta sale del
+   motor de «Calcula tus números» (rwadar-movil/lib/calculadora.js, copiado
+   en calculadora-modelo-20261111.js), el mismo de Inicio y de la app: lo
+   que cobras es tu parte del activo por lo que renta el activo entero.
+   Los textos con cifras se escriben ya en el idioma elegido (translate="no").
    ================================================================= */
 (function calculadora(){
- const VALOR=300000, TROZO=100;
- const TOTAL=VALOR/TROZO;                 /* 3.000 trozos */
  const $=id=>document.getElementById(id);
- const bEur=$('calcEuros'), bRent=$('calcRent');
- if(!bEur||!bRent||!$('tRent')) return;
-
- const num=(n,d)=>n.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
- const eur=(n,d)=>num(n,d)+' €';
- const pon=(id,v)=>{const el=$(id); if(el) el.textContent=v;};
-
+ const bEur=$('calcEuros'), bRent=$('calcRent'), cValor=$('calcValor'), cPrecio=$('calcPrecio');
+ const M=window.RWAdarCalculadoraModelo;
+ if(!bEur||!bRent||!$('tRent')||!M) return;
+ const lengua=()=>window.RWAdarIdioma&&RWAdarIdioma.obtenerIdioma&&RWAdarIdioma.obtenerIdioma()==='en'?'en':'es';
+ const pon=(id,v)=>{const el=$(id); if(el){el.textContent=v;el.setAttribute('translate','no');}};
+ /* Una línea de la cuenta: trozos de texto y cifras en negrita. */
+ const linea=(id,partes)=>{const el=$(id);if(!el)return;el.setAttribute('translate','no');
+  el.replaceChildren(...partes.map((x,i)=>{if(i%2===0)return document.createTextNode(x);const b=document.createElement('b');b.textContent=x;return b;}));};
+ /* Los dos importes del activo: se aceptan «300.000», «300000» o «1,5»; un
+    error se dice junto al campo y la cuenta se queda con el último válido. */
+ let valido={valorActivo:M.EJEMPLO_EXPLICADOR.valorActivo,precioParticipacion:M.EJEMPLO_EXPLICADOR.precioParticipacion};
+ function errorCampo(campo,input,error){
+  const caja=$(input.id+'Error');if(!caja)return;
+  if(error){input.setAttribute('aria-invalid','true');caja.textContent=M.mensajeError(error,lengua());caja.setAttribute('translate','no');caja.hidden=false;}
+  else{input.removeAttribute('aria-invalid');caja.textContent='';caja.hidden=true;}
+ }
  function actualiza(){
-  const e=parseInt(bEur.value,10)||2500;
-  const r=(parseInt(bRent.value,10)||60)/10;      /* la barra va en décimas */
-  const trozos=Math.floor(e/TROZO);
-  const parte=trozos/TOTAL;                        /* fracción del local */
-  const rentaAnual=VALOR*r/100;                    /* lo que renta el local entero */
-  const tuyoAnual=rentaAnual*parte;
-  const puesto=trozos*TROZO;                       /* lo realmente invertido */
+  const L=lengua(),e=parseInt(bEur.value,10)||2500,r=(parseInt(bRent.value,10)||60)/10;   /* la barra va en décimas */
+  const entrada={inversion:e,rentabilidad:r,anios:1,modo:'cobrar',comisionAnual:0,comisionEntrada:0,impuestos:0,
+   valorActivo:cValor?cValor.value:valido.valorActivo,precioParticipacion:cPrecio?cPrecio.value:valido.precioParticipacion};
+  const v=M.validarEntradas(entrada);
+  if(cValor)errorCampo('valorActivo',cValor,v.errores.valorActivo);
+  if(cPrecio)errorCampo('precioParticipacion',cPrecio,v.errores.precioParticipacion);
+  if(v.ok)valido={valorActivo:v.valores.valorActivo,precioParticipacion:v.valores.precioParticipacion};
+  /* Con un dato mal escrito, la cuenta sigue con los últimos importes válidos
+     (y si con ellos tampoco cuadra, con el trozo más pequeño que se pueda). */
+  let res=M.calcular(v.ok?v:{...entrada,...valido});
+  if(!res)res=M.calcular({...entrada,valorActivo:M.EJEMPLO_EXPLICADOR.valorActivo,precioParticipacion:M.EJEMPLO_EXPLICADOR.precioParticipacion});
+  const V=res.valorActivo,p=res.precioParticipacion,n=res.participaciones,total=res.participacionesTotales,parte=res.porcentajeActivo;
+  const eur=x=>M.euros(x,L),pct=(x,d)=>M.porcentaje(x,L,d),num=x=>M.numero(x,L,0);
+  const exacto=Math.abs(total-Math.round(total))<1e-9,trozos=num(exacto?total:Math.floor(total+1e-9));
   /* La rentabilidad recibida sale de dividir lo que cobras entre lo que
      pusiste. Con trozos enteros da exactamente la del local, y esa
      coincidencia es justo lo que hay que enseñar. */
-  const tuRent=puesto>0?tuyoAnual/puesto*100:0;
-
-  pon('calcEuros_v',eur(e,0));
-  pon('calcRent_v',num(r,1)+' % al año');
-  bEur.setAttribute('aria-valuetext',eur(e,0));
-  bRent.setAttribute('aria-valuetext',num(r,1)+' % al año');
-  pon('tRent',num(tuRent,1)+' %');
-  pon('tAnual',eur(tuyoAnual,tuyoAnual<100?2:0));
-  pon('tMes',eur(tuyoAnual/12,2));
-
-  pon('c1a',eur(e,0));            pon('c1b',num(trozos,0)+(trozos===1?' trozo':' trozos'));
-  pon('c2a',num(trozos,0));       pon('c2b',num(parte*100,2)+' % es tuyo');
-  pon('c3a',num(r,1)+' %');       pon('c3b',eur(rentaAnual,0)+' al año');
-  pon('c4a',num(parte*100,2)+' %');pon('c4b',eur(tuyoAnual,tuyoAnual<100?2:0)+' al año');
-
+  const tuyo=res.primerAnio.bruto,tuRent=res.capital>0?tuyo/res.capital*100:0;
+  pon('calcTitulo',M.tituloExplicador({valorActivo:V,precioParticipacion:p},L));
+  pon('calcEuros_v',eur(e));
+  pon('calcRent_v',L==='en'?pct(r,1)+' a year':pct(r,1)+' al año');
+  bEur.setAttribute('aria-valuetext',eur(e));
+  bRent.setAttribute('aria-valuetext',L==='en'?pct(r,1)+' a year':pct(r,1)+' al año');
+  pon('tRent',pct(tuRent,1));
+  pon('tAnual',M.euros(tuyo,L,tuyo<100&&tuyo%1?2:0));
+  pon('tMes',M.euros(tuyo/12,L,2));
+  const unid=x=>L==='en'?(x===1?' unit':' units'):(x===1?' trozo':' trozos');
+  linea('c1op',L==='en'?['You invest ',eur(e),' and each unit costs ',eur(p)]:['Pones ',eur(e),' y cada trozo cuesta ',eur(p)]);
+  pon('c1b',num(n)+unid(n)+(res.sobra>0.005?(L==='en'?' ('+eur(res.sobra)+' left over)':' (sobran '+eur(res.sobra)+')'):''));
+  linea('c2op',L==='en'?['You hold ',num(n),' of the property’s ',(exacto?'':'about ')+trozos,' units']:['Tienes ',num(n),' de los ',(exacto?'':'unos ')+trozos,' trozos del local']);
+  pon('c2b',L==='en'?'You hold '+pct(parte,2):pct(parte,2)+' es tuyo');
+  linea('c3op',L==='en'?['The property earns ',pct(r,1),' on '+eur(V)]:['El local renta un ',pct(r,1),' sobre '+eur(V)]);
+  pon('c3b',L==='en'?eur(res.rentaActivo)+' a year':eur(res.rentaActivo)+' al año');
+  linea('c4op',L==='en'?['Your ',pct(parte,2),' of that '+eur(res.rentaActivo)]:['Tu ',pct(parte,2),' de esos '+eur(res.rentaActivo)]);
+  pon('c4b',L==='en'?M.euros(tuyo,L,tuyo<100&&tuyo%1?2:0)+' a year':M.euros(tuyo,L,tuyo<100&&tuyo%1?2:0)+' al año');
  }
 
  /* El tic del deslizador, como el de una rueda dentada: suena UNA vez por
@@ -1018,6 +1038,43 @@ document.getElementById('exPrimeraLeccion')?.addEventListener('click',event=>{
  [bEur,bRent].forEach(b=>{
   b.addEventListener('input',()=>{actualiza(); tic(b);});
  });
+ /* Los importes del activo: cuenta al escribir y formato al salir («300000» → «300.000»). */
+ [[cValor,'valorActivo'],[cPrecio,'precioParticipacion']].forEach(([c,campo])=>{
+  if(!c)return;
+  c.addEventListener('input',actualiza);
+  c.addEventListener('change',()=>{const l=M.leerNumero(c.value);if(l.ok&&!c.hasAttribute('aria-invalid'))c.value=M.valorCampo(l.valor,lengua(),campo);actualiza();});
+ });
+ /* «Calcula con tus números →»: lleva al bloque de Inicio. Dentro de la app
+    (el explicador va en un WebView), solo si la app sabe abrirlo: la app
+    nueva lo avisa con window.RWAdarCalculadoraApp (o data-rwadar-calculadora-app
+    en <html>) antes de cargar la página, y otra vez al terminar de cargarla. */
+ const ir=$('calcIrInicio');
+ if(ir){
+  const appSabe=()=>window.RWAdarCalculadoraApp===true||document.documentElement.hasAttribute('data-rwadar-calculadora-app');
+  if(window.ReactNativeWebView&&!appSabe()){ir.hidden=true;window.addEventListener('load',()=>{if(appSabe())ir.hidden=false;},{once:true});}
+  ir.addEventListener('click',ev=>{
+   if(window.ReactNativeWebView){ev.preventDefault();window.ReactNativeWebView.postMessage('rwadar:tutorial-calculadora');return;}
+   const destino=$('calculadora');if(!destino)return;
+   ev.preventDefault();
+   let hecho=false;
+   const llevar=()=>{if(hecho)return;hecho=true;requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    destino.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    const campo=$('ciInversion');if(campo)campo.focus({preventScroll:true});
+   }));};
+   /* En el móvil, Inicio es una pestaña y el explicador va dentro de Academy:
+      al cerrarla, la web vuelve arriba (y atrás en el historial). Se baja al
+      bloque cuando eso ha terminado. */
+   const movil=typeof Movil!=='undefined'&&Movil.cambiar&&document.documentElement.classList.contains('movil-ui');
+   if(movil){
+    window.addEventListener('popstate',()=>setTimeout(llevar,80),{once:true});
+    try{Movil.cambiar('inicio',{arriba:false});}catch(e){}
+    setTimeout(llevar,450);
+   }else llevar();
+  });
+ }
+ try{if(window.RWAdarIdioma&&RWAdarIdioma.suscribirIdioma)RWAdarIdioma.suscribirIdioma(()=>{
+  [[cValor,'valorActivo'],[cPrecio,'precioParticipacion']].forEach(([c,campo])=>{if(!c)return;const l=M.leerNumero(c.value);if(l.ok)c.value=M.valorCampo(l.valor,lengua(),campo);});
+  actualiza();});}catch(e){}
  actualiza();
 })();
 
@@ -1725,6 +1782,9 @@ function pintarEmisiones(){
  pintarAvisoCatalogo();
  /* Las pruebas cargan pintarEmisiones sola, sin Inicio. */
  if(typeof pintarInicio==='function')pintarInicio();
+ /* «Calcula tus números» (11/11/2026): las ofertas con rentabilidad publicada
+    y vigente salen de este mismo catálogo (calculadora-20261111.js). */
+ if(typeof RWAdarCalculadoraInicio!=='undefined'&&RWAdarCalculadoraInicio.ofertas)RWAdarCalculadoraInicio.ofertas(EMI,catalogoSinCifrasLocal());
  const caja=document.getElementById('emiLista');if(!caja)return;
  if(MODO_LOCAL_SEGURO&&ESCAPARATE_LOCAL){pintarEscaparateLocal();return;}
  if(CATALOGO_EMBEBIDO_BLOQUEADO){

@@ -684,12 +684,13 @@ const rutaAnalitica = '/assets/analitica-20260927.js';
 const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
 // El orden de los scripts (con idioma-previo en <head>) se prueba en rwadar-app/probar-web-escritorio.mjs.
 // La quinta, el candado de las lecciones sin cuenta (08/11/2026), compartida con /academy/.
-// La sexta, «Noticias del sector» (10/11/2026); la séptima, «Mercado y noticias» al estilo de una app de bolsa (11/11/2026).
-prueba('las ocho hojas propias versionadas cargan en el orden declarado',
+// La sexta, «Noticias del sector» (10/11/2026); la séptima, «Mercado y noticias» al estilo de una app de bolsa (11/11/2026);
+// la novena, «Calcula tus números» (11/11/2026).
+prueba('las nueve hojas propias versionadas cargan en el orden declarado',
   JSON.stringify(estilos.map(estilo=>estilo[1])) === JSON.stringify([
     '/assets/rwadar-20260820.css','/assets/cartera-cuenta-ui-20261028.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css',
     '/assets/academy-candado-20261108.css','/assets/noticias-sector-20261110.css','/assets/mercado-20261111.css',
-    '/assets/secciones-20261110.css']));
+    '/assets/secciones-20261110.css','/assets/calculadora-20261111.css']));
 for (const recurso of [rutaScriptApp, rutaCatalogo, rutaAnalitica, estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
@@ -1590,8 +1591,11 @@ const panelPerfilHTML = panelHTML('movilPanelMas');
 // seis capítulos, sus fuentes y la nota legal completa van en /aprende/; nada se repite.
 const aprendeHTML = lee('aprende/index.html');
 {
-  const orden = ['id="relPortada"', 'id="relNuevas"', 'id="mercado"', 'id="ntLista"', 'id="iniAprendeTit"', 'class="ini-pie"'].map(x => panelInicioHTML.indexOf(x));
-  prueba('Inicio son bloques cortos en orden (Cabecera, Ofertas, Mercado y noticias, Aprende y Pie), cada uno con su «Ver …», sin buscador',
+  // «Calcula tus números» (11/11/2026) va entre «Mercado y noticias» y Aprende: sus campos son los únicos de Inicio.
+  const orden = ['id="relPortada"', 'id="relNuevas"', 'id="mercado"', 'id="ntLista"', 'id="calculadora"', 'id="iniAprendeTit"', 'class="ini-pie"'].map(x => panelInicioHTML.indexOf(x));
+  const aCalc = panelInicioHTML.indexOf('<section class="ini-bloque calc-ini" id="calculadora"');
+  const inicioSinCalc = panelInicioHTML.slice(0, aCalc) + panelInicioHTML.slice(panelInicioHTML.indexOf('</section>', aCalc));
+  prueba('Inicio son bloques cortos en orden (Cabecera, Ofertas, Mercado y noticias, Calcula tus números, Aprende y Pie), cada uno con su «Ver …», sin buscador',
     orden.every((x, i) => x > 0 && (i === 0 || x > orden[i - 1])) &&
     ['href="/mercado/"', 'href="/aprende/"', 'href="/aprende/#nota-legal"'].every(x => panelInicioHTML.includes(x)) && !panelInicioHTML.includes('href="/noticias/"') &&
     // La cifra de ofertas sale una vez (en las cifras): ni el botón ni el enlace del carrusel la repiten.
@@ -1599,13 +1603,13 @@ const aprendeHTML = lee('aprende/index.html');
     /<span>Ver todas las ofertas<\/span>/.test(panelInicioHTML) && !/\{ofertas\}/.test(panelInicioHTML) &&
     // El pie no es un <footer>: en el móvil, la hoja principal esconde los <footer> fuera de «Buscar».
     /<div class="ini-pie" role="note" aria-label="Nota legal">/.test(panelInicioHTML) && !/<footer\b/.test(panelInicioHTML) &&
-    !/<(?:textarea|input|form|select)\b/i.test(panelInicioHTML) &&
+    aCalc > 0 && !/<(?:textarea|input|form|select)\b/i.test(inicioSinCalc) && !/<(?:textarea|form|select)\b/i.test(panelInicioHTML) &&
     !/inicioEmpezarTit|data-movil-action="academy"|data-movil-ir="metodo"|inicioComunidad/.test(panelInicioHTML) &&
     /<section class="movil-menu-grupo" id="perfilComunidad"[^>]*\shidden>/.test(panelPerfilHTML));
   prueba('Inicio no repite: sin capítulos, sin franja de novedades, sin escaparate aparte y un solo aviso de riesgo',
     !/id="relCap\d"|rel-novedades|noticias:ini|rel-refs|rel-empieza|class="rel-escaparate"|relTarjetas/.test(panelInicioHTML) &&
     (panelInicioHTML.match(/Invertir tiene riesgos/g) || []).length === 1 &&
-    (panelInicioHTML.match(/class="ini-bloque-tit"/g) || []).length === 3);
+    (panelInicioHTML.match(/class="ini-bloque-tit"/g) || []).length === 4);
   prueba('/aprende/ trae los seis capítulos, su carrusel, la Academy, las fuentes y la nota legal, sin cifras de mercado en el 03',
     ['relCap1', 'relCap2', 'relCap3', 'relCap4', 'relCap5', 'relCap6', 'relQuienLista', 'relRefs', 'nota-legal', 'notaLegalCompleta'].every(id => aprendeHTML.includes(`id="${id}"`)) &&
     /<!--academy-inicio:ini-->[\s\S]*href="\/academy\/"[\s\S]*<!--academy-inicio:fin-->/.test(aprendeHTML) &&
@@ -1874,8 +1878,9 @@ prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustrac
     esperadas.length > 0 && JSON.stringify([...new Set(conPropia)].sort()) === JSON.stringify(esperadas.sort()));
 }
 prueba('HTML conserva sus recursos con huella sin depender de un precache del worker',
-  recursoJSPublicado && hojasPublicadas.length === 9 &&
+  recursoJSPublicado && hojasPublicadas.length === 10 &&
   hojasPublicadas.filter(ruta => /\/secciones-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
+  hojasPublicadas.filter(ruta => /\/calculadora-20261111\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/noticias-sector-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/mapa-buscar-20261027\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/mercado-20261111\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
@@ -1999,6 +2004,74 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
     /^\/assets\/noticias-sector-20261110\.[a-f0-9]{12}\.js$/.test(ntPublicados[1]) &&
     scriptsPublicados.findIndex(s => /\/mercado-20261111\./.test(s[1])) < scriptsPublicados.findIndex(s => s[1] === ntPublicados[0]) &&
     scriptsPublicados.findIndex(s => s[1] === ntPublicados[1]) < scriptsPublicados.findIndex(s => s[1] === recursoCatalogoPublicado));
+}
+/* «Calcula tus números» en Inicio (11/11/2026): que la gente ponga sus números (no sí o sí los 300.000 €). */
+{
+  const calc = require('./rwadar-movil/lib/calculadora.js');
+  const en = require('./rwadar-movil/lib/idioma-en.js');
+  const a = html.indexOf('<section class="ini-bloque calc-ini" id="calculadora"'), bloque = html.slice(a, html.indexOf('\n    </section>', a));
+  const r = spawnSync(process.execPath, ['rwadar-app/calculadora/copiar-modelo-web.cjs', '--comprobar'], { cwd: raiz, encoding: 'utf8' });
+  prueba('el motor de la calculadora de la web es una copia exacta del de la app (node rwadar-app/calculadora/copiar-modelo-web.cjs --comprobar)', r.status === 0);
+  const inputs = [...bloque.matchAll(/<input\b[^>]*>/g)].map(m => m[0]);
+  const textos = inputs.filter(i => /type="text"/.test(i));
+  prueba('«Calcula tus números» va en Inicio entre «Mercado y noticias» y Aprende, con su título y la misma piel de bloque',
+    a > html.indexOf('id="ntLista"') && a < html.indexOf('id="iniAprendeTit"') &&
+    bloque.includes('<h2 class="ini-bloque-tit" id="ciTit">Calcula tus números</h2>') && /aria-labelledby="ciTit" data-calculadora="inicio"/.test(bloque));
+  prueba('campos de escritura libre, cada uno con su <label>, teclado decimal y su error; el ejemplo de partida (1.000 €, 4 %, 5 años), editable y marcado',
+    textos.length === 8 && !/type="range"/.test(bloque) &&
+    textos.every(i => { const id = (i.match(/id="([^"]+)"/) || [])[1]; return id && bloque.includes(`<label class="ci-etq" for="${id}">`) && /inputmode="(?:decimal|numeric)"/.test(i) &&
+      new RegExp(`aria-describedby="[^"]*${id}Error"`).test(i) && bloque.includes(`<p class="ci-error" id="${id}Error" hidden></p>`); }) &&
+    /id="ciInversion"[^>]*value="1\.000"/.test(bloque) && /id="ciRentabilidad"[^>]*value="4"/.test(bloque) && /id="ciAnios"[^>]*value="5"/.test(bloque) &&
+    /id="ciImpuestos"[^>]*value="19"/.test(bloque) && bloque.includes('<span class="ci-ejemplo" id="ciEjemplo">Ejemplo: cámbialo</span>') &&
+    calc.PREDETERMINADOS.inversion === 1000 && calc.PREDETERMINADOS.rentabilidad === 4 && calc.PREDETERMINADOS.anios === 5 && calc.PREDETERMINADOS.impuestos === 19);
+  prueba('el resultado va arriba y en role="status"; «Afinar» y «Ver la cuenta paso a paso» son desplegables; la nota legal se ve',
+    bloque.indexOf('id="ciEstado" role="status" aria-live="polite" aria-atomic="true"') > 0 && bloque.indexOf('id="ciEstado"') < bloque.indexOf('class="ci-datos"') &&
+    /<details class="ci-afinar" id="ciAfinar">\s*<summary><span>Afinar: comisiones e impuestos<\/span>/.test(bloque) &&
+    ['comisionAnual', 'comisionEntrada', 'impuestos', 'valorActivo', 'precioParticipacion'].every(c => bloque.indexOf(`data-ci-campo="${c}"`) > bloque.indexOf('id="ciAfinar"')) &&
+    /<details class="ci-cuenta" id="ciCuenta">\s*<summary>Ver la cuenta paso a paso<\/summary>/.test(bloque) &&
+    /<fieldset class="ci-modo">\s*<legend/.test(bloque) && /name="ciModo"[^>]*value="cobrar" checked/.test(bloque) && /name="ciModo"[^>]*value="reinvertir"/.test(bloque) &&
+    bloque.includes('<div class="solo-lector"><table id="ciTabla"></table></div>') &&
+    html.includes('<p class="ci-legal">Simulación con tus números: no es una previsión ni una oferta. La rentabilidad pasada no garantiza la futura y puedes perder dinero.</p>') &&
+    bloque.includes('En España, la ganancia del ahorro tributa del 19 % al 30 % según cuánto ganes.'));
+  // Las ofertas: nunca escritas a mano; las pinta el script con el catálogo que la web ya carga.
+  const datosCat = arrayDe(jsCatalogo, 'EMI');
+  const conRent = datosCat.filter(o => o.rentabilidad && o.rentabilidad.mostrada);
+  prueba('las rentabilidades de las ofertas no van escritas en el bloque: salen del catálogo que ya carga la web',
+    /<div class="ci-ofertas" id="ciOfertas" hidden>/.test(bloque) && conRent.length > 0 &&
+    conRent.every(o => !bloque.includes(o.rentabilidad.mostrada) && !bloque.includes(o.slug)) &&
+    /if\(typeof RWAdarCalculadoraInicio!=='undefined'&&RWAdarCalculadoraInicio\.ofertas\)RWAdarCalculadoraInicio\.ofertas\(EMI,catalogoSinCifrasLocal\(\)\);/.test(js) &&
+    js.indexOf('RWAdarCalculadoraInicio.ofertas(EMI') > js.indexOf('function pintarEmisiones(') && js.indexOf('RWAdarCalculadoraInicio.ofertas(EMI') < js.indexOf('const caja=document.getElementById(\'emiLista\')'));
+  const scriptCalc = lee('assets/calculadora-20261111.js');
+  prueba('el bloque se dibuja con el motor común, gráfico SVG propio y tabla; sin innerHTML, sin estilos en línea y sin hablar con nadie',
+    /globalThis\.RWAdarCalculadoraModelo/.test(scriptCalc) && /createElementNS\(SVG/.test(scriptCalc) && /modelo\.barras\(/.test(scriptCalc) &&
+    /modelo\.ofertasConRentabilidad\(/.test(scriptCalc) && /modelo\.pasos\(/.test(scriptCalc) && /'aria-pressed'/.test(scriptCalc) && /caption/.test(scriptCalc) &&
+    !/innerHTML|insertAdjacentHTML|setAttribute\('style'|\.style\.[a-z]+\s*=|fetch\(|XMLHttpRequest/.test(scriptCalc.replace(/\/\*[\s\S]*?\*\//g, '')) &&
+    !/https?:\/\/(?!www\.w3\.org)/.test(scriptCalc.replace(/\/\*[\s\S]*?\*\//g, '')));
+  // El explicador deja de estar atado a 300.000 €: dos campos y la cuenta del motor común.
+  prueba('el explicador lleva el valor del activo y el precio de cada trozo (300.000 € y 100 € de partida), recalcula con el motor y enlaza con Inicio',
+    /<input id="calcValor" type="text" inputmode="decimal"[^>]*value="300\.000" aria-describedby="calcValorError">/.test(html) &&
+    /<input id="calcPrecio" type="text" inputmode="decimal"[^>]*value="100" aria-describedby="calcPrecioError">/.test(html) &&
+    html.includes('<label for="calcValor">Valor del activo') && html.includes('<label for="calcPrecio">Precio de cada trozo') &&
+    /<a class="calc-ir" id="calcIrInicio" href="\/#calculadora"><span>Calcula con tus números<\/span>/.test(html) &&
+    /const M=window\.RWAdarCalculadoraModelo;/.test(js) && /M\.tituloExplicador\(/.test(js) && /M\.calcular\(/.test(js) &&
+    !/const VALOR=300000/.test(js) && /'rwadar:tutorial-calculadora'/.test(js) &&
+    calc.EJEMPLO_EXPLICADOR.valorActivo === 300000 && calc.EJEMPLO_EXPLICADOR.precioParticipacion === 100 &&
+    calc.tituloExplicador(calc.EJEMPLO_EXPLICADOR) === 'Un local de 300.000 €, partido en 3.000 trozos de 100 €');
+  // Inglés: cada texto fijo nuevo (el bloque y los campos del explicador) tiene su traducción en el diccionario.
+  const explicaNuevo = html.slice(html.indexOf('<div class="calc-mando calc-mando--campo">'), html.indexOf('<div class="calc-total"'));
+  const sueltos = [bloque, explicaNuevo, '<p>Mueve las barras, cambia los importes y</p><p>Calcula con tus números</p>'].flatMap(h => [
+    ...[...h.replace(/<!--[\s\S]*?-->/g, '').matchAll(/>([^<]+)</g)].map(m => m[1]),
+    ...[...h.matchAll(/\s(?:aria-label|placeholder)="([^"]+)"/g)].map(m => m[1])])
+    .map(x => x.replace(/\s+/g, ' ').trim()).filter(x => x && /[A-Za-zÁÉÍÓÚáéíóúñÑ]/.test(x) && x !== '€');
+  const sinIngles = [...new Set(sueltos)].filter(x => !Object.hasOwn(en, x));
+  prueba(`cada texto fijo de «Calcula tus números» y del explicador tiene su inglés (sin traducir: ${sinIngles.join(' | ') || 'ninguno'})`, sinIngles.length === 0);
+  const calcPublicados = scriptsPublicados.map(s => s[1]).filter(ruta => /\/calculadora-/.test(ruta));
+  prueba('el motor y el bloque de la calculadora salen con huella, tras las noticias y antes del snapshot del catálogo',
+    calcPublicados.length === 2 && /^\/assets\/calculadora-modelo-20261111\.[a-f0-9]{12}\.js$/.test(calcPublicados[0]) &&
+    /^\/assets\/calculadora-20261111\.[a-f0-9]{12}\.js$/.test(calcPublicados[1]) &&
+    scriptsPublicados.findIndex(s => /\/noticias-sector-20261110\./.test(s[1])) < scriptsPublicados.findIndex(s => s[1] === calcPublicados[0]) &&
+    scriptsPublicados.findIndex(s => s[1] === calcPublicados[1]) < scriptsPublicados.findIndex(s => s[1] === recursoCatalogoPublicado) &&
+    ['assets/calculadora-modelo-20261111.js', 'assets/calculadora-20261111.js', 'assets/calculadora-20261111.css'].every(x => ARCHIVOS_PUBLICABLES.includes(x)));
 }
 prueba('el worker generado conserva la retirada efectiva de cachés y no deja copias offline',
   await probarRetiradaOffline(swPublicado));

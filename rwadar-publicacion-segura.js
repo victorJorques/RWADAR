@@ -86,6 +86,8 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-movil/lib/tokenizacion.js',
   // Y de dónde saca rwadar-publicar.js el histórico que publica en /datos/.
   'rwadar-tokenizacion-historico.js',
+  // Motor de «Calcula tus números» (11/11/2026): la web publica su copia exacta.
+  'rwadar-movil/lib/calculadora.js',
   // Motor de «Noticias del sector» (10/11/2026): valida /datos/noticias-v2.json.
   'rwadar-movil/lib/noticias-sector.js',
   // /datos/noticias.json sin «imagen» para la app ya instalada, validado con
@@ -214,6 +216,12 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'datos/noticias-v2.json',
   // Inicio por bloques y sus secciones (rediseño del 10/11/2026).
   'assets/secciones-20261110.css',
+  // «Calcula tus números» en Inicio (11/11/2026): el motor (copia de
+  // rwadar-movil/lib/calculadora.js), el bloque y su hoja (también la de los
+  // dos campos nuevos del explicador).
+  'assets/calculadora-modelo-20261111.js',
+  'assets/calculadora-20261111.js',
+  'assets/calculadora-20261111.css',
   'assets/aprende-20261110.js',
   'c9417d2d5003bb9a41fee63c7f5ec00f.txt',
   'google6b2e3e5f58b7e557.html',
