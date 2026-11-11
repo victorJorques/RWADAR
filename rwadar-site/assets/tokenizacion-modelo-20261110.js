@@ -382,11 +382,14 @@ const SERIE = Object.freeze({ mayores: 40, huecoMaxDias: 3, maxDiasSinDato: 3, d
   categoria: TOTAL.id,
   apiMercados: 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=tokenized-products&order=market_cap_desc&per_page=250' });
 const ID_TOKEN = /^[a-z0-9][a-z0-9-]{0,99}$/;
-// Un día más que la serie: con days=365, CoinGecko empieza un día tarde y
-// «1 A» se quedaba en 364 días (QA del 11/11/2026).
+// days=365, no 366: la API pública de CoinGecko (sin clave) solo da los
+// últimos 365 días y a days=366 responde 401 a cada token (error 10012,
+// comprobado el 11/11/2026 a las 15:04 UTC): con 366 la serie diaria se
+// quedaba sin un solo token y el flujo dejaba de rehacerla. Con 365, el
+// primer día es el de hace 364 y «1 A» abarca esos 365 días.
 function urlHistoria(id) {
   exigir(typeof id === 'string' && ID_TOKEN.test(id), 'id de token no válido');
-  return 'https://api.coingecko.com/api/v3/coins/' + id + '/market_chart?vs_currency=usd&days=' + (SERIE.dias + 1) + '&interval=daily';
+  return 'https://api.coingecko.com/api/v3/coins/' + id + '/market_chart?vs_currency=usd&days=' + SERIE.dias + '&interval=daily';
 }
 const valorCreible = v => typeof v === 'number' && Number.isFinite(v) && v > 0 && v < VALOR_MAX;
 
@@ -725,14 +728,16 @@ function diasQueFaltan(puntos) {
   return salida;
 }
 /* La nota corta, siempre a la vista bajo el gráfico; el resto (notaSerie) va
-   en un desplegable «Cómo se calcula». */
+   en un desplegable «Cómo se calcula». Dice lo mismo que el subtítulo de la
+   cifra grande, «los N mayores tokens con historia completa» (revisión del
+   11/11/2026: «Suma de 29 de los 40 mayores» se leía como otra cosa que
+   «Suma de los 29 mayores»); de cuántos se eligen lo cuenta «Cómo se calcula». */
 function notaCorta(serie, idioma = 'es') {
   let s;
   try { s = validarSerie(serie); } catch { return ''; }
   const cob = coberturaTexto(s, idioma);
-  const todos = s.incluidos === s.pedidos;
-  if (idioma === 'en') return (todos ? `Sum of the ${s.pedidos} largest tokens` : `Sum of ${s.incluidos} of the ${s.pedidos} largest tokens`) + ` (${cob} of the total).`;
-  return (todos ? `Suma de los ${s.pedidos} mayores tokens` : `Suma de ${s.incluidos} de los ${s.pedidos} mayores tokens`) + ` (${cob} del total).`;
+  if (idioma === 'en') return `Sum of the ${s.incluidos} largest tokens with a complete history (${cob} of the category total).`;
+  return `Suma de los ${s.incluidos} mayores tokens con historia completa (${cob} del total de la categoría).`;
 }
 /* =====================================================================
    La cabecera de «Mercado y noticias» (QA del 11/11/2026): nada de la
@@ -775,21 +780,20 @@ function cuandoDato(vivo, idioma = 'es', ahora = Date.now()) {
   if (esHoy(iso, ahora)) return (en ? 'today, ' : 'hoy, ') + iso.slice(11, 16) + ' UTC';
   return (en ? 'figure from ' : 'dato del ') + horaDato(iso, idioma);
 }
-/* La línea gris bajo el cambio: el total de la categoría, con su hora, y que
-   la cifra grande y el gráfico suman los N mayores. '' sin total o sin serie
-   (entonces la cifra grande ya es ese total). */
+/* La línea gris del total de la categoría, con su hora. Va bajo el gráfico,
+   tras la nota corta (revisión del 11/11/2026: en la cabecera empujaba el
+   gráfico fuera de la primera pantalla del móvil); que la cifra grande y el
+   gráfico suman los N mayores ya lo dicen el subtítulo y la nota. '' sin
+   total o sin serie (entonces la cifra grande ya es ese total). */
 function lineaTotalCategoria(serie, vivo, idioma = 'es', ahora = Date.now()) {
   const v = vivo?.total?.valor;
   if (typeof v !== 'number' || !Number.isFinite(v)) return '';
   let s;
   try { s = validarSerie(serie); } catch { return ''; }
+  if (!s) return '';
   const cuando = cuandoDato(vivo, idioma, ahora);
-  if (idioma === 'en') {
-    return `CoinGecko category total, all tokens: ${millones(v, 'en')}${cuando ? ` (${cuando})` : ''}.` +
-      ` The large figure and the chart add up the ${s.incluidos} largest with a complete history.`;
-  }
-  return `Total de la categoría en CoinGecko, con todos sus tokens: ${millones(v)}${cuando ? ` (${cuando})` : ''}.` +
-    ` La cifra grande y el gráfico suman los ${s.incluidos} mayores con historia completa.`;
+  if (idioma === 'en') return `CoinGecko category total, all tokens: ${millones(v, 'en')}${cuando ? ` (${cuando})` : ''}.`;
+  return `Total de la categoría en CoinGecko, con todos sus tokens: ${millones(v)}${cuando ? ` (${cuando})` : ''}.`;
 }
 /* Debajo del cambio del periodo, siempre: el % es del tamaño del mercado. */
 function explicacionCambio(idioma = 'es') {
@@ -797,14 +801,16 @@ function explicacionCambio(idioma = 'es') {
     ? 'It measures the total size of the market, which also grows when new tokens are issued. It is not the return on any investment.'
     : 'Mide cuánto vale en total el mercado: sube también cuando se emiten tokens nuevos. No es lo que habría ganado una inversión.';
 }
-/* El subtítulo de la cifra grande: qué suma y de qué día. */
+/* El subtítulo de la cifra grande: qué suma (con la misma coletilla que la
+   nota del gráfico) y de qué día. */
 function subtituloCifra(serie, idioma = 'es') {
   let s;
   try { s = validarSerie(serie); } catch { s = null; }
   const u = s?.puntos?.[s.puntos.length - 1];
   if (!u) return idioma === 'en' ? 'CoinGecko category total, all tokens' : 'Total de la categoría en CoinGecko, con todos sus tokens';
-  return idioma === 'en' ? `Sum of the ${s.incluidos} largest tokens · ${fechaCorta(u.fecha, 'en')}`
-    : `Suma de los ${s.incluidos} mayores tokens · ${fechaCorta(u.fecha)}`;
+  // Un espacio duro antes del «·»: en el móvil, si no cabe, baja «completa · 11/11/2026» entero y no un «· 11/11/2026» suelto.
+  return idioma === 'en' ? `Sum of the ${s.incluidos} largest tokens with a complete history\u00a0· ${fechaCorta(u.fecha, 'en')}`
+    : `Suma de los ${s.incluidos} mayores tokens con historia completa\u00a0· ${fechaCorta(u.fecha)}`;
 }
 /* Coordenadas de los puntos en un dibujo de ancho «ancho» y alto «alto» (sin
    márgenes: los pone quien dibuja). x por fecha; y por la escala del eje. */

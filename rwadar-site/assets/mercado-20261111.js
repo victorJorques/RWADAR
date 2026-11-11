@@ -12,8 +12,9 @@
      29 de los 40 mayores; rwadar-app/tokenizacion/serie-diaria.mjs).
    La cifra grande es el último punto de la serie (QA del 11/11/2026): la
    misma que el final de la línea, la cruz en el último día, el cambio, el
-   máximo y el mínimo. El total de la categoría, con todos sus tokens, va
-   debajo en gris y en los datos clave, con su hora.
+   máximo y el mínimo. El total de la categoría, con todos sus tokens, va en
+   gris bajo el gráfico, tras la nota, y en los datos clave, con su hora (en
+   la cabecera empujaba el gráfico fuera de la primera pantalla del móvil).
    Dos modos:
    - data-mercado="completo" (/mercado/): el nombre, la cifra grande y el
      cambio del periodo (signo, flecha y texto: el color nunca va solo) con
@@ -92,7 +93,9 @@
   }
   function cifraGrande(valor, clase) {
     const caja = el('p', clase);
-    const [cifra, unidad] = modelo.millones(valor, idioma()).split(' ');
+    // millones() separa la unidad con un espacio duro (U+00A0), que en el código no se
+    // distinguía de un espacio normal: /\s/ lo deja claro y es lo mismo que en la app.
+    const [cifra, unidad] = modelo.millones(valor, idioma()).split(/\s/);
     const grande = el('span', 'mk-cifra-num', cifra);
     if (unidad) grande.append(el('span', 'mk-cifra-unidad', ' ' + unidad));
     grande.setAttribute('aria-hidden', 'true');
@@ -131,7 +134,10 @@
     // ARRIBA: una franja libre de 40 px para la burbuja de la cruz, que así no tapa la línea.
     const EJE = escritorio ? 64 : 54, ALTO = escritorio ? 330 : 270, ARRIBA = 40, ABAJO = 28;
     const PW = ancho - EJE, PH = ALTO - ARRIBA - ABAJO;
-    const coords = modelo.coordenadas(g, PW, PH).map(c => ({ x: c.x, y: c.y + ARRIBA }));
+    // HOLGURA: la línea acaba 8 px antes del eje, así el punto de la cruz en el
+    // último día no toca la píldora del último valor (revisión del 11/11/2026).
+    const HOLGURA = 8;
+    const coords = modelo.coordenadas(g, PW - HOLGURA, PH).map(c => ({ x: c.x, y: c.y + ARRIBA }));
     const yDe = v => ARRIBA + PH - (v - g.escala.lo) / (g.escala.hi - g.escala.lo) * PH;
     const dibujo = svg('svg', { width: ancho, height: ALTO, viewBox: `0 0 ${ancho} ${ALTO}`, class: 'mk-svg', 'aria-hidden': 'true', focusable: 'false' });
     const id = 'mkDeg' + Math.random().toString(36).slice(2, 8);
@@ -379,8 +385,14 @@
       barra.setAttribute('aria-hidden', 'true');
       const cuota = el('span', 'mk-tipo-cuota', modelo.cuota(t.cuota, idioma()) + ' ' + tx('del total', 'of the total'));
       const c = el('span', 'mk-tipo-24h');
-      if (dir === 'sin-datos') c.append(el('span', '', '—'));
-      else c.append(el('span', 'mk-tipo-24h-cifra mk-' + dir, `${FLECHA[dir]} ${modelo.porcentaje(t.cambio24h, idioma())}`), ' ', el('span', '', tx('en 24 h', 'in 24 h')));
+      // Sin cambio, se dice con palabras («—» suelto no se entendía); la flecha, del mismo tamaño que en los datos clave.
+      if (dir === 'sin-datos') c.append(el('span', '', tx('Sin dato en 24 h', 'No 24 h data')));
+      else {
+        const cifra = el('span', 'mk-tipo-24h-cifra mk-' + dir), f = el('span', 'mk-flecha', FLECHA[dir]);
+        f.setAttribute('aria-hidden', 'true');
+        cifra.append(f, el('span', '', modelo.porcentaje(t.cambio24h, idioma())));
+        c.append(cifra, ' ', el('span', '', tx('en 24 h', 'in 24 h')));
+      }
       li.append(barra, cuota, c);
       if (t.clave === 'materias-primas' && vivo.oro && finito(vivo.oro.valor)) li.append(el('span', 'mk-tipo-oro', tx('De ello, oro: ', 'Of which gold: ') + modelo.millones(vivo.oro.valor, idioma())));
       lista.append(li);
@@ -390,15 +402,20 @@
     return caja;
   }
 
-  /* La nota bajo el gráfico: una línea corta a la vista y el resto en «Cómo
-     se calcula», con cuántos entran a mitad del periodo elegido. */
+  /* La nota bajo el gráfico: una línea corta a la vista, con el total de la
+     categoría, y el resto en «Cómo se calcula», con cuántos entran a mitad
+     del periodo elegido. */
   function notaGrafico() {
     const caja = el('div', 'mk-nota-caja');
     const como = el('details', 'mk-como');
     como.open = comoAbierto;
     como.addEventListener('toggle', () => { comoAbierto = como.open; });
     como.append(el('summary', 'mk-como-tit', tx('Cómo se calcula', 'How it is calculated')), el('p', 'mk-nota-larga', modelo.notaSerie(serie, idioma(), pestana)));
-    caja.append(el('p', 'mk-nota', modelo.notaCorta(serie, idioma())), como);
+    // La nota corta (la misma coletilla que el subtítulo) y, en gris, el total de la categoría con su hora.
+    const nota = el('p', 'mk-nota', modelo.notaCorta(serie, idioma()));
+    const total = modelo.lineaTotalCategoria(serie, vivo, idioma());
+    if (total) nota.append(' ', el('span', 'mk-total-cat', total));
+    caja.append(nota, como);
     return caja;
   }
 
@@ -427,9 +444,8 @@
       if (g.avisoTokens) cab.append(el('p', 'mk-aviso mk-aviso-tokens', g.avisoTokens[0].toUpperCase() + g.avisoTokens.slice(1) + '.'));
     }
     if (atrasada()) cab.append(el('p', 'mk-aviso mk-aviso-serie', avisoAtrasada()));
-    const total = modelo.lineaTotalCategoria(serie, vivo, idioma());
-    if (total) cab.append(el('p', 'mk-total-cat', total));
-    else if (hoy.fuente === 'total') cab.append(el('p', 'mk-aviso', tx('Sin la serie diaria, la cifra es el total de la categoría en CoinGecko (', "Without the daily series, the figure is CoinGecko's category total (") +
+    // El total de la categoría va bajo el gráfico (notaGrafico); sin serie, la cifra grande ya es ese total y se dice.
+    if (hoy.fuente === 'total') cab.append(el('p', 'mk-aviso', tx('Sin la serie diaria, la cifra es el total de la categoría en CoinGecko (', "Without the daily series, the figure is CoinGecko's category total (") +
       modelo.cuandoDato(vivo, idioma()) + ').'));
     // Pestañas: botones con aria-pressed (el seleccionado, marcado). El nombre accesible contiene lo que se ve.
     const pestanas = el('div', 'mk-pestanas');

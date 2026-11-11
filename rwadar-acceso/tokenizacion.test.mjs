@@ -328,6 +328,10 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
           nota: s.querySelector('.mk-nota').textContent, notaLarga: s.querySelector('.mk-como .mk-nota-larga')?.textContent,
           como: [s.querySelector('.mk-como summary')?.textContent, s.querySelector('.mk-como')?.open], clave: [...s.querySelectorAll('.mk-clave dt')].map(d => d.textContent),
           tipos: s.querySelectorAll('.mk-tipo').length, fuente: s.querySelector('.mk-fuente a')?.href,
+          totalEnCab: !!s.querySelector('.mk-cab .mk-total-cat'), totalEnNota: !!s.querySelector('.mk-nota .mk-total-cat'),
+          finEje: Math.max(...eje.map(t => t.getBoundingClientRect().bottom)) + scrollY,
+          letraClave: [...s.querySelectorAll('.mk-clave dd, .mk-tipo-valor')].map(d => getComputedStyle(d).fontFamily),
+          tipos24: [...s.querySelectorAll('.mk-tipo-24h')].map(d => d.textContent),
           fuera: fuera.length, anchoPagina: document.documentElement.scrollWidth };
       });
       let m = await leer();
@@ -337,13 +341,20 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       // La cifra grande es el último punto de la serie (42.947 M$); el total de la categoría (49.684 M$) va debajo, con su nombre y su hora.
       assert.equal(plano(m.cifra), plano(modelo.millones(ULTIMO.valor)));
       assert.equal(m.hablado, '42.947 millones de dólares');
-      assert.equal(m.sub, `Suma de los ${SERIE.incluidos} mayores tokens · ${modelo.fechaCorta(ULTIMO.fecha)}`);
+      // La misma coletilla en el subtítulo y en la nota: «los 29 mayores tokens con historia completa».
+      assert.equal(m.sub, `Suma de los ${SERIE.incluidos} mayores tokens con historia completa\u00a0· ${modelo.fechaCorta(ULTIMO.fecha)}`);
       assert.equal(m.cambio, { sube: '▲', baja: '▼', igual: '=' }[g1m.direccion] + g1m.cambioTexto);
       assert.equal(m.periodo, 'en el último mes');
       assert.equal(m.alcance, null, 'el subtítulo ya dice qué suma');
       assert.equal(m.explica, 'Mide cuánto vale en total el mercado: sube también cuando se emiten tokens nuevos. No es lo que habría ganado una inversión.');
       assert.equal(m.totalCat, modelo.lineaTotalCategoria(SERIE, VIVO, 'es'));
-      assert.match(m.totalCat, /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \((dato del 10\/11\/2026, 15:25|hoy, 15:25) UTC\)\. La cifra grande y el gráfico suman los 29 mayores con historia completa\.$/);
+      assert.match(m.totalCat, /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \((dato del 10\/11\/2026, 15:25|hoy, 15:25) UTC\)\.$/);
+      // El total va bajo el gráfico, tras la nota: en la cabecera empujaba el gráfico fuera de la primera pantalla del móvil.
+      assert.deepEqual([m.totalEnCab, m.totalEnNota], [false, true]);
+      if (ancho < 768) assert.ok(m.finEje <= 844, `${ancho}: el gráfico entero, con sus fechas, en la primera pantalla (acaba en ${m.finEje} px)`);
+      // Las cifras de los datos clave y de los tipos, en la letra de la cabecera (en Mono, «−0,1 %» se leía espaciado).
+      assert.ok(m.letraClave.length > 8 && m.letraClave.every(f => !/mono/i.test(f)), m.letraClave.join(' | '));
+      assert.ok(m.tipos24.every(x => /^(▲|▼|=).+ en 24 h$|^Sin dato en 24 h$/.test(x.trim())), m.tipos24.join(' | '));
       assert.equal(m.avisoTokens, null, '1 M: mismos tokens al principio y al final');
       // Datos clave: dos cifras con su nombre; el valor de hoy no supera el máximo; 24 h de la serie (nunca el +124 %).
       assert.equal(plano(m.valorHoy), plano(modelo.millones(ULTIMO.valor) + modelo.fechaCorta(ULTIMO.fecha)));
@@ -374,7 +385,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.equal(m.rol, 'slider');
       assert.equal(m.tabla, g1m.puntos.length + 1, 'la tabla equivalente, con todos los días');
       assert.equal(m.caption, `Valor diario, último mes (suma de los ${SERIE.incluidos} mayores tokens)`);
-      assert.equal(m.nota, modelo.notaCorta(SERIE), 'una línea corta a la vista');
+      assert.equal(m.nota, modelo.notaCorta(SERIE) + ' ' + modelo.lineaTotalCategoria(SERIE, VIVO, 'es'), 'la nota corta a la vista, con el total de la categoría');
       assert.equal(m.notaLarga, modelo.notaSerie(SERIE, 'es', '1m'));
       assert.deepEqual(m.como, ['Cómo se calcula', false], 'el resto, en un desplegable cerrado');
       assert.deepEqual(m.clave, [`Valor hoy (${SERIE.incluidos} mayores)`, 'Total de la categoría hoy', 'Cambio en 24 h', 'Máximo del periodo', 'Mínimo del periodo',
@@ -433,6 +444,18 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       await pagina.keyboard.press('End');
       const fin = await pagina.evaluate(() => ({ burbuja: document.querySelector('.mk-burbuja-valor').textContent, cifra: document.querySelector('.mk-cifra-num').textContent }));
       assert.equal(plano(fin.burbuja), plano(fin.cifra), 'la burbuja del último día = la cifra grande');
+      // El punto del último día, con su borde, no toca la píldora del último valor.
+      const toque = await pagina.evaluate(() => {
+        const c = document.querySelector('.mk-cruz circle'), r = document.querySelector('.mk-ultimo rect');
+        return { borde: Number(c.getAttribute('cx')) + Number(c.getAttribute('r')) + 1, pildora: Number(r.getAttribute('x')) };
+      });
+      assert.ok(toque.borde + 3 <= toque.pildora, `${ancho}: el punto acaba en ${toque.borde} y la píldora empieza en ${toque.pildora}`);
+      if (ancho < 768) {
+        // Con la lista de tipos abierta, el avance («Crédito privado 55,6 % · …») sobra.
+        await pagina.click('.mk-tipos-sum');
+        assert.equal(await pagina.evaluate(() => getComputedStyle(document.querySelector('.mk-tipos-avance')).display), 'none');
+        await pagina.click('.mk-tipos-sum');
+      }
       // En inglés: textos y cifras en su formato.
       await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="en"]').click());
       await pagina.waitForFunction(() => document.querySelector('h1').textContent === 'Tokenised asset market');
@@ -440,7 +463,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
         sub: document.querySelector('.mk-sub').textContent, explica: document.querySelector('.mk-explica').textContent,
         pestanas: [...document.querySelectorAll('.mk-pestana')].map(b => b.textContent), ytd: document.querySelector('[data-pestana="ytd"]').getAttribute('aria-label'),
         clave: document.querySelector('.mk-clave dt').textContent }));
-      assert.deepEqual(en, { cifra: '$42,947M', periodo: 'past month', sub: `Sum of the ${SERIE.incluidos} largest tokens · ${modelo.fechaCorta(ULTIMO.fecha, 'en')}`,
+      assert.deepEqual(en, { cifra: '$42,947M', periodo: 'past month', sub: `Sum of the ${SERIE.incluidos} largest tokens with a complete history\u00a0· ${modelo.fechaCorta(ULTIMO.fecha, 'en')}`,
         explica: 'It measures the total size of the market, which also grows when new tokens are issued. It is not the return on any investment.',
         pestanas: ['1W', '1M', '3M', '6M', 'YTD', '1Y'], ytd: 'YTD, year to date', clave: `Value today (${SERIE.incluidos} largest)` });
       await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="es"]').click());

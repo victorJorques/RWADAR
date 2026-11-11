@@ -427,3 +427,20 @@ test('Inicio pinta las noticias en «Mercado y noticias», tras la cotización y
   assert.match(inicio, /onAbrir=\{\(noticia\) => abrir\('mercado', \{ noticia: noticia\?\.id \|\| null \}\)\}/);
   assert.match(inicio, /<NoticiasSector modo="lista" abrirId=\{noticiaId\} onAbrirEnlace=\{onAbrirEnlace\} \/>/);
 });
+
+test('la fuente corta: en inglés, los organismos traducidos («Consejo de la UE» salía sin traducir); siglas y empresas, igual', () => {
+  const m = require('../lib/noticias-sector');
+  const n = (nombre) => ({ fuente: { nombre } });
+  assert.equal(m.fuenteCorta(n('Consejo de la UE, orientación general (ST 13779/1/26 REV 1)')), 'Consejo de la UE');
+  assert.equal(m.fuenteCorta(n('Consejo de la UE, orientación general (ST 13779/1/26 REV 1)'), 'en'), 'Council of the EU');
+  assert.equal(m.fuenteTraducida(n('Consejo de la UE, x'), 'en'), true);
+  assert.equal(m.fuenteCorta(n('CNMV, nota de prensa del 15/10/2026'), 'en'), 'CNMV');
+  assert.equal(m.fuenteTraducida(n('CNMV, nota'), 'en'), false);
+  assert.equal(m.fuenteCorta(n('Robinhood Assets (Jersey) Limited, suplemento'), 'en'), 'Robinhood Assets (Jersey) Limited');
+  assert.equal(m.fuenteCorta({}), '');
+  // Todas las fuentes de las noticias de hoy salen en inglés sin nada en castellano que tenga traducción.
+  const datos = require('../../rwadar-site/datos/noticias-v2.json');
+  const enIngles = datos.noticias.map((x) => m.fuenteCorta(x, 'en'));
+  assert.ok(enIngles.includes('Council of the EU'), enIngles.join(' | '));
+  assert.ok(!enIngles.some((f) => Object.keys(m.FUENTES_EN).includes(f)));
+});

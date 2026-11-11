@@ -88,9 +88,11 @@ export function GraficoBolsa({ g, idioma, alto = 270 }) {
   const reloj = useRef(null);
   const parar = () => { clearTimeout(reloj.current); reloj.current = null; };
   // ARRIBA: una franja libre de 40 px para la burbuja de la cruz, que así no tapa la línea.
-  const EJE = 54, ARRIBA = 40, ABAJO = 28;
+  // HOLGURA: la línea acaba 8 px antes del eje, así el punto de la cruz en el
+  // último día no toca la píldora del último valor (revisión del 11/11/2026).
+  const EJE = 54, ARRIBA = 40, ABAJO = 28, HOLGURA = 8;
   const PW = Math.max(0, ancho - EJE), PH = alto - ARRIBA - ABAJO;
-  const coords = useMemo(() => (ancho > 0 ? coordenadas(g, PW, PH).map((c) => ({ x: c.x, y: c.y + ARRIBA })) : []), [g, ancho, PW, PH]);
+  const coords = useMemo(() => (ancho > 0 ? coordenadas(g, Math.max(0, PW - HOLGURA), PH).map((c) => ({ x: c.x, y: c.y + ARRIBA })) : []), [g, ancho, PW, PH]);
   const ref = useRef({ coords, n: g.puntos.length });
   ref.current = { coords, n: g.puntos.length };
   const responder = useMemo(() => PanResponder.create({
@@ -287,7 +289,7 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
           {g ? <Text noTraducir style={e.explica} testID="mercado-explica">{explicacionCambio(idioma)}</Text> : null}
           {g && g.avisoTokens ? <Text noTraducir style={[e.aviso, e.avisoTokens]} testID="mercado-aviso-tokens">{mayuscula(g.avisoTokens) + '.'}</Text> : null}
           {vieja ? <Text noTraducir style={e.aviso} testID="mercado-serie-vieja">{`${en ? 'The series ends on ' : 'La serie llega hasta el '}${fechaFinSerie(serie, idioma)}${en ? ': the large figure and the chart are from that day.' : ': la cifra grande y el gráfico son de ese día.'}`}</Text> : null}
-          {total ? <Text noTraducir style={e.totalCat} testID="mercado-total-categoria">{total}</Text> : null}
+          {/* El total de la categoría va bajo el gráfico, tras la nota (aquí empujaba el gráfico fuera de la primera pantalla). */}
           {!serie && vivo ? <Text noTraducir style={e.aviso}>{`${en ? "Without the daily series, the figure is CoinGecko's category total (" : 'Sin la serie diaria, la cifra es el total de la categoría en CoinGecko ('}${cuandoDato(vivo, idioma)}).`}</Text> : null}
         </View>
       ) : null}
@@ -312,7 +314,11 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
         <View style={e.grafico}>
           <GraficoBolsa g={g} idioma={idioma} />
           {/* Una línea corta a la vista; el resto, en «Cómo se calcula». */}
-          <Text noTraducir style={e.nota}>{notaCorta(serie, idioma)}</Text>
+          {/* Con la misma coletilla que el subtítulo y, en gris, el total de la categoría con su hora. */}
+          <Text noTraducir style={e.nota} testID="mercado-nota">
+            {notaCorta(serie, idioma)}
+            {total ? <Text noTraducir style={e.totalCat} testID="mercado-total-categoria">{' ' + total}</Text> : null}
+          </Text>
           <Pressable onPress={() => { tacto.eleccion(); setComo((v) => !v); }} style={({ pressed }) => [e.como, pressed && pulsado('b3')]}
             accessibilityRole="button" accessibilityState={{ expanded: como }} noTraducir accessibilityLabel={en ? 'How it is calculated' : 'Cómo se calcula'}
             testID="mercado-como">
@@ -356,7 +362,8 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
           {tiposAbiertos ? vivo.tipos.map((t) => {
             const dir = direccion(t.cambio24h);
             const nombre = en ? TIPOS_EN[t.nombre] || t.nombre : t.nombre;
-            const cifra24 = dir === 'sin-datos' ? '—' : `${FLECHA[dir]} ${porcentaje(t.cambio24h, idioma)}`;
+            // Sin cambio, se dice con palabras: un «—» suelto no se entendía.
+            const cifra24 = dir === 'sin-datos' ? (en ? 'No 24 h data' : 'Sin dato en 24 h') : `${FLECHA[dir]} ${porcentaje(t.cambio24h, idioma)}`;
             return (
               <View key={t.clave} style={e.tipo} accessible noTraducir
                 accessibilityLabel={`${nombre}: ${millones(t.valor, idioma)}, ${cuota(t.cuota, idioma)} ${en ? 'of the total' : 'del total'}, ${cifra24}${dir === 'sin-datos' ? '' : en ? ' in 24 h' : ' en 24 h'}`}>
@@ -480,7 +487,7 @@ const e = StyleSheet.create({
   explica: { fontFamily: F.regular, fontSize: 13, lineHeight: 19, color: C.tx2, marginTop: 6 },
   aviso: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx3, marginTop: 8 },
   avisoTokens: { color: C.tx2 },
-  totalCat: { fontFamily: F.regular, fontSize: 13, lineHeight: 19, color: C.tx3, marginTop: 8 },
+  totalCat: { color: C.tx3 },
   pestanas: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 12 },
   pestana: { flex: 1, minHeight: 40, minWidth: 44, borderRadius: R.p, alignItems: 'center', justifyContent: 'center', marginHorizontal: 1 },
   pestanaSel: { backgroundColor: C.s3 },
@@ -503,25 +510,28 @@ const e = StyleSheet.create({
   // El último dato (un texto, no una cifra) ocupa la fila entera.
   claveItemTexto: { width: '100%' },
   claveRotulo: { fontFamily: F.media, fontSize: 13, lineHeight: 17, color: C.tx3 },
-  claveValor: { ...T.instrumento, fontSize: 16, lineHeight: 21, color: C.tx },
+  // En la misma letra que la cabecera: en Mono, «−0,1 %» se leía espaciado.
+  claveValor: { fontFamily: F.semi, fontVariant: ['tabular-nums'], fontSize: 16, lineHeight: 21, color: C.tx },
   claveValorTexto: { fontFamily: F.semi },
   claveExtra: { fontFamily: F.regular, fontSize: 12, lineHeight: 16, color: C.tx3 },
   fuente: { minHeight: 44, justifyContent: 'center', marginTop: 8, marginLeft: -8, paddingHorizontal: 8, borderRadius: R.m, alignSelf: 'flex-start' },
   fuenteTxt: { fontFamily: F.regular, fontSize: 13, lineHeight: 18, color: C.tx3 },
   fuenteEnlace: { fontFamily: F.media, color: C.senal, textDecorationLine: 'underline' },
   h2: { fontFamily: F.negrita, fontSize: 20, lineHeight: 25, letterSpacing: -0.3, color: C.tx },
-  h2Sub: { ...T.menor, fontSize: 14, lineHeight: 20, color: C.tx3, marginTop: 4, marginBottom: 12 },
+  // El botón «Ver los 8 tipos» ya trae su aire (44 px de alto): sin más margen debajo del subtítulo.
+  h2Sub: { ...T.menor, fontSize: 14, lineHeight: 20, color: C.tx3, marginTop: 4, marginBottom: 4 },
   tipos: { marginTop: 28 },
   tipo: { marginBottom: 12, gap: 4 },
   tipoFila: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', gap: 12 },
   tipoNom: { flexShrink: 1, fontFamily: F.media, fontSize: 15, lineHeight: 20, color: C.tx },
   // Las cifras, alineadas a la derecha como en una tabla financiera.
-  tipoValor: { ...T.instrumento, fontSize: 14, lineHeight: 20, color: C.tx, textAlign: 'right' },
+  tipoValor: { fontFamily: F.semi, fontVariant: ['tabular-nums'], fontSize: 14, lineHeight: 20, color: C.tx, textAlign: 'right' },
   avance: { fontFamily: F.regular, fontSize: 13, color: C.tx3 },
   barra: { height: 6, borderRadius: R.p, backgroundColor: C.ton, overflow: 'hidden' },
   relleno: { height: '100%', borderRadius: R.p },
   tipoPie: { fontFamily: F.regular, fontSize: 13, lineHeight: 18, color: C.tx3 },
-  noticias: { marginTop: 32, paddingTop: 24, borderTopWidth: 1, borderTopColor: C.bd },
+  // Con los tipos plegados quedaba un hueco de unos 100 px bajo «Ver los 8 tipos» (revisión del 11/11/2026).
+  noticias: { marginTop: 16, paddingTop: 24, borderTopWidth: 1, borderTopColor: C.bd },
   ct: { flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 16, padding: 16, borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1 },
   ctPulsada: { backgroundColor: C.s2 },
   ctIzq: { flex: 1, minWidth: 0, gap: 2 },
