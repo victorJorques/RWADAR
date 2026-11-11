@@ -76,13 +76,13 @@
     return p;
   }
   /* Como en una app de bolsa: la fuente (lo que va antes de la primera coma
-     de su nombre, tal como lo escribe RWAdar) y la fecha, en pequeño. */
-  const fuenteCorta = n => String(n.fuente?.nombre || '').split(',')[0].trim();
+     de su nombre, tal como lo escribe RWAdar; en inglés, los organismos
+     traducidos: modelo.fuenteCorta) y la fecha, en pequeño. */
   function metaFuente(n, clase) {
     const p = el('p', clase), cuando = dato('time', '', modelo.fechaCorta(n.fecha, idioma()));
     cuando.dateTime = n.fecha;
-    const fuente = el('span', 'nt-fuente-corta', fuenteCorta(n));
-    fuente.lang = 'es'; fuente.setAttribute('translate', 'no');
+    const fuente = el('span', 'nt-fuente-corta', modelo.fuenteCorta(n, idioma()));
+    fuente.lang = modelo.fuenteTraducida(n, idioma()) ? 'en' : 'es'; fuente.setAttribute('translate', 'no');
     p.append(fuente, ' · ', cuando);
     return p;
   }

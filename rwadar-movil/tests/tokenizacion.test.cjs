@@ -278,8 +278,9 @@ test('serie: los 40 mayores de la lista de CoinGecko y su cuota del total; desca
   assert.equal(conCategoria.cobertura, Math.round(r.mayores.reduce((s, m) => s + m.valor, 0) / (suma * 1.25) * 1000) / 10);
   assert.equal(t.elegirMayores(lista, 40, suma / 2).total, suma, 'un total menor que la lista no vale: la suma de la lista');
   assert.equal(t.elegirMayores(lista, 40, 'x').total, suma);
-  // La historia pide 366 días: con 365, CoinGecko empezaba un día tarde y «1 A» se quedaba en 364.
-  assert.match(t.urlHistoria('figure-heloc'), /\/coins\/figure-heloc\/market_chart\?vs_currency=usd&days=366&interval=daily$/);
+  // La historia pide 365 días: la API pública de CoinGecko responde 401 (error 10012) a days=366.
+  assert.match(t.urlHistoria('figure-heloc'), /\/coins\/figure-heloc\/market_chart\?vs_currency=usd&days=365&interval=daily$/);
+  assert.doesNotMatch(t.urlHistoria('figure-heloc'), /days=36[6-9]/, 'nunca más de 365 días: sin clave, CoinGecko no los da');
   assert.throws(() => t.elegirMayores([{ id: 'a', market_cap: 1e9 }]), /muy pocos tokens/);
   assert.throws(() => t.elegirMayores('x'), /no es válida/);
 });
@@ -469,8 +470,10 @@ test('serie: si se queda vieja (más de 3 días antes del dato de hoy) se dice; 
   assert.equal(t.serieAtrasada(SERIE, ms - DIA), false, 'una serie más nueva que el dato no está vieja');
   assert.equal(t.serieAtrasada(SERIE, null), false);
   assert.equal(t.serieAtrasada(null, ms), false);
-  assert.equal(t.notaCorta(SERIE), `Suma de ${SERIE.incluidos} de los 40 mayores tokens (86\u00a0% del total).`);
-  assert.equal(t.notaCorta(SERIE, 'en'), `Sum of ${SERIE.incluidos} of the 40 largest tokens (86% of the total).`);
+  // La misma coletilla que el subtítulo de la cifra grande: «los 29 mayores tokens con historia completa».
+  assert.equal(t.notaCorta(SERIE), `Suma de los ${SERIE.incluidos} mayores tokens con historia completa (86\u00a0% del total de la categoría).`);
+  assert.equal(t.notaCorta(SERIE, 'en'), `Sum of the ${SERIE.incluidos} largest tokens with a complete history (86% of the category total).`);
+  assert.ok(t.notaCorta(SERIE).includes(t.subtituloCifra(SERIE).split(/\s·\s/)[0].replace(/^Suma de /, '')), 'nota y subtítulo, con las mismas palabras');
   assert.equal(t.notaCorta({ version: 9 }), '');
   assert.match(t.notaSerie(SERIE), /Falta el 29\/07\/2026: ese día no hay dato completo y no se pinta\.$/, 'el hueco real, con su fecha');
   assert.match(t.notaSerie(SERIE, 'en'), /29 Jul 2026 is missing: there is no complete data for that day, so it is not drawn\.$/);
@@ -509,7 +512,7 @@ test('cabecera: «Cambio en 24 h» sale de la serie si sus dos últimos días so
   assert.equal(t.cambio24h(null, null).cambio, null);
 });
 
-test('cabecera: el total de la categoría va debajo, con su hora («hoy» solo si es de hoy), y lo que mide el % del periodo', () => {
+test('el total de la categoría, con su hora («hoy» solo si es de hoy), y lo que mide el % del periodo', () => {
   const hoy = Date.parse('2026-11-11T12:00:00Z');
   const vivo = { ...RESUMEN, fuente: 'coingecko', actualizado: '2026-11-11T09:57:00.000Z', total: { valor: 49690e6, cambio24h: null } };
   assert.equal(t.esHoy('2026-11-11T09:57:00.000Z', hoy), true);
@@ -519,14 +522,14 @@ test('cabecera: el total de la categoría va debajo, con su hora («hoy» solo s
   assert.equal(t.cuandoDato({ ...vivo, actualizado: '2026-11-10T15:25:40.000Z' }, 'es', hoy), 'dato del 10/11/2026, 15:25 UTC', 'si no es de hoy, no dice «hoy»');
   assert.equal(t.cuandoDato({ ...vivo, fuente: 'foto-guardada', actualizado: '2026-11-10T15:25:40.000Z' }, 'es', hoy), 'última foto guardada, del 10/11/2026, 15:25 UTC');
   assert.equal(t.lineaTotalCategoria(SERIE, vivo, 'es', hoy),
-    `Total de la categoría en CoinGecko, con todos sus tokens: 49.690\u00a0M$ (hoy, 09:57 UTC). La cifra grande y el gráfico suman los ${SERIE.incluidos} mayores con historia completa.`);
-  assert.equal(t.lineaTotalCategoria(SERIE, vivo, 'en', hoy),
-    `CoinGecko category total, all tokens: $49,690M (today, 09:57 UTC). The large figure and the chart add up the ${SERIE.incluidos} largest with a complete history.`);
+    'Total de la categoría en CoinGecko, con todos sus tokens: 49.690\u00a0M$ (hoy, 09:57 UTC).');
+  assert.equal(t.lineaTotalCategoria(SERIE, vivo, 'en', hoy), 'CoinGecko category total, all tokens: $49,690M (today, 09:57 UTC).');
   assert.equal(t.lineaTotalCategoria(null, vivo), '', 'sin serie, la cifra grande ya es ese total');
   assert.equal(t.lineaTotalCategoria(SERIE, null), '');
   assert.equal(t.explicacionCambio(), 'Mide cuánto vale en total el mercado: sube también cuando se emiten tokens nuevos. No es lo que habría ganado una inversión.');
   assert.equal(t.explicacionCambio('en'), 'It measures the total size of the market, which also grows when new tokens are issued. It is not the return on any investment.');
-  assert.equal(t.subtituloCifra(SERIE), `Suma de los ${SERIE.incluidos} mayores tokens · ${t.fechaCorta(SERIE.puntos[SERIE.puntos.length - 1].fecha)}`);
+  assert.equal(t.subtituloCifra(SERIE), `Suma de los ${SERIE.incluidos} mayores tokens con historia completa\u00a0· ${t.fechaCorta(SERIE.puntos[SERIE.puntos.length - 1].fecha)}`);
+  assert.equal(t.subtituloCifra(SERIE, 'en'), `Sum of the ${SERIE.incluidos} largest tokens with a complete history\u00a0· ${t.fechaCorta(SERIE.puntos[SERIE.puntos.length - 1].fecha, 'en')}`);
   assert.equal(t.subtituloCifra(null), 'Total de la categoría en CoinGecko, con todos sus tokens');
   // La misma cuota, con el mismo redondeo, en la nota, «Cómo se calcula» y los datos clave.
   assert.equal(t.coberturaTexto(SERIE), '86 %');
@@ -648,13 +651,16 @@ test('la pantalla «Mercado y noticias»: la cifra grande es el final de la lín
   const cifraVista = () => textoDe(porId('mercado-cifra')).replace(/\s+/g, ' ');
   assert.equal(cifraVista(), '42.947 M$', 'la cifra y su unidad, más pequeña');
   assert.equal(t.millones(ULTIMO.valor), '42.947\u00a0M$');
-  assert.equal(textoDe(porId('mercado-subtitulo')), `Suma de los ${SERIE.incluidos} mayores tokens · ${t.fechaCorta(ULTIMO.fecha)}`);
+  assert.equal(textoDe(porId('mercado-subtitulo')), `Suma de los ${SERIE.incluidos} mayores tokens con historia completa\u00a0· ${t.fechaCorta(ULTIMO.fecha)}`);
   assert.ok(texto.includes(g.cambioTexto) && texto.includes('en el último mes'), 'el cambio del mes con su signo y su texto');
   assert.equal(textoDe(porId('mercado-explica')), t.explicacionCambio(), 'qué mide el %: no es una rentabilidad');
-  assert.equal(textoDe(porId('mercado-total-categoria')), t.lineaTotalCategoria(SERIE, RESUMEN, 'es'));
-  assert.match(textoDe(porId('mercado-total-categoria')), /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \(.+UTC\)\. La cifra grande y el gráfico suman los 29 mayores con historia completa\.$/);
+  // El total de la categoría, en gris tras la nota bajo el gráfico (en la cabecera empujaba el gráfico fuera de la primera pantalla).
+  assert.equal(textoDe(porId('mercado-total-categoria')).trim(), t.lineaTotalCategoria(SERIE, RESUMEN, 'es'));
+  assert.match(textoDe(porId('mercado-total-categoria')).trim(), /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \(.+UTC\)\.$/);
+  assert.ok(nodos(porId('mercado-nota')).includes(porId('mercado-total-categoria')), 'dentro de la nota del gráfico');
+  assert.equal(textoDe(porId('mercado-nota')).replace(/\s+/g, ' '), `${t.notaCorta(SERIE)} ${t.lineaTotalCategoria(SERIE, RESUMEN, 'es')}`.replace(/\s+/g, ' '));
   const cabecera = nodos(arbol).find((n) => typeof n?.props?.accessibilityLabel === 'string' && n.props.accessibilityLabel.startsWith('Suma de los'));
-  assert.match(cabecera.props.accessibilityLabel, new RegExp(`^Suma de los ${SERIE.incluidos} mayores tokens · \\S+: 42\\.947 millones de dólares, (sube|baja|sin cambios) \\S+\\s% en el último mes$`));
+  assert.match(cabecera.props.accessibilityLabel, new RegExp(`^Suma de los ${SERIE.incluidos} mayores tokens con historia completa\\s· \\S+: 42\\.947 millones de dólares, (sube|baja|sin cambios) \\S+\\s% en el último mes$`));
   assert.ok(!porId('mercado-aviso-tokens'), '1 M: mismos tokens al principio y al final, sin aviso');
   assert.ok(!porId('mercado-serie-vieja'));
   assert.ok(texto.includes(`${{ sube: '▲', baja: '▼', igual: '=' }[g.direccion]} ${g.cambioTexto}`), 'flecha y signo: el color nunca va solo');
@@ -877,4 +883,38 @@ test('Inicio une «Mercado y noticias» tras «Ofertas»: la cotización, las 3 
   assert.doesNotMatch(inicio, /TokenizacionMundo|seccion === 'noticias'/);
   assert.match(inicio, /<MercadoPantalla onAbrirEnlace=\{onAbrirEnlace\}>\s*<NoticiasSector modo="lista" abrirId=\{noticiaId\} onAbrirEnlace=\{onAbrirEnlace\} \/>\s*<\/MercadoPantalla>/);
   assert.match(inicio, /onAbrir=\{\(noticia\) => abrir\('mercado', \{ noticia: noticia\?\.id \|\| null \}\)\}/);
+});
+
+test('revisión final (11/11/2026): el punto del último día no toca la píldora, los datos clave sin Mono y un tipo sin cambio lo dice con palabras', async () => {
+  // El punto de la cruz en el último día, con su borde, acaba antes de la píldora del último valor.
+  {
+    const { react, pintar } = crearReact();
+    const { GraficoBolsa } = cargarMercado(react);
+    const g = t.graficoPestana(SERIE, '1a');
+    let arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
+    conAncho(arbol, 358);
+    arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
+    nodos(arbol).find((n) => n?.props?.accessibilityRole === 'adjustable').props.onResponderGrant({ nativeEvent: { locationX: 10000 } });
+    arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
+    const punto = nodos(arbol).find((n) => n?.type === 'Circle'), pildora = nodos(arbol).find((n) => n?.props?.testID === 'mercado-ultimo');
+    const borde = punto.props.cx + punto.props.r + punto.props.strokeWidth / 2;
+    assert.ok(borde + 3 <= pildora.props.x, `el punto acaba en ${borde} y la píldora empieza en ${pildora.props.x}`);
+  }
+  const { react, pintar } = crearReact();
+  const { MercadoPantalla } = cargarMercado(react);
+  const vivo = { ...RESUMEN, tipos: RESUMEN.tipos.map((x, i) => (i === 0 ? { ...x, cambio24h: null } : x)) };
+  const props = { cargarVivo: async () => vivo, cargarLaSerie: async () => SERIE };
+  pintar(MercadoPantalla, props);
+  await esperar(); await esperar();
+  let arbol = pintar(MercadoPantalla, props);
+  // Las cifras de los datos clave y de los tipos, en la letra de la cabecera (en Mono, «−0,1 %» se leía espaciado).
+  const estilos = nodos(arbol).filter((n) => n?.type === 'Text' && Array.isArray(n.props?.style)).map((n) => n.props.style[0]).filter(Boolean);
+  assert.ok(estilos.length > 0);
+  for (const st of estilos) assert.notEqual(st.fontFamily, 'GeistMono_500Medium', JSON.stringify(st));
+  nodos(arbol).find((n) => n?.props?.testID === 'mercado-tipos').props.onPress();
+  arbol = pintar(MercadoPantalla, props);
+  const primero = nodos(arbol).find((n) => n?.props?.accessibilityLabel?.startsWith?.('Crédito privado: '));
+  assert.match(textoDe(primero), /Sin dato en 24 h/, 'sin cambio, con palabras: no un «—» suelto');
+  assert.doesNotMatch(textoDe(primero), /—/);
+  assert.doesNotMatch(textoDe(nodos(arbol).find((n) => n?.props?.testID === 'mercado-tipos')), /Crédito privado/, 'con la lista abierta, sin avance');
 });

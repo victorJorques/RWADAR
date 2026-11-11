@@ -34,7 +34,8 @@
 .mk-explica{margin:6px 0 0;color:var(--tx-2);font:400 .8125rem/1.45 var(--body);max-width:62ch}
 .mk-aviso{margin:8px 0 0;color:var(--tx-3);font:400 .8125rem/1.45 var(--body)}
 .mk-aviso-tokens{color:var(--tx-2)}
-.mk-total-cat{margin:8px 0 0;color:var(--tx-3);font:400 .8125rem/1.45 var(--body);max-width:72ch}
+/* El total de la categoría, en gris tras la nota corta bajo el gráfico (en la cabecera empujaba el gráfico fuera de la primera pantalla). */
+.mk-total-cat{color:var(--tx-3)}
 
 /* ---- Pestañas ---- */
 .mk-pestanas{display:flex;gap:2px;margin:12px 0 0;overflow-x:auto;scrollbar-width:none}
@@ -86,10 +87,9 @@
 .mk-clave{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin:16px 0 0;padding:4px 0 0;border-top:var(--bd)}
 .mk-clave-item{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:var(--bd);min-width:0}
 .mk-clave dt{color:var(--tx-3);font:500 .8125rem/1.3 var(--body)}
-.mk-clave dd{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;margin:0;color:var(--tx);font:600 1rem/1.3 var(--mono);font-variant-numeric:tabular-nums}
-.mk-clave-texto dd{font-family:var(--body)}
+/* Las cifras, en la misma letra que la cabecera (en Mono, «−0,1 %» se leía espaciado), con cifras tabulares. */
+.mk-clave dd{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;margin:0;color:var(--tx);font:600 1rem/1.3 var(--body);font-variant-numeric:tabular-nums}
 .mk-clave dd small{color:var(--tx-3);font:400 .75rem/1.3 var(--body)}
-.mk-clave .mk-cambio{font-family:var(--mono)}
 /* El último dato (un texto, no una cifra) ocupa la fila entera: sin huecos en la rejilla. */
 .mk-clave-texto{grid-column:1/-1}
 .mk-fuente{margin:12px 0 0;color:var(--tx-3);font:400 .8125rem/1.5 var(--body)}
@@ -110,18 +110,20 @@
 .mk-tipos-ver::after{content:' ▾';color:var(--tx-3)}
 .mk-tipos-det[open] .mk-tipos-ver::after{content:' ▴'}
 .mk-tipos-avance{color:var(--tx-3);font-size:.8125rem}
+/* Con la lista abierta, el avance sobra: ya se ven todos. */
+.mk-tipos-det[open] .mk-tipos-avance{display:none}
 .mk-tipos-sum:focus-visible{outline:2px solid var(--senal);outline-offset:2px;border-radius:4px}
 @media (min-width:768px){.mk-tipos-sum{display:none}}
 .mk-tipos-lista{display:grid;gap:12px;margin:14px 0 0;padding:0;list-style:none}
 .mk-tipo{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:baseline}
 .mk-tipo-nom{color:var(--tx);font:500 .9375rem/1.3 var(--body)}
 /* Las cifras, alineadas a la derecha como en una tabla financiera. */
-.mk-tipo-valor{justify-self:end;text-align:right;color:var(--tx);font:600 .875rem/1.3 var(--mono);font-variant-numeric:tabular-nums}
+.mk-tipo-valor{justify-self:end;text-align:right;color:var(--tx);font:600 .875rem/1.3 var(--body);font-variant-numeric:tabular-nums}
 .mk-tipo-barra{grid-column:1/-1;display:block;height:6px;border-radius:var(--r-p);background:var(--ton);overflow:hidden}
 .mk-tipo-relleno{display:block;width:var(--mk-ancho,0);height:100%;border-radius:var(--r-p);background:var(--mk-color,var(--tx-2))}
 .mk-tipo-cuota{color:var(--tx-3);font:400 .8125rem/1.3 var(--body)}
 .mk-tipo-24h{justify-self:end;color:var(--tx-3);font:400 .8125rem/1.3 var(--body);white-space:nowrap}
-.mk-tipo-24h-cifra{color:var(--mk-color-dir);font-weight:500;font-variant-numeric:tabular-nums}
+.mk-tipo-24h-cifra{display:inline-flex;align-items:baseline;gap:3px;color:var(--mk-color-dir);font-weight:500;font-variant-numeric:tabular-nums}
 .mk-tipo-oro{grid-column:1/-1;color:var(--tx-3);font:400 .8125rem/1.3 var(--body)}
 @media (min-width:768px){.mk-tipos-lista{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 32px}}
 
@@ -140,6 +142,9 @@
 .nt-art-importa-rot{color:var(--senal);font-weight:600}
 .mk-noticias .nt-art-meta{font-size:.75rem}
 .mk-noticias .nt-art-abrir::after{border-radius:var(--r-s)}
+/* Aquí las tarjetas no tienen margen interior ni borde: el anillo de foco va por fuera (sin recorte), sin pisar la primera letra de cada línea. */
+.mk-noticias .nt-art{overflow:visible}
+.mk-noticias .nt-art-abrir:focus-visible::after{outline-offset:4px}
 .mk-noticias .nt-art-abrir:active::after{background:var(--ton)}
 .mk-noticias .nt-fila:first-child .nt-art{grid-template-columns:1fr;grid-template-rows:auto auto}
 .mk-noticias .nt-fila:first-child .nt-art-foto{grid-column:1;grid-row:1;aspect-ratio:16/9;min-height:0}

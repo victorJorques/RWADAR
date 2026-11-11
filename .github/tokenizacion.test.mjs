@@ -284,7 +284,8 @@ function coingeckoSerie({ fallan = [], listaFalla = false, conHueco = [], catego
     if (fallan.includes(id)) return new Response('{}', { status: 429, headers: { 'retry-after': '1' } });
     const n = Number(id.split('-')[1]);
     // Con hueco: CoinGecko no da 12 días seguidos de su historia (del día 200 al 211).
-    const puntos = [...Array(367)].map((_, k) => [fin - (366 - k) * DIA_MS, (100 - n) * 1e8 * (1 + k / 3650)]).filter((_, k) => !conHueco.includes(id) || k < 201 || k > 212);
+    // Como la API pública con days=365: del día de hace 364 a hoy (a days=366 responde 401).
+    const puntos = [...Array(365)].map((_, k) => [fin - (364 - k) * DIA_MS, (100 - n) * 1e8 * (1 + k / 3650)]).filter((_, k) => !conHueco.includes(id) || k < 201 || k > 212);
     return new Response(JSON.stringify({ market_caps: puntos }), { status: 200 });
   };
   return { fetchImpl, llamadas };
@@ -303,16 +304,16 @@ test('serie diaria: 42 llamadas con pausa (el total de la categoría, la lista y
   assert.equal(llamadas.length, 42);
   assert.equal(llamadas[0], modelo.FUENTE.api, 'primero, el total de la categoría: el denominador de las cuotas');
   assert.match(llamadas[1], /category=tokenized-products&order=market_cap_desc&per_page=250$/);
-  assert.ok(llamadas.slice(2).every(u => /\/market_chart\?vs_currency=usd&days=366&interval=daily$/.test(u)), 'un año y un día');
+  assert.ok(llamadas.slice(2).every(u => /\/market_chart\?vs_currency=usd&days=365&interval=daily$/.test(u)), 'un año: la API pública no da más (401 a days=366)');
   assert.equal(pausas.filter(ms => ms === 13000).length, 41, '13 s entre llamadas');
   const serie = modelo.validarSerie(JSON.parse(fs.readFileSync(destino, 'utf8')));
   assert.equal(fs.readFileSync(destino, 'utf8'), modelo.serializarSerie(serie));
-  assert.deepEqual([serie.pedidos, serie.incluidos, serie.discontinuos, serie.puntos.length, serie.puntos.at(-1).fecha], [40, 40, 0, 366, '2026-11-11']);
-  assert.equal(serie.puntos[0].fecha, '2025-11-11', '«1 A» cubre el año entero (antes empezaba el 12/11)');
+  assert.deepEqual([serie.pedidos, serie.incluidos, serie.discontinuos, serie.puntos.length, serie.puntos.at(-1).fecha], [40, 40, 0, 365, '2026-11-11']);
+  assert.equal(serie.puntos[0].fecha, '2025-11-12', '«1 A»: los 365 días que da la API pública');
   const sumaMayores = [...Array(40)].reduce((s, _, i) => s + (100 - i) * 1e8, 0);
   assert.equal(serie.cobertura, Math.round(sumaMayores / TOTAL_CATEGORIA * 1000) / 10, 'la cuota, sobre el total de la categoría');
   assert.equal(fs.readFileSync(salida, 'utf8'), 'serie=true\n');
-  assert.match(registro.at(-1), /^Serie del mercado: 366 días, del 11\/11\/2025 al 11\/11\/2026; 40 de 40 tokens .*0 fuera por huecos/);
+  assert.match(registro.at(-1), /^Serie del mercado: 365 días, del 12\/11\/2025 al 11\/11\/2026; 40 de 40 tokens .*0 fuera por huecos/);
   assert.equal(await principalSerie([destino], { entorno: { NODE_TLS_REJECT_UNAUTHORIZED: '0' }, error: () => {} }), 1);
   // Sin el total de la categoría, la cuota usa la suma de la lista y el registro lo dice; la serie sale igual.
   const sinCategoria = [];
@@ -378,7 +379,7 @@ test('serie diaria: un token al que CoinGecko le faltan más de 3 días queda fu
     ahora: () => Date.parse('2026-11-11T07:00:00Z'), log: m => registro.push(m), error: m => registro.push(m) });
   assert.equal(codigo, 0, registro.join('\n'));
   const serie = modelo.validarSerie(JSON.parse(fs.readFileSync(destino, 'utf8')));
-  assert.deepEqual([serie.incluidos, serie.discontinuos, serie.puntos.length], [39, 1, 366]);
+  assert.deepEqual([serie.incluidos, serie.discontinuos, serie.puntos.length], [39, 1, 365]);
   assert.ok(!serie.tokens.includes('token-5'));
   assert.ok(registro.some(l => /token-5: fuera, le faltan 9 días en CoinGecko/.test(l)), registro.join('\n'));
   assert.match(modelo.notaSerie(serie), /Quedan fuera 1 a los que les faltan días en CoinGecko\.$/);

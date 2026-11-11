@@ -5,7 +5,7 @@ import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { FuenteOriginal, Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { traducir } from '../lib/idioma';
 import { cargarNoticias } from '../lib/noticias-sector-remota';
-import { URL_FOTOS, etiquetaAmbito, etiquetaCategoria, etiquetaReciente, fechaBreve, fechaCorta, fechaLocal, rutaFoto, textos }
+import { URL_FOTOS, etiquetaAmbito, etiquetaCategoria, etiquetaReciente, fechaBreve, fechaCorta, fechaLocal, fuenteCorta as fuenteCortaModelo, rutaFoto, textos }
   from '../lib/noticias-sector';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
@@ -73,14 +73,15 @@ function Etiqueta({ cual, enDetalle = false, primero = false }) {
 }
 
 /* La fuente, como en una app de bolsa: lo que va antes de la primera coma de
-   su nombre, tal como lo escribe RWAdar («CNMV», «ESMA»…). */
-export function fuenteCorta(noticia) { return String(noticia?.fuente?.nombre || '').split(',')[0].trim(); }
+   su nombre, tal como lo escribe RWAdar («CNMV», «ESMA»…); en inglés, los
+   organismos traducidos («Council of the EU»). Lo decide el modelo, como en la web. */
+export function fuenteCorta(noticia, idioma = 'es') { return fuenteCortaModelo(noticia, idioma); }
 
 /* Inicio: una fila compacta con foto pequeña, titular, fuente y fecha. */
 function Compacta({ noticia, idioma, onAbrir, hoyISO, ultima }) {
   const t = textos(noticia, idioma);
   const reciente = etiquetaReciente(noticia, hoyISO);
-  const meta = `${fuenteCorta(noticia)} · ${fechaCorta(noticia.fecha, idioma)}`;
+  const meta = `${fuenteCorta(noticia, idioma)} · ${fechaCorta(noticia.fecha, idioma)}`;
   return (
     <Pressable onPress={() => { tacto.abrir(); onAbrir(noticia); }} style={({ pressed }) => [e.compacta, ultima && e.sinRaya, pressed && e.filaPulsada]}
       accessibilityRole="button" noTraducir idiomaOriginal={idioma === 'en' ? 'en-US' : 'es-ES'}
@@ -105,7 +106,7 @@ function Fila({ noticia, idioma, onAbrir, hoyISO, primera }) {
   const t = textos(noticia, idioma);
   const reciente = etiquetaReciente(noticia, hoyISO);
   const lengua = idioma === 'en' ? 'en-US' : 'es-ES';
-  const meta = `${fuenteCorta(noticia)} · ${fechaCorta(noticia.fecha, idioma)}`;
+  const meta = `${fuenteCorta(noticia, idioma)} · ${fechaCorta(noticia.fecha, idioma)}`;
   return (
     <Pressable onPress={() => { tacto.abrir(); onAbrir(noticia); }} style={({ pressed }) => [e.fila, primera && e.filaPrimera, pressed && e.filaPulsada]}
       accessibilityRole="button" noTraducir idiomaOriginal={lengua}

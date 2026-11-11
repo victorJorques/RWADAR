@@ -11,7 +11,8 @@
       mismo que enseñan la cabecera y los tipos. Es el denominador de las
       cuotas (si no responde, la suma de la lista, y lo dice el registro).
    2. /coins/markets de la categoría: los 40 mayores de hoy.
-   3. /coins/{id}/market_chart de cada uno (366 días, diario), con 13 s
+   3. /coins/{id}/market_chart de cada uno (365 días, diario: sin clave,
+      CoinGecko responde 401 a days=366), con 13 s
       entre llamadas (unos 9 minutos en total) para no pasar del límite
       gratuito: con 3 s CoinGecko daba 429 una vez sí y otra no. Si CoinGecko responde
       429, se espera (Retry-After, como mucho 2 minutos) y se reintenta.
