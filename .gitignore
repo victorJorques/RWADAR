@@ -109,3 +109,6 @@ Thumbs.db
 
 # Caché local de los comprobadores Python, sin código publicable.
 __pycache__/
+
+# Guía de acceso a fuentes (investigacion-catalogo/acceso): las respuestas en bruto de comprobar-rutas.mjs no van a Git
+.claude/skills/investigacion-catalogo/acceso/crudo/
