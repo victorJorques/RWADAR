@@ -2,10 +2,12 @@
 
 Preparada el 11/11/2026 por Claude (montador de datos y SQL), entre las 10:05
 y las 10:35 UTC. **Nada aplicado en Supabase, nada publicado, sin OTA, ningún
-flujo lanzado, sin push.** Estado: **preparada y probada en local** (PGlite y
-dos ensayos completos de «después de aplicar» en copias aparte). Falta la
-revisión de la entrega (SQL e integridad, contenido y tarjetas, cumplimiento),
-la corrección y el auditor.
+flujo lanzado, sin push.** Estado: **preparada, revisada, corregida y probada
+en local** (PGlite y tres ensayos completos de «después de aplicar» en copias
+aparte). La revisó un equipo de tres (SQL e integridad: aprobado; contenido y
+tarjetas, y cumplimiento: aprobados con cambios). Las dos correcciones
+obligatorias (C1 y O1) están hechas desde las 15:20 UTC (§9) y **ninguna cambia
+el SQL**: misma revisión, misma huella y mismo SHA-256. Falta el auditor.
 
 Lo que entra es la lista cerrada de `DECISIONES-COORDINADOR.md` (SHA-256
 `0f89547b…3224`), con las correcciones de los revisores de su §5. Los textos,
@@ -198,6 +200,10 @@ nombres de personas.
    - «Lo esencial» de la app: Schwarzer Weg «Mínimo: Desde 69,90 € la
      participación (11/11) · España: Sin confirmar · Salida: Reventa en la app,
      si hay comprador».
+   - Tras las correcciones se repitió todo en otra copia (§9): mismo resultado,
+     salvo el mínimo corto de Switzerlend (C1); `transparencia.json` da
+     `81e78ab9…3808` en vez de `1959f8be…c66b`. `ensayo-despues.json` y
+     `pruebas-locales.json` ya son los de esa pasada.
 5. **Datos personales:** ningún nombre de persona en lo que generé (scripts,
    SQL, escaparate, contraste, pruebas y ensayo). La documentación tiene las
    mismas apariciones que la publicada.
@@ -233,6 +239,8 @@ nombres de personas.
    precio, pero la tarjeta de la lista y la ficha llevarán fechas distintas: el
    10/11 la revisión de la entrega (C1) obligó a igualarlas. **Lo decide el
    coordinador**: es una línea en `despues-de-aplicar.mjs` y no cambia el SQL.
+   *Resuelto:* la revisión de contenido lo hizo obligatorio (C1) y ya está
+   aplicado (§9): la tarjeta dirá «1 acción (68,01 CHF, 11/11)».
 6. **Propuestas de los expedientes fuera de DECISIONES:** no entran. Son las
    fuentes nuevas de las ofertas de Spiko (API y GECO) y de Brickwise. También
    los textos nuevos de tarjeta de Spiko, Robinhood, Kraken, Prosegur y
@@ -241,14 +249,15 @@ nombres de personas.
 7. **Commit.** El encargo prohíbe `git commit`, pero las indicaciones del
    coordinador piden un commit local al terminar. Ante la contradicción, el
    montador no hizo ningún commit. La sesión que coordina ha ido guardando
-   instantáneas de esta carpeta por su cuenta mientras se montaba.
+   instantáneas de esta carpeta por su cuenta mientras se montaba (también
+   durante las correcciones: 338c209, 17f2c01 y 8850b12).
 
 ## 7. Pendiente
 
-- La revisión de la entrega (SQL, contenido y cumplimiento), la corrección y el
-  auditor.
-- El coordinador decide los puntos 2, 3 y 5 de §6. Los puntos 2 y 3 cambian el
-  SQL; si se cambian, hay que regenerar y repetir las pruebas y el ensayo.
+- El auditor: que compruebe que las correcciones de §9 no colaron nada más.
+- El coordinador decide los puntos 2 y 3 de §6 (el 5 ya está resuelto por la
+  C1). Los dos cambian el SQL; si se cambian, hay que regenerar y repetir las
+  pruebas y el ensayo. Los tres revisores aconsejan dejarlos como están.
 - **Condiciones de hora si se vuelve a montar:**
   - Spiko Smart Cash: después de las 19:30 UTC del 11/11, la API dará la VL del
     11/11. Hay que volver a leerla y fechar con ella (P1).
@@ -272,14 +281,16 @@ nombres de personas.
    seguir). Nunca `catalogo.sql`: no lleva guarda y solo crea un borrador.
 4. Leer como visitante las vistas v2 y guardarlo en
    `lectura-despues-de-aplicar/`: revisión `24b5f7de-…`, 25/22 (8/13/1),
-   `verificada_el` 11/11 y los cambios de §3.
+   `verificada_el` 11/11 y los cambios de §3. Esa lectura es la prueba de lo
+   publicado: el paso «Leer el lote publicado» del flujo «Aplicar catálogo»
+   ordena por id y puede no enseñar la `24b5f7de` (revisión de SQL).
 5. `node rwadar-app/sincronizar.js`, luego
    `node rwadar-app/data/verificaciones/2026-11-11-v2/despues-de-aplicar.mjs`,
    `node rwadar-app/volcar-seed.js` (sin diferencias),
    `node rwadar-editorial-source/ofertas/transparencia.mjs`,
    `node rwadar-fichas.js` y `npm test`.
 6. Publicar la web y **enviar la OTA**: la app lleva `transparencia.json`
-   empaquetado (mínimos cortos de Brickwise).
+   empaquetado (mínimos cortos de Brickwise y de Switzerlend).
 
 ## Archivos
 
