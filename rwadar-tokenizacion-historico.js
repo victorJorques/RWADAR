@@ -71,4 +71,51 @@ function historicoTokenizacion({
   }
 }
 
-module.exports = { historicoTokenizacion, REF };
+/* ---- La serie de un año del gráfico «estilo bolsa» (11/11/2026) ----
+   La rehace cada día el flujo «Foto diaria de la tokenización»
+   (rwadar-app/tokenizacion/serie-diaria.mjs) en la misma rama. De dónde sale:
+   RWADAR_TOKENIZACION_SERIE (publicar.yml), si no origin/datos-tokenizacion
+   y, si no, la semilla de main (rwadar-site/datos/tokenizacion-serie.json).
+   Entre la de la rama y la semilla gana la más reciente («generado»). Nunca
+   bloquea la web: lo que no valga se avisa y queda la semilla.
+   { serie, origen, soloSemilla } */
+function leerSerieRamaGit(cwd) {
+  return execFileSync('git', ['show', `${REF}:tokenizacion-serie.json`], {
+    cwd, encoding: 'utf8', maxBuffer: MAX_BYTES, stdio: ['ignore', 'pipe', 'ignore'] });
+}
+function serieTokenizacion({
+  dirSitio,
+  entorno = process.env,
+  cwd = __dirname,
+  leerRama = leerSerieRamaGit,
+  avisar = mensaje => console.warn(mensaje),
+} = {}) {
+  const semilla = modelo.validarSerie(JSON.parse(
+    fs.readFileSync(path.join(dirSitio, 'datos', 'tokenizacion-serie.json'), 'utf8')));
+  const conSemilla = { serie: semilla, origen: 'la semilla de main', soloSemilla: true };
+  const elegir = (texto, origen) => {
+    if (typeof texto !== 'string' || Buffer.byteLength(texto, 'utf8') > MAX_BYTES) throw new Error('ocupa más de 2 MB');
+    const serie = modelo.validarSerie(JSON.parse(texto));
+    if (serie.puntos.length < 2) throw new Error('tiene menos de dos días');
+    return serie.generado >= semilla.generado ? { serie, origen, soloSemilla: false } : conSemilla;
+  };
+  const ruta = entorno.RWADAR_TOKENIZACION_SERIE;
+  if (ruta) {
+    try {
+      const estado = fs.lstatSync(ruta);
+      if (!estado.isFile() || estado.size > MAX_BYTES) throw new Error('no es un archivo normal de 2 MB como mucho');
+      return elegir(fs.readFileSync(ruta, 'utf8'), 'la rama datos-tokenizacion');
+    } catch (e) {
+      avisar(`AVISO: la serie de la tokenización de ${ruta} no vale (${e.message}); se publica la semilla de main.`);
+      return conSemilla;
+    }
+  }
+  let texto;
+  try { texto = leerRama(cwd); } catch { return conSemilla; }
+  try { return elegir(texto, REF); } catch (e) {
+    avisar(`AVISO: la serie de la tokenización de ${REF} no vale (${e.message}); se publica la semilla de main.`);
+    return conSemilla;
+  }
+}
+
+module.exports = { historicoTokenizacion, serieTokenizacion, REF };

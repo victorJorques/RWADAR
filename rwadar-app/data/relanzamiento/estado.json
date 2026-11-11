@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "actualizadoEl": "2026-11-10",
+  "actualizadoEl": "2026-11-11",
   "publicacionSolicitada": true,
   "perfilPublicacion": "editorial-gratuito",
   "modeloComercial": "publicidad-en-app-pendiente",
@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "10/11: transparencia de Kraken y mTBILL releída; prueba de los avisos sin empates",
+  "nota": "Ciclo 11/11: catálogo 24b5f7de, «Mercado y noticias», calculadora, noticias y guía de acceso",
   "revisionAprobada": {
-    "commit": "d8ff785c3152a9050afd9db8001b1024f56b6b31",
-    "contenidoSha256": "sha256:f32a190b4d3bc01d84106da408652ac900b6f3f9c3ff48c6367762333a521547",
+    "commit": "aa4f65b36df362199b0767b202dfb650dfc22247",
+    "contenidoSha256": "sha256:1c82e5c68617d1ad959ee0498066422b4863d5b56ffa1d6a021a36e1a6fbc550",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {

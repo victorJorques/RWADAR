@@ -684,12 +684,13 @@ const rutaAnalitica = '/assets/analitica-20260927.js';
 const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
 // El orden de los scripts (con idioma-previo en <head>) se prueba en rwadar-app/probar-web-escritorio.mjs.
 // La quinta, el candado de las lecciones sin cuenta (08/11/2026), compartida con /academy/.
-// La sexta, «La tokenización en el mundo» de Inicio (10/11/2026); la séptima, «Noticias del sector» (10/11/2026).
-prueba('las ocho hojas propias versionadas cargan en el orden declarado',
+// La sexta, «Noticias del sector» (10/11/2026); la séptima, «Mercado y noticias» al estilo de una app de bolsa (11/11/2026);
+// la novena, «Calcula tus números» (11/11/2026).
+prueba('las nueve hojas propias versionadas cargan en el orden declarado',
   JSON.stringify(estilos.map(estilo=>estilo[1])) === JSON.stringify([
     '/assets/rwadar-20260820.css','/assets/cartera-cuenta-ui-20261028.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css',
-    '/assets/academy-candado-20261108.css','/assets/tokenizacion-20261110.css','/assets/noticias-sector-20261110.css',
-    '/assets/secciones-20261110.css']));
+    '/assets/academy-candado-20261108.css','/assets/noticias-sector-20261110.css','/assets/mercado-20261111.css',
+    '/assets/secciones-20261110.css','/assets/calculadora-20261111.css']));
 for (const recurso of [rutaScriptApp, rutaCatalogo, rutaAnalitica, estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
@@ -1586,20 +1587,23 @@ const panelInicioHTML = panelHTML('movilPanelInicio');
 const panelAcademyHTML = panelHTML('movilPanelAcademy');
 const panelPerfilHTML = panelHTML('movilPanelMas');
 // Inicio por bloques (rediseño del 10/11/2026, encargo de Víctor: «mucho lío en Inicio»): Cabecera,
-// Ofertas, El mercado hoy, Noticias, Aprende y Pie, cada uno con su «Ver …» a su sección. La historia en
+// Ofertas, Mercado y noticias (unidos el 11/11/2026), Aprende y Pie, cada uno con su «Ver …» a su sección. La historia en
 // seis capítulos, sus fuentes y la nota legal completa van en /aprende/; nada se repite.
 const aprendeHTML = lee('aprende/index.html');
 {
-  const orden = ['id="relPortada"', 'id="relNuevas"', 'id="tokenizacion"', 'id="noticias"', 'id="iniAprendeTit"', 'class="ini-pie"'].map(x => panelInicioHTML.indexOf(x));
-  prueba('Inicio son bloques cortos en orden (Cabecera, Ofertas, El mercado hoy, Noticias, Aprende y Pie), cada uno con su «Ver …», sin buscador',
+  // «Calcula tus números» (11/11/2026) va entre «Mercado y noticias» y Aprende: sus campos son los únicos de Inicio.
+  const orden = ['id="relPortada"', 'id="relNuevas"', 'id="mercado"', 'id="ntLista"', 'id="calculadora"', 'id="iniAprendeTit"', 'class="ini-pie"'].map(x => panelInicioHTML.indexOf(x));
+  const aCalc = panelInicioHTML.indexOf('<section class="ini-bloque calc-ini" id="calculadora"');
+  const inicioSinCalc = panelInicioHTML.slice(0, aCalc) + panelInicioHTML.slice(panelInicioHTML.indexOf('</section>', aCalc));
+  prueba('Inicio son bloques cortos en orden (Cabecera, Ofertas, Mercado y noticias, Calcula tus números, Aprende y Pie), cada uno con su «Ver …», sin buscador',
     orden.every((x, i) => x > 0 && (i === 0 || x > orden[i - 1])) &&
-    ['href="/mercado/"', 'href="/noticias/"', 'href="/aprende/"', 'href="/aprende/#nota-legal"'].every(x => panelInicioHTML.includes(x)) &&
+    ['href="/mercado/"', 'href="/aprende/"', 'href="/aprende/#nota-legal"'].every(x => panelInicioHTML.includes(x)) && !panelInicioHTML.includes('href="/noticias/"') &&
     // La cifra de ofertas sale una vez (en las cifras): ni el botón ni el enlace del carrusel la repiten.
     /<button class="b1 rel-cta" type="button" data-movil-ir="emisiones">Ver las ofertas<\/button>/.test(panelInicioHTML) &&
     /<span>Ver todas las ofertas<\/span>/.test(panelInicioHTML) && !/\{ofertas\}/.test(panelInicioHTML) &&
     // El pie no es un <footer>: en el móvil, la hoja principal esconde los <footer> fuera de «Buscar».
     /<div class="ini-pie" role="note" aria-label="Nota legal">/.test(panelInicioHTML) && !/<footer\b/.test(panelInicioHTML) &&
-    !/<(?:textarea|input|form|select)\b/i.test(panelInicioHTML) &&
+    aCalc > 0 && !/<(?:textarea|input|form|select)\b/i.test(inicioSinCalc) && !/<(?:textarea|form|select)\b/i.test(panelInicioHTML) &&
     !/inicioEmpezarTit|data-movil-action="academy"|data-movil-ir="metodo"|inicioComunidad/.test(panelInicioHTML) &&
     /<section class="movil-menu-grupo" id="perfilComunidad"[^>]*\shidden>/.test(panelPerfilHTML));
   prueba('Inicio no repite: sin capítulos, sin franja de novedades, sin escaparate aparte y un solo aviso de riesgo',
@@ -1609,7 +1613,7 @@ const aprendeHTML = lee('aprende/index.html');
   prueba('/aprende/ trae los seis capítulos, su carrusel, la Academy, las fuentes y la nota legal, sin cifras de mercado en el 03',
     ['relCap1', 'relCap2', 'relCap3', 'relCap4', 'relCap5', 'relCap6', 'relQuienLista', 'relRefs', 'nota-legal', 'notaLegalCompleta'].every(id => aprendeHTML.includes(`id="${id}"`)) &&
     /<!--academy-inicio:ini-->[\s\S]*href="\/academy\/"[\s\S]*<!--academy-inicio:fin-->/.test(aprendeHTML) &&
-    /<a class="rel-enlace" href="\/mercado\/">El mercado hoy<\/a>/.test(aprendeHTML) &&
+    /<a class="rel-enlace" href="\/mercado\/">Mercado y noticias<\/a>/.test(aprendeHTML) &&
     !/14\.230|125 veces|3,9 %/.test(aprendeHTML) &&
     // Las frases con cifras del catálogo (04: mínimos de 1 € y su aviso; 06: vigencia), escondidas en la fuente:
     // rwadar-publicar.js escribe las cifras en <main> y aprende-20261110.js las enseña mientras la revisión siga vigente.
@@ -1874,43 +1878,60 @@ prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustrac
     esperadas.length > 0 && JSON.stringify([...new Set(conPropia)].sort()) === JSON.stringify(esperadas.sort()));
 }
 prueba('HTML conserva sus recursos con huella sin depender de un precache del worker',
-  recursoJSPublicado && hojasPublicadas.length === 9 &&
+  recursoJSPublicado && hojasPublicadas.length === 10 &&
   hojasPublicadas.filter(ruta => /\/secciones-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
+  hojasPublicadas.filter(ruta => /\/calculadora-20261111\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/noticias-sector-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/mapa-buscar-20261027\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
-  hojasPublicadas.filter(ruta => /\/tokenizacion-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
+  hojasPublicadas.filter(ruta => /\/mercado-20261111\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/academy-candado-20261108\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   [recursoJSPublicado, recursoCatalogoPublicado,
     ...scriptsPublicados.map(s=>s[1]), ...hojasPublicadas,
     '/manifest.webmanifest', ...manifest.icons.map(icono => icono.src), ...rutasPortada]
     .every(ruta => fs.existsSync(path.join(publicado, '.' + ruta))) &&
   !/\bARMAZON\b|addEventListener\(\s*['"]fetch['"]/.test(swPublicado));
-/* «La tokenización en el mundo» en Inicio (10/11/2026). */
+/* «La tokenización en el mundo» (10/11/2026); desde el 11/11/2026, «Mercado y noticias» al estilo de una app de bolsa. */
 {
   const tk = require('./rwadar-movil/lib/tokenizacion.js');
-  const inicio = html.indexOf('<section class="tk" id="tokenizacion"'), fin = html.indexOf('</section>', inicio);
-  const seccion = html.slice(inicio, fin);
-  // Rediseño del 10/11/2026: en Inicio, la tarjeta compacta «El mercado hoy» (tras «Ofertas»); entera, en /mercado/.
   const mercadoHTML = lee('mercado/index.html');
-  const ini2 = mercadoHTML.indexOf('<section class="tk" id="tokenizacion"'), seccionMercado = mercadoHTML.slice(ini2, mercadoHTML.indexOf('</section>', ini2));
-  prueba('«El mercado hoy» va en Inicio tras «Ofertas», compacto y con «Ver el mercado →»; el HTML no trae cifras',
-    inicio < 0 && html.indexOf('data-tokenizacion="compacta"') > html.indexOf('id="relNuevas"') &&
-    html.indexOf('data-tokenizacion="compacta"') < html.indexOf('id="noticias"') && !html.includes('id="relCap1"'));
-  {
-    const a2 = html.indexOf('<section class="ini-bloque tk tk--compacta" id="tokenizacion"'), compacta = html.slice(a2, html.indexOf('</section>', a2));
-    prueba('la tarjeta compacta del mercado: título de bloque, la fuente CoinGecko a la vista y el enlace a /mercado/, sin cifras en el HTML',
-      a2 > 0 && compacta.includes('<h2 class="ini-bloque-tit" id="tkTit">El mercado hoy</h2>') &&
-      /<span>Datos:<\/span> <a href="https:\/\/www\.coingecko\.com\/" target="_blank" rel="noopener nofollow" translate="no">CoinGecko<\/a>/.test(compacta) &&
-      /<a class="ini-ver" href="\/mercado\/">/.test(compacta) && !/\d/.test(compacta.replace(/<[^>]*>/g, '')));
-  }
-  prueba('/mercado/ trae «La tokenización en el mundo» entera, con su fuente y sin cifras en el HTML',
-    ini2 > 0 && seccionMercado.includes('<h2 class="tk-tit" id="tkTit">La tokenización en el mundo</h2>') &&
-    !/data-tokenizacion="compacta"/.test(seccionMercado) &&
-    mercadoHTML.includes('Las categorías pueden solaparse. No es una recomendación.') &&
-    /<span>Datos:<\/span> <a href="https:\/\/www\.coingecko\.com\/" target="_blank" rel="noopener nofollow" translate="no">CoinGecko<\/a>/.test(seccionMercado) &&
-    !/\d/.test(seccionMercado.replace(/<[^>]*>/g, '')) &&
-    /<script src="\/assets\/tokenizacion-20261110\.js" defer><\/script>/.test(mercadoHTML) &&
-    /<link rel="canonical" href="https:\/\/rwadar\.pages\.dev\/mercado\/">/.test(mercadoHTML));
+  const a1 = html.indexOf('<section class="ini-bloque mk mk--inicio nt nt--portada" id="mercado"'), bloque = html.slice(a1, html.indexOf('</section>', a1));
+  prueba('«Mercado y noticias» va en Inicio tras «Ofertas» y antes de «Aprende»: la cotización y las noticias, con «Ver mercado y noticias →»; el HTML no trae cifras',
+    a1 > html.indexOf('id="relNuevas"') && a1 < html.indexOf('id="iniAprendeTit"') && !html.includes('data-tokenizacion') &&
+    bloque.includes('<h2 class="ini-bloque-tit" id="mkTit">Mercado y noticias</h2>') &&
+    /data-mercado="inicio" data-noticias="portada"/.test(bloque) && bloque.includes('<ul class="nt-compacta" id="ntLista"') &&
+    /<a class="ini-ver" href="\/mercado\/"><span>Ver mercado y noticias<\/span>/.test(bloque) &&
+    !/\d/.test(bloque.replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]*>/g, '')) &&
+    /<script src="\/assets\/mercado-20261111\.js" defer><\/script>/.test(html) && !/tokenizacion-20261110\.(js|css)/.test(html));
+  const a2 = mercadoHTML.indexOf('<section class="mk mk--completo" id="tokenizacion"'), seccionMercado = mercadoHTML.slice(a2, mercadoHTML.indexOf('</section>', a2));
+  prueba('/mercado/ trae el mercado de activos tokenizados (h1) y, debajo, las noticias relacionadas, sin cifras en el HTML',
+    a2 > 0 && seccionMercado.includes('<h1 class="mk-tit" id="mkTit">Mercado de activos tokenizados</h1>') &&
+    /data-mercado="completo"/.test(seccionMercado) && !/\d/.test(seccionMercado.replace(/<!--[\s\S]*?-->/g, '').replace(/<[^>]*>/g, '')) &&
+    mercadoHTML.indexOf('id="noticias"') > a2 && /data-noticias="lista" data-noticias-nivel="3"/.test(mercadoHTML) &&
+    mercadoHTML.includes('<dialog class="nt-dialogo" id="ntDialogo"') && (mercadoHTML.match(/<h1\b/g) || []).length === 1 &&
+    /<script src="\/assets\/mercado-20261111\.js" defer><\/script>/.test(mercadoHTML) && !/tokenizacion-20261110\.(js|css)/.test(mercadoHTML) &&
+    /<link rel="canonical" href="https:\/\/rwadar\.pages\.dev\/mercado\/">/.test(mercadoHTML) &&
+    /<title>Mercado y noticias · RWAdar<\/title>/.test(mercadoHTML));
+  const scriptMercado = lee('assets/mercado-20261111.js');
+  prueba('el gráfico de /mercado/ es SVG propio, sin bibliotecas ni estilos en línea, con su tabla, su cruz por teclado y «Datos: CoinGecko»',
+    /createElementNS\(SVG/.test(scriptMercado) && /'\/datos\/tokenizacion-serie\.json'/.test(scriptMercado) && /'\/api\/tokenizacion'/.test(scriptMercado) &&
+    /role', 'slider'/.test(scriptMercado) && /ArrowLeft/.test(scriptMercado) && /aria-pressed/.test(scriptMercado) && /tablaSerie/.test(scriptMercado) &&
+    /modelo\.notaSerie/.test(scriptMercado) && /'CoinGecko'/.test(scriptMercado) && !/innerHTML|setAttribute\('style'|\.style\.[a-z]+\s*=/.test(scriptMercado) &&
+    !/https?:\/\/(?!www\.w3\.org)/.test(scriptMercado.replace(/\/\*[\s\S]*?\*\//g, '')));
+  const serieSemilla = tk.validarSerie(JSON.parse(lee('datos/tokenizacion-serie.json')));
+  const seriePublicada = fs.readFileSync(path.join(publicado, 'datos', 'tokenizacion-serie.json'), 'utf8');
+  const conRamaSerie = spawnSync('git', ['cat-file', '-e', 'origin/datos-tokenizacion:tokenizacion-serie.json'], { cwd: raiz }).status === 0;
+  prueba('la serie de un año se publica en /datos/tokenizacion-serie.json, validada; sin la rama, la semilla de main',
+    tk.serieValida(JSON.parse(seriePublicada)) && (conRamaSerie || seriePublicada === tk.serializarSerie(serieSemilla)) &&
+    serieSemilla.puntos.length >= 300 && /serieTokenizacion\(\{ dirSitio: DIR \}\)/.test(publicador));
+  /* /noticias/ y /noticias/#<id> llevan a /mercado/, sin romper enlaces. */
+  const noticiasHTML = lee('noticias/index.html');
+  const paso = lee('assets/noticias-a-mercado-20261111.js');
+  prueba('/noticias/ lleva a /mercado/#noticias y /noticias/#<id> a /mercado/#<id>, con refresco y enlace sin JavaScript',
+    /<script src="\/assets\/noticias-a-mercado-20261111\.js"><\/script>/.test(noticiasHTML) &&
+    /<meta http-equiv="refresh" content="0; url=\/mercado\/#noticias">/.test(noticiasHTML) &&
+    /<link rel="canonical" href="https:\/\/rwadar\.pages\.dev\/mercado\/">/.test(noticiasHTML) && /noindex/.test(noticiasHTML) &&
+    /href="\/mercado\/#noticias"/.test(noticiasHTML) && /location\.replace\('\/mercado\/' \+ ancla\)/.test(paso) &&
+    /\^#\[a-z0-9-\]\{1,80\}\$/.test(paso) && !lee('sitemap.xml').includes('/noticias/'));
   const historicoPublicado = fs.readFileSync(path.join(publicado, 'datos', 'tokenizacion-historico.json'), 'utf8');
   const semillaTk = tk.validarHistorico(JSON.parse(lee('datos/tokenizacion-historico.json')));
   // Sin la variable de publicar.yml, el generador usa origin/datos-tokenizacion si este clon la tiene.
@@ -1923,32 +1944,31 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
       : historicoPublicado === tk.serializarHistorico(semillaTk)) &&
     /historicoTokenizacion\(\{ dirSitio: DIR \}\)/.test(publicador) && /se publica solo la semilla/.test(publicador) &&
     /RWADAR_TOKENIZACION_HISTORICO/.test(moduloTk) && /'show', `\$\{REF\}:tokenizacion-historico\.json`/.test(moduloTk));
-  const tkPublicados = scriptsPublicados.map(s => s[1]).filter(r => /\/tokenizacion-/.test(r));
-  prueba('el motor y la sección de la tokenización salen con huella, antes del snapshot del catálogo',
+  const tkPublicados = scriptsPublicados.map(s => s[1]).filter(r => /\/(tokenizacion|mercado)-/.test(r));
+  prueba('el motor de la tokenización y «Mercado y noticias» salen con huella, antes del snapshot del catálogo',
     tkPublicados.length === 2 && /^\/assets\/tokenizacion-modelo-20261110\.[a-f0-9]{12}\.js$/.test(tkPublicados[0]) &&
-    /^\/assets\/tokenizacion-20261110\.[a-f0-9]{12}\.js$/.test(tkPublicados[1]) &&
+    /^\/assets\/mercado-20261111\.[a-f0-9]{12}\.js$/.test(tkPublicados[1]) &&
     scriptsPublicados.findIndex(s => s[1] === tkPublicados[1]) < scriptsPublicados.findIndex(s => s[1] === recursoCatalogoPublicado));
 }
 /* «Noticias del sector» en Inicio (10/11/2026). */
 {
   const nt = require('./rwadar-movil/lib/noticias-sector.js');
-  const inicio = html.indexOf('<section class="nt" id="noticias"'), fin = html.indexOf('</section>', inicio);
-  const seccion = html.slice(inicio, fin);
+  const inicio = html.indexOf('<section class="nt" id="noticias"');
   const fuente = lee('datos/noticias-v2.json');
   const datosNt = nt.validarNoticias(JSON.parse(fuente));
-  // Rediseño del 10/11/2026: en Inicio, 3 tarjetas con foto (las pinta el script); las 8 y su detalle, en /noticias/.
-  const noticiasHTML = lee('noticias/index.html');
-  const enLista = noticiasHTML.slice(noticiasHTML.indexOf('<section class="nt nt--lista"'), noticiasHTML.indexOf('</section>', noticiasHTML.indexOf('<section class="nt nt--lista"')));
-  prueba('las noticias van en Inicio tras «El mercado hoy», con «Todas las noticias →», y el HTML no trae ninguna',
-    inicio < 0 && html.indexOf('data-noticias="portada"') > html.indexOf('id="tokenizacion"') && html.indexOf('data-noticias="portada"') < html.indexOf('id="iniAprendeTit"') &&
-    /<section class="ini-bloque nt nt--portada" id="noticias"[^>]*data-noticias="portada">/.test(html) &&
-    /<a class="ini-ver" href="\/noticias\/">/.test(html) && !/ntDialogo/.test(panelInicioHTML) &&
+  // «Mercado y noticias» (11/11/2026): en Inicio, 3 noticias compactas (las pinta el script); las 8 y su detalle, en /mercado/.
+  const mercadoNt = lee('mercado/index.html');
+  const enLista = mercadoNt.slice(mercadoNt.indexOf('<section class="mk-noticias nt nt--lista"'), mercadoNt.indexOf('</section>', mercadoNt.indexOf('<section class="mk-noticias nt nt--lista"')));
+  prueba('las noticias van en Inicio dentro de «Mercado y noticias», tras la cotización, y el HTML no trae ninguna',
+    inicio < 0 && html.indexOf('data-noticias="portada"') > html.indexOf('id="relNuevas"') && html.indexOf('id="ntLista"') > html.indexOf('id="mkCuerpo"') &&
+    html.indexOf('data-noticias="portada"') < html.indexOf('id="iniAprendeTit"') && !/ntDialogo/.test(panelInicioHTML) &&
     panelInicioHTML.includes('Imágenes ilustrativas generadas con IA, no fotos de la noticia.') &&
     datosNt.noticias.every(n => !html.includes(n.titulo)));
-  prueba('/noticias/ trae la lista y el diálogo del detalle, sin ninguna noticia escrita en el HTML',
+  const scriptNt = lee('assets/noticias-sector-20261110.js');
+  prueba('/mercado/ trae la lista y el diálogo del detalle, sin ninguna noticia escrita en el HTML; Inicio enlaza a /mercado/#<id>',
     /data-noticias="lista"/.test(enLista) && enLista.includes('<dialog class="nt-dialogo" id="ntDialogo"') &&
-    enLista.includes('<ul class="nt-lista" id="ntLista"') && datosNt.noticias.every(n => !noticiasHTML.includes(n.titulo)) &&
-    /<link rel="canonical" href="https:\/\/rwadar\.pages\.dev\/noticias\/">/.test(noticiasHTML));
+    enLista.includes('<ul class="nt-lista" id="ntLista"') && datosNt.noticias.every(n => !mercadoNt.includes(n.titulo)) &&
+    /a\.href = '\/mercado\/#' \+ encodeURIComponent\(n\.id\)/.test(scriptNt) && !/'\/noticias\/#'/.test(scriptNt) && /function metaFuente/.test(scriptNt));
   prueba('/datos/noticias-v2.json se publica tal cual y con la forma que leen la web y la app nuevas, todas con su foto',
     fs.readFileSync(path.join(publicado, 'datos', 'noticias-v2.json'), 'utf8') === fuente && datosNt.noticias.length > 0 &&
     nt.noticiasSinFoto(JSON.parse(fuente)).length === 0 && /noticiasModelo\.validarNoticias/.test(publicador));
@@ -1982,8 +2002,81 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
   prueba('el motor y la sección de las noticias salen con huella, tras la tokenización y antes del snapshot del catálogo',
     ntPublicados.length === 2 && /^\/assets\/noticias-sector-modelo-20261110\.[a-f0-9]{12}\.js$/.test(ntPublicados[0]) &&
     /^\/assets\/noticias-sector-20261110\.[a-f0-9]{12}\.js$/.test(ntPublicados[1]) &&
-    scriptsPublicados.findIndex(s => /\/tokenizacion-20261110\./.test(s[1])) < scriptsPublicados.findIndex(s => s[1] === ntPublicados[0]) &&
+    scriptsPublicados.findIndex(s => /\/mercado-20261111\./.test(s[1])) < scriptsPublicados.findIndex(s => s[1] === ntPublicados[0]) &&
     scriptsPublicados.findIndex(s => s[1] === ntPublicados[1]) < scriptsPublicados.findIndex(s => s[1] === recursoCatalogoPublicado));
+}
+/* «Calcula tus números» en Inicio (11/11/2026): que la gente ponga sus números (no sí o sí los 300.000 €). */
+{
+  const calc = require('./rwadar-movil/lib/calculadora.js');
+  const en = require('./rwadar-movil/lib/idioma-en.js');
+  const a = html.indexOf('<section class="ini-bloque calc-ini" id="calculadora"'), bloque = html.slice(a, html.indexOf('\n    </section>', a));
+  const r = spawnSync(process.execPath, ['rwadar-app/calculadora/copiar-modelo-web.cjs', '--comprobar'], { cwd: raiz, encoding: 'utf8' });
+  prueba('el motor de la calculadora de la web es una copia exacta del de la app (node rwadar-app/calculadora/copiar-modelo-web.cjs --comprobar)', r.status === 0);
+  const inputs = [...bloque.matchAll(/<input\b[^>]*>/g)].map(m => m[0]);
+  const textos = inputs.filter(i => /type="text"/.test(i));
+  prueba('«Calcula tus números» va en Inicio entre «Mercado y noticias» y Aprende, con su título y la misma piel de bloque',
+    a > html.indexOf('id="ntLista"') && a < html.indexOf('id="iniAprendeTit"') &&
+    bloque.includes('<h2 class="ini-bloque-tit" id="ciTit">Calcula tus números</h2>') && /aria-labelledby="ciTit" data-calculadora="inicio"/.test(bloque));
+  prueba('campos de escritura libre, cada uno con su <label>, teclado decimal y su error; el ejemplo de partida (1.000 €, 4 %, 5 años), editable y marcado',
+    textos.length === 8 && !/type="range"/.test(bloque) &&
+    textos.every(i => { const id = (i.match(/id="([^"]+)"/) || [])[1]; return id && bloque.includes(`<label class="ci-etq" for="${id}">`) && /inputmode="(?:decimal|numeric)"/.test(i) &&
+      new RegExp(`aria-describedby="[^"]*${id}Error"`).test(i) && bloque.includes(`<p class="ci-error" id="${id}Error" hidden></p>`); }) &&
+    /id="ciInversion"[^>]*value="1\.000"/.test(bloque) && /id="ciRentabilidad"[^>]*value="4"/.test(bloque) && /id="ciAnios"[^>]*value="5"/.test(bloque) &&
+    /id="ciImpuestos"[^>]*value="19"/.test(bloque) && bloque.includes('<span class="ci-ejemplo" id="ciEjemplo">Ejemplo: cámbialo</span>') &&
+    calc.PREDETERMINADOS.inversion === 1000 && calc.PREDETERMINADOS.rentabilidad === 4 && calc.PREDETERMINADOS.anios === 5 && calc.PREDETERMINADOS.impuestos === 19);
+  prueba('el resultado va arriba y se anuncia en role="status" (#ciAnuncio, no a cada tecla); «Afinar» y «Ver la cuenta paso a paso» son desplegables; la nota legal se ve',
+    bloque.includes('<div class="ci-estado" id="ciEstado">') && bloque.indexOf('id="ciEstado"') < bloque.indexOf('class="ci-datos"') &&
+    bloque.includes('<p class="solo-lector" id="ciAnuncio" role="status" aria-live="polite" aria-atomic="true"></p>') &&
+    bloque.indexOf('id="ciAnuncio"') < bloque.indexOf('class="ci-datos"') && /relojAnuncio = setTimeout\([\s\S]*?\}, 700\);/.test(lee('assets/calculadora-20261111.js')) &&
+    /<details class="ci-afinar" id="ciAfinar">\s*<summary><span>Afinar: comisiones e impuestos<\/span>/.test(bloque) &&
+    ['comisionAnual', 'comisionEntrada', 'impuestos', 'valorActivo', 'precioParticipacion'].every(c => bloque.indexOf(`data-ci-campo="${c}"`) > bloque.indexOf('id="ciAfinar"')) &&
+    /<details class="ci-cuenta" id="ciCuenta">\s*<summary>Ver la cuenta paso a paso<\/summary>/.test(bloque) &&
+    /<fieldset class="ci-modo" aria-describedby="ciModoAyuda">\s*<legend/.test(bloque) &&
+    bloque.includes('<p class="ci-ayuda" id="ciModoAyuda">Lo cobro: te lo pagan cada año. Lo reinvierto: se suma a lo que tienes y crece.</p>') && /name="ciModo"[^>]*value="cobrar" checked/.test(bloque) && /name="ciModo"[^>]*value="reinvertir"/.test(bloque) &&
+    bloque.includes('<div class="solo-lector"><table id="ciTabla"></table></div>') &&
+    html.includes('<p class="ci-legal">Simulación con tus números: no es una previsión ni una oferta. La rentabilidad pasada no garantiza la futura y puedes perder dinero.</p>') &&
+    bloque.includes('En España (salvo País Vasco y Navarra), la ganancia del ahorro paga un 19 % hasta 6.000 € al año y más por encima, hasta el 30 %.') &&
+    // Los ejemplos vacíos no parecen cifras escritas.
+    /id="ciValorActivo"[^>]*value="" placeholder="Ej\.: 300\.000"/.test(bloque) && /id="ciPrecioParticipacion"[^>]*value="" placeholder="Ej\.: 100"/.test(bloque));
+  // Las ofertas: nunca escritas a mano; las pinta el script con el catálogo que la web ya carga.
+  const datosCat = arrayDe(jsCatalogo, 'EMI');
+  const conRent = datosCat.filter(o => o.rentabilidad && o.rentabilidad.mostrada);
+  prueba('las rentabilidades de las ofertas no van escritas en el bloque: salen del catálogo que ya carga la web',
+    /<div class="ci-ofertas" id="ciOfertas" hidden>/.test(bloque) && conRent.length > 0 &&
+    conRent.every(o => !bloque.includes(o.rentabilidad.mostrada) && !bloque.includes(o.slug)) &&
+    /if\(typeof RWAdarCalculadoraInicio!=='undefined'&&RWAdarCalculadoraInicio\.ofertas\)RWAdarCalculadoraInicio\.ofertas\(EMI,catalogoSinCifrasLocal\(\)\);/.test(js) &&
+    js.indexOf('RWAdarCalculadoraInicio.ofertas(EMI') > js.indexOf('function pintarEmisiones(') && js.indexOf('RWAdarCalculadoraInicio.ofertas(EMI') < js.indexOf('const caja=document.getElementById(\'emiLista\')'));
+  const scriptCalc = lee('assets/calculadora-20261111.js');
+  prueba('el bloque se dibuja con el motor común, gráfico SVG propio y tabla; sin innerHTML, sin estilos en línea y sin hablar con nadie',
+    /globalThis\.RWAdarCalculadoraModelo/.test(scriptCalc) && /createElementNS\(SVG/.test(scriptCalc) && /modelo\.barras\(/.test(scriptCalc) &&
+    /modelo\.ofertasConRentabilidad\(/.test(scriptCalc) && /modelo\.pasos\(/.test(scriptCalc) && /'aria-pressed'/.test(scriptCalc) && /caption/.test(scriptCalc) &&
+    !/innerHTML|insertAdjacentHTML|setAttribute\('style'|\.style\.[a-z]+\s*=|fetch\(|XMLHttpRequest/.test(scriptCalc.replace(/\/\*[\s\S]*?\*\//g, '')) &&
+    !/https?:\/\/(?!www\.w3\.org)/.test(scriptCalc.replace(/\/\*[\s\S]*?\*\//g, '')));
+  // El explicador deja de estar atado a 300.000 €: dos campos y la cuenta del motor común.
+  prueba('el explicador lleva el valor del activo y el precio de cada trozo (300.000 € y 100 € de partida), recalcula con el motor y enlaza con Inicio',
+    /<input id="calcValor" type="text" inputmode="decimal"[^>]*value="300\.000" aria-describedby="calcValorError">/.test(html) &&
+    /<input id="calcPrecio" type="text" inputmode="decimal"[^>]*value="100" aria-describedby="calcPrecioError">/.test(html) &&
+    html.includes('<label for="calcValor">Valor del activo') && html.includes('<label for="calcPrecio">Precio de cada trozo') &&
+    /<a class="calc-ir" id="calcIrInicio" href="\/#calculadora"><span>Calcula con tus números<\/span>/.test(html) &&
+    /const M=window\.RWAdarCalculadoraModelo;/.test(js) && /M\.tituloExplicador\(/.test(js) && /M\.calcular\(/.test(js) &&
+    !/const VALOR=300000/.test(js) && /'rwadar:tutorial-calculadora'/.test(js) &&
+    calc.EJEMPLO_EXPLICADOR.valorActivo === 300000 && calc.EJEMPLO_EXPLICADOR.precioParticipacion === 100 &&
+    calc.tituloExplicador(calc.EJEMPLO_EXPLICADOR) === 'Un local de 300.000 €, partido en 3.000 trozos de 100 €');
+  // Inglés: cada texto fijo nuevo (el bloque y los campos del explicador) tiene su traducción en el diccionario.
+  const explicaNuevo = html.slice(html.indexOf('<div class="calc-mando calc-mando--campo">'), html.indexOf('<div class="calc-total"'));
+  const sueltos = [bloque, explicaNuevo, '<p>Mueve las barras, cambia los importes y</p><p>Calcula con tus números</p>'].flatMap(h => [
+    ...[...h.replace(/<!--[\s\S]*?-->/g, '').matchAll(/>([^<]+)</g)].map(m => m[1]),
+    ...[...h.matchAll(/\s(?:aria-label|placeholder)="([^"]+)"/g)].map(m => m[1])])
+    .map(x => x.replace(/\s+/g, ' ').trim()).filter(x => x && /[A-Za-zÁÉÍÓÚáéíóúñÑ]/.test(x) && x !== '€');
+  const sinIngles = [...new Set(sueltos)].filter(x => !Object.hasOwn(en, x));
+  prueba(`cada texto fijo de «Calcula tus números» y del explicador tiene su inglés (sin traducir: ${sinIngles.join(' | ') || 'ninguno'})`, sinIngles.length === 0);
+  const calcPublicados = scriptsPublicados.map(s => s[1]).filter(ruta => /\/calculadora-/.test(ruta));
+  prueba('el motor y el bloque de la calculadora salen con huella, tras las noticias y antes del snapshot del catálogo',
+    calcPublicados.length === 2 && /^\/assets\/calculadora-modelo-20261111\.[a-f0-9]{12}\.js$/.test(calcPublicados[0]) &&
+    /^\/assets\/calculadora-20261111\.[a-f0-9]{12}\.js$/.test(calcPublicados[1]) &&
+    scriptsPublicados.findIndex(s => /\/noticias-sector-20261110\./.test(s[1])) < scriptsPublicados.findIndex(s => s[1] === calcPublicados[0]) &&
+    scriptsPublicados.findIndex(s => s[1] === calcPublicados[1]) < scriptsPublicados.findIndex(s => s[1] === recursoCatalogoPublicado) &&
+    ['assets/calculadora-modelo-20261111.js', 'assets/calculadora-20261111.js', 'assets/calculadora-20261111.css'].every(x => ARCHIVOS_PUBLICABLES.includes(x)));
 }
 prueba('el worker generado conserva la retirada efectiva de cachés y no deja copias offline',
   await probarRetiradaOffline(swPublicado));
@@ -2430,7 +2523,7 @@ for(const [nombre,alterar] of [
     selInicio.every(x=>conAltas.includes(x))&&oculto===!conAltas.length&&
     // Sin altas, quedan las de la Selección.
     JSON.stringify(sinAltas[0])===JSON.stringify(selInicio)&&sinAltas[1]===!selInicio.length&&
-    /id="relPortada"[\s\S]*id="relNuevas"[\s\S]*id="tokenizacion"/.test(panelInicioHTML));
+    /id="relPortada"[\s\S]*id="relNuevas"[\s\S]*id="mercado"/.test(panelInicioHTML));
   // La prueba de notas «x/5» y la del título exacto fijaban redacción: fuera (decisión de Víctor, 04/11/2026).
   vm.runInContext(`abrirDetalleOfertaLocal('${sacada}')`,c);
   const detalle=p.obtiene('escaparateDetalleLocal').innerHTML;

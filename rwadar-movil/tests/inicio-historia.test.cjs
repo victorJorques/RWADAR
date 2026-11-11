@@ -170,7 +170,7 @@ test('la Selección sale en el orden de la web y va en el carrusel «Ofertas» c
   assert.equal(es.bloques.ofertas.cincoNota, 'Pasarlas no hace a una oferta más segura ni más rentable. No es una recomendación de inversión.');
 });
 
-test('el 03 ya no lleva cifras de mercado: un enlace abre «El mercado hoy» (rediseño del 10/11/2026)', () => {
+test('el 03 ya no lleva cifras de mercado: un enlace abre «Mercado y noticias» (rediseño del 10/11/2026; nombre del 11/11)', () => {
   const { es, en } = contenido.INICIO;
   // Una cifra, en un solo sitio: las del mercado están al día en su pantalla.
   assert.equal(contenido.CIFRAS_MERCADO_EL, undefined);
@@ -179,7 +179,7 @@ test('el 03 ya no lleva cifras de mercado: un enlace abre «El mercado hoy» (re
     assert.equal(t.capitulos.cap3.sinCifra, undefined);
     assert.equal(t.capitulos.cap3.saberMas.filter((p) => p === null).length, 1, 'el hueco de la cifra sigue, para el enlace');
     assert.doesNotMatch(t.capitulos.cap3.saberMas.filter(Boolean).join(' '), /14\.230|125 veces|125 times|3,9 %|3\.9%/);
-    assert.match(t.bloques.enlaceMercado, /El mercado hoy|The market today/);
+    assert.match(t.bloques.enlaceMercado, /Mercado y noticias|Market and news/);
   }
   const aprende = leer('componentes', 'AprendeInicio.js');
   assert.match(aprende, /onMercado\?\.\(\)/);

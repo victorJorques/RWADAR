@@ -34,7 +34,7 @@ const PAGINAS_FICHAS = require('./rwadar-fichas-manifiesto');
 const { construirWorker, RUTAS: RUTAS_ACCESO } = require('./rwadar-acceso/compilar.cjs');
 const { exigirCatalogoPublico } = require('./rwadar-acceso/comprobar-produccion.cjs');
 const tokenizacionModelo = require('./rwadar-movil/lib/tokenizacion');
-const { historicoTokenizacion } = require('./rwadar-tokenizacion-historico');
+const { historicoTokenizacion, serieTokenizacion } = require('./rwadar-tokenizacion-historico');
 const noticiasModelo = require('./rwadar-movil/lib/noticias-sector');
 const noticiasV1 = require('./rwadar-app/noticias/noticias-v1.cjs');
 const {
@@ -588,6 +588,13 @@ function construirSalida() {
     const fotosTokenizacion = tokenizacion.historico.fotos;
     console.log(`Tokenización: ${fotosTokenizacion.length} foto(s) diaria(s) de ${tokenizacion.origen}` +
       (fotosTokenizacion.length ? `, del ${fotosTokenizacion[0].fecha} al ${fotosTokenizacion.at(-1).fecha}.` : '.'));
+    /* La serie de un año del gráfico de /mercado/ (11/11/2026): la de la rama
+       datos-tokenizacion si es más reciente que la semilla de main. */
+    const serie = serieTokenizacion({ dirSitio: DIR });
+    fs.writeFileSync(path.join(temporal, 'datos', 'tokenizacion-serie.json'), tokenizacionModelo.serializarSerie(serie.serie), 'utf8');
+    const diasSerie = serie.serie.puntos;
+    console.log(`Serie del mercado: ${diasSerie.length} día(s) de ${serie.origen}, del ${diasSerie[0].fecha} al ${diasSerie.at(-1).fecha} ` +
+      `(${serie.serie.incluidos} tokens, generada el ${serie.serie.generado}).`);
     /* «Noticias del sector» (10/11/2026): /datos/noticias-v2.json se publica
        tal cual, pero solo si tiene la forma que leen la web y la app nuevas
        (rwadar-movil/lib/noticias-sector.js) y si cada noticia trae su foto

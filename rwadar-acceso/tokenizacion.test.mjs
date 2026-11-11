@@ -1,8 +1,10 @@
 /* GET /api/tokenizacion («La tokenización en el mundo», 10/11/2026): la ruta
    del servidor web (servidor.mjs y el _worker.js compilado), su caché de 30
    minutos, la foto guardada cuando CoinGecko falla o da 429, la historia
-   estática, las cabeceras, la copia web del motor y la portada en Chromium
-   (390 × 844 y 1366 × 900, con la red de CoinGecko simulada). Sin red. */
+   estática, las cabeceras, la copia web del motor y, en Chromium (390 × 844 y
+   1366 × 900, con la red de CoinGecko simulada), «Mercado y noticias» al
+   estilo de una app de bolsa (11/11/2026): la cotización de Inicio y el
+   gráfico de /mercado/ con la serie de un año. Sin red. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -197,21 +199,25 @@ test('el _worker.js compilado sirve la ruta: historia desde ASSETS y CoinGecko c
   } finally { globalThis.caches = originalCaches; }
 });
 
-test('la web lleva una copia exacta del motor, la semilla del histórico y su regla de caché', () => {
+test('la web lleva una copia exacta del motor, la semilla del histórico y de la serie, y su regla de caché', () => {
   assert.equal(copiaWeb.alDia(), true, 'ejecuta node rwadar-app/tokenizacion/copiar-modelo-web.cjs');
   const semilla = modelo.validarHistorico(JSON.parse(SEMILLA));
   assert.equal(semilla.fotos[0].fecha, '2026-11-10');
   assert.equal(modelo.serializarHistorico(semilla), SEMILLA, 'la semilla está escrita con serializarHistorico');
+  const textoSerie = fs.readFileSync(path.join(RAIZ, 'rwadar-site/datos/tokenizacion-serie.json'), 'utf8');
+  assert.equal(modelo.serializarSerie(modelo.validarSerie(JSON.parse(textoSerie))), textoSerie, 'la serie está escrita con serializarSerie');
   assert.match(fs.readFileSync(path.join(RAIZ, 'rwadar-site/_headers'), 'utf8'), /\n\/datos\/\*\n {2}Cache-Control: public, max-age=0, must-revalidate\n/);
   const { ARCHIVOS_PUBLICABLES, RUTAS_CONTENIDO_APROBADO } = require('../rwadar-publicacion-segura.js');
-  for (const archivo of ['datos/tokenizacion-historico.json', 'assets/tokenizacion-modelo-20261110.js', 'assets/tokenizacion-20261110.js', 'assets/tokenizacion-20261110.css']) {
+  for (const archivo of ['datos/tokenizacion-historico.json', 'datos/tokenizacion-serie.json', 'assets/tokenizacion-modelo-20261110.js',
+    'assets/mercado-20261111.js', 'assets/mercado-20261111.css', 'assets/noticias-a-mercado-20261111.js']) {
     assert.ok(ARCHIVOS_PUBLICABLES.includes(archivo), archivo);
   }
+  assert.ok(!ARCHIVOS_PUBLICABLES.some(a => /tokenizacion-20261110\.(js|css)$/.test(a)), 'la sección de antes ya no se publica');
   assert.ok(RUTAS_CONTENIDO_APROBADO.includes('rwadar-movil/lib/tokenizacion.js'));
-  // El script de la sección no usa innerHTML ni habla con nadie más que con su servidor.
-  const js = fs.readFileSync(path.join(RAIZ, 'rwadar-site/assets/tokenizacion-20261110.js'), 'utf8');
+  // El script no usa innerHTML ni habla con nadie más que con su propio sitio.
+  const js = fs.readFileSync(path.join(RAIZ, 'rwadar-site/assets/mercado-20261111.js'), 'utf8');
   assert.doesNotMatch(js, /innerHTML|insertAdjacentHTML|coingecko\.com\/api|api\.coingecko/);
-  assert.deepEqual([...js.matchAll(/'(\/(?:api|datos)\/[^']+)'/g)].map(m => m[1]), ['/api/tokenizacion', '/datos/tokenizacion-historico.json']);
+  assert.deepEqual([...js.matchAll(/'(\/(?:api|datos)\/[^']+)'/g)].map(m => m[1]), ['/api/tokenizacion', '/datos/tokenizacion-historico.json', '/datos/tokenizacion-serie.json']);
 });
 
 /* ---- Chromium: la portada con la sección, en móvil y en escritorio ---- */
@@ -225,12 +231,17 @@ function cargarPlaywright() {
 const playwright = cargarPlaywright();
 const sinNavegador = playwright ? false : 'Playwright no está instalado (en CI no lo está): se omite la prueba en Chromium';
 
-test('en Chromium: /mercado/ pinta la sección entera sin desbordes a 390 y 1366 px, con tablas accesibles, en inglés y con CoinGecko caído; Inicio, la tarjeta compacta', { skip: sinNavegador, timeout: 180000 }, async () => {
-  let estado = 'vivo';
+const SERIE = modelo.validarSerie(JSON.parse(fs.readFileSync(path.join(RAIZ, 'rwadar-site/datos/tokenizacion-serie.json'), 'utf8')));
+const ULTIMO = SERIE.puntos.at(-1);
+// El dato en vivo que sirve el servidor local: la respuesta real de CoinGecko del 10/11/2026 a las 15:25 UTC.
+const VIVO = { fuente: 'coingecko', actualizado: '2026-11-10T15:25:40.000Z', total: { valor: 49683537033 } };
+const plano = t => String(t).replace(/\s+/g, ' ').trim();
+const NUM = t => Number(String(t).match(/\d[\d.]*/)[0].replace(/\./g, ''));
+test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio con la cotización; /mercado/ con pestañas, gráfico, cruz con ratón y teclado, tabla, datos clave, inglés y CoinGecko caído', { skip: sinNavegador, timeout: 180000 }, async () => {
   // Las fuentes, sin huellas: el worker se compila desde rwadar-acceso/.
   const local = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, responder: async (url) => {
     if (url.hostname !== 'api.coingecko.com') return null;
-    return estado === 'vivo' ? new Response(COINGECKO) : new Response('{}', { status: 429 });
+    return new Response(COINGECKO);
   } });
   const navegador = await playwright.chromium.launch();
   try {
@@ -238,30 +249,35 @@ test('en Chromium: /mercado/ pinta la sección entera sin desbordes a 390 y 1366
       const pagina = await navegador.newPage({ viewport: { width: ancho, height: alto } });
       const errores = [];
       pagina.on('pageerror', e => errores.push(e.message));
-      // Inicio (rediseño del 10/11/2026): la tarjeta compacta, con el total, 24 h, una barra apilada y «Ver el mercado →».
+      // Inicio: la tarjeta tipo cotización (nombre, cifra, cambio del mes y minigráfico), que lleva a /mercado/.
       await pagina.goto(local.url + '/', { waitUntil: 'load' });
-      await pagina.waitForSelector('#tokenizacion[data-tokenizacion-estado="coingecko"]', { timeout: 20000 });
+      await pagina.waitForSelector('#mercado[data-mercado-estado="coingecko+serie"]', { timeout: 20000 });
+      const g1m = modelo.graficoPestana(SERIE, '1m');
       const c = await pagina.evaluate(() => {
-        const s = document.querySelector('#tokenizacion');
+        const s = document.querySelector('#mercado');
         const fuera = [...s.querySelectorAll('*')].filter(n => !n.closest('.solo-lector'))
           .filter(n => { const b = n.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5); });
-        const tramos = [...s.querySelectorAll('.tk-tramo')].map(t => t.getBoundingClientRect().width);
-        return { compacta: s.dataset.tokenizacion, total: s.querySelector('.tk-total-cifra').textContent, capsula: s.querySelector('.tk-capsula')?.textContent,
-          tramos, ancho: s.querySelector('.tk-apilada').getBoundingClientRect().width, leyenda: [...s.querySelectorAll('.tk-leyenda-item')].map(l => l.textContent),
-          periodos: s.querySelectorAll('.tk-periodo,.tk-tipo,.tk-linea').length, ver: s.querySelector('a.ini-ver[href="/mercado/"]')?.textContent.trim(),
-          hora: document.getElementById('tkHora').textContent, fuera: fuera.length, anchoPagina: document.documentElement.scrollWidth,
+        const a = s.querySelector('a.mk-ct');
+        return { href: a.getAttribute('href'), nombre: a.querySelector('.mk-ct-nom').textContent, sub: a.querySelector('.mk-ct-sub').textContent, cifra: a.querySelector('.mk-ct-cifra').textContent,
+          cambio: a.querySelector('.mk-cambio').textContent, periodo: a.querySelector('.mk-ct-periodo').textContent, alcance: a.querySelector('.mk-ct-alcance')?.textContent ?? null, mini: !!a.querySelector('svg.mk-mini-svg .mk-linea'),
+          explica: s.querySelector('.mk-ct-explica')?.textContent, cabecera: [...document.querySelectorAll('.hdr-nav a.hdr-link')].map(x => x.getAttribute('href')),
+          etiqueta: a.getAttribute('aria-label'), ver: s.querySelector('a.ini-ver[href="/mercado/"]')?.textContent.trim(), fuente: s.querySelector('.mk-fuente').textContent,
+          fuera: fuera.length, anchoPagina: document.documentElement.scrollWidth,
           trasOfertas: document.getElementById('relNuevas').compareDocumentPosition(s) & Node.DOCUMENT_POSITION_FOLLOWING };
       });
-      assert.equal(c.compacta, 'compacta');
-      assert.equal(c.total, '49.684\u00a0M$');
-      assert.match(c.capsula, /^▼ −0,9\s%\sen 24 h$/);
-      assert.equal(c.tramos.length, 4, 'los 3 tipos mayores y «Otros»');
-      assert.ok(c.tramos.every(w => w >= 3) && c.tramos[0] > c.tramos[1], `cada tramo, su cuota (${c.tramos})`);
-      assert.ok(Math.abs(c.tramos.reduce((a, b) => a + b, 0) + 6 - c.ancho) < 3, 'la barra suma el 100 %');
-      assert.deepEqual(c.leyenda.map(t => t.replace(/[\s\u00a0\u202f]+/g, ' ')), ['Crédito privado 55,6 %', 'Letras del Tesoro 16,2 %', 'Materias primas 11,9 %', 'Otros 16,4 %']);
-      assert.equal(c.periodos, 0, 'ni periodos, ni tipos, ni línea: están en /mercado/');
-      assert.equal(c.ver, 'Ver el mercado→');
-      assert.match(c.hora, /Dato del 10\/11\/2026, 15:25 UTC/);
+      assert.equal(c.href, '/mercado/');
+      assert.equal(c.nombre, 'Activos tokenizados');
+      assert.equal(c.sub, `Los ${SERIE.incluidos} mayores · CoinGecko`, 'qué suma la cifra (antes, «Mercado mundial»)');
+      assert.equal(c.cifra, modelo.millones(ULTIMO.valor), 'la misma cifra que el final del minigráfico (42.947 M$), no el total en vivo (49.684 M$)');
+      assert.equal(c.cambio, { sube: '▲', baja: '▼', igual: '=' }[g1m.direccion] + g1m.cambioTexto, 'el cambio del mes, con flecha y signo');
+      assert.equal(c.periodo, 'último mes');
+      assert.equal(c.alcance, null);
+      assert.equal(c.explica, modelo.explicacionCambio(), 'qué mide el %, también en Inicio');
+      assert.ok(c.mini, 'el minigráfico del mes');
+      assert.match(c.etiqueta, new RegExp(`^Mercado de activos tokenizados, suma de los ${SERIE.incluidos} mayores tokens: 42\\.947 millones de dólares, (sube|baja|sin cambios) \\S+\\s% en el último mes\\. Ver el gráfico$`));
+      assert.equal(c.ver, 'Ver mercado y noticias→');
+      assert.equal(c.fuente, `Datos: CoinGecko · serie diaria hasta el ${modelo.fechaCorta(ULTIMO.fecha)}`);
+      assert.deepEqual(c.cabecera, ['#emisiones', '/mercado/', '#tool', '/academy/', '/android'], 'la cabecera de Inicio lleva a «Mercado y noticias»');
       assert.equal(c.fuera, 0);
       assert.equal(c.anchoPagina, ancho);
       assert.ok(c.trasOfertas, 'después de «Ofertas»');
@@ -280,112 +296,236 @@ test('en Chromium: /mercado/ pinta la sección entera sin desbordes a 390 y 1366
         const foco = await pagina.evaluate(() => ({ texto: document.activeElement.textContent.trim(), href: document.activeElement.getAttribute('href') }));
         assert.deepEqual(foco, { texto: 'Nota legal completa→', href: '/aprende/#nota-legal' }, 'Tab llega a «Nota legal completa»');
       } else assert.equal(pie.display, 'none', '1366: el pie de Inicio no repite la nota legal del sitio');
-      // /mercado/: la sección entera, como estaba en Inicio.
+
+      // /mercado/: cifra grande, cambio del periodo, pestañas, gráfico y datos clave.
       await pagina.goto(local.url + '/mercado/', { waitUntil: 'load' });
-      await pagina.waitForSelector('#tokenizacion[data-tokenizacion-estado="coingecko"]', { timeout: 20000 });
-      const m = await pagina.evaluate(() => {
-        const s = document.querySelector('#tokenizacion');
+      await pagina.waitForSelector('#tokenizacion .mk-svg', { timeout: 20000 });
+      const leer = () => pagina.evaluate(() => {
+        const s = document.querySelector('#tokenizacion'), svg = s.querySelector('.mk-svg'), graf = s.querySelector('.mk-graf');
         const fuera = [...s.querySelectorAll('*')].filter(n => !n.closest('.solo-lector'))
           .filter(n => { const b = n.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5); });
-        const enlace = s.querySelector('.tk-fuente a');
-        const portada = document.querySelector('h1').getBoundingClientRect();
-        return { fuera: fuera.length, anchoPagina: document.documentElement.scrollWidth, total: s.querySelector('.tk-total-cifra').textContent,
-          capsulas: [...s.querySelectorAll('.tk-periodo')].map(p => p.className.split(' ').pop()),
-          barras: s.querySelectorAll('.tk-tipo').length, tablas: [...s.querySelectorAll('.solo-lector table caption')].map(c => c.textContent),
-          filas: s.querySelectorAll('.solo-lector table tr').length, visualOculto: [...s.querySelectorAll('.tk-periodos,.tk-tipos')].every(n => n.getAttribute('aria-hidden') === 'true'),
-          enlace: enlace && enlace.href, hora: document.getElementById('tkHora').textContent,
-          seccionDespuesDePortada: s.getBoundingClientRect().top + scrollY >= portada.bottom + scrollY - 1,
-          ancho1: getComputedStyle(s.querySelector('.tk-barra-relleno')).width,
-          // Cada tabla, justo detrás de su gráfico (orden de lectura).
-          tablaTrasPeriodos: s.querySelector('.tk-periodos').nextElementSibling?.querySelector('caption')?.textContent || null,
-          tablaEnSuBloque: [...s.querySelectorAll('.tk-bloque')].find(b => b.querySelector('h3')?.textContent === 'Por tipo de activo')
-            ?.querySelector('.tk-tipos + .solo-lector caption')?.textContent || null,
-          hablado: s.querySelector('.tk-total .solo-lector')?.textContent, cifraOculta: s.querySelector('.tk-total-cifra').getAttribute('aria-hidden'),
-          etiquetaTotal: s.querySelector('.tk-total-etq').textContent,
-          notasPeriodos: [...s.querySelectorAll('.tk-periodo')].map(p => p.querySelector('.tk-periodo-nota').textContent),
-          unaColumna: s.querySelector('.tk-graficos').classList.contains('tk-graficos--una'),
-          // El título de la sección, alineado con el de la página.
-          izquierdaTitulo: document.getElementById('tkTit').getBoundingClientRect().left,
-          izquierdaCapitulo: document.querySelector('h1').getBoundingClientRect().left };
+        const eje = [...svg.querySelectorAll('.mk-eje text')];
+        const anchoSvg = svg.getBoundingClientRect().width;
+        const dd = rotulo => [...s.querySelectorAll('.mk-clave-item')].find(d => d.querySelector('dt').textContent === rotulo)?.querySelector('dd').textContent ?? null;
+        const ultimo = s.querySelector('.mk-ultimo rect'), tit = document.querySelector('h1').getBoundingClientRect();
+        return { h1: document.querySelector('h1').textContent, h1Alto: tit.height, cifra: s.querySelector('.mk-cifra-num').textContent, hablado: s.querySelector('.mk-cifra .solo-lector').textContent,
+          sub: s.querySelector('.mk-sub').textContent, explica: s.querySelector('.mk-explica')?.textContent, totalCat: s.querySelector('.mk-total-cat')?.textContent,
+          cambio: s.querySelector('.mk-linea-cambio .mk-cambio').textContent, periodo: s.querySelector('.mk-periodo').textContent,
+          alcance: s.querySelector('.mk-alcance')?.textContent ?? null, avisoTokens: s.querySelector('.mk-aviso-tokens')?.textContent ?? null,
+          pildora: s.querySelector('.mk-ultimo text')?.textContent, pildoraY: ultimo ? Number(ultimo.getAttribute('y')) + 9 : null,
+          suelo: Number(svg.querySelector('.mk-suelo').getAttribute('x2')), cruzH: svg.querySelectorAll('.mk-cruz line').length,
+          maximo: dd('Máximo del periodo'), valorHoy: dd('Valor hoy (29 mayores)'), total: dd('Total de la categoría hoy'), c24: dd('Cambio en 24 h'), tokens: dd('Tokens en el gráfico'),
+          tiposAbiertos: s.querySelector('.mk-tipos-det')?.open, tiposSum: s.querySelector('.mk-tipos-sum')?.textContent,
+          puentes: svg.querySelectorAll('.mk-puente').length, cortesArea: (svg.querySelector('.mk-area').getAttribute('d').match(/M/g) || []).length,
+          pestanas: [...s.querySelectorAll('.mk-pestana')].map(b => [b.textContent, b.getAttribute('aria-pressed'), b.tagName, b.getAttribute('aria-label')]),
+          grupo: s.querySelector('.mk-pestanas').getAttribute('role'),
+          trazo: getComputedStyle(svg.querySelector('.mk-linea')).stroke, grosor: getComputedStyle(svg.querySelector('.mk-linea')).strokeWidth,
+          area: svg.querySelector('.mk-area').getAttribute('fill'), base: getComputedStyle(svg.querySelector('.mk-base')).strokeDasharray,
+          valoresDerecha: eje.filter(t => !t.classList.contains('mk-eje-unidad') && Number(t.getAttribute('x')) > anchoSvg - 70 && !/[a-z]/i.test(t.textContent)).map(t => t.textContent),
+          fechas: eje.filter(t => !t.classList.contains('mk-eje-unidad') && /[a-z]/i.test(t.textContent)).map(t => t.textContent), altoSvg: svg.getBoundingClientRect().height, anchoSvg,
+          anchoCaja: s.getBoundingClientRect().width,
+          rol: graf.getAttribute('role'), tabla: s.querySelectorAll('.solo-lector table tr').length, caption: s.querySelector('.solo-lector caption').textContent,
+          nota: s.querySelector('.mk-nota').textContent, notaLarga: s.querySelector('.mk-como .mk-nota-larga')?.textContent,
+          como: [s.querySelector('.mk-como summary')?.textContent, s.querySelector('.mk-como')?.open], clave: [...s.querySelectorAll('.mk-clave dt')].map(d => d.textContent),
+          tipos: s.querySelectorAll('.mk-tipo').length, fuente: s.querySelector('.mk-fuente a')?.href,
+          totalEnCab: !!s.querySelector('.mk-cab .mk-total-cat'), totalEnNota: !!s.querySelector('.mk-nota .mk-total-cat'),
+          finEje: Math.max(...eje.map(t => t.getBoundingClientRect().bottom)) + scrollY,
+          letraClave: [...s.querySelectorAll('.mk-clave dd, .mk-tipo-valor')].map(d => getComputedStyle(d).fontFamily),
+          tipos24: [...s.querySelectorAll('.mk-tipo-24h')].map(d => d.textContent),
+          fuera: fuera.length, anchoPagina: document.documentElement.scrollWidth };
       });
+      let m = await leer();
       assert.deepEqual(errores, [], `${ancho}: sin errores de JavaScript`);
+      assert.equal(m.h1, 'Mercado de activos tokenizados');
+      assert.ok(m.h1Alto < 50, `${ancho}: el título, en una línea (${m.h1Alto} px)`);
+      // La cifra grande es el último punto de la serie (42.947 M$); el total de la categoría (49.684 M$) va debajo, con su nombre y su hora.
+      assert.equal(plano(m.cifra), plano(modelo.millones(ULTIMO.valor)));
+      assert.equal(m.hablado, '42.947 millones de dólares');
+      // La misma coletilla en el subtítulo y en la nota: «los 29 mayores tokens con historia completa».
+      assert.equal(m.sub, `Suma de los ${SERIE.incluidos} mayores tokens con historia completa\u00a0· ${modelo.fechaCorta(ULTIMO.fecha)}`);
+      assert.equal(m.cambio, { sube: '▲', baja: '▼', igual: '=' }[g1m.direccion] + g1m.cambioTexto);
+      assert.equal(m.periodo, 'en el último mes');
+      assert.equal(m.alcance, null, 'el subtítulo ya dice qué suma');
+      assert.equal(m.explica, 'Mide cuánto vale en total el mercado: sube también cuando se emiten tokens nuevos. No es lo que habría ganado una inversión.');
+      assert.equal(m.totalCat, modelo.lineaTotalCategoria(SERIE, VIVO, 'es'));
+      assert.match(m.totalCat, /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \((dato del 10\/11\/2026, 15:25|hoy, 15:25) UTC\)\.$/);
+      // El total va bajo el gráfico, tras la nota: en la cabecera empujaba el gráfico fuera de la primera pantalla del móvil.
+      assert.deepEqual([m.totalEnCab, m.totalEnNota], [false, true]);
+      if (ancho < 768) assert.ok(m.finEje <= 844, `${ancho}: el gráfico entero, con sus fechas, en la primera pantalla (acaba en ${m.finEje} px)`);
+      // Las cifras de los datos clave y de los tipos, en la letra de la cabecera (en Mono, «−0,1 %» se leía espaciado).
+      assert.ok(m.letraClave.length > 8 && m.letraClave.every(f => !/mono/i.test(f)), m.letraClave.join(' | '));
+      assert.ok(m.tipos24.every(x => /^(▲|▼|=).+ en 24 h$|^Sin dato en 24 h$/.test(x.trim())), m.tipos24.join(' | '));
+      assert.equal(m.avisoTokens, null, '1 M: mismos tokens al principio y al final');
+      // Datos clave: dos cifras con su nombre; el valor de hoy no supera el máximo; 24 h de la serie (nunca el +124 %).
+      assert.equal(plano(m.valorHoy), plano(modelo.millones(ULTIMO.valor) + modelo.fechaCorta(ULTIMO.fecha)));
+      assert.equal(plano(m.total), plano('49.684 M$todos los tokens · CoinGecko'));
+      assert.equal(plano(m.c24), plano('▼−0,1 %29 mayores'));
+      assert.equal(plano(m.tokens), plano(`${SERIE.incluidos}86 % del total`), 'el mismo 86 % que la nota');
+      assert.ok(NUM(m.maximo) >= NUM(m.cifra), `máximo ${m.maximo} ≥ cifra ${m.cifra}`);
+      assert.equal(m.grupo, 'group');
+      assert.deepEqual(m.pestanas.map(p => p[0]), ['1 S', '1 M', '3 M', '6 M', '2026', '1 A'], '«2026» en lugar de «YTD»');
+      assert.deepEqual(m.pestanas.map(p => p[1]), ['false', 'true', 'false', 'false', 'false', 'false'], '1 M por defecto');
+      assert.ok(m.pestanas.every(p => p[2] === 'BUTTON'));
+      assert.deepEqual(m.pestanas.map(p => p[3]), ['1 semana', '1 mes', '3 meses', '6 meses', 'En 2026', '1 año']);
+      // El último valor, en su píldora a la altura del final de la línea; el suelo no tacha el eje; la cruz, solo vertical.
+      assert.equal(m.pildora, '42.947');
+      assert.ok(m.suelo < m.anchoSvg - 50, 'el suelo acaba donde el dibujo');
+      assert.equal(m.cruzH, 1, 'la cruz es una sola raya, vertical');
+      assert.equal(m.tiposAbiertos, ancho >= 768, ancho >= 768 ? 'en escritorio, los tipos abiertos' : 'en el móvil, plegados: las noticias suben');
+      if (ancho < 768) assert.match(m.tiposSum, /^Ver los 8 tiposCrédito privado 55,6\s% · Letras del Tesoro/);
+      assert.equal(m.trazo, g1m.direccion === 'baja' ? 'rgb(255, 107, 94)' : g1m.direccion === 'sube' ? 'rgb(37, 227, 154)' : 'rgb(187, 181, 171)', 'verde si sube, rojo si baja');
+      assert.equal(m.grosor, '2px');
+      assert.match(m.area, /^url\(#mkDeg/);
+      assert.notEqual(m.base, 'none', 'la línea de puntos del valor de partida');
+      assert.ok(m.valoresDerecha.every(v => g1m.marcasValores.some(x => x.texto === v)) && m.valoresDerecha.length >= 3, 'el eje de valores, a la derecha');
+      assert.ok(!m.valoresDerecha.includes('43.000'), 'la marca que chocaría con la píldora (42.947) no se escribe');
+      assert.deepEqual(m.fechas, g1m.marcasFechas.map(x => x.texto));
+      assert.equal(m.altoSvg, ancho < 768 ? 270 : 330, 'con una franja de 40 px arriba para la burbuja');
+      assert.ok(Math.abs(m.anchoSvg - m.anchoCaja) < 2, 'a todo el ancho');
+      assert.equal(m.rol, 'slider');
+      assert.equal(m.tabla, g1m.puntos.length + 1, 'la tabla equivalente, con todos los días');
+      assert.equal(m.caption, `Valor diario, último mes (suma de los ${SERIE.incluidos} mayores tokens)`);
+      assert.equal(m.nota, modelo.notaCorta(SERIE) + ' ' + modelo.lineaTotalCategoria(SERIE, VIVO, 'es'), 'la nota corta a la vista, con el total de la categoría');
+      assert.equal(m.notaLarga, modelo.notaSerie(SERIE, 'es', '1m'));
+      assert.deepEqual(m.como, ['Cómo se calcula', false], 'el resto, en un desplegable cerrado');
+      assert.deepEqual(m.clave, [`Valor hoy (${SERIE.incluidos} mayores)`, 'Total de la categoría hoy', 'Cambio en 24 h', 'Máximo del periodo', 'Mínimo del periodo',
+        'Tokens en el gráfico', 'El tipo que más pesa']);
+      assert.equal(m.tipos, 8);
+      assert.equal(m.fuente, 'https://www.coingecko.com/');
       assert.equal(m.fuera, 0, `${ancho}: nada se sale por los lados`);
       assert.equal(m.anchoPagina, ancho, `${ancho}: sin desplazamiento horizontal`);
-      assert.equal(m.total, '49.684\u00a0M$');
-      assert.deepEqual(m.capsulas, ['tk-baja', 'tk-sin-datos', 'tk-sin-datos', 'tk-sin-datos', 'tk-sin-datos']);
-      assert.equal(m.barras, 8);
-      assert.deepEqual(m.tablas, ['Cambio del valor total por periodo', 'Valor por tipo de activo (millones de dólares)']);
-      assert.equal(m.tablaTrasPeriodos, 'Cambio del valor total por periodo');
-      assert.equal(m.tablaEnSuBloque, 'Valor por tipo de activo (millones de dólares)');
-      assert.equal(m.hablado, '49.684 millones de dólares');
-      assert.equal(m.cifraOculta, 'true');
-      assert.equal(m.etiquetaTotal, 'Valor total de los activos tokenizados, en millones de dólares (M$)');
-      // Sin fotos todavía: cuándo llegará cada periodo (la semilla es del 10/11/2026).
-      assert.deepEqual(m.notasPeriodos.slice(1), ['disponible el 15/11', 'disponible el 08/12', 'disponible el 08/11/2027', 'disponible el 11/11']);
-      assert.equal(m.unaColumna, true, 'con una foto, una columna');
-      assert.ok(Math.abs(m.izquierdaTitulo - m.izquierdaCapitulo) < 1, `título alineado con el de la página (${m.izquierdaTitulo} y ${m.izquierdaCapitulo})`);
-      assert.equal(m.filas, 6 + 9);
-      assert.equal(m.visualOculto, true);
-      assert.equal(m.enlace, 'https://www.coingecko.com/');
-      assert.match(m.hora, /Dato del 10\/11\/2026, 15:25 UTC/);
-      assert.ok(m.seccionDespuesDePortada, 'va tras el título de la página');
-      assert.notEqual(m.ancho1, '0px', 'las barras tienen su ancho (CSSOM, sin style en línea)');
-      // El enlace a CoinGecko se alcanza con el teclado y se ve el foco.
-      await pagina.focus('#tokenizacion .tk-fuente a');
-      assert.notEqual(await pagina.evaluate(() => getComputedStyle(document.activeElement).outlineStyle), 'none');
-      // En inglés: textos del diccionario y cifras en su formato.
-      // El selector de idioma está en Perfil en el móvil: se pulsa por código.
-      await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="en"]').click());
-      await pagina.waitForFunction(() => document.querySelector('#tkTit').textContent === 'Tokenisation worldwide');
-      const en = await pagina.evaluate(() => ({ total: document.querySelector('.tk-total-cifra').textContent,
-        nota: document.querySelector('.tk-periodo-nota').textContent, caption: document.querySelector('#tokenizacion caption').textContent }));
-      assert.deepEqual(en, { total: '$49,684M', nota: '▼ down', caption: 'Change in total value by period' });
-      await pagina.close();
-    }
-    // Con varias fotos guardadas (las dos últimas casi iguales): la línea sin
-    // relleno y con su escala escrita, «desde» en las cápsulas y, en
-    // escritorio, barras y línea lado a lado más anchas que la columna.
-    const f = modelo.extraerFoto(JSON.parse(COINGECKO), { ahora: AHORA });
-    const dia = (fecha, factor) => ({ ...f, fecha, actualizado: fecha + 'T06:20:00.000Z', total: { ...f.total, valor: Math.round(f.total.valor * factor) } });
-    let h = modelo.historicoVacio();
-    for (const foto of [dia('2026-11-07', 0.998), dia('2026-11-08', 0.999), dia('2026-11-09', 0.997)]) h = modelo.anadirFoto(h, foto).historico;
-    const conFotos = JSON.stringify(modelo.resumir({ historico: h, actual: f }));
-    for (const [ancho, alto] of [[390, 844], [1366, 900]]) {
-      const pagina = await navegador.newPage({ viewport: { width: ancho, height: alto } });
-      await pagina.route('**/api/tokenizacion', r => r.fulfill({ status: 200, contentType: 'application/json', body: conFotos }));
-      await pagina.goto(local.url + '/mercado/', { waitUntil: 'load' });
-      await pagina.waitForSelector('#tokenizacion .tk-linea-svg', { timeout: 20000 });
-      const l = await pagina.evaluate(() => {
-        const s = document.querySelector('#tokenizacion'), col = 720;
-        const ys = s.querySelector('.tk-linea-trazo').getAttribute('points').split(' ').map(p => Number(p.split(',')[1]));
-        return { area: s.querySelectorAll('.tk-linea-area, .tk-linea-svg path').length, ys, nota: s.querySelector('.tk-linea-nota').textContent,
-          desde: [...s.querySelectorAll('.tk-periodo-desde')].map(n => n.textContent), anchoGraficos: s.querySelector('.tk-graficos').getBoundingClientRect().width, col,
-          anchoPagina: document.documentElement.scrollWidth, una: s.querySelector('.tk-graficos').classList.contains('tk-graficos--una') };
+      // Cada pestaña: su tramo y su texto; el seleccionado, marcado.
+      for (const p of modelo.PESTANAS) {
+        await pagina.click(`[data-pestana="${p.clave}"]`);
+        const g = modelo.graficoPestana(SERIE, p.clave);
+        await pagina.waitForFunction(t => document.querySelector('.mk-periodo').textContent === t, g.cambioFrase);
+        await pagina.waitForSelector('#tokenizacion .mk-svg');
+        m = await leer();
+        assert.equal(m.avisoTokens, g.avisoTokens ? g.avisoTokens[0].toUpperCase() + g.avisoTokens.slice(1) + '.' : null, `${p.clave}: aviso de tokens nuevos`);
+        assert.ok(NUM(m.maximo) >= NUM(m.cifra), `${p.clave}: máximo ${m.maximo} ≥ cifra grande ${m.cifra}`);
+        assert.equal(plano(m.cifra), plano(modelo.millones(ULTIMO.valor)), `${p.clave}: la cifra grande no cambia de pestaña`);
+        assert.equal(m.notaLarga, modelo.notaSerie(SERIE, 'es', p.clave), `${p.clave}: «Cómo se calcula», con los que entran a mitad`);
+        assert.equal(m.puentes, modelo.tramosSeguidos(g).length > 1 ? 1 : 0, `${p.clave}: el hueco, con un trazo de puntos`);
+        assert.equal(m.cortesArea, 1, `${p.clave}: el área de fondo no se corta`);
+        if (p.clave === '1a') assert.equal(m.avisoTokens, 'De 16 a 29 tokens: parte de la subida son tokens nuevos.');
+        if (p.clave === '1a') assert.ok(m.notaLarga.includes('En este periodo, 13 de los 29 entran a mitad'));
+        assert.equal(m.pestanas.find(x => x[0] === modelo.etiquetaPestana(p.clave, 'es', SERIE).corto)[1], 'true', p.clave);
+        assert.equal(m.tabla, g.puntos.length + 1, p.clave);
+        assert.deepEqual(m.fechas, g.marcasFechas.map(x => x.texto), p.clave);
+        assert.equal(m.fuera, 0, p.clave);
+      }
+      await pagina.click('[data-pestana="1m"]');
+      await pagina.waitForFunction(() => document.querySelector('.mk-periodo').textContent === 'en el último mes');
+      await pagina.waitForSelector('#tokenizacion .mk-svg');
+      // La cruz con el ratón: fecha y valor del día más cercano.
+      const caja = await pagina.locator('.mk-graf').boundingBox();
+      await pagina.mouse.move(caja.x + 2, caja.y + caja.height / 2);
+      await pagina.waitForSelector('.mk-burbuja:not([hidden])');
+      const cruz = await pagina.evaluate(() => ({ fecha: document.querySelector('.mk-burbuja-fecha').textContent, valor: document.querySelector('.mk-burbuja-valor').textContent,
+        cambio: document.querySelector('.mk-burbuja-cambio').textContent, visible: document.querySelector('.mk-cruz').getAttribute('visibility'),
+        encima: document.querySelector('.mk-burbuja').getBoundingClientRect().bottom <= document.querySelector('.mk-svg').getBoundingClientRect().top + 40 }));
+      assert.deepEqual(cruz, { fecha: modelo.fechaCorta(g1m.puntos[0].fecha), valor: modelo.millones(g1m.puntos[0].valor), cambio: '0,0' + '\u00a0%', visible: 'visible', encima: true },
+        'la burbuja, en una línea en la franja de arriba: no tapa la línea');
+      await pagina.mouse.move(0, 0);
+      await pagina.waitForSelector('.mk-burbuja[hidden]', { state: 'attached' });
+      // Con el teclado: Tab hasta el gráfico (con foco visible) y las flechas recorren los días.
+      await pagina.focus('[data-pestana="1a"]');
+      await pagina.keyboard.press('Tab');
+      const foco = await pagina.evaluate(() => ({ rol: document.activeElement.getAttribute('role'), contorno: getComputedStyle(document.activeElement).outlineStyle }));
+      assert.deepEqual(foco, { rol: 'slider', contorno: 'solid' });
+      await pagina.keyboard.press('ArrowLeft');
+      await pagina.keyboard.press('ArrowLeft');
+      const n = g1m.puntos.length;
+      assert.equal(await pagina.getAttribute('.mk-graf', 'aria-valuenow'), String(n - 3));
+      assert.equal(await pagina.getAttribute('.mk-graf', 'aria-valuetext'), `${modelo.fechaCorta(g1m.puntos[n - 3].fecha)}: ${modelo.millonesHablados(g1m.puntos[n - 3].valor)}`);
+      await pagina.keyboard.press('Home');
+      assert.equal(await pagina.getAttribute('.mk-graf', 'aria-valuenow'), '0');
+      // La cruz en el último día dice la cifra grande.
+      await pagina.keyboard.press('End');
+      const fin = await pagina.evaluate(() => ({ burbuja: document.querySelector('.mk-burbuja-valor').textContent, cifra: document.querySelector('.mk-cifra-num').textContent }));
+      assert.equal(plano(fin.burbuja), plano(fin.cifra), 'la burbuja del último día = la cifra grande');
+      // El punto del último día, con su borde, no toca la píldora del último valor.
+      const toque = await pagina.evaluate(() => {
+        const c = document.querySelector('.mk-cruz circle'), r = document.querySelector('.mk-ultimo rect');
+        return { borde: Number(c.getAttribute('cx')) + Number(c.getAttribute('r')) + 1, pildora: Number(r.getAttribute('x')) };
       });
-      assert.equal(l.area, 0, 'sin área rellena hasta el suelo');
-      assert.ok(Math.max(...l.ys) - Math.min(...l.ys) < 112 / 2, `un 0,3 % no ocupa toda la altura (${l.ys})`);
-      assert.equal(l.nota, 'De 49.584 M$ (07/11/2026) a 49.684 M$ (10/11/2026) · +0,2 %');
-      assert.deepEqual(l.desde, ['desde 07/11']);
-      assert.equal(l.una, false);
-      assert.equal(l.anchoPagina, ancho, `${ancho}: sin desplazamiento horizontal con la línea`);
-      if (ancho >= 900) assert.ok(l.anchoGraficos > l.col + 100, `en escritorio, los gráficos a lo ancho de la página (${l.anchoGraficos})`);
+      assert.ok(toque.borde + 3 <= toque.pildora, `${ancho}: el punto acaba en ${toque.borde} y la píldora empieza en ${toque.pildora}`);
+      if (ancho < 768) {
+        // Con la lista de tipos abierta, el avance («Crédito privado 55,6 % · …») sobra.
+        await pagina.click('.mk-tipos-sum');
+        assert.equal(await pagina.evaluate(() => getComputedStyle(document.querySelector('.mk-tipos-avance')).display), 'none');
+        await pagina.click('.mk-tipos-sum');
+      }
+      // En inglés: textos y cifras en su formato.
+      await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="en"]').click());
+      await pagina.waitForFunction(() => document.querySelector('h1').textContent === 'Tokenised asset market');
+      const en = await pagina.evaluate(() => ({ cifra: document.querySelector('.mk-cifra-num').textContent, periodo: document.querySelector('.mk-periodo').textContent,
+        sub: document.querySelector('.mk-sub').textContent, explica: document.querySelector('.mk-explica').textContent,
+        pestanas: [...document.querySelectorAll('.mk-pestana')].map(b => b.textContent), ytd: document.querySelector('[data-pestana="ytd"]').getAttribute('aria-label'),
+        clave: document.querySelector('.mk-clave dt').textContent }));
+      assert.deepEqual(en, { cifra: '$42,947M', periodo: 'past month', sub: `Sum of the ${SERIE.incluidos} largest tokens with a complete history\u00a0· ${modelo.fechaCorta(ULTIMO.fecha, 'en')}`,
+        explica: 'It measures the total size of the market, which also grows when new tokens are issued. It is not the return on any investment.',
+        pestanas: ['1W', '1M', '3M', '6M', 'YTD', '1Y'], ytd: 'YTD, year to date', clave: `Value today (${SERIE.incluidos} largest)` });
+      await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="es"]').click());
       await pagina.close();
     }
-    // CoinGecko da 429: la última foto guardada, con su aviso y su fecha.
-    estado = 'caido';
+    // Con el dedo (390, táctil): un toque corto deja la cruz 3 s; un toque fuera del gráfico la quita antes.
+    {
+      const contexto = await navegador.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+      const pagina = await contexto.newPage();
+      await pagina.goto(local.url + '/mercado/', { waitUntil: 'load' });
+      await pagina.waitForSelector('#tokenizacion .mk-svg', { timeout: 20000 });
+      const caja = await pagina.locator('.mk-graf').boundingBox();
+      await pagina.touchscreen.tap(caja.x + caja.width / 3, caja.y + caja.height / 2);
+      await pagina.waitForTimeout(1200);
+      assert.equal(await pagina.getAttribute('.mk-cruz', 'visibility'), 'visible', 'tras un toque corto, la cruz sigue a la vista');
+      assert.equal(await pagina.locator('.mk-burbuja:not([hidden])').count(), 1);
+      await pagina.waitForSelector('.mk-burbuja[hidden]', { state: 'attached', timeout: 4000 });
+      assert.equal(await pagina.getAttribute('.mk-cruz', 'visibility'), 'hidden', 'a los 3 s se va');
+      await pagina.touchscreen.tap(caja.x + caja.width / 2, caja.y + caja.height / 2);
+      await pagina.waitForSelector('.mk-burbuja:not([hidden])');
+      const h1 = await pagina.locator('h1').boundingBox();
+      await pagina.touchscreen.tap(h1.x + 10, h1.y + h1.height / 2);
+      await pagina.waitForSelector('.mk-burbuja[hidden]', { state: 'attached', timeout: 1000 });
+      // La serie vieja (acaba 5 días antes del dato de hoy): ni la cabecera ni Inicio ponen su cambio junto a la cifra en vivo.
+      const vieja = { ...JSON.parse(fs.readFileSync(path.join(RAIZ, 'rwadar-site/datos/tokenizacion-serie.json'), 'utf8')) };
+      vieja.puntos = vieja.puntos.filter(p => p.fecha <= '2026-11-05');
+      await pagina.route('**/datos/tokenizacion-serie.json', r => r.fulfill({ contentType: 'application/json', body: JSON.stringify(vieja) }));
+      await pagina.reload({ waitUntil: 'load' });
+      await pagina.waitForSelector('#tokenizacion .mk-svg', { timeout: 20000 });
+      // La cifra grande y el cambio son los del último día de la serie (cuadran entre sí) y se dice de qué día son.
+      assert.equal(plano(await pagina.textContent('#tokenizacion .mk-cifra-num')), plano(modelo.millones(vieja.puntos.at(-1).valor)));
+      assert.equal(await pagina.locator('#tokenizacion .mk-linea-cambio .mk-cambio').count(), 1);
+      assert.equal(await pagina.textContent('#tokenizacion .mk-aviso-serie'), 'La serie llega hasta el 05/11/2026: la cifra grande y el gráfico son de ese día.');
+      await pagina.goto(local.url + '/', { waitUntil: 'load' });
+      await pagina.waitForSelector('#mercado .mk-ct', { timeout: 20000 });
+      assert.equal(await pagina.locator('#mercado .mk-ct .mk-cambio').count(), 1);
+      assert.equal(await pagina.textContent('#mercado .mk-ct-hasta'), 'serie hasta el 05/11/2026');
+      await contexto.close();
+    }
+    // CoinGecko da 429: la última foto guardada, con su aviso y su fecha; el gráfico sigue con la serie.
     const local2 = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, responder: async (url) =>
       (url.hostname === 'api.coingecko.com' ? new Response('{}', { status: 429 }) : null) });
     try {
       const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 } });
       await pagina.goto(local2.url + '/mercado/', { waitUntil: 'load' });
-      await pagina.waitForSelector('#tokenizacion[data-tokenizacion-estado="foto-guardada"]', { timeout: 20000 });
-      assert.match(await pagina.textContent('#tokenizacion .tk-aviso'), /Cifras de la última foto diaria de RWAdar, del 10\/11\/2026, 15:25 UTC/);
-      // Sin servidor y sin histórico: estado vacío honesto, sin una sola cifra.
+      await pagina.waitForSelector('#tokenizacion[data-mercado-estado="foto-guardada+serie"]', { timeout: 20000 });
+      assert.match(await pagina.textContent('#tokenizacion .mk-total-cat'), /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \(última foto guardada, del 10\/11\/2026, 15:25 UTC\)\./);
+      assert.equal(await pagina.locator('#tokenizacion .mk-svg').count(), 1);
+      // Sin la serie: la cifra de hoy sigue y el gráfico lo dice.
+      await pagina.route('**/datos/tokenizacion-serie.json', r => r.abort());
+      await pagina.reload({ waitUntil: 'load' });
+      await pagina.waitForSelector('#tokenizacion[data-mercado-estado="foto-guardada"]', { timeout: 20000 });
+      assert.match(await pagina.textContent('#mkCuerpo'), /El gráfico no está disponible ahora\. La cifra de hoy sí\./);
+      assert.equal(plano(await pagina.textContent('.mk-cifra-num')), '49.684 M$', 'sin serie, la cifra grande es el total de la categoría');
+      assert.equal(await pagina.textContent('.mk-sub'), 'Total de la categoría en CoinGecko, con todos sus tokens');
+      assert.match(await pagina.textContent('#mkCuerpo'), /Sin la serie diaria, la cifra es el total de la categoría en CoinGecko \(última foto guardada, del 10\/11\/2026, 15:25 UTC\)\./);
+      // Sin servidor, sin histórico y sin serie: estado vacío honesto, sin una sola cifra.
       await pagina.route('**/api/tokenizacion', r => r.abort());
       await pagina.route('**/datos/tokenizacion-historico.json', r => r.abort());
       await pagina.reload({ waitUntil: 'load' });
-      await pagina.waitForSelector('#tokenizacion[data-tokenizacion-estado="sin-datos"]', { timeout: 20000 });
-      const vacio = await pagina.textContent('#tkCuerpo');
+      await pagina.waitForSelector('#tokenizacion[data-mercado-estado="sin-datos"]', { timeout: 20000 });
+      const vacio = await pagina.textContent('#mkCuerpo');
       assert.match(vacio, /Ahora no podemos mostrar los datos de CoinGecko/);
       assert.doesNotMatch(vacio, /\d/);
       assert.ok(await pagina.isVisible('h1'), 'el resto de la página sigue');

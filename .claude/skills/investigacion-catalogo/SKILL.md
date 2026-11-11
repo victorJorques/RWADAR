@@ -94,6 +94,21 @@ PDF y HTML de las fuentes, fuera de Git.
    si no da tiempo con calidad, **no se admite hoy**, sin cola pendiente.
 
 Trampas conocidas:
+- **Webs y apps que bloquean** (Cloudflare, bloqueo por país, contenido solo
+  con cuenta): no se elude nada. Están prohibidos:
+  - los controles anti-bots y los CAPTCHA;
+  - falsear el agente;
+  - las VPN;
+  - las cuentas;
+  - las API internas con token;
+  - la Wayback para documentos reservados a inversores verificados.
+
+  Usa las rutas legítimas ya verificadas de `acceso/ACCESO-FUENTES.md`
+  (supervisores, documentos del emisor, API públicas, datos en cadena) y
+  empieza cada ciclo con
+  `node .claude/skills/investigacion-catalogo/acceso/comprobar-rutas.mjs`,
+  que en un minuto dice qué rutas siguen vivas. El bruto va a `acceso/crudo/`,
+  fuera de Git.
 - El escáner de secretos de CI (gitleaks) confunde identificadores públicos de
   algunas copias (por ejemplo `llms-full.txt` de Midas) con claves. Antes del
   PR: `git archive HEAD | tar -x -C <tmp>` y gitleaks 8.30.1 con

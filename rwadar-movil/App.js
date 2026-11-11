@@ -122,6 +122,8 @@ export default function App() {
      de la pestaña «buscar» (vistaBuscar 'ofertas' o 'empresas'), así que los
      destinos de siempre siguen funcionando sin tocarlos. */
   const [pestana, setPestana] = useState('inicio');
+  // «Calcula con tus números →» del explicador: lleva a la calculadora de Inicio.
+  const [irCalculadora, setIrCalculadora] = useState(0);
   const [vistaBuscar, setVistaBuscar] = useState('ofertas');
   const [guardadas, setGuardadas] = useState([]);
   const [radar, setRadar] = useState([]);
@@ -799,6 +801,7 @@ export default function App() {
               onAbrirPlataforma={abrir}
               onAbrirOferta={(oferta) => { tacto.abrir(); setOfertaAbierta(oferta); }}
               onAbrirEnlace={abrirEnlace}
+              irCalculadora={irCalculadora} onCalculadoraVista={() => setIrCalculadora(0)}
               tarjetaAvisos={avisosInicio ? (
                 <TarjetaAvisosInicio avisos={avisosInicio.avisos} leidos={avisosInicio.leidos}
                   cargando={avisosInicio.cargando} error={avisosInicio.errorCarga}
@@ -1161,7 +1164,8 @@ export default function App() {
           <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1, backgroundColor: C.noche }} edges={['top', 'bottom']}>
               {explicando && <Explicador onCerrar={cerrarTutorial} obtenerAcceso={obtenerAccesoTutorial}
-                onPrimeraLeccion={() => { cerrarTutorial(); setLeccion('que-significa-tokenizar-un-activo'); }} />}
+                onPrimeraLeccion={() => { cerrarTutorial(); setLeccion('que-significa-tokenizar-un-activo'); }}
+                onCalculadora={() => { cerrarTutorial(); setPestana('inicio'); setIrCalculadora((n) => n + 1); }} />}
             </SafeAreaView>
           </SafeAreaProvider>
         </Modal>

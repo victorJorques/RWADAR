@@ -86,6 +86,8 @@ const RUTAS_CONTENIDO_APROBADO = Object.freeze([
   'rwadar-movil/lib/tokenizacion.js',
   // Y de dónde saca rwadar-publicar.js el histórico que publica en /datos/.
   'rwadar-tokenizacion-historico.js',
+  // Motor de «Calcula tus números» (11/11/2026): la web publica su copia exacta.
+  'rwadar-movil/lib/calculadora.js',
   // Motor de «Noticias del sector» (10/11/2026): valida /datos/noticias-v2.json.
   'rwadar-movil/lib/noticias-sector.js',
   // /datos/noticias.json sin «imagen» para la app ya instalada, validado con
@@ -193,9 +195,15 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   // rwadar-movil/lib/tokenizacion.js), la sección, su hoja y la semilla del
   // histórico (rwadar-publicar.js la cambia por el de la rama datos-tokenizacion).
   'assets/tokenizacion-modelo-20261110.js',
-  'assets/tokenizacion-20261110.js',
-  'assets/tokenizacion-20261110.css',
   'datos/tokenizacion-historico.json',
+  // «Mercado y noticias» al estilo de una app de bolsa (11/11/2026): la
+  // sección (/mercado/ y la tarjeta de Inicio), su hoja, el paso de /noticias/
+  // a /mercado/ y la semilla de la serie de un año (rwadar-publicar.js la
+  // cambia por la de la rama datos-tokenizacion si es más reciente).
+  'assets/mercado-20261111.js',
+  'assets/mercado-20261111.css',
+  'assets/noticias-a-mercado-20261111.js',
+  'datos/tokenizacion-serie.json',
   // «Noticias del sector» en Inicio (10/11/2026): el motor (copia de
   // rwadar-movil/lib/noticias-sector.js), la sección, su hoja y las noticias
   // verificadas del último ciclo (rwadar-publicar.js las valida antes de publicar):
@@ -208,6 +216,12 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'datos/noticias-v2.json',
   // Inicio por bloques y sus secciones (rediseño del 10/11/2026).
   'assets/secciones-20261110.css',
+  // «Calcula tus números» en Inicio (11/11/2026): el motor (copia de
+  // rwadar-movil/lib/calculadora.js), el bloque y su hoja (también la de los
+  // dos campos nuevos del explicador).
+  'assets/calculadora-modelo-20261111.js',
+  'assets/calculadora-20261111.js',
+  'assets/calculadora-20261111.css',
   'assets/aprende-20261110.js',
   'c9417d2d5003bb9a41fee63c7f5ec00f.txt',
   'google6b2e3e5f58b7e557.html',
