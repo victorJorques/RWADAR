@@ -78,6 +78,7 @@
 <link rel="stylesheet" href="/assets/noticias-sector-20261110.css">
 <link rel="stylesheet" href="/assets/mercado-20261111.css">
 <link rel="stylesheet" href="/assets/secciones-20261110.css">
+<link rel="stylesheet" href="/assets/calculadora-20261111.css">
 </head>
 <body>
 
@@ -203,6 +204,116 @@
       <p class="nt-estado" id="ntEstado" role="status">Cargando las noticias…</p>
       <p class="nt-nota" id="ntNota" hidden>Imágenes ilustrativas generadas con IA, no fotos de la noticia.</p>
       <a class="ini-ver" href="/mercado/"><span>Ver mercado y noticias</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
+    </section>
+
+    <!-- 4 · Calcula tus números (11/11/2026). Encargo de Víctor: «que pongan
+         ellos los números, no que sea sí o sí los 300.000». La persona escribe
+         lo que invierte, la rentabilidad y los años (los de partida son un
+         ejemplo editable) y ve arriba lo que cobraría o tendría. Las cuentas,
+         en rwadar-movil/lib/calculadora.js (copiado en calculadora-modelo),
+         las mismas que en la app; lo pinta assets/calculadora-20261111.js.
+         Las ofertas con rentabilidad publicada salen del catálogo que la web
+         ya carga (nunca escritas aquí). Sin JavaScript solo se ven los campos. -->
+    <section class="ini-bloque calc-ini" id="calculadora" aria-labelledby="ciTit" data-calculadora="inicio">
+      <div class="ini-bloque-cab">
+        <h2 class="ini-bloque-tit" id="ciTit">Calcula tus números</h2>
+        <p class="ini-bloque-sub">Pon lo que quieres invertir, la rentabilidad y los años: verás lo que cobrarías o lo que tendrías.</p>
+      </div>
+      <div class="ci-caja">
+        <div class="ci-resultado" id="ciResultado">
+          <div class="ci-estado" id="ciEstado" role="status" aria-live="polite" aria-atomic="true">
+            <p class="ci-titular" id="ciTitular">Escribe tus números para ver el resultado.</p>
+            <p class="ci-detalle" id="ciDetalle" hidden></p>
+          </div>
+        </div>
+
+        <div class="ci-datos" role="group" aria-labelledby="ciDatosTit">
+          <p class="ci-datos-cab"><span class="ci-datos-tit" id="ciDatosTit">Tus números</span> <span class="ci-ejemplo" id="ciEjemplo">Ejemplo: cámbialo</span></p>
+          <div class="ci-campo ci-campo--inversion" data-ci-campo="inversion">
+            <label class="ci-etq" for="ciInversion">Lo que inviertes <span class="solo-lector">(en euros)</span></label>
+            <div class="ci-entrada"><input class="ci-input" id="ciInversion" name="inversion" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="1.000" aria-describedby="ciInversionError"><span class="ci-unidad" aria-hidden="true">€</span></div>
+            <div class="ci-rapidos" id="ciRapidos" role="group" aria-label="Importes rápidos"></div>
+            <p class="ci-error" id="ciInversionError" hidden></p>
+          </div>
+          <div class="ci-fila">
+            <div class="ci-campo" data-ci-campo="rentabilidad">
+              <label class="ci-etq" for="ciRentabilidad">Rentabilidad al año <span class="solo-lector">(en %)</span></label>
+              <div class="ci-entrada"><input class="ci-input" id="ciRentabilidad" name="rentabilidad" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="4" aria-describedby="ciRentabilidadError"><span class="ci-unidad" aria-hidden="true">%</span></div>
+              <p class="ci-error" id="ciRentabilidadError" hidden></p>
+            </div>
+            <div class="ci-campo" data-ci-campo="anios">
+              <label class="ci-etq" for="ciAnios">Años</label>
+              <div class="ci-entrada"><input class="ci-input" id="ciAnios" name="anios" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" value="5" aria-describedby="ciAniosError"><span class="ci-unidad" aria-hidden="true">años</span></div>
+              <p class="ci-error" id="ciAniosError" hidden></p>
+            </div>
+          </div>
+          <fieldset class="ci-modo">
+            <legend class="ci-etq">Lo que ganas cada año</legend>
+            <div class="ci-segmento">
+              <label class="ci-opcion"><input type="radio" name="ciModo" id="ciModoCobrar" value="cobrar" checked><span>Lo cobro</span></label>
+              <label class="ci-opcion"><input type="radio" name="ciModo" id="ciModoReinvertir" value="reinvertir"><span>Lo reinvierto</span></label>
+            </div>
+          </fieldset>
+          <div class="ci-ofertas" id="ciOfertas" hidden>
+            <p class="ci-etq" id="ciOfertasTit">Usa la rentabilidad de una oferta</p>
+            <ul class="ci-ofertas-lista" id="ciOfertasLista" aria-labelledby="ciOfertasTit"></ul>
+            <p class="ci-ofertas-nota" id="ciOfertaNota">La cifra que publica cada oferta, con su fecha. Rellena la rentabilidad; puedes cambiarla.</p>
+          </div>
+          <details class="ci-afinar" id="ciAfinar">
+            <summary><span>Afinar: comisiones e impuestos</span> <span class="ci-afinar-ahora" id="ciAfinarAhora"></span></summary>
+            <div class="ci-afinar-cuerpo">
+              <div class="ci-campo" data-ci-campo="comisionAnual">
+                <label class="ci-etq" for="ciComisionAnual">Comisión anual <span class="solo-lector">(en %)</span></label>
+                <div class="ci-entrada"><input class="ci-input" id="ciComisionAnual" name="comisionAnual" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="0" aria-describedby="ciComisionAnualAyuda ciComisionAnualError"><span class="ci-unidad" aria-hidden="true">%</span></div>
+                <p class="ci-ayuda" id="ciComisionAnualAyuda">Sobre tu capital, cada año.</p>
+                <p class="ci-error" id="ciComisionAnualError" hidden></p>
+              </div>
+              <div class="ci-campo" data-ci-campo="comisionEntrada">
+                <label class="ci-etq" for="ciComisionEntrada">Comisión de entrada <span class="solo-lector">(en %)</span></label>
+                <div class="ci-entrada"><input class="ci-input" id="ciComisionEntrada" name="comisionEntrada" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="0" aria-describedby="ciComisionEntradaAyuda ciComisionEntradaError"><span class="ci-unidad" aria-hidden="true">%</span></div>
+                <p class="ci-ayuda" id="ciComisionEntradaAyuda">Una vez, sobre lo que pones.</p>
+                <p class="ci-error" id="ciComisionEntradaError" hidden></p>
+              </div>
+              <div class="ci-campo" data-ci-campo="impuestos">
+                <label class="ci-etq" for="ciImpuestos">Impuestos sobre la ganancia <span class="solo-lector">(en %)</span></label>
+                <div class="ci-entrada"><input class="ci-input" id="ciImpuestos" name="impuestos" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="19" aria-describedby="ciImpuestosAyuda ciImpuestosError"><span class="ci-unidad" aria-hidden="true">%</span></div>
+                <p class="ci-ayuda" id="ciImpuestosAyuda">En España, la ganancia del ahorro tributa del 19 % al 30 % según cuánto ganes.</p>
+                <p class="ci-error" id="ciImpuestosError" hidden></p>
+              </div>
+              <div class="ci-campo" data-ci-campo="valorActivo">
+                <label class="ci-etq" for="ciValorActivo">Valor del activo entero <span class="ci-opcional">(opcional)</span><span class="solo-lector">, en euros</span></label>
+                <div class="ci-entrada"><input class="ci-input" id="ciValorActivo" name="valorActivo" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="" placeholder="300.000" aria-describedby="ciValorActivoAyuda ciValorActivoError"><span class="ci-unidad" aria-hidden="true">€</span></div>
+                <p class="ci-ayuda" id="ciValorActivoAyuda">Para saber qué parte del activo es tuya.</p>
+                <p class="ci-error" id="ciValorActivoError" hidden></p>
+              </div>
+              <div class="ci-campo" data-ci-campo="precioParticipacion">
+                <label class="ci-etq" for="ciPrecioParticipacion">Precio de cada participación <span class="ci-opcional">(opcional)</span><span class="solo-lector">, en euros</span></label>
+                <div class="ci-entrada"><input class="ci-input" id="ciPrecioParticipacion" name="precioParticipacion" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="" placeholder="100" aria-describedby="ciPrecioParticipacionAyuda ciPrecioParticipacionError"><span class="ci-unidad" aria-hidden="true">€</span></div>
+                <p class="ci-ayuda" id="ciPrecioParticipacionAyuda">Para saber cuántas compras y cuánto te sobra.</p>
+                <p class="ci-error" id="ciPrecioParticipacionError" hidden></p>
+              </div>
+            </div>
+          </details>
+        </div>
+        <div class="ci-extra">
+          <figure class="ci-graf" id="ciGraf" hidden>
+            <figcaption class="ci-graf-tit" id="ciGrafTit">Lo que tendrías cada año</figcaption>
+            <div class="ci-graf-lienzo" id="ciGrafLienzo" aria-hidden="true"></div>
+            <ul class="ci-leyenda" aria-hidden="true">
+              <li><span class="ci-muestra ci-muestra--puesto"></span>Lo que pones</li>
+              <li><span class="ci-muestra ci-muestra--ganado"></span>Lo ganado, neto</li>
+            </ul>
+            <div class="solo-lector"><table id="ciTabla"></table></div>
+          </figure>
+          <details class="ci-cuenta" id="ciCuenta">
+            <summary>Ver la cuenta paso a paso</summary>
+            <p class="ci-cuenta-sub">No hay nada escondido: es la misma cuenta que harías con un papel.</p>
+            <ol class="ci-pasos" id="ciPasos"></ol>
+            <p class="ci-cuenta-nota" id="ciNotaImpuestos"></p>
+          </details>
+        </div>
+      </div>
+      <p class="ci-legal">Simulación con tus números: no es una previsión ni una oferta. La rentabilidad pasada no garantiza la futura y puedes perder dinero.</p>
     </section>
 
     <!-- 5 · Aprende: una sola tarjeta; los seis capítulos, en /aprende/. -->
@@ -528,11 +639,15 @@
        "concepto" a "ah, vale". Y la cuenta va a la vista, paso a paso:
        explicar la mecánica es el objetivo, no impresionar con un
        resultado. Cualquiera puede rehacerla con los dedos. -->
-  <div class="calc">
+  <!-- Desde el 11/11/2026 el local ya no es fijo: el valor del activo y el
+       precio de cada trozo se pueden cambiar (300.000 € y 100 € de partida) y
+       las cuentas salen del motor de «Calcula tus números»
+       (rwadar-movil/lib/calculadora.js), el mismo de Inicio y de la app. -->
+  <div class="calc" id="calcExplicador">
     <div class="calc-cab">
       <p class="etiq">Ponle tus números</p>
-      <h3>Un local de 300.000 €, partido en 3.000 trozos de 100 €</h3>
-      <p class="calc-sub">Mueve las dos barras y <b>sigue la cuenta</b>: no hay nada escondido, es una regla de tres.</p>
+      <h3 id="calcTitulo">Un local de 300.000 €, partido en 3.000 trozos de 100 €</h3>
+      <p class="calc-sub">Mueve las barras, cambia los importes y <b>sigue la cuenta</b>: no hay nada escondido, es una regla de tres.</p>
     </div>
 
     <div class="calc-mandos">
@@ -548,6 +663,16 @@
         <input id="calcRent" type="range" min="30" max="90" step="5" value="60" aria-valuetext="6,0 % al año">
         <div class="calc-topes"><span>3 %</span><span>9 %</span></div>
       </div>
+      <div class="calc-mando calc-mando--campo">
+        <label for="calcValor">Valor del activo <span class="solo-lector">(en euros)</span></label>
+        <div class="calc-campo"><input id="calcValor" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="300.000" aria-describedby="calcValorError"><span class="calc-campo-unidad" aria-hidden="true">€</span></div>
+        <p class="calc-error" id="calcValorError" hidden></p>
+      </div>
+      <div class="calc-mando calc-mando--campo">
+        <label for="calcPrecio">Precio de cada trozo <span class="solo-lector">(en euros)</span></label>
+        <div class="calc-campo"><input id="calcPrecio" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="100" aria-describedby="calcPrecioError"><span class="calc-campo-unidad" aria-hidden="true">€</span></div>
+        <p class="calc-error" id="calcPrecioError" hidden></p>
+      </div>
     </div>
 
     <!-- El resultado primero, porque es lo que se busca; la cuenta
@@ -559,14 +684,15 @@
     </div>
 
     <ol class="cuenta" id="calcCuenta">
-      <li><span class="op">Pones <b id="c1a">2.500 €</b> y cada trozo cuesta 100 €</span><span class="res" id="c1b">25 trozos</span></li>
-      <li><span class="op">Tienes <b id="c2a">25</b> de los 3.000 trozos del local</span><span class="res" id="c2b">0,83 % es tuyo</span></li>
-      <li><span class="op">El local renta un <b id="c3a">6,0 %</b> sobre 300.000 €</span><span class="res" id="c3b">18.000 € al año</span></li>
-      <li><span class="op">Tu <b id="c4a">0,83 %</b> de esos 18.000 €</span><span class="res oro" id="c4b">150 € al año</span></li>
+      <li><span class="op" id="c1op">Pones <b id="c1a">2.500 €</b> y cada trozo cuesta 100 €</span><span class="res" id="c1b">25 trozos</span></li>
+      <li><span class="op" id="c2op">Tienes <b id="c2a">25</b> de los 3.000 trozos del local</span><span class="res" id="c2b">0,83 % es tuyo</span></li>
+      <li><span class="op" id="c3op">El local renta un <b id="c3a">6,0 %</b> sobre 300.000 €</span><span class="res" id="c3b">18.000 € al año</span></li>
+      <li><span class="op" id="c4op">Tu <b id="c4a">0,83 %</b> de esos 18.000 €</span><span class="res oro" id="c4b">150 € al año</span></li>
     </ol>
 
     <p class="calc-clave"><b>La rentabilidad no cambia según lo que pongas.</b> Un 6 % es un 6 % con 100 € y con 10.000 €; lo único que cambia es cuánto cobras. Cada trozo rinde lo mismo, sea tuyo o de otro inversor.</p>
     <p class="calc-nota">Números redondos, <b>no es una oferta ni una previsión</b>. Esto es el bruto: falta la comisión de la plataforma, Hacienda, los meses sin inquilino y lo que valga el local el día que lo vendas.</p>
+    <a class="calc-ir" id="calcIrInicio" href="/#calculadora"><span>Calcula con tus números</span><span aria-hidden="true">→</span></a>
   </div>
 
   <div class="ventajas" id="bens">
@@ -1473,6 +1599,8 @@
 <script src="/assets/mercado-20261111.js" defer></script>
 <script src="/assets/noticias-sector-modelo-20261110.js" defer></script>
 <script src="/assets/noticias-sector-20261110.js" defer></script>
+<script src="/assets/calculadora-modelo-20261111.js" defer></script>
+<script src="/assets/calculadora-20261111.js" defer></script>
 <script src="/assets/catalogo-publico-20261022.js" defer></script>
 <script src="/assets/ficha-editorial-20261022.js" defer></script>
 <script src="/assets/idioma-en-20261022.js" defer></script>
