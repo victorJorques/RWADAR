@@ -1,0 +1,190 @@
+Basisinformationsblatt
+
+Zweck
+Dieses Informationsblatt stellt Ihnen wesentliche Informationen über dieses Anlageprodukt zur Verfügung. Es handelt sich nicht um Werbematerial. Diese Informationen sind
+gesetzlich vorgeschrieben, um Ihnen dabei zu helfen, die Art, das Risiko, die Kosten sowie die möglichen Gewinne und Verluste dieses Produkts zu verstehen, und Ihnen dabei zu
+helfen, es mit anderen Produkten zu vergleichen.
+
+
+
+Produkt
+Bis zu 150.000 Stück nachrangige Schuldverschreibungen im Nennbetrag von je 1,00 Euro im Gesamtnennbetrag von bis zu EUR 150.000.
+ISIN: DE000A383HL2.
+Hersteller/Emittentin: arttrade custody 002 UG mit Sitz in Düsseldorf, Immermannstraße 19, www.arttrade.io. Die Emittentin ist eine Tochtergesellschaft der arttrade GmbH. Weitere
+Informationen erhalten Sie per Email unter contact@arttrade.io.
+Die Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin) ist für die Aufsicht der Emittentin im Zusammenhang mit dem Basisinformationsblatt zuständig. Eine laufende Aufsicht
+besteht nicht.
+Erstellungsdatum des Basisinformationsblattes: 16. April 2024
+
+
+Sie sind im Begriff ein Produkt zu erwerben, das nicht einfach ist und schwer zu verstehen sein kann.
+
+
+Um welche Art von Produkt handelt es sich?
+Art
+Kapitalanlageprodukt nach deutschem Recht in Form von auf den Inhaber lautenden Schuldverschreibungen (die „Schuldverschreibungen“). Die Schuldverschreibungen werden für
+ihre gesamte Laufzeit durch Bewirkung der Eintragung in ein elektronisches Wertpapierregister in der Form eines Kryptowertpapierregisters im Sinne des § 4 Absatz 1 Nr. 2 des
+Gesetzes über elektronische Wertpapiere („eWpG“) als elektronisches Wertpapier im Sinne des § 2 Absatz 1 eWpG begeben. Als registerführende Stelle im Sinne des § 16 Absatz 2
+Satz 1 eWpG hat die Emittentin die Cashlink Technologies GmbH, Sandweg 94, 60316 Frankfurt am Main, benannt.
+Für jede ausgegebene Schuldverschreibung wird ein Token von der Emittentin an den Anleger herausgegeben, welcher die Eintragung in Bezug auf eine Schuldverschreibung im
+Kryptowertpapierregister repräsentiert.
+Die Schuldverschreibungen begründen ausschließlich schuldrechtliche Zahlungsverpflichtungen der Emittentin gegenüber den Anlegern, sie gewähren keine Teilnahme-, Mitwirkungs-
+und Stimmrechte in der Gesellschafterversammlung der Emittentin.
+
+
+Laufzeit
+Die Laufzeit der Schuldverschreibungen ist unbestimmt. Die Laufzeit beginnt am 25. April 2024 und endet automatisch mit der auflagenfreien und vollständigen Zahlung des
+Kaufpreises aus dem Verkauf des Assets. Die Emittentin ist berechtigt, aber nicht verpflichtet, die Schuldverschreibungen vorzeitig zu kündigen und zum Nennbetrag an die
+Anleihegläubiger zurückzuzahlen, wenn innerhalb von 3 Monaten nach dem Beginn der Laufzeit der Schuldverschreibungen der Gesamtnennbetrag der Schuldverschreibungen nicht
+vollständig platziert und bei der Emittentin eingezahlt wurde oder wenn der Kaufvertrag über den Erwerb des Assets rückabgewickelt wird.
+
+
+Ziele
+Die Schuldverschreibungen ermöglichen es Anlegern, an den Erträgen aus der Verwaltung und Veräußerung des folgenden Vermögensgegenstandes zu partizipieren:
+[artista omitido] Diagonale Struktur V (1974) (nachfolgend das „Asset“).
+
+
+Laufzeit und Rückzahlung der Schuldverschreibungen
+Die Schuldverschreibungen werden ausschließlich aus einem Veräußerungsgewinn aus dem Verkauf des Assets an die Anleger zurückgezahlt. Der Veräußerungsgewinn wird an die
+Anleger bis zur Höhe des Nennbetrages der Schuldverschreibungen vollständig und darüber hinaus in Höhe von 90 % anteilig im Verhältnis des eingezahlten Nennbetrages eines
+Anlegers zum Gesamtnennbetrag ausgezahlt. „Veräußerungsgewinn“ ist der Kaufpreis für den Verkauf des Assets abzüglich der anlässlich des Verkaufs anfallenden Steuern und
+öffentlichen Abgaben sowie aller Kosten, Gebühren und sonstigen Aufwendungen, die im Zusammenhang mit dem Verkauf des Assets entstanden sind, insbesondere Provisionen,
+Maklergebühren sowie Kosten für die Beauftragung externer Berater, Gutachter, Rechtsanwälte und Steuerberater.
+
+
+Verzinsung
+Die Schuldverschreibungen werden ab dem 25. April 2024 bis zu ihrer Rückzahlung bezogen auf ihren ausstehenden Nennbetrag variabel verzinst. Die Höhe der Zinsen ist abhängig
+von einem etwaig erzielten Einnahmeüberschuss der Emittentin aus der Verwaltung des Assets. Die Anleger haben einen Anspruch auf 20 % des Einnahmeüberschusses.
+„Einnahmeüberschuss“ ist der positive Saldo aus den Einnahmen aus der Verwaltung des Assets abzüglich der mit der Verwaltung des Assets verbundenen Kosten. Die Zinsen
+werden jährlich nachträglich an jedem Zinstermin fällig. Zinstermin ist jeweils der erste Bankarbeitstag nach dem Ablauf einer Zinsperiode. Zinsperioden beginnen am 25. April eines
+Jahres (einschließlich) und enden am 24. April des folgenden Jahres (einschließlich). Die erste Zinszahlung ist am 25. April 2025 fällig. Die letzte Zinszahlung ist am Rückzahlungstag
+fällig. Die Höhe der Zinszahlungen wird zum Ablauf einer Zinsperiode von der Emittentin berechnet. Sind Zinsen im Hinblick auf einen Zeitraum zu berechnen, der kürzer oder länger
+als eine Zinsperiode ist, so werden sie berechnet auf der Grundlage der Anzahl der tatsächlichen verstrichenen Tage im relevanten Zeitraum (gerechnet vom letzten Zinszahlungstag
+(einschließlich)) dividiert durch die tatsächliche Anzahl der Tage der Zinsperiode (365 Tage bzw. 366 Tage im Falle eines Schaltjahres) (ICMA-Regel 251).
+
+
+Rangstellung
+Die Schuldverschreibungen beinhalten für den Anleger einen Rangrücktritt. Im Falle der Eröffnung des Insolvenzverfahrens über das Vermögen der Emittentin oder der Liquidation
+der Emittentin treten die Forderungen aus den Schuldverschreibungen gemäß §§ 19 Abs. 2 Satz 2, 39 Abs. 2 InsO im Rang hinter alle nicht nachrangigen Forderungen sowie alle
+nachrangigen Forderungen im Sinne von § 39 Absatz 1 Nr. 1 bis 5 der Insolvenzordnung zurück.
+
+
+Kleinanleger-Zielgruppe
+Das Produkt richtet sich an Anleger, die der Emittentin Wagniskapital für ein spekulatives Investment zur Verfügung stellen und mit dem Investment eine überdurchschnittliche
+Renditeerwartung verbinden. Die Anleger sollen einen langfristigen Anlagehorizont verfolgen und einen etwaigen finanziellen Verlust bis hin zum vollständigen Verlust des
+eingesetzten Kapitals tragen können. Das Produkt zielt auf Anleger mit erweiterten Kenntnissen und Erfahrungen mit Finanzprodukten sowie zu tokenbasierten Produkten und deren
+Verwahrung in Wallets ab. Das Produkt ist nicht geeignet für Personen, die Wert auf einen Kapitalschutz legen.
+Welche Risiken bestehen und was könnte ich im Gegenzug dafür bekommen?
+Risikoindikator
+
+
+
+
+Der Gesamtrisikoindikator hilft Ihnen, das mit diesem Produkt verbundene Risiko im Vergleich zu anderen Produkten einzuschätzen. Er zeigt, wie hoch die Wahrscheinlichkeit ist,
+dass Sie bei diesem Produkt Geld verlieren, weil sich die Märkte in einer bestimmten Weise entwickeln oder wir nicht in der Lage sind, Sie auszubezahlen. Wir haben dieses Produkt
+auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft, wobei 6 der zweithöchsten Risikoklasse entspricht. Der ausgewiesene Risikoindikator wird bereits aufgrund des
+bestehenden Marktrisikos in Stufe 6 eingestuft, weil die Schuldverschreibungen keinen Preis haben, der mindestens monatlich festgesetzt wird. Zudem wird auch das Kreditrisiko in
+die Stufe 6 eingestuft, weil für die Emittentin keine externen Bonitätsbeurteilungen vorliegen und die Forderungen der Anleger nachrangig sind. Das Risiko potenzieller Verluste aus
+der künftigen Wertentwicklung wird als hoch eingestuft. Bei ungünstigen Marktbedingungen ist es sehr wahrscheinlich, dass unsere Fähigkeit beeinträchtigt wird, Sie auszuzahlen.
+Die wesentlichen Risiken liegen in einer fehlenden Wertentwicklung und Veräußerbarkeit des Assets. Dieses Produkt beinhaltet keinen Schutz vor künftigen Marktentwicklungen, so
+dass Sie das angelegte Kapital ganz oder teilweise verlieren könnten. Wenn wir Ihnen nicht das zahlen können, was Ihnen zusteht, könnten Sie das gesamte angelegte Kapital
+verlieren. Die Veräußerbarkeit des Produktes ist eingeschränkt, da die Schuldverschreibungen nicht an einem geregelten Markt notiert sind.
+
+
+
+
+Performance-Szenarien
+Was Sie bei diesem Produkt am Ende herausbekommen, hängt von der künftigen Marktentwicklung ab. Die künftige Marktentwicklung ist ungewiss und lässt sich nicht mit
+Bestimmtheit vorhersagen. Die dargestellten Szenarien beruhen auf Ergebnissen aus der Vergangenheit und bestimmten Annahmen. Die Märkte könnten sich künftig völlig anders
+entwickeln.
+ Empfohlene Haltedauer: 10 Jahre                                                                                          Wenn Sie nach 1 Jahr             Wenn Sie nach 10
+ Anlagebeispiel: 10.000 EUR                                                                                               aussteigen                       Jahren aussteigen
+ Szenarien
+ Minimum                        Es gibt keine garantierte Mindestrendite. Sie könnten Ihre Anlage ganz oder
+                                teilweise verlieren.
+ Stressszenario                 Was Sie am Ende nach Abzug der Kosten herausbekommen könnten.
+                                                                                                                                                 0 EUR                     0 EUR
+                                Jährliche Durchschnittsrendite
+                                                                                                                                                 -100 %                   -100 %
+ Pessimistisches Szenario       Was Sie am Ende nach Abzug der Kosten herausbekommen könnten.
+                                                                                                                                             8.800 EUR               11.920 EUR
+                                Jährliche Durchschnittsrendite
+                                                                                                                                                -12,0 %                    3,6 %
+ Mittleres Szenario             Was Sie am Ende nach Abzug der Kosten herausbekommen könnten.
+                                                                                                                                            10.100 EUR               18.262 EUR
+                                Jährliche Durchschnittsrendite
+                                                                                                                                                  1,0 %                    6,2 %
+ Optimistisches Szenario        Was Sie am Ende nach Abzug der Kosten herausbekommen könnten.
+                                                                                                                                            10.700 EUR               28.693 EUR
+                                Jährliche Durchschnittsrendite
+                                                                                                                                                  7,0 %                   11,1 %
+
+
+In den angeführten Zahlen sind sämtliche Kosten des Produkts selbst enthalten, jedoch unter Umständen nicht alle Kosten, die Sie an Ihren Berater oder Ihre Vertriebsstelle zahlen
+müssen, sowie die Kosten Ihres Beraters oder Ihrer Vertriebsstelle. Unberücksichtigt ist auch Ihre persönliche steuerliche Situation, die sich ebenfalls auf den am Ende erzielten
+Betrag auswirken kann. Das Stressszenario zeigt, was Sie unter extremen Marktbedingungen zurückbekommen könnten. Das Pessimistische, das Mittlere und das Optimistische
+Szenario gehen davon aus, dass sich das Werk veräußern lässt, die Nachfrage und der zu erzielende Kaufpreis im Verhältnis zur Historie der/des Kunstschaffenden
+unterdurchschnittlich (pessimistisches Szenario), durchschnittlich (mittleres Szenario) oder überdurchschnittlich (optimistisches Szenario) ist. Dieses Produkt kann nicht einfach
+eingelöst werden.
+
+
+Was geschieht, wenn die arttrade custody 002 UG nicht in der Lage ist, die Auszahlung vorzunehmen?
+Alle Zahlungen an die Anleger hängen im Wesentlichen von der Wertentwicklung und Veräußerbarkeit des Assets ab. Sollte sich das Asset negativ entwickeln, kann es im
+ungünstigsten Fall zu einer Insolvenz der Emittentin kommen. In einem solchen Fall besteht das Risiko, dass keine Auszahlungen an Sie geleistet werden. Die Schuldverschreibungen
+unterliegen keiner Einlagensicherung.
+
+
+Welche Kosten entstehen?
+Die Person, die Ihnen dieses Produkt verkauft oder Sie dazu berät, kann Ihnen weitere Kosten berechnen. Sollte dies der Fall sein, teilt diese Person Ihnen diese Kosten mit und legt
+dar, wie sich diese Kosten auf Ihre Anlage auswirken werden.
+Kosten im Zeitverlauf
+In den Tabellen werden Beträge dargestellt, die zur Deckung verschiedener Kostenarten von Ihrer Anlage entnommen werden. Diese Beträge hängen davon ab, wie viel Sie anlegen,
+wie lange Sie das Produkt halten und wie gut sich das Produkt entwickelt. Die hier dargestellten Beträge veranschaulichen einen beispielhaften Anlagebetrag und verschiedene
+Anlagezeiträume.
+Die Laufzeit dieses Produkts steht nicht mit Sicherheit fest, da es je nach Marktentwicklung zu unterschiedlichen Zeitpunkten auslaufen kann. Bei den hier angegebenen Beträgen
+wurden zwei verschiedene Szenarien berücksichtigt.
+Wir haben folgende Annahmen zugrunde gelegt:
+— Das Produkt entwickelt sich wie im mittleren Szenario dargestellt
+— 10.000 EUR werden angelegt
+                                                              Wenn Sie nach 1 Jahr aussteigen                           Wenn Sie nach 10 Jahren aussteigen
+
+ Kosten insgesamt                                             200 EUR                                                   1.440 EUR
+ Jährliche Auswirkungen der Kosten (*)                        2,0 % pro Jahr                                            0,7 % pro Jahr
+(*) Diese Angaben veranschaulichen, wie die Kosten Ihre Rendite pro Jahr während der Haltedauer verringern. Wenn Sie zum Ende der empfohlenen Haltedauer aussteigen, wird Ihre
+durchschnittliche Rendite pro Jahr voraussichtlich 6,9 % vor Kosten und 6,2 % nach Kosten betragen.
+
+
+Zusammensetzung der Kosten
+ Einmalige Kosten bei Einstieg oder Ausstieg                                                                                Wenn Sie nach 1 Jahr     Wenn Sie nach        10
+                                                                                                                            aussteigen               Jahren aussteigen
+ Einstiegskosten                                2,0 % des Nennbetrages, den Sie beim Einstieg in diese Anlage zahlen.       200 EUR                  200 EUR
+ Ausstiegskosten                                Für dieses Produkt wird keine Ausstiegsgebühr berechnet.                    0 EUR                    0 EUR
+ Laufende Kosten pro Jahr
+ Verwaltungsgebühren und sonstige               Für dieses Produkt werden keine Verwaltungsgebühren berechnet.              0 EUR                    0 EUR
+ Verwaltungs- oder Betriebskosten
+ Transaktionskosten                             Für dieses Produkt werden keine Transaktionskosten berechnet.               0 EUR                    0 EUR
+ Zusätzliche Kosten unter bestimmten Bedingungen
+ Erfolgsgebühren und Carried Interest           10 % des Veräußerungsgewinns aus dem Verkauf des Assets. Bei den            Abhängig von             Abhängig von
+                                                angesetzten Kosten handelt es sich um eine Schätzung.                       Veräußerungsgewinn       Veräußerungsgewinn
+
+
+Wie lange sollte ich die Anlage halten, und kann ich vorzeitig Geld entnehmen?
+
+  Empfohlene Haltedauer: 10 Jahre
+
+Die empfohlene Haltedauer wurde langfristig angesetzt, weil die historischen Daten am Kunstmarkt aufzeigen, dass längere Haltedauern zu höheren Renditen führen können. Der
+Anleger hat das Recht, seine Vertragserklärung nach den geltenden Regelungen des Verbraucherrechts zu widerrufen. Hierüber wird er gesondert belehrt. Die Laufzeit der
+Schuldverschreibungen ist unbestimmt und endet automatisch mit der Veräußerung des Assets. Eine ordentliche Kündigung durch den Anleger ist ausgeschlossen. Es ist allenfalls
+eine außerordentliche Kündigung aus wichtigem Grund für Anleger möglich. Die Schuldverschreibungen werden nicht an einer Börse gehandelt. Es existiert noch kein liquider
+Zweitmarkt für die Schuldverschreibungen. Eine vorzeitige Veräußerung der Schuldverschreibungen ist daher möglicherweise nicht oder nur mit Verlust möglich.
+
+
+Wie kann ich mich beschweren?
+Beschwerden über die Schuldverschreibungen oder das Verhalten der Emittentin können per E-Mail an contact@arttrade.io oder per Post an folgende Anschrift gerichtet werden:
+arttrade GmbH, Immermannstraße 19, 40210 Düsseldorf. Beschwerden über das Verhalten der Person, die über das Produkt berät oder es verkauft, können direkt an diese Person
+gerichtet werden.
+
+
+Sonstige zweckdienliche Angaben
+Das Basisinformationsblatt steht auf der Internetseite der Emittentin www.arttrade.io/bib zum kostenlosen Download bereit.
+

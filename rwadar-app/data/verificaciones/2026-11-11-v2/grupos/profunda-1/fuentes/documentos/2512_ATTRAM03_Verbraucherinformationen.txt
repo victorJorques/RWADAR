@@ -1,0 +1,244 @@
+Informationen für den Verbraucher
+
+Aufgrund des Art. 246 b EGBGB sind für alle Fernabsatzverträge (Verträge, die unter Verwendung von
+Fernkommunikationsmitteln (z. B. per E-Mail, Fax, Internet) zustande kommen) sowie Verträge, die außerhalb von
+Geschäftsräumen der Emittentin geschlossen werden, dem Anleihegläubiger folgende Informationen zur
+Verfügung zu stellen.
+
+
+Allgemeine Unternehmensinformationen über die Emittentin
+Emittentin ist die arttrade custody 004 UG (haftungsbeschränkt) mit Sitz in Düsseldorf, vertreten durch die
+Geschäftsführer [persona física omitida], [persona física omitida] und [persona física omitida].
+Geschäftsanschrift/ladungsfähige Anschrift: Schinkelstr. 38-40, 40211 Düsseldorf.
+Eingetragen im Handelsregister des Amtsgerichts Düsseldorf unter der Nr. HRB 103466.
+Hauptgeschäftstätigkeit der Emittentin ist der Erwerb, das Halten und Verwalten von Sachwerten, insbesondere
+Kunstwerken.
+Die Emittentin unterliegt keiner gesonderten staatlichen Aufsichtsbehörde.
+
+
+Informationen über die Kapitalanlage
+
+1.1.1   Wesentliche Merkmale der Kapitalanlage und Zustandekommen des Vertrages
+Es handelt sich um ein Kapitalanlageprodukt nach deutschem Recht in Form von nachrangigen, auf den Inhaber
+lautenden Schuldverschreibungen (die „Schuldverschreibungen“).
+Die Schuldverschreibungen werden für ihre gesamte Laufzeit durch Bewirkung der Eintragung in ein
+elektronisches Wertpapierregister in der Form eines Kryptowertpapierregisters im Sinne des § 4 Absatz 1 Nr. 2
+des Gesetzes über elektronische Wertpapiere (eWpG) als elektronische Wertpapiere im Sinne des § 2 Absatz 1
+eWpG begeben.
+Als registerführende Stelle im Sinne des § 16 Absatz 2 Satz 1 eWpG hat die Emittentin die Cashlink Technologies
+GmbH, Sandweg 94, 60316 Frankfurt am Main, benannt.
+Die Eintragung in das Kryptowertpapierregister erfolgt entweder als Sammeleintragung gemäß § 8 Absatz 1 Nr. 1
+eWpG oder als Einzeleintragung gemäß § 8 Absatz 1 Nr. 2 eWpG. Als Inhaber der Schuldverschreibungen wird im
+Falle der Sammeleintragung eine Verwahrerin eingetragen, die die die Schuldverschreibungen gemäß § 9 Abs. 2
+eWpG treuhänderisch für die Berechtigten aus den Schuldverschreibungen (die „Anleihegläubiger“) verwaltet,
+ohne selbst Berechtigte zu sein (§ 9 Abs. 2 Satz 1 eWpG), im Falle der Einzeleintragung der Anleihegläubiger. Im
+Falle der Sammeleintragung gelten die Anleihegläubiger als Miteigentümer nach Bruchteilen an den in
+Sammeleintragung eingetragenen Schuldverschreibungen. Der jeweilige Anteil bestimmt sich gemäß § 9 Abs. 1
+eWpG nach dem Nennbetrag der für den Anleihegläubiger in Sammeleintragung genommenen Rechte
+Zahlungen an die Anleihegläubiger hängen von der Verwaltung und der Veräußerung von Kunstgegenständen ab
+(die „Assets“). Die Emittentin wird das eingezahlte Anleihekapital abzüglich der Emissionskosten sowie der
+laufenden Verwaltungskosten ausschließlich für Erwerbskosten sowie für Verkaufsnebenkosten verwenden.
+„Erwerbskosten“ sind (a) der Kaufpreis für den Erwerb eines Assets sowie (b) Erwerbsnebenkosten wie Steuern,
+Gebühren und öffentliche Abgaben, Provisionen, Maklergebühren sowie Kosten für die Beauftragung externer
+Berater, Gutachter, Rechtsanwälte und Steuerberater.
+„Verkaufsnebenkosten“ sind die bei einem Verkauf eines Assets anfallenden Steuern, Gebühren und öffentlichen
+Abgaben, Provisionen, Maklergebühren sowie Kosten für die Beauftragung externer Berater, Gutachter,
+Rechtsanwälte und Steuerberater.
+Die Schuldverschreibungen begründen ausschließlich schuldrechtliche Zahlungsverpﬂichtungen der Emittentin
+gegenüber den Anleihegläubigern, sie gewähren keine Teilnahme-, Mitwirkungs- und Stimmrechte.
+Die Schuldverschreibungen haben einen Nennbetrag von jeweils 1 Euro.
+
+
+Die Schuldverschreibungen sind blockchainbasiert. Für jede Schuldverschreibung wird auf der
+Polygon-Blockchain ein Token generiert, der die Rechte der Anleihegläubiger aus den Schuldverschreibungen
+repräsentiert. Die Ausgabe der Token erfolgt mit Eintragung der Schuldverschreibungen in das
+Kryptowertpapierregister.
+Die Schuldverschreibungen sind übertragbar. Im Falle der Sammeleintragung können die Miteigentumsanteile der
+Anleihegläubiger an dem als Sammelbestand eingetragenen Schuldverschreibungen nach Maßgabe des jeweils
+anwendbaren Rechts durch Einigung und Umstellung des Besitzmittlungsverhältnisses mit der Verwahrerin
+übertragen werden. Im Falle der Einzeleintragung erfolgt die Übertragung der Schuldverschreibungen durch
+Umtragung der Schuldverschreibungen im Kryptowertpapierregister auf den Erwerber auf Weisung des
+Anleihegläubigers.
+Die wesentlichen Einzelheiten der Kapitalanlage sind in dem Basisinformationsblatt (Stand: 08.12.2025), den
+Zeichnungsunterlagen sowie in den Anleihebedingungen der Emittentin enthalten.
+Der Vertragsschluss kommt mit Annahme der Zeichnung durch die Geschäftsführung der Emittentin zustande.
+Gemäß den Anleihebedingungen handelt es sich bei den Schuldverschreibungen um nachrangige und nicht
+dinglich besicherte Verbindlichkeiten der Emittentin, die eine vorinsolvenzliche Durchsetzungssperre enthalten.
+Der Anleihegläubiger tritt in einem etwaigen Insolvenzverfahren über das Vermögen der Emittentin sowie im Falle
+der Liquidation der Emittentin gemäß §§ 19 Abs. 2 Satz 2, 39 Abs. 2 InsO mit seinen Ansprüchen auf Zahlung der
+Zinsen sowie auf Rückzahlung des Anleihekapitals im Rang hinter die Forderungen im Sinne des § 39 Abs. 1 Nr. 1
+bis 5 InsO zurück. Die Forderungen aus den Schuldverschreibungen werden erst nach Befriedigung dieser
+vorrangigen Forderungen befriedigt, jedoch gleichrangig mit den Forderungen aus anderen von der Emittentin
+ausgegebenen nachrangigen Kapitalanlagen im Sinne von § 39 Abs. 2 der Insolvenzordnung. Sämtliche
+Forderungen von Anleihegläubigern aus den Schuldverschreibungen sind untereinander gleichrangig.
+Außerhalb eines Insolvenzverfahrens über das Vermögen der Emittentin sowie außerhalb einer Liquidation der
+Emittentin sind Zinszahlungen und die Rückzahlung des Anleihekapitals solange und soweit ausgeschlossen, wie
+diese Zahlungen
+    ●   zu einer Zahlungsunfähigkeit der Emittentin im Sinne des § 17 InsO oder einer Überschuldung der
+        Emittentin im Sinne des § 19 InsO führen oder
+    ●   bei der Emittentin eine Zahlungsunfähigkeit im Sinne von § 17 InsO oder eine Überschuldung im Sinne
+        von § 19 InsO bereits besteht.
+Diese Regelung wird vorinsolvenzliche Durchsetzungssperre genannt. Die vorinsolvenzliche Durchsetzungssperre
+bewirkt eine Wesensänderung der Geldhingabe vom Fremdkapital mit unbedingter Rückzahlungsverpﬂichtung hin
+zu einer unternehmerischen Beteiligung.
+Die vorinsolvenzliche Durchsetzungssperre gilt bereits für die Zeit vor Eröffnung eines Insolvenzverfahrens. Der
+Anleihegläubiger kann demzufolge bereits dann keine Erfüllung seiner Ansprüche aus den Schuldverschreibungen
+verlangen, wenn die Emittentin im Zeitpunkt des Leistungsverlangens des Anleihegläubigers überschuldet oder
+zahlungsunfähig ist oder dies zu werden droht. Der Ausschluss dieser Ansprüche kann für eine unbegrenzte Zeit
+wirken.
+
+
+1.1.2   Spezielle Hinweise wegen der Art der Finanzdienstleistung
+Die angebotene Kapitalanlage ist mit speziellen Risiken behaftet. Das Hauptrisiko der hier angebotenen
+Kapitalanlage liegt in der wirtschaftlichen Entwicklung der Emittentin. Deshalb verbindet sich mit dieser
+Kapitalanlage das Risiko des Teil- oder sogar des Totalverlustes des eingesetzten Kapitals und (noch) nicht
+ausgezahlter Zinsen.
+Die Finanzdienstleistung bezieht sich nicht auf Finanzinstrumente, deren Preis von Schwankungen auf dem
+Finanzmarkt abhängig ist.
+
+
+1.1.3   Mindestlaufzeit, vertragliche Kündigungsbedingungen, Vertragsstrafen
+Die Laufzeit der Schuldverschreibungen beginnt am 04. Juni 2024 und endet mit Ablauf des 03. Juni 2029. Die
+Emittentin ist einseitig berechtigt, die Laufzeit um zwei Jahre bis zum 03. Juni 2031 mit einer Frist von
+mindestens vier Wochen vor dem Ende der Laufzeit zu verlängern. Die Emittentin ist berechtigt, aber nicht
+verpﬂichtet, die Schuldverschreibungen vorzeitig zu kündigen und zum Nennbetrag an die Anleihegläubiger
+zurückzuzahlen, wenn innerhalb von drei Monaten nach dem Beginn der Laufzeit der Schuldverschreibungen nicht
+mindestens 25 % des Gesamtnennbetrages der Schuldverschreibungen platziert und bei der Emittentin eingezahlt
+wurden. Die Schuldverschreibungen können im Übrigen während der Laufzeit nur außerordentlich aus wichtigem
+Grund gekündigt werden. Eine Vertragsstrafe ist nicht vorgesehen.
+
+
+1.1.4   Gesamtpreis, Preisbestandteile, abgeführte Steuern
+Der Erwerbspreis pro Schuldverschreibung beträgt 1,00 Euro. Zusätzlich zum Anlagebetrag hat der
+Anleihegläubiger ein Agio als Aufgeld zu leisten. Das Agio beträgt 2,0 % des gezeichneten Nennbetrages.
+Es entstehen laufende Kosten in Höhe von 2,0 % p.a. bezogen auf das eingezahlte Anleihekapital zur Deckung der
+Kaufneben-, Verwahr-, Versicherungs-, Transport-, Ausstellungskosten etc. Ferner fällt eine Erfolgsgebühr in Höhe
+von 10 % des Veräußerungsgewinns aus dem Verkauf der Assets an.
+Die Zeichnung der Kapitalanlage ist von der Umsatzsteuer befreit. Die Emittentin übernimmt nicht die Zahlung von
+Steuern für den Anleihegläubiger.
+
+
+1.1.5    Zusätzlich anfallende Kosten, sowie weitere Steuern oder Kosten, die nicht über das
+         Unternehmen abgeführt oder von ihm in Rechnung gestellt werden
+Zusätzliche Liefer- und Versandkosten werden von der Emittentin nicht in Rechnung gestellt.
+
+Eigene Kosten für Telefon, Internet, Porto und Überweisungen sowie für die eigene Beauftragung von
+Steuerberatern, Rechtsanwälten, Vermögens- oder sonstigen Beratern, hat der Anleihegläubiger selbst zu tragen.
+Die Höhe dieser Kosten kann nicht konkret genannt werden, da diese Anleihegläubigerspeziﬁsch sind und daher
+variieren.
+Die steuerliche Behandlung hängt von den persönlichen Verhältnissen des jeweiligen Anleihegläubigers ab und
+kann künftigen Änderungen unterworfen sein. Anleihegläubiger sollten ihren eigenen Steuerberater hinsichtlich
+der steuerlichen Auswirkungen des Erwerbs, des Haltens und der Veräußerung der Schuldverschreibungen
+konsultieren.
+
+
+1.1.6    Einzelheiten der Zahlung und Erfüllung
+Die Einzelheiten zur Einzahlungsart und zu den Zahlungsterminen ergeben sich aus den Zeichnungsunterlagen.
+Die Ausgabe der Schuldverschreibungen erfolgt gegen Zahlung von Euro.
+Mit der Annahme der Zeichnung und nach Eingang der Zahlung werden die Schuldverschreibungen in das
+Kryptowertpapierregister eingetragen. Die den Token zugeordneten privaten kryptograﬁschen Schlüssel der
+Anleihegläubiger werden in eine Sammel-Wallet bei der Tangany GmbH, München eingebucht.
+
+
+1.1.7    Anwendbares Recht, Gerichtsstand
+Die Emittentin sowie der Vertrag über die Kapitalanlage und die Rechte und Pﬂichten aus der Kapitalanlage
+unterliegen dem Recht der Bundesrepublik Deutschland.
+Als Gerichtsstand wird der Sitz der Gesellschaft vereinbart. Diese Vereinbarung beschränkt aber nicht das Recht
+eines Anleihegläubigers, Verfahren vor einem anderen zuständigen Gericht anzustrengen. Ebenso wenig schließt
+die Einleitung von Verfahren vor einem oder mehreren anderen Gerichtsständen die Einleitung von Verfahren an
+einem anderen Gerichtsstand aus, falls und soweit dies rechtlich zulässig ist.
+
+
+1.1.8    Befristung der Informationen
+Die Gültigkeit dieser Informationen ist nicht befristet.
+
+
+1.1.9    Vertragssprache
+Die Kapitalanlage wird nur in deutscher Sprache angeboten und die Kommunikation zwischen der Emittentin und
+dem Anleihegläubiger wird während der Laufzeit der Kapitalanlage in deutscher Sprache erfolgen.
+
+
+1.1.10 Außergerichtliche Beschwerde- und Rechtsbehelfsverfahren
+Bei Streitigkeiten aus der Anwendung der Vorschriften des Bürgerlichen Gesetzbuches betreffend
+Fernabsatzverträge über Finanzdienstleistungen besteht unbeschadet des Rechts, die Gerichte anzurufen, die
+Möglichkeit, eine vom Bundesamt für Justiz für diese Streitigkeiten anerkannte private
+Verbraucherschlichtungsstelle oder die bei der Deutschen Bundesbank eingerichtete Schlichtungsstelle
+(Deutsche Bundesbank; Schlichtungsstelle, Postfach 10 06 02, D-60006 Frankfurt/Main; Telefon: 069 9566-33232,
+Telefax: 069 709090-9901, E-Mail: schlichtung@bundesbank.de; Internet: www.bundesbank.de) anzurufen.
+In dem genannten Schlichtungsverfahren hat der Anleihegläubiger zu versichern, dass er in der Streitigkeit noch
+kein Gericht, keine Streitschlichtungsstelle und keine Gütestelle, die die Streitbeilegung betreibt, angerufen und
+auch keinen außergerichtlichen Vergleich abgeschlossen hat.
+1.1.11 Bestehen eines Garantiefonds bzw. anderer Entschädigungsregelungen
+Es besteht keine Einlagensicherung, kein Garantiefonds und es bestehen keine Entschädigungsregelungen.
+
+
+1.1.12 Mitglied-Staat der EU, dessen Recht das Unternehmen unterliegt
+Bundesrepublik Deutschland.
+
+
+1.1.13 Widerrufsbelehrung
+Der Anleihegläubiger kann seine Zeichnungserklärung widerrufen. Hinsichtlich der Widerrufsbelehrung wird auf
+Seite 5 verwiesen.
+                                                  Widerrufsbelehrung
+Abschnitt 1
+Widerrufsrecht
+Sie können Ihre Vertragserklärung innerhalb von 14 Tagen ohne Angabe von Gründen mittels einer eindeutigen
+Erklärung widerrufen. Die Frist beginnt nach Abschluss des Vertrags und nachdem Sie die Vertragsbestimmungen
+einschließlich der Allgemeinen Geschäftsbedingungen sowie alle nachstehend unter Abschnitt 2 aufgeführten
+Informationen auf einem dauerhaften Datenträger (z. B. Brief, Telefax, E-Mail) erhalten haben. Zur Wahrung der
+Widerrufsfrist genügt die rechtzeitige Absendung des Widerrufs, wenn die Erklärung auf einem dauerhaften Datenträger
+erfolgt. Der Widerruf ist zu richten an:
+                  arttrade custody 004 UG (haftungsbeschränkt), Schinkelstr. 38-40, 40211 Düsseldorf
+                                               E-Mail: contact@arttrade.io
+Abschnitt 2
+Für den Beginn der Widerrufsfrist erforderliche Informationen
+Die Informationen im Sinne des Abschnitts 1 Satz 2 umfassen folgende Angaben:
+1.    die Identität des Unternehmers; anzugeben ist auch das öffentliche Unternehmensregister, bei dem der
+      Rechtsträger eingetragen ist, und die zugehörige Registernummer oder gleichwertige Kennung;
+2.    die Hauptgeschäftstätigkeit des Unternehmers und die für seine Zulassung zuständige Aufsichtsbehörde;
+3.    die ladungsfähige Anschrift des Unternehmers und jede andere Anschrift, die für die Geschäftsbeziehung zwischen
+      dem Unternehmer und dem Verbraucher maßgeblich ist, bei juristischen Personen, Personenvereinigungen oder
+      Personengruppen auch den Namen des Vertretungsberechtigten;
+4.    die wesentlichen Merkmale der Finanzdienstleistung sowie Informationen darüber, wie der Vertrag zustande
+      kommt;
+5.    den Gesamtpreis der Finanzdienstleistung einschließlich aller damit verbundenen Preisbestandteile sowie alle über
+      den Unternehmer abgeführten Steuern oder, wenn kein genauer Preis angegeben werden kann, seine
+      Berechnungsgrundlage, die dem Verbraucher eine Überprüfung des Preises ermöglicht;
+6.    zusätzlich anfallende Kosten sowie einen Hinweis auf mögliche weitere Steuern oder Kosten, die nicht über den
+      Unternehmer abgeführt oder von ihm in Rechnung gestellt werden;
+7.    den Hinweis, dass sich die Finanzdienstleistung auf Finanzinstrumente bezieht, die wegen ihrer speziﬁschen
+      Merkmale oder der durchzuführenden Vorgänge mit speziellen Risiken behaftet sind oder deren Preis
+      Schwankungen auf dem Finanzmarkt unterliegt, auf die der Unternehmer keinen Einﬂuss hat, und dass in der
+      Vergangenheit erwirtschaftete Erträge kein Indikator für künftige Erträge sind;
+8.    eine Befristung der Gültigkeitsdauer der zur Verfügung gestellten Informationen, beispielsweise die Gültigkeitsdauer
+      befristeter Angebote, insbesondere hinsichtlich des Preises;
+9.    Einzelheiten hinsichtlich der Zahlung und der Erfüllung;
+10.   das Bestehen oder Nichtbestehen eines Widerrufsrechts sowie die Bedingungen, Einzelheiten der Ausübung,
+      insbesondere Name und Anschrift desjenigen, gegenüber dem der Widerruf zu erklären ist, und die Rechtsfolgen
+      des Widerrufs einschließlich Informationen über den Betrag, den der Verbraucher im Fall des Widerrufs für die
+      erbrachte Leistung zu zahlen hat, sofern er zur Zahlung von Wertersatz verpﬂichtet ist (zugrunde liegende
+      Vorschrift: § 357b des Bürgerlichen Gesetzbuchs);
+11.   die Mindestlaufzeit des Vertrags, wenn dieser eine dauernde oder regelmäßig wiederkehrende Leistung zum Inhalt
+      hat;
+12.   die vertraglichen Kündigungsbedingungen einschließlich etwaiger Vertragsstrafen;
+13.   die Mitgliedstaaten der Europäischen Union, deren Recht der Unternehmer der Aufnahme von Beziehungen zum
+      Verbraucher vor Abschluss des Vertrags zugrunde legt;
+14.   eine Vertragsklausel über das auf den Vertrag anwendbare Recht oder über das zuständige Gericht;
+15.   die Sprachen, in denen die Vertragsbedingungen und die in dieser Widerrufsbelehrung genannten
+      Vorabinformationen mitgeteilt werden, sowie die Sprachen, in denen sich der Unternehmer verpﬂichtet, mit
+      Zustimmung des Verbrauchers die Kommunikation während der Laufzeit dieses Vertrags zu führen;
+16.   den Hinweis, ob der Verbraucher ein außergerichtliches Beschwerde- und Rechtsbehelfsverfahren, dem der
+      Unternehmer unterworfen ist, nutzen kann, und gegebenenfalls dessen Zugangsvoraussetzungen.
+Abschnitt 3
+Widerrufsfolgen
+Im Fall eines wirksamen Widerrufs sind die beiderseits empfangenen Leistungen zurückzugewähren. Sie sind zur
+Zahlung von Wertersatz für die bis zum Widerruf erbrachte Dienstleistung verpﬂichtet, wenn Sie vor Abgabe Ihrer
+Vertragserklärung auf diese Rechtsfolge hingewiesen wurden und ausdrücklich zugestimmt haben, dass vor dem Ende
+der Widerrufsfrist mit der Ausführung der Gegenleistung begonnen werden kann. Besteht eine Verpﬂichtung zur Zahlung
+von Wertersatz, kann dies dazu führen, dass Sie die vertraglichen Zahlungsverpﬂichtungen für den Zeitraum bis zum
+Widerruf dennoch erfüllen müssen. Ihr Widerrufsrecht erlischt vorzeitig, wenn der Vertrag von beiden Seiten auf Ihren
+ausdrücklichen Wunsch vollständig erfüllt ist, bevor Sie Ihr Widerrufsrecht ausgeübt haben. Verpﬂichtungen zur
+Erstattung von Zahlungen müssen innerhalb von 30 Tagen erfüllt werden. Diese Frist beginnt für Sie mit der Absendung
+Ihrer Widerrufserklärung, für uns mit deren Empfang.
+Ende der Widerrufsbelehrung
+

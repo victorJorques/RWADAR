@@ -1,0 +1,91 @@
+Fee Structure | Spiko Tech Docs
+Skip to main content
+ProductsSpiko DirectSpiko EmbeddedAPI Reference
+Search
+Our products
+Overview
+Spiko T-Bills
+Spiko Smart Cash
+What is Smart Cash?
+Smart Cash Fund
+Fee Structure
+Stakeholders
+Legal Documentation
+Spiko Cash & Carry
+Fund Availability
+Onboarding Restrictions
+Account management
+Account creation
+Multi-User Access Management
+Deposits and Withdrawals
+Currency Exchange
+Accounting and Tax Treatment
+Tokenization
+Explaining Tokenization
+Transfers & Redemptions
+Addresses
+Security Audits
+NAV Data Feed
+Legal
+Legal Notice
+Regulatory Information
+Terms of Use
+Privacy Policy
+Our products
+Spiko Smart Cash
+Fee Structure
+On this page
+Fee Structure
+Transaction Fees​
+SAFO (USD)
+eurSAFO (EUR)
+gbpSAFO (GBP)
+chfSAFO (CHF)
+Deposits
+0%
+0%
+0%
+0%
+Withdrawals
+0%
+0%
+0%
+0%
+Annual Fees​
+Annual fees are calculated and deducted daily on a pro-rata basis. These deductions are made directly from accrued interest, ensuring that your returns are always displayed net of all fees. There are no hidden charges or additional costs.
+Fee Component
+SAFO (USD)
+eurSAFO (EUR)
+gbpSAFO (GBP)
+chfSAFO (CHF)
+Annual fees
+0.25%
+0.25%
+0.25%
+0.15%
+Previous
+Smart Cash Fund
+Next
+Stakeholders
+Transaction Fees
+Annual Fees
+Documentation
+Products
+Spiko Direct
+Spiko Embedded
+API Reference
+APIs
+Public API
+Investor API
+Distributor API
+Legal
+Legal notice
+Regulatory information
+Terms of use
+Privacy policy
+Spiko
+spiko.io
+Spiko app
+Contact
+LinkedIn
+© 2026 Spiko. All rights reserved.

@@ -1,0 +1,1030 @@
+{
+ "grupo": "profunda-1",
+ "candidata": "arttrade-attram-03",
+ "consultas": [
+  {
+   "url": "https://arttrade.de/art-investment/",
+   "archivo": "fuentes/crudo/arttrade-art-investment.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:08:38Z",
+   "bytes": 456568,
+   "sha256": "bbc7eeb0865fabc53395a08f358a942d3903fda38cd267af221f5b4f4ed371d4"
+  },
+  {
+   "url": "https://arttrade.de/basis-informationsblaetter/",
+   "archivo": "fuentes/crudo/arttrade-basis-informationsblaetter.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:08:38Z",
+   "bytes": 228215,
+   "sha256": "52b727c8ec0da456ad158a34c82e8e53372b5383a03d4497657126e33acbd021"
+  },
+  {
+   "url": "https://arttrade.de/anleihebedingungen/",
+   "archivo": "fuentes/crudo/arttrade-anleihebedingungen.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:08:39Z",
+   "bytes": 227821,
+   "sha256": "7439545aaa4ebba86d4624504896f7f6d023d9f54b24c3265a8466dc7ccccc6a"
+  },
+  {
+   "url": "https://arttrade.de/impressum/",
+   "archivo": "fuentes/crudo/arttrade-impressum.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-11T10:08:39Z",
+   "bytes": 131363,
+   "sha256": "f06223d5f70f08afe18aa82363ac4c954ba7cfce3aea6ec76a7424419161d306"
+  },
+  {
+   "url": "https://arttrade.de/",
+   "archivo": "fuentes/crudo/arttrade-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:08:40Z",
+   "bytes": 439428,
+   "sha256": "ad80b99c0e77490d7ec26bfc6998ca2104ad93e90f7b7b251c902ecc66872b31"
+  },
+  {
+   "url": "https://arttrade.de/robots.txt",
+   "archivo": "fuentes/crudo/arttrade-robots.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:08:40Z",
+   "bytes": 232,
+   "sha256": "42118507d4e8694ebc02dd79ea27b195cb4039c1f8dcd5c15556a7e0d67b8375"
+  },
+  {
+   "url": "https://arttrade.de/sitemap_index.xml",
+   "archivo": "fuentes/crudo/arttrade-sitemap.xml",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:08:41Z",
+   "bytes": 525,
+   "sha256": "ff5c90834817cd733b8ba2eaec14e49c03c25e6595b39c0603ecd0fb6f9f4bcd"
+  },
+  {
+   "url": "https://arttrade.de/imprint/",
+   "archivo": "fuentes/crudo/arttrade-imprint.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:01Z",
+   "bytes": 218937,
+   "sha256": "12b8a30893f4111d59660a01b4f864dc595c074eaaba32cca64186abffe45c3b"
+  },
+  {
+   "url": "https://arttrade.de/verbraucherinformationen/",
+   "archivo": "fuentes/crudo/arttrade-verbraucherinformationen.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:02Z",
+   "bytes": 228183,
+   "sha256": "3439513a357c90f7b238529acf6c457ba52893975ef485bc4cfa7c5f25c97edd"
+  },
+  {
+   "url": "https://arttrade.de/risikoinformationen/",
+   "archivo": "fuentes/crudo/arttrade-risikoinformationen.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:02Z",
+   "bytes": 226800,
+   "sha256": "7ccb72e305898a82347209e7043b8bb5cc7eb438ae756808c7de001372daf9f5"
+  },
+  {
+   "url": "https://arttrade.de/nutzungsbedingungen/",
+   "archivo": "fuentes/crudo/arttrade-nutzungsbedingungen.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:03Z",
+   "bytes": 239029,
+   "sha256": "d87ed95b4f1f4b1a3fd0d650e0a630c3eb074d74edde621e5b70c8d202015413"
+  },
+  {
+   "url": "https://arttrade.de/ueber-uns/",
+   "archivo": "fuentes/crudo/arttrade-ueber-uns.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:03Z",
+   "bytes": 259563,
+   "sha256": "5fd733d17a1c6a263b73ab892c194a40830fc7550251f635eb08072dd2328579"
+  },
+  {
+   "url": "https://arttrade.de/kontakt/",
+   "archivo": "fuentes/crudo/arttrade-kontakt.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:04Z",
+   "bytes": 399725,
+   "sha256": "d51b3714f53d740093a82bc5ccaea8cfacf0d2a435d833915fbd4fb4c335af1d"
+  },
+  {
+   "url": "https://arttrade.de/geschaeftskunden/",
+   "archivo": "fuentes/crudo/arttrade-geschaeftskunden.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:04Z",
+   "bytes": 269224,
+   "sha256": "27cd7b3765257866550233643976777e079ef1bb929a84097523f45824d1d257"
+  },
+  {
+   "url": "https://arttrade.de/leistungen/",
+   "archivo": "fuentes/crudo/arttrade-leistungen.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:05Z",
+   "bytes": 227238,
+   "sha256": "af6c651a1a1e845d2a0781c38e6373637c758770685ab6a31299e8c1cf6d8bfb"
+  },
+  {
+   "url": "https://arttrade.de/wp-content/uploads/2025/05/240604_ATTRAM03_Anleihebedingungen.pdf",
+   "archivo": "fuentes/crudo/pdf/240604_ATTRAM03_Anleihebedingungen.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:05Z",
+   "bytes": 65529,
+   "sha256": "735721abfe0ffc178be15186fec51f30f8611413a383d333d8e497a761625630"
+  },
+  {
+   "url": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Basisinformationsblatt.pdf",
+   "archivo": "fuentes/crudo/pdf/2512_ATTRAM03_Basisinformationsblatt.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:06Z",
+   "bytes": 123002,
+   "sha256": "f6914ec191013a461bbd0ab181fcaef891bddf1fba0238259503544f885ae5fa"
+  },
+  {
+   "url": "https://arttrade.de/wp-content/uploads/2024/05/2404_arttrade_BIB_artista-omitido-001.pdf",
+   "archivo": "fuentes/crudo/pdf/2404_arttrade_BIB_artista-omitido-001.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:06Z",
+   "bytes": 144621,
+   "sha256": "a45f2225f9b4858dad06209be91f8059f3ce04d5c7e24e475d966ac0caacc5d5"
+  },
+  {
+   "url": "https://arttrade.de/wp-content/uploads/2024/05/2404_arttrade_Anleihebedingungen_artista-omitido-001.pdf",
+   "archivo": "fuentes/crudo/pdf/2404_arttrade_Anleihebedingungen_artista-omitido-001.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:07Z",
+   "bytes": 101303,
+   "sha256": "016626977a86ffc24e524091bfeaa5e87c55b233fcd654ec473b4bdbe0dcd0b6"
+  },
+  {
+   "url": "https://arttrade.de/wp-content/uploads/2025/05/2512_ATTRAM03_Verbraucherinformationen.pdf",
+   "archivo": "fuentes/crudo/pdf/2512_ATTRAM03_Verbraucherinformationen.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:42Z",
+   "bytes": 77346,
+   "sha256": "5a0c23636e4ad60097b65a0a76a41046cce6ca7a2ffdeb3f2cf3ccf6be976bad"
+  },
+  {
+   "url": "https://arttrade.de/wp-content/uploads/2024/05/2404_arttrade_Verbraucherinformationen_artista-omitido-.pdf",
+   "archivo": "fuentes/crudo/pdf/2404_arttrade_Verbraucherinformationen_artista-omitido.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:43Z",
+   "bytes": 103883,
+   "sha256": "206812396de2535467468d6891bb4420c74d2ea0274cdaca0c064f322e6bc7e4"
+  },
+  {
+   "url": "https://arttrade.de/wp-content/uploads/2025/05/240604_ATTRAM03_Risikofaktoren.pdf",
+   "archivo": "fuentes/crudo/pdf/240604_ATTRAM03_Risikofaktoren.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:09:49Z",
+   "bytes": 50557,
+   "sha256": "f3210cfaebecda7488879a5e8f5f2c7057ad320b871cad9399eed804754ff666"
+  },
+  {
+   "url": "https://arttrade-investments.de/",
+   "archivo": "fuentes/crudo/arttrade-investments-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:10:13Z",
+   "bytes": 691,
+   "sha256": "a68939a8bee0bce80e0b81611432154d96e42809cdce2dcba93afecde8e487cc"
+  },
+  {
+   "url": "https://arttrade.io/",
+   "archivo": "fuentes/crudo/arttrade-io-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:10:14Z",
+   "bytes": 439428,
+   "sha256": "ad80b99c0e77490d7ec26bfc6998ca2104ad93e90f7b7b251c902ecc66872b31"
+  },
+  {
+   "url": "https://arttrade.io/bib",
+   "archivo": "fuentes/crudo/arttrade-io-bib.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-11T10:10:15Z",
+   "bytes": 131379,
+   "sha256": "a4a0053d7f3719122b240590666947013ae177df420a500300cf0556558c2933"
+  },
+  {
+   "url": "https://arttrade-investments.de/config.js",
+   "archivo": "fuentes/crudo/arttrade-investments-config.js",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:11:38Z",
+   "bytes": 428,
+   "sha256": "34ca97c3fa34d8902e710b1374af5c6b7d6a1b460425b26131328a16cedb2c1e"
+  },
+  {
+   "url": "https://arttrade-investments.de/api/config/?distribution_platform_name=arttrade",
+   "archivo": "fuentes/crudo/arttrade-investments-api-config.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:11:49Z",
+   "bytes": 3011,
+   "sha256": "46c360f12c8b506792526640facc0496ad391df571255539ac67a00494ab6763"
+  },
+  {
+   "url": "https://cashlink-connect.docs.cashlink-files.de/documents/75c0c196-8fe1-46a2-8d09-bc4559825e73.pdf",
+   "archivo": "fuentes/crudo/pdf/effecta-kundeninformationen.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:11:59Z",
+   "bytes": 801369,
+   "sha256": "adc7b517bdb74f99187b96cb87e1650a92c105a3445ad40c239fc9d862ae5b44"
+  },
+  {
+   "url": "https://cashlink-connect.docs.cashlink-files.de/documents/1585f737-9f7d-461f-a777-9e4e313c6844.pdf",
+   "archivo": "fuentes/crudo/pdf/effecta-agb.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:12:00Z",
+   "bytes": 104657,
+   "sha256": "989cc47430daab3bdcbace54a0e08e6e95c5ef88cc40642138e6a57a6019085c"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "archivo": "fuentes/crudo/bafin-instinfo-effecta.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:12:45Z",
+   "bytes": 26540,
+   "sha256": "93c2dfabdff1af79340d8f3c956becaf1213c0fd6fa93e99db7ddb7094f4cc3e"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?numero=5003&tipo=CLP",
+   "archivo": "fuentes/crudo/cnmv-effecta-lp.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:12:57Z",
+   "bytes": 217226,
+   "sha256": "900f388153ab5f9f4507425050505bab79fef391a5f239405d5f37dc3f84ac08"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=8",
+   "archivo": "fuentes/crudo/cnmv-effecta-agentes.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:12:58Z",
+   "bytes": 217424,
+   "sha256": "32d14b88e1abaf58f74e2313a4be795d16e6fadeb7611c9bd0e64741b8bb54fe"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=17",
+   "archivo": "fuentes/crudo/cnmv-effecta-programa.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:13:00Z",
+   "bytes": 217942,
+   "sha256": "8fda3ddb51845585ba04c823b431e4c0bb79d3e673321d48c744d9b177555acd"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "archivo": "fuentes/crudo/cnmv-adv-trading.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:13:01Z",
+   "bytes": 236466,
+   "sha256": "4c1905c0b2150b8116ea059888660520401847dfc6649ec9a1540ad9e60f54ff"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=arttrade",
+   "archivo": "fuentes/crudo/cnmv-adv-arttrade.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:13:03Z",
+   "bytes": 211392,
+   "sha256": "d408bd1b3a87940a4771f25083580b6e7dfadd80742ae6785d77d1f762b51fc7"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "archivo": "fuentes/crudo/cnmv-adv-effecta.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:13:05Z",
+   "bytes": 211370,
+   "sha256": "e72e637501414ad8f5031661a0542a691ce3c6b54e0511a07f995aa2f175b715"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=arttrade+custody",
+   "archivo": "fuentes/crudo/cnmv-adv-arttrade-custody.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:13:07Z",
+   "bytes": 211568,
+   "sha256": "2d0b260b713dd1be9a7f88ac0ea8a144a9b98f2dc80c5eac5a1673643801f2b7"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cashlink",
+   "archivo": "fuentes/crudo/cnmv-adv-cashlink.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:13:08Z",
+   "bytes": 211392,
+   "sha256": "60e143aa44f1a3f99ea2b6433f450b3bf6fb94ad1c692c7fd1124cd11ccdb6e1"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Tangany",
+   "archivo": "fuentes/crudo/cnmv-adv-tangany.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:13:10Z",
+   "bytes": 211370,
+   "sha256": "7c09db2adacedd7d79a9b6c6b6dc467277dca280fe9b7e0aedc1c04564967085"
+  },
+  {
+   "url": "https://www.bafin.de/EN/Aufsicht/FinTech/Geschaeftsmodelle/DLT_Blockchain_Krypto/Kryptowertpapierregisterfuehrung/Wertapierregister_node_en.html",
+   "archivo": "fuentes/crudo/bafin-kryptowertpapiere-node-en.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-11T10:13:37Z",
+   "bytes": 61714,
+   "sha256": "ebe1979d944903635e3201504ab183122255970c47f49f7655846afca546ef57"
+  },
+  {
+   "url": "https://www.bafin.de/DE/Aufsicht/FinTech/Geschaeftsmodelle/DLT_Blockchain_Krypto/Kryptowertpapierregisterfuehrung/Wertapierregister_node.html",
+   "archivo": "fuentes/crudo/bafin-kryptowertpapiere-node-de.html",
+   "http": 404,
+   "consultadoUtc": "2026-11-11T10:13:38Z",
+   "bytes": 62054,
+   "sha256": "cb2c3813b834c525102edddde00eddf1838d1b8656eee292cd665116e2ef95c8"
+  },
+  {
+   "url": "https://www.bafin.de/DE/PublikationenDaten/Datenbanken/Kryptowertpapiere/kryptowerte_node.html",
+   "archivo": "fuentes/crudo/bafin-kryptowertpapiere-node.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:13:52Z",
+   "bytes": 82876,
+   "sha256": "b5cfa89eb8cf56139c08a3851a39c80871613c8d109d036900cc0b6713cdfa5b"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Tangany&sucheButtonInstitut=Suche",
+   "archivo": "fuentes/crudo/bafin-instinfo-suche-Tangany.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:14:26Z",
+   "bytes": 25930,
+   "sha256": "90ca9a66462f5c469e123b5462b28ba8af9a39ffbad828621fa20e88feb1e7c2"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Cashlink&sucheButtonInstitut=Suche",
+   "archivo": "fuentes/crudo/bafin-instinfo-suche-Cashlink.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:14:27Z",
+   "bytes": 25936,
+   "sha256": "740fb2581994897b2b6a7979e5fab810fa137b982d429b80ad4ad8fb14e5794b"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=arttrade&sucheButtonInstitut=Suche",
+   "archivo": "fuentes/crudo/bafin-instinfo-suche-arttrade.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:14:28Z",
+   "bytes": 24462,
+   "sha256": "403fbc3a2c43289a7cb6a28d1bdd017715bb6be19507754ac0449d588f8f56ce"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=157349",
+   "archivo": "fuentes/crudo/bafin-instinfo-tangany.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:14:35Z",
+   "bytes": 27004,
+   "sha256": "a4d125fdf92861e4640be9e221e21510675b7f8a94359294a63927561b881d35"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=160302",
+   "archivo": "fuentes/crudo/bafin-instinfo-cashlink.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:14:36Z",
+   "bytes": 26374,
+   "sha256": "25eb664fb0174ecf5c1a4c79bf5c96c41d427554ed7b9909d80a37cd4baf8982"
+  },
+  {
+   "url": "https://agitarex.com/arttrade-dap-01/",
+   "archivo": "fuentes/crudo/agitarex-arttrade-dap-01.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:15:14Z",
+   "bytes": 219849,
+   "sha256": "0de816ef29ada2a712b71cc6c5dbd3f9afbefcdf7d6ad9fc9d756bae00e1c983"
+  },
+  {
+   "url": "https://agitarex.com/",
+   "archivo": "fuentes/crudo/agitarex-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:15:17Z",
+   "bytes": 240439,
+   "sha256": "fa11419d1321c8f4a5162e54bc38fad719ecc2154d72d6670c3c9c9b9e54d9f0"
+  },
+  {
+   "url": "https://agitarex.com/agb/",
+   "archivo": "fuentes/crudo/agitarex-agb.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:15:30Z",
+   "bytes": 248085,
+   "sha256": "a5870dd607c5aa74ba1995fbb55b3158d55edce02fbfbb9cb32511dc594d4a4f"
+  },
+  {
+   "url": "https://agitarex.com/fuer-anleger/",
+   "archivo": "fuentes/crudo/agitarex-fuer-anleger.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:15:32Z",
+   "bytes": 221761,
+   "sha256": "dff89221d95e0fef9b4ae4e68a64f8f5c9ffc38642d5eef6f4b7d657b95f46ba"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (POST nameVermittler=arttrade, statusVermittler=0)",
+   "archivo": "fuentes/crudo/bafin-vgv-arttrade.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:12:22Z",
+   "bytes": 27105,
+   "sha256": "e9b63ad75fcfb236376c6687d67a34370093544ae512f53fd60422e1ccb161f5",
+   "metodo": "curl POST al buscador público del registro de agentes vinculados (sin sesión de usuario)"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (POST nameVermittler=agitarex, statusVermittler=0)",
+   "archivo": "fuentes/crudo/bafin-vgv-agitarex.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:15:43Z",
+   "bytes": 27005,
+   "sha256": "fff8a40d67fde40163103864e413020bb284bca41ee063ea673997344f6004e3",
+   "metodo": "curl POST al buscador público del registro de agentes vinculados (sin sesión de usuario)"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do",
+   "archivo": "fuentes/crudo/bafin-instinfo-form.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:14:20Z",
+   "bytes": 24246,
+   "sha256": "220183794c459e86f99eafe2cf774c75680fadf78b9eab5e5467685ff98ffa9f",
+   "metodo": "curl GET (formulario de búsqueda; hora aproximada al minuto)"
+  },
+  {
+   "url": "https://arttrade-investments.de/ (renderizado con Playwright; redirige a /login?nextPath=%2F)",
+   "archivo": "fuentes/crudo/render-arttrade-investments.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:11:30Z",
+   "bytes": 6821,
+   "sha256": "cb6aeed4dc02ba816c97fd872392eef2df69d441aaa750e347933ca0d0935ac1",
+   "metodo": "Playwright chromium sin sesión; incluye la lista de respuestas de red (hora aproximada al minuto)"
+  },
+  {
+   "url": "https://arttrade-investments.de/ (captura)",
+   "archivo": "fuentes/crudo/render-arttrade-investments.png",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:11:30Z",
+   "bytes": 24368,
+   "sha256": "fefe7f6bb9177a2b4c38624eb30c5976329cf755316f221eae4f7ea0107db688",
+   "metodo": "Playwright chromium sin sesión"
+  },
+  {
+   "url": "https://arttrade.de/en/",
+   "archivo": null,
+   "http": 404,
+   "consultadoUtc": "2026-11-11T10:16:00Z",
+   "bytes": null,
+   "sha256": null,
+   "metodo": "curl -I/-L (sondeo; no se guardó cuerpo)",
+   "nota": "https://arttrade.de/en/"
+  },
+  {
+   "url": "https://arttrade.de/es/",
+   "archivo": null,
+   "http": 404,
+   "consultadoUtc": "2026-11-11T10:16:00Z",
+   "bytes": null,
+   "sha256": null,
+   "metodo": "curl -I/-L (sondeo; no se guardó cuerpo)",
+   "nota": "https://arttrade.de/es/"
+  },
+  {
+   "url": "https://arttrade.de/assets/",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:16:00Z",
+   "bytes": null,
+   "sha256": null,
+   "metodo": "curl -I/-L (sondeo; no se guardó cuerpo)",
+   "nota": "redirige a https://arttrade.de/"
+  },
+  {
+   "url": "https://arttrade.io/assets/",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-11T10:16:00Z",
+   "bytes": null,
+   "sha256": null,
+   "metodo": "curl -I/-L (sondeo; no se guardó cuerpo)",
+   "nota": "redirige a https://arttrade.de/ (es el invest_now_url de la API de configuración)"
+  },
+  {
+   "url": "https://arttrade.de/faq/",
+   "archivo": null,
+   "http": 404,
+   "consultadoUtc": "2026-11-11T10:16:00Z",
+   "bytes": null,
+   "sha256": null,
+   "metodo": "curl -I/-L (sondeo; no se guardó cuerpo)",
+   "nota": "https://arttrade.de/faq/"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/KWPInfo/",
+   "archivo": null,
+   "http": 404,
+   "consultadoUtc": "2026-11-11T10:16:00Z",
+   "bytes": null,
+   "sha256": null,
+   "metodo": "curl -I/-L (sondeo; no se guardó cuerpo)",
+   "nota": ""
+  },
+  {
+   "url": "https://www.bafin.de/SiteGlobals/Forms/Suche/Expertensuche_Formular.html?templateQueryString=Kryptowertpapiere+Liste",
+   "archivo": null,
+   "http": 403,
+   "consultadoUtc": "2026-11-11T10:16:00Z",
+   "bytes": null,
+   "sha256": null,
+   "metodo": "curl -I/-L (sondeo; no se guardó cuerpo)",
+   "nota": ""
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/agitarex-agb.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 36467,
+   "sha256": "260179587ce30ef29b12f51f7129f76f07d8f58176339c5ac49f782cf39f3748",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/agitarex-arttrade-dap-01.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 771,
+   "sha256": "649734cdfd7727d352379279b68b12ede1983e2bf757c6db5521b5c7c0ffe452",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/agitarex-fuer-anleger.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 2239,
+   "sha256": "ae81129759e306dc07566d8d2e025183014e208d043f314a6b9117a8c7441639",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/agitarex-home.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 1993,
+   "sha256": "9cb077ff9c93912852a7662793e673b6667975d5a5eb330d7baa75ececd4468c",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-anleihebedingungen.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 3088,
+   "sha256": "1ad968a6716aac95b5c9a9ff2ac35f8d17ce39d04062d9fec9d92ea9ec624dc0",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-art-investment.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 9609,
+   "sha256": "fe2f22c66a112248e4f2624abb7106f19a3d967ec7a2e45f7444a481f3611b16",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-basis-informationsblaetter.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 3271,
+   "sha256": "71d0ec86dd27f292053bc6eacfd7995e3fe3daebe95eebb9e3a37dcf27bfe64c",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-geschaeftskunden.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 8508,
+   "sha256": "fabf0e4eafba30be2fd1e43582f0a4363331840bf603b4cdddf5f26d010ffc20",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-home.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 6977,
+   "sha256": "39566b6ed474f49009072d4bf558c60963b145db1dc04727f00d21aabc22b129",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-impressum.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 803,
+   "sha256": "0ab75d8621fe8d38f1f2974ed23443453bef2fdcd428d58793345f35effcbab6",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-imprint.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 4112,
+   "sha256": "72f846156eb29e1fe26852ae437ba4dd9d0ab2fbe7fee8fef30ae68c7f718fac",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-kontakt.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 967,
+   "sha256": "f3d96dd2f8e8178991b8e7e25fe153c4a0e279fbcb03e0536846d5f3b1816f55",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-leistungen.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 2669,
+   "sha256": "dd74a250ac1cd5129da8212ef43e7f0fa4e2274cff93ccdd28702f7aac3c4621",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-nutzungsbedingungen.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 22749,
+   "sha256": "3976fb3700845b5d0d20c1e45f4f7ed8bead464b2fd8dadb16e80cfa85b1cd4e",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-risikoinformationen.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 3252,
+   "sha256": "4603bbf5ed3177afb465cdb6b94e662ea4cd4cf84f4ba49fded5796b482df317",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-ueber-uns.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 3767,
+   "sha256": "0e9f5e952be264bbbef6b854316b435bf43c8f37b20b83962b1a98333c4680dc",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/arttrade-verbraucherinformationen.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 3223,
+   "sha256": "4fd4fabba0b3fe1648192a869c75b95b4f568e0f114ac50e268904d42ade9ba9",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/bafin-instinfo-cashlink.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 2315,
+   "sha256": "5589bafa33f0c95c9fc21a943b82c8f95fd84a11af1f0743ca536b8588d97a70",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/bafin-instinfo-effecta.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 2364,
+   "sha256": "31b8b7fdd97a131377a51f1a336c347414e3291f8ddb50c982601369c1e0bcb4",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/bafin-instinfo-suche-Cashlink.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 1917,
+   "sha256": "0169f9ea39a08c125ef1fec8831d28bedcb447bfcad9cd2219b60d5b4b1eb067",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/bafin-instinfo-suche-Tangany.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 1920,
+   "sha256": "8cd2d8989fae9e0522cf0f8fa97751558a403c89eb3c78ee3ce623a49665c2a2",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/bafin-instinfo-suche-arttrade.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 1731,
+   "sha256": "0b0eff09abf8e289f0937b1fd12e740e515d9c70e8509aee7b6edb67a4368a28",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/bafin-instinfo-tangany.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 2703,
+   "sha256": "59061f6a220366623022b546243a79f906b0c4b91a0b32c26175ee9b7d1f7430",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/bafin-kryptowertpapiere-node.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 7179,
+   "sha256": "f46e2dd16ba5140b865a9fab497c64d5ae32fbfc994eb56f8bc348595685293f",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/bafin-vgv-arttrade.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 1101,
+   "sha256": "be6f2b3f3015b7eabf3f4b086d6902aab967a3583dab880a554c5cbd7c42d5e7",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/cnmv-adv-arttrade-custody.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13207,
+   "sha256": "4835440d39ff2d71d732ffd35008c6bf327d5b50bf0c2daf12e4a8ff3f5ab2f8",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/cnmv-adv-arttrade.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13199,
+   "sha256": "97b82d54f8631e8c04386556e1aa753db4f8a6e29ac73ea4b050788265325ea0",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/cnmv-adv-cashlink.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13199,
+   "sha256": "ad12f09b8b265605e12b76039683ffc69384c3fcae2088e3bfe1c5b545abdfc8",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/cnmv-adv-effecta.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13198,
+   "sha256": "6b5c98813c5281a1a013b90ae05178d6057c15ac6a83ec728d035330e77e8a8a",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/cnmv-adv-tangany.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13198,
+   "sha256": "87963c15128856039247a6e8080ea061ea304488b51e5ea7ae4b2c27c3d714df",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/cnmv-adv-trading.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 14211,
+   "sha256": "0e373845bba6fa2b021f54257ba1edcf067f841361b197f29dc23a64244d7b6d",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/cnmv-effecta-agentes.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13861,
+   "sha256": "681907fdfaea368f6f1014a84e17421818fa5116ac33b3252c07943a523d39b6",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/cnmv-effecta-lp.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13922,
+   "sha256": "2eb94e9c5c9ed99e12ae3f265b1b8b2cd5f40c8c08fd1e6439fcc66cd60122b3",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/cnmv-effecta-programa.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 14068,
+   "sha256": "a560235185d582c54ddb488c419875ded24be16bdf634bd1753a72de9a7adeb1",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/crudo/pdf/2404_arttrade_Anleihebedingungen_artista-omitido-001.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 16833,
+   "sha256": "343b0f5be2029d16d023d4073b6c0be95c3c478ede65d3af9a35c6741ad62277",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); sin redactar, fuera de Git"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/crudo/pdf/2404_arttrade_BIB_artista-omitido-001.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 17371,
+   "sha256": "7b89da5192c8f24ae3cbb5cdf5c6a6946cf8c276a2750ca44d4fcdb98d334463",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); sin redactar, fuera de Git"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/crudo/pdf/2404_arttrade_Verbraucherinformationen_artista-omitido.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 15085,
+   "sha256": "960053514ba33b4818960862ee142f3afb9c3b1e266378ec674ddfcb0f57f541",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); sin redactar, fuera de Git"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/crudo/pdf/240604_ATTRAM03_Anleihebedingungen.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 23087,
+   "sha256": "9e7f42024c6a6ea64b7132ec1c5ccc264d1a4a90483613b6d08d6a43037af189",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); sin redactar, fuera de Git"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/crudo/pdf/240604_ATTRAM03_Risikofaktoren.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 20186,
+   "sha256": "a20b7d17f8c5e996ce031b2dfba339b587cb7c2956ba6db5c7185e5dbe3cb15d",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); sin redactar, fuera de Git"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/crudo/pdf/2512_ATTRAM03_Basisinformationsblatt.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 18097,
+   "sha256": "38b3394b9ac7383e3eeffb2ab28b18e76e7da00f0e2646a57b9af97b2cb55576",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); sin redactar, fuera de Git"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/crudo/pdf/2512_ATTRAM03_Verbraucherinformationen.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 18699,
+   "sha256": "32da61f70879b482f501a864834e9581101813216519094c73de6660a35bbb8f",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); sin redactar, fuera de Git"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/crudo/pdf/effecta-agb.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 20549,
+   "sha256": "2d4debc595c6a98cd1211b6d238f94c1619a044c4f1a638838ebac5a34cd82e9",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); sin redactar, fuera de Git"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/crudo/pdf/effecta-kundeninformationen.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 18553,
+   "sha256": "8018b3ca8e31810f36180b327e692a04050afa3ff837e204aa4d0621fab4611e",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); sin redactar, fuera de Git"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/documentos/2404_arttrade_Anleihebedingungen_artista-omitido-001.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 16833,
+   "sha256": "343b0f5be2029d16d023d4073b6c0be95c3c478ede65d3af9a35c6741ad62277",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/documentos/2404_arttrade_BIB_artista-omitido-001.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 17371,
+   "sha256": "7b89da5192c8f24ae3cbb5cdf5c6a6946cf8c276a2750ca44d4fcdb98d334463",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/documentos/2404_arttrade_Verbraucherinformationen_artista-omitido.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 15110,
+   "sha256": "52c6b7d2f9b3253ec71e0324fd81ba04b4e7bafe2fc2d05d276ea87427140feb",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/documentos/240604_ATTRAM03_Anleihebedingungen.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 23087,
+   "sha256": "9e7f42024c6a6ea64b7132ec1c5ccc264d1a4a90483613b6d08d6a43037af189",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/documentos/240604_ATTRAM03_Risikofaktoren.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 20288,
+   "sha256": "8c69abd91590d1014b2d0ac03adb2115d9f55c9aff24caff5cbeca031b8746b4",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/documentos/2512_ATTRAM03_Basisinformationsblatt.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 18097,
+   "sha256": "38b3394b9ac7383e3eeffb2ab28b18e76e7da00f0e2646a57b9af97b2cb55576",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/documentos/2512_ATTRAM03_Verbraucherinformationen.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 18737,
+   "sha256": "40d2a4e6bc885699dfaa53677e1535ec82bc16c23e777476aee5cd2c4f3a04c8",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/documentos/effecta-agb.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 20549,
+   "sha256": "2d4debc595c6a98cd1211b6d238f94c1619a044c4f1a638838ebac5a34cd82e9",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/documentos/effecta-kundeninformationen.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 18553,
+   "sha256": "8018b3ca8e31810f36180b327e692a04050afa3ff837e204aa4d0621fab4611e",
+   "metodo": "texto extraído localmente de la copia cruda del mismo nombre (HTML→texto con script propio; PDF con pdftotext -layout); nombres de personas físicas sustituidos por «[persona física omitida]»"
+  }
+ ],
+ "busquedasDescubrimiento": [
+  {
+   "herramienta": "WebSearch (standard)",
+   "consulta": "BaFin Kryptowertpapiere Liste § 20 eWpG Veröffentlichung Kryptowertpapierregister",
+   "consultadoUtc": "2026-11-11T10:13:25Z",
+   "uso": "descubrimiento; no respalda ninguna afirmación"
+  },
+  {
+   "herramienta": "WebSearch (standard, bafin.de)",
+   "consulta": "bafin.de Kryptowertpapiere Liste Emittent ISIN registerführende Stelle Cashlink Download",
+   "consultadoUtc": "2026-11-11T10:13:45Z",
+   "uso": "descubrimiento; la página kryptowerte_node.html devuelve hoy la portada genérica de bases de datos, sin la lista"
+  },
+  {
+   "herramienta": "WebSearch (standard)",
+   "consulta": "\"DE000A4AG7X0\"",
+   "consultadoUtc": "2026-11-11T10:14:10Z",
+   "uso": "sin resultados para la ISIN fuera de los documentos de arttrade"
+  },
+  {
+   "herramienta": "WebSearch (standard)",
+   "consulta": "arttrade GmbH Düsseldorf Kunst Investment digitale Wertpapiere 2026 neues Angebot",
+   "consultadoUtc": "2026-11-11T10:14:50Z",
+   "uso": "descubrimiento: pista de Agitarex y ATTDAP#01 (abierta después en fuente primaria)"
+  },
+  {
+   "herramienta": "WebFetch",
+   "url": "https://www.btc-echo.de/schlagzeilen/real-world-assets-agitarex-launcht-neue-tokenisierte-wertpapiere-201304/",
+   "consultadoUtc": "2026-11-11T10:15:00Z",
+   "uso": "prensa del 10/02/2025 (fuente secundaria): menciona ATTDAP#01 y Agitarex; solo descubrimiento"
+  }
+ ],
+ "nota": "Las copias crudas (HTML, PDF, JSON, capturas) están en fuentes/crudo/ (fuera de Git). Los textos de fuentes/ y fuentes/documentos/ son extracciones con los nombres de personas físicas omitidos."
+}

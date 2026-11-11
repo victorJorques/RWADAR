@@ -1,0 +1,566 @@
+{
+  "slug": "winvesta-verde-beach-sao-francisco-junior",
+  "tipoExpediente": "candidata",
+  "grupo": "profunda-2",
+  "proveedor": "winvesta",
+  "plataformaSlug": null,
+  "entidadComercializadora": "winvesta GmbH (Hamburgo, HRB 173129), agente vinculado de Effecta GmbH (Florstadt, BaFin-ID 10133261); marketplace sobre la tecnología de FINEXITY (app.winvesta.de, «tenant» winvesta)",
+  "emisor": "InterREAL Estate Invest GmbH (Bremen, HRB 37723 HB, LEI 984500C71EE40D12E541)",
+  "vehiculo": "Sociedad vehículo alemana que quiere comprar el 100 % de B.O.M. Cabo Verde-Investimentos Turísticos, SA (Praia), que a su vez debe comprar el terreno",
+  "token": "Criptovalor alemán (eWpG) «VSJ-Token», registro de Cashlink Technologies GmbH; 1 token = 1 € nominal; red no indicada en las condiciones. Aún no emitido según la carta del 30/06/2026.",
+  "derechoAdquirido": "Bono al portador no subordinado, sin garantía hasta que se inscriba una hipoteca en Cabo Verde; 5,50 % fijo y un adicional que depende de la venta del terreno, todo pagadero al vencimiento",
+  "jurisdiccion": "DE (emisor y ley aplicable); activo en CV (Cabo Verde)",
+  "identificador": "ISIN DE000A4DFMM3 · WKN A4DFMM · LEI del emisor 984500C71EE40D12E541",
+  "moneda": "EUR",
+  "documentos": [
+    {
+      "titulo": "Schuldverschreibungsbedingungen «Verde Beach São Francisco Junior» (condiciones del bono)",
+      "url": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+      "versionOFecha": "Stand: 15. Mai 2025",
+      "paginas": 20,
+      "sha256": "8365e89de3f1d164c4f7eab09220eec42fc0bada92ac924f27f4f34ff0e54564",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:16:03Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Basisinformationsblatt (KID PRIIPs) «Verde Beach São Francisco Junior», solo en alemán",
+      "url": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Basisinformationsblatt.pdf",
+      "versionOFecha": "Erstellungsdatum 15.05.2025",
+      "paginas": 3,
+      "sha256": "e8643a5772728c34973849c6e3ac6d93caee0445b7a4dfa2c81ed05a8aaf1bf5",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:16:04Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Verde_Beach_Sao_Francisco_Junior_Basisinformationsblatt.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Carta a inversores: prórroga del periodo de oferta del 31/12/2025 al 30/06/2026",
+      "url": "https://finexity.com/docs/general/ireinvest/Anlegerschreiben_Verla%CC%88ngerung_Angebotszeitraum.pdf",
+      "versionOFecha": "31.12.2025 (página: «Stand 01/2026»)",
+      "paginas": 1,
+      "sha256": "06d87f15041abaaa81931ffaa1cde2de9c42197fc987ed527d252c40547bc019",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:16:06Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Anlegerschreiben_Verlängerung_Angebotszeitraum.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Carta a inversores: prórroga del periodo de oferta del 30/06/2026 al 30/06/2027",
+      "url": "https://finexity.com/docs/general/ireinvest/26-06-30_InterREAL_u_Angebotszeitraum_Verde_Beach_Sao_Francisco.pdf",
+      "versionOFecha": "30.06.2026 (página: «Stand 06/2026»)",
+      "paginas": 1,
+      "sha256": "eb977c9d15c9dc2deb542096948e809bb403d4cc596b32c2d58cefc7a70f4a2a",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:16:07Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/26-06-30_InterREAL_u_Angebotszeitraum_Verde_Beach_Sao_Francisco.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Declaración de prórroga del bono puente «Verde Beach Santiago Bridge» (1.205.000 €, 42 % anual) hasta el 01/01/2026",
+      "url": "https://finexity.com/docs/general/ireinvest/Bekanntmachung-zur-Verlaengerung_Bridge.pdf",
+      "versionOFecha": "08.09.2025",
+      "paginas": 1,
+      "sha256": "6ae644602304dad57dc7fe2da2270ced3ba28a0a8d9c076dbc525d6381dc56b6",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:15:54Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Bekanntmachung-zur-Verlaengerung_Bridge.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Schuldverschreibungsbedingungen «Verde Beach São Francisco Retail» (tramo de 500 €, colocación cerrada)",
+      "url": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Retail_Schuldverschreibungsbedingungen.pdf",
+      "versionOFecha": "Stand: 15. Mai 2025",
+      "paginas": 20,
+      "sha256": "a13b3754ec0db626356a76a9c719607ca9084e06bba36d7586eba213b9e83e43",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:16:05Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Verde_Beach_Sao_Francisco_Retail_Schuldverschreibungsbedingungen.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Basisinformationsblatt «Verde Beach São Francisco Retail» (mínimo 500 €, interés fijo 4,00 %)",
+      "url": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Retail_Basisinformationsblatt.pdf",
+      "versionOFecha": "15.05.2025",
+      "paginas": 3,
+      "sha256": "43fd83eef7773df3595093e2c285109f2da4ca5d13a91da227f0f3ceeb92ffa1",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:16:06Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Verde_Beach_Sao_Francisco_Retail_Basisinformationsblatt.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Basisinformationsblatt «Verde Beach São Francisco Advanced» (mínimo 25.000 €)",
+      "url": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Advanced_Basisinformationsblatt.pdf",
+      "versionOFecha": "15.05.2025",
+      "paginas": 3,
+      "sha256": "006f6f1d4ac9937937ef9b50093f6bb8cfade93e38b7fdec300ac667eaf8951a",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:16:03Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Verde_Beach_Sao_Francisco_Advanced_Basisinformationsblatt.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Basisinformationsblatt «Verde Beach São Francisco Advanced B» (mínimo 5.000 €, 8,50 %)",
+      "url": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Advanced-B_Basisinformationsblatt.pdf",
+      "versionOFecha": "15.05.2025",
+      "paginas": 3,
+      "sha256": "1c276fe0de9409331e7f21c02e47c98e251c73b01a5c33bb65cf6afa1c463816",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:16:01Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Verde_Beach_Sao_Francisco_Advanced-B_Basisinformationsblatt.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Basisinformationsblatt «Verde Beach São Francisco Special-Investor» (mínimo 100.000 €)",
+      "url": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Special-Investor_Basisinformationsblatt.pdf",
+      "versionOFecha": "15.05.2025",
+      "paginas": 3,
+      "sha256": "80eeffcbf0e35bba9722f4cb9c4d871a8030047978fd36eee8f26d67135956de",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:16:00Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Verde_Beach_Sao_Francisco_Special-Investor_Basisinformationsblatt.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Basisinformationsblatt «Verde Beach São Francisco Anchor-Investor» (mínimo 250.000 €)",
+      "url": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Anchor-Investor_Basisinformationsblatt.pdf",
+      "versionOFecha": "15.05.2025",
+      "paginas": 3,
+      "sha256": "6604a286b83a337f473bf355d66f047ec8017e49182411f660fdcbedebb58b3d",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:15:58Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Verde_Beach_Sao_Francisco_Anchor-Investor_Basisinformationsblatt.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Basisinformationsblatt «Verde Beach São Francisco Professional» (mínimo 100.000 €, 15,00 %)",
+      "url": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Professional_Basisinformationsblatt.pdf",
+      "versionOFecha": "11.08.2025 (metadatos)",
+      "paginas": 3,
+      "sha256": "02c75a81e9b06cc14b8a087c7672904b12af9ae0e920da6225c503cc8224e3b7",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:15:56Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Verde_Beach_Sao_Francisco_Professional_Basisinformationsblatt.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Schuldverschreibungsbedingungen «Verde Beach Santiago Bridge» (bono puente)",
+      "url": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Santiago_Schuldverschreibungsbedingungen.pdf",
+      "versionOFecha": "27.03.2025 (metadatos)",
+      "paginas": 18,
+      "sha256": "857f498c0319e1c32b17c01ecfd69f2ac790fd44f0d9acd9646c36ded70d0c3a",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:15:53Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Verde_Beach_Santiago_Schuldverschreibungsbedingungen.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Basisinformationsblatt «Verde Beach Santiago Bridge»",
+      "url": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Santiago_Basisinformationsblatt.pdf",
+      "versionOFecha": "26.03.2025",
+      "paginas": 3,
+      "sha256": "7654468a71a12a9874ea45a90ceb970156adb87dabca650af0ac8f20b0f52590",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:15:54Z",
+      "copia": "grupos/profunda-2/fuentes/crudo/pdf/Verde_Beach_Santiago_Basisinformationsblatt.pdf (fuera de Git: el texto nombra a personas físicas)"
+    },
+    {
+      "titulo": "Ficha del tramo Junior en el marketplace de winvesta (datos del servidor, sin sesión)",
+      "url": "https://app.winvesta.de/marketplace/CD-PP-DE-IREINVEST-02-01?status=all",
+      "versionOFecha": "consulta de hoy",
+      "paginas": null,
+      "sha256": "4431f77a276444cb661f8a43c10a53dcc2c8262ff3d45375f2fbc0d145c2f9e0",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:09:24Z",
+      "nota": "Incluye el aviso legal, el estado «Funding Active», la caja de datos y costes; varias secciones marcadas «privateTab» llegan igualmente en el HTML público."
+    },
+    {
+      "titulo": "Marketplace de winvesta renderizado (42 productos y su estado)",
+      "url": "https://app.winvesta.de/marketplace (navegador, sin sesión)",
+      "versionOFecha": "consulta de hoy",
+      "paginas": null,
+      "sha256": "54b304d54b1561f646f243e2d0f984f1b38837a83ff70ac1ed658a67afc76802",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:17:36Z",
+      "nota": "Leído con Playwright sin sesión."
+    },
+    {
+      "titulo": "Respuestas JSON del marketplace (catálogo, «fundingPercentage», libro de órdenes)",
+      "url": "https://app.winvesta.de/query (respuestas JSON que carga la página del marketplace)",
+      "versionOFecha": "consulta de hoy",
+      "paginas": null,
+      "sha256": "ae7de8a99fae9c41d5d64941d6c568b31cc5f67ca278c642679ae67649f75608",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:17:36Z",
+      "nota": "projectOffers: compra y venta vacías en los 13 productos negociables."
+    },
+    {
+      "titulo": "winvesta.de/faq",
+      "url": "https://www.winvesta.de/faq/",
+      "versionOFecha": "consulta de hoy",
+      "paginas": null,
+      "sha256": "d484a1c93feace1d533ba2f41acc258439ac726a272ec9c484930cd3587736fb",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:08:26Z",
+      "nota": "Mercado secundario «vollkommen gebührenfrei» y cancelación anticipada."
+    },
+    {
+      "titulo": "winvesta.de/impressum",
+      "url": "https://www.winvesta.de/impressum/",
+      "versionOFecha": "consulta de hoy",
+      "paginas": null,
+      "sha256": "60e13c316fdb24e32340e72a34d412a64bc9fbc08386a408e30349e30c2f9ad8",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:08:29Z",
+      "nota": "Agente vinculado de Effecta, n.º BaFin 80176451, HRB 173129."
+    },
+    {
+      "titulo": "winvesta.de (portada)",
+      "url": "https://www.winvesta.de/",
+      "versionOFecha": "consulta de hoy",
+      "paginas": null,
+      "sha256": "b1443c608dde83b8c7d4ce73254379f85ffd1dcd11bbe70657b602fe058a53d2",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:08:24Z",
+      "nota": "Lista «Aktuelle Projekte»; última modificación de la página según el sitemap: 2025-06-20."
+    },
+    {
+      "titulo": "finexity.com/ire-invest (página de documentos del emisor)",
+      "url": "https://finexity.com/ire-invest",
+      "versionOFecha": "consulta de hoy",
+      "paginas": null,
+      "sha256": "5330583657f7d17e6e2801e4e4e3526da3471ac544845133446310fd48ff8422",
+      "leido": true,
+      "consultadoUtc": "2026-11-11T10:09:53Z",
+      "nota": "Lista 19 documentos; ningún folleto ni hoja WIB."
+    }
+  ],
+  "registros": [
+    {
+      "regulador": "BaFin (Alemania)",
+      "entidad": "winvesta GmbH",
+      "numero": "80176451",
+      "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do?nameVermittler=winvesta&statusVermittler=0",
+      "alcance": "Vertraglich gebundener Vermittler con Effecta GmbH como entidad responsable; Tätig ab 16.03.2022, sin «Tätig bis»; Meldedatum 06.01.2023; «Stand der Daten: 10.11.2026». Sin licencia propia.",
+      "consultadoUtc": "2026-11-11T10:13:02Z"
+    },
+    {
+      "regulador": "BaFin (Alemania)",
+      "entidad": "Effecta GmbH",
+      "numero": "BaFin-ID 10133261",
+      "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+      "alcance": "Wertpapierinstitut: Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG) y Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG) desde el 26/06/2021.",
+      "consultadoUtc": "2026-11-11T10:13:17Z"
+    },
+    {
+      "regulador": "CNMV (España)",
+      "entidad": "EFFECTA GmbH",
+      "numero": "5003 (registro 11/11/2020)",
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?tipo=CLP&numero=5003&vista=17",
+      "alcance": "ESI del EEE en libre prestación; programa: «Recepción y transmisión de órdenes» sobre valores negociables y participaciones de IIC. Pestaña «Agentes» (vista=8): «No se han encontrado datos disponibles»: winvesta no consta como agente notificado para España.",
+      "consultadoUtc": "2026-11-11T10:13:58Z"
+    },
+    {
+      "regulador": "GLEIF",
+      "entidad": "InterREAL Estate Invest GmbH",
+      "numero": "LEI 984500C71EE40D12E541",
+      "url": "https://api.gleif.org/api/v1/lei-records/984500C71EE40D12E541",
+      "alcance": "LEI ISSUED, «FULLY_CORROBORATED», HRB 37723 HB, alta 11/04/2025. No es un registro de supervisión: el emisor no está supervisado.",
+      "consultadoUtc": "2026-11-11T10:18:52Z"
+    },
+    {
+      "regulador": "ESMA (registro de folletos)",
+      "entidad": "InterREAL Estate Invest GmbH",
+      "numero": "ISIN DE000A4DFMM3",
+      "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:DE000A4DFMM3&wt=json&rows=50",
+      "alcance": "0 documentos para el ISIN y 0 para el LEI: no hay folleto aprobado ni pasaportado. La misma consulta con el LEI de Ondo Global Markets devuelve 277 (buscador operativo).",
+      "consultadoUtc": "2026-11-11T10:18:51Z"
+    }
+  ],
+  "advertenciasReguladores": [
+    {
+      "regulador": "CNMV",
+      "busqueda": "winvesta",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=winvesta",
+      "consultadoUtc": "2026-11-11T10:13:24Z",
+      "alcance": "Buscador validado hoy con «Trading» («Página 1 de 16»). No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Effecta",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+      "consultadoUtc": "2026-11-11T10:13:26Z",
+      "alcance": "Buscador validado hoy con «Trading» («Página 1 de 16»). No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "InterReal",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=InterReal",
+      "consultadoUtc": "2026-11-11T10:13:28Z",
+      "alcance": "Buscador validado hoy con «Trading» («Página 1 de 16»). No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Finexity",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Finexity",
+      "consultadoUtc": "2026-11-11T10:13:31Z",
+      "alcance": "Buscador validado hoy con «Trading» («Página 1 de 16»). No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "CNMV",
+      "busqueda": "Verde Beach",
+      "resultado": "sin coincidencias («No hay datos disponibles»)",
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Verde+Beach",
+      "consultadoUtc": "2026-11-11T10:13:33Z",
+      "alcance": "Buscador validado hoy con «Trading» («Página 1 de 16»). No aparecer no equivale a estar autorizado."
+    },
+    {
+      "regulador": "BaFin",
+      "busqueda": "winvesta, InterREAL (buscador general de bafin.de, que incluye sus avisos)",
+      "resultado": "no verificable: 403 de nginx con curl y con el navegador",
+      "url": "https://www.bafin.de/SiteGlobals/Forms/Suche/Expertensuche_Formular.html?templateQueryString=winvesta",
+      "consultadoUtc": "2026-11-11T10:19:12Z",
+      "alcance": "Bloqueo registrado. El registro de agentes vinculados (portal.mvp.bafin.de) sí se leyó."
+    }
+  ],
+  "claims": [
+    {
+      "campo": "accesoEspana",
+      "literal": "Die Informationen in diesem Dokument richten sich ausschließlich an Personen, die ihren Wohnsitz bzw. gewöhnlichen Aufenthalt in der Bundesrepublik Deutschland haben.",
+      "dato": "No disponible en España: el aviso legal del producto lo dirige solo a residentes en Alemania.",
+      "fuentePrimaria": "https://app.winvesta.de/marketplace/CD-PP-DE-IREINVEST-02-01?status=all",
+      "localizador": "Ficha del tramo Junior, campo «disclaimerHtml» («GESETZLICHER WARNHINWEIS»); el mismo texto en los tramos Advanced, Special-Investor, Anchor-Investor y Retail, y en las demás fichas abiertas hoy (WIN-08, Ocean View)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-11T10:09:24Z",
+      "alcanceYLimites": "Es la única fuente primaria que habla de residencia y excluye a España. No existe folleto con pasaporte (ESMA: 0 documentos para el ISIN y el LEI del emisor). Encaja con un régimen alemán de oferta pública sin folleto, pero esto último es una inferencia, no un literal.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "accesoEspana",
+      "literal": "Die Emittentin wird auf die fälligen Zinsen Kapitalertragsteuern in Höhe der zum jeweiligen Zeitpunkt anwendbaren Steuersätze einbehalten und an das Finanzamt abführen.",
+      "dato": "Retención alemana sobre los intereses (Kapitalertragsteuer y Solidaritätszuschlag); el producto está pensado para contribuyentes alemanes.",
+      "fuentePrimaria": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+      "localizador": "Condiciones, cifra 9.1 (p. 18)",
+      "fechaDato": "2025-05-15",
+      "consultadoUtc": "2026-11-11T10:16:03Z",
+      "alcanceYLimites": "Dato de contexto: no excluye por sí solo, pero refuerza el aviso de solo Alemania.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "entidad",
+      "literal": "Die winvesta GmbH ist vertraglich gebundener Vermittler im Sinne des § 3 (2) WpIG und wird bei der Vermittlung von Finanzinstrumenten gemäß § 2 (2) Nr. 3 WpIG ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+      "dato": "winvesta GmbH (Hamburgo, HRB 173129), agente vinculado de Effecta GmbH; sin licencia propia.",
+      "fuentePrimaria": "https://www.winvesta.de/impressum/",
+      "localizador": "Impressum, «Hinweis gem. § 3 (2) WpIG»",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-11T10:08:29Z",
+      "alcanceYLimites": "Contrastado hoy en el registro de agentes vinculados de la BaFin (n.º 80176451, activo).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "registro",
+      "literal": "80176451 · Effecta GmbH · Florstadt · 16.03.2022 · 06.01.2023",
+      "dato": "Agente vinculado n.º 80176451 de Effecta GmbH, activo desde el 16/03/2022 y sin fecha de baja.",
+      "fuentePrimaria": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do?nameVermittler=winvesta&statusVermittler=0",
+      "localizador": "Registro de agentes vinculados de la BaFin; columnas Nr., Haftungsinstitut, Sitz, Tätig ab, Meldedatum",
+      "fechaDato": "2026-11-10",
+      "consultadoUtc": "2026-11-11T10:13:02Z",
+      "alcanceYLimites": "«Stand der Daten» de la base: 10.11.2026. El registro acredita al agente, no el producto ni al emisor.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "emisor",
+      "literal": "InterREAL Estate Invest GmbH mit Sitz in Hollerallee 26, 28209 Bremen (Deutschland), eingetragen im Handelsregister beim Amtsgericht Bremen unter der Registrierungsnummer HRB 37723 HB, LEI 984500C71EE40D12E541",
+      "dato": "Emisor: InterREAL Estate Invest GmbH (Bremen), sociedad vehículo no supervisada; LEI activo (GLEIF, alta 11/04/2025).",
+      "fuentePrimaria": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+      "localizador": "Condiciones, cifra 1.1 (p. 2)",
+      "fechaDato": "2025-05-15",
+      "consultadoUtc": "2026-11-11T10:16:03Z",
+      "alcanceYLimites": "GLEIF consultado hoy: ISSUED, «FULLY_CORROBORATED», HRB 37723 HB. El KID dice que la BaFin es la autoridad competente solo «in Bezug auf dieses Basisinformationsblatt».",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "estado",
+      "literal": "\"status\": \"Funding Active\"",
+      "dato": "Tramos Junior (5.000 €), Advanced (25.000 €) y Special-Investor (100.000 €) en colocación; Retail (500 €) y Anchor (250.000 €), «Funding Closed».",
+      "fuentePrimaria": "https://app.winvesta.de/marketplace/CD-PP-DE-IREINVEST-02-01?status=all",
+      "localizador": "Ficha del tramo y catálogo del marketplace (Playwright, sin sesión)",
+      "fechaDato": "2026-11-11",
+      "consultadoUtc": "2026-11-11T10:09:24Z",
+      "alcanceYLimites": "Colocado el 37 % del total («fundingPercentage»: 37) a 11/11/2026. En finexity.com la ficha del producto ya no existe (redirige a la portada del grupo).",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "estado",
+      "literal": "den Angebotszeitraum vom 30.06.2026 bis zum 30.06.2027 verlängert haben. [...] Die Ausgabe der Token wird entsprechend später erfolgen.",
+      "dato": "Periodo de oferta prorrogado dos veces (31/12/2025 → 30/06/2026 → 30/06/2027); los tokens aún no se han emitido.",
+      "fuentePrimaria": "https://finexity.com/docs/general/ireinvest/26-06-30_InterREAL_u_Angebotszeitraum_Verde_Beach_Sao_Francisco.pdf",
+      "localizador": "Carta del emisor del 30/06/2026 (1 página); la anterior, del 31/12/2025",
+      "fechaDato": "2026-06-30",
+      "consultadoUtc": "2026-11-11T10:16:07Z",
+      "alcanceYLimites": "En conflicto con las condiciones y el KID, que fijan el inicio del plazo el 15/06/2025, y con la ficha (que dice «Laufzeitbeginn Juni 2025»). El vencimiento sigue siendo el 14/06/2028.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "minimo",
+      "literal": "Die Mindestzeichnungssumme für einen Anleger beträgt EUR 5.000,00. Zeichnungen über einen geringeren Betrag sind nicht zulässig.",
+      "dato": "5.000 € (tramo Junior). El tramo de 500 € (Retail) está cerrado.",
+      "fuentePrimaria": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Basisinformationsblatt.pdf",
+      "localizador": "KID Junior, «Kleinanleger-Zielgruppe» (p. 1)",
+      "fechaDato": "2025-05-15",
+      "consultadoUtc": "2026-11-11T10:16:04Z",
+      "alcanceYLimites": "El «ab 500 €» de la web de winvesta no se aplica a ninguna colocación abierta hoy.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "rentabilidad",
+      "literal": "Die Schuldverschreibungen werden ab dem Laufzeitbeginn bis zum Laufzeitende (einschließlich) mit 5,50 % p.a. auf ihren ausstehenden Nennbetrag verzinst.",
+      "dato": "Interés fijo del 5,50 % anual, pagadero todo al vencimiento; más un interés adicional del 4 % o 6 % anual si la venta del terreno supera los 12 o 16 millones de euros.",
+      "fuentePrimaria": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+      "localizador": "Condiciones, cifras 6.2, 6.3 y 6.5 (pp. 13-14)",
+      "fechaDato": "2025-05-15",
+      "consultadoUtc": "2026-11-11T10:16:03Z",
+      "alcanceYLimites": "El 9,50 % que muestra la web es una previsión que suma el fijo y el adicional del escenario medio; no es un rendimiento. El KID da 0 € en los escenarios de tensión y pesimista.",
+      "estado": "respaldado_con_alcance"
+    },
+    {
+      "campo": "salida",
+      "literal": "Derzeit existiert kein liquider Zweitmarkt für die Schuldverschreibung. Eine Veräußerung [...] ist jedoch aufgrund der geringen Marktgröße und Handelstätigkeit nicht sichergestellt.",
+      "dato": "Sin mercado secundario líquido; el inversor no puede cancelar (cifra 7.1); el reembolso llega 30 días hábiles después del 14/06/2028 y depende de la venta del terreno.",
+      "fuentePrimaria": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Basisinformationsblatt.pdf",
+      "localizador": "KID Junior, «Wie lange sollte ich die Anlage halten…» (p. 3)",
+      "fechaDato": "2025-05-15",
+      "consultadoUtc": "2026-11-11T10:16:04Z",
+      "alcanceYLimites": "En conflicto con las FAQ de winvesta («Über unseren Sekundärmarkt … vollkommen gebührenfrei»; cancelación con «Kapital und der Festzins anteilig»). Las condiciones excluyen la cancelación ordinaria del inversor. Hoy el marketplace muestra 17 productos «Trading paused» (pausados) y compra y venta vacías en los 13 productos con libro de órdenes.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "salida",
+      "literal": "Über unseren Sekundärmarkt besteht für Sie die Möglichkeit, mit ihren Token zu handeln. Dabei können sie eigenständig und vollkommen gebührenfrei kaufen und verkaufen.",
+      "dato": "Afirmación general de la plataforma, no del producto.",
+      "fuentePrimaria": "https://www.winvesta.de/faq/",
+      "localizador": "FAQ «Besteht die Möglichkeit, meine tokenisierte Schuldverschreibung zu kündigen oder zu verkaufen?»",
+      "fechaDato": "2022-10-12",
+      "consultadoUtc": "2026-11-11T10:08:26Z",
+      "alcanceYLimites": "Fecha del dato: lastmod de la página en el sitemap. Lo contradicen el KID y las condiciones del producto, y el estado del marketplace hoy.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "garantia",
+      "literal": "Eine gleichrangige Besicherung [...] soll nach Erwerb des Finanzierten Objekts durch die Zielgesellschaft [...] erfolgen. Bis dahin sind die Schuldverschreibungen unbesichert.",
+      "dato": "Bono no subordinado pero SIN garantía hasta que la sociedad objetivo compre el terreno y se inscriba una hipoteca de Cabo Verde.",
+      "fuentePrimaria": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+      "localizador": "Condiciones, cifras 8.1 y 8.2 (p. 17); KID p. 1",
+      "fechaDato": "2025-05-15",
+      "consultadoUtc": "2026-11-11T10:16:03Z",
+      "alcanceYLimites": "En conflicto con la ficha comercial: «Erstrangige Grundschuldsicherheit in Höhe von 10,83 Mio. EUR» y «Für die Anleger wird eine erstrangige Grundschuld über 10.833.000 Euro eingetragen». El KID añade: «Im Innenverhältnis zwischen Emittentin und Zielgesellschaft ist bisher noch keine Regelung getroffen».",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "derecho",
+      "literal": "Das Grundstück befindet sich derzeit noch im Eigentum des Staates (Patrimônio do Estado). [...] Der Kaufvertrag über die Anteile an der Zielgesellschaft wird derzeit noch verhandelt. [...] Rechtlich abgesichert ist das noch nicht.",
+      "dato": "Activo: terreno de playa de unas 6,5 hectáreas en la isla de Santiago (Cabo Verde, fuera del EEE), aún propiedad del Estado en la fecha del documento; compra de la sociedad objetivo sin cerrar.",
+      "fuentePrimaria": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+      "localizador": "Condiciones, cifra 1.4 f) y g) (pp. 3-5)",
+      "fechaDato": "2025-05-15",
+      "consultadoUtc": "2026-11-11T10:16:03Z",
+      "alcanceYLimites": "La pista lo situaba en Portugal: es Cabo Verde («Standort: Praia | Santiago | Kap Verde»). No hay documento público posterior que diga si la compra se cerró.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+      "dato": "Indicador de riesgo 6 de 7; escenarios de tensión y pesimista con 0 € (-100 %); sin fondo de garantía.",
+      "fuentePrimaria": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Basisinformationsblatt.pdf",
+      "localizador": "KID Junior, «Welche Risiken bestehen…» (p. 2)",
+      "fechaDato": "2025-05-15",
+      "consultadoUtc": "2026-11-11T10:16:04Z",
+      "alcanceYLimites": "El KID sigue fechado el 15/05/2025 pese a las dos prórrogas.",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "riesgos",
+      "literal": "Die Anleihe „Verde Beach Santiago Bridge“ [...] einen Nennbetrag von EUR 1.205.000,00, eine Laufzeit vom 2. April bis zum 1. Oktober 2025 und einen Zinssatz von 42,00% p.a.",
+      "dato": "Parte del dinero se destina a pagar un bono puente al 42 % anual, prorrogado hasta el 01/01/2026; no hay aviso público de su reembolso.",
+      "fuentePrimaria": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+      "localizador": "Condiciones, cifras 1.4 h) y 1.5 a) (pp. 5-6); declaración de prórroga del 08/09/2025",
+      "fechaDato": "2025-05-15",
+      "consultadoUtc": "2026-11-11T10:16:03Z",
+      "alcanceYLimites": "Prórroga del bono puente: https://finexity.com/docs/general/ireinvest/Bekanntmachung-zur-Verlaengerung_Bridge.pdf (consultado 2026-11-11T10:15:54Z).",
+      "estado": "respaldado"
+    },
+    {
+      "campo": "comisiones",
+      "literal": "Kosten insgesamt 1.859,87 EUR [...] Einstiegskosten [...] 1.557,97 EUR [...] Diese Kosten haben keinen Einfluss auf die Rendite der Anleger und sind lediglich von der Emittentin zu tragen.",
+      "dato": "Sin comisión directa al inversor según el KID, pero costes del 18,6 % sobre 10.000 € en 3 años que paga el emisor con el dinero captado; el vendedor puede cobrar hasta un 5 %.",
+      "fuentePrimaria": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Basisinformationsblatt.pdf",
+      "localizador": "KID Junior, «Welche Kosten entstehen?» (pp. 2-3)",
+      "fechaDato": "2025-05-15",
+      "consultadoUtc": "2026-11-11T10:16:04Z",
+      "alcanceYLimites": "El mismo KID dice «Jährliche Auswirkungen der Kosten 0,00 % pro Jahr»: incoherente con un coste total de 1.859,87 €. La ficha del marketplace da «oneTimePlacementFee»: 18.6, «monetaryBenefitsToBroker»: 4.5 y «monetaryBenefitsToInstitute»: 5.",
+      "estado": "en_conflicto"
+    },
+    {
+      "campo": "documentos",
+      "literal": "Kapitalmarktdokumentation: Schuldverschreibungsbedingungen [...] Basisinformationsblatt [...] Verlängerung Angebotszeitraum São Francisco",
+      "dato": "Condiciones, KID y avisos públicos solo en alemán; no hay folleto ni hoja de información (WIB) publicados.",
+      "fuentePrimaria": "https://finexity.com/ire-invest",
+      "localizador": "Página de documentos del emisor (19 documentos)",
+      "fechaDato": null,
+      "consultadoUtc": "2026-11-11T10:09:53Z",
+      "alcanceYLimites": "La página de winvesta dice que los documentos se ven tras registrarse, pero están públicos en finexity.com. ESMA: 0 documentos para el ISIN DE000A4DFMM3 y el LEI 984500C71EE40D12E541 (la misma búsqueda con otro LEI devuelve 277).",
+      "estado": "respaldado"
+    }
+  ],
+  "criterios": {
+    "entidadYPermisos": {
+      "veredicto": "cumple_con_limites",
+      "nota": "winvesta es agente vinculado activo de Effecta (BaFin 80176451). Effecta está en la CNMV (n.º 5003, libre prestación, solo recepción y transmisión de órdenes) sin agentes notificados. El emisor es una sociedad vehículo de Bremen sin supervisión y la oferta no tiene folleto."
+    },
+    "actividadYFecha": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Hoy hay tres tramos en colocación (Junior, Advanced y Special-Investor), con el 37 % colocado. La oferta se ha prorrogado dos veces, hasta el 30/06/2027, y los tokens aún no se han emitido. Contradice el inicio de plazo del 15/06/2025 que dan las condiciones, el KID y la ficha."
+    },
+    "accesoYCondiciones": {
+      "veredicto": "no_cumple",
+      "nota": "El aviso legal de la ficha dirige el producto solo a residentes en Alemania. Además: mínimo de 5.000 €, todo pagadero en 2028, sin cancelación del inversor, mercado secundario sin liquidez y documentos solo en alemán."
+    },
+    "riesgosYAlertas": {
+      "veredicto": "cumple_con_limites",
+      "nota": "Riesgos bien dichos en el KID (clase 6, pérdida total posible). Pero la ficha comercial promete una hipoteca de primer rango que las condiciones aplazan («bis dahin unbesichert»). El activo está en Cabo Verde, en manos del Estado en la fecha del documento, y parte del dinero paga un bono puente al 42 %. No hay advertencias de la CNMV; la búsqueda en bafin.de queda bloqueada."
+    }
+  },
+  "estadoOferta": "abierta",
+  "disponibleEs": "excluido",
+  "cambiosRespectoPublicado": [],
+  "propuestaTarjeta": null,
+  "propuestaPlataforma": null,
+  "erroresDeLaPista": [
+    "Ubicación: no es Portugal, es Cabo Verde (Praia, isla de Santiago), fuera del EEE: «Standort: Praia | Santiago | Kap Verde».",
+    "Documentos: sí son públicos. Las condiciones y el KID de cada tramo están en finexity.com/ire-invest, aunque winvesta diga que solo se ven tras registrarse.",
+    "Rango: el bono no es subordinado («nicht nachrangig»), pero no tiene garantía hasta que se compre el terreno.",
+    "Acceso desde España: hay fuente, y excluye. El aviso legal dirige el producto solo a residentes en Alemania.",
+    "Salida: el mercado secundario «gebührenfrei» de las FAQ choca con el KID, sin mercado líquido, y con el marketplace de hoy (17 productos en pausa y libros de órdenes vacíos)."
+  ],
+  "otrasObservaciones": [
+    "En el marketplace de winvesta, tres bonos «Green Tiny House» (WIN-04, WIN-05 y WIN-06) siguen en estado «Marketplace» con fecha de fin pasada (30/11/2025 y 31/01/2026). Otros vencidos aparecen como «Successfully Paid Back». No hay noticia pública sobre esos tres; es un dato que pide vigilancia, no una prueba de impago.",
+    "La plataforma corre sobre FINEXITY (tenant «winvesta»). Finexity está reorganizando su bróker y el grupo tiene pendiente la compra del 90,1 % de Effecta. Se añade un riesgo operativo para el registro y el mercado secundario.",
+    "Las secciones marcadas como privadas (tasación, garantías, equipo) llegan en el HTML público de la ficha. No se citan nombres de personas físicas."
+  ],
+  "prioridadEditorial": {
+    "compraDesdeEspanaComoParticular": "no",
+    "minimoEntrada": "5.000 € (tramo Junior; el de 500 € está cerrado)",
+    "supervisorVerificado": "Effecta GmbH (BaFin-ID 10133261; CNMV n.º 5003, solo recepción y transmisión de órdenes); winvesta, agente vinculado BaFin n.º 80176451",
+    "documentacionClara": "parcial",
+    "salidaExplicada": "parcial",
+    "cifraRecienteVerificada": "no",
+    "porQueDestaca": "Bono tokenizado alemán con KID y condiciones públicas, distribuido por un agente de una ESI con pasaporte en la CNMV.",
+    "porQueNo": "Solo para residentes en Alemania. Terreno en Cabo Verde sin garantía todavía, oferta prorrogada hasta 2027 con el 37 % colocado, mínimo de 5.000 € y sin salida líquida."
+  },
+  "decision": "no_admitir",
+  "motivoDecision": "El aviso legal de la ficha dirige el producto solo a personas con domicilio o residencia habitual en Alemania, así que un particular en España no puede comprarlo hoy. Por si eso no bastara, el bono no cumple el criterio de Víctor. Financia un terreno en Cabo Verde (no en Portugal, como decía la pista), que según los documentos aún era del Estado. No tiene garantía hasta que se cierre la compra, y la ficha promete una hipoteca que las condiciones aplazan. La oferta se ha prorrogado dos veces, hasta el 30/06/2027, con el 37 % colocado y los tokens sin emitir. El mínimo abierto es de 5.000 € y no hay salida líquida (el KID lo reconoce y el marketplace tiene los libros vacíos). Los documentos están solo en alemán.",
+  "bloqueos": [
+    "Acceso desde España: excluido por el aviso legal («ausschließlich an Personen, die ihren Wohnsitz bzw. gewöhnlichen Aufenthalt in der Bundesrepublik Deutschland haben»).",
+    "Garantía: «Bis dahin sind die Schuldverschreibungen unbesichert», frente a la promesa comercial de hipoteca de primer rango.",
+    "Estado: oferta prorrogada hasta el 30/06/2027 y tokens sin emitir, frente al inicio de plazo del 15/06/2025.",
+    "Salida: el KID dice «kein liquider Zweitmarkt»; en el marketplace, compra y venta vacías y 17 productos en pausa.",
+    "Avisos de la BaFin: el buscador de bafin.de devuelve 403 (no verificable hoy)."
+  ],
+  "consulta": {
+    "inicioUtc": "2026-11-11T10:08:14Z",
+    "finUtc": "2026-11-11T10:22:29Z"
+  }
+}

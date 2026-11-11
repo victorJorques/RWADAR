@@ -1,0 +1,11 @@
+CNMV · buscador de advertencias (https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=…) · revisor, 11/11/2026
+Control: «Trading» 09:42:35Z → «Página 1 de 16» (el buscador funciona).
+Sin resultados («No hay datos disponibles»):
+  Hausera 09:42:36Z · Holdtx 09:42:38Z · Prosegur 09:42:40Z · Minos 09:42:41Z · Securitize 09:42:44Z ·
+  Profitus 09:42:45Z · Axiology 09:42:47Z · Valorix 09:42:48Z · Bit2Me 09:42:50Z · Token City 09:42:52Z ·
+  Lornin 09:42:54Z · Cando 09:42:55Z
+PDF «otras entidades» https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf · 09:43:05Z ·
+  SHA-256 5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0 (igual que el investigador) ·
+  0 apariciones de los 12 nombres; el control «Comunitae» sí aparece (2).
+Listado de PSFP de la CNMV (09:44:50Z): 0 apariciones de Hausera u Holdtx; el control «URBANITAE REAL ESTATE PLATFORM, S.L.» sí aparece.
+Ficha ESI de Ursus-3 (09:44:49Z): «URSUS-3 CAPITAL, A.V., S.A. · Sociedades y Agencias de Valores · Nº Registro Oficial 251 · 29/08/2013».

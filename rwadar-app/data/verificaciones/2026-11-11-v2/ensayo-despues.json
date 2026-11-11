@@ -1,0 +1,60 @@
+{
+  "tipo": "ensayo_despues_de_aplicar",
+  "ejecutadoEl": "2026-11-11T15:23:20Z–15:28:04Z",
+  "como": "Tercera pasada completa, después de las correcciones de la revisión de la entrega (C1 de contenido y O1 de cumplimiento; ninguna cambia el SQL). Copia aparte del repositorio (git clone de la carpeta de trabajo en 17f2c01, que ya lleva la C1 en despues-de-aplicar.mjs y el recorte O1, a /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/entrega-1111/ensayo-2026-11-11-corr; el repositorio es superficial y git ignora --local, así que copia los objetos en vez de enlazarlos) y node_modules enlazados. Los archivos de esta entrega que sigue Git son idénticos a los de la carpeta de trabajo (diff -rq: solo faltan en la copia los PDF, HTML, imágenes y crudo/ que Git ignora, y difieren dos CSV de los grupos por el fin de línea). comprobar-entrega.mjs --exportar=DIR aplica el SQL en PGlite sobre la cadena de producción (lotes del 22/10 a la 2026-11-10) y guarda lo que leería un visitante por REST (DIR = /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/entrega-1111/rest-2026-11-11-corr: igual que la exportación de las 10:30 salvo los plataforma_id que PGlite genera al azar); ensayo-rest-simulado.cjs sirve esos datos a sincronizar.js y volcar-seed.js. Como lectura «después de aplicar» (la que exige la prueba de la app ofertas-presentacion.test.cjs) se usaron las mismas vistas exportadas, copiadas en lectura-despues-de-aplicar/ SOLO en la copia y marcadas como simuladas. Nada sale a la red ni toca Supabase. TMPDIR apuntaba al scratchpad. Las dos pasadas anteriores (10:23–10:27 y 10:30–10:34 UTC, copias ensayo-2026-11-11-r1 y ensayo-2026-11-11) dieron lo mismo salvo el mínimo corto de Switzerlend, que la C1 pasa de «1 acción (68,01 CHF, 10/11)» a «1 acción (68,01 CHF, 11/11)».",
+  "revision": "24b5f7de-2834-3e15-6ae4-62a6d9565161",
+  "huella": "24b5f7de28343e156ae462a6d9565161d49d251cb45b9422b208c0fb0bceec22",
+  "sha256AplicarYAprobar": "dfeba19516b2b688ddf4f8ad4ba1feb5049dbaae164b2d1abcee951ccb26a3cb",
+  "pasos": [
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-11-v2/comprobar-entrega.mjs --exportar=DIR",
+      "salida": "exit 0 · «resultado: correcto» · 19 comprobaciones y 6 casos de fallo (más el caso «ya importada como borrador», que pasa) · revisión 24b5f7de-2834-3e15-6ae4-62a6d9565161 · SHA dfeba195…a3cb · sincronizador interno: CSV de 30 filas idéntico al de la web; frente a rwadar-site/ cambian 52 fichas (22 de oferta, 25 de plataforma y 5 de descartadas) · 8 archivos exportados (25 plataformas, 22 ofertas, 5 descartadas, 6 categorías, 8 regiones, radar_publico 25). Su informe es pruebas-locales.json de esta carpeta."
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-11-v2/despues-de-aplicar.mjs (antes de sincronizar)",
+      "salida": "exit 1 · se niega: «AssertionError [ERR_ASSERTION]: el catálogo sincronizado no es la revisión 24b5f7de-2834-3e15-6ae4-62a6d9565161: aplica antes el SQL y ejecuta node rwadar-app/sincronizar.js». transparencia.json, el mismo SHA-256 antes y después (67e89ba3…2ea8). Lo mismo en la carpeta de trabajo (pasada de las 10:30)."
+    },
+    {
+      "orden": "RWADAR_REST_SIMULADO=DIR node -r ./rwadar-app/data/verificaciones/2026-11-11-v2/ensayo-rest-simulado.cjs rwadar-app/sincronizar.js",
+      "salida": "exit 0 · «[REST simulado] catalogo_plataformas_publicas_v2?select=*&limit=257 -> 25 filas» · «… descartada … -> 5 filas» · «catalogo_ofertas_publicas_v2?select=*&limit=1001 -> 22 filas» · «Sincronizado desde Supabase: 25 plataformas verificadas, 5 descartadas y 22 ofertas clasificadas.» · «rwadar.csv regenerado: 30 filas.» (rwadar.csv sin diferencias)"
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-11-v2/despues-de-aplicar.mjs",
+      "salida": "exit 0 · «transparencia.json: revisión, lote y verificadaEl al 11/11; fecha del 11/11 donde el expediente de hoy volvió a consultar la misma fuente (comprobaciones y títulos de los puntos); mínimos cortos de las 11 de Brickwise y de Switzerlend» · «Comprobaciones de transparencia al 11/11: 43 de 44. Con su fecha anterior: mtbill · supervisada: 2026-11-10 (la dirección https://portal.mvp.bafin.de/database/InstInfo/sucheForm.do?institutName=Midas&sucheButtonInstitut=Suche no aparece entre las consultas de hoy del expediente)» · «Títulos de puntos fuertes con fecha de consulta: 11 de 11 pasan al 11/11.» · mínimos cortos: Schwarzer Weg «Desde 69,90 € la participación (11/11)», Pottendorfer «Desde 73 € la participación (11/11)», las otras 9 con su precio y (11/11) · «Mínimo corto de Switzerlend: «1 acción (68,01 CHF, 11/11)»» (C1). transparencia.json → SHA 81e78ab9…3808, el que dio el revisor de contenido; frente al de la pasada anterior (1959f8be…c66b) solo cambia ese minimoCorto."
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-11-v2/despues-de-aplicar.mjs (otra vez)",
+      "salida": "exit 0 · «Nada que cambiar: ya estaba hecho.» · mismo SHA 81e78ab9…3808"
+    },
+    {
+      "orden": "RWADAR_REST_SIMULADO=DIR node -r ./rwadar-app/data/verificaciones/2026-11-11-v2/ensayo-rest-simulado.cjs rwadar-app/volcar-seed.js",
+      "salida": "exit 0 · «02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13 fuentes.» Sin diferencias (hoy no se toca public.plataformas ni public.fuentes)."
+    },
+    {
+      "orden": "node rwadar-editorial-source/ofertas/transparencia.mjs",
+      "salida": "exit 0 · «Transparencia escrita: 22 ofertas con transparencia»"
+    },
+    {
+      "orden": "node rwadar-fichas.js",
+      "salida": "exit 0 · «Archivos actualizados: 55» (22 fichas de oferta, 25 de plataforma y 5 de descartadas, más cambios.html, metodologia.html y sitemap.xml). Ninguna ficha nueva ni retirada."
+    },
+    {
+      "orden": "npm test (raíz; con la lectura «después de aplicar» simulada en la copia)",
+      "salida": "exit 0 en 3 min 23 s · base de datos: 28 scripts con «0 fallidas» (1.161 comprobaciones), «30 comprobaciones SQL correctas, sin red», node --test 11/11 y 99/99 · web: «Pre-renderizado: 25 fichas, 5 descartadas y 22 emisiones escritas en el HTML (183 kB).», «661 correctas, 0 fallidas», «70 verificaciones de páginas y RSS correctas», «40 pruebas de precarga correctas; sin SQL ni red remota.» · QR: «Todo correcto: el código se lee.» · móvil: 527 pruebas, 525 correctas, 0 fallos, 2 omitidas · herramientas: «fichas.json: 22 fichas (22 con foto), catálogo 2026-11-11-v2», «Transparencia al día: 22 ofertas con transparencia», «Diferencias: 0» · acceso: 248/248."
+    },
+    {
+      "orden": "«Lo esencial» y la tarjeta de la app (datosCortosOferta y datosTarjetaOferta de rwadar-movil/lib/transparencia.js con resumenOferta y el catálogo sincronizado de la copia)",
+      "salida": "Schwarzer Weg: «Mínimo: Desde 69,90 € la participación (11/11) · España: Sin confirmar · Salida: Reventa en la app, si hay comprador»; tarjeta «Mínimo Desde 69,90 € la participación (11/11) · España Sin confirmar». Pottendorfer: «Mínimo: Desde 73 € la participación (11/11) …». Boss Info: «Mínimo: 100 CHF · España: Sí, según la fuente · Salida: Venta a otros accionistas». Switzerlend: «Mínimo: 1 acción (68,01 CHF, 11/11) · España: Sí, según la fuente · Salida: Venta a otros accionistas»; tarjeta «Mínimo 1 acción (68,01 CHF, 11/11) · España Sí» (C1: la misma fecha que la ficha, «1 acción (68,01 CHF el 11/11)»). Hausera: «Mínimo: Desde 100 € en Alicante 3 (10/11) · España: Sin confirmar · Salida: Al vender las viviendas, sin fecha fija» (la tarjeta no cambia). mTBILL: «Mínimo: No verificado · España: Sin confirmar · Salida: Sin documentar» (fuentes en conflicto). Frente a la pasada anterior, solo cambia Switzerlend (10/11 → 11/11); las otras 21 dan lo mismo."
+    }
+  ],
+  "archivosQueCambian": [
+    "M rwadar-editorial-source/ofertas/transparencia.json (revisión, lote, revisadoEl, 22 verificadaEl, 43 fechas de consulta, 11 títulos de puntos de Brickwise, 11 mínimos cortos de Brickwise y el de Switzerlend)",
+    "M rwadar-movil/lib/transparencia-contenido.js",
+    "M rwadar-site/assets/catalogo-publico-20261022.js",
+    "M rwadar-site/assets/rwadar-20260820.js (bloque de transparencia)",
+    "M rwadar-site/index.html (pre-render, lo regenera npm test)",
+    "M rwadar-site/ofertas/*.html (22), rwadar-site/plataformas/*.html (25), rwadar-site/fuera-del-radar/*.html (5)",
+    "M rwadar-site/cambios.html, rwadar-site/metodologia.html, rwadar-site/sitemap.xml",
+    "sin cambios: rwadar-app/db/02_seed.sql, rwadar-site/rwadar.csv, rwadar-fichas-manifiesto.js e imágenes (no hay altas ni retiradas)"
+  ]
+}

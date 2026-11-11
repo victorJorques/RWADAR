@@ -1,0 +1,37 @@
+Candidatas del grupo «vigilancia» · lo que vio el revisor el 11/11/2026 (UTC)
+
+Pagarés tokenizados de Prosegur Cash
+- CNMV, ERIR de Minos Securities https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es (09:43:13Z):
+  texto idéntico línea a línea a la copia del investigador. Única fila: «06/11/2026 · PROSEGUR CASH, S.A. · … “1ª Emisión de
+  Pagarés Prosegur Cash 2026” por importe de 500.000 euros». Sin documento, plazo, interés, mínimo ni destinatarios.
+- CNMV, códigos ISIN de Prosegur Cash https://www.cnmv.es/portal/ancv/isin.aspx?nif=A87498564 (09:43:18Z, SHA-256 igual que el investigador):
+  13 ISIN: acciones, bono CASH/3.38 BO 20301009 y 11 pagarés «CASH/PAG …» con nominal 100.000,00 EUR. Ninguno de 500.000 €.
+  Matiz: uno (ES0505229221) se emitió el 19/11/2025 y vence el 18/11/2026; ninguno se emitió en noviembre de 2026.
+- CNMV, otra información relevante de Prosegur Cash (09:43:20Z): SHA-256 igual que el investigador.
+
+Securitize Stocks
+- https://securitize.io/investments/stocks (render 09:44:18Z): «Now onchain for U.S. investors.» · «Available in the U.S., EU and
+  other eligible markets» · «Securitize Stocks are offered by Securitize Markets, LLC … to eligible investors in permitted
+  jurisdictions, subject to onboarding and identity verification.»
+- https://stocks.securitize.io/faq (09:44:28Z): preguntas plegadas («How do I get started, and who can trade?»); no las desplegué.
+
+Profitus / Axiology
+- https://api.profitus.com/api/v1/landing/projects?limit=50&page=1 (09:43:51Z): 548 proyectos; en la página 1, 7 con status
+  «open_for_investments», los 7 con loan_type «standard» (préstamos), 2 en España («es») y 5 en Lituania. Ninguno de tipo bono.
+  (El SHA-256 difiere del investigador porque cambian los importes invertidos.)
+
+Bono Valorix (Bit2Me STX)
+- https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/
+  (09:44:06Z, SHA-256 8beb83a8… igual que el investigador): «un bono corporativo tokenizado de 1 millón de euros, dirigido a
+  inversores elegibles conforme a la normativa de emisión aplicable, previsto para diciembre de 2026».
+- https://valorix.com/ (09:43:53Z) y /invertir.html (09:43:54Z): SHA-256 iguales que el investigador.
+- https://valorix.com/docs/documento-de-emision.pdf (09:46:12Z): SHA-256 5640e21125bf… igual (emisión de enero de 2026).
+- CNMV, ERIR de Bit2Me STX (09:43:16Z): texto idéntico; sin emisiones.
+- Bloqueos repetidos: valorix.es «Connection reset by peer» (09:38:05Z); stx.bit2me.com 404 (09:38:08Z).
+
+CANDO1 (Token City)
+- https://exchange.token-city.com/ y /es: 503 «Sistema deshabilitado temporalmente · Estamos en mantenimiento» a las 09:38:04Z,
+  09:38:05Z y 09:46:13Z. No se intentó entrar por otra vía.
+- CNMV, ERIR de Token City https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es (09:43:15Z, SHA-256 igual):
+  única fila «06/11/2026 · SERIES A GRUPO UAE SA». Nada de CANDO1 ni de Lornin.
+- CNMV, índice ERIR (09:43:22Z): SHA-256 igual que el investigador (Minos, Token City y Ursus-3).

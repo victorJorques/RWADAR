@@ -1,0 +1,86 @@
+Fee Structure | Spiko Tech Docs
+Skip to main content
+ProductsSpiko DirectSpiko EmbeddedAPI Reference
+Search
+Our products
+Overview
+Spiko T-Bills
+What is an MMF?
+Spiko MMFs
+Investment Mandate
+Fee Structure
+Stakeholders
+Legal Documentation
+Safeguarding of Assets
+Spiko Smart Cash
+Spiko Cash & Carry
+Fund Availability
+Onboarding Restrictions
+Account management
+Account creation
+Multi-User Access Management
+Deposits and Withdrawals
+Currency Exchange
+Accounting and Tax Treatment
+Tokenization
+Explaining Tokenization
+Transfers & Redemptions
+Addresses
+Security Audits
+NAV Data Feed
+Legal
+Legal Notice
+Regulatory Information
+Terms of Use
+Privacy Policy
+Our products
+Spiko T-Bills
+Fee Structure
+On this page
+Fee Structure
+Transaction Fees​
+Spiko T-Bills Dollar
+Spiko T-Bills Euro
+Spiko T-Bills Pound
+Deposits
+No charge (0%)
+No charge (0%)
+No charge (0%)
+Withdrawals
+No charge (0%)
+No charge (0%)
+No charge (0%)
+Annual Fees​
+Annual fees are calculated and deducted daily on a pro-rata basis. These deductions are made directly from accrued interest, ensuring that account balances and returns are always displayed net of all fees. There are no hidden charges or additional costs.
+Spiko T-Bills Dollar
+Spiko T-Bills Euro
+Spiko T-Bills Pound
+0.25% per annum
+0.25% per annum
+0.25% per annum
+Previous
+Investment Mandate
+Next
+Stakeholders
+Transaction Fees
+Annual Fees
+Documentation
+Products
+Spiko Direct
+Spiko Embedded
+API Reference
+APIs
+Public API
+Investor API
+Distributor API
+Legal
+Legal notice
+Regulatory information
+Terms of use
+Privacy policy
+Spiko
+spiko.io
+Spiko app
+Contact
+LinkedIn
+© 2026 Spiko. All rights reserved.

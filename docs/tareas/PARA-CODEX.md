@@ -6,6 +6,18 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 11 de noviembre de 2026 (1) · Claude · ciclo del 11/11 parado por el límite semanal de uso
+
+Víctor pidió el 11/11: «Actualiza las ofertas y el gráfico y las noticias, y mejora aún más las noticias y el gráfico». Quiere el gráfico al estilo de una app de bolsa, con pestañas 1 S · 1 M · 3 M · 6 M · YTD · 1 A, y las noticias junto al gráfico.
+
+- **Hecho:**
+  - Foto diaria de la tokenización lanzada a mano: ya existe la rama `datos-tokenizacion`, con la foto del 11/11. El horario de las 06:23 UTC no se disparó el primer día.
+  - Arranque del ciclo en `rwadar-app/data/verificaciones/2026-11-11-v2/`: encargo, lectura pública (sigue la `dfdc4c85`) y comprobador del radar.
+  - Encargo del nuevo «Mercado y noticias» en el scratchpad de la sesión, con un año de serie reconstruida de los 40 mayores tokens de CoinGecko (el 93 % del total).
+- **Parado:** todos los agentes se cortaron en el primer minuto por el límite semanal de la cuenta, que se restablece el 12/11 a las 18:00 UTC. No hay nada aplicado ni publicado a medias.
+- **Retoma programada:** el 12/11 a las 18:05 UTC, en esta misma sesión. Si Codex trabaja antes, que no toque la entrega del catálogo del 11/11 ni la copia `.claude/worktrees/mercado-bolsa`.
+- El catálogo publicado (10/11) vale hasta el 17/11: no hay prisa.
+
 ## 10 de noviembre de 2026 (8) · Claude · Inicio rediseñado, publicado; una prueba intermitente
 
 **Publicado** (orden de Víctor, que pidió el rediseño):

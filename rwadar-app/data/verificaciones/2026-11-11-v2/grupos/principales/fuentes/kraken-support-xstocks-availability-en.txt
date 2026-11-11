@@ -1,0 +1,142 @@
+What stocks and ETFs are available as xStocks?
+xStocks not available in the USA. Geo restrictions apply. See kraken.com/legal/xstocks to learn more.
+EN
+EN
+Buy crypto in minutes
+Get the Kraken app
+EN
+Ask AI
+All
+Filter by:
+Select Product
+How do I deposit cash into my account?
+I need help with account verification
+Why can't I access my account?
+Are there any crypto withdrawal fees?
+I need help signing into my account
+Support
+xStocks
+xStocks on Kraken
+What stocks and ETFs are available as xStocks?
+Last updated: June 18, 2026
+We offer many of the most popular tokenized stocks and ETFs, including names like Tesla (TSLAx), Apple (AAPLx), and GameStop (GMEx), as well as select tokenized IPO opportunities such as SpaceX.
+xStocks and ETFs available on Kraken
+xStocks and ETFs available for margin trading
+The following xStocks and ETFs can be traded using 3x leverage:*
+AAPLx, CRCLx, GLDx, GOOGLx, HOODx, MSTRx, NVDAx, QQQx, SPYx, and TSLAx
+*Geographic restrictions apply
+xStocks are not available in: United States, Australia, Canada, UK and Prohibited regions.
+Requirements for EEA clients
+If you are based in the EEA, you must complete and pass a questionnaire before gaining access to xStocks trading.
+Once approved, EEA clients can buy, sell, and convert xStocks using fiat only through kraken.com. xStocks trading via the order books is not available for EEA clients using Kraken Pro or the Kraken API and only available via the Kraken Pro “Convert” feature.
+Availability for other regions
+For clients outside of the EEA, you can buy, sell, and convert xStocks using both crypto and fiat (cash).
+xStocks are issued by Backed Assets (JE) Limited (a Jersey private limited company) and offered to eligible Kraken clients via Payward Digital Solutions Ltd. (“PDSL”), a company licensed to conduct digital asset business by the Bermuda Monetary Authority. xStocks are not nor will be registered with any local securities regulators. PDSL (Kraken) does not provide investment advice and/or recommendations, and, no communication, through any Kraken App or website or otherwise, should be construed as such. Individual investors should make their own decisions or seek professional independent advice if they are unsure as to the suitability / appropriateness of any investment for their circumstances or needs, including potential tax treatment. Investing in xStocks involves an element of risk. The value of an investment may go down as well as up, and past performance is not a reliable indicator of future results. Not available in the U.S. or to U.S. persons. Geo restrictions apply. Read Kraken’s xStocks Risk Disclosure at kraken.com/legal/xstocks as well as the Base Prospectus and related Final Terms for xStocks at https://assets.backed.fi/legal-documentation to learn more.
+Requirements for EEA clients
+Availability for other regions
+Create accountCreate accountSign in
+Create accountCreate accountSign in
+Features →
+Buy Crypto
+Sell Crypto
+Margin Trading
+Futures Trading
+OTC Trading
+Institutions
+API Trading
+Staking Rewards
+Recurring buys
+Kraken Borrow
+Kraken Funded
+About Kraken →
+Kraken Security
+Kraken Careers
+Kraken Blog
+Kraken Developer
+Press Room
+Affiliate Program
+Asset Listings
+Kraken Status
+Support Center
+Complaints
+Crypto Prices →
+Bitcoin Price
+Ethereum Price
+Dogecoin Price
+XRP Price
+Cardano Price
+Solana Price
+Litecoin Price
+Crypto categories
+Price predictions
+Convert Crypto →
+BTC to USD
+ETH to USD
+XRP to USD
+BNB to USD
+SOL to USD
+DOGE to USD
+ADA to USD
+TRX to USD
+LTC to USD
+Buy Crypto →
+Buy Bitcoin
+Buy Ethereum
+Buy Dogecoin
+Buy XRP
+Buy Cardano
+Buy Solana
+Buy Litecoin
+Buy Stocks →
+Buy Nvidia
+Buy Tesla
+Buy Apple
+Buy Amazon
+Buy Palantir
+Buy Microsoft
+Buy Tokenized Equities →
+Buy NVDAx
+Buy TSLAx
+Buy AAPLx
+Buy SPYx
+Buy AMZNx
+Financial Education →
+What is cryptocurrency?
+What are Smart Contracts?
+What is Bitcoin?
+What is tokenization
+Best Crypto apps
+Best crypto exchanges
+Kraken vs Coinbase
+Privacy Hub
+Privacy Notice
+Cookies Policy
+Do Not Sell/Share
+Compliance Hub
+Terms of Service
+Exchange Trading Rules
+Disclosures
+by PAYWARD
+© 2011–2026 Payward, Inc.
+Trading
+Kraken
+Kraken Pro
+NinjaTrader
+Breakout
+VIP
+API Trading
+|
+Services
+Payward Services
+xStocks
+CF Benchmarks
+Reap
+|
+Banking
+Krak
+Prime
+OTC
+Custody
+|
+Asset Management
+These materials are for general information purposes only and are not investment or financial product advice or a recommendation or solicitation to buy, sell, stake or hold any cryptoasset or to engage in any specific trading strategy. Kraken does not and will not work to increase or decrease the price of any particular cryptoasset it makes available. The unpredictable nature of the crypto-asset markets can lead to loss of funds. Tax may be payable on any return and/or on any increase in the value of your cryptoassets and you should seek independent advice on your taxation position. Geographic restrictions may apply. Some crypto products and markets are unregulated. Kraken’s regulatory status for its various products and services differs per jurisdiction and you may not be protected by government compensation and/or regulatory protection schemes. See Legal Disclosures for each jurisdiction.

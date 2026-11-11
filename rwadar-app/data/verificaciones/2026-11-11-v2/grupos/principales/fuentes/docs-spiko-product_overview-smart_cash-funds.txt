@@ -1,0 +1,106 @@
+Smart Cash Fund | Spiko Tech Docs
+Skip to main content
+ProductsSpiko DirectSpiko EmbeddedAPI Reference
+Search
+Our products
+Overview
+Spiko T-Bills
+Spiko Smart Cash
+What is Smart Cash?
+Smart Cash Fund
+Fee Structure
+Stakeholders
+Legal Documentation
+Spiko Cash & Carry
+Fund Availability
+Onboarding Restrictions
+Account management
+Account creation
+Multi-User Access Management
+Deposits and Withdrawals
+Currency Exchange
+Accounting and Tax Treatment
+Tokenization
+Explaining Tokenization
+Transfers & Redemptions
+Addresses
+Security Audits
+NAV Data Feed
+Legal
+Legal Notice
+Regulatory Information
+Terms of Use
+Privacy Policy
+Our products
+Spiko Smart Cash
+Smart Cash Fund
+Smart Cash Fund
+Spiko Smart Cash is available in four share classes, each denominated in a different currency. The yield of each share class tracks the overnight risk-free rate of its base currency, plus a spread.
+Spiko Dollar
+Spiko Euro
+Spiko Pound
+Spiko Swiss Franc
+Spiko Symbol
+SAFO
+eurSAFO
+gbpSAFO
+chfSAFO
+Official Name
+Spiko Amundi Overnight Swap Fund - USD Share
+Spiko Amundi Overnight Swap Fund - EUR Share
+Spiko Amundi Overnight Swap Fund - GBP Share
+Spiko Amundi Overnight Swap Fund - CHF Share
+Base Currency
+$ USD
+€ EUR
+£ GBP
+CHF
+ISIN Code
+FR0014015LE1
+FR0014015LD3
+FR0014015LF8
+FR0014015LG6
+Performance Benchmark
+SOFR + 0.25%
+€STR + 0.25%
+SONIA + 0.25%
+SARON + 0.25%
+Interest Distribution
+Automatically reinvested, increasing fund shares value
+Automatically reinvested, increasing fund shares value
+Automatically reinvested, increasing fund shares value
+Automatically reinvested, increasing fund shares value
+Liquidity
+Overnight access on business days (D+1)
+Overnight access on business days (D+1)
+Overnight access on business days (D+1)
+Overnight access on business days (D+1)
+Cut-off time
+3pm Paris time
+3pm Paris time
+3pm Paris time
+3pm Paris time
+Previous
+What is Smart Cash?
+Next
+Fee Structure
+Documentation
+Products
+Spiko Direct
+Spiko Embedded
+API Reference
+APIs
+Public API
+Investor API
+Distributor API
+Legal
+Legal notice
+Regulatory information
+Terms of use
+Privacy policy
+Spiko
+spiko.io
+Spiko app
+Contact
+LinkedIn
+© 2026 Spiko. All rights reserved.

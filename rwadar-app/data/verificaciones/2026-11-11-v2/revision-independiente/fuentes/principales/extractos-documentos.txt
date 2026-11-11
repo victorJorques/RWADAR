@@ -1,0 +1,45 @@
+# Extractos literales (revisor independiente, 11/11/2026). Solo las líneas usadas; sin nombres de personas físicas.
+
+## Backed Assets (JE) · Condiciones finales (pdftotext -layout)
+### backed-ft-SPYx.pdf (sha256 280159d434561e538f9bac487b0aac8da34f5962f740a3cac12d844fea82a653)
+Country(ies) of offer(s)   The Products will be offered in Liechtenstein and Switzerland
+### backed-ft-AAPLx.pdf (sha256 ad7f3be6ef79bd590e67d7b545227166bf4425808612f95be2734102373cd575)
+Country(ies) of offer(s)   The Products will be offered in Liechtenstein and Switzerland
+### backed-ft-LITEx-159.pdf (sha256 85b56d11920c9641dcf95f28ca7aa030d53bef0f5729df8f2e252c1c9d0fde5a)
+Country(ies) of offer(s)   The Products will be offered in Liechtenstein and Switzerland
+
+## Spiko SICAV · Prospectus EN (sha256 7457e79f285397aa019170bc03bfe41167c7adf32714f0c5ea8315fb5ccffb35)
+1431:For the sub-fund, the management company may trigger the redemption cap when a threshold of 10% of net assets is
+2286:For the sub-fund, the management company may trigger the redemption cap when a threshold of 10% of net assets is
+3055:For the sub-fund, the management company may trigger the redemption cap when a threshold of 10% of net assets is
+
+## mTBILL · Final Terms 17/07/2026 (sha256 b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a)
+Minimum Investment Amount              not applicable
+Redemption Gates                       25% of the aggregate number of outstanding mTokens per
+settlement day
+Holdback Percentage                    up to 5%
+Countr(y)(ies) Where the        Ireland, Malta, Austria, Belgium, Luxembourg, France, Italy,
+Offer(s) to the Public          Spain, Poland, Romania, Netherlands, Sweden, Portugal, Germany
+Takes Place
+Prohibition of Sales to         not applicable
+EEA Retail Investors
+Target market under             eligible counterparties, professional clients and retail clients
+
+## mTBILL · KID en español (sha256 6c22870917cda81ef3f28b01a6ea857e7e024163f3910c0cc2a36dc9e87da545)
+Puede solicitar el reembolso cualquier Día Hábil, con sujeción a todo lo siguiente:
+● debe haber completado el proceso de alta (onboarding) y el Emisor debe haber incluido su dirección de wallet en la lista de direcciones
+autorizadas (greenlist);
+● las solicitudes recibidas después de las 23:59 CET/CEST se consideran recibidas el siguiente Día Hábil;
+● el reembolso se valora por referencia al VL determinado tras un período de realización de un Día Hábil;
+● el Emisor no reembolsará más del 15 % de todos los Productos en circulación en ningún día de liquidación, por lo que su solicitud podrá
+reducirse y trasladarse a una fecha posterior;
+● si utiliza el reembolso inmediato, podrá retenerse hasta el 50 % del importe que le corresponda, que solo se pagará tras una valoración
+posterior, y el importe finalmente pagado podrá ser inferior al que espera;
+No existe un mercado de negociación para el Producto y no se ha solicitado ni se solicitará su admisión a negociación. El Producto solo puede
+
+## Spiko SICAV · folleto vFR en GECO (doc. 438274, sha256 940559b4976a6837791e72725bc4ac3bf4c5faf579592bed7d36ac9d215f74fe)
+Pour le compartiment, le plafonnement des rachats peut être déclenché par la société de gestion lorsqu’un seuil de 25 % de
+l’actif net est atteint.
+
+## Spiko · página Particulares (HTML, 09:42:47 UTC, sha256 20ad0274a91478986606fe13acf51838775bfa47c2938320a64da894320f5831; copia no conservada por nombres de testimonios)
+«Las solicitudes realizadas después de las 15:00 o en días no hábiles llegarán el segundo día hábil (T+2). No existen límites de retirada.»

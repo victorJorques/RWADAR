@@ -1,0 +1,124 @@
+{
+ "nota": "Extractos literales de las fuentes leídas hoy, sin nombres de personas físicas. Las copias completas están en crudo/ (fuera de Git) con su SHA-256 en ../inventario-consultas.json.",
+ "extractos": [
+  {
+   "campo": "accesoEspana",
+   "literal": "Die Informationen in diesem Dokument richten sich ausschließlich an Personen, die ihren Wohnsitz bzw. gewöhnlichen Aufenthalt in der Bundesrepublik Deutschland haben.",
+   "fuente": "https://app.winvesta.de/marketplace/CD-PP-DE-IREINVEST-02-01?status=all",
+   "localizador": "Ficha del tramo Junior, campo «disclaimerHtml» («GESETZLICHER WARNHINWEIS»); el mismo texto en los tramos Advanced, Special-Investor, Anchor-Investor y Retail, y en las demás fichas abiertas hoy (WIN-08, Ocean View)",
+   "consultadoUtc": "2026-11-11T10:09:24Z"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Die Emittentin wird auf die fälligen Zinsen Kapitalertragsteuern in Höhe der zum jeweiligen Zeitpunkt anwendbaren Steuersätze einbehalten und an das Finanzamt abführen.",
+   "fuente": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+   "localizador": "Condiciones, cifra 9.1 (p. 18)",
+   "consultadoUtc": "2026-11-11T10:16:03Z"
+  },
+  {
+   "campo": "entidad",
+   "literal": "Die winvesta GmbH ist vertraglich gebundener Vermittler im Sinne des § 3 (2) WpIG und wird bei der Vermittlung von Finanzinstrumenten gemäß § 2 (2) Nr. 3 WpIG ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+   "fuente": "https://www.winvesta.de/impressum/",
+   "localizador": "Impressum, «Hinweis gem. § 3 (2) WpIG»",
+   "consultadoUtc": "2026-11-11T10:08:29Z"
+  },
+  {
+   "campo": "registro",
+   "literal": "80176451 · Effecta GmbH · Florstadt · 16.03.2022 · 06.01.2023",
+   "fuente": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do?nameVermittler=winvesta&statusVermittler=0",
+   "localizador": "Registro de agentes vinculados de la BaFin; columnas Nr., Haftungsinstitut, Sitz, Tätig ab, Meldedatum",
+   "consultadoUtc": "2026-11-11T10:13:02Z"
+  },
+  {
+   "campo": "emisor",
+   "literal": "InterREAL Estate Invest GmbH mit Sitz in Hollerallee 26, 28209 Bremen (Deutschland), eingetragen im Handelsregister beim Amtsgericht Bremen unter der Registrierungsnummer HRB 37723 HB, LEI 984500C71EE40D12E541",
+   "fuente": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+   "localizador": "Condiciones, cifra 1.1 (p. 2)",
+   "consultadoUtc": "2026-11-11T10:16:03Z"
+  },
+  {
+   "campo": "estado",
+   "literal": "\"status\": \"Funding Active\"",
+   "fuente": "https://app.winvesta.de/marketplace/CD-PP-DE-IREINVEST-02-01?status=all",
+   "localizador": "Ficha del tramo y catálogo del marketplace (Playwright, sin sesión)",
+   "consultadoUtc": "2026-11-11T10:09:24Z"
+  },
+  {
+   "campo": "estado",
+   "literal": "den Angebotszeitraum vom 30.06.2026 bis zum 30.06.2027 verlängert haben. [...] Die Ausgabe der Token wird entsprechend später erfolgen.",
+   "fuente": "https://finexity.com/docs/general/ireinvest/26-06-30_InterREAL_u_Angebotszeitraum_Verde_Beach_Sao_Francisco.pdf",
+   "localizador": "Carta del emisor del 30/06/2026 (1 página); la anterior, del 31/12/2025",
+   "consultadoUtc": "2026-11-11T10:16:07Z"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Die Mindestzeichnungssumme für einen Anleger beträgt EUR 5.000,00. Zeichnungen über einen geringeren Betrag sind nicht zulässig.",
+   "fuente": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Basisinformationsblatt.pdf",
+   "localizador": "KID Junior, «Kleinanleger-Zielgruppe» (p. 1)",
+   "consultadoUtc": "2026-11-11T10:16:04Z"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "Die Schuldverschreibungen werden ab dem Laufzeitbeginn bis zum Laufzeitende (einschließlich) mit 5,50 % p.a. auf ihren ausstehenden Nennbetrag verzinst.",
+   "fuente": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+   "localizador": "Condiciones, cifras 6.2, 6.3 y 6.5 (pp. 13-14)",
+   "consultadoUtc": "2026-11-11T10:16:03Z"
+  },
+  {
+   "campo": "salida",
+   "literal": "Derzeit existiert kein liquider Zweitmarkt für die Schuldverschreibung. Eine Veräußerung [...] ist jedoch aufgrund der geringen Marktgröße und Handelstätigkeit nicht sichergestellt.",
+   "fuente": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Basisinformationsblatt.pdf",
+   "localizador": "KID Junior, «Wie lange sollte ich die Anlage halten…» (p. 3)",
+   "consultadoUtc": "2026-11-11T10:16:04Z"
+  },
+  {
+   "campo": "salida",
+   "literal": "Über unseren Sekundärmarkt besteht für Sie die Möglichkeit, mit ihren Token zu handeln. Dabei können sie eigenständig und vollkommen gebührenfrei kaufen und verkaufen.",
+   "fuente": "https://www.winvesta.de/faq/",
+   "localizador": "FAQ «Besteht die Möglichkeit, meine tokenisierte Schuldverschreibung zu kündigen oder zu verkaufen?»",
+   "consultadoUtc": "2026-11-11T10:08:26Z"
+  },
+  {
+   "campo": "garantia",
+   "literal": "Eine gleichrangige Besicherung [...] soll nach Erwerb des Finanzierten Objekts durch die Zielgesellschaft [...] erfolgen. Bis dahin sind die Schuldverschreibungen unbesichert.",
+   "fuente": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+   "localizador": "Condiciones, cifras 8.1 y 8.2 (p. 17); KID p. 1",
+   "consultadoUtc": "2026-11-11T10:16:03Z"
+  },
+  {
+   "campo": "derecho",
+   "literal": "Das Grundstück befindet sich derzeit noch im Eigentum des Staates (Patrimônio do Estado). [...] Der Kaufvertrag über die Anteile an der Zielgesellschaft wird derzeit noch verhandelt. [...] Rechtlich abgesichert ist das noch nicht.",
+   "fuente": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+   "localizador": "Condiciones, cifra 1.4 f) y g) (pp. 3-5)",
+   "consultadoUtc": "2026-11-11T10:16:03Z"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+   "fuente": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Basisinformationsblatt.pdf",
+   "localizador": "KID Junior, «Welche Risiken bestehen…» (p. 2)",
+   "consultadoUtc": "2026-11-11T10:16:04Z"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Die Anleihe „Verde Beach Santiago Bridge“ [...] einen Nennbetrag von EUR 1.205.000,00, eine Laufzeit vom 2. April bis zum 1. Oktober 2025 und einen Zinssatz von 42,00% p.a.",
+   "fuente": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Schuldverschreibungsbedingungen.pdf",
+   "localizador": "Condiciones, cifras 1.4 h) y 1.5 a) (pp. 5-6); declaración de prórroga del 08/09/2025",
+   "consultadoUtc": "2026-11-11T10:16:03Z"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Kosten insgesamt 1.859,87 EUR [...] Einstiegskosten [...] 1.557,97 EUR [...] Diese Kosten haben keinen Einfluss auf die Rendite der Anleger und sind lediglich von der Emittentin zu tragen.",
+   "fuente": "https://finexity.com/docs/general/ireinvest/Verde_Beach_Sao_Francisco_Junior_Basisinformationsblatt.pdf",
+   "localizador": "KID Junior, «Welche Kosten entstehen?» (pp. 2-3)",
+   "consultadoUtc": "2026-11-11T10:16:04Z"
+  },
+  {
+   "campo": "documentos",
+   "literal": "Kapitalmarktdokumentation: Schuldverschreibungsbedingungen [...] Basisinformationsblatt [...] Verlängerung Angebotszeitraum São Francisco",
+   "fuente": "https://finexity.com/ire-invest",
+   "localizador": "Página de documentos del emisor (19 documentos)",
+   "consultadoUtc": "2026-11-11T10:09:53Z"
+  }
+ ]
+}
