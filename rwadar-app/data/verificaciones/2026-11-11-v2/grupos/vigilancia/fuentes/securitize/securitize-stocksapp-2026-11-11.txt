@@ -1,0 +1,406 @@
+URL: https://stocks.securitize.io/
+FINAL: https://stocks.securitize.io/
+HTTP: 200
+UTC: 2026-11-11T09:24:07Z
+
+How it works
+Stocks
+About
+Tokenize Your Own Shares
+Trade
+Start Trading Now
+Stocks on Securitize
+Stocks on
+Securitize
+
+Making real-world assets available to institutions and investors through tokenization, enabling complex trading automation and decision-making processes.
+
+Pre-Market Trading
+Price deviation may be higher than usual
+You sell
+USDC
+You receive (est.)
+You receive 0
+AAPL
+Exchange rate
+1 AAPL = 346.93 USDC
+Start Trading
+Real Tokenized Stocks
+
+Our tokenized stocks represent ownership of actual securities, fully compliant and recorded on-chain through Securitize's regulated infrastructure.
+
+OWN THE REAL THING, NOT A SYNTHETIC VERSION
+
+Not swaps. Not derivatives.
+Just real shares — on-chain.
+
+Learn More
+Available Stocks
+
+Explore our curated selection of tokenized securities. Real-time pricing, instant settlement
+
+AAPL
+CET
+
+Apple
+
+$348.51
+2.18
+(-0.62%) 24h
+24h Volume (shares)
+51,908
+Details
+AMZN
+CET
+
+Amazon.com, Inc.
+
+$270.87
+3.94
+(1.47%) 24h
+24h Volume (shares)
+107,944
+Details
+ANET
+CET
+
+Arista Networks, Inc.
+
+$185.02
+1.15
+(-0.61%) 24h
+24h Volume (shares)
+14,497
+Details
+CRCL
+CET
+
+Circle Internet Group, Inc.
+
+$64.98
+2.58
+(-3.81%) 24h
+24h Volume (shares)
+91,158
+Details
+CRM
+CET
+
+Salesforce, Inc.
+
+$213.48
+1.46
+(-0.67%) 24h
+24h Volume (shares)
+4,078
+Details
+DIS
+CET
+
+The Walt Disney Company
+
+$119.21
+0.09
+(0.07%) 24h
+24h Volume (shares)
+1,638
+Details
+FLEX
+CET
+
+Flex Ltd.
+
+$76.09
+2.08
+(-2.66%) 24h
+24h Volume (shares)
+6,421
+Details
+GME
+CET
+
+GameStop Corp.
+
+$25.43
+0.16
+(-0.62%) 24h
+24h Volume (shares)
+7,407
+Details
+GOOGL
+CET
+
+Alphabet Inc. Class A
+
+$287.38
+0.77
+(-0.26%) 24h
+24h Volume (shares)
+186,434
+Details
+JNJ
+CET
+
+Johnson & Johnson
+
+$280.78
+1.33
+(-0.47%) 24h
+24h Volume (shares)
+2,060
+Details
+LITE
+CET
+
+Lumentum Holdings Inc.
+
+$585.57
+10.59
+(-1.77%) 24h
+24h Volume (shares)
+62,838
+Details
+LMT
+CET
+
+Lockheed Martin Corporation
+
+$603.12
+14.93
+(2.53%) 24h
+24h Volume (shares)
+211
+Details
+META
+CET
+
+Meta Platforms, Inc. Class A
+
+$641.39
+0.02
+(0%) 24h
+24h Volume (shares)
+35,987
+Details
+MRK
+CET
+
+Merck & Co., Inc.
+
+$148.05
+0.71
+(-0.47%) 24h
+24h Volume (shares)
+986
+Details
+MSFT
+CET
+
+Microsoft Corporation
+
+$533.16
+12.02
+(-2.2%) 24h
+24h Volume (shares)
+25,123
+Details
+MSTR
+CET
+
+Strategy Inc
+
+$121.07
+4.52
+(-3.59%) 24h
+24h Volume (shares)
+186,028
+Details
+NFLX
+CET
+
+Netflix, Inc.
+
+$63.26
+0.69
+(-1.07%) 24h
+24h Volume (shares)
+97,949
+Details
+NVDA
+CET
+
+NVIDIA Corporation
+
+$168.89
+9.78
+(-5.47%) 24h
+24h Volume (shares)
+3,354,524
+Details
+PLTR
+CET
+
+Palantir Technologies Inc.
+
+$168.82
+0.38
+(-0.22%) 24h
+24h Volume (shares)
+59,915
+Details
+SECZ
+IST
+
+Securitize Corp
+
+$8.53
+1.56
+(22.38%) 24h
+24h Volume (shares)
+48,283
+Details
+SPCX
+CET
+
+Space Exploration Technologies Corp. Class A
+
+$143.09
+1.02
+(0.71%) 24h
+24h Volume (shares)
+712,181
+Details
+STX
+CET
+
+Seagate Technology Holdings plc
+
+$501.62
+4.52
+(-0.89%) 24h
+24h Volume (shares)
+13,052
+Details
+TSLA
+CET
+
+Tesla, Inc.
+
+$379.78
+1.73
+(0.45%) 24h
+24h Volume (shares)
+175,490
+Details
+TXN
+CET
+
+Texas Instruments Incorporated
+
+$300.52
+4.79
+(1.62%) 24h
+24h Volume (shares)
+2,750
+Details
+UBER
+CET
+
+Uber Technologies, Inc.
+
+$70.05
+1.12
+(-1.57%) 24h
+24h Volume (shares)
+14,126
+Details
+XOM
+CET
+
+Exxon Mobil Corporation
+
+$164.47
+0.26
+(-0.15%) 24h
+24h Volume (shares)
+7,948
+Details
+Our Values
+
+Building the future of capital markets with transparency, security, and accessibility at our core
+
+Regulatory Compliance
+
+SEC-registered transfer agent providing compliant tokenization
+
+Near-Instant Settlement
+
+Smart contracts enable immediate settlement reducing transactional risks and delays
+
+Institutional Grade
+
+Trusted by leading financial institutions with over $4B in tokenized assets on-chain
+
+Established Infrastructure
+
+Operating across multiple blockchains with 575K+ accounts and growing across the globe
+
+Bank-Grade Security
+
+Multi-signature wallets and institutional custody solutions protect your digital assets
+
+Transparent Markets
+
+All transactions recorded on-chain for complete transparency and auditability
+
+By The Numbers
+
+Track our growth and impact on revolutionizing capital markets through blockchain technology
+
+$0B+
+
+On-Chain Value
+
+0+
+
+Institutional Clients
+
+0+
+
+Countries Supported
+
+0+
+
+Integrated Blockchains
+
+0K+
+
+Active Accounts
+
+>$0B
+
+Avg. Monthly Transfer Volume
+
+Making real-world assets available to institutions and investors through tokenization.
+
+Sections
+How it works
+Stocks
+About
+Tokenize Your Own Shares
+Trade
+Resources
+FAQ
+Form CRS
+Disclosures
+
+Check the background of Securitize Markets on FINRA BrokerCheck. Securities are offered through Securitize Markets, LLC, ("Securitize Markets") a registered broker-dealer and member FINRA / SIPC. Securitize Markets may provide recommendations, at times, but does not provide investment advice nor ongoing advice or monitoring of your investments. No communication through herein or in any other medium should be construed as such. Securities offered on the Securitize Markets ATS have not been registered under the Securities Act of 1933 and may not be offered or sold in the United States absent registration or an applicable exemption from registration requirements. Assets listed herein, such as digital assets or tokens using blockchain, are speculative, involve a high degree of risk, are generally illiquid, may have no value, have limited regulatory certainty, are subject to potential market manipulation risks and may expose investors to loss of principal. Investments in private placements are also speculative and involve a high degree of risk. Investors must be able to afford the loss of their entire investment. Eligibility to buy and sell securities on the Securitize Markets ATS is determined by Securitize Markets in its sole discretion. Offers to sell, or the solicitations of offers to buy any security can only be made through official offering documents that contain important information about risks, fees and expenses associated with the applicable securities available for trading on the Securitize Markets ATS. Investors should conduct their own due diligence, not rely on the financial assumptions or estimates displayed herein, and are encouraged to consult with a financial advisor, attorney, accountant, tax advisors, and any other professional that can help you to understand and assess the risks associated with any investment opportunity. Past performance is not indicative of future results. Neither the Securities and Exchange Commission nor any federal or state securities commission or regulatory authority has recommended or approved any investment or the accuracy or completeness of any of the information or materials provided herein or through any references/links herein. Further, there can be no assurance that any valuations provided by issuers are accurate or in agreement with market or industry valuations. Securitize Markets and its affiliates make no representations or warranties as to the accuracy of such information. Securitize Markets may collect certain information about you that helps us comply with various securities regulations and rules and the USA PATRIOT Act, a Federal law that requires all securities firms to obtain, verify, and record information that identifies each applicant. The information also helps us more fully understand your investment profile and identify what types of investments or strategies may be suitable for you. The term "Investors" used on this website, typically refers to accredited investors where applicable. Please note: if we cannot verify the information you provide, we may be required to restrict or deny your account. Trading during Extended Hours Trading Sessions carries unique risks, such as greater price volatility, lower liquidity, wider bid/ask spreads, and less market visibility, and may not be appropriate for all investors. There is no guarantee that a diversified portfolio will enhance overall returns, outperform a non-diversified portfolio, or prevent against loss. Securitize Markets is a member of FINRA and registered with the SEC, and is regulated by both entities. However, this membership and registration do not guarantee compliance with all applicable rules and regulations. By accessing this site and any pages thereof, you agree to be bound by our Terms of Service and Privacy Policy.
+
+Crypto services are provided by Zero Hash and are not associated with Securitize Markets, LLC or its affiliates. Crypto assets are not protected by the Securities Investor Protection Corporation (SIPC), under the Securities Investor Protection Act (SIPA), or by federal securities laws. SIPC protection does not apply to funds held at SIPC-member broker-dealers if they are unrelated to the purchase or sale of eligible securities, intended for buying certain crypto assets not recognized as "securities" under SIPA, or transferred to a crypto asset platform. Crypto assets are neither cash nor cash equivalents and are not covered by the Federal Deposit Insurance Corporation (FDIC). The value of crypto assets is subject to significant market volatility. There is an increased risk of fraud or cyber attack associated with crypto assets and other forms of virtual currency. Zero Hash LLC and Zero Hash Liquidity Services are licensed to engage in Virtual Currency Business Activity by the New York State Department of Financial Services.
+
+For any EU-based investors, investment and ancillary services are offered by Securitize Europe Brokerage and Markets, S.V., S.A. ("Securitize Europe"). Securitize Europe is a Spanish investment firm authorized and supervised by the Spanish Securities Market Commission, the Comisión Nacional del Mercado de Valores ("CNMV"), under registration number 327. Securitize Europe is registered with the Commercial Registry of Madrid at Volume 45141, Section 8, Sheet 81, Page M-794351, and holds the Tax Identification Number ("NIF") A13691464. Securitize Europe's registered office is at Calle Don Ramón de la Cruz 38, 28001 Madrid, Spain.
+
+© 2026 Securitize. All rights reserved.
+
+Privacy Policy
+Terms of Service

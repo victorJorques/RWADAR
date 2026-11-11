@@ -1,0 +1,574 @@
+{
+ "grupo": "reventa",
+ "revisor": "revisión independiente 11/11/2026",
+ "nota": "Horas UTC del reloj del sistema. Lo crudo (carteras, HTML con nombres o correos) está en crudo/, fuera de Git.",
+ "consultas": [
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "archivo": "crudo/api-v1-assets-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:38:12Z",
+   "bytes": 236872,
+   "sha256": "a1cd6f53dd1538a83121fca1c2aa95231c8097862d6908ee8197d6d39f90994a"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "crudo/api-v2-assets-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:38:13Z",
+   "bytes": 53974,
+   "sha256": "6321a142539a01f97fe50fea4f18771b07f892b91a3d74aece9efe151b520ae3"
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/marketplace",
+   "archivo": "web-app-marketplace-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:13Z",
+   "bytes": 3704,
+   "sha256": "76a4e4f476b0f618b3df0782c15acb7e734f4a4dbfe5bf152e4d827b59996fb8",
+   "nota": "Playwright sin sesión; captura en web-app-marketplace-revisor-2026-11-11.png"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2RAH5",
+   "archivo": "crudo/api-v1-asset-AT0000A2RAH5-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:26Z",
+   "bytes": 8776,
+   "sha256": "0a4afb6ef94b72ffb274a980f34da98a9384ddaa9b3ff9d6dd11b6d986396d33",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2T4D7",
+   "archivo": "crudo/api-v1-asset-AT0000A2T4D7-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:26Z",
+   "bytes": 9139,
+   "sha256": "312dfccf3c330f2ae71b45d7bc36d35e2bc90612d51cf6df1814f41db5a3ccc2",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2U5V3",
+   "archivo": "crudo/api-v1-asset-AT0000A2U5V3-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:26Z",
+   "bytes": 9447,
+   "sha256": "a4590d751fabbd822809a8cdac61d3e70a2f2c2742527ff4a9a719081c45766d",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCD0",
+   "archivo": "crudo/api-v1-asset-AT0000A2WCD0-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:26Z",
+   "bytes": 8491,
+   "sha256": "780c50cc2a1e0a8dd1de28b8ec89fc57f6b0e142cbe60d3fa0ffca55dcf6d08f",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCE8",
+   "archivo": "crudo/api-v1-asset-AT0000A2WCE8-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:26Z",
+   "bytes": 8566,
+   "sha256": "63f57bd56607310ecd407d1972e62e930d4f9648b1d5555877ff0944ea5a944d",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2YPQ0",
+   "archivo": "crudo/api-v1-asset-AT0000A2YPQ0-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:26Z",
+   "bytes": 9653,
+   "sha256": "61742cecd01100f3a15ec222973de4d154673b3bb2b69b537e23a7f3183f3492",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2ZT84",
+   "archivo": "crudo/api-v1-asset-AT0000A2ZT84-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:26Z",
+   "bytes": 10670,
+   "sha256": "8b5bcaebf9ede7a41733477a0cf87631248baa518a540e35847bb9d0f1c40a3b",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A31KP7",
+   "archivo": "crudo/api-v1-asset-AT0000A31KP7-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:26Z",
+   "bytes": 9881,
+   "sha256": "6c2105662c311dabe9b6ba14bda3ae5fd3b60374fcf465192a285a26d26af42c",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A324B4",
+   "archivo": "crudo/api-v1-asset-AT0000A324B4-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:26Z",
+   "bytes": 12167,
+   "sha256": "168bb96df469e3c6fd68f0dd9f5d6ed62ff889a2d325fce0f273aa2fb32ae5c5",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+   "archivo": "crudo/api-v1-asset-AT0000A38J32-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:26Z",
+   "bytes": 7969,
+   "sha256": "f8f86d1a47977354d1a809359ff1cfe3811de290d87b843f62b5d2a9114cbcc3",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+   "archivo": "crudo/api-v1-asset-AT0000A38J40-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:39:26Z",
+   "bytes": 6615,
+   "sha256": "b5fd7e17d84b6793a89425a3fb09a1af74d98a8fde2c3cbb26db04c347d7707b",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "(50 PDF de los expedientes del grupo)",
+   "archivo": "pdf-hashes-revisor-2026-11-11.tsv",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:40:35Z",
+   "bytes": 7801,
+   "sha256": "115ade2228338f3272316994dafc3e2e7c3e726b8363d13afc11288cbbdd3d26",
+   "nota": "descargados 09:40:15–09:40:35Z; los 50 con el mismo SHA-256 que el expediente"
+  },
+  {
+   "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "archivo": "web-faq-land-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:40:50Z",
+   "bytes": 5225,
+   "sha256": "2d75e9d6d69b699ed146d1ce1eca1da7af3204333b44ca897fc019c5904b8ada",
+   "nota": "Playwright; nombre de persona física recortado"
+  },
+  {
+   "url": "https://www.brickwise.at/support/was-kostet-der-handel-am-marktplatz",
+   "archivo": "web-faq-kosten-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:40:55Z",
+   "bytes": 5177,
+   "sha256": "3d780aeba899ad9cef420ba2be5ac64beb50d32b65365b3230c2f574c6e052d5",
+   "nota": "Playwright; nombre de persona física recortado"
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz",
+   "archivo": "web-faq-handel-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:41:01Z",
+   "bytes": 5954,
+   "sha256": "5f6899817f4b36bcd700dd8015a5f48ff82246a00ae291ed0247281c5cf63bfc",
+   "nota": "Playwright; nombre de persona física recortado"
+  },
+  {
+   "url": "https://www.brickwise.at/imprint",
+   "archivo": "web-imprint-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:41:07Z",
+   "bytes": 4041,
+   "sha256": "17add8c7d9693015aa9f57049f1662da5fa7a857d091518758ca7c5cd797af8d",
+   "nota": "Playwright; nombre de persona física recortado"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+   "archivo": "crudo/cnmv-adv-brickwise-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:41:27Z",
+   "bytes": 212247,
+   "sha256": "8991f9443e9c61b09a3fc142f5129715eadc1aff020b065e57bc5a8c732ffdb3",
+   "nota": "sin bloque de resultados"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "archivo": "crudo/cnmv-adv-effecta-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:41:27Z",
+   "bytes": 212203,
+   "sha256": "bf20148540f4a8d367ef5c0e2d0fab0a400fe3ba4e55c1cf9e29899c35219501",
+   "nota": "sin bloque de resultados"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Qogir",
+   "archivo": "crudo/cnmv-adv-brick-qogir-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:41:27Z",
+   "bytes": 212291,
+   "sha256": "c1fae1dfd0309c95383cb4f41db1555b3a8db1876d3dd1126f8a3ab2a20c1679",
+   "nota": "sin bloque de resultados"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat",
+   "archivo": "crudo/cnmv-adv-aktionariat-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:41:27Z",
+   "bytes": 212291,
+   "sha256": "ae859e8e6ea829a715289785f369d758f4a08bb32327e07fb2fa33a8b7cf2709",
+   "nota": "sin bloque de resultados"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info",
+   "archivo": "crudo/cnmv-adv-boss-info-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:41:27Z",
+   "bytes": 212247,
+   "sha256": "2b31ba99065e7441a5dcd04f0b2fa769468575cec271296051b0bdf030dcfa72",
+   "nota": "sin bloque de resultados"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend",
+   "archivo": "crudo/cnmv-adv-switzerlend-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:41:27Z",
+   "bytes": 212291,
+   "sha256": "0de25c6e748fbd6375c329e4852d35b84d703be2c3e966afde2b9c955c6d5650",
+   "nota": "sin bloque de resultados"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "archivo": "crudo/cnmv-adv-trading-control-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:41:38Z",
+   "bytes": 237276,
+   "sha256": "f4552314b42b6e6a6a2760166e6e29b1a279235c153f4d82461c38b53bd540b7",
+   "nota": "control positivo: devuelve advertencias, la última del 10/11/2026"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=17",
+   "archivo": "crudo/cnmv-effecta-5003-agentes-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:41:46Z",
+   "bytes": 218752,
+   "sha256": "f41fe61a1912a1aae2c640617e85a3630ca682a489696860d5d597726e161f7a"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=8",
+   "archivo": "crudo/cnmv-effecta-5003-v8-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:41:59Z",
+   "bytes": 218234,
+   "sha256": "d22dd7e9f100b6d41643f81328f11680c0fd5bdee150144218462b88038c4382",
+   "nota": "Agentes: «No se han encontrado datos disponibles»"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "archivo": "crudo/bafin-effecta-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:42:11Z",
+   "bytes": 26540,
+   "sha256": "93c2dfabdff1af79340d8f3c956becaf1213c0fd6fa93e99db7ddb7094f4cc3e"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do",
+   "archivo": "crudo/bafin-vgv-brickwise-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:42:11Z",
+   "bytes": 27150,
+   "sha256": "c76f5cacc7fa707992628b7918df8c5129892ac965e54f42372bc165f2db4972",
+   "metodo": "POST nameVermittler=Brickwise"
+  },
+  {
+   "url": "https://www.fma.gv.at/en/?s=brickwise",
+   "archivo": "fma-busqueda-brickwise-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:42:36Z",
+   "bytes": 967,
+   "sha256": "47d017bd0e2eb72970c5ba8339500c96b0f67cd1b155f0b9b7c108e5218d323d",
+   "nota": "curl 403; Playwright 200"
+  },
+  {
+   "url": "https://www.fma.gv.at/en/?s=effecta",
+   "archivo": "fma-busqueda-effecta-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:42:45Z",
+   "bytes": 963,
+   "sha256": "0373ca7e1583c36d2546a0d44da5756a88cd04acb154ab9b28745cba20b3b645",
+   "nota": "Playwright"
+  },
+  {
+   "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+   "archivo": "crudo/aktionariat-brokerbotsettings-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:43:35Z",
+   "bytes": 1543,
+   "sha256": "11b879353e27f190eb2d18cea7c843c9425670fb23a4d938f9860ed5008cf2dc"
+  },
+  {
+   "url": "https://shares.aktionariat.com/api/secondarymarketsettings?ticker=DAKS",
+   "archivo": "crudo/aktionariat-secondarymarketsettings-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:43:35Z",
+   "bytes": 499,
+   "sha256": "132754731b9730b021e1af85fc7a5d3bba93adf20d426922e381b0ae85a25f61"
+  },
+  {
+   "url": "https://shares.aktionariat.com/api/secondarymarkets/getOrderBook",
+   "archivo": "crudo/aktionariat-getOrderBook-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:44:03Z",
+   "bytes": 1440,
+   "sha256": "763f29f0971cd8b9620d03932bed97fd1e28b3c042f7a6d78cbe6b5ec42d0a0d",
+   "metodo": "POST {\"company\":id}"
+  },
+  {
+   "url": "https://shares.aktionariat.com/api/secondarymarkets/getTrades",
+   "archivo": "crudo/aktionariat-getTrades-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:44:03Z",
+   "bytes": 383060,
+   "sha256": "6f9b3656112226ae5409dc878c5a8842056c3d475427724e5dff6659692bd776",
+   "metodo": "POST {\"company\":id,\"limit\":n}",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+   "archivo": "crudo/boss-info-brokerbotsettings-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:43:35Z",
+   "bytes": 1682,
+   "sha256": "919267a45e9616eea92b1bf9f31ff9328b9b309174651dfe84c30212c4a9a585"
+  },
+  {
+   "url": "https://shares.bossinfo.com/api/secondarymarketsettings?ticker=BOSS",
+   "archivo": "crudo/boss-info-secondarymarketsettings-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:43:35Z",
+   "bytes": 527,
+   "sha256": "5aaeee13184326fc8ba93fe6691fd41a3c01699371162341815f5d65469c61f3"
+  },
+  {
+   "url": "https://shares.bossinfo.com/api/secondarymarkets/getOrderBook",
+   "archivo": "crudo/boss-info-getOrderBook-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:44:03Z",
+   "bytes": 356,
+   "sha256": "f33795671dd7e837adfd72d034daca19514a23f643dd0a69ea6b7e5a79e2ae80",
+   "metodo": "POST {\"company\":id}"
+  },
+  {
+   "url": "https://shares.bossinfo.com/api/secondarymarkets/getTrades",
+   "archivo": "crudo/boss-info-getTrades-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:44:03Z",
+   "bytes": 99256,
+   "sha256": "f02ec19d5b1bae96be28ffe1b6788610f877637a13d733902cba4b7f08a1af3a",
+   "metodo": "POST {\"company\":id,\"limit\":n}",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://shares.lend.ch/api/brokerbotsettings?ticker=LENDS",
+   "archivo": "crudo/switzerlend-brokerbotsettings-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:43:35Z",
+   "bytes": 1358,
+   "sha256": "c8c66ff59e6319ecfafccfcf97a3209608f8cd342305713d2165c68e61b899b0"
+  },
+  {
+   "url": "https://shares.lend.ch/api/secondarymarketsettings?ticker=LENDS",
+   "archivo": "crudo/switzerlend-secondarymarketsettings-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:43:35Z",
+   "bytes": 494,
+   "sha256": "49b876e974c4aa0520d1162656935c5645834c900911abb60d3ce82f2f9b781f"
+  },
+  {
+   "url": "https://shares.lend.ch/api/secondarymarkets/getOrderBook",
+   "archivo": "crudo/switzerlend-getOrderBook-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:44:03Z",
+   "bytes": 559,
+   "sha256": "9ec954394228581792baf921393e2415fef494cf9769b51815f176048e07310b",
+   "metodo": "POST {\"company\":id}"
+  },
+  {
+   "url": "https://shares.lend.ch/api/secondarymarkets/getTrades",
+   "archivo": "crudo/switzerlend-getTrades-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:44:03Z",
+   "bytes": 29537,
+   "sha256": "97a527d4018fbe7a7401a94c41d7931cb11f173c73e208eff064cc14e741ef25",
+   "metodo": "POST {\"company\":id,\"limit\":n}",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "Ethereum eth_call (https://ethereum-rpc.publicnode.com), solo lectura",
+   "archivo": "crudo/onchain-brokerbots-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:44:32Z",
+   "bytes": 1974,
+   "sha256": "a2d4387bd2a760f7237ff819b89822c0b6352cc5fa81884776584b0517dae168",
+   "nota": "bloque 26390864: settings, getPrice, increment y saldo ZCHF de los tres brokerbots"
+  },
+  {
+   "url": "https://shares.aktionariat.com/invest",
+   "archivo": "web-aktionariat-invest-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:44:55Z",
+   "bytes": 2442,
+   "sha256": "f0c5709e8d68689f9dfdcb56c48cd468bd210c41ccf29f1328565df3e63b0719",
+   "nota": "Playwright sin sesión"
+  },
+  {
+   "url": "https://shares.aktionariat.com/trade",
+   "archivo": "web-aktionariat-trade-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:45:08Z",
+   "bytes": 3580,
+   "sha256": "ba840a7904a1b1efeda62560f5db174c5f6a5e4a39698552e17028db679a3231",
+   "nota": "Playwright sin sesión"
+  },
+  {
+   "url": "https://shares.bossinfo.com/trade",
+   "archivo": "web-boss-info-trade-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:45:22Z",
+   "bytes": 3471,
+   "sha256": "145dea4bc2c3a0d2ec40df1a17b4b38d437d94bd2fd3044ad85a57f228039d61",
+   "nota": "Playwright sin sesión"
+  },
+  {
+   "url": "https://shares.bossinfo.com/invest",
+   "archivo": "web-boss-info-invest-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:45:35Z",
+   "bytes": 2419,
+   "sha256": "53d928916bb750f6c77ca0475927fbe58ec44dd35a374249e531637e5d61b517",
+   "nota": "Playwright sin sesión"
+  },
+  {
+   "url": "https://shares.lend.ch/trade",
+   "archivo": "web-switzerlend-trade-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:45:48Z",
+   "bytes": 3566,
+   "sha256": "1d25719045f9f91e41bbcb6afa766a1a3740ad539425b736820f32a99b18ab7a",
+   "nota": "Playwright sin sesión"
+  },
+  {
+   "url": "https://shares.lend.ch/invest",
+   "archivo": "web-switzerlend-invest-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:46:02Z",
+   "bytes": 2445,
+   "sha256": "bf799edec451e8ad4ebdd435a05aeb2d63bbb93e66014a4dfaf4e990a1d548ea",
+   "nota": "Playwright sin sesión"
+  },
+  {
+   "url": "https://shares.bossinfo.com/investor-page-terms",
+   "archivo": "web-boss-info-investor-page-terms-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:46:32Z",
+   "bytes": 20743,
+   "sha256": "cbd900026a9e72974cc8bd2ef239eae628b4fae7dcde6e9622b02a54e842f93b",
+   "nota": "Playwright sin sesión"
+  },
+  {
+   "url": "https://www.lend.ch/en/investor-relations",
+   "archivo": "crudo/web-lend-investor-relations-en-revisor-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:48:16Z",
+   "bytes": 7693,
+   "sha256": "ae45332e5ca09731a0ba3a9cb29073657a8f525c7d3901088a1114433d352687",
+   "nota": "Playwright sin sesión"
+  },
+  {
+   "url": "https://www.aktionariat.com/disclaimer",
+   "archivo": "crudo/aktionariat-disclaimer-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:46:17Z",
+   "bytes": 41909,
+   "sha256": "06937b732cefe6d27a7891e0ad6d975f5e69a34d53324ad23cac3707b1414abb",
+   "nota": "byte a byte igual a la copia del investigador"
+  },
+  {
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "archivo": "crudo/finma-autorizados-aktionariat-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:46:45Z",
+   "bytes": 466,
+   "sha256": "5bc7a55233cd9af8d8a4590b8e74c16f7d435697c9e13b880f0d2439425da2c6",
+   "metodo": "POST query=Aktionariat&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4"
+  },
+  {
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "archivo": "crudo/finma-autorizados-boss-info-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:46:45Z",
+   "bytes": 464,
+   "sha256": "d7dab6ab372143eabf1e77847a846e77b3e88896bb9d9331de2b553b729883bc",
+   "metodo": "POST query=Boss Info&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4"
+  },
+  {
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "archivo": "crudo/finma-autorizados-switzerlend-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:46:45Z",
+   "bytes": 466,
+   "sha256": "5a44d1eb44c4dbd5a87994b3b36ed83bcdadf9e4791e202698001aec98ab3983",
+   "metodo": "POST query=Switzerlend&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4"
+  },
+  {
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "archivo": "crudo/finma-autorizados-sygnum-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:46:45Z",
+   "bytes": 1086,
+   "sha256": "07fee30eaefe2fb8763822859034ae6485c5b67df8b2f86a5ba49ded97f62aa5",
+   "metodo": "POST query=Sygnum&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4"
+  },
+  {
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "archivo": "crudo/finma-advertencias-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:46:50Z",
+   "bytes": 824498,
+   "sha256": "ecb90d7eba31fa82f0708d606a470dfd8c3f5ac29dcf5e4c3b68b24b5001fb59",
+   "metodo": "POST ds={1C6B8731-638C-4003-A93C-A625BF7A6800}&Order=4",
+   "nota": "2.404 entradas; ninguna con Aktionariat, Boss Info, Switzerlend, Brickwise ni Effecta"
+  },
+  {
+   "url": "https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/",
+   "archivo": "crudo/boss-info-investor-faq-revisor.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:48:21Z",
+   "bytes": 105460,
+   "sha256": "459270747cd50c5028903d7fa9bdebb0c076b6bf6da251a428dd6454a690c267",
+   "nota": "menciona xCHF; no menciona ZCHF"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "archivo": "crudo/api-v1-assets-revisor-2.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:50:05Z",
+   "bytes": 236872,
+   "sha256": "a1cd6f53dd1538a83121fca1c2aa95231c8097862d6908ee8197d6d39f90994a",
+   "nota": "segunda lectura: libros iguales a los de las 09:38"
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "crudo/api-v2-assets-revisor-2.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:50:07Z",
+   "bytes": 53974,
+   "sha256": "6321a142539a01f97fe50fea4f18771b07f892b91a3d74aece9efe151b520ae3"
+  },
+  {
+   "url": "https://api.polyreg.ch/api/membership-check?name=Switzerlend%20AG",
+   "archivo": "crudo/polyreg-switzerlend-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:50:13Z",
+   "bytes": 76,
+   "sha256": "d7ca18f4bbcdc568a8a77674c41057e7fd39a391de3e999e8ca7a8a3c33b5d77"
+  },
+  {
+   "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1231406.json",
+   "archivo": "crudo/zefix-switzerlend-revisor.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:50:14Z",
+   "bytes": 27929,
+   "sha256": "f3547c2433780660924a77bafe8fa331b77b8319411a21851e6f156f4c33f6a5"
+  }
+ ]
+}

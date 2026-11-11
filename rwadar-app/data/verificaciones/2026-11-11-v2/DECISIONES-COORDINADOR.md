@@ -36,8 +36,7 @@ correcciones obligatorias aplicadas.
 
 ## 2. Por oferta (antes → ahora)
 
-> Borrador hecho con los expedientes. Se cierra con las correcciones de los
-> revisores (§5).
+> Cerrado a las 10:10 UTC con las correcciones de los revisores (§5).
 
 - **Spiko Letras del Tesoro Euro:** 2,44 % → **2,41 %**, valor liquidativo
   (VL) más reciente: (1,062738 / 1,060588)^(365/31) − 1. Cambian la métrica, el
@@ -48,17 +47,31 @@ correcciones obligatorias aplicadas.
   Cambian la métrica, el literal y la referencia. El aviso 2 se mantiene: nadie
   confirma ni niega hoy que el compartimento se comercialice en España.
 - **mTBILL:** «Valor por token · 10/11/2026: 1,0777 USD (oráculo del emisor)».
+  - Acceso en la tarjeta: «Sí: oferta pública en España para particulares». Se
+    quita «la web de Midas incluye España entre sus países permitidos»: hoy no
+    se puede volver a leer la web (§5, P2). Se apoya en las Condiciones
+    Finales, ESMA y la CNMV, confirmados hoy.
+  - Sigue en `fuentes_en_conflicto` y con la rentabilidad (APY) en `null`.
 - **Brickwise, mínimos en reventa (11/11):**
   - Schwarzer Weg: 65 → **69,90 €**. La venta de 65 € ya no está.
   - Pottendorfer Straße 62: 74 → **73 €**.
   - Las otras 9 mantienen su precio y solo cambia la fecha.
   - En las referencias de la ficha, la mejor compra pasa de 35 a 60 € en
     Schwarzer Weg y de 46 a 56 € en Randhartingergasse.
-- **Aktionariat, Boss Info y Switzerlend:** nada cambia de fondo. Las fechas
-  del 10/11 pasan al 11/11 en «Precio del emisor», «Supervisor», los avisos con
-  dato del día y el mínimo.
+- **Aktionariat, Boss Info y Switzerlend:** nada cambia de fondo (opción (a)
+  del revisor). Se conservan los textos publicados de acceso y salida. Las
+  fechas del 10/11 pasan al 11/11 en «Precio del emisor», «Supervisor», los
+  avisos con dato del día y el mínimo:
+  - Aktionariat: los tres textos publicados de la tarjeta no llevan fecha, así
+    que se quedan igual.
+  - Boss Info: mínimo «100 CHF por transferencia al emisor; en cripto, desde 2
+    acciones (unos 17 ZCHF el 11/11)».
+  - Switzerlend: mínimo «1 acción (68,01 CHF el 11/11)».
 - **Robinhood, Kraken xStocks, Prosegur Digital Gold y Hausera:** sin
   cambios. Solo cambia la fecha de verificación.
+  - Hausera: el contrato de Alicante 2 acuñó hoy 51.960 tokens (5.196.000 €,
+    el total), aunque la CNMV aún no lista la SPV 10. Se corrige el
+    expediente; la tarjeta no cambia.
 
 ## 3. Candidatas
 
@@ -82,4 +95,49 @@ copian a `rwadar-site/datos/noticias-v2.json` y, sin «imagen», a
 
 ## 5. Correcciones de los revisores
 
-(Pendiente: se rellena cuando terminen los revisores.)
+Tres revisores independientes, uno por grupo. Veredicto de los tres:
+`aprobado_con_cambios`. Todas las obligatorias están aplicadas:
+
+**Principales** (Spiko, mTBILL, Robinhood, Kraken y Prosegur):
+
+- **P1. Spiko:** 2,41 %, 4,02 % y 2,84 % confirmados con la API, la AMF y la
+  CNMV. Smart Cash solo vale con la VL del 10/11 si la entrega se monta antes
+  de las 19:30 UTC del 11/11. Si no, se vuelve a leer la API y se fecha con la
+  del 11/11.
+- **P2. mTBILL:** el código de la web se leyó a las 09:26 UTC
+  (`main-DWqV5Q2W.js`). A las 09:46 ya servía otro (`main-BAiQCjKx.js`). Lo
+  intenté releer a las 10:01 UTC: midas.app y sus `/assets/` responden 403 a
+  toda lectura automática (curl, navegador sin cabeza y WebFetch). Así que la
+  frase sobre la web sale de la tarjeta y de «por qué destaca». En las
+  referencias queda con su hora. Corregido en `expedientes/mtbill.json`.
+- **P3. Copias:** recortados los nombres de los directores en las cuatro
+  `backed-ft-*.txt`, también los trozos partidos y transliterados (107
+  líneas). Los testimonios de la web de Spiko solo están en `crudo/`, que no
+  va a Git (`.gitignore`).
+- Robinhood, Kraken xStocks y Prosegur, confirmados por muestreo y sin
+  cambios.
+
+**Reventa** (Brickwise, Aktionariat, Boss Info y Switzerlend):
+
+- Los 11 mínimos de Brickwise, confirmados (Schwarzer Weg 69,90 €;
+  Pottendorfer 73 €; el resto solo cambia de fecha).
+- **C1–C3. Suizas:** se conservan los textos publicados (opción (a)). En
+  `cambiosRespectoPublicado`, el «antes» de `resumenTarjeta` tiene que ser el
+  texto publicado: corregirlo al montar. Re-fechas y mínimos como en §2.
+- **C4. Copias:** los 11 PDF del grupo, a `crudo/`, con el inventario al día.
+  Ya está hecho.
+
+**Vigilancia** (Hausera y candidatas):
+
+- Hausera, confirmada. Corrección del suministro de los tokens aplicada al
+  expediente y a `resumen-vigilancia.md`.
+- No se admiten: pagarés de Prosegur Cash, Securitize Stocks, Profitus,
+  Valorix y CANDO1 (este, `no_verificable`).
+- Recomendada y ya aplicada: en el resumen, «ninguna emitida en
+  noviembre de 2026» en lugar de «ninguna fechada en noviembre».
+- **Copias:** recortados los tres nombres del blog de Bit2Me. El original solo
+  queda en `crudo/`.
+
+**Barrido final de datos personales** (`recorte/barrido.py` y
+`recortar.py`): 2 nombres más recortados en reventa. Lo demás que señala son
+nombres de empresas.

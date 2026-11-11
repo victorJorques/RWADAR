@@ -1,0 +1,88 @@
+Individuals | Spiko Tech Docs
+Skip to main content
+ProductsSpiko DirectSpiko EmbeddedAPI Reference
+Search
+Our products
+Overview
+Spiko T-Bills
+Spiko Smart Cash
+Spiko Cash & Carry
+Fund Availability
+Onboarding Restrictions
+Account management
+Account creation
+Individuals
+Legal Entities
+Multi-User Access Management
+Deposits and Withdrawals
+Currency Exchange
+Accounting and Tax Treatment
+Tokenization
+Explaining Tokenization
+Transfers & Redemptions
+Addresses
+Security Audits
+NAV Data Feed
+Legal
+Legal Notice
+Regulatory Information
+Terms of Use
+Privacy Policy
+Account management
+Account creation
+Individuals
+On this page
+Individuals
+Our streamlined account creation process is fully automated for most applicants. We welcome clients from most jurisdictions, with a few exceptions based on regulatory requirements. Please check our geographical restrictions before proceeding.
+PROCESSING TIME
+Standard applications are typically processed and validated within 3 minutes.
+Account Creation Steps​
+1. Security Setup​
+The first step involves verifying your email, choosing your password, and setting up two-factor authentication, which will be necessary for sensitive operations on the platform such as withdrawals or changing bank accounts.
+2. Investment Profile​
+French law requires us to assess your financial experience and savings objectives. Upon account validation, you will receive personalized investment advice based on your responses.
+3. Identity Verification​
+You will need to scan an ID document and complete a biometric verification step. We work with Onfido, a leading provider for online identification. We accept the following types of ID documents:
+Passports
+National ID cards
+4. Address Verification​
+Depending on your situation, we may need to ask you for proof of address. We accept the following documents:
+Recent bank statements
+Utility bills (electricity, water, gas)
+Telecommunications bills (including mobile)
+Tax documentation:
+Assessment notice
+Non-taxation certificate
+Housing-related documents:
+Tax certificate
+Insurance policy/bill
+CAF housing benefit statement
+Previous
+Onboarding Restrictions
+Next
+Legal Entities
+Account Creation Steps
+1. Security Setup
+2. Investment Profile
+3. Identity Verification
+4. Address Verification
+Documentation
+Products
+Spiko Direct
+Spiko Embedded
+API Reference
+APIs
+Public API
+Investor API
+Distributor API
+Legal
+Legal notice
+Regulatory information
+Terms of use
+Privacy policy
+Spiko
+spiko.io
+Spiko app
+Contact
+LinkedIn
+© 2026 Spiko. All rights reserved.

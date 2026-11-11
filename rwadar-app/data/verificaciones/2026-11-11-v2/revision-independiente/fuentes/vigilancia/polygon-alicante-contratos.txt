@@ -1,0 +1,18 @@
+Polygon · contratos de los tokens de Hausera (direcciones tomadas de la copia del investigador, grupos/vigilancia/fuentes/crudo/polygon-alicante-contratos.txt)
+RPC pública https://polygon-bor-rpc.publicnode.com (eth_call / eth_getLogs / eth_getBlockByNumber), consultas del revisor del 11/11/2026
+
+Alicante_2 · 0x853F6f994E26b8D75b451ff4A861290402f38BAe
+  09:41:51Z name() = "Alicante_2" · decimals() = 18 · totalSupply() = 0x...0b00c1dac01f10e00000 = 51.960 tokens (51960 × 10^18)
+  El investigador leyó totalSupply = 0 a las 09:28:47Z.
+  eth_getLogs (evento Transfer, últimos 4.000 bloques hasta el 97.123.117):
+    2.127 transferencias desde la dirección cero (acuñaciones), en 8 transacciones,
+    a 2.127 direcciones distintas (no se copian: son monederos de inversores),
+    suma 51.960 tokens, entre el bloque 97.122.591 (2026-11-11T09:29:03Z)
+    y el bloque 97.122.680 (2026-11-11T09:31:16Z).
+  Lectura: las obligaciones de Alicante 2 (51.960 valores de 100 € = 5.196.000 €, el importe total del documento de emisión)
+  se acuñaron hoy, el día anunciado para su «oferta pública», unos 16 segundos después de la consulta del investigador.
+
+Alicante_3 · 0xbc10da132a553447e1080376fFB1FcbE94BeC265
+  09:41:51Z name() = "Alicante_3" · totalSupply() = 0 (sin cambios)
+
+Respuestas crudas de los registros (con direcciones de monederos) en crudo/polygon-alicante2-transfer-logs.json, fuera de Git.

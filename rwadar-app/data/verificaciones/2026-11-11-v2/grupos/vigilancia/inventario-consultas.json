@@ -1,0 +1,1508 @@
+{
+ "grupo": "vigilancia",
+ "ciclo": "2026-11-11",
+ "nota": "Consultas del 11/11/2026 entre las 09:15 y las 09:35 UTC, sin iniciar sesión ni rellenar formularios. Los PDF con datos personales no se guardan (SHA-256 de lo descargado). fuentes/crudo/ no entra en Git.",
+ "descubrimiento": [
+  {
+   "herramienta": "WebSearch",
+   "consulta": "Prosegur Cash pagarés tokenizados Minos Securities emisión",
+   "uso": "solo descubrimiento; ninguna afirmación se apoya en estos resultados",
+   "franjaUtc": "entre 2026-11-11T09:20:06Z y 09:20:26Z (la herramienta no da la hora exacta)"
+  },
+  {
+   "herramienta": "WebSearch",
+   "consulta": "\"Prosegur Cash\" pagarés blockchain noviembre 2026",
+   "uso": "solo descubrimiento; ninguna afirmación se apoya en estos resultados",
+   "franjaUtc": "entre 2026-11-11T09:20:06Z y 09:20:26Z (la herramienta no da la hora exacta)"
+  },
+  {
+   "herramienta": "WebSearch",
+   "consulta": "Securitize tokenized stocks Europe EU investors launch Securitize Europe Brokerage",
+   "uso": "solo descubrimiento; ninguna afirmación se apoya en estos resultados",
+   "franjaUtc": "entre 2026-11-11T09:23:24Z y 09:23:55Z (la herramienta no da la hora exacta)"
+  },
+  {
+   "herramienta": "WebSearch",
+   "consulta": "Bit2Me STX Valorix bono tokenizado emisión",
+   "uso": "solo descubrimiento; ninguna afirmación se apoya en estos resultados",
+   "franjaUtc": "entre 2026-11-11T09:27:48Z y 09:28:11Z (la herramienta no da la hora exacta)"
+  },
+  {
+   "herramienta": "WebSearch",
+   "consulta": "Token City Exchange CANDO1 Lornin Ibérica residencia La Moraleja tokenización",
+   "uso": "solo descubrimiento; ninguna afirmación se apoya en estos resultados",
+   "franjaUtc": "entre 2026-11-11T09:27:48Z y 09:28:11Z (la herramienta no da la hora exacta)"
+  }
+ ],
+ "consultas": [
+  {
+   "url": "https://hausera.io/oportunidades/",
+   "archivo": "fuentes/hausera/nav-hausera-oportunidades-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:15:58Z",
+   "bytes": 4780,
+   "sha256": "7b3112b356340361fe094aba2233af18c6e378bbcd4c8412cc7e2e89672ae1ea",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Igual que el 10/11 salvo cuenta atrás y botones de acceso",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/oportunidades/",
+   "archivo": "fuentes/crudo/hausera-oportunidades-render.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:15:58Z",
+   "bytes": 2421210,
+   "sha256": "527dddea9ffa43fc9f48eb4545d855ddc5ebd4eef0dbcf2c4f05739b6cc1c657",
+   "nota": "HTML renderizado",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/",
+   "archivo": "fuentes/hausera/nav-hausera-home-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:16:09Z",
+   "bytes": 5917,
+   "sha256": "c39181523187ffa4ae5aa5ec40c8205c82889d2022686743ac3b806b65174385",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Portada; un nombre de persona recortado (original en crudo/nav-hausera-home-2026-11-11-original.txt)",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/",
+   "archivo": "fuentes/crudo/nav-hausera-home-2026-11-11-original.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:16:09Z",
+   "bytes": 5915,
+   "sha256": "73cc605c33078d6ce435311e5adab3bd4a361add0723f6731fdda0615d1b03bc",
+   "nota": "Texto original con el nombre (fuera de Git)",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/",
+   "archivo": "fuentes/crudo/hausera-home-render.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:16:09Z",
+   "bytes": 2568689,
+   "sha256": "fc10434c952c85ac7034dd488c4e9fb37d41e26a6da3edf300ef95bf596bc0f1",
+   "nota": "HTML renderizado",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_3/",
+   "archivo": "fuentes/hausera/nav-hausera-alicante-3-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:16:16Z",
+   "bytes": 1519,
+   "sha256": "19d0c825053cd86d0be0dc8ea1f470e360e51087e9056baefb2253a091bc98c1",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "PRÓXIMA OPORTUNIDAD · Preventa 18/11/2026 09:00h; «Reservar tickets» no pulsado",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_3/",
+   "archivo": "fuentes/crudo/hausera-alicante-3-render.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:16:16Z",
+   "bytes": 2343089,
+   "sha256": "b124e62c20ce53cc841777f6ccdfcdda73025facc5c0fc84dd44f688b34fd8c3",
+   "nota": "HTML renderizado",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_2/",
+   "archivo": "fuentes/hausera/nav-hausera-alicante-2-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:16:25Z",
+   "bytes": 1420,
+   "sha256": "4f48954373f11ff1a26b889f814f81877b1e21a64e3fe44757261c369493ba9b",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "FINANCIADA",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_2/",
+   "archivo": "fuentes/crudo/hausera-alicante-2-render.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:16:25Z",
+   "bytes": 2341140,
+   "sha256": "9a7567e37157f243cf136fd28e30f37e74be408840a741a184edca35ebd993ea",
+   "nota": "HTML renderizado",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/terms/",
+   "archivo": "fuentes/hausera/nav-hausera-terms-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:16:50Z",
+   "bytes": 53115,
+   "sha256": "4bbbec02642270da6ed1c6ce3c64df6c4bd990602fe7b9a9f920dd42a90e4c5e",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Igual que el 10/11 salvo botones de acceso",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/faq/",
+   "archivo": "fuentes/hausera/nav-hausera-faq-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:16:57Z",
+   "bytes": 3235,
+   "sha256": "8ec62332dbbbb75f3c99f4974f8de350de6b1393e3ab43d6ab13a11793e9f9a5",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Igual que el 10/11 salvo botones de acceso",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/mercado-secundario/",
+   "archivo": "fuentes/hausera/nav-hausera-mercado-secundario-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:17:04Z",
+   "bytes": 3350,
+   "sha256": "2de241f602b8cd20e9c046a7a89d7bcf6cea7e5c8424e14a98b41d0901a7b672",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Igual que el 10/11 salvo botones de acceso",
+   "enGit": true
+  },
+  {
+   "url": "https://hausera.io/page-data/propiedad/alicante_3/page-data.json",
+   "archivo": "fuentes/crudo/hausera-propiedad-alicante_3-page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:17:25Z",
+   "bytes": 158508,
+   "sha256": "7a12fb34c9b63d3f28bfbb9b63f317d55808d36ee0baccfc6ed73002945b94da",
+   "nota": "Mismo SHA-256 que el 10/11 (COMMINGSOON, launchDate 25/11/2026)",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/page-data/propiedad/alicante_2/page-data.json",
+   "archivo": "fuentes/crudo/hausera-propiedad-alicante_2-page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:17:25Z",
+   "bytes": 158731,
+   "sha256": "73c8e2364129045956f0f44ef509a35765ded8715a92b33ae1dafa3419fcc9ba",
+   "nota": "Mismo SHA-256 que el 10/11 (PRESALE_CLOSED)",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/page-data/oportunidades/page-data.json",
+   "archivo": "fuentes/crudo/hausera-oportunidades-page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:17:25Z",
+   "bytes": 188786,
+   "sha256": "23352808ff58b3b2a8077d002f26d17f321c31359194f4d313e54b42ceb360bf",
+   "nota": "Mismo SHA-256 que el 10/11",
+   "enGit": false
+  },
+  {
+   "url": "https://hausera.io/page-data/app-data.json",
+   "archivo": "fuentes/crudo/hausera-app-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:17:25Z",
+   "bytes": 50,
+   "sha256": "c6f05c01e42a758a7b2fb04abe9bd66aa1173da4e2c3e00204f8eb12aee097ce",
+   "nota": "Solo cambia el hash de compilación del sitio",
+   "enGit": false
+  },
+  {
+   "url": "https://drive.google.com/uc?export=download&id=1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:17:42Z",
+   "bytes": 533858,
+   "sha256": "9170562a579f34c217255504597895e5720a6dd479125cefacecb79e883447b4",
+   "nota": "Alicante 3 · Documento de emisión (27 págs.). Mismo SHA-256 que el 10/11. PDF no guardado (nombres y DNI)",
+   "enGit": false
+  },
+  {
+   "url": "https://drive.google.com/uc?export=download&id=1vfq0Ljr0c4o73S0l-b5QBOLWgan1Le8X",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:17:45Z",
+   "bytes": 2651569,
+   "sha256": "69cbadaf3cb4f8522016e74f7911609aa12fddd9b431e474c1871c30d0eb09c8",
+   "nota": "Alicante 3 · Acuerdo de reserva + documento + escritura (85 págs.). Mismo SHA-256 que el 10/11. PDF no guardado (datos personales e IBAN)",
+   "enGit": false
+  },
+  {
+   "url": "https://drive.google.com/uc?export=download&id=1rbAUwmHLF9O16aQd5i5eOohV9JrYSbPQ",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:17:50Z",
+   "bytes": 9308752,
+   "sha256": "72a312e2a906cb839b37e905adb229ecd744043f37fda854e2a3fad232e13e89",
+   "nota": "Alicante 3 · Dossier (19 págs., 9,3 MB). Mismo SHA-256 que el 10/11. No guardado",
+   "enGit": false
+  },
+  {
+   "url": "https://drive.google.com/uc?export=download&id=1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:17:53Z",
+   "bytes": 533728,
+   "sha256": "d3d7dd400dc81c45f534d5164415afb22cfa8b30465ce6419466eea1607a2197",
+   "nota": "Alicante 2 · Documento de emisión. Mismo SHA-256 que el 10/11. PDF no guardado",
+   "enGit": false
+  },
+  {
+   "url": "(comprobación de literales de los PDF de Alicante 3 con pdftotext)",
+   "archivo": "fuentes/hausera/verificacion-literales-alicante-3-2026-11-11.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 2441,
+   "sha256": "8ed28e02811cd5e71e5cd55448febc20ab605d344cb49b0b9ebe3bb5ab0e6c4d",
+   "nota": "Literales del mínimo, acceso, salida, folleto, inscripción, comisiones, reserva y conflicto 50 %/70 %, sin datos personales. Generado a partir de las descargas de 09:17:42Z y 09:17:45Z",
+   "enGit": true
+  },
+  {
+   "url": "https://polygon-bor-rpc.publicnode.com (eth_call totalSupply y name de los contratos Alicante_2 y Alicante_3)",
+   "archivo": "fuentes/crudo/polygon-alicante-contratos.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:28:47Z",
+   "bytes": 908,
+   "sha256": "30a80c17f347e3cf577e0639778af54ff4fba39f2909fefbe713544c4082b4b6",
+   "nota": "Suministro 0 en los dos contratos (igual que el 10/11)",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+   "archivo": "fuentes/crudo/cnmv-erir-ursus3.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:13Z",
+   "bytes": 183044,
+   "sha256": "bc39c56a2d448f67fe6720ded3e81fca7c6aa96c7e4716b6addd2838cd8a5993",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-erir-ursus3.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:13Z",
+   "bytes": 22898,
+   "sha256": "a87f17e1cd3ecf869c4505706af34e81ef1454c67322d24d5b44d7f50b6dd3d0",
+   "nota": "ERIR Ursus-3 pág. 1: texto idéntico al 10/11 (los bytes del HTML cambian) · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1",
+   "archivo": "fuentes/crudo/cnmv-erir-ursus3-pag2.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:14Z",
+   "bytes": 182838,
+   "sha256": "287f1432915b4b8e9373fd949a05bba87ce880645501ea0444fa1dab2878ea65",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1",
+   "archivo": "fuentes/reguladores/cnmv-erir-ursus3-pag2.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:14Z",
+   "bytes": 22560,
+   "sha256": "490b1973766fcb2b9d755f5319eb2e5609ca6dbfcd7ea84a8d8dc004f038f565",
+   "nota": "Pág. 2: mismo SHA-256 que el 10/11 · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+   "archivo": "fuentes/crudo/cnmv-erir-ursus3-pag3.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:15Z",
+   "bytes": 162258,
+   "sha256": "4cdaee361403c68aec4dd3d5c5a5cf8008815d71573288829743597e0a0f320c",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+   "archivo": "fuentes/reguladores/cnmv-erir-ursus3-pag3.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:15Z",
+   "bytes": 16769,
+   "sha256": "2235e61568eadf7993fdd926acee9a0fef8275e02829e7eb2a07aa5532de50eb",
+   "nota": "Pág. 3: mismo SHA-256 que el 10/11 · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=3",
+   "archivo": "fuentes/crudo/cnmv-erir-ursus3-pag4.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:17Z",
+   "bytes": 153549,
+   "sha256": "7a076857f90d08b53e90de228b6eac0eb4f400626d27fdeebdc55dcd5895f57d",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=3",
+   "archivo": "fuentes/reguladores/cnmv-erir-ursus3-pag4.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:17Z",
+   "bytes": 14158,
+   "sha256": "1ad59efa49bc17d141da8c7b0adc2a6f7012ef1117a9706e794481e3f87d6cc4",
+   "nota": "Fuera de rango; mismo SHA-256 que el 10/11 · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ERIR.aspx?lang=es",
+   "archivo": "fuentes/crudo/cnmv-erir-indice.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:19Z",
+   "bytes": 154535,
+   "sha256": "eebd88eac23d049351c2bf6318f2715806fc0dd639764f8fa6a61db4dafd9697",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ERIR.aspx?lang=es",
+   "archivo": "fuentes/reguladores/cnmv-erir-indice.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:19Z",
+   "bytes": 13689,
+   "sha256": "d84412e43a54dcb4252c79db03e6c281a8018c547be6cf793b398c4f97102f97",
+   "nota": "Mismo SHA-256 que el 10/11: Minos, Token City y Ursus-3 · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "archivo": "fuentes/crudo/cnmv-erir-minos.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:20Z",
+   "bytes": 153198,
+   "sha256": "c86799de78da4d2973cec3d98aadee67e8323becf565126c37ed1ef9fcdfcf42",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-erir-minos.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:20Z",
+   "bytes": 14909,
+   "sha256": "2a53aea277794de96582b40be95d076442ece831ee76dd6ec0b385f75f012766",
+   "nota": "Mismo SHA-256 que el 10/11: solo la «1ª Emisión de Pagarés Prosegur Cash 2026» (06/11, 500.000 €) · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es",
+   "archivo": "fuentes/crudo/cnmv-erir-token-city.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:22Z",
+   "bytes": 153264,
+   "sha256": "22b443f1a8b3742ac5d7d8ce537f8aed8808bd5662a95a5e186a4e78b66cbdca",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-erir-token-city.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:22Z",
+   "bytes": 14959,
+   "sha256": "8a83cdf66f94cc95168ed71269014b450ff1c01f4db2a358f641723a830183a3",
+   "nota": "Mismo SHA-256 que el 10/11: solo Series A Grupo UAE (06/11); nada de CANDO1 · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A56759137&lang=es",
+   "archivo": "fuentes/crudo/cnmv-erir-bit2me-stx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:23Z",
+   "bytes": 150114,
+   "sha256": "462bd442db6de97f5ddcf6474558ff873244412a8d89478b5a017fa9073bdb64",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A56759137&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-erir-bit2me-stx.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:18:23Z",
+   "bytes": 14046,
+   "sha256": "c7c6fcf5e65db52a5258de61a7700271e71a03b79dd71e5f3b2ea97e35a45eee",
+   "nota": "Mismo SHA-256 que el 10/11: sin emisiones inscritas · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/otra-informacion-relevante/resultado-oir.aspx?nif=A87498564",
+   "archivo": "fuentes/crudo/cnmv-prosegur-cash-oir.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:23:19Z",
+   "bytes": 253299,
+   "sha256": "6e4ac06e3a799946f0fa7ff6348b63bd4189ea82b9f27974234992b3c41e7396",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/otra-informacion-relevante/resultado-oir.aspx?nif=A87498564",
+   "archivo": "fuentes/reguladores/cnmv-prosegur-cash-oir.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:23:19Z",
+   "bytes": 15485,
+   "sha256": "efb185c9dec0fcb4b5cd690a963b3f6b1c1f07467b73c93b633807043d6d1946",
+   "nota": "OIR de Prosegur Cash en la CNMV: la última es del 03/11/2026 (resultados 3T); ninguna sobre pagarés tokenizados · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ancv/isin.aspx?nif=A87498564",
+   "archivo": "fuentes/crudo/cnmv-prosegur-cash-isin.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:23:21Z",
+   "bytes": 228691,
+   "sha256": "4f596b1a64a3bde2613c2529bf9116ea5c37e2780c27a92bad4e82e2d16d90cc",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ancv/isin.aspx?nif=A87498564",
+   "archivo": "fuentes/reguladores/cnmv-prosegur-cash-isin.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:23:21Z",
+   "bytes": 14944,
+   "sha256": "7fa1706af30ebd1eca893766777cea2adcfd7df8a40270db5f1445a0af00b484",
+   "nota": "13 ISIN: acciones, bono 2030 y 11 pagarés AIAF de 100.000 € nominal; ninguno de 500.000 € ni con fecha de noviembre · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/folletos/folletosemisionopv.aspx?nif=A87498564",
+   "archivo": "fuentes/crudo/cnmv-prosegur-cash-folletos-emision.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:23:22Z",
+   "bytes": 151659,
+   "sha256": "21e408b0d24b3b47208eaa58f13b0d372c2057c1d3db307f00dfaf76d0fab19f",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/folletos/folletosemisionopv.aspx?nif=A87498564",
+   "archivo": "fuentes/reguladores/cnmv-prosegur-cash-folletos-emision.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:23:22Z",
+   "bytes": 13900,
+   "sha256": "e8612ba96c81fee0bd47608d0b7f369ff87172b7374bd978682e41ed0e9c2280",
+   "nota": "Último folleto de emisión/OPV: 02/03/2017 · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/folletos/anotacionescuenta.aspx?id=0&nif=A87498564",
+   "archivo": "fuentes/crudo/cnmv-prosegur-cash-escrituras.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:23:24Z",
+   "bytes": 152509,
+   "sha256": "4034aeb3c7d3ac083fe5049f97c04c39f2341dfbe614ab23903ab142f28fedd0",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/folletos/anotacionescuenta.aspx?id=0&nif=A87498564",
+   "archivo": "fuentes/reguladores/cnmv-prosegur-cash-escrituras.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:23:24Z",
+   "bytes": 14016,
+   "sha256": "76545c38a0350388be4b4a75629e83235bd6545fce04a5dc1dad4af7aba2d55d",
+   "nota": "Última escritura de anotaciones en cuenta: 13/10/2020 · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&lang=es",
+   "archivo": "fuentes/crudo/cnmv-securitize-esi.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:25:30Z",
+   "bytes": 223518,
+   "sha256": "78a0b9a1b41ab3c38f44977cd8cffea4f693cb69aa85d9b63509319aa076b0af",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-securitize-esi.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:25:30Z",
+   "bytes": 14359,
+   "sha256": "94affc42b1da622a73c252c8f23d74318cc4d79ad1b0eb945f6efd131bad602d",
+   "nota": "Securitize Europe Brokerage and Markets, S.V., S.A., nº 327 (25/04/2025), FOGAIN · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&vista=12&lang=es",
+   "archivo": "fuentes/crudo/cnmv-securitize-esi-pasaporte.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:25:26Z",
+   "bytes": 253670,
+   "sha256": "362a46a667ac05a9987d8168f9fbe4d450576ebdb0d2e8ddd336a319c6b50231",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&vista=12&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-securitize-esi-pasaporte.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:25:26Z",
+   "bytes": 14559,
+   "sha256": "14c0a556e1d68cc34a35b63eb17edbd54b2e93ad5c4f0204973689af81128b23",
+   "nota": "Libre prestación EEE (enlace que da la web de Securitize) · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&vista=17&lang=es",
+   "archivo": "fuentes/crudo/cnmv-securitize-esi-programa.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:25:27Z",
+   "bytes": 276697,
+   "sha256": "f8383eab559e6176e3e272e9c6b60006b1f25b0fa70594fb018416ea15bf4933",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&vista=17&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-securitize-esi-programa.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:25:27Z",
+   "bytes": 30777,
+   "sha256": "820655f11faf6490854363c14c75fcffaf32ce387a2eda98dac0b5f8112683e9",
+   "nota": "Programa de actividades: servicios solo sobre instrumentos representados con TRD; clientes minoristas, profesionales y contrapartes · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx?lang=es",
+   "archivo": "fuentes/crudo/cnmv-infraestructuras.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:25:31Z",
+   "bytes": 260219,
+   "sha256": "9a22c857a39ff297ad67dd4b43da9ca2ee68f60b6096d7a5edc70ea8763b81af",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/Rectoras/ListadosIM.aspx?lang=es",
+   "archivo": "fuentes/reguladores/cnmv-infraestructuras.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:25:31Z",
+   "bytes": 17628,
+   "sha256": "73a0e11dfef92c0262687f715c9072322b5fe49b8586c99005b44cec326e25c9",
+   "nota": "Siguen dos SNL TRD: Bit2Me STX y Securitize · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+   "archivo": "fuentes/crudo/cnmv-psfp-listado.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:28:55Z",
+   "bytes": 165407,
+   "sha256": "fac76691ef4d19aeaca3dac06cbb187c21d7462988a5f9ab0ec3cdde1c475ae2",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+   "archivo": "fuentes/reguladores/cnmv-psfp-listado.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:28:55Z",
+   "bytes": 15685,
+   "sha256": "2bc93dcfc6159f2943fcb042c2feaf3798ed48dbd2d3c4d36ea0e09c0b18dd0e",
+   "nota": "0 coincidencias con Hausera u Holdtx · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A86796182&lang=es",
+   "archivo": "fuentes/crudo/cnmv-esi-ursus3.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:29:19Z",
+   "bytes": 223454,
+   "sha256": "1d7b8fd3617ba7db8584cacc4d742c6513585c5d3f41b682d754c173eaed3313",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A86796182&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-esi-ursus3.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:29:19Z",
+   "bytes": 14344,
+   "sha256": "af0ef18ddfdfd847765311c715dcf41e3cfe6994973053386309a97b02f97343",
+   "nota": "Ursus-3 Capital A.V., nº 251 · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A23875529&lang=es",
+   "archivo": "fuentes/crudo/cnmv-esi-minos.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:29:23Z",
+   "bytes": 223362,
+   "sha256": "96d5f5ba4029316a66075d8e9abf76541feb4c79b06a59278b59424e5ecd5671",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A23875529&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-esi-minos.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:29:23Z",
+   "bytes": 14312,
+   "sha256": "8bc3182ce3f8bd1b8b719f3a0903be7a28108951a53f32a639c5556fad8e7986",
+   "nota": "Minos Securities A.V., nº 333 · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&lang=es",
+   "archivo": "fuentes/crudo/cnmv-esi-token-city.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:29:25Z",
+   "bytes": 223191,
+   "sha256": "4d0119e89d94784845248b55e25e655d5ac1676f710e08ff48e4eb7dbb4e02e6",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A25988981&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-esi-token-city.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:29:25Z",
+   "bytes": 14322,
+   "sha256": "37f27c319ec16cdcc520db2c9d767e1d1da0500317cec2e22f928bcb5499e230",
+   "nota": "Token City European Exchange A.V., nº 334 · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A56759137&lang=es",
+   "archivo": "fuentes/crudo/cnmv-esi-bit2me-stx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:29:27Z",
+   "bytes": 223261,
+   "sha256": "19a237c5f165e95353cecafd4f99d571fac22767a9bc18d8a1c1e39e98d60f80",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A56759137&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-esi-bit2me-stx.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:29:27Z",
+   "bytes": 14348,
+   "sha256": "5b6a8d9052f5bf3ec60ecb3c2582929b1541020f88af3c202e9156f517c5719b",
+   "nota": "Bit2Me STX A.V., nº 343 · texto extraído del HTML (sin scripts ni estilos)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "archivo": "fuentes/crudo/cnmv-adv-Trading.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:06Z",
+   "bytes": 237276,
+   "sha256": "d4b4055d9a5e70fb609bd71680730786f594bc234da1de63f19b04145bad026b",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "archivo": "fuentes/reguladores/cnmv-adv-Trading.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:06Z",
+   "bytes": 14670,
+   "sha256": "72f61946c34b8e1bae5894869cb5c478514e2be5385dcf842e2acab15854eca7",
+   "nota": "Control del buscador: 16 páginas de resultados",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+   "archivo": "fuentes/crudo/cnmv-adv-Hausera.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:09Z",
+   "bytes": 212203,
+   "sha256": "1d2997837d89245cd82cf7e759faeddc89f6fa8ca9c1f4487e9414caf18dfe7c",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+   "archivo": "fuentes/reguladores/cnmv-adv-Hausera.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:09Z",
+   "bytes": 13627,
+   "sha256": "9f1ab313f693d5d85107a055469c89c814ab80d6e3acbe882e82ae278669380a",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx",
+   "archivo": "fuentes/crudo/cnmv-adv-Holdtx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:11Z",
+   "bytes": 212181,
+   "sha256": "f2f2b7fcbf9b12a566edf3dfd8d465447658d5f67d06f1218e1a05298fa7afbd",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx",
+   "archivo": "fuentes/reguladores/cnmv-adv-Holdtx.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:11Z",
+   "bytes": 13625,
+   "sha256": "73435a3e2043735d969e3fd82f298bd18935fd87bbb1799ed75d311b4f1c363a",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur",
+   "archivo": "fuentes/crudo/cnmv-adv-Prosegur.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:14Z",
+   "bytes": 212225,
+   "sha256": "14151c5446c62a9f26d46a16b8e9d8069b8c2bbe9c979a23d0756790db458cd8",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur",
+   "archivo": "fuentes/reguladores/cnmv-adv-Prosegur.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:14Z",
+   "bytes": 13629,
+   "sha256": "e09c093520846faa503f65189761a663c484dd3232e756b32a1bf703d3659acc",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Minos",
+   "archivo": "fuentes/crudo/cnmv-adv-Minos.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:17Z",
+   "bytes": 212159,
+   "sha256": "2c4a26915e432c81ba2442feee679e18e3276b3278945c5c1ac20e87530543d2",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Minos",
+   "archivo": "fuentes/reguladores/cnmv-adv-Minos.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:17Z",
+   "bytes": 13623,
+   "sha256": "d9121f4c4b492b76f8a1937bdd9cbcb0e8a2da289951babb8b52a121c2e1ee15",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Securitize",
+   "archivo": "fuentes/crudo/cnmv-adv-Securitize.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:20Z",
+   "bytes": 212269,
+   "sha256": "503d118d94bb58ae6802d3c4555671b3bc89d02b8645d6472a9cc94886ec2fec",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Securitize",
+   "archivo": "fuentes/reguladores/cnmv-adv-Securitize.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:20Z",
+   "bytes": 13633,
+   "sha256": "bc06260b5c8d3f2869d79c1aa969cb0e70d38769084d366cff1b213aecb64a48",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Profitus",
+   "archivo": "fuentes/crudo/cnmv-adv-Profitus.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:22Z",
+   "bytes": 212225,
+   "sha256": "92902edf783ca5972fb7424b40b8bdf1f50e0a24f0d46a78c7600af5f5ab82a1",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Profitus",
+   "archivo": "fuentes/reguladores/cnmv-adv-Profitus.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:22Z",
+   "bytes": 13629,
+   "sha256": "dc4f6bafd0335768076ec28ab71b3d28396a354e653af68fd1588540355b6f60",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Axiology",
+   "archivo": "fuentes/crudo/cnmv-adv-Axiology.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:25Z",
+   "bytes": 212225,
+   "sha256": "cf3e8135ed15a822d60f56afb5d721c08744119ea62bb2ce70c266d9aa62f469",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Axiology",
+   "archivo": "fuentes/reguladores/cnmv-adv-Axiology.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:25Z",
+   "bytes": 13629,
+   "sha256": "4431781eb6aa38f90ed9cda2fffa186e161c77d3b8ecc6d146db347843203ace",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Valorix",
+   "archivo": "fuentes/crudo/cnmv-adv-Valorix.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:28Z",
+   "bytes": 212203,
+   "sha256": "2b53b56f6a35b44233481c19c74d6399ea6988ee5d06bd241410457b4b51bc63",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Valorix",
+   "archivo": "fuentes/reguladores/cnmv-adv-Valorix.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:28Z",
+   "bytes": 13627,
+   "sha256": "624dafe4199b359a13aef71e3bf9363e2330eb06cffbf52f959bce25795d8fd8",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bit2Me",
+   "archivo": "fuentes/crudo/cnmv-adv-Bit2Me.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:31Z",
+   "bytes": 212181,
+   "sha256": "06a66b44ebcb572794f4b3782b88c84085a69e2476742a32d222c4ee45ad2c46",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bit2Me",
+   "archivo": "fuentes/reguladores/cnmv-adv-Bit2Me.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:31Z",
+   "bytes": 13625,
+   "sha256": "b95b7667847bcda769ff63d75ab88969df1d96d5e208c879ed368482482fb32b",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City",
+   "archivo": "fuentes/crudo/cnmv-adv-Token_City.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:34Z",
+   "bytes": 212269,
+   "sha256": "19bd720c2d755ee683d7af5cafffdccd4009372df04461c5ef132fedde5728e1",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City",
+   "archivo": "fuentes/reguladores/cnmv-adv-Token_City.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:34Z",
+   "bytes": 13635,
+   "sha256": "610a1d2ccb13eff28107dc12e549a82dfc1eadec29fe375efa998b4b0c1d7d3c",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lornin",
+   "archivo": "fuentes/crudo/cnmv-adv-Lornin.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:36Z",
+   "bytes": 212181,
+   "sha256": "1f69fe1eaf885dea8a8230b5ad4a76df5814fa9d8412a3b232df603919147fb8",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lornin",
+   "archivo": "fuentes/reguladores/cnmv-adv-Lornin.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:36Z",
+   "bytes": 13625,
+   "sha256": "864510e0931c347837eb9f79f1e3eced8b4a34addb7278a67278af02753abd6b",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cando",
+   "archivo": "fuentes/crudo/cnmv-adv-Cando.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:39Z",
+   "bytes": 212159,
+   "sha256": "b2acfd56ffbcd81f25a3e3e23b68f945c1125a7941ee6c4a854307c7daaf4929",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cando",
+   "archivo": "fuentes/reguladores/cnmv-adv-Cando.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:39Z",
+   "bytes": 13623,
+   "sha256": "858264c3377bd7ebff4154be028972ec457bb507f14458b4ab4b75629b9555f1",
+   "nota": "«No hay datos disponibles»",
+   "enGit": true
+  },
+  {
+   "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+   "archivo": "fuentes/crudo/Advertencias_CNMV_Otras.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:19:47Z",
+   "bytes": 254225,
+   "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0",
+   "nota": "Mismo SHA-256 que el 10/11; sin Hausera, Holdtx, Prosegur, Minos, Securitize, Profitus, Axiology, Valorix, Bit2Me, Token City, Lornin ni Cando (control: Comunitae sí aparece)",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/afn?tipo=AFN&numero=21&vista=17&lang=es",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:28:56Z",
+   "bytes": 177800,
+   "sha256": "8fcf4009f0dbcd859ef349ef7f8c105669e87f4183ff1dc69e44d3cb0acd561d",
+   "nota": "EAFN nº 21: solo asesoramiento (inversión y empresas), sin colocación. HTML no conservado (persona física)",
+   "enGit": false
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/BusquedaPorEntidad (formulario, nombre=Prosegur Cash) → DatosEntidad?nif=A87498564",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": null,
+   "bytes": null,
+   "sha256": null,
+   "metodo": "playwright",
+   "nota": "Solo para obtener el NIF de Prosegur Cash (A87498564) y los enlaces de sus registros. Hecha entre 09:20:45Z y 09:22:48Z (hora exacta no registrada)",
+   "enGit": false
+  },
+  {
+   "url": "https://www.prosegurcash.com/.rest/dam/endpoint/Prosegur/CORP/Cash/pdf/accionistas-e-inversores/otra-informacion-relevante?lang=all",
+   "archivo": "fuentes/crudo/prosegurcash-otra-informacion-relevante.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:20:03Z",
+   "bytes": 325530,
+   "sha256": "e1bb810f4eaa4a32833ad05727338cbcb41c1e703956aba73e9115a889676e2c",
+   "nota": "Mismo SHA-256 que el 10/11; última OIR del 16/06/2026 (programa de pagarés AIAF)",
+   "enGit": false
+  },
+  {
+   "url": "https://www.prosegurcash.com/.rest/dam/endpoint/Prosegur/CORP/Cash/pdf/accionistas-e-inversores/informacion-privilegiada?lang=all",
+   "archivo": "fuentes/crudo/prosegurcash-informacion-privilegiada.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:20:06Z",
+   "bytes": 16022,
+   "sha256": "f278734bd4eca17c5f0a5713963e3f45c4a6c1ecb7a0fe0bb6a11f7bd016f661",
+   "nota": "Última información privilegiada del 25/02/2026",
+   "enGit": false
+  },
+  {
+   "url": "https://minos-securities.com/",
+   "archivo": "fuentes/prosegur/nav-minos-securities-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:20:26Z",
+   "bytes": 2718,
+   "sha256": "1368eab5db87fbb8d808f80276eeadb24ac76797cd0d996886547e7889477060",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Igual que el 10/11; no habla de los pagarés",
+   "enGit": true
+  },
+  {
+   "url": "https://www.minos.global/",
+   "archivo": "fuentes/prosegur/nav-minos-global-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:20:31Z",
+   "bytes": 8032,
+   "sha256": "f8ddb6f961713db9bb10bb46fbd9160cb24ad7e9bbb1cc212b40b7acbd575c93",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Solo cambian las últimas operaciones del widget",
+   "enGit": true
+  },
+  {
+   "url": "https://www.prosegurcash.com/media/prensa",
+   "archivo": "fuentes/prosegur/nav-prosegurcash-prensa-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:20:38Z",
+   "bytes": 4767,
+   "sha256": "a9689807ae1548e3902f8faa8ddbf6c8416ec105dea824e0e71fc81cbccf84c3",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Igual que el 10/11 salvo cotización; dos nombres recortados (original en crudo/)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.prosegurcash.com/accionistas-inversores/comunicaciones-cnmv",
+   "archivo": "fuentes/prosegur/nav-prosegurcash-cnmv-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:20:45Z",
+   "bytes": 5134,
+   "sha256": "ad30c7ef9dcc132d19995bce91fc705de6a45bdf726f56b447d72b9f5f98adb6",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Igual que el 10/11 salvo cotización; un nombre recortado (original en crudo/)",
+   "enGit": true
+  },
+  {
+   "url": "https://minos-securities.com/",
+   "archivo": "fuentes/crudo/nav-minos-securities.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:20:26Z",
+   "bytes": 25349,
+   "sha256": "0177e86f395faec1adf54c407fa21d7df93a7f6be8fbe8d351332366afc430e7",
+   "nota": "HTML renderizado",
+   "enGit": false
+  },
+  {
+   "url": "https://www.minos.global/",
+   "archivo": "fuentes/crudo/nav-minos-global.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:20:31Z",
+   "bytes": 79265,
+   "sha256": "adf84d384db57847a1d86e22e74d64936f448675cec0ff743c2daaa57f56f592",
+   "nota": "HTML renderizado",
+   "enGit": false
+  },
+  {
+   "url": "https://www.prosegurcash.com/media/prensa",
+   "archivo": "fuentes/crudo/nav-prosegurcash-prensa.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:20:38Z",
+   "bytes": 142469,
+   "sha256": "a4ec873e1cb2dec6acbae414d9b2a858d8b23e6082247d3c46da0464d507dd83",
+   "nota": "HTML renderizado",
+   "enGit": false
+  },
+  {
+   "url": "https://www.prosegurcash.com/accionistas-inversores/comunicaciones-cnmv",
+   "archivo": "fuentes/crudo/nav-prosegurcash-cnmv.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:20:45Z",
+   "bytes": 442594,
+   "sha256": "244f09968417118a2edbaff7bd15eb01dfb2dffc546c3f67f6dca4371a0c1ae0",
+   "nota": "HTML renderizado",
+   "enGit": false
+  },
+  {
+   "url": "https://securitize.io/investments/stocks",
+   "archivo": "fuentes/securitize/securitize-stocks-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:23:55Z",
+   "bytes": 9397,
+   "sha256": "c3090848d0590060b7f0044c9d0a29c33dcf566d7f8c4ea5d9d8513da25611ee",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Igual que el 10/11: «Now onchain for U.S. investors», «Available in the U.S., EU and other eligible markets», «to eligible investors in permitted jurisdictions»",
+   "enGit": true
+  },
+  {
+   "url": "https://stocks.securitize.io/",
+   "archivo": "fuentes/securitize/securitize-stocksapp-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:24:07Z",
+   "bytes": 10105,
+   "sha256": "909fe834d465a5aef60863ed16fd310474d607b89a3a2f5eb0e5593620b334e5",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Solo cambian precios",
+   "enGit": true
+  },
+  {
+   "url": "https://securitize.io/learn/press",
+   "archivo": "fuentes/securitize/securitize-press-releases-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:24:17Z",
+   "bytes": 6053,
+   "sha256": "935c813696572b33e88369109812107fb40d2aca22182ae57efe299e2def6d69",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Redirige a /about-us/press-releases; nuevas del 09/11 (River One, resultados 3T), ninguna sobre la UE",
+   "enGit": true
+  },
+  {
+   "url": "https://securitize.io/disclosure-library",
+   "archivo": "fuentes/securitize/securitize-disclosures-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:24:38Z",
+   "bytes": 6323,
+   "sha256": "211107fde59af81c3b5d419ae46fa877db6d3ad7ae972a3f18d6bf20060ef890",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Igual que el 10/11; sin KID",
+   "enGit": true
+  },
+  {
+   "url": "https://securitize.io/learn/press/securitize-launches-tokenized-us-stocks",
+   "archivo": "fuentes/securitize/securitize-press-stocks-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:24:49Z",
+   "bytes": 14818,
+   "sha256": "09eefae0d6b053cba19fe76af8057e669375f9e67d41dc2799037c7c36d7da8c",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Nota del 08/10/2026; igual salvo nombres recortados",
+   "enGit": true
+  },
+  {
+   "url": "https://stocks.securitize.io/asset/AAPL",
+   "archivo": "fuentes/securitize/securitize-stocks-aapl-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:25:00Z",
+   "bytes": 7405,
+   "sha256": "28dc2c4d39c6e3c21bebc20cf57c66761a29632335ecef9e8d2ad759a925ac32",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Solo cambian precios; nombres recortados",
+   "enGit": true
+  },
+  {
+   "url": "https://stocks.securitize.io/faq",
+   "archivo": "fuentes/securitize/securitize-stocks-faq-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:33:24Z",
+   "bytes": 5856,
+   "sha256": "a297b0146bc218f23997cb2d2d0f2235a9a31ecda593258d565ecd2aed23c590",
+   "metodo": "playwright (clic en cada pregunta)",
+   "nota": "9 preguntas desplegadas; «who can trade» igual que el 10/11 (KYC + monedero propio en lista blanca), sin lista de países",
+   "enGit": true
+  },
+  {
+   "url": "https://cdn.builder.io/o/assets%2F… (EU | MiFID II Pre-Contractual Info) [token recortado]",
+   "archivo": "fuentes/crudo/securitize-eu-mifid-precontractual.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:26:09Z",
+   "bytes": 206531,
+   "sha256": "141e121af4f3899a4681b77603839cbcb0903bf0659a7cc5b1bff03b3b258095",
+   "nota": "URL firmada recortada (enlace de la biblioteca de documentos). Mismo SHA-256 que el 10/11",
+   "enGit": false
+  },
+  {
+   "url": "https://cdn.builder.io/o/assets%2F… (EU | Securitize Europe Terms & Conditions) [token recortado]",
+   "archivo": "fuentes/crudo/securitize-eu-terms.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:26:09Z",
+   "bytes": 279535,
+   "sha256": "677b3b737f0293db13ee4437e627d75d3d0b1575520df1928de3b7040a8d498f",
+   "nota": "URL firmada recortada (enlace de la biblioteca de documentos). Mismo SHA-256 que el 10/11",
+   "enGit": false
+  },
+  {
+   "url": "https://cdn.builder.io/o/assets%2F… (Entitlement Token Disclosure) [token recortado]",
+   "archivo": "fuentes/crudo/securitize-entitlement-token-disclosure.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:26:09Z",
+   "bytes": 88519,
+   "sha256": "e3aceac091dde13d633c142f7141c4ef7e352e57de22ea47d18027d9404d8a5f",
+   "nota": "URL firmada recortada (enlace de la biblioteca de documentos). Mismo SHA-256 que el 10/11",
+   "enGit": false
+  },
+  {
+   "url": "https://www.profitus.com/investment-offers",
+   "archivo": "fuentes/profitus/profitus-offers-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:26:29Z",
+   "bytes": 4610,
+   "sha256": "60f11639156eefcf1d85de635875c0f7ccdb7778cf65e76fcd08b5c0917628c7",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Solo préstamos con garantía inmobiliaria; ningún bono",
+   "enGit": true
+  },
+  {
+   "url": "https://www.profitus.com/bonds",
+   "archivo": "fuentes/profitus/profitus-bonds-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:26:39Z",
+   "bytes": 6988,
+   "sha256": "1465d0e1a145f0e2800715f11b598ce7ea7a7fecff1e68b56dc63707f592cead",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Página para emisores; igual que el 10/11 (nombres y correo recortados)",
+   "enGit": true
+  },
+  {
+   "url": "https://www.profitus.es/",
+   "archivo": "fuentes/profitus/profitus-es-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:26:47Z",
+   "bytes": 6721,
+   "sha256": "99eb30b4e0073b97781012d0925389f66e07be94e4a43f34a9e036e493557956",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Solo cambian cifras de préstamos",
+   "enGit": true
+  },
+  {
+   "url": "https://www.profitus.com/news",
+   "archivo": "fuentes/profitus/profitus-news-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:26:56Z",
+   "bytes": 5019,
+   "sha256": "277b6b15ee394b1a5d7e65ef953e19c4f5355ad33fbbdf2dd50c7a1359e53033",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Sin noticias de bonos nuevas (un nombre recortado)",
+   "enGit": true
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "archivo": "fuentes/crudo/profitus-landing-projects-p1.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:14Z",
+   "bytes": 51687,
+   "sha256": "20f2c519aef1b304d1360b7075cb79f0daa9f0d010b6949ef4054ab9c13fec56",
+   "nota": "API pública de proyectos (548 en total): 7 abiertos, todos loan_type «standard» (préstamos); ninguno de tipo bono",
+   "enGit": false
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=2",
+   "archivo": "fuentes/crudo/profitus-landing-projects-p2.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:16Z",
+   "bytes": 51570,
+   "sha256": "9c76750e3324022cd7ee2fbb65d89712a8b39350de12526de7d27b0cdedcd32b",
+   "nota": "API pública de proyectos",
+   "enGit": false
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=3",
+   "archivo": "fuentes/crudo/profitus-landing-projects-p3.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:19Z",
+   "bytes": 51589,
+   "sha256": "b73d24e5120d31d68847b7e20771afb8c2aee57f5d53900117ed4a8fda2b089a",
+   "nota": "API pública de proyectos",
+   "enGit": false
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=4",
+   "archivo": "fuentes/crudo/profitus-landing-projects-p4.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:21Z",
+   "bytes": 51648,
+   "sha256": "83f0258f4dc00326019269c425817efb845cc874c4a94ae26ffb4b2924823a86",
+   "nota": "API pública de proyectos",
+   "enGit": false
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=16&page=1 (llamada del navegador)",
+   "archivo": "fuentes/crudo/profitus-api-2.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:26:33Z",
+   "bytes": 20203,
+   "sha256": "a268a717e5194c3292f227766101c1f883b6e030c3ed04053738825609420c8c",
+   "nota": "Respuesta capturada al renderizar Oportunidades",
+   "enGit": false
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=16&page=1 (llamada del navegador)",
+   "archivo": "fuentes/crudo/profitus-api-5.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:26:50Z",
+   "bytes": 20191,
+   "sha256": "1ad9f830c5747d6eb2bf8fade1b31faf9d12114b7947039b1305ee615fcdafa0",
+   "nota": "Respuesta capturada al renderizar profitus.es",
+   "enGit": false
+  },
+  {
+   "url": "https://valorix.com/",
+   "archivo": "fuentes/crudo/valorix-com.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:42Z",
+   "bytes": 113715,
+   "sha256": "5ae0d7ef2a0fcb590280dfa4ed3433686ab240b1630d55369114a5a00ae6f0b6",
+   "nota": "Mismo SHA-256 que el 10/11",
+   "enGit": false
+  },
+  {
+   "url": "https://valorix.com/",
+   "archivo": "fuentes/bit2me/valorix-com-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:42Z",
+   "bytes": 8689,
+   "sha256": "c87e0688d27e6926b7cf69659c5349356bc276a0d56f5d4cb8d44175f01ca22e",
+   "nota": "Texto extraído del HTML",
+   "enGit": true
+  },
+  {
+   "url": "https://valorix.com/invertir.html",
+   "archivo": "fuentes/crudo/valorix-invertir.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:43Z",
+   "bytes": 47487,
+   "sha256": "b233b45d2d97f4d8e28e7af9c1dd046ba9d4701dcbb3b8e7acba1d1e4b20ec08",
+   "nota": "Mismo SHA-256 que el 10/11 («Segunda emisión · 2026», formulario de interés, no se rellenó)",
+   "enGit": false
+  },
+  {
+   "url": "https://valorix.com/invertir.html",
+   "archivo": "fuentes/bit2me/valorix-invertir-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:28:26Z",
+   "bytes": 4662,
+   "sha256": "0e4a6c11eacfb30f5411662a27f59c7a9266786360b81ce3e0ba65896580ad11",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Texto renderizado",
+   "enGit": true
+  },
+  {
+   "url": "https://valorix.com/docs/documento-de-emision.pdf",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:48Z",
+   "bytes": 820510,
+   "sha256": "5640e21125bfaf15eda1afd828e7693c9a8c798a99e48b7d62b3f339d6e0f9e6",
+   "nota": "Documento de la emisión VLRX1T26 (enero de 2026). Mismo SHA-256 que el 10/11. PDF no guardado",
+   "enGit": false
+  },
+  {
+   "url": "https://valorix.es/",
+   "archivo": null,
+   "http": 0,
+   "consultadoUtc": "2026-11-11T09:27:43Z",
+   "bytes": null,
+   "sha256": null,
+   "nota": "Bloqueo: curl «Connection reset by peer»",
+   "enGit": false
+  },
+  {
+   "url": "https://valorix.es/",
+   "archivo": "fuentes/bit2me/nav-valorix-es-2026-11-11.txt",
+   "http": 502,
+   "consultadoUtc": "2026-11-11T09:28:21Z",
+   "bytes": 112,
+   "sha256": "19c1b70988ff8919b597f5b3ef6f1f5d0f4489b1aa190770d4358eb3bd494f5e",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Bloqueo: 502 en el navegador",
+   "enGit": true
+  },
+  {
+   "url": "https://bit2me.com/es/stx",
+   "archivo": "fuentes/crudo/bit2me-stx-producto.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:45Z",
+   "bytes": 529766,
+   "sha256": "d390d6655f92126e0777a8b1319158ee9380a0da93b02fc6a01a14248101951a",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://bit2me.com/es/stx",
+   "archivo": "fuentes/bit2me/bit2me-stx-producto-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:45Z",
+   "bytes": 14648,
+   "sha256": "00e955a85951c1784c432bbc4bd183f1377d4c84e616451f2d64b4997e55b573",
+   "nota": "Texto igual que el 10/11 salvo el menú de criptomonedas",
+   "enGit": true
+  },
+  {
+   "url": "https://stx.bit2me.com/",
+   "archivo": "fuentes/bit2me/nav-stx-bit2me-2026-11-11.txt",
+   "http": 404,
+   "consultadoUtc": "2026-11-11T09:28:17Z",
+   "bytes": 97,
+   "sha256": "7b2f54ba87597a59973e75a6c11c7ffdff74c1add8756d320ce2a798239d150f",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "404 sin sesión (curl 404 a las 09:27:46Z)",
+   "enGit": true
+  },
+  {
+   "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "archivo": "fuentes/crudo/bit2me-blog-autorizacion.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:47Z",
+   "bytes": 164206,
+   "sha256": "8beb83a8e979f40019e8809c1e2d730514c48ad95da6401964b20d0fe39e07f0",
+   "nota": "HTML crudo",
+   "enGit": false
+  },
+  {
+   "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "archivo": "fuentes/bit2me/bit2me-blog-autorizacion-2026-11-11.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:27:47Z",
+   "bytes": 12916,
+   "sha256": "ca61a06ff7b2cbd1f18f12978f806414918169070f9e3703ec5749652eda90df",
+   "nota": "Igual que el 10/11: bono de Valorix de 1 M€ «previsto para diciembre de 2026»",
+   "enGit": true
+  },
+  {
+   "url": "https://exchange.token-city.com/",
+   "archivo": "fuentes/tokencity/nav-token-city-exchange-2026-11-11.txt",
+   "http": 503,
+   "consultadoUtc": "2026-11-11T09:28:11Z",
+   "bytes": 441,
+   "sha256": "4f089f99aa8e171574fbfabf37dec4dbd7764f56071421b1dbda89a198c52001",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Bloqueo: «Sistema deshabilitado temporalmente · Estamos en mantenimiento»",
+   "enGit": true
+  },
+  {
+   "url": "https://exchange.token-city.com/",
+   "archivo": "fuentes/crudo/token-city-exchange.html",
+   "http": 503,
+   "consultadoUtc": "2026-11-11T09:28:11Z",
+   "bytes": 4729,
+   "sha256": "eebc7074a4d874c930fd004260c0fa34bfc20bf1f2ffba67dca12eb04de5a91f",
+   "nota": "HTML de la página de mantenimiento",
+   "enGit": false
+  },
+  {
+   "url": "https://exchange.token-city.com/es",
+   "archivo": "fuentes/tokencity/nav-token-city-exchange-es-2026-11-11.txt",
+   "http": 503,
+   "consultadoUtc": "2026-11-11T09:32:46Z",
+   "bytes": 445,
+   "sha256": "80eb5de31d56fc9fab5e293429f97d6a4bf2d5f745b7d96165c11cf708f93979",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Sigue en mantenimiento",
+   "enGit": true
+  },
+  {
+   "url": "https://exchange.token-city.com/es (reintento con curl)",
+   "archivo": null,
+   "http": 503,
+   "consultadoUtc": "2026-11-11T09:28:37Z",
+   "bytes": null,
+   "sha256": null,
+   "nota": "503 mantenimiento (4.731 bytes); también /, /es/condiciones y /en/terms a las 09:28:37Z",
+   "enGit": false
+  },
+  {
+   "url": "https://exchange.token-city.com/es (reintento con curl)",
+   "archivo": null,
+   "http": 503,
+   "consultadoUtc": "2026-11-11T09:31:29Z",
+   "bytes": null,
+   "sha256": null,
+   "nota": "503 mantenimiento (4.731 bytes); también /, /es/condiciones y /en/terms a las 09:28:37Z",
+   "enGit": false
+  },
+  {
+   "url": "https://exchange.token-city.com/es (reintento con curl)",
+   "archivo": null,
+   "http": 503,
+   "consultadoUtc": "2026-11-11T09:31:49Z",
+   "bytes": null,
+   "sha256": null,
+   "nota": "503 mantenimiento (4.731 bytes); también /, /es/condiciones y /en/terms a las 09:28:37Z",
+   "enGit": false
+  },
+  {
+   "url": "https://exchange.token-city.com/es (reintento con curl)",
+   "archivo": null,
+   "http": 503,
+   "consultadoUtc": "2026-11-11T09:32:10Z",
+   "bytes": null,
+   "sha256": null,
+   "nota": "503 mantenimiento (4.731 bytes); también /, /es/condiciones y /en/terms a las 09:28:37Z",
+   "enGit": false
+  },
+  {
+   "url": "https://exchange.token-city.com/es (reintento con curl)",
+   "archivo": null,
+   "http": 503,
+   "consultadoUtc": "2026-11-11T09:34:29Z",
+   "bytes": null,
+   "sha256": null,
+   "nota": "503 mantenimiento (4.731 bytes); también /, /es/condiciones y /en/terms a las 09:28:37Z",
+   "enGit": false
+  },
+  {
+   "url": "https://www.token-city.com/es/recursos",
+   "archivo": "fuentes/crudo/token-city-recursos-original.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-11T09:32:37Z",
+   "bytes": 5906,
+   "sha256": "a54973d3601b0b79b7f15191fd3869b5741f8ab2bce78308b52edfd7f1f07d4c",
+   "metodo": "playwright (texto visible, sin sesión)",
+   "nota": "Noticias de Token City: nada de CANDO1 (nombres de personas: solo en crudo)",
+   "enGit": false
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+# Midas
+
+> Midas brings institutional-grade investment strategies onchain. Access tokenised assets with full transparency, instant liquidity and native composability across DeFi.
+
+Midas issues mTokens: permissionless, yield-bearing tokens that give onchain access to institutional-grade investment strategies — US Treasuries, market-neutral DeFi yield, private credit, reinsurance, and BTC/ETH/XRP strategies. Each strategy is run by an appointed Strategy Manager, with transparent onchain reporting (NAV, proof of reserves, price updates) and instant liquidity.
+
+## Products
+- [mTBILL](https://midas.app/mtbill): The mTBILL token tracks the performance of short-dated US Treasury Bills, making it an ideal alternative for any stablecoin use case.
+- [mBASIS](https://midas.app/mbasis): The mBASIS token provides exposure to an institutional-grade delta-neutral basis trading strategy.
+- [mBTC](https://midas.app/mbtc): The mBTC token is a permissionless ERC-20 yield-bearing token that tracks Bitcoin lending strategies.
+- [mEDGE](https://midas.app/medge): The mEDGE token gives token-holders exposure to Edge Capital's institutional-grade DeFi yield strategy.
+- [mMEV](https://midas.app/mmev): The mMEV token gives token-holders exposure to RockawayX's delta-neutral DeFi yield strategy.
+- [mRe7YIELD](https://midas.app/mre7yield): The mRe7YIELD token gives token-holders exposure to Re7 Labs' delta-neutral DeFi yield strategy.
+- [mRe7SOL](https://midas.app/mre7sol): The mRe7SOL token provides exposure to Re7 Labs' SOL-denominated yield strategies deployed across on-chain markets.
+- [mF-ONE](https://midas.app/mfone): The mF-ONE token provides on-chain exposure to Fasanara's yield strategies backed by off-chain assets and on-chain liquidity.
+- [solmF-ONE](https://midas.app/solmfone): The solmF-ONE token provides on-chain exposure to Fasanara's yield strategies backed by off-chain assets and on-chain liquidity.
+- [mWIN](https://midas.app/mwin): The mWIN token provides exposure to a diversified portfolio of senior, investment-grade credit managed by Wellington Management, spanning CLOs, CMBS, RMBS, ABS, and investment-grade corporate bonds.
+- [mGLO](https://midas.app/mglo): The mGLO token provides exposure to Fasanara's Global Fund, which follows an asset-backed lending strategy investing primarily in trade receivables and digital invoices bought from SMEs.
+- [mGLOeuro](https://midas.app/mgloeuro): The mGLOeuro token provides EUR-denominated exposure to Fasanara Capital's Global Diversified Alternative Debt strategy, the same portfolio as mGLOBAL: short-duration, investment-grade asset-backed credit sourced from…
+- [mGLOBAL](https://midas.app/mglobal): The mGLOBAL token provides onchain, liquid access to Fasanara's Global Diversified Alternative Debt Fund strategy.
+- [mevBTC](https://midas.app/mevbtc): The mevBTC token provides tokenized exposure to Bitcoin-based strategies managed by RockawayX.
+- [mAPOLLO](https://midas.app/mapollo): The mAPOLLO token references multi-chain stablecoin yield strategies managed by Apollo Crypto.
+- [mHYPER](https://midas.app/mhyper): The mHYPER token provides exposure to Hyperithm's market-neutral, stablecoin-focused DeFi strategies.
+- [solmHYPER](https://midas.app/solmhyper): The solmHYPER token is the Solana-native version of mHYPER, providing onchain exposure to Hyperithm's market-neutral, stablecoin-focused DeFi strategies.
+- [mFARM](https://midas.app/mfarm): The mFARM token provides institutional-grade DeFi yield exposure in partnership with Farm Capital.
+- [MSL](https://midas.app/msl): MSL is the Midas liquidity layer powering instant redemptions across Midas tokens.
+- [mRe7BTC](https://midas.app/mre7btc): The mRe7BTC token provides Bitcoin-denominated exposure to Re7 Labs' DeFi yield strategies.
+- [mRe7ETH](https://midas.app/mre7eth): The mRe7ETH token provides exposure to Re7 Labs' market-neutral DeFi ETH yield strategy on Optimism.
+- [mRE](https://midas.app/mre): The mRE token provides onchain access to institutional catastrophe bond and reinsurance strategies through MembersCap, delivering stable, uncorrelated yield with built-in liquidity and capital protection.
+- [mROX](https://midas.app/mrox): The mROX token is a tokenised investment strategy tracking market-neutral, USD-denominated strategies across digital assets, with a focus on onchain DeFi opportunities.
+- [msyrupUSD](https://midas.app/msyrupusd): The msyrupUSD token passively reflects the return profile of a predefined structure within the Maple Finance ecosystem, combining base yield with a variable spread component.
+- [msyrupUSDp](https://midas.app/msyrupusdp): The msyrupUSDp token tracks a stablecoin yield strategy involving Maple's syrupUSDT on the Plasma blockchain.
+- [mXRP](https://midas.app/mxrp): The mXRP token tracks market-neutral XRP strategies deployed across on-chain markets and ecosystems.
+- [mEVUSD](https://midas.app/mevusd): The mEVUSD token provides exposure to Apollo Crypto's market-neutral DeFi yield strategy.
+- [mHyperETH](https://midas.app/mhypereth): The mHyperETH token provides Ethereum-denominated exposure to Hyperithm's DeFi yield strategies.
+- [mHyperBTC](https://midas.app/mhyperbtc): The mHyperBTC token provides Bitcoin-denominated exposure to Hyperithm's DeFi yield strategies.
+- [mKRalpha](https://midas.app/mkralpha): The mKRalpha token tracks Keyrock's Absolute Alpha strategy—a beta-neutral, all-weather strategy that generates absolute returns regardless of market direction by going simultaneously long and short on a wide range of…
+- [mM1-USD](https://midas.app/mm1-usd): mM1-USD is structured to reflect market neutral strategies across the digital asset space, tracking the M1 Capital flagship strategy.
+- [mM1-BTC](https://midas.app/mm1-btc): mM1-BTC is a tokenised investment strategy structured to track the performance of M1 Capital's market-neutral strategies, including price arbitrage, recursive lending, and basis trading, denominated in BTC.
+- [mALPHA](https://midas.app/malpha): mALPHA is a tokenised investment strategy structured to track the performance of an alpha-generating strategy deployed across digital asset markets.
+- [mArb](https://midas.app/marb): The mArb token provides USD-denominated exposure to Hyperithm's investment fund, tracking the performance of the Hyperithm Arbitrage Fund Ltd.
+- [mArbBTC](https://midas.app/marbbtc): The mArbBTC token provides BTC-denominated exposure to Hyperithm's investment fund, tracking the performance of the Hyperithm Arbitrage Fund Ltd.
+- [mArbETH](https://midas.app/marbeth): The mArbETH token provides ETH-denominated exposure to Hyperithm's investment fund, tracking the performance of the Hyperithm Arbitrage Fund Ltd.
+
+## Company
+- [The Standard for Onchain Investment Products](https://midas.app/): Midas brings institutional-grade investment strategies onchain.
+- [Products](https://midas.app/products): Explore Midas mTokens: onchain investment products including mHYPER, mTBILL, mBTC, mEVUSD, MSL, and more.
+- [About](https://midas.app/about): Midas is building the future of onchain investing.
+- [Transparency](https://midas.app/transparency): Full transparency, powered by the Midas Attestation Engine.
+- [Liquidity](https://midas.app/liquidity): Instant liquidity for onchain investment products.
+- [Build with Midas](https://midas.app/build-with-midas): Tokenise a strategy, launch your own vaults, or embed onchain investing products into your platform.
+- [Bridge](https://midas.app/bridge): Move your mTokens between supported chains.
+
+## Legal
+- [Contact Us](https://midas.app/contact-us): Get in touch with the Midas team — questions about mTokens, partnerships, institutional access, or support.
+- [Midas Verify](https://midas.app/verify): Check whether a Telegram, X or LinkedIn account belongs to a current Midas team member.
+- [Terms and Conditions](https://midas.app/terms-and-conditions): Read the Midas Terms and Conditions governing the use of midas.app and Midas onchain investment products.
+- [Imprint](https://midas.app/imprint): Legal disclosures and company information for Midas.
+- [Privacy Policy](https://midas.app/privacy-policy): Learn how Midas collects, uses, and protects your personal data when you use midas.app and Midas products.

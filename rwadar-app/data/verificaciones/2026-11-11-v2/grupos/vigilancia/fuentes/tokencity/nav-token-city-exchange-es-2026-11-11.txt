@@ -1,0 +1,13 @@
+URL: https://exchange.token-city.com/es
+FINAL: https://exchange.token-city.com/es
+HTTP: 503
+UTC: 2026-11-11T09:32:46Z
+
+Sistema deshabilitado temporalmente
+Estamos en mantenimiento
+
+Vamos a deshabilitar el sistema temporalmente para realizar tareas de mantenimiento y mejorar el servicio.
+
+Durante este tiempo no podrás acceder a la plataforma. Volveremos a estar disponibles lo antes posible.
+
+Disculpa las molestias y gracias por tu paciencia.

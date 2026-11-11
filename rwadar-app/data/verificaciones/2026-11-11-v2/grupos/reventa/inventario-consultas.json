@@ -1,0 +1,2048 @@
+{
+  "grupo": "reventa",
+  "ciclo": "2026-11-11-v2",
+  "nota": "Consultas del grupo reventa el 11/11/2026 (Brickwise, Aktionariat, Boss Info y Switzerlend). Horas UTC reales del reloj del sistema (date -u). Respuestas crudas de API, de cadena y HTML con datos de personas en fuentes/crudo/ (fuera de Git). Las copias de texto llevan los nombres de personas físicas recortados; su sha256 es el de la copia guardada. FMA: curl recibe 403 (Cloudflare); se leyó con Playwright sin sesión.",
+  "consultas": [
+    {
+      "url": "https://api.app.brickwise.at/api/v1/assets + https://api.app.brickwise.at/api/v2/assets",
+      "archivo": "fuentes/brickwise/libro-ordenes-resumen-2026-11-11.json",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:16:02Z",
+      "bytes": 24563,
+      "sha256": "eaf63703dab6e4948d9bfe9e1bc2a116d8c321e76129ba55fc26775a8ecbc8f8",
+      "nota": "Resumen del libro de órdenes por emisión, sin direcciones ni identificadores (derivado de los crudos v1 y v2)"
+    },
+    {
+      "url": "https://api.app.brickwise.at/api/v1/assets",
+      "archivo": "fuentes/crudo/api-v1-assets.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:02Z",
+      "bytes": 236872,
+      "sha256": "8e17cc14121bccc8ca027ea6b2381c60b301db8cf1ec7e884d7ab82a7fc53a85"
+    },
+    {
+      "url": "https://api.app.brickwise.at/api/v2/assets",
+      "archivo": "fuentes/crudo/api-v2-assets.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:02Z",
+      "bytes": 53974,
+      "sha256": "c65a33b1baf0e133326642d5bba5e5df260439653f5dc5afe15b5c9fa34017c4"
+    },
+    {
+      "url": "https://api.app.brickwise.at/api/v1/utils/fees",
+      "archivo": "fuentes/brickwise/api-v1-utils-fees.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:03Z",
+      "bytes": 49,
+      "sha256": "f4d671a12c51e2caf42835630be0a6f1f31ea5c9a7fc97dc7472aacc17b90449"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2RAH5",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A2RAH5.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:04Z",
+      "bytes": 8776,
+      "sha256": "0a4afb6ef94b72ffb274a980f34da98a9384ddaa9b3ff9d6dd11b6d986396d33"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2T4D7",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A2T4D7.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:04Z",
+      "bytes": 9139,
+      "sha256": "312dfccf3c330f2ae71b45d7bc36d35e2bc90612d51cf6df1814f41db5a3ccc2"
+    },
+    {
+      "url": "https://api.app.brickwise.at/api/v1/utils/featureFlags",
+      "archivo": "fuentes/crudo/api-v1-utils-featureFlags.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:04Z",
+      "bytes": 298,
+      "sha256": "ca3cd4fad5e1b75d6f1b65df17651c37d322b63f72fa34a7ba623294b6fe7e5d"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2U5V3",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A2U5V3.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:05Z",
+      "bytes": 9447,
+      "sha256": "a4590d751fabbd822809a8cdac61d3e70a2f2c2742527ff4a9a719081c45766d"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCD0",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A2WCD0.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:05Z",
+      "bytes": 8491,
+      "sha256": "780c50cc2a1e0a8dd1de28b8ec89fc57f6b0e142cbe60d3fa0ffca55dcf6d08f"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCE8",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A2WCE8.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:05Z",
+      "bytes": 8566,
+      "sha256": "63f57bd56607310ecd407d1972e62e930d4f9648b1d5555877ff0944ea5a944d"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2YPQ0",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A2YPQ0.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:06Z",
+      "bytes": 9653,
+      "sha256": "61742cecd01100f3a15ec222973de4d154673b3bb2b69b537e23a7f3183f3492"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2ZT84",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A2ZT84.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:06Z",
+      "bytes": 10670,
+      "sha256": "8b5bcaebf9ede7a41733477a0cf87631248baa518a540e35847bb9d0f1c40a3b"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A31KP7",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A31KP7.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:07Z",
+      "bytes": 9881,
+      "sha256": "6c2105662c311dabe9b6ba14bda3ae5fd3b60374fcf465192a285a26d26af42c"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A324B4",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A324B4.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:07Z",
+      "bytes": 12167,
+      "sha256": "168bb96df469e3c6fd68f0dd9f5d6ed62ff889a2d325fce0f273aa2fb32ae5c5"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A35A42",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A35A42.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:08Z",
+      "bytes": 216503,
+      "sha256": "61119faa8b5b3b12345f28ce6b0bde9982e61c3a88994a1e98aaa840357ba11e"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A38J32.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:09Z",
+      "bytes": 7969,
+      "sha256": "f8f86d1a47977354d1a809359ff1cfe3811de290d87b843f62b5d2a9114cbcc3"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A38J40.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:09Z",
+      "bytes": 6615,
+      "sha256": "b5fd7e17d84b6793a89425a3fb09a1af74d98a8fde2c3cbb26db04c347d7707b"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3E842",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A3E842.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:09Z",
+      "bytes": 10062,
+      "sha256": "e6dbfebffcec9d291945dfd4464516bea36073ecdb75a77f98f2b22d482454e0"
+    },
+    {
+      "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A3SE89",
+      "archivo": "fuentes/crudo/api-v1-asset-AT0000A3SE89.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:10Z",
+      "bytes": 7526,
+      "sha256": "b66346d157c1fb981b83175c6d344833b330aa1c09208ea3cd1ab3dbd4fdff72"
+    },
+    {
+      "url": "https://api.app.brickwise.at/launchpad/api/v2/assets?ids=%5B%22AT0000A2RAH5%22%2C%22AT0000A2T4D7%22%2C%22AT0000A2U5V3%22%2C%22AT0000A2WCD0%22%2C%22AT0000A2WCE8%22%2C%22AT0000A2YPQ0%22%2C%22AT0000A2ZT84%22%2C%22AT0000A31KP7%22%2C%22AT0000A324B4%22%2C%22AT0000A35A42%22%2C%22AT0000A38J32%22%2C%22AT0000A38J40%22%2C%22AT0000A3E842%22%2C%22AT0000A3SE89%22%5D",
+      "archivo": "fuentes/crudo/api-launchpad-v2-assets.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:16:21Z",
+      "bytes": 334341,
+      "sha256": "fb6e6a529793e500ffce6f56b528d897f749c8dbf941d866dfec765af41c0328"
+    },
+    {
+      "url": "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A2RAH5.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:10Z",
+      "bytes": 181670,
+      "sha256": "82527141de87db307f45f35677f1b3f7636bc1f422637217a83b233c909e3101"
+    },
+    {
+      "url": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A2RAH5.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:10Z",
+      "bytes": 138297,
+      "sha256": "42a72c88cd0723a8a5abda76afd52df12ee335f3f3524c863b4b79aef01f03f8"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2RAH5/AT0000A2RAH5_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A2RAH5.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:11Z",
+      "bytes": 64476,
+      "sha256": "ec40926ae354d7794459ac2815f1f1a38263162ea9b88cda22db547b61fb6efd"
+    },
+    {
+      "url": "https://cdn.brickwise.at/1aec57d6-3aa3-473a-ae33-2a0fbdf4a1c5.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A2RAH5.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:11Z",
+      "bytes": 246360,
+      "sha256": "ac03e06460c1a7522a7713167b8697dfc06d0e1d8ea13e8ce96994828a4d49ac"
+    },
+    {
+      "url": "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A2T4D7.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:12Z",
+      "bytes": 180825,
+      "sha256": "f3a59f1a655e69a8cd83327c84acb57fd5d6cdf42011bb2eecab08007feb9d9b"
+    },
+    {
+      "url": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A2T4D7.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:12Z",
+      "bytes": 138157,
+      "sha256": "50c07fa952e77ba57f36220000f9e24182e353211ba17cb3e25b3bbfedf9d5ae"
+    },
+    {
+      "url": "https://cdn.brickwise.at/c372686c-443c-445b-9747-a87cdc8844de.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A2T4D7.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:12Z",
+      "bytes": 246126,
+      "sha256": "e22f98856be7d3ee2f1e472c411ab9d194f643aac6d0f233f1acc79ca8b85c38"
+    },
+    {
+      "url": "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A2U5V3.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:13Z",
+      "bytes": 223374,
+      "sha256": "8c6faa84cff714ea7ca77c3310096489c1a391023cf6ad0bdc2cffffc8b16095"
+    },
+    {
+      "url": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A2U5V3.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:13Z",
+      "bytes": 138294,
+      "sha256": "31731e28f95f59f3294f20c500ec03e76276c145440a1d43f8a15e2080fbb98d"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2T4D7/AT0000A2T4D7_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A2T4D7.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:13Z",
+      "bytes": 64426,
+      "sha256": "b15509ffc221abb4ac3b2a75932c8bb2b819293d618b0a51a5360bc5337b667d"
+    },
+    {
+      "url": "https://cdn.brickwise.at/2439beca-ac29-466c-b038-6c7689e7a5a7.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A2U5V3.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:14Z",
+      "bytes": 244352,
+      "sha256": "71f55ebf5927a7660af368bf9811a5cbecf116aab6a6bf62e19920e6aaa2e41b"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2U5V3/AT0000A2U5V3_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A2U5V3.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:14Z",
+      "bytes": 64514,
+      "sha256": "667096d9157b0a849793ed14736ef0418ace08797c30bd150605098638f92c7b"
+    },
+    {
+      "url": "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A2WCD0.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:15Z",
+      "bytes": 190996,
+      "sha256": "802c9affad120bfd62fc2fb4455de43bf61da84575291f3570d4d799d1460431"
+    },
+    {
+      "url": "https://cdn.brickwise.at/3254e2f8-2426-4c15-8f4d-12da298060a9.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A2WCD0.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:15Z",
+      "bytes": 212480,
+      "sha256": "f602f699d6fe47c79e790fa8da1a7e7581707e88141828ab079745df7524ce1a"
+    },
+    {
+      "url": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A2WCD0.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:15Z",
+      "bytes": 138935,
+      "sha256": "70ebc500925211d30c1c5d4eca699971addb2ca4fc4397db821654148e880283"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCD0/AT0000A2WCD0_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A2WCD0.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:15Z",
+      "bytes": 64521,
+      "sha256": "ee6231311898f6e7e2e071e56a355427c66fa56e3cbd9dbb654837f851fcb3c7"
+    },
+    {
+      "url": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A2WCE8.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:16Z",
+      "bytes": 190968,
+      "sha256": "29f022d658974041c33edc0dc9494559d8a8f79e159342b777614046032735fc"
+    },
+    {
+      "url": "https://cdn.brickwise.at/36cfe50a-2527-45f9-85d9-23aaab647847.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A2WCE8.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:16Z",
+      "bytes": 212260,
+      "sha256": "0124232ae6afee97d3f0e15c614fd68f3049303aa61a3ba1f2ed8573abbeaea2"
+    },
+    {
+      "url": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A2WCE8.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:16Z",
+      "bytes": 139764,
+      "sha256": "3a4fa36bfa5f16012b2054c5b54bacae5425801f725628b3e2ea7576264d1d13"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCE8/AT0000A2WCE8_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A2WCE8.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:17Z",
+      "bytes": 64710,
+      "sha256": "d78426254c6c4d31cd1e1f7526925938a34df10eb74cfe83dc05ca4c355d5d2a"
+    },
+    {
+      "url": "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A2YPQ0.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:18Z",
+      "bytes": 192682,
+      "sha256": "29f181dbb5f5c4fa9c2440544e19312221bf686f4840845129cce4145bc2b0c8"
+    },
+    {
+      "url": "https://cdn.brickwise.at/f82e5244-dc70-45af-9a41-3a40b5390442.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A2YPQ0.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:18Z",
+      "bytes": 213054,
+      "sha256": "8d2ba1cca96e9fb334d89a331352a154cead31d627a4d8f45a9f56ff644d6b07"
+    },
+    {
+      "url": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A2YPQ0.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:18Z",
+      "bytes": 138356,
+      "sha256": "cac2672068fb64cd05d738d70e60daea017fb7d5f74b3c1041084fb4aefb22dd"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2YPQ0/AT0000A2YPQ0_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A2YPQ0.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:18Z",
+      "bytes": 64873,
+      "sha256": "bfda893516cd948739fa5072d4e68d2877e60a8d1cf11eb3e559af31369a0093"
+    },
+    {
+      "url": "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A2ZT84.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:19Z",
+      "bytes": 191910,
+      "sha256": "7bb228005348caffb8eba0651cb49929d119c576ceae9d3388b4044c878b3797"
+    },
+    {
+      "url": "https://cdn.brickwise.at/ac8e71ad-8e24-4c8e-a180-bf801dccd487.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A2ZT84.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:19Z",
+      "bytes": 228984,
+      "sha256": "fdf2ed79e9c2377111a8d41b771ab014241da39812925c3653f6af2b07b8baf5"
+    },
+    {
+      "url": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A2ZT84.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:19Z",
+      "bytes": 128786,
+      "sha256": "2aa7ac3cea28b0805a2d316216d0ed2b699c08185e9fa99022fae688681e8bba"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2ZT84/AT0000A2ZT84_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A2ZT84.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:19Z",
+      "bytes": 64605,
+      "sha256": "87ba2e6bdd09fb4552bbc9972cddad6fbf63e5ed6a22360a5b972c209cf7398d"
+    },
+    {
+      "url": "https://cdn.brickwise.at/04f3f1d5-71a1-4629-8e5f-dcc45ef4fb15.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A31KP7.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:20Z",
+      "bytes": 220687,
+      "sha256": "b25ece9e355d627f132b14a93c296a921ff5ea98198b2a81611a013d7a59a48f"
+    },
+    {
+      "url": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A31KP7.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:20Z",
+      "bytes": 139587,
+      "sha256": "ce890eafd16419c444a3da4b2f291a735583c367ccf77a7a52237f01a79c917d"
+    },
+    {
+      "url": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+      "archivo": "fuentes/crudo/contrato-AT0000A31KP7.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:20Z",
+      "bytes": 247203,
+      "sha256": "d483a25c2f39dfe26fa1da7cd192840ee72f9b2465b940d2d0ae931a65487693"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A31KP7/AT0000A31KP7_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A31KP7.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:21Z",
+      "bytes": 64520,
+      "sha256": "bdd30292931f8ea00570f1d01f1d00f3a1374f32e0cd081d278c90fa2cef0216"
+    },
+    {
+      "url": "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A324B4.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:22Z",
+      "bytes": 259949,
+      "sha256": "24d01690a2138988c9cfc889d359ac4e2ca1d67397621a13784ff0f19b715502"
+    },
+    {
+      "url": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A324B4.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:22Z",
+      "bytes": 146611,
+      "sha256": "da458b99233909ce7bfe16cc6f119b69bbd3182508ff558bb5787b1a6a6dca67"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A324B4/AT0000A324B4_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A324B4.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:22Z",
+      "bytes": 63599,
+      "sha256": "63ece51e24107b8d41a555d1bd6e9af4887d6160c1865e56d1c5f8ec3f3dc567"
+    },
+    {
+      "url": "https://cdn.brickwise.at/a847b550-48f2-4971-aec9-19684c6cca4f.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A324B4.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:22Z",
+      "bytes": 355071,
+      "sha256": "6feb6d254c9ea0ec691276caebfc76e1897e0a909c4d473367bc3fa5d25fb32d"
+    },
+    {
+      "url": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A38J32.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:23Z",
+      "bytes": 550355,
+      "sha256": "74260541deaea4cd2f7443dcc93edef81f6f49bd67b2f59c82d7d8e0004d52a0"
+    },
+    {
+      "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A38J32.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:23Z",
+      "bytes": 360088,
+      "sha256": "bbfe14b97ec9cb14f1fd73c98e62405a6fa5cc3a72a962e37cf9ddaeacdf69ee"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A38J32.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:23Z",
+      "bytes": 64702,
+      "sha256": "125c5a95047e5544dbc3261bab7fda428bacc8238510a3635e44e16422028a0c"
+    },
+    {
+      "url": "https://cdn.brickwise.at/b9711a2c-4f37-4d6e-81d9-0719e54c6b90.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A38J32.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:23Z",
+      "bytes": 456752,
+      "sha256": "6e69b88ae5ae27b2a9339e28c0f56eca4b4310802b3de2e857a3c7e5c67a3d72"
+    },
+    {
+      "url": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A38J40.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:24Z",
+      "bytes": 557605,
+      "sha256": "1b2f693c00e99e4d764165ec15d5996c8a0298e8cf81822894649928a202bb40"
+    },
+    {
+      "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A38J40.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:24Z",
+      "bytes": 396631,
+      "sha256": "a9cd936866fa7793d33eec1fd1ea222a69906157df061208dd720be10267888f"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J40/AT0000A38J40_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A38J40.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:25Z",
+      "bytes": 64712,
+      "sha256": "e4652529f4c4591ba2d427861e03e154bbb647cad8a0890083198fcfa2647919"
+    },
+    {
+      "url": "https://cdn.brickwise.at/8dfb7e84-2f99-4de7-9e49-c5a43fa76537.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A38J40.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:25Z",
+      "bytes": 410115,
+      "sha256": "b98ac9fe99249337dace974450357b18d768d346399323bead9aaa515b4f52e5"
+    },
+    {
+      "url": "https://staging.cdn.brickwise.at/cc140258-a0a6-4b84-b355-f72c8b32d8cb.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A3SE89.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:26Z",
+      "bytes": 143516,
+      "sha256": "56b3147d497082b01b573f51680655540365f95e43a64065ad4e8de8a000b533"
+    },
+    {
+      "url": "https://staging.cdn.brickwise.at/081398c1-7f37-4b88-875a-215bcf23371d.pdf",
+      "archivo": "fuentes/crudo/kid-AT0000A3SE89.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:26Z",
+      "bytes": 58954,
+      "sha256": "3f3206fd1c953eef67faeba7ac60c2b4200f4a56c5c7674171ed3d2b250734bf"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A3SE89/AT0000A3SE89_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A3SE89.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:27Z",
+      "bytes": 64709,
+      "sha256": "64612057d922812916e1c893ab67b78592c9f0a8a6c031f27cb3d941912f0528"
+    },
+    {
+      "url": "https://staging.cdn.brickwise.at/50f3df2f-9e58-4809-8e8c-51da1abc3856.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A3SE89.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:27Z",
+      "bytes": 107314,
+      "sha256": "d30134b31232e324e470345bdb08ac7c37c353c40d6cd13137477cc1dc5aac02"
+    },
+    {
+      "url": "https://staging.cdn.brickwise.at/61a38504-8277-435d-a42b-97a6d41ec266.pdf",
+      "archivo": "fuentes/crudo/mietvertrag-AT0000A3SE89.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:28Z",
+      "bytes": 2070484,
+      "sha256": "0ad5847e65edd9426d91b9bc44a94c587595d5e6d5a639c113298ae8d4d36dd1"
+    },
+    {
+      "url": "https://cdn.brickwise.at/64da3d27-ad35-4007-bf3d-9f022d3e14d2.pdf",
+      "archivo": "fuentes/brickwise/contrato-AT0000A3E842.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:30Z",
+      "bytes": 225748,
+      "sha256": "9ebfa0b7c23f60022f36e62e62ad2c1044a3709562e18e816184f6ca187c0de2"
+    },
+    {
+      "url": "https://cdn.brickwise.at/0cfef387-b8a9-4c6c-99c9-fd46110617da.pdf",
+      "archivo": "fuentes/brickwise/kid-AT0000A3E842.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:30Z",
+      "bytes": 177431,
+      "sha256": "613879bec7d740d888e618f2fe67d8b3a90da96dfc4b1c3260757d738e5df63d"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A3E842/AT0000A3E842_Ruecktrittsbelehrung.pdf",
+      "archivo": "fuentes/brickwise/ruecktritt-AT0000A3E842.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:30Z",
+      "bytes": 64224,
+      "sha256": "e13fc1559b10677166d2eb914c6579a89ef9ec861ac67a8b0e342be40a2b6b13"
+    },
+    {
+      "url": "https://cdn.brickwise.at/ef8df591-a9bf-445f-b282-b631c24a0e5b.pdf",
+      "archivo": "fuentes/crudo/info-AT0000A3E842.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:30Z",
+      "bytes": 238788,
+      "sha256": "6a58d5f5fb2537eba92b58ef79f069fb12b024f2b4d452bbf0e23eba300a8769"
+    },
+    {
+      "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+      "archivo": "fuentes/brickwise/brickwise-kosteninformationen-cdn.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:31Z",
+      "bytes": 30692,
+      "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b"
+    },
+    {
+      "url": "https://storage.googleapis.com/brickwise_templates/investment/Effecta_Verbraucherinformationen.pdf",
+      "archivo": "fuentes/crudo/effecta-verbraucherinformationen.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:31Z",
+      "bytes": 101082,
+      "sha256": "9a240e3033053acbe460689263aaf1eeec120939b6b3fba264dee8afdb72cbd9"
+    },
+    {
+      "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+      "archivo": "fuentes/crudo/bafin-effecta-detalle.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:52Z",
+      "bytes": 26540,
+      "sha256": "93c2dfabdff1af79340d8f3c956becaf1213c0fd6fa93e99db7ddb7094f4cc3e"
+    },
+    {
+      "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+      "archivo": "fuentes/reguladores/bafin-effecta-detalle.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:17:52Z",
+      "bytes": 2603,
+      "sha256": "2a265a8ded6b76dd8da14d603edae02477cc9cab16a416f0d77fc0ef309a8412",
+      "nota": "Copia de texto del HTML de fuentes/crudo/bafin-effecta-detalle.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (POST nameVermittler=Brickwise&plzVermittler=&ortVermittler=&nameHaftungsdach=&plzHaftungsdach=&ortHaftungsdach=&sucheButtonVermittler=Suchen)",
+      "archivo": "fuentes/crudo/bafin-vgv-brickwise.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:53Z",
+      "bytes": 27150,
+      "sha256": "c76f5cacc7fa707992628b7918df8c5129892ac965e54f42372bc165f2db4972",
+      "metodo": "POST"
+    },
+    {
+      "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (POST nameVermittler=Brickwise&plzVermittler=&ortVermittler=&nameHaftungsdach=&plzHaftungsdach=&ortHaftungsdach=&sucheButtonVermittler=Suchen)",
+      "archivo": "fuentes/reguladores/bafin-vgv-brickwise.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:17:53Z",
+      "bytes": 1388,
+      "sha256": "9b9ab1206fd6aa9561bdfcee1f3ece3be93b90060011a4879ab21010b3725e0f",
+      "nota": "Copia de texto del HTML de fuentes/crudo/bafin-vgv-brickwise.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?numero=5003&tipo=CLP",
+      "archivo": "fuentes/crudo/cnmv-effecta-lp.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:54Z",
+      "bytes": 218036,
+      "sha256": "01d0f202d0c530849ea334f9e5bd090d2160dcf878194ded4d28784d36309834"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp.aspx?numero=5003&tipo=CLP",
+      "archivo": "fuentes/reguladores/cnmv-effecta-lp.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:17:54Z",
+      "bytes": 14140,
+      "sha256": "9c947dfe9cd240086b47ecd6ec19e52a09fabca256d0de36015e80bc0e4280fe",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-effecta-lp.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=8",
+      "archivo": "fuentes/crudo/cnmv-effecta-agentes.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:57Z",
+      "bytes": 218234,
+      "sha256": "8d3f4c4452b2cd06429f12aa0ebd908b0b31866ffaff73f87602bd69123dd785"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=8",
+      "archivo": "fuentes/reguladores/cnmv-effecta-agentes.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:17:57Z",
+      "bytes": 14082,
+      "sha256": "61c79f44fc58765945c62fa14b82ccda0052b7e52b33a2245a96b4bc2d48e4b0",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-effecta-agentes.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=17",
+      "archivo": "fuentes/crudo/cnmv-effecta-programa.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:58Z",
+      "bytes": 218752,
+      "sha256": "0bb4f321e908adea274d055df49f51e3953f546314cb4c9c91b15f65feef02c4"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/Consultas/esi/esisextranjeraslp?tipo=CLP&numero=5003&vista=17",
+      "archivo": "fuentes/reguladores/cnmv-effecta-programa.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:17:58Z",
+      "bytes": 14290,
+      "sha256": "860f1f34fe08b2adcae2548e4a41da5b0a8a07cf617c9b128b581510e827eb52",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-effecta-programa.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+      "archivo": "fuentes/crudo/cnmv-adv-trading.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:17:59Z",
+      "bytes": 237276,
+      "sha256": "d4b4055d9a5e70fb609bd71680730786f594bc234da1de63f19b04145bad026b"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+      "archivo": "fuentes/reguladores/cnmv-adv-trading.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:17:59Z",
+      "bytes": 14341,
+      "sha256": "d7b6f3774bf05e450b5680a1c7fb881a4b3da9f9b038a9976325896f497c633b",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-adv-trading.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+      "archivo": "fuentes/crudo/cnmv-adv-brickwise.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:18:01Z",
+      "bytes": 212247,
+      "sha256": "8991f9443e9c61b09a3fc142f5129715eadc1aff020b065e57bc5a8c732ffdb3"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+      "archivo": "fuentes/reguladores/cnmv-adv-brickwise.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:18:01Z",
+      "bytes": 13332,
+      "sha256": "655595901857672c01aa6300fe146c3992888a9328495406ff0895db4f27161b",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-adv-brickwise.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+      "archivo": "fuentes/crudo/cnmv-adv-effecta.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:18:03Z",
+      "bytes": 212203,
+      "sha256": "bf20148540f4a8d367ef5c0e2d0fab0a400fe3ba4e55c1cf9e29899c35219501"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+      "archivo": "fuentes/reguladores/cnmv-adv-effecta.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:18:03Z",
+      "bytes": 13328,
+      "sha256": "8d43697e3e69cb7106f4c64bad4bc0e76ee6fb32979723fbef0420f09cb315ac",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-adv-effecta.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Qogir",
+      "archivo": "fuentes/crudo/cnmv-adv-brick-qogir.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:18:06Z",
+      "bytes": 212291,
+      "sha256": "c1fae1dfd0309c95383cb4f41db1555b3a8db1876d3dd1126f8a3ab2a20c1679"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Qogir",
+      "archivo": "fuentes/reguladores/cnmv-adv-brick-qogir.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:18:06Z",
+      "bytes": 13336,
+      "sha256": "76a6ac91d21e7f5a3e972bccbc693cd66820b7d3026cf86da6e5bd1969327ce2",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-adv-brick-qogir.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=BrickOne",
+      "archivo": "fuentes/crudo/cnmv-adv-brickone.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:18:07Z",
+      "bytes": 212225,
+      "sha256": "013d4ac671c3d630eb08756d723a807aa3778c5ee7afc158c876375b9fb80252"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=BrickOne",
+      "archivo": "fuentes/reguladores/cnmv-adv-brickone.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:18:07Z",
+      "bytes": 13330,
+      "sha256": "ec0b5a25f0869d86179483d91a281174bd4af93ba8199419e1094a2d77ac48d8",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-adv-brickone.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Sagarmatha",
+      "archivo": "fuentes/crudo/cnmv-adv-brick-sagarmatha.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:18:09Z",
+      "bytes": 212401,
+      "sha256": "d8666515f2dff9c5bd67ce5a14ae67756bb386cefd0d0633922c73e7f82cb4b6"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Sagarmatha",
+      "archivo": "fuentes/reguladores/cnmv-adv-brick-sagarmatha.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:18:09Z",
+      "bytes": 13346,
+      "sha256": "c3ce5624ba06be568cb45a4673e0beb914e8f0f7bb6ff806bbc0cb4837b4110f",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-adv-brick-sagarmatha.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Green-Point",
+      "archivo": "fuentes/crudo/cnmv-adv-green-point.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:18:11Z",
+      "bytes": 212291,
+      "sha256": "654699d2c9bc32966c917c74964f491f3f602365788ceb51198a0ed2f06deaa9"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Green-Point",
+      "archivo": "fuentes/reguladores/cnmv-adv-green-point.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:18:11Z",
+      "bytes": 13336,
+      "sha256": "ff27a6e8159e98bb451ca6caad4ffbebe9d989677ce55f1a2e014245bb23104a",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-adv-green-point.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cohotel",
+      "archivo": "fuentes/crudo/cnmv-adv-cohotel.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:18:12Z",
+      "bytes": 212203,
+      "sha256": "e11cd8c0d69cc40f7ed1565889539d935e3a05693f179b2ee1c981508d7331f6"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cohotel",
+      "archivo": "fuentes/reguladores/cnmv-adv-cohotel.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:18:12Z",
+      "bytes": 13328,
+      "sha256": "4285bee663874709c075d7d69e80dbb1320c1c716ee89eac3dcc52d07bf647f7",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-adv-cohotel.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise+Real+Estate",
+      "archivo": "fuentes/crudo/cnmv-adv-brickwise-real-estate.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:18:14Z",
+      "bytes": 212511,
+      "sha256": "7e1a8a8ef75e8cf7c0182c9b17265dfff5e591752f0c0539bbf45cd8873755a5"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise+Real+Estate",
+      "archivo": "fuentes/reguladores/cnmv-adv-brickwise-real-estate.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:18:14Z",
+      "bytes": 13356,
+      "sha256": "8e47ab93ba005565514eb85c3701d14d7730198e24170f9531134fef8ae8cf7d",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-adv-brickwise-real-estate.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brickwise",
+      "archivo": "fuentes/crudo/fma-busqueda-web-brickwise.html",
+      "http": 403,
+      "consultadoUtc": "2026-11-11T09:18:16Z",
+      "bytes": 5623,
+      "sha256": "22171836e0bae87dd829265f95dbee8134ee44bbdaaa6c5d38a2194b874a4f94"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brick+qogir",
+      "archivo": "fuentes/crudo/fma-busqueda-web-brick-qogir.html",
+      "http": 403,
+      "consultadoUtc": "2026-11-11T09:18:17Z",
+      "bytes": 5629,
+      "sha256": "831ffe9b640ffa73eb659b9a3a0e7f937f583d044740fa3d9cd1be47ba4ddda9"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=effecta",
+      "archivo": "fuentes/crudo/fma-busqueda-web-effecta.html",
+      "http": 403,
+      "consultadoUtc": "2026-11-11T09:18:17Z",
+      "bytes": 5617,
+      "sha256": "a42309f9059c1a3c63b2cbf676d82532ba8967d6d1151f806f122b437b8d991c"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brick+sagarmatha",
+      "archivo": "fuentes/crudo/fma-busqueda-web-brick-sagarmatha.html",
+      "http": 403,
+      "consultadoUtc": "2026-11-11T09:18:18Z",
+      "bytes": 5644,
+      "sha256": "34f399c3258ac9d72e9912cb79479d9610732ee09ff733e989d1e85186df817f"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brickone",
+      "archivo": "fuentes/crudo/fma-busqueda-web-brickone.html",
+      "http": 403,
+      "consultadoUtc": "2026-11-11T09:18:18Z",
+      "bytes": 5620,
+      "sha256": "074cb73d4ed7c45c0fe3702034092f78b8d76c967ba62d7d551e13e2ff249ccb"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=investor+warning",
+      "archivo": "fuentes/crudo/fma-busqueda-web-investor-warning.html",
+      "http": 403,
+      "consultadoUtc": "2026-11-11T09:18:19Z",
+      "bytes": 5644,
+      "sha256": "9f1f7d2021feedb631493c5c6d1deee69524a92f7b256f822d152080df43f326"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/search-company-database/?cname=brickwise&place=&bic=&category=&per_page=10&submitted=1",
+      "archivo": "fuentes/crudo/fma-unternehmensdatenbank-brickwise.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:18:19Z",
+      "bytes": 139469,
+      "sha256": "1a2b54acf8d0d55ee880fcae61d73d0f06356d773f031bc0c609002f7079c08b"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/search-company-database/?cname=brickwise&place=&bic=&category=&per_page=10&submitted=1",
+      "archivo": "fuentes/reguladores/fma-unternehmensdatenbank-brickwise.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:18:19Z",
+      "bytes": 14259,
+      "sha256": "87c986e39bbf8d4bdbbeacfe661b372405899e8172d7b3a67b7749e3009ff1ea",
+      "nota": "Copia de texto del HTML de fuentes/crudo/fma-unternehmensdatenbank-brickwise.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brickwise",
+      "archivo": "fuentes/crudo/fma-busqueda-web-brickwise.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:19:18Z",
+      "bytes": 192451,
+      "sha256": "bc365f70ac688fc2736ecf73bb7a974246cf05a72955a3aeda345bf6bb0ff78a",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brickwise",
+      "archivo": "fuentes/reguladores/fma-busqueda-web-brickwise.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:19:18Z",
+      "bytes": 967,
+      "sha256": "47d017bd0e2eb72970c5ba8339500c96b0f67cd1b155f0b9b7c108e5218d323d",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=effecta",
+      "archivo": "fuentes/crudo/fma-busqueda-web-effecta.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:19:28Z",
+      "bytes": 192421,
+      "sha256": "2c8efd4f26521faeab9e41978e3a35e4e897952f8298ac329aec7d35e3c1f6f4",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=effecta",
+      "archivo": "fuentes/reguladores/fma-busqueda-web-effecta.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:19:28Z",
+      "bytes": 963,
+      "sha256": "0373ca7e1583c36d2546a0d44da5756a88cd04acb154ab9b28745cba20b3b645",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brick+qogir",
+      "archivo": "fuentes/crudo/fma-busqueda-web-brick-qogir.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:19:37Z",
+      "bytes": 192485,
+      "sha256": "d2d0f7fdb56b48178fcfe6fdbb916c309b1099d48f5fb439928ba5187984ff6c",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brick+qogir",
+      "archivo": "fuentes/reguladores/fma-busqueda-web-brick-qogir.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:19:37Z",
+      "bytes": 971,
+      "sha256": "3ab7d99a260f509d870bd68795a1ba528f1363993e02979d8fba42179738fcba",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brickone",
+      "archivo": "fuentes/crudo/fma-busqueda-web-brickone.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:19:46Z",
+      "bytes": 192436,
+      "sha256": "23c1fbbdf69035c69db1fcf814399407580240886e6a4dafde9645a0f007f424",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brickone",
+      "archivo": "fuentes/reguladores/fma-busqueda-web-brickone.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:19:46Z",
+      "bytes": 965,
+      "sha256": "2d4ad7cc7558d6f7351e2515f575f2e998ed167ff044b3ed4f8fc7f1f18d19f3",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brick+sagarmatha",
+      "archivo": "fuentes/crudo/fma-busqueda-web-brick-sagarmatha.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:19:56Z",
+      "bytes": 192560,
+      "sha256": "c20f13ca43b32185b47b1b3054c1d1672d4210be36fa49a2d116a68af50af2f6",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=brick+sagarmatha",
+      "archivo": "fuentes/reguladores/fma-busqueda-web-brick-sagarmatha.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:19:56Z",
+      "bytes": 981,
+      "sha256": "45689892dde1925e0fbb7459ed3592048d4461cc83249952fe979bfa5a27ecf6",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=investor+warning",
+      "archivo": "fuentes/crudo/fma-busqueda-web-investor-warning.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:20:05Z",
+      "bytes": 227145,
+      "sha256": "ab4067134ec949ee6cf5d8166f666bd832d26cf6b95a337352c07ba0d17a4503",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.fma.gv.at/en/?s=investor+warning",
+      "archivo": "fuentes/reguladores/fma-busqueda-web-investor-warning.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:20:05Z",
+      "bytes": 4764,
+      "sha256": "78f29dd55b5502824d521592f4dfb575aede9cf9d31b0fda3d065d2c97a7c426",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "archivo": "fuentes/brickwise/web-app-marketplace-2026-11-11.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:20:24Z",
+      "bytes": 464988,
+      "sha256": "56096631524d842e1195d755ad1dbdf3fba9ad37449c8a6144988a76d72075d8",
+      "nota": "Captura de página completa (Playwright)"
+    },
+    {
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "archivo": "fuentes/brickwise/web-app-marketplace-2026-11-11.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:20:24Z",
+      "bytes": 3704,
+      "sha256": "1f4c1f0ac3ac112c2f0d777ce2b36e00edf116e6916a5c72b767dff3fb6affb6",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://app.brickwise.at/desktopWeb/marketplace",
+      "archivo": "fuentes/crudo/web-app-marketplace-2026-11-11.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:20:24Z",
+      "bytes": 161133,
+      "sha256": "b8597cee9fb538739fb76d8e2541cb06f00d7cebc066d30bb99ba466ba89480c",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.brickwise.at/",
+      "archivo": "fuentes/brickwise/web-home-2026-11-11.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:20:54Z",
+      "bytes": 8771,
+      "sha256": "563a23e5a037044d123e6577627c29c01783aa4acc4db282088e5737cb9e8804",
+      "nota": "Texto renderizado sin sesión (Playwright) · bytes y sha256 de la copia guardada (con nombres de personas recortados)"
+    },
+    {
+      "url": "https://www.brickwise.at/",
+      "archivo": "fuentes/crudo/web-home-2026-11-11.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:20:54Z",
+      "bytes": 169903,
+      "sha256": "0e342613fe6effe68cd2fdbb046fdfb618bd5903179821d181215f4e84623471",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+      "archivo": "fuentes/brickwise/web-faq-land-2026-11-11.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:04Z",
+      "bytes": 5812,
+      "sha256": "4fe3ca383e4f6d8aaec43ef01127d413640e2be2bd300a2b393312f26a60b773",
+      "nota": "Texto renderizado sin sesión (Playwright) · bytes y sha256 de la copia guardada (con nombres de personas recortados)"
+    },
+    {
+      "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+      "archivo": "fuentes/crudo/web-faq-land-2026-11-11.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:04Z",
+      "bytes": 61640,
+      "sha256": "dc6b5f528a2c02e28740daeebe788778d01cdd0877ddba68d91ba282aa56e76a",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.brickwise.at/imprint",
+      "archivo": "fuentes/brickwise/web-imprint-2026-11-11.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:12Z",
+      "bytes": 4628,
+      "sha256": "e935556c380fc41930d810613afcf1c414383385af4b05fda043bc5835468ca5",
+      "nota": "Texto renderizado sin sesión (Playwright) · bytes y sha256 de la copia guardada (con nombres de personas recortados)"
+    },
+    {
+      "url": "https://www.brickwise.at/imprint",
+      "archivo": "fuentes/crudo/web-imprint-2026-11-11.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:12Z",
+      "bytes": 47245,
+      "sha256": "bb0ca049d64a8043258509f2422a068fb900a8e280fc2db6986be1b6cb780ed8",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz",
+      "archivo": "fuentes/brickwise/web-faq-handel-2026-11-11.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:19Z",
+      "bytes": 6541,
+      "sha256": "f682322a6a2976c906ed02ca9a065cc26e2512d212a8337bb7841d242e1c3f52",
+      "nota": "Texto renderizado sin sesión (Playwright) · bytes y sha256 de la copia guardada (con nombres de personas recortados)"
+    },
+    {
+      "url": "https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz",
+      "archivo": "fuentes/crudo/web-faq-handel-2026-11-11.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:19Z",
+      "bytes": 62469,
+      "sha256": "f70aea96fa50bce09ca9ea78129e0e5576138a3b70b01a90053b5dbb3c16fa37",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.brickwise.at/support/was-kostet-der-handel-am-marktplatz",
+      "archivo": "fuentes/brickwise/web-faq-kosten-2026-11-11.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:27Z",
+      "bytes": 5764,
+      "sha256": "dca2f676e3f67043a6c488173d4450d04a2d2921c070472feb73c5bc29f50f24",
+      "nota": "Texto renderizado sin sesión (Playwright) · bytes y sha256 de la copia guardada (con nombres de personas recortados)"
+    },
+    {
+      "url": "https://www.brickwise.at/support/was-kostet-der-handel-am-marktplatz",
+      "archivo": "fuentes/crudo/web-faq-kosten-2026-11-11.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:27Z",
+      "bytes": 61545,
+      "sha256": "cba702d409d95c86bc82402fbe5b948d2a1562a397f2a91c6c61b132861bfce6",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://www.brickwise.at/assets/at0000a2rah5",
+      "archivo": "fuentes/crudo/web-assets-at0000a2rah5.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:52Z",
+      "bytes": 59721,
+      "sha256": "d67273bc9084615e9a119310eb8092f8bb29578ebf53b47a6e928816e2330841"
+    },
+    {
+      "url": "https://www.brickwise.at/assets/at0000a2t4d7",
+      "archivo": "fuentes/crudo/web-assets-at0000a2t4d7.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:52Z",
+      "bytes": 59544,
+      "sha256": "7753eecd2236beb768a040a7a4bcee8938ebe6da7368ef6db666bfe01f3c2195"
+    },
+    {
+      "url": "https://www.brickwise.at/assets/at0000a2u5v3",
+      "archivo": "fuentes/crudo/web-assets-at0000a2u5v3.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:53Z",
+      "bytes": 59763,
+      "sha256": "a552c5129481102090c6089a66d043dd6734e702caa9033acaf06aa31a309e7d"
+    },
+    {
+      "url": "https://www.brickwise.at/assets/at0000a2wcd0",
+      "archivo": "fuentes/crudo/web-assets-at0000a2wcd0.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:53Z",
+      "bytes": 59463,
+      "sha256": "893c1a6c23d0a48a31f37e4dbd71318eba6a5fac8a5c33c5686685864746daa0"
+    },
+    {
+      "url": "https://www.brickwise.at/assets/at0000a2wce8",
+      "archivo": "fuentes/crudo/web-assets-at0000a2wce8.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:53Z",
+      "bytes": 59691,
+      "sha256": "b8b44d40a118708ae658db6fbaa7d9dc34cbbf8efdda3d6288c19884690f500d"
+    },
+    {
+      "url": "https://www.brickwise.at/assets/at0000a2ypq0",
+      "archivo": "fuentes/crudo/web-assets-at0000a2ypq0.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:53Z",
+      "bytes": 59894,
+      "sha256": "973ae7e53ebea8f35856a55949a58189e136413ddd1c2d6bc292c31cd9003d5a"
+    },
+    {
+      "url": "https://www.brickwise.at/assets/at0000a2zt84",
+      "archivo": "fuentes/crudo/web-assets-at0000a2zt84.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:53Z",
+      "bytes": 60194,
+      "sha256": "ce6ee8ae740517fb979a364600f1c3dc6b50451017f0146ece2976bb1da4d943"
+    },
+    {
+      "url": "https://www.brickwise.at/assets/at0000a31kp7",
+      "archivo": "fuentes/crudo/web-assets-at0000a31kp7.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:54Z",
+      "bytes": 59699,
+      "sha256": "670b2ca7ee28b556ad8c37a299443f7f629b30d55f3fa16f4f30679697557b4a"
+    },
+    {
+      "url": "https://www.brickwise.at/assets/at0000a324b4",
+      "archivo": "fuentes/crudo/web-assets-at0000a324b4.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:21:54Z",
+      "bytes": 59297,
+      "sha256": "05285975fbfd70982fef0340dbdac4547d9e936c5d969cb81a795b326e586ff5"
+    },
+    {
+      "url": "https://www.brickwise.at/assets/at0000a38j32",
+      "archivo": "fuentes/crudo/web-assets-at0000a38j32.html",
+      "http": 404,
+      "consultadoUtc": "2026-11-11T09:21:54Z",
+      "bytes": 27657,
+      "sha256": "56cfbf81985faaa4838a9bce41827f3cf552ff4861c15f9280c702c86c63ea4e"
+    },
+    {
+      "url": "https://www.brickwise.at/assets/at0000a38j40",
+      "archivo": "fuentes/crudo/web-assets-at0000a38j40.html",
+      "http": 404,
+      "consultadoUtc": "2026-11-11T09:21:55Z",
+      "bytes": 27657,
+      "sha256": "56cfbf81985faaa4838a9bce41827f3cf552ff4861c15f9280c702c86c63ea4e"
+    },
+    {
+      "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+      "archivo": "fuentes/crudo/aktionariat-brokerbotsettings.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:07Z",
+      "bytes": 1543,
+      "sha256": "11b879353e27f190eb2d18cea7c843c9425670fb23a4d938f9860ed5008cf2dc"
+    },
+    {
+      "url": "https://shares.aktionariat.com/api/secondarymarkets/getOrderBook",
+      "archivo": "fuentes/crudo/aktionariat-getOrderBook.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:08Z",
+      "bytes": 1440,
+      "sha256": "c0ab41483e76e024a4d24917e682543972bc68425c7f0ee30410d15e0518ad4a",
+      "metodo": "POST"
+    },
+    {
+      "url": "https://shares.aktionariat.com/api/secondarymarketsettings?ticker=DAKS",
+      "archivo": "fuentes/crudo/aktionariat-secondarymarketsettings.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:08Z",
+      "bytes": 499,
+      "sha256": "132754731b9730b021e1af85fc7a5d3bba93adf20d426922e381b0ae85a25f61"
+    },
+    {
+      "url": "https://shares.aktionariat.com/api/secondarymarkets/getTrades",
+      "archivo": "fuentes/crudo/aktionariat-getTrades-todas.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:09Z",
+      "bytes": 383060,
+      "sha256": "6f9b3656112226ae5409dc878c5a8842056c3d475427724e5dff6659692bd776",
+      "metodo": "POST"
+    },
+    {
+      "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+      "archivo": "fuentes/crudo/boss-info-brokerbotsettings.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:10Z",
+      "bytes": 1682,
+      "sha256": "919267a45e9616eea92b1bf9f31ff9328b9b309174651dfe84c30212c4a9a585"
+    },
+    {
+      "url": "https://shares.bossinfo.com/api/secondarymarketsettings?ticker=BOSS",
+      "archivo": "fuentes/crudo/boss-info-secondarymarketsettings.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:10Z",
+      "bytes": 527,
+      "sha256": "5aaeee13184326fc8ba93fe6691fd41a3c01699371162341815f5d65469c61f3"
+    },
+    {
+      "url": "https://shares.bossinfo.com/api/secondarymarkets/getOrderBook",
+      "archivo": "fuentes/crudo/boss-info-getOrderBook.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:11Z",
+      "bytes": 356,
+      "sha256": "34199a003a8f871147562784ca0be91d363ce67c909476f3909bad8ccd5a9e9b",
+      "metodo": "POST"
+    },
+    {
+      "url": "https://shares.bossinfo.com/api/secondarymarkets/getTrades",
+      "archivo": "fuentes/crudo/boss-info-getTrades-todas.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:11Z",
+      "bytes": 99256,
+      "sha256": "f02ec19d5b1bae96be28ffe1b6788610f877637a13d733902cba4b7f08a1af3a",
+      "metodo": "POST"
+    },
+    {
+      "url": "https://shares.lend.ch/api/brokerbotsettings?ticker=LENDS",
+      "archivo": "fuentes/crudo/switzerlend-brokerbotsettings.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:12Z",
+      "bytes": 1358,
+      "sha256": "c8c66ff59e6319ecfafccfcf97a3209608f8cd342305713d2165c68e61b899b0"
+    },
+    {
+      "url": "https://shares.lend.ch/api/secondarymarketsettings?ticker=LENDS",
+      "archivo": "fuentes/crudo/switzerlend-secondarymarketsettings.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:12Z",
+      "bytes": 494,
+      "sha256": "49b876e974c4aa0520d1162656935c5645834c900911abb60d3ce82f2f9b781f"
+    },
+    {
+      "url": "https://shares.lend.ch/api/secondarymarkets/getOrderBook",
+      "archivo": "fuentes/crudo/switzerlend-getOrderBook.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:13Z",
+      "bytes": 559,
+      "sha256": "b7ec4f3ff2aff493176d196faad91a9370188f54a4a2310a62477a918290ae84",
+      "metodo": "POST"
+    },
+    {
+      "url": "https://shares.lend.ch/api/secondarymarkets/getTrades",
+      "archivo": "fuentes/crudo/switzerlend-getTrades-todas.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:13Z",
+      "bytes": 29537,
+      "sha256": "97a527d4018fbe7a7401a94c41d7931cb11f173c73e208eff064cc14e741ef25",
+      "metodo": "POST"
+    },
+    {
+      "url": "Ethereum eth_call (https://ethereum-rpc.publicnode.com), solo lectura",
+      "archivo": "fuentes/crudo/onchain-brokerbots-20261111.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:22:45Z",
+      "bytes": 10139,
+      "sha256": "74894d89665321625c77c8a76f9d84579a79345841c3983874246e0e5b0b1ea3",
+      "nota": "mismas llamadas que el 10/11; bloque 26390755"
+    },
+    {
+      "url": "Ethereum eth_call (https://ethereum-rpc.publicnode.com), solo lectura",
+      "archivo": "fuentes/crudo/onchain-mercados-secundarios-20261111.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:23:18Z",
+      "bytes": 4304,
+      "sha256": "9748025920f3e8b562254a4dbb8cf495d067e84c4aa405d40c2339ec0d126e66",
+      "nota": "tres contratos del mercado entre accionistas: tradingFeeBips, isOpen, licenseShare, VERSION, TOKEN, CURRENCY; bloque 26390758"
+    },
+    {
+      "url": "https://shares.aktionariat.com/",
+      "archivo": "fuentes/crudo/aktionariat-render-portada.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:23:25Z",
+      "bytes": 103512,
+      "sha256": "dd976a85be7426ef2e40bcdc31e097d64088862b60d5f6cb30cf4c0b9e99f04c",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.aktionariat.com/",
+      "archivo": "fuentes/suiza/aktionariat-render-portada.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:23:25Z",
+      "bytes": 427991,
+      "sha256": "b4c2595c8c6aae852682e6d324ac240c85c06a38243f890cbd2e3d910021f4d1",
+      "nota": "Captura de página completa (Playwright)"
+    },
+    {
+      "url": "https://shares.aktionariat.com/",
+      "archivo": "fuentes/suiza/aktionariat-render-portada.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:23:25Z",
+      "bytes": 4657,
+      "sha256": "1c25ebba3397eac941f729b25fd7e84d5f68cbd211dd1502c101d2f6225c0d54",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://shares.aktionariat.com/invest",
+      "archivo": "fuentes/crudo/aktionariat-render-invest.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:23:38Z",
+      "bytes": 29178,
+      "sha256": "b99cc22a4227440ac6d4e5608a39d54e06dceddb241a616577e8a08b59a0694d",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.aktionariat.com/invest",
+      "archivo": "fuentes/suiza/aktionariat-render-invest.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:23:38Z",
+      "bytes": 145081,
+      "sha256": "ee4648b76dbd2dc23a839bb619b48fbcfe5025b1db13e0ff22659362d5f0f203",
+      "nota": "Captura de página completa (Playwright)"
+    },
+    {
+      "url": "https://shares.aktionariat.com/invest",
+      "archivo": "fuentes/suiza/aktionariat-render-invest.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:23:38Z",
+      "bytes": 2442,
+      "sha256": "f0c5709e8d68689f9dfdcb56c48cd468bd210c41ccf29f1328565df3e63b0719",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://shares.aktionariat.com/trade",
+      "archivo": "fuentes/crudo/aktionariat-render-trade.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:23:50Z",
+      "bytes": 84361,
+      "sha256": "8af9793363f03d80162c85338a42c7c57d5f21b29077abddc51850a5edef4675",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.aktionariat.com/trade",
+      "archivo": "fuentes/suiza/aktionariat-render-trade.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:23:50Z",
+      "bytes": 295829,
+      "sha256": "9b1b3a7b8b8a6029a6af5900c1cbdfbac9ad37d74789a02dd8343ebb48a09461",
+      "nota": "Captura de página completa (Playwright)"
+    },
+    {
+      "url": "https://shares.aktionariat.com/trade",
+      "archivo": "fuentes/suiza/aktionariat-render-trade.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:23:50Z",
+      "bytes": 3580,
+      "sha256": "ba840a7904a1b1efeda62560f5db174c5f6a5e4a39698552e17028db679a3231",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://shares.bossinfo.com/",
+      "archivo": "fuentes/crudo/boss-info-render-portada.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:03Z",
+      "bytes": 83027,
+      "sha256": "f2a36ca0b63731765495366bde2d47f6a60972d086ff091f5708aaf42c0faa71",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.bossinfo.com/",
+      "archivo": "fuentes/suiza/boss-info-render-portada.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:03Z",
+      "bytes": 355308,
+      "sha256": "47b042e5cf833e403550d996852f27194183cb6c8e462a866919ff089a513194",
+      "nota": "Captura de página completa (Playwright)"
+    },
+    {
+      "url": "https://shares.bossinfo.com/",
+      "archivo": "fuentes/suiza/boss-info-render-portada.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:03Z",
+      "bytes": 3963,
+      "sha256": "59f38c356fee17948606867457ea69e443f96987bd1631cabc1059479b9257dd",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://shares.bossinfo.com/invest",
+      "archivo": "fuentes/crudo/boss-info-render-invest.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:15Z",
+      "bytes": 28212,
+      "sha256": "9107129a87099799877a9cbd13efa17ad018979002e54ea7e83744ad65bba6ba",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.bossinfo.com/invest",
+      "archivo": "fuentes/suiza/boss-info-render-invest.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:15Z",
+      "bytes": 145796,
+      "sha256": "5144e3c451bd099219cdae2f8b5eae53838dd8458bc51bd5aeb298b959d64a44",
+      "nota": "Captura de página completa (Playwright)"
+    },
+    {
+      "url": "https://shares.bossinfo.com/invest",
+      "archivo": "fuentes/suiza/boss-info-render-invest.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:15Z",
+      "bytes": 2419,
+      "sha256": "53d928916bb750f6c77ca0475927fbe58ec44dd35a374249e531637e5d61b517",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://shares.bossinfo.com/trade",
+      "archivo": "fuentes/crudo/boss-info-render-trade.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:27Z",
+      "bytes": 79510,
+      "sha256": "cdcb6ae680cca9f7b379c2a3113974cc7673be233216e23111d0c8287b178611",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.bossinfo.com/trade",
+      "archivo": "fuentes/suiza/boss-info-render-trade.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:27Z",
+      "bytes": 283399,
+      "sha256": "163192d304f9da6dc19b25453ddc2ea1a9b01b839883e61097c23a5ebfad8b7f",
+      "nota": "Captura de página completa (Playwright)"
+    },
+    {
+      "url": "https://shares.bossinfo.com/trade",
+      "archivo": "fuentes/suiza/boss-info-render-trade.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:27Z",
+      "bytes": 3471,
+      "sha256": "145dea4bc2c3a0d2ec40df1a17b4b38d437d94bd2fd3044ad85a57f228039d61",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://shares.lend.ch/",
+      "archivo": "fuentes/crudo/switzerlend-render-portada.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:39Z",
+      "bytes": 79964,
+      "sha256": "334831ae61166dc5794156ad626af770dc9e9b6a8610c902260519cae204df46",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.lend.ch/",
+      "archivo": "fuentes/suiza/switzerlend-render-portada.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:39Z",
+      "bytes": 355786,
+      "sha256": "4cc530b1ddad9f02219c3c055701b3768a1106f69de1380e31e2c9a7596ae5fe",
+      "nota": "Captura de página completa (Playwright)"
+    },
+    {
+      "url": "https://shares.lend.ch/",
+      "archivo": "fuentes/suiza/switzerlend-render-portada.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:39Z",
+      "bytes": 4191,
+      "sha256": "917553321e140b5b911a1f8cf79440e7212071197bbc647e8cf6c95a3e029e72",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://shares.lend.ch/invest",
+      "archivo": "fuentes/crudo/switzerlend-render-invest.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:51Z",
+      "bytes": 28484,
+      "sha256": "a96025bcbf8dc579f936a2abc39105af7eada295ab34f88866cfc5f4836f9d42",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.lend.ch/invest",
+      "archivo": "fuentes/suiza/switzerlend-render-invest.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:51Z",
+      "bytes": 144997,
+      "sha256": "2f24d6f7469432a6b64b887dfa517a01dbd9f934ca8b37125d51afcc88e0525a",
+      "nota": "Captura de página completa (Playwright)"
+    },
+    {
+      "url": "https://shares.lend.ch/invest",
+      "archivo": "fuentes/suiza/switzerlend-render-invest.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:24:51Z",
+      "bytes": 2445,
+      "sha256": "bf799edec451e8ad4ebdd435a05aeb2d63bbb93e66014a4dfaf4e990a1d548ea",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://shares.lend.ch/trade",
+      "archivo": "fuentes/crudo/switzerlend-render-trade.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:25:03Z",
+      "bytes": 77069,
+      "sha256": "e1ff992cb65a41be9de848c756bcb69627620e24096821427652d6a1429f8c74",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.lend.ch/trade",
+      "archivo": "fuentes/suiza/switzerlend-render-trade.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:25:03Z",
+      "bytes": 288164,
+      "sha256": "bf35ba596da8bd5641d4beec4d02a43438481c132dcf242c437eaff573a7f361",
+      "nota": "Captura de página completa (Playwright)"
+    },
+    {
+      "url": "https://shares.lend.ch/trade",
+      "archivo": "fuentes/suiza/switzerlend-render-trade.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:25:03Z",
+      "bytes": 3566,
+      "sha256": "1d25719045f9f91e41bbcb6afa766a1a3740ad539425b736820f32a99b18ab7a",
+      "nota": "Texto renderizado sin sesión (Playwright)"
+    },
+    {
+      "url": "https://shares.aktionariat.com/trade",
+      "archivo": "fuentes/crudo/aktionariat-render-trade-vender.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:25:36Z",
+      "bytes": 84360,
+      "sha256": "216d7d3c9d123648fc5e1ddcece92c90f7d55402146faaf3bc737867e73b1b93",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.aktionariat.com/trade",
+      "archivo": "fuentes/suiza/aktionariat-render-trade-vender.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:25:36Z",
+      "bytes": 295952,
+      "sha256": "6668c02ed475db0b8719a82418eeee87fe33655e8e4e803ccebeb31f8d0efcea",
+      "nota": "Captura (Playwright), pestaña «Sell»"
+    },
+    {
+      "url": "https://shares.aktionariat.com/trade",
+      "archivo": "fuentes/suiza/aktionariat-render-trade-vender.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:25:36Z",
+      "bytes": 3584,
+      "sha256": "e78151714a79baf63e4ff32d728b379b6ed6046ae464c7cf294f444d6e3b1516",
+      "nota": "Texto renderizado sin sesión (Playwright), pestaña «Sell» pulsada solo para leer la comisión; no se envía ninguna orden"
+    },
+    {
+      "url": "https://shares.bossinfo.com/trade",
+      "archivo": "fuentes/crudo/boss-info-render-trade-vender.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:25:54Z",
+      "bytes": 79517,
+      "sha256": "14794355341372ce5c3b2993ffca1e1325c26f9036bd141d22273d0173ce53ef",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.bossinfo.com/trade",
+      "archivo": "fuentes/suiza/boss-info-render-trade-vender.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:25:54Z",
+      "bytes": 283448,
+      "sha256": "c8879f88d892d51c99836a323857b275a0de09703cca277aa93b1ab06b4076c2",
+      "nota": "Captura (Playwright), pestaña «Sell»"
+    },
+    {
+      "url": "https://shares.bossinfo.com/trade",
+      "archivo": "fuentes/suiza/boss-info-render-trade-vender.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:25:54Z",
+      "bytes": 3475,
+      "sha256": "c7c9e34ec4f96c85b0027ef2c544a03da49cad1b05dd457a040625c67d37f9d9",
+      "nota": "Texto renderizado sin sesión (Playwright), pestaña «Sell» pulsada solo para leer la comisión; no se envía ninguna orden"
+    },
+    {
+      "url": "https://shares.lend.ch/trade",
+      "archivo": "fuentes/crudo/switzerlend-render-trade-vender.render.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:12Z",
+      "bytes": 77064,
+      "sha256": "7ec34b7e68ca01a731bf26692e8d67581f9fe6c520ea23c16990ede0b575c033",
+      "nota": "DOM tras el renderizado (Playwright); fuera de Git porque puede llevar nombres de personas"
+    },
+    {
+      "url": "https://shares.lend.ch/trade",
+      "archivo": "fuentes/suiza/switzerlend-render-trade-vender.png",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:12Z",
+      "bytes": 288081,
+      "sha256": "b1e49ab4467a7a112445a4f6a16e459f953199453912e367f3b94fd91f190c81",
+      "nota": "Captura (Playwright), pestaña «Sell»"
+    },
+    {
+      "url": "https://shares.lend.ch/trade",
+      "archivo": "fuentes/suiza/switzerlend-render-trade-vender.txt",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:12Z",
+      "bytes": 3570,
+      "sha256": "d3b09e56a1da00d3e35ebd62fae5ea2b6bca903a0143330343a79e27237fd2b9",
+      "nota": "Texto renderizado sin sesión (Playwright), pestaña «Sell» pulsada solo para leer la comisión; no se envía ninguna orden"
+    },
+    {
+      "url": "https://www.aktionariat.com/disclaimer",
+      "archivo": "fuentes/crudo/aktionariat-disclaimer.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:44Z",
+      "bytes": 41909,
+      "sha256": "06937b732cefe6d27a7891e0ad6d975f5e69a34d53324ad23cac3707b1414abb"
+    },
+    {
+      "url": "https://shares.aktionariat.com/investor-page-terms",
+      "archivo": "fuentes/crudo/aktionariat-investor-page-terms.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:44Z",
+      "bytes": 26189,
+      "sha256": "0764d6163b9f1495c1f664a140b2fc9f1f3fee9bb2d48d73f98db1c5421582ff"
+    },
+    {
+      "url": "https://shares.bossinfo.com/investor-page-terms",
+      "archivo": "fuentes/crudo/boss-info-investor-page-terms.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:45Z",
+      "bytes": 26189,
+      "sha256": "0764d6163b9f1495c1f664a140b2fc9f1f3fee9bb2d48d73f98db1c5421582ff"
+    },
+    {
+      "url": "https://shares.lend.ch/investor-page-terms",
+      "archivo": "fuentes/crudo/switzerlend-investor-page-terms.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:45Z",
+      "bytes": 26189,
+      "sha256": "0764d6163b9f1495c1f664a140b2fc9f1f3fee9bb2d48d73f98db1c5421582ff"
+    },
+    {
+      "url": "https://www.aktionariat.com/terms-of-service",
+      "archivo": "fuentes/crudo/aktionariat-terms-of-service.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:46Z",
+      "bytes": 54993,
+      "sha256": "3a86c49686d3eb9007144d17c95f2bdb6b0aa2d7c3b6b964e6e24cbdb029df23"
+    },
+    {
+      "url": "https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/",
+      "archivo": "fuentes/crudo/boss-info-investor-faq.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:46Z",
+      "bytes": 105460,
+      "sha256": "459270747cd50c5028903d7fa9bdebb0c076b6bf6da251a428dd6454a690c267"
+    },
+    {
+      "url": "https://www.bossinfo.com/unternehmen/investor-relations/investor-tokens/",
+      "archivo": "fuentes/crudo/boss-info-investor-tokens.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:47Z",
+      "bytes": 95649,
+      "sha256": "3b23d863f02fb3e378e453cf5ba11f8d1e8389064431a35e68ca9e0d147b759d"
+    },
+    {
+      "url": "https://www.lend.ch/de/investor-relations",
+      "archivo": "fuentes/crudo/switzerlend-investor-relations.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:48Z",
+      "bytes": 428541,
+      "sha256": "5e50109fa150c65a833858624c4544f300d1d2950326de159050bce51a1902ed"
+    },
+    {
+      "url": "https://www.lend.ch/en/investor-relations",
+      "archivo": "fuentes/crudo/switzerlend-investor-relations-en.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:50Z",
+      "bytes": 320455,
+      "sha256": "a4ed4d0975559fe07ad76680d39f493328127fc7b803165ffc2e53953eeb4e7d"
+    },
+    {
+      "url": "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
+      "archivo": "fuentes/crudo/aktionariat-RegistrationAgreement.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:51Z",
+      "bytes": 317532,
+      "sha256": "9b4ebb70593a586110f6a61e316663c2fd0664e38b1753c0eec24d172bcb0d6b"
+    },
+    {
+      "url": "https://storage.googleapis.com/aktionariat/public/77/43cab283-21cc-413a-83d0-3b9322b46702/Token%20Holder%20Agreement.pdf",
+      "archivo": "fuentes/crudo/aktionariat-TokenHolderAgreement.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:52Z",
+      "bytes": 72428,
+      "sha256": "650eec368bdd93f45bac1cd37d6034471c4fedc913f53e818af568318f3f6b53"
+    },
+    {
+      "url": "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+      "archivo": "fuentes/crudo/boss-info-RegistrationRegulations.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:53Z",
+      "bytes": 246294,
+      "sha256": "613277222244065ffc6faf4b1458c700ac86b203d58a816e0e4043d4073e045f"
+    },
+    {
+      "url": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+      "archivo": "fuentes/crudo/switzerlend-TokenAgreement.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:54Z",
+      "bytes": 455843,
+      "sha256": "896479984f553b3b6b37264482a98a34bc39f0d776967756106267abf96bcc18"
+    },
+    {
+      "url": "https://storage.googleapis.com/aktionariat/public/40880/869c7faa-0f1c-4d52-a5ae-b4f4c129d1a4/Registration_Agreement_Lend_signed.pdf",
+      "archivo": "fuentes/crudo/switzerlend-RegistrationAgreement.pdf",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:26:55Z",
+      "bytes": 480316,
+      "sha256": "6d0ffcee66df76ba91d09184840ec6fe406d8e99e6fc89bccbbb7945fd7b1d06"
+    },
+    {
+      "url": "https://www.finma.ch/en/api/search/getresult",
+      "archivo": "fuentes/crudo/finma-autorizados-aktionariat.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:12Z",
+      "bytes": 466,
+      "sha256": "5bc7a55233cd9af8d8a4590b8e74c16f7d435697c9e13b880f0d2439425da2c6",
+      "metodo": "POST",
+      "nota": "FINMA, registro de entidades autorizadas; POST query=Aktionariat&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4"
+    },
+    {
+      "url": "https://www.finma.ch/en/api/search/getresult",
+      "archivo": "fuentes/crudo/finma-autorizados-boss-info.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:13Z",
+      "bytes": 464,
+      "sha256": "d7dab6ab372143eabf1e77847a846e77b3e88896bb9d9331de2b553b729883bc",
+      "metodo": "POST",
+      "nota": "FINMA, registro de entidades autorizadas; POST query=Boss%20Info&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4"
+    },
+    {
+      "url": "https://www.finma.ch/en/api/search/getresult",
+      "archivo": "fuentes/crudo/finma-autorizados-control-maerki-baumann.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:14Z",
+      "bytes": 1014,
+      "sha256": "75e320e5b3df6da41616df5a0b6ab8befeb1e8676e71ddc3f51cbee45f0c2bfd",
+      "metodo": "POST",
+      "nota": "FINMA, registro de entidades autorizadas; POST query=Maerki%20Baumann&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4"
+    },
+    {
+      "url": "https://www.finma.ch/en/api/search/getresult",
+      "archivo": "fuentes/crudo/finma-autorizados-switzerlend.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:14Z",
+      "bytes": 466,
+      "sha256": "5a44d1eb44c4dbd5a87994b3b36ed83bcdadf9e4791e202698001aec98ab3983",
+      "metodo": "POST",
+      "nota": "FINMA, registro de entidades autorizadas; POST query=Switzerlend&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4"
+    },
+    {
+      "url": "https://www.finma.ch/en/api/search/getresult",
+      "archivo": "fuentes/crudo/finma-advertencias-completa.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:15Z",
+      "bytes": 824498,
+      "sha256": "ecb90d7eba31fa82f0708d606a470dfd8c3f5ac29dcf5e4c3b68b24b5001fb59",
+      "metodo": "POST",
+      "nota": "FINMA, lista de advertencias completa; POST ds={1C6B8731-638C-4003-A93C-A625BF7A6800}&Order=4"
+    },
+    {
+      "url": "https://www.finma.ch/en/api/search/getresult",
+      "archivo": "fuentes/crudo/finma-autorizados-control-sygnum.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:15Z",
+      "bytes": 1086,
+      "sha256": "07fee30eaefe2fb8763822859034ae6485c5b67df8b2f86a5ba49ded97f62aa5",
+      "metodo": "POST",
+      "nota": "FINMA, registro de entidades autorizadas; POST query=Sygnum&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat",
+      "archivo": "fuentes/crudo/cnmv-advertencias-aktionariat.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:22Z",
+      "bytes": 212291,
+      "sha256": "ae859e8e6ea829a715289785f369d758f4a08bb32327e07fb2fa33a8b7cf2709"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat",
+      "archivo": "fuentes/reguladores/cnmv-advertencias-aktionariat.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:27:22Z",
+      "bytes": 13336,
+      "sha256": "a4bfe7d2086a123b157d36d58b9eea0dd12451c19d1e8cb5b65f70de79d81363",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-advertencias-aktionariat.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat+AG",
+      "archivo": "fuentes/crudo/cnmv-advertencias-aktionariat-ag.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:24Z",
+      "bytes": 212357,
+      "sha256": "814b1f21754537cd1e516ebba3f2488201c3e68effe87c285d35674a522aa059"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat+AG",
+      "archivo": "fuentes/reguladores/cnmv-advertencias-aktionariat-ag.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:27:24Z",
+      "bytes": 13342,
+      "sha256": "9d7a51dd61cb55160f14805db2908eb2e3999ac1ca8afa2b0e3e65f92bc720ac",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-advertencias-aktionariat-ag.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info",
+      "archivo": "fuentes/crudo/cnmv-advertencias-boss-info.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:25Z",
+      "bytes": 212247,
+      "sha256": "fec0540fce5da915c9ca307ad67e45f973f2481cc728a0152c5e2580f9e118cd"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info",
+      "archivo": "fuentes/reguladores/cnmv-advertencias-boss-info.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:27:25Z",
+      "bytes": 13332,
+      "sha256": "007355bd06cabe6a2531e5bbb8fde3070a916992107109145bd9dcf323940406",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-advertencias-boss-info.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info+AG",
+      "archivo": "fuentes/crudo/cnmv-advertencias-boss-info-ag.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:27Z",
+      "bytes": 212313,
+      "sha256": "35e064acb5979cb3fabb2dee0fbba059e512a3d9a8857fb3a4a2898c38f33f1e"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info+AG",
+      "archivo": "fuentes/reguladores/cnmv-advertencias-boss-info-ag.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:27:27Z",
+      "bytes": 13338,
+      "sha256": "cdbdd11b71e90796adb51876d3ba6eb41f38b9b8d519dde1b10ed427992d5007",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-advertencias-boss-info-ag.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend",
+      "archivo": "fuentes/crudo/cnmv-advertencias-switzerlend.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:29Z",
+      "bytes": 212291,
+      "sha256": "ac77c86aed8e9c4868f870193fda8b6af39aacf920bf46541cca8821d117c00e"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend",
+      "archivo": "fuentes/reguladores/cnmv-advertencias-switzerlend.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:27:29Z",
+      "bytes": 13336,
+      "sha256": "3d932e6c16fb2237a0a1e64d42f61a1eb7eb4781ca41d3c5fc3f0a08ec2f0c54",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-advertencias-switzerlend.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend+AG",
+      "archivo": "fuentes/crudo/cnmv-advertencias-switzerlend-ag.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:32Z",
+      "bytes": 212357,
+      "sha256": "81d7e3ccafcd924b6c1013e17a8efdd78145f44941123de789f2f8e6d4e5f90f"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend+AG",
+      "archivo": "fuentes/reguladores/cnmv-advertencias-switzerlend-ag.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:27:32Z",
+      "bytes": 13342,
+      "sha256": "d3e547642b9f9b4a7f8f591085856594f4644f72a985fcd78967e785f17df7cd",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-advertencias-switzerlend-ag.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Capital",
+      "archivo": "fuentes/crudo/cnmv-advertencias-capital.html",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:34Z",
+      "bytes": 240567,
+      "sha256": "416f7d6eb50f569a28e07341770914cacaf6e425d1422078c8980ba98336ed01"
+    },
+    {
+      "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Capital",
+      "archivo": "fuentes/reguladores/cnmv-advertencias-capital.txt",
+      "http": null,
+      "consultadoUtc": "2026-11-11T09:27:34Z",
+      "bytes": 15234,
+      "sha256": "4d446133e41fbd97ab6eb4f37f0cdb8eed3fd66c86a8c9dad127e213164c82b4",
+      "nota": "Copia de texto del HTML de fuentes/crudo/cnmv-advertencias-capital.html (nombres de personas recortados si los hubiera)"
+    },
+    {
+      "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1438805.json",
+      "archivo": "fuentes/crudo/zefix-aktionariat-ficha.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:36Z",
+      "bytes": 13485,
+      "sha256": "b46ae864bb099562044309927ce8d3946fd7122b1d094cdd47505ac281b1161b"
+    },
+    {
+      "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/450692.json",
+      "archivo": "fuentes/crudo/zefix-boss-info-ficha.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:37Z",
+      "bytes": 17747,
+      "sha256": "c22a7dcf11d9bc7b22db293a568833089869c4bf8622a1339b99496b244fea9d"
+    },
+    {
+      "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1231406.json",
+      "archivo": "fuentes/crudo/zefix-switzerlend-ficha.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:37Z",
+      "bytes": 27929,
+      "sha256": "f3547c2433780660924a77bafe8fa331b77b8319411a21851e6f156f4c33f6a5"
+    },
+    {
+      "url": "https://api.polyreg.ch/api/membership-check?name=Aktionariat%20AG",
+      "archivo": "fuentes/crudo/polyreg-aktionariat-ag.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:38Z",
+      "bytes": 77,
+      "sha256": "614eace25af609c5f6679ad0422b859275bf8c5a97d829d160c24912063ee1b0"
+    },
+    {
+      "url": "https://api.polyreg.ch/api/membership-check?name=Boss%20Info%20AG",
+      "archivo": "fuentes/crudo/polyreg-boss-info-ag.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:38Z",
+      "bytes": 75,
+      "sha256": "858c5ec11734c964f535abadef30fa9d88552f9a1fb955af9324c39a0a963a76"
+    },
+    {
+      "url": "https://api.polyreg.ch/api/membership-check?name=Empresa%20Inexistente%20XYZ%20AG",
+      "archivo": "fuentes/crudo/polyreg-empresa-inexistente-xyz-ag.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:39Z",
+      "bytes": 89,
+      "sha256": "2a87108294df796939cf991d678ec12ccde8b284d27a34afba904fd535d80c43"
+    },
+    {
+      "url": "https://api.polyreg.ch/api/membership-check?name=Switzerlend%20AG",
+      "archivo": "fuentes/crudo/polyreg-switzerlend-ag.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:27:39Z",
+      "bytes": 76,
+      "sha256": "d7ca18f4bbcdc568a8a77674c41057e7fd39a391de3e999e8ca7a8a3c33b5d77"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x8d90319fe817fe9e23973fcab9f1ff0f1e0d9b65?fields=sources",
+      "archivo": "fuentes/crudo/sourcify-brokerbot-lends.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:32:05Z",
+      "bytes": 30449,
+      "sha256": "baa3f1af43d72cd9eabadf50d2e4dafc2b047d7255aa8a692edec09c5dacfe15"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x2ba0282a2a717d97194781a73a586f0b5f928772?fields=sources",
+      "archivo": "fuentes/crudo/sourcify-mercado-secundario-lends-sources.json",
+      "http": 200,
+      "consultadoUtc": "2026-11-11T09:32:05Z",
+      "bytes": 22051,
+      "sha256": "afa678e72dee1e571b33027707f203288fe94311b358a9cdab04ec8e67531759"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x1e31565d4faa26322067481f3bb69a341b45cf4d?fields=abi",
+      "archivo": "fuentes/crudo/sourcify-mercado-secundario-boss.json",
+      "http": 404,
+      "consultadoUtc": "2026-11-11T09:32:06Z",
+      "bytes": 124,
+      "sha256": "9a8774e58231c44a725033ba79ab7f61d909c837210512df9487d031f040a963"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x2b0f2e58a4f00a617312c2b745a23dc677fc6a9c?fields=abi",
+      "archivo": "fuentes/crudo/sourcify-mercado-secundario-daks.json",
+      "http": 404,
+      "consultadoUtc": "2026-11-11T09:32:06Z",
+      "bytes": 124,
+      "sha256": "7d1e58550c60b0d3ca92274b8ac337bdce97679681e0292c3d15a06018bfef97"
+    }
+  ]
+}
