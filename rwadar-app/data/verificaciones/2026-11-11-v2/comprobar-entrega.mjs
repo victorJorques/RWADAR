@@ -427,7 +427,10 @@ const sinFechas = o => {
       assert.ok(snap.ofertas.every(o => o.verificadaEl === FECHA));
       const csv = fs.readFileSync(path.join(temporal, 'rwadar.csv'), 'utf8').trim().split('\n');
       assert.equal(csv.length, 1 + 25 + 5);
-      assert.equal(fs.readFileSync(path.join(temporal, 'rwadar.csv'), 'utf8'), fs.readFileSync(path.join(ROOT, 'rwadar-site/rwadar.csv'), 'utf8'), 'rwadar.csv sin diferencias');
+      // Las 25 del radar salen igual que en el rwadar.csv de la web (las descartadas se comparan en el ensayo con el
+      // REST simulado: aquí sus fuentes van ordenadas por dirección y por REST, en el orden de la base).
+      { const radarCsv = t => t.split('\n').filter(l => l.startsWith('"En el radar"'));
+        assert.deepEqual(radarCsv(fs.readFileSync(path.join(temporal, 'rwadar.csv'), 'utf8')), radarCsv(fs.readFileSync(path.join(ROOT, 'rwadar-site/rwadar.csv'), 'utf8')), 'rwadar.csv: las 25 del radar sin diferencias'); }
       const salidas = fichas.construirSalidas({ catalogo: snap });
       const paginas = [...salidas.keys()].filter(n => /^(ofertas|plataformas|fuera-del-radar)\//.test(n));
       assert.deepEqual(paginas.sort(), manifiestoFichas.filter(r => /^(ofertas|plataformas|fuera-del-radar)\//.test(r)).sort(), 'mismas fichas que la lista cerrada');
@@ -437,7 +440,7 @@ const sinFechas = o => {
       assert.ok(spiko.includes('2,41 %') && !spiko.includes('2,44 %'), 'la ficha web de Spiko Euro dice 2,41 %');
       assert.ok(schwarzer.includes('Desde 69,90 € la participación en reventa (11/11)') && !schwarzer.includes('Desde 65 € la participación'), 'la ficha web de Schwarzer Weg dice 69,90 €');
       informe.fichasQueCambian = distintas.length;
-      ok(`sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de ${csv.length - 1} filas, igual que el de la web), todas de la revisión nueva y verificadas el 11/11; las fichas salen con la lista cerrada de siempre (${paginas.length} páginas, ninguna nueva ni retirada) y cambian ${distintas.length} por la revisión, las fechas y los textos; la ficha web de Spiko Euro dice 2,41 % y la de Schwarzer Weg «Desde 69,90 € la participación en reventa (11/11)»`);
+      ok(`sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de ${csv.length - 1} filas; las 25 del radar, iguales que en el de la web), todas de la revisión nueva y verificadas el 11/11; las fichas salen con la lista cerrada de siempre (${paginas.length} páginas, ninguna nueva ni retirada) y cambian ${distintas.length} por la revisión, las fechas y los textos; la ficha web de Spiko Euro dice 2,41 % y la de Schwarzer Weg «Desde 69,90 € la participación en reventa (11/11)»`);
       informe.lecturasDelSincronizador = leidas.map(u => u.replace(/^https:\/\/[^/]+/, ''));
     } finally { fs.rmSync(temporal, { recursive: true, force: true }); }
 

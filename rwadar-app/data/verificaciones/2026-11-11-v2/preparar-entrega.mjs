@@ -203,8 +203,18 @@ for (const o of ofertas) {
   o.vigenciaDias = 7;
 }
 for (const slug of Object.keys(documentos)) documentos[slug].revisadaEl = FECHA;
-// Ninguna ficha publicada cambia de colección, de estado ni de rentabilidad publicada fuera de Spiko.
-assert.equal(fs.readdirSync(path.join(DIR, 'expedientes')).filter(n => n.endsWith('.json')).length, 22, 'un expediente por oferta y ninguno más');
+// Un expediente «publicada» por oferta y ninguno más. Los de candidatas (puede haber más mientras sigue la
+// vigilancia) no entran (DECISIONES §3): solo se exige que ninguno proponga admitir. Nada de lo que se escribe
+// depende de ellos, así que la salida es la misma aunque aparezcan otros.
+{
+  const todos = fs.readdirSync(path.join(DIR, 'expedientes')).filter(n => n.endsWith('.json')).sort().map(n => leer(path.join(DIR, 'expedientes', n)));
+  assert.deepEqual(todos.filter(e => e.tipoExpediente === 'publicada').map(e => e.slug).sort(), ofertas.map(o => o.slug).sort(), 'un expediente «publicada» por oferta');
+  for (const e of todos.filter(x => x.tipoExpediente !== 'publicada')) {
+    assert.equal(e.tipoExpediente, 'candidata', `${e.slug}: tipo de expediente`);
+    assert.doesNotMatch(String(e.decision), /^admit/, `${e.slug}: DECISIONES §3 no admite ninguna candidata hoy`);
+    assert.ok(!porSlug.has(e.slug), `${e.slug}: candidata con el slug de una publicada`);
+  }
+}
 
 // Tres datos de la tarjeta: etiqueta fija (normas del 03/11). Los publicados se conservan con consulta del
 // 11/11 salvo los que cambian abajo, que se reescriben con fuente y fecha.
