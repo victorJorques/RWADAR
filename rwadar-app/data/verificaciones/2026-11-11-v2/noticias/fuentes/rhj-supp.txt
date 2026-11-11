@@ -1348,7 +1348,7 @@ Docusign Envelope ID: 8ECC05EC-A433-888A-8226-779C0B3D0998
 
 
 
-            Lindsay Bracegirdle
+            [persona física recortada]
             Director
 
 
@@ -1359,7 +1359,7 @@ Docusign Envelope ID: 8ECC05EC-A433-888A-8226-779C0B3D0998
 
 
 
-            Jordan Sinclair
+            [persona física recortada]
             Director
 
 
@@ -7960,20 +7960,20 @@ Docusign Envelope ID: 8ECC05EC-A433-888A-8226-779C0B3D0998
 
                                Name / entity                    Business Address                Business occupations
 
-                               James Cunningham-Davis           c/o First Floor, La Chasse      Director    of     Cavendish
+                               [persona física recortada]           c/o First Floor, La Chasse      Director    of     Cavendish
                                                                 Chambers, Ten La Chasse,        Fiduciary (Jersey) Limited
                                                                 St. Helier, JE2 4UE, Jersey
 
-                               Lindsay Bracegirdle              c/o First Floor, La Chasse      Director    of     Cavendish
+                               [persona física recortada]              c/o First Floor, La Chasse      Director    of     Cavendish
                                                                 Chambers, Ten La Chasse,        Fiduciary (Jersey) Limited
                                                                 St. Helier, JE2 4UE, Jersey
 
-                               Jordan Sinclair                  c/o First Floor, La Chasse      Director    of     Robinhood
+                               [persona física recortada]                  c/o First Floor, La Chasse      Director    of     Robinhood
                                                                 Chambers, Ten La Chasse,        Markets, Inc.
                                                                 St. Helier, JE2 4UE, Jersey
 
-                               Noman Goheer (alternate          c/o First Floor, La Chasse      Senior     Manager    and
-                               director for Jordan Sinclair)    Chambers, Ten La Chasse,        Assistant General Counsel,
+                               [persona física recortada] (alternate          c/o First Floor, La Chasse      Senior     Manager    and
+                               director for [persona física recortada])    Chambers, Ten La Chasse,        Assistant General Counsel,
                                                                 St. Helier, JE2 4UE, Jersey     EU Crypto and Financial
                                                                                                 Crimes     of   Robinhood
                                                                                                 Markets, Inc.
@@ -14047,7 +14047,7 @@ Docusign Envelope ID: 8ECC05EC-A433-888A-8226-779C0B3D0998
 
 
 
-            James Cunningham-Davis
+            [persona física recortada]
             Director
 
 
@@ -14058,7 +14058,7 @@ Docusign Envelope ID: 8ECC05EC-A433-888A-8226-779C0B3D0998
 
 
 
-            Jordan Sinclair
+            [persona física recortada]
             Director
 
 

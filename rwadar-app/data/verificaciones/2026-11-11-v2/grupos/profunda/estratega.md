@@ -30,7 +30,7 @@ abrir cuenta. Las dejo con prioridad 3 de 5, donde 1 es la más alta.
 | ESI del EEE en España (altas de 2025–2026) | IZNES, Taurus, Axiology, Spiko, One Trading, PM MTF, Webull, Finary, Backpack… | barrido-brokers |
 | Brókers, bancos y exchanges | IBKR, Degiro, XTB, Scalable, Trade Republic, Revolut, N26, bunq, Bitpanda, Bitvavo, Bit2Me, Kraken, Bybit, OKX, Gate, Crypto.com, Coinbase, Gemini, Bitstamp, eToro, Assetera… | candidatas-mercados, barrido-brokers |
 | Radar sin oferta (23 plataformas) | Securitize Stocks queda en vigilancia; las demás, sin oferta. | barrido-radar-sin-oferta |
-| Suiza | Directorio de Aktionariat: Alan Frei, Robin des Fermes, Revario… | suiza |
+| Suiza | Directorio de Aktionariat: [persona física recortada], Robin des Fermes, Revario… | suiza |
 | Fondos tokenizados | Spiko, Amundi, Franklin, BUIDL, Azvalor, BBVA (sandbox), Generali y Schroders. | spiko, candidatas-mercados |
 
 ## 2. Huecos que busqué hoy y qué saqué
