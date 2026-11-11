@@ -14,7 +14,9 @@
 //        Si no, se deja la fecha anterior y se dice;
 //      - la fecha del título de los puntos fuertes («… (10/11/2026)») con la misma regla;
 //      - los mínimos cortos de las 11 de Brickwise, que salen del texto largo del catálogo sincronizado
-//        («Desde X € la participación en reventa (11/11)» → «Desde X € la participación (11/11)»).
+//        («Desde X € la participación en reventa (11/11)» → «Desde X € la participación (11/11)»);
+//      - el mínimo corto de Switzerlend, con la fecha de su ficha (revisión de contenido, C1):
+//        «1 acción (68,01 CHF, 10/11)» → «1 acción (68,01 CHF, 11/11)».
 //      Nada más: ni motivos, ni textos de los puntos, ni otros mínimos o salidas cortas.
 //   El archivo se valida con transparencia.mjs (cargarTransparencia) antes de escribirlo.
 //
@@ -121,15 +123,21 @@ for (const [slug, precio] of Object.entries(BRICKWISE)) {
   assert.ok(hecho.length <= 40, `${slug}: el mínimo corto pasa de 40 caracteres`);
   t.ofertas[slug].minimoCorto = hecho;
 }
+// Switzerlend (DECISIONES §2: mínimo «1 acción (68,01 CHF el 11/11)»). La tarjeta y «Lo esencial» enseñan el mínimo
+// corto: tiene que llevar la misma fecha que la ficha (revisión de contenido, C1; como la C1 del 10/11).
+assert.equal(tarjeta('switzerlend', 'Mínimo de inversión'), '1 acción (68,01 CHF el 11/11)', 'switzerlend: mínimo del catálogo');
+assert.ok(['1 acción (68,01 CHF, 10/11)', '1 acción (68,01 CHF, 11/11)'].includes(antes.ofertas.switzerlend.minimoCorto),
+  `switzerlend: mínimo corto de partida («${antes.ofertas.switzerlend.minimoCorto}»)`);
+t.ofertas.switzerlend.minimoCorto = '1 acción (68,01 CHF, 11/11)';
 
 // Nada más cambia: ni motivos, ni fuentes, ni textos de los puntos, ni los demás mínimos o salidas cortas, ni la
 // fecha de alta. Solo verificadaEl, consultadaEl (donde se volvió a consultar), el título de los puntos con fecha
-// del 10/11 (ídem) y los mínimos cortos de Brickwise.
+// del 10/11 (ídem) y los mínimos cortos de Brickwise y de Switzerlend.
 {
   const quita = (x, slug) => { const o = structuredClone(x);
     o.verificadaEl = 'F'; o.supervisada.consultadaEl = 'F'; o.documentoEspana.consultadaEl = 'F';
     o.puntos = o.puntos.map(p => ({ ...p, fuente: { ...p.fuente, titulo: p.fuente.titulo.replace(/\((?:10|11)\/11\/2026\)$/, '(F)') } }));
-    if (slug in BRICKWISE) o.minimoCorto = 'F';
+    if (slug in BRICKWISE || slug === 'switzerlend') o.minimoCorto = 'F';
     return o; };
   for (const slug of Object.keys(t.ofertas)) assert.deepEqual(quita(t.ofertas[slug], slug), quita(antes.ofertas[slug], slug), `${slug}: cambio fuera de la lista`);
   const resto = x => { const { lote, revisionCatalogo, revisadoEl, ofertas, ...r } = x; return r; };
@@ -154,7 +162,7 @@ for (const [slug, o] of Object.entries(valida.ofertas)) {
 }
 const nuevo = JSON.stringify(t, null, 2) + '\n';
 const cambios = [];
-if (nuevo !== texto) { fs.writeFileSync(TRANSPARENCIA, nuevo); cambios.push('transparencia.json: revisión, lote y verificadaEl al 11/11; fecha del 11/11 donde el expediente de hoy volvió a consultar la misma fuente (comprobaciones y títulos de los puntos); mínimos cortos de las 11 de Brickwise'); }
+if (nuevo !== texto) { fs.writeFileSync(TRANSPARENCIA, nuevo); cambios.push('transparencia.json: revisión, lote y verificadaEl al 11/11; fecha del 11/11 donde el expediente de hoy volvió a consultar la misma fuente (comprobaciones y títulos de los puntos); mínimos cortos de las 11 de Brickwise y de Switzerlend'); }
 
 console.log(cambios.length ? cambios.map(c => '· ' + c).join('\n') : 'Nada que cambiar: ya estaba hecho.');
 const viejas = fechas.filter(f => f.consultadaEl !== FECHA);
@@ -164,4 +172,5 @@ const puntosViejos = puntos.filter(p => !p.expediente);
 console.log(`Títulos de puntos fuertes con fecha de consulta: ${puntos.length - puntosViejos.length} de ${puntos.length} pasan al 11/11.` +
   (puntosViejos.length ? ' Se quedan:\n' + puntosViejos.map(p => `  · ${p.slug}: ${p.titulo}`).join('\n') : ''));
 console.log('Mínimos cortos de Brickwise: ' + Object.keys(BRICKWISE).map(s => `${s} «${valida.ofertas[s].minimoCorto}»`).join(', '));
+console.log(`Mínimo corto de Switzerlend: «${valida.ofertas.switzerlend.minimoCorto}»`);
 console.log('Siguiente: node rwadar-editorial-source/ofertas/transparencia.mjs && node rwadar-fichas.js && npm test');
