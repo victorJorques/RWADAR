@@ -9,7 +9,8 @@
      años; el modo «Lo cobro» / «Lo reinvierto»; y, en «Afinar», las
      comisiones, los impuestos, el valor del activo y el precio de cada
      participación). Los valores de partida son un ejemplo editable;
-   - el resultado arriba, en role="status" (se anuncia al dejar de escribir);
+   - el resultado arriba; el lector de pantalla lo oye en #ciAnuncio
+     (role="status"), una vez, 700 ms después de dejar de escribir;
    - un minigráfico de barras por año (SVG propio) con su tabla para
      lectores de pantalla, y la cuenta paso a paso;
    - «Usa la rentabilidad de una oferta»: las ofertas del catálogo con
@@ -28,7 +29,10 @@
   const CAMPOS = { inversion: 'ciInversion', rentabilidad: 'ciRentabilidad', anios: 'ciAnios', comisionAnual: 'ciComisionAnual',
     comisionEntrada: 'ciComisionEntrada', impuestos: 'ciImpuestos', valorActivo: 'ciValorActivo', precioParticipacion: 'ciPrecioParticipacion' };
   let raiz = null, entradas = {}, ofertas = [], ofertaElegida = null, crudo = null, huellaOfertas = '', tocado = false;
-  let reloj = null, suscrito = false, ultimo = null, anchoGrafico = 0;
+  let reloj = null, relojAnuncio = null, suscrito = false, ultimo = null, anchoGrafico = 0;
+  // El idioma con el que están escritos los campos (el HTML viene en español):
+  // al cambiar de idioma, se leen con este y se reescriben con el nuevo.
+  let idiomaCampos = 'es';
 
   const idioma = () => (globalThis.RWAdarIdioma?.obtenerIdioma?.() === 'en' ? 'en' : 'es');
   // Los textos fijos, del diccionario compartido con la app (idioma-en).
@@ -125,7 +129,7 @@
   function pintar() {
     if (!raiz) return;
     clearTimeout(reloj); reloj = null;
-    const valido = modelo.validarEntradas(leer());
+    const valido = modelo.validarEntradas(leer(), { idioma: idiomaCampos });
     marcarErrores(valido.errores);
     const res = valido.ok ? modelo.calcular(valido) : null;
     const r = modelo.resumen(res, idioma());
@@ -146,6 +150,14 @@
     }
     marcarOfertas();
     raiz.dataset.calculadoraEstado = res ? 'ok' : 'error';
+    // El lector de pantalla oye el resultado una vez, cuando se deja de
+    // escribir (como la app): #ciEstado se repinta a cada tecla y no se anuncia.
+    clearTimeout(relojAnuncio);
+    relojAnuncio = setTimeout(() => {
+      const a = $('ciAnuncio'), frase = [r.titular, r.detalle].filter(Boolean).join('. ');
+      // Lo mismo otra vez no se repite (al salir de un campo, al pulsar el mismo chip…).
+      if (a && a.textContent !== frase) { a.textContent = frase; a.setAttribute('translate', 'no'); }
+    }, 700);
   }
   const programar = () => { clearTimeout(reloj); reloj = setTimeout(pintar, 180); };
 
@@ -177,7 +189,7 @@
       b.setAttribute('aria-label', modelo.etiquetaOferta(of, idioma()));
       const a = el('a', 'ci-ficha', t('Ficha'));
       a.href = of.ficha; a.dataset.perfilOferta = of.slug;
-      a.setAttribute('aria-label', (idioma() === 'en' ? 'Page for ' : 'Ficha de ') + of.nombre);
+      a.setAttribute('aria-label', (idioma() === 'en' ? 'Details for ' : 'Ficha de ') + of.nombre);
       const flecha = el('span', 'ci-ficha-flecha', '→'); flecha.setAttribute('aria-hidden', 'true');
       a.append(flecha);
       li.append(b, a);
@@ -191,7 +203,7 @@
     if (!nota) return;
     const of = ofertas.find(o => o.slug === ofertaElegida);
     if (of) { nota.textContent = modelo.notaOferta(of, idioma()); nota.setAttribute('translate', 'no'); }
-    else { nota.removeAttribute('translate'); nota.textContent = t('La cifra que publica cada oferta, con su fecha. Rellena la rentabilidad; puedes cambiarla.'); }
+    else { nota.removeAttribute('translate'); nota.textContent = t('Solo salen las ofertas que publican una rentabilidad con fecha. Al pulsar una, se rellena la rentabilidad; puedes cambiarla.'); }
   }
   /* Lo llama rwadar-20260820.js cada vez que pinta el catálogo. */
   function recibirOfertas(lista, sinCifras) {
@@ -205,10 +217,25 @@
     pintarOfertas();
   }
 
+  /* En el móvil, los chips quedan por debajo del resultado: al pulsar uno,
+     se sube hasta el resultado si no se ve entero (bajo la cabecera). */
+  function verResultado() {
+    if (!matchMedia('(max-width: 767px)').matches) return;
+    // Se ha pulsado un chip: ya no se escribe (el resultado deja de ir pegado arriba).
+    raiz.classList.remove('ci-editando');
+    const caja = $('ciResultado'), b = caja.getBoundingClientRect();
+    const tope = parseFloat(getComputedStyle(caja).scrollMarginTop) || 0;
+    if (b.top >= tope - 1 && b.bottom <= innerHeight) return;
+    caja.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
+
   /* ---- Al cambiar de idioma: los campos con su formato y todo repintado ---- */
   function cambiarIdioma() {
+    const antes = idiomaCampos;
+    idiomaCampos = idioma();
     for (const [campo, input] of Object.entries(entradas)) {
-      const l = modelo.LIMITES[campo], leido = modelo.leerNumero(input.value, { miles: l.unidad === 'euros' });
+      // Se lee con el idioma de antes: «1,5» en español es 1,5; «1,500» en inglés, 1.500.
+      const l = modelo.LIMITES[campo], leido = modelo.leerNumero(input.value, { miles: l.unidad === 'euros', idioma: antes });
       if (input.value.trim() && leido.ok) input.value = modelo.valorCampo(leido.valor, idioma(), campo);
     }
     huellaOfertas = ''; pintarRapidos();
@@ -238,7 +265,7 @@
     raiz.addEventListener('change', e => {
       if (e.target.matches('input[name="ciModo"]')) { if (!tocado) { tocado = true; $('ciEjemplo').hidden = true; } pintar(); return; }
       if (!e.target.matches('.ci-input')) return;
-      const campo = e.target.name, l = modelo.LIMITES[campo], leido = modelo.leerNumero(e.target.value, { miles: l?.unidad === 'euros' });
+      const campo = e.target.name, l = modelo.LIMITES[campo], leido = modelo.leerNumero(e.target.value, { miles: l?.unidad === 'euros', idioma: idiomaCampos });
       if (l && e.target.value.trim() && leido.ok && leido.valor >= l.min && leido.valor <= l.max) e.target.value = modelo.valorCampo(leido.valor, idioma(), campo);
       pintar();
     });
@@ -257,6 +284,7 @@
         ofertaElegida = of.slug;
         if (!tocado) { tocado = true; $('ciEjemplo').hidden = true; }
         pintar();
+        verResultado();
       }
     });
     // En el móvil, mientras se escribe, el resultado se queda arriba (bajo la
@@ -286,7 +314,18 @@
     }
   }
 
-  globalThis.RWAdarCalculadoraInicio = Object.freeze({ ofertas: recibirOfertas });
+  /* «Calcula con tus números →» del explicador trae sus números (lo que pones,
+     la rentabilidad, el valor del activo y el precio de cada trozo). */
+  function poner(valores) {
+    if (!raiz || !valores) return;
+    for (const [campo, v] of Object.entries(valores)) {
+      if (entradas[campo] && typeof v === 'number' && Number.isFinite(v)) entradas[campo].value = modelo.valorCampo(v, idiomaCampos, campo);
+    }
+    if (!tocado) { tocado = true; $('ciEjemplo').hidden = true; }
+    pintar();
+  }
+
+  globalThis.RWAdarCalculadoraInicio = Object.freeze({ ofertas: recibirOfertas, poner });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar, { once: true });
   else iniciar();
 })();

@@ -985,8 +985,13 @@ document.getElementById('exPrimeraLeccion')?.addEventListener('click',event=>{
  const linea=(id,partes)=>{const el=$(id);if(!el)return;el.setAttribute('translate','no');
   el.replaceChildren(...partes.map((x,i)=>{if(i%2===0)return document.createTextNode(x);const b=document.createElement('b');b.textContent=x;return b;}));};
  /* Los dos importes del activo: se aceptan «300.000», «300000» o «1,5»; un
-    error se dice junto al campo y la cuenta se queda con el último válido. */
- let valido={valorActivo:M.EJEMPLO_EXPLICADOR.valorActivo,precioParticipacion:M.EJEMPLO_EXPLICADOR.precioParticipacion};
+    error se dice junto al campo y, mientras lo haya, el título, los totales
+    y la cuenta no enseñan cifras («—»): nada del cálculo anterior a la vista. */
+ const valido={valorActivo:M.EJEMPLO_EXPLICADOR.valorActivo,precioParticipacion:M.EJEMPLO_EXPLICADOR.precioParticipacion};
+ /* Los campos se leen con el idioma en que están escritos (el HTML, en español). */
+ let lenguaCampos='es';
+ /* Los números de la cuenta, para llevarlos a «Calcula tus números» de Inicio. */
+ let numeros=null;
  function errorCampo(campo,input,error){
   const caja=$(input.id+'Error');if(!caja)return;
   if(error){input.setAttribute('aria-invalid','true');caja.textContent=M.mensajeError(error,lengua());caja.setAttribute('translate','no');caja.hidden=false;}
@@ -996,14 +1001,26 @@ document.getElementById('exPrimeraLeccion')?.addEventListener('click',event=>{
   const L=lengua(),e=parseInt(bEur.value,10)||2500,r=(parseInt(bRent.value,10)||60)/10;   /* la barra va en décimas */
   const entrada={inversion:e,rentabilidad:r,anios:1,modo:'cobrar',comisionAnual:0,comisionEntrada:0,impuestos:0,
    valorActivo:cValor?cValor.value:valido.valorActivo,precioParticipacion:cPrecio?cPrecio.value:valido.precioParticipacion};
-  const v=M.validarEntradas(entrada);
+  const v=M.validarEntradas(entrada,{idioma:lenguaCampos});
   if(cValor)errorCampo('valorActivo',cValor,v.errores.valorActivo);
   if(cPrecio)errorCampo('precioParticipacion',cPrecio,v.errores.precioParticipacion);
-  if(v.ok)valido={valorActivo:v.valores.valorActivo,precioParticipacion:v.valores.precioParticipacion};
-  /* Con un dato mal escrito, la cuenta sigue con los últimos importes válidos
-     (y si con ellos tampoco cuadra, con el trozo más pequeño que se pueda). */
-  let res=M.calcular(v.ok?v:{...entrada,...valido});
-  if(!res)res=M.calcular({...entrada,valorActivo:M.EJEMPLO_EXPLICADOR.valorActivo,precioParticipacion:M.EJEMPLO_EXPLICADOR.precioParticipacion});
+  pon('calcEuros_v',M.euros(e,L));
+  pon('calcRent_v',L==='en'?M.porcentaje(r,L,1)+' a year':M.porcentaje(r,L,1)+' al año');
+  bEur.setAttribute('aria-valuetext',M.euros(e,L));
+  bRent.setAttribute('aria-valuetext',L==='en'?M.porcentaje(r,L,1)+' a year':M.porcentaje(r,L,1)+' al año');
+  const res=v.ok?M.calcular(v):null;
+  numeros=res?{inversion:e,rentabilidad:r,valorActivo:res.valorActivo,precioParticipacion:res.precioParticipacion}:{inversion:e,rentabilidad:r};
+  if(!res){
+   /* Con un dato mal escrito: el aviso junto al campo y ninguna cifra vieja. */
+   const raya='—';
+   pon('calcTitulo',L==='en'?'Check the asset value or the price of each unit':'Revisa el valor del activo o el precio de cada trozo');
+   ['tRent','tAnual','tMes','c1b','c2b','c3b','c4b'].forEach(id=>pon(id,raya));
+   linea('c1op',L==='en'?['You invest ',M.euros(e,L),' and each unit costs ',raya]:['Pones ',M.euros(e,L),' y cada trozo cuesta ',raya]);
+   linea('c2op',L==='en'?['You hold ',raya,' of the property’s ',raya,' units']:['Tienes ',raya,' de los ',raya,' trozos del local']);
+   linea('c3op',L==='en'?['The property earns ',M.porcentaje(r,L,1),' on '+raya]:['El local renta un ',M.porcentaje(r,L,1),' sobre '+raya]);
+   linea('c4op',L==='en'?['Your ',raya,' of that '+raya]:['Tu ',raya,' de esos '+raya]);
+   return;
+  }
   const V=res.valorActivo,p=res.precioParticipacion,n=res.participaciones,total=res.participacionesTotales,parte=res.porcentajeActivo;
   const eur=x=>M.euros(x,L),pct=(x,d)=>M.porcentaje(x,L,d),num=x=>M.numero(x,L,0);
   const exacto=Math.abs(total-Math.round(total))<1e-9,trozos=num(exacto?total:Math.floor(total+1e-9));
@@ -1012,10 +1029,6 @@ document.getElementById('exPrimeraLeccion')?.addEventListener('click',event=>{
      coincidencia es justo lo que hay que enseñar. */
   const tuyo=res.primerAnio.bruto,tuRent=res.capital>0?tuyo/res.capital*100:0;
   pon('calcTitulo',M.tituloExplicador({valorActivo:V,precioParticipacion:p},L));
-  pon('calcEuros_v',eur(e));
-  pon('calcRent_v',L==='en'?pct(r,1)+' a year':pct(r,1)+' al año');
-  bEur.setAttribute('aria-valuetext',eur(e));
-  bRent.setAttribute('aria-valuetext',L==='en'?pct(r,1)+' a year':pct(r,1)+' al año');
   pon('tRent',pct(tuRent,1));
   pon('tAnual',M.euros(tuyo,L,tuyo<100&&tuyo%1?2:0));
   pon('tMes',M.euros(tuyo/12,L,2));
@@ -1042,7 +1055,7 @@ document.getElementById('exPrimeraLeccion')?.addEventListener('click',event=>{
  [[cValor,'valorActivo'],[cPrecio,'precioParticipacion']].forEach(([c,campo])=>{
   if(!c)return;
   c.addEventListener('input',actualiza);
-  c.addEventListener('change',()=>{const l=M.leerNumero(c.value);if(l.ok&&!c.hasAttribute('aria-invalid'))c.value=M.valorCampo(l.valor,lengua(),campo);actualiza();});
+  c.addEventListener('change',()=>{const l=M.leerNumero(c.value,{idioma:lenguaCampos});if(l.ok&&!c.hasAttribute('aria-invalid'))c.value=M.valorCampo(l.valor,lenguaCampos,campo);actualiza();});
  });
  /* «Calcula con tus números →»: lleva al bloque de Inicio. Dentro de la app
     (el explicador va en un WebView), solo si la app sabe abrirlo: la app
@@ -1056,6 +1069,8 @@ document.getElementById('exPrimeraLeccion')?.addEventListener('click',event=>{
    if(window.ReactNativeWebView){ev.preventDefault();window.ReactNativeWebView.postMessage('rwadar:tutorial-calculadora');return;}
    const destino=$('calculadora');if(!destino)return;
    ev.preventDefault();
+   /* Con tus números, no con el ejemplo de partida. */
+   try{if(numeros&&window.RWAdarCalculadoraInicio&&RWAdarCalculadoraInicio.poner)RWAdarCalculadoraInicio.poner(numeros);}catch(e){}
    let hecho=false;
    const llevar=()=>{if(hecho)return;hecho=true;requestAnimationFrame(()=>requestAnimationFrame(()=>{
     destino.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
@@ -1073,7 +1088,8 @@ document.getElementById('exPrimeraLeccion')?.addEventListener('click',event=>{
   });
  }
  try{if(window.RWAdarIdioma&&RWAdarIdioma.suscribirIdioma)RWAdarIdioma.suscribirIdioma(()=>{
-  [[cValor,'valorActivo'],[cPrecio,'precioParticipacion']].forEach(([c,campo])=>{if(!c)return;const l=M.leerNumero(c.value);if(l.ok)c.value=M.valorCampo(l.valor,lengua(),campo);});
+  const antes=lenguaCampos;lenguaCampos=lengua();
+  [[cValor,'valorActivo'],[cPrecio,'precioParticipacion']].forEach(([c,campo])=>{if(!c)return;const l=M.leerNumero(c.value,{idioma:antes});if(l.ok)c.value=M.valorCampo(l.valor,lenguaCampos,campo);});
   actualiza();});}catch(e){}
  actualiza();
 })();

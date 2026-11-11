@@ -119,7 +119,7 @@ test('5 · el ejemplo: 1.000 € al 4 % durante 5 años, lo cobro, impuestos 19 
   eq(r.tabla.map((f) => Math.round(f.valorNeto * 100) / 100), [1032.4, 1064.8, 1097.2, 1129.6, 1162]);
   assert.ok(r.tabla.every((f) => f.capitalFin === 1000), 'si cobras, el capital no crece');
   eq(c.resumen(r), { signo: 'gana', titular: 'Cobrarías unos 32,40 € al año (2,70 € al mes)',
-    detalle: 'Ganancia neta en 5 años: 162 €, un 3,24 % al año, ya con impuestos.' });
+    detalle: 'Ganancia neta en 5 años: 162 €, un 3,24 % al año, ya descontados 38 € de impuestos.' });
 });
 
 test('6 · lo cobro, sin impuestos ni comisiones: 10.000 € al 5 % durante 10 años', () => {
@@ -135,6 +135,9 @@ test('7 · comisión anual sobre el capital: 10.000 € al 5 % con un 1 % de com
   const r = calc({ inversion: '10000', rentabilidad: '5', anios: '1', modo: 'cobrar', comisionAnual: '1' });
   casi(r.primerAnio.bruto, 500); casi(r.primerAnio.comision, 100); casi(r.primerAnio.neto, 400); casi(r.comisiones, 100);
   eq(c.resumen(r).detalle, 'Ganancia neta en 1 año: 400 €, un 4,00 % al año, ya con comisiones, sin impuestos.');
+  // Con impuestos, la cifra de Hacienda: 400 × 19 % = 76 €.
+  eq(c.resumen(calc({ inversion: '10000', rentabilidad: '5', anios: '1', modo: 'cobrar', comisionAnual: '1', impuestos: '19' })).detalle,
+    'Ganancia neta en 1 año: 324 €, un 3,24 % al año, ya con comisiones y descontados 76 € de impuestos.');
 });
 
 test('8 · impuestos sobre lo cobrado ya sin comisión, nunca sobre el capital: 10.000 € al 6 %, 1 % de comisión, 20 % de impuestos, 3 años', () => {
@@ -148,12 +151,13 @@ test('9 · lo cobro con rentabilidad negativa: no se cobra nada, la pérdida baj
   const r = calc({ inversion: '1000', rentabilidad: '-10', anios: '2', modo: 'cobrar', impuestos: '19' });
   eq(r.tabla.map((f) => [f.cobrado, f.impuestos, f.capitalFin]), [[0, 0, 900], [0, 0, 810]]);
   casi(r.impuestos, 0); casi(r.finalNeto, 810); casi(r.gananciaNeta, -190); casi(r.rentNetaAnual, -9.5, '', 1e-9);
-  eq(c.resumen(r), { signo: 'pierde', titular: 'No cobrarías nada: al cabo de 2 años tendrías 810 €', detalle: 'Pierdes 190 € de lo que pusiste.' });
+  // «unos», como en el resto de los titulares: la cifra va redondeada.
+  eq(c.resumen(r), { signo: 'pierde', titular: 'No cobrarías nada: al cabo de 2 años tendrías unos 810 €', detalle: 'Pierdes 190 € de lo que pusiste.' });
 });
 
 test('10 · rentabilidad 0: ni ganas ni pierdes (y no dice «pierdes 0 €»)', () => {
   const r = calc({ inversion: '1000', rentabilidad: '0', anios: '3', modo: 'cobrar', impuestos: '19' });
-  eq(c.resumen(r), { signo: 'igual', titular: 'No cobrarías nada: al cabo de 3 años tendrías 1.000 €', detalle: 'Lo mismo que pusiste: ni ganas ni pierdes.' });
+  eq(c.resumen(r), { signo: 'igual', titular: 'No cobrarías nada: al cabo de 3 años tendrías unos 1.000 €', detalle: 'Lo mismo que pusiste: ni ganas ni pierdes.' });
   const re = calc({ inversion: '1000', rentabilidad: '0', anios: '3', modo: 'reinvertir', impuestos: '19' });
   eq(c.resumen(re).detalle, 'Lo mismo que pusiste: ni ganas ni pierdes.');
 });
@@ -175,7 +179,7 @@ test('12 · reinvierto, impuestos al final sobre la ganancia acumulada: 1.000 �
   casi(r.rentNetaAnual, 3.2865, '', 0.0001);
   assert.ok(r.tabla.every((f) => f.impuestos === 0), 'ningún impuesto por el camino');
   eq(c.resumen(r), { signo: 'gana', titular: 'Al cabo de 5 años tendrías unos 1.175 €',
-    detalle: 'Ganancia neta: 175,49 €, como un 3,3 % al año, ya con impuestos.' });
+    detalle: 'Ganancia neta: 175,49 €, como un 3,29 % al año, ya descontados 41,16 € de impuestos.' });
 });
 
 test('13 · reinvierto con comisión anual: 10.000 € al 5 % con un 1 % de comisión, 2 años', () => {
@@ -207,7 +211,9 @@ test('16 · precio de participación: cuántas compras y lo que sobra (1.000 €
   const r = calc({ inversion: '1000', rentabilidad: '5', anios: '1', modo: 'cobrar', precioParticipacion: '300' });
   eq(r.participaciones, 3); casi(r.capital, 900); casi(r.pagado, 900); casi(r.sobra, 100); casi(r.primerAnio.neto, 45);
   eq(c.pasos(r).slice(0, 3), [{ op: 'Lo que pones', res: '1.000 €' },
-    { op: 'Participaciones de 300 € que compras', res: '3 (900 €)' }, { op: 'Te sobra (no se invierte)', res: '100 €' }]);
+    { op: 'Trozos de 300 € que compras', res: '3 (900 €)' }, { op: 'Te sobra (no se invierte)', res: '100 €' }]);
+  // La ganancia es sobre lo que pagas de verdad, y el detalle lo dice: 45 € sobre 900 €.
+  eq(c.resumen(r).detalle, 'Ganancia neta en 1 año: 45 € (sobre los 900 € que pagas; te sobran 100 €), un 5,00 % al año, sin comisiones ni impuestos.');
 });
 
 test('17 · participaciones con comisión de entrada: 1.000 €, 5 %, participaciones de 100 €', () => {
@@ -219,7 +225,7 @@ test('17 · participaciones con comisión de entrada: 1.000 €, 5 %, participac
   // Sin llegar a una participación, un mensaje claro.
   const v = c.validarEntradas({ inversion: '50', rentabilidad: '5', anios: '1', precioParticipacion: '100' });
   eq(v.errores.precioParticipacion.codigo, 'sin-participaciones');
-  eq(c.mensajeError(v.errores.precioParticipacion), 'Con 50 € no llegas a una participación de 100 €: sube lo que inviertes o baja el precio.');
+  eq(c.mensajeError(v.errores.precioParticipacion), 'Con 50 € no llegas a un trozo de 100 €: sube lo que inviertes o baja el precio.');
 });
 
 /* ---- El activo entero (el ejemplo del explicador, ya sin fijar) ---- */
@@ -292,11 +298,12 @@ test('22 · la cuenta paso a paso del ejemplo, entera: no hay nada escondido', (
     { op: 'Rendimiento del primer año: 4,0 % de 1.000 €', res: '40 €' },
     { op: 'Impuestos del 19 % sobre lo que cobras', res: '−7,60 €' },
     { op: 'Cobras el primer año', res: '32,40 €' },
+    { op: 'Impuestos en 5 años', res: '−38 €' },
     { op: 'Cobrado en 5 años, ya con impuestos', res: '162 €' },
     { op: 'Tu capital al final', res: '1.000 €' },
     { op: 'Lo que tendrías al final, neto', res: '1.162 €' },
     { op: 'Ganancia neta (sobre los 1.000 € que pagas)', res: '162 €' },
-    { op: 'Rentabilidad neta media al año', res: '3,24 %' },
+    { op: 'Rentabilidad neta al año, de media', res: '3,24 %' },
   ]);
   const re = calc({ inversion: '1.000', rentabilidad: '4', anios: '5', modo: 'reinvertir', impuestos: '19' });
   eq(c.pasos(re).slice(2), [
@@ -304,18 +311,21 @@ test('22 · la cuenta paso a paso del ejemplo, entera: no hay nada escondido', (
     { op: 'Impuestos del 19 % al vender, sobre lo ganado (216,65 €)', res: '−41,16 €' },
     { op: 'Lo que tendrías al final, neto', res: '1.175,49 €' },
     { op: 'Ganancia neta (sobre los 1.000 € que pagas)', res: '175,49 €' },
-    { op: 'Rentabilidad neta equivalente al año (compuesta)', res: '3,3 %' },
+    { op: 'Rentabilidad neta al año, de media (contando lo reinvertido)', res: '3,29 %' },
   ]);
-  // La regla de los impuestos, en una línea, y lo que no se afina.
-  eq(c.notaImpuestos('cobrar'), 'Si cobras, pagas impuestos cada año sobre lo que cobras. Es una aproximación con un solo tipo: cada producto y cada persona pueden tributar distinto.');
-  assert.match(c.notaImpuestos('reinvertir'), /^Si reinviertes, pagas impuestos al final, al vender, sobre lo ganado: en España un fondo o un token suele tributar así\./);
-  assert.equal(c.IMPUESTOS_NOTA.es, 'En España, la ganancia del ahorro tributa del 19 % al 30 % según cuánto ganes.');
+  // La regla de los impuestos, sin prometer de más: un producto que paga rentas
+  // tributa cada año aunque las reinviertas, y más de 6.000 € en un año pagan más del 19 %.
+  assert.equal(c.notaImpuestos('cobrar'), 'Si cobras, pagas impuestos cada año sobre lo que cobras. Es una aproximación con un solo tipo: si en un año ganas más de 6.000 €, pagarías algo más, y cada producto y cada persona pueden tributar distinto.');
+  assert.equal(c.notaImpuestos('reinvertir'), 'Si reinviertes, la cuenta paga los impuestos al final, al vender, sobre lo ganado: así tributa un fondo que no reparte. Si el producto te paga rentas o intereses, tributan cada año aunque los reinviertas, y tendrías algo menos. Es una aproximación con un solo tipo: si en un año ganas más de 6.000 €, pagarías algo más, y cada producto y cada persona pueden tributar distinto.');
+  assert.equal(c.notaImpuestos('reinvertir', 'en'), 'If you reinvest, tax is paid at the end, when you sell, on the gain: that is how a fund that does not pay out is taxed. If the product pays you rent or interest, it is taxed every year even if you reinvest it, so you would end up with somewhat less. It is an approximation with a single rate: if you gain more than €6,000 in a year you would pay somewhat more, and each product and each person may be taxed differently.');
+  assert.equal(c.IMPUESTOS_NOTA.es, 'En España (salvo País Vasco y Navarra), la ganancia del ahorro paga un 19 % hasta 6.000 € al año y más por encima, hasta el 30 %.');
+  assert.equal(c.IMPUESTOS_NOTA.en, 'In Spain (except the Basque Country and Navarre), savings income is taxed at 19% up to €6,000 a year and more above that, up to 30%.');
 });
 
 test('23 · en inglés, las mismas cifras con su formato', () => {
   const r = calc({ inversion: '1000', rentabilidad: '4', anios: '5', modo: 'cobrar', impuestos: '19' });
   eq(c.resumen(r, 'en'), { signo: 'gana', titular: 'You would receive about €32.40 a year (€2.70 a month)',
-    detalle: 'Net gain over 5 years: €162, 3.24% a year, after tax.' });
+    detalle: 'Net gain over 5 years: €162, 3.24% a year, after €38 in tax.' });
   const re = calc({ inversion: '25000', rentabilidad: '6.5', anios: '10', modo: 'reinvertir', impuestos: '19' });
   assert.match(c.resumen(re, 'en').titular, /^After 10 years you would have about €42,762$/);
   eq(c.pasos(r, 'en')[0].op, 'What you put in');
@@ -410,4 +420,42 @@ test('27 · la web lleva una copia exacta del motor y da los mismos resultados',
   // Sin dependencias, sin red y sin Intl (Hermes).
   const fuente = fs.readFileSync(path.join(__dirname, '../lib/calculadora.js'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
   assert.doesNotMatch(fuente, /require\(|import |fetch\(|Intl\.|toLocaleString/);
+});
+
+/* ---- Lo que pidió la revisión de la calculadora (11/11/2026) ---- */
+test('28 · con la marca decimal del idioma: en español «1,500» es 1,5 € (la coma nunca es de miles) y en inglés «1.500» es 1,5', () => {
+  const v = (t, idioma) => c.leerNumero(t, { idioma }).valor;
+  eq(v('1,500', 'es'), 1.5); eq(v('1.500', 'es'), 1500); eq(v('2.5', 'es'), 2.5); eq(v('1.234,56', 'es'), 1234.56);
+  eq(v('1.500', 'en'), 1.5); eq(v('1,500', 'en'), 1500); eq(v('2,5', 'en'), 2.5); eq(v('1,234.56', 'en'), 1234.56);
+  // Sin idioma, como antes (una marca y tres cifras en un importe: miles).
+  eq(v('1,500'), 1500);
+  eq(c.validarEntradas({ inversion: '1,500', rentabilidad: '4', anios: '5' }, { idioma: 'es' }).valores.inversion, 1.5);
+  eq(c.validarEntradas({ inversion: '1,500', rentabilidad: '4', anios: '5' }, { idioma: 'en' }).valores.inversion, 1500);
+});
+
+test('29 · lo que cobras al mes, por pequeño que sea, no es «0 €»: 1 € al 4 % da «menos de 1 céntimo al mes»', () => {
+  // 1 × 4 % = 0,04 €; con un 19 %, 0,0324 € al año y 0,0027 € al mes.
+  const r = calc({ inversion: '1', rentabilidad: '4', anios: '5', modo: 'cobrar', impuestos: '19' });
+  eq(c.resumen(r).titular, 'Cobrarías unos 0,03 € al año (menos de 1 céntimo al mes)');
+  eq(c.resumen(r, 'en').titular, 'You would receive about €0.03 a year (less than 1 cent a month)');
+});
+
+test('30 · con trozos enteros y comisión de entrada, la ganancia es sobre lo que pagas y el detalle dice lo que sobra', () => {
+  // 1.000 € con un 5 % de entrada y trozos de 100 €: 9 trozos (900 €), pagas 947,37 € y te sobran 52,63 €.
+  // Reinviertes 5 años al 4 %: 900 × 1,04^5 = 1.094,99 €; ganancia 147,62 €; impuestos 28,05 €; neto 1.066,94 €;
+  // ganancia neta 1.066,94 − 947,37 = 119,57 €.
+  const r = calc({ inversion: '1000', rentabilidad: '4', anios: '5', modo: 'reinvertir', comisionEntrada: '5', impuestos: '19', precioParticipacion: '100' });
+  casi(r.finalBruto, 1094.99); casi(r.impuestosFinales, 28.05); casi(r.finalNeto, 1066.94); casi(r.gananciaNeta, 119.57);
+  eq(c.resumen(r), { signo: 'gana', titular: 'Al cabo de 5 años tendrías unos 1.067 €',
+    detalle: 'Ganancia neta: 119,57 € (sobre los 947,37 € que pagas; te sobran 52,63 €), como un 2,41 % al año, ya con comisiones y descontados 28,05 € de impuestos.' });
+  // Y si pierdes, también.
+  const p = calc({ inversion: '1000', rentabilidad: '-5', anios: '1', modo: 'reinvertir', precioParticipacion: '300' });
+  eq(c.resumen(p).detalle, 'Pierdes 45 € de lo que pusiste (sobre los 900 € que pagas; te sobran 100 €).');
+});
+
+test('31 · los mismos decimales en la rentabilidad neta de los dos modos y en la cuenta («3,24 %» y «3,29 %»)', () => {
+  const co = calc({ inversion: '1000', rentabilidad: '4', anios: '5', modo: 'cobrar', impuestos: '19' });
+  const re = calc({ inversion: '1000', rentabilidad: '4', anios: '5', modo: 'reinvertir', impuestos: '19' });
+  assert.match(c.resumen(co).detalle, /un 3,24\s%/); assert.match(c.resumen(re).detalle, /un 3,29\s%/);
+  eq(c.pasos(co).at(-1).res, '3,24 %'); eq(c.pasos(re).at(-1).res, '3,29 %');
 });

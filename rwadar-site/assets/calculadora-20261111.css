@@ -25,18 +25,21 @@
 .ci-datos{display:grid;gap:16px;padding:18px;border:var(--bd);border-radius:var(--r-l);background:var(--s1)}
 .ci-datos-cab{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:0}
 .ci-datos-tit{color:var(--tx);font:600 1.0625rem/1.3 var(--display)}
-.ci-ejemplo{padding:4px 10px;border-radius:var(--r-p);background:var(--aviso-t);color:var(--aviso);font:600 .8125rem/1.3 var(--body)}
+/* Neutro: el ámbar es el color de los avisos en RWAdar. */
+.ci-ejemplo{padding:4px 10px;border-radius:var(--r-p);background:var(--ton);color:var(--tx-2);font:600 .8125rem/1.3 var(--body)}
 .ci-ejemplo[hidden]{display:none}
 .ci-fila{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:12px}
 .ci-campo{display:grid;gap:6px;min-width:0}
 .ci-etq{margin:0;padding:0;color:var(--tx-2);font:500 .9375rem/1.35 var(--body)}
 .ci-opcional{color:var(--tx-3);font-weight:400}
 .ci-entrada{position:relative;display:flex;align-items:center}
-.ci-input{width:100%;min-width:0;height:var(--ci-campo);padding:0 44px 0 14px;border:1px solid rgba(255,255,255,.16);border-radius:var(--r-m);
+.ci-input{width:100%;min-width:0;height:var(--ci-campo);padding:0 44px 0 14px;border:1px solid rgba(255,255,255,.36);border-radius:var(--r-m);
   background:var(--s0);color:var(--tx);font:600 1.25rem/1 var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.01em;
   transition:border-color var(--t-2) var(--ease),box-shadow var(--t-2) var(--ease);-webkit-appearance:none;appearance:none}
-.ci-input::placeholder{color:var(--tx-3);font-weight:500}
-.ci-input:hover{border-color:rgba(255,255,255,.28)}
+/* El ejemplo vacío («Ej.: 300.000») no parece una cifra escrita: en cursiva,
+   más pequeño y sin la letra de los números (--tx-3 sobre --s0 da 6,1:1). */
+.ci-input::placeholder{color:var(--tx-3);font:italic 400 1rem/1 var(--body);letter-spacing:0;opacity:1}
+.ci-input:hover{border-color:rgba(255,255,255,.48)}
 .ci-input:focus{outline:none;border-color:var(--senal);box-shadow:0 0 0 3px var(--senal-30)}
 .ci-input:focus-visible{outline:2px solid var(--senal);outline-offset:2px;box-shadow:none}
 .ci-input[aria-invalid="true"]{border-color:var(--alarma);box-shadow:0 0 0 1px var(--alarma)}
@@ -63,7 +66,7 @@
   font:600 .9375rem/1.2 var(--body);text-align:center;cursor:pointer;transition:var(--tr)}
 .ci-opcion input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
 .ci-opcion:has(input:checked){background:var(--s3);color:var(--tx);box-shadow:inset 0 0 0 1px var(--ton-2)}
-.ci-opcion:has(input:checked) span::before{content:'✓ ';color:var(--senal)}
+.ci-opcion:has(input:checked) span::before{content:'✓ ';content:'✓ ' / '';color:var(--senal)}
 .ci-opcion:has(input:focus-visible){outline:2px solid var(--senal);outline-offset:2px}
 @media (forced-colors:active){.ci-opcion:has(input:checked){outline:2px solid Highlight}}
 
@@ -73,9 +76,9 @@
 .ci-ofertas-lista{display:grid;gap:8px;margin:0;padding:0;list-style:none}
 .ci-oferta{display:flex;align-items:stretch;gap:6px;min-width:0}
 .ci-chip{display:flex;flex:1;flex-wrap:wrap;align-items:baseline;gap:2px 10px;min-width:0;min-height:48px;padding:8px 12px;
-  border:1px solid rgba(255,255,255,.12);border-radius:var(--r-m);background:transparent;color:var(--tx);text-align:left;cursor:pointer;transition:var(--tr)}
+  border:1px solid rgba(255,255,255,.24);border-radius:var(--r-m);background:transparent;color:var(--tx);text-align:left;cursor:pointer;transition:var(--tr)}
 .ci-chip[aria-pressed="true"]{border-color:var(--senal);background:var(--senal-t)}
-.ci-chip[aria-pressed="true"] .ci-chip-nom::before{content:'✓ ';color:var(--senal)}
+.ci-chip[aria-pressed="true"] .ci-chip-nom::before{content:'✓ ';content:'✓ ' / '';color:var(--senal)}
 @media (hover:hover){.ci-chip:hover{background:var(--ton)}.ci-chip[aria-pressed="true"]:hover{background:var(--senal-18)}}
 .ci-chip-nom{flex:1 1 100%;min-width:0;font:600 .9375rem/1.3 var(--body)}
 .ci-chip-pct{color:var(--senal);font:600 1rem/1.3 var(--mono);font-variant-numeric:tabular-nums}
@@ -107,7 +110,7 @@
 .ci-graf-lienzo{width:100%;min-height:150px}
 .ci-svg{display:block;overflow:visible}
 .ci-suelo{stroke:rgba(255,255,255,.16);stroke-width:1;shape-rendering:crispEdges}
-.ci-barra-puesto{fill:rgba(255,255,255,.16)}
+.ci-barra-puesto{fill:rgba(255,255,255,.07)}
 .ci-barra-ganado{fill:var(--senal)}
 .ci-base{stroke:var(--tx-2);stroke-width:1;stroke-dasharray:3 4}
 .ci-eje{fill:var(--tx-2);font:500 11px/1 var(--mono);font-variant-numeric:tabular-nums}
@@ -115,7 +118,7 @@
 .ci-leyenda{display:flex;flex-wrap:wrap;gap:4px 16px;margin:8px 0 0;padding:0;list-style:none;color:var(--tx-2);font:400 .8125rem/1.4 var(--body)}
 .ci-leyenda li{display:inline-flex;align-items:center;gap:6px}
 .ci-muestra{display:inline-block;width:12px;height:12px;border-radius:3px}
-.ci-muestra--puesto{background:rgba(255,255,255,.16);box-shadow:inset 0 -2px 0 var(--tx-2)}
+.ci-muestra--puesto{background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.24),inset 0 -2px 0 var(--tx-2)}
 .ci-muestra--ganado{background:var(--senal)}
 .ci-cuenta{padding:0 16px;border:var(--bd);border-radius:var(--r-l);background:var(--s1)}
 .ci-cuenta>summary{position:relative;display:flex;align-items:center;min-height:52px;padding-right:28px;color:var(--senal);font:600 .9375rem/1.3 var(--body);cursor:pointer;list-style:none}
@@ -132,11 +135,12 @@
 /* ---- Móvil: mientras se escribe, el resultado se queda arriba, bajo la
    cabecera, para que el teclado no lo tape ---- */
 @media (max-width:767px){
-  .calc-ini.ci-editando .ci-resultado{position:sticky;top:calc(var(--rel-arriba,60px) + 6px);padding:12px 14px;
-    background:var(--s2);box-shadow:0 12px 24px -12px rgba(0,0,0,.9)}
-  .calc-ini.ci-editando .ci-titular{font-size:1.125rem}
-  .calc-ini.ci-editando .ci-detalle{font-size:.875rem}
+  /* Sin cambiar el tamaño ni el relleno: así nada de debajo salta al entrar
+     o salir de un campo. */
+  .calc-ini.ci-editando .ci-resultado{position:sticky;top:calc(var(--rel-arriba,60px) + 6px);background:var(--s2);box-shadow:0 12px 24px -12px rgba(0,0,0,.9)}
   .calc-ini .ci-input{scroll-margin-top:calc(var(--rel-arriba,60px) + 140px);scroll-margin-bottom:24px}
+  /* Al pulsar un chip se sube hasta el resultado: que quede bajo la cabecera. */
+  .calc-ini .ci-resultado{scroll-margin-top:calc(var(--rel-arriba,60px) + 8px)}
 }
 @media (max-width:359px){.ci-fila{grid-template-columns:1fr}.ci-afinar-cuerpo{grid-template-columns:1fr}.ci-titular{font-size:1.3rem}}
 
@@ -153,6 +157,8 @@
   .ci-detalle{font-size:1.0625rem}
   .ci-graf{padding:20px 20px 14px}
   .ci-afinar-cuerpo .ci-campo[data-ci-campo="impuestos"]{grid-column:auto}
+  /* Con «Afinar» abierto, el resultado acompaña mientras se escribe. */
+  .calc-ini.ci-editando .ci-resultado{position:sticky;top:calc(var(--rel-arriba,68px) + 12px);align-self:start;box-shadow:0 12px 24px -12px rgba(0,0,0,.9)}
 }
 @media (min-width:1100px){.ci-titular{font-size:2.125rem}}
 
@@ -161,8 +167,9 @@
    ===================================================================== */
 .calc-mando--campo{grid-template-columns:1fr;align-content:start}
 .calc-campo{position:relative;display:flex;align-items:center}
-.calc-campo input{width:100%;min-width:0;height:48px;padding:0 40px 0 14px;border:1px solid rgba(255,255,255,.16);border-radius:var(--r-m);
+.calc-campo input{width:100%;min-width:0;height:48px;padding:0 40px 0 14px;border:1px solid rgba(255,255,255,.36);border-radius:var(--r-m);
   background:var(--s0);color:var(--tx);font:700 1.25rem/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;-webkit-appearance:none;appearance:none}
+.calc-campo input:hover{border-color:rgba(255,255,255,.48)}
 .calc-campo input:focus{outline:none;border-color:var(--senal);box-shadow:0 0 0 3px var(--senal-30)}
 .calc-campo input:focus-visible{outline:2px solid var(--senal);outline-offset:2px;box-shadow:none}
 .calc-campo input[aria-invalid="true"]{border-color:var(--alarma)}
@@ -174,3 +181,9 @@
 .calc-ir[hidden]{display:none}
 .calc-ir:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
 @media (hover:hover){.calc-ir:hover{background:var(--senal-t)}}
+
+/* «Afinar» y «Ver la cuenta»: «+» y «−», como en la app. La flecha de
+   .rel details>summary::after (rwadar-20260820.css) ganaba a la de arriba y
+   salía rota, con doble trazo al abrir. */
+.calc-ini :is(.ci-afinar,.ci-cuenta)>summary::after{content:'+';content:'+' / '';width:auto;height:auto;border:0;transform:none;transition:none}
+.calc-ini :is(.ci-afinar,.ci-cuenta)[open]>summary::after{content:'−';content:'−' / '';transform:none}

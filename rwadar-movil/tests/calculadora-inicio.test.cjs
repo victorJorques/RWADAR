@@ -111,10 +111,12 @@ test('app · por defecto: el ejemplo editable (1.000 €, 4 %, 5 años) y el res
   const resultado = porId(arbol, 'calc-resultado');
   assert.ok(resultado, 'el resultado');
   assert.equal(resultado.props.accessibilityLiveRegion, 'polite');
-  assert.equal(textoDe(resultado), nb('Cobrarías unos 32,40 € al año (2,70 € al mes) Ganancia neta en 5 años: 162 €, un 3,24 % al año, ya con impuestos.'));
-  assert.equal(resultado.props.accessibilityLabel, nb('Cobrarías unos 32,40 € al año (2,70 € al mes). Ganancia neta en 5 años: 162 €, un 3,24 % al año, ya con impuestos.'));
+  assert.equal(textoDe(resultado), nb('Cobrarías unos 32,40 € al año (2,70 € al mes) Ganancia neta en 5 años: 162 €, un 3,24 % al año, ya descontados 38 € de impuestos.'));
+  assert.equal(resultado.props.accessibilityLabel, nb('Cobrarías unos 32,40 € al año (2,70 € al mes). Ganancia neta en 5 años: 162 €, un 3,24 % al año, ya descontados 38 € de impuestos.'));
   assert.match(texto, /Calcula tus números/);
   assert.match(texto, /Ejemplo: cámbialo/);
+  // Qué quiere decir cada modo, en una línea bajo el selector.
+  assert.match(texto, /Lo cobro: te lo pagan cada año\. Lo reinvierto: se suma a lo que tienes y crece\./);
   assert.match(texto, /Simulación con tus números: no es una previsión ni una oferta\. La rentabilidad pasada no garantiza la futura y puedes perder dinero\./);
   // El resultado va antes que los campos.
   const orden = nodos(arbol).filter((n) => n?.props?.testID);
@@ -147,7 +149,7 @@ test('app · con tus números: 25.000 € al 6,5 % durante 10 años, reinvirtien
   porId(arbol, 'calc-modo-reinvertir').props.onPress();
   arbol = pintar();
   const resultado = porId(arbol, 'calc-resultado');
-  assert.equal(textoDe(resultado), nb('Al cabo de 10 años tendrías unos 42.762 € Ganancia neta: 17.762,03 €, como un 5,5 % al año, ya con impuestos.'));
+  assert.equal(textoDe(resultado), nb('Al cabo de 10 años tendrías unos 42.762 € Ganancia neta: 17.762,03 €, como un 5,51 % al año, ya descontados 4.166,40 € de impuestos.'));
   assert.doesNotMatch(textoDe(arbol), /Ejemplo: cámbialo/);
   assert.equal(porId(arbol, 'calc-modo-reinvertir').props.accessibilityState.checked, true);
   // La cuenta: plegada; al abrirla, los pasos del motor y la nota de los impuestos.
@@ -157,6 +159,7 @@ test('app · con tus números: 25.000 € al 6,5 % durante 10 años, reinvirtien
   const texto = textoDe(arbol);
   assert.equal(porId(arbol, 'calc-cuenta').props.accessibilityState.expanded, true);
   assert.match(texto, /No hay nada escondido: es la misma cuenta que harías con un papel\./);
+  assert.match(texto, /«Neto» quiere decir ya descontadas las comisiones y los impuestos\./);
   const r = M.calcular(M.validarEntradas({ inversion: '25.000', rentabilidad: '6,5', anios: '10', modo: 'reinvertir', impuestos: '19', comisionAnual: '0', comisionEntrada: '0' }));
   for (const p of M.pasos(r)) { assert.ok(texto.includes(p.op), p.op); assert.ok(texto.includes(p.res), p.res); }
   assert.ok(texto.includes(M.notaImpuestos('reinvertir')));
@@ -207,17 +210,25 @@ test('app · importes rápidos y «Afinar»: rellenan el campo; comisiones, impu
   assert.deepEqual(entradas(arbol).map((n) => n.props.testID), ['calc-inversion', 'calc-rentabilidad', 'calc-anios', 'calc-comisionAnual',
     'calc-comisionEntrada', 'calc-impuestos', 'calc-valorActivo', 'calc-precioParticipacion']);
   assert.equal(entrada(arbol, 'impuestos').props.value, '19');
-  assert.equal(entrada(arbol, 'valorActivo').props.placeholder, '300.000');
-  assert.ok(textoDe(arbol).includes('En España, la ganancia del ahorro tributa del 19 % al 30 % según cuánto ganes.'));
+  // El ejemplo vacío no parece una cifra escrita: «Ej.: 300.000», en letra normal y más pequeña.
+  assert.equal(entrada(arbol, 'valorActivo').props.placeholder, 'Ej.: 300.000');
+  assert.equal(entrada(arbol, 'precioParticipacion').props.placeholder, 'Ej.: 100');
+  const estilo = (n) => Object.assign({}, ...[].concat(n.props.style).filter(Boolean));
+  assert.equal(estilo(entrada(arbol, 'valorActivo')).fontStyle, 'italic');
+  assert.equal(estilo(entrada(arbol, 'impuestos')).fontStyle, undefined, 'con una cifra escrita, la letra de siempre');
+  assert.ok(textoDe(arbol).includes('En España (salvo País Vasco y Navarra), la ganancia del ahorro paga un 19 % hasta 6.000 € al año y más por encima, hasta el 30 %.'));
+  // Las mismas palabras que el explicador.
+  assert.ok(textoDe(arbol).includes('Valor del activo') && textoDe(arbol).includes('Precio de cada trozo'));
+  assert.doesNotMatch(textoDe(arbol), /participación|activo entero/);
   entrada(arbol, 'valorActivo').props.onChangeText('300.000');
   entrada(arbol, 'precioParticipacion').props.onChangeText('100');
   arbol = pintar();
   porId(arbol, 'calc-cuenta').props.onPress();
   arbol = pintar();
   const texto = textoDe(arbol);
-  assert.ok(texto.includes(nb('Participaciones de 100 € que compras')) && texto.includes(nb('50 (5.000 €)')));
+  assert.ok(texto.includes(nb('Trozos de 100 € que compras')) && texto.includes(nb('50 (5.000 €)')));
   assert.ok(texto.includes(nb('Parte del activo de 300.000 € que es tuya (50 de 3.000)')) && texto.includes(nb('1,67 %')));
-  assert.match(porId(arbol, 'calc-afinar').props.accessibilityLabel, /activo 300\.000\s€ · participación 100\s€/);
+  assert.match(porId(arbol, 'calc-afinar').props.accessibilityLabel, /activo 300\.000\s€ · trozo 100\s€/);
 });
 
 test('app · «Usa la rentabilidad de una oferta»: las del catálogo, con su %, su fecha, «en dólares» y su ficha; el chip rellena la rentabilidad', () => {
@@ -238,6 +249,8 @@ test('app · «Usa la rentabilidad de una oferta»: las del catálogo, con su %,
   arbol = pintar();
   assert.equal(entrada(arbol, 'rentabilidad').props.value, M.valorCampo(of.rentabilidad, 'es', 'rentabilidad'));
   assert.equal(porId(arbol, `calc-oferta-${of.slug}`).props.accessibilityState.selected, true);
+  // Los chips quedan por debajo del resultado: al pulsar uno, Inicio sube hasta él.
+  assert.equal(llamadas.desplazar.length, 1);
   assert.ok(textoDe(arbol).includes(M.notaOferta(of)));
   // Si se cambia la cifra a mano, el chip deja de estar marcado.
   entrada(arbol, 'rentabilidad').props.onChangeText('5');
@@ -247,6 +260,9 @@ test('app · «Usa la rentabilidad de una oferta»: las del catálogo, con su %,
   porId(arbol, `calc-ficha-${of.slug}`).props.onPress();
   assert.equal(llamadas.abrir[0].slug, of.slug);
   assert.equal(porId(arbol, `calc-ficha-${of.slug}`).props.accessibilityRole, 'link');
+  assert.equal(porId(arbol, `calc-ficha-${of.slug}`).props.accessibilityLabel, `Ficha de ${of.nombre}`);
+  // Sin ofertas con cifra, la nota dice por qué solo salen esas.
+  assert.ok(textoDe(montar().pintar()).includes('Solo salen las ofertas que publican una rentabilidad con fecha. Al pulsar una, se rellena la rentabilidad; puedes cambiarla.'));
   // Sin catálogo vigente (o sin ofertas con cifra), el bloque no sale y nada se rompe.
   for (const props of [{ catalogoVigente: false }, { ofertas: [] }, { ofertas: null }]) {
     const otro = montar(props);
@@ -287,7 +303,7 @@ test('app · el teclado no tapa el resultado: arriba, Inicio sube hasta él; en 
   arbol = pintar();
   entrada(arbol, 'impuestos').props.onFocus();
   assert.deepEqual(llamadas.flotante.at(-1), { campo: 'impuestos', signo: 'gana', titular: nb('Cobrarías unos 32,40 € al año (2,70 € al mes)'),
-    detalle: nb('Ganancia neta en 5 años: 162 €, un 3,24 % al año, ya con impuestos.') });
+    detalle: nb('Ganancia neta en 5 años: 162 €, un 3,24 % al año, ya descontados 38 € de impuestos.') });
   assert.equal(llamadas.desplazar.length, 1, 'en «Afinar» no se sube: el campo se queda junto al teclado');
   entrada(arbol, 'impuestos').props.onBlur();
   assert.equal(llamadas.flotante.at(-1), null);
@@ -301,6 +317,13 @@ test('app · el teclado no tapa el resultado: arriba, Inicio sube hasta él; en 
   assert.equal(flot.props.importantForAccessibility, 'no-hide-descendants');
   assert.equal(flot.props.style.position, 'absolute');
   assert.match(textoDe(flot), /Cobrarías unos 30 € al año/);
+  // El detalle, hasta en tres líneas (con una se cortaba) y con el color de su signo: «ni ganas ni pierdes» no va en verde.
+  const color = (estado) => {
+    const det = nodos(p2(ResultadoFlotante, { estado: { titular: 'T', detalle: 'D', signo: estado } })).filter((n) => n?.props?.numberOfLines)[1];
+    assert.equal(det.props.numberOfLines, 3);
+    return Object.assign({}, ...[].concat(det.props.style).filter(Boolean)).color;
+  };
+  assert.deepEqual(['gana', 'pierde', 'igual'].map(color), ['#senalCl', '#alarma', '#tx2']);
 });
 
 test('app · en inglés: los campos con su formato («1,000») y el resultado en su idioma', async () => {
@@ -310,13 +333,22 @@ test('app · en inglés: los campos con su formato («1,000») y el resultado en
     pintar();
     const arbol = pintar();
     assert.deepEqual(entradas(arbol).map((n) => n.props.value), ['1,000', '4', '5']);
-    assert.equal(textoDe(porId(arbol, 'calc-resultado')), 'You would receive about €32.40 a year (€2.70 a month) Net gain over 5 years: €162, 3.24% a year, after tax.');
+    assert.equal(textoDe(porId(arbol, 'calc-resultado')), 'You would receive about €32.40 a year (€2.70 a month) Net gain over 5 years: €162, 3.24% a year, after €38 in tax.');
     const texto = textoDe(arbol);
     for (const es of ['Calcula tus números', 'Tus números', 'Lo que inviertes', 'Lo cobro', 'Usa la rentabilidad de una oferta', 'Afinar: comisiones e impuestos', 'Ver la cuenta paso a paso']) {
       assert.ok(texto.includes(en[es]), `${es} → ${en[es]}`);
       assert.ok(!texto.includes(es) || en[es].includes(es), `sin traducir: ${es}`);
     }
     assert.equal(entrada(arbol, 'inversion').props.accessibilityLabel, 'What you invest, in euros');
+    // En inglés, el punto es decimal: «1.5» son 1,5 €, y el enlace dice lo mismo que se ve («Details»).
+    entrada(arbol, 'inversion').props.onChangeText('1.500');
+    let otro = pintar();
+    assert.match(textoDe(porId(otro, 'calc-resultado')), /^You would receive about €0\.05 a year/);
+    const of = M.ofertasConRentabilidad(EMI, { ahora: AHORA() })[0];
+    assert.equal(porId(otro, `calc-ficha-${of.slug}`).props.accessibilityLabel, `Details for ${of.nombre}`);
+    porId(otro, 'calc-afinar').props.onPress();
+    otro = pintar();
+    assert.equal(entrada(otro, 'valorActivo').props.placeholder, 'e.g. 300,000');
   } finally { await idioma.cambiarIdioma('es'); }
 });
 

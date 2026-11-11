@@ -2024,15 +2024,20 @@ prueba('HTML conserva sus recursos con huella sin depender de un precache del wo
     /id="ciInversion"[^>]*value="1\.000"/.test(bloque) && /id="ciRentabilidad"[^>]*value="4"/.test(bloque) && /id="ciAnios"[^>]*value="5"/.test(bloque) &&
     /id="ciImpuestos"[^>]*value="19"/.test(bloque) && bloque.includes('<span class="ci-ejemplo" id="ciEjemplo">Ejemplo: cámbialo</span>') &&
     calc.PREDETERMINADOS.inversion === 1000 && calc.PREDETERMINADOS.rentabilidad === 4 && calc.PREDETERMINADOS.anios === 5 && calc.PREDETERMINADOS.impuestos === 19);
-  prueba('el resultado va arriba y en role="status"; «Afinar» y «Ver la cuenta paso a paso» son desplegables; la nota legal se ve',
-    bloque.indexOf('id="ciEstado" role="status" aria-live="polite" aria-atomic="true"') > 0 && bloque.indexOf('id="ciEstado"') < bloque.indexOf('class="ci-datos"') &&
+  prueba('el resultado va arriba y se anuncia en role="status" (#ciAnuncio, no a cada tecla); «Afinar» y «Ver la cuenta paso a paso» son desplegables; la nota legal se ve',
+    bloque.includes('<div class="ci-estado" id="ciEstado">') && bloque.indexOf('id="ciEstado"') < bloque.indexOf('class="ci-datos"') &&
+    bloque.includes('<p class="solo-lector" id="ciAnuncio" role="status" aria-live="polite" aria-atomic="true"></p>') &&
+    bloque.indexOf('id="ciAnuncio"') < bloque.indexOf('class="ci-datos"') && /relojAnuncio = setTimeout\([\s\S]*?\}, 700\);/.test(lee('assets/calculadora-20261111.js')) &&
     /<details class="ci-afinar" id="ciAfinar">\s*<summary><span>Afinar: comisiones e impuestos<\/span>/.test(bloque) &&
     ['comisionAnual', 'comisionEntrada', 'impuestos', 'valorActivo', 'precioParticipacion'].every(c => bloque.indexOf(`data-ci-campo="${c}"`) > bloque.indexOf('id="ciAfinar"')) &&
     /<details class="ci-cuenta" id="ciCuenta">\s*<summary>Ver la cuenta paso a paso<\/summary>/.test(bloque) &&
-    /<fieldset class="ci-modo">\s*<legend/.test(bloque) && /name="ciModo"[^>]*value="cobrar" checked/.test(bloque) && /name="ciModo"[^>]*value="reinvertir"/.test(bloque) &&
+    /<fieldset class="ci-modo" aria-describedby="ciModoAyuda">\s*<legend/.test(bloque) &&
+    bloque.includes('<p class="ci-ayuda" id="ciModoAyuda">Lo cobro: te lo pagan cada año. Lo reinvierto: se suma a lo que tienes y crece.</p>') && /name="ciModo"[^>]*value="cobrar" checked/.test(bloque) && /name="ciModo"[^>]*value="reinvertir"/.test(bloque) &&
     bloque.includes('<div class="solo-lector"><table id="ciTabla"></table></div>') &&
     html.includes('<p class="ci-legal">Simulación con tus números: no es una previsión ni una oferta. La rentabilidad pasada no garantiza la futura y puedes perder dinero.</p>') &&
-    bloque.includes('En España, la ganancia del ahorro tributa del 19 % al 30 % según cuánto ganes.'));
+    bloque.includes('En España (salvo País Vasco y Navarra), la ganancia del ahorro paga un 19 % hasta 6.000 € al año y más por encima, hasta el 30 %.') &&
+    // Los ejemplos vacíos no parecen cifras escritas.
+    /id="ciValorActivo"[^>]*value="" placeholder="Ej\.: 300\.000"/.test(bloque) && /id="ciPrecioParticipacion"[^>]*value="" placeholder="Ej\.: 100"/.test(bloque));
   // Las ofertas: nunca escritas a mano; las pinta el script con el catálogo que la web ya carga.
   const datosCat = arrayDe(jsCatalogo, 'EMI');
   const conRent = datosCat.filter(o => o.rentabilidad && o.rentabilidad.mostrada);

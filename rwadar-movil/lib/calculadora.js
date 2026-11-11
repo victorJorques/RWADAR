@@ -21,8 +21,9 @@
      negativo, no se cobra nada y la pérdida baja el capital.
    - «Lo reinvierto» (interés compuesto): K pasa a K·(1 + r − ca) y los
      impuestos se pagan al final, al vender, sobre la ganancia acumulada
-     (lo que vale al final menos G): en España un fondo o un token suele
-     tributar al venderlo, no cada año.
+     (lo que vale al final menos G): así tributa un fondo que no reparte.
+     Un producto que paga rentas o intereses tributa cada año aunque los
+     reinviertas (tendrías algo menos): la nota lo dice.
    - Los impuestos se aplican a la ganancia, nunca al capital. Sin
      ganancia no hay impuesto (no se cuentan pérdidas que pudieras
      compensar con otras ganancias).
@@ -35,8 +36,10 @@
    igual (arts. 66 y 76 de la Ley del IRPF, cambiados por la disposición
    final 7.ª de la Ley 7/2024). Fuente primaria, la AEAT:
    https://sede.agenciatributaria.gob.es/Sede/irpf/novedades-impuesto/novedades-normativa-2024.html
-   (leída el 11/11/2026). La calculadora aplica un solo tipo, el que
-   pongas; no calcula el IRPF de nadie, y así lo dice su nota.
+   (leída el 11/11/2026). País Vasco y Navarra tienen su propia escala.
+   La calculadora aplica un solo tipo, el que pongas; no calcula el IRPF de
+   nadie, y así lo dice su nota (con 19 %, una ganancia de más de 6.000 €
+   en un año pagaría algo más).
    --------------------------------------------------------------------- */
 
 const LIMITES = Object.freeze({
@@ -60,8 +63,8 @@ const IMPORTES_RAPIDOS = Object.freeze([500, 1000, 5000, 10000]);
 /* El explicador «¿Qué es tokenizar?»: un local de 300.000 € en trozos de 100 €. */
 const EJEMPLO_EXPLICADOR = Object.freeze({ valorActivo: 300000, precioParticipacion: 100 });
 const IMPUESTOS_NOTA = Object.freeze({
-  es: 'En España, la ganancia del ahorro tributa del 19 % al 30 % según cuánto ganes.',
-  en: 'In Spain, savings income is taxed at 19% to 30% depending on how much you earn.',
+  es: 'En España (salvo País Vasco y Navarra), la ganancia del ahorro paga un 19 % hasta 6.000 € al año y más por encima, hasta el 30 %.',
+  en: 'In Spain (except the Basque Country and Navarre), savings income is taxed at 19% up to €6,000 a year and more above that, up to 30%.',
 });
 const MAX_OFERTAS = 8;
 
@@ -74,8 +77,10 @@ const finito = (v) => typeof v === 'number' && Number.isFinite(v);
    Una sola marca entre una a tres cifras (que no sean solo ceros) y
    exactamente tres cifras es de miles en los importes («10.000», «1,000»);
    «1234.567» o «0,500» son decimales. En los porcentajes y los años, una
-   sola marca es siempre decimal («2.840» no es un tipo). */
-function leerNumero(texto, { miles = true } = {}) {
+   sola marca es siempre decimal («2.840» no es un tipo). Con el idioma de
+   la página, su marca decimal lo es siempre: en español la coma («1,500»
+   es 1,5 €, no 1.500 €) y en inglés el punto. */
+function leerNumero(texto, { miles = true, idioma = null } = {}) {
   if (typeof texto === 'number') return finito(texto) ? { ok: true, valor: texto === 0 ? 0 : texto } : { ok: false, error: 'formato' };
   if (typeof texto !== 'string') return { ok: false, error: 'vacio' };
   let s = texto.replace(/[\s   ]/g, '').replace(/€|eur(?:os?)?|%|años?|years?/gi, '');
@@ -103,7 +108,8 @@ function leerNumero(texto, { miles = true } = {}) {
     normal = s.split(mil).join('');
   } else if (puntos + comas === 1) {
     const [entera, decimales] = s.split(/[.,]/);
-    normal = miles && decimales.length === 3 && /^\d{1,3}$/.test(entera) && !/^0+$/.test(entera) ? entera + decimales : entera + '.' + decimales;
+    const decimalDelIdioma = (idioma === 'es' && comas === 1) || (idioma === 'en' && puntos === 1);
+    normal = miles && !decimalDelIdioma && decimales.length === 3 && /^\d{1,3}$/.test(entera) && !/^0+$/.test(entera) ? entera + decimales : entera + '.' + decimales;
   } else normal = s;
   const valor = signo * Number(normal);
   return finito(valor) ? { ok: true, valor: valor === 0 ? 0 : valor } : { ok: false, error: 'formato' };
@@ -181,15 +187,16 @@ function mensajeError(error, idioma = 'es') {
     case 'activo-menor': return tx(idioma, 'El activo no puede valer menos de lo que inviertes: revisa los dos importes.',
       'The asset cannot be worth less than you invest: check both amounts.');
     case 'sin-participaciones': return tx(idioma,
-      `Con ${euros(error.disponible, idioma)} no llegas a una participación de ${euros(error.precio, idioma)}: sube lo que inviertes o baja el precio.`,
+      `Con ${euros(error.disponible, idioma)} no llegas a un trozo de ${euros(error.precio, idioma)}: sube lo que inviertes o baja el precio.`,
       `${euros(error.disponible, idioma)} does not buy one ${euros(error.precio, idioma)} unit: invest more or lower the price.`);
     default: return tx(idioma, 'Revisa este dato.', 'Check this figure.');
   }
 }
 /* entradas: textos (o números) por campo y el modo. Los opcionales vacíos
    valen 0 (comisiones), 0 (impuestos vacíos = sin impuestos) o null (activo
-   y precio). Devuelve { ok, valores, errores: { campo: { codigo, campo } } }. */
-function validarEntradas(entradas = {}) {
+   y precio). Con { idioma }, los textos se leen con su marca decimal (ver
+   leerNumero). Devuelve { ok, valores, errores: { campo: { codigo, campo } } }. */
+function validarEntradas(entradas = {}, { idioma = null } = {}) {
   const valores = {}, errores = {};
   for (const campo of CAMPOS) {
     const l = LIMITES[campo], bruto = entradas[campo];
@@ -199,7 +206,7 @@ function validarEntradas(entradas = {}) {
       if (campo === 'comisionAnual' || campo === 'comisionEntrada' || campo === 'impuestos') { valores[campo] = 0; continue; }
       errores[campo] = { codigo: 'vacio', campo }; continue;
     }
-    const leido = leerNumero(bruto, { miles: l.unidad === 'euros' });
+    const leido = leerNumero(bruto, { miles: l.unidad === 'euros', idioma });
     if (!leido.ok) { errores[campo] = { codigo: leido.error === 'vacio' ? 'vacio' : 'formato', campo }; continue; }
     if (l.entero && !Number.isInteger(leido.valor)) { errores[campo] = { codigo: 'entero', campo }; continue; }
     if (leido.valor < l.min || leido.valor > l.max) { errores[campo] = { codigo: 'rango', campo }; continue; }
@@ -277,13 +284,15 @@ function calcular(entrada) {
 }
 
 /* ---- Textos (los mismos en la web y en la app) ---- */
-/* «ya con comisiones e impuestos», solo con lo que de verdad se ha restado. */
-function conQue(x, idioma) {
-  const com = x.comisionAnual > 0 || x.comisionEntrada > 0, imp = x.impuestos > 0;
-  if (com && imp) return tx(idioma, 'ya con comisiones e impuestos', 'after fees and tax');
-  if (com) return tx(idioma, 'ya con comisiones, sin impuestos', 'after fees, before tax');
-  if (imp) return tx(idioma, 'ya con impuestos', 'after tax');
-  return tx(idioma, 'sin comisiones ni impuestos', 'with no fees or tax');
+/* «ya descontados 38 € de impuestos», solo con lo que de verdad se ha
+   restado, y con la cifra: que se vea cuánto se lleva Hacienda. */
+function conQue(x, idioma, impuestos = 0) {
+  const com = x.comisionAnual > 0 || x.comisionEntrada > 0, imp = x.impuestos > 0 && impuestos > 0.005;
+  const cuanto = euros(impuestos, idioma);
+  if (com && imp) return tx(idioma, `ya con comisiones y descontados ${cuanto} de impuestos`, `after fees and ${cuanto} in tax`);
+  if (com) return tx(idioma, x.impuestos > 0 ? 'ya con comisiones' : 'ya con comisiones, sin impuestos', x.impuestos > 0 ? 'after fees' : 'after fees, before tax');
+  if (imp) return tx(idioma, `ya descontados ${cuanto} de impuestos`, `after ${cuanto} in tax`);
+  return tx(idioma, x.impuestos > 0 ? 'sin comisiones' : 'sin comisiones ni impuestos', x.impuestos > 0 ? 'with no fees' : 'with no fees or tax');
 }
 function resumen(res, idioma = 'es') {
   if (!res) return { titular: tx(idioma, 'Revisa los datos marcados para ver el resultado.', 'Check the highlighted figures to see the result.'), detalle: '', signo: 'error' };
@@ -291,30 +300,38 @@ function resumen(res, idioma = 'es') {
   // En el titular («unos …»), de 100 € para arriba, sin céntimos.
   const aprox = (v) => eurosAprox(v, idioma);
   const signo = res.gananciaNeta > 0.005 ? 'gana' : res.gananciaNeta < -0.005 ? 'pierde' : 'igual';
-  const media = porcentaje(res.rentNetaAnual, idioma, res.modo === 'cobrar' ? 2 : 1);
+  // Los mismos decimales en los dos modos: «3,24 %» y «3,30 %».
+  const media = porcentaje(res.rentNetaAnual, idioma, 2);
+  const con = conQue(res.valores, idioma, res.impuestos);
+  // Si con trozos enteros sobra dinero, la ganancia es sobre lo que pagas de verdad.
+  const sobra = res.sobra > 0.005 ? tx(idioma, ` (sobre los ${e(res.pagado)} que pagas; te sobran ${e(res.sobra)})`,
+    ` (on the ${e(res.pagado)} you pay; ${e(res.sobra)} is left over)`) : '';
+  const pierdes = tx(idioma, `Pierdes ${e(-res.gananciaNeta)} de lo que pusiste${sobra}.`, `You lose ${e(-res.gananciaNeta)} of what you put in${sobra}.`);
+  const igual = tx(idioma, 'Lo mismo que pusiste: ni ganas ni pierdes.', 'The same as you put in: no gain, no loss.');
   if (res.modo === 'cobrar' && res.primerAnio.neto > 0.005) {
+    // Menos de medio céntimo al mes no se escribe «0 €».
+    const mes = res.primerAnio.mes < 0.005 ? tx(idioma, 'menos de 1 céntimo al mes', 'less than 1 cent a month')
+      : tx(idioma, `${aprox(res.primerAnio.mes)} al mes`, `${aprox(res.primerAnio.mes)} a month`);
     return { signo,
-      titular: tx(idioma, `Cobrarías unos ${aprox(res.primerAnio.neto)} al año (${aprox(res.primerAnio.mes)} al mes)`,
-        `You would receive about ${aprox(res.primerAnio.neto)} a year (${aprox(res.primerAnio.mes)} a month)`),
+      titular: tx(idioma, `Cobrarías unos ${aprox(res.primerAnio.neto)} al año (${mes})`,
+        `You would receive about ${aprox(res.primerAnio.neto)} a year (${mes})`),
       detalle: signo === 'gana'
-        ? tx(idioma, `Ganancia neta en ${N}: ${e(res.gananciaNeta)}, un ${media} al año, ${conQue(res.valores, idioma)}.`,
-          `Net gain over ${N}: ${e(res.gananciaNeta)}, ${media} a year, ${conQue(res.valores, idioma)}.`)
-        : tx(idioma, `Al cabo de ${N}, con lo cobrado, tendrías ${e(res.finalNeto)}: ${signo === 'igual' ? 'lo mismo que pusiste' : e(-res.gananciaNeta) + ' menos de lo que pusiste'}.`,
-          `After ${N}, including what you received, you would have ${e(res.finalNeto)}: ${signo === 'igual' ? 'the same as you put in' : e(-res.gananciaNeta) + ' less than you put in'}.`) };
+        ? tx(idioma, `Ganancia neta en ${N}: ${e(res.gananciaNeta)}${sobra}, un ${media} al año, ${con}.`,
+          `Net gain over ${N}: ${e(res.gananciaNeta)}${sobra}, ${media} a year, ${con}.`)
+        : tx(idioma, `Al cabo de ${N}, con lo cobrado, tendrías ${e(res.finalNeto)}: ${signo === 'igual' ? 'lo mismo que pusiste' : e(-res.gananciaNeta) + ' menos de lo que pusiste'}${sobra}.`,
+          `After ${N}, including what you received, you would have ${e(res.finalNeto)}: ${signo === 'igual' ? 'the same as you put in' : e(-res.gananciaNeta) + ' less than you put in'}${sobra}.`) };
   }
   if (res.modo === 'cobrar') {
     return { signo,
-      titular: tx(idioma, `No cobrarías nada: al cabo de ${N} tendrías ${aprox(res.finalNeto)}`, `You would receive nothing: after ${N} you would have ${aprox(res.finalNeto)}`),
-      detalle: signo === 'pierde' ? tx(idioma, `Pierdes ${e(-res.gananciaNeta)} de lo que pusiste.`, `You lose ${e(-res.gananciaNeta)} of what you put in.`)
-        : tx(idioma, 'Lo mismo que pusiste: ni ganas ni pierdes.', 'The same as you put in: no gain, no loss.') };
+      titular: tx(idioma, `No cobrarías nada: al cabo de ${N} tendrías unos ${aprox(res.finalNeto)}`, `You would receive nothing: after ${N} you would have about ${aprox(res.finalNeto)}`),
+      detalle: signo === 'pierde' ? pierdes : igual };
   }
   return { signo,
     titular: tx(idioma, `Al cabo de ${N} tendrías unos ${aprox(res.finalNeto)}`, `After ${N} you would have about ${aprox(res.finalNeto)}`),
     detalle: signo === 'gana'
-      ? tx(idioma, `Ganancia neta: ${e(res.gananciaNeta)}, como un ${media} al año, ${conQue(res.valores, idioma)}.`,
-        `Net gain: ${e(res.gananciaNeta)}, like ${media} a year, ${conQue(res.valores, idioma)}.`)
-      : signo === 'igual' ? tx(idioma, 'Lo mismo que pusiste: ni ganas ni pierdes.', 'The same as you put in: no gain, no loss.')
-        : tx(idioma, `Pierdes ${e(-res.gananciaNeta)} de lo que pusiste.`, `You lose ${e(-res.gananciaNeta)} of what you put in.`) };
+      ? tx(idioma, `Ganancia neta: ${e(res.gananciaNeta)}${sobra}, como un ${media} al año, ${con}.`,
+        `Net gain: ${e(res.gananciaNeta)}${sobra}, like ${media} a year, ${con}.`)
+      : signo === 'igual' ? igual : pierdes };
 }
 
 /* La cuenta paso a paso: [{ op, res }]. Nada escondido. */
@@ -327,7 +344,7 @@ function pasos(res, idioma = 'es') {
     add(tx(idioma, `Comisión de entrada del ${p(x.comisionEntrada)}`, `${p(x.comisionEntrada)} entry fee`), '−' + e(res.comisionEntrada).replace('−', ''));
   }
   if (res.participaciones != null) {
-    add(tx(idioma, `Participaciones de ${e(res.precioParticipacion)} que compras`, `${e(res.precioParticipacion)} units you buy`),
+    add(tx(idioma, `Trozos de ${e(res.precioParticipacion)} que compras`, `${e(res.precioParticipacion)} units you buy`),
       tx(idioma, `${numero(res.participaciones, idioma)} (${e(res.capital)})`, `${numero(res.participaciones, idioma)} (${e(res.capital)})`));
     if (res.sobra > 0.005) add(tx(idioma, 'Te sobra (no se invierte)', 'Left over (not invested)'), e(res.sobra));
   } else if (x.comisionEntrada > 0) add(tx(idioma, 'Se invierte', 'Invested'), e(res.capital));
@@ -348,6 +365,9 @@ function pasos(res, idioma = 'es') {
       add(tx(idioma, `Impuestos del ${p(x.impuestos, 0)} sobre lo que cobras`, `${p(x.impuestos, 0)} tax on what you receive`), '−' + e(res.primerAnio.impuestos));
     }
     add(tx(idioma, 'Cobras el primer año', 'You receive in the first year'), e(res.primerAnio.neto));
+    if (x.impuestos > 0 && res.impuestos > 0.005) {
+      add(tx(idioma, `Impuestos en ${anios(res.anios, idioma)}`, `Tax over ${anios(res.anios, idioma)}`), '−' + e(res.impuestos));
+    }
     add(x.impuestos > 0 ? tx(idioma, `Cobrado en ${anios(res.anios, idioma)}, ya con impuestos`, `Received over ${anios(res.anios, idioma)}, after tax`)
       : tx(idioma, `Cobrado en ${anios(res.anios, idioma)}`, `Received over ${anios(res.anios, idioma)}`), e(res.cobradoNeto));
     add(tx(idioma, 'Tu capital al final', 'Your capital at the end'), e(res.tabla[res.tabla.length - 1].capitalFin));
@@ -360,9 +380,9 @@ function pasos(res, idioma = 'es') {
   }
   add(tx(idioma, 'Lo que tendrías al final, neto', 'What you would have at the end, net'), e(res.finalNeto));
   add(tx(idioma, `Ganancia neta (sobre los ${e(res.pagado)} que pagas)`, `Net gain (on the ${e(res.pagado)} you pay)`), e(res.gananciaNeta));
-  add(res.modo === 'cobrar' ? tx(idioma, 'Rentabilidad neta media al año', 'Average net return per year')
-    : tx(idioma, 'Rentabilidad neta equivalente al año (compuesta)', 'Equivalent net return per year (compound)'),
-  p(res.rentNetaAnual, res.modo === 'cobrar' ? 2 : 1));
+  add(res.modo === 'cobrar' ? tx(idioma, 'Rentabilidad neta al año, de media', 'Net return per year, on average')
+    : tx(idioma, 'Rentabilidad neta al año, de media (contando lo reinvertido)', 'Net return per year, on average (counting what you reinvest)'),
+  p(res.rentNetaAnual, 2));
   return lista;
 }
 /* Una línea que explica cómo se cuentan los impuestos en el modo elegido, y
@@ -370,11 +390,11 @@ function pasos(res, idioma = 'es') {
    persona (por eso no se afina más). */
 function notaImpuestos(modo, idioma = 'es') {
   const regla = modo === 'reinvertir'
-    ? tx(idioma, 'Si reinviertes, pagas impuestos al final, al vender, sobre lo ganado: en España un fondo o un token suele tributar así.',
-      'If you reinvest, you pay tax at the end, when you sell, on the gain: in Spain a fund or a token is usually taxed this way.')
+    ? tx(idioma, 'Si reinviertes, la cuenta paga los impuestos al final, al vender, sobre lo ganado: así tributa un fondo que no reparte. Si el producto te paga rentas o intereses, tributan cada año aunque los reinviertas, y tendrías algo menos.',
+      'If you reinvest, tax is paid at the end, when you sell, on the gain: that is how a fund that does not pay out is taxed. If the product pays you rent or interest, it is taxed every year even if you reinvest it, so you would end up with somewhat less.')
     : tx(idioma, 'Si cobras, pagas impuestos cada año sobre lo que cobras.', 'If you take the payouts, you pay tax every year on what you receive.');
-  return regla + ' ' + tx(idioma, 'Es una aproximación con un solo tipo: cada producto y cada persona pueden tributar distinto.',
-    'It is an approximation with a single rate: each product and each person may be taxed differently.');
+  return regla + ' ' + tx(idioma, 'Es una aproximación con un solo tipo: si en un año ganas más de 6.000 €, pagarías algo más, y cada producto y cada persona pueden tributar distinto.',
+    'It is an approximation with a single rate: if you gain more than €6,000 in a year you would pay somewhat more, and each product and each person may be taxed differently.');
 }
 
 /* «sin comisiones · impuestos 19 %», junto a «Afinar»: lo que hay dentro sin abrirlo. */
@@ -386,7 +406,7 @@ function resumenAfinar(v, idioma = 'es') {
   if (!(v.comisionAnual > 0) && !(v.comisionEntrada > 0)) partes.push(tx(idioma, 'sin comisiones', 'no fees'));
   partes.push(v.impuestos > 0 ? tx(idioma, 'impuestos ', 'tax ') + p(v.impuestos) : tx(idioma, 'sin impuestos', 'no tax'));
   if (v.valorActivo != null) partes.push(tx(idioma, 'activo ', 'asset ') + euros(v.valorActivo, idioma));
-  if (v.precioParticipacion != null) partes.push(tx(idioma, 'participación ', 'unit ') + euros(v.precioParticipacion, idioma));
+  if (v.precioParticipacion != null) partes.push(tx(idioma, 'trozo ', 'unit ') + euros(v.precioParticipacion, idioma));
   return partes.join(' · ');
 }
 
@@ -499,8 +519,8 @@ function etiquetaOferta(of, idioma = 'es') {
 function notaOferta(of, idioma = 'es') {
   if (!of) return '';
   const base = tx(idioma,
-    `Rentabilidad que publicó ${of.plataforma || 'la oferta'} con fecha ${fechaCorta(of.fecha, idioma)}. Puede cambiar y no está garantizada; mira en su ficha si ya descuenta comisiones.`,
-    `Return published by ${of.plataforma || 'the offer'} dated ${fechaCorta(of.fecha, idioma)}. It can change and is not guaranteed; check its page to see whether fees are already deducted.`);
+    `Rentabilidad que publicó ${of.plataforma || 'la oferta'} con fecha ${fechaCorta(of.fecha, idioma)}. Puede cambiar y no está garantizada; mira en su ficha si ya descuenta comisiones y si te paga lo que gana o lo acumula (si lo acumula, elige «Lo reinvierto»).`,
+    `Return published by ${of.plataforma || 'the offer'} dated ${fechaCorta(of.fecha, idioma)}. It can change and is not guaranteed; check its page to see whether fees are already deducted and whether it pays out what it earns or accumulates it (if it accumulates, choose “I reinvest it”).`);
   return of.enDolares ? base + ' ' + tx(idioma, 'Es en dólares: en euros, el resultado cambia con el tipo de cambio.',
     'It is in US dollars: in euros, the result changes with the exchange rate.') : base;
 }
