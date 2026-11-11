@@ -6,6 +6,22 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 11 de noviembre de 2026 (3) · Claude · «Calcula tus números»: correcciones de la revisión, sin publicar
+
+Tres revisores independientes (cuentas, un inversor sin formación financiera y diseño/accesibilidad) revisaron la calculadora. Un commit **local** más en la rama `calculadora`: sin push, sin publicar, sin flujos, sin Supabase y sin claves.
+
+**Obligatorias, todas hechas**:
+- Impuestos sin prometer de más: «Lo reinvierto» ya dice que así tributa un fondo que no reparte y que un producto que paga rentas tributa cada año aunque las reinviertas (tendrías algo menos); la nota dice que con más de 6.000 € de ganancia en un año pagarías algo más que el 19 %, y la ayuda del campo, «En España (salvo País Vasco y Navarra), la ganancia del ahorro paga un 19 % hasta 6.000 € al año y más por encima, hasta el 30 %».
+- Explicador: con un error en el valor del activo o el precio, el título pasa a «Revisa el valor del activo o el precio de cada trozo» y los totales y la cuenta enseñan «—» (antes seguían las cifras anteriores).
+- Los ejemplos vacíos, «Ej.: 300.000» y «Ej.: 100», en cursiva y más pequeños (web y app).
+- Web: «+»/«−» en «Afinar» y «Ver la cuenta» (la flecha del explicador salía rota); en el móvil el resultado ya no cambia de tamaño al entrar en un campo (todo saltaba 31 px y por eso la prueba de Chromium fallaba a veces); «Details for …» en inglés; el lector de pantalla oye el resultado en `#ciAnuncio` una vez, 700 ms después de dejar de escribir (antes, una vez por tecla).
+
+**Recomendadas hechas**: el detalle dice cuánto se paga («ya descontados 38 € de impuestos») y la cuenta, con «Lo cobro», «Impuestos en N años»; lo que sobra con trozos enteros sale en el detalle; «menos de 1 céntimo al mes»; «tendrías unos …» también con pérdidas; los mismos decimales en los dos modos («3,24 %» y «3,29 %»); en español la coma es siempre decimal («1,500» = 1,5 €) y en inglés el punto; una línea que explica «Lo cobro» y «Lo reinvierto»; la nota de las ofertas dice por qué solo salen esas y la de cada oferta pide mirar si reparte o acumula; las mismas palabras que el explicador («Valor del activo», «trozo»); «neto» explicado en la cuenta y rentabilidad «al año, de media»; al pulsar un chip en el móvil se sube hasta el resultado (web y app); en tableta, el resultado acompaña mientras se escribe en «Afinar»; bordes de los campos a 3,3:1; «Ejemplo: cámbialo» en gris, no en ámbar; el «✓» no se lee en voz alta; barra de «Lo que pones» más tenue; en la app, el resultado flotante con hasta tres líneas (con dos aún se cortaba si hay comisiones e impuestos) y el color de su signo; en la web, «Calcula con tus números →» del explicador lleva a Inicio sus números (lo que pones, el %, el activo y el trozo), no el ejemplo (en la app el enlace sigue abriendo la calculadora con el ejemplo: pasar los números cambiaría el mensaje entre el WebView y la app).
+
+**No hechas, y por qué**: el enlace «Calcula tus números» en el pie o el menú del móvil (toca la navegación de todo el sitio, fuera del bloque); los chips en una fila con desplazamiento lateral (con 3 ofertas ahorra poco y esconde opciones); «Ficha» se queda (es la palabra de todo el sitio para la página de una oferta, y la nota ya dice «mira en su ficha»); escala por tramos de la AEAT (se eligió el texto, que los revisores daban como válido). Ya estaba en la base y no es de este cambio: abrir directamente `/#calculadora` o `/#mercado` en el móvil deja el bloque fuera de la pantalla, y a 320 px `#relPortada` ensancha la página a 344 px.
+
+**Pruebas** (salida real, en local): `npm test` de la raíz con código 0 en 2 min 42 s (base 103/103 y 11/11, web 672 correctas, app 573 de 575 con 2 omitidas como antes, acceso 250/250); la prueba de Chromium de la calculadora, sola, 3 de 3; guardián de la OTA con la base `fa30779…`: `ok`, runtime 1.4.2(24). El motor tiene 4 casos nuevos (31) y la app 41 en total con los del componente.
+
 ## 11 de noviembre de 2026 (2) · Claude · «Calcula tus números» en Inicio (web y app), sin publicar
 
 Encargo: «la calculadora que está dentro de RWAdar, hazle su propia sección en Inicio para que la gente calcule sus números; y que pongan ellos los números, no que sea sí o sí los 300.000». Dos commits **locales** en la rama `calculadora` (hecha desde `mercado-bolsa`): el primero, a medias, lo cortó el límite de uso; el segundo lo termina. Sin push, sin publicar, sin flujos, sin Supabase y sin claves.

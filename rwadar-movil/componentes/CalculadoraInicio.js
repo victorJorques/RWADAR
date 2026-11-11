@@ -47,10 +47,13 @@ const CAMPO = {
   comisionAnual: { etiqueta: 'Comisión anual', unidad: '%', ayuda: 'Sobre tu capital, cada año.', a11y: 'Comisión anual, en porcentaje' },
   comisionEntrada: { etiqueta: 'Comisión de entrada', unidad: '%', ayuda: 'Una vez, sobre lo que pones.', a11y: 'Comisión de entrada, en porcentaje' },
   impuestos: { etiqueta: 'Impuestos sobre la ganancia', unidad: '%', ayuda: M.IMPUESTOS_NOTA.es, a11y: 'Impuestos sobre la ganancia, en porcentaje' },
-  valorActivo: { etiqueta: 'Valor del activo entero', unidad: '€', opcional: true, ayuda: 'Para saber qué parte del activo es tuya.',
-    a11y: 'Valor del activo entero, en euros, opcional', ejemplo: 300000 },
-  precioParticipacion: { etiqueta: 'Precio de cada participación', unidad: '€', opcional: true, ayuda: 'Para saber cuántas compras y cuánto te sobra.',
-    a11y: 'Precio de cada participación, en euros, opcional', ejemplo: 100 },
+  // Las mismas palabras que el explicador («Valor del activo», «trozo»). El
+  // ejemplo vacío lleva «Ej.:» para que no parezca una cifra ya escrita (el
+  // diccionario lo pasa al inglés, «e.g. 300,000»).
+  valorActivo: { etiqueta: 'Valor del activo', unidad: '€', opcional: true, ayuda: 'Lo que vale entero lo que se reparte (un local, un préstamo…): para saber qué parte es tuya.',
+    a11y: 'Valor del activo, en euros, opcional', ejemplo: 'Ej.: 300.000' },
+  precioParticipacion: { etiqueta: 'Precio de cada trozo', unidad: '€', opcional: true, ayuda: 'Para saber cuántos compras y cuánto te sobra.',
+    a11y: 'Precio de cada trozo, en euros, opcional', ejemplo: 'Ej.: 100' },
 };
 
 /* Los valores de partida, escritos en el idioma de la app («1.000» o «1,000»). */
@@ -67,7 +70,6 @@ function Campo({ campo, idioma, valor, error, onCambiar, onFoco, onSalir, ancho,
   const d = CAMPO[campo];
   const [enfocado, setEnfocado] = useState(false);
   const mensaje = error ? M.mensajeError(error, idioma) : '';
-  const ejemplo = d.ejemplo != null ? M.valorCampo(d.ejemplo, idioma, campo) : undefined;
   return (
     <View style={[e.campo, ancho === 'mitad' && e.campoMitad]} onLayout={onLayout}>
       <Text style={e.etq}>
@@ -88,11 +90,11 @@ function Campo({ campo, idioma, valor, error, onCambiar, onFoco, onSalir, ancho,
           autoComplete="off"
           importantForAutofill="no"
           maxLength={18}
-          placeholder={ejemplo}
+          placeholder={d.ejemplo}
           placeholderTextColor={C.tx3}
           accessibilityLabel={d.a11y}
           accessibilityHint={mensaje || d.ayuda}
-          style={e.input}
+          style={[e.input, !valor && d.ejemplo ? e.inputEjemplo : null]}
         />
         <Text noTraducir={d.unidad !== 'años'} style={e.unidad} accessibilityElementsHidden importantForAccessibility="no">{d.unidad}</Text>
       </View>
@@ -121,7 +123,7 @@ function Barras({ res, idioma }) {
             <Line x1={0} x2={ancho} y1={g.suelo + 0.5} y2={g.suelo + 0.5} stroke={C.bd} strokeWidth={1} />
             {g.barras.map((b) => (
               <React.Fragment key={b.anio}>
-                {b.altoPuesto > 0 ? <Rect x={b.x} y={b.yPuesto} width={b.ancho} height={b.altoPuesto} rx={Math.min(3, b.ancho / 3)} fill="rgba(255,255,255,0.16)" /> : null}
+                {b.altoPuesto > 0 ? <Rect x={b.x} y={b.yPuesto} width={b.ancho} height={b.altoPuesto} rx={Math.min(3, b.ancho / 3)} fill="rgba(255,255,255,0.07)" /> : null}
                 {b.altoGanancia > 0.5 ? <Rect x={b.x} y={b.yGanancia} width={b.ancho} height={b.altoGanancia} rx={Math.min(3, b.ancho / 3)} fill={C.senal} /> : null}
               </React.Fragment>
             ))}
@@ -153,7 +155,8 @@ export function ResultadoFlotante({ estado }) {
   return (
     <View style={e.flotante} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" testID="calc-flotante">
       <Text noTraducir style={[e.flotanteTxt, estado.signo === 'error' && e.titularError]} numberOfLines={2}>{estado.titular}</Text>
-      {estado.detalle ? <Text noTraducir style={[e.flotanteDet, estado.signo === 'pierde' && e.detallePierde]} numberOfLines={1}>{estado.detalle}</Text> : null}
+      {/* Hasta tres líneas: con una se cortaba antes de «ya descontados … de impuestos», y con comisiones e impuestos no caben en dos. */}
+      {estado.detalle ? <Text noTraducir style={[e.flotanteDet, estado.signo === 'gana' && e.detalleGana, estado.signo === 'pierde' && e.detallePierde]} numberOfLines={3}>{estado.detalle}</Text> : null}
     </View>
   );
 }
@@ -180,15 +183,15 @@ export default function CalculadoraInicio({ ofertas = [], catalogoVigente = true
       for (const campo of M.CAMPOS) {
         const l = M.LIMITES[campo];
         // Se lee con las reglas del idioma de antes: «1,000» en inglés son mil.
-        const texto = antes === 'en' ? t[campo].replace(/,/g, '') : t[campo];
-        const leido = M.leerNumero(texto, { miles: l.unidad === 'euros' });
+        const leido = M.leerNumero(t[campo], { miles: l.unidad === 'euros', idioma: antes });
         if (t[campo].trim() && leido.ok) nuevos[campo] = M.valorCampo(leido.valor, idioma, campo);
       }
       return nuevos;
     });
   }, [idioma]);
 
-  const valido = useMemo(() => M.validarEntradas({ ...textos, modo }), [textos, modo]);
+  // Los campos se leen con la marca decimal del idioma («1,5» en español es 1,5).
+  const valido = useMemo(() => M.validarEntradas({ ...textos, modo }, { idioma: idiomaCampos.current }), [textos, modo, idioma]); // eslint-disable-line react-hooks/exhaustive-deps
   const res = useMemo(() => (valido.ok ? M.calcular(valido) : null), [valido]);
   const r = M.resumen(res, idioma);
   const lista = useMemo(() => M.ofertasConRentabilidad(ofertas, { ahora: ahora ? ahora() : new Date(), catalogoVigente }),
@@ -208,15 +211,16 @@ export default function CalculadoraInicio({ ofertas = [], catalogoVigente = true
 
   const marcarTocado = () => { if (!tocado) setTocado(true); };
   const cambiar = (campo, texto) => { marcarTocado(); setTextos((t) => ({ ...t, [campo]: texto })); };
+  const subirAlResultado = () => onDesplazar?.(Math.max(0, (posiciones.current.resultado ?? 0) - 8));
   const foco = (campo) => {
-    if (ARRIBA.includes(campo)) { onFlotante?.(null); onDesplazar?.(Math.max(0, (posiciones.current.resultado ?? 0) - 8)); }
+    if (ARRIBA.includes(campo)) { onFlotante?.(null); subirAlResultado(); }
     else onFlotante?.({ campo, ...flotante.current });
   };
   // Al salir del campo, la cifra con su formato («1000» → «1.000»), sin cambiar su valor.
   const salir = (campo) => {
     onFlotante?.(null);
     setTextos((t) => {
-      const l = M.LIMITES[campo], leido = M.leerNumero(t[campo], { miles: l.unidad === 'euros' });
+      const l = M.LIMITES[campo], leido = M.leerNumero(t[campo], { miles: l.unidad === 'euros', idioma: idiomaCampos.current });
       if (!t[campo].trim() || !leido.ok || leido.valor < l.min || leido.valor > l.max) return t;
       return { ...t, [campo]: M.valorCampo(leido.valor, idioma, campo) };
     });
@@ -280,6 +284,7 @@ export default function CalculadoraInicio({ ofertas = [], catalogoVigente = true
               </Pressable>
             ))}
           </View>
+          <Text style={e.ayuda}>Lo cobro: te lo pagan cada año. Lo reinvierto: se suma a lo que tienes y crece.</Text>
         </View>
 
         {lista.length ? (
@@ -293,6 +298,8 @@ export default function CalculadoraInicio({ ofertas = [], catalogoVigente = true
                   <Pressable onPress={() => {
                     tacto.eleccion(); marcarTocado(); setElegida(of.slug);
                     setTextos((t) => ({ ...t, rentabilidad: M.valorCampo(of.rentabilidad, idioma, 'rentabilidad') }));
+                    // Los chips quedan por debajo del resultado: se sube hasta él.
+                    subirAlResultado();
                   }} style={({ pressed }) => [e.chip, on && e.chipOn, pressed && !on && e.chipPulsado]}
                     accessibilityRole="button" accessibilityState={{ selected: !!on }} noTraducir accessibilityLabel={M.etiquetaOferta(of, idioma)}
                     testID={`calc-oferta-${of.slug}`}>
@@ -305,7 +312,7 @@ export default function CalculadoraInicio({ ofertas = [], catalogoVigente = true
                   </Pressable>
                   {original && onAbrirOferta ? (
                     <Pressable onPress={() => { tacto.abrir(); onAbrirOferta(original); }} style={({ pressed }) => [e.ficha, pressed && pulsado('b3')]}
-                      accessibilityRole="link" noTraducir accessibilityLabel={tx(idioma, `Ficha de ${of.nombre}`, `Page for ${of.nombre}`)} testID={`calc-ficha-${of.slug}`}>
+                      accessibilityRole="link" noTraducir accessibilityLabel={tx(idioma, `Ficha de ${of.nombre}`, `Details for ${of.nombre}`)} testID={`calc-ficha-${of.slug}`}>
                       <Text style={e.fichaTxt}>Ficha</Text><Text noTraducir style={e.fichaTxt}>{' →'}</Text>
                     </Pressable>
                   ) : null}
@@ -313,7 +320,7 @@ export default function CalculadoraInicio({ ofertas = [], catalogoVigente = true
               );
             })}
             <Text noTraducir={!!deVerdad} style={e.nota}>
-              {deVerdad ? M.notaOferta(deVerdad, idioma) : 'La cifra que publica cada oferta, con su fecha. Rellena la rentabilidad; puedes cambiarla.'}
+              {deVerdad ? M.notaOferta(deVerdad, idioma) : 'Solo salen las ofertas que publican una rentabilidad con fecha. Al pulsar una, se rellena la rentabilidad; puedes cambiarla.'}
             </Text>
           </View>
         ) : null}
@@ -353,6 +360,7 @@ export default function CalculadoraInicio({ ofertas = [], catalogoVigente = true
           {cuenta ? (
             <View style={e.cuentaCuerpo}>
               <Text style={e.cuentaSub}>No hay nada escondido: es la misma cuenta que harías con un papel.</Text>
+              <Text style={e.cuentaSub}>«Neto» quiere decir ya descontadas las comisiones y los impuestos.</Text>
               {pasos.map((p, i) => (
                 <View key={i} style={e.paso} accessible noTraducir accessibilityLabel={`${i + 1}. ${p.op}: ${p.res}`}>
                   <Text noTraducir style={e.pasoOp}><Text noTraducir style={e.pasoN}>{`${i + 1}. `}</Text>{p.op}</Text>
@@ -384,16 +392,18 @@ const e = StyleSheet.create({
   datos: { marginTop: 12, padding: 16, borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1, gap: 16 },
   datosCab: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
   datosTit: { fontFamily: F.semi, fontSize: 17, lineHeight: 22, color: C.tx },
-  ejemplo: { fontFamily: F.semi, fontSize: 13, lineHeight: 17, color: C.aviso, backgroundColor: C.avisoT, borderRadius: R.p, paddingHorizontal: 10, paddingVertical: 4, overflow: 'hidden' },
+  ejemplo: { fontFamily: F.semi, fontSize: 13, lineHeight: 17, color: C.tx2, backgroundColor: C.ton, borderRadius: R.p, paddingHorizontal: 10, paddingVertical: 4, overflow: 'hidden' },
   fila: { flexDirection: 'row', gap: 12 },
   campo: { gap: 6 },
   campoMitad: { flex: 1, minWidth: 0 },
   etq: { fontFamily: F.media, fontSize: 15, lineHeight: 20, color: C.tx2 },
   opcional: { fontFamily: F.regular, color: C.tx3 },
-  entrada: { flexDirection: 'row', alignItems: 'center', minHeight: 52, borderRadius: R.m, borderWidth: 1, borderColor: 'rgba(255,255,255,0.16)', backgroundColor: C.s0, paddingLeft: 14, paddingRight: 12 },
+  entrada: { flexDirection: 'row', alignItems: 'center', minHeight: 52, borderRadius: R.m, borderWidth: 1, borderColor: 'rgba(255,255,255,0.36)', backgroundColor: C.s0, paddingLeft: 14, paddingRight: 12 },
   entradaFoco: { borderColor: C.senal, borderWidth: 2, paddingLeft: 13, paddingRight: 11 },
   entradaError: { borderColor: C.alarma },
   input: { flex: 1, minWidth: 0, minHeight: 50, paddingVertical: 0, fontFamily: F.semi, fontSize: 20, color: C.tx, fontVariant: ['tabular-nums'] },
+  // Mientras se ve el ejemplo («Ej.: 300.000»): letra normal y más pequeña, que no parezca una cifra escrita.
+  inputEjemplo: { fontFamily: F.regular, fontSize: 16, fontStyle: 'italic' },
   unidad: { fontFamily: F.media, fontSize: 16, lineHeight: 20, color: C.tx2, marginLeft: 8 },
   error: { flexDirection: 'row', alignItems: 'flex-start', gap: 6 },
   errorMarca: { width: 18, height: 18, borderRadius: 9, backgroundColor: C.alarma, alignItems: 'center', justifyContent: 'center', marginTop: 1 },
@@ -416,7 +426,7 @@ const e = StyleSheet.create({
 
   ofertas: { gap: 8 },
   oferta: { flexDirection: 'row', alignItems: 'stretch', gap: 6 },
-  chip: { flex: 1, minWidth: 0, minHeight: 52, paddingHorizontal: 12, paddingVertical: 9, borderRadius: R.m, borderWidth: 1, borderColor: 'rgba(255,255,255,0.12)', gap: 3 },
+  chip: { flex: 1, minWidth: 0, minHeight: 52, paddingHorizontal: 12, paddingVertical: 9, borderRadius: R.m, borderWidth: 1, borderColor: 'rgba(255,255,255,0.24)', gap: 3 },
   chipOn: { borderColor: C.senal, backgroundColor: C.senalT },
   chipPulsado: { backgroundColor: C.ton },
   chipNom: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.tx },
@@ -444,7 +454,7 @@ const e = StyleSheet.create({
   leyendaFila: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   leyendaTxt: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx2 },
   muestra: { width: 12, height: 12, borderRadius: 3 },
-  muestraPuesto: { backgroundColor: 'rgba(255,255,255,0.16)', borderBottomWidth: 2, borderBottomColor: C.tx2 },
+  muestraPuesto: { backgroundColor: 'rgba(255,255,255,0.07)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.24)', borderBottomWidth: 2, borderBottomColor: C.tx2 },
   muestraGanado: { backgroundColor: C.senal },
 
   cuenta: { marginTop: 12, paddingHorizontal: 16, borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1 },
@@ -465,5 +475,6 @@ const e = StyleSheet.create({
     backgroundColor: C.s2, borderWidth: 1, borderColor: C.bd, gap: 2,
     ...Platform.select({ android: { elevation: 6 }, ios: { shadowColor: '#000', shadowOffset: { width: 0, height: 8 }, shadowRadius: 16, shadowOpacity: 0.6 }, default: {} }) },
   flotanteTxt: { fontFamily: F.semi, fontSize: 16, lineHeight: 21, color: C.tx, fontVariant: ['tabular-nums'] },
-  flotanteDet: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.senalCl, fontVariant: ['tabular-nums'] },
+  // Gris si ni ganas ni pierdes; verde (detalleGana) o rojo (detallePierde) según el signo.
+  flotanteDet: { ...T.menor, fontSize: 13, lineHeight: 18, color: C.tx2, fontVariant: ['tabular-nums'] },
 });

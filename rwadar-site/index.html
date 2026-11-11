@@ -221,10 +221,12 @@
       </div>
       <div class="ci-caja">
         <div class="ci-resultado" id="ciResultado">
-          <div class="ci-estado" id="ciEstado" role="status" aria-live="polite" aria-atomic="true">
+          <div class="ci-estado" id="ciEstado">
             <p class="ci-titular" id="ciTitular">Escribe tus números para ver el resultado.</p>
             <p class="ci-detalle" id="ciDetalle" hidden></p>
           </div>
+          <!-- Lo que oye el lector de pantalla: una vez, cuando se deja de escribir (700 ms), no a cada tecla. -->
+          <p class="solo-lector" id="ciAnuncio" role="status" aria-live="polite" aria-atomic="true"></p>
         </div>
 
         <div class="ci-datos" role="group" aria-labelledby="ciDatosTit">
@@ -247,17 +249,18 @@
               <p class="ci-error" id="ciAniosError" hidden></p>
             </div>
           </div>
-          <fieldset class="ci-modo">
+          <fieldset class="ci-modo" aria-describedby="ciModoAyuda">
             <legend class="ci-etq">Lo que ganas cada año</legend>
             <div class="ci-segmento">
               <label class="ci-opcion"><input type="radio" name="ciModo" id="ciModoCobrar" value="cobrar" checked><span>Lo cobro</span></label>
               <label class="ci-opcion"><input type="radio" name="ciModo" id="ciModoReinvertir" value="reinvertir"><span>Lo reinvierto</span></label>
             </div>
+            <p class="ci-ayuda" id="ciModoAyuda">Lo cobro: te lo pagan cada año. Lo reinvierto: se suma a lo que tienes y crece.</p>
           </fieldset>
           <div class="ci-ofertas" id="ciOfertas" hidden>
             <p class="ci-etq" id="ciOfertasTit">Usa la rentabilidad de una oferta</p>
             <ul class="ci-ofertas-lista" id="ciOfertasLista" aria-labelledby="ciOfertasTit"></ul>
-            <p class="ci-ofertas-nota" id="ciOfertaNota">La cifra que publica cada oferta, con su fecha. Rellena la rentabilidad; puedes cambiarla.</p>
+            <p class="ci-ofertas-nota" id="ciOfertaNota">Solo salen las ofertas que publican una rentabilidad con fecha. Al pulsar una, se rellena la rentabilidad; puedes cambiarla.</p>
           </div>
           <details class="ci-afinar" id="ciAfinar">
             <summary><span>Afinar: comisiones e impuestos</span> <span class="ci-afinar-ahora" id="ciAfinarAhora"></span></summary>
@@ -277,19 +280,19 @@
               <div class="ci-campo" data-ci-campo="impuestos">
                 <label class="ci-etq" for="ciImpuestos">Impuestos sobre la ganancia <span class="solo-lector">(en %)</span></label>
                 <div class="ci-entrada"><input class="ci-input" id="ciImpuestos" name="impuestos" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="19" aria-describedby="ciImpuestosAyuda ciImpuestosError"><span class="ci-unidad" aria-hidden="true">%</span></div>
-                <p class="ci-ayuda" id="ciImpuestosAyuda">En España, la ganancia del ahorro tributa del 19 % al 30 % según cuánto ganes.</p>
+                <p class="ci-ayuda" id="ciImpuestosAyuda">En España (salvo País Vasco y Navarra), la ganancia del ahorro paga un 19 % hasta 6.000 € al año y más por encima, hasta el 30 %.</p>
                 <p class="ci-error" id="ciImpuestosError" hidden></p>
               </div>
               <div class="ci-campo" data-ci-campo="valorActivo">
-                <label class="ci-etq" for="ciValorActivo">Valor del activo entero <span class="ci-opcional">(opcional)</span><span class="solo-lector">, en euros</span></label>
-                <div class="ci-entrada"><input class="ci-input" id="ciValorActivo" name="valorActivo" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="" placeholder="300.000" aria-describedby="ciValorActivoAyuda ciValorActivoError"><span class="ci-unidad" aria-hidden="true">€</span></div>
-                <p class="ci-ayuda" id="ciValorActivoAyuda">Para saber qué parte del activo es tuya.</p>
+                <label class="ci-etq" for="ciValorActivo">Valor del activo <span class="ci-opcional">(opcional)</span><span class="solo-lector">, en euros</span></label>
+                <div class="ci-entrada"><input class="ci-input" id="ciValorActivo" name="valorActivo" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="" placeholder="Ej.: 300.000" aria-describedby="ciValorActivoAyuda ciValorActivoError"><span class="ci-unidad" aria-hidden="true">€</span></div>
+                <p class="ci-ayuda" id="ciValorActivoAyuda">Lo que vale entero lo que se reparte (un local, un préstamo…): para saber qué parte es tuya.</p>
                 <p class="ci-error" id="ciValorActivoError" hidden></p>
               </div>
               <div class="ci-campo" data-ci-campo="precioParticipacion">
-                <label class="ci-etq" for="ciPrecioParticipacion">Precio de cada participación <span class="ci-opcional">(opcional)</span><span class="solo-lector">, en euros</span></label>
-                <div class="ci-entrada"><input class="ci-input" id="ciPrecioParticipacion" name="precioParticipacion" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="" placeholder="100" aria-describedby="ciPrecioParticipacionAyuda ciPrecioParticipacionError"><span class="ci-unidad" aria-hidden="true">€</span></div>
-                <p class="ci-ayuda" id="ciPrecioParticipacionAyuda">Para saber cuántas compras y cuánto te sobra.</p>
+                <label class="ci-etq" for="ciPrecioParticipacion">Precio de cada trozo <span class="ci-opcional">(opcional)</span><span class="solo-lector">, en euros</span></label>
+                <div class="ci-entrada"><input class="ci-input" id="ciPrecioParticipacion" name="precioParticipacion" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="" placeholder="Ej.: 100" aria-describedby="ciPrecioParticipacionAyuda ciPrecioParticipacionError"><span class="ci-unidad" aria-hidden="true">€</span></div>
+                <p class="ci-ayuda" id="ciPrecioParticipacionAyuda">Para saber cuántos compras y cuánto te sobra.</p>
                 <p class="ci-error" id="ciPrecioParticipacionError" hidden></p>
               </div>
             </div>
@@ -307,7 +310,7 @@
           </figure>
           <details class="ci-cuenta" id="ciCuenta">
             <summary>Ver la cuenta paso a paso</summary>
-            <p class="ci-cuenta-sub">No hay nada escondido: es la misma cuenta que harías con un papel.</p>
+            <p class="ci-cuenta-sub"><span>No hay nada escondido: es la misma cuenta que harías con un papel.</span> <span>«Neto» quiere decir ya descontadas las comisiones y los impuestos.</span></p>
             <ol class="ci-pasos" id="ciPasos"></ol>
             <p class="ci-cuenta-nota" id="ciNotaImpuestos"></p>
           </details>
