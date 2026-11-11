@@ -1,6 +1,6 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-11T10:28:55.226Z",
+  "ejecutadoEl": "2026-11-11T10:29:58.693Z",
   "etiqueta": "2026-11-11",
   "revisionAnterior": "dfdc4c85-7f2f-fc4a-de27-a9f4a63f7656",
   "revisionNueva": "24b5f7de-2834-3e15-6ae4-62a6d9565161",
@@ -16,8 +16,7 @@
     "cada cambio de contraste-2026-11-11.json está en lo que lee un visitante (63 cambios en 18 fichas) y lo de antes ya no; Spiko Euro (Letras) 2,44 % → 2,41 %, Dólar 4,09 % → 4,02 % (USD), Spiko Euro 2,84 % con la VL del 10/11; mTBILL 1,0777 USD (en rwadar_catalogo), sigue en conflicto, sin APY y sin datos de tarjeta propios; Aktionariat, Boss Info y Switzerlend con fechas del 11/11; Brickwise con la mejor compra nueva (Schwarzer Weg 60 €, Randhartingergasse 56 €); lo no aplicado sigue como estaba («Participaciones en venta · 10/11/2026: 300» de Schwarzer Weg y «Última operación · 10/11/2026» de Boss Info); Robinhood, Kraken, Prosegur y Hausera, iguales salvo las fechas; todos los avisos con fecha del 11/11; la vista sigue enmascarando el resumen y las métricas de las 15 fichas que no están «actual», igual que hoy",
     "vigencia: el lector de la web (validarLotePublicoV2) lo acepta el 11/11 y el 18/11 y lo da por caducado el 19/11; las 22 tarjetas ocultan cifras desde el 19/11; el lector de la app (adaptarCatalogoV2) lo acepta (25/22, 1 en camino)",
     "tarjetas (resumenOferta, 11/11): las 22 en castellano, sin citas en otro idioma y sin «por participación» en el mínimo; el acceso desde España, la salida y el estado no cambian en ninguna; cambia solo el mínimo en 13: boss-info, switzerlend, apartamento-vacacional-hinterstoder-50, drautalresidenz-paternion, fotovoltaica-cohotel, fotovoltaica-greenpoint, randhartingergasse-9-viena, local-de-estanco-klagenfurt, vivienda-pluddemanngasse-101-graz, vivienda-pottendorfer-stra-e-62-wr-neustadt, vivienda-schwarzer-weg-18-graz, vivienda-sonnleithnergasse-2-viena, vivienda-stallhofstra-e-28-gratwein; Brickwise «Desde X € la participación en reventa (11/11)» (Schwarzer Weg 65 → 69,90, Pottendorfer 74 → 73; las otras 9, solo la fecha); Boss Info y Switzerlend con fecha del 11/11; Aktionariat, Hausera y las 8 principales, igual; mTBILL «Sin mínimo vigente en euros» · «Sin comprobar si se puede contratar desde España» · «Salida no documentada» (fuentes en conflicto)",
-    "sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de 30 filas; las 25 del radar, iguales que en el de la web), todas de la revisión nueva y verificadas el 11/11; las fichas salen con la lista cerrada de siempre (52 páginas, ninguna nueva ni retirada) y cambian 3 por la revisión, las fechas y los textos; la ficha web de Spiko Euro dice 2,41 % y la de Schwarzer Weg «Desde 69,90 € la participación en reventa (11/11)»",
-    "exportado a /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/entrega-1111/rest-2026-11-11-final lo que leería un visitante después de aplicar",
+    "sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de 30 filas, idéntico al de la web), todas de la revisión nueva y verificadas el 11/11; las fichas salen con la lista cerrada de siempre (52 páginas, ninguna nueva ni retirada) y, frente a las de rwadar-site/ de esta carpeta, cambian 52 (22 de oferta, 25 de plataforma y 5 de descartadas) por la revisión, las fechas y los textos; la ficha web de Spiko Euro dice 2,41 % y la de Schwarzer Weg «Desde 69,90 € la participación en reventa (11/11)»",
     "si la revisión nueva ya estaba importada como borrador, el aplicador la aprueba y la publica sin duplicar filas",
     "falla y no deja nada: la publicada no es la dfdc4c85 (es la anterior, 88d5a757) → Publicación distinta de la revisión anterior prevista: 88d5a757-3481-f70e-dc7c-6272704a00b3. No aplicar este lote.",
     "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",
@@ -335,7 +334,7 @@
       "salida": "Salida no documentada"
     }
   },
-  "fichasQueCambian": 3,
+  "fichasQueCambian": 52,
   "lecturasDelSincronizador": [
     "/rest/v1/catalogo_plataformas_publicas_v2?select=*&limit=257",
     "/rest/v1/plataformas?estado=eq.descartada&select=nombre,etiqueta_descarte,motivo_descarte,fuentes(url,titulo)&order=nombre",

@@ -135,9 +135,11 @@ async function vistas(db) {
     .sort((a, b) => a.nombre.localeCompare(b.nombre, 'en'));
   const o = api(await filas(db, 'select * from public.catalogo_ofertas_publicas_v2'));
   const d = await filas(db, DESCARTADAS);
+  // Como las pide sincronizar.js por REST (sin ordenar las fuentes de cada descartada).
+  const dr = await filas(db, DESCARTADAS.replace(' order by f.url', ''));
   const t = await filas(db, 'select slug, nombre, estado, cadenas from public.plataformas order by slug');
   await sesion(db);
-  return { p, o, d, t };
+  return { p, o, d, dr, t };
 }
 async function foto(db) {
   await sesion(db);
@@ -417,7 +419,7 @@ const sinFechas = o => {
       fs.copyFileSync(path.join(ROOT, 'rwadar-site/assets/catalogo-publico-20261022.js'), jsPath);
       const leidas = [];
       const fetchFn = async url => { leidas.push(url); return { ok: true, json: async () => structuredClone(
-        url.includes('catalogo_plataformas_publicas_v2') ? v1.p : url.includes('catalogo_ofertas_publicas_v2') ? v1.o : v1.d) }; };
+        url.includes('catalogo_plataformas_publicas_v2') ? v1.p : url.includes('catalogo_ofertas_publicas_v2') ? v1.o : v1.dr) }; };
       const log = console.log; console.log = () => {};
       try { await sincronizar({ fetchFn, jsPath, csvPath: path.join(temporal, 'rwadar.csv'), hoy: new Date(`${FECHA}T12:00:00Z`),
         versionEsquema: 2, manifiesto: MANIFIESTO_CATALOGO_V2, permitirAmpliacion: true }); } finally { console.log = log; }
@@ -427,10 +429,8 @@ const sinFechas = o => {
       assert.ok(snap.ofertas.every(o => o.verificadaEl === FECHA));
       const csv = fs.readFileSync(path.join(temporal, 'rwadar.csv'), 'utf8').trim().split('\n');
       assert.equal(csv.length, 1 + 25 + 5);
-      // Las 25 del radar salen igual que en el rwadar.csv de la web (las descartadas se comparan en el ensayo con el
-      // REST simulado: aquí sus fuentes van ordenadas por dirección y por REST, en el orden de la base).
-      { const radarCsv = t => t.split('\n').filter(l => l.startsWith('"En el radar"'));
-        assert.deepEqual(radarCsv(fs.readFileSync(path.join(temporal, 'rwadar.csv'), 'utf8')), radarCsv(fs.readFileSync(path.join(ROOT, 'rwadar-site/rwadar.csv'), 'utf8')), 'rwadar.csv: las 25 del radar sin diferencias'); }
+      // Hoy no cambia el radar ni las descartadas: el rwadar.csv que sale es el de la web, byte a byte.
+      assert.equal(fs.readFileSync(path.join(temporal, 'rwadar.csv'), 'utf8'), fs.readFileSync(path.join(ROOT, 'rwadar-site/rwadar.csv'), 'utf8'), 'rwadar.csv sin diferencias');
       const salidas = fichas.construirSalidas({ catalogo: snap });
       const paginas = [...salidas.keys()].filter(n => /^(ofertas|plataformas|fuera-del-radar)\//.test(n));
       assert.deepEqual(paginas.sort(), manifiestoFichas.filter(r => /^(ofertas|plataformas|fuera-del-radar)\//.test(r)).sort(), 'mismas fichas que la lista cerrada');
@@ -440,7 +440,7 @@ const sinFechas = o => {
       assert.ok(spiko.includes('2,41 %') && !spiko.includes('2,44 %'), 'la ficha web de Spiko Euro dice 2,41 %');
       assert.ok(schwarzer.includes('Desde 69,90 € la participación en reventa (11/11)') && !schwarzer.includes('Desde 65 € la participación'), 'la ficha web de Schwarzer Weg dice 69,90 €');
       informe.fichasQueCambian = distintas.length;
-      ok(`sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de ${csv.length - 1} filas; las 25 del radar, iguales que en el de la web), todas de la revisión nueva y verificadas el 11/11; las fichas salen con la lista cerrada de siempre (${paginas.length} páginas, ninguna nueva ni retirada) y cambian ${distintas.length} por la revisión, las fechas y los textos; la ficha web de Spiko Euro dice 2,41 % y la de Schwarzer Weg «Desde 69,90 € la participación en reventa (11/11)»`);
+      ok(`sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de ${csv.length - 1} filas, idéntico al de la web), todas de la revisión nueva y verificadas el 11/11; las fichas salen con la lista cerrada de siempre (${paginas.length} páginas, ninguna nueva ni retirada) y, frente a las de rwadar-site/ de esta carpeta, cambian ${distintas.length} (${distintas.filter(n => n.startsWith('ofertas/')).length} de oferta, ${distintas.filter(n => n.startsWith('plataformas/')).length} de plataforma y ${distintas.filter(n => n.startsWith('fuera-del-radar/')).length} de descartadas) por la revisión, las fechas y los textos; la ficha web de Spiko Euro dice 2,41 % y la de Schwarzer Weg «Desde 69,90 € la participación en reventa (11/11)»`);
       informe.lecturasDelSincronizador = leidas.map(u => u.replace(/^https:\/\/[^/]+/, ''));
     } finally { fs.rmSync(temporal, { recursive: true, force: true }); }
 
