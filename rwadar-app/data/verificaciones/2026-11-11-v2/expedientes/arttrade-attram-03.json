@@ -84,8 +84,8 @@
    "leido": true
   },
   {
-   "titulo": "Basisinformationsblatt Günther Uecker 001 (ISIN DE000A383HL2)",
-   "url": "https://arttrade.de/wp-content/uploads/2024/05/2404_arttrade_BIB_Guenther-Uecker-001.pdf",
+   "titulo": "Basisinformationsblatt [artista omitido] 001 (ISIN DE000A383HL2)",
+   "url": "https://arttrade.de/wp-content/uploads/2024/05/2404_arttrade_BIB_artista-omitido-001.pdf",
    "versionOFecha": "Erstellungsdatum 16.04.2024",
    "paginas": null,
    "sha256": "a45f2225f9b4858dad06209be91f8059f3ce04d5c7e24e475d966ac0caacc5d5",
@@ -93,8 +93,8 @@
    "nota": "Serie anterior; KID sin revisar desde abril de 2024. Solo contexto."
   },
   {
-   "titulo": "Anleihebedingungen Günther Uecker 001",
-   "url": "https://arttrade.de/wp-content/uploads/2024/05/2404_arttrade_Anleihebedingungen_Guenther-Uecker-001.pdf",
+   "titulo": "Anleihebedingungen [artista omitido] 001",
+   "url": "https://arttrade.de/wp-content/uploads/2024/05/2404_arttrade_Anleihebedingungen_artista-omitido-001.pdf",
    "versionOFecha": "2024-04",
    "paginas": null,
    "sha256": "016626977a86ffc24e524091bfeaa5e87c55b233fcd654ec473b4bdbe0dcd0b6",
@@ -274,7 +274,7 @@
    "localizador": "KID ATTRAM#03, p. 1, «Produkt» (PDF creado el 08/12/2025, 3 páginas)",
    "fechaDato": "2025-12-08",
    "consultadoUtc": "2026-11-11T10:09:06Z",
-   "alcanceYLimites": "Que el KID se revisara en diciembre de 2025 sugiere que la serie seguía comercializándose entonces, pero ninguna fuente pública dice que la suscripción esté abierta hoy ni cuánto queda por colocar (máximo 1.000.000 €). El KID de Günther Uecker 001 es del 16/04/2024 y no se ha actualizado.",
+   "alcanceYLimites": "Que el KID se revisara en diciembre de 2025 sugiere que la serie seguía comercializándose entonces, pero ninguna fuente pública dice que la suscripción esté abierta hoy ni cuánto queda por colocar (máximo 1.000.000 €). El KID de [artista omitido] 001 es del 16/04/2024 y no se ha actualizado.",
    "estado": "no_verificable"
   },
   {

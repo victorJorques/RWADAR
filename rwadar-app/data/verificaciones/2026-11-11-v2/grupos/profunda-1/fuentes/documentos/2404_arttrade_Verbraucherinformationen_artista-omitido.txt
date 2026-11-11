@@ -1,0 +1,262 @@
+                                 Informationen für den Verbraucher
+Aufgrund des Art. 246 b EGBGB sind für alle Fernabsatzverträge (Verträge, die unter Verwendung von
+Fernkommunikationsmitteln (z. B. per E-Mail, Fax, Internet) zustande kommen) sowie Verträge, die außerhalb von
+Geschäftsräumen der Emittentin geschlossen werden, dem Anleger folgende Informationen zur Verfügung zu
+stellen.
+
+
+
+
+1.1. Allgemeine Unternehmensinformationen über die Emittentin
+Emittentin ist die arttrade custody 002 UG mit Sitz in Düsseldorf, vertreten durch die Geschäftsführer [persona física omitida]
+und [persona física omitida].
+
+Geschäftsanschrift/ladungsfähige Anschrift: Immermannstraße 19, 40210 Düsseldorf.
+
+Eingetragen im Handelsregister des Amtsgerichts Düsseldorf unter der Nr. HRB 95652.
+
+Hauptgeschäftstätigkeit der arttrade custody 002 UG ist der Erwerb, das Halten und Verwalten von Sachwerten,
+insbesondere Kunstwerken.
+
+Die arttrade custody 002 UG unterliegt keiner gesonderten staatlichen Aufsichtsbehörde.
+
+
+
+
+1.2. Informationen über die Kapitalanlage
+
+1.2.1 Wesentliche Merkmale der Kapitalanlage und Zustandekommen des Vertrages
+
+Es handelt sich um ein Kapitalanlageprodukt nach deutschem Recht in Form von auf den Inhaber lautenden
+Schuldverschreibungen (die „Schuldverschreibungen“).
+
+Die Schuldverschreibungen werden für ihre gesamte Laufzeit durch Bewirkung der Eintragung in ein elektronisches
+Wertpapierregister in der Form eines Kryptowertpapierregisters im Sinne des § 4 Absatz 1 Nr. 2 des Gesetzes über
+elektronische Wertpapiere (eWpG) als elektronische Wertpapiere im Sinne des § 2 Absatz 1 eWpG begeben.
+
+Als registerführende Stelle im Sinne des § 16 Absatz 2 Satz 1 eWpG hat die Emittentin die Cashlink Technologies
+GmbH, Sandweg 94, 60316 Frankfurt am Main, benannt.
+
+Die Schuldverschreibungen ermöglichen es Anlegern, an den Erträgen aus der Verwaltung und Veräußerung des
+folgenden Vermögensgegenstandes zu partizipieren:
+
+[artista omitido] Diagonale Struktur V (1974) (nachfolgend das „Asset“).
+
+Die Schuldverschreibungen begründen ausschließlich schuldrechtliche Zahlungsverpflichtungen der Emittentin
+gegenüber den Anlegern, sie gewähren keine Teilnahme-, Mitwirkungs- und Stimmrechte.
+
+Die Schuldverschreibungen haben einen Nennbetrag von jeweils 1 Euro. Der Mindestanlagebetrag beträgt 1 Stück
+(= 1 Euro).
+
+Die Anleger erhalten eine dem Zeichnungsbetrag der Schuldverschreibungen entsprechende Anzahl an von der
+Emittentin generierten ATTUECKER#01-Token, welche die Rechte aus den Schuldverschreibungen repräsentieren.
+Die ATTUECKER#01-Token werden auf der Polygon-Blockchain generiert. Die Ausgabe der ATTUECKER#01-Token
+erfolgt mit Eintragung der Schuldverschreibungen in das Kryptowertpapierregister.
+
+Die Schuldverschreibungen sind übertragbar. Übertragungen erfolgen nach den Regelungen des eWpG betreffend
+Verfügungen über elektronische Wertpapiere in Einzeleintragung.
+
+Die wesentlichen Einzelheiten der Kapitalanlage sind in dem Basisinformationsblatt (Stand: 16. April 2024), den
+Zeichnungsunterlagen sowie in den Anleihebedingungen der Emittentin enthalten.
+Der Vertragsschluss kommt mit Annahme der Zeichnung durch die Geschäftsführung der arttrade custody 002 UG
+zustande.
+
+Gemäß den Anleihebedingungen handelt es sich bei den Schuldverschreibungen um nachrangige und nicht dinglich
+besicherte Verbindlichkeiten der arttrade custody 002 UG. Der Anleger tritt in einem etwaigen Insolvenzverfahren
+über das Vermögen der arttrade custody 002 UG sowie im Falle der Liquidation der arttrade custody 002 UG gemäß
+§§ 19 Abs. 2 Satz 2, 39 Abs. 2 InsO mit seinen Ansprüchen auf Zahlung der Zinsen sowie auf Rückzahlung des
+Anleihekapitals im Rang hinter die Forderungen im Sinne des § 39 Abs. 1 Nr. 1 bis 5 InsO zurück. Die Forderungen
+aus den Schuldverschreibungen werden erst nach Befriedigung dieser vorrangigen Forderungen befriedigt, jedoch
+gleichrangig mit den Forderungen aus anderen von der arttrade custody 002 UG ausgegebenen nachrangigen
+Kapitalanlagen im Sinne von § 39 Abs. 2 der Insolvenzordnung. Sämtliche Forderungen von Anlegern aus den
+Schuldverschreibungen sind untereinander gleichrangig.
+
+1.2.2 Spezielle Hinweise wegen der Art der Finanzdienstleistung
+
+Die angebotene Kapitalanlage ist mit speziellen Risiken behaftet. Das Hauptrisiko der hier angebotenen
+Kapitalanlage liegt in der wirtschaftlichen Entwicklung der Emittentin. Deshalb verbindet sich mit dieser
+Kapitalanlage das Risiko des Teil- oder sogar des Totalverlustes des eingesetzten Kapitals und (noch) nicht
+ausgeschütteter laufender Auszahlungen.
+
+Die Finanzdienstleistung bezieht sich nicht auf Finanzinstrumente, deren Preis von Schwankungen auf dem
+Finanzmarkt abhängig ist.
+
+1.2.3 Mindestlaufzeit, vertragliche Kündigungsbedingungen, Vertragsstrafen
+
+Die Laufzeit der Schuldverschreibungen ist unbestimmt. Die Laufzeit beginnt am 25. April 2024 und endet
+automatisch mit der auflagenfreien und vollständigen Zahlung des Kaufpreises aus dem Verkauf des Assets.
+
+Die Emittentin ist berechtigt, aber nicht verpflichtet, die Schuldverschreibungen vorzeitig zu kündigen und zum
+Nennbetrag an die Anleihegläubiger zurückzuzahlen, wenn innerhalb von 3 Monaten nach dem Beginn der Laufzeit
+der Schuldverschreibungen der Gesamtnennbetrag der Schuldverschreibungen nicht vollständig platziert und bei
+der Emittentin eingezahlt wurde oder wenn der Kaufvertrag über den Erwerb des Assets rückabgewickelt wird.
+
+Die Schuldverschreibungen können durch den Anleger nur außerordentlich aus wichtigem Grund gekündigt werden.
+Eine Vertragsstrafe ist nicht vorgesehen.
+
+1.2.4 Gesamtpreis, Preisbestandteile, abgeführte Steuern
+
+Der Erwerbspreis pro Schuldverschreibung beträgt 1,00 Euro. Zusätzlich zum Anlagebetrag hat der Anleger ein Agio
+als Aufgeld zu leisten. Das Agio beträgt 2,0 % des gezeichneten Nennbetrages.
+
+Weitere Preisbestandteile existieren nicht.
+
+Die Zeichnung der Kapitalanlage ist von der Umsatzsteuer befreit. Die Emittentin übernimmt nicht die Zahlung von
+Steuern für den Anleger.
+
+1.2.5 Zusätzlich anfallende Kosten, sowie weitere Steuern oder Kosten, die nicht über das Unternehmen
+         abgeführt oder von ihm in Rechnung gestellt werden
+
+Zusätzliche Liefer- und Versandkosten werden von der Emittentin nicht in Rechnung gestellt.
+
+Eigene Kosten für Telefon, Internet, Porto und Überweisungen, für die Verwahrung der ATTUECKER#01-Token
+sowie für die eigene Beauftragung von Steuerberatern, Rechtsanwälten, Vermögens- oder sonstigen Beratern, hat
+der Anleger selbst zu tragen. Die Höhe dieser Kosten kann nicht konkret genannt werden, da diese
+anlegerspezifisch sind und daher variieren.
+
+Die steuerliche Behandlung hängt von den persönlichen Verhältnissen des jeweiligen Anlegers ab und kann
+künftigen Änderungen unterworfen sein. Anleger sollten ihren eigenen Steuerberater hinsichtlich der steuerlichen
+Auswirkungen des Erwerbs, des Haltens und der Veräußerung der Schuldverschreibungen konsultieren.
+
+1.2.6 Einzelheiten der Zahlung und Erfüllung
+
+Die Einzelheiten zur Einzahlungsart und zu den Zahlungsterminen ergeben sich aus den Zeichnungsunterlagen.
+Anleger, die die Schuldverschreibungen zeichnen möchten, benötigen ein sog. Wallet, das mit der Polygon-
+Blockchain kompatibel ist.
+
+Die Ausgabe der Schuldverschreibungen erfolgt gegen Zahlung von Euro.
+
+Mit der Annahme der Zeichnung im Onlinezeichnungsprozess und nach Eingang der Zahlung werden die
+Schuldverschreibungen in das Kryptowertpapierregister eingetragen
+
+1.2.7 Anwendbares Recht, Gerichtsstand
+
+Die Emittentin sowie der Vertrag über die Kapitalanlage und die Rechte und Pflichten aus der Kapitalanlage
+unterliegen dem Recht der Bundesrepublik Deutschland.
+
+Als Gerichtsstand wird der Sitz der Gesellschaft vereinbart. Diese Vereinbarung beschränkt aber nicht das Recht
+eines Anlegers, Verfahren vor einem anderen zuständigen Gericht anzustrengen. Ebenso wenig schließt die
+Einleitung von Verfahren vor einem oder mehreren anderen Gerichtsständen die Einleitung von Verfahren an einem
+anderen Gerichtsstand aus, falls und soweit dies rechtlich zulässig ist.
+
+1.2.8 Befristung der Informationen
+
+Die Gültigkeit dieser Informationen ist nicht befristet.
+
+1.2.9 Vertragssprache
+
+Die Kapitalanlage wird nur in deutscher Sprache angeboten und die Kommunikation zwischen der Emittentin und
+dem Anleger wird während der Laufzeit der Kapitalanlage in deutscher Sprache erfolgen.
+
+1.2.10 Außergerichtliche Beschwerde- und Rechtsbehelfsverfahren
+
+Bei Streitigkeiten aus der Anwendung der Vorschriften des Bürgerlichen Gesetzbuches betreffend
+Fernabsatzverträge über Finanzdienstleistungen besteht unbeschadet des Rechts, die Gerichte anzurufen, die
+Möglichkeit, eine vom Bundesamt für Justiz für diese Streitigkeiten anerkannte private
+Verbraucherschlichtungsstelle oder die bei der Deutschen Bundesbank eingerichtete Schlichtungsstelle (Deutsche
+Bundesbank; Schlichtungsstelle, Postfach 111 232, D-60047 Frankfurt/Main; Telefax: 069 2388 1919, Internet:
+www.bundesbank.de) anzurufen.
+
+In dem genannten Schlichtungsverfahren hat der Anleger zu versichern, dass er in der Streitigkeit noch kein Gericht,
+keine Streitschlichtungsstelle und keine Gütestelle, die die Streitbeilegung betreibt, angerufen und auch keinen
+außergerichtlichen Vergleich abgeschlossen hat.
+
+1.2.11 Bestehen eines Garantiefonds bzw. anderer Entschädigungsregelungen
+
+Es besteht keine Einlagensicherung, kein Garantiefonds und es bestehen keine Entschädigungsregelungen.
+
+1.2.12 Mitglied-Staat der EU, dessen Recht das Unternehmen unterliegt
+
+Bundesrepublik Deutschland.
+
+1.2.13 Widerrufsbelehrung
+
+Der Anleger kann seine Zeichnungserklärung widerrufen. Hinsichtlich der Widerrufsbelehrung wird auf Seite 4
+verwiesen.
+                                                Widerrufsbelehrung
+
+Abschnitt 1
+
+Widerrufsrecht
+
+Sie können Ihre Vertragserklärung innerhalb von 14 Tagen ohne Angabe von Gründen mittels einer eindeutigen
+Erklärung widerrufen. Die Frist beginnt nach Abschluss des Vertrags und nachdem Sie die Vertragsbestimmungen
+einschließlich der Allgemeinen Geschäftsbedingungen sowie alle nachstehend unter Abschnitt 2 aufgeführten
+Informationen auf einem dauerhaften Datenträger (z.B. Brief, Telefax, E-Mail) erhalten haben. Zur Wahrung der
+Widerrufsfrist genügt die rechtzeitige Absendung des Widerrufs, wenn die Erklärung auf einem dauerhaften
+Datenträger erfolgt. Der Widerruf ist zu richten an:
+
+                        arttrade custody 002 UG, Immermannstraße 19, 40210 Düsseldorf
+
+                                            E-Mail: contact@arttrade.io
+
+Abschnitt 2
+
+Für den Beginn der Widerrufsfrist erforderliche Informationen
+
+Die Informationen im Sinne des Abschnitts 1 Satz 2 umfassen folgende Angaben:
+
+1.   die Identität des Unternehmers; anzugeben ist auch das öffentliche Unternehmensregister, bei dem der
+     Rechtsträger eingetragen ist, und die zugehörige Registernummer oder gleichwertige Kennung;
+
+2.   die Hauptgeschäftstätigkeit des Unternehmers und die für seine Zulassung zuständige Aufsichtsbehörde
+
+3.   die ladungsfähige Anschrift des Unternehmers und jede andere Anschrift, die für die Geschäftsbeziehung
+     zwischen dem Unternehmer und dem Verbraucher maßgeblich ist, bei juristischen Personen,
+     Personenvereinigungen oder Personengruppen auch den Namen des Vertretungsberechtigten;
+
+4.   die wesentlichen Merkmale der Finanzdienstleistung sowie Informationen darüber, wie der Vertrag zustande
+     kommt;
+
+5.   den Gesamtpreis der Finanzdienstleistung einschließlich aller damit verbundenen Preisbestandteile sowie alle
+     über den Unternehmer abgeführten Steuern oder, wenn kein genauer Preis angegeben werden kann, seine
+     Berechnungsgrundlage, die dem Verbraucher eine Überprüfung des Preises ermöglicht;
+
+6.   zusätzlich anfallende Kosten sowie einen Hinweis auf mögliche weitere Steuern oder Kosten, die nicht über
+     den Unternehmer abgeführt oder von ihm in Rechnung gestellt werden;
+
+7.   den Hinweis, dass sich die Finanzdienstleistung auf Finanzinstrumente bezieht, die wegen ihrer spezifischen
+     Merkmale oder der durchzuführenden Vorgänge mit speziellen Risiken behaftet sind oder deren Preis
+     Schwankungen auf dem Finanzmarkt unterliegt, auf die der Unternehmer keinen Einfluss hat, und dass in der
+     Vergangenheit erwirtschaftete Erträge kein Indikator für künftige Erträge sind;
+
+8.   Einzelheiten hinsichtlich der Zahlung und der Erfüllung;
+
+9.   das Bestehen oder Nichtbestehen eines Widerrufsrechts sowie die Bedingungen, Einzelheiten der Ausübung,
+     insbesondere Name und Anschrift desjenigen, gegenüber dem der Widerruf zu erklären ist, und die
+     Rechtsfolgen des Widerrufs einschließlich Informationen über den Betrag, den der Verbraucher im Fall des
+     Widerrufs für die erbrachte Leistung zu zahlen hat, sofern er zur Zahlung von Wertersatz verpflichtet ist
+     (zugrunde liegende Vorschrift: § 357b des Bürgerlichen Gesetzbuchs);
+
+10. die Mindestlaufzeit des Vertrags, wenn dieser eine dauernde oder regelmäßig wiederkehrende Leistung zum
+    Inhalt hat;
+
+11. die vertraglichen Kündigungsbedingungen einschließlich etwaiger Vertragsstrafen;
+
+12. die Mitgliedstaaten der Europäischen Union, deren Recht der Unternehmer der Aufnahme von Beziehungen
+    zum Verbraucher vor Abschluss des Vertrags zugrunde legt;
+
+13. eine Vertragsklausel über das auf den Vertrag anwendbare Recht oder über das zuständige Gericht;
+14. die Sprachen, in denen die Vertragsbedingungen und die in dieser Widerrufsbelehrung genannten
+    Vorabinformationen mitgeteilt werden, sowie die Sprachen, in denen sich der Unternehmer verpflichtet, mit
+    Zustimmung des Verbrauchers die Kommunikation während der Laufzeit dieses Vertrags zu führen;
+
+15. den Hinweis, ob der Verbraucher ein außergerichtliches Beschwerde- und Rechtsbehelfsverfahren, dem der
+    Unternehmer unterworfen ist, nutzen kann, und gegebenenfalls dessen Zugangsvoraussetzungen.
+
+Abschnitt 3
+
+Widerrufsfolgen
+
+Im Fall eines wirksamen Widerrufs sind die beiderseits empfangenen Leistungen zurückzugewähren. Sie sind zur
+Zahlung von Wertersatz für die bis zum Widerruf erbrachte Dienstleistung verpflichtet, wenn Sie vor Abgabe Ihrer
+Vertragserklärung auf diese Rechtsfolge hingewiesen wurden und ausdrücklich zugestimmt haben, dass vor dem
+Ende der Widerrufsfrist mit der Ausführung der Gegenleistung begonnen werden kann. Besteht eine Verpflichtung
+zur Zahlung von Wertersatz, kann dies dazu führen, dass Sie die vertraglichen Zahlungsverpflichtungen für den
+Zeitraum bis zum Widerruf dennoch erfüllen müssen. Ihr Widerrufsrecht erlischt vorzeitig, wenn der Vertrag von
+beiden Seiten auf Ihren ausdrücklichen Wunsch vollständig erfüllt ist, bevor Sie Ihr Widerrufsrecht ausgeübt
+haben. Verpflichtungen zur Erstattung von Zahlungen müssen innerhalb von 30 Tagen erfüllt werden. Diese Frist
+beginnt für Sie mit der Absendung Ihrer Widerrufserklärung, für uns mit deren Empfang.
+
+Ende der Widerrufsbelehrung
+

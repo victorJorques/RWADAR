@@ -1,0 +1,334 @@
+                         Anleihebedingungen der Serie „ATTRAM#03”
+                                    ISIN DE000A4AG7X0
+
+
+1.    Nennbetrag, Verbriefung, Kryptowertpapierregister, Übertragung
+
+1.1   Die arttrade custody 004 UG (haftungsbeschränkt) mit dem Sitz in Düsseldorf (die „Emittentin“) begibt bis
+      zu 1.000.000 Stück auf den Inhaber lautende Schuldverschreibungen im Nennbetrag von jeweils EUR 1,00
+      (der „Nennbetrag“) der Serie „ATTRAM#03“ (die „Schuldverschreibungen“) im Gesamtnennbetrag von bis
+      zu EUR 1.000.000 (der „Gesamtnennbetrag“).
+
+1.2   Die Schuldverschreibungen werden für ihre gesamte Laufzeit durch Bewirkung der Eintragung in ein
+      elektronisches Wertpapierregister in der Form eines Kryptowertpapierregisters im Sinne des § 4 Absatz 1
+      Nr. 2 des Gesetzes über elektronische Wertpapiere („eWpG“) als elektronische Wertpapiere im Sinne des §
+      2 Absatz 1 eWpG begeben. Die Emittentin benennt die Cashlink Technologies GmbH, Sandweg 94, 60316
+      Frankfurt am Main als registerführende Stelle im Sinne des § 16 Absatz 2 Satz 1 eWpG. Die Emittentin
+      behält sich für die gesamte Laufzeit der Schuldverschreibungen ausdrücklich einen Wechsel der
+      registerführenden Stelle ohne Zustimmung der Anleihegläubiger gemäß § 16 Absatz 2 Satz 3 eWpG vor.
+
+1.3   Die Eintragung in das Kryptowertpapierregister erfolgt entweder als Sammeleintragung gemäß
+      § 8 Absatz 1 Nr. 1 eWpG oder als Einzeleintragung gemäß § 8 Absatz 1 Nr. 2 eWpG. Als Inhaber der
+      Schuldverschreibungen wird im Falle der Sammeleintragung eine Verwahrerin (die „Verwahrerin“)
+      eingetragen, die die die Schuldverschreibungen gemäß § 9 Abs. 2 eWpG treuhänderisch für die
+      Berechtigten aus den Schuldverschreibungen (die „Anleihegläubiger“) verwaltet, ohne selbst Berechtigte
+      zu sein (§ 9 Abs. 2 Satz 1 eWpG), im Falle der Einzeleintragung der Anleihegläubiger. Ein Anspruch der
+      Anleihegläubiger    auf   Ausreichung     effektiver   Schuldverschreibungsurkunden      ist   ausdrücklich
+      ausgeschlossen. Auf die Schuldverschreibungen ﬁnden die Regelungen des eWpG in der jeweils gültigen
+      Fassung Anwendung.
+
+1.4   Im Falle der Sammeleintragung gelten die Anleihegläubiger als Miteigentümer nach Bruchteilen an den in
+      Sammeleintragung eingetragenen Schuldverschreibungen. Der jeweilige Anteil bestimmt sich gemäß
+      § 9 Abs. 1 eWpG nach dem Nennbetrag der für den Anleihegläubiger in Sammeleintragung genommenen
+      Rechte.
+
+1.5   Die Schuldverschreibungen berechtigen die Anleihegläubiger von der Emittentin Zahlungen nach Maßgabe
+      dieser Anleihebedingungen zu verlangen. Zahlungen an die Anleihegläubiger hängen von den Erlösen ab,
+      die die Emittentin aus der Verwaltung und der Veräußerung von Kunstgegenständen (nachfolgend die
+      „Assets“) erzielt. Die Emittentin ist berechtigt, Assets fortlaufend zu erwerben und zu veräußern und Erlöse
+      aus dem Verkauf von Assets in den Erwerb weiterer Assets zu reinvestieren.
+
+1.6   Die Emittentin wird das eingezahlte Anleihekapital (der „ausstehende Nennbetrag“) sowie das vom
+      Anleihegläubiger gezahlte Agio und die aus der Verwaltung und/oder Veräußerung der Assets generierten
+      Erlöse abzüglich der Emissions- und Verwaltungskosten ausschließlich für Erwerbskosten, für
+      Verkaufsnebenkosten (wie in Ziff. 4.2 deﬁniert) sowie für die Rückzahlung der Schuldverschreibungen
+      verwenden. „Erwerbskosten“ sind (a) der Kaufpreis für den Erwerb eines Assets sowie (b)
+      Erwerbsnebenkosten wie Steuern, Gebühren und öffentliche Abgaben, Provisionen, Maklergebühren sowie
+      Kosten für die Beauftragung externer Berater, Gutachter, Rechtsanwälte und Steuerberater. „Emissions-
+      und Verwaltungskosten“ sind (a) ein Agio in Höhe von 2,0 % des Nennbetrages, (b) eine laufende
+      Verwaltungsgebühr in Höhe von 2,0 % p.a. bezogen auf den jeweils zum 30. April eines Jahres
+      ausstehenden Nennbetrag zur Deckung der Verwahr-, Versicherungs-, Transport- und Ausstellungskosten,
+      (c) 50 % der Einnahmen gemäß Ziff. 3.2 und (d) 10 % des Veräußerungsgewinns.
+1.7   Die Emittentin wird das eingezahlte Anleihekapital und die aus der Verwaltung und/oder Veräußerung der
+      Assets generierten Erlöse bis zu einer (Re-)Investition in Assets oder bis zur Rückzahlung der
+      Schuldverschreibungen wie folgt halten:
+
+      1.7.1          auf einem Konto bei einem Kreditinstitut im Sinne von Art. 4 Abs. 1 Nr. 1 der Verordnung (EU) Nr.
+                     575/2013 des Europäischen Parlaments und des Rates vom 26. Juni 2013 über
+                     Aufsichtsanforderungen an Kreditinstitute und Wertpapierﬁrmen mit Sitz in der Bundesrepublik
+                     Deutschland oder einem anderen Mitgliedstaat der Europäischen Union (das „CRR-Institut“);
+                     und/oder
+
+      1.7.2          in bei einem CRR-Institut verwahrte Darlehen an oder Schuldverschreibungen von einer
+                     Körperschaft oder Anstalt des öffentlichen Rechts (einschließlich Sondervermögen des Bundes)
+                     mit Sitz in der Bundesrepublik Deutschland, einem anderen Mitgliedstaat der Europäischen
+                     Union oder einem anderen Vertragsstaat des Abkommens über den Europäischen
+                     Wirtschaftsraums, die im Zeitpunkt ihres Erwerbs eine restliche Laufzeit von höchstens 180
+                     Tagen haben; und/oder
+
+      1.7.3          in bei einem CRR-Institut verwahrte Instrumente, die üblicherweise auf dem Geldmarkt gehandelt
+                     werden, oder in verzinsliche Wertpapiere, die im Zeitpunkt ihres Erwerbs eine restliche Laufzeit
+                     von höchstens 180 Tagen haben, deren Verzinsung während ihrer gesamten Laufzeit regelmäßig,
+                     mindestens aber einmal in 180 Tagen, marktgerecht angepasst wird oder deren Risikoproﬁl dem
+                     Risikoproﬁl solcher Wertpapiere entspricht, und für die im Zeitpunkt ihres Erwerbs mindestens
+                     ein Investment-Grade-Rating einer Ratingagentur vorliegt, oder in Geldmarktfonds mit
+                     entsprechender Laufzeit- und Risikostruktur.
+
+1.8   Die     Schuldverschreibungen        sind   übertragbar.    Im   Falle   der   Sammeleintragung    können    die
+      Miteigentumsanteile          der    Anleihegläubiger       an    dem     als   Sammelbestand      eingetragenen
+      Schuldverschreibungen nach Maßgabe des jeweils anwendbaren Rechts durch Einigung und Umstellung
+      des Besitzmittlungsverhältnisses mit der Verwahrerin übertragen werden. Im Falle der Einzeleintragung
+      erfolgt die Übertragung der Schuldverschreibungen durch Umtragung der Schuldverschreibungen im
+      Kryptowertpapierregister auf den Erwerber auf Weisung des Anleihegläubigers.
+
+
+
+2.    Status, Rangrücktritt und vorinsolvenzliche Durchsetzungssperre
+
+2.1   Die Schuldverschreibungen begründen unmittelbare, nachrangige sowie unbesicherte Verbindlichkeiten
+      der Emittentin, die eine vorinsolvenzrechtliche Durchsetzungssperre enthalten und untereinander
+      gleichrangig sind.
+
+2.2   Der Anleihegläubiger tritt in einem Insolvenzverfahren über das Vermögen der Emittentin sowie im Falle
+      der Liquidation der Emittentin hiermit gemäß §§ 19 Abs. 2 Satz 2, 39 Abs. 2 InsO mit seinen Ansprüchen
+      auf Zahlung der Zinsen und des Rückzahlungsbetrages (zusammen „Zahlungsansprüche des
+      Anleihegläubigers“) im Rang hinter die Forderungen im Sinne des § 39 Abs. 1 Nr. 1 bis 5 InsO zurück.
+
+2.3   Außerhalb eines Insolvenzverfahrens über das Vermögen der Emittentin sowie außerhalb einer
+      Liquidation der Emittentin sind Zahlungen auf die Zahlungsansprüche des Anleihegläubigers solange und
+      soweit ausgeschlossen, wie
+
+      a.       die Zahlungen zu
+
+               i.        einer Überschuldung der Emittentin im Sinne des § 19 InsO oder
+
+               ii.       einer Zahlungsunfähigkeit der Emittentin im Sinne des § 17 InsO führen.
+
+      b.       bei der Emittentin eine Überschuldung im Sinne von § 19 InsO oder eine Zahlungsunfähigkeit im
+               Sinne von § 17 InsO besteht
+(„vorinsolvenzliche Durchsetzungssperre“).
+
+2.4   Der Anleihegläubiger erklärt durch die vorstehenden Regelungen der Ziff. 2.2 bis Ziff. 2.3 keinen Verzicht
+      auf seine Ansprüche aus den Schuldverschreibungen.
+
+
+
+3.    Verzinsung, Fälligkeit, Verzug
+
+3.1   Die Schuldverschreibungen werden ab dem 04.06.2024 bis zu ihrer Rückzahlung bezogen auf ihren
+      ausstehenden Nennbetrag variabel verzinst. Die Höhe der Zinsen ist abhängig von einem etwaig erzielten
+      Einnahmeüberschuss der Emittentin aus der Verwaltung der Assets (wie in Ziff. 3.2 deﬁniert).
+
+3.2   Die Anleihegläubiger haben einen quotalen Anspruch auf 50 % der Einnahmen aus der Verwaltung der
+      Assets (insbesondere durch deren Ausstellung).
+
+3.3   Die Zinsen sind vorbehaltlich der Ziff. 2.2 und Ziff. 2.3 jährlich nachträglich innerhalb eines Monats nach
+      dem Ablauf einer Zinsperiode zur Zahlung fällig. Zinsperioden beginnen am 04. Juni eines Jahres
+      (einschließlich) und enden am 03. Juni des folgenden Jahres (einschließlich). Die letzte Zinszahlung ist
+      am Rückzahlungstag fällig. Die Höhe der Zinszahlungen wird zum Ablauf einer Zinsperiode von der
+      Emittentin berechnet.
+
+3.4   Der Zinsanspruch eines Anleihegläubigers besteht anteilig im Verhältnis seines eingezahlten
+      Anleihekapitals zu dem am Ende der jeweiligen Zinsperiode ausstehenden Nennbetrag der
+      Schuldverschreibungen.
+
+3.5   Die Verzinsung der Schuldverschreibungen endet mit Ablauf des 04. Juni 2029 bzw. im Falle einer
+      Verlängerung der Laufzeit gemäß Ziff. 4.1 mit Ablauf des 03. Juni 2031.
+
+
+
+4.    Laufzeit, Rückzahlung, Rückerwerb
+
+4.1   Die Laufzeit der Schuldverschreibungen beginnt am 04. Juni 2024 und endet mit Ablauf des 03. Juni 2029.
+      Die Emittentin ist einseitig berechtigt, die Laufzeit um zwei Jahre bis zum 03. Juni 2031 durch
+      Bekanntmachung gemäß Ziff. 10 mit einer Frist von mindestens vier Wochen vor dem Ende der Laufzeit zu
+      verlängern.
+
+4.2   Die Schuldverschreibungen werden innerhalb eines Monats nach dem Ende der Laufzeit (der Tag der
+      tatsächlichen   Zahlung   der   „Rückzahlungstag“)     vorbehaltlich   der   Ziff. 2.2   und   Ziff. 2.3 zum
+      Rückzahlungsbetrag an die Anleihegläubiger zurückgezahlt. Soweit die Emittentin den Rückzahlungsbetrag
+      am Rückzahlungstag nicht (vollständig) an die Anleihegläubiger leistet, erlöschen die Ansprüche aus den
+      Schuldverschreibungen erst am Tag der vollständigen Zahlung des Rückzahlungsbetrages.
+
+      Der „Rückzahlungsbetrag“ beträgt 100 % des Nennbetrages zzgl. eines anteiligen Gewinnanteils in Höhe
+      von 90 % des Veräußerungsgewinns.
+
+      „Veräußerungsgewinn“ ist die Summe der der Emittentin endgültig liquiditätswirksam zugeﬂossenen
+      Verkaufserlöse aus der Veräußerung von Assets abzüglich der Erwerbskosten sowie abzüglich der
+      Verkaufsnebenkosten.
+
+      „Verkaufsnebenkosten“ sind die bei einem Verkauf eines Assets anfallenden Steuern, Gebühren und
+      öffentlichen Abgaben, Provisionen, Maklergebühren sowie Kosten für die Beauftragung externer Berater,
+      Gutachter, Rechtsanwälte und Steuerberater.
+
+4.3   Der Gewinnanteil wird an die Anleihegläubiger anteilig im Verhältnis des ausstehenden Nennbetrages
+      eines Anleihegläubigers zum am Rückzahlungstag oder, sollte die Emittentin den Rückzahlungsbetrag am
+      Rückzahlungstag nicht (vollständig) leisten, zum am Tag der tatsächlichen Rückzahlung ausstehenden
+      Nennbetrag aller Schuldverschreibungen ausgezahlt. Die Höhe des Rückzahlungsbetrages wird von der
+      Emittentin berechnet.
+
+4.4   Die Emittentin ist berechtigt, Schuldverschreibungen zu erwerben und zu veräußern.
+
+
+
+5.    Handlungspﬂichten der Emittentin
+
+5.1   Die Emittentin stellt sicher, dass die Assets über die Laufzeit der Schuldverschreibungen mindestens in
+      Höhe ihres Erwerbspreises jederzeit gegen Verlust, Beschädigung und Diebstahl versichert sind. Der
+      Versicherungsschutz ist zu jedem Zeitpunkt zu gewährleisten, sei es bei der Verwahrung, dem Transport
+      oder bei etwaigen Ausstellungen der Assets.
+
+5.2   Die Emittentin stellt sicher, dass die Assets, soweit sie nicht im Rahmen eines Erwerbs oder Verkaufs
+      transportiert   oder    im   Rahmen   einer   Ausstellung    transportiert und/oder ausgestellt werden,
+      ordnungsgemäß bei einem darauf spezialisierten Drittanbieter verwahrt werden. Bei dem Abschluss der
+      Verwahrverträge ist darauf zu achten, dass die Lagerräume gegen Feuer- und Wasserschäden und
+      sonstige äußere Einﬂüsse geschützt sind und die für die Aufbewahrung der Assets korrekte Temperatur
+      und Luftfeuchtigkeit aufweisen.
+
+
+
+6.    Zahlstelle, Zahlungen, Hinterlegung
+
+6.1   Zahlstelle ist die Emittentin in eigener Durchführung. Die Emittentin kann jederzeit durch Bekanntmachung
+      gemäß Ziff. 10 mit einer Frist von mindestens 30 Tagen eine externe Zahlstelle als Zahlstelle bestellen.
+      Soweit die Emittentin eine externe Zahlstelle bestellt, handelt die Zahlstelle in ihrer Eigenschaft als solche
+      ausschließlich als Beauftragte der Emittentin und steht nicht in einem Auftrags- oder Treuhandverhältnis
+      zu den Anleihegläubigern. Die Zahlstelle übernimmt keinerlei Verpﬂichtungen gegenüber den
+      Anleihegläubigern.
+
+6.2   Die Emittentin verpﬂichtet sich, Zahlungen auf die Schuldverschreibungen bei Fälligkeit in Euro zu zahlen.
+      Die vorgenannten Zahlungen befreien die Emittentin in Höhe der geleisteten Zahlungen von ihren
+      entsprechenden Verbindlichkeiten aus den Schuldverschreibungen.
+
+6.3   Falls eine Zahlung auf die Schuldverschreibungen an einem Tag zu leisten ist, der kein Geschäftstag ist, so
+      erfolgt die Zahlung am nächstfolgenden Geschäftstag. In diesem Fall steht den betreffenden
+      Anleihegläubigern weder eine Zahlung noch ein Anspruch auf Verzugszinsen oder eine andere
+      Entschädigung wegen dieser Verzögerung zu.
+
+6.4   „Geschäftstag“ im Sinne dieser Anleihebedingungen ist jeder Tag (außer einem Samstag oder Sonntag),
+      an dem das Trans-European Automated Real-Time Gross Settlement Express Transfer System 2
+      (TARGET2) oder ein entsprechendes Nachfolgesystem geöffnet ist und Zahlungen abwickelt.
+
+6.5   Die Emittentin ist berechtigt, alle auf die Schuldverschreibungen zahlbaren Beträge, auf die
+      Anleihegläubiger innerhalb von zwölf Monaten nach Fälligkeit keinen Anspruch erhoben haben, bei dem
+      Amtsgericht am Sitz der Emittentin zu hinterlegen. Soweit die Emittentin auf das Recht zur Rücknahme der
+      hinterlegten Beträge verzichtet, erlöschen die betreffenden Ansprüche der Anleihegläubiger gegen die
+      Emittentin. Der Anleihegläubiger muss dann seine Ansprüche aus den Schuldverschreibungen gegenüber
+      der Hinterlegungsstelle geltend machen.
+7.    Steuern
+
+7.1   Alle Zahlungen auf die Schuldverschreibungen erfolgen unter Abzug und/oder Einbehaltung von Steuern,
+      Abgaben und sonstigen Gebühren, soweit die Emittentin zum Abzug und/oder zur Einbehaltung gesetzlich
+      verpﬂichtet ist. Die Emittentin ist nicht verpﬂichtet, den Gläubigern zusätzliche Beträge als Ausgleich für
+      auf diese Weise abgezogene oder einbehaltene Beträge zu zahlen.
+
+7.2   Soweit die Emittentin nicht gesetzlich zum Abzug und/oder zur Einbehaltung von Steuern, Abgaben oder
+      sonstigen Gebühren verpﬂichtet ist, trifft sie keinerlei Verpﬂichtung im Hinblick auf abgaberechtliche
+      Verpﬂichtungen der Anleihegläubiger.
+
+
+
+8.    Kündigung durch Anleihegläubiger
+
+8.1   Ein ordentliches Kündigungsrecht für die Anleihegläubiger besteht nicht. Jeder Anleihegläubiger ist
+      berechtigt, die Schuldverschreibungen gegenüber der Emittentin ohne Einhaltung einer Kündigungsfrist zu
+      kündigen und vorbehaltlich der Ziff. 2.2 und Ziff. 2.3 deren sofortige Rückzahlung zum Nennbetrag zu
+      verlangen, wenn ein wichtiger Grund vorliegt. Ein wichtiger Grund liegt insbesondere dann vor, wenn
+
+      8.1.1     die Emittentin ihre Zahlungsunfähigkeit schriftlich allgemein bekannt gibt oder ihre Zahlungen
+                allgemein einstellt; oder
+
+      8.1.2     ein Insolvenzverfahren über das Vermögen der Emittentin eröffnet und nicht innerhalb von 30
+                Tagen nach der Eröffnung aufgehoben oder ausgesetzt wird oder durch die Emittentin beantragt
+                oder die Eröffnung eines Insolvenzverfahrens mangels Masse abgelehnt wird; oder
+
+      8.1.3     die Emittentin eine wesentliche Verpﬂichtung, Bedingung oder Vereinbarung hinsichtlich der
+                Schuldverschreibungen       nicht   erfüllt   oder beachtet (die „Pﬂichtverletzung“) und die
+                Nichterfüllung oder Nichtbeachtung länger als 30 Tage andauert, nachdem die Emittentin
+                hierüber von dem Anleihegläubiger, welchen die Pﬂichtverletzung betrifft, eine Benachrichtigung
+                erhalten hat, durch welche die Emittentin vom Anleihegläubiger aufgefordert wird, die
+                Verpﬂichtung, Bedingung oder Vereinbarung zu erfüllen oder zu beachten; oder
+
+      8.1.4     die Emittentin in Liquidation tritt, es sei denn, dies geschieht im Zusammenhang mit
+                gesellschaftsrechtlichen Maßnahmen (z. B. einer Verschmelzung oder einer anderen Form des
+                Zusammenschlusses mit einer anderen Gesellschaft), sofern diese andere Gesellschaft ein
+                verbundenes Unternehmen der Emittentin im Sinne von § 15ff. AktG ist und alle Verpﬂichtungen
+                übernimmt, die die Emittentin im Zusammenhang mit den Schuldverschreibungen eingegangen
+                ist.
+
+      8.1.5     der Anleihegläubiger oder im Falle einer Sammeleintragung auch die Verwahrerin der Emittentin
+                erfolglos eine angemessene Frist zur Wiederherstellung der Funktionstüchtigkeit eines nicht
+                funktionstüchtigen    Kryptowertpapierregisters      gesetzt   hat.   Der   Wiederherstellung   der
+                Funktionstüchtigkeit des Registers steht die Übertragung der Schuldverschreibungen auf ein
+                anderes elektronisches Wertpapierregister nach § 21 Absatz 2 und § 22 eWpG gleich.
+
+      Ein wichtiger Grund, der zur außerordentlichen Kündigung der Schuldverschreibungen berechtigt, ist
+      insbesondere nicht allein deshalb anzunehmen, weil sich die Vermögensverhältnisse der Emittentin
+      verschlechtert haben. Sofern die Emittentin Sanierungsbemühungen beabsichtigt, insbesondere wenn sich
+      diese Absicht durch Einberufung einer Gläubigerversammlung oder Ankündigung der Einberufung einer
+      Gläubigerversammlung konkretisiert, ist eine Ausübung der in Ziff. 8 geregelten oder sonstiger
+      außerordentlicher Kündigungsrechte der Anleihegläubiger jeweils bis zum Ablauf von 120 Tagen nach dem
+      Zeitpunkt der Ankündigung oder Einberufung einer Gläubigerversammlung ausgeschlossen, sofern
+      Gegenstand der Gläubigerversammlung Sanierungsmaßnahmen sind.
+8.2    Eine Kündigungserklärung nach dieser Ziff. 8 hat in der Weise zu erfolgen, dass der Anleihegläubiger der
+       Emittentin die Erklärung in Textform (§ 126b BGB) samt Glaubhaftmachung der Berechtigung an den
+       Schuldverschreibungen (z.B. aktueller Depotauszug) übersendet und die Umstände darlegt, aus denen sich
+       die vorzeitige Fälligstellung gemäß dieser Ziff. 8 ergibt.
+
+8.3    Das Kündigungsrecht erlischt, falls der Kündigungsgrund vor Ausübung des Rechts geheilt wurde.
+
+
+
+9.     Kündigung durch die Emittentin
+
+9.1    Die Emittentin ist berechtigt, aber nicht verpﬂichtet, die Schuldverschreibungen vorzeitig zu kündigen und
+       zum Nennbetrag an die Anleihegläubiger zurückzuzahlen, wenn innerhalb von drei Monaten nach dem
+       Beginn der Laufzeit der Schuldverschreibungen nicht mindestens 25 % des Gesamtnennbetrages platziert
+       und bei der Emittentin eingezahlt wurden.
+
+9.2    Die Emittentin hat die vorzeitige Kündigung mit einer Frist von mindestens 14 Tagen gemäß Ziff. 10
+       bekannt zu machen.
+
+
+
+10.    Bekanntmachungen
+
+       Die Schuldverschreibungen betreffende Bekanntmachungen werden im Bundesanzeiger veröffentlicht.
+       Eine Mitteilung gilt mit dem Tag ihrer Veröffentlichung (oder bei mehreren Mitteilungen mit dem Tage der
+       ersten Veröffentlichung) als erfolgt.
+
+
+
+11.    Änderungen der Anleihebedingungen durch die Emittentin
+
+11.1   Die   §§    5    bis   22    des    Gesetzes     über    Schuldverschreibungen   aus    Gesamtemissionen
+       (Schuldverschreibungsgesetz) ﬁndet auf die Schuldverschreibungen und diese Anleihebedingungen
+       Anwendung. Die Anleihegläubiger können Änderungen der Anleihebedingungen - einschließlich einzelner
+       oder aller Maßnahmen nach § 5 Abs. 5 des Schuldverschreibungsgesetzes - durch Mehrheitsbeschluss
+       zustimmen und einen gemeinsamen Vertreter für die Wahrnehmung ihrer Rechte bestellen.
+
+11.2   Alle Abstimmungen gemäß dem Schuldverschreibungsgesetz werden ausschließlich im Wege einer
+       Abstimmung ohne Versammlung durchgeführt.
+
+
+
+12.    Maßgebliches Recht, Gerichtsstand, Vorlegungsfrist, maßgebliche Sprache
+
+12.1   Form und Inhalt der Schuldverschreibungen und alle sich daraus ergebenden Rechte und Pﬂichten der
+       Anleihegläubiger und der Emittentin unterliegen dem Recht der Bundesrepublik Deutschland.
+
+12.2   Gerichtsstand für alle sich aus dem Rechtsverhältnis zwischen Anleihegläubiger und Emittentin
+       ergebenden Rechtsstreitigkeiten ist der Sitz der Emittentin. Diese Gerichtsstandvereinbarung beschränkt
+       nicht das Recht eines Gläubigers, Verfahren vor einem anderen zuständigen Gericht anzustrengen. Ebenso
+       wenig schließt die Einleitung von Verfahren vor einem oder mehreren anderen Gerichtsständen die
+       Einleitung von Verfahren an einem anderen Gerichtsstand aus, falls und soweit dies rechtlich zulässig ist.
+
+12.3   Die Vorlegungsfrist für die Schuldverschreibungen beträgt für Kapital und Zinsen ein Jahr. Erfolgt die
+       Vorlegung, so verjährt der Anspruch in zwei Jahren von dem Ende der Vorlegungsfrist an. Erfolgt die
+       Vorlegung nicht, so erlischt der Anspruch mit dem Ablauf der Vorlegungsfrist. Die Vorlegung einer
+       Schuldverschreibung im Sinne des § 801 des Bürgerlichen Gesetzbuchs (BGB) erfolgt durch
+       ausdrückliches Verlangen der Leistung unter Glaubhaftmachung der Berechtigung.
+
+12.4   Diese Anleihebedingungen sind in deutscher Sprache abgefasst. Nur dieser deutsche Text ist verbindlich
+       und maßgeblich.
+
