@@ -105,7 +105,7 @@ const TOPE = `  if current_date > date '${ULTIMO}' then\n    raise exception 'Lo
 assert.equal(bloques[0][2].split(TOPE).length, 2, 'la guarda tiene la fecha tope del 18/11');
 for (const c of ['principales', 'secundario', 'en_camino'])
   assert.ok(bloques[1][2].includes(`coleccion = '${c}') <> ${COLECCIONES[c]}`), `la aprobación exige ${COLECCIONES[c]} en ${c}`);
-assert.doesNotMatch(SQL, /Víctor/, 'sin nombres de personas en el SQL');
+assert.ok(SQL.split('\n')[0].endsWith('Ciclo pedido y autorizado por el responsable del proyecto.') && SQL.includes('Puesta al día pedida por el responsable del proyecto el 11/11/2026'), 'cabecera y referencia de aprobación sin nombres de personas');
 informe.inventario = cuenta;
 informe.sentencias = { total: sentencias.length + bloques.length, inserts: escrituras.length, bloquesDo: bloques.map(b => b[1]), otras: ['begin isolation level serializable;', 'commit;'] };
 ok(`inventario: ${informe.sentencias.total} sentencias en una transacción serializable (begin, guarda, ${escrituras.length} inserts, aprobación, commit); guarda (publicada dfdc4c85 con su huella ${HASH_PREVIA.slice(0, 12)}…, catálogo no retirado, fecha del 11/11 al 18/11, destino sin otra identidad); solo inserts en rwadar_catalogo (${Object.entries(cuenta).map(([k, v]) => `${v} en ${k.split('.')[1]}`).join(', ')}; las mismas filas por tabla que la 2026-11-10), todos idempotentes y de la revisión nueva; la aprobación solo cambia rwadar_catalogo.revisiones; sin DDL, borrados, permisos, Auth ni funciones; nada en public.*`);

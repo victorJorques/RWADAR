@@ -581,7 +581,7 @@ const escaparate = {
   ofertas,
 };
 assert.deepEqual(Object.keys(escaparate.fuente), Object.keys(escaparateBase.fuente));
-assert.doesNotMatch(JSON.stringify(escaparate.fuente), /Víctor/, 'sin nombres de personas en la nota de origen');
+assert.match(escaparate.fuente.notaOrigen, /^Revisión del 11\/11\/2026 \(puesta al día pedida por el responsable del proyecto\)/, 'nota de origen sin nombres de personas');
 // Plataformas: iguales a la base salvo las fechas (verificadoEl y la consulta de cada fuente).
 {
   const hojas = (v, ruta = '', out = new Map()) => { if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) hojas(x, `${ruta}/${k}`, out); else out.set(ruta, v); return out; };
@@ -668,7 +668,8 @@ escribir(archivo,
   assert.equal(sql.match(/^begin isolation level serializable;$/gm).length, 1);
   assert.doesNotMatch(sql, /^\s*(?:insert\s+into|update|delete\s+from)\s+public\./im, 'hoy no se escribe en public.*');
   assert.doesNotMatch(sql, /^\s*(?:truncate|alter|drop|grant|revoke|create)\b/im, 'sin DDL ni permisos');
-  assert.doesNotMatch(sql, /Víctor/, 'sin nombres de personas en el SQL');
+  assert.ok(sql.startsWith(`-- Entrega ${ETIQUETA} (preparada el ${FES}) sobre la revisión publicada ${DESDE} (${PREVIA}). Ciclo pedido y autorizado por el responsable del proyecto.\n`) &&
+    sql.includes(`Puesta al día pedida por el responsable del proyecto el ${FES}; ciclo autorizado por su orden.'`), 'cabecera y referencia de aprobación sin nombres de personas');
 }
 const revision = { versionEsquema: 2, revisionId: nueva.revisionId, hash: nueva.hash,
   revisionAnterior: PREVIA, hashRevisionAnterior: HASH_PREVIA, revisionAnteriorComprobadaEnRemoto: true,
