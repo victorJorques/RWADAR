@@ -1,0 +1,7 @@
+{
+  "fecha": "2026-11-11",
+  "nota": "Cambios del radar comprobados a mano el 11/11/2026. La comprobación automática (comprobar-radar.mjs) los aplica antes de contrastar y preparar-entrega.mjs los lleva al lote.",
+  "fuentes": {},
+  "plataformas": {},
+  "verificacionesManuales": {}
+}
