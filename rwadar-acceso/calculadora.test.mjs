@@ -182,6 +182,9 @@ test('en Chromium: «Calcula tus números» en Inicio (390 y 1366): ejemplo, tus
       await pagina.fill('#ciInversion', '1.000');
       await pagina.fill('#ciRentabilidad', '4');
       await pagina.fill('#ciAnios', '5');
+      // Tras el último campo válido el resultado se repinta (pasa del error a la cifra) y lo de debajo se mueve:
+      // se espera al repintado antes de pulsar, como haría una persona (fallo intermitente con la máquina cargada).
+      await esperar();
       await pagina.check('#ciModoCobrar');
 
       // 5 · «Afinar»: comisiones, impuestos, el activo entero y el precio de cada participación.
