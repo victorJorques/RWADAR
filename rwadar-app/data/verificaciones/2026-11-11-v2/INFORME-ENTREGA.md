@@ -255,6 +255,10 @@ nombres de personas.
 ## 7. Pendiente
 
 - El auditor: que compruebe que las correcciones de §9 no colaron nada más.
+- Los nombres que quitó O1 siguen en los commits ya subidos de la rama.
+  Reescribir la historia o hacer *force push* necesita permiso del responsable
+  del proyecto. Si el PR se une con *squash* y se borra la rama, esos commits
+  no llegan a `main`.
 - El coordinador decide los puntos 2 y 3 de §6 (el 5 ya está resuelto por la
   C1). Los dos cambian el SQL; si se cambian, hay que regenerar y repetir las
   pruebas y el ensayo. Los tres revisores aconsejan dejarlos como están.
@@ -292,6 +296,175 @@ nombres de personas.
 6. Publicar la web y **enviar la OTA**: la app lleva `transparencia.json`
    empaquetado (mínimos cortos de Brickwise y de Switzerlend).
 
+## 9. Correcciones aplicadas
+
+Hechas el 11/11/2026 entre las 15:19 y las 15:35 UTC. Antes de tocar nada
+guardé una copia del SQL en
+`/tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/entrega-1111/sql-antes-correcciones-2026-11-11/`
+(los tres archivos).
+
+**Ninguna corrección cambia el SQL.** `aplicar-y-aprobar.sql` (`dfeba195…a3cb`),
+`catalogo.sql` (`d8d7f12d…7add`) y `revision.json` (`03df9312…9d70`) son
+idénticos a esa copia (`cmp`). La revisión sigue siendo la
+`24b5f7de-2834-3e15-6ae4-62a6d9565161`, con la misma huella. Las otras cinco
+salidas de `preparar-entrega.mjs` tampoco cambian.
+
+### Obligatorias
+
+- **C1 (contenido) · Switzerlend, mínimo corto con la fecha de la ficha.**
+  En `despues-de-aplicar.mjs`, el cambio del revisor tal cual. Tras el bucle
+  de Brickwise, el script exige que la ficha diga «1 acción (68,01 CHF el
+  11/11)» y que el mínimo corto de partida sea el del 10/11 (o ya el de hoy).
+  Después lo pasa a «1 acción (68,01 CHF, 11/11)». En «Nada más cambia», el
+  mínimo de Switzerlend queda fuera de la comparación, igual que los de
+  Brickwise. Además, el comentario de cabecera y los mensajes nombran a
+  Switzerlend, con una línea más en la salida («Mínimo corto de Switzerlend:
+  …»). Resultado en el ensayo:
+  - `transparencia.json` da `81e78ab9…3808`, el mismo SHA-256 que obtuvo el
+    revisor. Frente a lo montado antes (`1959f8be…c66b`), solo cambia ese
+    `minimoCorto`.
+  - La tarjeta y «Lo esencial» de la app dicen «Mínimo 1 acción (68,01 CHF,
+    11/11) · España Sí».
+  - La web y la app (`rwadar-20260820.js` y `transparencia-contenido.js`) ya no
+    llevan ningún «68,01 CHF, 10/11».
+- **O1 (cumplimiento) · Nombres de personas físicas en lo que ya está en Git.**
+  Ejecuté el script del revisor (§6 de su informe), guardado en la carpeta
+  temporal, desde la raíz:
+  `python3 -I …/scratchpad/entrega-1111/recortar-o1.py rwadar-app/data/verificaciones/2026-11-11-v2`.
+  - Salió con exit 0 e imprimió 5, 9, 1, 1 y 15 líneas.
+  - `git diff --numstat` dio exactamente 31 líneas en esos cinco archivos, y
+    nada más. Cada nombre es ahora «[persona física recortada]» (en arttrade,
+    «[artista omitido]»).
+  - Después repetí el barrido como pide el revisor, incluida `noticias/`.
+    **Encontré los mismos nombres de artistas en otras cuatro copias del menú
+    de arttrade**, que el revisor no había listado:
+    `arttrade-basis-informationsblaetter.txt`, `arttrade-risikoinformationen.txt`
+    y `arttrade-verbraucherinformationen.txt` (las mismas 15 líneas, 42 a 76,
+    idénticas a las de `arttrade-anleihebedingungen.txt` antes del recorte) y
+    `arttrade-art-investment.txt` (líneas 83, 85, 87 y 89).
+  - Los recorté de la misma forma, por número de línea y sin escribir ningún
+    nombre (`recortar-o1-restos.py`, en la misma carpeta temporal). Fueron 49
+    líneas. Ningún inventario fija el SHA-256 de esas copias.
+  - Comprobaciones:
+    - Barrido de los 21 nombres que quitó O1, completos, en los 347 archivos que
+      sigue Git en la carpeta del ciclo: **0 restos**. Buscando solo el apellido
+      salen 8 apariciones en 5 archivos, y todas son el nombre de una empresa,
+      de una calle o del auditor de un emisor.
+    - Barrido por cargos y tratamientos (`barrido.py`, ampliado a `noticias/`):
+      17 resultados, todos falsos (menús, empresas, lugares).
+    - Barrido con nombres de pila frecuentes: 20 resultados. Son el premio de
+      periodismo de la CNMV que el revisor deja fuera, direcciones del registro
+      de ESMA, «São Francisco», «St Peter Port», «Marco Legal» y nombres de
+      empresas o de informes.
+    - gitleaks 8.30.1 con `rwadar-app/gitleaks.toml` y las opciones de
+      `ci.yml`, sobre todo lo que sigue Git en el árbol de trabajo (137,8 MB):
+      «no leaks found». También sobre los 63 archivos que regenera el ensayo:
+      «no leaks found».
+  - Los nombres siguen en la historia ya subida de la rama: reescribirla
+    necesita permiso del responsable del proyecto (§7).
+
+### Pruebas repetidas después de corregir (salida real)
+
+1. **`preparar-entrega.mjs`, dos veces seguidas** (15:22 UTC): exit 0 las dos.
+   Las 8 salidas tienen el mismo SHA-256 antes, en la primera y en la segunda
+   ejecución (`radar-canonico-26.json` `0b8a0d3e…57b0`,
+   `escaparate-publicacion.json` `367d0f8a…27c8`, `documentacion-ofertas.json`
+   `aa1cc5b2…3df6`, `manifiesto-catalogo.json` `c2c51919…4224`,
+   `contraste-2026-11-11.json` `a55ff884…9845`, `catalogo.sql`
+   `d8d7f12d…7add`, `aplicar-y-aprobar.sql` `dfeba195…a3cb`, `revision.json`
+   `03df9312…9d70`). La salida por pantalla es la misma: `"revisionId":"24b5f7de-…"`,
+   `"sha256":"dfeba195…a3cb"`, 25/69/22, 8/13/1, `"cambios":63`, `"noAplicado":3`.
+2. **Copia aparte nueva** (`git clone` en 17f2c01, que ya lleva C1 y O1, en
+   `…/scratchpad/entrega-1111/ensayo-2026-11-11-corr`).
+3. **`comprobar-entrega.mjs --exportar=DIR`** (15:23 UTC): exit 0, «resultado:
+   correcto», 19 comprobaciones y 6 casos de fallo, todos «OK».
+   `pruebas-locales.json` es igual que el de las 10:30 salvo la hora y la
+   carpeta de exportación. Las vistas exportadas son iguales a las de las 10:30
+   salvo los `plataforma_id`, que PGlite genera al azar.
+4. **`despues-de-aplicar.mjs` antes de sincronizar**: exit 1, «el catálogo
+   sincronizado no es la revisión 24b5f7de-…: aplica antes el SQL…», y
+   `transparencia.json` se queda en `67e89ba3…2ea8`. Lo mismo en la carpeta
+   de trabajo.
+5. **Ensayo «después de aplicar»** (15:23–15:28 UTC):
+   - `sincronizar.js` con el REST simulado: «25 plataformas verificadas, 5
+     descartadas y 22 ofertas clasificadas. rwadar.csv regenerado: 30 filas.»,
+     sin diferencias en el CSV.
+   - `despues-de-aplicar.mjs`: exit 0. Dice «… mínimos cortos de las 11 de
+     Brickwise y de Switzerlend», «Comprobaciones de transparencia al 11/11: 43
+     de 44» (sigue mTBILL «supervisada»), «11 de 11» títulos y «Mínimo corto
+     de Switzerlend: «1 acción (68,01 CHF, 11/11)»». SHA-256 `81e78ab9…3808`.
+     Repetido: exit 0, «Nada que cambiar: ya estaba hecho.», mismo SHA-256.
+   - `volcar-seed.js`: «25 en el radar, 5 descartadas, 13 fuentes», sin
+     diferencias.
+   - `transparencia.mjs`: «22 ofertas con transparencia».
+   - `rwadar-fichas.js`: «Archivos actualizados: 55».
+   - **`npm test`**: exit 0 en 3 min 23 s.
+     - Base de datos: 28 scripts con «0 fallidas» (1.161 comprobaciones), «30
+       comprobaciones SQL correctas, sin red», 11/11 y 99/99.
+     - Web: 661 correctas y 0 fallidas, 70 verificaciones de páginas y RSS y
+       40 de precarga.
+     - QR: «Todo correcto: el código se lee.»
+     - Móvil: 525 de 527 (2 omitidas, 0 fallos).
+     - Herramientas: «fichas.json: 22 fichas (22 con foto), catálogo
+       2026-11-11-v2», «Transparencia al día: 22 ofertas con transparencia» y
+       «Diferencias: 0».
+     - Acceso: 248/248.
+   - «Lo esencial» de la app con su código: frente a la pasada anterior solo
+     cambia Switzerlend («Mínimo: 1 acción (68,01 CHF, 11/11) · España: Sí,
+     según la fuente · Salida: Venta a otros accionistas»). Las otras 21 dan
+     lo mismo.
+
+### Recomendadas
+
+Aplicadas (no amplían DECISIONES ni cambian cifras):
+- **SQL, 1.ª** (confirmar el SHA-256, volver a leer como visitante, aplicar
+  solo `aplicar-y-aprobar.sql` antes del 18/11 y con margen por la hora UTC):
+  ya estaba en §8, pasos 1 a 3.
+- **SQL, 2.ª** (la aprobación vale solo para `dfeba195…a3cb`): no se ha
+  aceptado ningún punto abierto que cambie el SQL, y el SHA-256 no cambia.
+- **SQL, 3.ª**: es la C1 de arriba.
+- **SQL, 5.ª** (el flujo «Leer el lote publicado» ordena por id): anotado en
+  §8, paso 4. El flujo no se toca.
+- **Cumplimiento, R11** (barrido que entre en `noticias/` y use nombres de
+  pila): hecho para esta carpeta (ver O1); es lo que encontró las cuatro
+  copias de arttrade. Los scripts del barrido están en la carpeta temporal, no
+  en el repositorio.
+
+No aplicadas:
+- **SQL, 4.ª y 7.ª** (escribir en DECISIONES las referencias del libro de
+  órdenes y dónde está el «antes» corregido de los expedientes suizos):
+  DECISIONES está cerrado y es del coordinador. Los expedientes no se editan.
+  El informe ya lo explica (§3 y §6.4) y no cambia el SQL. Lo puede añadir el
+  coordinador.
+- **SQL, 6.ª y 10.ª** (`despues-de-aplicar.mjs` y el generador en lotes
+  futuros): el revisor las deja para entonces. Hoy no cambian ninguna fecha:
+  comprobó una a una las 54.
+- **SQL, 8.ª; contenido R3; cumplimiento R2 y R10** (Hausera): DECISIONES deja
+  la tarjeta igual, y el aviso y los textos nuevos cambiarían el SQL. Son para
+  la próxima entrega, y hay que mirar Hausera el 18/11.
+- **SQL, 9.ª** (nombre de pila del responsable del proyecto en cuatro
+  documentos internos): tres son del coordinador (DECISIONES y el encargo) o un
+  expediente, que no se editan. Ningún revisor lo exige, y el nombre ya está en
+  `AGENTS.md`. Lo decide el coordinador.
+- **Contenido R1** (Pottendorfer a 69 € a las 14:25 UTC): solo si el SQL se
+  regenera por otro motivo, y no se regenera. Cambiaría una cifra del SQL y
+  habría que volver a leer el libro de las 11.
+- **Contenido R2** (mTBILL «supervisada» al 11/11): DECISIONES §1 solo pone la
+  fecha del 11/11 donde el expediente de hoy volvió a consultar la fuente. La
+  lectura de la BaFin es del revisor, no del expediente.
+- **Contenido R4, R5, R7 y R8; cumplimiento R4, R6, R7 y R8**: cambian textos
+  del SQL (referencias, alcances, avisos o el radar) que DECISIONES no recoge.
+  Los revisores los dejan para otra entrega.
+- **Contenido R6** (nota en los expedientes suizos): los expedientes no se
+  editan. La corrección está en `contraste-2026-11-11.json`.
+- **Cumplimiento R1 y R3** (botón al proveedor y «rentabilidades pasadas»):
+  son cambios de código en la web y la app, con OTA y una orden aparte.
+- **Cumplimiento R5** (Ley 6/2023 y el «España: Sí» de las suizas): es una
+  lectura jurídica que cambiaría el acceso de tres fichas. Lo decide el
+  coordinador, quizá con una consulta a la CNMV.
+- **Cumplimiento R9** («Reembolso diario, con límites» en Spiko):
+  `transparencia.json` solo cambia en lo que dice DECISIONES §1 (más la C1).
+
 ## Archivos
 
 - `preparar-entrega.mjs`, `comprobar-entrega.mjs`, `despues-de-aplicar.mjs` y
@@ -300,4 +473,7 @@ nombres de personas.
   `documentacion-ofertas.json`, `manifiesto-catalogo.json`,
   `contraste-2026-11-11.json` y
   `rwadar-app/data/importaciones/catalogo-2026-11-11-v2/{catalogo.sql,aplicar-y-aprobar.sql,revision.json}`.
-- Pruebas: `pruebas-locales.json` y `ensayo-despues.json`.
+- Pruebas: `pruebas-locales.json` y `ensayo-despues.json` (los dos, de la pasada
+  después de las correcciones).
+- Revisión: `REVISION-ENTREGA-sql.md`, `REVISION-ENTREGA-contenido.md` y
+  `REVISION-ENTREGA-cumplimiento.md` (sin tocar).
