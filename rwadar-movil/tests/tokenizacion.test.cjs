@@ -250,7 +250,170 @@ test('la app reutiliza una respuesta buena 10 minutos en la sesión; los fallos 
   remota.olvidarTokenizacion();
 });
 
-/* ---- La sección, con React aislado ---- */
+/* ---- La serie del mercado «estilo bolsa» (11/11/2026) ---- */
+const SERIE = t.validarSerie(JSON.parse(fs.readFileSync(path.join(RAIZ, '../rwadar-site/datos/tokenizacion-serie.json'), 'utf8')));
+const DIA = 86400000;
+const caps = (desde, valores) => valores.map((v, i) => [Date.parse(desde + 'T00:00:00Z') + i * DIA, v]);
+
+test('serie: los 40 mayores de la lista de CoinGecko y su cuota del total; descarta lo que no tiene forma', () => {
+  const lista = [...Array(45)].map((_, i) => ({ id: 'token-' + i, market_cap: (50 - i) * 1e9 }));
+  lista.push({ id: 'token-1', market_cap: 1 }, { id: 'MAL ID', market_cap: 9e12 }, { id: 'sin-valor', market_cap: null }, { id: 'cero', market_cap: 0 });
+  const r = t.elegirMayores(lista);
+  assert.equal(r.mayores.length, 40);
+  assert.equal(r.mayores[0].id, 'token-0');
+  assert.ok(!r.mayores.some((m) => m.id === 'MAL ID' || m.id === 'sin-valor'));
+  assert.equal(r.cobertura, Math.round(r.mayores.reduce((s, m) => s + m.valor, 0) / r.total * 1000) / 10);
+  assert.throws(() => t.elegirMayores([{ id: 'a', market_cap: 1e9 }]), /muy pocos tokens/);
+  assert.throws(() => t.elegirMayores('x'), /no es válida/);
+});
+
+test('serie: suma diaria con el último dato de como mucho 3 días; antes de su primer dato, el token cuenta 0', () => {
+  const a = t.historiaToken(caps('2026-11-01', [10e9, 11e9, 12e9, 13e9, 14e9, 15e9, 16e9, 17e9, 18e9, 19e9]));
+  // b empieza el 05/11 y le faltan el 07/11 y el 08/11 (se usa el del 06/11).
+  const b = t.historiaToken([[Date.parse('2026-11-05T00:00:00Z'), 5e9], [Date.parse('2026-11-06T00:00:00Z'), 6e9],
+    [Date.parse('2026-11-09T00:00:00Z'), 9e9], [Date.parse('2026-11-10T00:00:00Z'), 0], [Date.parse('2026-11-10T15:00:00Z'), 10e9]]);
+  assert.equal(b.primera, '2026-11-05');
+  assert.equal(b.dias.get('2026-11-10'), 10e9, 'el último dato del día y nunca un 0');
+  const puntos = t.construirSerie([a, b], '2026-11-10', 9);
+  assert.deepEqual(puntos.map((p) => [p.fecha, p.valor / 1e9, p.tokens]), [
+    ['2026-11-01', 10, 1], ['2026-11-02', 11, 1], ['2026-11-03', 12, 1], ['2026-11-04', 13, 1],
+    ['2026-11-05', 19, 2], ['2026-11-06', 21, 2], ['2026-11-07', 22, 2], ['2026-11-08', 23, 2], ['2026-11-09', 27, 2], ['2026-11-10', 29, 2]]);
+});
+
+test('serie: si un token que ya cotizaba lleva más de 3 días sin dato, ese día no se pinta (ni se inventa ni se hunde)', () => {
+  const a = t.historiaToken(caps('2026-11-01', [10e9, 10e9, 10e9, 10e9, 10e9, 10e9, 10e9, 10e9]));
+  const b = t.historiaToken([[Date.parse('2026-11-01T00:00:00Z'), 5e9], [Date.parse('2026-11-08T00:00:00Z'), 5e9]]);
+  const fechas = t.construirSerie([a, b], '2026-11-08', 7).map((p) => p.fecha);
+  assert.deepEqual(fechas, ['2026-11-01', '2026-11-02', '2026-11-03', '2026-11-04', '2026-11-08']);
+});
+
+test('serie: a un token le faltan días si no tiene dato en los 3 anteriores; los de antes de su primer dato no cuentan', () => {
+  const h = t.historiaToken([[Date.parse('2026-11-01T00:00:00Z'), 1e9], [Date.parse('2026-11-08T00:00:00Z'), 1e9]]);
+  // Del 01/11 al 10/11: faltan el 05/11, 06/11 y 07/11 (el 08/11 hay dato) y el 10/11 aún tiene el del 08/11.
+  assert.equal(t.diasSinDato(h, '2026-11-10', 30), 3);
+  assert.equal(t.diasSinDato(h, '2026-11-20', 30), 3 + 9, 'una historia que acaba antes de hoy también falta');
+  assert.equal(t.diasSinDato(t.historiaToken([]), '2026-11-10'), 0);
+  assert.equal(t.SERIE.maxDiasSinDato, 3);
+});
+
+test('serie: el archivo se valida entero, una línea por día, y se rechaza lo que no tiene forma', () => {
+  assert.ok(SERIE.puntos.length >= 300, 'la semilla de main trae casi un año');
+  assert.equal(SERIE.fuente, 'CoinGecko');
+  assert.equal(SERIE.categoria, 'tokenized-products');
+  assert.equal(SERIE.tokens.length, SERIE.incluidos);
+  assert.ok(SERIE.incluidos >= 25 && SERIE.cobertura >= 75 && SERIE.incluidos + SERIE.discontinuos <= SERIE.pedidos);
+  const texto = t.serializarSerie(SERIE);
+  assert.equal(texto.split('\n').length, SERIE.puntos.length + 3);
+  assert.deepEqual(t.validarSerie(JSON.parse(texto)), SERIE);
+  const mal = (cambio) => { const s = JSON.parse(texto); cambio(s); return t.serieValida(s); };
+  assert.equal(mal(() => {}), true);
+  assert.equal(mal((s) => { s.puntos[1].fecha = s.puntos[0].fecha; }), false);
+  assert.equal(mal((s) => { s.puntos[0].valor = -1; }), false);
+  assert.equal(mal((s) => { s.puntos[0].tokens = 99; }), false);
+  assert.equal(mal((s) => { s.extra = 1; }), false);
+  assert.equal(mal((s) => { s.discontinuos = s.pedidos; }), false);
+  assert.equal(mal((s) => { delete s.discontinuos; }), false);
+  assert.equal(mal((s) => { s.tokens.push('otro'); }), false);
+  assert.equal(mal((s) => { s.generado = '2020-01-01T00:00:00Z'; }), false, 'ningún punto posterior a su hora');
+  assert.equal(mal((s) => { s.puntos[0].valor = '1'; }), false);
+});
+
+test('serie: pestañas 1 S · 1 M · 3 M · 6 M · YTD · 1 A, 1 M por defecto; YTD parte del cierre del año anterior', () => {
+  assert.deepEqual(t.PESTANAS.map((p) => p.corto), ['1 S', '1 M', '3 M', '6 M', 'YTD', '1 A']);
+  assert.equal(t.PESTANA_INICIAL, '1m');
+  const puntos = [...Array(60)].map((_, i) => ({ fecha: t.fechaDe(Date.parse('2025-12-01T00:00:00Z') + i * DIA), valor: (40 + i) * 1e9, tokens: 1 }));
+  const ultimo = puntos.at(-1).fecha;
+  assert.equal(ultimo, '2026-01-29');
+  assert.equal(t.tramo(puntos, '1s')[0].fecha, '2026-01-22');
+  assert.equal(t.tramo(puntos, '1s').length, 8);
+  assert.equal(t.tramo(puntos, '1m')[0].fecha, '2025-12-30');
+  assert.equal(t.tramo(puntos, 'ytd')[0].fecha, '2025-12-31');
+  assert.equal(t.tramo(puntos, '1a')[0].fecha, '2025-12-01', 'con menos de un año, desde el primer día que hay');
+  assert.equal(t.tramo(puntos.slice(0, 1), '1m'), null);
+  const e = t.estadisticasTramo(t.tramo(puntos, '1s'));
+  assert.deepEqual([e.inicio / 1e9, e.fin / 1e9, e.max.fecha, e.min.fecha], [92, 99, '2026-01-29', '2026-01-22']);
+  assert.equal(e.cambio, t.cambioPct(99e9, 92e9));
+});
+
+test('serie: donde falta un día la línea se corta en tramos; el área se cierra tramo a tramo', () => {
+  const puntos = ['2026-11-01', '2026-11-02', '2026-11-03', '2026-11-06', '2026-11-07', '2026-11-09'].map((fecha, i) => ({ fecha, valor: (10 + i) * 1e9, tokens: 1 }));
+  const g = { puntos, escala: { lo: 9e9, hi: 16e9 } };
+  assert.deepEqual(t.tramosSeguidos(g), [[0, 2], [3, 4], [5, 5]]);
+  const c = t.coordenadas({ ...g }, 80, 70);
+  const { linea, area } = t.trazosSvg(c, t.tramosSeguidos(g), 70);
+  assert.equal((linea.match(/M/g) || []).length, 3, 'tres tramos, sin rectas por encima de los huecos');
+  assert.equal((area.match(/Z/g) || []).length, 3);
+  const real = t.graficoPestana(SERIE, '1a');
+  assert.ok(t.tramosSeguidos(real).length > 1, 'la semilla real tiene días sin pintar');
+});
+
+test('serie: el eje de valores lleva 4 o 5 marcas redondas que abarcan el tramo y no empieza en cero', () => {
+  for (const [min, max] of [[46.1e9, 48.3e9], [20e9, 47e9], [46.70e9, 46.75e9], [1.2e9, 1.9e9], [49.6e9, 49.6e9], [37.6e9, 39.9e9], [23.9e9, 49.7e9]]) {
+    const esc = t.escalaValores(min, max);
+    assert.ok(esc.marcas.length >= 4 && esc.marcas.length <= 5, `${min}-${max}: ${esc.marcas.length}`);
+    assert.ok(esc.lo <= min && esc.hi >= max && esc.lo > 0);
+    const f = esc.paso / 10 ** Math.floor(Math.log10(esc.paso));
+    assert.ok([1, 2, 2.5, 5, 10].some((x) => Math.abs(f - x) < 1e-9), 'paso redondo');
+    assert.ok((esc.hi - esc.lo) >= (min + max) / 2 * 0.01 - 1, 'un tramo casi plano no parece un desplome');
+  }
+  assert.equal(t.marcaValor(48e9, 1e9), '48.000');
+  assert.equal(t.marcaValor(48e9, 1e9, 'en'), '48,000');
+  assert.equal(t.marcaValor(46.75e9, 5e7), '46.750');
+  assert.equal(t.marcaValor(4.255e8, 5e5), '425,5');
+  assert.equal(t.escalaValores(0, 1), null);
+});
+
+test('serie: las fechas de abajo, de 2 a 6 y legibles; el gráfico de cada pestaña sale de la semilla real', () => {
+  for (const p of t.PESTANAS) {
+    const g = t.graficoPestana(SERIE, p.clave);
+    assert.ok(g, p.clave);
+    assert.ok(g.marcasFechas.length >= 2 && g.marcasFechas.length <= 6, `${p.clave}: ${g.marcasFechas.length}`);
+    assert.ok(g.marcasFechas.every((m) => g.puntos[m.indice].fecha === m.fecha && /^[0-9a-z \u2019]+$/i.test(m.texto)));
+    assert.ok(g.marcasValores.length >= 4 && g.marcasValores.length <= 5);
+    assert.equal(g.estadisticas.fin, SERIE.puntos.at(-1).valor);
+    assert.match(g.cambioTexto, /^[+−]?\d/);
+    assert.equal(g.direccion, t.direccion(g.estadisticas.cambio));
+    const c = t.coordenadas(g, 300, 200);
+    assert.ok(c.every((x) => x.x >= 0 && x.x <= 300 && x.y >= 0 && x.y <= 200));
+    assert.equal(t.indiceCercano(c, 1000), c.length - 1);
+    assert.equal(t.indiceCercano(c, -5), 0);
+  }
+  assert.equal(t.graficoPestana(SERIE, '1m').periodoTexto, 'último mes');
+  assert.equal(t.graficoPestana(SERIE, '1m', 'en').periodoTexto, 'past month');
+  assert.match(t.graficoPestana(SERIE, '1a').marcasFechas[0].texto, /^[a-z]{3} \u2019\d{2}$/);
+  const seguidos = [...Array(10)].map((_, i) => ({ fecha: t.fechaDe(Date.parse('2026-11-01T00:00:00Z') + i * DIA), valor: 4e10, tokens: 1 }));
+  const base = { ...SERIE, pedidos: 40, incluidos: 40, discontinuos: 0, tokens: [...Array(40)].map((_, i) => 'tk-' + i), cobertura: 93.2, puntos: seguidos };
+  assert.equal(t.notaSerie(base), 'Suma de los 40 mayores tokens de activos reales que sigue CoinGecko (93\u00a0% del total de hoy). Si un token empezó a cotizar dentro del periodo, entra ese día.');
+  assert.match(t.notaSerie({ ...base, incluidos: 32, discontinuos: 8, tokens: base.tokens.slice(0, 32), cobertura: 86.3 }),
+    /^Suma de 32 de los 40 mayores tokens de activos reales que sigue CoinGecko \(86\s% del total de hoy\)\. Si un token empezó a cotizar dentro del periodo, entra ese día\. Quedan fuera 8 a los que les faltan días en CoinGecko\.$/);
+  assert.match(t.notaSerie({ ...base, incluidos: 37, discontinuos: 1, tokens: base.tokens.slice(0, 37) }), /Quedan fuera 1 a los que les faltan días en CoinGecko\. No se pudieron leer 2\.$/);
+  assert.match(t.notaSerie({ ...base, incluidos: 39, tokens: base.tokens.slice(0, 39) }, 'en'), /^Sum of 39 of the 40 largest .* 1 could not be read\.$/);
+  assert.match(t.notaSerie({ ...base, puntos: seguidos.filter((_, i) => i !== 4 && i !== 6) }), /\. Los días sin dato completo no se pintan \(2 en la serie\)\.$/);
+  assert.match(t.notaSerie(SERIE), /^Suma de \d+ de los 40 mayores tokens de activos reales que sigue CoinGecko/);
+  assert.equal(t.graficoPestana({ version: 2 }, '1m'), null);
+});
+
+const serieRemota = cargarLib('lib/tokenizacion-serie-remota.js', { './tokenizacion': t });
+test('la app lee https://rwadar.pages.dev/datos/tokenizacion-serie.json sin cookies, la reutiliza 30 minutos y rechaza lo que no tiene forma', async () => {
+  const llamadas = [];
+  const texto = t.serializarSerie(SERIE);
+  const responde = (status, cuerpo) => async (url, init) => { llamadas.push([url, init]); return { ok: status === 200, status, text: async () => cuerpo }; };
+  serieRemota.olvidarSerie();
+  let ahora = AHORA;
+  assert.deepEqual(await serieRemota.cargarSerie({ fetchImpl: responde(200, texto), ahora: () => ahora }), SERIE);
+  assert.equal(llamadas[0][0], 'https://rwadar.pages.dev/datos/tokenizacion-serie.json');
+  assert.equal(llamadas[0][1].credentials, 'omit');
+  ahora += 29 * 60000;
+  await serieRemota.cargarSerie({ fetchImpl: responde(200, texto), ahora: () => ahora });
+  assert.equal(llamadas.length, 1, 'dentro de 30 minutos no vuelve a preguntar');
+  serieRemota.olvidarSerie();
+  await assert.rejects(serieRemota.cargarSerie({ fetchImpl: responde(404, '') }), /serie_http_404/);
+  await assert.rejects(serieRemota.cargarSerie({ fetchImpl: responde(200, '{"version":1}') }), /serie_forma/);
+  await assert.rejects(serieRemota.cargarSerie({ fetchImpl: responde(200, 'x'.repeat(600 * 1024)) }), /serie_tamano/);
+  serieRemota.olvidarSerie();
+});
+
+/* ---- «Mercado y noticias» en la app, con React aislado ---- */
 const colores = new Proxy({}, { get: (_, clave) => `#${String(clave)}` });
 const tema = { C: colores, F: new Proxy({}, { get: (_, c) => String(c) }), T: { seccion: {}, menor: {}, etiqueta: {}, instrumento: {} },
   R: { s: 8, m: 12, l: 16, p: 999 }, UI: { margen: 16, tactil: 48 }, pulsado: () => ({}) };
@@ -268,6 +431,7 @@ function crearReact() {
       if (typeof tipo === 'function') return tipo({ ...props, children: children.length > 1 ? children : children[0] });
       return { type: tipo, props: props || {}, children };
     },
+    Fragment: 'Fragment',
     forwardRef: (fn) => (props) => fn(props, null),
     useSyncExternalStore: (_s, leer) => leer(),
     useState(inicial) {
@@ -277,24 +441,27 @@ function crearReact() {
     },
     useRef(inicial) { const i = indice++; if (!Object.hasOwn(slots, i)) slots[i] = { current: inicial }; return slots[i]; },
     useCallback(fn) { indice++; return fn; },
+    useMemo(fn) { indice++; return fn(); },
     useEffect(fn) { const i = indice++; if (!Object.hasOwn(slots, i)) { slots[i] = true; efectos.push(fn); } },
   };
   return { react, pintar(componente, props) { indice = 0; const arbol = componente(props); for (const fn of efectos.splice(0)) fn(); return arbol; } };
 }
-function cargarSeccion(react) {
-  const absoluto = path.join(RAIZ, 'componentes', 'TokenizacionMundo.js');
+function cargarMercado(react) {
+  const absoluto = path.join(RAIZ, 'componentes', 'MercadoBolsa.js');
   const original = Module._load, extension = Module._extensions['.js'];
-  const nativo = { StyleSheet: { create: (s) => s }, Platform: { OS: 'android' } };
+  const nativo = { StyleSheet: { create: (s) => s }, Platform: { OS: 'android' },
+    PanResponder: { create: (h) => ({ panHandlers: { onResponderGrant: h.onPanResponderGrant, onResponderMove: h.onPanResponderMove, onResponderRelease: h.onPanResponderRelease } }) } };
   for (const tipo of ['Text', 'View', 'Pressable']) nativo[tipo] = tipo;
   Module._load = function (pedido, padre, principal) {
     if (padre?.filename === absoluto) {
       if (pedido === './Idioma') return soporteIdioma(react, nativo);
       if (pedido === 'react') return react;
       if (pedido === 'react-native') return nativo;
-      if (pedido === 'react-native-svg') return { __esModule: true, default: 'Svg', Circle: 'Circle', Path: 'Path', Polyline: 'Polyline' };
+      if (pedido === 'react-native-svg') return { __esModule: true, default: 'Svg', Circle: 'Circle', Defs: 'Defs', Line: 'Line', LinearGradient: 'LinearGradient', Path: 'Path', Stop: 'Stop', Text: 'SvgText' };
       if (pedido === '../lib/tema') return tema;
       if (pedido === '../lib/tacto') return { tacto: { eleccion() {}, abrir() {} } };
       if (pedido === '../lib/tokenizacion-remota') return { cargarTokenizacion: async () => { throw new Error('sin red en las pruebas'); } };
+      if (pedido === '../lib/tokenizacion-serie-remota') return { cargarSerie: async () => { throw new Error('sin red en las pruebas'); } };
     }
     return original.call(this, pedido, padre, principal);
   };
@@ -304,186 +471,141 @@ function cargarSeccion(react) {
     modulo._compile(code, ruta);
   };
   delete require.cache[absoluto];
-  try { return require(absoluto).default; } finally { Module._load = original; Module._extensions['.js'] = extension; }
+  try { return require(absoluto); } finally { Module._load = original; Module._extensions['.js'] = extension; }
 }
 const esperar = () => new Promise((r) => setTimeout(r, 0));
+/* Pinta otra vez cada componente de función que haya dentro (el gráfico mide su ancho con onLayout). */
+const conAncho = (arbol, ancho) => { for (const n of nodos(arbol)) if (n?.props?.onLayout) n.props.onLayout({ nativeEvent: { layout: { width: ancho, height: 240 } } }); };
 
-test('Inicio en la app: cargando, después la cifra, los periodos, las barras y «Datos: CoinGecko» con su hora', async () => {
+test('la pantalla «Mercado y noticias»: cifra de hoy, cambio del mes con signo y texto, pestañas, gráfico, datos clave, tipos y noticias', async () => {
   const { react, pintar } = crearReact();
-  const Seccion = cargarSeccion(react);
+  const { MercadoPantalla } = cargarMercado(react);
   const enlaces = [];
-  const props = { cargar: async () => RESUMEN, onAbrirEnlace: (u) => enlaces.push(u) };
-  let arbol = pintar(Seccion, props);
+  const props = { cargarVivo: async () => RESUMEN, cargarLaSerie: async () => SERIE, onAbrirEnlace: (u) => enlaces.push(u), children: 'NOTICIAS' };
+  let arbol = pintar(MercadoPantalla, props);
   assert.match(textoDe(arbol), /Cargando los datos de CoinGecko…/);
-  assert.match(textoDe(arbol), /Datos:.*CoinGecko/, 'la atribución se ve siempre');
   await esperar(); await esperar();
-  arbol = pintar(Seccion, props);
+  arbol = pintar(MercadoPantalla, props);
   const texto = textoDe(arbol);
-  assert.match(texto, /La tokenización en el mundo/);
-  assert.match(texto, /49\.684/);
-  assert.match(texto, /−0,9 %/);
-  assert.match(texto, /disponible el/);
-  assert.match(texto, /15\/11/, 'cuándo llegarán los 7 días');
-  assert.match(texto, /en millones de dólares \(M\$\)/);
+  const g = t.graficoPestana(SERIE, '1m');
+  assert.match(texto, /Mercado de activos tokenizados/);
+  assert.match(texto, /49\.684/, 'la cifra de hoy, en vivo');
+  assert.ok(texto.includes(g.cambioTexto) && texto.includes('último mes'), 'el cambio del mes con su signo y su texto');
+  assert.ok(texto.includes(`${{ sube: '▲', baja: '▼', igual: '=' }[g.direccion]} ${g.cambioTexto}`), 'flecha y signo: el color nunca va solo');
+  const pestanas = nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab');
+  assert.deepEqual(pestanas.map((n) => n.props.accessibilityLabel), ['1 semana', '1 mes', '3 meses', '6 meses', 'Este año', '1 año']);
+  assert.deepEqual(pestanas.map((n) => n.props.accessibilityState.selected), [false, true, false, false, false, false]);
+  assert.ok(nodos(arbol).some((n) => n?.props?.accessibilityRole === 'tablist'));
+  for (const r of ['Valor total hoy', 'Cambio en 24 h', 'Máximo del periodo', 'Mínimo del periodo', 'Tokens en el gráfico', 'Tipo mayor']) assert.match(texto, new RegExp(r));
+  assert.match(texto, /Por tipo de activo/);
   assert.match(texto, /Crédito privado/);
-  assert.match(texto, /Inmuebles/);
-  assert.match(texto, /De ello, oro:/);
-  assert.match(texto, /10\/11\/2026, 15:25 UTC/);
-  assert.match(texto, /La línea de evolución aparecerá cuando haya dos fotos diarias guardadas\./);
-  assert.match(texto, /Las categorías pueden solaparse\. No es una recomendación\./);
-  const periodos = nodos(arbol).filter((n) => n?.type === 'View' && n.props.accessible && /^(24 h|7 días|30 días|1 año|Histórico): /.test(n.props.accessibilityLabel));
-  assert.deepEqual(periodos.map((n) => n.props.accessibilityLabel), ['24 h: baja −0,9 %', '7 días: disponible el 15/11/2026',
-    '30 días: disponible el 08/12/2026', '1 año: disponible el 08/11/2027', 'Histórico: disponible el 11/11/2026']);
-  const total = nodos(arbol).find((n) => n?.type === 'View' && /^Valor total de los activos tokenizados: /.test(n.props.accessibilityLabel || ''));
-  assert.equal(total.props.accessibilityLabel, 'Valor total de los activos tokenizados: 49.684 millones de dólares');
-  const enlace = nodos(arbol).find((n) => n?.type === 'Pressable' && n.props.accessibilityRole === 'link');
-  assert.match(enlace.props.accessibilityLabel, /^Datos: CoinGecko · Dato del 10\/11\/2026, 15:25 UTC$/);
-  enlace.props.onPress();
+  assert.match(texto, /Noticias relacionadas/);
+  assert.match(texto, /NOTICIAS/, 'las noticias van debajo, en la misma pantalla');
+  assert.ok(texto.includes(t.notaSerie(SERIE)), 'la nota del gráfico, a la vista');
+  const fuente = nodos(arbol).find((n) => n?.props?.accessibilityRole === 'link');
+  assert.match(fuente.props.accessibilityLabel, /^Datos: CoinGecko · dato de hoy del 10\/11\/2026, 15:25 UTC · serie diaria hasta el /);
+  fuente.props.onPress();
   assert.deepEqual(enlaces, ['https://www.coingecko.com/']);
+  // Otra pestaña: el gráfico cambia de tramo.
+  pestanas[0].props.onPress();
+  arbol = pintar(MercadoPantalla, props);
+  assert.ok(textoDe(arbol).includes('última semana'));
+  assert.deepEqual(nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab').map((n) => n.props.accessibilityState.selected), [true, false, false, false, false, false]);
 });
 
-test('Inicio en la app: con la red caída la sección lo dice y ofrece reintentar; nunca lanza', async () => {
+test('el gráfico de la app: área con degradado, línea, eje a la derecha, fechas abajo, línea de partida y la cruz al arrastrar o con el lector', () => {
   const { react, pintar } = crearReact();
-  const Seccion = cargarSeccion(react);
+  const { GraficoBolsa } = cargarMercado(react);
+  const g = t.graficoPestana(SERIE, '1m');
+  let arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
+  conAncho(arbol, 358);
+  arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
+  const raiz = nodos(arbol).find((n) => n?.props?.accessibilityRole === 'adjustable');
+  assert.ok(raiz, 'ajustable: el lector de pantalla recorre los días');
+  assert.match(raiz.props.accessibilityLabel, /^Gráfico del mercado\. Suma de los \d+ mayores tokens, último mes: de /);
+  assert.equal(raiz.props.accessibilityValue.text, `${t.fechaCorta(g.puntos.at(-1).fecha)}: ${t.millonesHablados(g.puntos.at(-1).valor)}`);
+  const caminos = nodos(arbol).filter((n) => n?.type === 'Path');
+  assert.equal(caminos.length, 2, 'el área y la línea');
+  assert.equal(caminos[0].props.fill, 'url(#mkDeg)');
+  assert.equal(caminos[1].props.strokeWidth, 2);
+  const textosEje = nodos(arbol).filter((n) => n?.type === 'SvgText').map((n) => textoDe(n.children));
+  for (const m of g.marcasValores) assert.ok(textosEje.includes(m.texto), m.texto);
+  for (const m of g.marcasFechas) assert.ok(textosEje.includes(m.texto), m.texto);
+  assert.ok(textosEje.includes('M$'));
+  assert.ok(nodos(arbol).some((n) => n?.type === 'Line' && n.props.strokeDasharray === '2 4'), 'la línea de puntos del valor de partida');
+  assert.ok(!nodos(arbol).some((n) => n?.type === 'Circle'), 'sin cruz hasta que se toca');
+  // Arrastre: la cruz con la fecha y el valor del punto más cercano.
+  raiz.props.onResponderGrant({ nativeEvent: { locationX: 0 } });
+  arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
+  assert.ok(nodos(arbol).some((n) => n?.type === 'Circle'));
+  assert.ok(textoDe(arbol).includes(t.fechaCorta(g.puntos[0].fecha)) && textoDe(arbol).includes(t.millones(g.puntos[0].valor)));
+  assert.match(textoDe(arbol), /0,0\s% desde el inicio/);
+  // El lector: «subir» avanza un día.
+  nodos(arbol).find((n) => n?.props?.accessibilityRole === 'adjustable').props.onAccessibilityAction({ nativeEvent: { actionName: 'increment' } });
+  arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
+  assert.equal(nodos(arbol).find((n) => n?.props?.accessibilityRole === 'adjustable').props.accessibilityValue.text,
+    `${t.fechaCorta(g.puntos[1].fecha)}: ${t.millonesHablados(g.puntos[1].valor)}`);
+  raiz.props.onResponderRelease();
+  arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
+  assert.ok(!nodos(arbol).some((n) => n?.type === 'Circle'), 'al soltar, la cruz se va');
+});
+
+test('la tarjeta de Inicio: nombre, cifra, cambio del mes y minigráfico; al tocar abre la pantalla. En inglés, en su formato', async () => {
+  for (const lengua of ['es', 'en']) {
+    idioma.cambiarIdioma(lengua);
+    try {
+      const { react, pintar } = crearReact();
+      const { MercadoCotizacion } = cargarMercado(react);
+      let abierta = 0;
+      const props = { cargarVivo: async () => RESUMEN, cargarLaSerie: async () => SERIE, onAbrir: () => { abierta++; } };
+      pintar(MercadoCotizacion, props);
+      await esperar(); await esperar();
+      const arbol = pintar(MercadoCotizacion, props);
+      const g = t.graficoPestana(SERIE, '1m', lengua);
+      const tarjeta = nodos(arbol).find((n) => n?.props?.testID === 'mercado-cotizacion');
+      assert.ok(tarjeta);
+      const texto = textoDe(arbol);
+      assert.ok(texto.includes(lengua === 'en' ? 'Tokenised assets' : 'Activos tokenizados'));
+      assert.ok(texto.includes(t.millones(RESUMEN.total.valor, lengua)));
+      assert.ok(texto.includes(g.cambioTexto) && texto.includes(lengua === 'en' ? 'past month' : 'último mes'));
+      assert.ok(nodos(arbol).some((n) => n?.type === 'Svg'), 'el minigráfico del mes');
+      assert.match(tarjeta.props.accessibilityLabel, lengua === 'en' ? /^Tokenised asset market: 49,684 million dollars, (up|down|unchanged) / : /^Mercado de activos tokenizados: 49\.684 millones de dólares, (sube|baja|sin cambios) /);
+      tarjeta.props.onPress();
+      assert.equal(abierta, 1);
+    } finally { idioma.cambiarIdioma('es'); }
+  }
+});
+
+test('sin red: la cotización y la pantalla lo dicen y ofrecen reintentar, sin ninguna cifra; sin serie, la cifra de hoy sigue', async () => {
+  const { react, pintar } = crearReact();
+  const { MercadoCotizacion, MercadoPantalla } = cargarMercado(react);
   let intentos = 0;
-  const props = { cargar: async () => { intentos++; if (intentos === 1) throw new Error('sin red'); return RESUMEN; } };
-  pintar(Seccion, props);
+  const props = { cargarVivo: async () => { intentos++; throw new Error('sin red'); }, cargarLaSerie: async () => { throw new Error('sin red'); } };
+  pintar(MercadoCotizacion, props);
   await esperar(); await esperar();
-  let arbol = pintar(Seccion, props);
+  let arbol = pintar(MercadoCotizacion, props);
   assert.match(textoDe(arbol), /Ahora no podemos mostrar los datos de CoinGecko\./);
-  assert.doesNotMatch(textoDe(arbol), /M\$/, 'sin datos no hay ninguna cifra');
-  const reintentar = nodos(arbol).find((n) => n?.type === 'Pressable' && n.props.accessibilityLabel === 'Reintentar');
-  reintentar.props.onPress();
+  assert.doesNotMatch(textoDe(arbol), /M\$/);
+  nodos(arbol).find((n) => n?.props?.accessibilityLabel === 'Reintentar').props.onPress();
   await esperar(); await esperar();
-  arbol = pintar(Seccion, props);
   assert.equal(intentos, 2);
+  const otro = crearReact();
+  const Pantalla = cargarMercado(otro.react).MercadoPantalla;
+  const p2 = { cargarVivo: async () => RESUMEN, cargarLaSerie: async () => { throw new Error('sin red'); } };
+  otro.pintar(Pantalla, p2);
+  await esperar(); await esperar();
+  arbol = otro.pintar(Pantalla, p2);
   assert.match(textoDe(arbol), /49\.684/);
+  assert.match(textoDe(arbol), /El gráfico no está disponible ahora\. La cifra de hoy sí\./);
+  void MercadoPantalla;
 });
 
-test('Inicio en la app: en inglés, cifras en su formato y etiquetas accesibles en inglés', async () => {
-  await idioma.cambiarIdioma('en');
-  try {
-    const { react, pintar } = crearReact();
-    const Seccion = cargarSeccion(react);
-    const props = { cargar: async () => RESUMEN };
-    pintar(Seccion, props); await esperar(); await esperar();
-    const arbol = pintar(Seccion, props);
-    const texto = textoDe(arbol);
-    assert.match(texto, /Tokenisation worldwide/);
-    assert.match(texto, /\$49,684M/);
-    assert.match(texto, /Private credit/);
-    assert.match(texto, /available on/);
-    assert.match(texto, /All time/);
-    assert.match(texto, /10 Nov 2026, 15:25 UTC/);
-    const total = nodos(arbol).find((n) => n?.type === 'View' && /^Total value of tokenised assets: /.test(n.props.accessibilityLabel || ''));
-    assert.equal(total.props.accessibilityLabel, 'Total value of tokenised assets: 49,684 million dollars');
-    const periodos = nodos(arbol).filter((n) => n?.type === 'View' && n.props.accessible && /^(24 h|7 days|All time): /.test(n.props.accessibilityLabel));
-    assert.deepEqual(periodos.map((n) => n.props.accessibilityLabel), ['24 h: down −0.9%', '7 days: available on 15 Nov 2026', 'All time: available on 11 Nov 2026']);
-    assert.equal(total.props.accessibilityLanguage, 'en-US');
-  } finally { await idioma.cambiarIdioma('es'); }
-});
-
-/* Un resumen con varias fotos guardadas y CoinGecko caído. */
-const RESUMEN_GUARDADO = (() => {
-  const f = t.extraerFoto(COINGECKO, { ahora: AHORA });
-  const dia = (fecha, factor) => ({ ...f, fecha, actualizado: fecha + 'T06:20:00.000Z', total: { ...f.total, valor: Math.round(f.total.valor * factor) } });
-  const h = historico(dia('2026-10-01', 0.95), dia('2026-10-26', 0.98), dia('2026-11-01', 0.99), f);
-  return t.resumir({ historico: h });
-})();
-
-test('Inicio en la app: con la foto guardada, el aviso con su fecha, «24 h» dice de qué día y cada periodo «desde» qué foto', async () => {
-  assert.equal(RESUMEN_GUARDADO.fuente, 'foto-guardada');
-  const { react, pintar } = crearReact();
-  const Seccion = cargarSeccion(react);
-  const props = { cargar: async () => RESUMEN_GUARDADO };
-  pintar(Seccion, props); await esperar(); await esperar();
-  const arbol = pintar(Seccion, props);
-  const texto = textoDe(arbol);
-  assert.match(texto, /Cifras de la última foto diaria de RWAdar, del\s+10\/11\/2026, 15:25 UTC/);
-  assert.match(texto, /7 días \+1,0\s%\s▲\s+sube\s+desde\s+01\/11/);
-  const periodos = nodos(arbol).filter((n) => n?.type === 'View' && n.props.accessible && /^(24 h|7 días|30 días|1 año|Histórico): /.test(n.props.accessibilityLabel));
-  const etiquetas = periodos.map((n) => n.props.accessibilityLabel);
-  if (new Date().toISOString().slice(0, 10) !== '2026-11-10') assert.equal(etiquetas[0], '24 h: baja −0,9 %, foto del 10/11/2026');
-  else assert.equal(etiquetas[0], '24 h: baja −0,9 %');
-  assert.equal(etiquetas[1], '7 días: sube +1,0 %, desde 01/11/2026', 'con ±2 días, «7 días» puede ser 9: se dice');
-  assert.equal(etiquetas[2], '30 días: aún sin datos', 'la fecha de llegada ya pasó: no se promete nada');
-  assert.equal(etiquetas[4], 'Histórico: sube +5,3 %, desde 01/10/2026');
-  const enlace = nodos(arbol).find((n) => n?.type === 'Pressable' && n.props.accessibilityRole === 'link');
-  assert.match(enlace.props.accessibilityLabel, /Foto guardada del 10\/11\/2026, 15:25 UTC$/);
-});
-
-test('Inicio en la app: con dos o más fotos dibuja la línea (sin relleno) al ancho medido y escribe la escala', async () => {
-  const { react, pintar } = crearReact();
-  const Seccion = cargarSeccion(react);
-  const props = { cargar: async () => RESUMEN_GUARDADO };
-  pintar(Seccion, props); await esperar(); await esperar();
-  let arbol = pintar(Seccion, props);
-  const caja = nodos(arbol).find((n) => n?.type === 'View' && typeof n.props.onLayout === 'function');
-  assert.ok(caja, 'la línea mide su caja');
-  assert.equal(caja.props.accessibilityLabel, 'Valor total del 01/10/2026 al 10/11/2026: de 47.199 M$ a 49.684 M$, +5,3 %, 4 fotos diarias');
-  caja.props.onLayout({ nativeEvent: { layout: { width: 320 } } });
-  arbol = pintar(Seccion, props);
-  const tipos = nodos(arbol).map((n) => n?.type);
-  assert.ok(tipos.includes('Svg') && tipos.includes('Polyline') && tipos.includes('Circle'));
-  assert.ok(!tipos.includes('Path'), 'sin área rellena hasta el suelo');
-  const linea = nodos(arbol).find((n) => n?.type === 'Polyline');
-  const ys = linea.props.points.split(' ').map((p) => Number(p.split(',')[1]));
-  assert.equal(ys.length, 4);
-  assert.ok(ys.every((y) => y >= 8 && y <= 104));
-  assert.match(textoDe(arbol), /De 47\.199 M\$ \(01\/10\/2026\) a 49\.684 M\$ \(10\/11\/2026\) · \+5,3 %/);
-});
-
-test('Inicio en la app: sin datos («sin-datos») ofrece «Reintentar» y no enseña ninguna cifra', async () => {
-  const { react, pintar } = crearReact();
-  const Seccion = cargarSeccion(react);
-  const vacio = t.resumir({ historico: t.historicoVacio() });
-  assert.equal(vacio.fuente, 'sin-datos');
-  const props = { cargar: async () => vacio };
-  pintar(Seccion, props); await esperar(); await esperar();
-  const arbol = pintar(Seccion, props);
-  assert.ok(nodos(arbol).some((n) => n?.type === 'Pressable' && n.props.accessibilityLabel === 'Reintentar'));
-  assert.match(textoDe(arbol), /Ahora no podemos mostrar los datos de CoinGecko\./);
-  assert.doesNotMatch(textoDe(arbol), /\d/, 'ningún dígito');
-});
-
-const barraTexto = (r) => r.segmentos.map((x) => `${x.nombre} ${t.cuota(x.cuota)}`).join(', ');
-test('la tarjeta compacta de Inicio: total, 24 h, una barra apilada con los 3 mayores y «Otros», fuente y «Ver el mercado →»', async () => {
-  // El reparto sale del mismo resumen (resumenCompacto, compartido con la web).
-  const r = t.resumenCompacto(RESUMEN);
-  assert.deepEqual(r.segmentos.map((t) => t.clave), ['credito-privado', 'letras-tesoro', 'materias-primas', 'otros']);
-  const suma = r.segmentos.reduce((s, t) => s + t.cuota, 0);
-  assert.ok(Math.abs(suma - 100) < 0.01, `las cuotas suman 100 (${suma})`);
-  assert.equal(r.segmentos[3].cuota, Math.round((100 - RESUMEN.tipos.slice(0, 3).reduce((s, t) => s + t.cuota, 0)) * 100) / 100);
-  assert.equal(t.resumenCompacto({ version: 1, fuente: "sin-datos" }), null);
-  const { react, pintar } = crearReact();
-  const Seccion = cargarSeccion(react);
-  let abierto = 0;
-  const props = { cargar: async () => RESUMEN, onAbrirEnlace() {}, compacta: true, onVerMas: () => { abierto++; },
-    textos: { titulo: 'El mercado hoy', sub: 'Valor de los activos reales tokenizados en el mundo', ver: 'Ver el mercado' } };
-  pintar(Seccion, props); await esperar(); await esperar();
-  const arbol = pintar(Seccion, props);
-  const texto = textoDe(arbol);
-  assert.match(texto, /El mercado hoy/);
-  assert.match(texto, /49\.684/);
-  assert.match(texto, /−0,9\s%/);
-  assert.match(texto, /Crédito privado .*Letras del Tesoro .*Materias primas .*Otros/);
-  assert.match(barraTexto(r), /^Crédito privado 55,6\s%, Letras del Tesoro 16,2\s%, Materias primas 11,9\s%, Otros 16,4\s%$/);
-  assert.match(texto, /Datos:.*CoinGecko/);
-  // Lo demás está en su pantalla: ni periodos, ni barras por tipo, ni línea, ni «Inmuebles».
-  assert.doesNotMatch(texto, /7 días|Histórico|Por tipo de activo|Evolución|Inmuebles|De ello, oro/);
-  const barra = nodos(arbol).find((n) => n?.type === 'View' && /^Reparto por tipo de activo: /.test(n.props.accessibilityLabel || ''));
-  assert.equal(barra.props.accessibilityLabel, `Reparto por tipo de activo: ${r.segmentos.map((x) => `${x.nombre} ${t.cuota(x.cuota)}`).join(', ')}`);
-  const ver = nodos(arbol).find((n) => n?.type === 'Pressable' && n.props.accessibilityLabel === 'Ver el mercado');
-  ver.props.onPress();
-  assert.equal(abierto, 1);
-});
-
-test('Inicio pinta la tarjeta compacta tras «Ofertas» y la pantalla «El mercado hoy» con la sección entera', () => {
+test('Inicio une «Mercado y noticias» tras «Ofertas»: la cotización, las 3 noticias y «Ver mercado y noticias →»; la pantalla lleva las noticias', () => {
   const inicio = fs.readFileSync(path.join(RAIZ, 'componentes/Inicio.js'), 'utf8');
-  assert.match(inicio, /import TokenizacionMundo from '\.\/TokenizacionMundo';/);
-  const ofertas = inicio.indexOf('<RecienAnadidas'), compacta = inicio.indexOf('<TokenizacionMundo compacta');
-  assert.ok(ofertas > 0 && compacta > ofertas);
-  assert.match(inicio, /<TokenizacionMundo compacta textos=\{b\.mercado\} onAbrirEnlace=\{onAbrirEnlace\} onVerMas=\{\(\) => abrir\('mercado'\)\} \/>/);
-  // En su pantalla, sin el margen ni la raya de bloque de Inicio (el cuerpo de la pantalla ya los da).
-  assert.match(inicio, /<PantallaInicio visible=\{seccion === 'mercado'\}[\s\S]*?<TokenizacionMundo pantalla onAbrirEnlace=\{onAbrirEnlace\} \/>/);
+  assert.match(inicio, /import \{ MercadoCotizacion, MercadoPantalla \} from '\.\/MercadoBolsa';/);
+  const ofertas = inicio.indexOf('<RecienAnadidas'), cot = inicio.indexOf('<MercadoCotizacion'), nt = inicio.indexOf('<NoticiasSector modo="compacta"'), ap = inicio.indexOf("abrir('aprende')");
+  assert.ok(ofertas > 0 && cot > ofertas && nt > cot && ap > nt);
+  assert.doesNotMatch(inicio, /TokenizacionMundo|seccion === 'noticias'/);
+  assert.match(inicio, /<MercadoPantalla onAbrirEnlace=\{onAbrirEnlace\}>\s*<NoticiasSector modo="lista" abrirId=\{noticiaId\} onAbrirEnlace=\{onAbrirEnlace\} \/>\s*<\/MercadoPantalla>/);
+  assert.match(inicio, /onAbrir=\{\(noticia\) => abrir\('mercado', \{ noticia: noticia\?\.id \|\| null \}\)\}/);
 });

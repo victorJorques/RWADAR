@@ -269,40 +269,34 @@ const EL_13 = () => new Date(2026, 10, 13, 12, 0);
 
 const fotos = (arbol) => buscar(arbol, n => n.type === 'Image').map(n => n.props.source.uri);
 
-test('Inicio en la app: cargando, después 3 tarjetas grandes con foto y solo el titular, y «Todas las noticias →»', async () => {
+test('Inicio en la app («Mercado y noticias»): cargando, después 3 filas compactas con foto pequeña, titular, fuente y fecha', async () => {
   const { react, pintar } = crearReact();
   const Seccion = cargarSeccion(react);
   const abiertas = [];
-  const props = { cargar: async () => DATOS, onAbrirEnlace() {}, ahora: EL_10, modo: 'portada', onAbrir: (n) => abiertas.push(n && n.id),
-    textosBloque: { titulo: 'Noticias', ver: 'Todas las noticias' } };
+  const props = { cargar: async () => DATOS, onAbrirEnlace() {}, ahora: EL_10, modo: 'compacta', onAbrir: (n) => abiertas.push(n && n.id) };
   let arbol = pintar(Seccion, props);
-  assert.match(textoDe(arbol), /Noticias/);
   assert.match(textoDe(arbol), /Cargando las noticias…/);
   await esperar(); await esperar();
   arbol = pintar(Seccion, props);
   const texto = textoDe(arbol);
-  assert.match(texto, /Actualizadas el 10\/11/);
   assert.doesNotMatch(texto, /Cargando/);
-  const tarjetas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button' && n.props.accessibilityLabel !== 'Todas las noticias');
-  assert.equal(tarjetas.length, 3, 'solo 3 en Inicio');
-  assert.equal(tarjetas[0].props.accessibilityLabel, 'La CNMV destapa un clon de XTB y otros 8 chiringuitos. Hoy');
-  assert.equal(tarjetas[1].props.accessibilityLabel, `${DATOS.noticias[1].titulo}. Ayer`);
-  assert.equal(tarjetas[2].props.accessibilityLabel, `${DATOS.noticias[2].titulo}. Ayer`);
-  // En la tarjeta, solo el titular (3 líneas como mucho) y «Hoy» o «Ayer»: ni resumen ni fuente.
+  const filas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button');
+  assert.equal(filas.length, 3, 'solo 3 en Inicio');
+  assert.equal(filas[0].props.accessibilityLabel, 'La CNMV destapa un clon de XTB y otros 8 chiringuitos. CNMV · 10/11/2026. Hoy');
+  assert.equal(filas[1].props.accessibilityLabel, `${DATOS.noticias[1].titulo}. Robinhood Assets (Jersey) Limited · 09/11/2026. Ayer`);
+  // Titular (3 líneas como mucho), fuente y fecha: sin resumen.
   assert.equal(buscar(arbol, n => n.type === 'Text' && n.props.numberOfLines === 3).length, 3);
   assert.doesNotMatch(texto, /La CNMV avisa de que nueve webs/);
-  // Cada tarjeta, su foto de rwadar.pages.dev, oculta al lector de pantalla, con el degradado encima.
+  assert.match(texto, /CNMV · 10\/11\/2026/);
   assert.deepEqual(fotos(arbol), DATOS.noticias.slice(0, 3).map(n => `https://rwadar.pages.dev/noticias-editoriales/${n.imagen}.webp`));
-  assert.equal(buscar(arbol, n => n.type === 'Svg').length, 3, 'un degradado por tarjeta');
+  assert.equal(buscar(arbol, n => n.type === 'Svg').length, 0, 'foto pequeña, sin degradado encima');
   assert.match(texto, /Imágenes ilustrativas generadas con IA, no fotos de la noticia\./);
   assert.equal(buscar(arbol, n => n.type === 'Modal').length, 0, 'en Inicio no hay detalle');
-  // Tocar una abre la pantalla con su detalle; «Todas las noticias», la pantalla.
-  tarjetas[1].props.onPress();
-  buscar(arbol, n => n.props?.accessibilityLabel === 'Todas las noticias')[0].props.onPress();
-  assert.deepEqual(abiertas, [DATOS.noticias[1].id, null]);
+  filas[1].props.onPress();
+  assert.deepEqual(abiertas, [DATOS.noticias[1].id]);
 });
 
-test('la pantalla «Noticias»: las 8 con foto, fecha, titular y resumen; al tocar, su detalle', async () => {
+test('debajo del gráfico: las 8 con la fuente y la fecha, el titular, una línea de resumen y la foto; al tocar, su detalle', async () => {
   const { react, pintar } = crearReact();
   const Seccion = cargarSeccion(react);
   const enlaces = [];
@@ -314,7 +308,8 @@ test('la pantalla «Noticias»: las 8 con foto, fecha, titular y resumen; al toc
   assert.equal(filas.length, 8);
   assert.equal(fotos(arbol).length, 8);
   assert.match(textoDe(arbol), /La CNMV avisa de que nueve webs/, 'en la lista, el resumen');
-  assert.equal(filas[0].props.accessibilityLabel, 'La CNMV destapa un clon de XTB y otros 8 chiringuitos. 10/11/2026 · Riesgo · España. Hoy');
+  assert.equal(filas[0].props.accessibilityLabel, 'La CNMV destapa un clon de XTB y otros 8 chiringuitos. CNMV · 10/11/2026. Hoy');
+  assert.equal(buscar(arbol, n => n.type === 'Text' && n.props.numberOfLines === 1).length, 7, 'una línea de resumen (la primera, dos)');
   const fila = filas.find(f => /^Europa busca/.test(f.props.accessibilityLabel));
   fila.props.onPress();
   arbol = pintar(Seccion, props);
@@ -369,10 +364,9 @@ test('en inglés: los campos «en», la fecha y la interfaz del diccionario', as
     assert.match(texto, /Updated on 10 Nov/);
     assert.match(texto, /CNMV exposes an XTB clone and 8 other unlicensed firms/);
     assert.match(texto, /Illustrative AI-generated images, not photos of the news\./);
-    assert.match(texto, /Read the details/);
     assert.doesNotMatch(texto, /La CNMV destapa/);
     const filas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button');
-    assert.equal(filas[0].props.accessibilityLabel, 'CNMV exposes an XTB clone and 8 other unlicensed firms. 10 Nov 2026 · Risk · Spain. Today');
+    assert.equal(filas[0].props.accessibilityLabel, 'CNMV exposes an XTB clone and 8 other unlicensed firms. CNMV · 10 Nov 2026. Today');
     filas[0].props.onPress();
     arbol = pintar(Seccion, props);
     texto = textoDe(buscar(arbol, n => n.type === 'Modal')[0]);
@@ -384,13 +378,13 @@ test('en inglés: los campos «en», la fecha y la interfaz del diccionario', as
 test('con el reloj el 13/11 (sin ciclo nuevo), ninguna tarjeta dice «Hoy» ni «Ayer»; las de hoy siguen primero', async () => {
   const { react, pintar } = crearReact();
   const Seccion = cargarSeccion(react);
-  const props = { cargar: async () => DATOS, onAbrirEnlace() {}, ahora: EL_13, modo: 'portada', onAbrir() {} };
+  const props = { cargar: async () => DATOS, onAbrirEnlace() {}, ahora: EL_13, modo: 'compacta', onAbrir() {} };
   pintar(Seccion, props);
   await esperar(); await esperar();
   const arbol = pintar(Seccion, props);
   assert.equal(buscar(arbol, n => n.type === 'Text' && /^(Hoy|Ayer)$/.test(textoDe(n))).length, 0);
   const tarjetas = buscar(arbol, n => n.type === 'Pressable' && n.props.accessibilityRole === 'button');
-  assert.equal(tarjetas[0].props.accessibilityLabel, DATOS.noticias[0].titulo);
+  assert.equal(tarjetas[0].props.accessibilityLabel, `${DATOS.noticias[0].titulo}. CNMV · 10/11/2026`);
   assert.equal(DATOS.noticias[0].id, 'cnmv-advierte-clones-xtb-pjt');
 });
 
@@ -398,7 +392,7 @@ test('con la red caída: lo dice, sin noticias, y «Reintentar» vuelve a pregun
   const { react, pintar } = crearReact();
   const Seccion = cargarSeccion(react);
   let fallar = true, llamadas = 0;
-  const props = { cargar: async () => { llamadas++; if (fallar) throw new Error('sin red'); return DATOS; }, onAbrirEnlace() {}, modo: 'portada', onAbrir() {} };
+  const props = { cargar: async () => { llamadas++; if (fallar) throw new Error('sin red'); return DATOS; }, onAbrirEnlace() {}, modo: 'compacta', onAbrir() {} };
   pintar(Seccion, props);
   await esperar(); await esperar();
   let arbol = pintar(Seccion, props);
@@ -412,10 +406,10 @@ test('con la red caída: lo dice, sin noticias, y «Reintentar» vuelve a pregun
   assert.equal(fotos(arbol).length, 3);
 });
 
-test('Inicio pinta las noticias después de «El mercado hoy» y antes de «Aprende», y abre su pantalla', () => {
+test('Inicio pinta las noticias en «Mercado y noticias», tras la cotización y antes de «Aprende», y abren su pantalla', () => {
   const inicio = fs.readFileSync(path.join(RAIZ, 'componentes/Inicio.js'), 'utf8');
-  const tk = inicio.indexOf('<TokenizacionMundo compacta'), nt = inicio.indexOf('<NoticiasSector modo="portada"'), ap = inicio.indexOf("abrir('aprende')");
-  assert.ok(tk > 0 && nt > tk && ap > nt, 'el orden de la web: mercado, noticias, aprende');
-  assert.match(inicio, /onAbrir=\{\(noticia\) => abrir\('noticias', \{ noticia: noticia\?\.id \|\| null \}\)\}/);
+  const tk = inicio.indexOf('<MercadoCotizacion'), nt = inicio.indexOf('<NoticiasSector modo="compacta"'), ap = inicio.indexOf("abrir('aprende')");
+  assert.ok(tk > 0 && nt > tk && ap > nt, 'el orden de la web: cotización, noticias, aprende');
+  assert.match(inicio, /onAbrir=\{\(noticia\) => abrir\('mercado', \{ noticia: noticia\?\.id \|\| null \}\)\}/);
   assert.match(inicio, /<NoticiasSector modo="lista" abrirId=\{noticiaId\} onAbrirEnlace=\{onAbrirEnlace\} \/>/);
 });

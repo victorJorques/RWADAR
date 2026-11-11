@@ -15,13 +15,14 @@ import { tacto } from '../lib/tacto';
    como la web
    ---------------------------------------------------------------------
    Lee /datos/noticias-v2.json de rwadar.pages.dev (lib/noticias-sector-remota.js).
-   Dos modos:
-   - `portada` (Inicio): las 3 primeras en tarjetas grandes con su foto
-     editorial y solo el titular encima, sobre un degradado oscuro para que
-     se lea, y «Hoy» o «Ayer» según el día de quien mira. Al tocar una,
-     onAbrir(noticia) abre la pantalla «Noticias» con su detalle.
-   - `lista` (pantalla «Noticias»): las 8, cada una con su foto, la fecha,
-     la categoría y el ámbito, el titular y el resumen. Al tocar, el detalle
+   Dos modos («Mercado y noticias», 11/11/2026, como en una app de bolsa):
+   - `compacta` (Inicio): las 3 primeras, en filas con una foto pequeña, el
+     titular, la fuente y la fecha, y «Hoy» o «Ayer» según el día de quien
+     mira. Al tocar una, onAbrir(noticia) abre «Mercado y noticias» con su
+     detalle.
+   - `lista` (debajo del gráfico, en «Mercado y noticias»): las 8, cada una
+     con la fuente y la fecha en pequeño, el titular grande, una línea de
+     resumen y la foto a la derecha (la primera, arriba). Al tocar, el detalle
      en un modal: fecha, titular, resumen, «Por qué te importa», la fuente y
      «Leer en la fuente (sales de RWAdar) ↗», que abre el enlace con
      onAbrirEnlace (el de App.js: solo https). `abrirId` abre esa al entrar.
@@ -71,44 +72,52 @@ function Etiqueta({ cual, enDetalle = false }) {
   );
 }
 
-function Tarjeta({ noticia, idioma, onAbrir, hoyISO, grande = false }) {
+/* La fuente, como en una app de bolsa: lo que va antes de la primera coma de
+   su nombre, tal como lo escribe RWAdar («CNMV», «ESMA»…). */
+export function fuenteCorta(noticia) { return String(noticia?.fuente?.nombre || '').split(',')[0].trim(); }
+
+/* Inicio: una fila compacta con foto pequeña, titular, fuente y fecha. */
+function Compacta({ noticia, idioma, onAbrir, hoyISO, ultima }) {
   const t = textos(noticia, idioma);
   const reciente = etiquetaReciente(noticia, hoyISO);
+  const meta = `${fuenteCorta(noticia)} · ${fechaCorta(noticia.fecha, idioma)}`;
   return (
-    <Pressable onPress={() => { tacto.abrir(); onAbrir(noticia); }}
-      style={({ pressed }) => [e.tarjeta, grande ? e.tarjetaGrande : e.tarjetaNormal, pressed && e.tarjetaPulsada]}
+    <Pressable onPress={() => { tacto.abrir(); onAbrir(noticia); }} style={({ pressed }) => [e.compacta, ultima && e.sinRaya, pressed && e.filaPulsada]}
       accessibilityRole="button" noTraducir idiomaOriginal={idioma === 'en' ? 'en-US' : 'es-ES'}
-      // El nombre es el titular entero (el «…» de la tarjeta es solo visual) y, después, «Hoy» o «Ayer».
-      accessibilityLabel={reciente ? `${t.titulo}. ${traducir(reciente)}` : t.titulo}>
-      <FotoNoticia noticia={noticia} estilo={StyleSheet.absoluteFill} velo />
-      <Etiqueta cual={reciente} />
-      <View style={e.titularCaja}>
-        <Text noTraducir style={[e.titular, grande && e.titularGrande]} numberOfLines={3} ellipsizeMode="tail">{t.titulo}</Text>
+      accessibilityLabel={[t.titulo, meta, reciente ? traducir(reciente) : null].filter(Boolean).join('. ')}>
+      <FotoNoticia noticia={noticia} estilo={e.compactaFoto} />
+      <View style={e.compactaTexto}>
+        <Text noTraducir style={e.compactaTit} numberOfLines={3}>{t.titulo}</Text>
+        <View style={e.meta}>
+          <Text noTraducir style={e.metaPeq}>{meta}</Text>
+          <Etiqueta cual={reciente} enDetalle />
+        </View>
       </View>
     </Pressable>
   );
 }
 
-/* La pantalla «Noticias»: cada una con su foto, fecha, titular y resumen. */
-function Fila({ noticia, idioma, onAbrir, hoyISO }) {
+/* Debajo del gráfico: la fuente y la fecha en pequeño, el titular grande, una
+   línea de resumen y la foto a la derecha; la primera, con la foto arriba. */
+function Fila({ noticia, idioma, onAbrir, hoyISO, primera }) {
   const t = textos(noticia, idioma);
   const reciente = etiquetaReciente(noticia, hoyISO);
   const lengua = idioma === 'en' ? 'en-US' : 'es-ES';
-  const meta = `${fechaCorta(noticia.fecha, idioma)} · ${etiquetaCategoria(noticia.categoria, idioma)} · ${etiquetaAmbito(noticia.ambito, idioma)}`;
+  const meta = `${fuenteCorta(noticia)} · ${fechaCorta(noticia.fecha, idioma)}`;
   return (
-    <Pressable onPress={() => { tacto.abrir(); onAbrir(noticia); }} style={({ pressed }) => [e.fila, pressed && e.filaPulsada]}
+    <Pressable onPress={() => { tacto.abrir(); onAbrir(noticia); }} style={({ pressed }) => [e.fila, primera && e.filaPrimera, pressed && e.filaPulsada]}
       accessibilityRole="button" noTraducir idiomaOriginal={lengua}
       accessibilityLabel={[t.titulo, meta, reciente ? traducir(reciente) : null].filter(Boolean).join('. ')}>
-      <FotoNoticia noticia={noticia} estilo={e.filaFoto} />
+      {primera ? <FotoNoticia noticia={noticia} estilo={e.filaFotoArriba} /> : null}
       <View style={e.filaTexto}>
-        <View style={e.meta}>
-          <Text noTraducir style={e.metaTxt}>{meta}</Text>
+        <View style={[e.meta, e.metaFila]}>
+          <Text noTraducir style={e.metaPeq}>{meta}</Text>
           <Etiqueta cual={reciente} enDetalle />
         </View>
-        <Text noTraducir style={e.filaTit}>{t.titulo}</Text>
-        <Text noTraducir style={e.filaResumen} numberOfLines={3}>{t.resumen}</Text>
-        <Text style={e.filaLeer}>{'Leer el detalle'}<Text noTraducir>{' →'}</Text></Text>
+        <Text noTraducir style={[e.filaTit, primera && e.filaTitPrimera]}>{t.titulo}</Text>
+        <Text noTraducir style={e.filaResumen} numberOfLines={primera ? 2 : 1}>{t.resumen}</Text>
       </View>
+      {primera ? null : <FotoNoticia noticia={noticia} estilo={e.filaFoto} />}
     </Pressable>
   );
 }
@@ -171,8 +180,7 @@ function Detalle({ noticia, idioma, onCerrar, onAbrirEnlace, hoyISO }) {
   );
 }
 
-export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias, ahora = () => new Date(), modo = 'portada', onAbrir, abrirId = null,
-  textosBloque = null }) {
+export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias, ahora = () => new Date(), modo = 'compacta', onAbrir, abrirId = null }) {
   const idioma = useIdioma();
   const [estado, setEstado] = useState({ fase: 'cargando', datos: null });
   const [abierta, setAbierta] = useState(null);
@@ -223,7 +231,7 @@ export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias,
         {estados}
         {d ? (
           <View style={e.listaFilas}>
-            {d.noticias.map((n) => <Fila key={n.id} noticia={n} idioma={idioma} onAbrir={setAbierta} hoyISO={hoyISO} />)}
+            {d.noticias.map((n, i) => <Fila key={n.id} noticia={n} idioma={idioma} onAbrir={setAbierta} hoyISO={hoyISO} primera={i === 0} />)}
           </View>
         ) : null}
         {d ? nota : null}
@@ -231,55 +239,44 @@ export default function NoticiasSector({ onAbrirEnlace, cargar = cargarNoticias,
       </View>
     );
   }
+  // Inicio («Mercado y noticias»): las 3 primeras, compactas.
   return (
-    <View style={e.seccion}>
-      <Text noTraducir style={e.titulo} accessibilityRole="header">{textosBloque?.titulo || 'Noticias'}</Text>
-      {fecha}
+    <View style={e.compactas}>
       {estados}
-      {d ? (
-        <View style={e.portada}>
-          {d.noticias.slice(0, EN_PORTADA).map((n, i) => (
-            <Tarjeta key={n.id} noticia={n} idioma={idioma} onAbrir={(x) => onAbrir?.(x)} hoyISO={hoyISO} grande={i === 0} />
-          ))}
-          {nota}
-        </View>
-      ) : null}
-      <Pressable onPress={() => { tacto.abrir(); onAbrir?.(null); }} style={({ pressed }) => [e.ver, pressed && pulsado('b3')]}
-        accessibilityRole="button" noTraducir accessibilityLabel={textosBloque?.ver || 'Todas las noticias'}>
-        <Text noTraducir style={e.verTxt}>{textosBloque?.ver || 'Todas las noticias'}{' →'}</Text>
-      </Pressable>
+      {d ? d.noticias.slice(0, EN_PORTADA).map((n, i) => (
+        <Compacta key={n.id} noticia={n} idioma={idioma} onAbrir={(x) => onAbrir?.(x)} hoyISO={hoyISO} ultima={i === EN_PORTADA - 1} />
+      )) : null}
+      {d ? nota : null}
     </View>
   );
 }
 
-
 const e = StyleSheet.create({
-  // Los bloques de Inicio: el mismo título y el mismo espacio.
-  seccion: { marginTop: 36, paddingTop: 32, borderTopWidth: 1, borderTopColor: C.bd },
-  titulo: { fontFamily: F.negrita, fontSize: 24, lineHeight: 29, letterSpacing: -0.4, color: C.tx },
-  portada: { marginTop: 16, gap: 12 },
   foto: { overflow: 'hidden', backgroundColor: C.s2 },
-  ver: { minHeight: UI.tactil, justifyContent: 'center', alignSelf: 'flex-start', marginLeft: -8, marginTop: 4, paddingHorizontal: 8, borderRadius: R.m },
-  verTxt: { fontFamily: F.semi, fontSize: 16, lineHeight: 21, color: C.senal },
-  tarjetaGrande: { width: '100%', aspectRatio: 4 / 3 },
-  tarjetaNormal: { width: '100%', aspectRatio: 16 / 10 },
-  titularGrande: { fontFamily: F.negrita, fontSize: 24, lineHeight: 29 },
-  listaFilas: { marginTop: 16, gap: 16 },
-  fila: { borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1, overflow: 'hidden' },
-  filaPulsada: { backgroundColor: C.s2 },
-  filaFoto: { width: '100%', aspectRatio: 16 / 9 },
-  filaTexto: { padding: 16 },
-  filaTit: { fontFamily: F.negrita, fontSize: 20, lineHeight: 25, letterSpacing: -0.3, color: C.tx, marginTop: 6 },
-  filaResumen: { ...T.menor, fontSize: 15, lineHeight: 22, color: C.tx2, marginTop: 8 },
-  filaLeer: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal, marginTop: 10 },
+  listaFilas: { marginTop: 8 },
+  fila: { flexDirection: 'row', alignItems: 'flex-start', gap: 14, paddingVertical: 16, borderBottomWidth: 1, borderBottomColor: C.bd },
+  filaPrimera: { flexDirection: 'column', alignItems: 'stretch', gap: 12 },
+  filaPulsada: { backgroundColor: C.ton },
+  filaFoto: { width: 88, height: 88, borderRadius: R.m },
+  filaFotoArriba: { width: '100%', aspectRatio: 16 / 9, borderRadius: R.l },
+  filaTexto: { flex: 1, minWidth: 0 },
+  metaFila: { marginTop: 0 },
+  metaPeq: { fontFamily: F.media, fontSize: 12, lineHeight: 16, color: C.tx3 },
+  filaTit: { fontFamily: F.negrita, fontSize: 18, lineHeight: 23, letterSpacing: -0.2, color: C.tx, marginTop: 4 },
+  filaTitPrimera: { fontSize: 22, lineHeight: 27, letterSpacing: -0.4 },
+  filaResumen: { ...T.menor, fontSize: 15, lineHeight: 21, color: C.tx2, marginTop: 6 },
+  compactas: { marginTop: 8 },
+  compacta: { flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: C.bd },
+  sinRaya: { borderBottomWidth: 0 },
+  compactaFoto: { width: 72, height: 72, borderRadius: R.m },
+  compactaTexto: { flex: 1, minWidth: 0, gap: 4 },
+  compactaTit: { fontFamily: F.negrita, fontSize: 17, lineHeight: 22, letterSpacing: -0.2, color: C.tx },
   sub: { ...T.menor, color: C.tx2, marginTop: 4 },
   estado: { ...T.menor, color: C.tx2, marginTop: 16, padding: 16, borderRadius: R.m, backgroundColor: C.ton },
   estadoCaja: { marginTop: 16, padding: 16, borderRadius: R.m, backgroundColor: C.ton },
   estadoTxt: { ...T.menor, color: C.tx2 },
   b3: { minHeight: 44, borderRadius: R.m, paddingHorizontal: 8, marginLeft: -8, marginTop: 4, alignSelf: 'flex-start', justifyContent: 'center' },
   b3Txt: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal },
-  tarjeta: { borderRadius: R.l, overflow: 'hidden', backgroundColor: C.s1, borderWidth: 1, borderColor: C.bd },
-  tarjetaPulsada: { opacity: 0.88 },
   hoy: { position: 'absolute', top: 12, left: 12, flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 4, paddingLeft: 8,
     paddingRight: 10, borderRadius: R.p, backgroundColor: 'rgba(11,10,10,0.78)', borderWidth: 1, borderColor: C.senal20 },
   hoyDetalle: { position: 'relative', top: 0, left: 0, marginLeft: 8 },
@@ -289,9 +286,6 @@ const e = StyleSheet.create({
   ayer: { borderColor: C.bd },
   ayerPunto: { backgroundColor: C.tx2 },
   ayerTxt: { color: C.tx },
-  titularCaja: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 16, paddingTop: 16, paddingBottom: 18 },
-  titular: { fontFamily: F.negrita, fontSize: 20, lineHeight: 25, letterSpacing: -0.3, color: C.tx,
-    textShadowColor: 'rgba(0,0,0,0.6)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 6 },
   nota: { ...T.menor, fontSize: 12, lineHeight: 17, color: C.tx3, marginTop: 10 },
   modal: { flex: 1, backgroundColor: C.s1 },
   cab: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: UI.margen + 2, paddingRight: 10,

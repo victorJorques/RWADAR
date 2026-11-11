@@ -3,34 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Noticias de la tokenización · RWAdar</title>
-<meta name="description" content="Las noticias de la tokenización que importan en España y en la UE, seleccionadas y verificadas por RWAdar con enlace a su fuente.">
-<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
-<link rel="canonical" href="https://rwadar.pages.dev/noticias/">
+<title>Las noticias están en Mercado y noticias · RWAdar</title>
+<meta name="description" content="Las noticias de la tokenización están ahora en Mercado y noticias, debajo del gráfico del mercado.">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://rwadar.pages.dev/mercado/">
 <meta name="theme-color" content="#0B0A0A">
 <meta name="color-scheme" content="dark">
-<meta property="og:site_name" content="RWAdar">
-<meta property="og:locale" content="es_ES">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://rwadar.pages.dev/noticias/">
-<meta property="og:title" content="Noticias de la tokenización · RWAdar">
-<meta property="og:description" content="Las noticias de la tokenización que importan en España y en la UE, seleccionadas y verificadas por RWAdar con enlace a su fuente.">
-<meta property="og:image" content="https://rwadar.pages.dev/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'><rect width='104' height='104' rx='24' fill='%230B0A0A'/><g fill='none' stroke='%2325E39A' stroke-width='2.6' opacity='.55'><circle cx='52' cy='52' r='40'/><circle cx='52' cy='52' r='28'/></g><path d='M52 52 L64.74 20.48 A34 34 0 0 1 83.52 39.26 Z' fill='%2325E39A' opacity='.45'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52L45.5 40.74L58.5 40.74Z' fill='%2325E39A'/><path d='M65 52L58.5 63.26L45.5 63.26L39 52Z' fill='%230F7A57'/></svg>">
+<!-- /noticias/ y /noticias/#<id> (11/11/2026): las noticias van ahora en
+     /mercado/, debajo del gráfico. Este script lleva allí sin romper los
+     enlaces: /noticias/#<id> abre esa noticia en /mercado/#<id>. Sin
+     JavaScript, el refresco de abajo o el enlace hacen lo mismo. -->
+<script src="/assets/noticias-a-mercado-20261111.js"></script>
+<meta http-equiv="refresh" content="0; url=/mercado/#noticias">
 <script src="/assets/idioma-previo-20261104.js"></script>
 <link rel="stylesheet" href="/assets/rwadar-20260820.css">
 <link rel="stylesheet" href="/assets/idioma-20261022.css">
-<link rel="stylesheet" href="/assets/noticias-sector-20261110.css">
 <link rel="stylesheet" href="/assets/secciones-20261110.css">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://rwadar.pages.dev/noticias/#pagina","name":"Noticias de la tokenización","description":"Las noticias de la tokenización que importan en España y en la UE, seleccionadas y verificadas por RWAdar con enlace a su fuente.","url":"https://rwadar.pages.dev/noticias/","inLanguage":"es-ES","isPartOf":{"@type":"WebSite","name":"RWAdar","url":"https://rwadar.pages.dev/"}}
-</script>
-<script src="/assets/analitica-20260927.js" defer></script>
-<script src="/assets/noticias-sector-modelo-20261110.js" defer></script>
-<script src="/assets/noticias-sector-20261110.js" defer></script>
 <script src="/assets/idioma-en-20261022.js" defer></script>
 <script src="/assets/idioma-20261022.js" defer></script>
 <script src="/assets/idioma-web-20261022.js" defer></script>
@@ -50,8 +39,7 @@
     </a>
     <nav class="sec-nav" aria-label="Secciones">
       <a href="/" class="sec-nav-inicio">Inicio</a>
-      <a href="/mercado/">El mercado</a>
-      <a href="/noticias/" aria-current="page">Noticias</a>
+      <a href="/mercado/">Mercado y noticias</a>
       <a href="/aprende/">Aprende</a>
       <a href="/#emisiones">Ofertas</a>
     </nav>
@@ -60,36 +48,12 @@
 <div data-selector-idioma></div>
 
 <main id="contenido" class="sec">
-  <a class="sec-volver" href="/"><span aria-hidden="true">←</span> Inicio</a>
-  <!-- Las noticias del sector, todas y con su detalle (en Inicio, solo las 3
-       primeras). Selección verificada en cada ciclo de investigación; las
-       pinta assets/noticias-sector-20261110.js desde /datos/noticias-v2.json. -->
-  <section class="nt nt--lista" id="noticias" aria-labelledby="ntTit" data-noticias="lista">
-    <p class="sec-ante">Noticias del sector</p>
-    <h1 class="sec-tit" id="ntTit">Noticias</h1>
-    <p class="sec-entradilla"><span>Lo que importa de la tokenización, con su fuente. Selección editorial; no es una recomendación.</span> <span class="nt-sub" id="ntFecha" hidden></span></p>
-    <ul class="nt-lista" id="ntLista" aria-labelledby="ntTit" hidden></ul>
-    <p class="nt-estado" id="ntEstado" role="status">Cargando las noticias…</p>
-    <p class="nt-nota" id="ntNota" hidden>Imágenes ilustrativas generadas con IA, no fotos de la noticia.</p>
-    <dialog class="nt-dialogo" id="ntDialogo" aria-labelledby="ntDlgTit">
-      <div class="nt-dlg-marco">
-        <div class="nt-dlg-cab">
-          <span class="nt-dlg-etq">Noticia del sector</span>
-          <button class="nt-dlg-cerrar" type="button" data-nt-cerrar aria-label="Cerrar la noticia"><span aria-hidden="true">×</span></button>
-        </div>
-        <div class="nt-dlg-cuerpo" id="ntDlgCuerpo"></div>
-      </div>
-    </dialog>
-  </section>
+  <p class="sec-ante">Noticias del sector</p>
+  <h1 class="sec-tit">Las noticias están ahora en Mercado y noticias</h1>
+  <p class="sec-entradilla">Van debajo del gráfico del mercado, con su fuente y su detalle.</p>
   <ul class="sec-sigue" aria-label="Sigue por aquí">
-    <li><a href="/mercado/"><span>Ver el mercado</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a></li>
-    <li><a href="/aprende/"><span>Aprende en 6 pasos</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a></li>
-    <li><a href="/#emisiones"><span>Ver las ofertas</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a></li>
+    <li><a href="/mercado/#noticias"><span>Ver mercado y noticias</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a></li>
   </ul>
-  <footer class="sec-pie">
-    <p>RWAdar no asesora ni vende, y nadie paga por aparecer. No es una recomendación de inversión. Invertir tiene riesgos: puedes perder parte o todo lo que inviertas.</p>
-    <p><a href="/aprende/#nota-legal">Nota legal completa</a> · <a href="/privacidad">Política de privacidad</a> · <a href="/transparencia-comercial">Transparencia comercial</a></p>
-  </footer>
 </main>
 </body>
 </html>

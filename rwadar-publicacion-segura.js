@@ -193,9 +193,15 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   // rwadar-movil/lib/tokenizacion.js), la sección, su hoja y la semilla del
   // histórico (rwadar-publicar.js la cambia por el de la rama datos-tokenizacion).
   'assets/tokenizacion-modelo-20261110.js',
-  'assets/tokenizacion-20261110.js',
-  'assets/tokenizacion-20261110.css',
   'datos/tokenizacion-historico.json',
+  // «Mercado y noticias» al estilo de una app de bolsa (11/11/2026): la
+  // sección (/mercado/ y la tarjeta de Inicio), su hoja, el paso de /noticias/
+  // a /mercado/ y la semilla de la serie de un año (rwadar-publicar.js la
+  // cambia por la de la rama datos-tokenizacion si es más reciente).
+  'assets/mercado-20261111.js',
+  'assets/mercado-20261111.css',
+  'assets/noticias-a-mercado-20261111.js',
+  'datos/tokenizacion-serie.json',
   // «Noticias del sector» en Inicio (10/11/2026): el motor (copia de
   // rwadar-movil/lib/noticias-sector.js), la sección, su hoja y las noticias
   // verificadas del último ciclo (rwadar-publicar.js las valida antes de publicar):

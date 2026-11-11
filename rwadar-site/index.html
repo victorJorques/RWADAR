@@ -75,8 +75,8 @@
 <link rel="stylesheet" href="/assets/idioma-20261022.css">
 <link rel="stylesheet" href="/assets/mapa-buscar-20261027.css">
 <link rel="stylesheet" href="/assets/academy-candado-20261108.css">
-<link rel="stylesheet" href="/assets/tokenizacion-20261110.css">
 <link rel="stylesheet" href="/assets/noticias-sector-20261110.css">
+<link rel="stylesheet" href="/assets/mercado-20261111.css">
 <link rel="stylesheet" href="/assets/secciones-20261110.css">
 </head>
 <body>
@@ -141,9 +141,9 @@
 
     <!-- Rediseño del 10/11/2026 (encargo de Víctor: «mucho lío en Inicio»).
          Inicio es una portada por bloques cortos, el mismo orden que la app:
-         Cabecera, Ofertas, El mercado hoy, Noticias, Aprende y Pie. Cada
-         bloque es un resumen con su enlace «Ver …» a su sección, donde está
-         el detalle (/mercado/, /noticias/, /aprende/). Nada se repite: una
+         Cabecera, Ofertas, Mercado y noticias (unidos el 11/11/2026), Aprende
+         y Pie. Cada bloque es un resumen con su enlace «Ver …» a su sección,
+         donde está el detalle (/mercado/, /aprende/). Nada se repite: una
          cifra o una oferta sale en un solo bloque. Un solo aviso de riesgo,
          en la cabecera. Las cifras del catálogo las pone pintarInicio(); en
          el HTML no hay ninguna. -->
@@ -182,34 +182,27 @@
       <a class="ini-ver" href="#emisiones" data-movil-ir="emisiones"><span>Ver todas las ofertas</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
     </section>
 
-    <!-- 3 · El mercado hoy: la tarjeta compacta (cifra total, 24 h y una barra
-         apilada con los 3 tipos mayores y «otros»), con datos de CoinGecko
-         que lee nuestro servidor. Todo lo demás está en /mercado/. La pinta
-         assets/tokenizacion-20261110.js; aquí no hay ninguna cifra. -->
-    <section class="ini-bloque tk tk--compacta" id="tokenizacion" aria-labelledby="tkTit" data-tokenizacion="compacta">
+    <!-- 3 · Mercado y noticias (11/11/2026): una tarjeta tipo cotización
+         (nombre, cifra de hoy, cambio del último mes y un minigráfico del
+         mes) y las 3 noticias principales, compactas; el gráfico entero y
+         todas las noticias, en /mercado/. Lo pintan assets/mercado-20261111.js
+         (datos de CoinGecko que lee nuestro servidor y la serie de
+         /datos/tokenizacion-serie.json) y assets/noticias-sector-20261110.js
+         (/datos/noticias-v2.json); aquí no hay ninguna cifra. -->
+    <section class="ini-bloque mk mk--inicio nt nt--portada" id="mercado" aria-labelledby="mkTit" data-mercado="inicio" data-noticias="portada">
       <div class="ini-bloque-cab">
-        <h2 class="ini-bloque-tit" id="tkTit">El mercado hoy</h2>
-        <p class="ini-bloque-sub">Valor de los activos reales tokenizados en el mundo</p>
+        <h2 class="ini-bloque-tit" id="mkTit">Mercado y noticias</h2>
+        <p class="ini-bloque-sub">El valor de los activos reales tokenizados y lo que pasa en el sector</p>
       </div>
-      <div class="tk-cuerpo" id="tkCuerpo" aria-busy="true">
-        <p class="tk-estado" id="tkEstado">Cargando los datos de CoinGecko…</p>
+      <div class="mk-cuerpo" id="mkCuerpo" aria-busy="true">
+        <p class="mk-estado">Cargando los datos de CoinGecko…</p>
       </div>
-      <p class="tk-fuente"><span>Datos:</span> <a href="https://www.coingecko.com/" target="_blank" rel="noopener nofollow" translate="no">CoinGecko</a><span class="tk-hora" id="tkHora"></span></p>
-      <a class="ini-ver" href="/mercado/"><span>Ver el mercado</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
-    </section>
-
-    <!-- 4 · Noticias: tres tarjetas grandes con foto editorial y solo el
-         titular; todas, con su detalle, en /noticias/. Lo pinta
-         assets/noticias-sector-20261110.js desde /datos/noticias-v2.json. -->
-    <section class="ini-bloque nt nt--portada" id="noticias" aria-labelledby="ntTit" data-noticias="portada">
-      <div class="ini-bloque-cab">
-        <h2 class="ini-bloque-tit" id="ntTit">Noticias</h2>
-        <p class="ini-bloque-sub" id="ntFecha" hidden></p>
-      </div>
-      <ul class="nt-portada" id="ntLista" aria-labelledby="ntTit" hidden></ul>
+      <h3 class="solo-lector" id="ntTit">Noticias</h3>
+      <p class="ini-bloque-sub solo-lector" id="ntFecha" hidden></p>
+      <ul class="nt-compacta" id="ntLista" aria-labelledby="ntTit" hidden></ul>
       <p class="nt-estado" id="ntEstado" role="status">Cargando las noticias…</p>
       <p class="nt-nota" id="ntNota" hidden>Imágenes ilustrativas generadas con IA, no fotos de la noticia.</p>
-      <a class="ini-ver" href="/noticias/"><span>Todas las noticias</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
+      <a class="ini-ver" href="/mercado/"><span>Ver mercado y noticias</span><span class="ini-ver-flecha" aria-hidden="true">→</span></a>
     </section>
 
     <!-- 5 · Aprende: una sola tarjeta; los seis capítulos, en /aprende/. -->
@@ -1477,7 +1470,7 @@
 <script src="/assets/mapa-buscar-util-20261027.js" defer></script>
 <script src="/assets/mapa-buscar-20261027.js" defer></script>
 <script src="/assets/tokenizacion-modelo-20261110.js" defer></script>
-<script src="/assets/tokenizacion-20261110.js" defer></script>
+<script src="/assets/mercado-20261111.js" defer></script>
 <script src="/assets/noticias-sector-modelo-20261110.js" defer></script>
 <script src="/assets/noticias-sector-20261110.js" defer></script>
 <script src="/assets/catalogo-publico-20261022.js" defer></script>

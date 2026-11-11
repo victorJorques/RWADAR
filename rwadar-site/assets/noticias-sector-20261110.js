@@ -4,16 +4,18 @@
    ---------------------------------------------------------------------
    Pinta la sección [data-noticias] con /datos/noticias-v2.json (estático,
    del propio despliegue; el navegador no habla con nadie más). Dos modos:
-   - data-noticias="portada" (Inicio): las 3 primeras, en tarjetas grandes
-     con su foto editorial y solo el titular encima, sobre un degradado
-     oscuro para que se lea. Cada tarjeta es un enlace a su detalle en
-     /noticias/#<id>. «Hoy» o «Ayer» según la fecha de quien mira.
-   - data-noticias="lista" (/noticias/): las 8, cada una con su foto, la
-     fecha, la categoría y el ámbito, el titular y el resumen. Al pulsar, un
+   - data-noticias="portada" (Inicio, bloque «Mercado y noticias» del
+     11/11/2026): las 3 primeras, compactas, con una foto pequeña, la fuente,
+     la fecha y el titular. Cada una es un enlace a su detalle en
+     /mercado/#<id>. «Hoy» o «Ayer» según la fecha de quien mira.
+   - data-noticias="lista" (/mercado/, «Noticias relacionadas», como en una
+     app de bolsa; /noticias/ lleva ahí): las 8, cada una con la fuente y la
+     fecha en pequeño, el titular grande, una línea de resumen y la foto
+     (data-noticias-nivel="3": los titulares son h3). Al pulsar, un
      <dialog> con todo el detalle: «Por qué te importa», la fuente y «Leer
      en la fuente (sales de RWAdar) ↗» (rel="noopener noreferrer"). Escape o
      «×» lo cierran y el foco vuelve a la tarjeta. Un enlace /noticias/#<id>
-     abre esa noticia.
+     abre esa noticia (/noticias/#<id> lleva a /mercado/#<id>).
    Las fotos son ilustrativas, generadas con IA y servidas por RWAdar en
    /noticias-editoriales/<clave>.webp (la clave es el campo «imagen»). Si una
    no carga o la noticia no trae «imagen», queda el fondo oscuro y el titular
@@ -73,6 +75,17 @@
     p.append(cuando, ' · ', dato('span', '', modelo.etiquetaCategoria(n.categoria, lengua)), ' · ', dato('span', '', modelo.etiquetaAmbito(n.ambito, lengua)));
     return p;
   }
+  /* Como en una app de bolsa: la fuente (lo que va antes de la primera coma
+     de su nombre, tal como lo escribe RWAdar) y la fecha, en pequeño. */
+  const fuenteCorta = n => String(n.fuente?.nombre || '').split(',')[0].trim();
+  function metaFuente(n, clase) {
+    const p = el('p', clase), cuando = dato('time', '', modelo.fechaCorta(n.fecha, idioma()));
+    cuando.dateTime = n.fecha;
+    const fuente = el('span', 'nt-fuente-corta', fuenteCorta(n));
+    fuente.lang = 'es'; fuente.setAttribute('translate', 'no');
+    p.append(fuente, ' · ', cuando);
+    return p;
+  }
 
   async function cargar() {
     const abort = new AbortController(), reloj = setTimeout(() => abort.abort(), PLAZO_MS);
@@ -83,25 +96,27 @@
     } catch { return null; } finally { clearTimeout(reloj); }
   }
 
-  /* Inicio: una tarjeta grande, enlace a su detalle. El nombre del enlace es
-     el titular entero; «Hoy» o «Ayer» van detrás en el DOM y arriba a la vista. */
+  /* Inicio: una fila compacta (foto pequeña, fuente y fecha, titular), enlace a
+     su detalle en /mercado/. El nombre del enlace empieza por el titular. */
   function tarjetaPortada(n, i) {
     const t = modelo.textos(n, idioma());
-    const li = el('li', 'nt-item' + (i === 0 ? ' nt-item--grande' : ''));
-    const a = el('a', 'nt-tarjeta');
-    a.href = '/noticias/#' + encodeURIComponent(n.id);
+    const li = el('li', 'nt-c-item');
+    const a = el('a', 'nt-c');
+    a.href = '/mercado/#' + encodeURIComponent(n.id);
     a.dataset.ntId = n.id;
-    a.append(foto(n, 'nt-foto', { perezosa: i > 0 }));
-    const tit = el('span', 'nt-titular');
-    tit.append(dato('span', 'nt-titular-txt', t.titulo));
-    a.append(tit);
+    a.append(foto(n, 'nt-foto', { perezosa: i > 0, ancho: 144, alto: 144 }));
+    const texto = el('span', 'nt-c-txt');
+    const tit = dato('span', 'nt-c-tit', t.titulo);
+    const m = metaFuente(n, 'nt-c-meta');
     const reciente = etiqueta(n);
-    if (reciente) a.append(reciente);
+    if (reciente) m.append(' ', reciente);
+    texto.append(tit, m);
+    a.append(texto);
     li.append(a);
     return li;
   }
-  /* /noticias/: la tarjeta con su foto, la fecha, el titular y el resumen; un
-     botón abre el detalle entero. */
+  /* /mercado/: la fuente y la fecha, el titular, una línea de resumen y la
+     foto; el titular es un botón que abre el detalle entero (toda la fila). */
   function tarjetaLista(n, i) {
     const t = modelo.textos(n, idioma());
     const li = el('li', 'nt-fila');
@@ -110,20 +125,17 @@
     art.setAttribute('aria-labelledby', 'nt-t-' + n.id);
     art.append(foto(n, 'nt-art-foto', { perezosa: i > 1 }));
     const texto = el('div', 'nt-art-txt');
-    const m = meta(n, 'nt-art-meta');
+    const m = metaFuente(n, 'nt-art-meta');
     const reciente = etiqueta(n, 'nt-hoy--dlg');
     if (reciente) m.append(' ', reciente);
-    const h = el('h2', 'nt-art-tit');
+    const h = el(seccion.dataset.noticiasNivel === '3' ? 'h3' : 'h2', 'nt-art-tit');
     h.id = 'nt-t-' + n.id;
     const b = el('button', 'nt-art-abrir');
     b.type = 'button';
     b.dataset.ntId = n.id;
     b.append(dato('span', '', t.titulo));
     h.append(b);
-    const leer = el('span', 'nt-art-leer');
-    leer.setAttribute('aria-hidden', 'true');
-    leer.append(el('span', '', 'Leer el detalle'), el('span', 'ini-ver-flecha', '→'));
-    texto.append(m, h, dato('p', 'nt-art-resumen', t.resumen), leer);
+    texto.append(m, h, dato('p', 'nt-art-resumen', t.resumen));
     art.append(texto);
     li.append(art);
     return li;

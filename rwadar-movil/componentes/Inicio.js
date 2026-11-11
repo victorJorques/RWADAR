@@ -6,7 +6,7 @@ import { Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { Icono } from './Navegacion';
 import Radar from './Radar';
 import RecienAnadidas from './RecienAnadidas';
-import TokenizacionMundo from './TokenizacionMundo';
+import { MercadoCotizacion, MercadoPantalla } from './MercadoBolsa';
 import NoticiasSector from './NoticiasSector';
 import AprendeInicio, { enlaceCorto } from './AprendeInicio';
 import { ofertasDestacadas, recienAnadidas } from '../lib/recien-anadidas';
@@ -28,19 +28,20 @@ export { enlaceCorto };
       de riesgo, corto, pegado al botón (si se ve el botón, se ve el aviso).
    2. Ofertas: un solo carrusel con las recién añadidas y las que pasan las
       5 comprobaciones, sin duplicados (RecienAnadidas).
-   3. El mercado hoy: la tarjeta compacta (TokenizacionMundo compacta) y
-      «Ver el mercado →», que abre su pantalla con todo lo demás.
-   4. Noticias: tres tarjetas grandes con foto y solo el titular, y «Todas
-      las noticias →» (pantalla con las 8 y su detalle).
-   5. Aprende: una tarjeta que abre la pantalla con los seis capítulos
+   3. Mercado y noticias (unidos el 11/11/2026, como en una app de bolsa):
+      una tarjeta tipo cotización (nombre, cifra, cambio del mes en color y
+      un minigráfico del mes), las 3 noticias principales, compactas, y «Ver
+      mercado y noticias →», que abre su pantalla: el gráfico con sus
+      pestañas y, debajo, todas las noticias con su detalle (MercadoBolsa).
+   4. Aprende: una tarjeta que abre la pantalla con los seis capítulos
       (AprendeInicio), tal como estaban, con sus fuentes y la nota legal.
-   6. Pie: una línea legal y «Nota legal completa →».
+   5. Pie: una línea legal y «Nota legal completa →».
    Las pantallas se abren encima de Inicio, como las fichas (un Modal a
    pantalla completa; el botón atrás de Android vuelve a Inicio). Las
    novedades de RWAdar salen de Inicio: están en Perfil (y en /cambios).
    --------------------------------------------------------------------- */
 
-/* Una pantalla de Inicio (Mercado, Noticias o Aprende), encima de Inicio. */
+/* Una pantalla de Inicio («Mercado y noticias» o «Aprende»), encima de Inicio. */
 function PantallaInicio({ visible, titulo, volver, onCerrar, children }) {
   return (
     <Modal visible={visible} animationType="slide" presentationStyle="fullScreen" onRequestClose={onCerrar}
@@ -82,7 +83,7 @@ export default function Inicio({
   const nuevas = recienAnadidas(ofertas, { catalogoCaducado: !cifras.vigente });
   const destacadas = cifras.vigente ? ofertasDestacadas(nuevas, cifras.seleccion) : [];
   const enSeleccion = new Set(cifras.seleccion.map((o) => o.slug));
-  // La pantalla abierta encima de Inicio: 'mercado', 'noticias' o 'aprende'.
+  // La pantalla abierta encima de Inicio: 'mercado' (con las noticias) o 'aprende'.
   const [seccion, setSeccion] = useState(null);
   const [noticiaId, setNoticiaId] = useState(null);
   const [irALegal, setIrALegal] = useState(false);
@@ -154,14 +155,21 @@ export default function Inicio({
       <RecienAnadidas ofertas={destacadas} seleccion={enSeleccion}
         onAbrirOferta={onAbrirOferta} onVerTodas={() => onDestino('ofertas')} />
 
-      {/* 3 · El mercado hoy: la tarjeta compacta; el resto, en su pantalla. */}
-      <TokenizacionMundo compacta textos={b.mercado} onAbrirEnlace={onAbrirEnlace} onVerMas={() => abrir('mercado')} />
+      {/* 3 · Mercado y noticias: la cotización y las 3 noticias principales; el
+          gráfico entero y todas las noticias, en su pantalla. */}
+      <View style={e.bloque}>
+        <Text noTraducir style={e.bloqueTit} accessibilityRole="header">{b.mercado.titulo}</Text>
+        <Text noTraducir style={e.bloqueSub}>{b.mercado.sub}</Text>
+        <MercadoCotizacion onAbrir={() => abrir('mercado')} onAbrirEnlace={onAbrirEnlace} />
+        <NoticiasSector modo="compacta" onAbrirEnlace={onAbrirEnlace}
+          onAbrir={(noticia) => abrir('mercado', { noticia: noticia?.id || null })} />
+        <Pressable onPress={() => { tacto.abrir(); abrir('mercado'); }} style={({ pressed }) => [e.ver, pressed && pulsado('b3')]}
+          accessibilityRole="button" noTraducir accessibilityLabel={b.mercado.ver}>
+          <Text noTraducir style={e.verTxt}>{b.mercado.ver}{' →'}</Text>
+        </Pressable>
+      </View>
 
-      {/* 4 · Noticias: tres con foto; las 8 y su detalle, en su pantalla. */}
-      <NoticiasSector modo="portada" textosBloque={b.noticias} onAbrirEnlace={onAbrirEnlace}
-        onAbrir={(noticia) => abrir('noticias', { noticia: noticia?.id || null })} />
-
-      {/* 5 · Aprende: una sola tarjeta. */}
+      {/* 4 · Aprende: una sola tarjeta. */}
       <View style={e.bloque}>
         <Text noTraducir style={e.bloqueTit} accessibilityRole="header">{b.aprende.titulo}</Text>
         <Pressable onPress={() => { tacto.abrir(); abrir('aprende'); }} style={({ pressed }) => [e.aprende, pressed && e.aprendePulsada]}
@@ -179,7 +187,7 @@ export default function Inicio({
         </Pressable>
       </View>
 
-      {/* 6 · Pie: una línea legal y la nota completa (en «Aprende»). */}
+      {/* 5 · Pie: una línea legal y la nota completa (en «Aprende»). */}
       <View style={e.pie}>
         <Text noTraducir style={e.pieTxt}>{b.pie}</Text>
         <Pressable onPress={() => { tacto.eleccion(); abrir('aprende', { legal: true }); }} style={({ pressed }) => [e.ver, pressed && pulsado('b3')]}
@@ -191,12 +199,9 @@ export default function Inicio({
 
     <PantallaInicio visible={seccion === 'mercado'} titulo={b.mercado.titulo} volver={b.volver} onCerrar={cerrar}>
       <ScrollView contentContainerStyle={e.pantallaCuerpo}>
-        <TokenizacionMundo pantalla onAbrirEnlace={onAbrirEnlace} />
-      </ScrollView>
-    </PantallaInicio>
-    <PantallaInicio visible={seccion === 'noticias'} titulo={b.noticias.titulo} volver={b.volver} onCerrar={cerrar}>
-      <ScrollView contentContainerStyle={e.pantallaCuerpo}>
-        <NoticiasSector modo="lista" abrirId={noticiaId} onAbrirEnlace={onAbrirEnlace} />
+        <MercadoPantalla onAbrirEnlace={onAbrirEnlace}>
+          <NoticiasSector modo="lista" abrirId={noticiaId} onAbrirEnlace={onAbrirEnlace} />
+        </MercadoPantalla>
       </ScrollView>
     </PantallaInicio>
     <PantallaInicio visible={seccion === 'aprende'} titulo={b.aprende.titulo} volver={b.volver} onCerrar={cerrar}>
@@ -234,6 +239,7 @@ const e = StyleSheet.create({
   /* Bloques: el mismo título y el mismo espacio en todos. */
   bloque: { marginTop: 36, paddingTop: 32, borderTopWidth: 1, borderTopColor: C.bd },
   bloqueTit: { fontFamily: F.negrita, fontSize: 24, lineHeight: 29, letterSpacing: -0.4, color: C.tx },
+  bloqueSub: { ...T.menor, fontSize: 16, lineHeight: 23, color: C.tx2, marginTop: 4 },
   ver: { minHeight: UI.tactil, justifyContent: 'center', alignSelf: 'flex-start', marginLeft: -8, marginTop: 4, paddingHorizontal: 8, borderRadius: R.m },
   verTxt: { fontFamily: F.semi, fontSize: 16, lineHeight: 21, color: C.senal, marginTop: 4 },
   verTxtPie: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal },

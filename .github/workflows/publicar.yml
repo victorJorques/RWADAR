@@ -83,6 +83,13 @@ jobs:
             echo "Histórico de la tokenización: rama datos-tokenizacion."
             # Esta rama no la cubre el sello aprobado: su commit queda en el registro.
             echo "datos-tokenizacion: $(git rev-parse FETCH_HEAD)"
+            # La serie de un año del gráfico de /mercado/ (11/11/2026), si ya la hay.
+            if git show FETCH_HEAD:tokenizacion-serie.json > "$RUNNER_TEMP/tokenizacion-serie.json" 2>/dev/null; then
+              echo "RWADAR_TOKENIZACION_SERIE=$RUNNER_TEMP/tokenizacion-serie.json" >> "$GITHUB_ENV"
+              echo "Serie de la tokenización: rama datos-tokenizacion."
+            else
+              echo "La rama aún no tiene la serie: se publica la semilla de main."
+            fi
           else
             echo "Sin la rama datos-tokenizacion: se publica la semilla de main."
           fi

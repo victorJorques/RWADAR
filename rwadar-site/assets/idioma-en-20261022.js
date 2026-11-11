@@ -1983,6 +1983,14 @@
   "¿Quieres ir más allá? RWAdar Academy": "Want to go further? RWAdar Academy",
   "9 lecciones gratis en tres niveles: qué compras, quién responde y cómo se sale. Con un resumen de 30 segundos y un test corto.": "9 free lessons in three levels: what you buy, who is responsible and how you get out. With a 30-second summary and a short quiz.",
   "Las cifras del mercado tokenizado, al día y con su fuente, están en": "Up-to-date figures for the tokenised market, with their source, are in",
+  // «Mercado y noticias» al estilo de una app de bolsa (11/11/2026), web y app.
+  "Mercado y noticias": "Market and news",
+  "El valor de los activos reales tokenizados y lo que pasa en el sector": "The value of tokenised real-world assets and what is happening in the sector",
+  "Ver mercado y noticias": "See market and news",
+  "Mercado de activos tokenizados": "Tokenised asset market",
+  "Noticias relacionadas": "Related news",
+  "Las noticias están ahora en Mercado y noticias": "The news is now in Market and news",
+  "Van debajo del gráfico del mercado, con su fuente y su detalle.": "It sits below the market chart, with its source and details.",
   "Lo último de la web y la app": "The latest on the website and the app",
 };
 if(typeof module==='object'&&module.exports)module.exports=Object.freeze(diccionario);else raiz.RWAdarEnglish=Object.freeze(diccionario);
