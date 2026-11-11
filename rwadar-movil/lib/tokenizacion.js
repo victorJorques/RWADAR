@@ -567,16 +567,50 @@ function graficoPestana(serie, clave, idioma = 'es') {
   if (!escala) return null;
   const p = PESTANAS.find(x => x.clave === clave);
   const en = idioma === 'en';
-  const largo = en ? ({ '1s': 'past week', '1m': 'past month', '3m': 'past 3 months', '6m': 'past 6 months', ytd: 'year to date', '1a': 'past year' })[clave] : p.largo;
+  const largo = en ? LARGO_EN[clave] : p.largo;
+  const dir = direccion(e.cambio), aviso = avisoTokens(t, dir, idioma);
   return {
-    clave, puntos: t, estadisticas: e, escala, direccion: direccion(e.cambio),
+    clave, puntos: t, estadisticas: e, escala, direccion: dir,
     marcasValores: escala.marcas.map(v => ({ valor: v, texto: marcaValor(v, escala.paso, idioma) })),
     marcasFechas: marcasFechas(t, idioma),
     cambioTexto: porcentaje(e.cambio, idioma), periodoTexto: largo,
-    etiqueta: en
+    // Lo que va junto al cambio: el periodo y a qué se refiere el % (la suma
+    // de la serie, no la cifra total de hoy), y, si en el periodo entran o
+    // salen tokens, el aviso de que parte del cambio se debe a eso.
+    cambioFrase: en ? LARGO_EN[clave] : FRASE_ES[clave],
+    alcance: en ? `sum of the ${s.incluidos} largest` : `suma de los ${s.incluidos} mayores`,
+    avisoTokens: aviso,
+    etiqueta: (en
       ? `Sum of the ${s.incluidos} largest tokens, ${largo}: from ${millones(e.inicio, 'en')} (${fechaCorta(e.desde, 'en')}) to ${millones(e.fin, 'en')} (${fechaCorta(e.hasta, 'en')}), ${porcentaje(e.cambio, 'en')}. High ${millones(e.max.valor, 'en')}, low ${millones(e.min.valor, 'en')}.`
-      : `Suma de los ${s.incluidos} mayores tokens, ${largo}: de ${millones(e.inicio)} (${fechaCorta(e.desde)}) a ${millones(e.fin)} (${fechaCorta(e.hasta)}), ${porcentaje(e.cambio)}. Máximo ${millones(e.max.valor)}, mínimo ${millones(e.min.valor)}.`,
+      : `Suma de los ${s.incluidos} mayores tokens, ${largo}: de ${millones(e.inicio)} (${fechaCorta(e.desde)}) a ${millones(e.fin)} (${fechaCorta(e.hasta)}), ${porcentaje(e.cambio)}. Máximo ${millones(e.max.valor)}, mínimo ${millones(e.min.valor)}.`) +
+      (aviso ? ` ${aviso[0].toUpperCase()}${aviso.slice(1)}.` : ''),
   };
+}
+const LARGO_EN = Object.freeze({ '1s': 'past week', '1m': 'past month', '3m': 'past 3 months', '6m': 'past 6 months', ytd: 'year to date', '1a': 'past year' });
+const FRASE_ES = Object.freeze({ '1s': 'en la última semana', '1m': 'en el último mes', '3m': 'en los últimos 3 meses', '6m': 'en los últimos 6 meses',
+  ytd: 'en lo que va de año', '1a': 'en el último año' });
+/* Si el primer y el último día del tramo no suman los mismos tokens (un token
+   empezó a cotizar dentro del periodo), el cambio no es solo de precio: se
+   dice. '' si son los mismos. */
+function avisoTokens(t, dir, idioma = 'es') {
+  const a = t[0].tokens, b = t[t.length - 1].tokens, en = idioma === 'en';
+  if (a === b) return '';
+  if (b < a) return en ? `from ${a} to ${b} tokens: some stop counting in the period` : `de ${a} a ${b} tokens: algunos dejan de contar en el periodo`;
+  if (dir === 'sube') return en ? `from ${a} to ${b} tokens: part of the rise is new tokens` : `de ${a} a ${b} tokens: parte de la subida son tokens nuevos`;
+  if (dir === 'baja') return en ? `from ${a} to ${b} tokens: without the new ones, the fall would be bigger` : `de ${a} a ${b} tokens: sin los nuevos, la bajada sería mayor`;
+  return en ? `from ${a} to ${b} tokens: part of the change is new tokens` : `de ${a} a ${b} tokens: parte del cambio son tokens nuevos`;
+}
+/* ¿La serie se ha quedado vieja respecto a la cifra que se pinta a su lado?
+   Cierto si su último día es de más de «dias» días antes de «referencia»
+   (la hora del dato de hoy, ISO o ms). Entonces la web y la app no ponen el
+   cambio del periodo junto a la cifra en vivo y avisan «serie hasta el …». */
+const RETRASO_MAX_DIAS = 3;
+function serieAtrasada(serie, referencia, dias = RETRASO_MAX_DIAS) {
+  const ultimo = serie?.puntos?.[serie.puntos.length - 1];
+  const ms = typeof referencia === 'number' ? referencia : Date.parse(referencia);
+  const fin = ultimo ? msFecha(ultimo.fecha) : null;
+  if (!Number.isFinite(ms) || fin === null) return false;
+  return Math.floor((ms - fin) / DIA_MS) > dias;
 }
 /* La línea que explica el gráfico, siempre a la vista: cuántos entran, su
    cuota del total de hoy y, si los hay, cuántos quedan fuera y por qué. */
@@ -587,19 +621,44 @@ function notaSerie(serie, idioma = 'es') {
   const huecos = s.discontinuos, sinLeer = s.pedidos - s.incluidos - s.discontinuos;
   // Los días que no se pintan (algún token sin dato en los 3 días anteriores).
   const p = s.puntos, sinPintar = p.length < 2 ? 0 : Math.round((msFecha(p[p.length - 1].fecha) - msFecha(p[0].fecha)) / DIA_MS) + 1 - p.length;
+  // Hasta 3, se nombran («Falta el 29/07/2026»); si son más, se cuentan.
+  const faltan = sinPintar > 0 && sinPintar <= 3 ? diasQueFaltan(p).map(f => fechaCorta(f, idioma)) : [];
+  const lista = faltan.length < 2 ? faltan.join('') : faltan.slice(0, -1).join(', ') + (idioma === 'en' ? ' and ' : ' y el ') + faltan[faltan.length - 1];
   const todos = s.incluidos === s.pedidos;
   if (idioma === 'en') {
     return (todos ? `Sum of the ${s.pedidos} largest` : `Sum of ${s.incluidos} of the ${s.pedidos} largest`) +
       ` real-world-asset tokens tracked by CoinGecko (${cob} of today's total). If a token started trading within the period, it enters on that day.` +
       (huecos > 0 ? ` ${huecos} ${huecos === 1 ? 'is' : 'are'} left out because ${huecos === 1 ? 'its' : 'their'} CoinGecko history is missing days.` : '') +
       (sinLeer > 0 ? ` ${sinLeer} could not be read.` : '') +
-      (sinPintar > 0 ? ` Days without complete data are not drawn (${sinPintar} in the series).` : '');
+      (faltan.length === 1 ? ` ${lista} is missing: there is no complete data for that day, so it is not drawn.`
+        : faltan.length > 1 ? ` ${lista} are missing: there is no complete data for those days, so they are not drawn.`
+        : sinPintar > 0 ? ` Days without complete data are not drawn (${sinPintar} in the series).` : '');
   }
   return (todos ? `Suma de los ${s.pedidos} mayores` : `Suma de ${s.incluidos} de los ${s.pedidos} mayores`) +
     ` tokens de activos reales que sigue CoinGecko (${cob} del total de hoy). Si un token empezó a cotizar dentro del periodo, entra ese día.` +
     (huecos > 0 ? ` Quedan fuera ${huecos} a los que les faltan días en CoinGecko.` : '') +
     (sinLeer > 0 ? (sinLeer === 1 ? ' No se pudo leer 1.' : ` No se pudieron leer ${sinLeer}.`) : '') +
-    (sinPintar > 0 ? ` Los días sin dato completo no se pintan (${sinPintar} en la serie).` : '');
+    (faltan.length === 1 ? ` Falta el ${lista}: ese día no hay dato completo y no se pinta.`
+      : faltan.length > 1 ? ` Faltan el ${lista}: esos días no hay dato completo y no se pintan.`
+      : sinPintar > 0 ? ` Los días sin dato completo no se pintan (${sinPintar} en la serie).` : '');
+}
+/* Las fechas que faltan entre el primer y el último punto. */
+function diasQueFaltan(puntos) {
+  const salida = [];
+  for (let i = 1; i < puntos.length; i++) {
+    for (let ms = msFecha(puntos[i - 1].fecha) + DIA_MS; ms < msFecha(puntos[i].fecha); ms += DIA_MS) salida.push(fechaDe(ms));
+  }
+  return salida;
+}
+/* La nota corta, siempre a la vista bajo el gráfico; el resto (notaSerie) va
+   en un desplegable «Cómo se calcula». */
+function notaCorta(serie, idioma = 'es') {
+  let s;
+  try { s = validarSerie(serie); } catch { return ''; }
+  const cob = numero(s.cobertura, 0, idioma) + (idioma === 'en' ? '%' : '\u00a0%');
+  const todos = s.incluidos === s.pedidos;
+  if (idioma === 'en') return (todos ? `Sum of the ${s.pedidos} largest tokens` : `Sum of ${s.incluidos} of the ${s.pedidos} largest tokens`) + ` (${cob} of the total).`;
+  return (todos ? `Suma de los ${s.pedidos} mayores tokens` : `Suma de ${s.incluidos} de los ${s.pedidos} mayores tokens`) + ` (${cob} del total).`;
 }
 /* Coordenadas de los puntos en un dibujo de ancho «ancho» y alto «alto» (sin
    márgenes: los pone quien dibuja). x por fecha; y por la escala del eje. */
@@ -622,16 +681,21 @@ function tramosSeguidos(g) {
   }
   return salida;
 }
-/* El trazo SVG de la línea y del área (hasta «suelo»), tramo a tramo. */
+/* El trazo SVG de la línea (tramo a tramo), del área (hasta «suelo») y de
+   los «puentes». La línea se corta donde falta un día; el área de fondo no
+   se corta (un corte se veía como una raya vertical que parecía un fallo) y
+   los dos días a los lados del hueco se unen con un trazo de puntos tenue
+   (quien dibuja le da ese estilo), que no se confunde con un dato. */
 function trazosSvg(coords, tramos, suelo) {
   const f = n => n.toFixed(1);
-  let linea = '', area = '';
-  for (const [a, b] of tramos) {
-    const parte = coords.slice(a, b + 1).map((c, k) => (k ? 'L' : 'M') + f(c.x) + ' ' + f(c.y)).join(' ');
-    linea += (linea ? ' ' : '') + parte;
-    area += (area ? ' ' : '') + parte + ` L${f(coords[b].x)} ${f(suelo)} L${f(coords[a].x)} ${f(suelo)} Z`;
-  }
-  return { linea, area };
+  if (!coords.length || !tramos.length) return { linea: '', area: '', puentes: '' };
+  const linea = tramos.map(([a, b]) => coords.slice(a, b + 1).map((c, k) => (k ? 'L' : 'M') + f(c.x) + ' ' + f(c.y)).join(' ')).join(' ');
+  const primero = tramos[0][0], ultimo = tramos[tramos.length - 1][1];
+  const area = coords.slice(primero, ultimo + 1).map((c, k) => (k ? 'L' : 'M') + f(c.x) + ' ' + f(c.y)).join(' ') +
+    ` L${f(coords[ultimo].x)} ${f(suelo)} L${f(coords[primero].x)} ${f(suelo)} Z`;
+  const puentes = tramos.slice(1).map(([a], i) => { const b = tramos[i][1];
+    return `M${f(coords[b].x)} ${f(coords[b].y)} L${f(coords[a].x)} ${f(coords[a].y)}`; }).join(' ');
+  return { linea, area, puentes };
 }
 /* El punto más cercano a una «x» (para la cruz). */
 function indiceCercano(coords, x) {
@@ -644,4 +708,5 @@ module.exports = { FUENTE, TOTAL, TIPOS, ORO, PERIODOS, MARGEN_DIAS, historicoVa
   anadirFoto, serializarHistorico, resumir, resumenValido, millones, porcentaje, cuota, direccion, fechaCorta, fechaBreve, horaDato, fechaDe,
   fechaLlegada, alturasLinea, textosLinea, millonesHablados, cambioPct, resumenCompacto, colorTipo, COLORES_COMPACTO,
   SERIE, PESTANAS, PESTANA_INICIAL, urlHistoria, elegirMayores, historiaToken, construirSerie, validarSerie, serializarSerie, serieValida,
-  diasSinDato, tramo, estadisticasTramo, escalaValores, marcaValor, marcasFechas, graficoPestana, notaSerie, coordenadas, indiceCercano, tramosSeguidos, trazosSvg };
+  diasSinDato, tramo, estadisticasTramo, escalaValores, marcaValor, marcasFechas, graficoPestana, notaSerie, coordenadas, indiceCercano, tramosSeguidos, trazosSvg,
+  avisoTokens, serieAtrasada, RETRASO_MAX_DIAS, notaCorta, diasQueFaltan };

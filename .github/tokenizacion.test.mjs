@@ -290,7 +290,7 @@ test('serie diaria: 41 llamadas con pausa, los 40 mayores, un punto por día y s
   assert.equal(llamadas.length, 41);
   assert.match(llamadas[0], /category=tokenized-products&order=market_cap_desc&per_page=250$/);
   assert.ok(llamadas.slice(1).every(u => /\/market_chart\?vs_currency=usd&days=365&interval=daily$/.test(u)));
-  assert.equal(pausas.filter(ms => ms === 3000).length, 40, 'unos 3 s entre llamadas');
+  assert.equal(pausas.filter(ms => ms === 13000).length, 40, '13 s entre llamadas');
   const serie = modelo.validarSerie(JSON.parse(fs.readFileSync(destino, 'utf8')));
   assert.equal(fs.readFileSync(destino, 'utf8'), modelo.serializarSerie(serie));
   assert.deepEqual([serie.pedidos, serie.incluidos, serie.discontinuos, serie.puntos.length, serie.puntos.at(-1).fecha], [40, 40, 0, 366, '2026-11-11']);
@@ -322,6 +322,11 @@ test('serie diaria: si falla un token pequeño entra sin él y lo dice; si falla
 test('el flujo rehace la serie sin bloquear la foto y publicar.yml la trae de la rama', () => {
   const pasoSerie = paso(FLUJO, 'Rehacer la serie de un año (40 mayores tokens)');
   assert.match(pasoSerie, /continue-on-error: true/);
+  const limitePaso = Number(pasoSerie.match(/^\s*timeout-minutes: (\d+)\s*$/m)?.[1]);
+  const limiteTrabajo = Number(FLUJO.match(/^    timeout-minutes: (\d+)\s*$/m)?.[1]);
+  assert.ok(limitePaso > 0, 'el paso de la serie tiene su propio timeout-minutes');
+  assert.ok(limitePaso < limiteTrabajo, `el límite del paso (${limitePaso}) es menor que el del trabajo (${limiteTrabajo})`);
+  assert.ok(limitePaso >= 10, 'con 13 s entre 41 llamadas hacen falta unos 9 minutos');
   assert.match(pasoSerie, /node rwadar-app\/tokenizacion\/serie-diaria\.mjs "\$DATOS\/tokenizacion-serie\.json"/);
   assert.match(paso(FLUJO, 'Guardar la foto y la serie (un commit por día)'), /steps\.foto\.outputs\.cambiado == 'true' \|\| steps\.serie\.outputs\.serie == 'true'/);
   assert.match(bloque(FLUJO, 'Guardar la foto y la serie (un commit por día)'), /git add tokenizacion-serie\.json/);

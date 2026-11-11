@@ -34,6 +34,9 @@
   const SVG = 'http://www.w3.org/2000/svg';
   const FLECHA = { sube: '▲', baja: '▼', igual: '=' };
   let raiz, modo, vivo = null, serie = null, pestana = null, suscrito = false, cruz = null, quitarRedimension = null;
+  // Tras un toque, la cruz se queda 3 s (o hasta otro toque fuera del gráfico).
+  const CRUZ_FIJA_MS = 3000;
+  let cruzFija = null, tactil = null;
 
   const idioma = () => (globalThis.RWAdarIdioma?.obtenerIdioma?.() === 'en' ? 'en' : 'es');
   const tx = (es, en) => (idioma() === 'en' ? en : es);
@@ -93,6 +96,10 @@
     const ultimo = serie?.puntos.at(-1);
     return ultimo ? { valor: ultimo.valor, en: null, fuente: 'serie' } : null;
   }
+  // La serie vieja (más de 3 días antes del dato de hoy) no pone su cambio al lado de la cifra en vivo.
+  const atrasada = () => !!(vivo && serie && modelo.serieAtrasada(serie, vivo.actualizado));
+  const avisoAtrasada = () => tx('Serie hasta el ', 'Series to ') + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma()) +
+    tx(': el cambio del periodo no se pone junto a la cifra de hoy.', ": the period change isn't shown next to today's figure.");
   function lineaFuente({ conSerie = true } = {}) {
     const p = el('p', 'mk-fuente');
     p.append(el('span', '', tx('Datos:', 'Data:')), ' ');
@@ -137,8 +144,10 @@
     dibujo.append(rejilla);
     // El área (degradado del color de la línea a transparente) y la línea de 2 px.
     // Tramo a tramo: donde falta un día, la línea se corta (no se une con una recta).
-    const { linea: trazo, area } = modelo.trazosSvg(coords, modelo.tramosSeguidos(g), ARRIBA + PH);
+    // El área de fondo no se corta; el hueco se une con un trazo de puntos tenue.
+    const { linea: trazo, area, puentes } = modelo.trazosSvg(coords, modelo.tramosSeguidos(g), ARRIBA + PH);
     dibujo.append(svg('path', { class: 'mk-area', d: area, fill: `url(#${id})` }));
+    if (puentes) dibujo.append(svg('path', { class: 'mk-puente', d: puentes }));
     // La línea de puntos con el valor de partida del periodo, como en bolsa.
     const yBase = yDe(g.estadisticas.inicio);
     dibujo.append(svg('line', { class: 'mk-base', x1: 0, x2: PW, y1: yBase.toFixed(1), y2: yBase.toFixed(1) }));
@@ -193,6 +202,7 @@
     void ancho;
   }
   function quitarCruz(caja, burbuja) {
+    clearTimeout(cruzFija); cruzFija = null; tactil = null;
     cruz?.grupo.setAttribute('visibility', 'hidden');
     burbuja.hidden = true;
     delete caja.dataset.indice;
@@ -220,9 +230,18 @@
       return modelo.indiceCercano(cruz?.coords || [], ev.clientX - r.left);
     };
     let tocando = false;
-    caja.addEventListener('pointerdown', ev => { tocando = true; ponerCruz(caja, burbuja, indiceEn(ev)); });
+    caja.addEventListener('pointerdown', ev => { tocando = true; clearTimeout(cruzFija); ponerCruz(caja, burbuja, indiceEn(ev)); });
     caja.addEventListener('pointermove', ev => { if (ev.pointerType === 'mouse' || tocando) ponerCruz(caja, burbuja, indiceEn(ev)); });
-    const soltar = ev => { tocando = false; if (ev.pointerType !== 'mouse' || ev.type === 'pointerleave') quitarCruz(caja, burbuja); };
+    // Ratón: la cruz se va al salir. Dedo o lápiz: al soltar se queda 3 s (o hasta tocar fuera), para poder leerla.
+    const soltar = ev => {
+      tocando = false;
+      if (ev.pointerType === 'mouse') { if (ev.type === 'pointerleave') quitarCruz(caja, burbuja); return; }
+      if (ev.type === 'pointerleave') return;
+      if (ev.type === 'pointercancel') { quitarCruz(caja, burbuja); return; }
+      clearTimeout(cruzFija);
+      tactil = { caja, burbuja };
+      cruzFija = setTimeout(() => quitarCruz(caja, burbuja), CRUZ_FIJA_MS);
+    };
     caja.addEventListener('pointerup', soltar);
     caja.addEventListener('pointercancel', soltar);
     caja.addEventListener('pointerleave', soltar);
@@ -328,6 +347,15 @@
     return caja;
   }
 
+  /* La nota bajo el gráfico: una línea corta a la vista y el resto en «Cómo se calcula». */
+  function notaGrafico() {
+    const caja = el('div', 'mk-nota-caja');
+    const como = el('details', 'mk-como');
+    como.append(el('summary', 'mk-como-tit', tx('Cómo se calcula', 'How it is calculated')), el('p', 'mk-nota-larga', modelo.notaSerie(serie, idioma())));
+    caja.append(el('p', 'mk-nota', modelo.notaCorta(serie, idioma())), como);
+    return caja;
+  }
+
   /* ---- /mercado/ ---- */
   function pintarCompleto() {
     const cuerpo = raiz.querySelector('#mkCuerpo');
@@ -344,11 +372,18 @@
     const cab = el('div', 'mk-cab');
     cab.append(cifraGrande(hoy.valor, 'mk-cifra'));
     const linea = el('p', 'mk-linea-cambio');
-    if (g) {
-      linea.append(cambio(g), ' ', el('span', 'mk-periodo', g.periodoTexto));
+    const vieja = atrasada();
+    if (g && !vieja) {
+      // El % es el de la suma de la serie (los N mayores), no el de la cifra total de arriba: se dice.
+      const alcance = el('span', 'mk-alcance');
+      alcance.setAttribute('translate', 'no');
+      alcance.append(el('span', 'mk-sep', '· '), g.alcance);
+      linea.append(cambio(g), ' ', el('span', 'mk-periodo', g.cambioFrase), ' ', alcance);
       linea.setAttribute('aria-live', 'polite');
     } else linea.append(el('span', 'mk-periodo', tx('Valor total, en millones de dólares', 'Total value, in millions of dollars')));
     cab.append(linea);
+    if (g && !vieja && g.avisoTokens) cab.append(el('p', 'mk-aviso mk-aviso-tokens', g.avisoTokens[0].toUpperCase() + g.avisoTokens.slice(1) + '.'));
+    if (vieja) cab.append(el('p', 'mk-aviso mk-aviso-serie', avisoAtrasada()));
     if (!vivo) cab.append(el('p', 'mk-aviso', tx('Sin el dato de hoy: la cifra es la suma de los mayores tokens del último día de la serie.',
       "Without today's figure: this is the sum of the largest tokens on the series' last day.")));
     else if (vivo.fuente === 'foto-guardada') cab.append(el('p', 'mk-aviso', tx('Cifra de la última foto diaria de RWAdar, del ', "Figure from RWAdar's last daily snapshot, ") + modelo.horaDato(vivo.actualizado, idioma())));
@@ -374,7 +409,7 @@
       raiz.querySelector(`[data-pestana="${pestana}"]`)?.focus({ preventScroll: true });
     });
     const partes = [cab, pestanas];
-    if (g) partes.push(graficoInteractivo(g), tablaSerie(g), el('p', 'mk-nota', modelo.notaSerie(serie, idioma())));
+    if (g) partes.push(graficoInteractivo(g), tablaSerie(g), notaGrafico());
     else partes.push(el('p', 'mk-estado', tx('El gráfico no está disponible ahora. La cifra de hoy sí.', "The chart isn't available right now. Today's figure is.")));
     partes.push(datosClave(g), lineaFuente());
     if (vivo?.tipos?.length) partes.push(porTipo());
@@ -385,7 +420,7 @@
   function minigrafico(g) {
     const W = 112, H = 44, M = 3;
     const coords = modelo.coordenadas(g, W - 2 * M, H - 2 * M).map(c => ({ x: c.x + M, y: c.y + M }));
-    const { linea: d, area } = modelo.trazosSvg(coords, modelo.tramosSeguidos(g), H);
+    const { linea: d, area, puentes } = modelo.trazosSvg(coords, modelo.tramosSeguidos(g), H);
     const id = 'mkMini' + Math.random().toString(36).slice(2, 8);
     const s = svg('svg', { class: 'mk-mini-svg mk-' + g.direccion, width: W, height: H, viewBox: `0 0 ${W} ${H}`, 'aria-hidden': 'true', focusable: 'false' });
     const defs = svg('defs'), deg = svg('linearGradient', { id, x1: 0, y1: 0, x2: 0, y2: 1 });
@@ -394,6 +429,7 @@
     const yBase = coords[0].y;
     s.append(defs, svg('path', { class: 'mk-area', d: area, fill: `url(#${id})` }),
       svg('line', { class: 'mk-base', x1: M, x2: W - M, y1: yBase.toFixed(1), y2: yBase.toFixed(1) }), svg('path', { class: 'mk-linea', d }));
+    if (puentes) s.append(svg('path', { class: 'mk-puente', d: puentes }));
     return s;
   }
   function pintarInicio() {
@@ -406,7 +442,7 @@
         "We can't show CoinGecko's data right now. Please try again later.")));
       return;
     }
-    const g = serie ? modelo.graficoPestana(serie, '1m', idioma()) : null;
+    const g = serie && !atrasada() ? modelo.graficoPestana(serie, '1m', idioma()) : null;
     const a = el('a', 'mk-ct');
     a.href = '/mercado/';
     const izq = el('span', 'mk-ct-izq');
@@ -415,13 +451,13 @@
     der.append(el('span', 'mk-ct-cifra', modelo.millones(hoy.valor, idioma())));
     if (g) {
       const c = cambio(g, 'mk-ct-cambio');
-      der.append(c, el('span', 'mk-ct-periodo', g.periodoTexto));
-    }
+      der.append(c, el('span', 'mk-ct-periodo', g.periodoTexto), el('span', 'mk-ct-alcance', g.alcance));
+    } else if (atrasada()) der.append(el('span', 'mk-ct-periodo', tx('serie hasta el ', 'series to ') + modelo.fechaCorta(serie.puntos.at(-1).fecha, idioma())));
     a.append(izq);
     if (g) a.append(minigrafico(g));
     a.append(der);
     a.setAttribute('aria-label', tx('Mercado de activos tokenizados', 'Tokenised asset market') + ': ' + modelo.millonesHablados(hoy.valor, idioma()) +
-      (g ? ', ' + (g.direccion === 'sube' ? tx('sube', 'up') : g.direccion === 'baja' ? tx('baja', 'down') : tx('sin cambios', 'unchanged')) + ' ' + g.cambioTexto + ' ' + tx('en el', 'over the') + ' ' + g.periodoTexto : '') +
+      (g ? ', ' + (g.direccion === 'sube' ? tx('sube', 'up') : g.direccion === 'baja' ? tx('baja', 'down') : tx('sin cambios', 'unchanged')) + ' ' + g.cambioTexto + ' ' + g.cambioFrase + ', ' + g.alcance + (g.avisoTokens ? '; ' + g.avisoTokens : '') : '') +
       '. ' + tx('Ver el gráfico', 'See the chart'));
     cuerpo.replaceChildren(a, lineaFuente({ conSerie: false }));
   }
@@ -433,6 +469,8 @@
   }
 
   async function iniciar() {
+    // Un toque fuera del gráfico quita la cruz que se quedó fija.
+    document.addEventListener('pointerdown', ev => { if (tactil && !tactil.caja.contains(ev.target)) quitarCruz(tactil.caja, tactil.burbuja); }, { passive: true });
     raiz = document.querySelector('[data-mercado]');
     if (!raiz || !modelo || !raiz.querySelector('#mkCuerpo')) return;
     modo = raiz.dataset.mercado === 'inicio' ? 'inicio' : 'completo';

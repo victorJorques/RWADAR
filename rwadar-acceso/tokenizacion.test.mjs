@@ -254,7 +254,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
           .filter(n => { const b = n.getBoundingClientRect(); return b.width > 0 && (b.right > innerWidth + 0.5 || b.left < -0.5); });
         const a = s.querySelector('a.mk-ct');
         return { href: a.getAttribute('href'), nombre: a.querySelector('.mk-ct-nom').textContent, cifra: a.querySelector('.mk-ct-cifra').textContent,
-          cambio: a.querySelector('.mk-cambio').textContent, periodo: a.querySelector('.mk-ct-periodo').textContent, mini: !!a.querySelector('svg.mk-mini-svg .mk-linea'),
+          cambio: a.querySelector('.mk-cambio').textContent, periodo: a.querySelector('.mk-ct-periodo').textContent, alcance: a.querySelector('.mk-ct-alcance')?.textContent, mini: !!a.querySelector('svg.mk-mini-svg .mk-linea'),
           etiqueta: a.getAttribute('aria-label'), ver: s.querySelector('a.ini-ver[href="/mercado/"]')?.textContent.trim(), fuente: s.querySelector('.mk-fuente').textContent,
           fuera: fuera.length, anchoPagina: document.documentElement.scrollWidth,
           trasOfertas: document.getElementById('relNuevas').compareDocumentPosition(s) & Node.DOCUMENT_POSITION_FOLLOWING };
@@ -264,8 +264,9 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.equal(c.cifra, '49.684 M$', 'la cifra de hoy, en vivo');
       assert.equal(c.cambio, { sube: '▲', baja: '▼', igual: '=' }[g1m.direccion] + g1m.cambioTexto, 'el cambio del mes, con flecha y signo');
       assert.equal(c.periodo, 'último mes');
+      assert.equal(c.alcance, `suma de los ${SERIE.incluidos} mayores`, 'el % es de la suma de los N mayores, no de la cifra total');
       assert.ok(c.mini, 'el minigráfico del mes');
-      assert.match(c.etiqueta, /^Mercado de activos tokenizados: 49\.684 millones de dólares, (sube|baja|sin cambios) /);
+      assert.match(c.etiqueta, new RegExp(`^Mercado de activos tokenizados: 49\\.684 millones de dólares, (sube|baja|sin cambios) \\S+\\s% en el último mes, suma de los ${SERIE.incluidos} mayores\\. Ver el gráfico$`));
       assert.equal(c.ver, 'Ver mercado y noticias→');
       assert.match(c.fuente, /^Datos: CoinGecko · dato de hoy del 10\/11\/2026, 15:25 UTC$/);
       assert.equal(c.fuera, 0);
@@ -298,6 +299,8 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
         const anchoSvg = svg.getBoundingClientRect().width;
         return { h1: document.querySelector('h1').textContent, cifra: s.querySelector('.mk-cifra-num').textContent, hablado: s.querySelector('.mk-cifra .solo-lector').textContent,
           cambio: s.querySelector('.mk-linea-cambio .mk-cambio').textContent, periodo: s.querySelector('.mk-periodo').textContent,
+          alcance: s.querySelector('.mk-alcance')?.textContent, avisoTokens: s.querySelector('.mk-aviso-tokens')?.textContent ?? null,
+          puentes: svg.querySelectorAll('.mk-puente').length, cortesArea: (svg.querySelector('.mk-area').getAttribute('d').match(/M/g) || []).length,
           pestanas: [...s.querySelectorAll('.mk-pestana')].map(b => [b.textContent, b.getAttribute('aria-pressed'), b.tagName, b.getAttribute('aria-label')]),
           grupo: s.querySelector('.mk-pestanas').getAttribute('role'),
           trazo: getComputedStyle(svg.querySelector('.mk-linea')).stroke, grosor: getComputedStyle(svg.querySelector('.mk-linea')).strokeWidth,
@@ -306,7 +309,8 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
           fechas: eje.filter(t => !t.classList.contains('mk-eje-unidad') && /[a-z]/i.test(t.textContent)).map(t => t.textContent), altoSvg: svg.getBoundingClientRect().height, anchoSvg,
           anchoCaja: s.getBoundingClientRect().width,
           rol: graf.getAttribute('role'), tabla: s.querySelectorAll('.solo-lector table tr').length, caption: s.querySelector('.solo-lector caption').textContent,
-          nota: s.querySelector('.mk-nota').textContent, clave: [...s.querySelectorAll('.mk-clave dt')].map(d => d.textContent),
+          nota: s.querySelector('.mk-nota').textContent, notaLarga: s.querySelector('.mk-como .mk-nota-larga')?.textContent,
+          como: [s.querySelector('.mk-como summary')?.textContent, s.querySelector('.mk-como')?.open], clave: [...s.querySelectorAll('.mk-clave dt')].map(d => d.textContent),
           tipos: s.querySelectorAll('.mk-tipo').length, fuente: s.querySelector('.mk-fuente a')?.href,
           fuera: fuera.length, anchoPagina: document.documentElement.scrollWidth };
       });
@@ -316,7 +320,9 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.equal(m.cifra, '49.684 M$');
       assert.equal(m.hablado, '49.684 millones de dólares');
       assert.equal(m.cambio, { sube: '▲', baja: '▼', igual: '=' }[g1m.direccion] + g1m.cambioTexto);
-      assert.equal(m.periodo, 'último mes');
+      assert.equal(m.periodo, 'en el último mes');
+      assert.equal(m.alcance, `· suma de los ${SERIE.incluidos} mayores`, 'a qué se refiere el %: la suma de los N mayores, no la cifra total');
+      assert.equal(m.avisoTokens, null, '1 M: mismos tokens al principio y al final');
       assert.equal(m.grupo, 'group');
       assert.deepEqual(m.pestanas.map(p => p[0]), ['1 S', '1 M', '3 M', '6 M', 'YTD', '1 A']);
       assert.deepEqual(m.pestanas.map(p => p[1]), ['false', 'true', 'false', 'false', 'false', 'false'], '1 M por defecto');
@@ -334,7 +340,9 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.equal(m.rol, 'slider');
       assert.equal(m.tabla, g1m.puntos.length + 1, 'la tabla equivalente, con todos los días');
       assert.equal(m.caption, 'Valor diario, último mes (suma de los mayores tokens)');
-      assert.equal(m.nota, modelo.notaSerie(SERIE));
+      assert.equal(m.nota, modelo.notaCorta(SERIE), 'una línea corta a la vista');
+      assert.equal(m.notaLarga, modelo.notaSerie(SERIE));
+      assert.deepEqual(m.como, ['Cómo se calcula', false], 'el resto, en un desplegable cerrado');
       assert.deepEqual(m.clave, ['Valor total hoy', 'Cambio en 24 h', 'Máximo del periodo', 'Mínimo del periodo', 'Tokens en el gráfico', 'Tipo mayor']);
       assert.equal(m.tipos, 8);
       assert.equal(m.fuente, 'https://www.coingecko.com/');
@@ -344,16 +352,20 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       for (const p of modelo.PESTANAS) {
         await pagina.click(`[data-pestana="${p.clave}"]`);
         const g = modelo.graficoPestana(SERIE, p.clave);
-        await pagina.waitForFunction(t => document.querySelector('.mk-periodo').textContent === t, g.periodoTexto);
+        await pagina.waitForFunction(t => document.querySelector('.mk-periodo').textContent === t, g.cambioFrase);
         await pagina.waitForSelector('#tokenizacion .mk-svg');
         m = await leer();
+        assert.equal(m.avisoTokens, g.avisoTokens ? g.avisoTokens[0].toUpperCase() + g.avisoTokens.slice(1) + '.' : null, `${p.clave}: aviso de tokens nuevos`);
+        assert.equal(m.puentes, modelo.tramosSeguidos(g).length > 1 ? 1 : 0, `${p.clave}: el hueco, con un trazo de puntos`);
+        assert.equal(m.cortesArea, 1, `${p.clave}: el área de fondo no se corta`);
+        if (p.clave === '1a') assert.equal(m.avisoTokens, 'De 16 a 29 tokens: parte de la subida son tokens nuevos.');
         assert.equal(m.pestanas.find(x => x[0] === p.corto)[1], 'true', p.clave);
         assert.equal(m.tabla, g.puntos.length + 1, p.clave);
         assert.deepEqual(m.fechas, g.marcasFechas.map(x => x.texto), p.clave);
         assert.equal(m.fuera, 0, p.clave);
       }
       await pagina.click('[data-pestana="1m"]');
-      await pagina.waitForFunction(() => document.querySelector('.mk-periodo').textContent === 'último mes');
+      await pagina.waitForFunction(() => document.querySelector('.mk-periodo').textContent === 'en el último mes');
       await pagina.waitForSelector('#tokenizacion .mk-svg');
       // La cruz con el ratón: fecha y valor del día más cercano.
       const caja = await pagina.locator('.mk-graf').boundingBox();
@@ -379,11 +391,43 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       // En inglés: textos y cifras en su formato.
       await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="en"]').click());
       await pagina.waitForFunction(() => document.querySelector('h1').textContent === 'Tokenised asset market');
-      const en = await pagina.evaluate(() => ({ cifra: document.querySelector('.mk-cifra-num').textContent, periodo: document.querySelector('.mk-periodo').textContent,
+      const en = await pagina.evaluate(() => ({ cifra: document.querySelector('.mk-cifra-num').textContent, periodo: document.querySelector('.mk-periodo').textContent + ' ' + document.querySelector('.mk-alcance').textContent,
         pestanas: [...document.querySelectorAll('.mk-pestana')].map(b => b.textContent), clave: document.querySelector('.mk-clave dt').textContent }));
-      assert.deepEqual(en, { cifra: '$49,684M', periodo: 'past month', pestanas: ['1W', '1M', '3M', '6M', 'YTD', '1Y'], clave: 'Total value today' });
+      assert.deepEqual(en, { cifra: '$49,684M', periodo: `past month · sum of the ${SERIE.incluidos} largest`, pestanas: ['1W', '1M', '3M', '6M', 'YTD', '1Y'], clave: 'Total value today' });
       await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="es"]').click());
       await pagina.close();
+    }
+    // Con el dedo (390, táctil): un toque corto deja la cruz 3 s; un toque fuera del gráfico la quita antes.
+    {
+      const contexto = await navegador.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+      const pagina = await contexto.newPage();
+      await pagina.goto(local.url + '/mercado/', { waitUntil: 'load' });
+      await pagina.waitForSelector('#tokenizacion .mk-svg', { timeout: 20000 });
+      const caja = await pagina.locator('.mk-graf').boundingBox();
+      await pagina.touchscreen.tap(caja.x + caja.width / 3, caja.y + caja.height / 2);
+      await pagina.waitForTimeout(1200);
+      assert.equal(await pagina.getAttribute('.mk-cruz', 'visibility'), 'visible', 'tras un toque corto, la cruz sigue a la vista');
+      assert.equal(await pagina.locator('.mk-burbuja:not([hidden])').count(), 1);
+      await pagina.waitForSelector('.mk-burbuja[hidden]', { state: 'attached', timeout: 4000 });
+      assert.equal(await pagina.getAttribute('.mk-cruz', 'visibility'), 'hidden', 'a los 3 s se va');
+      await pagina.touchscreen.tap(caja.x + caja.width / 2, caja.y + caja.height / 2);
+      await pagina.waitForSelector('.mk-burbuja:not([hidden])');
+      const h1 = await pagina.locator('h1').boundingBox();
+      await pagina.touchscreen.tap(h1.x + 10, h1.y + h1.height / 2);
+      await pagina.waitForSelector('.mk-burbuja[hidden]', { state: 'attached', timeout: 1000 });
+      // La serie vieja (acaba 5 días antes del dato de hoy): ni la cabecera ni Inicio ponen su cambio junto a la cifra en vivo.
+      const vieja = { ...JSON.parse(fs.readFileSync(path.join(RAIZ, 'rwadar-site/datos/tokenizacion-serie.json'), 'utf8')) };
+      vieja.puntos = vieja.puntos.filter(p => p.fecha <= '2026-11-05');
+      await pagina.route('**/datos/tokenizacion-serie.json', r => r.fulfill({ contentType: 'application/json', body: JSON.stringify(vieja) }));
+      await pagina.reload({ waitUntil: 'load' });
+      await pagina.waitForSelector('#tokenizacion .mk-svg', { timeout: 20000 });
+      assert.equal(await pagina.locator('#tokenizacion .mk-linea-cambio .mk-cambio').count(), 0, 'sin el cambio de una serie vieja');
+      assert.equal(await pagina.textContent('#tokenizacion .mk-aviso-serie'), 'Serie hasta el 05/11/2026: el cambio del periodo no se pone junto a la cifra de hoy.');
+      await pagina.goto(local.url + '/', { waitUntil: 'load' });
+      await pagina.waitForSelector('#mercado .mk-ct', { timeout: 20000 });
+      assert.equal(await pagina.locator('#mercado .mk-ct .mk-cambio').count(), 0);
+      assert.equal(await pagina.textContent('#mercado .mk-ct-periodo'), 'serie hasta el 05/11/2026');
+      await contexto.close();
     }
     // CoinGecko da 429: la última foto guardada, con su aviso y su fecha; el gráfico sigue con la serie.
     const local2 = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, responder: async (url) =>

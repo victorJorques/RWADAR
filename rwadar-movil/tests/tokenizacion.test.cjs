@@ -335,14 +335,18 @@ test('serie: pestañas 1 S · 1 M · 3 M · 6 M · YTD · 1 A, 1 M por defecto; 
   assert.equal(e.cambio, t.cambioPct(99e9, 92e9));
 });
 
-test('serie: donde falta un día la línea se corta en tramos; el área se cierra tramo a tramo', () => {
+test('serie: donde falta un día la línea se corta en tramos, el área de fondo sigue entera y un trazo de puntos une el hueco', () => {
   const puntos = ['2026-11-01', '2026-11-02', '2026-11-03', '2026-11-06', '2026-11-07', '2026-11-09'].map((fecha, i) => ({ fecha, valor: (10 + i) * 1e9, tokens: 1 }));
   const g = { puntos, escala: { lo: 9e9, hi: 16e9 } };
   assert.deepEqual(t.tramosSeguidos(g), [[0, 2], [3, 4], [5, 5]]);
   const c = t.coordenadas({ ...g }, 80, 70);
-  const { linea, area } = t.trazosSvg(c, t.tramosSeguidos(g), 70);
+  const { linea, area, puentes } = t.trazosSvg(c, t.tramosSeguidos(g), 70);
   assert.equal((linea.match(/M/g) || []).length, 3, 'tres tramos, sin rectas por encima de los huecos');
-  assert.equal((area.match(/Z/g) || []).length, 3);
+  assert.equal((area.match(/M/g) || []).length, 1, 'el área de fondo no se corta (el corte parecía una raya negra)');
+  assert.equal((area.match(/Z/g) || []).length, 1);
+  assert.equal((puentes.match(/M/g) || []).length, 2, 'un trazo de puntos por cada hueco');
+  assert.ok(puentes.startsWith(`M${c[2].x.toFixed(1)} ${c[2].y.toFixed(1)} L${c[3].x.toFixed(1)} ${c[3].y.toFixed(1)}`), 'el puente une los dos días a los lados del hueco');
+  assert.deepEqual(t.trazosSvg([], [], 70), { linea: '', area: '', puentes: '' });
   const real = t.graficoPestana(SERIE, '1a');
   assert.ok(t.tramosSeguidos(real).length > 1, 'la semilla real tiene días sin pintar');
 });
@@ -388,9 +392,51 @@ test('serie: las fechas de abajo, de 2 a 6 y legibles; el gráfico de cada pesta
     /^Suma de 32 de los 40 mayores tokens de activos reales que sigue CoinGecko \(86\s% del total de hoy\)\. Si un token empezó a cotizar dentro del periodo, entra ese día\. Quedan fuera 8 a los que les faltan días en CoinGecko\.$/);
   assert.match(t.notaSerie({ ...base, incluidos: 37, discontinuos: 1, tokens: base.tokens.slice(0, 37) }), /Quedan fuera 1 a los que les faltan días en CoinGecko\. No se pudieron leer 2\.$/);
   assert.match(t.notaSerie({ ...base, incluidos: 39, tokens: base.tokens.slice(0, 39) }, 'en'), /^Sum of 39 of the 40 largest .* 1 could not be read\.$/);
-  assert.match(t.notaSerie({ ...base, puntos: seguidos.filter((_, i) => i !== 4 && i !== 6) }), /\. Los días sin dato completo no se pintan \(2 en la serie\)\.$/);
+  assert.match(t.notaSerie({ ...base, puntos: seguidos.filter((_, i) => i !== 4 && i !== 6) }), /\. Faltan el \d\d\/\d\d\/\d{4} y el \d\d\/\d\d\/\d{4}: esos días no hay dato completo y no se pintan\.$/);
   assert.match(t.notaSerie(SERIE), /^Suma de \d+ de los 40 mayores tokens de activos reales que sigue CoinGecko/);
   assert.equal(t.graficoPestana({ version: 2 }, '1m'), null);
+});
+
+test('serie: el cambio dice a qué se refiere (la suma de los N mayores, no la cifra total) y avisa si en el periodo entran tokens nuevos', () => {
+  const g1m = t.graficoPestana(SERIE, '1m'), g1a = t.graficoPestana(SERIE, '1a'), g1aEn = t.graficoPestana(SERIE, '1a', 'en');
+  assert.equal(g1m.cambioFrase, 'en el último mes');
+  assert.equal(t.graficoPestana(SERIE, 'ytd').cambioFrase, 'en lo que va de año');
+  assert.equal(t.graficoPestana(SERIE, '1m', 'en').cambioFrase, 'past month');
+  assert.equal(g1m.alcance, `suma de los ${SERIE.incluidos} mayores`);
+  assert.equal(t.graficoPestana(SERIE, '1m', 'en').alcance, `sum of the ${SERIE.incluidos} largest`);
+  // El primer punto de 1 A (12/11/2025) suma 16 tokens y el último 29: parte de la subida son tokens nuevos.
+  const [a, b] = [g1a.puntos[0].tokens, g1a.puntos[g1a.puntos.length - 1].tokens];
+  assert.ok(a < b, `la semilla real: de ${a} a ${b} tokens en 1 A`);
+  assert.equal(g1a.avisoTokens, `de ${a} a ${b} tokens: parte de la subida son tokens nuevos`);
+  assert.equal(g1aEn.avisoTokens, `from ${a} to ${b} tokens: part of the rise is new tokens`);
+  assert.ok(g1a.etiqueta.endsWith(` De ${a} a ${b} tokens: parte de la subida son tokens nuevos.`), 'también para el lector de pantalla');
+  assert.ok(g1aEn.etiqueta.endsWith(` From ${a} to ${b} tokens: part of the rise is new tokens.`));
+  assert.equal(g1m.puntos[0].tokens, g1m.puntos[g1m.puntos.length - 1].tokens);
+  assert.equal(g1m.avisoTokens, '', 'mismos tokens al principio y al final: sin aviso');
+  assert.ok(!/tokens nuevos/.test(g1m.etiqueta));
+  const p = (tokens, valor) => ({ valor, tokens });
+  assert.equal(t.avisoTokens([p(3, 1), p(5, 2)], 'baja'), 'de 3 a 5 tokens: sin los nuevos, la bajada sería mayor');
+  assert.equal(t.avisoTokens([p(5, 1), p(3, 2)], 'sube'), 'de 5 a 3 tokens: algunos dejan de contar en el periodo');
+  assert.equal(t.avisoTokens([p(3, 1), p(5, 2)], 'igual', 'en'), 'from 3 to 5 tokens: part of the change is new tokens');
+});
+
+test('serie: si se queda vieja (más de 3 días antes del dato de hoy) se dice; la nota corta y los días que faltan, con su fecha', () => {
+  const ultimo = SERIE.puntos[SERIE.puntos.length - 1].fecha, ms = Date.parse(ultimo + 'T00:00:00Z');
+  assert.equal(t.serieAtrasada(SERIE, new Date(ms + 3 * DIA + 23 * 3600e3).toISOString()), false, '3 días y pico: todavía vale');
+  assert.equal(t.serieAtrasada(SERIE, ms + 4 * DIA), true);
+  assert.equal(t.serieAtrasada(SERIE, ms - DIA), false, 'una serie más nueva que el dato no está vieja');
+  assert.equal(t.serieAtrasada(SERIE, null), false);
+  assert.equal(t.serieAtrasada(null, ms), false);
+  assert.equal(t.notaCorta(SERIE), `Suma de ${SERIE.incluidos} de los 40 mayores tokens (86\u00a0% del total).`);
+  assert.equal(t.notaCorta(SERIE, 'en'), `Sum of ${SERIE.incluidos} of the 40 largest tokens (86% of the total).`);
+  assert.equal(t.notaCorta({ version: 9 }), '');
+  assert.match(t.notaSerie(SERIE), /Falta el 29\/07\/2026: ese día no hay dato completo y no se pinta\.$/, 'el hueco real, con su fecha');
+  assert.match(t.notaSerie(SERIE, 'en'), /29 Jul 2026 is missing: there is no complete data for that day, so it is not drawn\.$/);
+  const seguidos = [...Array(12)].map((_, i) => ({ fecha: t.fechaDe(Date.parse('2026-10-01T00:00:00Z') + i * DIA), valor: 4e10, tokens: 1 }));
+  assert.deepEqual(t.diasQueFaltan(seguidos.filter((_, i) => i !== 2 && i !== 3)), ['2026-10-03', '2026-10-04']);
+  const muchos = { ...SERIE, pedidos: 40, incluidos: 40, discontinuos: 0, tokens: [...Array(40)].map((_, i) => 'tk-' + i), cobertura: 93.2,
+    puntos: seguidos.filter((_, i) => i < 2 || i > 6) };
+  assert.match(t.notaSerie(muchos), /Los días sin dato completo no se pintan \(5 en la serie\)\.$/, 'más de 3: se cuentan');
 });
 
 const serieRemota = cargarLib('lib/tokenizacion-serie-remota.js', { './tokenizacion': t });
@@ -490,7 +536,13 @@ test('la pantalla «Mercado y noticias»: cifra de hoy, cambio del mes con signo
   const g = t.graficoPestana(SERIE, '1m');
   assert.match(texto, /Mercado de activos tokenizados/);
   assert.match(texto, /49\.684/, 'la cifra de hoy, en vivo');
-  assert.ok(texto.includes(g.cambioTexto) && texto.includes('último mes'), 'el cambio del mes con su signo y su texto');
+  assert.ok(texto.includes(g.cambioTexto) && texto.includes('en el último mes'), 'el cambio del mes con su signo y su texto');
+  assert.ok(texto.includes(`· suma de los ${SERIE.incluidos} mayores`),
+    'el % dice a qué se refiere: la suma de los N mayores, no la cifra total');
+  const cabecera = nodos(arbol).find((n) => typeof n?.props?.accessibilityLabel === 'string' && n.props.accessibilityLabel.startsWith('49.684 millones'));
+  assert.match(cabecera.props.accessibilityLabel, new RegExp(`, (sube|baja|sin cambios) \\S+\\s% en el último mes, suma de los ${SERIE.incluidos} mayores$`));
+  assert.ok(!nodos(arbol).some((n) => n?.props?.testID === 'mercado-aviso-tokens'), '1 M: mismos tokens al principio y al final, sin aviso');
+  assert.ok(!nodos(arbol).some((n) => n?.props?.testID === 'mercado-serie-vieja'));
   assert.ok(texto.includes(`${{ sube: '▲', baja: '▼', igual: '=' }[g.direccion]} ${g.cambioTexto}`), 'flecha y signo: el color nunca va solo');
   const pestanas = nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab');
   assert.deepEqual(pestanas.map((n) => n.props.accessibilityLabel), ['1 semana', '1 mes', '3 meses', '6 meses', 'Este año', '1 año']);
@@ -501,7 +553,14 @@ test('la pantalla «Mercado y noticias»: cifra de hoy, cambio del mes con signo
   assert.match(texto, /Crédito privado/);
   assert.match(texto, /Noticias relacionadas/);
   assert.match(texto, /NOTICIAS/, 'las noticias van debajo, en la misma pantalla');
-  assert.ok(texto.includes(t.notaSerie(SERIE)), 'la nota del gráfico, a la vista');
+  assert.ok(texto.includes(t.notaCorta(SERIE)), 'la nota corta del gráfico, a la vista');
+  assert.ok(!texto.includes(t.notaSerie(SERIE)), 'el resto, plegado');
+  const como = nodos(arbol).find((n) => n?.props?.testID === 'mercado-como');
+  assert.equal(como.props.accessibilityState.expanded, false);
+  como.props.onPress();
+  arbol = pintar(MercadoPantalla, props);
+  assert.ok(textoDe(arbol).includes(t.notaSerie(SERIE)), '«Cómo se calcula» despliega la nota entera');
+  assert.equal(nodos(arbol).find((n) => n?.props?.testID === 'mercado-como').props.accessibilityState.expanded, true);
   const fuente = nodos(arbol).find((n) => n?.props?.accessibilityRole === 'link');
   assert.match(fuente.props.accessibilityLabel, /^Datos: CoinGecko · dato de hoy del 10\/11\/2026, 15:25 UTC · serie diaria hasta el /);
   fuente.props.onPress();
@@ -509,11 +568,41 @@ test('la pantalla «Mercado y noticias»: cifra de hoy, cambio del mes con signo
   // Otra pestaña: el gráfico cambia de tramo.
   pestanas[0].props.onPress();
   arbol = pintar(MercadoPantalla, props);
-  assert.ok(textoDe(arbol).includes('última semana'));
+  assert.ok(textoDe(arbol).includes('en la última semana'));
   assert.deepEqual(nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab').map((n) => n.props.accessibilityState.selected), [true, false, false, false, false, false]);
+  // 1 A: de 16 a 29 tokens. El aviso de que parte de la subida son tokens nuevos, a la vista y para el lector.
+  nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab')[5].props.onPress();
+  arbol = pintar(MercadoPantalla, props);
+  const g1a = t.graficoPestana(SERIE, '1a');
+  const aviso = nodos(arbol).find((n) => n?.props?.testID === 'mercado-aviso-tokens');
+  assert.equal(textoDe(aviso), g1a.avisoTokens.charAt(0).toUpperCase() + g1a.avisoTokens.slice(1) + '.');
+  assert.match(textoDe(aviso), /^De 16 a 29 tokens: parte de la subida son tokens nuevos\.$/);
+  assert.ok(nodos(arbol).find((n) => n?.props?.accessibilityLabel?.startsWith?.('49.684 millones')).props.accessibilityLabel.endsWith('. De 16 a 29 tokens: parte de la subida son tokens nuevos'));
+  conAncho(arbol, 358);
+  arbol = pintar(MercadoPantalla, props);
+  assert.ok(nodos(arbol).some((n) => n?.props?.testID === 'mercado-puente'), 'el hueco del 29/07 se une con un trazo de puntos');
+  assert.deepEqual(nodos(arbol).filter((n) => n?.props?.accessibilityRole === 'tab').map((n) => n.props.accessibilityState.selected), [false, false, false, false, false, true]);
 });
 
-test('el gráfico de la app: área con degradado, línea, eje a la derecha, fechas abajo, línea de partida y la cruz al arrastrar o con el lector', () => {
+test('la serie vieja (más de 3 días antes del dato de hoy): ni la pantalla ni la tarjeta ponen su cambio junto a la cifra en vivo y lo dicen', async () => {
+  const fin = SERIE.puntos[SERIE.puntos.length - 1].fecha;
+  const tarde = { ...RESUMEN, actualizado: new Date(Date.parse(fin + 'T00:00:00Z') + 5 * DIA).toISOString() };
+  const props = { cargarVivo: async () => tarde, cargarLaSerie: async () => SERIE };
+  for (const nombre of ['MercadoPantalla', 'MercadoCotizacion']) {
+    const { react, pintar } = crearReact();
+    const Componente = cargarMercado(react)[nombre];
+    pintar(Componente, props);
+    await esperar(); await esperar();
+    const arbol = pintar(Componente, props);
+    const texto = textoDe(arbol), g = t.graficoPestana(SERIE, '1m');
+    assert.ok(!texto.includes(g.cambioTexto), `${nombre}: sin el cambio de una serie vieja`);
+    assert.ok(texto.includes(nombre === 'MercadoPantalla' ? `Serie hasta el ${t.fechaCorta(fin)}: el cambio del periodo no se pone junto a la cifra de hoy.` : `serie hasta el ${t.fechaCorta(fin)}`), nombre);
+    assert.match(texto, /49\.684/, 'la cifra en vivo sigue');
+  }
+});
+
+test('el gráfico de la app: área con degradado, línea, eje a la derecha, fechas abajo, línea de partida y la cruz al arrastrar o con el lector', (ctx) => {
+  ctx.mock.timers.enable({ apis: ['setTimeout'] });
   const { react, pintar } = crearReact();
   const { GraficoBolsa } = cargarMercado(react);
   const g = t.graficoPestana(SERIE, '1m');
@@ -547,7 +636,22 @@ test('el gráfico de la app: área con degradado, línea, eje a la derecha, fech
     `${t.fechaCorta(g.puntos[1].fecha)}: ${t.millonesHablados(g.puntos[1].valor)}`);
   raiz.props.onResponderRelease();
   arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
-  assert.ok(!nodos(arbol).some((n) => n?.type === 'Circle'), 'al soltar, la cruz se va');
+  assert.ok(nodos(arbol).some((n) => n?.type === 'Circle'), 'al soltar, la cruz se queda para poder leerla (un toque corto no se pierde)');
+  ctx.mock.timers.tick(2999);
+  arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
+  assert.ok(nodos(arbol).some((n) => n?.type === 'Circle'));
+  ctx.mock.timers.tick(1);
+  arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
+  assert.ok(!nodos(arbol).some((n) => n?.type === 'Circle'), 'a los 3 s, la cruz se va');
+  // Otro toque antes de los 3 s la mueve y vuelve a contar.
+  raiz.props.onResponderGrant({ nativeEvent: { locationX: 0 } });
+  raiz.props.onResponderRelease();
+  ctx.mock.timers.tick(2000);
+  raiz.props.onResponderGrant({ nativeEvent: { locationX: 0 } });
+  raiz.props.onResponderRelease();
+  ctx.mock.timers.tick(2000);
+  arbol = pintar(GraficoBolsa, { g, idioma: 'es' });
+  assert.ok(nodos(arbol).some((n) => n?.type === 'Circle'), 'el segundo toque reinicia los 3 s');
 });
 
 test('la tarjeta de Inicio: nombre, cifra, cambio del mes y minigráfico; al tocar abre la pantalla. En inglés, en su formato', async () => {
@@ -568,6 +672,8 @@ test('la tarjeta de Inicio: nombre, cifra, cambio del mes y minigráfico; al toc
       assert.ok(texto.includes(lengua === 'en' ? 'Tokenised assets' : 'Activos tokenizados'));
       assert.ok(texto.includes(t.millones(RESUMEN.total.valor, lengua)));
       assert.ok(texto.includes(g.cambioTexto) && texto.includes(lengua === 'en' ? 'past month' : 'último mes'));
+      assert.ok(texto.includes(lengua === 'en' ? `sum of the ${SERIE.incluidos} largest` : `suma de los ${SERIE.incluidos} mayores`), 'a qué se refiere el %');
+      assert.ok(tarjeta.props.accessibilityLabel.includes(lengua === 'en' ? ` past month, sum of the ${SERIE.incluidos} largest.` : ` en el último mes, suma de los ${SERIE.incluidos} mayores.`));
       assert.ok(nodos(arbol).some((n) => n?.type === 'Svg'), 'el minigráfico del mes');
       assert.match(tarjeta.props.accessibilityLabel, lengua === 'en' ? /^Tokenised asset market: 49,684 million dollars, (up|down|unchanged) / : /^Mercado de activos tokenizados: 49\.684 millones de dólares, (sube|baja|sin cambios) /);
       tarjeta.props.onPress();

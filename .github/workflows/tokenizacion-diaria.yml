@@ -17,8 +17,9 @@ name: Foto diaria de la tokenización
 # Desde el 11/11/2026 rehace también la serie de un año del gráfico «estilo
 # bolsa» de /mercado/ (tokenizacion-serie.json, en la misma rama): la suma
 # diaria de los 40 mayores tokens de la categoría, con unas 41 llamadas
-# gratuitas a CoinGecko y unos 3 s entre ellas (2–3 minutos). Si CoinGecko
-# falla, se conserva la serie anterior y la foto del día se guarda igual.
+# gratuitas a CoinGecko y 13 s entre ellas (unos 9 minutos; con 3 s CoinGecko
+# daba 429 una vez sí y otra no). Si CoinGecko falla o el paso pasa de 14
+# minutos, se conserva la serie anterior y la foto del día se guarda igual.
 #
 # Script y pruebas: rwadar-app/tokenizacion/foto-diaria.mjs,
 # rwadar-app/tokenizacion/serie-diaria.mjs y .github/tokenizacion.test.mjs.
@@ -41,7 +42,7 @@ concurrency:
 jobs:
   foto:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 25
     # Escribir solo hace falta para empujar la foto a «datos-tokenizacion».
     permissions:
       contents: write
@@ -95,10 +96,13 @@ jobs:
           --semilla rwadar-site/datos/tokenizacion-historico.json
 
       # Si falla (código 3), no escribe nada: queda la serie anterior y el
-      # flujo sigue para guardar la foto del día.
+      # flujo sigue para guardar la foto del día. Su propio límite (14 min,
+      # menor que el del trabajo) evita que unos 429 seguidos agoten el
+      # tiempo del trabajo y se pierda también la foto.
       - name: Rehacer la serie de un año (40 mayores tokens)
         id: serie
         continue-on-error: true
+        timeout-minutes: 14
         run: node rwadar-app/tokenizacion/serie-diaria.mjs "$DATOS/tokenizacion-serie.json"
 
       - name: Guardar la foto y la serie (un commit por día)

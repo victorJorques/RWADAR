@@ -6,6 +6,20 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 11 de noviembre de 2026 (2) · Claude · «Mercado y noticias»: correcciones de la revisión, sin publicar
+
+Segundo commit **local** en `mercado-bolsa` (sin push, sin publicar, sin flujos, sin Supabase). Lo que pidió la revisora:
+- **Flujo diario**: `PAUSA_MS` = 13 000 en `serie-diaria.mjs` (con 3 s CoinGecko daba 429 una vez sí y otra no). En `tokenizacion-diaria.yml`, el paso «Rehacer la serie» lleva `timeout-minutes: 14` (además de `continue-on-error`) y el trabajo pasa de 20 a 25 min: si CoinGecko se atasca, se corta la serie y la foto del día se guarda igual. Prueba nueva en `.github/tokenizacion.test.mjs`.
+- **El % dice de qué es**: «▲ +8,3 % en el último mes · suma de los 29 mayores» (en: «past month · sum of the 29 largest») en `/mercado/`, en la tarjeta de Inicio y en la app, también en los `aria-label`. Antes parecía el cambio de los 49.684 M$ totales.
+- **Tokens nuevos**: `graficoPestana` trae `avisoTokens`; en 1 A, 6 M y YTD sale «De 16 a 29 tokens: parte de la subida son tokens nuevos.» (también en `etiqueta`). Corrijo el traspaso anterior: hace un año cotizaban **16** de los 29, no 17.
+- **Cruz con el dedo**: tras un toque se queda 3 s (en la web, también hasta tocar fuera del gráfico).
+- **Hueco del 29/07**: el área de fondo ya no se corta (era la raya negra); el hueco se une con un trazo de puntos tenue y la nota dice «Falta el 29/07/2026».
+- **Serie vieja**: si acaba más de 3 días antes del dato de hoy, no se pone su cambio junto a la cifra y se avisa «Serie hasta el dd/mm/aaaa» (`serieAtrasada`).
+- **Nota**: una línea corta a la vista y el resto en «Cómo se calcula» (desplegable).
+- Nuevas en el modelo: `cambioFrase`, `alcance`, `avisoTokens`, `serieAtrasada`, `notaCorta`, `diasQueFaltan`; `trazosSvg` devuelve también `puentes`. Copiado a `tokenizacion-modelo-20261110.js`.
+
+**Al publicar: primero la web y después la OTA.** La app lee `https://rwadar.pages.dev/datos/tokenizacion-serie.json`, que aún no existe en producción (lo que decía abajo, «ninguna depende de la otra», era un error).
+
 ## 11 de noviembre de 2026 · Claude · «Mercado y noticias» al estilo de una app de bolsa (web y app), sin publicar
 
 Encargo de Víctor (con una captura de una app de bolsa): «mejora la sección de noticias y la del gráfico; un gráfico de este estilo sobre la evolución del mercado de la tokenización; las noticias, con el gráfico». Un commit **local** en la rama `mercado-bolsa`: sin push, sin publicar, sin flujos, sin Supabase y sin claves.
@@ -13,7 +27,7 @@ Encargo de Víctor (con una captura de una app de bolsa): «mejora la sección d
 **Datos (CoinGecko, gratis y sin clave)**:
 - Serie diaria de un año = suma de la capitalización de los mayores tokens de hoy de «tokenized-products» (`/coins/markets` + `/coins/{id}/market_chart`). Motor en `rwadar-movil/lib/tokenizacion.js` (`elegirMayores`, `historiaToken`, `construirSerie`, `diasSinDato`, `validarSerie`, `serializarSerie`, pestañas, escala del eje, fechas, `graficoPestana`, `notaSerie`, `tramosSeguidos`): web, app y servidor usan el mismo.
 - Reglas: último dato de como mucho 3 días; antes de su primer dato, el token cuenta 0; si a un token que ya cotiza le falta el dato, ese día no se pinta y la línea se corta. **Hallazgo con los datos reales**: a 8 de los 40 (Hashnote USYC, Janus Henderson Anemoy y 6 «tradable-…») CoinGecko les quita semanas enteras o deja de dar su historia antes de hoy; con la regla literal, la serie se cortaba en julio. Por eso, un token al que le faltan más de 3 días queda fuera de toda la serie y la nota del gráfico lo dice (con 7 días de margen, octubre salía con 7 días sin pintar por dos tokens de un 0,1 % cada uno): hoy, **29 de los 40, el 85,6 % del total**, 364 días del 12/11/2025 al 11/11/2026 (solo el 29/07/2026 sin pintar).
-- `rwadar-app/tokenizacion/serie-diaria.mjs` la rehace (41 llamadas con 3 s entre ellas; 429 → espera). Si falla la lista, si los que no se leen pesan más del 5 % o si los que entran no llegan al 75 %, no escribe nada (código 3) y queda la anterior. El flujo «Tokenización diaria» lo ejecuta con `continue-on-error` tras la foto y guarda los dos archivos en un commit en `datos-tokenizacion` (timeout 20 min). `publicar.yml` trae `tokenizacion-serie.json` de esa rama y `rwadar-tokenizacion-historico.js` (`serieTokenizacion`) publica la más reciente entre la rama y la semilla de main (`rwadar-site/datos/tokenizacion-serie.json`, generada hoy con datos reales).
+- `rwadar-app/tokenizacion/serie-diaria.mjs` la rehace (41 llamadas con 13 s entre ellas desde la revisión; 429 → espera). Si falla la lista, si los que no se leen pesan más del 5 % o si los que entran no llegan al 75 %, no escribe nada (código 3) y queda la anterior. El flujo «Tokenización diaria» lo ejecuta con `continue-on-error` tras la foto y guarda los dos archivos en un commit en `datos-tokenizacion` (timeout 20 min). `publicar.yml` trae `tokenizacion-serie.json` de esa rama y `rwadar-tokenizacion-historico.js` (`serieTokenizacion`) publica la más reciente entre la rama y la semilla de main (`rwadar-site/datos/tokenizacion-serie.json`, generada hoy con datos reales).
 - `/api/tokenizacion` no cambia (la app instalada sigue igual): la web y la app nuevas leen la serie de `/datos/tokenizacion-serie.json`.
 - Ojo: desde la IP de este entorno CoinGecko daba 429 con 3 s de pausa (la primera pasada tardó ~1 h); con 13 s no dio ninguno. En GitHub Actions puede ir distinto: si el flujo tarda, subir `PAUSA_MS`.
 
@@ -23,7 +37,7 @@ Encargo de Víctor (con una captura de una app de bolsa): «mejora la sección d
 
 **Pruebas**: `npm test` de la raíz y el guardián `comprobar-ota-compatible.cjs --base fa30779…` (`ok`). Nuevas o rehechas: `rwadar-movil/tests/tokenizacion.test.cjs` (serie, pestañas, eje, tramos, lectura remota, pantalla, gráfico, cotización), `noticias-sector.test.cjs`, `inicio-historia.test.cjs`, `.github/tokenizacion.test.mjs` (serie diaria y flujo), `rwadar-acceso/tokenizacion.test.mjs` y `noticias-sector.test.mjs` (Chromium a 390 y 1366), `probar-web.mjs` y `rwadar-app/probar-web-escritorio.mjs`.
 
-**Pendiente (Víctor)**: revisar y, si le gusta, publicar web y OTA (ninguna depende de la otra). Tras unir a main, lanzar a mano una vez «Tokenización diaria» para que la rama `datos-tokenizacion` tenga ya la serie (si no, se publica la semilla de hoy). Las capturas de la app son de una vista previa con react-native-web (sin las fuentes ni las fotos de la app).
+**Pendiente (Víctor)**: revisar y, si le gusta, publicar web y OTA (primero la web: ver la entrada de arriba). Tras unir a main, lanzar a mano una vez «Tokenización diaria» para que la rama `datos-tokenizacion` tenga ya la serie (si no, se publica la semilla de hoy). Las capturas de la app son de una vista previa con react-native-web (sin las fuentes ni las fotos de la app).
 
 ## 10 de noviembre de 2026 (8) · Claude · Inicio rediseñado, publicado; una prueba intermitente
 

@@ -9,8 +9,9 @@
 
    1. /coins/markets de la categoría «tokenized-products»: los 40 mayores de
       hoy y su cuota del total (unos 93 %).
-   2. /coins/{id}/market_chart de cada uno (365 días, diario), con unos 3 s
-      entre llamadas para no pasar del límite gratuito. Si CoinGecko responde
+   2. /coins/{id}/market_chart de cada uno (365 días, diario), con 13 s
+      entre llamadas (unos 9 minutos en total) para no pasar del límite
+      gratuito: con 3 s CoinGecko daba 429 una vez sí y otra no. Si CoinGecko responde
       429, se espera (Retry-After, como mucho 2 minutos) y se reintenta.
    3. La suma diaria (rwadar-movil/lib/tokenizacion.js, construirSerie).
 
@@ -30,7 +31,7 @@ import { pathToFileURL } from 'node:url';
 
 const require = createRequire(import.meta.url);
 const modelo = require('../../rwadar-movil/lib/tokenizacion.js');
-const PAUSA_MS = 3000;
+const PAUSA_MS = 13000;
 const PLAZO_MS = 20000;
 const INTENTOS = 3;
 const ESPERA_429_MS = 60000;

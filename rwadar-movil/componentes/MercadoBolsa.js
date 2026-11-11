@@ -5,7 +5,7 @@ import { Pressable, Text, View, useIdioma } from './Idioma';
 import { cargarTokenizacion } from '../lib/tokenizacion-remota';
 import { cargarSerie } from '../lib/tokenizacion-serie-remota';
 import { FUENTE, PESTANAS, PESTANA_INICIAL, cambioPct, colorTipo, coordenadas, cuota, direccion, fechaCorta, graficoPestana, horaDato,
-  indiceCercano, millones, millonesHablados, notaSerie, porcentaje, tramo, tramosSeguidos, trazosSvg } from '../lib/tokenizacion';
+  indiceCercano, millones, millonesHablados, notaCorta, notaSerie, porcentaje, serieAtrasada, tramo, tramosSeguidos, trazosSvg } from '../lib/tokenizacion';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
 import { tacto } from '../lib/tacto';
 
@@ -38,6 +38,9 @@ const NOMBRE_EN = { '1s': '1 week', '1m': '1 month', '3m': '3 months', '6m': '6 
 const TIPOS_EN = { 'Crédito privado': 'Private credit', 'Letras del Tesoro': 'Treasury bills', 'Materias primas': 'Commodities', Acciones: 'Stocks',
   'Fondos monetarios': 'Money market funds', 'Otros créditos': 'Other credit', ETF: 'ETFs', Inmuebles: 'Real estate' };
 
+// Tras soltar el dedo, la cruz se queda este tiempo para poder leerla.
+const CRUZ_FIJA_MS = 3000;
+
 const colorLinea = (dir) => (dir === 'sube' ? VERDE : dir === 'baja' ? ROJO : C.tx2);
 const colorTexto = (dir) => (dir === 'sube' ? VERDE : dir === 'baja' ? ROJO_TEXTO : C.tx2);
 
@@ -61,6 +64,12 @@ export function useMercado({ cargarVivo = cargarTokenizacion, cargarLaSerie = ca
   return { ...estado, reintentar: pedir };
 }
 
+/* La serie vieja (más de 3 días antes del dato de hoy) no pone su cambio
+   al lado de la cifra en vivo. Sin dato en vivo, la cifra ya es la serie. */
+const atrasada = (vivo, serie) => !!(vivo && serie && serieAtrasada(serie, vivo.actualizado));
+const fechaFinSerie = (serie, idioma) => fechaCorta(serie.puntos[serie.puntos.length - 1].fecha, idioma);
+const mayuscula = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+
 function valorHoy(vivo, serie) {
   if (vivo?.total) return vivo.total.valor;
   const p = serie?.puntos?.[serie.puntos.length - 1];
@@ -71,6 +80,8 @@ function valorHoy(vivo, serie) {
 export function GraficoBolsa({ g, idioma, alto = 240 }) {
   const [ancho, setAncho] = useState(0);
   const [indice, setIndice] = useState(null);
+  const reloj = useRef(null);
+  const parar = () => { clearTimeout(reloj.current); reloj.current = null; };
   const EJE = 54, ARRIBA = 10, ABAJO = 28;
   const PW = Math.max(0, ancho - EJE), PH = alto - ARRIBA - ABAJO;
   const coords = useMemo(() => (ancho > 0 ? coordenadas(g, PW, PH).map((c) => ({ x: c.x, y: c.y + ARRIBA })) : []), [g, ancho, PW, PH]);
@@ -81,18 +92,21 @@ export function GraficoBolsa({ g, idioma, alto = 240 }) {
     // Solo el arrastre horizontal mueve la cruz; el vertical sigue desplazando la pantalla.
     onMoveShouldSetPanResponder: (_, gs) => Math.abs(gs.dx) > Math.abs(gs.dy),
     onPanResponderTerminationRequest: () => true,
-    onPanResponderGrant: (ev) => { setIndice(indiceCercano(ref.current.coords, ev.nativeEvent.locationX)); tacto.eleccion?.(); },
+    onPanResponderGrant: (ev) => { parar(); setIndice(indiceCercano(ref.current.coords, ev.nativeEvent.locationX)); tacto.eleccion?.(); },
     onPanResponderMove: (ev) => setIndice(indiceCercano(ref.current.coords, ev.nativeEvent.locationX)),
-    onPanResponderRelease: () => setIndice(null),
-    onPanResponderTerminate: () => setIndice(null),
+    // Un toque corto no se perdía: la cruz se queda 3 s después de soltar.
+    onPanResponderRelease: () => { parar(); reloj.current = setTimeout(() => { reloj.current = null; setIndice(null); }, CRUZ_FIJA_MS); },
+    onPanResponderTerminate: () => { parar(); setIndice(null); },
   }), []);
-  // Al cambiar de pestaña, la cruz se quita.
-  useEffect(() => { setIndice(null); }, [g]);
+  // Al cambiar de pestaña, la cruz se quita; al desmontar, el reloj se para.
+  useEffect(() => { parar(); setIndice(null); }, [g]);
+  useEffect(() => parar, []);
 
   const dir = g.direccion, color = colorLinea(dir);
   const yDe = (v) => ARRIBA + PH - ((v - g.escala.lo) / (g.escala.hi - g.escala.lo)) * PH;
   // Tramo a tramo: donde falta un día, la línea se corta (no se une con una recta).
-  const { linea: trazo, area } = coords.length ? trazosSvg(coords, tramosSeguidos(g), ARRIBA + PH) : { linea: '', area: '' };
+  // El área de fondo no se corta; el hueco se une con un trazo de puntos tenue.
+  const { linea: trazo, area, puentes } = coords.length ? trazosSvg(coords, tramosSeguidos(g), ARRIBA + PH) : { linea: '', area: '', puentes: '' };
   const k = indice === null ? null : Math.max(0, Math.min(g.puntos.length - 1, indice));
   const activo = k === null ? null : { c: coords[k], p: g.puntos[k] };
   const ultimo = g.puntos[g.puntos.length - 1];
@@ -129,6 +143,7 @@ export function GraficoBolsa({ g, idioma, alto = 240 }) {
           <Line x1={0} x2={ancho} y1={ARRIBA + PH} y2={ARRIBA + PH} stroke="rgba(255,255,255,0.16)" strokeWidth={1} />
           <Path d={area} fill="url(#mkDeg)" />
           <Line x1={0} x2={PW} y1={yDe(g.estadisticas.inicio)} y2={yDe(g.estadisticas.inicio)} stroke={C.tx3} strokeWidth={1} strokeDasharray="2 4" />
+          {puentes ? <Path d={puentes} fill="none" stroke={color} strokeOpacity={0.45} strokeWidth={1.25} strokeDasharray="2 3" testID="mercado-puente" /> : null}
           <Path d={trazo} fill="none" stroke={color} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
           {g.marcasValores.map((m) => (
             <SvgText key={'tv' + m.valor} x={PW + 8} y={yDe(m.valor) + 4} fill={C.tx2} fontSize={12} fontFamily={F.media}>{m.texto}</SvgText>
@@ -193,6 +208,8 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
   const en = idioma === 'en';
   const { fase, vivo, serie, reintentar } = useMercado({ cargarVivo, cargarLaSerie });
   const [pestana, setPestana] = useState(PESTANA_INICIAL);
+  const [como, setComo] = useState(false);
+  const vieja = atrasada(vivo, serie);
   const disponible = (clave) => !!(serie && tramo(serie.puntos, clave));
   const elegida = serie && !disponible(pestana) ? (PESTANAS.find((p) => disponible(p.clave))?.clave || pestana) : pestana;
   const g = serie ? graficoPestana(serie, elegida, idioma) : null;
@@ -223,17 +240,20 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
       ) : null}
       {hoy !== null ? (
         <View style={e.cab}>
-          <View accessible noTraducir accessibilityLabel={`${millonesHablados(hoy, idioma)}${g ? `, ${g.direccion === 'sube' ? (en ? 'up' : 'sube') : g.direccion === 'baja' ? (en ? 'down' : 'baja') : (en ? 'unchanged' : 'sin cambios')} ${g.cambioTexto}, ${g.periodoTexto}` : ''}`}>
+          <View accessible noTraducir accessibilityLabel={`${millonesHablados(hoy, idioma)}${g && !vieja ? `, ${g.direccion === 'sube' ? (en ? 'up' : 'sube') : g.direccion === 'baja' ? (en ? 'down' : 'baja') : (en ? 'unchanged' : 'sin cambios')} ${g.cambioTexto} ${g.cambioFrase}, ${g.alcance}${g.avisoTokens ? `. ${mayuscula(g.avisoTokens)}` : ''}` : ''}`}>
             <Text noTraducir style={e.cifra} numberOfLines={1} adjustsFontSizeToFit>
               {cifra}{unidad ? <Text noTraducir style={e.unidad}>{' ' + unidad}</Text> : null}
             </Text>
-            {g ? (
+            {g && !vieja ? (
               <View style={e.lineaCambio}>
                 <Cambio g={g} grande />
-                <Text noTraducir style={e.periodo}>{g.periodoTexto}</Text>
+                {/* El % es el de la suma de la serie (los N mayores), no el de la cifra total de arriba: se dice. */}
+                <Text noTraducir style={e.periodo}>{g.cambioFrase}<Text noTraducir style={e.alcance}>{' · ' + g.alcance}</Text></Text>
               </View>
             ) : <Text noTraducir style={e.periodo}>{en ? 'Total value, in millions of dollars' : 'Valor total, en millones de dólares'}</Text>}
+            {g && !vieja && g.avisoTokens ? <Text noTraducir style={e.aviso} testID="mercado-aviso-tokens">{mayuscula(g.avisoTokens) + '.'}</Text> : null}
           </View>
+          {vieja ? <Text noTraducir style={e.aviso} testID="mercado-serie-vieja">{`${en ? 'Series to ' : 'Serie hasta el '}${fechaFinSerie(serie, idioma)}${en ? ": the period change isn't shown next to today's figure." : ': el cambio del periodo no se pone junto a la cifra de hoy.'}`}</Text> : null}
           {!vivo ? <Text noTraducir style={e.aviso}>{en ? "Without today's figure: this is the sum of the largest tokens on the series' last day." : 'Sin el dato de hoy: la cifra es la suma de los mayores tokens del último día de la serie.'}</Text> : null}
           {vivo?.fuente === 'foto-guardada' ? <Text noTraducir style={e.aviso}>{`${en ? "Figure from RWAdar's last daily snapshot, " : 'Cifra de la última foto diaria de RWAdar, del '}${horaDato(vivo.actualizado, idioma)}`}</Text> : null}
         </View>
@@ -256,7 +276,14 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
       {g ? (
         <View style={e.grafico}>
           <GraficoBolsa g={g} idioma={idioma} />
-          <Text noTraducir style={e.nota}>{notaSerie(serie, idioma)}</Text>
+          {/* Una línea corta a la vista; el resto, en «Cómo se calcula». */}
+          <Text noTraducir style={e.nota}>{notaCorta(serie, idioma)}</Text>
+          <Pressable onPress={() => { tacto.eleccion(); setComo((v) => !v); }} style={({ pressed }) => [e.como, pressed && pulsado('b3')]}
+            accessibilityRole="button" accessibilityState={{ expanded: como }} noTraducir accessibilityLabel={en ? 'How it is calculated' : 'Cómo se calcula'}
+            testID="mercado-como">
+            <Text noTraducir style={e.comoTxt}>{`${en ? 'How it is calculated' : 'Cómo se calcula'} ${como ? '▴' : '▾'}`}</Text>
+          </Pressable>
+          {como ? <Text noTraducir style={e.nota}>{notaSerie(serie, idioma)}</Text> : null}
         </View>
       ) : hoy !== null && fase !== 'cargando' ? (
         <Text noTraducir style={e.estado}>{en ? "The chart isn't available right now. Today's figure is." : 'El gráfico no está disponible ahora. La cifra de hoy sí.'}</Text>
@@ -315,7 +342,7 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
 function Minigrafico({ g }) {
   const W = 96, H = 40, M = 3;
   const coords = coordenadas(g, W - 2 * M, H - 2 * M).map((c) => ({ x: c.x + M, y: c.y + M }));
-  const { linea: d, area } = trazosSvg(coords, tramosSeguidos(g), H);
+  const { linea: d, area, puentes } = trazosSvg(coords, tramosSeguidos(g), H);
   const color = colorLinea(g.direccion);
   return (
     <Svg width={W} height={H} accessible={false} importantForAccessibility="no-hide-descendants">
@@ -327,6 +354,7 @@ function Minigrafico({ g }) {
       </Defs>
       <Path d={area} fill="url(#mkMini)" />
       <Line x1={M} x2={W - M} y1={coords[0].y} y2={coords[0].y} stroke={C.tx3} strokeWidth={1} strokeDasharray="2 4" />
+      {puentes ? <Path d={puentes} fill="none" stroke={color} strokeOpacity={0.45} strokeWidth={1} strokeDasharray="2 3" /> : null}
       <Path d={d} fill="none" stroke={color} strokeWidth={1.75} strokeLinejoin="round" strokeLinecap="round" />
     </Svg>
   );
@@ -337,7 +365,8 @@ export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLa
   const en = idioma === 'en';
   const { fase, vivo, serie, reintentar } = useMercado({ cargarVivo, cargarLaSerie });
   const hoy = valorHoy(vivo, serie);
-  const g = serie ? graficoPestana(serie, '1m', idioma) : null;
+  const vieja = atrasada(vivo, serie);
+  const g = serie && !vieja ? graficoPestana(serie, '1m', idioma) : null;
   if (hoy === null) {
     if (fase === 'cargando') return <Text noTraducir style={e.estado}>{en ? 'Loading CoinGecko data…' : 'Cargando los datos de CoinGecko…'}</Text>;
     return (
@@ -355,7 +384,7 @@ export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLa
     <View>
       <Pressable onPress={() => { tacto.abrir(); onAbrir?.(); }} style={({ pressed }) => [e.ct, pressed && e.ctPulsada]}
         accessibilityRole="button" noTraducir
-        accessibilityLabel={`${en ? 'Tokenised asset market' : 'Mercado de activos tokenizados'}: ${millonesHablados(hoy, idioma)}${g ? `, ${palabra} ${g.cambioTexto} ${en ? 'over the' : 'en el'} ${g.periodoTexto}` : ''}. ${en ? 'See the chart' : 'Ver el gráfico'}`}
+        accessibilityLabel={`${en ? 'Tokenised asset market' : 'Mercado de activos tokenizados'}: ${millonesHablados(hoy, idioma)}${g ? `, ${palabra} ${g.cambioTexto} ${g.cambioFrase}, ${g.alcance}${g.avisoTokens ? `; ${g.avisoTokens}` : ''}` : ''}. ${en ? 'See the chart' : 'Ver el gráfico'}`}
         testID="mercado-cotizacion">
         <View style={e.ctIzq}>
           <Text noTraducir style={e.ctNom}>{en ? 'Tokenised assets' : 'Activos tokenizados'}</Text>
@@ -366,6 +395,8 @@ export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLa
           <Text noTraducir style={e.ctCifra} numberOfLines={1}>{millones(hoy, idioma)}</Text>
           {g ? <Cambio g={g} /> : null}
           {g ? <Text noTraducir style={e.ctPeriodo}>{g.periodoTexto}</Text> : null}
+          {g ? <Text noTraducir style={e.ctAlcance}>{g.alcance}</Text> : null}
+          {vieja ? <Text noTraducir style={e.ctPeriodo}>{`${en ? 'series to ' : 'serie hasta el '}${fechaFinSerie(serie, idioma)}`}</Text> : null}
         </View>
       </Pressable>
       <Fuente vivo={vivo} serie={null} idioma={idioma} onAbrirEnlace={onAbrirEnlace} />
@@ -389,6 +420,7 @@ const e = StyleSheet.create({
   cambio: { ...T.instrumento, fontSize: 14, lineHeight: 19 },
   cambioGrande: { fontSize: 18, lineHeight: 24 },
   periodo: { fontFamily: F.media, fontSize: 16, lineHeight: 21, color: C.tx2 },
+  alcance: { fontFamily: F.regular, fontSize: 14, color: C.tx3 },
   aviso: { ...T.menor, fontSize: 13, lineHeight: 19, color: C.tx3, marginTop: 8 },
   pestanas: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, marginHorizontal: -4 },
   pestana: { flex: 1, minHeight: 40, minWidth: 44, borderRadius: R.p, alignItems: 'center', justifyContent: 'center', marginHorizontal: 1 },
@@ -404,6 +436,8 @@ const e = StyleSheet.create({
   burbujaValor: { ...T.instrumento, fontSize: 16, lineHeight: 20, color: C.tx },
   burbujaCambio: { fontFamily: F.regular, fontSize: 12, lineHeight: 16, color: C.tx3 },
   nota: { fontFamily: F.regular, fontSize: 13, lineHeight: 19, color: C.tx3, marginTop: 10 },
+  como: { minHeight: 44, justifyContent: 'center', marginLeft: -8, paddingHorizontal: 8, borderRadius: R.m, alignSelf: 'flex-start' },
+  comoTxt: { fontFamily: F.media, fontSize: 13, lineHeight: 18, color: C.tx2 },
   clave: { flexDirection: 'row', flexWrap: 'wrap', marginTop: 16, borderTopWidth: 1, borderTopColor: C.bd, columnGap: 16 },
   claveItem: { width: '47%', flexGrow: 1, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: C.bd, gap: 2 },
   claveRotulo: { fontFamily: F.media, fontSize: 13, lineHeight: 17, color: C.tx3 },
@@ -431,6 +465,7 @@ const e = StyleSheet.create({
   ctDer: { alignItems: 'flex-end', gap: 1 },
   ctCifra: { ...T.instrumento, fontSize: 17, lineHeight: 22, color: C.tx },
   ctPeriodo: { fontFamily: F.regular, fontSize: 12, lineHeight: 15, color: C.tx3 },
+  ctAlcance: { fontFamily: F.regular, fontSize: 11, lineHeight: 14, color: C.tx3 },
 });
 
-export const _pruebas = { valorHoy, colorLinea, colorTexto, UI };
+export const _pruebas = { valorHoy, colorLinea, colorTexto, atrasada, CRUZ_FIJA_MS, UI };

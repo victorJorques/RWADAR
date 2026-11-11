@@ -27,6 +27,8 @@
 .mk-linea-cambio{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:6px 0 0}
 .mk-linea-cambio .mk-cambio{font-size:1.125rem}
 .mk-periodo{color:var(--tx-2);font:500 1rem/1.3 var(--body)}
+.mk-alcance{color:var(--tx-3);font:400 .875rem/1.3 var(--body)}
+@media (max-width:767px){.mk-alcance{flex-basis:100%}.mk-sep{display:none}}
 .mk-aviso{margin:8px 0 0;color:var(--tx-3);font:400 .8125rem/1.45 var(--body)}
 
 /* ---- Pestañas ---- */
@@ -49,6 +51,7 @@
 .mk-rejilla .mk-suelo{stroke:rgba(255,255,255,.16)}
 .mk-stop{stop-color:var(--mk-color-dir)}
 .mk-linea{fill:none;stroke:var(--mk-color-dir);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.mk-puente{fill:none;stroke:var(--mk-color-dir);stroke-width:1.25;stroke-dasharray:2 3;opacity:.45}
 .mk-base{stroke:var(--tx-3);stroke-width:1;stroke-dasharray:2 4;opacity:.8}
 .mk-eje text{fill:var(--tx-2);font:500 12px/1 var(--mono);font-variant-numeric:tabular-nums}
 .mk-eje .mk-eje-unidad{fill:var(--tx-3);font-size:11px}
@@ -61,6 +64,13 @@
 .mk-burbuja-valor{color:var(--tx);font:600 1rem/1.25 var(--mono);font-variant-numeric:tabular-nums}
 .mk-burbuja-cambio{color:var(--tx-3);font:400 .75rem/1.3 var(--body)}
 .mk-nota{margin:10px 0 0;color:var(--tx-3);font:400 .8125rem/1.45 var(--body)}
+.mk-como{margin:2px 0 0;color:var(--tx-3);font:400 .8125rem/1.45 var(--body)}
+.mk-como-tit{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--tx-2);font-weight:500;cursor:pointer;list-style:none}
+.mk-como-tit::-webkit-details-marker{display:none}
+.mk-como-tit::after{content:'▾';color:var(--tx-3)}
+.mk-como[open] .mk-como-tit::after{content:'▴'}
+.mk-como-tit:focus-visible{outline:2px solid var(--senal,currentColor);outline-offset:2px;border-radius:4px}
+.mk-nota-larga{margin:0 0 4px}
 
 /* ---- Datos clave ---- */
 .mk-clave{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin:16px 0 0;padding:4px 0 0;border-top:var(--bd)}
@@ -143,6 +153,7 @@
 .mk-ct-cifra{color:var(--tx);font:600 1.125rem/1.2 var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 .mk-ct-cambio{font-size:.875rem}
 .mk-ct-periodo{color:var(--tx-3);font:400 .75rem/1.2 var(--body);white-space:nowrap}
+.mk-ct-alcance{color:var(--tx-3);font:400 .6875rem/1.2 var(--body);white-space:nowrap}
 @media (max-width:380px){.mk-mini-svg{width:76px}.mk-ct{gap:10px;padding:14px}}
 
 /* Inicio: noticias compactas, foto pequeña y titular. */
