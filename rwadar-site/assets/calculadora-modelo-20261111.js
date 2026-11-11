@@ -28,14 +28,16 @@
      ganancia no hay impuesto (no se cuentan pérdidas que pudieras
      compensar con otras ganancias).
 
-   Impuestos por defecto, 19 %: en el IRPF de 2025, la base del ahorro
-   (intereses, dividendos y ganancias al vender) tributa por tramos:
-   19 % hasta 6.000 €, 21 % hasta 50.000 €, 23 % hasta 200.000 €, 27 %
-   hasta 300.000 € y 30 % desde ahí (escala estatal y autonómica, la
-   mitad cada una, tras la Ley 7/2024). Fuente primaria, la AEAT:
+   Impuestos por defecto, 19 %: desde el 1 de enero de 2025, la base del
+   ahorro del IRPF (intereses, dividendos y ganancias al vender) tributa
+   por tramos: 19 % hasta 6.000 €, 21 % hasta 50.000 €, 23 % hasta
+   200.000 €, 27 % hasta 300.000 € y 30 % desde ahí. Es la suma de la
+   escala estatal (9,5 / 10,5 / 11,5 / 13,5 / 15 %) y de la autonómica,
+   igual (arts. 66 y 76 de la Ley del IRPF, cambiados por la disposición
+   final 7.ª de la Ley 7/2024). Fuente primaria, la AEAT:
    https://sede.agenciatributaria.gob.es/Sede/irpf/novedades-impuesto/novedades-normativa-2024.html
-   (consultada el 11/11/2026). La calculadora aplica un solo tipo, el que
-   pongas; no calcula el IRPF de nadie.
+   (leída el 11/11/2026). La calculadora aplica un solo tipo, el que
+   pongas; no calcula el IRPF de nadie, y así lo dice su nota.
    --------------------------------------------------------------------- */
 
 const LIMITES = Object.freeze({
@@ -68,18 +70,23 @@ const tx = (idioma, es, en) => (idioma === 'en' ? en : es);
 const finito = (v) => typeof v === 'number' && Number.isFinite(v);
 
 /* ---- Leer lo que escribe la persona ----
-   Acepta «10.000», «10 000», «1.000,50», «2,5», «2.5», «1,000» y «−3».
-   Una sola marca seguida de exactamente tres cifras (y sin un 0 delante)
-   es de miles en los importes («10.000», «1,000»); en los porcentajes y
-   los años, una sola marca es siempre decimal («2.840» no es un tipo). */
+   Acepta «10.000», «10 000», «1.000,50», «2,5», «2.5», «1,000», «−3» y,
+   a medio escribir, «12,» y «,5».
+   Una sola marca entre una a tres cifras (que no sean solo ceros) y
+   exactamente tres cifras es de miles en los importes («10.000», «1,000»);
+   «1234.567» o «0,500» son decimales. En los porcentajes y los años, una
+   sola marca es siempre decimal («2.840» no es un tipo). */
 function leerNumero(texto, { miles = true } = {}) {
-  if (typeof texto === 'number') return finito(texto) ? { ok: true, valor: texto } : { ok: false, error: 'formato' };
+  if (typeof texto === 'number') return finito(texto) ? { ok: true, valor: texto === 0 ? 0 : texto } : { ok: false, error: 'formato' };
   if (typeof texto !== 'string') return { ok: false, error: 'vacio' };
   let s = texto.replace(/[\s   ]/g, '').replace(/€|eur(?:os?)?|%|años?|years?/gi, '');
   s = s.replace(/[−‒–]/g, '-');
   if (!s) return { ok: false, error: 'vacio' };
   let signo = 1;
   if (/^[+-]/.test(s)) { if (s[0] === '-') signo = -1; s = s.slice(1); }
+  // A medio escribir: «12,» vale 12 y «,5», 0,5 (que no salte un error al teclear).
+  if (/^\d+[.,]$/.test(s)) s = s.slice(0, -1);
+  else if (/^[.,]\d+$/.test(s)) s = '0' + s;
   if (!/^[\d.,]+$/.test(s) || !/\d/.test(s) || /^[.,]|[.,]$/.test(s)) return { ok: false, error: 'formato' };
   const puntos = (s.match(/\./g) || []).length, comas = (s.match(/,/g) || []).length;
   let normal;
@@ -97,7 +104,7 @@ function leerNumero(texto, { miles = true } = {}) {
     normal = s.split(mil).join('');
   } else if (puntos + comas === 1) {
     const [entera, decimales] = s.split(/[.,]/);
-    normal = miles && decimales.length === 3 && !/^0+$/.test(entera) ? entera + decimales : entera + '.' + decimales;
+    normal = miles && decimales.length === 3 && /^\d{1,3}$/.test(entera) && !/^0+$/.test(entera) ? entera + decimales : entera + '.' + decimales;
   } else normal = s;
   const valor = signo * Number(normal);
   return finito(valor) ? { ok: true, valor: valor === 0 ? 0 : valor } : { ok: false, error: 'formato' };
@@ -127,14 +134,24 @@ function euros(v, idioma = 'es', d = decimalesEuros(v)) {
   const n = numero(v, idioma, d);
   return idioma === 'en' ? (n.startsWith('−') ? '−€' + n.slice(1) : '€' + n) : n + ' €';
 }
+/* Una cifra «de unos»: de 100 € para arriba, sin céntimos (el titular y el gráfico). */
+function eurosAprox(v, idioma = 'es') {
+  return euros(v, idioma, finito(v) && Math.abs(v) >= 100 ? 0 : decimalesEuros(v));
+}
 function porcentaje(v, idioma = 'es', d = 1) {
   if (!finito(v)) return '—';
   return numero(v, idioma, d) + (idioma === 'en' ? '%' : ' %');
 }
-/* Lo que se escribe en un campo: sin unidad y con los decimales justos («1.000», «2,84»). */
+/* Lo que se escribe en un campo: sin unidad y con los decimales justos
+   («1.000», «2,84»). Los importes, con céntimos como mucho; los
+   porcentajes, hasta 4 decimales: al salir del campo no se cambia la cifra
+   que puso la persona («2,845» sigue siendo 2,845). */
 function valorCampo(v, idioma = 'es', campo = 'inversion') {
   if (!finito(v)) return '';
-  const d = LIMITES[campo]?.entero ? 0 : redondear(v, 2) % 1 === 0 ? 0 : redondear(v, 1) === redondear(v, 2) ? 1 : 2;
+  const l = LIMITES[campo], euros = l?.unidad === 'euros', tope = l?.entero ? 0 : euros ? 2 : 4;
+  let d = 0;
+  while (d < tope && Math.abs(redondear(v, d) - v) > 1e-9) d++;
+  if (euros && d === 1) d = 2;   // «1.000,50», no «1.000,5»
   return numero(v, idioma, d).replace('−', '-');
 }
 function anios(n, idioma = 'es') {
@@ -272,12 +289,14 @@ function conQue(x, idioma) {
 function resumen(res, idioma = 'es') {
   if (!res) return { titular: tx(idioma, 'Revisa los datos marcados para ver el resultado.', 'Check the highlighted figures to see the result.'), detalle: '', signo: 'error' };
   const N = anios(res.anios, idioma), e = (v) => euros(v, idioma);
+  // En el titular («unos …»), de 100 € para arriba, sin céntimos.
+  const aprox = (v) => eurosAprox(v, idioma);
   const signo = res.gananciaNeta > 0.005 ? 'gana' : res.gananciaNeta < -0.005 ? 'pierde' : 'igual';
   const media = porcentaje(res.rentNetaAnual, idioma, res.modo === 'cobrar' ? 2 : 1);
   if (res.modo === 'cobrar' && res.primerAnio.neto > 0.005) {
     return { signo,
-      titular: tx(idioma, `Cobrarías unos ${e(res.primerAnio.neto)} al año (${e(res.primerAnio.mes)} al mes)`,
-        `You would receive about ${e(res.primerAnio.neto)} a year (${e(res.primerAnio.mes)} a month)`),
+      titular: tx(idioma, `Cobrarías unos ${aprox(res.primerAnio.neto)} al año (${aprox(res.primerAnio.mes)} al mes)`,
+        `You would receive about ${aprox(res.primerAnio.neto)} a year (${aprox(res.primerAnio.mes)} a month)`),
       detalle: signo === 'gana'
         ? tx(idioma, `Ganancia neta en ${N}: ${e(res.gananciaNeta)}, un ${media} al año, ${conQue(res.valores, idioma)}.`,
           `Net gain over ${N}: ${e(res.gananciaNeta)}, ${media} a year, ${conQue(res.valores, idioma)}.`)
@@ -286,11 +305,12 @@ function resumen(res, idioma = 'es') {
   }
   if (res.modo === 'cobrar') {
     return { signo,
-      titular: tx(idioma, `No cobrarías nada: al cabo de ${N} tendrías ${e(res.finalNeto)}`, `You would receive nothing: after ${N} you would have ${e(res.finalNeto)}`),
-      detalle: tx(idioma, `Pierdes ${e(-res.gananciaNeta)} de lo que pusiste.`, `You lose ${e(-res.gananciaNeta)} of what you put in.`) };
+      titular: tx(idioma, `No cobrarías nada: al cabo de ${N} tendrías ${aprox(res.finalNeto)}`, `You would receive nothing: after ${N} you would have ${aprox(res.finalNeto)}`),
+      detalle: signo === 'pierde' ? tx(idioma, `Pierdes ${e(-res.gananciaNeta)} de lo que pusiste.`, `You lose ${e(-res.gananciaNeta)} of what you put in.`)
+        : tx(idioma, 'Lo mismo que pusiste: ni ganas ni pierdes.', 'The same as you put in: no gain, no loss.') };
   }
   return { signo,
-    titular: tx(idioma, `Al cabo de ${N} tendrías unos ${e(res.finalNeto)}`, `After ${N} you would have about ${e(res.finalNeto)}`),
+    titular: tx(idioma, `Al cabo de ${N} tendrías unos ${aprox(res.finalNeto)}`, `After ${N} you would have about ${aprox(res.finalNeto)}`),
     detalle: signo === 'gana'
       ? tx(idioma, `Ganancia neta: ${e(res.gananciaNeta)}, como un ${media} al año, ${conQue(res.valores, idioma)}.`,
         `Net gain: ${e(res.gananciaNeta)}, like ${media} a year, ${conQue(res.valores, idioma)}.`)
@@ -329,7 +349,8 @@ function pasos(res, idioma = 'es') {
       add(tx(idioma, `Impuestos del ${p(x.impuestos, 0)} sobre lo que cobras`, `${p(x.impuestos, 0)} tax on what you receive`), '−' + e(res.primerAnio.impuestos));
     }
     add(tx(idioma, 'Cobras el primer año', 'You receive in the first year'), e(res.primerAnio.neto));
-    add(tx(idioma, `Cobrado en ${anios(res.anios, idioma)}, ya con impuestos`, `Received over ${anios(res.anios, idioma)}, after tax`), e(res.cobradoNeto));
+    add(x.impuestos > 0 ? tx(idioma, `Cobrado en ${anios(res.anios, idioma)}, ya con impuestos`, `Received over ${anios(res.anios, idioma)}, after tax`)
+      : tx(idioma, `Cobrado en ${anios(res.anios, idioma)}`, `Received over ${anios(res.anios, idioma)}`), e(res.cobradoNeto));
     add(tx(idioma, 'Tu capital al final', 'Your capital at the end'), e(res.tabla[res.tabla.length - 1].capitalFin));
   } else {
     add(tx(idioma, `Reinviertes ${anios(res.anios, idioma)}: tu capital al final, antes de impuestos`, `Reinvested for ${anios(res.anios, idioma)}: your capital at the end, before tax`), e(res.finalBruto));
@@ -345,12 +366,29 @@ function pasos(res, idioma = 'es') {
   p(res.rentNetaAnual, res.modo === 'cobrar' ? 2 : 1));
   return lista;
 }
-/* Una línea que explica cómo se cuentan los impuestos en el modo elegido. */
+/* Una línea que explica cómo se cuentan los impuestos en el modo elegido, y
+   otra que dice lo que no sabemos: cómo tributa cada producto y cada
+   persona (por eso no se afina más). */
 function notaImpuestos(modo, idioma = 'es') {
-  return modo === 'reinvertir'
+  const regla = modo === 'reinvertir'
     ? tx(idioma, 'Si reinviertes, pagas impuestos al final, al vender, sobre lo ganado: en España un fondo o un token suele tributar así.',
       'If you reinvest, you pay tax at the end, when you sell, on the gain: in Spain a fund or a token is usually taxed this way.')
     : tx(idioma, 'Si cobras, pagas impuestos cada año sobre lo que cobras.', 'If you take the payouts, you pay tax every year on what you receive.');
+  return regla + ' ' + tx(idioma, 'Es una aproximación con un solo tipo: cada producto y cada persona pueden tributar distinto.',
+    'It is an approximation with a single rate: each product and each person may be taxed differently.');
+}
+
+/* «sin comisiones · impuestos 19 %», junto a «Afinar»: lo que hay dentro sin abrirlo. */
+function resumenAfinar(v, idioma = 'es') {
+  if (!v) return '';
+  const p = (x) => porcentaje(x, idioma, redondear(x, 2) % 1 ? 2 : 0), partes = [];
+  if (v.comisionAnual > 0) partes.push(tx(idioma, 'comisión anual ', 'annual fee ') + p(v.comisionAnual));
+  if (v.comisionEntrada > 0) partes.push(tx(idioma, 'entrada ', 'entry fee ') + p(v.comisionEntrada));
+  if (!(v.comisionAnual > 0) && !(v.comisionEntrada > 0)) partes.push(tx(idioma, 'sin comisiones', 'no fees'));
+  partes.push(v.impuestos > 0 ? tx(idioma, 'impuestos ', 'tax ') + p(v.impuestos) : tx(idioma, 'sin impuestos', 'no tax'));
+  if (v.valorActivo != null) partes.push(tx(idioma, 'activo ', 'asset ') + euros(v.valorActivo, idioma));
+  if (v.precioParticipacion != null) partes.push(tx(idioma, 'participación ', 'unit ') + euros(v.precioParticipacion, idioma));
+  return partes.join(' · ');
 }
 
 /* ---- El minigráfico: una barra por año con lo que tendrías (neto) ---- */
@@ -375,6 +413,15 @@ function barras(res, { ancho = 320, alto = 140, margenArriba = 18, margenAbajo =
     }),
     etiquetas: n === 1 ? [1] : n <= 6 ? valores.map((_, i) => i + 1) : [1, Math.ceil(n / 2), n],
   };
+}
+
+/* Lo mismo que el gráfico, dicho en una frase para el lector de pantalla (la
+   web lleva además una tabla; la app, esta etiqueta). */
+function descripcionBarras(res, idioma = 'es') {
+  if (!res) return '';
+  const filas = res.tabla.map((f) => tx(idioma, `año ${f.anio}, ${euros(f.valorNeto, idioma)}`, `year ${f.anio}, ${euros(f.valorNeto, idioma)}`));
+  return tx(idioma, `Lo que tendrías cada año, neto, sobre ${euros(res.pagado, idioma)} que pones: `,
+    `What you would have each year, net, on the ${euros(res.pagado, idioma)} you put in: `) + filas.join('; ') + '.';
 }
 
 /* ---- «Usa la rentabilidad de una oferta» ----
@@ -444,6 +491,12 @@ function ofertasConRentabilidad(ofertas, { ahora = new Date(), catalogoVigente =
 function textoOferta(of, idioma = 'es') {
   return `${of.nombre} · ${porcentaje(of.rentabilidad, idioma, 2)} · ${fechaCorta(of.fecha, idioma)}`;
 }
+/* Lo que oye el lector de pantalla en el chip. */
+function etiquetaOferta(of, idioma = 'es') {
+  const pct = porcentaje(of.rentabilidad, idioma, 2), fecha = fechaCorta(of.fecha, idioma);
+  return tx(idioma, `Usar el ${pct} de ${of.nombre}, publicado el ${fecha}${of.enDolares ? ', en dólares' : ''}`,
+    `Use ${pct} from ${of.nombre}, published on ${fecha}${of.enDolares ? ', in US dollars' : ''}`);
+}
 function notaOferta(of, idioma = 'es') {
   if (!of) return '';
   const base = tx(idioma,
@@ -464,9 +517,9 @@ function tituloExplicador({ valorActivo, precioParticipacion }, idioma = 'es') {
 
 module.exports = {
   LIMITES, CAMPOS, MODOS, PREDETERMINADOS, IMPORTES_RAPIDOS, EJEMPLO_EXPLICADOR, IMPUESTOS_NOTA, MAX_OFERTAS,
-  leerNumero, redondear, numero, euros, porcentaje, valorCampo, anios, fechaCorta,
-  validarEntradas, mensajeError, capitalInicial, calcular, resumen, pasos, notaImpuestos, barras,
-  leerPorcentajePublicado, nombreCorto, ofertasConRentabilidad, textoOferta, notaOferta, tituloExplicador,
+  leerNumero, redondear, numero, euros, eurosAprox, porcentaje, valorCampo, anios, fechaCorta,
+  validarEntradas, mensajeError, capitalInicial, calcular, resumen, pasos, notaImpuestos, resumenAfinar, barras, descripcionBarras,
+  leerPorcentajePublicado, nombreCorto, ofertasConRentabilidad, textoOferta, etiquetaOferta, notaOferta, tituloExplicador,
 };
 
 window.RWAdarCalculadoraModelo=module.exports; })();

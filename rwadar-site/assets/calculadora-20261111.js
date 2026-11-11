@@ -2,7 +2,7 @@
 /* =====================================================================
    RWAdar · «Calcula tus números» en Inicio (11/11/2026)
    ---------------------------------------------------------------------
-   Encargo de Víctor: «hazle su propia sección en Inicio para que la gente
+   El encargo: «hazle su propia sección en Inicio para que la gente
    calcule sus números, y que pongan ellos los números, no que sea sí o sí
    los 300.000». Pinta [data-calculadora="inicio"]:
    - campos de escritura libre (lo que inviertes, la rentabilidad y los
@@ -81,7 +81,7 @@
     s.append(svg('line', { class: 'ci-base', x1: 0, x2: ancho, y1: g.yBase.toFixed(2), y2: g.yBase.toFixed(2) }));
     const ultima = g.barras[g.barras.length - 1];
     const valor = svg('text', { class: 'ci-eje ci-eje-valor', x: Math.min(ancho, ultima.x + ultima.ancho).toFixed(2), y: Math.max(12, ultima.y - 6).toFixed(2), 'text-anchor': 'end' });
-    valor.textContent = modelo.euros(ultima.valor, idioma());
+    valor.textContent = modelo.eurosAprox(ultima.valor, idioma());
     s.append(valor);
     for (const n of g.etiquetas) {
       const b = g.barras[n - 1];
@@ -122,18 +122,6 @@
     nota.setAttribute('translate', 'no');
   }
 
-  /* «Ahora: impuestos del 19 %, sin comisiones», junto a «Afinar». */
-  function resumenAfinar(v) {
-    const p = x => modelo.porcentaje(x, idioma(), x % 1 ? 2 : 0), partes = [];
-    if (v.comisionAnual > 0) partes.push((idioma() === 'en' ? 'annual fee ' : 'comisión anual ') + p(v.comisionAnual));
-    if (v.comisionEntrada > 0) partes.push((idioma() === 'en' ? 'entry fee ' : 'entrada ') + p(v.comisionEntrada));
-    if (!(v.comisionAnual > 0) && !(v.comisionEntrada > 0)) partes.push(idioma() === 'en' ? 'no fees' : 'sin comisiones');
-    partes.push(v.impuestos > 0 ? (idioma() === 'en' ? 'tax ' : 'impuestos ') + p(v.impuestos) : (idioma() === 'en' ? 'no tax' : 'sin impuestos'));
-    if (v.valorActivo != null) partes.push((idioma() === 'en' ? 'asset ' : 'activo ') + modelo.euros(v.valorActivo, idioma()));
-    if (v.precioParticipacion != null) partes.push((idioma() === 'en' ? 'unit ' : 'participación ') + modelo.euros(v.precioParticipacion, idioma()));
-    return partes.join(' · ');
-  }
-
   function pintar() {
     if (!raiz) return;
     clearTimeout(reloj); reloj = null;
@@ -148,7 +136,7 @@
     detalle.textContent = r.detalle; detalle.setAttribute('translate', 'no'); detalle.hidden = !r.detalle;
     $('ciGraf').hidden = !res; $('ciCuenta').hidden = !res;
     const ahora = $('ciAfinarAhora');
-    if (valido.ok) { ahora.textContent = resumenAfinar(valido.valores); ahora.setAttribute('translate', 'no'); }
+    if (valido.ok) { ahora.textContent = modelo.resumenAfinar(valido.valores, idioma()); ahora.setAttribute('translate', 'no'); }
     if (res) { grafico(res); pasos(res); }
     ultimo = res;
     // La oferta elegida sigue marcada solo mientras su rentabilidad siga escrita.
@@ -186,9 +174,7 @@
       const pct = modelo.porcentaje(of.rentabilidad, idioma(), 2), fecha = modelo.fechaCorta(of.fecha, idioma());
       b.append(el('span', 'ci-chip-nom', of.nombre), el('span', 'ci-chip-pct', pct), el('span', 'ci-chip-fecha', fecha));
       if (of.enDolares) b.append(el('span', 'ci-chip-usd', t('en dólares')));
-      b.setAttribute('aria-label', idioma() === 'en'
-        ? `Use ${pct} from ${of.nombre}, published on ${fecha}${of.enDolares ? ', in US dollars' : ''}`
-        : `Usar el ${pct} de ${of.nombre}, publicada el ${fecha}${of.enDolares ? ', en dólares' : ''}`);
+      b.setAttribute('aria-label', modelo.etiquetaOferta(of, idioma()));
       const a = el('a', 'ci-ficha', t('Ficha'));
       a.href = of.ficha; a.dataset.perfilOferta = of.slug;
       a.setAttribute('aria-label', (idioma() === 'en' ? 'Page for ' : 'Ficha de ') + of.nombre);
@@ -228,6 +214,13 @@
     huellaOfertas = ''; pintarRapidos();
     if (crudo) recibirOfertas(crudo.lista, crudo.sinCifras); else pintarOfertas();
     pintar();
+  }
+
+  function suscribirIdioma() {
+    if (suscrito || !raiz || !globalThis.RWAdarIdioma?.suscribirIdioma) return;
+    suscrito = true;
+    globalThis.RWAdarIdioma.suscribirIdioma(cambiarIdioma);
+    if (idioma() === 'en') cambiarIdioma();
   }
 
   function iniciar() {
@@ -277,8 +270,13 @@
       const ancho = Math.round($('ciGrafLienzo').clientWidth || 0);
       if (ultimo && ancho && Math.abs(ancho - anchoGrafico) > 1) grafico(ultimo);
     }, { passive: true });
-    if (!suscrito && globalThis.RWAdarIdioma?.suscribirIdioma) { suscrito = true; globalThis.RWAdarIdioma.suscribirIdioma(cambiarIdioma); }
-    if (idioma() === 'en') cambiarIdioma();
+    // El idioma (idioma-20261022.js) se carga después de este script: la
+    // suscripción espera a que esté (DOMContentLoaded llega tras los defer).
+    suscribirIdioma();
+    if (!suscrito) {
+      document.addEventListener('DOMContentLoaded', suscribirIdioma, { once: true });
+      window.addEventListener('load', suscribirIdioma, { once: true });
+    }
     if (crudo) recibirOfertas(crudo.lista, crudo.sinCifras);
     pintar();
     // El gráfico se mide cuando Inicio ya tiene ancho (en el móvil es una pestaña).

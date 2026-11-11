@@ -1021,7 +1021,7 @@ document.getElementById('exPrimeraLeccion')?.addEventListener('click',event=>{
   pon('tMes',M.euros(tuyo/12,L,2));
   const unid=x=>L==='en'?(x===1?' unit':' units'):(x===1?' trozo':' trozos');
   linea('c1op',L==='en'?['You invest ',eur(e),' and each unit costs ',eur(p)]:['Pones ',eur(e),' y cada trozo cuesta ',eur(p)]);
-  pon('c1b',num(n)+unid(n)+(res.sobra>0.005?(L==='en'?' (€'+M.numero(res.sobra,L,0)+' left over)':' (sobran '+eur(res.sobra)+')'):''));
+  pon('c1b',num(n)+unid(n)+(res.sobra>0.005?(L==='en'?' ('+eur(res.sobra)+' left over)':' (sobran '+eur(res.sobra)+')'):''));
   linea('c2op',L==='en'?['You hold ',num(n),' of the property’s ',(exacto?'':'about ')+trozos,' units']:['Tienes ',num(n),' de los ',(exacto?'':'unos ')+trozos,' trozos del local']);
   pon('c2b',L==='en'?'You hold '+pct(parte,2):pct(parte,2)+' es tuyo');
   linea('c3op',L==='en'?['The property earns ',pct(r,1),' on '+eur(V)]:['El local renta un ',pct(r,1),' sobre '+eur(V)]);
@@ -1046,20 +1046,30 @@ document.getElementById('exPrimeraLeccion')?.addEventListener('click',event=>{
  });
  /* «Calcula con tus números →»: lleva al bloque de Inicio. Dentro de la app
     (el explicador va en un WebView), solo si la app sabe abrirlo: la app
-    nueva lo avisa poniendo data-rwadar-calculadora-app en <html>. */
+    nueva lo avisa con window.RWAdarCalculadoraApp (o data-rwadar-calculadora-app
+    en <html>) antes de cargar la página, y otra vez al terminar de cargarla. */
  const ir=$('calcIrInicio');
  if(ir){
-  if(window.ReactNativeWebView&&!document.documentElement.hasAttribute('data-rwadar-calculadora-app'))ir.hidden=true;
+  const appSabe=()=>window.RWAdarCalculadoraApp===true||document.documentElement.hasAttribute('data-rwadar-calculadora-app');
+  if(window.ReactNativeWebView&&!appSabe()){ir.hidden=true;window.addEventListener('load',()=>{if(appSabe())ir.hidden=false;},{once:true});}
   ir.addEventListener('click',ev=>{
    if(window.ReactNativeWebView){ev.preventDefault();window.ReactNativeWebView.postMessage('rwadar:tutorial-calculadora');return;}
    const destino=$('calculadora');if(!destino)return;
    ev.preventDefault();
-   /* En el móvil, Inicio es una pestaña: primero se vuelve a ella. */
-   if(typeof Movil!=='undefined'&&Movil.cambiar){try{Movil.cambiar('inicio',{arriba:false});}catch(e){}}
-   requestAnimationFrame(()=>requestAnimationFrame(()=>{
+   let hecho=false;
+   const llevar=()=>{if(hecho)return;hecho=true;requestAnimationFrame(()=>requestAnimationFrame(()=>{
     destino.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
     const campo=$('ciInversion');if(campo)campo.focus({preventScroll:true});
-   }));
+   }));};
+   /* En el móvil, Inicio es una pestaña y el explicador va dentro de Academy:
+      al cerrarla, la web vuelve arriba (y atrás en el historial). Se baja al
+      bloque cuando eso ha terminado. */
+   const movil=typeof Movil!=='undefined'&&Movil.cambiar&&document.documentElement.classList.contains('movil-ui');
+   if(movil){
+    window.addEventListener('popstate',()=>setTimeout(llevar,80),{once:true});
+    try{Movil.cambiar('inicio',{arriba:false});}catch(e){}
+    setTimeout(llevar,450);
+   }else llevar();
   });
  }
  try{if(window.RWAdarIdioma&&RWAdarIdioma.suscribirIdioma)RWAdarIdioma.suscribirIdioma(()=>{

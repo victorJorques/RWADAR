@@ -2041,6 +2041,14 @@
   "Precio de cada trozo": "Price of each unit",
   "Calcula con tus números": "Work it out with your numbers",
   "Calcula tus números: lo que cobrarías o tendrías con lo que escribas.": "Work out your numbers: what you would receive or have with the figures you enter.",
+  // Las etiquetas accesibles de los campos de la calculadora en la app (11/11/2026).
+  "Lo que inviertes, en euros": "What you invest, in euros",
+  "Rentabilidad al año, en porcentaje": "Annual return, as a percentage",
+  "Comisión anual, en porcentaje": "Annual fee, as a percentage",
+  "Comisión de entrada, en porcentaje": "Entry fee, as a percentage",
+  "Impuestos sobre la ganancia, en porcentaje": "Tax on the gain, as a percentage",
+  "Valor del activo entero, en euros, opcional": "Value of the whole asset, in euros, optional",
+  "Precio de cada participación, en euros, opcional": "Price of each unit, in euros, optional",
 };
 if(typeof module==='object'&&module.exports)module.exports=Object.freeze(diccionario);else raiz.RWAdarEnglish=Object.freeze(diccionario);
 })(typeof globalThis==='object'?globalThis:this);

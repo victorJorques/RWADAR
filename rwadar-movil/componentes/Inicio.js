@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Modal, RefreshControl, StyleSheet, useWindowDimensions } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
@@ -9,6 +9,7 @@ import RecienAnadidas from './RecienAnadidas';
 import { MercadoCotizacion, MercadoPantalla } from './MercadoBolsa';
 import NoticiasSector from './NoticiasSector';
 import AprendeInicio, { enlaceCorto } from './AprendeInicio';
+import CalculadoraInicio, { ResultadoFlotante } from './CalculadoraInicio';
 import { ofertasDestacadas, recienAnadidas } from '../lib/recien-anadidas';
 import { textosInicio } from '../lib/inicio-contenido';
 import { cifrasInicio } from '../lib/inicio-cifras';
@@ -33,9 +34,11 @@ export { enlaceCorto };
       un minigráfico del mes), las 3 noticias principales, compactas, y «Ver
       mercado y noticias →», que abre su pantalla: el gráfico con sus
       pestañas y, debajo, todas las noticias con su detalle (MercadoBolsa).
-   4. Aprende: una tarjeta que abre la pantalla con los seis capítulos
+   4. Calcula tus números (11/11/2026): la calculadora, con sus campos y su
+      resultado arriba (CalculadoraInicio). El explicador lleva hasta aquí.
+   5. Aprende: una tarjeta que abre la pantalla con los seis capítulos
       (AprendeInicio), tal como estaban, con sus fuentes y la nota legal.
-   5. Pie: una línea legal y «Nota legal completa →».
+   6. Pie: una línea legal y «Nota legal completa →».
    Las pantallas se abren encima de Inicio, como las fichas (un Modal a
    pantalla completa; el botón atrás de Android vuelve a Inicio). Las
    novedades de RWAdar salen de Inicio: están en Perfil (y en /cambios).
@@ -65,7 +68,7 @@ function PantallaInicio({ visible, titulo, volver, onCerrar, children }) {
 export default function Inicio({
   refrescando, onActualizar, onDestino, onExplicar, fuera = [], cambios = [], renderCambio,
   plataformas = [], ofertas = [], fechaCatalogo = null, onAbrirPlataforma, onAbrirOferta, onAbrirEnlace,
-  tarjetaAvisos = null,
+  tarjetaAvisos = null, irCalculadora = 0, onCalculadoraVista,
 }) {
   const idioma = useIdioma();
   const t = textosInicio(idioma);
@@ -92,6 +95,19 @@ export default function Inicio({
   // Desde una pantalla a otra parte de la app: primero se cierra la pantalla.
   const ir = (destino, url) => { setSeccion(null); onDestino?.(destino, url); };
 
+  // «Calcula tus números»: Inicio sube hasta el resultado al escribir y, en
+  // «Afinar», lo enseña arriba en pequeño (que el teclado no lo tape).
+  const lista = useRef(null);
+  const calculadoraY = useRef(0);
+  const [calculoFlotante, setCalculoFlotante] = useState(null);
+  const subir = (y) => lista.current?.scrollTo?.({ y: Math.max(0, calculadoraY.current + y), animated: true });
+  // «Calcula con tus números →» del explicador trae hasta la calculadora (una vez).
+  useEffect(() => {
+    if (!irCalculadora) return undefined;
+    const reloj = setTimeout(() => { subir(-8); onCalculadoraVista?.(); }, 350);
+    return () => clearTimeout(reloj);
+  }, [irCalculadora]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const portadaY = useRef(null);
   const accion = useRef(null);
   const calcularFin = () => {
@@ -111,6 +127,7 @@ export default function Inicio({
     <>
     <ScrollView
       onLayout={(ev) => setAltoVisible(Math.round(ev.nativeEvent.layout.height))}
+      ref={lista} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag" automaticallyAdjustKeyboardInsets
       contentContainerStyle={e.cuerpo}
       refreshControl={<RefreshControl refreshing={refrescando} onRefresh={onActualizar} tintColor={C.senal} />}
     >
@@ -169,7 +186,13 @@ export default function Inicio({
         </Pressable>
       </View>
 
-      {/* 4 · Aprende: una sola tarjeta. */}
+      {/* 4 · Calcula tus números: que cada cual ponga sus números. */}
+      <View style={e.bloque} onLayout={(ev) => { calculadoraY.current = ev.nativeEvent.layout.y; }}>
+        <CalculadoraInicio ofertas={ofertas} catalogoVigente={cifras.vigente} onAbrirOferta={onAbrirOferta}
+          onDesplazar={(y) => subir(32 + y)} onFlotante={setCalculoFlotante} />
+      </View>
+
+      {/* 5 · Aprende: una sola tarjeta. */}
       <View style={e.bloque}>
         <Text noTraducir style={e.bloqueTit} accessibilityRole="header">{b.aprende.titulo}</Text>
         <Pressable onPress={() => { tacto.abrir(); abrir('aprende'); }} style={({ pressed }) => [e.aprende, pressed && e.aprendePulsada]}
@@ -187,7 +210,7 @@ export default function Inicio({
         </Pressable>
       </View>
 
-      {/* 5 · Pie: una línea legal y la nota completa (en «Aprende»). */}
+      {/* 6 · Pie: una línea legal y la nota completa (en «Aprende»). */}
       <View style={e.pie}>
         <Text noTraducir style={e.pieTxt}>{b.pie}</Text>
         <Pressable onPress={() => { tacto.eleccion(); abrir('aprende', { legal: true }); }} style={({ pressed }) => [e.ver, pressed && pulsado('b3')]}
@@ -196,6 +219,7 @@ export default function Inicio({
         </Pressable>
       </View>
     </ScrollView>
+    <ResultadoFlotante estado={calculoFlotante} />
 
     <PantallaInicio visible={seccion === 'mercado'} titulo={b.mercado.titulo} volver={b.volver} onCerrar={cerrar}>
       <ScrollView contentContainerStyle={e.pantallaCuerpo}>

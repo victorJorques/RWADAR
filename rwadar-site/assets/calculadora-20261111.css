@@ -142,6 +142,8 @@
 
 /* ---- Tableta y escritorio: los datos a la izquierda, el resultado a la derecha ---- */
 @media (min-width:768px){
+  /* «Calcula con tus números →» y /#calculadora: el bloque, bajo la cabecera fija. */
+  .calc-ini{scroll-margin-top:calc(var(--rel-arriba,68px) + 12px)}
   /* La segunda fila es flexible: el alto de los datos no separa el resultado del gráfico. */
   .ci-caja{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);grid-template-rows:auto 1fr;grid-template-areas:"datos resultado" "datos extra";align-items:start;gap:16px 24px;margin-top:24px}
   .ci-resultado{grid-area:resultado;padding:24px}
