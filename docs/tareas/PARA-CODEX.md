@@ -6,6 +6,53 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 11 de noviembre de 2026 (5) · Claude · ciclo del 11/11 completo: catálogo aplicado, «Mercado y noticias», calculadora y guía de acceso
+
+Víctor pidió el 11/11:
+- actualizar ofertas, gráfico y noticias;
+- el gráfico al estilo de una app de bolsa, con las noticias juntas;
+- «nivel ultra elevado»;
+- la calculadora con sección propia en Inicio, con los números de cada uno;
+- «Apáñate para entrar en las páginas y apps que no deja»;
+- «Los datos del gráfico que sean reales».
+
+Informe: [`docs/INVESTIGACION-CATALOGO-2026-11-11.md`](../INVESTIGACION-CATALOGO-2026-11-11.md).
+
+- **Catálogo:**
+  - PR #100, unida con squash.
+  - «Aplicar catálogo» n.º 16, correcto.
+  - Publicada la revisión `24b5f7de-2834-3e15-6ae4-62a6d9565161` (25/22,
+    8/13/1), vigente hasta el 18/11/2026.
+  - `aplicar-y-aprobar.sql`: SHA-256 `dfeba195…a3cb`.
+  - Revisiones: tres expertos (SQL aprobado; contenido y cumplimiento con
+    cambios fuera del SQL, C1 y O1) y auditor final «conforme».
+  - Lectura como visitante tras aplicar: `lectura-despues-de-aplicar/`.
+- **Búsqueda profunda:** arttrade y winvesta (agentes de Effecta), no
+  admitidas. Hoy no hay altas.
+- **PR2:** sincronización tras aplicar, más las ramas locales `mercado-bolsa`
+  y `calculadora`, unidas en `integracion-1111` y luego en esta rama. Las dos
+  pasaron revisión, segunda ronda de calidad y verificación independiente.
+- **Guía de acceso:** `.claude/skills/investigacion-catalogo/acceso/`, con
+  `ACCESO-FUENTES.md` y `comprobar-rutas.mjs` (76 rutas verificadas por
+  escépticos; el bruto, fuera de Git).
+  - Límite firme: no se elude ningún control anti-bots. El sistema de
+    seguridad bloqueó un intento con Midas y no se repitió.
+- **Límite de uso de 5 horas:** a las 10:45 UTC cortó todos los equipos. Se
+  retomó a las 14:16, comprobado antes de decir nada.
+- **Pendiente para el 12/11:**
+  - rentabilidad de mTBILL, ≈ 3,5 % (30 d, oráculo);
+  - aviso de Brickwise sobre compra parcial y comisión del 1,5 %;
+  - motivo de Crypto.com;
+  - radar de Midas;
+  - pistas mAPOLLO y mHYPER;
+  - (R9) por qué `/api/tokenizacion` de producción sirve la foto guardada y no
+    el dato en vivo;
+  - lanzar «Tokenización diaria» si la rama `datos-tokenizacion` no tiene aún
+    la serie.
+- **Ramas:** los nombres de personas que se recortaron hoy siguen en la
+  historia de `claude/sharp-babbage-m3bbbw` en GitHub, no en `main`. Si se
+  quiere limpiar, borrar esa rama remota con permiso de Víctor.
+
 ## 11 de noviembre de 2026 (4) · Claude · «Mercado y noticias»: lo que dejaron los verificadores independientes, sin publicar
 
 Cuarto commit **local** en `mercado-bolsa`. Sin push, sin publicar, sin flujos, sin Supabase y sin claves.
@@ -108,7 +155,7 @@ Encargo de Víctor (con una captura de una app de bolsa): «mejora la sección d
 **Pruebas**: `npm test` de la raíz y el guardián `comprobar-ota-compatible.cjs --base fa30779…` (`ok`). Nuevas o rehechas: `rwadar-movil/tests/tokenizacion.test.cjs` (serie, pestañas, eje, tramos, lectura remota, pantalla, gráfico, cotización), `noticias-sector.test.cjs`, `inicio-historia.test.cjs`, `.github/tokenizacion.test.mjs` (serie diaria y flujo), `rwadar-acceso/tokenizacion.test.mjs` y `noticias-sector.test.mjs` (Chromium a 390 y 1366), `probar-web.mjs` y `rwadar-app/probar-web-escritorio.mjs`.
 
 **Pendiente (Víctor)**: revisar y, si le gusta, publicar web y OTA (primero la web: ver la entrada de arriba). Tras unir a main, lanzar a mano una vez «Tokenización diaria» para que la rama `datos-tokenizacion` tenga ya la serie (si no, se publica la semilla de hoy). Las capturas de la app son de una vista previa con react-native-web (sin las fuentes ni las fotos de la app).
-## 11 de noviembre de 2026 (1) · Claude · ciclo del 11/11 parado por el límite semanal de uso
+## 11 de noviembre de 2026 (1) · Claude · ciclo del 11/11 parado por el límite semanal de uso (SUPERADO: Víctor restableció el límite y el ciclo se completó el mismo día; ver la entrada (5))
 
 Víctor pidió el 11/11: «Actualiza las ofertas y el gráfico y las noticias, y mejora aún más las noticias y el gráfico». Quiere el gráfico al estilo de una app de bolsa, con pestañas 1 S · 1 M · 3 M · 6 M · YTD · 1 A, y las noticias junto al gráfico.
 
