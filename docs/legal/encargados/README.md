@@ -3,10 +3,12 @@
 **Fecha:** 06/11/2026. **Al día:** 12/11/2026 (el buzón de RWAdar pasa a
 ser el Gmail rwadares@gmail.com, sin contrato de encargo; Proton Mail queda
 como histórico; con la migración 32, las notificaciones de la web: GitHub
-las envía y las entregan los servicios de push de los navegadores; y el
+las envía y las entregan los servicios de push de los navegadores; el
 [anexo legal de las notificaciones](../ANEXO-NOTIFICACIONES-2026-11-12.md):
 esos servicios no son encargados, su DPF comprobado y GitHub como condición
-para enviar a todos). El 07/11/2026 se comprobaron Netlify y Proton Mail, y
+para enviar a todos; y, con la migración 33, el envío pasa a Supabase y
+Cloudflare, ya encargados con contrato, y GitHub solo envía la prueba de
+administración). El 07/11/2026 se comprobaron Netlify y Proton Mail, y
 Apple (app nativa) no aplica.
 **Quién lo hace:** Claude (IA), a petición de Víctor Manuel Jorques Granero,
 titular de RWAdar. No es el dictamen de un abogado.
@@ -43,11 +45,11 @@ apartado 3) resume esto mismo y enlaza aquí.
 
 | Proveedor | Qué hace en RWAdar | ¿Hay contrato de encargo? | Datos fuera de la UE |
 |---|---|---|---|
-| **Supabase** | Base de datos y cuentas | Sí, dentro de sus condiciones. Nada que firmar | Cláusulas tipo (SCC), módulo 2 |
-| **Cloudflare** | Web, sesión, analítica | Sí, dentro de su acuerdo de autoservicio. Nada que firmar | Marco UE-EE. UU. (DPF) y SCC |
+| **Supabase** | Base de datos y cuentas; con la 33, pide cada notificación de la web | Sí, dentro de sus condiciones. Nada que firmar | Cláusulas tipo (SCC), módulo 2 |
+| **Cloudflare** | Web, sesión, analítica; con la 33, cifra y entrega cada notificación de la web | Sí, dentro de su acuerdo de autoservicio. Nada que firmar | Marco UE-EE. UU. (DPF) y SCC |
 | **Google Firebase** | Notificaciones en Android (desde la 1.4.2; los avisos siguen apagados) | Sí: condiciones aceptadas en la consola el 06/11/2026 (proyecto `rwadar-14e3d`) | DPF y SCC |
 | **Expo** | Actualizaciones de la app y push | Sí, en sus términos (§3.2). No hay contrato aparte | SCC módulo 2, y DPF «en revisión» |
-| **GitHub** | Código, flujos, copias, descargas del APK y, con la 32, el envío de las notificaciones de la web | **No. Es un hueco** | DPF |
+| **GitHub** | Código, flujos, copias, descargas del APK y la prueba de las notificaciones de la web a las cuentas de administración (con la 32 enviaba a todos; con la 33, ya no) | **No. Es un hueco** | DPF |
 | **Lettermint** | Todos los correos de RWAdar (pendiente) | Sí, al crear la cuenta (pendiente) | No salen: todo en la UE |
 | **Netlify** | Página de limpieza en `rwadar.netlify.app` | Sí, dentro de su acuerdo de autoservicio. Nada que firmar | DPF y, si cae, SCC módulo 2 |
 | **Google (Gmail)** | Desde el 12/11/2026, el buzón rwadares@gmail.com. También envía hoy los correos de Auth | **No. Es un hueco:** cuenta de consumo ([abajo](#fuera-de-esta-carpeta-gmail)) | Sin garantías documentadas para este uso (**verificar**) |
@@ -61,7 +63,7 @@ apartado 3) resume esto mismo y enlaza aquí.
 
 | | |
 |---|---|
-| **Qué hace** | Base de datos y autenticación: cuentas, lista de seguimiento, cartera y avisos. El proyecto está en Irlanda (`eu-west-1`). |
+| **Qué hace** | Base de datos y autenticación: cuentas, lista de seguimiento, cartera y avisos. El proyecto está en Irlanda (`eu-west-1`). Con la migración 33 (sin aplicar el 12/11/2026), guarda las suscripciones de las notificaciones de la web y pide cada envío al servidor de la web (pg_net), con la clave privada VAPID de su Vault en una cabecera. |
 | **Quién firma** | Supabase Pte. Ltd., 65 Chulia Street #38-02/03, OCBC Centre, Singapur 049513 (condiciones, §1.j; solo sería Supabase, Inc. si se comprara por AWS Marketplace). |
 | **Contrato** | Data Processing Addendum: https://supabase.com/legal/customer-resources/data-processing-addendum |
 | **Versión** | «Version 1 — August 1, 2026» (01/08/2026). |
@@ -74,7 +76,7 @@ apartado 3) resume esto mismo y enlaza aquí.
 
 | | |
 |---|---|
-| **Qué hace** | Aloja la web (Pages) y el servidor web que gestiona la sesión. También la red de entrega, la seguridad y la analítica sin cookies. |
+| **Qué hace** | Aloja la web (Pages) y el servidor web que gestiona la sesión. También la red de entrega, la seguridad y la analítica sin cookies. Con la migración 33 y la web que la acompaña (sin publicar el 12/11/2026), el servidor web cifra, firma y entrega cada notificación de la web (`/api/interno/webpush`): recibe de Supabase la dirección de entrega y las dos claves del navegador y el texto del aviso, no los guarda ni los escribe en registros, y solo entrega a los servicios de push de la regla de la base. |
 | **Quién firma** | Cloudflare, Inc. (EE. UU.). |
 | **Contrato** | Customer DPA: https://www.cloudflare.com/cloudflare-customer-dpa/ |
 | **Versión** | «Version 6.4, effective April 3, 2026» (03/04/2026). |
@@ -118,7 +120,7 @@ apartado 3) resume esto mismo y enlaza aquí.
 | **Quién** | GitHub, Inc. (EE. UU.) o GitHub B.V. (Países Bajos). |
 | **Contrato que existe** | GitHub Data Protection Agreement: https://github.com/customer-terms/github-data-protection-agreement («Version: October 2025»). |
 | **Cómo vincula** | **En nuestra cuenta, no vincula.** El DPA dice que «forms part of the GitHub Customer Agreement», y llama «Online Services» a lo que GitHub presta «under a written and executed agreement». La cuenta de RWAdar es personal y gratuita: se rige por los términos generales de GitHub, no por el Customer Agreement. Para esas cuentas, la privacidad de GitHub dice que trata los datos «as the "Data Controller"», es decir, como responsable y no como encargado. |
-| **Por qué es un hueco real** | Las copias y los flujos de la base se ejecutan en máquinas de GitHub. Allí la copia está **en claro** unos minutos, antes de cifrarse, y los flujos de la base leen y escriben datos de las cuentas. Con la 32, el envío de las notificaciones de la web tiene allí, en claro y mientras dura, la dirección de entrega y las claves de cada navegador, el texto de cada aviso y la clave privada VAPID (que sale de Vault y se enmascara). Eso es tratar datos de usuarios por cuenta de RWAdar sin el contrato del art. 28.3. Las copias guardadas van cifradas, pero la contraseña (`COPIA_CLAVE`) también es un secreto de GitHub: GitHub guarda a la vez la copia y su llave. **Condición del anexo legal del 12/11/2026 (C3):** antes de encender el envío de la web para todos (`activar-push`), firmar el contrato (abajo) o ejecutar el envío de la web en un proveedor que ya tenga contrato de encargo (Supabase o Cloudflare). Hoy solo envía la prueba, a las cuentas de administración. |
+| **Por qué es un hueco real** | Las copias y los flujos de la base se ejecutan en máquinas de GitHub. Allí la copia está **en claro** unos minutos, antes de cifrarse, y los flujos de la base leen y escriben datos de las cuentas. Con la 32, el envío de las notificaciones de la web tenía allí, en claro y mientras duraba, la dirección de entrega y las claves de cada navegador, el texto de cada aviso y la clave privada VAPID (que sale de Vault y se enmascara). Eso es tratar datos de usuarios por cuenta de RWAdar sin el contrato del art. 28.3. Las copias guardadas van cifradas, pero la contraseña (`COPIA_CLAVE`) también es un secreto de GitHub: GitHub guarda a la vez la copia y su llave. **Condición del anexo legal del 12/11/2026 (C3):** antes de encender el envío de la web para todos (`activar-push`), firmar el contrato (abajo) o ejecutar el envío de la web en un proveedor que ya tenga contrato de encargo (Supabase o Cloudflare). **Hecha en el código con la migración 33** (12/11, tarde): envían Supabase y Cloudflare, «Avisar novedad» ya no llama a GitHub y la acción «enviar» se retiró; GitHub solo envía la prueba a las cuentas de administración (datos del titular) y las copias ya no llevan las suscripciones de la web. Se cumple al publicar la web y aplicar la 33. El resto del hueco (copias y flujos de la base) sigue. |
 | **Transferencias** | GitHub está en el DPF como «Active» (participante 6174; consultas del 06/11 y del 12/11/2026). Pero el DPF solo cubre el viaje de los datos: no sustituye al contrato de encargo. |
 | **Subencargados** | Solo con el DPA: https://github.com/github-subprocessors-list |
 | **PDF** | [`2026-11-06-github-dpa.pdf`](2026-11-06-github-dpa.pdf) y [`2026-11-06-github-declaracion-privacidad.pdf`](2026-11-06-github-declaracion-privacidad.pdf) |
@@ -248,7 +250,7 @@ va en la sección siguiente.
 | | |
 |---|---|
 | **Qué hacen** | Con la migración 32 (aplicada el 12/11/2026), entregan las notificaciones de la web a los móviles y tabletas que las activan: Apple (`web.push.apple.com`, Safari y las webs de la pantalla de inicio del iPhone y el iPad), Google (`fcm.googleapis.com`, Chrome y la mayoría de navegadores de Android), Mozilla (`updates.push.services.mozilla.com`, Firefox; en Android puede reenviarlas por FCM de Google) y Microsoft (`*.notify.windows.com`, Edge). |
-| **Qué reciben** | La dirección de entrega del navegador (la que les asignó ese mismo servicio), la hora y el tamaño de cada envío (con `TTL` de un día y `Urgency: high`), los datos técnicos de la conexión (la IP es la de la máquina de GitHub que envía) y cada notificación cifrada de extremo a extremo con las claves del navegador (RFC 8291), que no pueden leer. Nunca el correo. |
+| **Qué reciben** | La dirección de entrega del navegador (la que les asignó ese mismo servicio), la hora y el tamaño de cada envío (con `TTL` de un día y `Urgency: high`), los datos técnicos de la conexión (con la 33, la IP es la de Cloudflare, que entrega; en la prueba de administración, la de la máquina de GitHub) y cada notificación cifrada de extremo a extremo con las claves del navegador (RFC 8291), que no pueden leer. Nunca el correo. |
 | **Quién los elige** | El navegador de cada persona, no RWAdar: no hay cuenta ni contrato de RWAdar con ellos para esto (las notificaciones se firman con la clave VAPID propia de RWAdar). |
 | **Contrato de encargo** | **No hace falta: no son encargados de RWAdar** [INTERPRETABLE] ([anexo](../ANEXO-NOTIFICACIONES-2026-11-12.md), 1.2). Los elige el navegador, cada empresa los presta con sus propias condiciones y deciden cómo (dónde guardan, cuánto, reenvíos), como el proveedor de correo de cada persona. Es la práctica que describe Microsoft en su declaración de privacidad: la empresa del servicio de notificaciones del dispositivo usa los datos «de acuerdo con su propios términos». Sí hay que informar de ellos: privacidad §§ 6 y 8. |
 | **Transferencias** | Lista oficial del DPF, 12/11/2026 (16:03 y 16:17 UTC): **Google LLC** (5780) y **Microsoft Corporation** (6474), «Active»; **Apple** y **Mozilla**, ningún resultado, activos o no. En el EEE responden, según sus políticas, Google Ireland Limited, Microsoft Ireland Operations Limited y Apple Distribution International Limited (Irlanda; Apple saca los datos del EEE con cláusulas tipo; **verificar** que esto vale para su push web). Mozilla Corporation está en EE. UU. y usa cláusulas tipo «where applicable». El anexo (1.3, corregido el mismo día) ve más probable que el envío sí sea una transferencia de RWAdar (su remitente envía a cada servicio el aviso y su hora), aunque hay una lectura defendible de que no, y deja Mozilla como **riesgo residual bajo aceptado a sabiendas**, a la vista en la privacidad (§8), con la salida de dejar de ofrecerlas en Firefox si Víctor lo prefiere. |
@@ -309,7 +311,9 @@ queda como histórico desde el 12/11/2026.
    práctico es bajo (repositorio privado, GitHub en el DPF), pero el hueco
    existe. **Desde el anexo legal del 12/11/2026 es condición (C3) para
    encender el envío de la web para todos**, salvo que ese envío salga de
-   GitHub (Supabase o Cloudflare).
+   GitHub (Supabase o Cloudflare). **Eso ya está hecho en el código con la
+   migración 33**: falta publicar la web y aplicar la 33. GitHub Team sigue
+   haciendo falta para el resto del hueco (copias y flujos de la base).
 3. **Lettermint.** Crear la cuenta y el proyecto (paso 5 del
    [contrato de avisos](../../tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md)).
    Al crearla se acepta el contrato. Apuntar la fecha abajo. Usar como correo de

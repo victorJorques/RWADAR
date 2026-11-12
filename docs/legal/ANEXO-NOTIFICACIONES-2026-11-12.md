@@ -13,6 +13,13 @@ además valorar el «latido» de Firebase en la app de Android.
 **Cómo estaba hoy antes de este anexo:** migración 32 aplicada y clave VAPID
 creada; web n.º 71 y OTA n.º 23 publicadas; `push_habilitado = false`. Solo
 sale «Notificaciones web › prueba», a mano y a las cuentas de administración.
+**Actualizado el 12/11/2026 por la tarde (migración 33):** el envío de la web
+a todos deja de hacerse en GitHub. Lo pide la base de datos (Supabase, con pg_net) y lo
+cifra, firma y entrega el servidor de la web (Cloudflare,
+`/api/interno/webpush`); los dos ya son encargados con contrato. GitHub solo
+envía la prueba a las cuentas de administración (datos del propio titular) y
+las copias de cada noche ya no llevan las suscripciones. C3 queda **hecha en
+el código** (apartado 4) y se cumple al publicar la web y aplicar la 33.
 **Marcas:** [SEGURO] lo dice la norma o el documento citado; [INTERPRETABLE]
 hay más de una lectura razonable y se dice cuál se elige; **verificar** no se
 ha podido comprobar.
@@ -24,8 +31,8 @@ ha podido comprobar.
 **Sí, con condiciones.** Las notificaciones de la web y el push de Android se
 pueden encender cuando se cumplan las siete condiciones del apartado 4: la
 privacidad de este anexo publicada, una frase corta junto a cada botón (web y
-app; la de la app, en una OTA ya en uso), GitHub con contrato de encargo o el
-envío fuera de GitHub, la baja a la vista al abrir en la app una notificación
+app; la de la app, en una OTA ya en uso), el envío fuera de GitHub (hecho en
+el código con la migración 33: falta publicarlo), la baja a la vista al abrir en la app una notificación
 que no lleva a Inicio, y las pruebas reales en el iPhone del titular y en un
 Android físico. Si el interruptor sigue
 siendo uno solo (`activar-push` enciende a la vez la web y Android), hacen
@@ -57,7 +64,11 @@ En una línea por tema:
 
 Lo que sale de RWAdar en cada envío lo fija el remitente
 (`rwadar-app/enviar-webpush.mjs`) y la migración 32
-(`rwadar-app/db/32_notificaciones.sql`), leídos hoy:
+(`rwadar-app/db/32_notificaciones.sql`), leídos hoy. Desde la migración 33
+(`rwadar-app/db/33_webpush_supabase.sql`), el envío a todos lo hace el
+servidor de la web (`rwadar-acceso/webpush-servidor.mjs`) con el mismo
+cifrado, la misma firma y las mismas cabeceras; `enviar-webpush.mjs` queda
+para la prueba de administración:
 
 | Recibe | Qué es | ¿Dato personal para el servicio? |
 |---|---|---|
@@ -66,7 +77,7 @@ Lo que sale de RWAdar en cada envío lo fija el remitente
 | **El tamaño** del mensaje cifrado | La carga del aviso (su JSON) más 103 octetos fijos (relleno mínimo): deja adivinar la longitud del aviso, no su contenido | Muy poco: todos los suscritos reciben el mismo aviso |
 | **El mensaje cifrado de extremo a extremo** (RFC 8291) | `{v, titulo, texto, url, etiqueta}` cifrado con las claves del navegador. El servicio no tiene esas claves y no lo puede leer. La `url` es siempre `https://rwadar.pages.dev/?avisos=1` (con `#emisiones` si va al radar): sin datos de la persona ni marcas de seguimiento | No lo puede leer |
 | **La firma VAPID** (RFC 8292) | Un JWT con `aud` (el servicio), `exp` (12 horas) y `sub = mailto:rwadares@gmail.com`, y la clave pública de RWAdar | No es dato de la persona: identifica a RWAdar |
-| **La IP del remitente** | La de la máquina de GitHub Actions que envía, no la de la persona | No es dato de la persona |
+| **La IP del remitente** | Desde la 33, la de Cloudflare (el servidor de la web, que entrega); en la prueba de administración, la de la máquina de GitHub Actions. Nunca la de la persona | No es dato de la persona |
 
 **Lo que no recibe nunca:** el correo, el nombre, el identificador de la
 cuenta, el texto en claro ni las claves del navegador.
@@ -141,8 +152,8 @@ Hay dos lecturas razonables:
 
 **La lectura B es la más probable** (corrección del 12/11/2026, tras la
 revisión independiente). El ejemplo 1 del CEPD trata de datos que la propia
-persona entrega al destinatario; aquí es el remitente de RWAdar (en la máquina
-de GitHub) quien hace el envío a cada servicio con el aviso y su hora, unidos a
+persona entrega al destinatario; aquí es el remitente de RWAdar (desde la 33,
+el servidor de su web en Cloudflare, a petición de su base de datos) quien hace el envío a cada servicio con el aviso y su hora, unidos a
 la dirección de entrega: eso es el segundo criterio de las Directrices (el
 exportador transmite). La lectura A no es descabellada, pero su apoyo es débil.
 **Por eso se comprueba la B para cada servicio:**
@@ -204,23 +215,43 @@ registro.
   cuenta (la más antigua) y a los 180 días sin renovarse (reloj diario de
   limpieza). Los registros de envío, a los 90 días.
 
-### 1.5 GitHub, quien cifra y envía
+### 1.5 Quién cifra y envía: Supabase y Cloudflare (antes, GitHub)
 
-El remitente se ejecuta en máquinas de GitHub Actions (flujo «Notificaciones
-web»). Allí están en claro, mientras dura cada envío, la dirección de entrega y
-las dos claves de cada navegador, el texto del aviso y la clave privada VAPID.
-GitHub está en el DPF (n.º 6174, «Active» hoy a las 16:18 UTC), así que el
-viaje está cubierto. Lo que falta es el **contrato de encargo** (art. 28.3):
-con una cuenta personal gratuita, GitHub no aplica su DPA
-([encargados](encargados/README.md#github--hueco)).
+**Cómo era (migración 32).** El remitente se ejecutaba en máquinas de GitHub
+Actions (flujo «Notificaciones web»). Allí estaban en claro, mientras duraba
+cada envío, la dirección de entrega y las dos claves de cada navegador, el
+texto del aviso y la clave privada VAPID. GitHub está en el DPF (n.º 6174,
+«Active» hoy a las 16:18 UTC), así que el viaje estaba cubierto. Lo que faltaba
+es el **contrato de encargo** (art. 28.3): con una cuenta personal gratuita,
+GitHub no aplica su DPA ([encargados](encargados/README.md#github--hueco)).
+Encargar un tratamiento sin ese contrato es infracción grave (LOPDGDD, art.
+73.k). Por eso pasó de «recomendado» a **condición** (C3): firmar el contrato
+(GitHub Team, unos 4 $ al mes) o ejecutar el envío en un proveedor que ya lo
+tiene (Supabase o Cloudflare).
 
-El hueco ya existe para las copias de seguridad y los flujos de la base. Con
-el envío encendido se ampliaría a una actividad nueva y a todas las personas
-con notificaciones (hoy solo pasa con la prueba, que va a las cuentas de
-administración). Encargar un tratamiento sin ese contrato es infracción grave
-(LOPDGDD, art. 73.k). Por eso pasa de «recomendado» a **condición** (C3):
-firmar el contrato (GitHub Team, unos 4 $ al mes) o ejecutar el envío en un
-proveedor que ya lo tiene (Supabase o Cloudflare).
+**Cómo queda (migración 33, 12/11/2026 por la tarde; Víctor: «hazlo en
+Supabase mientras y ya haremos el cambio»).**
+
+- **Supabase** (encargado con DPA, en Irlanda) guarda las suscripciones y,
+  con el reloj de cada 5 minutos y el push encendido, pide cada envío con
+  pg_net al servidor de la web. La clave privada VAPID sale de su Vault solo
+  en una cabecera de esa petición.
+- **Cloudflare** (encargado con DPA, que ya aloja la web y sus sesiones)
+  recibe en `/api/interno/webpush` la dirección de entrega, las dos claves del
+  navegador y el texto del aviso; comprueba que quien llama tiene la clave de
+  RWAdar, lo cifra (RFC 8291), lo firma (RFC 8292) y lo entrega al servicio
+  de push. No lo guarda ni lo escribe en registros, y solo admite los cuatro
+  servicios de push de la regla de la base.
+- **GitHub** ya no envía a todos: «Avisar novedad» no lo llama y la acción
+  «enviar» se retiró. Solo queda la acción «prueba», a mano, que va a las
+  cuentas de administración: son datos del propio titular, no de terceros.
+  Las copias de cada noche ya no llevan las suscripciones ni sus envíos
+  (`copia-seguridad.sh`, sin filas en `suscripciones_web` y `envios_web`).
+
+**C3 queda hecha en el código.** Se cumple cuando estén publicadas la web con
+`/api/interno/webpush` y aplicada la 33 (los dos antes de `activar-push`). El
+hueco general de GitHub (las copias y los flujos de la base) sigue como estaba
+y se cierra con GitHub Team (decisión del 06/11).
 
 ### 1.6 Conclusión de la web
 
@@ -423,7 +454,8 @@ algún día se cambia, «en mi móvil o tableta» (R5).
 
 El texto común (`INFO_BASICA_ES`) dice «Proveedores: Supabase, Cloudflare y
 Google; para los avisos, Lettermint y Expo», sin los servicios de push de los
-navegadores ni GitHub. No bloquea: la suscripción no se recoge al activar el
+navegadores (GitHub ya no hace falta: desde la 33 no interviene en el envío).
+No bloquea: la suscripción no se recoge al activar el
 interruptor, sino al pulsar el botón de cada dispositivo, y junto a ese botón
 la web ya nombra a Apple, Google, Mozilla y Microsoft. Mejor completarlo en el
 próximo cambio de textos (R3).
@@ -438,7 +470,7 @@ próximo cambio de textos (R3).
 |---|---|---|---|---|
 | **C1** | **Privacidad publicada** con lo de este anexo (§5 y §8, en este commit). Mientras la publicada diga que la garantía «se comprobará», no se envía | Los dos | Publicar la web, con orden de Víctor | Hecho en el repositorio; falta publicar |
 | **C2** | **Frase de primera capa de la web** (2.4), con su inglés, publicada | Web | Publicar la web, con orden de Víctor | Hecho en el repositorio (12/11); falta publicar |
-| **C3** | **GitHub con contrato de encargo**: organización con GitHub Team y «GitHub Customer Agreement» firmado (incluye el DPA). **O bien** el envío de la web en un proveedor que ya lo tiene (Supabase o Cloudflare) | Web | Víctor (contrato) o código | Pendiente |
+| **C3** | **GitHub con contrato de encargo**: organización con GitHub Team y «GitHub Customer Agreement» firmado (incluye el DPA). **O bien** el envío de la web en un proveedor que ya lo tiene (Supabase o Cloudflare) | Web | Víctor (contrato) o código | **Hecha en el código** (12/11, tarde): migración 33 y `/api/interno/webpush`; envían Supabase y Cloudflare (1.5) y GitHub solo hace la prueba de administración. Falta publicar la web y aplicar la 33 |
 | **C4** | **Prueba real en el iPhone del titular** (entrada 9 del traspaso): llega «Prueba de RWAdar», sale el «1» y al tocarla se abre la lista con la baja | Web | Víctor | Pendiente |
 | **C5** | **Frase de primera capa de la app** (2.4), con su inglés, en una OTA **publicada y ya en uso**: enviarla varios días antes de `activar-push` y comprobar en EAS (arranques por actualización) que la mayoría de los arranques usan la OTA nueva. Resto de riesgo en 2.3.a | Android | OTA con orden de Víctor; comprobación en EAS | Hecho en el repositorio (12/11); falta la OTA y que esté en uso |
 | **C7** | **Baja a la vista al abrir en la app una notificación que no lleva a Inicio** (ofertas a Buscar; Academy): arriba, «¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.», con enlace a Perfil › Avisos (3.1). Antes era la recomendación R2 | Android | En la misma OTA que C5 | Hecho en el repositorio (12/11); falta la OTA |
@@ -452,7 +484,7 @@ próximo cambio de textos (R3).
   final. Falta publicar la web.
 - **R2.** Pasa a ser la condición C7.
 - **R3.** Completar la «Información básica» con «el servicio de
-  notificaciones de tu navegador» y GitHub.
+  notificaciones de tu navegador» (desde la 33, sin GitHub).
 - **R4.** En la próxima versión nativa de Android: Firebase solo se crea al
   pulsar el botón (quitar `FirebaseInitProvider` del arranque e iniciarlo a
   mano), para que el latido no se guarde sin consentimiento.
@@ -491,6 +523,13 @@ próximo cambio de textos (R3).
 - **§5, Firebase:** el envío del latido solo ocurre si se pulsa el botón y,
   al hacerlo, se consiente también ese envío (LSSI, art. 22.2).
 - **Fecha de la versión:** sigue siendo el 12/11/2026, que es hoy.
+- **§6 y §8, quién envía (tarde del 12/11, migración 33):** las
+  notificaciones de la web las envía la base de datos (Supabase) a través del
+  servidor de la web (Cloudflare), que las cifra y entrega sin guardarlas. La
+  entrada de Cloudflare dice qué recibe para cada envío; la de Supabase, que
+  guarda la suscripción y pide cada envío; la de GitHub, que ya no interviene
+  en las notificaciones de la web. En las transferencias, GitHub sigue en el
+  DPF (por la página de descargas), sin «que envía las notificaciones».
 
 ---
 

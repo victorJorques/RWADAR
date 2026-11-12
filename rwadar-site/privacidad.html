@@ -454,9 +454,10 @@
       el servicio de tu navegador: Apple (Safari), Google (Chrome y la mayoría de navegadores de
       Android), Mozilla (Firefox) o Microsoft (Edge). Cada notificación va cifrada de extremo a
       extremo con las claves de tu navegador, así que ese servicio no puede leer su texto; recibe
-      la dirección de entrega y los datos técnicos de la conexión, nunca tu correo. Las cifra y
-      las envía un proceso de RWAdar que se ejecuta en servidores de GitHub
-      (<a href="#proveedores-github">apartado 8</a>).</li>
+      la dirección de entrega y los datos técnicos de la conexión, nunca tu correo. Las envía
+      la base de datos de RWAdar (Supabase) a través del servidor de su web (Cloudflare), que
+      las cifra y las entrega sin guardarlas
+      (<a href="#proveedores-cloudflare">apartado 8</a>).</li>
     <li><b>Conservación:</b> el permiso y su historial de altas y bajas, mientras exista la cuenta.
       Si la borras, ese historial queda bloqueado durante 3 años, solo para atender reclamaciones
       (art. 32 de la Ley Orgánica 3/2018, LOPDGDD). Los registros de cada envío, 90 días después
@@ -521,9 +522,13 @@
   <h2>8 · Proveedores y transferencias</h2>
   <p>Estos proveedores intervienen o pueden intervenir solo para prestar el servicio:</p>
   <ul>
-    <li><b>Cloudflare Pages</b> — alojamiento, CDN, entrega y seguridad de la web; trata
+    <li id="proveedores-cloudflare"><b>Cloudflare Pages</b> — alojamiento, CDN, entrega y seguridad de la web; trata
       direcciones IP, datos de enrutamiento y otra información técnica necesaria para esos
-      fines. Web Analytics se describe en el apartado 2 y Zaraz no está activado. El DPA de Cloudflare forma parte de
+      fines. Web Analytics se describe en el apartado 2 y Zaraz no está activado. Además, si
+      activas las notificaciones en la web, el servidor de la web cifra y entrega cada una: para
+      cada envío recibe de la base de datos de RWAdar la dirección de entrega de tu navegador,
+      sus dos claves de cifrado y el texto del aviso, nunca tu correo, y no los guarda al
+      terminar el envío. El DPA de Cloudflare forma parte de
       sus condiciones de autoservicio y contempla el EU-U.S. Data Privacy Framework y,
       cuando corresponda, cláusulas contractuales tipo (SCC). Consulta su
       <a href="https://www.cloudflare.com/policies/privacy/" rel="noopener">política de privacidad</a>
@@ -533,7 +538,8 @@
       sirve la aplicación completa. Puede recibir datos técnicos si la visitas; RUM continúa
       desactivado. Cloudflare Pages es el alojamiento de la aplicación completa.</li>
     <li><b>Supabase</b> — base de datos y autenticación; el proyecto está alojado en
-      <b>eu-west-1 (Irlanda)</b>. Su DPA incluye SCC para los tratamientos que puedan
+      <b>eu-west-1 (Irlanda)</b>. Guarda también la suscripción de las notificaciones en la web
+      y desde allí se pide cada envío al servidor de la web. Su DPA incluye SCC para los tratamientos que puedan
       implicar una transferencia. Consulta su
       <a href="https://supabase.com/privacy" rel="noopener">información de privacidad</a>.</li>
     <li><b>Google / Gmail</b> — proveedor del buzón de RWAdar (rwadares@gmail.com), que se usa
@@ -573,15 +579,12 @@
     <li id="proveedores-github"><b>GitHub</b> — aloja la página de descargas de la app Android. Al abrirse, la app
       consulta allí si hay una versión nueva y GitHub recibe la IP y datos técnicos de la
       conexión, nunca tu cuenta ni tus datos. El archivo de la versión nueva solo se descarga
-      cuando pulsas «Actualizar». Además, si activas las notificaciones en la web, sus servidores
-      (GitHub Actions) ejecutan el proceso de RWAdar que las cifra y las envía: para cada envío
-      reciben la dirección de entrega de tu navegador, sus dos claves de cifrado y el texto del
-      aviso, nunca tu correo, y no los guardan al terminar el envío. Consulta la
+      cuando pulsas «Actualizar». GitHub no interviene en las notificaciones de la web. Consulta la
       <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">declaración de privacidad de GitHub</a>.</li>
   </ul>
   <p>Algunos proveedores o subencargados pueden tratar datos fuera del Espacio Económico
     Europeo. Para Cloudflare, Netlify, Supabase y Expo se han identificado los mecanismos
-    contractuales indicados arriba. GitHub, que envía las notificaciones de la web, Google LLC y
+    contractuales indicados arriba. GitHub, Google LLC y
     Microsoft Corporation están adheridas al Marco de Privacidad de Datos UE-EE. UU. (decisión de
     adecuación de la Comisión Europea de 10 de julio de 2023); lo comprobamos el 12 de noviembre
     de 2026 en su lista oficial, en

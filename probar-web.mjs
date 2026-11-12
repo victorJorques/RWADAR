@@ -3317,12 +3317,16 @@ prueba('privacidad: notificaciones en la web (qué se guarda, quién las entrega
   /Apple \(Safari\), Google \(Chrome y la mayoría de navegadores de\s+Android\), Mozilla \(Firefox\) o Microsoft \(Edge\)/.test(privacidadLineal) &&
   /cifrada de extremo a\s+extremo con las claves de tu navegador, así que ese servicio no puede leer su texto/.test(privacidadLineal) &&
   /<b>Servicios de notificaciones de los navegadores<\/b> \(Apple, Google, Mozilla o Microsoft,/.test(privacidadLineal) &&
-  // GitHub ejecuta el remitente (rwadar-app/enviar-webpush.mjs en el flujo «Notificaciones web»): destinatario (art. 13.1.e)
-  // y su garantía de transferencia (art. 13.1.f), con la de Google y Microsoft.
-  /Las cifra y\s+las envía un proceso de RWAdar que se ejecuta en servidores de GitHub\s+\(<a href="#proveedores-github">apartado 8<\/a>\)/.test(privacidadLineal) &&
-  /<li id="proveedores-github"><b>GitHub<\/b>/.test(privacidad) &&
-  /sus servidores\s+\(GitHub Actions\) ejecutan el proceso de RWAdar que las cifra y las envía: para cada envío\s+reciben la dirección de entrega de tu navegador, sus dos claves de cifrado y el texto del\s+aviso, nunca tu correo/.test(privacidadLineal) &&
-  privacidadLineal.includes('GitHub, que envía las notificaciones de la web, Google LLC y Microsoft Corporation están adheridas al Marco de Privacidad de Datos UE-EE. UU.') &&
+  // Desde la migración 33 las envía Supabase (pg_net) y las cifra y entrega el servidor de la web en Cloudflare
+  // (/api/interno/webpush): destinatarios (art. 13.1.e), los dos ya encargados con contrato. GitHub ya no
+  // interviene (solo envía la prueba a las cuentas de administración, que son los datos del titular).
+  /Las envía\s+la base de datos de RWAdar \(Supabase\) a través del servidor de su web \(Cloudflare\), que\s+las cifra y las entrega sin guardarlas\s+\(<a href="#proveedores-cloudflare">apartado 8<\/a>\)/.test(privacidadLineal) &&
+  /<li id="proveedores-cloudflare"><b>Cloudflare Pages<\/b>/.test(privacidad) &&
+  /si\s+activas las notificaciones en la web, el servidor de la web cifra y entrega cada una: para\s+cada envío recibe de la base de datos de RWAdar la dirección de entrega de tu navegador,\s+sus dos claves de cifrado y el texto del aviso, nunca tu correo, y no los guarda al\s+terminar el envío/.test(privacidadLineal) &&
+  /Guarda también la suscripción de las notificaciones en la web\s+y desde allí se pide cada envío al servidor de la web/.test(privacidadLineal) &&
+  /<li id="proveedores-github"><b>GitHub<\/b>/.test(privacidad) && /GitHub no interviene en las notificaciones de la web\./.test(privacidadLineal) &&
+  !/GitHub Actions|servidores de GitHub|GitHub, que envía/.test(privacidadLineal) &&
+  privacidadLineal.includes('GitHub, Google LLC y Microsoft Corporation están adheridas al Marco de Privacidad de Datos UE-EE. UU.') &&
   // Anexo legal del 12/11/2026 (docs/legal/ANEXO-NOTIFICACIONES-2026-11-12.md): la garantía de cada servicio de push,
   // comprobada en la lista oficial del DPF, en lugar de la promesa de comprobarla. Ni Apple ni Mozilla figuran como adheridas.
   !/se comprobará la garantía/.test(privacidadLineal) &&
