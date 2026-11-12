@@ -6,6 +6,100 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (15) · Claude · Sin el nombre del titular donde no hace falta: /acceso, correos de Auth y pie de los avisos (migración 34)
+
+Víctor: «Siii todo lo que puedas quitar mi nombre hazlo». Su nombre completo
+queda solo donde la ley lo pide: el aviso legal y la privacidad de la web
+(LSSI, art. 10; RGPD, art. 13). Commits `b44a044`, `acd93d0` y `f1b13ef`
+(más este traspaso) en `claude/sharp-babbage-m3bbbw`, **sin push. Sin
+publicar; Supabase y EAS sin tocar; la 34 sin aplicar.**
+
+- **Qué cambia, en llano:**
+  1. `/acceso`: «Descubre la app para Android» lleva a `/android` (la misma
+     redirección de Inicio) y no a la dirección de GitHub con el usuario
+     (`b44a044`). `_redirects` no cambia.
+  2. Correos de Supabase Auth (confirmar alta y recuperar contraseña), en
+     `rwadar-app/plantillas-auth/`: pie «RWAdar · Plaza Generalitat, s/n,
+     46600 Alzira (Valencia), España · Aviso legal · Privacidad ·
+     rwadares@gmail.com», con el aviso legal enlazado (`acd93d0`). **Las del
+     panel de Supabase siguen con el nombre** hasta volver a pegarlas.
+  3. Avisos por correo (hoy apagados): migración 34 (`f1b13ef`), pie
+     «Responsable: el titular de RWAdar, Plaza Generalitat, s/n, 46600
+     Alzira (Valencia), España (aviso legal · privacidad)». Lo demás igual:
+     motivo, baja por enlace y mailto, List-Unsubscribe y sin seguimiento.
+  4. El correo de prueba de `correo-lettermint.sh`: el mismo pie y, en
+     texto, el enlace al aviso legal.
+- **La 34** (`db/34_pie_sin_nombre.sql` y su copia idéntica
+  `supabase/migrations/20261112210000_pie_sin_nombre.sql`): solo redefine
+  `rwadar_novedades.correo_mensaje`, que es la de la 31 letra por letra
+  salvo el nombre (dos veces) y un comentario. Se niega sin la 31 (envío de
+  Lettermint) y con correos a medias con su clave idempotente de menos de
+  25 minutos (el reintento llevaría otro cuerpo con la misma clave). Toma el
+  cerrojo de `procesar()`. No enciende nada ni toca filas, relojes ni Vault.
+  - Verificador propio (`34_pie_sin_nombre_verificar.sql`). El verificador
+    31 ya no fija el nombre: mira la dirección postal del pie, así los
+    verificadores 30 a 34 pasan tras la 34.
+  - **Reaplicar la 31 devuelve el nombre** (el verificador 34 lo detecta):
+    después, `aplicar-34`. Tras reaplicar la 30: la 31, la 32, la 33 y la
+    34, en ese orden. Lo dicen el flujo (avisos al aplicar la 30 y la 31),
+    el RUNBOOK y el contrato de los avisos.
+  - `avisos-base.yml`: `ensayo-34`, `verificar-34` y `aplicar-34` (copia
+    cifrada antes, `cmp` de las dos copias, verificadores 30 a 34).
+- **Pruebas:**
+  - `rwadar-app/probar-pie-sin-nombre.mjs` (nueva, en `npm test`): 24/24.
+    La cadena de producción en PGlite (30 con la casilla, 31, 32 con la
+    clave VAPID, 33); el ensayo-34 del flujo de verdad con bash y un doble
+    de psql; la 34 dos veces con privilegios hostiles; los tres correos
+    iguales a los de la 31 salvo el nombre; el envío de punta a punta hacia
+    el doble de Lettermint; 11 roturas que detecta el verificador 34; el
+    orden al reaplicar la 30 y la 31.
+  - Mutaciones (restauradas): con el verificador 31 de antes fallan 4
+    pruebas; sin la espera de los correos a medias, 2; con el enlace de
+    GitHub en `/acceso`, la nueva de `probar-web`; con las plantillas y la
+    prueba de Lettermint de antes, 2 de `probar-avisos-registrados`.
+  - `npm test` en la raíz, salida 0: `rwadar-app` (31 scripts con «0
+    fallidas»: 24/24, 275/275, 89/89, 64/64…; 11/11 y `.github` 103/103),
+    `probar-web` 684/684, 70 páginas y RSS, 40 de precarga, QR bien,
+    `rwadar-movil` 596 y 2 omitidas, herramientas bien y `rwadar-acceso`
+    311/311. `node --test rwadar-acceso/*.test.mjs` aparte: 311/311.
+  - gitleaks 8.30.1 (`rwadar-app/gitleaks.toml` y por defecto) sobre los
+    commits nuevos y sobre su diff: sin hallazgos.
+- **Dónde sigue el nombre y por qué** (`git grep -i "jorques\|víctor manuel"`
+  en `rwadar-site`, `rwadar-movil`, `rwadar-acceso`, plantillas, `db` y
+  `*.sh`):
+  - `rwadar-site/privacidad.html`: el aviso legal (lo pide la ley).
+  - `db/30_avisos_registrados.sql` y `db/31_correo_lettermint.sql`:
+    migraciones ya aplicadas; la 34 sustituye su pie.
+  - El usuario de GitHub (`victorJorques`) en `rwadar-site/_redirects`
+    (destino de `/android`), `rwadar-movil/lib/actualizaciones-app.js`
+    (aviso de actualización de la app), `rwadar-movil/LEEME.md` y una prueba
+    de la app. No se tocan: cambiar el código de la app es una OTA y el
+    vigilante comprueba ese prefijo.
+  - Dos pruebas que comprueban que el nombre **no** sale.
+- **Para publicar** (cada paso con orden expresa de Víctor):
+  1. PR a main y CI.
+  2. **Web:** sello y «Publicar web» (preview y producción) para `/acceso`.
+  3. **Base:** «Avisos a registrados (base)» › `ensayo-34` y `aplicar-34`.
+     Con el correo apagado no corre prisa, pero antes de encenderlo.
+  4. **Auth:** «Supabase (gestión de Auth)» › `plantillas` (o pegarlas a
+     mano, ver su LEEME). Hasta entonces, el estado del flujo dirá que las
+     del panel no son las del repositorio, y `smtp-lettermint` lo exige.
+- **Dudas:**
+  - Lo legal: los correos de Auth son de servicio (no les aplica el art. 20
+    LSSI) y el aviso legal está a un enlace (art. 10). Para los avisos de
+    novedades, que pueden ser comunicaciones comerciales, el art. 20.1 pide
+    que quien envía sea «claramente identificable»: va «el titular de
+    RWAdar», su dirección y el aviso legal enlazado, con nombre y NIF. Que
+    lo confirme quien revise lo legal; la alternativa prudente sería dejar
+    el nombre solo en los anuncios. La dirección física que pide Lettermint
+    sigue en todos.
+  - El usuario de GitHub se ve al descargar la app (la página de releases).
+    Para quitarlo del todo, mover `RWAdar-downloads` a una organización y
+    cambiar `_redirects`, la app (OTA), el vigilante y los números: cambia
+    el alojamiento, así que solo con su permiso.
+
+---
+
 ## 12 de noviembre de 2026 (14) · Claude · Integrador: la sesión que se mantiene, sin el nombre en los avisos y notificaciones web sin atascos
 
 Víctor, en su iPhone con la web en la pantalla de inicio: «Y que al iniciar
