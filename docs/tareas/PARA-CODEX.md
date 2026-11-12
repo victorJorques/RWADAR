@@ -6,6 +6,46 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (6) · Claude · Notificaciones: base y web unidas y comprobadas entre sí
+
+Víctor: «que las notificaciones salten al móvil tipo WhatsApp y además salga
+un 1 en la app». Integración en `claude/sharp-babbage-m3bbbw` de las dos
+ramas del encargo (entradas 4 y 5, aquí debajo). **Sin push, sin publicar,
+Supabase sin tocar, sin EAS.** No se ha tocado nada de `rwadar-movil`.
+
+- **Uniones** (`git merge --no-ff`): `4998ba0` (base: migración 32, remitente
+  Web Push y flujos; sin conflictos) y `51e9bf1` (web: campana, bandeja y Web
+  Push; solo chocaba este archivo, se quedan las dos entradas).
+- **Contrato revisado** (`53ed8cc`). Cuadraban los nombres y argumentos de las
+  4 RPC, la carga `{v, titulo, texto, url, etiqueta}`, la clave pública de 87
+  caracteres y el interruptor `push_habilitado`. No cuadraba, y ya está
+  arreglado:
+  - la base borra las suscripciones web sin renovar en 180 días y la web nunca
+    las renovaba: ahora, al entrar con las notificaciones activas, vuelve a
+    llamar a `registrar_aviso_webpush` (como mucho cada 12 horas por página);
+  - tope del endpoint: la web cortaba en 1024 y la base admite 2048 (ahora
+    2048 en las dos);
+  - con «Avisos de novedades» apagado la web prometía «avisos de servicio,
+    como la bienvenida», que por Web Push no existen: texto nuevo con inglés;
+  - privacidad: la suscripción web también se borra tras 180 días sin entrar
+    en la cuenta desde ese navegador.
+- **Pruebas nuevas:** en `probar-notificaciones.mjs` (90/90), las cargas
+  reales de la base pasan por el remitente y el `sw.js` de la web las enseña
+  tal cual; las 4 RPC concedidas son las que llama la web y deja pasar la
+  pasarela; clave y tope de endpoint iguales. En Chromium, una suscripción ya
+  activa se renueva una vez al entrar sin pedir nada.
+- **Pasado en este estado:** `npm test` de la raíz (código 0: `rwadar-acceso`
+  261/261, móvil 590 y 2 omitidas, base 275/275 y 90/90, `.github` 103/103,
+  `probar-web` 677/677), `npm run test:web` (código 0) y gitleaks sobre
+  `git diff origin/main...HEAD` y los 69 commits desde `main`: sin hallazgos.
+- **Pendiente, con la orden de Víctor y por este orden:** PR a `main`;
+  «Avisos a registrados (base)» › `ensayo-32`, `aplicar-32` y `crear-vapid`
+  (AVISOS); «Publicar web» en preview y comprobarla; Víctor añade RWAdar a la
+  pantalla de inicio del iPhone, entra y activa las notificaciones en Perfil;
+  «Notificaciones web» › `prueba` (ENVIAR): le debe llegar «Prueba de RWAdar»
+  y salir el 1 en el icono. Encender el envío para todos (`activar-push`)
+  enciende también Expo: publicar la web y la OTA de la app en el mismo ciclo.
+
 ## 12 de noviembre de 2026 (5) · Claude · Web: campana con «1», bandeja y notificaciones en el móvil (Web Push)
 
 Víctor: «que las notificaciones salten al móvil tipo WhatsApp y además salga un 1
