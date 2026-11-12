@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Notificaciones web desde Supabase y Cloudflare (33), commit 7faf5bf",
+  "nota": "Sesión que se mantiene, sin el nombre y notificaciones sin atascos, commit 65b0654",
   "revisionAprobada": {
-    "commit": "7faf5bfe96dc2deb78abdbf7c26a7033b0bda58e",
-    "contenidoSha256": "sha256:29deca09a619291b7d769afbee9d27fa6829440b702e38f2898ebcf16af91f83",
+    "commit": "65b0654fa065344cc7769f452a6ac5c8aeb93a42",
+    "contenidoSha256": "sha256:d27a6d2ee10d2d9776e449a57a9b7e67d44107e50eaf0bf13c349d4a0c23c091",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
