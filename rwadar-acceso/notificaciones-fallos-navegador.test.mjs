@@ -60,6 +60,10 @@ const TEXTO = {
   disponible: /^Al activarlas, el navegador te pedirá permiso\./,
   activadas: 'Notificaciones activadas en este móvil.',
   activas: 'Activadas: este móvil recibe las notificaciones de RWAdar.',
+  desactivadas: 'Notificaciones desactivadas en este móvil.',
+  noDesactivadas: 'No se han podido desactivar las notificaciones. Vuelve a intentarlo.',
+  otro: 'No se han podido activar las notificaciones en este móvil. Vuelve a intentarlo.',
+  momento: 'Un momento…',
   red: 'No hemos podido conectar para activarlas. Revisa la conexión y vuelve a intentarlo.',
   navegador: 'El navegador no ha dejado activarlas. Comprueba que las notificaciones de RWAdar están permitidas en los ajustes del móvil y vuelve a intentarlo.',
   ios: 'En iPhone y iPad solo se pueden activar con RWAdar en la pantalla de inicio: añádela y ábrela desde su icono.',
@@ -77,6 +81,9 @@ function simular(cfg) {
   const rastro = window.__rastro = [];
   const anota = (...a) => rastro.push(a);
   window.__fallo = { suscribir: cfg.suscribir || '' };
+  // Pasos del propio navegador que no contestan nunca: permiso, getSubscription o unsubscribe.
+  window.__colgar = { ...(cfg.colgar || {}) };
+  const nunca = () => new Promise(() => {});
   window.__sinSesion = { ...(cfg.sinSesion || {}) };
   window.__standalone = cfg.standalone === true;
   Navigator.prototype.setAppBadge = () => Promise.resolve();
@@ -84,14 +91,18 @@ function simular(cfg) {
   Object.defineProperty(Navigator.prototype, 'standalone', { get: () => window.__standalone, configurable: true });
   let permiso = cfg.permiso || 'default';
   Object.defineProperty(Notification, 'permission', { get: () => permiso, configurable: true });
-  Notification.requestPermission = function () { anota('requestPermission'); permiso = cfg.respuesta || 'granted'; return Promise.resolve(permiso); };
+  Notification.requestPermission = function () {
+    anota('requestPermission');
+    if (window.__colgar.permiso) return nunca();
+    permiso = cfg.respuesta || 'granted'; return Promise.resolve(permiso);
+  };
   let suscripcion = null;
   const nueva = () => ({ endpoint: 'https://fcm.googleapis.com/fcm/send/prueba-123',
     toJSON() { return { endpoint: this.endpoint, expirationTime: null, keys: { p256dh: 'BPrueba_p256dh-clave', auth: 'auth-prueba' } }; },
-    unsubscribe() { anota('unsubscribe'); suscripcion = null; return Promise.resolve(true); } });
+    unsubscribe() { anota('unsubscribe'); if (window.__colgar.unsubscribe) return nunca(); suscripcion = null; return Promise.resolve(true); } });
   if (cfg.suscrito) suscripcion = nueva();
   const registro = { scope: location.origin + '/', active: { postMessage() {} },
-    pushManager: { getSubscription: () => Promise.resolve(suscripcion),
+    pushManager: { getSubscription: () => window.__colgar.getSubscription ? nunca() : Promise.resolve(suscripcion),
       subscribe() {
         anota('subscribe');
         const fallo = window.__fallo.suscribir;
@@ -346,6 +357,85 @@ test('en Chromium: al activar, el motivo en llano (permiso, navegador, iPhone fu
       const { INFO_BASICA_EN } = require('../rwadar-movil/lib/avisos-cuenta.js');
       assert.equal(info.texto, INFO_BASICA_EN);
       assert.deepEqual(info.enlaces, [['legal notice', '/privacidad#aviso-legal'], ['Privacy', '/privacidad']]);
+      await contexto.close();
+    }
+  });
+});
+
+/* Revisión del integrador (12/11/2026): al activar o desactivar, los pasos del
+   propio navegador (leer o quitar la suscripción, el permiso) no tenían plazo.
+   Si uno no contestaba, el bloque se quedaba en «Un momento…» con el botón
+   apagado, sin «Reintentar», y volver a la app no lo arreglaba. */
+test('en Chromium: si el navegador no contesta al activar o desactivar, no se queda en «Un momento…»', { skip: sinNavegador, timeout: 240000 }, async () => {
+  await conNavegador(async (local, navegador) => {
+    const desactivar = pagina => pagina.evaluate(() => { const b = document.getElementById('perfilPushDesactivar');
+      return b.hidden ? 'oculto' : b.disabled ? 'apagado' : 'listo'; });
+    // 1. Al activar: la suscripción anterior no se deja quitar (la sonda de la revisión). Se sigue sin ella.
+    {
+      const { contexto, pagina, errores, rastro } = await abrir(navegador, local, { cfg: { suscrito: true, colgar: { unsubscribe: true } } });
+      await esperarTexto(pagina, TEXTO.disponible);
+      const inicio = Date.now();
+      await pagina.click('#perfilPushActivar');
+      assert.equal((await verPush(pagina)).texto, TEXTO.momento);
+      await esperarTexto(pagina, TEXTO.activadas, 20000);
+      assert.ok(Date.now() - inicio < 15000, 'unos 5 s de espera, no para siempre');
+      assert.ok((await rastro()).some(x => x[0] === 'subscribe'), 'se suscribe igual');
+      assert.deepEqual(errores, []);
+      await contexto.close();
+    }
+    // 2. Al activar: el navegador no contesta al leer la suscripción.
+    {
+      const { contexto, pagina, errores } = await abrir(navegador, local);
+      await esperarTexto(pagina, TEXTO.disponible);
+      await pagina.evaluate(() => { window.__colgar.getSubscription = true; });
+      await pagina.click('#perfilPushActivar');
+      await esperarTexto(pagina, TEXTO.activadas, 20000);
+      assert.deepEqual(errores, []);
+      await contexto.close();
+    }
+    // 3. Al desactivar: unsubscribe no contesta. La base ya la quitó: desactivadas.
+    {
+      const { contexto, pagina, errores } = await abrir(navegador, local, { cfg: { permiso: 'granted', suscrito: true } });
+      await esperarTexto(pagina, TEXTO.activas);
+      await pagina.evaluate(() => { window.__colgar.unsubscribe = true; });
+      await pagina.click('#perfilPushDesactivar');
+      await esperarTexto(pagina, TEXTO.desactivadas, 20000);
+      assert.equal((await verPush(pagina)).activar, 'listo');
+      assert.deepEqual(errores, []);
+      await contexto.close();
+    }
+    // 4. Al desactivar: getSubscription no contesta. Se dice y «Desactivar» sigue a mano.
+    {
+      const { contexto, pagina, errores } = await abrir(navegador, local, { cfg: { permiso: 'granted', suscrito: true } });
+      await esperarTexto(pagina, TEXTO.activas);
+      await pagina.evaluate(() => { window.__colgar.getSubscription = true; });
+      await pagina.click('#perfilPushDesactivar');
+      await esperarTexto(pagina, TEXTO.noDesactivadas, 20000);
+      assert.equal(await desactivar(pagina), 'listo');
+      assert.equal((await verPush(pagina)).rol, 'alert');
+      assert.deepEqual(errores, []);
+      await contexto.close();
+    }
+    // 5. El permiso no contesta nunca (lo único sin plazo: se espera a la persona).
+    //    Al volver a la app, pasado el tiempo de todos los plazos, se suelta.
+    {
+      const { contexto, pagina, errores } = await abrir(navegador, local, { cfg: { colgar: { permiso: true } } });
+      await esperarTexto(pagina, TEXTO.disponible);
+      await pagina.click('#perfilPushActivar');
+      assert.deepEqual(await verPush(pagina).then(x => [x.texto, x.activar]), [TEXTO.momento, 'apagado']);
+      // Volver a la app enseguida no lo corta (sigue esperando a la persona).
+      await pagina.evaluate(() => document.dispatchEvent(new Event('visibilitychange')));
+      assert.deepEqual(await verPush(pagina).then(x => [x.texto, x.activar]), [TEXTO.momento, 'apagado']);
+      // Un minuto después (el reloj de la página, adelantado), sí.
+      await pagina.evaluate(() => { const real = Date.now.bind(Date); Date.now = () => real() + 61000;
+        document.dispatchEvent(new Event('visibilitychange')); });
+      await esperarTexto(pagina, TEXTO.otro, 5000);
+      assert.deepEqual(await verPush(pagina).then(x => [x.activar, x.rol]), ['listo', 'alert']);
+      // Y se puede volver a intentar.
+      await pagina.evaluate(() => { window.__colgar.permiso = false; });
+      await pagina.click('#perfilPushActivar');
+      await esperarTexto(pagina, TEXTO.activadas);
+      assert.deepEqual(errores, []);
       await contexto.close();
     }
   });

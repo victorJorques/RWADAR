@@ -5138,6 +5138,8 @@ const Cuenta = (function(){
     llamada tiene plazo y el fallo se dice: sin sesión, «vuelve a entrar»
     con su botón; por la red o la base, «Reintentar». */
  const PLAZO_AVISOS_MS=15000;
+ /* Pasos del propio navegador que no deberían tardar (leer o quitar una suscripción). */
+ const PLAZO_SUELTA_MS=5000;
  const TEXTO_SESION_CADUCADA='Tu sesión ha caducado: vuelve a entrar.';
  function conPlazo(promesa,ms=PLAZO_AVISOS_MS){
   let reloj;
@@ -5584,7 +5586,7 @@ const Cuenta = (function(){
   const nombre=e&&e.name;
   if(fase==='suscribir'&&nombre==='NotAllowedError')
    return permisoNotificaciones()==='denied'?'denegado':esIos()&&!instalada()?'ios':'navegador';
-  if(fase==='trabajador'&&!falloDeRed(e))return 'trabajador';
+  if(fase==='trabajador'&&(e&&e.code==='plazo'||!falloDeRed(e)))return 'trabajador';
   if(falloDeRed(e)||(fase==='suscribir'&&(nombre==='AbortError'||nombre==='NetworkError')))return 'red';
   return 'otro';
  }
@@ -5702,49 +5704,59 @@ const Cuenta = (function(){
   catch(e){permiso=Promise.resolve('default');}
   /* Si la clave falla, se guarda el motivo para decirlo (sin sesión, sin red). */
   const clave=conPlazo(rest('/rpc/clave_publica_webpush',{method:'POST',body:'{}'},cuenta)).then(k=>({k}),e=>({e}));
-  push={estado:'disponible',cuenta,ocupado:true,mensaje:'',error:false,registrado:false,fallo:''};pintarPush();
+  const actual=push={estado:'disponible',cuenta,ocupado:true,desde:Date.now(),mensaje:'',error:false,registrado:false,fallo:''};pintarPush();
+  /* sigue(): la misma cuenta y este mismo intento (liberarPushAtascado lo da por perdido). */
+  const sigue=()=>vigente(cuenta)&&push===actual;
   (async()=>{
    let resultado='',error=false,fase='permiso';
    try{
     const p=await permiso;
-    if(!vigente(cuenta))return;
+    if(!sigue())return;
+    /* Desde aquí cada paso tiene plazo: lo que se espera ya no es a la persona. */
+    actual.desde=Date.now();
     if(p!=='granted'){
      resultado=p==='denied'?'':'No has dado permiso. Puedes volver a intentarlo cuando quieras.';
      push.estado=estadoPush(false);return;
     }
     fase='clave';
     const {k,e}=await clave;
-    if(!vigente(cuenta))return;
+    if(!sigue())return;
     if(e)throw e;
     if(typeof k!=='string'||!CLAVE_VAPID.test(k)){clavePush={cuenta,valor:null};push.estado='pendiente';return;}
     clavePush={cuenta,valor:k};
     fase='trabajador';
-    const r=await registroTrabajador();
-    /* Una suscripción anterior (otra cuenta, otra clave) no se reutiliza. */
+    const r=await conPlazo(registroTrabajador());
+    if(!sigue())return;
+    /* Una suscripción anterior (otra cuenta, otra clave) no se reutiliza. Si
+       el navegador no contesta al leerla o al quitarla, se sigue sin ella:
+       subscribe() tiene su propio plazo. */
     fase='suscribir';
-    const vieja=await r.pushManager.getSubscription();
-    if(vieja)await vieja.unsubscribe().catch(()=>{});
+    const vieja=await conPlazo(r.pushManager.getSubscription(),PLAZO_SUELTA_MS).catch(()=>null);
+    if(vieja)await conPlazo(vieja.unsubscribe(),PLAZO_SUELTA_MS).catch(()=>{});
+    if(!sigue())return;
     const sub=await conPlazo(r.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:bytesClave(k)}));
-    if(!vigente(cuenta)){sub.unsubscribe().catch(()=>{});return;}
+    if(!sigue()){sub.unsubscribe().catch(()=>{});return;}
     fase='registrar';
     let ok=false;
     try{ok=(await conPlazo(rest('/rpc/registrar_aviso_webpush',{method:'POST',body:JSON.stringify(datosSuscripcion(sub))},cuenta)))===true;}
     catch(e){sub.unsubscribe().catch(()=>{});throw e;}
     if(!ok){sub.unsubscribe().catch(()=>{});throw new Error('registro');}
+    if(!sigue())return;
     push.estado='activo';push.registrado=true;pushRenovado={cuenta,el:Date.now()};
     resultado=novedades&&!novedades.push_activo?'Notificaciones activadas en este móvil. Te llegarán cuando empecemos a enviarlas.'
      :'Notificaciones activadas en este móvil.';
-    try{await r.showNotification(enIngles()?'Notifications turned on for this phone':'Notificaciones activadas en este móvil',{
+    /* La notificación de muestra, con plazo: si no sale, ya están activadas igual. */
+    try{await conPlazo(r.showNotification(enIngles()?'Notifications turned on for this phone':'Notificaciones activadas en este móvil',{
      body:enIngles()?'This is how RWAdar notices will reach you.':'Así te llegarán los avisos de RWAdar.',
-     icon:'/icono-192.png',tag:'rwadar-activadas',lang:enIngles()?'en':'es',data:{url:'/'}});}catch(e){}
+     icon:'/icono-192.png',tag:'rwadar-activadas',lang:enIngles()?'en':'es',data:{url:'/'}}),PLAZO_SUELTA_MS);}catch(e){}
    }catch(e){
-    if(!vigente(cuenta))return;
+    if(!sigue())return;
     const motivo=motivoActivarPush(e,fase);
     /* Denegado: el estado ya dice cómo permitirlas. Lo demás, en llano, y «Activar» sigue a mano. */
     error=motivo!=='denegado';resultado=error?TEXTOS_ACTIVAR_PUSH[motivo]:'';
     push.fallo=motivo==='sesion'?'sesion':'';push.estado=estadoPush(false,push.fallo);
    }finally{
-    if(vigente(cuenta)&&push.cuenta===cuenta){push.ocupado=false;push.mensaje=resultado;push.error=error;pintarPush();if(resultado)aviso(resultado);}
+    if(sigue()){push.ocupado=false;push.mensaje=resultado;push.error=error;pintarPush();if(resultado)aviso(resultado);}
    }
   })();
  }
@@ -5752,8 +5764,9 @@ const Cuenta = (function(){
     soloLocal: la cuenta ya no existe (se borró con ella). */
  async function soltarPush(cuenta,soloLocal=false){
   if(!soportaPush())return true;
-  const r=await navigator.serviceWorker.getRegistration('/');
-  const sub=r&&r.pushManager?await r.pushManager.getSubscription():null;
+  /* Con plazo: si el navegador no contesta, desactivarPush lo dice y no se queda en «Un momento…». */
+  const r=await conPlazo(navigator.serviceWorker.getRegistration('/'),PLAZO_SUELTA_MS);
+  const sub=r&&r.pushManager?await conPlazo(r.pushManager.getSubscription(),PLAZO_SUELTA_MS):null;
   if(!sub)return true;
   let ok=true;
   if(!soloLocal){
@@ -5762,24 +5775,39 @@ const Cuenta = (function(){
   }
   /* Sin suscripción en el navegador, el servicio de push rechaza la dirección
      y la base la borra en el siguiente envío, aunque la llamada anterior fallara. */
-  await sub.unsubscribe().catch(()=>{});
+  await conPlazo(sub.unsubscribe(),PLAZO_SUELTA_MS).catch(()=>{});
   return ok;
  }
  function desactivarPush(){
   if(!AVISOS_WEBPUSH_DISPONIBLE||!identidadConfirmada||!ses||(push.cuenta===versionCuenta&&push.ocupado))return;
   const cuenta=versionCuenta;
-  push={estado:'activo',cuenta,ocupado:true,mensaje:'',error:false,registrado:true,fallo:''};pintarPush();
+  const actual=push={estado:'activo',cuenta,ocupado:true,desde:Date.now(),mensaje:'',error:false,registrado:true,fallo:''};pintarPush();
+  const sigue=()=>vigente(cuenta)&&push===actual;
   soltarPush(cuenta).then(ok=>{
-   if(!vigente(cuenta))return;
+   if(!sigue())return;
    push.registrado=false;push.estado=estadoPush(false);
    push.mensaje=ok?'Notificaciones desactivadas en este móvil.':'Hemos quitado las notificaciones de este navegador, pero no hemos podido confirmarlo con tu cuenta. Se borrará sola en el próximo envío.';
    push.error=!ok;
   }).catch(()=>{
-   if(!vigente(cuenta))return;
+   if(!sigue())return;
    push.mensaje='No se han podido desactivar las notificaciones. Vuelve a intentarlo.';push.error=true;
   }).finally(()=>{
-   if(vigente(cuenta)){push.ocupado=false;pintarPush();aviso(push.mensaje);}
+   if(sigue()){push.ocupado=false;pintarPush();aviso(push.mensaje);}
   });
+ }
+ /* Red de seguridad de activar y desactivar: si un paso del navegador no
+    contesta y el plazo no ha bastado, al volver a la app no se queda en «Un
+    momento…» para siempre. Se da el intento por perdido (sus respuestas
+    tardías ya no pintan nada) y «Activar» o «Desactivar» vuelven a estar a mano.
+    LIBERAR_PUSH_MS cubre la suma de los plazos de los pasos (unos 55 s). */
+ const LIBERAR_PUSH_MS=PLAZO_AVISOS_MS*4;
+ function liberarPushAtascado(){
+  if(!push.ocupado||push.cuenta!==versionCuenta||!(Date.now()-(push.desde||0)>LIBERAR_PUSH_MS))return false;
+  const activando=push.estado!=='activo';
+  push={estado:push.estado,cuenta:push.cuenta,ocupado:false,mensaje:activando?TEXTOS_ACTIVAR_PUSH.otro
+   :'No se han podido desactivar las notificaciones. Vuelve a intentarlo.',error:true,registrado:push.registrado,fallo:''};
+  pintarPush();aviso(push.mensaje);
+  return true;
  }
  /* Al cerrar sesión: se quita antes de cerrar, con un plazo corto para no bloquear la salida. */
  function soltarPushAlSalir(){
@@ -5913,6 +5941,7 @@ const Cuenta = (function(){
    /* Al volver a la app (iPhone), lo que no se pudo comprobar se vuelve a preguntar. */
    if(AVISOS_NOVEDADES_DISPONIBLES&&novedadesError)cargarNovedades().catch(()=>{});
    if(AVISOS_WEBPUSH_DISPONIBLE&&!push.ocupado){push.cuenta=-1;cargarPush().catch(()=>{});}
+   else if(AVISOS_WEBPUSH_DISPONIBLE)liberarPushAtascado();
   });
   try{
    if(typeof navigator!=='undefined'&&navigator.serviceWorker)navigator.serviceWorker.addEventListener('message',e=>{

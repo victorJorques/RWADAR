@@ -116,11 +116,12 @@ test('en Chromium: con la casilla, las cookies sobreviven a cerrar el navegador 
     const nuestras = async contexto => Object.fromEntries((await contexto.cookies(base)).filter(c => c.name.startsWith('__Host-rwadar-')).map(c => [c.name, c]));
     // «Cerrar el navegador»: solo quedan las cookies con caducidad.
     const reabrir = async contexto => { const guardadas = (await contexto.cookies()).filter(c => c.expires > 0); await contexto.close(); return nuevo(guardadas); };
+    // Se pregunta desde /privacidad, una página pública que no salta a otra:
+    // desde /acceso, con sesión, la página podía irse mientras se preguntaba
+    // («Execution context was destroyed»).
     const sesion = async page => {
-      const respuesta = page.waitForResponse(r => r.url().endsWith('/api/acceso/sesion'), { timeout: 15000 });
-      await page.goto(base + '/acceso?volver=/privacidad');
-      return page.evaluate(() => fetch('/api/acceso/sesion', { credentials: 'same-origin', cache: 'no-store' }).then(r => r.status))
-        .finally(() => respuesta.catch(() => {}));
+      await page.goto(base + '/privacidad');
+      return page.evaluate(() => fetch('/api/acceso/sesion', { credentials: 'same-origin', cache: 'no-store' }).then(r => r.status));
     };
     for (const marcada of [true, false]) {
       const { contexto, page } = await nuevo();
@@ -131,7 +132,9 @@ test('en Chromium: con la casilla, las cookies sobreviven a cerrar el navegador 
       await page.fill('#correo', CORREO_PRUEBA); await page.fill('#clave', CLAVE_PRUEBA);
       const antes = Date.now() / 1000;
       await page.click('#enviar');
-      await page.waitForURL(/\/privacidad$/, { timeout: 15000 });
+      // Por la ruta y no por la cadena: «/acceso?volver=/privacidad» también
+      // acaba en «/privacidad» y no esperaba al login (fallaba a ratos).
+      await page.waitForURL(u => u.pathname === '/privacidad', { timeout: 15000 });
       const c = await nuestras(contexto);
       assert.deepEqual(Object.keys(c).sort(), ['__Host-rwadar-acceso', '__Host-rwadar-renovar']);
       for (const cookie of Object.values(c)) {
