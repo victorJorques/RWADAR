@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Colaborar y correo único (squash de #108)",
+  "nota": "Notificaciones (campana con «1», Web Push, Android prioridad alta) y buzón Gmail en privacidad, commit 35a2434",
   "revisionAprobada": {
-    "commit": "dcd47632fc5be58b915da763c6bd9be2e91740fa",
-    "contenidoSha256": "sha256:90304c616074f82b87f66dbe975147088191aa667eb4352446d4687fd594a59b",
+    "commit": "35a24349c7695bb556325e6edf4dbdbd16837b6e",
+    "contenidoSha256": "sha256:9af8b9c93f5ca2ea179d15eac564773e8141b51a18b42cfdd8aee59b4bd36383",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
