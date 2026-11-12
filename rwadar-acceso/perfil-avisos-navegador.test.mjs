@@ -25,7 +25,7 @@ const TEXTO_EN = 'I want to receive RWAdar notices by email and, if I enable the
   'You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your ' +
   'phone settings. More information in Privacy.';
 // Información básica sobre los datos, junto al interruptor y fuera del texto versionado.
-const INFO_ES = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). ' +
+const INFO_ES = 'Información básica sobre tus datos. Responsable: el titular de RWAdar, identificado en el aviso legal. ' +
   'Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las ' +
   'notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, ' +
   'y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu ' +
@@ -36,7 +36,9 @@ const INFO_ES = 'Información básica sobre tus datos. Responsable: Víctor Manu
 // En la web, «Privacidad» del final es un enlace; el texto visible no cambia.
 const enlazado = (textoPlano, href) => textoPlano.replace(/Privacidad\.$/, '') + '<a href="' + href + '">Privacidad</a>.';
 const CASILLA_HTML = enlazado(TEXTO_ES, '/privacidad#avisos-novedades');
-const INFO_HTML = enlazado(INFO_ES, '/privacidad');
+// «aviso legal» también enlaza: a los datos del titular, que ya no salen aquí (12/11/2026).
+const INFO_HTML = enlazado(INFO_ES, '/privacidad')
+  .replace(' identificado en el aviso legal.', ' identificado en el <a href="/privacidad#aviso-legal">aviso legal</a>.');
 // Con el correo apagado no hay «enlace de cada correo»: no se promete.
 const ACTIVADOS = 'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.';
 const tick = async (veces = 4) => { for (let i = 0; i < veces; i++) await new Promise(resolve => setImmediate(resolve)); };

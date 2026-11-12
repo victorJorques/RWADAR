@@ -3350,14 +3350,17 @@ prueba('privacidad: los datos locales cuentan la vuelta a la lección de 24 hora
   /\n  limpiarVolver\(\);\n/.test(accesoJS));
 // Texto versionado v2 y la información básica (fuera de la versión), en /acceso y en Perfil.
 const TEXTO_AVISOS_V2 = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en ';
-const INFO_DATOS = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en ';
+const INFO_DATOS = 'Información básica sobre tus datos. Responsable: el titular de RWAdar, identificado en el aviso legal. Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en ';
+// 12/11/2026: el nombre del titular ya no sale en la información básica (petición de Víctor); en la web,
+// «aviso legal» enlaza a sus datos (/privacidad#aviso-legal), que son lo único que lo identifica.
+const INFO_DATOS_HTML = INFO_DATOS.replace(' identificado en el aviso legal.', ' identificado en el <a href="/privacidad#aviso-legal">aviso legal</a>.');
 // 12/11/2026: Perfil › Avisos encendido en la web; la casilla del alta, con su propio interruptor, sigue apagada.
 prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada y Perfil › Avisos encendido',
   /Tengo 18 años o más, acepto las <a href="\/privacidad#condiciones">condiciones<\/a> y he leído la <a href="\/privacidad">privacidad<\/a>\./.test(accesoHTML) &&
   accesoHTML.includes('<label id="campo-avisos-novedades" hidden class="consentimiento"><input id="avisos-novedades" type="checkbox">' + TEXTO_AVISOS_V2 + '<a href="/privacidad#avisos-novedades">Privacidad</a>.</label>') &&
-  accesoHTML.includes('<div id="info-datos" hidden class="consentimiento">' + INFO_DATOS + '<a href="/privacidad">Privacidad</a>.</div>') &&
+  accesoHTML.includes('<div id="info-datos" hidden class="consentimiento">' + INFO_DATOS_HTML + '<a href="/privacidad">Privacidad</a>.</div>') &&
   panelPerfilHTML.includes('<span>' + TEXTO_AVISOS_V2 + '<a href="/privacidad#avisos-novedades">Privacidad</a>.</span>') &&
-  panelPerfilHTML.includes('<p class="perfil-aviso-detalle" id="perfilNovedadesDatos">' + INFO_DATOS + '<a href="/privacidad">Privacidad</a>.</p>') &&
+  panelPerfilHTML.includes('<p class="perfil-aviso-detalle" id="perfilNovedadesDatos">' + INFO_DATOS_HTML + '<a href="/privacidad">Privacidad</a>.</p>') &&
   / const VERSION_AVISOS_NOVEDADES='novedades-v2-2026-11-06';/.test(js) &&
   /const AVISOS_CASILLA_ALTA = false;/.test(accesoJS) && !/AVISOS_NOVEDADES_REMOTOS =/.test(accesoJS) &&
   / const AVISOS_NOVEDADES_REMOTOS=true;/.test(js) && / const AVISOS_BANDEJA_REMOTA=true;/.test(js) && / const AVISOS_WEBPUSH_REMOTO=true;/.test(js) &&
@@ -3365,6 +3368,34 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
   /<div id="perfilAvisosNovedades" hidden>\s*<article class="movil-estado">/.test(panelPerfilHTML) &&
   !/<article class="movil-estado"[^>]*\shidden/.test(panelPerfilHTML) &&
   /Los avisos llegarán a la app en una próxima actualización\./.test(panelPerfilHTML));
+// 12/11/2026, Víctor: «No quiero que salga mi nombre aquí». Fuera del aviso legal y la privacidad
+// (LSSI, art. 10; RGPD, art. 13) la web no lo enseña; las direcciones de GitHub no son texto de cara a nadie.
+{
+  const conNombre = [];
+  const recorrer = carpeta => {
+    for (const entrada of fs.readdirSync(carpeta, { withFileTypes: true })) {
+      const ruta = path.join(carpeta, entrada.name);
+      if (entrada.isDirectory()) { recorrer(ruta); continue; }
+      if (!/\.(?:html|js|json|xml|txt|webmanifest)$/.test(entrada.name)) continue;
+      const relativa = path.relative(sitio, ruta).split(path.sep).join('/');
+      if (relativa === 'privacidad.html') continue;
+      if (/Jorques/.test(fs.readFileSync(ruta, 'utf8').replace(/victorJorques/g, ''))) conNombre.push(relativa);
+    }
+  };
+  recorrer(sitio);
+  const enAvisos = require('./rwadar-site/assets/idioma-en-avisos-20261112.js');
+  const enComun = require('./rwadar-site/assets/idioma-en-20261022.js');
+  const avisosCuenta = require('./rwadar-movil/lib/avisos-cuenta.js');
+  // En la web el texto llega en trozos (entre los enlaces): cada uno con su inglés y, juntos, el de la app.
+  const trozos = INFO_DATOS.split(' aviso legal').map(t => t.trim());
+  const ingles = enAvisos[trozos[0]] + ' ' + enAvisos['aviso legal'] + enAvisos[trozos[1]] + ' ' + enComun.Privacidad + '.';
+  prueba(`información básica sin el nombre del titular fuera de la privacidad (con él: ${conNombre.join(', ') || 'ninguno'}), «aviso legal» enlazado y su inglés igual que en la app`,
+    conNombre.length === 0 && /Víctor Manuel Jorques Granero/.test(privacidad) &&
+    INFO_DATOS + 'Privacidad.' === avisosCuenta.INFO_BASICA_ES && trozos.length === 2 &&
+    ingles === avisosCuenta.INFO_BASICA_EN && enComun[avisosCuenta.INFO_BASICA_ES] === avisosCuenta.INFO_BASICA_EN &&
+    js.includes(" const conEnlacesInfoDatos=texto=>conEnlacePrivacidad(texto,'/privacidad')") &&
+    js.includes("'<p class=\"perfil-nota perfil-ayuda\">'+conEnlacesInfoDatos(INFO_DATOS_AVISOS)+'</p>'+"));
+}
 // Campana con número y «Notificaciones en este móvil» (12/11/2026): su inglés va en un diccionario
 // solo de la web (el común es copia exacta del de la app), cargado entre el común y el motor.
 {

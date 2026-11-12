@@ -1071,7 +1071,9 @@ test('el panel y la tarjeta se renderizan también con React y react-native-web 
       estado: { servidor, movil, procesando: '', mensaje: '', error: '' }, onAlternarNovedades() {}, onAlternarMovil() {} }));
     assert.match(html, /role="switch"/);
     assert.match(html, /Avisos de novedades \(correo y móvil\)/);
-    assert.match(html, /Información básica sobre tus datos\. Responsable: Víctor Manuel Jorques Granero \(RWAdar\)\./);
+    assert.match(html, /Información básica sobre tus datos\. Responsable: el titular de RWAdar, identificado en el aviso legal\./);
+    // 12/11/2026: el nombre del titular solo sale en el aviso legal y la privacidad.
+    assert.doesNotMatch(html, /Jorques/);
     assert.doesNotMatch(html, /undefined|ExponentPushToken/);
   }
   const baja = renderToStaticMarkup(React.createElement(modulo.AvisoBajaNotificacion, { onDesactivar() {}, onOcultar() {} }));
