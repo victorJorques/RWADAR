@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Notificaciones (campana con «1», Web Push, Android prioridad alta) y buzón Gmail en privacidad, commit 35a2434",
+  "nota": "Notificaciones: anexo legal, frase junto al botón y baja a la vista, commit 1359394",
   "revisionAprobada": {
-    "commit": "35a24349c7695bb556325e6edf4dbdbd16837b6e",
-    "contenidoSha256": "sha256:9af8b9c93f5ca2ea179d15eac564773e8141b51a18b42cfdd8aee59b4bd36383",
+    "commit": "1359394d811eeaee6511a16518cc31a1bd7cbe0b",
+    "contenidoSha256": "sha256:c455530adb8d862eff56de6ed7453628d284bb075fe30ebfd4de38704fa59403",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
