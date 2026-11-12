@@ -64,7 +64,7 @@ async function verBloque(pagina, donde, captura) {
   assert.equal(v.titulo, '¿Quieres colaborar con nosotros?');
   assert.ok(v.etiquetadoPor, `${donde}: la sección se nombra con su h2`);
   assert.match(v.texto, /plataforma o un emisor, trabajas en el sector o quieres proponer una mejora/);
-  assert.match(v.texto, /Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y RWAdar no recibe dinero de las inversiones\./);
+  assert.match(v.texto, /Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y hoy RWAdar no cobra comisiones por las inversiones\./);
   assert.equal(v.href, 'mailto:rwadares@gmail.com');
   assert.equal(v.nombre, 'Escríbenos: rwadares@gmail.com');
   assert.ok(v.alto >= 44, `${donde}: botón de ${v.alto} px`);
@@ -145,7 +145,7 @@ test('en Chromium: «¿Quieres colaborar con nosotros?» al final de Inicio (390
         assert.equal(b.nombre, 'Write to us: rwadares@gmail.com');
         assert.equal(b.href, 'mailto:rwadares@gmail.com');
         assert.equal(b.texto, 'If you are a platform or an issuer, work in the sector or want to suggest an improvement, write to us.');
-        assert.equal(b.nota, 'Working with us does not buy a place in the catalogue: offers are chosen on editorial criteria and RWAdar receives no money from investments.');
+        assert.equal(b.nota, 'Working with us does not buy a place in the catalogue: offers are chosen on editorial criteria, and RWAdar currently charges no commission on investments.');
       }
       if (CAPTURAS) {
         await pagina.locator('section.colabora[data-colabora="inicio"]').scrollIntoViewIfNeeded();

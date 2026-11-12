@@ -1484,7 +1484,7 @@ function PantallaPerfil({
         <FilaMenu
           icono="correo"
           titulo="Contactar sobre mis datos"
-          subtitulo="rwadares@gmail.com"
+          subtitulo="Datos y privacidad · rwadares@gmail.com"
           onPress={onContacto}
         />
         <FilaMenu

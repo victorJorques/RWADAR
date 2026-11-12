@@ -100,6 +100,11 @@
 .colabora-boton{max-width:100%;margin-top:20px;padding:12px 20px;overflow-wrap:anywhere}
 .colabora-boton svg{flex:none}
 .colabora-boton:focus-visible{outline:2px solid var(--senal);outline-offset:3px}
+/* De qué vive RWAdar: un enlace discreto a /transparencia-comercial, tras el botón. */
+.colabora-mas{margin:14px 0 0;font:400 .875rem/1.5 var(--body)}
+.colabora-mas a{display:inline-block;min-height:24px;padding:2px 0;color:var(--tx-2);text-decoration:underline;text-underline-offset:3px}
+.colabora-mas a:hover{color:var(--tx)}
+.colabora-mas a:focus-visible{outline:2px solid var(--senal);outline-offset:2px;border-radius:2px}
 /* En Perfil, a la escala de sus grupos; en la cuenta de escritorio, igual. */
 .movil-mas-cuerpo .colabora,.pn-body .colabora{margin-top:32px;padding:28px 0 4px}
 .movil-mas-cuerpo .colabora .ini-bloque-tit,.pn-body .colabora .ini-bloque-tit{font-size:1.25rem}

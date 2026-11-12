@@ -76,12 +76,12 @@ paso('no promete resultados ni presenta un clic como venta o cobro activo',
 const ctas = [...pagina.matchAll(/<a\b([^>]*\bclass="[^"]*boton-correo[^"]*"[^>]*)>/gi)];
 paso('el único CTA de contacto abre correo y no existe formulario de captación',
   ctas.length === 1
-  && /\bhref="mailto:RWAdar@protonmail\.com\?/.test(ctas[0][1])
+  && /\bhref="mailto:rwadares@gmail\.com\?/.test(ctas[0][1])
   && !/<form\b/i.test(pagina)
   && !/<button\b/i.test(pagina));
 
 paso('muestra el correo copiable y enlaza la privacidad junto al CTA',
-  /class="correo-copiable"[\s\S]*?>RWAdar@protonmail\.com<\/a>/.test(pagina)
+  /class="correo-copiable"[\s\S]*?>rwadares@gmail\.com<\/a>/.test(pagina)
   && /class="boton-correo"\s+aria-describedby="contactoPrivacidad"/.test(pagina)
   && /id="contactoPrivacidad"[\s\S]*?href="\/privacidad#consultas-b2b"/.test(pagina));
 

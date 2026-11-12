@@ -87,7 +87,7 @@ test('app · Colabora: encabezado real, las dos frases, la de independencia y un
   assert.deepEqual(textos(titulo), ['¿Quieres colaborar con nosotros?']);
   assert.ok(leer('../rwadar-site/index.html').includes(t.texto) && leer('../rwadar-site/index.html').includes(t.nota));
   assert.ok(textos(arbol).includes(t.texto) && /plataforma o un emisor/.test(t.texto) && /sector/.test(t.texto) && /mejora/.test(t.texto));
-  assert.ok(textos(arbol).includes('Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y RWAdar no recibe dinero de las inversiones.'));
+  assert.ok(textos(arbol).includes('Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y hoy RWAdar no cobra comisiones por las inversiones.'));
   const boton = porId(arbol, 'colaboraCorreo');
   assert.equal(boton.props.accessibilityRole, 'link');
   assert.equal(boton.props.accessibilityLabel, `Escríbenos: ${CORREO}`);
@@ -118,7 +118,7 @@ test('app · Colabora en inglés: título, frases, botón y su nombre accesible,
     const arbol = pintar();
     const todo = textos(arbol);
     for (const t of ['Would you like to work with us?', 'Write to us: rwadares@gmail.com',
-      'Working with us does not buy a place in the catalogue: offers are chosen on editorial criteria and RWAdar receives no money from investments.'])
+      'Working with us does not buy a place in the catalogue: offers are chosen on editorial criteria, and RWAdar currently charges no commission on investments.'])
       assert.ok(todo.includes(t), t);
     assert.ok(!todo.some((t) => /[¿á]|Escríbenos|Colaborar/.test(t)), 'no queda castellano');
     const boton = porId(arbol, 'colaboraCorreo');

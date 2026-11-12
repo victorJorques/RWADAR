@@ -2056,10 +2056,12 @@
   // «¿Quieres colaborar con nosotros?» al final de Inicio y de Perfil (12/11/2026), en la web y en la app.
   "¿Quieres colaborar con nosotros?": "Would you like to work with us?",
   "Si eres una plataforma o un emisor, trabajas en el sector o quieres proponer una mejora, escríbenos.": "If you are a platform or an issuer, work in the sector or want to suggest an improvement, write to us.",
-  "Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y RWAdar no recibe dinero de las inversiones.": "Working with us does not buy a place in the catalogue: offers are chosen on editorial criteria and RWAdar receives no money from investments.",
+  "Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y hoy RWAdar no cobra comisiones por las inversiones.": "Working with us does not buy a place in the catalogue: offers are chosen on editorial criteria, and RWAdar currently charges no commission on investments.",
   "Escríbenos: rwadares@gmail.com": "Write to us: rwadares@gmail.com",
   "Abre tu aplicación de correo": "Opens your email app",
   "No se pudo abrir tu aplicación de correo. Copia la dirección:": "Your email app could not be opened. Copy the address:",
+  // La fila de contacto de Perfil dice para qué es (12/11/2026).
+  "Datos y privacidad · rwadares@gmail.com": "Data and privacy · rwadares@gmail.com",
 };
 if(typeof module==='object'&&module.exports)module.exports=Object.freeze(diccionario);else raiz.RWAdarEnglish=Object.freeze(diccionario);
 })(typeof globalThis==='object'?globalThis:this);

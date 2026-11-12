@@ -12,24 +12,27 @@ import { tacto } from '../lib/tacto';
    colaborar con nosotros? y el correo de contacto». Un solo componente para
    las dos pantallas, con los mismos textos que la web (#colaboraPlantilla de
    rwadar-site/index.html); el inglés sale del diccionario común
-   (lib/idioma-en.js). Este correo es solo para colaborar: privacidad,
-   derechos y avisos legales también usan rwadares@gmail.com (cambio de Víctor del 12/11).
+   (lib/idioma-en.js). Desde el 12/11/2026, rwadares@gmail.com es el único
+   correo de contacto de RWAdar (también para privacidad, derechos y avisos
+   legales). El enlace a la transparencia comercial explica de qué vive RWAdar.
    Si el móvil no tiene con qué abrir el correo, se dice y la dirección
    queda escrita para copiarla (texto seleccionable).
    --------------------------------------------------------------------- */
 
 export const CORREO_COLABORA = 'rwadares@gmail.com';
 export const MAILTO_COLABORA = `mailto:${CORREO_COLABORA}`;
+export const URL_TRANSPARENCIA = 'https://rwadar.pages.dev/transparencia-comercial';
 export const TEXTOS_COLABORA = Object.freeze({
   titulo: '¿Quieres colaborar con nosotros?',
   texto: 'Si eres una plataforma o un emisor, trabajas en el sector o quieres proponer una mejora, escríbenos.',
-  nota: 'Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y RWAdar no recibe dinero de las inversiones.',
+  nota: 'Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y hoy RWAdar no cobra comisiones por las inversiones.',
   boton: `Escríbenos: ${CORREO_COLABORA}`,
   pista: 'Abre tu aplicación de correo',
   fallo: 'No se pudo abrir tu aplicación de correo. Copia la dirección:',
+  transparencia: 'Transparencia comercial',
 });
 
-export default function Colabora({ enPerfil = false, abrirCorreo = (url) => Linking.openURL(url) }) {
+export default function Colabora({ enPerfil = false, abrirCorreo = (url) => Linking.openURL(url), abrirWeb = (url) => Linking.openURL(url) }) {
   const [fallo, setFallo] = useState(false);
   async function escribir() {
     tacto.abrir();
@@ -58,6 +61,11 @@ export default function Colabora({ enPerfil = false, abrirCorreo = (url) => Link
           <Text noTraducir selectable style={e.correo}>{CORREO_COLABORA}</Text>
         </View>
       ) : null}
+      <Pressable testID="colaboraTransparencia" accessibilityRole="link" hitSlop={8}
+        onPress={() => { Promise.resolve().then(() => abrirWeb(URL_TRANSPARENCIA)).catch(() => {}); }}
+        style={({ pressed, focused }) => [e.enlace, focused && e.enlaceFoco, pressed && { opacity: 0.7 }]}>
+        <Text style={e.enlaceTxt}>{t.transparencia}</Text>
+      </Pressable>
     </View>
   );
 }
@@ -77,4 +85,7 @@ const e = StyleSheet.create({
   fallo: { marginTop: 12, gap: 4 },
   falloTxt: { ...T.menor, fontSize: 14, lineHeight: 20, color: C.tx2 },
   correo: { fontFamily: F.semi, fontSize: 16, lineHeight: 22, color: C.tx },
+  enlace: { alignSelf: 'flex-start', minHeight: 24, justifyContent: 'center', marginTop: 14, borderRadius: R.s },
+  enlaceFoco: { borderWidth: 2, borderColor: C.senal },
+  enlaceTxt: { ...T.menor, fontSize: 14, lineHeight: 20, color: C.tx2, textDecorationLine: 'underline' },
 });

@@ -1619,7 +1619,7 @@ const aprendeHTML = lee('aprende/index.html');
     const en = require('./rwadar-site/assets/idioma-en-20261022.js');
     const textosColabora = ['¿Quieres colaborar con nosotros?',
       'Si eres una plataforma o un emisor, trabajas en el sector o quieres proponer una mejora, escríbenos.',
-      'Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y RWAdar no recibe dinero de las inversiones.',
+      'Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y hoy RWAdar no cobra comisiones por las inversiones.',
       'Escríbenos: rwadares@gmail.com'];
     const [iAprende, iColabora, iPie] = ['id="iniAprendeTit"', '<div data-colabora="inicio" hidden></div>', 'class="ini-pie"'].map(x => panelInicioHTML.indexOf(x));
     const [iPerfil, iNota] = [panelPerfilHTML.indexOf('<div data-colabora="perfil" hidden></div>'), panelPerfilHTML.indexOf('class="movil-nota-final"')];
