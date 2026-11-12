@@ -159,6 +159,9 @@ export default function App() {
   const [criteriosOfertasAbiertos, setCriteriosOfertasAbiertos] = useState(false);
   const [abierta, setAbierta] = useState(null);
   const [ofertaAbierta, setOfertaAbierta] = useState(null);
+  // La pantalla abierta encima de Inicio («Mercado y noticias», «Aprende» o
+  // una noticia): la ventana de novedades espera a que se cierre.
+  const [pantallaInicio, setPantallaInicio] = useState(null);
   const [inversionInicial, setInversionInicial] = useState(null);
   // «¿No quieres estos avisos?» de Inicio: Perfil baja hasta Avisos y lo consume.
   const [enfocarAvisosPerfil, setEnfocarAvisosPerfil] = useState(false);
@@ -443,15 +446,16 @@ export default function App() {
 
   /* Novedades de RWAdar (12/11/2026): la ventana sale una vez por versión,
      cuando ya se ve Inicio y no hay nada más encima: ni el acceso, el
-     bloqueo o la carga, ni una ficha, el explicador, la privacidad o una
-     notificación abriéndose. El aviso de versión nueva y la bienvenida no
+     bloqueo o la carga, ni una ficha, el explicador, la privacidad, una
+     pantalla de Inicio («Mercado y noticias», «Aprende») o una notificación
+     abriéndose. El aviso de versión nueva y la bienvenida no
      son ventanas: siguen en su sitio debajo. */
   const pantallaPrincipal = fuentesListas && !cargando && Boolean(usuarioAdmitido)
     && !(CUENTA_REMOTA_ACTIVA && (restaurandoAcceso || estadoCuenta?.estado === 'restaurando' || errorRestauracion))
     && !(CUENTA_REMOTA_ACTIVA && (seguridad.preparando || seguridad.bloqueado));
   const novedadesRwadar = useNovedadesRwadar({
     listo: pantallaPrincipal && pestana === 'inicio' && !explicando && !privacidad && !abierta && !ofertaAbierta
-      && !slugAvisoPendiente && !destinoAvisoPendiente,
+      && !pantallaInicio && !slugAvisoPendiente && !destinoAvisoPendiente,
     leerVista: leerNovedadesVistas, marcarVista: marcarNovedadesVistas,
   });
 
@@ -843,6 +847,7 @@ export default function App() {
               refrescando={refrescando}
               onActualizar={refrescar}
               onDestino={irA}
+              onPantalla={setPantallaInicio}
               onExplicar={() => { tacto.abrir(); setExplicando(true); }}
               fuera={fuera}
               cambios={avisos}

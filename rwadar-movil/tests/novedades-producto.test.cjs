@@ -50,12 +50,51 @@ test('novedades · la copia incluida es válida, igual al archivo de ejemplo y c
   assert.doesNotMatch(JSON.stringify(datos), /garantiz|asegurad|sin riesgo|guaranteed|risk-free/i);
 });
 
-test('novedades · el JSON de la web (cuando está en el repositorio) lo acepta la app y es la misma copia', { skip: fs.existsSync(JSON_WEB) ? false : 'rwadar-site/datos/novedades-producto.json aún no está en esta rama' }, () => {
-  const web = JSON.parse(fs.readFileSync(JSON_WEB, 'utf8'));
+test('novedades · el JSON de la web lo acepta la app y la copia incluida dice lo mismo (obligatorio)', () => {
+  assert.ok(fs.existsSync(JSON_WEB), 'falta rwadar-site/datos/novedades-producto.json: la app y la web leen el mismo archivo');
+  const texto = fs.readFileSync(JSON_WEB, 'utf8');
+  const web = JSON.parse(texto);
   assert.doesNotThrow(() => n.validarNovedadesProducto(web), 'la app rechazaría el JSON que publica la web');
-  assert.ok(fs.statSync(JSON_WEB).size <= n.MAX_CARACTERES);
-  assert.deepEqual(NOVEDADES_PRODUCTO, web,
-    'La copia de la app no es la de la web: pega rwadar-site/datos/novedades-producto.json en rwadar-movil/lib/novedades-producto.js y en fixtures/novedades-producto.ejemplo.json');
+  assert.ok(texto.length <= n.MAX_CARACTERES);
+  const aviso = 'La copia de la app no es la de la web: ejecuta node rwadar-novedades-producto.js en la raíz';
+  assert.deepEqual(NOVEDADES_PRODUCTO, web, aviso);
+  assert.equal(leer('fixtures', 'novedades-producto.ejemplo.json'), texto, aviso);
+  const sincronizar = require(path.join(RAIZ, '..', 'rwadar-novedades-producto.js'));
+  assert.deepEqual(sincronizar.diferencias(), [], aviso);
+});
+
+/* Lo que dice la ventana tiene que ser cierto también en la app: la campana
+   y la casilla «Mantener la sesión iniciada» solo existen en la web, y cada
+   etiqueta entre «» del resumen que no diga «en la web» tiene que existir en
+   la app (revisión del 12/11/2026). */
+test('novedades · el texto común es cierto en la app: lo que solo está en la web lo dice, y las etiquetas «» existen en la app', () => {
+  const fuentes = [leer('App.js'), ...fs.readdirSync(path.join(RAIZ, 'componentes'))
+    .filter((f) => f.endsWith('.js') && f !== 'NovedadesRwadar.js').map((f) => leer('componentes', f))].join('\n');
+  const soloWeb = /campana|Mantener la sesión|\bbell\b|Keep me signed in/i;
+  const enLaWeb = /en la web|on the website/i;
+  const revisar = (contexto, textos) => {
+    for (const t of textos) {
+      if (soloWeb.test(t)) assert.match(`${contexto} ${t}`, enLaWeb, `solo vale en la web y no lo dice: ${t}`);
+    }
+  };
+  for (const p of NOVEDADES_PRODUCTO.resumen) {
+    revisar(p.titulo, [p.texto]);
+    revisar(p.en.titulo, [p.en.texto]);
+    if (enLaWeb.test(`${p.titulo} ${p.texto}`)) continue;
+    for (const [, etiqueta] of `${p.titulo} ${p.texto}`.matchAll(/«([^»]+)»/g)) {
+      if (/^\d+$/.test(etiqueta)) continue; // «1»: el número, no una etiqueta.
+      assert.ok(fuentes.includes(etiqueta), `la app no tiene «${etiqueta}» (resumen ${p.id})`);
+    }
+  }
+  for (const s of NOVEDADES_PRODUCTO.detalle) {
+    revisar(s.titulo, [...s.parrafos, ...s.pasos]);
+    revisar(s.en.titulo, [...s.en.parrafos, ...s.en.pasos]);
+  }
+  // Lo que la revisión vio mal: el botón de la web en el paso de la app y Android solo en la app.
+  const avisos = NOVEDADES_PRODUCTO.detalle.find((s) => s.id === 'avisos-movil');
+  assert.ok(avisos.pasos.some((p) => p.includes('«Notificaciones en este móvil»')) && fuentes.includes('Notificaciones en este móvil'));
+  assert.ok(!avisos.pasos.some((p) => /Activar notificaciones en este móvil/.test(p)));
+  assert.match(avisos.parrafos.join(' '), /En Android, puedes hacerlo en la app de RWAdar o en la web/);
 });
 
 /* ---------------------------------------------------------------------
@@ -312,7 +351,9 @@ function cargarComponente(react) {
       if (pedido === './Idioma') return soporteIdioma(react, nativo);
       if (pedido === 'react') return react;
       if (pedido === 'react-native') return nativo;
-      if (pedido === 'react-native-safe-area-context') return { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' };
+      // Barra de estado de 24 y barra de 3 botones de 48 (Android).
+      if (pedido === 'react-native-safe-area-context') return { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView',
+        useSafeAreaInsets: () => ({ top: 24, bottom: 48, left: 0, right: 0 }) };
       if (pedido === 'react-native-svg') return { __esModule: true, default: 'Svg', Path: 'Path' };
       if (pedido === './Navegacion') return { Icono: () => null };
       if (pedido === '../lib/tema') return tema;
@@ -380,6 +421,14 @@ test('novedades · no sale encima de otra cosa: espera a que se vea Inicio (acce
   s = await app.asentar();
   assert.equal(s.ventana, true, 'en cuanto Inicio queda libre, sale');
   app.desmontar();
+  // Con «Mercado y noticias» abierta desde Inicio (App pone listo=false), espera; al cerrarla, sale.
+  const conPantalla = arrancar({ listo: false });
+  assert.equal((await conPantalla.asentar()).ventana, false, 'con una pantalla de Inicio encima, espera');
+  await esperar(20);
+  assert.equal((await conPantalla.asentar()).ventana, false, 'sigue esperando mientras la pantalla esté abierta');
+  conPantalla.estado.listo = true;
+  assert.equal((await conPantalla.asentar()).ventana, true, 'al cerrar la pantalla, sale');
+  conPantalla.desmontar();
   // Mientras se lee lo visto o se descarga, tampoco sale.
   let soltar;
   const lenta = arrancar({ vista: () => new Promise((r) => { soltar = r; }) });
@@ -463,6 +512,14 @@ test('novedades · la ventana: diálogo accesible con el título, los puntos (ic
   assert.equal(dialogo.props['aria-modal'], true);
   assert.equal(dialogo.props.accessibilityViewIsModal, true);
   assert.equal(dialogo.props.accessibilityLabel, 'Novedades de RWAdar');
+  // El Modal dibuja bajo las barras del móvil: el fondo deja 16 más que cada una.
+  assert.equal(deTipo(arbol, 'SafeAreaProvider').length, 1);
+  const fondo = porId(arbol, 'novedadesFondo');
+  const estilo = Object.assign({}, ...[].concat(fondo.props.style));
+  assert.equal(estilo.paddingTop, 24 + 16);
+  assert.equal(estilo.paddingBottom, 48 + 16, '«Entendido» no queda pegado a la barra de 3 botones');
+  assert.ok(estilo.paddingLeft >= 16 && estilo.paddingRight >= 16);
+  assert.equal(modal.props.statusBarTranslucent, true);
   const cabecera = nodos(arbol).find((x) => x?.props?.accessibilityRole === 'header');
   assert.deepEqual(textos(cabecera), ['Novedades de RWAdar']);
   assert.ok(textos(arbol).includes('12 de noviembre de 2026'));
@@ -573,11 +630,19 @@ test('novedades · en inglés: el contenido sale de su «en» y los botones del 
 test('novedades · App: la ventana espera a Inicio sin nada encima, el detalle lleva a Perfil › Avisos y Perfil las abre', () => {
   const app = leer('App.js');
   const llamada = app.slice(app.indexOf('const novedadesRwadar = useNovedadesRwadar('), app.indexOf('const refrescar = async'));
-  for (const x of ["pestana === 'inicio'", '!explicando', '!privacidad', '!abierta', '!ofertaAbierta', '!slugAvisoPendiente', '!destinoAvisoPendiente',
+  for (const x of ["pestana === 'inicio'", '!explicando', '!privacidad', '!abierta', '!ofertaAbierta', '!pantallaInicio', '!slugAvisoPendiente', '!destinoAvisoPendiente',
     'pantallaPrincipal', 'leerVista: leerNovedadesVistas', 'marcarVista: marcarNovedadesVistas']) assert.ok(llamada.includes(x), x);
   const principal = app.slice(app.indexOf('const pantallaPrincipal ='), app.indexOf('const novedadesRwadar ='));
   for (const x of ['fuentesListas', '!cargando', 'usuarioAdmitido', 'restaurandoAcceso', "estadoCuenta?.estado === 'restaurando'", 'errorRestauracion',
     'seguridad.preparando', 'seguridad.bloqueado']) assert.ok(principal.includes(x), x);
+  // «Mercado y noticias», «Aprende» o una noticia abiertas desde Inicio son Modal a pantalla
+  // completa: Inicio avisa a App de cuál hay encima (y de que ya no hay ninguna al salir).
+  assert.match(app, /<Inicio\s+refrescando=\{refrescando\}\s+onActualizar=\{refrescar\}\s+onDestino=\{irA\}\s+onPantalla=\{setPantallaInicio\}/);
+  assert.ok(app.indexOf('const [pantallaInicio, setPantallaInicio] = useState(null);') < app.indexOf('useNovedadesRwadar('));
+  const inicio = leer('componentes', 'Inicio.js');
+  assert.match(inicio, /irCalculadora = 0, onCalculadoraVista, onPantalla,\n\}\) \{/);
+  assert.match(inicio, /useEffect\(\(\) => \{ avisarPantalla\.current\?\.\(seccion\); \}, \[seccion\]\);/);
+  assert.match(inicio, /useEffect\(\(\) => \(\) => \{ avisarPantalla\.current\?\.\(null\); \}, \[\]\);/);
   // El hook va antes de cualquier return (reglas de los hooks).
   assert.ok(app.indexOf('useNovedadesRwadar(') < app.indexOf('if (CUENTA_REMOTA_ACTIVA && (restaurandoAcceso'));
   assert.match(app, /<VentanaNovedades visible=\{novedadesRwadar\.ventana\} datos=\{novedadesRwadar\.datos\}\s*onDetalle=\{novedadesRwadar\.verDetalle\} onEntendido=\{novedadesRwadar\.entendido\} \/>/);

@@ -71,7 +71,7 @@ function PantallaInicio({ visible, titulo, volver, onCerrar, children }) {
 export default function Inicio({
   refrescando, onActualizar, onDestino, onExplicar, fuera = [], cambios = [], renderCambio,
   plataformas = [], ofertas = [], fechaCatalogo = null, onAbrirPlataforma, onAbrirOferta, onAbrirEnlace,
-  tarjetaAvisos = null, irCalculadora = 0, onCalculadoraVista,
+  tarjetaAvisos = null, irCalculadora = 0, onCalculadoraVista, onPantalla,
 }) {
   const idioma = useIdioma();
   const t = textosInicio(idioma);
@@ -97,6 +97,12 @@ export default function Inicio({
   const cerrar = () => setSeccion(null);
   // Desde una pantalla a otra parte de la app: primero se cierra la pantalla.
   const ir = (destino, url) => { setSeccion(null); onDestino?.(destino, url); };
+  // App sabe qué pantalla hay encima de Inicio (la ventana de novedades
+  // espera a que se cierre). Al salir de Inicio, ya no hay ninguna.
+  const avisarPantalla = useRef(onPantalla);
+  avisarPantalla.current = onPantalla;
+  useEffect(() => { avisarPantalla.current?.(seccion); }, [seccion]);
+  useEffect(() => () => { avisarPantalla.current?.(null); }, []);
 
   // «Calcula tus números»: Inicio sube hasta el resultado al escribir y, en
   // «Afinar», lo enseña arriba en pequeño (que el teclado no lo tape).

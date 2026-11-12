@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Modal, StyleSheet } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Path } from 'react-native-svg';
 import { Pressable, ScrollView, Text, View, useIdioma } from './Idioma';
 import { Icono } from './Navegacion';
@@ -110,6 +110,21 @@ export function IconoNovedad({ nombre, color = C.senal, tamano = 22 }) {
   );
 }
 
+/* El fondo de la ventana respeta las barras del móvil: el Modal dibuja bajo
+   la barra de estado y la de navegación (statusBarTranslucent y
+   navigationBarTranslucent), así que la tarjeta se separa 16 de cada una
+   (con la barra de 3 botones, «Entendido» no queda pegado a ella). */
+function FondoSeguro({ children }) {
+  const zona = useSafeAreaInsets();
+  return (
+    <View testID="novedadesFondo" style={[s.fondo, {
+      paddingTop: zona.top + 16, paddingBottom: zona.bottom + 16,
+      paddingLeft: Math.max(zona.left, UI.margen), paddingRight: Math.max(zona.right, UI.margen) }]}>
+      {children}
+    </View>
+  );
+}
+
 /* 1 · La ventana: título, los puntos y dos botones. */
 export function VentanaNovedades({ visible, datos, onDetalle, onEntendido }) {
   const idioma = useIdioma();
@@ -118,7 +133,8 @@ export function VentanaNovedades({ visible, datos, onDetalle, onEntendido }) {
     <Modal visible={!!visible} transparent animationType="fade" onRequestClose={onEntendido}
       statusBarTranslucent navigationBarTranslucent>
       {visible ? (
-        <View style={s.fondo}>
+        <SafeAreaProvider>
+        <FondoSeguro>
           <View style={s.tarjeta} testID="novedadesVentana" role="dialog" aria-modal accessibilityViewIsModal
             noTraducir idiomaOriginal={t.lengua} accessibilityLabel={t.titulo}>
             <ScrollView style={s.desplazable} contentContainerStyle={s.ventanaCuerpo} bounces={false}>
@@ -152,7 +168,8 @@ export function VentanaNovedades({ visible, datos, onDetalle, onEntendido }) {
               </Pressable>
             </View>
           </View>
-        </View>
+        </FondoSeguro>
+        </SafeAreaProvider>
       ) : null}
     </Modal>
   );
@@ -235,9 +252,8 @@ export function PantallaNovedades({ visible, datos, onCerrar, onIrAvisos, onHist
 const s = StyleSheet.create({
   /* Ventana: el fondo se oscurece y la tarjeta queda en medio, legible de
      320 px en adelante (con letra grande, el texto se desplaza y los botones
-     siguen a la vista). */
-  fondo: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: UI.margen, paddingVertical: 32,
-    backgroundColor: 'rgba(0,0,0,0.72)' },
+     siguen a la vista). Los márgenes del fondo, en FondoSeguro. */
+  fondo: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.72)' },
   tarjeta: { width: '100%', maxWidth: 440, maxHeight: '100%', backgroundColor: C.s2, borderRadius: R.xl,
     borderWidth: 1, borderColor: C.bd, paddingTop: 22, paddingBottom: 18, ...E.e2 },
   desplazable: { flexGrow: 0, flexShrink: 1 },
