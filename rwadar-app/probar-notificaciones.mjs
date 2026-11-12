@@ -656,9 +656,37 @@ paso('clave_publica_webpush devuelve la clave pública guardada', (await rpc(ana
    ===================================================================== */
 const pendientes = async (tanda = 200) => { await sesion(db); return (await una(db, 'select rwadar_novedades.webpush_pendientes($1) p', [tanda])).p; };
 const resultado = async (lista) => { await sesion(db); return (await una(db, 'select rwadar_novedades.webpush_resultado($1::jsonb) r', [JSON.stringify(lista)])).r; };
+/* El reloj de PGlite va en milisegundos (sin microsegundos): dos órdenes
+   seguidas pueden llevar la misma hora. webpush_pendientes solo manda lo
+   publicado DESPUÉS de encender el push y de crear la suscripción
+   (publicado_el > push_activado_el y > s.creado_el, con «>»), así que un
+   anuncio publicado en el mismo milisegundo que activar-push no salía y la
+   prueba fallaba de vez en cuando (CI del 12/11: 88/93, «Enviadas: 0»).
+   Antes de publicar se espera a que el reloj de la base haya pasado de
+   verdad la activación y la última suscripción: el anuncio queda siempre
+   después, como en producción, y lo que se comprueba no cambia. */
+const relojPasado = async () => {
+  for (let i = 0; i < 2000; i++) {
+    const { ya } = await una(db, `select clock_timestamp() > greatest('-infinity'::timestamptz,
+        (select push_activado_el from rwadar_novedades.configuracion where unica),
+        (select max(creado_el) from rwadar_novedades.suscripciones_web)) ya`);
+    if (ya) return;
+    await new Promise((r) => setTimeout(r, 1));
+  }
+  throw new Error('el reloj de la base no avanza');
+};
 const anunciar = async (clave, titulo, texto, enlace = 'https://rwadar.pages.dev/') => {
   await sesion(db);
+  await relojPasado();
   return Number((await una(db, "select rwadar_novedades.anunciar('novedad', $1, $2, $3, $4) id", [clave, titulo, texto, enlace])).id);
+};
+// Lo que la prueba da por hecho de un anuncio que debe salir, justo después
+// de publicarlo: va después de encender el push y de todas las suscripciones.
+const despuesDeTodo = async (id) => {
+  await sesion(db);
+  return (await una(db, `select a.publicado_el > c.push_activado_el
+      and not exists (select 1 from rwadar_novedades.suscripciones_web s where s.creado_el >= a.publicado_el) d
+    from rwadar_novedades.anuncios a, rwadar_novedades.configuracion c where a.id = $1 and c.unica`, [id])).d === true;
 };
 const envios = async () => { await sesion(db); return filas(db, 'select * from rwadar_novedades.envios_web order by id'); };
 await consentir(ana);
@@ -1141,11 +1169,13 @@ if (hayBash) {
   // Encendido: el anuncio publicado después de encender sale a Ana.
   await db.exec(ACTIVAR_PUSH);
   const aFlujo2 = await anunciar('novedad:webpush-flujo-2', 'Las notificaciones ya llegan', 'Actívalas en Perfil desde tu móvil.');
+  paso('el anuncio del flujo queda publicado después de encender el push y de las suscripciones de Ana (el reloj de PGlite va en milisegundos)',
+    await despuesDeTodo(aFlujo2));
   const desde = recibidos.length;
   const encendido = await correPaso(WEB, 'Enviar', ENVIO);
   const llegados = recibidos.slice(desde);
   const textoTodo = `${encendido.texto}${encendido.resumen}`;
-  paso(`con el push encendido, el paso Enviar (psql + remitente de verdad) manda el anuncio a los 2 navegadores de Ana, firmado y cifrado, y nada a Beto ni a Vic (${encendido.estado === 0 ? 'OK' : encendido.texto.trim()})`,
+  paso(`con el push encendido, el paso Enviar (psql + remitente de verdad) manda el anuncio a los 2 navegadores de Ana, firmado y cifrado, y nada a Beto ni a Vic (${encendido.estado === 0 ? `OK, ${llegados.length} recibidas` : encendido.texto.trim()})`,
     encendido.estado === 0 && isDeepStrictEqual(llegados.map((r) => r.endpoint).sort(), [fAnaFcm.endpoint, fAnaApple.endpoint].sort())
     && llegados.every((r) => r.vapid && r.k === clave.c && r.cabeceras.ttl === '86400' && r.cabeceras.urgency === 'high'
       && isDeepStrictEqual(JSON.parse(r.claro.texto), { v: 1, titulo: 'Las notificaciones ya llegan', texto: 'Actívalas en Perfil desde tu móvil.',

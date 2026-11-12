@@ -6,6 +6,93 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (10) · Claude · Notificaciones: retoques del auditor y dos pruebas que fallaban sin motivo
+
+Víctor: «Haz lo que tengas que hacer para que funcione, con lógica, que no me
+suponga a mí ni a RWAdar nada malo obvio». Commits en
+`worktree-wf_546ac51b-386-2`, sobre `d927c09` (entrada 9), para unir a
+`claude/sharp-babbage-m3bbbw`. **Sin push, sin publicar, Supabase y EAS sin
+tocar. El envío sigue apagado (`push_habilitado = false`).** Ni SQL ni
+migraciones: la base no cambia. `privacidad.html` y `docs/legal`, sin tocar
+(los lleva otro agente).
+
+- **Web, diálogo de la campana («Tus avisos»)** (`76ebc8e`): la frase de la
+  baja («¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del
+  móvil.») y el botón «Notificaciones y avisos en Perfil» van en un **pie fijo**,
+  fuera de la lista que se desplaza. Antes, con 10 avisos, quedaban debajo de la
+  lista y había que bajar para verlos. Comprobado en Chromium a 390 × 844 con 10
+  avisos: se ven al abrir y siguen a la vista con la lista al final; con el
+  diálogo de antes, la prueba nueva falla («baja: false»).
+- **Primera capa junto al botón de las notificaciones** (texto provisional; el
+  anexo legal puede pulirlo y el corrector ajustarlo):
+  - web (`76ebc8e`), bajo «Activar/Desactivar notificaciones en este móvil»:
+    «Al activarlas, tu navegador usa el servicio de notificaciones de su
+    fabricante (Apple, Google, Mozilla o Microsoft); el texto va cifrado. Más en
+    Privacidad.», con el enlace a `/privacidad#avisos-novedades` (en verde y
+    subrayado). No sale en ordenador ni en el iPhone sin la web en la pantalla de
+    inicio (ahí no hay botón).
+  - app (`f3c2986` y `68ba090`), bajo «Notificaciones en este móvil»: «Al
+    activarlas, tu móvil se registra en Firebase Cloud Messaging (Google) y
+    Expo para recibirlas. Más en Privacidad.». Solo en Android (en un iPhone la entrega
+    sería de Apple); no sale en la 1.4.1 ni en un dispositivo que no puede
+    recibirlas.
+  - Con su inglés: la de la web en `idioma-en-avisos-20261112.js`; la de la app
+    en `lib/idioma-en.js` (copiado a la web).
+- **App, mensaje al activar los avisos** (`f3c2986`): con el correo apagado
+  ya no dice «o con el enlace de cada correo»; dice «Avisos de novedades
+  activados. Puedes darte de baja aquí cuando quieras.», como la web. Con el
+  correo encendido sigue la frase de antes. Esa frase en inglés pasa del
+  diccionario solo de la web al común (probar-web exige que no se repitan).
+  **Llega a los móviles con una OTA** (guardián: compatible, 1.4.2(24));
+  enviarla es otra orden de Víctor.
+- **Prueba que fallaba a veces en CI** (`691330b`):
+  `probar-notificaciones.mjs`, «con el push encendido, el paso Enviar…».
+  - Causa, comprobada: el reloj de PGlite va en milisegundos (sin
+    microsegundos). `activar-push` guarda la hora con `clock_timestamp()` y el
+    anuncio se publica con `now()`; si caen en el mismo milisegundo, la base no
+    lo manda, porque solo manda lo publicado **después** de encender (`>`). En
+    local hay 1 ms de margen (medido en 5 vueltas); en la máquina de CI, a
+    veces 0.
+  - Reproducido: forzando el mismo milisegundo salen exactamente los mismos 5
+    fallos (88/93) que en el CI del traspaso (ejecución 43253888473, intento 1).
+  - Arreglo, solo en la prueba: antes de publicar un anuncio, espera a que el
+    reloj de la base haya pasado la activación y la última suscripción, y
+    comprueba que el anuncio del flujo queda después. Lo que se comprueba no
+    cambia. En producción no pasa: hay microsegundos y entre encender y publicar
+    pasan minutos.
+  - Resultado: 94/94 seis veces seguidas (unos 7 s cada una), cinco más con la
+    CPU cargada (8 procesos ocupados en 4 núcleos, unos 16 s cada una) y una con
+    la activación adelantada 20 ms a propósito.
+- **`rwadar-acceso/tokenizacion.test.mjs`** (`d4d43a6`): fallaba desde hoy
+  porque su dato fijo de CoinGecko es del 10/11 a las 15:25 UTC y el servidor
+  rechaza los de más de 48 h. El arnés del worker local acepta un reloj
+  (`ahora`, como `Date.now`) que el worker toma al crearse, igual que ya hacía
+  con `fetch`; la prueba le da uno que empieza el 10/11 a las 15:31:37 UTC y
+  avanza. Lo que se comprueba no cambia. El navegador sigue con su hora (solo
+  cambia «hoy, 15:25» o «dato del 10/11/2026, 15:25», y se aceptan las dos).
+- **Pruebas** (sobre `76ebc8e`; la app, también sobre `68ba090`):
+  - `npm test` de la raíz, entero, salida 0: base sin fallos
+    (`probar-avisos-registrados` 275/275, `probar-notificaciones` 94/94,
+    `.github` 103/103), `probar-web` 678/678, `rwadar-movil` 591 y 2
+    omitidas, herramientas bien y `rwadar-acceso` **262/262** (antes 261/262:
+    ya pasa «Mercado y noticias» en Chromium).
+  - `rwadar-movil` tras `68ba090`: 592 correctas, 0 fallidas, 2 omitidas.
+  - `campana-avisos-navegador` (Chromium) 3/3; `tokenizacion` 9/9.
+  - Guardián de OTA con `--base fa30779`: compatible, 1.4.2(24).
+  - Copia de los diccionarios web/móvil: idénticos.
+  - gitleaks 8.30.1 con `rwadar-app/gitleaks.toml` sobre estos commits: sin
+    hallazgos.
+- **Para publicar** (cada paso con la orden de Víctor): «Publicar web» (preview,
+  comprobar, producción) y la OTA de la app. No hay nada que aplicar en Supabase.
+- **Queda para el corrector o el anexo legal:**
+  - en la web y en la app, la frase nueva sigue al texto de estado, que también
+    empieza por «Al activarlas…» y ya nombra a Apple, Google, Mozilla y
+    Microsoft (web) o a Expo y Google (app): se pueden fundir en una;
+  - en la web, el enlace «Privacidad» de la información básica de Perfil no se
+    distingue del texto (el nuevo, sí);
+  - en la app, «Más en Privacidad» remite al botón «Leer privacidad», que está
+    más arriba en el mismo panel.
+
 ## 12 de noviembre de 2026 (9) · Claude · Notificaciones publicadas: base 32, clave VAPID, web n.º 70/71 y OTA n.º 23
 
 Víctor: «que salten las notificaciones en la app tipo WhatsApp y además salga
