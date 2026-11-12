@@ -20,3 +20,5 @@ button{min-width:0;min-height:48px;padding:13px 16px;border:1px solid transparen
 @media(prefers-reduced-motion:reduce){.radar-scan{animation:none;transform:rotate(35deg)}}
 /* /baja (avisos de novedades): una sola columna con el mismo panel que /acceso. */
 .acceso.baja{grid-template-columns:minmax(0,520px);justify-content:center}.baja .panel-acceso{grid-column:1/-1}.baja #baja{width:100%;margin-bottom:4px}.baja .volver-radar{margin:18px 0 0;font-size:13px}
+/* La casilla «Mantener la sesión iniciada» también al confirmar desde el correo (12/11/2026). */
+#campo-mantener-enlace{margin:4px 0 18px}
