@@ -35,8 +35,14 @@ Supabase sin tocar).
 - **Pruebas:** `rwadar-movil/tests/colabora.test.cjs` (4),
   `rwadar-acceso/colabora-navegador.test.mjs` (Chromium a 390 y 1366: sitio,
   h2, mailto, foco, contraste AA, sin desbordes e inglés) y una comprobación
-  en `probar-web.mjs`. `npm test` de la raíz y el guardián de la OTA (base
-  `fa30779…`) en verde.
+  en `probar-web.mjs`. Ajustadas tres pruebas que montan `PantallaPerfil`
+  a mano (les falta el nombre `Colabora`) y la de Tab de Inicio en
+  `tokenizacion.test.mjs` (ahora pasa por «Escríbenos» antes de «Nota legal
+  completa»). `npm test` de la raíz en verde (código 0) sobre la rama sin el
+  commit del cambio de correo; con él fallan `probar-para-empresas.mjs` y dos
+  pruebas del diccionario de avisos que siguen esperando
+  RWAdar@protonmail.com: son de ese cambio, no de este apartado. Guardián de
+  la OTA (base `fa30779…`): `ok`.
 - **Pendiente (Víctor):** revisar y, si le gusta, publicar web y OTA con
   permiso expreso. La cuenta de escritorio solo se ve con sesión: se comprobó
   pintándola a mano en local, donde las cuentas están apagadas.
