@@ -37,6 +37,18 @@ Informe: [`docs/INVESTIGACION-CATALOGO-2026-11-11.md`](../INVESTIGACION-CATALOGO
   escépticos; el bruto, fuera de Git).
   - Límite firme: no se elude ningún control anti-bots. El sistema de
     seguridad bloqueó un intento con Midas y no se repitió.
+- **Publicado** (orden de Víctor de investigar y publicar):
+  - PR #101 y PR #102 (solo el sello), unidas con squash.
+  - «Tokenización diaria» n.º 3: correcta, 9,5 min. La rama
+    `datos-tokenizacion` ya tiene la serie: 30 de 40 tokens, último punto
+    42.970 M$.
+  - «Publicar web» n.º 64 (preview) y n.º 65 (producción), correctas. Las dos
+    pasan 36/36 en la comprobación como visitante (Playwright a 390 y 1366):
+    cifra = último punto, pestañas, sin el +124 %, calculadora (3.000 € al
+    4 % en 10 años da «unos 4.167 €»), noticias del 11/11 con fotos, fichas
+    de Spiko (2,41 %) y Schwarzer Weg (69,90 €), sin errores JS ni desbordes.
+  - «OTA Android» n.º 20 con la base `fa30779…`: enviada el 12/11 a las
+    00:27 UTC, tras las pruebas de la app y la de compatibilidad.
 - **Límite de uso de 5 horas:** a las 10:45 UTC cortó todos los equipos. Se
   retomó a las 14:16, comprobado antes de decir nada.
 - **Pendiente para el 12/11:**
