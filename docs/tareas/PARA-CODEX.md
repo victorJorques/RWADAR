@@ -6,6 +6,65 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (4) · Claude · Web: campana con «1», bandeja y notificaciones en el móvil (Web Push)
+
+Víctor: «que las notificaciones salten al móvil tipo WhatsApp y además salga un 1
+en la app». Esta parte es **solo la web** (rwadar-site, rwadar-acceso,
+privacidad, pruebas). La base (migración 32, envío y clave VAPID) y la app van
+en otras ramas del mismo encargo. Sin push, sin publicar, Supabase sin tocar.
+
+- **Interruptores (`assets/rwadar-20260820.js`):** encendidos
+  `AVISOS_NOVEDADES_REMOTOS` (Perfil › Avisos con el texto versionado
+  `novedades-v2-2026-11-06`), `AVISOS_BANDEJA_REMOTA` y uno nuevo,
+  `AVISOS_WEBPUSH_REMOTO`. La **casilla del alta** tiene ahora su propio
+  interruptor, `AVISOS_CASILLA_ALTA`, **apagado**, en `assets/acceso.js` y
+  `rwadar-acceso/servidor.mjs` (antes compartía nombre con el de Perfil). Con
+  el correo apagado, Perfil lo dice: «El envío por correo todavía no está activo».
+- **Campana:** en las dos cabeceras, solo con sesión confirmada. Cuenta los
+  avisos de `mis_avisos_recientes` no leídos (lo leído, en
+  `localStorage` `rwadar.avisos.leidos.v1:<uuid>`), 1…9 y 9+, `aria-label` con
+  el número y un anuncio `aria-live="polite"`. Abre un diálogo con la lista y
+  «Marcar como leídos». El globo de Perfil enseña los avisos sin leer (mandan
+  sobre el de guardados). Badging API (`setAppBadge`/`clearAppBadge`) y aviso
+  al service worker (`avisos-pendientes` / `avisos-vistos`).
+- **Notificaciones en este móvil:** solo móviles y tabletas, con «Avisos de
+  novedades» activado antes. En el mismo toque: `Notification.requestPermission()`,
+  la clave con `clave_publica_webpush`, `pushManager.subscribe` y
+  `registrar_aviso_webpush`; después, una notificación local. Estados:
+  activadas, denegadas (cómo cambiarlo en Ajustes), todavía no disponibles
+  (clave nula o `push_activo` falso), falta el permiso de avisos. iPhone/iPad
+  sin la web en la pantalla de inicio: tres pasos y el diálogo de «RWAdar en
+  iPhone». Desactivar, cerrar sesión (antes de cerrar) y borrar la cuenta la quitan.
+- **`sw.js`:** `push` (siempre `showNotification`, contador en IndexedDB y
+  `setAppBadge` en el mismo `waitUntil`), `notificationclick` (enlace ajeno →
+  `/`) y `message`. **Ojo:** `setAppBadge` llamado desde el service worker
+  tumba la página en Chromium sin ventana (headless); por eso el mensaje
+  `avisos-pendientes` no toca la insignia (la pone la página) y las pruebas de
+  Chromium bloquean el service worker real. Conviene confirmarlo en el iPhone.
+- **Pasarela:** `servidor.mjs` deja pasar las 4 RPC del contrato.
+- **Inglés:** `assets/idioma-en-avisos-20261112.js`, solo de la web (el común es
+  copia exacta del de la app y no se toca aquí); va entre el común y el motor
+  (`rwadar-publicar.js`, `rwadar-publicacion-segura.js` y
+  `rwadar-app/probar-web-escritorio.mjs` al día).
+- **Privacidad** (fecha 12/11/2026, también en `sitemap.xml`): la suscripción
+  web (qué se guarda, quién la entrega, cifrada, cuándo se borra), lo local
+  (avisos leídos y número del icono) y que las notificaciones del móvil ya se
+  activan. La «Información básica» junto al interruptor no cambia (es común con
+  la app y /acceso); el bloque del botón explica los servicios de push.
+- **Pruebas:** nueva `rwadar-acceso/campana-avisos-navegador.test.mjs`
+  (Chromium, origen https de prueba hacia el worker local); al día
+  `service-worker-activacion`, `bandeja-avisos-navegador`,
+  `perfil-avisos-navegador`, `alta-avisos-navegador`, `avisos-baja`,
+  `probar-web.mjs`, `probar-web-escritorio.mjs` y `probar-para-empresas.mjs`.
+  `npm test` de la raíz en verde (código 0; `rwadar-acceso` 261/261) y
+  `npm run test:web` en verde; gitleaks sin hallazgos en el diff.
+- **Commits:** 04ce16e (web), 680c014 (privacidad), 1b4c6a2 (pruebas) y este traspaso.
+- **Pendiente:** que la base tenga la 32 y la clave VAPID antes de publicar la
+  web (sin ellas el botón dice «todavía no disponibles»); probar en el iPhone de
+  Víctor con la web en la pantalla de inicio; la `INFO_DATOS_AVISOS` común
+  podría nombrar los servicios de push del navegador (cambio de web, app y
+  /acceso a la vez).
+
 ## 12 de noviembre de 2026 (2) · Claude · «¿Quieres colaborar con nosotros?» y correo de contacto único, publicados
 
 Víctor: «Añade un apartado al final de Inicio y Perfil tipo ¿Quieres colaborar con nosotros? Y el correo de contacto rwadares@gmail.com»; después, «Sí, cámbialo» (también en lo legal).
