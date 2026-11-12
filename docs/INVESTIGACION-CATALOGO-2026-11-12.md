@@ -74,8 +74,12 @@ Carpeta: `rwadar-app/data/verificaciones/2026-11-12-v2/`.
   - `sincronizar.js` (25/5/22);
   - `despues-de-aplicar.mjs` (43/44 al 12/11);
   - `volcar-seed.js`, `transparencia.mjs` y `rwadar-fichas.js`.
-- **Después:** PR con la sincronización y las noticias, sello, web
-  (preview → producción) y OTA. Se ve en `docs/tareas/PARA-CODEX.md`.
+- **Publicación:**
+  - PR #105 y #106 (sello).
+  - Web n.º 66 y n.º 67: 38/38 en preview y en producción.
+  - OTA n.º 21: enviada el 12/11 a las 10:12 UTC.
+- **Retraso:** el ciclo estuvo parado de 03:05 a 09:28 UTC, porque no quedó
+  nada vigilando las pruebas de GitHub de la PR #104.
 
 ## 5. Para el ciclo siguiente
 
