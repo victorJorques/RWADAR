@@ -63,7 +63,7 @@ Website: https://rwadar.pages.dev
 Legal notice and privacy policy: https://rwadar.pages.dev/privacidad
 Android app: https://github.com/victorJorques/RWAdar-downloads/releases/latest
 Sending domain: rwadar.app (sender avisos@rwadar.app, display name "RWAdar")
-Reply-to and contact: RWAdar@protonmail.com
+Reply-to and contact: rwadares@gmail.com
 Postal address (shown in every email footer): Plaza Generalitat, s/n,
 46600 Alzira, Valencia, Spain
 ```
@@ -150,7 +150,7 @@ cuenta queda bloqueado y se borra a los 3 años). Hoy la casilla **no se ve**
 Every announcement includes:
 - a link to https://rwadar.pages.dev/baja that unsubscribes without signing
   in;
-- the reply address RWAdar@protonmail.com: replying "baja" (unsubscribe)
+- the reply address rwadares@gmail.com: replying "baja" (unsubscribe)
   is enough;
 - a List-Unsubscribe header with that link and a mailto: address.
 People can also switch announcements off in their profile at any time.

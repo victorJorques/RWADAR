@@ -1,8 +1,8 @@
 # Registro de actividades de tratamiento · RWAdar
 
-**Fecha:** 07/11/2026 (versión 3: Netlify, Proton Mail, delegado de
-protección de datos, contraseñas filtradas y Apple resueltos con fuentes
-oficiales; lo ya hecho, marcado. Ver el historial al final).
+**Fecha:** 12/11/2026 (versión 4: el buzón de RWAdar pasa a ser el Gmail
+rwadares@gmail.com y Proton Mail deja de tratar datos de usuarios. Ver el
+historial al final).
 **Quién lo lleva:** Víctor Manuel Jorques Granero, titular de RWAdar y
 responsable del tratamiento. Es quien lo mantiene al día y lo entrega a la
 Agencia Española de Protección de Datos (AEPD) si lo pide (RGPD, art. 30.4).
@@ -133,20 +133,31 @@ Son encargados del tratamiento (RGPD, art. 28). Los países marcados
 Los contratos de Supabase, Cloudflare, Google (Firebase), Expo, GitHub y
 Lettermint se leyeron y archivaron en PDF el 06/11/2026; los de Netlify y
 Proton Mail, el 07/11/2026. Citas, versiones y qué falta:
-[`encargados/README.md`](encargados/README.md).
+[`encargados/README.md`](encargados/README.md). Desde el 12/11/2026 Proton
+Mail ya no es proveedor (ver debajo de la tabla).
 
 | Proveedor | Para qué | Dónde | Garantías si hay transferencia | Contrato de encargo | Fichas |
 |---|---|---|---|---|---|
 | **Supabase** | Base de datos y autenticación | Proyecto en eu-west-1 (Irlanda, UE). Firma Supabase Pte. Ltd. (Singapur) | No está en el DPF (consulta del 06/11/2026). Su DPA incluye las SCC, módulo 2, para cualquier acceso desde fuera de la UE | DPA v1 del 01/08/2026, incorporado a sus condiciones (§7.b): no hay que firmar nada. Archivado ([encargados](encargados/README.md#supabase)) | A1-A7, A9, A10, A13, A14 |
 | **Cloudflare** | Alojamiento (Pages), servidor web que gestiona la sesión, CDN, seguridad y Web Analytics | EE. UU., red mundial | Marco de Privacidad de Datos UE-EE. UU. (DPF), activo el 06/11/2026; si cae, SCC módulo 2 (DPA §6.2 y §6.4) | DPA v6.4 del 03/04/2026, incorporado por referencia en su acuerdo de autoservicio (§6.1): no hay que firmar nada. Archivado ([encargados](encargados/README.md#cloudflare)) | A1-A3, A10, A12 |
 | **Netlify** | Página de limpieza de la app web antigua en rwadar.netlify.app (sigue haciendo falta mientras pueda quedar alguna instalada; ver [encargados](encargados/README.md#netlify)) | EE. UU. (Netlify, Inc., San Francisco) | DPF según su DPA (§14.2); si cae, SCC módulo 2 (§14.3). Su entrada en la lista oficial del DPF, **verificar** | DPA del 09/06/2026, incorporado a su acuerdo de autoservicio (§6.5), que cubre también el plan gratuito: no hay que firmar nada. Archivado ([encargados](encargados/README.md#netlify)) | A10 |
-| **Google (Gmail)** | Una cuenta de Gmail de RWAdar envía, por SMTP de Supabase Auth, la confirmación y la recuperación de la contraseña. El titular usa además su Gmail para contactos de empresa | EE. UU. (verificar) | No documentadas para este uso. **verificar** | **No hay:** es una cuenta de consumo (revisión legal 5.8; contraste 9: infracción grave, LOPDGDD art. 73.k). Se sustituye por el SMTP de Lettermint cuando haya dominio propio, en el paso 5 (pendiente) | A1, A8 |
-| **Proton Mail** | Buzón rwadares@gmail.com: consultas, derechos, bajas, empresas y reportes de seguridad | Suiza (Proton AG, Ginebra). Dónde guarda los buzones no lo dice su privacidad (**verificar**); su DPA (§11) solo permite Suiza, la UE o países con adecuación, salvo con SCC | Decisión de adecuación de la UE para Suiza (Decisión 2000/518/CE, en vigor; RGPD art. 45.9), confirmada por la Comisión el 15/01/2024 | DPA del 10/02/2026, que forma parte de sus condiciones (§7): no hay que firmar nada. Archivado ([encargados](encargados/README.md#proton-mail)) | A7-A10 |
+| **Google (Gmail)** | La cuenta de Gmail de RWAdar, rwadares@gmail.com. **Desde el 12/11/2026 es el buzón de RWAdar:** consultas, derechos, bajas por correo, empresas, reportes de seguridad y contactos profesionales de presentación. También es la dirección de respuesta de los avisos. Además envía, por SMTP de Supabase Auth, la confirmación y la recuperación de la contraseña | EE. UU. (verificar) | No documentadas para este uso. Google LLC figura «Active» en el DPF (consulta del 06/11/2026, ver Firebase) y sus SCC constan en las condiciones de Firebase, pero nada de eso está documentado para una cuenta de Gmail de consumo. **verificar** | **No hay. Hueco abierto:** es una cuenta de consumo, sin contrato de encargo del art. 28 RGPD (revisión legal 5.8; contraste 9: infracción grave, LOPDGDD art. 73.k). Desde el 12/11/2026 el hueco cubre también el buzón. Solución prevista: el dominio propio. Para Auth, el SMTP de Lettermint en el paso 5 (pendiente); para el buzón, una dirección del dominio propio con un proveedor que tenga contrato de encargo (**verificar** cuál) | A1, A7-A10 |
 | **GitHub** | Página de descargas del APK (la app consulta si hay versión nueva). Guarda las copias de seguridad cifradas y ejecuta los flujos, que hacen las copias y los cambios de la base en sus máquinas | EE. UU. (GitHub, Inc.) o Países Bajos (GitHub B.V.) | DPF, activo el 06/11/2026. No sustituye al contrato de encargo | **No hay. Hueco:** su DPA solo forma parte del «GitHub Customer Agreement»; en una cuenta personal gratuita GitHub actúa como responsable. Sus máquinas ven los datos en claro al hacer las copias y los cambios de la base. **Decidido el 06/11:** organización con GitHub Team y «GitHub Customer Agreement», que incluye el DPA. Falta que Víctor la contrate y la firme ([pasos](encargados/README.md#github--hueco)). | A11, A13 |
 | **Expo** (650 Industries) | Actualizaciones de la app sin instalar versión nueva. Push (pendiente) | EE. UU. | SCC módulo 2 (sus términos, §3.2). En la lista oficial del DPF: «Active - Re-certification under Review» (06/11/2026); se citan primero las SCC | No hay DPA aparte (expo.dev/dpa da 404): el contrato es el §3.2 de sus términos del 02/11/2026. No hay que firmar nada. Archivado ([encargados](encargados/README.md#expo-650-industries)) | A4, A5, A11 |
 | **Lettermint** (pendiente) | Correo de bienvenida y avisos (por su API) y, cuando haya dominio y la cuenta esté verificada, los correos de Supabase Auth (por SMTP) | Países Bajos, UE. Lettermint B.V., Willemsvaart 16 B, 8019 AB Zwolle. Los correos se alojan y tratan en la UE (DPA §8.1) | Ninguna prevista: sus subencargados con acceso a los correos (UpCloud, OVH Cloud, Postmastery) están en la UE. Fuera del EEE solo con autorización y garantías del capítulo V (DPA §8.4) | DPA del 09/10/2026, que se acepta al crear la cuenta (condiciones §4.7 y §15.3). Crear la cuenta, apuntar la fecha y pedir la verificación antes del paso 5.8 (pendiente). Archivado ([encargados](encargados/README.md#lettermint)) | A1, A4, A5 |
 | **Google Firebase Cloud Messaging** (proyecto `rwadar-14e3d`; entrega pendiente de encender los avisos) | Entrega de notificaciones en Android, desde la app 1.4.2 (publicada el 06/11/2026). Hoy no recibe datos: la app no le pide nada hasta que la persona active las notificaciones. **«Latido»:** aun apagado, el componente guarda en el móvil las fechas en que se abrió la app (hasta 30). Al activar las notificaciones, Google las recibe con el «Firebase user agent» (componentes de Firebase y sus versiones; versión de Android, marca, modelo y tipo de dispositivo; tienda de instalación), que según Google usa para sus estadísticas internas, sin unirlo a un identificador ([guía de Google para Play](https://firebase.google.com/docs/android/play-data-disclosure), consultada el 07/11/2026). Ver A5 | EE. UU. y otros países donde Google tenga centros (sus condiciones, §10.1) | DPF de Google LLC, activo el 06/11/2026; si no está disponible, SCC (§10.2) | «Firebase Data Processing and Security Terms» (21/08/2024), **aceptadas en la consola el 06/11/2026** al crear el proyecto. Archivado ([encargados](encargados/README.md#google-firebase-cloud-messaging)) | A4, A5 |
 | **Apple Push Notification service** | **No aplica hoy:** no hay app de iPhone publicada ni cuenta de Apple Developer. En iPhone, RWAdar es la web, sin notificaciones de Apple ([encargados](encargados/README.md#apple-apns--no-aplica-hoy)) | No aplica | No aplica | No aplica. Si algún día hay app de iPhone con notificaciones, se lee su contrato y se añade aquí | Ninguna |
+
+**Ya no es proveedor: Proton Mail (histórico).** Fue el buzón de RWAdar
+(RWAdar@protonmail.com) hasta el 12/11/2026. Su contrato se comprobó y
+archivó el 07/11/2026: DPA del 10/02/2026 dentro de sus condiciones, y Suiza,
+con decisión de adecuación de la UE
+([ficha histórica](encargados/README.md#proton-mail--histórico)). Desde el
+12/11/2026 no trata datos de usuarios. Solo queda la cuenta personal del
+titular con la que entra como moderador (`rwadar-app/db/11_fuga_cola.sql`),
+que no es un tratamiento de datos de terceros. **verificar** qué se hace con
+los correos de usuarios que llegaron a esa cuenta antes del 12/11/2026: si se
+guardan allí, Proton los sigue guardando por cuenta de RWAdar.
 
 **Terceros que no son encargados y reciben algo:**
 
@@ -207,7 +218,8 @@ Valen para todas las fichas; cada ficha añade las suyas.
   consultado el 07/11/2026). RWAdar está en el plan gratuito, así que no la
   tiene. Lo que sí hay: mínimo de 12 caracteres y límite de intentos.
 - **verificar:** la doble autenticación en los paneles de Supabase,
-  Cloudflare, GitHub, Expo, Netlify y Proton. La revisión de seguridad del
+  Cloudflare, GitHub, Expo y Netlify, y en la cuenta de Gmail del buzón
+  (rwadares@gmail.com). La revisión de seguridad del
   28/10 no pudo certificarla. El CAPTCHA (Turnstile) no está activo
   (`TURNSTILE_SITEKEY` vacío en `rwadar-site/assets/acceso.js`).
 
@@ -658,9 +670,9 @@ Valen para todas las fichas; cada ficha añade las suyas.
     `baja`/`correo` en el historial (A6);
   - **la respuesta:** «Hecho: ya no recibirás avisos de RWAdar» y la fecha
     anotada.
-- **Destinatarios:** Proton Mail (Suiza) y Supabase (Irlanda).
-- **Transferencias internacionales:** Proton Mail: Suiza, con decisión de
-  adecuación (apartado 3).
+- **Destinatarios:** Google (Gmail, el buzón) y Supabase (Irlanda).
+- **Transferencias internacionales:** Gmail: EE. UU. (verificar), sin
+  garantías documentadas para este uso (**verificar**, apartado 3).
 - **Plazo de supresión:**
   - la baja en la base, como A5 y A6;
   - el correo en el buzón: no consta. **verificar** (propuesta: el mismo que
@@ -709,16 +721,15 @@ Valen para todas las fichas; cada ficha añade las suyas.
 
   Lo que sobre se elimina sin usarlo.
 - **Destinatarios:**
-  - Proton Mail (buzón general);
-  - Google (el Gmail del titular, para los contactos de presentación);
+  - Google (Gmail): el buzón rwadares@gmail.com, que recibe las consultas y
+    se usa también para los contactos de presentación y sus respuestas;
   - el proveedor de cada interlocutor.
 
   Accede el titular y, cuando proceda, quien tramite la consulta bajo su
   responsabilidad (**verificar** quién). No entra en Supabase, Lettermint ni en
   un CRM.
-- **Transferencias internacionales:** Proton Mail, Suiza con decisión de
-  adecuación (apartado 3). Gmail, sin garantías documentadas para este uso
-  (**verificar**, apartado 3).
+- **Transferencias internacionales:** Gmail: EE. UU. (verificar), sin
+  garantías documentadas para este uso (**verificar**, apartado 3).
 - **Plazo de supresión:** mientras se responde y, si no se abre una fase
   posterior aprobada, como máximo seis meses desde el último intercambio.
   Después se elimina, salvo lo mínimo que exija una obligación o una
@@ -747,9 +758,10 @@ Valen para todas las fichas; cada ficha añade las suyas.
   - el correo de la cuenta, si existió;
   - lo justo para comprobar la identidad de forma proporcionada;
   - la respuesta.
-- **Destinatarios:** Proton Mail, y Supabase para ejecutar lo que se pida.
-- **Transferencias internacionales:** Proton Mail, Suiza con decisión de
-  adecuación (apartado 3).
+- **Destinatarios:** Google (Gmail, el buzón), y Supabase para ejecutar lo
+  que se pida.
+- **Transferencias internacionales:** Gmail: EE. UU. (verificar), sin
+  garantías documentadas para este uso (**verificar**, apartado 3).
 - **Plazo de supresión:** no consta en las fuentes. **verificar** (propuesta:
   la solicitud y la respuesta, el tiempo necesario para probar que se atendió,
   hasta 3 años). Plazo para responder: un mes, ampliable dos más
@@ -782,13 +794,15 @@ Valen para todas las fichas; cada ficha añade las suyas.
   - **reportes de vulnerabilidades:** lo que envíe la persona.
 - **Destinatarios:**
   - Cloudflare, Netlify y Supabase;
-  - Proton Mail, para los reportes.
+  - Google (Gmail, el buzón), para los reportes.
 
   **verificar:** según `SECURITY.md`, los reportes los gestionan Eric
   Almiñana, Samuel Rodriguez y Víctor Jorques (ver apartado 1).
 - **Transferencias internacionales:** Cloudflare con DPF y SCC; Supabase con
   SCC; Netlify con DPF según su DPA (§14.2) y, si cae, SCC módulo 2 (§14.3);
-  su entrada en la lista oficial del DPF, **verificar**.
+  su entrada en la lista oficial del DPF, **verificar**. Gmail (los
+  reportes): sin garantías documentadas para este uso (**verificar**,
+  apartado 3).
 - **Plazo de supresión:**
   - **contador en memoria:** 10 minutos;
   - **registros de cada proveedor:** sus plazos de seguridad y diagnóstico.
@@ -992,7 +1006,8 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
     Víctor la contrate y la firme;
   - [x] Netlify y Proton Mail: comprobados y archivados el 07/11/2026. Los
     dos vinculan sin firmar. Netlify sigue haciendo falta mientras pueda
-    quedar alguna app web antigua instalada;
+    quedar alguna app web antigua instalada. Proton Mail dejó de ser el
+    buzón el 12/11/2026: su ficha queda como histórico;
   - [x] Apple: no aplica hoy (no hay app de iPhone).
 - [ ] **Gmail.** Quitar el envío de Auth por una cuenta de consumo sin
   contrato: pasarlo al SMTP de Lettermint (paso 5.8; contraste 9). Antes, las
@@ -1000,6 +1015,11 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
   «Información básica» publicadas con Lettermint en lugar de Gmail, y **la
   cuenta de Lettermint verificada**. Ese día se quita de este registro el
   envío de Auth de la fila de Google (Gmail) y se pasa a la de Lettermint.
+- [ ] **Buzón en Gmail (desde el 12/11/2026).** El buzón rwadares@gmail.com
+  es una cuenta de consumo, sin contrato de encargo del art. 28 RGPD: el mismo
+  hueco ya señalado para los correos de Auth. Solución prevista: el dominio
+  propio, con un proveedor de correo que tenga contrato de encargo
+  (**verificar** cuál). Ese día se cambian la fila de Google (Gmail) y A7-A10.
 - [x] **Historial del permiso y baja por correo.** Contrastados A6 y A7 con
   la 30 el 07/11/2026 (corregida la frase de la limpieza en A6).
 - [x] **Delegado de protección de datos:** no es obligatorio (apartado 1,
@@ -1041,3 +1061,4 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
 | 06/11/2026 | Versión 1: 14 actividades, proveedores y medidas comunes | Claude, a petición de Víctor Manuel Jorques Granero |
 | 06/11/2026 | Versión 2: Lettermint sustituye a Brevo; contratos de encargo leídos y archivados en `encargados/`; filas de Supabase, Cloudflare, Expo, Firebase y GitHub corregidas; hueco de GitHub; Gmail se sustituye por el SMTP de Lettermint; la 30, aplicada | Claude, con el permiso general de Víctor |
 | 07/11/2026 | Versión 3: Netlify y Proton Mail comprobados y archivados; Suiza, con decisión de adecuación; Apple no aplica; delegado de protección de datos no obligatorio (razonado); contraseñas filtradas fuera del plan gratuito; A6 y A7 contrastados con el SQL; marcado lo hecho (Firebase, la 30 y la 31, app 1.4.2, web con la Academy con cuenta); la casilla de los 18 años no se guarda; la clave de las copias también está en GitHub; verificación de la cuenta de Lettermint; enlace al procedimiento de brechas | Claude, por encargo de Víctor |
+| 12/11/2026 | Versión 4: el titular cambió el correo de contacto a rwadares@gmail.com, que pasa a ser el buzón de RWAdar (consultas, derechos, bajas por correo, empresas, reportes de seguridad y contactos profesionales), como dice la privacidad corregida ese día. Destinatarios y transferencias de A7-A10, a Google (Gmail). Proton Mail deja de tratar datos de usuarios: sale de los proveedores y lo del 07/11 queda como historial; solo sigue la cuenta personal del titular con la que entra como moderador. **Hueco abierto:** una cuenta de Gmail de consumo no tiene contrato de encargo (art. 28 RGPD), el mismo riesgo ya señalado para los correos de Auth; la solución prevista es el dominio propio | Claude, por encargo de Víctor |

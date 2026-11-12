@@ -1,7 +1,9 @@
 # Contratos de encargo · RWAdar
 
-**Fecha:** 06/11/2026. **Al día:** 07/11/2026 (Netlify y Proton Mail
-comprobados; Apple, sin aplicar hoy).
+**Fecha:** 06/11/2026. **Al día:** 12/11/2026 (el buzón de RWAdar pasa a
+ser el Gmail rwadares@gmail.com, sin contrato de encargo; Proton Mail queda
+como histórico). El 07/11/2026 se comprobaron Netlify y Proton Mail, y Apple
+no aplica hoy.
 **Quién lo hace:** Claude (IA), a petición de Víctor Manuel Jorques Granero,
 titular de RWAdar. No es el dictamen de un abogado.
 
@@ -44,7 +46,8 @@ apartado 3) resume esto mismo y enlaza aquí.
 | **GitHub** | Código, flujos, copias y descargas del APK | **No. Es un hueco** | DPF |
 | **Lettermint** | Todos los correos de RWAdar (pendiente) | Sí, al crear la cuenta (pendiente) | No salen: todo en la UE |
 | **Netlify** | Página de limpieza en `rwadar.netlify.app` | Sí, dentro de su acuerdo de autoservicio. Nada que firmar | DPF y, si cae, SCC módulo 2 |
-| **Proton Mail** | Buzón rwadares@gmail.com | Sí, dentro de sus condiciones. Nada que firmar | Suiza, con decisión de adecuación de la UE |
+| **Google (Gmail)** | Desde el 12/11/2026, el buzón rwadares@gmail.com. También envía hoy los correos de Auth | **No. Es un hueco:** cuenta de consumo ([abajo](#fuera-de-esta-carpeta-gmail)) | Sin garantías documentadas para este uso (**verificar**) |
+| **Proton Mail** (histórico) | Fue el buzón (RWAdar@protonmail.com) hasta el 12/11/2026. Ya no trata datos de usuarios | Mientras se usó, sí, dentro de sus condiciones | Suiza, con decisión de adecuación de la UE |
 | **Apple (APNs)** | Nada hoy: no hay app de iPhone | No aplica | No aplica |
 
 ---
@@ -197,11 +200,20 @@ peor para los usuarios: con Supabase gratuito no habría ninguna otra copia.
 | **Contacto** | privacy@netlify.com (DPA, anexo: persona de contacto). El DPA nombra también security@netlify.com y legal@netlify.com para pedir auditorías (§8.4.2). |
 | **PDF** | [`2026-11-07-netlify-dpa.pdf`](2026-11-07-netlify-dpa.pdf) y [`2026-11-07-netlify-acuerdo-autoservicio.pdf`](2026-11-07-netlify-acuerdo-autoservicio.pdf) |
 
-## Proton Mail
+## Proton Mail · histórico
+
+**Desde el 12/11/2026 Proton Mail ya no es el buzón de RWAdar.** El buzón es
+la cuenta de Gmail rwadares@gmail.com, sin contrato de encargo: es un hueco
+([abajo](#fuera-de-esta-carpeta-gmail)). Esta ficha se conserva como
+histórico: lo comprobado el 07/11/2026 vale para el tiempo en que se usó.
+Proton solo sigue como la cuenta personal del titular con la que entra como
+moderador (`rwadar-app/db/11_fuga_cola.sql`), que no es un tratamiento de
+datos de terceros. **verificar** qué se hace con los correos de usuarios que
+llegaron a esa cuenta antes del 12/11/2026.
 
 | | |
 |---|---|
-| **Qué hace** | El buzón rwadares@gmail.com: consultas, solicitudes de derechos, bajas por correo, empresas y reportes de seguridad. También es la dirección de respuesta de los avisos. |
+| **Qué hacía (hasta el 12/11/2026)** | El buzón RWAdar@protonmail.com: consultas, solicitudes de derechos, bajas por correo, empresas y reportes de seguridad. También era la dirección de respuesta de los avisos. |
 | **Quién firma** | Proton AG, Route de la Galaise 32, 1228 Plan-les-Ouates, Ginebra (Suiza), número CHE-354.686.492 (DPA, primer párrafo). |
 | **Contrato** | Data Processing Agreement: https://proton.me/legal/dpa |
 | **Versión** | «Last modified: February 10, 2026» (10/02/2026). |
@@ -235,10 +247,24 @@ No se archivó su contrato.
 PDF: [`2026-11-06-postmark-dpa.pdf`](2026-11-06-postmark-dpa.pdf) y
 [`2026-11-06-resend-dpa.pdf`](2026-11-06-resend-dpa.pdf).
 
-**Fuera de esta carpeta** solo queda Gmail: hoy envía los correos de Auth sin
-contrato de encargo (cuenta de consumo); lo sustituye el SMTP de Lettermint en
-el paso 5.8 del contrato de avisos. Netlify, Proton Mail y Apple se
-comprobaron el 07/11/2026 (arriba).
+## Fuera de esta carpeta: Gmail
+
+Solo queda Gmail, la cuenta de consumo rwadares@gmail.com. **No tiene
+contrato de encargo** (RGPD, art. 28): es un hueco abierto. Hoy trata:
+
+- **los correos de Auth** (confirmación y recuperación de la contraseña). Los
+  sustituye el SMTP de Lettermint en el paso 5.8 del contrato de avisos;
+- **desde el 12/11/2026, el buzón de RWAdar:** consultas, derechos, bajas por
+  correo, empresas, reportes de seguridad y contactos profesionales. También
+  es la dirección de respuesta de los avisos.
+
+Solución prevista: el dominio propio, con un proveedor de correo que tenga
+contrato de encargo (**verificar** cuál). Garantías para los datos que salen
+de la UE: no documentadas para este uso (**verificar**; registro,
+apartado 3).
+
+Netlify, Proton Mail y Apple se comprobaron el 07/11/2026 (arriba). Proton
+queda como histórico desde el 12/11/2026.
 
 ---
 
@@ -271,9 +297,12 @@ comprobaron el 07/11/2026 (arriba).
 4. **Supabase.** Nada que firmar. Opcional: en el panel, «Organization ›
    Legal Documents», descargar la evaluación de las transferencias si la
    ofrece, y guardarla aquí con la fecha.
-5. **Cloudflare, Expo, Netlify y Proton.** Nada que firmar. En Netlify,
+5. **Cloudflare, Expo y Netlify.** Nada que firmar. En Netlify,
    decidir algún día si se retira `rwadar.netlify.app` (ver arriba) y mirar si
    sigue en la configuración de direcciones de Supabase.
+6. **Gmail (buzón y Auth).** En una cuenta de consumo no hay contrato que
+   firmar: el hueco se cierra con el dominio propio (ver «Fuera de esta
+   carpeta: Gmail»).
 
 ## Fechas que hay que apuntar
 
@@ -282,7 +311,8 @@ comprobaron el 07/11/2026 (arriba).
 | Google Firebase | **06/11/2026** | Aceptadas en la consola al crear el proyecto `rwadar-14e3d` |
 | Lettermint | **pendiente** | Crear la cuenta |
 | Lettermint · verificación | **pendiente** | Fecha en que se pidió y fecha en que la aprobaron |
-| Netlify y Proton | **no consta** | Al crear cada cuenta (antes de este registro). Si se puede ver en el panel de cada una, apuntarla aquí |
+| Netlify | **no consta** | Al crear la cuenta (antes de este registro). Si se puede ver en su panel, apuntarla aquí |
+| Proton (histórico) | **no consta** | Ya no hace falta: dejó de ser el buzón el 12/11/2026 |
 | GitHub | **pendiente**: organización `rwadar` con GitHub Team | Firmar el «GitHub Customer Agreement» en la organización |
 
 ---
@@ -319,3 +349,14 @@ comprobaron el 07/11/2026 (arriba).
   y su informe del 15/01/2024.
 - **No se pudo:** leer la lista oficial del DPF sin navegador (Netlify queda
   como **verificar** allí) ni ver dónde guarda Proton los buzones.
+
+## Cómo se comprobó (12/11/2026)
+
+- **El cambio de buzón:** lo decidió el titular el 12/11/2026. La privacidad
+  se corrigió ese día: el buzón es Google/Gmail y Proton Mail deja de figurar.
+- **La dirección:** la migración 31 (`rwadar-app/db/31_correo_lettermint.sql`)
+  ya usa rwadares@gmail.com como dirección de respuesta y de baja.
+- **Proton:** lo único que sigue es la cuenta de moderador del titular
+  (`rwadar-app/db/11_fuga_cola.sql`).
+- **Gmail:** no se leyó ningún contrato de Google para Gmail. En una cuenta
+  de consumo no hay contrato de encargo.
