@@ -3209,10 +3209,10 @@ prueba('la privacidad explica las cookies necesarias, enlaces limpios y retirada
 }
 // 12/11/2026: en la web las notificaciones ya se pueden activar aunque el envío esté apagado
 // (llegarán cuando empecemos); en la app, el botón espera al envío (revisión del 12/11).
-prueba('la privacidad describe favoritos locales y las notificaciones del móvil (en la web ya activables; llegan cuando empecemos), sin prometer borrado histórico',
+prueba('la privacidad describe favoritos locales y las notificaciones del móvil (activables en la web y en la app; se envían desde el 12/11/2026), sin prometer borrado histórico',
   /favoritos solo en el dispositivo/.test(privacidadLineal) &&
-  privacidadLineal.includes('<p id="notificaciones-movil"><b>Notificaciones en el móvil:</b> en la web ya puedes activarlas en Perfil › Avisos, con «Notificaciones en este móvil», desde el navegador del móvil o la tableta (en iPhone y iPad, con RWAdar añadida a la pantalla de inicio); te llegarán cuando empecemos a enviarlas, y Perfil › Avisos lo dice.') &&
-  privacidadLineal.includes('En la app de Android, desde la versión 1.4.2, el mismo botón se podrá usar cuando empecemos a enviarlas.') &&
+  privacidadLineal.includes('<p id="notificaciones-movil"><b>Notificaciones en el móvil:</b> en la web ya puedes activarlas en Perfil › Avisos, con «Notificaciones en este móvil», desde el navegador del móvil o la tableta (en iPhone y iPad, con RWAdar añadida a la pantalla de inicio). En la app de Android, desde la versión 1.4.2, con el mismo botón. Desde el 12/11/2026 ya las enviamos a quien las activa.') &&
+  !/cuando empecemos a enviarlas/.test(privacidadLineal) &&
   !/ya puedes activarlas en Perfil › Avisos, con «Notificaciones en este móvil»: en la app de Android/.test(privacidadLineal) &&
   /La app no crea una identidad remota de instalación ni activa seguimiento por instalación/.test(privacidadLineal) &&
   /no quedan revocados por los cambios de versión/.test(privacidadLineal) &&
@@ -3325,7 +3325,7 @@ prueba('privacidad: baja, retirada, conservación bloqueada y Lettermint (UE, si
   /darte de baja en Perfil y, cuando haya correos, con el enlace de cada\s+correo/.test(seccionAvisos) &&
   // La baja en cada notificación de la web (LSSI, art. 21.2, párr. 2): la lista de avisos la indica.
   /Cada notificación de la web abre la lista de\s+tus avisos, donde se indica cómo darte de baja/.test(seccionAvisos) &&
-  /Las notificaciones al móvil llegarán, si las activas,\s+cuando empecemos a enviarlas/.test(seccionAvisos) &&
+  /Las notificaciones al móvil ya llegan, desde el\s+12\/11\/2026, a quien las activa\./.test(seccionAvisos) &&
   !/si activas las notificaciones, llegan a tu móvil/.test(seccionAvisos) &&
   /Las notificaciones también se quitan en los ajustes del móvil/.test(seccionAvisos) &&
   seccionAvisos.includes('Puedes retirar tu permiso cuando quieras, sin que afecte a los envíos anteriores.') &&
