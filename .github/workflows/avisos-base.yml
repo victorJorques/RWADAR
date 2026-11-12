@@ -2,31 +2,41 @@ name: Avisos a registrados (base)
 
 # Aplica en Supabase, desde GitHub, la migración 30 (avisos a registrados),
 # la 31 (el correo sale por Lettermint), la 32 (notificaciones: push de Expo
-# con prioridad alta y notificaciones web) y sus scripts, con las mismas
-# garantías que «Aplicar catálogo»: solo desde main, copia cifrada de la base
-# antes de cambiar nada, cada SQL en su propia transacción y los
-# verificadores al final. Solo hay acciones fijas: no se puede pasar un
-# archivo cualquiera.
+# con prioridad alta y notificaciones web), la 33 (las notificaciones web
+# salen desde Supabase) y sus scripts, con las mismas garantías que
+# «Aplicar catálogo»: solo desde main, copia cifrada de la base antes de
+# cambiar nada, cada SQL en su propia transacción y los verificadores al
+# final. Solo hay acciones fijas: no se puede pasar un archivo cualquiera.
 #
 # Cada acción que cambia la base necesita orden expresa de Víctor (AGENTS.md)
 # y escribir AVISOS en «confirmar». Los ensayos («ensayo-30», «ensayo-31»,
-# «ensayo-32»), las verificaciones y «diagnostico-30» no cambian nada: un
-# ensayo aplica su migración y sus verificadores dentro de una transacción
-# que se deshace al final, para saber si entra en producción antes de
-# aplicarla.
+# «ensayo-32», «ensayo-33»), las verificaciones y «diagnostico-30» no
+# cambian nada: un ensayo aplica su migración y sus verificadores dentro de
+# una transacción que se deshace al final, para saber si entra en producción
+# antes de aplicarla.
 #
 # «guardar-correo» crea o actualiza en Vault LETTERMINT_API_TOKEN (del secreto
 # de GitHub con ese nombre) y RWADAR_REMITENTE (de la entrada «remitente»). No
 # enciende el correo: eso es «activar-correo», que exige la 31 y esos dos.
-# OJO: reaplicar la 30 devuelve el envío de correo al código de Brevo y el
-# push de Expo a la prioridad normal; si la 31 y la 32 ya estaban aplicadas,
-# hay que volver a aplicarlas (aplicar-31 y aplicar-32).
+# OJO: reaplicar la 30 devuelve el envío de correo al código de Brevo, el
+# push de Expo a la prioridad normal y procesar() a su versión sin las
+# notificaciones web; si la 31, la 32 y la 33 ya estaban aplicadas, hay que
+# volver a aplicarlas, en ese orden (aplicar-31, aplicar-32 y aplicar-33).
 #
 # «crear-vapid» genera en esta máquina (node, sin npm) el par de claves P-256
 # de las notificaciones web y guarda la privada en Vault (RWADAR_VAPID_PRIVADA)
 # y la pública en la configuración (sale en el resumen; la privada, nunca).
 # Si ya hay una, no la cambia. «rotar-vapid» la sustituye y borra las
 # suscripciones web, que se hicieron con la anterior. Ninguna enciende nada.
+#
+# «prueba-webpush» (migración 33; escribiendo AVISOS) manda «Prueba de
+# RWAdar» a los navegadores de las cuentas de administración por el mismo
+# camino que los envíos de verdad: la base pide cada notificación al
+# servidor de la web con pg_net, y el servidor la cifra, la firma y la
+# entrega al servicio de push. No depende del interruptor del push ni
+# cambia nada en la base (salvo borrar una suscripción caducada, 404/410,
+# de esas cuentas), así que no hace copia. Espera unos segundos a que pg_net
+# responda y solo enseña cuentas y códigos.
 #
 # Usa los secretos de la copia de seguridad: SUPABASE_DB_URL y COPIA_CLAVE;
 # y, solo en guardar-correo, LETTERMINT_API_TOKEN.
@@ -53,13 +63,17 @@ on:
           - aplicar-32
           - crear-vapid
           - rotar-vapid
+          - ensayo-33
+          - verificar-33
+          - aplicar-33
+          - prueba-webpush
           - activar-casilla
           - activar-correo
           - activar-push
           - apagar
           - apagar-casilla
       confirmar:
-        description: 'Escribe AVISOS para las acciones que cambian la base (no hace falta para los ensayos, las verificaciones ni diagnostico-30)'
+        description: 'Escribe AVISOS para las acciones que cambian la base y para prueba-webpush (no hace falta para los ensayos, las verificaciones ni diagnostico-30)'
         required: false
         type: string
       remitente:
@@ -110,6 +124,7 @@ jobs:
           V30="$D/30_avisos_registrados_verificar.sql"
           V31="$D/31_correo_lettermint_verificar.sql"
           V32="$D/32_notificaciones_verificar.sql"
+          V33="$D/33_webpush_supabase_verificar.sql"
           # VERIFICADORES: los que se pasan al final (o dentro del ensayo).
           ENSAYO=no
           VERIFICADORES="$V30"
@@ -127,6 +142,12 @@ jobs:
             aplicar-32)      SQL="$D/32_notificaciones.sql";                    CAMBIA=si; VERIFICADORES="$V30 $V31 $V32" ;;
             crear-vapid)     SQL="$D/32_notificaciones_vapid.sql";              CAMBIA=si; VERIFICADORES="$V30 $V32" ;;
             rotar-vapid)     SQL="$D/32_notificaciones_vapid.sql";              CAMBIA=si; VERIFICADORES="$V30 $V32" ;;
+            ensayo-33)       SQL="$D/33_webpush_supabase.sql";                  CAMBIA=no; ENSAYO=si; VERIFICADORES="$V30 $V31 $V32 $V33" ;;
+            verificar-33)    SQL="$V33";                                         CAMBIA=no; VERIFICADORES="$V30 $V31 $V32 $V33" ;;
+            aplicar-33)      SQL="$D/33_webpush_supabase.sql";                  CAMBIA=si; VERIFICADORES="$V30 $V31 $V32 $V33" ;;
+            # Envía (solo a administración) pero no cambia la base: sin copia,
+            # con AVISOS (abajo) y los verificadores al final.
+            prueba-webpush)  SQL="$D/33_webpush_supabase_prueba.sql";           CAMBIA=no; VERIFICADORES="$V30 $V32 $V33" ;;
             activar-casilla) SQL="$D/30_avisos_registrados_activar_casilla.sql"; CAMBIA=si ;;
             activar-correo)  SQL="$D/30_avisos_registrados_activar_correo.sql";  CAMBIA=si; VERIFICADORES="$V30 $V31" ;;
             activar-push)    SQL="$D/30_avisos_registrados_activar_push.sql";    CAMBIA=si ;;
@@ -139,6 +160,9 @@ jobs:
           if [ "$CAMBIA" = si ] && [ "$CONFIRMAR" != "AVISOS" ]; then
             echo "Esta acción cambia la base: escribe AVISOS en «confirmar»."; exit 1
           fi
+          if [ "$ACCION" = prueba-webpush ] && [ "$CONFIRMAR" != "AVISOS" ]; then
+            echo "La prueba envía notificaciones a las cuentas de administración: escribe AVISOS en «confirmar»."; exit 1
+          fi
           if [ "$ACCION" = guardar-correo ]; then
             REMITENTE="${REMITENTE:-}"
             # Una dirección sencilla (más estricta que la de la base), sin
@@ -147,14 +171,16 @@ jobs:
             (( ${#REMITENTE} <= 254 )) && [[ "$REMITENTE" =~ $CORREO_VALIDO ]] \
               || { echo "guardar-correo necesita en «remitente» una dirección de correo válida, sin nombre ni <>."; exit 1; }
           fi
-          # Las dos copias de la 30, las dos de la 31 y las dos de la 32 deben
-          # ser idénticas (la del CLI y la del SQL Editor).
+          # Las dos copias de la 30, de la 31, de la 32 y de la 33 deben ser
+          # idénticas (la del CLI y la del SQL Editor).
           cmp -s "$D/30_avisos_registrados.sql" rwadar-app/supabase/migrations/20261105200000_avisos_registrados.sql \
             || { echo "Las dos copias de la 30 no coinciden"; exit 1; }
           cmp -s "$D/31_correo_lettermint.sql" rwadar-app/supabase/migrations/20261106120000_correo_lettermint.sql \
             || { echo "Las dos copias de la 31 no coinciden"; exit 1; }
           cmp -s "$D/32_notificaciones.sql" rwadar-app/supabase/migrations/20261112130000_notificaciones.sql \
             || { echo "Las dos copias de la 32 no coinciden"; exit 1; }
+          cmp -s "$D/33_webpush_supabase.sql" rwadar-app/supabase/migrations/20261112170000_webpush_supabase.sql \
+            || { echo "Las dos copias de la 33 no coinciden"; exit 1; }
           { echo "SQL=$SQL"; echo "CAMBIA=$CAMBIA"; echo "ENSAYO=$ENSAYO"; echo "VERIFICADORES=$VERIFICADORES"; } >> "$GITHUB_ENV"
 
       - name: Instalar psql y pg_dump 17 (misma versión que Supabase)
@@ -214,7 +240,7 @@ jobs:
           set -euo pipefail
           psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$SQL"
           if [ "$ACCION" = aplicar-30 ]; then
-            echo "Aviso: reaplicar la 30 devuelve el envío de correo al código de Brevo y el push de Expo a la prioridad normal. Si la 31 y la 32 ya estaban aplicadas, vuelve a aplicarlas (aplicar-31 y aplicar-32)."
+            echo "Aviso: reaplicar la 30 devuelve el envío de correo al código de Brevo, el push de Expo a la prioridad normal y procesar() a su versión sin las notificaciones web. Si la 31, la 32 y la 33 ya estaban aplicadas, vuelve a aplicarlas en ese orden (aplicar-31, aplicar-32 y aplicar-33)."
           fi
 
       # El token llega por el entorno y pasa a psql como variable (-v); nunca
@@ -289,6 +315,65 @@ jobs:
             echo
             echo "La privada está en Vault (RWADAR_VAPID_PRIVADA) y no sale de la base."
           } >> "$GITHUB_STEP_SUMMARY"
+
+      # La prueba de punta a punta del envío desde Supabase (migración 33),
+      # solo a las cuentas de administración: la base pide cada notificación
+      # al servidor de la web con pg_net, que la manda al confirmarse la
+      # orden. Después se lee, cada 5 segundos durante un minuto como mucho,
+      # lo que respondió. psql solo devuelve números: primero las peticiones
+      # de pg_net con su suscripción y después cuentas y códigos; nunca
+      # endpoints, claves ni cargas. Falla si ninguna notificación llega a
+      # aceptarse.
+      - name: Probar las notificaciones web desde Supabase
+        if: inputs.accion == 'prueba-webpush'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          set -euo pipefail
+          export LC_ALL=C
+          resumen() {
+            {
+              echo "### Notificaciones web desde Supabase (prueba)"
+              echo
+              for linea in "$@"; do echo "- $linea"; done
+            } >> "$GITHUB_STEP_SUMMARY"
+          }
+          PETICIONES="$(psql "$SUPABASE_DB_URL" -X -At -v ON_ERROR_STOP=1 \
+            -c "select rwadar_novedades.webpush_prueba_supabase()")"
+          LISTA='^\[(\[[1-9][0-9]{0,17}, [1-9][0-9]{0,17}\](, \[[1-9][0-9]{0,17}, [1-9][0-9]{0,17}\])*)?\]$'
+          [[ "$PETICIONES" =~ $LISTA ]] || { echo "Respuesta inesperada de la base al pedir la prueba."; exit 1; }
+          if [ "$PETICIONES" = "[]" ]; then
+            echo "Ninguna cuenta de administración tiene la web suscrita: no sale nada."
+            resumen "Ninguna cuenta de administración tiene la web suscrita: actívalas en Perfil desde el móvil."
+            exit 0
+          fi
+          CODIGOS='^\[(-?[0-9]{1,3}(, -?[0-9]{1,3})*)?\]$'
+          for _ in $(seq 1 12); do
+            sleep 5
+            LINEA="$(psql "$SUPABASE_DB_URL" -X -At -v ON_ERROR_STOP=1 \
+              -v peticiones="$PETICIONES" -f "$SQL")"
+            IFS='|' read -r ENVIOS ESPERANDO ENVIADOS CADUCADAS FALLIDOS SERVIDOR COD_PUSH COD_SERVIDOR <<< "$LINEA"
+            for n in "$ENVIOS" "$ESPERANDO" "$ENVIADOS" "$CADUCADAS" "$FALLIDOS" "$SERVIDOR"; do
+              [[ "$n" =~ ^[0-9]+$ ]] || { echo "Respuesta inesperada de la base al leer la prueba."; exit 1; }
+            done
+            [[ "$COD_PUSH" =~ $CODIGOS && "$COD_SERVIDOR" =~ $CODIGOS ]] \
+              || { echo "Respuesta inesperada de la base al leer la prueba."; exit 1; }
+            if [ "$ESPERANDO" = 0 ]; then break; fi
+          done
+          echo "Prueba desde Supabase: $ENVIOS notificación(es); $ENVIADOS aceptada(s) por el servicio de push, $CADUCADAS suscripción(es) caducada(s) borrada(s), $FALLIDOS fallida(s), $SERVIDOR sin respuesta válida del servidor de la web y $ESPERANDO sin respuesta todavía."
+          echo "Códigos de los servicios de push: $COD_PUSH. Códigos del servidor de la web (cuando no respondió bien): $COD_SERVIDOR."
+          resumen "Notificaciones pedidas: $ENVIOS" \
+            "Aceptadas por el servicio de push: $ENVIADOS" \
+            "Suscripciones caducadas borradas (404/410): $CADUCADAS" \
+            "Fallidas: $FALLIDOS" \
+            "Sin respuesta válida del servidor de la web: $SERVIDOR" \
+            "Sin respuesta todavía (pg_net): $ESPERANDO" \
+            "Códigos de los servicios de push: $COD_PUSH" \
+            "Códigos del servidor de la web (cuando no respondió bien): $COD_SERVIDOR"
+          if [ "$ENVIADOS" = 0 ]; then
+            echo "::error::Ninguna notificación de prueba se aceptó: revisa los códigos."
+            exit 1
+          fi
 
       - name: Diagnóstico (solo lee)
         if: inputs.accion == 'diagnostico-30'

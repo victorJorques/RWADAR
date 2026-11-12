@@ -382,9 +382,10 @@ por eso ya no se edita: cualquier cambio va en una migración nueva, como la
     `rotar-vapid` la cambia y borra las suscripciones hechas con la anterior).
   - Remitente: `enviar-webpush.mjs` (solo `node:crypto` y `fetch`: RFC 8291
     aes128gcm y RFC 8292 VAPID; TTL de un día, `Urgency: high`). Lo usa el
-    flujo «Notificaciones web» (`.github/workflows/notificaciones-web.yml`:
-    `enviar` o `prueba`, escribiendo ENVIAR), que también lanza «Avisar
-    novedad» después de cada anuncio. Resultados con
+    flujo «Notificaciones web» (`.github/workflows/notificaciones-web.yml`),
+    que desde la 33 solo tiene la acción `prueba` (escribiendo ENVIAR; solo
+    cuentas de administración): el envío de verdad lo hace Supabase (33) y
+    «Avisar novedad» ya no lo lanza. Resultados con
     `db/32_notificaciones_resultado.sql`: 2xx enviado; 404/410 borra la
     suscripción; 429, 5xx o sin respuesta, hasta 3 intentos; otro 4xx,
     fallido. Limpieza: `webpush_limpiar()` (envíos de más de 90 días y
@@ -399,6 +400,43 @@ por eso ya no se edita: cualquier cambio va en una migración nueva, como la
     vector del RFC 8291, la firma VAPID, un servidor de push local que
     descifra lo enviado, la 32 sobre la cadena de producción y los pasos de
     los flujos ejecutados de verdad (psql emulado sobre PGlite).
+- **33 · las notificaciones web salen desde Supabase**
+  (`db/33_webpush_supabase.sql`, copia idéntica en
+  `supabase/migrations/20261112170000_webpush_supabase.sql`). Con la cuenta
+  gratuita, GitHub no firma contrato de encargo y no debe ver las
+  suscripciones de todos; Supabase sí lo tiene. Solo añade y redefine con
+  `create or replace`: no enciende nada, no toca relojes ni Vault y no
+  reinicia la configuración.
+  - El reloj de siempre (`procesar()`, cada 5 minutos con el push encendido)
+    lee las respuestas (`leer_webpush`) y pide lo nuevo (`enviar_webpush`,
+    tanda de 50), con las reglas de la 32 (`webpush_pendientes` y
+    `webpush_resultado`). `procesar()` es la de la 30 letra por letra más
+    esas dos llamadas, dentro del bloque del push, después de Expo.
+    **Reaplicar la 30 las quita**: después, la 31, la 32 y la 33.
+  - Postgres no tiene curvas elípticas: cifra y firma el servidor de la web
+    (Cloudflare). La única llamada es `webpush_encolar`: `POST
+    https://rwadar.pages.dev/api/interno/webpush` por pg_net (10 s), con
+    `{endpoint, p256dh, auth, carga}` y las cabeceras
+    `x-rwadar-vapid-privada` (de Vault, solo ahí) y `x-rwadar-vapid-publica`.
+    Espera 200 con `{"codigo": n}` (código del servicio de push; 0 sin
+    respuesta; -1 entrada que no sirve). Otra respuesta del servidor, o
+    ninguna en 10 minutos: reintento, hasta 3 intentos.
+  - `public.clave_publica_webpush_anon()`: la clave pública para anon y
+    authenticated (es pública); el servidor la usa para comprobar que quien
+    le llama tiene la privada de RWAdar.
+  - Prueba de administración por el mismo camino:
+    `webpush_prueba_supabase()` y `webpush_prueba_supabase_resultado()`;
+    acción `prueba-webpush` de «Avisos a registrados (base)» (AVISOS, sin
+    copia: no cambia la base), que espera a pg_net y solo enseña cuentas y
+    códigos (`db/33_webpush_supabase_prueba.sql`).
+  - Comprobar: `33_webpush_supabase_verificar.sql` (solo lee). Flujo:
+    `ensayo-33`, `verificar-33` y `aplicar-33` (copia antes y AVISOS), con
+    los verificadores 30, 31, 32 y 33.
+  - Prueba: `node probar-webpush-supabase.mjs` (también en `npm test`): la
+    33 sobre la cadena de producción, las peticiones de pg_net, las
+    respuestas (201, 404, 410, 429, 500, 0, -1, fallos del servidor y sin
+    respuesta), un doble del servidor de la web que cifra y entrega en un
+    servicio de push local, y los pasos de los flujos de verdad.
 
 ## Contenido y sincronización
 
