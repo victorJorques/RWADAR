@@ -471,7 +471,7 @@ la cuenta.
 | `30_avisos_registrados.sql` (reaplicada) | Vuelve al estado de instalación: todo apagado, **casilla incluida** (`casilla_activa = false`, `casilla_activada_el` vacía), sin reloj de envío y con el de limpieza. No borra filas. |
 | `30_avisos_registrados_verificar.sql` | Solo lee. Comprueba la versión v2 y sus textos, los interruptores, los permisos de cada función (`baja_por_correo` solo del propietario), que no haya ninguna cuenta confirmada sin preferencias, el reloj de envío y el diario de limpieza, el historial del permiso (sin clave ajena, con `historial_solo_anadir` y el disparador `BEFORE DELETE` en `auth.users`), que no quede la firma antigua de `configurar_avisos_novedades`, que `limpiar()` limpie el historial a los 3 años y nunca los anuncios, y el filtro de palabras ampliado. Informa de si la casilla del alta está activa; si no lo está, avisa (WARNING): «casilla del alta inactiva: si la web o la app enseñan la casilla, ejecuta `30_avisos_registrados_activar_casilla.sql`». |
 | `30_avisos_registrados_activar_casilla.sql` | Paso 4, con la plantilla de Auth ya puesta. Pone `casilla_activa = true` y `casilla_activada_el` (si ya estaba activa, conserva la fecha): desde entonces cuenta el permiso de las altas cuyo correo de confirmación sale desde ese momento. No envía nada ni crea reloj. |
-| `30_avisos_registrados_activar_correo.sql` | Exige los secretos en el Vault. Enciende el correo, fija `correo_activado_el` y crea el reloj de envío. No toca el de limpieza. |
+| `30_avisos_registrados_activar_correo.sql` | Exige la 31, la 34 (el pie sin el nombre del titular) y los secretos en el Vault. Enciende el correo, fija `correo_activado_el` y crea el reloj de envío. No toca el de limpieza. |
 | `30_avisos_registrados_activar_push.sql` | Lo mismo para el push. |
 | `30_avisos_registrados_apagar.sql` | Apaga el **envío**: correo, push, `ofertas_automaticas` y el reloj de envío. **No** toca la casilla del alta (la web y la app la siguen enseñando y quien la marca guarda su permiso) ni el reloj de limpieza. |
 | `30_avisos_registrados_apagar_casilla.sql` | Solo para **retirar la casilla**, al quitar el párrafo de avisos de la plantilla de Auth: `casilla_activa = false` y `casilla_activada_el` vacía. Antes, `AVISOS_NOVEDADES_REMOTOS = false` en la web y la app. No toca el envío ni los relojes. |
@@ -901,8 +901,11 @@ de Víctor.
           colas de pg_net las abre Supabase a todos los roles y postgres no
           puede cerrarlas (diagnóstico de producción del 06/11/2026); por ahí
           pasa el token de Lettermint.
-       2. Flujo «Avisos a registrados (base)», acción `activar-correo` con
-          `AVISOS`. Se niega si falta la 31 o los secretos del Vault.
+       2. Antes, `ensayo-34` y `aplicar-34` del mismo flujo (el pie de los
+          correos sin el nombre del titular). Después, flujo «Avisos a
+          registrados (base)», acción `activar-correo` con `AVISOS`. Se niega
+          si falta la 31, la 34 (o se reaplicó la 31 después) o los secretos
+          del Vault, y pasa los verificadores 30, 31 y 34.
        3. Registrar una cuenta propia con la casilla marcada y confirmarla (la
           confirmación ya llega por Lettermint). En unos minutos llega la
           bienvenida.
@@ -961,8 +964,8 @@ de Víctor.
      aviso (enlace y `mailto:`) y en Perfil.
    - **Si alguna vez se reaplica la 30** (por ejemplo, tras
      `fallo_cerrado.sql`), el envío vuelve al código de Brevo: hay que
-     reaplicar la 31 (`aplicar-31`). `activar-correo` se niega a encender sin
-     ella.
+     reaplicar la 31 (`aplicar-31`) y después la 32, la 33 y la 34.
+     `activar-correo` se niega a encender sin la 31 y sin la 34.
 6. **Push:**
    - ✅ proyecto de Firebase y credencial FCM V1 en EAS (06/11/2026);
    - ✅ APK 1.4.2 publicada el 06/11/2026 (guía);

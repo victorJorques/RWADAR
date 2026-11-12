@@ -6,10 +6,12 @@
 -- archivado y el seguimiento de aperturas y clics desactivado en el proyecto
 -- (la 31 lo pide además en cada correo); la 31 aplicada
 -- (31_correo_lettermint.sql: sin ella el envío seguiría siendo el de Brevo,
--- descartado en la revisión legal) y LETTERMINT_API_TOKEN y RWADAR_REMITENTE
--- en Vault (acción guardar-correo del flujo «Avisos a registrados (base)»).
--- Después: los verificadores 30 y 31 y una prueba con una cuenta propia (sin
--- píxel, enlaces directos, la dirección postal en el pie y la baja de
+-- descartado en la revisión legal); la 34 aplicada después de la 31
+-- (34_pie_sin_nombre.sql: sin ella el pie de cada correo llevaría el nombre
+-- completo del titular) y LETTERMINT_API_TOKEN y RWADAR_REMITENTE en Vault
+-- (acción guardar-correo del flujo «Avisos a registrados (base)»).
+-- Después: los verificadores 30, 31 y 34 y una prueba con una cuenta propia
+-- (sin píxel, enlaces directos, la dirección postal en el pie y la baja de
 -- principio a fin).
 --
 -- Transaccional: si falta algo no queda ni el interruptor encendido ni el
@@ -36,6 +38,8 @@ $precondiciones$;
 
 -- La 31 tiene que estar aplicada (y no deshecha por reaplicar la 30): el
 -- envío llama a Lettermint y ninguna función del correo habla con Brevo.
+-- Y la 34 encima (no deshecha por reaplicar la 31): el pie dice «el titular
+-- de RWAdar» y no lleva el nombre del titular.
 do $lettermint$
 declare
   v_enviar text;
@@ -52,6 +56,11 @@ begin
      or lower(v_enviar || v_leer || v_mensaje) like '%brevo%' then
     raise exception using errcode = '55000',
       message = 'avisos 30: falta aplicar 31_correo_lettermint.sql (o se reaplicó la 30 después: vuelve a aplicar la 31)';
+  end if;
+  if v_mensaje ~* '(j[o]rques|gr[a]nero|v[ií]ctor manuel)'
+     or position('Responsable: el titular de RWAdar, Plaza Generalitat' in v_mensaje) = 0 then
+    raise exception using errcode = '55000',
+      message = 'avisos 30: falta aplicar 34_pie_sin_nombre.sql (o se reaplicó la 31 después: vuelve a aplicar la 34)';
   end if;
 end
 $lettermint$;

@@ -60,6 +60,10 @@ const PKG = JSON.parse(leer('package.json'));
 const VERSION = 'novedades-v2-2026-11-06';
 const LETTERMINT = 'https://api.lettermint.co/v1/send';
 const NOMBRE = /jorques|granero|v[ií]ctor manuel/i;
+// Token inventado para los dobles (no es de Lettermint ni de nadie).
+const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].join('-');
+const VAULT_LETTERMINT = `insert into vault.decrypted_secrets(name, decrypted_secret) values ('LETTERMINT_API_TOKEN', '${TOKEN_LM}'),
+  ('RWADAR_REMITENTE', 'avisos@rwadar.example')`;
 
 // El pie de la 31 y el de la 34: solo cambia quién es el responsable.
 const NOMBRE_31 = 'Víctor Manuel Jorques Granero';
@@ -125,9 +129,10 @@ paso('la migración versionada 20261112210000 es una copia idéntica de db/34', 
     && /c\.estado in \('enviando', 'pendiente'\) and c\.idempotencia is not null\s+and c\.idempotencia_el > now\(\) - interval '25 minutes'/.test(codigo));
   const sinNombre = ['db/34_pie_sin_nombre.sql', 'db/34_pie_sin_nombre_verificar.sql',
     'supabase/migrations/20261112210000_pie_sin_nombre.sql', 'db/31_correo_lettermint_verificar.sql', 'correo-lettermint.sh',
-    'plantillas-auth/confirmar-alta.html', 'plantillas-auth/recuperar-acceso.html', '../rwadar-app/plantillas-auth/LEEME.md']
+    'plantillas-auth/confirmar-alta.html', 'plantillas-auth/recuperar-acceso.html', '../rwadar-app/plantillas-auth/LEEME.md',
+    'db/30_avisos_registrados_activar_correo.sql']
     .filter((f) => NOMBRE.test(leer(f)));
-  paso(`sin el nombre del titular en la 34, su verificador, el verificador 31, la prueba de Lettermint ni las plantillas de Auth (con él: ${sinNombre.join(', ') || 'ninguno'})`,
+  paso(`sin el nombre del titular en la 34, su verificador, el verificador 31, la prueba de Lettermint, las plantillas de Auth ni activar_correo (con él: ${sinNombre.join(', ') || 'ninguno'})`,
     sinNombre.length === 0);
   paso('npm test de rwadar-app ejecuta esta prueba justo después de la de las notificaciones web',
     PKG.scripts.test.includes('node probar-webpush-supabase.mjs && node probar-pie-sin-nombre.mjs &&'));
@@ -217,6 +222,20 @@ const antes = await muestras();
     v.slice(0, 4).every((x) => x.ok) && !v[4].ok && /vuelve a llevar el nombre del titular/.test(v[4].error)
     && antes.every((c) => c.html.includes(`Responsable: ${NOMBRE_31}, Plaza Generalitat`)));
 }
+{
+  // Sin la 34, encender el correo se niega aunque Vault ya tenga el token y
+  // el remitente: ningún aviso sale con el nombre del titular en el pie.
+  await sesion(db);
+  await db.exec(VAULT_LETTERMINT);
+  const e = await error(() => db.exec(ACTIVAR_CORREO));
+  await db.exec('rollback').catch(() => {});
+  await sesion(db);
+  const c = await una(db, `select correo_habilitado h, correo_activado_el f,
+      (select count(*)::int from cron.job where jobname = 'rwadar-novedades') relojes from rwadar_novedades.configuracion`);
+  await db.exec("delete from vault.decrypted_secrets where name in ('LETTERMINT_API_TOKEN', 'RWADAR_REMITENTE')");
+  paso(`sin la 34 (y con el token y el remitente en Vault), activar-correo se niega (55000) y no enciende nada ni crea el reloj («${e?.message}»)`,
+    e?.code === '55000' && /falta aplicar 34_pie_sin_nombre\.sql/.test(e.message) && c.h === false && c.f === null && c.relojes === 0);
+}
 
 /* =====================================================================
    3 · Dobles: psql sobre PGlite y los pasos del flujo con bash
@@ -302,10 +321,12 @@ if (hayBash) {
     [{ ACCION: 'ensayo-34' }, { SQL: 'rwadar-app/db/34_pie_sin_nombre.sql', CAMBIA: 'no', ENSAYO: 'si', VERIFICADORES: V5 }],
     [{ ACCION: 'verificar-34' }, { SQL: V(34), CAMBIA: 'no', ENSAYO: 'no', VERIFICADORES: V5 }],
     [{ ACCION: 'aplicar-34', CONFIRMAR: 'AVISOS' }, { SQL: 'rwadar-app/db/34_pie_sin_nombre.sql', CAMBIA: 'si', ENSAYO: 'no', VERIFICADORES: V5 }],
+    [{ ACCION: 'activar-correo', CONFIRMAR: 'AVISOS' }, { SQL: 'rwadar-app/db/30_avisos_registrados_activar_correo.sql', CAMBIA: 'si', ENSAYO: 'no',
+      VERIFICADORES: [30, 31, 34].map(V).join(' ') }],
   ];
   const vistos = [];
   for (const [entradas] of esperados) vistos.push(await compruebaBase(entradas));
-  paso(`«Comprobar la acción» elige SQL, copia, ensayo y los verificadores 30 a 34 de las ${esperados.length} acciones de la 34`,
+  paso(`«Comprobar la acción» elige SQL, copia, ensayo y verificadores de las acciones de la 34 (los 30 a 34) y de activar-correo (30, 31 y 34) (${esperados.length} acciones)`,
     vistos.every((v, i) => v.estado === 0 && isDeepStrictEqual(v.salida, esperados[i][1])));
   const malos = [{ ACCION: 'aplicar-34' }, { ACCION: 'aplicar-34', CONFIRMAR: 'avisos' }, { ACCION: 'aplicar-35', CONFIRMAR: 'AVISOS' }];
   const rechazos = [];
@@ -392,10 +413,8 @@ const despues = await muestras();
    6 · De punta a punta: lo que sale hacia Lettermint lleva el pie nuevo
    ===================================================================== */
 {
-  const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].join('-');
   await sesion(db);
-  await db.exec(`insert into vault.decrypted_secrets(name, decrypted_secret) values ('LETTERMINT_API_TOKEN', '${TOKEN_LM}'),
-    ('RWADAR_REMITENTE', 'avisos@rwadar.example')`);
+  await db.exec(VAULT_LETTERMINT);
   await db.exec(ACTIVAR_CORREO);
   await sesion(db);
   await db.exec('set role supabase_auth_admin');
@@ -463,6 +482,11 @@ const despues = await muestras();
   await db.exec(SQL31);
   const tras31 = [await verificar31(), await verificar34()];
   const conNombre = isDeepStrictEqual(await muestras(), antes);
+  await sesion(db);
+  const encender31 = await error(() => db.exec(ACTIVAR_CORREO));
+  await db.exec('rollback').catch(() => {});
+  await sesion(db);
+  const apagado31 = (await una(db, 'select correo_habilitado h from rwadar_novedades.configuracion')).h === false;
   await db.exec(SQL34);
   const tras34 = await verificar34();
   await sesion(db);
@@ -475,8 +499,9 @@ const despues = await muestras();
   await db.exec(SQL32);
   await db.exec(SQL33);
   await db.exec(SQL34);
-  paso('reaplicar la 31 devuelve el nombre al pie (el verificador 31 pasa y el 34 lo detecta) y reaplicar la 34 lo quita; tras reaplicar la 30, la 34 se niega hasta la 31, y con la 31, la 32, la 33 y la 34 queda bien',
+  paso('reaplicar la 31 devuelve el nombre al pie (el verificador 31 pasa, el 34 lo detecta y activar-correo se niega) y reaplicar la 34 lo quita; tras reaplicar la 30, la 34 se niega hasta la 31, y con la 31, la 32, la 33 y la 34 queda bien',
     tras31[0].ok && !tras31[1].ok && /vuelve a llevar el nombre/.test(tras31[1].error) && conNombre && tras34.ok
+    && encender31?.code === '55000' && /se reaplicó la 31 después: vuelve a aplicar la 34/.test(encender31.message) && apagado31
     && !tras30.ok && /no es el de Lettermint/.test(tras30.error) && sin31?.code === '55000'
     && (await todos()).every((x) => x.ok) && isDeepStrictEqual(await muestras(), despues));
 }

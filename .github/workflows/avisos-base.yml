@@ -18,7 +18,8 @@ name: Avisos a registrados (base)
 #
 # «guardar-correo» crea o actualiza en Vault LETTERMINT_API_TOKEN (del secreto
 # de GitHub con ese nombre) y RWADAR_REMITENTE (de la entrada «remitente»). No
-# enciende el correo: eso es «activar-correo», que exige la 31 y esos dos.
+# enciende el correo: eso es «activar-correo», que exige la 31, la 34 (el
+# pie sin el nombre del titular) y esos dos.
 # OJO: reaplicar la 30 devuelve el envío de correo al código de Brevo, el
 # push de Expo a la prioridad normal y procesar() a su versión sin las
 # notificaciones web; si la 31, la 32, la 33 y la 34 ya estaban aplicadas,
@@ -159,7 +160,7 @@ jobs:
             verificar-34)    SQL="$V34";                                         CAMBIA=no; VERIFICADORES="$V30 $V31 $V32 $V33 $V34" ;;
             aplicar-34)      SQL="$D/34_pie_sin_nombre.sql";                    CAMBIA=si; VERIFICADORES="$V30 $V31 $V32 $V33 $V34" ;;
             activar-casilla) SQL="$D/30_avisos_registrados_activar_casilla.sql"; CAMBIA=si ;;
-            activar-correo)  SQL="$D/30_avisos_registrados_activar_correo.sql";  CAMBIA=si; VERIFICADORES="$V30 $V31" ;;
+            activar-correo)  SQL="$D/30_avisos_registrados_activar_correo.sql";  CAMBIA=si; VERIFICADORES="$V30 $V31 $V34" ;;
             activar-push)    SQL="$D/30_avisos_registrados_activar_push.sql";    CAMBIA=si ;;
             apagar)          SQL="$D/30_avisos_registrados_apagar.sql";          CAMBIA=si ;;
             apagar-casilla)  SQL="$D/30_avisos_registrados_apagar_casilla.sql";  CAMBIA=si ;;

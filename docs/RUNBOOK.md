@@ -250,7 +250,8 @@ gratuito de 100.000 al día de toda la web; vigilarlo antes de subir la tanda.
   `aplicar-34` cambian solo el pie de los avisos por correo a «Responsable:
   el titular de RWAdar, Plaza Generalitat, s/n, 46600 Alzira (Valencia),
   España», con el aviso legal enlazado. Se niega sin la 31 o con correos a
-  medias (espera 25 minutos y repítela). **Reaplicar la 31 devuelve el
+  medias (espera 25 minutos y repítela). **Hay que aplicarla antes de
+  encender el correo: `activar-correo` se niega sin ella.** **Reaplicar la 31 devuelve el
   nombre al pie: después, `aplicar-34`.** Tras reaplicar la 30: la 31, la 32,
   la 33 y la 34, en ese orden. Las plantillas de Auth (alta y contraseña)
   se cambian aparte: volver a pegarlas desde `rwadar-app/plantillas-auth/`
@@ -352,7 +353,9 @@ gratuito de 100.000 al día de toda la web; vigilarlo antes de subir la tanda.
   10. Prueba real a un buzón propio: en el código fuente del correo, ningún
       píxel ni enlaces reescritos; la cabecera `List-Unsubscribe`; y que la
       ruta de difusión se llama `broadcast`.
-  11. Solo entonces, `activar-correo`, y la comprobación final con una cuenta
+  11. Solo entonces: antes, `ensayo-34` y `aplicar-34` (el pie sin el nombre
+      del titular; `activar-correo` se niega sin la 34 y pasa también su
+      verificador); después, `activar-correo`, y la comprobación final con una cuenta
       propia (bienvenida, un solo correo al repetir el envío y la baja). La
       repetición, en los 25 minutos siguientes al primer envío y antes de
       probar la baja; si no, no comprueba nada (contrato, punto 5.11).

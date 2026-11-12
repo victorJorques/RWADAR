@@ -67,11 +67,14 @@ const FRASE_PLANTILLA = 'Marcaste también la casilla de avisos de novedades: al
 // política de uso de Lettermint en cada correo.
 const RESPONSABLE = 'Responsable: Víctor Manuel Jorques Granero, España';
 const RESPONSABLE_CORREO = 'Responsable: Víctor Manuel Jorques Granero, Plaza Generalitat, s/n, 46600 Alzira (Valencia), España';
+// Desde la 34, el pie de los correos dice «el titular de RWAdar» (sin su
+// nombre) y enlaza el aviso legal; activar el correo exige la 34.
+const RESPONSABLE_34 = 'Responsable: el titular de RWAdar, Plaza Generalitat, s/n, 46600 Alzira (Valencia), España';
 const PARRAFO_APUNTADO = 'Además, te has apuntado a los avisos de novedades: te avisaremos de las fichas nuevas que entren en el radar y de las novedades de la web y la app. Puedes darte de baja cuando quieras con el enlace del final o en tu Perfil.';
 const CIERRE_HTML = 'Si no creaste esta cuenta, <a href="mailto:rwadares@gmail.com" style="color:#0F7A57">escríbenos</a> y la borramos.';
 const CIERRE_TXT = 'Si no creaste esta cuenta, escríbenos a rwadares@gmail.com y la borramos.';
-const PIE_HTML = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE_CORREO} (<a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">aviso legal</a> · <a href="https://rwadar.pages.dev/privacidad" style="color:#555">privacidad</a>).`;
-const PIE_TXT = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE_CORREO}.`;
+const PIE_HTML = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE_34} (<a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">aviso legal</a> · <a href="https://rwadar.pages.dev/privacidad" style="color:#555">privacidad</a>).`;
+const PIE_TXT = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE_34}.`;
 const PUSH_BIENVENIDA = 'Notificaciones activadas en este móvil. Las de novedades solo llegan si las tienes activadas en Perfil.';
 const MAILTO_BAJA = 'mailto:rwadares@gmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
 
@@ -88,6 +91,7 @@ const SQL31 = leer('db/31_correo_lettermint.sql');
 const MIGRACION31 = leer('supabase/migrations/20261106120000_correo_lettermint.sql');
 const VERIFICAR31 = leer('db/31_correo_lettermint_verificar.sql');
 const GUARDAR31 = leer('db/31_correo_lettermint_guardar.sql');
+const SQL34 = leer('db/34_pie_sin_nombre.sql');
 const BASE = leer('../.github/workflows/avisos-base.yml');
 const FALLO_CERRADO = leer('db/fallo_cerrado.sql');
 const FLUJO = leer('../.github/workflows/avisar-novedad.yml');
@@ -274,6 +278,7 @@ const conVariablesPsql = (sql, variables) => sinComentarios(sql).split('\n').fil
   }))).join('');
 const V30_RUTA = 'rwadar-app/db/30_avisos_registrados_verificar.sql';
 const V31_RUTA = 'rwadar-app/db/31_correo_lettermint_verificar.sql';
+const V34_RUTA = 'rwadar-app/db/34_pie_sin_nombre_verificar.sql';
 // Token inventado para los dobles (no es de Lettermint ni de nadie).
 const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].join('-');
 {
@@ -395,10 +400,10 @@ const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].j
       [{ ACCION: 'aplicar-31', CONFIRMAR: 'AVISOS' }, { SQL: 'rwadar-app/db/31_correo_lettermint.sql', CAMBIA: 'si', ENSAYO: 'no', VERIFICADORES: ambos }],
       [{ ACCION: 'guardar-correo', CONFIRMAR: 'AVISOS', REMITENTE: 'avisos@rwadar.example' },
         { SQL: 'rwadar-app/db/31_correo_lettermint_guardar.sql', CAMBIA: 'si', ENSAYO: 'no', VERIFICADORES: V30_RUTA }],
-      [{ ACCION: 'activar-correo', CONFIRMAR: 'AVISOS' }, { SQL: 'rwadar-app/db/30_avisos_registrados_activar_correo.sql', CAMBIA: 'si', ENSAYO: 'no', VERIFICADORES: ambos }],
+      [{ ACCION: 'activar-correo', CONFIRMAR: 'AVISOS' }, { SQL: 'rwadar-app/db/30_avisos_registrados_activar_correo.sql', CAMBIA: 'si', ENSAYO: 'no', VERIFICADORES: `${ambos} ${V34_RUTA}` }],
     ];
     const vistos = esperados.map(([entradas]) => comprueba(entradas));
-    paso(`«Comprobar la acción» elige SQL, copia, ensayo y verificadores de ${esperados.length} acciones (las de la 31 pasan los verificadores 30 y 31)`,
+    paso(`«Comprobar la acción» elige SQL, copia, ensayo y verificadores de ${esperados.length} acciones (las de la 31 pasan los verificadores 30 y 31; activar-correo, además el 34)`,
       vistos.every((v, i) => v.estado === 0 && isDeepStrictEqual(v.salida, esperados[i][1])));
     const malos = [{ ACCION: 'aplicar-31' }, { ACCION: 'aplicar-31', CONFIRMAR: 'avisos' },
       { ACCION: 'guardar-correo', REMITENTE: 'avisos@rwadar.example' }, { ACCION: 'guardar-correo', CONFIRMAR: 'AVISOS' },
@@ -415,7 +420,7 @@ const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].j
     const verificaciones = [
       [{ ACCION: 'aplicar-31', CONFIRMAR: 'AVISOS' }, [V30_RUTA, V31_RUTA]],
       [{ ACCION: 'verificar-31' }, [V30_RUTA, V31_RUTA]],
-      [{ ACCION: 'activar-correo', CONFIRMAR: 'AVISOS' }, [V30_RUTA, V31_RUTA]],
+      [{ ACCION: 'activar-correo', CONFIRMAR: 'AVISOS' }, [V30_RUTA, V31_RUTA, V34_RUTA]],
       [{ ACCION: 'aplicar-30', CONFIRMAR: 'AVISOS' }, [V30_RUTA]],
       [{ ACCION: 'guardar-correo', CONFIRMAR: 'AVISOS', REMITENTE: 'avisos@rwadar.example' }, [V30_RUTA]],
     ].map(([entradas, esperados]) => {
@@ -423,7 +428,7 @@ const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].j
       return v.estado === 0 && isDeepStrictEqual(v.llamadas.map((l) => l.argv), esperados.map(llamadaVerificador))
         && esperados.every((ruta, i) => v.llamadas[i].sql === fs.readFileSync(path.join(raiz, '..', ruta), 'utf8'));
     });
-    paso('el paso «Verificar» del flujo, ejecutado de verdad, pasa los verificadores 30 y 31 (en ese orden) tras aplicar-31, verificar-31 y activar-correo, y solo el 30 tras aplicar-30 y guardar-correo',
+    paso('el paso «Verificar» del flujo, ejecutado de verdad, pasa los verificadores 30 y 31 (en ese orden) tras aplicar-31 y verificar-31, el 30, el 31 y el 34 tras activar-correo, y solo el 30 tras aplicar-30 y guardar-correo',
       verificaciones.every(Boolean));
   }
 }
@@ -1615,6 +1620,14 @@ const secretos = async () => { await sesion(db); return filas(db, `select name, 
   await sesion(db);
   await db.exec(VAULT_GUARDAR_DOBLES);
   const activar = async () => { await sesion(db); const e = await error(() => db.exec(ACTIVAR_CORREO)); if (e) await db.exec('rollback'); return e; };
+  // Como hoy en producción: la 31 puesta y la 34 sin aplicar (el pie lleva el
+  // nombre del titular). Encender el correo se niega antes de mirar Vault.
+  const eSin34 = await activar();
+  paso(`con la 31 y sin la 34 (el pie con el nombre del titular), activar el correo se niega y no deja nada encendido ni reloj («${eSin34?.message}»)`,
+    eSin34?.code === '55000' && /falta aplicar 34_pie_sin_nombre\.sql/.test(eSin34.message)
+    && !(await config()).correo_habilitado && (await relojes()).length === 0);
+  await sesion(db);
+  await db.exec(SQL34);
   const e = await activar();
   const c = await config();
   paso(`sin LETTERMINT_API_TOKEN ni RWADAR_REMITENTE en Vault, activar el correo falla y no deja nada encendido ni reloj («${e?.message}»)`,
@@ -1815,7 +1828,7 @@ let n1;
   paso('el título y el texto van escapados en el HTML; el asunto, tal cual',
     html.includes('Avisos &amp; &lt;mejoras&gt; en la app') && html.includes('elegir &quot;qué&quot; avisos')
     && !html.includes('<mejoras>') && aAna.body.subject === 'Avisos & <mejoras> en la app');
-  paso('pie de todos los correos: quién envía, con el titular y su dirección postal (Plaza Generalitat, s/n, 46600 Alzira), aviso legal y privacidad, en HTML y en texto',
+  paso('pie de todos los correos (con la 34): quién envía, «el titular de RWAdar» sin su nombre y la dirección postal (Plaza Generalitat, s/n, 46600 Alzira), aviso legal y privacidad, en HTML y en texto',
     correos.every((c) => c.body.html.includes(PIE_HTML) && c.body.text.includes(`\n--\n${PIE_TXT}\nAviso legal: https://rwadar.pages.dev/privacidad#aviso-legal\nPrivacidad: https://rwadar.pages.dev/privacidad\n`)));
   paso('pie: quién envía (aviso legal y privacidad), por qué lo recibe y la baja por enlace y mailto',
     html.includes('Te escribe RWAdar') && html.includes('href="https://rwadar.pages.dev/privacidad#aviso-legal"')
@@ -2469,6 +2482,15 @@ let n1;
   await db.query('delete from rwadar_novedades.correos where id = $1', [enCurso]);
   paso('reaplicar la 31 sobre sí misma no toca las colas: un correo en curso con Lettermint sigue «enviando» con su petición',
     sigue.estado === 'enviando' && Number(sigue.peticion_id) === 999998 && (await verificar31()).ok);
+  // Reaplicar la 31 devuelve el nombre al pie: encender se niega hasta la 34.
+  await sesion(db);
+  const eTras31 = await error(() => db.exec(ACTIVAR_CORREO));
+  if (eTras31) await db.exec('rollback');
+  paso(`tras reaplicar la 31, activar el correo se niega hasta volver a aplicar la 34 («${eTras31?.message}»)`,
+    eTras31?.code === '55000' && /falta aplicar 34_pie_sin_nombre\.sql \(o se reaplicó la 31 después/.test(eTras31.message)
+    && !(await config()).correo_habilitado);
+  await sesion(db);
+  await db.exec(SQL34);
   await db.exec(ACTIVAR_PUSH);
   await db.exec(ACTIVAR_CORREO);
   await db.exec(ACTIVAR_CASILLA);
