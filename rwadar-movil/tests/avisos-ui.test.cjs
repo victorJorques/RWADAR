@@ -183,6 +183,7 @@ test('alta con el interruptor encendido: casilla opcional, sin marcar, con el te
 /* ---------------------------------------------------------------------
    Perfil › Avisos: hook real + panel, con la 1.4.1 y con la 1.4.2
    --------------------------------------------------------------------- */
+const QUIEN_MOVIL = 'Al activarlas, tu móvil se registra en Firebase Cloud Messaging (Google) y Expo para recibirlas. Más en Privacidad.';
 function estadoServidor(cambios = {}) {
   return { novedades: false, version: null, aceptado_el: null, version_vigente: avisosCuenta.VERSION_AVISOS,
     texto_es: avisosCuenta.TEXTO_AVISOS_ES, texto_en: avisosCuenta.TEXTO_AVISOS_EN, dispositivos: 0,
@@ -262,7 +263,11 @@ test('Perfil con la 1.4.1 (código 23): el móvil anuncia la 1.4.2, no toca el S
   assert.equal(novedades.props.accessibilityState.checked, false);
   const activado = await p.pulsar('Avisos de novedades (correo y móvil)');
   assert.equal(boton(activado, 'Avisos de novedades (correo y móvil)').props.accessibilityState.checked, true);
-  assert.ok(texto(activado).includes('Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.'));
+  // Con el correo apagado no hay «enlace de cada correo»: no se promete (como la web).
+  assert.ok(texto(activado).includes('Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.'));
+  assert.doesNotMatch(texto(activado), /enlace de cada correo\./);
+  // En la 1.4.1 el móvil no se activa: sin la frase de quién interviene en la entrega.
+  assert.doesNotMatch(texto(activado), /Firebase Cloud Messaging/);
   assert.deepEqual(p.rpc.find(([n]) => n === 'configurar_avisos_novedades'),
     ['configurar_avisos_novedades', { p_activar: true, p_version: 'novedades-v2-2026-11-06', p_canal: 'app', p_idioma: 'es' }]);
   // Con la app en inglés, el permiso se guarda con p_idioma 'en' (también la baja).
@@ -282,7 +287,15 @@ test('Perfil con la 1.4.2 (código 24): pide permiso solo al pulsar, registra el
   let panel = await p.esperar();
   assert.deepEqual(p.sdk, ['consultar'], 'al abrir solo se consulta, sin pedir permiso');
   assert.ok(texto(panel).includes('Al activarlas, el sistema te pedirá permiso. Guardamos en tu cuenta un identificador de este móvil para entregarte las notificaciones (lo reciben Expo y Google). Se borra al desactivarlas, al cerrar sesión con conexión, al borrar la cuenta o tras 180 días sin usar la app.'));
+  // Primera capa junto al interruptor: quién interviene en la entrega (lo siguiente que se pinta).
+  {
+    const orden = nodos(panel), interruptor = boton(panel, 'Notificaciones en este móvil');
+    const quien = orden.find((n) => n.type === 'Text' && texto(n) === QUIEN_MOVIL);
+    assert.ok(quien, 'falta la frase de quién interviene en la entrega');
+    assert.equal(orden.indexOf(quien), orden.indexOf(interruptor) + nodos(interruptor).length, 'justo después del interruptor');
+  }
   panel = await p.pulsar('Notificaciones en este móvil');
+  assert.ok(texto(panel).includes(QUIEN_MOVIL), 'sigue a la vista con las notificaciones activadas');
   assert.deepEqual(p.sdk[1], ['token', { solicitarPermiso: true }]);
   assert.deepEqual(p.rpc.find(([n]) => n === 'registrar_aviso_push'), ['registrar_aviso_push', { p_token: TOKEN, p_plataforma: 'android' }]);
   assert.equal(p.local.token, TOKEN);
@@ -317,7 +330,18 @@ test('Perfil con la 1.4.2 y el push de la base apagado: no se ofrece ni se consu
   assert.equal(boton(panel, 'Notificaciones en este móvil').props.disabled, true);
   assert.match(texto(panel), /todavía no están activas/);
   assert.match(texto(panel), /El envío por correo y al móvil todavía no está activo/);
+  // Con el envío apagado tampoco se activa, pero ya se dice quién intervendrá.
+  assert.ok(texto(panel).includes(QUIEN_MOVIL));
   assert.deepEqual(p.sdk, []);
+  p.h.desmontar();
+});
+
+test('Perfil con el correo encendido: al activar los avisos, la baja también con el enlace de cada correo', async () => {
+  const p = perfil({ capacidad: true, servidor: estadoServidor({ correo_activo: true }) });
+  await p.esperar();
+  const activado = await p.pulsar('Avisos de novedades (correo y móvil)');
+  assert.ok(texto(activado).includes('Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.'));
+  assert.doesNotMatch(texto(activado), /Puedes darte de baja aquí cuando quieras/);
   p.h.desmontar();
 });
 
@@ -957,6 +981,10 @@ test('todos los textos nuevos de la interfaz tienen su inglés en el diccionario
   }
   assert.equal(idioma.ingles('Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.'),
     'News notices turned on. You can unsubscribe here or with the link in every email.');
+  assert.equal(idioma.ingles('Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.'),
+    'News notices turned on. You can unsubscribe here whenever you like.');
+  assert.equal(idioma.ingles(QUIEN_MOVIL),
+    'When you turn them on, your phone registers with Firebase Cloud Messaging (Google) and Expo to receive them. More in Privacy.');
   assert.equal(idioma.ingles('Ver todos (7)'), 'Show all (7)');
   assert.equal(idioma.ingles('Ver menos'), 'Show less');
   assert.equal(idioma.ingles('4 sin leer'), '4 unread');

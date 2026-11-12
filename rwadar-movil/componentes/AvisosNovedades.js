@@ -40,6 +40,8 @@ const ALMACEN = {
 
 const MENSAJES = {
   novedadesOn: 'Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.',
+  // Con el correo apagado no hay «enlace de cada correo»: no se promete (como la web).
+  novedadesOnSinCorreo: 'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.',
   novedadesOff: 'Avisos de novedades desactivados. Ya no recibirás correos ni notificaciones de novedades.',
   desfasado: 'Para activarlos, actualiza la app: el texto del permiso ha cambiado.',
   error: 'No se pudo guardar el cambio. Comprueba la conexión e inténtalo de nuevo.',
@@ -54,6 +56,9 @@ const MENSAJES = {
 // Qué se guarda al activar «Notificaciones en este móvil», quién lo recibe y
 // cuándo se borra (revisión legal del 06/11/2026).
 const TEXTO_MOVIL = 'Al activarlas, el sistema te pedirá permiso. Guardamos en tu cuenta un identificador de este móvil para entregarte las notificaciones (lo reciben Expo y Google). Se borra al desactivarlas, al cerrar sesión con conexión, al borrar la cuenta o tras 180 días sin usar la app.';
+// Primera capa junto a «Notificaciones en este móvil»: quién interviene en la
+// entrega (texto provisional del 12/11/2026; el anexo legal puede pulirlo).
+const TEXTO_MOVIL_QUIEN = 'Al activarlas, tu móvil se registra en Firebase Cloud Messaging (Google) y Expo para recibirlas. Más en Privacidad.';
 // Enlace de baja de la tarjeta «Avisos» de Inicio.
 const TEXTO_DESACTIVAR = '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.';
 
@@ -134,7 +139,8 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
     try {
       // Con el permiso se guarda el idioma en que se ha visto su texto.
       const nuevo = await g.alternarNovedades(activar, servidor, obtenerIdioma());
-      actualizar(vuelta, { servidor: nuevo, procesando: '', mensaje: activar ? MENSAJES.novedadesOn : MENSAJES.novedadesOff });
+      const activado = nuevo?.correoActivo === true ? MENSAJES.novedadesOn : MENSAJES.novedadesOnSinCorreo;
+      actualizar(vuelta, { servidor: nuevo, procesando: '', mensaje: activar ? activado : MENSAJES.novedadesOff });
     } catch (error) {
       actualizar(vuelta, { procesando: '', error: error?.code === 'avisos_texto_desfasado' ? MENSAJES.desfasado : MENSAJES.error });
     }
@@ -340,6 +346,10 @@ export function PanelAvisosNovedades({ estado, onAlternarNovedades, onAlternarMo
       <View style={s.divisor} />
       <Interruptor etiqueta="Notificaciones en este móvil" activo={movil?.activo === true}
         deshabilitado={!!procesando || !puedeMovil} ocupado={procesando === 'movil'} onPress={onAlternarMovil} />
+      {/* Quién interviene en la entrega, junto al interruptor. No en la 1.4.1
+          ni en un dispositivo que no puede recibirlas: ahí no se activan. */}
+      {movil && !['requiere-version', 'no-disponible'].includes(movil.estado)
+        ? <Text style={s.nota}>{TEXTO_MOVIL_QUIEN}</Text> : null}
       {notaMovil ? <Text style={s.nota}>{notaMovil}</Text> : null}
       {/* Volver a activarlas vuelve a guardar el identificador: se explica igual. */}
       {movil?.estado === 'no-registrado' ? <Text style={s.nota}>{TEXTO_MOVIL}</Text> : null}

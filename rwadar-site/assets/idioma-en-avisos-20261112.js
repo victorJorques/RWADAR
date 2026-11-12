@@ -15,7 +15,6 @@
   "Notificaciones y avisos en Perfil": "Notifications and notices in Profile",
   "Avisos marcados como leídos.": "Notices marked as read.",
   "Entra en tu cuenta para ver tus avisos. ¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.": "Sign in to see your notices. Don't want these notices? Turn them off in Profile or in your phone settings.",
-  "Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.": "News notices turned on. You can unsubscribe here whenever you like.",
   "El envío por correo y al móvil todavía no está activo. Mientras tanto, los avisos se ven en la campana.": "Sending by email and to phones is not active yet. Meanwhile, notices are shown under the bell.",
   // Notificaciones en este móvil (Web Push).
   "Activar notificaciones en este móvil": "Turn on notifications on this phone",
