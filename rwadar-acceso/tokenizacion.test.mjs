@@ -237,9 +237,17 @@ const ULTIMO = SERIE.puntos.at(-1);
 const VIVO = { fuente: 'coingecko', actualizado: '2026-11-10T15:25:40.000Z', total: { valor: 49683537033 } };
 const plano = t => String(t).replace(/\s+/g, ' ').trim();
 const NUM = t => Number(String(t).match(/\d[\d.]*/)[0].replace(/\./g, ''));
+/* El reloj del servidor local: empieza el 10/11/2026 a las 15:31:37 UTC
+   (AHORA, 6 minutos después del dato de CoinGecko de la prueba) y avanza
+   con el tiempo real. Con la hora de verdad, a partir del 12/11 el servidor
+   rechazaba ese dato por tener más de 48 horas y la prueba fallaba sin que
+   nada estuviera roto. El navegador sigue con su hora: lo único suyo que
+   depende de ella es si dice «hoy, 15:25» o «dato del 10/11/2026, 15:25»
+   y la prueba acepta los dos. */
+const relojServidor = () => { const inicio = performance.now(); return () => AHORA + Math.floor(performance.now() - inicio); };
 test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio con la cotización; /mercado/ con pestañas, gráfico, cruz con ratón y teclado, tabla, datos clave, inglés y CoinGecko caído', { skip: sinNavegador, timeout: 180000 }, async () => {
   // Las fuentes, sin huellas: el worker se compila desde rwadar-acceso/.
-  const local = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, responder: async (url) => {
+  const local = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, ahora: relojServidor(), responder: async (url) => {
     if (url.hostname !== 'api.coingecko.com') return null;
     return new Response(COINGECKO);
   } });
@@ -509,7 +517,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       await contexto.close();
     }
     // CoinGecko da 429: la última foto guardada, con su aviso y su fecha; el gráfico sigue con la serie.
-    const local2 = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, responder: async (url) =>
+    const local2 = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, ahora: relojServidor(), responder: async (url) =>
       (url.hostname === 'api.coingecko.com' ? new Response('{}', { status: 429 }) : null) });
     try {
       const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 } });

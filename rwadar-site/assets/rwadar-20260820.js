@@ -5377,7 +5377,9 @@ const Cuenta = (function(){
  /* El diálogo de la campana: la lista, la baja de los avisos y el camino a
     Perfil › Avisos. Se crea al primer toque, como el de «RWAdar en iPhone».
     Es también adonde lleva cada notificación (?avisos=1, db/32): la baja
-    tiene que verse en cada comunicación (LSSI, art. 21.2, párr. 2). */
+    tiene que verse en cada comunicación (LSSI, art. 21.2, párr. 2). Por eso
+    la baja y el botón van en un pie fijo, fuera de la lista que se desplaza:
+    se ven al abrir aunque haya 10 avisos (12/11/2026). */
  function abrirAvisos(origen){
   if(!AVISOS_BANDEJA_DISPONIBLE||!identidadConfirmada||!ses||typeof document==='undefined'||!document.createElement)return;
   let d=$('avisosDialogo');
@@ -5387,7 +5389,8 @@ const Cuenta = (function(){
    d.setAttribute('aria-labelledby','avisosDialogoTit');
    d.innerHTML='<div class="escaparate-dialogo-marco"><header class="avisos-dialogo-cab"><div><span>Tu cuenta</span>'+
     '<h2 id="avisosDialogoTit">Tus avisos</h2></div><button type="button" data-cerrar-avisos aria-label="Cerrar">×</button></header>'+
-    '<div class="avisos-dialogo-cuerpo"><div id="avisosDialogoLista"></div>'+
+    '<div class="avisos-dialogo-cuerpo"><div id="avisosDialogoLista"></div></div>'+
+    '<div class="avisos-dialogo-pie">'+
     '<p class="avisos-baja" id="avisosDialogoBaja">¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.</p>'+
     '<button type="button" class="avisos-gestionar" data-avisos-gestionar>Notificaciones y avisos en Perfil</button></div></div>';
    d.addEventListener('click',e=>{
@@ -5438,6 +5441,12 @@ const Cuenta = (function(){
     navegador; cada notificación llega cifrada y la descifra el navegador. */
  let push={estado:'',cuenta:-1,ocupado:false,mensaje:'',error:false};
  const CLAVE_VAPID=/^[A-Za-z0-9_-]{87}$/;
+ /* Primera capa junto al botón, también con las notificaciones activadas:
+    el servicio del navegador puede estar fuera de la UE y la salida de no
+    activarlas. Texto del anexo legal (docs/legal/ANEXO-NOTIFICACIONES-
+    2026-11-12.md, 2.4; condición C2) con «Más en Privacidad.», que enlaza
+    a #garantias-push. */
+ const TEXTO_PUSH_QUIEN='El servicio de tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no puede leer su texto. Si no las activas, seguirás viendo los avisos en la campana. Más en Privacidad.';
  /* La clave pública VAPID de la base, por cuenta: una cadena válida, null si
     aún no existe (crear-vapid) o undefined si no se ha podido preguntar
     (entonces se deja intentar: activarPush la vuelve a pedir). */
@@ -5537,6 +5546,9 @@ const Cuenta = (function(){
    if(act){act.hidden=!['disponible','pendiente','falta-permiso','comprobando'].includes(estado);
     act.disabled=(propio&&push.ocupado)||estado!=='disponible';}
    if(des){des.hidden=estado!=='activo';des.disabled=propio&&push.ocupado;}
+   /* Quién interviene en la entrega, junto al botón (activar o desactivar). */
+   const quien=$(pre+'PushQuien');
+   if(quien)quien.hidden=!(con&&(estado==='activo'||['disponible','pendiente','falta-permiso','comprobando'].includes(estado)));
   }
  }
  async function cargarPush(){
@@ -5688,7 +5700,7 @@ const Cuenta = (function(){
    '<button type="button" class="avisos-push-boton" id="'+pre+'PushInstalar" data-push-instalar hidden>Ver cómo añadirla</button>'+
    '<button type="button" class="avisos-push-boton avisos-push-principal" id="'+pre+'PushActivar" data-push-activar hidden disabled>Activar notificaciones en este móvil</button>'+
    '<button type="button" class="avisos-push-boton" id="'+pre+'PushDesactivar" data-push-desactivar hidden>Desactivar las notificaciones de este móvil</button>'+
-   '</div></div>';
+   '</div><p class="perfil-nota avisos-push-quien" id="'+pre+'PushQuien" hidden>'+conEnlacePrivacidad(TEXTO_PUSH_QUIEN,'/privacidad#garantias-push')+'</p></div>';
  }
 
  /* --- estado del botón de la cabecera ----------------------------- */

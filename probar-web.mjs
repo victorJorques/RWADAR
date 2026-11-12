@@ -3264,6 +3264,8 @@ prueba('privacidad: los avisos de novedades se explican, ya se activan en Perfil
     // el «Firebase user agent», para sus estadísticas internas, no para entregar las notificaciones (revisión del 07/11/2026).
     /^[^]*?Google recibe esas fechas junto con qué componentes de Firebase lleva la app y sus versiones, y datos técnicos del móvil \(versión de Android, marca, modelo, tipo de dispositivo y tienda desde la que se instaló la app\)\. Según Google, los usa para sus estadísticas internas de uso de esos componentes, sin unirlos a un identificador de la persona ni del móvil\./.test(firebase) &&
     !/solo para su uso|para poder entregarlas/.test(firebase.slice(0, firebase.indexOf('</p>'))) &&
+    // Anexo legal del 12/11/2026, apartado 2: el envío del latido se basa en el consentimiento de quien pulsa el botón.
+    /^[^]*?del móvil\. Al activar las notificaciones consientes también ese envío \(art\. 22\.2 de la Ley 34\/2002\); si no las activas, verás los mismos avisos en Inicio\. Esas fechas se borran/.test(firebase) &&
     // El botón de RWAdar no las borra: hay que decirlo, está en la misma pantalla de la app.
     /^[^]*?Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android\. El botón «Borrar datos del dispositivo» de RWAdar no las borra\.<\/p>/.test(firebase) &&
     privacidadLineal.indexOf('<p id="firebase-android">') < privacidadLineal.indexOf('<h2>6 · Correos de servicio</h2>') &&
@@ -3316,12 +3318,24 @@ prueba('privacidad: notificaciones en la web (qué se guarda, quién las entrega
   /cifrada de extremo a\s+extremo con las claves de tu navegador, así que ese servicio no puede leer su texto/.test(privacidadLineal) &&
   /<b>Servicios de notificaciones de los navegadores<\/b> \(Apple, Google, Mozilla o Microsoft,/.test(privacidadLineal) &&
   // GitHub ejecuta el remitente (rwadar-app/enviar-webpush.mjs en el flujo «Notificaciones web»): destinatario (art. 13.1.e)
-  // y su garantía de transferencia (art. 13.1.f), con la de Google; Apple, Mozilla y Microsoft, a comprobar antes de enviar.
+  // y su garantía de transferencia (art. 13.1.f), con la de Google y Microsoft.
   /Las cifra y\s+las envía un proceso de RWAdar que se ejecuta en servidores de GitHub\s+\(<a href="#proveedores-github">apartado 8<\/a>\)/.test(privacidadLineal) &&
   /<li id="proveedores-github"><b>GitHub<\/b>/.test(privacidad) &&
   /sus servidores\s+\(GitHub Actions\) ejecutan el proceso de RWAdar que las cifra y las envía: para cada envío\s+reciben la dirección de entrega de tu navegador, sus dos claves de cifrado y el texto del\s+aviso, nunca tu correo/.test(privacidadLineal) &&
-  /GitHub, que envía las\s+notificaciones de la web, y Google LLC están adheridas al Marco de Privacidad de Datos\s+UE-EE\. UU\./.test(privacidadLineal) &&
-  /Antes de empezar a enviar notificaciones a la web se comprobará la garantía aplicable a\s+Apple, Mozilla y Microsoft/.test(privacidadLineal) &&
+  privacidadLineal.includes('GitHub, que envía las notificaciones de la web, Google LLC y Microsoft Corporation están adheridas al Marco de Privacidad de Datos UE-EE. UU.') &&
+  // Anexo legal del 12/11/2026 (docs/legal/ANEXO-NOTIFICACIONES-2026-11-12.md): la garantía de cada servicio de push,
+  // comprobada en la lista oficial del DPF, en lugar de la promesa de comprobarla. Ni Apple ni Mozilla figuran como adheridas.
+  !/se comprobará la garantía/.test(privacidadLineal) &&
+  (privacidadLineal.match(/[^.]*están adheridas al Marco de Privacidad de Datos[^.]*\./g) || []).length === 1 &&
+  !/Apple|Mozilla/.test(privacidadLineal.match(/[^.]*están adheridas al Marco de Privacidad de Datos[^.]*\./)?.[0] ?? 'Apple') &&
+  privacidadLineal.includes('<a href="https://www.dataprivacyframework.gov/list" rel="noopener">dataprivacyframework.gov</a>') &&
+  /sus garantías se explican <a href="#garantias-push">debajo de esta lista<\/a>/.test(privacidadLineal) &&
+  privacidadLineal.includes('<p id="garantias-push"><b>Servicios de notificaciones de los navegadores:</b> comprobado el 12 de noviembre de 2026. No trabajan por encargo de RWAdar: los elige tu navegador') &&
+  privacidadLineal.includes('Sobre ti, de RWAdar solo reciben la dirección que ellos mismos dieron a tu navegador, la hora y el tamaño de cada notificación y su texto cifrado, que no pueden leer.') &&
+  privacidadLineal.includes('en el EEE responden Google Ireland Limited y Microsoft Ireland Operations Limited, y Google LLC y Microsoft Corporation están en el Marco UE-EE. UU.') &&
+  privacidadLineal.includes('<li><b>Apple</b> (Safari y las webs añadidas a la pantalla de inicio del iPhone y el iPad): no está en el Marco UE-EE. UU. Según su política de privacidad, los datos de las personas del EEE los controla Apple Distribution International Limited, en Irlanda, y Apple los saca del EEE con cláusulas contractuales tipo.</li>') &&
+  privacidadLineal.includes('<li><b>Mozilla</b> (Firefox): no está en el Marco UE-EE. UU. Según su aviso de privacidad, Mozilla y sus servidores están en Estados Unidos, y usa cláusulas contractuales tipo cuando corresponde.') &&
+  privacidadLineal.includes('no actives las notificaciones en el móvil: verás los mismos avisos en la campana de tu cuenta. RWAdar no promete que cada notificación llegue') &&
   /<td>Avisos leídos y <br>número del icono<\/td>/.test(privacidad) &&
   /Es lo estrictamente necesario para esas funciones y no sale del navegador/.test(privacidadLineal) &&
   /el número vuelve a 0 al ver los avisos o al cerrar sesión/.test(privacidadLineal) &&
@@ -3362,7 +3376,9 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.',
     'Entra en tu cuenta para ver tus avisos. ¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.',
     'Notificaciones activadas en este móvil. Te llegarán cuando empecemos a enviarlas.',
-    'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.'];
+    'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.',
+    // Junto al botón (anexo legal, 2.4): el trozo antes del enlace a Privacidad.
+    'El servicio de tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no puede leer su texto. Si no las activas, seguirás viendo los avisos en la campana. Más en'];
   const sinIngles = [...textosPush, ...fijos].filter(t => typeof (enAvisos[t] ?? enComun[t]) !== 'string');
   const scriptsIndex = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(m => m[1]);
   const iComun = scriptsIndex.indexOf('/assets/idioma-en-20261022.js'), iAvisos = scriptsIndex.indexOf('/assets/idioma-en-avisos-20261112.js');
@@ -3381,14 +3397,33 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     /self\.addEventListener\('push'/.test(sw) && /showNotification\(/.test(sw) && /self\.addEventListener\('notificationclick'/.test(sw));
   // Revisión del 12/11: la baja en cada notificación (LSSI, art. 21.2, párr. 2), suscribirse con el envío
   // apagado (para probar antes), abrir la campana ya es ver los avisos, y sin «badge» opaco.
-  prueba('notificaciones: cada una lleva a la lista con la baja (?avisos=1), se pueden activar con el envío apagado y abrir la campana pone el número a 0',
+  prueba('notificaciones: cada una lleva a la lista con la baja a la vista en un pie fijo (?avisos=1), se pueden activar con el envío apagado y abrir la campana pone el número a 0',
     js.includes("'<p class=\"avisos-baja\" id=\"avisosDialogoBaja\">¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.</p>'") &&
+    // La baja y su botón, en un pie fijo fuera de la lista que se desplaza: se ven al abrir con 10 avisos.
+    js.includes("'<div class=\"avisos-dialogo-cuerpo\"><div id=\"avisosDialogoLista\"></div></div>'+") &&
+    js.includes("'<div class=\"avisos-dialogo-pie\">'+") &&
+    /\.avisos-dialogo \.escaparate-dialogo-marco\{[^}]*grid-template-rows:auto minmax\(0,1fr\) auto/.test(css.replace(/\n\s*/g, '')) &&
     /searchParams\.get\('avisos'\)==='1'/.test(js) && js.includes("e.data.tipo==='abrir-avisos')abrirAvisosPedido()") &&
     sw.includes("ventana.postMessage({ tipo: 'abrir-avisos' })") &&
     !/if\(!novedades\.push_activo\)return 'pendiente';/.test(js) && /clavePush\.valor===null\)return 'pendiente'/.test(js) &&
     /function avisosVistos\(\)\{/.test(js) && /pintarBandeja\(\);pintarCampana\(\);avisosVistos\(\);/.test(js) &&
     !/badge:/.test(sw.replace(/\/\*[\s\S]*?\*\//g, '')) && !/badge:'\/icono-192\.png'/.test(js) &&
     /--globo:#D92D20;/.test(css) && /\.campana-n\{[^}]*background:var\(--globo\)/.test(css.replace(/\n\s*/g, '')));
+  // Primera capa junto al botón (condiciones C2 y C5 del anexo legal): las frases de la web y de la app son
+  // las del anexo, palabra por palabra y con su inglés, y «Más en Privacidad» lleva a un apartado que existe.
+  const anexo = fs.readFileSync(path.join(raiz, 'docs/legal/ANEXO-NOTIFICACIONES-2026-11-12.md'), 'utf8')
+    .replace(/^> ?/gm, '').replace(/\*\*(ES|EN):\*\* /g, '').replace(/\s+/g, ' ');
+  const quienWeb = (js.match(/ const TEXTO_PUSH_QUIEN='([^']+)';/) || [, ''])[1];
+  const avisosMovil = fs.readFileSync(path.join(raiz, 'rwadar-movil/componentes/AvisosNovedades.js'), 'utf8');
+  const quienMovil = (avisosMovil.match(/\nconst TEXTO_MOVIL_QUIEN = '([^']+)';/) || [, ''])[1];
+  const webSinEnlace = quienWeb.replace(/ Más en Privacidad\.$/, '');
+  const enWeb = enAvisos[webSinEnlace + ' Más en'] || '', enMovil = enComun[quienMovil] || '';
+  prueba('notificaciones: junto al botón, la frase del anexo legal en la web y en la app (con su inglés) y el enlace a #garantias-push',
+    quienWeb.endsWith(' Más en Privacidad.') && webSinEnlace.length > 80 && anexo.includes(webSinEnlace) &&
+    anexo.includes(enWeb.replace(/ More in$/, '')) && enWeb.endsWith(' More in') &&
+    quienMovil.length > 80 && anexo.includes(quienMovil) && enMovil.length > 80 && anexo.includes(enMovil) &&
+    js.includes("conEnlacePrivacidad(TEXTO_PUSH_QUIEN,'/privacidad#garantias-push')") && /<p id="garantias-push">/.test(privacidad) &&
+    /Si no las activas, seguirás viendo los avisos en la campana\./.test(quienWeb) && /Firebase/.test(quienMovil));
 }
 marcadoEstricto('baja.html', bajaHTML);
 // El mismo asunto que el pie y List-Unsubscribe de los correos de avisos.

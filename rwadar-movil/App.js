@@ -41,7 +41,7 @@ import Inicio from './componentes/Inicio';
 import Cuenta from './componentes/Cuenta';
 import Colabora from './componentes/Colabora';
 import {
-  useAvisosNovedades, useBandejaAvisos, PanelAvisosNovedades, TarjetaAvisosInicio, quitarPushAlSalir,
+  useAvisosNovedades, useBandejaAvisos, PanelAvisosNovedades, TarjetaAvisosInicio, AvisoBajaNotificacion, quitarPushAlSalir,
 } from './componentes/AvisosNovedades';
 import { destinoAviso } from './lib/avisos-cuenta';
 import { LECCIONES } from './lib/academy-contenido';
@@ -171,6 +171,9 @@ export default function App() {
   const [borrandoDatos, setBorrandoDatos] = useState(false);
   const [slugAvisoPendiente, setSlugAvisoPendiente] = useState(null);
   const [destinoAvisoPendiente, setDestinoAvisoPendiente] = useState(null);
+  // Al abrir una notificación de novedades que lleva a Buscar o a la Academy,
+  // la baja arriba (en Inicio ya está en la tarjeta «Avisos»).
+  const [bajaNotificacion, setBajaNotificacion] = useState(false);
   // Las cuentas no habilitan el UUID de instalaciones, push ni seguimiento
   // antiguo. Su lista remota y los favoritos del dispositivo son distintos.
   const [cuenta, setCuenta] = useState(null);
@@ -346,7 +349,7 @@ export default function App() {
       setGuardadas([]); setSigo([]);
       setAbierta(null); setOfertaAbierta(null); setInversionInicial(null);
       setExplicando(false);
-      setPrivacidad(false); setLeccion(''); setPestana('inicio');
+      setPrivacidad(false); setLeccion(''); setPestana('inicio'); setBajaNotificacion(false);
       return;
     }
     // Remote identity + guarded profile revalidated whenever the app returns.
@@ -411,6 +414,10 @@ export default function App() {
     } else {
       setPestana('inicio');
     }
+    // Fuera de Inicio no está la tarjeta con «¿No quieres estos avisos?»: la
+    // baja va arriba, como en la web (LSSI, art. 21.2, párr. 2). La bienvenida
+    // es un aviso de servicio, no de novedades.
+    setBajaNotificacion(destino !== 'inicio' && tipo !== 'bienvenida');
     avisosInicio?.recargar();
     setDestinoAvisoPendiente(null);
   }, [destinoAvisoPendiente, cargando, usuarioAdmitido]);
@@ -704,6 +711,7 @@ export default function App() {
     const vista = id === 'ofertas' ? 'ofertas' : id === 'plataformas' ? 'empresas' : vistaBuscar;
     if (destino === pestana && vista === vistaBuscar) return;
     tacto.eleccion();
+    setBajaNotificacion(false);
     setVistaBuscar(vista);
     setPestana(destino);
   };
@@ -797,6 +805,11 @@ export default function App() {
         {MODO_LOCAL ? <BannerModoLocal /> : null}
 
         {avisoActualizacion}
+
+        {bajaNotificacion && pestana !== 'perfil' ? (
+          <AvisoBajaNotificacion onOcultar={() => setBajaNotificacion(false)}
+            onDesactivar={() => { setBajaNotificacion(false); irAAvisosPerfil(); }} />
+        ) : null}
 
         {/* En Buscar, el aviso se desplaza con el catálogo para no consumir
             todo el espacio de lectura con una fuente grande. */}

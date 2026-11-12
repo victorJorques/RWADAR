@@ -1,0 +1,526 @@
+{
+ "que": "Consultas a la lista oficial del EU-U.S. Data Privacy Framework para el anexo legal de las notificaciones (12/11/2026).",
+ "fuente": "https://www.dataprivacyframework.gov/list (la página carga sus datos de https://dpfapi.azurewebsites.net/api/participants)",
+ "quien": "Claude (IA), para RWAdar",
+ "como": "POST a la API con el cuerpo de «peticion»; Status vacío = cualquier estado (activos o no); detalle por GET /api/participants/<id>.",
+ "consultas": [
+  {
+   "consulta": "todos-apple",
+   "peticion": {
+    "DataCovered": [],
+    "Frameworks": [],
+    "Industries": [],
+    "PageNumber": 0,
+    "RecourseMechanisms": [],
+    "StatutoryBody": [],
+    "RowsPerPage": 10,
+    "Search": "Apple",
+    "StartLetter": "",
+    "Status": "",
+    "States": [],
+    "VerificationMethod": ""
+   },
+   "fechaRespuesta": "Thu, 12 Nov 2026 16:17:34 GMT",
+   "sha256RespuestaCruda": "cc0a92bea6809911d1ab061240e5d8cc383a74c232906fbc917755e778fe35bc",
+   "respuesta": {
+    "RecordCount": 0,
+    "Items": [],
+    "SumCount": 7637
+   }
+  },
+  {
+   "consulta": "todos-apple-inc",
+   "peticion": {
+    "DataCovered": [],
+    "Frameworks": [],
+    "Industries": [],
+    "PageNumber": 0,
+    "RecourseMechanisms": [],
+    "StatutoryBody": [],
+    "RowsPerPage": 10,
+    "Search": "Apple Inc",
+    "StartLetter": "",
+    "Status": "",
+    "States": [],
+    "VerificationMethod": ""
+   },
+   "fechaRespuesta": "Thu, 12 Nov 2026 16:17:34 GMT",
+   "sha256RespuestaCruda": "cc0a92bea6809911d1ab061240e5d8cc383a74c232906fbc917755e778fe35bc",
+   "respuesta": {
+    "RecordCount": 0,
+    "Items": [],
+    "SumCount": 7637
+   }
+  },
+  {
+   "consulta": "todos-apple-distribution",
+   "peticion": {
+    "DataCovered": [],
+    "Frameworks": [],
+    "Industries": [],
+    "PageNumber": 0,
+    "RecourseMechanisms": [],
+    "StatutoryBody": [],
+    "RowsPerPage": 10,
+    "Search": "Apple Distribution",
+    "StartLetter": "",
+    "Status": "",
+    "States": [],
+    "VerificationMethod": ""
+   },
+   "fechaRespuesta": "Thu, 12 Nov 2026 16:17:35 GMT",
+   "sha256RespuestaCruda": "cc0a92bea6809911d1ab061240e5d8cc383a74c232906fbc917755e778fe35bc",
+   "respuesta": {
+    "RecordCount": 0,
+    "Items": [],
+    "SumCount": 7637
+   }
+  },
+  {
+   "consulta": "todos-mozilla",
+   "peticion": {
+    "DataCovered": [],
+    "Frameworks": [],
+    "Industries": [],
+    "PageNumber": 0,
+    "RecourseMechanisms": [],
+    "StatutoryBody": [],
+    "RowsPerPage": 10,
+    "Search": "Mozilla",
+    "StartLetter": "",
+    "Status": "",
+    "States": [],
+    "VerificationMethod": ""
+   },
+   "fechaRespuesta": "Thu, 12 Nov 2026 16:17:35 GMT",
+   "sha256RespuestaCruda": "cc0a92bea6809911d1ab061240e5d8cc383a74c232906fbc917755e778fe35bc",
+   "respuesta": {
+    "RecordCount": 0,
+    "Items": [],
+    "SumCount": 7637
+   }
+  },
+  {
+   "consulta": "todos-mozilla-corporation",
+   "peticion": {
+    "DataCovered": [],
+    "Frameworks": [],
+    "Industries": [],
+    "PageNumber": 0,
+    "RecourseMechanisms": [],
+    "StatutoryBody": [],
+    "RowsPerPage": 10,
+    "Search": "Mozilla Corporation",
+    "StartLetter": "",
+    "Status": "",
+    "States": [],
+    "VerificationMethod": ""
+   },
+   "fechaRespuesta": "Thu, 12 Nov 2026 16:17:38 GMT",
+   "sha256RespuestaCruda": "cc0a92bea6809911d1ab061240e5d8cc383a74c232906fbc917755e778fe35bc",
+   "respuesta": {
+    "RecordCount": 0,
+    "Items": [],
+    "SumCount": 7637
+   }
+  },
+  {
+   "consulta": "activos-google-llc",
+   "peticion": {
+    "DataCovered": [],
+    "Frameworks": [],
+    "Industries": [],
+    "PageNumber": 0,
+    "RecourseMechanisms": [],
+    "StatutoryBody": [],
+    "RowsPerPage": 10,
+    "Search": "Google LLC",
+    "StartLetter": "",
+    "Status": "Active",
+    "States": [],
+    "VerificationMethod": ""
+   },
+   "fechaRespuesta": "Thu, 12 Nov 2026 16:17:39 GMT",
+   "sha256RespuestaCruda": "6edc38840f602f81f708dce22b1e92790c885dbc19afcdd7a19daa3399e2acdd",
+   "respuesta": {
+    "RecordCount": 1,
+    "Items": [
+     {
+      "OrganizationId": 5780,
+      "OrganizationPublicDisplayName": "Google LLC",
+      "City": "Mountain View",
+      "State": "CA",
+      "EUCert": {
+       "Name": "EU-US Certification",
+       "PublicStatus": "Active",
+       "HRData": true,
+       "NonHRData": true,
+       "FrameworkId": 1
+      },
+      "SwissCert": {
+       "Name": "SW-US Certification",
+       "PublicStatus": "Active",
+       "HRData": true,
+       "NonHRData": true,
+       "FrameworkId": 2
+      },
+      "UKCert": {
+       "Name": "UK Extension Certification",
+       "PublicStatus": "Active",
+       "HRData": true,
+       "NonHRData": true,
+       "FrameworkId": 3
+      },
+      "CoveredEntities": [
+       {
+        "Name": "See Purposes of Data Collection section for details on scope of cert"
+       }
+      ]
+     }
+    ],
+    "SumCount": 3698
+   }
+  },
+  {
+   "consulta": "activos-microsoft-corporation",
+   "peticion": {
+    "DataCovered": [],
+    "Frameworks": [],
+    "Industries": [],
+    "PageNumber": 0,
+    "RecourseMechanisms": [],
+    "StatutoryBody": [],
+    "RowsPerPage": 10,
+    "Search": "Microsoft Corporation",
+    "StartLetter": "",
+    "Status": "Active",
+    "States": [],
+    "VerificationMethod": ""
+   },
+   "fechaRespuesta": "Thu, 12 Nov 2026 16:17:41 GMT",
+   "sha256RespuestaCruda": "648582812b76a7664df5ed2fbd59ec213d99294059a86c3f04f3ffcdab4a2a7f",
+   "respuesta": {
+    "RecordCount": 1,
+    "Items": [
+     {
+      "OrganizationId": 6474,
+      "OrganizationPublicDisplayName": "Microsoft Corporation",
+      "City": "Redmond",
+      "State": "WA",
+      "EUCert": {
+       "Name": "EU-US Certification",
+       "PublicStatus": "Active",
+       "HRData": true,
+       "NonHRData": true,
+       "FrameworkId": 1
+      },
+      "SwissCert": {
+       "Name": "SW-US Certification",
+       "PublicStatus": "Active",
+       "HRData": true,
+       "NonHRData": true,
+       "FrameworkId": 2
+      },
+      "UKCert": {
+       "Name": "UK Extension Certification",
+       "PublicStatus": "Active",
+       "HRData": true,
+       "NonHRData": true,
+       "FrameworkId": 3
+      },
+      "CoveredEntities": [
+       {
+        "Name": "Obsidian Entertainment, Inc."
+       },
+       {
+        "Name": "Affirmed Networks, Inc."
+       },
+       {
+        "Name": "Skype Communications US Corporation"
+       },
+       {
+        "Name": "Citus Data, Inc."
+       },
+       {
+        "Name": "Nuance Communications, Inc."
+       },
+       {
+        "Name": "ClipChamp LLC"
+       },
+       {
+        "Name": "Vexcel Corporation"
+       },
+       {
+        "Name": "InXile Entertainment, Inc."
+       },
+       {
+        "Name": "MOL Corporation"
+       },
+       {
+        "Name": "Affirmed Networks Communications Technologies Inc."
+       }
+      ]
+     }
+    ],
+    "SumCount": 3698
+   }
+  },
+  {
+   "consulta": "activos-netlify",
+   "peticion": {
+    "DataCovered": [],
+    "Frameworks": [],
+    "Industries": [],
+    "PageNumber": 0,
+    "RecourseMechanisms": [],
+    "StatutoryBody": [],
+    "RowsPerPage": 10,
+    "Search": "Netlify",
+    "StartLetter": "",
+    "Status": "Active",
+    "States": [],
+    "VerificationMethod": ""
+   },
+   "fechaRespuesta": "Thu, 12 Nov 2026 16:18:05 GMT",
+   "sha256RespuestaCruda": "8e088c6b76ea5827f57f9b3593f2f7faa779774d904c20e950e0a5c3de73b268",
+   "respuesta": {
+    "RecordCount": 1,
+    "Items": [
+     {
+      "OrganizationId": 6208,
+      "OrganizationPublicDisplayName": "Netlify, Inc",
+      "City": "San Francisco",
+      "State": "CA",
+      "EUCert": {
+       "Name": "EU-US Certification",
+       "PublicStatus": "Active",
+       "HRData": false,
+       "NonHRData": true,
+       "FrameworkId": 1
+      },
+      "SwissCert": {
+       "Name": "SW-US Certification",
+       "PublicStatus": "Active",
+       "HRData": false,
+       "NonHRData": true,
+       "FrameworkId": 2
+      },
+      "UKCert": {
+       "Name": "UK Extension Certification",
+       "PublicStatus": "Active",
+       "HRData": false,
+       "NonHRData": true,
+       "FrameworkId": 3
+      },
+      "CoveredEntities": [
+       {
+        "Name": "Netlify Jamstack Innovation Fund"
+       }
+      ]
+     }
+    ],
+    "SumCount": 3698
+   }
+  },
+  {
+   "consulta": "activos-github",
+   "peticion": {
+    "DataCovered": [],
+    "Frameworks": [],
+    "Industries": [],
+    "PageNumber": 0,
+    "RecourseMechanisms": [],
+    "StatutoryBody": [],
+    "RowsPerPage": 10,
+    "Search": "GitHub",
+    "StartLetter": "",
+    "Status": "Active",
+    "States": [],
+    "VerificationMethod": ""
+   },
+   "fechaRespuesta": "Thu, 12 Nov 2026 16:18:06 GMT",
+   "sha256RespuestaCruda": "aefeafba68998b7977f3f0a66d24f2e806918e6f894781647620cb028cbcd5f2",
+   "respuesta": {
+    "RecordCount": 1,
+    "Items": [
+     {
+      "OrganizationId": 6174,
+      "OrganizationPublicDisplayName": "GitHub",
+      "City": "San Francisco",
+      "State": "CA",
+      "EUCert": {
+       "Name": "EU-US Certification",
+       "PublicStatus": "Active",
+       "HRData": false,
+       "NonHRData": true,
+       "FrameworkId": 1
+      },
+      "SwissCert": {
+       "Name": "SW-US Certification",
+       "PublicStatus": "Active",
+       "HRData": false,
+       "NonHRData": true,
+       "FrameworkId": 2
+      },
+      "UKCert": {
+       "Name": "UK Extension Certification",
+       "PublicStatus": "Active",
+       "HRData": false,
+       "NonHRData": true,
+       "FrameworkId": 3
+      },
+      "CoveredEntities": []
+     }
+    ],
+    "SumCount": 3698
+   }
+  }
+ ],
+ "detalles": [
+  {
+   "organizationId": 5780,
+   "url": "https://dpfapi.azurewebsites.net/api/participants/5780",
+   "fechaRespuesta": "Thu, 12 Nov 2026 16:17:41 GMT",
+   "sha256RespuestaCruda": "50922bda3ea12ee0eec0cd2975f6a0115b805ce9e3a0da4a64d2ce9631e870c9",
+   "nota": "Extracto: sin el campo Contacts (nombres, correos y teléfonos de empleados).",
+   "LegalName": "Google LLC",
+   "City": "Mountain View",
+   "State": "CA",
+   "VerificationMethod": "Self-Assessment",
+   "Purpose": "This certification applies to Google LLC and its wholly-owned U.S. subsidiaries, including any wholly-owned U.S. subsidiary of Google LLC except to the extent it maintains a current separate self-certification by such entity.  With respect to personal data other than human resources data: Data is processed for various purposes depending on the particular product or service being provided, including: sales and marketing to consumers and businesses; supplying services and products to consumers and businesses; operating, developing and improving services and products of Google and/or any of its wholly-owned U.S. subsidiaries; personalizing services and products; financial processing and management; supplier, vendor and partner relationship management; fraud prevention, security, and protection of Google, its wholly-owned U.S. subsidiaries, and our users; compliance with applicable law and governmental, legislative and regulatory bodies; and customer support and relationship management. Data is disclosed to third parties as detailed in our relevant Privacy Policies, listed below, including: in situations in which we have consent, for external processing, with domain administrators, and for legal reasons. With respect to human resources data: Data is processed for various employment and legal purposes, including: recruitment and staffing; compensation, benefit programs and payroll; performance management and training; compliance and risk management; workplace management; protection against injury, theft, legal liability, fraud and abuse; and other business purposes. Data is disclosed to third parties as detailed in our relevant Privacy Policies, listed below, including for business-related and legal purposes.",
+   "EUCert": {
+    "Name": "EU-US Certification",
+    "PublicStatus": "Active",
+    "HRData": true,
+    "NonHRData": true,
+    "InstallDate": "2016-09-22T12:00:00+00:00",
+    "UsageEndDate": "2027-09-13T12:00:00+00:00"
+   },
+   "CoveredEntities": [
+    {
+     "Name": "See Purposes of Data Collection section for details on scope of cert"
+    }
+   ],
+   "PrivacyPolicies": [
+    {
+     "Name": "Google Registry Privacy Policy",
+     "ExternalUrl": "https://www.registry.google/policies/privacy/#!/"
+    },
+    {
+     "Name": "SecOps Privacy Notice",
+     "ExternalUrl": "https://cloud.google.com/terms/secops/privacy-notice"
+    },
+    {
+     "Name": "Fitbit Privacy Policy",
+     "ExternalUrl": "https://www.fitbit.com/legal/privacy-policy"
+    },
+    {
+     "Name": "Cameyo Privacy Notice",
+     "ExternalUrl": "https://cameyo.google/terms/privacy/"
+    },
+    {
+     "Name": "Google Cloud Privacy Notice",
+     "ExternalUrl": "https://cloud.google.com/terms/cloud-privacy-notice"
+    },
+    {
+     "Name": "Privacy Policy for Nest Websites",
+     "ExternalUrl": "https://nest.com/legal/privacy-policy-for-nest-web-sites/"
+    },
+    {
+     "Name": "Privacy Statement for Nest's Products and Services",
+     "ExternalUrl": "https://nest.com/legal/privacy-statement-for-nest-products-and-services/"
+    },
+    {
+     "Name": "Actifio Privacy Policy",
+     "ExternalUrl": "https://www.actifio.com/privacy.html"
+    },
+    {
+     "Name": "Qwiklabs Privacy Policy",
+     "ExternalUrl": "https://www.qwiklabs.com/privacy_policy"
+    },
+    {
+     "Name": "Extended Workforce Privacy Notice",
+     "ExternalUrl": ""
+    },
+    {
+     "Name": "Google Employee Privacy Policy",
+     "ExternalUrl": ""
+    },
+    {
+     "Name": "Google Privacy Policy",
+     "ExternalUrl": "https://policies.google.com/privacy"
+    },
+    {
+     "Name": "Kaggle Privacy Policy",
+     "ExternalUrl": "https://www.kaggle.com/privacy"
+    },
+    {
+     "Name": "Google Careers Privacy Policy",
+     "ExternalUrl": "https://careers.google.com/privacy-policy/"
+    }
+   ]
+  },
+  {
+   "organizationId": 6474,
+   "url": "https://dpfapi.azurewebsites.net/api/participants/6474",
+   "fechaRespuesta": "Thu, 12 Nov 2026 16:17:41 GMT",
+   "sha256RespuestaCruda": "0dfdff7d9a68dafd5ee98b524461eadfccac02931ea4d1857c261aaf7ee14088",
+   "nota": "Extracto: sin el campo Contacts (nombres, correos y teléfonos de empleados).",
+   "LegalName": "Microsoft Corporation",
+   "City": "Redmond",
+   "State": "WA",
+   "VerificationMethod": "Self-Assessment",
+   "Purpose": "Microsoft collects data from Microsoft product users and employees, external staff, candidates and guests through interactions with them and through their interactions with Microsoft products, in accordance with the Microsoft Privacy Statement (for Microsoft product users) and the Microsoft Global Data Privacy Notice for Employees, External Staff, Candidates and Guests. The personal data we process related to product users is provided by data subjects directly, and we get some of it by collecting data about interactions, use, and experiences with our products. The data we collect depends on the context of interactions with Microsoft and the choices users make, including privacy settings and the products and features used. We also obtain data about users from third parties. Microsoft uses the data we collect to provide rich, interactive experiences. In particular, we use data to provide our products, which includes updating, securing, and troubleshooting, as well as providing support.\r\n \r\nMicrosoft processes data to improve and develop our products, personalize our products and make recommendations, and advertise and market to users, which includes sending promotional communications, targeting advertising, and presenting relevant offers. We also use the data to operate our business, which includes analyzing our performance, meeting our legal obligations, developing our workforce and doing research. The personal data Microsoft processes related to employees, external staff, candidates and guests is processed to administer the employment contract, offer letter or other commitments we have made to the individual, and for other overriding and legitimate business purposes, legally required purposes, and other uses where permissible and in accordance with applicable laws and consultation requirements, as further detailed in the Microsoft Global Data Privacy Notice for Employees, External Staff, Candidates and Guests.\r\n \r\nMicrosoft data processing also includes sharing data, when it is required to provide the service or carry out the transactions requested. We share personal data with consent or to complete any transaction or provide any product data subjects have requested or authorized. We also share data with Microsoft-controlled affiliates and subsidiaries; with vendors working on our behalf; when required by law or to respond to legal process; to protect our customers; to protect lives; to maintain the security of our products; and to protect the rights and property of Microsoft and its customers. All U.S. subsidiaries using the Microsoft brand name are covered entities, as well as those subsidiaries listed above, which use different names. Certain Microsoft U.S. entities continue to maintain their own DPF certification, including LinkedIn Corporation and GitHub.",
+   "EUCert": {
+    "Name": "EU-US Certification",
+    "PublicStatus": "Active",
+    "HRData": true,
+    "NonHRData": true,
+    "InstallDate": "2016-08-12T12:00:00+00:00",
+    "UsageEndDate": "2027-08-31T12:00:00+00:00"
+   },
+   "CoveredEntities": [
+    {
+     "Name": "Obsidian Entertainment, Inc."
+    },
+    {
+     "Name": "Affirmed Networks, Inc."
+    },
+    {
+     "Name": "Skype Communications US Corporation"
+    },
+    {
+     "Name": "Citus Data, Inc."
+    },
+    {
+     "Name": "Nuance Communications, Inc."
+    },
+    {
+     "Name": "ClipChamp LLC"
+    },
+    {
+     "Name": "Vexcel Corporation"
+    },
+    {
+     "Name": "InXile Entertainment, Inc."
+    },
+    {
+     "Name": "MOL Corporation"
+    },
+    {
+     "Name": "Affirmed Networks Communications Technologies Inc."
+    }
+   ],
+   "PrivacyPolicies": [
+    {
+     "Name": "Microsoft Privacy Statement",
+     "ExternalUrl": "https://www.microsoft.com/en-us/privacy/privacystatement"
+    },
+    {
+     "Name": "Microsoft Data Privacy Notice",
+     "ExternalUrl": "https://www.microsoft.com/en-US/privacy/data-privacy-notice"
+    }
+   ]
+  }
+ ]
+}
