@@ -30,8 +30,19 @@ Víctor, a las 00:28 UTC: «actualizar la información a hoy y acelerar». Infor
 - **Publicado:**
   - PR #104 (squash) y «Aplicar catálogo» n.º 17, comprobado como visitante
     a las 09:30 UTC.
-  - Sincronización y noticias del 12/11 en el PR siguiente; después, sello,
-    web y OTA.
+  - PR #105 (sincronización, noticias del 12/11 y pruebas de noticias que
+    ahora comparan con la edición publicada) y PR #106 (solo el sello),
+    unidas con squash.
+  - «Tokenización diaria» con el 12/11: 43.606 M$.
+  - «Publicar web» n.º 66 (preview) y n.º 67 (producción): las dos pasan
+    38/38 en la comprobación como visitante (noticias del 12/11, serie del
+    12/11, fichas de Pottendorfer, Cohotel y Spiko, calculadora, gráfico, sin
+    errores ni desbordes).
+  - «OTA Android» n.º 21 (base `fa30779…`), enviada a las 10:12 UTC.
+  - Retraso: entre las 03:05 y las 09:28 UTC el ciclo estuvo parado porque
+    no quedó nada vigilando las pruebas de GitHub de la PR #104. Lección:
+    nunca terminar un turno esperando algo externo sin un vigilante en
+    segundo plano.
 - **Datos personales:**
   - Recortados los nombres de consejeros de Backed que quedaban en copias de
     2026-11-03.3-v2 y 2026-11-05-v2 (19 archivos).
