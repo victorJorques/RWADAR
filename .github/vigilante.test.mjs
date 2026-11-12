@@ -32,7 +32,7 @@ function rutasBuenas() {
     [`${WEB}/privacidad`]: () => new Response('<h1>Privacidad</h1>', { status: 200 }),
     [VERSION_ANDROID]: () => json({ plataforma: 'android', version: '1.4.2', versionCode: 24, apk: `${PREFIJO_APK}v1.4.2/RWAdar.apk` }),
     [CATALOGO]: () => json(lote()),
-    [`${WEB}/.well-known/security.txt`]: () => new Response('Contact: mailto:RWAdar@protonmail.com\nExpires: 2027-08-22T00:00:00.000Z\n', { status: 200 }),
+    [`${WEB}/.well-known/security.txt`]: () => new Response('Contact: mailto:rwadares@gmail.com\nExpires: 2027-08-22T00:00:00.000Z\n', { status: 200 }),
   };
 }
 
@@ -266,7 +266,7 @@ test('catálogo: se lee por la pasarela pública de la web, sin clave', () => {
 });
 
 test('security.txt: falla con menos de 30 días, caducado, sin Expires o sin archivo', async () => {
-  const con = expires => () => new Response(`Contact: mailto:RWAdar@protonmail.com\n${expires}\n`, { status: 200 });
+  const con = expires => () => new Response(`Contact: mailto:rwadares@gmail.com\n${expires}\n`, { status: 200 });
   const casos = [
     [con('Expires: 2026-11-27T00:00:00.000Z'), /caduca el 27\/11\/2026: quedan 19 días/],
     [con('Expires: 2026-11-01T00:00:00.000Z'), /ya caducó el 01\/11\/2026/],

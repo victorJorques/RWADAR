@@ -4292,7 +4292,7 @@ const Cuenta = (function(){
  const TEXTO_AVISOS_NOVEDADES='Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en Privacidad.';
  /* Información básica sobre los datos (LOPDGDD, art. 11), junto al interruptor.
     Va fuera del texto versionado: cambiarla no pide una versión nueva. */
- const INFO_DATOS_AVISOS='Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; también puedes reclamar ante la AEPD. Más información en Privacidad.';
+ const INFO_DATOS_AVISOS='Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en Privacidad.';
  /* En la web, «Privacidad» del final es un enlace; el texto visible no cambia. */
  const conEnlacePrivacidad=(texto,href)=>esc(texto.replace(/Privacidad\.$/,''))+'<a href="'+href+'">Privacidad</a>.';
  let ses=null, perfil=null, vigiladas=new Map(), modo='entrar', fichaAbierta=null,
@@ -4956,7 +4956,10 @@ const Cuenta = (function(){
    '</details><div class="perfil-pie">'+
     '<button id="pfSalir">Cerrar sesión</button>'+
     '<button class="peligro" id="pfBorrar">Borrar mi cuenta</button>'+
-   '</div>';
+   '</div>'+
+   '<div data-colabora="cuenta" hidden></div>';
+  /* «¿Quieres colaborar con nosotros?», al final de la cuenta (ponerColabora, más abajo). */
+  if(typeof ponerColabora==='function')ponerColabora(c);
   const contenedorInversiones=$('pfInversiones');
   try{
    if(!window.RWAdarInversionesUI||!window.RWAdarCarteraCuenta||!window.RWAdarCarteraModelo)throw new Error('Registro no disponible');
@@ -5279,7 +5282,7 @@ const Cuenta = (function(){
   }
  }
  async function abrirGestion(){
-  if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('Las cuentas están en pausa. Para gestionar datos anteriores, escribe a RWAdar@protonmail.com.');return;}
+  if(!SERVICIOS_USUARIO_DISPONIBLES){avisar('Las cuentas están en pausa. Para gestionar datos anteriores, escribe a rwadares@gmail.com.');return;}
   if(restauracionCuenta){avisar('Comprobando tu sesión…');await restauracionCuenta;}
   if(identidadConfirmada&&ses)abrirPerfil();
   else abrir('entrar','Entra o crea una cuenta gratuita para registrar tus compras, valoraciones y cobros y consultar tu resultado.');
@@ -6182,6 +6185,28 @@ document.addEventListener('click',e=>{
   e.preventDefault();e.stopImmediatePropagation();abrir(a);
  },true);
 })();
+
+/* «¿Quieres colaborar con nosotros?» (12/11/2026). El bloque vive una sola
+   vez, en <template id="colaboraPlantilla"> de index.html; aquí se copia en
+   cada hueco [data-colabora] (al final de Inicio y de Perfil) con su propio
+   id para el encabezado. El diccionario común lo traduce al insertarlo. En
+   el pre-renderizado no hay <template> real y no hace nada. */
+function ponerColabora(raiz){
+ if(typeof document==='undefined')return;
+ const plantilla=document.getElementById('colaboraPlantilla');
+ const modelo=plantilla&&plantilla.content&&plantilla.content.firstElementChild;
+ if(!modelo||!raiz||typeof raiz.querySelectorAll!=='function')return;
+ raiz.querySelectorAll('[data-colabora]:not(.colabora)').forEach(hueco=>{
+  const donde=String(hueco.dataset.colabora||'bloque').replace(/[^a-z0-9-]/gi,'');
+  const bloque=modelo.cloneNode(true);
+  const titulo=bloque.querySelector('.colabora-tit');
+  titulo.id='colaboraTit-'+donde;
+  bloque.setAttribute('aria-labelledby',titulo.id);
+  bloque.dataset.colabora=donde;
+  hueco.replaceWith(bloque);
+ });
+}
+if(typeof document!=='undefined'&&typeof document.querySelectorAll==='function')ponerColabora(document);
 
 /* El trabajador solo se registra en HTTP(S), nunca durante el pre-render ni
    al abrir el archivo directamente. `updateViaCache:none` y update() evitan

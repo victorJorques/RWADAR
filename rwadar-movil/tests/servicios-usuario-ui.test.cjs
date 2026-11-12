@@ -21,7 +21,7 @@ function componentes(local, capacidad) {
     e: {}, C: {}, URL_PRIVACIDAD: 'https://example.test/privacidad', abrirEnlace() {},
   };
   for (const nombre of ['View', 'Text', 'Pressable', 'Icono', 'Marca', 'ActivityIndicator', 'Modal', 'SafeAreaProvider', 'SafeAreaView', 'ScrollView',
-    'RefreshControl', 'GrupoMenu', 'FilaMenu']) entorno[nombre] = nombre;
+    'RefreshControl', 'GrupoMenu', 'FilaMenu', 'Colabora']) entorno[nombre] = nombre;
   return new Function(...Object.keys(entorno), `${js}; return { ${funciones.join(', ')} };`)(...Object.values(entorno));
 }
 function nodos(arbol) {

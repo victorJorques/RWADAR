@@ -335,7 +335,7 @@ function seccionesPerfil() {
     StyleSheet: { create: (s) => s }, T: tema.T, C: colores, MODO_LOCAL: false, USUARIO_LOCAL: true,
   };
   for (const nombre of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono',
-    'Cuenta', 'GrupoMenu', 'FilaMenu', 'PanelAvisos', 'SafeAreaView', 'ActivityIndicator']) entorno[nombre] = nombre;
+    'Cuenta', 'GrupoMenu', 'FilaMenu', 'PanelAvisos', 'SafeAreaView', 'ActivityIndicator', 'Colabora']) entorno[nombre] = nombre;
   return new Function(...Object.keys(entorno), `${js}; return { PantallaPerfil, Cabecera, PreparandoAcceso, e };`)(...Object.values(entorno));
 }
 

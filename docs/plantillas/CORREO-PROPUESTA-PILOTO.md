@@ -34,7 +34,7 @@ Un saludo,
 `[TITULAR O EMPRESA]`  
 RWAdar  
 `[TELÉFONO]`  
-RWAdar@protonmail.com
+rwadares@gmail.com
 
 ## Datos a personalizar para Alius
 

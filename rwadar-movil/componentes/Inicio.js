@@ -10,6 +10,7 @@ import { MercadoCotizacion, MercadoPantalla } from './MercadoBolsa';
 import NoticiasSector from './NoticiasSector';
 import AprendeInicio, { enlaceCorto } from './AprendeInicio';
 import CalculadoraInicio, { ResultadoFlotante } from './CalculadoraInicio';
+import Colabora from './Colabora';
 import { ofertasDestacadas, recienAnadidas } from '../lib/recien-anadidas';
 import { textosInicio } from '../lib/inicio-contenido';
 import { cifrasInicio } from '../lib/inicio-cifras';
@@ -38,7 +39,9 @@ export { enlaceCorto };
       resultado arriba (CalculadoraInicio). El explicador lleva hasta aquí.
    5. Aprende: una tarjeta que abre la pantalla con los seis capítulos
       (AprendeInicio), tal como estaban, con sus fuentes y la nota legal.
-   6. Pie: una línea legal y «Nota legal completa →».
+   6. ¿Quieres colaborar con nosotros? (12/11/2026): el correo para
+      colaborar, el mismo bloque que al final de Perfil (Colabora).
+   7. Pie: una línea legal y «Nota legal completa →».
    Las pantallas se abren encima de Inicio, como las fichas (un Modal a
    pantalla completa; el botón atrás de Android vuelve a Inicio). Las
    novedades de RWAdar salen de Inicio: están en Perfil (y en /cambios).
@@ -210,7 +213,10 @@ export default function Inicio({
         </Pressable>
       </View>
 
-      {/* 6 · Pie: una línea legal y la nota completa (en «Aprende»). */}
+      {/* 6 · ¿Quieres colaborar con nosotros? (12/11/2026): el mismo bloque que al final de Perfil. */}
+      <Colabora />
+
+      {/* 7 · Pie: una línea legal y la nota completa (en «Aprende»). */}
       <View style={e.pie}>
         <Text noTraducir style={e.pieTxt}>{b.pie}</Text>
         <Pressable onPress={() => { tacto.eleccion(); abrir('aprende', { legal: true }); }} style={({ pressed }) => [e.ver, pressed && pulsado('b3')]}

@@ -1,4 +1,4 @@
-Contact: mailto:RWAdar@protonmail.com
+Contact: mailto:rwadares@gmail.com
 Expires: 2027-08-22T00:00:00.000Z
 Preferred-Languages: es, en
 Canonical: https://rwadar.pages.dev/.well-known/security.txt

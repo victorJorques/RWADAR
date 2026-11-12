@@ -1610,6 +1610,49 @@ const aprendeHTML = lee('aprende/index.html');
     !/id="relCap\d"|rel-novedades|noticias:ini|rel-refs|rel-empieza|class="rel-escaparate"|relTarjetas/.test(panelInicioHTML) &&
     (panelInicioHTML.match(/Invertir tiene riesgos/g) || []).length === 1 &&
     (panelInicioHTML.match(/class="ini-bloque-tit"/g) || []).length === 4);
+  // «¿Quieres colaborar con nosotros?» (12/11/2026): un solo bloque (#colaboraPlantilla) que
+  // ponerColabora() copia al final de Inicio (tras Aprende, antes del pie) y de Perfil (antes de
+  // la nota final) y en la cuenta de escritorio.
+  {
+    const plantilla = (html.match(/<template id="colaboraPlantilla">([\s\S]*?)<\/template>/) || [])[1] || '';
+    const app = lee('assets/rwadar-20260820.js');
+    const en = require('./rwadar-site/assets/idioma-en-20261022.js');
+    const textosColabora = ['¿Quieres colaborar con nosotros?',
+      'Si eres una plataforma o un emisor, trabajas en el sector o quieres proponer una mejora, escríbenos.',
+      'Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y hoy RWAdar no cobra comisiones por las inversiones.',
+      'Escríbenos: rwadares@gmail.com'];
+    const [iAprende, iColabora, iPie] = ['id="iniAprendeTit"', '<div data-colabora="inicio" hidden></div>', 'class="ini-pie"'].map(x => panelInicioHTML.indexOf(x));
+    const [iPerfil, iNota] = [panelPerfilHTML.indexOf('<div data-colabora="perfil" hidden></div>'), panelPerfilHTML.indexOf('class="movil-nota-final"')];
+    prueba('«¿Quieres colaborar con nosotros?»: un solo bloque, al final de Inicio y de Perfil, con h2, mailto:rwadares@gmail.com y su inglés',
+      (html.match(/id="colaboraPlantilla"/g) || []).length === 1 &&
+      /^\s*<section class="ini-bloque colabora">[\s\S]*<h2 class="ini-bloque-tit colabora-tit">¿Quieres colaborar con nosotros\?<\/h2>/.test(plantilla) &&
+      /<a class="b1 colabora-boton" href="mailto:rwadares@gmail\.com">[\s\S]*<span>Escríbenos: rwadares@gmail\.com<\/span>\s*<\/a>/.test(plantilla) &&
+      textosColabora.every(t => plantilla.includes(t) && typeof en[t] === 'string' && en[t] !== t) &&
+      en['Escríbenos: rwadares@gmail.com'] === 'Write to us: rwadares@gmail.com' &&
+      iAprende > 0 && iColabora > iAprende && iPie > iColabora &&
+      iPerfil > 0 && iNota > iPerfil && !/<section\b/.test(panelPerfilHTML.slice(iPerfil)) &&
+      /function ponerColabora\(raiz\)/.test(app) && /'<div data-colabora="cuenta" hidden><\/div>';[^\n]*\n[^\n]*\n\s*if\(typeof ponerColabora==='function'\)ponerColabora\(c\);/.test(app));
+  }
+  // Revisión del 12/11/2026: tras el botón, el enlace a la transparencia comercial (de qué vive
+  // RWAdar); la fila «Contactar» de Perfil dice para qué es; y rwadares@gmail.com es el único
+  // correo que ve un visitante de la web o de la app (sin el antiguo de Proton en ningún sitio).
+  {
+    const plantilla = (html.match(/<template id="colaboraPlantilla">([\s\S]*?)<\/template>/) || [])[1] || '';
+    const en = require('./rwadar-site/assets/idioma-en-20261022.js');
+    const visibles = (dir, filtro) => fs.readdirSync(dir, { recursive: true, withFileTypes: true })
+      .filter(f => f.isFile() && filtro(f.name) && !/node_modules|[\/\\]\.expo/.test(path.join(f.parentPath || f.path, f.name)))
+      .map(f => path.join(f.parentPath || f.path, f.name));
+    const conProton = [...visibles(sitio, n => /\.(html|js|css|txt|xml|json|webmanifest)$/.test(n) || n === 'security.txt'),
+      ...['rwadar-movil/App.js', 'rwadar-movil/app.json'].map(f => path.join(raiz, f)).filter(f => fs.existsSync(f)),
+      ...visibles(path.join(raiz, 'rwadar-movil/lib'), n => n.endsWith('.js')), ...visibles(path.join(raiz, 'rwadar-movil/componentes'), n => n.endsWith('.js'))]
+      .filter(f => /proton[m]ail/i.test(fs.readFileSync(f, 'utf8')));
+    prueba('«¿Quieres colaborar…?»: tras el botón, enlace a /transparencia-comercial; Perfil dice para qué es «Contactar»; ningún correo antiguo a la vista',
+      /<a class="b1 colabora-boton" href="mailto:rwadares@gmail\.com">[\s\S]*?<\/a>\s*<p class="colabora-mas"><a href="\/transparencia-comercial">Transparencia comercial<\/a><\/p>\s*<\/section>\s*$/.test(plantilla) &&
+      /<a class="movil-menu-fila" href="mailto:rwadares@gmail\.com">[\s\S]*?<b>Contactar<\/b><small>Datos y privacidad · rwadares@gmail\.com<\/small>/.test(panelPerfilHTML) &&
+      en['Datos y privacidad · rwadares@gmail.com'] === 'Data and privacy · rwadares@gmail.com' &&
+      /"email":"rwadares@gmail\.com"/.test(html) &&
+      (conProton.length === 0 || (console.log('   con el correo antiguo:', conProton.join(', ')), false)));
+  }
   prueba('/aprende/ trae los seis capítulos, su carrusel, la Academy, las fuentes y la nota legal, sin cifras de mercado en el 03',
     ['relCap1', 'relCap2', 'relCap3', 'relCap4', 'relCap5', 'relCap6', 'relQuienLista', 'relRefs', 'nota-legal', 'notaLegalCompleta'].every(id => aprendeHTML.includes(`id="${id}"`)) &&
     /<!--academy-inicio:ini-->[\s\S]*href="\/academy\/"[\s\S]*<!--academy-inicio:fin-->/.test(aprendeHTML) &&
@@ -3105,7 +3148,7 @@ prueba('RWAdar exige una edad mínima de 18 años sin conservar el umbral antigu
   /exclusivamente a personas mayores de 18 años/i.test(privacidadLineal) &&
   /personas menores de 18 años no deben crear una cuenta/i.test(privacidadLineal) &&
   !/menores de 14 años/i.test(privacidadLineal));
-for (const texto of ['Víctor Manuel Jorques Granero','persona física','RWAdar@protonmail.com'])
+for (const texto of ['Víctor Manuel Jorques Granero','persona física','rwadares@gmail.com'])
   prueba(`la privacidad identifica ${texto}`, privacidadLineal.includes(texto));
 prueba('la identidad declarada incluye aviso legal sin aprobar funciones ni extinguir obligaciones anteriores',
   /id="aviso-legal"/.test(privacidad) && /id="identificacion-titular"/.test(privacidad) &&
@@ -3142,7 +3185,7 @@ prueba('privacidad y UI permiten solicitar la retirada del consentimiento anteri
   /retirar cualquier consentimiento anterior escribiendo/.test(privacidadLineal) &&
   /consentimiento explícito/.test(privacidadLineal) &&
   /Esta versión no recoge nuevas preferencias de correo ni envía avisos del radar/.test(html) &&
-  /puedes retirarlo escribiendo a RWAdar@protonmail.com/.test(html) &&
+  /puedes retirarlo escribiendo a rwadares@gmail.com/.test(html) &&
   /Está desactivado por defecto[\s\S]*todavía no enviamos estos avisos/.test(js));
 prueba('privacidad distingue consulta pública y cuenta confirmada para funciones personales, conservando correos, sesión y borrado',
   /La consulta de la web es pública/.test(privacidadLineal) &&
@@ -3259,7 +3302,7 @@ prueba('privacidad: los datos locales cuentan la vuelta a la lección de 24 hora
   /\n  limpiarVolver\(\);\n/.test(accesoJS));
 // Texto versionado v2 y la información básica (fuera de la versión), en /acceso y en Perfil.
 const TEXTO_AVISOS_V2 = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en ';
-const INFO_DATOS = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en RWAdar@protonmail.com; también puedes reclamar ante la AEPD. Más información en ';
+const INFO_DATOS = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en ';
 prueba('acceso y Perfil: casilla de 18 años y avisos de novedades apagados por defecto',
   /Tengo 18 años o más, acepto las <a href="\/privacidad#condiciones">condiciones<\/a> y he leído la <a href="\/privacidad">privacidad<\/a>\./.test(accesoHTML) &&
   accesoHTML.includes('<label id="campo-avisos-novedades" hidden class="consentimiento"><input id="avisos-novedades" type="checkbox">' + TEXTO_AVISOS_V2 + '<a href="/privacidad#avisos-novedades">Privacidad</a>.</label>') &&
@@ -3274,13 +3317,13 @@ prueba('acceso y Perfil: casilla de 18 años y avisos de novedades apagados por 
   /Los avisos llegarán a la app en una próxima actualización\./.test(panelPerfilHTML));
 marcadoEstricto('baja.html', bajaHTML);
 // El mismo asunto que el pie y List-Unsubscribe de los correos de avisos.
-const MAILTO_BAJA = 'mailto:RWAdar@protonmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
+const MAILTO_BAJA = 'mailto:rwadares@gmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
 prueba('baja: sin indexar, fuera del sitemap, sin formulario y con la baja por correo a la vista, también sin JavaScript',
   /<meta name="robots" content="noindex,nofollow">/.test(bajaHTML) &&
   /<script defer src="\/assets\/baja-20261105\.js"><\/script>/.test(bajaHTML) &&
   !/<form\b/i.test(bajaHTML) && bajaHTML.includes('href="' + MAILTO_BAJA + '"') &&
   [...bajaHTML.matchAll(/href="(mailto:[^"]+)"/g)].every(m => m[1] === MAILTO_BAJA) &&
-  /<noscript><p class="estado">[^<]*<a href="mailto:RWAdar@protonmail\.com\?subject=Baja%20de%20los%20avisos%20de%20RWAdar">RWAdar@protonmail\.com<\/a> con el asunto «Baja de los avisos de RWAdar»/.test(bajaHTML) &&
+  /<noscript><p class="estado">[^<]*<a href="mailto:rwadares@gmail\.com\?subject=Baja%20de%20los%20avisos%20de%20RWAdar">rwadares@gmail\.com<\/a> con el asunto «Baja de los avisos de RWAdar»/.test(bajaHTML) &&
   lee('assets/baja-20261105.js').includes('con el asunto «Baja de los avisos de RWAdar»') &&
   !/asunto «baja»/.test(bajaHTML + lee('assets/baja-20261105.js')) &&
   !/\/baja</.test(lee('sitemap.xml')));
@@ -3293,7 +3336,7 @@ prueba('los redirects usan sintaxis portable de Cloudflare Pages',
   /^\/para-empresas\.html\s+\/\s+302$/m.test(redirecciones) && /^\/para-empresas\s+\/\s+302$/m.test(redirecciones) &&
   !/301!/.test(redirecciones));
 prueba('security.txt tiene contacto, canonical, política de reporte y caducidad futura',
-  /Contact: mailto:RWAdar@protonmail\.com/.test(lee('.well-known/security.txt')) &&
+  /Contact: mailto:rwadares@gmail\.com/.test(lee('.well-known/security.txt')) &&
   /Canonical: https:\/\/rwadar\.pages\.dev\/\.well-known\/security\.txt/.test(lee('.well-known/security.txt')) &&
   /Policy: https:\/\/rwadar\.pages\.dev\/privacidad#reporte-seguridad/.test(lee('.well-known/security.txt')) &&
   !/github\.com/i.test(lee('.well-known/security.txt')) &&
@@ -3506,7 +3549,7 @@ console.log('\n=== RWADAR ACADEMY ===');
     const enlaces = [...pagina.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map(m => m[1]);
     const roto = enlaces.find(href => {
       if (href.startsWith('#')) return !anclasPropias.has(href.slice(1));
-      if (href.startsWith('mailto:')) return href !== 'mailto:RWAdar@protonmail.com';
+      if (href.startsWith('mailto:')) return href !== 'mailto:rwadares@gmail.com';
       if (['/', '/privacidad', '/transparencia-comercial', '/academy/'].includes(href)) return false;
       const ancla = href.match(/^\/#([a-z]+)$/);
       if (ancla) return !anclasPortada.has(ancla[1]);

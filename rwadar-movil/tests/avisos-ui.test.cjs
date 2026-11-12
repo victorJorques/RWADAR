@@ -663,7 +663,7 @@ test('Perfil: con el interruptor, el panel de la cuenta sustituye a «Próximame
   const entorno = { useState: (i) => [typeof i === 'function' ? i() : i, () => {}], useEffect() {}, useRef: (i) => ({ current: i }), MODO_LOCAL: false,
     USUARIO_LOCAL: true, e: {}, C: {}, crearCarteraCuenta() {} };
   for (const n of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono', 'Cuenta', 'GrupoMenu', 'FilaMenu',
-    'PanelAvisos', 'ActivityIndicator', 'MisInversiones']) entorno[n] = n;
+    'PanelAvisos', 'ActivityIndicator', 'MisInversiones', 'Colabora']) entorno[n] = n;
   const PantallaPerfil = funcionApp('PantallaPerfil', entorno);
   const hoy = PantallaPerfil({ cuenta: {}, estadoCuenta: { disponible: true }, seguidas: [], ofertasGuardadas: [] });
   assert.match(texto(hoy), /Los avisos llegarán a la app en una próxima actualización/);
@@ -700,7 +700,7 @@ test('App: el enlace de baja de Inicio abre Perfil y Perfil baja hasta Avisos', 
   const entorno = { useState: (i) => [typeof i === 'function' ? i() : i, () => {}], useEffect: (fn) => efectos.push(fn),
     useRef: (i) => ({ current: i }), MODO_LOCAL: false, USUARIO_LOCAL: true, e: {}, C: {}, crearCarteraCuenta() {} };
   for (const n of ['View', 'Text', 'ScrollView', 'RefreshControl', 'Pressable', 'Marca', 'Icono', 'Cuenta', 'GrupoMenu', 'FilaMenu',
-    'PanelAvisos', 'ActivityIndicator', 'MisInversiones']) entorno[n] = n;
+    'PanelAvisos', 'ActivityIndicator', 'MisInversiones', 'Colabora']) entorno[n] = n;
   const PantallaPerfil = funcionApp('PantallaPerfil', entorno);
   const panel = { type: 'PanelNovedades', props: {}, children: [] };
   for (const enfocarAvisos of [true, false]) {

@@ -9,7 +9,7 @@
   const $ = id => document.getElementById(id);
   const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   // El mismo asunto que el pie y List-Unsubscribe de los correos.
-  const ALTERNATIVA = 'Escribe a RWAdar@protonmail.com con el asunto «Baja de los avisos de RWAdar» y la tramitamos a mano.';
+  const ALTERNATIVA = 'Escribe a rwadares@gmail.com con el asunto «Baja de los avisos de RWAdar» y la tramitamos a mano.';
   const parametros = new URLSearchParams(location.search);
   let token = parametros.get('t');
   if (parametros.has('t')) {

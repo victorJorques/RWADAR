@@ -47,7 +47,7 @@ riesgos.
 > fondos ni ofrece asesoramiento financiero. Consulta condiciones y elegibilidad
 > con cada proveedor. Un activo tokenizado conserva sus riesgos.
 
-**Soporte:** RWAdar@protonmail.com
+**Soporte:** rwadares@gmail.com
 **Web:** https://rwadar.pages.dev
 **Privacidad:** https://rwadar.pages.dev/privacidad
 

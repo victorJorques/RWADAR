@@ -82,7 +82,7 @@ como brecha hasta saber más.
 
 - Quien lo detecte avisa a Víctor por el canal más rápido: Víctor, Eric
   Almiñana, Samuel Rodriguez, Codex, Claude, o un reporte que llegue a
-  RWAdar@protonmail.com.
+  rwadares@gmail.com.
 - **Codex y Claude paran** lo que estén haciendo y se lo cuentan. No tocan
   producción, no publican y no borran nada sin la orden de Víctor.
 - **Se apunta la hora.** El plazo de 72 horas «empieza a calcularse desde el
@@ -143,7 +143,7 @@ ayuda: la decisión sigue siendo de Víctor.
   valiendo.
 - **Qué se cuenta, como mínimo** (art. 33.3):
   - qué ha pasado, cuántas personas y cuántos registros, más o menos;
-  - un contacto: Víctor, en RWAdar@protonmail.com;
+  - un contacto: Víctor, en rwadares@gmail.com;
   - qué consecuencias puede tener;
   - qué se ha hecho y qué se va a hacer.
 - **Si aún no se sabe todo:** se manda una notificación «inicial» antes de las
@@ -166,7 +166,7 @@ ayuda: la decisión sigue siendo de Víctor.
     publica un aviso igual de eficaz (por ejemplo, en la web, con la orden de
     Víctor).
 - **Cómo, en RWAdar:** un correo **a cada persona por separado**, nunca con
-  todas las direcciones a la vista. Desde RWAdar@protonmail.com o, si el
+  todas las direcciones a la vista. Desde rwadares@gmail.com o, si el
   correo de Lettermint ya está encendido, por su ruta de servicio (cuenta para
   el cupo de 300 al mes del plan gratis).
 - La AEPD puede exigir que se avise a las personas (art. 34.4).
@@ -203,7 +203,7 @@ Lo que cada contrato añade, y por dónde nos avisaría:
 | **GitHub** | Copias cifradas y su clave; los flujos ven los datos en claro | **Hoy sin contrato de encargo:** no hay obligación contractual (hueco). Con el DPA de GitHub Team: «without undue delay» | Correo de la cuenta | dpo@github.com y https://support.github.com/contact/privacy (DPA) |
 | **Lettermint** (cuando se encienda) | Correos y su contenido, 28 días | «without undue delay and in any event within twenty-four (24) hours» (§10.1) | Correo de la cuenta de Lettermint | legal@lettermint.co (DPA); security@lettermint.co (su `security.txt`) |
 | **Netlify** | IP y datos técnicos de quien abre `rwadar.netlify.app` | «without undue delay, but in any event within forty-eight (48) hours» (§10.1) | Correo de la cuenta (**verificar**) | privacy@netlify.com (DPA, anexo) |
-| **Proton Mail** | El buzón RWAdar@protonmail.com | «without delay» (DPA) | **verificar** (probablemente, el propio buzón) | security@proton.me (su `security.txt`) |
+| **Proton Mail** | El buzón rwadares@gmail.com | «without delay» (DPA) | **verificar** (probablemente, el propio buzón) | security@proton.me (su `security.txt`) |
 | **Gmail** (hasta pasar Auth a Lettermint) | Confirmaciones y recuperaciones de contraseña | Cuenta de consumo, sin contrato: no hay obligación | — | — |
 
 **Qué hacer cuando avisa un proveedor:**

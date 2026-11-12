@@ -16,7 +16,7 @@ RWAdar es el nombre del proyecto informativo gestionado por:
 - **Domicilio:** [calle, número, complemento si procede y código postal],
   Alzira, Valencia, España.
 - **Correo de contacto:** [confirmar el buzón público operativo; el publicado
-  en el proyecto es RWAdar@protonmail.com].
+  en el proyecto es rwadares@gmail.com].
 
 La información se facilita para identificar al prestador conforme al artículo
 10 de la Ley 34/2002. Ser persona física no requiere inventar denominación

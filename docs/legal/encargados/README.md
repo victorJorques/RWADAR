@@ -44,7 +44,7 @@ apartado 3) resume esto mismo y enlaza aquí.
 | **GitHub** | Código, flujos, copias y descargas del APK | **No. Es un hueco** | DPF |
 | **Lettermint** | Todos los correos de RWAdar (pendiente) | Sí, al crear la cuenta (pendiente) | No salen: todo en la UE |
 | **Netlify** | Página de limpieza en `rwadar.netlify.app` | Sí, dentro de su acuerdo de autoservicio. Nada que firmar | DPF y, si cae, SCC módulo 2 |
-| **Proton Mail** | Buzón RWAdar@protonmail.com | Sí, dentro de sus condiciones. Nada que firmar | Suiza, con decisión de adecuación de la UE |
+| **Proton Mail** | Buzón rwadares@gmail.com | Sí, dentro de sus condiciones. Nada que firmar | Suiza, con decisión de adecuación de la UE |
 | **Apple (APNs)** | Nada hoy: no hay app de iPhone | No aplica | No aplica |
 
 ---
@@ -201,7 +201,7 @@ peor para los usuarios: con Supabase gratuito no habría ninguna otra copia.
 
 | | |
 |---|---|
-| **Qué hace** | El buzón RWAdar@protonmail.com: consultas, solicitudes de derechos, bajas por correo, empresas y reportes de seguridad. También es la dirección de respuesta de los avisos. |
+| **Qué hace** | El buzón rwadares@gmail.com: consultas, solicitudes de derechos, bajas por correo, empresas y reportes de seguridad. También es la dirección de respuesta de los avisos. |
 | **Quién firma** | Proton AG, Route de la Galaise 32, 1228 Plan-les-Ouates, Ginebra (Suiza), número CHE-354.686.492 (DPA, primer párrafo). |
 | **Contrato** | Data Processing Agreement: https://proton.me/legal/dpa |
 | **Versión** | «Last modified: February 10, 2026» (10/02/2026). |

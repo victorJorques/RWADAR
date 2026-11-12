@@ -93,6 +93,24 @@
 .ini-pie p{margin:0;letter-spacing:0;color:var(--tx-3);font:400 .8125rem/1.5 var(--body)}
 .ini-ver--pie{font-size:.9375rem}
 
+/* ---- ¿Quieres colaborar con nosotros? (12/11/2026) ----
+   El mismo bloque al final de Inicio y de Perfil (#colaboraPlantilla). El
+   botón es un b1: verde de señal sobre el texto oscuro, con su foco. */
+.colabora-nota{max-width:60ch;margin:12px 0 0;color:var(--tx-2);font:400 .9375rem/1.5 var(--body)}
+.colabora-boton{max-width:100%;margin-top:20px;padding:12px 20px;overflow-wrap:anywhere}
+.colabora-boton svg{flex:none}
+.colabora-boton:focus-visible{outline:2px solid var(--senal);outline-offset:3px}
+/* De qué vive RWAdar: un enlace discreto a /transparencia-comercial, tras el botón. */
+.colabora-mas{margin:14px 0 0;font:400 .875rem/1.5 var(--body)}
+.colabora-mas a{display:inline-block;min-height:24px;padding:2px 0;color:var(--tx-2);text-decoration:underline;text-underline-offset:3px}
+.colabora-mas a:hover{color:var(--tx)}
+.colabora-mas a:focus-visible{outline:2px solid var(--senal);outline-offset:2px;border-radius:2px}
+/* En Perfil, a la escala de sus grupos; en la cuenta de escritorio, igual. */
+.movil-mas-cuerpo .colabora,.pn-body .colabora{margin-top:32px;padding:28px 0 4px}
+.movil-mas-cuerpo .colabora .ini-bloque-tit,.pn-body .colabora .ini-bloque-tit{font-size:1.25rem}
+.movil-mas-cuerpo .colabora .ini-bloque-sub,.pn-body .colabora .ini-bloque-sub{font-size:.9375rem}
+.pn-body .colabora .colabora-nota{margin-top:12px}
+
 /* ---- Inicio en tableta y escritorio ---- */
 @media (min-width:768px){
   /* Los bloques, a lo ancho de la portada: el mismo borde izquierdo que el

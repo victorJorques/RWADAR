@@ -383,7 +383,7 @@ Cómo evitarlo depende de si la base vieja todavía se puede leer:
   automática de saber quién se borró entre la copia y el fallo. Como las
   copias son diarias, el hueco es de menos de un día. Restaura la copia más
   reciente, salta el archivo `no-revivir.sql` del paso 4 y, antes de abrir la
-  web, revisa en `RWAdar@protonmail.com` las peticiones de borrado y de baja
+  web, revisa en `rwadares@gmail.com` las peticiones de borrado y de baja
   de esas horas y aplícalas a mano (las bajas, con
   `select rwadar_novedades.baja_por_correo('correo@de.la.persona');`).
 
