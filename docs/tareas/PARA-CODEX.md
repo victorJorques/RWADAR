@@ -6,12 +6,134 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (8) · Claude · Notificaciones: correcciones de las tres revisiones (base, web y legal)
+
+Víctor: «que las notificaciones salten al móvil tipo WhatsApp y además salga
+un 1 en la app». Tres revisiones independientes de la integración (entrada 6)
+pidieron cambios; aquí está lo aplicado. Commits en
+`claude/sharp-babbage-m3bbbw`. **Sin push, sin publicar, Supabase y EAS sin
+tocar, `rwadar-movil` sin tocar.** El contrato común (RPC, carga, interruptor
+único, clave VAPID) **no cambia**; solo la `url` de la carga es siempre
+`https://rwadar.pages.dev/?avisos=1` (con `#emisiones` si el destino es el
+radar), que el contrato ya permitía (`https://rwadar.pages.dev/…`).
+
+- **Lo más importante: ya se puede probar en el iPhone antes de encender el
+  envío para todos.** Antes, con `push_habilitado` apagado, el botón
+  «Activar notificaciones en este móvil» salía bloqueado y la acción
+  «prueba» no tenía a quién ir. Ahora se puede activar aunque el envío esté
+  apagado (registrarse no envía nada); solo se bloquea si aún no hay clave
+  VAPID. El texto dice que llegarán cuando empecemos, sin prometer plazos.
+  Visto en Chromium con un iPhone 13 con la web instalada y el envío
+  apagado: el botón se pulsa, pide permiso, se suscribe y queda «Notificaciones
+  activadas en este móvil. Te llegarán cuando empecemos a enviarlas.».
+- **Base (`23e81b8`):**
+  - `limpiar()` (la del reloj diario `rwadar-novedades-limpieza`) es la de la
+    30 letra por letra más `webpush_limpiar()`: los 180 días de la privacidad
+    se cumplen cada día aunque no haya anuncios ni push. Probado en PGlite:
+    con el push apagado, el reloj borra una suscripción de hace 200 días y un
+    envío de hace 95, y deja la vigente. Cerrojos: primero el de la 30 y
+    luego el de la 32; nada toma el de la 32 y luego el de la 30.
+  - Baja en cada notificación (LSSI, art. 21.2, párr. 2; era el bloqueante):
+    toda notificación web lleva a `?avisos=1`, que abre la lista de la
+    campana con «¿No quieres estos avisos? Desactívalos en Perfil o en los
+    ajustes del móvil.» y el botón a Perfil › Avisos.
+  - Verificador 32: compara entera la regla de servicios de push (un host de
+    más ya no pasa), exige la limpieza diaria y la baja en el destino.
+    Detecta 17 roturas (antes 14).
+- **Web (`f4c495d`):** lo de arriba; abrir la campana ya es ver los avisos
+  (como un chat de WhatsApp: el número de la campana, del icono y del service
+  worker baja a 0; en el panel de la cuenta sigue «Marcar como leídos»);
+  tocar una notificación con la web abierta abre la lista sin recargar
+  (mensaje `abrir-avisos` del service worker); sin `badge` opaco (en Android
+  salía un cuadrado blanco); globos en `#D92D20` (4,83:1, antes 3,55:1);
+  «Perfil, 1 aviso sin leer» en singular; permisos bloqueados en Chrome sin
+  instalar, con su camino; sin la cifra «0 Avisos recibidos» junto a la
+  bandeja; con el correo apagado ya no promete «el enlace de cada correo».
+  Inglés en `idioma-en-avisos-20261112.js`.
+- **Legal (`da4993d`):** privacidad (en la web ya se activan y llegarán
+  cuando empecemos; en la app, el botón espera al envío; GitHub figura como
+  quien cifra y envía, con lo que recibe; Google LLC y GitHub en el DPF; la
+  garantía de Apple, Mozilla y Microsoft se comprobará antes de enviar).
+  Registro de actividades, versión 5 (A5, datos, destinatarios, plazos,
+  fila de Apple, pendientes) y `encargados/README.md` (GitHub y una sección
+  de los servicios de push).
+- **Descartado, y por qué:**
+  - Enviar la OTA con `AVISOS_NOVEDADES_REMOTOS = false` (opción b de una
+    revisión): no hace falta para la compuerta legal, porque con el push
+    apagado la app no registra el móvil en Expo ni le pide nada a Firebase
+    (dice «todavía no disponible»). La compuerta va escrita aquí abajo.
+  - Separar el interruptor de la web del de Expo: cambia el contrato común.
+  - Nombrar los servicios de push y GitHub en la «Información básica» de
+    Perfil: es un texto común de la web, /acceso y la app (y sus pruebas y
+    diccionarios) y conviene que lo vea la revisión legal; queda en el anexo.
+  - La app sigue diciendo «Puedes darte de baja aquí o con el enlace de cada
+    correo» al activar los avisos con el correo apagado: cambiarlo es otra
+    OTA; anotado.
+  - Insignia monocroma propia para Android: se ha quitado `badge` (Chrome pone
+    la suya); dibujarla queda como mejora.
+- **Pruebas** (sobre `da4993d`): `npm test` de la raíz: base entera sin
+  fallos (`probar-avisos-registrados` 275/275, `probar-notificaciones` 93/93,
+  `.github` 103/103), `probar-web` 678/678, móvil 590 y 2 omitidas,
+  `rwadar-acceso` 261/262. La que falla es «Mercado y noticias» en Chromium
+  (`tokenizacion.test.mjs`), **ajena a esto**: su dato de CoinGecko es del
+  10/11 a las 15:25 UTC y la web lo rechaza pasadas 48 horas; falla igual en
+  `5f2bba0`, antes de estas correcciones (en CI no corre: no hay Playwright).
+  `campana-avisos-navegador` (Chromium) 3/3 con los casos nuevos;
+  `service-worker-activacion` 9/9. gitleaks 8.30.1 sobre
+  `git diff origin/main...HEAD` y los 73 commits desde `main`: sin hallazgos.
+  Copias de la 32 idénticas (`cmp`).
+- **Orden de publicación corregido** (sustituye al de la entrada 6), cada
+  paso con la orden de Víctor:
+  1. PR a `main`; en CI, escáner de secretos y pruebas.
+  2. «Avisos a registrados (base)» › `ensayo-32` (debe decir «RWAdar 32 OK»),
+     `aplicar-32` y `crear-vapid` (AVISOS).
+  3. «Publicar web» (preview, comprobar, producción) y la OTA de la app
+     (`17a7356`, entrada 7), en el mismo ciclo.
+  4. Víctor, en su iPhone: añadir rwadar.pages.dev a la pantalla de inicio,
+     abrirla desde el icono, entrar con su cuenta de administración, activar
+     «Avisos de novedades» y «Activar notificaciones en este móvil» (ya no
+     está bloqueado).
+  5. «Notificaciones web» › `prueba` (ENVIAR): le llega «Prueba de RWAdar»,
+     sale el 1 en el icono y, al tocarla, se abre la lista con la baja y el 1
+     baja a 0. Es la primera prueba real con Apple: hasta entonces, no dar por
+     bueno el número del icono.
+  6. **No lanzar `activar-push` todavía.** Enciende a la vez el push de
+     Android (Expo) y las notificaciones de la web para todos. Antes: un
+     anexo legal con fecha que decida si el «latido» de Firebase cabe en la
+     LSSI, art. 22.2 (y ePrivacy, art. 5.3), y que cubra las notificaciones
+     de la web (servicios de push como destinatarios, si son encargados,
+     transferencias con el DPF de Apple, Mozilla y Microsoft comprobado, y la
+     «Información básica»); recomendado también firmar GitHub Team (su DPA),
+     porque sus máquinas cifran y envían; y la prueba en un Android físico.
+
+## 12 de noviembre de 2026 (7) · Claude · App: avisos que saltan como un WhatsApp (commit `17a7356`, anotado después)
+
+Este commit de la app va en `claude/sharp-babbage-m3bbbw` y sale con
+cualquier OTA de esta rama, pero no tenía entrada. Lo anota la revisión.
+
+- **Qué enciende en la app:** `AVISOS_NOVEDADES_REMOTOS = true` (Perfil ›
+  Avisos con el texto versionado `novedades-v2-2026-11-06` y «Notificaciones
+  en este móvil») y `AVISOS_BANDEJA_REMOTA = true` (la bandeja y el «1» de
+  Inicio, que se recalcula al volver a la app, como mucho cada 30 s, y al
+  llegar un aviso). La casilla del alta va con su propio interruptor,
+  `AVISOS_CASILLA_ALTA_REMOTA`, **apagado**.
+- **Android:** canales `cuenta` y `novedades` con importancia alta y
+  vibración (se fija antes de que ningún móvil cree los canales); al leerlo
+  todo se quitan del sistema solo las notificaciones de avisos de RWAdar.
+- **Con el push apagado** (`push_habilitado`), la app no registra el móvil en
+  Expo: el botón dice que aún no está disponible.
+- **Llega por OTA a la 1.4.2** (guardián compatible, código 24). Pruebas:
+  `rwadar-movil` 590 correctas, 0 fallidas, 2 omitidas.
+- **Publicarlo es encender esos interruptores:** necesita la orden de Víctor
+  (AGENTS.md, «encender `AVISOS_NOVEDADES_REMOTOS`»).
+
 ## 12 de noviembre de 2026 (6) · Claude · Notificaciones: base y web unidas y comprobadas entre sí
 
 Víctor: «que las notificaciones salten al móvil tipo WhatsApp y además salga
 un 1 en la app». Integración en `claude/sharp-babbage-m3bbbw` de las dos
 ramas del encargo (entradas 4 y 5, aquí debajo). **Sin push, sin publicar,
-Supabase sin tocar, sin EAS.** No se ha tocado nada de `rwadar-movil`.
+Supabase sin tocar, sin EAS.** La integración no tocó `rwadar-movil`, pero la
+rama sí lleva la app: el commit `17a7356` (entrada 7).
 
 - **Uniones** (`git merge --no-ff`): `4998ba0` (base: migración 32, remitente
   Web Push y flujos; sin conflictos) y `51e9bf1` (web: campana, bandeja y Web
@@ -38,7 +160,9 @@ Supabase sin tocar, sin EAS.** No se ha tocado nada de `rwadar-movil`.
   261/261, móvil 590 y 2 omitidas, base 275/275 y 90/90, `.github` 103/103,
   `probar-web` 677/677), `npm run test:web` (código 0) y gitleaks sobre
   `git diff origin/main...HEAD` y los 69 commits desde `main`: sin hallazgos.
-- **Pendiente, con la orden de Víctor y por este orden:** PR a `main`;
+- **Pendiente** (este orden no se podía cumplir: con el envío apagado el botón
+  salía bloqueado; el corregido está en la entrada 8)**, con la orden de
+  Víctor y por este orden:** PR a `main`;
   «Avisos a registrados (base)» › `ensayo-32`, `aplicar-32` y `crear-vapid`
   (AVISOS); «Publicar web» en preview y comprobarla; Víctor añade RWAdar a la
   pantalla de inicio del iPhone, entra y activa las notificaciones en Perfil;
