@@ -219,12 +219,16 @@ entrega. GitHub ya no envía a todos; «Notificaciones web» solo hace la
 prueba de administración. Orden de puesta en marcha, cada paso con orden de
 Víctor:
 
-1. «Publicar web» con el punto nuevo (preview, comprobar, producción). En la
-   preview, un GET a `/api/interno/webpush` da 405 y un POST sin claves, 403.
-2. «Avisos a registrados (base)» › `ensayo-33` y `aplicar-33`.
+1. «Avisos a registrados (base)» › `ensayo-33` y `aplicar-33`.
+2. Sello y «Publicar web» con el punto nuevo (preview, comprobar,
+   producción). En la preview, un GET a `/api/interno/webpush` da 405 y un
+   POST sin claves, 403.
 3. `prueba-webpush`: debe decir al menos una «aceptada» y llegar «Prueba de
    RWAdar» al iPhone de Víctor.
 4. `activar-push`, solo con las condiciones del anexo cumplidas.
+
+Con el push apagado, 1 y 2 pueden ir en cualquier orden (no sale nada), pero
+los dos antes de 3 y 4: sin el punto nuevo, cada envío acaba fallido.
 
 Si se apaga el push con envíos en vuelo, encenderlo antes de 6 horas (lo que
 pg_net guarda las respuestas) o aceptar algún duplicado. Cada notificación es

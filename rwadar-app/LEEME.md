@@ -440,10 +440,14 @@ por eso ya no se edita: cualquier cambio va en una migración nueva, como la
     de verdad se prueba en `rwadar-acceso/webpush-interno.test.mjs` (con el
     contrato de esta migración: dirección, cabeceras y espera).
   - **Orden de puesta en marcha** (cada paso con orden de Víctor):
-    1. publicar la web con `/api/interno/webpush` (sin ella, la web de hoy
-       contesta 405 a ese POST: cada envío se reintenta 3 veces y a los 15
-       minutos queda fallido, y ese anuncio ya no llega por la web);
-    2. `ensayo-33` y `aplicar-33`;
+    1. `ensayo-33` y `aplicar-33`;
+    2. sello y «Publicar web» con `/api/interno/webpush` (preview y
+       producción).
+
+       Con el push apagado, 1 y 2 pueden ir en cualquier orden: no sale
+       nada y, sin la 33, la ruta nueva da 503. Pero los dos antes de
+       seguir: sin la ruta, la web de hoy contesta 405 a ese POST, cada envío
+       se reintenta 3 veces y a los 15 minutos queda fallido;
     3. `prueba-webpush`, con al menos una aceptada;
     4. `activar-push`, con las condiciones del anexo legal.
   - Si se apaga el push con envíos «enviando», hay que volver a encenderlo
