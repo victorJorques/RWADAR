@@ -183,9 +183,9 @@ Si se aplica antes, se **reaplica la 30 corregida antes del paso 4**. Reaplicarl
 
 *Texto:*
 - **ES:**
-  > Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos; en el móvil, si activas las notificaciones, se usa además un identificador de entrega. Base: el servicio que pides (cuenta) y tu consentimiento (avisos). Proveedores: Supabase, Cloudflare, Google, Brevo y Expo; algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, y retirar el permiso, en Perfil o en RWAdar@protonmail.com; también puedes reclamar ante la AEPD. Más información en [Privacidad](/privacidad).
+  > Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos; en el móvil, si activas las notificaciones, se usa además un identificador de entrega. Base: el servicio que pides (cuenta) y tu consentimiento (avisos). Proveedores: Supabase, Cloudflare, Google, Brevo y Expo; algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, y retirar el permiso, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en [Privacidad](/privacidad).
 - **EN:**
-  > Basic information about your data. Controller: Víctor Manuel Jorques Granero (RWAdar). Purpose: your account, which also opens the Academy, and, only if you tick the notices box, sending you those notices; on your phone, if you turn on notifications, a delivery identifier is also used. Legal basis: the service you request (account) and your consent (notices). Providers: Supabase, Cloudflare, Google, Brevo and Expo; some process data outside the EU with safeguards. Rights: access, rectification, erasure, objection, restriction and portability, and withdrawing consent, in Profile or at RWAdar@protonmail.com; you can also complain to the AEPD (Spanish Data Protection Agency). More information in Privacy.
+  > Basic information about your data. Controller: Víctor Manuel Jorques Granero (RWAdar). Purpose: your account, which also opens the Academy, and, only if you tick the notices box, sending you those notices; on your phone, if you turn on notifications, a delivery identifier is also used. Legal basis: the service you request (account) and your consent (notices). Providers: Supabase, Cloudflare, Google, Brevo and Expo; some process data outside the EU with safeguards. Rights: access, rectification, erasure, objection, restriction and portability, and withdrawing consent, in Profile or at rwadares@gmail.com; you can also complain to the AEPD (Spanish Data Protection Agency). More information in Privacy.
 
 **4.3 «Leer condiciones» en la app da 404. Es un fallo que ya existe hoy.**
 
@@ -262,7 +262,7 @@ create table if not exists rwadar_novedades.historial_permiso (
   > <b>Qué son:</b> avisos de RWAdar por correo y, si los activas en tu móvil, como notificaciones: como mucho un aviso de fichas nuevas al día, que dice cuántas han entrado sin nombrar productos ni emisores y con un aviso de riesgo, y novedades de la web y la app.
 - **`:390`:** `novedades-v2-2026-11-06`.
 - **`:391-393`:**
-  > <b>Baja:</b> cada correo de avisos lleva un enlace para darte de baja, que no exige entrar en tu cuenta, y la dirección RWAdar@protonmail.com, donde basta con escribir «baja». También puedes desactivarlos en Perfil y quitar las notificaciones en los ajustes del móvil. La baja corta a la vez los correos y las notificaciones de novedades.
+  > <b>Baja:</b> cada correo de avisos lleva un enlace para darte de baja, que no exige entrar en tu cuenta, y la dirección rwadares@gmail.com, donde basta con escribir «baja». También puedes desactivarlos en Perfil y quitar las notificaciones en los ajustes del móvil. La baja corta a la vez los correos y las notificaciones de novedades.
 
   Esto cumple la obligación de informar sobre los procedimientos de baja (LSSI, art. 22.1, párr. 3).
 - **`:401-403`:**
@@ -297,9 +297,9 @@ create table if not exists rwadar_novedades.historial_permiso (
 - **Párrafo para quien se apuntó:**
   > Además, te has apuntado a los avisos de novedades: te avisaremos de las fichas nuevas que entren en el radar y de las novedades de la web y la app. Puedes darte de baja cuando quieras con el enlace del final o en tu Perfil.
 - **Cierre en HTML:**
-  `Si no creaste esta cuenta, <a href="mailto:RWAdar@protonmail.com" style="color:#0F7A57">escríbenos</a> y la borramos.`
+  `Si no creaste esta cuenta, <a href="mailto:rwadares@gmail.com" style="color:#0F7A57">escríbenos</a> y la borramos.`
 - **Cierre en texto:**
-  > Si no creaste esta cuenta, escríbenos a RWAdar@protonmail.com y la borramos.
+  > Si no creaste esta cuenta, escríbenos a rwadares@gmail.com y la borramos.
 - El asunto («Te damos la bienvenida a RWAdar») no cambia.
 
 **4.9 Pie de los correos: nombre del titular** (`30_avisos_registrados.sql:390-396`). [INTERPRETABLE; lo exijo por prudencia, porque cuesta una línea]
@@ -334,7 +334,7 @@ v_pie := '<p style="margin:0 0 8px">Te escribe RWAdar, un radar independiente de
 *Por qué:* la LSSI (art. 22.1) dice que basta «la simple notificación de su voluntad al remitente». Un correo o una respuesta que diga «baja» vale. Seguir enviando después de una baja ya se ha sancionado (AEPD PS/00311/2023, 10.000 €).
 
 *Procedimiento, que se anota en `docs/RUNBOOK.md`:*
-- Mientras haya avisos activos, Víctor revisa RWAdar@protonmail.com al menos dos veces por semana.
+- Mientras haya avisos activos, Víctor revisa rwadares@gmail.com al menos dos veces por semana.
 - Cada baja se aplica antes del siguiente envío, con una función nueva solo para el propietario: `rwadar_novedades.baja_por_correo(p_email text)`. Pone `novedades = false` y `baja_el = now()`, y añade la fila `baja`/`correo` en el historial (4.5).
 - Se responde «Hecho: ya no recibirás avisos de RWAdar» y se anota la fecha.
 

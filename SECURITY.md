@@ -2,7 +2,7 @@
 
 ## Reportar una vulnerabilidad
 
-Envía el informe de forma privada a `RWAdar@protonmail.com`, con asunto
+Envía el informe de forma privada a `rwadares@gmail.com`, con asunto
 `[SEGURIDAD RWADAR]`. El mismo contacto figura en
 <https://rwadar.pages.dev/.well-known/security.txt> (válido hasta el
 22/08/2027) y en la política pública de reporte,
@@ -90,7 +90,7 @@ RWAdar no tiene sociedad constituida. Gestionan conjuntamente los reportes:
 - Samuel Rodriguez
 - Victor Jorques
 
-Contacto único: `RWAdar@protonmail.com`.
+Contacto único: `rwadares@gmail.com`.
 
 El responsable del tratamiento de los datos personales es Víctor Manuel
 Jorques Granero (privacidad, apartado 1). Si Eric Almiñana y Samuel Rodriguez

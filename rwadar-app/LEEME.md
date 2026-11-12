@@ -285,7 +285,7 @@ por eso ya no se edita: cualquier cambio va en una migración nueva, como la
   (LOPDGDD art. 32) y `limpiar()` lo borra a los 3 años, nunca el de una cuenta
   viva. `configurar_avisos_novedades` admite un cuarto argumento opcional,
   `p_idioma` (`'es'`/`'en'`); el alta lee `avisos_idioma` de los metadatos.
-- Baja que llega por correo (RWAdar@protonmail.com), antes del siguiente
+- Baja que llega por correo (rwadares@gmail.com), antes del siguiente
   envío y solo el propietario, desde el SQL Editor:
   `select rwadar_novedades.baja_por_correo('persona@ejemplo.com');` (sin
   distinguir mayúsculas; devuelve si encontró la cuenta y deja la fila
@@ -310,7 +310,7 @@ por eso ya no se edita: cualquier cambio va en una migración nueva, como la
   toca la configuración, los relojes ni Vault.
   - Envío: `POST https://api.lettermint.co/v1/send` con el token de proyecto
     (Vault `LETTERMINT_API_TOKEN`) en `x-lettermint-token`; `from` «RWAdar
-    <`RWADAR_REMITENTE`>», `reply_to` RWAdar@protonmail.com; `settings` con
+    <`RWADAR_REMITENTE`>», `reply_to` rwadares@gmail.com; `settings` con
     `track_opens` y `track_clicks` en `false` en cada correo; sin `tag` ni
     `metadata`. La bienvenida va por la ruta transaccional (la de por defecto,
     sin `route`) y los anuncios por `route: "broadcast"`. `List-Unsubscribe`

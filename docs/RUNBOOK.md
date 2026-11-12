@@ -224,7 +224,7 @@ Contratos de encargo: [`legal/encargados/README.md`](legal/encargados/README.md)
 - **Bajas que llegan por correo** (LSSI art. 22.1: basta con pedirlo al
   remitente). Mientras salgan avisos:
   1. Antes de cada envío —y cada día si `ofertas_automaticas` está encendido—
-     revisa RWAdar@protonmail.com (es también la dirección de respuesta de los
+     revisa rwadares@gmail.com (es también la dirección de respuesta de los
      avisos). Si nadie lo puede revisar a diario, `ofertas_automaticas` se
      queda apagado.
   2. Cada baja se aplica antes del siguiente envío, en Supabase › SQL Editor:

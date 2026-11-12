@@ -43,10 +43,10 @@ test('la página no se indexa, no lleva scripts ni estilos en línea y no usa fo
 
 // El mismo asunto que el pie y List-Unsubscribe de los correos (30_avisos_registrados.sql).
 const ASUNTO = 'Baja de los avisos de RWAdar';
-const MAILTO = 'mailto:RWAdar@protonmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
+const MAILTO = 'mailto:rwadares@gmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
 test('sin JavaScript la página explica la baja por correo con el asunto de los correos', () => {
   const visible = html.replace(/<[^>]+\shidden[^>]*>[\s\S]*?<\/[a-z]+>/g, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
-  assert.ok(visible.includes('escribiendo a RWAdar@protonmail.com con el asunto «' + ASUNTO + '»'));
+  assert.ok(visible.includes('escribiendo a rwadares@gmail.com con el asunto «' + ASUNTO + '»'));
   assert.equal(decodeURIComponent(MAILTO.split('subject=')[1]), ASUNTO);
   // Todos los mailto de la página llevan ese asunto; ninguno el antiguo «baja».
   const mailtos = [...html.matchAll(/href="(mailto:[^"]+)"/g)].map(m => m[1]);
@@ -97,7 +97,7 @@ test('un token que no es un UUID no ofrece el botón ni llama al servidor, y tam
     const p = pagina(search);
     assert.equal(p.elemento('baja').hidden, true, search);
     assert.match(p.elemento('estado').textContent, /no es válido o está incompleto/);
-    assert.ok(p.elemento('estado').textContent.includes('RWAdar@protonmail.com con el asunto «' + ASUNTO + '»'));
+    assert.ok(p.elemento('estado').textContent.includes('rwadares@gmail.com con el asunto «' + ASUNTO + '»'));
     assert.equal(p.peticiones.length, 0);
     assert.deepEqual(p.historial, search.includes('t=') ? ['/baja'] : []);
   }

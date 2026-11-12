@@ -185,7 +185,7 @@ function pagina({titulo,descripcion,ruta,contenido,revision,imagen='/og.png',org
     '<div data-selector-idioma></div><main id="contenido"'+(organizacion ? ' data-ficha-consulta' : ' data-idioma-documental="es"')+(oferta ? ' data-oferta="'+esc(json(oferta))+'"' : '')+'><p class="migas"><a href="/">Inicio</a> / <span'+ORIGINAL+'>'+esc(titulo)+'</span></p>' +
     '<h1'+(organizacion ? ORIGINAL : '')+'>'+esc(titulo)+'</h1>'+contenido+'</main><footer><p>RWAdar es un catálogo gratuito con información propia. Que algo aparezca aquí no es una recomendación ni una garantía. Si inviertes, lo haces directamente con el proveedor.</p>' +
     '<nav aria-label="Información"><a href="/metodologia">Cómo verificamos</a><a href="/transparencia-comercial">Transparencia comercial</a><a href="/privacidad">Privacidad y aviso legal</a>' +
-    '<a href="/novedades.xml">RSS</a><a href="mailto:RWAdar@protonmail.com">Comunicar un error</a></nav></footer></body></html>\n';
+    '<a href="/novedades.xml">RSS</a><a href="mailto:rwadares@gmail.com">Comunicar un error</a></nav></footer></body></html>\n';
 }
 
 const riesgos = '<section aria-labelledby="riesgos"><h2 id="riesgos">Antes de invertir</h2><ul class="riesgos">' +
@@ -300,7 +300,7 @@ function paginaOferta(o,catalogo,imagen) {
     '<p>Cada fuente lleva el día en que la consultamos. El dato puede ser más antiguo, y algunas fuentes no dicen de qué fecha es.</p>'+
     (refs.length ? '<details><summary>Ver los '+refs.length+' datos consultados y sus fechas</summary><ul class="referencias"'+ORIGINAL+'>'+refs.map(r=>'<li><strong>'+esc(rotuloReferencia(r.etiqueta))+'</strong><br>Dato fechado: '+esc(corta(r.fechaDato))+' · Consulta: '+esc(corta(r.fechaConsulta))+'<br><a href="'+esc(enlace(r.fuente))+'" target="_blank" rel="noopener noreferrer">Abrir fuente ↗</a><p>'+esc(r.alcance || '')+'</p></li>').join('')+'</ul></details>' : '')+
     fuentes([...(d.fuentes || []),...(o.fuentesActuales || [])])+'</section>'+
-    '<p><a href="mailto:RWAdar@protonmail.com?subject='+encodeURIComponent('Corrección de ficha: '+o.titulo)+'">¿Ves un error en esta ficha?</a></p>';
+    '<p><a href="mailto:rwadares@gmail.com?subject='+encodeURIComponent('Corrección de ficha: '+o.titulo)+'">¿Ves un error en esta ficha?</a></p>';
   return pagina({titulo:o.titulo,descripcion:o.resumen,ruta:rutaOferta(o),contenido,revision:o.verificadaEl,
     imagen:imagen ? '/'+imagen.salida : '/og.png',organizacion:{nombre:o.plataformaNombre,url:o.url},oferta:o});
 }
@@ -344,7 +344,7 @@ function construirSalidas({catalogo, paginasPermitidas = permitidas} = {}) {
     '<section><h2>Tres fechas distintas</h2><dl><div><dt>Revisión editorial</dt><dd>Cuándo revisamos o preparamos ese grupo de fichas, incluidos los intentos que no permitieron comprobar datos.</dd></div><div><dt>Consulta de la fuente</dt><dd>Cuándo se leyó la referencia concreta. No cambia la fecha original del dato.</dd></div><div><dt>Fecha del dato</dt><dd>La indicada expresamente por el proveedor. Si falta, se declara que no fue publicada.</dd></div></dl></section>'+
     '<section><h2>Estado y vigencia</h2><p>«No verificable» significa que no se confirmó el dato o la apertura, por ejemplo porque la web no nos dejó leerla. «Fuentes en conflicto» indica discrepancias. No son pruebas de fraude. Si una cifra lleva demasiado tiempo sin revisarse, la ocultamos; la ficha y el catálogo siguen visibles, con un aviso.</p></section>'+
     '<section><h2>Cómo ordenamos</h2><p>El orden editorial no depende de pagos ni utiliza la rentabilidad como criterio por defecto. Separamos las ofertas principales, la reventa entre inversores y los anuncios que aún no han abierto. Los filtros solo ordenan datos: no te dicen qué te conviene.</p></section>'+
-    '<section><h2>Cómo corregimos</h2><p>Escribe a <a href="mailto:RWAdar@protonmail.com">RWAdar@protonmail.com</a> indicando la ficha y una fuente primaria. Conservamos los informes con fecha y mostramos las novedades de cada revisión.</p></section>'}));
+    '<section><h2>Cómo corregimos</h2><p>Escribe a <a href="mailto:rwadares@gmail.com">rwadares@gmail.com</a> indicando la ficha y una fuente primaria. Conservamos los informes con fecha y mostramos las novedades de cada revisión.</p></section>'}));
   const entradas=novedades(c);
   salidas.set('cambios.html',pagina({titulo:'Novedades y revisiones',descripcion:'Historial editorial de RWAdar, con fechas y un canal RSS que no pide registro.',ruta:'/cambios',revision:c.revision,
     contenido:'<p class="intro">Cambios en las fichas y novedades de RWAdar. <a href="/novedades.xml">Suscribirse por RSS</a> permite seguirlos sin cuenta ni correo.</p><ol class="novedades">'+entradas.map(e=>'<li id="'+esc(e.id)+'"><article><time datetime="'+e.fecha+'">'+corta(e.fecha)+'</time><h2>'+esc(e.titulo)+'</h2><p>'+esc(e.texto)+'</p></article></li>').join('')+'</ol>'}));
