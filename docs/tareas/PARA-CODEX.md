@@ -6,6 +6,102 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (13) · Claude · Notificaciones web desde Supabase y Cloudflare: base 33 y servidor unidos, revisión aplicada y textos legales al día
+
+Víctor: «En GitHub no puedes? Pues hazlo en supabase mientras y ya haremos el
+cambio». Commits en `claude/sharp-babbage-m3bbbw`, **sin push. Sin publicar;
+Supabase y EAS sin tocar; el envío sigue apagado.** (El encargo la llamaba
+«(11)», pero la (11) y la (12) ya existían: esta es la 13.)
+
+- **Qué cambia, en llano.** Hasta ahora, las notificaciones de la web para
+  todos las mandaba un flujo de GitHub, que con la cuenta gratuita no tiene
+  contrato de encargo y habría visto las suscripciones de todos. Ahora:
+  1. la base (Supabase, cada 5 minutos con el push encendido, como Expo)
+     pide cada notificación por pg_net a la web;
+  2. el servidor de la web (Cloudflare, `POST /api/interno/webpush`) comprueba
+     que quien llama tiene la clave de RWAdar, la cifra, la firma y la entrega
+     al servicio de push del navegador, sin guardarla;
+  3. GitHub ya no envía a todos: «Avisar novedad» no lo llama y la acción
+     «enviar» se retiró. Solo queda «Notificaciones web › prueba», que va a
+     las cuentas de administración (datos de Víctor).
+- **Uniones** (`git merge --no-ff`): la base (`d6beb4c`: migración 33, flujos y
+  `probar-webpush-supabase.mjs`) y el servidor (`e5cb091`:
+  `rwadar-acceso/webpush-servidor.mjs` y sus pruebas). Sin conflictos.
+- **`probar-notificaciones.mjs`** (`c13e921`): el arreglo que dejó el
+  constructor, aplicado sobre la versión de main (que ya traía la espera del
+  reloj de PGlite). Sin la acción «enviar» ni la llamada desde «Avisar
+  novedad»; lista de acciones con `ensayo-33`, `verificar-33`, `aplicar-33` y
+  `prueba-webpush`. 89/89.
+- **Revisión aplicada** (`2daee0e`):
+  - pg_net espera **25 s** (antes 10). El servidor puede tardar 8 s con la
+    clave y 10 s con el servicio de push: con 10 s, una entrega lenta ya
+    aceptada se habría reintentado y la notificación saldría repetida. Una
+    prueba nueva compara la espera de la 33 con los plazos del servidor;
+  - una entrada que no sirve da **200 `{"codigo":-1}`** (antes 400, que la
+    base reintentaba 3 veces); solo después de comprobar las claves;
+  - el límite se cobra **después** de comprobar las claves, en dos cupos (2000
+    cada 10 min con la clave de RWAdar, 300 sin ella): quien salga por la
+    misma dirección que Supabase ya no puede agotar el de RWAdar;
+  - **las copias de cada noche ya no llevan las suscripciones** de la web
+    (`suscripciones_web` y `envios_web` van sin filas). Comprobado con un
+    Postgres 16 local: la tabla está, sin datos, y se restaura bien. Tras una
+    restauración, cada persona vuelve a pulsar «Activar»;
+  - LEEME y RUNBOOK: orden de puesta en marcha, las 6 horas que pg_net guarda
+    las respuestas y el consumo de Pages Functions.
+- **Web** (`f970c93`): al cerrar sesión, un temporizador del teclado móvil
+  podía encontrar la página sin `body` y daba un error en la consola. Hacía
+  fallar a ratos, con la máquina cargada, la prueba de Chromium de
+  «Notificaciones en este móvil» (7 de 12 ejecuciones en paralelo); arreglado
+  con `document.body?.`, 0 de 18. Llega con la próxima web.
+- **Textos legales** (`6dabfd2`), fecha sin cambiar (12/11/2026):
+  - privacidad §6 y §8: las envía la base (Supabase) a través del servidor de
+    la web (Cloudflare), que las cifra y entrega sin guardarlas; GitHub ya no
+    interviene en las notificaciones de la web;
+  - anexo: **C3 hecha en el código** (se cumple al aplicar la 33 y publicar
+    la web); apartado 1.5 reescrito;
+  - registro versión 7, `encargados/README.md` e INTERNO, al día.
+- **Pruebas** (sobre el árbol de `f970c93`):
+  - `npm test` en la raíz, salida 0, dos veces (la primera, antes del
+    arreglo de la web, con 1 fallo de Chromium: el de arriba):
+    - `rwadar-app`: 31 scripts con «0 fallidas»
+      (`probar-avisos-registrados` 275/275, `probar-notificaciones` 89/89,
+      `probar-webpush-supabase` 64/64), 11/11 y `.github` 103/103;
+    - `probar-web` 679/679, 70 páginas y RSS, 40 de precarga;
+    - QR bien; `rwadar-movil` 593 y 2 omitidas; herramientas bien;
+    - `rwadar-acceso` 280/280, con Chromium (`webpush-interno` 18/18); y
+      dos veces más `node --test rwadar-acceso/*.test.mjs`, 280/280.
+  - Mutaciones: cobrar el límite antes de las claves o volver al 400 hace
+    fallar 1 y 4 pruebas; restaurado y comprobado con `cmp`.
+  - Guardián de OTA con `--base fa30779`: compatible, 1.4.2(24). Este cambio
+    no toca la app.
+  - gitleaks 8.30.1 (`rwadar-app/gitleaks.toml` y la configuración por
+    defecto) sobre `git diff origin/main...HEAD` y sobre los commits: sin
+    hallazgos.
+- **Dudas que quedan:**
+  - Cloudflare podría frenar las peticiones de pg_net (firewall o antirobots):
+    solo se ve en línea, y `prueba-webpush` lo mide (códigos del servidor);
+  - la clave privada viaja en una cabecera: no abrir los registros en tiempo
+    real de Cloudflare (`wrangler pages deployment tail`) mientras haya envíos;
+  - el resto del hueco de GitHub (copias y flujos de la base) sigue: se cierra
+    con GitHub Team (decisión del 06/11);
+  - el servidor necesita el nivel de compatibilidad de Cloudflare de 2025 o
+    posterior (el login de producción ya lo usa); la primera `prueba-webpush`
+    lo confirma.
+- **Para publicar, en orden** (cada paso con orden expresa de Víctor):
+  1. PR a main y CI (escáner de secretos y pruebas).
+  2. «Avisos a registrados (base)» › `ensayo-33` (debe decir «RWAdar 33
+     OK») y `aplicar-33` (AVISOS; copia cifrada antes; verificadores 30-33).
+  3. Sello de main y «Publicar web» (preview y producción), porque cambia el
+     servidor. En la preview: un GET a `/api/interno/webpush` da 405 y un POST
+     sin claves, 403. Con el push apagado, 2 y 3 pueden ir en cualquier
+     orden, pero los dos antes de 4.
+  4. Con el iPhone de Víctor suscrito (web en la pantalla de inicio, cuenta de
+     administración, «Notificaciones en este móvil» activadas):
+     `prueba-webpush` (AVISOS). Debe decir «Aceptadas por el servicio de push:
+     1» y llegar «Prueba de RWAdar». No depende del interruptor.
+  5. `activar-push`, solo con el resto de condiciones del anexo cumplidas
+     (C1, C2, C4, C5 con la OTA ya en uso, C6 y C7).
+
 ## 12 de noviembre de 2026 (12) · Claude · Corrector: anexo legal y retoques unidos, frases del anexo y la baja a la vista en Android
 
 Víctor: «Haz lo que tengas que hacer para que funcione, con lógica, que no me
