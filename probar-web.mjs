@@ -3264,6 +3264,8 @@ prueba('privacidad: los avisos de novedades se explican, ya se activan en Perfil
     // el «Firebase user agent», para sus estadísticas internas, no para entregar las notificaciones (revisión del 07/11/2026).
     /^[^]*?Google recibe esas fechas junto con qué componentes de Firebase lleva la app y sus versiones, y datos técnicos del móvil \(versión de Android, marca, modelo, tipo de dispositivo y tienda desde la que se instaló la app\)\. Según Google, los usa para sus estadísticas internas de uso de esos componentes, sin unirlos a un identificador de la persona ni del móvil\./.test(firebase) &&
     !/solo para su uso|para poder entregarlas/.test(firebase.slice(0, firebase.indexOf('</p>'))) &&
+    // Anexo legal del 12/11/2026, apartado 2: el envío del latido se basa en el consentimiento de quien pulsa el botón.
+    /^[^]*?del móvil\. Al activar las notificaciones consientes también ese envío \(art\. 22\.2 de la Ley 34\/2002\); si no las activas, verás los mismos avisos en Inicio\. Esas fechas se borran/.test(firebase) &&
     // El botón de RWAdar no las borra: hay que decirlo, está en la misma pantalla de la app.
     /^[^]*?Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android\. El botón «Borrar datos del dispositivo» de RWAdar no las borra\.<\/p>/.test(firebase) &&
     privacidadLineal.indexOf('<p id="firebase-android">') < privacidadLineal.indexOf('<h2>6 · Correos de servicio</h2>') &&
@@ -3316,12 +3318,24 @@ prueba('privacidad: notificaciones en la web (qué se guarda, quién las entrega
   /cifrada de extremo a\s+extremo con las claves de tu navegador, así que ese servicio no puede leer su texto/.test(privacidadLineal) &&
   /<b>Servicios de notificaciones de los navegadores<\/b> \(Apple, Google, Mozilla o Microsoft,/.test(privacidadLineal) &&
   // GitHub ejecuta el remitente (rwadar-app/enviar-webpush.mjs en el flujo «Notificaciones web»): destinatario (art. 13.1.e)
-  // y su garantía de transferencia (art. 13.1.f), con la de Google; Apple, Mozilla y Microsoft, a comprobar antes de enviar.
+  // y su garantía de transferencia (art. 13.1.f), con la de Google y Microsoft.
   /Las cifra y\s+las envía un proceso de RWAdar que se ejecuta en servidores de GitHub\s+\(<a href="#proveedores-github">apartado 8<\/a>\)/.test(privacidadLineal) &&
   /<li id="proveedores-github"><b>GitHub<\/b>/.test(privacidad) &&
   /sus servidores\s+\(GitHub Actions\) ejecutan el proceso de RWAdar que las cifra y las envía: para cada envío\s+reciben la dirección de entrega de tu navegador, sus dos claves de cifrado y el texto del\s+aviso, nunca tu correo/.test(privacidadLineal) &&
-  /GitHub, que envía las\s+notificaciones de la web, y Google LLC están adheridas al Marco de Privacidad de Datos\s+UE-EE\. UU\./.test(privacidadLineal) &&
-  /Antes de empezar a enviar notificaciones a la web se comprobará la garantía aplicable a\s+Apple, Mozilla y Microsoft/.test(privacidadLineal) &&
+  privacidadLineal.includes('GitHub, que envía las notificaciones de la web, Google LLC y Microsoft Corporation están adheridas al Marco de Privacidad de Datos UE-EE. UU.') &&
+  // Anexo legal del 12/11/2026 (docs/legal/ANEXO-NOTIFICACIONES-2026-11-12.md): la garantía de cada servicio de push,
+  // comprobada en la lista oficial del DPF, en lugar de la promesa de comprobarla. Ni Apple ni Mozilla figuran como adheridas.
+  !/se comprobará la garantía/.test(privacidadLineal) &&
+  (privacidadLineal.match(/[^.]*están adheridas al Marco de Privacidad de Datos[^.]*\./g) || []).length === 1 &&
+  !/Apple|Mozilla/.test(privacidadLineal.match(/[^.]*están adheridas al Marco de Privacidad de Datos[^.]*\./)?.[0] ?? 'Apple') &&
+  privacidadLineal.includes('<a href="https://www.dataprivacyframework.gov/list" rel="noopener">dataprivacyframework.gov</a>') &&
+  /sus garantías se explican <a href="#garantias-push">debajo de esta lista<\/a>/.test(privacidadLineal) &&
+  privacidadLineal.includes('<p id="garantias-push"><b>Servicios de notificaciones de los navegadores:</b> comprobado el 12 de noviembre de 2026. No trabajan por encargo de RWAdar: los elige tu navegador') &&
+  privacidadLineal.includes('Sobre ti, de RWAdar solo reciben la dirección que ellos mismos dieron a tu navegador, la hora y el tamaño de cada notificación y su texto cifrado, que no pueden leer.') &&
+  privacidadLineal.includes('en el EEE responden Google Ireland Limited y Microsoft Ireland Operations Limited, y Google LLC y Microsoft Corporation están en el Marco UE-EE. UU.') &&
+  privacidadLineal.includes('<li><b>Apple</b> (Safari y las webs añadidas a la pantalla de inicio del iPhone y el iPad): no está en el Marco UE-EE. UU. Según su política de privacidad, los datos de las personas del EEE los controla Apple Distribution International Limited, en Irlanda, y Apple los saca del EEE con cláusulas contractuales tipo.</li>') &&
+  privacidadLineal.includes('<li><b>Mozilla</b> (Firefox): no está en el Marco UE-EE. UU. Según su aviso de privacidad, Mozilla y sus servidores están en Estados Unidos, y usa cláusulas contractuales tipo cuando corresponde.') &&
+  privacidadLineal.includes('no actives las notificaciones en el móvil: verás los mismos avisos en la campana de tu cuenta. RWAdar no promete que cada notificación llegue') &&
   /<td>Avisos leídos y <br>número del icono<\/td>/.test(privacidad) &&
   /Es lo estrictamente necesario para esas funciones y no sale del navegador/.test(privacidadLineal) &&
   /el número vuelve a 0 al ver los avisos o al cerrar sesión/.test(privacidadLineal) &&
