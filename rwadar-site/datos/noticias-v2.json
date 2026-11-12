@@ -1,30 +1,30 @@
 {
   "version": 1,
-  "actualizadoEl": "2026-11-11",
+  "actualizadoEl": "2026-11-12",
   "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
   "noticias": [
     {
-      "id": "cnmv-advierte-clones-xtb-pjt",
-      "fecha": "2026-11-10",
+      "id": "cnmv-advertencias-supervisores-ue-11-entidades",
+      "fecha": "2026-11-11",
       "seccion": "hoy",
       "categoria": "riesgo",
-      "ambito": "España",
-      "titulo": "La CNMV destapa clones de XTB y PJT entre 9 chiringuitos",
-      "resumen": "La CNMV avisa de que nueve webs y apps no están autorizadas para prestar servicios de inversión. Una se hace pasar por XTB y dos apps, por PJT Partners; no tienen relación con esas firmas registradas.",
-      "porQueImporta": "Los clones copian el nombre de firmas reales. Antes de invertir, comprueba en la CNMV la entidad y también la web o la app exacta.",
+      "ambito": "UE",
+      "titulo": "Otras 11 firmas sin registro: avisos de tres países de la UE",
+      "resumen": "La CNMV difunde los avisos de supervisores de Austria (seis), Países Bajos (cuatro) y Alemania (uno) sobre 11 entidades no registradas. El supervisor alemán prohibió a una de ellas ofrecer acciones al público por no haber publicado el folleto.",
+      "porQueImporta": "Ofrecer valores al público sin el folleto exigido es una señal de alarma, también en las emisiones tokenizadas. Antes de invertir, busca la entidad en el buscador de advertencias de la CNMV.",
       "en": {
-        "titulo": "CNMV exposes XTB and PJT clones among 9 unlicensed firms",
-        "resumen": "The CNMV says nine websites and apps are not authorised to provide investment services. One poses as XTB and two apps as PJT Partners; they have no link to those registered firms.",
-        "porQueImporta": "Clones copy the names of real firms. Before investing, check both the firm and the exact website or app in the CNMV registers.",
-        "tituloInformativo": "Spain's CNMV warns of nine unregistered entities, including clones of XTB and PJT Partners"
+        "titulo": "11 more unregistered firms flagged in three EU countries",
+        "resumen": "The CNMV relays warnings from supervisors in Austria (six), the Netherlands (four) and Germany (one) about 11 unregistered entities. Germany's supervisor barred one of them from offering shares to the public for not publishing a prospectus.",
+        "porQueImporta": "Offering securities to the public without a required prospectus is a red flag, tokenised issues included. Before investing, look the firm up in the CNMV's search tool for warnings.",
+        "tituloInformativo": "Spain's CNMV relays EU supervisors' warnings about 11 unregistered entities"
       },
       "fuente": {
-        "nombre": "CNMV, advertencia de entidades no registradas del 10/11/2026",
-        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7b512d6e8c-0490-4a9b-a9f3-b44776391f76%7d",
+        "nombre": "CNMV, advertencia de entidades no registradas en supervisores internacionales del 11/11/2026",
+        "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-11",
-      "tituloInformativo": "La CNMV advierte de nueve entidades sin registro, entre ellas clones de XTB y PJT Partners",
+      "consultadaEl": "2026-11-12",
+      "tituloInformativo": "La CNMV difunde advertencias de supervisores europeos sobre 11 entidades no registradas",
       "imagen": "alerta-fraude"
     },
     {
@@ -47,7 +47,7 @@
         "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
         "tipo": "empresa"
       },
-      "consultadaEl": "2026-11-11",
+      "consultadaEl": "2026-11-12",
       "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor",
       "imagen": "acciones-eeuu"
     },
@@ -71,7 +71,7 @@
         "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-11",
+      "consultadaEl": "2026-11-12",
       "tituloInformativo": "La CNMV inscribe una emisión de pagarés de Prosegur Cash anotada en registro DLT",
       "imagen": "pagares-deuda"
     },
@@ -95,7 +95,7 @@
         "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-11",
+      "consultadaEl": "2026-11-12",
       "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT",
       "imagen": "instituciones-ue"
     },
@@ -119,7 +119,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-11",
+      "consultadaEl": "2026-11-12",
       "tituloInformativo": "La CNMV autoriza Bit2Me STX, el segundo mercado español para valores tokenizados",
       "imagen": "bolsa-madrid"
     },
@@ -143,7 +143,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcff2b57d-5b54-44e2-98db-057d90acc64b%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-11",
+      "consultadaEl": "2026-11-12",
       "tituloInformativo": "La CNMV propone atender quejas contra plataformas de financiación participativa y cripto",
       "imagen": "regulador-espana"
     }

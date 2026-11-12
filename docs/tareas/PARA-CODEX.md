@@ -6,6 +6,43 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (1) · Claude · ciclo rápido del 12/11: catálogo a58dd22d aplicado y noticias del día
+
+Víctor, a las 00:28 UTC: «actualizar la información a hoy y acelerar». Informe:
+[`docs/INVESTIGACION-CATALOGO-2026-11-12.md`](../INVESTIGACION-CATALOGO-2026-11-12.md).
+
+- **Investigación (00:32–01:00 UTC):** 4 grupos en paralelo (principales,
+  brickwise, suiza y vigilancia), cada uno con revisor independiente, más las
+  noticias (editor y verificador). Radar 69/69, con REGAFI leído hoy por su API
+  pública.
+- **Entrega:**
+  - Revisión `a58dd22d-98a3-f94e-ba66-46898162215a`; `aplicar-y-aprobar.sql`
+    con SHA-256 `d4d73024…4e4d`.
+  - Revisiones: SQL y contenido «aprobado», cumplimiento «con cambios» (fuera
+    del SQL más R1 de Hausera), auditor «conforme».
+- **Cambios:**
+  - mTBILL: métrica de rentabilidad pasada del 3,45 % en USD. El revisor
+    rechazó el 3,53 % por la ventana con festivo.
+  - Brickwise: Cohotel y GreenPoint, 102 €; Pottendorfer, 80 €; aviso común
+    sobre la compra parcial y el 1,5 %.
+  - Smart Cash, con la VL del 11/11.
+  - Re-fechas en el resto.
+- **Publicado:**
+  - PR #104 (squash) y «Aplicar catálogo» n.º 17, comprobado como visitante
+    a las 09:30 UTC.
+  - Sincronización y noticias del 12/11 en el PR siguiente; después, sello,
+    web y OTA.
+- **Datos personales:**
+  - Recortados los nombres de consejeros de Backed que quedaban en copias de
+    2026-11-03.3-v2 y 2026-11-05-v2 (19 archivos).
+  - Los nombres de O1 siguen solo en la historia de la rama
+    `claude/sharp-babbage-m3bbbw`; `main` se unió con squash.
+- **Pendiente:**
+  - Las VL nuevas de Spiko (18:00 y 19:30 UTC del 12/11).
+  - El conflicto de reembolso de mTBILL.
+  - «Participaciones en venta» de 4 fichas de Brickwise, que se quedan con su
+    fecha anterior.
+
 ## 11 de noviembre de 2026 (5) · Claude · ciclo del 11/11 completo: catálogo aplicado, «Mercado y noticias», calculadora y guía de acceso
 
 Víctor pidió el 11/11:
