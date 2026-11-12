@@ -3170,11 +3170,13 @@ prueba('la privacidad explica cookie necesaria, enlaces limpios y retirada de la
   /se canjean una vez y se\s+retiran de la dirección/.test(privacidad) &&
   /history\.replaceState\(null,'',location\.pathname\+location\.search\)/.test(js) &&
   /elimina la antigua caché PWA/.test(privacidadLineal));
-// 12/11/2026: las notificaciones del móvil ya se pueden activar (app 1.4.2 y web en el móvil).
-prueba('la privacidad describe favoritos locales y las notificaciones del móvil, ya activables, sin prometer borrado histórico',
+// 12/11/2026: en la web las notificaciones ya se pueden activar aunque el envío esté apagado
+// (llegarán cuando empecemos); en la app, el botón espera al envío (revisión del 12/11).
+prueba('la privacidad describe favoritos locales y las notificaciones del móvil (en la web ya activables; llegan cuando empecemos), sin prometer borrado histórico',
   /favoritos solo en el dispositivo/.test(privacidadLineal) &&
-  privacidadLineal.includes('<p id="notificaciones-movil"><b>Notificaciones en el móvil:</b> ya puedes activarlas en Perfil › Avisos, con «Notificaciones en este móvil»') &&
-  /en la app de Android desde la versión 1\.4\.2 y en la web desde el navegador del móvil o la tableta \(en iPhone y iPad, con RWAdar añadida a la pantalla de inicio\)/.test(privacidadLineal) &&
+  privacidadLineal.includes('<p id="notificaciones-movil"><b>Notificaciones en el móvil:</b> en la web ya puedes activarlas en Perfil › Avisos, con «Notificaciones en este móvil», desde el navegador del móvil o la tableta (en iPhone y iPad, con RWAdar añadida a la pantalla de inicio); te llegarán cuando empecemos a enviarlas, y Perfil › Avisos lo dice.') &&
+  privacidadLineal.includes('En la app de Android, desde la versión 1.4.2, el mismo botón se podrá usar cuando empecemos a enviarlas.') &&
+  !/ya puedes activarlas en Perfil › Avisos, con «Notificaciones en este móvil»: en la app de Android/.test(privacidadLineal) &&
   /La app no crea una identidad remota de instalación ni activa seguimiento por instalación/.test(privacidadLineal) &&
   /no quedan revocados por los cambios de versión/.test(privacidadLineal) &&
   !/no obtiene ni registra tokens push|entrega automática está desactivada|Los avisos de nuevas emisiones tampoco están conectados|no solicita permiso de\s+notificaciones/.test(privacidadLineal));
@@ -3282,6 +3284,10 @@ prueba('privacidad: baja, retirada, conservación bloqueada y Lettermint (UE, si
   /<b>Ya puedes activarlos en Perfil › Avisos\.<\/b>/.test(seccionAvisos) && /fichas nuevas en el radar/.test(seccionAvisos) &&
   !/ofertas nuevas/.test(seccionAvisos) &&
   /darte de baja en Perfil y, cuando haya correos, con el enlace de cada\s+correo/.test(seccionAvisos) &&
+  // La baja en cada notificación de la web (LSSI, art. 21.2, párr. 2): la lista de avisos la indica.
+  /Cada notificación de la web abre la lista de\s+tus avisos, donde se indica cómo darte de baja/.test(seccionAvisos) &&
+  /Las notificaciones al móvil llegarán, si las activas,\s+cuando empecemos a enviarlas/.test(seccionAvisos) &&
+  !/si activas las notificaciones, llegan a tu móvil/.test(seccionAvisos) &&
   /Las notificaciones también se quitan en los ajustes del móvil/.test(seccionAvisos) &&
   seccionAvisos.includes('Puedes retirar tu permiso cuando quieras, sin que afecte a los envíos anteriores.') &&
   /el permiso y su historial de altas y bajas, mientras exista la cuenta/.test(seccionAvisos) &&
@@ -3309,6 +3315,13 @@ prueba('privacidad: notificaciones en la web (qué se guarda, quién las entrega
   /Apple \(Safari\), Google \(Chrome y la mayoría de navegadores de\s+Android\), Mozilla \(Firefox\) o Microsoft \(Edge\)/.test(privacidadLineal) &&
   /cifrada de extremo a\s+extremo con las claves de tu navegador, así que ese servicio no puede leer su texto/.test(privacidadLineal) &&
   /<b>Servicios de notificaciones de los navegadores<\/b> \(Apple, Google, Mozilla o Microsoft,/.test(privacidadLineal) &&
+  // GitHub ejecuta el remitente (rwadar-app/enviar-webpush.mjs en el flujo «Notificaciones web»): destinatario (art. 13.1.e)
+  // y su garantía de transferencia (art. 13.1.f), con la de Google; Apple, Mozilla y Microsoft, a comprobar antes de enviar.
+  /Las cifra y\s+las envía un proceso de RWAdar que se ejecuta en servidores de GitHub\s+\(<a href="#proveedores-github">apartado 8<\/a>\)/.test(privacidadLineal) &&
+  /<li id="proveedores-github"><b>GitHub<\/b>/.test(privacidad) &&
+  /sus servidores\s+\(GitHub Actions\) ejecutan el proceso de RWAdar que las cifra y las envía: para cada envío\s+reciben la dirección de entrega de tu navegador, sus dos claves de cifrado y el texto del\s+aviso, nunca tu correo/.test(privacidadLineal) &&
+  /GitHub, que envía las\s+notificaciones de la web, y Google LLC están adheridas al Marco de Privacidad de Datos\s+UE-EE\. UU\./.test(privacidadLineal) &&
+  /Antes de empezar a enviar notificaciones a la web se comprobará la garantía aplicable a\s+Apple, Mozilla y Microsoft/.test(privacidadLineal) &&
   /<td>Avisos leídos y <br>número del icono<\/td>/.test(privacidad) &&
   /Es lo estrictamente necesario para esas funciones y no sale del navegador/.test(privacidadLineal) &&
   /el número vuelve a 0 al ver los avisos o al cerrar sesión/.test(privacidadLineal) &&

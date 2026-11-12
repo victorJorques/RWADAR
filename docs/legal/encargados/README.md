@@ -2,8 +2,10 @@
 
 **Fecha:** 06/11/2026. **Al día:** 12/11/2026 (el buzón de RWAdar pasa a
 ser el Gmail rwadares@gmail.com, sin contrato de encargo; Proton Mail queda
-como histórico). El 07/11/2026 se comprobaron Netlify y Proton Mail, y Apple
-no aplica hoy.
+como histórico; y, con la migración 32, las notificaciones de la web: GitHub
+las envía y las entregan los servicios de push de los navegadores). El
+07/11/2026 se comprobaron Netlify y Proton Mail, y Apple (app nativa) no
+aplica.
 **Quién lo hace:** Claude (IA), a petición de Víctor Manuel Jorques Granero,
 titular de RWAdar. No es el dictamen de un abogado.
 
@@ -43,12 +45,13 @@ apartado 3) resume esto mismo y enlaza aquí.
 | **Cloudflare** | Web, sesión, analítica | Sí, dentro de su acuerdo de autoservicio. Nada que firmar | Marco UE-EE. UU. (DPF) y SCC |
 | **Google Firebase** | Notificaciones en Android (desde la 1.4.2; los avisos siguen apagados) | Sí: condiciones aceptadas en la consola el 06/11/2026 (proyecto `rwadar-14e3d`) | DPF y SCC |
 | **Expo** | Actualizaciones de la app y push | Sí, en sus términos (§3.2). No hay contrato aparte | SCC módulo 2, y DPF «en revisión» |
-| **GitHub** | Código, flujos, copias y descargas del APK | **No. Es un hueco** | DPF |
+| **GitHub** | Código, flujos, copias, descargas del APK y, con la 32, el envío de las notificaciones de la web | **No. Es un hueco** | DPF |
 | **Lettermint** | Todos los correos de RWAdar (pendiente) | Sí, al crear la cuenta (pendiente) | No salen: todo en la UE |
 | **Netlify** | Página de limpieza en `rwadar.netlify.app` | Sí, dentro de su acuerdo de autoservicio. Nada que firmar | DPF y, si cae, SCC módulo 2 |
 | **Google (Gmail)** | Desde el 12/11/2026, el buzón rwadares@gmail.com. También envía hoy los correos de Auth | **No. Es un hueco:** cuenta de consumo ([abajo](#fuera-de-esta-carpeta-gmail)) | Sin garantías documentadas para este uso (**verificar**) |
 | **Proton Mail** (histórico) | Fue el buzón (RWAdar@protonmail.com) hasta el 12/11/2026. Ya no trata datos de usuarios | Mientras se usó, sí, dentro de sus condiciones | Suiza, con decisión de adecuación de la UE |
-| **Apple (APNs)** | Nada hoy: no hay app de iPhone | No aplica | No aplica |
+| **Apple (APNs, app nativa)** | Nada: no hay app de iPhone | No aplica | No aplica |
+| **Servicios de push de los navegadores** (Apple, Google, Mozilla, Microsoft) | Con la 32, entregan las notificaciones de la web, cifradas | No hay: los elige el navegador de cada persona. **Verificar** si son encargados ([abajo](#servicios-de-push-de-los-navegadores-web-push)) | Google LLC, DPF; Apple, Mozilla y Microsoft, **verificar** |
 
 ---
 
@@ -109,11 +112,11 @@ apartado 3) resume esto mismo y enlaza aquí.
 
 | | |
 |---|---|
-| **Qué hace** | Guarda el código en un repositorio privado. Ejecuta los flujos: la copia diaria de la base, la copia previa a cada cambio, «Aplicar catálogo», «Avisos a registrados (base)» y publicar. Guarda las copias cifradas 35 días. Publica el APK, y la app le pregunta si hay versión nueva. |
+| **Qué hace** | Guarda el código en un repositorio privado. Ejecuta los flujos: la copia diaria de la base, la copia previa a cada cambio, «Aplicar catálogo», «Avisos a registrados (base)» y publicar. Guarda las copias cifradas 35 días. Publica el APK, y la app le pregunta si hay versión nueva. Con la migración 32, el flujo «Notificaciones web» cifra y envía en su máquina las notificaciones de la web (`rwadar-app/enviar-webpush.mjs`). |
 | **Quién** | GitHub, Inc. (EE. UU.) o GitHub B.V. (Países Bajos). |
 | **Contrato que existe** | GitHub Data Protection Agreement: https://github.com/customer-terms/github-data-protection-agreement («Version: October 2025»). |
 | **Cómo vincula** | **En nuestra cuenta, no vincula.** El DPA dice que «forms part of the GitHub Customer Agreement», y llama «Online Services» a lo que GitHub presta «under a written and executed agreement». La cuenta de RWAdar es personal y gratuita: se rige por los términos generales de GitHub, no por el Customer Agreement. Para esas cuentas, la privacidad de GitHub dice que trata los datos «as the "Data Controller"», es decir, como responsable y no como encargado. |
-| **Por qué es un hueco real** | Las copias y los flujos de la base se ejecutan en máquinas de GitHub. Allí la copia está **en claro** unos minutos, antes de cifrarse, y los flujos de la base leen y escriben datos de las cuentas. Eso es tratar datos de usuarios por cuenta de RWAdar sin el contrato del art. 28.3. Las copias guardadas van cifradas, pero la contraseña (`COPIA_CLAVE`) también es un secreto de GitHub: GitHub guarda a la vez la copia y su llave. |
+| **Por qué es un hueco real** | Las copias y los flujos de la base se ejecutan en máquinas de GitHub. Allí la copia está **en claro** unos minutos, antes de cifrarse, y los flujos de la base leen y escriben datos de las cuentas. Con la 32, el envío de las notificaciones de la web tiene allí, en claro y mientras dura, la dirección de entrega y las claves de cada navegador, el texto de cada aviso y la clave privada VAPID (que sale de Vault y se enmascara). Eso es tratar datos de usuarios por cuenta de RWAdar sin el contrato del art. 28.3. Las copias guardadas van cifradas, pero la contraseña (`COPIA_CLAVE`) también es un secreto de GitHub: GitHub guarda a la vez la copia y su llave. **Recomendado:** firmar el contrato (abajo) antes de encender el envío de la web para todos (`activar-push`). |
 | **Transferencias** | GitHub está en el DPF como «Active» (participante 6174). Pero el DPF solo cubre el viaje de los datos: no sustituye al contrato de encargo. |
 | **Subencargados** | Solo con el DPA: https://github.com/github-subprocessors-list |
 | **PDF** | [`2026-11-06-github-dpa.pdf`](2026-11-06-github-dpa.pdf) y [`2026-11-06-github-declaracion-privacidad.pdf`](2026-11-06-github-declaracion-privacidad.pdf) |
@@ -225,14 +228,29 @@ llegaron a esa cuenta antes del 12/11/2026.
 | **Contacto** | security@proton.me (su `/.well-known/security.txt`, 07/11/2026). |
 | **PDF** | [`2026-11-07-proton-dpa.pdf`](2026-11-07-proton-dpa.pdf) y [`2026-11-07-proton-terminos.pdf`](2026-11-07-proton-terminos.pdf) |
 
-## Apple (APNs) · no aplica hoy
+## Apple (APNs) · app nativa: no aplica
 
 No hay app de iPhone publicada ni cuenta de Apple Developer (`docs/INTERNO.md`,
-07/11/2026). En iPhone, RWAdar es la web, también la que se añade a la
-pantalla de inicio, y no usa notificaciones de Apple. Apple no recibe ningún
-dato de los usuarios por cuenta de RWAdar. Si algún día se publica la app de
-iPhone con notificaciones, se lee entonces el contrato de Apple, se archiva
-aquí y se añade al registro de actividades.
+07/11/2026), así que no hay notificaciones de una app nativa por Apple Push
+Notification service. Si algún día se publica la app de iPhone con
+notificaciones, se lee entonces el contrato de Apple, se archiva aquí y se
+añade al registro de actividades.
+
+Lo que sí cambia con la migración 32: en iPhone, RWAdar es la web, y si la
+persona la añade a la pantalla de inicio y activa las notificaciones, las
+entrega el servicio de push de Apple para la web (`web.push.apple.com`). Eso
+va en la sección siguiente.
+
+## Servicios de push de los navegadores (Web Push)
+
+| | |
+|---|---|
+| **Qué hacen** | Con la migración 32 (pendiente de aplicar), entregan las notificaciones de la web a los móviles y tabletas que las activan: Apple (`web.push.apple.com`, Safari), Google (`fcm.googleapis.com`, Chrome y la mayoría de navegadores de Android), Mozilla (`updates.push.services.mozilla.com`, Firefox) y Microsoft (`*.notify.windows.com`, Edge). |
+| **Qué reciben** | La dirección de entrega del navegador (la que les asignó ese mismo servicio), los datos técnicos de la conexión y cada notificación cifrada de extremo a extremo con las claves del navegador (RFC 8291), que no pueden leer. Nunca el correo. |
+| **Quién los elige** | El navegador de cada persona, no RWAdar: no hay cuenta ni contrato de RWAdar con ellos (las notificaciones se firman con la clave VAPID propia de RWAdar). |
+| **Contrato de encargo** | **Verificar** en el anexo legal si son encargados de RWAdar (art. 28) o responsables propios del servicio que prestan al navegador. Hasta entonces, el registro los lista como «terceros que no son encargados» (apartado 3). |
+| **Transferencias** | EE. UU. Google LLC figura «Active» en el DPF (consulta del 06/11/2026). Apple, Mozilla y Microsoft: **verificar** en dataprivacyframework.gov antes de enviar a todos; la privacidad (§8) lo promete. |
+| **PDF** | Ninguno todavía: se archivarán con el anexo legal. |
 
 ## Alternativas descartadas (solo como referencia)
 
