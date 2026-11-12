@@ -6,6 +6,66 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (18) · Claude · «Novedades de RWAdar» en la web y su contenido (sin publicar)
+
+- **Víctor:** «que salga al abrir la app y como las novedades, tipo un texto
+  informativo muy fácil de leer con las novedades y si clickan que salga en
+  detalle». Esta parte: la web y el contenido. La app la hace otra sesión con
+  el mismo archivo. **Sin publicar; Supabase y EAS sin tocar.** Guía:
+  [`NOVEDADES-RWADAR-2026-11-12.md`](NOVEDADES-RWADAR-2026-11-12.md).
+- **Hecho, en llano:**
+  1. **Contenido** (una sola fuente): `rwadar-site/datos/novedades-producto.json`,
+     versión `2026-11-12`, 5 puntos de una línea (avisos en el móvil como un
+     WhatsApp, el «1» sin leer, la sesión de 30 días, el correo
+     rwadares@gmail.com con «¿Quieres colaborar…?» y «Calcula tus números» con
+     «Mercado y noticias») y su detalle con pasos. **El inglés va en campos
+     `en`** junto a cada texto, como en `noticias-v2.json`. El título inglés es
+     «RWAdar news», el mismo que da el diccionario común a «Novedades de RWAdar».
+  2. **Modelo** `assets/novedades-producto-modelo-20261112.js`: valida forma y
+     tamaño (32 kB), iconos (`notificacion`, `contador`, `sesion`, `correo`,
+     `calculadora`; uno desconocido sale genérico) y lo visto
+     (`localStorage["rwadar.novedades.vista"]` = la versión, con try/catch).
+     `rwadar-publicar.js` no construye la web si el archivo no valida.
+  3. **Ventana en Inicio** (`assets/novedades-producto-20261112.js` y `.css`):
+     una vez por versión, tras cargar y sin otro diálogo abierto (espera).
+     «Ver en detalle» y «Entendido»; ×, Escape o fuera también cierran y
+     cuentan como vista. No sale con `?avisos=1`, `#explain`,
+     `#perfil-avisos`, la vuelta de un correo, en la app (ReactNativeWebView),
+     sin almacenamiento ni con `navigator.webdriver` (así no estorba a las
+     demás pruebas de Chromium; la suya lo simula).
+  4. **Página /novedades-rwadar/** (sección publicable, sitemap, `_headers`):
+     el resumen como índice, cada sección con «Cómo se hace» y el camino a
+     Perfil › Avisos (`/#perfil-avisos`, que `rwadar-20260820.js` lleva a
+     Perfil › Avisos y quita de la dirección). Verla cuenta como vista.
+  5. **Perfil:** fila «Novedades de RWAdar» en la pestaña Perfil del móvil,
+     enlace en la cuenta de escritorio y en el pie. Su inglés, en
+     `idioma-en-avisos-20261112.js` (solo de la web).
+  6. **Privacidad:** fila «Novedades ya vistas» (apartado 2), mención en el
+     almacenamiento local y en «Datos locales»: solo la fecha de la versión,
+     estrictamente necesaria (LSSI, art. 22.2), sin datos personales; también
+     la copia de la app en el móvil.
+  7. `.github/comprobar-publicado.mjs` mira tras publicar que
+     `/datos/novedades-producto.json` es el del build (y la página, como sección).
+- **Pruebas:** `npm run test:web` (probar-web 702/702, con 18 nuevas de forma,
+  enlaces y privacidad); `rwadar-acceso/novedades-producto-navegador.test.mjs`
+  en Chromium a 390 y 1366 (sale una vez, Escape y Entendido, espera a otro
+  diálogo, detalle, inglés, #id, Perfil › Avisos; sin errores ni desbordes;
+  contraste AA); `node --test rwadar-acceso/*.test.mjs` 312/312; `npm test`
+  en la raíz con salida 0. Mutación: sin la espera a otro diálogo, la prueba
+  de Chromium falla («no sale con otro diálogo abierto»). gitleaks: el commit
+  nuevo, sin hallazgos (el historial completo da los 4 de siempre, del 05/11).
+  Capturas a 390 px en la carpeta de la sesión (`novedades/web/`).
+- **Commits:** `52c41dd` (web, contenido y pruebas) y el de este traspaso, en
+  la rama de trabajo, **sin push**.
+- **Pendiente / para quien integre:**
+  - Unir con la parte de la app (otra rama): mismo archivo y misma clave de
+    versión; si la app añade al diccionario común (`lib/idioma-en.js`) «Lo nuevo
+    de la web y la app, explicado fácil», quitarlo de `idioma-en-avisos` (la
+    prueba exige que no se repitan).
+  - Publicar la web (con orden de Víctor): primero la web, después la OTA, que
+    lee el archivo de `rwadar.pages.dev`.
+  - En cada novedad nueva: editar el archivo y subir `version`.
+
 ## 12 de noviembre de 2026 (17) · Claude · Envío de notificaciones ENCENDIDO para todos (decisión de Víctor)
 
 - **Víctor (21:30 UTC):** «Activa ya las notificaciones y todo». Se le explicó
