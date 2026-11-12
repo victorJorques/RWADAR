@@ -36,6 +36,8 @@ const TOKEN_PUSH = /^Expo(nent)?PushToken\[[A-Za-z0-9_-]{16,64}\]$/;
 // La misma forma que exige la tabla `anuncios` de la base.
 const ENLACE_AVISO = /^https:\/\/rwadar\.pages\.dev(\/[A-Za-z0-9._~%-]+)*\/?([?#][A-Za-z0-9._~%=&-]*)?$/;
 const ENLACE_ACADEMY = /^https:\/\/rwadar\.pages\.dev\/academy(?:[/?#]|$)/;
+// «Novedades de RWAdar»: en la app se abre su pantalla de detalle, no el navegador.
+const ENLACE_NOVEDADES = /^https:\/\/rwadar\.pages\.dev\/novedades-rwadar(?:[/?#]|$)/;
 const ID_AVISO = /^(?:bienvenida|[1-9]\d{0,18})$/;
 const VERSION_TEXTO = /^[a-z0-9]+(?:-[a-z0-9]+){0,12}$/;
 const CONTROL = /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/;
@@ -162,6 +164,7 @@ function destinoAviso(aviso) {
   if (!aviso) return null;
   if (aviso.tipo === 'ofertas') return { destino: 'ofertas-nuevas' };
   if (aviso.tipo === 'bienvenida' || (aviso.enlace && ENLACE_ACADEMY.test(aviso.enlace))) return { destino: 'academy' };
+  if (aviso.enlace && ENLACE_NOVEDADES.test(aviso.enlace)) return { destino: 'novedades' };
   if (aviso.enlace && enlaceAvisoValido(aviso.enlace)) return { destino: 'web', url: aviso.enlace };
   return null;
 }

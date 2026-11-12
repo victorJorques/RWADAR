@@ -187,6 +187,10 @@ test('una notificación tocada solo lleva a inicio, buscar o academy; el slug an
 
 test('un aviso de Inicio lleva a ofertas nuevas, a la Academy o a su enlace verificado', () => {
   assert.deepEqual(a.destinoAviso({ tipo: 'ofertas', enlace: 'https://rwadar.pages.dev/#emisiones' }), { destino: 'ofertas-nuevas' });
+  // El anuncio de «Novedades de RWAdar» abre la pantalla de detalle de la app.
+  assert.deepEqual(a.destinoAviso({ tipo: 'novedad', enlace: 'https://rwadar.pages.dev/novedades-rwadar/' }), { destino: 'novedades' });
+  assert.deepEqual(a.destinoAviso({ tipo: 'novedad', enlace: 'https://rwadar.pages.dev/novedades-rwadar/#avisos-movil' }), { destino: 'novedades' });
+  assert.deepEqual(a.destinoAviso({ tipo: 'novedad', enlace: 'https://rwadar.pages.dev/novedades-rwadarx' }), { destino: 'web', url: 'https://rwadar.pages.dev/novedades-rwadarx' });
   assert.deepEqual(a.destinoAviso({ tipo: 'bienvenida', enlace: null }), { destino: 'academy' });
   assert.deepEqual(a.destinoAviso({ tipo: 'novedad', enlace: 'https://rwadar.pages.dev/academy/liquidez' }), { destino: 'academy' });
   assert.deepEqual(a.destinoAviso({ tipo: 'actualizacion', enlace: 'https://rwadar.pages.dev/cambios' }),

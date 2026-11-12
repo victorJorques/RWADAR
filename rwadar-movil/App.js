@@ -682,6 +682,7 @@ export default function App() {
   /* Destinos de Inicio (noticias y atajos). */
   const irA = (destino, url) => {
     if (destino === 'academy') abrirAcademy();
+    else if (destino === 'novedades') { tacto.abrir(); novedadesRwadar.verDetalle(); }
     else if (destino === 'web' && url) abrirEnlace(url);
     else if (destino === 'buscar' || destino === 'ofertas' || destino === 'ofertas-nuevas' || destino === 'fuera' || destino === 'plataformas') {
       tacto.eleccion();
