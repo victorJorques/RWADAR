@@ -32,10 +32,10 @@ function nodos(arbol) {
 function texto(arbol) { return nodos(arbol).filter((n) => typeof n === 'string').join(' '); }
 function boton(arbol, etiqueta) { return nodos(arbol).find((n) => n.type === 'Pressable' && n.props.accessibilityLabel === etiqueta); }
 
-function cargarComponente(archivo, react, mocks) {
+function cargarComponente(archivo, react, mocks, plataforma = 'android') {
   const absoluto = path.join(RAIZ, 'componentes', archivo);
   const original = Module._load, extension = Module._extensions['.js'];
-  const nativo = { StyleSheet: { create: (s) => s }, Keyboard: { dismiss() {} }, Platform: { OS: 'android' } };
+  const nativo = { StyleSheet: { create: (s) => s }, Keyboard: { dismiss() {} }, Platform: { OS: plataforma } };
   for (const tipo of ['Text', 'TextInput', 'View', 'Pressable', 'ActivityIndicator', 'KeyboardAvoidingView']) nativo[tipo] = tipo;
   Module._load = function (pedido, padre, principal) {
     if (padre?.filename === absoluto) {
@@ -190,7 +190,7 @@ function estadoServidor(cambios = {}) {
     correo_activo: false, push_activo: true, ...cambios };
 }
 
-function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), recientes = [], token = null, registrado = null }) {
+function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), recientes = [], token = null, registrado = null, plataforma = 'android' }) {
   const h = crearReact(), rpc = [], sdk = [], local = { leidos: [], token, renovado: null };
   let estado = servidor;
   const cliente = { rpc(nombre, args) {
@@ -230,7 +230,7 @@ function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), reciente
       renovacionPushNovedades: async () => local.renovado,
       marcarRenovacionPushNovedades: async (_, dia) => { local.renovado = dia; },
     },
-  });
+  }, plataforma);
   let ultimo;
   const enlaces = [];
   const pintar = () => {
@@ -333,6 +333,14 @@ test('Perfil con la 1.4.2 y el push de la base apagado: no se ofrece ni se consu
   // Con el envío apagado tampoco se activa, pero ya se dice quién intervendrá.
   assert.ok(texto(panel).includes(QUIEN_MOVIL));
   assert.deepEqual(p.sdk, []);
+  p.h.desmontar();
+});
+
+test('Perfil en un iPhone: sin la frase de Firebase (allí la entrega sería de Apple)', async () => {
+  const p = perfil({ capacidad: true, plataforma: 'ios' });
+  const panel = await p.esperar();
+  assert.ok(boton(panel, 'Notificaciones en este móvil'), 'el interruptor sigue');
+  assert.doesNotMatch(texto(panel), /Firebase Cloud Messaging/);
   p.h.desmontar();
 });
 

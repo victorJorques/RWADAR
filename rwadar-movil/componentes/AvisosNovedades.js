@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, StyleSheet } from 'react-native';
+import { ActivityIndicator, Platform, StyleSheet } from 'react-native';
 import { Pressable, Text, View } from './Idioma';
 import { C, F, R, T, UI } from '../lib/tema';
 import {
@@ -347,8 +347,10 @@ export function PanelAvisosNovedades({ estado, onAlternarNovedades, onAlternarMo
       <Interruptor etiqueta="Notificaciones en este móvil" activo={movil?.activo === true}
         deshabilitado={!!procesando || !puedeMovil} ocupado={procesando === 'movil'} onPress={onAlternarMovil} />
       {/* Quién interviene en la entrega, junto al interruptor. No en la 1.4.1
-          ni en un dispositivo que no puede recibirlas: ahí no se activan. */}
-      {movil && !['requiere-version', 'no-disponible'].includes(movil.estado)
+          ni en un dispositivo que no puede recibirlas: ahí no se activan.
+          Solo en Android (la app que se publica): en un iPhone la entrega
+          sería de Apple, no de Firebase. */}
+      {Platform.OS === 'android' && movil && !['requiere-version', 'no-disponible'].includes(movil.estado)
         ? <Text style={s.nota}>{TEXTO_MOVIL_QUIEN}</Text> : null}
       {notaMovil ? <Text style={s.nota}>{notaMovil}</Text> : null}
       {/* Volver a activarlas vuelve a guardar el identificador: se explica igual. */}
