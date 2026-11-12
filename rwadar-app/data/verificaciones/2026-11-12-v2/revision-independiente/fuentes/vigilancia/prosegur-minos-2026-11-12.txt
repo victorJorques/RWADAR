@@ -1,0 +1,24 @@
+Fuente: https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es
+Consulta UTC: 2026-11-12T00:51:20Z · HTTP 200 · 152388 bytes · SHA-256 6d7eb7cbca433bc81f8489971315388b477626fe974a774dccf3573ff46721f0
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+06/11/2026 · PROSEGUR CASH, S.A. · Inscribir en el Registro Oficial de la Comisión Nacional del Mercado de Valores previsto en el artículo 2.b) del Real Decreto 815/2023, de 8 de noviembre, por el que se desarrolla la Ley 6/2023, de 17 de marzo, de los Mercados de Valores y de los Servicios de Inversión, en relación con los registros oficiales de la Comisión Nacional del Mercado de Valores, la cooperación con otras autoridades y la supervisión de empresas de servicios de inversión, a MINOS SECURITIES, A.V., S.A. como entidad responsable de la inscripción y del registro de la emisión de pagarés representada mediante sistemas basados en tecnología de registros distribuidos, denominara “1ª Emisión de Pagarés Prosegur Cash 2026” por importe de 500.000 euros realizada por PROSEGUR CASH, S.A.
+
+Fuente: https://www.cnmv.es/portal/otra-informacion-relevante/resultado-oir.aspx?nif=A87498564
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 200 · 252489 bytes · SHA-256 b13dcc7b00f97b92829f3078f80a68955fc9bebeb10f4e7e98c847c7b6964ccb
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Fechas más recientes de «otra información relevante»: 03/11/2026, 03/11/2026, 30/07/2026, 30/07/2026, 16/06/2026
+
+Fuente: https://www.cnmv.es/portal/ancv/isin.aspx?nif=A87498564
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 200 · 227881 bytes · SHA-256 40ab22d545e50b9f9f60f17686c075bd8a6af8a750370b7ef91a0bf9c43eee54
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Fuente: https://www.prosegurcash.com/.rest/dam/endpoint/Prosegur/CORP/Cash/pdf/accionistas-e-inversores/otra-informacion-relevante?lang=all
+Consulta UTC: 2026-11-12T00:53:08Z · HTTP 200 · 325530 bytes · SHA-256 e1bb810f4eaa4a32833ad05727338cbcb41c1e703956aba73e9115a889676e2c
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Fuente: https://www.prosegurcash.com/.rest/dam/endpoint/Prosegur/CORP/Cash/pdf/accionistas-e-inversores/informacion-privilegiada?lang=all
+Consulta UTC: 2026-11-12T00:53:08Z · HTTP 200 · 16022 bytes · SHA-256 f278734bd4eca17c5f0a5713963e3f45c4a6c1ecb7a0fe0bb6a11f7bd016f661
+Revisor independiente, grupo vigilancia, 12/11/2026.
+

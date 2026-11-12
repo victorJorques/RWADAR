@@ -1,0 +1,17 @@
+Fuente: https://securitize.io/investments/stocks · navegador sin sesión · 2026-11-12T00:53:48Z · HTTP 200
+
+Now onchain for U.S. investors.
+Now onchain for U.S. investors.
+Now onchain for U.S. investors.
+Finally, tokenized stocks are here for U.S. investors, with the care and oversight stock ownership deserves.
+Available in the U.S., EU and other eligible markets
+Securitize Stocks are offered by Securitize Markets, LLC, a Securities and Exchange Commission-registered broker-dealer and member of the Financial Industry Regulatory Authority and the Securities Investor Protection Corporation, to eligible investors in permitted jurisdictions, subject to onboarding and identity verification. Each Securitize Stock is a security entitlement held through Securitize Markets, LLC; holders are not registered shareholders of the underlying issuer unless they convert. The issuers of the underlying securities have not sponsored or endorsed Securitize Stocks, and company names and tickers are used for identification only. Securitize Markets, LLC is an affiliate of Securitize Corp. (NYSE: SECZ). Trading hours, supported stocks, and conversion features are subject to change. USDC is not legal tender, is not a bank deposit, and is not protected by the Federal Deposit Insurance Corporation or the Securities Investor Protection Corporation. Investing involves risk, including possible loss of principal.
+
+Fuente: https://stocks.securitize.io/faq · navegador · 2026-11-12T00:56:16Z · HTTP 200 (respuesta «How do I get started, and who can trade?»)
+Trading is supported using third party self-custody wallets only. To be enabled for trading you are required to set up a Securitize account (and go through the KYC process) and once approved, connect your third party wallet. Once this process is completed, Securitize will whitelist your wallet address, allowing this wallet to interact with the platform. Securities can only move between whitelisted wallets on the platform.
+
+Fuente: https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&lang=es
+Consulta UTC: 2026-11-12T00:51:20Z · HTTP 200 · 222708 bytes · SHA-256 684e0bab7326189fe97f49d73b1fef2d9825f2fe39fe6e83d5e28701c367c256
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A. · 327 · 25/04/2025

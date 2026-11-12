@@ -1,0 +1,1005 @@
+Descripción de los Servicios, Instrumentos financieros y
+Riesgos
+
+Esta versión de nuestra Descripción de los Servicios, Instrumentos financieros y Riesgos será
+aplicable a partir del 1 de julio de 2026.
+
+
+Sección I
+
+INFORMACIÓN SOBRE ROBINHOOD EUROPE, UAB Y SUS SERVICIOS DE
+INVERSIÓN
+
+1. Objetivo
+
+La presente Descripción de los Servicios, Instrumentos financieros y Riesgos (en lo sucesivo, «el
+presente Documento») proporciona información sobre Robinhood Europe, UAB («Robinhood»,
+«nosotros», «nos» o «nuestro») y los servicios de inversión y servicios auxiliares que se pueden
+ofrecer a sus clientes (cada uno, un «Cliente», «usted», «su» o «usted mismo»).
+
+El objetivo del presente Documento es proporcionar información y advertir sobre los riesgos
+asociados a los instrumentos financieros que puede usted comprar, vender o solicitar a través de
+nosotros. Se entiende por riesgo la imposibilidad de obtener la rentabilidad esperada del capital
+invertido o la pérdida del capital invertido, como consecuencia de diferentes factores relacionados
+con los instrumentos financieros, los mercados o los emisores de tales instrumentos. Estos riesgos
+no siempre se pueden prever con antelación y, por tanto, las afirmaciones contenidas en el
+presente Documento no pueden considerarse definitivas. Hemos señalado, en términos
+generales, los riesgos más habituales asociados a las operaciones con instrumentos financieros.
+No obstante, debe tener en cuenta que no es posible divulgar ni explicar todos los riesgos
+inherentes a los que podría verse expuesto al contratar nuestros servicios de inversión, en la
+actualidad o en el futuro.
+
+El objetivo de esta descripción no es ofrecer información exhaustiva sobre todos los riesgos que
+pueden surgir en la prestación de servicios relacionados con instrumentos financieros, sino
+proporcionarle información que le permita comprender la naturaleza de dichos riesgos a la hora
+de tomar decisiones de inversión. Le recomendamos que lea atentamente la información
+adicional sobre el servicio o el instrumento financiero en cuestión antes de tomar una decisión
+relativa a un servicio de inversión o a una operación en particular.
+
+Las afirmaciones contenidas en esta descripción no constituyen asesoramiento sobre posibles
+inversiones ni deben interpretarse como una recomendación por nuestra parte. Las descripciones
+incluidas en el presente Documento no deben sustituir el análisis exhaustivo que el Cliente debe
+realizar sobre el producto en cuestión.
+
+
+
+                                                 1
+                                                                       20260622-5631134-17836040
+El presente Documento está destinado a los clientes minoristas, tal y como se define en la Ley de
+Mercados de Instrumentos Financieros de la República de Lituania, que transpone las
+disposiciones de la Directiva 2014/65/UE (la «LMFI»). La definición de «clientes minoristas» de la
+LMFI incluye tanto a personas físicas («particulares») como a personas jurídicas («empresas»).
+Actualmente, ofrecemos nuestros servicios de inversión únicamente a personas físicas.
+
+
+
+2. Información sobre nosotros
+
+  Nombre                                             Robinhood Europe, UAB
+
+  Código de la empresa                               306377915
+
+  Dirección                                          Vilniaus g. 33-201, LT-01402 Vilnius, Lituania
+
+  Sitio web                                          https://robinhood.com/eu/en/
+                                                     Banco de Lituania
+                                                     Gedimino pr. 6, LT-01103 Vilnius, Lituania​
+                                                     Teléfono: ​
+                                                     +370 5 251 2763 (para llamadas
+  Autoridad de supervisión
+                                                     internacionales) ​
+                                                     +370 800 50 500 (para llamadas nacionales)​
+                                                     Correo electrónico: info@lb.lt; sitio web:
+                                                     www.lb.lt
+
+                                                     Para obtener más información sobre las
+                                                     autorizaciones reglamentarias de Robinhood
+  Autorizaciones reglamentarias
+                                                     Europe, UAB, consulte el registro de licencias
+                                                     del Banco de Lituania (BoL) aquí.
+
+
+
+
+3. Servicios de inversión y servicios auxiliares para cuya prestación contamos
+con la correspondiente autorización
+
+Ofrecemos los siguientes servicios de inversión y servicios auxiliares en el marco de la LMFI:
+Servicios de inversión
+   ●​ Recepción y transmisión de órdenes;
+   ●​ Ejecución de órdenes en nombre de los clientes; y
+   ●​ Operaciones por cuenta propia.
+
+Servicios de inversión auxiliares
+   ●​ Custodia y administración de instrumentos financieros en nombre de los clientes; y
+
+                                                 2
+                                                                         20260622-5631134-17836040
+   ●​ Servicios de cambio de divisas, cuando estén relacionados con la prestación de servicios de
+      inversión.
+Para obtener acceso a los servicios descritos, tendrá que abrir una cuenta en Robinhood. Todos
+los fondos de los clientes se depositarán en una cuenta de fondos de clientes de una entidad de
+crédito autorizada en la UE.
+
+
+4. Clasificación de los clientes
+
+De conformidad con la normativa vigente, se le asignará la condición de cliente minorista. La
+condición afecta directamente al nivel de protección de su inversión. La condición de cliente
+minorista le garantiza el máximo nivel de protección.
+
+Algunas de las principales medidas de protección de las que se benefician los clientes minoristas
+son unos controles de adecuación reforzados, que contribuyen a garantizar que el cliente invierta
+en productos de inversión acordes con sus objetivos de inversión, su tolerancia al riesgo, su
+capacidad financiera, su experiencia y sus conocimientos.
+
+
+5. Evaluación de conveniencia
+
+Para invertir en los productos de inversión complejos que ofrece Robinhood, deberá rellenar un
+cuestionario de idoneidad. Estamos obligados a determinar si su dominio, experiencia y
+conocimientos son suficientes para poder tomar este tipo de decisiones de inversión.
+
+Es importante que nos facilite información actualizada, precisa y completa para que podamos
+llevar a cabo dicha evaluación de conveniencia y actuar, así, en su mejor interés al prestarle los
+servicios pertinentes.
+
+Es posible que, ocasionalmente, le proporcionemos información objetiva sobre los productos de
+inversión con fines didácticos. Sin embargo, esta información no constituye ni debe interpretarse
+como asesoramiento en materia de inversión. Es decisión suya presentar o no presentar órdenes,
+y sus decisiones de inversión son de su exclusiva responsabilidad.
+
+Nos reservamos el derecho a no prestar a nuestros clientes servicios de inversión o servicios
+auxiliares de inversión, según nuestro criterio, sin necesidad de explicar los motivos por los que
+decidamos prestar o no dichos servicios.
+
+
+6. Operaciones con instrumentos financieros
+
+Las operaciones con instrumentos financieros pueden realizarse de diferentes formas como, por
+ejemplo, en un sistema organizado de negociación, en un sistema multilateral de negociación o en
+el mercado extrabursátil.
+
+Antes de formalizar el correspondiente acuerdo de servicios de inversión, debe consultar aquí el
+resumen de la Política de ejecución de órdenes, un documento en el que se analizan los centros
+
+                                                3
+                                                                      20260622-5631134-17836040
+de ejecución y se recoge cualquier otra información fundamental para realizar operaciones con
+instrumentos financieros.
+
+
+7. Tributación
+
+Los ingresos que obtenga de los servicios de inversión y de los servicios auxiliares de inversión
+pueden estar sujetos a impuestos, según lo establecido en la legislación de la República de
+Lituania o del país en el que resida a efectos fiscales.
+
+Debe tener en cuenta que, tanto nosotros como terceros, podemos estar obligados por ley a
+retener impuestos de los pagos que se le abonen. Es posible que también debamos convertir los
+fondos destinados al pago de impuestos a la moneda oficial del país en el que se recauden dichos
+impuestos, al tipo de cambio vigente facilitado por un proveedor de servicios de cambio de divisas
+seleccionado por Robinhood según su criterio exclusivo. Dicha retención de impuestos no nos
+obliga a reembolsarle el importe de los impuestos retenidos.
+
+Las autoridades fiscales extranjeras también pueden retener impuestos con arreglo al
+procedimiento establecido en la legislación extranjera.
+
+No ofrecemos asesoramiento fiscal, financiero, jurídico ni reglamentario. Deberá evaluar de
+manera independiente todas las circunstancias relacionadas con la tributación de sus inversiones
+o su rentabilidad, incluso aunque en la información que le hemos facilitado hayamos señalado
+aspectos fiscales concretos. Si tiene alguna duda al respecto, le recomendamos que solicite
+asesoramiento independiente.
+
+
+8. Comisiones
+
+Todas las comisiones de los servicios se especifican en las declaraciones previas de costes, así
+como en nuestra tabla de comisiones, que puede consultar aquí. Le cobraremos de acuerdo con
+dichos documentos.
+
+
+9. Comunicación
+
+A.​Salvo que se acuerde lo contrario, el idioma utilizado para comunicarnos con usted será el
+   inglés. Este documento, el resumen de la Política de ejecución de órdenes y otros documentos
+   relevantes, están disponibles en nuestro sitio web aquí.
+B.​Las formas en las que nos comunicaremos con usted se describen en el Acuerdo con el cliente,
+   que puede consultar aquí.
+C.​Le proporcionaremos información sobre sus ejecuciones, operaciones y órdenes, tal y como se
+   describe en el Acuerdo con el cliente.
+D.​Es posible que le facilitemos información vinculante de terceros en el idioma original.
+
+
+
+
+                                                4
+                                                                       20260622-5631134-17836040
+10. Prevención de conflictos de intereses
+
+ A.​Adoptaremos todas las medidas razonables para identificar y prevenir los conflictos de
+    intereses que puedan surgir entre nosotros —incluidos nuestros empleados— y usted, en el
+    marco de la prestación de servicios de inversión.
+ B.​Puede consultar aquí un resumen de nuestra Política sobre conflictos de intereses.
+
+
+11. Mecanismos de seguro de obligaciones frente a inversores
+
+ A.​Aseguramos nuestras obligaciones frente a los inversores de conformidad con la Ley de Seguro
+    de Depósitos y Obligaciones frente a los inversores de Lituania. El fondo de seguro de
+    obligaciones frente a los inversores es un fondo gestionado por Deposit and Investment
+    Insurance, una empresa pública de la República de Lituania, de conformidad con la citada ley.
+    Se le ofrece cobertura mediante un seguro de obligaciones frente a los inversores valorado en
+    hasta 22.000 EUR en caso de producirse un supuesto cubierto por dicho seguro.
+ B.​Puede consultar aquí la información relativa al sistema de protección de los inversores.
+
+
+
+Sección II
+
+DESCRIPCIÓN DE LOS SERVICIOS DE CUSTODIA DE INSTRUMENTOS
+FINANCIEROS Y EFECTIVO, ASÍ COMO DE LOS RIESGOS ASOCIADOS
+
+1. Derivados sobre acciones estadounidenses
+
+Garantizamos la custodia de Derivados sobre acciones estadounidenses (denominados también
+«Tokens de acciones») en nombre de los clientes mediante el mantenimiento de cuentas
+individuales, que reflejan con precisión las posiciones de cada cliente y garantizan una separación
+total respecto de las posiciones de otros clientes y de nuestras propias posiciones. Los clientes
+conservan la plena titularidad efectiva de los Derivados sobre acciones estadounidenses en sus
+respectivas cuentas y cada cliente tendrá acceso directo a su cuenta a través de la aplicación o la
+página web de Robinhood. No tenemos derecho a utilizar los Derivados sobre acciones
+estadounidenses que le pertenezcan, salvo que contemos con su consentimiento expreso. No
+transferiremos a terceros la custodia de los Derivados sobre acciones estadounidenses propiedad
+de los clientes.
+
+
+2. Perpetuos
+
+Los Perpetuos de los clientes —que abarcan una amplia gama de productos de swap perpetuos
+con diferentes tipos de activos subyacentes, incluidos, entre otros, acciones individuales, fondos
+
+                                                 5
+                                                                       20260622-5631134-17836040
+cotizados en bolsa, instrumentos de divisas (Forex), materias primas, criptoactivos, así como otros
+activos o índices (denominados también «Perpetuos»)— se custodian en Bitstamp finančne
+storitve d. o. o. («Bitstamp»), una sociedad de inversión autorizada con arreglo a la MiFID II por la
+Agencia del Mercado de Valores (ATVP) de Eslovenia. Los Perpetuos se custodian en una cuenta
+ómnibus abierta a nombre de Robinhood en Bitstamp. Solo podrá ejercer todos los derechos
+pertinentes en relación con sus instrumentos financieros a través de nosotros. No tenemos
+derecho a utilizar los Perpetuos que le pertenezcan, salvo que contemos con su consentimiento
+expreso. Garantizamos que los Perpetuos custodiados en nombre de los clientes se contabilizan
+adecuadamente en nuestros libros y registros y se mantienen claramente separados de nuestros
+propios activos.
+
+3. Fondos de los clientes
+
+Los fondos de los clientes se mantienen separados de nuestros propios fondos y se custodian en
+cuentas denominadas «cuentas de fondos de clientes» abiertas en entidades de crédito
+autorizadas de conformidad con los requisitos establecidos en la LMFI. Es posible que sus fondos
+se agrupen con los de nuestros demás clientes en la cuenta de fondos de clientes.
+
+Aunque hemos actuado con la debida diligencia, competencia y cuidado en la selección de la
+entidad de crédito, no asumimos responsabilidad alguna por las pérdidas que pueda sufrir como
+consecuencia de cualquier medida que dicha entidad de crédito adopte o deje de adoptar en
+relación con los fondos de los clientes.
+
+
+4. Posibles riesgos relacionados con la custodia de sus activos
+
+Debe tener en cuenta que existen riesgos relacionados con la custodia de sus activos.
+
+  Riesgo                            Descripción
+
+                                    Si el depositario experimenta fallos técnicos en sus sistemas,
+  Riesgo operativo
+                                    estos podrían acarrearle pérdidas.
+                                    Aunque existe la obligación legal de mantener separados los
+                                    activos de los clientes de los activos propios del depositario,
+                                    en caso de quiebra de este, usted podría perder
+                                    irremediablemente su inversión si no se ha llevado a cabo
+  Riesgo vinculado al               una separación suficiente.
+  depositario
+                                    Además, los fondos depositados en las cuentas de clientes
+                                    están protegidos frente a los acreedores del depositario, si
+                                    bien podrían no estar protegidos frente a los acreedores de
+                                    una entidad de crédito en caso de insolvencia de esta.
+                                    Si se produce un cambio legislativo desfavorable, podría
+  Riesgo legal
+                                    sufrir pérdidas.
+                                                  6
+                                                                        20260622-5631134-17836040
+                                    Dado que, en determinados casos, dependemos de terceros,
+                                    es posible que no siempre tenga pleno acceso a la
+  Riesgo informativo
+                                    información relativa a sus instrumentos financieros en el
+                                    momento en que la solicite.
+
+
+
+Sección III
+INFORMACIÓN SOBRE LAS OPERACIONES CON INSTRUMENTOS FINANCIEROS
+Y LOS RIESGOS ASOCIADOS
+
+Parte 1. Introducción general a los riesgos
+
+1.1. Debe tener en cuenta que el hecho de invertir en instrumentos financieros le expone a
+diferentes riesgos que podrían reducir el valor de su inversión. Un riesgo es la posibilidad de sufrir
+una pérdida al invertir.
+
+1.2. El valor de los instrumentos financieros puede bajar o subir. Por lo tanto, existe el riesgo de
+que la rentabilidad de los instrumentos financieros sea negativa y le acarree pérdidas económicas.
+El riesgo de pérdida puede variar en función del instrumento financiero en cuestión. Debe tener
+en cuenta asimismo que la rentabilidad histórica de los instrumentos financieros no garantiza
+resultados futuros y que podría perder la totalidad del importe invertido.
+
+1.3. Antes de realizar operaciones con instrumentos financieros, debe evaluar de forma
+independiente las características y los riesgos asociados al instrumento seleccionado, teniendo en
+cuenta su situación financiera, su experiencia en operaciones con instrumentos financieros, su
+tolerancia al riesgo, sus objetivos de inversión y su horizonte temporal de inversión.
+
+1.4. Es su responsabilidad comprender todos los riesgos asociados a los instrumentos financieros
+en cuestión, ya que usted asumirá cualquier pérdida derivada de una disminución del valor de su
+inversión.
+
+1.5. Al invertir en instrumentos financieros, deberá:
+
+    1.5.1. Leer atentamente el resumen de la Política de ejecución de órdenes, disponible aquí,
+    así como evaluar su capacidad para aceptar las condiciones establecidas en el Acuerdo con el
+    cliente;
+
+    1.5.2. Evaluar detenidamente los riesgos asociados a las operaciones descritas en este
+    documento, en particular aquellos inherentes a los instrumentos financieros con los que
+    pretenda operar;
+
+
+                                                  7
+                                                                         20260622-5631134-17836040
+    1.5.3. Prestar atención a las obligaciones derivadas de los instrumentos aplicables y evaluar si
+    está en condiciones y dispuesto a cumplirlas; y
+
+    1.5.4. Evaluar detenidamente la información contenida en las confirmaciones de las órdenes
+    que le enviamos y realizar por su cuenta el seguimiento del estado de sus órdenes.
+
+1.6. Tipos de riesgos:
+
+
+  Tipo de riesgo                       Descripción
+  Riesgo de mercado                    El valor de los instrumentos financieros varía con el
+                                       tiempo y refleja la oferta y la demanda. Además, el valor
+                                       de mercado de un instrumento financiero basado en
+                                       datos procedentes de una fuente concreta puede no
+                                       reflejar necesariamente su valor real.
+
+  Riesgo político                      Las decisiones políticas adoptadas por gobiernos y
+                                       organismos administrativos podrían afectar
+                                       negativamente a los participantes en el mercado. En
+                                       consecuencia, los emisores podrían no estar en
+                                       condiciones de cumplir determinados compromisos u
+                                       obligaciones, lo que podría reducir el valor de los
+                                       instrumentos financieros afectados. Entre los ejemplos
+                                       de este tipo de situaciones se incluyen los embargos
+                                       comerciales, las subidas de los tipos de interés o
+                                       cualquier otra decisión que afecte al entorno social,
+                                       económico y jurídico.
+  Riesgo derivado de cambios en la     Existe el riesgo de que Lituania, o los países en cuyos
+  normativa                            mercados de capitales invierta, experimenten cambios
+                                       desfavorables en su normativa, incluidos, entre otros,
+                                       modificaciones de la normativa fiscal o restricciones a los
+                                       flujos internacionales de capital. Tales cambios podrían
+                                       afectar negativamente tanto a la liquidez como al valor de
+                                       las inversiones realizadas en dichos mercados.
+
+  Riesgo de tipo de cambio             Las fluctuaciones desfavorables de los tipos de cambio
+                                       podrían dar lugar a una reducción de la rentabilidad o
+                                       incluso a pérdidas.
+  Riesgo de mercado                    Podría sufrir pérdidas si el mercado en el que ha realizado
+                                       inversiones registra una rentabilidad inferior a la
+                                       esperada. Esta rentabilidad inferior a la esperada podría
+                                       estar relacionada con un entorno macroeconómico o
+                                       microeconómico inseguro, con la inestabilidad de los
+                                       mercados bursátiles o de criptomonedas o con unos
+                                       rendimientos financieros bajos en los países, regiones o
+                                       sectores pertinentes.
+
+
+                                                 8
+                                                                       20260622-5631134-17836040
+ Riesgo de liquidez                  Una liquidez insuficiente del mercado podría limitar su
+                                     capacidad para vender o comprar instrumentos
+                                     financieros a un precio favorable. En consecuencia, es
+                                     posible que obtenga una rentabilidad inferior o que
+                                     incurra en pérdidas en sus inversiones.
+ Riesgo de precio                    Podría sufrir pérdidas como consecuencia de
+                                     fluctuaciones desfavorables en los precios de sus
+                                     inversiones.
+ Riesgo operativo o relacionado      Puede existir riesgo de pérdidas si los procesos o sistemas
+ con los sistemas                    internos de una empresa son inadecuados o funcionan de
+                                     forma incorrecta, o en caso de negligencia por parte de
+                                     sus empleados.
+ Riesgo vinculado al emisor          Si el emisor de un instrumento financiero se enfrenta a
+                                     dificultades financieras o de liquidez, obtiene resultados
+                                     inferiores a los esperados o atraviesa cualquier otro
+                                     problema de naturaleza similar, estas circunstancias
+                                     podrían tener un impacto negativo en el instrumento
+                                     financiero o en el cumplimiento de los compromisos u
+                                     obligaciones del emisor frente a sus inversores.
+ Riesgo informativo                  Es posible que le resulte imposible obtener información
+                                     adecuada y correcta sobre todos los instrumentos
+                                     financieros o que el acceso a dicha información le resulte
+                                     complicado. En dichas ocasiones, es posible que le
+                                     resulte imposible tomar las decisiones adecuadas con
+                                     respecto a sus inversiones.
+ Riesgo de crédito                   Existe el riesgo de que el emisor de un instrumento
+                                     financiero o una contraparte incumpla sus obligaciones.
+ Riesgo de inflación                 Existe el riesgo de que la rentabilidad real de una
+                                     inversión sea inferior a la esperada, lo que implica que el
+                                     poder adquisitivo de los ingresos percibidos en el
+                                     momento de la retirada de fondos (cobro) será inferior al
+                                     previsto.
+Parte 2. Negociación fuera del horario habitual del mercado
+
+2.1. Podría verse expuesto a nuevos riesgos o a los riesgos mencionados anteriormente en mayor
+medida si participa en lo que se denomina «negociación fuera del horario habitual del mercado».
+En este contexto, la negociación fuera del horario habitual del mercado se produce fuera del
+«horario habitual de negociación», que suele ser de 9:30 a 16:00 h (hora del Este de EE. UU.).
+
+2.2. Debe conocer los riesgos más importantes:
+  Tipo de riesgo                      Descripción
+
+
+
+
+                                              9
+                                                                     20260622-5631134-17836040
+Riesgo de liquidez                 La negociación de acciones o productos cotizados en
+                                   bolsa («ETP») subyacentes a los Derivados sobre acciones
+                                   estadounidenses fuera del horario habitual de
+                                   negociación implica un grupo más reducido de
+                                   participantes en el mercado, lo que puede traducirse en
+                                   un menor número de órdenes de mercado y de órdenes
+                                   ejecutables sobre dichos valores o ETP en comparación
+                                   con el horario habitual de negociación. Esto podría dar
+                                   lugar a una serie de dificultades al comprar o vender
+                                   Derivados sobre acciones estadounidenses al precio que
+                                   usted desee.
+Riesgo asociado a la publicación   Los emisores suelen publicar noticias importantes fuera
+de noticias                        del horario habitual de negociación con el fin de limitar el
+                                   impacto de dichas noticias en el precio de sus
+                                   instrumentos financieros. Estos anuncios pueden
+                                   producirse fuera del horario habitual de negociación y
+                                   provocar fluctuaciones significativas en los precios, lo que
+                                   podría ocasionar pérdidas en sus inversiones.
+Riesgo de volatilidad              Las oscilaciones en el precio de los instrumentos
+                                   financieros se conocen como «volatilidad». La volatilidad
+                                   de las acciones o los ETP subyacentes a los Derivados
+                                   sobre acciones estadounidenses fuera del horario
+                                   habitual de negociación es, por lo general, superior, lo
+                                   que podría dar lugar a una ejecución parcial de órdenes
+                                   de Derivados sobre acciones estadounidenses y a una
+                                   exposición a condiciones de precio desfavorables.
+Riesgo de ampliación de los        Una mayor volatilidad, unida a una menor liquidez, podría
+diferenciales                      provocar un aumento de la diferencia entre el precio de
+                                   venta y el de compra (el «diferencial») de las acciones o
+                                   los ETP subyacentes a los Derivados sobre acciones
+                                   estadounidenses, lo que podría afectar a la rentabilidad
+                                   de sus operaciones y dar lugar a pérdidas más cuantiosas.
+Riesgo de brecha de precios        El precio de la acción o del ETP subyacente a un Derivado
+                                   sobre acciones estadounidenses puede experimentar
+                                   variaciones repentinas sin que se hayan producido
+                                   operaciones intermedias, lo que se conoce como
+                                   «brecha de precios». Esta situación podría deberse tanto
+                                   a noticias inesperadas como a acontecimientos o
+                                   actividades bursátiles inusuales, y podría dar lugar a
+                                   pérdidas si opera con Derivados sobre acciones
+                                   estadounidenses cuando la acción subyacente o el ETP
+                                   cotice a un precio desfavorable.
+
+
+
+
+                                            10
+                                                                   20260622-5631134-17836040
+2.3. Con el fin de proteger a los clientes frente a las fuertes fluctuaciones de precios de los
+Derivados sobre acciones estadounidenses, aplicamos límites de precio a las órdenes mediante
+órdenes limitadas con un precio de hasta un 0,5 % por encima o por debajo del último precio de
+negociación registrado para el activo subyacente en una bolsa del Nasdaq (es decir, Nasdaq Stock
+Market, Nasdaq OMX BX o Nasdaq OMX PHLX) y de hasta un 0,5 % por encima o por debajo del
+tipo de cambio de divisas cotizado. Es importante señalar, no obstante, que no es posible eliminar
+por completo todos los riesgos asociados a las operaciones bursátiles. Si alguno de los riesgos
+mencionados anteriormente supera su tolerancia al riesgo, debe abstenerse de realizar órdenes
+fuera del horario habitual de negociación.
+
+
+Parte 3. Riesgos asociados a la negociación de instrumentos financieros en el
+mercado extrabursátil (OTC)
+
+Al realizar órdenes sobre instrumentos financieros negociados fuera de un mercado regulado, un
+sistema multilateral de negociación o un sistema organizado de negociación (conocido también
+como «mercado extrabursátil» u «OTC») o que, de otro modo, están vinculados a un activo
+subyacente negociado en el mercado extrabursátil, usted participa en operaciones o se expone a
+operaciones que se realizan directamente entre las partes, fuera de los mercados de negociación.
+Por lo tanto, la negociación en el mercado extrabursátil (OTC) o la exposición a dicha negociación
+a través de un derivado conlleva los siguientes riesgos inherentes:
+
+
+ Tipo de riesgo                      Descripción
+
+
+
+
+                                               11
+                                                                      20260622-5631134-17836040
+                                     El riesgo de liquidez se refiere a la rapidez con la que se
+                                     puede comprar o vender un instrumento financiero en el
+                                     mercado sin que su precio se vea afectado. Los
+                                     instrumentos negociados en el mercado extrabursátil
+  Riesgo de liquidez                 pueden tener una liquidez inferior en comparación con los
+                                     que se negocian en mercados de negociación regulados.
+                                     Esto puede dificultar la búsqueda de un comprador o
+                                     vendedor sin que se produzcan variaciones significativas en
+                                     el precio, lo que podría acarrear pérdidas más elevadas.
+  Riesgo de volatilidad              La volatilidad mide la frecuencia y la magnitud con que
+                                     fluctúa el precio de un instrumento financiero. Los
+                                     instrumentos financieros negociados en el mercado
+                                     extrabursátil suelen presentar una mayor volatilidad
+                                     debido a una menor supervisión reglamentaria, un
+                                     número reducido de participantes en el mercado y una
+                                     liquidez inferior. Una volatilidad alta aumenta el riesgo de
+                                     pérdidas inesperadas.
+  Riesgo vinculado a la              Al realizar órdenes de instrumentos financieros negociados
+  contraparte                        en el mercado extrabursátil, usted depende de la solvencia
+                                     y la rentabilidad de la contraparte (la otra parte implicada
+                                     en la operación), y no de un mercado de negociación.
+                                     Existe el riesgo de que la contraparte incumpla sus
+                                     obligaciones, ya sea por no efectuar un pago o por no
+                                     entregar el instrumento financiero conforme a lo acordado.
+                                     Los instrumentos financieros negociados en el mercado
+                                     extrabursátil pueden carecer de transparencia en
+                                     comparación con los instrumentos financieros cotizados en
+                                     los mercados de negociación, lo que puede dar lugar a una
+  Riesgo de                          asimetría en la información entre los participantes en el
+  Riesgo                             mercado. Este desequilibrio en la información puede dar
+                                     lugar a que una de las partes obtenga ventaja sobre la otra,
+                                     lo que aumenta el riesgo de que se realicen operaciones en
+                                     condiciones desfavorables o de que se reciba información
+                                     engañosa o incompleta.
+
+Parte 4. Riesgo asociado al instrumento financiero en cuestión
+
+La siguiente descripción de los riesgos no tiene en cuenta el plazo de su inversión ni sus objetivos
+de inversión. Tenga en cuenta que:
+    ●​ usted asume el riesgo derivado de la inversión durante todo el ciclo de vida del
+        instrumento financiero;
+    ●​ al realizar operaciones con instrumentos financieros, debe leer atentamente los
+        documentos de confirmación de la operación e informarnos de inmediato de cualquier
+        posible error;
+    ●​ debe supervisar constantemente la evolución del valor y la situación de sus inversiones;
+    ●​ cuando sea necesario, debe plantearse adoptar las medidas oportunas para reducir las
+        pérdidas asociadas a sus inversiones; y
+                                                12
+                                                                       20260622-5631134-17836040
+   ●​ debe familiarizarse con la documentación elaborada por el emisor del instrumento
+      financiero como, por ejemplo, los documentos de datos fundamentales y otra información
+      relevante.
+
+4.1. Derivados tokenizados sobre acciones estadounidenses
+
+¿Qué es una acción?
+
+Una acción (denominada también «título» o «participación») es un instrumento financiero que
+otorga al accionista una participación en el capital social de una empresa.
+
+¿Qué es un ETF?
+
+Un ETF es un fondo de inversión que mantiene una cartera de activos como, por ejemplo,
+acciones, bonos o materias primas y que cotiza en una bolsa de valores de manera similar a las
+acciones individuales (junto con los bonos cotizados, «productos cotizados» o «ETP»).
+
+¿Qué es un contrato de derivados?
+
+Un contrato de derivados es un acuerdo financiero entre dos partes cuyo valor se basa en (o «se
+deriva de») el precio de otro activo como, por ejemplo, una acción, un bono, una materia prima,
+una divisa, un tipo de interés o incluso un índice bursátil. En lugar de poseer el activo en sí
+(barriles de petróleo o acciones de una empresa, por ejemplo), lo que se hace es especular sobre
+la evolución de su precio.
+
+En el caso de un Derivado sobre acciones estadounidenses, el contrato de derivados se basa en el
+valor de su activo subyacente, que sería una acción estadounidense o un ETP. Estos contratos
+obligan a Robinhood, en su calidad de contraparte, a realizar pagos a los clientes en función de la
+rentabilidad de las acciones estadounidenses o los ETP subyacentes. Si el valor de las acciones
+estadounidenses o del ETP aumenta entre la apertura y el cierre del contrato, Robinhood abonará
+al cliente las ganancias resultantes. Por el contrario, si el valor de las acciones estadounidenses o
+del ETP disminuye, Robinhood se quedará con la diferencia. En caso de desdoblamientos de
+acciones y de recompra de acciones, se modificarán los contratos de derivados y se actualizarán
+los tokens.
+
+¿Cuál es la diferencia entre una acción/ETP y un contrato de derivados sobre acciones/ETP?
+
+Los clientes gozan de determinados derechos contractuales en virtud de las condiciones del
+contrato de Derivados sobre acciones estadounidenses, pero no tienen derechos de propiedad
+sobre las acciones ni sobre el propio ETP. Aunque, según las condiciones del contrato de
+derivados, el cliente tiene derecho a la diferencia entre el precio de compra del contrato de
+derivados y el precio de la acción o del ETP en el momento del cierre del contrato de derivados,
+así como a los dividendos devengados, el cliente no goza de los derechos de los que disfrutaría si
+fuera titular de la acción o del ETP. Por ejemplo, la titularidad de acciones de una sociedad suele
+otorgar el derecho a votar en la junta general de la empresa emisora, mientras que el comprador
+de un derivado sobre acciones estadounidenses basado en dichas acciones no dispone de dicho
+derecho.
+
+                                                 13
+                                                                        20260622-5631134-17836040
+Si una empresa genera beneficios, puede decidir pagar a sus accionistas dividendos en efectivo. A
+través de los Derivados sobre acciones estadounidenses, los clientes tendrán derecho a percibir
+los dividendos. Se debe informar a los clientes de que los dividendos no están garantizados. La
+decisión de repartir o no un dividendo queda íntegramente sujeta al criterio del emisor.
+
+Los Derivados sobre acciones estadounidenses se liquidan únicamente en efectivo, lo que significa
+que no pueden canjearse por las propias acciones o ETP subyacentes.
+
+
+¿Qué es la tokenización?
+
+Al formalizar un nuevo contrato de Derivados sobre acciones estadounidenses, Robinhood emitirá
+(acuñará) de manera simultánea un nuevo token fungible a través de una blockchain. Este token
+representa los derechos de propiedad que tiene el cliente respecto del Derivado sobre acciones
+estadounidenses. El token no es transferible ni cedible. Al liquidar el Derivado sobre acciones
+estadounidenses, Robinhood elimina de la blockchain el contrato de Derivados tokenizados sobre
+acciones estadounidenses. La blockchain se actualiza en tiempo real y el token deja de ser válido,
+de manera que no puede integrarse en un monedero ni utilizarse en ninguna transacción en la
+blockchain.
+
+Riesgos inherentes a los Derivados sobre acciones estadounidenses
+
+Al invertir en Derivados sobre acciones estadounidenses, es posible que su valor no aumente
+como se esperaba o que se pierda todo el dinero invertido. Puesto que los Derivados sobre
+acciones estadounidenses tienen como activo subyacente acciones estadounidenses o ETP, los
+riesgos inherentes al mercado de valores estadounidense son aplicables también a los Derivados
+sobre acciones estadounidenses.
+
+Hay varios factores que influyen en la rentabilidad de las acciones y los ETP. Por ejemplo, el
+potencial de crecimiento del emisor, la solidez de su balance, el panorama competitivo y cualquier
+cambio específico de la propia empresa (por ejemplo, la apertura de una nueva sucursal) se
+consideran factores microeconómicos. Los acontecimientos de alcance más sectorial y global,
+como las subidas de los tipos de interés, las catástrofes naturales o una crisis mundial se
+consideran factores macroeconómicos. Los clientes deben tener en cuenta ambos tipos de
+factores. Por lo tanto, cualquier persona que invierta en Derivados sobre acciones
+estadounidenses debería, como mínimo, estar al tanto de la empresa en cuestión y de los
+mercados de valores, así como seguir la actualidad económica general.
+
+Las fluctuaciones en el valor de las acciones pueden ser considerables. Un método ampliamente
+utilizado para reducir el riesgo asociado a una empresa es la diversificación, que consiste en
+repartir el riesgo, por ejemplo, invirtiendo en una cartera compuesta por acciones de distintos
+sectores, países y regiones. No obstante, la diversificación no mitigaría necesariamente los riesgos
+generales del mercado, que pueden provocar fuertes fluctuaciones en las cotizaciones bursátiles
+por motivos que no están directamente relacionados con los resultados económicos de los
+emisores (por ejemplo, una recesión mundial o una crisis de liquidez).
+
+
+                                                14
+                                                                       20260622-5631134-17836040
+Al adquirir acciones de una empresa extranjera, debe tener en cuenta también el riesgo político,
+el riesgo económico, el riesgo jurídico y las posibles fluctuaciones de los tipos de cambio (véase el
+apartado anterior de introducción general a los riesgos).
+
+Los Derivados sobre acciones estadounidenses se consideran instrumentos financieros complejos.
+Estos instrumentos no se negocian en un mercado regulado ni en un sistema multilateral de
+negociación (MTF). Además, aunque Robinhood cubre sus obligaciones comprando acciones
+estadounidenses o ETP por cuenta propia en una proporción de 1:1 con respecto a los Derivados
+sobre acciones estadounidenses que emite, los clientes deben ser conscientes del riesgo de
+contraparte inherente a los Derivados sobre acciones estadounidenses y evaluar la solvencia de
+Robinhood antes de realizar la operación.
+
+Costes directos y gastos asociados a la realización de operaciones
+
+Es posible que incurra en gastos al realizar operaciones con instrumentos financieros. Para
+obtener información detallada, consulte aquí nuestra tabla de comisiones. Los costes directos más
+habituales en el caso de los Derivados sobre acciones estadounidenses son:
+
+   ●​ El precio de compra de los Derivados sobre acciones estadounidenses; y
+   ●​ Si las compras se realizan, o los ingresos por la venta se abonan, en una moneda distinta al
+      dólar estadounidense, se aplicará una comisión por cambio de divisas basada en el tipo de
+      cambio vigente, según lo determine un proveedor externo de servicios de cambio de
+      divisas.
+
+
+4.2. Perpetuos
+
+¿Qué son los contratos de futuros Perpetuos (o Perpetuos)?
+
+Los contratos de futuros son un tipo de contrato derivado que establece una obligación entre un
+vendedor y un comprador para la venta de un activo en una fecha determinada y a un precio
+fijado en el futuro, independientemente del valor de mercado del activo en esa fecha. Un
+contrato de futuros Perpetuos, o «Perpetuos», es un tipo de contrato de futuros sin fecha de
+vencimiento. Al no tener fecha de vencimiento, no se produce una entrega física de los productos,
+por lo que el único objetivo de un contrato de futuros perpetuos es especular sobre el precio de
+un activo. Estos contratos permiten especular con que el precio futuro será inferior al precio
+actual (lo que se conoce como «posición corta») o superior al precio actual (lo que se conoce
+como «posición larga»).
+
+¿Qué tipos de contratos de futuros Perpetuos (o Perpetuos) ofrece Robinhood?
+
+
+Robinhood ofrece una gama de contratos de futuros Perpetuos con diferentes tipos de activos
+subyacentes como, por ejemplo, acciones individuales, fondos cotizados en bolsa, instrumentos
+de divisas (Forex), materias primas, criptoactivos, así como otros activos o índices. Los Perpetuos
+que ofrece Robinhood se basan en los activos subyacentes identificados en el Documento de
+datos fundamentales, que puede consultar aquí.
+
+                                                 15
+                                                                        20260622-5631134-17836040
+Riesgos inherentes a los contratos de futuros Perpetuos
+
+Debido a la complejidad que entraña la negociación de Perpetuos, no son adecuados para todos
+los inversores. Los inversores que operan con Perpetuos pueden perder todo el capital invertido.
+Además de los riesgos generales descritos anteriormente, entre los riesgos asociados a la
+negociación de Perpetuos se incluyen los siguientes:
+
+
+
+ Tipo de riesgo                       Descripción
+                                      Los Perpetuos son instrumentos financieros derivados
+                                      que pueden conllevar un grado de riesgo elevado, ya que
+                                      suelen implicar apalancamiento. En consecuencia, incluso
+                                      una pequeña variación en el precio del instrumento
+                                      subyacente puede dar lugar a una variación mucho
+                                      mayor, ya sea a favor o en contra del inversor, en el precio
+                                      del derivado o en el valor de la posición abierta. Si el
+                                      sentido de la operación del inversor es contrario a la
+                                      evolución del mercado, esto puede dar lugar a pérdidas
+                                      significativas. En función de la magnitud de las posibles
+ Negociación con apalancamiento
+                                      pérdidas, los inversores deben aportar fondos adicionales
+                                      que se utilizarán como garantía o para reducir sus
+                                      posiciones abiertas. Si, en caso de pérdidas, los inversores
+                                      no aportan fondos adicionales como garantía, los fondos
+                                      de los inversores que se hayan designado como garantía
+                                      podrán utilizarse para cubrir dichas pérdidas. Este riesgo
+                                      se aplica a todos los Perpetuos, independientemente del
+                                      tipo de activo subyacente al que hagan referencia,
+                                      incluidas acciones, ETF, instrumentos de divisas, materias
+                                      primas, criptoactivos e índices.
+                                      El precio de los derivados depende de la evolución del
+                                      mercado y del precio del instrumento subyacente. Las
+                                      fluctuaciones que se produzcan en el mercado del
+                                      instrumento subyacente pueden provocar cambios
+                                      impredecibles en el valor del derivado, lo que puede dar
+ Riesgo de fluctuaciones del          lugar a pérdidas. En el caso de los activos subyacentes
+ mercado                              que solo se negocian en un horario de mercado
+                                      determinado (p. ej., acciones o ETF), pueden producirse
+                                      variaciones de precio fuera de dicho horario que se
+                                      reflejen en el precio del Perpetuo cuando el mercado
+                                      subyacente vuelva a abrir, lo que podría dar lugar a
+                                      fluctuaciones bruscas del precio.
+                                      En el caso de los derivados, no es necesario depositar el
+ Riesgo de incremento del capital     valor total de la operación antes de la compra. Basta con
+ exigido                              mantener una determinada cantidad en la cuenta de
+                                      margen. Si el precio del instrumento subyacente varía de
+
+                                               16
+                                                                      20260622-5631134-17836040
+                                     forma significativa, es posible que se exija al inversor un
+                                     margen adicional para que pueda mantener su posición
+                                     abierta. Si no se aporta un margen adicional, la posición
+                                     podría liquidarse, lo que supondría pérdidas para el
+                                     inversor. Estos cambios pueden producirse rápidamente
+                                     en todas las clases de activos, incluso durante los
+                                     periodos en los que el mercado subyacente está cerrado,
+                                     pero el Perpetuo sigue cotizando.
+                                     Si el precio del instrumento subyacente evoluciona en
+                                     sentido contrario al de la operación del inversor, puede
+                                     producirse una liquidación de la posición. En este caso, el
+                                     inversor podría incurrir en pérdidas. En caso de
+                                     liquidación de la posición, el inversor podría perder la
+                                     totalidad o parte de los activos que haya designado como
+                                     garantía. El inversor no se hace responsable de las
+                                     pérdidas que superen el valor de los activos que haya
+                                     designado como garantía. Esas pérdidas las asumen otros
+                                     inversores a través de un proceso denominado
+                                     «socialización de pérdidas». En determinadas condiciones
+                                     de mercado, especialmente debido al elevado nivel de
+                                     volatilidad y al riesgo de falta de liquidez en el mercado
+                                     de derivados, puede resultar difícil o incluso imposible
+Riesgo de liquidación
+                                     cerrar una posición de mercado por encima del nivel de
+                                     liquidación. Por ejemplo, si no hay suficiente liquidez en
+                                     el mercado o surgen problemas técnicos en la ejecución
+                                     de las órdenes de los inversores, es posible que no se
+                                     pueda gestionar el riesgo de las posiciones. La realización
+                                     de órdenes condicionales, como las denominadas
+                                     «órdenes stop-limit», no garantiza necesariamente que
+                                     las pérdidas se limiten al nivel deseado, ya que este tipo
+                                     de órdenes no están garantizadas y las condiciones del
+                                     mercado pueden impedir su ejecución. Este riesgo puede
+                                     verse agravado en el caso de los Perpetuos basados en
+                                     activos subyacentes con horarios de negociación
+                                     limitados, en los que pueden producirse diferencias de
+                                     precio entre sesiones de negociación.
+                                     A los inversores que operen con beneficios se les podrá
+                                     confiscar parte de sus ganancias y distribuirlas entre los
+                                     inversores que operen con pérdidas, de conformidad con
+                                     las normas del MTF. Esto puede ocurrir durante la
+Socialización de pérdidas
+                                     liquidación periódica, que se lleva a cabo varias veces al
+                                     día. Antes de una liquidación periódica, todas las
+                                     ganancias de la liquidación periódica anterior quedan sin
+                                     liquidar, aunque ya se hayan contabilizado.
+                                     El precio de un derivado negociado en una plataforma de
+                                     negociación de derivados puede estar vinculado al precio
+Riesgos relacionados con el índice
+                                     de un índice que se utiliza como indicador del precio del
+                                     instrumento subyacente. El índice lo proporciona un
+
+                                              17
+                                                                     20260622-5631134-17836040
+                      proveedor externo de servicios de datos que utiliza datos
+                      procedentes de plataformas de negociación de terceros.
+                      Los cambios en el valor y el volumen de las operaciones
+                      realizadas en dichas plataformas de negociación, así
+                      como los posibles errores en el cálculo del índice, pueden
+                      afectar a las ganancias, las pérdidas, los márgenes y la
+                      liquidación de las operaciones en la plataforma de
+                      negociación de derivados. La ejecución de una operación
+                      con derivados no supone la compra ni la venta de un
+                      instrumento subyacente. Es posible que la rentabilidad de
+                      una operación con derivados no refleje la rentabilidad
+                      que obtendría el inversor si vendiera o comprara el
+                      instrumento subyacente. La metodología utilizada para el
+                      cálculo y la publicación de cada índice puede dar lugar a
+                      desviaciones con respecto a otros índices y precios del
+                      instrumento subyacente disponibles públicamente. Por lo
+                      tanto, el valor del índice utilizado puede diferir
+                      significativamente de otros valores disponibles
+                      públicamente para el precio del instrumento subyacente.
+                      La composición, la metodología de cálculo y las medidas
+                      de seguridad de cada índice pueden modificarse en
+                      cualquier momento sin previo aviso y están sujetos al
+                      criterio exclusivo del proveedor del servicio de datos.
+                      Cualquier cambio en la composición de un índice o en la
+                      metodología utilizada puede afectar al valor del índice y
+                      dar lugar a que el inversor experimente pérdidas o
+                      ganancias. Robinhood no se hace responsable de las
+                      pérdidas que pueda sufrir el inversor (ya sean directas o
+                      indirectas) como consecuencia de un cambio en la
+                      metodología o la composición del índice.
+                      Existe el riesgo de que un derivado se retire de una
+                      plataforma de negociación de derivados o de que la
+                      plataforma deje de admitir la negociación de dicho
+                      derivado por cualquier motivo. Esta situación se puede
+                      dar en el caso de los Perpetuos basados en todo tipo de
+                      activos subyacentes, incluidas acciones, ETF, instrumentos
+                      de divisas, materias primas, criptoactivos e índices.
+                      Además, si opera con Perpetuos cuyo activo subyacente
+                      es un criptoactivo, tenga en cuenta que Robinhood no es
+Derivados admitidos
+                      propietaria ni controla el protocolo o la tecnología
+                      subyacentes que rigen el funcionamiento del criptoactivo
+                      que sirve como instrumento subyacente. El protocolo o la
+                      tecnología que permite la existencia del instrumento
+                      subyacente puede cambiar o dejar de funcionar debido a
+                      la introducción de modificaciones en las propiedades o
+                      funciones del protocolo o la tecnología subyacentes, a un
+                      ciberataque o a acontecimientos similares. Dichos
+                      cambios pueden incluir, entre otros, una bifurcación
+
+                              18
+                                                     20260622-5631134-17836040
+                                        («fork»), una reversión («rollback»), una distribución
+                                        gratuita de tokens («airdrop») o la puesta en marcha
+                                        inicial («bootstrap»). Cualquier cambio o error de este
+                                        tipo en el protocolo o la tecnología subyacentes
+                                        aplicables puede afectar a la disponibilidad y al valor del
+                                        criptoactivo subyacente y de cualquier contrato derivado
+                                        basado en dicho criptoactivo, con el consiguiente riesgo
+                                        de pérdida parcial o total de los fondos del inversor.
+                                        Robinhood no se hace responsable de dichos cambios en
+                                        el protocolo o la tecnología subyacentes y no asume
+                                        responsabilidad alguna por las pérdidas que puedan
+                                        derivarse de dichos cambios. El inversor es responsable
+                                        de estar al tanto de dichos cambios. Robinhood puede,
+                                        según su criterio exclusivo, dejar de ofrecer un derivado.
+                                        El término «Perpetuos» puede hacer referencia a una
+                                        amplia gama de activos subyacentes, entre los que se
+                                        incluyen acciones, fondos cotizados en bolsa,
+                                        instrumentos de divisas (Forex), materias primas,
+                                        criptoactivos, así como otros activos o índices. Cada una
+                                        de estas clases de activos puede comportarse de manera
+                                        diferente en cuanto a volatilidad de precios, liquidez,
+                                        horarios de negociación, formación de precios y
+ Riesgos específicos de los activos     susceptibilidad a los acontecimientos del mercado,
+ subyacentes                            incluidas las diferencias en los propios horarios de
+                                        negociación (por ejemplo, negociación continua frente a
+                                        horarios de mercado), lo que puede dar lugar a brechas o
+                                        discontinuidades en los precios. Por consiguiente, el perfil
+                                        de riesgo de un Perpetuo dependerá de las características
+                                        de su activo subyacente, por lo que los inversores deben
+                                        evaluar detenidamente y comprender los riesgos
+                                        específicos de dicho activo subyacente antes de abrir una
+                                        posición en un Perpetuo.
+
+Con el fin de proteger a los clientes frente a las fuertes fluctuaciones de precios de los Perpetuos,
+establecemos un rango de precios para las órdenes mediante órdenes limitadas con un precio de
+hasta un 1 % del último precio de negociación registrado del Perpetuo correspondiente en la
+bolsa. Es importante señalar, no obstante, que no es posible eliminar por completo todos los
+riesgos asociados a las operaciones bursátiles. Si alguno de los riesgos mencionados
+anteriormente supera su tolerancia al riesgo, no debe realizar órdenes de Perpetuos.
+
+
+Centro de ejecución y procedimiento de liquidación
+
+Los centros de ejecución podrían interrumpir o suspender las operaciones con Perpetuos. Podría
+resultar muy difícil cerrar posiciones en Perpetuos si el mercado carece de liquidez (es decir, si
+existen pocos o ningún comprador o vendedor). La liquidación se realizará en la cuenta que tiene
+abierta en nuestra entidad, si bien previamente deberá realizarse en una cuenta abierta a
+nuestro nombre en el centro de ejecución correspondiente.
+                                                 19
+                                                                        20260622-5631134-17836040
+Costes directos y gastos asociados a la realización de operaciones
+
+Es posible que incurra en gastos al realizar operaciones con instrumentos financieros. Para
+obtener información detallada, consulte aquí nuestra tabla de comisiones. Los costes directos más
+habituales en el caso de los Perpetuos son:
+
+   ●​ Las comisiones de transacción que aplicamos tanto nosotros como el centro de ejecución
+      al abrir o cerrar una posición;
+   ●​ Cualquier pérdida que se produzca mientras la posición esté abierta;
+   ●​ Las comisiones de financiación aplicadas para mantener el precio del contrato perpetuo
+      cercano al del activo subyacente; y
+   ●​ Las comisiones de liquidación aplicadas en caso de producirse una liquidación.
+
+
+
+
+4.3. Fondo del mercado monetario
+
+¿Qué es un Fondo del mercado monetario?
+
+Un Fondo del mercado monetario (MMF) es un fondo en el que el dinero recibido de los
+inversores se invierte en títulos de deuda a corto plazo. El objetivo principal es preservar el capital
+y, al mismo tiempo, generar un flujo constante de ingresos.
+
+Los Fondos del mercado monetario (MMF) se clasifican generalmente en función del vencimiento
+de los valores subyacentes y del comportamiento previsto del Valor liquidativo (NAV), que
+representa el valor neto del fondo. Un MMF a corto plazo invierte en títulos de deuda con un
+vencimiento máximo de trece (13) meses y una media ponderada de sesenta (60) días. Un MMF
+estándar invierte en títulos de deuda con un vencimiento máximo de dos (2) años y un
+vencimiento medio ponderado de 180 días.
+
+La rentabilidad de un MMF depende de los rendimientos generados por los títulos de deuda
+subyacentes. La rentabilidad se expresa en forma de porcentaje, tomando como referencia un
+horizonte de inversión de un año (es decir, una estimación del aumento de valor que se espera
+que experimente la inversión en los próximos doce [12] meses).
+
+Riesgos inherentes a los fondos del mercado monetario
+
+Aunque en ocasiones se considera que los MMF son una inversión de riesgo bajo, no están
+exentos de riesgo. El valor de los valores subyacentes puede fluctuar y existe riesgo de pérdida si
+el emisor de dichos valores incumple sus obligaciones o si el emisor del fondo de mercado
+monetario se declara en quiebra. Además, las variaciones en los tipos de interés, las fluctuaciones
+                                                20
+                                                                         20260622-5631134-17836040
+del mercado y los cambios en el marco de gobernanza regulatoria pueden afectar a la
+rentabilidad.
+
+Centro de ejecución y procedimientos de liquidación
+
+Si decide invertir su patrimonio neto en un MMF, se invertirá todo el patrimonio neto de su
+cuenta de Robinhood, incluidas las cantidades en moneda fiduciaria que deposite en su cuenta de
+Robinhood en el futuro. Sus órdenes de participaciones del MMF (incluidas las generadas como
+parte de su orden permanente) solo se ejecutarán el mismo día si se reciben antes de la hora
+límite de una jornada bursátil. Las órdenes enviadas después de la hora límite de negociación se
+aplazarán automáticamente para su ejecución el siguiente día de negociación. Si realiza una
+compra (es decir, adquiere otros instrumentos financieros o criptoactivos disponibles en la
+Plataforma) o solicita una retirada de fondos de su Cuenta, se utilizarán primero los fondos no
+invertidos antes que el patrimonio neto invertido en un MMF.
+
+Los intereses se devengan a partir del día en que su patrimonio neto se invierte en el MMF y se
+abonan mensualmente. A menos que decida retirar fondos de su cuenta o darse de baja del MMF,
+cualquier interés generado se reinvertirá, es decir, se utilizará para adquirir participaciones
+adicionales en el MMF. En calidad de su agente, Robinhood compra participaciones del MMF en
+su nombre; usted no mantendrá una relación directa con el banco del programa.
+
+Una vez ejecutada la orden de venta, debería poder disponer poco después de los fondos
+obtenidos de la venta. Si las condiciones del mercado son desfavorables, este proceso podría ser
+más largo. Si decide darse de baja completamente del MMF, ejecutaremos una orden en su
+nombre para vender todas las participaciones que mantenga en un MMF, al valor liquidativo del
+siguiente día de negociación.
+
+
+Costes directos y gastos asociados a la realización de operaciones
+
+Es posible que incurra en gastos al realizar operaciones con instrumentos financieros. Para
+obtener más información, consulte la Tabla de comisiones.
+
+Los costes directos más habituales en el caso de los MMF son:
+-​ Los gastos que cobra Robinhood sobre la Rentabilidad porcentual anual (APY);
+-​ Las comisiones del fondo aplicadas por JP Morgan u otros terceros (deducidas antes de
+    calcular la APY); y
+-​ Cualquier comisión aplicable por cambio de divisa.
+
+
+
+
+                                               21
+                                                                     20260622-5631134-17836040
+

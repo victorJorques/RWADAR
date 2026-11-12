@@ -1,0 +1,954 @@
+{
+ "grupo": "brickwise",
+ "ciclo": "2026-11-12-v2",
+ "nota": "Consultas del grupo brickwise el 12/11/2026 (11 fichas de reventa de Brickwise). Horas UTC reales del reloj del sistema (date -u). curl con el proxy configurado; Playwright solo para el mercado de la app. Respuestas crudas de API (con direcciones de cartera), HTML con nombres de personas y PDF en fuentes/crudo/ (fuera de Git). FMA no se repitió hoy.",
+ "consultas": [
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "archivo": "fuentes/crudo/api-v1-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:32:59Z",
+   "bytes": 236533,
+   "sha256": "223cb2fd8363b99d5c176a16196e23a17f3a81bb8fb8d2032501ce20c498b56d",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "fuentes/crudo/api-v2-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:32:59Z",
+   "bytes": 53974,
+   "sha256": "3504bf67b9f8e37090ce11af14a2f531811343da01bec8a313fe74c412c3d3a9",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/utils/fees",
+   "archivo": "fuentes/web/api-v1-utils-fees.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:32:59Z",
+   "bytes": 49,
+   "sha256": "f4d671a12c51e2caf42835630be0a6f1f31ea5c9a7fc97dc7472aacc17b90449"
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A31KP7",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A31KP7.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:32:59Z",
+   "bytes": 9881,
+   "sha256": "6c2105662c311dabe9b6ba14bda3ae5fd3b60374fcf465192a285a26d26af42c",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2YPQ0",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2YPQ0.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:32:59Z",
+   "bytes": 9653,
+   "sha256": "61742cecd01100f3a15ec222973de4d154673b3bb2b69b537e23a7f3183f3492",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J40",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A38J40.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:32:59Z",
+   "bytes": 6615,
+   "sha256": "b5fd7e17d84b6793a89425a3fb09a1af74d98a8fde2c3cbb26db04c347d7707b",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A38J32.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:32:59Z",
+   "bytes": 7969,
+   "sha256": "f8f86d1a47977354d1a809359ff1cfe3811de290d87b843f62b5d2a9114cbcc3",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2U5V3",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2U5V3.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:32:59Z",
+   "bytes": 9447,
+   "sha256": "e4da56d4b97f412670928b960a5fa9a3f8b224aae79bfdc54b552f8a67d71d23",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2ZT84",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2ZT84.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:00Z",
+   "bytes": 10670,
+   "sha256": "8b5bcaebf9ede7a41733477a0cf87631248baa518a540e35847bb9d0f1c40a3b",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2RAH5",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2RAH5.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:00Z",
+   "bytes": 8776,
+   "sha256": "0a4afb6ef94b72ffb274a980f34da98a9384ddaa9b3ff9d6dd11b6d986396d33",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A324B4",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A324B4.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:00Z",
+   "bytes": 12167,
+   "sha256": "168bb96df469e3c6fd68f0dd9f5d6ed62ff889a2d325fce0f273aa2fb32ae5c5",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCE8",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2WCE8.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:00Z",
+   "bytes": 8566,
+   "sha256": "63f57bd56607310ecd407d1972e62e930d4f9648b1d5555877ff0944ea5a944d",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2T4D7",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2T4D7.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:00Z",
+   "bytes": 9139,
+   "sha256": "312dfccf3c330f2ae71b45d7bc36d35e2bc90612d51cf6df1814f41db5a3ccc2",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A2WCD0",
+   "archivo": "fuentes/crudo/api-v1-asset-AT0000A2WCD0.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:00Z",
+   "bytes": 8491,
+   "sha256": "780c50cc2a1e0a8dd1de28b8ec89fc57f6b0e142cbe60d3fa0ffca55dcf6d08f",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/8a16682d-6e93-4e0d-9771-894eb18abdf9.pdf",
+   "archivo": "fuentes/crudo/pdf/contrato-AT0000A31KP7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:15Z",
+   "bytes": 247203,
+   "sha256": "d483a25c2f39dfe26fa1da7cd192840ee72f9b2465b940d2d0ae931a65487693",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/3aa9bf9c-ae7d-4dde-ab03-f6169dc9327a.pdf",
+   "archivo": "fuentes/crudo/pdf/kid-AT0000A31KP7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:15Z",
+   "bytes": 139587,
+   "sha256": "ce890eafd16419c444a3da4b2f291a735583c367ccf77a7a52237f01a79c917d",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/04f3f1d5-71a1-4629-8e5f-dcc45ef4fb15.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A31KP7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:15Z",
+   "bytes": 220687,
+   "sha256": "b25ece9e355d627f132b14a93c296a921ff5ea98198b2a81611a013d7a59a48f",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+   "archivo": "fuentes/crudo/pdf/kosten.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:15Z",
+   "bytes": 30692,
+   "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A31KP7/AT0000A31KP7_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/crudo/pdf/ruecktritt-AT0000A31KP7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:15Z",
+   "bytes": 64520,
+   "sha256": "bdd30292931f8ea00570f1d01f1d00f3a1374f32e0cd081d278c90fa2cef0216",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/585459c7-9fac-4607-a2cc-63d4954334df.pdf",
+   "archivo": "fuentes/crudo/pdf/contrato-AT0000A2YPQ0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:15Z",
+   "bytes": 192682,
+   "sha256": "29f181dbb5f5c4fa9c2440544e19312221bf686f4840845129cce4145bc2b0c8",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/2dcc086d-98b7-4707-8281-4ff3fa354109.pdf",
+   "archivo": "fuentes/crudo/pdf/kid-AT0000A2YPQ0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:15Z",
+   "bytes": 138356,
+   "sha256": "cac2672068fb64cd05d738d70e60daea017fb7d5f74b3c1041084fb4aefb22dd",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/f82e5244-dc70-45af-9a41-3a40b5390442.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2YPQ0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:15Z",
+   "bytes": 213054,
+   "sha256": "8d2ba1cca96e9fb334d89a331352a154cead31d627a4d8f45a9f56ff644d6b07",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2YPQ0/AT0000A2YPQ0_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/crudo/pdf/ruecktritt-AT0000A2YPQ0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:16Z",
+   "bytes": 64873,
+   "sha256": "bfda893516cd948739fa5072d4e68d2877e60a8d1cf11eb3e559af31369a0093",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/d72ef1c5-5f6e-4d57-9368-8f464356cf35.pdf",
+   "archivo": "fuentes/crudo/pdf/contrato-AT0000A38J40.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:16Z",
+   "bytes": 557605,
+   "sha256": "1b2f693c00e99e4d764165ec15d5996c8a0298e8cf81822894649928a202bb40",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/da8e1df3-d334-4075-9311-299f93c8563e.pdf",
+   "archivo": "fuentes/crudo/pdf/kid-AT0000A38J40.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:16Z",
+   "bytes": 396631,
+   "sha256": "a9cd936866fa7793d33eec1fd1ea222a69906157df061208dd720be10267888f",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/8dfb7e84-2f99-4de7-9e49-c5a43fa76537.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A38J40.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:16Z",
+   "bytes": 410115,
+   "sha256": "b98ac9fe99249337dace974450357b18d768d346399323bead9aaa515b4f52e5",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J40/AT0000A38J40_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/crudo/pdf/ruecktritt-AT0000A38J40.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:16Z",
+   "bytes": 64712,
+   "sha256": "e4652529f4c4591ba2d427861e03e154bbb647cad8a0890083198fcfa2647919",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+   "archivo": "fuentes/crudo/pdf/contrato-AT0000A38J32.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:16Z",
+   "bytes": 550355,
+   "sha256": "74260541deaea4cd2f7443dcc93edef81f6f49bd67b2f59c82d7d8e0004d52a0",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "archivo": "fuentes/crudo/pdf/kid-AT0000A38J32.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:16Z",
+   "bytes": 360088,
+   "sha256": "bbfe14b97ec9cb14f1fd73c98e62405a6fa5cc3a72a962e37cf9ddaeacdf69ee",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/b9711a2c-4f37-4d6e-81d9-0719e54c6b90.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A38J32.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:17Z",
+   "bytes": 456752,
+   "sha256": "6e69b88ae5ae27b2a9339e28c0f56eca4b4310802b3de2e857a3c7e5c67a3d72",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/crudo/pdf/ruecktritt-AT0000A38J32.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:17Z",
+   "bytes": 64702,
+   "sha256": "125c5a95047e5544dbc3261bab7fda428bacc8238510a3635e44e16422028a0c",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/5602c0af-8376-4e87-a53d-d6277428d333.pdf",
+   "archivo": "fuentes/crudo/pdf/contrato-AT0000A2U5V3.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:17Z",
+   "bytes": 223374,
+   "sha256": "8c6faa84cff714ea7ca77c3310096489c1a391023cf6ad0bdc2cffffc8b16095",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/a53b857c-4664-4a58-a6a6-11e8b2a4f911.pdf",
+   "archivo": "fuentes/crudo/pdf/kid-AT0000A2U5V3.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:17Z",
+   "bytes": 138294,
+   "sha256": "31731e28f95f59f3294f20c500ec03e76276c145440a1d43f8a15e2080fbb98d",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/2439beca-ac29-466c-b038-6c7689e7a5a7.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2U5V3.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:17Z",
+   "bytes": 244352,
+   "sha256": "71f55ebf5927a7660af368bf9811a5cbecf116aab6a6bf62e19920e6aaa2e41b",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2U5V3/AT0000A2U5V3_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/crudo/pdf/ruecktritt-AT0000A2U5V3.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:18Z",
+   "bytes": 64514,
+   "sha256": "667096d9157b0a849793ed14736ef0418ace08797c30bd150605098638f92c7b",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/5cfbdc1f-e33a-4df8-986c-b3491446f8b7.pdf",
+   "archivo": "fuentes/crudo/pdf/contrato-AT0000A2ZT84.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:18Z",
+   "bytes": 191910,
+   "sha256": "7bb228005348caffb8eba0651cb49929d119c576ceae9d3388b4044c878b3797",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/8c331bfe-ab6a-436c-9d07-bb9c36aabad9.pdf",
+   "archivo": "fuentes/crudo/pdf/kid-AT0000A2ZT84.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:18Z",
+   "bytes": 128786,
+   "sha256": "2aa7ac3cea28b0805a2d316216d0ed2b699c08185e9fa99022fae688681e8bba",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/ac8e71ad-8e24-4c8e-a180-bf801dccd487.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2ZT84.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:18Z",
+   "bytes": 228984,
+   "sha256": "fdf2ed79e9c2377111a8d41b771ab014241da39812925c3653f6af2b07b8baf5",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2ZT84/AT0000A2ZT84_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/crudo/pdf/ruecktritt-AT0000A2ZT84.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:18Z",
+   "bytes": 64605,
+   "sha256": "87ba2e6bdd09fb4552bbc9972cddad6fbf63e5ed6a22360a5b972c209cf7398d",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/55386e50-130d-42bd-a39e-f3d7d4972196.pdf",
+   "archivo": "fuentes/crudo/pdf/contrato-AT0000A2RAH5.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:18Z",
+   "bytes": 181670,
+   "sha256": "82527141de87db307f45f35677f1b3f7636bc1f422637217a83b233c909e3101",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/f96b7e13-f9cb-4e13-a3f8-10974353ec4e.pdf",
+   "archivo": "fuentes/crudo/pdf/kid-AT0000A2RAH5.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:19Z",
+   "bytes": 138297,
+   "sha256": "42a72c88cd0723a8a5abda76afd52df12ee335f3f3524c863b4b79aef01f03f8",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/1aec57d6-3aa3-473a-ae33-2a0fbdf4a1c5.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2RAH5.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:19Z",
+   "bytes": 246360,
+   "sha256": "ac03e06460c1a7522a7713167b8697dfc06d0e1d8ea13e8ce96994828a4d49ac",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2RAH5/AT0000A2RAH5_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/crudo/pdf/ruecktritt-AT0000A2RAH5.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:19Z",
+   "bytes": 64476,
+   "sha256": "ec40926ae354d7794459ac2815f1f1a38263162ea9b88cda22db547b61fb6efd",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/bf300673-e32d-4f8d-9328-9fc5dbda049c.pdf",
+   "archivo": "fuentes/crudo/pdf/contrato-AT0000A324B4.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:19Z",
+   "bytes": 259949,
+   "sha256": "24d01690a2138988c9cfc889d359ac4e2ca1d67397621a13784ff0f19b715502",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/03bdd125-b005-4948-b29f-4e575d58e985.pdf",
+   "archivo": "fuentes/crudo/pdf/kid-AT0000A324B4.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:19Z",
+   "bytes": 146611,
+   "sha256": "da458b99233909ce7bfe16cc6f119b69bbd3182508ff558bb5787b1a6a6dca67",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/a847b550-48f2-4971-aec9-19684c6cca4f.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A324B4.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:19Z",
+   "bytes": 355071,
+   "sha256": "6feb6d254c9ea0ec691276caebfc76e1897e0a909c4d473367bc3fa5d25fb32d",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A324B4/AT0000A324B4_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/crudo/pdf/ruecktritt-AT0000A324B4.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:19Z",
+   "bytes": 63599,
+   "sha256": "63ece51e24107b8d41a555d1bd6e9af4887d6160c1865e56d1c5f8ec3f3dc567",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/1997cf37-2b9f-4c8b-a3f8-982628c71d1a.pdf",
+   "archivo": "fuentes/crudo/pdf/contrato-AT0000A2WCE8.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:19Z",
+   "bytes": 190968,
+   "sha256": "29f022d658974041c33edc0dc9494559d8a8f79e159342b777614046032735fc",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/4d0dd404-4a76-417a-b21d-606a1f11ba63.pdf",
+   "archivo": "fuentes/crudo/pdf/kid-AT0000A2WCE8.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:20Z",
+   "bytes": 139764,
+   "sha256": "3a4fa36bfa5f16012b2054c5b54bacae5425801f725628b3e2ea7576264d1d13",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/36cfe50a-2527-45f9-85d9-23aaab647847.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2WCE8.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:20Z",
+   "bytes": 212260,
+   "sha256": "0124232ae6afee97d3f0e15c614fd68f3049303aa61a3ba1f2ed8573abbeaea2",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCE8/AT0000A2WCE8_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/crudo/pdf/ruecktritt-AT0000A2WCE8.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:21Z",
+   "bytes": 64710,
+   "sha256": "d78426254c6c4d31cd1e1f7526925938a34df10eb74cfe83dc05ca4c355d5d2a",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/bd253831-9074-4268-860c-1c6c85b1b606.pdf",
+   "archivo": "fuentes/crudo/pdf/contrato-AT0000A2T4D7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:21Z",
+   "bytes": 180825,
+   "sha256": "f3a59f1a655e69a8cd83327c84acb57fd5d6cdf42011bb2eecab08007feb9d9b",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/8d71cb16-1152-4535-8c36-d41c07e5ec05.pdf",
+   "archivo": "fuentes/crudo/pdf/kid-AT0000A2T4D7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:21Z",
+   "bytes": 138157,
+   "sha256": "50c07fa952e77ba57f36220000f9e24182e353211ba17cb3e25b3bbfedf9d5ae",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/c372686c-443c-445b-9747-a87cdc8844de.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2T4D7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:21Z",
+   "bytes": 246126,
+   "sha256": "e22f98856be7d3ee2f1e472c411ab9d194f643aac6d0f233f1acc79ca8b85c38",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2T4D7/AT0000A2T4D7_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/crudo/pdf/ruecktritt-AT0000A2T4D7.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:21Z",
+   "bytes": 64426,
+   "sha256": "b15509ffc221abb4ac3b2a75932c8bb2b819293d618b0a51a5360bc5337b667d",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/bb85e799-705d-49a3-ab69-5104a8d90ea6.pdf",
+   "archivo": "fuentes/crudo/pdf/contrato-AT0000A2WCD0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:21Z",
+   "bytes": 190996,
+   "sha256": "802c9affad120bfd62fc2fb4455de43bf61da84575291f3570d4d799d1460431",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/4f7737ce-d8b6-45e2-88ef-d6f6d6acafee.pdf",
+   "archivo": "fuentes/crudo/pdf/kid-AT0000A2WCD0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 138935,
+   "sha256": "70ebc500925211d30c1c5d4eca699971addb2ca4fc4397db821654148e880283",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.brickwise.at/3254e2f8-2426-4c15-8f4d-12da298060a9.pdf",
+   "archivo": "fuentes/crudo/pdf/info-AT0000A2WCD0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 212480,
+   "sha256": "f602f699d6fe47c79e790fa8da1a7e7581707e88141828ab079745df7524ce1a",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A2WCD0/AT0000A2WCD0_Ruecktrittsbelehrung.pdf",
+   "archivo": "fuentes/crudo/pdf/ruecktritt-AT0000A2WCD0.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 64521,
+   "sha256": "ee6231311898f6e7e2e071e56a355427c66fa56e3cbd9dbb654837f851fcb3c7",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "archivo": "fuentes/crudo/web-faq-land.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 55846,
+   "sha256": "d652644e63dce0a863cc8f490b57f224903587b6cfff5f7d4b7196984207133e",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz",
+   "archivo": "fuentes/crudo/web-faq-handel.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 56675,
+   "sha256": "52d2e52750799577afca08ece7cd54c2cb3bb9699c66b9e6cdfcdf4cfe941e80",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-kann-ich-investieren",
+   "archivo": "fuentes/crudo/web-faq-investieren.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 56640,
+   "sha256": "2d34986c29dbc4017d42ffd9417db8273b72db174e9b8123d22aec54142543f3",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://www.brickwise.at/how-it-works/verkaufen-kann-so-einfach-sein-auch-bei-immobilieninvestments",
+   "archivo": "fuentes/crudo/web-guia-verkaufen.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 51661,
+   "sha256": "5104128136086df573caaff286286307de78b706ab46a3366852ba88d6e36340",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://www.brickwise.at/support/wie-berechnet-sich-der-marktwert",
+   "archivo": "fuentes/crudo/web-faq-marktwert.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 55525,
+   "sha256": "f6046b832e7a8093b6e3dfef1c22b1a31f8053914814d4e5802f220f882adbb3",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://www.brickwise.at/imprint",
+   "archivo": "fuentes/crudo/web-imprint.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 41447,
+   "sha256": "5ee85c3b7971bfe55eab23eeb2e9ef072262312034ca45e085a98c8db5846308",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://www.brickwise.at/contracts",
+   "archivo": "fuentes/crudo/web-contracts.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 42843,
+   "sha256": "0218f969a201e7ab2b3eef6db883a211d550e66082788b6cb89d58b60e18c4b1",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://cdn.prod.website-files.com/62414ac6ad5d1a1acc6c486a/62414ac6ad5d1a78816c4903_Nutzungsbedingungen_Brickwise.pdf",
+   "archivo": "fuentes/crudo/pdf/nutzungsbedingungen.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 159247,
+   "sha256": "38067d75c7f3d09ce813fe0cd52c563acdacf0efae061b016a1570392f206c9c",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ESI/ESISExtranjerasLP.aspx?numero=5003&tipo=CLP",
+   "archivo": "fuentes/crudo/cnmv-effecta-lp.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:22Z",
+   "bytes": 218036,
+   "sha256": "60becbb5a3cf5bfd2bc38a3f56f5eead4b05feac910bf325048e67a420beb048",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=5003&vista=17",
+   "archivo": "fuentes/crudo/cnmv-effecta-programa.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:23Z",
+   "bytes": 218752,
+   "sha256": "53894596abc5e7e4dd4c514416e803890ffe91c3c2f8813007fac8593fc10c29",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=5003&vista=8",
+   "archivo": "fuentes/crudo/cnmv-effecta-agentes.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:23Z",
+   "bytes": 218234,
+   "sha256": "9eaf08661f118919dfd17f6400f0950a79e6838165e2302a6b9366e75ad08687",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+   "archivo": "fuentes/crudo/cnmv-adv-brickwise.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:23Z",
+   "bytes": 212247,
+   "sha256": "c060900bec655dd207a90e2906f88f6b6a8bf6baf327f9128626690245e7a8c6",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "archivo": "fuentes/crudo/cnmv-adv-effecta.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:23Z",
+   "bytes": 212203,
+   "sha256": "d4b5fca2d362f885252cfb5eb47b72138491568b40005260437fe2ebe1f8f03e",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Qogir",
+   "archivo": "fuentes/crudo/cnmv-adv-brick-qogir.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:23Z",
+   "bytes": 212291,
+   "sha256": "6083a5d7c1b40742489286b7419b8d7a80e45a15ae6a13bb465588149b942a8c",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brick+Sagarmatha",
+   "archivo": "fuentes/crudo/cnmv-adv-brick-sagarmatha.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:23Z",
+   "bytes": 212401,
+   "sha256": "c96d715441aca5fd7e6ad686d81864eaf15a20237926995a57240f0e89d9f90f",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=BrickOne",
+   "archivo": "fuentes/crudo/cnmv-adv-brickone.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:23Z",
+   "bytes": 212225,
+   "sha256": "a23b787444714e6021ca1837211a7951cf0c002b11d2839318a77fa62522c884",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cohotel",
+   "archivo": "fuentes/crudo/cnmv-adv-cohotel.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:24Z",
+   "bytes": 212203,
+   "sha256": "f1e370698a9520a3e5891a556d618d6768f04a0841e5f2b40a2f55385d2d0431",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Green-Point",
+   "archivo": "fuentes/crudo/cnmv-adv-green-point.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:24Z",
+   "bytes": 212291,
+   "sha256": "de964e81b1c531d501e914591c4005ec9f0679b1119c4fef97789c7625c27e9e",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Green+Point",
+   "archivo": "fuentes/crudo/cnmv-adv-green-point.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:25Z",
+   "bytes": 212291,
+   "sha256": "77df5e322dbe4399ee0a7535ae67936b929695ce04a3137accd7ba8c530b956e",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "archivo": "fuentes/crudo/cnmv-adv-trading.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:25Z",
+   "bytes": 237276,
+   "sha256": "f4552314b42b6e6a6a2760166e6e29b1a279235c153f4d82461c38b53bd540b7",
+   "nota": "Fuera de Git (crudo/).",
+   "cabeceras": "accept-language: es"
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "archivo": "fuentes/crudo/bafin-effecta.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:33:25Z",
+   "bytes": 26540,
+   "sha256": "b2b70b1dc89e6ed11021f9ff5dbae470cac0b868711073287682e7efd6e9bc78",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (POST nameVermittler=Brickwise&plzVermittler=&ortVermittler=&nameHaftungsdach=&plzHaftungsdach=&ortHaftungsdach=&sucheButtonVermittler=Suchen)",
+   "archivo": "fuentes/crudo/bafin-vgv-brickwise.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:34:52Z",
+   "bytes": 27150,
+   "sha256": "2ee809a27e98da53d9ddcd2a21c2c3dc354808791699b6e08777689d12c90cb8",
+   "nota": "Fuera de Git: lleva el nombre del representante. Copia de texto con el nombre recortado en fuentes/reguladores/bafin-vgv-brickwise-2026-11-12.txt"
+  },
+  {
+   "url": "https://app.brickwise.at/desktopWeb/marketplace",
+   "archivo": "fuentes/web/web-app-marketplace-2026-11-12.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:35:06Z",
+   "bytes": 3704,
+   "sha256": "b0eeb602665970ba7fca1c0a767f9830825794a4b01748b818b27ff9aaf84578",
+   "nota": "Texto renderizado sin sesión con Playwright (carga 00:34:18Z, texto 00:35:06Z). Captura: fuentes/web/web-app-marketplace-2026-11-12.png (sha256 f4af06d131fceb7840f16ec08ac5739bd07c58d889cfa8de89ede6087857e6f2)."
+  },
+  {
+   "url": "https://app.brickwise.at/js/app.85dda63a.js",
+   "archivo": "fuentes/crudo/app.85dda63a.js",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:35:41Z",
+   "bytes": 512911,
+   "sha256": "b5c9c15438379efc1ddf96df1ceb9310b7991096c72a98cdb62b788a37e0601d",
+   "nota": "Mismo archivo y mismo SHA-256 que el 11/11 (b5c9c154…601d). Solo se buscan textos: «Max. verfügbar», «Es sind nicht so viele Anteile verfügbar», «die gewünschten Anteile», «Letzter Preis». Fuera de Git."
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets + https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "fuentes/libro-ordenes-resumen-2026-11-12.json",
+   "http": null,
+   "consultadoUtc": "2026-11-12T00:32:59Z",
+   "bytes": 23851,
+   "sha256": "215d85afbaa37ff390dd052159955c0f903add18e45f8e7cbdacc1e1a937225f",
+   "nota": "Resumen por emisión sin direcciones de cartera ni identificadores de orden (derivado de los crudos v1 y v2)."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/web/web-contracts-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13463,
+   "sha256": "5c087c841a5206d2418d1e9e34bd3ba402818622323c7970b129d853aca0e150",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/web/web-faq-handel-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 16784,
+   "sha256": "bc713558bf404515fad38e2856a3025f19230b401065cd030140f3847aa371c5",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/web/web-faq-investieren-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 16706,
+   "sha256": "8bd95d4617c72fd20402988964248c6278cd5a8a6ef221beb139c34e0caef8c3",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/web/web-faq-land-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 16066,
+   "sha256": "5c7127538c2af9509493e5ef552692edeea2b9e6a9e974106578b43424dc4908",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/web/web-faq-marktwert-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 15898,
+   "sha256": "657dfdaeda27e5a2ae15cec264ff3389f82e803763f1d460f10964ab7fdc567b",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/web/web-guia-verkaufen-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 17226,
+   "sha256": "d6cafed954c32bb4ca99762b992f3471263639e4f2a9f47ccd5ae18b1f5c5c19",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/web/web-imprint-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 15561,
+   "sha256": "f94530260e475138a72cbc9e3039666c0adbc3dbfeb9821a2fef78d870d467c8",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/bafin-effecta-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 2538,
+   "sha256": "9763b1cef1f00c4cabc7d966855c53c98603b51a849203df25366593da6ddb25",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/bafin-vgv-brickwise-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 1046,
+   "sha256": "fcacec908f6fcdc3cd4f1759793a5d9b910bddd5f6fb33ca03145f4f0d1a9e64",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-adv-brick-qogir-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13580,
+   "sha256": "a40d2c082760c320ecf41465d77f6999bddf924d704741ebe28512a5ec58a404",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-adv-brick-sagarmatha-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13585,
+   "sha256": "ca9321e1996575ecdd16a5ffd025cde234fb490f106c29f45ce09c50652df462",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-adv-brickone-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13577,
+   "sha256": "154955bb35028ce0f10fff18185c20027700ce6d57d6219628a76ddeb63c544a",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-adv-brickwise-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13578,
+   "sha256": "ada6641729cac864236a60499c9664852e16023e8a8ae9296fd11a82b26ab04d",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-adv-cohotel-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13576,
+   "sha256": "e857e51d3fecf27ff87815e3cbf287abcd4ac66c20a26d5e5d44d6aa2c8dcccc",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-adv-effecta-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13576,
+   "sha256": "d601cb2f98fa8e6872cb0b94c816b050ee8fc71b4370993e9a5d3b1a8417b91e",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-adv-green-point-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 13580,
+   "sha256": "9ebd09bd15f4991419210b2f86ed7835718b0af976a0105c4c8fb71b863ba5e5",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-adv-trading-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 14638,
+   "sha256": "efda7985f2c11ac4aa4906ae04fe9db9852de5ba9da1901efc41bba283ef9c66",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-effecta-agentes-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 14256,
+   "sha256": "aea8b2013e249ee7abb40ef33307f1018107e286279ec080196532670d312639",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-effecta-lp-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 14319,
+   "sha256": "a4f2535ea7be60816ed460f30b285899918971fc9035fd952693885bffd78728",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  },
+  {
+   "url": null,
+   "archivo": "fuentes/reguladores/cnmv-effecta-programa-2026-11-12.txt",
+   "http": null,
+   "consultadoUtc": null,
+   "bytes": 14464,
+   "sha256": "d762283bfcf3bc73508f78df89ac73103ded317a5671920445226fc7b8164bad",
+   "nota": "Copia de texto del HTML del mismo nombre en fuentes/crudo/ (nombres de personas físicas recortados). La URL, la hora y el SHA-256 del original están en la entrada del HTML."
+  }
+ ]
+}

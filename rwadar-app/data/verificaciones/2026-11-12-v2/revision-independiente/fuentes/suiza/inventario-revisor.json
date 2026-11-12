@@ -1,0 +1,542 @@
+{
+ "grupo": "suiza",
+ "revisor": "independiente",
+ "ciclo": "2026-11-12-v2",
+ "nota": "crudo/ queda fuera de Git; lleva datos personales de Zefix y un correo en la configuración de Boss Info. Las copias fuera de crudo/ no llevan datos personales.",
+ "consultas": [
+  {
+   "consultadoUtc": "2026-11-12T00:45:34Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://shares.aktionariat.com/api/brokerbotsettings?ticker=DAKS",
+   "archivo": "crudo/aktionariat-brokerbotsettings.json",
+   "bytes": 1542,
+   "sha256": "7b0880cbcd86ccd163c33385efac6cba52ccde28a84023231358f5795c7fa79c"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:45:35Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://shares.aktionariat.com/api/secondarymarketsettings?ticker=DAKS",
+   "archivo": "crudo/aktionariat-secondarymarketsettings.json",
+   "bytes": 499,
+   "sha256": "132754731b9730b021e1af85fc7a5d3bba93adf20d426922e381b0ae85a25f61"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:45:36Z",
+   "http": 200,
+   "metodo": "POST {\"company\": 77}",
+   "url": "https://shares.aktionariat.com/api/secondarymarkets/getOrderBook",
+   "archivo": "crudo/aktionariat-getOrderBook.json",
+   "bytes": 1440,
+   "sha256": "9436d69522813d7f2b2714d6fb0c07bdf59ed830d1e13b0e3a71b71121c61f9a"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:45:36Z",
+   "http": 200,
+   "metodo": "POST {\"company\": 77, \"limit\": 5000}",
+   "url": "https://shares.aktionariat.com/api/secondarymarkets/getTrades",
+   "archivo": "crudo/aktionariat-getTrades.json",
+   "bytes": 383060,
+   "sha256": "6f9b3656112226ae5409dc878c5a8842056c3d475427724e5dff6659692bd776"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:45:37Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://shares.bossinfo.com/api/brokerbotsettings?ticker=BOSS",
+   "archivo": "crudo/boss-info-brokerbotsettings.json",
+   "bytes": 1681,
+   "sha256": "41cdf6f4dbdffe1333ec7f703fa8240ecd80e9bceb41037c4d72aa99f616b50a"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:45:38Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://shares.bossinfo.com/api/secondarymarketsettings?ticker=BOSS",
+   "archivo": "crudo/boss-info-secondarymarketsettings.json",
+   "bytes": 527,
+   "sha256": "5aaeee13184326fc8ba93fe6691fd41a3c01699371162341815f5d65469c61f3"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:45:38Z",
+   "http": 200,
+   "metodo": "POST {\"company\": 1664}",
+   "url": "https://shares.bossinfo.com/api/secondarymarkets/getOrderBook",
+   "archivo": "crudo/boss-info-getOrderBook.json",
+   "bytes": 356,
+   "sha256": "12a785592b546c06255bdd7ef353919561d66f22255a7a55607976bf2c26ca0f"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:45:38Z",
+   "http": 200,
+   "metodo": "POST {\"company\": 1664, \"limit\": 5000}",
+   "url": "https://shares.bossinfo.com/api/secondarymarkets/getTrades",
+   "archivo": "crudo/boss-info-getTrades.json",
+   "bytes": 99256,
+   "sha256": "f02ec19d5b1bae96be28ffe1b6788610f877637a13d733902cba4b7f08a1af3a"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:45:39Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://shares.lend.ch/api/brokerbotsettings?ticker=LENDS",
+   "archivo": "crudo/switzerlend-brokerbotsettings.json",
+   "bytes": 1357,
+   "sha256": "019385d749cf96dbfdf298fdd05360952f1f35fbebf79c674b36122784023a6e"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:45:39Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://shares.lend.ch/api/secondarymarketsettings?ticker=LENDS",
+   "archivo": "crudo/switzerlend-secondarymarketsettings.json",
+   "bytes": 494,
+   "sha256": "49b876e974c4aa0520d1162656935c5645834c900911abb60d3ce82f2f9b781f"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:45:40Z",
+   "http": 200,
+   "metodo": "POST {\"company\": 40880}",
+   "url": "https://shares.lend.ch/api/secondarymarkets/getOrderBook",
+   "archivo": "crudo/switzerlend-getOrderBook.json",
+   "bytes": 559,
+   "sha256": "42ee0f9f273b88345e72e668a57e9ea55a1aa38f43c5ac8771dc29298c53f8ac"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:45:40Z",
+   "http": 200,
+   "metodo": "POST {\"company\": 40880, \"limit\": 5000}",
+   "url": "https://shares.lend.ch/api/secondarymarkets/getTrades",
+   "archivo": "crudo/switzerlend-getTrades.json",
+   "bytes": 29537,
+   "sha256": "97a527d4018fbe7a7401a94c41d7931cb11f173c73e208eff064cc14e741ef25"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:39Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://sourcify.dev/server/v2/contract/1/0x8d90319fe817fe9e23973fcab9f1ff0f1e0d9b65?fields=sources",
+   "archivo": "crudo/sourcify-brokerbot-lends.json",
+   "bytes": 30449,
+   "sha256": "baa3f1af43d72cd9eabadf50d2e4dafc2b047d7255aa8a692edec09c5dacfe15"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:48Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.aktionariat.com/disclaimer",
+   "archivo": "crudo/aktionariat-disclaimer.html",
+   "bytes": 41909,
+   "sha256": "06937b732cefe6d27a7891e0ad6d975f5e69a34d53324ad23cac3707b1414abb"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:48Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://shares.aktionariat.com/investor-page-terms",
+   "archivo": "crudo/aktionariat-investor-page-terms.html",
+   "bytes": 26189,
+   "sha256": "0764d6163b9f1495c1f664a140b2fc9f1f3fee9bb2d48d73f98db1c5421582ff"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:49Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://shares.bossinfo.com/investor-page-terms",
+   "archivo": "crudo/boss-info-investor-page-terms.html",
+   "bytes": 26189,
+   "sha256": "0764d6163b9f1495c1f664a140b2fc9f1f3fee9bb2d48d73f98db1c5421582ff"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:49Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://shares.lend.ch/investor-page-terms",
+   "archivo": "crudo/switzerlend-investor-page-terms.html",
+   "bytes": 26189,
+   "sha256": "0764d6163b9f1495c1f664a140b2fc9f1f3fee9bb2d48d73f98db1c5421582ff"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:49Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.lend.ch/en/investor-relations",
+   "archivo": "crudo/switzerlend-investor-relations-en.html",
+   "bytes": 320486,
+   "sha256": "fc7570687aa2204586086e35ff748ea7d1ade82bd4e76d7bb7a14ba398bd3c9d",
+   "urlFinal": "https://lend.ch/en/investor-relations"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:51Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.bossinfo.com/unternehmen/investor-relations/investor-faq/",
+   "archivo": "crudo/boss-info-investor-faq.html",
+   "bytes": 105452,
+   "sha256": "0b4d2a0b31aa378e604651b275f48deeb41fd2cfe5e2fbd6c3d99f8913173fca"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:52Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://api.polyreg.ch/api/membership-check?name=Aktionariat%20AG",
+   "archivo": "crudo/polyreg-aktionariat-ag.json",
+   "bytes": 77,
+   "sha256": "614eace25af609c5f6679ad0422b859275bf8c5a97d829d160c24912063ee1b0"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:52Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://api.polyreg.ch/api/membership-check?name=Boss%20Info%20AG",
+   "archivo": "crudo/polyreg-boss-info-ag.json",
+   "bytes": 75,
+   "sha256": "858c5ec11734c964f535abadef30fa9d88552f9a1fb955af9324c39a0a963a76"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:53Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://api.polyreg.ch/api/membership-check?name=Switzerlend%20AG",
+   "archivo": "crudo/polyreg-switzerlend-ag.json",
+   "bytes": 76,
+   "sha256": "d7ca18f4bbcdc568a8a77674c41057e7fd39a391de3e999e8ca7a8a3c33b5d77"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:53Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat",
+   "archivo": "crudo/cnmv-aktionariat.html",
+   "bytes": 212291,
+   "sha256": "c4db1db9a5adbecb0d20d003b58c713f70bbf101d17026e5b0246330e880663e"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:55Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Aktionariat+AG",
+   "archivo": "crudo/cnmv-aktionariat-ag.html",
+   "bytes": 212357,
+   "sha256": "ed281baa9b342087b9c4b19efb25da4a686aee0bfd80b708e151062edc035b55"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:56Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info",
+   "archivo": "crudo/cnmv-boss-info.html",
+   "bytes": 212247,
+   "sha256": "509de45d882248326dd39614443dac533bc4d5efebdfdaec02b5d134655ad863"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:58Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Boss+Info+AG",
+   "archivo": "crudo/cnmv-boss-info-ag.html",
+   "bytes": 212313,
+   "sha256": "8119e21610d9a20316ddcdeff9fe5f0601f74323f79bd8ebac29ddb1812d83e5"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:59Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend",
+   "archivo": "crudo/cnmv-switzerlend.html",
+   "bytes": 212291,
+   "sha256": "b56ee27d8eb9c4ae819fb6fdc0cc062e12ba748239a60ad4cf6724c04ce88e04"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:01Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Switzerlend+AG",
+   "archivo": "crudo/cnmv-switzerlend-ag.html",
+   "bytes": 212357,
+   "sha256": "5156dea5d0000b97312ba6ca35b95fc4373c234f16e21138630e1e1b11bf50c6"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:03Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Capital",
+   "archivo": "crudo/cnmv-control-capital.html",
+   "bytes": 240567,
+   "sha256": "416f7d6eb50f569a28e07341770914cacaf6e425d1422078c8980ba98336ed01"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:21Z",
+   "http": 200,
+   "metodo": "POST query=Aktionariat&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4",
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "archivo": "crudo/finma-autorizados-aktionariat.json",
+   "bytes": 466,
+   "sha256": "5bc7a55233cd9af8d8a4590b8e74c16f7d435697c9e13b880f0d2439425da2c6"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:21Z",
+   "http": 200,
+   "metodo": "POST query=Boss%20Info&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4",
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "archivo": "crudo/finma-autorizados-boss-info.json",
+   "bytes": 464,
+   "sha256": "d7dab6ab372143eabf1e77847a846e77b3e88896bb9d9331de2b553b729883bc"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:22Z",
+   "http": 200,
+   "metodo": "POST query=Switzerlend&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4",
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "archivo": "crudo/finma-autorizados-switzerlend.json",
+   "bytes": 466,
+   "sha256": "5a44d1eb44c4dbd5a87994b3b36ed83bcdadf9e4791e202698001aec98ab3983"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:23Z",
+   "http": 200,
+   "metodo": "POST query=Sygnum&ds={721FBF20-81A8-4E0F-B271-1B95975C0EC4}&Order=4",
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "archivo": "crudo/finma-autorizados-control-sygnum.json",
+   "bytes": 1086,
+   "sha256": "07fee30eaefe2fb8763822859034ae6485c5b67df8b2f86a5ba49ded97f62aa5"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:23Z",
+   "http": 200,
+   "metodo": "POST ds={1C6B8731-638C-4003-A93C-A625BF7A6800}&Order=4",
+   "url": "https://www.finma.ch/en/api/search/getresult",
+   "archivo": "crudo/finma-advertencias-completa.json",
+   "bytes": 824498,
+   "sha256": "ecb90d7eba31fa82f0708d606a470dfd8c3f5ac29dcf5e4c3b68b24b5001fb59"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:39Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/aktionariat/public/77/233613e7-3462-4aa5-b9b2-93d6684305f5/Registration%20Agreement.pdf",
+   "archivo": "crudo/aktionariat-RegistrationAgreement.pdf",
+   "bytes": 317532,
+   "sha256": "9b4ebb70593a586110f6a61e316663c2fd0664e38b1753c0eec24d172bcb0d6b"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:40Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/aktionariat/public/77/43cab283-21cc-413a-83d0-3b9322b46702/Token%20Holder%20Agreement.pdf",
+   "archivo": "crudo/aktionariat-TokenHolderAgreement.pdf",
+   "bytes": 72428,
+   "sha256": "650eec368bdd93f45bac1cd37d6034471c4fedc913f53e818af568318f3f6b53"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:41Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.bossinfo.com/wp-content/uploads/Boss_Info_AG-Registration_Regulations-CMTA_compatible_220524_signiert.pdf",
+   "archivo": "crudo/boss-info-RegistrationRegulations.pdf",
+   "bytes": 246294,
+   "sha256": "613277222244065ffc6faf4b1458c700ac86b203d58a816e0e4043d4073e045f"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:43Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/aktionariat/public/40880/100926f2-49f5-4958-ace3-ecaabeef4526/LENDS_TOKEN_Agreement.pdf",
+   "archivo": "crudo/switzerlend-TokenAgreement.pdf",
+   "bytes": 455843,
+   "sha256": "896479984f553b3b6b37264482a98a34bc39f0d776967756106267abf96bcc18"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:44Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://storage.googleapis.com/aktionariat/public/40880/869c7faa-0f1c-4d52-a5ae-b4f4c129d1a4/Registration_Agreement_Lend_signed.pdf",
+   "archivo": "crudo/switzerlend-RegistrationAgreement.pdf",
+   "bytes": 480316,
+   "sha256": "6d0ffcee66df76ba91d09184840ec6fe406d8e99e6fc89bccbbb7945fd7b1d06"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:45Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1438805.json",
+   "archivo": "crudo/zefix-aktionariat.json",
+   "bytes": 13485,
+   "sha256": "b46ae864bb099562044309927ce8d3946fd7122b1d094cdd47505ac281b1161b"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:46Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/450692.json",
+   "archivo": "crudo/zefix-boss-info.json",
+   "bytes": 17747,
+   "sha256": "c22a7dcf11d9bc7b22db293a568833089869c4bf8622a1339b99496b244fea9d"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:46Z",
+   "http": 200,
+   "metodo": "GET",
+   "url": "https://www.zefix.ch/ZefixREST/api/v1/firm/1231406.json",
+   "archivo": "crudo/zefix-switzerlend.json",
+   "bytes": 27929,
+   "sha256": "f3547c2433780660924a77bafe8fa331b77b8319411a21851e6f156f4c33f6a5"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:59Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.aktionariat.com/invest",
+   "archivo": "aktionariat-invest-render-revisor.txt",
+   "bytes": 2442,
+   "sha256": "f0c5709e8d68689f9dfdcb56c48cd468bd210c41ccf29f1328565df3e63b0719"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:47:59Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.aktionariat.com/invest",
+   "archivo": "aktionariat-invest-render-revisor.png",
+   "bytes": 147470,
+   "sha256": "6cc47aa693cf267b710710ca5dadbfabdc4caa472de155519649660f54755181"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:07Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.aktionariat.com/trade",
+   "archivo": "aktionariat-trade-render-revisor.txt",
+   "bytes": 3580,
+   "sha256": "ba840a7904a1b1efeda62560f5db174c5f6a5e4a39698552e17028db679a3231"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:07Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.aktionariat.com/trade",
+   "archivo": "aktionariat-trade-render-revisor.png",
+   "bytes": 187157,
+   "sha256": "75d0dc5d972487d0ffd99edc7fcce3cc03bc5207cb6e3c1858bc07a5ae786b55"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:07Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión) · pestaña Sell",
+   "url": "https://shares.aktionariat.com/trade",
+   "archivo": "aktionariat-trade-vender-render-revisor.txt",
+   "bytes": 3584,
+   "sha256": "e78151714a79baf63e4ff32d728b379b6ed6046ae464c7cf294f444d6e3b1516"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:17Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.bossinfo.com/invest",
+   "archivo": "boss-info-invest-render-revisor.txt",
+   "bytes": 2419,
+   "sha256": "53d928916bb750f6c77ca0475927fbe58ec44dd35a374249e531637e5d61b517"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:17Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.bossinfo.com/invest",
+   "archivo": "boss-info-invest-render-revisor.png",
+   "bytes": 147781,
+   "sha256": "dff5b01a8950e3be57610e2ead73c585390d401f14116bfbd79bc9733ca0ce4f"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:24Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.bossinfo.com/trade",
+   "archivo": "boss-info-trade-render-revisor.txt",
+   "bytes": 3471,
+   "sha256": "145dea4bc2c3a0d2ec40df1a17b4b38d437d94bd2fd3044ad85a57f228039d61"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:24Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.bossinfo.com/trade",
+   "archivo": "boss-info-trade-render-revisor.png",
+   "bytes": 187941,
+   "sha256": "adf3b2403aa3c87b3cf20c11437a9463b2c8446831422aa3c7b970a1aabaf177"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:24Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión) · pestaña Sell",
+   "url": "https://shares.bossinfo.com/trade",
+   "archivo": "boss-info-trade-vender-render-revisor.txt",
+   "bytes": 3475,
+   "sha256": "c7c9e34ec4f96c85b0027ef2c544a03da49cad1b05dd457a040625c67d37f9d9"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:33Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.lend.ch/invest",
+   "archivo": "switzerlend-invest-render-revisor.txt",
+   "bytes": 2445,
+   "sha256": "bf799edec451e8ad4ebdd435a05aeb2d63bbb93e66014a4dfaf4e990a1d548ea"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:33Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.lend.ch/invest",
+   "archivo": "switzerlend-invest-render-revisor.png",
+   "bytes": 147484,
+   "sha256": "17fae5f51b96ca1efb99d53bef856d7dd67fc5087c8dde5836e4fc373460ade8"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:41Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.lend.ch/trade",
+   "archivo": "switzerlend-trade-render-revisor.txt",
+   "bytes": 3566,
+   "sha256": "1d25719045f9f91e41bbcb6afa766a1a3740ad539425b736820f32a99b18ab7a"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:41Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión)",
+   "url": "https://shares.lend.ch/trade",
+   "archivo": "switzerlend-trade-render-revisor.png",
+   "bytes": 187720,
+   "sha256": "a269812655f4edba27a4d137afc47a7b49b303b5d0f9dc7fcab009728b054b6b"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:48:41Z",
+   "http": 200,
+   "metodo": "Playwright (chromium sin cabeza, sin sesión) · pestaña Sell",
+   "url": "https://shares.lend.ch/trade",
+   "archivo": "switzerlend-trade-vender-render-revisor.txt",
+   "bytes": 3570,
+   "sha256": "d3b09e56a1da00d3e35ebd62fae5ea2b6bca903a0143330343a79e27237fd2b9"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:46:30Z",
+   "http": 200,
+   "metodo": "JSON-RPC",
+   "url": "https://ethereum-rpc.publicnode.com",
+   "archivo": "crudo/onchain-revisor-20261112.json",
+   "bytes": 4691,
+   "sha256": "d8344de9117e30445bc55fc9a7cc4f4f1a4b5c3c6fed5e16e45aba713aefe88e",
+   "nota": "eth_call de solo lectura, https://ethereum-rpc.publicnode.com, bloque 26395364"
+  },
+  {
+   "consultadoUtc": "2026-11-12T00:50:38Z",
+   "http": 200,
+   "metodo": "JSON-RPC",
+   "url": "https://ethereum-rpc.publicnode.com",
+   "archivo": "crudo/onchain-tx-boss-20261105-revisor.json",
+   "bytes": 299,
+   "sha256": "aa59cac41ade283ecebf54987a28e5914e1ca87fe2dda8b865a00221b1ae3ceb",
+   "nota": "eth_getTransactionByHash de solo lectura; recibo no servido por el nodo"
+  }
+ ]
+}

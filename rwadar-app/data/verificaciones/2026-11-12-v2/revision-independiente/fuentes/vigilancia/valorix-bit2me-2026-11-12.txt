@@ -1,0 +1,25 @@
+Fuente: https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/
+Consulta UTC: 2026-11-12T00:53:08Z · HTTP 200 · 164149 bytes · SHA-256 b460a5c8eb2e2757a6a8f47cfd4012a98973216623c3b301e953792b5c5c66f5
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+, el mismo emisor con el que validó su infraestructura en el Sandbox: un bono corporativo tokenizado de 1 millón de euros, dirigido a inversores elegibles conforme a la normativa de emisión aplicable, previsto para diciembre de 2026, que cotizará posteriormente en el mercado secundario. A esta primera operación le seguirá en 2027 una cartera de nuevas emisiones de acciones, bonos y fondos de compañías de los sectores de tecnología, crecimiento, farma y renovables, sujetas a la aprobación del comité de admisiones.
+
+Fuente: https://valorix.com/
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 200 · 113715 bytes · SHA-256 5ae0d7ef2a0fcb590280dfa4ed3433686ab240b1630d55369114a5a00ae6f0b6
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Fuente: https://valorix.com/invertir.html
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 200 · 47487 bytes · SHA-256 b233b45d2d97f4d8e28e7af9c1dd046ba9d4701dcbb3b8e7acba1d1e4b20ec08
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Fuente: https://valorix.com/docs/documento-de-emision.pdf
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 200 · 820510 bytes · SHA-256 5640e21125bfaf15eda1afd828e7693c9a8c798a99e48b7d62b3f339d6e0f9e6
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Fuente: https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A56759137&lang=es
+Consulta UTC: 2026-11-12T00:51:20Z · HTTP 200 · 149304 bytes · SHA-256 42c613705fd8738a6743e55c8b41520fa92ef087682f6107254f14653ae49cc2
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+No se han encontrado datos disponibles
+
+valorix.es: curl a las 2026-11-12T00:52:42Z → «curl: (35) Recv failure: Connection reset by peer»; navegador a las 00:53:48Z → HTTP 502.

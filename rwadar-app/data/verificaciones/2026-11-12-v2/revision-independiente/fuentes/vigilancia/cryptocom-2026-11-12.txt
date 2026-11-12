@@ -1,0 +1,42 @@
+Fuente: https://crypto.com/document/fccy-tokenised-equities-terms
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 200 · 217691 bytes · SHA-256 1169bff5d9a4deaf72885cf185e5134274089e0534fb43eab0ba8cdd37421c6f
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Last Update: 11 August 2026 · licence number 344/17
+3.1(d) «not be located in, under the jurisdiction of, or a national or resident of any of the countries, states and jurisdictions listed in the Tokenized Stocks FAQs»
+5.2 «Foris Capital CY Ltd makes the Key Information Document and Offering Documents available to you via the Crypto.com App in electronic form.»
+
+Fuente: https://crypto.com/document/fccy-tokenised-equities-risk-statement
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 200 · 99578 bytes · SHA-256 8d5a498fe8787ae05d5911f5d00826b6e97db05a9d31c79aa04f13f87052fe3e
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+
+https://crypto.com/eea/financialservices/disclosures · 2026-11-12T00:52:52Z · HTTP 301 → https://crypto.com/ (no se sigue ni se elude)
+
+Fuente: https://help.crypto.com/en/articles/15855813-about-crypto-com-tokenized-stocks-eea
+Consulta UTC: 2026-11-12T00:54:35Z · HTTP 200 · 134254 bytes · SHA-256 c42663f625771b747ab4908165455877600ccffeea8b39df1b8e5c435ef1076e
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+«You can trade tokenized stocks if the feature is available in your jurisdiction and you have completed onboarding in the Crypto.com App.» · «Starting from $1: Buy as little as $1 of any tokenized stock»
+
+Fuente: https://itunes.apple.com/lookup?id=1262148500&country=es
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 200 · 11825 bytes · SHA-256 8e4dfc81a53fe5895c74252c7123e1062d37271693f953df874bdc30526951f0
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Crypto.com: Opera cada mercado · versión 3.244.01 · 2026-11-11T01:49:40Z · descripción en castellano: «…como Apple, Tesla, NVIDIA y Amazon, desde 1 USD» · «licencia de Empresa de Servicios de Inversión de Chipre (CIF) n.º 344/17» · «consulta aquí el KID» (sin enlace en la ficha)
+
+Fuente: https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/46172/
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 200 · 627120 bytes · SHA-256 6306bc9ffd94378431cf6d7ef856f4d375218fd724341b015dce89c9f67e4fbe
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Licencia 344/17 · fecha 27/11/2017 · «Spain» en la lista de países de prestación transfronteriza
+
+Fuente: https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=4485
+Consulta UTC: 2026-11-12T00:51:20Z · HTTP 200 · 217313 bytes · SHA-256 031f36b7773b5614a69fefed4eba6a5f452e61e2eff8b3a5a28c65a4f3e9a9d5
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+FORIS CAPITAL CY LIMITED · 4485 · 19/01/2018
+Fuente: https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=4485&vista=17
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 200 · 272066 bytes · SHA-256 f90798ede259c11d02c0d4abdb8cc3b8367e4d1057782c4e822b63e6f4262d2a
+Revisor independiente, grupo vigilancia, 12/11/2026.
+

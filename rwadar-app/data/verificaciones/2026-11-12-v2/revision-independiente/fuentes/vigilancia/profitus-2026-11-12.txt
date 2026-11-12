@@ -1,0 +1,28 @@
+Fuente: https://api.profitus.com/api/v1/landing/projects?limit=50&page=1
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 200 · 51712 bytes · SHA-256 a97366dbf58b6453d029cb1791fdbcaa5255182a679a89a8ecde1c33004fcf03
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Fuente: https://api.profitus.com/api/v1/landing/projects?limit=50&page=2
+Consulta UTC: 2026-11-12T00:53:08Z · HTTP 200 · 51546 bytes · SHA-256 2e8a7fe1e2f1c4addd4e52bafe151a104ae605af8f08b85e5c0da8f69fefaf3c
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Fuente: https://api.profitus.com/api/v1/landing/projects?limit=50&page=3
+Consulta UTC: 2026-11-12T00:53:34Z · HTTP 200 · 51541 bytes · SHA-256 bb3ceefc359d5c48a6e7e3d49adf836fe04b28396004b58cef46ec3ac788b70b
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+total=550
+Estados y tipos en las 150 primeras filas: {"open_for_investments/standard": 7, "funded/standard": 2, "confirmed/standard": 141}
+P00001399-8 · es · standard · Edificio Arenys, Barcelona VIII
+P00001583-10 · lt · standard · Huberto Homes, Trakai dist. X
+P00001457-6 · es · standard · Villas Complex, Valencia VI
+P00001400-28 · lt · standard · Moletai Oasis XXIV
+P00001631-6 · lt · standard · Spindulio Residential, Vilnius dist. VI
+P00001536-6 · lt · standard · Apartment building in Panevezys VI
+P00001663-2 · es · standard · Infinity Villas Altea, Alicante reg. II
+
+Fuente: https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es
+Consulta UTC: 2026-11-12T00:51:20Z · HTTP 200 · 176091 bytes · SHA-256 5d5ef03e0732009ff0d1e001175ea0a92ef6935e96a723fb9511eff558375326
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Columnas: Denominación Social | País | No. Registro Oficial | Fecha Inicio
+UAB "PROFITUS CROWDFUNDING" | LITUANIA | 21 | 28/12/2023

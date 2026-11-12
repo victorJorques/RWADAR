@@ -1,0 +1,421 @@
+{
+ "fuente": "https://api.app.brickwise.at/api/v1/assets y /api/v2/assets (sin token)",
+ "consultadoUtc": "2026-11-12T00:40:32Z",
+ "sha256": {
+  "v1": "223cb2fd8363b99d5c176a16196e23a17f3a81bb8fb8d2032501ce20c498b56d",
+  "v2": "3504bf67b9f8e37090ce11af14a2f531811343da01bec8a313fe74c412c3d3a9"
+ },
+ "nota": "Sin direcciones de cartera ni identificadores de orden. Importe +1,5 % redondeado al céntimo con la regla habitual (0,005 hacia arriba). «Ayer» = copia del revisor del 11/11 a las 09:50 UTC (api-v1-assets-revisor-2.json).",
+ "totales": {
+  "ventasAbiertas": 422,
+  "comprasAbiertas": 95
+ },
+ "activos": {
+  "AT0000A2RAH5": {
+   "titulo": "Wohnung, Plüddemanngasse 101, Graz",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "lowestOfferPrice_v2": 75,
+   "participacionesEnVenta": 335,
+   "ventaMasBarata": 75,
+   "ordenesAVentaMasBarata": [
+    {
+     "cantidad": 2,
+     "creada": "2026-11-04",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    }
+   ],
+   "ordenMenorImporte": {
+    "cantidad": 1,
+    "precio": 99,
+    "conComision": "100,49",
+    "creada": "2026-07-15"
+   },
+   "mejorCompra": {
+    "precio": 20,
+    "cantidad": 1,
+    "creada": "2026-04-23"
+   },
+   "cambiosFrenteAyer": {
+    "desaparecen": [],
+    "aparecen": []
+   }
+  },
+  "AT0000A2T4D7": {
+   "titulo": "Wohnung, Sonnleithnergasse 2, Wien 10.",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "lowestOfferPrice_v2": 75,
+   "participacionesEnVenta": 97,
+   "ventaMasBarata": 75,
+   "ordenesAVentaMasBarata": [
+    {
+     "cantidad": 11,
+     "creada": "2026-04-28",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    }
+   ],
+   "ordenMenorImporte": {
+    "cantidad": 1,
+    "precio": 80,
+    "conComision": "81,20",
+    "creada": "2026-11-05"
+   },
+   "mejorCompra": {
+    "precio": 65,
+    "cantidad": 1,
+    "creada": "2026-10-16"
+   },
+   "cambiosFrenteAyer": {
+    "desaparecen": [],
+    "aparecen": []
+   }
+  },
+  "AT0000A2U5V3": {
+   "titulo": "Trafik, Kohldorfer Straße 102, Klagenfurt",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "lowestOfferPrice_v2": 95,
+   "participacionesEnVenta": 302,
+   "ventaMasBarata": 95,
+   "ordenesAVentaMasBarata": [
+    {
+     "cantidad": 5,
+     "creada": "2026-03-21",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    },
+    {
+     "cantidad": 10,
+     "creada": "2026-03-30",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    },
+    {
+     "cantidad": 1,
+     "creada": "2026-11-05",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    }
+   ],
+   "ordenMenorImporte": {
+    "cantidad": 1,
+    "precio": 95,
+    "conComision": "96,43",
+    "creada": "2026-11-05"
+   },
+   "mejorCompra": {
+    "precio": 15,
+    "cantidad": 1,
+    "creada": "2026-09-21"
+   },
+   "cambiosFrenteAyer": {
+    "desaparecen": [],
+    "aparecen": []
+   }
+  },
+  "AT0000A2WCD0": {
+   "titulo": "Wohnung, Stallhofstraße 28, Gratwein",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "lowestOfferPrice_v2": 68.8,
+   "participacionesEnVenta": 317,
+   "ventaMasBarata": 68.8,
+   "ordenesAVentaMasBarata": [
+    {
+     "cantidad": 1,
+     "creada": "2026-11-08",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    }
+   ],
+   "ordenMenorImporte": {
+    "cantidad": 1,
+    "precio": 68.8,
+    "conComision": "69,83",
+    "creada": "2026-11-08"
+   },
+   "mejorCompra": {
+    "precio": 30,
+    "cantidad": 1,
+    "creada": "2026-07-01"
+   },
+   "cambiosFrenteAyer": {
+    "desaparecen": [],
+    "aparecen": []
+   }
+  },
+  "AT0000A2WCE8": {
+   "titulo": "Wohnung, Schwarzer Weg 18, Graz",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "lowestOfferPrice_v2": 69.9,
+   "participacionesEnVenta": 299,
+   "ventaMasBarata": 69.9,
+   "ordenesAVentaMasBarata": [
+    {
+     "cantidad": 1,
+     "creada": "2026-10-27",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    }
+   ],
+   "ordenMenorImporte": {
+    "cantidad": 1,
+    "precio": 69.9,
+    "conComision": "70,95",
+    "creada": "2026-10-27"
+   },
+   "mejorCompra": {
+    "precio": 60,
+    "cantidad": 1,
+    "creada": "2026-11-10"
+   },
+   "cambiosFrenteAyer": {
+    "desaparecen": [],
+    "aparecen": []
+   }
+  },
+  "AT0000A2YPQ0": {
+   "titulo": "Drautalresidenz, Paternion",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "lowestOfferPrice_v2": 70,
+   "participacionesEnVenta": 150,
+   "ventaMasBarata": 70,
+   "ordenesAVentaMasBarata": [
+    {
+     "cantidad": 3,
+     "creada": "2026-10-18",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    }
+   ],
+   "ordenMenorImporte": {
+    "cantidad": 1,
+    "precio": 84,
+    "conComision": "85,26",
+    "creada": "2026-01-28"
+   },
+   "mejorCompra": {
+    "precio": 60,
+    "cantidad": 1,
+    "creada": "2026-11-05"
+   },
+   "cambiosFrenteAyer": {
+    "desaparecen": [],
+    "aparecen": []
+   }
+  },
+  "AT0000A2ZT84": {
+   "titulo": "Randhartingergasse 9, Wien",
+   "stage": "secondary",
+   "availableBricks": 374,
+   "lowestOfferPrice_v2": 78,
+   "participacionesEnVenta": 189,
+   "ventaMasBarata": 78,
+   "ordenesAVentaMasBarata": [
+    {
+     "cantidad": 20,
+     "creada": "2026-06-29",
+     "interesadoApuntado": true,
+     "bloqueoActivo": false
+    },
+    {
+     "cantidad": 1,
+     "creada": "2026-11-02",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    }
+   ],
+   "ordenMenorImporte": {
+    "cantidad": 1,
+    "precio": 78,
+    "conComision": "79,17",
+    "creada": "2026-11-02"
+   },
+   "mejorCompra": {
+    "precio": 56,
+    "cantidad": 1,
+    "creada": "2026-11-10"
+   },
+   "cambiosFrenteAyer": {
+    "desaparecen": [],
+    "aparecen": []
+   }
+  },
+  "AT0000A31KP7": {
+   "titulo": "Ferien-Appartement, Hinterstoder 50",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "lowestOfferPrice_v2": 75,
+   "participacionesEnVenta": 265,
+   "ventaMasBarata": 75,
+   "ordenesAVentaMasBarata": [
+    {
+     "cantidad": 5,
+     "creada": "2026-11-08",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    }
+   ],
+   "ordenMenorImporte": {
+    "cantidad": 1,
+    "precio": 90,
+    "conComision": "91,35",
+    "creada": "2026-08-02"
+   },
+   "mejorCompra": {
+    "precio": 20,
+    "cantidad": 1,
+    "creada": "2025-05-19"
+   },
+   "cambiosFrenteAyer": {
+    "desaparecen": [],
+    "aparecen": []
+   }
+  },
+  "AT0000A324B4": {
+   "titulo": "Wohnung, Pottendorfer Straße 62 TOP 2.06, Wr. Neustadt",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "lowestOfferPrice_v2": 80,
+   "participacionesEnVenta": 106,
+   "ventaMasBarata": 80,
+   "ordenesAVentaMasBarata": [
+    {
+     "cantidad": 11,
+     "creada": "2026-02-08",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    }
+   ],
+   "ordenMenorImporte": {
+    "cantidad": 1,
+    "precio": 115,
+    "conComision": "116,73",
+    "creada": "2025-08-17"
+   },
+   "mejorCompra": {
+    "precio": 19,
+    "cantidad": 3,
+    "creada": "2025-11-06"
+   },
+   "cambiosFrenteAyer": {
+    "desaparecen": [
+     [
+      "sell",
+      73,
+      1,
+      "2026-11-11"
+     ]
+    ],
+    "aparecen": []
+   }
+  },
+  "AT0000A38J32": {
+   "titulo": "Photovoltaik Anlage GreenPoint mit Überschussbeteiligung",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "lowestOfferPrice_v2": 102,
+   "participacionesEnVenta": 347,
+   "ventaMasBarata": 102,
+   "ordenesAVentaMasBarata": [
+    {
+     "cantidad": 5,
+     "creada": "2026-09-05",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    },
+    {
+     "cantidad": 2,
+     "creada": "2026-09-28",
+     "interesadoApuntado": true,
+     "bloqueoActivo": false
+    },
+    {
+     "cantidad": 1,
+     "creada": "2026-11-11",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    }
+   ],
+   "ordenMenorImporte": {
+    "cantidad": 1,
+    "precio": 102,
+    "conComision": "103,53",
+    "creada": "2026-11-11"
+   },
+   "mejorCompra": {
+    "precio": 84,
+    "cantidad": 1,
+    "creada": "2026-06-23"
+   },
+   "cambiosFrenteAyer": {
+    "desaparecen": [
+     [
+      "sell",
+      100,
+      5,
+      "2026-09-20"
+     ]
+    ],
+    "aparecen": [
+     [
+      "sell",
+      102,
+      1,
+      "2026-11-11"
+     ]
+    ]
+   }
+  },
+  "AT0000A38J40": {
+   "titulo": "Photovoltaik Anlage Cohotel mit Überschussbeteiligung",
+   "stage": "secondary",
+   "availableBricks": 0,
+   "lowestOfferPrice_v2": 102,
+   "participacionesEnVenta": 59,
+   "ventaMasBarata": 102,
+   "ordenesAVentaMasBarata": [
+    {
+     "cantidad": 1,
+     "creada": "2026-11-11",
+     "interesadoApuntado": false,
+     "bloqueoActivo": false
+    }
+   ],
+   "ordenMenorImporte": {
+    "cantidad": 1,
+    "precio": 102,
+    "conComision": "103,53",
+    "creada": "2026-11-11"
+   },
+   "mejorCompra": {
+    "precio": 3,
+    "cantidad": 1,
+    "creada": "2024-11-23"
+   },
+   "cambiosFrenteAyer": {
+    "desaparecen": [
+     [
+      "sell",
+      120,
+      7,
+      "2026-02-08"
+     ]
+    ],
+    "aparecen": [
+     [
+      "sell",
+      102,
+      1,
+      "2026-11-11"
+     ]
+    ]
+   }
+  }
+ }
+}

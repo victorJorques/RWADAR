@@ -1,0 +1,187 @@
+DOCUMENTO DE DATOS FUNDAMENTALES
+
+Finalidad
+Este documento le proporciona información fundamental que debe conocer sobre este producto de inversión. No se trata de material comercial. Es una información exigida por
+ley para ayudarle a comprender la naturaleza, los riesgos, los costes y los beneficios y pérdidas potenciales de este producto y para ayudarle a compararlo con otros productos.
+
+
+
+
+PRODUCTO
+
+NVIDIA xStock (Ticker: NVDAx)
+ISIN: CH1436219195
+Fabricante del producto:
+Backed Assets (JE) Limited (el “Emisor”), sitio web: www.backedassets.fi. Para más información llame al +41 41 541 16 09. El Emisor no está domiciliado en la
+Unión Europea (UE) y no está regulado por una autoridad competente de la UE. La nota sobre los valores ha sido aprobada por la Autoridad del Mercado
+Financiero de Liechtenstein (FMA) con efectos a partir del 08 may. 2026. Esta aprobación no debe interpretarse como una aprobación del emisor o de la calidad
+de los valores objeto de la presente Nota sobre los Valores. Nota
+
+                                                  Este documento tiene fecha 11 nov. 2026
+                    Está a punto de adquirir un producto que no es sencillo y que puede ser difícil de comprender.
+¿QUÉ ES ESTE PRODUCTO?
+
+                          Certificado de seguimiento indefinido en forma de valores nominativos (Registerwertrechte) con arreglo al artículo 973d y ss. 973d y
+Tipo
+                          ss.y siguientes del Código de Obligaciones suizo (CO) conforme a la legislación suiza.
+
+                          Este producto no tiene vencimiento fijo. No obstante, puede ser rescatado por el inversor o rescindido por el emisor. En caso de En
+Plazo                     caso de rescisión por el emisor, éste notificará la rescisión a los inversores lo antes posible y, en cualquier caso, a más tardar 30 días
+                          hábiles antes de la fecha de rescisión. A más tardar 30 días hábiles antes de la fecha de rescisión.
+
+                          El producto es un Certificado Tracker emitido como token en redes blockchain compatibles. Sigue el precio de NVIDIA Corporation (el
+                          „Subyacente“). El objetivo de inversión del Subyacente es ofrecer la rentabilidad del precio de las acciones ordinarias de NVIDIA
+Objetivos
+                          Corporation. NVDAx está diseñado para brindar a los inversores elegibles un acceso conforme a la normativa al precio de las acciones
+                          de NVIDIA Corporation.
+
+                            INFORMACIÓN SUBYACENTE
+                            el Emisor             NVIDIA Corporation
+                            Nombre                NVIDIA Corporation
+                            ISIN                  US67066G1040
+                            Ticker              NVDA UQ Equity
+                          El producto está denominado en dólares estadounidenses. La moneda base subyacente es el dólar estadounidense.
+                          Los tokens son libremente transferibles entre monederos, están totalmente garantizados por el activo subyacente y se emiten en
+                          conformidad con la ley DLT suiza
+                            PROVEEDORES DE SERVICIOS
+                            Tokenizador           Backed Finance AG
+                            Corredor              Alpaca Securities LLC, InCore Bank AG, Maerki Baumann & Co. AG
+                            Custody               Alpaca Securities LLC, InCore Bank AG, Maerki Baumann & Co. AG
+                             Agente de
+                                                  Security Agent Services AG
+                             seguridad
+                          El Emisor tiene la intención de admitir el Producto a negociación en Payward Digital Solutions Ltd., Bermudas ("Kraken Bermuda"), con
+                          licencia para llevar a cabo negocios de activos digitales y operar una bolsa de activos digitales. Además, el Emisor emitirá y reembolsará
+                          Productos a petición de Kraken Bermuda, así como de otros intermediarios europeos y no europeos que actúen como Participantes
+                          Autorizados.
+
+
+INVERSOR MINORISTA AL QUE VA DIRIGIDO
+Este producto está destinado a inversores minoristas que:
+     busquen principalmente el crecimiento del capital y esperen que el subyacente se comporte de forma que genere una rentabilidad favorable
+     estén dispuestos y sean capaces de soportar una pérdida total de su inversión
+     estén dispuestos a aceptar un nivel de riesgo el segundo riesgo más alto, conforme al indicador de riesgo que se resume a continuación
+     tienen la capacidad de tomar una decisión de inversión con conocimiento de causa, basada en un conocimiento y una comprensión suficientes del
+     producto y de sus riesgos y beneficios específicos, posiblemente como resultado de experiencias anteriores. un conocimiento y una comprensión
+     suficientes del producto y de sus riesgos y beneficios específicos, posiblemente como resultado de la experiencia adquirida invirtiendo y/o manteniendo
+     una serie de productos similares que ofrecen una exposición similar al mercado, o como resultado de actividades formativas pertinentes. una exposición
+     similar al mercado o actividades de formación pertinentes
+     tener un horizonte de inversión mínimo correspondiente al periodo de tenencia recomendado que se indica a continuación.
+¿QUÉ RIESGOS CORRO Y QUÉ PODRÍA OBTENER A CAMBIO?
+
+INDICADOR DE RIESGO
+
+                                                                  El indicador resumido de riesgo es una guía del nivel de riesgo de este producto en
+    1        2        3       4       5        6       7          comparación con otros productos. Muestra las probabilidades de que el producto pierda
+                                                                  dinero debido a la evolución de los mercados o porque no podamos pagarle.
+ RIESGO MÁS BAJO                             RIESGO MÁS ALTO      Hemos clasificado este producto en la clase de riesgo 6 en una escala de 7, en la que 6 significa
+                                                                  el segundo riesgo más alto. Esta evaluación califica la posibilidad de sufrir pérdidas en
+                                                                  rentabilidades futuras como alta y la probabilidad de que una mala coyuntura de mercado
+             El Indicador de Riesgo presupone que usted           influya en la capacidad de Backed Assets (JE) de pagarle como probable.
+     !       mantendrá el producto durante el período de
+             mantenimiento recomendado de 5 años.
+                                                                  Este producto no incluye ninguna protección frente al comportamiento futuro del mercado,
+                                                                  por lo que podría incurrir en pérdidas significativas. Si no podemos pagarte lo que se te debe,
+                                                                  podrías incurrir en pérdidas significativas.
+
+
+
+
+Escenarios de rentabilidad
+Lo que obtenga de este producto dependerá de la evolución futura del mercado, la cual es incierta y no puede predecirse con exactitud.
+Los escenarios que se muestran son ilustraciones basadas en resultados pasados y en determinadas hipótesis. Los mercados podrían evolucionar de manera
+muy distinta en el futuro.
+Período de mantenimiento recomendado:                                           5 años
+Ejemplo de inversión:                                                           10.000,00 USD
+Escenarios                                                                                                En caso de salida      En caso de salida después del
+                                                                                                          después de 1 año       Período de mantenimiento
+                                                                                                                                 recomendado
+Mínimo              No hay un rendimiento mínimo garantizado. Podría perder parte o la totalidad de su inversión.
+Tensión             Lo que puede recibir una vez deducidos los costes                                     475,00 USD             6,00 USD
+                    Rendimiento medio cada año                                                            -95,09 %               -77,48 %
+Desfavorable        Lo que puede recibir una vez deducidos los costes                                     4.846,00 USD           3.598,00 USD
+                    Rendimiento medio cada año                                                            -51,15 %               -18,46 %
+Moderado            Lo que puede recibir una vez deducidos los costes                                     15.980,00 USD          132.018,00 USD
+                    Rendimiento medio cada año                                                            58,99 %                67,40 %
+Favorable           Lo que puede recibir una vez deducidos los costes                                     36.230,00 USD          322.958,00 USD
+                    Rendimiento medio cada año                                                              257,28 %               100,14 %
+Los escenarios ilustran el rendimiento de tu inversión. Presentan una estimación del rendimiento futuro basada en datos pasados y no son un indicador exacto.
+El rendimiento real variará en función del comportamiento del mercado y del tiempo que conserves la inversión/el producto. Las cifras presentadas incluyen
+todos los costes del producto propiamente dicho, pero es posible que no incluyan todos los costes que usted deba pagar a su asesor o distribuidor. Las cifras no
+tienen en cuenta su situación fiscal personal, que también puede influir en la cantidad que reciba. El escenario de tensión muestra lo que usted podría recibir en
+circunstancias extremas de los mercados.
+Escenario desfavorable: Este tipo de escenario se produjo para una inversión entre 03/11/2025 y 10/11/2026.
+Escenario moderado: Este tipo de escenario se produjo para una inversión entre 30/11/2020 y 28/11/2025.
+Escenario favorable: Este tipo de escenario se produjo para una inversión entre 31/05/2019 y 31/05/2024.
+Este producto no se puede cancelar fácilmente. Esto significa que es difícil calcular cuánto recuperará si el contrato se rescinde antes del periodo de
+mantenimiento recomendado. No podrá rescindir el contrato anticipadamente, o tendrá que pagar comisiones elevadas o sufrir una pérdida importante si lo
+hace.
+* El calculo esta basado sobre el importe nocional del contrato (en este ejemplo 10.000,00 USD).
+¿QUÉ PASA SI BACKED ASSETS (JE) NO PUEDE PAGAR?
+
+
+El producto está garantizado por la compra de los activos subyacentes. Cuando un inversor compra el producto, el emisor utiliza los ingresos menos los costes,
+para financiar la compra de los activos subyacentes. El valor de la garantía en cualquier momento debe corresponder al valor del producto en ese momento,
+calculado en consecuencia por el emisor. El valor de la garantía en todo momento debe corresponder al valor del producto en ese momento, calculado en
+consecuencia por el emisor. Los inversores tienen un primer derecho sobre la garantía atribuida al producto específico.
+Además, los inversores tienen un crédito subordinado sobre los activos del emisor una vez que se hayan liquidado todos los créditos primarios.
+El producto no está asegurado ni garantizado por ningún gobierno u organismo».
+
+¿CUÁLES SON LOS COSTES?
+
+La persona que le asesore sobre este producto o se lo venda puede cobrarle otros costes. En tal caso, esa persona le facilitará información acerca de estos
+costes y de la incidencia que tienen en su inversión.
+COSTES A LO LARGO DEL TIEMPO
+Los cuadros muestran los importes que se detraen de su inversión para cubrir diferentes tipos de costes. Estos importes dependen de cuánto invierte, de cuánto
+tiempo mantiene el producto y de lo buenos que sean los resultados del producto. Los importes indicados aquí ilustran un ejemplo de inversión de una
+determinada cuantía durante diferentes períodos de inversión posibles.
+Hemos partido de los siguientes supuestos:
+     •    El primer año recuperaría usted el importe invertido (rendimiento anual del 0 %). En relación con los demás períodos de mantenimiento, hemos
+          supuesto que el producto evoluciona tal como muestra el escenario moderado.
+     •    Se invierten 10.000,00 USD.
+
+
+                                                                                                                               En caso de salida después del
+                                                                                                                               Período de mantenimiento
+                                                                                                                               recomendado
+Costes totales                                                                                                                 100,00 USD
+Incidencia anual de los costes (*)                                                                                       0,1803 % cada año
+(*) Refleja la medida en que los costes reducen su rendimiento cada año a lo largo del período de mantenimiento. Por ejemplo, muestra que, en caso de salida
+al término del período de mantenimiento recomendado, el rendimiento medio que se prevé que obtendrá cada año será del 67,58 % antes de deducir los costes
+y del 67,40 % después de deducir los costes.
+COMPOSICIÓN DE LOS COSTES
+
+Costes únicos de entrada o salida                                                                                              En caso de salida después de 1 año
+Costes de entrada                         Hasta el 0,50 % del importe que pagas al entrar en esta inversión.                   50,00 USD
+Costes de salida                          Hasta el 0,50 % del valor de tu inversión al salir, antes de que se te pague.        50,00 USD
+Costes corrientes
+Comisiones de gestión y otros costes      Actualmente, el seguidor no cobra comisión de gestión. Es posible que en el
+                                                                                                                               0,00 USD
+administrativos o de funcionamiento       futuro se introduzca una comisión de hasta el 0,25% anual.
+Costes de operación                       No hay costes de transacción para este producto.                                     0,00 USD
+Costes accesorios detraídos en condiciones específicas
+Comisiones de rendimiento                 Este producto no está sujeto a comisión de rentabilidad.                             0,00 USD
+
+Los intermediarios o participantes autorizados que intervengan en la distribución, negociación u operaciones en el mercado secundario de este producto
+pueden aplicar comisiones o cargos adicionales. Estos costes no son impuestos por el emisor del producto y pueden variar en función del intermediario o la
+plataforma utilizada.
+¿CUÁNTO TIEMPO DEBO MANTENER LA INVERSIÓN, Y PUEDO RETIRAR DINERO DE MANERA ANTICIPADA?
+
+                                            Período de mantenimiento recomendado: 5 años
+El inversor medio mantiene este tipo de producto durante unos 5 años por término medio. Además, este periodo mejora la comparabilidad con otros productos
+de inversión sin duración determinada.
+Puede realizar una orden de reembolso del producto ante el Emisor, o cualquier parte que actúe en nombre del Emisor, en cualquier momento. El reembolso
+puede liquidarse en efectivo o, a exclusiva discreción del Emisor, en especie. También puede vender el producto en el mercado secundario a terceros.
+¿CÓMO PUEDO RECLAMAR?
+
+Cualquier reclamación sobre la persona que asesora o vende el producto puede presentarse directamente a dicha persona a través del sitio web
+correspondiente. Cualquier reclamación sobre el producto, este documento o la conducta del emisor de este producto podrá presentarse en forma de texto
+(por ejemplo, por carta o correo electrónico) a Backed Assets (JE) Limited First Floor, La Chasse Chambers, Ten La Chasse, St. Helier, Jersey, JE2 4UE, correo
+electrónico: contact@backedassets.fi, sitio web: https://backedassets.fi/contact.
+OTROS DATOS DE INTERÉS
+
+El folleto y sus suplementos, las condiciones finales y las fichas de información están disponibles en el sitio web del emisor, en la siguiente dirección:
+https://www.backedassets.fi/legal-documentation
+Puede encontrar más información sobre el subyacente, incluyendo el rendimiento pasado, las posiciones y más, en:
+https://investor.nvidia.com/financial-info/financial-reports/
+

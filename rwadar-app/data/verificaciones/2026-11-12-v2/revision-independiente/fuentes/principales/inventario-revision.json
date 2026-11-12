@@ -1,0 +1,287 @@
+{
+ "revisor": "independiente · grupo principales",
+ "ciclo": "2026-11-12",
+ "nota": "Los HTML en bruto, el PDF firmado de las Condiciones Finales y el render completo de Prosegur se borraron tras extraer el fragmento (pueden contener nombres de personas físicas); su SHA-256 es el de la descarga original.",
+ "consultas": [
+  {
+   "archivo": "spiko-api-eurSAFO-yield.json",
+   "url": "https://public-api.spiko.io/v0/share-classes/eurSAFO/yield",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:50:49Z",
+   "bytes": 259,
+   "sha256": "9a716947cc9d8d70641b10562b85606b791f3257d1294ab9e14d387b9bae55af"
+  },
+  {
+   "archivo": "spiko-api-eurSAFO-totals.json",
+   "url": "https://public-api.spiko.io/v0/share-classes/eurSAFO/totals",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:50:49Z",
+   "bytes": 478,
+   "sha256": "6c5e4e44e22fe6a2ef048503abc306d1be4eb15086dd683b7f9a7ef6166527c6"
+  },
+  {
+   "archivo": "spiko-api-EUTBL-yield.json",
+   "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/yield",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:50:50Z",
+   "bytes": 259,
+   "sha256": "9cc1e1bed0f4e10b390f5af54fda2b4ba6346f0cdf3f0bbe6e129f0f1ce0bb27"
+  },
+  {
+   "archivo": "spiko-api-EUTBL-totals.json",
+   "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/totals",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:50:50Z",
+   "bytes": 476,
+   "sha256": "9dddb3cd20b012bcdad7d78b5afb236a77f249347fc7b3a1f8f69e48ad3177e7"
+  },
+  {
+   "archivo": "spiko-api-USTBL-yield.json",
+   "url": "https://public-api.spiko.io/v0/share-classes/USTBL/yield",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:50:50Z",
+   "bytes": 259,
+   "sha256": "1bbc7629f573156d3e9ffc15a5f52fc873b80e2b1191977959c9a7da3fe95a5b"
+  },
+  {
+   "archivo": "spiko-api-USTBL-totals.json",
+   "url": "https://public-api.spiko.io/v0/share-classes/USTBL/totals",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:50:51Z",
+   "bytes": 475,
+   "sha256": "5ddfe79761dd85b4e80d2b26cd3f388c1bbe17c50727f266e1efae907b0cc9f5"
+  },
+  {
+   "archivo": "spiko-safo-from-day.json",
+   "url": "https://public-api.spiko.io/v0/share-classes/eurSAFO/totals/from-day?startDay=2026-10-01",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 13882,
+   "sha256": "dc068bb2aa2b4cf57d4e4209e132a18af76cfd9dc150ffd06f38f1a64f4752a9"
+  },
+  {
+   "archivo": "spiko-eutbl-from-day.json",
+   "url": "https://public-api.spiko.io/v0/share-classes/EUTBL/totals/from-day?startDay=2026-09-25",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 15717,
+   "sha256": "9431bfe94cfcbbc79a782ddb4b54375ba3a7741bee3ace7883b945f90465bead"
+  },
+  {
+   "archivo": "mtbill-kid-es.pdf",
+   "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2Fo0H3P2VXZM3GM2QeIOa2%2FKID_mTBILL%20es.pdf?alt=media",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 154610,
+   "sha256": "6c22870917cda81ef3f28b01a6ea857e7e024163f3910c0cc2a36dc9e87da545"
+  },
+  {
+   "archivo": "mtbill-ft.pdf",
+   "url": "https://3475141875-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMndxFHqGeA4nzBBeKDTV%2Fuploads%2FUDquVH8yRhSxnVqxp0X4%2F20260714_mTBILL_FT_signed_final.pdf?alt=media",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 1248073,
+   "sha256": "b1e58001ec0f688aedc266ec63a37026e5fcf3f720f930f3aff5403036b3944a"
+  },
+  {
+   "archivo": "midas-app-mtbill.html",
+   "url": "https://midas.app/mtbill",
+   "http": 403,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 5364,
+   "sha256": "39a9301a4b40f9a5d256b229c8274b9f8b8ae3ab5e3332ddf5a5c807caf45687"
+  },
+  {
+   "archivo": "spiko-web-es-spiko-euro.html",
+   "url": "https://www.spiko.io/es/spiko-euro",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 268282,
+   "sha256": "988387333b008086afca270fc96d676776143038271471a27c8ad3ca5acfeee2"
+  },
+  {
+   "archivo": "spiko-web-es-eutbl.html",
+   "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-euro",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 188588,
+   "sha256": "d220ef0d1aae487063b0005c9ff69f1343a20efec9a6a2602532586d6f8d916d"
+  },
+  {
+   "archivo": "spiko-web-es-ustbl.html",
+   "url": "https://www.spiko.io/es/spiko-letras-del-tesoro-dollar",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 195204,
+   "sha256": "da4d37cea7f5f93f36944bd093a7bc7d0a322e04f3b036cd755d3da5cbc09581"
+  },
+  {
+   "archivo": "cnmv-adv-midas.html",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Midas",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 212159,
+   "sha256": "9b7f60170e9713aa3fa3f22fe4c73137d93bcfad13f6941a200c309c48db72f4"
+  },
+  {
+   "archivo": "cnmv-adv-spiko.html",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Spiko",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 212159,
+   "sha256": "61eb46487de954d25e0e3e3dc8a8a9db5fe0bc9808cd71d620c7792c9f182aab"
+  },
+  {
+   "archivo": "cnmv-adv-prosegur.html",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 212225,
+   "sha256": "5dc661ea7f4469ca978b5962cff99bb39e1a1b031978bb625013772a43a1e259"
+  },
+  {
+   "archivo": "cnmv-adv-robinhood.html",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Robinhood",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 212247,
+   "sha256": "40870900a7aa7bc3e4c42dd94da6b384c7d09848be3a79bb8c93aeb28853d54d"
+  },
+  {
+   "archivo": "cnmv-adv-kraken.html",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Kraken",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 212181,
+   "sha256": "6b2aea0dd70c692814c71be53db2367cb8a2532c24451c489254fe3422712abe"
+  },
+  {
+   "archivo": "cnmv-adv-gemini-control.html",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Gemini",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 217724,
+   "sha256": "dcff3dc1c7706a23b15d26e04974ea18110b69ecc883ff0782282359b27f80ec"
+  },
+  {
+   "archivo": "cnmv-pasaportes-midas.html",
+   "url": "https://www.cnmv.es/portal/Consultas/Folletos/Pasaportes?denominacion=&lei=984500BB00BN6D2B7C48",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 217221,
+   "sha256": "de12b98ce93263d71b9a2a0c9334549e2562e972a4fe02a62117bdc7776c9270"
+  },
+  {
+   "archivo": "esma-isin-mtbill.json",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=instrument_isins:CH1371002986&wt=json&rows=50&sort=approval_filing_date%20desc",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 4417,
+   "sha256": "01d2531aefc72bb2232a1fdbf3e3d5e47f30cde188f3fbfeddcf03c34432c321"
+  },
+  {
+   "archivo": "esma-lei-midas.json",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500BB00BN6D2B7C48*&wt=json&rows=100&sort=approval_filing_date%20desc",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:07Z",
+   "bytes": 57761,
+   "sha256": "8b00bd9342516c2a339a38a1c93c2fd80b231cf8a170e68738259b9fc59772e9"
+  },
+  {
+   "archivo": "robinhood-kid-es.pdf",
+   "url": "https://cdn.robinhood.com/assets/robinhood/legal/stock_and_etf_tokens_kid_es.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:54:04Z",
+   "bytes": 191487,
+   "sha256": "84f4f0a815734c1d7241f45fc458665ed92c849bf882ad3a15799b4d28a4f501"
+  },
+  {
+   "archivo": "robinhood-fee.pdf",
+   "url": "https://cdn.robinhood.com/assets/robinhood/legal/fee_schedule_EU.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:54:04Z",
+   "bytes": 77204,
+   "sha256": "614b0f5b0019b6b7a84a698a567258868072ce6450c262a36c78d7452c503228"
+  },
+  {
+   "archivo": "robinhood-dos-es.pdf",
+   "url": "https://cdn.robinhood.com/assets/robinhood/legal/description_of_services_financial_instruments_and_risks_es.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:54:04Z",
+   "bytes": 308722,
+   "sha256": "75f905ae83716a4532611023a931dce9e8f6efb3a60918598f76eb7443ac748f"
+  },
+  {
+   "archivo": "prosegur-render.json",
+   "url": "https://app.prosegurdigitalgold.com/#/terms-service y https://www.prosegurcrypto.com/digital-gold (Playwright, es-ES)",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:54:32Z",
+   "bytes": 80476,
+   "sha256": "f25ddf75d98c9a98dc92c49449bcb709ea5c0c3904fb5f3a78f6f123a443da57"
+  },
+  {
+   "archivo": "mtbill-oraculo-rondas.json",
+   "url": "https://ethereum-rpc.publicnode.com eth_call oráculo 0x056339C044055819E8Db84E71f5f2E1F536b2E5b rondas 420-492",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:51:08Z",
+   "bytes": 5876,
+   "sha256": "cf7ce373ce171804e58397006b5e4c0514139afac25342bafde06f33b4941233"
+  },
+  {
+   "archivo": "mtbill-boveda-feed.json",
+   "url": "https://ethereum-rpc.publicnode.com eth_call bóveda 0x569D7dccBF6923350521ecBC28A555A500c4f0Ec -> feed -> aggregator",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:52:40Z",
+   "bytes": 624,
+   "sha256": "31c443d5eac4a3cae7e25cbe8228b53d73e71133a53eac98a72484ce22a219b5"
+  },
+  {
+   "archivo": "spiko-web-cifras-render.json",
+   "url": "https://www.spiko.io/es/... (3 páginas, Playwright es-ES, solo extracto «Las cifras clave»)",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:56:02Z",
+   "bytes": 925,
+   "sha256": "70b0dcc9688c571efee47465a8c2a51bf28f82c5e263aa764319801fd6cbb54d"
+  },
+  {
+   "archivo": "prosegur-faqs.html (borrado: puede llevar nombres)",
+   "url": "https://prosegurdigitalgold.com/about-us/faqs",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:54:04Z",
+   "bytes": 46909,
+   "sha256": "347863564a68a6c44d7b53f693eec385d876ef5365bd28b5ce0ee47c12d69401"
+  },
+  {
+   "archivo": "prosegurcrypto-digital-gold.html (borrado: puede llevar nombres)",
+   "url": "https://www.prosegurcrypto.com/digital-gold",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:54:04Z",
+   "bytes": 75252,
+   "sha256": "336ad681ccbeda2508481600cdd80f419035dc45fc9cd58cefa29999eacae082"
+  },
+  {
+   "archivo": "(no copiado: PDF grande; solo huella)",
+   "url": "https://www.mfsa.mt/wp-content/uploads/2026/10/Backed-Assets-JE-Limited-Second-Supplement-Document-dated-29-September-2026.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:57:30Z",
+   "bytes": 290018,
+   "sha256": "acb0376b2b87f62de152d94130b4613badb17e64a06194c25ae27840f11a0a71"
+  },
+  {
+   "archivo": "(no copiado: PDF grande; solo huella)",
+   "url": "https://cdn.prod.website-files.com/655f3efc4be468487052e35a/69c684c9cf6e1070cfdd8851_Backed%20Assets_Final%20Terms%20Nr%20159%20(LITEx)_20260326.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:57:30Z",
+   "bytes": 1365826,
+   "sha256": "85b56d11920c9641dcf95f28ca7aa030d53bef0f5729df8f2e252c1c9d0fde5a"
+  },
+  {
+   "archivo": "esma-backed-no-ftws.json",
+   "url": "https://registers.esma.europa.eu/solr/esma_registers_priii_documents/select?q=party_name:*984500001AB7C6C7F577*&wt=json&rows=0",
+   "http": 200,
+   "consultadoUtc": "2026-11-12T00:57:30Z",
+   "bytes": 234,
+   "sha256": "833de14fa90234ce975783fd9eb36296cf691578bb8fc71b2c7f0316328a9131"
+  }
+ ]
+}
