@@ -6,6 +6,26 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (17) · Claude · Envío de notificaciones ENCENDIDO para todos (decisión de Víctor)
+
+- **Víctor (21:30 UTC):** «Activa ya las notificaciones y todo». Se le explicó
+  que esperar un día era la cautela C5/C7 del anexo legal: los Android que
+  sigan con el JS de la OTA n.º 23 podrían activar las notificaciones sin ver
+  la frase de primera capa. Ventana pequeña y privacidad ya completa. Decide
+  encenderlo hoy.
+- **`activar-push`** (n.º 20, con copia cifrada): «RWAdar 30 OK: … push
+  encendido, … reloj rwadar-novedades cada 5 minutos». Desde ahí `procesar()`
+  envía cada 5 min, por Expo (Android) y por Web Push desde Supabase, a quien
+  tenga el permiso vigente y el móvil activado. No hay anuncios pendientes y
+  el aviso automático de ofertas sigue apagado.
+- **Privacidad:** «ya las enviamos desde el 12/11/2026», sin el «cuando
+  empecemos». probar-web 684/684.
+- **Pendiente:**
+  - C6, la prueba en un Android físico;
+  - el primer anuncio real con «Avisar novedad», cuando Víctor lo pida;
+  - las plantillas de Auth en el panel;
+  - organización en GitHub.
+
 ## 12 de noviembre de 2026 (16) · Claude · Publicado: sesión que se mantiene, sin el nombre y prueba de notificaciones por Supabase aceptada por Apple
 
 - **PR #118 y #119** (sello): sesión con `__Host-rwadar-renovar`, sin el nombre
