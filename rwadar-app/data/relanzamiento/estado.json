@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Sin el nombre del titular en lo que ven los usuarios, commit 0ea20e8",
+  "nota": "Notificaciones encendidas: privacidad al día",
   "revisionAprobada": {
-    "commit": "0ea20e83721b11360e59793259e1b166a9925ea8",
-    "contenidoSha256": "sha256:7ddfeea4e6f002489550e7c52ba7533cc194b89a0c971a1ae8130d0bfcadf7e6",
+    "commit": "dae0452248a78fd56a498b73b0f3e81f3e27b71a",
+    "contenidoSha256": "sha256:e5156ce2e7d7f46a99dad628f659f75ae303ec5307ede5439db647bc09acf391",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
