@@ -34,8 +34,10 @@
    «Ya visto»: la ventana de Inicio se enseña una vez por «version». En la
    web se guarda la última vista en el almacenamiento local (CLAVE_VISTA,
    solo la cadena de la versión, sin nada de la persona); si el navegador no
-   deja leerlo o escribirlo, la ventana no sale (no se puede prometer «una
-   vez»): las novedades siguen en Perfil y en /novedades-rwadar/.
+   deja leerlo o escribirlo (se prueba antes con puedeGuardar), la ventana no
+   sale (no se puede prometer «una vez»): las novedades siguen en Perfil y en
+   /novedades-rwadar/. Cuándo sale lo deciden motivoSinVentana y
+   estadoVentana, aquí y sin navegador, para poder probarlo en probar-web.
 
    Lo usan assets/novedades-producto-20261112.js (la ventana de Inicio y la
    página /novedades-rwadar/), rwadar-publicar.js (no publica un archivo que
@@ -248,9 +250,69 @@
     const vista = leerVista(almacen);
     return vista.ok && posterior(version, vista.valor);
   }
+  /* ¿Deja guardar? Hay navegadores que dejan leer pero no escribir (el
+     almacenamiento lleno, un Safari privado antiguo): ahí la ventana saldría
+     en cada carga. Se escribe y se borra al momento una clave de prueba (con
+     «1», nada de la persona). Nunca lanza. */
+  const CLAVE_PRUEBA = CLAVE_VISTA + '.prueba';
+  function puedeGuardar(almacen) {
+    try {
+      if (!almacen || typeof almacen.setItem !== 'function' || typeof almacen.removeItem !== 'function') return false;
+      almacen.setItem(CLAVE_PRUEBA, '1');
+      const ok = almacen.getItem(CLAVE_PRUEBA) === '1';
+      almacen.removeItem(CLAVE_PRUEBA);
+      return ok;
+    } catch { return false; }
+  }
+
+  /* ---- Cuándo sale la ventana de Inicio (funciones puras: probar-web las
+     prueba con un documento falso, sin navegador) ---- */
+  /* La dirección pide otra cosa concreta: una notificación (?avisos=1, abre
+     la campana), un enlace de la Academy (#explain), el camino a Perfil ›
+     Avisos (#perfil-avisos) o la vuelta de un correo de la cuenta. */
+  function pideOtraCosa(busqueda, ancla) {
+    try {
+      const b = new URLSearchParams(typeof busqueda === 'string' ? busqueda : ''), a = typeof ancla === 'string' ? ancla : '';
+      return b.get('avisos') === '1' || a === '#explain' || a === '#perfil-avisos' ||
+        /(?:^|[#&])(?:access_token|error|error_code|error_description)=/.test(a);
+    } catch { return true; }
+  }
+  /* Otro diálogo abierto: un <dialog> (ficha, campana, iPhone, noticias…), un
+     panel modal sin «inert» (la cuenta, la ficha de una plataforma, la
+     comparativa, la cuenta de escritorio) o la ficha local. Sin documento
+     que mirar, se espera. */
+  function hayOtroDialogo(doc) {
+    try {
+      if (!doc || typeof doc.querySelector !== 'function') return true;
+      if (doc.querySelector('dialog[open]')) return true;
+      if (doc.querySelector('[aria-modal="true"]:not([inert]):not([hidden])')) return true;
+      return !!(doc.body && doc.body.classList && doc.body.classList.contains('detalle-local-abierto'));
+    } catch { return true; }
+  }
+  /* Antes de cargar el archivo: '' si la ventana puede salir en esta visita;
+     si no, el motivo. No sale si la dirección pide otra cosa, dentro de la
+     app de Android (enseña la suya), en un navegador automatizado o si el
+     navegador no deja leer o guardar lo visto (no se puede prometer «una vez»). */
+  function motivoSinVentana({ busqueda = '', ancla = '', enApp = false, automatizado = false, almacen = null } = {}) {
+    if (pideOtraCosa(busqueda, ancla)) return 'direccion';
+    if (enApp) return 'app';
+    if (automatizado) return 'automatizado';
+    if (!leerVista(almacen).ok) return 'sin-lectura';
+    if (!puedeGuardar(almacen)) return 'sin-guardar';
+    return '';
+  }
+  /* Con el archivo cargado, en cada vistazo: 'vista' (ya se vio: no sale),
+     'esperar' (pestaña oculta u otro diálogo abierto: se vuelve a mirar) o
+     'ensenar'. */
+  function estadoVentana({ almacen, version, doc, oculta = false } = {}) {
+    if (!pendiente(almacen, version)) return 'vista';
+    if (oculta || hayOtroDialogo(doc)) return 'esperar';
+    return 'ensenar';
+  }
 
   return Object.freeze({
     RUTA, URL_PUBLICA, PAGINA, CLAVE_VISTA, MAX_BYTES, LIMITES, ICONOS, ICONO_GENERICO,
     validar, validarTexto, enIdioma, trazosIcono, fechaLarga, fechaISO, posterior, leerVista, marcarVista, pendiente,
+    puedeGuardar, pideOtraCosa, hayOtroDialogo, motivoSinVentana, estadoVentana,
   });
 });

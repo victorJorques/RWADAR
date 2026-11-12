@@ -9,8 +9,10 @@
    - «Ver en detalle» abre /novedades-rwadar/ con cada sección del archivo y
      el camino a Perfil › Avisos (/#perfil-avisos), también en inglés.
    - Espera si hay otro diálogo abierto; no sale con ?avisos=1, sin
-     almacenamiento local ni en navegadores automatizados (las demás pruebas
-     de Chromium no la ven); aquí se simula un navegador normal.
+     almacenamiento local, si deja leer pero no guardar, ni en navegadores
+     automatizados (las demás pruebas de Chromium no la ven); aquí se simula
+     un navegador normal. La decisión es del modelo (motivoSinVentana y
+     estadoVentana) y probar-web la prueba también sin navegador, para CI.
    - Perfil (móvil) lleva el enlace «Novedades de RWAdar».
    Sin errores, sin desbordes y con contraste AA. Sin red. Con
    RWADAR_CAPTURAS=<carpeta> guarda además las capturas. */
@@ -302,6 +304,28 @@ test('en Chromium: la ventana de novedades sale una vez, «Entendido» y Escape 
       pagina.on('pageerror', e => errores.push(e.message));
       await pagina.goto(local.url + '/', { waitUntil: 'load' });
       await noSale(pagina, 'si el navegador no deja leer lo visto');
+      await contexto.close();
+    }
+    {
+      // Deja leer pero no guardar (almacenamiento lleno, Safari privado antiguo): antes salía en cada carga.
+      // Ahora se prueba a guardar antes de enseñarla, y no sale ni en la primera carga ni en la segunda.
+      const contexto = await navegador.newContext({ viewport: { width: 390, height: 844 } });
+      await contexto.addInitScript(COMO_PERSONA);
+      await contexto.addInitScript(() => {
+        const original = Storage.prototype.setItem;
+        Storage.prototype.setItem = function (k, v) {
+          if (String(k).startsWith('rwadar.novedades')) throw new DOMException('lleno', 'QuotaExceededError');
+          return original.call(this, k, v);
+        };
+      });
+      const pagina = await contexto.newPage();
+      const errores = [];
+      pagina.on('pageerror', e => errores.push(e.message));
+      for (const vez of [1, 2]) {
+        await pagina.goto(local.url + '/', { waitUntil: 'load' });
+        await noSale(pagina, `si el navegador no deja guardar lo visto (carga ${vez})`);
+      }
+      assert.deepEqual(errores, []);
       await contexto.close();
     }
     {

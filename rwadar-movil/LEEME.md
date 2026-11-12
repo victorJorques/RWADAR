@@ -14,12 +14,18 @@ y el historial de /cambios. Perfil › «Novedades de RWAdar» la vuelve a abrir
   `https://rwadar.pages.dev/datos/novedades-producto.json` (6 s, sin cookies,
   solo JSON de hasta 32 KB y con la forma exacta) y trae una copia idéntica en
   `lib/novedades-producto.js` (y `fixtures/novedades-producto.ejemplo.json`)
-  para verlo sin red. Gana la versión más nueva. Al cambiar el JSON de la
-  web, pega su contenido en esos dos archivos: `tests/novedades-producto.test.cjs`
-  falla si no coinciden.
+  para verlo sin red. Gana la versión más nueva. Esa copia no se edita a
+  mano: al cambiar el JSON de la web, `node rwadar-novedades-producto.js` (en
+  la raíz) la escribe; `tests/novedades-producto.test.cjs` y probar-web fallan
+  si no coinciden. El texto es común: lo que solo existe en la web (la
+  campana, «Mantener la sesión iniciada») dice «en la web».
+- **No se añaden campos ni se suben límites** en el JSON sin publicar antes
+  una OTA con el validador nuevo: la app valida la forma exacta y, si no la
+  reconoce, ignora el archivo de la web sin avisar y enseña su copia.
 - **Cuándo sale:** una vez por `version`, cuando ya se ve Inicio y no hay
-  nada encima (acceso, bloqueo, carga, fichas, explicador, privacidad o una
-  notificación abriéndose). Lo visto se guarda en el móvil
+  nada encima (acceso, bloqueo, carga, fichas, explicador, privacidad, una
+  pantalla de Inicio como «Mercado y noticias» o una notificación
+  abriéndose). La ventana respeta las barras del móvil (`useSafeAreaInsets`). Lo visto se guarda en el móvil
   (`rwadar.editorial.novedades.vista.v1`, solo la versión) y se borra con
   «Borrar datos del dispositivo». Si no se puede leer, no sale sola.
 - **Código:** `lib/novedades-rwadar.js` (validar, comparar, descargar),

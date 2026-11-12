@@ -7,20 +7,31 @@ en detalle».
 ## Qué ve la gente
 
 1. **Al abrir RWAdar** (Inicio de la web; la app hace lo mismo con su propia
-   ventana): una ventana con el título, la fecha y 4 o 5 puntos de una línea,
+   ventana, `rwadar-movil/componentes/NovedadesRwadar.js`): una ventana con el
+   título, la fecha y 4 o 5 puntos de una línea,
    cada uno con su icono. Dos botones: **«Ver en detalle»** y **«Entendido»**.
    Sale **una vez por versión**: al cerrarla (Entendido, ×, Escape o tocando
    fuera) o al ver el detalle, no vuelve a salir hasta la siguiente.
 2. **«Ver en detalle»**: la página **/novedades-rwadar/**, con cada novedad
    explicada en frases cortas, un «Cómo se hace» cuando hay pasos y el camino a
    **Perfil › Avisos** para activar las notificaciones.
+   En la app, el detalle es una pantalla propia con el botón «Ir a Perfil ›
+   Avisos». Las dos enlazan la lista de antes (/cambios).
 3. **Para volver a verlas**: «Novedades de RWAdar» en Perfil (móvil), en la
-   cuenta de escritorio y en el pie de la web.
+   cuenta de escritorio y en el pie de la web; en la app, en Perfil.
 
 ## Una sola fuente: `rwadar-site/datos/novedades-producto.json`
 
 La web lo publica en `https://rwadar.pages.dev/datos/novedades-producto.json`
-y la app lo lee de ahí (con una copia propia de respaldo). Forma:
+y la app lo lee de ahí. La app lleva una copia de respaldo
+(`rwadar-movil/lib/novedades-producto.js` y su ejemplo en `fixtures/`) que
+**no se edita a mano**: la escribe `node rwadar-novedades-producto.js` desde
+este archivo, y probar-web y las pruebas de la app fallan si no coinciden.
+
+**El mismo texto lo leen la web y la app.** Lo que solo existe en la web
+(la campana, la casilla «Mantener la sesión iniciada», el botón «Activar
+notificaciones…») tiene que decir «en la web»; las etiquetas entre «» del
+resumen tienen que existir en la app. Las pruebas lo comprueban. Forma:
 
 ```json
 {
@@ -59,11 +70,22 @@ y la app lo lee de ahí (con una copia propia de respaldo). Forma:
 ## Cómo se publica una novedad nueva
 
 1. Editar `rwadar-site/datos/novedades-producto.json`: textos muy llanos,
-   frases cortas, sin tecnicismos ni promesas de rentabilidad, con su inglés.
-   Subir `version` a la fecha del día.
-2. `npm run test:web` y `node --test rwadar-acceso/novedades-producto-navegador.test.mjs`.
-3. Con el permiso de Víctor: «Publicar web» (preview y producción). La app
-   coge el archivo nuevo sola; no hace falta OTA salvo que cambie su código.
+   frases cortas, sin tecnicismos ni promesas de rentabilidad, con su inglés,
+   y ciertos en la web y en la app. Subir `version` a la fecha del día.
+2. `node rwadar-novedades-producto.js` (copia de la app al día).
+3. `npm run test:web`, `npm --prefix rwadar-movil test` y
+   `node --test rwadar-acceso/novedades-producto-navegador.test.mjs`.
+4. Con el permiso de Víctor: «Publicar web» (preview y producción). La app
+   coge el archivo nuevo sola **si tiene la misma forma**: no hace falta OTA
+   salvo que cambie su código. La copia de respaldo nueva llega a la app con
+   la siguiente OTA.
+
+**No se añaden campos ni se suben los límites** (tamaño, número de puntos,
+largo de los textos, iconos nuevos con dibujo) sin publicar antes una OTA
+con el validador nuevo (`rwadar-movil/lib/novedades-rwadar.js`): la app
+valida la forma exacta y, si no la reconoce, ignora el archivo de la web sin
+avisar y sigue enseñando su copia. Un icono desconocido sí se admite (sale
+genérico).
 
 ## Lo que hace la web (detalles)
 
@@ -73,7 +95,10 @@ y la app lo lee de ahí (con una copia propia de respaldo). Forma:
   `#perfil-avisos`, la vuelta de un correo de la cuenta), dentro de la app
   (ReactNativeWebView), en navegadores automatizados (`navigator.webdriver`:
   así no estorba a las demás pruebas de Chromium ni a las capturas) ni si el
-  navegador no deja guardar lo visto (no se puede prometer «una vez»).
+  navegador no deja leer o guardar lo visto (se prueba a guardar antes; no se
+  puede prometer «una vez»). Lo deciden `motivoSinVentana` y `estadoVentana`
+  del modelo, funciones puras que probar-web prueba sin navegador (en CI no
+  hay Chromium).
 - Lo visto: `localStorage["rwadar.novedades.vista"]` = la versión, nada más.
   Explicado en la privacidad («Novedades ya vistas», apartado 2, y «Datos
   locales», apartado 9): estrictamente necesario (LSSI, art. 22.2), sin datos

@@ -61,7 +61,9 @@
   "El navegador no ha dejado activarlas. Comprueba que las notificaciones de RWAdar están permitidas en los ajustes del móvil y vuelve a intentarlo.": "The browser did not allow them to be turned on. Check that RWAdar notifications are allowed in your phone settings and try again.",
   "El navegador no ha terminado de preparar RWAdar. Cierra RWAdar del todo, vuelve a abrirla y prueba otra vez.": "The browser has not finished setting up RWAdar. Close RWAdar completely, open it again and try once more.",
   // «Novedades de RWAdar» en Perfil (12/11/2026): «Novedades» y «Novedades de RWAdar» ya van en el común.
-  "Lo nuevo de la web y la app, explicado fácil": "What's new on the website and the app, made simple"
+  "Lo nuevo de la web y la app, explicado fácil": "What's new on the website and the app, made simple",
+  // /novedades-rwadar/ › «Sigue por aquí»: la lista de antes, en /cambios.
+  "Novedades anteriores": "Earlier news"
 };
 if(typeof module==='object'&&module.exports){module.exports=Object.freeze(extra);return;}
 const base=raiz.RWAdarEnglish||{};

@@ -17,8 +17,8 @@
      forma (Entendido, ×, Escape o fuera) cuenta como vista: se guarda la
      versión en el almacenamiento local (rwadar.novedades.vista) y no vuelve
      a salir hasta la siguiente. No sale:
-       · si el navegador no deja leer o guardar lo visto (no se puede
-         prometer «una vez»);
+       · si el navegador no deja leer o guardar lo visto (se prueba a
+         guardar antes: no se puede prometer «una vez»);
        · si se llega a Inicio a otra cosa concreta: una notificación
          (?avisos=1, abre la campana), un enlace de la Academy (#explain), el
          camino a Perfil › Avisos (#perfil-avisos) o la vuelta de un correo
@@ -62,13 +62,9 @@
     }),
   });
   const RUTA_AVISOS = '/#perfil-avisos';
-  // Lo que pide la dirección al llegar (antes de que rwadar-20260820.js quite ?avisos=1).
-  const pideOtraCosa = (() => {
-    try {
-      const busqueda = new URLSearchParams(location.search), ancla = location.hash || '';
-      return busqueda.get('avisos') === '1' || ancla === '#explain' || ancla === '#perfil-avisos' ||
-        /(?:^|[#&])(?:access_token|error|error_code|error_description)=/.test(ancla);
-    } catch { return true; }
+  // La dirección al llegar (antes de que rwadar-20260820.js quite ?avisos=1); null si no se puede leer.
+  const llegada = (() => {
+    try { return { busqueda: location.search || '', ancla: location.hash || '' }; } catch { return null; }
   })();
 
   const idioma = () => (globalThis.RWAdarIdioma?.obtenerIdioma?.() === 'en' ? 'en' : 'es');
@@ -129,26 +125,23 @@
   }
 
   /* ---- La ventana de Inicio ---- */
-  /* Otro diálogo abierto: un <dialog> (ficha, campana, iPhone, noticias…) o
-     un panel modal sin «inert» (la cuenta, la ficha de una plataforma, la
-     comparativa, la cuenta de escritorio). */
-  function hayOtroDialogo() {
-    if (document.querySelector('dialog[open]')) return true;
-    if (document.querySelector('[aria-modal="true"]:not([inert]):not([hidden])')) return true;
-    return !!document.body?.classList.contains('detalle-local-abierto');
-  }
+  /* Cuándo sale lo deciden modelo.motivoSinVentana (antes de cargar) y
+     modelo.estadoVentana (en cada vistazo: otro diálogo abierto o la pestaña
+     oculta, espera). */
   function iniciarVentana() {
-    if (pideOtraCosa || globalThis.ReactNativeWebView || globalThis.navigator?.webdriver === true) return;
+    if (!llegada) return;
     const almacen = almacenLocal();
-    if (!almacen || !modelo.leerVista(almacen).ok) return;
+    if (modelo.motivoSinVentana({ ...llegada, enApp: !!globalThis.ReactNativeWebView,
+      automatizado: globalThis.navigator?.webdriver === true, almacen })) return;
     const empezar = () => setTimeout(async () => {
       const datos = await cargar();
-      if (!datos || !modelo.pendiente(almacen, datos.version)) return;
+      if (!datos) return;
       const limite = Date.now() + ESPERA_MAXIMA_MS;
       const mirar = () => {
-        if (Date.now() > limite || !modelo.pendiente(almacen, datos.version)) return;
-        if (document.visibilityState !== 'hidden' && !hayOtroDialogo()) mostrar(datos, almacen);
-        else setTimeout(mirar, REVISION_MS);
+        if (Date.now() > limite) return;
+        const estado = modelo.estadoVentana({ almacen, version: datos.version, doc: document, oculta: document.visibilityState === 'hidden' });
+        if (estado === 'ensenar') mostrar(datos, almacen);
+        else if (estado === 'esperar') setTimeout(mirar, REVISION_MS);
       };
       mirar();
     }, ESPERA_MS);
@@ -180,6 +173,7 @@
     const cuerpo = el('div', 'nov-cuerpo');
     const lista = el('ul', 'nov-puntos');
     lista.id = 'novedadesPuntos';
+    lista.setAttribute('role', 'list');
     puntos(lista, textos);
     cuerpo.append(lista);
     const acciones = el('div', 'nov-acciones');
@@ -272,6 +266,8 @@
       if (s.pasos.length) {
         const h3 = propio(el('h3', 'nov-pasos-tit', t.pasos));
         const ol = el('ol', 'nov-pasos');
+        // Con list-style:none, Safari con VoiceOver deja de leerla como lista: se le devuelve el papel.
+        ol.setAttribute('role', 'list');
         ol.append(...s.pasos.map(p => propio(el('li', '', p))));
         sec.append(h3, ol);
       }

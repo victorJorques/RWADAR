@@ -3775,10 +3775,47 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
     modelo.marcarVista(almacen, '2026-11-01') && memoria['rwadar.novedades.vista'] === datos.version &&
     modelo.pendiente(almacen, '2026-11-12.2') && modelo.posterior('2026-11-12.10', '2026-11-12.9') &&
     !modelo.pendiente(bloqueado, datos.version) && modelo.marcarVista(bloqueado, datos.version) === false && !modelo.pendiente(null, datos.version));
+  const ui = lee('assets/novedades-producto-20261112.js');
+  // Cuándo sale la ventana, sin navegador (revisión del 12/11/2026: en CI no hay Chromium). Funciones puras del modelo
+  // con un documento y un almacenamiento falsos; la ventana (assets/novedades-producto-20261112.js) solo las llama.
+  {
+    const docFalso = ({ dialogo = false, modal = false, local = false } = {}) => ({
+      querySelector: sel => (sel === 'dialog[open]' && dialogo) || (sel.startsWith('[aria-modal="true"]') && modal) ? {} : null,
+      body: { classList: { contains: c => c === 'detalle-local-abierto' && local } } });
+    const nuevoAlmacen = (falla = {}) => {
+      const m = {};
+      return { m, getItem: k => { if (falla.leer) throw new Error('no'); return m[k] ?? null; },
+        setItem: (k, v) => { if (falla.guardar) throw new Error('lleno'); m[k] = String(v); }, removeItem: k => { delete m[k]; } };
+    };
+    const a = nuevoAlmacen(), v = datos.version;
+    const motivo = (extra = {}) => modelo.motivoSinVentana({ busqueda: '', ancla: '', almacen: nuevoAlmacen(), ...extra });
+    prueba('la ventana sale si no hay nada encima y espera a otro diálogo (dialog abierto, panel modal, ficha) o a la pestaña oculta',
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso() }) === 'ensenar' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso({ dialogo: true }) }) === 'esperar' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso({ modal: true }) }) === 'esperar' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso({ local: true }) }) === 'esperar' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso(), oculta: true }) === 'esperar' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: null }) === 'esperar' &&
+      modelo.marcarVista(a, v) && modelo.estadoVentana({ almacen: a, version: v, doc: docFalso() }) === 'vista' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso({ dialogo: true }) }) === 'vista');
+    prueba('no sale con ?avisos=1, #explain, #perfil-avisos, la vuelta de un correo, en la app, automatizada, sin leer ni sin poder guardar',
+      motivo() === '' && motivo({ busqueda: '?avisos=1' }) === 'direccion' && motivo({ busqueda: '?x=1&avisos=1' }) === 'direccion' &&
+      motivo({ ancla: '#explain' }) === 'direccion' && motivo({ ancla: '#perfil-avisos' }) === 'direccion' &&
+      motivo({ ancla: '#access_token=x&type=signup' }) === 'direccion' && motivo({ ancla: '#error=access_denied' }) === 'direccion' &&
+      motivo({ busqueda: '?avisos=0', ancla: '#emisiones' }) === '' && motivo({ enApp: true }) === 'app' &&
+      motivo({ automatizado: true }) === 'automatizado' && motivo({ almacen: nuevoAlmacen({ leer: true }) }) === 'sin-lectura' &&
+      motivo({ almacen: null }) === 'sin-lectura' && motivo({ almacen: nuevoAlmacen({ guardar: true }) }) === 'sin-guardar' &&
+      // La prueba de escritura no deja nada guardado.
+      (() => { const b = nuevoAlmacen(); return modelo.puedeGuardar(b) && JSON.stringify(b.m) === '{}'; })());
+    prueba('la ventana decide con el modelo (motivoSinVentana y estadoVentana) y no repite la lógica',
+      ui.includes('modelo.motivoSinVentana({ ...llegada, enApp: !!globalThis.ReactNativeWebView,') &&
+      ui.includes("const estado = modelo.estadoVentana({ almacen, version: datos.version, doc: document, oculta: document.visibilityState === 'hidden' });") &&
+      ui.includes("if (estado === 'ensenar') mostrar(datos, almacen);") && ui.includes("else if (estado === 'esperar') setTimeout(mirar, REVISION_MS);") &&
+      !/function hayOtroDialogo|pideOtraCosa/.test(ui));
+  }
 
   // 2 · Enlaces y piezas: la ventana en Inicio, la página, Perfil (móvil y cuenta) y el pie.
   const pagina = lee('novedades-rwadar/index.html');
-  const ui = lee('assets/novedades-producto-20261112.js');
   const scriptsInicio = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"[^>]*>/g)].map(m => m[1]);
   const scriptsPagina = [...pagina.matchAll(/<script\b[^>]*\bsrc="([^"]+)"[^>]*>/g)].map(m => [m[1], /\bdefer\b/.test(m[0])]);
   marcadoEstricto('novedades-rwadar/index.html', pagina);
@@ -3798,6 +3835,16 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
     JSON.stringify(scriptsPagina.slice(1, 4)) === JSON.stringify([['/assets/analitica-20260927.js', true],
       ['/assets/novedades-producto-modelo-20261112.js', true], ['/assets/novedades-producto-20261112.js', true]]) &&
     pagina.includes('<p class="nov-estado" id="novEstado" role="status">Cargando las novedades…</p>') && /<noscript>/.test(pagina));
+  const hojaNov = lee('assets/novedades-producto-20261112.css');
+  const modeloTexto = lee('assets/novedades-producto-modelo-20261112.js');
+  prueba('accesible y legible: las listas conservan su papel de lista (VoiceOver), el título no parte palabras y la página enlaza las anteriores',
+    pagina.includes('<ul class="nov-puntos" id="novResumen" role="list" hidden></ul>') &&
+    /lista\.id = 'novedadesPuntos';\s*lista\.setAttribute\('role', 'list'\);/.test(ui) && /const ol = el\('ol', 'nov-pasos'\);[\s\S]{0,160}ol\.setAttribute\('role', 'list'\);/.test(ui) &&
+    !/overflow-wrap:anywhere/.test(hojaNov) &&
+    /\.nov-tit\{[^}]*font:700 clamp\(1\.125rem,5\.5vw,1\.375rem\)\/1\.2 var\(--display\)[^}]*overflow-wrap:break-word;hyphens:auto\}/.test(hojaNov) &&
+    /\.nov-punto-frase\{[^}]*overflow-wrap:break-word\}/.test(hojaNov) &&
+    /<ul class="sec-sigue" aria-label="Sigue por aquí">[\s\S]*<li><a href="\/cambios"><span>Novedades anteriores<\/span>/.test(pagina) &&
+    require('./rwadar-site/assets/idioma-en-avisos-20261112.js')['Novedades anteriores'] === 'Earlier news');
   prueba('«Ver en detalle» lleva a /novedades-rwadar/ y la página, a Perfil › Avisos (/#perfil-avisos), que Inicio abre con irAPerfilAvisos',
     modelo.PAGINA === '/novedades-rwadar/' && /ver\.href = modelo\.PAGINA;/.test(ui) && /const RUTA_AVISOS = '\/#perfil-avisos';/.test(ui) &&
     js.includes("if(location.hash!=='#perfil-avisos')return;") && js.includes('Cuenta.irAPerfilAvisos();') &&
@@ -3813,9 +3860,10 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
     enAvisos['Lo nuevo de la web y la app, explicado fácil'] === "What's new on the website and the app, made simple");
   prueba('la ventana y la página: sin innerHTML, con translate="no", y la ventana no sale sin almacenamiento, con ?avisos=1, en la app ni en navegadores automatizados',
     !/innerHTML|insertAdjacentHTML|outerHTML/.test(ui) && ui.includes("n.setAttribute('translate', 'no');") &&
-    ui.includes('globalThis.ReactNativeWebView || globalThis.navigator?.webdriver === true') && ui.includes("busqueda.get('avisos') === '1'") &&
-    ui.includes('if (!almacen || !modelo.leerVista(almacen).ok) return;') && ui.includes('function hayOtroDialogo()') &&
-    ui.includes("document.querySelector('dialog[open]')") && ui.includes('[aria-modal="true"]:not([inert]):not([hidden])'));
+    ui.includes("enApp: !!globalThis.ReactNativeWebView,") && ui.includes("automatizado: globalThis.navigator?.webdriver === true, almacen })) return;") &&
+    ui.includes("try { return { busqueda: location.search || '', ancla: location.hash || '' }; } catch { return null; }") &&
+    modeloTexto.includes("b.get('avisos') === '1'") && modeloTexto.includes("if (doc.querySelector('dialog[open]')) return true;") &&
+    modeloTexto.includes('[aria-modal="true"]:not([inert]):not([hidden])'));
   prueba('/novedades-rwadar/ va con su caché corta, en el sitemap, y el publicador y la comprobación de lo publicado miran el archivo',
     /^\/novedades-rwadar\n  Cache-Control: public, max-age=0, must-revalidate$/m.test(headers) &&
     /^\/novedades-rwadar\/\*\n  Cache-Control: public, max-age=0, must-revalidate$/m.test(headers) &&
