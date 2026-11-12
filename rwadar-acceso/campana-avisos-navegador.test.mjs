@@ -111,7 +111,8 @@ async function abrir(navegador, local, { dispositivo = null, viewport = null, cf
 const rpc = (local, nombre) => local.peticionesSupabase.filter(p => p.ruta === '/rest/v1/rpc/' + nombre);
 const captura = async (pagina, nombre) => { if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, nombre) }); };
 const BAJA = '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.';
-const QUIEN_WEB = 'Al activarlas, tu navegador usa el servicio de notificaciones de su fabricante (Apple, Google, Mozilla o Microsoft); el texto va cifrado. Más en Privacidad.';
+// Primera capa junto al botón: texto exacto del anexo legal (2.4) y «Más en Privacidad.».
+const QUIEN_WEB = 'El servicio de tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no puede leer su texto. Si no las activas, seguirás viendo los avisos en la campana. Más en Privacidad.';
 // Contraste WCAG entre el texto y el fondo de un elemento (colores rgb/rgba opacos).
 function contraste(id) {
   const lum = c => { const [r, g, b] = c.match(/\d+(\.\d+)?/g).slice(0, 3).map(Number).map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; });
@@ -305,11 +306,11 @@ test('en Chromium: «Notificaciones en este móvil» en Android, en el mismo toq
       return { visible: !q.hidden && r.height > 0, texto: q.textContent, enlace: q.querySelector('a')?.getAttribute('href'),
         junto: r.top >= rb.bottom - 0.5 && r.top - rb.bottom < 24 };
     });
-    assert.deepEqual(await quien(), { visible: true, texto: QUIEN_WEB, enlace: '/privacidad#avisos-novedades', junto: true });
+    assert.deepEqual(await quien(), { visible: true, texto: QUIEN_WEB, enlace: '/privacidad#garantias-push', junto: true });
     await captura(pagina, 'perfil-avisos-android-390.png');
     await pagina.evaluate(() => RWAdarIdioma.cambiarIdioma('en'));
-    await pagina.waitForFunction(() => /^When you turn them on/.test(document.getElementById('perfilPushQuien').textContent), null, { timeout: 5000 });
-    assert.equal((await quien()).texto, "When you turn them on, your browser uses its maker's notification service (Apple, Google, Mozilla or Microsoft); the text is encrypted. More in Privacy.");
+    await pagina.waitForFunction(() => /^Your browser's service/.test(document.getElementById('perfilPushQuien').textContent), null, { timeout: 5000 });
+    assert.equal((await quien()).texto, "Your browser's service may be outside the EU: it sees when each notice is sent, but cannot read its text. If you don't turn them on, you will still see your notices under the bell. More in Privacy.");
     await pagina.evaluate(() => RWAdarIdioma.cambiarIdioma('es'));
     await pagina.waitForFunction(t => document.getElementById('perfilPushQuien').textContent === t, QUIEN_WEB, { timeout: 5000 });
     await pagina.click('#perfilPushActivar');
@@ -324,7 +325,7 @@ test('en Chromium: «Notificaciones en este móvil» en Android, en el mismo toq
       [{ p_endpoint: 'https://fcm.googleapis.com/fcm/send/prueba-123', p_p256dh: 'BPrueba_p256dh-clave', p_auth: 'auth-prueba' }]);
     const activas = await pagina.evaluate(() => ({ activar: document.getElementById('perfilPushActivar').hidden, desactivar: document.getElementById('perfilPushDesactivar').hidden }));
     assert.deepEqual(activas, { activar: true, desactivar: false });
-    assert.deepEqual(await quien(), { visible: true, texto: QUIEN_WEB, enlace: '/privacidad#avisos-novedades', junto: true }, 'también junto a «Desactivar»');
+    assert.deepEqual(await quien(), { visible: true, texto: QUIEN_WEB, enlace: '/privacidad#garantias-push', junto: true }, 'también junto a «Desactivar»');
     await captura(pagina, 'perfil-avisos-activadas-390.png');
 
     // Desactivar: la base y el navegador.

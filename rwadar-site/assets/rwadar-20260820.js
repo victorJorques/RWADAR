@@ -5441,9 +5441,12 @@ const Cuenta = (function(){
     navegador; cada notificación llega cifrada y la descifra el navegador. */
  let push={estado:'',cuenta:-1,ocupado:false,mensaje:'',error:false};
  const CLAVE_VAPID=/^[A-Za-z0-9_-]{87}$/;
- /* Primera capa junto al botón: quién interviene en la entrega (texto
-    provisional del 12/11/2026; el anexo legal puede pulirlo). */
- const TEXTO_PUSH_QUIEN='Al activarlas, tu navegador usa el servicio de notificaciones de su fabricante (Apple, Google, Mozilla o Microsoft); el texto va cifrado. Más en Privacidad.';
+ /* Primera capa junto al botón, también con las notificaciones activadas:
+    el servicio del navegador puede estar fuera de la UE y la salida de no
+    activarlas. Texto del anexo legal (docs/legal/ANEXO-NOTIFICACIONES-
+    2026-11-12.md, 2.4; condición C2) con «Más en Privacidad.», que enlaza
+    a #garantias-push. */
+ const TEXTO_PUSH_QUIEN='El servicio de tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no puede leer su texto. Si no las activas, seguirás viendo los avisos en la campana. Más en Privacidad.';
  /* La clave pública VAPID de la base, por cuenta: una cadena válida, null si
     aún no existe (crear-vapid) o undefined si no se ha podido preguntar
     (entonces se deja intentar: activarPush la vuelve a pedir). */
@@ -5697,7 +5700,7 @@ const Cuenta = (function(){
    '<button type="button" class="avisos-push-boton" id="'+pre+'PushInstalar" data-push-instalar hidden>Ver cómo añadirla</button>'+
    '<button type="button" class="avisos-push-boton avisos-push-principal" id="'+pre+'PushActivar" data-push-activar hidden disabled>Activar notificaciones en este móvil</button>'+
    '<button type="button" class="avisos-push-boton" id="'+pre+'PushDesactivar" data-push-desactivar hidden>Desactivar las notificaciones de este móvil</button>'+
-   '</div><p class="perfil-nota avisos-push-quien" id="'+pre+'PushQuien" hidden>'+conEnlacePrivacidad(TEXTO_PUSH_QUIEN,'/privacidad#avisos-novedades')+'</p></div>';
+   '</div><p class="perfil-nota avisos-push-quien" id="'+pre+'PushQuien" hidden>'+conEnlacePrivacidad(TEXTO_PUSH_QUIEN,'/privacidad#garantias-push')+'</p></div>';
  }
 
  /* --- estado del botón de la cabecera ----------------------------- */

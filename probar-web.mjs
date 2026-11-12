@@ -3377,8 +3377,8 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     'Entra en tu cuenta para ver tus avisos. ¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.',
     'Notificaciones activadas en este móvil. Te llegarán cuando empecemos a enviarlas.',
     'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.',
-    // Junto al botón (12/11/2026): el trozo antes del enlace a Privacidad.
-    'Al activarlas, tu navegador usa el servicio de notificaciones de su fabricante (Apple, Google, Mozilla o Microsoft); el texto va cifrado. Más en'];
+    // Junto al botón (anexo legal, 2.4): el trozo antes del enlace a Privacidad.
+    'El servicio de tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no puede leer su texto. Si no las activas, seguirás viendo los avisos en la campana. Más en'];
   const sinIngles = [...textosPush, ...fijos].filter(t => typeof (enAvisos[t] ?? enComun[t]) !== 'string');
   const scriptsIndex = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(m => m[1]);
   const iComun = scriptsIndex.indexOf('/assets/idioma-en-20261022.js'), iAvisos = scriptsIndex.indexOf('/assets/idioma-en-avisos-20261112.js');
@@ -3409,6 +3409,21 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     /function avisosVistos\(\)\{/.test(js) && /pintarBandeja\(\);pintarCampana\(\);avisosVistos\(\);/.test(js) &&
     !/badge:/.test(sw.replace(/\/\*[\s\S]*?\*\//g, '')) && !/badge:'\/icono-192\.png'/.test(js) &&
     /--globo:#D92D20;/.test(css) && /\.campana-n\{[^}]*background:var\(--globo\)/.test(css.replace(/\n\s*/g, '')));
+  // Primera capa junto al botón (condiciones C2 y C5 del anexo legal): las frases de la web y de la app son
+  // las del anexo, palabra por palabra y con su inglés, y «Más en Privacidad» lleva a un apartado que existe.
+  const anexo = fs.readFileSync(path.join(raiz, 'docs/legal/ANEXO-NOTIFICACIONES-2026-11-12.md'), 'utf8')
+    .replace(/^> ?/gm, '').replace(/\*\*(ES|EN):\*\* /g, '').replace(/\s+/g, ' ');
+  const quienWeb = (js.match(/ const TEXTO_PUSH_QUIEN='([^']+)';/) || [, ''])[1];
+  const avisosMovil = fs.readFileSync(path.join(raiz, 'rwadar-movil/componentes/AvisosNovedades.js'), 'utf8');
+  const quienMovil = (avisosMovil.match(/\nconst TEXTO_MOVIL_QUIEN = '([^']+)';/) || [, ''])[1];
+  const webSinEnlace = quienWeb.replace(/ Más en Privacidad\.$/, '');
+  const enWeb = enAvisos[webSinEnlace + ' Más en'] || '', enMovil = enComun[quienMovil] || '';
+  prueba('notificaciones: junto al botón, la frase del anexo legal en la web y en la app (con su inglés) y el enlace a #garantias-push',
+    quienWeb.endsWith(' Más en Privacidad.') && webSinEnlace.length > 80 && anexo.includes(webSinEnlace) &&
+    anexo.includes(enWeb.replace(/ More in$/, '')) && enWeb.endsWith(' More in') &&
+    quienMovil.length > 80 && anexo.includes(quienMovil) && enMovil.length > 80 && anexo.includes(enMovil) &&
+    js.includes("conEnlacePrivacidad(TEXTO_PUSH_QUIEN,'/privacidad#garantias-push')") && /<p id="garantias-push">/.test(privacidad) &&
+    /Si no las activas, seguirás viendo los avisos en la campana\./.test(quienWeb) && /Firebase/.test(quienMovil));
 }
 marcadoEstricto('baja.html', bajaHTML);
 // El mismo asunto que el pie y List-Unsubscribe de los correos de avisos.
