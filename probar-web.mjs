@@ -3416,10 +3416,23 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
       if (!/\.(?:html|js|json|xml|txt|webmanifest)$/.test(entrada.name)) continue;
       const relativa = path.relative(sitio, ruta).split(path.sep).join('/');
       if (relativa === 'privacidad.html') continue;
-      if (/Jorques/.test(fs.readFileSync(ruta, 'utf8').replace(/victorJorques/g, ''))) conNombre.push(relativa);
+      if (conElNombre(relativa, fs.readFileSync(ruta, 'utf8'))) conNombre.push(relativa);
     }
   };
+  // El nombre completo, en cualquier sitio; el de pila, en los comentarios del HTML, que el publicador
+  // no quita (los del JS y el CSS, sí). Los datos (noticias, fichas) pueden nombrar a otros «Víctor».
+  const conElNombre = (relativa, contenido) => {
+    const texto = contenido.replace(/victorJorques/g, '');
+    return /Jorques|V[íi]ctor Manuel/i.test(texto) ||
+      (relativa.endsWith('.html') && (texto.match(/<!--[\s\S]*?-->/g) || []).some(c => /V[íi]ctor/i.test(c)));
+  };
   recorrer(sitio);
+  // Y lo publicado, ya reducido, salvo la privacidad y lo que Pages no sirve (_worker.js y _redirects).
+  for (const relativa of archivosPublicados) {
+    if (['privacidad.html', '_worker.js', '_redirects'].includes(relativa)) continue;
+    if (!/\.(?:html|js|css|json|xml|txt|webmanifest|svg)$/.test(relativa)) continue;
+    if (conElNombre(relativa, fs.readFileSync(path.join(publicado, ...relativa.split('/')), 'utf8'))) conNombre.push(`publicado/${relativa}`);
+  }
   const enAvisos = require('./rwadar-site/assets/idioma-en-avisos-20261112.js');
   const enComun = require('./rwadar-site/assets/idioma-en-20261022.js');
   const avisosCuenta = require('./rwadar-movil/lib/avisos-cuenta.js');
