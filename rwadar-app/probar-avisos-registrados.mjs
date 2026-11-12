@@ -68,12 +68,12 @@ const FRASE_PLANTILLA = 'Marcaste también la casilla de avisos de novedades: al
 const RESPONSABLE = 'Responsable: Víctor Manuel Jorques Granero, España';
 const RESPONSABLE_CORREO = 'Responsable: Víctor Manuel Jorques Granero, Plaza Generalitat, s/n, 46600 Alzira (Valencia), España';
 const PARRAFO_APUNTADO = 'Además, te has apuntado a los avisos de novedades: te avisaremos de las fichas nuevas que entren en el radar y de las novedades de la web y la app. Puedes darte de baja cuando quieras con el enlace del final o en tu Perfil.';
-const CIERRE_HTML = 'Si no creaste esta cuenta, <a href="mailto:RWAdar@protonmail.com" style="color:#0F7A57">escríbenos</a> y la borramos.';
-const CIERRE_TXT = 'Si no creaste esta cuenta, escríbenos a RWAdar@protonmail.com y la borramos.';
+const CIERRE_HTML = 'Si no creaste esta cuenta, <a href="mailto:rwadares@gmail.com" style="color:#0F7A57">escríbenos</a> y la borramos.';
+const CIERRE_TXT = 'Si no creaste esta cuenta, escríbenos a rwadares@gmail.com y la borramos.';
 const PIE_HTML = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE_CORREO} (<a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">aviso legal</a> · <a href="https://rwadar.pages.dev/privacidad" style="color:#555">privacidad</a>).`;
 const PIE_TXT = `Te escribe RWAdar, un radar independiente de plataformas de tokenización. ${RESPONSABLE_CORREO}.`;
 const PUSH_BIENVENIDA = 'Notificaciones activadas en este móvil. Las de novedades solo llegan si las tienes activadas en Perfil.';
-const MAILTO_BAJA = 'mailto:RWAdar@protonmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
+const MAILTO_BAJA = 'mailto:rwadares@gmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
 
 const SQL30 = leer('db/30_avisos_registrados.sql');
 const MIGRACION30 = leer('supabase/migrations/20261105200000_avisos_registrados.sql');
@@ -192,7 +192,7 @@ paso('la 30 y su verificador guardan la versión v2 y los textos ES/EN exactos d
     && PLANTILLA.replace(bloque?.[0] ?? '', '').search(/avisos de novedades/) === -1);
   const plantillas = fs.readdirSync(path.join(raiz, 'plantillas-auth')).filter((f) => f.endsWith('.html')).sort();
   const pie = `RWAdar · ${RESPONSABLE_CORREO} · <a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">Aviso legal</a> · `
-    + '<a href="https://rwadar.pages.dev/privacidad" style="color:#555">Privacidad</a> · <a href="mailto:RWAdar@protonmail.com" style="color:#555">RWAdar@protonmail.com</a></p>';
+    + '<a href="https://rwadar.pages.dev/privacidad" style="color:#555">Privacidad</a> · <a href="mailto:rwadares@gmail.com" style="color:#555">rwadares@gmail.com</a></p>';
   paso('el pie de las plantillas de Auth (confirmación y recuperación) nombra al responsable con su dirección postal: «Plaza Generalitat, s/n, 46600 Alzira (Valencia), España»',
     isDeepStrictEqual(plantillas, ['confirmar-alta.html', 'recuperar-acceso.html'])
     && plantillas.every((f) => leer(`plantillas-auth/${f}`).includes(pie)));
@@ -204,7 +204,7 @@ paso('la 30 y su verificador guardan la versión v2 y los textos ES/EN exactos d
   paso('las plantillas no llevan imágenes, scripts, http:// ni enlaces de seguimiento',
     [PLANTILLA, PLANTILLA_RECUPERAR].every((p) => !/<img|<script|http:\/\/|utm_|track|pixel/i.test(p)
       && [...p.matchAll(/href="([^"]*)"/g)].map((m) => m[1]).every((h) => h === '{{ .ConfirmationURL }}'
-        || h.startsWith('https://rwadar.pages.dev/') || h === 'mailto:RWAdar@protonmail.com'))
+        || h.startsWith('https://rwadar.pages.dev/') || h === 'mailto:rwadares@gmail.com'))
     && enlaces.includes('{{ .ConfirmationURL }}'));
 }
 
@@ -1778,10 +1778,10 @@ let n1;
   const correos = await peticiones(antes, LETTERMINT);
   const [aAna] = paraCorreo(correos, ana);
   const html = aAna?.body.html || '';
-  paso('Lettermint: una petición por correo a https://api.lettermint.co/v1/send con el token de Vault en x-lettermint-token, from «RWAdar <remitente>», to y reply_to (RWAdar@protonmail.com) en listas',
+  paso('Lettermint: una petición por correo a https://api.lettermint.co/v1/send con el token de Vault en x-lettermint-token, from «RWAdar <remitente>», to y reply_to (rwadares@gmail.com) en listas',
     correos.length === suscritas.length + 2 && aAna?.headers['x-lettermint-token'] === TOKEN_LM
     && aAna.headers['content-type'] === 'application/json' && !('api-key' in aAna.headers)
-    && correos.every((c) => c.body.from === 'RWAdar <avisos@rwadar.example>' && isDeepStrictEqual(c.body.reply_to, ['RWAdar@protonmail.com'])
+    && correos.every((c) => c.body.from === 'RWAdar <avisos@rwadar.example>' && isDeepStrictEqual(c.body.reply_to, ['rwadares@gmail.com'])
       && Array.isArray(c.body.to) && c.body.to.length === 1 && c.headers['x-lettermint-token'] === TOKEN_LM)
     && isDeepStrictEqual(aAna.body.to, [ana.email]));
   paso('todas piden no seguir aperturas ni clics (settings: track_opens y track_clicks false) y no llevan tag, metadata ni campos de Brevo',
@@ -1810,10 +1810,10 @@ let n1;
     html.includes('Te escribe RWAdar') && html.includes('href="https://rwadar.pages.dev/privacidad#aviso-legal"')
     && html.includes('href="https://rwadar.pages.dev/privacidad"') && html.includes('te apuntaste a los avisos de novedades')
     && html.includes(`href="${bajaAna}"`) && html.includes(`href="${MAILTO_BAJA}"`)
-    && aAna.body.text.includes(bajaAna) && aAna.body.text.includes('RWAdar@protonmail.com'));
+    && aAna.body.text.includes(bajaAna) && aAna.body.text.includes('rwadares@gmail.com'));
   paso('sin píxel ni enlaces de seguimiento: ninguna imagen y todos los enlaces directos a rwadar.pages.dev o mailto',
     correos.every((c) => !/<img|utm_|track/i.test(c.body.html)
-      && [...c.body.html.matchAll(/href="([^"]*)"/g)].every(([, h]) => h.startsWith('https://rwadar.pages.dev/') || h.startsWith('mailto:RWAdar@protonmail.com'))));
+      && [...c.body.html.matchAll(/href="([^"]*)"/g)].every(([, h]) => h.startsWith('https://rwadar.pages.dev/') || h.startsWith('mailto:rwadares@gmail.com'))));
   const [bienvenidaSi] = paraCorreo(correos, nueva);
   const [bienvenidaNo] = paraCorreo(correos, nueva2);
   volcarCorreo('bienvenida-con-avisos', bienvenidaSi);
@@ -2844,9 +2844,9 @@ cat "$d/psql-respuesta-$n" 2>/dev/null || true
       && /ruta de servicio \(la de por defecto\): HTTP 202 · message_id msg-servicio-0001 · estado pending/.test(envio.texto)
       && /ruta de difusión \(broadcast\): HTTP 202 · message_id msg-difusion-0002 · estado pending/.test(envio.texto)
       && !`${envio.texto}${envio.resumen}`.includes(TOKEN_LM) && envio.resumen.includes('| broadcast | 202 | msg-difusion-0002 | pending |'));
-    paso('los dos correos: «RWAdar <remitente>», al destinatario, reply_to RWAdar@protonmail.com, sin seguimiento (track_opens y track_clicks en false), List-Unsubscribe con el mailto de baja, enlace sin imágenes y la dirección postal en el pie; route "broadcast" solo en el segundo',
+    paso('los dos correos: «RWAdar <remitente>», al destinatario, reply_to rwadares@gmail.com, sin seguimiento (track_opens y track_clicks en false), List-Unsubscribe con el mailto de baja, enlace sin imágenes y la dirección postal en el pie; route "broadcast" solo en el segundo',
       cuerpos.every((c) => c && c.from === 'RWAdar <avisos@rwadar.example>' && isDeepStrictEqual(c.to, ['victor@ejemplo.test'])
-        && isDeepStrictEqual(c.reply_to, ['RWAdar@protonmail.com']) && isDeepStrictEqual(c.settings, { track_opens: false, track_clicks: false })
+        && isDeepStrictEqual(c.reply_to, ['rwadares@gmail.com']) && isDeepStrictEqual(c.settings, { track_opens: false, track_clicks: false })
         && isDeepStrictEqual(c.headers, { 'List-Unsubscribe': `<${MAILTO_BAJA}>` }) && !('tag' in c) && !('metadata' in c)
         && !/<img|<script|utm_|pixel/i.test(c.html) && c.html.includes('href="https://rwadar.pages.dev/"')
         && c.text.includes('https://rwadar.pages.dev/') && c.text.includes('tokenización')

@@ -163,7 +163,7 @@ digan lo mismo. Cambiar una sola palabra obliga a crear una versión nueva.
 **Baja.**
 
 - Cada aviso lleva un enlace a `/baja?t=<token>` y un `mailto:` de baja a
-  RWAdar@protonmail.com. Las dos cosas van en el pie y en `List-Unsubscribe`.
+  rwadares@gmail.com. Las dos cosas van en el pie y en `List-Unsubscribe`.
 - No se promete la baja «en un clic» ni se añade `List-Unsubscribe-Post`.
 - La baja corta el correo **y** el push de novedades.
 
@@ -299,7 +299,7 @@ una versión nueva; la web y la app deben decir lo mismo):
   radar y de las novedades de la web y la app. Puedes darte de baja cuando
   quieras con el enlace del final o en tu Perfil.» Cierre: «Si no creaste esta
   cuenta, escríbenos y la borramos» (en HTML, «escríbenos» enlaza al
-  `mailto:`; en texto, «escríbenos a RWAdar@protonmail.com y la borramos»).
+  `mailto:`; en texto, «escríbenos a rwadares@gmail.com y la borramos»).
 - Primera línea del pie de todos los correos (desde la 31): «Te escribe
   RWAdar, un radar independiente de plataformas de tokenización. Responsable:
   Víctor Manuel Jorques Granero, Plaza Generalitat, s/n, 46600 Alzira
@@ -968,7 +968,7 @@ de Víctor.
 7. **Aviso automático de ofertas,** si Víctor lo quiere:
    - antes, que Lettermint haya quitado su enlace de baja de la ruta de
      difusión o que `sincronizar-bajas` corra cada día y esté probada (punto
-     5.9), y que alguien revise cada día el buzón RWAdar@protonmail.com
+     5.9), y que alguien revise cada día el buzón rwadares@gmail.com
      (RUNBOOK, «Bajas»): con el aviso automático no hay un «antes de cada
      anuncio»;
    - con el plan gratis, que el cupo de 300 al mes alcance (punto 5.11);

@@ -298,7 +298,7 @@ cuentas sigan cerradas al público, esto no afecta a nadie.
 <p><a href="{{ .ConfirmationURL }}">Confirmar mi correo</a></p>
 <p>Si no has sido tú, ignora este mensaje: sin confirmar, la cuenta no se puede usar.</p>
 <p>RWAdar es un registro informativo: no te pediremos nunca datos bancarios, claves de monederos ni frases de recuperación.</p>
-<p>RWAdar · <a href="https://rwadar.pages.dev/privacidad">Privacidad</a> · RWAdar@protonmail.com</p>
+<p>RWAdar · <a href="https://rwadar.pages.dev/privacidad">Privacidad</a> · rwadares@gmail.com</p>
 ```
 
 Cuando el manual de bienvenida esté encendido (`docs/manual/LEEME.md`),
@@ -315,7 +315,7 @@ añadir antes del pie:
 <p>Has pedido poner una contraseña nueva.</p>
 <p><a href="{{ .ConfirmationURL }}">Elegir una contraseña nueva</a></p>
 <p>Si no lo has pedido tú, ignora este mensaje: tu contraseña no cambia.</p>
-<p>RWAdar · <a href="https://rwadar.pages.dev/privacidad">Privacidad</a> · RWAdar@protonmail.com</p>
+<p>RWAdar · <a href="https://rwadar.pages.dev/privacidad">Privacidad</a> · rwadares@gmail.com</p>
 ```
 
 > **Desde el 06/11/2026** la versión que vale es

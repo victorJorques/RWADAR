@@ -51,7 +51,7 @@ CORREO_SIMPLE='^[A-Za-z0-9._%+-]+@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.
 CORREO_JQ='\A[a-z0-9.!#$%&'"'"'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+\z'
 FECHA_JQ='\A[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]{1,9})?(?:Z|[+-][0-9]{2}:[0-9]{2})\z'
 PIE_TEXTO='Te escribe RWAdar, un radar independiente de plataformas de tokenización. Responsable: Víctor Manuel Jorques Granero, Plaza Generalitat, s/n, 46600 Alzira (Valencia), España.'
-BAJA_MAILTO='<mailto:RWAdar@protonmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar>'
+BAJA_MAILTO='<mailto:rwadares@gmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar>'
 
 falla() { echo "$*"; exit 1; }
 correo_simple() { local c="${1-}"; (( ${#c} <= 254 )) && [[ "$c" =~ $CORREO_SIMPLE ]]; }
@@ -175,7 +175,7 @@ $PIE_TEXTO"
     html="<p>Esto es una prueba del correo de RWAdar, enviada a mano desde GitHub por la $nombre.</p><p>En el original del mensaje comprueba que no hay píxel ni imágenes de seguimiento, que este enlace llega sin reescribir: <a href=\"https://rwadar.pages.dev/\">rwadar.pages.dev</a> y que lleva la cabecera List-Unsubscribe.</p><p style=\"color:#555;font-size:12px\">Te escribe RWAdar, un radar independiente de plataformas de tokenización. Responsable: Víctor Manuel Jorques Granero, Plaza Generalitat, s/n, 46600 Alzira (Valencia), España (<a href=\"https://rwadar.pages.dev/privacidad#aviso-legal\" style=\"color:#555\">aviso legal</a> · <a href=\"https://rwadar.pages.dev/privacidad\" style=\"color:#555\">privacidad</a>).</p>"
     jq -n --arg from "RWAdar <$remitente>" --arg to "$destinatario" --arg asunto "$asunto" \
       --arg texto "$texto" --arg html "$html" --arg baja "$BAJA_MAILTO" --arg ruta "$ruta" \
-      '{from: $from, to: [$to], reply_to: ["RWAdar@protonmail.com"], subject: $asunto, text: $texto, html: $html,
+      '{from: $from, to: [$to], reply_to: ["rwadares@gmail.com"], subject: $asunto, text: $texto, html: $html,
         headers: {"List-Unsubscribe": $baja}, settings: {track_opens: false, track_clicks: false}}
        + (if $ruta == "" then {} else {route: $ruta} end)' > "$dir/cuerpo.json"
     clave="$(cat /proc/sys/kernel/random/uuid 2>/dev/null || uuidgen)"
