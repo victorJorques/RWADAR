@@ -6,9 +6,9 @@
 -- Copia idéntica: supabase/migrations/20261112130000_notificaciones.sql.
 --
 -- Va después de la 30 y la 31 (las dos aplicadas), que NO se tocan salvo
--- enviar_push. Aplicarla es tocar Supabase en línea: solo con orden expresa
--- de Víctor, con copia antes (flujo «Avisos a registrados (base)», acciones
--- ensayo-32 y aplicar-32). Nunca con `supabase db push`.
+-- enviar_push y limpiar(). Aplicarla es tocar Supabase en línea: solo con
+-- orden expresa de Víctor, con copia antes (flujo «Avisos a registrados
+-- (base)», acciones ensayo-32 y aplicar-32). Nunca con `supabase db push`.
 --
 -- Solo añade. No enciende nada, no toca relojes ni Vault y no reinicia la
 -- configuración (reaplicar la 30 sí la reinicia: aquí no se hace):
@@ -31,16 +31,29 @@
 --   5 · Para el remitente (rwadar-app/enviar-webpush.mjs, flujo
 --       «Notificaciones web»), solo el propietario de la base:
 --       webpush_pendientes, webpush_resultado, webpush_prueba y
---       webpush_limpiar (fuera de limpiar(), para no redefinirla).
+--       webpush_limpiar.
+--   6 · limpiar() (la del reloj diario `rwadar-novedades-limpieza`): la
+--       misma de la 30 letra por letra, más una llamada a webpush_limpiar()
+--       al final. Así los plazos de la web (envíos a los 90 días,
+--       suscripciones sin renovar a los 180) se cumplen cada día aunque no
+--       se envíe nada. El reloj no cambia: sigue llamando a limpiar().
 --
 -- El interruptor de envío es el mismo para Expo y la web:
 -- configuracion.push_habilitado (activar-push). Con el push apagado no sale
 -- ninguna notificación web salvo la de prueba, que solo va a las cuentas de
--- administración (perfiles.es_admin) y la lanza Víctor a mano.
+-- administración (perfiles.es_admin) y la lanza Víctor a mano. Suscribirse
+-- (registrar_aviso_webpush) no depende del interruptor: la web deja activar
+-- las notificaciones aunque el envío esté apagado, y así Víctor puede
+-- probarlas en su móvil antes de encender el envío para todos.
 --
--- OJO: reaplicar la 30 devuelve enviar_push a 'default' (y el correo a
--- Brevo): después hay que reaplicar la 31 y la 32. El verificador 32 lo
--- detecta.
+-- Cada notificación web lleva a https://rwadar.pages.dev/?avisos=1, que
+-- abre la lista de avisos de la campana con la baja a la vista («¿No quieres
+-- estos avisos? Desactívalos en Perfil o en los ajustes del móvil.»): la
+-- LSSI (art. 21.2, párr. 2) pide la baja en cada comunicación comercial.
+--
+-- OJO: reaplicar la 30 devuelve enviar_push a 'default' y limpiar() a la
+-- versión sin las notificaciones web (y el correo a Brevo): después hay que
+-- reaplicar la 31 y la 32. El verificador 32 lo detecta.
 -- =====================================================================
 begin;
 
@@ -413,9 +426,13 @@ $funcion$;
 -- 5 · Para el remitente (solo el propietario: flujo «Notificaciones web»)
 -- ---------------------------------------------------------------------
 -- La carga que va cifrada en cada notificación web (JSON, UTF-8):
--- {"v":1,"titulo","texto","url","etiqueta"}. La url sale del mismo destino
--- que el push de Expo (inicio, buscar o academy): nunca un dato personal. El
--- número del icono no viaja aquí: lo lleva el service worker de la web.
+-- {"v":1,"titulo","texto","url","etiqueta"}. La url siempre abre la lista de
+-- avisos de la campana (?avisos=1), donde se ve la baja (LSSI, art. 21.2,
+-- párr. 2); con el destino «buscar», sobre la lista del radar (#emisiones).
+-- El destino «academy» va también a la portada: la página de la Academy no
+-- tiene campana, y la lista lleva el enlace de cada aviso. Nunca un dato
+-- personal. El número del icono no viaja aquí: lo lleva el service worker de
+-- la web.
 create or replace function rwadar_novedades.webpush_carga(
   p_etiqueta text, p_titulo text, p_texto text, p_destino text
 ) returns jsonb
@@ -426,9 +443,8 @@ as $funcion$
     'titulo', p_titulo,
     'texto', p_texto,
     'url', case p_destino
-             when 'buscar' then 'https://rwadar.pages.dev/#emisiones'
-             when 'academy' then 'https://rwadar.pages.dev/academy/'
-             else 'https://rwadar.pages.dev/'
+             when 'buscar' then 'https://rwadar.pages.dev/?avisos=1#emisiones'
+             else 'https://rwadar.pages.dev/?avisos=1'
            end,
     'etiqueta', 'rwadar-' || p_etiqueta)
 $funcion$;
@@ -607,7 +623,8 @@ $funcion$;
 -- Prueba: una notificación a cada navegador suscrito de las cuentas de
 -- administración (perfiles.es_admin) confirmadas, sin anuncio y sin guardar
 -- nada. No depende del interruptor del push: la lanza Víctor a mano para
--- comprobar su móvil antes de encenderlo para todos. Mismo formato que
+-- comprobar su móvil antes de encenderlo para todos (la web deja activar las
+-- notificaciones con el envío apagado). Mismo formato que
 -- webpush_pendientes; id = 'p' y el número de la suscripción.
 create or replace function rwadar_novedades.webpush_prueba()
 returns jsonb
@@ -636,11 +653,11 @@ begin
 end
 $funcion$;
 
--- Limpieza de las notificaciones web, aparte de limpiar() para no
--- redefinirla: envíos de hace más de 90 días (los anuncios solo salen sus
--- primeros 7 días, así que no se repiten) y suscripciones sin renovar en
--- 180 días. Sin red ni Vault. La llama el flujo «Notificaciones web» al
--- terminar cada vuelta.
+-- Limpieza de las notificaciones web: envíos de hace más de 90 días (los
+-- anuncios solo salen sus primeros 7 días, así que no se repiten) y
+-- suscripciones sin renovar en 180 días. Sin red ni Vault. La llaman
+-- limpiar() (el reloj diario `rwadar-novedades-limpieza` y cada vuelta de
+-- procesar()) y el flujo «Notificaciones web» al terminar cada vuelta.
 create or replace function rwadar_novedades.webpush_limpiar()
 returns integer
 language plpgsql security definer set search_path = ''
@@ -655,6 +672,58 @@ begin
   delete from rwadar_novedades.suscripciones_web where actualizado_el < now() - interval '180 days';
   get diagnostics v_filas = row_count;
   return v_total + v_filas;
+end
+$funcion$;
+
+-- limpiar() de la 30, letra por letra, más la limpieza de las notificaciones
+-- web al final. El reloj diario `rwadar-novedades-limpieza` (04:41 UTC, existe
+-- también con todo apagado) y procesar() la llaman: así la privacidad
+-- («tras 180 días sin entrar en tu cuenta desde ese navegador») se cumple
+-- aunque no haya anuncios ni el push esté encendido. Primero el cerrojo de
+-- la 30 y después, dentro de webpush_limpiar(), el de la 32; nada toma el
+-- de la 32 y después el de la 30, así que no pueden esperarse en cruz.
+-- Reaplicar la 30 la devuelve a su versión: el verificador 32 lo detecta.
+create or replace function rwadar_novedades.limpiar()
+returns integer
+language plpgsql security definer set search_path = ''
+as $funcion$
+declare
+  v_filas integer;
+  v_total integer;
+begin
+  -- El mismo cerrojo que procesar(): desde ella lo vuelve a tomar sin
+  -- esperar; desde el reloj diario espera a que acabe la vuelta en curso.
+  perform pg_advisory_xact_lock(20261105, 30);
+  delete from rwadar_novedades.correos
+   where estado in ('aceptado', 'descartado', 'fallido', 'incierto')
+     and coalesce(terminado_el, creado_el) < now() - interval '90 days';
+  get diagnostics v_total = row_count;
+  delete from rwadar_novedades.pushes
+   where estado in ('aceptado', 'descartado', 'fallido')
+     and coalesce(terminado_el, creado_el) < now() - interval '90 days';
+  get diagnostics v_filas = row_count;
+  v_total := v_total + v_filas;
+  delete from rwadar_novedades.dispositivos where actualizado_el < now() - interval '180 days';
+  get diagnostics v_filas = row_count;
+  v_total := v_total + v_filas;
+  update rwadar_novedades.pushes set token = null
+   where token is not null and estado in ('aceptado', 'descartado', 'fallido');
+
+  -- Historial del permiso. Si el disparador de borrado falló, las filas de
+  -- una cuenta que ya no existe se marcan hoy (el plazo cuenta desde ahora,
+  -- nunca antes). Después, fuera las de cuentas borradas hace más de 3 años.
+  update rwadar_novedades.historial_permiso h
+     set cuenta_borrada_el = now()
+   where h.cuenta_borrada_el is null
+     and not exists (select 1 from auth.users u where u.id = h.usuario_id);
+  delete from rwadar_novedades.historial_permiso h
+   where h.cuenta_borrada_el < now() - interval '3 years'
+     and not exists (select 1 from auth.users u where u.id = h.usuario_id);
+  get diagnostics v_filas = row_count;
+  v_total := v_total + v_filas;
+  -- Notificaciones web (32): el mismo plazo cada día, se envíe o no.
+  v_total := v_total + rwadar_novedades.webpush_limpiar();
+  return v_total;
 end
 $funcion$;
 

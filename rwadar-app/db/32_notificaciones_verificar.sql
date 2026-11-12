@@ -46,12 +46,29 @@ begin
     raise exception '32: enviar_push no manda los push con prioridad alta (¿se reaplicó la 30? reaplicar 32_notificaciones.sql)';
   end if;
 
+  -- El reloj diario borra también lo de la web (privacidad: 90 y 180 días):
+  -- reaplicar la 30 devuelve limpiar() a la versión sin webpush_limpiar().
+  if position('rwadar_novedades.webpush_limpiar()' in
+              pg_get_functiondef('rwadar_novedades.limpiar()'::regprocedure)) = 0 then
+    raise exception '32: limpiar() no borra las notificaciones web caducadas (¿se reaplicó la 30? reaplicar 32_notificaciones.sql)';
+  end if;
+
+  -- Cada notificación web lleva a la lista de avisos, donde está la baja
+  -- (LSSI, art. 21.2, párr. 2): ningún destino sin «?avisos=1».
+  if exists (select 1 from unnest(array['inicio', 'buscar', 'academy', 'otro']) d
+              where rwadar_novedades.webpush_carga('verificar', 'T', 'T', d) ->> 'url'
+                    !~ '^https://rwadar\.pages\.dev/\?avisos=1(#[a-z]+)?$') then
+    raise exception '32: alguna notificación web no lleva a la lista de avisos con la baja (?avisos=1)';
+  end if;
+
   -- Reglas de las tablas: servicios de push conocidos, claves con su forma,
-  -- endpoint único, un envío por par y la clave pública con su forma.
+  -- endpoint único, un envío por par y la clave pública con su forma. La de
+  -- los servicios de push se compara entera: un servicio de más (o una
+  -- alternativa que lo abra todo) también la rompe.
   if not exists (select 1 from pg_constraint
                   where conrelid = 'rwadar_novedades.suscripciones_web'::regclass
                     and conname = 'suscripcion_web_endpoint_valido' and contype = 'c' and convalidated
-                    and pg_get_constraintdef(oid) like '%^https://(fcm\\.googleapis\\.com|updates\\.push\\.services\\.mozilla\\.com|web\\.push\\.apple\\.com|%\\.notify\\.windows\\.com)/%')
+                    and pg_get_constraintdef(oid) = 'CHECK (((char_length(endpoint) <= 2048) AND (endpoint ~ ''^https://(fcm\.googleapis\.com|updates\.push\.services\.mozilla\.com|web\.push\.apple\.com|[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\.notify\.windows\.com)/[A-Za-z0-9._~:/?=&%+-]+$''::text)))')
      or not exists (select 1 from pg_constraint
                      where conrelid = 'rwadar_novedades.suscripciones_web'::regclass
                        and conname = 'suscripcion_web_endpoint_unico' and contype = 'u')

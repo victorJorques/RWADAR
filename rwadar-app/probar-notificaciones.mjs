@@ -112,7 +112,15 @@ paso('la migración versionada 20261112130000 es una copia idéntica de db/32', 
   paso('enviar_push de la 32 es la de la 30 letra por letra salvo «\'priority\', \'high\'» en vez de «\'default\'»',
     (envio30.match(/'priority', 'default'/g) || []).length === 1
     && envio32 === envio30.replace("'priority', 'default'", "'priority', 'high'") && envio32 !== envio30);
-  const codigo = sinComentarios(SQL32);
+  const limpiar30 = funcionDe(SQL30, 'rwadar_novedades.limpiar');
+  const limpiar32 = funcionDe(SQL32, 'rwadar_novedades.limpiar');
+  paso('limpiar() de la 32 es la de la 30 letra por letra, más la limpieza de las notificaciones web al final (el reloj diario la llama)',
+    (limpiar30.match(/\n {2}return v_total;\nend\n/g) || []).length === 1
+    && limpiar32 === limpiar30.replace('\n  return v_total;\nend\n',
+      '\n  -- Notificaciones web (32): el mismo plazo cada día, se envíe o no.\n  v_total := v_total + rwadar_novedades.webpush_limpiar();\n  return v_total;\nend\n')
+    && limpiar32 !== limpiar30);
+  // Lo que la 32 añade suyo (limpiar() es la de la 30, comprobada arriba).
+  const codigo = sinComentarios(SQL32.replace(limpiar32, ''));
   paso('la 32 no borra tablas ni funciones, no toca relojes, Vault ni las filas de la configuración (no la reinicia) y solo concede EXECUTE a authenticated en sus 4 RPC',
     !/\bdrop\s+(table|function|trigger|schema|policy|index)\b/i.test(codigo)
     && !/cron\.|vault\.(create|update)_secret|insert\s+into\s+vault|update\s+rwadar_novedades\.configuracion|insert\s+into\s+rwadar_novedades\.configuracion|delete\s+from\s+rwadar_novedades\.(configuracion|preferencias|anuncios|historial_permiso|dispositivos|pushes|correos)/i.test(codigo)
@@ -692,10 +700,10 @@ let lote1;
   paso('el anuncio nuevo va solo a quien tiene el permiso vigente (Ana con sus 2 navegadores y Eva con sus 5), no a Beto (sin permiso), Vic (admin sin permiso), Dani (versión antigua) ni Carla (se suscribió después)',
     lote1.push === true && isDeepStrictEqual(destinos, [sAnaFcm.endpoint, sAnaApple.endpoint, ...deEva].sort()));
   const e = lote1.envios.find((x) => x.endpoint === sAnaFcm.endpoint);
-  paso('cada envío lleva id «e…», endpoint, p256dh, auth y la carga del contrato {v, titulo, texto, url (por destino), etiqueta «rwadar-<id>»}',
+  paso('cada envío lleva id «e…», endpoint, p256dh, auth y la carga del contrato {v, titulo, texto, url (la lista de avisos con la baja; la Academy no tiene campana), etiqueta «rwadar-<id>»}',
     /^e[1-9][0-9]*$/.test(e.id) && e.p256dh === sAnaFcm.p256dh && e.auth === sAnaFcm.auth
     && isDeepStrictEqual(e.carga, { v: 1, titulo: 'La Academy tiene lecciones nuevas', texto: 'Dos lecciones nuevas sobre tokenización.',
-      url: 'https://rwadar.pages.dev/academy/', etiqueta: `rwadar-${a2}` }));
+      url: 'https://rwadar.pages.dev/?avisos=1', etiqueta: `rwadar-${a2}` }));
   const marcados = await envios();
   paso('webpush_pendientes los deja «enviando» con un intento, y otra llamada ya no los devuelve',
     marcados.length === 7 && marcados.every((x) => x.estado === 'enviando' && x.intentos === 1 && x.anuncio_id === a2)
@@ -811,7 +819,7 @@ const prueba = async () => { await sesion(db); return (await una(db, 'select rwa
   const p = await prueba();
   paso('webpush_prueba solo devuelve los navegadores de las cuentas de administración, con «Prueba de RWAdar» y el texto del contrato, id «p…» y sin guardar nada',
     p.push === true && p.envios.length === 1 && p.envios[0].endpoint === sVic.endpoint && /^p[1-9][0-9]*$/.test(p.envios[0].id)
-    && isDeepStrictEqual(p.envios[0].carga, { v: 1, titulo: PRUEBA_TITULO, texto: PRUEBA_TEXTO, url: 'https://rwadar.pages.dev/', etiqueta: 'rwadar-prueba' })
+    && isDeepStrictEqual(p.envios[0].carga, { v: 1, titulo: PRUEBA_TITULO, texto: PRUEBA_TEXTO, url: 'https://rwadar.pages.dev/?avisos=1', etiqueta: 'rwadar-prueba' })
     && (await envios()).every((x) => x.suscripcion_id !== Number(p.envios[0].id.slice(1))));
   await sesion(db);
   await db.exec(APAGAR);
@@ -841,10 +849,30 @@ const prueba = async () => { await sesion(db); return (await una(db, 'select rwa
     viejo === true && n === 2 && (await numero(db, 'select count(*) from rwadar_novedades.envios_web')) === antes - 1
     && (await suscripciones(beto)).length === 1 && (await registrado(beto, sBeto)) === true);
   const definicion = (await una(db, "select lower(pg_get_functiondef('rwadar_novedades.webpush_limpiar()'::regprocedure)) d")).d;
-  paso('webpush_limpiar no hace red ni lee Vault, y limpiar() de la 30 sigue igual (no se redefine)',
-    !/net\.|http|vault/.test(definicion)
-    && (await una(db, "select pg_get_functiondef('rwadar_novedades.limpiar()'::regprocedure) d")).d.includes('interval \'3 years\'')
-    && !sinComentarios(SQL32).includes('function rwadar_novedades.limpiar('));
+  const diaria = (await una(db, "select lower(pg_get_functiondef('rwadar_novedades.limpiar()'::regprocedure)) d")).d;
+  paso('webpush_limpiar no hace red ni lee Vault, y limpiar() (la del reloj diario) conserva lo de la 30 y llama a webpush_limpiar()',
+    !/net\.|http|vault/.test(definicion) && !/net\.|vault\./.test(diaria)
+    && diaria.includes('interval \'3 years\'') && diaria.includes('rwadar_novedades.webpush_limpiar()'));
+  // El reloj diario de la 30 (rwadar-novedades-limpieza) existe también con
+  // todo apagado: es él, y no el flujo, quien cumple los 90 y 180 días.
+  await sesion(db);
+  await db.exec(APAGAR);
+  const reloj = await filas(db, "select command from cron.job where jobname = 'rwadar-novedades-limpieza'");
+  const sCaduca = navegador(fcm('beto-caduca'));
+  const caduca = await registrar(beto, sCaduca);
+  await db.query(`update rwadar_novedades.suscripciones_web set actualizado_el = now() - interval '200 days'
+    where usuario_id = $1 and endpoint = $2`, [beto.id, sCaduca.endpoint]);
+  await db.query(`update rwadar_novedades.envios_web set creado_el = now() - interval '95 days'
+    where id = (select min(id) from rwadar_novedades.envios_web)`);
+  const antesDiaria = await numero(db, 'select count(*) from rwadar_novedades.envios_web');
+  await sesion(db);
+  await db.query(reloj[0].command);
+  paso('con el push apagado, el reloj diario (select rwadar_novedades.limpiar()) borra la suscripción de hace 200 días y el envío de hace 95, y deja la vigente',
+    caduca === true && reloj.length === 1 && /^\s*select rwadar_novedades\.limpiar\(\)\s*$/.test(reloj[0].command)
+    && (await suscripciones(beto)).length === 1 && (await registrado(beto, sBeto)) === true
+    && (await numero(db, 'select count(*) from rwadar_novedades.envios_web')) === antesDiaria - 1);
+  await sesion(db);
+  await db.exec(ACTIVAR_PUSH);
 }
 
 /* =====================================================================
@@ -855,9 +883,19 @@ const prueba = async () => { await sesion(db); return (await una(db, 'select rwa
   const envio32 = funcionDe(SQL32, 'rwadar_novedades.enviar_push');
   const prueba32 = funcionDe(SQL32, 'rwadar_novedades.webpush_prueba');
   const regla = (await una(db, `select pg_get_constraintdef(oid) d from pg_constraint where conname = 'suscripcion_web_endpoint_valido'`)).d;
+  const limpiar30 = funcionDe(SQL30, 'rwadar_novedades.limpiar');
+  const limpiar32 = funcionDe(SQL32, 'rwadar_novedades.limpiar');
+  const carga32 = funcionDe(SQL32, 'rwadar_novedades.webpush_carga');
   const rompe = async (romper, arreglar) => { await sesion(db); await db.exec(romper); const v = await verificar32(); await sesion(db); await db.exec(arreglar); return v; };
   const rotos = {
     'enviar_push de la 30 (default)': [await rompe(envio30, envio32), /prioridad alta/],
+    'limpiar() de la 30 (sin la web)': [await rompe(limpiar30, limpiar32), /limpiar\(\) no borra las notificaciones web/],
+    'notificación sin la baja (Academy directa)': [await rompe(carga32.replace("else 'https://rwadar.pages.dev/?avisos=1'",
+      "when 'academy' then 'https://rwadar.pages.dev/academy/' else 'https://rwadar.pages.dev/?avisos=1'"), carga32), /baja/],
+    'un servicio de push ajeno en la regla': [await rompe(`alter table rwadar_novedades.suscripciones_web drop constraint suscripcion_web_endpoint_valido;
+        alter table rwadar_novedades.suscripciones_web add constraint suscripcion_web_endpoint_valido ${regla.replace('|web\\.push\\.apple\\.com|', '|web\\.push\\.apple\\.com|evil\\.example|')}`,
+      `alter table rwadar_novedades.suscripciones_web drop constraint suscripcion_web_endpoint_valido;
+        alter table rwadar_novedades.suscripciones_web add constraint suscripcion_web_endpoint_valido ${regla}`), /reglas/],
     'tabla abierta a authenticated': [await rompe('grant select on rwadar_novedades.suscripciones_web to authenticated',
       'revoke select on rwadar_novedades.suscripciones_web from authenticated'), /authenticated tiene permisos sobre/],
     'tabla abierta a service_role': [await rompe('grant delete on rwadar_novedades.envios_web to service_role',
@@ -889,7 +927,7 @@ const prueba = async () => { await sesion(db); return (await una(db, 'select rwa
       "delete from rwadar_novedades.suscripciones_web where endpoint like 'https://fcm.googleapis.com/fcm/send/sobra-%'"), /más de 5/],
   };
   const fallan = Object.entries(rotos).filter(([, [v, motivo]]) => v.ok || !motivo.test(v.error || '')).map(([n, [v]]) => `${n}: ${v.error || 'pasa'}`);
-  paso(`el verificador 32 detecta ${Object.keys(rotos).length} roturas (prioridad, permisos de tablas y funciones, RLS, definer, RPC, reglas, cascada, prueba sin filtro, clave a medias y más de 5)${fallan.length ? ` · no detecta: ${fallan.join(' | ')}` : ''}`,
+  paso(`el verificador 32 detecta ${Object.keys(rotos).length} roturas (prioridad, limpieza diaria, baja en el destino, permisos de tablas y funciones, RLS, definer, RPC, reglas con un servicio de más, cascada, prueba sin filtro, clave a medias y más de 5)${fallan.length ? ` · no detecta: ${fallan.join(' | ')}` : ''}`,
     fallan.length === 0 && (await verificar32()).ok);
 }
 {
@@ -902,7 +940,7 @@ const prueba = async () => { await sesion(db); return (await una(db, 'select rwa
   const clave = (await una(db, 'select webpush_clave_publica c from rwadar_novedades.configuracion')).c;
   await db.exec(SQL31);
   await db.exec(SQL32);
-  paso('reaplicar la 30 devuelve el push de Expo a «default» (el verificador 32 lo detecta) y conserva la clave pública y las suscripciones; reaplicar la 31 y la 32 lo deja bien',
+  paso('reaplicar la 30 devuelve el push de Expo a «default» y limpiar() a su versión (el verificador 32 lo detecta) y conserva la clave pública y las suscripciones; reaplicar la 31 y la 32 lo deja bien',
     !v.ok && /prioridad alta/.test(v.error) && clave === VAPID_ANTERIOR.publica
     && (await numero(db, 'select count(*) from rwadar_novedades.suscripciones_web')) === antes
     && (await verificar30()).ok && (await verificar31()).ok && (await verificar32()).ok);
@@ -1111,7 +1149,7 @@ if (hayBash) {
     encendido.estado === 0 && isDeepStrictEqual(llegados.map((r) => r.endpoint).sort(), [fAnaFcm.endpoint, fAnaApple.endpoint].sort())
     && llegados.every((r) => r.vapid && r.k === clave.c && r.cabeceras.ttl === '86400' && r.cabeceras.urgency === 'high'
       && isDeepStrictEqual(JSON.parse(r.claro.texto), { v: 1, titulo: 'Las notificaciones ya llegan', texto: 'Actívalas en Perfil desde tu móvil.',
-        url: 'https://rwadar.pages.dev/', etiqueta: `rwadar-${aFlujo2}` })));
+        url: 'https://rwadar.pages.dev/?avisos=1', etiqueta: `rwadar-${aFlujo2}` })));
   const deFlujo = (await envios()).filter((x) => x.anuncio_id === aFlujo2);
   paso('los resultados quedan en la base: el de Google «enviado» y el de Apple (410) borrado con su suscripción',
     deFlujo.length === 1 && deFlujo[0].estado === 'enviado' && (await registrado(ana, fAnaApple)) === false && (await registrado(ana, fAnaFcm)) === true);
@@ -1206,8 +1244,8 @@ if (hayBash) {
     vistas.length === 4 && vistas.every(({ carga, listo, vista }) => listo && vista.length === 1
       && vista[0].titulo === carga.titulo && vista[0].body === carga.texto && vista[0].tag === carga.etiqueta
       && vista[0].data.url === carga.url && vista[0].icon === '/icono-192.png')
-    && isDeepStrictEqual(vistas.map((v) => v.carga.url), ['https://rwadar.pages.dev/', 'https://rwadar.pages.dev/#emisiones',
-      'https://rwadar.pages.dev/academy/', 'https://rwadar.pages.dev/']));
+    && isDeepStrictEqual(vistas.map((v) => v.carga.url), ['https://rwadar.pages.dev/?avisos=1', 'https://rwadar.pages.dev/?avisos=1#emisiones',
+      'https://rwadar.pages.dev/?avisos=1', 'https://rwadar.pages.dev/?avisos=1']));
   const rpcs = ['registrar_aviso_webpush', 'quitar_aviso_webpush', 'mi_aviso_webpush_registrado', 'clave_publica_webpush'];
   const concedidas = [...SQL32.matchAll(/grant execute on function public\.(\w+)\(/g)].map((m) => m[1]);
   paso('contrato web: las 4 RPC que concede la 32 a authenticated son las que llama la web y las que deja pasar la pasarela',
