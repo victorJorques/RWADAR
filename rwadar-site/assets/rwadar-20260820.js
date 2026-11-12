@@ -4956,7 +4956,9 @@ const Cuenta = (function(){
    '</details><div class="perfil-pie">'+
     '<button id="pfSalir">Cerrar sesión</button>'+
     '<button class="peligro" id="pfBorrar">Borrar mi cuenta</button>'+
-   '</div>';
+   '</div>'+
+   '<div data-colabora="cuenta" hidden></div>';
+  ponerColabora(c);
   const contenedorInversiones=$('pfInversiones');
   try{
    if(!window.RWAdarInversionesUI||!window.RWAdarCarteraCuenta||!window.RWAdarCarteraModelo)throw new Error('Registro no disponible');
@@ -6182,6 +6184,28 @@ document.addEventListener('click',e=>{
   e.preventDefault();e.stopImmediatePropagation();abrir(a);
  },true);
 })();
+
+/* «¿Quieres colaborar con nosotros?» (12/11/2026). El bloque vive una sola
+   vez, en <template id="colaboraPlantilla"> de index.html; aquí se copia en
+   cada hueco [data-colabora] (al final de Inicio y de Perfil) con su propio
+   id para el encabezado. El diccionario común lo traduce al insertarlo. En
+   el pre-renderizado no hay <template> real y no hace nada. */
+function ponerColabora(raiz){
+ if(typeof document==='undefined')return;
+ const plantilla=document.getElementById('colaboraPlantilla');
+ const modelo=plantilla&&plantilla.content&&plantilla.content.firstElementChild;
+ if(!modelo||!raiz||typeof raiz.querySelectorAll!=='function')return;
+ raiz.querySelectorAll('[data-colabora]:not(.colabora)').forEach(hueco=>{
+  const donde=String(hueco.dataset.colabora||'bloque').replace(/[^a-z0-9-]/gi,'');
+  const bloque=modelo.cloneNode(true);
+  const titulo=bloque.querySelector('.colabora-tit');
+  titulo.id='colaboraTit-'+donde;
+  bloque.setAttribute('aria-labelledby',titulo.id);
+  bloque.dataset.colabora=donde;
+  hueco.replaceWith(bloque);
+ });
+}
+if(typeof document!=='undefined'&&typeof document.querySelectorAll==='function')ponerColabora(document);
 
 /* El trabajador solo se registra en HTTP(S), nunca durante el pre-render ni
    al abrir el archivo directamente. `updateViaCache:none` y update() evitan

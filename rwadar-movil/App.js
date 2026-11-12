@@ -39,6 +39,7 @@ import Explicador from './componentes/Explicador';
 import Academy from './componentes/Academy';
 import Inicio from './componentes/Inicio';
 import Cuenta from './componentes/Cuenta';
+import Colabora from './componentes/Colabora';
 import {
   useAvisosNovedades, useBandejaAvisos, PanelAvisosNovedades, TarjetaAvisosInicio, quitarPushAlSalir,
 } from './componentes/AvisosNovedades';
@@ -1496,6 +1497,9 @@ function PantallaPerfil({
           ultima
         />
       </GrupoMenu>
+
+      {/* ¿Quieres colaborar con nosotros? (12/11/2026): el mismo bloque que al final de Inicio. */}
+      <Colabora enPerfil />
 
       <Text style={e.notaMas}>
         RWAdar no pide datos bancarios, claves de monedero ni frases de recuperación. Esto no es asesoramiento financiero.

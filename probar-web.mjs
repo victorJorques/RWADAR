@@ -1610,6 +1610,34 @@ const aprendeHTML = lee('aprende/index.html');
     !/id="relCap\d"|rel-novedades|noticias:ini|rel-refs|rel-empieza|class="rel-escaparate"|relTarjetas/.test(panelInicioHTML) &&
     (panelInicioHTML.match(/Invertir tiene riesgos/g) || []).length === 1 &&
     (panelInicioHTML.match(/class="ini-bloque-tit"/g) || []).length === 4);
+  // «¿Quieres colaborar con nosotros?» (12/11/2026): un solo bloque (#colaboraPlantilla) que
+  // ponerColabora() copia al final de Inicio (tras Aprende, antes del pie) y de Perfil (antes de
+  // la nota final) y en la cuenta de escritorio; su correo no sustituye al de privacidad.
+  {
+    const plantilla = (html.match(/<template id="colaboraPlantilla">([\s\S]*?)<\/template>/) || [])[1] || '';
+    const app = lee('assets/rwadar-20260820.js');
+    const en = require('./rwadar-site/assets/idioma-en-20261022.js');
+    const textosColabora = ['¿Quieres colaborar con nosotros?',
+      'Si eres una plataforma o un emisor, trabajas en el sector o quieres proponer una mejora, escríbenos.',
+      'Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y RWAdar no recibe dinero de las inversiones.',
+      'Escríbenos: rwadares@gmail.com'];
+    const [iAprende, iColabora, iPie] = ['id="iniAprendeTit"', '<div data-colabora="inicio" hidden></div>', 'class="ini-pie"'].map(x => panelInicioHTML.indexOf(x));
+    const [iPerfil, iNota] = [panelPerfilHTML.indexOf('<div data-colabora="perfil" hidden></div>'), panelPerfilHTML.indexOf('class="movil-nota-final"')];
+    prueba('«¿Quieres colaborar con nosotros?»: un solo bloque, al final de Inicio y de Perfil, con h2, mailto:rwadares@gmail.com y su inglés',
+      (html.match(/id="colaboraPlantilla"/g) || []).length === 1 &&
+      /^\s*<section class="ini-bloque colabora">[\s\S]*<h2 class="ini-bloque-tit colabora-tit">¿Quieres colaborar con nosotros\?<\/h2>/.test(plantilla) &&
+      /<a class="b1 colabora-boton" href="mailto:rwadares@gmail\.com">[\s\S]*<span>Escríbenos: rwadares@gmail\.com<\/span>\s*<\/a>/.test(plantilla) &&
+      textosColabora.every(t => plantilla.includes(t) && typeof en[t] === 'string' && en[t] !== t) &&
+      en['Escríbenos: rwadares@gmail.com'] === 'Write to us: rwadares@gmail.com' &&
+      iAprende > 0 && iColabora > iAprende && iPie > iColabora &&
+      iPerfil > 0 && iNota > iPerfil && !/<section\b/.test(panelPerfilHTML.slice(iPerfil)) &&
+      (html.match(/rwadares@gmail\.com/g) || []).length === 2 &&
+      /function ponerColabora\(raiz\)/.test(app) && /'<div data-colabora="cuenta" hidden><\/div>';\s*ponerColabora\(c\);/.test(app) &&
+      // El correo de privacidad, derechos y contacto legal no cambia.
+      /<a class="movil-menu-fila" href="mailto:RWAdar@protonmail\.com">/.test(panelPerfilHTML) &&
+      /<a href="mailto:RWAdar@protonmail\.com">RWAdar@protonmail\.com<\/a>/.test(html) &&
+      !privacidad.includes('rwadares@gmail.com'));
+  }
   prueba('/aprende/ trae los seis capítulos, su carrusel, la Academy, las fuentes y la nota legal, sin cifras de mercado en el 03',
     ['relCap1', 'relCap2', 'relCap3', 'relCap4', 'relCap5', 'relCap6', 'relQuienLista', 'relRefs', 'nota-legal', 'notaLegalCompleta'].every(id => aprendeHTML.includes(`id="${id}"`)) &&
     /<!--academy-inicio:ini-->[\s\S]*href="\/academy\/"[\s\S]*<!--academy-inicio:fin-->/.test(aprendeHTML) &&

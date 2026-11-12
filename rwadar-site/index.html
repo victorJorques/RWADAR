@@ -333,7 +333,11 @@
       </a>
     </section>
 
-    <!-- 6 · Pie: una línea legal y la nota completa (en /aprende/). Es un
+    <!-- 6 · ¿Quieres colaborar con nosotros? (12/11/2026): el bloque de
+         #colaboraPlantilla, el mismo que al final de Perfil. -->
+    <div data-colabora="inicio" hidden></div>
+
+    <!-- 7 · Pie: una línea legal y la nota completa (en /aprende/). Es un
          div con role="note" y no un elemento footer: en el móvil, la hoja
          principal esconde los footer fuera de la pestaña «Buscar». En
          escritorio no sale: el pie del sitio ya lleva la nota legal. -->
@@ -1446,9 +1450,33 @@
       </div>
     </section>
 
+    <!-- ¿Quieres colaborar con nosotros?: el mismo bloque que al final de Inicio. -->
+    <div data-colabora="perfil" hidden></div>
+
     <p class="movil-nota-final">RWAdar no pide datos bancarios, claves de monedero ni frases de recuperación. No es asesoramiento financiero.</p>
   </div>
 </section>
+
+<!-- «¿Quieres colaborar con nosotros?» (12/11/2026; encargo: «un apartado al
+     final de Inicio y Perfil … y el correo de contacto»). Un solo bloque y un
+     solo texto: ponerColabora() de assets/rwadar-20260820.js lo copia en cada
+     hueco [data-colabora] (al final de Inicio, de Perfil en el móvil y de la
+     cuenta en escritorio) y el diccionario común lo pasa al inglés. Este
+     correo es solo para colaborar: privacidad, derechos y avisos legales
+     siguen en RWAdar@protonmail.com. -->
+<template id="colaboraPlantilla">
+  <section class="ini-bloque colabora">
+    <div class="ini-bloque-cab">
+      <h2 class="ini-bloque-tit colabora-tit">¿Quieres colaborar con nosotros?</h2>
+      <p class="ini-bloque-sub">Si eres una plataforma o un emisor, trabajas en el sector o quieres proponer una mejora, escríbenos.</p>
+    </div>
+    <p class="colabora-nota">Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y RWAdar no recibe dinero de las inversiones.</p>
+    <a class="b1 colabora-boton" href="mailto:rwadares@gmail.com">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      <span>Escríbenos: rwadares@gmail.com</span>
+    </a>
+  </section>
+</template>
 
 <nav class="movil-nav" id="movilNav" role="tablist" aria-label="Navegación principal">
   <button class="movil-nav-item" id="movilTabInicio" type="button" role="tab"
