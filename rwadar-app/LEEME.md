@@ -415,7 +415,7 @@ por eso ya no se edita: cualquier cambio va en una migración nueva, como la
     **Reaplicar la 30 las quita**: después, la 31, la 32 y la 33.
   - Postgres no tiene curvas elípticas: cifra y firma el servidor de la web
     (Cloudflare). La única llamada es `webpush_encolar`: `POST
-    https://rwadar.pages.dev/api/interno/webpush` por pg_net (10 s), con
+    https://rwadar.pages.dev/api/interno/webpush` por pg_net (25 s), con
     `{endpoint, p256dh, auth, carga}` y las cabeceras
     `x-rwadar-vapid-privada` (de Vault, solo ahí) y `x-rwadar-vapid-publica`.
     Espera 200 con `{"codigo": n}` (código del servicio de push; 0 sin
@@ -436,7 +436,30 @@ por eso ya no se edita: cualquier cambio va en una migración nueva, como la
     33 sobre la cadena de producción, las peticiones de pg_net, las
     respuestas (201, 404, 410, 429, 500, 0, -1, fallos del servidor y sin
     respuesta), un doble del servidor de la web que cifra y entrega en un
-    servicio de push local, y los pasos de los flujos de verdad.
+    servicio de push local, y los pasos de los flujos de verdad. El servidor
+    de verdad se prueba en `rwadar-acceso/webpush-interno.test.mjs` (con el
+    contrato de esta migración: dirección, cabeceras y espera).
+  - **Orden de puesta en marcha** (cada paso con orden de Víctor):
+    1. publicar la web con `/api/interno/webpush` (sin ella, la web de hoy
+       contesta 405 a ese POST: cada envío se reintenta 3 veces y a los 15
+       minutos queda fallido, y ese anuncio ya no llega por la web);
+    2. `ensayo-33` y `aplicar-33`;
+    3. `prueba-webpush`, con al menos una aceptada;
+    4. `activar-push`, con las condiciones del anexo legal.
+  - Si se apaga el push con envíos «enviando», hay que volver a encenderlo
+    antes de 6 horas: pg_net guarda las respuestas unas 6 horas
+    (`pg_net.ttl`) y, pasadas, `leer_webpush` no las encuentra y las
+    reintenta; si habían llegado, salen repetidas. Lo mismo pasa con Expo.
+  - Consumo: cada notificación es una petición a Pages Functions (tandas de
+    50 cada 5 minutos: como mucho 14.400 al día si hay cola). El cupo
+    gratuito (100.000 al día) es el de toda la web, y si se agota Pages deja
+    pasar `/academy/` sin cuenta (ver `_routes.json`). Vigilarlo en
+    Cloudflare antes de subir la tanda.
+  - Las copias de seguridad (`copia-seguridad.sh`, en GitHub) llevan
+    `suscripciones_web` y `envios_web` sin filas: tras restaurar, cada
+    persona vuelve a pulsar «Activar». El resto de la copia sigue pasando en
+    claro unos minutos por GitHub (el hueco de GitHub de
+    `docs/legal/encargados/README.md`).
 
 ## Contenido y sincronización
 

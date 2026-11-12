@@ -582,8 +582,8 @@ let a2;
     expo.length >= 1 && expo.every((x) => x.body.priority === 'high') && expo.some((x) => x.body.title === 'La Academy tiene lecciones nuevas')
     && r1.push_enviados === expo.length && 'push_leidos' in r1 && 'limpiados' in r1 && 'repartidos' in r1);
   const p = peticiones.find((x) => x.body.endpoint === sAnaFcm.endpoint);
-  paso('cada petición: POST a https://rwadar.pages.dev/api/interno/webpush con content-type y accept JSON, la privada en x-rwadar-vapid-privada y la pública en x-rwadar-vapid-publica, y 10 segundos de espera',
-    peticiones.every((x) => x.url === URL_SERVIDOR && x.timeout_milliseconds === 10000
+  paso('cada petición: POST a https://rwadar.pages.dev/api/interno/webpush con content-type y accept JSON, la privada en x-rwadar-vapid-privada y la pública en x-rwadar-vapid-publica, y 25 segundos de espera (el servidor: 8 s la clave y 10 s el push)',
+    peticiones.every((x) => x.url === URL_SERVIDOR && x.timeout_milliseconds === 25000
       && isDeepStrictEqual(x.headers, { 'content-type': 'application/json', accept: 'application/json',
         'x-rwadar-vapid-privada': VAPID.privada, 'x-rwadar-vapid-publica': VAPID.publica })));
   paso('el cuerpo es exactamente {endpoint, p256dh, auth, carga} con la carga del contrato (la lista de avisos con la baja; etiqueta rwadar-<id>)',
@@ -677,7 +677,7 @@ let a2;
     ['el servidor responde 500', { status_code: 500, content: '' }, { estado: 'reintentar', codigo: null }],
     ['200 sin JSON', { status_code: 200, content: 'no es JSON' }, { estado: 'reintentar', codigo: null }],
     ['200 con el código en texto', { status_code: 200, content: '{"codigo": "201"}' }, { estado: 'reintentar', codigo: null }],
-    ['tiempo agotado (pg_net)', { status_code: null, content: null, error_msg: 'Timeout of 10000 ms reached' }, { estado: 'reintentar', codigo: null }],
+    ['tiempo agotado (pg_net)', { status_code: null, content: null, error_msg: 'Timeout of 25000 ms reached' }, { estado: 'reintentar', codigo: null }],
     ['sin respuesta todavía', 'nada', { estado: 'enviando', codigo: null }],
     ['sin respuesta a los 11 minutos', 'vieja', { estado: 'reintentar', codigo: null }],
   ];
@@ -803,7 +803,7 @@ const resultadoPrueba = async (p) => { await sesion(db); return (await una(db, '
     pares.length === 2 && isDeepStrictEqual(pares.map((x) => x[1]), subsVic.map((s) => Number(s.id)))
     && isDeepStrictEqual(pares.map((x) => x[0]), peticiones.map((x) => Number(x.id)))
     && isDeepStrictEqual(peticiones.map((x) => x.body.endpoint), subsVic.map((s) => s.endpoint))
-    && peticiones.every((x) => x.timeout_milliseconds === 10000 && x.headers['x-rwadar-vapid-privada'] === VAPID.privada
+    && peticiones.every((x) => x.timeout_milliseconds === 25000 && x.headers['x-rwadar-vapid-privada'] === VAPID.privada
       && x.headers['x-rwadar-vapid-publica'] === VAPID.publica
       && isDeepStrictEqual(x.body.carga, { v: 1, titulo: PRUEBA_TITULO, texto: PRUEBA_TEXTO, url: 'https://rwadar.pages.dev/?avisos=1', etiqueta: 'rwadar-prueba' }))
     && (await numero(db, 'select count(*) from rwadar_novedades.envios_web')) === enviosAntes);
@@ -987,7 +987,7 @@ if (hayBash) {
     'otra dirección': [await rompe(encolar33.replace(URL_SERVIDOR, 'https://otro.example/api/interno/webpush'), encolar33), /contrato/],
     'la privada en el cuerpo': [await rompe(encolar33.replace("'carga', r.carga)", "'carga', r.carga, 'k', v_privada)"), encolar33), /contrato/],
     'sin la cabecera de la pública': [await rompe(encolar33.replace("'x-rwadar-vapid-publica', v_publica", "'x-otra', v_publica"), encolar33), /contrato/],
-    'otra espera': [await rompe(encolar33.replace('timeout_milliseconds := 10000', 'timeout_milliseconds := 60000'), encolar33), /contrato/],
+    'otra espera': [await rompe(encolar33.replace('timeout_milliseconds := 25000', 'timeout_milliseconds := 10000'), encolar33), /contrato/],
     'otra función lee la privada': [await rompe(`create function rwadar_novedades.fuga() returns text language sql security definer set search_path = ''
         as $$ select decrypted_secret from vault.decrypted_secrets where name = 'RWADAR_VAPID_PRIVADA' $$;
         revoke all on function rwadar_novedades.fuga() from public, anon, authenticated, service_role`,

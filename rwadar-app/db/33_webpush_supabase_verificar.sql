@@ -91,7 +91,7 @@ begin
   end if;
 
   -- La única llamada al servidor de la web, con el contrato: su dirección,
-  -- la privada solo en su cabecera, el cuerpo de cuatro campos y 10 segundos.
+  -- la privada solo en su cabecera, el cuerpo de cuatro campos y 25 segundos.
   v_encolar := pg_get_functiondef('rwadar_novedades.webpush_encolar(jsonb)'::regprocedure);
   if position('url := ''https://rwadar.pages.dev/api/interno/webpush''' in v_encolar) = 0
      or (length(v_encolar) - length(replace(v_encolar, 'net.http_post(', ''))) <> length('net.http_post(')
@@ -100,7 +100,7 @@ begin
      or position('''x-rwadar-vapid-publica'', v_publica' in v_encolar) = 0
      or position('headers := v_cabeceras' in v_encolar) = 0
      or position('body := jsonb_build_object(''endpoint'', r.endpoint, ''p256dh'', r.p256dh, ''auth'', r.auth, ''carga'', r.carga)' in v_encolar) = 0
-     or position('timeout_milliseconds := 10000' in v_encolar) = 0
+     or position('timeout_milliseconds := 25000' in v_encolar) = 0
      or position('s.name = ''RWADAR_VAPID_PRIVADA''' in v_encolar) = 0 then
     raise exception '33: webpush_encolar no pide al servidor de la web lo del contrato (reaplicar 33_webpush_supabase.sql)';
   end if;

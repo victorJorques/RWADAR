@@ -297,7 +297,7 @@ test('una carga de tamaño máximo cabe en un registro; un byte más ya no', asy
   assert.deepEqual(JSON.parse(recibidos.at(-1).claro.texto), justa);
   assert.equal(recibidos.at(-1).largo, 4096);
   const salidas = e.salidas.length;
-  await esperarRechazo(e, { cuerpo: envio(nuevo(), { ...justa, url: justa.url + 'a' }) }, 400, 'entrada_invalida');
+  await esperarRechazo(e, { cuerpo: envio(nuevo(), { ...justa, url: justa.url + 'a' }) }, 200, 'entrada_invalida');
   assert.equal(e.salidas.length, salidas);
 });
 
@@ -332,7 +332,7 @@ test('solo POST: otros métodos dan 405 sin preguntar a Supabase ni salir a la r
   assert.equal(e.salidas.length, 0);
 });
 
-test('solo los servicios de push del contrato, por https y sin puerto ni usuario (400 y -1, sin salir)', async () => {
+test('solo los servicios de push del contrato, por https y sin puerto ni usuario (200 y -1, definitivo, sin salir)', async () => {
   const e = entorno();
   const ajenos = [
     'http://fcm.googleapis.com/fcm/send/x', 'https://fcm.googleapis.com.evil.example/fcm/send/x',
@@ -344,12 +344,12 @@ test('solo los servicios de push del contrato, por https y sin puerto ni usuario
     'https://web.push.apple.com\\@evil.example/x', 'https://127.0.0.1/x', 'https://rwadar.pages.dev/x', 'https://push.example/x',
     'https://web.push.apple.com/' + 'a'.repeat(2048), 'wss://web.push.apple.com/x', '//web.push.apple.com/x',
   ];
-  for (const endpoint of ajenos) await esperarRechazo(e, { cuerpo: { ...envio('https://web.push.apple.com/ok'), endpoint } }, 400, 'entrada_invalida');
+  for (const endpoint of ajenos) await esperarRechazo(e, { cuerpo: { ...envio('https://web.push.apple.com/ok'), endpoint } }, 200, 'entrada_invalida');
   assert.equal(e.salidas.length, 0);
   assert.deepEqual(e.otras, []);
 });
 
-test('rechaza cargas ajenas, claves del navegador sin forma y entradas de más o de menos (400 y -1, sin salir)', async () => {
+test('rechaza cargas ajenas, claves del navegador sin forma y entradas de más o de menos (200 y -1, definitivo, sin salir)', async () => {
   const e = entorno();
   const bien = () => envio(nuevo());
   const cargas = [
@@ -360,25 +360,25 @@ test('rechaza cargas ajenas, claves del navegador sin forma y entradas de más o
     { v: 2 }, { v: '1' }, { titulo: '' }, { texto: '' }, { titulo: 'x'.repeat(201) }, { texto: 'x'.repeat(1001) }, { titulo: null },
     { etiqueta: 'otra-1' }, { etiqueta: 'rwadar-' }, { etiqueta: 'rwadar-<b>' }, { icono: 'https://evil.example/i.png' },
   ];
-  for (const cambio of cargas) await esperarRechazo(e, { cuerpo: { ...bien(), carga: { ...CARGA, ...cambio } } }, 400, 'entrada_invalida');
+  for (const cambio of cargas) await esperarRechazo(e, { cuerpo: { ...bien(), carga: { ...CARGA, ...cambio } } }, 200, 'entrada_invalida');
   for (const quitar of ['v', 'titulo', 'texto', 'url', 'etiqueta']) {
     const carga = { ...CARGA }; delete carga[quitar];
-    await esperarRechazo(e, { cuerpo: { ...bien(), carga } }, 400, 'entrada_invalida');
+    await esperarRechazo(e, { cuerpo: { ...bien(), carga } }, 200, 'entrada_invalida');
   }
-  for (const carga of [null, [], 'texto', JSON.stringify(CARGA)]) await esperarRechazo(e, { cuerpo: { ...bien(), carga } }, 400, 'entrada_invalida');
+  for (const carga of [null, [], 'texto', JSON.stringify(CARGA)]) await esperarRechazo(e, { cuerpo: { ...bien(), carga } }, 200, 'entrada_invalida');
   const sinCurva = 'B' + 'A'.repeat(86);
   for (const cambio of [{ p256dh: sinCurva }, { p256dh: bien().p256dh.slice(1) }, { p256dh: bien().p256dh + '=' },
     { p256dh: bien().p256dh.replace(/^B/, 'A') }, { auth: bien().auth.slice(1) }, { auth: bien().auth + '==' }, { auth: 'A'.repeat(21) + 'B' },
     { auth: 7 }, { p256dh: null }]) {
-    await esperarRechazo(e, { cuerpo: { ...bien(), ...cambio } }, 400, 'entrada_invalida');
+    await esperarRechazo(e, { cuerpo: { ...bien(), ...cambio } }, 200, 'entrada_invalida');
   }
   const completo = bien();
   for (const [nombre, cuerpo] of [['id de más', { ...completo, id: 'e12' }], ['sin auth', { endpoint: completo.endpoint, p256dh: completo.p256dh, carga: CARGA }],
     ['lista', [completo]], ['no es JSON', '{"endpoint":'], ['vacío', ''], ['de más de 16 KiB', { ...completo, relleno: 'x'.repeat(17 * 1024) }]]) {
-    await esperarRechazo(e, { cuerpo }, 400, 'entrada_invalida', -1).catch(error => { error.message = nombre + ': ' + error.message; throw error; });
+    await esperarRechazo(e, { cuerpo }, 200, 'entrada_invalida', -1).catch(error => { error.message = nombre + ': ' + error.message; throw error; });
   }
-  await esperarRechazo(e, { cuerpo: completo, tipo: 'text/plain' }, 400, 'entrada_invalida');
-  await esperarRechazo(e, { cuerpo: completo, ruta: '/api/interno/webpush?id=1' }, 400, 'entrada_invalida');
+  await esperarRechazo(e, { cuerpo: completo, tipo: 'text/plain' }, 200, 'entrada_invalida');
+  await esperarRechazo(e, { cuerpo: completo, ruta: '/api/interno/webpush?id=1' }, 200, 'entrada_invalida');
   assert.equal(e.salidas.length, 0);
 });
 
@@ -466,17 +466,28 @@ test('la clave de RWAdar se guarda 5 minutos, una sola pregunta para muchas a la
   assert.equal(e.supabase.length, 3);
 });
 
-test('límite de peticiones por visitante con el limitador del servidor (429 y 0)', async () => {
+test('límite de peticiones por visitante con el limitador del servidor (429 y 0); sin la clave no se agota el de RWAdar', async () => {
   const e = entorno();
   const ip = { 'cf-connecting-ip': '203.0.113.9' };
-  // Con claves sin forma: barato y sin red, pero cuenta igual.
+  // Sin la clave de RWAdar (sin forma, ajena o que no casa): su propio cupo de 300.
   for (let i = 0; i < 2000; i++) {
-    const r = await e.pedir({ cuerpo: '{}', privada: 'x', cabeceras: ip });
-    assert.equal(r.estado, 403);
+    const otra = i % 3 === 0 ? { privada: 'x' } : i % 3 === 1 ? { privada: OTRA.privada, publica: OTRA.publica } : { privada: OTRA.privada };
+    const r = await e.pedir({ cuerpo: '{}', cabeceras: ip, ...otra });
+    assert.equal(r.estado, i < 300 ? 403 : 429, String(i));
   }
-  const r = await esperarRechazo(e, { cuerpo: envio(nuevo()), cabeceras: ip }, 429, 'intentos_excedidos', 0);
+  const r = await esperarRechazo(e, { cuerpo: envio(nuevo()), privada: 'x', cabeceras: ip }, 429, 'intentos_excedidos', 0);
   assert.match(r.cabeceras.get('retry-after'), /^[1-9][0-9]*$/);
   assert.equal(e.salidas.length, 0);
+  // 2000 malas desde la misma dirección no bloquean a la base: la buena sale.
+  assert.deepEqual((await e.pedir({ cuerpo: envio(nuevo()), cabeceras: ip })).json, { codigo: 201 });
+  // Las que traen la clave de RWAdar tienen su cupo de 2000 (aquí con una
+  // entrada que no sirve, sin salir: 200 y -1).
+  for (let i = 1; i < 2000; i++) {
+    const m = await e.pedir({ cuerpo: '{}', cabeceras: ip });
+    assert.equal(m.estado, 200, String(i));
+  }
+  await esperarRechazo(e, { cuerpo: envio(nuevo()), cabeceras: ip }, 429, 'intentos_excedidos', 0);
+  assert.equal(e.salidas.length, 1);
   // Otro visitante sigue; pasada la ventana de 10 minutos, también el primero.
   assert.deepEqual((await e.pedir({ cuerpo: envio(nuevo()), cabeceras: { 'cf-connecting-ip': '203.0.113.10' } })).json, { codigo: 201 });
   e.reloj.desfase += 601000;
@@ -589,4 +600,24 @@ test('la pasarela de datos y el resto de /api siguen igual', async () => {
   const sinOrigen = await e.pedir({ ruta: '/api/acceso/entrar', cuerpo: { correo: 'a@b.test', clave: 'x' } });
   assert.equal(sinOrigen.estado, 403);
   assert.equal(e.salidas.length, 0);
+});
+
+test('contrato con la migración 33: dirección, cabeceras y una espera de pg_net mayor que el peor caso del servidor', () => {
+  const fs = require('node:fs');
+  const sql = fs.readFileSync(path.join(AQUI, '../rwadar-app/db/33_webpush_supabase.sql'), 'utf8');
+  const servidor = fs.readFileSync(path.join(AQUI, 'servidor.mjs'), 'utf8');
+  const espera = Number(sql.match(/timeout_milliseconds := (\d+)/)?.[1]);
+  const plazoSupabase = Number(servidor.match(/plazoMs = (\d+)/)?.[1]);
+  const plazoPush = Number(servidor.match(/plazoWebpushMs = (\d+)/)?.[1]);
+  // Si pg_net cortara antes que el servidor, la base reintentaría algo que el
+  // servicio de push ya aceptó (notificación repetida) y el 0 nunca llegaría.
+  assert.equal(espera, 25000);
+  assert.ok(espera >= plazoSupabase + plazoPush + 5000, `${espera} < ${plazoSupabase} + ${plazoPush} + 5000`);
+  assert.match(sql, /url := 'https:\/\/rwadar\.pages\.dev\/api\/interno\/webpush'/);
+  assert.match(sql, /'content-type', 'application\/json'/);
+  assert.match(sql, /'x-rwadar-vapid-privada', v_privada/);
+  assert.match(sql, /'x-rwadar-vapid-publica', v_publica/);
+  assert.match(sql, /body := jsonb_build_object\('endpoint', r\.endpoint, 'p256dh', r\.p256dh, 'auth', r\.auth, 'carga', r\.carga\)/);
+  // La base solo lee «codigo» de un 200: la entrada que no sirve va con 200.
+  assert.match(sql, /if p_estado is distinct from 200 or p_contenido is null or char_length\(p_contenido\) > 200 then/);
 });

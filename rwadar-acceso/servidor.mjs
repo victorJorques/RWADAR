@@ -13,13 +13,17 @@ const MAX_BODY = 16 * 1024;
 // every request that reaches Auth. There is deliberately no per-email limit:
 // anyone could use it to lock a stranger out. Maximum per window:
 // password attempts; requests that can send an email; unsubscribe links (baja);
-// Web Push sends from Supabase (webpush: one request per notification, in
-// batches of up to 500 every 5 minutes; see webpush-servidor.mjs)
-const LIMITES = Object.freeze({ clave: 30, envio: 10, baja: 20, webpush: 2000 });
+// Web Push sends from Supabase (webpush: one request per notification; pg_net
+// sends batches of 50 every 5 minutes, so at most 100 per window: the margin is
+// for a larger batch later); requests to that route without RWAdar's VAPID key
+// (webpushSinClave: their own bucket, charged after the key check, so whoever
+// shares Supabase's outgoing address cannot use up RWAdar's; see
+// webpush-servidor.mjs)
+const LIMITES = Object.freeze({ clave: 30, envio: 10, baja: 20, webpush: 2000, webpushSinClave: 300 });
 const VENTANA_S = 600;
 const GRUPO_LIMITE = Object.freeze({ '/api/acceso/entrar': 'clave', '/api/acceso/reautenticar': 'clave',
   '/api/acceso/registrar': 'envio', '/api/acceso/recuperar': 'envio', '/api/acceso/reenviar': 'envio',
-  '/api/acceso/baja': 'baja', '/api/interno/webpush': 'webpush' });
+  '/api/acceso/baja': 'baja', '/api/interno/webpush': 'webpush', '/api/interno/webpush:sin-clave': 'webpushSinClave' });
 // Avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md): la
 // casilla del alta es opcional y versionada. Cambiar su texto obliga a otra versión.
 // Ninguna de estas constantes se exporta: este archivo acaba dentro de

@@ -4,7 +4,9 @@
    Lo usan el flujo «Notificaciones web» (.github/workflows/notificaciones-web.yml)
    y la acción crear-vapid de «Avisos a registrados (base)». Contrato: la
    migración 32 (db/32_notificaciones.sql). Solo Node: node:crypto y fetch,
-   sin npm.
+   sin npm. Desde la migración 33 solo envía la prueba de administración: el
+   envío a todos lo pide Supabase y lo cifra y entrega el servidor de la web
+   (rwadar-acceso/webpush-servidor.mjs, mismo cifrado y mismas cabeceras).
 
    · Cifrado RFC 8291 (aes128gcm): ECDH P-256 con una clave de un solo uso,
      HKDF-SHA-256, un solo registro y el relleno mínimo (el delimitador 0x02).

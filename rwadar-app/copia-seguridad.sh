@@ -5,7 +5,8 @@
 # Hace una copia de lo que no se puede volver a generar desde el
 # repositorio: las cuentas (auth), los datos de la app (public), el
 # catálogo editorial (rwadar_catalogo) y los avisos a registrados
-# (rwadar_novedades: permisos, bajas, móviles y colas). La cartera de cada
+# (rwadar_novedades: permisos, bajas, móviles y colas; las suscripciones de
+# las notificaciones web, sin datos: ver ARGS). La cartera de cada
 # cuenta (rwadar_cuentas_privadas) NO entra todavía por defecto, a propósito:
 # ver ESQUEMAS más abajo y docs/COPIAS-DE-SEGURIDAD.md. La cifra con una
 # contraseña y comprueba que se puede descifrar y leer antes de darla por
@@ -76,6 +77,13 @@ NOMBRE="rwadar-$FECHA.dump"
 
 ARGS=()
 for e in "${LISTA[@]}"; do ARGS+=(--schema="$e"); done
+# Las suscripciones de las notificaciones web (la dirección de entrega y las
+# claves de cada navegador) y sus envíos entran sin datos, solo la tabla: se
+# pueden volver a crear (al pulsar «Activar» el navegador se suscribe otra vez)
+# y así no pasan en claro por las máquinas de GitHub, que hoy no tienen
+# contrato de encargo (anexo legal del 12/11/2026, C3). Un patrón de exclusión
+# que no encuentra nada (antes de la 32) no hace fallar a pg_dump.
+ARGS+=(--exclude-table-data=rwadar_novedades.suscripciones_web --exclude-table-data=rwadar_novedades.envios_web)
 
 # Consultas de solo lectura al catálogo de la base: nombres y recuentos,
 # nunca filas.
@@ -166,6 +174,7 @@ cmp -s "$TRABAJO/$NOMBRE" "$TRABAJO/descifrado.dump" || fallo "la copia descifra
   echo "Copia de RWAdar · $FECHA UTC"
   echo "Esquemas: $ESQUEMAS"
   echo "Tablas con datos: $TABLAS_CON_DATOS"
+  echo "Sin datos, a propósito: rwadar_novedades.suscripciones_web y envios_web (notificaciones web; se vuelven a activar)"
   [ -z "$PROTEGIDAS_RESUMEN" ] || echo "Filas de las tablas con protección forzada:$PROTEGIDAS_RESUMEN"
   echo "Tamaño cifrado: $(wc -c < "$SALIDA/$NOMBRE.gpg") bytes"
   echo "Cómo restaurarla: docs/COPIAS-DE-SEGURIDAD.md"

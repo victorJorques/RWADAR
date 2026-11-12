@@ -24,9 +24,11 @@
    Respuesta: siempre JSON con «codigo» y Cache-Control: no-store.
      200 {"codigo":n}  n = estado HTTP del servicio de push (201, 404, 410,
                        429, 5xx…; una redirección no se sigue y da su 3xx);
-                       0 = sin respuesta (red o plazo).
-     400 {"codigo":-1,"error":"entrada_invalida"}   el envío no sirve (JSON,
-                       claves de más o de menos, host, tamaños, carga): no sale.
+                       0 = sin respuesta (red o plazo de 10 s).
+     200 {"codigo":-1,"error":"entrada_invalida"}   con las claves de RWAdar,
+                       el envío no sirve (JSON, claves de más o de menos,
+                       parámetros en la dirección, host, tamaños, carga, un
+                       p256dh fuera de la curva): no sale y es definitivo.
      403 {"codigo":-1,"error":"claves_no_validas"}  la pareja no casa o la
                        pública no es la de RWAdar: no sale.
      405 {"codigo":-1,"error":"metodo_no_permitido"} (Allow: POST)
@@ -34,8 +36,14 @@
      503 {"codigo":0,"error":"servicio_no_disponible"} + Retry-After: 30. No
                        se pudo comprobar con Supabase la clave pública: no sale.
      500 {"codigo":0,"error":"error_interno"}
-   La base guarda «codigo» con webpush_resultado: 2xx enviado; 404/410 borra
-   la suscripción; 0, 429 y 5xx reintentar; -1 y el resto, fallido.
+   La base (webpush_codigo, migración 33) solo lee «codigo» de un 200 y lo
+   guarda con webpush_resultado: 2xx enviado; 404/410 borra la suscripción;
+   0, 429 y 5xx reintentar; -1 y el resto, fallido. Cualquier otro estado
+   (403, 429, 503, 500…) es un fallo de este servidor y la base lo reintenta
+   (3 intentos como mucho): tras rotar-vapid, la memoria de la clave da 403
+   un minuto como mucho.
+   pg_net espera 25 s: aquí, como mucho 8 s para la clave (Supabase) y 10 s
+   para el servicio de push.
 
    Quién puede usarlo: solo quien tenga la clave privada de RWAdar. La
    pública de la cabecera tiene que ser la guardada en la base (RPC
@@ -44,12 +52,19 @@
    minuto) y la privada tiene que casar con ella (se firma y se verifica un
    reto). Si Supabase no responde, 503 y no se envía nada.
 
+   Límite (servidor.mjs): las claves se comprueban antes de cobrarlo. Las
+   peticiones con la clave de RWAdar gastan el cupo «webpush» y las demás,
+   otro aparte («webpushSinClave»): quien salga por la misma dirección que
+   Supabase y no tenga la privada no puede agotar el de RWAdar.
+
    Nunca escribe en los registros ni devuelve endpoints, claves ni cargas. Solo
    sale hacia los servicios de push del contrato (la misma regla que la
-   base), por https y sin seguir redirecciones. El límite de peticiones es el
-   del resto del servidor (servidor.mjs, grupo «webpush»).
+   base), por https y sin seguir redirecciones. El limitador es el del resto
+   del servidor (servidor.mjs).
    ===================================================================== */
 const RUTA = '/api/interno/webpush';
+// Cupo aparte para las peticiones sin la clave de RWAdar (GRUPO_LIMITE).
+const RUTA_SIN_CLAVE = RUTA + ':sin-clave';
 const ORIGEN_WEB = 'https://rwadar.pages.dev';
 const RPC_CLAVE = '/rest/v1/rpc/clave_publica_webpush_anon';
 const SUJETO = 'mailto:rwadares@gmail.com';
@@ -236,24 +251,30 @@ export function crearWebpushServidor({ fetchImpl, ahora = Date.now, plazoMs = 10
   }
 
   const salida = (datos, estado = 200, cabeceras = {}) => respuesta(datos, estado, { 'Cache-Control': 'no-store', ...cabeceras });
-  const invalida = () => salida({ codigo: -1, error: 'entrada_invalida' }, 400);
+  // Solo llega aquí quien ya probó tener la clave de RWAdar (pg_net): 200,
+  // para que la base lo dé por fallido a la primera, sin reintentar.
+  const invalida = () => salida({ codigo: -1, error: 'entrada_invalida' });
   const clavesNoValidas = () => salida({ codigo: -1, error: 'claves_no_validas' }, 403);
 
   async function atender({ request, env, url }) {
     try {
       if (request.method !== 'POST') return salida({ codigo: -1, error: 'metodo_no_permitido' }, 405, { Allow: 'POST' });
-      try { reservarIntento(RUTA, request); }
-      catch (error) { return salida({ codigo: 0, error: 'intentos_excedidos' }, 429, { 'Retry-After': error.reintentarTras || '60' }); }
-      if (url.search) return invalida();
       const privada = request.headers.get('x-rwadar-vapid-privada') || '';
       const publica = request.headers.get('x-rwadar-vapid-publica') || '';
-      if (!ESCALAR_P256.test(privada) || !PUNTO_P256.test(publica)) return clavesNoValidas();
-      let deRWAdar;
-      try { deRWAdar = await esDeRWAdar(env, publica); }
-      catch { return salida({ codigo: 0, error: 'servicio_no_disponible' }, 503, { 'Retry-After': '30' }); }
-      if (!deRWAdar) return clavesNoValidas();
-      const clave = await prepararClaves(privada, publica);
+      // Primero las claves (barato: la pública sale de la memoria y la firma
+      // es una operación ECDSA); sin forma, ni se pregunta a Supabase.
+      let clave = null;
+      if (ESCALAR_P256.test(privada) && PUNTO_P256.test(publica)) {
+        let deRWAdar;
+        try { deRWAdar = await esDeRWAdar(env, publica); }
+        catch { return salida({ codigo: 0, error: 'servicio_no_disponible' }, 503, { 'Retry-After': '30' }); }
+        if (deRWAdar) clave = await prepararClaves(privada, publica);
+      }
+      // Después el límite, cada una en su cupo.
+      try { reservarIntento(clave ? RUTA : RUTA_SIN_CLAVE, request); }
+      catch (error) { return salida({ codigo: 0, error: 'intentos_excedidos' }, 429, { 'Retry-After': error.reintentarTras || '60' }); }
       if (!clave) return clavesNoValidas();
+      if (url.search) return invalida();
       let datos;
       try { datos = await cuerpoJSON(request); } catch { return invalida(); }
       const envio = envioValido(datos);

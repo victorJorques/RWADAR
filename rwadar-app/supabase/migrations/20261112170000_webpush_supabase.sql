@@ -50,7 +50,10 @@
 --   Cuerpo: {"endpoint", "p256dh", "auth", "carga":
 --     {"v": 1, "titulo", "texto", "url", "etiqueta"}}; la carga es la de
 --     webpush_carga (32), siempre con url de https://rwadar.pages.dev/.
---   pg_net espera la respuesta 10 segundos como mucho.
+--   pg_net espera la respuesta 25 segundos como mucho: el servidor tarda
+--   como mucho 8 s en comprobar la clave con Supabase y 10 s con el servicio
+--   de push, así que su respuesta (también el 0) llega antes y nada sale dos
+--   veces por cortar pg_net antes de tiempo.
 --   Respuesta: 200 con {"codigo": n}: n es el código HTTP del servicio de
 --   push, 0 si no respondió y -1 si la entrada no sirve. Cualquier otra
 --   respuesta (otro estado, sin esa forma, o ninguna) es un fallo del
@@ -243,7 +246,7 @@ begin
       url := 'https://rwadar.pages.dev/api/interno/webpush',
       headers := v_cabeceras,
       body := jsonb_build_object('endpoint', r.endpoint, 'p256dh', r.p256dh, 'auth', r.auth, 'carga', r.carga),
-      timeout_milliseconds := 10000
+      timeout_milliseconds := 25000
     ) into v_peticion;
     if v_peticion is null then
       raise exception using errcode = '55000', message = 'pg_net no devolvió identificador de petición';
@@ -346,7 +349,7 @@ begin
      for update of e skip locked
   loop
     if r.respuesta is null or (r.status_code is null and r.error_msg is null) then
-      -- pg_net corta a los 10 segundos; a los 10 minutos se da por perdida.
+      -- pg_net corta a los 25 segundos; a los 10 minutos se da por perdida.
       if r.peticion_el >= now() - interval '10 minutes' then
         continue;
       end if;
