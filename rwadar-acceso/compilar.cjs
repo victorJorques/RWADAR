@@ -155,10 +155,12 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS, academy } 
   const { acceso, lecciones } = academyPublicada(academy);
   const importCartera = "import { crearCarteraServidor } from './cartera-servidor.mjs';";
   const importTokenizacion = "import { crearTokenizacionServidor } from './tokenizacion-servidor.mjs';";
+  const importWebpush = "import { crearWebpushServidor } from './webpush-servidor.mjs';";
   const original = fs.readFileSync(path.join(raiz, 'servidor.mjs'), 'utf8');
   if (original.split(importCartera).length !== 2) throw new Error('Falta la integración explícita de cartera.');
   if (original.split(importTokenizacion).length !== 2) throw new Error('Falta la integración explícita de la tokenización.');
-  const servidor = original.replace(importCartera, '').replace(importTokenizacion, '');
+  if (original.split(importWebpush).length !== 2) throw new Error('Falta la integración explícita de las notificaciones web.');
+  const servidor = original.replace(importCartera, '').replace(importTokenizacion, '').replace(importWebpush, '');
   const modelo = fs.readFileSync(path.join(raiz, '../rwadar-movil/lib/cartera.js'), 'utf8');
   if (/\brequire\s*\(|\bimport\b\s*(?:\(|[{*'"\w])/.test(modelo)) throw new Error('El motor de cartera debe ser autónomo.');
   const importModelo = "import carteraModelo from '../rwadar-movil/lib/cartera.js';";
@@ -175,6 +177,17 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS, academy } 
   if (tokenizacionOriginal.split(importModeloTokenizacion).length !== 2) throw new Error('Falta el motor canónico de la tokenización.');
   const tokenizacion = tokenizacionOriginal.replace(importModeloTokenizacion, '');
   if (/\bimport\b\s*(?:\(|[{*'"\w])/.test(tokenizacion)) throw new Error('La tokenización no admite dependencias implícitas.');
+  /* Notificaciones web desde Supabase (12/11/2026): POST /api/interno/webpush
+     cifra y firma con WebCrypto lo que manda pg_net. Autónomo: sin módulos.
+     Va en su propio ámbito (una función que se ejecuta al cargar) para que
+     sus constantes no choquen con las de los otros archivos, y solo sale
+     crearWebpushServidor, sin exportarse desde _worker.js. */
+  const webpush = fs.readFileSync(path.join(raiz, 'webpush-servidor.mjs'), 'utf8');
+  if (/\bimport\b\s*(?:\(|[{*'"\w])|\brequire\s*\(/.test(webpush)) throw new Error('Las notificaciones web no admiten dependencias.');
+  const exportWebpush = 'export function crearWebpushServidor(';
+  if (webpush.split(exportWebpush).length !== 2 || /\bexport\b/.test(webpush.replace(exportWebpush, ''))) {
+    throw new Error('webpush-servidor.mjs solo puede exportar crearWebpushServidor.');
+  }
   // New dependencies require an explicit bundling decision.
   if (/\bimport\s*(?:\(|[{*'"\w])/.test(servidor) || /\bexport\s+default\b/.test(servidor)) {
     throw new Error('El servidor de acceso debe ser autónomo sin export default.');
@@ -184,13 +197,15 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS, academy } 
      booleano exportados hacen que el despliegue falle. Solo se admiten
      «export function» / «export async function» (compilar.test.mjs lo comprueba
      además importando el worker). */
-  for (const [nombre, codigo] of [['servidor.mjs', servidor], ['cartera-servidor.mjs', cartera], ['tokenizacion-servidor.mjs', tokenizacion]]) {
+  for (const [nombre, codigo] of [['servidor.mjs', servidor], ['cartera-servidor.mjs', cartera], ['tokenizacion-servidor.mjs', tokenizacion],
+    ['webpush-servidor.mjs', webpush]]) {
     const exportaciones = codigo.match(/\bexport\b(?!\s*(?:async\s+)?function\b)[^\n]{0,40}/g);
     if (exportaciones) throw new Error(`${nombre} solo puede exportar funciones: ${exportaciones[0].trim()}`);
   }
   return 'const carteraModelo = (() => { const module = { exports: {} };\n' + modelo + '\nreturn module.exports; })();\n' + cartera + '\n' +
     'const tokenizacionModelo = (() => { const module = { exports: {} };\n' + modeloTokenizacion + '\nreturn module.exports; })();\n' + tokenizacion + '\n' +
-    servidor + '\nconst configuracionRWAdar = Object.freeze(' + JSON.stringify(CONFIGURACION_PUBLICA) + ');\n' +
+    'const crearWebpushServidor = (() => {\n' + webpush.replace(exportWebpush, 'function crearWebpushServidor(') +
+    '\nreturn crearWebpushServidor; })();\n' + servidor + '\nconst configuracionRWAdar = Object.freeze(' + JSON.stringify(CONFIGURACION_PUBLICA) + ');\n' +
     'const cabecerasRWAdar = Object.freeze(' + JSON.stringify(CABECERAS_SEGURIDAD) + ');\n' +
     'const fichasRWAdar = new Set(' + JSON.stringify(publicadas) + ');\n' +
     'const academyRWAdar = Object.freeze(' + JSON.stringify({ acceso, lecciones }) + ');\n' +
