@@ -119,7 +119,8 @@ paso('privacidad cubre de forma específica y conservadora las consultas B2B',
   && ['datos minimos', 'finalidad', 'base juridica', 'acceso y proveedor', 'conservacion']
     .every(fragmento => normaliza(privacidad).includes(fragmento))
   && normaliza(privacidad).includes('interes legitimo en atender la consulta profesional que tu inicias')
-  && normaliza(privacidad).includes('proton mail')
+  && normaliza(privacidad).includes('el buzon general es la cuenta de gmail de rwadar')
+  && !normaliza(privacidad).includes('proton mail')
   && normaliza(privacidad).includes('como maximo seis meses desde el ultimo intercambio')
   && normaliza(privacidad).includes('no envies datos de inversores, clientes u otras personas')
   && normaliza(privacidad).includes('no se incorporan a supabase, brevo ni un crm'));

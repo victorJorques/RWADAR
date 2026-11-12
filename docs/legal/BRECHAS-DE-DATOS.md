@@ -63,7 +63,7 @@ Dicho en llano, hay tres tipos:
 | Se filtra la clave de las copias (`COPIA_CLAVE`) junto con una copia | Las copias llevan las cuentas (A13 del registro). GitHub guarda las dos cosas |
 | Una copia descifrada se queda en un ordenador perdido, robado o compartido | Está en claro |
 | Un fallo de permisos o del servidor web enseña a una cuenta datos de otra | Acceso no autorizado |
-| Entran en el Gmail que envía hoy las confirmaciones y recuperaciones | Ve los enlaces de recuperación: puede entrar en cuentas ajenas |
+| Entran en el Gmail de RWAdar (envía las confirmaciones y recuperaciones y, desde el 12/11/2026, es también el buzón de contacto) | Ve los enlaces de recuperación (puede entrar en cuentas ajenas) y las consultas, solicitudes de derechos, bajas y reportes de seguridad recibidos |
 | Un correo manual a varias personas con todas las direcciones a la vista | Comunicación no autorizada de los correos |
 | La base se borra o se estropea y la copia no sirve | Pérdida de datos (disponibilidad) |
 | Un proveedor avisa de una brecha suya que toca datos de RWAdar | Brecha del encargado: también nos obliga (ver «Si la brecha es de un proveedor») |
