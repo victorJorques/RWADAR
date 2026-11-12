@@ -11,7 +11,11 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 - **Víctor:** «que salga al abrir la app y como las novedades, tipo un texto
   informativo muy fácil de leer con las novedades y si clickan que salga en
   detalle». Hecho en dos ramas (web y app) y unido aquí con una revisión.
-  **Sin publicar; Supabase y EAS sin tocar; sin push.** Guía:
+  **Publicado (12/11, orden de Víctor):** PR #125 y sello #126; web n.º 83
+  (preview y producción, comprobaciones en vivo 69/69); OTA n.º 26 (base
+  fa30779, 1.4.2(24)); anuncio 1 «Novedades de RWAdar» con enlace
+  /novedades-rwadar/ por avisar-novedad.yml (sale por push y en la campana).
+  Guía:
   [`NOVEDADES-RWADAR-2026-11-12.md`](NOVEDADES-RWADAR-2026-11-12.md).
 - **Qué ve la gente:**
   1. Al abrir la web o la app, cuando ya se ve Inicio y no hay nada encima,
