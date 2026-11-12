@@ -182,6 +182,25 @@ test('con la 1.4.2 un permiso denegado, un token raro o un fallo del SDK no dan 
   finally { web.restaurar(); }
 });
 
+// 12/11/2026: sin red, Expo puede no dar nunca el token y el interruptor de
+// Perfil se quedaba ocupado. Con plazo: «sin-red» (y un fallo del SDK, «error»).
+test('con la 1.4.2, si Expo no da el token en el plazo, «sin-red»; si falla, «error»', async () => {
+  const colgado = sdk({ permiso: { granted: true } });
+  colgado.Notifications.getExpoPushTokenAsync = () => new Promise(() => {});
+  const e = avisos({ runtime: '1.4.2(24)', sistema: colgado });
+  try {
+    const inicio = Date.now();
+    assert.deepEqual(await e.modulo.obtenerTokenNovedades({ solicitarPermiso: true, plazoMs: 50 }), { ok: false, estado: 'sin-red' });
+    assert.ok(Date.now() - inicio < 2000);
+    assert.equal(e.modulo.PLAZO_TOKEN_NOVEDADES_MS, 20000);
+  } finally { e.restaurar(); }
+  const roto = sdk({ permiso: { granted: true } });
+  roto.Notifications.getExpoPushTokenAsync = async () => { throw new Error('SERVICE_NOT_AVAILABLE'); };
+  const f = avisos({ runtime: '1.4.2(24)', sistema: roto });
+  try { assert.deepEqual(await f.modulo.obtenerTokenNovedades({ solicitarPermiso: false }), { ok: false, estado: 'error' }); }
+  finally { f.restaurar(); }
+});
+
 test('al tocar una notificación: novedades a su pestaña, slug antiguo a su ficha, lo demás se ignora', async () => {
   const e = avisos({ runtime: '1.4.2(24)' });
   try {
