@@ -680,14 +680,6 @@ const anunciar = async (clave, titulo, texto, enlace = 'https://rwadar.pages.dev
   await relojPasado();
   return Number((await una(db, "select rwadar_novedades.anunciar('novedad', $1, $2, $3, $4) id", [clave, titulo, texto, enlace])).id);
 };
-// Lo que la prueba da por hecho de un anuncio que debe salir, justo después
-// de publicarlo: va después de encender el push y de todas las suscripciones.
-const despuesDeTodo = async (id) => {
-  await sesion(db);
-  return (await una(db, `select a.publicado_el > c.push_activado_el
-      and not exists (select 1 from rwadar_novedades.suscripciones_web s where s.creado_el >= a.publicado_el) d
-    from rwadar_novedades.anuncios a, rwadar_novedades.configuracion c where a.id = $1 and c.unica`, [id])).d === true;
-};
 const envios = async () => { await sesion(db); return filas(db, 'select * from rwadar_novedades.envios_web order by id'); };
 await consentir(ana);
 await consentir(dani);
@@ -980,10 +972,10 @@ const prueba = async () => { await sesion(db); return (await una(db, 'select rwa
    ===================================================================== */
 {
   const opciones = BASE.match(/ {6}accion:\n(?: {8}.*\n)*? {8}options:\n((?: {10}- .*\n)+)/)?.[1].trim().split('\n').map((l) => l.trim().slice(2));
-  paso('avisos-base.yml añade ensayo-32, verificar-32, aplicar-32, crear-vapid y rotar-vapid tras guardar-correo y conserva las demás',
+  paso('avisos-base.yml añade ensayo-32, verificar-32, aplicar-32, crear-vapid y rotar-vapid tras guardar-correo y conserva las demás (las de la 33 las mira probar-webpush-supabase.mjs)',
     isDeepStrictEqual(opciones, ['ensayo-30', 'verificar-30', 'diagnostico-30', 'aplicar-30', 'ensayo-31', 'verificar-31', 'aplicar-31',
-      'guardar-correo', 'ensayo-32', 'verificar-32', 'aplicar-32', 'crear-vapid', 'rotar-vapid', 'activar-casilla', 'activar-correo',
-      'activar-push', 'apagar', 'apagar-casilla']));
+      'guardar-correo', 'ensayo-32', 'verificar-32', 'aplicar-32', 'crear-vapid', 'rotar-vapid', 'ensayo-33', 'verificar-33',
+      'aplicar-33', 'prueba-webpush', 'activar-casilla', 'activar-correo', 'activar-push', 'apagar', 'apagar-casilla']));
   paso('el flujo comprueba que las dos copias de la 32 son idénticas',
     BASE.includes('cmp -s "$D/32_notificaciones.sql" rwadar-app/supabase/migrations/20261112130000_notificaciones.sql'));
   paso('el paso «Aplicar» no ejecuta el SQL de la clave VAPID (lo hace su propio paso, con las variables)',
@@ -1103,11 +1095,13 @@ if (hayBash) {
   const casa = new Set(fs.readdirSync(path.join(raizRepo, '.github/workflows')).filter((n) => n !== 'notificaciones-web.yml')
     .flatMap((n) => [...fs.readFileSync(path.join(raizRepo, '.github/workflows', n), 'utf8').matchAll(/uses: ([\w./-]+@[0-9a-f]{40})/g)].map((m) => m[1])));
   const enviar = pasoDe(WEB, 'Enviar') || '';
-  paso('notificaciones-web.yml: solo a mano (enviar o prueba, escribiendo ENVIAR) o llamado por otro flujo; nunca por horario ni por push',
-    /^on:\n {2}workflow_dispatch:\n/m.test(WEB) && /^ {2}workflow_call:\n/m.test(WEB)
+  // Desde la 33, el envío de verdad lo hace Supabase: aquí solo queda la
+  // prueba de administración, y nadie llama a este flujo.
+  paso('notificaciones-web.yml: solo a mano (prueba, escribiendo ENVIAR); nunca por horario, por push ni desde otro flujo',
+    /^on:\n {2}workflow_dispatch:\n/m.test(WEB) && !/workflow_call/.test(WEB)
     && !/^ {2}(schedule|push|pull_request|pull_request_target|workflow_run|repository_dispatch):/m.test(WEB)
-    && /accion:\n(?: {8}.*\n)*? {8}type: choice\n {8}options:\n {10}- enviar\n {10}- prueba\n/.test(WEB)
-    && /\[\[ "\$CONFIRMACION" == "ENVIAR" \]\]/.test(WEB));
+    && /accion:\n(?: {8}.*\n)*? {8}type: choice\n {8}options:\n {10}- prueba\n {8}default: prueba\n/.test(WEB)
+    && /\[\[ "\$CONFIRMACION" == "ENVIAR" \]\]/.test(WEB) && !/webpush_pendientes/.test(sinAlmohadillas(WEB)));
   paso('un trabajo, permissions: {} y solo contents: read; cola propia; Solo desde main es el primer paso',
     trabajos.length === 1 && /^permissions: \{\}$/m.test(WEB) && (sinAlmohadillas(WEB).match(/permissions:/g) || []).length === 2
     && /^ {4}permissions:\n {6}contents: read\n/m.test(WEB) && !/write/.test(sinAlmohadillas(WEB))
@@ -1118,116 +1112,78 @@ if (hayBash) {
     && (sinAlmohadillas(WEB).match(/uses: \S+/g) || []).length === 2
     && (sinAlmohadillas(WEB).match(/uses: \S+/g) || []).every((u) => casa.has(u.slice(6)))
     && /persist-credentials: false/.test(WEB));
-  paso('nunca ${{ … }} dentro de run:; SUPABASE_DB_URL solo en el paso Enviar (y en los secretos que acepta como flujo llamado)',
+  paso('nunca ${{ … }} dentro de run:; SUPABASE_DB_URL solo en el paso Enviar',
     runs.length >= 4 && runs.every((r) => !r.includes('${{'))
     && (WEB.match(/secrets\.SUPABASE_DB_URL/g) || []).length === 1 && enviar.includes('SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}')
-    && /^ {4}secrets:\n {6}SUPABASE_DB_URL:\n {8}required: true$/m.test(WEB) && !/secrets\.(?!SUPABASE_DB_URL)/.test(WEB));
+    && !/secrets\.(?!SUPABASE_DB_URL)/.test(WEB));
   paso('el remitente recibe las claves por el entorno (export, no en la línea de órdenes) y no recibe SUPABASE_DB_URL; la privada se enmascara al llegar y la carpeta temporal se borra siempre',
     /\(\n\s+unset SUPABASE_DB_URL\n\s+export RWADAR_VAPID_PRIVADA="\$PRIVADA" RWADAR_VAPID_PUBLICA="\$PUBLICA"\n\s+exec node rwadar-app\/enviar-webpush\.mjs/.test(enviar)
     && /echo "::add-mask::\$PRIVADA"/.test(enviar) && !/set -[a-z]*x|set -o xtrace/.test(WEB)
     && /- name: Borrar los envíos temporales\n {8}if: always\(\)\n {8}run: rm -rf "\$RUNNER_TEMP\/rwadar-webpush"/.test(WEB));
 }
 {
-  // avisar-novedad.yml lanza las notificaciones web después del anuncio.
-  const llamada = AVISAR.slice(AVISAR.indexOf('\n  notificaciones-web:\n'));
-  paso('«Avisar novedad» llama a «Notificaciones web» (enviar, ENVIAR) después del anuncio, con contents: read y solo SUPABASE_DB_URL',
-    /^ {2}notificaciones-web:\n {4}needs: avisar\n {4}permissions:\n {6}contents: read\n {4}uses: \.\/\.github\/workflows\/notificaciones-web\.yml\n {4}with:\n {6}accion: enviar\n {6}confirmacion: ENVIAR\n {4}secrets:\n {6}SUPABASE_DB_URL: \$\{\{ secrets\.SUPABASE_DB_URL \}\}\n?$/.test(llamada.slice(1))
-    && !/secrets: inherit/.test(AVISAR));
+  // Desde la 33, «Avisar novedad» ya no lanza «Notificaciones web»: las
+  // notificaciones web las manda Supabase en la vuelta siguiente del reloj.
+  paso('«Avisar novedad» ya no llama a «Notificaciones web» ni pasa secretos a otro flujo',
+    !/notificaciones-web\.yml/.test(AVISAR) && !/^\s+uses: \.\//m.test(AVISAR) && !/secrets: inherit/.test(AVISAR));
 }
 if (hayBash) {
-  const comprueba = (e) => correPaso(WEB, 'Comprobar la entrada', { ACCION: 'enviar', CONFIRMACION: 'ENVIAR', ...e });
-  const buenos = [{}, { ACCION: 'prueba' }];
-  const malos = [{ CONFIRMACION: 'enviar' }, { CONFIRMACION: '' }, { ACCION: 'borrar' }, { ACCION: '' }, { ACCION: 'enviar; rm -rf /' }];
+  const comprueba = (e) => correPaso(WEB, 'Comprobar la entrada', { ACCION: 'prueba', CONFIRMACION: 'ENVIAR', ...e });
+  const buenos = [{}];
+  const malos = [{ ACCION: 'enviar' }, { CONFIRMACION: 'enviar' }, { CONFIRMACION: '' }, { ACCION: 'borrar' }, { ACCION: '' },
+    { ACCION: 'prueba; rm -rf /' }];
   const b = [], m = [];
   for (const e of buenos) b.push((await comprueba(e)).estado);
   for (const e of malos) m.push((await comprueba(e)).estado);
-  paso(`«Comprobar la entrada» acepta enviar y prueba con ENVIAR y rechaza ${malos.length} entradas malas`,
+  paso(`«Comprobar la entrada» acepta prueba con ENVIAR y rechaza ${malos.length} entradas malas (también enviar: desde la 33 lo hace Supabase)`,
     b.every((s) => s === 0) && m.every((s) => s !== 0));
 
-  // Navegadores de la prueba del flujo: Ana (Google y Apple) con permiso,
-  // Beto sin permiso y Vic (administración).
+  // Navegadores de la prueba del flujo: Ana con permiso, Beto sin permiso y
+  // Vic (administración). Desde la 33 solo queda la acción prueba.
   await sesion(db);
   const clave = await una(db, "select webpush_clave_publica c, (select decrypted_secret from vault.decrypted_secrets where name = 'RWADAR_VAPID_PRIVADA') p from rwadar_novedades.configuracion");
   const fAnaFcm = navegador(fcm('flujo-ana'));
-  const fAnaApple = navegador(apple('flujo-ana'));
   const fBeto = navegador(fcm('flujo-beto'));
   const fVic = navegador(apple('flujo-vic'));
   await consentir(ana);
-  for (const [u, s] of [[ana, fAnaFcm], [ana, fAnaApple], [beto, fBeto], [vic, fVic]]) await registrar(u, s);
-  respuestas.set(fAnaApple.endpoint, 410);
-  const ENVIO = { ACCION: 'enviar' };
+  for (const [u, s] of [[ana, fAnaFcm], [beto, fBeto], [vic, fVic]]) await registrar(u, s);
 
-  // Push apagado: no sale nada; solo la limpieza.
+  // La acción enviar ya no existe: el paso la rechaza sin tocar la base.
+  const desdeE = recibidos.length;
+  const retirada = await correPaso(WEB, 'Enviar', { ACCION: 'enviar' });
+  paso('el paso Enviar rechaza la acción enviar (retirada: desde la 33 lo hace Supabase) sin llamar a la base ni enviar nada',
+    retirada.estado !== 0 && retirada.llamadas.length === 0 && recibidos.length === desdeE);
+  // Prueba: solo Vic, también con el push apagado.
   await sesion(db);
   await db.exec(APAGAR);
-  const aFlujo = await anunciar('novedad:webpush-flujo', 'Las notificaciones ya llegan', 'Actívalas en Perfil desde tu móvil.');
-  const antes = recibidos.length;
-  const apagado = await correPaso(WEB, 'Enviar', ENVIO);
-  paso(`con el push apagado, el paso Enviar no envía nada, no lee la clave y termina bien con el resumen «Push apagado» (${apagado.estado === 0 ? 'OK' : apagado.texto.trim()})`,
-    apagado.estado === 0 && recibidos.length === antes && /Push apagado: no sale ninguna notificación/.test(apagado.resumen)
-    && apagado.llamadas.every((l) => !l.join(' ').includes('RWADAR_VAPID_PRIVADA')) && (await envios()).every((x) => x.anuncio_id !== aFlujo));
-  // Encendido: el anuncio publicado después de encender sale a Ana.
-  await db.exec(ACTIVAR_PUSH);
-  const aFlujo2 = await anunciar('novedad:webpush-flujo-2', 'Las notificaciones ya llegan', 'Actívalas en Perfil desde tu móvil.');
-  paso('el anuncio del flujo queda publicado después de encender el push y de las suscripciones de Ana (el reloj de PGlite va en milisegundos)',
-    await despuesDeTodo(aFlujo2));
-  const desde = recibidos.length;
-  const encendido = await correPaso(WEB, 'Enviar', ENVIO);
-  const llegados = recibidos.slice(desde);
-  const textoTodo = `${encendido.texto}${encendido.resumen}`;
-  paso(`con el push encendido, el paso Enviar (psql + remitente de verdad) manda el anuncio a los 2 navegadores de Ana, firmado y cifrado, y nada a Beto ni a Vic (${encendido.estado === 0 ? `OK, ${llegados.length} recibidas` : encendido.texto.trim()})`,
-    encendido.estado === 0 && isDeepStrictEqual(llegados.map((r) => r.endpoint).sort(), [fAnaFcm.endpoint, fAnaApple.endpoint].sort())
-    && llegados.every((r) => r.vapid && r.k === clave.c && r.cabeceras.ttl === '86400' && r.cabeceras.urgency === 'high'
-      && isDeepStrictEqual(JSON.parse(r.claro.texto), { v: 1, titulo: 'Las notificaciones ya llegan', texto: 'Actívalas en Perfil desde tu móvil.',
-        url: 'https://rwadar.pages.dev/?avisos=1', etiqueta: `rwadar-${aFlujo2}` })));
-  const deFlujo = (await envios()).filter((x) => x.anuncio_id === aFlujo2);
-  paso('los resultados quedan en la base: el de Google «enviado» y el de Apple (410) borrado con su suscripción',
-    deFlujo.length === 1 && deFlujo[0].estado === 'enviado' && (await registrado(ana, fAnaApple)) === false && (await registrado(ana, fAnaFcm)) === true);
-  paso('el resumen solo lleva cuentas: 1 enviada, 1 suscripción caducada borrada; ni endpoints, ni claves, ni la carga, ni la privada en la salida (salvo ::add-mask::)',
-    /Enviadas \(aceptadas por el servicio de push\): 1/.test(encendido.resumen) && /Suscripciones caducadas borradas: 1/.test(encendido.resumen)
-    && /Limpieza: \d+ fila\(s\) antiguas borradas/.test(encendido.resumen)
-    && [fAnaFcm, fAnaApple, fBeto, fVic].every((s) => !textoTodo.includes(s.endpoint) && !textoTodo.includes(s.p256dh) && !textoTodo.includes(s.auth))
-    && !textoTodo.includes('Actívalas en Perfil') && textoTodo.split(clave.p).length === 2 && encendido.stdout.includes(`::add-mask::${clave.p}`)
-    && !fs.existsSync(path.join(encendido.temporal, 'rwadar-webpush', 'lote.json')));
-  const otraVuelta = await correPaso(WEB, 'Enviar', ENVIO);
-  paso('otra vuelta no repite nada (0 enviadas)', otraVuelta.estado === 0 && recibidos.length === desde + 2
-    && /Enviadas \(aceptadas por el servicio de push\): 0/.test(otraVuelta.resumen));
-  // Prueba: solo Vic.
   const desdeP = recibidos.length;
   const pruebaFlujo = await correPaso(WEB, 'Enviar', { ACCION: 'prueba' });
   const deP = recibidos.slice(desdeP);
-  paso(`la acción prueba manda «Prueba de RWAdar» solo al navegador de la cuenta de administración (${pruebaFlujo.estado === 0 ? 'OK' : pruebaFlujo.texto.trim()})`,
+  const textoTodo = `${pruebaFlujo.texto}${pruebaFlujo.resumen}`;
+  paso(`la acción prueba manda «Prueba de RWAdar» solo al navegador de la cuenta de administración, también con el push apagado (${pruebaFlujo.estado === 0 ? 'OK' : pruebaFlujo.texto.trim()})`,
     pruebaFlujo.estado === 0 && deP.length === 1 && deP[0].endpoint === fVic.endpoint && deP[0].vapid && deP[0].k === clave.c
+    && deP[0].cabeceras.ttl === '86400' && deP[0].cabeceras.urgency === 'high'
     && JSON.parse(deP[0].claro.texto).titulo === PRUEBA_TITULO && JSON.parse(deP[0].claro.texto).texto === PRUEBA_TEXTO
     && /Enviadas \(aceptadas por el servicio de push\): 1/.test(pruebaFlujo.resumen));
-  // Sin clave VAPID: enviar avisa y termina bien; prueba falla.
+  paso('el resumen de la prueba solo lleva cuentas: ni endpoints, ni claves, ni la carga, ni la privada en la salida (salvo ::add-mask::), y no queda el lote',
+    [fAnaFcm, fBeto, fVic].every((s) => !textoTodo.includes(s.endpoint) && !textoTodo.includes(s.p256dh) && !textoTodo.includes(s.auth))
+    && !textoTodo.includes(PRUEBA_TEXTO) && textoTodo.split(clave.p).length === 2 && pruebaFlujo.stdout.includes(`::add-mask::${clave.p}`)
+    && !fs.existsSync(path.join(pruebaFlujo.temporal, 'rwadar-webpush', 'lote.json')));
+  // Sin clave VAPID, la prueba falla pidiendo crear-vapid.
   await sesion(db);
   await db.exec("update vault.decrypted_secrets set name = 'APARTADA' where name = 'RWADAR_VAPID_PRIVADA'");
-  const sinClaveEnviar = await correPaso(WEB, 'Enviar', ENVIO);
   const sinClavePrueba = await correPaso(WEB, 'Enviar', { ACCION: 'prueba' });
   await sesion(db);
   await db.exec("update vault.decrypted_secrets set name = 'RWADAR_VAPID_PRIVADA' where name = 'APARTADA'");
-  paso('sin clave VAPID, enviar avisa (::warning::) y termina bien, y prueba falla pidiendo crear-vapid',
-    sinClaveEnviar.estado === 0 && /::warning::Falta la clave VAPID/.test(sinClaveEnviar.stdout)
-    && sinClavePrueba.estado !== 0 && /crear-vapid/.test(sinClavePrueba.stdout));
+  paso('sin clave VAPID, la prueba falla pidiendo crear-vapid', sinClavePrueba.estado !== 0 && /crear-vapid/.test(sinClavePrueba.stdout));
   // Una clave privada que no casa con la pública: el remitente se para.
   await db.exec(`update vault.decrypted_secrets set decrypted_secret = '${generarClaves().privada}' where name = 'RWADAR_VAPID_PRIVADA'`);
-  await anunciar('novedad:webpush-flujo-3', 'Otra novedad más', 'Con la clave cambiada a mano.');
   const desdeM = recibidos.length;
-  const noCasa = await correPaso(WEB, 'Enviar', ENVIO);
+  const noCasa = await correPaso(WEB, 'Enviar', { ACCION: 'prueba' });
   await db.exec(`update vault.decrypted_secrets set decrypted_secret = '${clave.p}' where name = 'RWADAR_VAPID_PRIVADA'`);
   paso('si la privada de Vault no casa con la pública, el paso falla sin enviar nada', noCasa.estado !== 0
     && /no corresponde a la pública/.test(noCasa.stderr) && recibidos.length === desdeM);
-  const recuperado = await correPaso(WEB, 'Enviar', ENVIO);
-  const antesDe15 = recibidos.length;
-  await sesion(db);
-  await db.exec("update rwadar_novedades.envios_web set actualizado_el = now() - interval '16 minutes' where estado = 'enviando'");
-  const pasados15 = await correPaso(WEB, 'Enviar', ENVIO);
-  const llegaTarde = recibidos.slice(antesDe15);
-  paso('arreglada la clave, lo que quedó «enviando» no sale en la vuelta siguiente, sino pasados 15 minutos (una vez)',
-    recuperado.estado === 0 && antesDe15 === desdeM && pasados15.estado === 0
-    && llegaTarde.length === 1 && llegaTarde[0].endpoint === fAnaFcm.endpoint && llegaTarde[0].vapid && llegaTarde[0].k === clave.c
-    && /Enviadas \(aceptadas por el servicio de push\): 1/.test(pasados15.resumen));
+  await db.exec(ACTIVAR_PUSH);
 }
 
 /* =====================================================================

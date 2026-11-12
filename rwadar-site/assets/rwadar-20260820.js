@@ -6542,8 +6542,10 @@ const Movil = (function(){
  });
  document.addEventListener('focusout',()=>setTimeout(()=>{
   const a=document.activeElement;
+  /* Al salir de la página (cerrar sesión recarga) el documento puede quedarse
+     sin body cuando llega este temporizador. */
   if(!a||!a.matches||!a.matches('input:not([type="range"]),textarea,select'))
-   document.body.classList.remove('movil-teclado');
+   document.body?.classList.remove('movil-teclado');
  },80));
  document.addEventListener('keydown',e=>{
   if(!media.matches||e.key!=='Escape')return;

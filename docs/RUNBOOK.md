@@ -212,6 +212,29 @@ Condiciones antes de encender el envío para todos (`activar-push`):
 [`legal/ANEXO-NOTIFICACIONES-2026-11-12.md`](legal/ANEXO-NOTIFICACIONES-2026-11-12.md), apartado 4.
 Contratos de encargo: [`legal/encargados/README.md`](legal/encargados/README.md).
 
+**Notificaciones web (migración 33).** Las envía Supabase: `procesar()`, cada
+5 minutos con el push encendido, pide por pg_net cada envío a
+`/api/interno/webpush` de la web (Cloudflare), que lo cifra, lo firma y lo
+entrega. GitHub ya no envía a todos; «Notificaciones web» solo hace la
+prueba de administración. Orden de puesta en marcha, cada paso con orden de
+Víctor:
+
+1. «Avisos a registrados (base)» › `ensayo-33` y `aplicar-33`.
+2. Sello y «Publicar web» con el punto nuevo (preview, comprobar,
+   producción). En la preview, un GET a `/api/interno/webpush` da 405 y un
+   POST sin claves, 403.
+3. `prueba-webpush`: debe decir al menos una «aceptada» y llegar «Prueba de
+   RWAdar» al iPhone de Víctor.
+4. `activar-push`, solo con las condiciones del anexo cumplidas.
+
+Con el push apagado, 1 y 2 pueden ir en cualquier orden (no sale nada), pero
+los dos antes de 3 y 4: sin el punto nuevo, cada envío acaba fallido.
+
+Si se apaga el push con envíos en vuelo, encenderlo antes de 6 horas (lo que
+pg_net guarda las respuestas) o aceptar algún duplicado. Cada notificación es
+una petición a Pages Functions (tandas de 50 cada 5 minutos): suma al cupo
+gratuito de 100.000 al día de toda la web; vigilarlo antes de subir la tanda.
+
 - **La base se toca solo desde GitHub**, con el flujo «Avisos a registrados
   (base)» (`.github/workflows/avisos-base.yml`), y cada acción con orden
   expresa de Víctor. Antes de aplicar o activar nada, `ensayo-30` (aplica y

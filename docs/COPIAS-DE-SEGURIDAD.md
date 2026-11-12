@@ -22,7 +22,7 @@ guía lo resuelve en cuatro partes:
 | Cuentas de usuario (`auth`) | Secretos del Vault: van cifrados con la clave del proyecto y no sirven fuera |
 | Datos de la app (`public`) | Lo que Supabase vuelve a montar solo (almacenamiento interno, extensiones) |
 | Catálogo editorial (`rwadar_catalogo`) | El código: ya está en este repositorio |
-| Avisos a registrados (`rwadar_novedades`): quién se apuntó y cuándo, las bajas, los móviles, los anuncios y las colas de envío | |
+| Avisos a registrados (`rwadar_novedades`): quién se apuntó y cuándo, las bajas, los móviles, los anuncios y las colas de envío | Las suscripciones de las notificaciones web y sus envíos (`suscripciones_web`, `envios_web`): se copia la tabla, sin filas. Llevan la dirección de entrega y las claves de cada navegador y así no pasan en claro por GitHub (anexo legal del 12/11/2026, C3). Tras restaurar, cada persona vuelve a pulsar «Activar» en la web |
 
 Si un esquema aún no existe en la base (por ejemplo, `rwadar_novedades` antes
 de aplicar la migración 30), la copia sigue adelante sin él: `pg_dump` solo se

@@ -9,17 +9,18 @@ name: Avisar novedad
 #   anunciar           → crea un anuncio `actualizacion` o `novedad` ya publicado.
 #   publicar-retenido  → publica el anuncio de ofertas retenido con ese id.
 #
-# El anuncio se ve en la app al momento. El correo y el push salen solo si
-# están encendidos (30_avisos_registrados_activar_*.sql) y solo a quien se
-# apuntó. Después, el segundo trabajo lanza «Notificaciones web»
-# (notificaciones-web.yml, acción enviar) para los móviles que las activaron
-# en la web; con el push apagado no envía nada. ota-android.yml no cambia.
+# El anuncio se ve en la app al momento. El correo, el push de Expo y las
+# notificaciones web salen solo si están encendidos
+# (30_avisos_registrados_activar_*.sql) y solo a quien se apuntó: los manda
+# Supabase en la siguiente vuelta del reloj (procesar(), cada 5 minutos; las
+# notificaciones web, desde la migración 33, por el servidor de la web). Este
+# flujo ya no lanza «Notificaciones web»: GitHub no ve las suscripciones.
+# ota-android.yml no cambia.
 #
 # Seguridad: el anuncio, en un trabajo en máquina nueva, sin npm. Las
 # entradas llegan por env: y se validan en bash; psql las recibe con -v y
 # anunciar.sql las usa como literales (:'titulo'). Nunca ${{ inputs.* }}
-# dentro de run:. El secreto SUPABASE_DB_URL, solo en el paso de psql y, sin
-# más secretos, en la llamada a «Notificaciones web».
+# dentro de run:. El secreto SUPABASE_DB_URL, solo en el paso de psql.
 
 on:
   workflow_dispatch:
@@ -154,17 +155,3 @@ jobs:
             -v accion="$ACCION" -v tipo="$TIPO" -v titulo="$TITULO" \
             -v texto="$TEXTO" -v enlace="$ENLACE" -v id="$ID" \
             -f rwadar-app/db/anunciar.sql
-
-  # Las notificaciones web de lo que se acaba de publicar (Web Push). Mismo
-  # interruptor que el push de Expo (push_habilitado): si está apagado, no
-  # sale nada. Solo recibe SUPABASE_DB_URL.
-  notificaciones-web:
-    needs: avisar
-    permissions:
-      contents: read
-    uses: ./.github/workflows/notificaciones-web.yml
-    with:
-      accion: enviar
-      confirmacion: ENVIAR
-    secrets:
-      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}

@@ -103,6 +103,10 @@ test('copia: hace, comprueba y cifra; nunca enseña la dirección ni la contrase
   assert.equal(dump.args[0], URL_DB + '?sslmode=require', 'la dirección lleva sslmode=require');
   assert.deepEqual(dump.args.filter(a => a.startsWith('--schema=')),
     ['--schema=public', '--schema=rwadar_catalogo', '--schema=auth', '--schema=rwadar_novedades']);
+  // Las suscripciones de las notificaciones web no pasan por GitHub (anexo, C3).
+  assert.deepEqual(dump.args.filter(a => a.startsWith('--exclude-table-data=')),
+    ['--exclude-table-data=rwadar_novedades.suscripciones_web', '--exclude-table-data=rwadar_novedades.envios_web']);
+  assert.ok(!dump.args.some(a => a.startsWith('--exclude-table=') || a.startsWith('--exclude-schema=')), 'las tablas siguen en la copia, sin datos');
   for (const l of r.llamadas.filter(x => x.yo === 'psql')) assert.equal(l.args[0], URL_DB + '?sslmode=require');
   // Sin tablas con FORCE RLS no pregunta por BYPASSRLS ni cuenta filas en la base.
   assert.ok(!r.llamadas.some(l => /rolbypassrls|row_security/.test(l.args.join(' ') + l.entrada)));
