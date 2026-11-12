@@ -2004,6 +2004,15 @@
   "Las noticias están ahora en Mercado y noticias": "The news is now in Market and news",
   "Van debajo del gráfico del mercado, con su fuente y su detalle.": "It sits below the market chart, with its source and details.",
   "Lo último de la web y la app": "The latest on the website and the app",
+  // «Novedades de RWAdar» al abrir la app (12/11/2026): botones y avisos de la ventana y de su detalle. El contenido trae su inglés en el JSON.
+  "Ver en detalle": "See details",
+  "Entendido": "Got it",
+  "Abre las novedades explicadas paso a paso": "Opens the news explained step by step",
+  "Cierra esta ventana. Puedes volver a verla en Perfil.": "Closes this window. You can see it again in Profile.",
+  "Para recibir los avisos en el móvil, actívalos en Perfil › Avisos.": "To get alerts on your phone, turn them on in Profile › Alerts.",
+  "Ir a Perfil › Avisos": "Go to Profile › Alerts",
+  "Todas las novedades anteriores, en la web": "All earlier news, on the website",
+  "Novedades de RWAdar: para no enseñarte dos veces la misma ventana de novedades, este dispositivo guarda qué versión has visto (por ejemplo, 2026-11-12). No es un dato personal, no se envía a ningún sitio y se borra con «Borrar datos del dispositivo». Las novedades se descargan de la web de RWAdar sin datos de tu cuenta.": "RWAdar news: so that you are not shown the same news window twice, this device stores which version you have seen (for example, 2026-11-12). It is not personal data, it is not sent anywhere and it is deleted with «Delete device data». The news is downloaded from the RWAdar website without any data from your account.",
   // «Calcula tus números» en Inicio y el explicador sin el local fijo (11/11/2026), web y app. Las frases con cifras las escribe rwadar-movil/lib/calculadora.js en los dos idiomas.
   "Calcula tus números": "Work out your numbers",
   "Pon lo que quieres invertir, la rentabilidad y los años: verás lo que cobrarías o lo que tendrías.": "Enter what you want to invest, the return and the years: you will see what you would receive or what you would have.",
