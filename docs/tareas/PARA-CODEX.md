@@ -6,7 +6,7 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 12 de noviembre de 2026 · Claude · Sesión de la web que se mantiene: el servidor renueva el pase y casilla «Mantener la sesión iniciada»
+## 12 de noviembre de 2026 (14a) · Claude · Sesión de la web que se mantiene: el servidor renueva el pase y casilla «Mantener la sesión iniciada»
 
 Víctor, probando en su iPhone con la web en la pantalla de inicio: «Y que al
 iniciar sesión se mantenga porque no se mantiene». Commits `f4414f8` y
@@ -117,7 +117,74 @@ sin tocar.** Sin SQL ni migraciones.
   caducidad. Sin SQL. La app no lo necesita: su diccionario gana dos entradas
   que no usa y viajan con la próxima OTA.
 
----
+## 12 de noviembre de 2026 (14b) · Claude · Sin el nombre del titular en los avisos y «Notificaciones en este móvil» que nunca se queda en «Comprobando…»
+
+Víctor, probando en su iPhone con la web en la pantalla de inicio: «No
+quiero que salga mi nombre aquí» y «No funciona lo de activar
+notificaciones». Commits en la rama del worktree (`worktree-wf_c54297be-d87-2`,
+sobre `186bd3e`), **sin push. Sin publicar; Supabase y EAS sin tocar.** La
+sesión que se pierde (la cookie del servidor de la web y el `refresh_token`)
+la lleva otro cambio: aquí no se ha tocado `rwadar-acceso/servidor.mjs`, el
+formulario de entrar ni las cookies de la privacidad.
+
+- **El nombre** (`4edb3c1`). La información básica de Perfil › Avisos (web
+  y app) y de la casilla del alta de `/acceso` ya no dice «Responsable:
+  Víctor Manuel Jorques Granero (RWAdar)», sino «Responsable: el titular de
+  RWAdar, identificado en el aviso legal». En la web, «aviso legal» enlaza
+  a `/privacidad#aviso-legal`. Inglés: «Controller: the owner of RWAdar,
+  identified in the legal notice». El texto entero va en el diccionario
+  común (`rwadar-movil/lib/idioma-en.js` y su copia); los tres trozos que
+  deja el enlace en la web, en `idioma-en-avisos-20261112.js`. El nombre se
+  queda solo en el aviso legal y la privacidad. `probar-web` comprueba que
+  ninguna página de `rwadar-site` lo lleva fuera de `privacidad.html`.
+- **Notificaciones de la web** (`b7cb6cf`). Por qué se atascaba: si
+  `estado_mis_avisos` fallaba o no contestaba, el bloque se quedaba en
+  «Comprobando las notificaciones de este móvil…» con el botón apagado (y
+  un fallo de la clave al pulsar «Activar» decía «todavía no están
+  disponibles»). Ahora:
+  - cada llamada de avisos tiene plazo (15 s) y «Comprobando…» no dura más
+    de 20 s;
+  - sin sesión: «Tu sesión ha caducado: vuelve a entrar.» con «Entrar de
+    nuevo» (lleva a `/acceso` y vuelve); otro fallo: «No hemos podido
+    comprobar las notificaciones de este móvil. Revisa la conexión y pulsa
+    Reintentar.» con «Reintentar»; al volver a la app se reintenta solo;
+  - al pulsar «Activar», el motivo en llano (permiso, el navegador no deja,
+    el iPhone fuera de la pantalla de inicio, sin conexión, sesión
+    caducada) y se puede volver a intentar;
+  - inglés de todo.
+  Hoy el puente (`assets/acceso-privado.js`) salta solo a `/acceso` con un
+  401, así que «Tu sesión ha caducado» se ve sobre todo si eso cambia; la
+  prueba acepta las dos cosas.
+- **App** (`8aaee41`). El token de Expo lleva plazo (20 s): sin red, el
+  interruptor del móvil se quedaba ocupado. Con «sin sesión» o sin red, el
+  mensaje lo dice. Solo JavaScript: va en la próxima OTA.
+- **Pruebas** (sobre el árbol de `8aaee41`, salvo la última retocada):
+  - `npm test` en la raíz, salida 0: `rwadar-app` (275, 89, 64, 11/11 y
+    `.github` 103/103), `probar-web` 681/681, 70 páginas y RSS, 40 de
+    precarga, QR, `rwadar-movil` 596 y 2 omitidas, herramientas y
+    `rwadar-acceso` 284/284 con Chromium;
+  - `notificaciones-fallos-navegador.test.mjs` nueva (3 pruebas, Chromium:
+    401, 500, sin red, sin respuesta y cada fallo al activar, también en
+    inglés), pasada dos veces más tras el último retoque;
+  - mutación: con el JS de antes fallan las 3 de Chromium (se quedan en
+    «Comprobando…») y las 3 nuevas de la app; restaurado con `cmp`;
+  - guardián de OTA con `--base fa30779`: compatible, 1.4.2(24);
+  - gitleaks 8.30.1 (`rwadar-app/gitleaks.toml` y por defecto) sobre los
+    3 commits y sobre el diff: sin hallazgos.
+- **Dudas que quedan:**
+  - la LOPDGDD (art. 11.2.a) pide la identidad del responsable en la
+    primera capa; «el titular de RWAdar» con el enlace al aviso legal es
+    una forma habitual de cumplirlo, pero lo confirma quien revise lo legal;
+  - el nombre sigue en sitios que no son la web ni la app: el pie de los
+    correos (`rwadar-app/correo-lettermint.sh`, `db/30` y `db/31` y sus
+    migraciones, el verificador de la 31 y `probar-avisos-registrados.mjs`),
+    las plantillas de Auth (`rwadar-app/plantillas-auth/`), `SECURITY.md`,
+    `AGENTS.md` y `docs/legal/`. No se han tocado: el correo no está
+    encendido y, si se enciende, el pie lo pide la LSSI;
+  - «Tu sesión ha caducado» solo se arregla del todo con la sesión que
+    dura (el otro cambio).
+- **Para publicar** (con orden expresa de Víctor): web (preview y
+  producción) y OTA de la app.
 
 ## 12 de noviembre de 2026 (13) · Claude · Notificaciones web desde Supabase y Cloudflare: base 33 y servidor unidos, revisión aplicada y textos legales al día
 

@@ -25,7 +25,7 @@ const TEXTO_EN = 'I want to receive RWAdar notices by email and, if I enable the
   'You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your ' +
   'phone settings. More information in Privacy.';
 // Información básica sobre los datos, junto al interruptor y fuera del texto versionado.
-const INFO_ES = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). ' +
+const INFO_ES = 'Información básica sobre tus datos. Responsable: el titular de RWAdar, identificado en el aviso legal. ' +
   'Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las ' +
   'notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, ' +
   'y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu ' +
@@ -36,7 +36,9 @@ const INFO_ES = 'Información básica sobre tus datos. Responsable: Víctor Manu
 // En la web, «Privacidad» del final es un enlace; el texto visible no cambia.
 const enlazado = (textoPlano, href) => textoPlano.replace(/Privacidad\.$/, '') + '<a href="' + href + '">Privacidad</a>.';
 const CASILLA_HTML = enlazado(TEXTO_ES, '/privacidad#avisos-novedades');
-const INFO_HTML = enlazado(INFO_ES, '/privacidad');
+// «aviso legal» también enlaza: a los datos del titular, que ya no salen aquí (12/11/2026).
+const INFO_HTML = enlazado(INFO_ES, '/privacidad')
+  .replace(' identificado en el aviso legal.', ' identificado en el <a href="/privacidad#aviso-legal">aviso legal</a>.');
 // Con el correo apagado no hay «enlace de cada correo»: no se promete.
 const ACTIVADOS = 'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.';
 const tick = async (veces = 4) => { for (let i = 0; i < veces; i++) await new Promise(resolve => setImmediate(resolve)); };
@@ -47,7 +49,7 @@ const estadoBase = { novedades: false, version: null, aceptado_el: null, version
 
 // idioma: lo que devolvería RWAdarIdioma.obtenerIdioma() (sin él, no hay
 // traductor). textoCasilla: el texto que se ve junto al interruptor.
-function entorno({ encendido = false, sesion = true, estado = estadoBase, configurar = null, idioma, textoCasilla } = {}) {
+function entorno({ encendido = false, sesion = true, estado = estadoBase, configurar = null, idioma, textoCasilla, estadoFalla = null } = {}) {
   const llamadas = [], avisos = [], nodos = new Map();
   let actual = { ...estado };
   function nodo(id) {
@@ -65,6 +67,8 @@ function entorno({ encendido = false, sesion = true, estado = estadoBase, config
     document: { getElementById: nodo, addEventListener() {}, documentElement: { replaceChildren() {} } },
     location: { hash: '', pathname: '/', search: '', replace() {}, assign() {} },
     sessionStorage: { getItem: () => null, setItem() {}, removeItem() {} }, setInterval() {}, URLSearchParams,
+    // Las llamadas de avisos llevan plazo (12/11/2026): relojes de verdad que no retienen la prueba.
+    setTimeout: (fn, ms) => { const reloj = setTimeout(fn, ms); reloj.unref?.(); return reloj; }, clearTimeout,
     SERVICIOS_USUARIO_DISPONIBLES: true, OPINIONES_DISPONIBLES: false, AVISOS_CORREO_DISPONIBLES: false,
     openPanel() {}, closeAll() {}, avisar: texto => avisos.push(texto),
     ...(idioma === undefined ? {} : { RWAdarIdioma: { obtenerIdioma: () => idioma } }),
@@ -75,7 +79,7 @@ function entorno({ encendido = false, sesion = true, estado = estadoBase, config
         : { ok: false, status: 401, json: async () => ({ error: 'sesion_necesaria' }) };
       assert.equal(ruta, '/api/acceso/datos');
       const { ruta: recurso, metodo, cuerpo } = JSON.parse(opciones.body);
-      if (recurso === '/rpc/estado_mis_avisos') { assert.equal(metodo, 'POST'); return { ok: true, status: 200, json: async () => actual }; }
+      if (recurso === '/rpc/estado_mis_avisos') { assert.equal(metodo, 'POST'); return estadoFalla || { ok: true, status: 200, json: async () => actual }; }
       if (recurso === '/rpc/configurar_avisos_novedades') {
         assert.equal(metodo, 'POST');
         if (configurar) return configurar(cuerpo);
@@ -236,4 +240,17 @@ test('encendido: p_idioma es «en» solo si la web está en inglés y el texto d
     await opcion.handlers.get('change')({ target: opcion });
     assert.equal(e.rpc().at(-1).cuerpo.p_idioma, esperado, JSON.stringify(opciones).slice(0, 60));
   }
+});
+
+// 12/11/2026: si la base dice «sin sesión» (y la página no ha saltado aún a
+// /acceso) o falla, se dice; nunca «Comprobando tu preferencia…» para siempre.
+test('encendido: sin sesión dice «vuelve a entrar» y con la base caída lo dice, sin quedarse comprobando', async () => {
+  const sinSesion = entorno({ encendido: true, estadoFalla: { ok: false, status: 401, json: async () => ({ error: 'sesion_necesaria' }) } });
+  await tick();
+  assert.equal(sinSesion.nodo('perfilNovedadesEstado').textContent, 'Tu sesión ha caducado: vuelve a entrar.');
+  assert.equal(sinSesion.nodo('perfilNovedadesOpcion').disabled, true);
+  const caida = entorno({ encendido: true, estadoFalla: { ok: false, status: 503, json: async () => ({ error: 'servicio_no_disponible' }) } });
+  await tick();
+  assert.equal(caida.nodo('perfilNovedadesEstado').textContent, 'No se ha podido comprobar tu preferencia. Recarga la página para reintentarlo.');
+  assert.equal(caida.nodo('perfilNovedadesOpcion').disabled, true);
 });
