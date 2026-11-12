@@ -6,6 +6,26 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (2) · Claude · «¿Quieres colaborar con nosotros?» y correo de contacto único, publicados
+
+Víctor: «Añade un apartado al final de Inicio y Perfil tipo ¿Quieres colaborar con nosotros? Y el correo de contacto rwadares@gmail.com»; después, «Sí, cámbialo» (también en lo legal).
+
+- **Apartado nuevo** al final de Inicio y de Perfil, en la web y en la app (un solo bloque o componente). Lleva la independencia editorial y el enlace a Transparencia comercial.
+- **Correo de contacto único** `rwadares@gmail.com` en todo lo visible:
+  - web, app y esquema;
+  - privacidad, acceso, baja y `security.txt`;
+  - documentos legales y sus pruebas.
+- **No cambiado,** a propósito:
+  - las migraciones aplicadas;
+  - las plantillas de correo de Supabase y Lettermint;
+  - `correo-lettermint.sh`.
+
+  Los correos automáticos siguen con el antiguo hasta que se apliquen allí, con permiso de Víctor.
+- **Publicado:**
+  - PR #108 y #109 (sello), unidas con squash.
+  - Web n.º 68 (preview) y n.º 69 (producción): 11/11 en la comprobación del apartado y del correo, y 38/38 en la general.
+  - OTA n.º 22, enviada a las 11:13 UTC.
+
 ## 12 de noviembre de 2026 (3) · Claude · Repaso de la revisión: correo único y «Colaborar»
 
 Commits locales en `claude/sharp-babbage-m3bbbw` (sin push, sin publicar, sin
