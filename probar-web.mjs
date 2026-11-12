@@ -3745,6 +3745,18 @@ console.log('\n=== NOVEDADES DE RWADAR ===');
     !/garantizad|asegurad|sin riesgo|ganar[áa]s|\d+\s?%/i.test(textoJSON) &&
     /No es una promesa de lo que vas a ganar: al invertir puedes perder dinero\./.test(textoJSON) &&
     /It is not a promise of what you will earn: when you invest you can lose money\./.test(textoJSON));
+  // La app lleva una copia de respaldo: tiene que decir lo mismo que la web (node rwadar-novedades-producto.js).
+  const copiaApp = require('./rwadar-novedades-producto.js');
+  prueba('la copia de la app (rwadar-movil/lib/novedades-producto.js y su ejemplo) dice lo mismo que el archivo de la web',
+    copiaApp.diferencias().length === 0 &&
+    JSON.stringify(require('./rwadar-movil/lib/novedades-producto.js').NOVEDADES_PRODUCTO) === JSON.stringify(JSON.parse(textoJSON)) &&
+    fs.readFileSync(copiaApp.COPIA_EJEMPLO, 'utf8') === textoJSON);
+  // Lo que solo existe en la web (la campana, «Mantener la sesión iniciada») lo dice, porque la app lee el mismo texto.
+  prueba('lo que solo vale en la web lo dice («en la web»): la app no tiene campana ni casilla de sesión',
+    [...datos.resumen.map(p => [p.titulo + ' ' + p.texto]), ...datos.detalle.map(s => [...s.parrafos, ...s.pasos].map(f => s.titulo + ' ' + f))].flat()
+      .every(t => !/campana|Mantener la sesión/.test(t) || /en la web/i.test(t)) &&
+    [...datos.resumen.map(p => [p.en.titulo + ' ' + p.en.texto]), ...datos.detalle.map(s => [...s.en.parrafos, ...s.en.pasos].map(f => s.en.titulo + ' ' + f))].flat()
+      .every(t => !/\bbell\b|Keep me signed in/.test(t) || /on the website/i.test(t)));
   // El modelo rechaza lo que no es el contrato (y la web no enseña nada; el publicador no publica).
   const rechaza = cambio => { const d = JSON.parse(textoJSON); cambio(d); try { modelo.validar(d); return false; } catch { return true; } };
   prueba('el modelo rechaza campos desconocidos, falta de inglés, marcado, listas descompensadas, id repetidos, versiones malas y archivos grandes',

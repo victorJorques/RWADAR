@@ -18,21 +18,21 @@
     {
       "id": "avisos-sin-leer",
       "icono": "contador",
-      "titulo": "Ves cuántos avisos te faltan por leer",
-      "texto": "Un número en la campana, en Perfil y en el icono.",
+      "titulo": "Ves los avisos que no has leído",
+      "texto": "Un número, como un «1», te dice cuántos son.",
       "en": {
-        "titulo": "See how many alerts you haven't read",
-        "texto": "A number on the bell, in Profile and on the app icon."
+        "titulo": "See the alerts you haven't read",
+        "texto": "A number, like a «1», tells you how many."
       }
     },
     {
       "id": "sesion-30-dias",
       "icono": "sesion",
-      "titulo": "Tu sesión dura 30 días",
-      "texto": "Marca «Mantener la sesión iniciada» al entrar.",
+      "titulo": "En la web, tu sesión dura 30 días",
+      "texto": "Marca «Mantener la sesión iniciada» al entrar en la web.",
       "en": {
-        "titulo": "Stay signed in for 30 days",
-        "texto": "Tick «Keep me signed in» when you sign in."
+        "titulo": "On the website, stay signed in for 30 days",
+        "texto": "Tick «Keep me signed in» when you sign in on the website."
       }
     },
     {
@@ -64,12 +64,12 @@
         "Cuando haya algo nuevo en RWAdar, te puede llegar un aviso al móvil, igual que te llega un mensaje de WhatsApp.",
         "Es gratis y lo eliges tú: solo te llegan si los activas. Los puedes quitar cuando quieras en Perfil › Avisos o en los ajustes del móvil.",
         "En iPhone, primero añade la web a la pantalla de inicio: en Safari, pulsa el botón Compartir y después «Añadir a pantalla de inicio». Luego abre RWAdar desde ese icono.",
-        "En Android, hazlo en la app de RWAdar."
+        "En Android, puedes hacerlo en la app de RWAdar o en la web, desde el navegador del móvil."
       ],
       "pasos": [
         "Entra en tu cuenta de RWAdar.",
         "Ve a Perfil › Avisos y activa «Avisos de novedades».",
-        "Pulsa «Activar notificaciones en este móvil» y acepta cuando el móvil te pregunte."
+        "Activa «Notificaciones en este móvil» y acepta cuando el móvil te pregunte."
       ],
       "en": {
         "titulo": "Alerts on your phone, like WhatsApp",
@@ -77,29 +77,33 @@
           "When there is something new on RWAdar, you can get an alert on your phone, just like a WhatsApp message.",
           "It is free and your choice: you only get them if you turn them on. You can turn them off whenever you like in Profile › Alerts or in your phone settings.",
           "On iPhone, first add the website to your home screen: in Safari, tap the Share button and then «Add to Home Screen». Then open RWAdar from that icon.",
-          "On Android, do it in the RWAdar app."
+          "On Android, you can do it in the RWAdar app or on the website, from your phone's browser."
         ],
         "pasos": [
           "Sign in to your RWAdar account.",
           "Go to Profile › Alerts and turn on «News notices».",
-          "Tap «Turn on notifications on this phone» and accept when your phone asks."
+          "Turn on «Notifications on this phone» and accept when your phone asks."
         ]
       }
     },
     {
       "id": "avisos-sin-leer",
-      "titulo": "Un número te dice cuántos avisos te faltan por leer",
+      "titulo": "Un número te dice cuántos avisos no has leído",
       "parrafos": [
-        "Si tienes avisos sin leer, verás un número, por ejemplo un «1», en la campana de arriba, en Perfil y en el icono de RWAdar de tu móvil.",
-        "Cuando abres tus avisos, el número desaparece.",
+        "Si tienes avisos sin leer, verás un número, por ejemplo un «1».",
+        "En la web, sale en la campana de arriba y en Perfil. En la app, sale en la pestaña Inicio de abajo.",
+        "En iPhone, con RWAdar en la pantalla de inicio y las notificaciones activadas, también sale en su icono.",
+        "Cuando los lees, el número se va.",
         "Para verlo tienes que haber entrado en tu cuenta."
       ],
       "pasos": [],
       "en": {
         "titulo": "A number tells you how many alerts you haven't read",
         "parrafos": [
-          "If you have unread alerts, you will see a number, for example a «1», on the bell at the top, in Profile and on the RWAdar icon on your phone.",
-          "When you open your alerts, the number goes away.",
+          "If you have unread alerts, you will see a number, for example a «1».",
+          "On the website, it shows on the bell at the top and in Profile. In the app, it shows on the Home tab at the bottom.",
+          "On iPhone, with RWAdar on your home screen and notifications turned on, it also shows on its icon.",
+          "When you read them, the number goes away.",
           "To see it, you need to be signed in to your account."
         ],
         "pasos": []
@@ -107,7 +111,7 @@
     },
     {
       "id": "sesion-30-dias",
-      "titulo": "Tu sesión se queda abierta 30 días",
+      "titulo": "En la web, tu sesión se queda abierta 30 días",
       "parrafos": [
         "Ya no tienes que escribir la contraseña cada vez que vuelves a la web.",
         "Si al entrar marcas la casilla, tu sesión sigue abierta 30 días desde la última vez que usas RWAdar, aunque cierres el navegador. Si no la marcas, se cierra al cerrar el navegador.",
@@ -115,12 +119,12 @@
         "En la app de Android la sesión ya se quedaba abierta hasta que la cierras."
       ],
       "pasos": [
-        "Pulsa «Entrar» en RWAdar.",
+        "Pulsa «Entrar» en la web de RWAdar.",
         "Escribe tu correo y tu contraseña.",
-        "Marca «Mantener la sesión iniciada en este dispositivo» y pulsa «Entrar»."
+        "En la web, marca «Mantener la sesión iniciada en este dispositivo» y pulsa «Entrar»."
       ],
       "en": {
-        "titulo": "Your session stays open for 30 days",
+        "titulo": "On the website, your session stays open for 30 days",
         "parrafos": [
           "You no longer have to type your password every time you come back to the website.",
           "If you tick the box when you sign in, your session stays open for 30 days from the last time you use RWAdar, even if you close the browser. If you don't tick it, it closes when you close the browser.",
@@ -128,9 +132,9 @@
           "In the Android app, your session already stayed open until you signed out."
         ],
         "pasos": [
-          "Tap «Sign in» on RWAdar.",
+          "Tap «Sign in» on the RWAdar website.",
           "Type your email and your password.",
-          "Tick «Keep me signed in on this device» and tap «Sign in»."
+          "On the website, tick «Keep me signed in on this device» and tap «Sign in»."
         ]
       }
     },
