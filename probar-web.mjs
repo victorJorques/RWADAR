@@ -685,12 +685,12 @@ const rutaCatalogo = '/assets/catalogo-publico-20261022.js';
 // El orden de los scripts (con idioma-previo en <head>) se prueba en rwadar-app/probar-web-escritorio.mjs.
 // La quinta, el candado de las lecciones sin cuenta (08/11/2026), compartida con /academy/.
 // La sexta, «Noticias del sector» (10/11/2026); la séptima, «Mercado y noticias» al estilo de una app de bolsa (11/11/2026);
-// la novena, «Calcula tus números» (11/11/2026).
-prueba('las nueve hojas propias versionadas cargan en el orden declarado',
+// la novena, «Calcula tus números» (11/11/2026); la décima, «Novedades de RWAdar» (12/11/2026).
+prueba('las diez hojas propias versionadas cargan en el orden declarado',
   JSON.stringify(estilos.map(estilo=>estilo[1])) === JSON.stringify([
     '/assets/rwadar-20260820.css','/assets/cartera-cuenta-ui-20261028.css','/assets/idioma-20261022.css','/assets/mapa-buscar-20261027.css',
     '/assets/academy-candado-20261108.css','/assets/noticias-sector-20261110.css','/assets/mercado-20261111.css',
-    '/assets/secciones-20261110.css','/assets/calculadora-20261111.css']));
+    '/assets/secciones-20261110.css','/assets/calculadora-20261111.css','/assets/novedades-producto-20261112.css']));
 for (const recurso of [rutaScriptApp, rutaCatalogo, rutaAnalitica, estilos[0][1], '/assets/privacidad-20260820.css', '/assets/error-20260820.css'])
   prueba(`existe ${recurso}`, fs.existsSync(path.join(sitio, '.' + recurso)));
 
@@ -1921,8 +1921,9 @@ prueba('la salida incluye solo el manifiesto, los cuatro fallback y las ilustrac
     esperadas.length > 0 && JSON.stringify([...new Set(conPropia)].sort()) === JSON.stringify(esperadas.sort()));
 }
 prueba('HTML conserva sus recursos con huella sin depender de un precache del worker',
-  recursoJSPublicado && hojasPublicadas.length === 10 &&
+  recursoJSPublicado && hojasPublicadas.length === 11 &&
   hojasPublicadas.filter(ruta => /\/secciones-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
+  hojasPublicadas.filter(ruta => /\/novedades-producto-20261112\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/calculadora-20261111\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/noticias-sector-20261110\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
   hojasPublicadas.filter(ruta => /\/mapa-buscar-20261027\.[a-f0-9]{12}\.css$/.test(ruta)).length === 1 &&
@@ -3714,6 +3715,177 @@ try {
     !fs.existsSync(path.join(publicado, path.basename(intruso))));
 } finally {
   fs.rmSync(intruso, { force:true });
+}
+
+console.log('\n=== NOVEDADES DE RWADAR ===');
+/* «Novedades de RWAdar» (12/11/2026). Víctor: «que salga al abrir la app y como las novedades, tipo un
+   texto informativo muy fácil de leer con las novedades y si clickan que salga en detalle». Una sola
+   fuente (/datos/novedades-producto.json) para la ventana de Inicio, /novedades-rwadar/ y la app. Lo que
+   hace en el navegador se prueba en rwadar-acceso/novedades-producto-navegador.test.mjs. */
+{
+  const modelo = require('./rwadar-site/assets/novedades-producto-modelo-20261112.js');
+  const { PAGINAS_SECCIONES } = require('./rwadar-publicacion-segura.js');
+  const textoJSON = lee('datos/novedades-producto.json');
+  const datos = modelo.validarTexto(textoJSON);
+  // 1 · La forma del archivo.
+  prueba(`el archivo de novedades vale (versión ${datos.version}, ${Buffer.byteLength(textoJSON)} bytes de ${modelo.MAX_BYTES}) y lleva su inglés en «en»`,
+    /^\d{4}-\d{2}-\d{2}$/.test(datos.version) && Buffer.byteLength(textoJSON) <= modelo.MAX_BYTES &&
+    datos.titulo === 'Novedades de RWAdar' && datos.en.titulo === 'RWAdar news' &&
+    datos.resumen.every(p => p.en.titulo && p.en.texto) && datos.detalle.every(s => s.en.titulo && s.en.parrafos.length === s.parrafos.length));
+  prueba('el resumen son 4 o 5 puntos de una línea, cada uno con un icono conocido y su sección en el detalle',
+    datos.resumen.length >= 4 && datos.resumen.length <= 5 &&
+    datos.resumen.every(p => Object.hasOwn(modelo.ICONOS, p.icono) && datos.detalle.some(s => s.id === p.id) &&
+      [p.titulo, p.en.titulo].every(t => t.length <= 45) && [p.texto, p.en.texto].every(t => t.length <= 72)));
+  prueba('el detalle explica lo publicado del 11 y el 12/11 en frases cortas (avisos, el «1», la sesión de 30 días, el correo y la calculadora)',
+    ['avisos-movil', 'avisos-sin-leer', 'sesion-30-dias', 'contacto', 'calcula-y-mercado'].every(id => datos.detalle.some(s => s.id === id)) &&
+    datos.detalle.every(s => [...s.parrafos, ...s.pasos].every(f => f.split(/(?<=[.:!?])\s+/).every(frase => frase.length <= 160))) &&
+    /Perfil › Avisos/.test(JSON.stringify(datos.detalle[0])) && /Safari/.test(datos.detalle[0].parrafos.join(' ')) &&
+    /Mantener la sesión iniciada en este dispositivo/.test(JSON.stringify(datos.detalle)) && /rwadares@gmail\.com/.test(JSON.stringify(datos.detalle)));
+  prueba('sin promesas de rentabilidad: la calculadora dice que no es una promesa y que se puede perder dinero',
+    !/garantizad|asegurad|sin riesgo|ganar[áa]s|\d+\s?%/i.test(textoJSON) &&
+    /No es una promesa de lo que vas a ganar: al invertir puedes perder dinero\./.test(textoJSON) &&
+    /It is not a promise of what you will earn: when you invest you can lose money\./.test(textoJSON));
+  // La app lleva una copia de respaldo: tiene que decir lo mismo que la web (node rwadar-novedades-producto.js).
+  const copiaApp = require('./rwadar-novedades-producto.js');
+  prueba('la copia de la app (rwadar-movil/lib/novedades-producto.js y su ejemplo) dice lo mismo que el archivo de la web',
+    copiaApp.diferencias().length === 0 &&
+    JSON.stringify(require('./rwadar-movil/lib/novedades-producto.js').NOVEDADES_PRODUCTO) === JSON.stringify(JSON.parse(textoJSON)) &&
+    fs.readFileSync(copiaApp.COPIA_EJEMPLO, 'utf8') === textoJSON);
+  // Lo que solo existe en la web (la campana, «Mantener la sesión iniciada») lo dice, porque la app lee el mismo texto.
+  prueba('lo que solo vale en la web lo dice («en la web»): la app no tiene campana ni casilla de sesión',
+    [...datos.resumen.map(p => [p.titulo + ' ' + p.texto]), ...datos.detalle.map(s => [...s.parrafos, ...s.pasos].map(f => s.titulo + ' ' + f))].flat()
+      .every(t => !/campana|Mantener la sesión/.test(t) || /en la web/i.test(t)) &&
+    [...datos.resumen.map(p => [p.en.titulo + ' ' + p.en.texto]), ...datos.detalle.map(s => [...s.en.parrafos, ...s.en.pasos].map(f => s.en.titulo + ' ' + f))].flat()
+      .every(t => !/\bbell\b|Keep me signed in/.test(t) || /on the website/i.test(t)));
+  // El modelo rechaza lo que no es el contrato (y la web no enseña nada; el publicador no publica).
+  const rechaza = cambio => { const d = JSON.parse(textoJSON); cambio(d); try { modelo.validar(d); return false; } catch { return true; } };
+  prueba('el modelo rechaza campos desconocidos, falta de inglés, marcado, listas descompensadas, id repetidos, versiones malas y archivos grandes',
+    rechaza(d => { d.extra = 1; }) && rechaza(d => { delete d.resumen[0].en; }) && rechaza(d => { d.detalle[0].parrafos[0] = '<b>hola</b>'; }) &&
+    rechaza(d => { d.detalle[0].en.parrafos.pop(); }) && rechaza(d => { d.resumen[1].id = d.resumen[0].id; }) &&
+    rechaza(d => { d.version = '2026-02-30'; }) && rechaza(d => { d.resumen = []; }) && rechaza(d => { d.resumen[0].texto = ' con espacios'; }) &&
+    rechaza(d => { d.detalle[0].pasos[0] = 'línea partida'; }) &&
+    (() => { try { modelo.validarTexto(JSON.stringify({ ...JSON.parse(textoJSON), relleno: 'x'.repeat(modelo.MAX_BYTES) })); return false; } catch (e) { return /kB/.test(e.message); } })() &&
+    (() => { try { modelo.validarTexto('{'); return false; } catch { return true; } })());
+  // «Ya visto»: solo la cadena de la versión, con try/catch; sin almacenamiento, no sale.
+  const memoria = {}, almacen = { getItem: k => memoria[k] ?? null, setItem: (k, v) => { memoria[k] = String(v); } };
+  const bloqueado = { getItem() { throw new Error('bloqueado'); }, setItem() { throw new Error('bloqueado'); } };
+  prueba('lo visto guarda solo la versión (rwadar.novedades.vista), una vez por versión y nunca hacia atrás; sin almacenamiento, no sale',
+    modelo.CLAVE_VISTA === 'rwadar.novedades.vista' && modelo.pendiente(almacen, datos.version) && modelo.marcarVista(almacen, datos.version) &&
+    JSON.stringify(memoria) === JSON.stringify({ 'rwadar.novedades.vista': datos.version }) && !modelo.pendiente(almacen, datos.version) &&
+    modelo.marcarVista(almacen, '2026-11-01') && memoria['rwadar.novedades.vista'] === datos.version &&
+    modelo.pendiente(almacen, '2026-11-12.2') && modelo.posterior('2026-11-12.10', '2026-11-12.9') &&
+    !modelo.pendiente(bloqueado, datos.version) && modelo.marcarVista(bloqueado, datos.version) === false && !modelo.pendiente(null, datos.version));
+  const ui = lee('assets/novedades-producto-20261112.js');
+  // Cuándo sale la ventana, sin navegador (revisión del 12/11/2026: en CI no hay Chromium). Funciones puras del modelo
+  // con un documento y un almacenamiento falsos; la ventana (assets/novedades-producto-20261112.js) solo las llama.
+  {
+    const docFalso = ({ dialogo = false, modal = false, local = false } = {}) => ({
+      querySelector: sel => (sel === 'dialog[open]' && dialogo) || (sel.startsWith('[aria-modal="true"]') && modal) ? {} : null,
+      body: { classList: { contains: c => c === 'detalle-local-abierto' && local } } });
+    const nuevoAlmacen = (falla = {}) => {
+      const m = {};
+      return { m, getItem: k => { if (falla.leer) throw new Error('no'); return m[k] ?? null; },
+        setItem: (k, v) => { if (falla.guardar) throw new Error('lleno'); m[k] = String(v); }, removeItem: k => { delete m[k]; } };
+    };
+    const a = nuevoAlmacen(), v = datos.version;
+    const motivo = (extra = {}) => modelo.motivoSinVentana({ busqueda: '', ancla: '', almacen: nuevoAlmacen(), ...extra });
+    prueba('la ventana sale si no hay nada encima y espera a otro diálogo (dialog abierto, panel modal, ficha) o a la pestaña oculta',
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso() }) === 'ensenar' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso({ dialogo: true }) }) === 'esperar' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso({ modal: true }) }) === 'esperar' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso({ local: true }) }) === 'esperar' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso(), oculta: true }) === 'esperar' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: null }) === 'esperar' &&
+      modelo.marcarVista(a, v) && modelo.estadoVentana({ almacen: a, version: v, doc: docFalso() }) === 'vista' &&
+      modelo.estadoVentana({ almacen: a, version: v, doc: docFalso({ dialogo: true }) }) === 'vista');
+    prueba('no sale con ?avisos=1, #explain, #perfil-avisos, la vuelta de un correo, en la app, automatizada, sin leer ni sin poder guardar',
+      motivo() === '' && motivo({ busqueda: '?avisos=1' }) === 'direccion' && motivo({ busqueda: '?x=1&avisos=1' }) === 'direccion' &&
+      motivo({ ancla: '#explain' }) === 'direccion' && motivo({ ancla: '#perfil-avisos' }) === 'direccion' &&
+      motivo({ ancla: '#access_token=x&type=signup' }) === 'direccion' && motivo({ ancla: '#error=access_denied' }) === 'direccion' &&
+      motivo({ busqueda: '?avisos=0', ancla: '#emisiones' }) === '' && motivo({ enApp: true }) === 'app' &&
+      motivo({ automatizado: true }) === 'automatizado' && motivo({ almacen: nuevoAlmacen({ leer: true }) }) === 'sin-lectura' &&
+      motivo({ almacen: null }) === 'sin-lectura' && motivo({ almacen: nuevoAlmacen({ guardar: true }) }) === 'sin-guardar' &&
+      // La prueba de escritura no deja nada guardado.
+      (() => { const b = nuevoAlmacen(); return modelo.puedeGuardar(b) && JSON.stringify(b.m) === '{}'; })());
+    prueba('la ventana decide con el modelo (motivoSinVentana y estadoVentana) y no repite la lógica',
+      ui.includes('modelo.motivoSinVentana({ ...llegada, enApp: !!globalThis.ReactNativeWebView,') &&
+      ui.includes("const estado = modelo.estadoVentana({ almacen, version: datos.version, doc: document, oculta: document.visibilityState === 'hidden' });") &&
+      ui.includes("if (estado === 'ensenar') mostrar(datos, almacen);") && ui.includes("else if (estado === 'esperar') setTimeout(mirar, REVISION_MS);") &&
+      !/function hayOtroDialogo|pideOtraCosa/.test(ui));
+  }
+
+  // 2 · Enlaces y piezas: la ventana en Inicio, la página, Perfil (móvil y cuenta) y el pie.
+  const pagina = lee('novedades-rwadar/index.html');
+  const scriptsInicio = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"[^>]*>/g)].map(m => m[1]);
+  const scriptsPagina = [...pagina.matchAll(/<script\b[^>]*\bsrc="([^"]+)"[^>]*>/g)].map(m => [m[1], /\bdefer\b/.test(m[0])]);
+  marcadoEstricto('novedades-rwadar/index.html', pagina);
+  prueba('Inicio carga el modelo y la ventana (defer, antes del catálogo), su hoja y el hueco [data-novedades-producto="ventana"]',
+    scriptsInicio.indexOf('/assets/novedades-producto-modelo-20261112.js') >= 0 &&
+    scriptsInicio.indexOf('/assets/novedades-producto-modelo-20261112.js') + 1 === scriptsInicio.indexOf('/assets/novedades-producto-20261112.js') &&
+    scriptsInicio.indexOf('/assets/novedades-producto-20261112.js') < scriptsInicio.indexOf('/assets/catalogo-publico-20261022.js') &&
+    html.includes('<link rel="stylesheet" href="/assets/novedades-producto-20261112.css">') &&
+    (html.match(/data-novedades-producto="ventana"/g) || []).length === 1);
+  prueba('/novedades-rwadar/ es una sección publicable, con su canonical, un h1, el detalle del archivo, la hoja y los scripts con defer',
+    PAGINAS_SECCIONES.includes('novedades-rwadar/index.html') &&
+    ['novedades-rwadar/index.html', 'datos/novedades-producto.json', 'assets/novedades-producto-modelo-20261112.js',
+      'assets/novedades-producto-20261112.js', 'assets/novedades-producto-20261112.css'].every(x => ARCHIVOS_PUBLICABLES.includes(x)) &&
+    pagina.includes('<link rel="canonical" href="https://rwadar.pages.dev/novedades-rwadar/">') && (pagina.match(/<h1\b/g) || []).length === 1 &&
+    pagina.includes('<main id="contenido" class="sec sec-estrecha nov-pagina" data-novedades-producto="detalle" aria-busy="true">') &&
+    pagina.includes('<link rel="stylesheet" href="/assets/novedades-producto-20261112.css">') &&
+    JSON.stringify(scriptsPagina.slice(1, 4)) === JSON.stringify([['/assets/analitica-20260927.js', true],
+      ['/assets/novedades-producto-modelo-20261112.js', true], ['/assets/novedades-producto-20261112.js', true]]) &&
+    pagina.includes('<p class="nov-estado" id="novEstado" role="status">Cargando las novedades…</p>') && /<noscript>/.test(pagina));
+  const hojaNov = lee('assets/novedades-producto-20261112.css');
+  const modeloTexto = lee('assets/novedades-producto-modelo-20261112.js');
+  prueba('accesible y legible: las listas conservan su papel de lista (VoiceOver), el título no parte palabras y la página enlaza las anteriores',
+    pagina.includes('<ul class="nov-puntos" id="novResumen" role="list" hidden></ul>') &&
+    /lista\.id = 'novedadesPuntos';\s*lista\.setAttribute\('role', 'list'\);/.test(ui) && /const ol = el\('ol', 'nov-pasos'\);[\s\S]{0,160}ol\.setAttribute\('role', 'list'\);/.test(ui) &&
+    !/overflow-wrap:anywhere/.test(hojaNov) &&
+    /\.nov-tit\{[^}]*font:700 clamp\(1\.125rem,5\.5vw,1\.375rem\)\/1\.2 var\(--display\)[^}]*overflow-wrap:break-word;hyphens:auto\}/.test(hojaNov) &&
+    /\.nov-punto-frase\{[^}]*overflow-wrap:break-word\}/.test(hojaNov) &&
+    /<ul class="sec-sigue" aria-label="Sigue por aquí">[\s\S]*<li><a href="\/cambios"><span>Novedades anteriores<\/span>/.test(pagina) &&
+    require('./rwadar-site/assets/idioma-en-avisos-20261112.js')['Novedades anteriores'] === 'Earlier news');
+  prueba('«Ver en detalle» lleva a /novedades-rwadar/ y la página, a Perfil › Avisos (/#perfil-avisos), que Inicio abre con irAPerfilAvisos',
+    modelo.PAGINA === '/novedades-rwadar/' && /ver\.href = modelo\.PAGINA;/.test(ui) && /const RUTA_AVISOS = '\/#perfil-avisos';/.test(ui) &&
+    js.includes("if(location.hash!=='#perfil-avisos')return;") && js.includes('Cuenta.irAPerfilAvisos();') &&
+    js.includes('irAPerfilAvisos:irAPerfilAvisos,') && js.indexOf("if(location.hash!=='#perfil-avisos')return;") > js.indexOf('const Movil = (function(){'));
+  const enComun = require('./rwadar-site/assets/idioma-en-20261022.js');
+  const enAvisos = require('./rwadar-site/assets/idioma-en-avisos-20261112.js');
+  prueba('Perfil (móvil), la cuenta de escritorio y el pie llevan «Novedades de RWAdar», con su inglés',
+    /<a class="movil-menu-fila" href="\/novedades-rwadar\/" data-novedades-producto-enlace="perfil">[\s\S]*?<b>Novedades de RWAdar<\/b><small>Lo nuevo de la web y la app, explicado fácil<\/small>/.test(panelPerfilHTML) &&
+    /<h3 id="perfilNovedadesProductoTit">Novedades<\/h3>/.test(panelPerfilHTML) &&
+    js.includes(`'<a class="perfil-manual perfil-novedades" href="/novedades-rwadar/" data-novedades-producto-enlace="cuenta">Novedades de RWAdar</a>'+`) &&
+    /<footer>[\s\S]*<a href="\/novedades-rwadar\/">Novedades de RWAdar<\/a>[\s\S]*<\/footer>/.test(html) &&
+    enComun['Novedades de RWAdar'] === datos.en.titulo && typeof enComun.Novedades === 'string' &&
+    enAvisos['Lo nuevo de la web y la app, explicado fácil'] === "What's new on the website and the app, made simple");
+  prueba('la ventana y la página: sin innerHTML, con translate="no", y la ventana no sale sin almacenamiento, con ?avisos=1, en la app ni en navegadores automatizados',
+    !/innerHTML|insertAdjacentHTML|outerHTML/.test(ui) && ui.includes("n.setAttribute('translate', 'no');") &&
+    ui.includes("enApp: !!globalThis.ReactNativeWebView,") && ui.includes("automatizado: globalThis.navigator?.webdriver === true, almacen })) return;") &&
+    ui.includes("try { return { busqueda: location.search || '', ancla: location.hash || '' }; } catch { return null; }") &&
+    modeloTexto.includes("b.get('avisos') === '1'") && modeloTexto.includes("if (doc.querySelector('dialog[open]')) return true;") &&
+    modeloTexto.includes('[aria-modal="true"]:not([inert]):not([hidden])'));
+  prueba('/novedades-rwadar/ va con su caché corta, en el sitemap, y el publicador y la comprobación de lo publicado miran el archivo',
+    /^\/novedades-rwadar\n  Cache-Control: public, max-age=0, must-revalidate$/m.test(headers) &&
+    /^\/novedades-rwadar\/\*\n  Cache-Control: public, max-age=0, must-revalidate$/m.test(headers) &&
+    lee('sitemap.xml').includes('<loc>https://rwadar.pages.dev/novedades-rwadar/</loc>') &&
+    publicador.includes("novedadesModelo.validarTexto(fs.readFileSync(path.join(temporal, 'datos', 'novedades-producto.json'), 'utf8'))") &&
+    fs.readFileSync(path.join(raiz, '.github', 'comprobar-publicado.mjs'), 'utf8').includes("pedir('/datos/novedades-producto.json')"));
+  const paginaPublicada = fs.readFileSync(path.join(publicado, 'novedades-rwadar', 'index.html'), 'utf8');
+  prueba('lo publicado lleva el mismo archivo de novedades y la página con sus recursos con huella',
+    fs.readFileSync(path.join(publicado, 'datos', 'novedades-producto.json'), 'utf8') === textoJSON &&
+    /\/assets\/novedades-producto-modelo-20261112\.[a-f0-9]{12}\.js/.test(paginaPublicada) &&
+    /\/assets\/novedades-producto-20261112\.[a-f0-9]{12}\.js/.test(paginaPublicada) &&
+    /\/assets\/novedades-producto-20261112\.[a-f0-9]{12}\.css/.test(paginaPublicada) &&
+    [...paginaPublicada.matchAll(/(?:src|href)="(\/assets\/[^"]+)"/g)].every(m => fs.existsSync(path.join(publicado, '.' + m[1]))));
+
+  // 3 · Privacidad: la marca de «ya visto», estrictamente necesaria y sin datos personales.
+  const lineal = privacidad.replace(/\s+/g, ' ');
+  prueba('la privacidad explica la marca de novedades ya vistas: solo la fecha de la versión, estrictamente necesaria (LSSI, art. 22.2), sin datos personales',
+    /<tr id="novedades-vistas">/.test(privacidad) &&
+    lineal.includes('el navegador guarda qué versión de las novedades has visto (solo su fecha, por ejemplo 2026-11-12) para no volver a enseñártela') &&
+    lineal.includes('Es estrictamente necesario para lo que pides, ver cada novedad una sola vez (LSSI, art. 22.2), no es un dato personal y no sale del navegador') &&
+    lineal.includes('con o sin cuenta, qué versión de las novedades ya has visto; nada de eso sale de tu navegador') &&
+    /<li><b>Datos locales:<\/b>(?:(?!<\/li>).)*La marca de «Novedades de RWAdar» ya vistas \(solo la fecha de la versión, sin datos personales\) es estrictamente necesaria para no repetirte la ventana \(LSSI, art\. 22\.2\)/.test(lineal));
 }
 
 console.log('\n=== RWADAR ACADEMY ===');

@@ -79,6 +79,7 @@
 <link rel="stylesheet" href="/assets/mercado-20261111.css">
 <link rel="stylesheet" href="/assets/secciones-20261110.css">
 <link rel="stylesheet" href="/assets/calculadora-20261111.css">
+<link rel="stylesheet" href="/assets/novedades-producto-20261112.css">
 </head>
 <body>
 
@@ -1406,6 +1407,17 @@
       </div>
     </section>
 
+    <!-- «Novedades de RWAdar» (12/11/2026): la ventana de Inicio sale una vez
+         por versión; aquí se vuelven a ver cuando se quiera (/novedades-rwadar/). -->
+    <section class="movil-menu-grupo" aria-labelledby="perfilNovedadesProductoTit">
+      <h3 id="perfilNovedadesProductoTit">Novedades</h3>
+      <div class="movil-menu">
+        <a class="movil-menu-fila" href="/novedades-rwadar/" data-novedades-producto-enlace="perfil">
+          <span class="movil-menu-icono" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v4M12 16.5v4M3.5 12h4M16.5 12h4M6.3 6.3l2.6 2.6M15.1 15.1l2.6 2.6M6.3 17.7l2.6-2.6M15.1 8.9l2.6-2.6"/></svg></span><span><b>Novedades de RWAdar</b><small>Lo nuevo de la web y la app, explicado fácil</small></span><i aria-hidden="true">›</i>
+        </a>
+      </div>
+    </section>
+
     <section class="movil-menu-grupo" id="perfilComunidad" aria-labelledby="perfilComunidadTit" hidden>
       <h3 id="perfilComunidadTit">Comunidad</h3>
       <article class="movil-estado" id="comunidadProximamente">
@@ -1489,6 +1501,10 @@
     <p class="colabora-mas"><a href="/transparencia-comercial">Transparencia comercial</a></p>
   </section>
 </template>
+
+<!-- «Novedades de RWAdar» (12/11/2026): assets/novedades-producto-20261112.js
+     abre aquí, una vez por versión, la ventana con lo nuevo (ver su cabecera). -->
+<div data-novedades-producto="ventana" hidden></div>
 
 <nav class="movil-nav" id="movilNav" role="tablist" aria-label="Navegación principal">
   <button class="movil-nav-item" id="movilTabInicio" type="button" role="tab"
@@ -1622,7 +1638,7 @@
     </div>
     <div>
       <h4>Secciones</h4>
-      <p><a href="#emisiones">Ofertas</a><br><a href="#tool">Plataformas</a><br><a href="#explain">Qué es tokenizar</a><br><a href="#metodo">Qué comprobamos</a><br><a href="/academy/">RWAdar Academy</a><br><a href="#fuera">Descartadas</a></p>
+      <p><a href="#emisiones">Ofertas</a><br><a href="#tool">Plataformas</a><br><a href="#explain">Qué es tokenizar</a><br><a href="#metodo">Qué comprobamos</a><br><a href="/academy/">RWAdar Academy</a><br><a href="#fuera">Descartadas</a><br><a href="/novedades-rwadar/">Novedades de RWAdar</a></p>
     </div>
     <div>
       <h4>Contacto</h4>
@@ -1645,6 +1661,8 @@
 <script src="/assets/noticias-sector-20261110.js" defer></script>
 <script src="/assets/calculadora-modelo-20261111.js" defer></script>
 <script src="/assets/calculadora-20261111.js" defer></script>
+<script src="/assets/novedades-producto-modelo-20261112.js" defer></script>
+<script src="/assets/novedades-producto-20261112.js" defer></script>
 <script src="/assets/catalogo-publico-20261022.js" defer></script>
 <script src="/assets/ficha-editorial-20261022.js" defer></script>
 <script src="/assets/idioma-en-20261022.js" defer></script>

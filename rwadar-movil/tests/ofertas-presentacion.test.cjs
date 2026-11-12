@@ -26,6 +26,7 @@ function modulo(ruta, mocks, contexto = {}) {
     if (dependencia === '../lib/idioma') return require('../lib/idioma');
     if (dependencia === './acceso-obligatorio') return require('../lib/acceso-obligatorio');
     if (dependencia === './avisos-cuenta') return require('../lib/avisos-cuenta');
+    if (dependencia === './novedades-rwadar') return require('../lib/novedades-rwadar');
     assert.ok(Object.hasOwn(mocks, dependencia), `Dependencia inesperada: ${dependencia}`);
     return mocks[dependencia];
   }, ...Object.values(contexto));

@@ -127,16 +127,18 @@ test('Perfil reúne lo guardado y anuncia los avisos como próximamente', () => 
 
 test('las novedades de RWAdar salen de Inicio a Perfil (las mismas que la web) y no se enseña la comunidad', () => {
   // Rediseño del 10/11/2026: «que no se repita». Inicio son bloques cortos;
-  // las novedades de RWAdar van en Perfil, con enlace a /cambios de la web.
+  // las novedades de RWAdar van en Perfil. Desde el 12/11/2026, la fila de
+  // Perfil abre su detalle en la app (componentes/NovedadesRwadar.js), que
+  // enlaza las anteriores en /cambios de la web.
   const inicio = leer('componentes', 'Inicio.js');
   const app = leer('App.js');
   const noticias = leer('lib', 'noticias-contenido.js');
   assert.match(noticias, /GENERADO por rwadar-noticias\.js/);
   assert.doesNotMatch(inicio, /noticias-contenido|Comunidad|compartir aquí una publicación/);
-  assert.match(app, /import \{ NOTICIAS as NOVEDADES_RWADAR \} from '\.\/lib\/noticias-contenido';/);
   assert.match(app, /const URL_NOVEDADES = 'https:\/\/rwadar\.pages\.dev\/cambios';/);
   assert.match(app, /titulo="Novedades de RWAdar"/);
-  assert.match(app, /onNovedades=\{\(\) => abrirEnlace\(URL_NOVEDADES\)\}/);
+  assert.match(app, /onNovedades=\{\(\) => \{ tacto\.abrir\(\); novedadesRwadar\.verDetalle\(\); \}\}/);
+  assert.match(app, /onHistorial=\{\(\) => abrirEnlace\(URL_NOVEDADES\)\}/);
   assert.doesNotMatch(inicio, /TextInput|fetch\(|supabase/);
   const fuente = JSON.parse(fs.readFileSync(path.join(RAIZ, '..', 'rwadar-noticias', 'noticias.json'), 'utf8'));
   for (const n of fuente.noticias) assert.ok(noticias.includes(n.titulo), `falta la noticia ${n.id} en la app`);

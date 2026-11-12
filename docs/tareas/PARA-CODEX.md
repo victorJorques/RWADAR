@@ -6,6 +6,94 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (18) · Claude · Novedades al abrir la app y la web
+
+- **Víctor:** «que salga al abrir la app y como las novedades, tipo un texto
+  informativo muy fácil de leer con las novedades y si clickan que salga en
+  detalle». Hecho en dos ramas (web y app) y unido aquí con una revisión.
+  **Sin publicar; Supabase y EAS sin tocar; sin push.** Guía:
+  [`NOVEDADES-RWADAR-2026-11-12.md`](NOVEDADES-RWADAR-2026-11-12.md).
+- **Qué ve la gente:**
+  1. Al abrir la web o la app, cuando ya se ve Inicio y no hay nada encima,
+     sale **una vez por versión** una ventana: «Novedades de RWAdar», la
+     fecha y 5 puntos de una línea con su icono (avisos en el móvil como un
+     WhatsApp; el número de avisos sin leer; en la web, la sesión de 30 días;
+     el correo rwadares@gmail.com y «¿Quieres colaborar…?»; «Calcula tus
+     números» y «Mercado y noticias»). Botones **«Ver en detalle»** y
+     **«Entendido»**.
+  2. «Ver en detalle»: en la web, la página **/novedades-rwadar/**; en la
+     app, una pantalla. Cada novedad en frases cortas, con «Cómo se hace» y
+     el camino a **Perfil › Avisos**; las dos enlazan las anteriores (/cambios).
+  3. Para volver a verlas: «Novedades de RWAdar» en Perfil (web y app), en la
+     cuenta de escritorio y en el pie de la web.
+  4. Un aviso con enlace `https://rwadar.pages.dev/novedades-rwadar/…`: en la
+     web abre esa página; en la app, al tocarlo en la tarjeta «Avisos» de
+     Inicio, abre la pantalla de detalle (`destinoAviso` → `novedades`), no el
+     navegador.
+- **Después (mismo PR #125):** quitado el nombre del responsable de los
+  comentarios del código público de la web (`rwadar-site/assets`) y de los
+  archivos nuevos; solo queda donde lo exige la ley (aviso legal y
+  privacidad).
+- **Una sola fuente:** `rwadar-site/datos/novedades-producto.json` (versión
+  `2026-11-12`, inglés en campos `en`). La app lo descarga de
+  rwadar.pages.dev (6 s, sin cookies, forma exacta, 32 kB) y lleva una copia
+  igual en `rwadar-movil/lib/novedades-producto.js` y su ejemplo. **Esa copia
+  la escribe `node rwadar-novedades-producto.js`** (raíz; `--comprobar` falla
+  si no coinciden); probar-web y la prueba de la app exigen que coincidan.
+- **Lo visto:** web, `localStorage["rwadar.novedades.vista"]`; app,
+  `rwadar.editorial.novedades.vista.v1` (se borra con «Borrar datos del
+  dispositivo»). Solo la versión. Privacidad de la web («Novedades ya
+  vistas», apartado 2, y «Datos locales») y de la app: estrictamente
+  necesario (LSSI, art. 22.2), sin datos personales.
+- **Commits:** web `52c41dd` y `ed3c069`; app `a26a883` y `cf87a96`; uniones
+  `972296a` y `4a1ec75` (único choque: esta entrada); correcciones de la
+  revisión `264f571` (textos), `7a4d27b` (app) y `9259271` (web), y este
+  traspaso.
+- **Arreglado de la revisión (comprobado antes):**
+  - **Textos ciertos en las dos.** La app no tiene campana ni la casilla
+    «Mantener la sesión iniciada» y no pone número en el icono de Android.
+    Ahora: «Un número, como un «1», te dice cuántos son»; el detalle dice
+    dónde sale en la web (campana y Perfil) y en la app (pestaña Inicio); la
+    sesión dice «en la web»; el paso 3 es «Activa «Notificaciones en este
+    móvil»» (vale en las dos); en Android, «en la app de RWAdar o en la web».
+    Prueba nueva: lo que solo es de la web dice «en la web», y cada «…» del
+    resumen existe en la app.
+  - **App:** la ventana espera también a «Mercado y noticias», «Aprende» o
+    una noticia abiertas desde Inicio (`onPantalla` → `pantallaInicio`), y
+    respeta la barra de estado y la de 3 botones (`useSafeAreaInsets` + 16).
+  - **Web:** si el navegador deja leer pero no guardar, ya no sale en cada
+    carga (se prueba a guardar antes). Cuándo sale lo deciden funciones puras
+    del modelo (`motivoSinVentana`, `estadoVentana`) que probar-web prueba
+    sin navegador: quitar la espera a otro diálogo ya falla en CI.
+    `role="list"` en puntos y pasos (VoiceOver); el título no parte palabras
+    a 320 px con la letra al 200 %. «Novedades anteriores» en la página.
+  - Guía y LEEME: no se añaden campos ni se suben límites del JSON sin una
+    OTA antes (la app ignoraría el archivo nuevo sin avisar).
+- **Pruebas (integrado, todo en verde):** `npm test` en la raíz con salida 0:
+  `npm --prefix rwadar-app test` (32 guiones con 1348 correctas, más 11 y
+  103 de `node --test`), `npm run test:web` (probar-web 708/708, 70 páginas
+  y RSS, 40 de precarga), `npm --prefix rwadar-movil test` (614 bien, 0
+  fallos, 2 omitidas), qr, tools y `node --test rwadar-acceso/*.test.mjs`
+  (312/312, con la de Chromium de las novedades, que ahora también prueba
+  `setItem` que falla). Guardián de OTA con `--base fa30779…`: compatible con
+  1.4.2(24). Diccionario de la web idéntico al de la app y copia de las
+  novedades al día. gitleaks 8.30.1 sobre `git diff origin/main...HEAD`: sin
+  hallazgos. Mutaciones: sin la espera a otro diálogo o sin la prueba de
+  guardar, probar-web falla; con «campana» sin «en la web», la prueba de la
+  app falla. Capturas a 390 px (web y app) en la carpeta de la sesión
+  (`novedades/final/`); las de la app son de los componentes reales con
+  react-native-web y las barras del móvil simuladas, no de un APK.
+- **Para Víctor (decidir):**
+  - La ventana también sale a quien entra por primera vez en la web (le
+    habla de avisos y sesión que aún no conoce). Se puede no enseñarla a quien
+    no tiene ningún rastro de uso; no lo he cambiado.
+  - En Android digo «en la app de RWAdar o en la web»: el encargo decía solo
+    la app, pero la web también activa las notificaciones en Android.
+- **Pendiente (con orden de Víctor):** publicar la web (preview y producción)
+  y después la OTA. Sin la web publicada, la app enseña su copia incluida.
+  Para cada novedad nueva: editar el JSON, subir `version`,
+  `node rwadar-novedades-producto.js` y las pruebas.
+
 ## 12 de noviembre de 2026 (17) · Claude · Envío de notificaciones ENCENDIDO para todos (decisión de Víctor)
 
 - **Víctor (21:30 UTC):** «Activa ya las notificaciones y todo». Se le explicó

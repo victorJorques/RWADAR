@@ -136,6 +136,8 @@ const PAGINAS_SECCIONES = Object.freeze([
   'mercado/index.html',
   'noticias/index.html',
   'aprende/index.html',
+  // «Novedades de RWAdar» en detalle (12/11/2026): adonde lleva la ventana de Inicio.
+  'novedades-rwadar/index.html',
 ]);
 
 const ARCHIVOS_PUBLICABLES = Object.freeze([
@@ -224,6 +226,13 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'assets/calculadora-modelo-20261111.js',
   'assets/calculadora-20261111.js',
   'assets/calculadora-20261111.css',
+  // «Novedades de RWAdar» (12/11/2026): el modelo (valida el archivo), la
+  // ventana de Inicio y la página /novedades-rwadar/, su hoja y el contenido,
+  // que lee también la app (rwadar-publicar.js no lo publica si no valida).
+  'assets/novedades-producto-modelo-20261112.js',
+  'assets/novedades-producto-20261112.js',
+  'assets/novedades-producto-20261112.css',
+  'datos/novedades-producto.json',
   'assets/aprende-20261110.js',
   'c9417d2d5003bb9a41fee63c7f5ec00f.txt',
   'google6b2e3e5f58b7e557.html',

@@ -2,6 +2,36 @@
 
 App nativa en React Native con Expo (SDK 57).
 
+## Novedades de RWAdar al abrir la app · 12 de noviembre de 2026
+
+Solo JS (pasa `scripts/comprobar-ota-compatible.cjs`). Una ventana encima de
+Inicio con el título, 4-5 puntos (icono y una línea), «Ver en detalle» y
+«Entendido»; el detalle, a pantalla completa, con un botón a Perfil › Avisos
+y el historial de /cambios. Perfil › «Novedades de RWAdar» la vuelve a abrir.
+
+- **Contenido:** el mismo JSON que la web, `rwadar-site/datos/novedades-producto.json`
+  (inglés en el campo `en` de cada elemento). La app lo lee de
+  `https://rwadar.pages.dev/datos/novedades-producto.json` (6 s, sin cookies,
+  solo JSON de hasta 32 KB y con la forma exacta) y trae una copia idéntica en
+  `lib/novedades-producto.js` (y `fixtures/novedades-producto.ejemplo.json`)
+  para verlo sin red. Gana la versión más nueva. Esa copia no se edita a
+  mano: al cambiar el JSON de la web, `node rwadar-novedades-producto.js` (en
+  la raíz) la escribe; `tests/novedades-producto.test.cjs` y probar-web fallan
+  si no coinciden. El texto es común: lo que solo existe en la web (la
+  campana, «Mantener la sesión iniciada») dice «en la web».
+- **No se añaden campos ni se suben límites** en el JSON sin publicar antes
+  una OTA con el validador nuevo: la app valida la forma exacta y, si no la
+  reconoce, ignora el archivo de la web sin avisar y enseña su copia.
+- **Cuándo sale:** una vez por `version`, cuando ya se ve Inicio y no hay
+  nada encima (acceso, bloqueo, carga, fichas, explicador, privacidad, una
+  pantalla de Inicio como «Mercado y noticias» o una notificación
+  abriéndose). La ventana respeta las barras del móvil (`useSafeAreaInsets`). Lo visto se guarda en el móvil
+  (`rwadar.editorial.novedades.vista.v1`, solo la versión) y se borra con
+  «Borrar datos del dispositivo». Si no se puede leer, no sale sola.
+- **Código:** `lib/novedades-rwadar.js` (validar, comparar, descargar),
+  `componentes/NovedadesRwadar.js` (hook, ventana y detalle) y
+  `lib/datos.js` (`leerNovedadesVistas`, `marcarNovedadesVistas`).
+
 ## Avisos de novedades · 5 de noviembre de 2026 (preparado y apagado)
 
 Contrato: [`AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](../docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).

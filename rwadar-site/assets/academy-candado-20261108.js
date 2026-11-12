@@ -1,7 +1,7 @@
 /* =====================================================================
    RWAdar Academy · candado de las lecciones sin cuenta (08/11/2026)
    ---------------------------------------------------------------------
-   Petición de Víctor: sin cuenta, las lecciones salen difuminadas y con un
+   Petición: sin cuenta, las lecciones salen difuminadas y con un
    candado; al registrarse y entrar, se desbloquean. Lo usan el índice
    /academy/ y el bloque de lecciones de la portada, con el mismo HTML
    (rwadar-academy.js, htmlCandado) y la misma hoja

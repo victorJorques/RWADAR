@@ -37,6 +37,8 @@ const tokenizacionModelo = require('./rwadar-movil/lib/tokenizacion');
 const { historicoTokenizacion, serieTokenizacion } = require('./rwadar-tokenizacion-historico');
 const noticiasModelo = require('./rwadar-movil/lib/noticias-sector');
 const noticiasV1 = require('./rwadar-app/noticias/noticias-v1.cjs');
+// «Novedades de RWAdar» (12/11/2026): el modelo de la web valida /datos/novedades-producto.json.
+const novedadesModelo = require('./rwadar-site/assets/novedades-producto-modelo-20261112.js');
 const {
   ARCHIVOS_PUBLICABLES,
   PAGINAS_ACADEMY,
@@ -620,6 +622,13 @@ function construirSalida() {
     try { noticiasV1.validarComoAppInstalada(textoNoticiasV1); }
     catch (e) { throw new Error(`la app instalada no aceptaría /datos/noticias.json: ${e.message}`); }
     console.log(`Noticias del sector: ${noticias.noticias.length}, actualizadas el ${noticias.actualizadoEl} (v2 con fotos y v1 para la app instalada).`);
+    /* «Novedades de RWAdar» (12/11/2026): lo leen la ventana de Inicio, la
+       página /novedades-rwadar/ y la app. Un archivo mal formado no se
+       publica: la web no enseñaría nada y la app se quedaría con su copia. */
+    let novedades;
+    try { novedades = novedadesModelo.validarTexto(fs.readFileSync(path.join(temporal, 'datos', 'novedades-producto.json'), 'utf8')); }
+    catch (e) { throw new Error(`rwadar-site/datos/novedades-producto.json no vale: ${e.message}`); }
+    console.log(`Novedades de RWAdar: versión ${novedades.version}, ${novedades.resumen.length} puntos y ${novedades.detalle.length} secciones.`);
     /* Las cuatro ilustraciones viven en una fuente única compartida con
        Expo. Se copian una a una desde el manifiesto validado; nunca se copia
        el directorio completo ni se incluyen las 52 imágenes sin derechos. */

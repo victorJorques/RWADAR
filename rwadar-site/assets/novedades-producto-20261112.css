@@ -1,0 +1,67 @@
+/* =====================================================================
+   RWAdar · «Novedades de RWAdar» (12/11/2026)
+   ---------------------------------------------------------------------
+   La ventana de Inicio (.nov-dialogo, sobre la piel de .escaparate-dialogo)
+   y la página /novedades-rwadar/ (.nov-pagina, en la columna estrecha de las
+   secciones). Muy fácil de leer: letra de 16 px o más, líneas cortas, un
+   icono por punto y botones de 48 px. Legible desde 320 px; solo tokens de
+   rwadar-20260820.css (la web es oscura).
+   ===================================================================== */
+
+/* ---- Puntos del resumen: icono y una línea ---- */
+.nov-puntos{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.nov-punto-caja{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:start;color:var(--tx);text-decoration:none}
+.nov-icono{display:grid;place-items:center;width:40px;height:40px;border-radius:var(--r-m);background:var(--senal-t);color:var(--senal)}
+.nov-icono svg{display:block}
+/* break-word y no anywhere: con letra al 200 % a 320 px, anywhere partía las palabras
+   por la mitad («Novedad / es»). Sin guiones en los puntos (más fáciles de leer); el
+   título sí los admite (.nov-tit), por si con letra grande una palabra no cabe. */
+.nov-punto-frase{min-width:0;padding-top:1px;font:400 1rem/1.45 var(--body);overflow-wrap:break-word}
+.nov-punto-tit{display:block;color:var(--tx);font-weight:600}
+.nov-punto-txt{display:block;margin-top:2px;color:var(--tx-2)}
+
+/* ---- La ventana de Inicio ---- */
+html.nov-abierta,html.nov-abierta body{overflow:hidden}
+.escaparate-dialogo.nov-dialogo{width:min(520px,calc(100% - 28px));height:fit-content}
+.nov-dialogo .nov-marco{height:auto;max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 32px);
+  grid-template-rows:auto minmax(0,1fr) auto}
+.nov-cab{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:16px 16px 14px 18px;border-bottom:var(--bd);background:var(--s1)}
+.nov-cab>div{min-width:0}
+.nov-fecha{display:block;margin:0 0 4px;color:var(--tx-3);font:600 .8125rem/1.4 var(--body)}
+.nov-tit{margin:0;color:var(--tx);font:700 clamp(1.125rem,5.5vw,1.375rem)/1.2 var(--display);letter-spacing:-.02em;overflow-wrap:break-word;hyphens:auto}
+.nov-cerrar{flex:none;font-size:1.25rem;line-height:1}
+/* El foco va al título al abrir (el lector de pantalla lee desde arriba); no es
+   un control, así que sin marco: el siguiente Tab llega a × con su foco visible. */
+.nov-tit:focus,.nov-tit:focus-visible{outline:none}
+.nov-cuerpo{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:18px 18px 16px}
+.nov-acciones{display:flex;flex-wrap:wrap;gap:10px;padding:14px 18px 18px;border-top:var(--bd);background:var(--s1)}
+.nov-acciones>*{flex:1 1 140px;min-height:48px;padding:0 16px;font:600 1rem/1.2 var(--body);text-decoration:none;text-align:center}
+.nov-acciones>:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
+
+/* ---- La página /novedades-rwadar/ ---- */
+.nov-pagina .sec-entradilla time{color:var(--tx)}
+.nov-estado{margin:20px 0 0;color:var(--tx-2);font:400 1rem/1.5 var(--body)}
+.nov-pagina .nov-puntos{margin:24px 0 0;padding:18px 16px;border:var(--bd);border-radius:var(--r-l);background:var(--s1)}
+.nov-punto-enlace{margin:-6px;padding:6px;border-radius:var(--r-m);transition:background var(--t-2) var(--ease)}
+.nov-punto-enlace:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
+@media (hover:hover){.nov-punto-enlace:hover{background:var(--ton)}}
+.nov-sec{padding:32px 0 8px;border-top:var(--bd);scroll-margin-top:72px}
+.nov-pagina .nov-puntos+#novDetalle .nov-sec:first-child{margin-top:32px}
+.nov-sec:focus{outline:none}
+.nov-sec-tit{margin:0 0 12px;color:var(--tx);font:700 1.375rem/1.25 var(--display);letter-spacing:-.015em;text-wrap:balance}
+.nov-sec-p{max-width:62ch;margin:0 0 12px;color:var(--tx-2);font:400 1.0625rem/1.6 var(--body)}
+.nov-pasos-tit{margin:18px 0 10px;color:var(--tx);font:600 1rem/1.4 var(--body)}
+.nov-pasos{display:grid;gap:10px;max-width:62ch;margin:0 0 12px;padding:0;list-style:none;counter-reset:nov-paso}
+.nov-pasos li{position:relative;min-height:32px;padding:4px 0 0 44px;color:var(--tx);font:400 1.0625rem/1.5 var(--body);counter-increment:nov-paso}
+.nov-pasos li::before{content:counter(nov-paso);position:absolute;left:0;top:0;display:grid;place-items:center;width:32px;height:32px;
+  border-radius:50%;background:var(--senal-t);color:var(--senal);font:700 .9375rem/1 var(--body)}
+.nov-ir-avisos{margin-top:4px}
+.nov-cta{margin:40px 0 0;padding:20px 18px;border:1px solid var(--senal-30);border-radius:var(--r-l);background:var(--senal-t)}
+.nov-cta-tit{margin:0 0 6px;color:var(--tx);font:700 1.1875rem/1.3 var(--display)}
+.nov-cta-txt{margin:0 0 14px;color:var(--tx-2);font:400 1rem/1.5 var(--body)}
+.nov-cta-boton{text-decoration:none}
+.nov-cta-boton:focus-visible{outline:2px solid var(--senal);outline-offset:2px}
+@media (min-width:768px){
+  .nov-sec-tit{font-size:1.625rem}
+  .nov-pagina .nov-puntos{padding:22px 24px}
+}

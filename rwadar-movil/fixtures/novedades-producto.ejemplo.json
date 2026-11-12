@@ -1,0 +1,182 @@
+{
+  "version": "2026-11-12",
+  "titulo": "Novedades de RWAdar",
+  "en": {
+    "titulo": "RWAdar news"
+  },
+  "resumen": [
+    {
+      "id": "avisos-movil",
+      "icono": "notificacion",
+      "titulo": "Avisos en tu móvil",
+      "texto": "Te llegan como un WhatsApp. Actívalos en Perfil › Avisos.",
+      "en": {
+        "titulo": "Alerts on your phone",
+        "texto": "They arrive like a WhatsApp message. Turn them on in Profile › Alerts."
+      }
+    },
+    {
+      "id": "avisos-sin-leer",
+      "icono": "contador",
+      "titulo": "Ves los avisos que no has leído",
+      "texto": "Un número, como un «1», te dice cuántos son.",
+      "en": {
+        "titulo": "See the alerts you haven't read",
+        "texto": "A number, like a «1», tells you how many."
+      }
+    },
+    {
+      "id": "sesion-30-dias",
+      "icono": "sesion",
+      "titulo": "En la web, tu sesión dura 30 días",
+      "texto": "Marca «Mantener la sesión iniciada» al entrar en la web.",
+      "en": {
+        "titulo": "On the website, stay signed in for 30 days",
+        "texto": "Tick «Keep me signed in» when you sign in on the website."
+      }
+    },
+    {
+      "id": "contacto",
+      "icono": "correo",
+      "titulo": "Nuevo correo: rwadares@gmail.com",
+      "texto": "Y al final de Inicio: «¿Quieres colaborar con nosotros?».",
+      "en": {
+        "titulo": "New email: rwadares@gmail.com",
+        "texto": "And at the end of Home: «Would you like to work with us?»."
+      }
+    },
+    {
+      "id": "calcula-y-mercado",
+      "icono": "calculadora",
+      "titulo": "Calcula tus números y mira el mercado",
+      "texto": "En Inicio: «Calcula tus números» y «Mercado y noticias».",
+      "en": {
+        "titulo": "Work out your numbers and see the market",
+        "texto": "On Home: «Work out your numbers» and «Market and news»."
+      }
+    }
+  ],
+  "detalle": [
+    {
+      "id": "avisos-movil",
+      "titulo": "Avisos en tu móvil, como un WhatsApp",
+      "parrafos": [
+        "Cuando haya algo nuevo en RWAdar, te puede llegar un aviso al móvil, igual que te llega un mensaje de WhatsApp.",
+        "Es gratis y lo eliges tú: solo te llegan si los activas. Los puedes quitar cuando quieras en Perfil › Avisos o en los ajustes del móvil.",
+        "En iPhone, primero añade la web a la pantalla de inicio: en Safari, pulsa el botón Compartir y después «Añadir a pantalla de inicio». Luego abre RWAdar desde ese icono.",
+        "En Android, puedes hacerlo en la app de RWAdar o en la web, desde el navegador del móvil."
+      ],
+      "pasos": [
+        "Entra en tu cuenta de RWAdar.",
+        "Ve a Perfil › Avisos y activa «Avisos de novedades».",
+        "Activa «Notificaciones en este móvil» y acepta cuando el móvil te pregunte."
+      ],
+      "en": {
+        "titulo": "Alerts on your phone, like WhatsApp",
+        "parrafos": [
+          "When there is something new on RWAdar, you can get an alert on your phone, just like a WhatsApp message.",
+          "It is free and your choice: you only get them if you turn them on. You can turn them off whenever you like in Profile › Alerts or in your phone settings.",
+          "On iPhone, first add the website to your home screen: in Safari, tap the Share button and then «Add to Home Screen». Then open RWAdar from that icon.",
+          "On Android, you can do it in the RWAdar app or on the website, from your phone's browser."
+        ],
+        "pasos": [
+          "Sign in to your RWAdar account.",
+          "Go to Profile › Alerts and turn on «News notices».",
+          "Turn on «Notifications on this phone» and accept when your phone asks."
+        ]
+      }
+    },
+    {
+      "id": "avisos-sin-leer",
+      "titulo": "Un número te dice cuántos avisos no has leído",
+      "parrafos": [
+        "Si tienes avisos sin leer, verás un número, por ejemplo un «1».",
+        "En la web, sale en la campana de arriba y en Perfil. En la app, sale en la pestaña Inicio de abajo.",
+        "En iPhone, con RWAdar en la pantalla de inicio y las notificaciones activadas, también sale en su icono.",
+        "Cuando los lees, el número se va.",
+        "Para verlo tienes que haber entrado en tu cuenta."
+      ],
+      "pasos": [],
+      "en": {
+        "titulo": "A number tells you how many alerts you haven't read",
+        "parrafos": [
+          "If you have unread alerts, you will see a number, for example a «1».",
+          "On the website, it shows on the bell at the top and in Profile. In the app, it shows on the Home tab at the bottom.",
+          "On iPhone, with RWAdar on your home screen and notifications turned on, it also shows on its icon.",
+          "When you read them, the number goes away.",
+          "To see it, you need to be signed in to your account."
+        ],
+        "pasos": []
+      }
+    },
+    {
+      "id": "sesion-30-dias",
+      "titulo": "En la web, tu sesión se queda abierta 30 días",
+      "parrafos": [
+        "Ya no tienes que escribir la contraseña cada vez que vuelves a la web.",
+        "Si al entrar marcas la casilla, tu sesión sigue abierta 30 días desde la última vez que usas RWAdar, aunque cierres el navegador. Si no la marcas, se cierra al cerrar el navegador.",
+        "Márcala solo en tu móvil o en tu ordenador, no en uno que compartas con otras personas. Para salir, pulsa «Cerrar sesión».",
+        "En la app de Android la sesión ya se quedaba abierta hasta que la cierras."
+      ],
+      "pasos": [
+        "Pulsa «Entrar» en la web de RWAdar.",
+        "Escribe tu correo y tu contraseña.",
+        "En la web, marca «Mantener la sesión iniciada en este dispositivo» y pulsa «Entrar»."
+      ],
+      "en": {
+        "titulo": "On the website, your session stays open for 30 days",
+        "parrafos": [
+          "You no longer have to type your password every time you come back to the website.",
+          "If you tick the box when you sign in, your session stays open for 30 days from the last time you use RWAdar, even if you close the browser. If you don't tick it, it closes when you close the browser.",
+          "Only tick it on your own phone or computer, not on one you share with other people. To leave, tap «Sign out».",
+          "In the Android app, your session already stayed open until you signed out."
+        ],
+        "pasos": [
+          "Tap «Sign in» on the RWAdar website.",
+          "Type your email and your password.",
+          "On the website, tick «Keep me signed in on this device» and tap «Sign in»."
+        ]
+      }
+    },
+    {
+      "id": "contacto",
+      "titulo": "Nuevo correo de contacto",
+      "parrafos": [
+        "Para escribirnos, usa rwadares@gmail.com: dudas, un error en una ficha o tus datos.",
+        "Al final de Inicio hay un apartado nuevo, «¿Quieres colaborar con nosotros?». Es para plataformas, emisores, gente del sector o quien quiera proponer una mejora.",
+        "Colaborar no da un puesto en el catálogo: las ofertas se eligen con criterios editoriales."
+      ],
+      "pasos": [],
+      "en": {
+        "titulo": "New contact email",
+        "parrafos": [
+          "To write to us, use rwadares@gmail.com: questions, a mistake in an entry or your data.",
+          "At the end of Home there is a new section, «Would you like to work with us?». It is for platforms, issuers, people in the sector or anyone who wants to suggest an improvement.",
+          "Working with us does not buy a place in the catalogue: offers are chosen on editorial criteria."
+        ],
+        "pasos": []
+      }
+    },
+    {
+      "id": "calcula-y-mercado",
+      "titulo": "Calcula tus números y mira cómo va el mercado",
+      "parrafos": [
+        "En Inicio tienes «Calcula tus números». Escribes cuánto pondrías, la rentabilidad y los años, y ves la cuenta paso a paso, con comisiones e impuestos.",
+        "Es solo una cuenta con los números que tú pones. No es una promesa de lo que vas a ganar: al invertir puedes perder dinero.",
+        "En «Mercado y noticias» ves en un gráfico el tamaño del mercado de activos tokenizados y, debajo, las noticias del sector con su fuente.",
+        "El gráfico mide el tamaño del mercado, no lo que habría ganado una inversión."
+      ],
+      "pasos": [],
+      "en": {
+        "titulo": "Work out your numbers and see how the market is doing",
+        "parrafos": [
+          "On Home you have «Work out your numbers». You type how much you would put in, the return and the years, and you see the sum step by step, with fees and taxes.",
+          "It is only a sum with the numbers you type. It is not a promise of what you will earn: when you invest you can lose money.",
+          "In «Market and news» you see the size of the tokenised asset market in a chart and, below it, news from the sector with its source.",
+          "The chart measures the size of the market, not what an investment would have earned."
+        ],
+        "pasos": []
+      }
+    }
+  ]
+}
