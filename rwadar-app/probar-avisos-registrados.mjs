@@ -191,11 +191,14 @@ paso('la 30 y su verificador guardan la versión v2 y los textos ES/EN exactos d
     && bloque?.[1].includes(FRASE_PLANTILLA)
     && PLANTILLA.replace(bloque?.[0] ?? '', '').search(/avisos de novedades/) === -1);
   const plantillas = fs.readdirSync(path.join(raiz, 'plantillas-auth')).filter((f) => f.endsWith('.html')).sort();
-  const pie = `RWAdar · ${RESPONSABLE_CORREO} · <a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">Aviso legal</a> · `
+  // Sin el nombre del titular (Víctor, 12/11/2026): la dirección postal (la pide Lettermint) y el
+  // enlace al aviso legal, donde está identificado (LSSI, art. 10).
+  const pie = 'RWAdar · Plaza Generalitat, s/n, 46600 Alzira (Valencia), España · <a href="https://rwadar.pages.dev/privacidad#aviso-legal" style="color:#555">Aviso legal</a> · '
     + '<a href="https://rwadar.pages.dev/privacidad" style="color:#555">Privacidad</a> · <a href="mailto:rwadares@gmail.com" style="color:#555">rwadares@gmail.com</a></p>';
-  paso('el pie de las plantillas de Auth (confirmación y recuperación) nombra al responsable con su dirección postal: «Plaza Generalitat, s/n, 46600 Alzira (Valencia), España»',
+  paso('el pie de las plantillas de Auth (confirmación y recuperación) lleva la dirección postal «Plaza Generalitat, s/n, 46600 Alzira (Valencia), España» y el aviso legal enlazado, sin el nombre del titular (tampoco en su LEEME)',
     isDeepStrictEqual(plantillas, ['confirmar-alta.html', 'recuperar-acceso.html'])
-    && plantillas.every((f) => leer(`plantillas-auth/${f}`).includes(pie)));
+    && plantillas.every((f) => leer(`plantillas-auth/${f}`).includes(pie) && !/Jorques|Víctor Manuel/i.test(leer(`plantillas-auth/${f}`)))
+    && !/Jorques|Víctor Manuel/i.test(leer('plantillas-auth/LEEME.md')));
   const accionesRecuperar = [...PLANTILLA_RECUPERAR.matchAll(/\{\{\s*([^}]*?)\s*\}\}/g)].map((m) => m[1]);
   paso('la plantilla «Reset password» solo usa {{ .ConfirmationURL }}, una vez, con el texto de REABRIR-CUENTAS',
     isDeepStrictEqual(accionesRecuperar, ['.ConfirmationURL'])
@@ -2852,13 +2855,14 @@ cat "$d/psql-respuesta-$n" 2>/dev/null || true
       && /ruta de servicio \(la de por defecto\): HTTP 202 · message_id msg-servicio-0001 · estado pending/.test(envio.texto)
       && /ruta de difusión \(broadcast\): HTTP 202 · message_id msg-difusion-0002 · estado pending/.test(envio.texto)
       && !`${envio.texto}${envio.resumen}`.includes(TOKEN_LM) && envio.resumen.includes('| broadcast | 202 | msg-difusion-0002 | pending |'));
-    paso('los dos correos: «RWAdar <remitente>», al destinatario, reply_to rwadares@gmail.com, sin seguimiento (track_opens y track_clicks en false), List-Unsubscribe con el mailto de baja, enlace sin imágenes y la dirección postal en el pie; route "broadcast" solo en el segundo',
+    paso('los dos correos: «RWAdar <remitente>», al destinatario, reply_to rwadares@gmail.com, sin seguimiento (track_opens y track_clicks en false), List-Unsubscribe con el mailto de baja, enlace sin imágenes y en el pie el titular sin su nombre, la dirección postal y el aviso legal; route "broadcast" solo en el segundo',
       cuerpos.every((c) => c && c.from === 'RWAdar <avisos@rwadar.example>' && isDeepStrictEqual(c.to, ['victor@ejemplo.test'])
         && isDeepStrictEqual(c.reply_to, ['rwadares@gmail.com']) && isDeepStrictEqual(c.settings, { track_opens: false, track_clicks: false })
         && isDeepStrictEqual(c.headers, { 'List-Unsubscribe': `<${MAILTO_BAJA}>` }) && !('tag' in c) && !('metadata' in c)
         && !/<img|<script|utm_|pixel/i.test(c.html) && c.html.includes('href="https://rwadar.pages.dev/"')
         && c.text.includes('https://rwadar.pages.dev/') && c.text.includes('tokenización')
-        && [c.text, c.html].every((t) => t.includes('Plaza Generalitat, s/n, 46600 Alzira (Valencia), España')))
+        && [c.text, c.html].every((t) => t.includes('Responsable: el titular de RWAdar, Plaza Generalitat, s/n, 46600 Alzira (Valencia), España')
+          && t.includes('https://rwadar.pages.dev/privacidad#aviso-legal') && !/Jorques|Víctor Manuel/i.test(t)))
       && !('route' in (cuerpos[0] || {})) && cuerpos[1]?.route === 'broadcast'
       && /ruta de servicio/.test(cuerpos[0]?.subject) && /ruta de difusión/.test(cuerpos[1]?.subject));
     const sinToken = correLM('enviar-prueba', { ...ENTORNO_ENVIO, LETTERMINT_API_TOKEN: '' });
