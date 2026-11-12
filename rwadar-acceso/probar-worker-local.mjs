@@ -193,28 +193,34 @@ export function crearAssetsLocales(raiz, { vistaPrevia = false } = {}) {
 
 /* Carga el worker: el _worker.js de la carpeta si lo tiene (el artefacto que
    se publica) o el que compila construirWorker desde las fuentes. Mientras se
-   importa, fetch es el Supabase simulado: el worker lo captura al crearse. */
+   importa, fetch es el Supabase simulado: el worker lo captura al crearse.
+   Con `ahora` (una función como Date.now), el worker captura también ese
+   reloj (crearAccesoServidor lo toma de Date.now al crearse): así una prueba
+   con datos fechados, como la foto de CoinGecko del 10/11/2026, no caduca.
+   El resto del proceso sigue con la hora real. */
 let cargas = 0;
-export async function cargarWorker({ raiz, fetchSupabase }) {
+export async function cargarWorker({ raiz, fetchSupabase, ahora = null }) {
   const propio = path.join(raiz, '_worker.js');
   const codigo = fs.existsSync(propio) ? fs.readFileSync(propio, 'utf8') : construirWorker();
-  const original = globalThis.fetch;
+  if (ahora !== null && typeof ahora !== 'function') throw new TypeError('ahora debe ser una función como Date.now');
+  const original = globalThis.fetch, reloj = Date.now;
   globalThis.fetch = fetchSupabase;
+  if (ahora) Date.now = ahora;
   try {
     return (await import('data:text/javascript;base64,' + Buffer.from(codigo).toString('base64') + '#arnes-' + (++cargas))).default;
-  } finally { globalThis.fetch = original; }
+  } finally { globalThis.fetch = original; Date.now = reloj; }
 }
 
 const HOST_LOCAL = /^(?:127\.0\.0\.1|localhost):\d{1,5}$/;
 const COOKIE_SESION = '__Host-rwadar-acceso';
 export async function arrancarWorkerLocal({ raiz = path.join(RAIZ_REPO, 'rwadar-publicado'), puerto = 8788, conSesion = false,
-  responder = null, vistaPrevia = false } = {}) {
+  responder = null, vistaPrevia = false, ahora = null } = {}) {
   raiz = path.resolve(raiz);
   if (!fs.existsSync(path.join(raiz, 'index.html'))) {
     throw new Error(`No hay web construida en ${raiz}: ejecuta antes npm run test:web (o node rwadar-publicar.js --local --sin-sincronizar).`);
   }
   const peticionesSupabase = [];
-  const worker = await cargarWorker({ raiz, fetchSupabase: crearAuthSimulado({ registro: peticionesSupabase, responder }) });
+  const worker = await cargarWorker({ raiz, ahora, fetchSupabase: crearAuthSimulado({ registro: peticionesSupabase, responder }) });
   const env = { ASSETS: crearAssetsLocales(raiz, { vistaPrevia }) };
   const servidor = http.createServer(async (req, res) => {
     try {
