@@ -2,6 +2,30 @@
 
 App nativa en React Native con Expo (SDK 57).
 
+## Novedades de RWAdar al abrir la app · 12 de noviembre de 2026
+
+Solo JS (pasa `scripts/comprobar-ota-compatible.cjs`). Una ventana encima de
+Inicio con el título, 4-5 puntos (icono y una línea), «Ver en detalle» y
+«Entendido»; el detalle, a pantalla completa, con un botón a Perfil › Avisos
+y el historial de /cambios. Perfil › «Novedades de RWAdar» la vuelve a abrir.
+
+- **Contenido:** el mismo JSON que la web, `rwadar-site/datos/novedades-producto.json`
+  (inglés en el campo `en` de cada elemento). La app lo lee de
+  `https://rwadar.pages.dev/datos/novedades-producto.json` (6 s, sin cookies,
+  solo JSON de hasta 32 KB y con la forma exacta) y trae una copia idéntica en
+  `lib/novedades-producto.js` (y `fixtures/novedades-producto.ejemplo.json`)
+  para verlo sin red. Gana la versión más nueva. Al cambiar el JSON de la
+  web, pega su contenido en esos dos archivos: `tests/novedades-producto.test.cjs`
+  falla si no coinciden.
+- **Cuándo sale:** una vez por `version`, cuando ya se ve Inicio y no hay
+  nada encima (acceso, bloqueo, carga, fichas, explicador, privacidad o una
+  notificación abriéndose). Lo visto se guarda en el móvil
+  (`rwadar.editorial.novedades.vista.v1`, solo la versión) y se borra con
+  «Borrar datos del dispositivo». Si no se puede leer, no sale sola.
+- **Código:** `lib/novedades-rwadar.js` (validar, comparar, descargar),
+  `componentes/NovedadesRwadar.js` (hook, ventana y detalle) y
+  `lib/datos.js` (`leerNovedadesVistas`, `marcarNovedadesVistas`).
+
 ## Avisos de novedades · 5 de noviembre de 2026 (preparado y apagado)
 
 Contrato: [`AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](../docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).

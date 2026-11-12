@@ -15,7 +15,7 @@ import {
   cargarCatalogo, cargarFuera, siguiendo, alternarSeguimiento, novedades, configurarAccesoCatalogo,
   sincronizarSeguimientoPendiente, borrarDatosDispositivo,
   cargarSecundario, cargarExclusiones, proveedoresDeOfertas, textoBusquedaOferta,
-  ofertasGuardadas, alternarOfertaGuardada,
+  ofertasGuardadas, alternarOfertaGuardada, leerNovedadesVistas, marcarNovedadesVistas,
 } from './lib/datos';
 import {
   MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, CUENTAS_REMOTAS, CORREO_AUTH_E2E, AVISOS_NOVEDADES_REMOTOS,
@@ -59,12 +59,15 @@ import { imagenEditorialOferta } from './fixtures/imagenes-editoriales';
 import { resumenOferta } from './lib/ficha-editorial';
 import { enSeleccionOferta } from './lib/transparencia';
 import { esNueva, ordenarMasNuevas } from './lib/recien-anadidas';
-import { NOTICIAS as NOVEDADES_RWADAR } from './lib/noticias-contenido';
+import { PantallaNovedades, VentanaNovedades, useNovedadesRwadar } from './componentes/NovedadesRwadar';
+import { textosNovedades } from './lib/novedades-rwadar';
 
 const URL_PRIVACIDAD = 'https://rwadar.pages.dev/privacidad';
 const URL_PRIVACIDAD_AVISOS = `${URL_PRIVACIDAD}#avisos-novedades`;
-// Las novedades de RWAdar salieron de Inicio con el rediseño del 10/11/2026:
-// en la app, en Perfil; la lista entera, en la web (/cambios, como siempre).
+// Las novedades de RWAdar salieron de Inicio con el rediseño del 10/11/2026.
+// Desde el 12/11/2026 salen en una ventana al abrir la app y en Perfil, con
+// su detalle (componentes/NovedadesRwadar.js); las anteriores, en la web
+// (/cambios, como siempre), enlazada desde ese detalle.
 const URL_NOVEDADES = 'https://rwadar.pages.dev/cambios';
 const LECCIONES_PUBLICADAS = LECCIONES.filter((l) => l.publicado).length;
 const USUARIO_LOCAL = MODO_LOCAL || SERVICIOS_USUARIO_REMOTOS !== true;
@@ -437,6 +440,20 @@ export default function App() {
     }
     setSlugAvisoPendiente(null);
   }, [slugAvisoPendiente, cargando, radar]);
+
+  /* Novedades de RWAdar (12/11/2026): la ventana sale una vez por versión,
+     cuando ya se ve Inicio y no hay nada más encima: ni el acceso, el
+     bloqueo o la carga, ni una ficha, el explicador, la privacidad o una
+     notificación abriéndose. El aviso de versión nueva y la bienvenida no
+     son ventanas: siguen en su sitio debajo. */
+  const pantallaPrincipal = fuentesListas && !cargando && Boolean(usuarioAdmitido)
+    && !(CUENTA_REMOTA_ACTIVA && (restaurandoAcceso || estadoCuenta?.estado === 'restaurando' || errorRestauracion))
+    && !(CUENTA_REMOTA_ACTIVA && (seguridad.preparando || seguridad.bloqueado));
+  const novedadesRwadar = useNovedadesRwadar({
+    listo: pantallaPrincipal && pestana === 'inicio' && !explicando && !privacidad && !abierta && !ofertaAbierta
+      && !slugAvisoPendiente && !destinoAvisoPendiente,
+    leerVista: leerNovedadesVistas, marcarVista: marcarNovedadesVistas,
+  });
 
   const refrescar = async () => {
     setRefrescando(true);
@@ -1145,8 +1162,8 @@ export default function App() {
               onExplicar={() => { tacto.abrir(); setExplicando(true); }}
               onPrivacidad={() => setPrivacidad(true)}
               onPolitica={() => abrirEnlace(URL_PRIVACIDAD)}
-              ultimaNovedad={NOVEDADES_RWADAR[0] ? (NOVEDADES_RWADAR[0].resumen || NOVEDADES_RWADAR[0].titulo) : ''}
-              onNovedades={() => abrirEnlace(URL_NOVEDADES)}
+              ultimaNovedad={textosNovedades(novedadesRwadar.datos, idioma).resumen[0]?.titulo || ''}
+              onNovedades={() => { tacto.abrir(); novedadesRwadar.verDetalle(); }}
               onContacto={() => abrirEnlace('mailto:rwadares@gmail.com')}
               onBorrar={confirmarBorrado}
               inversionInicial={inversionInicial}
@@ -1210,6 +1227,14 @@ export default function App() {
           avisosNovedades={AVISOS_NOVEDADES_ACTIVOS} casillaAlta={CASILLA_ALTA_ACTIVA} estadoNovedades={novedadesCuenta.servidor}
           bandejaAvisos={BANDEJA_AVISOS_ACTIVA}
           pushNovedades={AVISOS_NOVEDADES_ACTIVOS && capacidadPushNovedades()} />
+
+        {/* Novedades de RWAdar: la ventana al abrir y su detalle (también desde Perfil). */}
+        <VentanaNovedades visible={novedadesRwadar.ventana} datos={novedadesRwadar.datos}
+          onDetalle={novedadesRwadar.verDetalle} onEntendido={novedadesRwadar.entendido} />
+        <PantallaNovedades visible={novedadesRwadar.detalle} datos={novedadesRwadar.datos}
+          onCerrar={novedadesRwadar.cerrarDetalle}
+          onIrAvisos={() => { novedadesRwadar.cerrarDetalle(); irAAvisosPerfil(); }}
+          onHistorial={() => abrirEnlace(URL_NOVEDADES)} />
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -1471,7 +1496,7 @@ function PantallaPerfil({
           onPress={onExplicar}
         />
         <FilaMenu
-          icono="enlace"
+          icono="comunidad"
           titulo="Novedades de RWAdar"
           subtitulo={ultimaNovedad || 'Lo último de la web y la app'}
           onPress={onNovedades}
@@ -1923,6 +1948,9 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                 </Text>
                 <Text style={e.privacidadParrafo}>
                   La caché del catálogo también se separa por cuenta. Antes de leerla se necesita conexión para verificar la sesión actual; no permite entrar sin conexión. Si no puede actualizarse una copia completa, se conserva la anterior tras verificar la sesión y se avisa de su fecha. Las cifras vencidas se ocultan.
+                </Text>
+                <Text style={e.privacidadParrafo}>
+                  Novedades de RWAdar: para no enseñarte dos veces la misma ventana de novedades, este dispositivo guarda qué versión has visto (por ejemplo, 2026-11-12). No es un dato personal, no se envía a ningún sitio y se borra con «Borrar datos del dispositivo». Las novedades se descargan de la web de RWAdar sin datos de tu cuenta.
                 </Text>
                 {avisosNovedades ? (
                   <>

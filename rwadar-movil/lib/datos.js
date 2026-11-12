@@ -6,6 +6,7 @@ import { CACHE_CATALOGO, crearLectorCatalogo } from './catalogo-remoto';
 import { normalizarProgreso, progresoVacio } from './academy-progreso';
 import { clavesPrivadasDispositivo } from './acceso-obligatorio';
 import { quitarPushConCliente } from './avisos-cuenta';
+import { compararVersiones, versionValida } from './novedades-rwadar';
 
 /* Supabase no se importa al evaluar este módulo. En modo interno ni siquiera
    se ejecuta su archivo, de modo que cargar la app no puede crear un cliente
@@ -51,6 +52,12 @@ const CLAVES_LOCALES = [
   OFERTAS_GUARDADAS,
 ];
 if (!MODO_LOCAL) CLAVES_LOCALES.push(CACHE_CATALOGO, 'rwadar.cache.catalogo.v1');
+/* Novedades de RWAdar (12/11/2026): la última versión de la ventana de
+   novedades que se ha visto en este dispositivo, p. ej. «2026-11-12». No es
+   un dato personal ni va por cuenta; no sale del móvil. Solo evita enseñarla
+   dos veces y se borra con «Borrar datos del dispositivo». */
+const NOVEDADES_VISTAS = `${PREFIJO}novedades.vista.v1`;
+CLAVES_LOCALES.push(NOVEDADES_VISTAS);
 
 let lectorCatalogo = null;
 let accesoCatalogo = null;
@@ -546,6 +553,33 @@ export async function guardarProgresoAcademy(progreso) {
   const limpio = normalizarProgreso(progreso);
   await guardar(PROGRESO_ACADEMY, limpio);
   return limpio;
+}
+
+/* Qué versión de las novedades de RWAdar se ha visto aquí. { ok: true,
+   version } con la versión o null si no hay ninguna; { ok: false } si no se
+   pudo leer: entonces la ventana no sale sola (para no repetirla en cada
+   arranque) y sigue en Perfil. */
+export async function leerNovedadesVistas() {
+  try {
+    const version = await AsyncStorage.getItem(NOVEDADES_VISTAS);
+    return { ok: true, version: versionValida(version) ? version : null };
+  } catch {
+    return { ok: false, version: null };
+  }
+}
+
+/* Guarda la versión vista, sin bajar nunca a una anterior (la copia incluida
+   en la app puede ser más vieja que la descargada). Nunca lanza. */
+export async function marcarNovedadesVistas(version) {
+  if (!versionValida(version)) return false;
+  try {
+    const actual = await AsyncStorage.getItem(NOVEDADES_VISTAS);
+    if (versionValida(actual) && compararVersiones(actual, version) >= 0) return true;
+    await AsyncStorage.setItem(NOVEDADES_VISTAS, version);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 /* Avisos de novedades: qué avisos de Inicio has leído, el identificador de

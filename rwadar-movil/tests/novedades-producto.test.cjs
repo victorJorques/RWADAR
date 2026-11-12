@@ -1,0 +1,607 @@
+'use strict';
+
+/* «Novedades de RWAdar» al abrir la app (12/11/2026). Víctor: «que salga al
+   abrir la app y como las novedades, tipo un texto informativo muy fácil de
+   leer con las novedades y si clickan que salga en detalle».
+   Sin red, Expo ni almacenamiento real: el módulo con un fetch simulado, lo
+   visto en lib/datos.js con un AsyncStorage en memoria, el hook y las dos
+   pantallas con un React aislado (como avisos-ui.test.cjs), y los textos en
+   inglés del diccionario común. */
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const Module = require('node:module');
+const babel = require('@babel/core');
+const commonjs = require('@babel/plugin-transform-modules-commonjs');
+const jsx = require('@babel/plugin-transform-react-jsx');
+const { soporteIdioma } = require('./soporte-idioma.cjs');
+const idioma = require('../lib/idioma');
+const en = require('../lib/idioma-en');
+const n = require('../lib/novedades-rwadar');
+const { NOVEDADES_PRODUCTO } = require('../lib/novedades-producto');
+
+const RAIZ = path.resolve(__dirname, '..');
+const leer = (...r) => fs.readFileSync(path.join(RAIZ, ...r), 'utf8');
+const JSON_WEB = path.join(RAIZ, '..', 'rwadar-site', 'datos', 'novedades-producto.json');
+const copia = (o) => JSON.parse(JSON.stringify(o));
+const esperar = (ms = 2) => new Promise((r) => setTimeout(r, ms));
+
+/* ---------------------------------------------------------------------
+   La copia incluida, el ejemplo y el JSON de la web
+   --------------------------------------------------------------------- */
+test('novedades · la copia incluida es válida, igual al archivo de ejemplo y con 4-5 puntos de una línea en los dos idiomas', () => {
+  const ejemplo = JSON.parse(leer('fixtures', 'novedades-producto.ejemplo.json'));
+  assert.deepEqual(NOVEDADES_PRODUCTO, ejemplo, 'lib/novedades-producto.js y fixtures/novedades-producto.ejemplo.json no coinciden');
+  const datos = n.validarNovedadesProducto(NOVEDADES_PRODUCTO);
+  assert.deepEqual(n.RESPALDO, datos);
+  assert.equal(datos.version, '2026-11-12');
+  assert.equal(datos.titulo, 'Novedades de RWAdar');
+  assert.ok(datos.resumen.length >= 4 && datos.resumen.length <= 5, 'entre 4 y 5 puntos');
+  for (const p of datos.resumen) {
+    for (const t of [p.titulo, p.texto, p.en.titulo, p.en.texto]) assert.ok(!/[.!?].+[.!?].+[.!?]/.test(t), `más de una línea: ${t}`);
+  }
+  // Lo que pidió Víctor, dicho en el resumen: avisos, el número sin leer, la sesión, el correo y la calculadora.
+  const todo = JSON.stringify(datos.resumen);
+  for (const x of ['WhatsApp', 'Perfil › Avisos', 'número', '30 días', 'rwadares@gmail.com', '¿Quieres colaborar con nosotros?', 'Calcula tus números', 'Mercado y noticias']) {
+    assert.ok(todo.includes(x), `falta en el resumen: ${x}`);
+  }
+  // Sin promesas de rentabilidad.
+  assert.doesNotMatch(JSON.stringify(datos), /garantiz|asegurad|sin riesgo|guaranteed|risk-free/i);
+});
+
+test('novedades · el JSON de la web (cuando está en el repositorio) lo acepta la app y es la misma copia', { skip: fs.existsSync(JSON_WEB) ? false : 'rwadar-site/datos/novedades-producto.json aún no está en esta rama' }, () => {
+  const web = JSON.parse(fs.readFileSync(JSON_WEB, 'utf8'));
+  assert.doesNotThrow(() => n.validarNovedadesProducto(web), 'la app rechazaría el JSON que publica la web');
+  assert.ok(fs.statSync(JSON_WEB).size <= n.MAX_CARACTERES);
+  assert.deepEqual(NOVEDADES_PRODUCTO, web,
+    'La copia de la app no es la de la web: pega rwadar-site/datos/novedades-producto.json en rwadar-movil/lib/novedades-producto.js y en fixtures/novedades-producto.ejemplo.json');
+});
+
+/* ---------------------------------------------------------------------
+   Forma estricta: lo que no cuadra se ignora
+   --------------------------------------------------------------------- */
+test('novedades · un JSON malo se rechaza: claves de más o de menos, HTML, textos largos, versión, ids, iconos e inglés incompleto', () => {
+  const malos = {
+    'clave de más': (d) => { d.extra = 1; },
+    'sin inglés del título': (d) => { delete d.en; },
+    'punto sin inglés': (d) => { delete d.resumen[0].en; },
+    'punto con clave de más': (d) => { d.resumen[0].enlace = 'https://ejemplo.test'; },
+    'HTML en un texto': (d) => { d.resumen[0].texto = '<b>hola</b>'; },
+    'salto de línea': (d) => { d.detalle[0].parrafos[0] = 'una\nlínea'; },
+    'texto vacío': (d) => { d.titulo = ' '; },
+    'espacios sobrantes': (d) => { d.resumen[1].titulo += ' '; },
+    'punto demasiado largo': (d) => { d.resumen[0].texto = 'a'.repeat(121); },
+    'párrafo demasiado largo': (d) => { d.detalle[0].parrafos[0] = 'a'.repeat(421); },
+    'sin puntos': (d) => { d.resumen = []; },
+    'siete puntos': (d) => { d.resumen = Array.from({ length: 7 }, (_, i) => ({ ...d.resumen[0], id: `p${i}` })); },
+    'id repetido': (d) => { d.resumen[1].id = d.resumen[0].id; },
+    'id con mayúsculas': (d) => { d.detalle[0].id = 'Avisos'; },
+    'icono raro': (d) => { d.resumen[0].icono = '<svg>'; },
+    'versión sin fecha': (d) => { d.version = 'hoy'; },
+    'fecha imposible': (d) => { d.version = '2026-02-30'; },
+    'inglés con un párrafo menos': (d) => { d.detalle[0].en.parrafos.pop(); },
+    'inglés con un paso de más': (d) => { d.detalle[0].en.pasos.push('Extra step.'); },
+    'pasos que no son lista': (d) => { d.detalle[0].pasos = 'Entra'; },
+    'número en vez de texto': (d) => { d.resumen[0].titulo = 5; },
+  };
+  for (const [caso, romper] of Object.entries(malos)) {
+    const d = copia(NOVEDADES_PRODUCTO);
+    romper(d);
+    assert.throws(() => n.validarNovedadesProducto(d), Error, caso);
+    assert.equal(n.novedadesValidas(d), null, caso);
+  }
+  for (const raro of [null, [], 'texto', 42]) assert.throws(() => n.validarNovedadesProducto(raro));
+  // Lo que sí vale: otra del mismo día y un icono que la app no dibuja (sale el genérico).
+  const bien = copia(NOVEDADES_PRODUCTO);
+  bien.version = '2026-11-12.2'; bien.resumen[0].icono = 'cohete';
+  assert.equal(n.validarNovedadesProducto(bien).resumen[0].icono, 'cohete');
+});
+
+test('novedades · versiones: por fecha y, el mismo día, por el número de después del punto', () => {
+  assert.ok(n.compararVersiones('2026-11-12', '2026-11-13') < 0);
+  assert.ok(n.compararVersiones('2026-11-12.2', '2026-11-12') > 0);
+  assert.ok(n.compararVersiones('2026-12-01', '2026-11-30.9') > 0);
+  assert.equal(n.compararVersiones('2026-11-12', '2026-11-12'), 0);
+  assert.equal(n.hayNovedadesSinVer(n.RESPALDO, null), true, 'sin ninguna vista, sale');
+  assert.equal(n.hayNovedadesSinVer(n.RESPALDO, 'basura'), true);
+  assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-12'), false, 'ya vista, no sale');
+  assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-20'), false, 'sin red, una copia más vieja que la vista no vuelve a salir');
+  assert.equal(n.hayNovedadesSinVer(n.RESPALDO, '2026-11-11'), true);
+  for (const v of ['2025-12-31', '2026-13-01', '2026-11-12.', '2026-11-12.123', ' 2026-11-12']) assert.equal(n.versionValida(v), false, v);
+});
+
+/* ---------------------------------------------------------------------
+   Descarga: con plazo, solo JSON, sin cookies; si falla, la copia incluida
+   --------------------------------------------------------------------- */
+function respuesta(cuerpo, { status = 200, tipo = 'application/json; charset=utf-8', largo } = {}) {
+  const cabeceras = { 'content-type': tipo, ...(largo != null ? { 'content-length': String(largo) } : {}) };
+  let leida = false;
+  return { ok: status >= 200 && status < 300, status, headers: { get: (k) => cabeceras[k.toLowerCase()] ?? null },
+    async text() { leida = true; return cuerpo; }, get leida() { return leida; } };
+}
+const nueva = () => { const d = copia(NOVEDADES_PRODUCTO); d.version = '2026-11-20'; d.titulo = 'Más novedades de RWAdar'; return d; };
+
+test('novedades · descarga: pide el JSON de la web sin cookies ni sesión y se queda con la versión más nueva', async () => {
+  const pedidas = [];
+  const r = await n.cargarNovedadesProducto({ fetchImpl: async (url, opciones) => { pedidas.push([url, opciones]); return respuesta(JSON.stringify(nueva())); } });
+  assert.equal(r.origen, 'web');
+  assert.equal(r.datos.version, '2026-11-20');
+  assert.equal(r.datos.titulo, 'Más novedades de RWAdar');
+  assert.equal(pedidas.length, 1);
+  const [url, opciones] = pedidas[0];
+  assert.equal(url, 'https://rwadar.pages.dev/datos/novedades-producto.json');
+  assert.equal(opciones.method, 'GET');
+  assert.equal(opciones.credentials, 'omit');
+  assert.deepEqual(opciones.headers, { Accept: 'application/json' });
+  assert.ok(opciones.signal, 'con señal para cortar a tiempo');
+
+  // La misma versión que la copia: vale la de la web; una más vieja, no.
+  assert.equal((await n.cargarNovedadesProducto({ fetchImpl: async () => respuesta(JSON.stringify(NOVEDADES_PRODUCTO)) })).origen, 'web');
+  const vieja = copia(NOVEDADES_PRODUCTO); vieja.version = '2026-11-01';
+  const r2 = await n.cargarNovedadesProducto({ fetchImpl: async () => respuesta(JSON.stringify(vieja)) });
+  assert.equal(r2.origen, 'respaldo');
+  assert.equal(r2.datos.version, '2026-11-12');
+});
+
+test('novedades · sin red, con HTML, demasiado grande, error del servidor, plazo vencido o JSON malo: la copia incluida', async () => {
+  const casos = {
+    'sin red': async () => { throw new TypeError('Network request failed'); },
+    'HTML de la web': async () => respuesta('<!doctype html><title>RWAdar</title>', { tipo: 'text/html; charset=utf-8' }),
+    'HTML sin tipo': async () => respuesta('<!doctype html><title>RWAdar</title>', { tipo: '' }),
+    'no es JSON': async () => respuesta('{"version": ', {}),
+    'JSON con forma rara': async () => respuesta(JSON.stringify({ ...NOVEDADES_PRODUCTO, version: '2026-11-30', extra: true })),
+    'servidor con error': async () => respuesta('', { status: 404 }),
+    'demasiado grande': async () => respuesta(`{"x":"${'a'.repeat(n.MAX_CARACTERES)}"}`),
+  };
+  for (const [caso, fetchImpl] of Object.entries(casos)) {
+    const r = await n.cargarNovedadesProducto({ fetchImpl });
+    assert.equal(r.origen, 'respaldo', caso);
+    assert.deepEqual(r.datos, n.RESPALDO, caso);
+    assert.ok(r.error, caso);
+  }
+  // Si anuncia un tamaño imposible, ni se lee.
+  const grande = respuesta('{}', { largo: n.MAX_CARACTERES * 3 + 1 });
+  assert.equal((await n.cargarNovedadesProducto({ fetchImpl: async () => grande })).origen, 'respaldo');
+  assert.equal(grande.leida, false);
+  // Un servidor que no contesta: a los plazoMs se deja de esperar, aunque el fetch ignore la señal.
+  const antes = Date.now();
+  const lenta = await n.cargarNovedadesProducto({ plazoMs: 40, fetchImpl: () => new Promise(() => {}) });
+  assert.equal(lenta.origen, 'respaldo');
+  assert.match(lenta.error, /plazo/);
+  assert.ok(Date.now() - antes < 1000);
+  // Y uno que manda las cabeceras pero no termina el cuerpo, igual.
+  const cuerpoLento = await n.cargarNovedadesProducto({ plazoMs: 40, fetchImpl: async () => ({ ...respuesta(''), text: () => new Promise(() => {}) }) });
+  assert.equal(cuerpoLento.origen, 'respaldo');
+});
+
+/* ---------------------------------------------------------------------
+   Lo ya visto, en el móvil (lib/datos.js)
+   --------------------------------------------------------------------- */
+function datosConAlmacen(inicial = {}, fallos = {}) {
+  const mapa = new Map(Object.entries(inicial));
+  const storage = {
+    async getItem(k) { if (fallos.leer) throw new Error('almacenamiento bloqueado'); return mapa.has(k) ? mapa.get(k) : null; },
+    async setItem(k, v) { if (fallos.escribir) throw new Error('almacenamiento lleno'); mapa.set(k, v); },
+    async getAllKeys() { return [...mapa.keys()]; },
+    async multiRemove(keys) { keys.forEach((k) => mapa.delete(k)); },
+    async removeItem(k) { mapa.delete(k); },
+  };
+  const lib = path.join(RAIZ, 'lib') + path.sep;
+  const archivo = path.join(lib, 'datos.js');
+  const original = Module._load, extension = Module._extensions['.js'];
+  Module._load = function (pedido, padre, principal) {
+    if (pedido === '@react-native-async-storage/async-storage') return { __esModule: true, default: storage };
+    if (pedido === 'react-native') return { Platform: { OS: 'android' } };
+    if (padre?.filename === archivo && pedido === './modo-local') return { MODO_LOCAL: false, SERVICIOS_USUARIO_REMOTOS: false };
+    if (padre?.filename === archivo && pedido === './supabase') return {};
+    return original.call(this, pedido, padre, principal);
+  };
+  Module._extensions['.js'] = function (modulo, ruta) {
+    if (!ruta.startsWith(lib)) return extension(modulo, ruta);
+    modulo._compile(babel.transformSync(fs.readFileSync(ruta, 'utf8'), { filename: ruta, babelrc: false, configFile: false, plugins: [commonjs] }).code, ruta);
+  };
+  for (const clave of Object.keys(require.cache)) if (clave.startsWith(lib)) delete require.cache[clave];
+  try { return { datos: require(archivo), mapa }; } finally {
+    Module._load = original; Module._extensions['.js'] = extension;
+    for (const clave of Object.keys(require.cache)) if (clave.startsWith(lib)) delete require.cache[clave];
+  }
+}
+const CLAVE_VISTA = 'rwadar.editorial.novedades.vista.v1';
+
+test('novedades · lo visto se guarda en el móvil por versión, nunca baja a una anterior y se borra con los datos del dispositivo', async () => {
+  const { datos, mapa } = datosConAlmacen({ 'otra.app': 'conservar' });
+  assert.deepEqual(await datos.leerNovedadesVistas(), { ok: true, version: null });
+  assert.equal(await datos.marcarNovedadesVistas('2026-11-12'), true);
+  assert.equal(mapa.get(CLAVE_VISTA), '2026-11-12');
+  assert.deepEqual(await datos.leerNovedadesVistas(), { ok: true, version: '2026-11-12' });
+  // Una copia más vieja (sin red) no rebaja lo visto; una nueva sí lo sube.
+  assert.equal(await datos.marcarNovedadesVistas('2026-11-01'), true);
+  assert.equal(mapa.get(CLAVE_VISTA), '2026-11-12');
+  assert.equal(await datos.marcarNovedadesVistas('2026-11-12.2'), true);
+  assert.equal(mapa.get(CLAVE_VISTA), '2026-11-12.2');
+  // Solo una versión, nada más: ni datos de la persona ni basura.
+  assert.equal(await datos.marcarNovedadesVistas('<script>'), false);
+  assert.equal(await datos.marcarNovedadesVistas({ correo: 'ana@ejemplo.test' }), false);
+  assert.equal(mapa.get(CLAVE_VISTA), '2026-11-12.2');
+  mapa.set(CLAVE_VISTA, 'basura');
+  assert.deepEqual(await datos.leerNovedadesVistas(), { ok: true, version: null });
+  await datos.borrarDatosDispositivo();
+  assert.equal(mapa.has(CLAVE_VISTA), false);
+  assert.equal(mapa.get('otra.app'), 'conservar');
+});
+
+test('novedades · si el móvil no deja leer o escribir, no se rompe nada (y sin leer, la ventana no sale sola)', async () => {
+  const sinLeer = datosConAlmacen({}, { leer: true });
+  assert.deepEqual(await sinLeer.datos.leerNovedadesVistas(), { ok: false, version: null });
+  assert.equal(await sinLeer.datos.marcarNovedadesVistas('2026-11-12'), false);
+  const sinEscribir = datosConAlmacen({}, { escribir: true });
+  assert.equal(await sinEscribir.datos.marcarNovedadesVistas('2026-11-12'), false);
+  assert.deepEqual(await sinEscribir.datos.leerNovedadesVistas(), { ok: true, version: null });
+});
+
+/* ---------------------------------------------------------------------
+   El hook y las pantallas, con React aislado
+   --------------------------------------------------------------------- */
+const tema = { C: new Proxy({}, { get: (_, c) => `#${String(c)}` }), F: new Proxy({}, { get: (_, c) => String(c) }),
+  T: new Proxy({}, { get: () => ({}) }), E: { e2: {} }, R: { s: 8, m: 12, l: 16, xl: 24, p: 999 },
+  UI: { margen: 16, tactil: 48, boton: 48 }, pulsado: () => ({}) };
+function nodos(arbol) {
+  if (arbol == null || typeof arbol === 'boolean') return [];
+  if (Array.isArray(arbol)) return arbol.flatMap(nodos);
+  if (typeof arbol !== 'object') return [arbol];
+  return [arbol, ...nodos(arbol.children), ...nodos(arbol.props?.children)];
+}
+const textos = (arbol) => nodos(arbol).filter((x) => typeof x === 'string' || typeof x === 'number').map(String);
+const porId = (arbol, id) => nodos(arbol).find((x) => x?.props?.testID === id);
+const deTipo = (arbol, tipo) => nodos(arbol).filter((x) => x?.type === tipo);
+
+function crearReact() {
+  const slots = [], efectos = [], pendientes = [];
+  let indice = 0, cambiado = false;
+  const react = {
+    createElement(tipo, props, ...children) {
+      if (typeof tipo === 'function') return tipo({ ...props, children: children.length > 1 ? children : children[0] });
+      return { type: tipo, props: props || {}, children };
+    },
+    Fragment: 'Fragment',
+    forwardRef: (fn) => (props) => fn(props, null),
+    useSyncExternalStore: (_s, leerEstado) => leerEstado(),
+    useState(inicial) {
+      const i = indice++;
+      if (!Object.hasOwn(slots, i)) slots[i] = typeof inicial === 'function' ? inicial() : inicial;
+      return [slots[i], (valor) => {
+        const nuevo = typeof valor === 'function' ? valor(slots[i]) : valor;
+        if (!Object.is(slots[i], nuevo)) { slots[i] = nuevo; cambiado = true; }
+      }];
+    },
+    useRef(inicial) {
+      const i = indice++;
+      if (!Object.hasOwn(slots, i)) slots[i] = { current: inicial };
+      return slots[i];
+    },
+    useEffect(fn, deps) {
+      const i = indice++;
+      if (!efectos[i] || !deps || deps.some((v, j) => !Object.is(v, efectos[i].deps[j]))) {
+        pendientes.push(() => { efectos[i]?.limpiar?.(); efectos[i] = { deps, limpiar: fn() }; });
+      }
+    },
+  };
+  return {
+    react,
+    pintar(render) {
+      for (let vueltas = 0; vueltas < 20; vueltas++) {
+        indice = 0; cambiado = false;
+        const salida = render();
+        while (pendientes.length) pendientes.shift()();
+        if (!cambiado) return salida;
+      }
+      throw new Error('el componente no se estabiliza');
+    },
+    desmontar() { for (const e of efectos) e?.limpiar?.(); },
+  };
+}
+function cargarComponente(react) {
+  const absoluto = path.join(RAIZ, 'componentes', 'NovedadesRwadar.js');
+  const original = Module._load, extension = Module._extensions['.js'];
+  const nativo = { StyleSheet: { create: (s) => s }, Modal: 'Modal' };
+  for (const tipo of ['Text', 'View', 'Pressable', 'ScrollView']) nativo[tipo] = tipo;
+  const tactos = [];
+  Module._load = function (pedido, padre, principal) {
+    if (padre?.filename === absoluto) {
+      if (pedido === './Idioma') return soporteIdioma(react, nativo);
+      if (pedido === 'react') return react;
+      if (pedido === 'react-native') return nativo;
+      if (pedido === 'react-native-safe-area-context') return { SafeAreaProvider: 'SafeAreaProvider', SafeAreaView: 'SafeAreaView' };
+      if (pedido === 'react-native-svg') return { __esModule: true, default: 'Svg', Path: 'Path' };
+      if (pedido === './Navegacion') return { Icono: () => null };
+      if (pedido === '../lib/tema') return tema;
+      if (pedido === '../lib/tacto') return { tacto: { abrir() { tactos.push('abrir'); }, eleccion() { tactos.push('eleccion'); } } };
+      if (pedido === '../lib/novedades-rwadar') return n;
+    }
+    return original.call(this, pedido, padre, principal);
+  };
+  Module._extensions['.js'] = function (modulo, ruta) {
+    if (ruta !== absoluto) return extension(modulo, ruta);
+    const { code } = babel.transformSync(fs.readFileSync(ruta, 'utf8'), { filename: ruta, babelrc: false, configFile: false, plugins: [jsx, commonjs] });
+    modulo._compile(code, ruta);
+  };
+  delete require.cache[absoluto];
+  try { return { modulo: require(absoluto), tactos }; } finally { Module._load = original; Module._extensions['.js'] = extension; }
+}
+
+/* El hook, como lo usa App: cada «arranque» es un hook nuevo con su almacén. */
+function arrancar({ vista = { ok: true, version: null }, cargar = async () => ({ datos: n.RESPALDO, origen: 'respaldo' }), listo = true } = {}) {
+  const h = crearReact();
+  const { modulo } = cargarComponente(h.react);
+  const marcadas = [];
+  const estado = { listo };
+  const pintar = () => h.pintar(() => modulo.useNovedadesRwadar({ listo: estado.listo, esperaMs: 0, cargar,
+    leerVista: typeof vista === 'function' ? vista : async () => vista, marcarVista: async (v) => { marcadas.push(v); return true; } }));
+  return {
+    marcadas, estado, pintar, desmontar: h.desmontar,
+    async asentar() { let s; for (let i = 0; i < 6; i++) { s = pintar(); await esperar(); } return pintar(); },
+  };
+}
+
+test('novedades · la ventana sale una vez por versión al abrir la app, cuando ya se ve Inicio', async () => {
+  const app = arrancar();
+  let s = await app.asentar();
+  assert.equal(s.ventana, true, 'sale');
+  assert.equal(s.detalle, false);
+  assert.equal(s.datos.version, '2026-11-12');
+  // «Entendido» la cierra y guarda la versión vista.
+  s.entendido();
+  s = await app.asentar();
+  assert.equal(s.ventana, false);
+  assert.deepEqual(app.marcadas, ['2026-11-12']);
+  // En la misma sesión no vuelve a salir.
+  s = await app.asentar();
+  assert.equal(s.ventana, false);
+  app.desmontar();
+  // Al volver a abrir la app con esa versión vista, tampoco.
+  const otra = arrancar({ vista: { ok: true, version: '2026-11-12' } });
+  assert.equal((await otra.asentar()).ventana, false);
+  assert.deepEqual(otra.marcadas, []);
+  otra.desmontar();
+  // Con una versión nueva en la web, sí.
+  const mas = arrancar({ vista: { ok: true, version: '2026-11-12' }, cargar: async () => ({ datos: n.validarNovedadesProducto(nueva()), origen: 'web' }) });
+  s = await mas.asentar();
+  assert.equal(s.ventana, true);
+  assert.equal(s.datos.version, '2026-11-20');
+  mas.desmontar();
+});
+
+test('novedades · no sale encima de otra cosa: espera a que se vea Inicio (acceso, bloqueo, carga, fichas o explicador)', async () => {
+  const app = arrancar({ listo: false });
+  let s = await app.asentar();
+  assert.equal(s.ventana, false, 'con otra pantalla o diálogo delante, espera');
+  app.estado.listo = true;
+  s = await app.asentar();
+  assert.equal(s.ventana, true, 'en cuanto Inicio queda libre, sale');
+  app.desmontar();
+  // Mientras se lee lo visto o se descarga, tampoco sale.
+  let soltar;
+  const lenta = arrancar({ vista: () => new Promise((r) => { soltar = r; }) });
+  assert.equal((await lenta.asentar()).ventana, false);
+  soltar({ ok: true, version: null });
+  assert.equal((await lenta.asentar()).ventana, true);
+  lenta.desmontar();
+});
+
+test('novedades · «Ver en detalle» abre el detalle y cuenta como vista; desde Perfil se abre igual', async () => {
+  const app = arrancar();
+  let s = await app.asentar();
+  assert.equal(s.ventana, true);
+  s.verDetalle();
+  s = await app.asentar();
+  assert.equal(s.ventana, false);
+  assert.equal(s.detalle, true);
+  assert.deepEqual(app.marcadas, ['2026-11-12']);
+  s.cerrarDetalle();
+  s = await app.asentar();
+  assert.equal(s.detalle, false);
+  assert.equal(s.ventana, false, 'cerrar el detalle no vuelve a abrir la ventana');
+  app.desmontar();
+  // Desde Perfil, aunque ya se hayan visto, y antes de que salga sola.
+  const perfil = arrancar({ vista: { ok: true, version: '2026-11-12' } });
+  s = await perfil.asentar();
+  s.verDetalle();
+  s = await perfil.asentar();
+  assert.equal(s.detalle, true);
+  assert.equal(s.ventana, false);
+  perfil.desmontar();
+});
+
+test('novedades · sin red sale la copia incluida; un JSON malo de la web se ignora; sin poder leer lo visto, no sale sola', async () => {
+  const sinRed = arrancar({ cargar: () => n.cargarNovedadesProducto({ fetchImpl: async () => { throw new TypeError('Network request failed'); } }) });
+  let s = await sinRed.asentar();
+  assert.equal(s.ventana, true);
+  assert.deepEqual(s.datos, n.RESPALDO);
+  sinRed.desmontar();
+
+  const malo = copia(NOVEDADES_PRODUCTO); malo.version = '2026-12-01'; malo.resumen[0].texto = '<img src=x onerror=alert(1)>';
+  const conMalo = arrancar({ cargar: () => n.cargarNovedadesProducto({ fetchImpl: async () => respuesta(JSON.stringify(malo)) }) });
+  s = await conMalo.asentar();
+  assert.equal(s.datos.version, '2026-11-12', 'se queda con la copia incluida');
+  assert.ok(!JSON.stringify(s.datos).includes('onerror'));
+  conMalo.desmontar();
+
+  // Una carga que falla del todo tampoco rompe: queda la copia incluida.
+  const rota = arrancar({ cargar: async () => { throw new Error('inesperado'); } });
+  s = await rota.asentar();
+  assert.equal(s.ventana, true);
+  assert.deepEqual(s.datos, n.RESPALDO);
+  rota.desmontar();
+
+  const sinAlmacen = arrancar({ vista: { ok: false, version: null } });
+  s = await sinAlmacen.asentar();
+  assert.equal(s.ventana, false, 'no se puede prometer «una vez»: no sale sola');
+  s.verDetalle();
+  assert.equal((await sinAlmacen.asentar()).detalle, true, 'sigue en Perfil');
+  sinAlmacen.desmontar();
+  const lecturaRota = arrancar({ vista: async () => { throw new Error('bloqueado'); } });
+  assert.equal((await lecturaRota.asentar()).ventana, false);
+  lecturaRota.desmontar();
+});
+
+function pantalla(componente, props) {
+  const h = crearReact();
+  const { modulo, tactos } = cargarComponente(h.react);
+  return { modulo, tactos, arbol: h.pintar(() => modulo[componente](props)) };
+}
+
+test('novedades · la ventana: diálogo accesible con el título, los puntos (icono y una línea) y «Ver en detalle» y «Entendido»', () => {
+  const llamadas = [];
+  const { arbol, tactos } = pantalla('VentanaNovedades', { visible: true, datos: n.RESPALDO,
+    onDetalle: () => llamadas.push('detalle'), onEntendido: () => llamadas.push('entendido') });
+  const [modal] = deTipo(arbol, 'Modal');
+  assert.equal(modal.props.visible, true);
+  assert.equal(modal.props.transparent, true);
+  const dialogo = porId(arbol, 'novedadesVentana');
+  assert.equal(dialogo.props.role, 'dialog');
+  assert.equal(dialogo.props['aria-modal'], true);
+  assert.equal(dialogo.props.accessibilityViewIsModal, true);
+  assert.equal(dialogo.props.accessibilityLabel, 'Novedades de RWAdar');
+  const cabecera = nodos(arbol).find((x) => x?.props?.accessibilityRole === 'header');
+  assert.deepEqual(textos(cabecera), ['Novedades de RWAdar']);
+  assert.ok(textos(arbol).includes('12 de noviembre de 2026'));
+  for (const p of n.RESPALDO.resumen) {
+    const punto = porId(arbol, `novedadPunto-${p.id}`);
+    assert.ok(punto, `falta el punto ${p.id}`);
+    assert.equal(punto.props.accessible, true);
+    assert.equal(punto.props.accessibilityLabel, `${p.titulo}. ${p.texto}`, 'el lector de pantalla lo lee de una vez');
+    assert.deepEqual(textos(punto), [p.titulo, p.texto]);
+    assert.equal(deTipo(punto, 'Svg').length, 1, 'con su icono');
+    assert.equal(deTipo(punto, 'Svg')[0].props.accessibilityElementsHidden, true, 'el icono no se lee');
+  }
+  const detalle = porId(arbol, 'novedadesVerDetalle'), entendido = porId(arbol, 'novedadesEntendido');
+  assert.equal(detalle.props.accessibilityRole, 'button');
+  assert.equal(detalle.props.accessibilityLabel, 'Ver en detalle');
+  assert.deepEqual(textos(detalle), ['Ver en detalle']);
+  assert.equal(entendido.props.accessibilityLabel, 'Entendido');
+  assert.deepEqual(textos(entendido), ['Entendido']);
+  detalle.props.onPress(); entendido.props.onPress();
+  // Atrás en Android y Escape en la web cierran como «Entendido».
+  modal.props.onRequestClose();
+  assert.deepEqual(llamadas, ['detalle', 'entendido', 'entendido']);
+  assert.deepEqual(tactos, ['abrir', 'eleccion']);
+  // Oculta, no pinta nada dentro.
+  const oculta = pantalla('VentanaNovedades', { visible: false, datos: n.RESPALDO }).arbol;
+  assert.equal(deTipo(oculta, 'Modal')[0].props.visible, false);
+  assert.equal(porId(oculta, 'novedadesVentana'), undefined);
+});
+
+test('novedades · el detalle: cada sección con sus pasos numerados, el botón a Perfil › Avisos y las anteriores en la web', () => {
+  const llamadas = [];
+  const { arbol } = pantalla('PantallaNovedades', { visible: true, datos: n.RESPALDO,
+    onCerrar: () => llamadas.push('cerrar'), onIrAvisos: () => llamadas.push('avisos'), onHistorial: () => llamadas.push('web') });
+  const [modal] = deTipo(arbol, 'Modal');
+  assert.equal(modal.props.presentationStyle, 'fullScreen');
+  const todo = textos(arbol);
+  for (const s of n.RESPALDO.detalle) {
+    const seccion = porId(arbol, `novedadSeccion-${s.id}`);
+    assert.ok(seccion, s.id);
+    const [tit] = nodos(seccion).filter((x) => x?.props?.accessibilityRole === 'header');
+    assert.deepEqual(textos(tit), [s.titulo]);
+    for (const p of s.parrafos) assert.ok(todo.includes(p), p);
+    s.pasos.forEach((p, i) => {
+      assert.ok(nodos(seccion).some((x) => x?.props?.accessibilityLabel === `Paso ${i + 1}: ${p}`), `paso ${i + 1} de ${s.id}`);
+    });
+  }
+  // El botón a Perfil › Avisos va en la sección de los avisos, una sola vez.
+  const avisos = porId(arbol, `novedadSeccion-${'avisos-movil'}`);
+  assert.ok(porId(avisos, 'novedadesBotonAvisos'));
+  assert.equal(nodos(arbol).filter((x) => x?.props?.testID === 'novedadesBotonAvisos').length, 1);
+  assert.ok(todo.includes('Para recibir los avisos en el móvil, actívalos en Perfil › Avisos.'));
+  porId(arbol, 'novedadesBotonAvisos').props.onPress();
+  const historial = porId(arbol, 'novedadesHistorial');
+  assert.equal(historial.props.accessibilityRole, 'link');
+  assert.deepEqual(textos(historial), ['Todas las novedades anteriores, en la web']);
+  historial.props.onPress();
+  assert.equal(porId(arbol, 'novedadesVolver').props.accessibilityLabel, 'Volver');
+  porId(arbol, 'novedadesVolver').props.onPress();
+  porId(arbol, 'novedadesCerrar').props.onPress();
+  modal.props.onRequestClose();
+  assert.deepEqual(llamadas, ['avisos', 'web', 'cerrar', 'cerrar', 'cerrar']);
+
+  // Si la sección de los avisos cambia de id, el botón sigue estando, al final.
+  const otra = copia(NOVEDADES_PRODUCTO);
+  otra.detalle[0].id = 'notificaciones';
+  const sinSeccion = pantalla('PantallaNovedades', { visible: true, datos: n.validarNovedadesProducto(otra) }).arbol;
+  assert.equal(nodos(sinSeccion).filter((x) => x?.props?.testID === 'novedadesBotonAvisos').length, 1);
+  assert.equal(porId(porId(sinSeccion, 'novedadSeccion-notificaciones'), 'novedadesBotonAvisos'), undefined);
+});
+
+test('novedades · en inglés: el contenido sale de su «en» y los botones del diccionario común (el mismo que la web)', async () => {
+  await idioma.cambiarIdioma('en');
+  try {
+    const ventana = pantalla('VentanaNovedades', { visible: true, datos: n.RESPALDO }).arbol;
+    const v = textos(ventana);
+    assert.ok(v.includes(n.RESPALDO.en.titulo));
+    assert.ok(v.includes('12 November 2026'));
+    for (const p of n.RESPALDO.resumen) { assert.ok(v.includes(p.en.titulo), p.en.titulo); assert.ok(v.includes(p.en.texto), p.en.texto); }
+    assert.ok(v.includes('See details') && v.includes('Got it'));
+    assert.equal(porId(ventana, 'novedadesVerDetalle').props.accessibilityLabel, 'See details');
+    assert.equal(porId(ventana, 'novedadesVerDetalle').props.accessibilityHint, 'Opens the news explained step by step');
+    assert.equal(porId(ventana, 'novedadesEntendido').props.accessibilityHint, 'Closes this window. You can see it again in Profile.');
+    assert.equal(porId(ventana, 'novedadesVentana').props.accessibilityLanguage, 'en');
+    assert.ok(!v.some((t) => /[ñáéíóú¿]|Novedades|Entendido|detalle/.test(t)), `queda castellano: ${v.filter((t) => /[ñáéíóú¿]|Novedades|Entendido|detalle/.test(t))}`);
+
+    const detalle = pantalla('PantallaNovedades', { visible: true, datos: n.RESPALDO }).arbol;
+    const d = textos(detalle);
+    for (const s of n.RESPALDO.detalle) {
+      assert.ok(d.includes(s.en.titulo), s.en.titulo);
+      for (const p of s.en.parrafos) assert.ok(d.includes(p), p);
+      s.en.pasos.forEach((p, i) => assert.ok(nodos(detalle).some((x) => x?.props?.accessibilityLabel === `Step ${i + 1}: ${p}`)));
+    }
+    for (const t of ['To get alerts on your phone, turn them on in Profile › Alerts.', 'Go to Profile › Alerts', 'All earlier news, on the website', 'Got it'])
+      assert.ok(d.includes(t), t);
+    assert.equal(porId(detalle, 'novedadesVolver').props.accessibilityLabel, 'Back');
+  } finally { await idioma.cambiarIdioma('es'); }
+  // Todas las frases fijas de la interfaz tienen su inglés, y la web lleva el mismo diccionario.
+  const fuente = leer('componentes', 'NovedadesRwadar.js');
+  const fijas = ['Ver en detalle', 'Entendido', 'Abre las novedades explicadas paso a paso', 'Cierra esta ventana. Puedes volver a verla en Perfil.',
+    'Para recibir los avisos en el móvil, actívalos en Perfil › Avisos.', 'Ir a Perfil › Avisos', 'Todas las novedades anteriores, en la web', 'Volver'];
+  for (const t of fijas) { assert.ok(fuente.includes(t), `ya no está: ${t}`); assert.ok(Object.hasOwn(en, t), `sin traducción: ${t}`); }
+  assert.equal(leer('lib', 'idioma-en.js'), fs.readFileSync(path.join(RAIZ, '../rwadar-site/assets/idioma-en-20261022.js'), 'utf8'));
+});
+
+/* ---------------------------------------------------------------------
+   Dónde va en la app (App.js) y en la privacidad
+   --------------------------------------------------------------------- */
+test('novedades · App: la ventana espera a Inicio sin nada encima, el detalle lleva a Perfil › Avisos y Perfil las abre', () => {
+  const app = leer('App.js');
+  const llamada = app.slice(app.indexOf('const novedadesRwadar = useNovedadesRwadar('), app.indexOf('const refrescar = async'));
+  for (const x of ["pestana === 'inicio'", '!explicando', '!privacidad', '!abierta', '!ofertaAbierta', '!slugAvisoPendiente', '!destinoAvisoPendiente',
+    'pantallaPrincipal', 'leerVista: leerNovedadesVistas', 'marcarVista: marcarNovedadesVistas']) assert.ok(llamada.includes(x), x);
+  const principal = app.slice(app.indexOf('const pantallaPrincipal ='), app.indexOf('const novedadesRwadar ='));
+  for (const x of ['fuentesListas', '!cargando', 'usuarioAdmitido', 'restaurandoAcceso', "estadoCuenta?.estado === 'restaurando'", 'errorRestauracion',
+    'seguridad.preparando', 'seguridad.bloqueado']) assert.ok(principal.includes(x), x);
+  // El hook va antes de cualquier return (reglas de los hooks).
+  assert.ok(app.indexOf('useNovedadesRwadar(') < app.indexOf('if (CUENTA_REMOTA_ACTIVA && (restaurandoAcceso'));
+  assert.match(app, /<VentanaNovedades visible=\{novedadesRwadar\.ventana\} datos=\{novedadesRwadar\.datos\}\s*onDetalle=\{novedadesRwadar\.verDetalle\} onEntendido=\{novedadesRwadar\.entendido\} \/>/);
+  assert.match(app, /<PantallaNovedades visible=\{novedadesRwadar\.detalle\}/);
+  assert.match(app, /onIrAvisos=\{\(\) => \{ novedadesRwadar\.cerrarDetalle\(\); irAAvisosPerfil\(\); \}\}/);
+  assert.match(app, /onHistorial=\{\(\) => abrirEnlace\(URL_NOVEDADES\)\}/);
+  // Perfil: «Novedades de RWAdar» abre el detalle en la app, con lo primero de la lista debajo.
+  assert.match(app, /titulo="Novedades de RWAdar"\s*subtitulo=\{ultimaNovedad \|\| 'Lo último de la web y la app'\}\s*onPress=\{onNovedades\}/);
+  assert.match(app, /onNovedades=\{\(\) => \{ tacto\.abrir\(\); novedadesRwadar\.verDetalle\(\); \}\}/);
+  assert.match(app, /ultimaNovedad=\{textosNovedades\(novedadesRwadar\.datos, idioma\)\.resumen\[0\]\?\.titulo \|\| ''\}/);
+  // irAAvisosPerfil baja hasta Avisos en Perfil.
+  assert.match(app, /const irAAvisosPerfil = \(\) => \{[\s\S]{0,200}setEnfocarAvisosPerfil\(true\);\s*setPestana\('perfil'\);/);
+});
+
+test('novedades · privacidad de la app: la marca de «ya visto» se explica, sin datos personales, y se borra con los datos del dispositivo', () => {
+  const app = leer('App.js');
+  const frase = 'Novedades de RWAdar: para no enseñarte dos veces la misma ventana de novedades, este dispositivo guarda qué versión has visto (por ejemplo, 2026-11-12). No es un dato personal, no se envía a ningún sitio y se borra con «Borrar datos del dispositivo». Las novedades se descargan de la web de RWAdar sin datos de tu cuenta.';
+  assert.ok(app.includes(frase));
+  assert.ok(Object.hasOwn(en, frase));
+  const datos = leer('lib', 'datos.js');
+  assert.match(datos, /const NOVEDADES_VISTAS = `\$\{PREFIJO\}novedades\.vista\.v1`;\s*CLAVES_LOCALES\.push\(NOVEDADES_VISTAS\);/);
+  // El módulo no lee nada de la cuenta ni manda cookies.
+  const modulo = leer('lib', 'novedades-rwadar.js');
+  const codigo = modulo.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+  assert.doesNotMatch(codigo, /supabase|AsyncStorage|Authorization|cookie|require\('\.\/(?:datos|cuentas)/i);
+  assert.match(modulo, /credentials: 'omit'/);
+});
