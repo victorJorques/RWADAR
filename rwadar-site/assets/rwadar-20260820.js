@@ -5131,11 +5131,41 @@ const Cuenta = (function(){
   closeAll();
  }
 
+ /* --- plazos y fallos de las llamadas de avisos (12/11/2026) ---------
+    Víctor, en su iPhone: «No funciona lo de activar notificaciones». Si la
+    base no contestaba (o contestaba «sin sesión»), «Notificaciones en este
+    móvil» se quedaba en «Comprobando…» con el botón apagado. Ahora cada
+    llamada tiene plazo y el fallo se dice: sin sesión, «vuelve a entrar»
+    con su botón; por la red o la base, «Reintentar». */
+ const PLAZO_AVISOS_MS=15000;
+ const TEXTO_SESION_CADUCADA='Tu sesión ha caducado: vuelve a entrar.';
+ function conPlazo(promesa,ms=PLAZO_AVISOS_MS){
+  let reloj;
+  const corte=new Promise((_,mal)=>{reloj=setTimeout(()=>{
+   const e=new Error('La conexión ha tardado demasiado. Vuelve a intentarlo.');e.code='plazo';e.reintentable=true;mal(e);
+  },ms);});
+  return Promise.race([Promise.resolve(promesa),corte]).finally(()=>clearTimeout(reloj));
+ }
+ /* «Sin sesión»: un 401, el sin_sesion de la app o lo que dice el puente
+    (assets/acceso-privado.js) cuando ya no hay cuenta, que llega sin estado.
+    Sus fallos pasajeros llevan reintentable y no cuentan. */
+ function falloDeSesion(e){
+  if(!e||e.code==='cuenta_cancelada')return false;
+  if(e.status===401||e.code==='sin_sesion'||e.message==='sin_sesion')return true;
+  return e.reintentable!==true&&e.status===undefined&&/Entra para gestionar tu cuenta|Vuelve a entrar|sesión (?:ha caducado|no válida)/i.test(String(e.message||''));
+ }
+ function falloDeRed(e){
+  if(!e)return false;
+  if(e.code==='plazo'||e.reintentable===true||e.status===0||e.status===408||e.status===429||e.status>=500)return true;
+  return e.name==='TypeError'&&/fetch|network|load/i.test(String(e.message||''))||/conexión|ha tardado/i.test(String(e.message||''));
+ }
+
  /* --- avisos de novedades (solo con AVISOS_NOVEDADES_DISPONIBLES) --- */
  /* El permiso vive en la base (rpc/estado_mis_avisos y
     rpc/configurar_avisos_novedades, por /api/acceso/datos). Aquí solo se
     guarda en memoria lo último que dijo la base para esta cuenta. */
- let novedades=null,novedadesCuenta=-1,novedadesError=false,novedadesGuardando=false,novedadesDeseado=false;
+ /* novedadesError: '' o por qué no se ha podido leer ('sesion' o 'red'). */
+ let novedades=null,novedadesCuenta=-1,novedadesError='',novedadesGuardando=false,novedadesDeseado=false;
  const novedadesActivas=()=>!!novedades&&novedades.novedades===true&&novedades.version===novedades.version_vigente;
  function estadoNovedades(j){
   if(!j||typeof j!=='object'||Array.isArray(j)||typeof j.novedades!=='boolean'||typeof j.version_vigente!=='string')
@@ -5145,6 +5175,7 @@ const Cuenta = (function(){
  }
  function textoNovedades(){
   if(!identidadConfirmada||!ses)return 'Entra en tu cuenta para activarlos o desactivarlos.';
+  if(novedadesError==='sesion')return TEXTO_SESION_CADUCADA;
   if(novedadesError)return 'No se ha podido comprobar tu preferencia. Recarga la página para reintentarlo.';
   if(!novedades)return 'Comprobando tu preferencia…';
   if(novedades.version_vigente!==VERSION_AVISOS_NOVEDADES)return 'El texto de los avisos ha cambiado. Recarga la página para verlo.';
@@ -5185,14 +5216,15 @@ const Cuenta = (function(){
  async function cargarNovedades(){
   if(!AVISOS_NOVEDADES_DISPONIBLES||!identidadConfirmada||!ses||novedadesCuenta===versionCuenta)return;
   const cuenta=versionCuenta;
-  novedadesCuenta=cuenta;novedades=null;novedadesError=false;novedadesGuardando=false;pintarNovedades();
+  novedadesCuenta=cuenta;novedades=null;novedadesError='';novedadesGuardando=false;pintarNovedades();
   try{
-   const j=estadoNovedades(await rest('/rpc/estado_mis_avisos',{method:'POST',body:'{}'},cuenta));
+   const j=estadoNovedades(await conPlazo(rest('/rpc/estado_mis_avisos',{method:'POST',body:'{}'},cuenta)));
    if(!vigente(cuenta))return;
    novedades=j;
   }catch(e){
    if(!vigente(cuenta))return;
-   novedadesError=true;novedadesCuenta=-1;
+   /* Sin respuesta no hay «Comprobando…» para siempre: ni aquí ni en las notificaciones. */
+   novedadesError=falloDeSesion(e)?'sesion':'red';novedadesCuenta=-1;
   }
   pintarNovedades();
  }
@@ -5202,8 +5234,8 @@ const Cuenta = (function(){
   const cuenta=versionCuenta,deseado=o.checked===true,idioma=idiomaNovedades(o);
   novedadesGuardando=true;novedadesDeseado=deseado;pintarNovedades();
   try{
-   const j=estadoNovedades(await rest('/rpc/configurar_avisos_novedades',{method:'POST',body:JSON.stringify({
-    p_activar:deseado,p_version:VERSION_AVISOS_NOVEDADES,p_canal:'web',p_idioma:idioma})},cuenta));
+   const j=estadoNovedades(await conPlazo(rest('/rpc/configurar_avisos_novedades',{method:'POST',body:JSON.stringify({
+    p_activar:deseado,p_version:VERSION_AVISOS_NOVEDADES,p_canal:'web',p_idioma:idioma})},cuenta)));
    if(!vigente(cuenta))return;
    novedades=j;
    if(novedadesActivas()!==deseado)throw new Error('Cambio no confirmado.');
@@ -5443,7 +5475,7 @@ const Cuenta = (function(){
     rpc/mi_aviso_webpush_registrado, por /api/acceso/datos. La suscripción
     (dirección del servicio de push y sus claves) es lo único que sale del
     navegador; cada notificación llega cifrada y la descifra el navegador. */
- let push={estado:'',cuenta:-1,ocupado:false,mensaje:'',error:false};
+ let push={estado:'',cuenta:-1,ocupado:false,mensaje:'',error:false,fallo:''};
  const CLAVE_VAPID=/^[A-Za-z0-9_-]{87}$/;
  /* Primera capa junto al botón, también con las notificaciones activadas:
     el servicio del navegador puede estar fuera de la UE y la salida de no
@@ -5498,14 +5530,19 @@ const Cuenta = (function(){
    typeof j.keys.p256dh!=='string'||typeof j.keys.auth!=='string')throw new Error('Suscripción no válida.');
   return {p_endpoint:j.endpoint,p_p256dh:j.keys.p256dh,p_auth:j.keys.auth};
  }
- /* registrado: true o false si se sabe; undefined mientras se comprueba. */
- function estadoPush(registrado){
+ /* registrado: true o false si se sabe; undefined mientras se comprueba.
+    fallo: '' o por qué no se ha podido comprobar ('sesion' o 'red'). */
+ function estadoPush(registrado,fallo=''){
   if(!esMovilOTableta())return 'escritorio';
   if(esIos()&&!instalada())return 'instalar-ios';
   if(!soportaPush())return 'sin-soporte';
   /* En Android sin instalar no hay icono de RWAdar: los permisos, en Chrome. */
   if(permisoNotificaciones()==='denied')return esIos()||instalada()?'denegado':'denegado-navegador';
+  /* Sin sesión no se puede activar ni desactivar nada: se dice y se ofrece entrar. */
+  if(fallo==='sesion'||novedadesError==='sesion')return 'sesion-caducada';
   if(registrado===true)return 'activo';
+  /* La base no ha contestado (o no a tiempo): se dice, con «Reintentar». */
+  if(fallo||novedadesError)return 'error-comprobar';
   if(!novedades||registrado===undefined)return 'comprobando';
   /* Sin clave VAPID no hay nada que activar. Con el envío apagado, sí: se
      registra sin enviar nada y el texto dice que llegarán cuando empecemos. */
@@ -5520,18 +5557,41 @@ const Cuenta = (function(){
   'denegado':'Has bloqueado las notificaciones de RWAdar en este navegador. Para permitirlas: en iPhone, Ajustes › Notificaciones › RWAdar; en Android, mantén pulsado el icono de RWAdar › Información de la aplicación › Notificaciones. Después vuelve aquí.',
   'denegado-navegador':'Has bloqueado las notificaciones de RWAdar en este navegador. Para permitirlas, toca el icono que hay a la izquierda de la dirección › Permisos › Notificaciones (en Chrome también: Ajustes › Configuración de sitios › Notificaciones). Después vuelve aquí.',
   'comprobando':'Comprobando las notificaciones de este móvil…',
+  'sesion-caducada':'Tu sesión ha caducado: vuelve a entrar.',
+  'error-comprobar':'No hemos podido comprobar las notificaciones de este móvil. Revisa la conexión y pulsa Reintentar.',
   'pendiente':'Las notificaciones en este móvil todavía no están disponibles; te lo diremos aquí cuando empecemos a enviarlas. Mientras tanto, verás los avisos en la campana.',
   'falta-permiso':'Para recibirlas, activa antes «Avisos de novedades».',
   'disponible':'Al activarlas, el navegador te pedirá permiso. Guardamos en tu cuenta la dirección de entrega de este navegador y sus claves; las notificaciones viajan cifradas por el servicio de Apple, Google, Mozilla o Microsoft, según el navegador. Se borra al desactivarlas, al cerrar sesión o al borrar la cuenta.',
   'disponible-pausa':'Todavía no hemos empezado a enviarlas: puedes activarlas ya y te llegarán cuando empecemos. Al activarlas, el navegador te pedirá permiso. Guardamos en tu cuenta la dirección de entrega de este navegador y sus claves; las notificaciones viajan cifradas por el servicio de Apple, Google, Mozilla o Microsoft, según el navegador. Se borra al desactivarlas, al cerrar sesión o al borrar la cuenta.',
+  'activo':'Activadas en este móvil.',
   'activo-novedades':'Activadas: este móvil recibe las notificaciones de RWAdar.',
   'activo-servicio':'Con «Avisos de novedades» desactivado, este móvil no recibe notificaciones de RWAdar. Actívalo para volver a recibirlas, o desactívalas aquí.',
   'activo-pausa':'Activadas en este móvil. Ahora mismo no estamos enviando notificaciones: te llegarán en cuanto empecemos. Puedes desactivarlas aquí.'
  };
+ /* Por qué no se han podido activar, en llano; después se puede volver a intentar. */
+ const TEXTOS_ACTIVAR_PUSH={
+  'sesion':'Tu sesión ha caducado: vuelve a entrar para activarlas.',
+  'ios':'En iPhone y iPad solo se pueden activar con RWAdar en la pantalla de inicio: añádela y ábrela desde su icono.',
+  'navegador':'El navegador no ha dejado activarlas. Comprueba que las notificaciones de RWAdar están permitidas en los ajustes del móvil y vuelve a intentarlo.',
+  'red':'No hemos podido conectar para activarlas. Revisa la conexión y vuelve a intentarlo.',
+  'trabajador':'El navegador no ha terminado de preparar RWAdar. Cierra RWAdar del todo, vuelve a abrirla y prueba otra vez.',
+  'otro':'No se han podido activar las notificaciones en este móvil. Vuelve a intentarlo.'
+ };
+ /* fase: el paso de activarPush que ha fallado (permiso, clave, trabajador,
+    suscribir o registrar). «denegado»: el estado ya dice cómo permitirlas. */
+ function motivoActivarPush(e,fase){
+  if(falloDeSesion(e))return 'sesion';
+  const nombre=e&&e.name;
+  if(fase==='suscribir'&&nombre==='NotAllowedError')
+   return permisoNotificaciones()==='denied'?'denegado':esIos()&&!instalada()?'ios':'navegador';
+  if(fase==='trabajador'&&!falloDeRed(e))return 'trabajador';
+  if(falloDeRed(e)||(fase==='suscribir'&&(nombre==='AbortError'||nombre==='NetworkError')))return 'red';
+  return 'otro';
+ }
  function textoPush(){
   if(push.ocupado)return 'Un momento…';
   if(push.mensaje)return push.mensaje;
-  if(push.estado==='activo')return novedades&&!novedades.push_activo?TEXTOS_PUSH['activo-pausa']
+  if(push.estado==='activo')return !novedades?TEXTOS_PUSH['activo']:!novedades.push_activo?TEXTOS_PUSH['activo-pausa']
    :novedadesActivas()?TEXTOS_PUSH['activo-novedades']:TEXTOS_PUSH['activo-servicio'];
   if(push.estado==='disponible'&&novedades&&!novedades.push_activo)return TEXTOS_PUSH['disponible-pausa'];
   return TEXTOS_PUSH[push.estado]||'';
@@ -5540,16 +5600,21 @@ const Cuenta = (function(){
   if(!AVISOS_WEBPUSH_DISPONIBLE)return;
   const con=identidadConfirmada&&!!ses,propio=push.cuenta===versionCuenta&&!!push.estado;
   const estado=con?(propio?push.estado:estadoPush(undefined)):'';
+  const problema=estado==='sesion-caducada'||estado==='error-comprobar';
   for(const pre of ['perfil','pf']){
    const caja=$(pre+'Push');if(!caja)continue;
    caja.hidden=!con;
    const t=$(pre+'PushEstado'),act=$(pre+'PushActivar'),des=$(pre+'PushDesactivar'),pasos=$(pre+'PushPasos'),ver=$(pre+'PushInstalar');
-   if(t){t.textContent=con?(propio?textoPush():TEXTOS_PUSH[estado]||''):'';t.setAttribute('role',propio&&push.error?'alert':'status');}
+   if(t){t.textContent=con?(propio?textoPush():TEXTOS_PUSH[estado]||''):'';t.setAttribute('role',(propio&&push.error)||problema?'alert':'status');}
    if(pasos)pasos.hidden=estado!=='instalar-ios';
    if(ver)ver.hidden=!(estado==='instalar-ios'&&typeof window!=='undefined'&&typeof window.rwadarInstalarIphone==='function');
    if(act){act.hidden=!['disponible','pendiente','falta-permiso','comprobando'].includes(estado);
     act.disabled=(propio&&push.ocupado)||estado!=='disponible';}
    if(des){des.hidden=estado!=='activo';des.disabled=propio&&push.ocupado;}
+   /* Sin respuesta de la base: «Reintentar»; sin sesión: «Entrar de nuevo». */
+   const rei=$(pre+'PushReintentar'),ent=$(pre+'PushEntrar');
+   if(rei){rei.hidden=estado!=='error-comprobar';rei.disabled=propio&&push.ocupado;}
+   if(ent)ent.hidden=estado!=='sesion-caducada';
    /* Quién interviene en la entrega, junto al botón (activar o desactivar). */
    const quien=$(pre+'PushQuien');
    if(quien)quien.hidden=!(con&&(estado==='activo'||['disponible','pendiente','falta-permiso','comprobando'].includes(estado)));
@@ -5560,33 +5625,56 @@ const Cuenta = (function(){
   /* Ya comprobado (o comprobándose) para esta cuenta; volver a la pestaña lo reinicia. */
   if(push.cuenta===versionCuenta&&push.estado)return;
   const cuenta=versionCuenta,inicial=estadoPush(undefined);
-  push={estado:inicial,cuenta,ocupado:false,mensaje:'',error:false};
+  const actual=push={estado:inicial,cuenta,ocupado:false,mensaje:'',error:false,fallo:''};
   pintarPush();
   if(inicial!=='comprobando')return;
-  let registrado=false;
+  /* Red de seguridad: pase lo que pase, «Comprobando…» no dura más que el plazo. */
+  setTimeout(()=>{
+   if(push!==actual||!vigente(cuenta)||push.ocupado||push.estado!=='comprobando')return;
+   push.fallo='red';push.estado=estadoPush(undefined,'red');pintarPush();
+  },PLAZO_AVISOS_MS+5000);
+  let registrado=false,fallo='';
+  const anotar=e=>{if(fallo!=='sesion')fallo=falloDeSesion(e)?'sesion':'red';};
   /* La clave a la vez: sin ella no se ofrece «Activar» (no se pide permiso
-     para nada). Una válida ya leída no se vuelve a pedir. */
+     para nada). Una válida ya leída no se vuelve a pedir. Si falla por la red
+     se deja intentar (activarPush la vuelve a pedir); sin sesión, no. */
   const clave=clavePush.cuenta===cuenta&&typeof clavePush.valor==='string'?Promise.resolve()
-   :rest('/rpc/clave_publica_webpush',{method:'POST',body:'{}'},cuenta)
+   :conPlazo(rest('/rpc/clave_publica_webpush',{method:'POST',body:'{}'},cuenta))
     .then(k=>{if(vigente(cuenta))clavePush={cuenta,valor:typeof k==='string'&&CLAVE_VAPID.test(k)?k:null};})
-    .catch(()=>{if(vigente(cuenta))clavePush={cuenta,valor:undefined};});
+    .catch(e=>{if(!vigente(cuenta))return;clavePush={cuenta,valor:undefined};if(falloDeSesion(e))anotar(e);});
+  /* La suscripción de este navegador: si no se puede leer, se trata como que no hay. */
+  let sub=null;
   try{
-   const r=await navigator.serviceWorker.getRegistration('/');
-   const sub=r&&r.pushManager?await r.pushManager.getSubscription():null;
-   if(sub&&permisoNotificaciones()==='granted'){
-    const datos=datosSuscripcion(sub);
-    const j=await rest('/rpc/mi_aviso_webpush_registrado',{method:'POST',body:JSON.stringify({p_endpoint:datos.p_endpoint})},cuenta);
+   const r=await conPlazo(navigator.serviceWorker.getRegistration('/'));
+   sub=r&&r.pushManager?await conPlazo(r.pushManager.getSubscription()):null;
+  }catch(e){sub=null;}
+  if(!vigente(cuenta))return;
+  let datos=null;
+  if(sub&&permisoNotificaciones()==='granted'){try{datos=datosSuscripcion(sub);}catch(e){datos=null;}}
+  if(datos){
+   try{
+    const j=await conPlazo(rest('/rpc/mi_aviso_webpush_registrado',{method:'POST',body:JSON.stringify({p_endpoint:datos.p_endpoint})},cuenta));
     registrado=j===true;
     if(registrado&&vigente(cuenta))renovarPush(datos,cuenta);
-   }
-  }catch(e){if(!vigente(cuenta))return;}
+   }catch(e){if(!vigente(cuenta))return;anotar(e);}
+  }
   await clave;
-  if(!vigente(cuenta)||push.cuenta!==cuenta||push.ocupado)return;
-  /* Si la base aún no ha contestado lo de «Avisos de novedades», se espera a ella. */
-  push.registrado=registrado;
-  push.estado=estadoPush(novedades?registrado:undefined);
+  if(!vigente(cuenta)||push!==actual||push.ocupado)return;
+  /* Si la base aún no ha contestado lo de «Avisos de novedades», se espera a
+     ella (con su propio plazo, en cargarNovedades). */
+  push.registrado=fallo?undefined:registrado;push.fallo=fallo;
+  push.estado=estadoPush(novedades?push.registrado:undefined,fallo);
   pintarPush();
  }
+ /* «Reintentar»: vuelve a preguntar a la base por «Avisos de novedades» (si
+    falló) y por las notificaciones de este móvil. */
+ function reintentarPush(){
+  if(!AVISOS_WEBPUSH_DISPONIBLE||!identidadConfirmada||!ses||(push.cuenta===versionCuenta&&push.ocupado))return;
+  if(novedadesError)cargarNovedades().catch(()=>{});
+  push.cuenta=-1;cargarPush().catch(()=>{});
+ }
+ /* «Entrar de nuevo»: con el servidor de la web, a /acceso y de vuelta aquí. */
+ function entrarPush(){abrir('entrar',TEXTO_SESION_CADUCADA);}
  /* La base borra las suscripciones que llevan 180 días sin renovarse
     (webpush_limpiar, db/32) y volver a registrar la misma la renueva. Se hace
     al entrar con las notificaciones activas, como mucho cada 12 horas por
@@ -5598,10 +5686,11 @@ const Cuenta = (function(){
   rest('/rpc/registrar_aviso_webpush',{method:'POST',body:JSON.stringify(datos)},cuenta)
    .catch(()=>{if(pushRenovado.cuenta===cuenta)pushRenovado={cuenta:-1,el:0};});
  }
- /* Cuando llega el estado de «Avisos de novedades», el del móvil se recalcula. */
+ /* Cuando llega el estado de «Avisos de novedades», el del móvil se recalcula
+    (si ya se sabe lo de este móvil o si no se ha podido saber). */
  function recalcularPush(){
-  if(!AVISOS_WEBPUSH_DISPONIBLE||push.cuenta!==versionCuenta||push.ocupado||typeof push.registrado!=='boolean')return pintarPush();
-  push.estado=estadoPush(push.registrado);pintarPush();
+  if(!AVISOS_WEBPUSH_DISPONIBLE||push.cuenta!==versionCuenta||push.ocupado||(typeof push.registrado!=='boolean'&&!push.fallo))return pintarPush();
+  push.estado=estadoPush(push.registrado,push.fallo);pintarPush();
  }
  /* En el MISMO toque: iOS solo pide el permiso si se llama dentro del gesto,
     antes de cualquier espera. La clave se pide a la vez. */
@@ -5611,10 +5700,11 @@ const Cuenta = (function(){
   let permiso;
   try{permiso=permisoNotificaciones()==='granted'?Promise.resolve('granted'):Promise.resolve(Notification.requestPermission());}
   catch(e){permiso=Promise.resolve('default');}
-  const clave=rest('/rpc/clave_publica_webpush',{method:'POST',body:'{}'},cuenta).catch(()=>null);
-  push={estado:'disponible',cuenta,ocupado:true,mensaje:'',error:false,registrado:false};pintarPush();
+  /* Si la clave falla, se guarda el motivo para decirlo (sin sesión, sin red). */
+  const clave=conPlazo(rest('/rpc/clave_publica_webpush',{method:'POST',body:'{}'},cuenta)).then(k=>({k}),e=>({e}));
+  push={estado:'disponible',cuenta,ocupado:true,mensaje:'',error:false,registrado:false,fallo:''};pintarPush();
   (async()=>{
-   let resultado='',error=false;
+   let resultado='',error=false,fase='permiso';
    try{
     const p=await permiso;
     if(!vigente(cuenta))return;
@@ -5622,19 +5712,24 @@ const Cuenta = (function(){
      resultado=p==='denied'?'':'No has dado permiso. Puedes volver a intentarlo cuando quieras.';
      push.estado=estadoPush(false);return;
     }
-    const k=await clave;
+    fase='clave';
+    const {k,e}=await clave;
     if(!vigente(cuenta))return;
+    if(e)throw e;
     if(typeof k!=='string'||!CLAVE_VAPID.test(k)){clavePush={cuenta,valor:null};push.estado='pendiente';return;}
     clavePush={cuenta,valor:k};
+    fase='trabajador';
     const r=await registroTrabajador();
     /* Una suscripción anterior (otra cuenta, otra clave) no se reutiliza. */
+    fase='suscribir';
     const vieja=await r.pushManager.getSubscription();
     if(vieja)await vieja.unsubscribe().catch(()=>{});
-    const sub=await r.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:bytesClave(k)});
+    const sub=await conPlazo(r.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:bytesClave(k)}));
     if(!vigente(cuenta)){sub.unsubscribe().catch(()=>{});return;}
+    fase='registrar';
     let ok=false;
-    try{ok=(await rest('/rpc/registrar_aviso_webpush',{method:'POST',body:JSON.stringify(datosSuscripcion(sub))},cuenta))===true;}
-    catch(e){ok=false;}
+    try{ok=(await conPlazo(rest('/rpc/registrar_aviso_webpush',{method:'POST',body:JSON.stringify(datosSuscripcion(sub))},cuenta)))===true;}
+    catch(e){sub.unsubscribe().catch(()=>{});throw e;}
     if(!ok){sub.unsubscribe().catch(()=>{});throw new Error('registro');}
     push.estado='activo';push.registrado=true;pushRenovado={cuenta,el:Date.now()};
     resultado=novedades&&!novedades.push_activo?'Notificaciones activadas en este móvil. Te llegarán cuando empecemos a enviarlas.'
@@ -5644,8 +5739,10 @@ const Cuenta = (function(){
      icon:'/icono-192.png',tag:'rwadar-activadas',lang:enIngles()?'en':'es',data:{url:'/'}});}catch(e){}
    }catch(e){
     if(!vigente(cuenta))return;
-    error=true;resultado='No se han podido activar las notificaciones en este móvil. Vuelve a intentarlo.';
-    push.estado=estadoPush(false);
+    const motivo=motivoActivarPush(e,fase);
+    /* Denegado: el estado ya dice cómo permitirlas. Lo demás, en llano, y «Activar» sigue a mano. */
+    error=motivo!=='denegado';resultado=error?TEXTOS_ACTIVAR_PUSH[motivo]:'';
+    push.fallo=motivo==='sesion'?'sesion':'';push.estado=estadoPush(false,push.fallo);
    }finally{
     if(vigente(cuenta)&&push.cuenta===cuenta){push.ocupado=false;push.mensaje=resultado;push.error=error;pintarPush();if(resultado)aviso(resultado);}
    }
@@ -5660,7 +5757,7 @@ const Cuenta = (function(){
   if(!sub)return true;
   let ok=true;
   if(!soloLocal){
-   try{const j=await rest('/rpc/quitar_aviso_webpush',{method:'POST',body:JSON.stringify({p_endpoint:datosSuscripcion(sub).p_endpoint})},cuenta);ok=j===true||j===false;}
+   try{const j=await conPlazo(rest('/rpc/quitar_aviso_webpush',{method:'POST',body:JSON.stringify({p_endpoint:datosSuscripcion(sub).p_endpoint})},cuenta));ok=j===true||j===false;}
    catch(e){ok=false;}
   }
   /* Sin suscripción en el navegador, el servicio de push rechaza la dirección
@@ -5671,7 +5768,7 @@ const Cuenta = (function(){
  function desactivarPush(){
   if(!AVISOS_WEBPUSH_DISPONIBLE||!identidadConfirmada||!ses||(push.cuenta===versionCuenta&&push.ocupado))return;
   const cuenta=versionCuenta;
-  push={estado:'activo',cuenta,ocupado:true,mensaje:'',error:false,registrado:true};pintarPush();
+  push={estado:'activo',cuenta,ocupado:true,mensaje:'',error:false,registrado:true,fallo:''};pintarPush();
   soltarPush(cuenta).then(ok=>{
    if(!vigente(cuenta))return;
    push.registrado=false;push.estado=estadoPush(false);
@@ -5704,6 +5801,8 @@ const Cuenta = (function(){
    '<button type="button" class="avisos-push-boton" id="'+pre+'PushInstalar" data-push-instalar hidden>Ver cómo añadirla</button>'+
    '<button type="button" class="avisos-push-boton avisos-push-principal" id="'+pre+'PushActivar" data-push-activar hidden disabled>Activar notificaciones en este móvil</button>'+
    '<button type="button" class="avisos-push-boton" id="'+pre+'PushDesactivar" data-push-desactivar hidden>Desactivar las notificaciones de este móvil</button>'+
+   '<button type="button" class="avisos-push-boton avisos-push-principal" id="'+pre+'PushReintentar" data-push-reintentar hidden>Reintentar</button>'+
+   '<button type="button" class="avisos-push-boton avisos-push-principal" id="'+pre+'PushEntrar" data-push-entrar hidden>Entrar de nuevo</button>'+
    '</div><p class="perfil-nota avisos-push-quien" id="'+pre+'PushQuien" hidden>'+conEnlacePrivacidad(TEXTO_PUSH_QUIEN,'/privacidad#garantias-push')+'</p></div>';
  }
 
@@ -5747,11 +5846,11 @@ const Cuenta = (function(){
      habilitarlo aquí o en el móvil no habría forma de entrar. */
   if(accion){accion.disabled=false;accion.textContent=identidadConfirmada?'Ver mis inversiones':'Entrar o crear cuenta';}
   if(AVISOS_NOVEDADES_DISPONIBLES){
-   if(!identidadConfirmada||!ses){novedades=null;novedadesCuenta=-1;novedadesError=false;novedadesGuardando=false;}
+   if(!identidadConfirmada||!ses){novedades=null;novedadesCuenta=-1;novedadesError='';novedadesGuardando=false;}
    pintarNovedades();cargarNovedades().catch(()=>{});
   }
   if(AVISOS_WEBPUSH_DISPONIBLE){
-   if(!identidadConfirmada||!ses)push={estado:'',cuenta:-1,ocupado:false,mensaje:'',error:false};
+   if(!identidadConfirmada||!ses)push={estado:'',cuenta:-1,ocupado:false,mensaje:'',error:false,fallo:''};
    pintarPush();cargarPush().catch(()=>{});
   }
   /* La campana: con sesión confirmada se pide la bandeja para contar lo no leído. */
@@ -5797,6 +5896,8 @@ const Cuenta = (function(){
    else if(t.closest('[data-ver-avisos]'))abrirAvisos(t.closest('[data-ver-avisos]'));
    else if(t.closest('[data-push-activar]'))activarPush();
    else if(t.closest('[data-push-desactivar]'))desactivarPush();
+   else if(t.closest('[data-push-reintentar]'))reintentarPush();
+   else if(t.closest('[data-push-entrar]'))entrarPush();
    else if(t.closest('[data-push-instalar]')&&typeof window.rwadarInstalarIphone==='function')window.rwadarInstalarIphone(t.closest('[data-push-instalar]'));
   });
   const huecoPush=$('perfilPushHueco');
@@ -5809,6 +5910,8 @@ const Cuenta = (function(){
   document.addEventListener('visibilitychange',()=>{
    if(document.visibilityState!=='visible'||!identidadConfirmada||!ses)return;
    if(Date.now()-bandejaPedida>60000)cargarBandeja(true).catch(()=>{});
+   /* Al volver a la app (iPhone), lo que no se pudo comprobar se vuelve a preguntar. */
+   if(AVISOS_NOVEDADES_DISPONIBLES&&novedadesError)cargarNovedades().catch(()=>{});
    if(AVISOS_WEBPUSH_DISPONIBLE&&!push.ocupado){push.cuenta=-1;cargarPush().catch(()=>{});}
   });
   try{

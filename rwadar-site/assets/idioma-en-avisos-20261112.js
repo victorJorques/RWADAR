@@ -49,7 +49,17 @@
   "No has dado permiso. Puedes volver a intentarlo cuando quieras.": "You did not give permission. You can try again whenever you like.",
   "No se han podido activar las notificaciones en este móvil. Vuelve a intentarlo.": "Notifications could not be turned on for this phone. Please try again.",
   "Hemos quitado las notificaciones de este navegador, pero no hemos podido confirmarlo con tu cuenta. Se borrará sola en el próximo envío.": "We have removed notifications from this browser, but could not confirm it with your account. It will be deleted automatically on the next send.",
-  "No se han podido desactivar las notificaciones. Vuelve a intentarlo.": "Notifications could not be turned off. Please try again."
+  "No se han podido desactivar las notificaciones. Vuelve a intentarlo.": "Notifications could not be turned off. Please try again.",
+  // Sin respuesta de la base o sin sesión (12/11/2026): nunca «Comprobando…» para siempre.
+  // «Tu sesión ha caducado…» y «No hemos podido conectar…» van en el común: la app también los dice.
+  "No hemos podido comprobar las notificaciones de este móvil. Revisa la conexión y pulsa Reintentar.": "We could not check notifications on this phone. Check your connection and tap Try again.",
+  "Entrar de nuevo": "Sign in again",
+  "Activadas en este móvil.": "On for this phone.",
+  // Por qué no se han podido activar.
+  "Tu sesión ha caducado: vuelve a entrar para activarlas.": "Your session has expired: sign in again to turn them on.",
+  "En iPhone y iPad solo se pueden activar con RWAdar en la pantalla de inicio: añádela y ábrela desde su icono.": "On iPhone and iPad they can only be turned on with RWAdar on the home screen: add it and open it from its icon.",
+  "El navegador no ha dejado activarlas. Comprueba que las notificaciones de RWAdar están permitidas en los ajustes del móvil y vuelve a intentarlo.": "The browser did not allow them to be turned on. Check that RWAdar notifications are allowed in your phone settings and try again.",
+  "El navegador no ha terminado de preparar RWAdar. Cierra RWAdar del todo, vuelve a abrirla y prueba otra vez.": "The browser has not finished setting up RWAdar. Close RWAdar completely, open it again and try once more."
 };
 if(typeof module==='object'&&module.exports){module.exports=Object.freeze(extra);return;}
 const base=raiz.RWAdarEnglish||{};

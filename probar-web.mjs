@@ -3402,6 +3402,8 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
   const enComun = require('./rwadar-site/assets/idioma-en-20261022.js');
   const enAvisos = require('./rwadar-site/assets/idioma-en-avisos-20261112.js');
   const textosPush = [...(js.match(/ const TEXTOS_PUSH=\{([\s\S]*?)\n \};/) || [, ''])[1].matchAll(/:'([^']+)'/g)].map(m => m[1]);
+  // Por qué no se han podido activar (12/11/2026): cada motivo, también en inglés.
+  const textosActivar = [...(js.match(/ const TEXTOS_ACTIVAR_PUSH=\{([\s\S]*?)\n \};/) || [, ''])[1].matchAll(/:'([^']+)'/g)].map(m => m[1]);
   const fijos = ['Avisos, ninguno sin leer', 'Tus avisos', 'Ver tus avisos', 'Notificaciones y avisos en Perfil', 'Marcar como leídos', 'Sin leer',
     'Notificaciones en este móvil', 'Activar notificaciones en este móvil', 'Desactivar las notificaciones de este móvil', 'Ver cómo añadirla',
     'Pulsa el botón Compartir (un cuadrado con una flecha hacia arriba).', 'Elige «Añadir a pantalla de inicio» y pulsa Añadir.',
@@ -3414,14 +3416,26 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.',
     // Junto al botón (anexo legal, 2.4): el trozo antes del enlace a Privacidad.
     'El servicio de tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no puede leer su texto. Si no las activas, seguirás viendo los avisos en la campana. Más en'];
-  const sinIngles = [...textosPush, ...fijos].filter(t => typeof (enAvisos[t] ?? enComun[t]) !== 'string');
+  const sinIngles = [...textosPush, ...textosActivar, 'Reintentar', 'Entrar de nuevo', ...fijos].filter(t => typeof (enAvisos[t] ?? enComun[t]) !== 'string');
   const scriptsIndex = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(m => m[1]);
   const iComun = scriptsIndex.indexOf('/assets/idioma-en-20261022.js'), iAvisos = scriptsIndex.indexOf('/assets/idioma-en-avisos-20261112.js');
   prueba(`campana y notificaciones: cada texto tiene su inglés (sin traducir: ${sinIngles.join(' | ') || 'ninguno'}) y el diccionario de la web va entre el común y el motor`,
-    textosPush.length === 13 && sinIngles.length === 0 && iComun >= 0 && iAvisos === iComun + 1 &&
+    textosPush.length === 16 && textosActivar.length === 6 && sinIngles.length === 0 && iComun >= 0 && iAvisos === iComun + 1 &&
     scriptsIndex[iAvisos + 1] === '/assets/idioma-20261022.js' &&
     Object.keys(enAvisos).every(k => !Object.hasOwn(enComun, k)) &&
     /const suma=Object\.assign\(\{\},extra,base\);/.test(lee('assets/idioma-en-avisos-20261112.js')));
+  // 12/11/2026, Víctor en su iPhone: el bloque se quedaba en «Comprobando…». Cada llamada lleva plazo y el
+  // fallo se dice: sin sesión, «Entrar de nuevo»; otro fallo, «Reintentar» (las pruebas de Chromium, en
+  // rwadar-acceso/notificaciones-fallos-navegador.test.mjs).
+  prueba('notificaciones: con plazo y nunca «Comprobando…» para siempre (sin sesión, «Entrar de nuevo»; otro fallo, «Reintentar»)',
+    js.includes(' const PLAZO_AVISOS_MS=15000;') &&
+    js.includes("estadoNovedades(await conPlazo(rest('/rpc/estado_mis_avisos'") &&
+    js.includes("conPlazo(rest('/rpc/mi_aviso_webpush_registrado'") && js.includes("conPlazo(rest('/rpc/clave_publica_webpush'") &&
+    js.includes("conPlazo(rest('/rpc/registrar_aviso_webpush'") &&
+    js.includes('data-push-reintentar hidden>Reintentar</button>') && js.includes('data-push-entrar hidden>Entrar de nuevo</button>') &&
+    js.includes("else if(t.closest('[data-push-reintentar]'))reintentarPush();") && js.includes("else if(t.closest('[data-push-entrar]'))entrarPush();") &&
+    /if\(fallo==='sesion'\|\|novedadesError==='sesion'\)return 'sesion-caducada';/.test(js) &&
+    /if\(fallo\|\|novedadesError\)return 'error-comprobar';/.test(js));
   prueba('campana: botones con sesión en las dos cabeceras, número oculto al nacer, anuncio educado y hueco de las notificaciones en Perfil',
     /<button class="hdr-campana campana" id="btnAvisos" type="button" hidden aria-label="Avisos, ninguno sin leer">/.test(html) &&
     /<button class="movil-cabecera-accion movil-campana campana" id="movilAvisos" type="button" hidden aria-label="Avisos, ninguno sin leer">/.test(html) &&
