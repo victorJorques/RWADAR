@@ -1,5 +1,5 @@
 /* «Novedades de RWAdar» (12/11/2026), en Chromium a 390 × 844 y 1366 × 900,
-   sobre el worker local con las fuentes de rwadar-site. Encargo de Víctor:
+   sobre el worker local con las fuentes de rwadar-site. Encargo:
    «que salga al abrir … un texto informativo muy fácil de leer con las
    novedades y si clickan que salga en detalle».
    - La ventana sale una vez, tras cargar: título, fecha, los puntos del

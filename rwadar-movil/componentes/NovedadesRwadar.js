@@ -13,7 +13,7 @@ import {
 /* ---------------------------------------------------------------------
    «Novedades de RWAdar» al abrir la app (12/11/2026)
    ---------------------------------------------------------------------
-   Víctor: «que salga al abrir la app y como las novedades, tipo un texto
+   Encargo: «que salga al abrir la app y como las novedades, tipo un texto
    informativo muy fácil de leer con las novedades y si clickan que salga en
    detalle». Tres piezas, con el contenido de lib/novedades-rwadar.js (el
    mismo JSON que la web):

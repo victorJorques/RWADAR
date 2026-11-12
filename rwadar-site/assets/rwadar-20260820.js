@@ -113,14 +113,14 @@ const FECHA_VERIFICACION_LOCAL='2026-09-21';
 let ESCAPARATE_LOCAL=null;
 let MANIFIESTO_EDITORIAL_LOCAL=null;
 let CATALOGO_EMBEBIDO_BLOQUEADO=false;
-/* El catálogo se publica siempre salvo orden expresa de retirada (Víctor,
+/* El catálogo se publica siempre salvo orden expresa de retirada (dirección,
    1/10/2026). Caducado, o si no se puede comprobar la revisión remota, se
    muestra la última copia completa con un aviso; las cifras vencidas siguen
    ocultas oferta a oferta. Solo public.catalogo_publicacion.retirado lo oculta. */
 let CATALOGO_CADUCADO=false,CATALOGO_SIN_COMPROBAR=false,CATALOGO_RETIRADO=false;
 /* Manifiesto de la última copia completa aceptada en esta pestaña. Desde el
    02/11/2026 ya no es un mínimo: un lote nuevo y coherente puede tener más o
-   menos fichas (decisión de Víctor). */
+   menos fichas (decisión de la dirección). */
 let MANIFIESTO_CATALOGO_V2_ACEPTADO={plataformas:26,ofertas:49,
  colecciones:{principales:24,secundario:21,en_camino:4}};
 /* Activos propios, no fotografías del emisor. La compuerta de publicación
@@ -2708,12 +2708,12 @@ function textoCortoLocal(v,max=40){
  const t=textoLocal(v);if(t.length<=max)return t;
  const c=t.slice(0,max+1),i=c.lastIndexOf(' ');return (i>12?c.slice(0,i):t.slice(0,max)).replace(/[\s,;:·.(-]+$/,'')+'…';
 }
-/* Mínimo · España · Salida en forma corta (decisión de Víctor del 03/11). Sin
+/* Mínimo · España · Salida en forma corta (decisión del 03/11). Sin
    revisión vigente no hay cifras: manda lo que calcula resumenOferta. */
 /* España y Salida se escriben con UNA función para la tarjeta (escritorio y
    móvil) y para «Lo esencial» de la ficha: antes la tarjeta de escritorio
    decía «Disponible» y la ficha «Sí, según la fuente» (QA 04/11/2026, n.º 18). */
-/* La lista dice solo «Sí» o «No» (decisión de Víctor del 05/11/2026); la
+/* La lista dice solo «Sí» o «No» (decisión del 05/11/2026); la
    ficha, con «según la fuente» y la fuente al lado. */
 function textoEspanaOferta(resumen,corto=false){
  const acceso=resumen&&resumen.accesoEspana&&resumen.accesoEspana.estado;
@@ -2769,7 +2769,7 @@ function transparenciaDetalleHtml(o,resumen){
    (x.fuente&&urlHttps(x.fuente.url)?' '+fuente({url:urlHttps(x.fuente.url),titulo:textoLocal(x.fuente.titulo)},x.texto):'')+'</li>').join('')+'</ul>':'')+
   '</details>';
 }
-/* Tarjeta de la lista (decisión de Víctor del 05/11/2026: «veo demasiada
+/* Tarjeta de la lista (decisión del 05/11/2026: «veo demasiada
    información así de primeras, me marea»). Solo lo que sirve para decidir
    qué abrir: imagen y guardar, «Patrocinada» y «Nueva», título, proveedor ·
    lugar y una línea con el mínimo y el acceso desde España. Por seguridad,
@@ -3629,7 +3629,7 @@ function metadatosCatalogoV2(fila){
 }
 function validarManifiestoCatalogoV2(plataformas,ofertas){
  /* Desde el 02/11/2026 un lote puede tener menos ofertas que el anterior
-    (decisión de Víctor). Un lote cortado se sigue rechazando porque debe
+    (decisión de la dirección). Un lote cortado se sigue rechazando porque debe
     traer exactamente las filas que declara su propio manifiesto. */
  const p=Array.isArray(plataformas)&&plataformas[0];
  const plataformasEsperadas=p&&p.plataformas_esperadas,ofertasEsperadas=p&&p.ofertas_esperadas;
@@ -4258,7 +4258,7 @@ const Cuenta = (function(){
     esa prueba real no se confunde con los ensayos aislados de la interfaz.
     Evidencia y límites: docs/VERIFICACION-CUENTAS-2026-10-11.md. */
  const CORREO_AUTH_E2E=true;
- /* Manual de bienvenida: apagado. Víctor lo reserva a usuarios registrados;
+ /* Manual de bienvenida: apagado. Se reserva a usuarios registrados;
     no activar una descarga pública ni una ruta estática para ese documento.
     Requiere entrega autenticada y revisión propia antes de habilitarse. */
  const MANUAL_BIENVENIDA='';
@@ -4270,7 +4270,7 @@ const Cuenta = (function(){
     docs/tareas/REABRIR-CUENTAS.md. */
  const TURNSTILE_SITEKEY='';
  /* Avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
-    Encendido el 12/11/2026 por orden de Víctor («que las notificaciones
+    Encendido el 12/11/2026 por orden de la dirección («que las notificaciones
     salten al móvil y salga un 1»): Perfil enseña «Avisos de novedades» con su
     interruptor (el texto versionado) en lugar de «Próximamente · Avisos de
     cambios». La casilla del alta NO depende de este interruptor: tiene el
@@ -5134,7 +5134,7 @@ const Cuenta = (function(){
  }
 
  /* --- plazos y fallos de las llamadas de avisos (12/11/2026) ---------
-    Víctor, en su iPhone: «No funciona lo de activar notificaciones». Si la
+    En un iPhone: «No funciona lo de activar notificaciones». Si la
     base no contestaba (o contestaba «sin sesión»), «Notificaciones en este
     móvil» se quedaba en «Comprobando…» con el botón apagado. Ahora cada
     llamada tiene plazo y el fallo se dice: sin sesión, «vuelve a entrar»

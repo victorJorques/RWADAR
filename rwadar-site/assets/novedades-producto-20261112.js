@@ -2,7 +2,7 @@
 /* =====================================================================
    RWAdar · «Novedades de RWAdar» (12/11/2026): la ventana y la página
    ---------------------------------------------------------------------
-   Encargo de Víctor: «que salga al abrir la app y como las novedades, tipo
+   Encargo: «que salga al abrir la app y como las novedades, tipo
    un texto informativo muy fácil de leer con las novedades y si clickan que
    salga en detalle». El contenido sale de /datos/novedades-producto.json (lo
    valida assets/novedades-producto-modelo-20261112.js) y no hay ningún texto

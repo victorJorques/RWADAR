@@ -1961,7 +1961,7 @@ Se dibujan de 34 px; con su margen invisible, 44 px de diana sin pisarse. */
 /* ============ 13 · INICIO COMO HISTORIA (HISTORIA-v2, ESPEC-INICIO) ============
    Seis capítulos a ancho completo, con los tokens de la guía de acabados: una
    sola línea (--bd), cero sombras, cero mayúsculas, b1/b2/b3/bi. Texto limpio,
-   sin llamadas (decisión de Víctor, 04/11/2026): cada apartado acaba en
+   sin llamadas (decisión, 04/11/2026): cada apartado acaba en
    «Fuentes de este apartado ›». Fuera de la escala hay dos tamaños propios
    del relato: 36 px (cifra doble del 04) y 64 px (cifras de capítulo). */
 .rel{--rel-d1:2.25rem;--rel-d2:4rem;padding-top:0;padding-bottom:24px}

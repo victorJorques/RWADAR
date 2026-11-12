@@ -1,6 +1,6 @@
 'use strict';
 
-/* «Novedades de RWAdar» al abrir la app (12/11/2026). Víctor: «que salga al
+/* «Novedades de RWAdar» al abrir la app (12/11/2026). Encargo: «que salga al
    abrir la app y como las novedades, tipo un texto informativo muy fácil de
    leer con las novedades y si clickan que salga en detalle».
    Sin red, Expo ni almacenamiento real: el módulo con un fetch simulado, lo
@@ -41,7 +41,7 @@ test('novedades · la copia incluida es válida, igual al archivo de ejemplo y c
   for (const p of datos.resumen) {
     for (const t of [p.titulo, p.texto, p.en.titulo, p.en.texto]) assert.ok(!/[.!?].+[.!?].+[.!?]/.test(t), `más de una línea: ${t}`);
   }
-  // Lo que pidió Víctor, dicho en el resumen: avisos, el número sin leer, la sesión, el correo y la calculadora.
+  // Lo pedido, dicho en el resumen: avisos, el número sin leer, la sesión, el correo y la calculadora.
   const todo = JSON.stringify(datos.resumen);
   for (const x of ['WhatsApp', 'Perfil › Avisos', 'número', '30 días', 'rwadares@gmail.com', '¿Quieres colaborar con nosotros?', 'Calcula tus números', 'Mercado y noticias']) {
     assert.ok(todo.includes(x), `falta en el resumen: ${x}`);

@@ -2,7 +2,7 @@
 /* ---------------------------------------------------------------------
    «Novedades de RWAdar» en la app (12/11/2026)
    ---------------------------------------------------------------------
-   Víctor: «que salga al abrir la app y como las novedades, tipo un texto
+   Encargo: «que salga al abrir la app y como las novedades, tipo un texto
    informativo muy fácil de leer con las novedades y si clickan que salga en
    detalle». Una sola fuente para la web y la app:
    rwadar-site/datos/novedades-producto.json, que la web sirve en
