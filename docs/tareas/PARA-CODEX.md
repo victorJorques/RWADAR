@@ -26,6 +26,14 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
      el camino a **Perfil › Avisos**; las dos enlazan las anteriores (/cambios).
   3. Para volver a verlas: «Novedades de RWAdar» en Perfil (web y app), en la
      cuenta de escritorio y en el pie de la web.
+  4. Un aviso con enlace `https://rwadar.pages.dev/novedades-rwadar/…`: en la
+     web abre esa página; en la app, al tocarlo en la tarjeta «Avisos» de
+     Inicio, abre la pantalla de detalle (`destinoAviso` → `novedades`), no el
+     navegador.
+- **Después (mismo PR #125):** quitado el nombre del responsable de los
+  comentarios del código público de la web (`rwadar-site/assets`) y de los
+  archivos nuevos; solo queda donde lo exige la ley (aviso legal y
+  privacidad).
 - **Una sola fuente:** `rwadar-site/datos/novedades-producto.json` (versión
   `2026-11-12`, inglés en campos `en`). La app lo descarga de
   rwadar.pages.dev (6 s, sin cookies, forma exacta, 32 kB) y lleva una copia
