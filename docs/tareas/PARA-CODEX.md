@@ -6,6 +6,39 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (3) · Claude · Repaso de la revisión: correo único y «Colaborar»
+
+Commits locales en `claude/sharp-babbage-m3bbbw` (sin push, sin publicar, sin
+OTA, Supabase sin tocar). Lo pidió la revisión del apartado «¿Quieres
+colaborar con nosotros?»:
+
+- **Correo único:** `rwadares@gmail.com` ya es el único correo que ve un
+  visitante de la web o de la app (esquema de `index.html`, avisos, Perfil,
+  pie, `rwadar-20260820.js`, `App.js` con su lista de `abrirEnlace()`, los dos
+  diccionarios por igual, claves incluidas). También en
+  `docs/plantillas/CORREO-PROPUESTA-PILOTO.md`. Pruebas al día:
+  `probar-web.mjs`, `rwadar-app/probar-para-empresas.mjs`.
+  `git grep -i protonmail -- rwadar-site rwadar-movil probar-web.mjs` no
+  devuelve nada. Siguen con el antiguo, a propósito, las excepciones del
+  commit 8e1abe2 (SQL, migraciones, plantillas de auth, docs/archive…).
+- **Frase de independencia más prudente:** «…las ofertas se eligen con
+  criterios editoriales y hoy RWAdar no cobra comisiones por las
+  inversiones.», y tras el botón un enlace «Transparencia comercial»
+  (`/transparencia-comercial` en la web; la misma página en el navegador desde
+  la app). No se enlaza `/para-empresas`: hoy redirige a Inicio (302).
+- **Fila de contacto de Perfil:** dice para qué es: «Datos y privacidad ·
+  rwadares@gmail.com» (web y app, con su inglés).
+- **Comentarios:** fuera las frases que decían que privacidad y avisos
+  seguían en el correo antiguo (`index.html`, `Colabora.js`).
+- **Pruebas nuevas:** en `probar-web.mjs` (enlace de transparencia, fila de
+  Perfil y ningún correo antiguo en `rwadar-site`, `App.js`, `lib/` ni
+  `componentes/`); en `colabora.test.cjs` (enlace, fila, `abrirEnlace`);
+  en `colabora-navegador.test.mjs` (contraste y foco del enlace, inglés y
+  captura de Perfil en inglés); `tokenizacion.test.mjs` cuenta el Tab nuevo.
+- **Queda sin hacer (decisión de Víctor):** que el bloque salga en el HTML
+  sin JavaScript (hoy lo copia `ponerColabora()` desde un `<template>`) y, en
+  escritorio, si se quiere al final de toda la página y no tras Aprende.
+
 ## 12 de noviembre de 2026 (2) · Claude · «¿Quieres colaborar con nosotros?» al final de Inicio y Perfil (web y app)
 
 Encargo de Víctor: «añade un apartado al final de Inicio y Perfil tipo

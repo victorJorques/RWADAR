@@ -71,7 +71,7 @@ async function verBloque(pagina, donde, captura) {
   assert.equal(v.fuera, 0, `${donde}: nada se sale de la pantalla`);
   assert.ok(v.anchoDoc <= v.anchoVentana, `${donde}: sin desplazamiento horizontal (${v.anchoDoc} > ${v.anchoVentana})`);
   assert.ok(v.ultimoBloque, `${donde}: es el último bloque`);
-  for (const sel of [' h2', ' .ini-bloque-sub', ' .colabora-nota', ' .colabora-boton span']) {
+  for (const sel of [' h2', ' .ini-bloque-sub', ' .colabora-nota', ' .colabora-boton span', ' .colabora-mas a']) {
     const c = await pagina.evaluate(`(${CONTRASTE})(${JSON.stringify(`section.colabora[data-colabora="${donde}"]${sel}`)})`);
     assert.ok(c !== null && c >= 4.5, `${donde}${sel}: contraste ${c?.toFixed(2)} (AA pide 4,5)`);
   }
@@ -82,6 +82,12 @@ async function verBloque(pagina, donde, captura) {
   assert.match(foco.clase, /colabora-boton/);
   assert.ok(foco.outline !== 'none' && foco.ancho >= 2, `${donde}: foco visible ${JSON.stringify(foco)}`);
   if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, captura) });
+  // El siguiente Tab va al enlace de la transparencia comercial, también con foco visible.
+  await pagina.keyboard.press('Tab');
+  const foco2 = await pagina.evaluate(() => { const a = document.activeElement, s = getComputedStyle(a), r = a.getBoundingClientRect();
+    return { href: a.getAttribute('href'), dentro: !!a.closest('.colabora-mas'), outline: s.outlineStyle, ancho: parseFloat(s.outlineWidth), alto: r.height }; });
+  assert.equal(foco2.href, '/transparencia-comercial');
+  assert.ok(foco2.dentro && foco2.outline !== 'none' && foco2.ancho >= 2 && foco2.alto >= 24, `${donde}: foco del enlace ${JSON.stringify(foco2)}`);
   await pagina.evaluate(() => document.activeElement.blur());
   return v;
 }
@@ -138,7 +144,8 @@ test('en Chromium: «¿Quieres colaborar con nosotros?» al final de Inicio (390
       await pagina.waitForTimeout(400);
       const enIngles = await pagina.evaluate(() => [...document.querySelectorAll('section.colabora')].map(s => ({
         titulo: s.querySelector('h2').textContent.trim(), nombre: s.querySelector('a').textContent.replace(/\s+/g, ' ').trim(),
-        href: s.querySelector('a').getAttribute('href'), nota: s.querySelector('.colabora-nota').textContent.trim(), texto: s.querySelector('.ini-bloque-sub').textContent.trim() })));
+        href: s.querySelector('a').getAttribute('href'), nota: s.querySelector('.colabora-nota').textContent.trim(),
+        mas: s.querySelector('.colabora-mas a').textContent.trim(), masHref: s.querySelector('.colabora-mas a').getAttribute('href'), texto: s.querySelector('.ini-bloque-sub').textContent.trim() })));
       assert.equal(enIngles.length, 2);
       for (const b of enIngles) {
         assert.equal(b.titulo, 'Would you like to work with us?');
@@ -146,11 +153,21 @@ test('en Chromium: «¿Quieres colaborar con nosotros?» al final de Inicio (390
         assert.equal(b.href, 'mailto:rwadares@gmail.com');
         assert.equal(b.texto, 'If you are a platform or an issuer, work in the sector or want to suggest an improvement, write to us.');
         assert.equal(b.nota, 'Working with us does not buy a place in the catalogue: offers are chosen on editorial criteria, and RWAdar currently charges no commission on investments.');
+        // Tras el botón, de qué vive RWAdar: la transparencia comercial.
+        assert.equal(b.mas, 'Commercial transparency');
+        assert.equal(b.masHref, '/transparencia-comercial');
       }
       if (CAPTURAS) {
         await pagina.locator('section.colabora[data-colabora="inicio"]').scrollIntoViewIfNeeded();
         await pagina.waitForTimeout(200);
         await pagina.screenshot({ path: path.join(CAPTURAS, `inicio-final-en-${ancho}x${alto}.png`) });
+        if (movil) {
+          await pagina.click('#movilTabMas'); await pagina.waitForTimeout(300);
+          await pagina.locator('section.colabora[data-colabora="perfil"]').scrollIntoViewIfNeeded();
+          await pagina.waitForTimeout(200);
+          await pagina.screenshot({ path: path.join(CAPTURAS, `perfil-final-en-${ancho}x${alto}.png`) });
+          await pagina.click('#movilTabInicio'); await pagina.waitForTimeout(300);
+        }
       }
       await pagina.evaluate(() => RWAdarIdioma.cambiarIdioma('es'));
       await pagina.waitForTimeout(300);

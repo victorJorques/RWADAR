@@ -145,3 +145,28 @@ test('app · Colabora va al final de Inicio (tras Aprende, antes del pie legal) 
   assert.ok(ultimoGrupo > 0 && enPerfil > ultimoGrupo && nota > enPerfil && fin > nota, 'Perfil: último grupo → Colabora → nota final');
   assert.match(app, /import Colabora from '\.\/componentes\/Colabora';/);
 });
+
+test('app · Colabora: enlace a la transparencia comercial y la fila de Perfil dice para qué es; sin el correo antiguo', async () => {
+  const abiertas = [];
+  const { modulo, pintar } = montar({ abrirWeb: async (url) => { abiertas.push(url); } });
+  const enlace = porId(pintar(), 'colaboraTransparencia');
+  assert.equal(enlace.props.accessibilityRole, 'link');
+  assert.deepEqual(textos(enlace), ['Transparencia comercial']);
+  enlace.props.onPress();
+  await new Promise((r) => setImmediate(r));
+  assert.deepEqual(abiertas, ['https://rwadar.pages.dev/transparencia-comercial']);
+  assert.equal(modulo.URL_TRANSPARENCIA, 'https://rwadar.pages.dev/transparencia-comercial');
+  // Si no se puede abrir, no rompe la pantalla.
+  const mal = montar({ abrirWeb: async () => { throw new Error('sin navegador'); } });
+  porId(mal.pintar(), 'colaboraTransparencia').props.onPress();
+  await new Promise((r) => setImmediate(r));
+
+  const app = leer('App.js');
+  assert.match(app, /titulo="Contactar sobre mis datos"\s*subtitulo="Datos y privacidad · rwadares@gmail\.com"/);
+  assert.equal(en['Datos y privacidad · rwadares@gmail.com'], 'Data and privacy · rwadares@gmail.com');
+  // abrirEnlace() deja abrir el mailto nuevo, y es el que usan «Contactar sobre mis datos».
+  assert.match(app, /let permitido = valor === 'mailto:rwadares@gmail\.com';/);
+  assert.ok((app.match(/abrirEnlace\('mailto:rwadares@gmail\.com'\)/g) || []).length >= 2);
+  for (const f of ['App.js', 'lib/idioma-en.js', 'componentes/Colabora.js', 'componentes/Cuenta.js'])
+    assert.doesNotMatch(leer(f), /proton[m]ail/i, f);
+});

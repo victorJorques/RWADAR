@@ -1633,6 +1633,26 @@ const aprendeHTML = lee('aprende/index.html');
       iPerfil > 0 && iNota > iPerfil && !/<section\b/.test(panelPerfilHTML.slice(iPerfil)) &&
       /function ponerColabora\(raiz\)/.test(app) && /'<div data-colabora="cuenta" hidden><\/div>';[^\n]*\n[^\n]*\n\s*if\(typeof ponerColabora==='function'\)ponerColabora\(c\);/.test(app));
   }
+  // Revisión del 12/11/2026: tras el botón, el enlace a la transparencia comercial (de qué vive
+  // RWAdar); la fila «Contactar» de Perfil dice para qué es; y rwadares@gmail.com es el único
+  // correo que ve un visitante de la web o de la app (sin el antiguo de Proton en ningún sitio).
+  {
+    const plantilla = (html.match(/<template id="colaboraPlantilla">([\s\S]*?)<\/template>/) || [])[1] || '';
+    const en = require('./rwadar-site/assets/idioma-en-20261022.js');
+    const visibles = (dir, filtro) => fs.readdirSync(dir, { recursive: true, withFileTypes: true })
+      .filter(f => f.isFile() && filtro(f.name) && !/node_modules|[\/\\]\.expo/.test(path.join(f.parentPath || f.path, f.name)))
+      .map(f => path.join(f.parentPath || f.path, f.name));
+    const conProton = [...visibles(sitio, n => /\.(html|js|css|txt|xml|json|webmanifest)$/.test(n) || n === 'security.txt'),
+      ...['rwadar-movil/App.js', 'rwadar-movil/app.json'].map(f => path.join(raiz, f)).filter(f => fs.existsSync(f)),
+      ...visibles(path.join(raiz, 'rwadar-movil/lib'), n => n.endsWith('.js')), ...visibles(path.join(raiz, 'rwadar-movil/componentes'), n => n.endsWith('.js'))]
+      .filter(f => /proton[m]ail/i.test(fs.readFileSync(f, 'utf8')));
+    prueba('«¿Quieres colaborar…?»: tras el botón, enlace a /transparencia-comercial; Perfil dice para qué es «Contactar»; ningún correo antiguo a la vista',
+      /<a class="b1 colabora-boton" href="mailto:rwadares@gmail\.com">[\s\S]*?<\/a>\s*<p class="colabora-mas"><a href="\/transparencia-comercial">Transparencia comercial<\/a><\/p>\s*<\/section>\s*$/.test(plantilla) &&
+      /<a class="movil-menu-fila" href="mailto:rwadares@gmail\.com">[\s\S]*?<b>Contactar<\/b><small>Datos y privacidad · rwadares@gmail\.com<\/small>/.test(panelPerfilHTML) &&
+      en['Datos y privacidad · rwadares@gmail.com'] === 'Data and privacy · rwadares@gmail.com' &&
+      /"email":"rwadares@gmail\.com"/.test(html) &&
+      (conProton.length === 0 || (console.log('   con el correo antiguo:', conProton.join(', ')), false)));
+  }
   prueba('/aprende/ trae los seis capítulos, su carrusel, la Academy, las fuentes y la nota legal, sin cifras de mercado en el 03',
     ['relCap1', 'relCap2', 'relCap3', 'relCap4', 'relCap5', 'relCap6', 'relQuienLista', 'relRefs', 'nota-legal', 'notaLegalCompleta'].every(id => aprendeHTML.includes(`id="${id}"`)) &&
     /<!--academy-inicio:ini-->[\s\S]*href="\/academy\/"[\s\S]*<!--academy-inicio:fin-->/.test(aprendeHTML) &&

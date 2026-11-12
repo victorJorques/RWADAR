@@ -292,9 +292,11 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       if (ancho < 768) {
         assert.ok(pie.alto > 0, `390: el pie se ve (alto ${pie.alto}, display ${pie.display})`);
         await pagina.focus('.ini-aprende-tarjeta');
-        // Entre Aprende y el pie, «¿Quieres colaborar con nosotros?» (12/11/2026) y su enlace de correo.
+        // Entre Aprende y el pie, «¿Quieres colaborar con nosotros?» (12/11/2026): su enlace de correo y el de la transparencia comercial.
         await pagina.keyboard.press('Tab');
         assert.equal(await pagina.evaluate(() => document.activeElement.getAttribute('href')), 'mailto:rwadares@gmail.com', 'Tab pasa por «Escríbenos»');
+        await pagina.keyboard.press('Tab');
+        assert.equal(await pagina.evaluate(() => document.activeElement.getAttribute('href')), '/transparencia-comercial', 'Tab pasa por «Transparencia comercial»');
         await pagina.keyboard.press('Tab');
         const foco = await pagina.evaluate(() => ({ texto: document.activeElement.textContent.trim(), href: document.activeElement.getAttribute('href') }));
         assert.deepEqual(foco, { texto: 'Nota legal completa→', href: '/aprende/#nota-legal' }, 'Tab llega a «Nota legal completa»');
