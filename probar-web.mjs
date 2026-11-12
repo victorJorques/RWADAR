@@ -3163,13 +3163,43 @@ prueba('la privacidad identifica la medición agregada, sus límites y su estado
   /Do Not Track o Global Privacy Control/.test(privacidad) && /no representan personas únicas/.test(privacidad) &&
   /no permite reconstruir el tráfico anterior/.test(privacidad) &&
   /Cloudflare Pages/.test(privacidad) && /cloudflare-customer-dpa/.test(privacidad));
-prueba('la privacidad explica cookie necesaria, enlaces limpios y retirada de las copias PWA',
-  /cookie de sesión necesaria, protegida con HttpOnly, Secure y SameSite/.test(privacidadLineal) &&
-  /el JavaScript no puede leerla/.test(privacidadLineal) &&
+prueba('la privacidad explica las cookies necesarias, enlaces limpios y retirada de las copias PWA',
+  /dos cookies de sesión necesarias, protegidas con HttpOnly, Secure y SameSite/.test(privacidadLineal) &&
+  /el JavaScript no puede leerlas/.test(privacidadLineal) &&
   /Deja de autorizar al caducar o cerrar sesión/.test(privacidadLineal) &&
   /se canjean una vez y se\s+retiran de la dirección/.test(privacidad) &&
   /history\.replaceState\(null,'',location\.pathname\+location\.search\)/.test(js) &&
   /elimina la antigua caché PWA/.test(privacidadLineal));
+/* Sesión que se mantiene (12/11/2026). La casilla de /acceso sale sin marcar y
+   solo al entrar; su nota, la privacidad y el servidor dicen lo mismo: dos
+   cookies, cuál es cada una, para qué, cuánto duran (una hora y 30 días con la
+   casilla; hasta cerrar el navegador sin ella) y que son estrictamente
+   necesarias para la sesión que se pide. */
+{
+  const enComun = require('./rwadar-site/assets/idioma-en-20261022.js');
+  const accesoHTML = lee('acceso.html'), accesoJS = lee('assets/acceso.js');
+  const ETIQUETA_MANTENER = 'Mantener la sesión iniciada en este dispositivo';
+  const NOTA_MANTENER = 'Si la marcas, este navegador guarda tu sesión con una cookie hasta 30 días desde la última vez que la usas, aunque lo cierres. Se borra al cerrar sesión. No la marques en un dispositivo compartido. Más en';
+  const diasServidor = Number((servidorAcceso.match(/const MANTENER_S = (\d+) \* 24 \* 60 \* 60;/) || [])[1]);
+  prueba('/acceso: casilla «Mantener la sesión iniciada en este dispositivo» sin marcar, solo al entrar, con su nota y su inglés',
+    accesoHTML.includes('<div id="campo-mantener" class="mantener">\n      <label class="consentimiento"><input id="mantener" type="checkbox">' + ETIQUETA_MANTENER + '</label>\n      <p id="nota-mantener" class="consentimiento">' + NOTA_MANTENER + ' <a href="/privacidad#cookies-sesion">Privacidad</a>.</p>\n    </div>') &&
+    !/<input id="mantener"[^>]*\bchecked\b/.test(accesoHTML) &&
+    accesoJS.includes("$('mantener').checked = false; $('campo-mantener').hidden = vista !== 'entrar';") &&
+    accesoJS.includes("if (vista === 'entrar') data.mantener = $('mantener').checked === true;") &&
+    enComun[ETIQUETA_MANTENER] === 'Keep me signed in on this device' && /^If you tick it, .* More in$/.test(enComun[NOTA_MANTENER] || ''));
+  prueba('privacidad: nombre, finalidad y duración de las dos cookies de la sesión, estrictamente necesarias; 30 días como en el servidor',
+    diasServidor === 30 &&
+    /<tr id="cookies-sesion">/.test(privacidad) &&
+    privacidadLineal.includes('<span class="codigo">__Host-rwadar-acceso</span> lleva el pase de tu sesión, que caduca en una hora;') &&
+    privacidadLineal.includes('<span class="codigo">__Host-rwadar-renovar</span>, el código con el que el servidor de la web pide un pase nuevo sin volver a pedirte la contraseña.') &&
+    privacidadLineal.includes('Son estrictamente necesarias para darte la sesión que pides y solo sirven para eso (LSSI, art. 22.2).') &&
+    privacidadLineal.includes('<b>Cuánto duran:</b> hasta que cierras el navegador. Si al entrar marcas «' + ETIQUETA_MANTENER + '» (sale sin marcar), la del pase dura una hora y se renueva sola, y la de renovar, ' + diasServidor + ' días desde la última vez que usas tu cuenta en ese navegador, aunque lo cierres.') &&
+    privacidadLineal.includes('al salir o al borrar la cuenta se borran las dos y la sesión se cierra también en el servicio de autenticación.') &&
+    privacidadLineal.includes('<li><b>Datos locales:</b> la sesión web usa dos cookies necesarias (apartado 2): sin marcar «' + ETIQUETA_MANTENER + '», se borran al cerrar el navegador; con ella, la del pase dura una hora y la de renovar, ' + diasServidor + ' días desde la última vez que usas tu cuenta en ese navegador.') &&
+    NOTA_MANTENER.includes('hasta ' + diasServidor + ' días') &&
+    /const COOKIE_RENOVAR = '__Host-rwadar-renovar';/.test(servidorAcceso) &&
+    /const ATRIBUTOS_COOKIE = '; Path=\/; HttpOnly; Secure; SameSite=Lax';/.test(servidorAcceso));
+}
 // 12/11/2026: en la web las notificaciones ya se pueden activar aunque el envío esté apagado
 // (llegarán cuando empecemos); en la app, el botón espera al envío (revisión del 12/11).
 prueba('la privacidad describe favoritos locales y las notificaciones del móvil (en la web ya activables; llegan cuando empecemos), sin prometer borrado histórico',
@@ -3196,7 +3226,7 @@ prueba('privacidad distingue consulta pública y cuenta confirmada para funcione
   /correo para confirmar la dirección/.test(privacidadLineal) &&
   /enlace para poner una contraseña nueva/.test(privacidadLineal) &&
   /cuenta de Gmail de RWAdar/.test(privacidadLineal) &&
-  /cookie de sesión necesaria/.test(privacidadLineal) &&
+  /cookies de sesión necesarias/.test(privacidadLineal) &&
   /borrar tu cuenta tú mismo/.test(privacidadLineal) &&
   /opiniones y\s+los avisos por correo siguen en pausa/i.test(privacidadLineal) &&
   /Las notificaciones en el móvil solo llegan si\s+las activas tú en Perfil › Avisos/.test(privacidadLineal) &&

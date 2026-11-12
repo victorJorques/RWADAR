@@ -188,10 +188,17 @@
           local de tu navegador para recordarla en la siguiente visita.</td>
         <td><span class="celda-etiqueta">Quién lo recibe</span> Tu navegador</td>
       </tr>
-      <tr>
+      <tr id="cookies-sesion">
         <td>Sesión de tu <br>cuenta</td>
-        <td><span class="celda-etiqueta">Por qué ocurre</span> La web utiliza una cookie de sesión necesaria, protegida con HttpOnly, Secure y
-          SameSite: el JavaScript no puede leerla. Deja de autorizar al caducar o cerrar sesión.
+        <td><span class="celda-etiqueta">Por qué ocurre</span> Al entrar, la web utiliza dos cookies de sesión necesarias, protegidas con HttpOnly, Secure y
+          SameSite: el JavaScript no puede leerlas.
+          <span class="codigo">__Host-rwadar-acceso</span> lleva el pase de tu sesión, que caduca en una hora;
+          <span class="codigo">__Host-rwadar-renovar</span>, el código con el que el servidor de la web pide un pase nuevo sin volver a pedirte la contraseña.
+          Son estrictamente necesarias para darte la sesión que pides y solo sirven para eso (LSSI, art. 22.2).
+          <b>Cuánto duran:</b> hasta que cierras el navegador. Si al entrar marcas «Mantener la sesión iniciada en este dispositivo»
+          (sale sin marcar), la del pase dura una hora y se renueva sola, y la de renovar, 30 días desde la última vez que usas tu
+          cuenta en ese navegador, aunque lo cierres. Deja de autorizar al caducar o cerrar sesión: al salir o al borrar la cuenta se
+          borran las dos y la sesión se cierra también en el servicio de autenticación.
           No se guarda tu contraseña. En Android 1.4.0, la sesión se conserva de forma segura en el dispositivo hasta que cierres sesión o deje de ser válida.
           Los
           enlaces de confirmación o recuperación que te enviamos se canjean una vez y se
@@ -218,7 +225,7 @@
   </table>
   </div>
 
-  <p><b>La web usa la cookie necesaria para mantener tu sesión.</b> Usa el almacenamiento local
+  <p><b>La web usa solo las dos cookies necesarias para mantener tu sesión</b> (tabla de arriba). Usa el almacenamiento local
     para recordar el sonido, las empresas y ofertas que guardas en favoritos desde el móvil
     (solo su nombre o identificador público) y, en RWAdar Academy, qué lecciones has marcado
     como leídas y cuántas preguntas acertaste en sus tests y, si creas la cuenta desde una
@@ -648,8 +655,10 @@
     <li><b>Consultas de empresas por correo:</b> mientras se responden y, si no se abre una fase
       posterior aprobada, como máximo seis meses desde el último intercambio; después se
       eliminan salvo obligación o reclamación que exija conservar lo mínimo necesario.</li>
-    <li><b>Datos locales:</b> la sesión web usa una cookie necesaria; se invalida al caducar
-      o cerrar sesión. La preferencia
+    <li><b>Datos locales:</b> la sesión web usa dos cookies necesarias (apartado 2): sin marcar
+      «Mantener la sesión iniciada en este dispositivo», se borran al cerrar el navegador; con ella, la del
+      pase dura una hora y la de renovar, 30 días desde la última vez que usas tu cuenta en ese navegador.
+      Las dos se borran al cerrar sesión o al borrar la cuenta. La preferencia
       de sonido, los favoritos y el progreso de la Academy permanecen hasta que
       elimines los datos del sitio. En la web, al crear la cuenta desde una lección, el
       navegador guarda durante 24 horas a qué lección volver; se borra al usarlo o al caducar.
