@@ -3433,6 +3433,27 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     js.includes(" const conEnlacesInfoDatos=texto=>conEnlacePrivacidad(texto,'/privacidad')") &&
     js.includes("'<p class=\"perfil-nota perfil-ayuda\">'+conEnlacesInfoDatos(INFO_DATOS_AVISOS)+'</p>'+"));
 }
+// 12/11/2026, Víctor: «todo lo que puedas quitar mi nombre hazlo». Los enlaces a la app de Android van
+// a /android (la redirección de _redirects), no a la dirección de GitHub, que lleva su usuario.
+{
+  const conGithub = [];
+  const recorrer = carpeta => {
+    for (const entrada of fs.readdirSync(carpeta, { withFileTypes: true })) {
+      const ruta = path.join(carpeta, entrada.name);
+      if (entrada.isDirectory()) { recorrer(ruta); continue; }
+      const relativa = path.relative(sitio, ruta).split(path.sep).join('/');
+      if (relativa === '_redirects') continue;
+      if (/victorJorques/i.test(fs.readFileSync(ruta, 'latin1'))) conGithub.push(relativa);
+    }
+  };
+  recorrer(sitio);
+  const generadores = ['rwadar-fichas.js', 'rwadar-academy.js', 'rwadar-publicar.js'].filter(f => /victorJorques/i.test(fs.readFileSync(path.join(raiz, f), 'utf8')));
+  const accesoHTML = lee('acceso.html');
+  prueba(`la app de Android se enlaza por /android, sin el usuario de GitHub en la web (con él: ${[...conGithub, ...generadores].join(', ') || 'ninguno'})`,
+    conGithub.length === 0 && generadores.length === 0 &&
+    accesoHTML.includes('<a href="/android" target="_blank" rel="noopener">Descubre la app para Android <span aria-hidden="true">↗</span></a>') &&
+    /^\/android +https:\/\/github\.com\/[^/\s]+\/RWAdar-downloads\/releases\/latest +302$/m.test(lee('_redirects')));
+}
 // Campana con número y «Notificaciones en este móvil» (12/11/2026): su inglés va en un diccionario
 // solo de la web (el común es copia exacta del de la app), cargado entre el común y el motor.
 {
