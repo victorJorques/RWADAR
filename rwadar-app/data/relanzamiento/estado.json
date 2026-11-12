@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Notificaciones: anexo legal, frase junto al botón y baja a la vista, commit 1359394",
+  "nota": "Notificaciones web desde Supabase y Cloudflare (33), commit 7faf5bf",
   "revisionAprobada": {
-    "commit": "1359394d811eeaee6511a16518cc31a1bd7cbe0b",
-    "contenidoSha256": "sha256:c455530adb8d862eff56de6ed7453628d284bb075fe30ebfd4de38704fa59403",
+    "commit": "7faf5bfe96dc2deb78abdbf7c26a7033b0bda58e",
+    "contenidoSha256": "sha256:29deca09a619291b7d769afbee9d27fa6829440b702e38f2898ebcf16af91f83",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
