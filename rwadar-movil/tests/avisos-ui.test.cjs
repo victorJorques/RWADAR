@@ -183,7 +183,8 @@ test('alta con el interruptor encendido: casilla opcional, sin marcar, con el te
 /* ---------------------------------------------------------------------
    Perfil › Avisos: hook real + panel, con la 1.4.1 y con la 1.4.2
    --------------------------------------------------------------------- */
-const QUIEN_MOVIL = 'Al activarlas, tu móvil se registra en Firebase Cloud Messaging (Google) y Expo para recibirlas. Más en Privacidad.';
+// Primera capa junto al interruptor: el latido de Firebase, texto exacto del anexo legal (2.4, condición C5).
+const QUIEN_MOVIL = 'Con ellas activadas, el componente de notificaciones de Google (Firebase) envía también a Google las fechas en que abres la app (hasta 30) y datos técnicos del móvil, que usa para sus estadísticas. Si no las activas, no le llega nada y seguirás viendo los avisos en Inicio.';
 function estadoServidor(cambios = {}) {
   return { novedades: false, version: null, aceptado_el: null, version_vigente: avisosCuenta.VERSION_AVISOS,
     texto_es: avisosCuenta.TEXTO_AVISOS_ES, texto_en: avisosCuenta.TEXTO_AVISOS_EN, dispositivos: 0,
@@ -267,7 +268,7 @@ test('Perfil con la 1.4.1 (código 23): el móvil anuncia la 1.4.2, no toca el S
   assert.ok(texto(activado).includes('Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.'));
   assert.doesNotMatch(texto(activado), /enlace de cada correo\./);
   // En la 1.4.1 el móvil no se activa: sin la frase de quién interviene en la entrega.
-  assert.doesNotMatch(texto(activado), /Firebase Cloud Messaging/);
+  assert.doesNotMatch(texto(activado), /componente de notificaciones de Google/);
   assert.deepEqual(p.rpc.find(([n]) => n === 'configurar_avisos_novedades'),
     ['configurar_avisos_novedades', { p_activar: true, p_version: 'novedades-v2-2026-11-06', p_canal: 'app', p_idioma: 'es' }]);
   // Con la app en inglés, el permiso se guarda con p_idioma 'en' (también la baja).
@@ -287,12 +288,17 @@ test('Perfil con la 1.4.2 (código 24): pide permiso solo al pulsar, registra el
   let panel = await p.esperar();
   assert.deepEqual(p.sdk, ['consultar'], 'al abrir solo se consulta, sin pedir permiso');
   assert.ok(texto(panel).includes('Al activarlas, el sistema te pedirá permiso. Guardamos en tu cuenta un identificador de este móvil para entregarte las notificaciones (lo reciben Expo y Google). Se borra al desactivarlas, al cerrar sesión con conexión, al borrar la cuenta o tras 180 días sin usar la app.'));
-  // Primera capa junto al interruptor: quién interviene en la entrega (lo siguiente que se pinta).
+  // Primera capa junto al interruptor, antes de pulsarlo: tras el identificador («envía también») y antes de
+  // cualquier otro botón o mensaje.
   {
     const orden = nodos(panel), interruptor = boton(panel, 'Notificaciones en este móvil');
     const quien = orden.find((n) => n.type === 'Text' && texto(n) === QUIEN_MOVIL);
-    assert.ok(quien, 'falta la frase de quién interviene en la entrega');
-    assert.equal(orden.indexOf(quien), orden.indexOf(interruptor) + nodos(interruptor).length, 'justo después del interruptor');
+    const identificador = orden.find((n) => n.type === 'Text' && /^Al activarlas, el sistema te pedirá permiso/.test(texto(n)));
+    assert.ok(quien, 'falta la frase del latido de Firebase');
+    assert.ok(orden.indexOf(interruptor) < orden.indexOf(identificador) && orden.indexOf(identificador) < orden.indexOf(quien),
+      'después del interruptor y del identificador');
+    assert.equal(orden.slice(orden.indexOf(interruptor) + 1, orden.indexOf(quien)).filter((n) => n?.type === 'Pressable').length, 0,
+      'sin otro botón entre el interruptor y la frase');
   }
   panel = await p.pulsar('Notificaciones en este móvil');
   assert.ok(texto(panel).includes(QUIEN_MOVIL), 'sigue a la vista con las notificaciones activadas');
@@ -340,7 +346,7 @@ test('Perfil en un iPhone: sin la frase de Firebase (allí la entrega sería de 
   const p = perfil({ capacidad: true, plataforma: 'ios' });
   const panel = await p.esperar();
   assert.ok(boton(panel, 'Notificaciones en este móvil'), 'el interruptor sigue');
-  assert.doesNotMatch(texto(panel), /Firebase Cloud Messaging/);
+  assert.doesNotMatch(texto(panel), /componente de notificaciones de Google/);
   p.h.desmontar();
 });
 
@@ -563,6 +569,28 @@ test('Inicio: debajo de la lista, «¿No quieres estos avisos?» lleva a Perfil 
   assert.deepEqual(pulsados, ['perfil', 'perfil']);
   assert.equal(boton(tarjetaViva()({ avisos: [], leidos: [] }), DESACTIVAR), undefined, 'sin destino no se pinta');
   assert.equal(idioma.ingles(DESACTIVAR), "Don't want these notices? Turn them off in Profile or in your phone settings.");
+});
+
+test('Notificación que lleva a Buscar o a la Academy: la baja arriba, con su enlace a Perfil › Avisos y para ocultarla', () => {
+  const h = crearReact(), pulsados = [];
+  const modulo = cargarComponente('AvisosNovedades.js', h.react, { '../lib/avisos': {}, '../lib/datos': {} });
+  const aviso = h.pintar(() => modulo.AvisoBajaNotificacion({ onDesactivar: () => pulsados.push('perfil'), onOcultar: () => pulsados.push('ocultar') }));
+  assert.equal(aviso.props.accessibilityRole, 'alert');
+  const enlace = boton(aviso, DESACTIVAR);
+  assert.ok(enlace, 'falta el enlace de baja');
+  assert.equal(enlace.props.accessibilityRole, 'link');
+  assert.equal(enlace.props.accessibilityHint, 'Abre Perfil › Avisos');
+  assert.ok(texto(enlace).includes(DESACTIVAR));
+  assert.ok(enlace.props.style({ pressed: false }).flat().filter(Boolean).some((e) => e.minHeight >= 48), 'diana táctil de 48');
+  const ocultar = boton(aviso, 'Ocultar aviso');
+  assert.ok(ocultar.props.style({ pressed: false }).flat().filter(Boolean).some((e) => e.minHeight >= 48), 'diana táctil de 48');
+  enlace.props.onPress(); ocultar.props.onPress();
+  assert.deepEqual(pulsados, ['perfil', 'ocultar']);
+  assert.equal(idioma.ingles('Ocultar aviso'), 'Hide notice');
+  // En App.js: arriba (menos en Perfil), el enlace la quita y abre Perfil › Avisos, y cambiar de pestaña también la quita.
+  assert.match(APP, /\{bajaNotificacion && pestana !== 'perfil' \? \(\s*<AvisoBajaNotificacion onOcultar=\{\(\) => setBajaNotificacion\(false\)\}\s*onDesactivar=\{\(\) => \{ setBajaNotificacion\(false\); irAAvisosPerfil\(\); \}\} \/>/);
+  assert.match(APP, /tacto\.eleccion\(\);\n    setBajaNotificacion\(false\);\n    setVistaBuscar\(vista\);/);
+  assert.ok(APP.indexOf('{avisoActualizacion}\n\n        {bajaNotificacion') > 0, 'arriba, con el aviso de actualización');
 });
 
 test('sin cuenta (interruptor apagado) el hook no llama a nada', async () => {
@@ -818,7 +846,7 @@ test('App: tocar una notificación lleva a inicio, a ofertas nuevas o a la Acade
   const crear = new Function('destinoAvisoPendiente', 'cargando', 'usuarioAdmitido', 'setters', 'avisosInicio',
     `const { setAbierta, setOfertaAbierta, setExplicando, setPrivacidad, setLeccion, setPestana, setOrdenOfertas,
       setGrupoOfertas, setTipoOferta, setProveedorOferta, setGrupoProveedorAbierto, setBusquedaOfertas, setVistaBuscar,
-      setDestinoAvisoPendiente } = setters; return (${efectoApp('destinoAvisoPendiente || cargando')});`);
+      setDestinoAvisoPendiente, setBajaNotificacion } = setters; return (${efectoApp('destinoAvisoPendiente || cargando')});`);
   function ejecutar(destino, { cargando = false, usuario = UID } = {}) {
     const cambios = {}, recargas = [];
     const setters = new Proxy({}, { get: (_, nombre) => (valor) => { cambios[nombre] = valor; } });
@@ -837,6 +865,12 @@ test('App: tocar una notificación lleva a inicio, a ofertas nuevas o a la Acade
   assert.equal(Object.hasOwn(novedad.cambios, 'setOrdenOfertas'), false);
   assert.equal(ejecutar({ tipo: 'bienvenida', destino: 'academy' }).cambios.setPestana, 'academy');
   assert.equal(ejecutar({ tipo: 'actualizacion', destino: 'inicio' }).cambios.setPestana, 'inicio');
+  // Fuera de Inicio (sin la tarjeta «Avisos»), la baja arriba; la bienvenida es un aviso de servicio.
+  assert.equal(ofertas.cambios.setBajaNotificacion, true);
+  assert.equal(novedad.cambios.setBajaNotificacion, true);
+  assert.equal(ejecutar({ tipo: 'novedad', destino: 'academy' }).cambios.setBajaNotificacion, true);
+  assert.equal(ejecutar({ tipo: 'actualizacion', destino: 'inicio' }).cambios.setBajaNotificacion, false);
+  assert.equal(ejecutar({ tipo: 'bienvenida', destino: 'academy' }).cambios.setBajaNotificacion, false);
   assert.deepEqual(ejecutar({ tipo: 'ofertas', destino: 'buscar' }, { cargando: true }).cambios, {});
   assert.deepEqual(ejecutar({ tipo: 'ofertas', destino: 'buscar' }, { usuario: null }).cambios, {});
   assert.deepEqual(ejecutar(null).cambios, {});
@@ -992,7 +1026,7 @@ test('todos los textos nuevos de la interfaz tienen su inglés en el diccionario
   assert.equal(idioma.ingles('Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.'),
     'News notices turned on. You can unsubscribe here whenever you like.');
   assert.equal(idioma.ingles(QUIEN_MOVIL),
-    'When you turn them on, your phone registers with Firebase Cloud Messaging (Google) and Expo to receive them. More in Privacy.');
+    "With them turned on, Google's notification component (Firebase) also sends Google the dates you open the app (up to 30) and technical details about your phone, which Google uses for its statistics. If you don't turn them on, nothing reaches Google and you will still see your notices on Home.");
   assert.equal(idioma.ingles('Ver todos (7)'), 'Show all (7)');
   assert.equal(idioma.ingles('Ver menos'), 'Show less');
   assert.equal(idioma.ingles('4 sin leer'), '4 unread');
@@ -1040,6 +1074,9 @@ test('el panel y la tarjeta se renderizan también con React y react-native-web 
     assert.match(html, /Información básica sobre tus datos\. Responsable: Víctor Manuel Jorques Granero \(RWAdar\)\./);
     assert.doesNotMatch(html, /undefined|ExponentPushToken/);
   }
+  const baja = renderToStaticMarkup(React.createElement(modulo.AvisoBajaNotificacion, { onDesactivar() {}, onOcultar() {} }));
+  assert.match(baja, /¿No quieres estos avisos\? Desactívalos en Perfil o en los ajustes del móvil\./);
+  assert.match(baja, /aria-label="Ocultar aviso"/);
   const avisos = avisosCuenta.validarAvisosRecientes(RECIENTES);
   const html = renderToStaticMarkup(React.createElement(modulo.TarjetaAvisosInicio, { avisos, leidos: ['9'], onDesactivar() {} }));
   assert.match(html, /Te damos la bienvenida a RWAdar/);

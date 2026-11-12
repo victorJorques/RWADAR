@@ -56,9 +56,11 @@ const MENSAJES = {
 // Qué se guarda al activar «Notificaciones en este móvil», quién lo recibe y
 // cuándo se borra (revisión legal del 06/11/2026).
 const TEXTO_MOVIL = 'Al activarlas, el sistema te pedirá permiso. Guardamos en tu cuenta un identificador de este móvil para entregarte las notificaciones (lo reciben Expo y Google). Se borra al desactivarlas, al cerrar sesión con conexión, al borrar la cuenta o tras 180 días sin usar la app.';
-// Primera capa junto a «Notificaciones en este móvil»: quién interviene en la
-// entrega (texto provisional del 12/11/2026; el anexo legal puede pulirlo).
-const TEXTO_MOVIL_QUIEN = 'Al activarlas, tu móvil se registra en Firebase Cloud Messaging (Google) y Expo para recibirlas. Más en Privacidad.';
+// Primera capa junto a «Notificaciones en este móvil»: el «latido» de
+// Firebase que sale hacia Google al activarlas. Texto exacto del anexo legal
+// (docs/legal/ANEXO-NOTIFICACIONES-2026-11-12.md, 2.4): sin él no vale el
+// consentimiento de la LSSI, art. 22.2 (condición C5).
+const TEXTO_MOVIL_QUIEN = 'Con ellas activadas, el componente de notificaciones de Google (Firebase) envía también a Google las fechas en que abres la app (hasta 30) y datos técnicos del móvil, que usa para sus estadísticas. Si no las activas, no le llega nada y seguirás viendo los avisos en Inicio.';
 // Enlace de baja de la tarjeta «Avisos» de Inicio.
 const TEXTO_DESACTIVAR = '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.';
 
@@ -346,15 +348,15 @@ export function PanelAvisosNovedades({ estado, onAlternarNovedades, onAlternarMo
       <View style={s.divisor} />
       <Interruptor etiqueta="Notificaciones en este móvil" activo={movil?.activo === true}
         deshabilitado={!!procesando || !puedeMovil} ocupado={procesando === 'movil'} onPress={onAlternarMovil} />
-      {/* Quién interviene en la entrega, junto al interruptor. No en la 1.4.1
-          ni en un dispositivo que no puede recibirlas: ahí no se activan.
-          Solo en Android (la app que se publica): en un iPhone la entrega
-          sería de Apple, no de Firebase. */}
-      {Platform.OS === 'android' && movil && !['requiere-version', 'no-disponible'].includes(movil.estado)
-        ? <Text style={s.nota}>{TEXTO_MOVIL_QUIEN}</Text> : null}
       {notaMovil ? <Text style={s.nota}>{notaMovil}</Text> : null}
       {/* Volver a activarlas vuelve a guardar el identificador: se explica igual. */}
       {movil?.estado === 'no-registrado' ? <Text style={s.nota}>{TEXTO_MOVIL}</Text> : null}
+      {/* El latido de Firebase, junto al interruptor y tras el identificador
+          («envía también»). También con ellas activadas. No en la 1.4.1 ni en
+          un dispositivo que no puede recibirlas: ahí no se activan. Solo en
+          Android (la app que se publica): en un iPhone no hay Firebase. */}
+      {Platform.OS === 'android' && movil && !['requiere-version', 'no-disponible'].includes(movil.estado)
+        ? <Text style={s.nota}>{TEXTO_MOVIL_QUIEN}</Text> : null}
       {(movil?.estado === 'denegado' || movil?.estado === 'sin-permiso') && onAjustes
         ? <Boton texto="Abrir ajustes" onPress={onAjustes} /> : null}
       {estado.mensaje ? <Text style={s.mensaje}>{estado.mensaje}</Text> : null}
@@ -368,6 +370,26 @@ function fechaCorta(iso) {
   if (!Number.isFinite(fecha.getTime())) return '';
   const dos = (n) => String(n).padStart(2, '0');
   return `${dos(fecha.getDate())}/${dos(fecha.getMonth() + 1)}/${fecha.getFullYear()}`;
+}
+
+/* Baja a la vista al abrir una notificación de novedades que lleva a Buscar
+   o a la Academy, donde no está la tarjeta «Avisos» de Inicio. Como en la web
+   (?avisos=1), cada aviso enseña cómo dejar de recibirlos (LSSI, art. 21.2,
+   párr. 2; condición C7 del anexo legal). `onDesactivar` lleva a Perfil ›
+   Avisos y `onOcultar` lo quita. */
+export function AvisoBajaNotificacion({ onDesactivar, onOcultar }) {
+  return (
+    <View style={s.bajaAviso} accessibilityRole="alert" accessibilityLiveRegion="polite">
+      <Pressable onPress={onDesactivar} accessibilityRole="link" accessibilityLabel={TEXTO_DESACTIVAR}
+        accessibilityHint="Abre Perfil › Avisos" style={({ pressed }) => [s.bajaAvisoEnlace, pressed && s.pulsado]}>
+        <Text style={s.enlace}>{TEXTO_DESACTIVAR}</Text>
+      </Pressable>
+      <Pressable onPress={onOcultar} accessibilityRole="button" accessibilityLabel="Ocultar aviso" hitSlop={10}
+        style={({ pressed }) => [s.bajaAvisoCerrar, pressed && s.pulsado]}>
+        <Text noTraducir style={s.bajaAvisoCerrarTexto}>×</Text>
+      </Pressable>
+    </View>
+  );
 }
 
 /* Inicio › Avisos: los últimos, con un punto en los que no has abierto.
@@ -473,4 +495,9 @@ const s = StyleSheet.create({
   b3Texto: { fontFamily: F.semi, fontSize: 15, lineHeight: 20, color: C.senal },
   enlaceBaja: { minHeight: UI.tactil, justifyContent: 'center' },
   enlace: { ...T.menor, color: C.senal, textDecorationLine: 'underline' },
+  bajaAviso: { alignSelf: 'stretch', flexDirection: 'row', alignItems: 'center', gap: 8, paddingLeft: 16, paddingRight: 8,
+    backgroundColor: C.s1, borderBottomWidth: 1, borderBottomColor: C.bd },
+  bajaAvisoEnlace: { flex: 1, minWidth: 0, minHeight: UI.tactil, justifyContent: 'center', paddingVertical: 6 },
+  bajaAvisoCerrar: { width: 40, minHeight: UI.tactil, alignItems: 'center', justifyContent: 'center' },
+  bajaAvisoCerrarTexto: { fontSize: 22, lineHeight: 24, color: C.tx2 },
 });
