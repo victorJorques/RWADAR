@@ -11,10 +11,10 @@
     "cobros": false
   },
   "comisionVariableSobreInversion": false,
-  "nota": "Sesión que se mantiene, sin el nombre y notificaciones sin atascos, commit 65b0654",
+  "nota": "Sin el nombre del titular en lo que ven los usuarios, commit 0ea20e8",
   "revisionAprobada": {
-    "commit": "65b0654fa065344cc7769f452a6ac5c8aeb93a42",
-    "contenidoSha256": "sha256:d27a6d2ee10d2d9776e449a57a9b7e67d44107e50eaf0bf13c349d4a0c23c091",
+    "commit": "0ea20e83721b11360e59793259e1b166a9925ea8",
+    "contenidoSha256": "sha256:7ddfeea4e6f002489550e7c52ba7533cc194b89a0c971a1ae8130d0bfcadf7e6",
     "alcanceSha256": "sha256:3b222495da245ad4c2cb649b79f0a870749fc40382b1035b37aa3a5554bb645b"
   },
   "controles": {
