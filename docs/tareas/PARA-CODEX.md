@@ -6,6 +6,46 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (4) · Claude · Notificaciones que saltan en el móvil: base, remitente y flujos (migración 32)
+
+Encargo de Víctor: «que las notificaciones salten al móvil tipo WhatsApp y
+además salga un 1 en la app». Esta parte es la base, el envío y los flujos;
+la web (service worker, botón en Perfil, pasarela) va aparte. Commits en la
+rama del worktree, **sin push, sin publicar, Supabase sin tocar**.
+
+- **Migración 32** (`rwadar-app/db/32_notificaciones.sql` y su copia
+  idéntica `supabase/migrations/20261112130000_notificaciones.sql`). Solo
+  añade; no enciende nada ni reinicia la configuración.
+  - El push de Expo sale con prioridad alta (`enviar_push` igual que en la 30
+    salvo `'priority', 'high'`). Reaplicar la 30 lo devuelve a `default`:
+    después hay que reaplicar la 31 y la 32 (el verificador 32 lo detecta).
+  - Notificaciones web: tablas privadas `suscripciones_web` (como mucho 5 por
+    cuenta, solo los servicios de push de Google, Mozilla, Apple y Microsoft)
+    y `envios_web`; RPC `registrar_aviso_webpush`, `quitar_aviso_webpush`,
+    `mi_aviso_webpush_registrado` y `clave_publica_webpush` (sesión
+    confirmada, solo `authenticated`); internas `webpush_pendientes`,
+    `webpush_resultado`, `webpush_prueba` (solo `perfiles.es_admin`) y
+    `webpush_limpiar`. Mismo interruptor que Expo: `push_habilitado`.
+  - Verificador `32_notificaciones_verificar.sql`; clave VAPID con
+    `32_notificaciones_vapid.sql`; resultados con
+    `32_notificaciones_resultado.sql`.
+- **Remitente** `rwadar-app/enviar-webpush.mjs`: solo `node:crypto` y
+  `fetch` (RFC 8291 y RFC 8292), sin npm.
+- **Flujos:** «Avisos a registrados (base)» gana `ensayo-32`, `verificar-32`,
+  `aplicar-32`, `crear-vapid` y `rotar-vapid`; nuevo «Notificaciones web»
+  (`enviar` y `prueba`, escribiendo ENVIAR); «Avisar novedad» lo lanza
+  después de cada anuncio.
+- **Pruebas:** `node rwadar-app/probar-notificaciones.mjs` (87/87, nueva, en
+  `npm test`), `probar-avisos-registrados.mjs` (275/275), `npm --prefix
+  rwadar-app test` entero y `.github/*.test.mjs` (103/103) pasan; gitleaks
+  sin hallazgos en lo cambiado.
+- **Pendiente, con orden de Víctor y por este orden:** unir el PR; en
+  «Avisos a registrados (base)», `ensayo-32`, después `aplicar-32` y
+  `crear-vapid` (AVISOS); publicar la web con su parte; Víctor activa las
+  notificaciones en su iPhone (web en la pantalla de inicio) y se lanza
+  «Notificaciones web» con `prueba`; encender el envío para todos
+  (`activar-push`) es otra orden, con el texto de privacidad revisado.
+
 ## 12 de noviembre de 2026 (2) · Claude · «¿Quieres colaborar con nosotros?» y correo de contacto único, publicados
 
 Víctor: «Añade un apartado al final de Inicio y Perfil tipo ¿Quieres colaborar con nosotros? Y el correo de contacto rwadares@gmail.com»; después, «Sí, cámbialo» (también en lo legal).
