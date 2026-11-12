@@ -3170,13 +3170,14 @@ prueba('la privacidad explica cookie necesaria, enlaces limpios y retirada de la
   /se canjean una vez y se\s+retiran de la dirección/.test(privacidad) &&
   /history\.replaceState\(null,'',location\.pathname\+location\.search\)/.test(js) &&
   /elimina la antigua caché PWA/.test(privacidadLineal));
-prueba('la privacidad describe favoritos locales y push cerrado sin prometer borrado histórico',
+// 12/11/2026: las notificaciones del móvil ya se pueden activar (app 1.4.2 y web en el móvil).
+prueba('la privacidad describe favoritos locales y las notificaciones del móvil, ya activables, sin prometer borrado histórico',
   /favoritos solo en el dispositivo/.test(privacidadLineal) &&
-  /no obtiene ni registra tokens push/.test(privacidadLineal) &&
-  /no quedan revocados por esta pausa/.test(privacidadLineal) &&
-  /entrega automática está desactivada/.test(privacidadLineal) &&
-  /no se ha probado entera, de principio a fin/.test(privacidadLineal) &&
-  /Los avisos de nuevas emisiones tampoco están conectados/.test(privacidadLineal));
+  privacidadLineal.includes('<p id="notificaciones-movil"><b>Notificaciones en el móvil:</b> ya puedes activarlas en Perfil › Avisos, con «Notificaciones en este móvil»') &&
+  /en la app de Android desde la versión 1\.4\.2 y en la web desde el navegador del móvil o la tableta \(en iPhone y iPad, con RWAdar añadida a la pantalla de inicio\)/.test(privacidadLineal) &&
+  /La app no crea una identidad remota de instalación ni activa seguimiento por instalación/.test(privacidadLineal) &&
+  /no quedan revocados por los cambios de versión/.test(privacidadLineal) &&
+  !/no obtiene ni registra tokens push|entrega automática está desactivada|Los avisos de nuevas emisiones tampoco están conectados|no solicita permiso de\s+notificaciones/.test(privacidadLineal));
 prueba('la privacidad tampoco promete correos de cambio del radar',
   /entrega de correos por cambios del radar[\s\S]*todavía no está activa/.test(privacidadLineal));
 prueba('privacidad y UI permiten solicitar la retirada del consentimiento anterior sin recoger otro',
@@ -3195,7 +3196,8 @@ prueba('privacidad distingue consulta pública y cuenta confirmada para funcione
   /cuenta de Gmail de RWAdar/.test(privacidadLineal) &&
   /cookie de sesión necesaria/.test(privacidadLineal) &&
   /borrar tu cuenta tú mismo/.test(privacidadLineal) &&
-  /opiniones,\s+los avisos por correo y los avisos push\s+siguen en pausa/i.test(privacidadLineal) &&
+  /opiniones y\s+los avisos por correo siguen en pausa/i.test(privacidadLineal) &&
+  /Las notificaciones en el móvil solo llegan si\s+las activas tú en Perfil › Avisos/.test(privacidadLineal) &&
   /id="derechos"/.test(privacidad) && /El titular verificará la identidad/.test(privacidadLineal) &&
   !/Las altas, el acceso y la recuperación de cuentas están en pausa/.test(privacidadLineal) &&
   /const SERVICIOS_USUARIO_REMOTOS=true;/.test(js) &&
@@ -3234,8 +3236,9 @@ prueba('privacidad: la Academy es gratuita con cuenta y no guardamos qué leccio
   privacidadLineal.includes('para abrir una lección comprobamos tu sesión; no guardamos qué lecciones lees') &&
   /con la que también abres las lecciones de RWAdar Academy/.test(privacidadLineal) &&
   !/consultar la web de RWAdar sin registrarte/.test(privacidadLineal));
-prueba('privacidad: los avisos de novedades se explican y todavía no están activos',
-  /<h3 id="avisos-novedades">Avisos de novedades \(correo y notificaciones\)<\/h3>\s*<p><b>Todavía no están activos\.<\/b>/.test(privacidad) &&
+prueba('privacidad: los avisos de novedades se explican, ya se activan en Perfil y el correo todavía no sale',
+  /<h3 id="avisos-novedades">Avisos de novedades \(correo y notificaciones\)<\/h3>\s*<p><b>Ya puedes activarlos en Perfil › Avisos\.<\/b> El envío por correo todavía no está activo y\s+la casilla del alta todavía no se muestra/.test(privacidad) &&
+  !/Todavía no están activos/.test(privacidad) &&
   /casilla aparte y sin marcar/.test(privacidadLineal) && /<code>novedades-v2-2026-11-06<\/code>/.test(privacidad) &&
   !/novedades-v1-2026-11-05/.test(privacidad) &&
   /el permiso se guarda solo cuando confirmas el correo/.test(privacidadLineal) &&
@@ -3252,7 +3255,8 @@ prueba('privacidad: los avisos de novedades se explican y todavía no están act
   prueba('privacidad: el componente de notificaciones de Google de la 1.4.2, sin prometer el botón oculto, y la fecha al día',
     privacidadLineal.includes('<p id="firebase-android"><b>Componente de notificaciones de Google (Firebase) en Android:</b>') &&
     /^[^]*?desde la versión 1\.4\.2, la app de Android lleva el componente de notificaciones de Google \(Firebase Cloud Messaging\)\./.test(firebase) &&
-    /^[^]*?Mientras no se activen «Notificaciones en este móvil», no envía nada a Google; hoy ese botón no aparece en la app\./.test(firebase) &&
+    /^[^]*?Mientras no actives «Notificaciones en este móvil», no envía nada a Google\. Aun así/.test(firebase) &&
+    !/hoy ese botón no aparece en la app/.test(firebase) &&
     /^[^]*?las fechas recientes en que se abrió la app \(hasta 30\)/.test(firebase) &&
     // Lo que manda Firebase y para qué, según la guía de Google para Play (firebase.google.com/docs/android/play-data-disclosure):
     // el «Firebase user agent», para sus estadísticas internas, no para entregar las notificaciones (revisión del 07/11/2026).
@@ -3262,7 +3266,7 @@ prueba('privacidad: los avisos de novedades se explican y todavía no están act
     /^[^]*?Esas fechas se borran del móvil al desinstalar la app o al borrar sus datos desde los ajustes de Android\. El botón «Borrar datos del dispositivo» de RWAdar no las borra\.<\/p>/.test(firebase) &&
     privacidadLineal.indexOf('<p id="firebase-android">') < privacidadLineal.indexOf('<h2>6 · Correos de servicio</h2>') &&
     privacidadLineal.includes('<a href="#firebase-android">apartado 5</a>') &&
-    privacidad.includes('Versión revisada el <time datetime="2026-11-07">7 de noviembre de 2026</time>'));
+    privacidad.includes('Versión revisada el <time datetime="2026-11-12">12 de noviembre de 2026</time>'));
 }
 // Revisión legal del 06/11/2026: lo que ya es cierto con los avisos todavía apagados.
 const seccionAvisos =privacidadLineal.slice(privacidadLineal.indexOf('<h3 id="avisos-novedades">'), privacidadLineal.indexOf('<h2 id="consultas-b2b">'));
@@ -3275,9 +3279,9 @@ prueba('privacidad: condiciones de la cuenta dentro de #condiciones (adonde va /
   /Puedes borrarla cuando quieras desde Perfil/.test(seccionCondiciones) &&
   /lo avisaremos en la web y, cuando el cambio sea importante, te pediremos que las aceptes de nuevo/.test(seccionCondiciones));
 prueba('privacidad: baja, retirada, conservación bloqueada y Lettermint (UE, sin el nombre ni seguimiento) en los avisos',
-  /<b>Todavía no están activos\.<\/b>/.test(seccionAvisos) && /fichas nuevas en el radar/.test(seccionAvisos) &&
+  /<b>Ya puedes activarlos en Perfil › Avisos\.<\/b>/.test(seccionAvisos) && /fichas nuevas en el radar/.test(seccionAvisos) &&
   !/ofertas nuevas/.test(seccionAvisos) &&
-  /darte de baja en Perfil o con el enlace de cada correo/.test(seccionAvisos) &&
+  /darte de baja en Perfil y, cuando haya correos, con el enlace de cada\s+correo/.test(seccionAvisos) &&
   /Las notificaciones también se quitan en los ajustes del móvil/.test(seccionAvisos) &&
   seccionAvisos.includes('Puedes retirar tu permiso cuando quieras, sin que afecte a los envíos anteriores.') &&
   /el permiso y su historial de altas y bajas, mientras exista la cuenta/.test(seccionAvisos) &&
@@ -3296,6 +3300,17 @@ prueba('privacidad: baja, retirada, conservación bloqueada y Lettermint (UE, si
   /historial de ese permiso \(sus altas y bajas\), que queda bloqueado durante 3 años/.test(privacidadLineal) &&
   /documentados en el registro de actividades de tratamiento de RWAdar/.test(privacidadLineal) &&
   !/deben documentarse en el registro interno/.test(privacidadLineal));
+prueba('privacidad: notificaciones en la web (qué se guarda, quién las entrega, cifradas, cuándo se borran) y lo que guarda el navegador',
+  privacidadLineal.includes('<li id="notificaciones-web"><b>Notificaciones en la web:</b> solo se ofrecen en móviles y tabletas') &&
+  /guardamos en tu cuenta la suscripción de tu navegador: la dirección del servicio de\s+notificaciones de tu navegador y sus dos claves de cifrado/.test(privacidadLineal) &&
+  /Se borra al desactivarlas, al\s+cerrar sesión, cuando ese servicio la da por caducada o al borrar la cuenta/.test(privacidadLineal) &&
+  /Apple \(Safari\), Google \(Chrome y la mayoría de navegadores de\s+Android\), Mozilla \(Firefox\) o Microsoft \(Edge\)/.test(privacidadLineal) &&
+  /cifrada de extremo a\s+extremo con las claves de tu navegador, así que ese servicio no puede leer su texto/.test(privacidadLineal) &&
+  /<b>Servicios de notificaciones de los navegadores<\/b> \(Apple, Google, Mozilla o Microsoft,/.test(privacidadLineal) &&
+  /<td>Avisos leídos y <br>número del icono<\/td>/.test(privacidad) &&
+  /Es lo estrictamente necesario para esas funciones y no sale del navegador/.test(privacidadLineal) &&
+  /el número vuelve a 0 al ver los avisos o al cerrar sesión/.test(privacidadLineal) &&
+  /<b>Base jurídica:<\/b> tu consentimiento/.test(seccionAvisos));
 prueba('privacidad: los datos locales cuentan la vuelta a la lección de 24 horas y su borrado',
   /En la web, al crear la cuenta desde una lección, el navegador guarda durante 24 horas a qué lección volver; se borra al usarlo o al caducar\./.test(privacidadLineal) &&
   /const CLAVE_VOLVER = 'rwadar\.alta\.volver', DURACION_VOLVER = 24 \* 60 \* 60 \* 1000;/.test(accesoJS) &&
@@ -3303,18 +3318,49 @@ prueba('privacidad: los datos locales cuentan la vuelta a la lección de 24 hora
 // Texto versionado v2 y la información básica (fuera de la versión), en /acceso y en Perfil.
 const TEXTO_AVISOS_V2 = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en ';
 const INFO_DATOS = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en ';
-prueba('acceso y Perfil: casilla de 18 años y avisos de novedades apagados por defecto',
+// 12/11/2026: Perfil › Avisos encendido en la web; la casilla del alta, con su propio interruptor, sigue apagada.
+prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada y Perfil › Avisos encendido',
   /Tengo 18 años o más, acepto las <a href="\/privacidad#condiciones">condiciones<\/a> y he leído la <a href="\/privacidad">privacidad<\/a>\./.test(accesoHTML) &&
   accesoHTML.includes('<label id="campo-avisos-novedades" hidden class="consentimiento"><input id="avisos-novedades" type="checkbox">' + TEXTO_AVISOS_V2 + '<a href="/privacidad#avisos-novedades">Privacidad</a>.</label>') &&
   accesoHTML.includes('<div id="info-datos" hidden class="consentimiento">' + INFO_DATOS + '<a href="/privacidad">Privacidad</a>.</div>') &&
   panelPerfilHTML.includes('<span>' + TEXTO_AVISOS_V2 + '<a href="/privacidad#avisos-novedades">Privacidad</a>.</span>') &&
   panelPerfilHTML.includes('<p class="perfil-aviso-detalle" id="perfilNovedadesDatos">' + INFO_DATOS + '<a href="/privacidad">Privacidad</a>.</p>') &&
   / const VERSION_AVISOS_NOVEDADES='novedades-v2-2026-11-06';/.test(js) &&
-  /const AVISOS_NOVEDADES_REMOTOS = false;/.test(accesoJS) && / const AVISOS_NOVEDADES_REMOTOS=false;/.test(js) &&
+  /const AVISOS_CASILLA_ALTA = false;/.test(accesoJS) && !/AVISOS_NOVEDADES_REMOTOS =/.test(accesoJS) &&
+  / const AVISOS_NOVEDADES_REMOTOS=true;/.test(js) && / const AVISOS_BANDEJA_REMOTA=true;/.test(js) && / const AVISOS_WEBPUSH_REMOTO=true;/.test(js) &&
   /<div id="perfilAvisosProximamente">\s*<article class="movil-estado">/.test(panelPerfilHTML) &&
   /<div id="perfilAvisosNovedades" hidden>\s*<article class="movil-estado">/.test(panelPerfilHTML) &&
   !/<article class="movil-estado"[^>]*\shidden/.test(panelPerfilHTML) &&
   /Los avisos llegarán a la app en una próxima actualización\./.test(panelPerfilHTML));
+// Campana con número y «Notificaciones en este móvil» (12/11/2026): su inglés va en un diccionario
+// solo de la web (el común es copia exacta del de la app), cargado entre el común y el motor.
+{
+  const enComun = require('./rwadar-site/assets/idioma-en-20261022.js');
+  const enAvisos = require('./rwadar-site/assets/idioma-en-avisos-20261112.js');
+  const textosPush = [...(js.match(/ const TEXTOS_PUSH=\{([\s\S]*?)\n \};/) || [, ''])[1].matchAll(/:'([^']+)'/g)].map(m => m[1]);
+  const fijos = ['Avisos, ninguno sin leer', 'Tus avisos', 'Ver tus avisos', 'Notificaciones y avisos en Perfil', 'Marcar como leídos', 'Sin leer',
+    'Notificaciones en este móvil', 'Activar notificaciones en este móvil', 'Desactivar las notificaciones de este móvil', 'Ver cómo añadirla',
+    'Pulsa el botón Compartir (un cuadrado con una flecha hacia arriba).', 'Elige «Añadir a pantalla de inicio» y pulsa Añadir.',
+    'Abre RWAdar desde el icono nuevo, entra en tu cuenta y vuelve a Perfil › Avisos.', 'Un momento…',
+    'Notificaciones activadas en este móvil.', 'Notificaciones desactivadas en este móvil.',
+    'El envío por correo todavía no está activo.', 'El envío por correo y al móvil todavía no está activo. Mientras tanto, los avisos se ven en la campana.'];
+  const sinIngles = [...textosPush, ...fijos].filter(t => typeof (enAvisos[t] ?? enComun[t]) !== 'string');
+  const scriptsIndex = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(m => m[1]);
+  const iComun = scriptsIndex.indexOf('/assets/idioma-en-20261022.js'), iAvisos = scriptsIndex.indexOf('/assets/idioma-en-avisos-20261112.js');
+  prueba(`campana y notificaciones: cada texto tiene su inglés (sin traducir: ${sinIngles.join(' | ') || 'ninguno'}) y el diccionario de la web va entre el común y el motor`,
+    textosPush.length === 11 && sinIngles.length === 0 && iComun >= 0 && iAvisos === iComun + 1 &&
+    scriptsIndex[iAvisos + 1] === '/assets/idioma-20261022.js' &&
+    Object.keys(enAvisos).every(k => !Object.hasOwn(enComun, k)) &&
+    /const suma=Object\.assign\(\{\},extra,base\);/.test(lee('assets/idioma-en-avisos-20261112.js')));
+  prueba('campana: botones con sesión en las dos cabeceras, número oculto al nacer, anuncio educado y hueco de las notificaciones en Perfil',
+    /<button class="hdr-campana campana" id="btnAvisos" type="button" hidden aria-label="Avisos, ninguno sin leer">/.test(html) &&
+    /<button class="movil-cabecera-accion movil-campana campana" id="movilAvisos" type="button" hidden aria-label="Avisos, ninguno sin leer">/.test(html) &&
+    /<span class="campana-n" id="btnAvisosN" aria-hidden="true" translate="no" hidden>0<\/span>/.test(html) &&
+    /<p class="solo-lector" id="avisosAnuncio" aria-live="polite" aria-atomic="true"><\/p>/.test(html) &&
+    /<div id="perfilPushHueco" hidden><\/div>/.test(panelPerfilHTML) && /<p class="perfil-aviso-detalle" id="perfilNovedadesCorreo" hidden><\/p>/.test(panelPerfilHTML) &&
+    /navigator\.setAppBadge/.test(js) && /navigator\.clearAppBadge/.test(js) && /CLAVE_LEIDOS='rwadar\.avisos\.leidos\.v1:'/.test(js) &&
+    /self\.addEventListener\('push'/.test(sw) && /showNotification\(/.test(sw) && /self\.addEventListener\('notificationclick'/.test(sw));
+}
 marcadoEstricto('baja.html', bajaHTML);
 // El mismo asunto que el pie y List-Unsubscribe de los correos de avisos.
 const MAILTO_BAJA = 'mailto:rwadares@gmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
