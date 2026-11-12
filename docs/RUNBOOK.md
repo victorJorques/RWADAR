@@ -208,6 +208,8 @@ lecciones o si una lección publicada no está en la lista cerrada
 Plan, activación y textos:
 [`tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
 Revisión legal: [`legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`](legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md).
+Condiciones antes de encender el envío para todos (`activar-push`):
+[`legal/ANEXO-NOTIFICACIONES-2026-11-12.md`](legal/ANEXO-NOTIFICACIONES-2026-11-12.md), apartado 4.
 Contratos de encargo: [`legal/encargados/README.md`](legal/encargados/README.md).
 
 - **La base se toca solo desde GitHub**, con el flujo «Avisos a registrados

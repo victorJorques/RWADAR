@@ -1,9 +1,11 @@
 # Registro de actividades de tratamiento · RWAdar
 
-**Fecha:** 12/11/2026 (versión 5: notificaciones en la web, Web Push, con la
-migración 32, y el permiso de avisos que ya se recoge en Perfil. La versión 4,
-del mismo día: el buzón de RWAdar pasa a ser el Gmail rwadares@gmail.com. Ver
-el historial al final).
+**Fecha:** 12/11/2026 (versión 6: lo que concluye el
+[anexo legal de las notificaciones](ANEXO-NOTIFICACIONES-2026-11-12.md) sobre
+los servicios de push de los navegadores, sus transferencias y el «latido» de
+Firebase, y las condiciones para encender el envío. La versión 5, del mismo
+día: notificaciones en la web, Web Push, con la migración 32. Ver el historial
+al final).
 **Quién lo lleva:** Víctor Manuel Jorques Granero, titular de RWAdar y
 responsable del tratamiento. Es quien lo mantiene al día y lo entrega a la
 Agencia Española de Protección de Datos (AEPD) si lo pide (RGPD, art. 30.4).
@@ -25,7 +27,9 @@ plazos de los registros técnicos.
 marcado:
 
 - [`rwadar-site/privacidad.html`](../../rwadar-site/privacidad.html), versión
-  revisada el 06/11/2026 y publicada ese día (en este documento, «privacidad
+  revisada el 12/11/2026 (la publicada ese día con la web n.º 71, más lo del
+  anexo, que falta publicar); la primera de este registro fue la del
+  06/11/2026 (en este documento, «privacidad
   §N»).
 - [`docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md`](../tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md)
   («contrato de avisos»).
@@ -42,6 +46,11 @@ marcado:
 - La revisión legal del 06/11/2026 (§§ 4.5, 4.11, 4.13 y 5.1) y su contraste
   (puntos 1, 3, 7, 9, 11, 15 y 16). El RUNBOOK la enlaza como
   `docs/legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`.
+- El [anexo legal de las notificaciones](ANEXO-NOTIFICACIONES-2026-11-12.md)
+  del 12/11/2026 («el anexo»): servicios de push de los navegadores, sus
+  transferencias, el «latido» de Firebase, la baja en cada aviso y las
+  condiciones para encender el envío. Sus consultas a la lista oficial del
+  DPF están en `encargados/2026-11-12-dpf-*.json`.
 - Para detalles concretos: [`SECURITY.md`](../../SECURITY.md),
   [`docs/INTERNO.md`](../INTERNO.md), `rwadar-acceso/servidor.mjs` y
   `rwadar-app/db/29_cartera_cuenta.sql`.
@@ -141,12 +150,12 @@ Mail ya no es proveedor (ver debajo de la tabla).
 |---|---|---|---|---|---|
 | **Supabase** | Base de datos y autenticación | Proyecto en eu-west-1 (Irlanda, UE). Firma Supabase Pte. Ltd. (Singapur) | No está en el DPF (consulta del 06/11/2026). Su DPA incluye las SCC, módulo 2, para cualquier acceso desde fuera de la UE | DPA v1 del 01/08/2026, incorporado a sus condiciones (§7.b): no hay que firmar nada. Archivado ([encargados](encargados/README.md#supabase)) | A1-A7, A9, A10, A13, A14 |
 | **Cloudflare** | Alojamiento (Pages), servidor web que gestiona la sesión, CDN, seguridad y Web Analytics | EE. UU., red mundial | Marco de Privacidad de Datos UE-EE. UU. (DPF), activo el 06/11/2026; si cae, SCC módulo 2 (DPA §6.2 y §6.4) | DPA v6.4 del 03/04/2026, incorporado por referencia en su acuerdo de autoservicio (§6.1): no hay que firmar nada. Archivado ([encargados](encargados/README.md#cloudflare)) | A1-A3, A10, A12 |
-| **Netlify** | Página de limpieza de la app web antigua en rwadar.netlify.app (sigue haciendo falta mientras pueda quedar alguna instalada; ver [encargados](encargados/README.md#netlify)) | EE. UU. (Netlify, Inc., San Francisco) | DPF según su DPA (§14.2); si cae, SCC módulo 2 (§14.3). Su entrada en la lista oficial del DPF, **verificar** | DPA del 09/06/2026, incorporado a su acuerdo de autoservicio (§6.5), que cubre también el plan gratuito: no hay que firmar nada. Archivado ([encargados](encargados/README.md#netlify)) | A10 |
+| **Netlify** | Página de limpieza de la app web antigua en rwadar.netlify.app (sigue haciendo falta mientras pueda quedar alguna instalada; ver [encargados](encargados/README.md#netlify)) | EE. UU. (Netlify, Inc., San Francisco) | DPF según su DPA (§14.2); si cae, SCC módulo 2 (§14.3). En la lista oficial del DPF: Netlify, Inc (n.º 6208), «Active» el 12/11/2026 (el anexo, apartado 6) | DPA del 09/06/2026, incorporado a su acuerdo de autoservicio (§6.5), que cubre también el plan gratuito: no hay que firmar nada. Archivado ([encargados](encargados/README.md#netlify)) | A10 |
 | **Google (Gmail)** | La cuenta de Gmail de RWAdar, rwadares@gmail.com. **Desde el 12/11/2026 es el buzón de RWAdar:** consultas, derechos, bajas por correo, empresas, reportes de seguridad y contactos profesionales de presentación. También es la dirección de respuesta de los avisos. Además envía, por SMTP de Supabase Auth, la confirmación y la recuperación de la contraseña | EE. UU. (verificar) | No documentadas para este uso. Google LLC figura «Active» en el DPF (consulta del 06/11/2026, ver Firebase) y sus SCC constan en las condiciones de Firebase, pero nada de eso está documentado para una cuenta de Gmail de consumo. **verificar** | **No hay. Hueco abierto:** es una cuenta de consumo, sin contrato de encargo del art. 28 RGPD (revisión legal 5.8; contraste 9: infracción grave, LOPDGDD art. 73.k). Desde el 12/11/2026 el hueco cubre también el buzón. Solución prevista: el dominio propio. Para Auth, el SMTP de Lettermint en el paso 5 (pendiente); para el buzón, una dirección del dominio propio con un proveedor que tenga contrato de encargo (**verificar** cuál) | A1, A7-A10 |
-| **GitHub** | Página de descargas del APK (la app consulta si hay versión nueva). Guarda las copias de seguridad cifradas y ejecuta los flujos, que hacen las copias y los cambios de la base en sus máquinas. **Con la 32 (pendiente de aplicar):** ejecuta el remitente de las notificaciones de la web (flujo «Notificaciones web», `rwadar-app/enviar-webpush.mjs`), que en su máquina tiene en claro, mientras dura el envío, la dirección de entrega y las dos claves de cada navegador, el texto de cada aviso y la clave privada VAPID | EE. UU. (GitHub, Inc.) o Países Bajos (GitHub B.V.) | DPF, activo el 06/11/2026. No sustituye al contrato de encargo | **No hay. Hueco:** su DPA solo forma parte del «GitHub Customer Agreement»; en una cuenta personal gratuita GitHub actúa como responsable. Sus máquinas ven los datos en claro al hacer las copias, los cambios de la base y, con la 32, los envíos de la web. **Decidido el 06/11:** organización con GitHub Team y «GitHub Customer Agreement», que incluye el DPA. Falta que Víctor la contrate y la firme ([pasos](encargados/README.md#github--hueco)). **Recomendado:** firmarlo antes de encender el envío de la web para todos (`activar-push`) | A5, A11, A13 |
+| **GitHub** | Página de descargas del APK (la app consulta si hay versión nueva). Guarda las copias de seguridad cifradas y ejecuta los flujos, que hacen las copias y los cambios de la base en sus máquinas. **Con la 32 (aplicada el 12/11/2026):** ejecuta el remitente de las notificaciones de la web (flujo «Notificaciones web», `rwadar-app/enviar-webpush.mjs`), que en su máquina tiene en claro, mientras dura el envío, la dirección de entrega y las dos claves de cada navegador, el texto de cada aviso y la clave privada VAPID. Hoy solo envía la prueba, a las cuentas de administración | EE. UU. (GitHub, Inc.) o Países Bajos (GitHub B.V.) | DPF (n.º 6174), «Active» el 06/11 y el 12/11/2026. No sustituye al contrato de encargo | **No hay. Hueco:** su DPA solo forma parte del «GitHub Customer Agreement»; en una cuenta personal gratuita GitHub actúa como responsable. Sus máquinas ven los datos en claro al hacer las copias, los cambios de la base y, con la 32, los envíos de la web. **Decidido el 06/11:** organización con GitHub Team y «GitHub Customer Agreement», que incluye el DPA. Falta que Víctor la contrate y la firme ([pasos](encargados/README.md#github--hueco)). **Condición del anexo (C3) para encender el envío de la web para todos (`activar-push`):** este contrato firmado, o el envío de la web en un proveedor que ya tenga contrato de encargo (Supabase o Cloudflare) | A5, A11, A13 |
 | **Expo** (650 Industries) | Actualizaciones de la app sin instalar versión nueva. Push (pendiente) | EE. UU. | SCC módulo 2 (sus términos, §3.2). En la lista oficial del DPF: «Active - Re-certification under Review» (06/11/2026); se citan primero las SCC | No hay DPA aparte (expo.dev/dpa da 404): el contrato es el §3.2 de sus términos del 02/11/2026. No hay que firmar nada. Archivado ([encargados](encargados/README.md#expo-650-industries)) | A4, A5, A11 |
 | **Lettermint** (pendiente) | Correo de bienvenida y avisos (por su API) y, cuando haya dominio y la cuenta esté verificada, los correos de Supabase Auth (por SMTP) | Países Bajos, UE. Lettermint B.V., Willemsvaart 16 B, 8019 AB Zwolle. Los correos se alojan y tratan en la UE (DPA §8.1) | Ninguna prevista: sus subencargados con acceso a los correos (UpCloud, OVH Cloud, Postmastery) están en la UE. Fuera del EEE solo con autorización y garantías del capítulo V (DPA §8.4) | DPA del 09/10/2026, que se acepta al crear la cuenta (condiciones §4.7 y §15.3). Crear la cuenta, apuntar la fecha y pedir la verificación antes del paso 5.8 (pendiente). Archivado ([encargados](encargados/README.md#lettermint)) | A1, A4, A5 |
-| **Google Firebase Cloud Messaging** (proyecto `rwadar-14e3d`; entrega pendiente de encender los avisos) | Entrega de notificaciones en Android, desde la app 1.4.2 (publicada el 06/11/2026). Hoy no recibe datos: la app no le pide nada hasta que la persona active las notificaciones. **«Latido»:** aun apagado, el componente guarda en el móvil las fechas en que se abrió la app (hasta 30). Al activar las notificaciones, Google las recibe con el «Firebase user agent» (componentes de Firebase y sus versiones; versión de Android, marca, modelo y tipo de dispositivo; tienda de instalación), que según Google usa para sus estadísticas internas, sin unirlo a un identificador ([guía de Google para Play](https://firebase.google.com/docs/android/play-data-disclosure), consultada el 07/11/2026). Ver A5 | EE. UU. y otros países donde Google tenga centros (sus condiciones, §10.1) | DPF de Google LLC, activo el 06/11/2026; si no está disponible, SCC (§10.2) | «Firebase Data Processing and Security Terms» (21/08/2024), **aceptadas en la consola el 06/11/2026** al crear el proyecto. Archivado ([encargados](encargados/README.md#google-firebase-cloud-messaging)) | A4, A5 |
+| **Google Firebase Cloud Messaging** (proyecto `rwadar-14e3d`; entrega pendiente de encender los avisos) | Entrega de notificaciones en Android, desde la app 1.4.2 (publicada el 06/11/2026). Hoy no recibe datos: la app no le pide nada hasta que la persona active las notificaciones. **«Latido»:** aun apagado, el componente guarda en el móvil las fechas en que se abrió la app (hasta 30). Al activar las notificaciones, Google las recibe con el «Firebase user agent» (componentes de Firebase y sus versiones; versión de Android, marca, modelo y tipo de dispositivo; tienda de instalación), que según Google usa para sus estadísticas internas, sin unirlo a un identificador ([guía de Google para Play](https://firebase.google.com/docs/android/play-data-disclosure), consultada el 07/11 y el 12/11/2026). Valoración legal: el anexo, apartado 2 (enviarlo al pulsar el botón, con consentimiento informado junto al botón; guardarlo antes, riesgo residual que se corrige en la próxima versión nativa). Ver A5 | EE. UU. y otros países donde Google tenga centros (sus condiciones, §10.1) | DPF de Google LLC, activo el 06/11/2026; si no está disponible, SCC (§10.2) | «Firebase Data Processing and Security Terms» (21/08/2024), **aceptadas en la consola el 06/11/2026** al crear el proyecto. Archivado ([encargados](encargados/README.md#google-firebase-cloud-messaging)) | A4, A5 |
 | **Apple Push Notification service (app nativa)** | **No aplica:** no hay app de iPhone publicada ni cuenta de Apple Developer. Lo que sí hay desde la 32 son las notificaciones de la web en iPhone, que entrega el servicio de push de Apple para la web (`web.push.apple.com`): ver «Terceros que no son encargados», debajo ([encargados](encargados/README.md#apple-apns--app-nativa-no-aplica)) | No aplica | No aplica | No aplica. Si algún día hay app de iPhone con notificaciones, se lee su contrato y se añade aquí | Ninguna |
 
 **Ya no es proveedor: Proton Mail (histórico).** Fue el buzón de RWAdar
@@ -172,14 +181,26 @@ guardan allí, Proton los sigue guardando por cuenta de RWAdar.
   Google (`fcm.googleapis.com`, Chrome y la mayoría de navegadores de Android),
   Mozilla (`updates.push.services.mozilla.com`, Firefox) y Microsoft
   (`*.notify.windows.com`, Edge). No los elige RWAdar sino el navegador de
-  cada persona. Reciben la dirección de entrega de ese navegador, los datos
-  técnicos de la conexión y cada notificación cifrada de extremo a extremo
-  (RFC 8291), que no pueden leer; nunca el correo. **verificar** en el anexo
-  legal: si son encargados de RWAdar o responsables propios, y la garantía de
-  la transferencia a EE. UU. Google LLC figura «Active» en el DPF (consulta del
-  06/11/2026); Apple, Mozilla y Microsoft, **verificar** en
-  dataprivacyframework.gov antes de enviar a todos (la privacidad §8 lo
-  promete). Ver A5.
+  cada persona. Reciben la dirección de entrega de ese navegador (la que ellos
+  mismos le dieron), la hora y el tamaño de cada envío y cada notificación
+  cifrada de extremo a extremo (RFC 8291), que no pueden leer; nunca el
+  correo. **Decidido en el anexo (12/11/2026):**
+  - **no son encargados de RWAdar** [INTERPRETABLE]: los elige el navegador,
+    los presta cada empresa con sus propias condiciones y RWAdar no tiene
+    contrato con ellos para esto, como el proveedor de correo de cada
+    persona. No hace falta contrato de encargo; sí informar (privacidad §§ 6
+    y 8);
+  - **transferencia:** se elige la lectura de que no la hace RWAdar (la
+    suscripción la entrega el navegador de la persona y lo que añade RWAdar va
+    cifrado), comprobando además cada garantía. Lista oficial del DPF el
+    12/11/2026: Google LLC (5780) y Microsoft Corporation (6474), «Active»;
+    Apple y Mozilla, ningún resultado. En el EEE responden, según sus
+    políticas, Google Ireland Limited, Microsoft Ireland Operations Limited y
+    Apple Distribution International Limited (Irlanda; Apple saca los datos
+    del EEE con cláusulas tipo; **verificar** que esto vale para su push web).
+    Mozilla Corporation está en EE. UU., sin DPF y sin empresa en la UE: queda
+    como **riesgo residual bajo**, explicado en la privacidad (§8), con la
+    salida de no activarlas y ver los avisos en la campana. Ver A5.
 
 **Quién no recibe datos:** las plataformas del radar, anunciantes ni
 compradores de datos (privacidad §10). Eric Almiñana, autor de la Academy, no
@@ -481,20 +502,23 @@ Valen para todas las fichas; cada ficha añade las suyas.
     notificación de prueba, a las cuentas de administración y a mano;
   - **la app** no registra el móvil en Expo mientras `push_habilitado` esté
     apagado (su botón dice que aún no está disponible);
-  - la 30 y la 31 están aplicadas (06/11/2026), con todo apagado; la 32,
-    pendiente de aplicar (`aplicar-32` y `crear-vapid`, con orden de Víctor).
+  - la 30 y la 31 están aplicadas (06/11/2026), con todo apagado; la 32 y la
+    clave VAPID, desde el 12/11/2026 (la privada, en Vault); web n.º 71 y OTA
+    n.º 23 publicadas ese día.
 
   Faltan, cada uno con permiso de Víctor:
   - correo (pendiente): dominio propio, cuenta de Lettermint (con ella se
     acepta su contrato de encargo) y su verificación, el token en el Vault y
     la prueba real;
-  - push (pendiente): Firebase y la app 1.4.2 ya están (06/11/2026); faltan
-    la valoración legal del «latido» (abajo), la prueba en un Android físico y
-    encender `push_habilitado` (`activar-push`), que **enciende a la vez** el
-    push de la app y las notificaciones de la web;
-  - notificaciones de la web (pendiente): aplicar la 32, crear la clave VAPID
-    y probarlas en el iPhone del titular con la acción «prueba» antes de
-    `activar-push`.
+  - push y notificaciones de la web (pendiente): el anexo del 12/11/2026 dice
+    **«sí, con condiciones»**. Antes de encender `push_habilitado`
+    (`activar-push`, que **enciende a la vez** el push de la app y las
+    notificaciones de la web), sus condiciones C1-C6: la privacidad del anexo
+    publicada; la frase de primera capa junto al botón de la web y de la app
+    (esta, por OTA antes de encender); GitHub con contrato de encargo o el
+    envío de la web fuera de GitHub; la prueba en el iPhone del titular
+    («prueba») y la prueba en un Android físico. Si se separa el
+    interruptor, cada canal solo necesita las suyas.
 - **Responsable:** el del apartado 1.
 - **Finalidad:** avisar a quien lo pida, por correo y, si lo activa en su
   móvil (app o web), por notificación:
@@ -548,11 +572,14 @@ Valen para todas las fichas; cada ficha añade las suyas.
     hay app de iPhone.
   - **Servicios de push de los navegadores** (pendiente; la 32): Apple,
     Google, Mozilla o Microsoft, según el navegador. Reciben la dirección de
-    entrega y cada notificación cifrada (no pueden leer su texto), nunca el
-    correo (apartado 3, «Terceros que no son encargados»).
-  - **GitHub** (pendiente; la 32): su máquina ejecuta el remitente y ve en
-    claro, mientras dura cada envío, las direcciones de entrega, sus claves y
-    el texto de cada aviso. Sin contrato de encargo (apartado 3).
+    entrega, la hora y el tamaño de cada envío y cada notificación cifrada
+    (no pueden leer su texto), nunca el correo. No son encargados de RWAdar
+    (el anexo, 1.2; apartado 3, «Terceros que no son encargados»).
+  - **GitHub** (la 32; hoy solo la prueba a las cuentas de administración):
+    su máquina ejecuta el remitente y ve en claro, mientras dura cada envío,
+    las direcciones de entrega, sus claves y el texto de cada aviso. Sin
+    contrato de encargo (apartado 3): condición C3 del anexo antes de enviar
+    a todos.
   - **Google, el «latido» de Firebase** (desde la app 1.4.2): el componente
     guarda en el móvil, aunque todo esté apagado, las fechas en que se abrió
     la app (hasta 30). Al activar las notificaciones, Google las recibe junto
@@ -561,15 +588,24 @@ Valen para todas las fichas; cada ficha añade las suyas.
     instalación. Según Google, para sus estadísticas internas de uso de esos
     componentes, sin unirlo a un identificador; no sirve para entregar los
     avisos. Esas fechas solo se borran desinstalando la app o borrando sus
-    datos desde Android (el botón de RWAdar no las borra). **Pendiente antes
-    de encender el push:** que la revisión legal valore si guardar esas
-    fechas en el móvil sin pedir permiso cabe en la LSSI, art. 22.2 (y la
-    Directiva ePrivacy, art. 5.3), porque no es estrictamente necesario para
-    lo que pide la persona.
+    datos desde Android (el botón de RWAdar no las borra). **Valorado en el
+    anexo (apartado 2):** enviarlas a Google al pulsar el botón necesita
+    consentimiento (LSSI, art. 22.2) y basta con que la persona pulse después
+    de leer la frase de primera capa junto al botón (condición C5) y la
+    privacidad (§5, ya al día); es libre porque sin pulsar ve los mismos
+    avisos en Inicio. Guardarlas en el móvil antes, sin pedir nada, no tiene
+    excepción clara: es un **riesgo residual** (infracción leve, LSSI, art.
+    38.4.g), no lo cambia encender el push y se corrige en la próxima versión
+    nativa (Firebase solo al pulsar el botón). **Verificar** en el Android
+    físico qué hace Firebase después de desactivarlas (C6).
 - **Transferencias internacionales:** como A4 y, con la 32: GitHub (DPF,
-  apartado 3) y los servicios de push de los navegadores (EE. UU.; Google LLC
-  en el DPF; Apple, Mozilla y Microsoft, **verificar** antes de enviar a
-  todos).
+  apartado 3) y los servicios de push de los navegadores. Lista oficial del
+  DPF, 12/11/2026: Google LLC y Microsoft Corporation, «Active»; Apple y
+  Mozilla, no figuran. En el EEE responden Google Ireland, Microsoft Ireland y
+  Apple Distribution International (Irlanda, con cláusulas tipo); Mozilla
+  Corporation, en EE. UU. Se elige la lectura de que el envío no es una
+  transferencia de RWAdar y Mozilla queda como riesgo residual bajo, a la
+  vista en la privacidad (el anexo, 1.3; apartado 3).
 - **Plazo de supresión:**
   - el permiso y la fila de preferencias, mientras exista la cuenta;
   - las colas y los envíos de la web, 90 días;
@@ -635,13 +671,13 @@ Valen para todas las fichas; cada ficha añade las suyas.
     web (12/11/2026), cada notificación abre la lista de avisos con la frase
     «¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del
     móvil.» y el botón a Perfil › Avisos;
-  - **antes de `activar-push`** (enciende a la vez la app y la web), un anexo
-    legal con fecha que: decida lo del «latido» de Firebase (arriba); cubra
-    las notificaciones de la web (servicios de push como destinatarios nuevos,
-    si son encargados o responsables propios, y sus transferencias, con su
-    adhesión al DPF comprobada); y revise la «Información básica» de Perfil,
-    que hoy nombra a Lettermint y Expo pero no a esos servicios ni a GitHub.
-    Recomendado también: el contrato de GitHub (GitHub Team) firmado;
+  - ✅ **anexo legal antes de `activar-push`** (12/11/2026,
+    [`ANEXO-NOTIFICACIONES-2026-11-12.md`](ANEXO-NOTIFICACIONES-2026-11-12.md)):
+    «sí, con condiciones». Decide el «latido» (arriba), los servicios de push
+    (no son encargados; garantías comprobadas) y la «Información básica»
+    (no bloquea: el botón de cada dispositivo nombra los servicios; se
+    completa en el próximo cambio de textos). Quedan sus condiciones C1-C6
+    (arriba, «Estado») y sus recomendaciones R1-R7;
   - ✅ **Firebase:** no arranca solo al abrir la app (contraste 3). La 1.4.2
     lleva el autoarranque apagado; en el emulador, al abrirla no hubo ninguna
     conexión a Firebase (06/11/2026). Falta repetirlo en un Android físico
@@ -1080,9 +1116,10 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
     quedar alguna app web antigua instalada. Proton Mail dejó de ser el
     buzón el 12/11/2026: su ficha queda como histórico;
   - [x] Apple (APNs de una app nativa): no aplica (no hay app de iPhone);
-  - [ ] **Servicios de push de los navegadores** (la 32): decidir en el anexo
-    legal si son encargados o responsables propios y comprobar la adhesión al
-    DPF de Apple, Mozilla y Microsoft antes de enviar a todos.
+  - [x] **Servicios de push de los navegadores** (la 32): decidido en el
+    anexo del 12/11/2026. No son encargados (no hace falta contrato) y el DPF
+    está comprobado: Google y Microsoft, sí; Apple, no (Irlanda y cláusulas
+    tipo); Mozilla, no (riesgo residual bajo, a la vista en la privacidad).
 - [ ] **Gmail.** Quitar el envío de Auth por una cuenta de consumo sin
   contrato: pasarlo al SMTP de Lettermint (paso 5.8; contraste 9). Antes, las
   plantillas de Auth con la dirección postal y la privacidad (§6 y §8) y la
@@ -1125,9 +1162,28 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
   quitar las marcas «(pendiente)» que correspondan. Con la 32: al aplicarla,
   al crear la clave VAPID y al encender `push_habilitado`, que desde entonces
   enciende también las notificaciones de la web.
-- [ ] **Anexo legal antes de `activar-push`** (A5): el «latido» de Firebase
-  (LSSI, art. 22.2; Directiva ePrivacy, art. 5.3) y las notificaciones de la
-  web (destinatarios, transferencias e «Información básica»).
+- [x] **Anexo legal antes de `activar-push`** (A5): hecho el 12/11/2026
+  ([`ANEXO-NOTIFICACIONES-2026-11-12.md`](ANEXO-NOTIFICACIONES-2026-11-12.md)),
+  «sí, con condiciones».
+- [ ] **Condiciones del anexo antes de `activar-push`** (A5; si se separa el
+  interruptor, cada canal las suyas):
+  - [ ] C1, los dos canales: publicar la privacidad del anexo (§§ 5 y 8);
+  - [ ] C2, web: la frase de primera capa junto al botón, publicada;
+  - [ ] C3, web: GitHub con contrato de encargo (GitHub Team) o el envío
+    fuera de GitHub (Supabase o Cloudflare);
+  - [ ] C4, web: la prueba en el iPhone del titular («Notificaciones web ›
+    prueba»);
+  - [ ] C5, Android: la frase de primera capa junto al botón, en una OTA
+    publicada antes de encender;
+  - [ ] C6, Android: la prueba en un Android físico, con lo que haga
+    Firebase al desactivarlas.
+- [ ] **«Latido» de Firebase, de raíz** (A5; el anexo, R4): en la próxima
+  versión nativa de Android, Firebase solo se crea al pulsar «Notificaciones
+  en este móvil», para que no guarde nada en el móvil sin consentimiento.
+- [ ] **Revisar el anexo, punto 1.3** (servicios de push y transferencias) si
+  Apple o Mozilla entran en el DPF o publican una empresa en la UE para el
+  push, si cae el DPF o si el CEPD o la AEPD se pronuncian; y en la revisión
+  anual.
 - [x] **Web con la Academy con cuenta:** publicada el 06/11/2026; fecha
   anotada en A3.
 
@@ -1142,3 +1198,4 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
 | 07/11/2026 | Versión 3: Netlify y Proton Mail comprobados y archivados; Suiza, con decisión de adecuación; Apple no aplica; delegado de protección de datos no obligatorio (razonado); contraseñas filtradas fuera del plan gratuito; A6 y A7 contrastados con el SQL; marcado lo hecho (Firebase, la 30 y la 31, app 1.4.2, web con la Academy con cuenta); la casilla de los 18 años no se guarda; la clave de las copias también está en GitHub; verificación de la cuenta de Lettermint; enlace al procedimiento de brechas | Claude, por encargo de Víctor |
 | 12/11/2026 | Versión 4: el titular cambió el correo de contacto a rwadares@gmail.com, que pasa a ser el buzón de RWAdar (consultas, derechos, bajas por correo, empresas, reportes de seguridad y contactos profesionales), como dice la privacidad corregida ese día. Destinatarios y transferencias de A7-A10, a Google (Gmail). Proton Mail deja de tratar datos de usuarios: sale de los proveedores y lo del 07/11 queda como historial; solo sigue la cuenta personal del titular con la que entra como moderador. **Hueco abierto:** una cuenta de Gmail de consumo no tiene contrato de encargo (art. 28 RGPD), el mismo riesgo ya señalado para los correos de Auth; la solución prevista es el dominio propio | Claude, por encargo de Víctor |
 | 12/11/2026 | Versión 5: notificaciones en la web (Web Push, migración 32, sin aplicar): datos nuevos (`suscripciones_web`, `envios_web`), destinatarios nuevos (servicios de push de Apple, Google, Mozilla y Microsoft, y GitHub como remitente), plazos (90 y 180 días, cada día con el reloj de limpieza) y la baja en cada notificación. A5: el permiso ya se recoge en Perfil (web y app) y la casilla del alta sigue apagada. Corregida la fila de Apple (la app nativa sigue sin aplicar; la web en iPhone usa el servicio de push de Apple). Anexo legal pendiente antes de `activar-push` | Claude, por encargo de Víctor |
+| 12/11/2026 | Versión 6: el [anexo legal de las notificaciones](ANEXO-NOTIFICACIONES-2026-11-12.md), «sí, con condiciones». Los servicios de push de los navegadores no son encargados; DPF comprobado en la lista oficial (Google LLC, Microsoft Corporation, GitHub y Netlify, «Active»; Apple y Mozilla, no figuran) y quién responde en el EEE según cada empresa; Mozilla, riesgo residual bajo. El «latido» de Firebase: su envío, con consentimiento junto al botón; guardarlo antes, riesgo residual con arreglo en la próxima versión nativa. La 32 y la clave VAPID, aplicadas el 12/11. GitHub pasa de «recomendado» a condición para enviar a todos por la web. Condiciones C1-C6 y revisión del punto 1.3 en los pendientes | Claude, por encargo de Víctor |
