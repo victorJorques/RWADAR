@@ -254,7 +254,7 @@ por eso ya no se edita: cualquier cambio va en una migración nueva, como la
   Cada paso necesita permiso expreso de Víctor:
   `30_avisos_registrados_activar_casilla.sql` (con la plantilla de Auth ya
   puesta; fija `casilla_activada_el`; no envía nada ni crea reloj),
-  `30_avisos_registrados_activar_correo.sql` (exige la 31 aplicada y
+  `30_avisos_registrados_activar_correo.sql` (exige la 31 y la 34 aplicadas y
   `LETTERMINT_API_TOKEN` y `RWADAR_REMITENTE` en Vault) y `30_avisos_registrados_activar_push.sql`
   (`EXPO_ACCESS_TOKEN` opcional). Estos dos crean un único reloj de envío
   `rwadar-novedades` cada 5 minutos que solo llama a `rwadar_novedades.procesar()`.
@@ -328,8 +328,9 @@ por eso ya no se edita: cualquier cambio va en una migración nueva, como la
   - Si el correo estuviera encendido con Brevo, la 31 se niega (apagar antes);
     lo que hubiera quedado pedido con Brevo pasa a «incierto», nunca se reenvía.
   - **Reaplicar la 30 devuelve el correo a Brevo**: después hay que reaplicar
-    la 31. `30_avisos_registrados_activar_correo.sql` se niega a encender sin
-    ella (y sin `LETTERMINT_API_TOKEN` y `RWADAR_REMITENTE` con forma válida).
+    la 31 (y después la 32, la 33 y la 34). `30_avisos_registrados_activar_correo.sql`
+    se niega a encender sin la 31, sin la 34 (el pie sin el nombre del
+    titular; también si se reaplicó la 31 después) (y sin `LETTERMINT_API_TOKEN` y `RWADAR_REMITENTE` con forma válida).
   - Comprobar: `31_correo_lettermint_verificar.sql` (solo lee; junto al
     verificador 30, que ahora es neutral respecto al proveedor).
   - Flujo «Avisos a registrados (base)» (`.github/workflows/avisos-base.yml`):
@@ -340,7 +341,7 @@ por eso ya no se edita: cualquier cambio va en una migración nueva, como la
     `db/31_correo_lettermint_guardar.sql` (`vault.create_secret` o
     `vault.update_secret`; psql recibe los valores como variables `-v` desde
     el entorno y no los imprime). No enciende el correo: eso es
-    `activar-correo`, que ahora pasa también el verificador 31.
+    `activar-correo`, que pasa también los verificadores 31 y 34.
   - Pendiente de la prueba real del paso 5: que la ruta de difusión se llama
     `broadcast`, qué hace con nuestro `List-Unsubscribe` (añade el suyo) y que
     el correo llega sin píxel ni enlaces reescritos.

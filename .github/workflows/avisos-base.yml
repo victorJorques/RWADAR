@@ -3,25 +3,29 @@ name: Avisos a registrados (base)
 # Aplica en Supabase, desde GitHub, la migración 30 (avisos a registrados),
 # la 31 (el correo sale por Lettermint), la 32 (notificaciones: push de Expo
 # con prioridad alta y notificaciones web), la 33 (las notificaciones web
-# salen desde Supabase) y sus scripts, con las mismas garantías que
+# salen desde Supabase), la 34 (el pie de los correos, sin el nombre del
+# titular) y sus scripts, con las mismas garantías que
 # «Aplicar catálogo»: solo desde main, copia cifrada de la base antes de
 # cambiar nada, cada SQL en su propia transacción y los verificadores al
 # final. Solo hay acciones fijas: no se puede pasar un archivo cualquiera.
 #
 # Cada acción que cambia la base necesita orden expresa de Víctor (AGENTS.md)
 # y escribir AVISOS en «confirmar». Los ensayos («ensayo-30», «ensayo-31»,
-# «ensayo-32», «ensayo-33»), las verificaciones y «diagnostico-30» no
+# «ensayo-32», «ensayo-33», «ensayo-34»), las verificaciones y «diagnostico-30» no
 # cambian nada: un ensayo aplica su migración y sus verificadores dentro de
 # una transacción que se deshace al final, para saber si entra en producción
 # antes de aplicarla.
 #
 # «guardar-correo» crea o actualiza en Vault LETTERMINT_API_TOKEN (del secreto
 # de GitHub con ese nombre) y RWADAR_REMITENTE (de la entrada «remitente»). No
-# enciende el correo: eso es «activar-correo», que exige la 31 y esos dos.
+# enciende el correo: eso es «activar-correo», que exige la 31, la 34 (el
+# pie sin el nombre del titular) y esos dos.
 # OJO: reaplicar la 30 devuelve el envío de correo al código de Brevo, el
 # push de Expo a la prioridad normal y procesar() a su versión sin las
-# notificaciones web; si la 31, la 32 y la 33 ya estaban aplicadas, hay que
-# volver a aplicarlas, en ese orden (aplicar-31, aplicar-32 y aplicar-33).
+# notificaciones web; si la 31, la 32, la 33 y la 34 ya estaban aplicadas,
+# hay que volver a aplicarlas, en ese orden (aplicar-31, aplicar-32,
+# aplicar-33 y aplicar-34). Reaplicar la 31 devuelve el nombre del titular
+# al pie de los correos: después, aplicar-34.
 #
 # «crear-vapid» genera en esta máquina (node, sin npm) el par de claves P-256
 # de las notificaciones web y guarda la privada en Vault (RWADAR_VAPID_PRIVADA)
@@ -67,17 +71,25 @@ on:
           - verificar-33
           - aplicar-33
           - prueba-webpush
+          - ensayo-34
+          - verificar-34
+          - aplicar-34
           - activar-casilla
           - activar-correo
           - activar-push
           - apagar
           - apagar-casilla
+          - hacer-admin
       confirmar:
         description: 'Escribe AVISOS para las acciones que cambian la base y para prueba-webpush (no hace falta para los ensayos, las verificaciones ni diagnostico-30)'
         required: false
         type: string
       remitente:
         description: 'Solo para guardar-correo: dirección desde la que salen los avisos, del dominio verificado en Lettermint (no es secreta)'
+        required: false
+        type: string
+      huella:
+        description: 'Solo para hacer-admin: SHA-256 en hexadecimal del correo de la cuenta, en minúsculas y sin espacios (nunca el correo)'
         required: false
         type: string
 
@@ -117,6 +129,7 @@ jobs:
           ACCION: ${{ inputs.accion }}
           CONFIRMAR: ${{ inputs.confirmar }}
           REMITENTE: ${{ inputs.remitente }}
+          HUELLA: ${{ inputs.huella }}
         run: |
           set -euo pipefail
           export LC_ALL=C
@@ -125,6 +138,7 @@ jobs:
           V31="$D/31_correo_lettermint_verificar.sql"
           V32="$D/32_notificaciones_verificar.sql"
           V33="$D/33_webpush_supabase_verificar.sql"
+          V34="$D/34_pie_sin_nombre_verificar.sql"
           # VERIFICADORES: los que se pasan al final (o dentro del ensayo).
           ENSAYO=no
           VERIFICADORES="$V30"
@@ -148,17 +162,25 @@ jobs:
             # Envía (solo a administración) pero no cambia la base: sin copia,
             # con AVISOS (abajo) y los verificadores al final.
             prueba-webpush)  SQL="$D/33_webpush_supabase_prueba.sql";           CAMBIA=no; VERIFICADORES="$V30 $V32 $V33" ;;
+            ensayo-34)       SQL="$D/34_pie_sin_nombre.sql";                    CAMBIA=no; ENSAYO=si; VERIFICADORES="$V30 $V31 $V32 $V33 $V34" ;;
+            verificar-34)    SQL="$V34";                                         CAMBIA=no; VERIFICADORES="$V30 $V31 $V32 $V33 $V34" ;;
+            aplicar-34)      SQL="$D/34_pie_sin_nombre.sql";                    CAMBIA=si; VERIFICADORES="$V30 $V31 $V32 $V33 $V34" ;;
             activar-casilla) SQL="$D/30_avisos_registrados_activar_casilla.sql"; CAMBIA=si ;;
-            activar-correo)  SQL="$D/30_avisos_registrados_activar_correo.sql";  CAMBIA=si; VERIFICADORES="$V30 $V31" ;;
+            activar-correo)  SQL="$D/30_avisos_registrados_activar_correo.sql";  CAMBIA=si; VERIFICADORES="$V30 $V31 $V34" ;;
             activar-push)    SQL="$D/30_avisos_registrados_activar_push.sql";    CAMBIA=si ;;
             apagar)          SQL="$D/30_avisos_registrados_apagar.sql";          CAMBIA=si ;;
             apagar-casilla)  SQL="$D/30_avisos_registrados_apagar_casilla.sql";  CAMBIA=si ;;
+            # Marca una cuenta como administración por la huella de su correo.
+            hacer-admin)     SQL="$D/admin_por_huella.sql";                      CAMBIA=si ;;
             *) echo "Acción no válida: $ACCION"; exit 1 ;;
           esac
           test -f "$SQL" || { echo "No existe $SQL"; exit 1; }
           for V in $VERIFICADORES; do test -f "$V" || { echo "No existe $V"; exit 1; }; done
           if [ "$CAMBIA" = si ] && [ "$CONFIRMAR" != "AVISOS" ]; then
             echo "Esta acción cambia la base: escribe AVISOS en «confirmar»."; exit 1
+          fi
+          if [ "$ACCION" = hacer-admin ] && ! [[ "${HUELLA:-}" =~ ^[0-9a-f]{64}$ ]]; then
+            echo "hacer-admin necesita en «huella» el SHA-256 en hexadecimal (64 caracteres, minúsculas) del correo de la cuenta, nunca el correo."; exit 1
           fi
           if [ "$ACCION" = prueba-webpush ] && [ "$CONFIRMAR" != "AVISOS" ]; then
             echo "La prueba envía notificaciones a las cuentas de administración: escribe AVISOS en «confirmar»."; exit 1
@@ -171,8 +193,8 @@ jobs:
             (( ${#REMITENTE} <= 254 )) && [[ "$REMITENTE" =~ $CORREO_VALIDO ]] \
               || { echo "guardar-correo necesita en «remitente» una dirección de correo válida, sin nombre ni <>."; exit 1; }
           fi
-          # Las dos copias de la 30, de la 31, de la 32 y de la 33 deben ser
-          # idénticas (la del CLI y la del SQL Editor).
+          # Las dos copias de la 30, de la 31, de la 32, de la 33 y de la 34
+          # deben ser idénticas (la del CLI y la del SQL Editor).
           cmp -s "$D/30_avisos_registrados.sql" rwadar-app/supabase/migrations/20261105200000_avisos_registrados.sql \
             || { echo "Las dos copias de la 30 no coinciden"; exit 1; }
           cmp -s "$D/31_correo_lettermint.sql" rwadar-app/supabase/migrations/20261106120000_correo_lettermint.sql \
@@ -181,6 +203,8 @@ jobs:
             || { echo "Las dos copias de la 32 no coinciden"; exit 1; }
           cmp -s "$D/33_webpush_supabase.sql" rwadar-app/supabase/migrations/20261112170000_webpush_supabase.sql \
             || { echo "Las dos copias de la 33 no coinciden"; exit 1; }
+          cmp -s "$D/34_pie_sin_nombre.sql" rwadar-app/supabase/migrations/20261112210000_pie_sin_nombre.sql \
+            || { echo "Las dos copias de la 34 no coinciden"; exit 1; }
           { echo "SQL=$SQL"; echo "CAMBIA=$CAMBIA"; echo "ENSAYO=$ENSAYO"; echo "VERIFICADORES=$VERIFICADORES"; } >> "$GITHUB_ENV"
 
       - name: Instalar psql y pg_dump 17 (misma versión que Supabase)
@@ -232,7 +256,7 @@ jobs:
           echo "ENSAYO CORRECTO: $(basename "$SQL") y sus verificadores pasan en producción. No se ha cambiado nada (rollback)."
 
       - name: Aplicar
-        if: env.CAMBIA == 'si' && inputs.accion != 'guardar-correo' && inputs.accion != 'crear-vapid' && inputs.accion != 'rotar-vapid'
+        if: env.CAMBIA == 'si' && inputs.accion != 'guardar-correo' && inputs.accion != 'crear-vapid' && inputs.accion != 'rotar-vapid' && inputs.accion != 'hacer-admin'
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           ACCION: ${{ inputs.accion }}
@@ -240,7 +264,10 @@ jobs:
           set -euo pipefail
           psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$SQL"
           if [ "$ACCION" = aplicar-30 ]; then
-            echo "Aviso: reaplicar la 30 devuelve el envío de correo al código de Brevo, el push de Expo a la prioridad normal y procesar() a su versión sin las notificaciones web. Si la 31, la 32 y la 33 ya estaban aplicadas, vuelve a aplicarlas en ese orden (aplicar-31, aplicar-32 y aplicar-33)."
+            echo "Aviso: reaplicar la 30 devuelve el envío de correo al código de Brevo, el push de Expo a la prioridad normal y procesar() a su versión sin las notificaciones web. Si la 31, la 32, la 33 y la 34 ya estaban aplicadas, vuelve a aplicarlas en ese orden (aplicar-31, aplicar-32, aplicar-33 y aplicar-34)."
+          fi
+          if [ "$ACCION" = aplicar-31 ]; then
+            echo "Aviso: la 31 pone en el pie de los correos el nombre del titular. Si la 34 ya estaba aplicada, vuelve a aplicarla (aplicar-34) para quitarlo."
           fi
 
       # El token llega por el entorno y pasa a psql como variable (-v); nunca
@@ -266,6 +293,17 @@ jobs:
           psql "$SUPABASE_DB_URL" -X -v ON_ERROR_STOP=1 \
             -v token="$LETTERMINT_API_TOKEN" -v remitente="$REMITENTE" \
             -f "$SQL"
+
+      # La huella pasa a psql como variable (-v) y en la base solo va en un
+      # SELECT (set_config local): ni el correo ni la huella van a una DDL.
+      - name: Marcar una cuenta como administración (por la huella de su correo)
+        if: inputs.accion == 'hacer-admin'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          HUELLA: ${{ inputs.huella }}
+        run: |
+          set -euo pipefail
+          psql "$SUPABASE_DB_URL" -X -v ON_ERROR_STOP=1 -v huella="$HUELLA" -f "$SQL"
 
       - name: Preparar Node.js (solo crear-vapid y rotar-vapid)
         if: inputs.accion == 'crear-vapid' || inputs.accion == 'rotar-vapid'

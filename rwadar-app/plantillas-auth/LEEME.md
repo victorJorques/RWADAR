@@ -15,11 +15,19 @@ pie. Son HTML sencillo: sin imágenes remotas, sin píxel y sin enlaces de
 seguimiento. Solo enlazan a `{{ .ConfirmationURL }}`, a `rwadar.pages.dev` y
 al correo de RWAdar.
 
-El pie de las dos nombra al responsable con la dirección postal del aviso
-legal: «Víctor Manuel Jorques Granero, Plaza Generalitat, s/n, 46600 Alzira
-(Valencia), España». La política de uso de Lettermint pide una dirección
-física en cada correo, también en los de servicio, y desde el paso 5.8 del
-contrato estos correos salen por su SMTP.
+El pie de las dos lleva la dirección postal del aviso legal, sin el nombre
+del titular (Víctor, 12/11/2026: «todo lo que puedas quitar mi nombre
+hazlo»): «RWAdar · Plaza Generalitat, s/n, 46600 Alzira (Valencia), España ·
+Aviso legal · Privacidad · rwadares@gmail.com». El enlace «Aviso legal» lleva
+a `https://rwadar.pages.dev/privacidad#aviso-legal`, donde el titular está
+identificado con nombre, NIF y domicilio (LSSI, art. 10). La política de uso
+de Lettermint pide una dirección física en cada correo, también en los de
+servicio, y desde el paso 5.8 del contrato estos correos salen por su SMTP.
+
+**Las que están hoy en el panel aún llevan el nombre en el pie** (se pegaron
+antes de este cambio). Para quitarlo hay que volver a pegar las dos, con
+permiso de Víctor: a mano (abajo) o con el flujo «Supabase (gestión de Auth)»,
+acción `plantillas`.
 
 El bloque `{{ if .Data.avisos_novedades }}` lee los metadatos del alta. Solo
 aparece si la persona marcó la casilla de avisos: la web y la app envían

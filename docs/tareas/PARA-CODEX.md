@@ -6,6 +6,66 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (15) · Claude · Sin el nombre del titular en lo que ven los usuarios
+
+Víctor: «Siii todo lo que puedas quitar mi nombre hazlo». Su nombre completo
+queda solo donde la ley lo pide: el aviso legal y la privacidad de la web
+(LSSI, art. 10; RGPD, art. 13). Commits `b44a044`, `acd93d0`, `f1b13ef` y
+`3ed26b8`, y los de la revisión: `3d5d61d` y `6306dcd` (más este traspaso),
+en `claude/sharp-babbage-m3bbbw`, **sin push. Sin publicar; Supabase y EAS sin
+tocar; la 34 sin aplicar.**
+
+- **Hecho, en llano:**
+  1. `/acceso`: «Descubre la app para Android» lleva a `/android`, no a la
+     dirección de GitHub con el usuario. `_redirects` no cambia.
+  2. Correos de Auth (alta y contraseña, `rwadar-app/plantillas-auth/`) y
+     el de prueba de `correo-lettermint.sh`: el pie sin el nombre, con la
+     dirección postal (la pide Lettermint) y el aviso legal enlazado.
+  3. Avisos por correo (hoy apagados): **migración 34**
+     (`db/34_pie_sin_nombre.sql`, copia idéntica en `supabase/migrations/`).
+     Solo redefine `correo_mensaje`: el pie dice «Responsable: el titular de
+     RWAdar, Plaza Generalitat, s/n, 46600 Alzira (Valencia), España (aviso
+     legal · privacidad)». Se niega sin la 31 y con correos a medias de
+     menos de 25 minutos. Verificador propio; el 31 ya no fija el nombre.
+  4. **Corrección de la revisión** (`3d5d61d`): `activar-correo` se niega sin la 34
+     (también si se reaplicó la 31 después) y pasa los verificadores 30, 31
+     y 34; así ningún aviso puede salir con el nombre. Lo dicen el RUNBOOK
+     (paso 11), el contrato (11.2) y el LEEME de `rwadar-app`.
+  5. El comentario del HTML de Inicio (se publicaba tal cual) ya no lleva
+     el nombre de pila (`6306dcd`). `probar-web` mira ahora también lo publicado: el
+     nombre completo en cualquier archivo y el de pila en los comentarios
+     del HTML, salvo `privacidad.html`, `_worker.js` y `_redirects`.
+- **Pruebas:** `npm test` en la raíz con salida 0 (incluye
+  `npm --prefix rwadar-app test`, `npm run test:web` y `rwadar-acceso`);
+  `probar-pie-sin-nombre.mjs` 25/25 y `probar-avisos-registrados.mjs`
+  277/277 (nuevas: activar sin la 34 o tras reaplicar la 31 se niega).
+  Mutaciones, restauradas: sin la comprobación de la 34 en
+  `activar_correo.sql` fallan 4 y 2; con el comentario de antes en Inicio
+  falla `probar-web` (fuente y publicado). gitleaks sin hallazgos.
+- **Lo que queda, a propósito:**
+  - El aviso legal y la privacidad (`rwadar-site/privacidad.html`): lo
+    exige la ley.
+  - El usuario de GitHub en las URL de descarga (`_redirects`, la app y el
+    vigilante) hasta que `RWAdar-downloads` pase a una organización; se ve
+    en la página de descargas. Cambiarlo es alojamiento y OTA: con permiso.
+  - Las plantillas de Auth del panel de Supabase **siguen con el nombre**
+    hasta pegarlas: «Supabase (gestión de Auth)» › `plantillas` (o a mano,
+    ver su LEEME). Hasta entonces `estado` dirá que no coinciden.
+  - Documentos internos (repositorio privado) y las migraciones 30 y 31 ya
+    aplicadas, cuyo pie sustituye la 34.
+- **Cómo se publica** (cada paso, con orden expresa de Víctor):
+  1. PR a main y CI.
+  2. **Web:** sello, «Publicar web» en preview, mirarla y producción.
+  3. **Base:** «Avisos a registrados (base)» › `ensayo-34` y `aplicar-34`
+     (copia cifrada antes). Imprescindible antes de `activar-correo`.
+  4. **Auth:** `plantillas`, como arriba.
+- **Duda legal:** en los avisos de novedades (posible comunicación
+  comercial, LSSI art. 20.1) va «el titular de RWAdar», su dirección y el
+  aviso legal enlazado (nombre y NIF). Que lo confirme quien revise lo
+  legal; la alternativa prudente sería dejar el nombre solo en los anuncios.
+
+---
+
 ## 12 de noviembre de 2026 (14) · Claude · Integrador: la sesión que se mantiene, sin el nombre en los avisos y notificaciones web sin atascos
 
 Víctor, en su iPhone con la web en la pantalla de inicio: «Y que al iniciar

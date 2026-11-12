@@ -865,10 +865,11 @@ const resultadoPrueba = async (p) => { await sesion(db); return (await una(db, '
    ===================================================================== */
 {
   const opciones = BASE.match(/ {6}accion:\n(?: {8}.*\n)*? {8}options:\n((?: {10}- .*\n)+)/)?.[1].trim().split('\n').map((l) => l.trim().slice(2));
-  paso('avisos-base.yml añade ensayo-33, verificar-33, aplicar-33 y prueba-webpush tras rotar-vapid y conserva las demás',
+  paso('avisos-base.yml añade ensayo-33, verificar-33, aplicar-33 y prueba-webpush tras rotar-vapid y conserva las demás (las de la 34 las mira probar-pie-sin-nombre.mjs)',
     isDeepStrictEqual(opciones, ['ensayo-30', 'verificar-30', 'diagnostico-30', 'aplicar-30', 'ensayo-31', 'verificar-31', 'aplicar-31',
       'guardar-correo', 'ensayo-32', 'verificar-32', 'aplicar-32', 'crear-vapid', 'rotar-vapid', 'ensayo-33', 'verificar-33', 'aplicar-33',
-      'prueba-webpush', 'activar-casilla', 'activar-correo', 'activar-push', 'apagar', 'apagar-casilla']));
+      'prueba-webpush', 'ensayo-34', 'verificar-34', 'aplicar-34', 'activar-casilla', 'activar-correo', 'activar-push', 'apagar',
+      'apagar-casilla', 'hacer-admin']));
   paso('el flujo comprueba que las dos copias de la 33 son idénticas',
     BASE.includes('cmp -s "$D/33_webpush_supabase.sql" rwadar-app/supabase/migrations/20261112170000_webpush_supabase.sql'));
   const prueba = pasoDe(BASE, 'Probar las notificaciones web desde Supabase') || '';

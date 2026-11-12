@@ -246,6 +246,16 @@ gratuito de 100.000 al día de toda la web; vigilarlo antes de subir la tanda.
   `crear-token-base` de «Dominio de correo», que guarda el token en el Vault
   sin pasar por GitHub: ver «Encender el correo», abajo). **Si se reaplica la 30, hay
   que reaplicar la 31:** la 30 devuelve el envío al código de Brevo.
+  **Pie sin el nombre del titular (migración 34, 12/11/2026):** `ensayo-34` y
+  `aplicar-34` cambian solo el pie de los avisos por correo a «Responsable:
+  el titular de RWAdar, Plaza Generalitat, s/n, 46600 Alzira (Valencia),
+  España», con el aviso legal enlazado. Se niega sin la 31 o con correos a
+  medias (espera 25 minutos y repítela). **Hay que aplicarla antes de
+  encender el correo: `activar-correo` se niega sin ella.** **Reaplicar la 31 devuelve el
+  nombre al pie: después, `aplicar-34`.** Tras reaplicar la 30: la 31, la 32,
+  la 33 y la 34, en ese orden. Las plantillas de Auth (alta y contraseña)
+  se cambian aparte: volver a pegarlas desde `rwadar-app/plantillas-auth/`
+  (flujo «Supabase (gestión de Auth)», acción `plantillas`).
 - **Bajas que llegan por correo** (LSSI art. 22.1: basta con pedirlo al
   remitente). Mientras salgan avisos:
   1. Antes de cada envío —y cada día si `ofertas_automaticas` está encendido—
@@ -343,7 +353,9 @@ gratuito de 100.000 al día de toda la web; vigilarlo antes de subir la tanda.
   10. Prueba real a un buzón propio: en el código fuente del correo, ningún
       píxel ni enlaces reescritos; la cabecera `List-Unsubscribe`; y que la
       ruta de difusión se llama `broadcast`.
-  11. Solo entonces, `activar-correo`, y la comprobación final con una cuenta
+  11. Solo entonces: antes, `ensayo-34` y `aplicar-34` (el pie sin el nombre
+      del titular; `activar-correo` se niega sin la 34 y pasa también su
+      verificador); después, `activar-correo`, y la comprobación final con una cuenta
       propia (bienvenida, un solo correo al repetir el envío y la baja). La
       repetición, en los 25 minutos siguientes al primer envío y antes de
       probar la baja; si no, no comprueba nada (contrato, punto 5.11).
