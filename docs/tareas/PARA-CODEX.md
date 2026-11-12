@@ -6,6 +6,83 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (10) · Claude · Anexo legal de las notificaciones: «sí, con condiciones»
+
+Víctor: «Haz lo que tengas que hacer para que funcione, con lógica, que no me
+suponga a mí ni a RWAdar nada malo obvio». Esta parte es **solo lo legal**
+(documentos y `rwadar-site/privacidad.html`); el código lo lleva otro agente a
+la vez. **Sin push, sin publicar, Supabase y EAS sin tocar.**
+
+- **Anexo** [`docs/legal/ANEXO-NOTIFICACIONES-2026-11-12.md`](../legal/ANEXO-NOTIFICACIONES-2026-11-12.md).
+  Veredicto: **sí, con condiciones**.
+  - Servicios de push de los navegadores: **no son encargados** de RWAdar (los
+    elige el navegador, como el proveedor de correo de cada persona).
+  - DPF en la lista oficial: Google LLC y Microsoft Corporation, «Active»;
+    Apple y Mozilla, no figuran.
+  - Apple: en el EEE responde Apple Distribution International (Irlanda), con
+    cláusulas tipo. Mozilla: en EE. UU., queda como riesgo residual bajo,
+    explicado en la privacidad, con la salida de no activarlas y ver los avisos
+    en la campana.
+  - «Latido» de Firebase: su envío al pulsar el botón vale con una frase clara
+    junto al botón (consentimiento, LSSI 22.2). Guardarlo antes, como hace la
+    1.4.2 desde el 06/11, es un riesgo residual: no lo cambia encender el
+    push, y se arregla en la próxima versión nativa.
+  - LSSI 21 (baja en cada aviso) y el permiso v2: se cumplen.
+- **Condiciones antes de `activar-push`** (si se separa el interruptor, cada
+  canal las suyas):
+  - C1: publicar la privacidad de este commit;
+  - C2 y C5: una frase de primera capa junto al botón de la web y de la app
+    (la de la app, en una OTA antes de encender);
+  - C3: GitHub con contrato de encargo (GitHub Team) **o** el envío de la web
+    fuera de GitHub (Supabase o Cloudflare). Pasa de «recomendado» a
+    condición porque, encendido, GitHub tendría en claro las suscripciones
+    de todos;
+  - C4 y C6: las pruebas en el iPhone de Víctor y en un Android físico.
+- **Para el otro agente:** las frases exactas, en castellano y en inglés,
+  están en el anexo, apartado 2.4:
+  - la de la app se añade al final de `TEXTO_MOVIL`
+    (`rwadar-movil/componentes/AvisosNovedades.js`);
+  - la de la web, al final de `disponible` y `disponible-pausa` de
+    `TEXTOS_PUSH` (`rwadar-site/assets/rwadar-20260820.js`);
+  - las dos, con su inglés en los diccionarios.
+- **Comprobado hoy** (hora UTC, fuentes en el anexo, apartado 6):
+  - API pública de la lista del DPF (16:17-16:18, sin filtro de estado; da
+    lo mismo que la consulta del coordinador de las 16:03);
+  - políticas de Apple, Google (versión de España), Mozilla y Microsoft;
+  - documentación de push de Apple y de autopush;
+  - guía de datos de Firebase;
+  - LSSI y LOPDGDD en el BOE;
+  - Directrices 2/2023 y 05/2021 y Recomendaciones 01/2020 del CEPD.
+
+  EUR-Lex no se dejó leer (página de comprobación): se cita sin leer hoy.
+- **Pruebas del DPF en Git:** `docs/legal/encargados/2026-11-12-dpf-*.json`.
+  Son las cuatro respuestas del coordinador, byte a byte, y un resumen de mis
+  consultas con el SHA-256 de cada respuesta. Del detalle de Google y
+  Microsoft va un extracto **sin los contactos** de sus empleados.
+- **Privacidad** (fecha sin cambiar: 12/11/2026):
+  - §8: Microsoft se suma a GitHub y Google en el DPF;
+  - §8: la promesa «se comprobará» pasa a ser el párrafo `#garantias-push`,
+    con lo que dice cada empresa y la salida de no activarlas;
+  - §5: al activar las notificaciones se consiente también el envío del
+    latido.
+- **Registro** (versión 6): proveedores, terceros, A5, pendientes e
+  historial. También al día `encargados/README.md` (Netlify ya figura «Active»
+  en el DPF), INTERNO, LEEME y RUNBOOK.
+- **Pruebas** (en el worktree, con `npm --prefix rwadar-app ci`, que faltaba):
+  - `npm run test:web`: código 0; `probar-web` 678 correctas y 0 fallidas,
+    70 páginas y RSS, 40 de precarga;
+  - `node --test .github/*.test.mjs`: 103/103;
+  - `probar-web` fija ahora el resultado. Cazó dos cambios a propósito: decir
+    que Apple está adherida y quitar la frase del consentimiento de Firebase.
+- **Pendiente:**
+  - C1-C6;
+  - las recomendaciones R1-R7 del anexo (la baja arriba en la campana; que
+    todo anuncio abra Inicio en la app; completar la «Información básica»;
+    Firebase solo al pulsar en la próxima versión nativa…);
+  - **verificar** que el push web de Apple lo controla su empresa de Irlanda;
+  - **verificar** qué hace Firebase tras desactivarlas (en el Android
+    físico).
+
 ## 12 de noviembre de 2026 (9) · Claude · Notificaciones publicadas: base 32, clave VAPID, web n.º 70/71 y OTA n.º 23
 
 Víctor: «que salten las notificaciones en la app tipo WhatsApp y además salga

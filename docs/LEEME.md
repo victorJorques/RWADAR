@@ -41,6 +41,7 @@ fichas y correos.
 | [`legal/encargados/README.md`](legal/encargados/README.md) | El contrato de encargo de cada proveedor, con su copia en PDF |
 | [`legal/BRECHAS-DE-DATOS.md`](legal/BRECHAS-DE-DATOS.md) | Qué hacer si hay una brecha de datos, y su registro |
 | [`legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md`](legal/REVISION-LEGAL-AVISOS-ACADEMY-2026-11-06.md) | Revisión legal de los avisos y de la Academy con cuenta |
+| [`legal/ANEXO-NOTIFICACIONES-2026-11-12.md`](legal/ANEXO-NOTIFICACIONES-2026-11-12.md) | Anexo legal de las notificaciones en el móvil (web y Android): «sí, con condiciones» para encender el envío |
 | [`tareas/PLAN-CEO-2026-11-06.md`](tareas/PLAN-CEO-2026-11-06.md) | El orden para encender los avisos (dominio, Lettermint, GitHub Team, push) |
 | [`tareas/LETTERMINT-VERIFICACION-RESPUESTAS.md`](tareas/LETTERMINT-VERIFICACION-RESPUESTAS.md) | Borrador de respuestas para que Lettermint verifique la cuenta |
 
