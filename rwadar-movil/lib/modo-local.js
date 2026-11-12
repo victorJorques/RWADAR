@@ -27,9 +27,20 @@ export const CORREO_AUTH_E2E = true;
    docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md). Apagado: la app no
    enseña la casilla del alta, ni la tarjeta de Inicio, ni Perfil › Avisos, ni
    llama a ninguna función de avisos; sus textos de hoy siguen siendo ciertos.
-   Solo lo enciende Víctor, con la base 30 aplicada y la plantilla de Auth
-   puesta. No toca SERVICIOS_USUARIO_REMOTOS ni pushDeliveryEnabled. */
-export const AVISOS_NOVEDADES_REMOTOS = false;
+   Encendido el 12/11/2026 por orden de Víctor («que las notificaciones
+   salten al móvil tipo WhatsApp»): Perfil › Avisos (permiso con el texto
+   versionado y «Notificaciones en este móvil») y la tarjeta de Inicio. La
+   casilla del alta va aparte (AVISOS_CASILLA_ALTA_REMOTA), porque depende del
+   correo, que aún no sale. No toca SERVICIOS_USUARIO_REMOTOS ni
+   pushDeliveryEnabled. */
+export const AVISOS_NOVEDADES_REMOTOS = true;
+
+/* Casilla de avisos en el alta (12/11/2026). Separada de la anterior: la
+   casilla cuenta con el correo de confirmación de Auth y con activar-casilla
+   en la base, y el correo aún no sale (sin dominio ni Lettermint). Apagada,
+   el alta no la enseña ni manda avisos_novedades en los metadatos; el permiso
+   se da en Perfil › Avisos. Se enciende con la ronda del correo. */
+export const AVISOS_CASILLA_ALTA_REMOTA = false;
 
 /* Bandeja de avisos sin correo ni push (07/11/2026). Interruptor aparte del
    anterior: encendido, Inicio enseña SOLO la tarjeta «Avisos» con los avisos
@@ -39,8 +50,9 @@ export const AVISOS_NOVEDADES_REMOTOS = false;
    envía correo ni toca el push. Qué avisos has leído se guarda solo en el
    móvil. Es solo JS: llega por OTA a la 1.4.2. Con AVISOS_NOVEDADES_REMOTOS
    encendido no hace nada (esos avisos ya traen la tarjeta). Se enciende a la
-   vez que el de la web (assets/rwadar-20260820.js), con orden de Víctor. */
-export const AVISOS_BANDEJA_REMOTA = false;
+   vez que el de la web (assets/rwadar-20260820.js), con orden de Víctor.
+   Encendido el 12/11/2026. */
+export const AVISOS_BANDEJA_REMOTA = true;
 
 export function modoLocalActivo() {
   return MODO_LOCAL === true;

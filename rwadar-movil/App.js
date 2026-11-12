@@ -19,7 +19,7 @@ import {
 } from './lib/datos';
 import {
   MODO_LOCAL, SERVICIOS_USUARIO_REMOTOS, CUENTAS_REMOTAS, CORREO_AUTH_E2E, AVISOS_NOVEDADES_REMOTOS,
-  AVISOS_BANDEJA_REMOTA,
+  AVISOS_BANDEJA_REMOTA, AVISOS_CASILLA_ALTA_REMOTA,
 } from './lib/modo-local';
 import { crearControladorCuentas } from './lib/cuentas';
 import { cuentaAdmitida } from './lib/acceso-obligatorio';
@@ -33,7 +33,7 @@ import {
   etiquetaEstadoVerificacionLocal, fechaVerificacionLocalVisible,
 } from './lib/verificacion-local';
 import {
-  consultarEstadoAvisos, registrarParaAvisos, observarAperturasAvisos, capacidadPushNovedades,
+  consultarEstadoAvisos, registrarParaAvisos, observarAperturasAvisos, observarAvisosRecibidos, capacidadPushNovedades,
 } from './lib/avisos';
 import Explicador from './componentes/Explicador';
 import Academy from './componentes/Academy';
@@ -73,6 +73,10 @@ const CUENTA_REMOTA_ACTIVA = MODO_LOCAL === false && CUENTAS_REMOTAS === true &&
 // Avisos de novedades a cuentas registradas (contrato del 05/11/2026). Apagado,
 // la app se ve y se comporta como antes.
 const AVISOS_NOVEDADES_ACTIVOS = CUENTA_REMOTA_ACTIVA && AVISOS_NOVEDADES_REMOTOS === true;
+// Casilla de avisos en el alta (lib/modo-local.js): va aparte porque depende
+// del correo de confirmación y de activar-casilla. Apagada, el permiso se da
+// solo en Perfil › Avisos.
+const CASILLA_ALTA_ACTIVA = AVISOS_NOVEDADES_ACTIVOS && AVISOS_CASILLA_ALTA_REMOTA === true;
 // Bandeja de avisos sin correo ni push (lib/modo-local.js): solo la tarjeta
 // «Avisos» de Inicio con lo recibido. Con los avisos completos encendidos, ya
 // la traen ellos.
@@ -185,6 +189,23 @@ export default function App() {
   // Con la bandeja sola, la tarjeta no lleva «¿No quieres estos avisos?…»: sin
   // Perfil › Avisos no hay nada que desactivar.
   const avisosInicio = AVISOS_NOVEDADES_ACTIVOS ? novedadesCuenta : BANDEJA_AVISOS_ACTIVA ? bandejaAvisos : null;
+  /* El «1» de Inicio se recalcula solo, como en WhatsApp: al volver a la app
+     (como mucho una vez cada 30 s) y al llegar un aviso con la app abierta. */
+  const avisosInicioRef = useRef(null);
+  avisosInicioRef.current = avisosInicio;
+  useEffect(() => {
+    if (!avisosInicio) return undefined;
+    let ultima = Date.now();
+    const recargarAvisos = (forzar = false) => {
+      const ahora = Date.now();
+      if (!forzar && ahora - ultima < 30000) return;
+      ultima = ahora;
+      avisosInicioRef.current?.recargar();
+    };
+    const vuelta = AppState.addEventListener('change', (estado) => { if (estado === 'active') recargarAvisos(); });
+    const dejarDeEscuchar = observarAvisosRecibidos(() => recargarAvisos(true));
+    return () => { vuelta.remove(); dejarDeEscuchar(); };
+  }, [Boolean(avisosInicio)]);
   const restaurarAcceso = useCallback(async (controlador) => {
     if (!CUENTA_REMOTA_ACTIVA || !controlador || controladorActual.current !== controlador) return;
     setRestaurandoAcceso(true); setErrorRestauracion('');
@@ -223,7 +244,7 @@ export default function App() {
     // al desmontar App y también soporta el doble setup de React StrictMode.
     const controlador = crearControladorCuentas({ modoLocal: MODO_LOCAL,
       cuentasRemotas: CUENTAS_REMOTAS, correoVerificado: CORREO_AUTH_E2E,
-      avisosNovedades: AVISOS_NOVEDADES_REMOTOS === true,
+      avisosNovedades: CASILLA_ALTA_ACTIVA,
       antesDeSalir: AVISOS_NOVEDADES_REMOTOS === true ? quitarPushAlSalir : null });
     controladorActual.current = controlador;
     setCuenta(controlador);
@@ -730,7 +751,7 @@ export default function App() {
   if (fuentesListas && !usuarioAdmitido) {
     return <SafeAreaProvider><StatusBar barStyle="light-content" backgroundColor={C.noche} />
       <AccesoObligatorio controlador={cuenta} estado={estadoCuenta} onAbrirEnlace={abrirEnlace} aviso={avisoActualizacion}
-        avisosNovedades={AVISOS_NOVEDADES_ACTIVOS} />
+        avisosNovedades={CASILLA_ALTA_ACTIVA} />
     </SafeAreaProvider>;
   }
 
@@ -1124,7 +1145,7 @@ export default function App() {
                 { idioma, versionInstalada: actualizacion.versionInstalada }) : null}
               comprobandoVersion={actualizacion.resumen.tipo === 'comprobando'}
               onActualizarApp={actualizarApp}
-              avisosNovedades={AVISOS_NOVEDADES_ACTIVOS}
+              avisosNovedades={AVISOS_NOVEDADES_ACTIVOS} casillaAlta={CASILLA_ALTA_ACTIVA}
               panelNovedades={AVISOS_NOVEDADES_ACTIVOS ? (
                 <PanelAvisosNovedades estado={novedadesCuenta} onAlternarNovedades={novedadesCuenta.alternarNovedades}
                   onAlternarMovil={novedadesCuenta.alternarMovil} onAjustes={abrirAjustes}
@@ -1173,7 +1194,7 @@ export default function App() {
 
         <Privacidad visible={privacidad} onCerrar={() => setPrivacidad(false)} estadoCuenta={estadoCuenta} idioma={idioma}
           onBorrar={confirmarBorrado} borrando={borrandoDatos}
-          avisosNovedades={AVISOS_NOVEDADES_ACTIVOS} estadoNovedades={novedadesCuenta.servidor}
+          avisosNovedades={AVISOS_NOVEDADES_ACTIVOS} casillaAlta={CASILLA_ALTA_ACTIVA} estadoNovedades={novedadesCuenta.servidor}
           bandejaAvisos={BANDEJA_AVISOS_ACTIVA}
           pushNovedades={AVISOS_NOVEDADES_ACTIVOS && capacidadPushNovedades()} />
       </SafeAreaView>
@@ -1309,7 +1330,7 @@ function PantallaPerfil({
   seguidas, ofertasGuardadas, guardadasRetiradas = 0, sinConexion, estadoAvisos, procesandoAvisos,
   refrescando, borrando, onActualizar, onAbrirEmpresa, onAbrirOferta, onExplorar, onActivarAvisos, onAjustes,
   onExplicar, onPrivacidad, onPolitica, onContacto, onBorrar, inversionInicial, onConsumirInversion,
-  idioma, textosVersion, comprobandoVersion, onActualizarApp, avisosNovedades = false, panelNovedades = null,
+  idioma, textosVersion, comprobandoVersion, onActualizarApp, avisosNovedades = false, casillaAlta = false, panelNovedades = null,
   enfocarAvisos = false, onAvisosEnfocados, ultimaNovedad = '', onNovedades,
 }) {
   const total = seguidas.length + ofertasGuardadas.length;
@@ -1350,7 +1371,7 @@ function PantallaPerfil({
             onConsumirOferta={onConsumirInversion} cargar={carteraCuenta?.cargar} guardar={carteraCuenta?.guardar} />
       ) : null}
       {cuenta ? <Cuenta controlador={cuenta} estado={estadoCuenta} seguridad={seguridad} plataformas={plataformas}
-        onAbrirEmpresa={onAbrirEmpresa} onAbrirEnlace={onAbrirEnlace} avisosNovedades={avisosNovedades === true} /> : (
+        onAbrirEmpresa={onAbrirEmpresa} onAbrirEnlace={onAbrirEnlace} avisosNovedades={casillaAlta === true} /> : (
       <View style={e.resumenDispositivo}>
         <View style={e.resumenMarca}><Marca tamano={48} /></View>
         <View style={{ flex: 1 }}>
@@ -1816,7 +1837,7 @@ function PiePrivacidad({ onAbrir }) {
    que dice la base (correo y push encendidos); pushNovedades: este binario
    puede pedir notificaciones (código 24 o más). Apagados, los textos de hoy. */
 function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idioma,
-  avisosNovedades = false, estadoNovedades = null, pushNovedades = false, bandejaAvisos = false }) {
+  avisosNovedades = false, casillaAlta = false, estadoNovedades = null, pushNovedades = false, bandejaAvisos = false }) {
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onCerrar}>
       <SafeAreaProvider>
@@ -1845,7 +1866,9 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                 </Text>
                 <Text style={e.privacidadParrafo}>
                   {avisosNovedades
-                    ? 'La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. Al registrarte no se activan opiniones ni publicidad. Los avisos de novedades solo se activan si marcas su casilla al crear la cuenta o los activas en Perfil › Avisos.'
+                    ? (casillaAlta
+                      ? 'La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. Al registrarte no se activan opiniones ni publicidad. Los avisos de novedades solo se activan si marcas su casilla al crear la cuenta o los activas en Perfil › Avisos.'
+                      : 'La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. Al registrarte no se activan opiniones ni publicidad. Los avisos de novedades solo se activan si los activas en Perfil › Avisos.')
                     : 'La sesión se guarda en el almacenamiento seguro del móvil para volver a entrar sin escribir la contraseña. En Perfil puedes activar el desbloqueo con huella, reconocimiento facial o el PIN del sistema. RWAdar no recibe ni guarda esos datos. Cerrar sesión elimina el acceso guardado de este dispositivo. No se activan opiniones, publicidad, avisos por correo ni push al registrarte.'}
                 </Text>
                 <Text style={e.privacidadParrafo}>
@@ -1892,7 +1915,9 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                   <>
                     <Text style={e.privacidadTit}>Avisos de novedades</Text>
                     <Text style={e.privacidadParrafo}>
-                      Los avisos de novedades (fichas nuevas en el radar y novedades de la web y la app) solo se activan con tu permiso: con su casilla al crear la cuenta o en Perfil › Avisos. Se guarda en tu cuenta si los aceptaste, cuándo, desde dónde, con qué texto y en qué idioma, y el historial de altas y bajas. Puedes retirar el permiso cuando quieras, sin que afecte a los envíos anteriores: en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Los avisos se ven también en Inicio; qué avisos has leído se guarda solo en este dispositivo.
+                      {casillaAlta
+                        ? 'Los avisos de novedades (fichas nuevas en el radar y novedades de la web y la app) solo se activan con tu permiso: con su casilla al crear la cuenta o en Perfil › Avisos. Se guarda en tu cuenta si los aceptaste, cuándo, desde dónde, con qué texto y en qué idioma, y el historial de altas y bajas. Puedes retirar el permiso cuando quieras, sin que afecte a los envíos anteriores: en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Los avisos se ven también en Inicio; qué avisos has leído se guarda solo en este dispositivo.'
+                        : 'Los avisos de novedades (fichas nuevas en el radar y novedades de la web y la app) solo se activan con tu permiso: en Perfil › Avisos. Se guarda en tu cuenta si los aceptaste, cuándo, desde dónde, con qué texto y en qué idioma, y el historial de altas y bajas. Puedes retirar el permiso cuando quieras, sin que afecte a los envíos anteriores: en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Los avisos se ven también en Inicio; qué avisos has leído se guarda solo en este dispositivo.'}
                     </Text>
                     <Text style={e.privacidadParrafo}>
                       {pushNovedades

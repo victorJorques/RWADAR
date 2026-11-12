@@ -155,6 +155,45 @@ export function observarAperturasAvisos(onAbrir, { onDestino } = {}) {
   };
 }
 
+/* Con la app abierta, al llegar un aviso de RWAdar se vuelve a cargar la
+   bandeja para que el «1» de Inicio lo cuente al momento. No pide permisos ni
+   crea tokens. Devuelve la función para dejar de escuchar. */
+export function observarAvisosRecibidos(alRecibir) {
+  if (Platform.OS === 'web' || typeof alRecibir !== 'function' || !capacidadPushNovedades()) return () => {};
+  let suscripcion;
+  try {
+    suscripcion = Notifications.addNotificationReceivedListener((notificacion) => {
+      if (aperturaDesdeDatosAviso(notificacion?.request?.content?.data)) alRecibir();
+    });
+  } catch {
+    return () => {};
+  }
+  return () => { suscripcion?.remove(); };
+}
+
+/* Al marcar los avisos como leídos dentro de la app, se quitan también sus
+   notificaciones de la bandeja del sistema, para que el punto o el número
+   del icono cuadre con el «1» de Inicio. Solo las de RWAdar con datos de
+   aviso válidos. Nunca setBadgeCountAsync en Android: con 0 borra todas las
+   notificaciones (cancelAll) y con más de 0 depende de permisos de los
+   lanzadores que esta app no declara (app.json). */
+export async function retirarNotificacionesAvisos() {
+  if (Platform.OS === 'web' || !capacidadPushNovedades()) return 0;
+  try {
+    const presentes = await Notifications.getPresentedNotificationsAsync();
+    let quitadas = 0;
+    for (const notificacion of Array.isArray(presentes) ? presentes : []) {
+      const id = notificacion?.request?.identifier;
+      if (!id || !aperturaDesdeDatosAviso(notificacion?.request?.content?.data)) continue;
+      await Notifications.dismissNotificationAsync(id);
+      quitadas += 1;
+    }
+    return quitadas;
+  } catch {
+    return 0;
+  }
+}
+
 function resultadoPreparado() {
   const envioActivo = envioPushOperativo();
   return {
@@ -319,7 +358,12 @@ export async function obtenerTokenNovedades({ solicitarPermiso = false } = {}) {
         await Notifications.setNotificationChannelAsync(canal.id, {
           name: traducir(canal.nombre),
           description: traducir(canal.descripcion),
-          importance: Notifications.AndroidImportance.DEFAULT,
+          /* HIGH: suena y aparece encima de lo que estés haciendo, como un
+             WhatsApp (DEFAULT solo suena). La importancia de un canal ya
+             creado solo la puede cambiar la persona, así que se fija bien
+             desde la primera activación. */
+          importance: Notifications.AndroidImportance.HIGH,
+          vibrationPattern: [0, 250, 150, 250],
           lightColor: '#25E39A',
         });
       }

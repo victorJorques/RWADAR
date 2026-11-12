@@ -217,6 +217,8 @@ function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), reciente
       consultarPushNovedades: capacidad ? async () => { sdk.push('consultar'); // Tras conceder el permiso, el sistema lo da por permitido.
         return sistema.consulta || (local.token ? { ok: true, estado: 'permitido' } : { ok: false, estado: 'disponible' }); } : prohibido('consultar'),
       obtenerTokenNovedades: capacidad ? async (opciones) => { sdk.push(['token', opciones]); return sistema.token || { ok: true, estado: 'permitido', token: TOKEN, plataforma: 'android' }; } : prohibido('token'),
+      // Al leerlo todo se quitan sus notificaciones del sistema (sin capacidad, no hace nada).
+      retirarNotificacionesAvisos: async () => { sdk.push('retirar'); return 0; },
     },
     '../lib/datos': {
       avisosLeidos: async () => local.leidos,
@@ -625,8 +627,18 @@ test('Privacidad: con el interruptor apagado, las frases de hoy; encendido, las 
   assert.doesNotMatch(hoy, /Avisos de novedades|Brevo|Lettermint/);
   const v141 = texto(Privacidad({ estadoCuenta: { disponible: true }, avisosNovedades: true, pushNovedades: false }));
   assert.doesNotMatch(v141, /No se activan opiniones, publicidad, avisos por correo ni push|Instalaciones y avisos desactivados/);
-  assert.match(v141, /Los avisos de novedades solo se activan si marcas su casilla/);
-  assert.match(v141, /solo se activan con tu permiso/);
+  // Sin la casilla del alta (12/11/2026), el permiso solo se da en Perfil › Avisos.
+  assert.match(v141, /Los avisos de novedades solo se activan si los activas en Perfil › Avisos\./);
+  assert.match(v141, /solo se activan con tu permiso: en Perfil › Avisos\./);
+  assert.doesNotMatch(v141, /marcas su casilla|con su casilla al crear la cuenta/);
+  const conCasilla = texto(Privacidad({ estadoCuenta: { disponible: true }, avisosNovedades: true, casillaAlta: true, pushNovedades: false }));
+  assert.match(conCasilla, /Los avisos de novedades solo se activan si marcas su casilla al crear la cuenta o los activas en Perfil › Avisos\./);
+  assert.match(conCasilla, /solo se activan con tu permiso: con su casilla al crear la cuenta o en Perfil › Avisos\./);
+  for (const t of [v141, conCasilla]) {
+    for (const parrafo of [t.match(/La sesión se guarda[^]*?Perfil › Avisos\./)[0], t.match(/Los avisos de novedades \(fichas[^]*?solo en este dispositivo\./)[0]]) {
+      assert.notEqual(idioma.ingles(parrafo), parrafo, 'falta el inglés: ' + parrafo.slice(0, 60));
+    }
+  }
   assert.match(v141, /las notificaciones en el móvil llegan con la versión 1\.4\.2/);
   assert.doesNotMatch(v141, /Brevo|Lettermint/, 'el correo no se describe hasta que la base lo encienda');
   const v142 = texto(Privacidad({ estadoCuenta: { disponible: true }, avisosNovedades: true, pushNovedades: true,
@@ -672,7 +684,11 @@ test('Perfil: con el interruptor, el panel de la cuenta sustituye a «Próximame
     avisosNovedades: true, panelNovedades: { type: 'PanelNovedades', props: {}, children: [] } });
   assert.doesNotMatch(texto(conAvisos), /Próximamente|Los avisos llegarán a la app/);
   assert.ok(nodos(conAvisos).some((n) => n.type === 'PanelNovedades'));
-  assert.equal(nodos(conAvisos).find((n) => n.type === 'Cuenta').props.avisosNovedades, true);
+  // Sin la casilla del alta, el formulario de la cuenta no la enseña aunque Perfil › Avisos esté encendido.
+  assert.equal(nodos(conAvisos).find((n) => n.type === 'Cuenta').props.avisosNovedades, false);
+  const conCasilla = PantallaPerfil({ cuenta: {}, estadoCuenta: { disponible: true }, seguidas: [], ofertasGuardadas: [],
+    avisosNovedades: true, casillaAlta: true, panelNovedades: { type: 'PanelNovedades', props: {}, children: [] } });
+  assert.equal(nodos(conCasilla).find((n) => n.type === 'Cuenta').props.avisosNovedades, true);
 });
 
 function variableApp(nombre) {
@@ -747,12 +763,21 @@ test('App: solo con el interruptor se observan las novedades y se pinta la tarje
   assert.match(APP, /panelNovedades=\{AVISOS_NOVEDADES_ACTIVOS \? \(/);
   assert.match(APP, /<TarjetaAvisosInicio[^>]*onMarcarLeidos=\{avisosInicio\.marcarTodosLeidos\}/);
   assert.match(APP, /await borrarDatosDispositivo\(\);[\s\S]{0,200}avisosInicio\?\.recargar\(\);/);
-  assert.match(APP, /<AccesoObligatorio[^>]*avisosNovedades=\{AVISOS_NOVEDADES_ACTIVOS\}/);
+  // La casilla del alta va con su propio interruptor (12/11/2026), apagado hasta que salga el correo.
+  assert.match(APP, /const CASILLA_ALTA_ACTIVA = AVISOS_NOVEDADES_ACTIVOS && AVISOS_CASILLA_ALTA_REMOTA === true;/);
+  assert.match(APP, /<AccesoObligatorio[^>]*avisosNovedades=\{CASILLA_ALTA_ACTIVA\}/);
+  assert.match(APP, /avisosNovedades: CASILLA_ALTA_ACTIVA,/);
+  assert.match(APP, /onAbrirEnlace=\{onAbrirEnlace\} avisosNovedades=\{casillaAlta === true\} \/>/);
   assert.match(APP, /antesDeSalir: AVISOS_NOVEDADES_REMOTOS === true \? quitarPushAlSalir : null/);
+  // El «1» se recalcula al volver a la app y al llegar un aviso con la app abierta.
+  assert.match(APP, /AppState\.addEventListener\('change', \(estado\) => \{ if \(estado === 'active'\) recargarAvisos\(\); \}\)/);
+  assert.match(APP, /observarAvisosRecibidos\(\(\) => recargarAvisos\(true\)\)/);
   assert.match(fs.readFileSync(path.join(RAIZ, 'componentes', 'AccesoObligatorio.js'), 'utf8'), /avisosNovedades=\{avisosNovedades === true\}/);
   assert.match(fs.readFileSync(path.join(RAIZ, 'componentes', 'Inicio.js'), 'utf8'), /tarjetaAvisos = null,[\s\S]*\{tarjetaAvisos\}/);
   const modo = fs.readFileSync(path.join(RAIZ, 'lib', 'modo-local.js'), 'utf8');
-  assert.match(modo, /export const AVISOS_NOVEDADES_REMOTOS = false;/, 'el interruptor nace apagado');
+  // Encendido el 12/11/2026 por orden de Víctor; la casilla del alta sigue apagada.
+  assert.match(modo, /export const AVISOS_NOVEDADES_REMOTOS = true;/);
+  assert.match(modo, /export const AVISOS_CASILLA_ALTA_REMOTA = false;/, 'la casilla del alta sigue apagada');
   assert.match(modo, /export const SERVICIOS_USUARIO_REMOTOS = false;/);
   assert.equal(JSON.parse(fs.readFileSync(path.join(RAIZ, 'app.json'), 'utf8')).expo.extra.rwadar.pushDeliveryEnabled, true, 'la 1.4.2 puede entregar push');
 });
@@ -867,8 +892,9 @@ test('bandeja: si la base falla se dice en la tarjeta, y sin cuenta (interruptor
 
 test('App: la bandeja tiene su interruptor aparte, apagado; encendida solo pinta la tarjeta de Inicio', () => {
   const modo = fs.readFileSync(path.join(RAIZ, 'lib', 'modo-local.js'), 'utf8');
-  assert.match(modo, /export const AVISOS_BANDEJA_REMOTA = false;/, 'la bandeja nace apagada');
-  assert.match(modo, /export const AVISOS_NOVEDADES_REMOTOS = false;/);
+  // 12/11/2026: los dos encendidos; con los avisos completos la bandeja no hace nada aparte.
+  assert.match(modo, /export const AVISOS_BANDEJA_REMOTA = true;/);
+  assert.match(modo, /export const AVISOS_NOVEDADES_REMOTOS = true;/);
   const activa = new Function('CUENTA_REMOTA_ACTIVA', 'AVISOS_BANDEJA_REMOTA', 'AVISOS_NOVEDADES_ACTIVOS',
     `return (${variableApp('BANDEJA_AVISOS_ACTIVA')});`);
   assert.equal(activa(true, false, false), false, 'apagada no hace nada');
@@ -883,10 +909,10 @@ test('App: la bandeja tiene su interruptor aparte, apagado; encendida solo pinta
   assert.equal(inicio(true, false, completa, sola), completa);
   assert.match(APP, /useBandejaAvisos\(\{ cuenta, usuarioId: BANDEJA_AVISOS_ACTIVA \? usuarioAdmitido : null \}\)/);
   assert.match(APP, /novedades=\{avisos\.length \+ \(avisosInicio \? avisosInicio\.noLeidos : 0\)\}/);
-  // La casilla del alta, Perfil › Avisos, el push y la salida siguen dependiendo solo de los avisos completos.
-  assert.match(APP, /<AccesoObligatorio[^>]*avisosNovedades=\{AVISOS_NOVEDADES_ACTIVOS\}/);
+  // Perfil › Avisos, el push y la salida dependen solo de los avisos completos; la casilla, además, de su interruptor.
+  assert.match(APP, /<AccesoObligatorio[^>]*avisosNovedades=\{CASILLA_ALTA_ACTIVA\}/);
   assert.match(APP, /panelNovedades=\{AVISOS_NOVEDADES_ACTIVOS \? \(/);
-  assert.match(APP, /avisosNovedades: AVISOS_NOVEDADES_REMOTOS === true,/);
+  assert.match(APP, /avisosNovedades: CASILLA_ALTA_ACTIVA,/);
   assert.match(APP, /pushNovedades=\{AVISOS_NOVEDADES_ACTIVOS && capacidadPushNovedades\(\)\}/);
   assert.match(APP, /\}, AVISOS_NOVEDADES_ACTIVOS \? \{\s*\/\/ Notificación de novedades/);
   assert.doesNotMatch(APP, /AVISOS_BANDEJA_REMOTA[^\n]*(?:quitarPushAlSalir|capacidadPushNovedades|observarAperturasAvisos)/);

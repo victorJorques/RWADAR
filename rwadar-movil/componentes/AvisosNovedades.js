@@ -5,7 +5,7 @@ import { C, F, R, T, UI } from '../lib/tema';
 import {
   INFO_BASICA_ES, TEXTO_AVISOS_ES, crearAvisosCuenta, crearBandejaAvisos, crearGestorAvisosNovedades, quitarPushConCliente,
 } from '../lib/avisos-cuenta';
-import { capacidadPushNovedades, consultarPushNovedades, obtenerTokenNovedades } from '../lib/avisos';
+import { capacidadPushNovedades, consultarPushNovedades, obtenerTokenNovedades, retirarNotificacionesAvisos } from '../lib/avisos';
 import { obtenerIdioma } from '../lib/idioma';
 import {
   avisosLeidos, marcarAvisosLeidos, tokenPushNovedades, guardarTokenPushNovedades, borrarTokenPushNovedades,
@@ -167,6 +167,8 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
     if (!g || !Array.isArray(ids) || !ids.length) return;
     // Se marca en pantalla aunque no se pueda guardar en el dispositivo.
     actualizar(vuelta, (antes) => ({ leidos: [...new Set([...ids, ...antes.leidos])] }));
+    // Sin avisos pendientes, fuera también sus notificaciones del sistema.
+    if (idsNoLeidos.every((id) => ids.includes(id))) void retirarNotificacionesAvisos();
     try {
       const leidos = await g.marcarLeidos(ids);
       actualizar(vuelta, { leidos });
