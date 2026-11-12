@@ -310,7 +310,7 @@ const compruebaBase = (entradas) => correPaso(BASE, 'Comprobar la acción', { AC
     isDeepStrictEqual(opciones, ['ensayo-30', 'verificar-30', 'diagnostico-30', 'aplicar-30', 'ensayo-31', 'verificar-31', 'aplicar-31',
       'guardar-correo', 'ensayo-32', 'verificar-32', 'aplicar-32', 'crear-vapid', 'rotar-vapid', 'ensayo-33', 'verificar-33', 'aplicar-33',
       'prueba-webpush', 'ensayo-34', 'verificar-34', 'aplicar-34', 'activar-casilla', 'activar-correo', 'activar-push', 'apagar',
-      'apagar-casilla']));
+      'apagar-casilla', 'hacer-admin']));
   paso('el flujo comprueba que las dos copias de la 34 son idénticas y avisa de reaplicar la 34 tras aplicar-30 y aplicar-31',
     BASE.includes('cmp -s "$D/34_pie_sin_nombre.sql" rwadar-app/supabase/migrations/20261112210000_pie_sin_nombre.sql')
     && BASE.includes('(aplicar-31, aplicar-32, aplicar-33 y aplicar-34)')

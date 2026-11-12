@@ -354,7 +354,7 @@ const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].j
     isDeepStrictEqual(opciones, ['ensayo-30', 'verificar-30', 'diagnostico-30', 'aplicar-30', 'ensayo-31', 'verificar-31',
       'aplicar-31', 'guardar-correo', 'ensayo-32', 'verificar-32', 'aplicar-32', 'crear-vapid', 'rotar-vapid',
       'ensayo-33', 'verificar-33', 'aplicar-33', 'prueba-webpush', 'ensayo-34', 'verificar-34', 'aplicar-34',
-      'activar-casilla', 'activar-correo', 'activar-push', 'apagar', 'apagar-casilla'])
+      'activar-casilla', 'activar-correo', 'activar-push', 'apagar', 'apagar-casilla', 'hacer-admin'])
     && /^ {6}remitente:\n {8}description: .*\n {8}required: false\n {8}type: string$/m.test(BASE));
   const guardar = pasoDe(BASE, 'Guardar en Vault el token de Lettermint y el remitente') || '';
   paso('nunca ${{ … }} dentro de run:; el secreto LETTERMINT_API_TOKEN solo llega, por env:, al paso que guarda; ni set -x ni echo del token',
