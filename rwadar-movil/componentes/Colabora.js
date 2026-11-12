@@ -13,7 +13,7 @@ import { tacto } from '../lib/tacto';
    las dos pantallas, con los mismos textos que la web (#colaboraPlantilla de
    rwadar-site/index.html); el inglés sale del diccionario común
    (lib/idioma-en.js). Este correo es solo para colaborar: privacidad,
-   derechos y avisos legales siguen en RWAdar@protonmail.com.
+   derechos y avisos legales también usan rwadares@gmail.com (cambio de Víctor del 12/11).
    Si el móvil no tiene con qué abrir el correo, se dice y la dirección
    queda escrita para copiarla (texto seleccionable).
    --------------------------------------------------------------------- */

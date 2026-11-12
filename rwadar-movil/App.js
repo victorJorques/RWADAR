@@ -80,7 +80,7 @@ const BANDEJA_AVISOS_ACTIVA = CUENTA_REMOTA_ACTIVA && AVISOS_BANDEJA_REMOTA === 
 
 async function abrirEnlace(url) {
   const valor = String(url || '').trim();
-  let permitido = valor === 'mailto:RWAdar@protonmail.com';
+  let permitido = valor === 'mailto:rwadares@gmail.com';
   if (!permitido) {
     try {
       const destino = new URL(valor);
@@ -1113,7 +1113,7 @@ export default function App() {
               onPolitica={() => abrirEnlace(URL_PRIVACIDAD)}
               ultimaNovedad={NOVEDADES_RWADAR[0] ? (NOVEDADES_RWADAR[0].resumen || NOVEDADES_RWADAR[0].titulo) : ''}
               onNovedades={() => abrirEnlace(URL_NOVEDADES)}
-              onContacto={() => abrirEnlace('mailto:RWAdar@protonmail.com')}
+              onContacto={() => abrirEnlace('mailto:rwadares@gmail.com')}
               onBorrar={confirmarBorrado}
               inversionInicial={inversionInicial}
               onConsumirInversion={() => setInversionInicial(null)}
@@ -1484,7 +1484,7 @@ function PantallaPerfil({
         <FilaMenu
           icono="correo"
           titulo="Contactar sobre mis datos"
-          subtitulo="RWAdar@protonmail.com"
+          subtitulo="rwadares@gmail.com"
           onPress={onContacto}
         />
         <FilaMenu
@@ -1990,7 +1990,7 @@ function Privacidad({ visible, onCerrar, onBorrar, borrando, estadoCuenta, idiom
                 <Text style={e.botonBordeTxt}>Abrir política completa ↗</Text>
               </Pressable>
             ) : null}
-            <Pressable onPress={() => abrirEnlace('mailto:RWAdar@protonmail.com')}
+            <Pressable onPress={() => abrirEnlace('mailto:rwadares@gmail.com')}
               style={({ pressed }) => [e.botonBorde, pressed && e.pulsado]}
               accessibilityRole="link">
               <Text style={e.botonBordeTxt}>Contactar sobre mis datos</Text>
