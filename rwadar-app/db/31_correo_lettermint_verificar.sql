@@ -9,7 +9,8 @@
 -- api.lettermint.co, sin rastro de Brevo; que piden no seguir aperturas ni
 -- clics; que la clave idempotente de la fila va en la cabecera HTTP de
 -- net.http_post (no en las del correo) y no se cambia al reintentar; que cada correo
--- lleva la dirección postal en el pie; y que conservan lo de la 30: security
+-- lleva la dirección postal en el pie (con o sin el nombre del titular: desde
+-- la 34 no lo lleva, y lo comprueba su verificador); y que conservan lo de la 30: security
 -- definer, search_path vacío, el mismo dueño que el resto del esquema y
 -- ningún permiso de ejecución para los clientes.
 -- =====================================================================
@@ -137,9 +138,11 @@ begin
 
   -- Pie con la dirección postal (política de uso de Lettermint), comprobado
   -- con un correo de cada tipo construido de verdad (la función solo lee).
+  -- Quién es el responsable no se mira aquí: la 31 lo nombra y la 34 dice
+  -- «el titular de RWAdar» (sin su nombre); eso lo comprueba el verificador 34.
   v_correo := rwadar_novedades.correo_mensaje('bienvenida', null, null, null, false, null);
-  if position('Responsable: Víctor Manuel Jorques Granero, Plaza Generalitat, s/n, 46600 Alzira (Valencia), España (' in v_correo ->> 'html') = 0
-     or position('Responsable: Víctor Manuel Jorques Granero, Plaza Generalitat, s/n, 46600 Alzira (Valencia), España.' in v_correo ->> 'texto') = 0
+  if (v_correo ->> 'html') !~ 'Responsable: [^<]+, Plaza Generalitat, s/n, 46600 Alzira \(Valencia\), España \('
+     or (v_correo ->> 'texto') !~ 'Responsable: [^\n]+, Plaza Generalitat, s/n, 46600 Alzira \(Valencia\), España\.'
      or position('baja?t=' in (v_correo ->> 'html') || (v_correo ->> 'texto')) > 0 then
     raise exception '31: la bienvenida no lleva la dirección postal en el pie o lleva baja sin estar apuntada';
   end if;

@@ -3,14 +3,15 @@ name: Avisos a registrados (base)
 # Aplica en Supabase, desde GitHub, la migración 30 (avisos a registrados),
 # la 31 (el correo sale por Lettermint), la 32 (notificaciones: push de Expo
 # con prioridad alta y notificaciones web), la 33 (las notificaciones web
-# salen desde Supabase) y sus scripts, con las mismas garantías que
+# salen desde Supabase), la 34 (el pie de los correos, sin el nombre del
+# titular) y sus scripts, con las mismas garantías que
 # «Aplicar catálogo»: solo desde main, copia cifrada de la base antes de
 # cambiar nada, cada SQL en su propia transacción y los verificadores al
 # final. Solo hay acciones fijas: no se puede pasar un archivo cualquiera.
 #
 # Cada acción que cambia la base necesita orden expresa de Víctor (AGENTS.md)
 # y escribir AVISOS en «confirmar». Los ensayos («ensayo-30», «ensayo-31»,
-# «ensayo-32», «ensayo-33»), las verificaciones y «diagnostico-30» no
+# «ensayo-32», «ensayo-33», «ensayo-34»), las verificaciones y «diagnostico-30» no
 # cambian nada: un ensayo aplica su migración y sus verificadores dentro de
 # una transacción que se deshace al final, para saber si entra en producción
 # antes de aplicarla.
@@ -20,8 +21,10 @@ name: Avisos a registrados (base)
 # enciende el correo: eso es «activar-correo», que exige la 31 y esos dos.
 # OJO: reaplicar la 30 devuelve el envío de correo al código de Brevo, el
 # push de Expo a la prioridad normal y procesar() a su versión sin las
-# notificaciones web; si la 31, la 32 y la 33 ya estaban aplicadas, hay que
-# volver a aplicarlas, en ese orden (aplicar-31, aplicar-32 y aplicar-33).
+# notificaciones web; si la 31, la 32, la 33 y la 34 ya estaban aplicadas,
+# hay que volver a aplicarlas, en ese orden (aplicar-31, aplicar-32,
+# aplicar-33 y aplicar-34). Reaplicar la 31 devuelve el nombre del titular
+# al pie de los correos: después, aplicar-34.
 #
 # «crear-vapid» genera en esta máquina (node, sin npm) el par de claves P-256
 # de las notificaciones web y guarda la privada en Vault (RWADAR_VAPID_PRIVADA)
@@ -67,6 +70,9 @@ on:
           - verificar-33
           - aplicar-33
           - prueba-webpush
+          - ensayo-34
+          - verificar-34
+          - aplicar-34
           - activar-casilla
           - activar-correo
           - activar-push
@@ -125,6 +131,7 @@ jobs:
           V31="$D/31_correo_lettermint_verificar.sql"
           V32="$D/32_notificaciones_verificar.sql"
           V33="$D/33_webpush_supabase_verificar.sql"
+          V34="$D/34_pie_sin_nombre_verificar.sql"
           # VERIFICADORES: los que se pasan al final (o dentro del ensayo).
           ENSAYO=no
           VERIFICADORES="$V30"
@@ -148,6 +155,9 @@ jobs:
             # Envía (solo a administración) pero no cambia la base: sin copia,
             # con AVISOS (abajo) y los verificadores al final.
             prueba-webpush)  SQL="$D/33_webpush_supabase_prueba.sql";           CAMBIA=no; VERIFICADORES="$V30 $V32 $V33" ;;
+            ensayo-34)       SQL="$D/34_pie_sin_nombre.sql";                    CAMBIA=no; ENSAYO=si; VERIFICADORES="$V30 $V31 $V32 $V33 $V34" ;;
+            verificar-34)    SQL="$V34";                                         CAMBIA=no; VERIFICADORES="$V30 $V31 $V32 $V33 $V34" ;;
+            aplicar-34)      SQL="$D/34_pie_sin_nombre.sql";                    CAMBIA=si; VERIFICADORES="$V30 $V31 $V32 $V33 $V34" ;;
             activar-casilla) SQL="$D/30_avisos_registrados_activar_casilla.sql"; CAMBIA=si ;;
             activar-correo)  SQL="$D/30_avisos_registrados_activar_correo.sql";  CAMBIA=si; VERIFICADORES="$V30 $V31" ;;
             activar-push)    SQL="$D/30_avisos_registrados_activar_push.sql";    CAMBIA=si ;;
@@ -171,8 +181,8 @@ jobs:
             (( ${#REMITENTE} <= 254 )) && [[ "$REMITENTE" =~ $CORREO_VALIDO ]] \
               || { echo "guardar-correo necesita en «remitente» una dirección de correo válida, sin nombre ni <>."; exit 1; }
           fi
-          # Las dos copias de la 30, de la 31, de la 32 y de la 33 deben ser
-          # idénticas (la del CLI y la del SQL Editor).
+          # Las dos copias de la 30, de la 31, de la 32, de la 33 y de la 34
+          # deben ser idénticas (la del CLI y la del SQL Editor).
           cmp -s "$D/30_avisos_registrados.sql" rwadar-app/supabase/migrations/20261105200000_avisos_registrados.sql \
             || { echo "Las dos copias de la 30 no coinciden"; exit 1; }
           cmp -s "$D/31_correo_lettermint.sql" rwadar-app/supabase/migrations/20261106120000_correo_lettermint.sql \
@@ -181,6 +191,8 @@ jobs:
             || { echo "Las dos copias de la 32 no coinciden"; exit 1; }
           cmp -s "$D/33_webpush_supabase.sql" rwadar-app/supabase/migrations/20261112170000_webpush_supabase.sql \
             || { echo "Las dos copias de la 33 no coinciden"; exit 1; }
+          cmp -s "$D/34_pie_sin_nombre.sql" rwadar-app/supabase/migrations/20261112210000_pie_sin_nombre.sql \
+            || { echo "Las dos copias de la 34 no coinciden"; exit 1; }
           { echo "SQL=$SQL"; echo "CAMBIA=$CAMBIA"; echo "ENSAYO=$ENSAYO"; echo "VERIFICADORES=$VERIFICADORES"; } >> "$GITHUB_ENV"
 
       - name: Instalar psql y pg_dump 17 (misma versión que Supabase)
@@ -240,7 +252,10 @@ jobs:
           set -euo pipefail
           psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$SQL"
           if [ "$ACCION" = aplicar-30 ]; then
-            echo "Aviso: reaplicar la 30 devuelve el envío de correo al código de Brevo, el push de Expo a la prioridad normal y procesar() a su versión sin las notificaciones web. Si la 31, la 32 y la 33 ya estaban aplicadas, vuelve a aplicarlas en ese orden (aplicar-31, aplicar-32 y aplicar-33)."
+            echo "Aviso: reaplicar la 30 devuelve el envío de correo al código de Brevo, el push de Expo a la prioridad normal y procesar() a su versión sin las notificaciones web. Si la 31, la 32, la 33 y la 34 ya estaban aplicadas, vuelve a aplicarlas en ese orden (aplicar-31, aplicar-32, aplicar-33 y aplicar-34)."
+          fi
+          if [ "$ACCION" = aplicar-31 ]; then
+            echo "Aviso: la 31 pone en el pie de los correos el nombre del titular. Si la 34 ya estaba aplicada, vuelve a aplicarla (aplicar-34) para quitarlo."
           fi
 
       # El token llega por el entorno y pasa a psql como variable (-v); nunca

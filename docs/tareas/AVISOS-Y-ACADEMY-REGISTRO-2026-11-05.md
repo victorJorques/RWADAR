@@ -306,7 +306,13 @@ una versión nueva; la web y la app deben decir lo mismo):
   (Valencia), España (aviso legal · privacidad).» En texto plano, la misma
   frase terminada en «España.», sin el paréntesis: los enlaces del aviso
   legal y de la privacidad van en las líneas siguientes. (En la 30 decía
-  solo «Víctor Manuel Jorques Granero, España».)
+  solo «Víctor Manuel Jorques Granero, España».) **Desde la 34**
+  (12/11/2026, a petición de Víctor: «todo lo que puedas quitar mi nombre
+  hazlo»), «Responsable: el titular de RWAdar, Plaza Generalitat, s/n, 46600
+  Alzira (Valencia), España (aviso legal · privacidad).»: el nombre queda en
+  el aviso legal enlazado. Las plantillas de Auth, igual: «RWAdar · Plaza
+  Generalitat, s/n, 46600 Alzira (Valencia), España · Aviso legal ·
+  Privacidad · rwadares@gmail.com».
 - Bienvenida por push (título «RWAdar», canal `cuenta`): «Notificaciones
   activadas en este móvil. Las de novedades solo llegan si las tienes
   activadas en Perfil.»

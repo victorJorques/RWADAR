@@ -198,7 +198,7 @@ paso('la 30 y su verificador guardan la versión v2 y los textos ES/EN exactos d
   paso('el pie de las plantillas de Auth (confirmación y recuperación) lleva la dirección postal «Plaza Generalitat, s/n, 46600 Alzira (Valencia), España» y el aviso legal enlazado, sin el nombre del titular (tampoco en su LEEME)',
     isDeepStrictEqual(plantillas, ['confirmar-alta.html', 'recuperar-acceso.html'])
     && plantillas.every((f) => leer(`plantillas-auth/${f}`).includes(pie) && !/Jorques|Víctor Manuel/i.test(leer(`plantillas-auth/${f}`)))
-    && !/Jorques|Víctor Manuel/i.test(leer('plantillas-auth/LEEME.md')));
+    && !/Jorques|Víctor Manuel/i.test(fs.readFileSync(path.join(raiz, '..', 'rwadar-app/plantillas-auth/LEEME.md'), 'utf8')));
   const accionesRecuperar = [...PLANTILLA_RECUPERAR.matchAll(/\{\{\s*([^}]*?)\s*\}\}/g)].map((m) => m[1]);
   paso('la plantilla «Reset password» solo usa {{ .ConfirmationURL }}, una vez, con el texto de REABRIR-CUENTAS',
     isDeepStrictEqual(accionesRecuperar, ['.ConfirmationURL'])
@@ -345,10 +345,10 @@ const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].j
   const runs = [...BASE.matchAll(/^( +)run: \|\n((?:\1 {2}.*\n|\s*\n)*)/gm)].map((m) => m[2]);
   const opciones = BASE.match(/ {6}accion:\n(?: {8}.*\n)*? {8}options:\n((?: {10}- .*\n)+)/)?.[1]
     .trim().split('\n').map((l) => l.trim().slice(2));
-  paso('el flujo «Avisos a registrados (base)» añade ensayo-31, verificar-31, aplicar-31 y guardar-correo y conserva las de la 30 (las de la 32 las mira probar-notificaciones.mjs y las de la 33, probar-webpush-supabase.mjs)',
+  paso('el flujo «Avisos a registrados (base)» añade ensayo-31, verificar-31, aplicar-31 y guardar-correo y conserva las de la 30 (las de la 32 las mira probar-notificaciones.mjs; las de la 33, probar-webpush-supabase.mjs, y las de la 34, probar-pie-sin-nombre.mjs)',
     isDeepStrictEqual(opciones, ['ensayo-30', 'verificar-30', 'diagnostico-30', 'aplicar-30', 'ensayo-31', 'verificar-31',
       'aplicar-31', 'guardar-correo', 'ensayo-32', 'verificar-32', 'aplicar-32', 'crear-vapid', 'rotar-vapid',
-      'ensayo-33', 'verificar-33', 'aplicar-33', 'prueba-webpush',
+      'ensayo-33', 'verificar-33', 'aplicar-33', 'prueba-webpush', 'ensayo-34', 'verificar-34', 'aplicar-34',
       'activar-casilla', 'activar-correo', 'activar-push', 'apagar', 'apagar-casilla'])
     && /^ {6}remitente:\n {8}description: .*\n {8}required: false\n {8}type: string$/m.test(BASE));
   const guardar = pasoDe(BASE, 'Guardar en Vault el token de Lettermint y el remitente') || '';

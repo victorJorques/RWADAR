@@ -246,6 +246,15 @@ gratuito de 100.000 al día de toda la web; vigilarlo antes de subir la tanda.
   `crear-token-base` de «Dominio de correo», que guarda el token en el Vault
   sin pasar por GitHub: ver «Encender el correo», abajo). **Si se reaplica la 30, hay
   que reaplicar la 31:** la 30 devuelve el envío al código de Brevo.
+  **Pie sin el nombre del titular (migración 34, 12/11/2026):** `ensayo-34` y
+  `aplicar-34` cambian solo el pie de los avisos por correo a «Responsable:
+  el titular de RWAdar, Plaza Generalitat, s/n, 46600 Alzira (Valencia),
+  España», con el aviso legal enlazado. Se niega sin la 31 o con correos a
+  medias (espera 25 minutos y repítela). **Reaplicar la 31 devuelve el
+  nombre al pie: después, `aplicar-34`.** Tras reaplicar la 30: la 31, la 32,
+  la 33 y la 34, en ese orden. Las plantillas de Auth (alta y contraseña)
+  se cambian aparte: volver a pegarlas desde `rwadar-app/plantillas-auth/`
+  (flujo «Supabase (gestión de Auth)», acción `plantillas`).
 - **Bajas que llegan por correo** (LSSI art. 22.1: basta con pedirlo al
   remitente). Mientras salgan avisos:
   1. Antes de cada envío —y cada día si `ofertas_automaticas` está encendido—
