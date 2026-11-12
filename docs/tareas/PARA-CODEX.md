@@ -6,113 +6,85 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
-## 12 de noviembre de 2026 (18) · Claude · «Novedades de RWAdar» en la web y su contenido (sin publicar)
+## 12 de noviembre de 2026 (18) · Claude · Novedades al abrir la app y la web
 
 - **Víctor:** «que salga al abrir la app y como las novedades, tipo un texto
   informativo muy fácil de leer con las novedades y si clickan que salga en
-  detalle». Esta parte: la web y el contenido. La app la hace otra sesión con
-  el mismo archivo. **Sin publicar; Supabase y EAS sin tocar.** Guía:
+  detalle». Hecho en dos ramas (web y app) y unido aquí con una revisión.
+  **Sin publicar; Supabase y EAS sin tocar; sin push.** Guía:
   [`NOVEDADES-RWADAR-2026-11-12.md`](NOVEDADES-RWADAR-2026-11-12.md).
-- **Hecho, en llano:**
-  1. **Contenido** (una sola fuente): `rwadar-site/datos/novedades-producto.json`,
-     versión `2026-11-12`, 5 puntos de una línea (avisos en el móvil como un
-     WhatsApp, el «1» sin leer, la sesión de 30 días, el correo
-     rwadares@gmail.com con «¿Quieres colaborar…?» y «Calcula tus números» con
-     «Mercado y noticias») y su detalle con pasos. **El inglés va en campos
-     `en`** junto a cada texto, como en `noticias-v2.json`. El título inglés es
-     «RWAdar news», el mismo que da el diccionario común a «Novedades de RWAdar».
-  2. **Modelo** `assets/novedades-producto-modelo-20261112.js`: valida forma y
-     tamaño (32 kB), iconos (`notificacion`, `contador`, `sesion`, `correo`,
-     `calculadora`; uno desconocido sale genérico) y lo visto
-     (`localStorage["rwadar.novedades.vista"]` = la versión, con try/catch).
-     `rwadar-publicar.js` no construye la web si el archivo no valida.
-  3. **Ventana en Inicio** (`assets/novedades-producto-20261112.js` y `.css`):
-     una vez por versión, tras cargar y sin otro diálogo abierto (espera).
-     «Ver en detalle» y «Entendido»; ×, Escape o fuera también cierran y
-     cuentan como vista. No sale con `?avisos=1`, `#explain`,
-     `#perfil-avisos`, la vuelta de un correo, en la app (ReactNativeWebView),
-     sin almacenamiento ni con `navigator.webdriver` (así no estorba a las
-     demás pruebas de Chromium; la suya lo simula).
-  4. **Página /novedades-rwadar/** (sección publicable, sitemap, `_headers`):
-     el resumen como índice, cada sección con «Cómo se hace» y el camino a
-     Perfil › Avisos (`/#perfil-avisos`, que `rwadar-20260820.js` lleva a
-     Perfil › Avisos y quita de la dirección). Verla cuenta como vista.
-  5. **Perfil:** fila «Novedades de RWAdar» en la pestaña Perfil del móvil,
-     enlace en la cuenta de escritorio y en el pie. Su inglés, en
-     `idioma-en-avisos-20261112.js` (solo de la web).
-  6. **Privacidad:** fila «Novedades ya vistas» (apartado 2), mención en el
-     almacenamiento local y en «Datos locales»: solo la fecha de la versión,
-     estrictamente necesaria (LSSI, art. 22.2), sin datos personales; también
-     la copia de la app en el móvil.
-  7. `.github/comprobar-publicado.mjs` mira tras publicar que
-     `/datos/novedades-producto.json` es el del build (y la página, como sección).
-- **Pruebas:** `npm run test:web` (probar-web 702/702, con 18 nuevas de forma,
-  enlaces y privacidad); `rwadar-acceso/novedades-producto-navegador.test.mjs`
-  en Chromium a 390 y 1366 (sale una vez, Escape y Entendido, espera a otro
-  diálogo, detalle, inglés, #id, Perfil › Avisos; sin errores ni desbordes;
-  contraste AA); `node --test rwadar-acceso/*.test.mjs` 312/312; `npm test`
-  en la raíz con salida 0. Mutación: sin la espera a otro diálogo, la prueba
-  de Chromium falla («no sale con otro diálogo abierto»). gitleaks: el commit
-  nuevo, sin hallazgos (el historial completo da los 4 de siempre, del 05/11).
-  Capturas a 390 px en la carpeta de la sesión (`novedades/web/`).
-- **Commits:** `52c41dd` (web, contenido y pruebas) y el de este traspaso, en
-  la rama de trabajo, **sin push**.
-- **Pendiente / para quien integre:**
-  - Unir con la parte de la app (otra rama): mismo archivo y misma clave de
-    versión; si la app añade al diccionario común (`lib/idioma-en.js`) «Lo nuevo
-    de la web y la app, explicado fácil», quitarlo de `idioma-en-avisos` (la
-    prueba exige que no se repitan).
-  - Publicar la web (con orden de Víctor): primero la web, después la OTA, que
-    lee el archivo de `rwadar.pages.dev`.
-  - En cada novedad nueva: editar el archivo y subir `version`.
-
-## 12 de noviembre de 2026 (18) · Claude · App: «Novedades de RWAdar» al abrir, con su detalle (parte de la app)
-
-- **Víctor:** «que salga al abrir la app y como las novedades, tipo un texto
-  informativo muy fácil de leer con las novedades y si clickan que salga en
-  detalle». Esta entrada es la parte de la **app**; la web (ventana en
-  Inicio, `/novedades-rwadar/`, Perfil y privacidad) la hace otro agente
-  en paralelo. **Sin publicar; Supabase y EAS sin tocar.**
-- **Hecho, en llano:**
-  1. Al abrir la app, cuando ya se ve Inicio y no hay nada encima (acceso,
-     bloqueo, carga, una ficha, el explicador, la privacidad o una
-     notificación abriéndose), sale **una vez por versión** una ventana con
-     el título, 5 puntos de una línea con su icono y dos botones:
-     «Ver en detalle» y «Entendido». Atrás cuenta como «Entendido».
-  2. «Ver en detalle» abre una pantalla con cada novedad explicada, los
-     pasos numerados, un botón **«Ir a Perfil › Avisos»** (en la sección de
-     los avisos) y «Todas las novedades anteriores, en la web» (/cambios).
-  3. Perfil › «Novedades de RWAdar» abre ese detalle (antes abría la web).
-  4. El contenido es el JSON de la web, `rwadar-site/datos/novedades-producto.json`
-     (inglés en `en` de cada elemento). La app lo descarga (6 s, sin
-     cookies, solo JSON ≤ 32 KB y con la forma exacta; mismos límites que
-     `assets/novedades-producto-modelo-20261112.js`) y trae una **copia
-     idéntica** en `rwadar-movil/lib/novedades-producto.js` (y
-     `fixtures/novedades-producto.ejemplo.json`) para verlo sin red. Gana
-     la versión más nueva; un JSON malo o HTML se ignora.
-  5. Lo visto se guarda en el móvil (`rwadar.editorial.novedades.vista.v1`,
-     solo la versión, nunca baja a una anterior) y se borra con «Borrar
-     datos del dispositivo». Si no se puede leer, no sale sola. La
-     privacidad de la app (Perfil › Datos de esta app) lo explica.
-  6. Inglés de botones y avisos en `lib/idioma-en.js`, copiado a la web con
-     `copiar-idiomas-web.cjs`.
-- **Pruebas:** `npm --prefix rwadar-movil test` 612 bien, 0 fallos, 3
-  omitidas (una es la que compara con el JSON de la web, que aún no está en
-  esta rama); guardián de OTA con `--base fa30779…` en verde (runtime
-  1.4.2(24)); compilado con `babel-preset-expo`; gitleaks sin hallazgos en
-  los archivos cambiados. Capturas con react-native-web y Chrome (360, 320
-  y 390 px, castellano e inglés).
-- **Al unir con la parte de la web (integrador):**
-  - `tests/novedades-producto.test.cjs` comprueba que la app acepta el JSON
-    de la web y que la copia es idéntica. Si la web cambia el texto, pega el
-    JSON en `lib/novedades-producto.js` y en el ejemplo.
-  - Posible choque en `lib/idioma-en.js` si la web añade las mismas claves
-    («Entendido», «Ver en detalle»…): dejar una sola.
-  - El texto común dice «la campana de arriba»; en la app el número sale en
-    la pestaña Inicio y en la tarjeta «Avisos».
-- **Pendiente (con orden de Víctor):** publicar la web (para que exista el
-  JSON en rwadar.pages.dev) y enviar la OTA. Sin la web publicada, la app
-  enseña su copia incluida.
+- **Qué ve la gente:**
+  1. Al abrir la web o la app, cuando ya se ve Inicio y no hay nada encima,
+     sale **una vez por versión** una ventana: «Novedades de RWAdar», la
+     fecha y 5 puntos de una línea con su icono (avisos en el móvil como un
+     WhatsApp; el número de avisos sin leer; en la web, la sesión de 30 días;
+     el correo rwadares@gmail.com y «¿Quieres colaborar…?»; «Calcula tus
+     números» y «Mercado y noticias»). Botones **«Ver en detalle»** y
+     **«Entendido»**.
+  2. «Ver en detalle»: en la web, la página **/novedades-rwadar/**; en la
+     app, una pantalla. Cada novedad en frases cortas, con «Cómo se hace» y
+     el camino a **Perfil › Avisos**; las dos enlazan las anteriores (/cambios).
+  3. Para volver a verlas: «Novedades de RWAdar» en Perfil (web y app), en la
+     cuenta de escritorio y en el pie de la web.
+- **Una sola fuente:** `rwadar-site/datos/novedades-producto.json` (versión
+  `2026-11-12`, inglés en campos `en`). La app lo descarga de
+  rwadar.pages.dev (6 s, sin cookies, forma exacta, 32 kB) y lleva una copia
+  igual en `rwadar-movil/lib/novedades-producto.js` y su ejemplo. **Esa copia
+  la escribe `node rwadar-novedades-producto.js`** (raíz; `--comprobar` falla
+  si no coinciden); probar-web y la prueba de la app exigen que coincidan.
+- **Lo visto:** web, `localStorage["rwadar.novedades.vista"]`; app,
+  `rwadar.editorial.novedades.vista.v1` (se borra con «Borrar datos del
+  dispositivo»). Solo la versión. Privacidad de la web («Novedades ya
+  vistas», apartado 2, y «Datos locales») y de la app: estrictamente
+  necesario (LSSI, art. 22.2), sin datos personales.
+- **Commits:** web `52c41dd` y `ed3c069`; app `a26a883` y `cf87a96`; uniones
+  `972296a` y `4a1ec75` (único choque: esta entrada); correcciones de la
+  revisión `264f571` (textos), `7a4d27b` (app) y `9259271` (web), y este
+  traspaso.
+- **Arreglado de la revisión (comprobado antes):**
+  - **Textos ciertos en las dos.** La app no tiene campana ni la casilla
+    «Mantener la sesión iniciada» y no pone número en el icono de Android.
+    Ahora: «Un número, como un «1», te dice cuántos son»; el detalle dice
+    dónde sale en la web (campana y Perfil) y en la app (pestaña Inicio); la
+    sesión dice «en la web»; el paso 3 es «Activa «Notificaciones en este
+    móvil»» (vale en las dos); en Android, «en la app de RWAdar o en la web».
+    Prueba nueva: lo que solo es de la web dice «en la web», y cada «…» del
+    resumen existe en la app.
+  - **App:** la ventana espera también a «Mercado y noticias», «Aprende» o
+    una noticia abiertas desde Inicio (`onPantalla` → `pantallaInicio`), y
+    respeta la barra de estado y la de 3 botones (`useSafeAreaInsets` + 16).
+  - **Web:** si el navegador deja leer pero no guardar, ya no sale en cada
+    carga (se prueba a guardar antes). Cuándo sale lo deciden funciones puras
+    del modelo (`motivoSinVentana`, `estadoVentana`) que probar-web prueba
+    sin navegador: quitar la espera a otro diálogo ya falla en CI.
+    `role="list"` en puntos y pasos (VoiceOver); el título no parte palabras
+    a 320 px con la letra al 200 %. «Novedades anteriores» en la página.
+  - Guía y LEEME: no se añaden campos ni se suben límites del JSON sin una
+    OTA antes (la app ignoraría el archivo nuevo sin avisar).
+- **Pruebas (integrado, todo en verde):** `npm test` en la raíz con salida 0:
+  `npm --prefix rwadar-app test` (32 guiones con 1348 correctas, más 11 y
+  103 de `node --test`), `npm run test:web` (probar-web 708/708, 70 páginas
+  y RSS, 40 de precarga), `npm --prefix rwadar-movil test` (614 bien, 0
+  fallos, 2 omitidas), qr, tools y `node --test rwadar-acceso/*.test.mjs`
+  (312/312, con la de Chromium de las novedades, que ahora también prueba
+  `setItem` que falla). Guardián de OTA con `--base fa30779…`: compatible con
+  1.4.2(24). Diccionario de la web idéntico al de la app y copia de las
+  novedades al día. gitleaks 8.30.1 sobre `git diff origin/main...HEAD`: sin
+  hallazgos. Mutaciones: sin la espera a otro diálogo o sin la prueba de
+  guardar, probar-web falla; con «campana» sin «en la web», la prueba de la
+  app falla. Capturas a 390 px (web y app) en la carpeta de la sesión
+  (`novedades/final/`); las de la app son de los componentes reales con
+  react-native-web y las barras del móvil simuladas, no de un APK.
+- **Para Víctor (decidir):**
+  - La ventana también sale a quien entra por primera vez en la web (le
+    habla de avisos y sesión que aún no conoce). Se puede no enseñarla a quien
+    no tiene ningún rastro de uso; no lo he cambiado.
+  - En Android digo «en la app de RWAdar o en la web»: el encargo decía solo
+    la app, pero la web también activa las notificaciones en Android.
+- **Pendiente (con orden de Víctor):** publicar la web (preview y producción)
+  y después la OTA. Sin la web publicada, la app enseña su copia incluida.
+  Para cada novedad nueva: editar el JSON, subir `version`,
+  `node rwadar-novedades-producto.js` y las pruebas.
 
 ## 12 de noviembre de 2026 (17) · Claude · Envío de notificaciones ENCENDIDO para todos (decisión de Víctor)
 
