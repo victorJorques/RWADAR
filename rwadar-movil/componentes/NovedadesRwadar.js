@@ -158,12 +158,13 @@ export function VentanaNovedades({ visible, datos, onDetalle, onEntendido }) {
   );
 }
 
-/* El botón a Perfil › Avisos, dentro de la sección de los avisos. */
+/* El botón a Perfil › Avisos, dentro de la sección de los avisos (vibra en
+   irAAvisosPerfil de App.js, que es adonde lleva). */
 function IrAvisos({ onPress }) {
   return (
     <View style={s.irAvisos} testID="novedadesIrAvisos">
       <Text style={s.irAvisosTxt}>Para recibir los avisos en el móvil, actívalos en Perfil › Avisos.</Text>
-      <Pressable testID="novedadesBotonAvisos" onPress={() => { tacto.eleccion(); onPress?.(); }}
+      <Pressable testID="novedadesBotonAvisos" onPress={() => onPress?.()}
         accessibilityRole="button" accessibilityLabel="Ir a Perfil › Avisos"
         style={({ pressed, focused }) => [s.boton, s.botonVerde, s.botonSolo, focused && s.foco, pressed && pulsado('b1')]}>
         <Text style={s.botonVerdeTxt}>Ir a Perfil › Avisos</Text>

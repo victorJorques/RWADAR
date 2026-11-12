@@ -6,6 +6,54 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (18) · Claude · App: «Novedades de RWAdar» al abrir, con su detalle (parte de la app)
+
+- **Víctor:** «que salga al abrir la app y como las novedades, tipo un texto
+  informativo muy fácil de leer con las novedades y si clickan que salga en
+  detalle». Esta entrada es la parte de la **app**; la web (ventana en
+  Inicio, `/novedades-rwadar/`, Perfil y privacidad) la hace otro agente
+  en paralelo. **Sin publicar; Supabase y EAS sin tocar.**
+- **Hecho, en llano:**
+  1. Al abrir la app, cuando ya se ve Inicio y no hay nada encima (acceso,
+     bloqueo, carga, una ficha, el explicador, la privacidad o una
+     notificación abriéndose), sale **una vez por versión** una ventana con
+     el título, 5 puntos de una línea con su icono y dos botones:
+     «Ver en detalle» y «Entendido». Atrás cuenta como «Entendido».
+  2. «Ver en detalle» abre una pantalla con cada novedad explicada, los
+     pasos numerados, un botón **«Ir a Perfil › Avisos»** (en la sección de
+     los avisos) y «Todas las novedades anteriores, en la web» (/cambios).
+  3. Perfil › «Novedades de RWAdar» abre ese detalle (antes abría la web).
+  4. El contenido es el JSON de la web, `rwadar-site/datos/novedades-producto.json`
+     (inglés en `en` de cada elemento). La app lo descarga (6 s, sin
+     cookies, solo JSON ≤ 32 KB y con la forma exacta; mismos límites que
+     `assets/novedades-producto-modelo-20261112.js`) y trae una **copia
+     idéntica** en `rwadar-movil/lib/novedades-producto.js` (y
+     `fixtures/novedades-producto.ejemplo.json`) para verlo sin red. Gana
+     la versión más nueva; un JSON malo o HTML se ignora.
+  5. Lo visto se guarda en el móvil (`rwadar.editorial.novedades.vista.v1`,
+     solo la versión, nunca baja a una anterior) y se borra con «Borrar
+     datos del dispositivo». Si no se puede leer, no sale sola. La
+     privacidad de la app (Perfil › Datos de esta app) lo explica.
+  6. Inglés de botones y avisos en `lib/idioma-en.js`, copiado a la web con
+     `copiar-idiomas-web.cjs`.
+- **Pruebas:** `npm --prefix rwadar-movil test` 612 bien, 0 fallos, 3
+  omitidas (una es la que compara con el JSON de la web, que aún no está en
+  esta rama); guardián de OTA con `--base fa30779…` en verde (runtime
+  1.4.2(24)); compilado con `babel-preset-expo`; gitleaks sin hallazgos en
+  los archivos cambiados. Capturas con react-native-web y Chrome (360, 320
+  y 390 px, castellano e inglés).
+- **Al unir con la parte de la web (integrador):**
+  - `tests/novedades-producto.test.cjs` comprueba que la app acepta el JSON
+    de la web y que la copia es idéntica. Si la web cambia el texto, pega el
+    JSON en `lib/novedades-producto.js` y en el ejemplo.
+  - Posible choque en `lib/idioma-en.js` si la web añade las mismas claves
+    («Entendido», «Ver en detalle»…): dejar una sola.
+  - El texto común dice «la campana de arriba»; en la app el número sale en
+    la pestaña Inicio y en la tarjeta «Avisos».
+- **Pendiente (con orden de Víctor):** publicar la web (para que exista el
+  JSON en rwadar.pages.dev) y enviar la OTA. Sin la web publicada, la app
+  enseña su copia incluida.
+
 ## 12 de noviembre de 2026 (17) · Claude · Envío de notificaciones ENCENDIDO para todos (decisión de Víctor)
 
 - **Víctor (21:30 UTC):** «Activa ya las notificaciones y todo». Se le explicó
