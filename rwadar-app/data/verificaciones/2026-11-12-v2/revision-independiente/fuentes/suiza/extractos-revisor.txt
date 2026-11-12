@@ -1,0 +1,64 @@
+Extractos del revisor independiente, grupo suiza, 12/11/2026 (horas UTC en consultas-revisor.tsv). Sin datos personales.
+
+## Condiciones del portal (iguales en los tres: mismo SHA-256 0764d616…)
+Version 1.0 • October 30, 2026
+9.1 Offer only valid for persons in Switzerland and the EEA The public offer to purchase the shares from the Company (Direct Investment) is exclusively addressed to persons domiciled or resident in Switzerland or the EEA. Persons from other countries are expressly excluded and it is prohibited to distribute this offer in any way in such countries.
+
+## Aviso legal de Aktionariat (SHA-256 06937b73…)
+e shares is exclusively addressed to persons domiciled or resident in Switzerland or the EEA. Persons from other countries are expressly excluded and it is prohibited to distribute this offer in any way in such countries. The offer for persons from the EEA is limited to a total of €100,000.
+
+## Web de LEND (www.lend.ch → 301 → lend.ch)
+Can I sell my tokens later? You can sell back to the brokerbot when it holds sufficient liquidity, or peer-to-peer on shares.lend.ch . Liquidity is limited compared to a stock exchange - treat this as a long-term holding. Is th
+
+## FAQ de Boss Info (SHA-256 0b4d2a0b…)
+Informationen zum xCHF www.bitcoinsuisse.com/de/cryptofranc St
+menciones de ZCHF o Frankencoin en la FAQ: 0
+
+## CNMV, buscador de entidades advertidas
+cnmv-aktionariat-ag.html: «No hay datos disponibles»
+cnmv-aktionariat.html: «No hay datos disponibles»
+cnmv-boss-info-ag.html: «No hay datos disponibles»
+cnmv-boss-info.html: «No hay datos disponibles»
+cnmv-control-capital.html: control con resultados: «Advertencias de la CNMV Fecha Compañías sobre las que se advierte…»
+cnmv-switzerlend-ag.html: «No hay datos disponibles»
+cnmv-switzerlend.html: «No hay datos disponibles»
+
+## PolyReg
+Aktionariat AG: result=false
+Boss Info AG: result=false
+Switzerlend AG: result=true
+
+## FINMA
+finma-autorizados-aktionariat.json: Count=0 (búsqueda «Aktionariat»)
+finma-autorizados-boss-info.json: Count=0 (búsqueda «Boss Info»)
+finma-autorizados-control-sygnum.json: Count=1 (búsqueda «Sygnum»)
+finma-autorizados-switzerlend.json: Count=0 (búsqueda «Switzerlend»)
+lista de advertencias: 2404 entradas; contiene aktionariat=False, boss info=False, switzerlend=False
+
+## API de los portales (resumen)
+aktionariat: mínimo transferencia 500, cripto 0; disabledSellText «As communicated to our shareholders, the sell-side of the Brokerbot will remain disabled for the foreseeable future.»; sellerFeeRate 0.019, buyerFeeRate 0; compras [(6.1, 10), (6.0, 5)]; ventas [(6.2, 356), (6.25, 1389)]; operaciones 1231; última al emisor ('2026-10-31T11:56:35Z', 1, 7.25); última entre accionistas ('2026-09-30T19:57:35Z', 1, 6.25)
+boss-info: mínimo transferencia 100, cripto 9; disabledSellText «Aktuell ist der Ankauf von Aktien aufgrund eines Wartungsfensters deaktiviert. Bei Fragen wenden sie sich an [correo recortado]»; sellerFeeRate 0.019, buyerFeeRate 0; compras [(7.3, 1000), (6.51, 1500)]; ventas [(8.4, 103)]; operaciones 319; última al emisor ('2026-06-29T10:53:35Z', 183, 8.501530054644808); última entre accionistas ('2026-11-05T13:35:35Z', 1, 8.4)
+switzerlend: mínimo transferencia 0, cripto 0; disabledSellText «»; sellerFeeRate 0.019, buyerFeeRate 0; compras [(59.0, 4)]; ventas [(67.0, 15), (67.5, 10)]; operaciones 94; última al emisor ('2026-10-07T13:34:35Z', 10, 68.005); última entre accionistas ('2026-08-25T09:18:59Z', 1, 67.0)
+
+## En cadena (crudo/onchain-revisor-20261112.json)
+bloque 26395364 (2026-11-12T00:46:23Z), consulta 2026-11-12T00:46:30Z
+aktionariat.settings() = 1
+aktionariat.getPrice() = 7250000000000000000
+aktionariat.increment() = 0
+aktionariat.ZCHF.balanceOf(bot) = 928000000000000000000
+boss-info.settings() = 1
+boss-info.getPrice() = 8501970000000000000
+boss-info.increment() = 5000000000000
+boss-info.ZCHF.balanceOf(bot) = 2491464965000000000000
+switzerlend.settings() = 5
+switzerlend.getPrice() = 68010500000000000000
+switzerlend.increment() = 500000000000000
+switzerlend.ZCHF.balanceOf(bot) = 31765699218750000
+aktionariat.mercado.tradingFeeBips() = 190
+aktionariat.mercado.isOpen() = 1
+boss-info.mercado.tradingFeeBips() = 190
+boss-info.mercado.isOpen() = 1
+switzerlend.mercado.tradingFeeBips() = 190
+switzerlend.mercado.isOpen() = 1
+Significado de settings() en el código verificado del brokerbot de LENDS (Sourcify, SHA-256 baa3f1af…): BUYING_ENABLED = 0x1; SELLING_ENABLED = 0x2; KEEP_ETHER = 0x4.
+Operación de Boss Info del 05/11: tx 0x17427561e8… hacia 0x1e31565d4faa26322067481f3bb69a341b45cf4d (mercado entre accionistas), bloque 26348969, 2026-11-05T13:35:35Z; recibo no servido por el nodo (no se relee el importe).

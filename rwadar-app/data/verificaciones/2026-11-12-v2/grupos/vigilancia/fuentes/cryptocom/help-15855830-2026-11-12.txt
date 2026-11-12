@@ -1,0 +1,69 @@
+Corporate actions and dividends of Tokenized Stocks (EEA) | Crypto.com Help Center Copyright (c) 2023, Intercom, Inc. ( [email protected] ) with Reserved Font Name "Open Sans".
+This Font Software is licensed under the SIL Open Font License, Version 1.1. Copyright 2023. Intercom Inc.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. Skip to main content
+العربية Português do Brasil Hrvatski Čeština Dansk Nederlands English Suomi Français Deutsch Ελληνικά Magyar Italiano Norsk Polski Português Română Pусский Español Svenska 繁體中文 Türkçe English
+العربية Português do Brasil Hrvatski Čeština Dansk Nederlands English Suomi Français Deutsch Ελληνικά Magyar Italiano Norsk Polski Português Română Pусский Español Svenska 繁體中文 Türkçe English
+Search for articles...
+All Collections
+Tokenized Stocks (EEA)
+Corporate actions and dividends of Tokenized Stocks (EEA)
+Corporate actions and dividends of Tokenized Stocks (EEA)
+August 11, 2026
+Table of contents
+Overview
+Public companies sometimes take actions that change their stock through splits, dividends, mergers, ticker changes, and more. Since tokenized stocks track underlying U.S. equities, these events can affect your token balance, displayed price, and ability to trade.
+Crypto.com handles corporate actions through a multiplier model on the Cronos network:
+Displayed balance: Your token balance equals your on-chain raw balance multiplied by the current multiplier.
+Multiplier adjustments: The multiplier increases or decreases when splits, dividend reinvestment, and similar events are processed.
+No action required: You do not need to take any action for most multiplier-style events.
+What you do not receive
+Proxy voting: Shareholder proxy voting is not supported for tokenized stocks.
+Voluntary corporate actions: Holder elections (e.g., choosing cash vs. stock in a merger) are not available through Crypto.com.
+Dividends
+You do not receive dividends as cash. Payouts are reinvested automatically, and your token balance increases. There is no separate cash credit in your Cash Account.
+Cash dividends:
+A 30% U.S. withholding tax is deducted before reinvestment. Only the net dividend amount is used to buy more of the underlying stock.
+On the payment date, reinvestment is placed at around 10:00 am. ET. New shares from that buy are reflected after the regular U.S. market closes on the payment date.
+Your token balance is updated at around 7:45 pm. ET on the payment date.
+Buying, selling, deposit and withdrawal may pause for about 15 minutes while balances update after the multiplier change.
+Stock dividends follow the same payment date timing: shares are credited after market close, with the multiplier update at around 7:45 pm. ET on the payment date.
+Stock splits and reverse splits
+When the underlying stock splits or reverse-splits:
+Your token balance is updated on the date of the split.
+Buying, selling, deposit and withdrawal pause starting from the regular market session close on the business day before the effective date, and last until the token balance is updated.
+Open Limit orders on affected tokens are typically canceled.
+Recurring buy schedules are generally not canceled solely because of a split
+Mergers, delistings, and liquidations
+Cash merger or liquidation: Your position is closed and you receive USDC in your Crypto Wallet.
+Stock merger: You receive the new tokenized stock in place of the old one, which is removed from the platform.
+Delisting: Buying, selling, depositing, and withdrawing are all stopped for the affected token. Follow in-app notifications for next steps.
+Open orders: Open Limit orders and recurring buy schedules on affected tokens are canceled when a merger or delisting is processed.
+Trading halts and notifications
+During corporate action processing:
+Buying and selling may be temporarily unavailable for the affected token.
+Deposits and withdrawals may pause for that token.
+The Crypto.com App may show relevant updates on the asset detail page.
+Transaction history will show adjustment entries when applicable.
+Halts can start at the regular market session close on the business day before the effective date for some events and last until token balance and on-chain updates are complete.
+You can find more information on how corporate actions affect Tokenized Stocks in our Corporate Actions Policy .
+Subject to jurisdictional availability. Availability depends on your country of residence, applicable law, account type and completion of all required verification checks.
+Tokenized Stocks issued by Foris Capital CY Limited are derivatives that track the prices of underlying financial instruments. Trading may involve loss of capital due to market volatility or counterparty risk.
+Please consult the Key Information Document and Risk Disclosure Statement and ensure you fully understand the risks before trading. Terms apply.
+Related Articles
+Stock and ETF Trading via the Crypto.com App
+About Crypto.com Tokenized Stocks
+Earn rewards on eligible tokenized stocks
+Corporate actions and dividends of Tokenized Stocks
+About Crypto.com Tokenized Stocks (EEA)
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+Cryptocurrency in Every Wallet™
+Your Privacy Choices

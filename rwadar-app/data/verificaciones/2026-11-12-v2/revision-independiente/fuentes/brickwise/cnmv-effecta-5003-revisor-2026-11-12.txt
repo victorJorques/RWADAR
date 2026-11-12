@@ -1,0 +1,13 @@
+Fuente: https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP?numero=5003&tipo=CLP (+ vista=17 y vista=8)
+Consulta: 2026-11-12T00:47:08Z–00:47:11Z
+SHA-256 del crudo (cnmv-5003.html): da9b43a9e52b61e5eedab9427ece2cc7e2916755e095fa0e8ea512c3efe743b8
+
+… vicios de inversión extranjeras en libre prestación EFFECTA GmbH Empresas de Servicios de Inversión del Espacio Económico Europeo en Libre Prestación Nº Registro Oficial Fecha registro oficial 5003 11/11/2020 Datos generales Sociedades gestionadas Programa de actividades Agentes Datos generales Dirección País de origen Am Sportplatz, 13 - 61197 Florstadt (Florstadt) ALEMANIA "La información disponible en los registros de empr …
+
+… istro Oficial Fecha registro oficial 5003 11/11/2020 Datos generales Sociedades gestionadas Programa de actividades Agentes Datos generales Dirección País de origen Am Sportplatz, 13 - 61197 Florstadt (Florstadt) ALEMANIA "La información disponible en los registros de empresas de servicios de inversión del Espacio Económico Europeo que operan en España con o sin establecimiento, es remitida a la CNMV por las Autoridades  …
+
+--- Programa (vista=17) ---
+… Servicios y actividades de inversión 1. Recepción y transmisión de órdenes de clientes en relación con uno o más instrumentos financieros 1) Valores negociables 3) Participaciones y acciones en instituciones de inversión colectiva "La información disponible en los registros de empresas …
+
+--- Agentes (vista=8) ---
+… Programa de actividades Agentes Agentes No se han encontrado datos disponibles "La información dis …

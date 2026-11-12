@@ -1,0 +1,227 @@
+{
+ "slug": "candidata-prosegur-cash-pagares",
+ "tipoExpediente": "candidata",
+ "grupo": "vigilancia",
+ "proveedor": "Minos Securities (grupo Prosegur Cash)",
+ "plataformaSlug": null,
+ "entidadComercializadora": null,
+ "emisor": "PROSEGUR CASH, S.A. (sociedad cotizada española, NIF A87498564)",
+ "vehiculo": "Pagarés de empresa emitidos directamente por Prosegur Cash",
+ "token": "No publicado",
+ "derechoAdquirido": "Pagaré (deuda a corto plazo) representado mediante tecnología de registro distribuido, según la inscripción ERIR",
+ "jurisdiccion": "ES",
+ "identificador": null,
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "CNMV · emisiones inscritas de Minos Securities, A.V., S.A. como ERIR",
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "versionOFecha": "consulta 2026-11-12T00:33:23Z; inscripción del 06/11/2026",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Texto idéntico al del 11/11 (los bytes cambian por el código de la página). Una sola emisión: «1ª Emisión de Pagarés Prosegur Cash 2026», 500.000 €. SHA-256 en el inventario."
+  },
+  {
+   "titulo": "CNMV · otra información relevante de Prosegur Cash",
+   "url": "https://www.cnmv.es/portal/otra-informacion-relevante/resultado-oir.aspx?nif=A87498564",
+   "versionOFecha": "consulta 2026-11-12T00:33:28Z",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Texto idéntico al del 11/11: la última comunicación es del 03/11/2026 (resultados del tercer trimestre). Nada sobre pagarés tokenizados."
+  },
+  {
+   "titulo": "CNMV · códigos ISIN de Prosegur Cash",
+   "url": "https://www.cnmv.es/portal/ancv/isin.aspx?nif=A87498564",
+   "versionOFecha": "consulta 2026-11-12T00:33:30Z",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Texto idéntico al del 11/11: ningún ISIN de 500.000 € ni emitido en noviembre de 2026."
+  },
+  {
+   "titulo": "Prosegur Cash · listados de otra información relevante e información privilegiada (JSON público de su web)",
+   "url": "https://www.prosegurcash.com/.rest/dam/endpoint/Prosegur/CORP/Cash/pdf/accionistas-e-inversores/otra-informacion-relevante?lang=all",
+   "versionOFecha": "consulta 2026-11-12T00:40:45Z–00:40:47Z",
+   "paginas": null,
+   "sha256": "e1bb810f4eaa4a32",
+   "leido": true,
+   "nota": "Los dos JSON tienen el mismo SHA-256 que el 11/11 (e1bb810f…, f278734b…)."
+  },
+  {
+   "titulo": "Prosegur Cash · comunicaciones CNMV y prensa; Minos Securities · portada",
+   "url": "https://www.prosegurcash.com/accionistas-inversores/comunicaciones-cnmv",
+   "versionOFecha": "consulta 2026-11-12T00:42:13Z–00:42:26Z",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Texto igual que el 11/11 (salvo el aviso de cookies). Ninguna habla de los pagarés. Copias con nombres solo en fuentes/crudo/."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "MINOS SECURITIES, A.V., S.A. (ERIR)",
+   "numero": "Inscripción del 06/11/2026",
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "alcance": "Inscribe a Minos como entidad responsable del registro de la «1ª Emisión de Pagarés Prosegur Cash 2026» por 500.000 €. La CNMV advierte que la inscripción no valida las condiciones de la emisión.",
+   "consultadoUtc": "2026-11-12T00:33:23Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "Índice de entidades designadas ERIR",
+   "numero": "Minos Securities, Token City European Exchange y Ursus-3 Capital",
+   "url": "https://www.cnmv.es/Portal/Consultas/ERIR.aspx?lang=es",
+   "alcance": "Texto igual que el 11/11.",
+   "consultadoUtc": "2026-11-12T00:33:21Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Prosegur",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur",
+   "consultadoUtc": "2026-11-12T00:34:24Z",
+   "alcance": "Buscador validado hoy con «Trading» (16 páginas, 00:34:19Z); PDF de «otras entidades» con el mismo SHA-256 que el 10/11 y el 11/11 (00:33:40Z), sin coincidencias."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Minos",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Minos",
+   "consultadoUtc": "2026-11-12T00:34:25Z",
+   "alcance": "Buscador validado hoy con «Trading» (16 páginas, 00:34:19Z); PDF de «otras entidades» con el mismo SHA-256 que el 10/11 y el 11/11 (00:33:40Z), sin coincidencias."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "registro",
+   "literal": "a MINOS SECURITIES, A.V., S.A. como entidad responsable de la inscripción y del registro de la emisión de pagarés … denominara “1ª Emisión de Pagarés Prosegur Cash 2026” por importe de 500.000 euros",
+   "dato": "Emisión de pagarés con TRD de 500.000 € inscrita en la ERIR de Minos el 06/11/2026",
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "localizador": "CNMV, emisiones inscritas de Minos Securities",
+   "fechaDato": "2026-11-06",
+   "consultadoUtc": "2026-11-12T00:33:23Z",
+   "alcanceYLimites": "Sin plazo, interés, mínimo, destinatarios ni documento.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "estado",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://www.cnmv.es/portal/otra-informacion-relevante/resultado-oir.aspx?nif=A87498564",
+   "localizador": "CNMV OIR de Prosegur Cash (última del 03/11/2026); web de Prosegur Cash y de Minos",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-12T00:33:28Z",
+   "alcanceYLimites": "No hay ninguna oferta pública ni documento de emisión localizable hoy.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "minimo",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "localizador": "No publicado",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-12T00:33:23Z",
+   "alcanceYLimites": "Sin documento de emisión.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "localizador": "No publicado",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-12T00:33:23Z",
+   "alcanceYLimites": "No consta a quién se dirige la emisión.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "salida",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "localizador": "No publicado",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-12T00:33:23Z",
+   "alcanceYLimites": "Sin vencimiento ni mecanismo de reembolso publicados.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Emisor cotizado identificado y ERIR inscrita (Minos), pero no consta quién comercializa."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Inscripción del 06/11; ninguna oferta pública visible el 12/11."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Sin mínimo, plazo, interés ni destinatarios publicados."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Sin documento de riesgos; sin advertencias de la CNMV para Prosegur ni Minos."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "todo",
+   "antes": "No admitida (11/11): solo la inscripción ERIR del 06/11, sin documento",
+   "ahora": "Igual el 12/11: ERIR, OIR, ISIN y webs con el mismo texto o el mismo SHA-256",
+   "fuente": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "Pagarés tokenizados de Prosegur Cash",
+  "categoria": "Crédito privado",
+  "pais": "ES",
+  "tipo": "rendimiento",
+  "coleccion": null,
+  "resumen": "Emisión de pagarés con registro en cadena inscrita en la CNMV el 06/11/2026; sin documento ni condiciones públicas.",
+  "rentabilidad": null,
+  "metricas": [],
+  "avisos": [],
+  "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+  "fuentesActuales": [
+   "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es"
+  ],
+  "lugar": null,
+  "pasos": [],
+  "concepto": null,
+  "resumenTarjeta": {
+   "minimo": null,
+   "accesoEspana": null,
+   "salida": null
+  },
+  "nota": "Candidata no admitida: la tarjeta no se propone. resumenTarjeta solo recoge lo que hoy se puede leer en fuente primaria; lo demás queda en null."
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": "CNMV: Minos Securities, A.V. (ERIR de la emisión)",
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Emisor cotizado español con la emisión inscrita en el registro ERIR de la CNMV.",
+  "porQueNo": "No hay documento, condiciones, destinatarios ni oferta abierta."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Sin cambios el 12/11. La CNMV solo tiene la inscripción ERIR del 06/11 (500.000 €, Minos Securities). Ni Prosegur Cash ni Minos publican documento de emisión, mínimo, plazo, interés ni a quién se vende; no hay oferta que comprar. Seguir vigilando.",
+ "bloqueos": [
+  "No hay documento de emisión público."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-12T00:32:51Z",
+  "finUtc": "2026-11-12T00:48:16Z"
+ }
+}

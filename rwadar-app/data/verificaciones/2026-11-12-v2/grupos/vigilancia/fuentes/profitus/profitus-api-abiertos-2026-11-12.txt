@@ -1,0 +1,10 @@
+API pública de proyectos de Profitus · consulta 2026-11-12T00:40:48Z · total 550
+Proyectos abiertos (status=open_for_investments):
+  P00001399-8 · país es · loan_type standard · tipo real_estate_development · interés básico 10.5 %
+  P00001583-10 · país lt · loan_type standard · tipo real_estate_development · interés básico 9.4 %
+  P00001457-6 · país es · loan_type standard · tipo real_estate_development · interés básico 10 %
+  P00001400-28 · país lt · loan_type standard · tipo refinancing · interés básico 9.5 %
+  P00001631-6 · país lt · loan_type standard · tipo real_estate_development · interés básico 9 %
+  P00001536-6 · país lt · loan_type standard · tipo real_estate_development · interés básico 10.5 %
+  P00001663-2 · país es · loan_type standard · tipo real_estate_development · interés básico 9.5 %
+Ningún proyecto abierto es un bono (todos loan_type=standard).

@@ -1,0 +1,18 @@
+Buscador de advertencias de la CNMV (tipo=1, no autorizadas). Consultas a las 2026-11-12T00:51:35Z.
+
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Axiology · HTTP 200 · SHA-256 f5b6b5070e143c6c… · No hay datos disponibles 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bit2Me · HTTP 200 · SHA-256 01aa93c98f5d9370… · No hay datos disponibles 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cando · HTTP 200 · SHA-256 1cd49d3d5229f34f… · No hay datos disponibles 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Crypto.com · HTTP 200 · SHA-256 9354e80b5c983f5b… · con resultados: HTTPS://IDCXSCRYPTO.COM; HTTPS://DELTASCRYPTO.COM/; WWW.ALPHASCRYPTO.COM; HTTPS://FXPROCRYPTO.COM/; HTTPS://WWW.TRADESCRYPTO.COM; WWW.CCXCRYPTO.COM 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Foris · HTTP 200 · SHA-256 450eb30250467484… · con resultados: HTTPS://MY.FORISDAXLTD.TOP/; HTTPS://FORISDAXLTD.COM 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera · HTTP 200 · SHA-256 00645708cc16947b… · No hay datos disponibles 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx · HTTP 200 · SHA-256 d6eaa74c1b44089d… · No hay datos disponibles 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Minos · HTTP 200 · SHA-256 36f4365c298ccc68… · No hay datos disponibles 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Profitus · HTTP 200 · SHA-256 90da1289396fb842… · No hay datos disponibles 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur · HTTP 200 · SHA-256 4653bbcc5ed8bf75… · No hay datos disponibles 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Securitize · HTTP 200 · SHA-256 84eb48ec412298d5… · No hay datos disponibles 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City · HTTP 200 · SHA-256 ed3f13b5d04a8826… · No hay datos disponibles 
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading · HTTP 200 · SHA-256 4c1905c0b2150b81… · con resultados: HTTPS://WWW.TRADINGEUROPEBV.COM (CLON); HTTPS://TRADING-AREA.GALIDIX-V3.COM/; HTTPS://TRADING.FXCALLE.COM; HTTPS://HOHO-TRADING.COM/; HTTPS://MARKET-TRADING.LTD; HTTPS://OPENTRADING-PLATFORM.COM/; HTTPS://BTRADINGS.NET ['Página 1 de 16']
+https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Valorix · HTTP 200 · SHA-256 31e4d9ed65b5e831… · No hay datos disponibles 
+
+https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf · 2026-11-12T00:51:20Z · HTTP 200 · SHA-256 5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0 (igual que el del investigador)

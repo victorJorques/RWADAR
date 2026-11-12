@@ -1,0 +1,5 @@
+Fuente: https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz
+Consulta: 2026-11-12T00:42:43Z
+SHA-256 del crudo (web-faq-handel.html): 52d2e52750799577afca08ece7cd54c2cb3bb9699c66b9e6cdfcdf4cfe941e80
+
+…  eines Assets angezeigt wird, gelangt man zur Übersicht aller bestehenden Kauf- und Verkaufsangebote. Ist ein dort verfügbares Angebot (bestehend aus Preis pro Anteil und der Anzahl der angebotenen Wertpapiere) interessant, kann dieses direkt ausgewählt werden. Sobald der:die Ver-/ Käufer:in das Angebot erneut bestätigt hat, wird die Transaktion direkt zwischen den jeweiligen Investor:innen durchgeführt. Es besteht auch die Möglichkeit,  …

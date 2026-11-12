@@ -1,0 +1,9 @@
+Buscador de advertencias de la CNMV (tipo=1), consulta 2026-11-12T00:46:51Z–00:47:02Z, cabecera accept-language: es
+Brickwise: «No hay datos disponibles»  (sha256 324f536d63d9dd04)
+Effecta: «No hay datos disponibles»  (sha256 e4a777eafa8de016)
+Cohotel: «No hay datos disponibles»  (sha256 5c2f0eb2c81f5374)
+Green Point: «No hay datos disponibles»  (sha256 186ac9070f624cb0)
+Brick Qogir: «No hay datos disponibles»  (sha256 1ce4e1a6aaae1720)
+BrickOne: «No hay datos disponibles»  (sha256 17431c43f5591b2d)
+Brick Sagarmatha: «No hay datos disponibles»  (sha256 46a7cb0e8985e90d)
+Trading (control): Página 1 de 16  (sha256 4c1905c0b2150b81)

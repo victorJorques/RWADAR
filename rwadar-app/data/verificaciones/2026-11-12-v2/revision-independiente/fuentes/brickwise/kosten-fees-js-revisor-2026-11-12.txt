@@ -1,0 +1,24 @@
+Fuente: https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf
+Consulta: 2026-11-12T00:42:25Z  SHA-256: 3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b
+
+ Vermittlungsgebühr                                        Externe Produktkosten1
+ Vermittlungsgebühr2                  1,50%                Einmalige Produktkosten1                   1,80%
+
+ davon an vertraglich gebundenen      1,35%
+                                                           Laufende Produktkosten1                    0,33%
+ Vermittler1
+
+ Die Vermittlungsgebühr berechnet sich vom Kauf-           Die einmaligen Produktkosten fallen beim Emittenten
+ bzw. Verkaufspreis eines Wertpapiers und wird             nur bei der erstmaligen Ausgabe von Wertpapieren an
+ jedem/jeder Investor:in, die an einer Transaktion         und sind bereits im Ausgabepreis enthalten.
+ beteiligt ist (Käufer:in und Verkäufer:in), in
+                                                           Bei den laufenden Produktkosten handelt es sich um
+ Rechnung gestellt.
+
+Fuente: https://api.app.brickwise.at/api/v1/utils/fees  Consulta: 2026-11-12T00:42:44Z
+{"data":{"fees":0.015},"status":200,"error":null}
+
+Fuente: https://app.brickwise.at/js/app.85dda63a.js (la carga la página pública del mercado, consulta 2026-11-12T00:42:54Z)  SHA-256: b5c9c15438379efc1ddf96df1ceb9310b7991096c72a98cdb62b788a37e0601d
+offerCard_max_available:e=>{const{normalize:n}=e;return n(["Max. verfügbar"])
+buy_seller_open_body:e=>{const{normalize:n}=e;return n(["Jemand ist bereit, dir die gewünschten Anteile zu verkaufen."])
+buy_finish_body:e=>{const{normalize:n}=e;return n(["Warte auf die Freigabe der Verkäufer:in bis die gewünschten Anteile übertragen werden."])

@@ -1,0 +1,10 @@
+{
+  "responseHeader":{
+    "status":0,
+    "QTime":1155,
+    "params":{
+      "q":"party_name:*984500001AB7C6C7F577*",
+      "rows":"0",
+      "wt":"json"}},
+  "response":{"numFound":1730,"start":0,"numFoundExact":true,"docs":[]
+  }}

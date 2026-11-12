@@ -1,0 +1,180 @@
+{
+ "slug": "candidata-cando1-token-city",
+ "tipoExpediente": "candidata",
+ "grupo": "vigilancia",
+ "proveedor": "Token City Exchange",
+ "plataformaSlug": null,
+ "entidadComercializadora": "TOKEN CITY EUROPEAN EXCHANGE A.V., S.A. (NIF A25988981, CNMV nº 334)",
+ "emisor": "LORNIN IBÉRICA S.L. (marca CANDO), según la ficha del 05/11; no comprobable hoy",
+ "vehiculo": "No publicado",
+ "token": "CANDO1 (CDO1); red y contrato no publicados",
+ "derechoAdquirido": "No publicado",
+ "jurisdiccion": "ES",
+ "identificador": null,
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "exchange.token-city.com/es (página de mantenimiento)",
+   "url": "https://exchange.token-city.com/es",
+   "versionOFecha": "consultas 2026-11-12T00:41:13Z (curl) y 00:45:48Z (navegador)",
+   "paginas": null,
+   "sha256": "2f9b23b4442e13f5 (prefijo, 503)",
+   "leido": true,
+   "nota": "503 «Sistema deshabilitado temporalmente · Estamos en mantenimiento», igual que todo el 11/11. La ficha de CANDO1 no se puede ver."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "TOKEN CITY EUROPEAN EXCHANGE A.V., S.A. (como ERIR)",
+   "numero": "Una inscripción: Series A Grupo UAE SA (06/11/2026)",
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es",
+   "alcance": "Texto igual que el 11/11: nada de CANDO1 ni de Lornin.",
+   "consultadoUtc": "2026-11-12T00:33:25Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Token City",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City",
+   "consultadoUtc": "2026-11-12T00:34:33Z",
+   "alcance": "Buscador validado hoy con «Trading» (16 páginas, 00:34:19Z); PDF de «otras entidades» con el mismo SHA-256 que el 10/11 y el 11/11 (00:33:40Z), sin coincidencias."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Lornin",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lornin",
+   "consultadoUtc": "2026-11-12T00:34:34Z",
+   "alcance": "Buscador validado hoy con «Trading» (16 páginas, 00:34:19Z); PDF de «otras entidades» con el mismo SHA-256 que el 10/11 y el 11/11 (00:33:40Z), sin coincidencias."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Cando",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cando",
+   "consultadoUtc": "2026-11-12T00:34:36Z",
+   "alcance": "Buscador validado hoy con «Trading» (16 páginas, 00:34:19Z); PDF de «otras entidades» con el mismo SHA-256 que el 10/11 y el 11/11 (00:33:40Z), sin coincidencias."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "Sistema deshabilitado temporalmente · Estamos en mantenimiento",
+   "dato": null,
+   "fuentePrimaria": "https://exchange.token-city.com/es",
+   "localizador": "Página de mantenimiento (HTTP 503)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-12T00:41:13Z",
+   "alcanceYLimites": "Último dato comprobado: «En estudio» (10/11), sin documento de emisión.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "minimo",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://exchange.token-city.com/es",
+   "localizador": "Web en mantenimiento",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-12T00:41:13Z",
+   "alcanceYLimites": "La cifra comercial de 657 € del 05/11 no tiene documento detrás.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://exchange.token-city.com/es",
+   "localizador": "Web en mantenimiento",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-12T00:41:13Z",
+   "alcanceYLimites": "",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "salida",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://exchange.token-city.com/es",
+   "localizador": "Web en mantenimiento",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-12T00:41:13Z",
+   "alcanceYLimites": "",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Agencia de valores inscrita (nº 334); la emisión no está en su ERIR."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_verificable",
+   "nota": "Web en mantenimiento el 11/11 y el 12/11."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Sin documento de emisión."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Sin documento; sin advertencias de la CNMV para Token City, Lornin ni Cando."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "estado",
+   "antes": "Web en mantenimiento (11/11); último dato «En estudio» (10/11)",
+   "ahora": "Sigue en mantenimiento el 12/11 (503 a las 00:41:13Z y a las 00:45:48Z); ERIR sin cambios",
+   "fuente": "https://exchange.token-city.com/es",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "CANDO1 · Token City",
+  "categoria": "Inmobiliario",
+  "pais": "ES",
+  "tipo": "rendimiento",
+  "coleccion": null,
+  "resumen": "Oportunidad anunciada por una agencia de valores española; hoy su web está en mantenimiento y no hay documento de emisión.",
+  "rentabilidad": null,
+  "metricas": [],
+  "avisos": [],
+  "url": "https://exchange.token-city.com/es",
+  "fuentesActuales": [
+   "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es"
+  ],
+  "lugar": null,
+  "pasos": [],
+  "concepto": null,
+  "resumenTarjeta": {
+   "minimo": null,
+   "accesoEspana": null,
+   "salida": null
+  },
+  "nota": "Candidata no admitida: la tarjeta no se propone. resumenTarjeta solo recoge lo que hoy se puede leer en fuente primaria; lo demás queda en null."
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": "CNMV: Token City European Exchange, A.V. (nº 334)",
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Agencia de valores española inscrita como ERIR.",
+  "porQueNo": "Web en mantenimiento y sin documento de emisión."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "No se puede ver hoy: exchange.token-city.com sigue en mantenimiento (503) y la ERIR de Token City no tiene nada de CANDO1. El último dato (10/11) era «En estudio», sin documento de emisión. Mirar otra vez cuando vuelva la web.",
+ "bloqueos": [
+  "exchange.token-city.com: 503 por mantenimiento (curl 00:41:13Z; navegador 00:45:48Z)."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-12T00:32:51Z",
+  "finUtc": "2026-11-12T00:48:16Z"
+ }
+}

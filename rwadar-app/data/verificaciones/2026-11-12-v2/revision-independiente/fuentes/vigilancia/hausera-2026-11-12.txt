@@ -1,0 +1,25 @@
+Fuente: https://hausera.io/page-data/propiedad/alicante_3/page-data.json
+Consulta UTC: 2026-11-12T00:51:50Z · HTTP 200 · 158500 bytes · SHA-256 8f3234135bfdac2967064f6f6d8723bedaeb70c6fb9bd2473be961c48d435cfd
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+{"name": "Alicante_3", "slug": "alicante_3", "status": "COMMINGSOON", "presaleDate": "18/11/2026", "launchDate": "25/11/2026", "endDate": "25/07/2028"}
+
+Fuente: https://hausera.io/page-data/propiedad/alicante_2/page-data.json
+Consulta UTC: 2026-11-12T00:51:50Z · HTTP 200 · 158715 bytes · SHA-256 2f9272ee1c44466ddb94714f962849f3258a17cf8e35543f5ed82a48c2854f48
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+{"name": "Alicante_2", "slug": "alicante_2", "status": "FUNDED", "presaleDate": "04/11/2026", "launchDate": "11/11/2026", "endDate": "11/07/2028"}
+
+Fuente: https://hausera.io/page-data/oportunidades/page-data.json
+Consulta UTC: 2026-11-12T00:51:50Z · HTTP 200 · 188778 bytes · SHA-256 af4dc677f009f13863de8aaf9421d1c0818f0589589ac005dc94ec7034f382a5
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+{"name": "Alicante_3", "slug": "alicante_3", "status": "COMMINGSOON", "presaleDate": "18/11/2026", "launchDate": "25/11/2026", "endDate": "25/07/2028"}
+{"name": "Alicante_2", "slug": "alicante_2", "status": "FUNDED", "presaleDate": "04/11/2026", "launchDate": "11/11/2026", "endDate": "11/07/2028"}
+
+Navegador (Playwright, sin sesión), https://hausera.io/propiedad/alicante_3/, 2026-11-12T00:52:17Z, HTTP 200. Cabecera de la ficha:
+Alicante 3 · PRÓXIMA OPORTUNIDAD · Preventa: 18/11/2026 09:00h · 06 · DÍAS · 08 · HORAS · 07 · MINUTOS · CRV · Importe a financiar: · 5.196.000€ · Inicio de preventa: · 18/11/2026 · Inicio de oferta pública: · 25/11/2026 · Inicio de proyecto: · 25/11/2026 · Fin previsto de proyecto: · 25/07/2028 · Duración (meses): · 20 · Rentabilidad sobre inversión: · 22,00% · Rentabilidad anualizada: · 13,20% · Ver promoción · Reservar tickets · Descripción · Datos financieros
+
+Navegador (Playwright, sin sesión), https://hausera.io/propiedad/alicante_2/, 2026-11-12T00:52:17Z, HTTP 200. Cabecera de la ficha:
+Alicante 2 · FINANCIADA · CRV · Importe a financiar: · 5.196.000€ · Inicio de preventa: · 04/11/2026 · Inicio de oferta pública: · 11/11/2026 · Inicio de proyecto: · 11/11/2026 · Fin previsto de proyecto: · 11/07/2028 · Duración (meses): · 20 · Rentabilidad sobre inversión: · 22,00% · Rentabilidad anualizada: · 13,20% · Descripción · Datos financieros · Calendario · Documentos · Resumen del inmueble · Alicante 2 es un proyecto formado por 14 viviendas de 2 y 3 dormitorios con terraza, piscina, plaza de garaje y zonas comunes, ubicadas en La Zenia (Orihuela Costa), en la provincia de Alicante.   · 2.204,46 m2 · 14 viviendas · 36 habitaciones · 28 baños · 14 salón-cocina
+

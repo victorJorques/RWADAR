@@ -1,0 +1,245 @@
+                                                     Documento de datos fundamentales
+ Finalidad
+ Este documento le proporciona información fundamental sobre este producto de inversión. No se trata de material comercial. Es una
+ información exigida por ley para ayudarle a comprender la naturaleza, los riesgos, los costes y los beneficios y pérdidas potenciales de este
+ producto y para ayudarle a compararlo con otros productos.
+
+
+Producto:                                 Tokens mTBILL (certificados basados en blockchain)
+Emisor:                                   Midas Software GmbH
+ISIN:                                     CH1371002986
+Productor del PRIIP:                      Midas Software GmbH
+                                          https://www.midas.app | Para más información, llame al +49 30 754 39725
+Autoridad competente:                     Autoridad Federal de Supervisión Financiera (Bundesanstalt für Finanzdienstleistungsaufsicht – BaFin),
+                                          Alemania, en relación con este documento de datos fundamentales; Midas Software GmbH no está
+                                          autorizada ni supervisada de otro modo por la BaFin ni por ninguna otra autoridad de supervisión
+                                          financiera.
+Fecha de revisión del DDF:                17 de julio de 2026
+
+Está a punto de adquirir un producto que no es sencillo y que puede ser difícil de comprender.
+  1. ¿Qué es este producto?
+ Tipo
+ Certificado basado en blockchain emitido como valor anotado en registro distribuido (Registerwertrecht) conforme al artículo 973d del Código de
+Obligaciones suizo, sujeto al Derecho suizo y a la jurisdicción de Zúrich. El Producto replica una cesta de letras del Tesoro estadounidense a corto
+plazo. No devenga intereses, no paga cupón y no ofrece protección del capital. Este Producto no es un fondo, ni un fondo del mercado monetario,
+ni un depósito bancario, ni una obligación del Gobierno de los Estados Unidos. Usted no es titular de ninguna letra del Tesoro
+estadounidense. Usted es titular de un crédito con subordinación cualificada y de recurso limitado frente a Midas Software GmbH, garantizado
+mediante una cuenta de colateral. El valor de dicho crédito depende del Emisor y del colateral, no de la solvencia de los Estados Unidos. Véase «¿Qué
+pasa si Midas Software GmbH no puede pagar?».
+
+  Plazo
+  Este Producto no tiene fecha de vencimiento. Puede solicitar el reembolso en cualquier momento, con sujeción a las condiciones establecidas en
+«¿Cuánto tiempo debo mantener la inversión, y puedo retirar dinero de manera anticipada?». El Emisor podrá reembolsar el Producto total o
+parcialmente en cualquier momento, a su discreción. El Emisor también podrá dar por terminado anticipadamente el Producto si se produce un
+Supuesto de Amortización Anticipada (incluidos acontecimientos regulatorios o fiscales adversos, el cese o la insolvencia del Gestor de Inversiones o
+de otro proveedor de servicios clave, un aumento sustancial del riesgo de blockchain o un supuesto de fuerza mayor). En caso de terminación
+anticipada, usted recibirá el Importe de Cancelación, que es el valor razonable de mercado determinado por el Agente de Cálculo, según su criterio
+razonable, al quinto Día Hábil anterior a la fecha de terminación. Dicho importe puede ser inferior al importe invertido, e incluso nulo.
+
+  Objetivos
+  El Producto le ofrece exposición a la rentabilidad de una cesta de letras del Tesoro estadounidense a corto plazo (el «Subyacente»). El valor del
+Producto es el valor liquidativo por Producto («VL»), calculado por el Agente de Cálculo, tras deducir todas las comisiones, costes y deducciones
+aplicables. Las letras del Tesoro se emiten con descuento sobre su valor nominal y se reembolsan por su valor nominal, por lo que se espera que el VL
+aumente gradualmente a medida que las letras se acercan a su vencimiento. El Producto no le paga intereses ni cupón. Su rendimiento, en su caso, es
+la diferencia entre el VL al que suscribe y el VL al que reembolsa, menos las comisiones. Dicho rendimiento será inferior a la rentabilidad de las letras
+del Tesoro subyacentes, porque primero se deducen las comisiones del Emisor y los demás costes indicados en «¿Cuáles son los costes?».
+El Subyacente es nocional. El Emisor no está obligado a comprar ni mantener ninguna letra del Tesoro, y no existe ninguna cartera de letras
+del Tesoro sobre la que usted tenga un derecho de propiedad. Por otra parte, el Emisor ha constituido una garantía sobre una cuenta de colateral.
+Los activos de esa cuenta no son el Subyacente, no tienen por qué coincidir con él y pueden incluir efectivo o participaciones en fondos en lugar de
+letras del Tesoro.
+
+
+Serie / Volumen de             Serie 1; 500.000.000 mTokens                  Derecho aplicable /           Derecho suizo / Zúrich
+emisión                                                                      jurisdicción
+Subyacente                     Cesta compuesta en un 100 % por letras        Blockchains                   Ethereum, Base, Oasis Sapphire, Algorand,
+                               del Tesoro estadounidense a corto plazo                                     Plume, Rootstock, Etherlink. Los
+                                                                                                           Productos registrados en diferentes
+                                                                                                           blockchains forman una única serie y son
+                                                                                                           fungibles entre sí.
+
+Moneda de emisión              USD                                           Agente de Cálculo             Midas Software GmbH
+Moneda de suscripción          USDC                                          Cohorte de suscripción        1 Día Hábil
+Moneda de liquidación          USDC                                          Importe mínimo de             no aplicable
+                                                                             inversión
+Fecha de emisión inicial       13 de septiembre de 2024                      Importe máximo de             no aplicable
+                                                                             inversión
+Plazo de emisión               2 Días Hábiles tras la aceptación de la       Garantía                      El Emisor ha constituido una garantía sobre
+                               solicitud de suscripción                                                    una cuenta de colateral a favor de Ankura
+                                                                                                           Trust Company LLC como Agente de
+                                                                                                           Garantías, en beneficio de los titulares de esta
+                                                                                                           Serie como colectivo. Los activos de colateral
+                                                                                                           se mantienen en Maerki Baumann & Co. AG,
+                                                                                                           Zúrich, como Custodio. Esta garantía está
+                                                                                                           sujeta a limitaciones; véase «¿Qué pasa si
+                                                                                                           Midas Software GmbH no puede pagar?».
+Período de oferta              hasta el 17 de julio de 2027                  Publicación del VL            El VL por Producto se publica en
+                                                                                                           https://midas.app/mtbill y a través de
+                                                                                                           oráculos on-chain.
+                                                                                                                                                          1
+ Inversor minorista al que va dirigido
+
+   Este Producto está dirigido a inversores minoristas que: (i) tengan conocimientos y experiencia suficientes en productos estructurados y tokens
+basados en blockchain para comprender un crédito con subordinación cualificada y de recurso limitado frente a un emisor sin calificación crediticia;
+(ii) busquen exposición a la rentabilidad de las letras del Tesoro estadounidense a corto plazo sin ser titulares de ellas, y comprendan que esto no
+sustituye a la tenencia de letras del Tesoro, a un fondo del mercado monetario ni a un depósito bancario; (iii) tengan un horizonte de inversión de al
+menos un año, coherente con el período de mantenimiento recomendado; (iv) puedan soportar la pérdida de la totalidad del importe invertido; (v) no
+necesiten protección del capital ni ingresos garantizados; y (vi) acepten un nivel de riesgo de 7 sobre 7.
+
+     2. ¿Qué riesgos corro y qué podría obtener a cambio?
+
+Indicador de riesgo
+
+
+                                            1               2               3                4               5                6             7
+                                                <•••••••••••••••••••••••••••••••••••>
+                                         Riesgo más bajo                                                                            Riesgo más alto
+
+
+   !    El indicador de riesgo presupone que usted mantendrá el producto durante un año. El riesgo real puede variar considerablemente en caso de salida anticipada, por lo que es posible que
+        recupere menos dinero. Es posible que no pueda vender su producto fácilmente o que tenga que venderlo a un precio que influya considerablemente en la cantidad que recupere.
+
+
+El indicador resumido de riesgo es una guía del nivel de riesgo de este Producto en comparación con otros productos. Muestra las probabilidades de
+que el Producto pierda dinero debido a la evolución de los mercados o porque Midas Software GmbH no pueda pagarle. Hemos clasificado este
+Producto en la clase de riesgo 7 en una escala de 7, que es la clase de riesgo más alta. Esta evaluación califica la posibilidad de sufrir pérdidas en
+rentabilidades futuras como muy alta, y la probabilidad de que una mala coyuntura de mercado influya en la capacidad de Midas Software GmbH de
+pagarle como muy improbable. El Producto no incluye protección alguna contra la evolución futura del mercado. Si Midas Software GmbH no puede
+pagarle, podría perder toda su inversión. Tenga presentes los riesgos que el indicador no recoge plenamente, como el riesgo de crédito del emisor y la
+subordinación cualificada, el riesgo de liquidez y de perturbación del mercado, el riesgo de contraparte, el riesgo de los protocolos DeFi y de los
+contratos inteligentes, el ciberriesgo, la pérdida o el robo de claves privadas y el riesgo de liquidación en blockchain. Tenga presente el riesgo de
+cambio. Este Producto está denominado en dólares estadounidenses y se liquida en USDC, una stablecoin vinculada al dólar estadounidense. Si su
+moneda no es el dólar estadounidense, recibirá pagos en una moneda diferente, por lo que el rendimiento final que obtenga dependerá del tipo de
+cambio entre ambas monedas. Este riesgo no se tiene en cuenta en el indicador arriba mostrado. Además, USDC podría dejar de mantener su paridad
+con el dólar estadounidense.
+Las comisiones y restricciones aplicables en caso de salida anticipada se describen en «¿Cuánto tiempo debo mantener la inversión, y puedo retirar
+dinero de manera anticipada?»
+
+ Escenarios de rentabilidad
+Lo que obtenga de este Producto dependerá de la rentabilidad futura del mercado. La evolución futura del mercado es incierta y no puede predecirse
+con exactitud. Los mercados podrían evolucionar de manera muy distinta en el futuro.
+
+Período de mantenimiento recomendado:                               1 año
+Ejemplo de inversión:                                               10.000 USD
+ Escenarios                                                                                                                                       En caso de salida después de 1
+                                                                                                                                                  año
+
+Mínimo                                 No hay un rendimiento mínimo garantizado. Podría perder una parte o la totalidad de su inversión.
+
+
+Tensión                                Lo que podría recibir tras deducir los costes                                                                                             9.743 USD
+                                       Rendimiento porcentual (no anualizado)                                                                                                       -2,57 %
+Desfavorable                           Lo que podría recibir tras deducir los costes                                                                                             9.868 USD
+                                       Rendimiento porcentual (no anualizado)                                                                                                        -1,32 %
+Moderado                               Lo que podría recibir tras deducir los costes                                                                                            10.330 USD
+                                       Rendimiento porcentual (no anualizado)                                                                                                        3,30 %
+Favorable                              Lo que podría recibir tras deducir los costes                                                                                            10.668 USD
+                                       Rendimiento porcentual (no anualizado)                                                                                                       +6,68 %
+
+Las cifras presentadas incluyen todos los costes del Producto propiamente dicho, pero es posible que no incluyan todos los costes que usted pague
+a su asesor o distribuidor. Las cifras no tienen en cuenta su situación fiscal personal. La legislación tributaria de su Estado miembro de origen
+también puede influir en la cantidad que efectivamente reciba.
+
+     3. ¿Qué pasa si Midas Software GmbH no puede pagar?
+ Está expuesto al riesgo de que Midas Software GmbH no pueda cumplir sus obligaciones derivadas del Producto, incluso en caso de insolvencia,
+iliquidez, sobreendeudamiento o una orden administrativa. Midas Software GmbH no es un banco y no está autorizada ni supervisada como entidad
+financiera.
+El Emisor ha constituido una garantía sobre una cuenta de colateral en beneficio de los titulares de esta Serie. Ankura Trust Company LLC actúa como Agente
+de Garantías para los titulares como colectivo y no actúa siguiendo instrucciones de titulares individuales. El colateral puede consistir en letras del Tesoro
+estadounidense, equivalentes de letras del Tesoro estadounidense (incluidos fondos o fondos cotizados que las mantengan), notas del Tesoro estadounidense,
+otras obligaciones emitidas o garantizadas por el Tesoro estadounidense, pactos de recompra garantizados por obligaciones del Tesoro estadounidense o
+dólares estadounidenses líquidos. Los activos de colateral se mantienen en Maerki Baumann & Co. AG, Zúrich, como Custodio.
+Dicha garantía no hace que este Producto sea seguro. En particular:
+ ●     Su derecho de recurso se limita al colateral. Si el colateral no es suficiente para pagarle íntegramente, el saldo de la obligación del Emisor se
+       extingue y usted no tiene ningún otro derecho frente al Emisor ni frente a ninguna otra persona.
+ ●     La garantía está sujeta a la misma subordinación cualificada que su crédito. Ni usted ni el Agente de Garantías pueden exigir ni recibir pagos
+       con cargo a la garantía mientras y en la medida en que el propio pago haga que el Emisor incurra en iliquidez o sobreendeudamiento.
+ ●     En caso de insolvencia del Emisor, su crédito se sitúa por detrás de los créditos de todos sus demás acreedores presentes y futuros, salvo los
+       acreedores que estén a su vez subordinados o que tengan el mismo rango que usted.
+ ●     Los costes de administración, conservación, realización y ejecución de la garantía se deducen del producto obtenido antes de que se le pague
+       cualquier importe, y es posible que deban financiarse por adelantado.
+ ●     La ejecución puede retrasarse o verse limitada jurídica o prácticamente, y puede no generar un producto suficiente. Cualquier déficit corre a su
+       cargo.
+ ●     El colateral no tiene por qué coincidir con el Subyacente y puede consistir en efectivo o en participaciones en fondos en lugar de letras del
+
+                                                                                                                                                                                                 2
+     Tesoro.
+El Producto no está cubierto por ningún sistema de garantía de depósitos, de indemnización de los inversores ni de garantía, y ningún tercero ha garantizado
+las obligaciones del Emisor. Podría perder toda su inversión.
+
+   4. ¿Cuáles son los costes?
+La persona que le asesore sobre este Producto o que se lo venda puede cobrarle otros costes. En tal caso, esa persona le facilitará información
+acerca de estos costes y de la incidencia que tienen en su inversión.
+
+ Costes a lo largo del tiempo
+ En los cuadros se muestran las cantidades que se detraen de su inversión para cubrir diferentes tipos de costes. Estas cantidades dependen de
+cuánto invierta y de cuánto tiempo mantenga el Producto. Las cantidades indicadas aquí son ilustraciones basadas en un importe de inversión de
+ejemplo y diferentes períodos de inversión posibles.
+
+Hemos partido de los siguientes supuestos:
+– Se invierten 10.000 USD.
+– El producto evoluciona tal como muestra el escenario moderado.
+                                                 En caso de reembolso al final del período de mantenimiento recomendado de 1 año
+ Costes totales estimados                        30,07 USD
+ Incidencia anual de los costes                  0,30 %
+
+Composición de los costes
+ Costes únicos de entrada o salida                                                                       En caso de salida después de 1 año
+ Costes de entrada                                   No cobramos comisión de entrada.                    0 USD
+ Costes de salida                                    0,07 % de su inversión antes de que se le           7,25 USD
+                                                     pague; solo se aplica al reembolso inmediato
+                                                     (reembolso estándar: sin comisión).
+ Costes corrientes detraídos cada año
+ Comisiones de gestión y otros costes         0,00 % del valor de su inversión al año,                   0 USD
+ administrativos o de funcionamiento          deducido dentro del VL. Estimación basada
+                                              en los costes reales del último año.
+ Costes de operación                          0,05 % del valor de su inversión al año: coste             5,04 USD
+                                              estimado de comprar y vender el Subyacente.
+                                              El importe real variará.
+ Costes accesorios detraídos en condiciones específicas
+ Comisiones de rendimiento                    5 % de la rentabilidad positiva del mToken,                17,77 USD
+                                              deducido dentro del VL. El importe real
+                                              variará en función de la rentabilidad.
+
+   5. ¿Cuánto tiempo debo mantener la inversión, y puedo retirar dinero de manera anticipada?
+
+  Período de mantenimiento recomendado: 1 año
+Hemos elegido un período de mantenimiento recomendado de 1 año porque se espera que el VL del Producto aumente gradualmente a medida que
+las letras del Tesoro subyacentes se acercan a su vencimiento, y en períodos más cortos ese aumento gradual puede verse superado por las
+comisiones y costes del Emisor. Un período de mantenimiento más corto también aumenta el efecto proporcional de la comisión de reembolso
+inmediato. Puede solicitar el reembolso antes, con sujeción a los límites descritos a continuación. No se trata de un período mínimo de
+mantenimiento obligatorio y no existe período de bloqueo.
+Puede solicitar el reembolso cualquier Día Hábil, con sujeción a todo lo siguiente:
+  ● debe haber completado el proceso de alta (onboarding) y el Emisor debe haber incluido su dirección de wallet en la lista de direcciones
+      autorizadas (greenlist);
+  ● las solicitudes recibidas después de las 23:59 CET/CEST se consideran recibidas el siguiente Día Hábil;
+  ● el reembolso se valora por referencia al VL determinado tras un período de realización de un Día Hábil;
+  ● el Emisor no reembolsará más del 15 % de todos los Productos en circulación en ningún día de liquidación, por lo que su solicitud podrá
+      reducirse y trasladarse a una fecha posterior;
+  ● si utiliza el reembolso inmediato, podrá retenerse hasta el 50 % del importe que le corresponda, que solo se pagará tras una valoración
+      posterior, y el importe finalmente pagado podrá ser inferior al que espera;
+  ● en caso de perturbación del mercado, la valoración, el reembolso y la liquidación podrán aplazarse.
+El Emisor no está obligado a ofrecer el reembolso inmediato. El reembolso estándar no conlleva comisión de reembolso. El reembolso inmediato
+conlleva una comisión del 0,07 % del importe del reembolso; véase «¿Cuáles son los costes?».
+No existe un mercado de negociación para el Producto y no se ha solicitado ni se solicitará su admisión a negociación. El Producto solo puede
+transmitirse a una persona cuya dirección de wallet haya sido incluida por el Emisor en la lista de direcciones autorizadas tras el proceso de alta. No
+debe presuponer que podrá vender el Producto a nadie distinto del Emisor.
+
+   6. ¿Cómo puedo reclamar?
+Si tiene una reclamación sobre el Producto o sobre la conducta de Midas Software GmbH, escriba a team@midas.app, utilice la página de
+reclamaciones en https://docs.midas.app/resources/complaints o escriba a Midas Software GmbH, Pappelallee 78/79, 10437 Berlín, Alemania.
+Indíquenos su nombre, sus datos de contacto, el nombre y el ISIN del Producto y qué ha fallado. Acusaremos recibo de su reclamación en un plazo de
+5 Días Hábiles y le daremos una respuesta sustantiva en un plazo de 2 semanas. Si su reclamación se refiere a la persona que le asesoró sobre el
+Producto o se lo vendió, póngase en contacto directamente con dicha persona.
+
+   7. Otros datos de interés
+ El Folleto de Base de fecha 17 de julio de 2026, las Condiciones Finales de fecha 17 de julio de 2026, los posibles suplementos y este documento de
+datos fundamentales están disponibles en https://midas.app/legal. La información sobre el producto, incluido el último VL disponible por mToken
+cuando se publique, está disponible en la Página del Producto en https://midas.app/mtbill. Le recomendamos leer estos documentos para obtener
+información más detallada sobre la estructura y los riesgos del Producto. El Producto no está clasificado como sostenible y no está dirigido a
+clientes con preferencias específicas de sostenibilidad conforme al Reglamento (UE) 2017/565.
+
+
+
+
+                                                                                                                                                           3
+

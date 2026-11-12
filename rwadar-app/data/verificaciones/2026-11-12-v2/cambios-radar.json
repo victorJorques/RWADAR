@@ -1,0 +1,28 @@
+{
+  "fecha": "2026-11-12",
+  "nota": "Cambios del radar comprobados a mano el 12/11/2026. La comprobación automática (comprobar-radar.mjs) los aplica antes de contrastar y preparar-entrega.mjs los lleva al lote. Hoy no cambia ninguna dirección ni ningún texto del radar.",
+  "fuentes": {},
+  "plataformas": {},
+  "verificacionesManuales": {
+    "spiko-regafi": {
+      "motivo": "La página de REGAFI carga sin los datos de la entidad, como el 10 y el 11/11. Se leyó la API pública del mismo registro, de la que se alimenta la página.",
+      "metodo": "API pública de REGAFI (prd-banque-entites), leída con curl el 12/11/2026 a las 00:37 UTC; copia en radar-manual/regafi-spiko-entidad.json (SHA-256 62ab887b074058421fd6aaf90cc82190b9ed356166fbcea878a8b96dbf2dbb26)",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-entites/records?where=id_referentiel%3D751211",
+      "literales": [
+        "denomination: \"Spiko Finance\"",
+        "cib: [{\"code\": \"19183\", \"date\": \"2025-12-15\"}]",
+        "nature_autorisation: \"Agrément\"; approval_withdrawal_process: \"False\""
+      ]
+    },
+    "spiko-regafi-pasaporte-es": {
+      "motivo": "Misma página de REGAFI sin datos. Se leyó la API pública de pasaportes salientes del mismo registro.",
+      "metodo": "API pública de REGAFI (prd-banque-passeports-sortants), leída con curl el 12/11/2026 a las 00:37 UTC; copia en radar-manual/regafi-spiko-pasaporte-espagne.json (SHA-256 fdf10d2d445b2cc90fec0c31215cd065cdab7c0a325cba03fceb47d2a7de66c6, igual que el 10 y el 11/11)",
+      "url": "https://www.regafi.fr/api/explore/v2.1/catalog/datasets/prd-banque-passeports-sortants/records?where=id_referentiel%3D751211%20and%20pays%3D%22ESPAGNE%22",
+      "literales": [
+        "\"type_passeport\": \"Libre prestation de services\"",
+        "\"pays\": \"ESPAGNE\", \"date_debut\": \"2026-01-08\"",
+        "\"A1\": {\"C3\": {\"date_debut\": \"2026-01-08\", \"value\": true}"
+      ]
+    }
+  }
+}

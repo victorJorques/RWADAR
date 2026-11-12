@@ -1,0 +1,38 @@
+[
+ {
+  "name": "aktionariat-invest",
+  "url": "https://shares.aktionariat.com/invest",
+  "status": 200,
+  "consultadoUtc": "2026-11-12T00:47:59Z"
+ },
+ {
+  "name": "aktionariat-trade",
+  "url": "https://shares.aktionariat.com/trade",
+  "status": 200,
+  "consultadoUtc": "2026-11-12T00:48:07Z"
+ },
+ {
+  "name": "boss-info-invest",
+  "url": "https://shares.bossinfo.com/invest",
+  "status": 200,
+  "consultadoUtc": "2026-11-12T00:48:17Z"
+ },
+ {
+  "name": "boss-info-trade",
+  "url": "https://shares.bossinfo.com/trade",
+  "status": 200,
+  "consultadoUtc": "2026-11-12T00:48:24Z"
+ },
+ {
+  "name": "switzerlend-invest",
+  "url": "https://shares.lend.ch/invest",
+  "status": 200,
+  "consultadoUtc": "2026-11-12T00:48:33Z"
+ },
+ {
+  "name": "switzerlend-trade",
+  "url": "https://shares.lend.ch/trade",
+  "status": 200,
+  "consultadoUtc": "2026-11-12T00:48:41Z"
+ }
+]

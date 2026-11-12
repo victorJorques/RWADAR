@@ -1,0 +1,20 @@
+Fuente: https://exchange.token-city.com/es
+Consulta UTC: 2026-11-12T00:52:42Z · HTTP 503 · 4731 bytes · SHA-256 2f9b23b4442e13f5fe1ba645689598cc5119444d0e4167985aaa5f1c36a402f7
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+Sistema deshabilitado temporalmente
+Estamos en mantenimiento
+
+Vamos a deshabilitar el sistema temporalmente para realizar tareas de mantenimiento y mejorar el servicio.
+
+Durante este tiempo no podrás acceder a la plataforma. Volveremos a estar disponibles lo antes posible.
+
+Disculpa las molestias y gracias por tu paciencia.
+
+Navegador a las 2026-11-12T00:52:17Z: HTTP 503, mismo texto.
+
+Fuente: https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es
+Consulta UTC: 2026-11-12T00:51:20Z · HTTP 200 · 152454 bytes · SHA-256 12ac95b9d7dc3a31c834e11cdd3097d90cf435e6c75ae4bf3f0f72c71864d453
+Revisor independiente, grupo vigilancia, 12/11/2026.
+
+06/11/2026 · SERIES A GRUPO UAE SA · …al de SERIES A GRUPO UAE, S.A. representadas mediante sistemas basados en tecnologia de registros distribuidos, por importe de 60.000 euros, e inscrita el 17 de junio de 2026 en el Registro Mercantil.
