@@ -3362,7 +3362,9 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.',
     'Entra en tu cuenta para ver tus avisos. ¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.',
     'Notificaciones activadas en este móvil. Te llegarán cuando empecemos a enviarlas.',
-    'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.'];
+    'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.',
+    // Junto al botón (12/11/2026): el trozo antes del enlace a Privacidad.
+    'Al activarlas, tu navegador usa el servicio de notificaciones de su fabricante (Apple, Google, Mozilla o Microsoft); el texto va cifrado. Más en'];
   const sinIngles = [...textosPush, ...fijos].filter(t => typeof (enAvisos[t] ?? enComun[t]) !== 'string');
   const scriptsIndex = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(m => m[1]);
   const iComun = scriptsIndex.indexOf('/assets/idioma-en-20261022.js'), iAvisos = scriptsIndex.indexOf('/assets/idioma-en-avisos-20261112.js');
@@ -3381,8 +3383,12 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     /self\.addEventListener\('push'/.test(sw) && /showNotification\(/.test(sw) && /self\.addEventListener\('notificationclick'/.test(sw));
   // Revisión del 12/11: la baja en cada notificación (LSSI, art. 21.2, párr. 2), suscribirse con el envío
   // apagado (para probar antes), abrir la campana ya es ver los avisos, y sin «badge» opaco.
-  prueba('notificaciones: cada una lleva a la lista con la baja (?avisos=1), se pueden activar con el envío apagado y abrir la campana pone el número a 0',
+  prueba('notificaciones: cada una lleva a la lista con la baja a la vista en un pie fijo (?avisos=1), se pueden activar con el envío apagado y abrir la campana pone el número a 0',
     js.includes("'<p class=\"avisos-baja\" id=\"avisosDialogoBaja\">¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.</p>'") &&
+    // La baja y su botón, en un pie fijo fuera de la lista que se desplaza: se ven al abrir con 10 avisos.
+    js.includes("'<div class=\"avisos-dialogo-cuerpo\"><div id=\"avisosDialogoLista\"></div></div>'+") &&
+    js.includes("'<div class=\"avisos-dialogo-pie\">'+") &&
+    /\.avisos-dialogo \.escaparate-dialogo-marco\{[^}]*grid-template-rows:auto minmax\(0,1fr\) auto/.test(css.replace(/\n\s*/g, '')) &&
     /searchParams\.get\('avisos'\)==='1'/.test(js) && js.includes("e.data.tipo==='abrir-avisos')abrirAvisosPedido()") &&
     sw.includes("ventana.postMessage({ tipo: 'abrir-avisos' })") &&
     !/if\(!novedades\.push_activo\)return 'pendiente';/.test(js) && /clavePush\.valor===null\)return 'pendiente'/.test(js) &&

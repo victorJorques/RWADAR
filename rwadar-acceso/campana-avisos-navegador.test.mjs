@@ -111,6 +111,7 @@ async function abrir(navegador, local, { dispositivo = null, viewport = null, cf
 const rpc = (local, nombre) => local.peticionesSupabase.filter(p => p.ruta === '/rest/v1/rpc/' + nombre);
 const captura = async (pagina, nombre) => { if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, nombre) }); };
 const BAJA = '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.';
+const QUIEN_WEB = 'Al activarlas, tu navegador usa el servicio de notificaciones de su fabricante (Apple, Google, Mozilla o Microsoft); el texto va cifrado. Más en Privacidad.';
 // Contraste WCAG entre el texto y el fondo de un elemento (colores rgb/rgba opacos).
 function contraste(id) {
   const lum = c => { const [r, g, b] = c.match(/\d+(\.\d+)?/g).slice(0, 3).map(Number).map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; });
@@ -176,7 +177,25 @@ test('en Chromium: campana con número (1…9 y 9+), globo de Perfil, diálogo q
         baja: document.getElementById('avisosDialogoBaja').textContent, gestionar: d.querySelector('[data-avisos-gestionar]').textContent };
     });
     assert.deepEqual(dialogo, { titulo: 'Tus avisos', nuevos: 10, sinLeer: 10, foco: 'Cerrar', marcar: false, baja: BAJA, gestionar: 'Notificaciones y avisos en Perfil' });
+    // Con 10 avisos a 390 × 844, la baja (LSSI, art. 21.2) y su botón se ven al abrir, sin desplazar nada:
+    // van en un pie fijo y solo se desplaza la lista. Siguen a la vista con la lista al final.
+    const aLaVista = () => pagina.evaluate(() => {
+      const d = document.getElementById('avisosDialogo'), lista = d.querySelector('.avisos-dialogo-cuerpo'), rd = d.getBoundingClientRect();
+      const visible = n => { const r = n.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2, e = document.elementFromPoint(x, y);
+        return r.height > 0 && r.top >= Math.max(0, rd.top) - 0.5 && r.bottom <= Math.min(innerHeight, rd.bottom) + 0.5 && !!e && n.contains(e); };
+      return { avisos: d.querySelectorAll('#avisosDialogoLista li').length, ventana: [innerWidth, innerHeight],
+        baja: visible(document.getElementById('avisosDialogoBaja')), gestionar: visible(d.querySelector('[data-avisos-gestionar]')),
+        fueraDeLaLista: !lista.contains(document.getElementById('avisosDialogoBaja')), seDesplaza: lista.scrollHeight > lista.clientHeight + 1,
+        lista: lista.scrollTop, dentro: rd.top >= 0 && rd.bottom <= innerHeight + 0.5 };
+    });
+    const alAbrir = await aLaVista();
+    assert.deepEqual(alAbrir, { avisos: 10, ventana: [390, 844], baja: true, gestionar: true, fueraDeLaLista: true, seDesplaza: true,
+      lista: 0, dentro: true }, 'la baja a la vista al abrir, sin desplazar');
     await captura(pagina, 'campana-dialogo-390.png');
+    await pagina.evaluate(() => { const l = document.querySelector('#avisosDialogo .avisos-dialogo-cuerpo'); l.scrollTop = l.scrollHeight; });
+    const alFinal = await aLaVista();
+    assert.ok(alFinal.lista > 0 && alFinal.baja && alFinal.gestionar, 'con la lista al final, la baja sigue a la vista: ' + JSON.stringify(alFinal));
+    await pagina.evaluate(() => { document.querySelector('#avisosDialogo .avisos-dialogo-cuerpo').scrollTop = 0; });
     await pagina.waitForFunction(() => document.getElementById('movilAvisosN').hidden, null, { timeout: 5000 });
     const tras = await pagina.evaluate(uid => ({ aria: document.getElementById('movilAvisos').getAttribute('aria-label'),
       nuevos: document.querySelectorAll('#avisosDialogo li.nuevo').length,
@@ -279,7 +298,20 @@ test('en Chromium: «Notificaciones en este móvil» en Android, en el mismo toq
     assert.equal(antes.boton, 'Activar notificaciones en este móvil');
     assert.equal(antes.correo, 'El envío por correo todavía no está activo.', 'con la casilla y el correo apagados se dice');
     assert.equal(antes.interruptor, true, 'el texto versionado ya está aceptado');
+    // Primera capa junto al botón: quién interviene en la entrega, con su enlace a la privacidad.
+    const quien = () => pagina.evaluate(() => {
+      const q = document.getElementById('perfilPushQuien'), b = document.getElementById('perfilPushActivar');
+      const r = q.getBoundingClientRect(), rb = b.hidden ? document.getElementById('perfilPushDesactivar').getBoundingClientRect() : b.getBoundingClientRect();
+      return { visible: !q.hidden && r.height > 0, texto: q.textContent, enlace: q.querySelector('a')?.getAttribute('href'),
+        junto: r.top >= rb.bottom - 0.5 && r.top - rb.bottom < 24 };
+    });
+    assert.deepEqual(await quien(), { visible: true, texto: QUIEN_WEB, enlace: '/privacidad#avisos-novedades', junto: true });
     await captura(pagina, 'perfil-avisos-android-390.png');
+    await pagina.evaluate(() => RWAdarIdioma.cambiarIdioma('en'));
+    await pagina.waitForFunction(() => /^When you turn them on/.test(document.getElementById('perfilPushQuien').textContent), null, { timeout: 5000 });
+    assert.equal((await quien()).texto, "When you turn them on, your browser uses its maker's notification service (Apple, Google, Mozilla or Microsoft); the text is encrypted. More in Privacy.");
+    await pagina.evaluate(() => RWAdarIdioma.cambiarIdioma('es'));
+    await pagina.waitForFunction(t => document.getElementById('perfilPushQuien').textContent === t, QUIEN_WEB, { timeout: 5000 });
     await pagina.click('#perfilPushActivar');
     await pagina.waitForFunction(() => document.getElementById('perfilPushEstado').textContent === 'Notificaciones activadas en este móvil.', null, { timeout: 15000 });
     let r = await rastro();
@@ -292,6 +324,7 @@ test('en Chromium: «Notificaciones en este móvil» en Android, en el mismo toq
       [{ p_endpoint: 'https://fcm.googleapis.com/fcm/send/prueba-123', p_p256dh: 'BPrueba_p256dh-clave', p_auth: 'auth-prueba' }]);
     const activas = await pagina.evaluate(() => ({ activar: document.getElementById('perfilPushActivar').hidden, desactivar: document.getElementById('perfilPushDesactivar').hidden }));
     assert.deepEqual(activas, { activar: true, desactivar: false });
+    assert.deepEqual(await quien(), { visible: true, texto: QUIEN_WEB, enlace: '/privacidad#avisos-novedades', junto: true }, 'también junto a «Desactivar»');
     await captura(pagina, 'perfil-avisos-activadas-390.png');
 
     // Desactivar: la base y el navegador.
@@ -416,9 +449,10 @@ test('en Chromium: estados claros (denegadas, todavía no disponibles, falta el 
     await iphone.pagina.locator('#perfilPush').scrollIntoViewIfNeeded();
     const ios = await iphone.pagina.evaluate(() => ({ pasos: [...document.querySelectorAll('#perfilPushPasos li')].map(li => li.textContent),
       verPasos: !document.getElementById('perfilPushPasos').hidden, activar: document.getElementById('perfilPushActivar').hidden,
-      instalar: !document.getElementById('perfilPushInstalar').hidden }));
+      instalar: !document.getElementById('perfilPushInstalar').hidden, quien: !document.getElementById('perfilPushQuien').hidden }));
     assert.deepEqual(ios, { pasos: ['Pulsa el botón Compartir (un cuadrado con una flecha hacia arriba).', 'Elige «Añadir a pantalla de inicio» y pulsa Añadir.',
-      'Abre RWAdar desde el icono nuevo, entra en tu cuenta y vuelve a Perfil › Avisos.'], verPasos: true, activar: true, instalar: true });
+      'Abre RWAdar desde el icono nuevo, entra en tu cuenta y vuelve a Perfil › Avisos.'], verPasos: true, activar: true, instalar: true, quien: false },
+      'sin botón para activarlas, tampoco la frase de quién interviene');
     await captura(iphone.pagina, 'perfil-avisos-iphone-390.png');
     await iphone.pagina.click('#perfilPushInstalar');
     await iphone.pagina.waitForSelector('#instalarIphone[open]', { timeout: 5000 });
@@ -439,7 +473,7 @@ test('en Chromium: estados claros (denegadas, todavía no disponibles, falta el 
     await pc.pagina.click('#btnCuenta');
     await pc.pagina.waitForSelector('#pfPushEstado', { state: 'attached', timeout: 10000 });
     await pc.pagina.waitForFunction(() => /^Las notificaciones se activan desde el móvil o la tableta/.test(document.getElementById('pfPushEstado').textContent), null, { timeout: 10000 });
-    assert.equal(await pc.pagina.evaluate(() => document.getElementById('pfPushActivar').hidden), true);
+    assert.deepEqual(await pc.pagina.evaluate(() => [document.getElementById('pfPushActivar').hidden, document.getElementById('pfPushQuien').hidden]), [true, true]);
     assert.deepEqual(pc.errores, []);
     await pc.contexto.close();
   } finally {
