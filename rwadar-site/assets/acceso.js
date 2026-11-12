@@ -118,6 +118,9 @@
   }
   function cambiar(siguiente) {
     vista = siguiente; $('clave').value = ''; $('condiciones').checked = false; $('avisos-novedades').checked = false;
+    // «Mantener la sesión iniciada en este dispositivo»: solo al entrar y, cada
+    // vez que se abre el formulario, desmarcada (la persona la pide marcándola).
+    $('mantener').checked = false; $('campo-mantener').hidden = vista !== 'entrar';
     $('siguiente-alta').hidden = true; $('acciones').hidden = false; form.hidden = false;
     const alta = vista === 'registrar', nueva = vista === 'nueva-clave';
     $('campo-nombre').hidden = !alta; $('campo-condiciones').hidden = !alta;
@@ -223,6 +226,10 @@
     if (vista === 'registrar' && !data.aceptaCondiciones) { mensaje('Confirma que tienes 18 años o más y acepta las condiciones y la privacidad para registrarte.'); return; }
     if (['registrar', 'nueva-clave'].includes(vista) && data.clave.length < 12) { mensaje('Usa una contraseña de al menos 12 caracteres.'); return; }
     if (vista === 'nueva-clave') data.access_token = enlace?.access_token;
+    // Booleano estricto y solo al entrar: el servidor pone entonces Max-Age a las
+    // dos cookies de la sesión (30 días la de renovar); sin marcar, se borran al
+    // cerrar el navegador.
+    if (vista === 'entrar') data.mantener = $('mantener').checked === true;
     $('clave').value = ''; ocupado = true; $('enviar').disabled = true;
     try {
       await terminarCierre();

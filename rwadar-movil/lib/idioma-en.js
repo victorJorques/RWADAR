@@ -140,6 +140,9 @@
   "No se pudo comprobar tu sesión guardada. Reinténtalo cuando tengas conexión.": "Your saved session could not be verified. Try again when you have a connection.",
   "Preparando tu acceso…": "Preparing your sign-in…",
   "Tu radar, con tu cuenta": "Your radar, with your account",
+  // /acceso: «Mantener la sesión iniciada en este dispositivo» (12/11/2026). La nota acaba en un enlace a Privacidad.
+  "Mantener la sesión iniciada en este dispositivo": "Keep me signed in on this device",
+  "Si la marcas, este navegador guarda tu sesión con una cookie hasta 30 días desde la última vez que la usas, aunque lo cierres. Se borra al cerrar sesión. No la marques en un dispositivo compartido. Más en": "If you tick it, this browser keeps your session in a cookie for up to 30 days after you last use it, even if you close it. It is deleted when you sign out. Don't tick it on a shared device. More in",
   "Preparando el acceso…": "Preparing sign-in…",
   "Comprueba tu conexión": "Check your connection",
   "Reintentar sesión guardada": "Retry saved session",

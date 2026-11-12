@@ -1,6 +1,8 @@
 # Registro de actividades de tratamiento · RWAdar
 
-**Fecha:** 12/11/2026 (versión 7: las notificaciones de la web se envían
+**Fecha:** 12/11/2026 (versión 8: la sesión de la web se renueva sola y,
+si la persona lo pide al entrar, dura hasta 30 días; dos cookies necesarias.
+La versión 7, del mismo día: las notificaciones de la web se envían
 desde Supabase y Cloudflare, migración 33, y GitHub deja de enviarlas a todos.
 La versión 6, del mismo día: lo que concluye el
 [anexo legal de las notificaciones](ANEXO-NOTIFICACIONES-2026-11-12.md) sobre
@@ -223,8 +225,16 @@ recibe datos de usuarios (contraste 4).
 Valen para todas las fichas; cada ficha añade las suyas.
 
 - **Conexión cifrada (HTTPS)** en la web, la app y las llamadas a proveedores.
-- **Sesión:** cookie necesaria `__Host-rwadar-acceso`, con HttpOnly, Secure y
-  SameSite; el JavaScript no puede leerla. En Android, desde la 1.4.0, el
+- **Sesión:** dos cookies necesarias, con HttpOnly, Secure, SameSite=Lax y el
+  prefijo `__Host-`; el JavaScript no puede leerlas y ninguna respuesta lleva
+  los tokens. `__Host-rwadar-acceso` lleva el pase de Supabase (una hora);
+  `__Host-rwadar-renovar`, el token de renovación con el que el servidor pide
+  un pase nuevo. Sin marcar «Mantener la sesión iniciada en este dispositivo»
+  (sale sin marcar) se borran al cerrar el navegador; marcándola, el pase dura
+  una hora y la de renovar, 30 días desde la última renovación. Salir revoca la
+  sesión en Supabase y borra las dos; borrar la cuenta, también. Base: LSSI,
+  art. 22.2 (necesarias para el servicio que se pide; la duración larga, solo si
+  la persona la pide marcando la casilla). En Android, desde la 1.4.0, el
   token de renovación se guarda cifrado en el almacenamiento seguro del
   sistema, sin la contraseña.
 - **Sesión confirmada:** las funciones personales exigen una sesión vigente de
@@ -338,7 +348,9 @@ Valen para todas las fichas; cada ficha añade las suyas.
 - **Medidas** (además de las comunes):
   - los enlaces de confirmación y recuperación se canjean una sola vez y se
     quitan de la dirección;
-  - la sesión web dura una hora;
+  - el pase de la sesión web dura una hora y se renueva solo con la cookie de
+    renovar: hasta cerrar el navegador o, con «Mantener la sesión iniciada»,
+    30 días desde la última renovación (medidas comunes, «Sesión»);
   - el borrado exige la contraseña recién comprobada;
   - la analítica se omite en las visitas de esos enlaces.
 - **Pendiente / verificar:**
@@ -409,7 +421,8 @@ Valen para todas las fichas; cada ficha añade las suyas.
 - **Interesados:** titulares de cuenta que abren lecciones, y visitantes sin
   sesión que lo intentan (se les manda a entrar).
 - **Datos:**
-  - la cookie de sesión, que se comprueba con Supabase;
+  - las cookies de sesión, que se comprueban con Supabase (renovando el pase si
+    hace falta);
   - la IP y los datos técnicos de la petición.
 
   **No se guarda qué lecciones lee cada persona.** El progreso (lecciones
@@ -1226,3 +1239,4 @@ Si alguno pasa a enviarse a un servidor, entra en este registro.
 | 12/11/2026 | Versión 5: notificaciones en la web (Web Push, migración 32, sin aplicar): datos nuevos (`suscripciones_web`, `envios_web`), destinatarios nuevos (servicios de push de Apple, Google, Mozilla y Microsoft, y GitHub como remitente), plazos (90 y 180 días, cada día con el reloj de limpieza) y la baja en cada notificación. A5: el permiso ya se recoge en Perfil (web y app) y la casilla del alta sigue apagada. Corregida la fila de Apple (la app nativa sigue sin aplicar; la web en iPhone usa el servicio de push de Apple). Anexo legal pendiente antes de `activar-push` | Claude, por encargo de Víctor |
 | 12/11/2026 | Versión 6: el [anexo legal de las notificaciones](ANEXO-NOTIFICACIONES-2026-11-12.md), «sí, con condiciones». Los servicios de push de los navegadores no son encargados; DPF comprobado en la lista oficial (Google LLC, Microsoft Corporation, GitHub y Netlify, «Active»; Apple y Mozilla, no figuran) y quién responde en el EEE según cada empresa; Mozilla, riesgo residual bajo. El «latido» de Firebase: su envío, con consentimiento junto al botón; guardarlo antes, riesgo residual con arreglo en la próxima versión nativa. La 32 y la clave VAPID, aplicadas el 12/11. GitHub pasa de «recomendado» a condición para enviar a todos por la web. Condiciones C1-C6 y revisión del punto 1.3 en los pendientes. Corrección del mismo día, tras una revisión independiente: C5 pide la OTA ya en uso, la recomendación R2 pasa a ser la condición C7 (baja a la vista en la app), en el punto 1.3 del anexo la lectura más probable es que sí hay transferencia (Mozilla, riesgo aceptado a sabiendas), y las frases de primera capa y la baja de la app ya están en el código | Claude, por encargo de Víctor |
 | 12/11/2026 | Versión 7: las notificaciones de la web se envían desde Supabase (pg_net, migración 33) y el servidor de la web en Cloudflare las cifra, firma y entrega (`/api/interno/webpush`); los dos ya son encargados con contrato. Cloudflare suma A5 y lo que recibe para cada envío; GitHub deja de enviar a todos (solo la prueba de administración) y sale de A5; las copias ya no llevan las suscripciones de la web. Condición C3 del anexo, hecha en el código (se cumple al publicar la web y aplicar la 33) | Claude, por encargo de Víctor («hazlo en Supabase mientras y ya haremos el cambio») |
+| 12/11/2026 | Versión 8: sesión de la web que se mantiene. Además de `__Host-rwadar-acceso` (el pase de una hora), la cookie `__Host-rwadar-renovar` guarda el token de renovación de Supabase; las dos, HttpOnly, Secure, SameSite=Lax y `__Host-`. Sin la casilla «Mantener la sesión iniciada en este dispositivo» (sin marcar por defecto) son de sesión del navegador; con ella, una hora y 30 días. Salir y borrar la cuenta las borran y cierran la sesión en Supabase. Privacidad (apartados 2 y 9) al día | Claude, por encargo de Víctor («que al iniciar sesión se mantenga») |

@@ -31,16 +31,22 @@ async function cuerpoCartera(request) {
      || !versionCartera(d.version) || d.version === 2147483647) throw errorCartera('solicitud_invalida');
   return { version: d.version, posiciones: limpiarCartera(d.posiciones) };
 }
-export function crearCarteraServidor({ api, verificar, leerCookie, respuesta }) {
+// sesion(env, request): la del servidor de acceso. Devuelve { usuario, token,
+// cookies } y renueva el pase si hace falta; cookies (o error.cookies) va en la
+// respuesta, también en la de error.
+export function crearCarteraServidor({ api, sesion, respuesta: respuestaBase }) {
   return async function atenderCartera({ request, env }) {
     const url = new URL(request.url);
+    let cookies = [];
+    const respuesta = (data, status, headers) => respuestaBase(data, status, headers, cookies);
     if (!['GET','POST'].includes(request.method)) return respuesta({ error: 'metodo_no_permitido' }, 405);
     if (url.search || request.headers.get('sec-fetch-site') === 'cross-site') return respuesta({ error: 'origen_no_permitido' }, 403);
     if (request.method === 'POST' && request.headers.get('origin') !== url.origin) return respuesta({ error: 'origen_no_permitido' }, 403);
     try {
       const uid = request.headers.get('x-rwadar-usuario');
       if (!UUID_CARTERA.test(uid || '')) throw errorCartera('solicitud_invalida');
-      const token = leerCookie(request), usuario = await verificar(env, token);
+      const actual = await sesion(env, request); cookies = actual.cookies;
+      const token = actual.token, usuario = actual.usuario;
       if (usuario.id !== uid) throw errorCartera('cuenta_cambiada', 409);
       if (request.method === 'GET') {
         const rows = await api(env, '/rest/v1/mi_cartera?select=version,documento&limit=1', { token, maxBytes: MAX_CARTERA });
@@ -56,6 +62,7 @@ export function crearCarteraServidor({ api, verificar, leerCookie, respuesta }) 
       if (!result || result.version !== body.version + 1) throw errorCartera('cartera_no_disponible', 502);
       return respuesta({ posiciones: limpiarCartera(result.posiciones), version: result.version });
     } catch (e) {
+      if (e.cookies) cookies = e.cookies;
       if (e.status === 409) return respuesta({ error: e.code === 'cuenta_cambiada' ? e.code : 'cartera_conflicto' }, 409);
       if (e.status === 429) return respuesta({ error: 'cartera_limite' }, 429, { 'Retry-After': e.reintentarTras || '60' });
       if (e.message === 'sin_sesion' || e.status === 401 || e.status === 403) return respuesta({ error: 'sesion_necesaria' }, 401);

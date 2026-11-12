@@ -5,6 +5,33 @@ import { crearWebpushServidor } from './webpush-servidor.mjs';
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ORIGEN_AUTH = 'https://exgpmjpaaebyoolpwced.supabase.co';
 const COOKIE = '__Host-rwadar-acceso';
+/* Sesión que se mantiene (12/11/2026). La cookie de arriba lleva el pase de
+   Supabase (access_token), que caduca en una hora. Esta lleva el refresh_token,
+   con el que el servidor pide un pase nuevo sin la contraseña. Las dos son
+   HttpOnly, Secure, SameSite=Lax, Path=/ y __Host- (solo este dominio): el
+   JavaScript de la página no las ve y ninguna respuesta lleva los tokens.
+   Su valor empieza por «p.» (la persona marcó «Mantener la sesión iniciada en
+   este dispositivo») o «s.» (no la marcó), para escribir igual las cookies
+   nuevas al renovar. */
+const COOKIE_RENOVAR = '__Host-rwadar-renovar';
+/* Con «mantener», la cookie de renovar dura 30 días y se vuelve a escribir en
+   cada renovación (como mucho, una por hora de uso): caduca tras 30 días sin
+   usar la cuenta en ese navegador. Es el tiempo de quien entra a mirar sus
+   inversiones una vez al mes, y deja corto el riesgo de un móvil o un ordenador
+   perdido o compartido (salir, o borrar los datos del sitio, la quita antes).
+   La del pase dura lo que el pase (expires_in de Supabase). Sin «mantener»,
+   ninguna lleva Max-Age: el navegador las borra al cerrarse, como antes, pero
+   mientras tanto el pase se renueva y la sesión no se corta a la hora. */
+const MANTENER_S = 30 * 24 * 60 * 60;
+// Se renueva si el pase falta o le quedan menos de 60 s.
+const MARGEN_RENOVAR_MS = 60 * 1000;
+/* Supabase rota el refresh_token en cada uso y deja reutilizar el anterior unos
+   10 s (y siempre el padre del que está vigente). Las peticiones en paralelo de
+   una misma página que caen en este isolate comparten una sola renovación
+   durante ese tiempo; las que caen en otro reciben de Supabase el mismo
+   refresh_token vigente. Ninguna cierra la sesión de las otras. */
+const REUSAR_RENOVACION_MS = 10 * 1000;
+const ATRIBUTOS_COOKIE = '; Path=/; HttpOnly; Secure; SameSite=Lax';
 const MAX_BODY = 16 * 1024;
 // Supabase limits Auth by client IP, but every request from this server reaches
 // it from the same shared Cloudflare address: one client could exhaust the quota
@@ -18,8 +45,10 @@ const MAX_BODY = 16 * 1024;
 // for a larger batch later); requests to that route without RWAdar's VAPID key
 // (webpushSinClave: their own bucket, charged after the key check, so whoever
 // shares Supabase's outgoing address cannot use up RWAdar's; see
-// webpush-servidor.mjs)
-const LIMITES = Object.freeze({ clave: 30, envio: 10, baja: 20, webpush: 2000, webpushSinClave: 300 });
+// webpush-servidor.mjs); session renewals with a refresh_token (renovar: a
+// visitor needs about one per hour of use, a few more with several tabs; only
+// requests that reach Supabase count, not those served from the shared one).
+const LIMITES = Object.freeze({ clave: 30, envio: 10, baja: 20, webpush: 2000, webpushSinClave: 300, renovar: 60 });
 const VENTANA_S = 600;
 const GRUPO_LIMITE = Object.freeze({ '/api/acceso/entrar': 'clave', '/api/acceso/reautenticar': 'clave',
   '/api/acceso/registrar': 'envio', '/api/acceso/recuperar': 'envio', '/api/acceso/reenviar': 'envio',
@@ -67,22 +96,72 @@ function destinoCorreo(origin) {
     ? 'https://revision.rwadar.pages.dev/' : 'https://rwadar.pages.dev/';
 }
 
-function respuesta(data, status = 200, headers = {}) {
-  return new Response(JSON.stringify(data), { status, headers: {
+// cookies: valores de Set-Cookie (cada uno en su propia cabecera).
+function respuesta(data, status = 200, headers = {}, cookies = []) {
+  const cabeceras = new Headers({
     'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'private, no-store',
     'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer',
-    'X-Robots-Tag': 'noindex, nofollow', ...headers } });
+    'X-Robots-Tag': 'noindex, nofollow', ...headers });
+  for (const valor of cookies) cabeceras.append('Set-Cookie', valor);
+  return new Response(JSON.stringify(data), { status, headers: cabeceras });
 }
-function cookie(token = '') {
-  return COOKIE + '=' + token + '; Path=/; HttpOnly; Secure; SameSite=Lax' + (token ? '' : '; Max-Age=0');
+// maxAge: segundos, solo con «mantener»; sin él, cookie de sesión del navegador.
+function cookie(token = '', maxAge = null) {
+  return COOKIE + '=' + token + ATRIBUTOS_COOKIE + (!token ? '; Max-Age=0' : maxAge ? '; Max-Age=' + maxAge : '');
 }
-function leerCookie(request) {
+function cookieRenovar(refresh = '', mantener = false) {
+  return COOKIE_RENOVAR + '=' + (refresh ? (mantener ? 'p.' : 's.') + refresh : '') + ATRIBUTOS_COOKIE +
+    (!refresh ? '; Max-Age=0' : mantener ? '; Max-Age=' + MANTENER_S : '');
+}
+// Al salir, al borrar la cuenta o si Supabase ya no acepta la renovación.
+function cookiesBorradas() { return [cookie(), cookieRenovar()]; }
+function leerCookieNombre(request, nombre) {
   const values = (request.headers.get('cookie') || '').split(';').map(s => s.trim())
-    .filter(s => s.startsWith(COOKIE + '='));
-  return values.length === 1 ? values[0].slice(COOKIE.length + 1) : '';
+    .filter(s => s.startsWith(nombre + '='));
+  return values.length === 1 ? values[0].slice(nombre.length + 1) : '';
 }
+function leerCookie(request) { return leerCookieNombre(request, COOKIE); }
 function tokenValido(token) {
   return typeof token === 'string' && token.length <= 3800 && /^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(token);
+}
+// Supabase da refresh_token cortos y aptos para URL; se exige que quepan en una cookie tal cual.
+function refreshValido(refresh) {
+  return typeof refresh === 'string' && /^[A-Za-z0-9._~+\/=-]{8,1024}$/.test(refresh);
+}
+function leerRenovacion(request) {
+  const partes = /^([ps])\.(.+)$/.exec(leerCookieNombre(request, COOKIE_RENOVAR));
+  return partes && refreshValido(partes[2]) ? { token: partes[2], mantener: partes[1] === 'p' } : null;
+}
+// Hora de caducidad del pase (exp del JWT), solo para decidir cuándo renovar:
+// quien dice si vale es Supabase (verificar). null si no se puede leer.
+function caducidadPase(token) {
+  try {
+    const parte = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+    const binario = atob(parte + '='.repeat((4 - parte.length % 4) % 4));
+    const exp = JSON.parse(new TextDecoder().decode(Uint8Array.from(binario, c => c.charCodeAt(0))))?.exp;
+    return Number.isFinite(exp) ? exp * 1000 : null;
+  } catch { return null; }
+}
+// Duración de la cookie del pase con «mantener»: la del pase, entre 1 min y 1 día.
+function duracionPase(expiresIn) {
+  return Number.isInteger(expiresIn) && expiresIn >= 60 && expiresIn <= 86400 ? expiresIn : 3600;
+}
+/* Las dos cookies de una sesión recién dada por Supabase (al entrar o al
+   renovar). Sin refresh_token utilizable, la de renovar se borra: nunca queda
+   una de otra sesión junto a este pase. */
+function cookiesSesion(sesion, mantener) {
+  const refresh = refreshValido(sesion?.refresh_token) ? sesion.refresh_token : '';
+  return [cookie(sesion.access_token, mantener && refresh ? duracionPase(sesion.expires_in) : null), cookieRenovar(refresh, mantener)];
+}
+// Supabase rechaza la renovación para siempre (token usado, revocado o caducado).
+function renovacionRechazada(error) {
+  return error?.message === 'auth_rechazado' && [400, 401, 403].includes(error.status);
+}
+// «mantener» del formulario de entrar: opcional y solo un booleano JSON.
+function mantenerSesion(data) {
+  if (data.mantener === undefined) return false;
+  if (typeof data.mantener !== 'boolean') throw new Error('solicitud_invalida');
+  return data.mantener;
 }
 async function cuerpoJSON(request) {
   const tipo = (request.headers.get('content-type') || '').split(';', 1)[0].trim().toLowerCase();
@@ -176,6 +255,12 @@ function peticionAcademy(url) {
   const leccion = /^\/([^/]+?)(?:\.html)?\/?$/.exec(resto);
   return { slug: leccion ? leccion[1] : null };
 }
+// Cabeceras (objeto o Headers) más cada Set-Cookie en su propia línea.
+function conCookies(base, cookies = []) {
+  const headers = new Headers(base);
+  for (const valor of cookies) headers.append('Set-Cookie', valor);
+  return headers;
+}
 // Una navegación o una petición que acepta HTML: se la manda a entrar.
 function pideHTML(request) {
   return request.headers.get('sec-fetch-mode') === 'navigate' || request.headers.get('sec-fetch-dest') === 'document' ||
@@ -263,6 +348,90 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
     if (!Array.isArray(profile) || profile.length !== 1 || profile[0].id !== user.id) throw new Error('sin_sesion');
     return { id: user.id, correo: email, correoConfirmadoEl: user.email_confirmed_at };
   }
+  // Pase utilizable sin renovar: con forma de JWT y sin caducar en el próximo minuto.
+  function paseVigente(token) {
+    if (!tokenValido(token)) return false;
+    const caduca = caducidadPase(token);
+    return caduca === null || caduca - ahora() >= MARGEN_RENOVAR_MS;
+  }
+  /* Pide a Supabase un pase nuevo con el refresh_token. Las peticiones que traen
+     el mismo refresh_token a este isolate comparten la misma renovación durante
+     REUSAR_RENOVACION_MS. La búsqueda es síncrona (sin await antes de guardar
+     la promesa): dos peticiones simultáneas no pueden pedir dos renovaciones.
+     Solo vive en la memoria del isolate y nunca se registra. Un fallo no se
+     guarda: la siguiente petición vuelve a preguntar. */
+  const renovaciones = new Map();
+  function renovarSesion(env, request, refresh) {
+    const clave = refresh, t = ahora();
+    // El Map va en orden de caducidad: delante, las vencidas.
+    for (const [k, v] of renovaciones) { if (v.hasta > t && renovaciones.size < 1000) break; renovaciones.delete(k); }
+    const previa = renovaciones.get(clave);
+    if (previa) return previa.promesa;
+    // Cada visitante tiene su cupo de renovaciones (429 pasajero: no borra nada).
+    const quien = visitante(request), espera = quien ? limitador.reservar('renovar:' + quien, LIMITES.renovar) : 0;
+    if (espera) {
+      const error = new Error('intentos_excedidos'); error.status = 429; error.reintentarTras = String(espera);
+      return Promise.reject(error);
+    }
+    const promesa = api(env, '/auth/v1/token?grant_type=refresh_token', { method: 'POST', data: { refresh_token: refresh }, maxBytes: 64 * 1024 })
+      .then(sesion => {
+        if (!tokenValido(sesion?.access_token)) throw new Error('servicio_no_disponible');
+        return sesion;
+      });
+    renovaciones.set(clave, { promesa, hasta: t + REUSAR_RENOVACION_MS });
+    promesa.catch(() => { if (renovaciones.get(clave)?.promesa === promesa) renovaciones.delete(clave); });
+    return promesa;
+  }
+  /* La sesión de una petición que la necesita: estado de la sesión, pasarela de
+     datos, cartera, reautenticar y lecciones de la Academy. Si el pase falta,
+     caduca en menos de un minuto o Auth lo rechaza (401/403), y hay cookie de
+     renovar, lo renueva una vez y devuelve en cookies las dos nuevas para la
+     respuesta. Lanza como verificar; el error lleva en .cookies las que hay que
+     poner también en la respuesta de error: las nuevas, si ya se renovó, o las
+     dos borradas si Supabase rechazó la renovación para siempre (entonces es
+     «sin sesión»). Un fallo pasajero (red, 429, 5xx) no borra nada. */
+  async function sesionPeticion(env, request) {
+    const renovar = leerRenovacion(request);
+    let token = leerCookie(request), cookies = [], renovada = false;
+    async function renueva() {
+      renovada = true;
+      let sesion;
+      try { sesion = await renovarSesion(env, request, renovar.token); }
+      catch (error) {
+        if (!renovacionRechazada(error)) throw error;
+        const fin = new Error('sin_sesion'); fin.cookies = cookiesBorradas(); throw fin;
+      }
+      token = sesion.access_token; cookies = cookiesSesion(sesion, renovar.mantener);
+    }
+    try {
+      if (renovar && !paseVigente(token)) await renueva();
+      try { return { usuario: await verificar(env, token), token, cookies }; }
+      catch (error) {
+        if (!renovar || renovada || error.message !== 'auth_rechazado' || ![401, 403].includes(error.status)) throw error;
+        await renueva();
+        return { usuario: await verificar(env, token), token, cookies };
+      }
+    } catch (error) {
+      if (!error.cookies && cookies.length) error.cookies = cookies;
+      throw error;
+    }
+  }
+  /* Al salir: revoca en Supabase la sesión de estas cookies (con un pase
+     vigente, renovado si hace falta). true si quedó cerrada allí o ya no
+     existía; false si no se pudo confirmar. Las cookies se borran igual. */
+  async function cerrarSesionRemota(env, request) {
+    const renovar = leerRenovacion(request);
+    let token = leerCookie(request);
+    if (!tokenValido(token) && !renovar) return true;
+    if (renovar && !paseVigente(token)) {
+      try { token = (await renovarSesion(env, request, renovar.token)).access_token; }
+      catch (error) { return renovacionRechazada(error); }
+    }
+    // Una renovación compartida de esta sesión ya no sirve a nadie.
+    if (renovar) renovaciones.delete(renovar.token);
+    try { await api(env, '/auth/v1/logout?scope=local', { token, method: 'POST' }); return true; }
+    catch { return false; }
+  }
   // Throws 429 while this visitor is over the limit of the route's group.
   function reservarIntento(path, request) {
     const grupo = GRUPO_LIMITE[path], quien = visitante(request);
@@ -289,36 +458,41 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
       return new Response(request.method === 'HEAD' ? null : 'No encontrado', { status: 404, headers: {
         'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' } });
     }
-    try { await verificar(env, leerCookie(request)); }
+    // Con la sesión renovada, la lección (o el error) lleva las cookies nuevas.
+    let sesion;
+    try { sesion = await sesionPeticion(env, request); }
     catch (error) {
+      const cookies = error.cookies || [];
       const sinSesion = ['sin_sesion', 'correo_invalido'].includes(error.message) ||
         (error.message === 'auth_rechazado' && [401, 403].includes(error.status));
       if (!sinSesion) {
         const espera = error.status === 429 ? error.reintentarTras || '60' : '30';
-        if (!pideHTML(request)) return respuesta({ error: 'servicio_no_disponible' }, 503, { 'Retry-After': espera, Vary: 'Cookie' });
-        return new Response(request.method === 'HEAD' ? null : PAGINA_ACADEMY_NO_DISPONIBLE, { status: 503, headers: {
+        if (!pideHTML(request)) return respuesta({ error: 'servicio_no_disponible' }, 503, { 'Retry-After': espera, Vary: 'Cookie' }, cookies);
+        return new Response(request.method === 'HEAD' ? null : PAGINA_ACADEMY_NO_DISPONIBLE, { status: 503, headers: conCookies({
           'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'Retry-After': espera, Vary: 'Cookie',
-          'X-Robots-Tag': 'noindex, nofollow', 'Referrer-Policy': 'no-referrer' } });
+          'X-Robots-Tag': 'noindex, nofollow', 'Referrer-Policy': 'no-referrer' }, cookies) });
       }
-      if (!pideHTML(request)) return respuesta({ error: 'sesion_necesaria' }, 401, { Vary: 'Cookie' });
+      if (!pideHTML(request)) return respuesta({ error: 'sesion_necesaria' }, 401, { Vary: 'Cookie' }, cookies);
       // El slug sale de la lista cerrada; retornoSeguro lo deja en una ruta propia.
       const volver = retornoSeguro('/academy/' + pedida.slug, url.origin);
-      return new Response(null, { status: 303, headers: { Location: '/acceso?volver=' + volver,
-        'Cache-Control': 'no-store', Vary: 'Cookie', 'X-Robots-Tag': 'noindex, nofollow', 'Referrer-Policy': 'no-referrer' } });
+      return new Response(null, { status: 303, headers: conCookies({ Location: '/acceso?volver=' + volver,
+        'Cache-Control': 'no-store', Vary: 'Cookie', 'X-Robots-Tag': 'noindex, nofollow', 'Referrer-Policy': 'no-referrer' }, cookies) });
     }
     const servida = await context.next();
-    const headers = new Headers(servida.headers);
+    const headers = conCookies(servida.headers, sesion.cookies);
     headers.set('Cache-Control', 'private, no-store');
     headers.set('X-Robots-Tag', 'noindex');
     const vary = headers.get('Vary');
     headers.set('Vary', !vary ? 'Cookie' : /(?:^|,)\s*cookie\s*(?:,|$)/i.test(vary) ? vary : vary + ', Cookie');
     return new Response(servida.body, { status: servida.status, statusText: servida.statusText, headers });
   }
-  const atenderCartera = crearCarteraServidor({ api, verificar, leerCookie, respuesta });
+  const atenderCartera = crearCarteraServidor({ api, sesion: sesionPeticion, respuesta });
   const atenderTokenizacion = crearTokenizacionServidor({ fetchImpl, ahora, cache: cacheTokenizacion, respuesta, leerTexto });
   const webpush = crearWebpushServidor({ fetchImpl, ahora, plazoMs: plazoWebpushMs, api, cuerpoJSON, respuesta, reservarIntento });
   async function atender(context) {
     const { request, env } = context; const url = new URL(request.url);
+    // Set-Cookie de la sesión renovada en esta petición, también si después falla.
+    let cookies = [];
     const path = url.pathname.replace(/\/$/, '') || '/';
     const endpoint = path.startsWith('/api/acceso/');
     const recursoCatalogo = path.match(/^\/api\/acceso\/catalogo\/(catalogo_plataformas_publicas_v2|catalogo_ofertas_publicas_v2|catalogo_publicacion|plataformas)$/);
@@ -368,11 +542,14 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
         const token = authorization.slice(7); await verificar(env, token);
         // No HTTP redirect: some WebViews forward Authorization on same-origin
         // redirects. The fixed script and native onLoadEnd both continue to /#explain.
-        return new Response('<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Abriendo tutorial de Academy</title><body><p>Abriendo el tutorial de Academy.</p><a href="/#explain">Continuar al tutorial</a><script src="/api/acceso/tutorial-continuar.js" defer></script></body></html>', { status: 200, headers: {
-          'Content-Type': 'text/html; charset=utf-8', 'Set-Cookie': cookie(token),
+        // El pase de la app sin su refresh_token (lo guarda la app): cookie de
+        // sesión del navegador y la de renovar borrada, para que no quede una
+        // de otra sesión junto a este pase.
+        return new Response('<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Abriendo tutorial de Academy</title><body><p>Abriendo el tutorial de Academy.</p><a href="/#explain">Continuar al tutorial</a><script src="/api/acceso/tutorial-continuar.js" defer></script></body></html>', { status: 200, headers: conCookies({
+          'Content-Type': 'text/html; charset=utf-8',
           'Content-Security-Policy': "default-src 'none'; script-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
           'Cache-Control': 'private, no-store', 'X-Robots-Tag': 'noindex, nofollow',
-          'Referrer-Policy': 'no-referrer' } });
+          'Referrer-Policy': 'no-referrer' }, [cookie(token), cookieRenovar()]) });
       }
       if (recursoCatalogo) {
         if (request.method !== 'GET') return respuesta({ error: 'metodo_no_permitido' }, 405);
@@ -387,24 +564,28 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
       }
       if (endpoint && path !== '/api/acceso/sesion' && request.method !== 'POST') return respuesta({ error: 'metodo_no_permitido' }, 405);
       if (path === '/api/acceso/salir') {
-        const token = leerCookie(request); let remoto = true;
-        if (tokenValido(token)) { try { await api(env, '/auth/v1/logout?scope=local', { token, method: 'POST' }); } catch { remoto = false; } }
-        return respuesta({ cerrado: true, cierreRemoto: remoto }, 200, { 'Set-Cookie': cookie() });
+        // Revoca la sesión en Supabase (también su refresh_token) y borra las dos cookies.
+        const remoto = await cerrarSesionRemota(env, request);
+        return respuesta({ cerrado: true, cierreRemoto: remoto }, 200, {}, cookiesBorradas());
       }
       if (endpoint && path !== '/api/acceso/sesion') {
         const data = await cuerpoJSON(request);
         if (path === '/api/acceso/reautenticar') {
-          const current = await verificar(env, leerCookie(request));
+          const actual = await sesionPeticion(env, request); cookies = actual.cookies;
+          const current = actual.usuario;
           const password = clave(data.clave), extra = seguridad(data);
           reservarIntento(path, request);
           const session = await api(env, '/auth/v1/token?grant_type=password', { method: 'POST',
             data: { email: current.correo, password, ...extra } });
           const user = await verificar(env, session?.access_token);
           if (user.id !== current.id) throw new Error('sin_sesion');
-          return respuesta({ autenticada: true, usuario: user }, 200, { 'Set-Cookie': cookie(session.access_token) });
+          // La sesión nueva conserva lo que se eligió al entrar («mantener» o no).
+          return respuesta({ autenticada: true, usuario: user }, 200, {},
+            cookiesSesion(session, leerRenovacion(request)?.mantener === true));
         }
         if (path === '/api/acceso/datos') {
-          const token = leerCookie(request); await verificar(env, token);
+          const actual = await sesionPeticion(env, request); cookies = actual.cookies;
+          const token = actual.token;
           // Closed routes only; each own-account write still goes through existing RLS/RPC.
           const route = typeof data.ruta === 'string' ? data.ruta : '';
           const match = route.match(/^\/(mi_perfil|perfiles|vigilancia|avisos_correo|plataformas|opiniones_publicas|nota_media|mis_opiniones|cola_moderacion|publicaciones|rpc\/(?:guardar_opinion|borrar_mi_opinion|denunciar_opinion|moderar|configurar_avisos_correo|marcar_manual_descargado|borrar_mi_cuenta|mis_publicaciones|publicar|borrar_mi_publicacion|denunciar_publicacion|estado_mis_avisos|configurar_avisos_novedades|mis_avisos_recientes|clave_publica_webpush|registrar_aviso_webpush|quitar_aviso_webpush|mi_aviso_webpush_registrado))(\?[^#\r\n]*)?$/);
@@ -429,18 +610,21 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
           } catch (error) {
             // Identity was already verified. A resource's refusal is not logout.
             // Keep its status while withholding all provider details and data.
-            if ([400, 403, 404, 409].includes(error.status)) return respuesta({ error: 'operacion_rechazada' }, error.status);
+            if ([400, 403, 404, 409].includes(error.status)) return respuesta({ error: 'operacion_rechazada' }, error.status, {}, cookies);
             throw error;
           }
-          return respuesta(result == null ? [] : result);
+          // Cuenta borrada: la base ya quitó sus sesiones con ella (auth.users en
+          // cascada); aquí se borran las dos cookies.
+          return respuesta(result == null ? [] : result, 200, {}, resource === 'rpc/borrar_mi_cuenta' ? cookiesBorradas() : cookies);
         }
         if (path === '/api/acceso/entrar') {
-          const email = correo(data.correo), password = clave(data.clave), extra = seguridad(data);
+          // mantener: la casilla «Mantener la sesión iniciada en este dispositivo».
+          const email = correo(data.correo), password = clave(data.clave), extra = seguridad(data), mantener = mantenerSesion(data);
           reservarIntento(path, request);
           const session = await api(env, '/auth/v1/token?grant_type=password', { method: 'POST',
             data: { email, password, ...extra } });
           const user = await verificar(env, session?.access_token);
-          return respuesta({ autenticada: true, usuario: user }, 200, { 'Set-Cookie': cookie(session.access_token) });
+          return respuesta({ autenticada: true, usuario: user }, 200, {}, cookiesSesion(session, mantener));
         }
         if (path === '/api/acceso/registrar') {
           if (data.aceptaCondiciones !== true) throw new Error('condiciones');
@@ -489,23 +673,31 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
         if (path === '/api/acceso/inspeccionar') return respuesta({ usuario: user });
         if (path === '/api/acceso/nueva-clave') {
           await api(env, '/auth/v1/user', { token: data.access_token, method: 'PUT', data: { password: clave(data.clave, true) } });
-          return respuesta({ mensaje: 'Contraseña actualizada. Entra con la nueva contraseña.' }, 200, { 'Set-Cookie': cookie() });
+          return respuesta({ mensaje: 'Contraseña actualizada. Entra con la nueva contraseña.' }, 200, {}, cookiesBorradas());
         }
-        if (path === '/api/acceso/adoptar' && data.confirmarIdentidad === true) return respuesta({ autenticada: true, usuario: user }, 200, { 'Set-Cookie': cookie(data.access_token) });
+        // El enlace del correo solo trae el pase: cookie de sesión del navegador,
+        // sin renovar (y sin dejar la de otra sesión).
+        if (path === '/api/acceso/adoptar' && data.confirmarIdentidad === true) {
+          return respuesta({ autenticada: true, usuario: user }, 200, {}, [cookie(data.access_token), cookieRenovar()]);
+        }
         throw new Error('solicitud_invalida');
       }
-      const user = await verificar(env, leerCookie(request));
-      return respuesta({ autenticada: true, usuario: user });
+      const actual = await sesionPeticion(env, request);
+      return respuesta({ autenticada: true, usuario: actual.usuario }, 200, {}, actual.cookies);
     } catch (error) {
-      if (error.message === 'configuracion_pendiente') return respuesta({ error: 'configuracion_pendiente' }, 503);
-      if (error.captcha === true) return respuesta({ error: 'captcha_fallido' }, 400);
+      /* Las cookies de una renovación hecha en esta petición viajan también en
+         el error. Si no, un fallo no toca ninguna cookie (una petición vieja que
+         falla no debe borrar la de una cuenta más reciente), salvo que Supabase
+         haya rechazado la renovación para siempre: entonces se borran las dos. */
+      const extra = error.cookies || cookies;
+      if (error.message === 'configuracion_pendiente') return respuesta({ error: 'configuracion_pendiente' }, 503, {}, extra);
+      if (error.captcha === true) return respuesta({ error: 'captcha_fallido' }, 400, {}, extra);
       if (error.status === 429) return respuesta({ error: 'intentos_excedidos' }, 429,
-        { 'Retry-After': error.reintentarTras || '60' });
+        { 'Retry-After': error.reintentarTras || '60' }, extra);
       if (error.message === 'servicio_no_disponible' || error.status >= 500)
-        return respuesta({ error: 'servicio_no_disponible' }, 503, { 'Retry-After': '30' });
+        return respuesta({ error: 'servicio_no_disponible' }, 503, { 'Retry-After': '30' }, extra);
       const code = ['correo_invalido', 'clave_corta', 'clave_vacia', 'condiciones', 'nombre_invalido', 'solicitud_invalida', 'solicitud_excesiva'].includes(error.message) ? error.message : 'sesion_necesaria';
-      // An old failed request must not erase a newer account's cookie.
-      return respuesta({ error: code }, code === 'sesion_necesaria' ? 401 : 400);
+      return respuesta({ error: code }, code === 'sesion_necesaria' ? 401 : 400, {}, extra);
     }
   }
   return { atender, verificar,

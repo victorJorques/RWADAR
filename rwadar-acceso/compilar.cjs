@@ -218,6 +218,12 @@ function construirWorker(raiz = __dirname, { fichas = PAGINAS_FICHAS, academy } 
     '    next: () => servirArchivoRWAdar(request, env),\n' +
     '    noEncontrada: () => paginaNoEncontradaRWAdar(request, env) });\n' +
     '  const headers = new Headers(respuesta.headers);\n' +
+    /* Sesión que se mantiene (12/11/2026): entrar y renovar ponen dos cookies.
+       Cada Set-Cookie va en su propia cabecera, nunca unidas con comas. */
+    '  if (typeof respuesta.headers.getSetCookie === "function") {\n' +
+    '    headers.delete("Set-Cookie");\n' +
+    '    for (const valor of respuesta.headers.getSetCookie()) headers.append("Set-Cookie", valor);\n' +
+    '  }\n' +
     '  for (const [nombre, valor] of Object.entries(cabecerasRWAdar)) {\n' +
     '    if (nombre === "Content-Security-Policy" && headers.has(nombre)) continue;\n' +
     '    headers.set(nombre, valor);\n' +
