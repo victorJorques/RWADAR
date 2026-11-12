@@ -6,6 +6,38 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (16) · Claude · Publicado: sesión que se mantiene, sin el nombre y prueba de notificaciones por Supabase aceptada por Apple
+
+- **PR #118 y #119** (sello): sesión con `__Host-rwadar-renovar`, sin el nombre
+  en la información básica y notificaciones sin atascos.
+  - Web n.º 76 (preview) y n.º 77 (producción). OTA n.º 25.
+- **PR #120 y #121** (sello): sin el nombre del titular en lo que ven los
+  usuarios, y acción `hacer-admin` por huella SHA-256 del correo (ni el correo
+  ni la huella van a Git).
+  - Supabase: `ensayo-34` n.º 18 y `aplicar-34` n.º 19, «RWAdar 34 OK».
+  - Web n.º 78 (preview) y n.º 79 (producción). Comprobaciones como visitante:
+    sesión 6/6, notificaciones 6/6 y general 38/38. /acceso ya no lleva el
+    usuario de GitHub.
+- **Cuenta del móvil de Víctor** marcada como administración con `hacer-admin`
+  (n.º 16), solo con la huella.
+- **Prueba de punta a punta** (`prueba-webpush` n.º 17): «1 notificación; 1
+  aceptada por el servicio de push», código [201] de Apple.
+  - Recorrido: Supabase (pg_net) → servidor de la web (Cloudflare) → Apple →
+    iPhone de Víctor (web en la pantalla de inicio).
+  - Cumple la condición C4 del anexo legal.
+  - Antes, el iPhone ya había enseñado la notificación local «Notificaciones
+    activadas en este móvil».
+- **Envío para todos: sigue apagado** (`push_habilitado=false`). Queda
+  `activar-push` cuando las OTA n.º 24 y 25 lleven un día en uso (C5 y C7).
+  C6 (Android físico) sigue sin poder hacerse.
+- **El nombre del titular queda solo** en el aviso legal y la privacidad (la
+  ley lo exige). También en:
+  - las plantillas de Auth que hay hoy en el panel de Supabase: las del
+    repositorio ya van sin él; hay que pegarlas o lanzar `plantillas` cuando
+    haya SUPABASE_ACCESS_TOKEN;
+  - el usuario de GitHub en el destino de `/android` y en la comprobación de
+    versión de la app, hasta que haya organización en GitHub.
+
 ## 12 de noviembre de 2026 (15) · Claude · Sin el nombre del titular en lo que ven los usuarios
 
 Víctor: «Siii todo lo que puedas quitar mi nombre hazlo». Su nombre completo
