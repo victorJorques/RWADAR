@@ -4940,6 +4940,8 @@ const Cuenta = (function(){
      ? '<section class="perfil-bandeja" aria-labelledby="pfBandejaTit"><h3 id="pfBandejaTit">Avisos recibidos</h3>'+
        '<p class="perfil-nota perfil-ayuda">La bienvenida de tu cuenta y los anuncios de RWAdar.</p><div id="pfBandeja"></div></section>'
      : '')+
+   /* «Novedades de RWAdar» (12/11/2026): lo nuevo, cuando se quiera (la ventana de Inicio sale una vez). */
+   '<a class="perfil-manual perfil-novedades" href="/novedades-rwadar/" data-novedades-producto-enlace="cuenta">Novedades de RWAdar</a>'+
    '<details class="perfil-opciones"><summary>Cuenta y plataformas que sigues</summary>'+
    '<div class="perfil-cifras">'+
     '<div><span class="n">'+dias+'</span><span class="l">Días<br>de miembro</span></div>'+
@@ -6048,7 +6050,7 @@ const Cuenta = (function(){
  return {abrir:abrir,abrirGestion:abrirGestion,pintarVigilar:pintarVigilar,
          actualizarMovil:pintaMovil,hay:()=>SERVICIOS_USUARIO_DISPONIBLES&&identidadConfirmada&&!!ses,
          uid:()=>SERVICIOS_USUARIO_DISPONIBLES&&identidadConfirmada&&ses&&ses.uid,
-         avisosSinLeer:avisosSinLeer,abrirAvisos:abrirAvisos,
+         avisosSinLeer:avisosSinLeer,abrirAvisos:abrirAvisos,irAPerfilAvisos:irAPerfilAvisos,
          token:()=>identidadConfirmada&&ses?testigo():Promise.resolve(null)};
 })();
 
@@ -6772,6 +6774,22 @@ const Movil = (function(){
   tutorial(origen){if(!media.matches)return false;abrirAcademyDesde(origen);return true;},
   volverAcademy(){if(!media.matches)return false;mostrarAcademy(false);return true;}
  };
+})();
+
+/* Perfil › Avisos desde otra página (12/11/2026): /#perfil-avisos, el enlace
+   de /novedades-rwadar/ para activar las notificaciones. Lleva a Perfil ›
+   Avisos (en el móvil, la pestaña Perfil; en escritorio, la cuenta) y quita
+   el ancla, para que recargar no vuelva a llevar allí. Va aquí, con Movil ya
+   creado: irAPerfilAvisos lo usa. */
+(function(){
+ if(typeof location==='undefined'||typeof window==='undefined'||!window.addEventListener)return;
+ const ir=()=>{
+  if(location.hash!=='#perfil-avisos')return;
+  if(typeof history!=='undefined'&&history.replaceState)history.replaceState(history.state,'',location.pathname+location.search);
+  if(typeof Cuenta!=='undefined'&&Cuenta.irAPerfilAvisos)Cuenta.irAPerfilAvisos();
+ };
+ ir();
+ window.addEventListener('hashchange',ir);
 })();
 
 /* Una sola delegación sustituye todos los atributos onclick/onkeydown.

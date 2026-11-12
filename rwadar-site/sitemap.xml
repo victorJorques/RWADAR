@@ -31,6 +31,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- «Novedades de RWAdar» (12/11/2026): lo nuevo de la web y la app, en detalle -->
+  <url>
+    <loc>https://rwadar.pages.dev/novedades-rwadar/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
   <!-- academy:ini · generado por rwadar-academy.js -->
   <url>
     <loc>https://rwadar.pages.dev/academy/</loc>

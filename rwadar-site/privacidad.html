@@ -217,6 +217,14 @@
           avisos. Es lo estrictamente necesario para esas funciones y no sale del navegador.</td>
         <td><span class="celda-etiqueta">Quién lo recibe</span> Tu navegador (almacenamiento local e IndexedDB)</td>
       </tr>
+      <tr id="novedades-vistas">
+        <td>Novedades <br>ya vistas</td>
+        <td><span class="celda-etiqueta">Por qué ocurre</span> Al cerrar la ventana de «Novedades de RWAdar» o abrir su
+          página, el navegador guarda qué versión de las novedades has visto (solo su fecha, por ejemplo
+          2026-11-12) para no volver a enseñártela. Es estrictamente necesario para lo que pides, ver cada novedad una sola
+          vez (LSSI, art. 22.2), no es un dato personal y no sale del navegador. La app de Android guarda lo mismo en el móvil.</td>
+        <td><span class="celda-etiqueta">Quién lo recibe</span> Tu navegador (almacenamiento local) o tu móvil</td>
+      </tr>
       <tr>
         <td>Instalaciones anteriores <br>de la aplicación web</td>
         <td><span class="celda-etiqueta">Por qué ocurre</span> Cuando la web se actualiza en tu navegador, se borran las copias antiguas de RWAdar.
@@ -232,8 +240,9 @@
     para recordar el sonido, las empresas y ofertas que guardas en favoritos desde el móvil
     (solo su nombre o identificador público) y, en RWAdar Academy, qué lecciones has marcado
     como leídas y cuántas preguntas acertaste en sus tests y, si creas la cuenta desde una
-    lección, a qué lección volver (24 horas, apartado 9) y, con tu cuenta, qué avisos has leído
-    y el número de avisos sin ver para el icono; nada de eso sale de tu navegador
+    lección, a qué lección volver (24 horas, apartado 9), con tu cuenta, qué avisos has leído
+    y el número de avisos sin ver para el icono y, con o sin cuenta, qué versión de las novedades
+    ya has visto; nada de eso sale de tu navegador
     ni se envía a RWAdar. Puedes borrar los favoritos desde Perfil. No guarda una copia PWA del catálogo. No incluye publicidad,
     píxeles sociales ni analítica de seguimiento entre sitios. No se utiliza Zaraz.</p>
   <p><b>Estadísticas de la web/PWA:</b> esta versión incluye
@@ -666,7 +675,10 @@
       elimines los datos del sitio. En la web, al crear la cuenta desde una lección, el
       navegador guarda durante 24 horas a qué lección volver; se borra al usarlo o al caducar.
       Lo que has leído de tus avisos y el número del icono también duran hasta que borres los
-      datos del sitio; el número vuelve a 0 al ver los avisos o al cerrar sesión.
+      datos del sitio; el número vuelve a 0 al ver los avisos o al cerrar sesión. La marca de
+      «Novedades de RWAdar» ya vistas (solo la fecha de la versión, sin datos personales) es
+      estrictamente necesaria para no repetirte la ventana (LSSI, art. 22.2) y dura hasta que
+      borres los datos del sitio o de la app.
       Esta versión elimina la antigua caché PWA al actualizarse.
       Los favoritos nuevos y el progreso de la Academy en la app nativa se
       conservan en el dispositivo hasta que los retires o borres sus datos locales.

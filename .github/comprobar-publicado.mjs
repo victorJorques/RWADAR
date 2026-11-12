@@ -330,6 +330,10 @@ for (const nombre of PAGINAS_SECCIONES) {
 // «Mercado y noticias» (11/11/2026): la serie de un año del gráfico es la del build.
 const serieMercado = await pedir('/datos/tokenizacion-serie.json');
 ok('/datos/tokenizacion-serie.json es el del build', serieMercado.estado === 200 && serieMercado.texto === leerPublicado('datos/tokenizacion-serie.json'));
+// «Novedades de RWAdar» (12/11/2026): lo que leen la ventana de Inicio, /novedades-rwadar/ y la app.
+const novedadesProducto = await pedir('/datos/novedades-producto.json');
+ok('/datos/novedades-producto.json es el del build', novedadesProducto.estado === 200 &&
+  novedadesProducto.texto === leerPublicado('datos/novedades-producto.json'));
 const noticiasV2 = await pedir('/datos/noticias-v2.json');
 const noticiasV1 = await pedir('/datos/noticias.json');
 let datosV2 = null;
