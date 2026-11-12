@@ -22,10 +22,12 @@ ha podido comprobar.
 ## Veredicto
 
 **Sí, con condiciones.** Las notificaciones de la web y el push de Android se
-pueden encender cuando se cumplan las seis condiciones del apartado 4: la
+pueden encender cuando se cumplan las siete condiciones del apartado 4: la
 privacidad de este anexo publicada, una frase corta junto a cada botón (web y
-app), GitHub con contrato de encargo o el envío fuera de GitHub, y las pruebas
-reales en el iPhone del titular y en un Android físico. Si el interruptor sigue
+app; la de la app, en una OTA ya en uso), GitHub con contrato de encargo o el
+envío fuera de GitHub, la baja a la vista al abrir en la app una notificación
+que no lleva a Inicio, y las pruebas reales en el iPhone del titular y en un
+Android físico. Si el interruptor sigue
 siendo uno solo (`activar-push` enciende a la vez la web y Android), hacen
 falta todas; si se separa, cada canal solo necesita las suyas.
 
@@ -35,7 +37,9 @@ En una línea por tema:
   el servicio de entrega que eligió el navegador de cada persona, como su
   proveedor de correo. Google y Microsoft están en el DPF; Apple no, pero en
   el EEE responde Apple Distribution International (Irlanda), con cláusulas
-  tipo; Mozilla no, y queda como riesgo residual bajo, a la vista y explicado.
+  tipo; Mozilla no, y queda como riesgo residual bajo aceptado a sabiendas
+  (si el envío cuenta como transferencia, que es lo más probable, no tiene
+  garantía del art. 46), a la vista y explicado.
 - **El «latido» de Firebase:** enviarlo a Google al pulsar el botón es válido
   con información clara junto al botón (consentimiento, LSSI 22.2). Guardarlo
   en el móvil sin pedir nada, como hace la 1.4.2 desde el 06/11, no tiene
@@ -135,7 +139,13 @@ Hay dos lecturas razonables:
   RWAdar comunica algo nuevo (que hay un aviso para ese dispositivo, y
   cuándo), y eso es dato personal para el servicio.
 
-**Se elige la lectura A, comprobando además la B para cada servicio:**
+**La lectura B es la más probable** (corrección del 12/11/2026, tras la
+revisión independiente). El ejemplo 1 del CEPD trata de datos que la propia
+persona entrega al destinatario; aquí es el remitente de RWAdar (en la máquina
+de GitHub) quien hace el envío a cada servicio con el aviso y su hora, unidos a
+la dirección de entrega: eso es el segundo criterio de las Directrices (el
+exportador transmite). La lectura A no es descabellada, pero su apoyo es débil.
+**Por eso se comprueba la B para cada servicio:**
 
 | Servicio | DPF (lista oficial, 12/11/2026) | En el EEE responde, según su política | Sus propias salidas del EEE | Con la lectura B |
 |---|---|---|---|---|
@@ -144,9 +154,11 @@ Hay dos lecturas razonables:
 | **Apple** | **No figura** (búsquedas «Apple», «Apple Inc» y «Apple Distribution», cualquier estado: 0 resultados) | Apple Distribution International Limited, Irlanda: «Personal data relating to individuals in the European Economic Area […] is controlled by Apple Distribution International Limited in Ireland» | «Apple’s international transfer of personal data collected in the European Economic Area […] is governed by Standard Contractual Clauses» | **Cubierto si quien recibe es la empresa de Irlanda:** entonces RWAdar comunica dentro del EEE y la salida a EE. UU. es de Apple, con sus cláusulas tipo. **Verificar** que el push web también lo controla ADI (la política no lo nombra) |
 | **Mozilla** | **No figura** (búsquedas «Mozilla» y «Mozilla Corporation», cualquier estado: 0 resultados) | No nombra una empresa en la UE. «Mozilla (and our servers) are based in the United States». Su delegado de protección de datos para el EEE: Bird & Bird DPO Services SRL (Bruselas) | Cláusulas tipo «where applicable» para lo que comparte con sus socios | **Sin una garantía que pueda aportar RWAdar:** no hay contrato con Mozilla, así que no puede haber cláusulas tipo entre los dos |
 
-**Mozilla: se acepta como riesgo residual bajo, a la vista.** Por qué:
+**Mozilla: se acepta a sabiendas como riesgo residual bajo, a la vista.** Con
+la lectura B, la más probable, para Mozilla no hay una garantía del art. 46
+que pueda aportar RWAdar. Se acepta por esto:
 
-1. Con la lectura A, que es la elegida, no hay transferencia de RWAdar.
+1. Con la lectura A, que es defendible, no habría transferencia de RWAdar.
 2. Lo que RWAdar añade es mínimo: hora, tamaño y un mensaje cifrado que
    Mozilla no puede leer. El cifrado de extremo a extremo es la medida que el
    CEPD considera eficaz cuando quien recibe no tiene las claves
@@ -161,6 +173,12 @@ Hay dos lecturas razonables:
    Firefox. Si una autoridad o el CEPD dijeran que este envío es una
    transferencia, las salidas son esa (un aviso propio para Firefox) o dejar
    de enviar a `updates.push.services.mozilla.com`.
+
+**Salida sin coste, si Víctor prefiere quitarse este riesgo** (decisión suya,
+no hecha): en la web, si la suscripción sale con el servidor de Mozilla,
+anularla, no registrarla y decir «En Firefox, mira los avisos en la campana»;
+el remitente se saltaría además esas direcciones. La base no cambia y la
+privacidad pasaría de explicar el riesgo a decir que en Firefox no se ofrecen.
 
 **Cuándo se revisa este punto:** si Apple o Mozilla entran en el DPF o
 publican una empresa en la UE para el push; si cae el DPF; si el CEPD o la
@@ -268,9 +286,23 @@ notificaciones: Google lo usa para sus estadísticas. Necesita consentimiento.
 privacidad (segunda capa), y que la persona pulse:** es un acto afirmativo,
 específico (ese botón solo activa las notificaciones de ese móvil, y la frase
 dice lo que eso conlleva) e informado [INTERPRETABLE, pero sólido]. Es libre porque hay alternativa sin coste: sin pulsar, ve los mismos
-avisos en Inicio (RGPD, art. 7.4). Hoy la frase junto al botón de la app dice
-que el identificador «lo reciben Expo y Google», pero no habla del latido:
-**falta la frase de 2.4** (condición C5).
+avisos en Inicio (RGPD, art. 7.4). La frase junto al botón de la OTA n.º 23
+dice que el identificador «lo reciben Expo y Google», pero no habla del
+latido: hace falta la frase de 2.4 (condición C5), ya en el código desde el
+12/11/2026 a la espera de la OTA.
+
+**Resto de riesgo, aun con la OTA publicada.** La app aplica una OTA en el
+siguiente arranque en frío, no en el que la descarga (`app.json`:
+`checkAutomatically` «ON_LOAD» y `fallbackToCacheTimeout` 0;
+`lib/actualizaciones-app.js`). Quien abra la app por primera vez después de
+mucho tiempo, ya con el envío encendido, arranca una vez con el código de la
+OTA n.º 23, y su botón se habilita igual, porque depende de `push_activo`, que
+da el servidor. Esa persona ve una vez el texto antiguo, que ya dice que Google
+recibe el identificador, y la privacidad (§5) lo explica entero. Por eso C5
+pide la OTA **ya en uso** y no solo publicada. El arreglo completo sería que el
+servidor diera `push_activo` solo a las versiones que declaren el texto nuevo:
+pide un parámetro nuevo en la RPC y una migración, no compensa hoy y queda
+anotado.
 
 **b) Guardar las fechas en el móvil sin pedir nada (desde el 06/11/2026).**
 Literalmente es «almacenamiento» y no encaja con claridad en la excepción de
@@ -291,12 +323,16 @@ privacidad.
 
 ### 2.4 Frases de primera capa (texto exacto)
 
-Las coloca el otro agente, que lleva el código. Van junto al botón, antes de
-pulsarlo, y deben estar publicadas antes de encender el canal.
+Van junto al botón, antes de pulsarlo, y deben estar publicadas (la de la app,
+ya en uso) antes de encender el canal. Están en el código desde el 12/11/2026,
+palabra por palabra; `probar-web.mjs` comprueba que coinciden con este
+apartado, en castellano y en inglés.
 
-**App de Android** (se añade al final del texto que hay junto a
-«Notificaciones en este móvil», hoy `TEXTO_MOVIL` en
-`rwadar-movil/componentes/AvisosNovedades.js`):
+**App de Android** (párrafo propio bajo «Notificaciones en este móvil»,
+`TEXTO_MOVIL_QUIEN` en `rwadar-movil/componentes/AvisosNovedades.js`, después
+del texto del identificador cuando sale; también con ellas activadas. Solo en
+Android: en un iPhone no hay Firebase, y si se pusiera al final de
+`TEXTO_MOVIL` saldría también allí):
 
 > **ES:** Con ellas activadas, el componente de notificaciones de Google
 > (Firebase) envía también a Google las fechas en que abres la app (hasta 30)
@@ -309,9 +345,12 @@ pulsarlo, y deben estar publicadas antes de encender el canal.
 > turn them on, nothing reaches Google and you will still see your notices on
 > Home.
 
-**Web** (se añade al final de los textos `disponible` y `disponible-pausa` de
-`TEXTOS_PUSH` en `rwadar-site/assets/rwadar-20260820.js`, que ya dicen que
-viajan cifradas por el servicio de Apple, Google, Mozilla o Microsoft):
+**Web** (párrafo propio bajo «Activar» o «Desactivar notificaciones en este
+móvil», `TEXTO_PUSH_QUIEN` en `rwadar-site/assets/rwadar-20260820.js`; sigue
+al texto de estado, que ya dice que viajan cifradas por el servicio de Apple,
+Google, Mozilla o Microsoft. Se ve también con ellas activadas, para que lo lea
+quien las activó con la web n.º 71, y acaba en «Más en Privacidad.», con
+enlace a `/privacidad#garantias-push`):
 
 > **ES:** El servicio de tu navegador puede estar fuera de la UE: ve la hora
 > de cada aviso, pero no puede leer su texto. Si no las activas, seguirás
@@ -341,16 +380,18 @@ para revocar el consentimiento, con información sobre ellos.
     Avisos.
   - Sin sesión en ese navegador, sale la misma frase.
   - Además, el sistema deja quitarlas desde los ajustes del móvil.
-- **Android:** cumple.
+- **Android:** cumple, con C7 publicada.
   - Cada anuncio llega por el canal «Novedades de RWAdar» (`novedades`); la
     bienvenida, por «Avisos de tu cuenta» (`cuenta`).
   - Android deja desactivar el canal desde la propia notificación
     (mantenerla pulsada): es una baja en cada aviso, sencilla y gratuita.
   - Al tocarla, los anuncios corrientes abren Inicio, cuya tarjeta «Avisos»
     acaba con la misma frase y lleva a Perfil › Avisos.
-  - Matiz: los anuncios de ofertas abren Buscar y los de la Academy, la
-    Academy, y ahí no está la frase. Basta con la baja del propio Android, pero
-    conviene igualarlo con la web (recomendación R2).
+  - Los anuncios de ofertas abren Buscar y los de la Academy, la Academy,
+    donde no está esa tarjeta. Para medir con la misma vara que la web (donde
+    la baja en cada notificación se trató como bloqueante), al abrirlos sale
+    arriba la misma frase con su enlace a Perfil › Avisos (condición C7; en el
+    código desde el 12/11/2026, sale con la misma OTA que C5).
 - **Información sobre la baja** (art. 22.1): la privacidad (§6) y el propio
   texto del permiso lo dicen.
 
@@ -396,18 +437,20 @@ próximo cambio de textos (R3).
 | | Condición | Canal | Quién | Estado (12/11/2026) |
 |---|---|---|---|---|
 | **C1** | **Privacidad publicada** con lo de este anexo (§5 y §8, en este commit). Mientras la publicada diga que la garantía «se comprobará», no se envía | Los dos | Publicar la web, con orden de Víctor | Hecho en el repositorio; falta publicar |
-| **C2** | **Frase de primera capa de la web** (2.4), con su inglés, publicada | Web | Otro agente; publicar la web | Pendiente |
+| **C2** | **Frase de primera capa de la web** (2.4), con su inglés, publicada | Web | Publicar la web, con orden de Víctor | Hecho en el repositorio (12/11); falta publicar |
 | **C3** | **GitHub con contrato de encargo**: organización con GitHub Team y «GitHub Customer Agreement» firmado (incluye el DPA). **O bien** el envío de la web en un proveedor que ya lo tiene (Supabase o Cloudflare) | Web | Víctor (contrato) o código | Pendiente |
 | **C4** | **Prueba real en el iPhone del titular** (entrada 9 del traspaso): llega «Prueba de RWAdar», sale el «1» y al tocarla se abre la lista con la baja | Web | Víctor | Pendiente |
-| **C5** | **Frase de primera capa de la app** (2.4), con su inglés, en una OTA publicada **antes** de encender | Android | Otro agente; OTA con orden de Víctor | Pendiente |
+| **C5** | **Frase de primera capa de la app** (2.4), con su inglés, en una OTA **publicada y ya en uso**: enviarla varios días antes de `activar-push` y comprobar en EAS (arranques por actualización) que la mayoría de los arranques usan la OTA nueva. Resto de riesgo en 2.3.a | Android | OTA con orden de Víctor; comprobación en EAS | Hecho en el repositorio (12/11); falta la OTA y que esté en uso |
+| **C7** | **Baja a la vista al abrir en la app una notificación que no lleva a Inicio** (ofertas a Buscar; Academy): arriba, «¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.», con enlace a Perfil › Avisos (3.1). Antes era la recomendación R2 | Android | En la misma OTA que C5 | Hecho en el repositorio (12/11); falta la OTA |
 | **C6** | **Prueba en un Android físico** (la «ronda 3» del plan): sin pulsar el botón, ninguna conexión a Firebase al abrir la app; al pulsar, permiso, canal y la frase de C5; baja manteniendo pulsada la notificación y en Perfil; y **verificar** qué hace Firebase después de desactivarlas | Android | Víctor, con un Android prestado | Pendiente |
 
 **Recomendado, no bloquea:**
 
-- **R1.** En el diálogo de la campana, la frase de la baja arriba, antes de la
-  lista (ya lo pidió el auditor).
-- **R2.** En la app, que todo anuncio abra Inicio (con su frase de baja), o
-  poner la frase también en Buscar y en la Academy.
+- **R1.** En el diálogo de la campana, la baja a la vista al abrir. **Hecho**
+  (`76ebc8e`): la frase y el botón van en un pie fijo, fuera de la lista que se
+  desplaza; comprobado a 390 × 844 con 10 avisos, también con la lista al
+  final. Falta publicar la web.
+- **R2.** Pasa a ser la condición C7.
 - **R3.** Completar la «Información básica» con «el servicio de
   notificaciones de tu navegador» y GitHub.
 - **R4.** En la próxima versión nativa de Android: Firebase solo se crea al
@@ -415,7 +458,7 @@ próximo cambio de textos (R3).
   mano), para que el latido no se guarde sin consentimiento.
 - **R5.** Si algún día cambia el texto versionado, «en mi móvil o tableta».
 - **R6.** En la app, con el correo apagado, quitar «o con el enlace de cada
-  correo» del mensaje de alta (ya anotado).
+  correo» del mensaje de alta. **Hecho** (`f3c2986`); llega con la OTA.
 - **R7.** Revisar el punto 1.3 cuando se dé alguno de sus avisos y en la
   revisión anual del registro (antes del 06/11/2027).
 
