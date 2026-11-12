@@ -6,6 +6,119 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 · Claude · Sesión de la web que se mantiene: el servidor renueva el pase y casilla «Mantener la sesión iniciada»
+
+Víctor, probando en su iPhone con la web en la pantalla de inicio: «Y que al
+iniciar sesión se mantenga porque no se mantiene». Commits `f4414f8` y
+`43b0416` en la rama del worktree, **sin push. Sin publicar; Supabase y EAS
+sin tocar.** Sin SQL ni migraciones.
+
+- **La causa.** La pasarela (`rwadar-acceso/servidor.mjs`) guardaba en la
+  cookie solo el pase de Supabase (access_token, una hora) y tiraba el
+  refresh_token; la cookie no llevaba Max-Age. A la hora, o al cerrar la web
+  instalada (iOS lo trata como cerrar el navegador), la sesión se perdía y
+  Perfil › Avisos daba 401.
+- **El servidor** (`f4414f8`):
+  - segunda cookie `__Host-rwadar-renovar` con el refresh_token (HttpOnly,
+    Secure, SameSite=Lax, Path=/). Su valor empieza por `p.` (marcó
+    «mantener») o `s.` (no), para reescribir igual las dos al renovar;
+  - con «mantener»: Max-Age en las dos; el pase, su `expires_in`; la de
+    renovar, **30 días**, reescrita en cada renovación (caduca tras 30 días
+    sin usar la cuenta en ese navegador: quien mira su cartera una vez al
+    mes no tiene que volver a entrar, y un móvil perdido o compartido no queda
+    abierto para siempre). Sin «mantener», sin Max-Age, como antes, pero el
+    pase se renueva mientras el navegador siga abierto;
+  - estado de la sesión, `/datos`, `/cartera`, `/reautenticar` y las lecciones
+    de la Academy: si el pase falta, le queda menos de un minuto o Auth lo
+    rechaza (401/403), se renueva una vez y se reescriben las dos cookies;
+  - en paralelo: las peticiones con el mismo refresh_token en un isolate
+    comparten una renovación 10 s (búsqueda síncrona, sin `await` antes de
+    guardarla); entre isolates, Supabase da el refresh_token vigente (el padre
+    del vigente se admite siempre). Ninguna cierra la sesión de otra;
+  - Supabase rechaza la renovación (400/401/403): se borran las dos y es «sin
+    sesión». Un fallo pasajero (red, 5xx, 429) no borra nada;
+  - cupo de 60 renovaciones por visitante cada 10 minutos (todas llegan a
+    Supabase desde la dirección compartida de Cloudflare, como las
+    contraseñas);
+  - salir revoca la sesión en Supabase (`/auth/v1/logout`, renovando antes el
+    pase si hace falta) y borra las dos. Borrar la cuenta
+    (`rpc/borrar_mi_cuenta`) borra las dos (la base ya quitó sus sesiones). El
+    enlace del correo (`adoptar`) y el tutorial de la app dejan solo el pase y
+    borran la de renovar;
+  - ninguna respuesta lleva tokens; no se registra nada;
+  - `compilar.cjs`: el `_worker.js` deja cada Set-Cookie en su cabecera
+    (`getSetCookie`), sin unirlas con comas.
+- **La web** (`43b0416`):
+  - `/acceso`, solo en «Entrar»: casilla «Mantener la sesión iniciada en este
+    dispositivo», **sin marcar**, con una nota (30 días con una cookie, se
+    borra al salir, no en un dispositivo compartido, enlace a
+    `/privacidad#cookies-sesion`). Se desmarca al cambiar de vista; el alta no
+    la manda. El formulario de `rwadar-20260820.js` no cambia: con el servidor
+    (siempre, en producción) «Entrar» lleva a `/acceso`;
+  - por qué sin marcar: la LSSI (22.2) exime lo estrictamente necesario para
+    el servicio que se pide, y la guía de cookies de la AEPD solo exime sin
+    más las de autenticación «de sesión». Una cookie de autenticación que
+    sobrevive al navegador la tiene que pedir la persona, marcando ella la
+    casilla (el GT29, dictamen 4/2012, pone ese ejemplo, «recordarme»); una
+    casilla ya marcada no es una petición expresa (TJUE, Planet49). Para el
+    revisor legal;
+  - inglés de la casilla y de su nota en el diccionario común
+    (`rwadar-movil/lib/idioma-en.js` y su copia en la web). `/acceso` sigue
+    sin traductor: hoy se ve en castellano;
+  - privacidad §2 (fila «Sesión de tu cuenta», ancla `cookies-sesion`) y §9:
+    nombre, finalidad y duración de las dos cookies y que son estrictamente
+    necesarias para la sesión que se pide. Fecha sin cambiar (12/11/2026).
+    Registro de actividades, versión 8.
+- **Pruebas:**
+  - `rwadar-acceso/sesion-mantenida.test.mjs` (19), con la rotación de GoTrue
+    simulada: entrar con y sin «mantener», atributos exactos, renovación al
+    caducar o a menos de 60 s, rechazo de Auth, paralelo en un isolate y en
+    dos, rezagada pasados los 10 s, renovación rechazada y pasajera, cupo,
+    cookie mal formada, salir revoca, borrar la cuenta, reautenticar,
+    Academy, cartera, adoptar y tutorial, `_worker.js` compilado y que
+    ninguna respuesta lleva tokens. 10 mutaciones del servidor: todas hacen
+    fallar alguna prueba;
+  - `rwadar-acceso/sesion-mantenida-navegador.test.mjs` (3): la casilla en
+    un DOM simulado y, **en Chromium** con el worker local compilado desde
+    las fuentes: con la casilla, las dos cookies con caducidad (1 h y 30
+    días) sobreviven a cerrar el navegador y el pase se renueva solo; sin
+    ella, al reabrir se está fuera; `document.cookie` no las ve; salir las
+    borra;
+  - `probar-web` fija la casilla, su inglés, las frases de privacidad y que
+    los 30 días son los del servidor (681; 2 mutaciones comprobadas);
+  - ajustadas al contrato nuevo: `servidor-errores` (dos Set-Cookie) y
+    `cartera-errores-dirigidos` (`crearCarteraServidor` recibe `sesion`);
+  - `npm test` en la raíz, salida 0: `rwadar-app` con 31 scripts a «0
+    fallidas», 11/11 y `.github` 103/103; `probar-web` 681/681; QR bien;
+    `rwadar-movil` 593 y 2 omitidas; herramientas bien; `rwadar-acceso`
+    302/302, con Chromium;
+  - gitleaks 8.30.1 (`rwadar-app/gitleaks.toml` y la configuración por
+    defecto) sobre los dos commits: sin hallazgos.
+- **Dudas que quedan:**
+  - **Víctor tiene que entrar una vez más** en el iPhone, dentro de la web
+    instalada, y marcar la casilla: las sesiones de antes no tienen
+    refresh_token;
+  - el enlace de confirmación del correo deja solo el pase (una hora, como
+    antes); al caducar se entra con la contraseña y la casilla;
+  - `.github/qa-web-browser-141/python-bff-141.py` y
+    `qa-android-update-141/production-bff-native-fixture.cjs` esperan una sola
+    Set-Cookie al entrar. No están en ningún flujo; si se vuelven a usar, hay
+    que adaptarlos;
+  - Supabase limita las renovaciones por dirección y todas salen de
+    Cloudflare: con las cuentas de hoy sobra; si un día da 429, la web lo
+    trata como pasajero y no saca a nadie;
+  - la renovación entre isolates depende del intervalo de reutilización de
+    Supabase (10 s por defecto, en los ajustes de Auth): no lo bajéis;
+  - lo de Chromium es local; en el iPhone solo se ve publicado.
+- **Para publicar** (con orden expresa de Víctor): PR a main y CI; «Publicar
+  web» (preview y producción), porque cambia el servidor. En la preview:
+  entrar con la casilla, cerrar del todo la web instalada, abrirla otra vez y
+  seguir dentro; en las herramientas del navegador, dos cookies `__Host-` con
+  caducidad. Sin SQL. La app no lo necesita: su diccionario gana dos entradas
+  que no usa y viajan con la próxima OTA.
+
+---
+
 ## 12 de noviembre de 2026 (13) · Claude · Notificaciones web desde Supabase y Cloudflare: base 33 y servidor unidos, revisión aplicada y textos legales al día
 
 Víctor: «En GitHub no puedes? Pues hazlo en supabase mientras y ya haremos el
