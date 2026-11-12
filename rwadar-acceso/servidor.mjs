@@ -1,6 +1,7 @@
 // Public reading and private account API. No passwords, tokens or user data are logged.
 import { crearCarteraServidor } from './cartera-servidor.mjs';
 import { crearTokenizacionServidor } from './tokenizacion-servidor.mjs';
+import { crearWebpushServidor } from './webpush-servidor.mjs';
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ORIGEN_AUTH = 'https://exgpmjpaaebyoolpwced.supabase.co';
 const COOKIE = '__Host-rwadar-acceso';
@@ -11,12 +12,14 @@ const MAX_BODY = 16 * 1024;
 // is keyed by the visitor (IPv4 address or IPv6 /64) and, like Supabase, counts
 // every request that reaches Auth. There is deliberately no per-email limit:
 // anyone could use it to lock a stranger out. Maximum per window:
-// password attempts; requests that can send an email; unsubscribe links (baja)
-const LIMITES = Object.freeze({ clave: 30, envio: 10, baja: 20 });
+// password attempts; requests that can send an email; unsubscribe links (baja);
+// Web Push sends from Supabase (webpush: one request per notification, in
+// batches of up to 500 every 5 minutes; see webpush-servidor.mjs)
+const LIMITES = Object.freeze({ clave: 30, envio: 10, baja: 20, webpush: 2000 });
 const VENTANA_S = 600;
 const GRUPO_LIMITE = Object.freeze({ '/api/acceso/entrar': 'clave', '/api/acceso/reautenticar': 'clave',
   '/api/acceso/registrar': 'envio', '/api/acceso/recuperar': 'envio', '/api/acceso/reenviar': 'envio',
-  '/api/acceso/baja': 'baja' });
+  '/api/acceso/baja': 'baja', '/api/interno/webpush': 'webpush' });
 // Avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md): la
 // casilla del alta es opcional y versionada. Cambiar su texto obliga a otra versión.
 // Ninguna de estas constantes se exporta: este archivo acaba dentro de
@@ -199,8 +202,9 @@ async function leerTexto(result, maxBytes) {
 // avisosNovedades: solo para las pruebas, que encienden el interruptor sin
 // tocar el archivo. El worker y functions/_middleware.js no lo pasan.
 // cacheTokenizacion: solo para las pruebas (null, sin Cache API; o un doble).
+// plazoWebpushMs: espera máxima al servicio de push (las pruebas la acortan).
 export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora = Date.now, academy = null,
-  avisosNovedades = AVISOS_CASILLA_ALTA, cacheTokenizacion = undefined } = {}) {
+  avisosNovedades = AVISOS_CASILLA_ALTA, cacheTokenizacion = undefined, plazoWebpushMs = 10000 } = {}) {
   if (typeof avisosNovedades !== 'boolean') throw new Error('avisos_invalidos');
   const limitador = crearLimitador(ahora);
   // Sin configuración de la Academy (o con "publico") no hay puerta: como antes.
@@ -308,11 +312,16 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
   }
   const atenderCartera = crearCarteraServidor({ api, verificar, leerCookie, respuesta });
   const atenderTokenizacion = crearTokenizacionServidor({ fetchImpl, ahora, cache: cacheTokenizacion, respuesta, leerTexto });
+  const webpush = crearWebpushServidor({ fetchImpl, ahora, plazoMs: plazoWebpushMs, api, cuerpoJSON, respuesta, reservarIntento });
   async function atender(context) {
     const { request, env } = context; const url = new URL(request.url);
     const path = url.pathname.replace(/\/$/, '') || '/';
     const endpoint = path.startsWith('/api/acceso/');
     const recursoCatalogo = path.match(/^\/api\/acceso\/catalogo\/(catalogo_plataformas_publicas_v2|catalogo_ofertas_publicas_v2|catalogo_publicacion|plataformas)$/);
+    // Notificaciones web desde Supabase (12/11/2026): la llama pg_net, sin
+    // Origin ni cookies, con la clave VAPID de RWAdar en sus cabeceras. Va antes
+    // de la regla de Origin de /api/acceso/ y no lee ni toca la cookie de nadie.
+    if (path === '/api/interno/webpush') return webpush.atender({ request, env, url });
     if (request.method !== 'GET' && request.method !== 'HEAD') {
       if (!endpoint || request.method !== 'POST') return respuesta({ error: 'metodo_no_permitido' }, 405);
       // Host-only cookies plus strict Origin and JSON prevent login/logout CSRF.

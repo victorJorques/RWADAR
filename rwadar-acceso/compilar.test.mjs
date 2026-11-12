@@ -58,8 +58,10 @@ test('la compilación rechaza un servidor que exporta algo que no es una funció
     const servidor = fs.readFileSync(path.join(AQUI, 'servidor.mjs'), 'utf8');
     const cartera = fs.readFileSync(path.join(AQUI, 'cartera-servidor.mjs'), 'utf8');
     const tokenizacion = fs.readFileSync(path.join(AQUI, 'tokenizacion-servidor.mjs'), 'utf8');
-    const escribir = (s, c = cartera, k = tokenizacion) => { fs.writeFileSync(path.join(raiz, 'servidor.mjs'), s);
-      fs.writeFileSync(path.join(raiz, 'cartera-servidor.mjs'), c); fs.writeFileSync(path.join(raiz, 'tokenizacion-servidor.mjs'), k); };
+    const webpush = fs.readFileSync(path.join(AQUI, 'webpush-servidor.mjs'), 'utf8');
+    const escribir = (s, c = cartera, k = tokenizacion, w = webpush) => { fs.writeFileSync(path.join(raiz, 'servidor.mjs'), s);
+      fs.writeFileSync(path.join(raiz, 'cartera-servidor.mjs'), c); fs.writeFileSync(path.join(raiz, 'tokenizacion-servidor.mjs'), k);
+      fs.writeFileSync(path.join(raiz, 'webpush-servidor.mjs'), w); };
     escribir(servidor);
     assert.equal(construirWorker(raiz), construirWorker(), 'la copia sin cambios compila igual');
     for (const extra of ["export const VERSION_PRUEBA = 'x';", 'export let marca = 1;', 'export var activo = false;',
@@ -70,7 +72,20 @@ test('la compilación rechaza un servidor que exporta algo que no es una funció
       assert.throws(() => construirWorker(raiz), /cartera-servidor\.mjs solo puede exportar funciones/, extra);
       escribir(servidor, cartera, tokenizacion + '\n' + extra + '\n');
       assert.throws(() => construirWorker(raiz), /tokenizacion-servidor\.mjs solo puede exportar funciones/, extra);
+      escribir(servidor, cartera, tokenizacion, webpush + '\n' + extra + '\n');
+      assert.throws(() => construirWorker(raiz), /webpush-servidor\.mjs solo puede exportar/, extra);
     }
+    /* Notificaciones web (12/11/2026): el módulo va en su propio ámbito, sin
+       dependencias, y solo da crearWebpushServidor (el worker no lo exporta). */
+    escribir(servidor, cartera, tokenizacion, webpush + '\nexport async function otraWebpush() {}\n');
+    assert.throws(() => construirWorker(raiz), /webpush-servidor\.mjs solo puede exportar crearWebpushServidor/);
+    escribir(servidor, cartera, tokenizacion, "import x from 'node:crypto';\n" + webpush);
+    assert.throws(() => construirWorker(raiz), /Las notificaciones web no admiten dependencias/);
+    escribir(servidor, cartera, tokenizacion, webpush + "\nconst fs = require('node:fs');\n");
+    assert.throws(() => construirWorker(raiz), /Las notificaciones web no admiten dependencias/);
+    escribir(servidor.replace("import { crearWebpushServidor } from './webpush-servidor.mjs';\n", ''));
+    assert.throws(() => construirWorker(raiz), /Falta la integración explícita de las notificaciones web/);
+    escribir(servidor);
     escribir(servidor + '\nexport async function otraPrueba() {}\n');
     assert.doesNotThrow(() => construirWorker(raiz));
     // El motor de la tokenización tiene que seguir siendo autónomo.
