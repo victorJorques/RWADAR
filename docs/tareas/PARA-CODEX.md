@@ -46,7 +46,7 @@ tocar; el envío sigue apagado.** Ni SQL ni migraciones.
     hechas.
 - **Pruebas** (sobre `8a94cc6`):
   - `npm test` en la raíz, salida 0:
-    - `rwadar-app`: 30 scripts con «0 fallidas» (`probar-avisos-registrados`
+    - `rwadar-app`: 29 scripts con «0 fallidas» (`probar-avisos-registrados`
       275/275, `probar-notificaciones` 94/94), 11/11 y `.github` 103/103;
     - `probar-web` 679/679 (una nueva), 70 páginas y RSS, 40 de precarga;
     - `rwadar-movil` 593 y 2 omitidas;
