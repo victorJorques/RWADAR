@@ -3,12 +3,12 @@
   "fecha": "2026-11-12",
   "etiqueta": "2026-11-12",
   "revisionAnterior": "24b5f7de-2834-3e15-6ae4-62a6d9565161",
-  "revisionNueva": "7ad7ea72-d18e-4833-9f36-38f4a7ceaf25",
+  "revisionNueva": "a58dd22d-98a3-f94e-ba66-46898162215a",
   "decision": "Puesta al día pedida por el responsable del proyecto el 12/11/2026 («Tendrás que actualizar la información a hoy y acelerar»). Lo que entra: DECISIONES-COORDINADOR.md (lista cerrada).",
   "archivos": {
     "DECISIONES-COORDINADOR.md": "6d4bfe3b19bcf2a4b20abc9dd27cf73440bd8b9a951d9afd8a720ec2b89e1cc9",
     "radar-contraste-2026-11-12.json": "3126c4c62a9170dc4a630985adcf29e97a764fe70ebc3d405d8d6d2a91a02696",
-    "cambios-radar.json": "48e9401bd053cac4d213442881214b80c2926c20c23b9d6ca8fad2ed15af3219"
+    "cambios-radar.json": "714911da29f0beacad16114b5738f5bd6fa3fb090e02d1e48161685f3b268b5c"
   },
   "radar": {
     "fuentes": 69,

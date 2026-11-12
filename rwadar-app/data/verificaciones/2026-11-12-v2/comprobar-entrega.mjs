@@ -118,7 +118,13 @@ async function base() {
     'supabase/migrations/20260930084133_ofertas_documentacion_publica.sql',
     'supabase/migrations/20260930090621_catalogo_v2_colecciones.sql',
     'supabase/migrations/20261001150000_catalogo_siempre_disponible.sql']) await db.exec(fs.readFileSync(a, 'utf8'));
-  for (const f of LOTES) await db.exec(fs.readFileSync(`data/importaciones/catalogo-${f}-v2/aplicar-y-aprobar.sql`, 'utf8'));
+  // Cada lote de la cadena se aplica con su tope de vigencia evaluado en su propio día (como loteReal de
+  // probar-avisos-registrados.mjs): así el ensayo sigue valiendo desde el 13/11, cuando caduca el lote 2026-11-05
+  // (recomendación de la revisión de SQL del 12/11). Solo en la cadena; el SQL de hoy se aplica tal cual.
+  for (const f of LOTES) {
+    const sql = fs.readFileSync(`data/importaciones/catalogo-${f}-v2/aplicar-y-aprobar.sql`, 'utf8');
+    await db.exec(sql.replace(/current_date > date '(\d{4}-\d{2}-\d{2})'/g, `date '${f.slice(0, 10)}' > date '$1'`));
+  }
   return db;
 }
 // Como lo devuelve PostgREST: fechas en texto y numeric como número.

@@ -14,7 +14,9 @@
 //    hoy con fecha de hoy y los cambios por oferta de DECISIONES §2. Cada texto «antes» se exige tal cual: si no
 //    está, el script falla.
 // 3. Tres datos de la tarjeta (etiqueta fija): los publicados se conservan con consulta del 12/11; cambian solo los
-//    mínimos de las 11 de Brickwise, de Boss Info, de Switzerlend y de Hausera (solo la fecha).
+//    mínimos de las 11 de Brickwise, de Boss Info, de Switzerlend y de Hausera (solo la fecha; en el alcance del de
+//    Hausera, «Hoy no se puede invertir» pasa a «El 12/11/2026 aún no se podía invertir», corrección R1 de las
+//    revisiones de contenido y de cumplimiento).
 // Hoy NO se toca public.plataformas ni public.fuentes: el SQL solo escribe en rwadar_catalogo.
 // Sin altas ni retiradas: 22 ofertas (8/13/1) y 25 plataformas. Las noticias no son parte de esta entrega.
 //
@@ -113,9 +115,11 @@ assert.deepEqual(contraste.contraste.map(c => c.id), radar.fuentes.map(f => f.id
 assert.deepEqual(contraste.contraste.map(c => c.url), radar.fuentes.map(f => f.url), 'el contraste se hizo sobre las mismas direcciones');
 assert.ok(contraste.contraste.every(c => c.ok));
 // La cabecera de cambios-radar.json se quedó con la fecha y la nota del 11/11 (el archivo se copió del día
-// anterior); sus dos lecturas a mano sí son de hoy (métodos con «12/11/2026 a las 00:37 UTC»). La salida no depende
-// de la cabecera: se acepta cualquiera de las dos fechas y se exige el contenido.
-assert.ok([FECHA, DESDE].includes(cambiosRadar.fecha), 'cambios-radar.json: fecha inesperada');
+// anterior); sus dos lecturas a mano son de hoy (métodos con «12/11/2026 a las 00:37 UTC»). Corregida en la
+// revisión de la entrega (recomendación de la revisión de SQL): fecha 2026-11-12 y nota del 12/11/2026. La salida
+// no depende de la cabecera (solo el SHA-256 que guarda contraste-2026-11-12.json).
+assert.equal(cambiosRadar.fecha, FECHA, 'cambios-radar.json: fecha inesperada');
+assert.ok(cambiosRadar.nota.startsWith(`Cambios del radar comprobados a mano el ${FES}.`), 'cambios-radar.json: nota de hoy');
 assert.deepEqual([cambiosRadar.fuentes, cambiosRadar.plataformas], [{}, {}], 'hoy no cambia ninguna dirección ni ningún texto del radar');
 assert.ok(!cambiosRadar.comprobacionesCambiadas || !Object.keys(cambiosRadar.comprobacionesCambiadas).length, 'hoy no cambia ninguna comprobación');
 const COMPROBACIONES = leer(path.join(ROOT, 'rwadar-app/data/comprobaciones-fuentes.json')).fuentes;
@@ -562,7 +566,16 @@ NO_APLICADO.push({ slug: 'brickwise (3 fichas)', que: 'Redacción nueva de dos r
   const r = documentos[slug].referencias.find(y => y.etiqueta === 'Mínimo de inversión');
   const minimo = `Desde 100 € en Alicante 3, según su documento de emisión (${CORTA}); la preventa abre el 18/11.`;
   assert.equal(exp.resumenTarjeta.minimo, minimo, 'Hausera: mínimo del expediente');
-  tarjeta(slug, 'Mínimo de inversión', minimo, r.fuente, r.fechaDato, r.alcance.replace(PREFIJO, ''),
+  // Corrección R1 (revisiones de contenido y de cumplimiento del 12/11): el alcance decía «Hoy no se puede
+  // invertir: …», que deja de ser cierto en la vigencia de la ficha (la preventa abre el 18/11 a las 09:00 y la ficha
+  // vale hasta el 19/11). Se fecha con la consulta de hoy (expediente, criterios.actividadYFecha: «12/11/2026: …
+  // Alicante 3 abre la preventa el 18/11/2026 (09:00) … Hoy no se puede invertir.»). Mismo hecho, mismas fechas.
+  assert.match(x.criterios.actividadYFecha.nota, /^12\/11\/2026: .*Alicante 3 abre la preventa el 18\/11\/2026 \(09:00\) y la suscripción del 25\/11\/2026 .*Hoy no se puede invertir\.$/);
+  const HOY_HAUSERA = 'Hoy no se puede invertir: la preventa abre el 18/11/2026 y la suscripción, el 25/11/2026.';
+  const alcanceMinimo = r.alcance.replace(PREFIJO, '');
+  assert.equal(alcanceMinimo.split(HOY_HAUSERA).length, 2, 'Hausera: «Hoy no se puede invertir» en el alcance del mínimo publicado');
+  tarjeta(slug, 'Mínimo de inversión', minimo, r.fuente, r.fechaDato,
+    alcanceMinimo.replace(HOY_HAUSERA, `El ${FES} aún no se podía invertir: la preventa abre el 18/11/2026 y la suscripción, el 25/11/2026.`),
     'Desde 100 € en Alicante 3, según su documento de emisión (10/11); la preventa abre el 18/11.');
   // La portada (hoy a las 00:39:52 UTC): las mismas cifras del promotor.
   const portada = x.documentos.find(d => d.url === 'https://hausera.io/');

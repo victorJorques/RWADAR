@@ -19,8 +19,11 @@
 //      - el mínimo corto de Switzerlend, con la fecha de su ficha (C1 del 11/11):
 //        «1 acción (68,01 CHF, 11/11)» → «1 acción (68,01 CHF, 12/11)»;
 //      - el mínimo corto de Hausera, con la fecha de su ficha (el documento de emisión se volvió a leer hoy):
-//        «Desde 100 € en Alicante 3 (10/11)» → «Desde 100 € en Alicante 3 (12/11)».
-//      Nada más: ni motivos, ni textos de los puntos, ni otros mínimos o salidas cortas.
+//        «Desde 100 € en Alicante 3 (10/11)» → «Desde 100 € en Alicante 3 (12/11)»;
+//      - el motivo de «Documento para España» de Hausera, con la fecha de la consulta de hoy del registro de la CNMV
+//        (corrección R4 de la revisión de contenido): «… y el 10/11/2026 la emisión aún no estaba inscrita» →
+//        «… y el 12/11/2026 la emisión aún no estaba inscrita».
+//      Nada más: ni otros motivos, ni textos de los puntos, ni otros mínimos o salidas cortas.
 //   El archivo se valida con transparencia.mjs (cargarTransparencia) antes de escribirlo.
 //
 // Se puede repetir: si ya está hecho, no cambia nada.
@@ -145,16 +148,33 @@ t.ofertas.switzerlend.minimoCorto = '1 acción (68,01 CHF, 12/11)';
     `hausera-proximas-ofertas: mínimo corto de partida («${antes.ofertas['hausera-proximas-ofertas'].minimoCorto}»)`);
   t.ofertas['hausera-proximas-ofertas'].minimoCorto = hecho;
 }
+// Hausera, motivo de «Documento para España» (corrección R4 de la revisión de contenido del 12/11): decía «el 10/11/2026
+// la emisión aún no estaba inscrita». El registro ERIR de la CNMV se volvió a consultar hoy (expediente, claims
+// «registro») y el aviso de la misma ficha en el catálogo ya dice «El 12/11/2026 Alicante 3 aún no estaba inscrita».
+// Mismo hecho, con la fecha de la consulta de hoy; el resto del motivo no cambia.
+const INSCRITA = d => `la CNMV no lo ha revisado y el ${d} la emisión aún no estaba inscrita.`;
+{
+  const slug = 'hausera-proximas-ofertas', e = leer(path.join(DIR, 'expedientes', `${slug}.json`));
+  const reg = e.claims.find(y => y.campo === 'registro');
+  assert.ok(reg.consultadoUtc.startsWith(FECHA) && reg.fuentePrimaria === 'https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es' &&
+    reg.dato.includes(`el ${FES}`), `${slug}: el registro de la CNMV no se consultó hoy`);
+  assert.ok(snapPor.get(slug).avisos.some(a => a.texto === `El documento de emisión no es un folleto y la CNMV no lo ha revisado. El ${FES} Alicante 3 aún no estaba inscrita en el registro de la CNMV.`),
+    `${slug}: el aviso del catálogo no lleva la fecha de hoy`);
+  const m = t.ofertas[slug].documentoEspana.motivo;
+  assert.ok(m.split(INSCRITA('10/11/2026')).length === 2 || m.split(INSCRITA(FES)).length === 2, `${slug}: motivo de partida («${m}»)`);
+  t.ofertas[slug].documentoEspana.motivo = m.replace(INSCRITA('10/11/2026'), INSCRITA(FES));
+}
 const CORTOS = new Set([...Object.keys(BRICKWISE), 'switzerlend', 'hausera-proximas-ofertas']);
 
-// Nada más cambia: ni motivos, ni fuentes, ni textos de los puntos, ni los demás mínimos o salidas cortas, ni la
-// fecha de alta. Solo verificadaEl, consultadaEl (donde se volvió a consultar), el título de los puntos con fecha
-// del 11/11 (ídem) y los mínimos cortos de Brickwise, de Switzerlend y de Hausera.
+// Nada más cambia: ni otros motivos, ni fuentes, ni textos de los puntos, ni los demás mínimos o salidas cortas, ni
+// la fecha de alta. Solo verificadaEl, consultadaEl (donde se volvió a consultar), el título de los puntos con fecha
+// del 11/11 (ídem), los mínimos cortos de Brickwise, de Switzerlend y de Hausera y la fecha del motivo de Hausera.
 {
   const quita = (x, slug) => { const o = structuredClone(x);
     o.verificadaEl = 'F'; o.supervisada.consultadaEl = 'F'; o.documentoEspana.consultadaEl = 'F';
     o.puntos = o.puntos.map(p => ({ ...p, fuente: { ...p.fuente, titulo: p.fuente.titulo.replace(/\((?:11|12)\/11\/2026\)$/, '(F)') } }));
     if (CORTOS.has(slug)) o.minimoCorto = 'F';
+    if (slug === 'hausera-proximas-ofertas') o.documentoEspana.motivo = o.documentoEspana.motivo.replace(INSCRITA('10/11/2026'), INSCRITA('F')).replace(INSCRITA(FES), INSCRITA('F'));
     return o; };
   for (const slug of Object.keys(t.ofertas)) assert.deepEqual(quita(t.ofertas[slug], slug), quita(antes.ofertas[slug], slug), `${slug}: cambio fuera de la lista`);
   const resto = x => { const { lote, revisionCatalogo, revisadoEl, ofertas, ...r } = x; return r; };
@@ -181,7 +201,7 @@ for (const [slug, o] of Object.entries(valida.ofertas)) {
 }
 const nuevo = JSON.stringify(t, null, 2) + '\n';
 const cambios = [];
-if (nuevo !== texto) { fs.writeFileSync(TRANSPARENCIA, nuevo); cambios.push('transparencia.json: revisión, lote y verificadaEl al 12/11; fecha del 12/11 donde el expediente de hoy volvió a consultar la misma fuente (comprobaciones y títulos de los puntos); mínimos cortos de las 11 de Brickwise, de Switzerlend y de Hausera'); }
+if (nuevo !== texto) { fs.writeFileSync(TRANSPARENCIA, nuevo); cambios.push('transparencia.json: revisión, lote y verificadaEl al 12/11; fecha del 12/11 donde el expediente de hoy volvió a consultar la misma fuente (comprobaciones y títulos de los puntos); mínimos cortos de las 11 de Brickwise, de Switzerlend y de Hausera; fecha de la consulta del registro de la CNMV en el motivo de Hausera'); }
 
 console.log(cambios.length ? cambios.map(c => '· ' + c).join('\n') : 'Nada que cambiar: ya estaba hecho.');
 const viejas = fechas.filter(f => f.consultadaEl !== FECHA);
@@ -193,4 +213,5 @@ console.log(`Títulos de puntos fuertes con fecha de consulta: ${puntos.length -
 console.log('Mínimos cortos de Brickwise: ' + Object.keys(BRICKWISE).map(s => `${s} «${valida.ofertas[s].minimoCorto}»`).join(', '));
 console.log(`Mínimo corto de Switzerlend: «${valida.ofertas.switzerlend.minimoCorto}»`);
 console.log(`Mínimo corto de Hausera: «${valida.ofertas['hausera-proximas-ofertas'].minimoCorto}»`);
+console.log(`Motivo de «Documento para España» de Hausera: «${valida.ofertas['hausera-proximas-ofertas'].documentoEspana.motivo}»`);
 console.log('Siguiente: node rwadar-editorial-source/ofertas/transparencia.mjs && node rwadar-fichas.js && npm test');

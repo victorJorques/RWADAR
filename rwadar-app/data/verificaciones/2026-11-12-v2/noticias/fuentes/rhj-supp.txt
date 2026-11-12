@@ -1229,12 +1229,12 @@ L_LIVE_EMEA2:500609621v6
 Signed on behalf of all the directors of Robinhood Assets (Jersey) Limited
 By:
 
-Lindsay Bracegirdle
+[persona física recortada]
 Director
 
 By:
 
-Jordan Sinclair
+[persona física recortada]
 Director
 
 End of this Supplement
@@ -7840,7 +7840,7 @@ Business Address
 
 Business occupations
 
-James Cunningham-Davis
+[persona física recortada]
 
 c/o First Floor, La Chasse
 Chambers, Ten La Chasse,
@@ -7851,7 +7851,7 @@ of
 Cavendish
 Fiduciary (Jersey) Limited
 
-Lindsay Bracegirdle
+[persona física recortada]
 
 c/o First Floor, La Chasse
 Chambers, Ten La Chasse,
@@ -7862,7 +7862,7 @@ of
 Cavendish
 Fiduciary (Jersey) Limited
 
-Jordan Sinclair
+[persona física recortada]
 
 c/o First Floor, La Chasse
 Chambers, Ten La Chasse,
@@ -7872,8 +7872,8 @@ Director
 of
 Markets, Inc.
 
-Noman Goheer (alternate
-director for Jordan Sinclair)
+[persona física recortada] (alternate
+director for [persona física recortada])
 
 c/o First Floor, La Chasse
 Chambers, Ten La Chasse,
@@ -14278,12 +14278,12 @@ Robinhood Assets (Jersey) Limited Base Prospectus
 Signed on behalf of all the directors of Robinhood Assets (Jersey) Limited
 By:
 
-James Cunningham-Davis
+[persona física recortada]
 Director
 
 By:
 
-Jordan Sinclair
+[persona física recortada]
 Director
 
 174
