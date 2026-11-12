@@ -4294,8 +4294,10 @@ const Cuenta = (function(){
     tabletas, solo con «Avisos de novedades» activado antes y, en iPhone y
     iPad, solo con RWAdar en la pantalla de inicio (iOS 16.4 o posterior).
     La clave pública VAPID la da la base (rpc/clave_publica_webpush); si aún
-    no existe o el envío está apagado (push_activo), lo dice y no pide nada.
-    Apagado, Perfil no enseña el botón. */
+    no existe, lo dice y no pide nada. Con el envío apagado (push_activo)
+    también se pueden activar: registrarse no envía nada (db/32) y así se
+    prueban en el móvil antes de encender el envío para todos; el texto dice
+    que llegarán cuando empecemos. Apagado, Perfil no enseña el botón. */
  const AVISOS_WEBPUSH_REMOTO=true;
  const AVISOS_WEBPUSH_DISPONIBLE=AVISOS_NOVEDADES_DISPONIBLES&&AVISOS_WEBPUSH_REMOTO;
  const VERSION_AVISOS_NOVEDADES='novedades-v2-2026-11-06';
@@ -4938,7 +4940,9 @@ const Cuenta = (function(){
    '<div class="perfil-cifras">'+
     '<div><span class="n">'+dias+'</span><span class="l">Días<br>de miembro</span></div>'+
     '<div><span class="n">'+lista.length+'</span><span class="l">Plataformas<br>que sigues</span></div>'+
-    '<div><span class="n">'+avisosRecibidos+'</span><span class="l">Avisos<br>recibidos</span></div>'+
+    /* Con la bandeja, «Avisos recibidos» es su lista (arriba): la cifra
+       antigua (avisos por correo) diría 0 junto a ella. */
+    (AVISOS_BANDEJA_DISPONIBLE?'':'<div><span class="n">'+avisosRecibidos+'</span><span class="l">Avisos<br>recibidos</span></div>')+
    '</div>'+
    '<p class="perfil-nota">Miembro desde el '+desde+'.</p>'+ 
    '<div class="perfil-sec">'+(OPINIONES_DISPONIBLES?'Identidad pública':'Tu nombre')+'</div>'+
@@ -5199,7 +5203,9 @@ const Cuenta = (function(){
    if(!vigente(cuenta))return;
    novedades=j;
    if(novedadesActivas()!==deseado)throw new Error('Cambio no confirmado.');
-   aviso(deseado?'Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.':'Avisos de novedades desactivados.');
+   /* Sin correo no hay «enlace de cada correo»: no se promete. */
+   aviso(deseado?(novedades.correo_activo?'Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.'
+    :'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.'):'Avisos de novedades desactivados.');
   }catch(e){
    if(!vigente(cuenta))return;
    aviso(deseado?'No se han activado los avisos de novedades. Vuelve a intentarlo.'
@@ -5244,6 +5250,7 @@ const Cuenta = (function(){
   const dos=n=>String(n).padStart(2,'0'),dia=d=>dos(d.getDate())+'/'+dos(d.getMonth()+1)+'/'+d.getFullYear();
   const iso=d=>d.getFullYear()+'-'+dos(d.getMonth()+1)+'-'+dos(d.getDate());
   const leidos=new Set(leidosCuenta()),pendientes=lista?lista.filter(a=>!leidos.has(a.id)).length:0;
+  const conLista=!(propia&&bandejaError)&&!!lista&&lista.length>0;
   const html=propia&&bandejaError
    ?'<p class="perfil-nota" role="status">No se pudieron cargar tus avisos. Cierra y vuelve a abrir tu cuenta para reintentarlo.</p>'
    :!lista?'<p class="perfil-nota" role="status">Cargando tus avisos…</p>'
@@ -5252,9 +5259,11 @@ const Cuenta = (function(){
      return '<li'+(nuevo?' class="nuevo"':'')+'>'+(nuevo?'<span class="bandeja-punto" aria-hidden="true"></span><span class="solo-lector">Sin leer</span> ':'')+
      '<b>'+esc(a.titulo)+'</b><p>'+esc(a.texto)+'</p>'+
      (a.fecha?'<time datetime="'+iso(a.fecha)+'">'+dia(a.fecha)+'</time>':'')+
-     (a.enlace?' <a href="'+esc(a.enlace)+'" aria-label="'+esc('Abrir '+a.titulo)+'">Abrir</a>':'')+'</li>';}).join('')+'</ul>'+
-     (pendientes?'<button type="button" class="bandeja-marcar" data-avisos-marcar>Marcar como leídos</button>':'');
-  for(const caja of cajas)caja.innerHTML=html;
+     (a.enlace?' <a href="'+esc(a.enlace)+'" aria-label="'+esc('Abrir '+a.titulo)+'">Abrir</a>':'')+'</li>';}).join('')+'</ul>';
+  /* En el diálogo de la campana no hace falta «Marcar como leídos»: abrirlo
+     ya es verlos (como en WhatsApp) y el número baja a 0. En la cuenta, sí. */
+  for(const caja of cajas)caja.innerHTML=html+(conLista&&pendientes&&caja.id==='pfBandeja'
+   ?'<button type="button" class="bandeja-marcar" data-avisos-marcar>Marcar como leídos</button>':'');
  }
  /* forzar: vuelve a pedir la lista aunque ya esté cargada (al volver a la
     pestaña o cuando el service worker avisa de un push nuevo); mientras
@@ -5276,7 +5285,7 @@ const Cuenta = (function(){
    if(!vigente(cuenta))return;
    if(!anterior)bandejaError=true;
   }
-  pintarBandeja();pintarCampana();
+  pintarBandeja();pintarCampana();avisosVistos();
  }
 
  /* --- campana con número (12/11/2026) -----------------------------
@@ -5353,8 +5362,22 @@ const Cuenta = (function(){
   pintarBandeja();pintarCampana();
   aviso(enIngles()?'Notices marked as read.':'Avisos marcados como leídos.');
  }
- /* El diálogo de la campana: la lista, «Marcar como leídos» y el camino a
-    Perfil › Avisos. Se crea al primer toque, como el de «RWAdar en iPhone». */
+ /* Con el diálogo de la campana abierto y la lista cargada, los avisos se
+    dan por vistos (como al abrir un chat de WhatsApp): se guardan como
+    leídos y la campana, el icono y el contador del service worker bajan a
+    0. Los puntos de «Sin leer» se quedan mientras el diálogo siga abierto. */
+ function avisosVistos(){
+  const d=typeof document!=='undefined'?$('avisosDialogo'):null;
+  if(!d||!d.open||!identidadConfirmada||!ses||!bandeja||bandejaCuenta!==versionCuenta)return;
+  const leidos=new Set(leidosCuenta());
+  if(bandeja.every(a=>leidos.has(a.id)))return;
+  guardarLeidos([...leidos,...bandeja.map(a=>a.id)]);
+  pintarCampana();
+ }
+ /* El diálogo de la campana: la lista, la baja de los avisos y el camino a
+    Perfil › Avisos. Se crea al primer toque, como el de «RWAdar en iPhone».
+    Es también adonde lleva cada notificación (?avisos=1, db/32): la baja
+    tiene que verse en cada comunicación (LSSI, art. 21.2, párr. 2). */
  function abrirAvisos(origen){
   if(!AVISOS_BANDEJA_DISPONIBLE||!identidadConfirmada||!ses||typeof document==='undefined'||!document.createElement)return;
   let d=$('avisosDialogo');
@@ -5365,6 +5388,7 @@ const Cuenta = (function(){
    d.innerHTML='<div class="escaparate-dialogo-marco"><header class="avisos-dialogo-cab"><div><span>Tu cuenta</span>'+
     '<h2 id="avisosDialogoTit">Tus avisos</h2></div><button type="button" data-cerrar-avisos aria-label="Cerrar">×</button></header>'+
     '<div class="avisos-dialogo-cuerpo"><div id="avisosDialogoLista"></div>'+
+    '<p class="avisos-baja" id="avisosDialogoBaja">¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.</p>'+
     '<button type="button" class="avisos-gestionar" data-avisos-gestionar>Notificaciones y avisos en Perfil</button></div></div>';
    d.addEventListener('click',e=>{
     if(e.target===d||(e.target.closest&&e.target.closest('[data-cerrar-avisos]')))d.close();
@@ -5377,9 +5401,18 @@ const Cuenta = (function(){
   pintarBandeja();
   if(!d.open){if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');}
   const cerrarBoton=d.querySelector('[data-cerrar-avisos]');if(cerrarBoton)cerrarBoton.focus({preventScroll:true});
-  /* Al ver la bandeja, el service worker y el icono se ponen al número de la página. */
+  /* Al ver la bandeja, todo visto: el service worker y el icono, a 0. */
+  avisosVistos();
   if(bandeja&&bandejaCuenta===versionCuenta){const n=avisosSinLeer();insigniaApp(n);avisarTrabajador({tipo:n?'avisos-pendientes':'avisos-vistos',n});}
   if(!bandeja||bandejaError||Date.now()-bandejaPedida>60000)cargarBandeja(true).catch(()=>{});
+ }
+ /* Lo que pide una notificación (?avisos=1 o el service worker): la lista con
+    la baja. Sin sesión en este navegador, la baja se dice igualmente. */
+ function abrirAvisosPedido(){
+  if(!AVISOS_BANDEJA_DISPONIBLE)return;
+  if(identidadConfirmada&&ses){abrirAvisos(null);return;}
+  if(restauracionCuenta){restauracionCuenta.then(abrirAvisosPedido,abrirAvisosPedido);return;}
+  aviso('Entra en tu cuenta para ver tus avisos. ¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.');
  }
  /* Perfil › Avisos: en el móvil, la pestaña Perfil; en escritorio, el panel de la cuenta. */
  function irAPerfilAvisos(){
@@ -5405,6 +5438,10 @@ const Cuenta = (function(){
     navegador; cada notificación llega cifrada y la descifra el navegador. */
  let push={estado:'',cuenta:-1,ocupado:false,mensaje:'',error:false};
  const CLAVE_VAPID=/^[A-Za-z0-9_-]{87}$/;
+ /* La clave pública VAPID de la base, por cuenta: una cadena válida, null si
+    aún no existe (crear-vapid) o undefined si no se ha podido preguntar
+    (entonces se deja intentar: activarPush la vuelve a pedir). */
+ let clavePush={cuenta:-1,valor:undefined};
  function esIos(){
   return typeof navigator!=='undefined'&&(/iPhone|iPad|iPod/.test(navigator.userAgent||'')||
    (navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1));
@@ -5453,10 +5490,13 @@ const Cuenta = (function(){
   if(!esMovilOTableta())return 'escritorio';
   if(esIos()&&!instalada())return 'instalar-ios';
   if(!soportaPush())return 'sin-soporte';
-  if(permisoNotificaciones()==='denied')return 'denegado';
+  /* En Android sin instalar no hay icono de RWAdar: los permisos, en Chrome. */
+  if(permisoNotificaciones()==='denied')return esIos()||instalada()?'denegado':'denegado-navegador';
   if(registrado===true)return 'activo';
   if(!novedades||registrado===undefined)return 'comprobando';
-  if(!novedades.push_activo)return 'pendiente';
+  /* Sin clave VAPID no hay nada que activar. Con el envío apagado, sí: se
+     registra sin enviar nada y el texto dice que llegarán cuando empecemos. */
+  if(clavePush.cuenta===versionCuenta&&clavePush.valor===null)return 'pendiente';
   if(!novedadesActivas())return 'falta-permiso';
   return 'disponible';
  }
@@ -5465,19 +5505,22 @@ const Cuenta = (function(){
   'instalar-ios':'En iPhone y iPad las notificaciones solo funcionan con RWAdar en la pantalla de inicio (iOS o iPadOS 16.4 o posterior):',
   'sin-soporte':'Este navegador no puede recibir notificaciones de RWAdar. En iPhone hace falta iOS 16.4 o posterior; en Android, Chrome, Firefox, Edge o Samsung Internet.',
   'denegado':'Has bloqueado las notificaciones de RWAdar en este navegador. Para permitirlas: en iPhone, Ajustes › Notificaciones › RWAdar; en Android, mantén pulsado el icono de RWAdar › Información de la aplicación › Notificaciones. Después vuelve aquí.',
+  'denegado-navegador':'Has bloqueado las notificaciones de RWAdar en este navegador. Para permitirlas, toca el icono que hay a la izquierda de la dirección › Permisos › Notificaciones (en Chrome también: Ajustes › Configuración de sitios › Notificaciones). Después vuelve aquí.',
   'comprobando':'Comprobando las notificaciones de este móvil…',
-  'pendiente':'Las notificaciones en este móvil todavía no están disponibles: el envío se activará en breve. Mientras tanto, verás los avisos en la campana.',
+  'pendiente':'Las notificaciones en este móvil todavía no están disponibles; te lo diremos aquí cuando empecemos a enviarlas. Mientras tanto, verás los avisos en la campana.',
   'falta-permiso':'Para recibirlas, activa antes «Avisos de novedades».',
   'disponible':'Al activarlas, el navegador te pedirá permiso. Guardamos en tu cuenta la dirección de entrega de este navegador y sus claves; las notificaciones viajan cifradas por el servicio de Apple, Google, Mozilla o Microsoft, según el navegador. Se borra al desactivarlas, al cerrar sesión o al borrar la cuenta.',
+  'disponible-pausa':'Todavía no hemos empezado a enviarlas: puedes activarlas ya y te llegarán cuando empecemos. Al activarlas, el navegador te pedirá permiso. Guardamos en tu cuenta la dirección de entrega de este navegador y sus claves; las notificaciones viajan cifradas por el servicio de Apple, Google, Mozilla o Microsoft, según el navegador. Se borra al desactivarlas, al cerrar sesión o al borrar la cuenta.',
   'activo-novedades':'Activadas: este móvil recibe las notificaciones de RWAdar.',
   'activo-servicio':'Con «Avisos de novedades» desactivado, este móvil no recibe notificaciones de RWAdar. Actívalo para volver a recibirlas, o desactívalas aquí.',
-  'activo-pausa':'Las notificaciones en el móvil están en pausa. Puedes desactivarlas aquí.'
+  'activo-pausa':'Activadas en este móvil. Ahora mismo no estamos enviando notificaciones: te llegarán en cuanto empecemos. Puedes desactivarlas aquí.'
  };
  function textoPush(){
   if(push.ocupado)return 'Un momento…';
   if(push.mensaje)return push.mensaje;
   if(push.estado==='activo')return novedades&&!novedades.push_activo?TEXTOS_PUSH['activo-pausa']
    :novedadesActivas()?TEXTOS_PUSH['activo-novedades']:TEXTOS_PUSH['activo-servicio'];
+  if(push.estado==='disponible'&&novedades&&!novedades.push_activo)return TEXTOS_PUSH['disponible-pausa'];
   return TEXTOS_PUSH[push.estado]||'';
  }
  function pintarPush(){
@@ -5505,6 +5548,12 @@ const Cuenta = (function(){
   pintarPush();
   if(inicial!=='comprobando')return;
   let registrado=false;
+  /* La clave a la vez: sin ella no se ofrece «Activar» (no se pide permiso
+     para nada). Una válida ya leída no se vuelve a pedir. */
+  const clave=clavePush.cuenta===cuenta&&typeof clavePush.valor==='string'?Promise.resolve()
+   :rest('/rpc/clave_publica_webpush',{method:'POST',body:'{}'},cuenta)
+    .then(k=>{if(vigente(cuenta))clavePush={cuenta,valor:typeof k==='string'&&CLAVE_VAPID.test(k)?k:null};})
+    .catch(()=>{if(vigente(cuenta))clavePush={cuenta,valor:undefined};});
   try{
    const r=await navigator.serviceWorker.getRegistration('/');
    const sub=r&&r.pushManager?await r.pushManager.getSubscription():null;
@@ -5515,6 +5564,7 @@ const Cuenta = (function(){
     if(registrado&&vigente(cuenta))renovarPush(datos,cuenta);
    }
   }catch(e){if(!vigente(cuenta))return;}
+  await clave;
   if(!vigente(cuenta)||push.cuenta!==cuenta||push.ocupado)return;
   /* Si la base aún no ha contestado lo de «Avisos de novedades», se espera a ella. */
   push.registrado=registrado;
@@ -5558,7 +5608,8 @@ const Cuenta = (function(){
     }
     const k=await clave;
     if(!vigente(cuenta))return;
-    if(typeof k!=='string'||!CLAVE_VAPID.test(k)){push.estado='pendiente';return;}
+    if(typeof k!=='string'||!CLAVE_VAPID.test(k)){clavePush={cuenta,valor:null};push.estado='pendiente';return;}
+    clavePush={cuenta,valor:k};
     const r=await registroTrabajador();
     /* Una suscripción anterior (otra cuenta, otra clave) no se reutiliza. */
     const vieja=await r.pushManager.getSubscription();
@@ -5570,10 +5621,11 @@ const Cuenta = (function(){
     catch(e){ok=false;}
     if(!ok){sub.unsubscribe().catch(()=>{});throw new Error('registro');}
     push.estado='activo';push.registrado=true;pushRenovado={cuenta,el:Date.now()};
-    resultado='Notificaciones activadas en este móvil.';
+    resultado=novedades&&!novedades.push_activo?'Notificaciones activadas en este móvil. Te llegarán cuando empecemos a enviarlas.'
+     :'Notificaciones activadas en este móvil.';
     try{await r.showNotification(enIngles()?'Notifications turned on for this phone':'Notificaciones activadas en este móvil',{
      body:enIngles()?'This is how RWAdar notices will reach you.':'Así te llegarán los avisos de RWAdar.',
-     icon:'/icono-192.png',badge:'/icono-192.png',tag:'rwadar-activadas',lang:enIngles()?'en':'es',data:{url:'/'}});}catch(e){}
+     icon:'/icono-192.png',tag:'rwadar-activadas',lang:enIngles()?'en':'es',data:{url:'/'}});}catch(e){}
    }catch(e){
     if(!vigente(cuenta))return;
     error=true;resultado='No se han podido activar las notificaciones en este móvil. Vuelve a intentarlo.';
@@ -5746,6 +5798,8 @@ const Cuenta = (function(){
   try{
    if(typeof navigator!=='undefined'&&navigator.serviceWorker)navigator.serviceWorker.addEventListener('message',e=>{
     if(e.data&&e.data.tipo==='aviso-nuevo'&&identidadConfirmada&&ses)cargarBandeja(true).catch(()=>{});
+    /* Se ha tocado una notificación con la web ya abierta: la lista, con la baja. */
+    else if(e.data&&e.data.tipo==='abrir-avisos')abrirAvisosPedido();
    });
   }catch(e){}
   /* Las etiquetas con número se escriben en el idioma de la página. */
@@ -5773,6 +5827,16 @@ const Cuenta = (function(){
     ?new URLSearchParams(location.hash.slice(1)):null;
   const retorno=!!(parametrosRetorno&&(parametrosRetorno.get('access_token')||
     parametrosRetorno.has('error')||parametrosRetorno.has('error_code')||parametrosRetorno.has('error_description')));
+  /* Se ha abierto desde una notificación (db/32: ?avisos=1): se quita de la
+     dirección y, con la cuenta comprobada, se abre la lista de avisos. */
+  let pideAvisos=false;
+  try{
+   const u=new URL(location.href);
+   if(u.searchParams.get('avisos')==='1'){
+    pideAvisos=true;u.searchParams.delete('avisos');
+    if(typeof history!=='undefined'&&history.replaceState)history.replaceState(history.state,'',u.pathname+u.search+u.hash);
+   }
+  }catch(e){}
   pinta();
 
   if(servidor){
@@ -5782,8 +5846,10 @@ const Cuenta = (function(){
     await cargarMio();
     pinta();if(fichaAbierta)pintarVigilar(fichaAbierta);
    }).catch(()=>{}).finally(()=>{restauracionCuenta=null;});
+   if(pideAvisos)abrirAvisosPedido();
    return;
   }
+  if(pideAvisos)abrirAvisosPedido();
 
   /* Confirmación de correo y recuperación usan un fragmento para que los
      testigos no viajen al servidor ni queden en su registro de accesos. */
@@ -6253,7 +6319,8 @@ const Movil = (function(){
   }
   const tab=document.getElementById('movilTabMas');
   const ingles=document.documentElement&&document.documentElement.lang==='en';
-  if(tab)tab.setAttribute('aria-label',sinLeer?(ingles?'Profile, '+(sinLeer>9?'9+':sinLeer)+' unread notices':'Perfil, '+(sinLeer>9?'9+':sinLeer)+' avisos sin leer')
+  if(tab)tab.setAttribute('aria-label',sinLeer===1?(ingles?'Profile, 1 unread notice':'Perfil, 1 aviso sin leer')
+   :sinLeer?(ingles?'Profile, '+(sinLeer>9?'9+':sinLeer)+' unread notices':'Perfil, '+(sinLeer>9?'9+':sinLeer)+' avisos sin leer')
    :total?'Perfil, '+total+' guardados':'Perfil');
   const verAvisos=document.getElementById('perfilVerAvisos');
   if(verAvisos)verAvisos.hidden=!(typeof Cuenta!=='undefined'&&Cuenta.hay());

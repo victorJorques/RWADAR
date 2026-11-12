@@ -37,7 +37,8 @@ const INFO_ES = 'Información básica sobre tus datos. Responsable: Víctor Manu
 const enlazado = (textoPlano, href) => textoPlano.replace(/Privacidad\.$/, '') + '<a href="' + href + '">Privacidad</a>.';
 const CASILLA_HTML = enlazado(TEXTO_ES, '/privacidad#avisos-novedades');
 const INFO_HTML = enlazado(INFO_ES, '/privacidad');
-const ACTIVADOS = 'Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.';
+// Con el correo apagado no hay «enlace de cada correo»: no se promete.
+const ACTIVADOS = 'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.';
 const tick = async (veces = 4) => { for (let i = 0; i < veces; i++) await new Promise(resolve => setImmediate(resolve)); };
 const consentimiento = codigo => codigo.slice(codigo.indexOf('const VERSION_CONSENTIMIENTO_CORREO='), codigo.indexOf('/* correo-consentimiento:fin */'));
 const cuenta = codigo => codigo.slice(codigo.indexOf('const Cuenta = (function(){'), codigo.indexOf('/* comunidad:inicio */'));

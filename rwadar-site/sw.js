@@ -5,7 +5,7 @@
    Desde el 12/11/2026 recibe también las notificaciones (Web Push): el
    navegador descifra cada una; aquí se enseña SIEMPRE (Apple retira la
    suscripción si un push no muestra nada) y se sube el número del icono,
-   que se guarda en IndexedDB y la página pone a su valor al ver los avisos. */
+   que se guarda en IndexedDB y la página pone a 0 al ver los avisos. */
 const VERSION = 'rwadar-vacceso-obligatorio-20261023';
 self.addEventListener('install', event => {
   event.waitUntil(self.skipWaiting());
@@ -23,6 +23,9 @@ self.addEventListener('activate', event => {
    Carga (JSON, UTF-8): {"v":1,"titulo":"…","texto":"…","url":"https://rwadar.pages.dev/…","etiqueta":"rwadar-<id>"}.
    Lo que no cumple se sustituye por un texto propio; un enlace solo se
    abre si es de rwadar.pages.dev o de este mismo origen. */
+/* Sin «badge»: Chrome en Android usa esa imagen como icono pequeño de la barra
+   de estado y solo pinta su silueta; con un icono opaco sale un cuadrado
+   blanco. Sin ella, el navegador pone la suya. */
 const ICONO = '/icono-192.png';
 const ORIGENES_PROPIOS = ['https://rwadar.pages.dev'];
 const SIN_CONTROL = /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/g;
@@ -95,7 +98,7 @@ self.addEventListener('push', event => {
   event.waitUntil((async () => {
     // Primero la notificación: siempre, pase lo que pase con el contador.
     await self.registration.showNotification(aviso.titulo, {
-      body: aviso.texto, icon: ICONO, badge: ICONO, tag: aviso.etiqueta, data: { url: aviso.url },
+      body: aviso.texto, icon: ICONO, tag: aviso.etiqueta, data: { url: aviso.url },
     });
     let n = 0;
     try { n = await cambiarContador(actual => actual + 1); } catch { n = 0; }
@@ -119,6 +122,14 @@ self.addEventListener('notificationclick', event => {
       let ventana = null;
       try { ventana = (await propia.focus()) || propia; } catch { ventana = null; }
       if (ventana) {
+        // La portada ya abierta: que abra ella la lista de avisos (con la baja),
+        // sin recargar. Así también en una pestaña que no se puede navegar.
+        const pedida = new URL(destino);
+        let enPortada = false;
+        try { enPortada = new URL(ventana.url).pathname === '/'; } catch { enPortada = false; }
+        if (enPortada && pedida.pathname === '/' && pedida.searchParams.get('avisos') === '1') {
+          try { ventana.postMessage({ tipo: 'abrir-avisos' }); return; } catch { /* se navega */ }
+        }
         // Una pestaña sin controlar no se puede llevar a otra página: se queda enfocada.
         if (ventana.url !== destino && typeof ventana.navigate === 'function') {
           try { await ventana.navigate(destino); } catch { /* se queda donde estaba */ }
@@ -130,7 +141,7 @@ self.addEventListener('notificationclick', event => {
   })());
 });
 
-/* La página, al ver los avisos: «avisos-vistos» pone el contador a 0, quita
+/* La página, al ver los avisos (abrir la campana): «avisos-vistos» pone el contador a 0, quita
    el número del icono y las notificaciones de RWAdar que sigan a la vista;
    «avisos-pendientes» lo pone al número de avisos sin leer que ve la página
    (el número del icono ya lo pone la propia página: aquí no se repite, y así

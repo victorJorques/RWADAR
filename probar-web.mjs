@@ -3345,12 +3345,16 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     'Pulsa el botón Compartir (un cuadrado con una flecha hacia arriba).', 'Elige «Añadir a pantalla de inicio» y pulsa Añadir.',
     'Abre RWAdar desde el icono nuevo, entra en tu cuenta y vuelve a Perfil › Avisos.', 'Un momento…',
     'Notificaciones activadas en este móvil.', 'Notificaciones desactivadas en este móvil.',
-    'El envío por correo todavía no está activo.', 'El envío por correo y al móvil todavía no está activo. Mientras tanto, los avisos se ven en la campana.'];
+    'El envío por correo todavía no está activo.', 'El envío por correo y al móvil todavía no está activo. Mientras tanto, los avisos se ven en la campana.',
+    '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.',
+    'Entra en tu cuenta para ver tus avisos. ¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.',
+    'Notificaciones activadas en este móvil. Te llegarán cuando empecemos a enviarlas.',
+    'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.'];
   const sinIngles = [...textosPush, ...fijos].filter(t => typeof (enAvisos[t] ?? enComun[t]) !== 'string');
   const scriptsIndex = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(m => m[1]);
   const iComun = scriptsIndex.indexOf('/assets/idioma-en-20261022.js'), iAvisos = scriptsIndex.indexOf('/assets/idioma-en-avisos-20261112.js');
   prueba(`campana y notificaciones: cada texto tiene su inglés (sin traducir: ${sinIngles.join(' | ') || 'ninguno'}) y el diccionario de la web va entre el común y el motor`,
-    textosPush.length === 11 && sinIngles.length === 0 && iComun >= 0 && iAvisos === iComun + 1 &&
+    textosPush.length === 13 && sinIngles.length === 0 && iComun >= 0 && iAvisos === iComun + 1 &&
     scriptsIndex[iAvisos + 1] === '/assets/idioma-20261022.js' &&
     Object.keys(enAvisos).every(k => !Object.hasOwn(enComun, k)) &&
     /const suma=Object\.assign\(\{\},extra,base\);/.test(lee('assets/idioma-en-avisos-20261112.js')));
@@ -3362,6 +3366,16 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     /<div id="perfilPushHueco" hidden><\/div>/.test(panelPerfilHTML) && /<p class="perfil-aviso-detalle" id="perfilNovedadesCorreo" hidden><\/p>/.test(panelPerfilHTML) &&
     /navigator\.setAppBadge/.test(js) && /navigator\.clearAppBadge/.test(js) && /CLAVE_LEIDOS='rwadar\.avisos\.leidos\.v1:'/.test(js) &&
     /self\.addEventListener\('push'/.test(sw) && /showNotification\(/.test(sw) && /self\.addEventListener\('notificationclick'/.test(sw));
+  // Revisión del 12/11: la baja en cada notificación (LSSI, art. 21.2, párr. 2), suscribirse con el envío
+  // apagado (para probar antes), abrir la campana ya es ver los avisos, y sin «badge» opaco.
+  prueba('notificaciones: cada una lleva a la lista con la baja (?avisos=1), se pueden activar con el envío apagado y abrir la campana pone el número a 0',
+    js.includes("'<p class=\"avisos-baja\" id=\"avisosDialogoBaja\">¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.</p>'") &&
+    /searchParams\.get\('avisos'\)==='1'/.test(js) && js.includes("e.data.tipo==='abrir-avisos')abrirAvisosPedido()") &&
+    sw.includes("ventana.postMessage({ tipo: 'abrir-avisos' })") &&
+    !/if\(!novedades\.push_activo\)return 'pendiente';/.test(js) && /clavePush\.valor===null\)return 'pendiente'/.test(js) &&
+    /function avisosVistos\(\)\{/.test(js) && /pintarBandeja\(\);pintarCampana\(\);avisosVistos\(\);/.test(js) &&
+    !/badge:/.test(sw.replace(/\/\*[\s\S]*?\*\//g, '')) && !/badge:'\/icono-192\.png'/.test(js) &&
+    /--globo:#D92D20;/.test(css) && /\.campana-n\{[^}]*background:var\(--globo\)/.test(css.replace(/\n\s*/g, '')));
 }
 marcadoEstricto('baja.html', bajaHTML);
 // El mismo asunto que el pie y List-Unsubscribe de los correos de avisos.

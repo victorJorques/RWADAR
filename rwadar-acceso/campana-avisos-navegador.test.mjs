@@ -87,7 +87,7 @@ function simular(cfg) {
   };
 }
 
-async function abrir(navegador, local, { dispositivo = null, viewport = null, cfg = {} } = {}) {
+async function abrir(navegador, local, { dispositivo = null, viewport = null, cfg = {}, ruta = '/' } = {}) {
   const opciones = { ...(dispositivo ? playwright.devices[dispositivo] : {}), ...(viewport ? { viewport } : {}), serviceWorkers: 'block' };
   delete opciones.defaultBrowserType;
   const contexto = await navegador.newContext(opciones);
@@ -104,14 +104,22 @@ async function abrir(navegador, local, { dispositivo = null, viewport = null, cf
   const pagina = await contexto.newPage();
   const errores = [];
   pagina.on('pageerror', e => errores.push(e.message));
-  await pagina.goto(ORIGEN + '/', { waitUntil: 'load' });
+  await pagina.goto(ORIGEN + ruta, { waitUntil: 'load' });
   await pagina.waitForFunction(() => typeof Cuenta !== 'undefined' && Cuenta.hay(), null, { timeout: 20000 });
   return { contexto, pagina, errores, rastro: () => pagina.evaluate(() => window.__rastro) };
 }
 const rpc = (local, nombre) => local.peticionesSupabase.filter(p => p.ruta === '/rest/v1/rpc/' + nombre);
 const captura = async (pagina, nombre) => { if (CAPTURAS) await pagina.screenshot({ path: path.join(CAPTURAS, nombre) }); };
+const BAJA = '¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.';
+// Contraste WCAG entre el texto y el fondo de un elemento (colores rgb/rgba opacos).
+function contraste(id) {
+  const lum = c => { const [r, g, b] = c.match(/\d+(\.\d+)?/g).slice(0, 3).map(Number).map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+  const e = getComputedStyle(document.getElementById(id)), a = lum(e.color), b = lum(e.backgroundColor);
+  return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+}
 
-test('en Chromium: campana con número (1…9 y 9+), globo de Perfil, diálogo, «Marcar como leídos», Badging API y aviso al service worker', { skip: sinNavegador, timeout: 240000 }, async () => {
+test('en Chromium: campana con número (1…9 y 9+), globo de Perfil, diálogo que los da por vistos con la baja a la vista, Badging API y aviso al service worker', { skip: sinNavegador, timeout: 240000 }, async () => {
   if (CAPTURAS) fs.mkdirSync(CAPTURAS, { recursive: true });
   const local = await arrancarWorkerLocal({ raiz: path.join(RAIZ, 'rwadar-site'), puerto: 0, conSesion: true, responder });
   const navegador = await playwright.chromium.launch();
@@ -135,6 +143,9 @@ test('en Chromium: campana con número (1…9 y 9+), globo de Perfil, diálogo, 
     assert.ok(cabecera.dentro && cabecera.anchoDoc <= cabecera.ventana, 'sin desbordes a 390 px');
     assert.equal(cabecera.globo, '9+'); assert.ok(cabecera.globoAvisos); assert.equal(cabecera.tab, 'Perfil, 9+ avisos sin leer');
     assert.equal(cabecera.vivo, 'polite');
+    // Blanco sobre el rojo de los globos: WCAG AA (4,5:1) para 11 px en negrita.
+    const contrastes = await pagina.evaluate(f => { const c = new Function('return ' + f)(); return [c('movilAvisosN'), c('movilGuardadosBadge')]; }, contraste.toString());
+    assert.ok(contrastes.every(c => c >= 4.5), 'contraste de los globos: ' + contrastes.map(c => c.toFixed(2)).join(' y '));
     let r = await rastro();
     assert.deepEqual(r.filter(x => x[0] === 'setAppBadge'), [['setAppBadge', 10]], 'el número del icono va con la campana');
     assert.ok(r.some(x => x[0] === 'sw' && x[1] === 'avisos-pendientes' && x[2] === 10), 'y el service worker lo sabe');
@@ -154,28 +165,36 @@ test('en Chromium: campana con número (1…9 y 9+), globo de Perfil, diálogo, 
     }
     await pagina.setViewportSize({ width: 390, height: 844 });
 
-    // Al tocarla se abre la bandeja; «Marcar como leídos» lo deja a 0.
+    // Al tocarla se abre la bandeja con los nuevos marcados y la baja a la vista.
+    // Abrirla ya es verlos (como un chat de WhatsApp): el número baja a 0.
     await pagina.click('#movilAvisos');
     await pagina.waitForSelector('#avisosDialogo[open] #avisosDialogoLista li', { timeout: 10000 });
     const dialogo = await pagina.evaluate(() => {
       const d = document.getElementById('avisosDialogo');
       return { titulo: d.querySelector('h2').textContent, nuevos: d.querySelectorAll('li.nuevo').length, sinLeer: d.querySelectorAll('li.nuevo .solo-lector').length,
-        foco: document.activeElement && document.activeElement.getAttribute('aria-label'), marcar: !!d.querySelector('[data-avisos-marcar]') };
+        foco: document.activeElement && document.activeElement.getAttribute('aria-label'), marcar: !!d.querySelector('[data-avisos-marcar]'),
+        baja: document.getElementById('avisosDialogoBaja').textContent, gestionar: d.querySelector('[data-avisos-gestionar]').textContent };
     });
-    assert.deepEqual(dialogo, { titulo: 'Tus avisos', nuevos: 10, sinLeer: 10, foco: 'Cerrar', marcar: true });
+    assert.deepEqual(dialogo, { titulo: 'Tus avisos', nuevos: 10, sinLeer: 10, foco: 'Cerrar', marcar: false, baja: BAJA, gestionar: 'Notificaciones y avisos en Perfil' });
     await captura(pagina, 'campana-dialogo-390.png');
-    await pagina.click('#avisosDialogo [data-avisos-marcar]');
     await pagina.waitForFunction(() => document.getElementById('movilAvisosN').hidden, null, { timeout: 5000 });
     const tras = await pagina.evaluate(uid => ({ aria: document.getElementById('movilAvisos').getAttribute('aria-label'),
-      nuevos: document.querySelectorAll('#avisosDialogo li.nuevo').length, marcar: !!document.querySelector('#avisosDialogo [data-avisos-marcar]'),
+      nuevos: document.querySelectorAll('#avisosDialogo li.nuevo').length,
       guardado: JSON.parse(localStorage.getItem('rwadar.avisos.leidos.v1:' + uid) || '[]').length,
       globo: document.getElementById('movilGuardadosBadge').hidden }), USUARIO_PRUEBA.id);
-    assert.deepEqual(tras, { aria: 'Avisos, ninguno sin leer', nuevos: 0, marcar: false, guardado: 10, globo: true });
+    assert.deepEqual(tras, { aria: 'Avisos, ninguno sin leer', nuevos: 10, guardado: 10, globo: true }, 'los puntos se quedan mientras sigue abierto');
     r = await rastro();
     assert.ok(r.some(x => x[0] === 'clearAppBadge'), 'clearAppBadge');
     assert.ok(r.some(x => x[0] === 'sw' && x[1] === 'avisos-vistos'), 'el service worker pone su contador a 0');
     await captura(pagina, 'campana-leidos-390.png');
     await pagina.keyboard.press('Escape');
+    await pagina.click('#movilAvisos');
+    await pagina.waitForSelector('#avisosDialogo[open] #avisosDialogoLista li', { timeout: 10000 });
+    assert.equal(await pagina.evaluate(() => document.querySelectorAll('#avisosDialogo li.nuevo').length), 0, 'al volver a abrirla ya están leídos');
+    // «Notificaciones y avisos en Perfil» lleva a la baja.
+    await pagina.click('#avisosDialogo [data-avisos-gestionar]');
+    await pagina.waitForFunction(() => !document.getElementById('avisosDialogo').open, null, { timeout: 5000 });
+    assert.equal(await pagina.evaluate(() => document.activeElement && document.activeElement.id), 'perfilAvisosTit');
 
     // Lo leído se recuerda en este navegador; un aviso nuevo enseña «1».
     escenario.avisos = [aviso(0), ...escenario.avisos];
@@ -183,21 +202,41 @@ test('en Chromium: campana con número (1…9 y 9+), globo de Perfil, diálogo, 
     await pagina.waitForFunction(() => !document.getElementById('movilAvisosN').hidden, null, { timeout: 15000 });
     assert.equal(await pagina.textContent('#movilAvisosN'), '1');
     assert.equal(await pagina.getAttribute('#movilAvisos', 'aria-label'), 'Avisos, 1 sin leer');
+    assert.equal(await pagina.getAttribute('#movilTabMas', 'aria-label'), 'Perfil, 1 aviso sin leer', 'en singular');
     assert.deepEqual((await rastro()).filter(x => x[0] === 'setAppBadge'), [['setAppBadge', 1]]);
     await captura(pagina, 'campana-1-390.png');
 
     // En inglés: la etiqueta con número y el diálogo, traducidos.
     await pagina.evaluate(() => RWAdarIdioma.cambiarIdioma('en'));
     await pagina.waitForFunction(() => document.getElementById('movilAvisos').getAttribute('aria-label') === 'Notices, 1 unread', null, { timeout: 5000 });
+    assert.equal(await pagina.getAttribute('#movilTabMas', 'aria-label'), 'Profile, 1 unread notice');
     await pagina.click('#movilAvisos');
     await pagina.waitForSelector('#avisosDialogo[open]');
     await pagina.waitForTimeout(300);
     assert.equal(await pagina.textContent('#avisosDialogoTit'), 'Your notices');
+    assert.equal(await pagina.textContent('#avisosDialogoBaja'), "Don't want these notices? Turn them off in Profile or in your phone settings.");
     assert.equal((await pagina.textContent('#avisosDialogo [data-avisos-gestionar]')).trim(), 'Notifications and notices in Profile');
     await pagina.keyboard.press('Escape');
     await pagina.evaluate(() => RWAdarIdioma.cambiarIdioma('es'));
     assert.deepEqual(errores, []);
     await contexto.close();
+
+    // Desde una notificación (db/32: ?avisos=1): la lista se abre sola, con la
+    // baja, la dirección queda limpia y el número baja a 0. Con la web ya
+    // abierta, el service worker se lo pide con «abrir-avisos».
+    escenario.avisos = [aviso(4), aviso(5)];
+    const notificacion = await abrir(navegador, local, { dispositivo: 'Pixel 7', viewport: { width: 390, height: 844 }, ruta: '/?avisos=1#emisiones' });
+    await notificacion.pagina.waitForSelector('#avisosDialogo[open] #avisosDialogoLista li', { timeout: 15000 });
+    await notificacion.pagina.waitForFunction(() => document.getElementById('movilAvisosN').hidden, null, { timeout: 5000 });
+    const desdeAviso = await notificacion.pagina.evaluate(() => ({ direccion: location.pathname + location.search + location.hash,
+      baja: document.getElementById('avisosDialogoBaja').textContent, nuevos: document.querySelectorAll('#avisosDialogo li.nuevo').length }));
+    assert.deepEqual(desdeAviso, { direccion: '/#emisiones', baja: BAJA, nuevos: 2 });
+    await captura(notificacion.pagina, 'campana-desde-notificacion-390.png');
+    await notificacion.pagina.keyboard.press('Escape');
+    await notificacion.pagina.evaluate(() => navigator.serviceWorker.dispatchEvent(new MessageEvent('message', { data: { tipo: 'abrir-avisos' } })));
+    await notificacion.pagina.waitForSelector('#avisosDialogo[open]', { timeout: 5000 });
+    assert.deepEqual(notificacion.errores, []);
+    await notificacion.contexto.close();
 
     // Escritorio: la campana va en la cabecera, junto a «Mis inversiones».
     escenario.avisos = [aviso(1), aviso(2), aviso(3)];
@@ -207,6 +246,12 @@ test('en Chromium: campana con número (1…9 y 9+), globo de Perfil, diálogo, 
       return { visible: r.width > 0 && getComputedStyle(b).display !== 'none', aria: b.getAttribute('aria-label'), alto: r.height,
         unaLinea: document.querySelector('.hdr-nav').getBoundingClientRect().height <= 48 }; });
     assert.deepEqual(hdr, { visible: true, aria: 'Avisos, 3 sin leer', alto: 44, unaLinea: true });
+    // En el panel de la cuenta, «Avisos recibidos» es la lista; la cifra antigua (0) ya no sale.
+    await escritorio.pagina.click('#btnCuenta');
+    await escritorio.pagina.waitForSelector('#pfBandeja li', { timeout: 10000 });
+    const panel = await escritorio.pagina.evaluate(() => ({ cifras: [...document.querySelectorAll('#perfilCuerpo .perfil-cifras .l')].map(n => n.textContent),
+      marcar: !!document.querySelector('#pfBandeja [data-avisos-marcar]') }));
+    assert.deepEqual(panel, { cifras: ['Díasde miembro', 'Plataformasque sigues'], marcar: true });
     await captura(escritorio.pagina, 'campana-escritorio-1366.png');
     assert.deepEqual(escritorio.errores, []);
     await escritorio.contexto.close();
@@ -238,7 +283,8 @@ test('en Chromium: «Notificaciones en este móvil» en Android, en el mismo toq
     await pagina.click('#perfilPushActivar');
     await pagina.waitForFunction(() => document.getElementById('perfilPushEstado').textContent === 'Notificaciones activadas en este móvil.', null, { timeout: 15000 });
     let r = await rastro();
-    const iPermiso = r.findIndex(x => x[0] === 'requestPermission'), iClave = r.findIndex(x => x[0] === 'datos' && x[1] === '/rpc/clave_publica_webpush');
+    // La clave ya se preguntó al entrar (sin ella no se ofrece «Activar»); en el toque se vuelve a pedir, después del permiso.
+    const iPermiso = r.findIndex(x => x[0] === 'requestPermission'), iClave = r.findIndex((x, i) => i > iPermiso && x[0] === 'datos' && x[1] === '/rpc/clave_publica_webpush');
     assert.ok(iPermiso >= 0 && iClave > iPermiso, 'el permiso se pide en el mismo toque, antes de cualquier espera');
     assert.deepEqual(r.find(x => x[0] === 'subscribe'), ['subscribe', true, 65, 4], 'userVisibleOnly y la clave P-256 sin comprimir (65 bytes, empieza por 4)');
     assert.deepEqual(r.find(x => x[0] === 'showNotification'), ['showNotification', 'Notificaciones activadas en este móvil', 'Así te llegarán los avisos de RWAdar.', 'rwadar-activadas', '/icono-192.png']);
@@ -286,8 +332,11 @@ test('en Chromium: estados claros (denegadas, todavía no disponibles, falta el 
   const esperarTexto = (pagina, re) => pagina.waitForFunction(fuente => new RegExp(fuente).test(document.getElementById('perfilPushEstado')?.textContent || ''), re.source, { timeout: 15000 });
   try {
     const casos = [
-      { nombre: 'denegadas', cfg: { permiso: 'denied' }, estado: ESTADO, espera: /^Has bloqueado las notificaciones de RWAdar en este navegador\. Para permitirlas: en iPhone, Ajustes › Notificaciones › RWAdar/, activar: 'oculto' },
-      { nombre: 'envío apagado', cfg: {}, estado: { ...ESTADO, push_activo: false }, espera: /^Las notificaciones en este móvil todavía no están disponibles: el envío se activará en breve\./, activar: 'bloqueado' },
+      // En Android sin instalar no hay icono de RWAdar: los permisos, desde la barra de la dirección.
+      { nombre: 'denegadas en Chrome', cfg: { permiso: 'denied' }, estado: ESTADO, espera: /^Has bloqueado las notificaciones de RWAdar en este navegador\. Para permitirlas, toca el icono que hay a la izquierda de la dirección › Permisos › Notificaciones/, activar: 'oculto' },
+      { nombre: 'denegadas con la web instalada', cfg: { permiso: 'denied', standalone: true }, estado: ESTADO, espera: /^Has bloqueado las notificaciones de RWAdar en este navegador\. Para permitirlas: en iPhone, Ajustes › Notificaciones › RWAdar; en Android, mantén pulsado el icono de RWAdar/, activar: 'oculto' },
+      // Con el envío apagado se pueden activar (registrarse no envía nada): así se prueban antes de encenderlo para todos.
+      { nombre: 'envío apagado', cfg: {}, estado: { ...ESTADO, push_activo: false }, espera: /^Todavía no hemos empezado a enviarlas: puedes activarlas ya y te llegarán cuando empecemos\. Al activarlas, el navegador te pedirá permiso\./, activar: 'listo' },
       { nombre: 'sin «Avisos de novedades»', cfg: {}, estado: { ...ESTADO, novedades: false, version: null }, espera: /^Para recibirlas, activa antes «Avisos de novedades»\.$/, activar: 'bloqueado' },
     ];
     for (const caso of casos) {
@@ -301,16 +350,33 @@ test('en Chromium: estados claros (denegadas, todavía no disponibles, falta el 
       assert.deepEqual(errores, []);
       await contexto.close();
     }
-    // La clave todavía no existe (null): se pide el permiso en el toque, pero no se suscribe.
-    escenario = { avisos: [], estado: ESTADO, clave: null };
+    // Con el envío apagado, Víctor activa las de su móvil y la acción «prueba» ya tiene a quién ir.
+    escenario = { avisos: [], estado: { ...ESTADO, push_activo: false } };
     {
-      const { contexto, pagina, rastro } = await abrir(navegador, local, { dispositivo: 'Pixel 7', viewport: { width: 390, height: 844 } });
+      const antes = rpc(local, 'registrar_aviso_webpush').length;
+      const { contexto, pagina, errores, rastro } = await abrir(navegador, local, { dispositivo: 'iPhone 13', viewport: { width: 390, height: 844 }, cfg: { standalone: true } });
       await pagina.click('#movilTabMas');
       await pagina.waitForFunction(() => { const b = document.getElementById('perfilPushActivar'); return b && !b.hidden && !b.disabled; }, null, { timeout: 15000 });
+      await pagina.locator('#perfilPush').scrollIntoViewIfNeeded();
+      await captura(pagina, 'perfil-avisos-iphone-envio-apagado-390.png');
       await pagina.click('#perfilPushActivar');
-      await esperarTexto(pagina, /todavía no están disponibles: el envío se activará en breve/);
-      assert.equal((await rastro()).some(x => x[0] === 'subscribe'), false);
-      assert.equal(rpc(local, 'registrar_aviso_webpush').length, 0);
+      await esperarTexto(pagina, /^Notificaciones activadas en este móvil\. Te llegarán cuando empecemos a enviarlas\.$/);
+      const r = await rastro();
+      assert.ok(r.some(x => x[0] === 'requestPermission') && r.some(x => x[0] === 'subscribe'), 'pide permiso y se suscribe');
+      assert.equal(rpc(local, 'registrar_aviso_webpush').length, antes + 1, 'queda registrado (sin enviar nada)');
+      assert.deepEqual(errores, []);
+      await contexto.close();
+    }
+    // La clave todavía no existe (null): no se ofrece «Activar» y no se pide nada.
+    escenario = { avisos: [], estado: ESTADO, clave: null };
+    {
+      const registradas = rpc(local, 'registrar_aviso_webpush').length;
+      const { contexto, pagina, rastro } = await abrir(navegador, local, { dispositivo: 'Pixel 7', viewport: { width: 390, height: 844 } });
+      await pagina.click('#movilTabMas');
+      await esperarTexto(pagina, /^Las notificaciones en este móvil todavía no están disponibles; te lo diremos aquí cuando empecemos a enviarlas\./);
+      assert.equal((await estadoPush(pagina)).activar, 'bloqueado');
+      assert.equal((await rastro()).some(x => x[0] === 'requestPermission' || x[0] === 'subscribe'), false);
+      assert.equal(rpc(local, 'registrar_aviso_webpush').length, registradas);
       await contexto.close();
     }
 
@@ -319,6 +385,8 @@ test('en Chromium: estados claros (denegadas, todavía no disponibles, falta el 
     // «Avisos de novedades», la web no promete avisos de servicio: no los hay.
     for (const caso of [
       { nombre: 'activadas', estado: ESTADO, espera: /^Activadas: este móvil recibe las notificaciones de RWAdar\.$/ },
+      { nombre: 'activadas con el envío apagado', estado: { ...ESTADO, push_activo: false },
+        espera: /^Activadas en este móvil\. Ahora mismo no estamos enviando notificaciones: te llegarán en cuanto empecemos\. Puedes desactivarlas aquí\.$/ },
       { nombre: 'activadas sin «Avisos de novedades»', estado: { ...ESTADO, novedades: false, version: null },
         espera: /^Con «Avisos de novedades» desactivado, este móvil no recibe notificaciones de RWAdar\. Actívalo para volver a recibirlas, o desactívalas aquí\.$/ },
     ]) {

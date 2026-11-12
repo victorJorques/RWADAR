@@ -62,7 +62,8 @@ test('push: siempre enseña la notificación del contrato, sube el contador de I
  const w=worker({ventanas:[pagina]});
  await w.push({v:1,titulo:'2 fichas nuevas en el radar de RWAdar',texto:'Consulta en el radar qué ha entrado.',url:ORIGEN+'/#emisiones',etiqueta:'rwadar-12'});
  assert.deepEqual(JSON.parse(JSON.stringify(w.mostradas)),[{titulo:'2 fichas nuevas en el radar de RWAdar',body:'Consulta en el radar qué ha entrado.',
-  icon:'/icono-192.png',badge:'/icono-192.png',tag:'rwadar-12',data:{url:ORIGEN+'/#emisiones'}}]);
+  icon:'/icono-192.png',tag:'rwadar-12',data:{url:ORIGEN+'/#emisiones'}}]);
+ assert.equal('badge' in w.mostradas[0],false,'sin «badge»: con un icono opaco Chrome en Android pinta un cuadrado blanco');
  assert.equal(w.contador(),1);assert.deepEqual(w.insignias,[1]);
  assert.deepEqual(JSON.parse(JSON.stringify(pagina.recibidos)),[{tipo:'aviso-nuevo'}]);
  await w.push({v:1,titulo:'Lección nueva',texto:'Ya está la lección 7.',url:'/academy/',etiqueta:'rwadar-13'});
@@ -110,6 +111,22 @@ test('notificationclick: con RWAdar ya abierta, la enfoca y la lleva al aviso si
  // Un enlace ajeno, con la pestaña abierta: va a Inicio (la misma URL): solo se enfoca.
  await w.dispatch('notificationclick',{notification:{close(){},data:{url:'https://evil.test/'}}});
  assert.deepEqual(visitas,[ORIGEN+'/#emisiones']);assert.deepEqual(w.abiertas,[]);
+});
+test('notificationclick: un aviso (?avisos=1) con la portada abierta le pide que abra la lista de avisos, con la baja, sin recargar',async()=>{
+ const visitas=[],mensajes=[];
+ const pestana={url:ORIGEN+'/#emisiones',focus:async()=>pestana,navigate:async url=>{visitas.push(url);return pestana;},postMessage(m){mensajes.push(m);}};
+ const w=worker({ventanas:[pestana]});
+ await w.dispatch('notificationclick',{notification:{close(){},data:{url:ORIGEN+'/?avisos=1#emisiones'}}});
+ assert.deepEqual(JSON.parse(JSON.stringify(mensajes)),[{tipo:'abrir-avisos'}]);assert.deepEqual(visitas,[]);assert.deepEqual(w.abiertas,[]);
+ // Sin la web abierta: se abre en la lista de avisos.
+ const sola=worker();
+ await sola.dispatch('notificationclick',{notification:{close(){},data:{url:ORIGEN+'/?avisos=1'}}});
+ assert.deepEqual(sola.abiertas,[ORIGEN+'/?avisos=1']);
+ // Abierta en otra página (la Academy, sin campana): se lleva a la portada.
+ const academia={url:ORIGEN+'/academy/',focus:async()=>academia,navigate:async url=>{visitas.push(url);return academia;},postMessage(m){mensajes.push(m);}};
+ const otra=worker({ventanas:[academia]});
+ await otra.dispatch('notificationclick',{notification:{close(){},data:{url:ORIGEN+'/?avisos=1'}}});
+ assert.deepEqual(visitas,[ORIGEN+'/?avisos=1']);assert.equal(mensajes.length,1);
 });
 test('mensajes de la página: «avisos-vistos» pone el contador a 0, quita el número y las notificaciones de RWAdar; «avisos-pendientes» lo iguala',async()=>{
  const w=worker();

@@ -25,6 +25,9 @@
   --senal:#25E39A;--senal-p:#1FC98A;--senal-cl:#6BF0C0;--en-senal:#06140E;
   --senal-t:rgba(37,227,154,.12);--senal-18:rgba(37,227,154,.2);--senal-30:rgba(37,227,154,.34);
   --coral:#FF3B30;--coral-25:rgba(255,59,48,.32);
+  /* Globos con número (campana, Perfil): blanco sobre este rojo da 4,83:1
+     (WCAG AA para 11 px en negrita); sobre --coral solo daba 3,55:1. */
+  --globo:#D92D20;
   --aviso:#FFB454;--aviso-t:rgba(255,180,84,.12);--alarma:#FF8A80;--alarma-t:rgba(255,59,48,.14);
 
   --display:'Geist',system-ui,-apple-system,'Segoe UI Variable Display','Segoe UI',sans-serif;
@@ -2342,7 +2345,7 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
   background:var(--ton);color:var(--tx);cursor:pointer;transition:var(--tr);--bp:var(--ton-2)}
 @media (hover:hover){.hdr-campana:hover{background:var(--bp)}}
 .campana-n{position:absolute;top:2px;right:0;display:grid;place-items:center;min-width:19px;height:19px;padding:0 5px;
-  border:2px solid var(--noche);border-radius:999px;background:var(--coral);color:#fff;font:700 .6875rem/1 var(--body);
+  border:2px solid var(--noche);border-radius:999px;background:var(--globo);color:#fff;font:700 .6875rem/1 var(--body);
   letter-spacing:0;pointer-events:none}
 .campana-n[hidden]{display:none}
 .campana-n-linea{position:static;border-color:transparent;margin-left:4px}
@@ -2356,7 +2359,7 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
   .hdr-in:has(#btnAvisos:not([hidden])) .wm small{display:none}
 }
 /* Globo de Perfil cuando son avisos sin leer (manda sobre el de guardados). */
-.movil-nav-insignia.movil-nav-insignia-avisos{background:var(--coral);color:#fff}
+.movil-nav-insignia.movil-nav-insignia-avisos{background:var(--globo);color:#fff}
 /* Diálogo de la campana. */
 .escaparate-dialogo.avisos-dialogo{height:fit-content;max-width:520px}
 .avisos-dialogo .escaparate-dialogo-marco{height:auto}
@@ -2370,6 +2373,7 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
   border-radius:var(--r-p);background:var(--ton);color:var(--tx);font-size:1.25rem;line-height:1;cursor:pointer}
 @media (hover:hover){.avisos-dialogo-cab button:hover{background:var(--ton-2)}}
 .avisos-dialogo-cuerpo{padding:6px 18px 18px;overflow-y:auto;max-height:calc(100dvh - 180px)}
+.avisos-baja{margin:14px 0 0;color:var(--tx-2);font-size:.9rem;line-height:1.45}
 .avisos-gestionar{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin-top:12px;padding:0 12px;
   border:var(--bd);border-radius:var(--r-m);background:none;color:var(--senal);font:600 .9rem/1.2 var(--body);cursor:pointer}
 /* Bandeja: punto en los no leídos y «Marcar como leídos». */

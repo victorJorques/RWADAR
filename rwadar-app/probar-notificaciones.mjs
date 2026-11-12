@@ -1246,6 +1246,12 @@ if (hayBash) {
       && vista[0].data.url === carga.url && vista[0].icon === '/icono-192.png')
     && isDeepStrictEqual(vistas.map((v) => v.carga.url), ['https://rwadar.pages.dev/?avisos=1', 'https://rwadar.pages.dev/?avisos=1#emisiones',
       'https://rwadar.pages.dev/?avisos=1', 'https://rwadar.pages.dev/?avisos=1']));
+  // La baja en cada notificación (LSSI, art. 21.2, párr. 2): ?avisos=1 abre la
+  // lista de la campana, que lleva la frase de la baja y el camino a Perfil.
+  paso('contrato web: ?avisos=1 abre la lista de avisos (por la dirección o por el service worker) y esa lista lleva la baja: «¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.»',
+    /searchParams\.get\('avisos'\)==='1'/.test(WEBJS) && WEBJS.includes("tipo==='abrir-avisos'")
+    && WEBJS.includes('¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.')
+    && /data-avisos-gestionar/.test(WEBJS) && SW.includes("tipo: 'abrir-avisos'"));
   const rpcs = ['registrar_aviso_webpush', 'quitar_aviso_webpush', 'mi_aviso_webpush_registrado', 'clave_publica_webpush'];
   const concedidas = [...SQL32.matchAll(/grant execute on function public\.(\w+)\(/g)].map((m) => m[1]);
   paso('contrato web: las 4 RPC que concede la 32 a authenticated son las que llama la web y las que deja pasar la pasarela',
