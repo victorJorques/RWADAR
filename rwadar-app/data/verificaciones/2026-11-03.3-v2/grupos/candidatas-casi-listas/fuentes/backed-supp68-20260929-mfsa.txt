@@ -266,10 +266,10 @@ agreements with InCore Bank AG.
         j.   Amendments in section “3.6.1.1 Directors”
 
              1. In this section, in the fifth column of the list the following text shall be deleted “as alternate
-                director to Mark Greenberg” and the following text “Business Manager” shall be replaced
+                director to [nombre recortado]” and the following text “Business Manager” shall be replaced
                 by “Chief Executive Officer, Chief Financial Officer and Alternate Director”, reading the col-
                 umn as follows:
-       Andrew Price               c/o First Floor, La Chasse Chambers, Ten La         Chief Executive Officer, Chief
+       [nombre recortado]               c/o First Floor, La Chasse Chambers, Ten La         Chief Executive Officer, Chief
                                   Chasse, St. Helier, JE2 4UE, Jersey                 Financial Officer and Alter-
                                                                                       nate Director
 
@@ -780,7 +780,7 @@ agreements with InCore Bank AG.
 
 
 
-              Lindsay Anne Bracegirdle
+              [nombre recortado]
               Director
 
 

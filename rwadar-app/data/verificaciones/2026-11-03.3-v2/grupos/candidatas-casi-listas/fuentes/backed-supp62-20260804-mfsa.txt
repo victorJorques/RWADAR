@@ -782,7 +782,7 @@ rangements, custody agreements and security documentation throughout the Base Pr
 
     l~L~nx       Ø
 
- Lindsay Anne Bracegirdle
+ [nombre recortado]
  Director
 
 
@@ -3896,8 +3896,8 @@ Website Privacy Notice    The website privacy notice annexed to this Base Prospe
           GmbH, there have been no material changes in the Issuer's borrowing and funding structure.
 
           Furthermore, aside from the change of control, the only changes are the resignation of Mr.
-          Roberto Klein from the Board of the company, and the appointments of Mr. Mark Greenberg
-          as Director and Mr. Andrew Price as Alternate Director for Mr. Mark Greenberg.
+          Roberto Klein from the Board of the company, and the appointments of Mr. [nombre recortado]
+          as Director and Mr. [nombre recortado] as Alternate Director for Mr. [nombre recortado].
 
 3.1.1.8   Financing of the Issuer's Activities
 
@@ -4024,16 +4024,16 @@ Website Privacy Notice    The website privacy notice annexed to this Base Prospe
 
   Name / entity               Business Address                                  Business occupations
 
-  James Cunningham-           c/o First Floor, La Chasse Chambers, Ten La       Director of Cavendish Fiduci-
+  [nombre recortado]           c/o First Floor, La Chasse Chambers, Ten La       Director of Cavendish Fiduci-
   Davies                      Chasse, St. Helier, JE2 4UE, Jersey               ary (Jersey) Limited
 
-  Lindsay Bracegirdle         c/o First Floor, La Chasse Chambers, Ten La       Director of Cavendish Fiduci-
+  [nombre recortado]         c/o First Floor, La Chasse Chambers, Ten La       Director of Cavendish Fiduci-
                               Chasse, St. Helier, JE2 4UE, Jersey               ary (Jersey) Limited
 
-  Roy Matas                   c/o First Floor, La Chasse Chambers, Ten La       Engineer
+  [nombre recortado]                   c/o First Floor, La Chasse Chambers, Ten La       Engineer
                               Chasse, St. Helier, JE2 4UE, Jersey
 
-  Mark Greenberg              c/o First Floor, La Chasse Chambers, Ten La       Business Manager
+  [nombre recortado]              c/o First Floor, La Chasse Chambers, Ten La       Business Manager
                               Chasse, St. Helier, JE2 4UE, Jersey
 
            In accordance with the company’s Articles of Association, alternate directors may be ap-
@@ -4042,9 +4042,9 @@ Website Privacy Notice    The website privacy notice annexed to this Base Prospe
            pointment does not confer permanent board membership and is subject to revocation by
            the appointing director.
 
-  Andrew Price as alter-      c/o First Floor, La Chasse Chambers, Ten La       Business Manager
-  nate director to Mark       Chasse, St. Helier, JE2 4UE, Jersey
-  Greenberg
+  [nombre recortado] as alter-      c/o First Floor, La Chasse Chambers, Ten La       Business Manager
+  nate director to [nombre       Chasse, St. Helier, JE2 4UE, Jersey
+  recortado]
 
 
 
@@ -9841,7 +9841,7 @@ security related risks.
 
 
 ____________________________
-Lindsay Anne Bracegirdle
+[nombre recortado]
 Director
 
 
