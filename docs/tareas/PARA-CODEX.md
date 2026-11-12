@@ -6,6 +6,67 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (12) · Claude · Corrector: anexo legal y retoques unidos, frases del anexo y la baja a la vista en Android
+
+Víctor: «Haz lo que tengas que hacer para que funcione, con lógica, que no me
+suponga a mí ni a RWAdar nada malo obvio». Commits en
+`claude/sharp-babbage-m3bbbw`, **sin push. Sin publicar; Supabase y EAS sin
+tocar; el envío sigue apagado.** Ni SQL ni migraciones.
+
+- **Uniones** (`git merge --no-ff`): retoques (`8f2683b`, entrada 10) y anexo
+  legal (`a62ec63`). Las dos traían una entrada «(10)» aquí: la legal pasa a
+  ser la (11) y esta, la (12).
+- **Frases junto al botón = las del anexo (2.4)**, palabra por palabra y con
+  su inglés. `probar-web` comprueba ahora que coinciden con el anexo.
+  - Web (`3ae3469`): párrafo propio bajo «Activar/Desactivar», también con
+    ellas activadas (para quien las activó con la web n.º 71): «El servicio de
+    tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no
+    puede leer su texto. Si no las activas, seguirás viendo los avisos en la
+    campana. Más en Privacidad.», con enlace a `/privacidad#garantias-push`.
+    Sustituye a la provisional, que decía «de su fabricante» (falso en Samsung
+    Internet y Edge de Android, que entregan por Google).
+  - App (`3c90ea8`): la frase del latido de Firebase, solo en Android y
+    después del texto del identificador («envía también»).
+- **App, condición nueva C7 (antes R2)** (`3c90ea8`): al abrir una
+  notificación de novedades que lleva a Buscar o a la Academy (donde no está la
+  tarjeta «Avisos»), sale arriba «¿No quieres estos avisos? Desactívalos en
+  Perfil o en los ajustes del móvil.», con enlace a Perfil › Avisos y una ×.
+  La bienvenida no. Es la misma vara que la web (entrada 8).
+- **Anexo corregido** (`8a94cc6`), con registro, `encargados/README.md` e
+  INTERNO:
+  - C5 pide la OTA **publicada y ya en uso**: la app aplica una OTA en el
+    arranque siguiente, así que hay que enviarla unos días antes y mirar en
+    EAS que la mayoría de arranques la usan. Quien abra la app tras mucho
+    tiempo verá una vez el texto antiguo. El arreglo completo (`push_activo`
+    según la versión del texto: RPC nueva y migración) no compensa; anotado;
+  - punto 1.3: lo más probable es que el envío **sí** sea una transferencia de
+    RWAdar. Mozilla queda como riesgo bajo aceptado a sabiendas, con una salida
+    sin coste si Víctor la quiere: no ofrecerlas en Firefox;
+  - R1 (baja a la vista en la campana) y R6 (sin «el enlace de cada correo»),
+    hechas.
+- **Pruebas** (sobre `8a94cc6`):
+  - `npm test` en la raíz, salida 0:
+    - `rwadar-app`: 30 scripts con «0 fallidas» (`probar-avisos-registrados`
+      275/275, `probar-notificaciones` 94/94), 11/11 y `.github` 103/103;
+    - `probar-web` 679/679 (una nueva), 70 páginas y RSS, 40 de precarga;
+    - `rwadar-movil` 593 y 2 omitidas;
+    - herramientas bien (diccionarios web/móvil idénticos);
+    - `rwadar-acceso` 262/262, con Chromium.
+  - `campana-avisos-navegador` 3/3 con capturas: la frase nueva bajo el botón,
+    con «Privacidad» en verde y subrayado.
+  - La prueba nueva de la app falla si se quita la baja tras la notificación
+    (28/29) y vuelve a 29/29 al restaurarla.
+  - Guardián de OTA con `--base fa30779`: compatible, 1.4.2(24).
+  - gitleaks 8.30.1 (`rwadar-app/gitleaks.toml`) sobre los commits desde
+    `d927c09` y sobre el diff: sin hallazgos.
+- **¿`activar-push` hoy? No.** Faltan:
+  - publicar la web (C1 y C2);
+  - la OTA, y que lleve unos días en uso (C5 y C7);
+  - GitHub Team o el envío fuera de GitHub (C3);
+  - las pruebas en el iPhone de Víctor y en un Android físico (C4 y C6).
+- **Para publicar** (con orden de Víctor): «Publicar web» y la OTA. En
+  Supabase no hay nada que aplicar.
+
 ## 12 de noviembre de 2026 (11) · Claude · Anexo legal de las notificaciones: «sí, con condiciones»
 
 Víctor: «Haz lo que tengas que hacer para que funcione, con lógica, que no me
