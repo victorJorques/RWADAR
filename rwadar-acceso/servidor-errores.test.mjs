@@ -49,7 +49,12 @@ test('JSON con parámetros y mayúsculas conserva el contrato de acceso', async 
       : [{ id: UID }]));
     const response = await e.run({ type });
     assert.equal(response.status, 200);
-    assert.match(response.headers.get('set-cookie'), /^__Host-rwadar-acceso=.*; Path=\/; HttpOnly; Secure; SameSite=Lax$/);
+    // Dos cookies desde el 12/11/2026: el pase y la de renovar (aquí Auth no da
+    // refresh_token, así que se borra: no queda la de otra sesión).
+    const [pase, renovar, ...otras] = response.headers.getSetCookie();
+    assert.match(pase, /^__Host-rwadar-acceso=.*; Path=\/; HttpOnly; Secure; SameSite=Lax$/);
+    assert.equal(renovar, '__Host-rwadar-renovar=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0');
+    assert.deepEqual(otras, []);
     assert.equal((await response.json()).usuario.id, UID);
     assert.equal(e.calls(), 3);
   }

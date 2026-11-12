@@ -191,11 +191,13 @@ function estadoServidor(cambios = {}) {
     correo_activo: false, push_activo: true, ...cambios };
 }
 
-function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), recientes = [], token = null, registrado = null, plataforma = 'android' }) {
+function perfil({ capacidad, sistema = {}, servidor = estadoServidor(), recientes = [], token = null, registrado = null, plataforma = 'android', falla = {} }) {
   const h = crearReact(), rpc = [], sdk = [], local = { leidos: [], token, renovado: null };
   let estado = servidor;
   const cliente = { rpc(nombre, args) {
     rpc.push([nombre, args]);
+    // falla: { rpc: estado HTTP } hace que esa llamada falle como lo haría la base.
+    if (falla[nombre]) return { abortSignal: async () => ({ data: null, error: { code: 'PGRST301', message: 'fallo de prueba' }, status: falla[nombre] }) };
     let data = null;
     if (nombre === 'estado_mis_avisos') data = estado;
     if (nombre === 'configurar_avisos_novedades') { estado = { ...estado, novedades: args.p_activar }; data = estado; }
@@ -328,6 +330,37 @@ test('Perfil con la 1.4.2: permiso denegado ofrece los ajustes y no registra nad
   boton(denegado, 'Abrir ajustes').props.onPress();
   assert.ok(q.sdk.includes('ajustes'));
   p.h.desmontar(); q.h.desmontar();
+});
+
+// 12/11/2026: nada se queda atascado. Sin red al pedir el token (lib/avisos.js
+// lo corta a los 20 s) se dice y se puede volver a intentar; sin sesión, se dice.
+test('Perfil con la 1.4.2: sin red al pedir el token lo dice y el interruptor sigue a mano', async () => {
+  const p = perfil({ capacidad: true, sistema: { token: { ok: false, estado: 'sin-red' } } });
+  await p.esperar();
+  const panel = await p.pulsar('Notificaciones en este móvil');
+  assert.ok(texto(panel).includes('No hemos podido conectar para activarlas. Revisa la conexión y vuelve a intentarlo.'));
+  const movil = boton(panel, 'Notificaciones en este móvil');
+  assert.equal(movil.props.disabled, false, 'se puede volver a intentar');
+  assert.equal(movil.props.accessibilityState.busy, false);
+  assert.equal(p.rpc.some(([n]) => n === 'registrar_aviso_push'), false);
+  p.h.desmontar();
+});
+
+test('Perfil: si la base dice «sin sesión» al cargar o al activar, «Tu sesión ha caducado: vuelve a entrar»', async () => {
+  const p = perfil({ capacidad: true, falla: { estado_mis_avisos: 401 } });
+  let panel = await p.esperar();
+  assert.ok(texto(panel).includes('Tu sesión ha caducado: vuelve a entrar.'));
+  assert.ok(boton(panel, 'Reintentar'), 'con «Reintentar» para después de entrar');
+  const q = perfil({ capacidad: true, falla: { registrar_aviso_push: 401 } });
+  await q.esperar();
+  panel = await q.pulsar('Notificaciones en este móvil');
+  assert.ok(texto(panel).includes('Tu sesión ha caducado: vuelve a entrar.'));
+  assert.equal(boton(panel, 'Notificaciones en este móvil').props.disabled, false);
+  // Con otro fallo de la base, el mensaje de siempre.
+  const r = perfil({ capacidad: true, falla: { estado_mis_avisos: 503 } });
+  panel = await r.esperar();
+  assert.ok(texto(panel).includes('No se pudieron cargar tus avisos. Desliza hacia abajo para reintentar.'));
+  p.h.desmontar(); q.h.desmontar(); r.h.desmontar();
 });
 
 test('Perfil con la 1.4.2 y el push de la base apagado: no se ofrece ni se consulta el sistema', async () => {
@@ -1071,7 +1104,9 @@ test('el panel y la tarjeta se renderizan también con React y react-native-web 
       estado: { servidor, movil, procesando: '', mensaje: '', error: '' }, onAlternarNovedades() {}, onAlternarMovil() {} }));
     assert.match(html, /role="switch"/);
     assert.match(html, /Avisos de novedades \(correo y móvil\)/);
-    assert.match(html, /Información básica sobre tus datos\. Responsable: Víctor Manuel Jorques Granero \(RWAdar\)\./);
+    assert.match(html, /Información básica sobre tus datos\. Responsable: el titular de RWAdar \(persona física\), identificado con nombre, NIF y domicilio en el aviso legal\./);
+    // 12/11/2026: el nombre del titular solo sale en el aviso legal y la privacidad.
+    assert.doesNotMatch(html, /Jorques/);
     assert.doesNotMatch(html, /undefined|ExponentPushToken/);
   }
   const baja = renderToStaticMarkup(React.createElement(modulo.AvisoBajaNotificacion, { onDesactivar() {}, onOcultar() {} }));

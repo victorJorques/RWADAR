@@ -118,6 +118,9 @@
   }
   function cambiar(siguiente) {
     vista = siguiente; $('clave').value = ''; $('condiciones').checked = false; $('avisos-novedades').checked = false;
+    // «Mantener la sesión iniciada en este dispositivo»: solo al entrar y, cada
+    // vez que se abre el formulario, desmarcada (la persona la pide marcándola).
+    $('mantener').checked = false; $('campo-mantener').hidden = vista !== 'entrar';
     $('siguiente-alta').hidden = true; $('acciones').hidden = false; form.hidden = false;
     const alta = vista === 'registrar', nueva = vista === 'nueva-clave';
     $('campo-nombre').hidden = !alta; $('campo-condiciones').hidden = !alta;
@@ -223,6 +226,10 @@
     if (vista === 'registrar' && !data.aceptaCondiciones) { mensaje('Confirma que tienes 18 años o más y acepta las condiciones y la privacidad para registrarte.'); return; }
     if (['registrar', 'nueva-clave'].includes(vista) && data.clave.length < 12) { mensaje('Usa una contraseña de al menos 12 caracteres.'); return; }
     if (vista === 'nueva-clave') data.access_token = enlace?.access_token;
+    // Booleano estricto y solo al entrar: el servidor pone entonces Max-Age a las
+    // dos cookies de la sesión (30 días la de renovar); sin marcar, se borran al
+    // cerrar el navegador.
+    if (vista === 'entrar') data.mantener = $('mantener').checked === true;
     $('clave').value = ''; ocupado = true; $('enviar').disabled = true;
     try {
       await terminarCierre();
@@ -246,7 +253,11 @@
     if (enlace.tipo === 'recovery') { form.hidden = false; $('identidad').hidden = true; cambiar('nueva-clave'); return; }
     ocupado = true; $('adoptar').disabled = true;
     try {
-      await terminarCierre(); const result = await api('adoptar', { access_token: enlace.access_token, confirmarIdentidad: true });
+      // El refresh_token del enlace, si lo trae, para que la sesión se renueve
+      // (el servidor lo canjea en el acto); «mantener», booleano estricto.
+      await terminarCierre(); const result = await api('adoptar', { access_token: enlace.access_token,
+        ...(enlace.refresh_token ? { refresh_token: enlace.refresh_token } : {}),
+        mantener: $('mantener-enlace').checked === true, confirmarIdentidad: true });
       await confirmarSesion(result); const alta = enlace.tipo === 'signup'; enlace = null;
       if (alta) regresarTrasConfirmar(); else regresar();
     }
@@ -261,7 +272,10 @@
     if (p.has('error') || p.has('error_code') || p.has('error_description') || !['signup', 'recovery'].includes(p.get('type'))) {
       mensaje('El enlace no es válido o ha caducado. Solicita uno nuevo.');
     } else {
-      enlace = { access_token: p.get('access_token'), tipo: p.get('type') }; form.hidden = true;
+      const refresh = p.get('refresh_token') || '';
+      enlace = { access_token: p.get('access_token'), tipo: p.get('type'),
+        refresh_token: /^[A-Za-z0-9._~+\/=-]{8,1024}$/.test(refresh) ? refresh : '' }; form.hidden = true;
+      $('mantener-enlace').checked = false; $('campo-mantener-enlace').hidden = enlace.tipo === 'recovery';
       api('inspeccionar', { access_token: enlace.access_token }).then(result => {
         $('correo').value = result.usuario.correo;
         $('correo-enlace').textContent = 'Este enlace corresponde a ' + result.usuario.correo + '. Continúa solo si es tu cuenta.';

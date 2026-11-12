@@ -3163,13 +3163,50 @@ prueba('la privacidad identifica la medición agregada, sus límites y su estado
   /Do Not Track o Global Privacy Control/.test(privacidad) && /no representan personas únicas/.test(privacidad) &&
   /no permite reconstruir el tráfico anterior/.test(privacidad) &&
   /Cloudflare Pages/.test(privacidad) && /cloudflare-customer-dpa/.test(privacidad));
-prueba('la privacidad explica cookie necesaria, enlaces limpios y retirada de las copias PWA',
-  /cookie de sesión necesaria, protegida con HttpOnly, Secure y SameSite/.test(privacidadLineal) &&
-  /el JavaScript no puede leerla/.test(privacidadLineal) &&
+prueba('la privacidad explica las cookies necesarias, enlaces limpios y retirada de las copias PWA',
+  /dos cookies necesarias para tu sesión, protegidas con HttpOnly, Secure y SameSite/.test(privacidadLineal) &&
+  /el JavaScript no puede leerlas/.test(privacidadLineal) &&
   /Deja de autorizar al caducar o cerrar sesión/.test(privacidadLineal) &&
   /se canjean una vez y se\s+retiran de la dirección/.test(privacidad) &&
   /history\.replaceState\(null,'',location\.pathname\+location\.search\)/.test(js) &&
   /elimina la antigua caché PWA/.test(privacidadLineal));
+/* Sesión que se mantiene (12/11/2026). La casilla de /acceso sale sin marcar y
+   solo al entrar; su nota, la privacidad y el servidor dicen lo mismo: dos
+   cookies, cuál es cada una, para qué, cuánto duran (una hora y 30 días con la
+   casilla; hasta cerrar el navegador sin ella) y que son estrictamente
+   necesarias para la sesión que se pide. */
+{
+  const enComun = require('./rwadar-site/assets/idioma-en-20261022.js');
+  const accesoHTML = lee('acceso.html'), accesoJS = lee('assets/acceso.js');
+  const ETIQUETA_MANTENER = 'Mantener la sesión iniciada en este dispositivo';
+  const NOTA_MANTENER = 'Si la marcas, este navegador guarda tu sesión con una cookie hasta 30 días desde la última vez que la usas, aunque lo cierres. Se borra al cerrar sesión. No la marques en un dispositivo compartido. Más en';
+  const diasServidor = Number((servidorAcceso.match(/const MANTENER_S = (\d+) \* 24 \* 60 \* 60;/) || [])[1]);
+  prueba('/acceso: casilla «Mantener la sesión iniciada en este dispositivo» sin marcar, solo al entrar, con su nota y su inglés',
+    accesoHTML.includes('<div id="campo-mantener" class="mantener">\n      <label class="consentimiento"><input id="mantener" type="checkbox">' + ETIQUETA_MANTENER + '</label>\n      <p id="nota-mantener" class="consentimiento">' + NOTA_MANTENER + ' <a href="/privacidad#cookies-sesion">Privacidad</a>.</p>\n    </div>') &&
+    !/<input id="mantener"[^>]*\bchecked\b/.test(accesoHTML) &&
+    accesoJS.includes("$('mantener').checked = false; $('campo-mantener').hidden = vista !== 'entrar';") &&
+    accesoJS.includes("if (vista === 'entrar') data.mantener = $('mantener').checked === true;") &&
+    // Al confirmar la cuenta desde el correo: la misma casilla, sin marcar y fuera del cambio de contraseña.
+    accesoHTML.includes('<div id="campo-mantener-enlace" class="mantener" hidden>\n      <label class="consentimiento"><input id="mantener-enlace" type="checkbox">' + ETIQUETA_MANTENER + '</label>\n      <p class="consentimiento">' + NOTA_MANTENER + ' <a href="/privacidad#cookies-sesion">Privacidad</a>.</p>\n    </div>') &&
+    !/<input id="mantener-enlace"[^>]*\bchecked\b/.test(accesoHTML) &&
+    accesoJS.includes("$('mantener-enlace').checked = false; $('campo-mantener-enlace').hidden = enlace.tipo === 'recovery';") &&
+    accesoJS.includes("mantener: $('mantener-enlace').checked === true, confirmarIdentidad: true });") &&
+    enComun[ETIQUETA_MANTENER] === 'Keep me signed in on this device' && /^If you tick it, .* More in$/.test(enComun[NOTA_MANTENER] || ''));
+  prueba('privacidad: nombre, finalidad y duración de las dos cookies de la sesión, estrictamente necesarias; 30 días como en el servidor',
+    diasServidor === 30 &&
+    /<tr id="cookies-sesion">/.test(privacidad) &&
+    privacidadLineal.includes('<span class="codigo">__Host-rwadar-acceso</span> lleva el pase de tu sesión, que caduca en una hora;') &&
+    privacidadLineal.includes('<span class="codigo">__Host-rwadar-renovar</span>, el código con el que el servidor de la web pide un pase nuevo sin volver a pedirte la contraseña.') &&
+    privacidadLineal.includes('Son estrictamente necesarias para darte la sesión que pides y solo sirven para eso (LSSI, art. 22.2).') &&
+    privacidadLineal.includes('<b>Cuánto duran:</b> hasta que cierras el navegador. Si al entrar (o al confirmar tu cuenta desde el correo) marcas «' + ETIQUETA_MANTENER + '» (sale sin marcar), la del pase dura una hora y se renueva sola, y la de renovar, ' + diasServidor + ' días desde la última vez que usas tu cuenta en ese navegador, aunque lo cierres. Esa duración larga solo se aplica si la pides marcando la casilla, y la retiras cerrando sesión.') &&
+    // Sin llamarlas «de sesión» (en la guía de la AEPD, las que se borran al cerrar el navegador).
+    !/dos cookies de sesión/.test(privacidadLineal) &&
+    privacidadLineal.includes('al salir o al borrar la cuenta se borran las dos y la sesión se cierra también en el servicio de autenticación (si en ese momento no responde, las cookies se borran igual de tu navegador). Al volver a entrar en el mismo navegador, la sesión anterior se cierra.') &&
+    privacidadLineal.includes('<li><b>Datos locales:</b> la sesión web usa dos cookies necesarias (apartado 2): sin marcar «' + ETIQUETA_MANTENER + '», se borran al cerrar el navegador; con ella, la del pase dura una hora y la de renovar, ' + diasServidor + ' días desde la última vez que usas tu cuenta en ese navegador.') &&
+    NOTA_MANTENER.includes('hasta ' + diasServidor + ' días') &&
+    /const COOKIE_RENOVAR = '__Host-rwadar-renovar';/.test(servidorAcceso) &&
+    /const ATRIBUTOS_COOKIE = '; Path=\/; HttpOnly; Secure; SameSite=Lax';/.test(servidorAcceso));
+}
 // 12/11/2026: en la web las notificaciones ya se pueden activar aunque el envío esté apagado
 // (llegarán cuando empecemos); en la app, el botón espera al envío (revisión del 12/11).
 prueba('la privacidad describe favoritos locales y las notificaciones del móvil (en la web ya activables; llegan cuando empecemos), sin prometer borrado histórico',
@@ -3196,7 +3233,7 @@ prueba('privacidad distingue consulta pública y cuenta confirmada para funcione
   /correo para confirmar la dirección/.test(privacidadLineal) &&
   /enlace para poner una contraseña nueva/.test(privacidadLineal) &&
   /cuenta de Gmail de RWAdar/.test(privacidadLineal) &&
-  /cookie de sesión necesaria/.test(privacidadLineal) &&
+  /cookies necesarias para tu sesión/.test(privacidadLineal) &&
   /borrar tu cuenta tú mismo/.test(privacidadLineal) &&
   /opiniones y\s+los avisos por correo siguen en pausa/i.test(privacidadLineal) &&
   /Las notificaciones en el móvil solo llegan si\s+las activas tú en Perfil › Avisos/.test(privacidadLineal) &&
@@ -3350,14 +3387,17 @@ prueba('privacidad: los datos locales cuentan la vuelta a la lección de 24 hora
   /\n  limpiarVolver\(\);\n/.test(accesoJS));
 // Texto versionado v2 y la información básica (fuera de la versión), en /acceso y en Perfil.
 const TEXTO_AVISOS_V2 = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en ';
-const INFO_DATOS = 'Información básica sobre tus datos. Responsable: Víctor Manuel Jorques Granero (RWAdar). Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en ';
+const INFO_DATOS = 'Información básica sobre tus datos. Responsable: el titular de RWAdar (persona física), identificado con nombre, NIF y domicilio en el aviso legal. Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en ';
+// 12/11/2026: el nombre del titular ya no sale en la información básica (petición de Víctor); en la web,
+// «aviso legal» enlaza a sus datos (/privacidad#aviso-legal), que son lo único que lo identifica.
+const INFO_DATOS_HTML = INFO_DATOS.replace(' domicilio en el aviso legal.', ' domicilio en el <a href="/privacidad#aviso-legal">aviso legal</a>.');
 // 12/11/2026: Perfil › Avisos encendido en la web; la casilla del alta, con su propio interruptor, sigue apagada.
 prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada y Perfil › Avisos encendido',
   /Tengo 18 años o más, acepto las <a href="\/privacidad#condiciones">condiciones<\/a> y he leído la <a href="\/privacidad">privacidad<\/a>\./.test(accesoHTML) &&
   accesoHTML.includes('<label id="campo-avisos-novedades" hidden class="consentimiento"><input id="avisos-novedades" type="checkbox">' + TEXTO_AVISOS_V2 + '<a href="/privacidad#avisos-novedades">Privacidad</a>.</label>') &&
-  accesoHTML.includes('<div id="info-datos" hidden class="consentimiento">' + INFO_DATOS + '<a href="/privacidad">Privacidad</a>.</div>') &&
+  accesoHTML.includes('<div id="info-datos" hidden class="consentimiento">' + INFO_DATOS_HTML + '<a href="/privacidad">Privacidad</a>.</div>') &&
   panelPerfilHTML.includes('<span>' + TEXTO_AVISOS_V2 + '<a href="/privacidad#avisos-novedades">Privacidad</a>.</span>') &&
-  panelPerfilHTML.includes('<p class="perfil-aviso-detalle" id="perfilNovedadesDatos">' + INFO_DATOS + '<a href="/privacidad">Privacidad</a>.</p>') &&
+  panelPerfilHTML.includes('<p class="perfil-aviso-detalle" id="perfilNovedadesDatos">' + INFO_DATOS_HTML + '<a href="/privacidad">Privacidad</a>.</p>') &&
   / const VERSION_AVISOS_NOVEDADES='novedades-v2-2026-11-06';/.test(js) &&
   /const AVISOS_CASILLA_ALTA = false;/.test(accesoJS) && !/AVISOS_NOVEDADES_REMOTOS =/.test(accesoJS) &&
   / const AVISOS_NOVEDADES_REMOTOS=true;/.test(js) && / const AVISOS_BANDEJA_REMOTA=true;/.test(js) && / const AVISOS_WEBPUSH_REMOTO=true;/.test(js) &&
@@ -3365,12 +3405,42 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
   /<div id="perfilAvisosNovedades" hidden>\s*<article class="movil-estado">/.test(panelPerfilHTML) &&
   !/<article class="movil-estado"[^>]*\shidden/.test(panelPerfilHTML) &&
   /Los avisos llegarán a la app en una próxima actualización\./.test(panelPerfilHTML));
+// 12/11/2026, Víctor: «No quiero que salga mi nombre aquí». Fuera del aviso legal y la privacidad
+// (LSSI, art. 10; RGPD, art. 13) la web no lo enseña; las direcciones de GitHub no son texto de cara a nadie.
+{
+  const conNombre = [];
+  const recorrer = carpeta => {
+    for (const entrada of fs.readdirSync(carpeta, { withFileTypes: true })) {
+      const ruta = path.join(carpeta, entrada.name);
+      if (entrada.isDirectory()) { recorrer(ruta); continue; }
+      if (!/\.(?:html|js|json|xml|txt|webmanifest)$/.test(entrada.name)) continue;
+      const relativa = path.relative(sitio, ruta).split(path.sep).join('/');
+      if (relativa === 'privacidad.html') continue;
+      if (/Jorques/.test(fs.readFileSync(ruta, 'utf8').replace(/victorJorques/g, ''))) conNombre.push(relativa);
+    }
+  };
+  recorrer(sitio);
+  const enAvisos = require('./rwadar-site/assets/idioma-en-avisos-20261112.js');
+  const enComun = require('./rwadar-site/assets/idioma-en-20261022.js');
+  const avisosCuenta = require('./rwadar-movil/lib/avisos-cuenta.js');
+  // En la web el texto llega en trozos (entre los enlaces): cada uno con su inglés y, juntos, el de la app.
+  const trozos = INFO_DATOS.split(' aviso legal').map(t => t.trim());
+  const ingles = enAvisos[trozos[0]] + ' ' + enAvisos['aviso legal'] + enAvisos[trozos[1]] + ' ' + enComun.Privacidad + '.';
+  prueba(`información básica sin el nombre del titular fuera de la privacidad (con él: ${conNombre.join(', ') || 'ninguno'}), «aviso legal» enlazado y su inglés igual que en la app`,
+    conNombre.length === 0 && /Víctor Manuel Jorques Granero/.test(privacidad) &&
+    INFO_DATOS + 'Privacidad.' === avisosCuenta.INFO_BASICA_ES && trozos.length === 2 &&
+    ingles === avisosCuenta.INFO_BASICA_EN && enComun[avisosCuenta.INFO_BASICA_ES] === avisosCuenta.INFO_BASICA_EN &&
+    js.includes(" const conEnlacesInfoDatos=texto=>conEnlacePrivacidad(texto,'/privacidad')") &&
+    js.includes("'<p class=\"perfil-nota perfil-ayuda\">'+conEnlacesInfoDatos(INFO_DATOS_AVISOS)+'</p>'+"));
+}
 // Campana con número y «Notificaciones en este móvil» (12/11/2026): su inglés va en un diccionario
 // solo de la web (el común es copia exacta del de la app), cargado entre el común y el motor.
 {
   const enComun = require('./rwadar-site/assets/idioma-en-20261022.js');
   const enAvisos = require('./rwadar-site/assets/idioma-en-avisos-20261112.js');
   const textosPush = [...(js.match(/ const TEXTOS_PUSH=\{([\s\S]*?)\n \};/) || [, ''])[1].matchAll(/:'([^']+)'/g)].map(m => m[1]);
+  // Por qué no se han podido activar (12/11/2026): cada motivo, también en inglés.
+  const textosActivar = [...(js.match(/ const TEXTOS_ACTIVAR_PUSH=\{([\s\S]*?)\n \};/) || [, ''])[1].matchAll(/:'([^']+)'/g)].map(m => m[1]);
   const fijos = ['Avisos, ninguno sin leer', 'Tus avisos', 'Ver tus avisos', 'Notificaciones y avisos en Perfil', 'Marcar como leídos', 'Sin leer',
     'Notificaciones en este móvil', 'Activar notificaciones en este móvil', 'Desactivar las notificaciones de este móvil', 'Ver cómo añadirla',
     'Pulsa el botón Compartir (un cuadrado con una flecha hacia arriba).', 'Elige «Añadir a pantalla de inicio» y pulsa Añadir.',
@@ -3383,14 +3453,26 @@ prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada
     'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.',
     // Junto al botón (anexo legal, 2.4): el trozo antes del enlace a Privacidad.
     'El servicio de tu navegador puede estar fuera de la UE: ve la hora de cada aviso, pero no puede leer su texto. Si no las activas, seguirás viendo los avisos en la campana. Más en'];
-  const sinIngles = [...textosPush, ...fijos].filter(t => typeof (enAvisos[t] ?? enComun[t]) !== 'string');
+  const sinIngles = [...textosPush, ...textosActivar, 'Reintentar', 'Entrar de nuevo', ...fijos].filter(t => typeof (enAvisos[t] ?? enComun[t]) !== 'string');
   const scriptsIndex = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(m => m[1]);
   const iComun = scriptsIndex.indexOf('/assets/idioma-en-20261022.js'), iAvisos = scriptsIndex.indexOf('/assets/idioma-en-avisos-20261112.js');
   prueba(`campana y notificaciones: cada texto tiene su inglés (sin traducir: ${sinIngles.join(' | ') || 'ninguno'}) y el diccionario de la web va entre el común y el motor`,
-    textosPush.length === 13 && sinIngles.length === 0 && iComun >= 0 && iAvisos === iComun + 1 &&
+    textosPush.length === 16 && textosActivar.length === 6 && sinIngles.length === 0 && iComun >= 0 && iAvisos === iComun + 1 &&
     scriptsIndex[iAvisos + 1] === '/assets/idioma-20261022.js' &&
     Object.keys(enAvisos).every(k => !Object.hasOwn(enComun, k)) &&
     /const suma=Object\.assign\(\{\},extra,base\);/.test(lee('assets/idioma-en-avisos-20261112.js')));
+  // 12/11/2026, Víctor en su iPhone: el bloque se quedaba en «Comprobando…». Cada llamada lleva plazo y el
+  // fallo se dice: sin sesión, «Entrar de nuevo»; otro fallo, «Reintentar» (las pruebas de Chromium, en
+  // rwadar-acceso/notificaciones-fallos-navegador.test.mjs).
+  prueba('notificaciones: con plazo y nunca «Comprobando…» para siempre (sin sesión, «Entrar de nuevo»; otro fallo, «Reintentar»)',
+    js.includes(' const PLAZO_AVISOS_MS=15000;') &&
+    js.includes("estadoNovedades(await conPlazo(rest('/rpc/estado_mis_avisos'") &&
+    js.includes("conPlazo(rest('/rpc/mi_aviso_webpush_registrado'") && js.includes("conPlazo(rest('/rpc/clave_publica_webpush'") &&
+    js.includes("conPlazo(rest('/rpc/registrar_aviso_webpush'") &&
+    js.includes('data-push-reintentar hidden>Reintentar</button>') && js.includes('data-push-entrar hidden>Entrar de nuevo</button>') &&
+    js.includes("else if(t.closest('[data-push-reintentar]'))reintentarPush();") && js.includes("else if(t.closest('[data-push-entrar]'))entrarPush();") &&
+    /if\(fallo==='sesion'\|\|novedadesError==='sesion'\)return 'sesion-caducada';/.test(js) &&
+    /if\(fallo\|\|novedadesError\)return 'error-comprobar';/.test(js));
   prueba('campana: botones con sesión en las dos cabeceras, número oculto al nacer, anuncio educado y hueco de las notificaciones en Perfil',
     /<button class="hdr-campana campana" id="btnAvisos" type="button" hidden aria-label="Avisos, ninguno sin leer">/.test(html) &&
     /<button class="movil-cabecera-accion movil-campana campana" id="movilAvisos" type="button" hidden aria-label="Avisos, ninguno sin leer">/.test(html) &&

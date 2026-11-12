@@ -6,6 +6,282 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (14) · Claude · Integrador: la sesión que se mantiene, sin el nombre en los avisos y notificaciones web sin atascos
+
+Víctor, en su iPhone con la web en la pantalla de inicio: «Y que al iniciar
+sesión se mantenga porque no se mantiene», «No funciona lo de activar
+notificaciones» y «No quiero que salga mi nombre aquí». Commits en
+`claude/sharp-babbage-m3bbbw`, **sin push. Sin publicar; Supabase y EAS sin
+tocar.** Sin SQL ni migraciones. El detalle de cada parte, en las entradas
+(14a) y (14b) de abajo.
+
+- **Qué cambia, en llano:**
+  1. **La sesión ya no se pierde a la hora.** El servidor de la web guarda
+     también el código de renovación (segunda cookie) y pide un pase nuevo
+     solo. Con la casilla «Mantener la sesión iniciada en este dispositivo»
+     (sale sin marcar; al entrar y, ahora también, al confirmar la cuenta
+     desde el correo) dura 30 días desde el último uso aunque se cierre la
+     web instalada; sin ella, hasta cerrar el navegador.
+  2. **«Notificaciones en este móvil» ya no se queda colgado**, ni en
+     «Comprobando…» ni en «Un momento…»: cada paso tiene plazo, el fallo se
+     dice en llano y hay «Reintentar» o «Entrar de nuevo».
+  3. **Sin el nombre** en la información básica de los avisos (web, `/acceso`
+     y app): «Responsable: el titular de RWAdar (persona física),
+     identificado con nombre, NIF y domicilio en el aviso legal», con enlace.
+- **Uniones** (`git merge --no-ff`): la sesión (`9f8b935`) y el nombre y las
+  notificaciones (`7e157fc`). Solo chocó la parte de arriba de este archivo:
+  quedan las dos entradas como (14a) y (14b).
+- **Revisión aplicada:**
+  - `3222eea` (importante): al activar o desactivar, el registro del service
+    worker, leer y quitar la suscripción y la notificación de muestra no
+    tenían plazo; ahora sí, y al volver a la app un intento de más de un
+    minuto se suelta. La prueba de Chromium de la sesión fallaba a ratos en
+    paralelo (esperaba la dirección por una cadena que ya se cumplía): ahora
+    espera por la ruta.
+  - `a762a88` (menores): un 409 de Supabase al renovar es pasajero (503, no
+    saca a nadie); salir con un pase rechazado renueva y repite el cierre;
+    entrar, reautenticar o confirmar el correo con otra sesión abierta cierra
+    la anterior en Supabase; el enlace del correo canjea su refresh_token y
+    deja las dos cookies; privacidad («dos cookies necesarias para tu
+    sesión», la duración larga solo si se pide) y registro de actividades al
+    día. `6ab4982`: aire bajo la casilla nueva.
+  - Corregido en (14b): las plantillas de Auth **sí se envían hoy** con el
+    nombre completo en el pie (ver abajo).
+- **Pruebas** (árbol de `6ab4982`):
+  - `npm test` en la raíz, salida 0: `rwadar-app` (30 scripts con «0
+    fallidas», entre ellos 275/275, 89/89 y 64/64; 11/11 y `.github`
+    103/103), `probar-web` 683/683, 70 páginas y RSS, 40 de precarga, QR
+    bien, `rwadar-movil` 596 y 2 omitidas, herramientas bien (diccionarios
+    de la web y la app idénticos) y `rwadar-acceso` 311/311 con Chromium,
+    en paralelo;
+  - `node --test rwadar-acceso/*.test.mjs` aparte, dos veces: 307/307 (antes
+    de las correcciones menores) y 311/311;
+  - nuevas: 5 casos de Chromium con el navegador colgado al activar y al
+    desactivar, y 4 del servidor (409, salir con el pase rechazado, la
+    sesión anterior cerrada y el enlace con refresh_token);
+  - mutaciones, restauradas y comprobadas con `cmp`: con el JS de antes o
+    sin soltar al volver a la app, falla la prueba de Chromium; quitando
+    cada arreglo del servidor, falla su prueba (4 de 4);
+  - en Chromium, el enlace del correo enseña la casilla sin marcar (no en
+    el de cambiar la contraseña) y manda `refresh_token` y `mantener`;
+  - guardián de OTA con `--base fa30779`: compatible, 1.4.2(24);
+  - gitleaks 8.30.1 (`rwadar-app/gitleaks.toml` y por defecto) sobre `git
+    diff origin/main...HEAD` y sobre los commits `origin/main..HEAD`: sin
+    hallazgos.
+- **Para publicar** (cada paso con orden expresa de Víctor):
+  1. PR a main y CI.
+  2. **Web:** sello de main y «Publicar web», primero preview y después
+     producción (cambia el servidor). En la preview: entrar con la casilla,
+     cerrar del todo la web instalada, abrirla y seguir dentro; Perfil ›
+     Avisos sin «Comprobando…».
+  3. **App:** OTA («OTA Android»): cambian el texto de la información
+     básica, el interruptor que ya no se queda ocupado y el aviso de sesión
+     caducada (solo JavaScript; guardián compatible con 1.4.2(24)).
+  4. **Víctor, una vez publicada la web:** volver a entrar en el iPhone desde
+     la web instalada y marcar la casilla (las sesiones de antes no tienen
+     código de renovación).
+- **Queda pendiente o para decidir:**
+  - **El nombre en los correos de Auth** (confirmar alta y recuperar
+    contraseña, `rwadar-app/plantillas-auth/`): se envían hoy con «Víctor
+    Manuel Jorques Granero» en el pie. Para quitarlo, un pie como «RWAdar ·
+    su titular, identificado en rwadar.pages.dev/privacidad#aviso-legal ·
+    Plaza Generalitat, s/n, 46600 Alzira (Valencia), España ·
+    rwadares@gmail.com», y ponerlo en Supabase con su permiso. En los avisos
+    por correo (apagados), el art. 20 de la LSSI pide identificar al
+    remitente.
+  - Riesgos aceptados: una renovación lenta de la sesión vieja que llega
+    después de volver a entrar puede pisar las cookies nuevas (obliga, como
+    mucho, a entrar otra vez); Supabase limita las renovaciones por IP y
+    todas salen de Cloudflare (un abuso podría agotarlo un rato; con su
+    permiso se puede subir en Supabase Auth › Rate Limits, u opcionalmente
+    firmar la cookie con un secreto del servidor).
+  - Que quien revise lo legal confirme la frase del responsable sin nombre
+    (LOPDGDD, art. 11.2.a); el nombre está a un toque, en el aviso legal.
+
+## 12 de noviembre de 2026 (14a) · Claude · Sesión de la web que se mantiene: el servidor renueva el pase y casilla «Mantener la sesión iniciada»
+
+Víctor, probando en su iPhone con la web en la pantalla de inicio: «Y que al
+iniciar sesión se mantenga porque no se mantiene». Commits `f4414f8` y
+`43b0416` en la rama del worktree, **sin push. Sin publicar; Supabase y EAS
+sin tocar.** Sin SQL ni migraciones.
+
+- **La causa.** La pasarela (`rwadar-acceso/servidor.mjs`) guardaba en la
+  cookie solo el pase de Supabase (access_token, una hora) y tiraba el
+  refresh_token; la cookie no llevaba Max-Age. A la hora, o al cerrar la web
+  instalada (iOS lo trata como cerrar el navegador), la sesión se perdía y
+  Perfil › Avisos daba 401.
+- **El servidor** (`f4414f8`):
+  - segunda cookie `__Host-rwadar-renovar` con el refresh_token (HttpOnly,
+    Secure, SameSite=Lax, Path=/). Su valor empieza por `p.` (marcó
+    «mantener») o `s.` (no), para reescribir igual las dos al renovar;
+  - con «mantener»: Max-Age en las dos; el pase, su `expires_in`; la de
+    renovar, **30 días**, reescrita en cada renovación (caduca tras 30 días
+    sin usar la cuenta en ese navegador: quien mira su cartera una vez al
+    mes no tiene que volver a entrar, y un móvil perdido o compartido no queda
+    abierto para siempre). Sin «mantener», sin Max-Age, como antes, pero el
+    pase se renueva mientras el navegador siga abierto;
+  - estado de la sesión, `/datos`, `/cartera`, `/reautenticar` y las lecciones
+    de la Academy: si el pase falta, le queda menos de un minuto o Auth lo
+    rechaza (401/403), se renueva una vez y se reescriben las dos cookies;
+  - en paralelo: las peticiones con el mismo refresh_token en un isolate
+    comparten una renovación 10 s (búsqueda síncrona, sin `await` antes de
+    guardarla); entre isolates, Supabase da el refresh_token vigente (el padre
+    del vigente se admite siempre). Ninguna cierra la sesión de otra;
+  - Supabase rechaza la renovación (400/401/403): se borran las dos y es «sin
+    sesión». Un fallo pasajero (red, 5xx, 429) no borra nada;
+  - cupo de 60 renovaciones por visitante cada 10 minutos (todas llegan a
+    Supabase desde la dirección compartida de Cloudflare, como las
+    contraseñas);
+  - salir revoca la sesión en Supabase (`/auth/v1/logout`, renovando antes el
+    pase si hace falta) y borra las dos. Borrar la cuenta
+    (`rpc/borrar_mi_cuenta`) borra las dos (la base ya quitó sus sesiones). El
+    enlace del correo (`adoptar`) y el tutorial de la app dejan solo el pase y
+    borran la de renovar;
+  - ninguna respuesta lleva tokens; no se registra nada;
+  - `compilar.cjs`: el `_worker.js` deja cada Set-Cookie en su cabecera
+    (`getSetCookie`), sin unirlas con comas.
+- **La web** (`43b0416`):
+  - `/acceso`, solo en «Entrar»: casilla «Mantener la sesión iniciada en este
+    dispositivo», **sin marcar**, con una nota (30 días con una cookie, se
+    borra al salir, no en un dispositivo compartido, enlace a
+    `/privacidad#cookies-sesion`). Se desmarca al cambiar de vista; el alta no
+    la manda. El formulario de `rwadar-20260820.js` no cambia: con el servidor
+    (siempre, en producción) «Entrar» lleva a `/acceso`;
+  - por qué sin marcar: la LSSI (22.2) exime lo estrictamente necesario para
+    el servicio que se pide, y la guía de cookies de la AEPD solo exime sin
+    más las de autenticación «de sesión». Una cookie de autenticación que
+    sobrevive al navegador la tiene que pedir la persona, marcando ella la
+    casilla (el GT29, dictamen 4/2012, pone ese ejemplo, «recordarme»); una
+    casilla ya marcada no es una petición expresa (TJUE, Planet49). Para el
+    revisor legal;
+  - inglés de la casilla y de su nota en el diccionario común
+    (`rwadar-movil/lib/idioma-en.js` y su copia en la web). `/acceso` sigue
+    sin traductor: hoy se ve en castellano;
+  - privacidad §2 (fila «Sesión de tu cuenta», ancla `cookies-sesion`) y §9:
+    nombre, finalidad y duración de las dos cookies y que son estrictamente
+    necesarias para la sesión que se pide. Fecha sin cambiar (12/11/2026).
+    Registro de actividades, versión 8.
+- **Pruebas:**
+  - `rwadar-acceso/sesion-mantenida.test.mjs` (19), con la rotación de GoTrue
+    simulada: entrar con y sin «mantener», atributos exactos, renovación al
+    caducar o a menos de 60 s, rechazo de Auth, paralelo en un isolate y en
+    dos, rezagada pasados los 10 s, renovación rechazada y pasajera, cupo,
+    cookie mal formada, salir revoca, borrar la cuenta, reautenticar,
+    Academy, cartera, adoptar y tutorial, `_worker.js` compilado y que
+    ninguna respuesta lleva tokens. 10 mutaciones del servidor: todas hacen
+    fallar alguna prueba;
+  - `rwadar-acceso/sesion-mantenida-navegador.test.mjs` (3): la casilla en
+    un DOM simulado y, **en Chromium** con el worker local compilado desde
+    las fuentes: con la casilla, las dos cookies con caducidad (1 h y 30
+    días) sobreviven a cerrar el navegador y el pase se renueva solo; sin
+    ella, al reabrir se está fuera; `document.cookie` no las ve; salir las
+    borra;
+  - `probar-web` fija la casilla, su inglés, las frases de privacidad y que
+    los 30 días son los del servidor (681; 2 mutaciones comprobadas);
+  - ajustadas al contrato nuevo: `servidor-errores` (dos Set-Cookie) y
+    `cartera-errores-dirigidos` (`crearCarteraServidor` recibe `sesion`);
+  - `npm test` en la raíz, salida 0: `rwadar-app` con 31 scripts a «0
+    fallidas», 11/11 y `.github` 103/103; `probar-web` 681/681; QR bien;
+    `rwadar-movil` 593 y 2 omitidas; herramientas bien; `rwadar-acceso`
+    302/302, con Chromium;
+  - gitleaks 8.30.1 (`rwadar-app/gitleaks.toml` y la configuración por
+    defecto) sobre los dos commits: sin hallazgos.
+- **Dudas que quedan:**
+  - **Víctor tiene que entrar una vez más** en el iPhone, dentro de la web
+    instalada, y marcar la casilla: las sesiones de antes no tienen
+    refresh_token;
+  - el enlace de confirmación del correo deja solo el pase (una hora, como
+    antes); al caducar se entra con la contraseña y la casilla;
+  - `.github/qa-web-browser-141/python-bff-141.py` y
+    `qa-android-update-141/production-bff-native-fixture.cjs` esperan una sola
+    Set-Cookie al entrar. No están en ningún flujo; si se vuelven a usar, hay
+    que adaptarlos;
+  - Supabase limita las renovaciones por dirección y todas salen de
+    Cloudflare: con las cuentas de hoy sobra; si un día da 429, la web lo
+    trata como pasajero y no saca a nadie;
+  - la renovación entre isolates depende del intervalo de reutilización de
+    Supabase (10 s por defecto, en los ajustes de Auth): no lo bajéis;
+  - lo de Chromium es local; en el iPhone solo se ve publicado.
+- **Para publicar** (con orden expresa de Víctor): PR a main y CI; «Publicar
+  web» (preview y producción), porque cambia el servidor. En la preview:
+  entrar con la casilla, cerrar del todo la web instalada, abrirla otra vez y
+  seguir dentro; en las herramientas del navegador, dos cookies `__Host-` con
+  caducidad. Sin SQL. La app no lo necesita: su diccionario gana dos entradas
+  que no usa y viajan con la próxima OTA.
+
+## 12 de noviembre de 2026 (14b) · Claude · Sin el nombre del titular en los avisos y «Notificaciones en este móvil» que nunca se queda en «Comprobando…»
+
+Víctor, probando en su iPhone con la web en la pantalla de inicio: «No
+quiero que salga mi nombre aquí» y «No funciona lo de activar
+notificaciones». Commits en la rama del worktree (`worktree-wf_c54297be-d87-2`,
+sobre `186bd3e`), **sin push. Sin publicar; Supabase y EAS sin tocar.** La
+sesión que se pierde (la cookie del servidor de la web y el `refresh_token`)
+la lleva otro cambio: aquí no se ha tocado `rwadar-acceso/servidor.mjs`, el
+formulario de entrar ni las cookies de la privacidad.
+
+- **El nombre** (`4edb3c1`). La información básica de Perfil › Avisos (web
+  y app) y de la casilla del alta de `/acceso` ya no dice «Responsable:
+  Víctor Manuel Jorques Granero (RWAdar)», sino «Responsable: el titular de
+  RWAdar, identificado en el aviso legal». En la web, «aviso legal» enlaza
+  a `/privacidad#aviso-legal`. Inglés: «Controller: the owner of RWAdar,
+  identified in the legal notice». El texto entero va en el diccionario
+  común (`rwadar-movil/lib/idioma-en.js` y su copia); los tres trozos que
+  deja el enlace en la web, en `idioma-en-avisos-20261112.js`. El nombre se
+  queda solo en el aviso legal y la privacidad. `probar-web` comprueba que
+  ninguna página de `rwadar-site` lo lleva fuera de `privacidad.html`.
+- **Notificaciones de la web** (`b7cb6cf`). Por qué se atascaba: si
+  `estado_mis_avisos` fallaba o no contestaba, el bloque se quedaba en
+  «Comprobando las notificaciones de este móvil…» con el botón apagado (y
+  un fallo de la clave al pulsar «Activar» decía «todavía no están
+  disponibles»). Ahora:
+  - cada llamada de avisos tiene plazo (15 s) y «Comprobando…» no dura más
+    de 20 s;
+  - sin sesión: «Tu sesión ha caducado: vuelve a entrar.» con «Entrar de
+    nuevo» (lleva a `/acceso` y vuelve); otro fallo: «No hemos podido
+    comprobar las notificaciones de este móvil. Revisa la conexión y pulsa
+    Reintentar.» con «Reintentar»; al volver a la app se reintenta solo;
+  - al pulsar «Activar», el motivo en llano (permiso, el navegador no deja,
+    el iPhone fuera de la pantalla de inicio, sin conexión, sesión
+    caducada) y se puede volver a intentar;
+  - inglés de todo.
+  Hoy el puente (`assets/acceso-privado.js`) salta solo a `/acceso` con un
+  401, así que «Tu sesión ha caducado» se ve sobre todo si eso cambia; la
+  prueba acepta las dos cosas.
+- **App** (`8aaee41`). El token de Expo lleva plazo (20 s): sin red, el
+  interruptor del móvil se quedaba ocupado. Con «sin sesión» o sin red, el
+  mensaje lo dice. Solo JavaScript: va en la próxima OTA.
+- **Pruebas** (sobre el árbol de `8aaee41`, salvo la última retocada):
+  - `npm test` en la raíz, salida 0: `rwadar-app` (275, 89, 64, 11/11 y
+    `.github` 103/103), `probar-web` 681/681, 70 páginas y RSS, 40 de
+    precarga, QR, `rwadar-movil` 596 y 2 omitidas, herramientas y
+    `rwadar-acceso` 284/284 con Chromium;
+  - `notificaciones-fallos-navegador.test.mjs` nueva (3 pruebas, Chromium:
+    401, 500, sin red, sin respuesta y cada fallo al activar, también en
+    inglés), pasada dos veces más tras el último retoque;
+  - mutación: con el JS de antes fallan las 3 de Chromium (se quedan en
+    «Comprobando…») y las 3 nuevas de la app; restaurado con `cmp`;
+  - guardián de OTA con `--base fa30779`: compatible, 1.4.2(24);
+  - gitleaks 8.30.1 (`rwadar-app/gitleaks.toml` y por defecto) sobre los
+    3 commits y sobre el diff: sin hallazgos.
+- **Dudas que quedan:**
+  - la LOPDGDD (art. 11.2.a) pide la identidad del responsable en la
+    primera capa; «el titular de RWAdar» con el enlace al aviso legal es
+    una forma habitual de cumplirlo, pero lo confirma quien revise lo legal;
+  - el nombre sigue en sitios que no son la web ni la app: el pie de los
+    correos (`rwadar-app/correo-lettermint.sh`, `db/30` y `db/31` y sus
+    migraciones, el verificador de la 31 y `probar-avisos-registrados.mjs`),
+    las plantillas de Auth (`rwadar-app/plantillas-auth/`), `SECURITY.md`,
+    `AGENTS.md` y `docs/legal/`. No se han tocado: el correo no está
+    encendido y, si se enciende, el pie lo pide la LSSI. **Corrección del
+    integrador (entrada 14):** eso vale para los avisos por correo, no para
+    las plantillas de Auth, que **sí se envían hoy** (confirmar el alta y
+    recuperar la contraseña) con el nombre completo en el pie; lo decide
+    Víctor (ver la entrada 14);
+  - «Tu sesión ha caducado» solo se arregla del todo con la sesión que
+    dura (el otro cambio).
+- **Para publicar** (con orden expresa de Víctor): web (preview y
+  producción) y OTA de la app.
+
 ## 12 de noviembre de 2026 (13) · Claude · Notificaciones web desde Supabase y Cloudflare: base 33 y servidor unidos, revisión aplicada y textos legales al día
 
 Víctor: «En GitHub no puedes? Pues hazlo en supabase mientras y ya haremos el

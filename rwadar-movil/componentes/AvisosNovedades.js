@@ -51,7 +51,13 @@ const MENSAJES = {
   denegado: 'El sistema no permite notificaciones de RWAdar. Actívalas en los ajustes del móvil.',
   movilError: 'No se pudieron activar las notificaciones en este móvil. Inténtalo más tarde.',
   noRegistrado: 'Este móvil ha dejado de recibir las notificaciones de RWAdar. Vuelve a activarlas para recibirlas.',
+  // 12/11/2026, como la web: sin sesión se dice, y sin red al pedir el token
+  // (lib/avisos.js, con plazo) también; el interruptor no se queda ocupado.
+  sesion: 'Tu sesión ha caducado: vuelve a entrar.',
+  sinRed: 'No hemos podido conectar para activarlas. Revisa la conexión y vuelve a intentarlo.',
 };
+// «Sin sesión» (lib/avisos-cuenta.js lo llama sin_sesion): lo dice en vez del fallo genérico.
+const sinSesion = (error) => error?.code === 'sin_sesion' || error?.status === 401;
 
 // Qué se guarda al activar «Notificaciones en este móvil», quién lo recibe y
 // cuándo se borra (revisión legal del 06/11/2026).
@@ -106,7 +112,8 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
       cargando: false,
       ...(perfil.status === 'fulfilled' ? perfil.value : {}),
       ...(recientes.status === 'fulfilled' ? recientes.value : {}),
-      errorCarga: perfil.status === 'rejected' || recientes.status === 'rejected' ? MENSAJES.carga : '',
+      errorCarga: [perfil, recientes].some((r) => r.status === 'rejected' && sinSesion(r.reason)) ? MENSAJES.sesion
+        : perfil.status === 'rejected' || recientes.status === 'rejected' ? MENSAJES.carga : '',
     });
   }
 
@@ -144,7 +151,8 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
       const activado = nuevo?.correoActivo === true ? MENSAJES.novedadesOn : MENSAJES.novedadesOnSinCorreo;
       actualizar(vuelta, { servidor: nuevo, procesando: '', mensaje: activar ? activado : MENSAJES.novedadesOff });
     } catch (error) {
-      actualizar(vuelta, { procesando: '', error: error?.code === 'avisos_texto_desfasado' ? MENSAJES.desfasado : MENSAJES.error });
+      actualizar(vuelta, { procesando: '', error: error?.code === 'avisos_texto_desfasado' ? MENSAJES.desfasado
+        : sinSesion(error) ? MENSAJES.sesion : MENSAJES.error });
     }
   }
 
@@ -160,10 +168,11 @@ export function useAvisosNovedades({ cuenta, usuarioId }) {
       } else {
         const resultado = await g.activarMovil(servidor);
         if (resultado.ok) mensaje = MENSAJES.movilOn;
-        else error = resultado.estado === 'denegado' ? MENSAJES.denegado : MENSAJES.movilError;
+        else error = resultado.estado === 'denegado' ? MENSAJES.denegado
+          : resultado.estado === 'sin-red' ? MENSAJES.sinRed : MENSAJES.movilError;
       }
-    } catch {
-      error = MENSAJES.error;
+    } catch (fallo) {
+      error = sinSesion(fallo) ? MENSAJES.sesion : MENSAJES.error;
     }
     let nuevo = movil;
     try { nuevo = await g.estadoMovil(servidor); } catch { /* Se conserva el último estado conocido. */ }
@@ -217,8 +226,8 @@ export function useBandejaAvisos({ cuenta, usuarioId }) {
     actualizar(vuelta, { cargando: true, errorCarga: '' });
     try {
       actualizar(vuelta, { cargando: false, ...(await g.cargarRecientes(10)) });
-    } catch {
-      actualizar(vuelta, { cargando: false, errorCarga: MENSAJES.carga });
+    } catch (error) {
+      actualizar(vuelta, { cargando: false, errorCarga: sinSesion(error) ? MENSAJES.sesion : MENSAJES.carga });
     }
   }
   useEffect(() => {

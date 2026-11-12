@@ -16,6 +16,12 @@
   "Avisos marcados como leídos.": "Notices marked as read.",
   "Entra en tu cuenta para ver tus avisos. ¿No quieres estos avisos? Desactívalos en Perfil o en los ajustes del móvil.": "Sign in to see your notices. Don't want these notices? Turn them off in Profile or in your phone settings.",
   "El envío por correo y al móvil todavía no está activo. Mientras tanto, los avisos se ven en la campana.": "Sending by email and to phones is not active yet. Meanwhile, notices are shown under the bell.",
+  // Información básica de Perfil › Avisos (12/11/2026): en la web, «aviso legal» y
+  // «Privacidad» son enlaces, así que el texto llega en tres trozos (el común
+  // del diccionario de la app es el texto entero, sin enlaces).
+  "Información básica sobre tus datos. Responsable: el titular de RWAdar (persona física), identificado con nombre, NIF y domicilio en el": "Basic information about your data. Controller: the owner of RWAdar (an individual), identified by name, tax ID and address in the",
+  "aviso legal": "legal notice",
+  ". Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en": ". Data: your email, your password and, if you give it, your name; with notices, also your consent and, if you turn on notifications, a delivery identifier for your phone. Purpose: your account, which also opens the Academy, and, only if you tick the notices box, sending you those notices. Legal basis: the service you request (account) and your consent (notices), which you can withdraw at any time without affecting what came before. Providers: Supabase, Cloudflare and Google; for notices, Lettermint and Expo. Some process data outside the EU with safeguards. Rights: access, rectification, erasure, objection, restriction and portability, in Profile or at rwadares@gmail.com; you can also complain to the AEPD (Spanish Data Protection Agency). More information in",
   // Notificaciones en este móvil (Web Push).
   "Activar notificaciones en este móvil": "Turn on notifications on this phone",
   "Desactivar las notificaciones de este móvil": "Turn off notifications on this phone",
@@ -43,7 +49,17 @@
   "No has dado permiso. Puedes volver a intentarlo cuando quieras.": "You did not give permission. You can try again whenever you like.",
   "No se han podido activar las notificaciones en este móvil. Vuelve a intentarlo.": "Notifications could not be turned on for this phone. Please try again.",
   "Hemos quitado las notificaciones de este navegador, pero no hemos podido confirmarlo con tu cuenta. Se borrará sola en el próximo envío.": "We have removed notifications from this browser, but could not confirm it with your account. It will be deleted automatically on the next send.",
-  "No se han podido desactivar las notificaciones. Vuelve a intentarlo.": "Notifications could not be turned off. Please try again."
+  "No se han podido desactivar las notificaciones. Vuelve a intentarlo.": "Notifications could not be turned off. Please try again.",
+  // Sin respuesta de la base o sin sesión (12/11/2026): nunca «Comprobando…» para siempre.
+  // «Tu sesión ha caducado…» y «No hemos podido conectar…» van en el común: la app también los dice.
+  "No hemos podido comprobar las notificaciones de este móvil. Revisa la conexión y pulsa Reintentar.": "We could not check notifications on this phone. Check your connection and tap Try again.",
+  "Entrar de nuevo": "Sign in again",
+  "Activadas en este móvil.": "On for this phone.",
+  // Por qué no se han podido activar.
+  "Tu sesión ha caducado: vuelve a entrar para activarlas.": "Your session has expired: sign in again to turn them on.",
+  "En iPhone y iPad solo se pueden activar con RWAdar en la pantalla de inicio: añádela y ábrela desde su icono.": "On iPhone and iPad they can only be turned on with RWAdar on the home screen: add it and open it from its icon.",
+  "El navegador no ha dejado activarlas. Comprueba que las notificaciones de RWAdar están permitidas en los ajustes del móvil y vuelve a intentarlo.": "The browser did not allow them to be turned on. Check that RWAdar notifications are allowed in your phone settings and try again.",
+  "El navegador no ha terminado de preparar RWAdar. Cierra RWAdar del todo, vuelve a abrirla y prueba otra vez.": "The browser has not finished setting up RWAdar. Close RWAdar completely, open it again and try once more."
 };
 if(typeof module==='object'&&module.exports){module.exports=Object.freeze(extra);return;}
 const base=raiz.RWAdarEnglish||{};

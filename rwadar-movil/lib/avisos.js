@@ -342,10 +342,23 @@ export async function consultarPushNovedades() {
   }
 }
 
+/* Lo más que se espera a Expo por el token (12/11/2026). Sin red puede no
+   contestar nunca, y el interruptor de Perfil se quedaba ocupado (y, con él,
+   los demás). Pasado el plazo: «sin-red», y se puede volver a intentar. El
+   diálogo del permiso no tiene plazo: la persona se toma su tiempo. */
+export const PLAZO_TOKEN_NOVEDADES_MS = 20000;
+function tokenExpoConPlazo(projectId, plazoMs) {
+  let reloj;
+  const corte = new Promise((_, rechazar) => {
+    reloj = setTimeout(() => rechazar(Object.assign(new Error('plazo'), { code: 'plazo' })), plazoMs);
+  });
+  return Promise.race([Notifications.getExpoPushTokenAsync({ projectId }), corte]).finally(() => clearTimeout(reloj));
+}
+
 /* Solo tras pulsar «Notificaciones en este móvil». El token solo va a las
    funciones de avisos de la cuenta y al almacenamiento por cuenta de este
    móvil; nunca a registros ni mensajes. */
-export async function obtenerTokenNovedades({ solicitarPermiso = false } = {}) {
+export async function obtenerTokenNovedades({ solicitarPermiso = false, plazoMs = PLAZO_TOKEN_NOVEDADES_MS } = {}) {
   try {
     const previo = entornoPushNovedades();
     if (previo) return previo;
@@ -375,7 +388,12 @@ export async function obtenerTokenNovedades({ solicitarPermiso = false } = {}) {
       permiso = await Notifications.requestPermissionsAsync();
     }
     if (!permisoConcedido(permiso)) return { ok: false, estado: 'denegado' };
-    const { data: token } = await Notifications.getExpoPushTokenAsync({ projectId: proyectoEas() });
+    let token;
+    try {
+      ({ data: token } = await tokenExpoConPlazo(proyectoEas(), plazoMs));
+    } catch (error) {
+      return { ok: false, estado: error?.code === 'plazo' ? 'sin-red' : 'error' };
+    }
     if (!tokenPushValido(token)) return { ok: false, estado: 'error' };
     return { ok: true, estado: 'permitido', token, plataforma: Platform.OS };
   } catch {
