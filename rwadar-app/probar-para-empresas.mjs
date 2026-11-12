@@ -119,7 +119,8 @@ paso('privacidad cubre de forma específica y conservadora las consultas B2B',
   && ['datos minimos', 'finalidad', 'base juridica', 'acceso y proveedor', 'conservacion']
     .every(fragmento => normaliza(privacidad).includes(fragmento))
   && normaliza(privacidad).includes('interes legitimo en atender la consulta profesional que tu inicias')
-  && normaliza(privacidad).includes('proton mail')
+  && normaliza(privacidad).includes('el buzon general es la cuenta de gmail de rwadar')
+  && !normaliza(privacidad).includes('proton mail')
   && normaliza(privacidad).includes('como maximo seis meses desde el ultimo intercambio')
   && normaliza(privacidad).includes('no envies datos de inversores, clientes u otras personas')
   && normaliza(privacidad).includes('no se incorporan a supabase, brevo ni un crm'));
@@ -141,9 +142,13 @@ paso('la PWA elimina sus copias antiguas y no sirve la página desde caché',
   /nombre\.startsWith\('rwadar-v'\)/.test(worker)
   && /caches\.delete\(nombre\)/.test(worker)
   // La página recarga al cambiar el controlador; navegar ventanas desde la
-  // activación dejaba la web bloqueada en Chrome (29/10).
+  // activación dejaba la web bloqueada en Chrome (29/10). Desde el 12/11/2026
+  // solo el toque en una notificación busca y lleva una ventana a su aviso.
   && /self\.clients\.claim\(\)/.test(worker)
-  && !/\.navigate\(|clients\.matchAll\(/.test(worker)
+  && !/\.navigate\(|clients\.matchAll\(/.test(worker.slice(0, worker.indexOf("self.addEventListener('push'")))
+  && worker.indexOf("self.addEventListener('push'") > worker.indexOf("self.addEventListener('activate'")
+  && (worker.match(/\.navigate\(/g) || []).length === 1
+  && worker.indexOf('.navigate(') > worker.indexOf("self.addEventListener('notificationclick'")
   && !/addEventListener\(\s*['"]fetch['"]|caches\.open\(|cache\.(?:put|addAll|match)\(/.test(worker));
 
 // idioma-previo va en <head>, sin defer: marca el inglés antes de pintar (QA 04/11/2026).

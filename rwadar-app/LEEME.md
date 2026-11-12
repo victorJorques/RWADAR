@@ -347,6 +347,58 @@ por eso ya no se edita: cualquier cambio va en una migración nueva, como la
 - Prueba: `node probar-avisos-registrados.mjs` (también en `npm test`): la 30
   y la 31 sobre la cadena de producción, con los pasos del flujo ejecutados de
   verdad con bash y un doble de psql.
+- **32 · notificaciones que saltan en el móvil** (`db/32_notificaciones.sql`,
+  copia idéntica en `supabase/migrations/20261112130000_notificaciones.sql`).
+  Solo añade (y redefine `enviar_push` y `limpiar()`): no enciende nada, no
+  toca relojes ni Vault y no reinicia la configuración.
+  - Push de Expo: `enviar_push` es la de la 30 con `'priority', 'high'` (con
+    `default`, Android no despierta a un móvil en reposo y el aviso llega
+    tarde). **Reaplicar la 30 la devuelve a `default`** (y `limpiar()` a su
+    versión sin la web): después, la 31 y la 32.
+  - Notificaciones web (Web Push), para móviles y tabletas; en iPhone/iPad
+    solo con la web en la pantalla de inicio (iOS 16.4+). Tablas privadas
+    `suscripciones_web` (una por navegador; como mucho 5 por cuenta; solo
+    `fcm.googleapis.com`, `updates.push.services.mozilla.com`,
+    `web.push.apple.com` y `*.notify.windows.com`) y `envios_web` (uno por
+    anuncio y navegador). API para la web, con sesión confirmada:
+    `registrar_aviso_webpush(endpoint, p256dh, auth)` (no envía nada),
+    `quitar_aviso_webpush`, `mi_aviso_webpush_registrado` y
+    `clave_publica_webpush()`. Suscribirse no depende del interruptor: la
+    web deja activarlas con el envío apagado (así se prueba antes).
+  - Mismo interruptor que Expo: `configuracion.push_habilitado`
+    (activar-push). Solo salen los anuncios publicados en los últimos 7 días,
+    después de encender el push y de crearse la suscripción, a quien tiene el
+    permiso vigente. La prueba (`webpush_prueba`) solo va a las cuentas con
+    `perfiles.es_admin` y no depende del interruptor.
+  - Carga cifrada: `{"v":1,"titulo","texto","url","etiqueta":"rwadar-<id>"}`.
+    La `url` es siempre `https://rwadar.pages.dev/?avisos=1` (con `#emisiones`
+    si el destino es el radar): abre la lista de avisos de la campana, que
+    lleva la baja («¿No quieres estos avisos?…»; LSSI, art. 21.2, párr. 2).
+    El número del icono lo lleva el service worker de la web.
+  - Clave VAPID: la privada en Vault (`RWADAR_VAPID_PRIVADA`), nunca en Git
+    ni en la salida de un flujo; la pública en
+    `configuracion.webpush_clave_publica`. Las crea la acción `crear-vapid`
+    de «Avisos a registrados (base)» (`db/32_notificaciones_vapid.sql`;
+    `rotar-vapid` la cambia y borra las suscripciones hechas con la anterior).
+  - Remitente: `enviar-webpush.mjs` (solo `node:crypto` y `fetch`: RFC 8291
+    aes128gcm y RFC 8292 VAPID; TTL de un día, `Urgency: high`). Lo usa el
+    flujo «Notificaciones web» (`.github/workflows/notificaciones-web.yml`:
+    `enviar` o `prueba`, escribiendo ENVIAR), que también lanza «Avisar
+    novedad» después de cada anuncio. Resultados con
+    `db/32_notificaciones_resultado.sql`: 2xx enviado; 404/410 borra la
+    suscripción; 429, 5xx o sin respuesta, hasta 3 intentos; otro 4xx,
+    fallido. Limpieza: `webpush_limpiar()` (envíos de más de 90 días y
+    suscripciones sin renovar en 180). La llama `limpiar()`, que la 32
+    redefine (la de la 30 más esa llamada), así que el reloj diario
+    `rwadar-novedades-limpieza` cumple los plazos aunque no se envíe nada; y
+    también el flujo, al final de cada vuelta.
+  - Comprobar: `32_notificaciones_verificar.sql` (solo lee; junto a los
+    verificadores 30 y 31). Flujo: `ensayo-32`, `verificar-32`, `aplicar-32`,
+    `crear-vapid` y `rotar-vapid` (las que cambian, con copia antes y AVISOS).
+  - Prueba: `node probar-notificaciones.mjs` (también en `npm test`): el
+    vector del RFC 8291, la firma VAPID, un servidor de push local que
+    descifra lo enviado, la 32 sobre la cadena de producción y los pasos de
+    los flujos ejecutados de verdad (psql emulado sobre PGlite).
 
 ## Contenido y sincronización
 

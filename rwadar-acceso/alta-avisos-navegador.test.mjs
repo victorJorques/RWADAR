@@ -5,11 +5,12 @@ import vm from 'node:vm';
 
 // Alta en /acceso (contrato: docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md):
 // casilla obligatoria con los 18 años, casilla de avisos de novedades detrás de
-// AVISOS_NOVEDADES_REMOTOS y vuelta a la lección tras confirmar el correo.
+// AVISOS_CASILLA_ALTA (interruptor propio desde el 12/11/2026; Perfil › Avisos
+// tiene el suyo) y vuelta a la lección tras confirmar el correo.
 const html = fs.readFileSync(new URL('../rwadar-site/acceso.html', import.meta.url), 'utf8');
 const original = fs.readFileSync(new URL('../rwadar-site/assets/acceso.js', import.meta.url), 'utf8');
-const APAGADO = 'const AVISOS_NOVEDADES_REMOTOS = false;';
-const encendido = original.replace(APAGADO, 'const AVISOS_NOVEDADES_REMOTOS = true;');
+const APAGADO = 'const AVISOS_CASILLA_ALTA = false;';
+const encendido = original.replace(APAGADO, 'const AVISOS_CASILLA_ALTA = true;');
 // Versión novedades-v2-2026-11-06 (revisión legal del 06/11/2026), palabra por palabra.
 const TEXTO_ES = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ' +
   'fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. ' +

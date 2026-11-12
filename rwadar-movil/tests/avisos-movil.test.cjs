@@ -40,12 +40,13 @@ function cargar(ruta, mocks) {
   return { modulo, restaurar() { Module._load = cargarOriginal; Module._extensions['.js'] = jsOriginal; } };
 }
 
-function sdk({ permiso = { granted: false, canAskAgain: true }, solicitado = { granted: true }, token = TOKEN } = {}) {
+function sdk({ permiso = { granted: false, canAskAgain: true }, solicitado = { granted: true }, token = TOKEN, presentes = [] } = {}) {
   const llamadas = [];
-  let escuchar;
+  let escuchar, recibir;
   return {
     llamadas,
     tocar: (respuesta) => escuchar(respuesta),
+    llegar: (notificacion) => recibir(notificacion),
     Notifications: {
       DEFAULT_ACTION_IDENTIFIER: 'default',
       IosAuthorizationStatus: { PROVISIONAL: 'provisional' },
@@ -58,6 +59,11 @@ function sdk({ permiso = { granted: false, canAskAgain: true }, solicitado = { g
       addNotificationResponseReceivedListener(fn) { llamadas.push(['listener']); escuchar = fn; return { remove() { llamadas.push(['retirar']); } }; },
       async getLastNotificationResponseAsync() { llamadas.push(['ultima']); return null; },
       async clearLastNotificationResponseAsync() { llamadas.push(['limpiar']); },
+      addNotificationReceivedListener(fn) { llamadas.push(['recibidas']); recibir = fn; return { remove() { llamadas.push(['retirar-recibidas']); } }; },
+      async getPresentedNotificationsAsync() { llamadas.push(['presentes']); return presentes; },
+      async dismissNotificationAsync(id) { llamadas.push(['quitar', id]); },
+      async setBadgeCountAsync() { assert.fail('setBadgeCountAsync no se usa: en Android con 0 borra todas las notificaciones'); },
+      async dismissAllNotificationsAsync() { assert.fail('no se quitan notificaciones ajenas a los avisos'); },
     },
   };
 }
@@ -113,8 +119,11 @@ test('con la 1.4.2 (código 24) la consulta es pasiva y el permiso solo se pide 
     const canales = e.sistema.llamadas.filter(([n]) => n === 'canal');
     assert.deepEqual(canales.map(([, id]) => id), ['cuenta', 'novedades', 'cuenta', 'novedades']);
     assert.deepEqual(canales.slice(2).map(([, , canal]) => canal), [
-      { name: 'Avisos de tu cuenta', description: 'Avisos de servicio de tu cuenta, como la bienvenida.', importance: 3, lightColor: '#25E39A' },
-      { name: 'Novedades de RWAdar', description: 'Fichas nuevas en el radar y novedades de la web y la app.', importance: 3, lightColor: '#25E39A' },
+      // HIGH (4): suena y aparece en pantalla, como un WhatsApp.
+      { name: 'Avisos de tu cuenta', description: 'Avisos de servicio de tu cuenta, como la bienvenida.', importance: 4,
+        vibrationPattern: [0, 250, 150, 250], lightColor: '#25E39A' },
+      { name: 'Novedades de RWAdar', description: 'Fichas nuevas en el radar y novedades de la web y la app.', importance: 4,
+        vibrationPattern: [0, 250, 150, 250], lightColor: '#25E39A' },
     ]);
     const orden = e.sistema.llamadas.map(([n]) => n);
     assert.ok(orden.lastIndexOf('canal') < orden.indexOf('solicitar'), 'los canales existen antes de pedir el permiso');
@@ -393,4 +402,48 @@ test('las claves nuevas cuentan como datos privados del dispositivo; la del toke
   assert.deepEqual(clavesPrivadasDispositivo([...propias, `rwadar.editorial.avisos.push.v1:${UID}`,
     'rwadar.editorial.avisos.push.v1', 'rwadar.editorial.avisos.renovado.v1', `rwadar.editorial.avisos.otro.v1:${UID}`]), propias,
   'el token de este móvil solo se borra después de quitarlo de la base (lib/datos.js)');
+});
+
+test('al llegar un aviso con la app abierta se recarga el «1»; lo ajeno no cuenta', async () => {
+  const e = avisos({ runtime: '1.4.2(24)' });
+  try {
+    let recargas = 0;
+    const dejar = e.modulo.observarAvisosRecibidos(() => { recargas += 1; });
+    e.sistema.llegar({ request: { content: { data: { tipo: 'novedad', destino: 'inicio' } } } });
+    e.sistema.llegar({ request: { content: { data: { otra: 'cosa' } } } });
+    e.sistema.llegar({ request: { content: { data: { tipo: 'novedad', destino: 'https://malo.example' } } } });
+    assert.equal(recargas, 1);
+    dejar();
+    assert.ok(e.sistema.llamadas.some(([n]) => n === 'retirar-recibidas'));
+    // No pide permisos ni token.
+    assert.equal(e.sistema.llamadas.some(([n]) => ['permisos', 'solicitar', 'token'].includes(n)), false);
+  } finally { e.restaurar(); }
+});
+
+test('sin capacidad (1.4.1) o con el interruptor apagado no se escucha nada', async () => {
+  for (const opciones of [{ runtime: '1.4.1(23)' }, { runtime: '1.4.2(24)', modo: { ...MODO, AVISOS_NOVEDADES_REMOTOS: false } }]) {
+    const prohibido = new Proxy({}, { get: (_, clave) => (clave === '__esModule' ? false : () => assert.fail(`SDK llamado: ${String(clave)}`)) });
+    const e = avisos({ ...opciones, sistema: { Notifications: prohibido } });
+    try {
+      e.modulo.observarAvisosRecibidos(() => assert.fail('no hay observador'))();
+      assert.equal(await e.modulo.retirarNotificacionesAvisos(), 0);
+    } finally { e.restaurar(); }
+  }
+});
+
+test('al leerlo todo se quitan del sistema solo las notificaciones de avisos de RWAdar', async () => {
+  const presentes = [
+    { request: { identifier: 'a1', content: { data: { tipo: 'novedad', destino: 'inicio' } } } },
+    { request: { identifier: 'b1', content: { data: { tipo: 'bienvenida', destino: 'academy' } } } },
+    { request: { identifier: 'x1', content: { data: { de: 'otra-cosa' } } } },
+    { request: { content: { data: { tipo: 'novedad', destino: 'inicio' } } } },
+  ];
+  const e = avisos({ runtime: '1.4.2(24)', sistema: sdk({ presentes }) });
+  try {
+    const quitadas = await e.modulo.retirarNotificacionesAvisos();
+    const ids = e.sistema.llamadas.filter(([n]) => n === 'quitar').map(([, id]) => id);
+    // Las dos de RWAdar con identificador; ni la ajena ni la que no tiene identificador.
+    assert.deepEqual(ids, ['a1', 'b1']);
+    assert.equal(quitadas, 2);
+  } finally { e.restaurar(); }
 });

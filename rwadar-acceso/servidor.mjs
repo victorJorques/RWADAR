@@ -29,11 +29,13 @@ const VERSION_AVISOS_NOVEDADES = 'novedades-v2-2026-11-06';
 // Idioma en que se mostró el texto de la casilla, para acreditar qué texto exacto
 // se aceptó (EDPB, Directrices 05/2020, §108). Solo estos dos valores.
 const IDIOMAS_AVISOS = Object.freeze(['es', 'en']);
-// El mismo interruptor, con el mismo nombre, que la web (assets/acceso.js y
-// assets/rwadar-20260820.js) y la app (lib/modo-local.js). Apagado, el alta
-// sigue exigiendo que avisosNovedades, si viene, sea un booleano, pero no lo
-// pasa a los metadatos: nadie se apunta a los avisos mientras no estén activos.
-const AVISOS_NOVEDADES_REMOTOS = false;
+// La casilla de avisos del alta tiene su propio interruptor (12/11/2026), el
+// mismo que assets/acceso.js: sigue apagada mientras el correo no esté listo,
+// aunque Perfil › Avisos ya esté encendido en la web (AVISOS_NOVEDADES_REMOTOS
+// de assets/rwadar-20260820.js). Apagado, el alta sigue exigiendo que
+// avisosNovedades, si viene, sea un booleano, pero no lo pasa a los metadatos:
+// nadie se apunta a los avisos desde el alta mientras no esté activa.
+const AVISOS_CASILLA_ALTA = false;
 const MENSAJE_BAJA = 'Si el enlace era válido, ya no recibirás avisos de novedades.';
 // Academy con cuenta: modos de academy.json y forma de un slug publicado.
 const ACCESOS_ACADEMY = Object.freeze(['cuenta', 'publico']);
@@ -198,7 +200,7 @@ async function leerTexto(result, maxBytes) {
 // tocar el archivo. El worker y functions/_middleware.js no lo pasan.
 // cacheTokenizacion: solo para las pruebas (null, sin Cache API; o un doble).
 export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora = Date.now, academy = null,
-  avisosNovedades = AVISOS_NOVEDADES_REMOTOS, cacheTokenizacion = undefined } = {}) {
+  avisosNovedades = AVISOS_CASILLA_ALTA, cacheTokenizacion = undefined } = {}) {
   if (typeof avisosNovedades !== 'boolean') throw new Error('avisos_invalidos');
   const limitador = crearLimitador(ahora);
   // Sin configuración de la Academy (o con "publico") no hay puerta: como antes.
@@ -392,7 +394,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
           const token = leerCookie(request); await verificar(env, token);
           // Closed routes only; each own-account write still goes through existing RLS/RPC.
           const route = typeof data.ruta === 'string' ? data.ruta : '';
-          const match = route.match(/^\/(mi_perfil|perfiles|vigilancia|avisos_correo|plataformas|opiniones_publicas|nota_media|mis_opiniones|cola_moderacion|publicaciones|rpc\/(?:guardar_opinion|borrar_mi_opinion|denunciar_opinion|moderar|configurar_avisos_correo|marcar_manual_descargado|borrar_mi_cuenta|mis_publicaciones|publicar|borrar_mi_publicacion|denunciar_publicacion|estado_mis_avisos|configurar_avisos_novedades|mis_avisos_recientes))(\?[^#\r\n]*)?$/);
+          const match = route.match(/^\/(mi_perfil|perfiles|vigilancia|avisos_correo|plataformas|opiniones_publicas|nota_media|mis_opiniones|cola_moderacion|publicaciones|rpc\/(?:guardar_opinion|borrar_mi_opinion|denunciar_opinion|moderar|configurar_avisos_correo|marcar_manual_descargado|borrar_mi_cuenta|mis_publicaciones|publicar|borrar_mi_publicacion|denunciar_publicacion|estado_mis_avisos|configurar_avisos_novedades|mis_avisos_recientes|clave_publica_webpush|registrar_aviso_webpush|quitar_aviso_webpush|mi_aviso_webpush_registrado))(\?[^#\r\n]*)?$/);
           const method = data.metodo || 'GET';
           if (!match || route.length > 4096 || !['GET', 'POST', 'PATCH', 'DELETE'].includes(method)) throw new Error('solicitud_invalida');
           const resource = match[1], rpc = resource.startsWith('rpc/');

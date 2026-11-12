@@ -4,12 +4,16 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 
 // Perfil › Avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
-// Apagado: la tarjeta «Próximamente · Avisos de cambios» de siempre y ninguna
-// llamada. Encendido: la tarjeta nueva con su interruptor, por /api/acceso/datos.
+// Encendido desde el 12/11/2026 (la casilla del alta tiene su propio interruptor,
+// AVISOS_CASILLA_ALTA, y sigue apagada). Apagado en la copia de la prueba: la
+// tarjeta «Próximamente · Avisos de cambios» de siempre y ninguna llamada.
+// Encendido: la tarjeta nueva con su interruptor, por /api/acceso/datos. La
+// bandeja va apagada en la copia de la prueba para ver solo estas llamadas.
 const web = fs.readFileSync(new URL('../rwadar-site/assets/rwadar-20260820.js', import.meta.url), 'utf8');
 const html = fs.readFileSync(new URL('../rwadar-site/index.html', import.meta.url), 'utf8');
 const bridge = fs.readFileSync(new URL('../rwadar-site/assets/acceso-privado.js', import.meta.url), 'utf8');
-const APAGADO = ' const AVISOS_NOVEDADES_REMOTOS=false;';
+const ENCENDIDO = ' const AVISOS_NOVEDADES_REMOTOS=true;';
+const BANDEJA = ' const AVISOS_BANDEJA_REMOTA=true;';
 // Versión v2 (revisión legal del 06/11/2026), palabra por palabra.
 const VERSION = 'novedades-v2-2026-11-06';
 const TEXTO_ES = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: ' +
@@ -33,7 +37,8 @@ const INFO_ES = 'Información básica sobre tus datos. Responsable: Víctor Manu
 const enlazado = (textoPlano, href) => textoPlano.replace(/Privacidad\.$/, '') + '<a href="' + href + '">Privacidad</a>.';
 const CASILLA_HTML = enlazado(TEXTO_ES, '/privacidad#avisos-novedades');
 const INFO_HTML = enlazado(INFO_ES, '/privacidad');
-const ACTIVADOS = 'Avisos de novedades activados. Puedes darte de baja aquí o con el enlace de cada correo.';
+// Con el correo apagado no hay «enlace de cada correo»: no se promete.
+const ACTIVADOS = 'Avisos de novedades activados. Puedes darte de baja aquí cuando quieras.';
 const tick = async (veces = 4) => { for (let i = 0; i < veces; i++) await new Promise(resolve => setImmediate(resolve)); };
 const consentimiento = codigo => codigo.slice(codigo.indexOf('const VERSION_CONSENTIMIENTO_CORREO='), codigo.indexOf('/* correo-consentimiento:fin */'));
 const cuenta = codigo => codigo.slice(codigo.indexOf('const Cuenta = (function(){'), codigo.indexOf('/* comunidad:inicio */'));
@@ -80,7 +85,8 @@ function entorno({ encendido = false, sesion = true, estado = estadoBase, config
       const datos = recurso.startsWith('/mi_perfil?') ? [{ id: 'cuenta-a', nombre: 'Prueba' }] : [];
       return { ok: true, status: 200, json: async () => datos };
     } });
-  const codigo = encendido ? web.replace(APAGADO, ' const AVISOS_NOVEDADES_REMOTOS=true;') : web;
+  let codigo = web.replace(BANDEJA, ' const AVISOS_BANDEJA_REMOTA=false;');
+  if (!encendido) codigo = codigo.replace(ENCENDIDO, ' const AVISOS_NOVEDADES_REMOTOS=false;');
   vm.runInContext(bridge, context);
   vm.runInContext(consentimiento(codigo) + '\n' + cuenta(codigo) + '\nglobalThis.cuentaPrueba=Cuenta;', context);
   const rpc = () => llamadas.filter(l => l.ruta === '/api/acceso/datos').map(l => JSON.parse(l.opciones.body))
@@ -89,7 +95,7 @@ function entorno({ encendido = false, sesion = true, estado = estadoBase, config
 }
 
 test('el HTML trae las dos tarjetas: la de siempre visible y la nueva oculta, con el texto exacto', () => {
-  assert.ok(web.includes(APAGADO), 'El interruptor de Perfil nace apagado');
+  assert.ok(web.includes(ENCENDIDO), 'Perfil › Avisos encendido (12/11/2026); el JS cambia una tarjeta por otra');
   // El hidden va en un div: .movil-estado fija display en el CSS y taparía el atributo.
   assert.match(html, /<div id="perfilAvisosProximamente">\s*<article class="movil-estado">/);
   assert.match(html, /<div id="perfilAvisosNovedades" hidden>\s*<article class="movil-estado">/);
@@ -104,7 +110,7 @@ test('el HTML trae las dos tarjetas: la de siempre visible y la nueva oculta, co
   assert.ok(tarjeta.includes('<p class="perfil-aviso-detalle" id="perfilNovedadesDatos">' + INFO_HTML + '</p>'));
   assert.ok(tarjeta.indexOf('id="perfilNovedadesDatos"') > tarjeta.indexOf('</label>'));
   assert.ok(web.includes("const INFO_DATOS_AVISOS='" + INFO_ES + "';"));
-  // La tarjeta de hoy sigue diciendo lo que es cierto con el interruptor apagado.
+  // La tarjeta «Próximamente» sigue diciendo lo que es cierto si se apaga el interruptor.
   assert.match(html, /<h3>Avisos de cambios<\/h3>[\s\S]{0,200}Los avisos llegarán a la app en una próxima actualización\./);
 });
 
@@ -150,6 +156,10 @@ test('encendido con sesión: lee el estado, activa con la versión vigente y el 
   assert.equal(opcion.checked, true);
   assert.equal(opcion.disabled, false);
   assert.equal(e.nodo('perfilNovedadesEstado').textContent, 'Activados. Todavía no hemos empezado a enviarlos.');
+  // Con el correo y el envío al móvil apagados en la base, se dice (casilla del alta apagada con el correo).
+  assert.equal(e.nodo('perfilNovedadesCorreo').hidden, false);
+  assert.equal(e.nodo('perfilNovedadesCorreo').textContent,
+    'El envío por correo y al móvil todavía no está activo. Mientras tanto, los avisos se ven en la campana.');
   assert.equal(e.avisos.at(-1), ACTIVADOS);
   opcion.checked = false;
   await opcion.handlers.get('change')({ target: opcion });
@@ -170,6 +180,10 @@ test('encendido: el panel de cuenta del escritorio lleva el mismo interruptor en
   assert.doesNotMatch(panel, /Próximamente: avisos por correo/);
   assert.equal(e.nodo('pfNovedades').checked, true);
   assert.equal(e.nodo('pfNovedadesEstado').textContent, 'Activados. Puedes desactivarlos cuando quieras.');
+  // Con el correo activo en la base, sin nota de «todavía no está activo».
+  assert.equal(e.nodo('pfNovedadesCorreo').hidden, true);
+  // El bloque «Notificaciones en este móvil» va en el panel, oculto hasta que se pinta.
+  assert.match(panel, /<div class="avisos-push" id="pfPush" hidden><h4 class="avisos-push-tit" id="pfPushTit">Notificaciones en este móvil<\/h4>/);
   assert.equal(typeof e.nodo('pfNovedades').handlers.get('change'), 'function');
 });
 

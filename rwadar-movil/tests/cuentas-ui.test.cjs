@@ -386,7 +386,7 @@ test('el efecto de App libera el controlador y vuelve a crear uno sano al repeti
   const controladores = [], visibles = [], orden = [], controladorActual = { current: null };
   const crear = new Function('crearControladorCuentas', 'setCuenta', 'setEstadoCuenta', 'MODO_LOCAL',
     'CUENTAS_REMOTAS', 'CORREO_AUTH_E2E', 'controladorActual', 'restaurarAcceso', 'CUENTA_REMOTA_ACTIVA',
-    'AVISOS_NOVEDADES_REMOTOS', `return (${js.replace(/;\s*$/, '')});`);
+    'AVISOS_NOVEDADES_REMOTOS', 'CASILLA_ALTA_ACTIVA', `return (${js.replace(/;\s*$/, '')});`);
   const setup = crear((flags) => {
     const c = { flags, destruido: false, desuscrito: false,
       suscribir(fn) { orden.push('suscribir'); fn({ disponible: true }); return () => { c.desuscrito = true; }; },
@@ -395,13 +395,13 @@ test('el efecto de App libera el controlador y vuelve a crear uno sano al repeti
     controladores.push(c); return c;
   }, (c) => visibles.push(c), () => {}, false, true, true, controladorActual, (c) => {
     assert.equal(controladorActual.current, c); orden.push('restaurar');
-  }, true, false);
+  }, true, false, false);
   const limpiarPrimero = setup(); limpiarPrimero();
   const limpiarSegundo = setup();
   assert.equal(controladores.length, 2);
   assert.equal(controladores[0].desuscrito, true); assert.equal(controladores[0].destruido, true);
   assert.equal(controladores[1].destruido, false); assert.equal(visibles[1], controladores[1]);
-  // Con AVISOS_NOVEDADES_REMOTOS apagado, el alta no envía la casilla de avisos ni hay tarea previa a salir.
+  // Con AVISOS_NOVEDADES_REMOTOS apagado (y sin casilla del alta), el alta no envía la casilla de avisos ni hay tarea previa a salir.
   assert.deepEqual(controladores[1].flags, { modoLocal: false, cuentasRemotas: true, correoVerificado: true,
     avisosNovedades: false, antesDeSalir: null });
   limpiarSegundo(); assert.equal(controladores[1].destruido, true);
@@ -533,7 +533,7 @@ test('producción real mantiene restauración, bloqueo y seguridad de Perfil con
     [false,false,true,true],'Este caso debe cubrir la configuración publicada real');
   const app=fs.readFileSync(path.join(RAIZ,'App.js'),'utf8');
   const ast=babel.parseSync(app,{babelrc:false,configFile:false,parserOpts:{plugins:['jsx']}});
-  const nombres=new Set(['USUARIO_LOCAL','CUENTA_REMOTA_ACTIVA']);
+  const nombres=new Set(['USUARIO_LOCAL','CUENTA_REMOTA_ACTIVA','AVISOS_NOVEDADES_ACTIVOS','CASILLA_ALTA_ACTIVA']);
   const constantes=ast.program.body.filter(n=>n.type==='VariableDeclaration')
     .flatMap(n=>n.declarations).filter(n=>n.id.type==='Identifier'&&nombres.has(n.id.name));
   assert.ok(constantes.some(n=>n.id.name==='USUARIO_LOCAL'));
@@ -566,7 +566,9 @@ test('producción real mantiene restauración, bloqueo y seguridad de Perfil con
   let argumentoBloqueo;
   const entorno={...flags,...valores,controladorActual:referencia,setRestaurandoAcceso(){},setErrorRestauracion(){},
     crearControladorCuentas:()=>controlador,setCuenta(){},setEstadoCuenta(){},usuarioAdmitido:usuarioId,
-    useBloqueoApp:(argumento)=>{argumentoBloqueo=argumento;return seguridad;},seguridad};
+    useBloqueoApp:(argumento)=>{argumentoBloqueo=argumento;return seguridad;},seguridad,
+    // Con los avisos encendidos (12/11/2026), al salir se quita el push de este móvil.
+    quitarPushAlSalir:async()=>{}};
   entorno.restaurarAcceso=evaluar(restaurar,entorno);
   const limpiar=evaluar(setup,entorno)();
   try {

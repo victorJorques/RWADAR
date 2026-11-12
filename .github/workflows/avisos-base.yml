@@ -1,23 +1,32 @@
 name: Avisos a registrados (base)
 
 # Aplica en Supabase, desde GitHub, la migración 30 (avisos a registrados),
-# la 31 (el correo sale por Lettermint) y sus scripts, con las mismas
+# la 31 (el correo sale por Lettermint), la 32 (notificaciones: push de Expo
+# con prioridad alta y notificaciones web) y sus scripts, con las mismas
 # garantías que «Aplicar catálogo»: solo desde main, copia cifrada de la base
 # antes de cambiar nada, cada SQL en su propia transacción y los
 # verificadores al final. Solo hay acciones fijas: no se puede pasar un
 # archivo cualquiera.
 #
 # Cada acción que cambia la base necesita orden expresa de Víctor (AGENTS.md)
-# y escribir AVISOS en «confirmar». «ensayo-30», «ensayo-31», «verificar-30»,
-# «verificar-31» y «diagnostico-30» no cambian nada: un ensayo aplica su
-# migración y sus verificadores dentro de una transacción que se deshace al
-# final, para saber si entra en producción antes de aplicarla.
+# y escribir AVISOS en «confirmar». Los ensayos («ensayo-30», «ensayo-31»,
+# «ensayo-32»), las verificaciones y «diagnostico-30» no cambian nada: un
+# ensayo aplica su migración y sus verificadores dentro de una transacción
+# que se deshace al final, para saber si entra en producción antes de
+# aplicarla.
 #
 # «guardar-correo» crea o actualiza en Vault LETTERMINT_API_TOKEN (del secreto
 # de GitHub con ese nombre) y RWADAR_REMITENTE (de la entrada «remitente»). No
 # enciende el correo: eso es «activar-correo», que exige la 31 y esos dos.
-# OJO: reaplicar la 30 devuelve el envío de correo al código de Brevo; si la
-# 31 ya estaba aplicada, hay que volver a aplicarla (aplicar-31).
+# OJO: reaplicar la 30 devuelve el envío de correo al código de Brevo y el
+# push de Expo a la prioridad normal; si la 31 y la 32 ya estaban aplicadas,
+# hay que volver a aplicarlas (aplicar-31 y aplicar-32).
+#
+# «crear-vapid» genera en esta máquina (node, sin npm) el par de claves P-256
+# de las notificaciones web y guarda la privada en Vault (RWADAR_VAPID_PRIVADA)
+# y la pública en la configuración (sale en el resumen; la privada, nunca).
+# Si ya hay una, no la cambia. «rotar-vapid» la sustituye y borra las
+# suscripciones web, que se hicieron con la anterior. Ninguna enciende nada.
 #
 # Usa los secretos de la copia de seguridad: SUPABASE_DB_URL y COPIA_CLAVE;
 # y, solo en guardar-correo, LETTERMINT_API_TOKEN.
@@ -39,6 +48,11 @@ on:
           - verificar-31
           - aplicar-31
           - guardar-correo
+          - ensayo-32
+          - verificar-32
+          - aplicar-32
+          - crear-vapid
+          - rotar-vapid
           - activar-casilla
           - activar-correo
           - activar-push
@@ -95,6 +109,7 @@ jobs:
           D=rwadar-app/db
           V30="$D/30_avisos_registrados_verificar.sql"
           V31="$D/31_correo_lettermint_verificar.sql"
+          V32="$D/32_notificaciones_verificar.sql"
           # VERIFICADORES: los que se pasan al final (o dentro del ensayo).
           ENSAYO=no
           VERIFICADORES="$V30"
@@ -107,6 +122,11 @@ jobs:
             verificar-31)    SQL="$V31";                                         CAMBIA=no; VERIFICADORES="$V30 $V31" ;;
             aplicar-31)      SQL="$D/31_correo_lettermint.sql";                 CAMBIA=si; VERIFICADORES="$V30 $V31" ;;
             guardar-correo)  SQL="$D/31_correo_lettermint_guardar.sql";         CAMBIA=si ;;
+            ensayo-32)       SQL="$D/32_notificaciones.sql";                    CAMBIA=no; ENSAYO=si; VERIFICADORES="$V30 $V31 $V32" ;;
+            verificar-32)    SQL="$V32";                                         CAMBIA=no; VERIFICADORES="$V30 $V31 $V32" ;;
+            aplicar-32)      SQL="$D/32_notificaciones.sql";                    CAMBIA=si; VERIFICADORES="$V30 $V31 $V32" ;;
+            crear-vapid)     SQL="$D/32_notificaciones_vapid.sql";              CAMBIA=si; VERIFICADORES="$V30 $V32" ;;
+            rotar-vapid)     SQL="$D/32_notificaciones_vapid.sql";              CAMBIA=si; VERIFICADORES="$V30 $V32" ;;
             activar-casilla) SQL="$D/30_avisos_registrados_activar_casilla.sql"; CAMBIA=si ;;
             activar-correo)  SQL="$D/30_avisos_registrados_activar_correo.sql";  CAMBIA=si; VERIFICADORES="$V30 $V31" ;;
             activar-push)    SQL="$D/30_avisos_registrados_activar_push.sql";    CAMBIA=si ;;
@@ -127,12 +147,14 @@ jobs:
             (( ${#REMITENTE} <= 254 )) && [[ "$REMITENTE" =~ $CORREO_VALIDO ]] \
               || { echo "guardar-correo necesita en «remitente» una dirección de correo válida, sin nombre ni <>."; exit 1; }
           fi
-          # Las dos copias de la 30 y las dos de la 31 deben ser idénticas
-          # (la del CLI y la del SQL Editor).
+          # Las dos copias de la 30, las dos de la 31 y las dos de la 32 deben
+          # ser idénticas (la del CLI y la del SQL Editor).
           cmp -s "$D/30_avisos_registrados.sql" rwadar-app/supabase/migrations/20261105200000_avisos_registrados.sql \
             || { echo "Las dos copias de la 30 no coinciden"; exit 1; }
           cmp -s "$D/31_correo_lettermint.sql" rwadar-app/supabase/migrations/20261106120000_correo_lettermint.sql \
             || { echo "Las dos copias de la 31 no coinciden"; exit 1; }
+          cmp -s "$D/32_notificaciones.sql" rwadar-app/supabase/migrations/20261112130000_notificaciones.sql \
+            || { echo "Las dos copias de la 32 no coinciden"; exit 1; }
           { echo "SQL=$SQL"; echo "CAMBIA=$CAMBIA"; echo "ENSAYO=$ENSAYO"; echo "VERIFICADORES=$VERIFICADORES"; } >> "$GITHUB_ENV"
 
       - name: Instalar psql y pg_dump 17 (misma versión que Supabase)
@@ -184,7 +206,7 @@ jobs:
           echo "ENSAYO CORRECTO: $(basename "$SQL") y sus verificadores pasan en producción. No se ha cambiado nada (rollback)."
 
       - name: Aplicar
-        if: env.CAMBIA == 'si' && inputs.accion != 'guardar-correo'
+        if: env.CAMBIA == 'si' && inputs.accion != 'guardar-correo' && inputs.accion != 'crear-vapid' && inputs.accion != 'rotar-vapid'
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           ACCION: ${{ inputs.accion }}
@@ -192,7 +214,7 @@ jobs:
           set -euo pipefail
           psql "$SUPABASE_DB_URL" -v ON_ERROR_STOP=1 -X -f "$SQL"
           if [ "$ACCION" = aplicar-30 ]; then
-            echo "Aviso: reaplicar la 30 devuelve el envío de correo al código de Brevo. Si la 31 ya estaba aplicada, vuelve a aplicarla (aplicar-31)."
+            echo "Aviso: reaplicar la 30 devuelve el envío de correo al código de Brevo y el push de Expo a la prioridad normal. Si la 31 y la 32 ya estaban aplicadas, vuelve a aplicarlas (aplicar-31 y aplicar-32)."
           fi
 
       # El token llega por el entorno y pasa a psql como variable (-v); nunca
@@ -218,6 +240,55 @@ jobs:
           psql "$SUPABASE_DB_URL" -X -v ON_ERROR_STOP=1 \
             -v token="$LETTERMINT_API_TOKEN" -v remitente="$REMITENTE" \
             -f "$SQL"
+
+      - name: Preparar Node.js (solo crear-vapid y rotar-vapid)
+        if: inputs.accion == 'crear-vapid' || inputs.accion == 'rotar-vapid'
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          # Parche de seguridad de Node del 21/10/2026. Sin npm: el par de
+          # claves sale de node:crypto.
+          node-version: 22.23.4
+
+      # El par de claves nace en esta máquina; la privada se enmascara en
+      # cuanto existe y pasa a psql como variable (-v), como el token de
+      # guardar-correo: nunca a un archivo, a Git ni a la salida. En la base
+      # solo va en un SELECT (set_config local a la transacción), nunca en una
+      # DDL que Supabase registraría con el valor. La pública sí sale en el
+      # resumen: la necesita la web y no es secreta.
+      - name: Crear o rotar la clave VAPID de las notificaciones web
+        if: inputs.accion == 'crear-vapid' || inputs.accion == 'rotar-vapid'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          ACCION: ${{ inputs.accion }}
+        run: |
+          set -euo pipefail
+          export LC_ALL=C
+          node rwadar-node-seguro.js
+          PAR="$(node rwadar-app/enviar-webpush.mjs generar-claves)"
+          PRIVADA="${PAR%% *}"
+          PUBLICA="${PAR#* }"
+          unset PAR
+          if [ -n "$PRIVADA" ]; then echo "::add-mask::$PRIVADA"; fi
+          if ! [[ "$PRIVADA" =~ ^[A-Za-z0-9_-]{43}$ && "$PUBLICA" =~ ^B[A-Za-z0-9_-]{86}$ ]]; then
+            echo "No se pudo generar el par de claves P-256."; exit 1
+          fi
+          ROTAR=no
+          if [ "$ACCION" = rotar-vapid ]; then ROTAR=si; fi
+          psql "$SUPABASE_DB_URL" -X -v ON_ERROR_STOP=1 \
+            -v privada="$PRIVADA" -v publica="$PUBLICA" -v rotar="$ROTAR" \
+            -f "$SQL"
+          unset PRIVADA
+          GUARDADA="$(psql "$SUPABASE_DB_URL" -X -At -v ON_ERROR_STOP=1 \
+            -c "select coalesce(webpush_clave_publica, '') from rwadar_novedades.configuracion where unica")"
+          [[ "$GUARDADA" =~ ^B[A-Za-z0-9_-]{86}$ ]] || { echo "La clave pública no quedó guardada."; exit 1; }
+          echo "Clave pública VAPID (la que usa la web): $GUARDADA"
+          {
+            echo "### Clave pública VAPID de las notificaciones web"
+            echo
+            echo "\`$GUARDADA\`"
+            echo
+            echo "La privada está en Vault (RWADAR_VAPID_PRIVADA) y no sale de la base."
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Diagnóstico (solo lee)
         if: inputs.accion == 'diagnostico-30'

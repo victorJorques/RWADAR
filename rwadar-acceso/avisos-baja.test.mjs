@@ -12,7 +12,7 @@ const BAJA = '5f1d3c2b-9a8e-4f7d-8c6b-5a4e3d2c1b0a';
 const ENV = { SUPABASE_URL: 'https://exgpmjpaaebyoolpwced.supabase.co', SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_prueba' };
 const MENSAJE = 'Si el enlace era válido, ya no recibirás avisos de novedades.';
 
-// avisosNovedades: el interruptor AVISOS_NOVEDADES_REMOTOS del servidor. Sin
+// avisosNovedades: el interruptor AVISOS_CASILLA_ALTA del servidor. Sin
 // pasarlo, el de servidor.mjs (hoy apagado); true lo enciende solo en la prueba.
 function entorno({ rpcBaja = () => Response.json(true), avisosNovedades } = {}) {
   let reloj = Date.parse('2026-11-05T10:00:00Z');
@@ -42,17 +42,20 @@ const ENCENDIDO_Y_APAGADO = [['apagado', false], ['encendido', true]];
 // Versión v2 de la casilla (revisión legal del 06/11/2026).
 const VERSION = 'novedades-v2-2026-11-06';
 
-test('la versión de la casilla es la de la revisión legal y el interruptor nace apagado, como en la web', () => {
+test('la versión de la casilla es la de la revisión legal y su interruptor propio nace apagado, como en /acceso', () => {
   assert.deepEqual(crearAccesoServidor().avisosNovedades, { activos: false, version: VERSION });
   assert.deepEqual(crearAccesoServidor({ avisosNovedades: true }).avisosNovedades, { activos: true, version: VERSION });
   for (const valor of ['true', 1, null]) assert.throws(() => crearAccesoServidor({ avisosNovedades: valor }), /avisos_invalidos/);
-  // Mismo nombre y mismo valor que en la web: se encienden juntos o no se encienden.
+  // La casilla del alta: mismo nombre y valor que en /acceso (se encienden juntos). Perfil › Avisos
+  // (AVISOS_NOVEDADES_REMOTOS de la web) ya está encendido desde el 12/11/2026 y no la enciende.
   const leer = ruta => fs.readFileSync(new URL(ruta, import.meta.url), 'utf8');
   const servidor = leer('./servidor.mjs');
-  assert.match(servidor, /^const AVISOS_NOVEDADES_REMOTOS = false;$/m);
+  assert.match(servidor, /^const AVISOS_CASILLA_ALTA = false;$/m);
+  assert.doesNotMatch(servidor, /AVISOS_NOVEDADES_REMOTOS =/);
   assert.doesNotMatch(servidor, /\bexport\s+(?:const|let|var)\b/, 'el servidor no exporta constantes (rompen el worker)');
-  assert.match(leer('../rwadar-site/assets/acceso.js'), /const AVISOS_NOVEDADES_REMOTOS = false;/);
-  assert.match(leer('../rwadar-site/assets/rwadar-20260820.js'), / const AVISOS_NOVEDADES_REMOTOS=false;/);
+  assert.match(leer('../rwadar-site/assets/acceso.js'), /const AVISOS_CASILLA_ALTA = false;/);
+  assert.doesNotMatch(leer('../rwadar-site/assets/acceso.js'), /const AVISOS_NOVEDADES_REMOTOS/);
+  assert.match(leer('../rwadar-site/assets/rwadar-20260820.js'), / const AVISOS_NOVEDADES_REMOTOS=true;/);
   assert.ok(leer('../rwadar-site/assets/rwadar-20260820.js').includes(" const VERSION_AVISOS_NOVEDADES='" + VERSION + "';"));
   assert.ok(servidor.includes("const VERSION_AVISOS_NOVEDADES = '" + VERSION + "';"));
   for (const html of ['../rwadar-site/acceso.html', '../rwadar-site/index.html']) {
@@ -161,6 +164,27 @@ test('la pasarela admite las tres RPC de avisos, solo por POST y con la sesión 
   }
   // Sin sesión, nada.
   assert.equal((await e.run('datos', { ruta: '/rpc/estado_mis_avisos', metodo: 'POST' })).status, 401);
+});
+
+test('la pasarela admite las cuatro RPC de las notificaciones en la web (contrato del 12/11/2026), solo por POST y con sesión', async () => {
+  const e = entorno();
+  const ENDPOINT = 'https://fcm.googleapis.com/fcm/send/prueba-123';
+  for (const [ruta, cuerpo] of [['/rpc/clave_publica_webpush', {}],
+    ['/rpc/registrar_aviso_webpush', { p_endpoint: ENDPOINT, p_p256dh: 'BPrueba_p256dh-clave', p_auth: 'auth-prueba' }],
+    ['/rpc/quitar_aviso_webpush', { p_endpoint: ENDPOINT }], ['/rpc/mi_aviso_webpush_registrado', { p_endpoint: ENDPOINT }]]) {
+    const r = await e.run('datos', { ruta, metodo: 'POST', cuerpo }, { cookie: TOKEN });
+    assert.equal(r.status, 200, ruta);
+    const llamada = e.calls.at(-1);
+    assert.equal(llamada.url, ENV.SUPABASE_URL + '/rest/v1' + ruta);
+    assert.equal(llamada.init.method, 'POST'); assert.equal(llamada.init.headers.Authorization, 'Bearer ' + TOKEN);
+    assert.deepEqual(llamada.body, cuerpo);
+    assert.equal((await e.run('datos', { ruta, metodo: 'GET' }, { cookie: TOKEN })).status, 400, ruta + ' por GET');
+    assert.equal((await e.run('datos', { ruta, metodo: 'POST', cuerpo })).status, 401, ruta + ' sin sesión');
+  }
+  // Ni parecidas ni las del envío, que solo usa el flujo con la clave privada.
+  for (const ruta of ['/rpc/registrar_aviso_webpushx', '/rpc/clave_privada_webpush', '/rpc/enviar_webpush', '/rpc/webpush_pendientes']) {
+    assert.equal((await e.run('datos', { ruta, metodo: 'POST', cuerpo: {} }, { cookie: TOKEN })).status, 400, ruta);
+  }
 });
 
 test('la baja llama a baja_avisos con la clave publicable, sin la cookie de nadie, y responde siempre lo mismo', async () => {

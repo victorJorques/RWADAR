@@ -63,7 +63,7 @@ Dicho en llano, hay tres tipos:
 | Se filtra la clave de las copias (`COPIA_CLAVE`) junto con una copia | Las copias llevan las cuentas (A13 del registro). GitHub guarda las dos cosas |
 | Una copia descifrada se queda en un ordenador perdido, robado o compartido | Está en claro |
 | Un fallo de permisos o del servidor web enseña a una cuenta datos de otra | Acceso no autorizado |
-| Entran en el Gmail que envía hoy las confirmaciones y recuperaciones | Ve los enlaces de recuperación: puede entrar en cuentas ajenas |
+| Entran en el Gmail de RWAdar (envía las confirmaciones y recuperaciones y, desde el 12/11/2026, es también el buzón de contacto) | Ve los enlaces de recuperación (puede entrar en cuentas ajenas) y las consultas, solicitudes de derechos, bajas y reportes de seguridad recibidos |
 | Un correo manual a varias personas con todas las direcciones a la vista | Comunicación no autorizada de los correos |
 | La base se borra o se estropea y la copia no sirve | Pérdida de datos (disponibilidad) |
 | Un proveedor avisa de una brecha suya que toca datos de RWAdar | Brecha del encargado: también nos obliga (ver «Si la brecha es de un proveedor») |
@@ -203,7 +203,7 @@ Lo que cada contrato añade, y por dónde nos avisaría:
 | **GitHub** | Copias cifradas y su clave; los flujos ven los datos en claro | **Hoy sin contrato de encargo:** no hay obligación contractual (hueco). Con el DPA de GitHub Team: «without undue delay» | Correo de la cuenta | dpo@github.com y https://support.github.com/contact/privacy (DPA) |
 | **Lettermint** (cuando se encienda) | Correos y su contenido, 28 días | «without undue delay and in any event within twenty-four (24) hours» (§10.1) | Correo de la cuenta de Lettermint | legal@lettermint.co (DPA); security@lettermint.co (su `security.txt`) |
 | **Netlify** | IP y datos técnicos de quien abre `rwadar.netlify.app` | «without undue delay, but in any event within forty-eight (48) hours» (§10.1) | Correo de la cuenta (**verificar**) | privacy@netlify.com (DPA, anexo) |
-| **Proton Mail** | El buzón rwadares@gmail.com | «without delay» (DPA) | **verificar** (probablemente, el propio buzón) | security@proton.me (su `security.txt`) |
+| **Google (Gmail)**, el buzón (desde el 12/11/2026) | El buzón rwadares@gmail.com: consultas, derechos, bajas, empresas, reportes de seguridad y contactos profesionales | Cuenta de consumo, sin contrato: no hay obligación (hueco hasta el dominio propio) | **verificar** | **verificar** |
 | **Gmail** (hasta pasar Auth a Lettermint) | Confirmaciones y recuperaciones de contraseña | Cuenta de consumo, sin contrato: no hay obligación | — | — |
 
 **Qué hacer cuando avisa un proveedor:**
@@ -277,3 +277,4 @@ apunta como brecha):
 | Fecha | Cambio | Quién |
 |---|---|---|
 | 07/11/2026 | Primera versión: pasos, plazos, contactos de cada proveedor y registro | Claude, por encargo de Víctor |
+| 12/11/2026 | El buzón pasa de Proton Mail a Gmail (rwadares@gmail.com): la fila del buzón, a Google (Gmail) | Claude, por encargo de Víctor |

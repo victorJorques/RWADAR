@@ -1,7 +1,11 @@
 # Contratos de encargo · RWAdar
 
-**Fecha:** 06/11/2026. **Al día:** 07/11/2026 (Netlify y Proton Mail
-comprobados; Apple, sin aplicar hoy).
+**Fecha:** 06/11/2026. **Al día:** 12/11/2026 (el buzón de RWAdar pasa a
+ser el Gmail rwadares@gmail.com, sin contrato de encargo; Proton Mail queda
+como histórico; y, con la migración 32, las notificaciones de la web: GitHub
+las envía y las entregan los servicios de push de los navegadores). El
+07/11/2026 se comprobaron Netlify y Proton Mail, y Apple (app nativa) no
+aplica.
 **Quién lo hace:** Claude (IA), a petición de Víctor Manuel Jorques Granero,
 titular de RWAdar. No es el dictamen de un abogado.
 
@@ -41,11 +45,13 @@ apartado 3) resume esto mismo y enlaza aquí.
 | **Cloudflare** | Web, sesión, analítica | Sí, dentro de su acuerdo de autoservicio. Nada que firmar | Marco UE-EE. UU. (DPF) y SCC |
 | **Google Firebase** | Notificaciones en Android (desde la 1.4.2; los avisos siguen apagados) | Sí: condiciones aceptadas en la consola el 06/11/2026 (proyecto `rwadar-14e3d`) | DPF y SCC |
 | **Expo** | Actualizaciones de la app y push | Sí, en sus términos (§3.2). No hay contrato aparte | SCC módulo 2, y DPF «en revisión» |
-| **GitHub** | Código, flujos, copias y descargas del APK | **No. Es un hueco** | DPF |
+| **GitHub** | Código, flujos, copias, descargas del APK y, con la 32, el envío de las notificaciones de la web | **No. Es un hueco** | DPF |
 | **Lettermint** | Todos los correos de RWAdar (pendiente) | Sí, al crear la cuenta (pendiente) | No salen: todo en la UE |
 | **Netlify** | Página de limpieza en `rwadar.netlify.app` | Sí, dentro de su acuerdo de autoservicio. Nada que firmar | DPF y, si cae, SCC módulo 2 |
-| **Proton Mail** | Buzón rwadares@gmail.com | Sí, dentro de sus condiciones. Nada que firmar | Suiza, con decisión de adecuación de la UE |
-| **Apple (APNs)** | Nada hoy: no hay app de iPhone | No aplica | No aplica |
+| **Google (Gmail)** | Desde el 12/11/2026, el buzón rwadares@gmail.com. También envía hoy los correos de Auth | **No. Es un hueco:** cuenta de consumo ([abajo](#fuera-de-esta-carpeta-gmail)) | Sin garantías documentadas para este uso (**verificar**) |
+| **Proton Mail** (histórico) | Fue el buzón (RWAdar@protonmail.com) hasta el 12/11/2026. Ya no trata datos de usuarios | Mientras se usó, sí, dentro de sus condiciones | Suiza, con decisión de adecuación de la UE |
+| **Apple (APNs, app nativa)** | Nada: no hay app de iPhone | No aplica | No aplica |
+| **Servicios de push de los navegadores** (Apple, Google, Mozilla, Microsoft) | Con la 32, entregan las notificaciones de la web, cifradas | No hay: los elige el navegador de cada persona. **Verificar** si son encargados ([abajo](#servicios-de-push-de-los-navegadores-web-push)) | Google LLC, DPF; Apple, Mozilla y Microsoft, **verificar** |
 
 ---
 
@@ -106,11 +112,11 @@ apartado 3) resume esto mismo y enlaza aquí.
 
 | | |
 |---|---|
-| **Qué hace** | Guarda el código en un repositorio privado. Ejecuta los flujos: la copia diaria de la base, la copia previa a cada cambio, «Aplicar catálogo», «Avisos a registrados (base)» y publicar. Guarda las copias cifradas 35 días. Publica el APK, y la app le pregunta si hay versión nueva. |
+| **Qué hace** | Guarda el código en un repositorio privado. Ejecuta los flujos: la copia diaria de la base, la copia previa a cada cambio, «Aplicar catálogo», «Avisos a registrados (base)» y publicar. Guarda las copias cifradas 35 días. Publica el APK, y la app le pregunta si hay versión nueva. Con la migración 32, el flujo «Notificaciones web» cifra y envía en su máquina las notificaciones de la web (`rwadar-app/enviar-webpush.mjs`). |
 | **Quién** | GitHub, Inc. (EE. UU.) o GitHub B.V. (Países Bajos). |
 | **Contrato que existe** | GitHub Data Protection Agreement: https://github.com/customer-terms/github-data-protection-agreement («Version: October 2025»). |
 | **Cómo vincula** | **En nuestra cuenta, no vincula.** El DPA dice que «forms part of the GitHub Customer Agreement», y llama «Online Services» a lo que GitHub presta «under a written and executed agreement». La cuenta de RWAdar es personal y gratuita: se rige por los términos generales de GitHub, no por el Customer Agreement. Para esas cuentas, la privacidad de GitHub dice que trata los datos «as the "Data Controller"», es decir, como responsable y no como encargado. |
-| **Por qué es un hueco real** | Las copias y los flujos de la base se ejecutan en máquinas de GitHub. Allí la copia está **en claro** unos minutos, antes de cifrarse, y los flujos de la base leen y escriben datos de las cuentas. Eso es tratar datos de usuarios por cuenta de RWAdar sin el contrato del art. 28.3. Las copias guardadas van cifradas, pero la contraseña (`COPIA_CLAVE`) también es un secreto de GitHub: GitHub guarda a la vez la copia y su llave. |
+| **Por qué es un hueco real** | Las copias y los flujos de la base se ejecutan en máquinas de GitHub. Allí la copia está **en claro** unos minutos, antes de cifrarse, y los flujos de la base leen y escriben datos de las cuentas. Con la 32, el envío de las notificaciones de la web tiene allí, en claro y mientras dura, la dirección de entrega y las claves de cada navegador, el texto de cada aviso y la clave privada VAPID (que sale de Vault y se enmascara). Eso es tratar datos de usuarios por cuenta de RWAdar sin el contrato del art. 28.3. Las copias guardadas van cifradas, pero la contraseña (`COPIA_CLAVE`) también es un secreto de GitHub: GitHub guarda a la vez la copia y su llave. **Recomendado:** firmar el contrato (abajo) antes de encender el envío de la web para todos (`activar-push`). |
 | **Transferencias** | GitHub está en el DPF como «Active» (participante 6174). Pero el DPF solo cubre el viaje de los datos: no sustituye al contrato de encargo. |
 | **Subencargados** | Solo con el DPA: https://github.com/github-subprocessors-list |
 | **PDF** | [`2026-11-06-github-dpa.pdf`](2026-11-06-github-dpa.pdf) y [`2026-11-06-github-declaracion-privacidad.pdf`](2026-11-06-github-declaracion-privacidad.pdf) |
@@ -197,11 +203,20 @@ peor para los usuarios: con Supabase gratuito no habría ninguna otra copia.
 | **Contacto** | privacy@netlify.com (DPA, anexo: persona de contacto). El DPA nombra también security@netlify.com y legal@netlify.com para pedir auditorías (§8.4.2). |
 | **PDF** | [`2026-11-07-netlify-dpa.pdf`](2026-11-07-netlify-dpa.pdf) y [`2026-11-07-netlify-acuerdo-autoservicio.pdf`](2026-11-07-netlify-acuerdo-autoservicio.pdf) |
 
-## Proton Mail
+## Proton Mail · histórico
+
+**Desde el 12/11/2026 Proton Mail ya no es el buzón de RWAdar.** El buzón es
+la cuenta de Gmail rwadares@gmail.com, sin contrato de encargo: es un hueco
+([abajo](#fuera-de-esta-carpeta-gmail)). Esta ficha se conserva como
+histórico: lo comprobado el 07/11/2026 vale para el tiempo en que se usó.
+Proton solo sigue como la cuenta personal del titular con la que entra como
+moderador (`rwadar-app/db/11_fuga_cola.sql`), que no es un tratamiento de
+datos de terceros. **verificar** qué se hace con los correos de usuarios que
+llegaron a esa cuenta antes del 12/11/2026.
 
 | | |
 |---|---|
-| **Qué hace** | El buzón rwadares@gmail.com: consultas, solicitudes de derechos, bajas por correo, empresas y reportes de seguridad. También es la dirección de respuesta de los avisos. |
+| **Qué hacía (hasta el 12/11/2026)** | El buzón RWAdar@protonmail.com: consultas, solicitudes de derechos, bajas por correo, empresas y reportes de seguridad. También era la dirección de respuesta de los avisos. |
 | **Quién firma** | Proton AG, Route de la Galaise 32, 1228 Plan-les-Ouates, Ginebra (Suiza), número CHE-354.686.492 (DPA, primer párrafo). |
 | **Contrato** | Data Processing Agreement: https://proton.me/legal/dpa |
 | **Versión** | «Last modified: February 10, 2026» (10/02/2026). |
@@ -213,14 +228,29 @@ peor para los usuarios: con Supabase gratuito no habría ninguna otra copia.
 | **Contacto** | security@proton.me (su `/.well-known/security.txt`, 07/11/2026). |
 | **PDF** | [`2026-11-07-proton-dpa.pdf`](2026-11-07-proton-dpa.pdf) y [`2026-11-07-proton-terminos.pdf`](2026-11-07-proton-terminos.pdf) |
 
-## Apple (APNs) · no aplica hoy
+## Apple (APNs) · app nativa: no aplica
 
 No hay app de iPhone publicada ni cuenta de Apple Developer (`docs/INTERNO.md`,
-07/11/2026). En iPhone, RWAdar es la web, también la que se añade a la
-pantalla de inicio, y no usa notificaciones de Apple. Apple no recibe ningún
-dato de los usuarios por cuenta de RWAdar. Si algún día se publica la app de
-iPhone con notificaciones, se lee entonces el contrato de Apple, se archiva
-aquí y se añade al registro de actividades.
+07/11/2026), así que no hay notificaciones de una app nativa por Apple Push
+Notification service. Si algún día se publica la app de iPhone con
+notificaciones, se lee entonces el contrato de Apple, se archiva aquí y se
+añade al registro de actividades.
+
+Lo que sí cambia con la migración 32: en iPhone, RWAdar es la web, y si la
+persona la añade a la pantalla de inicio y activa las notificaciones, las
+entrega el servicio de push de Apple para la web (`web.push.apple.com`). Eso
+va en la sección siguiente.
+
+## Servicios de push de los navegadores (Web Push)
+
+| | |
+|---|---|
+| **Qué hacen** | Con la migración 32 (pendiente de aplicar), entregan las notificaciones de la web a los móviles y tabletas que las activan: Apple (`web.push.apple.com`, Safari), Google (`fcm.googleapis.com`, Chrome y la mayoría de navegadores de Android), Mozilla (`updates.push.services.mozilla.com`, Firefox) y Microsoft (`*.notify.windows.com`, Edge). |
+| **Qué reciben** | La dirección de entrega del navegador (la que les asignó ese mismo servicio), los datos técnicos de la conexión y cada notificación cifrada de extremo a extremo con las claves del navegador (RFC 8291), que no pueden leer. Nunca el correo. |
+| **Quién los elige** | El navegador de cada persona, no RWAdar: no hay cuenta ni contrato de RWAdar con ellos (las notificaciones se firman con la clave VAPID propia de RWAdar). |
+| **Contrato de encargo** | **Verificar** en el anexo legal si son encargados de RWAdar (art. 28) o responsables propios del servicio que prestan al navegador. Hasta entonces, el registro los lista como «terceros que no son encargados» (apartado 3). |
+| **Transferencias** | EE. UU. Google LLC figura «Active» en el DPF (consulta del 06/11/2026). Apple, Mozilla y Microsoft: **verificar** en dataprivacyframework.gov antes de enviar a todos; la privacidad (§8) lo promete. |
+| **PDF** | Ninguno todavía: se archivarán con el anexo legal. |
 
 ## Alternativas descartadas (solo como referencia)
 
@@ -235,10 +265,24 @@ No se archivó su contrato.
 PDF: [`2026-11-06-postmark-dpa.pdf`](2026-11-06-postmark-dpa.pdf) y
 [`2026-11-06-resend-dpa.pdf`](2026-11-06-resend-dpa.pdf).
 
-**Fuera de esta carpeta** solo queda Gmail: hoy envía los correos de Auth sin
-contrato de encargo (cuenta de consumo); lo sustituye el SMTP de Lettermint en
-el paso 5.8 del contrato de avisos. Netlify, Proton Mail y Apple se
-comprobaron el 07/11/2026 (arriba).
+## Fuera de esta carpeta: Gmail
+
+Solo queda Gmail, la cuenta de consumo rwadares@gmail.com. **No tiene
+contrato de encargo** (RGPD, art. 28): es un hueco abierto. Hoy trata:
+
+- **los correos de Auth** (confirmación y recuperación de la contraseña). Los
+  sustituye el SMTP de Lettermint en el paso 5.8 del contrato de avisos;
+- **desde el 12/11/2026, el buzón de RWAdar:** consultas, derechos, bajas por
+  correo, empresas, reportes de seguridad y contactos profesionales. También
+  es la dirección de respuesta de los avisos.
+
+Solución prevista: el dominio propio, con un proveedor de correo que tenga
+contrato de encargo (**verificar** cuál). Garantías para los datos que salen
+de la UE: no documentadas para este uso (**verificar**; registro,
+apartado 3).
+
+Netlify, Proton Mail y Apple se comprobaron el 07/11/2026 (arriba). Proton
+queda como histórico desde el 12/11/2026.
 
 ---
 
@@ -271,9 +315,12 @@ comprobaron el 07/11/2026 (arriba).
 4. **Supabase.** Nada que firmar. Opcional: en el panel, «Organization ›
    Legal Documents», descargar la evaluación de las transferencias si la
    ofrece, y guardarla aquí con la fecha.
-5. **Cloudflare, Expo, Netlify y Proton.** Nada que firmar. En Netlify,
+5. **Cloudflare, Expo y Netlify.** Nada que firmar. En Netlify,
    decidir algún día si se retira `rwadar.netlify.app` (ver arriba) y mirar si
    sigue en la configuración de direcciones de Supabase.
+6. **Gmail (buzón y Auth).** En una cuenta de consumo no hay contrato que
+   firmar: el hueco se cierra con el dominio propio (ver «Fuera de esta
+   carpeta: Gmail»).
 
 ## Fechas que hay que apuntar
 
@@ -282,7 +329,8 @@ comprobaron el 07/11/2026 (arriba).
 | Google Firebase | **06/11/2026** | Aceptadas en la consola al crear el proyecto `rwadar-14e3d` |
 | Lettermint | **pendiente** | Crear la cuenta |
 | Lettermint · verificación | **pendiente** | Fecha en que se pidió y fecha en que la aprobaron |
-| Netlify y Proton | **no consta** | Al crear cada cuenta (antes de este registro). Si se puede ver en el panel de cada una, apuntarla aquí |
+| Netlify | **no consta** | Al crear la cuenta (antes de este registro). Si se puede ver en su panel, apuntarla aquí |
+| Proton (histórico) | **no consta** | Ya no hace falta: dejó de ser el buzón el 12/11/2026 |
 | GitHub | **pendiente**: organización `rwadar` con GitHub Team | Firmar el «GitHub Customer Agreement» en la organización |
 
 ---
@@ -319,3 +367,14 @@ comprobaron el 07/11/2026 (arriba).
   y su informe del 15/01/2024.
 - **No se pudo:** leer la lista oficial del DPF sin navegador (Netlify queda
   como **verificar** allí) ni ver dónde guarda Proton los buzones.
+
+## Cómo se comprobó (12/11/2026)
+
+- **El cambio de buzón:** lo decidió el titular el 12/11/2026. La privacidad
+  se corrigió ese día: el buzón es Google/Gmail y Proton Mail deja de figurar.
+- **La dirección:** la migración 31 (`rwadar-app/db/31_correo_lettermint.sql`)
+  ya usa rwadares@gmail.com como dirección de respuesta y de baja.
+- **Proton:** lo único que sigue es la cuenta de moderador del titular
+  (`rwadar-app/db/11_fuga_cola.sql`).
+- **Gmail:** no se leyó ningún contrato de Google para Gmail. En una cuenta
+  de consumo no hay contrato de encargo.

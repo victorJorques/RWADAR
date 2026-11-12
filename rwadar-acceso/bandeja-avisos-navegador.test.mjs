@@ -3,15 +3,19 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-// Bandeja de avisos sin correo ni push (AVISOS_BANDEJA_REMOTA, 07/11/2026).
-// Apagada: ninguna llamada y el panel de la cuenta como hoy. Encendida: solo la
+// Bandeja de avisos sin correo ni push (AVISOS_BANDEJA_REMOTA, 07/11/2026),
+// encendida el 12/11/2026 con la campana con número de la cabecera.
+// Apagada: ninguna llamada y el panel de la cuenta como antes. Encendida: la
 // lista de avisos recibidos (rpc/mis_avisos_recientes por /api/acceso/datos),
-// sin casilla, sin permiso, sin correo y sin push. Mismo entorno que
-// perfil-avisos-navegador.test.mjs.
+// que se pide al confirmar la sesión para contar lo no leído. Aquí se prueba
+// la bandeja sola (Perfil › Avisos apagado en la copia de la prueba); los dos
+// juntos, la campana y el número del icono, en campana-avisos-navegador.test.mjs.
+// Mismo entorno que perfil-avisos-navegador.test.mjs.
 const web = fs.readFileSync(new URL('../rwadar-site/assets/rwadar-20260820.js', import.meta.url), 'utf8');
 const html = fs.readFileSync(new URL('../rwadar-site/index.html', import.meta.url), 'utf8');
 const bridge = fs.readFileSync(new URL('../rwadar-site/assets/acceso-privado.js', import.meta.url), 'utf8');
-const APAGADA = ' const AVISOS_BANDEJA_REMOTA=false;';
+const ENCENDIDA = ' const AVISOS_BANDEJA_REMOTA=true;';
+const NOVEDADES = ' const AVISOS_NOVEDADES_REMOTOS=true;';
 const tick = async (veces = 6) => { for (let i = 0; i < veces; i++) await new Promise(resolve => setImmediate(resolve)); };
 const consentimiento = codigo => codigo.slice(codigo.indexOf('const VERSION_CONSENTIMIENTO_CORREO='), codigo.indexOf('/* correo-consentimiento:fin */'));
 const cuenta = codigo => codigo.slice(codigo.indexOf('const Cuenta = (function(){'), codigo.indexOf('/* comunidad:inicio */'));
@@ -29,8 +33,9 @@ const RECIENTES = [
     texto: 'Tu cuenta está confirmada y la Academy ya está desbloqueada: es gratis con tu cuenta.',
     enlace: 'https://rwadar.pages.dev/academy/', creado_el: '2026-11-01T10:00:00Z' },
 ];
+const SIN_LEER = '<span class="bandeja-punto" aria-hidden="true"></span><span class="solo-lector">Sin leer</span> ';
 
-function entorno({ encendida = false, sesion = true, recientes = RECIENTES, falla = false } = {}) {
+function entorno({ encendida = true, sesion = true, recientes = RECIENTES, falla = false } = {}) {
   const llamadas = [], nodos = new Map();
   function nodo(id) {
     if (!nodos.has(id)) {
@@ -64,7 +69,8 @@ function entorno({ encendida = false, sesion = true, recientes = RECIENTES, fall
       const datos = recurso.startsWith('/mi_perfil?') ? [{ id: 'cuenta-a', nombre: 'Prueba' }] : [];
       return { ok: true, status: 200, json: async () => datos };
     } });
-  const codigo = encendida ? web.replace(APAGADA, ' const AVISOS_BANDEJA_REMOTA=true;') : web;
+  let codigo = web.replace(NOVEDADES, ' const AVISOS_NOVEDADES_REMOTOS=false;');
+  if (!encendida) codigo = codigo.replace(ENCENDIDA, ' const AVISOS_BANDEJA_REMOTA=false;');
   vm.runInContext(bridge, context);
   vm.runInContext(consentimiento(codigo) + '\n' + cuenta(codigo) + '\nglobalThis.cuentaPrueba=Cuenta;', context);
   const rpc = () => llamadas.filter(l => l.ruta === '/api/acceso/datos').map(l => JSON.parse(l.opciones.body))
@@ -72,9 +78,9 @@ function entorno({ encendida = false, sesion = true, recientes = RECIENTES, fall
   return { context, nodo, rpc };
 }
 
-test('la bandeja nace apagada y es un interruptor aparte de los avisos de novedades', () => {
-  assert.ok(web.includes(APAGADA), 'AVISOS_BANDEJA_REMOTA nace apagado');
-  assert.ok(web.includes(' const AVISOS_NOVEDADES_REMOTOS=false;'));
+test('la bandeja está encendida (12/11/2026) y sigue siendo un interruptor aparte de los avisos de novedades', () => {
+  assert.ok(web.includes(ENCENDIDA), 'AVISOS_BANDEJA_REMOTA encendido');
+  assert.ok(web.includes(NOVEDADES), 'Perfil › Avisos encendido');
   assert.ok(web.includes(' const AVISOS_BANDEJA_DISPONIBLE=SERVICIOS_USUARIO_DISPONIBLES&&AVISOS_BANDEJA_REMOTA;'));
   // La casilla del alta y el texto versionado del permiso no dependen de la bandeja.
   const acceso = fs.readFileSync(new URL('../rwadar-site/assets/acceso.js', import.meta.url), 'utf8');
@@ -82,11 +88,11 @@ test('la bandeja nace apagada y es un interruptor aparte de los avisos de noveda
   assert.ok(web.includes("const VERSION_AVISOS_NOVEDADES='novedades-v2-2026-11-06';"));
   // El servidor web ya deja pasar la consulta (rutas cerradas de /api/acceso/datos).
   const servidor = fs.readFileSync(new URL('./servidor.mjs', import.meta.url), 'utf8');
-  assert.match(servidor, /\|mis_avisos_recientes\)\)/);
+  assert.match(servidor, /\|mis_avisos_recientes\|/);
 });
 
-test('apagada: con sesión no se pide nada y el panel de la cuenta queda como hoy', async () => {
-  const e = entorno();
+test('apagada: con sesión no se pide nada y el panel de la cuenta queda como antes', async () => {
+  const e = entorno({ encendida: false });
   await tick();
   await e.context.cuentaPrueba.abrirGestion();
   await tick();
@@ -94,59 +100,70 @@ test('apagada: con sesión no se pide nada y el panel de la cuenta queda como ho
   const panel = e.nodo('perfilCuerpo').innerHTML;
   assert.doesNotMatch(panel, /pfBandeja|Avisos recibidos/);
   assert.match(panel, /Próximamente: avisos por correo cuando cambie una plataforma que sigues/);
+  assert.equal(e.nodo('btnAvisos').hidden, true, 'sin bandeja no hay campana');
 });
 
-test('encendida: solo pide mis_avisos_recientes y pinta los avisos válidos, escapados y con enlaces propios', async () => {
-  const e = entorno({ encendida: true });
-  await tick();
-  assert.deepEqual(e.rpc(), [], 'nada hasta abrir la cuenta');
-  await e.context.cuentaPrueba.abrirGestion();
+test('encendida: pide mis_avisos_recientes al confirmar la sesión (para la campana) y pinta los avisos válidos, escapados y con enlaces propios', async () => {
+  const e = entorno();
   await tick();
   assert.deepEqual(e.rpc(), [{ ruta: '/rpc/mis_avisos_recientes', metodo: 'POST', cuerpo: { p_limite: 10 } }],
-    'ni estado_mis_avisos ni configurar_avisos_novedades');
+    'una sola consulta al confirmar la sesión; ni estado_mis_avisos ni configurar_avisos_novedades');
+  await e.context.cuentaPrueba.abrirGestion();
+  await tick();
+  assert.equal(e.rpc().length, 1, 'abrir la cuenta no repite la consulta');
   const panel = e.nodo('perfilCuerpo').innerHTML;
   assert.match(panel, /<section class="perfil-bandeja" aria-labelledby="pfBandejaTit"><h3 id="pfBandejaTit">Avisos recibidos<\/h3>/);
   // Sin casilla ni permiso: la bandeja no cambia la parte de avisos del panel.
   assert.doesNotMatch(panel, /type="checkbox"[^>]*pfNovedades|Avisos de novedades\./);
   assert.match(panel, /Próximamente: avisos por correo/);
   const lista = e.nodo('pfBandeja').innerHTML;
-  assert.equal((lista.match(/<li>/g) || []).length, 3, 'el del enlace ajeno y el repetido no salen');
-  assert.ok(lista.includes('<li><b>2 fichas nuevas en el radar de RWAdar</b><p>Consulta en el radar qué ha entrado.</p><time datetime="2026-11-05">05/11/2026</time> <a href="/#emisiones" aria-label="Abrir 2 fichas nuevas en el radar de RWAdar">Abrir</a></li>'));
+  assert.equal((lista.match(/<li\b/g) || []).length, 3, 'el del enlace ajeno y el repetido no salen');
+  assert.ok(lista.includes('<li class="nuevo">' + SIN_LEER + '<b>2 fichas nuevas en el radar de RWAdar</b><p>Consulta en el radar qué ha entrado.</p><time datetime="2026-11-05">05/11/2026</time> <a href="/#emisiones" aria-label="Abrir 2 fichas nuevas en el radar de RWAdar">Abrir</a></li>'));
   assert.ok(lista.includes('<b>&lt;img src=x onerror=alert(1)&gt;</b><p>Texto con &lt;b&gt;etiquetas&lt;/b&gt;.</p>'), 'escapado');
   assert.ok(lista.includes('<a href="/academy/" aria-label="Abrir Te damos la bienvenida a RWAdar">Abrir</a>'));
+  assert.ok(lista.endsWith('</ul><button type="button" class="bandeja-marcar" data-avisos-marcar>Marcar como leídos</button>'));
   assert.doesNotMatch(lista, /evil\.test|Repetido|<img/);
   // Volver a abrir la cuenta no repite la consulta.
   await e.context.cuentaPrueba.abrirGestion();
   await tick();
   assert.equal(e.rpc().length, 1);
+  // La campana cuenta los tres válidos, sin leer.
+  assert.equal(e.context.cuentaPrueba.avisosSinLeer(), 3);
+  assert.equal(e.nodo('btnAvisos').hidden, false);
+  assert.equal(e.nodo('btnAvisosN').textContent, '3');
 });
 
 test('encendida: si la base falla lo dice y reintenta al volver a abrir; sin avisos, una frase', async () => {
-  const caida = entorno({ encendida: true, falla: true });
+  const caida = entorno({ falla: true });
   await tick();
+  assert.equal(caida.rpc().length, 1, 'la de la campana, al confirmar la sesión');
   await caida.context.cuentaPrueba.abrirGestion();
   await tick();
   assert.equal(caida.nodo('pfBandeja').innerHTML,
     '<p class="perfil-nota" role="status">No se pudieron cargar tus avisos. Cierra y vuelve a abrir tu cuenta para reintentarlo.</p>');
+  assert.equal(caida.rpc().length, 2, 'tras el error se vuelve a pedir al abrir la cuenta');
   await caida.context.cuentaPrueba.abrirGestion();
   await tick();
-  assert.equal(caida.rpc().length, 2, 'tras el error se vuelve a pedir');
-  const vacia = entorno({ encendida: true, recientes: [] });
+  assert.equal(caida.rpc().length, 3, 'y otra vez');
+  assert.equal(caida.context.cuentaPrueba.avisosSinLeer(), 0, 'sin lista, la campana no inventa un número');
+  const vacia = entorno({ recientes: [] });
   await tick();
   await vacia.context.cuentaPrueba.abrirGestion();
   await tick();
   assert.equal(vacia.nodo('pfBandeja').innerHTML, '<p class="perfil-nota">Aquí verás la bienvenida y los anuncios de RWAdar.</p>');
-  const rara = entorno({ encendida: true, recientes: { no: 'es una lista' } });
+  const rara = entorno({ recientes: { no: 'es una lista' } });
   await tick();
   await rara.context.cuentaPrueba.abrirGestion();
   await tick();
   assert.match(rara.nodo('pfBandeja').innerHTML, /No se pudieron cargar tus avisos/);
 });
 
-test('encendida sin sesión: no se pide nada', async () => {
-  const e = entorno({ encendida: true, sesion: false });
+test('encendida sin sesión: no se pide nada y no hay campana', async () => {
+  const e = entorno({ sesion: false });
   await tick();
   await e.context.cuentaPrueba.abrirGestion().catch(() => {});
   await tick();
   assert.deepEqual(e.rpc(), []);
+  assert.equal(e.nodo('btnAvisos').hidden, true);
+  assert.equal(e.nodo('movilAvisos').hidden, true);
 });
