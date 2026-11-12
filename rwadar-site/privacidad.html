@@ -48,7 +48,7 @@
   <a class="volver" href="/">← Volver al inicio</a>
 
   <h1>Privacidad</h1>
-  <p class="fecha">Versión revisada el <time datetime="2026-11-07">7 de noviembre de 2026</time></p>
+  <p class="fecha">Versión revisada el <time datetime="2026-11-12">12 de noviembre de 2026</time></p>
 
   <div class="resumen">
     <p><b>El resumen, por si no lees el resto.</b></p>
@@ -60,8 +60,9 @@
     <p>Puedes crear
       <b>tu cuenta</b> con tu correo y una contraseña
       para guardar la lista de plataformas que sigues. Solo te enviamos los correos
-      necesarios para confirmar la dirección y recuperar la contraseña. <b>Las opiniones,
-      los avisos por correo y los avisos push siguen en pausa.</b> La lista de seguimiento
+      necesarios para confirmar la dirección y recuperar la contraseña. <b>Las opiniones y
+      los avisos por correo siguen en pausa.</b> Las notificaciones en el móvil solo llegan si
+      las activas tú en Perfil › Avisos (apartado 6). La lista de seguimiento
       de tu cuenta es distinta de los favoritos: estos se guardan solo en el dispositivo
       en la app nativa, o solo en tu navegador en la web.</p>
     <p>Puedes <b>borrar tu cuenta tú mismo</b> desde Perfil, confirmando tu contraseña
@@ -74,8 +75,9 @@
   <div class="pendiente" role="note">
     <p><b>Alcance de esta versión:</b> radar editorial gratuito, con fuentes y fechas
       de revisión. La cuenta permite guardar una lista de seguimiento, abrir las lecciones de RWAdar Academy y acceder a las funciones personales (alta, entrada,
-      recuperación de la contraseña y borrado). Las opiniones, los avisos por correo y el push
-      están en pausa. RWAdar no ofrece
+      recuperación de la contraseña y borrado). Las opiniones y los avisos por correo
+      están en pausa; los avisos de novedades y las notificaciones en el móvil, solo si los
+      activas en Perfil. RWAdar no ofrece
       actualmente contratación, facturación ni espacios para empresas: la página para empresas recoge
       solo expresiones de interés sin efectos comerciales o contractuales. Esta declaración no
       acredita una transferencia de datos históricos ni que el modelo comercial esté aprobado.
@@ -197,6 +199,15 @@
         <td><span class="celda-etiqueta">Quién lo recibe</span> Tu navegador, Cloudflare y el servicio de autenticación de Supabase</td>
       </tr>
       <tr>
+        <td>Avisos leídos y <br>número del icono</td>
+        <td><span class="celda-etiqueta">Por qué ocurre</span> Con tu cuenta abierta, el navegador recuerda qué avisos
+          has marcado como leídos (solo su número de aviso, separado por cuenta) para que la campana
+          cuente los que faltan. Si activas las notificaciones, el service worker de la web guarda
+          cuántas te han llegado sin ver, para poner ese número en el icono; vuelve a 0 al ver los
+          avisos. Es lo estrictamente necesario para esas funciones y no sale del navegador.</td>
+        <td><span class="celda-etiqueta">Quién lo recibe</span> Tu navegador (almacenamiento local e IndexedDB)</td>
+      </tr>
+      <tr>
         <td>Instalaciones anteriores <br>de la aplicación web</td>
         <td><span class="celda-etiqueta">Por qué ocurre</span> Cuando la web se actualiza en tu navegador, se borran las copias antiguas de RWAdar.
           Esta versión no almacena páginas ni catálogo para consultarlos sin conexión:
@@ -211,7 +222,8 @@
     para recordar el sonido, las empresas y ofertas que guardas en favoritos desde el móvil
     (solo su nombre o identificador público) y, en RWAdar Academy, qué lecciones has marcado
     como leídas y cuántas preguntas acertaste en sus tests y, si creas la cuenta desde una
-    lección, a qué lección volver (24 horas, apartado 9); nada de eso sale de tu navegador
+    lección, a qué lección volver (24 horas, apartado 9) y, con tu cuenta, qué avisos has leído
+    y el número de avisos sin ver para el icono; nada de eso sale de tu navegador
     ni se envía a RWAdar. Puedes borrar los favoritos desde Perfil. No guarda una copia PWA del catálogo. No incluye publicidad,
     píxeles sociales ni analítica de seguimiento entre sitios. No se utiliza Zaraz.</p>
   <p><b>Estadísticas de la web/PWA:</b> esta versión incluye
@@ -362,14 +374,18 @@
     la web y consultar o cambiar tu lista de seguimiento (apartado 3). Desde Android 1.4.0, un token de renovación se guarda cifrado mediante el almacenamiento seguro del sistema, sin guardar tu contraseña, el perfil ni la lista de seguimiento en ese registro. La sesión se recupera y comprueba al abrir la app, hasta que cierres sesión o el servicio la invalide. Puedes activar en Perfil el desbloqueo con la seguridad del móvil: huella, reconocimiento facial compatible o PIN del sistema. La comprobación la hace el sistema operativo; RWAdar no recibe ni guarda datos biométricos ni el código del dispositivo. Los enlaces de confirmación y recuperación se abren en la web
     oficial; después puedes volver a entrar en la app. Las versiones anteriores sin cuentas
     conservan únicamente sus funciones editoriales y favoritas locales.</p>
-  <p>Esta versión no crea una identidad remota de instalación, no solicita permiso de
-    notificaciones, no obtiene ni registra tokens push ni activa seguimiento por instalación.
-    La entrega automática está desactivada y no se ha probado entera, de principio a fin.
-    Los avisos de nuevas emisiones tampoco están conectados.</p>
+  <p id="notificaciones-movil"><b>Notificaciones en el móvil:</b> ya puedes activarlas en Perfil ›
+    Avisos, con «Notificaciones en este móvil»: en la app de Android desde la versión 1.4.2 y en
+    la web desde el navegador del móvil o la tableta (en iPhone y iPad, con RWAdar añadida a la
+    pantalla de inicio). Solo se piden si pulsas ese botón, el sistema o el navegador te pide
+    permiso y puedes quitarlas cuando quieras. Qué se guarda, quién las entrega y cuándo se
+    borra se explica en el <a href="#avisos-novedades">apartado 6</a>. La app no crea una
+    identidad remota de instalación ni activa seguimiento por instalación, y ninguna
+    notificación lleva tu correo ni datos de tus inversiones.</p>
   <p id="firebase-android"><b>Componente de notificaciones de Google (Firebase) en Android:</b>
     desde la versión 1.4.2, la app de Android lleva el componente de notificaciones de Google
-    (Firebase Cloud Messaging). Mientras no se activen «Notificaciones en este móvil», no envía
-    nada a Google; hoy ese botón no aparece en la app. Aun así, el componente guarda en el
+    (Firebase Cloud Messaging). Mientras no actives «Notificaciones en este móvil», no envía
+    nada a Google. Aun así, el componente guarda en el
     móvil las fechas recientes en que se abrió la app (hasta 30). Si se activan las
     notificaciones, Google recibe esas fechas junto con qué componentes de Firebase lleva la
     app y sus versiones, y datos técnicos del móvil (versión de Android, marca, modelo, tipo de
@@ -379,7 +395,7 @@
     datos desde los ajustes de Android. El botón «Borrar datos del dispositivo» de RWAdar no
     las borra.</p>
   <p>Los datos o permisos que puedan existir de una instalación anterior no quedan
-    revocados por esta pausa. Puedes retirar el permiso de notificaciones en los ajustes
+    revocados por los cambios de versión. Puedes retirar el permiso de notificaciones en los ajustes
     del sistema y solicitar la revisión o supresión de datos remotos por correo.
     La limpieza de instalaciones inactivas se describe en el apartado 9.</p>
 
@@ -399,19 +415,21 @@
     boletines ni publicidad.</p>
 
   <h3 id="avisos-novedades">Avisos de novedades (correo y notificaciones)</h3>
-  <p><b>Todavía no están activos.</b> Esta versión no muestra la casilla para pedirlos, no guarda
-    ese permiso y no envía estos avisos. Antes de activarlos se actualizará esta política y su
-    fecha. Están preparados así:</p>
+  <p><b>Ya puedes activarlos en Perfil › Avisos.</b> El envío por correo todavía no está activo y
+    la casilla del alta todavía no se muestra: por ahora los avisos se ven en tu cuenta (la
+    campana de la web y Inicio en la app) y, si activas las notificaciones, llegan a tu móvil.
+    Funcionan así:</p>
   <ul>
     <li><b>Qué son:</b> avisos de RWAdar sobre fichas nuevas en el radar y novedades de la web
       y la app, por correo y, si los activas en tu móvil, como notificaciones.</li>
-    <li><b>Solo con tu permiso:</b> al crear la cuenta habrá una casilla aparte y sin marcar;
-      también podrás activarlos en Perfil. Son opcionales: la Academy se desbloquea igual.
+    <li><b>Solo con tu permiso:</b> los activas en Perfil › Avisos con su interruptor, que nace
+      apagado; más adelante, al crear la cuenta, habrá también una casilla aparte y sin marcar.
+      Son opcionales: la Academy se desbloquea igual.
       Si marcas la casilla al registrarte, el permiso se guarda solo cuando confirmas el correo.
       Se guardan la fecha del alta, la fecha del permiso, la versión del texto que aceptaste
       (<code>novedades-v2-2026-11-06</code>), en qué idioma la viste y si lo diste en la web o en la app.</li>
-    <li><b>Baja:</b> podrás darte de baja en Perfil o con el enlace de cada correo, que no exige
-      entrar en tu cuenta; cada correo llevará además la dirección rwadares@gmail.com, a la que
+    <li><b>Baja:</b> puedes darte de baja en Perfil y, cuando haya correos, con el enlace de cada
+      correo, que no exige entrar en tu cuenta; cada correo llevará además la dirección rwadares@gmail.com, a la que
       también puedes escribir para pedir la baja. Las notificaciones también se quitan en los
       ajustes del móvil. La baja corta a la vez los correos y las notificaciones de novedades.</li>
     <li><b>Sin seguimiento:</b> los correos no llevarán píxel de apertura ni seguimiento de
@@ -422,6 +440,16 @@
       notificaciones de Apple, entregaría las notificaciones y recibiría el identificador de
       notificaciones del móvil y el contenido del aviso, nunca tu correo. Ese identificador solo
       se registra si activas las notificaciones en tu móvil, hasta cinco móviles por cuenta.</li>
+    <li id="notificaciones-web"><b>Notificaciones en la web:</b> solo se ofrecen en móviles y tabletas
+      y, en iPhone y iPad, con RWAdar añadida a la pantalla de inicio (iOS o iPadOS 16.4 o
+      posterior). Para activarlas hay que tener antes activados los avisos de novedades. Si las
+      activas, guardamos en tu cuenta la suscripción de tu navegador: la dirección del servicio de
+      notificaciones de tu navegador y sus dos claves de cifrado. Se borra al desactivarlas, al
+      cerrar sesión, cuando ese servicio la da por caducada o al borrar la cuenta. Las entrega
+      el servicio de tu navegador: Apple (Safari), Google (Chrome y la mayoría de navegadores de
+      Android), Mozilla (Firefox) o Microsoft (Edge). Cada notificación va cifrada de extremo a
+      extremo con las claves de tu navegador, así que ese servicio no puede leer su texto; recibe
+      la dirección de entrega y los datos técnicos de la conexión, nunca tu correo.</li>
     <li><b>Conservación:</b> el permiso y su historial de altas y bajas, mientras exista la cuenta.
       Si la borras, ese historial queda bloqueado durante 3 años, solo para atender reclamaciones
       (art. 32 de la Ley Orgánica 3/2018, LOPDGDD). Los registros de cada envío, 90 días después
@@ -520,11 +548,20 @@
     <li><b>Expo y los servicios push de Apple o Google</b> — desde Android 1.4.1, Expo envía
       las actualizaciones de la app que no necesitan instalar una versión nueva: al abrirla recibe la IP, la plataforma, la versión
       instalada y un identificador aleatorio de esa instalación, nunca tu cuenta ni tus datos.
-      Son también posibles proveedores de avisos
-      futuros; la versión editorial no solicita permiso ni registra tokens. Desde Android 1.4.2
+      Si activas las notificaciones en la app, Expo y Firebase Cloud Messaging de Google (o el
+      servicio de Apple) las entregan, como se explica en el apartado 6. Desde Android 1.4.2
       la app lleva el componente de notificaciones de Google (Firebase), que se explica en el
       <a href="#firebase-android">apartado 5</a>.
       Los términos de Expo incorporan SCC y contemplan el EU-U.S. Data Privacy Framework.</li>
+    <li><b>Servicios de notificaciones de los navegadores</b> (Apple, Google, Mozilla o Microsoft,
+      según el navegador) — solo si activas las notificaciones en la web: reciben la dirección de
+      entrega de tu navegador y cada notificación cifrada, que no pueden leer
+      (<a href="#notificaciones-web">apartado 6</a>). No los elige RWAdar sino tu navegador; consulta
+      la política de privacidad de
+      <a href="https://www.apple.com/es/legal/privacy/" rel="noopener">Apple</a>,
+      <a href="https://policies.google.com/privacy?hl=es" rel="noopener">Google</a>,
+      <a href="https://www.mozilla.org/es-ES/privacy/firefox/" rel="noopener">Mozilla</a> o
+      <a href="https://privacy.microsoft.com/es-es/privacystatement" rel="noopener">Microsoft</a>.</li>
     <li><b>GitHub</b> — aloja la página de descargas de la app Android. Al abrirse, la app
       consulta allí si hay una versión nueva y GitHub recibe la IP y datos técnicos de la
       conexión, nunca tu cuenta ni tus datos. El archivo de la versión nueva solo se descarga
@@ -533,9 +570,10 @@
   </ul>
   <p>Algunos proveedores o subencargados pueden tratar datos fuera del Espacio Económico
     Europeo. Para Cloudflare, Netlify, Supabase y Expo se han identificado los mecanismos
-    contractuales indicados arriba. Antes de activar las notificaciones push se verificará además
-    la configuración concreta y el mecanismo aplicable a Apple o Google. Mientras la entrega
-    automática siga desactivada, RWAdar no promete que se envíe ninguna notificación remota.</p>
+    contractuales indicados arriba. Los servicios de notificaciones de Apple, Google, Mozilla y
+    Microsoft pueden tratar fuera del EEE la dirección de entrega y los datos técnicos de la
+    conexión; el texto de cada notificación de la web les llega cifrado. RWAdar no promete que
+    cada notificación llegue: depende del móvil, del navegador y de su configuración.</p>
 
   <h2>9 · Cuánto tiempo se guardan</h2>
   <p>La pausa no elimina por sí sola los registros anteriores. Su acceso desde las
@@ -557,8 +595,10 @@
     <li><b>Historial de moderación:</b> se limita a lo necesario para documentar decisiones
       y atender reclamaciones, desvinculado de cuentas borradas cuando corresponda.
       No hay una nueva recogida de opiniones o denuncias en esta versión.</li>
-    <li><b>Instalaciones y tokens push anteriores:</b> no se crean nuevos en esta versión.
-      Un proceso diario elimina por lotes instalaciones con más de 180 días sin actividad.
+    <li><b>Notificaciones en el móvil:</b> el identificador de la app y la suscripción de la web
+      se borran al desactivarlas, al cerrar sesión con conexión o al borrar la cuenta; el de la
+      app, también tras 180 días sin usarla, y la de la web, también cuando su servicio la da por
+      caducada. Un proceso diario elimina por lotes instalaciones con más de 180 días sin actividad.
       Se comprobó su ejecución el 27 de septiembre de 2026. Este proceso no borra
       cuentas ni sustituye la atención de una solicitud de derechos.</li>
     <li><b>Avisos de novedades:</b> el permiso y su historial de altas y bajas, mientras exista
@@ -574,6 +614,8 @@
       de sonido, los favoritos y el progreso de la Academy permanecen hasta que
       elimines los datos del sitio. En la web, al crear la cuenta desde una lección, el
       navegador guarda durante 24 horas a qué lección volver; se borra al usarlo o al caducar.
+      Lo que has leído de tus avisos y el número del icono también duran hasta que borres los
+      datos del sitio; el número vuelve a 0 al ver los avisos o al cerrar sesión.
       Esta versión elimina la antigua caché PWA al actualizarse.
       Los favoritos nuevos y el progreso de la Academy en la app nativa se
       conservan en el dispositivo hasta que los retires o borres sus datos locales.

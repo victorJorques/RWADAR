@@ -2332,3 +2332,73 @@ html[lang="en"] .rel-refs [data-fuente-es],html:not([lang="en"]) .rel-refs [data
  #movilPanelRadar .empresa-visual__texto small>span:first-child{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;white-space:normal}
  .rel-nueva h3 span{-webkit-line-clamp:4}
 }
+
+/* ============ Campana de avisos y notificaciones en este móvil (12/11/2026) ============ */
+/* La campana: solo con sesión confirmada. El globo rojo con el número, como
+   en las apps de mensajería: 1…9 y 9+. */
+.campana{position:relative}
+.campana[hidden]{display:none!important}
+.hdr-campana{display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:var(--r-m);
+  background:var(--ton);color:var(--tx);cursor:pointer;transition:var(--tr);--bp:var(--ton-2)}
+@media (hover:hover){.hdr-campana:hover{background:var(--bp)}}
+.campana-n{position:absolute;top:2px;right:0;display:grid;place-items:center;min-width:19px;height:19px;padding:0 5px;
+  border:2px solid var(--noche);border-radius:999px;background:var(--coral);color:#fff;font:700 .6875rem/1 var(--body);
+  letter-spacing:0;pointer-events:none}
+.campana-n[hidden]{display:none}
+.campana-n-linea{position:static;border-color:transparent;margin-left:4px}
+/* Con la campana a la vista, «Sonido y vibración» se queda en su icono (como
+   por debajo de 1280 px) para que la cabecera siga en una sola línea. */
+@media (min-width:1280px){
+  .hdr-nav:has(#btnAvisos:not([hidden])) .snd{width:44px;padding:0;gap:0;font-size:0}
+}
+/* Entre 1024 y 1279 px (ahí el sonido ya es solo icono) cede el lema de la marca. */
+@media (min-width:1024px) and (max-width:1279px){
+  .hdr-in:has(#btnAvisos:not([hidden])) .wm small{display:none}
+}
+/* Globo de Perfil cuando son avisos sin leer (manda sobre el de guardados). */
+.movil-nav-insignia.movil-nav-insignia-avisos{background:var(--coral);color:#fff}
+/* Diálogo de la campana. */
+.escaparate-dialogo.avisos-dialogo{height:fit-content;max-width:520px}
+.avisos-dialogo .escaparate-dialogo-marco{height:auto}
+/* Cabecera propia: la de las fichas (.escaparate-dialogo-cab) marca su título
+   como texto de la fuente y el traductor no lo pasaría al inglés. */
+.avisos-dialogo-cab{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 16px;border-bottom:var(--bd);background:var(--s1)}
+.avisos-dialogo-cab>div{min-width:0}
+.avisos-dialogo-cab span{display:block;margin-bottom:3px;color:var(--tx-3);font-size:.78rem}
+.avisos-dialogo-cab h2{margin:0;font-family:var(--display);font-size:1.22rem;line-height:1.15;letter-spacing:-.02em}
+.avisos-dialogo-cab button{flex:none;display:inline-grid;place-items:center;width:44px;height:44px;padding:0;border:0;
+  border-radius:var(--r-p);background:var(--ton);color:var(--tx);font-size:1.25rem;line-height:1;cursor:pointer}
+@media (hover:hover){.avisos-dialogo-cab button:hover{background:var(--ton-2)}}
+.avisos-dialogo-cuerpo{padding:6px 18px 18px;overflow-y:auto;max-height:calc(100dvh - 180px)}
+.avisos-gestionar{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin-top:12px;padding:0 12px;
+  border:var(--bd);border-radius:var(--r-m);background:none;color:var(--senal);font:600 .9rem/1.2 var(--body);cursor:pointer}
+/* Bandeja: punto en los no leídos y «Marcar como leídos». */
+.bandeja-avisos li.nuevo b{color:var(--tx)}
+.bandeja-punto{display:inline-block;width:9px;height:9px;margin-right:7px;border-radius:50%;background:var(--coral);vertical-align:.08em}
+.bandeja-marcar{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;padding:0 4px;border:0;background:none;
+  color:var(--senal);font:600 .9rem/1.2 var(--body);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+/* Notificaciones en este móvil (Perfil › Avisos y panel de la cuenta). */
+.avisos-push{margin-top:16px;padding-top:14px;border-top:var(--bd)}
+.avisos-push[hidden]{display:none}
+.avisos-push-tit{margin:0 0 6px;font-size:.98rem;font-family:var(--display);letter-spacing:-.01em}
+.avisos-push-pasos{margin:4px 0 10px;padding-left:1.3em;display:grid;gap:6px;color:var(--tx-2);font-size:.9rem;line-height:1.5}
+.avisos-push-pasos[hidden]{display:none}
+.avisos-push-acciones{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.avisos-push-boton{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border:0;
+  border-radius:var(--r-m);background:var(--ton);color:var(--tx);font:600 .9rem/1.2 var(--body);text-align:center;cursor:pointer}
+.avisos-push-boton[hidden]{display:none}
+.avisos-push-principal{background:var(--senal);color:var(--en-senal)}
+.avisos-push-boton:disabled{opacity:.55;cursor:not-allowed}
+.perfil-ver-avisos[hidden]{display:none}
+@media (max-width:767px),
+       (max-width:960px) and (max-height:540px) and (hover:none) and (pointer:coarse){
+  /* En la barra del móvil la campana va a la izquierda de la descarga y de la ayuda. */
+  .movil-cabecera-accion.movil-campana{margin-right:47px}
+  .movil-cabecera:has(#movilAvisos:not([hidden])) .movil-cabecera-accion.movil-descarga{margin-right:94px}
+  .movil-campana .campana-n{top:1px;right:-2px}
+}
+/* En teléfonos estrechos, con sesión, la campana ocupa el sitio de la descarga
+   (sigue en Perfil y en /android) para que el título no se corte. */
+@media (max-width:374px){
+  .movil-cabecera:has(#movilAvisos:not([hidden])) .movil-cabecera-accion.movil-descarga{display:none}
+}
