@@ -111,7 +111,7 @@ consultados el 07/11/2026.
 | A3 | Acceso a RWAdar Academy con cuenta | Activa en la app y, desde el 06/11/2026, en la web | Servicio que se pide (6.1.b) |
 | A4 | Correo de bienvenida (y push de bienvenida) | Preparado, **no se envía** (pendiente) | Servicio que se pide (6.1.b) |
 | A5 | Avisos de novedades por correo, push de la app y notificaciones de la web | Con la web y la OTA de la rama del 12/11 publicadas: **el permiso se recoge en Perfil** (web y app) y la web deja registrar la suscripción de su navegador. **No se envía nada** mientras `push_habilitado` y el correo sigan apagados (pendiente) | Consentimiento (6.1.a; LSSI, art. 21) |
-| A6 | Prueba del permiso (historial de altas y bajas) | (pendiente) | Obligación legal (6.1.c) |
+| A6 | Prueba del permiso (historial de altas y bajas) | Activa desde el 12/11/2026 (Perfil › Avisos) | Obligación legal (6.1.c) |
 | A7 | Bajas de los avisos que llegan por correo | (pendiente) | Obligación legal (6.1.c) |
 | A8 | Consultas de empresas («Para empresas») | Activa | Interés legítimo (6.1.f) |
 | A9 | Solicitudes de derechos y consultas generales por correo | Activa | Obligación legal (6.1.c) |
@@ -649,8 +649,10 @@ Valen para todas las fichas; cada ficha añade las suyas.
 
 ### A6 · Prueba del permiso (historial de altas y bajas)
 
-- **Estado:** la tabla existe desde el 06/11/2026 (la 30, aplicada), pero
-  está vacía mientras no se recojan permisos (pendiente).
+- **Estado:** la tabla existe desde el 06/11/2026 (la 30, aplicada). Activa
+  desde la publicación de la web (n.º 71) y la OTA del 12/11/2026: recoge las
+  altas y bajas que se hacen en Perfil › Avisos (la casilla del alta sigue
+  apagada).
   - **Dónde está el diseño:** la revisión legal (§§ 4.5 y 5.1) y su contraste
     (puntos 7 y 11). El RUNBOOK da por hecho que la baja por correo «deja la
     baja en el historial».

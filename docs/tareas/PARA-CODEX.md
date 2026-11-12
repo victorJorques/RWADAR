@@ -6,6 +6,45 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (9) · Claude · Notificaciones publicadas: base 32, clave VAPID, web n.º 70/71 y OTA n.º 23
+
+Víctor: «que salten las notificaciones en la app tipo WhatsApp y además salga
+un 1», «hazlo como puedas sin necesidad de llave», «finaliza el trabajo y hazlo
+bien hecho».
+
+- **PR #112** (squash 35a2434): app (17a7356), base 32, remitente Web Push,
+  web (campana, bandeja, Web Push), privacidad y registros (buzón Gmail).
+  Tres revisiones independientes, corrector y auditor final: «aprobado».
+- **PR #113** (eedb4be): sello de 35a2434.
+- **Supabase**, desde «Avisos a registrados (base)»:
+  - `ensayo-32` n.º 9 bien;
+  - `aplicar-32` n.º 10, con copia cifrada: «RWAdar 32 OK: push de Expo con
+    prioridad alta…»;
+  - `crear-vapid` n.º 11, con copia: «clave VAPID creada». La privada está en
+    Vault y nunca salió.
+- **Web:** preview n.º 70 comprobada (38/38 general, 11/11 contacto y 6/6
+  notificaciones: sw.js con push, privacidad con Gmail). Producción n.º 71.
+- **OTA n.º 23** (base fa30779, runtime 1.4.2(24)).
+- **Envío: SIGUE APAGADO** (`push_habilitado = false`). No se ha lanzado
+  `activar-push`. Antes hace falta el anexo legal: el latido de Firebase
+  (LSSI 22.2) y la adhesión al DPF de Apple, Mozilla y Microsoft (la web de
+  dataprivacyframework.gov no se pudo leer desde aquí). La privacidad promete
+  comprobarlo antes de enviar.
+- **Prueba en el iPhone de Víctor** (no depende del envío):
+  1. añadir la web a la pantalla de inicio;
+  2. entrar con la cuenta de administración;
+  3. Perfil › Avisos: activar «Avisos de novedades» y «Notificaciones en este
+     móvil»;
+  4. lanzar «Notificaciones web › prueba» (ENVIAR).
+- **Pendientes menores** del auditor, para el siguiente ciclo:
+  - la frase de la baja arriba del diálogo de la campana;
+  - en la app, «o con el enlace de cada correo» con el correo apagado;
+  - `rwadar-acceso/tokenizacion.test.mjs` caduca (dato de CoinGecko de más
+    de 48 h): reloj fijo. En CI no corre, porque falta Playwright.
+- **Plantillas de Auth:** siguen con el correo antiguo; falta
+  SUPABASE_ACCESS_TOKEN.
+- INTERNO.md y el registro (A6) quedan al día.
+
 ## 12 de noviembre de 2026 (8) · Claude · Notificaciones: correcciones de las tres revisiones (base, web y legal)
 
 Víctor: «que las notificaciones salten al móvil tipo WhatsApp y además salga
