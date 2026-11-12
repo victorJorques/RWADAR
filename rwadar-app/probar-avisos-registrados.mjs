@@ -211,11 +211,12 @@ paso('la 30 y su verificador guardan la versión v2 y los textos ES/EN exactos d
 // Flujo «Avisar novedad»: manual, sin permisos de más, entradas por env:.
 const ENLACE_VALIDO = /^https:\/\/rwadar\.pages\.dev(\/[A-Za-z0-9._~%-]+)*\/?([?#][A-Za-z0-9._~%=&-]*)?$/;
 // Un paso de un flujo de GitHub (« - name: …» a 6 espacios) y su script (run: |).
+// Acaba en el paso siguiente o donde empieza otro trabajo (menos sangría).
 const pasoDe = (yaml, nombre) => {
   const lineas = yaml.split('\n');
   const inicio = lineas.findIndex((l) => l.trim() === `- name: ${nombre}`);
   if (inicio < 0) return null;
-  const fin = lineas.findIndex((l, i) => i > inicio && /^ {6}(- |# )/.test(l));
+  const fin = lineas.findIndex((l, i) => i > inicio && (/^ {6}(- |# )/.test(l) || /^ {0,5}\S/.test(l)));
   return lineas.slice(inicio, fin < 0 ? undefined : fin).join('\n');
 };
 const pasoFlujo = (nombre) => pasoDe(FLUJO, nombre);
@@ -275,6 +276,8 @@ const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].j
 {
   const runs = [...FLUJO.matchAll(/^( +)run: \|\n((?:\1 {2}.*\n|\s*\n)*)/gm)].map((m) => m[2]);
   const trabajos = FLUJO.slice(FLUJO.indexOf('\njobs:\n') + 7).match(/^ {2}[a-z][a-z0-9-]*:$/gm) || [];
+  // Segundo trabajo (migración 32): después del anuncio, «Notificaciones web».
+  const web = FLUJO.slice(FLUJO.indexOf('\n  notificaciones-web:\n'));
   const psql = pasoFlujo('Avisar');
   const variablesSql = [...new Set([...sinComentarios(ANUNCIAR).matchAll(/:'([a-z_]+)'/g)].map((m) => m[1]))];
   paso('el flujo solo se lanza a mano y escribiendo ENVIAR',
@@ -283,17 +286,21 @@ const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].j
   paso('accion (anunciar / publicar-retenido) y tipo (actualizacion / novedad) son listas cerradas',
     /accion:\n(?: {8}.*\n)*? {8}type: choice\n {8}options:\n {10}- anunciar\n {10}- publicar-retenido\n/.test(FLUJO)
     && /tipo:\n(?: {8}.*\n)*? {8}type: choice\n {8}options:\n {10}- novedad\n {10}- actualizacion\n/.test(FLUJO));
-  paso('un solo trabajo, permissions: {} y solo contents: read para descargar el repositorio privado',
-    trabajos.length === 1 && /^permissions: \{\}$/m.test(FLUJO)
-    && (FLUJO.match(/permissions:/g) || []).length === 2 && /^ {4}permissions:\n {6}contents: read\n/m.test(FLUJO)
-    && !/write/.test(FLUJO.replace(/^#.*$/gm, '')));
+  paso('dos trabajos (el anuncio y, después, «Notificaciones web»), permissions: {} y solo contents: read en cada uno',
+    isDeepStrictEqual(trabajos, ['  avisar:', '  notificaciones-web:']) && /^permissions: \{\}$/m.test(FLUJO)
+    && (FLUJO.match(/permissions:/g) || []).length === 3
+    && (FLUJO.match(/^ {4}permissions:\n {6}contents: read\n/gm) || []).length === 2
+    && /^ {2}notificaciones-web:\n {4}needs: avisar\n {4}permissions:\n {6}contents: read\n {4}uses: \.\/\.github\/workflows\/notificaciones-web\.yml\n/m.test(web)
+    && !/write/.test(FLUJO.replace(/^\s*#.*$/gm, '')));
   paso('sin npm ni node; instala solo psql como «Aplicar catálogo»',
     !runs.some((r) => /\b(npm|npx|node)\b/.test(r)) && !/setup-node/.test(FLUJO)
     && /apt-get install -y -qq postgresql-client-17/.test(FLUJO));
   paso('nunca ${{ inputs.* }} ni ${{ secrets.* }} dentro de run:; las entradas llegan por env:',
     runs.length >= 3 && runs.every((r) => !r.includes('${{')) && (FLUJO.match(/\$\{\{ inputs\.[a-z]+ \}\}/g) || []).length >= 10);
-  paso('SUPABASE_DB_URL solo en el paso de psql',
-    (FLUJO.match(/secrets\.SUPABASE_DB_URL/g) || []).length === 1 && psql?.includes('secrets.SUPABASE_DB_URL'));
+  paso('SUPABASE_DB_URL solo en el paso de psql y, sin más secretos, en la llamada a «Notificaciones web»',
+    (FLUJO.match(/secrets\.SUPABASE_DB_URL/g) || []).length === 2 && psql?.includes('secrets.SUPABASE_DB_URL')
+    && / {4}secrets:\n {6}SUPABASE_DB_URL: \$\{\{ secrets\.SUPABASE_DB_URL \}\}\n?$/.test(web)
+    && (FLUJO.match(/secrets\./g) || []).length === 2 && !/secrets: inherit/.test(FLUJO));
   paso('psql -X -v ON_ERROR_STOP=1 -f rwadar-app/db/anunciar.sql con una -v por cada variable que usa el SQL',
     /psql "\$SUPABASE_DB_URL" -X -v ON_ERROR_STOP=1 \\/.test(psql || '')
     && /-f rwadar-app\/db\/anunciar\.sql\s*$/.test(psql || '')
@@ -336,9 +343,10 @@ const TOKEN_LM = ['lm', 'ficticio', 'solo', 'para', 'esta', 'prueba', 'local'].j
   const runs = [...BASE.matchAll(/^( +)run: \|\n((?:\1 {2}.*\n|\s*\n)*)/gm)].map((m) => m[2]);
   const opciones = BASE.match(/ {6}accion:\n(?: {8}.*\n)*? {8}options:\n((?: {10}- .*\n)+)/)?.[1]
     .trim().split('\n').map((l) => l.trim().slice(2));
-  paso('el flujo «Avisos a registrados (base)» añade ensayo-31, verificar-31, aplicar-31 y guardar-correo y conserva las de la 30',
+  paso('el flujo «Avisos a registrados (base)» añade ensayo-31, verificar-31, aplicar-31 y guardar-correo y conserva las de la 30 (las de la 32 las mira probar-notificaciones.mjs)',
     isDeepStrictEqual(opciones, ['ensayo-30', 'verificar-30', 'diagnostico-30', 'aplicar-30', 'ensayo-31', 'verificar-31',
-      'aplicar-31', 'guardar-correo', 'activar-casilla', 'activar-correo', 'activar-push', 'apagar', 'apagar-casilla'])
+      'aplicar-31', 'guardar-correo', 'ensayo-32', 'verificar-32', 'aplicar-32', 'crear-vapid', 'rotar-vapid',
+      'activar-casilla', 'activar-correo', 'activar-push', 'apagar', 'apagar-casilla'])
     && /^ {6}remitente:\n {8}description: .*\n {8}required: false\n {8}type: string$/m.test(BASE));
   const guardar = pasoDe(BASE, 'Guardar en Vault el token de Lettermint y el remitente') || '';
   paso('nunca ${{ … }} dentro de run:; el secreto LETTERMINT_API_TOKEN solo llega, por env:, al paso que guarda; ni set -x ni echo del token',

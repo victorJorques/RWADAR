@@ -1,0 +1,219 @@
+name: Notificaciones web
+
+# Notificaciones web (Web Push) a los móviles y tabletas que las activaron en
+# la web (migración 32, rwadar-app/db/32_notificaciones.sql). En el iPhone,
+# solo con la web añadida a la pantalla de inicio (iOS 16.4 o posterior).
+#
+#   enviar → los anuncios publicados en los últimos 7 días que aún no han
+#            llegado a cada navegador. Solo con el push encendido
+#            (activar-push: el mismo interruptor que Expo) y solo a quien
+#            tiene el permiso de avisos vigente. Con el push apagado no hace
+#            nada (solo la limpieza).
+#   prueba → «Prueba de RWAdar» a los navegadores de las cuentas de
+#            administración (perfiles.es_admin). No necesita anuncio ni el
+#            push encendido.
+#
+# Lo lanza «Avisar novedad» después de publicar un anuncio (workflow_call) o
+# se lanza a mano escribiendo ENVIAR, siempre con orden expresa de Víctor
+# (AGENTS.md). Nunca por horario.
+#
+# Seguridad: sin npm. psql saca de la base los envíos y la clave privada
+# VAPID (Vault, RWADAR_VAPID_PRIVADA), que se enmascara en cuanto llega y
+# solo pasa, por el entorno, al remitente (rwadar-app/enviar-webpush.mjs:
+# node:crypto y fetch), que no recibe SUPABASE_DB_URL. Los envíos (endpoints
+# y claves de cada navegador) van a una carpeta temporal que nunca se
+# imprime y se borra al acabar. El resumen solo lleva cuentas.
+
+on:
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: 'Qué hacer'
+        required: true
+        type: choice
+        options:
+          - enviar
+          - prueba
+        default: enviar
+      confirmacion:
+        description: 'Escribe ENVIAR'
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      accion:
+        description: 'enviar o prueba'
+        required: true
+        type: string
+      confirmacion:
+        description: 'ENVIAR'
+        required: true
+        type: string
+    secrets:
+      SUPABASE_DB_URL:
+        required: true
+
+# Ningún permiso por defecto. El trabajo solo necesita leer este repositorio
+# privado para descargar el remitente y el SQL.
+permissions: {}
+
+# Conexiones a Supabase siempre cifradas: con el «prefer» de libpq (lo que usa
+# psql si la dirección no lleva sslmode), alguien en medio que rechace TLS haría
+# seguir sin cifrar. Una sola regla para todos los flujos que usan
+# SUPABASE_DB_URL; la comprueba .github/flujos.test.mjs.
+env:
+  PGSSLMODE: require
+
+jobs:
+  enviar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    # Una vuelta a la vez (a mano o desde «Avisar novedad»).
+    concurrency:
+      group: rwadar-notificaciones-web
+      cancel-in-progress: false
+    steps:
+      - name: Solo desde main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "Las notificaciones solo se envían desde main (se pidió desde ${GITHUB_REF})."
+          exit 1
+
+      - name: Comprobar la entrada
+        env:
+          ACCION: ${{ inputs.accion }}
+          CONFIRMACION: ${{ inputs.confirmacion }}
+        run: |
+          set -euo pipefail
+          [[ "$CONFIRMACION" == "ENVIAR" ]] || { echo "Para enviar hay que escribir ENVIAR."; exit 1; }
+          case "$ACCION" in
+            enviar|prueba) echo "Entrada correcta: $ACCION." ;;
+            *) echo "Acción no válida: enviar o prueba."; exit 1 ;;
+          esac
+
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: rwadar-app/db
+
+      - name: Instalar psql 17 (misma versión que Supabase)
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          # Parche de seguridad de Node del 21/10/2026. Sin npm: el remitente
+          # solo usa node:crypto y fetch.
+          node-version: 22.23.4
+
+      # Tandas de 200 (como mucho 20 por vuelta): psql las marca «enviando»
+      # en la base, el remitente las cifra, firma y envía, y psql guarda lo
+      # que respondió cada servicio (32_notificaciones_resultado.sql).
+      - name: Enviar
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          ACCION: ${{ inputs.accion }}
+        run: |
+          set -euo pipefail
+          export LC_ALL=C
+          node rwadar-node-seguro.js
+          DIR="$RUNNER_TEMP/rwadar-webpush"
+          rm -rf "$DIR"
+          mkdir -m 700 "$DIR"
+          consulta() { psql "$SUPABASE_DB_URL" -X -At -v ON_ERROR_STOP=1 -c "$1"; }
+          resumen() {
+            {
+              echo "### Notificaciones web ($ACCION)"
+              echo
+              for linea in "$@"; do echo "- $linea"; done
+            } >> "$GITHUB_STEP_SUMMARY"
+          }
+          limpiar() { consulta "select rwadar_novedades.webpush_limpiar()"; }
+
+          PUSH="$(consulta "select coalesce(bool_and(push_habilitado and push_activado_el is not null), false) from rwadar_novedades.configuracion where unica")"
+          if [ "$ACCION" = enviar ] && [ "$PUSH" != t ]; then
+            LIMPIADAS="$(limpiar)"
+            echo "El push está apagado (activar-push): no sale ninguna notificación web."
+            resumen "Push apagado: no sale ninguna notificación." "Limpieza: $LIMPIADAS fila(s) antiguas borradas."
+            exit 0
+          fi
+
+          # Claves VAPID: la pública de la configuración y la privada de Vault,
+          # enmascarada en cuanto llega. El remitente comprueba que casan.
+          PUBLICA="$(consulta "select coalesce(webpush_clave_publica, '') from rwadar_novedades.configuracion where unica")"
+          PRIVADA="$(consulta "select coalesce(max(decrypted_secret), '') from vault.decrypted_secrets where name = 'RWADAR_VAPID_PRIVADA'")"
+          if [ -n "$PRIVADA" ]; then echo "::add-mask::$PRIVADA"; fi
+          if ! [[ "$PUBLICA" =~ ^B[A-Za-z0-9_-]{86}$ && "$PRIVADA" =~ ^[A-Za-z0-9_-]{43}$ ]]; then
+            if [ "$ACCION" = prueba ]; then
+              echo "::error::Falta la clave VAPID: lanza «Avisos a registrados (base)» con crear-vapid."
+              exit 1
+            fi
+            LIMPIADAS="$(limpiar)"
+            echo "::warning::Falta la clave VAPID (crear-vapid): no sale ninguna notificación web."
+            resumen "Sin clave VAPID: no sale ninguna notificación." "Limpieza: $LIMPIADAS fila(s) antiguas borradas."
+            exit 0
+          fi
+
+          ENVIADOS=0; REINTENTAR=0; FALLIDOS=0; BORRADAS=0; IGNORADOS=0; TANDAS=0; VACIA=no
+          # Una tanda: envía lo que haya en lote.json y guarda los resultados.
+          # El remitente recibe las claves por el entorno (export, sin pasar
+          # por la línea de órdenes) y no recibe SUPABASE_DB_URL.
+          tanda() {
+            (
+              unset SUPABASE_DB_URL
+              export RWADAR_VAPID_PRIVADA="$PRIVADA" RWADAR_VAPID_PUBLICA="$PUBLICA"
+              exec node rwadar-app/enviar-webpush.mjs --entrada "$DIR/lote.json" --salida "$DIR/resultados.json"
+            )
+            rm -f "$DIR/lote.json"
+            if [ "$(cat "$DIR/resultados.json")" = "[]" ]; then VACIA=si; return 0; fi
+            TANDAS=$((TANDAS + 1))
+            CUENTAS="$(psql "$SUPABASE_DB_URL" -X -At -v ON_ERROR_STOP=1 \
+              -v resultados="$(cat "$DIR/resultados.json")" \
+              -f rwadar-app/db/32_notificaciones_resultado.sql)"
+            IFS='|' read -r e r f b i <<< "$CUENTAS"
+            for n in "$e" "$r" "$f" "$b" "$i"; do
+              [[ "$n" =~ ^[0-9]+$ ]] || { echo "Respuesta inesperada de la base al guardar los resultados."; exit 1; }
+            done
+            ENVIADOS=$((ENVIADOS + e)); REINTENTAR=$((REINTENTAR + r)); FALLIDOS=$((FALLIDOS + f))
+            BORRADAS=$((BORRADAS + b)); IGNORADOS=$((IGNORADOS + i))
+          }
+
+          QUEDAN=no
+          if [ "$ACCION" = prueba ]; then
+            consulta "select rwadar_novedades.webpush_prueba()" > "$DIR/lote.json"
+            tanda
+          else
+            QUEDAN=si
+            for _ in $(seq 1 20); do
+              consulta "select rwadar_novedades.webpush_pendientes(200)" > "$DIR/lote.json"
+              tanda
+              if [ "$VACIA" = si ]; then QUEDAN=no; break; fi
+            done
+          fi
+          LIMPIADAS="$(limpiar)"
+
+          echo "Notificaciones web ($ACCION): $ENVIADOS enviada(s), $REINTENTAR para reintentar, $FALLIDOS fallida(s), $BORRADAS suscripción(es) caducada(s) borrada(s)."
+          LINEAS=("Enviadas (aceptadas por el servicio de push): $ENVIADOS"
+            "Para reintentar en la próxima vuelta: $REINTENTAR"
+            "Fallidas: $FALLIDOS"
+            "Suscripciones caducadas borradas: $BORRADAS"
+            "Limpieza: $LIMPIADAS fila(s) antiguas borradas")
+          if [ "$IGNORADOS" != 0 ]; then LINEAS+=("Resultados ignorados (ya guardados): $IGNORADOS"); fi
+          if [ "$ACCION" = prueba ] && [ "$TANDAS" = 0 ]; then
+            LINEAS+=("Ninguna cuenta de administración tiene la web suscrita: actívalas en Perfil desde el móvil.")
+          fi
+          if [ "$QUEDAN" = si ]; then LINEAS+=("Quedan más envíos: vuelve a lanzar el flujo."); fi
+          resumen "${LINEAS[@]}"
+
+      - name: Borrar los envíos temporales
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/rwadar-webpush"
