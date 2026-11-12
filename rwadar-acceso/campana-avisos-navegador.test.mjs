@@ -314,6 +314,32 @@ test('en Chromium: estados claros (denegadas, todavía no disponibles, falta el 
       await contexto.close();
     }
 
+    // Ya activadas en este móvil: al entrar se comprueba y se renueva una sola vez
+    // (db/32 borra las suscripciones que llevan 180 días sin renovarse). Sin
+    // «Avisos de novedades», la web no promete avisos de servicio: no los hay.
+    for (const caso of [
+      { nombre: 'activadas', estado: ESTADO, espera: /^Activadas: este móvil recibe las notificaciones de RWAdar\.$/ },
+      { nombre: 'activadas sin «Avisos de novedades»', estado: { ...ESTADO, novedades: false, version: null },
+        espera: /^Con «Avisos de novedades» desactivado, este móvil no recibe notificaciones de RWAdar\. Actívalo para volver a recibirlas, o desactívalas aquí\.$/ },
+    ]) {
+      escenario = { avisos: [], estado: caso.estado, registrado: true };
+      const antes = { mi: rpc(local, 'mi_aviso_webpush_registrado').length, registrar: rpc(local, 'registrar_aviso_webpush').length };
+      const { contexto, pagina, errores, rastro } = await abrir(navegador, local, { dispositivo: 'Pixel 7', viewport: { width: 390, height: 844 }, cfg: { permiso: 'granted', suscrito: true } });
+      await pagina.click('#movilTabMas');
+      await esperarTexto(pagina, caso.espera);
+      await pagina.waitForTimeout(300);
+      const e = await estadoPush(pagina);
+      assert.equal(e.activar, 'oculto', caso.nombre);
+      assert.equal(await pagina.evaluate(() => document.getElementById('perfilPushDesactivar').hidden), false, caso.nombre + ': se puede desactivar');
+      const mi = rpc(local, 'mi_aviso_webpush_registrado').slice(antes.mi), renovar = rpc(local, 'registrar_aviso_webpush').slice(antes.registrar);
+      assert.ok(mi.length >= 1 && mi.every(p => p.cuerpo.p_endpoint === 'https://fcm.googleapis.com/fcm/send/prueba-123'), caso.nombre + ': pregunta por su propio endpoint');
+      assert.deepEqual(renovar.map(p => p.cuerpo), [{ p_endpoint: 'https://fcm.googleapis.com/fcm/send/prueba-123', p_p256dh: 'BPrueba_p256dh-clave', p_auth: 'auth-prueba' }],
+        caso.nombre + ': la renueva una sola vez con la misma suscripción');
+      assert.equal((await rastro()).some(x => x[0] === 'requestPermission' || x[0] === 'subscribe' || x[0] === 'unsubscribe'), false, caso.nombre + ': no pide nada ni la cambia');
+      assert.deepEqual(errores, []);
+      await contexto.close();
+    }
+
     // iPhone sin la web en la pantalla de inicio: tres pasos y el diálogo de siempre; no se pide nada.
     escenario = { avisos: [aviso(1)], estado: ESTADO };
     const iphone = await abrir(navegador, local, { dispositivo: 'iPhone 13', viewport: { width: 390, height: 844 } });

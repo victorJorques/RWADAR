@@ -3303,7 +3303,9 @@ prueba('privacidad: baja, retirada, conservación bloqueada y Lettermint (UE, si
 prueba('privacidad: notificaciones en la web (qué se guarda, quién las entrega, cifradas, cuándo se borran) y lo que guarda el navegador',
   privacidadLineal.includes('<li id="notificaciones-web"><b>Notificaciones en la web:</b> solo se ofrecen en móviles y tabletas') &&
   /guardamos en tu cuenta la suscripción de tu navegador: la dirección del servicio de\s+notificaciones de tu navegador y sus dos claves de cifrado/.test(privacidadLineal) &&
-  /Se borra al desactivarlas, al\s+cerrar sesión, cuando ese servicio la da por caducada o al borrar la cuenta/.test(privacidadLineal) &&
+  /Se borra al desactivarlas, al\s+cerrar sesión, cuando ese servicio la da por caducada, tras 180 días sin entrar en tu\s+cuenta desde ese navegador o al borrar la cuenta/.test(privacidadLineal) &&
+  // La web renueva la suscripción al entrar (db/32 borra las que llevan 180 días sin renovarse).
+  /la de la web, también cuando su servicio la da por\s+caducada o tras 180 días sin entrar en tu cuenta desde ese navegador/.test(privacidadLineal) &&
   /Apple \(Safari\), Google \(Chrome y la mayoría de navegadores de\s+Android\), Mozilla \(Firefox\) o Microsoft \(Edge\)/.test(privacidadLineal) &&
   /cifrada de extremo a\s+extremo con las claves de tu navegador, así que ese servicio no puede leer su texto/.test(privacidadLineal) &&
   /<b>Servicios de notificaciones de los navegadores<\/b> \(Apple, Google, Mozilla o Microsoft,/.test(privacidadLineal) &&

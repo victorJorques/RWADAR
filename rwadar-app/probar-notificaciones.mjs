@@ -26,10 +26,11 @@ import path from 'node:path';
 import { spawn, spawnSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
+import vm from 'node:vm';
 import { alta, baseCatalogoHistorico, filas, informe, sesion } from './pruebas-soporte.mjs';
 import {
   CARGA_MAXIMA, ENDPOINT_VALIDO, autorizacionVapid, cifrar, enviarTodos, enviarUno, firmarVapid,
-  generarClaves, main as remitente, prepararClaves,
+  generarClaves, main as remitente, prepararClaves, prepararEnvio,
 } from './enviar-webpush.mjs';
 
 const raiz = path.dirname(fileURLToPath(import.meta.url));
@@ -1159,6 +1160,65 @@ if (hayBash) {
     recuperado.estado === 0 && antesDe15 === desdeM && pasados15.estado === 0
     && llegaTarde.length === 1 && llegaTarde[0].endpoint === fAnaFcm.endpoint && llegaTarde[0].vapid && llegaTarde[0].k === clave.c
     && /Enviadas \(aceptadas por el servicio de push\): 1/.test(pasados15.resumen));
+}
+
+/* =====================================================================
+   Contrato con la web (integración del 12/11): lo que sale de la base y
+   del remitente es justo lo que entiende rwadar-site/sw.js, y la web llama
+   a las mismas 4 RPC, con la misma clave y el mismo tope de endpoint.
+   ===================================================================== */
+{
+  const WEBJS = fs.readFileSync(path.join(raizRepo, 'rwadar-site/assets/rwadar-20260820.js'), 'utf8');
+  const SW = fs.readFileSync(path.join(raizRepo, 'rwadar-site/sw.js'), 'utf8');
+  const PASARELA = fs.readFileSync(path.join(raizRepo, 'rwadar-acceso/servidor.mjs'), 'utf8');
+  // El service worker de la web en una caja: lo que enseñaría el navegador.
+  const mostrar = async (bytes) => {
+    const manejadores = new Map(), mostradas = [];
+    const caja = vm.createContext({ URL, indexedDB: { open() { throw new Error('sin IndexedDB'); } }, self: {
+      location: new URL('https://rwadar.pages.dev/sw.js'), addEventListener: (tipo, fn) => manejadores.set(tipo, fn),
+      navigator: { language: 'es-ES' },
+      registration: { showNotification: async (titulo, opciones) => { mostradas.push({ titulo, ...opciones }); } },
+      clients: { matchAll: async () => [] } } });
+    vm.runInContext(SW, caja);
+    let trabajo;
+    // PushMessageData.json(): el navegador descifra y lee el texto en UTF-8.
+    manejadores.get('push')({ data: { json: () => JSON.parse(new TextDecoder().decode(bytes)) }, waitUntil: (p) => { trabajo = p; } });
+    await trabajo;
+    return JSON.parse(JSON.stringify(mostradas));
+  };
+  // Del largo justo y sin espacio al final (el service worker recorta los bordes).
+  const largo = (base, n) => base.repeat(Math.ceil(n / base.length)).slice(0, n - 1) + '.';
+  await sesion(db);
+  const cargas = [];
+  for (const destino of ['inicio', 'buscar', 'academy']) {
+    cargas.push((await una(db, 'select rwadar_novedades.webpush_carga($1, $2, $3, $4) c',
+      ['9007199254740993', largo('Ñandú ü € «nuevo» ', 90), largo('Lección de tokenización: qué mirar antes de invertir. ', 400), destino])).c);
+  }
+  // La de webpush_prueba, con sus mismos argumentos.
+  cargas.push((await una(db, "select rwadar_novedades.webpush_carga('prueba', $1, $2, 'inicio') c", [PRUEBA_TITULO, PRUEBA_TEXTO])).c);
+  const s = navegador(fcm('contrato'));
+  const vistas = [];
+  for (const carga of cargas) {
+    const listo = prepararEnvio({ id: 'e1', ...s, carga });
+    vistas.push({ carga, listo: !!listo, vista: listo ? await mostrar(listo.carga) : [] });
+  }
+  paso('contrato web: cada carga de la base (inicio, buscar, academy y la prueba, con 90 y 400 caracteres y tildes) la acepta el remitente y el service worker la enseña tal cual: título, texto, etiqueta y enlace, sin recortes ni el texto de reserva',
+    vistas.length === 4 && vistas.every(({ carga, listo, vista }) => listo && vista.length === 1
+      && vista[0].titulo === carga.titulo && vista[0].body === carga.texto && vista[0].tag === carga.etiqueta
+      && vista[0].data.url === carga.url && vista[0].icon === '/icono-192.png')
+    && isDeepStrictEqual(vistas.map((v) => v.carga.url), ['https://rwadar.pages.dev/', 'https://rwadar.pages.dev/#emisiones',
+      'https://rwadar.pages.dev/academy/', 'https://rwadar.pages.dev/']));
+  const rpcs = ['registrar_aviso_webpush', 'quitar_aviso_webpush', 'mi_aviso_webpush_registrado', 'clave_publica_webpush'];
+  const concedidas = [...SQL32.matchAll(/grant execute on function public\.(\w+)\(/g)].map((m) => m[1]);
+  paso('contrato web: las 4 RPC que concede la 32 a authenticated son las que llama la web y las que deja pasar la pasarela',
+    isDeepStrictEqual(concedidas.sort(), [...rpcs].sort())
+    && rpcs.every((n) => WEBJS.includes(`'/rpc/${n}'`) && new RegExp(`\\|${n}[|)]`).test(PASARELA)));
+  const claveWeb = new RegExp(WEBJS.match(/const CLAVE_VAPID=\/(.+?)\/;/)[1]);
+  const topeWeb = Number(WEBJS.match(/j\.endpoint\.length>(\d+)/)[1]);
+  const topeBase = Number(SQL32.match(/char_length\(p_endpoint\) > (\d+)/)[1]);
+  paso('contrato web: la clave pública del remitente (87 caracteres) pasa el filtro de la web, y la web admite endpoints tan largos como la base (2048)',
+    Array.from({ length: 5 }, () => generarClaves().publica).every((k) => k.length === 87 && claveWeb.test(k))
+    && topeWeb === topeBase && topeBase === 2048);
 }
 } catch (e) {
   fail.push(`la prueba se paró: ${e.stack || e.message}`);

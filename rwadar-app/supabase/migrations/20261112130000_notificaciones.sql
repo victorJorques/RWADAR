@@ -376,7 +376,9 @@ $funcion$;
 -- ¿Sigue registrado ESTE navegador en mi cuenta? La web lo pregunta con su
 -- propio endpoint al abrir: la base borra las suscripciones que el servicio
 -- da por perdidas (404/410), la más antigua si la cuenta pasa de 5 y las que
--- llevan 180 días sin renovarse. Si dice false, la web vuelve a registrarla.
+-- llevan 180 días sin renovarse. Si dice true, la web la renueva con
+-- registrar_aviso_webpush (como mucho cada 12 horas); si dice false, vuelve a
+-- ofrecer «Activar», que hace una suscripción nueva con la clave vigente.
 create or replace function public.mi_aviso_webpush_registrado(p_endpoint text)
 returns boolean
 language plpgsql stable security definer set search_path = ''

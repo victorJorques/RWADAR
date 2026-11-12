@@ -5444,7 +5444,7 @@ const Cuenta = (function(){
  }
  function datosSuscripcion(sub){
   const j=sub&&typeof sub.toJSON==='function'?sub.toJSON():null;
-  if(!j||typeof j.endpoint!=='string'||!/^https:\/\//.test(j.endpoint)||j.endpoint.length>1024||!j.keys||
+  if(!j||typeof j.endpoint!=='string'||!/^https:\/\//.test(j.endpoint)||j.endpoint.length>2048||!j.keys||
    typeof j.keys.p256dh!=='string'||typeof j.keys.auth!=='string')throw new Error('Suscripción no válida.');
   return {p_endpoint:j.endpoint,p_p256dh:j.keys.p256dh,p_auth:j.keys.auth};
  }
@@ -5470,7 +5470,7 @@ const Cuenta = (function(){
   'falta-permiso':'Para recibirlas, activa antes «Avisos de novedades».',
   'disponible':'Al activarlas, el navegador te pedirá permiso. Guardamos en tu cuenta la dirección de entrega de este navegador y sus claves; las notificaciones viajan cifradas por el servicio de Apple, Google, Mozilla o Microsoft, según el navegador. Se borra al desactivarlas, al cerrar sesión o al borrar la cuenta.',
   'activo-novedades':'Activadas: este móvil recibe las notificaciones de RWAdar.',
-  'activo-servicio':'Este móvil solo recibe avisos de servicio, como la bienvenida. Activa «Avisos de novedades» para recibir también las novedades.',
+  'activo-servicio':'Con «Avisos de novedades» desactivado, este móvil no recibe notificaciones de RWAdar. Actívalo para volver a recibirlas, o desactívalas aquí.',
   'activo-pausa':'Las notificaciones en el móvil están en pausa. Puedes desactivarlas aquí.'
  };
  function textoPush(){
@@ -5509,8 +5509,10 @@ const Cuenta = (function(){
    const r=await navigator.serviceWorker.getRegistration('/');
    const sub=r&&r.pushManager?await r.pushManager.getSubscription():null;
    if(sub&&permisoNotificaciones()==='granted'){
-    const j=await rest('/rpc/mi_aviso_webpush_registrado',{method:'POST',body:JSON.stringify({p_endpoint:datosSuscripcion(sub).p_endpoint})},cuenta);
+    const datos=datosSuscripcion(sub);
+    const j=await rest('/rpc/mi_aviso_webpush_registrado',{method:'POST',body:JSON.stringify({p_endpoint:datos.p_endpoint})},cuenta);
     registrado=j===true;
+    if(registrado&&vigente(cuenta))renovarPush(datos,cuenta);
    }
   }catch(e){if(!vigente(cuenta))return;}
   if(!vigente(cuenta)||push.cuenta!==cuenta||push.ocupado)return;
@@ -5518,6 +5520,17 @@ const Cuenta = (function(){
   push.registrado=registrado;
   push.estado=estadoPush(novedades?registrado:undefined);
   pintarPush();
+ }
+ /* La base borra las suscripciones que llevan 180 días sin renovarse
+    (webpush_limpiar, db/32) y volver a registrar la misma la renueva. Se hace
+    al entrar con las notificaciones activas, como mucho cada 12 horas por
+    página; sin guardar nada en el navegador. */
+ let pushRenovado={cuenta:-1,el:0};
+ function renovarPush(datos,cuenta){
+  if(pushRenovado.cuenta===cuenta&&Date.now()-pushRenovado.el<432e5)return;
+  pushRenovado={cuenta,el:Date.now()};
+  rest('/rpc/registrar_aviso_webpush',{method:'POST',body:JSON.stringify(datos)},cuenta)
+   .catch(()=>{if(pushRenovado.cuenta===cuenta)pushRenovado={cuenta:-1,el:0};});
  }
  /* Cuando llega el estado de «Avisos de novedades», el del móvil se recalcula. */
  function recalcularPush(){
@@ -5556,7 +5569,7 @@ const Cuenta = (function(){
     try{ok=(await rest('/rpc/registrar_aviso_webpush',{method:'POST',body:JSON.stringify(datosSuscripcion(sub))},cuenta))===true;}
     catch(e){ok=false;}
     if(!ok){sub.unsubscribe().catch(()=>{});throw new Error('registro');}
-    push.estado='activo';push.registrado=true;
+    push.estado='activo';push.registrado=true;pushRenovado={cuenta,el:Date.now()};
     resultado='Notificaciones activadas en este móvil.';
     try{await r.showNotification(enIngles()?'Notifications turned on for this phone':'Notificaciones activadas en este móvil',{
      body:enIngles()?'This is how RWAdar notices will reach you.':'Así te llegarán los avisos de RWAdar.',
