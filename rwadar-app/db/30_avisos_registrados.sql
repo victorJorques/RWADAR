@@ -399,7 +399,7 @@ declare
   v_parrafo text;
 begin
   v_parrafo := '<p style="font-size:15px;line-height:1.6;color:#333;margin:0 0 18px">';
-  v_mailto := 'mailto:RWAdar@protonmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
+  v_mailto := 'mailto:rwadares@gmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar';
   if coalesce(p_suscrito, false) and p_baja_token is not null then
     v_baja := 'https://rwadar.pages.dev/baja?t=' || p_baja_token::text;
   end if;
@@ -421,9 +421,9 @@ begin
         || 'te avisaremos de las fichas nuevas que entren en el radar y de las novedades de la web y la app. '
         || 'Puedes darte de baja cuando quieras con el enlace del final o en tu Perfil.';
     end if;
-    v_cierre := v_parrafo || 'Si no creaste esta cuenta, <a href="mailto:RWAdar@protonmail.com" '
+    v_cierre := v_parrafo || 'Si no creaste esta cuenta, <a href="mailto:rwadares@gmail.com" '
       || 'style="color:#0F7A57">escríbenos</a> y la borramos.</p>';
-    v_cierre_txt := 'Si no creaste esta cuenta, escríbenos a RWAdar@protonmail.com y la borramos.';
+    v_cierre_txt := 'Si no creaste esta cuenta, escríbenos a rwadares@gmail.com y la borramos.';
     v_motivo := 'Recibes este correo porque se ha confirmado una cuenta de RWAdar con esta dirección.';
   elsif p_tipo = 'anuncio' then
     if v_baja is null then
@@ -462,9 +462,9 @@ begin
     v_pie := v_pie || '<p style="margin:0">Para darte de baja de los avisos: <a href="'
       || rwadar_novedades.html(v_baja) || '" style="color:#555">darme de baja</a>'
       || ' o escribe a <a href="' || rwadar_novedades.html(v_mailto)
-      || '" style="color:#555">RWAdar@protonmail.com</a>. También puedes hacerlo en tu Perfil.</p>';
+      || '" style="color:#555">rwadares@gmail.com</a>. También puedes hacerlo en tu Perfil.</p>';
     v_pie_txt := v_pie_txt || E'\n' || 'Para darte de baja de los avisos: ' || v_baja
-      || ' o escribe a RWAdar@protonmail.com. También puedes hacerlo en tu Perfil.';
+      || ' o escribe a rwadares@gmail.com. También puedes hacerlo en tu Perfil.';
   end if;
 
   return jsonb_build_object(
@@ -1053,7 +1053,7 @@ begin
     if v_suscrito then
       v_cabeceras := v_cabeceras || jsonb_build_object('List-Unsubscribe',
         '<https://rwadar.pages.dev/baja?t=' || r.baja_token::text || '>, '
-        || '<mailto:RWAdar@protonmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar>');
+        || '<mailto:rwadares@gmail.com?subject=Baja%20de%20los%20avisos%20de%20RWAdar>');
     end if;
 
     select net.http_post(
@@ -1063,7 +1063,7 @@ begin
                                     'accept', 'application/json'),
       body := jsonb_build_object(
         'sender', jsonb_build_object('name', 'RWAdar', 'email', btrim(v_remitente)),
-        'replyTo', jsonb_build_object('name', 'RWAdar', 'email', 'RWAdar@protonmail.com'),
+        'replyTo', jsonb_build_object('name', 'RWAdar', 'email', 'rwadares@gmail.com'),
         'to', jsonb_build_array(jsonb_build_object(
           'email', btrim(r.email), 'contactPixelTrackingConsent', false)),
         'headers', v_cabeceras,
@@ -1768,7 +1768,7 @@ end
 $funcion$;
 
 -- Baja que llega por correo (LSSI art. 22.1: basta la simple notificación al
--- remitente; «baja» en RWAdar@protonmail.com o en una respuesta). Solo el
+-- remitente; «baja» en rwadares@gmail.com o en una respuesta). Solo el
 -- propietario de la base, desde el SQL Editor, antes del siguiente envío:
 --   select rwadar_novedades.baja_por_correo('persona@ejemplo.com');
 -- Busca la cuenta por su correo sin distinguir mayúsculas, pone

@@ -195,7 +195,7 @@ paso('y el aviso sigue en la cola, sin marcar',
   (await uno(`select count(*)::int c from avisos_correo where enviado_el is null`)).c === 1);
 
 await n(`insert into vault.decrypted_secrets values ('BREVO_API_KEY','clave-de-prueba'),
-                                                    ('RWADAR_REMITENTE','rwadar@protonmail.com')`);
+                                                    ('RWADAR_REMITENTE','avisos@rwadar.example')`);
 
 /* --- paso uno: soltar ---------------------------------------------- */
 paso('con la clave puesta, suelta el aviso', (await uno(`select avisos_soltar() s`)).s === 1);
