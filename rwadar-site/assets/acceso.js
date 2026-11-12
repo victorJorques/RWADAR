@@ -10,11 +10,13 @@
   // docs/tareas/ANTI-ROBOTS-Y-LIMITES-2026-11-01.md, or Android sign-in breaks.
   const TURNSTILE_SITEKEY = '';
   const CON_ROBOT = ['entrar', 'registrar', 'recuperar', 'reenviar'];
-  // Avisos de novedades (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
-  // Apagado: la casilla no se ve y el alta no envía avisosNovedades. Se enciende
-  // solo con la base (30), la plantilla de confirmación de Auth y la privacidad
-  // al día, a la vez que el de rwadar-20260820.js y el de la app.
-  const AVISOS_NOVEDADES_REMOTOS = false;
+  // Casilla de avisos del alta (docs/tareas/AVISOS-Y-ACADEMY-REGISTRO-2026-11-05.md).
+  // Interruptor propio desde el 12/11/2026: Perfil › Avisos ya está encendido
+  // (AVISOS_NOVEDADES_REMOTOS de rwadar-20260820.js), pero la casilla depende del
+  // correo (dominio, Lettermint y la plantilla de confirmación de Auth) y sigue
+  // apagada: no se ve y el alta no envía avisosNovedades. Se enciende a la vez
+  // que el de rwadar-acceso/servidor.mjs.
+  const AVISOS_CASILLA_ALTA = false;
   // Vuelta a la lección tras confirmar el correo: se guarda 24 horas en este
   // navegador. Solo rutas de lecciones propias; nunca un token ni el correo.
   const CLAVE_VOLVER = 'rwadar.alta.volver', DURACION_VOLVER = 24 * 60 * 60 * 1000;
@@ -120,9 +122,9 @@
     const alta = vista === 'registrar', nueva = vista === 'nueva-clave';
     $('campo-nombre').hidden = !alta; $('campo-condiciones').hidden = !alta;
     // Casilla aparte, sin marcar y solo al crear la cuenta.
-    $('campo-avisos-novedades').hidden = !(alta && AVISOS_NOVEDADES_REMOTOS);
+    $('campo-avisos-novedades').hidden = !(alta && AVISOS_CASILLA_ALTA);
     // La información básica sobre los datos va junto a la casilla, con ella.
-    $('info-datos').hidden = !(alta && AVISOS_NOVEDADES_REMOTOS);
+    $('info-datos').hidden = !(alta && AVISOS_CASILLA_ALTA);
     $('campo-clave').hidden = !['entrar', 'registrar', 'nueva-clave'].includes(vista);
     $('clave').required = !$('campo-clave').hidden;
     $('clave').autocomplete = alta || nueva ? 'new-password' : 'current-password';
@@ -214,7 +216,7 @@
       aceptaCondiciones: $('condiciones').checked };
     // Booleano estricto y solo en el alta, con el idioma del texto mostrado;
     // con el interruptor apagado no viaja ninguno de los dos.
-    if (vista === 'registrar' && AVISOS_NOVEDADES_REMOTOS) {
+    if (vista === 'registrar' && AVISOS_CASILLA_ALTA) {
       data.avisosNovedades = $('avisos-novedades').checked === true;
       data.idioma = idiomaCasilla();
     }

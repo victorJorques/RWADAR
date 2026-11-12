@@ -183,6 +183,8 @@ const ARCHIVOS_PUBLICABLES = Object.freeze([
   'assets/rwadar-20260820.js',
   'assets/catalogo-publico-20261022.js',
   'assets/idioma-en-20261022.js',
+  // Inglés de la campana y de las notificaciones de la web (12/11/2026), solo de la web.
+  'assets/idioma-en-avisos-20261112.js',
   'assets/idioma-20261022.js',
   'assets/idioma-web-20261022.js',
   'assets/idioma-previo-20261104.js',
