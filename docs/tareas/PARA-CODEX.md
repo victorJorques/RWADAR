@@ -6,6 +6,41 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 12 de noviembre de 2026 (2) · Claude · «¿Quieres colaborar con nosotros?» al final de Inicio y Perfil (web y app)
+
+Encargo de Víctor: «añade un apartado al final de Inicio y Perfil tipo
+¿Quieres colaborar con nosotros? y el correo de contacto rwadares@gmail.com».
+Commit local en `claude/sharp-babbage-m3bbbw` (sin push, sin publicar, sin OTA,
+Supabase sin tocar).
+
+- **Qué se ve:** un bloque con el título (h2), una frase para plataformas,
+  emisores, gente del sector y quien quiera proponer mejoras, la frase de
+  independencia («Colaborar no compra un puesto en el catálogo: las ofertas se
+  eligen con criterios editoriales y RWAdar no recibe dinero de las
+  inversiones.») y el botón verde «Escríbenos: rwadares@gmail.com»
+  (`mailto:`). Va tras Aprende y antes del pie legal en Inicio, y al final de
+  Perfil antes de la nota final. Este apartado no toca el correo de los
+  textos legales: ese cambio va aparte, en su propio commit de la rama
+  («Correo de contacto: rwadares@gmail.com…»), y las pruebas nuevas no
+  dependen de él.
+- **Web:** el bloque está una sola vez, en `<template id="colaboraPlantilla">`
+  de `index.html`; `ponerColabora()` (en `assets/rwadar-20260820.js`) lo copia
+  en cada hueco `[data-colabora]`: Inicio, Perfil del móvil y la cuenta de
+  escritorio (`abrirPerfil`). Estilos en `assets/secciones-20261110.css`.
+- **App:** `componentes/Colabora.js`, usado en `Inicio.js` y en
+  `PantallaPerfil` de `App.js`. Abre el correo con `Linking.openURL`; si falla,
+  lo dice y deja la dirección seleccionable. Sin dependencias nuevas: la OTA
+  sigue siendo compatible.
+- **Inglés:** 6 claves nuevas en `lib/idioma-en.js`, copiadas a la web.
+- **Pruebas:** `rwadar-movil/tests/colabora.test.cjs` (4),
+  `rwadar-acceso/colabora-navegador.test.mjs` (Chromium a 390 y 1366: sitio,
+  h2, mailto, foco, contraste AA, sin desbordes e inglés) y una comprobación
+  en `probar-web.mjs`. `npm test` de la raíz y el guardián de la OTA (base
+  `fa30779…`) en verde.
+- **Pendiente (Víctor):** revisar y, si le gusta, publicar web y OTA con
+  permiso expreso. La cuenta de escritorio solo se ve con sesión: se comprobó
+  pintándola a mano en local, donde las cuentas están apagadas.
+
 ## 12 de noviembre de 2026 (1) · Claude · ciclo rápido del 12/11: catálogo a58dd22d aplicado y noticias del día
 
 Víctor, a las 00:28 UTC: «actualizar la información a hoy y acelerar». Informe:

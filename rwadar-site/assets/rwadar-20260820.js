@@ -4958,7 +4958,8 @@ const Cuenta = (function(){
     '<button class="peligro" id="pfBorrar">Borrar mi cuenta</button>'+
    '</div>'+
    '<div data-colabora="cuenta" hidden></div>';
-  ponerColabora(c);
+  /* «¿Quieres colaborar con nosotros?», al final de la cuenta (ponerColabora, más abajo). */
+  if(typeof ponerColabora==='function')ponerColabora(c);
   const contenedorInversiones=$('pfInversiones');
   try{
    if(!window.RWAdarInversionesUI||!window.RWAdarCarteraCuenta||!window.RWAdarCarteraModelo)throw new Error('Registro no disponible');

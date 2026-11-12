@@ -3,7 +3,7 @@
 /* «¿Quieres colaborar con nosotros?» (12/11/2026): el bloque Colabora con
    React aislado (como calculadora-inicio.test.cjs), su sitio al final de
    Inicio y de Perfil, el mailto, el fallo al abrir el correo, el inglés y que
-   el correo de privacidad no cambia. */
+   el texto del bloque es el mismo que el de la web. */
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -85,6 +85,7 @@ test('app · Colabora: encabezado real, las dos frases, la de independencia y un
   assert.equal(modulo.MAILTO_COLABORA, `mailto:${CORREO}`);
   const titulo = nodos(arbol).find((n) => n?.props?.accessibilityRole === 'header');
   assert.deepEqual(textos(titulo), ['¿Quieres colaborar con nosotros?']);
+  assert.ok(leer('../rwadar-site/index.html').includes(t.texto) && leer('../rwadar-site/index.html').includes(t.nota));
   assert.ok(textos(arbol).includes(t.texto) && /plataforma o un emisor/.test(t.texto) && /sector/.test(t.texto) && /mejora/.test(t.texto));
   assert.ok(textos(arbol).includes('Colaborar no compra un puesto en el catálogo: las ofertas se eligen con criterios editoriales y RWAdar no recibe dinero de las inversiones.'));
   const boton = porId(arbol, 'colaboraCorreo');
@@ -143,7 +144,4 @@ test('app · Colabora va al final de Inicio (tras Aprende, antes del pie legal) 
   const [ultimoGrupo, enPerfil, nota, fin] = [perfil.lastIndexOf('</GrupoMenu>'), perfil.indexOf('<Colabora enPerfil />'), perfil.indexOf('style={e.notaMas}'), perfil.lastIndexOf('</ScrollView>')];
   assert.ok(ultimoGrupo > 0 && enPerfil > ultimoGrupo && nota > enPerfil && fin > nota, 'Perfil: último grupo → Colabora → nota final');
   assert.match(app, /import Colabora from '\.\/componentes\/Colabora';/);
-  // El correo de privacidad y derechos no cambia; el nuevo solo va en Colabora.
-  assert.match(app, /onContacto=\{\(\) => abrirEnlace\('mailto:RWAdar@protonmail\.com'\)\}/);
-  assert.ok(!app.includes(CORREO) && !inicio.includes(CORREO));
 });

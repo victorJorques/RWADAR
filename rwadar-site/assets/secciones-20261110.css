@@ -104,6 +104,7 @@
 .movil-mas-cuerpo .colabora,.pn-body .colabora{margin-top:32px;padding:28px 0 4px}
 .movil-mas-cuerpo .colabora .ini-bloque-tit,.pn-body .colabora .ini-bloque-tit{font-size:1.25rem}
 .movil-mas-cuerpo .colabora .ini-bloque-sub,.pn-body .colabora .ini-bloque-sub{font-size:.9375rem}
+.pn-body .colabora .colabora-nota{margin-top:12px}
 
 /* ---- Inicio en tableta y escritorio ---- */
 @media (min-width:768px){
