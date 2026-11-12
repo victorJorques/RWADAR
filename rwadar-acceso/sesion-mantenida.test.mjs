@@ -429,3 +429,109 @@ test('el _worker.js compilado entrega las dos cookies, cada una en su cabecera',
   assert.equal(r.headers.get('strict-transport-security'), 'max-age=31536000');
   assert.doesNotMatch(await r.text(), /access_token|refresh_token|r\d{11}/);
 });
+
+/* Revisión del integrador (12/11/2026). */
+test('un 409 de Supabase al renovar (varias renovaciones del mismo token a la vez) es pasajero: 503 sin borrar nada', async () => {
+  const e = entorno(); const { tarro } = await entrar(e, true);
+  e.reloj.ahora += 3600 * 1000;
+  e.supabase.fallarRenovar(() => new Response(JSON.stringify({ error_code: 'conflict' }), { status: 409 }));
+  const r = await e.run('/api/acceso/sesion', { cookies: tarro });
+  assert.equal(r.status, 503); assert.deepEqual(await r.json(), { error: 'servicio_no_disponible' });
+  assert.deepEqual(r.headers.getSetCookie(), []);
+  const d = await e.run('/api/acceso/datos', { method: 'POST', data: { ruta: '/vigilancia' }, cookies: tarro });
+  assert.equal(d.status, 503); assert.deepEqual(d.headers.getSetCookie(), []);
+  const c = await e.run('/api/acceso/cartera', { cookies: tarro, headers: { 'x-rwadar-usuario': UID } });
+  assert.equal(c.status, 503); assert.deepEqual(await c.json(), { error: 'cartera_no_disponible' });
+  assert.deepEqual(c.headers.getSetCookie(), []);
+  // Al pasar, la misma cookie renueva.
+  e.supabase.fallarRenovar(null);
+  const otra = await e.run('/api/acceso/sesion', { cookies: tarro });
+  assert.equal(otra.status, 200); assert.equal(otra.headers.getSetCookie().length, 2);
+});
+
+test('salir con un pase sin caducar que Auth rechaza: se renueva, se repite y la sesión queda cerrada en Supabase', async () => {
+  const e = entorno(); const { tarro } = await entrar(e, true);
+  const renovar = tarro['__Host-rwadar-renovar'];
+  // Por ejemplo, tras rotar la clave de firma: con forma y fecha buenas, pero Supabase no lo acepta.
+  tarro['__Host-rwadar-acceso'] = pase(Math.floor(e.reloj.ahora / 1000) + 3000, 999);
+  const r = await e.run('/api/acceso/salir', { method: 'POST', data: {}, cookies: tarro });
+  assert.deepEqual(await r.json(), { cerrado: true, cierreRemoto: true });
+  assert.deepEqual(r.headers.getSetCookie(), [BORRAR_PASE, BORRAR_RENOVAR]);
+  assert.deepEqual(e.supabase.llamadas.slice(-3).map(l => l.ruta),
+    ['/auth/v1/logout?scope=local', '/auth/v1/token?grant_type=refresh_token', '/auth/v1/logout?scope=local']);
+  assert.ok([...e.supabase.sesiones.values()].every(s => !s.activa));
+  // Una copia de la cookie de renovar ya no abre nada, ni una hora después.
+  e.reloj.ahora += 3600 * 1000;
+  assert.equal((await e.run('/api/acceso/sesion', { cookies: { '__Host-rwadar-renovar': renovar } })).status, 401);
+});
+
+test('entrar, reautenticar o confirmar el correo con una sesión abierta cierran la anterior en Supabase', async () => {
+  const activas = e => [...e.supabase.sesiones.values()].filter(s => s.activa).length;
+  // Entrar otra vez (con el pase de antes caducado: se renueva para poder cerrarla).
+  for (const caducado of [false, true]) {
+    const e = entorno(); const { tarro } = await entrar(e, true);
+    if (caducado) { e.reloj.ahora += 2 * 3600 * 1000; delete tarro['__Host-rwadar-acceso']; }
+    const r = await e.run('/api/acceso/entrar', { method: 'POST', data: { correo: CORREO, clave: CLAVE, mantener: true }, cookies: tarro });
+    assert.equal(r.status, 200);
+    assert.equal(activas(e), 1, 'solo la nueva');
+    const nuevas = aplicar({}, r);
+    assert.equal((await e.run('/api/acceso/sesion', { cookies: nuevas })).status, 200, 'la nueva sigue');
+    e.reloj.ahora += 7 * UN_DIA * 1000;
+    const vieja = await e.run('/api/acceso/sesion', { cookies: { '__Host-rwadar-renovar': tarro['__Host-rwadar-renovar'] } });
+    assert.equal(vieja.status, 401, 'la de antes ya no vale');
+  }
+  // Reautenticar.
+  {
+    const e = entorno(); const { tarro } = await entrar(e, false);
+    const r = await e.run('/api/acceso/reautenticar', { method: 'POST', data: { clave: CLAVE }, cookies: tarro });
+    assert.equal(r.status, 200); assert.equal(activas(e), 1);
+    assert.equal((await e.run('/api/acceso/sesion', { cookies: aplicar({}, r) })).status, 200);
+    e.reloj.ahora += UN_DIA * 1000;
+    assert.equal((await e.run('/api/acceso/sesion', { cookies: { '__Host-rwadar-renovar': tarro['__Host-rwadar-renovar'] } })).status, 401);
+  }
+  // El enlace del correo.
+  {
+    const e = entorno(); const { tarro } = await entrar(e, true);
+    const enlace = e.supabase.entrar();
+    const r = await e.run('/api/acceso/adoptar', { method: 'POST', cookies: tarro,
+      data: { access_token: enlace.access_token, refresh_token: enlace.refresh_token, confirmarIdentidad: true } });
+    assert.equal(r.status, 200); assert.equal(activas(e), 1);
+  }
+  // Sin cookie de renovar no se pregunta nada de más.
+  {
+    const e = entorno(); const { tarro } = await entrar(e, false);
+    delete tarro['__Host-rwadar-renovar'];
+    const antes = e.supabase.llamadas.length;
+    await e.run('/api/acceso/entrar', { method: 'POST', data: { correo: CORREO, clave: CLAVE }, cookies: tarro });
+    assert.equal(e.supabase.llamadas.slice(antes).some(l => l.ruta.startsWith('/auth/v1/logout')), false);
+  }
+});
+
+test('confirmar el correo con el refresh_token del enlace: se canjea en el acto y la sesión se renueva (con «mantener», dura)', async () => {
+  for (const mantener of [undefined, false, true]) {
+    const e = entorno(); const enlace = e.supabase.entrar();
+    const r = await e.run('/api/acceso/adoptar', { method: 'POST',
+      data: { access_token: enlace.access_token, refresh_token: enlace.refresh_token, confirmarIdentidad: true, ...(mantener === undefined ? {} : { mantener }) } });
+    assert.equal(r.status, 200);
+    assert.deepEqual(e.supabase.renovaciones().map(l => l.cuerpo.refresh_token), [enlace.refresh_token], 'el del enlace, canjeado');
+    const c = leerSetCookie(r);
+    assert.equal(c['__Host-rwadar-renovar'].valor.slice(0, 2), mantener ? 'p.' : 's.');
+    assert.notEqual(c['__Host-rwadar-renovar'].valor.slice(2), enlace.refresh_token);
+    assert.notEqual(c['__Host-rwadar-acceso'].valor, enlace.access_token);
+    assert.equal(c['__Host-rwadar-renovar'].atributos.includes('Max-Age=' + TREINTA_DIAS), mantener === true);
+    // A la hora, la sesión sigue.
+    e.reloj.ahora += 2 * 3600 * 1000;
+    const tarro = aplicar({}, r); delete tarro['__Host-rwadar-acceso'];
+    assert.equal((await e.run('/api/acceso/sesion', { cookies: tarro })).status, 200);
+    await sinTokens(e);
+  }
+  // Con otra forma, se rechaza; si Supabase no lo acepta, como antes: solo el pase.
+  const e = entorno(); const enlace = e.supabase.entrar();
+  const mal = await e.run('/api/acceso/adoptar', { method: 'POST', data: { access_token: enlace.access_token, refresh_token: 'con espacio', confirmarIdentidad: true } });
+  assert.equal(mal.status, 400);
+  const mantenerMal = await e.run('/api/acceso/adoptar', { method: 'POST', data: { access_token: enlace.access_token, mantener: 'si', confirmarIdentidad: true } });
+  assert.equal(mantenerMal.status, 400);
+  const desconocido = await e.run('/api/acceso/adoptar', { method: 'POST', data: { access_token: enlace.access_token, refresh_token: 'r99999999999', confirmarIdentidad: true } });
+  assert.equal(desconocido.status, 200);
+  assert.deepEqual(desconocido.headers.getSetCookie(), ['__Host-rwadar-acceso=' + enlace.access_token + ATRIBUTOS, BORRAR_RENOVAR]);
+});

@@ -350,7 +350,7 @@ test('en Chromium: al activar, el motivo en llano (permiso, navegador, iPhone fu
     fallos = {};
     {
       const { contexto, pagina } = await abrir(navegador, local, { idioma: 'en' });
-      await pagina.waitForFunction(() => /^Basic information about your data\. Controller: the owner of RWAdar, identified in the legal notice\. Data:/
+      await pagina.waitForFunction(() => /^Basic information about your data\. Controller: the owner of RWAdar \(an individual\), identified by name, tax ID and address in the legal notice\. Data:/
         .test(document.getElementById('perfilNovedadesDatos').textContent), null, { timeout: 10000 });
       const info = await pagina.evaluate(() => { const p = document.getElementById('perfilNovedadesDatos');
         return { texto: p.textContent, enlaces: [...p.querySelectorAll('a')].map(a => [a.textContent, a.getAttribute('href')]) }; });

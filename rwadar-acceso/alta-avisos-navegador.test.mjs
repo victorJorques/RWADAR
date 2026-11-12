@@ -21,7 +21,7 @@ const TEXTO_EN = 'I want to receive RWAdar notices by email and, if I enable the
   'You can unsubscribe in Profile or with the link in every email; notifications can also be turned off in your ' +
   'phone settings. More information in Privacy.';
 // Información básica sobre los datos: fuera del texto versionado, junto a la casilla.
-const INFO_ES = 'Información básica sobre tus datos. Responsable: el titular de RWAdar, identificado en el aviso legal. ' +
+const INFO_ES = 'Información básica sobre tus datos. Responsable: el titular de RWAdar (persona física), identificado con nombre, NIF y domicilio en el aviso legal. ' +
   'Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las ' +
   'notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, ' +
   'y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu ' +
@@ -112,7 +112,7 @@ test('la información básica sobre los datos va junto a la casilla, oculta y co
   assert.match(bloque[1], /\bhidden\b/, 'Nace oculta en el HTML');
   assert.equal(texto(bloque[2]), INFO_ES);
   assert.ok(bloque[2].endsWith(INFO_ES.replace(/Privacidad\.$/, '')
-    .replace(' identificado en el aviso legal.', ' identificado en el <a href="/privacidad#aviso-legal">aviso legal</a>.') +
+    .replace(' domicilio en el aviso legal.', ' domicilio en el <a href="/privacidad#aviso-legal">aviso legal</a>.') +
     '<a href="/privacidad">Privacidad</a>.'));
   // El nombre del titular solo sale en el aviso legal y la privacidad (12/11/2026).
   assert.doesNotMatch(bloque[2], /Jorques/);

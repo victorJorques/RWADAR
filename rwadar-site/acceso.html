@@ -58,7 +58,7 @@
     <!-- Avisos de novedades, versión novedades-v2-2026-11-06: el texto es el de la revisión legal del 06/11/2026, palabra por palabra; «Privacidad» enlaza sin cambiar el texto. Solo se enseña con AVISOS_CASILLA_ALTA encendido en assets/acceso.js (interruptor propio de la casilla, apagado mientras el correo no esté listo). -->
     <label id="campo-avisos-novedades" hidden class="consentimiento"><input id="avisos-novedades" type="checkbox">Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en <a href="/privacidad#avisos-novedades">Privacidad</a>.</label>
     <!-- Información básica sobre los datos (LOPDGDD, art. 11): fuera del texto versionado de la casilla; se enseña con ella. -->
-    <div id="info-datos" hidden class="consentimiento">Información básica sobre tus datos. Responsable: el titular de RWAdar, identificado en el <a href="/privacidad#aviso-legal">aviso legal</a>. Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en <a href="/privacidad">Privacidad</a>.</div>
+    <div id="info-datos" hidden class="consentimiento">Información básica sobre tus datos. Responsable: el titular de RWAdar (persona física), identificado con nombre, NIF y domicilio en el <a href="/privacidad#aviso-legal">aviso legal</a>. Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en <a href="/privacidad">Privacidad</a>.</div>
     <div id="robot" hidden></div>
     <button id="enviar" type="submit">Entrar</button>
   </form>
@@ -71,6 +71,11 @@
   <section id="identidad" hidden aria-labelledby="titulo-identidad">
     <h2 id="titulo-identidad">Comprueba tu cuenta</h2>
     <p id="correo-enlace"></p>
+    <!-- La misma casilla al confirmar la cuenta desde el correo (12/11/2026): desmarcada, y solo si el enlace no es para cambiar la contraseña. -->
+    <div id="campo-mantener-enlace" class="mantener" hidden>
+      <label class="consentimiento"><input id="mantener-enlace" type="checkbox">Mantener la sesión iniciada en este dispositivo</label>
+      <p class="consentimiento">Si la marcas, este navegador guarda tu sesión con una cookie hasta 30 días desde la última vez que la usas, aunque lo cierres. Se borra al cerrar sesión. No la marques en un dispositivo compartido. Más en <a href="/privacidad#cookies-sesion">Privacidad</a>.</p>
+    </div>
     <button id="adoptar" type="button">Continuar con esta cuenta</button>
   </section>
   <p class="nota">Confirma tu correo antes de entrar. Tu contraseña no se guarda en este dispositivo.</p>

@@ -377,6 +377,14 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
       .then(sesion => {
         if (!tokenValido(sesion?.access_token)) throw new Error('servicio_no_disponible');
         return sesion;
+      }, error => {
+        /* Solo 400/401/403 dicen que la sesión ya no vale, y 429 es el límite.
+           Cualquier otro rechazo (409 de GoTrue con varias renovaciones del
+           mismo token a la vez, una redirección…) es pasajero: 503, sin borrar
+           nada ni tratarlo como «sin sesión» (revisión del 12/11/2026). */
+        if (['auth_rechazado', 'redireccion_no_permitida'].includes(error?.message) && !renovacionRechazada(error) && error.status !== 429)
+          throw new Error('servicio_no_disponible');
+        throw error;
       });
     renovaciones.set(clave, { promesa, hasta: t + REUSAR_RENOVACION_MS });
     promesa.catch(() => { if (renovaciones.get(clave)?.promesa === promesa) renovaciones.delete(clave); });
@@ -421,16 +429,41 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
      existía; false si no se pudo confirmar. Las cookies se borran igual. */
   async function cerrarSesionRemota(env, request) {
     const renovar = leerRenovacion(request);
-    let token = leerCookie(request);
+    let token = leerCookie(request), renovada = false;
     if (!tokenValido(token) && !renovar) return true;
-    if (renovar && !paseVigente(token)) {
-      try { token = (await renovarSesion(env, request, renovar.token)).access_token; }
+    // null: pase nuevo en token; true: Supabase ya no la conoce; false: no se pudo.
+    async function renueva() {
+      renovada = true;
+      try { token = (await renovarSesion(env, request, renovar.token)).access_token; return null; }
       catch (error) { return renovacionRechazada(error); }
     }
-    // Una renovación compartida de esta sesión ya no sirve a nadie.
-    if (renovar) renovaciones.delete(renovar.token);
-    try { await api(env, '/auth/v1/logout?scope=local', { token, method: 'POST' }); return true; }
-    catch { return false; }
+    const salir = () => api(env, '/auth/v1/logout?scope=local', { token, method: 'POST' });
+    try {
+      if (renovar && !paseVigente(token)) { const fin = await renueva(); if (fin !== null) return fin; }
+      try { await salir(); return true; }
+      catch (error) {
+        /* Un pase sin caducar que Auth rechaza (por ejemplo, tras rotar la
+           clave de firma) no revoca nada: con la cookie de renovar, se renueva y
+           se repite una vez, para que su refresh_token no quede vivo. */
+        if (!renovar || renovada || error.message !== 'auth_rechazado' || ![401, 403].includes(error.status)) return false;
+        const fin = await renueva(); if (fin !== null) return fin;
+        try { await salir(); return true; } catch { return false; }
+      }
+    } finally {
+      // Una renovación compartida de esta sesión ya no sirve a nadie.
+      if (renovar) renovaciones.delete(renovar.token);
+    }
+  }
+  /* Al abrir otra sesión en este navegador (entrar, reautenticar o el enlace
+     del correo), la anterior se cierra en Supabase: si no, su refresh_token,
+     que no caduca, seguiría valiendo para quien guardara una copia de la
+     cookie. Solo si la petición traía cookie de renovar (un pase suelto caduca
+     solo en una hora). No toca las cookies nuevas y, en Cloudflare, no retrasa
+     la respuesta (waitUntil). */
+  async function cerrarSesionAnterior(context, env, request) {
+    if (!leerRenovacion(request)) return;
+    const tarea = cerrarSesionRemota(env, request).catch(() => false);
+    if (typeof context?.waitUntil === 'function') context.waitUntil(tarea); else await tarea;
   }
   // Throws 429 while this visitor is over the limit of the route's group.
   function reservarIntento(path, request) {
@@ -579,6 +612,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
             data: { email: current.correo, password, ...extra } });
           const user = await verificar(env, session?.access_token);
           if (user.id !== current.id) throw new Error('sin_sesion');
+          await cerrarSesionAnterior(context, env, request);
           // La sesión nueva conserva lo que se eligió al entrar («mantener» o no).
           return respuesta({ autenticada: true, usuario: user }, 200, {},
             cookiesSesion(session, leerRenovacion(request)?.mantener === true));
@@ -624,6 +658,7 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
           const session = await api(env, '/auth/v1/token?grant_type=password', { method: 'POST',
             data: { email, password, ...extra } });
           const user = await verificar(env, session?.access_token);
+          await cerrarSesionAnterior(context, env, request);
           return respuesta({ autenticada: true, usuario: user }, 200, {}, cookiesSesion(session, mantener));
         }
         if (path === '/api/acceso/registrar') {
@@ -675,10 +710,28 @@ export function crearAccesoServidor({ fetchImpl = fetch, plazoMs = 8000, ahora =
           await api(env, '/auth/v1/user', { token: data.access_token, method: 'PUT', data: { password: clave(data.clave, true) } });
           return respuesta({ mensaje: 'Contraseña actualizada. Entra con la nueva contraseña.' }, 200, {}, cookiesBorradas());
         }
-        // El enlace del correo solo trae el pase: cookie de sesión del navegador,
-        // sin renovar (y sin dejar la de otra sesión).
+        /* El enlace del correo trae el pase y su refresh_token (en el fragmento,
+           que solo lee /acceso). Con el refresh_token, se canjea en el acto: el
+           que vio el JavaScript de la página queda usado, y la sesión es como la
+           de entrar (se renueva sola; con «mantener», dura al cerrar). Tiene que
+           ser de la misma cuenta que el pase. Si no viene o Supabase no lo
+           acepta, como antes: solo el pase, como cookie de sesión del navegador
+           y sin dejar la de renovar de otra sesión. */
         if (path === '/api/acceso/adoptar' && data.confirmarIdentidad === true) {
-          return respuesta({ autenticada: true, usuario: user }, 200, {}, [cookie(data.access_token), cookieRenovar()]);
+          const mantener = mantenerSesion(data);
+          if (data.refresh_token !== undefined && !refreshValido(data.refresh_token)) throw new Error('solicitud_invalida');
+          let nuevas = [cookie(data.access_token), cookieRenovar()];
+          if (data.refresh_token !== undefined) {
+            let canje = null;
+            try { canje = await renovarSesion(env, request, data.refresh_token); } catch { canje = null; }
+            if (canje) {
+              const deEnlace = await verificar(env, canje.access_token);
+              if (deEnlace.id !== user.id) throw new Error('sin_sesion');
+              nuevas = cookiesSesion(canje, mantener);
+            }
+          }
+          await cerrarSesionAnterior(context, env, request);
+          return respuesta({ autenticada: true, usuario: user }, 200, {}, nuevas);
         }
         throw new Error('solicitud_invalida');
       }

@@ -190,15 +190,18 @@
       </tr>
       <tr id="cookies-sesion">
         <td>Sesión de tu <br>cuenta</td>
-        <td><span class="celda-etiqueta">Por qué ocurre</span> Al entrar, la web utiliza dos cookies de sesión necesarias, protegidas con HttpOnly, Secure y
+        <td><span class="celda-etiqueta">Por qué ocurre</span> Al entrar, la web usa dos cookies necesarias para tu sesión, protegidas con HttpOnly, Secure y
           SameSite: el JavaScript no puede leerlas.
           <span class="codigo">__Host-rwadar-acceso</span> lleva el pase de tu sesión, que caduca en una hora;
           <span class="codigo">__Host-rwadar-renovar</span>, el código con el que el servidor de la web pide un pase nuevo sin volver a pedirte la contraseña.
           Son estrictamente necesarias para darte la sesión que pides y solo sirven para eso (LSSI, art. 22.2).
-          <b>Cuánto duran:</b> hasta que cierras el navegador. Si al entrar marcas «Mantener la sesión iniciada en este dispositivo»
-          (sale sin marcar), la del pase dura una hora y se renueva sola, y la de renovar, 30 días desde la última vez que usas tu
-          cuenta en ese navegador, aunque lo cierres. Deja de autorizar al caducar o cerrar sesión: al salir o al borrar la cuenta se
-          borran las dos y la sesión se cierra también en el servicio de autenticación.
+          <b>Cuánto duran:</b> hasta que cierras el navegador. Si al entrar (o al confirmar tu cuenta desde el correo) marcas
+          «Mantener la sesión iniciada en este dispositivo» (sale sin marcar), la del pase dura una hora y se renueva sola, y la de
+          renovar, 30 días desde la última vez que usas tu cuenta en ese navegador, aunque lo cierres. Esa duración larga solo se
+          aplica si la pides marcando la casilla, y la retiras cerrando sesión. Deja de autorizar al caducar o cerrar sesión: al salir
+          o al borrar la cuenta se borran las dos y la sesión se cierra también en el servicio de autenticación (si en ese momento
+          no responde, las cookies se borran igual de tu navegador). Al volver a entrar en el mismo navegador, la sesión anterior
+          se cierra.
           No se guarda tu contraseña. En Android 1.4.0, la sesión se conserva de forma segura en el dispositivo hasta que cierres sesión o deje de ser válida.
           Los
           enlaces de confirmación o recuperación que te enviamos se canjean una vez y se

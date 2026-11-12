@@ -3164,7 +3164,7 @@ prueba('la privacidad identifica la medición agregada, sus límites y su estado
   /no permite reconstruir el tráfico anterior/.test(privacidad) &&
   /Cloudflare Pages/.test(privacidad) && /cloudflare-customer-dpa/.test(privacidad));
 prueba('la privacidad explica las cookies necesarias, enlaces limpios y retirada de las copias PWA',
-  /dos cookies de sesión necesarias, protegidas con HttpOnly, Secure y SameSite/.test(privacidadLineal) &&
+  /dos cookies necesarias para tu sesión, protegidas con HttpOnly, Secure y SameSite/.test(privacidadLineal) &&
   /el JavaScript no puede leerlas/.test(privacidadLineal) &&
   /Deja de autorizar al caducar o cerrar sesión/.test(privacidadLineal) &&
   /se canjean una vez y se\s+retiran de la dirección/.test(privacidad) &&
@@ -3186,6 +3186,11 @@ prueba('la privacidad explica las cookies necesarias, enlaces limpios y retirada
     !/<input id="mantener"[^>]*\bchecked\b/.test(accesoHTML) &&
     accesoJS.includes("$('mantener').checked = false; $('campo-mantener').hidden = vista !== 'entrar';") &&
     accesoJS.includes("if (vista === 'entrar') data.mantener = $('mantener').checked === true;") &&
+    // Al confirmar la cuenta desde el correo: la misma casilla, sin marcar y fuera del cambio de contraseña.
+    accesoHTML.includes('<div id="campo-mantener-enlace" class="mantener" hidden>\n      <label class="consentimiento"><input id="mantener-enlace" type="checkbox">' + ETIQUETA_MANTENER + '</label>\n      <p class="consentimiento">' + NOTA_MANTENER + ' <a href="/privacidad#cookies-sesion">Privacidad</a>.</p>\n    </div>') &&
+    !/<input id="mantener-enlace"[^>]*\bchecked\b/.test(accesoHTML) &&
+    accesoJS.includes("$('mantener-enlace').checked = false; $('campo-mantener-enlace').hidden = enlace.tipo === 'recovery';") &&
+    accesoJS.includes("mantener: $('mantener-enlace').checked === true, confirmarIdentidad: true });") &&
     enComun[ETIQUETA_MANTENER] === 'Keep me signed in on this device' && /^If you tick it, .* More in$/.test(enComun[NOTA_MANTENER] || ''));
   prueba('privacidad: nombre, finalidad y duración de las dos cookies de la sesión, estrictamente necesarias; 30 días como en el servidor',
     diasServidor === 30 &&
@@ -3193,8 +3198,10 @@ prueba('la privacidad explica las cookies necesarias, enlaces limpios y retirada
     privacidadLineal.includes('<span class="codigo">__Host-rwadar-acceso</span> lleva el pase de tu sesión, que caduca en una hora;') &&
     privacidadLineal.includes('<span class="codigo">__Host-rwadar-renovar</span>, el código con el que el servidor de la web pide un pase nuevo sin volver a pedirte la contraseña.') &&
     privacidadLineal.includes('Son estrictamente necesarias para darte la sesión que pides y solo sirven para eso (LSSI, art. 22.2).') &&
-    privacidadLineal.includes('<b>Cuánto duran:</b> hasta que cierras el navegador. Si al entrar marcas «' + ETIQUETA_MANTENER + '» (sale sin marcar), la del pase dura una hora y se renueva sola, y la de renovar, ' + diasServidor + ' días desde la última vez que usas tu cuenta en ese navegador, aunque lo cierres.') &&
-    privacidadLineal.includes('al salir o al borrar la cuenta se borran las dos y la sesión se cierra también en el servicio de autenticación.') &&
+    privacidadLineal.includes('<b>Cuánto duran:</b> hasta que cierras el navegador. Si al entrar (o al confirmar tu cuenta desde el correo) marcas «' + ETIQUETA_MANTENER + '» (sale sin marcar), la del pase dura una hora y se renueva sola, y la de renovar, ' + diasServidor + ' días desde la última vez que usas tu cuenta en ese navegador, aunque lo cierres. Esa duración larga solo se aplica si la pides marcando la casilla, y la retiras cerrando sesión.') &&
+    // Sin llamarlas «de sesión» (en la guía de la AEPD, las que se borran al cerrar el navegador).
+    !/dos cookies de sesión/.test(privacidadLineal) &&
+    privacidadLineal.includes('al salir o al borrar la cuenta se borran las dos y la sesión se cierra también en el servicio de autenticación (si en ese momento no responde, las cookies se borran igual de tu navegador). Al volver a entrar en el mismo navegador, la sesión anterior se cierra.') &&
     privacidadLineal.includes('<li><b>Datos locales:</b> la sesión web usa dos cookies necesarias (apartado 2): sin marcar «' + ETIQUETA_MANTENER + '», se borran al cerrar el navegador; con ella, la del pase dura una hora y la de renovar, ' + diasServidor + ' días desde la última vez que usas tu cuenta en ese navegador.') &&
     NOTA_MANTENER.includes('hasta ' + diasServidor + ' días') &&
     /const COOKIE_RENOVAR = '__Host-rwadar-renovar';/.test(servidorAcceso) &&
@@ -3226,7 +3233,7 @@ prueba('privacidad distingue consulta pública y cuenta confirmada para funcione
   /correo para confirmar la dirección/.test(privacidadLineal) &&
   /enlace para poner una contraseña nueva/.test(privacidadLineal) &&
   /cuenta de Gmail de RWAdar/.test(privacidadLineal) &&
-  /cookies de sesión necesarias/.test(privacidadLineal) &&
+  /cookies necesarias para tu sesión/.test(privacidadLineal) &&
   /borrar tu cuenta tú mismo/.test(privacidadLineal) &&
   /opiniones y\s+los avisos por correo siguen en pausa/i.test(privacidadLineal) &&
   /Las notificaciones en el móvil solo llegan si\s+las activas tú en Perfil › Avisos/.test(privacidadLineal) &&
@@ -3380,10 +3387,10 @@ prueba('privacidad: los datos locales cuentan la vuelta a la lección de 24 hora
   /\n  limpiarVolver\(\);\n/.test(accesoJS));
 // Texto versionado v2 y la información básica (fuera de la versión), en /acceso y en Perfil.
 const TEXTO_AVISOS_V2 = 'Quiero recibir avisos de RWAdar por correo y, si los activo en mi móvil, como notificaciones: fichas nuevas en el radar y novedades de la web y la app. Es opcional: la Academy se desbloquea igual. Puedes darte de baja en Perfil o con el enlace de cada correo; las notificaciones también se quitan en los ajustes del móvil. Más información en ';
-const INFO_DATOS = 'Información básica sobre tus datos. Responsable: el titular de RWAdar, identificado en el aviso legal. Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en ';
+const INFO_DATOS = 'Información básica sobre tus datos. Responsable: el titular de RWAdar (persona física), identificado con nombre, NIF y domicilio en el aviso legal. Datos: tu correo, tu contraseña y, si lo das, tu nombre; con los avisos, además, tu permiso y, si activas las notificaciones, un identificador de entrega de tu móvil. Para qué: tu cuenta, con la que también abres la Academy, y, solo si marcas la casilla de avisos, enviarte esos avisos. Base: el servicio que pides (cuenta) y tu consentimiento (avisos), que puedes retirar cuando quieras sin que afecte a lo anterior. Proveedores: Supabase, Cloudflare y Google; para los avisos, Lettermint y Expo. Algunos tratan datos fuera de la UE con garantías. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, en Perfil o en rwadares@gmail.com; también puedes reclamar ante la AEPD. Más información en ';
 // 12/11/2026: el nombre del titular ya no sale en la información básica (petición de Víctor); en la web,
 // «aviso legal» enlaza a sus datos (/privacidad#aviso-legal), que son lo único que lo identifica.
-const INFO_DATOS_HTML = INFO_DATOS.replace(' identificado en el aviso legal.', ' identificado en el <a href="/privacidad#aviso-legal">aviso legal</a>.');
+const INFO_DATOS_HTML = INFO_DATOS.replace(' domicilio en el aviso legal.', ' domicilio en el <a href="/privacidad#aviso-legal">aviso legal</a>.');
 // 12/11/2026: Perfil › Avisos encendido en la web; la casilla del alta, con su propio interruptor, sigue apagada.
 prueba('acceso y Perfil: casilla de 18 años, casilla de avisos del alta apagada y Perfil › Avisos encendido',
   /Tengo 18 años o más, acepto las <a href="\/privacidad#condiciones">condiciones<\/a> y he leído la <a href="\/privacidad">privacidad<\/a>\./.test(accesoHTML) &&
