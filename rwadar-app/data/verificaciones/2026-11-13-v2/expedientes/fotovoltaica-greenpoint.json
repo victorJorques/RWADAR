@@ -1,0 +1,639 @@
+{
+ "slug": "fotovoltaica-greenpoint",
+ "tipoExpediente": "publicada",
+ "grupo": "brickwise",
+ "proveedor": "Brickwise",
+ "plataformaSlug": "brickwise",
+ "entidadComercializadora": "Brickwise Investment GmbH (agente vinculado de Effecta GmbH)",
+ "emisor": "Green-Point 62 GmbH (FN 329414 h)",
+ "vehiculo": "Sociedad vehículo austriaca emisora (GmbH)",
+ "token": "Token en la red «Brickprotocol»; tokenId en fuentes/crudo/api-v1-asset-AT0000A38J32.json (fuera de Git)",
+ "derechoAdquirido": "Genussschein tokenizado a 15 años con reembolso del nominal cualificadamente subordinado",
+ "jurisdiccion": "AT",
+ "identificador": "ISIN AT0000A38J32",
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Investitionsbedingungen (contrato de emisión)",
+   "url": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+   "versionOFecha": "14.11.2023",
+   "paginas": null,
+   "sha256": "74260541deaea4cd2f7443dcc93edef81f6f49bd67b2f59c82d7d8e0004d52a0",
+   "leido": true,
+   "nota": "Descargado de nuevo el 13/11/2026 (2026-11-13T08:30:47Z); SHA-256 idéntico al del 12/11 (y al del 05/11, 10/11 y 11/11): el documento no ha cambiado. Copia en grupos/brickwise/fuentes/crudo/pdf/contrato-AT0000A38J32.pdf (fuera de Git)."
+  },
+  {
+   "titulo": "Basisinformationsblatt (KID)",
+   "url": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "versionOFecha": "Thu, 25 Apr 2024 14:47:21 GMT",
+   "paginas": null,
+   "sha256": "bbfe14b97ec9cb14f1fd73c98e62405a6fa5cc3a72a962e37cf9ddaeacdf69ee",
+   "leido": true,
+   "nota": "Descargado de nuevo el 13/11/2026 (2026-11-13T08:30:47Z); SHA-256 idéntico al del 12/11 (y al del 05/11, 10/11 y 11/11): el documento no ha cambiado. Copia en grupos/brickwise/fuentes/crudo/pdf/kid-AT0000A38J32.pdf (fuera de Git)."
+  },
+  {
+   "titulo": "Informationsblatt",
+   "url": "https://cdn.brickwise.at/b9711a2c-4f37-4d6e-81d9-0719e54c6b90.pdf",
+   "versionOFecha": null,
+   "paginas": null,
+   "sha256": "6e69b88ae5ae27b2a9339e28c0f56eca4b4310802b3de2e857a3c7e5c67a3d72",
+   "leido": true,
+   "nota": "Descargado de nuevo el 13/11/2026 (2026-11-13T08:30:47Z); SHA-256 idéntico al del 12/11 (y al del 05/11, 10/11 y 11/11): el documento no ha cambiado. Copia en grupos/brickwise/fuentes/crudo/pdf/info-AT0000A38J32.pdf (fuera de Git)."
+  },
+  {
+   "titulo": "API pública v2 (listado de activos)",
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "versionOFecha": "updatedAt del activo 2026-11-11T20:55:45.782Z",
+   "paginas": null,
+   "sha256": "197a25e34f0745b92ea5a472bdefc5a5d5ae3bf470ecd5eca3e724767e1f1dd1",
+   "leido": true,
+   "nota": "Respuesta cruda en grupos/brickwise/fuentes/crudo/api-v2-assets.json (fuera de Git); consulta 2026-11-13T08:30:44Z. Cambia respecto al 12/11 (el listado se mueve a diario)."
+  },
+  {
+   "titulo": "API pública v1 (libro de órdenes)",
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "versionOFecha": "consulta 13/11/2026",
+   "paginas": null,
+   "sha256": "d04d417f8fff194acdb943d6d434e0d6cf4859e220361598f7b7838d08bfce9a",
+   "leido": true,
+   "nota": "Crudo en grupos/brickwise/fuentes/crudo/ (fuera de Git); resumen sin direcciones en grupos/brickwise/fuentes/libro-ordenes-resumen-2026-11-13.json; consulta 2026-11-13T08:30:44Z"
+  },
+  {
+   "titulo": "Ficha del activo (API v1)",
+   "url": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+   "versionOFecha": "updatedAt 2026-11-05T17:35:27.651Z",
+   "paginas": null,
+   "sha256": "f8f86d1a47977354d1a809359ff1cfe3811de290d87b843f62b5d2a9114cbcc3",
+   "leido": true,
+   "nota": "Consulta 2026-11-13T08:30:45Z; crudo en grupos/brickwise/fuentes/crudo/api-v1-asset-AT0000A38J32.json. SHA-256 idéntico al del 12/11: la ficha no ha cambiado."
+  },
+  {
+   "titulo": "Mercado de la app (texto renderizado sin sesión)",
+   "url": "https://app.brickwise.at/desktopWeb/marketplace",
+   "versionOFecha": "consulta 2026-11-13T08:33:24Z",
+   "paginas": null,
+   "sha256": "7c46c36515183c0679c742b84fbac4e1dbbdcab001a50bfa16f51a13c46d5a44",
+   "leido": true,
+   "nota": "Texto renderizado sin sesión (Playwright; carga 08:33:09Z, texto 08:33:24Z) en grupos/brickwise/fuentes/web/web-app-marketplace-2026-11-13.txt; captura en web-app-marketplace-2026-11-13.png"
+  },
+  {
+   "titulo": "Kosteninformationen Brickwise",
+   "url": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+   "versionOFecha": "Last-Modified 01/04/2023",
+   "paginas": 2,
+   "sha256": "3ddf88826e098f02a2552f3b6d9a6236e406ac57ba2cb37fc7da95a0906b862b",
+   "leido": true,
+   "nota": "Descargado de nuevo el 13/11/2026 (2026-11-13T08:30:46Z); SHA-256 idéntico al del 12/11 (y al del 05/11, 10/11 y 11/11): el documento no ha cambiado. Copia en grupos/brickwise/fuentes/crudo/pdf/kosten.pdf (fuera de Git)."
+  },
+  {
+   "titulo": "Rücktrittsbelehrung und vorvertragliche Informationen",
+   "url": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+   "versionOFecha": "Stand: 10.07.2026",
+   "paginas": null,
+   "sha256": "125c5a95047e5544dbc3261bab7fda428bacc8238510a3635e44e16422028a0c",
+   "leido": true,
+   "nota": "Descargado de nuevo el 13/11/2026 (2026-11-13T08:30:47Z); SHA-256 idéntico al del 12/11 (y al del 05/11, 10/11 y 11/11): el documento no ha cambiado. Copia en grupos/brickwise/fuentes/crudo/pdf/ruecktritt-AT0000A38J32.pdf (fuera de Git)."
+  },
+  {
+   "titulo": "FAQ «Wie funktioniert der Handel am Marktplatz?»",
+   "url": "https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz",
+   "versionOFecha": "sin fecha; consulta 2026-11-13T08:30:49Z",
+   "paginas": null,
+   "sha256": "52d2e52750799577afca08ece7cd54c2cb3bb9699c66b9e6cdfcdf4cfe941e80",
+   "leido": true,
+   "nota": "HTML en grupos/brickwise/fuentes/crudo/web-faq-handel.html (mismo SHA-256 que el 12/11); texto (autor recortado) en grupos/brickwise/fuentes/web/web-faq-handel-2026-11-13.txt"
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Effecta GmbH",
+   "numero": "BaFin-ID 10133261",
+   "url": "https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261",
+   "alcance": "Wertpapierinstitut: Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG) y Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG) desde 26.06.2021; «Stand der Daten: 12.11.2026». Es la entidad bajo cuya responsabilidad actúa Brickwise; no acredita el producto ni al emisor. Igual que el 12/11 (solo cambia la fecha de los datos; consulta del 13/11/2026).",
+   "consultadoUtc": "2026-11-13T08:31:02Z"
+  },
+  {
+   "regulador": "BaFin (Alemania)",
+   "entidad": "Brickwise Investment GmbH",
+   "numero": "80174029",
+   "url": "https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (búsqueda por nombre «Brickwise»)",
+   "alcance": "Vertraglich gebundener Vermittler (agente vinculado) con Effecta GmbH como entidad responsable; «Tätig ab 04.08.2021», sin fecha «Tätig bis», Meldedatum 29.06.2023; «Stand der Daten: 12.11.2026». Sin licencia propia. Igual que el 12/11 (consulta del 13/11/2026).",
+   "consultadoUtc": "2026-11-13T08:32:32Z"
+  },
+  {
+   "regulador": "CNMV (España)",
+   "entidad": "EFFECTA GmbH",
+   "numero": "5003 (registro 11/11/2020)",
+   "url": "https://www.cnmv.es/Portal/Consultas/ESI/ESISExtranjerasLP.aspx?numero=5003&tipo=CLP",
+   "alcance": "ESI del EEE en libre prestación en España; programa: «Recepción y transmisión de órdenes» sobre valores negociables y participaciones de IIC. Pestaña «Agentes»: «No se han encontrado datos disponibles» (Brickwise no consta como agente notificado para España). Mismo texto que el 12/11 (consulta del 13/11/2026; el HTML cambia en cada visita, el contenido no).",
+   "consultadoUtc": "2026-11-13T08:30:50Z"
+  },
+  {
+   "regulador": "Firmenbuch (Austria)",
+   "entidad": "Green-Point 62 GmbH",
+   "numero": "FN 329414 h",
+   "url": null,
+   "alcance": "Número FN tomado de los documentos del emisor y de la API (spv.taxNumber); no consultado en el Firmenbuch (consulta de pago). El emisor es una sociedad vehículo no supervisada; la emisión no está aprobada por la FMA (oferta con exención de folleto).",
+   "consultadoUtc": null
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Brickwise (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Brickwise",
+   "consultadoUtc": "2026-11-13T08:30:50Z",
+   "alcance": "Buscador validado hoy con «Trading» («Página 1 de 16»; consulta 2026-11-13T08:31:01Z). Mismo resultado que el 12/11. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Effecta (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Effecta",
+   "consultadoUtc": "2026-11-13T08:30:50Z",
+   "alcance": "Buscador validado hoy con «Trading» («Página 1 de 16»; consulta 2026-11-13T08:31:01Z). Mismo resultado que el 12/11. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Green-Point (buscador de entidades advertidas, tipo «No autorizadas»)",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Green-Point",
+   "consultadoUtc": "2026-11-13T08:30:59Z",
+   "alcance": "Buscador validado hoy con «Trading» («Página 1 de 16»; consulta 2026-11-13T08:31:01Z). Mismo resultado que el 12/11. No aparecer no equivale a estar autorizado."
+  },
+  {
+   "regulador": "FMA (Austria)",
+   "busqueda": "brickwise (base de entidades autorizadas)",
+   "resultado": "sin coincidencias («0 Search results · No entries found»): Brickwise no es entidad autorizada por la FMA",
+   "url": "https://www.fma.gv.at/en/search-company-database/?cname=brickwise",
+   "consultadoUtc": "2026-11-11T09:18:19Z",
+   "nota": "Hoy (13/11/2026, 2026-11-13T08:34:17Z) el navegador sin sesión recibe 403 «Performing security verification» (Cloudflare) en la búsqueda de la web de la FMA; no se elude. Última lectura válida: la de esta línea (11/11/2026)."
+  },
+  {
+   "regulador": "FMA (Austria)",
+   "busqueda": "brickwise, effecta, brick qogir, brickone, brick sagarmatha (buscador de la web de la FMA, que incluye sus avisos al inversor)",
+   "resultado": "0 resultados en las cinco búsquedas; la misma búsqueda con «investor warning» devuelve 1.224 resultados (buscador operativo). Hoy curl recibe 403 (desafío de Cloudflare); la lectura se hizo con el navegador (Playwright), sin sesión",
+   "url": "https://www.fma.gv.at/en/?s=brickwise",
+   "consultadoUtc": "2026-11-11T09:19:18Z",
+   "nota": "Hoy (13/11/2026, 2026-11-13T08:34:17Z) el navegador sin sesión recibe 403 «Performing security verification» (Cloudflare) en la búsqueda de la web de la FMA; no se elude. Última lectura válida: la de esta línea (11/11/2026)."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":347",
+   "dato": "solo_reventa",
+   "fuentePrimaria": "https://api.app.brickwise.at/api/v2/assets",
+   "localizador": "Objeto id=AT0000A38J32: stage, availableBricks, availableBricksSecondary; updatedAt=2026-11-11T20:55:45.782Z",
+   "fechaDato": "2026-11-11",
+   "consultadoUtc": "2026-11-13T08:30:44Z",
+   "alcanceYLimites": "Emisión primaria cerrada; solo órdenes de reventa entre inversores.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "precio",
+   "literal": "Libro de órdenes abierto: 16 órdenes de venta (347 participaciones); la más barata a 102,00 € (8 participaciones en 3 órdenes: 5 (del 05/09/2026), 2 (del 28/09/2026), 1 (del 11/11/2026)). 7 órdenes de compra; la mejor a 84,00 € (1 participación, orden del 23/06/2026).",
+   "dato": "Venta desde 102,00 € (8 a ese precio, 347 en total); mejor compra 84,00 €",
+   "fuentePrimaria": "https://api.app.brickwise.at/api/v1/assets",
+   "localizador": "Objeto id=AT0000A38J32: offers[] con status=open (type, amount, price, createdAt); coincide con lowestOfferPrice=102 y availableBricksSecondary=347 de la v2",
+   "fechaDato": "2026-11-13",
+   "consultadoUtc": "2026-11-13T08:30:44Z",
+   "alcanceYLimites": "Tablón de anuncios (contactType=bulletin), no bolsa con casación. Una orden publicada no garantiza ejecución. Más 1,5 % de comisión. 10 de las 16 ventas abiertas tienen más de un año. La orden de 2 a ese precio ya tiene un interesado apuntado (sin bloqueo activo a la hora de la consulta).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "precio",
+   "literal": "Photovoltaik Anlage GreenPoint mit Überschussbeteiligung … 5,99 % p.a. Erw. laufende Ausschüttung … Preis pro Anteil ab € 102,00",
+   "dato": "Precio por participación desde 102,00 € (app)",
+   "fuentePrimaria": "https://app.brickwise.at/desktopWeb/marketplace",
+   "localizador": "Mercado de la app, tarjeta «Photovoltaik Anlage GreenPoint mit Überschussbeteiligung» (texto renderizado sin sesión)",
+   "fechaDato": "2026-11-13",
+   "consultadoUtc": "2026-11-13T08:33:24Z",
+   "alcanceYLimites": "Coincide con la venta más barata del libro de órdenes. La cifra «% p.a.» de la tarjeta es un reparto previsto calculado sobre ese precio, no realizado.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "precio",
+   "literal": "\"sharePrice\":89",
+   "dato": "89,00 € por participación (precio de referencia de la API)",
+   "fuentePrimaria": "https://api.app.brickwise.at/api/v2/assets",
+   "localizador": "Objeto id=AT0000A38J32: sharePrice",
+   "fechaDato": "2026-11-11",
+   "consultadoUtc": "2026-11-13T08:30:44Z",
+   "alcanceYLimites": "Campo sin metodología publicada; no es precio ejecutable.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "precio",
+   "literal": "Ausgabepreis: EUR 100,32",
+   "dato": "Precio de emisión original 100,32 €",
+   "fuentePrimaria": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+   "localizador": "Investitionsbedingungen (Stand 14.11.2023), p. 4",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "Precio de la suscripción original, no precio actual ni mínimo de reventa. · Releído el 13/11/2026: mismo SHA-256 que el 12/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "minimoEmisionOriginal",
+   "literal": "Mindestzeichnungsbetrag: EUR 100,32",
+   "dato": null,
+   "fuentePrimaria": "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+   "localizador": "Investitionsbedingungen (Stand 14.11.2023), p. 4",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "Mínimo de la suscripción original (ya cerrada). El mínimo de compra en reventa no está documentado en las fuentes leídas. · Releído el 13/11/2026: mismo SHA-256 que el 12/11.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "derecho",
+   "literal": "Jeder Token vermittelt dem Investor einen qualifiziert nachrangigen Rückzahlungsanspruch zum Endfälligkeitstag.",
+   "dato": "Genussschein tokenizado a 15 años con reembolso del nominal cualificadamente subordinado",
+   "fuentePrimaria": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "localizador": "Basisinformationsblatt, p. 1",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "No da propiedad de la instalación; en insolvencia cobra después de los acreedores financieros. Vencimiento API: 2038-12-30 (fin de 2038). · Releído el 13/11/2026: mismo SHA-256 que el 12/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Gesamtkosten EUR 1.306,47 ... Auswirkungen auf die Rendite (RIY) pro Jahr 13,06% 2,61% 0,87%",
+   "dato": "RIY 13,06 % (1 año) / 2,61 % (5) / 0,87 % (15)",
+   "fuentePrimaria": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "localizador": "Basisinformationsblatt (Stand 14.11.2023), p. 3",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "Contrato idéntico (mismo SHA-256) al leído el 23/10, donde §5.1 habla de participación en el 95 % del excedente y §9.1 remite al 50 %: divergencia sin aclarar. · Releído el 13/11/2026: mismo SHA-256 que el 12/11.",
+   "estado": "en_conflicto"
+  },
+  {
+   "campo": "riesgos",
+   "literal": "Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft",
+   "dato": "Riesgo 6 de 7; empfohlene Haltedauer 15 años",
+   "fuentePrimaria": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "localizador": "Basisinformationsblatt, p. 2 (riesgo) y p. 3 (tenencia)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "Pérdida total posible; sin protección de depósitos. KID solo en alemán. · Releído el 13/11/2026: mismo SHA-256 que el 12/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "Vermittlungsgebühr 1,50% ... wird jedem/jeder Investor:in, die an einer Transaktion beteiligt ist (Käufer:in und Verkäufer:in), in Rechnung gestellt",
+   "dato": "1,5 % por compra y 1,5 % por venta",
+   "fuentePrimaria": "https://cdn.brickwise.at/legal/Kosteninformationen_Brickwise.pdf",
+   "localizador": "Kosteninformationen Brickwise, p. 1 (Last-Modified 01/04/2023)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:46Z",
+   "alcanceYLimites": "Comisión del intermediario sobre el importe de cada operación; los costes del producto (RIY) están en el KID de cada emisión y no se suman mecánicamente. · Releído el 13/11/2026: mismo SHA-256 que el 12/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "custodia",
+   "literal": "Die Verwaltung und Übertragung der Token erfolgt ausschließlich eigenverantwortlich durch den Anleger.",
+   "dato": "Autocustodia del token en la cuenta/app del inversor",
+   "fuentePrimaria": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "localizador": "Basisinformationsblatt, p. 1 «Art»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "La recuperación de una cuenta exige identificación notarial (~120 € según Kosteninformationen p. 1, nota 3). · Releído el 13/11/2026: mismo SHA-256 que el 12/11.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "{\"data\":{\"fees\":0.015}}",
+   "dato": "1,5 % por operación (API de comisiones de la app)",
+   "fuentePrimaria": "https://api.app.brickwise.at/api/v1/utils/fees",
+   "localizador": "GET /api/v1/utils/fees",
+   "fechaDato": "2026-11-13",
+   "consultadoUtc": "2026-11-13T08:30:44Z",
+   "alcanceYLimites": "Confirma la cifra de Kosteninformationen; no distingue entre compra y venta.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "rentabilidad",
+   "literal": "\"rentalReturn\":6.87; rentalSurplus=10942.56; rentalIncome=27000.00",
+   "dato": null,
+   "fuentePrimaria": "https://bwrealestate.app.brickwise.at/api/v1/asset/AT0000A38J32",
+   "localizador": "rentalDetails y descriptions.rentalDetails; app: tarjeta del mercado",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:45Z",
+   "alcanceYLimites": "Previsión anual (excedente neto previsto entre precio de referencia; la app la calcula sobre la venta más barata: 5,99 % p.a.). No es reparto realizado ni garantizado. Las tarjetas de reventa no llevan rentabilidad. Cifra de la app leída hoy (13/11/2026).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": "Photovoltaik Anlage GreenPoint mit Überschussbeteiligung … Preis pro Anteil ab € 102,00",
+   "dato": "Desde 102 € la participación en reventa (13/11)",
+   "fuentePrimaria": "https://app.brickwise.at/desktopWeb/marketplace",
+   "localizador": "Mercado de la app («Preis pro Anteil ab») y API v2 lowestOfferPrice=102; libro de órdenes de la API v1",
+   "fechaDato": "2026-11-13",
+   "consultadoUtc": "2026-11-13T08:33:24Z",
+   "alcanceYLimites": "Brickwise no publica un mínimo de compra en reventa. A ese precio había hoy 8 participaciones en 3 órdenes: 5 (del 05/09/2026), 2 (del 28/09/2026), 1 (del 11/11/2026). Según la FAQ, cada oferta consta de precio por participación y número de participaciones y no consta que se pueda comprar solo una parte. Hay una orden de 1 participación a ese precio, así que ese importe no depende de poder comprar en parte: 103,53 € con el 1,5 %. Se suma el 1,5 % de comisión. El precio cambia a diario y no es precio de emisión. La orden de 2 a ese precio ya tiene un interesado apuntado (sin bloqueo activo a la hora de la consulta).",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": "Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+   "dato": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+   "fuentePrimaria": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "localizador": "FAQ «Kann ich einen Account von jedem Land aus eröffnen?» (HTML leído hoy con curl; mismo SHA-256 que el 12/11)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:49Z",
+   "alcanceYLimites": "Abrir cuenta no confirma que cada emisión se distribuya en España. Effecta figura en la CNMV en libre prestación (nº 5003, solo recepción y transmisión de órdenes) y sin agentes notificados. KID y contrato solo en alemán.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "salida",
+   "literal": "Laufzeit von 15 Jahren (\"endfällig\")",
+   "dato": "Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)",
+   "fuentePrimaria": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "localizador": "Basisinformationsblatt, p. 1 y p. 3; Kosteninformationen p. 1 (1,5 %)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "Vender exige que haya comprador; el 13/11/2026 la venta más barata era 102,00 € y la mejor compra 84,00 €, lo que muestra liquidez limitada. Tenencia recomendada en el KID: 15 años. · Releído el 13/11/2026: mismo SHA-256 que el 12/11.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "desistimiento",
+   "literal": "Beim Kauf bereits ausgegebener tokenisierter Wertpapiere von anderen Investorinnen und Investoren über den Marktplatz (Zweitmarkt) besteht kein Rücktritts- oder Widerrufsrecht",
+   "dato": "Comprar en reventa no da derecho de desistimiento (solo existe en la suscripción inicial)",
+   "fuentePrimaria": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf",
+   "localizador": "Rücktrittsbelehrung (Stand 10.07.2026), punto 2 «Kein Rücktrittsrecht am Zweitmarkt»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "alcanceYLimites": "Documento del emisor enlazado en la API (additionalInvestmentDocuments). Dato de la ficha; no cambia la tarjeta. · Releído el 13/11/2026: mismo SHA-256 que el 12/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "entidad",
+   "literal": "Die Brickwise Investment GmbH ist vertraglich gebundener Vermittler im Sinne von § 3 (2) WpIG und wird bei der Vermittlung von Finanzinstrumenten gemäß § 2 (2) Nr. 3 WpIG ausschließlich für Rechnung und unter Haftung der Effecta GmbH, Florstadt, tätig.",
+   "dato": "Brickwise Investment GmbH (Múnich, HRB 269358), agente vinculado de Effecta GmbH",
+   "fuentePrimaria": "https://www.brickwise.at/imprint",
+   "localizador": "Impressum (HTML leído hoy con curl, mismo SHA-256 que el 12/11; nombre del administrador recortado en la copia)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:50Z",
+   "alcanceYLimites": "Contrastado hoy con el registro de agentes vinculados de la BaFin (nº 80174029, Effecta GmbH como entidad responsable, «Tätig ab 04.08.2021», sin «Tätig bis», datos a 12/11/2026; consulta 2026-11-13T08:32:32Z). Impressum igual que el 12/11.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "compraParcial",
+   "literal": "Ist ein dort verfügbares Angebot (bestehend aus Preis pro Anteil und der Anzahl der angebotenen Wertpapiere) interessant, kann dieses direkt ausgewählt werden.",
+   "dato": "No consta que se pueda comprar solo una parte de una orden de venta",
+   "fuentePrimaria": "https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz",
+   "localizador": "FAQ «Wie funktioniert der Handel am Marktplatz?», párrafo 2 (sin fecha)",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:49Z",
+   "alcanceYLimites": "La FAQ describe la oferta como precio por participación más número de participaciones y que se elige la oferta; no dice si se puede tomar una parte. Las condiciones de uso (29.09.2021, mismo SHA-256 que el 12/11) no tienen cláusula de compra parcial. El JS público de la app (app.85dda63a.js, mismo SHA-256 que el 12/11, consulta 2026-11-13T08:33:02Z) contiene «Max. verfügbar», pero no prueba la compra parcial en reventa. Queda sin confirmar.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "ordenMenorImporte",
+   "literal": "offers[] status=open type=sell: amount=1, price=102, createdAt=2026-11-11",
+   "dato": "1 participación a 102,00 € = 102,00 € (103,53 € con el 1,5 %)",
+   "fuentePrimaria": "https://api.app.brickwise.at/api/v1/assets",
+   "localizador": "Objeto id=AT0000A38J32: orden de venta abierta con menor cantidad × precio",
+   "fechaDato": "2026-11-13",
+   "consultadoUtc": "2026-11-13T08:30:44Z",
+   "alcanceYLimites": "Importe calculado por RWAdar con los campos amount y price de la API más el 1,5 % de Kosteninformationen, redondeado al céntimo (mitad hacia arriba, como corrigió la revisión del 12/11). Es un precio publicado, no una garantía de compra.",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Comprobado hoy (13/11/2026): Brickwise Investment GmbH es agente vinculado nº 80174029 de Effecta GmbH (BaFin-ID 10133261, datos a 12/11/2026); Effecta figura en la CNMV (nº 5003, libre prestación, solo recepción y transmisión de órdenes, sin agentes). El emisor es una sociedad vehículo no supervisada; oferta con exención de folleto."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "API 13/11/2026: stage=secondary; 347 participaciones en venta desde 102,00 €; mejor compra 84,00 €. Sigue habiendo vendedores."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Cuenta para residentes del EEE con KYC; 1,5 % por operación (Kosteninformationen y API de comisiones); autocustodia en la app; sin mínimo publicado en reventa; sin desistimiento en reventa; distribución en España no confirmada; no consta que se pueda comprar solo una parte de una orden."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "KID en alemán, riesgo 6 de 7, pérdida total posible. CNMV: sin advertencias para Brickwise, Effecta ni el emisor (buscador validado hoy, 13/11/2026). FMA: sin coincidencias el 11/11; hoy 403 de Cloudflare con navegador (no se elude)."
+  }
+ },
+ "estadoOferta": "solo_reventa",
+ "disponibleEs": "no_confirmado",
+ "propuestaTarjeta": {
+  "titulo": "Fotovoltaica GreenPoint · Wiener Neustadt",
+  "categoria": "Infraestructura",
+  "pais": "AT",
+  "tipo": "rendimiento",
+  "coleccion": "secundario",
+  "resumen": "Participaciones tokenizadas (Genussscheine) de Green-Point 62 GmbH ligadas a los ingresos de una instalación fotovoltaica en Wiener Neustadt. Hoy solo se compran a otros inversores en el mercado de la app.",
+  "metricas": [
+   {
+    "etiqueta": "Precio de emisión original",
+    "valor": "100,32 €"
+   },
+   {
+    "etiqueta": "Comisión por operación",
+    "valor": "1,5 % comprador y 1,5 % vendedor"
+   },
+   {
+    "etiqueta": "Intermediario",
+    "valor": "Agente vinculado de Effecta GmbH (BaFin)"
+   },
+   {
+    "etiqueta": "Reembolso",
+    "valor": "Nominal al vencimiento (2038), subordinado"
+   },
+   {
+    "etiqueta": "Riesgo KID",
+    "valor": "6 de 7"
+   },
+   {
+    "etiqueta": "Moneda",
+    "valor": "EUR"
+   }
+  ],
+  "avisos": [
+   "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+   "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+   "Riesgo 6 de 7 en el KID; posible pérdida total.",
+   "Reembolso subordinado a los acreedores financieros del emisor.",
+   "Cada venta se anuncia con su precio y su número de participaciones; no consta que se pueda comprar solo una parte. El comprador paga además un 1,5 % de comisión.",
+   "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar."
+  ],
+  "url": "https://app.brickwise.at/desktopWeb/marketplace",
+  "fuentesActuales": [
+   "https://app.brickwise.at/desktopWeb/marketplace",
+   "https://api.app.brickwise.at/api/v2/assets",
+   "https://api.app.brickwise.at/api/v1/assets",
+   "https://cdn.brickwise.at/5d912bfb-b159-483c-83cc-3d60352ddc3e.pdf",
+   "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf"
+  ],
+  "lugar": "Wiener Neustadt · Austria",
+  "pasos": [
+   "Cuenta con residencia EEE",
+   "Compras si hay vendedor",
+   "Reparto mensual variable",
+   "Vendes en la app"
+  ],
+  "concepto": "una cubierta con paneles solares sobre un edificio residencial",
+  "resumenTarjeta": {
+   "minimo": "Desde 102 € la participación en reventa (13/11)",
+   "accesoEspana": "Sin confirmar: cuenta para residentes del EEE (España incluida); no consta que esta emisión se distribuya en España.",
+   "salida": "Devolución del nominal el 31/12/2038, subordinada; antes, solo vendiendo en la app si hay comprador (1,5 % de comisión)"
+  },
+  "referenciasFicha": [
+   {
+    "etiqueta": "Venta más barata · 13/11/2026",
+    "valor": "102,00 € por participación (8 a ese precio, en 3 órdenes de 5, 2, 1)",
+    "fuente": "https://api.app.brickwise.at/api/v1/assets"
+   },
+   {
+    "etiqueta": "Orden de venta de menor importe · 13/11/2026",
+    "valor": "1 participación a 102,00 € (103,53 € con el 1,5 %)",
+    "fuente": "https://api.app.brickwise.at/api/v1/assets"
+   },
+   {
+    "etiqueta": "Participaciones en venta · 13/11/2026",
+    "valor": "347",
+    "fuente": "https://api.app.brickwise.at/api/v2/assets"
+   },
+   {
+    "etiqueta": "Mejor oferta de compra · 13/11/2026",
+    "valor": "84,00 € (1 participación, orden del 23/06/2026)",
+    "fuente": "https://api.app.brickwise.at/api/v1/assets"
+   },
+   {
+    "etiqueta": "Desistimiento",
+    "valor": "No hay derecho de desistimiento al comprar en reventa",
+    "fuente": "https://storage.googleapis.com/brickwise_templates/assets/AT0000A38J32/AT0000A38J32_Ruecktrittsbelehrung.pdf"
+   }
+  ],
+  "rentabilidad": null
+ },
+ "revisionAvisos": [
+  {
+   "aviso": "Solo reventa entre inversores: la compra depende de que haya vendedor y la salida de que haya comprador.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://api.app.brickwise.at/api/v2/assets",
+   "literal": "\"stage\":\"secondary\",\"availableBricks\":0,\"availableBricksSecondary\":347",
+   "consultadoUtc": "2026-11-13T08:30:44Z"
+  },
+  {
+   "aviso": "Cuenta abierta a residentes del EEE; la distribución de esta emisión en España no está confirmada y la documentación está en alemán.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://www.brickwise.at/support/kann-ich-einen-account-von-jedem-land-aus-eroffnen",
+   "literal": "Jede Person mit einem Wohnsitz in einem der EWR-Mitgliedstaaten kann einen Account eröffnen.",
+   "consultadoUtc": "2026-11-13T08:30:49Z"
+  },
+  {
+   "aviso": "Riesgo 6 de 7 en el KID; posible pérdida total.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "literal": "Wir haben dieses Produkt auf einer Skala von 1 bis 7 in die Risikoklasse 6 eingestuft (KID con el mismo SHA-256 que el 12/11)",
+   "consultadoUtc": "2026-11-13T08:30:47Z"
+  },
+  {
+   "aviso": "Reembolso subordinado a los acreedores financieros del emisor.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://cdn.brickwise.at/f6c7c7ff-f2f1-4272-86dd-39e02432868c.pdf",
+   "literal": "Jeder Token vermittelt dem Investor einen qualifiziert nachrangigen Rückzahlungsanspruch zum Endfälligkeitstag. (KID con el mismo SHA-256 que el 12/11)",
+   "consultadoUtc": "2026-11-13T08:30:47Z"
+  },
+  {
+   "aviso": "Cada venta se anuncia con su precio y su número de participaciones; no consta que se pueda comprar solo una parte. El comprador paga además un 1,5 % de comisión.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://www.brickwise.at/support/wie-funktioniert-der-handel-am-marktplatz",
+   "literal": "Ist ein dort verfügbares Angebot (bestehend aus Preis pro Anteil und der Anzahl der angebotenen Wertpapiere) interessant, kann dieses direkt ausgewählt werden. · Kosteninformationen: «Vermittlungsgebühr 1,50% … Käufer:in und Verkäufer:in»",
+   "consultadoUtc": "2026-11-13T08:30:49Z",
+   "nota": "Aviso común publicado el 12/11 en las 11 fichas. Hoy la FAQ tiene el mismo SHA-256 que el 12/11; Kosteninformationen igual (2026-11-13T08:30:46Z, mismo SHA-256) y la API de comisiones sigue en \"fees\":0.015 (2026-11-13T08:30:44Z). La compra parcial sigue sin confirmar."
+  },
+  {
+   "aviso": "Los precios y el libro de órdenes cambian a diario: compruébalos en la app del proveedor antes de operar.",
+   "veredicto": "vigente",
+   "textoNuevo": null,
+   "fuente": "https://api.app.brickwise.at/api/v1/assets",
+   "literal": "Libro de órdenes abierto: 16 órdenes de venta (347 participaciones); la más barata a 102,00 € (8 participaciones en 3 órdenes: 5 (del 05/09/2026), 2 (del 28/09/2026), 1 (del 11/11/2026)). 7 órdenes de compra; la mejor a 84,00 € (1 participación, orden del 23/06/2026).",
+   "consultadoUtc": "2026-11-13T08:30:44Z"
+  }
+ ],
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "resumenTarjeta.minimo (Mínimo de inversión)",
+   "antes": "Desde 102 € la participación en reventa (12/11)",
+   "ahora": "Desde 102 € la participación en reventa (13/11)",
+   "fuente": "https://app.brickwise.at/desktopWeb/marketplace",
+   "critico": false,
+   "nota": "Mismo precio; solo cambia la fecha del dato."
+  },
+  {
+   "campo": "referencias de la ficha: Venta más barata",
+   "antes": "102,00 € por participación (8 a ese precio, en 3 órdenes de 5, 2, 1) (12/11/2026)",
+   "ahora": "102,00 € por participación (8 a ese precio, en 3 órdenes de 5, 2, 1) (13/11/2026)",
+   "fuente": "https://api.app.brickwise.at/api/v1/assets",
+   "critico": false,
+   "nota": "Mismo valor; solo cambia la fecha."
+  },
+  {
+   "campo": "referencias de la ficha: Orden de venta de menor importe",
+   "antes": "1 participación a 102,00 € (103,53 € con el 1,5 %) (12/11/2026)",
+   "ahora": "1 participación a 102,00 € (103,53 € con el 1,5 %) (13/11/2026)",
+   "fuente": "https://api.app.brickwise.at/api/v1/assets",
+   "critico": false,
+   "nota": "Mismo valor; solo cambia la fecha."
+  },
+  {
+   "campo": "referencias de la ficha: Participaciones en venta",
+   "antes": "351 (11/11/2026)",
+   "ahora": "347 (13/11/2026)",
+   "fuente": "https://api.app.brickwise.at/api/v2/assets",
+   "critico": false,
+   "nota": "Pendiente del 12/11: se quedó con su fecha anterior porque la cifra había cambiado. Hoy se pone al día con la cifra de hoy."
+  },
+  {
+   "campo": "referencias de la ficha: Mejor oferta de compra",
+   "antes": "84,00 € (1 participación, orden del 23/06/2026) (12/11/2026)",
+   "ahora": "84,00 € (1 participación, orden del 23/06/2026) (13/11/2026)",
+   "fuente": "https://api.app.brickwise.at/api/v1/assets",
+   "critico": false,
+   "nota": "Mismo valor; solo cambia la fecha."
+  },
+  {
+   "campo": "verificadaEl",
+   "antes": "2026-11-12",
+   "ahora": "2026-11-13",
+   "fuente": "https://api.app.brickwise.at/api/v2/assets",
+   "critico": false
+  }
+ ],
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": "Sin mínimo publicado en reventa; venta más barata 102,00 € por participación + 1,5 % (13/11/2026); orden de menor importe 103,53 € con el 1,5 %",
+  "supervisorVerificado": "BaFin: Effecta GmbH (BaFin-ID 10133261) y Brickwise Investment GmbH como agente vinculado nº 80174029; CNMV: Effecta nº 5003 (libre prestación, RTO). Comprobado el 13/11/2026",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "si",
+  "cifraRecienteVerificada": "si",
+  "porQueDestaca": "Precio y libro de órdenes públicos y fechados (API 13/11/2026: 347 participaciones en venta desde 102,00 €).",
+  "porQueNo": "Solo reventa con distancia entre compra (84,00 €) y venta (102,00 €), compra parcial de una orden sin confirmar, KID solo en alemán, riesgo 6/7 y acceso desde España sin confirmar."
+ },
+ "decision": "actualizar",
+ "motivoDecision": "Sigue solo en reventa y con vendedores (API 13/11/2026, 2026-11-13T08:30:44Z). La venta más barata sigue en 102 €; solo se re-fecha el mínimo y las referencias del libro de órdenes. Los documentos tienen el mismo SHA-256 que el 12/11; registros (BaFin, CNMV) y advertencias de la CNMV sin cambios; avisos publicados vigentes (aviso común incluido). Se mantiene en «secundario».",
+ "bloqueos": [
+  "Firmenbuch no consultado (de pago); los números FN vienen de los documentos y de la API.",
+  "Metodología de sharePrice no documentada.",
+  "La API solo muestra órdenes abiertas: no se puede saber si las que han desaparecido desde el 12/11 se ejecutaron o se retiraron.",
+  "Compra parcial de una orden: ninguna fuente pública lo confirma ni lo descarta (FAQ, condiciones de uso y JS de la app releídos hoy).",
+  "FMA: hoy (13/11/2026, 2026-11-13T08:34:17Z) el navegador sin sesión recibe 403 «Performing security verification» (Cloudflare); no se elude. Última lectura sin coincidencias el 11/11/2026."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-13T08:30:30Z",
+  "finUtc": "2026-11-13T08:38:53Z"
+ }
+}

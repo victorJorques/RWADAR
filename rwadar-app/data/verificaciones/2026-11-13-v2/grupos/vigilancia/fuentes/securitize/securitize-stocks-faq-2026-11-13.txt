@@ -1,0 +1,29 @@
+URL: https://stocks.securitize.io/faq
+HTTP: 200
+UTC: 2026-11-13T08:37:54Z
+(preguntas desplegadas una a una)
+
+## How do I get started, and who can trade?
+Frequently Asked Questions
+How do I get started, and who can trade?
+Trading is supported using third party self-custody wallets only. To be enabled for trading you are required to set up a Securitize account (and go through the KYC process) and once approved, connect your third party wallet. Once this process is completed, Securitize will whitelist your wallet address, allowing this wallet to interact with the platform. Securities can only move between whitelisted wallets on the platform.
+When can I trade?
+How are stock prices expressed?
+What order type is used?
+What is the price protection band?
+What fees does the platform charge?
+How often do stock prices update?
+How do I create an order?
+What should I do if I have an issue?
+## What fees does the platform charge?
+Frequently Asked Questions
+How do I get started, and who can trade?
+When can I trade?
+How are stock prices expressed?
+What order type is used?
+What is the price protection band?
+What fees does the platform charge?
+The platform charges a fee of .10% of trade amount in USDC. The platform fee covers any gas charges associated with the execution.
+How often do stock prices update?
+How do I create an order?
+What should I do if I have an issue?

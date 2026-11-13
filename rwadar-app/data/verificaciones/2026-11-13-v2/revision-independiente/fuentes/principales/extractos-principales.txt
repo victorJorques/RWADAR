@@ -1,0 +1,67 @@
+Extractos del revisor independiente · grupo principales · 13/11/2026 (horas UTC). Sin nombres de personas físicas.
+
+== Spiko · API pública (08:45:18–08:45:20 UTC)
+EUTBL: dailyYield 0.0226 · weeklyYield 0.0239 · monthlyYield 0.024 · updatedAt 2026-11-12T17:44:43.923Z · VL 1.062803 EUR del 2026-11-12 (calculada 2026-11-12T17:44:43.851Z) · próxima 2026-11-13 18:00 UTC
+USTBL: dailyYield 0.0333 · weeklyYield 0.0355 · monthlyYield 0.0398 · updatedAt 2026-11-12T17:44:58.257Z · VL 1.102694 USD del 2026-11-12 (calculada 2026-11-12T17:44:58.197Z) · próxima 2026-11-13 18:00 UTC
+eurSAFO: dailyYield 0.0284 · weeklyYield 0.0284 · monthlyYield 0.0284 · updatedAt 2026-11-13T08:45:19.952Z · VL 1.017107 EUR del 2026-11-12 (calculada 2026-11-12T20:39:20.153Z) · próxima 2026-11-13 19:30 UTC
+Recalculado con la serie (capitalizando): EUTBL 31 d (12/10→12/11) 2,400 %; USTBL 30 d (13/10→12/11; 12/10 sin VL) 3,984 %; eurSAFO 1 d 2,839 %, 7 d 2,834 %, 31 d 2,833 %.
+
+== data.spiko.io (08:46:11 UTC)
+spiko-data-eutbl.html: ,434 Users 2,811 1d yield 2.26% Annualised 7d yield 2.39% Annualised 30d yield 2.40% Annualised Latest NAV 1.0628 2026-11-12 NAV, last 2 months Daily net asset value per share, in EUR. AUM, last 2 months Total AUM in thi
+spiko-data-ustbl.html: 65,233 Users 887 1d yield 3.33% Annualised 7d yield 3.55% Annualised 30d yield 3.98% Annualised Latest NAV 1.1027 2026-11-12 NAV, last 2 months Daily net asset value per share, in USD. AUM, last 2 months Total AUM in thi
+spiko-data-safo-eur.html: 79 Users 11,230 30d yield 2.84% Annualised Latest NAV 1.0171 2026-11-12 NAV, last 2 months Daily net asset value per share, in EUR. AUM, last 2 months Total AUM in this product, in EUR. Users, last 2 months Number of use
+
+== spiko.io/es (08:46:12–08:46:13 UTC)
+Letras Euro: Las cifras clave €430 M Tesorería en Spiko Letras de Tesoro Euro 2,40% Rendimiento neto actual €18 M Intereses abonados €5.702 M Depósitos y reembolsos totales *Rentabilidades netas anualizadas (después de comisiones) de los últimos 31 días. Las rentabilidades se actualizan a diario y pueden variar ligeramente en función del ren
+Letras Dólar: Las cifras clave $174 M Tesorería en Spiko Letras de Tesoro Dollar 3,98% Rendimiento neto actual $10 M Intereses abonados $1.194 M Depósitos y reembolsos totales Rentabilidades netas anualizadas (después de comisiones) de los últimos 31 días. Las rentabilidades se actualizan a diario y pueden variar ligeramente en función del re
+Letras Dólar: letras del Tesoro en grandes volúmenes, asegurando que podamos atender cualquier solicitud de reembolso, sin preaviso y sin límite de importe. ¿Dónde puedo enco
+Spiko Euro: Interés a tipo fijo 2,84% Garantizado por contrapartes Pagado diariamente --:--:-- Próximo
+Spiko Euro: Sociedad gestora Amundi Asset Management Regulador Autoridad
+Spiko Euro: Tipo neto de comisiones abonado diariamente por la contraparte bancaria (BNP Paribas) Construido par
+Particulares:  hábil (T+1). Las solicitudes realizadas después de las 15:00 o en días no hábiles llegarán el segundo día hábil (T+2). No existen límites de retirada. ¿Cuáles 
+
+== docs.spiko.io · disponibilidad (08:48:05 UTC)
+Country Smart Cash T-Bills Euro T-Bills Dollar T-Bills Pound
+ 🇪🇸 Spain ✅ ✅ ✅ ❌ 🇸🇪 Sweden ✅ ✅ ✅ 
+Last updated: November 6, 2026
+(La copia del 12/11 a las 00:33 UTC decía «Last updated: October 23, 2026».)
+
+== AMF GECO · lastVl (08:48:23–08:48:25 UTC)
+FR001400ODL1: valuationDate 2026-11-12 · netAssetValueInCurrency 1.0628 EUR · transmissionDate 2026-11-12T19:05:06.423
+FR001400ODM9: valuationDate 2026-11-12 · netAssetValueInCurrency 1.10269 USD · transmissionDate 2026-11-12T19:05:06.423
+FR0014015LD3 (Spiko Euro): respuesta vacía; compartimento c124199/shares: [] (sin clases en GECO).
+
+== mTBILL · oráculo en Ethereum (08:45:38–08:45:52 UTC; bloque 26404934)
+latestRoundData: ronda 492 · 1,07768132 USD · 10/11/2026 18:40:23 UTC (sigue siendo la última).
+ronda 468: 1.07410723 USD · Tue 06/10/2026 14:16:11 UTC
+ronda 471: 1.07464588 USD · Fri 09/10/2026 13:08:35 UTC
+ronda 472: 1.07474744 USD · Tue 13/10/2026 13:43:23 UTC
+ronda 491: 1.07756597 USD · Mon 09/11/2026 14:23:59 UTC
+ronda 492: 1.07768132 USD · Tue 10/11/2026 18:40:23 UTC
+468→492: 35,183 días · 3,452 % anual simple (3,506 % capitalizando; 3,470 % con 35 días naturales).
+Bóveda de reembolso inmediato (08:46:01 UTC): paused=0 · instantFee=7 (0,07 %) · minAmount=1 mTBILL · USDC en el contrato de Superstate 6.224.405,45.
+midas.app/mtbill y docs.midas.app: HTTP 403 a las 08:46:02 UTC (no se insistió).
+Condiciones Finales (SHA-256 b1e58001…): Redemption Gates 25% of the aggregate number of outstanding mTokens  · Minimum Investment Amount not applicable  · Offer(s) to the Public Spain, Poland, Romania, Netherlands, Sweden, Portugal, Ger
+KID ES (SHA-256 6c228709…): r no reembolsará más del 15 % de todos los Productos en circulación en ningún día de liquidación, por 
+
+== Kraken / Backed
+Condiciones finales 4GLDx (CH1588667225), SHA-256 5297cd90…, 08:46:46 UTC: «Final Terms for Product Nr. 1,546 Xetra-Gold xStock 4GLDx» · «dated November 9th, 2026» · Country(ies) of offer(s) The Products will be offered in Liechtenstein and Switzerland (only to Swiss Professional Investors). The right t
+ESMA (08:47:00 UTC): numFound 1 para CH1588667225, document_type FTWS, approval_filing_date 2026-11-10.
+KID ES CH1436219716 (SHA-256 61582df8…, 08:51:33 UTC): «Este documento tiene fecha 12 nov. 2026» · «clase de riesgo 5 en una escala de 7».
+eu.kraken.com/xstocks (08:48:34 UTC): Start with as little as €1 EUR, no need to pay the full pric
+Texto visible de eu.kraken.com/es/xstocks (con accept-language: es) idéntico al del 12/11 (copia -hdres); eu.kraken.com/xstocks idéntico al del investigador.
+
+== Robinhood (08:46:45 y 08:48:33 UTC)
+Classic Stock Tokens son contratos derivados entre tú y Robinhood. Cotizan a los precios de los valores subyacentes sin otorgar derechos sobre ellos. Classic St
+Texto visible idéntico al de la copia del investigador y a la del 12/11.
+
+== Prosegur Digital Gold (Playwright, locale es-ES, 08:49:07–08:49:27 UTC)
+App: Tokens Iniciar sesión ES Prosegur Digital Gold Prosegur Crypto Precio de compra 117.96 € Emitida Comprar + info © 2026 P
+Contrato: Actualizado el 08/07/2026 “PR · Precio LBMA diario + 4% Venta  · Precio LBMA diario - 6% 5.5. M · arán en un plazo de 1 a 7 días hábiles aproximadam
+Web: Compra mínima ✔ 1 gramo Variab
+Contrato y FAQ: texto idéntico al del investigador.
+
+== CNMV (08:47:09–08:47:46 UTC, accept-language: es)
+SPIKO SICAV n.º 2380, 30/01/2026, SICAV, FRANCIA. ROBINHOOD EUROPE, UAB n.º 5299, 21/04/2025, LITUANIA. PAYWARD EUROPE DIGITAL SOLUTIONS (CY) LIMITED n.º 4474, 05/01/2018, CHIPRE. Pasaportes: Midas Software GmbH, LIECHTENSTEIN, BPWO-84, 17/07/2026.
+Advertencias («No autorizadas»): «No hay datos disponibles» para Spiko, Twenty First Capital, Amundi, Aldana, Midas, Midas Software, Robinhood, Kraken, Payward, Backed, xStocks, Prosegur y Prosegur Custodia; el control «Trading» devuelve resultados (Página 1 de 16).
+Relación de proveedores de criptoactivos de la CNMV (SHA-256 188c6935…) y CASPS.csv de ESMA (SHA-256 e0a73cab…): mismos archivos que el 12/11.

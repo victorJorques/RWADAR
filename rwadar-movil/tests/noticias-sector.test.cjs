@@ -19,7 +19,12 @@ const idioma = require('../lib/idioma');
 const m = require('../lib/noticias-sector');
 
 const RAIZ = path.resolve(__dirname, '..');
-const TEXTO = fs.readFileSync(path.join(RAIZ, '../rwadar-site/datos/noticias-v2.json'), 'utf8');
+/* Las pruebas de comportamiento usan una edición fija con una noticia de «hoy»
+   (la del 12/11/2026, en fixtures/): una edición nueva sin «hoy» o con menos
+   noticias no las rompe. La edición publicada se comprueba aparte, con reglas
+   que valen para cualquier día. */
+const PUBLICADO = JSON.parse(fs.readFileSync(path.join(RAIZ, '../rwadar-site/datos/noticias-v2.json'), 'utf8'));
+const TEXTO = fs.readFileSync(path.join(RAIZ, 'fixtures/noticias-ejemplo.json'), 'utf8');
 const ARCHIVO = JSON.parse(TEXTO);
 const copia = () => JSON.parse(TEXTO);
 
@@ -38,7 +43,17 @@ const AMBITO_EN = { 'España': 'Spain', UE: 'EU', Mundo: 'World' };
 // La noticia de «hoy» va primero; su fecha marca los relojes (en la edición del 12/11, el 11/11).
 const HOY = ARCHIVO.noticias[0].fecha;
 
-test('el archivo publicado tiene la forma: 6 noticias, las de hoy primero y de la más nueva a la más antigua', () => {
+test('la edición publicada vale para la app: de 1 a 8 noticias, las de hoy primero, textos de la fuente y titulares cortos', () => {
+  const d = m.validarNoticias(PUBLICADO);
+  assert.match(PUBLICADO.actualizadoEl, /^\d{4}-\d{2}-\d{2}$/);
+  assert.ok(d.noticias.length >= 1 && d.noticias.length <= 8, `${d.noticias.length} noticias`);
+  const secciones = d.noticias.map(n => n.seccion);
+  assert.deepEqual(secciones, [...secciones].sort((a, b) => (a === 'hoy' ? 0 : 1) - (b === 'hoy' ? 0 : 1)), 'las de hoy, primero');
+  assert.deepEqual(d.noticias.map(n => n.id), PUBLICADO.noticias.map(n => n.id), 'el archivo ya viene en ese orden');
+  assert.ok(d.noticias.every(n => /^https:\/\//.test(n.fuente.url) && [...n.titulo].length <= 70));
+});
+
+test('la edición de ejemplo tiene la forma: 6 noticias, las de hoy primero y de la más nueva a la más antigua', () => {
   const d = m.validarNoticias(ARCHIVO);
   assert.match(ARCHIVO.actualizadoEl, /^\d{4}-\d{2}-\d{2}$/);
   assert.equal(d.actualizadoEl, ARCHIVO.actualizadoEl);

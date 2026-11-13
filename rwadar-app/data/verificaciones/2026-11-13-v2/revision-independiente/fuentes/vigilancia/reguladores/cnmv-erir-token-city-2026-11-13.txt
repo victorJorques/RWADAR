@@ -1,0 +1,6 @@
+URL: https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es
+HTTP: 200
+UTC: 2026-11-13T08:46:07Z
+SHA-256 crudo: 12ac95b9d7dc3a31c834e11cdd3097d90cf435e6c75ae4bf3f0f72c71864d453
+
+Emisiones inscritas de TOKEN CITY EUROPEAN EXCHANGE A.V., S.A. 06/11/2026 SERIES A GRUPO UAE SA Inscribir en el Registro Oficial de la Comisión Nacional del Mercado de Valores previsto en el artículo 2.b) del Real Decreto 815/2023, de 8 de noviembre, por el que se desarrolla la Ley 6/2023, de 17 de marzo, de los Mercados de Valores y de los Servicios de Inversión, en relación con los registros oficiales de la Comisión Nacional del Mercado de Valores, la cooperación con otras autoridades y la supervisión de empresas de servicios de inversión, a TOKEN CITY EUROPEAN EXCHANGE, A.V., S.A. como entidad responsable de la inscripción y del registro de las acciones representativas del capital social 

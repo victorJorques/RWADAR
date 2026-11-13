@@ -1,0 +1,192 @@
+{
+ "slug": "candidata-securitize-stocks",
+ "tipoExpediente": "candidata",
+ "grupo": "vigilancia",
+ "proveedor": "Securitize Stocks",
+ "plataformaSlug": null,
+ "entidadComercializadora": "Securitize Markets, LLC (EE. UU., broker-dealer registrado en la SEC). En la UE, los servicios de inversión los presta Securitize Europe Brokerage and Markets, S.V., S.A. (CNMV nº 327).",
+ "emisor": "Securitize Markets, LLC mantiene un «security entitlement»; el subyacente es la acción de EE. UU.",
+ "vehiculo": "Security entitlement sobre acciones de EE. UU. custodiadas por Securitize Markets, LLC",
+ "token": "Token por acción; solo entre monederos en lista blanca",
+ "derechoAdquirido": "«Each Securitize Stock is a security entitlement held through Securitize Markets, LLC; holders are not registered shareholders of the underlying issuer unless they convert»",
+ "jurisdiccion": "US",
+ "identificador": "CNMV nº 327 (Securitize Europe)",
+ "moneda": "USDC",
+ "documentos": [
+  {
+   "titulo": "Securitize Stocks (página del producto)",
+   "url": "https://securitize.io/investments/stocks",
+   "versionOFecha": "consulta 2026-11-13T08:34:18Z",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Texto idéntico al del 12/11 (navegador). Copia en fuentes/securitize/securitize-stocks-2026-11-13.txt."
+  },
+  {
+   "titulo": "Securitize Stocks · FAQ («How do I get started, and who can trade?» y comisiones)",
+   "url": "https://stocks.securitize.io/faq",
+   "versionOFecha": "consulta 2026-11-13T08:37:54Z",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Respuestas desplegadas una a una, iguales que el 12/11: KYC y monedero propio en lista blanca; comisión del 0,10 % en USDC. Sin lista de países. Copia en fuentes/securitize/securitize-stocks-faq-2026-11-13.txt."
+  },
+  {
+   "titulo": "Disclosure library (sin KID)",
+   "url": "https://securitize.io/disclosure-library",
+   "versionOFecha": "consulta 2026-11-13T08:34:37Z",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Texto idéntico al del 12/11 (sin KID)."
+  },
+  {
+   "titulo": "EU | MiFID II Pre-Contractual Info · EU | Securitize Europe Terms & Conditions · Entitlement Token Disclosure",
+   "url": "https://cdn.builder.io/o/assets%2F… [URL firmada recortada]",
+   "versionOFecha": "descarga 2026-11-13T08:37:30Z–08:37:31Z",
+   "paginas": null,
+   "sha256": "141e121af4f3899a / 677b3b737f0293db / e3aceac091dde13d (prefijos)",
+   "leido": true,
+   "nota": "Los tres con el mismo SHA-256 que el 11/11 y el 12/11 (enlaces de la copia del 12/11; URL firmada recortada). PDF en fuentes/crudo/."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "SECURITIZE EUROPE BROKERAGE AND MARKETS, S.V., S.A.",
+   "numero": "327 (25/04/2025)",
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&lang=es",
+   "alcance": "Texto de la ficha (08:31:55Z) y del programa de actividades (08:31:50Z) igual que el 12/11. El programa cubre instrumentos representados con TRD; eso no dice que Securitize Stocks se venda hoy a particulares en España.",
+   "consultadoUtc": "2026-11-13T08:31:55Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Securitize",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Securitize",
+   "consultadoUtc": "2026-11-13T08:33:02Z",
+   "alcance": "Buscador validado hoy con «Trading» (mismo resultado que el 12/11, 08:32:33Z); PDF de «otras entidades» con el mismo SHA-256 que el 10/11, 11/11 y 12/11 (08:32:26Z), sin coincidencias."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "accesoEspana",
+   "literal": "Securitize Stocks are offered by Securitize Markets, LLC … to eligible investors in permitted jurisdictions, subject to onboarding and identity verification",
+   "dato": "Sin lista de países; ninguna fuente dice que un particular residente en España pueda comprar hoy",
+   "fuentePrimaria": "https://securitize.io/investments/stocks",
+   "localizador": "Pie legal de la página del producto",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:34:18Z",
+   "alcanceYLimites": "La misma página dice «Now onchain for U.S. investors» y «Available in the U.S., EU and other eligible markets».",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "minimo",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://stocks.securitize.io/faq",
+   "localizador": "FAQ: no consta mínimo",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:37:54Z",
+   "alcanceYLimites": "No hay mínimo publicado.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "comisiones",
+   "literal": "The platform charges a fee of .10% of trade amount in USDC.",
+   "dato": "0,10 % por operación, en USDC",
+   "fuentePrimaria": "https://stocks.securitize.io/faq",
+   "localizador": "FAQ, «What fees does the platform charge?»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:37:54Z",
+   "alcanceYLimites": "USDC; no es una cifra de tarjeta.",
+   "estado": "respaldado"
+  },
+  {
+   "campo": "salida",
+   "literal": "Trading is supported using third party self-custody wallets only … Securities can only move between whitelisted wallets on the platform.",
+   "dato": "Venta en la plataforma, solo desde monederos propios en lista blanca",
+   "fuentePrimaria": "https://stocks.securitize.io/faq",
+   "localizador": "FAQ, «How do I get started, and who can trade?»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:37:54Z",
+   "alcanceYLimites": "No hay KID ni documento de salida para la UE.",
+   "estado": "respaldado_con_alcance"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Securitize Europe registrada en la CNMV (nº 327), pero quien ofrece el producto es una entidad de EE. UU."
+  },
+  "actividadYFecha": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Producto operativo «for U.S. investors»; sin fecha de apertura para la UE."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Sin lista de países, KID ni mínimo; exige monedero propio."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Sin advertencias de la CNMV; riesgos solo en avisos genéricos."
+  }
+ },
+ "estadoOferta": "no_verificable",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "todo",
+   "antes": "No admitida (12/11)",
+   "ahora": "Igual el 13/11: página, FAQ, biblioteca y tres documentos UE iguales (mismo texto o SHA-256); ficha CNMV nº 327 sin cambios",
+   "fuente": "https://securitize.io/investments/stocks",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "Securitize Stocks",
+  "categoria": "Acciones y capital privado",
+  "pais": "US",
+  "tipo": "rendimiento",
+  "coleccion": null,
+  "resumen": "Acciones de EE. UU. en cadena ofrecidas por una entidad de EE. UU.; sin confirmación de acceso para particulares en España.",
+  "rentabilidad": null,
+  "metricas": [],
+  "avisos": [],
+  "url": "https://securitize.io/investments/stocks",
+  "fuentesActuales": [
+   "https://securitize.io/investments/stocks",
+   "https://stocks.securitize.io/faq"
+  ],
+  "lugar": null,
+  "pasos": [],
+  "concepto": null,
+  "resumenTarjeta": {
+   "minimo": null,
+   "accesoEspana": null,
+   "salida": "Se vende en la plataforma, solo desde un monedero propio en lista blanca (FAQ, 13/11)."
+  },
+  "nota": "Candidata no admitida: la tarjeta no se propone. resumenTarjeta solo recoge lo que hoy se puede leer en fuente primaria; lo demás queda en null."
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": "CNMV nº 327 (Securitize Europe), no la entidad que ofrece el producto",
+  "documentacionClara": "parcial",
+  "salidaExplicada": "parcial",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Grupo con sociedad de valores española registrada en la CNMV.",
+  "porQueNo": "Ninguna fuente primaria confirma que un particular residente en España pueda comprar hoy; sin KID ni lista de países."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Sin cambios el 13/11. La página sigue diciendo que el producto lo ofrece Securitize Markets, LLC (EE. UU.) «to eligible investors in permitted jurisdictions»; no hay lista de países, KID ni mínimo, y la FAQ exige KYC y monedero propio en lista blanca. El registro de Securitize Europe en la CNMV (nº 327) no prueba que este producto se venda hoy a particulares en España.",
+ "bloqueos": [
+  "No hay lista pública de países admitidos ni KID."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-13T08:29:31Z",
+  "finUtc": "2026-11-13T08:41:42Z"
+ }
+}

@@ -1,0 +1,1039 @@
+{
+ "grupo": "vigilancia",
+ "ciclo": "2026-11-13",
+ "consultas": [
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+   "archivo": "fuentes/crudo/cnmv-erir-ursus3.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:41Z",
+   "bytes": 182234,
+   "sha256": "a4ca7d483019f79d009d651e38c59310be0b89f4c011529b8b3e9963d4951615"
+  },
+  {
+   "url": "https://hausera.io/page-data/propiedad/alicante_3/page-data.json",
+   "archivo": "fuentes/crudo/hausera-propiedad-alicante_3-page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:41Z",
+   "bytes": 158500,
+   "sha256": "8f3234135bfdac2967064f6f6d8723bedaeb70c6fb9bd2473be961c48d435cfd"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-erir-ursus3.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:41Z",
+   "bytes": 9391,
+   "sha256": "973509a8755c4b1a3df92ecce674d84eff137049cb7a4fddb94312ccdf981dec",
+   "nota": "texto extraído de fuentes/crudo/cnmv-erir-ursus3.html"
+  },
+  {
+   "url": "https://hausera.io/page-data/app-data.json",
+   "archivo": "fuentes/crudo/hausera-app-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:42Z",
+   "bytes": 50,
+   "sha256": "5c615b497c9b0e1c253e12978a9c76922979001b5a4a2fae7c9c5902c389c628"
+  },
+  {
+   "url": "https://hausera.io/page-data/oportunidades/page-data.json",
+   "archivo": "fuentes/crudo/hausera-oportunidades-page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:42Z",
+   "bytes": 188778,
+   "sha256": "af4dc677f009f13863de8aaf9421d1c0818f0589589ac005dc94ec7034f382a5"
+  },
+  {
+   "url": "https://hausera.io/page-data/propiedad/alicante_2/page-data.json",
+   "archivo": "fuentes/crudo/hausera-propiedad-alicante_2-page-data.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:42Z",
+   "bytes": 158715,
+   "sha256": "2f9272ee1c44466ddb94714f962849f3258a17cf8e35543f5ed82a48c2854f48"
+  },
+  {
+   "url": "https://hausera.io/sitemap-0.xml",
+   "archivo": "fuentes/crudo/hausera-sitemap-0.xml",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:43Z",
+   "bytes": 30455,
+   "sha256": "f21d85598ac4a0ae66c39e2b12685b1f296c495a2954ac770423ac528d25b5b8"
+  },
+  {
+   "url": "https://www.prosegurcash.com/.rest/dam/endpoint/Prosegur/CORP/Cash/pdf/accionistas-e-inversores/otra-informacion-relevante?lang=all",
+   "archivo": "fuentes/crudo/prosegurcash-otra-informacion-relevante.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:43Z",
+   "bytes": 325530,
+   "sha256": "e1bb810f4eaa4a32833ad05727338cbcb41c1e703956aba73e9115a889676e2c"
+  },
+  {
+   "url": "https://www.prosegurcash.com/.rest/dam/endpoint/Prosegur/CORP/Cash/pdf/accionistas-e-inversores/informacion-privilegiada?lang=all",
+   "archivo": "fuentes/crudo/prosegurcash-informacion-privilegiada.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:46Z",
+   "bytes": 16022,
+   "sha256": "f278734bd4eca17c5f0a5713963e3f45c4a6c1ecb7a0fe0bb6a11f7bd016f661"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "archivo": "fuentes/crudo/profitus-landing-projects-p1.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "bytes": 51728,
+   "sha256": "d4126a3b87b382cf8cb2f335bb21ab58eefd26c394f21c25f3eaf33aa4db5c6c"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=1",
+   "archivo": "fuentes/profitus/profitus-api-abiertos-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:47Z",
+   "bytes": 930,
+   "sha256": "c88608f04af85ee2b12cd8e999e111dc2579ceb39420662707f2723b4ee4b2ff",
+   "nota": "resumen de los proyectos abiertos de las páginas 1 y 2 de la API"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1",
+   "archivo": "fuentes/crudo/cnmv-erir-ursus3-pag2.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:49Z",
+   "bytes": 182028,
+   "sha256": "067fdc762602559872cf38c26393e284968b716557fea167bf79a46c580dd5a8"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1",
+   "archivo": "fuentes/reguladores/cnmv-erir-ursus3-pag2.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:49Z",
+   "bytes": 9040,
+   "sha256": "4adcb13fd3c90663aa47ef340d38211f4bb919116b7db5cc94b5d1cd99a3120e",
+   "nota": "texto extraído de fuentes/crudo/cnmv-erir-ursus3-pag2.html"
+  },
+  {
+   "url": "https://api.profitus.com/api/v1/landing/projects?limit=50&page=2",
+   "archivo": "fuentes/crudo/profitus-landing-projects-p2.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:50Z",
+   "bytes": 51535,
+   "sha256": "03e9f3b18cd177f3e78ef5c851b347ed75ba4048fa0e9e8b1a7dbe6cb9d0093f"
+  },
+  {
+   "url": "https://valorix.com/",
+   "archivo": "fuentes/bit2me/valorix-com-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:52Z",
+   "bytes": 8419,
+   "sha256": "2a44458b0465e2267fd78bf6c49aee5bd2e408736e0bd5cc9ae8bead90061911",
+   "nota": "texto extraído de fuentes/crudo/valorix-com.html"
+  },
+  {
+   "url": "https://valorix.com/",
+   "archivo": "fuentes/crudo/valorix-com.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:52Z",
+   "bytes": 113715,
+   "sha256": "5ae0d7ef2a0fcb590280dfa4ed3433686ab240b1630d55369114a5a00ae6f0b6"
+  },
+  {
+   "url": "https://valorix.com/invertir.html",
+   "archivo": "fuentes/bit2me/valorix-invertir-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:53Z",
+   "bytes": 4886,
+   "sha256": "4967817e8fa81d8a2ce8d2631ba5310245f7fdfa04426ea46aaed72ddc1593d3",
+   "nota": "texto extraído de fuentes/crudo/valorix-invertir.html"
+  },
+  {
+   "url": "https://valorix.com/docs/documento-de-emision.pdf",
+   "archivo": "fuentes/crudo/valorix-documento-de-emision.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:53Z",
+   "bytes": 820510,
+   "sha256": "5640e21125bfaf15eda1afd828e7693c9a8c798a99e48b7d62b3f339d6e0f9e6"
+  },
+  {
+   "url": "https://valorix.com/invertir.html",
+   "archivo": "fuentes/crudo/valorix-invertir.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:53Z",
+   "bytes": 47487,
+   "sha256": "b233b45d2d97f4d8e28e7af9c1dd046ba9d4701dcbb3b8e7acba1d1e4b20ec08"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+   "archivo": "fuentes/crudo/cnmv-erir-ursus3-pag3.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:54Z",
+   "bytes": 161448,
+   "sha256": "23e7b2c6be7463e24aeee2fe2eecbed5e3dad1b00beb4acf93a418ac74df0d34"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2",
+   "archivo": "fuentes/reguladores/cnmv-erir-ursus3-pag3.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:30:54Z",
+   "bytes": 3272,
+   "sha256": "8416fe33b7248e429ce7a9edb41c678ff0d55633ee88c06d58f1af4bf2bead60",
+   "nota": "texto extraído de fuentes/crudo/cnmv-erir-ursus3-pag3.html"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=3",
+   "archivo": "fuentes/crudo/cnmv-erir-ursus3-pag4.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:02Z",
+   "bytes": 152739,
+   "sha256": "bd80398df3d2c2f5a492d93df3ea18efbdbad1fe6ee810e14bd6066a230826fe"
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ERIR.aspx?lang=es",
+   "archivo": "fuentes/crudo/cnmv-erir-indice.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:08Z",
+   "bytes": 153725,
+   "sha256": "45781d93e1a9c38a60818457b09ec951804449aa3cd8d24e48bff21d6e71b336"
+  },
+  {
+   "url": "https://valorix.es/",
+   "archivo": "fuentes/crudo/valorix-es.html",
+   "http": 0,
+   "consultadoUtc": "2026-11-13T08:31:08Z",
+   "bytes": 0,
+   "sha256": null,
+   "nota": "curl: (35) Recv failure: Connection reset by peer (tres intentos)"
+  },
+  {
+   "url": "https://www.cnmv.es/Portal/Consultas/ERIR.aspx?lang=es",
+   "archivo": "fuentes/reguladores/cnmv-erir-indice.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:08Z",
+   "bytes": 286,
+   "sha256": "557cd34f7ba4444a21145fc8f79645d985acbac9a684834cc8dd1a5b0ed4cd6c",
+   "nota": "texto extraído de fuentes/crudo/cnmv-erir-indice.html"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "archivo": "fuentes/crudo/cnmv-erir-minos.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:13Z",
+   "bytes": 152388,
+   "sha256": "6d7eb7cbca433bc81f8489971315388b477626fe974a774dccf3573ff46721f0"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-erir-minos.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:13Z",
+   "bytes": 1427,
+   "sha256": "62354984d2ef0904e4173106d538bb4551c6b55721d349782236c36381d6ecf2",
+   "nota": "texto extraído de fuentes/crudo/cnmv-erir-minos.html"
+  },
+  {
+   "url": "https://bit2me.com/es/stx",
+   "archivo": "fuentes/bit2me/bit2me-stx-producto-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:19Z",
+   "bytes": 14514,
+   "sha256": "cde5991354e7aa4eac7818acd7d236a81b95ae010ae0e18be9881a57b369bbeb",
+   "nota": "texto extraído de fuentes/crudo/bit2me-stx-producto.html"
+  },
+  {
+   "url": "https://bit2me.com/es/stx",
+   "archivo": "fuentes/crudo/bit2me-stx-producto.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:19Z",
+   "bytes": 529657,
+   "sha256": "5836c795d35329741fc2876d86574b777fecf856a786897ca611a92bcb04cd3e"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es",
+   "archivo": "fuentes/crudo/cnmv-erir-token-city.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:19Z",
+   "bytes": 152454,
+   "sha256": "12ac95b9d7dc3a31c834e11cdd3097d90cf435e6c75ae4bf3f0f72c71864d453"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A25988981&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-erir-token-city.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:19Z",
+   "bytes": 1470,
+   "sha256": "867ae1183d23765d905ac9e84d69a472ace844843f633dbe0c10f4fa056c6fc4",
+   "nota": "texto extraído de fuentes/crudo/cnmv-erir-token-city.html"
+  },
+  {
+   "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "archivo": "fuentes/bit2me/bit2me-blog-autorizacion-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:20Z",
+   "bytes": 12609,
+   "sha256": "d0ed39595b6b13bc4f7c49443ee331ea95ad5c23a61e176e90288d353ab9dd0a",
+   "nota": "texto extraído de fuentes/crudo/bit2me-blog-autorizacion.html"
+  },
+  {
+   "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "archivo": "fuentes/crudo/bit2me-blog-autorizacion.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:20Z",
+   "bytes": 164192,
+   "sha256": "889382f2504bf4665f80ca3bb2446970e69cd3fb572289e16d345d2e4ca18497"
+  },
+  {
+   "url": "https://exchange.token-city.com/es",
+   "archivo": "fuentes/crudo/token-city-exchange-es.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:20Z",
+   "bytes": 97292,
+   "sha256": "706b14efad4a24cea3026b84ce06383126a2ebe49b4846aa16da86497d00abdf",
+   "nota": "200: la web vuelve a funcionar (el 11/11 y el 12/11 daba 503)"
+  },
+  {
+   "url": "https://exchange.token-city.com/",
+   "archivo": "fuentes/crudo/token-city-exchange.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:21Z",
+   "bytes": 97292,
+   "sha256": "706b14efad4a24cea3026b84ce06383126a2ebe49b4846aa16da86497d00abdf",
+   "nota": "200: la web vuelve a funcionar (el 11/11 y el 12/11 daba 503)"
+  },
+  {
+   "url": "https://token-city.com/",
+   "archivo": "fuentes/crudo/token-city-home.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:22Z",
+   "bytes": 1065823,
+   "sha256": "60852421bb5bcce3e930aab709952479ae469439b6159ea1722b3b8967c57047",
+   "nota": "200: la web vuelve a funcionar (el 11/11 y el 12/11 daba 503)"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A56759137&lang=es",
+   "archivo": "fuentes/crudo/cnmv-erir-bit2me-stx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:24Z",
+   "bytes": 149304,
+   "sha256": "42c613705fd8738a6743e55c8b41520fa92ef087682f6107254f14653ae49cc2"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A56759137&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-erir-bit2me-stx.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:24Z",
+   "bytes": 602,
+   "sha256": "a07912b45a8eba80ac539ade0580d5cd0f39a2f5139a3b1792f6c859b0839f04",
+   "nota": "texto extraído de fuentes/crudo/cnmv-erir-bit2me-stx.html"
+  },
+  {
+   "url": "https://crypto.com/document/fccy-tokenised-equities-terms",
+   "archivo": "fuentes/cryptocom/fccy-tokenised-equities-terms.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:25Z",
+   "bytes": 217691,
+   "sha256": "1169bff5d9a4deaf72885cf185e5134274089e0534fb43eab0ba8cdd37421c6f"
+  },
+  {
+   "url": "https://crypto.com/document/fccy-tokenised-equities-terms",
+   "archivo": "fuentes/cryptocom/fccy-tokenised-equities-terms.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:25Z",
+   "bytes": 48946,
+   "sha256": "afa01fc96fb9cf0466e4173994eeac6c9326ac554db3caaf155c45c116019247",
+   "nota": "pdftotext -layout del PDF"
+  },
+  {
+   "url": "https://crypto.com/document/tokenised-equities-corporate-action-policy",
+   "archivo": "fuentes/cryptocom/tokenised-equities-corporate-action-policy.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:25Z",
+   "bytes": 107211,
+   "sha256": "06d4eac0142ce67358a7a1fd07e751a86a00f13d3ea97aeb6eea9b18494cc974"
+  },
+  {
+   "url": "https://crypto.com/document/tokenised-equities-corporate-action-policy",
+   "archivo": "fuentes/cryptocom/tokenised-equities-corporate-action-policy.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:25Z",
+   "bytes": 14264,
+   "sha256": "fbf327db120303e602db80d5c78452eeadd259cfb8b48ac44b822a9fdc5944c1",
+   "nota": "pdftotext -layout del PDF"
+  },
+  {
+   "url": "https://help.crypto.com/en/articles/15855813-about-crypto-com-tokenized-stocks-eea",
+   "archivo": "fuentes/crudo/cryptocom-help-15855813.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:26Z",
+   "bytes": 134293,
+   "sha256": "64879418301b2c1a2ada20c3a0107186423e26f9e1576f986da4184456aa0da4"
+  },
+  {
+   "url": "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+   "archivo": "fuentes/cryptocom/fccy-tokenised-equities-risk-statement.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:26Z",
+   "bytes": 99578,
+   "sha256": "8d5a498fe8787ae05d5911f5d00826b6e97db05a9d31c79aa04f13f87052fe3e"
+  },
+  {
+   "url": "https://crypto.com/document/fccy-tokenised-equities-risk-statement",
+   "archivo": "fuentes/cryptocom/fccy-tokenised-equities-risk-statement.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:26Z",
+   "bytes": 9711,
+   "sha256": "85fc0888f3f4f9e8e27bd24042d3459568a87f8f670cb4e02f3fe6b444026a72",
+   "nota": "pdftotext -layout del PDF"
+  },
+  {
+   "url": "https://help.crypto.com/en/articles/15855813-about-crypto-com-tokenized-stocks-eea",
+   "archivo": "fuentes/cryptocom/help-15855813-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:26Z",
+   "bytes": 5307,
+   "sha256": "48eee832d888f8b38f9490ca37f185fc0234cfb3a0b6ae421a5f4362d4a070b7",
+   "nota": "texto extraído de fuentes/crudo/cryptocom-help-15855813.html"
+  },
+  {
+   "url": "https://help.crypto.com/en/articles/15855830-corporate-actions-and-dividends-of-tokenized-stocks-eea",
+   "archivo": "fuentes/crudo/cryptocom-help-15855830.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:27Z",
+   "bytes": 137129,
+   "sha256": "64244edec8c06ce2f5b3642a1d2efafeec9a0906e18f54b866221e31e04ff927"
+  },
+  {
+   "url": "https://help.crypto.com/en/articles/15855830-corporate-actions-and-dividends-of-tokenized-stocks-eea",
+   "archivo": "fuentes/cryptocom/help-15855830-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:27Z",
+   "bytes": 5865,
+   "sha256": "35822a298f02aa0c603300166eab2b03f0f03bf3dcd688ea952ab472c4714257",
+   "nota": "texto extraído de fuentes/crudo/cryptocom-help-15855830.html"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/otra-informacion-relevante/resultado-oir.aspx?nif=A87498564",
+   "archivo": "fuentes/crudo/cnmv-prosegur-cash-oir.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:28Z",
+   "bytes": 252489,
+   "sha256": "b13dcc7b00f97b92829f3078f80a68955fc9bebeb10f4e7e98c847c7b6964ccb"
+  },
+  {
+   "url": "https://help.crypto.com/en/collections/19682896-tokenized-stocks-eea",
+   "archivo": "fuentes/crudo/cryptocom-help-coleccion.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:28Z",
+   "bytes": 103169,
+   "sha256": "1acc85f9495aa8e4e2833e4c60ebf7edb26388432524a5c91dfb1ed86562c6f2"
+  },
+  {
+   "url": "https://www.cysec.gov.cy/en-GB/entities/investment-firms/cypriot/46172/",
+   "archivo": "fuentes/crudo/cysec-foris-46172.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:28Z",
+   "bytes": 627120,
+   "sha256": "28e889c75fb3d931c5ad4764e2465d13e58d77ae213acbf790609aa9a0ac646a"
+  },
+  {
+   "url": "https://help.crypto.com/en/collections/19682896-tokenized-stocks-eea",
+   "archivo": "fuentes/cryptocom/help-coleccion-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:28Z",
+   "bytes": 1603,
+   "sha256": "78582f62bdb1d537f4a3f52a5d7d39d1be55c5c84cafc92fe15865a841c01a2c",
+   "nota": "texto extraído de fuentes/crudo/cryptocom-help-coleccion.html"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/otra-informacion-relevante/resultado-oir.aspx?nif=A87498564",
+   "archivo": "fuentes/reguladores/cnmv-prosegur-cash-oir.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:28Z",
+   "bytes": 1984,
+   "sha256": "d7ca9ad2d8806af5465a25f47af1628cb800d3a12459e62d9789695a344f84d4",
+   "nota": "texto extraído de fuentes/crudo/cnmv-prosegur-cash-oir.html"
+  },
+  {
+   "url": "https://itunes.apple.com/lookup?id=1262148500&country=es",
+   "archivo": "fuentes/crudo/itunes-cryptocom-es.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:38Z",
+   "bytes": 11907,
+   "sha256": "3b8d59995ea2bfff0d94e4b57a7771bdb05f89034562822ca028f9e84cff0807"
+  },
+  {
+   "url": "https://crypto.com/eea/financialservices/disclosures",
+   "archivo": "fuentes/crudo/cryptocom-disclosures.html",
+   "http": 301,
+   "consultadoUtc": "2026-11-13T08:31:39Z",
+   "bytes": 167,
+   "sha256": "446a6087825fa73eadb045e5a2e9e2adf7df241b571228187728191d961dda1f",
+   "nota": "301 a https://crypto.com/ (filtro por país); no se sigue la redirección ni se elude"
+  },
+  {
+   "url": "https://securitize.io/investments/stocks",
+   "archivo": "fuentes/crudo/securitize-stocks.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:39Z",
+   "bytes": 3515,
+   "sha256": "d25e6804ebf23a1de3930c3f6c3732d8e26b91c4dad4ca6460a3c281752a0b85",
+   "nota": "HTML de curl (página con JavaScript); el texto se leyó con el navegador"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ancv/isin.aspx?nif=A87498564",
+   "archivo": "fuentes/crudo/cnmv-prosegur-cash-isin.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:43Z",
+   "bytes": 227881,
+   "sha256": "40ab22d545e50b9f9f60f17686c075bd8a6af8a750370b7ef91a0bf9c43eee54"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ancv/isin.aspx?nif=A87498564",
+   "archivo": "fuentes/reguladores/cnmv-prosegur-cash-isin.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:43Z",
+   "bytes": 1494,
+   "sha256": "958af4253485aa83be6cd8292b72f184507cc86d2ad6fae79df00b9b7ee65802",
+   "nota": "texto extraído de fuentes/crudo/cnmv-prosegur-cash-isin.html"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&vista=17&lang=es",
+   "archivo": "fuentes/crudo/cnmv-securitize-esi-programa.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:50Z",
+   "bytes": 275590,
+   "sha256": "b5c3a7e05470f0d40df84c2cf1b81840a4ebe128db632a3f9cc2efcd3179ce23"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&vista=17&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-securitize-esi-programa.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:50Z",
+   "bytes": 17153,
+   "sha256": "cb6ab069b287948b836676e3dd5bc247221d6a182348a56cfc89dc7248cb226e",
+   "nota": "texto extraído de fuentes/crudo/cnmv-securitize-esi-programa.html"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&lang=es",
+   "archivo": "fuentes/crudo/cnmv-securitize-esi.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:55Z",
+   "bytes": 222708,
+   "sha256": "cd0d86d72cb28cbd502bab199d7f47aa7ab228b2f0a1b07b19a8fd198bdab949"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis?nif=A13691464&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-securitize-esi.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:55Z",
+   "bytes": 834,
+   "sha256": "9217512121f2b899e2e483755b902d860b74f143d552c04ca9925ccfc9280372",
+   "nota": "texto extraído de fuentes/crudo/cnmv-securitize-esi.html"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+   "archivo": "fuentes/crudo/cnmv-psfp-listado.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:59Z",
+   "bytes": 164597,
+   "sha256": "67c47da592d5fcf7ef9c6da8d6b8c41d2fce86469437b3e886684f0335be510d"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/listado-proveedores.aspx?lang=es",
+   "archivo": "fuentes/reguladores/cnmv-psfp-listado.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:31:59Z",
+   "bytes": 2114,
+   "sha256": "4d76e66c72c70a5bec1817ac312ed752d90f72a90ebced152fb7799844f3db16",
+   "nota": "texto extraído de fuentes/crudo/cnmv-psfp-listado.html"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es",
+   "archivo": "fuentes/crudo/cnmv-psfp-europeos.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:32:13Z",
+   "bytes": 176091,
+   "sha256": "837fb5ceb130ef9ef008b0928397b35054fceccd368e3c80f80ed6a2ab34e786"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/servicios-financiacion-participativa/Listado-Proveedores-Europeos.aspx?lang=es",
+   "archivo": "fuentes/reguladores/cnmv-psfp-europeos.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:32:13Z",
+   "bytes": 2551,
+   "sha256": "351591e7b0ec4fa0ee667e5e57109d3136e65e61a391ecce32af1dc60e3f7575",
+   "nota": "texto extraído de fuentes/crudo/cnmv-psfp-europeos.html"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A86796182&lang=es",
+   "archivo": "fuentes/crudo/cnmv-esi-ursus3.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:32:23Z",
+   "bytes": 222644,
+   "sha256": "2f131476e402cb8cb00073daa73b6e312d2aab143fdb97408d65fb737bd1ea13"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/esis.aspx?nif=A86796182&lang=es",
+   "archivo": "fuentes/reguladores/cnmv-esi-ursus3.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:32:23Z",
+   "bytes": 838,
+   "sha256": "1f51228d05540d477a78fc5b3b4dbf46cb2648c493c8c20c67c202e731bf4df3",
+   "nota": "texto extraído de fuentes/crudo/cnmv-esi-ursus3.html"
+  },
+  {
+   "url": "https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf",
+   "archivo": "fuentes/crudo/Advertencias_CNMV_Otras.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:32:26Z",
+   "bytes": 254225,
+   "sha256": "5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/consultas/esi/afn?tipo=AFN&numero=21&lang=es",
+   "archivo": "fuentes/crudo/cnmv-eafn-21.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:32:30Z",
+   "bytes": 152707,
+   "sha256": "f71d03366ad8b6c1ff1b57bcca68ecbaf4da5962b5dd6d223a76a4fa2e57bffb"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Trading",
+   "archivo": "fuentes/crudo/cnmv-adv-Trading.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:32:33Z",
+   "bytes": 236466,
+   "sha256": "4c1905c0b2150b8116ea059888660520401847dfc6649ec9a1540ad9e60f54ff"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Hausera",
+   "archivo": "fuentes/crudo/cnmv-adv-Hausera.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:32:39Z",
+   "bytes": 211370,
+   "sha256": "6eec700dafd01cf67fa836eb8d2ccdcf863a8e9577fce116b1ccaf12f77f0468"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Holdtx",
+   "archivo": "fuentes/crudo/cnmv-adv-Holdtx.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:32:42Z",
+   "bytes": 211348,
+   "sha256": "939cd43c251660469b4474bf303ab9fda24f763979943683ae1186e60c1b3966"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Prosegur",
+   "archivo": "fuentes/crudo/cnmv-adv-Prosegur.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:32:54Z",
+   "bytes": 211392,
+   "sha256": "23f29d3deb3114a2fc31c0027829e75c2426f04415aa32af8ba9c5c1d03ebf03"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Minos",
+   "archivo": "fuentes/crudo/cnmv-adv-Minos.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:32:58Z",
+   "bytes": 211326,
+   "sha256": "62d093c5cdd4ae302da53dff3b337a84e0cb85a1f353d03845bdd72c001549ce"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Securitize",
+   "archivo": "fuentes/crudo/cnmv-adv-Securitize.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:02Z",
+   "bytes": 211436,
+   "sha256": "202dab34a8d84c71153da29d3401f998f5d548bf8d59c2ead2bf82e8feb080e7"
+  },
+  {
+   "url": "https://hausera.io/oportunidades/",
+   "archivo": "fuentes/crudo/nav-hausera-oportunidades-original.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:04Z",
+   "bytes": 4663,
+   "sha256": "e96fb3d51221c62ea09a065dbf5fac9f9c4a6d93f2e37cbbf9125dbee1dfe0fa",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://hausera.io/oportunidades/",
+   "archivo": "fuentes/hausera/nav-hausera-oportunidades-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:04Z",
+   "bytes": 4663,
+   "sha256": "e96fb3d51221c62ea09a065dbf5fac9f9c4a6d93f2e37cbbf9125dbee1dfe0fa",
+   "nota": "copia del texto renderizado de fuentes/crudo/nav-hausera-oportunidades-original.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Profitus",
+   "archivo": "fuentes/crudo/cnmv-adv-Profitus.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:06Z",
+   "bytes": 211392,
+   "sha256": "b66cff90fc0b32746a07e4c058599d228fcc705b5be348f48ca1c41e571e3d48"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Axiology",
+   "archivo": "fuentes/crudo/cnmv-adv-Axiology.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:10Z",
+   "bytes": 211392,
+   "sha256": "049c06df86da647573e48527418a8185b5c241b9fcd1e6fab224dd668b493a0e"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Valorix",
+   "archivo": "fuentes/crudo/cnmv-adv-Valorix.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:14Z",
+   "bytes": 211370,
+   "sha256": "5ba901ca6d3c9b8883aa1a9926c7a03b548da452543fbc5909b9de33d71d70c1"
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_3/",
+   "archivo": "fuentes/crudo/nav-hausera-alicante-3-original.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:14Z",
+   "bytes": 1388,
+   "sha256": "4cb80b36d857cf79190e114adab694a75ef6f93641de3dca834c1d4a4a7945e9",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_3/",
+   "archivo": "fuentes/hausera/nav-hausera-alicante-3-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:14Z",
+   "bytes": 1388,
+   "sha256": "4cb80b36d857cf79190e114adab694a75ef6f93641de3dca834c1d4a4a7945e9",
+   "nota": "copia del texto renderizado de fuentes/crudo/nav-hausera-alicante-3-original.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bit2Me",
+   "archivo": "fuentes/crudo/cnmv-adv-Bit2Me.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:17Z",
+   "bytes": 211348,
+   "sha256": "d931aa515af23f70c0ff7a2404e18622d942b604d0e977d55acc61916d5eac45"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Token%20City",
+   "archivo": "fuentes/crudo/cnmv-adv-Token_City.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:20Z",
+   "bytes": 211436,
+   "sha256": "d7e81908478a326bbacbf1c57e25bf60d5ea28ea66edf183428348bd5f104a9b"
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_2/",
+   "archivo": "fuentes/crudo/nav-hausera-alicante-2-original.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:22Z",
+   "bytes": 1289,
+   "sha256": "23bce1336d6a76e79d62b74d353154d50aaa5c59dfc9858911d4c2c91bcc595e",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión); networkidle agotado (página pintada)"
+  },
+  {
+   "url": "https://hausera.io/propiedad/alicante_2/",
+   "archivo": "fuentes/hausera/nav-hausera-alicante-2-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:22Z",
+   "bytes": 1289,
+   "sha256": "23bce1336d6a76e79d62b74d353154d50aaa5c59dfc9858911d4c2c91bcc595e",
+   "nota": "copia del texto renderizado de fuentes/crudo/nav-hausera-alicante-2-original.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Lornin",
+   "archivo": "fuentes/crudo/cnmv-adv-Lornin.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:29Z",
+   "bytes": 211348,
+   "sha256": "00ceb9d83ff7d86e951920851b4943ba7346f5e83d490041cb926725499858c7"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Cando",
+   "archivo": "fuentes/crudo/cnmv-adv-Cando.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:33Z",
+   "bytes": 211326,
+   "sha256": "423cedf667c44630534cbd7216de3e270ce44e25d9059abc740c9ee1a20f65f8"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Crypto.com",
+   "archivo": "fuentes/crudo/cnmv-adv-Crypto_com.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:41Z",
+   "bytes": 225062,
+   "sha256": "9354e80b5c983f5b4a9d5801f2aee550cc3be39be0bbaeaa897a9be0a1513f44"
+  },
+  {
+   "url": "https://hausera.io/",
+   "archivo": "fuentes/crudo/nav-hausera-home-original.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:41Z",
+   "bytes": 5826,
+   "sha256": "15bfff3ab4e39d0c4ae9d89becbbd0f6be3af7608c78965fcb78b914e5a7af29",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://hausera.io/",
+   "archivo": "fuentes/hausera/nav-hausera-home-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:41Z",
+   "bytes": 5829,
+   "sha256": "e9f32382d73aa71e34976456bbc0e99887065d369f05a4e17725457405bc1e32",
+   "nota": "copia con un nombre de persona recortado de fuentes/crudo/nav-hausera-home-original.txt"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Foris",
+   "archivo": "fuentes/crudo/cnmv-adv-Foris.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:45Z",
+   "bytes": 216503,
+   "sha256": "450eb30250467484a069e23964dc6835fd00dfcb0fbee6d3dd08b9b4a268bc6e"
+  },
+  {
+   "url": "https://hausera.io/terms/",
+   "archivo": "fuentes/hausera/nav-hausera-terms-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:46Z",
+   "bytes": 53014,
+   "sha256": "19c7294df09e5ee0fc8ccd562c36bb94e272cc2caeb37f6cde3b8df4e8757e06",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=4485",
+   "archivo": "fuentes/crudo/cnmv-foris-4485.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:52Z",
+   "bytes": 217313,
+   "sha256": "031f36b7773b5614a69fefed4eba6a5f452e61e2eff8b3a5a28c65a4f3e9a9d5"
+  },
+  {
+   "url": "https://hausera.io/faq/",
+   "archivo": "fuentes/hausera/nav-hausera-faq-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:52Z",
+   "bytes": 3138,
+   "sha256": "011f2807f1cab5ec26d9d1c39adfbae3cd75359345fd5c2f7989f7fdf6f3c140",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=4485",
+   "archivo": "fuentes/reguladores/cnmv-foris-4485.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:52Z",
+   "bytes": 970,
+   "sha256": "b819a671750483452e3c24dbe0c5408209c3013cd4a953434eedefb3cafa5abb",
+   "nota": "texto extraído de fuentes/crudo/cnmv-foris-4485.html"
+  },
+  {
+   "url": "https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP.aspx?tipo=CLP&numero=4485&vista=17",
+   "archivo": "fuentes/crudo/cnmv-foris-4485-servicios.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:53Z",
+   "bytes": 272066,
+   "sha256": "966fe17043d86f7e3ee031fe8a76e0932679f1e46503e66f581378cb7266bb70"
+  },
+  {
+   "url": "https://www.prosegurcash.com/accionistas-inversores/comunicaciones-cnmv",
+   "archivo": "fuentes/crudo/nav-prosegurcash-cnmv-original.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:58Z",
+   "bytes": 4294,
+   "sha256": "3ad451a671f109a3f411b5163d40cac698961316b686cc0bddc4116da7f2c4ac",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://www.prosegurcash.com/accionistas-inversores/comunicaciones-cnmv",
+   "archivo": "fuentes/prosegur/nav-prosegurcash-cnmv-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:33:58Z",
+   "bytes": 4290,
+   "sha256": "11c6f826e3ca9b88bde36405b4bf028e5d56dc1f7692d5ad5c743c1367963ef3",
+   "nota": "copia con un nombre de persona recortado de fuentes/crudo/nav-prosegurcash-cnmv-original.txt"
+  },
+  {
+   "url": "https://www.prosegurcash.com/media/prensa",
+   "archivo": "fuentes/crudo/nav-prosegurcash-prensa-original.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:34:08Z",
+   "bytes": 3981,
+   "sha256": "9f67ab121ca14ab1bfca14f76b20a507ad6fabe28f83b8940fc4c632b8e86e4f",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://www.prosegurcash.com/media/prensa",
+   "archivo": "fuentes/prosegur/nav-prosegurcash-prensa-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:34:08Z",
+   "bytes": 3983,
+   "sha256": "a9f974fd5167c981479929763e191485ca3ec54edde5030e09735a762641f620",
+   "nota": "copia con dos nombres de persona recortados de fuentes/crudo/nav-prosegurcash-prensa-original.txt"
+  },
+  {
+   "url": "https://minos-securities.com/",
+   "archivo": "fuentes/crudo/nav-minos-securities-original.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:34:14Z",
+   "bytes": 2603,
+   "sha256": "c0a159b3358ed78b02887652a7eadbfe1ebb2ca5640fe5b89b1e351d04ad397f",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://minos-securities.com/",
+   "archivo": "fuentes/prosegur/nav-minos-securities-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:34:14Z",
+   "bytes": 2603,
+   "sha256": "c0a159b3358ed78b02887652a7eadbfe1ebb2ca5640fe5b89b1e351d04ad397f",
+   "nota": "copia del texto renderizado de fuentes/crudo/nav-minos-securities-original.txt"
+  },
+  {
+   "url": "https://securitize.io/investments/stocks",
+   "archivo": "fuentes/securitize/securitize-stocks-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:34:18Z",
+   "bytes": 9266,
+   "sha256": "10c48b4933dc2876632b464d1adcf0f4e50804908cf8c267b0fdad9397518e3e",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://stocks.securitize.io/faq",
+   "archivo": "fuentes/securitize/securitize-stocks-faq-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:34:29Z",
+   "bytes": 310,
+   "sha256": "d96c0c36eed76e49fa86a1690cfcad2364d4be95f7695c84d3cc7acc1e4ac780",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://securitize.io/disclosure-library",
+   "archivo": "fuentes/crudo/securitize-disclosures-original.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:34:37Z",
+   "bytes": 6192,
+   "sha256": "bce9c1a07f7121b291efe0c8e361d3f5e22bdf16a4ac80d7f9bdab3aa49e8394",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://exchange.token-city.com/es",
+   "archivo": "fuentes/tokencity/nav-token-city-exchange-es-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:34:47Z",
+   "bytes": 4866,
+   "sha256": "1ada747adcd36281729aca9f75416e01540319ed185a5ef3d0d9094547092d9a",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://valorix.es/",
+   "archivo": "fuentes/bit2me/nav-valorix-es-2026-11-13.txt",
+   "http": 502,
+   "consultadoUtc": "2026-11-13T08:34:54Z",
+   "bytes": 23,
+   "sha256": "53bf0093ee81e5a202402de8b0b06bfa46b6ba796ebfe1606722b05a42172181",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://www.profitus.com/bonds",
+   "archivo": "fuentes/profitus/nav-profitus-bonds-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:34:58Z",
+   "bytes": 6878,
+   "sha256": "7d2afc89228a43e2e6d27de0f7dea481d9d0fb14e8b49e619a5fab0e3afd9d5b",
+   "nota": "texto visible renderizado con Playwright (es-ES, sin sesión)"
+  },
+  {
+   "url": "https://polygon-bor-rpc.publicnode.com (eth_call totalSupply y name de los contratos Alicante_2 y Alicante_3; eth_blockNumber)",
+   "archivo": "fuentes/crudo/polygon-alicante-contratos.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:36:07Z",
+   "bytes": 1012,
+   "sha256": "073ebbde378bb257b12f38e45e3f63d57c3e18088216c279bd9177841769b0a9",
+   "nota": "Alicante_2: 51.960 tokens; Alicante_3: 0 (bloque 0x5cbb2db)"
+  },
+  {
+   "url": "https://drive.google.com/uc?export=download&id=1cpWVN3J_Y1xdRDAxUzGnjmWXB-eTODH_",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:36:16Z",
+   "bytes": 533858,
+   "sha256": "9170562a579f34c217255504597895e5720a6dd479125cefacecb79e883447b4",
+   "nota": "Alicante 3 · documento de emisión. Mismo SHA-256 que el 10/11, 11/11 y 12/11. PDF no guardado (datos personales); se borró tras calcular el SHA-256."
+  },
+  {
+   "url": "https://drive.google.com/uc?export=download&id=1vfq0Ljr0c4o73S0l-b5QBOLWgan1Le8X",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:36:17Z",
+   "bytes": 2651569,
+   "sha256": "69cbadaf3cb4f8522016e74f7911609aa12fddd9b431e474c1871c30d0eb09c8",
+   "nota": "Alicante 3 · acuerdo de reserva y escritura. Mismo SHA-256 que el 10/11, 11/11 y 12/11. PDF no guardado (datos personales); se borró tras calcular el SHA-256."
+  },
+  {
+   "url": "https://drive.google.com/uc?export=download&id=1rbAUwmHLF9O16aQd5i5eOohV9JrYSbPQ",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:36:21Z",
+   "bytes": 9308752,
+   "sha256": "72a312e2a906cb839b37e905adb229ecd744043f37fda854e2a3fad232e13e89",
+   "nota": "Alicante 3 · dossier. Mismo SHA-256 que el 10/11, 11/11 y 12/11. PDF no guardado (datos personales); se borró tras calcular el SHA-256."
+  },
+  {
+   "url": "https://drive.google.com/uc?export=download&id=1vCqpOwjsdt5EGdnqDY-lUM8HsgoYieWZ",
+   "archivo": null,
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:36:23Z",
+   "bytes": 533728,
+   "sha256": "d3d7dd400dc81c45f534d5164415afb22cfa8b30465ce6419466eea1607a2197",
+   "nota": "Alicante 2 · documento de emisión. Mismo SHA-256 que el 10/11, 11/11 y 12/11. PDF no guardado (datos personales); se borró tras calcular el SHA-256."
+  },
+  {
+   "url": "https://securitize.io/disclosure-library",
+   "archivo": "fuentes/crudo/securitize-disclosures.html",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:37:18Z",
+   "bytes": 4360,
+   "sha256": "667ea61ab3e349d0989377e3ea80e718ac8ae127cae95d09ab4aa7167b49352b",
+   "nota": "HTML de curl; texto leído con el navegador (08:34:37Z)"
+  },
+  {
+   "url": "https://cdn.builder.io/o/assets%2Fd39b51a544e84e2fbb2445f58c6c6f2c%2F4f56315e975b4dfc8864c613954c3e6d?[token recortado]",
+   "archivo": "fuentes/crudo/securitize-eu-mifid-precontractual.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:37:30Z",
+   "bytes": 206531,
+   "sha256": "141e121af4f3899a4681b77603839cbcb0903bf0659a7cc5b1bff03b3b258095",
+   "nota": "URL firmada recortada; mismo SHA-256 que el 11/11 y el 12/11"
+  },
+  {
+   "url": "https://cdn.builder.io/o/assets%2Fd39b51a544e84e2fbb2445f58c6c6f2c%2F3e634c4b7a1043a7a5afe7d86f8e6668?[token recortado]",
+   "archivo": "fuentes/crudo/securitize-eu-terms.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:37:30Z",
+   "bytes": 279535,
+   "sha256": "677b3b737f0293db13ee4437e627d75d3d0b1575520df1928de3b7040a8d498f",
+   "nota": "URL firmada recortada; mismo SHA-256 que el 11/11 y el 12/11"
+  },
+  {
+   "url": "https://cdn.builder.io/o/assets%2Fd39b51a544e84e2fbb2445f58c6c6f2c%2Fbcb532b340874b2b83b3c72649493612?[token recortado]",
+   "archivo": "fuentes/crudo/securitize-entitlement-token-disclosure.pdf",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:37:31Z",
+   "bytes": 88519,
+   "sha256": "e3aceac091dde13d633c142f7141c4ef7e352e57de22ea47d18027d9404d8a5f",
+   "nota": "URL firmada recortada; mismo SHA-256 que el 11/11 y el 12/11"
+  },
+  {
+   "url": "https://stocks.securitize.io/faq",
+   "archivo": "fuentes/securitize/securitize-stocks-faq-2026-11-13.txt",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T08:37:54Z",
+   "bytes": 1370,
+   "sha256": "bc3ef13cabc183d8dba004373f8b94650b794028c3d9b3017eba08ef469f3075",
+   "nota": "preguntas «How do I get started, and who can trade?» y «What fees does the platform charge?» desplegadas una a una (navegador)"
+  },
+  {
+   "url": "https://crypto.com/eea/financialservices/disclosures",
+   "archivo": null,
+   "http": 301,
+   "consultadoUtc": "2026-11-13T08:38:08Z",
+   "bytes": 0,
+   "sha256": null,
+   "nota": "Solo cabeceras: location https://crypto.com/. No se elude."
+  }
+ ]
+}

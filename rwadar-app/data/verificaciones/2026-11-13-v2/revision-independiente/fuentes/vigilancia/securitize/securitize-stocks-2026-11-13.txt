@@ -1,0 +1,6 @@
+URL: https://securitize.io/investments/stocks
+HTTP: 200
+UTC: 2026-11-13T08:47:47Z
+SHA-256 crudo: 10c48b4933dc2876632b464d1adcf0f4e50804908cf8c267b0fdad9397518e3e
+
+Securitize Stocks are offered by Securitize Markets, LLC, a Securities and Exchange Commission-registered broker-dealer and member of the Financial Industry Regulatory Authority and the Securities Investor Protection Corporation, to eligible investors in permitted jurisdictions, subject to onboarding and identity verification. Each Securitize Stock is a security entitlement held through Securitize Markets, LLC; holde

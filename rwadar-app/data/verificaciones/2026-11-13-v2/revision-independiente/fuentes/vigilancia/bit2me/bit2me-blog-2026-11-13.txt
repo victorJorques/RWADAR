@@ -1,0 +1,6 @@
+URL: https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/
+HTTP: 200
+UTC: 2026-11-13T08:46:07Z
+SHA-256 crudo: 889382f2504bf4665f80ca3bb2446970e69cd3fb572289e16d345d2e4ca18497
+
+…un bono corporativo tokenizado de 1 millón de euros, dirigido a inversores elegibles conforme a la normativa de emisión aplicable, previsto para diciembre de 2026, que cotizará posteriormente en el mercado secundario. A esta primera operación le seguirá en 2027 una cartera de nuevas emisiones de acc…

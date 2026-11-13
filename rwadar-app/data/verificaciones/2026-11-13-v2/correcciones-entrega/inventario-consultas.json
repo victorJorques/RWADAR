@@ -1,0 +1,36 @@
+{
+ "grupo": "correcciones de la entrega (montador)",
+ "ciclo": "2026-11-13-v2",
+ "nota": "Corrección O1 de la revisión de cumplimiento (Pottendorfer): el libro de órdenes público de Brickwise, leído otra vez el 13/11/2026 justo antes de regenerar la entrega. Horas UTC del reloj del sistema (date -u). curl con el proxy configurado, solo GET, sin sesión. Las respuestas crudas (con direcciones de cartera) están en crudo/, fuera de Git (.gitignore de esta carpeta). Mismo SHA-256 que las tres lecturas del revisor de cumplimiento (14:16:58, 14:18:36 y 14:29:09 UTC: v1 3493ef71…d29c, v2 6b1b2572…a78d).",
+ "consultas": [
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets",
+   "archivo": "crudo/api-v1-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T14:36:41Z",
+   "bytes": 236533,
+   "sha256": "3493ef7154650261601b851f4ba035313086253d5134e7c508cb26bc7648d29c",
+   "shaManana08_30": "d04d417f8fff194acdb943d6d434e0d6cf4859e220361598f7b7838d08bfce9a",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "crudo/api-v2-assets.json",
+   "http": 200,
+   "consultadoUtc": "2026-11-13T14:36:42Z",
+   "bytes": 53974,
+   "sha256": "6b1b2572dea8e79f12e27699336d40b8f712e6254e8b7f623ea43207097fa78d",
+   "shaManana08_30": "197a25e34f0745b92ea5a472bdefc5a5d5ae3bf470ecd5eca3e724767e1f1dd1",
+   "nota": "Fuera de Git (crudo/)."
+  },
+  {
+   "url": "https://api.app.brickwise.at/api/v1/assets + https://api.app.brickwise.at/api/v2/assets",
+   "archivo": "libro-ordenes-resumen-2026-11-13-1436.json",
+   "http": null,
+   "consultadoUtc": "2026-11-13T14:36:41Z",
+   "bytes": 26472,
+   "sha256": "3c1ec01abc9f4682fca0e14728ccbf250975cee61230142d6a4107b7daf95c61",
+   "nota": "Resumen del libro sin direcciones de cartera ni identificadores, calculado de los crudos con el mismo guion que el del investigador por la mañana (libro.py). Frente al de las 08:30:44 UTC solo cambia Pottendorfer (AT0000A324B4): sin la orden de 1 × 73 €; venta más barata 80 € × 11 (una orden del 08/02/2026), orden de menor importe 1 × 115 € (116,73 € con el 1,5 %), 106 en venta (v2: 106), mejor compra 19 € × 3 (06/11/2025). Las otras 10 fichas dan exactamente lo mismo que por la mañana."
+  }
+ ]
+}

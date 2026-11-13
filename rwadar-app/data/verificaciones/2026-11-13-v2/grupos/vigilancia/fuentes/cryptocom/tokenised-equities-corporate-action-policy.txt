@@ -1,0 +1,175 @@
+                                  Corporate Actions Policy
+  1.​ Definitions and Interpretation
+      1.1.​ In this Policy, unless the context otherwise requires, capitalised terms used but
+              not defined herein shall have the meanings given to them in the Terms and
+              Conditions.
+      1.2.​ The following terms shall have the following meanings:
+
+              "Adjustment Event" means any corporate action on or affecting the Underlying
+              Security in respect of which the Issuer may (but is not obliged to) adjust the terms
+              of a holder's Tokenised Stocks, including (without limitation) stock splits, reverse
+              stock splits, unit splits, stock dividends, cash dividends, capital gains
+              distributions, partial liquidations, spin-offs, rights issues, and warrant issuances.
+
+              "Terminal Event" means any corporate action or event following which the
+              Underlying Security ceases to exist, ceases to be listed or traded on its principal
+              market, or is converted into cash or other consideration, including (without
+              limitation) mergers, acquisitions, schemes of arrangement, full liquidations, and
+              delistings.
+
+              "Policy" means this Corporate Actions Policy, as amended from time to time.
+
+      1.3.​ References to the Issuer acting "in connection with" a corporate action refer to
+            the factual context in which the Issuer exercises its discretion and do not imply
+            that any action taken by the Issuer is causally required by, or constitutes the
+            pass-through of any benefit arising from, such corporate action.
+2.​   Scope and Application
+      2.1.​ This Policy applies to all Tokenised Stocks issued by the Issuer and forms part of
+            the Agreement between the holder and the Issuer, as incorporated by reference
+            into the Terms and Conditions.
+      2.2.​ In the event of any conflict between this Policy and the Terms and Conditions, the
+            Terms and Conditions shall prevail.
+3.​   Consent and Authority
+      3.1.​ As set out in the Terms and Conditions, Tokenised Stocks do not confer
+            shareholder rights in the Underlying Security and the holder has no proprietary
+            interest in any benefits received by the Issuer in its capacity as beneficial owner.
+      3.2.​ By acquiring or continuing to hold Tokenised Stocks, the holder authorises the
+            Issuer to take such actions as are described in this Policy on the holder's behalf
+            and without further instruction, including acquiring, disposing of, or adjusting
+            exposure to the Underlying Security or any related asset, and terminating the
+            holder's Tokenised Stocks in respect of Terminal Events.
+      3.3.​ The Issuer is under no obligation to take any action, make any adjustment, or
+            provide any value to the holder in connection with any corporate action. Any
+            action taken by the Issuer under this Policy is a discretionary decision, does not
+            constitute the exercise of any right or entitlement of the holder, and shall not
+            create any precedent or obligation in respect of any future event.
+      3.4.​  The manner in which any adjustment is implemented is determined by the Issuer
+             in its sole discretion and may be changed without notice. Where the Issuer
+             exercises such discretion, it acts as principal and not as agent, trustee, or
+             fiduciary, save to the extent of the limited authority granted under clause 3.2
+             above.
+4.​   Adjustment Events
+      4.1.​ The Issuer may, in its sole discretion, respond to specific types of Adjustment
+             Event as described in this clause 4, although for the avoidance of doubt nothing
+             in this clause 4 obliges the Issuer to take any of the actions described.
+      4.2.​ Stock Splits and Consolidations. Where the Underlying Security is subject to a
+             forward or reverse stock split, unit split, or similar reorganisation that changes the
+             number of shares outstanding or the ratio of shares to economic value, the Issuer
+             may adjust the number of units of exposure comprised in the holder's Tokenised
+             Stocks to reflect the revised share ratio of the Underlying Security. No additional
+             consideration is payable by the holder.
+      4.3.​ Stock Dividends. Where the issuer of the Underlying Security declares a
+             dividend payable in additional shares (whether ordinary or special), the Issuer
+             may increase the exposure represented by the holder's Tokenised Stocks to
+             reflect the additional shares. The amount of any such increase is determined by
+             the Issuer in its sole discretion.
+      4.4.​ Cash Dividends and Distributions
+           4.4.1.​ Where a cash dividend (whether ordinary or special), capital gains
+                      distribution (including ETF capital gains distributions), or other cash
+                      distribution is declared on the Underlying Security, the Issuer may, at its
+                      sole discretion, acquire additional exposure to the same Underlying
+                      Security on the holder's behalf, in such amount as the Issuer determines
+                      (which may be calculated by reference to the value of any such
+                      distribution on the Underlying Security, net of applicable withholding
+                      taxes, levies, and costs as determined by the Issuer or its service
+                      providers). This reinvestment mechanism operates automatically and on a
+                      mandatory basis — there is no option for the holder to elect a cash
+                      payment in lieu of additional exposure, and no per-holder opt-out is
+                      available.
+           4.4.2.​ The holder's position will be adjusted to reflect any additional exposure so
+                      acquired. The amount of additional exposure acquired (if any) is
+                      determined by the Issuer and may be less than the gross value of any
+                      corresponding distribution on the Underlying Security.
+           4.4.3.​ No cash distribution will be made to holders in connection with any
+                      dividend or distribution on the Underlying Security.
+           4.4.4.​ For the avoidance of doubt, the Issuer's decision to acquire additional
+                      exposure on the holder's behalf is a discretionary act of the Issuer and
+                      does not constitute a distribution of, or entitlement to, any dividend or
+                      other amount received by the Issuer on the Underlying Security. The
+                    holder has no right to receive, and no claim upon, the cash proceeds of
+                    any dividend or distribution on the Underlying Security.
+      4.5.​ Partial Liquidations. Where the Underlying Security is subject to a partial return
+            of capital or partial liquidation, the Issuer may treat such event in the same
+            manner as a cash dividend under clause 4.4, which applies accordingly.
+      4.6.​ Spin-Offs. Where the issuer of the Underlying Security distributes shares in a
+            newly separated entity by way of spin-off, demerger, or similar corporate
+            separation, the Issuer may, at its sole discretion, create a new Tokenised Stock
+            referencing the spin-off entity and allocate units of such new Tokenised Stock to
+            holders. The holder's existing Tokenised Stock position in the parent Underlying
+            Security may be adjusted to reflect any change in the value of the parent
+            following the spin-off. The Issuer is under no obligation to create any new
+            Tokenised Stock, to allocate any units to holders, or to provide any alternative
+            value in connection with a spin-off.
+      4.7.​ Rights, Warrants, and Similar Instruments. Where rights, warrants, or similar
+            instruments are issued in connection with the Underlying Security, the Issuer will
+            not pass these through to holders or provide any equivalent exposure or value.
+            The holder's position will remain unchanged.
+      4.8.​ Name and Symbol Changes. Where the Underlying Security undergoes a
+            change of name, ticker symbol, or other identifier, the Issuer may update the
+            relevant metadata of the Tokenised Stock. Such changes have no economic
+            impact on the holder's position. Trading may be temporarily suspended and
+            pending orders may be cancelled in connection with such changes.
+5.​   Terminal Events
+      5.1.​ Following a Terminal Event, the holder's Tokenised Stock shall terminate and the
+            holder's economic exposure to the Underlying Security shall accordingly cease.
+            The Issuer may, in its sole discretion, respond to specific types of Terminal Event
+            as described in this clause 5, although for the avoidance of doubt nothing in this
+            clause 5 obliges the Issuer to take any of the actions described.
+      5.2.​ Mergers: All-Cash. Where the Underlying Security is the subject of a merger,
+            acquisition, or similar transaction in which all consideration is payable in cash,
+            the Issuer may, in its sole discretion, make a payment to the holder denominated
+            in USDC (or such other digital asset as the Issuer determines). The amount of
+            any such payment will be determined by the Issuer and will be net of all costs,
+            taxes, withholdings, and other deductions. The relevant Tokenised Stock will be
+            delisted and will cease to be tradeable.
+      5.3.​ Mergers: Stock-for-Stock. Where the Underlying Security is the subject of a
+            merger, acquisition, company reorganisation, or similar transaction in which the
+            consideration is payable entirely in shares of an acquirer or successor entity, the
+            Issuer may, in its sole discretion, create a new Tokenised Stock referencing the
+            acquirer or successor security and allocate units of such new Tokenised Stock to
+            holders in a ratio determined by the Issuer. The original Tokenised Stock will be
+            delisted and will cease to be tradeable.
+      5.4.​  Mergers: Cash and Stock. Where the Underlying Security is the subject of a
+             merger, acquisition, or similar transaction in which the consideration comprises
+             both a cash component and a stock component, the Issuer may, in its sole
+             discretion, acquire additional exposure to the acquirer or successor security on
+             the holder's behalf (in such amount as the Issuer determines, which may be
+             calculated by reference to any cash consideration received by the Issuer, net of
+             applicable taxes, withholdings, and costs), and create a new Tokenised Stock
+             referencing the acquirer or successor security. The holder's position in the new
+             Tokenised Stock will reflect both the stock component and any additional
+             exposure so acquired. The original Tokenised Stock will be delisted and will
+             cease to be tradeable.
+      5.5.​ Full Liquidation. Where the issuer of the Underlying Security undergoes a full
+             liquidation or winding-up, the Issuer may, in its sole discretion, make a payment
+             to the holder denominated in USDC (or such other digital asset as the Issuer
+             determines), determined and net of deductions in the same manner as clause
+             5.2. The relevant Tokenised Stock will be delisted and will cease to be tradeable.
+      5.6.​ Delisting. Where the Underlying Security is delisted from its principal market or
+             ceases to be publicly traded, the relevant Tokenised Stock will be delisted and
+             will cease to be tradeable. The Issuer is under no obligation to make any
+             payment or provide any replacement position in connection with a delisting.
+      5.7.​ The following general provisions apply to all Terminal Events:
+           5.7.1.​ The Issuer's decision as to whether to take any applicable deductions,
+                     and the terms and timing on which it does so, shall be final.
+           5.7.2.​ Any value provided to the holder will be net of all costs, taxes,
+                     withholdings, and other deductions as determined by the Issuer.
+           5.7.3.​ The Issuer is not obliged to provide any notice period, claim mechanism,
+                     or distribution facility in connection with a Terminal Event, and the holder
+                     bears the risk that no value may be received.
+           5.7.4.​ Where the Issuer takes no action under this clause 5, the holder's
+                     Tokenised Stock shall terminate without any payment, replacement, or
+                     compensation.
+6.​   Trading Suspensions and Pending Orders
+      6.1.​ The Issuer may, in connection with any Adjustment Event or Terminal Event
+             (including, without limitation, in advance of or following any delisting under clause
+             5.6 or any other Terminal Event), temporarily suspend or restrict trading,
+             deposits, withdrawals, or any other activity relating to the affected Tokenised
+             Stock, for such period as the Issuer determines.
+      6.2.​ Pending orders relating to the affected Tokenised Stock (including limit orders,
+             recurring buy instructions, and any other standing instructions) may be cancelled
+             by the Issuer without prior notice to the holder. The holder bears the risk of
+             re-entering any orders following the resumption of trading.
+      6.3.​ The Issuer shall not be liable for any loss, cost, or expense incurred by the holder
+             as a result of any suspension, restriction, or cancellation under this clause 6.
+

@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "actualizadoEl": "2026-11-12",
+  "actualizadoEl": "2026-11-13",
   "nota": "Selección editorial de RWAdar con enlace a la fuente. Titulares propios; el detalle dice lo que consta en la fuente. No es una recomendación.",
   "noticias": [
     {
       "id": "cnmv-advertencias-supervisores-ue-11-entidades",
       "fecha": "2026-11-11",
-      "seccion": "hoy",
+      "seccion": "importante",
       "categoria": "riesgo",
       "ambito": "UE",
-      "titulo": "Otras 11 firmas sin registro: avisos de tres países de la UE",
+      "titulo": "11 firmas sin registro: avisos de tres países de la UE",
       "resumen": "La CNMV difunde los avisos de supervisores de Austria (seis), Países Bajos (cuatro) y Alemania (uno) sobre 11 entidades no registradas. El supervisor alemán prohibió a una de ellas ofrecer acciones al público por no haber publicado el folleto.",
       "porQueImporta": "Ofrecer valores al público sin el folleto exigido es una señal de alarma, también en las emisiones tokenizadas. Antes de invertir, busca la entidad en el buscador de advertencias de la CNMV.",
       "en": {
-        "titulo": "11 more unregistered firms flagged in three EU countries",
+        "titulo": "11 unregistered firms flagged in three EU countries",
         "resumen": "The CNMV relays warnings from supervisors in Austria (six), the Netherlands (four) and Germany (one) about 11 unregistered entities. Germany's supervisor barred one of them from offering shares to the public for not publishing a prospectus.",
         "porQueImporta": "Offering securities to the public without a required prospectus is a red flag, tokenised issues included. Before investing, look the firm up in the CNMV's search tool for warnings.",
         "tituloInformativo": "Spain's CNMV relays EU supervisors' warnings about 11 unregistered entities"
@@ -23,7 +23,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcdb0a20a-39bd-473f-9ddc-47ea5d982dab%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-12",
+      "consultadaEl": "2026-11-13",
       "tituloInformativo": "La CNMV difunde advertencias de supervisores europeos sobre 11 entidades no registradas",
       "imagen": "alerta-fraude"
     },
@@ -47,33 +47,9 @@
         "url": "https://cdn.robinhood.com/assets/robinhood/legal/rhj_base_prospectus_supplement_09_november_2026.pdf",
         "tipo": "empresa"
       },
-      "consultadaEl": "2026-11-12",
+      "consultadaEl": "2026-11-13",
       "tituloInformativo": "El emisor de los «Stock Tokens» de Robinhood podrá repercutir ciertos costes al inversor",
       "imagen": "acciones-eeuu"
-    },
-    {
-      "id": "prosegur-cash-pagares-dlt",
-      "fecha": "2026-11-06",
-      "seccion": "importante",
-      "categoria": "mercado",
-      "ambito": "España",
-      "titulo": "Prosegur Cash tokeniza 500.000 € en pagarés",
-      "resumen": "La CNMV inscribió a Minos Securities, A.V. como entidad que lleva el registro de la «1ª Emisión de Pagarés Prosegur Cash 2026»: 500.000 € en pagarés anotados con tecnología de registros distribuidos.",
-      "porQueImporta": "Es deuda tokenizada de una empresa española, pero la CNMV avisa: inscribirla no valida sus condiciones. No hemos hallado documento público ni a quién se vende.",
-      "en": {
-        "titulo": "Prosegur Cash tokenises €500,000 of commercial paper",
-        "resumen": "The CNMV registered Minos Securities, A.V. as the entity keeping the register of the «1st Prosegur Cash 2026 Commercial Paper Issue»: €500,000 of notes recorded using distributed ledger technology.",
-        "porQueImporta": "It is tokenised debt from a Spanish company, but the CNMV warns registration does not validate its terms. We found no public document or target buyers.",
-        "tituloInformativo": "CNMV registers a Prosegur Cash commercial paper issue recorded on DLT"
-      },
-      "fuente": {
-        "nombre": "CNMV, registro de entidades responsables del registro de valores en TRD (Minos Securities)",
-        "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A23875529&lang=es",
-        "tipo": "regulador"
-      },
-      "consultadaEl": "2026-11-12",
-      "tituloInformativo": "La CNMV inscribe una emisión de pagarés de Prosegur Cash anotada en registro DLT",
-      "imagen": "pagares-deuda"
     },
     {
       "id": "consejo-ue-tope-regimen-piloto-dlt",
@@ -95,7 +71,7 @@
         "url": "https://data.consilium.europa.eu/doc/document/ST-13779-2026-REV-1/en/pdf",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-12",
+      "consultadaEl": "2026-11-13",
       "tituloInformativo": "Los Estados de la UE piden subir a 300.000 millones el tope del régimen piloto DLT",
       "imagen": "instituciones-ue"
     },
@@ -119,7 +95,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7be319e419-ac2f-4812-9d69-01ed76101aee%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-12",
+      "consultadaEl": "2026-11-13",
       "tituloInformativo": "La CNMV autoriza Bit2Me STX, el segundo mercado español para valores tokenizados",
       "imagen": "bolsa-madrid"
     },
@@ -143,7 +119,7 @@
         "url": "https://www.cnmv.es/webservices/verdocumento/ver?t=%7bcff2b57d-5b54-44e2-98db-057d90acc64b%7d",
         "tipo": "regulador"
       },
-      "consultadaEl": "2026-11-12",
+      "consultadaEl": "2026-11-13",
       "tituloInformativo": "La CNMV propone atender quejas contra plataformas de financiación participativa y cripto",
       "imagen": "regulador-espana"
     }

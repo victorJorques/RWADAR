@@ -1,0 +1,35 @@
+URL: https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es
+HTTP: 200
+UTC: 2026-11-13T08:46:06Z
+SHA-256 crudo: a4ca7d483019f79d009d651e38c59310be0b89f4c011529b8b3e9963d4951615
+
+SPV de Hausera en la página: HAUSERA PROPERTY MANAGER SPV 2, HAUSERA PROPERTY MANAGER SPV 3, HAUSERA PROPERTY MANAGER SPV 4, HAUSERA PROPERTY MANAGER SPV 5, HAUSERA PROPERTY MANAGER SPV 6, HAUSERA PROPERTY MANAGER SPV 7, HAUSERA PROPERTY MANAGER SPV 8
+¿«SPV 9», «SPV 10» o «SPV 11»?: no
+Fecha más reciente de la página: 23/10/2026
+
+URL: https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=1
+HTTP: 200
+UTC: 2026-11-13T08:46:44Z
+SHA-256 crudo: 067fdc762602559872cf38c26393e284968b716557fea167bf79a46c580dd5a8
+
+SPV de Hausera en la página: HAUSERA PROPERTY MANAGER SPV
+¿«SPV 9», «SPV 10» o «SPV 11»?: no
+Fecha más reciente de la página: 14/05/2026
+
+URL: https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=2
+HTTP: 200
+UTC: 2026-11-13T08:46:44Z
+SHA-256 crudo: 23e7b2c6be7463e24aeee2fe2eecbed5e3dad1b00beb4acf93a418ac74df0d34
+
+SPV de Hausera en la página: ninguna
+¿«SPV 9», «SPV 10» o «SPV 11»?: no
+Fecha más reciente de la página: 31/10/2025
+
+URL: https://www.cnmv.es/portal/consultas/esi/erir_esi.aspx?nif=A86796182&lang=es&page=3
+HTTP: 200
+UTC: 2026-11-13T08:46:44Z
+SHA-256 crudo: bd80398df3d2c2f5a492d93df3ea18efbdbad1fe6ee810e14bd6066a230826fe
+
+SPV de Hausera en la página: ninguna
+¿«SPV 9», «SPV 10» o «SPV 11»?: no
+Fecha más reciente de la página: 08/02/2020

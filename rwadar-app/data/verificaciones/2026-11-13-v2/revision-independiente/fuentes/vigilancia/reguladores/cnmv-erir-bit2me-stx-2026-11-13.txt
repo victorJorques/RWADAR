@@ -1,0 +1,6 @@
+URL: https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A56759137&lang=es
+HTTP: 200
+UTC: 2026-11-13T08:46:07Z
+SHA-256 crudo: 42c613705fd8738a6743e55c8b41520fa92ef087682f6107254f14653ae49cc2
+
+

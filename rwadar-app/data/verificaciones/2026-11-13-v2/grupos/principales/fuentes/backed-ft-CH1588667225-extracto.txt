@@ -1,0 +1,66 @@
+Extracto de: https://sppdownloaddocumentservice.l-p-a.com/api/DownloadDocument/UPI/CH1588667225/BF%20Final%20Terms%20AND%20Summary%20(PDF)
+Descargado el 2026-11-13T08:33:33Z · PDF SHA-256 5297cd90dc1d736da0256f677b5696f8f02f6d0ab36b1d2457199eb1697e1f75 · pdftotext -layout
+--- líneas 1-40 ---
+                 Final Terms for Product Nr. 1,546 Xetra-Gold xStock 4GLDx (ISIN: CH1588667225)
+
+According to Art. 6 Para. 3 Sub-Para. 2 and Art. 8 of the Regulation (EU) 2017/1129 of the European Parliament
+and the Council of 14 June 2017, as amended (“Prospectus Regulation”) in connection with Art. 26 and
+Annexes 14, 17 and 28 of the Commission Delegated Regulation (EU) 2019/980 of 14 March 2019, as
+amended (“Delegated Regulation”)
+
+
+
+                                          for the issuance of tokenized securities
+                                                      (the “Products”)
+
+
+
+                                                              on
+                                                 Xetra-Gold Bearer Notes
+                                                   (the "Underlying(s)")
+
+
+
+
+                                                              of
+
+                                               Backed Assets (JE) Limited
+
+
+                                                       (the “Issuer”)
+
+                                     a private limited company incorporated in Jersey
+
+
+
+
+                                                           dated
+
+                                                   November 9th, 2026
+
+
+
+                                                      (“Final Terms”)
+--- líneas 1876-1890 (6. Additional Information) ---
+
+
+6. Additional Information
+
+ Country(ies) of offer(s)    The Products will be offered in Liechtenstein and Switzerland
+                             (only to Swiss Professional Investors). The right to offer in other
+                             jurisdictions is explicitly reserved.
+
+ Country(ies) where the      A notification shall in a first step be made to Austria, Belgium,
+ Base Prospectus has been    Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia,
+ notified                    Finland, France, Germany, Greece, Hungary, Iceland, Ireland,
+                             Italy, Latvia, Lithuania, Luxembourg, Malta, Norway, Poland,
+                             Portugal, Romania, Slovak Republic, Slovenia, Spain, Sweden
+                             and the Netherlands. The right to notify other EU-/EEA-member
+                             countries is explicitly reserved.
+--- líneas 1995-2000 ---
+
+
+This Summary is to be read together with the Base Prospectus of the Issuer dated 8 May 2026 ("Base
+Prospectus") and the Final Terms of the Issuer dated 09 November 2026, as well as any supplements to these
+documents.
+

@@ -1,0 +1,526 @@
+{
+ "fuente": [
+  "https://api.app.brickwise.at/api/v1/assets",
+  "https://api.app.brickwise.at/api/v2/assets"
+ ],
+ "consultadoUtc": {
+  "v1": "2026-11-13T08:41:37Z",
+  "v2": "2026-11-13T08:41:37Z",
+  "v1_repetida": "2026-11-13T08:48:00Z (mismo SHA-256)"
+ },
+ "nota": "Resumen del revisor independiente. Sin direcciones de cartera (firstParty, interestedParty) ni tokenId. Importe con el 1,5 % del comprador redondeado al céntimo con la mitad hacia arriba, en aritmética decimal exacta.",
+ "totales": {
+  "ventasAbiertas": 423,
+  "comprasAbiertas": 95,
+  "contactTypes": [
+   "bulletin"
+  ]
+ },
+ "fichas": {
+  "vivienda-pluddemanngasse-101-graz": {
+   "isin": "AT0000A2RAH5",
+   "stage_v1": "secondary",
+   "stage_v2": "secondary",
+   "availableBricks": 0,
+   "participacionesEnVenta_v1": 335,
+   "participacionesEnVenta_v2": 335,
+   "sumaVentasAbiertas": 335,
+   "lowestOfferPrice_v2": 75,
+   "ventaMasBarata": {
+    "precio": 75,
+    "cantidad": 2,
+    "ordenes": [
+     {
+      "cantidad": 2,
+      "creada": "2026-11-04T19:57:08.931Z",
+      "interesadoApuntado": false
+     }
+    ]
+   },
+   "ordenMenorImporte": [
+    {
+     "cantidad": 1,
+     "precio": 99,
+     "importe": "99.00",
+     "conComision1_5": "100.49",
+     "creada": "2026-07-15T16:20:41.212Z"
+    }
+   ],
+   "mejorCompra": {
+    "precio": 20,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-04-23T18:23:21.272Z"
+     }
+    ]
+   },
+   "ventasAbiertas": 22,
+   "comprasAbiertas": 3
+  },
+  "vivienda-sonnleithnergasse-2-viena": {
+   "isin": "AT0000A2T4D7",
+   "stage_v1": "secondary",
+   "stage_v2": "secondary",
+   "availableBricks": 0,
+   "participacionesEnVenta_v1": 97,
+   "participacionesEnVenta_v2": 97,
+   "sumaVentasAbiertas": 97,
+   "lowestOfferPrice_v2": 75,
+   "ventaMasBarata": {
+    "precio": 75,
+    "cantidad": 11,
+    "ordenes": [
+     {
+      "cantidad": 11,
+      "creada": "2026-04-28T18:36:48.091Z",
+      "interesadoApuntado": false
+     }
+    ]
+   },
+   "ordenMenorImporte": [
+    {
+     "cantidad": 1,
+     "precio": 80,
+     "importe": "80.00",
+     "conComision1_5": "81.20",
+     "creada": "2026-11-05T05:45:54.443Z"
+    }
+   ],
+   "mejorCompra": {
+    "precio": 65,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-10-16T05:08:59.631Z"
+     }
+    ]
+   },
+   "ventasAbiertas": 39,
+   "comprasAbiertas": 9
+  },
+  "local-de-estanco-klagenfurt": {
+   "isin": "AT0000A2U5V3",
+   "stage_v1": "secondary",
+   "stage_v2": "secondary",
+   "availableBricks": 0,
+   "participacionesEnVenta_v1": 302,
+   "participacionesEnVenta_v2": 302,
+   "sumaVentasAbiertas": 302,
+   "lowestOfferPrice_v2": 95,
+   "ventaMasBarata": {
+    "precio": 95,
+    "cantidad": 16,
+    "ordenes": [
+     {
+      "cantidad": 5,
+      "creada": "2026-03-21T16:44:13.022Z",
+      "interesadoApuntado": false
+     },
+     {
+      "cantidad": 10,
+      "creada": "2026-03-30T21:03:34.904Z",
+      "interesadoApuntado": false
+     },
+     {
+      "cantidad": 1,
+      "creada": "2026-11-05T05:44:57.500Z",
+      "interesadoApuntado": false
+     }
+    ]
+   },
+   "ordenMenorImporte": [
+    {
+     "cantidad": 1,
+     "precio": 95,
+     "importe": "95.00",
+     "conComision1_5": "96.43",
+     "creada": "2026-11-05T05:44:57.500Z"
+    }
+   ],
+   "mejorCompra": {
+    "precio": 15,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-09-21T09:51:17.681Z"
+     }
+    ]
+   },
+   "ventasAbiertas": 47,
+   "comprasAbiertas": 3
+  },
+  "vivienda-stallhofstra-e-28-gratwein": {
+   "isin": "AT0000A2WCD0",
+   "stage_v1": "secondary",
+   "stage_v2": "secondary",
+   "availableBricks": 0,
+   "participacionesEnVenta_v1": 317,
+   "participacionesEnVenta_v2": 317,
+   "sumaVentasAbiertas": 317,
+   "lowestOfferPrice_v2": 68.8,
+   "ventaMasBarata": {
+    "precio": 68.8,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-11-08T10:11:10.556Z",
+      "interesadoApuntado": false
+     }
+    ]
+   },
+   "ordenMenorImporte": [
+    {
+     "cantidad": 1,
+     "precio": 68.8,
+     "importe": "68.80",
+     "conComision1_5": "69.83",
+     "creada": "2026-11-08T10:11:10.556Z"
+    }
+   ],
+   "mejorCompra": {
+    "precio": 30,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-07-01T20:40:55.523Z"
+     }
+    ]
+   },
+   "ventasAbiertas": 88,
+   "comprasAbiertas": 12
+  },
+  "vivienda-schwarzer-weg-18-graz": {
+   "isin": "AT0000A2WCE8",
+   "stage_v1": "secondary",
+   "stage_v2": "secondary",
+   "availableBricks": 0,
+   "participacionesEnVenta_v1": 299,
+   "participacionesEnVenta_v2": 299,
+   "sumaVentasAbiertas": 299,
+   "lowestOfferPrice_v2": 69.9,
+   "ventaMasBarata": {
+    "precio": 69.9,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-10-27T08:07:56.369Z",
+      "interesadoApuntado": false
+     }
+    ]
+   },
+   "ordenMenorImporte": [
+    {
+     "cantidad": 1,
+     "precio": 69.9,
+     "importe": "69.90",
+     "conComision1_5": "70.95",
+     "creada": "2026-10-27T08:07:56.369Z"
+    }
+   ],
+   "mejorCompra": {
+    "precio": 60,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-11-10T22:07:19.436Z"
+     }
+    ]
+   },
+   "ventasAbiertas": 74,
+   "comprasAbiertas": 8
+  },
+  "drautalresidenz-paternion": {
+   "isin": "AT0000A2YPQ0",
+   "stage_v1": "secondary",
+   "stage_v2": "secondary",
+   "availableBricks": 0,
+   "participacionesEnVenta_v1": 150,
+   "participacionesEnVenta_v2": 150,
+   "sumaVentasAbiertas": 150,
+   "lowestOfferPrice_v2": 70,
+   "ventaMasBarata": {
+    "precio": 70,
+    "cantidad": 3,
+    "ordenes": [
+     {
+      "cantidad": 3,
+      "creada": "2026-10-18T13:52:13.491Z",
+      "interesadoApuntado": false
+     }
+    ]
+   },
+   "ordenMenorImporte": [
+    {
+     "cantidad": 1,
+     "precio": 84,
+     "importe": "84.00",
+     "conComision1_5": "85.26",
+     "creada": "2026-01-28T21:07:31.030Z"
+    }
+   ],
+   "mejorCompra": {
+    "precio": 60,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-11-05T17:00:31.521Z"
+     }
+    ]
+   },
+   "ventasAbiertas": 32,
+   "comprasAbiertas": 9
+  },
+  "randhartingergasse-9-viena": {
+   "isin": "AT0000A2ZT84",
+   "stage_v1": "secondary",
+   "stage_v2": "secondary",
+   "availableBricks": 374,
+   "participacionesEnVenta_v1": 189,
+   "participacionesEnVenta_v2": 189,
+   "sumaVentasAbiertas": 189,
+   "lowestOfferPrice_v2": 78,
+   "ventaMasBarata": {
+    "precio": 78,
+    "cantidad": 21,
+    "ordenes": [
+     {
+      "cantidad": 20,
+      "creada": "2026-06-29T19:30:56.157Z",
+      "interesadoApuntado": true
+     },
+     {
+      "cantidad": 1,
+      "creada": "2026-11-02T13:59:27.693Z",
+      "interesadoApuntado": false
+     }
+    ]
+   },
+   "ordenMenorImporte": [
+    {
+     "cantidad": 1,
+     "precio": 78,
+     "importe": "78.00",
+     "conComision1_5": "79.17",
+     "creada": "2026-11-02T13:59:27.693Z"
+    }
+   ],
+   "mejorCompra": {
+    "precio": 64,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-11-12T15:34:01.953Z"
+     }
+    ]
+   },
+   "ventasAbiertas": 33,
+   "comprasAbiertas": 9
+  },
+  "apartamento-vacacional-hinterstoder-50": {
+   "isin": "AT0000A31KP7",
+   "stage_v1": "secondary",
+   "stage_v2": "secondary",
+   "availableBricks": 0,
+   "participacionesEnVenta_v1": 265,
+   "participacionesEnVenta_v2": 265,
+   "sumaVentasAbiertas": 265,
+   "lowestOfferPrice_v2": 75,
+   "ventaMasBarata": {
+    "precio": 75,
+    "cantidad": 5,
+    "ordenes": [
+     {
+      "cantidad": 5,
+      "creada": "2026-11-08T17:17:27.488Z",
+      "interesadoApuntado": false
+     }
+    ]
+   },
+   "ordenMenorImporte": [
+    {
+     "cantidad": 1,
+     "precio": 90,
+     "importe": "90.00",
+     "conComision1_5": "91.35",
+     "creada": "2026-08-02T06:54:59.241Z"
+    },
+    {
+     "cantidad": 1,
+     "precio": 90,
+     "importe": "90.00",
+     "conComision1_5": "91.35",
+     "creada": "2026-08-02T06:56:02.572Z"
+    },
+    {
+     "cantidad": 1,
+     "precio": 90,
+     "importe": "90.00",
+     "conComision1_5": "91.35",
+     "creada": "2026-08-02T06:58:31.772Z"
+    }
+   ],
+   "mejorCompra": {
+    "precio": 20,
+    "cantidad": 4,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2025-05-19T18:41:00.963Z"
+     },
+     {
+      "cantidad": 3,
+      "creada": "2026-09-29T19:23:09.015Z"
+     }
+    ]
+   },
+   "ventasAbiertas": 38,
+   "comprasAbiertas": 6
+  },
+  "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+   "isin": "AT0000A324B4",
+   "stage_v1": "secondary",
+   "stage_v2": "secondary",
+   "availableBricks": 0,
+   "participacionesEnVenta_v1": 107,
+   "participacionesEnVenta_v2": 107,
+   "sumaVentasAbiertas": 107,
+   "lowestOfferPrice_v2": 73,
+   "ventaMasBarata": {
+    "precio": 73,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-11-12T21:45:35.934Z",
+      "interesadoApuntado": false
+     }
+    ]
+   },
+   "ordenMenorImporte": [
+    {
+     "cantidad": 1,
+     "precio": 73,
+     "importe": "73.00",
+     "conComision1_5": "74.10",
+     "creada": "2026-11-12T21:45:35.934Z"
+    }
+   ],
+   "mejorCompra": {
+    "precio": 19,
+    "cantidad": 3,
+    "ordenes": [
+     {
+      "cantidad": 3,
+      "creada": "2025-11-06T05:38:50.943Z"
+     }
+    ]
+   },
+   "ventasAbiertas": 20,
+   "comprasAbiertas": 13
+  },
+  "fotovoltaica-greenpoint": {
+   "isin": "AT0000A38J32",
+   "stage_v1": "secondary",
+   "stage_v2": "secondary",
+   "availableBricks": 0,
+   "participacionesEnVenta_v1": 347,
+   "participacionesEnVenta_v2": 347,
+   "sumaVentasAbiertas": 347,
+   "lowestOfferPrice_v2": 102,
+   "ventaMasBarata": {
+    "precio": 102,
+    "cantidad": 8,
+    "ordenes": [
+     {
+      "cantidad": 5,
+      "creada": "2026-09-05T09:18:18.679Z",
+      "interesadoApuntado": false
+     },
+     {
+      "cantidad": 2,
+      "creada": "2026-09-28T12:43:48.726Z",
+      "interesadoApuntado": true
+     },
+     {
+      "cantidad": 1,
+      "creada": "2026-11-11T20:55:45.679Z",
+      "interesadoApuntado": false
+     }
+    ]
+   },
+   "ordenMenorImporte": [
+    {
+     "cantidad": 1,
+     "precio": 102,
+     "importe": "102.00",
+     "conComision1_5": "103.53",
+     "creada": "2026-11-11T20:55:45.679Z"
+    }
+   ],
+   "mejorCompra": {
+    "precio": 84,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-06-23T21:04:03.003Z"
+     }
+    ]
+   },
+   "ventasAbiertas": 16,
+   "comprasAbiertas": 7
+  },
+  "fotovoltaica-cohotel": {
+   "isin": "AT0000A38J40",
+   "stage_v1": "secondary",
+   "stage_v2": "secondary",
+   "availableBricks": 0,
+   "participacionesEnVenta_v1": 59,
+   "participacionesEnVenta_v2": 59,
+   "sumaVentasAbiertas": 59,
+   "lowestOfferPrice_v2": 102,
+   "ventaMasBarata": {
+    "precio": 102,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2026-11-11T20:52:39.539Z",
+      "interesadoApuntado": false
+     }
+    ]
+   },
+   "ordenMenorImporte": [
+    {
+     "cantidad": 1,
+     "precio": 102,
+     "importe": "102.00",
+     "conComision1_5": "103.53",
+     "creada": "2026-11-11T20:52:39.539Z"
+    }
+   ],
+   "mejorCompra": {
+    "precio": 3,
+    "cantidad": 1,
+    "ordenes": [
+     {
+      "cantidad": 1,
+      "creada": "2024-11-23T19:54:40.625Z"
+     }
+    ]
+   },
+   "ventasAbiertas": 5,
+   "comprasAbiertas": 5
+  }
+ }
+}

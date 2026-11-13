@@ -1,0 +1,199 @@
+{
+ "slug": "candidata-valorix-bit2me-stx",
+ "tipoExpediente": "candidata",
+ "grupo": "vigilancia",
+ "proveedor": "Bit2Me STX",
+ "plataformaSlug": null,
+ "entidadComercializadora": "BIT2ME SECURITY TOKENS EXCHANGE STX, A.V., S.A. (NIF A56759137)",
+ "emisor": "Valorix. La nota no da la razón social del emisor de diciembre; en la ERIR de Ursus-3 consta ACTIVOS Y VALORES DIGITALES, S.A. (Valorix) por una emisión anterior de 500.000 €",
+ "vehiculo": "Bono corporativo con TRD para negociarse en el SNL TRD «Bit2Me STX»",
+ "token": "No publicado para la emisión de diciembre",
+ "derechoAdquirido": "Deuda de Valorix según un documento de emisión aún no público",
+ "jurisdiccion": "ES",
+ "identificador": null,
+ "moneda": "EUR",
+ "documentos": [
+  {
+   "titulo": "Bit2Me · nota «Bit2Me STX obtiene la autorización de la CNMV…»",
+   "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "versionOFecha": "consulta 2026-11-13T08:31:20Z",
+   "paginas": null,
+   "sha256": null,
+   "leido": true,
+   "nota": "Texto igual que el 12/11 salvo los precios de criptomonedas del menú: sigue «previsto para diciembre de 2026», «dirigido a inversores elegibles». La página del producto (bit2me.com/es/stx, 08:31:19Z) solo cambia el orden del menú de criptomonedas."
+  },
+  {
+   "titulo": "valorix.com y valorix.com/invertir.html",
+   "url": "https://valorix.com/invertir.html",
+   "versionOFecha": "consulta 2026-11-13T08:30:52Z–08:30:53Z",
+   "paginas": null,
+   "sha256": "b233b45d2d97f4d8 (prefijo)",
+   "leido": true,
+   "nota": "valorix.com y su página «invertir», byte a byte iguales que el 11/11 y el 12/11 («Segunda Emisión · 2026», registro de interés; no se rellenó)."
+  },
+  {
+   "titulo": "Valorix · documento de emisión (emisión de enero de 2026)",
+   "url": "https://valorix.com/docs/documento-de-emision.pdf",
+   "versionOFecha": "descarga 2026-11-13T08:30:53Z",
+   "paginas": null,
+   "sha256": "5640e21125bfaf15 (prefijo)",
+   "leido": true,
+   "nota": "Mismo SHA-256 que el 11/11 y el 12/11 (5640e211…). No es el documento del bono de diciembre."
+  }
+ ],
+ "registros": [
+  {
+   "regulador": "CNMV",
+   "entidad": "BIT2ME SECURITY TOKENS EXCHANGE STX, A.V., S.A. (como ERIR)",
+   "numero": "Sin emisiones inscritas",
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A56759137&lang=es",
+   "alcance": "«No se han encontrado datos disponibles» (idéntico byte a byte al del 12/11).",
+   "consultadoUtc": "2026-11-13T08:31:24Z"
+  },
+  {
+   "regulador": "CNMV",
+   "entidad": "URSUS-3 CAPITAL, A.V., S.A. (ERIR) · emisión anterior de ACTIVOS Y VALORES DIGITALES, S.A. (Valorix)",
+   "numero": "Inscripción del 31/10/2025: obligaciones con TRD por 500.000 €",
+   "url": "https://www.cnmv.es/portal/consultas/esi/erir_esi?nif=A86796182&lang=es",
+   "alcance": "Emisión anterior, no la de diciembre.",
+   "consultadoUtc": "2026-11-13T08:30:54Z"
+  }
+ ],
+ "advertenciasReguladores": [
+  {
+   "regulador": "CNMV",
+   "busqueda": "Valorix",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Valorix",
+   "consultadoUtc": "2026-11-13T08:33:14Z",
+   "alcance": "Buscador validado hoy con «Trading» (mismo resultado que el 12/11, 08:32:33Z); PDF de «otras entidades» con el mismo SHA-256 que el 10/11, 11/11 y 12/11 (08:32:26Z), sin coincidencias."
+  },
+  {
+   "regulador": "CNMV",
+   "busqueda": "Bit2Me",
+   "resultado": "sin coincidencias («No hay datos disponibles»)",
+   "url": "https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=Bit2Me",
+   "consultadoUtc": "2026-11-13T08:33:17Z",
+   "alcance": "Buscador validado hoy con «Trading» (mismo resultado que el 12/11, 08:32:33Z); PDF de «otras entidades» con el mismo SHA-256 que el 10/11, 11/11 y 12/11 (08:32:26Z), sin coincidencias."
+  }
+ ],
+ "claims": [
+  {
+   "campo": "estado",
+   "literal": "un bono corporativo tokenizado de 1 millón de euros, dirigido a inversores elegibles conforme a la normativa de emisión aplicable, previsto para diciembre de 2026",
+   "dato": "Bono de Valorix de 1 M€ previsto para diciembre de 2026; hoy no se puede comprar",
+   "fuentePrimaria": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "localizador": "Nota de Bit2Me, párrafo sobre la primera emisión",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:31:20Z",
+   "alcanceYLimites": "«Inversores elegibles» sin definir.",
+   "estado": "respaldado_con_alcance"
+  },
+  {
+   "campo": "minimo",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://valorix.com/invertir.html",
+   "localizador": "Sin documento de la emisión de diciembre",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:30:53Z",
+   "alcanceYLimites": "La cifra «12% TAE» del título de la página es comercial y de otra emisión; no se usa.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "accesoEspana",
+   "literal": null,
+   "dato": null,
+   "fuentePrimaria": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "localizador": "«dirigido a inversores elegibles»",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:31:20Z",
+   "alcanceYLimites": "No dice si incluye particulares.",
+   "estado": "no_verificable"
+  },
+  {
+   "campo": "salida",
+   "literal": "que cotizará posteriormente en el mercado secundario",
+   "dato": null,
+   "fuentePrimaria": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "localizador": "Nota de Bit2Me",
+   "fechaDato": null,
+   "consultadoUtc": "2026-11-13T08:31:20Z",
+   "alcanceYLimites": "Sin vencimiento ni condiciones publicadas.",
+   "estado": "no_verificable"
+  }
+ ],
+ "criterios": {
+  "entidadYPermisos": {
+   "veredicto": "cumple_con_limites",
+   "nota": "Bit2Me STX autorizada (agencia de valores nº 343 y SNL TRD, dato del 05/11); el emisor de diciembre no tiene documento."
+  },
+  "actividadYFecha": {
+   "veredicto": "no_cumple",
+   "nota": "Anunciado para diciembre de 2026; nada abierto el 13/11."
+  },
+  "accesoYCondiciones": {
+   "veredicto": "no_verificable",
+   "nota": "Sin documento: ni mínimo, ni destinatarios, ni salida."
+  },
+  "riesgosYAlertas": {
+   "veredicto": "no_verificable",
+   "nota": "Sin documento de riesgos; sin advertencias de la CNMV."
+  }
+ },
+ "estadoOferta": "proxima",
+ "disponibleEs": "no_confirmado",
+ "cambiosRespectoPublicado": [
+  {
+   "campo": "todo",
+   "antes": "No admitida (12/11): bono previsto para diciembre de 2026, sin documento",
+   "ahora": "Igual el 13/11: nota de Bit2Me con el mismo texto, valorix.com y su documento byte a byte iguales, ERIR de Bit2Me STX vacía",
+   "fuente": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+   "critico": false
+  }
+ ],
+ "propuestaTarjeta": {
+  "titulo": "Bono tokenizado de Valorix en Bit2Me STX",
+  "categoria": "Crédito privado",
+  "pais": "ES",
+  "tipo": "rendimiento",
+  "coleccion": null,
+  "resumen": "Bono de 1 millón de euros anunciado para diciembre de 2026 en la bolsa en cadena de Bit2Me; sin documento de emisión.",
+  "rentabilidad": null,
+  "metricas": [],
+  "avisos": [],
+  "url": "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/",
+  "fuentesActuales": [
+   "https://blog.bit2me.com/es/bit2me-stx-obtiene-la-autorizacion-de-la-cnmv-para-lanzar-su-bolsa-de-valores-nativa-en-blockchain/"
+  ],
+  "lugar": null,
+  "pasos": [],
+  "concepto": null,
+  "resumenTarjeta": {
+   "minimo": null,
+   "accesoEspana": null,
+   "salida": null
+  },
+  "nota": "Candidata no admitida: la tarjeta no se propone. resumenTarjeta solo recoge lo que hoy se puede leer en fuente primaria; lo demás queda en null."
+ },
+ "prioridadEditorial": {
+  "compraDesdeEspanaComoParticular": "no_confirmado",
+  "minimoEntrada": null,
+  "supervisorVerificado": "CNMV: Bit2Me STX, A.V. (nº 343, dato del 05/11)",
+  "documentacionClara": "no",
+  "salidaExplicada": "no",
+  "cifraRecienteVerificada": "no",
+  "porQueDestaca": "Primera emisión anunciada en una infraestructura española autorizada.",
+  "porQueNo": "Sin documento de emisión ni fecha; «inversores elegibles» sin definir."
+ },
+ "decision": "no_admitir",
+ "motivoDecision": "Sin cambios el 13/11: el bono de Valorix sigue «previsto para diciembre de 2026», para «inversores elegibles», sin documento de emisión, mínimo ni condiciones; la ERIR de Bit2Me STX no tiene emisiones. Revisar en diciembre.",
+ "bloqueos": [
+  "valorix.es: conexión cortada con curl (08:31:08Z, tres intentos) y 502 con el navegador (08:34:54Z).",
+  "stx.bit2me.com: no se reabrió hoy (404 sin sesión el 12/11)."
+ ],
+ "consulta": {
+  "inicioUtc": "2026-11-13T08:29:31Z",
+  "finUtc": "2026-11-13T08:41:42Z"
+ }
+}

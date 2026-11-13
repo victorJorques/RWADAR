@@ -1,0 +1,21 @@
+Revisor independiente · grupo brickwise · 13/11/2026 (horas UTC)
+
+CNMV · EFFECTA GmbH, n.º 5003 (curl con accept-language: es; la URL .aspx responde 301 y se sigue la redirección a /portal/Consultas/ESI/ESISExtranjerasLP)
+- 08:45:20–08:45:25 https://www.cnmv.es/portal/Consultas/ESI/ESISExtranjerasLP?numero=5003&tipo=CLP
+  «Nº Registro Oficial 5003 · Fecha registro oficial 11/11/2020 · País de origen ALEMANIA · Am Sportplatz, 13 - 61197 Florstadt»
+- …&vista=17 (programa): «1. Recepción y transmisión de órdenes de clientes en relación con uno o más instrumentos financieros · 1) Valores negociables · 3) Participaciones y acciones en instituciones de inversión colectiva»
+- …&vista=8 (agentes): «No se han encontrado datos disponibles»
+
+CNMV · Advertencias (https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=…), 08:45:41–08:45:58
+- Brickwise, Effecta, Brick Qogir, Brick Sagarmatha, BrickOne, Cohotel, Green-Point, Green Point: «No hay datos disponibles.»
+- Control de que el buscador funciona: «Trading» → «Página 1 de 16 · Resultado de búsqueda de Advertencias de la CNMV» (primera fila 10/11/2026).
+
+BaFin, 08:46:09–08:46:11 (curl, petición normal)
+- https://portal.mvp.bafin.de/database/InstInfo/institutDetails.do?cmd=loadInstitutAction&institutId=133261
+  «Effecta GmbH · Gattung: Wertpapierinstitut · Bafin-ID: 10133261 · Anlageberatung (§ 2 Abs. 2 Nr. 4 WpIG) 26.06.2021 · Anlagevermittlung (§ 2 Abs. 2 Nr. 3 WpIG) 26.06.2021» · «Stand der Daten: 12.11.2026»
+- https://portal.mvp.bafin.de/database/VGVInfo/vermittlerSucheForm.do (POST nameVermittler=Brickwise)
+  «Vertraglich gebundener Vermittler · Brickwise Investment GmbH · München» · fila: Nr. 80174029 | Effecta GmbH | Florstadt | Tätig ab 04.08.2021 | Tätig bis (vacío) | Meldedatum 29.06.2023
+  (El registro nombra a un representante persona física: recortado, no se copia.)
+
+FMA (Austria), 08:46:24–08:46:25
+- https://www.fma.gv.at/en/?s=brickwise → HTTP 403, título «Just a moment...» (desafío de Cloudflare). Un solo intento con curl normal; no se elude.

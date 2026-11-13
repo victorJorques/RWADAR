@@ -1,0 +1,155 @@
+{
+  "tipo": "ensayo_despues_de_aplicar",
+  "ejecutadoEl": "2026-11-13T14:44:38Z–14:51:52Z",
+  "correccion": "Repetido tras las correcciones de la revisión de la entrega (O1 de cumplimiento: Pottendorfer con el libro de las 14:36 UTC). Sustituye al ensayo de las 09:15–09:21 UTC, que era de la revisión 66907add (SHA 7be64e86…6961), ya sustituida.",
+  "como": "Copia aparte del repositorio (git clone --no-local de la carpeta de trabajo, en 80c6238, a /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/ensayo-2026-11-13-r2), con los archivos de esta entrega copiados encima (todo lo que git status daba como cambiado o nuevo en la carpeta de trabajo, más correcciones-entrega/crudo/, que no va a Git) y node_modules enlazados. Allí preparar-entrega.mjs dio la misma revisión y el mismo SHA. comprobar-entrega.mjs --exportar=DIR aplica el SQL en PGlite sobre la cadena de producción (lotes del 22/10 a la 2026-11-12) y guarda lo que leería un visitante por REST (DIR = /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/rest-2026-11-13-r2); ensayo-rest-simulado.cjs sirve esos datos a sincronizar.js y volcar-seed.js. Como lectura «después de aplicar» (la que exige la prueba de la app ofertas-presentacion.test.cjs) se usaron las mismas vistas exportadas, copiadas en lectura-despues-de-aplicar/ SOLO en la copia y marcadas como simuladas. Nada sale a la red ni toca Supabase. TMPDIR apuntaba al scratchpad.",
+  "revision": "434217eb-9b7f-1cd9-a851-fbde7bced2bf",
+  "huella": "434217eb9b7f1cd9a851fbde7bced2bf001c79ac17610ad1d2a24edb8a9c1b61",
+  "sha256AplicarYAprobar": "b6f0129cc4e8e82033bd9b4171bfaecc790e6de84c42671e291091aef99ee7b4",
+  "pasos": [
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-13-v2/comprobar-entrega.mjs --exportar=DIR",
+      "salida": "exit 0 · «resultado: correcto» · 19 comprobaciones y 6 casos de fallo (más el caso «ya importada como borrador», que pasa) · revisión 434217eb-9b7f-1cd9-a851-fbde7bced2bf · SHA b6f0129c…e7b4 · inventario 288 sentencias (284 inserts solo en rwadar_catalogo; las mismas filas por tabla que la 2026-11-12) · 81 cambios en 18 fichas comprobados en lo que lee un visitante · Pottendorfer: 80 €, 116,73 € con el 1,5 %, 106 en venta, mejor compra 19 €, tres alcances con «(14:36 UTC)» y ningún rastro de la orden de 73 € · sincronizador interno: CSV de 30 filas idéntico al de la web; frente a rwadar-site/ cambian las 52 fichas (22 de oferta, 25 de plataforma y 5 de descartadas); la ficha web de Pottendorfer dice «Desde 80 € la participación en reventa (13/11)» y 116,73 € · 8 archivos exportados. Repetido al final (14:51:25–14:51:52 UTC) con el contraste definitivo: lo mismo; lo exportado solo difiere en el uuid de cada plataforma, que PGlite genera al instalar (tolerancia de siempre). Su informe es pruebas-locales.json de esta carpeta."
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-13-v2/despues-de-aplicar.mjs (antes de sincronizar)",
+      "salida": "exit 1 · se niega: «AssertionError [ERR_ASSERTION]: el catálogo sincronizado no es la revisión 434217eb-9b7f-1cd9-a851-fbde7bced2bf: aplica antes el SQL y ejecuta node rwadar-app/sincronizar.js». transparencia.json, el mismo SHA-256 antes y después (ae3ed55e…). Lo mismo en la carpeta de trabajo."
+    },
+    {
+      "orden": "RWADAR_REST_SIMULADO=DIR node -r ./rwadar-app/data/verificaciones/2026-11-13-v2/ensayo-rest-simulado.cjs rwadar-app/sincronizar.js",
+      "salida": "exit 0 · «[REST simulado] catalogo_plataformas_publicas_v2?select=*&limit=257 -> 25 filas» · «… descartada … -> 5 filas» · «catalogo_ofertas_publicas_v2?select=*&limit=1001 -> 22 filas» · «Sincronizado desde Supabase: 25 plataformas verificadas, 5 descartadas y 22 ofertas clasificadas.» · «rwadar.csv regenerado: 30 filas.» (rwadar.csv sin diferencias)"
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-13-v2/despues-de-aplicar.mjs",
+      "salida": "exit 0 · «Comprobaciones de transparencia al 13/11: 43 de 44» (se queda mTBILL «supervisada», 10/11) · suizas con hora real (Aktionariat 08:31:39 y 08:31:24, Boss Info 08:33:29 y 08:33:37, Switzerlend 08:32:34 y 08:32:34 UTC) · «Títulos de puntos fuertes con fecha de consulta: 11 de 11 pasan al 13/11.» · mínimos cortos de Brickwise, todos con la fecha 13/11 y Pottendorfer «Desde 80 € la participación (13/11)» · Switzerlend «1 acción (68,01 CHF, 13/11)» · Hausera «Desde 100 € en Alicante 3 (13/11)» · transparencia.json → f5bb46fe…bbcf. Frente al ensayo de la mañana, transparencia.json solo cambia en el mínimo corto de Pottendorfer (73 → 80 €) y en revisionCatalogo."
+    },
+    {
+      "orden": "node rwadar-app/data/verificaciones/2026-11-13-v2/despues-de-aplicar.mjs (otra vez, y una tercera al final)",
+      "salida": "exit 0 · «Nada que cambiar: ya estaba hecho.» · mismo SHA f5bb46fe…bbcf"
+    },
+    {
+      "orden": "RWADAR_REST_SIMULADO=DIR node -r ./rwadar-app/data/verificaciones/2026-11-13-v2/ensayo-rest-simulado.cjs rwadar-app/volcar-seed.js",
+      "salida": "exit 0 · «02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13 fuentes.» Sin diferencias (hoy no se toca public.plataformas ni public.fuentes)."
+    },
+    {
+      "orden": "node rwadar-editorial-source/ofertas/transparencia.mjs",
+      "salida": "exit 0 · «Transparencia escrita: 22 ofertas con transparencia»"
+    },
+    {
+      "orden": "node rwadar-fichas.js",
+      "salida": "exit 0 · «Archivos actualizados: 55» (22 fichas de oferta, 25 de plataforma y 5 de descartadas, más cambios.html, metodologia.html y sitemap.xml). Ninguna ficha nueva ni retirada."
+    },
+    {
+      "orden": "npm test (raíz; con la lectura «después de aplicar» simulada en la copia)",
+      "salida": "exit 1 en 5 min 22 s (14:45:30–14:50:52 UTC), por UNA prueba que no es del catálogo (la misma de la mañana): test:db, test:web, test:qr, test:mobile y test:tools pasan enteros; en test:acceso (el último), 312 de 313 · base de datos: 32 scripts con «0 fallidas» (1.348 comprobaciones), «30 comprobaciones SQL correctas, sin red», node --test 11/11 y 103/103 · web: «Pre-renderizado: 25 fichas, 5 descartadas y 22 emisiones escritas en el HTML (199 kB).», «710 correctas, 0 fallidas», «70 verificaciones de páginas y RSS correctas», «40 pruebas de precarga correctas; sin SQL ni red remota.» · QR: «Todo correcto: el código se lee.» · móvil: 630 pruebas, 628 correctas, 0 fallos, 2 omitidas · herramientas: «fichas.json: 22 fichas (22 con foto), catálogo 2026-11-13-v2», «Transparencia al día: 22 ofertas con transparencia», «Diferencias: 0» · acceso: 312/313; falla «en Chromium: Inicio con 3 noticias compactas en «Mercado y noticias»…» (rwadar-acceso/noticias-sector.test.mjs:172) con «el día de la de hoy, «Hoy» solo en ella» (esperaba «Hoy» en cnmv-advertencias-supervisores-ue-11-entidades)."
+    },
+    {
+      "orden": "Control: la misma prueba en otra copia limpia del repositorio en su HEAD (80c6238, sin nada de esta entrega): node --test --test-name-pattern='Inicio con 3 noticias compactas' rwadar-acceso/noticias-sector.test.mjs",
+      "salida": "exit 1 · «el día de la de hoy, «Hoy» solo en ella» · # pass 0 · # fail 1. Falla igual sin la entrega: viene de las noticias del 13/11, no del catálogo. Hay que ajustar esa prueba web antes de publicar la web."
+    },
+    {
+      "orden": "«Lo esencial» y la tarjeta de la app (datosCortosOferta y datosTarjetaOferta de rwadar-movil/lib/transparencia.js con resumenOferta y el catálogo sincronizado de la copia; script de solo lectura en el scratchpad, entrega-1311/montador-correcciones/scripts/lo-esencial-1311.cjs)",
+      "salida": "revisión 434217eb-9b7f-1cd9-a851-fbde7bced2bf, las 22 verificadas el 13/11. Frente a la carpeta de trabajo (revisión a58dd22d, 12/11): cambian 13 y solo la fecha del mínimo (12/11 → 13/11): las 11 de Brickwise (Pottendorfer «Desde 80 € la participación (13/11)», el mismo precio que lo publicado), Switzerlend y Hausera. Las otras 9 dicen lo mismo. Frente al ensayo de la mañana (66907add) solo cambia Pottendorfer: «Desde 73 € …» → «Desde 80 € la participación (13/11)»."
+    }
+  ],
+  "loEsencialApp": {
+    "aktionariat": {
+      "esencial": "Mínimo: 500 CHF · España: Sí, según la fuente · Salida: Venta a otros accionistas",
+      "tarjeta": "Mínimo 500 CHF · España Sí"
+    },
+    "kraken-xstocks": {
+      "esencial": "Mínimo: 1 € · España: Sí, según la fuente · Salida: Venta a Kraken, 24/5",
+      "tarjeta": "Mínimo 1 € · España Sí"
+    },
+    "prosegur-digital-gold": {
+      "esencial": "Mínimo: 1 gramo de oro · España: Sí, según la fuente · Salida: Recompra por Prosegur",
+      "tarjeta": "Mínimo 1 gramo de oro · España Sí"
+    },
+    "robinhood-classic-stock-tokens": {
+      "esencial": "Mínimo: 1 € · España: Sí, según la fuente · Salida: Cierre con Robinhood, 24/5",
+      "tarjeta": "Mínimo 1 € · España Sí"
+    },
+    "spiko-smart-cash-euro": {
+      "esencial": "Mínimo: 1 € · España: Sí, según la fuente · Salida: Reembolso diario, con límites",
+      "tarjeta": "Mínimo 1 € · España Sí"
+    },
+    "spiko-letras-del-tesoro-dolar": {
+      "esencial": "Mínimo: 1 USD · España: Sí, según la fuente · Salida: Reembolso diario",
+      "tarjeta": "Mínimo 1 USD · España Sí"
+    },
+    "spiko-letras-del-tesoro-euro": {
+      "esencial": "Mínimo: 1 € · España: Sí, según la fuente · Salida: Reembolso diario",
+      "tarjeta": "Mínimo 1 € · España Sí"
+    },
+    "boss-info": {
+      "esencial": "Mínimo: 100 CHF · España: Sí, según la fuente · Salida: Venta a otros accionistas",
+      "tarjeta": "Mínimo 100 CHF · España Sí"
+    },
+    "switzerlend": {
+      "esencial": "Mínimo: 1 acción (68,01 CHF, 13/11) · España: Sí, según la fuente · Salida: Venta a otros accionistas",
+      "tarjeta": "Mínimo 1 acción (68,01 CHF, 13/11) · España Sí"
+    },
+    "apartamento-vacacional-hinterstoder-50": {
+      "esencial": "Mínimo: Desde 75 € la participación (13/11) · España: Sin confirmar · Salida: Reventa en la app, si hay comprador",
+      "tarjeta": "Mínimo Desde 75 € la participación (13/11) · España Sin confirmar"
+    },
+    "drautalresidenz-paternion": {
+      "esencial": "Mínimo: Desde 70 € la participación (13/11) · España: Sin confirmar · Salida: Reventa en la app, si hay comprador",
+      "tarjeta": "Mínimo Desde 70 € la participación (13/11) · España Sin confirmar"
+    },
+    "fotovoltaica-cohotel": {
+      "esencial": "Mínimo: Desde 102 € la participación (13/11) · España: Sin confirmar · Salida: Nominal en 2038; antes, reventa",
+      "tarjeta": "Mínimo Desde 102 € la participación (13/11) · España Sin confirmar"
+    },
+    "fotovoltaica-greenpoint": {
+      "esencial": "Mínimo: Desde 102 € la participación (13/11) · España: Sin confirmar · Salida: Nominal en 2038; antes, reventa",
+      "tarjeta": "Mínimo Desde 102 € la participación (13/11) · España Sin confirmar"
+    },
+    "randhartingergasse-9-viena": {
+      "esencial": "Mínimo: Desde 78 € la participación (13/11) · España: Sin confirmar · Salida: Reventa en la app, si hay comprador",
+      "tarjeta": "Mínimo Desde 78 € la participación (13/11) · España Sin confirmar"
+    },
+    "local-de-estanco-klagenfurt": {
+      "esencial": "Mínimo: Desde 95 € la participación (13/11) · España: Sin confirmar · Salida: Reventa en la app, si hay comprador",
+      "tarjeta": "Mínimo Desde 95 € la participación (13/11) · España Sin confirmar"
+    },
+    "vivienda-pluddemanngasse-101-graz": {
+      "esencial": "Mínimo: Desde 75 € la participación (13/11) · España: Sin confirmar · Salida: Reventa en la app, si hay comprador",
+      "tarjeta": "Mínimo Desde 75 € la participación (13/11) · España Sin confirmar"
+    },
+    "vivienda-pottendorfer-stra-e-62-wr-neustadt": {
+      "esencial": "Mínimo: Desde 80 € la participación (13/11) · España: Sin confirmar · Salida: Primera cancelación a 15 años; reventa",
+      "tarjeta": "Mínimo Desde 80 € la participación (13/11) · España Sin confirmar"
+    },
+    "vivienda-schwarzer-weg-18-graz": {
+      "esencial": "Mínimo: Desde 69,90 € la participación (13/11) · España: Sin confirmar · Salida: Reventa en la app, si hay comprador",
+      "tarjeta": "Mínimo Desde 69,90 € la participación (13/11) · España Sin confirmar"
+    },
+    "vivienda-sonnleithnergasse-2-viena": {
+      "esencial": "Mínimo: Desde 75 € la participación (13/11) · España: Sin confirmar · Salida: Reventa en la app, si hay comprador",
+      "tarjeta": "Mínimo Desde 75 € la participación (13/11) · España Sin confirmar"
+    },
+    "vivienda-stallhofstra-e-28-gratwein": {
+      "esencial": "Mínimo: Desde 68,80 € la participación (13/11) · España: Sin confirmar · Salida: Reventa en la app, si hay comprador",
+      "tarjeta": "Mínimo Desde 68,80 € la participación (13/11) · España Sin confirmar"
+    },
+    "hausera-proximas-ofertas": {
+      "esencial": "Mínimo: Desde 100 € en Alicante 3 (13/11) · España: Sin confirmar · Salida: Al vender las viviendas, sin fecha fija",
+      "tarjeta": "Mínimo Desde 100 € en Alicante 3 (13/11) · España Sin confirmar"
+    },
+    "mtbill": {
+      "esencial": "Mínimo: No verificado · España: Sin confirmar · Salida: Sin documentar",
+      "tarjeta": "Mínimo No verificado · España Sin confirmar"
+    }
+  },
+  "archivosQueCambian": [
+    "M rwadar-editorial-source/ofertas/transparencia.json (revisión, lote, revisadoEl, 22 verificadaEl, 43 fechas de consulta, 11 títulos de puntos de Brickwise, 11 mínimos cortos de Brickwise, el de Switzerlend y el de Hausera, y la fecha del motivo de «Documento para España» de Hausera)",
+    "M rwadar-movil/lib/transparencia-contenido.js",
+    "M rwadar-site/assets/catalogo-publico-20261022.js",
+    "M rwadar-site/assets/rwadar-20260820.js (bloque de transparencia)",
+    "M rwadar-site/index.html (pre-render, lo regenera npm test)",
+    "M rwadar-site/ofertas/*.html (22), rwadar-site/plataformas/*.html (25), rwadar-site/fuera-del-radar/*.html (5)",
+    "M rwadar-site/cambios.html, rwadar-site/metodologia.html, rwadar-site/sitemap.xml",
+    "sin cambios: rwadar-app/db/02_seed.sql, rwadar-site/rwadar.csv, rwadar-fichas-manifiesto.js e imágenes (no hay altas ni retiradas)"
+  ]
+}

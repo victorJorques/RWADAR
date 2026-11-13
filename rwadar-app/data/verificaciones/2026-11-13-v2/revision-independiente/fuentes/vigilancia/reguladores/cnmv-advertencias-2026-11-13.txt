@@ -1,0 +1,19 @@
+Buscador de advertencias de la CNMV (https://www.cnmv.es/portal/ResultadoBusqueda?tipo=1&nombre=…)
+
+Axiology · 2026-11-13T08:46:06Z · HTTP 200 · SHA-256 049c06df86da6475… · No hay datos disponibles
+Bit2Me · 2026-11-13T08:46:08Z · HTTP 200 · SHA-256 d931aa515af23f70… · No hay datos disponibles
+Cando · 2026-11-13T08:46:08Z · HTTP 200 · SHA-256 423cedf667c44630… · No hay datos disponibles
+Crypto.com · 2026-11-13T08:46:08Z · HTTP 200 · SHA-256 9354e80b5c983f5b… · resultados: HTTPS://DELTASCRYPTO.COM/, HTTPS://FXPROCRYPTO.COM/, HTTPS://IDCXSCRYPTO.COM, HTTPS://WWW.TRADESCRYPTO.COM, WWW.ALPHASCRYPTO.COM, WWW.CCXCRYPTO.COM
+Foris · 2026-11-13T08:46:08Z · HTTP 200 · SHA-256 450eb30250467484… · resultados: HTTPS://FORISDAXLTD.COM, HTTPS://MY.FORISDAXLTD.TOP/
+Hausera · 2026-11-13T08:46:06Z · HTTP 200 · SHA-256 6eec700dafd01cf6… · No hay datos disponibles
+Holdtx · 2026-11-13T08:46:06Z · HTTP 200 · SHA-256 939cd43c25166046… · No hay datos disponibles
+Lornin · 2026-11-13T08:46:08Z · HTTP 200 · SHA-256 00ceb9d83ff7d86e… · No hay datos disponibles
+Minos · 2026-11-13T08:46:06Z · HTTP 200 · SHA-256 62d093c5cdd4ae30… · No hay datos disponibles
+Profitus · 2026-11-13T08:46:06Z · HTTP 200 · SHA-256 b66cff90fc0b3274… · No hay datos disponibles
+Prosegur · 2026-11-13T08:46:06Z · HTTP 200 · SHA-256 23f29d3deb3114a2… · No hay datos disponibles
+Securitize · 2026-11-13T08:46:06Z · HTTP 200 · SHA-256 202dab34a8d84c71… · No hay datos disponibles
+Token%20City · 2026-11-13T08:46:08Z · HTTP 200 · SHA-256 d7e81908478a326b… · No hay datos disponibles
+Trading · 2026-11-13T08:46:06Z · HTTP 200 · SHA-256 4c1905c0b2150b81… · resultados: FXCALLE.COM, GALIDIX-V3.COM/, HTTPS://BTRADINGS.NET, HTTPS://HOHO-TRADING.COM/, HTTPS://OPENTRADING-PLATFORM.COM/, HTTPS://WWW.JUMPTRADING.COM, HTTPS://WWW.TRADINGEUROPEBV.COM
+Valorix · 2026-11-13T08:46:08Z · HTTP 200 · SHA-256 5ba901ca6d3c9b88… · No hay datos disponibles
+
+PDF de otras entidades: https://www.cnmv.es/docportal/aldia/Advertencias_CNMV_Otras.pdf · 2026-11-13T08:46:08Z · HTTP 200 · SHA-256 5e63b53716e53d040ef6821f6939189bb1e86350c961f41c693cc8420b8d86e0
