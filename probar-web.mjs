@@ -627,43 +627,7 @@ function cambioTabsMovilEsCoherente(codigo) {
   }
   api.cambiar('sistema-operativo-inventado', { arriba:false });
   return api.activa() === 'cuenta' && document.body.dataset.movilPestana === 'cuenta' &&
-    mediciones === 2 && cierresAvisos >= 3 && perfiles === 1 && academias === 1;
-}
-
-function subvistaAvisosConservaEstadoYFoco(codigo) {
-  const inicio = codigo.indexOf('function mostrarAvisos(mostrar,enfocar=true,gestionarHistorial=true){');
-  const fin = codigo.indexOf('function pintarSonidoMovil(){', inicio);
-  if (inicio < 0 || fin < 0) return false;
-  const fuente = codigo.slice(inicio, fin);
-  const clases = new Set();
-  const atributos = new Map([['aria-expanded','false']]);
-  const panel = { classList:{ toggle(clase, activo){ activo ? clases.add(clase) : clases.delete(clase); } } };
-  const vista = { hidden:true };
-  const abre = {
-    focused:false,
-    setAttribute(clave, valor){ atributos.set(clave, String(valor)); },
-    focus(){ this.focused=true; },
-  };
-  const cierra = { focused:false, focus(){ this.focused=true; } };
-  const nodos = new Map([
-    ['movilPanelMas',panel], ['movilVistaAvisos',vista], ['movilAbrirAvisos',abre],
-    ['movilCerrarAvisos',cierra],
-  ]);
-  const document = { getElementById:id=>nodos.get(id) || null };
-  let desplazamientos = 0;
-  const mostrarAvisos = new Function('document', 'window', 'reduce', 'requestAnimationFrame', `
-    const media={matches:false};
-    let avisosHistorial=false;
-    ${fuente}
-    return mostrarAvisos;
-  `)(document, {scrollTo(){ desplazamientos++; }}, ()=>true, fn=>fn());
-  mostrarAvisos(true);
-  const abierta = vista.hidden === false && clases.has('movil-subvista-abierta') &&
-    atributos.get('aria-expanded') === 'true' && cierra.focused && desplazamientos === 1;
-  mostrarAvisos(false);
-  const cerrada = vista.hidden === true && !clases.has('movil-subvista-abierta') &&
-    atributos.get('aria-expanded') === 'false' && abre.focused;
-  return abierta && cerrada;
+    mediciones === 2 && perfiles === 1 && academias === 1;
 }
 
 console.log('=== PRUEBAS ESTÁTICAS DE LA WEB ===');
@@ -1458,7 +1422,6 @@ prueba('Atrás y Adelante restauran las tres subvistas sin mezclar estados',
   /mostrarDetalle\([^;]+enfocar,false,origen\)/.test(codigoShellMovil) &&
   /mostrarAcademy\(true,enfocar,false,document\.getElementById\(['"]movilTabAcademy['"]\)\)/.test(codigoShellMovil) &&
   /cambiar\('academy',\{arriba:false\}\)/.test(codigoShellMovil) &&
-  /mostrarAvisos\(true,enfocar,false\)/.test(codigoShellMovil) &&
   /pageshow[\s\S]*?!e\.persisted\|\|media\.matches!==modoMovilPrevio[\s\S]*?reconciliarEstadoSubvista\(false\)/.test(codigoShellMovil));
 prueba('el cierre devuelve el foco a un control que también queda dentro de pantalla',
   /getClientRects&&nodo\.getClientRects\(\)\.length/.test(codigoShellMovil) &&
@@ -1466,11 +1429,10 @@ prueba('el cierre devuelve el foco a un control que también queda dentro de pan
   /if\(!enVista\(destino\)&&destino\.scrollIntoView\)/.test(codigoShellMovil) &&
   /scrollIntoView\(\{block:['"]center['"],behavior:['"]auto['"]\}\)/.test(codigoShellMovil) &&
   /document\.getElementById\(['"]q['"]\)\|\|document\.getElementById\(['"]movilTabRadar['"]\)/.test(codigoShellMovil));
-prueba('Ayuda sustituye Detalle o Avisos sin encadenar back y push',
+// La subvista móvil de Avisos se quitó el 13/11/2026 (no estaba en la página): Ayuda solo sustituye a Detalle.
+prueba('Ayuda sustituye Detalle sin encadenar back y push',
   /if\(academyAbierta\)[\s\S]{0,240}?return/.test(codigoShellMovil) &&
-  /const sustituyeAvisos=[\s\S]{0,180}?rwadarAvisos===true/.test(codigoShellMovil) &&
-  /mostrarAvisos\(false,false,false\)/.test(codigoShellMovil) &&
-  /\(sustituyeDetalle\|\|sustituyeAvisos\)[\s\S]{0,180}?history\.replaceState/.test(codigoShellMovil));
+  /if\(sustituyeDetalle&&typeof history!=='undefined'&&history\.replaceState\)[\s\S]{0,180}?history\.replaceState/.test(codigoShellMovil));
 prueba('el sonido es voluntario, cálido y la animación automática permanece silenciosa',
   /recuerda\.leer\(['"]rwadar\.sonido['"]\)===['"]1['"]/.test(jsSinComentarios) &&
   /function pulsoCalido\(/.test(jsSinComentarios) &&
@@ -1720,8 +1682,6 @@ prueba('guardar solo existe en el móvil, donde está Perfil',
 prueba('Avisos nunca es una pestaña',
   !/id=["']movilVistaAvisos["']/.test(html) &&
   !botonesNavMovil.some(b => /Avisos/i.test(textoHTML(b[2]))));
-prueba('abrir y cerrar Avisos sincroniza hidden, aria-expanded y devuelve el foco',
-  subvistaAvisosConservaEstadoYFoco(js));
 
 prueba('Perfil agrupa cuenta, guardados, avisos y privacidad sin ocultar herramientas',
   /id="movilCuentaAccion"[^>]*disabled/.test(panelPerfilHTML) &&
@@ -2312,12 +2272,13 @@ probarFocoAlCerrarFicha({ p: pestanaCatalogo(), prueba });
   const p=pestanaCatalogo({codigo:jsPublicado}),c=p.contexto;
   for(const slug of ['backed-finance','franklin-templeton','midas','openeden','superstate']){
     c.slugSupervision=slug;
-    const etiqueta=vm.runInContext('supervisionOferta({plataformaSlug:slugSupervision}).texto',c);
+    // supervisionOferta (la etiqueta de la tarjeta antigua) se quitó el 13/11/2026: la que se ve es la del radar.
+    const etiqueta=vm.runInContext('etiquetaVerificacionLocal(P.find(p=>p.slug===slugSupervision).verificacionLocal.licenciaRegistro.estado)',c);
     prueba(slug+' conserva consulta documental sin atribuir aprobación genérica del producto',
-      etiqueta==='Documentación de producto consultada'&&!/aprobad|aval|garant/i.test(etiqueta));
+      etiqueta==='Consta en el documento del producto'&&!/aprobad|aval|garant/i.test(etiqueta));
   }
   prueba('Spiko conserva el registro de plataforma ante su supervisor sin atribuirlo a un producto',
-    vm.runInContext("supervisionOferta({plataformaSlug:'spiko'}).texto==='Plataforma registrada ante su supervisor'",c));
+    vm.runInContext("etiquetaVerificacionLocal(P.find(p=>p.slug==='spiko').verificacionLocal.licenciaRegistro.estado)==='Registro confirmado'",c));
 }
 {
   const p=pestanaCatalogo();

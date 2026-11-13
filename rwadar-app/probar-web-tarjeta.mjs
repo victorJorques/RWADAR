@@ -162,7 +162,7 @@ export async function probarTarjetaEnIngles({ c, prueba }) {
     return JSON.stringify({EMI,P,
       ofertas:EMI.map(o=>({titulo:o.titulo,plataforma:o.plataformaNombre,lugar:lugar(o)})),
       lista:'<div id="emiLista">'+EMI.map(o=>tarjetaOfertaLocal(o)).join('')+'</div>',
-      ensayo:'<div id="emiLista">'+tarjetaOfertaLocal(ensayo)+'</div><div id="movilPanelInicio">'+tarjetaNuevaHtml(ensayo,0)+'</div>'});
+      ensayo:'<div id="emiLista">'+tarjetaOfertaLocal(ensayo)+'</div>'});
   })()`, c));
   const [en, es] = await Promise.all(['en', 'es'].map(idioma => traducirHtml(datos.lista, idioma, datos)));
   const tarjetas = d => d.body.querySelectorAll('#emiLista article');
@@ -185,12 +185,12 @@ export async function probarTarjetaEnIngles({ c, prueba }) {
     nombres.length === datos.ofertas.length && datos.ofertas.some(o => / en /.test(o.titulo)) &&
     nombres.every((n, i) => n === `View details for ${datos.ofertas[i].titulo} from ${datos.ofertas[i].plataforma}`));
   const [ensayoEn, ensayoEs] = await Promise.all(['en', 'es'].map(idioma => traducirHtml(datos.ensayo, idioma, datos)));
-  const avisos = d => ['#emiLista .escaparate-aviso-bloqueo', '#movilPanelInicio .rel-nueva-bloqueo'].map(s => (d.body.querySelector(s) || {}).textContent);
-  const lugarIgual = d => d.body.querySelector('#emiLista .emi-lugar').textContent === d.body.querySelector('#movilPanelInicio .rel-lugar').textContent;
-  prueba('inglés: el aviso crítico dice «Important ·» y deja el texto del catálogo en castellano, en Ofertas y en «Recién añadidas»',
+  // «Recién añadidas» (tarjetaNuevaHtml) ya no se pinta desde el rediseño de Inicio del 10/11/2026 y se quitó
+  // el 13/11/2026: el aviso crítico se comprueba en la tarjeta de Ofertas, la que se ve.
+  const avisos = d => ['#emiLista .escaparate-aviso-bloqueo'].map(s => (d.body.querySelector(s) || {}).textContent);
+  prueba('inglés: el aviso crítico dice «Important ·» y deja el texto del catálogo en castellano, en Ofertas',
     avisos(ensayoEn).every(t => t === 'Important · ' + avisoEnsayo) && avisos(ensayoEs).every(t => t === 'Importante · ' + avisoEnsayo) &&
-    ensayoEn.body.querySelectorAll('.escaparate-aviso-bloqueo [lang="es"], .rel-nueva-bloqueo [lang="es"]').map(x => x.textContent).join('|') === avisoEnsayo + '|' + avisoEnsayo &&
-    lugarIgual(ensayoEn) && lugarIgual(ensayoEs));
+    ensayoEn.body.querySelectorAll('.escaparate-aviso-bloqueo [lang="es"]').map(x => x.textContent).join('|') === avisoEnsayo);
 }
 
 // Cerrar la ficha con Escape o × retira su paso del historial. Al volver
