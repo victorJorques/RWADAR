@@ -85,6 +85,9 @@ test('revisar: una lente por lanzamiento (los tres a la vez en flujos aparte), i
     assert.match(lanzados[0].prompt, /compruébalo tú/);
     assert.deepEqual(avisos.filter(a => /2 agentes/.test(a)), []);
   }
+  // La lente la pone el flujo aunque el revisor la escriba a su manera.
+  const libre = await ejecutar({ ...BASE, fase: 'revisar', lentes: ['sql'], montaje: montaje(SHA1) }, { 'revisar:sql': rev('SQL e integridad') });
+  assert.equal(libre.resultado.revisiones[0].lente, 'sql');
   // Las tres en un solo flujo funcionan, pero avisa de que el tercero espera.
   const { lanzados, avisos } = await ejecutar({ ...BASE, fase: 'revisar', montaje: montaje(SHA1) }, REVISORES);
   assert.equal(lanzados.length, 3);
@@ -129,6 +132,11 @@ test('cerrar: si la corrección cambia el SQL, sigue el auditor (agente, esfuerz
   assert.ok(de('auditar').prompt.includes('«Hoy » → «El 14/11/2026 aún »'), 'el auditor recibe el diff');
   const no = await conCorreccion([R1], comp, { auditar: { ...v, veredicto: 'no_conforme', hallazgos: ['otra frase'] } });
   assert.equal(no.resultado.estado, 'pendiente_de_verificacion');
+  // Datos incoherentes de la comprobación (dice que no cambió, pero lista diferencias o su veredicto dice que sí): auditor.
+  for (const raro of [{ ...comp, sqlCambia: false }, { ...comp, sqlCambia: false, veredicto: 'conforme_sin_cambios_en_el_sql' }]) {
+    const r = await conCorreccion([O1], { ...raro, obligatoriasSinSql: [{ id: 'O1', aplicada: true, evidencia: 'copia.html' }] }, { auditar: v });
+    assert.ok(r.lanzados.some(l => l.label === 'auditar'), JSON.stringify(raro));
+  }
 });
 
 test('cerrar: lo que la comprobación determinista no deja pasar (y nunca se aprueba sin auditor)', async () => {
@@ -140,6 +148,8 @@ test('cerrar: lo que la comprobación determinista no deja pasar (y nunca se apr
     ['pedían cambiar el SQL y no cambió', comprobacion(), [R1], /pedían cambiar el SQL \(R1\)/],
     ['corrección sin SQL no aplicada', comprobacion({ obligatoriasSinSql: [{ id: 'O1', aplicada: false, evidencia: 'sigue el nombre' }] }), [O1], /O1 sin aplicar/],
     ['corrección sin SQL sin mirar', comprobacion(), [O1], /no miró las correcciones O1/],
+    ['PGlite que no da correcto', comprobacion({ pglite: 'falla' }), [], /PGlite/],
+    ['escáner que no da sin hallazgos', comprobacion({ secretos: 'no ejecutado' }), [], /escáner de secretos/],
   ];
   for (const [nombre, comp, obligatorias, motivo] of casos) {
     const recomendadas = obligatorias.length ? [] : ['una recomendada'];

@@ -207,8 +207,10 @@ async function montar() {
 async function revisar(m, lentes) {
   phase('Revisar')
   if (lentes.length > 2) log('Este flujo solo corre 2 agentes a la vez: el tercer revisor espera. Para que revisen los tres a la vez, lanza la fase «revisar» una vez por lente, en el mismo mensaje.')
+  // La lente la pone el flujo (la del revisor es texto libre), para que «cerrar» sepa cuál es cuál.
   const revs = (await parallel(lentes.map(l => () =>
-    agent(REVISORES[l](m), { label: `revisar:${l}`, phase: 'Revisar', schema: REVISION, effort: 'max' })))).filter(Boolean)
+    agent(REVISORES[l](m), { label: `revisar:${l}`, phase: 'Revisar', schema: REVISION, effort: 'max' })
+      .then(r => r && { ...r, lente: l })))).filter(Boolean)
   for (const r of revs) log(`Revisión ${r.lente}: ${r.veredicto}, ${r.obligatorias.length} obligatorias`)
   return revs
 }
@@ -232,14 +234,18 @@ async function cerrar(m1, revs) {
   if (!comp.copiaEsLaRevisada) hallazgos.push('la copia de antes de corregir no es el SQL que vieron los revisores')
   if (!comp.mismoInventario) hallazgos.push('cambia el inventario de sentencias')
   if (comp.sha256Final !== m2.sha256AplicarYAprobar) hallazgos.push(`el SHA-256 final (${comp.sha256Final}) no es el que dice el corrector (${m2.sha256AplicarYAprobar})`)
+  if (comp.pglite !== 'correcto') hallazgos.push(`el ensayo en PGlite no dio «correcto» (${comp.pglite})`)
+  if (comp.secretos !== 'sin hallazgos') hallazgos.push(`el escáner de secretos no dio «sin hallazgos» (${comp.secretos})`)
+  // Ante cualquier señal de que el SQL cambió, sigue el auditor (aunque otro campo diga lo contrario).
+  const sqlCambia = comp.sqlCambia || comp.veredicto !== 'conforme_sin_cambios_en_el_sql' || comp.diferencias.length > 0
   const pedidasSql = obligatorias.filter(o => o.cambiaSql).map(o => o.id)
-  if (!comp.sqlCambia && pedidasSql.length) hallazgos.push(`pedían cambiar el SQL (${pedidasSql.join(', ')}) y el SQL no cambió`)
+  if (!sqlCambia && pedidasSql.length) hallazgos.push(`pedían cambiar el SQL (${pedidasSql.join(', ')}) y el SQL no cambió`)
   for (const o of comp.obligatoriasSinSql) if (!o.aplicada) hallazgos.push(`corrección ${o.id} sin aplicar: ${o.evidencia}`)
   const faltan = obligatorias.filter(o => !o.cambiaSql && !comp.obligatoriasSinSql.some(c => c.id === o.id)).map(o => o.id)
   if (faltan.length) hallazgos.push(`la comprobación no miró las correcciones ${faltan.join(', ')}`)
   if (hallazgos.length) return { estado: 'pendiente_de_verificacion', montaje: m1, revisiones: revs, correccion: m2, comprobacion: comp, hallazgos }
 
-  if (!comp.sqlCambia) {
+  if (!sqlCambia) {
     log('El SQL no cambió con la corrección: basta la comprobación determinista, sin auditor.')
     return { estado: 'aprobada_con_correcciones', montaje: m1, revisiones: revs, correccion: m2, comprobacion: comp }
   }

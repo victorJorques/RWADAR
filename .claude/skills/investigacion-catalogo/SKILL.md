@@ -116,7 +116,8 @@ PDF y HTML de las fuentes, fuera de Git.
       (12–15 min). Cada uno es independiente y empieza por
       `DIFF-ENTREGA.md`, que le dice qué cambia frente a la entrega anterior,
       antes de hacer sus propias pruebas.
-   c. **`fase: "cerrar"`**, con `montaje` y `revisiones` (las tres). Qué pasa:
+   c. **`fase: "cerrar"`**, con `montaje` y `revisiones`: las tres, juntando
+      las `revisiones` que devolvió cada lanzamiento de (b). Qué pasa:
       - Si nadie pide nada, queda aprobada.
       - Si piden correcciones, el corrector (esfuerzo «high») las hace solo en
         `decisiones.json` y rehace con el motor.
