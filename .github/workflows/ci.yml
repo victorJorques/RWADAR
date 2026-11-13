@@ -13,9 +13,9 @@ name: Verificación
 # documentos lo leen las pruebas o la compuerta de publicación (por ejemplo,
 # AGENTS.md, docs/INTERNO.md o los informes que cita estado.json).
 #
-# Desde el 13/11/2026, para tardar menos (unos 4 min antes, 1 min 30 s ahora):
+# Desde el 13/11/2026, para tardar menos (unos 4 min antes, cerca de 1 min 25 s ahora, estimado):
 # - La batería de «npm test» va repartida en trabajos que corren a la vez
-#   (.github/partes-ci.mjs): cuatro con las pruebas de base de datos, web,
+#   (.github/partes-ci.mjs): cinco con las pruebas de base de datos, web,
 #   herramientas y acceso, y uno con la app móvil.
 # - El PR que solo cambia el sello (rwadar-app/data/relanzamiento/estado.json)
 #   no corre la batería entera, sino el trabajo «sello»: las pruebas de la
@@ -83,6 +83,8 @@ jobs:
   # La batería de «npm test», en partes que van a la vez. Qué lleva cada parte
   # lo decide .github/partes-ci.mjs a partir de los package.json, así que una
   # prueba nueva entra sola. Cada parte instala solo lo que necesita.
+  # Cinco partes y no cuatro: así cada una queda bien por debajo del minuto
+  # (GitHub cobra cada trabajo por minutos enteros) y la espera es algo menor.
   bateria:
     name: ${{ matrix.nombre }}
     needs: secretos
@@ -95,10 +97,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { parte: bateria-1, nombre: 'Batería 1/4', base: true, movil: false, auditar: rwadar-app }
-          - { parte: bateria-2, nombre: 'Batería 2/4', base: true, movil: false, auditar: '' }
-          - { parte: bateria-3, nombre: 'Batería 3/4', base: true, movil: false, auditar: '' }
-          - { parte: bateria-4, nombre: 'Batería 4/4', base: true, movil: false, auditar: '' }
+          - { parte: bateria-1, nombre: 'Batería 1/5', base: true, movil: false, auditar: rwadar-app }
+          - { parte: bateria-2, nombre: 'Batería 2/5', base: true, movil: false, auditar: '' }
+          - { parte: bateria-3, nombre: 'Batería 3/5', base: true, movil: false, auditar: '' }
+          - { parte: bateria-4, nombre: 'Batería 4/5', base: true, movil: false, auditar: '' }
+          - { parte: bateria-5, nombre: 'Batería 5/5', base: true, movil: false, auditar: '' }
           - { parte: movil, nombre: 'App móvil', base: false, movil: true, auditar: rwadar-movil }
     steps:
       - name: Descargar el código

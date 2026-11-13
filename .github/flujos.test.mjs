@@ -336,6 +336,10 @@ test('partes-ci: las partes cubren «npm test» entero, cada orden una vez y en 
   const cargas = PARTES_BATERIA.map(carga), media = cargas.reduce((s, c) => s + c, 0) / cargas.length;
   const mayor = Math.max(...b.app.map(peso), b.web.reduce((s, g) => s + peso(g), 0));
   assert.ok(Math.max(...cargas) <= media + mayor, `reparto desigual: ${cargas.join(', ')}`);
+  // Y ninguna pasa de 40 s estimados: con la preparación del trabajo (unos 10 s)
+  // queda bajo el minuto, que es lo que cobra GitHub por trabajo. Si las pruebas
+  // crecen y esto falla, añade una parte (PARTES_BATERIA y la matriz de ci.yml).
+  assert.ok(Math.max(...cargas) <= 40, `una parte pasa de 40 s estimados (${cargas.map(c => c.toFixed(1)).join(', ')}): añade otra parte`);
 });
 
 function bateriaDePrueba(app) {
@@ -474,6 +478,19 @@ test('sello: todo lo que la batería comprueba de estado.json lo comprueba el tr
   assert.match(seguridad, /fallo\('VERSION_NO_RECONOCIDA'/);
   assert.match(seguridad, /fallo\('CONTROL_AUSENTE', `falta el control \$\{id\}`\)/);
   assert.match(seguridad, /'catalogo_actual_y_citable',\n/);
+  // …y ningún guion que corra la batería empieza a leer el sello sin que se note:
+  // estos son los únicos archivos de código que lo nombran. Si aparece otro, mira
+  // si la batería lo corre y si el trabajo «Sello» cubre lo que mira, y añádelo aquí.
+  const codigo = execFileSync('git', ['grep', '--untracked', '-l', '-e', 'relanzamiento', '--', '*.js', '*.mjs', '*.cjs'], { cwd: raiz, encoding: 'utf8' })
+    .split('\n').filter(f => f && !f.includes('node_modules/')).sort();
+  assert.deepEqual(codigo, ['.claude/skills/investigacion-catalogo/sellar.cjs', '.github/flujos.test.mjs', '.github/partes-ci.mjs',
+    'probar-web.mjs', 'rwadar-app/auditar-relanzamiento.mjs', 'rwadar-app/probar-auditoria-relanzamiento.mjs',
+    'rwadar-app/probar-cobro-seguro.mjs', 'rwadar-app/probar-transparencia-comercial.mjs', 'rwadar-precargar-imagenes.js',
+    'rwadar-publicacion-segura.js', 'rwadar-publicar.js'], 'Otro archivo de código nombra el sello: revisa si la batería lo corre y si el trabajo «Sello» lo cubre');
+  // rwadar-publicar.js lee el sello solo en modo remoto; test:web lo corre con --local.
+  const publicar = leer('rwadar-publicar.js'), iRemoto = publicar.indexOf('\nif (remoto) {\n');
+  assert.equal((publicar.match(/'relanzamiento'/g) || []).length, 1, 'rwadar-publicar.js lee el sello en otro sitio');
+  assert.ok(iRemoto >= 0 && publicar.indexOf("'relanzamiento'") > iRemoto, 'rwadar-publicar.js lee el sello fuera del modo remoto');
 });
 
 /* ---------- las pruebas escriben entera la ruta de cada documento ---------- */

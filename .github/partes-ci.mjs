@@ -14,11 +14,13 @@
 //                                         primer fallo, como «&&»)
 //
 // Partes:
-//   bateria-1 … bateria-4  las pruebas de rwadar-app (npm run test:db), una
+//   bateria-1 … bateria-5  las pruebas de rwadar-app (npm run test:db), una
 //       a una, y el bloque web (test:web, test:qr, test:tools y test:acceso,
 //       juntos y en su orden: las de acceso y probar-orden leen el
 //       rwadar-publicado/ que genera test:web). Se reparten por lo que tarda
-//       cada una (PESOS) para que las cuatro acaben a la vez.
+//       cada una (PESOS) para que las cinco acaben a la vez. Son cinco para
+//       que cada parte quede bien por debajo del minuto (GitHub cobra cada
+//       trabajo por minutos enteros).
 //   movil   npm run test:mobile (lleva sus propias dependencias).
 //   sello   las pruebas de la batería que leen el sello
 //       (rwadar-app/data/relanzamiento/estado.json). Solo para los PR que no
@@ -32,7 +34,7 @@ import { fileURLToPath } from 'node:url';
 
 const RAIZ = fileURLToPath(new URL('..', import.meta.url));
 
-export const PARTES_BATERIA = ['bateria-1', 'bateria-2', 'bateria-3', 'bateria-4'];
+export const PARTES_BATERIA = ['bateria-1', 'bateria-2', 'bateria-3', 'bateria-4', 'bateria-5'];
 
 // Segundos que tarda cada orden en GitHub (estimados el 13/11/2026: lo medido
 // en local sin Chromium, como en CI, por 1,1; el bloque web, medido en CI).
@@ -76,11 +78,12 @@ export const PESOS = Object.freeze({
   'node probar-pie-sin-nombre.mjs': 3.5,
   'node probar-admin-huella.mjs': 14,
   'node --test probar-mapa-buscar.test.cjs': 0.2,
+  'node --test ../.claude/skills/investigacion-catalogo/entrega/motor.test.mjs ../.claude/skills/investigacion-catalogo/entrega/flujo.test.mjs': 5.5,
   'node --test ../.github/*.test.mjs': 14,
   'test:web': 10,
   'test:qr': 0.1,
   'test:tools': 1,
-  'test:acceso': 17,
+  'test:acceso': 19,
   'test:mobile': 35,
 });
 export const PESO_DESCONOCIDO = 5;
