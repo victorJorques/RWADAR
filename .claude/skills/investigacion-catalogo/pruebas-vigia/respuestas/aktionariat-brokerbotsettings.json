@@ -1,0 +1,1 @@
+{"baseCurrency":"CHF","baseCryptoCurrency":"ZCHF","bankTransferLimit":{"enabled":true,"min":500},"cryptoPaymentsLimit":{"enabled":true,"min":0},"marketAddress":"0x2f2c3cf0b2d6f4f6cd5f57665ae629eee813350b","onlyBuySide":true,"secondaryMarketEnabled":true}

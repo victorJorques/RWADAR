@@ -109,6 +109,28 @@ en profundidad**. En el corte inicial hay 69 fuentes del radar; el inventario
 debe crecer con las fuentes necesarias para nuevas fichas. También hay que
 leer las fuentes particulares de todas las ofertas, documentos y registros.
 
+**Vigía de fuentes (desde el 13/11/2026).** Antes de abrir nada a mano se
+pasa `node .claude/skills/investigacion-catalogo/vigia.mjs --ciclo <ciclo>
+--base <entrega publicada>` (menos de un minuto, sin agentes). Lee las fuentes
+que más cambian (API de Spiko, oráculo de mTBILL, libros de órdenes de
+Brickwise y de los portales suizos), el SHA-256 de cada PDF citado en
+`documentacion-ofertas.json` y las búsquedas de advertencias de la CNMV del
+ciclo publicado, y deja en `<ciclo>/vigia.json`, por ficha, la cifra publicada,
+la de hoy, la fuente, la hora UTC, el SHA-256 y «cambia / no cambia / no se
+pudo leer». Reglas:
+
+- Re-fechar con el vigía es válido solo para la cifra, el documento o la
+  búsqueda exactos que el vigía leyó hoy y dio como «no cambia» (misma cifra
+  en la misma fuente, o el mismo documento byte a byte): la consulta es la
+  del vigía, con su hora y su huella, y la evidencia se marca
+  `"segunVigia": true`. No se extiende a otros datos de la misma página.
+- Lo que «cambia» lo confirma el investigador en la fuente primaria; el vigía
+  detecta, no es la fuente.
+- Lo que «no se pudo leer» (un 403 o un desafío no se reintentan ni se
+  eluden) y todo lo que el vigía no cubre se abre a mano, como siempre.
+- El revisor independiente sigue reabriendo cada cambio crítico y además
+  comprueba por muestreo lo re-fechado con el vigía.
+
 Cada ficha tiene un expediente por slug en `expedientes/`, con una matriz
 de evidencias que permite reconstruir cada afirmación publicada:
 

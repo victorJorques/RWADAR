@@ -113,3 +113,7 @@ __pycache__/
 
 # Guía de acceso a fuentes (investigacion-catalogo/acceso): las respuestas en bruto de comprobar-rutas.mjs no van a Git
 .claude/skills/investigacion-catalogo/acceso/crudo/
+
+# Vigía de fuentes (investigacion-catalogo/vigia.mjs): las respuestas en bruto (carteras de particulares en la API de
+# Brickwise, PDF) se quedan en disco con su SHA-256; en Git va solo <ciclo>/vigia.json.
+rwadar-app/data/verificaciones/*/vigia-crudo/
