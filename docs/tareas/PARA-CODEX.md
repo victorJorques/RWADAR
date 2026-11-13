@@ -6,6 +6,96 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 · Claude · Entrega del catálogo con motor reutilizable
+
+- **Encargo (13/11):** «hay que encontrar una forma de optimizar más aún estos
+  procesos». El objetivo es que un día normal del ciclo (re-fechas y pocas
+  cifras) cueste alrededor de 1 h, sin bajar el rigor. Esta es la mejora de
+  la **entrega**. No se publicó nada ni se tocó Supabase, EAS ni el ciclo
+  `2026-11-13-v2`.
+- **Qué cambia:**
+  - **Motor** (`.claude/skills/investigacion-catalogo/entrega/`, manual en
+    `FORMATO.md`). Lo propio del día va en `<ciclo>/decisiones.json`.
+    `motor.mjs` hace lo que hacían los tres guiones que se copiaban a mano:
+    - `preparar`, `comprobar` (PGlite) y `despues`, con las mismas guardas;
+    - `revisar`, que escribe `DIFF-ENTREGA.md` para los revisores;
+    - `auditar`, la comprobación determinista tras corregir.
+
+    No monta altas ni retiradas: ese día se usa `motor: false`.
+  - **Flujo** `.claude/workflows/entrega-catalogo.js`, por fases:
+    - `montar`: el montador escribe `decisiones.json` y ejecuta el motor
+      (esfuerzo «high»), con el ensayo en segundo plano;
+    - `revisar`: una lente por lanzamiento, los tres en el mismo mensaje.
+      Así revisan a la vez pese al tope de 2 agentes por flujo. Siguen
+      independientes y empiezan por el diff;
+    - `cerrar`: el corrector toca solo `decisiones.json` y después corre
+      `auditar`. Si el SQL no cambió, no hace falta el auditor; si cambió,
+      el auditor sigue, con el diff exacto.
+
+    Se pasa `--revisado` (el SHA del montaje) y el escáner de secretos es
+    obligatorio. Nunca aprueba con hallazgos, si pedían cambiar el SQL y no
+    cambió, o si falta una corrección.
+  - **Documentación:** `SKILL.md` §2 y tiempos, `CICLO-DIARIO-CATALOGO.md`
+    (§3 «Entrega con el motor» y §5).
+- **Demostración con el 12/11 real:**
+  - Con `decisiones.json`, escrito desde su `DECISIONES-COORDINADOR.md`, el
+    motor da **idénticos byte a byte** los 8 archivos: los 5 JSON del ciclo,
+    `catalogo.sql`, `aplicar-y-aprobar.sql` (`d4d73024…`, el aplicado) y
+    `revision.json`.
+  - Repetido, sale igual. `transparencia.json` también sale igual al del
+    commit del 12/11.
+  - Ensayo en PGlite: las mismas 19 comprobaciones y los 6 casos de fallo.
+    Lo exportado coincide campo a campo (22 ofertas, 0 diferencias) con lo
+    que se leyó en producción después de aplicar.
+  - Los guiones finos de siempre (`node <ciclo>/preparar-entrega.mjs` y
+    `despues-de-aplicar.mjs`), probados en la carpeta real del 12/11 y
+    restaurados después: los mismos 8 archivos byte a byte y el mismo
+    `transparencia.json`. Con la web de antes de aplicar, `despues` se niega
+    («NO: el catálogo sincronizado no es la revisión…», salida 1) y no toca
+    nada.
+  - `auditar`, con la copia real de antes de corregir (`4815b3cb…`, la que
+    revisó el de SQL): `sql_cambiado_falta_auditor` con una sola sentencia,
+    la frase de Hausera que pidió el de cumplimiento. Mismo inventario (288
+    sentencias), PGlite correcto y escáner sin hallazgos.
+- **Ahorro estimado** (estimación, no medida de un ciclo; anotar el primero
+  real). La entrega pasaba de 60–65 min y queda en 30–40 min:
+
+  | Paso | Antes | Ahora |
+  |---|---|---|
+  | Montaje | 25 min | 10–15 min |
+  | Revisores | 25–30 min (dos rondas) | 12–15 min (una ronda) |
+  | Corrector | 7–10 min | unos 5 min |
+  | Cierre | auditor, 8–10 min | 2–3 min si el SQL no cambia |
+
+  Unos 25–30 min menos un día normal. Si la corrección cambia el SQL sigue
+  el auditor, y el ahorro baja a 20–25 min.
+- **Commits:** `4b4386a` (motor y `decisiones.json` del 12/11), `e909047`
+  (flujo por fases, `auditar` reforzado, pruebas y documentación), `04e6781`
+  (cierre más estricto; pruebas antes de las de `.github`), `d691008` (los
+  guiones finos dicen «NO: …») y este traspaso.
+- **Pruebas:**
+  - `motor.test.mjs` (9) y `flujo.test.mjs` (9) van en `npm test`
+    (`rwadar-app`), unos 4 s. `npm --prefix rwadar-app run
+    test:motor-entrega` suma `pglite.test.mjs` (19 en 24 s).
+  - Mutaciones: 19, y cada una hace fallar alguna prueba (quitar la guarda
+    de la huella en `preparar` o en el SQL, no exigir el «antes», quitar un
+    cambio de `decisiones.json`, las tres guardas de `auditar`, un caso de
+    fallo de PGlite, el flujo antiguo, montador «xhigh», auditor siempre,
+    sin `--revisado`, revisores sin diff, lente sin normalizar, no exigir
+    PGlite correcto ni escáner limpio, fiarse solo de `sqlCambia`…).
+  - `npm test` en la raíz, en verde (4 min 50 s): `rwadar-app` con las 18
+    nuevas, `.github` 103/103, `probar-web` 710/710, la app 629 (627 bien,
+    2 omitidas, 0 fallos) y `rwadar-acceso` 313/313.
+  - gitleaks 8.30.1 sobre lo cambiado: sin hallazgos.
+- **Pendiente:**
+  - Usarlo en el próximo ciclo y medir los tiempos reales.
+  - Si cambias el motor, pasa `test:motor-entrega` antes del PR: el ensayo
+    en PGlite no va en `npm test` para no alargar la CI.
+  - El montador escribe `decisiones.json` a mano. Si se repiten muchas
+    re-fechas, se puede generar el esqueleto desde los expedientes.
+
+---
+
 ## 13 de noviembre de 2026 (19) · Claude · Radar de Inicio legible
 
 - **Encargo (13/11):** «Arregla el radar de inicio que se ve mal». Hecho en
