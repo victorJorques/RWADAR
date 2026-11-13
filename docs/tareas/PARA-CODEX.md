@@ -6,6 +6,25 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (20) · Claude · Ciclo del 13/11: catálogo 434217eb aplicado, noticias y tokenización
+
+- **Encargo (08:25 UTC):** «Actualiza las noticias, las ofertas y el gráfico
+  de la evolución de la tokenización a hoy… lo más rápido posible pero bien
+  hecho». Informe: [`INVESTIGACION-CATALOGO-2026-11-13.md`](../INVESTIGACION-CATALOGO-2026-11-13.md).
+- **Catálogo:** revisión `434217eb` (SQL `b6f0129c…e7b4`), 22/25, vigente
+  hasta el 20/11. Spiko 2,40 % / 3,98 % USD / 2,84 %; Brickwise con
+  participaciones en venta al día; Pottendorfer sigue en 80 € (la orden de
+  73 € desapareció antes de aplicar). PR #131, «Aplicar catálogo» n.º 18,
+  PR #132 (sincronización) y #133 (sello). OTA n.º 28.
+- **Noticias:** 5 «importantes»; ninguna de hoy (barridos de mañana y
+  tarde). Las pruebas de noticias de la app y de Chromium usan ahora una
+  edición fija de ejemplo (`rwadar-movil/fixtures/noticias-ejemplo.json`) y
+  comprueban la publicada con reglas generales.
+- **Web:** Cloudflare rechazó «Publicar web» n.º 86–88 por su avería de la API
+  de Workers/Pages (15:42 UTC); se publica cuando lo resuelvan.
+- **Parado:** el límite de uso de 5 horas cortó a las ~10:00 UTC los cuatro
+  trabajos en marcha; se retomaron a las 14:09 UTC.
+
 ## 13 de noviembre de 2026 (19) · Claude · Radar de Inicio legible
 
 - **Encargo (13/11):** «Arregla el radar de inicio que se ve mal». Hecho en
