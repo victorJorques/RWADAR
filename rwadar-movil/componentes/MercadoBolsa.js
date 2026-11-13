@@ -157,11 +157,12 @@ function fechasQueCaben(marcas, coords, PW, letra) {
     const x = coords[m.indice]?.x;
     if (typeof x !== 'number') continue;
     const w = anchoTexto(m.texto, letra);
-    // Centrada en su raya si cabe; si no, empieza en la raya (junto al borde izquierdo) o acaba en ella (junto al eje).
-    const ancla = x - w / 2 < 0 ? 'start' : x + w / 2 > PW ? 'end' : 'middle';
-    const ini = ancla === 'start' ? x : ancla === 'end' ? x - w : x - w / 2;
+    // Centrada en su raya («xt»); junto a los bordes, lo justo hacia dentro para no salirse
+    // (empezar en la raya empujaba la siguiente: con la letra al 130 % se perdía «00:00»).
+    const xt = Math.max(w / 2, Math.min(PW - w / 2, x));
+    const ini = xt - w / 2;
     if (ini < fin + 6) continue;
-    salida.push({ ...m, x, ancla });
+    salida.push({ ...m, x, xt });
     fin = ini + w;
   }
   return salida;
@@ -254,7 +255,7 @@ export function GraficoBolsa({ g, idioma, alto = 270 }) {
         </SvgText>
         <SvgText x={ancho - 2} y={altoTotal - 9} fill={C.tx3} fontSize={letra - 1} fontFamily={F.media} textAnchor="end">{idioma === 'en' ? '$M' : 'M$'}</SvgText>
         {fechas.map((m) => (
-          <SvgText key={'tf' + m.indice} x={m.x} y={altoTotal - 9} fill={C.tx2} fontSize={letra} fontFamily={F.media} textAnchor={m.ancla}>{m.texto}</SvgText>
+          <SvgText key={'tf' + m.indice} x={m.xt} y={altoTotal - 9} fill={C.tx2} fontSize={letra} fontFamily={F.media} textAnchor="middle">{m.texto}</SvgText>
         ))}
       </>
     );

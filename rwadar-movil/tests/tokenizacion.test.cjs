@@ -1140,7 +1140,7 @@ test('letra grande: las pestañas van en dos filas si no caben, el eje crece has
         assert.equal(fechasQueCaben(g.marcasFechas, coords, PW, 12).length, g.marcasFechas.length, `${p.clave} a ${ancho}`);
         const PW18 = ancho - 81, f = fechasQueCaben(g.marcasFechas, t.coordenadas(g, PW18 - 8, 202), PW18, 18);
         saltadas += g.marcasFechas.length - f.length;
-        const cajas = f.map((m) => { const w = anchoTexto(m.texto, 18); const ini = m.ancla === 'start' ? m.x : m.ancla === 'end' ? m.x - w : m.x - w / 2; return [ini, ini + w]; });
+        const cajas = f.map((m) => { const w = anchoTexto(m.texto, 18); return [m.xt - w / 2, m.xt + w / 2]; });
         cajas.forEach(([a, b], i) => {
           assert.ok(a >= 0 && b <= PW18 + 1e-9, `${p.clave} a ${ancho}: dentro`);
           if (i) assert.ok(a >= cajas[i - 1][1] + 6, `${p.clave} a ${ancho}: no se pisan`);
@@ -1149,6 +1149,10 @@ test('letra grande: las pestañas van en dos filas si no caben, el eje crece has
     }
   }
   assert.ok(saltadas > 0, 'con la letra grande, alguna fecha no cabe y se salta');
+  // Al 130 % en 390 px (eje de 70 y letra de 16), 24 h guarda sus 4 horas: la primera, junto al borde, se mete
+  // hacia dentro lo justo (antes empezaba en su raya, empujaba a la siguiente y se perdía «00:00»).
+  const g24a = t.graficoPestana(UNIDA, '1d'), PW13 = 358 - 70;
+  assert.deepEqual(fechasQueCaben(g24a.marcasFechas, t.coordenadas(g24a, PW13 - 8, 202), PW13, 16).map((m) => m.texto), g24a.marcasFechas.map((m) => m.texto));
   // La burbuja: con la letra normal, en una línea; al 200 % en 390 px, en dos.
   const g24 = t.graficoPestana(UNIDA, '1d');
   assert.deepEqual([lineasBurbuja(g24, 'es', 328, 1), lineasBurbuja(g24, 'es', 328, 1.3), lineasBurbuja(g24, 'es', 358, 2)], [1, 1, 2]);
