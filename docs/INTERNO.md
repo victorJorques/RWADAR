@@ -130,7 +130,11 @@ app). **Sin publicar:** el vídeo promocional del 28/10, pendiente de valoració
    Billing). A ese ritmo se acabarían hacia la mitad del mes. El 07/11 se
    ajusta `ci.yml` para gastar menos (ver el traspaso de ese día en
    [`tareas/PARA-CODEX.md`](tareas/PARA-CODEX.md)). GitHub Team sube el cupo a
-   3.000.
+   3.000. El 13/11 `ci.yml` reparte la batería en cinco trabajos a la vez (de
+   unos 4 min a cerca de 1 min 30 s por PR) y el PR que solo cambia el sello
+   ya no la corre entera (unos 45 s). GitHub cobra cada trabajo por minutos
+   enteros: un PR con código pasa de unos 6 minutos facturados a unos 7, y el
+   del sello, de 6 a 3. En un ciclo normal queda más o menos igual.
 5. **Actualizar Postgres.** Antes, descargar una copia y abrirla una vez, como
    explica [`COPIAS-DE-SEGURIDAD.md`](COPIAS-DE-SEGURIDAD.md).
 6. **Node.js del PC.** GitHub y EAS ya usan la versión corregida (22.23.4). En

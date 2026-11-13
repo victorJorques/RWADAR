@@ -6,6 +6,55 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (20) · Claude · CI en paralelo y PR del sello sin batería
+
+- **Encargo (13/11):** «optimizar más aún» el ciclo diario del catálogo. Esta
+  parte: la «Verificación» de los PR (`ci.yml`). Sin publicar ni lanzar nada.
+- **Antes (medido en GitHub, PR #128 y #129 del 13/11 y #125 del 12/11):**
+  cada PR con código o con el sello tardaba de 3 min 53 s a 5 min 9 s:
+  escáner 20 s y un solo trabajo «pruebas» con `npm test` de 3 min 8 s a
+  4 min 9 s (base de datos 2 min 15 s, móvil 35 s, acceso 17 s, web 10 s,
+  herramientas 1 s).
+- **Ahora:**
+  1. `npm test` va repartido en cinco trabajos a la vez: «Batería 1/4» a
+     «4/4» (las pruebas de `rwadar-app` una a una y el bloque web entero:
+     web, QR, herramientas y acceso, en su orden) y «App móvil». Lo reparte
+     `.github/partes-ci.mjs` a partir de los `package.json`, así que una
+     prueba nueva entra sola; cada parte instala solo lo que necesita.
+  2. El PR que solo cambia el sello (`estado.json`) se salta la batería y
+     corre el trabajo «Sello»: las pruebas de la batería que leen el sello
+     (transparencia comercial, cobro seguro, auditoría de relanzamiento y
+     `flujos.test.mjs`) y la misma compuerta con la que empieza «Publicar
+     web» (`auditar-relanzamiento.mjs`, con el historial para encontrar el
+     commit aprobado). Es más estricto que antes: un sello que no publicaría
+     ya sale en rojo en el PR. Una vigía en `flujos.test.mjs` falla si otra
+     prueba empieza a leer el sello y el trabajo «Sello» no la corre.
+  3. La comprobación que piden las reglas de la rama sigue siendo
+     **«pruebas»**: ahora es el último trabajo, espera a todos y falla si
+     alguno falla o se cancela, si no corrió lo que tocaba o si el escáner
+     de secretos falla (antes, un secreto encontrado dejaba «pruebas» en
+     verde). En un PR de solo documentación se salta, como antes.
+- **Estimación:** PR con código, de unos 4 min a cerca de 1 min 30 s (escáner
+  20 s, partes de unos 52-55 s, final 4 s); PR del sello, de 4 min a unos
+  45 s; PR de documentación, igual (25 s). En un ciclo (catálogo,
+  sincronización y sello) se ahorran unos 8-9 min de espera.
+- **Minutos facturados:** GitHub cobra cada trabajo por minutos enteros. PR
+  con código, de unos 6 a unos 7 (más si una parte pasa del minuto); PR del
+  sello, de 6 a 3. Un ciclo queda más o menos igual. Si los minutos aprietan,
+  se puede bajar a tres partes cambiando `PARTES_BATERIA` y la matriz.
+- **Commits:** `fabc0e9` (CI, repartidor y pruebas) y este traspaso.
+- **Pruebas:** `node --test .github/flujos.test.mjs` 11/11 (cinco nuevas o
+  rehechas); 18 mutaciones (quitar cada mejora) cazadas, más la vigía; cada
+  parte corrida aislada, desde limpio, sin Chromium y solo con sus
+  dependencias (mismos recuentos que en CI: acceso 313/297/16 omitidas, móvil
+  629/627/2, `.github` 103); `npm test` en la raíz en verde.
+- **Pendiente:** ver la primera «Verificación» real de un PR con este cambio
+  (que salgan «Batería 1/4» … «App móvil» y «pruebas», y cuánto tardan) y el
+  primer PR del sello («Sello» en verde). «secretos» y «pruebas» conservan su
+  nombre, así que las reglas de la rama no cambian.
+
+---
+
 ## 13 de noviembre de 2026 (19) · Claude · Radar de Inicio legible
 
 - **Encargo (13/11):** «Arregla el radar de inicio que se ve mal». Hecho en
