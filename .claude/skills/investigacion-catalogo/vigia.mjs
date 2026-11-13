@@ -151,8 +151,9 @@ export const esDocumento = (url) => { const p = String(url).replace(/[?#].*$/, '
 
 // Textos publicados del libro de órdenes de Brickwise (mismo formato que preparar-entrega.mjs).
 export function leerVentaPublicada(v) {
-  const m = String(v || '').match(/^([\d.,]+) € por participación \((\d+) a ese precio, (?:orden del (\d{2}\/\d{2}\/\d{4})|en (\d+) órdenes(?: de [\d, ]+)?)\)$/);
-  return m ? { precio: num(m[1]), cantidad: Number(m[2]), ordenes: m[4] ? Number(m[4]) : 1, fecha: m[3] || null } : null;
+  const m = String(v || '').match(/^([\d.,]+) € por participación \((\d+) a ese precio, (?:orden del (\d{2}\/\d{2}\/\d{4})|en (\d+) órdenes(?: de ([\d, ]+))?)\)$/);
+  return m ? { precio: num(m[1]), cantidad: Number(m[2]), ordenes: m[4] ? Number(m[4]) : 1, fecha: m[3] || null,
+    cantidades: m[5] ? m[5].split(',').map((x) => Number(x.trim())) : null } : null;
 }
 export function leerMenorPublicada(v) {
   const m = String(v || '').match(/^(\d+) participaci(?:ón|ones) a ([\d.,]+) € \(([\d.,]+) € con el 1,5 %\)$/);
@@ -381,7 +382,8 @@ export async function vigilar({ base, ciclo = null, red, ahora = () => Date.now(
           l.venta && centimos(mPub) === centimos(l.venta.precio), a1 && !l.venta ? 'Sin órdenes de venta abiertas: puede que no se pueda comprar en reventa.' : null);
         const vRef = referencia(doc, /^Venta más barata · /), vPub = leerVentaPublicada(vRef?.valor);
         const vIgual = vPub && l.venta && centimos(vPub.precio) === centimos(l.venta.precio) && vPub.cantidad === l.venta.cantidad
-          && vPub.ordenes === l.venta.ordenes && (vPub.ordenes !== 1 || vPub.fecha === l.venta.fecha);
+          && vPub.ordenes === l.venta.ordenes && (vPub.ordenes !== 1 || vPub.fecha === l.venta.fecha)
+          && (!vPub.cantidades || vPub.cantidades.join(',') === l.venta.cantidades.join(','));
         cifra(slug, 'Venta más barata', vRef?.valor, l.venta ? textoVenta(l.venta) : null, R1, vIgual);
         const mRef = referencia(doc, /^Orden de venta de menor importe · /), mnPub = leerMenorPublicada(mRef?.valor);
         cifra(slug, 'Orden de venta de menor importe', mRef?.valor, l.menor ? textoMenor(l.menor) : null, R1,
@@ -393,7 +395,7 @@ export async function vigilar({ base, ciclo = null, red, ahora = () => Date.now(
         const cRef = referencia(doc, /^Mejor oferta de compra · /), cPub = leerCompraPublicada(cRef?.valor);
         cifra(slug, 'Mejor oferta de compra', cRef?.valor, l.compra ? textoCompra(l.compra) : null, R1,
           cPub && l.compra && centimos(cPub.precio) === centimos(l.compra.precio) && cPub.cantidad === l.compra.cantidad && cPub.ordenes === l.compra.ordenes
-          && (cPub.ordenes !== 1 || cPub.fecha === l.compra.fecha));
+          && cPub.fecha === l.compra.fecha);
       }
     },
 
@@ -487,6 +489,9 @@ export async function vigilar({ base, ciclo = null, red, ahora = () => Date.now(
     cnmv: async () => {
       // Sin resultados: «No hay datos disponibles». Con resultados: la tabla gridAdvertencias (una fila por advertencia).
       const filas = (t) => (t.match(/<td data-th="Fecha">/g) || []).length;
+      // Primera compañía de cada fila: con resultados publicados, una que no estuviera en lo publicado es una advertencia nueva.
+      const companias = (t) => [...t.matchAll(/<td data-th="Compañías sobre las que se advierte">([\s\S]*?)<\/td>/g)]
+        .map((m) => (m[1].match(/<li>\s*([^<]+?)\s*<\/li>/) || [])[1]).filter(Boolean);
       const lee = (r) => {
         if (!r.ok) return null;
         const t = r.buf.toString('utf8');
@@ -506,11 +511,13 @@ export async function vigilar({ base, ciclo = null, red, ahora = () => Date.now(
         const r = await pedir({ url, cabeceras: CNMV_CABECERAS });
         const hay = controlOk ? lee(r) : null;
         const n = hay ? filas(r.buf.toString('utf8')) : 0;
+        const cs = hay ? companias(r.buf.toString('utf8')) : [];
         for (const q of quienes) fichas[q.slug].advertenciasCnmv.push({
           nombre: q.nombre, url, publicada: q.conResultados ? 'con resultados' : 'sin advertencias',
           hoy: hay == null ? null : hay ? `con resultados (${n} ${plural(n, 'fila', 'filas')} en la primera página)` : 'sin advertencias',
           horaUtc: r.horaUtc, sha256: r.sha256,
-          estado: hay == null ? ILEGIBLE : hay === q.conResultados ? IGUAL : CAMBIA,
+          estado: hay == null ? ILEGIBLE : hay !== q.conResultados ? CAMBIA
+            : !hay || (cs.length === n && cs.every((c) => String(q.publicada || '').toUpperCase().includes(c.toUpperCase()))) ? IGUAL : CAMBIA,
           ...(hay == null ? { motivo: !controlOk ? `el control («Trading») no dio resultados a las ${control.horaUtc}: la búsqueda no es fiable ahora` : r.ok ? 'la página no dice ni «No hay datos disponibles» ni trae resultados' : r.motivo } : {}),
         });
       }));

@@ -54,7 +54,8 @@ function cadena13(cambios = {}) {
 }
 
 const CNMV_SIN = '<div class="msgAviso"><p> No hay datos disponibles. </p></div>';
-const cnmvCon = (n) => `<table class="tabla-scroll" id="ctl00_ContentPrincipal_wucListado_gridAdvertencias"><tbody>${'<tr><td data-th="Fecha">04/09/2023</td></tr>'.repeat(n)}</tbody></table>`;
+const cnmvCon = (n, nombres = Array.from({ length: n }, (_, i) => `EMPRESA ${i}`)) => `<table class="tabla-scroll" id="ctl00_ContentPrincipal_wucListado_gridAdvertencias"><tbody>${nombres.map((c) => `<tr><td data-th="Fecha">04/09/2023</td><td data-th="Compañías sobre las que se advierte"> <ul class="listatextosSinv"> <li> ${c} </li> </ul> </td></tr>`).join('')}</tbody></table>`;
+const GEMINI = ['GEMINI LTD FX', 'GEMINI OPTION LTD'];
 
 // Red grabada: responde a cada petición del vigía con lo que dieron las fuentes el 13/11.
 function redFalsa({ rpc = cadena13(), cnmv = {}, extra = {}, documento = (u) => `documento ${u}` } = {}) {
@@ -86,7 +87,7 @@ function redFalsa({ rpc = cadena13(), cnmv = {}, extra = {}, documento = (u) => 
       assert.equal(p.cabeceras['accept-language'], 'es');
       const nombre = decodeURIComponent(u.split('nombre=')[1].replace(/\+/g, ' '));
       if (nombre in cnmv) return ok(cnmv[nombre]);
-      return ok(nombre === 'Trading' ? cnmvCon(20) : nombre === 'Gemini' ? cnmvCon(2) : CNMV_SIN);
+      return ok(nombre === 'Trading' ? cnmvCon(20) : nombre === 'Gemini' ? cnmvCon(2, GEMINI) : CNMV_SIN);
     }
     if (esDocumento(u)) return ok(documento(u));
     return { http: 404, buf: Buffer.alloc(0), horaUtc: '2026-11-13T08:31:15Z' };
@@ -237,6 +238,9 @@ test('lo que no se puede leer queda «no se pudo leer», y los cambios de cadena
   const todas = Object.values(sinControl.fichas).flatMap((f) => f.advertenciasCnmv);
   assert.ok(todas.length && todas.every((a) => a.estado === ILEGIBLE && /control/.test(a.motivo)));
   // Una página de la CNMV sin «No hay datos» ni tabla de resultados no se interpreta.
+  // Una búsqueda publicada con resultados que hoy trae otra compañía: advertencia nueva, «cambia».
+  const nueva = await vigilar({ base: BASE, red: redFalsa({ cnmv: { Gemini: cnmvCon(3, [...GEMINI, 'GEMINI TRADE PRO']) } }), ahora: () => AHORA, solo: ['cnmv'] });
+  assert.ok(Object.values(nueva.fichas).flatMap((f) => f.advertenciasCnmv).filter((a) => a.nombre === 'Gemini').every((a) => a.estado === CAMBIA));
   const rara = await vigilar({ base: BASE, red: redFalsa({ cnmv: { Spiko: '<p>Mantenimiento</p>' } }), ahora: () => AHORA, solo: ['cnmv'] });
   assert.ok(Object.values(rara.fichas).flatMap((f) => f.advertenciasCnmv).filter((a) => a.nombre === 'Spiko').every((a) => a.estado === ILEGIBLE));
 });
@@ -371,4 +375,47 @@ test('red real: un 403 no se reintenta, un corte sí (una vez) y un servidor rec
   assert.deepEqual([c.http, visitas['/corte'], c.buf.toString()], [200, 2, 'ok /corte']);
   assert.deepEqual([d.http, e.http], [200, 200]);
   assert.equal(maxActivos, 1, 'mismo servidor: de una en una');
+});
+
+test('cada «no cambia» tiene su «cambia»: suizas y libro de Brickwise (lo que se re-fecha sin releer)', async () => {
+  const json = (f) => JSON.parse(leer(f));
+  const ok = (o) => () => ({ http: 200, buf: Buffer.from(JSON.stringify(o)), horaUtc: '2026-11-13T08:31:15Z' });
+  const isin = (slug) => JSON.parse(fs.readFileSync(path.join(BASE, 'documentacion-ofertas.json'), 'utf8'))[slug].caracteristicas
+    .map((c) => String(c.valor).match(/ISIN ([A-Z]{2}[A-Z0-9]{10})/)?.[1]).find(Boolean);
+  const abiertas = (a, tipo, precio) => a.offers.filter((o) => o.status === 'open' && o.type === tipo && o.price === precio)
+    .sort((x, y) => String(x.createdAt).localeCompare(String(y.createdAt)));
+  const v1 = json('brickwise-v1-assets.json');
+  const activo = (slug) => v1.find((a) => a.ISIN === isin(slug));
+  // Brickwise: reparto de una venta en varias órdenes, fecha de la orden única, cantidad y fecha de la mejor compra.
+  const gp = abiertas(activo('fotovoltaica-greenpoint'), 'sell', 102); gp[0].amount -= 1; gp[1].amount += 1;
+  abiertas(activo('vivienda-pluddemanngasse-101-graz'), 'sell', 75)[0].createdAt = '2026-11-12T10:00:00Z';
+  abiertas(activo('vivienda-sonnleithnergasse-2-viena'), 'buy', 65)[0].amount = 2;
+  abiertas(activo('apartamento-vacacional-hinterstoder-50'), 'buy', 20)[0].createdAt = '2026-11-12T10:00:00Z';
+  // Suizas: precio del emisor, contrato anunciado, mínimo por transferencia, fondos, venta más barata y última operación.
+  const ak = json('aktionariat-brokerbotsettings.json'); ak.bankTransferLimit.min = 600;
+  const sl = json('switzerlend-brokerbotsettings.json'); sl.marketAddress = '0x' + '1'.repeat(40);
+  const ob = json('switzerlend-getOrderBook.json'); for (const x of ob.asks) { const v = BigInt(x.sharePrice.big ?? x.sharePrice.value) + 10n ** BigInt(x.sharePrice.decimals); x.sharePrice.big = String(v); x.sharePrice.value = Number(v); }
+  const tr = json('boss-info-getTrades.json'); tr.trades[0].pricePerShare = { decimals: 1, value: 85, big: '85' };
+  const red = redFalsa({
+    rpc: cadena13({
+      [`${SUIZA.aktionariat.bot}|${SEL.getPrice}`]: palabras(7300000000000000000n),
+      [`${SUIZA['boss-info'].bot}|${SEL.getPrice}`]: palabras(9000000000000000000n),
+      [`${ZCHF}|${balance(SUIZA.switzerlend.bot)}`]: palabras(500000000000000000n),
+    }),
+    extra: {
+      [BW_V1]: ok(v1),
+      [`${SUIZA.aktionariat.portal}/api/brokerbotsettings?ticker=${SUIZA.aktionariat.ticker}`]: ok(ak),
+      [`${SUIZA.switzerlend.portal}/api/brokerbotsettings?ticker=${SUIZA.switzerlend.ticker}`]: ok(sl),
+      [`${SUIZA.switzerlend.portal}/api/secondarymarkets/getOrderBook`]: ok(ob),
+      [`${SUIZA['boss-info'].portal}/api/secondarymarkets/getTrades`]: ok(tr),
+    },
+  });
+  const v = await vigilar({ base: BASE, red, ahora: () => AHORA, solo: ['brickwise', 'suiza'] });
+  for (const [slug, re] of [
+    ['fotovoltaica-greenpoint', /^Venta más barata/], ['vivienda-pluddemanngasse-101-graz', /^Venta más barata/],
+    ['vivienda-sonnleithnergasse-2-viena', /^Mejor oferta de compra/], ['apartamento-vacacional-hinterstoder-50', /^Mejor oferta de compra/],
+    ['aktionariat', /^Precio del emisor/], ['aktionariat', /^Mínimo por transferencia/], ['boss-info', /^Precio del emisor/],
+    ['boss-info', /^Mínimo en cripto/], ['boss-info', /^Última operación/], ['switzerlend', /^Fondos del emisor/], ['switzerlend', /^Precio del emisor/],
+    ['switzerlend', /^Venta más barata/],
+  ]) assert.equal(cifra(v, slug, re).estado, CAMBIA, `${slug} · ${re}`);
 });
