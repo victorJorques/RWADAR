@@ -288,7 +288,7 @@
 ["2026-11-13T14:55Z",41828861505,30],
 ["2026-11-13T15:00Z",41818864395,30],
 ["2026-11-13T15:05Z",41815579529,30]
-]},"1h":{"paso":3600,"arrastre":24,"fuera":[],"valorFuera":0,"largos":["figure-heloc","theo-short-duration-us-treasury-fund"],"puntos":[
+]},"1h":{"paso":3600,"arrastre":72,"fuera":[],"valorFuera":0,"largos":["figure-heloc","theo-short-duration-us-treasury-fund"],"puntos":[
 ["2026-10-14T15:00Z",40242980228,30],
 ["2026-10-14T16:00Z",40268413589,30],
 ["2026-10-14T17:00Z",40448884151,30],

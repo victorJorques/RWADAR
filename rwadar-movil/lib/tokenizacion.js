@@ -514,13 +514,17 @@ function serieValida(s) { try { validarSerie(s); return true; } catch { return f
    Cómo se suma cada instante (cada token trae sus propias marcas de hora):
    1. El tiempo se parte en cubos de 5 minutos o de 1 hora en UTC. De cada
       token vale su último dato dentro del cubo; si no tiene, su último dato
-      anterior, como mucho de 24 horas antes («arrastre»: 288 cubos de 5
-      minutos o 24 de una hora). CoinGecko no da datos de todos los tokens a
-      todas horas: el 13/11/2026, el mayor (figure-heloc, más de la mitad de
-      la suma) no tenía datos de 3 a 5 horas cada mañana (UTC) ni de casi 24
-      horas cada fin de semana; con media hora de margen, la serie se quedaba
-      sin la mitad del mercado o no salía ningún día. La diaria ya arrastra
-      hasta 3 días.
+      anterior («arrastre»): como mucho de 24 horas antes en la de 5 minutos
+      (288 cubos) y de 72 horas en la horaria (72 cubos: los mismos 3 días que
+      arrastra la diaria). CoinGecko no da datos de todos los tokens a todas
+      horas: el 13/11/2026, el mayor (figure-heloc, más de la mitad de la
+      suma) no tenía datos de 3 a 5 horas cada mañana (UTC) ni de 23 o 24
+      horas cada domingo; con media hora de margen, la serie se quedaba sin la
+      mitad del mercado o no salía ningún día. En la horaria, 24 horas no
+      bastan: en su historia diaria faltan 72 horas en cada puente con lunes
+      festivo en EE. UU. (19/01, 16/02, 25/05 y 07/09/2026), y un hueco así
+      dejaba la horaria fuera 30 días seguidos (1 S y 1 M volvían a la
+      diaria).
    2. Si a un token le falta más (o no se pudo leer), queda fuera de ESA
       serie entera: ni se inventa ni se pinta un hundimiento. La serie dice
       cuáles («fuera») y cuánto suman en su último dato («valorFuera»). Si
@@ -540,12 +544,11 @@ function serieValida(s) { try { validarSerie(s); return true; } catch { return f
    rwadar-app/tokenizacion/serie-diaria.mjs con --fina.
    ===================================================================== */
 const MIN_MS = 60000, HORA_MS = 3600000;
-const ARRASTRE_MAX_MS = DIA_MS;
 const LARGO_MS = HORA_MS;
 const FUERA_MAX_PCT = 1;
 const RESOLUCIONES = Object.freeze({
-  '5m': Object.freeze({ clave: '5m', pasoMs: 5 * MIN_MS, ventanaMs: DIA_MS, arrastre: ARRASTRE_MAX_MS / (5 * MIN_MS), maxPuntos: 300, diasApi: 1 }),
-  '1h': Object.freeze({ clave: '1h', pasoMs: HORA_MS, ventanaMs: 30 * DIA_MS, arrastre: ARRASTRE_MAX_MS / HORA_MS, maxPuntos: 800, diasApi: 31 }),
+  '5m': Object.freeze({ clave: '5m', pasoMs: 5 * MIN_MS, ventanaMs: DIA_MS, arrastre: DIA_MS / (5 * MIN_MS), maxPuntos: 300, diasApi: 1 }),
+  '1h': Object.freeze({ clave: '1h', pasoMs: HORA_MS, ventanaMs: 30 * DIA_MS, arrastre: SERIE.huecoMaxDias * DIA_MS / HORA_MS, maxPuntos: 800, diasApi: 31 }),
 });
 // De la más fina a la menos: la primera que cubre una pestaña es la suya.
 const ORDEN_FINAS = Object.freeze(['5m', '1h']);
@@ -687,7 +690,7 @@ function validarSerieFina(f) {
     const x = f.series[clave], r = RESOLUCIONES[clave], donde = 'serie fina ' + clave;
     if (x === null) { series[clave] = null; continue; }
     exigir(esObjeto(x) && Object.keys(x).sort().join() === 'arrastre,fuera,largos,paso,puntos,valorFuera' && x.paso === r.pasoMs / 1000 &&
-      Number.isInteger(x.arrastre) && x.arrastre >= 0 && x.arrastre * r.pasoMs <= ARRASTRE_MAX_MS, donde + ': forma no válida');
+      Number.isInteger(x.arrastre) && x.arrastre >= 0 && x.arrastre <= r.arrastre, donde + ': forma no válida');
     const fuera = listaTokens(x.fuera, f.tokens, donde + ': tokens fuera no válidos');
     const largos = listaTokens(x.largos, f.tokens, donde + ': tokens sin dato no válidos');
     exigir(fuera.length < f.tokens.length && !largos.some(t => fuera.includes(t)), donde + ': tokens fuera no válidos');
@@ -1002,6 +1005,7 @@ function graficoPestana(serie, clave, idioma = 'es') {
   const fuera = avisoFuera(elegida, s.incluidos, idioma), dentro = s.incluidos - elegida.fuera.length;
   // En las finas, la fecha y la hora de España («08/11/2026, 18:00 (hora de España)»).
   const cuando = q => (elegida.resolucion === '1d' ? fechaCorta(q.fecha, idioma) : textoInstante(q, idioma, elegida.resolucion, { largo: true }));
+  const desdeHasta = q => (elegida.resolucion === '1d' ? `(${cuando(q)})` : `${en ? 'on' : 'el'} ${cuando(q)}`);
   return {
     clave, resolucion: elegida.resolucion, pasoMs: elegida.pasoMs, puntos: t, estadisticas: e, escala, direccion: dir,
     marcasValores: escala.marcas.map(v => ({ valor: v, texto: marcaValor(v, escala.paso, idioma) })),
@@ -1010,20 +1014,25 @@ function graficoPestana(serie, clave, idioma = 'es') {
     // Lo que va junto al cambio: el periodo y a qué se refiere el % (la suma
     // de la serie, no la cifra total de hoy), y, si en el periodo entran o
     // salen tokens, el aviso de que parte del cambio se debe a eso.
-    cambioFrase: en ? LARGO_EN[clave] : clave === 'ytd' ? 'en ' + anio : FRASE_ES[clave],
+    // En 24 h con una serie fina, hasta qué hora (de España): la serie se hace una vez al día y la web se
+    // publica a mano, así que horas después «las últimas 24 horas» ya no eran las últimas (revisión del 13/11/2026).
+    cambioFrase: clave === '1d' && elegida.resolucion !== '1d'
+      ? (en ? `in the 24 hours to ${horaEspana(t[t.length - 1].ms).hora}` : `en las 24 horas hasta las ${horaEspana(t[t.length - 1].ms).hora}`)
+      : en ? LARGO_EN[clave] : clave === 'ytd' ? 'en ' + anio : FRASE_ES[clave],
     alcance: dentro === s.incluidos ? (en ? `sum of the ${s.incluidos} largest` : `suma de los ${s.incluidos} mayores`)
       : (en ? `sum of ${dentro} of the ${s.incluidos} largest` : `suma de ${dentro} de los ${s.incluidos} mayores`),
     avisoTokens: aviso,
     fuera: elegida.fuera.length ? { tokens: elegida.fuera.slice(), valor: elegida.valorFuera } : null,
     avisoFuera: fuera,
+    // En las finas, «de 43.547 M$ el 12/11/2026, 16:05 (hora de España) a …», sin paréntesis alrededor (se leía «(… (hora de España))»).
     etiqueta: (en
-      ? `Sum of the ${s.incluidos} largest tokens, ${largo}: from ${millones(e.inicio, 'en')} (${cuando(t[0])}) to ${millones(e.fin, 'en')} (${cuando(t[t.length - 1])}), ${porcentaje(e.cambio, 'en')}. High ${millones(e.max.valor, 'en')}, low ${millones(e.min.valor, 'en')}.`
-      : `Suma de los ${s.incluidos} mayores tokens, ${largo}: de ${millones(e.inicio)} (${cuando(t[0])}) a ${millones(e.fin)} (${cuando(t[t.length - 1])}), ${porcentaje(e.cambio)}. Máximo ${millones(e.max.valor)}, mínimo ${millones(e.min.valor)}.`) +
+      ? `Sum of the ${s.incluidos} largest tokens, ${largo}: from ${millones(e.inicio, 'en')} ${desdeHasta(t[0])} to ${millones(e.fin, 'en')} ${desdeHasta(t[t.length - 1])}, ${porcentaje(e.cambio, 'en')}. High ${millones(e.max.valor, 'en')}, low ${millones(e.min.valor, 'en')}.`
+      : `Suma de los ${s.incluidos} mayores tokens, ${largo}: de ${millones(e.inicio)} ${desdeHasta(t[0])} a ${millones(e.fin)} ${desdeHasta(t[t.length - 1])}, ${porcentaje(e.cambio)}. Máximo ${millones(e.max.valor)}, mínimo ${millones(e.min.valor)}.`) +
       (aviso ? ` ${aviso[0].toUpperCase()}${aviso.slice(1)}.` : '') + (fuera ? ` ${fuera[0].toUpperCase()}${fuera.slice(1)}.` : ''),
   };
 }
-/* El aviso de una pestaña fina con tokens fuera (les faltan más de 24 horas
-   de datos en la ventana o no se pudieron leer): cuántos, cuánto suman y que
+/* El aviso de una pestaña fina con tokens fuera (les faltan más datos de los
+   que arrastra su serie, 24 o 72 horas, o no se pudieron leer): cuántos, cuánto suman y que
    por eso su línea acaba por debajo de la cifra grande. '' si no hay. */
 function avisoFuera(elegida, incluidos, idioma = 'es') {
   const n = elegida?.fuera?.length || 0;
@@ -1061,6 +1070,16 @@ function serieAtrasada(serie, referencia, dias = RETRASO_MAX_DIAS) {
   const fin = ultimo ? msFecha(ultimo.fecha) : null;
   if (!Number.isFinite(ms) || fin === null) return false;
   return Math.floor((ms - fin) / DIA_MS) > dias;
+}
+/* ¿La serie fina se ha quedado vieja? Cierto si su último punto es de más de
+   «horas» antes de «referencia» (la hora del dato de hoy, ISO o ms). Se hace
+   una vez al día (06:23 UTC) y la web se publica a mano: sin esto, «24 h»
+   seguía enseñando el día de la publicación sin decirlo (revisión del
+   13/11/2026). Entonces la web y la app dicen hasta cuándo llega. */
+const FINA_RETRASO_MAX_HORAS = 26;
+function finaAtrasada(serie, referencia, horas = FINA_RETRASO_MAX_HORAS) {
+  const u = ultimoFino(serie), ms = typeof referencia === 'number' ? referencia : Date.parse(referencia);
+  return !!u && Number.isFinite(ms) && ms - u.ms > horas * HORA_MS;
 }
 /* La cuota de la serie sobre el total de la categoría, con el mismo redondeo
    en la nota, en «Cómo se calcula» y en los datos clave: «86 %». */
@@ -1209,15 +1228,20 @@ function cambio24h(serie, vivo) {
 function esHoy(iso, ahora = Date.now()) {
   return typeof iso === 'string' && ISO.test(iso) && iso.slice(0, 10) === fechaDe(ahora);
 }
-/* Cuándo es el total de la categoría: «hoy, 09:57 UTC» solo si es de hoy;
-   si no, «dato del 10/11/2026, 15:25 UTC»; la foto guardada lo dice. */
+/* Cuándo es el total de la categoría, en hora de España como la cifra
+   grande y la serie (revisión del 13/11/2026: en la misma pantalla iban
+   «16:05», de España, y «14:42 UTC», y parecía 1 h 23 min más viejo cuando
+   eran 23 minutos): «hoy, 15:42 hora de España» solo si es de hoy (en
+   España); si no, «dato del 10/11/2026, 16:25 hora de España»; la foto
+   guardada lo dice. */
 function cuandoDato(vivo, idioma = 'es', ahora = Date.now()) {
   const iso = vivo?.actualizado;
   if (typeof iso !== 'string' || !ISO.test(iso)) return '';
-  const en = idioma === 'en';
-  if (vivo.fuente === 'foto-guardada') return (en ? 'last saved snapshot, ' : 'última foto guardada, del ') + horaDato(iso, idioma);
-  if (esHoy(iso, ahora)) return (en ? 'today, ' : 'hoy, ') + iso.slice(11, 16) + ' UTC';
-  return (en ? 'figure from ' : 'dato del ') + horaDato(iso, idioma);
+  const en = idioma === 'en', h = horaEspana(Date.parse(iso)), zona = en ? ' Spain time' : ' hora de España';
+  const fechaHora = fechaCorta(h.fecha, idioma) + ', ' + h.hora + zona;
+  if (vivo.fuente === 'foto-guardada') return (en ? 'last saved snapshot, ' : 'última foto guardada, del ') + fechaHora;
+  if (h.fecha === horaEspana(ahora).fecha) return (en ? 'today, ' : 'hoy, ') + h.hora + zona;
+  return (en ? 'figure from ' : 'dato del ') + fechaHora;
 }
 /* La línea gris del total de la categoría, con su hora. Va bajo el gráfico,
    tras la nota corta (revisión del 11/11/2026: en la cabecera empujaba el
@@ -1247,9 +1271,10 @@ function subtituloCifra(serie, idioma = 'es') {
   try { s = validarSerie(serie); } catch { s = null; }
   const u = s?.puntos?.[s.puntos.length - 1];
   if (!u) return idioma === 'en' ? 'CoinGecko category total, all tokens' : 'Total de la categoría en CoinGecko, con todos sus tokens';
-  // Con las series finas, también la hora (de España) de la cifra: «13/11/2026, 10:20».
+  // Con las series finas, también la hora de la cifra, y que es la de España: «13/11/2026, 10:20 (hora de España)».
   const fino = ultimoFino(s);
-  const cuando = fino ? fechaCorta(horaEspana(fino.ms).fecha, idioma) + ', ' + horaEspana(fino.ms).hora : fechaCorta(u.fecha, idioma);
+  const cuando = fino ? fechaCorta(horaEspana(fino.ms).fecha, idioma) + ', ' + horaEspana(fino.ms).hora + (idioma === 'en' ? ' (Spain time)' : ' (hora de España)')
+    : fechaCorta(u.fecha, idioma);
   // Un espacio duro antes del «·»: en el móvil, si no cabe, baja «completa · 11/11/2026» entero y no un «· 11/11/2026» suelto.
   return idioma === 'en' ? `Sum of the ${s.incluidos} largest tokens with a complete history\u00a0· ${cuando}`
     : `Suma de los ${s.incluidos} mayores tokens con historia completa\u00a0· ${cuando}`;
@@ -1336,7 +1361,7 @@ module.exports = { FUENTE, TOTAL, TIPOS, ORO, PERIODOS, MARGEN_DIAS, historicoVa
   fechaLlegada, alturasLinea, textosLinea, millonesHablados, cambioPct, resumenCompacto, colorTipo, COLORES_COMPACTO,
   SERIE, PESTANAS, PESTANA_INICIAL, urlHistoria, elegirMayores, historiaToken, construirSerie, validarSerie, serializarSerie, serieValida,
   diasSinDato, tramo, estadisticasTramo, escalaValores, marcaValor, marcasFechas, graficoPestana, notaSerie, coordenadas, indiceCercano, tramosSeguidos, trazosSvg,
-  avisoTokens, serieAtrasada, RETRASO_MAX_DIAS, notaCorta, diasQueFaltan,
+  avisoTokens, serieAtrasada, RETRASO_MAX_DIAS, finaAtrasada, FINA_RETRASO_MAX_HORAS, notaCorta, diasQueFaltan,
   CAMBIO_24H_MAX, cambio24hCreible, etiquetaPestana, anioSerie, coberturaTexto, entranAMitad, cifraGrande, cambio24h, esHoy, cuandoDato,
   lineaTotalCategoria, explicacionCambio, subtituloCifra,
   RESOLUCIONES, FUERA_MAX_PCT, avisoFuera, urlHistoriaFina, observacionesToken, construirSerieFina, validarSerieFina, serializarSerieFina, serieFinaValida, serieFinaVacia,

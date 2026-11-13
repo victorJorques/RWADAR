@@ -446,7 +446,7 @@ test('series finas: con --fina, 42 llamadas de la diaria y 80 más (las de cada 
   assert.deepEqual([fina.series['5m'].puntos.length, fina.series['1h'].puntos.length], [289, 721]);
   assert.deepEqual([fina.series['5m'].puntos[0][0], fina.series['5m'].puntos.at(-1)[0]], ['2026-11-10T07:00Z', '2026-11-11T07:00Z']);
   assert.deepEqual(['5m', '1h'].map(r => [fina.series[r].fuera, fina.series[r].valorFuera, fina.series[r].largos, fina.series[r].arrastre]),
-    [[[], 0, [], 288], [[], 0, [], 24]]);
+    [[[], 0, [], 288], [[], 0, [], 72]]);
   assert.deepEqual([fina.series['1h'].puntos[0][0], fina.series['1h'].puntos.at(-1)[0]], ['2026-10-12T07:00Z', '2026-11-11T07:00Z']);
   // Las tres acaban en el mismo valor exacto: el último dato de cada token (el de la lectura de 5 minutos), también la diaria.
   const fin = serie.puntos.at(-1);

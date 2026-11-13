@@ -5,7 +5,7 @@ import { Pressable, Text, View, useIdioma } from './Idioma';
 import { cargarTokenizacion } from '../lib/tokenizacion-remota';
 import { cargarSerieConFina } from '../lib/tokenizacion-serie-remota';
 import { FUENTE, PESTANAS, PESTANA_INICIAL, cambio24h, cambioPct, cifraGrande, coberturaTexto, colorTipo, coordenadas, cuandoDato, cuota, direccion,
-  etiquetaPestana, explicacionCambio, fechaCorta, graficoPestana, horaEspana, indiceCercano, lineaTotalCategoria, marcaValor, millones, millonesHablados,
+  etiquetaPestana, explicacionCambio, fechaCorta, finaAtrasada, graficoPestana, horaEspana, indiceCercano, lineaTotalCategoria, marcaValor, millones, millonesHablados,
   msMinuto, notaCorta, notaSerie, pestanaDisponible, porcentaje, serieAtrasada, seriePestana, subtituloCifra, textoInstante, tramosSeguidos,
   trazosSvg } from '../lib/tokenizacion';
 import { C, F, R, T, UI, pulsado } from '../lib/tema';
@@ -159,10 +159,13 @@ function fechasQueCaben(marcas, coords, PW, letra) {
     const w = anchoTexto(m.texto, letra);
     // Centrada en su raya («xt»); junto a los bordes, lo justo hacia dentro para no salirse
     // (empezar en la raya empujaba la siguiente: con la letra al 130 % se perdía «00:00»).
-    const xt = Math.max(w / 2, Math.min(PW - w / 2, x));
-    const ini = xt - w / 2;
+    // Junto a los bordes, anclada al borde (no centrada con un ancho estimado, que se queda corto con «Dec 2025»
+    // y la letra grande: el SVG recorta lo que sale de su caja y se perdía media «D»).
+    const ancla = x - w / 2 < 4 ? 'start' : x + w / 2 > PW - 4 ? 'end' : 'middle';
+    const xt = ancla === 'start' ? 0 : ancla === 'end' ? PW : x;
+    const ini = ancla === 'start' ? 0 : ancla === 'end' ? PW - w : x - w / 2;
     if (ini < fin + 6) continue;
-    salida.push({ ...m, x, xt });
+    salida.push({ ...m, x, xt, ancla });
     fin = ini + w;
   }
   return salida;
@@ -255,7 +258,7 @@ export function GraficoBolsa({ g, idioma, alto = 270 }) {
         </SvgText>
         <SvgText x={ancho - 2} y={altoTotal - 9} fill={C.tx3} fontSize={letra - 1} fontFamily={F.media} textAnchor="end">{idioma === 'en' ? '$M' : 'M$'}</SvgText>
         {fechas.map((m) => (
-          <SvgText key={'tf' + m.indice} x={m.xt} y={altoTotal - 9} fill={C.tx2} fontSize={letra} fontFamily={F.media} textAnchor="middle">{m.texto}</SvgText>
+          <SvgText key={'tf' + m.indice} x={m.xt} y={altoTotal - 9} fill={C.tx2} fontSize={letra} fontFamily={F.media} textAnchor={m.ancla}>{m.texto}</SvgText>
         ))}
       </>
     );
@@ -267,7 +270,9 @@ export function GraficoBolsa({ g, idioma, alto = 270 }) {
   const ck = k === null ? null : coords[k] || null;
   const lect = pasoLector(g);
   // Hasta medirla, lo que ocupa «12 nov, 16:05 · 42.947 M$ · +82,0 %» con su aire; nunca más ancha que el gráfico.
-  const wB = Math.min(ancho, anchoBurbuja || Math.round(244 * Math.max(1, fontScale || 1)));
+  // Para colocarla, nunca menos que lo que ocupa el texto más largo (como antes, 244 px por la letra): al pasar de «9» a «10» el
+  // texto crece antes de volver a medirlo y, con solo lo medido, la burbuja se salía hasta 8 px por la derecha un fotograma.
+  const wB = Math.min(ancho, Math.max(anchoBurbuja, Math.round(244 * Math.max(1, fontScale || 1))));
   const xBurbuja = ck ? Math.max(0, Math.min(Math.max(0, ancho - wB), ck.x - wB / 2)) : 0;
   const lector = (paso) => {
     const actual = k === null ? g.puntos.length - 1 : k;
@@ -319,7 +324,7 @@ function Cambio({ g, grande = false }) {
 /* La fuente: CoinGecko, hasta cuándo llega la serie y, en la pantalla, de
    cuándo es el total de la categoría («hoy, …» solo si es de hoy). Los mismos
    textos que la web. Con las series finas, también la hora (de España, y se
-   dice: el total de la categoría va en UTC) de su último punto. */
+   dice; el total de la categoría también va en hora de España) de su último punto. */
 function Fuente({ vivo, serie, idioma, onAbrirEnlace, conTotal = true }) {
   const en = idioma === 'en';
   const partes = [];
@@ -426,6 +431,11 @@ export function MercadoPantalla({ onAbrirEnlace, cargarVivo, cargarLaSerie, chil
           {g && g.avisoTokens ? <Text noTraducir style={[e.aviso, e.avisoTokens]} testID="mercado-aviso-tokens">{mayuscula(g.avisoTokens) + '.'}</Text> : null}
           {/* En una pestaña fina con tokens sin datos, su línea acaba por debajo de la cifra grande: se dice cuánto y por qué. */}
           {g && g.avisoFuera ? <Text noTraducir style={[e.aviso, e.avisoTokens]} testID="mercado-aviso-fuera">{mayuscula(g.avisoFuera) + '.'}</Text> : null}
+          {/* Una pestaña fina con la serie fina de más de 26 horas antes del dato de hoy: hasta cuándo llega
+              (se hace una vez al día y la web se publica a mano; sin esto, «24 h» seguía en el día de la publicación). */}
+          {!vieja && g && g.resolucion !== '1d' && vivo && finaAtrasada(serie, vivo.actualizado) ? (
+            <Text noTraducir style={e.aviso} testID="mercado-fina-vieja">{`${en ? 'The 5-minute and hourly data end on ' : 'Los datos cada 5 minutos y cada hora llegan hasta el '}${cuandoHoy}${en ? ' (Spain time).' : ' (hora de España).'}`}</Text>
+          ) : null}
           {vieja ? <Text noTraducir style={e.aviso} testID="mercado-serie-vieja">{`${en ? 'The series ends on ' : 'La serie llega hasta el '}${fechaFinSerie(serie, idioma)}${en ? ': the large figure and the chart are from that day.' : ': la cifra grande y el gráfico son de ese día.'}`}</Text> : null}
           {/* El total de la categoría va bajo el gráfico, tras la nota (aquí empujaba el gráfico fuera de la primera pantalla). */}
           {!serie && vivo ? <Text noTraducir style={e.aviso}>{`${en ? "Without the daily series, the figure is CoinGecko's category total (" : 'Sin la serie diaria, la cifra es el total de la categoría en CoinGecko ('}${cuandoDato(vivo, idioma)}).`}</Text> : null}
@@ -568,6 +578,9 @@ export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLa
   const vieja = atrasada(vivo, serie);
   // El minigráfico del mes: con la serie horaria si la hay (721 puntos; se pinta simplificado, sin perder máximos ni mínimos).
   const g = useMemo(() => (serie ? graficoPestana(serie, '1m', idioma) : null), [serie, idioma]);
+  // Con la letra del sistema grande, el minigráfico baja a su propia fila: en una sola, «Activos tokenizados» se partía a media palabra.
+  const { fontScale: escalaLetra } = useWindowDimensions();
+  const apilada = escalaLetra > 1.1;
   if (hoy === null) {
     if (fase === 'cargando') return <Text noTraducir style={e.estado}>{en ? 'Loading CoinGecko data…' : 'Cargando los datos de CoinGecko…'}</Text>;
     return (
@@ -583,7 +596,7 @@ export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLa
   const palabra = g ? (g.direccion === 'sube' ? (en ? 'up' : 'sube') : g.direccion === 'baja' ? (en ? 'down' : 'baja') : (en ? 'unchanged' : 'sin cambios')) : '';
   return (
     <View>
-      <Pressable onPress={() => { tacto.abrir(); onAbrir?.(); }} style={({ pressed }) => [e.ct, pressed && e.ctPulsada]}
+      <Pressable onPress={() => { tacto.abrir(); onAbrir?.(); }} style={({ pressed }) => [e.ct, apilada && e.ctApilada, pressed && e.ctPulsada]}
         accessibilityRole="button" noTraducir
         accessibilityLabel={`${en ? 'Tokenised asset market' : 'Mercado de activos tokenizados'}, ${serie ? (en ? `sum of the ${serie.incluidos} largest tokens` : `suma de los ${serie.incluidos} mayores tokens`) : (en ? 'category total' : 'total de la categoría')}: ${millonesHablados(hoy, idioma)}${g ? `, ${palabra} ${g.cambioTexto} ${g.cambioFrase}${g.avisoTokens ? `; ${g.avisoTokens}` : ''}${g.avisoFuera ? `; ${g.avisoFuera}` : ''}` : ''}${vieja ? `; ${en ? 'series to ' : 'serie hasta el '}${fechaFinSerie(serie, idioma)}` : ''}. ${en ? 'See the chart' : 'Ver el gráfico'}`}
         testID="mercado-cotizacion">
@@ -591,13 +604,14 @@ export function MercadoCotizacion({ onAbrir, onAbrirEnlace, cargarVivo, cargarLa
           <Text noTraducir style={e.ctNom}>{en ? 'Tokenised assets' : 'Activos tokenizados'}</Text>
           <Text noTraducir style={e.ctSub}>{serie ? (en ? `${serie.incluidos} largest · CoinGecko` : `Los ${serie.incluidos} mayores · CoinGecko`) : (en ? 'Whole category · CoinGecko' : 'Toda la categoría · CoinGecko')}</Text>
         </View>
-        {g ? <Minigrafico g={g} /> : null}
+        {g && !apilada ? <Minigrafico g={g} /> : null}
         <View style={e.ctDer}>
           <Text noTraducir style={e.ctCifra} numberOfLines={1}>{millones(hoy, idioma)}</Text>
           {g ? <Cambio g={g} /> : null}
           {g ? <Text noTraducir style={e.ctPeriodo}>{g.periodoTexto}</Text> : null}
           {vieja ? <Text noTraducir style={e.ctPeriodo}>{`${en ? 'series to ' : 'serie hasta el '}${fechaFinSerie(serie, idioma)}`}</Text> : null}
         </View>
+        {g && apilada ? <View style={e.ctMiniFila}><Minigrafico g={g} /></View> : null}
       </Pressable>
       {/* El % del mes es del tamaño del mercado, no una rentabilidad: también aquí. */}
       {g ? <Text noTraducir style={[e.explica, e.ctExplica]}>{explicacionCambio(idioma)}</Text> : null}
@@ -681,6 +695,8 @@ const e = StyleSheet.create({
   noticias: { marginTop: 16, paddingTop: 24, borderTopWidth: 1, borderTopColor: C.bd },
   ct: { flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 16, padding: 16, borderRadius: R.l, borderWidth: 1, borderColor: C.bd, backgroundColor: C.s1 },
   ctPulsada: { backgroundColor: C.s2 },
+  ctApilada: { flexWrap: 'wrap', rowGap: 12 },
+  ctMiniFila: { width: '100%' },
   ctIzq: { flex: 1, minWidth: 0, gap: 2 },
   ctNom: { fontFamily: F.negrita, fontSize: 17, lineHeight: 21, color: C.tx },
   ctSub: { fontFamily: F.regular, fontSize: 13, lineHeight: 17, color: C.tx3 },

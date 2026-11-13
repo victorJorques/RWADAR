@@ -363,7 +363,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.equal(m.alcance, null, 'el subtítulo ya dice qué suma');
       assert.equal(m.explica, 'Mide cuánto vale en total el mercado: sube también cuando se emiten tokens nuevos. No es lo que habría ganado una inversión.');
       assert.equal(m.totalCat, modelo.lineaTotalCategoria(SERIE, VIVO, 'es'));
-      assert.match(m.totalCat, /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \((dato del 10\/11\/2026, 15:25|hoy, 15:25) UTC\)\.$/);
+      assert.match(m.totalCat, /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \((dato del 10\/11\/2026, 16:25|hoy, 16:25) hora de España\)\.$/);
       // El total va bajo el gráfico, tras la nota: en la cabecera empujaba el gráfico fuera de la primera pantalla del móvil.
       assert.deepEqual([m.totalEnCab, m.totalEnNota], [false, true]);
       if (ancho < 768) assert.ok(m.finEje <= 844, `${ancho}: el gráfico entero, con sus fechas, en la primera pantalla (acaba en ${m.finEje} px)`);
@@ -528,7 +528,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 } });
       await pagina.goto(local2.url + '/mercado/', { waitUntil: 'load' });
       await pagina.waitForSelector('#tokenizacion[data-mercado-estado="foto-guardada+serie"]', { timeout: 20000 });
-      assert.match(await pagina.textContent('#tokenizacion .mk-total-cat'), /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \(última foto guardada, del 10\/11\/2026, 15:25 UTC\)\./);
+      assert.match(await pagina.textContent('#tokenizacion .mk-total-cat'), /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \(última foto guardada, del 10\/11\/2026, 16:25 hora de España\)\./);
       assert.equal(await pagina.locator('#tokenizacion .mk-svg').count(), 1);
       // Sin la serie: la cifra de hoy sigue y el gráfico lo dice.
       await pagina.route('**/datos/tokenizacion-serie.json', r => r.abort());
@@ -537,7 +537,7 @@ test('en Chromium: «Mercado y noticias» al estilo de una app de bolsa: Inicio 
       assert.match(await pagina.textContent('#mkCuerpo'), /El gráfico no está disponible ahora\. La cifra de hoy sí\./);
       assert.equal(plano(await pagina.textContent('.mk-cifra-num')), '49.684 M$', 'sin serie, la cifra grande es el total de la categoría');
       assert.equal(await pagina.textContent('.mk-sub'), 'Total de la categoría en CoinGecko, con todos sus tokens');
-      assert.match(await pagina.textContent('#mkCuerpo'), /Sin la serie diaria, la cifra es el total de la categoría en CoinGecko \(última foto guardada, del 10\/11\/2026, 15:25 UTC\)\./);
+      assert.match(await pagina.textContent('#mkCuerpo'), /Sin la serie diaria, la cifra es el total de la categoría en CoinGecko \(última foto guardada, del 10\/11\/2026, 16:25 hora de España\)\./);
       // Sin servidor, sin histórico y sin serie: estado vacío honesto, sin una sola cifra.
       await pagina.route('**/api/tokenizacion', r => r.abort());
       await pagina.route('**/datos/tokenizacion-historico.json', r => r.abort());

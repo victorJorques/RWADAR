@@ -3,7 +3,7 @@
 /* Las series finas del gráfico de la tokenización (13/11/2026): un punto
    cada 5 minutos de las últimas 24 horas y uno cada hora de los últimos 30
    días, de los mismos tokens que la diaria. El motor (cubos, arrastre de
-   hasta 24 horas, tokens fuera y su peso, validación, unión con la diaria,
+   hasta 24 horas en la de 5 minutos y de 72 en la horaria, tokens fuera y su peso, validación, unión con la diaria,
    la serie de cada pestaña, la cabecera, la hora de España y el trazo para
    pintar) y la lectura de la app. Sin red: datos hechos a mano con la forma
    de CoinGecko, entre ellos los huecos reales de figure-heloc del
@@ -52,14 +52,14 @@ function diaria({ valorFinal, tokens = ['token-a', 'token-b'], generado = GENERA
 const comoArchivo = (x, paso) => ({ paso, arrastre: x.arrastre, fuera: x.fuera, valorFuera: x.valorFuera, largos: x.largos, puntos: x.puntos });
 /* El par diaria + fina, como lo deja serie-diaria.mjs: las tres acaban en el último dato de cada token.
    Con «conC», un tercer token pequeño (150 M$, un 0,36 %): en la de 5 minutos su lectura falla y en la
-   horaria le faltan las últimas 30 horas; queda fuera de las dos y la diaria sí lo suma. */
+   horaria le faltan las últimas 80 horas (arrastra 72); queda fuera de las dos y la diaria sí lo suma. */
 function par({ generado = GENERADO, conC = false } = {}) {
   const va = ms => Math.round(30e9 * (1 + (ms - LECTURA) / (400 * DIA))), vb = ms => Math.round(12e9 * (1 + Math.sin(ms / (7 * HORA)) / 200));
   const e5 = [ent('token-a', cinco({ valor: va })), ent('token-b', cinco({ valor: vb }))];
   const e1 = [ent('token-a', datos({ paso: HORA, desde: LECTURA - 31 * DIA, valor: va })), ent('token-b', datos({ paso: HORA, desde: LECTURA - 31 * DIA, valor: vb }))];
   if (conC) {
     e5.push({ id: 'token-c', obs: null, valor: 150e6 });
-    e1.push(ent('token-c', datos({ paso: HORA, desde: LECTURA - 31 * DIA, lectura: LECTURA - 30 * HORA, valor: () => 150e6 })));
+    e1.push(ent('token-c', datos({ paso: HORA, desde: LECTURA - 31 * DIA, lectura: LECTURA - 80 * HORA, valor: () => 150e6 })));
   }
   const s5 = construir(e5, '5m'), s1 = construir(e1, '1h');
   const tokens = conC ? ['token-a', 'token-b', 'token-c'] : ['token-a', 'token-b'];
@@ -138,10 +138,10 @@ const HUECOS_FIGURE = [['10-14T07', '10-14T12'], ['10-15T07', '10-15T11'], ['10-
   ['11-06T10', '11-06T13'], ['11-08T08', '11-08T13'], ['11-08T14', '11-09T13'], ['11-10T07', '11-10T12'], ['11-11T07', '11-11T12'],
   ['11-12T07', '11-12T12'], ['11-13T08', '11-13T11']].map(([a, b]) => [Date.parse(`2026-${a}:00:00Z`) + 1, Date.parse(`2026-${b}:00:00Z`)]);
 
-test('la horaria: 30 días exactos (721 puntos); con los huecos reales de figure-heloc (hasta 24 horas) sale entera y lo dice', () => {
+test('la horaria: 30 días exactos (721 puntos); con los huecos reales de figure-heloc (hasta 24 horas; arrastra hasta 72) sale entera y lo dice', () => {
   const r = construir([ent('token-a', horaria()), ent('token-b', horaria({ sin: [[LECTURA - 10 * DIA, LECTURA - 10 * DIA + 3 * HORA]] }))], '1h');
   assert.equal(r.puntos.length, 721);
-  assert.deepEqual([r.puntos[0][0], r.puntos.at(-1)[0], r.fuera, r.largos, r.arrastre], ['2026-10-14T09:00Z', '2026-11-13T09:00Z', [], ['token-b'], 24]);
+  assert.deepEqual([r.puntos[0][0], r.puntos.at(-1)[0], r.fuera, r.largos, r.arrastre], ['2026-10-14T09:00Z', '2026-11-13T09:00Z', [], ['token-b'], 72]);
   // figure-heloc con sus huecos reales y otros 29 tokens que no fallan (15.210 M$ en total).
   const lectura = Date.parse('2026-11-13T14:22:00Z');
   const figure = horaria({ lectura, valor: ms => (ms < Date.parse('2026-11-02T13:00:00Z') ? 28320e6 : 26617e6), sin: HUECOS_FIGURE });
@@ -165,6 +165,34 @@ test('la horaria: 30 días exactos (721 puntos); con los huecos reales de figure
   assert.throws(() => t.observacionesToken([[1, 2, 3]]), /punto de market_caps no válido/);
 });
 
+/* Revisión del 13/11/2026: con 24 horas de arrastre, un solo hueco algo más largo del mayor token (figure-heloc,
+   el 64 % de la suma) tiraba la horaria 30 días seguidos, y 1 S y 1 M volvían a la diaria aunque la última
+   semana estuviera completa. En su historia diaria de CoinGecko faltan 72 horas en cada puente con lunes
+   festivo en EE. UU. (19/01, 16/02, 25/05 y 07/09/2026). La horaria arrastra ahora 72 horas, como la diaria. */
+test('la horaria arrastra hasta 72 horas, como la diaria: un lunes festivo en EE. UU. hace 18 días (47 horas sin datos del mayor) no la tira; 73 horas, sí', () => {
+  const sin = h => [[LECTURA - 18 * DIA, LECTURA - 18 * DIA + h * HORA]];
+  const vf = () => 26617e6, vr = () => 15210e6;
+  const horas = h => construir([ent('figure-heloc', horaria({ valor: vf, sin: sin(h) })), ent('resto', horaria({ valor: vr }))], '1h');
+  const r47 = horas(47);
+  assert.deepEqual([r47.puntos.length, r47.fuera, r47.largos, r47.arrastre], [721, [], ['figure-heloc'], 72]);
+  const en = iso => r47.puntos.find(p => p[0] === iso)[1];
+  assert.equal(en('2026-10-27T08:00Z'), 26617e6 + 15210e6, 'arrastrado 47 horas: su último dato de antes del hueco');
+  // 72 horas justas sin dato nuevo: entra; una más: queda fuera y, como pesa el 64 %, la horaria no sale ese día.
+  assert.deepEqual(horas(72).fuera, []);
+  assert.throws(() => horas(73), /los que quedan fuera \(figure-heloc\) pesan el 63\.64 % \(como mucho 1 %\)/);
+  // Con el archivo entero: 1 S y 1 M usan la horaria (169 y 721 puntos), no la diaria (8 y 31).
+  const s5 = construir([ent('figure-heloc', cinco({ valor: vf })), ent('resto', cinco({ valor: vr }))], '5m');
+  const archivo = s1 => t.validarSerieFina({ version: 1, fuente: 'CoinGecko', categoria: 'tokenized-products', generado: GENERADO,
+    tokens: ['figure-heloc', 'resto'], series: { '5m': comoArchivo(s5, 300), '1h': s1 ? comoArchivo(s1, 3600) : null } });
+  const d = diaria({ valorFinal: 26617e6 + 15210e6, tokens: ['figure-heloc', 'resto'] });
+  const s = t.unirSerieFina(d, archivo(r47));
+  assert.deepEqual(['1s', '1m'].map(c => [t.seriePestana(s, c).resolucion, t.seriePestana(s, c).puntos.length]), [['1h', 169], ['1h', 721]]);
+  assert.match(t.notaSerie(s, 'es', '1m'), /como mucho de 72 horas antes\)\. 1 token \(figure-heloc\) pasa ratos de más de una hora sin dato en CoinGecko/);
+  const sinHoraria = t.unirSerieFina(d, archivo(null));
+  assert.deepEqual(['1s', '1m'].map(c => [t.seriePestana(sinHoraria, c).resolucion, t.seriePestana(sinHoraria, c).puntos.length]), [['1d', 8], ['1d', 31]],
+    'sin la horaria (lo que pasaba con 24 horas), la diaria');
+});
+
 test('el archivo de la serie fina se valida entero (una línea por punto) y se rechaza lo mal formado', () => {
   const { fina } = par({ conC: true });
   const texto = t.serializarSerieFina(fina);
@@ -184,7 +212,7 @@ test('el archivo de la serie fina se valida entero (una línea por punto) y se r
     f => ({ ...f, tokens: ['token-a', 'token-a', 'token-c'] }),
     f => ({ ...f, series: { '5m': f.series['5m'] } }),
     cambia('5m', () => ({ paso: 60 })),
-    cambia('1h', () => ({ arrastre: 25 })),
+    cambia('1h', () => ({ arrastre: 73 })),
     cambia('5m', () => ({ arrastre: 289 })),
     cambia('5m', () => ({ largos: undefined })),
     // Los de fuera: tokens que no están, repetidos, también en «largos», sin su valor o con un valor que pesa más del 1 %.
@@ -301,8 +329,16 @@ test('cada pestaña, de la serie más fina que la cubre: 24 h cada 5 minutos, 1 
   const g24 = t.graficoPestana(s, '1d');
   const c24 = t.cambio24h(s, { total: { cambio24h: 124 } });
   assert.deepEqual(c24, { cambio: g24.estadisticas.cambio, fuente: 'serie', desde: '2026-11-12', hasta: '2026-11-13', desdeT: '2026-11-12T09:20Z', hastaT: '2026-11-13T09:20Z', resolucion: '5m' });
-  assert.equal(g24.cambioFrase, 'en las últimas 24 horas');
-  assert.equal(t.graficoPestana(s, '1d', 'en').cambioFrase, 'past 24 hours');
+  // Hasta qué hora (de España): la serie sale una vez al día y la web se publica a mano; «las últimas 24 horas» dejaba de ser cierto.
+  assert.equal(g24.cambioFrase, 'en las 24 horas hasta las 10:20');
+  assert.equal(t.graficoPestana(s, '1d', 'en').cambioFrase, 'in the 24 hours to 10:20');
+  assert.equal(t.graficoPestana(s, '1s').cambioFrase, 'en la última semana', 'las demás pestañas, como antes');
+  // Si la fina tiene más de 26 horas respecto al dato de hoy, la web y la app lo avisan (finaAtrasada). La diaria sola, no.
+  assert.equal(t.finaAtrasada(s, '2026-11-14T11:20:00Z'), false, '26 horas justas');
+  assert.equal(t.finaAtrasada(s, '2026-11-14T11:21:00Z'), true);
+  assert.equal(t.finaAtrasada(s, Date.parse('2026-11-15T12:00:00Z')), true);
+  assert.equal(t.finaAtrasada(d, '2026-11-20T00:00:00Z'), false);
+  assert.equal(t.finaAtrasada(s, 'mal'), false);
   assert.equal(t.graficoPestana(s, '1s').estadisticas.desdeT, '2026-11-06T09:00Z', '1 S: de la misma hora de hace 7 días');
   // Sin la fina, como antes: 24 h desactivada y el cambio en 24 h de los dos últimos días de la diaria.
   assert.equal(t.seriePestana(d, '1d'), null);
@@ -361,13 +397,18 @@ test('el eje y la cruz: 24 h con horas (HH:MM, hora de España), 1 S con días y
   assert.equal(t.textoInstante(p, 'en', '5m', { largo: true }), '13 Nov 2026, 10:20 (Spain time)');
   assert.equal(t.textoInstante(d.puntos.at(-1), 'es'), '13/11/2026', 'un punto diario: su fecha');
   // La etiqueta accesible del gráfico y la cabecera, con la hora.
-  assert.match(g24.etiqueta, /^Suma de los 2 mayores tokens, últimas 24 horas: de .+ \(12\/11\/2026, 10:20 \(hora de España\)\) a .+ \(13\/11\/2026, 10:20 \(hora de España\)\), /);
-  assert.equal(t.subtituloCifra(s), 'Suma de los 2 mayores tokens con historia completa · 13/11/2026, 10:20');
-  assert.equal(t.subtituloCifra(s, 'en'), 'Sum of the 2 largest tokens with a complete history · 13 Nov 2026, 10:20');
+  // Sin paréntesis dentro de paréntesis (revisión del 13/11/2026).
+  assert.match(g24.etiqueta, /^Suma de los 2 mayores tokens, últimas 24 horas: de \S+\sM\$ el 12\/11\/2026, 10:20 \(hora de España\) a \S+\sM\$ el 13\/11\/2026, 10:20 \(hora de España\), [−+]/);
+  assert.match(t.graficoPestana(s, '1d', 'en').etiqueta, /: from \$\S+M on 12 Nov 2026, 10:20 \(Spain time\) to \$\S+M on 13 Nov 2026, 10:20 \(Spain time\), /);
+  assert.ok(!/\([^()]*\(/.test(g24.etiqueta), g24.etiqueta);
+  assert.match(t.graficoPestana(s, '3m').etiqueta, /: de \S+\sM\$ \(\d\d\/\d\d\/2026\) a \S+\sM\$ \(13\/11\/2026\), /, 'las diarias, como antes');
+  // El subtítulo de la cifra dice que la hora es la de España (en la misma pantalla había otra en UTC).
+  assert.equal(t.subtituloCifra(s), 'Suma de los 2 mayores tokens con historia completa · 13/11/2026, 10:20 (hora de España)');
+  assert.equal(t.subtituloCifra(s, 'en'), 'Sum of the 2 largest tokens with a complete history · 13 Nov 2026, 10:20 (Spain time)');
   assert.equal(t.subtituloCifra(d), 'Suma de los 2 mayores tokens con historia completa · 13/11/2026', 'sin la fina, como antes');
   // «Cómo se calcula» dice cómo se suma cada punto en las pestañas finas; en las diarias, como antes.
   assert.match(t.notaSerie(s, 'es', '1d'), /En esta pestaña, un punto cada 5 minutos, en hora de España peninsular: el último dato de cada token en esos 5 minutos \(si no tiene, el anterior, como mucho de 24 horas antes\)\.$/);
-  assert.match(t.notaSerie(s, 'es', '1m'), /un punto cada hora, en hora de España peninsular: el último dato de cada token en esa hora \(si no tiene, el anterior, como mucho de 24 horas antes\)\.$/);
+  assert.match(t.notaSerie(s, 'es', '1m'), /un punto cada hora, en hora de España peninsular: el último dato de cada token en esa hora \(si no tiene, el anterior, como mucho de 72 horas antes\)\.$/);
   assert.match(t.notaSerie(s, 'en', '1d'), /In this tab, one point every 5 minutes, in Spain \(mainland\) time/);
   assert.equal(t.notaSerie(s, 'es', '1a'), t.notaSerie(d, 'es', '1a'));
 });

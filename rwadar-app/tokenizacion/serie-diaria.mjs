@@ -29,8 +29,8 @@
       series finas (construirSerieFina) de los mismos tokens; y la diaria se
       rehace con el último dato de cada token, así las tres acaban en el
       mismo punto y la cifra grande no contradice a ninguna pestaña. Un
-      token al que en la ventana le faltan más de 24 horas de datos, o cuya
-      lectura fina falla, queda fuera de ESA serie (la serie lo dice y cuánto
+      token al que en la ventana le faltan más de 24 horas de datos (72 en la
+      horaria), o cuya lectura fina falla, queda fuera de ESA serie (la serie lo dice y cuánto
       suma); si los de fuera pesan más del 1 %, esa serie no sale. Se
       escriben la fina y la diaria nueva, las dos con el mismo «generado».
       Si falla una serie fina, se guarda la otra; si fallan las dos o se

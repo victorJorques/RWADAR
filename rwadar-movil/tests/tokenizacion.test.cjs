@@ -526,13 +526,18 @@ test('el total de la categoría, con su hora («hoy» solo si es de hoy), y lo q
   const vivo = { ...RESUMEN, fuente: 'coingecko', actualizado: '2026-11-11T09:57:00.000Z', total: { valor: 49690e6, cambio24h: null } };
   assert.equal(t.esHoy('2026-11-11T09:57:00.000Z', hoy), true);
   assert.equal(t.esHoy('2026-11-10T15:25:40.000Z', hoy), false);
-  assert.equal(t.cuandoDato(vivo, 'es', hoy), 'hoy, 09:57 UTC');
-  assert.equal(t.cuandoDato(vivo, 'en', hoy), 'today, 09:57 UTC');
-  assert.equal(t.cuandoDato({ ...vivo, actualizado: '2026-11-10T15:25:40.000Z' }, 'es', hoy), 'dato del 10/11/2026, 15:25 UTC', 'si no es de hoy, no dice «hoy»');
-  assert.equal(t.cuandoDato({ ...vivo, fuente: 'foto-guardada', actualizado: '2026-11-10T15:25:40.000Z' }, 'es', hoy), 'última foto guardada, del 10/11/2026, 15:25 UTC');
+  // En hora de España, como la cifra grande y la serie (revisión del 13/11/2026: «16:05» de España junto a «14:42 UTC»).
+  assert.equal(t.cuandoDato(vivo, 'es', hoy), 'hoy, 10:57 hora de España');
+  assert.equal(t.cuandoDato(vivo, 'en', hoy), 'today, 10:57 Spain time');
+  assert.equal(t.cuandoDato({ ...vivo, actualizado: '2026-11-10T15:25:40.000Z' }, 'es', hoy), 'dato del 10/11/2026, 16:25 hora de España', 'si no es de hoy, no dice «hoy»');
+  assert.equal(t.cuandoDato({ ...vivo, actualizado: '2026-11-10T15:25:40.000Z' }, 'en', hoy), 'figure from 10 Nov 2026, 16:25 Spain time');
+  assert.equal(t.cuandoDato({ ...vivo, fuente: 'foto-guardada', actualizado: '2026-11-10T15:25:40.000Z' }, 'es', hoy), 'última foto guardada, del 10/11/2026, 16:25 hora de España');
+  // «Hoy» es el día de España: las 23:30 UTC del 10 son las 00:30 del 11; en verano, una hora más.
+  assert.equal(t.cuandoDato({ ...vivo, actualizado: '2026-11-10T23:30:00.000Z' }, 'es', hoy), 'hoy, 00:30 hora de España');
+  assert.equal(t.cuandoDato({ ...vivo, actualizado: '2026-07-01T08:00:00.000Z' }, 'es', Date.parse('2026-07-01T12:00:00Z')), 'hoy, 10:00 hora de España');
   assert.equal(t.lineaTotalCategoria(SERIE, vivo, 'es', hoy),
-    'Total de la categoría en CoinGecko, con todos sus tokens: 49.690\u00a0M$ (hoy, 09:57 UTC).');
-  assert.equal(t.lineaTotalCategoria(SERIE, vivo, 'en', hoy), 'CoinGecko category total, all tokens: $49,690M (today, 09:57 UTC).');
+    'Total de la categoría en CoinGecko, con todos sus tokens: 49.690\u00a0M$ (hoy, 10:57 hora de España).');
+  assert.equal(t.lineaTotalCategoria(SERIE, vivo, 'en', hoy), 'CoinGecko category total, all tokens: $49,690M (today, 10:57 Spain time).');
   assert.equal(t.lineaTotalCategoria(null, vivo), '', 'sin serie, la cifra grande ya es ese total');
   assert.equal(t.lineaTotalCategoria(SERIE, null), '');
   assert.equal(t.explicacionCambio(), 'Mide cuánto vale en total el mercado: sube también cuando se emiten tokens nuevos. No es lo que habría ganado una inversión.');
@@ -679,7 +684,7 @@ test('la pantalla «Mercado y noticias»: la cifra grande es el final de la lín
   assert.equal(textoDe(porId('mercado-explica')), t.explicacionCambio(), 'qué mide el %: no es una rentabilidad');
   // El total de la categoría, en gris tras la nota bajo el gráfico (en la cabecera empujaba el gráfico fuera de la primera pantalla).
   assert.equal(textoDe(porId('mercado-total-categoria')).trim(), t.lineaTotalCategoria(SERIE, RESUMEN, 'es'));
-  assert.match(textoDe(porId('mercado-total-categoria')).trim(), /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \(.+UTC\)\.$/);
+  assert.match(textoDe(porId('mercado-total-categoria')).trim(), /^Total de la categoría en CoinGecko, con todos sus tokens: 49\.684\sM\$ \(.+ hora de España\)\.$/);
   assert.ok(nodos(porId('mercado-nota')).includes(porId('mercado-total-categoria')), 'dentro de la nota del gráfico');
   assert.equal(textoDe(porId('mercado-nota')).replace(/\s+/g, ' '), `${t.notaCorta(SERIE)} ${t.lineaTotalCategoria(SERIE, RESUMEN, 'es')}`.replace(/\s+/g, ' '));
   const cabecera = nodos(arbol).find((n) => typeof n?.props?.accessibilityLabel === 'string' && n.props.accessibilityLabel.startsWith('Suma de los'));
@@ -999,7 +1004,7 @@ test('con las series finas: «24 h» activa, cada pestaña con la más fina, la 
       assert.ok(textoDe(v.arbol).includes(`${FLECHAS[g1m.direccion]} ${g1m.cambioTexto}`));
       // La cifra grande y «Valor hoy», con la hora de España del último punto (09:45 UTC = 10:45 en noviembre).
       const dia = en ? '11 Nov 2026' : '11/11/2026';
-      assert.ok(textoDe(porTestID(v.arbol, 'mercado-subtitulo')).endsWith(`· ${dia}, 10:45`));
+      assert.ok(textoDe(porTestID(v.arbol, 'mercado-subtitulo')).endsWith(`· ${dia}, 10:45 ${en ? '(Spain time)' : '(hora de España)'}`));
       assert.equal(claveDe(v.arbol, en ? 'Value today (29 largest)' : 'Valor hoy (29 mayores)'),
         `${en ? 'Value today (29 largest)' : 'Valor hoy (29 mayores)'}: ${t.millones(SERIE.puntos.at(-1).valor, lengua)}: ${dia}, 10:45`);
       const fuente = nodos(v.arbol).find((n) => n?.props?.accessibilityRole === 'link').props.accessibilityLabel;
@@ -1140,11 +1145,23 @@ test('letra grande: las pestañas van en dos filas si no caben, el eje crece has
         assert.equal(fechasQueCaben(g.marcasFechas, coords, PW, 12).length, g.marcasFechas.length, `${p.clave} a ${ancho}`);
         const PW18 = ancho - 81, f = fechasQueCaben(g.marcasFechas, t.coordenadas(g, PW18 - 8, 202), PW18, 18);
         saltadas += g.marcasFechas.length - f.length;
-        const cajas = f.map((m) => { const w = anchoTexto(m.texto, 18); return [m.xt - w / 2, m.xt + w / 2]; });
+        // La caja de cada fecha sale de su ancla: «start» empieza en xt, «end» acaba en xt y «middle» va centrada.
+        const cajas = f.map((m) => { const w = anchoTexto(m.texto, 18);
+          return m.ancla === 'start' ? [m.xt, m.xt + w] : m.ancla === 'end' ? [m.xt - w, m.xt] : [m.xt - w / 2, m.xt + w / 2]; });
         cajas.forEach(([a, b], i) => {
           assert.ok(a >= 0 && b <= PW18 + 1e-9, `${p.clave} a ${ancho}: dentro`);
           if (i) assert.ok(a >= cajas[i - 1][1] + 6, `${p.clave} a ${ancho}: no se pisan`);
         });
+        // Revisión del 13/11/2026: el ancho es una estimación y se queda corto con «Dec 2025» o la letra grande; centrada
+        // junto al borde, la fecha empezaba 3 o 4 px antes de la caja del SVG y el móvil la recortaba («)ec 2025»).
+        // La que llegaría a menos de 4 px de un borde va anclada a ese borde, así nunca sale aunque mida más.
+        for (const [letra, PWx, fx] of [[12, PW, fechasQueCaben(g.marcasFechas, coords, PW, 12)], [18, PW18, f]]) {
+          for (const m of fx) {
+            const w = anchoTexto(m.texto, letra);
+            const esperado = m.x - w / 2 < 4 ? ['start', 0] : m.x + w / 2 > PWx - 4 ? ['end', PWx] : ['middle', m.x];
+            assert.deepEqual([m.ancla, m.xt], esperado, `${p.clave} a ${ancho}, letra ${letra}: ${m.texto}`);
+          }
+        }
       }
     }
   }
@@ -1172,6 +1189,20 @@ test('letra grande: las pestañas van en dos filas si no caben, el eje crece has
     assert.equal(grafico(arbol).props.style.height, alto, `letra ${fontScale}`);
     assert.ok(nodos(arbol).filter((n) => n?.type === 'SvgText' && n.props.textAnchor !== 'end').every((n) => n.props.fontSize === letra));
   }
+  // 1Y en inglés a 360 px: «Dec 2025», la primera, va anclada al borde izquierdo (x = 0, textAnchor «start»), no centrada.
+  {
+    const g = t.graficoPestana(UNIDA, '1a', 'en');
+    const { react, pintar } = crearReact();
+    const { GraficoBolsa } = cargarMercado(react, { ...VENTANA, width: 360 });
+    let arbol = pintar(GraficoBolsa, { g, idioma: 'en' });
+    conAncho(arbol, 328);
+    arbol = pintar(GraficoBolsa, { g, idioma: 'en' });
+    const fechas = nodos(arbol).filter((n) => n?.type === 'SvgText' && g.marcasFechas.some((m) => m.texto === textoDe(n.children)));
+    assert.equal(textoDe(fechas[0].children), g.marcasFechas[0].texto);
+    assert.match(g.marcasFechas[0].texto, /^[A-Z][a-z]{2} 20\d\d$/);
+    assert.deepEqual([fechas[0].props.textAnchor, fechas[0].props.x], ['start', 0]);
+    assert.ok(fechas.slice(1, -1).every((n) => n.props.textAnchor === 'middle'));
+  }
 });
 
 test('la burbuja de la cruz mide su texto y nunca se sale del gráfico', () => {
@@ -1195,6 +1226,11 @@ test('la burbuja de la cruz mide su texto y nunca se sale del gráfico', () => {
   tocar(150);
   const cx = nodos(arbol).find((n) => n?.type === 'Circle').props.cx;
   assert.equal(x(), Math.max(0, Math.min(58, cx - 150)), 'centrada en la cruz si cabe');
+  // Revisión del 13/11/2026: con una medida corta («9 nov», justo antes de pasar a «10 nov»), se coloca con al menos
+  // 244 px; con solo lo medido, al crecer el texto la burbuja se salía hasta 8 px por la derecha un fotograma.
+  burbujaDe(arbol).props.onLayout({ nativeEvent: { layout: { width: 200, height: 28 } } });
+  tocar(10000);
+  assert.equal(x(), 358 - 244, 'con una medida corta, como si midiera 244');
 });
 
 test('al arrastrar el dedo por 721 puntos, el dibujo de fondo no se vuelve a calcular (solo cambian la raya, el punto y la burbuja); tampoco al abrir «Cómo se calcula»', async () => {
@@ -1217,4 +1253,68 @@ test('al arrastrar el dedo por 721 puntos, el dibujo de fondo no se vuelve a cal
   porTestID(v.arbol, 'pestana-1s').props.onPress();
   v.otra();
   assert.notEqual(linea(), antes, 'otra pestaña, otro dibujo');
+});
+
+/* Revisión del 13/11/2026: con la letra del sistema al 130 %, la tarjeta de Inicio partía las palabras por la
+   mitad («Acti/vos/toke/niza/dos»): el minigráfico (96 px fijos) y la cifra no cedían sitio y a la columna de
+   los textos le quedaban 55 px. Con la letra grande, el minigráfico baja a su propia fila. */
+test('la tarjeta de Inicio con la letra grande: el minigráfico baja a su propia fila y los textos tienen sitio; con la letra normal, como siempre', async () => {
+  for (const [fontScale, apilada] of [[1, false], [1.1, false], [1.3, true], [2, true]]) {
+    const { react, pintar } = crearReact();
+    const { MercadoCotizacion } = cargarMercado(react, { ...VENTANA, width: 360, fontScale });
+    const props = { cargarVivo: async () => RESUMEN, cargarLaSerie: async () => UNIDA };
+    pintar(MercadoCotizacion, props);
+    await esperar(); await esperar();
+    const tarjeta = pintar(MercadoCotizacion, props);
+    const ct = porTestID(tarjeta, 'mercado-cotizacion');
+    const hijos = [ct.children, ct.props.children].flat(Infinity).filter(Boolean);
+    const estilo = ct.props.style({ pressed: false }).filter(Boolean);
+    const svgDirecto = hijos.some((n) => n.type === 'Svg');
+    const fila = hijos.find((n) => n.type === 'View' && n.props.style?.width === '100%');
+    assert.equal(svgDirecto, !apilada, `letra ${fontScale}: el minigráfico, ${apilada ? 'fuera de' : 'en'} la fila de los textos`);
+    assert.equal(!!fila && nodos(fila).some((n) => n?.type === 'Svg' && n.props.width === 96), apilada, `letra ${fontScale}: su propia fila`);
+    assert.equal(estilo.some((st) => st.flexWrap === 'wrap'), apilada, `letra ${fontScale}: la tarjeta deja bajar el minigráfico`);
+    // Lo demás no cambia: el nombre, la cifra, el cambio del mes y el aviso para el lector.
+    assert.ok(textoDe(tarjeta).includes('Activos tokenizados') && textoDe(tarjeta).includes(t.millones(SERIE.puntos.at(-1).valor)));
+  }
+});
+
+/* Revisión del 13/11/2026: la serie fina se hace una vez al día (06:23 UTC) y la web se publica a mano, así que
+   «24 h» decía «en las últimas 24 horas» días después y nada avisaba. Ahora dice hasta qué hora y, si la fina
+   tiene más de 26 horas respecto al dato de hoy, la pantalla dice hasta cuándo llega. */
+test('una serie fina de hace más de 26 horas: «24 h» dice hasta qué hora y la pantalla avisa hasta cuándo llega; con la diaria o una fina reciente, sin aviso', async () => {
+  const fin = t.serieFinaDe(UNIDA, '5m').puntos.at(-1);
+  const hora = t.horaEspana(fin.ms).hora;
+  for (const lengua of ['es', 'en']) {
+    idioma.cambiarIdioma(lengua);
+    try {
+      const en = lengua === 'en';
+      const dia = en ? '11 Nov 2026' : '11/11/2026';
+      // 45 horas después del último punto (y menos de 3 días: la diaria aún no está «vieja»).
+      const tarde = { ...RESUMEN, actualizado: new Date(fin.ms + 45 * HORA).toISOString() };
+      const v = await pantallaLista({ cargarVivo: async () => tarde, cargarLaSerie: async () => UNIDA });
+      porTestID(v.arbol, 'pestana-1d').props.onPress();
+      v.otra();
+      assert.ok(textoDe(v.arbol).includes(en ? `in the 24 hours to ${hora}` : `en las 24 horas hasta las ${hora}`), 'hasta qué hora');
+      assert.ok(!textoDe(v.arbol).includes(en ? 'past 24 hours' : 'en las últimas 24 horas'));
+      assert.equal(textoDe(porTestID(v.arbol, 'mercado-fina-vieja')),
+        en ? `The 5-minute and hourly data end on ${dia}, ${hora} (Spain time).` : `Los datos cada 5 minutos y cada hora llegan hasta el ${dia}, ${hora} (hora de España).`);
+      assert.ok(!porTestID(v.arbol, 'mercado-serie-vieja'), 'la diaria, a menos de 3 días, no está vieja');
+      // En 1 S (horaria) también; en 3 M (la diaria), no.
+      porTestID(v.arbol, 'pestana-1s').props.onPress();
+      v.otra();
+      assert.ok(porTestID(v.arbol, 'mercado-fina-vieja'));
+      porTestID(v.arbol, 'pestana-3m').props.onPress();
+      v.otra();
+      assert.ok(!porTestID(v.arbol, 'mercado-fina-vieja'));
+      // Con el dato de hoy 20 horas después: sin aviso.
+      const pronto = await pantallaLista({ cargarVivo: async () => ({ ...RESUMEN, actualizado: new Date(fin.ms + 20 * HORA).toISOString() }), cargarLaSerie: async () => UNIDA });
+      porTestID(pronto.arbol, 'pestana-1d').props.onPress();
+      pronto.otra();
+      assert.ok(!porTestID(pronto.arbol, 'mercado-fina-vieja'));
+      // Sin fina (la diaria sola), nunca.
+      const sola = await pantallaLista({ cargarVivo: async () => tarde, cargarLaSerie: async () => SERIE });
+      assert.ok(!porTestID(sola.arbol, 'mercado-fina-vieja'));
+    } finally { idioma.cambiarIdioma('es'); }
+  }
 });
