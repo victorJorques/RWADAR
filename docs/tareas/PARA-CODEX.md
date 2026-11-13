@@ -10,8 +10,13 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 - **Encargo (13/11):** «Arregla el radar de inicio que se ve mal». Hecho en
   dos ramas (web y app), unido aquí y corregido con cuatro revisiones (aspecto
-  y código, de cada lado). **SIN PUBLICAR:** ni web, ni OTA, ni push. Para
-  publicarlo hace falta la orden de Víctor.
+  y código, de cada lado). **Publicado el 13/11 (orden de Víctor: «lo más
+  rápido y mejor posible»):** PR #128 y sello #129; OTA n.º 27 (base
+  fa30779, 1.4.2(24)); web n.º 85 (preview n.º 84). En la web publicada,
+  comprobaciones en vivo 88/88 (radar 19/19 en 320×568, 360×780, 390×664,
+  390×844 y 1366×900: leyenda de 6 filas, 0 textos dentro del radar en el
+  móvil, sin desborde, sin errores; más 1211, novedades, sesión, avisos y
+  colabora).
 - **Qué se veía mal (capturas de la web publicada):** en el móvil, los
   nombres de los tipos iban dentro del dibujo del radar; al escalarlo
   crecían y se montaban («Inmobiliario 3» encima del aro, «Materias primas»
