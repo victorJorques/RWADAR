@@ -1822,7 +1822,22 @@ const transparenciaComercialPublicada = fs.readFileSync(
   path.join(publicado, 'transparencia-comercial.html'), 'utf8');
 const paraEmpresasPublicada = fs.readFileSync(path.join(publicado, 'para-empresas.html'), 'utf8');
 const swPublicado = fs.readFileSync(path.join(publicado, 'sw.js'), 'utf8');
-const scriptsPublicados = [...htmlPublicado.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/script>/gi)];
+/* Limpieza de la web (13/11/2026): lo publicado va sin comentarios HTML, salvo las
+   marcas de los generadores, y el JSON-LD (dentro de <script>) se copia tal cual. */
+{
+  const comentarios = documento => [...documento.matchAll(/<!--([\s\S]*?)-->/g)].map(m => m[1]);
+  const jsonLd = documento => [...documento.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => m[1]);
+  const { sinComentariosHTML } = require('./rwadar-adelgazar.js');
+  prueba('el HTML publicado va sin comentarios, salvo las marcas de los generadores, con el JSON-LD intacto',
+    comentarios(html).length > 20 && comentarios(htmlPublicado).length > 0 &&
+    comentarios(htmlPublicado).every(c => /^[a-z][a-z0-9-]*:(?:ini|fin)$/.test(c)) &&
+    ['pre:ini', 'pre:fin', 'academy:ini', 'academy:fin'].every(m => comentarios(htmlPublicado).includes(m)) &&
+    [privacidadPublicada, transparenciaComercialPublicada, paraEmpresasPublicada].every(d => comentarios(d).length === 0) &&
+    JSON.stringify(jsonLd(htmlPublicado)) === JSON.stringify(jsonLd(html)) && jsonLd(html).length > 0 &&
+    sinComentariosHTML('<p>a</p>\n  <!-- x -->\n<p title="<!-- t -->">b <!-- y --> c</p><pre><!-- z --></pre>') ===
+      '<p>a</p>\n  \n<p title="<!-- t -->">b <!-- y --> c</p><pre><!-- z --></pre>');
+}
+const scriptsPublicados =[...htmlPublicado.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*><\/script>/gi)];
 const recursoJSPublicado = scriptsPublicados.at(-1)?.[1] || '';
 const recursoCatalogoPublicado = scriptsPublicados.find(s => /\/catalogo-publico-20261022\./.test(s[1]))?.[1] || '';
 const catalogoPublicado = fs.readFileSync(path.join(publicado, '.' + recursoCatalogoPublicado), 'utf8');

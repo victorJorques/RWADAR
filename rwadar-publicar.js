@@ -23,7 +23,7 @@ const { execFileSync } = require('child_process');
    Wrangler, npx ni otros procesos posteriores de publicación. */
 const entornoSincronizacion = { ...process.env };
 delete process.env.RWADAR_CATALOGO_ACCESS_TOKEN;
-const { adelgazarJS, adelgazarCSS } = require('./rwadar-adelgazar');
+const { adelgazarJS, adelgazarCSS, sinComentariosHTML } = require('./rwadar-adelgazar');
 const { cargarActivosEditoriales } = require('./rwadar-ofertas-editoriales');
 const { cargarFotosNoticias } = require('./rwadar-noticias-editoriales');
 const { cargarRegistro: cargarPrecargas, unirActivos } = require('./rwadar-precargar-imagenes');
@@ -684,9 +684,13 @@ function construirSalida() {
       for (const [antes, despues] of referencias) salida = salida.split(antes).join(despues);
       return salida;
     };
+    /* Y las páginas, sin sus comentarios HTML (13/11/2026): se quedan las marcas
+       de los generadores (<!--pre:ini-->, <!--academy:ini-->…), con las que las
+       pruebas comparan lo publicado con rwadar-site/ (ver rwadar-adelgazar.js). */
     for (const nombre of [...PAGINAS_HTML, 'sw.js']) {
       const archivo = path.join(temporal, ...nombre.split('/'));
-      fs.writeFileSync(archivo, reescribirReferencias(fs.readFileSync(archivo, 'utf8')), 'utf8');
+      const reescrito = reescribirReferencias(fs.readFileSync(archivo, 'utf8'));
+      fs.writeFileSync(archivo, nombre.endsWith('.html') ? sinComentariosHTML(reescrito) : reescrito, 'utf8');
     }
     /* Con la Academy solo con cuenta, la web publicada da 303 a quien no ha
        entrado: lo que lleva cada lección se comprueba aquí, antes de subir. */
