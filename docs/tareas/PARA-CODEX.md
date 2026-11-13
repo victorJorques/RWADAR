@@ -6,6 +6,30 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (19) · Claude · Radar de Inicio legible: la parte de la app
+
+- **Encargo:** «Arregla el radar de inicio que se ve mal». Esta entrada es
+  solo la parte de la app (rwadar-movil); la web va en otra rama y el
+  integrador une las dos. **Sin publicar** (ni OTA ni web).
+- **Qué cambia en la app:** en la cabecera de Inicio, el radar ya no lleva
+  texto dentro (antes los nombres salían diminutos, pegados al aro, y con
+  pantalla baja se quitaban). Ahora: radar a la izquierda (aro de 157 px;
+  116 con pantalla baja) y, a la derecha, una leyenda de 6 filas en el orden
+  del radar con punto de color, nombre y cuántas plataformas hay. Sin
+  catálogo vigente, solo los nombres; un tipo sin plataformas, «0»
+  atenuado. Se traduce con el diccionario de siempre (sin claves nuevas) y
+  el lector de pantalla la lee de una vez. Hexágono en el centro y barrido
+  quieto con «reducir movimiento» (solo en Inicio). El radar de Plataformas
+  no cambia. El bloque mide 176 (124 con pantalla baja), como antes.
+- **Commit:** `09b5783` (Radar.js, Inicio.js, prueba nueva
+  `tests/radar-portada.test.cjs` y una línea del LEEME).
+- **Pruebas:** `npm --prefix rwadar-movil test` 625 bien, 0 fallos, 2
+  omitidas. Guardián de OTA con `--base fa30779…`: `ok:true`. 17 mutaciones
+  del arreglo, todas hacen fallar alguna prueba. Capturas de los
+  componentes reales con react-native-web en Chromium (no son de un APK).
+- **Pendiente:** unir con la web, revisar en un Android de verdad (sobre
+  todo con la letra al 130 %) y, con orden de Víctor, la OTA.
+
 ## 12 de noviembre de 2026 (18) · Claude · Novedades al abrir la app y la web
 
 - **Víctor:** «que salga al abrir la app y como las novedades, tipo un texto
