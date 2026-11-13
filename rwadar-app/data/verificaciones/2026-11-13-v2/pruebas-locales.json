@@ -1,6 +1,6 @@
 {
   "tipo": "ensayo_local_pglite",
-  "ejecutadoEl": "2026-11-13T09:13:44.025Z",
+  "ejecutadoEl": "2026-11-13T09:15:57.270Z",
   "etiqueta": "2026-11-13",
   "revisionAnterior": "a58dd22d-98a3-f94e-ba66-46898162215a",
   "revisionNueva": "66907add-8ebf-424b-3e04-b73e47b0c537",
@@ -17,6 +17,7 @@
     "vigencia: el lector de la web (validarLotePublicoV2) lo acepta el 13/11 y el 20/11 y lo da por caducado el 21/11; las 22 tarjetas ocultan cifras desde el 21/11; el lector de la app (adaptarCatalogoV2) lo acepta (25/22, 1 en camino)",
     "tarjetas (resumenOferta, 13/11): las 22 en castellano, sin citas en otro idioma y sin «por participación» en el mínimo; el acceso desde España, la salida y el estado no cambian en ninguna; cambia solo el mínimo en 14: boss-info, switzerlend, apartamento-vacacional-hinterstoder-50, drautalresidenz-paternion, fotovoltaica-cohotel, fotovoltaica-greenpoint, randhartingergasse-9-viena, local-de-estanco-klagenfurt, vivienda-pluddemanngasse-101-graz, vivienda-pottendorfer-stra-e-62-wr-neustadt, vivienda-schwarzer-weg-18-graz, vivienda-sonnleithnergasse-2-viena, vivienda-stallhofstra-e-28-gratwein, hausera-proximas-ofertas; Brickwise «Desde X € la participación en reventa (13/11)» (Pottendorfer 80 → 73; las otras 10, solo la fecha); Boss Info, Switzerlend y Hausera con fecha del 13/11; Aktionariat y las 8 principales, igual; mTBILL «Sin mínimo vigente en euros» · «Sin comprobar si se puede contratar desde España» · «Salida no documentada» (fuentes en conflicto)",
     "sincronizador real con estas vistas: 25 plataformas, 22 ofertas y 5 descartadas (CSV de 30 filas, idéntico al de la web), todas de la revisión nueva y verificadas el 13/11; las fichas salen con la lista cerrada de siempre (52 páginas, ninguna nueva ni retirada) y, frente a las de rwadar-site/ de esta carpeta, cambian 52 (22 de oferta, 25 de plataforma y 5 de descartadas) por la revisión, las fechas y los textos; las fichas web de Spiko dicen 2,40 %, 3,98 % y 2,84 %; la de Pottendorfer «Desde 73 € la participación en reventa (13/11)» y 74,10 €; la de Randhartingergasse, 64 €; la de Boss Info, «Última operación · 13/11/2026» sin la API; la de Hausera, el aviso al 13/11",
+    "exportado a /tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/rest-2026-11-13 lo que leería un visitante después de aplicar",
     "si la revisión nueva ya estaba importada como borrador, el aplicador la aprueba y la publica sin duplicar filas",
     "falla y no deja nada: la publicada no es la a58dd22d (es la anterior, 24b5f7de) → Publicación distinta de la revisión anterior prevista: 24b5f7de-2834-3e15-6ae4-62a6d9565161. No aplicar este lote.",
     "falla y no deja nada: la revisión publicada con otra huella → La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.",

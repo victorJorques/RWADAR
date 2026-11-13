@@ -7,12 +7,12 @@ ningún flujo lanzado; el montador no hizo commit ni push.** Estado:
 aplicar» en una copia aparte). Falta la revisión de la entrega (SQL,
 contenido y cumplimiento) y el auditor.
 
-> La coordinación guardó una copia de trabajo de estos archivos en el commit
-> `d1463ee` («entrega en montaje, aún sin revisar») a las 09:14 UTC. Los
-> archivos de la entrega (datos y SQL) no han cambiado desde entonces; sí se
-> añadieron después `despues-de-aplicar.mjs`, `ensayo-rest-simulado.cjs`,
-> `ensayo-despues.json` y este informe, y `pruebas-locales.json` es el de la
-> pasada del ensayo.
+> La coordinación fue guardando copias de trabajo de estos archivos en los
+> commits `d1463ee` (09:14 UTC: datos, SQL y guiones), `cb86f77` (los de
+> después de aplicar) y `bed9752` (un borrador de este informe, aún sin las
+> pruebas). Los datos y el SQL no han cambiado desde `d1463ee` (lo comprueba
+> la doble pasada de §5); después cambian solo `pruebas-locales.json` (el de
+> la pasada del ensayo), `ensayo-despues.json` (nuevo) y este informe.
 
 **La revisión nueva es la `66907add-8ebf-424b-3e04-b73e47b0c537`**
 (SHA-256 de `aplicar-y-aprobar.sql` `7be64e86…6961`).
@@ -212,7 +212,125 @@ nombres de personas.
 
 ## 5. Pruebas (salida real)
 
-PENDIENTE_PRUEBAS
+Todas sin red y sin tocar Supabase. Las pesadas (ensayo y `npm test`), en una
+copia aparte del repositorio en el scratchpad
+(`/tmp/claude-0/-home-user-RWADAR/84924379-8a81-58f1-bb90-7eb9775e4d36/scratchpad/ensayo-2026-11-13`).
+
+### 5.1 `preparar-entrega.mjs`, dos veces (reproducible byte a byte)
+
+```
+pasada 1 09:19:09
+{"etiqueta":"2026-11-13","revisionId":"66907add-8ebf-424b-3e04-b73e47b0c537","hash":"66907add8ebf…26f06e36","previa":"a58dd22d-98a3-f94e-ba66-46898162215a","sha256":"7be64e86…6961","plataformas":25,"fuentesRadar":69,"ofertas":22,"colecciones":{"principales":8,"secundario":13,"en_camino":1},"cambios":81,"noAplicado":4,"horasRealesSuiza":82}
+exit 0
+pasada 2 09:19:09
+(la misma línea)
+exit 0
+8 de 8 salidas idénticas (SHA-256)
+```
+
+| Salida | SHA-256 |
+|---|---|
+| `radar-canonico-26.json` | `79683038afbd58b840d57a04e803b438905888336483d44245c39c05dfd2acc9` |
+| `escaparate-publicacion.json` | `a1bebcc85726206c17b580f90b7202553564c0cc844a7b53fa3dfae56337f193` |
+| `documentacion-ofertas.json` | `a1cbcb23693e480df9b85d4b9cd00e0c458e547383f690abf9388b7c30b34fa9` |
+| `manifiesto-catalogo.json` | `c2c51919a4cf00d66a58cea8f7d24d2091ada39bec80141ce94427766c3c4224` |
+| `contraste-2026-11-13.json` | `c473ab8cffe7bba7493cb211fb7bfa7e44f6abfadb550e0d347c5188567ae344` |
+| `catalogo.sql` | `85ad96a83a7cd5c6bc71a6a59a0a1e9c6e0de16717b740ad44dfaa0f6c33b379` |
+| `aplicar-y-aprobar.sql` | `7be64e861af7ba2895f07cedbb73a1e85a9dec055412aa27081e20a401d16961` |
+| `revision.json` | `a336306de4b695e180ea7025d5f547f19052c77e8a9513954812c8ba45e787c4` |
+
+Son las mismas que las de la primera pasada de la mañana y las de `d1463ee`.
+
+### 5.2 `comprobar-entrega.mjs` (PGlite, sobre la cadena de producción)
+
+`exit 0`, «resultado: correcto», **19 comprobaciones y 6 casos de fallo**
+(`pruebas-locales.json`, pasada del ensayo a las 09:15:57 UTC; la de la
+carpeta de trabajo, a las 09:13 UTC, dio lo mismo sin la exportación):
+
+- **Inventario:** 288 sentencias (begin, guarda, 284 inserts, aprobación,
+  commit); solo `rwadar_catalogo`; las mismas filas por tabla que la
+  `2026-11-12`; idempotentes; sin DDL, borrados, permisos, Auth ni funciones.
+- **Cadena:** seed de antes de ARTEX + 17 lotes (22/10 → 2026-11-12): la
+  publicada es la `a58dd22d`.
+- **Antes de aplicar**, PGlite enseña lo mismo que se leyó como visitante a
+  las 08:27:43–08:27:47 UTC (25/22, 8/13/1, 30 filas de `public.plataformas`).
+- **Idempotente** (dos veces da lo mismo, tablas y vistas).
+- `public.plataformas`, `public.fuentes`, cambios de estado, avisos y
+  emisiones, **intactos**; las 17 revisiones anteriores, tal cual; la nueva,
+  aprobada con su huella; se añaden justo 25 plataformas, 22 ofertas y 69
+  fuentes.
+- **Publicada la nueva:** 25 plataformas y 22 fichas (8/13/1), fechadas el
+  13/11 con 7 días; plataformas iguales salvo fechas.
+- **81 cambios en 18 fichas**, uno a uno, en lo que lee un visitante (y lo
+  de antes ya no): Spiko 2,40 %, 3,98 % y 2,84 % con la VL del 12/11;
+  «Acceso desde España» de las tres con fecha del dato 06/11;
+  Boss Info «Última operación · 13/11/2026» con el portal; Brickwise al 13/11
+  (Pottendorfer 73 € y 74,10 €; participaciones 59, 347, 299 y 107;
+  Randhartingergasse 64 €); Hausera re-fechada; mTBILL, Robinhood, Kraken y
+  Prosegur iguales salvo fechas; ninguna hora de las 00 del 13/11.
+- **Vigencia:** el lector de la web lo acepta el 13/11 y el 20/11 y lo da
+  por caducado el 21/11; la app lo acepta (25/22, 1 en camino).
+- **Tarjetas** (`resumenOferta`): las 22 en castellano, sin «por
+  participación» en el mínimo; acceso, salida y estado sin cambios; cambia
+  solo el mínimo en 14 (las 11 de Brickwise, Boss Info, Switzerlend y
+  Hausera; Pottendorfer «Desde 80 € … (12/11)» → «Desde 73 € la participación
+  en reventa (13/11)»).
+- **Sincronizador real** con estas vistas: CSV de 30 filas idéntico al de la
+  web; las 52 fichas de siempre, ninguna nueva ni retirada; las fichas web de
+  Spiko dicen 2,40 %, 3,98 % y 2,84 %; Pottendorfer, 73 € y 74,10 €.
+- **Ya importada como borrador:** el aplicador la aprueba sin duplicar filas.
+- **Casos de fallo** (falla y no deja nada):
+
+| Caso | Error |
+|---|---|
+| La publicada es otra (la `24b5f7de`) | «Publicación distinta de la revisión anterior prevista: 24b5f7de-…. No aplicar este lote.» |
+| La publicada con otra huella | «La revisión publicada no tiene la identidad prevista o no está aprobada. No aplicar este lote.» |
+| Catálogo retirado | «Catálogo retirado o control ausente: este lote no autoriza reactivarlo.» |
+| La revisión destino ya existe con otra huella | «La revisión destino existe con otra identidad o está retirada» |
+| Después del último día vigente (tope movido al día anterior) | «Lote caducado: sus fichas valían hasta el 20/11/2026. No aplicar este lote.» |
+| Falta una plataforma en `public.plataformas` | «Catálogo incompleto: se conserva el lote anterior» |
+
+### 5.3 Ensayo «después de aplicar» (`ensayo-despues.json`)
+
+| Paso | Salida real |
+|---|---|
+| `comprobar-entrega.mjs --exportar=DIR` | exit 0, «resultado: correcto», 19 y 6; 8 archivos exportados |
+| `despues-de-aplicar.mjs` antes de sincronizar | **exit 1**, se niega: «el catálogo sincronizado no es la revisión 66907add-…: aplica antes el SQL y ejecuta node rwadar-app/sincronizar.js»; `transparencia.json` intacto (`ae3ed55e…9f62`) |
+| `sincronizar.js` con el REST simulado | exit 0, «Sincronizado desde Supabase: 25 plataformas verificadas, 5 descartadas y 22 ofertas clasificadas.», «rwadar.csv regenerado: 30 filas.» (sin diferencias) |
+| `despues-de-aplicar.mjs` | exit 0; 43 de 44 comprobaciones al 13/11 (se queda mTBILL «supervisada», 10/11); suizas con hora real; 11 de 11 títulos; mínimos cortos (Pottendorfer «Desde 73 € la participación (13/11)»); `transparencia.json` → `8666d60c…7956` |
+| otra vez | exit 0, «Nada que cambiar: ya estaba hecho.», mismo SHA |
+| `volcar-seed.js` con el REST simulado | exit 0, «02_seed.sql regenerado: 25 en el radar, 5 descartadas, 13 fuentes.» (sin diferencias) |
+| `transparencia.mjs` | exit 0, «Transparencia escrita: 22 ofertas con transparencia» |
+| `rwadar-fichas.js` | exit 0, «Archivos actualizados: 55» |
+| `npm test` (raíz) | **exit 1 por una sola prueba que no es del catálogo** (ver abajo); 09:16:41–09:21:25 UTC |
+
+`npm test`, por partes:
+
+- base de datos: 32 scripts con «0 fallidas» (1.348 comprobaciones), «30
+  comprobaciones SQL correctas, sin red», `node --test` 11/11 y 103/103;
+- web: «Pre-renderizado: 25 fichas, 5 descartadas y 22 emisiones escritas en
+  el HTML (199 kB).», «710 correctas, 0 fallidas», «70 verificaciones de
+  páginas y RSS correctas», «40 pruebas de precarga correctas»;
+- QR: «Todo correcto: el código se lee.»;
+- móvil: 630 pruebas, 628 correctas, 0 fallos, 2 omitidas;
+- herramientas: «fichas.json: 22 fichas (22 con foto), catálogo
+  2026-11-13-v2», «Transparencia al día: 22 ofertas con transparencia»,
+  «Diferencias: 0»;
+- acceso: **312 de 313**. Falla «en Chromium: Inicio con 3 noticias
+  compactas en «Mercado y noticias»…» (`rwadar-acceso/noticias-sector.test.mjs:172`):
+  «el día de la de hoy, «Hoy» solo en ella». **Falla igual en otra copia
+  limpia del repositorio en su HEAD (`bed9752`), sin nada de esta entrega**
+  (`# pass 0`, `# fail 1`): viene de las noticias del 13/11 (la primera es
+  del 11/11 y hoy ninguna es de «Hoy»), no del catálogo. Hay que ajustar esa
+  prueba web como `ce9d5a9` ajustó las de la app, antes de publicar.
+
+«Lo esencial» y la tarjeta de la app (funciones reales de
+`rwadar-movil/lib/transparencia.js` con el catálogo sincronizado de la copia):
+frente a lo publicado, cambian 13 y solo en el mínimo: Pottendorfer
+«Mínimo: Desde 80 € la participación (12/11)» → «**Desde 73 € la
+participación (13/11)**»; las otras 10 de Brickwise, Switzerlend («1 acción
+(68,01 CHF, 13/11)») y Hausera («Desde 100 € en Alicante 3 (13/11)»), solo la
+fecha. Las otras 9 dicen lo mismo.
 
 ## 6. Lo que no se aplicó tal cual (y por qué)
 
@@ -257,6 +375,10 @@ Está en `contraste-2026-11-13.json` («noAplicadoTalCual»):
   señalo para que la revisión de contenido decida.
 - **Spiko:** VL nuevas hoy a las 18:00 y 19:30 UTC (ver §2).
 - Los expedientes suizos y de Spiko siguen sin corregir (§6, 2 y 3).
+- **`npm test` no pasa entero hoy, pero no por el catálogo:** la prueba web
+  de noticias `rwadar-acceso/noticias-sector.test.mjs` («Hoy» en la primera
+  noticia) falla también sin esta entrega (§5.3). Arreglarla antes de
+  publicar la web.
 - Falta la revisión de la entrega (tres expertos) y el auditor.
 
 ## 8. Pasos para aplicarla (ciclo autorizado por la orden del responsable del proyecto)
