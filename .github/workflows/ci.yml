@@ -12,6 +12,18 @@ name: Verificación
 # exige en las reglas de la rama. Las pruebas sí corren si alguno de esos
 # documentos lo leen las pruebas o la compuerta de publicación (por ejemplo,
 # AGENTS.md, docs/INTERNO.md o los informes que cita estado.json).
+#
+# Desde el 13/11/2026, para tardar menos (unos 4 min antes, 1 min 30 s ahora):
+# - La batería de «npm test» va repartida en trabajos que corren a la vez
+#   (.github/partes-ci.mjs): cuatro con las pruebas de base de datos, web,
+#   herramientas y acceso, y uno con la app móvil.
+# - El PR que solo cambia el sello (rwadar-app/data/relanzamiento/estado.json)
+#   no corre la batería entera, sino el trabajo «sello»: las pruebas de la
+#   batería que leen el sello y la misma compuerta que «Publicar web». Un sello
+#   nunca se une sin validar.
+# - La comprobación que piden las reglas de la rama sigue siendo «pruebas»:
+#   ahora es el último trabajo, espera a todos y falla si alguno falla o se
+#   cancela.
 on:
   pull_request:
   workflow_dispatch:
@@ -29,6 +41,7 @@ jobs:
     timeout-minutes: 5
     outputs:
       pruebas: ${{ steps.cambios.outputs.pruebas }}
+      sello: ${{ steps.cambios.outputs.sello }}
     steps:
       - name: Descargar el código
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -67,12 +80,26 @@ jobs:
             --config rwadar-app/gitleaks.toml \
             --redact=100 --no-banner --no-color --ignore-gitleaks-allow
 
-  pruebas:
+  # La batería de «npm test», en partes que van a la vez. Qué lleva cada parte
+  # lo decide .github/partes-ci.mjs a partir de los package.json, así que una
+  # prueba nueva entra sola. Cada parte instala solo lo que necesita.
+  bateria:
+    name: ${{ matrix.nombre }}
     needs: secretos
     # Corre aunque el escáner encuentre algo, para ver los dos resultados.
     if: ${{ !cancelled() && needs.secretos.outputs.pruebas == 'true' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
+    strategy:
+      # Si una parte falla, las demás siguen: así se ven todos los fallos de una vez.
+      fail-fast: false
+      matrix:
+        include:
+          - { parte: bateria-1, nombre: 'Batería 1/4', base: true, movil: false, auditar: rwadar-app }
+          - { parte: bateria-2, nombre: 'Batería 2/4', base: true, movil: false, auditar: '' }
+          - { parte: bateria-3, nombre: 'Batería 3/4', base: true, movil: false, auditar: '' }
+          - { parte: bateria-4, nombre: 'Batería 4/4', base: true, movil: false, auditar: '' }
+          - { parte: movil, nombre: 'App móvil', base: false, movil: true, auditar: rwadar-movil }
     steps:
       - name: Descargar el código
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -82,6 +109,61 @@ jobs:
         with:
           # Parche de seguridad de Node del 21/10/2026 (TLS, Brotli y certificados
           # de eMudhra). Versión exacta: no se usa la que traiga en caché el runner.
+          node-version: 22.23.4
+          cache: npm
+          # La misma caché para todas las partes (una sola copia que guardar).
+          cache-dependency-path: |
+            rwadar-app/package-lock.json
+            rwadar-movil/package-lock.json
+
+      - name: Comprobar que Node lleva el parche de seguridad
+        run: node rwadar-node-seguro.js
+
+      - name: Instalar dependencias de base de datos
+        if: ${{ matrix.base }}
+        run: npm ci --prefix rwadar-app --ignore-scripts
+
+      - name: Instalar dependencias móviles
+        if: ${{ matrix.movil }}
+        run: npm ci --prefix rwadar-movil --ignore-scripts
+
+      - name: Aplicar el parche de seguridad de Expo (uuidv5 en iOS)
+        if: ${{ matrix.movil }}
+        run: npm --prefix rwadar-movil run postinstall
+
+      # Incluye las pruebas de .github/ (vigilante, flujos, copias y detección
+      # de cambios): van al final de «npm --prefix rwadar-app test». No en el
+      # package.json de la raíz: el guardián de la OTA lo trata como nativo.
+      - name: Ejecutar su parte de la batería
+        env:
+          PARTE: ${{ matrix.parte }}
+        run: node .github/partes-ci.mjs "$PARTE"
+
+      - name: Bloquear dependencias críticas conocidas
+        if: ${{ matrix.auditar != '' }}
+        env:
+          PAQUETE: ${{ matrix.auditar }}
+        run: npm audit --prefix "$PAQUETE" --omit=dev --audit-level=critical
+
+  # PR que solo cambia el sello: lo que la batería comprueba de estado.json y,
+  # además, la compuerta con la que empieza «Publicar web» (aprobación,
+  # fechas, controles, commit aprobado y huella del contenido).
+  sello:
+    name: Sello
+    needs: secretos
+    if: ${{ !cancelled() && needs.secretos.outputs.sello == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Descargar el código con su historial
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # La compuerta busca el commit aprobado, aunque main haya avanzado.
+          fetch-depth: 0
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
           node-version: 22.23.4
           cache: npm
           cache-dependency-path: |
@@ -94,19 +176,43 @@ jobs:
       - name: Instalar dependencias de base de datos
         run: npm ci --prefix rwadar-app --ignore-scripts
 
-      - name: Instalar dependencias móviles
-        run: npm ci --prefix rwadar-movil --ignore-scripts
+      - name: Las pruebas de la batería que leen el sello
+        run: node .github/partes-ci.mjs sello
 
-      - name: Aplicar el parche de seguridad de Expo (uuidv5 en iOS)
-        run: npm --prefix rwadar-movil run postinstall
+      - name: La compuerta de «Publicar web» sobre el sello
+        run: node rwadar-app/auditar-relanzamiento.mjs
 
-      # Incluye las pruebas de .github/ (vigilante, flujos, copias y detección
-      # de cambios): van al final de «npm --prefix rwadar-app test». No en el
-      # package.json de la raíz: el guardián de la OTA lo trata como nativo.
-      - name: Ejecutar toda la batería local
-        run: npm test
-
-      - name: Bloquear dependencias críticas conocidas
+  # La comprobación que exigen las reglas de la rama. Corre siempre (también si
+  # algo falla o se cancela) salvo en un PR de solo documentación sin
+  # problemas, donde se salta y cuenta como correcta, como antes.
+  pruebas:
+    needs: [secretos, bateria, sello]
+    if: ${{ always() && !(needs.secretos.result == 'success' && needs.secretos.outputs.pruebas == 'false' && needs.secretos.outputs.sello == 'false') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Comprobar que ha pasado todo lo que tocaba
+        shell: bash
+        env:
+          SECRETOS: ${{ needs.secretos.result }}
+          BATERIA: ${{ needs.bateria.result }}
+          SELLO: ${{ needs.sello.result }}
+          TOCA_PRUEBAS: ${{ needs.secretos.outputs.pruebas }}
+          TOCA_SELLO: ${{ needs.secretos.outputs.sello }}
         run: |
-          npm audit --prefix rwadar-app --omit=dev --audit-level=critical
-          npm audit --prefix rwadar-movil --omit=dev --audit-level=critical
+          set -euo pipefail
+          echo "Escáner de secretos: $SECRETOS · batería: $BATERIA · sello: $SELLO"
+          echo "Qué tocaba: pruebas=$TOCA_PRUEBAS, sello=$TOCA_SELLO"
+          mal=0
+          for resultado in "$SECRETOS" "$BATERIA" "$SELLO"; do
+            case "$resultado" in success|skipped) ;; *) mal=1 ;; esac
+          done
+          [ "$SECRETOS" = success ] || { echo "El escáner de secretos no ha terminado bien."; mal=1; }
+          case "$TOCA_PRUEBAS:$TOCA_SELLO" in
+            true:false) [ "$BATERIA" = success ] || { echo "La batería no ha pasado entera."; mal=1; } ;;
+            false:true) [ "$SELLO" = success ] || { echo "El sello no se ha validado."; mal=1; } ;;
+            false:false) echo "Solo documentación." ;;
+            *) echo "No se sabe qué había que probar."; mal=1 ;;
+          esac
+          if [ "$mal" -ne 0 ]; then echo "Algo ha fallado o se ha cancelado: mira los trabajos de arriba."; exit 1; fi
+          echo "Todo lo que tocaba ha pasado."

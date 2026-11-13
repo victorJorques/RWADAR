@@ -1,8 +1,10 @@
 // Pruebas sin red de reglas comunes a los flujos de GitHub:
 // - todo flujo que se conecta a Supabase exige TLS (PGSSLMODE=require; el
 //   psql de claves-comun.mjs, verify-full con la CA de Supabase);
-// - la detección de «solo documentación» de ci.yml (.github/cambios-ci.sh),
-//   en repositorios git de usar y tirar;
+// - la detección de «solo documentación» y de «solo el sello» de ci.yml
+//   (.github/cambios-ci.sh), en repositorios git de usar y tirar;
+// - ci.yml: la batería repartida en partes a la vez (.github/partes-ci.mjs),
+//   el trabajo «sello» y el último trabajo, «pruebas», que espera a todos;
 // - que las pruebas escriban entera la ruta de cada documento que leen (si
 //   no, cambios-ci.sh no las vería y un PR de documentación se saltaría
 //   pruebas que sí lo leen);
@@ -94,6 +96,11 @@ function repoDePrueba() {
   };
 }
 
+const salidaCambios = (pruebas, sello) => `pruebas=${pruebas}\nsello=${sello}\n`;
+const SELLO_JSON = 'rwadar-app/data/relanzamiento/estado.json';
+// Un sello nuevo: el commit y la huella que pone sellar.cjs.
+const selloNuevo = n => `{"informe": "docs/prueba/INFORME-PRUEBA.md", "commit": "${String(n).repeat(40).slice(0, 40)}"}\n`;
+
 test('cambios-ci: solo se salta la batería si el PR cambia documentación que ninguna prueba lee', (t) => {
   const repo = repoDePrueba();
   t.after(() => fs.rmSync(repo.dir, { recursive: true, force: true }));
@@ -113,27 +120,55 @@ test('cambios-ci: solo se salta la batería si el PR cambia documentación que n
   for (const [nombre, cambios, esperado] of casos) {
     const r = repo.pr(cambios);
     assert.equal(r.codigo, 0, nombre + ': ' + r.texto);
-    assert.equal(r.salida, `pruebas=${esperado}\n`, `${nombre}: ${r.texto}`);
-    assert.match(r.stdout, new RegExp(`pruebas=${esperado}\\n$`), nombre);
+    assert.equal(r.salida, salidaCambios(esperado, false), `${nombre}: ${r.texto}`);
+    assert.match(r.stdout, new RegExp(`pruebas=${esperado}\\nsello=false\\n$`), nombre);
   }
   // Renombrar un documento a código: con --no-renames salen los dos y corre todo.
-  assert.equal(repo.pr({}, { mover: [['docs/prueba/SUELTO-PRUEBA.md', 'rwadar-app/suelto.js']] }).salida, 'pruebas=true\n');
+  assert.equal(repo.pr({}, { mover: [['docs/prueba/SUELTO-PRUEBA.md', 'rwadar-app/suelto.js']] }).salida, salidaCambios(true, false));
   // Borrar un documento que ninguna prueba lee: se salta.
-  assert.equal(repo.pr({}, { borrar: ['docs/prueba/SUELTO-PRUEBA.md'] }).salida, 'pruebas=false\n');
+  assert.equal(repo.pr({}, { borrar: ['docs/prueba/SUELTO-PRUEBA.md'] }).salida, salidaCambios(false, false));
   // PR vacío: nada que probar.
   const vacio = repo.pr({});
-  assert.equal(vacio.salida, 'pruebas=false\n');
+  assert.equal(vacio.salida, salidaCambios(false, false));
   assert.match(vacio.texto, /Solo documentación: se salta la batería de pruebas\./);
   // Si la prueba que lo lee está en el propio PR, también cuenta (se busca en la cabeza del PR).
-  assert.equal(repo.pr({ 'docs/prueba/SUELTO-PRUEBA.md': 'cambio\n', 'probar-otra.mjs': "leer('docs/prueba/SUELTO-PRUEBA.md');\n" }).salida, 'pruebas=true\n');
+  assert.equal(repo.pr({ 'docs/prueba/SUELTO-PRUEBA.md': 'cambio\n', 'probar-otra.mjs': "leer('docs/prueba/SUELTO-PRUEBA.md');\n" }).salida, salidaCambios(true, false));
+});
+
+test('cambios-ci: el PR que solo cambia el sello se salta la batería, pero pide el trabajo «sello»', (t) => {
+  const repo = repoDePrueba();
+  t.after(() => fs.rmSync(repo.dir, { recursive: true, force: true }));
+  const casos = [
+    ['solo el sello (como «Sello de main para publicar»)', { [SELLO_JSON]: selloNuevo(1) }, false, true],
+    ['el sello y un traspaso que no lee ninguna prueba', { [SELLO_JSON]: selloNuevo(2), 'docs/prueba/TRASPASO-PRUEBA.md': 'cambio\n' }, false, true],
+    ['el sello y un documento que leen las pruebas', { [SELLO_JSON]: selloNuevo(3), 'docs/prueba/ESTADO-PRUEBA.md': 'cambio\n' }, true, false],
+    ['el sello y un informe nuevo que cita el propio sello', { [SELLO_JSON]: '{"informe": "docs/prueba/NUEVO-PRUEBA.md"}\n', 'docs/prueba/NUEVO-PRUEBA.md': 'x\n' }, true, false],
+    ['el sello y código', { [SELLO_JSON]: selloNuevo(4), 'rwadar-publicar.js': '// otra compuerta\n' }, true, false],
+    ['el sello y el propio flujo de CI', { [SELLO_JSON]: selloNuevo(5), '.github/workflows/ci.yml': 'x\n' }, true, false],
+    ['otro archivo junto al sello', { 'rwadar-app/data/relanzamiento/otro.json': '{}\n' }, true, false],
+    ['un estado.json en otra carpeta', { 'rwadar-app/data/estado.json': '{}\n' }, true, false],
+  ];
+  for (const [nombre, cambios, pruebas, sello] of casos) {
+    const r = repo.pr(cambios);
+    assert.equal(r.codigo, 0, nombre + ': ' + r.texto);
+    assert.equal(r.salida, salidaCambios(pruebas, sello), `${nombre}: ${r.texto}`);
+    assert.match(r.stdout, new RegExp(`pruebas=${pruebas}\\nsello=${sello}\\n$`), nombre);
+  }
+  const soloSello = repo.pr({ [SELLO_JSON]: selloNuevo(6) });
+  assert.match(soloSello.texto, /Cambia el sello: rwadar-app\/data\/relanzamiento\/estado\.json/);
+  assert.match(soloSello.texto, /Solo el sello \(y documentación\): en vez de la batería, el trabajo «sello»\./);
+  // Borrarlo también pide el trabajo «sello», que entonces falla (sin sello no hay compuerta que pase).
+  assert.equal(repo.pr({}, { borrar: [SELLO_JSON] }).salida, salidaCambios(false, true));
+  // Renombrarlo: el nombre nuevo es otro archivo, así que corre todo.
+  assert.equal(repo.pr({}, { mover: [[SELLO_JSON, 'rwadar-app/data/relanzamiento/estado-viejo.json']] }).salida, salidaCambios(true, false));
 });
 
 test('cambios-ci: lanzado a mano, o si no se puede ver qué cambia, se pasa todo', (t) => {
   const repo = repoDePrueba();
   t.after(() => fs.rmSync(repo.dir, { recursive: true, force: true }));
-  repo.pr({ 'docs/prueba/TRASPASO-PRUEBA.md': 'cambio\n' });
+  repo.pr({ [SELLO_JSON]: selloNuevo(7) });
   const aMano = repo.decidir({ GITHUB_EVENT_NAME: 'workflow_dispatch' });
-  assert.equal(aMano.salida, 'pruebas=true\n');
+  assert.equal(aMano.salida, salidaCambios(true, false));
   assert.match(aMano.texto, /Lanzado a mano: se pasa todo\./);
   // Un solo commit (sin HEAD^1): no se sabe qué cambia.
   const solo = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-cambios-ci-solo-'));
@@ -143,23 +178,302 @@ test('cambios-ci: lanzado a mano, o si no se puede ver qué cambia, se pasa todo
   execFileSync('git', ['-c', 'user.name=P', '-c', 'user.email=p@ejemplo.test', '-c', 'commit.gpgsign=false', 'commit', '-q', '--allow-empty', '-m', 'uno'], { cwd: solo });
   const r = spawnSync('bash', [SCRIPT_CAMBIOS], { cwd: solo, encoding: 'utf8', env: { PATH: process.env.PATH, HOME: solo, GITHUB_EVENT_NAME: 'pull_request' } });
   assert.equal(r.status, 0);
-  assert.equal(r.stdout, 'pruebas=true\n');
+  assert.equal(r.stdout, salidaCambios(true, false));
   assert.match(r.stderr, /No se pudo ver qué cambia: se pasa todo\./);
 });
 
-test('ci.yml usa cambios-ci.sh y la batería entera (con las pruebas de .github/) va en npm test', () => {
+/* ---------- ci.yml: la batería en partes a la vez y el trabajo final «pruebas» ---------- */
+// Un trabajo de ci.yml (desde «  nombre:» hasta el siguiente trabajo).
+function trabajoCI(ci, nombre) {
+  ci = ci.slice(ci.indexOf('\njobs:\n'));
+  const inicio = ci.indexOf(`\n  ${nombre}:\n`);
+  assert.ok(inicio >= 0, `ci.yml sin el trabajo ${nombre}`);
+  const resto = ci.slice(inicio + 1);
+  const fin = resto.slice(1).search(/\n(?: {2}#.*\n)* {2}[\w-]+:\n/);
+  return fin < 0 ? resto : resto.slice(0, fin + 1);
+}
+// El bloque «run: |» de un paso, sin la sangría.
+function bloqueRun(trabajo, paso) {
+  const i = trabajo.indexOf(`- name: ${paso}`);
+  assert.ok(i >= 0, `sin el paso «${paso}»`);
+  const desde = trabajo.indexOf('run: |\n', i) + 'run: |\n'.length;
+  const lineas = [];
+  for (const l of trabajo.slice(desde).split('\n')) {
+    if (l.trim() && !l.startsWith(' '.repeat(10))) break;
+    lineas.push(l.slice(10));
+  }
+  return lineas.join('\n');
+}
+
+test('ci.yml: la batería va en partes a la vez y el último trabajo, «pruebas», espera a todas', async () => {
+  const { PARTES_BATERIA } = await import('./partes-ci.mjs');
   const ci = leer('.github/workflows/ci.yml');
-  assert.match(ci, /id: cambios\n {8}shell: bash\n(?: {8}#.*\n)* {8}run: bash \.github\/cambios-ci\.sh\n/);
-  assert.match(ci, /fetch-depth: 2/);
-  assert.match(ci, /needs\.secretos\.outputs\.pruebas == 'true'/);
-  assert.match(ci, /\n {8}run: npm test\n/);
+  // Solo estos cuatro trabajos: nadie más se llama «pruebas».
+  const trabajos = ci.slice(ci.indexOf('\njobs:\n'));
+  assert.deepEqual([...trabajos.matchAll(/^ {2}([\w-]+):\n/gm)].map(m => m[1]), ['secretos', 'bateria', 'sello', 'pruebas']);
+  const secretos = trabajoCI(ci, 'secretos');
+  assert.match(secretos, /id: cambios\n {8}shell: bash\n(?: {8}#.*\n)* {8}run: bash \.github\/cambios-ci\.sh\n/);
+  assert.match(secretos, /fetch-depth: 2/);
+  assert.match(secretos, /outputs:\n {6}pruebas: \$\{\{ steps\.cambios\.outputs\.pruebas \}\}\n {6}sello: \$\{\{ steps\.cambios\.outputs\.sello \}\}\n/);
+
+  // Las partes: tantas como dice partes-ci.mjs, más la app móvil, todas a la vez y sin cortarse entre sí.
+  const bateria = trabajoCI(ci, 'bateria');
+  assert.match(bateria, /\n {4}name: \$\{\{ matrix\.nombre \}\}\n {4}needs: secretos\n/);
+  assert.match(bateria, /\n {4}if: \$\{\{ !cancelled\(\) && needs\.secretos\.outputs\.pruebas == 'true' \}\}\n/);
+  assert.match(bateria, /\n {6}fail-fast: false\n/);
+  const filas = [...bateria.matchAll(/^ {10}- \{ parte: ([\w-]+), nombre: '([^']+)', base: (true|false), movil: (true|false), auditar: ([\w-]+|'') \}$/gm)]
+    .map(([, parte, nombre, base, movil, auditar]) => ({ parte, nombre, base, movil, auditar }));
+  assert.deepEqual(filas.map(f => f.parte), [...PARTES_BATERIA, 'movil']);
+  assert.equal(new Set(filas.map(f => f.nombre)).size, filas.length);
+  assert.ok(filas.every(f => f.nombre !== 'pruebas' && f.nombre !== 'Sello'), 'ninguna parte se llama como otra comprobación');
+  for (const f of filas) {
+    // Las partes de la batería necesitan rwadar-app (y no la app); la móvil, al revés.
+    assert.equal(f.base, f.parte === 'movil' ? 'false' : 'true', f.parte);
+    assert.equal(f.movil, f.parte === 'movil' ? 'true' : 'false', f.parte);
+  }
+  assert.deepEqual(filas.filter(f => f.auditar !== "''").map(f => f.auditar).sort(), ['rwadar-app', 'rwadar-movil'],
+    'npm audit de los dos paquetes, una vez cada uno');
+  assert.match(bateria, /- name: Instalar dependencias de base de datos\n {8}if: \$\{\{ matrix\.base \}\}\n {8}run: npm ci --prefix rwadar-app --ignore-scripts\n/);
+  assert.match(bateria, /- name: Instalar dependencias móviles\n {8}if: \$\{\{ matrix\.movil \}\}\n {8}run: npm ci --prefix rwadar-movil --ignore-scripts\n/);
+  assert.match(bateria, /if: \$\{\{ matrix\.movil \}\}\n {8}run: npm --prefix rwadar-movil run postinstall\n/);
+  assert.match(bateria, /env:\n {10}PARTE: \$\{\{ matrix\.parte \}\}\n {8}run: node \.github\/partes-ci\.mjs "\$PARTE"\n/);
+  assert.match(bateria, /run: npm audit --prefix "\$PAQUETE" --omit=dev --audit-level=critical\n/);
+  assert.match(bateria, /node-version: 22\.23\.4\n/);
+  assert.match(bateria, /run: node rwadar-node-seguro\.js\n/);
+  // La batería ya no corre entera en ningún sitio (correría dos veces).
+  assert.doesNotMatch(ci, /run: npm (?:run )?test\b/);
+  assert.doesNotMatch(ci, /vigilante\.test\.mjs/, 'sin un paso suelto que dependa de que npm test pase antes');
+
+  // El último: se sigue llamando «pruebas», espera a todos y corre aunque algo falle o se cancele.
+  const final = trabajoCI(ci, 'pruebas');
+  assert.doesNotMatch(final, /\n {4}name:/, 'sin «name»: la comprobación se llama «pruebas», como piden las reglas de la rama');
+  assert.match(final, /\n {4}needs: \[secretos, bateria, sello\]\n/);
+  assert.match(final, /\n {4}if: \$\{\{ always\(\) && !\(needs\.secretos\.result == 'success' && needs\.secretos\.outputs\.pruebas == 'false' && needs\.secretos\.outputs\.sello == 'false'\) \}\}\n/);
+  for (const [variable, valor] of [['SECRETOS', 'needs.secretos.result'], ['BATERIA', 'needs.bateria.result'], ['SELLO', 'needs.sello.result'],
+    ['TOCA_PRUEBAS', 'needs.secretos.outputs.pruebas'], ['TOCA_SELLO', 'needs.secretos.outputs.sello']]) {
+    assert.match(final, new RegExp(`\\n {10}${variable}: \\$\\{\\{ ${valor.replace(/\./g, '\\.')} \\}\\}\\n`), variable);
+  }
+
   // Las pruebas de .github/ van dentro de npm test, al final de la batería de rwadar-app
   // (el package.json de la raíz lo vigila el guardián de la OTA: tocarlo pediría otro APK).
   const raizPaquete = JSON.parse(leer('package.json'));
   assert.match(raizPaquete.scripts.test, /^npm run test:db && /);
   assert.equal(raizPaquete.scripts['test:db'], 'npm --prefix rwadar-app test');
   assert.match(JSON.parse(leer('rwadar-app/package.json')).scripts.test, / && node --test \.\.\/\.github\/\*\.test\.mjs$/);
-  assert.doesNotMatch(ci, /vigilante\.test\.mjs/, 'sin un paso suelto que dependa de que npm test pase antes');
+});
+
+test('trabajo «pruebas»: falla si algo falla o se cancela, o si no corrió lo que tocaba', () => {
+  const paso = bloqueRun(trabajoCI(leer('.github/workflows/ci.yml'), 'pruebas'), 'Comprobar que ha pasado todo lo que tocaba');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-ci-final-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'paso.sh'), paso);
+    const correr = ([SECRETOS, BATERIA, SELLO, TOCA_PRUEBAS, TOCA_SELLO]) => {
+      const r = spawnSync('bash', ['--noprofile', '--norc', '-e', path.join(dir, 'paso.sh')],
+        { env: { PATH: process.env.PATH, SECRETOS, BATERIA, SELLO, TOCA_PRUEBAS, TOCA_SELLO }, encoding: 'utf8' });
+      return { codigo: r.status, texto: r.stdout + r.stderr };
+    };
+    const casos = [
+      // [secretos, batería, sello, pruebas?, sello?] → 0 bien, 1 mal
+      [['success', 'success', 'skipped', 'true', 'false'], 0, 'PR con código: la batería entera en verde'],
+      [['success', 'failure', 'skipped', 'true', 'false'], 1, 'una parte de la batería falla'],
+      [['success', 'cancelled', 'skipped', 'true', 'false'], 1, 'una parte se cancela (o se pasa de tiempo)'],
+      [['success', 'skipped', 'skipped', 'true', 'false'], 1, 'tocaba la batería y no corrió'],
+      [['success', 'success', 'failure', 'true', 'false'], 1, 'el sello falla aunque la batería pase'],
+      [['success', 'skipped', 'success', 'false', 'true'], 0, 'PR del sello: el trabajo «sello» en verde'],
+      [['success', 'skipped', 'failure', 'false', 'true'], 1, 'PR del sello: el sello no pasa la compuerta'],
+      [['success', 'skipped', 'cancelled', 'false', 'true'], 1, 'PR del sello: se cancela'],
+      [['success', 'skipped', 'skipped', 'false', 'true'], 1, 'PR del sello: el trabajo «sello» no corrió'],
+      [['success', 'failure', 'success', 'false', 'true'], 1, 'PR del sello: algo más falla'],
+      [['success', 'cancelled', 'success', 'false', 'true'], 1, 'PR del sello: algo más se cancela'],
+      [['success', 'skipped', 'success', 'false', 'false'], 0, 'documentación (si llegara a correr)'],
+      [['success', 'skipped', 'skipped', 'false', 'false'], 0, 'solo documentación'],
+      [['failure', 'success', 'skipped', 'true', 'false'], 1, 'el escáner encuentra un secreto'],
+      [['failure', 'skipped', 'skipped', 'false', 'false'], 1, 'documentación con un secreto'],
+      [['cancelled', 'skipped', 'skipped', '', ''], 1, 'cancelado antes de decidir'],
+      [['failure', 'skipped', 'skipped', '', ''], 1, 'cambios-ci.sh no llegó a decidir'],
+      [['success', 'success', 'success', 'true', 'true'], 1, 'decisión imposible'],
+      [['success', 'success', 'skipped', 'si', 'no'], 1, 'decisión desconocida'],
+    ];
+    for (const [entrada, esperado, nombre] of casos) {
+      const r = correr(entrada);
+      assert.equal(r.codigo, esperado, `${nombre}: ${r.texto}`);
+    }
+    assert.match(correr(['success', 'cancelled', 'skipped', 'true', 'false']).texto, /Algo ha fallado o se ha cancelado/);
+    assert.match(correr(['success', 'skipped', 'success', 'false', 'true']).texto, /Todo lo que tocaba ha pasado\./);
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});
+
+/* ---------- .github/partes-ci.mjs: el reparto de la batería ---------- */
+test('partes-ci: las partes cubren «npm test» entero, cada orden una vez y en su orden', async () => {
+  const { bateria, plan, PARTES_BATERIA, PESOS, PESO_DESCONOCIDO } = await import('./partes-ci.mjs');
+  const b = bateria(raiz), p = plan(raiz);
+  assert.deepEqual(Object.keys(p), [...PARTES_BATERIA, 'movil', 'sello']);
+  // Lo que corre «npm test», orden a orden, sale de los package.json.
+  const raizG = JSON.parse(leer('package.json')).scripts, appG = JSON.parse(leer('rwadar-app/package.json')).scripts;
+  assert.deepEqual(b.app, appG.test.split(' && '));
+  assert.deepEqual([...b.web, ...b.movil].sort(), raizG.test.split(' && ').map(s => s.replace(/^npm run /, '')).filter(s => s !== 'test:db').sort());
+  assert.deepEqual(b.movil, ['test:mobile']);
+  const esperadas = [...b.app.map(o => `rwadar-app: ${o}`), ...b.web.map(g => `.: npm run ${g}`), ...b.movil.map(g => `.: npm run ${g}`)];
+  const repartidas = [...PARTES_BATERIA, 'movil'].flatMap(n => p[n].map(x => `${x.dir}: ${x.orden}`));
+  assert.deepEqual([...repartidas].sort(), [...esperadas].sort(), 'ni falta ni sobra ninguna');
+  assert.equal(new Set(repartidas).size, repartidas.length, 'ninguna corre dos veces');
+  for (const n of PARTES_BATERIA) {
+    assert.ok(p[n].length > 0, `${n} vacía`);
+    const posiciones = p[n].map(x => esperadas.indexOf(`${x.dir}: ${x.orden}`));
+    assert.deepEqual(posiciones, [...posiciones].sort((x, y) => x - y), `${n}: en el orden de npm test`);
+  }
+  // El bloque web va entero, seguido y en su orden en una sola parte (acceso y
+  // probar-orden leen el rwadar-publicado/ que genera test:web).
+  const conWeb = PARTES_BATERIA.filter(n => p[n].some(x => x.orden === 'npm run test:web'));
+  assert.equal(conWeb.length, 1);
+  assert.deepEqual(p[conWeb[0]].filter(x => x.dir === '.').map(x => x.orden), b.web.map(g => `npm run ${g}`));
+  const iWeb = p[conWeb[0]].findIndex(x => x.dir === '.');
+  assert.ok(p[conWeb[0]].slice(iWeb).every(x => x.dir === '.'), 'nada de rwadar-app en medio del bloque web');
+  assert.ok(b.web.includes('test:acceso') && b.web.indexOf('test:web') < b.web.indexOf('test:acceso') && b.web.indexOf('test:web') < b.web.indexOf('test:tools'));
+  // Repartidas por lo que tardan: ninguna lleva más de la media más la orden más larga.
+  const peso = c => (Object.hasOwn(PESOS, c) ? PESOS[c] : PESO_DESCONOCIDO);
+  const carga = n => p[n].reduce((s, x) => s + peso(x.dir === '.' ? x.orden.replace(/^npm run /, '') : x.orden), 0);
+  const cargas = PARTES_BATERIA.map(carga), media = cargas.reduce((s, c) => s + c, 0) / cargas.length;
+  const mayor = Math.max(...b.app.map(peso), b.web.reduce((s, g) => s + peso(g), 0));
+  assert.ok(Math.max(...cargas) <= media + mayor, `reparto desigual: ${cargas.join(', ')}`);
+});
+
+function bateriaDePrueba(app) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'rwadar-partes-ci-'));
+  const escribir = (archivo, texto) => {
+    fs.mkdirSync(path.dirname(path.join(dir, archivo)), { recursive: true });
+    fs.writeFileSync(path.join(dir, archivo), texto);
+  };
+  // Cada orden apunta su nombre y su carpeta en «traza»; «falla.mjs» sale con 3.
+  const apuntar = "import fs from 'node:fs'; import path from 'node:path';\n" +
+    "fs.appendFileSync(path.join(process.env.TRAZA), path.basename(process.argv[1]) + ' en ' + path.basename(process.cwd()) + '\\n');\n";
+  for (const orden of app) {
+    const m = /^node (?:--test )?([\w.-]+)$/.exec(orden);
+    if (m) escribir(path.join('rwadar-app', m[1]), apuntar + (m[1] === 'falla.mjs' ? 'process.exit(3);\n' : ''));
+  }
+  escribir('.github/flujos.test.mjs', apuntar);
+  escribir('package.json', JSON.stringify({ scripts: {
+    test: 'npm run test:db && npm run test:web && npm run test:mobile && npm run test:acceso',
+    'test:db': 'npm --prefix rwadar-app test',
+    'test:web': 'node rwadar-app/web.mjs', 'test:mobile': 'node rwadar-app/movil.mjs', 'test:acceso': 'node rwadar-app/acceso.mjs',
+  } }));
+  for (const f of ['web.mjs', 'movil.mjs', 'acceso.mjs']) escribir(path.join('rwadar-app', f), apuntar);
+  escribir('rwadar-app/package.json', JSON.stringify({ scripts: { test: app.join(' && ') } }));
+  return dir;
+}
+const SCRIPT_PARTES = path.join(raiz, '.github/partes-ci.mjs');
+const correrParte = (dir, ...args) => {
+  const traza = path.join(dir, 'traza');
+  fs.rmSync(traza, { force: true });
+  // Como en CI: sin el NODE_TEST_CONTEXT de este node --test (con él, el node --test de dentro no corre los archivos).
+  const env = { ...process.env, TRAZA: traza };
+  delete env.NODE_TEST_CONTEXT;
+  const r = spawnSync(process.execPath, [SCRIPT_PARTES, `--raiz=${dir}`, ...args], { encoding: 'utf8', env });
+  return { codigo: r.status, texto: r.stdout + r.stderr, traza: fs.existsSync(traza) ? fs.readFileSync(traza, 'utf8').trim().split('\n') : [] };
+};
+
+test('partes-ci: ejecuta una parte en su orden, dentro de rwadar-app, y para en el primer fallo', async (t) => {
+  const { plan, PARTES_BATERIA } = await import('./partes-ci.mjs');
+  const SELLO_APP = ['node probar-transparencia-comercial.mjs', 'node probar-cobro-seguro.mjs', 'node probar-auditoria-relanzamiento.mjs'];
+  const app = ['node probar-comunidad.mjs', 'node uno.mjs', ...SELLO_APP, 'node probar-admin-huella.mjs', 'node dos.mjs',
+    'node probar-reabrir-cuentas.mjs', 'node --test ../.github/*.test.mjs'];
+  const dir = bateriaDePrueba(app);
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const p = plan(dir);
+  // Todas las partes, una a una: cada orden corre una vez, en su carpeta.
+  const vistas = [];
+  for (const n of [...PARTES_BATERIA, 'movil']) {
+    const r = correrParte(dir, n);
+    assert.equal(r.codigo, 0, `${n}: ${r.texto}`);
+    assert.match(r.texto, new RegExp(`✓ Parte ${n}: ${p[n].length} órdenes bien`));
+    vistas.push(...r.traza);
+  }
+  // (la de ../.github/*.test.mjs corre el flujos.test.mjs de mentira).
+  assert.deepEqual(vistas.filter(v => / en rwadar-app$/.test(v)).sort(),
+    app.map(o => (o.includes('*') ? 'flujos.test.mjs' : o.replace(/^node /, '')) + ' en rwadar-app').sort());
+  // Los guiones de la raíz corren desde la raíz.
+  assert.ok(vistas.includes(`web.mjs en ${path.basename(dir)}`) && vistas.includes(`movil.mjs en ${path.basename(dir)}`), vistas.join('\n'));
+  // El sello: sus cuatro órdenes, en este orden.
+  const sello = correrParte(dir, 'sello');
+  assert.equal(sello.codigo, 0, sello.texto);
+  assert.deepEqual(sello.traza, ['probar-transparencia-comercial.mjs en rwadar-app', 'probar-cobro-seguro.mjs en rwadar-app',
+    'probar-auditoria-relanzamiento.mjs en rwadar-app', 'flujos.test.mjs en rwadar-app']);
+
+  // Una orden que falla: la parte devuelve su código y no sigue (como «&&»).
+  // Detrás, varias más del mismo peso, para que alguna caiga en su parte.
+  const tras = Array.from({ length: 8 }, (_, i) => `node tras-${i + 1}.mjs`);
+  const conFallo = [...app.slice(0, 2), 'node falla.mjs', ...tras, ...app.slice(2)];
+  const dir2 = bateriaDePrueba(conFallo);
+  t.after(() => fs.rmSync(dir2, { recursive: true, force: true }));
+  const p2 = plan(dir2);
+  const parte = PARTES_BATERIA.find(n => p2[n].some(x => x.orden === 'node falla.mjs'));
+  const iFalla = p2[parte].findIndex(x => x.orden === 'node falla.mjs');
+  assert.ok(p2[parte].length > iFalla + 1, 'la prueba necesita algo detrás de la orden que falla');
+  const r = correrParte(dir2, parte);
+  assert.equal(r.codigo, 3, r.texto);
+  assert.match(r.texto, /✗ Falla «node falla\.mjs» \(código 3\)/);
+  assert.deepEqual(r.traza, p2[parte].slice(0, iFalla + 1).map(x => `${x.orden.replace(/^node /, '')} en rwadar-app`), 'no sigue tras el fallo');
+  assert.doesNotMatch(r.texto, /✓ Parte/);
+
+  // Errores de uso y package.json que no sabe repartir: código 2, sin correr nada.
+  assert.equal(correrParte(dir, 'inventada').codigo, 2);
+  assert.equal(correrParte(dir).codigo, 2);
+  const listado = JSON.parse(correrParte(dir, '--listar').texto);
+  assert.deepEqual(Object.keys(listado), [...PARTES_BATERIA, 'movil', 'sello']);
+  for (const malo of ['node uno.mjs; rm -rf ..', 'node uno.mjs | tee x', 'npm run otra', 'node $(echo uno.mjs)']) {
+    const dir3 = bateriaDePrueba(['node probar-comunidad.mjs', malo, ...SELLO_APP, 'node --test ../.github/*.test.mjs']);
+    try {
+      const r3 = correrParte(dir3, 'bateria-1');
+      assert.equal(r3.codigo, 2, `${malo}: ${r3.texto}`);
+      assert.match(r3.texto, /no es una orden «node …» sencilla/);
+      assert.deepEqual(r3.traza, []);
+    } finally { fs.rmSync(dir3, { recursive: true, force: true }); }
+  }
+  // Si una prueba del sello desaparece de npm test, el reparto se niega.
+  const dir4 = bateriaDePrueba(['node probar-comunidad.mjs', ...SELLO_APP.slice(1), 'node --test ../.github/*.test.mjs']);
+  t.after(() => fs.rmSync(dir4, { recursive: true, force: true }));
+  const r4 = correrParte(dir4, 'sello');
+  assert.equal(r4.codigo, 2);
+  assert.match(r4.texto, /probar-transparencia-comercial\.mjs» ya no está en npm test/);
+});
+
+/* ---------- el PR del sello: lo que la batería comprueba del sello, sin la batería ---------- */
+test('sello: todo lo que la batería comprueba de estado.json lo comprueba el trabajo «sello»', async () => {
+  const { SELLO, plan } = await import('./partes-ci.mjs');
+  const ci = leer('.github/workflows/ci.yml');
+  const sello = trabajoCI(ci, 'sello');
+  assert.match(sello, /\n {4}needs: secretos\n {4}if: \$\{\{ !cancelled\(\) && needs\.secretos\.outputs\.sello == 'true' \}\}\n/);
+  assert.match(sello, /fetch-depth: 0\n/, 'con historial: la compuerta busca el commit aprobado');
+  assert.match(sello, /run: node rwadar-node-seguro\.js\n/);
+  assert.match(sello, /run: npm ci --prefix rwadar-app --ignore-scripts\n/);
+  const pasos = [...sello.matchAll(/\n {8}run: (.+)\n/g)].map(m => m[1]);
+  assert.deepEqual(pasos.slice(-2), ['node .github/partes-ci.mjs sello', 'node rwadar-app/auditar-relanzamiento.mjs'],
+    'primero las pruebas de la batería que leen el sello y después la compuerta');
+  // Es la misma compuerta con la que empieza «Publicar web».
+  assert.match(leer('.github/workflows/publicar.yml'), /- name: Comprobar la aprobación antes de tocar la red\n {8}run: node rwadar-app\/auditar-relanzamiento\.mjs\n/);
+
+  // Vigía: cada prueba de la batería que lee el sello corre en el trabajo «sello»…
+  const archivoDe = orden => orden === 'node --test ../.github/flujos.test.mjs' ? '.github/flujos.test.mjs' : `rwadar-app/${orden.replace(/^node /, '')}`;
+  assert.deepEqual(plan(raiz).sello.map(x => x.orden), [...SELLO]);
+  const enSello = new Set(SELLO.map(archivoDe));
+  for (const f of enSello) assert.ok(fs.existsSync(path.join(raiz, f)), f);
+  // …o lo que comprueba del sello lo cubre la compuerta. probar-web.mjs lee del
+  // sello la versión 3 y los controles (los clona y cambia uno): la compuerta
+  // rechaza otra versión (VERSION_NO_RECONOCIDA) o un control ausente (CONTROL_AUSENTE).
+  const CUBIERTO_POR_LA_COMPUERTA = new Set(['probar-web.mjs']);
+  const leen = execFileSync('git', ['grep', '--untracked', '-l', '-e', 'relanzamiento', '--', ':(glob)**/probar-*', ':(glob)**/*.test.*'], { cwd: raiz, encoding: 'utf8' })
+    .split('\n').filter(Boolean).filter(f => !f.includes('node_modules/'));
+  const sinCubrir = leen.filter(f => !enSello.has(f) && !CUBIERTO_POR_LA_COMPUERTA.has(f));
+  assert.deepEqual(sinCubrir, [], 'Estas pruebas leen el sello y el PR del sello se las saltaría: añádelas a SELLO en .github/partes-ci.mjs (o comprueba que la compuerta cubre lo que miran):\n' + sinCubrir.join('\n'));
+  const web = leer('probar-web.mjs');
+  assert.equal((web.match(/relanzamiento/g) || []).length, 1, 'probar-web.mjs lee el sello en un solo sitio');
+  assert.equal((web.match(/estadoRelanzamiento/g) || []).length, 7,
+    'probar-web.mjs usa el sello de otra forma: revisa si la compuerta lo cubre (si no, el PR del sello se lo saltaría) y actualiza este número');
+  assert.match(web, /estadoRelanzamiento\.version===3/);
+  const seguridad = leer('rwadar-publicacion-segura.js');
+  assert.match(seguridad, /fallo\('VERSION_NO_RECONOCIDA'/);
+  assert.match(seguridad, /fallo\('CONTROL_AUSENTE', `falta el control \$\{id\}`\)/);
+  assert.match(seguridad, /'catalogo_actual_y_citable',\n/);
 });
 
 /* ---------- las pruebas escriben entera la ruta de cada documento ---------- */
