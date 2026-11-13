@@ -107,10 +107,13 @@
 
   /* ---- Piezas comunes ---- */
   /* El instante de un punto, según la serie de la pestaña: en 24 h, la hora
-     («16:20»); en 1 S y 1 M, el día y la hora («8 nov, 18:00»); en las
-     diarias, la fecha. Las horas, de España peninsular. Con «largo» (lector
-     de pantalla), la fecha entera y «(hora de España)». */
-  const instante = (p, g) => modelo.textoInstante(p, idioma(), g.resolucion);
+     («16:20») y, si el punto es del día anterior al último, también el día
+     («12 nov, 16:05»: el primero y el último tienen la misma hora y no se
+     distinguían; como en la app); en 1 S y 1 M, el día y la hora («8 nov,
+     18:00»); en las diarias, la fecha. Las horas, de España peninsular. Con
+     «largo» (lector de pantalla), la fecha entera y «(hora de España)». */
+  const deAyer = (p, g) => g.resolucion === '5m' && modelo.horaEspana(p.ms).fecha !== modelo.horaEspana(g.puntos.at(-1).ms).fecha;
+  const instante = (p, g) => modelo.textoInstante(p, idioma(), deAyer(p, g) ? '1h' : g.resolucion);
   const instanteLargo = (p, g) => modelo.textoInstante(p, idioma(), g.resolucion, { largo: true });
   // Un máximo o un mínimo: en 24 h también el día (la ventana cruza la medianoche).
   const instanteDia = (p, g) => modelo.textoInstante(p, idioma(), g.resolucion === '5m' ? '1h' : g.resolucion);
@@ -237,7 +240,7 @@
     g.marcasFechas.forEach(m => {
       const x = coords[m.indice].x;
       const anclaje = x < 24 ? 'start' : x > PW - 24 ? 'end' : 'middle';
-      const t = svg('text', { x: x.toFixed(1), y: ALTO - 9, 'text-anchor': anclaje });
+      const t = svg('text', { x: x.toFixed(1), y: ALTO - 9, 'text-anchor': anclaje, 'data-fecha': '' });
       t.textContent = m.texto;
       textos.append(t);
     });
@@ -257,6 +260,14 @@
     dibujo.append(grupo);
     caja.querySelector('.mk-svg')?.remove();
     caja.prepend(dibujo);
+    // Las fechas de abajo que se pisarían (a 360 px en inglés, «Dec 2025» y «Mar» en 1 A): ya pintadas, se
+    // miden y se quita la que empieza a menos de 3 px de donde acaba la anterior. Sin medida (0), no se toca.
+    let finFecha = -Infinity;
+    for (const t of dibujo.querySelectorAll('.mk-eje text[data-fecha]')) {
+      const b = t.getBBox();
+      if (!b.width) continue;
+      if (b.x < finFecha + 3) t.remove(); else finFecha = b.x + b.width;
+    }
     cruz = { coords, grupo, v, punto, PW, ancho, g };
   }
 
@@ -273,7 +284,10 @@
     burbuja.replaceChildren(el('span', 'mk-burbuja-fecha', instante(p, g)), el('b', 'mk-burbuja-valor', modelo.millones(p.valor, lengua)),
       el('span', 'mk-burbuja-cambio', desdeInicio));
     burbuja.hidden = false;
-    // La burbuja sigue a la cruz sin salirse del gráfico (CSSOM, sin style en línea).
+    // La burbuja sigue a la cruz sin salirse del gráfico (CSSOM, sin style en línea). Se mide en x = 0: medida
+    // donde estaba, con un texto más largo («12 nov, 16:05» tras «16:05» en 24 h), asomaba por la derecha y
+    // Chromium dejaba la página 21 px más ancha a 390 px aunque luego volviera a su sitio (13/11/2026).
+    burbuja.style.setProperty('--mk-x', '0px');
     const anchoB = burbuja.offsetWidth || 200;
     burbuja.style.setProperty('--mk-x', Math.max(0, Math.min(Math.max(0, ancho - anchoB), c.x - anchoB / 2)).toFixed(0) + 'px');
     caja.setAttribute('aria-valuenow', String(k));
@@ -522,6 +536,12 @@
       if (g.avisoFuera) cab.append(el('p', 'mk-aviso mk-aviso-fuera', g.avisoFuera[0].toUpperCase() + g.avisoFuera.slice(1) + '.'));
     }
     if (atrasada()) cab.append(el('p', 'mk-aviso mk-aviso-serie', avisoAtrasada()));
+    // Una pestaña fina con la serie fina de más de 26 horas antes del dato de hoy: se dice hasta cuándo llega
+    // (se hace una vez al día y la web se publica a mano; sin esto, «24 h» seguía en el día de la publicación).
+    else if (g && g.resolucion !== '1d' && vivo && modelo.finaAtrasada(serie, vivo.actualizado)) {
+      cab.append(el('p', 'mk-aviso mk-aviso-serie mk-aviso-fina', tx('Los datos cada 5 minutos y cada hora llegan hasta el ', 'The 5-minute and hourly data end on ') +
+        fechaHora(modelo.msMinuto(valorHoy().t)) + tx(' (hora de España).', ' (Spain time).')));
+    }
     // El total de la categoría va bajo el gráfico (notaGrafico); sin serie, la cifra grande ya es ese total y se dice.
     if (hoy.fuente === 'total') cab.append(el('p', 'mk-aviso', tx('Sin la serie diaria, la cifra es el total de la categoría en CoinGecko (', "Without the daily series, the figure is CoinGecko's category total (") +
       modelo.cuandoDato(vivo, idioma()) + ').'));

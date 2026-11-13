@@ -33,8 +33,12 @@ const plano = t => String(t).replace(/\s+/g, ' ').trim();
 const MES = 'ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic';
 // Qué serie y cuántos puntos tiene cada pestaña con la lectura del 13/11/2026 (24 h: de 15:05 a 15:05 UTC, cada 5 minutos).
 const ESPERADO = { '1d': ['5m', 289], '1s': ['1h', 169], '1m': ['1h', 721], '3m': ['1d', 92], '6m': ['1d', 182], ytd: ['1d', 316], '1a': ['1d', 364] };
-// Lo que dice la cruz en cada pestaña: la hora; el día y la hora; o la fecha.
-const FORMATO = { '5m': /^\d\d:\d\d$/, '1h': new RegExp(`^\\d{1,2} (${MES}), \\d\\d:\\d\\d$`), '1d': /^\d\d\/\d\d\/\d{4}$/ };
+// Lo que dice la cruz en cada pestaña: la hora (en 24 h, con el día si el punto es de ayer); el día y la hora; o la fecha.
+const FORMATO = { '5m': new RegExp(`^(\\d{1,2} (${MES}), )?\\d\\d:\\d\\d$`), '1h': new RegExp(`^\\d{1,2} (${MES}), \\d\\d:\\d\\d$`), '1d': /^\d\d\/\d\d\/\d{4}$/ };
+/* Lo que debe decir la cruz de un punto: en 24 h, los de ayer llevan el día (revisión del 13/11/2026: el primero
+   y el último decían los dos «16:05»), como en la app. */
+const deAyer = (p, g) => g.resolucion === '5m' && modelo.horaEspana(p.ms).fecha !== modelo.horaEspana(g.puntos.at(-1).ms).fecha;
+const instanteEsperado = (p, g, lengua = 'es') => modelo.textoInstante(p, lengua, deAyer(p, g) ? '1h' : g.resolucion);
 // Las marcas de abajo: horas en 24 h; días en 1 S, 1 M y 3 M; meses («jun 2026», «ago») en 6 M, el año y 1 A.
 const MARCAS = { '1d': /^\d\d:\d\d$/, '1s': new RegExp(`^\\d{1,2} (${MES})$`), '1m': new RegExp(`^\\d{1,2} (${MES})$`), '3m': new RegExp(`^\\d{1,2} (${MES})$`),
   '6m': new RegExp(`^(${MES})( \\d{4})?$`), ytd: new RegExp(`^(${MES})( \\d{4})?$`), '1a': new RegExp(`^(${MES})( \\d{4})?$`) };
@@ -150,7 +154,7 @@ test('en Chromium: /mercado/ con las series finas reales: puntos por pestaña, t
         await pagina.waitForSelector('#tokenizacion[data-mercado-series="5m,1h"] .mk-svg', { timeout: 20000 });
         // La cabecera: la cifra grande es el último punto (41.816 M$) y dice la hora de España de la lectura.
         assert.equal(plano(await pagina.textContent('.mk-cifra-num')), plano(modelo.millones(41815579529)));
-        assert.equal(await pagina.textContent('.mk-sub'), 'Suma de los 30 mayores tokens con historia completa\u00a0· 13/11/2026, 16:05');
+        assert.equal(await pagina.textContent('.mk-sub'), 'Suma de los 30 mayores tokens con historia completa\u00a0· 13/11/2026, 16:05 (hora de España)');
         assert.match(plano(await pagina.textContent('#tokenizacion .mk-fuente')), /^En millones de dólares \(M\$\)\. Datos: CoinGecko · serie hasta el 13\/11\/2026, 16:05 \(hora de España\) · total de la categoría:/);
         // Las siete pestañas tienen datos (24 h, por la fina) y 1 M sigue siendo la de partida.
         assert.deepEqual(await pagina.$$eval('.mk-pestana', bs => bs.map(b => [b.textContent, b.disabled, b.getAttribute('aria-pressed')])),
@@ -183,7 +187,7 @@ test('en Chromium: /mercado/ con las series finas reales: puntos por pestaña, t
           const c = await cruzEn(pagina, 0.62, tactil);
           const p = g.puntos[c.indice];
           assert.ok(c.indice > 0 && c.indice < n - 1, `${ancho} ${clave}: la cruz en medio (${c.indice})`);
-          assert.equal(c.fecha, modelo.textoInstante(p, 'es', resolucion), `${ancho} ${clave}: instante`);
+          assert.equal(c.fecha, instanteEsperado(p, g), `${ancho} ${clave}: instante`);
           assert.match(c.fecha, FORMATO[resolucion], `${ancho} ${clave}: ${c.fecha}`);
           assert.equal(plano(c.valor), plano(modelo.millones(p.valor)));
           assert.equal(c.texto, `${modelo.textoInstante(p, 'es', resolucion, { largo: true })}: ${modelo.millonesHablados(p.valor)}`);
@@ -193,6 +197,15 @@ test('en Chromium: /mercado/ con las series finas reales: puntos por pestaña, t
           await pagina.focus('.mk-graf');
           await pagina.keyboard.press('End');
           assert.equal(plano(await pagina.textContent('.mk-burbuja-valor')), plano(await pagina.textContent('.mk-cifra-num')), `${ancho} ${clave}: el último punto es la cifra grande`);
+          if (clave === '1d') {
+            // 24 h: el último punto, solo la hora; el primero (de ayer, a la misma hora), con el día.
+            assert.equal(await pagina.textContent('.mk-burbuja-fecha'), '16:05');
+            await pagina.keyboard.press('Home');
+            assert.equal(await pagina.textContent('.mk-burbuja-fecha'), '12 nov, 16:05', `${ancho}: el primero de 24 h dice el día`);
+            // Con ese texto más largo, la burbuja se mide en x = 0: medida donde estaba (a la derecha), la página quedaba 21 px más ancha.
+            assert.equal(await pagina.evaluate(() => document.documentElement.scrollWidth), ancho, `${ancho}: la página no se ensancha`);
+            await pagina.keyboard.press('End');
+          }
           await pagina.keyboard.press('PageDown');
           assert.equal(await pagina.getAttribute('.mk-graf', 'aria-valuenow'), String(n - 1 - { '5m': 12, '1h': 24, '1d': 7 }[resolucion]), `${ancho} ${clave}: Av Pág`);
           await pagina.keyboard.press('Escape');
@@ -221,8 +234,8 @@ test('en Chromium: /mercado/ con las series finas reales: puntos por pestaña, t
           const g = modelo.graficoPestana(UNIDA, clave, 'en'), m = await leerGrafico(pagina);
           assert.deepEqual(m.fechas, g.marcasFechas.map(x => x.texto), `en ${clave}`);
           const c = await cruzEn(pagina, 0.4, tactil);
-          assert.equal(c.fecha, modelo.textoInstante(g.puntos[c.indice], 'en', g.resolucion));
-          assert.match(c.fecha, clave === '1d' ? /^\d\d:\d\d$/ : /^\d{1,2} [A-Z][a-z]{2}, \d\d:\d\d$/);
+          assert.equal(c.fecha, instanteEsperado(g.puntos[c.indice], g, 'en'));
+          assert.match(c.fecha, clave === '1d' ? /^(\d{1,2} [A-Z][a-z]{2}, )?\d\d:\d\d$/ : /^\d{1,2} [A-Z][a-z]{2}, \d\d:\d\d$/);
           assert.match(c.texto, /\(Spain time\): /);
           if (!tactil) await pagina.mouse.move(0, 0);
         }
@@ -293,6 +306,59 @@ test('en Chromium: /mercado/ con las series finas reales: puntos por pestaña, t
         assert.match(c.fecha, FORMATO['1d'], caso);
         assert.equal(c.texto, `${modelo.fechaCorta(g1mSola.puntos[c.indice].fecha)}: ${modelo.millonesHablados(g1mSola.puntos[c.indice].valor)}`, caso);
         assert.deepEqual(errores, [], `${caso}: sin errores`);
+        await contexto.close();
+      }
+
+      // Móviles estrechos (revisión del 13/11/2026): con «24 h» son 7 pestañas y a 360 px «1 A» quedaba cortada («1 /»), con
+      // la fila desplazable sin que se notara; a 320, «2026» y «1 A» ocultas. Ahora se reparten el ancho, en castellano y en
+      // inglés. Y las fechas de abajo no se pisan: a 360 en inglés, «Dec 2025» y «Mar» salían juntas («Dec 2025Mar») en 1 A.
+      for (const [ancho, alto] of [[320, 568], [360, 780]]) {
+        for (const lengua of ['es', 'en']) {
+          const { contexto, pagina, errores } = await abrir(navegador, local.url + '/mercado/', { ancho, alto, tactil: true });
+          await pagina.waitForSelector('#tokenizacion[data-mercado-series="5m,1h"] .mk-svg', { timeout: 20000 });
+          if (lengua === 'en') {
+            await pagina.evaluate(() => document.querySelector('[data-elegir-idioma="en"]').click());
+            await pagina.waitForFunction(() => document.querySelector('h1').textContent === 'Tokenised asset market');
+          }
+          const fila = await pagina.evaluate(() => {
+            const f = document.querySelector('.mk-pestanas'), r = f.getBoundingClientRect();
+            return { desborde: f.scrollWidth - f.clientWidth, fuera: [...f.children].filter(b => { const c = b.getBoundingClientRect(); return c.left < r.left - 0.5 || c.right > r.right + 0.5; }).map(b => b.textContent),
+              minimo: Math.min(...[...f.children].map(b => b.getBoundingClientRect().width)), alto: Math.min(...[...f.children].map(b => b.getBoundingClientRect().height)),
+              cortadas: [...f.children].filter(b => b.scrollWidth > b.clientWidth + 0.5).map(b => b.textContent) };
+          });
+          assert.deepEqual([fila.desborde, fila.fuera, fila.cortadas], [0, [], []], `${ancho} ${lengua}: las 7 pestañas caben`);
+          assert.ok(fila.minimo >= 38 && fila.alto >= 40, `${ancho} ${lengua}: cada pestaña, ${fila.minimo.toFixed(1)} × ${fila.alto} px`);
+          for (const clave of ['1a', 'ytd', '6m', '3m', '1m', '1s', '1d']) {
+            await elegir(pagina, clave);
+            // La elegida va en negrita (más ancha): tampoco se sale de su botón.
+            assert.equal(await pagina.evaluate(() => { const b = document.querySelector('.mk-pestana[aria-pressed="true"]'); return b.scrollWidth - b.clientWidth; }), 0, `${ancho} ${lengua} ${clave}: elegida`);
+            const cajas = await pagina.evaluate(() => [...document.querySelectorAll('.mk-svg .mk-eje text[data-fecha]')].map(t => { const b = t.getBBox(); return [t.textContent, b.x, b.x + b.width]; }));
+            assert.ok(cajas.length >= 3, `${ancho} ${lengua} ${clave}: ${cajas.length} fechas`);
+            cajas.forEach(([texto, a], i) => assert.ok(!i || a >= cajas[i - 1][2] + 3, `${ancho} ${lengua} ${clave}: «${cajas[i - 1]?.[0]}» y «${texto}» se pisan`));
+          }
+          assert.deepEqual([errores, await pagina.evaluate(() => document.documentElement.scrollWidth)], [[], ancho], `${ancho} ${lengua}`);
+          await contexto.close();
+        }
+      }
+
+      // Una serie fina de hace más de 26 horas (revisión del 13/11/2026): se hace una vez al día y la web se publica a mano.
+      // «24 h» dice hasta qué hora y, con el dato de hoy 45 horas después, la cabecera avisa hasta cuándo llega; en 3 M, no.
+      {
+        const { contexto, pagina, errores } = await abrir(navegador, local.url + '/mercado/', { ancho: 390, alto: 844, tactil: true });
+        const tarde = new Date(Date.parse('2026-11-13T15:05:00Z') + 45 * 3600000).toISOString();
+        await pagina.route('**/api/tokenizacion', async r => { const j = await (await r.fetch()).json(); j.actualizado = tarde; await r.fulfill({ contentType: 'application/json', body: JSON.stringify(j) }); });
+        await pagina.reload({ waitUntil: 'load' });
+        await pagina.waitForSelector('#tokenizacion[data-mercado-series="5m,1h"] .mk-svg', { timeout: 20000 });
+        const aviso = () => pagina.evaluate(() => document.querySelector('.mk-aviso-fina')?.textContent ?? null);
+        await elegir(pagina, '1d');
+        assert.equal(plano(await pagina.textContent('.mk-linea-cambio')), plano('▼' + modelo.graficoPestana(UNIDA, '1d').cambioTexto + ' en las 24 horas hasta las 16:05'));
+        assert.equal(await aviso(), 'Los datos cada 5 minutos y cada hora llegan hasta el 13/11/2026, 16:05 (hora de España).');
+        await elegir(pagina, '1s');
+        assert.ok(await aviso(), '1 S (cada hora), también');
+        await elegir(pagina, '3m');
+        assert.equal(await aviso(), null, '3 M es de la diaria: sin aviso');
+        assert.match(plano(await pagina.textContent('#tokenizacion .mk-total-cat')), /\(dato del 15\/11\/2026, 13:05 hora de España\)\.$/);
+        assert.deepEqual(errores, []);
         await contexto.close();
       }
 

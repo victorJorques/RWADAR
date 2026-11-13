@@ -46,6 +46,11 @@
   color:var(--tx-2);font:500 .9375rem/1 var(--body);letter-spacing:.01em;cursor:pointer;transition:var(--tr);-webkit-tap-highlight-color:transparent}
 .mk-pestana[aria-pressed="true"]{background:var(--s3);color:var(--tx);font-weight:700}
 .mk-pestana:disabled{color:var(--tx-3);opacity:.5;cursor:not-allowed}
+/* En el móvil (13/11/2026), con «24 h» son 7 pestañas: a 360 px «1 A» quedaba cortada y la fila se
+   desplazaba sin que se notara. Se reparten el ancho (cada una, 45 px a 360 y 39 a 320; 40 de alto);
+   por debajo de 360, con la letra a 14 px y sin margen para que quepa «2026» (en negrita, 37 px). */
+@media (max-width:767px){.mk-pestana{flex:1 1 0;min-width:0;padding:0 2px}}
+@media (max-width:359px){.mk-pestana{padding:0;font-size:.875rem;letter-spacing:0}}
 .mk-pestana:focus-visible{outline:2px solid var(--senal);outline-offset:1px}
 @media (hover:hover){.mk-pestana:not(:disabled):not([aria-pressed="true"]):hover{background:var(--ton);color:var(--tx)}}
 @media (forced-colors:active){.mk-pestana[aria-pressed="true"]{outline:2px solid Highlight}}
