@@ -35,8 +35,6 @@ const DESTINOS = Object.freeze({
 
 class ErrorNoticias extends Error {}
 const falla = (donde, mensaje) => { throw new ErrorNoticias(`${donde}: ${mensaje}`); };
-const esc = valor => String(valor)
-  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 function fechaValida(valor) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(String(valor))) return false;
@@ -98,20 +96,6 @@ function cargarNoticias(hoy = new Date().toISOString().slice(0, 10)) {
   return noticias.slice(0, MAX_NOTICIAS);
 }
 
-/* Inicio cuenta una historia (HISTORIA-v2, ESPEC-INICIO §2.7): de las noticias
-   solo enseña la última, en una línea y con su fecha. Sin llamadas [n]
-   (decisión de Víctor, 04/11/2026): la página de novedades tiene todas. */
-function fechaBarras(iso) { const [a, m, d] = iso.split('-'); return `${d}/${m}/${a}`; }
-function bloqueWeb(noticias) {
-  const n = noticias[0];
-  const linea = n ? `      <p><time datetime="${n.fecha}">${fechaBarras(n.fecha)}</time><span aria-hidden="true"> · </span><span>${esc(n.resumen || n.titulo)}${/[.!?…]$/.test(n.resumen || n.titulo) ? '' : '.'}</span></p>\n` : '';
-  return `    <!--noticias:ini-->
-    <section class="rel-novedades" aria-label="Novedades">
-${linea}      <a class="b3 rel-novedades-todas" href="/cambios">Todas las novedades<span class="rel-flecha" aria-hidden="true"></span></a>
-    </section>
-    <!--noticias:fin-->`;
-}
-
 function moduloApp(noticias) {
   const destinos = Object.fromEntries(Object.entries(DESTINOS).map(([k, d]) => [k, { texto: d.texto, app: d.app }]));
   return `/* GENERADO por rwadar-noticias.js a partir de rwadar-noticias/noticias.json.
@@ -161,7 +145,7 @@ function generar(noticias = cargarNoticias()) {
   return escritos;
 }
 
-module.exports = { DESTINOS, cargarNoticias, bloqueWeb, construirSalidas, comprobar, generar, ErrorNoticias };
+module.exports = { DESTINOS, cargarNoticias, construirSalidas, comprobar, generar, ErrorNoticias };
 
 if (require.main === module) {
   try {

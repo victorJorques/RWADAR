@@ -3105,7 +3105,8 @@ prueba('el cliente activa el catálogo solo en loopback y bloquea las APIs remot
     reglasBoton.every(d=>[...d.matchAll(/min-height\s*:\s*(\d+(?:\.\d+)?)px/g)].every(m=>Number(m[1])>=44)) &&
     declaracionesCSS(css,'.escaparate-detalle-boton:focus-visible').some(d=>/outline\s*:\s*[1-9]\d*px/.test(d)));
   const reglasSeguridad = ['.escaparate-referencia','.escaparate-dato-principal .escaparate-referencia',
-    '.escaparate-dialogo-dato .escaparate-referencia','.escaparate-aviso-compacto',
+    // La referencia en la ficha vigente va en «Lo esencial» (antes, .escaparate-dialogo-dato, retirado el 13/11/2026).
+    '.escaparate-esencial dd small','.escaparate-aviso-compacto',
     '.escaparate-estado.escaparate-estado-linea'].flatMap(selector=>declaracionesCSS(css,selector));
   prueba('referencia obligatoria, aviso crítico y estado no se ocultan ni recortan por CSS',
     reglasSeguridad.length >= 5 && reglasSeguridad.every(d=>

@@ -234,16 +234,10 @@
 /* /mercado/: la sección entera, sin el borde de arriba. Cada gráfico, en la
    piel de las tarjetas (fondo, borde y radio de las de Ofertas). */
 .sec .tk{padding-top:24px;border-top:0}
-.sec .tk-tit{font-size:1.25rem}
-.sec .tk-bloque{padding:18px 16px;border:var(--bd);border-radius:var(--r-l);background:var(--s1)}
-.sec .tk-h3{margin-top:0;margin-bottom:14px;font:700 1.0625rem/1.3 var(--display);letter-spacing:-.01em}
-.sec .tk-tipo-nom{font-size:1rem}
-@media (min-width:768px){.sec .tk-bloque{padding:24px}}
 /* /aprende/: los capítulos como estaban en Inicio, en su columna de lectura. */
 .sec-aprende.rel{padding-bottom:64px}
 .sec-aprende .rel-portada.apr-entrada{display:block;min-height:0;margin:0;padding:8px 0 24px;border-bottom:0;background:none}
 .sec-aprende .rel-mas li{font-size:1rem;line-height:1.55}
-.sec-aprende .rel-mercado-enlace{display:inline-flex;align-items:center;gap:6px;color:var(--senal);font-weight:600;text-decoration:none}
 .apr-academy{margin-top:48px;padding:24px 20px;border:var(--bd);border-radius:var(--r-l);background:var(--s1)}
 .apr-academy h2{margin:0;color:var(--tx);font:700 1.375rem/1.2 var(--display);letter-spacing:-.015em}
 .apr-academy p{margin:8px 0 0;color:var(--tx-2);font:400 1rem/1.55 var(--body)}
