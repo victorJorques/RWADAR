@@ -35,6 +35,14 @@ const IMPORT = `rwadar-app/data/importaciones/catalogo-${ETQ}-v2`
 const M = 'node .claude/skills/investigacion-catalogo/entrega/motor.mjs'
 const REVISADO = `${SCRATCH}/sql-revisado-${ETQ}` // copia del SQL tal como lo vieron los revisores
 const LENTES = ['sql', 'contenido', 'cumplimiento']
+// Marca de cada revisión (no es el sello de publicación): la pone la fase «revisar» y la comprueba «cerrar». Entre
+// fases, el coordinador copia las revisiones a mano; si al copiarlas se pierde o cambia algo (una corrección
+// obligatoria, un veredicto), «cerrar» para. Es una suma FNV-1a del JSON con las claves ordenadas: detecta errores al
+// copiar, no es una firma.
+const canon = v => Array.isArray(v) ? `[${v.map(canon).join(',')}]`
+  : v && typeof v === 'object' ? `{${Object.keys(v).filter(k => k !== 'marca' && v[k] !== undefined).sort().map(k => `${JSON.stringify(k)}:${canon(v[k])}`).join(',')}}`
+  : JSON.stringify(v)
+const marca = r => { const t = canon(r); let h = 0x811c9dc5; for (let i = 0; i < t.length; i++) h = Math.imul(h ^ t.charCodeAt(i), 0x01000193) >>> 0; return `${t.length}.${h.toString(16)}` }
 
 const RESUMEN = {
   type: 'object',
@@ -195,6 +203,17 @@ Comprueba:
 4. El escáner de secretos sobre lo que irá a Git: si la comprobación no lo pasó, pásalo tú (${SCRATCH}/gitleaks/gitleaks dir <copia> --config rwadar-app/gitleaks.toml --redact=100 --no-banner).
 Añade al final de ${CICLO}/VERIFICACION-ENTREGA.md la sección «Auditor» en español llano (no borres lo de arriba). Tu respuesta final es el objeto estructurado (conforme solo si todo está bien).`
 
+// Sin motor (altas o retiradas) no hay decisiones.json y «motor.mjs auditar» no sirve: verifica el auditor de siempre.
+const promptVerificarSinMotor = (antes, despues, revs) => `${CONTEXTO}
+
+Eres el VERIFICADOR final: auditor independiente de cambios en producción (no montaste ni corregiste). Antes de las correcciones: ${JSON.stringify(antes)}. Después: ${JSON.stringify(despues)}. Correcciones pedidas: ${JSON.stringify(revs.map(r => ({ lente: r.lente, obligatorias: r.obligatorias })))}.
+Comprueba:
+1. Diff normalizado entre ${REVISADO}/aplicar-y-aprobar.sql y ${IMPORT}/aplicar-y-aprobar.sql (normaliza identificadores de revisión, huellas y fechas de generación): mismo inventario de sentencias, y las únicas diferencias son las correcciones pedidas. Cualquier otra, hallazgo.
+2. Ejecuta tú preparar-entrega.mjs (dos veces, mismos SHA-256 que dice el montador) y comprobar-entrega.mjs: todo en verde.
+3. Cada corrección obligatoria está aplicada tal cual.
+4. Pasa el escáner de secretos a lo que irá a Git de ${CICLO}/ y ${IMPORT}/: copia esos archivos (sin lo que ignora el .gitignore del ciclo) a una carpeta de ${SCRATCH} y ejecuta ${SCRATCH}/gitleaks/gitleaks dir <carpeta> --config rwadar-app/gitleaks.toml --redact=100 --no-banner. Lo que marque, hallazgo con su ruta.
+Escribe ${CICLO}/VERIFICACION-ENTREGA.md en español llano. Tu respuesta final es el objeto estructurado (conforme solo si todo está bien).`
+
 // ------------------------------------------------------------------ fases
 async function montar() {
   phase('Montar')
@@ -210,7 +229,7 @@ async function revisar(m, lentes) {
   // La lente la pone el flujo (la del revisor es texto libre), para que «cerrar» sepa cuál es cuál.
   const revs = (await parallel(lentes.map(l => () =>
     agent(REVISORES[l](m), { label: `revisar:${l}`, phase: 'Revisar', schema: REVISION, effort: 'max' })
-      .then(r => r && { ...r, lente: l })))).filter(Boolean)
+      .then(r => r && (x => ({ ...x, marca: marca(x) }))({ ...r, lente: l }))))).filter(Boolean)
   for (const r of revs) log(`Revisión ${r.lente}: ${r.veredicto}, ${r.obligatorias.length} obligatorias`)
   return revs
 }
@@ -224,6 +243,13 @@ async function cerrar(m1, revs) {
   phase('Corregir')
   const m2 = await agent(promptCorregir(m1, revs), { label: 'corregir', phase: 'Corregir', schema: RESUMEN, effort: 'high' })
   if (!m2) throw new Error('El corrector no devolvió resultado')
+
+  if (!CON_MOTOR) {
+    phase('Auditar')
+    const v = await agent(promptVerificarSinMotor(m1, m2, revs), { label: 'auditar', phase: 'Auditar', schema: VERIF, effort: 'max' })
+    log(`Auditor (sin motor): ${v ? v.veredicto : 'sin resultado'}`)
+    return { estado: v && v.veredicto === 'conforme' ? 'aprobada_con_correcciones' : 'pendiente_de_verificacion', montaje: m1, revisiones: revs, correccion: m2, verificacion: v }
+  }
 
   phase('Comprobar')
   const comp = await agent(promptComprobar(m1, obligatorias), { label: 'comprobar', phase: 'Comprobar', schema: COMPROBACION, effort: 'medium' })
@@ -270,6 +296,8 @@ if (FASE === 'cerrar') {
   if (!A.montaje || !Array.isArray(A.revisiones)) throw new Error('args.montaje y args.revisiones son obligatorios en la fase cerrar')
   const vistas = A.revisiones.map(r => r && r.lente)
   for (const l of LENTES) if (!vistas.some(v => String(v || '').toLowerCase().includes(l))) throw new Error(`falta la revisión de ${l}`)
+  for (const r of A.revisiones) if (!r || !r.marca || r.marca !== marca(r))
+    throw new Error(`la revisión de ${r && r.lente} no es la que devolvió su revisor (sin marca o cambiada al copiarla): pásala tal cual, con su marca`)
   return cerrar(A.montaje, A.revisiones)
 }
 

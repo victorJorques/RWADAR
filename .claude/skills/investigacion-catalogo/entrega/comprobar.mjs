@@ -366,7 +366,9 @@ export async function comprobar(opciones = {}) {
           const sincronizaCon = async (v, sub) => {
             const dir = path.join(temporal, sub); fs.mkdirSync(dir);
             const jsPath = path.join(dir, 'catalogo.js'), csvPath = path.join(dir, 'rwadar.csv');
-            fs.copyFileSync(path.join(raiz, 'rwadar-site/assets/catalogo-publico-20261022.js'), jsPath);
+            // El catálogo de la web de antes de aplicar: el de la carpeta, salvo que se dé otro (opciones.webAntes), como
+            // al repetir un día pasado cuando la web ya lleva el catálogo de otro día (pglite.test.mjs).
+            fs.copyFileSync(opciones.webAntes ? path.resolve(opciones.webAntes) : path.join(raiz, 'rwadar-site/assets/catalogo-publico-20261022.js'), jsPath);
             const leidas = [];
             const fetchFn = async url => { leidas.push(url); return { ok: true, json: async () => structuredClone(
               url.includes('catalogo_plataformas_publicas_v2') ? v.p : url.includes('catalogo_ofertas_publicas_v2') ? v.o : v.dr) }; };

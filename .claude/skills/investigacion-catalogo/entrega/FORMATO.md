@@ -80,8 +80,9 @@ Sí (lo mismo que hacían los guiones del 12/11):
 - el radar: las fuentes contrastadas hoy, las lecturas a mano y los cambios de
   `cambios-radar.json`;
 - **aplica solo lo de `decisiones.json`**. Cada texto «antes» se exige tal cual
-  y cada cambio lleva su prueba (fuente, literal y hora de hoy). Las cifras que
-  calcula RWAdar se rehacen;
+  y cada cambio lleva su prueba (fuente, literal y hora de hoy, posterior al
+  comienzo del ciclo: una hora de hoy de antes de la lectura pública es una
+  hora copiada de otro día y no vale). Las cifras que calcula RWAdar se rehacen;
 - lo que proponen los expedientes de hoy y no se toma se declara en
   `difiere`, con su motivo;
 - reglas de las tarjetas: castellano, ≤ 120 caracteres en lo nuevo, nunca «por
@@ -116,7 +117,7 @@ Las claves desconocidas se rechazan.
 | `vigenciaDias`, `ultimoDia` | 7 y la fecha + 7 |
 | `colecciones`, `plataformas` | cantidades (las de la publicada: el motor no monta altas) |
 | `cadena` | los lotes aplicados en producción, en orden; el último, `desde` (el de ayer más el de ayer) |
-| `pedido` | en minúscula y con «responsable del proyecto»: va a la cabecera del SQL y a la aprobación |
+| `pedido` | exactamente «puesta al día pedida por el responsable del proyecto» (sin nombres): va a la cabecera del SQL y a la aprobación |
 | `orden` | la frase de la orden, sin comillas (opcional) |
 | `lecturaPublica` | `{ hora: "<inicio>Z – <fin>Z", descartadas }`, de `lectura-publica/hora-lectura.txt` |
 | `radar` | `{ fuentes, manuales: [ids], alcanceNota?, copias?: [{archivo, sha256, contiene?}], literales?: [{id, contiene?, patron?}] }` |

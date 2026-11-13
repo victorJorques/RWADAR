@@ -19,7 +19,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { RAIZ_REPO, require, leer, cargarDecisiones, contexto, consultasDeHoy, normalUrl, resolverPrueba, escRx } from './comun.mjs';
+import { RAIZ_REPO, require, leer, cargarDecisiones, contexto, consultasDeHoy, inicioCiclo, normalUrl, resolverPrueba, escRx } from './comun.mjs';
 
 export async function despues(opciones = {}) {
   const raiz = path.resolve(opciones.raiz || RAIZ_REPO);
@@ -44,7 +44,8 @@ export async function despues(opciones = {}) {
 
   // 2 · transparencia.json
   const entrada = opciones.transparencia || FUENTE;
-  const destino = opciones.salida ? path.join(salida, path.relative(raiz, FUENTE)) : entrada;
+  // Con --salida, siempre dentro de la carpeta de salida (FUENTE es la ruta real del módulo: con enlaces simbólicos, otra).
+  const destino = opciones.salida ? path.join(salida, 'rwadar-editorial-source/ofertas/transparencia.json') : entrada;
   const texto = fs.readFileSync(fs.existsSync(destino) && opciones.salida ? destino : entrada, 'utf8');
   const t = JSON.parse(texto), antes = JSON.parse(texto);
   assert.equal(JSON.stringify(t, null, 2) + '\n', texto, 'formato de transparencia.json inesperado');
@@ -60,7 +61,7 @@ export async function despues(opciones = {}) {
       const e = leer(path.join(DIR, 'expedientes', `${slug}.json`));
       assert.equal(e.slug, slug); assert.equal(e.tipoExpediente, 'publicada');
       assert.ok(e.consulta.inicioUtc.startsWith(FECHA), `${slug}: expediente de hoy`);
-      expedientes[slug] = { e, hoy: consultasDeHoy(e, FECHA) };
+      expedientes[slug] = { e, hoy: consultasDeHoy(e, FECHA, inicioCiclo(D)) };
     }
     return expedientes[slug];
   };
@@ -137,7 +138,8 @@ export async function despues(opciones = {}) {
     for (const f of fechas) assert.ok([DESDE_FECHA, FECHA].includes(f.consultadaEl) || !f.expediente, `${f.slug} · ${f.comprobacion}: fecha`);
   }
   // Valida con las reglas de la web y de la app (transparencia.mjs) antes de escribir.
-  const valida = cargarTransparencia({ raiz, datos: t });
+  // Con el catálogo dado (opciones.web como objeto, ya comprobado arriba) se valida contra él; si no, contra el de la web.
+  const valida = cargarTransparencia({ raiz, datos: t, catalogo: opciones.web && typeof opciones.web === 'object' ? snap : undefined });
   assert.deepEqual(valida.sinEntrada, []); assert.equal(valida.avisoRevision, '');
   for (const slug of reventa) {
     const corto = valida.ofertas[slug].minimoCorto, largo = tarjeta(slug, 'Mínimo de inversión');

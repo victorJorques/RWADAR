@@ -45,7 +45,7 @@ el orden de trabajo y lo aprendido para hacerlo rápido.
    publicada y pendientes (salen de `INTERNO.md` y del último informe). Pon
    en él lo que el vigía dio como «cambia» y «no se pudo leer».
 
-## 1 · Investigación en paralelo (15–25 min con el vigía)
+## 1 · Investigación en paralelo (≈ 25 min: marca el ritmo el grupo de candidatas, que el vigía no cubre; el vigía ahorra tiempo de agente en los otros grupos)
 
 **El investigador parte del vigía.** El flujo `investigacion-catalogo` busca
 `<ciclo>/vigia.json` (o la ruta de `args.vigia`; `vigia: false` lo apaga) y,
@@ -61,9 +61,11 @@ El revisor independiente sigue reabriendo **cada** cambio crítico y además
 muestrea lo re-fechado con el vigía. Si el vigía no se pudo pasar, el flujo
 trabaja como siempre.
 
-Con el vigía, el grupo de candidatas (`vigilancia`) pasa a ser el más largo
-(el 13/11: 15 min de investigador y 12 de revisor): lánzalo el primero, sin
-esperar al vigía, que no lo necesita.
+El grupo de candidatas (`vigilancia`), que el vigía no cubre, es el que marca
+el ritmo de la fase (el 13/11: 15 min de investigador y 12 de revisor). Se
+lanza el primero, como ya se hacía, sin esperar al vigía, que no lo necesita.
+El vigía no acorta ese grupo: lo que ahorra es tiempo de agente (y de CPU) en
+los otros tres, estimado y aún sin medir en un ciclo real.
 
 **Cada flujo de Workflow solo corre 2 agentes a la vez en esta máquina** (4
 CPU). Para que todos los grupos trabajen a la vez, lanza el flujo guardado
@@ -107,7 +109,7 @@ PDF y HTML de las fuentes, fuera de Git.
 «Tokenización diaria» guarda una foto de CoinGecko cada día en la rama
 `datos-tokenizacion` y «Publicar web» la incluye.
 
-## 2 · Decidir y montar con el motor (30–40 min)
+## 2 · Decidir y montar con el motor (30–40 min; 35–50 si la corrección cambia el SQL)
 
 1. Lee los resultados (diario `journal.jsonl` de cada flujo) y escribe
    `DECISIONES-COORDINADOR.md`: lista cerrada de lo que entra. Solo lo
@@ -147,7 +149,9 @@ PDF y HTML de las fuentes, fuera de Git.
       `DIFF-ENTREGA.md`, que le dice qué cambia frente a la entrega anterior,
       antes de hacer sus propias pruebas.
    c. **`fase: "cerrar"`**, con `montaje` y `revisiones`: las tres, juntando
-      las `revisiones` que devolvió cada lanzamiento de (b). Qué pasa:
+      las `revisiones` que devolvió cada lanzamiento de (b). Pasa las tres
+      revisiones tal cual las devolvió cada lanzamiento, con su `marca`; si
+      se cambia o se pierde algo al copiarlas, «cerrar» para. Qué pasa:
       - Si nadie pide nada, queda aprobada.
       - Si piden correcciones, el corrector (esfuerzo «high») las hace solo en
         `decisiones.json` y rehace con el motor.
@@ -163,7 +167,8 @@ PDF y HTML de las fuentes, fuera de Git.
    Si omites `fase`, corre todo seguido, pero el tercer revisor espera. **Un
    día con un alta o una retirada** el motor no la monta: lanza con
    `motor: false` y `modelo: "rwadar-app/data/verificaciones/2026-11-05.2-v2"`.
-   Ese día el montador trabaja como antes, con esfuerzo «xhigh».
+   Ese día el montador trabaja como antes, con esfuerzo «xhigh», y si hay
+   correcciones las verifica el auditor de siempre (esfuerzo máximo).
 3. Una candidata nueva necesita además su imagen editorial y su ficha
    (`rwadar-editorial-source/ofertas/README.md`, `rwadar-fichas-manifiesto.js`):
    si no da tiempo con calidad, **no se admite hoy**, sin cola pendiente.

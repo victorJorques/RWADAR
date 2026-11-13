@@ -20,7 +20,7 @@ const { despues } = await import('./despues.mjs');
 const { auditar, diffSql, diffPalabras, resumenRevision } = await import('./revisar.mjs');
 const { inventario } = await import('./sql.mjs');
 const { escribirGuiones, principal } = await import('./motor.mjs');
-const { comprobarCalculo } = await import('./comun.mjs');
+const { comprobarCalculo, consultasDeHoy, inicioCiclo, resolverPrueba } = await import('./comun.mjs');
 
 const leer = p => JSON.parse(fs.readFileSync(p, 'utf8'));
 const sha = p => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
@@ -106,6 +106,7 @@ test('guardas de preparar: cada cambio indebido en decisiones.json para la entre
     ['copia con otro SHA-256', d => { d.pruebas.spikoSmartCash[0].copia.sha256 = '0'.repeat(64); }, /no tiene el SHA-256 anotado/],
     ['afirmación del expediente que no existe', d => { cambio(d, 'aktionariat', 'metrica').prueba = { claim: 'precio', url: 'https://ejemplo.invalid/' }; }, /afirmación «precio».*0 encontradas/],
     ['prueba por dirección que hoy no se consultó', d => { cambio(d, 'aktionariat', 'metrica').prueba = { url: 'https://ejemplo.invalid/x', hora: '2026-11-12T01:00:00Z', literal: 'algo' }; }, /no está entre las consultas de hoy/],
+    ['hora de hoy, pero de antes de empezar el ciclo (copiada de otro día)', d => { cambio(d, 'aktionariat', 'metrica').prueba = { url: 'https://shares.aktionariat.com/invest', hora: '2026-11-12T00:10:00Z', literal: 'algo' }; }, /de antes de empezar el ciclo/],
     ['hora de la prueba de otro día', d => { cambio(d, 'aktionariat', 'metrica').prueba = { url: 'https://shares.aktionariat.com/invest', hora: '2026-11-11T01:00:00Z', literal: 'algo' }; }, /no es de hoy/],
     ['documento que no dice la frase', d => { cambio(d, 'mtbill', 'avisoNuevo').prueba = { documento: 'DECISIONES-COORDINADOR.md', contiene: 'una frase que no está' }; }, /no dice «una frase que no está»/],
     ['cálculo de la rentabilidad que no cuadra', d => { cambio(d, 'mtbill', 'metricaNueva').calculos[0].resultado = '3,46'; }, /rentabilidad anual simple 3,45 y no 3,46/],
@@ -123,6 +124,7 @@ test('guardas de preparar: cada cambio indebido en decisiones.json para la entre
     ['clave desconocida', d => { d.altas = []; }, /clave desconocida «altas»/],
     ['tipo de cambio desconocido', d => { cambio(d, 'aktionariat', 'metrica').tipo = 'borrar'; }, /tipo «borrar» desconocido/],
     ['un nombre en vez de «responsable del proyecto»', d => { d.pedido = 'puesta al día pedida por alguien'; }, /responsable del proyecto/],
+    ['un nombre además de «responsable del proyecto»', d => { d.pedido = 'puesta al día pedida por el responsable del proyecto, Juan Pérez'; }, /responsable del proyecto/],
     ['último día que no es la fecha más la vigencia', d => { d.ultimoDia = '2026-11-20'; }, /ultimoDia/],
     ['oferta «sin cambios» con cambios', d => { d.sinCambios.push('aktionariat'); }, /sinCambios/],
   ];
@@ -217,6 +219,52 @@ test('auditar: si la corrección no cambia el SQL basta la comprobación determi
     assert.equal(r3.veredicto, 'no_conforme');
     assert.ok(r3.hallazgos.some(h => /inventario/.test(h)), r3.hallazgos.join(' | '));
   } finally { fs.rmSync(antes, { recursive: true, force: true }); }
+});
+
+
+test("auditar: cada guarda que sustituye al auditor da no_conforme", async () => {
+  const antes = tmp("antes-guardas");
+  const copia = () => { for (const n of ["aplicar-y-aprobar.sql", "catalogo.sql", "revision.json"])
+    fs.copyFileSync(path.join(RAIZ, "rwadar-app/data/importaciones/catalogo-2026-11-12-v2", n), path.join(antes, n)); };
+  const comunes = { raiz: RAIZ, ciclo: CICLO, antes, web: WEB_ANTES, comprobaciones: COMPROBACIONES, sinPglite: true, silencio: true };
+  const con = (r, rx) => { assert.equal(r.veredicto, "no_conforme", r.hallazgos.join(" | ")); assert.ok(r.hallazgos.some(h => rx.test(h)), r.hallazgos.join(" | ")); };
+  try {
+    copia();
+    // 1. Lo de la carpeta no sale de decisiones.json (una corrección hecha a mano, fuera de decisiones.json).
+    const d = structuredClone(DECISIONES); d.orden = "Otra frase de la orden";
+    const ruta = path.join(antes, "d.json"); fs.writeFileSync(ruta, JSON.stringify(d));
+    con(await auditar({ ...comunes, decisiones: ruta }), /no es lo que sale de decisiones\.json/);
+    // 2. catalogo.sql y aplicar-y-aprobar.sql no cambian en las mismas sentencias.
+    const cat = path.join(antes, "catalogo.sql");
+    fs.writeFileSync(cat, fs.readFileSync(cat, "utf8").replace("El 12/11/2026 aún no se podía invertir", "Hoy no se puede invertir"));
+    con(await auditar(comunes), /no cambian en las mismas sentencias/); copia();
+    // 3. revision.json cambia algo más que la revisión y la huella.
+    const rv = path.join(antes, "revision.json"); fs.writeFileSync(rv, JSON.stringify({ ...leer(rv), ofertas: 23 }));
+    con(await auditar(comunes), /revision\.json cambia algo más/); copia();
+    // 4. El ensayo en PGlite que falla (un día fuera de la vigencia) no es conforme.
+    con(await auditar({ ...comunes, sinPglite: false, hoy: "2026-12-31" }), /^comprobar: /);
+    // 5. El escáner de secretos que encuentra algo (gitleaks simulado que sale con 1).
+    const falso = path.join(antes, "gitleaks-falso"); fs.writeFileSync(falso, "#!/bin/sh\nexit 1\n", { mode: 0o755 });
+    con(await auditar({ ...comunes, gitleaks: falso, exigirSecretos: true }), /encuentra algo/);
+  } finally { fs.rmSync(antes, { recursive: true, force: true }); }
+});
+
+test('consultas de hoy: una hora con la fecha de hoy pero de antes de empezar el ciclo no cuenta (hora copiada de otro día)', () => {
+  const inicio = inicioCiclo(DECISIONES);
+  assert.equal(new Date(inicio).toISOString(), '2026-11-12T00:30:28.000Z', 'el ciclo del 12/11 empezó con la lectura pública');
+  const e = { claims: [
+    { campo: 'a', fuentePrimaria: 'https://copiada.example/x', consultadoUtc: '2026-11-12T00:10:00Z' },
+    { campo: 'b', fuentePrimaria: 'https://de-hoy.example/y', consultadoUtc: '2026-11-12T09:00:00Z' },
+  ], registros: [{ url: 'https://registro.example/z', consultadoUtc: '2026-11-12T00:29:59Z' }] };
+  assert.deepEqual([...consultasDeHoy(e, '2026-11-12', inicio).keys()], ['de-hoy.example/y?']);
+  assert.equal(consultasDeHoy(e, '2026-11-12').size, 3, 'sin inicio, como antes: cuenta la fecha');
+  // Una afirmación del expediente con esa hora tampoco vale como prueba de un cambio (13/11: 79 de las tres suizas).
+  const ctx = h => ({ D: DECISIONES, DIR: CICLO, FECHA: '2026-11-12', donde: 'prueba',
+    expediente: { claims: [{ campo: 'precio', fuentePrimaria: 'https://de-hoy.example/y', literal: 'precio 7,20', consultadoUtc: h }] } });
+  assert.throws(() => resolverPrueba({ claim: 'precio' }, ctx('2026-11-12T00:10:00Z')), /de antes de empezar el ciclo/);
+  assert.equal(resolverPrueba({ claim: 'precio' }, ctx('2026-11-12T09:00:00Z'))[0].hora, '2026-11-12T09:00:00Z');
+  // despues.mjs (transparencia.json) usa la misma regla.
+  assert.match(fs.readFileSync(path.join(AQUI, 'despues.mjs'), 'utf8'), /consultasDeHoy\(e, FECHA, inicioCiclo\(D\)\)/);
 });
 
 // ------------------------------------------------------------------ los guiones finos de la carpeta del ciclo

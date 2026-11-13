@@ -43,6 +43,9 @@ async function ejecutar(args, respuestas = {}) {
   const resultado = await guion(args, agent, parallel, f => fases.push(f), m => avisos.push(m));
   return { resultado, lanzados, fases, avisos, de: label => lanzados.find(l => l.label === label) };
 }
+// Una revisión tal como la devuelve la fase «revisar» (con su marca).
+const marcar = async r => (await ejecutar({ ...BASE, fase: 'revisar', lentes: [r.lente], montaje: montaje(SHA1) }, { [`revisar:${r.lente}`]: r })).resultado.revisiones[0];
+const marcar3 = lista => Promise.all(lista.map(marcar));
 const REVISORES = { 'revisar:sql': rev('sql'), 'revisar:contenido': rev('contenido'), 'revisar:cumplimiento': rev('cumplimiento') };
 
 test('meta: nombre, y las fases de meta son las de phase()', () => {
@@ -97,18 +100,18 @@ test('revisar: una lente por lanzamiento (los tres a la vez en flujos aparte), i
 });
 
 test('cerrar sin correcciones: aprobada sin más agentes; con un rechazo: rechazada; sin las tres revisiones: falla', async () => {
-  const tres = [rev('sql'), rev('contenido'), rev('cumplimiento')];
+  const tres = await marcar3([rev('sql'), rev('contenido'), rev('cumplimiento')]);
   const a = await ejecutar({ ...BASE, fase: 'cerrar', montaje: montaje(SHA1), revisiones: tres });
   assert.deepEqual([a.resultado.estado, a.lanzados.length], ['aprobada', 0]);
-  const r = await ejecutar({ ...BASE, fase: 'cerrar', montaje: montaje(SHA1), revisiones: [rev('sql', 'rechazado'), tres[1], tres[2]] });
+  const r = await ejecutar({ ...BASE, fase: 'cerrar', montaje: montaje(SHA1), revisiones: [await marcar(rev('sql', 'rechazado')), tres[1], tres[2]] });
   assert.deepEqual([r.resultado.estado, r.lanzados.length], ['rechazada', 0]);
   await assert.rejects(ejecutar({ ...BASE, fase: 'cerrar', montaje: montaje(SHA1), revisiones: tres.slice(0, 2) }), /falta la revisión de cumplimiento/);
 });
 
 const O1 = { id: 'O1', problema: 'nombre de persona en una copia', correccion: 'recortar «consejero X» en noticias/copia.html', cambiaSql: false };
 const R1 = { id: 'R1', problema: 'frase de Hausera', correccion: '«El 14/11/2026 aún no se podía invertir»', cambiaSql: true };
-const conCorreccion = (obligatorias, comp, extra = {}) => ejecutar(
-  { ...BASE, fase: 'cerrar', montaje: montaje(SHA1), revisiones: [rev('sql'), rev('contenido'), rev('cumplimiento', 'aprobado_con_cambios', obligatorias)] },
+const conCorreccion = async (obligatorias, comp, extra = {}) => ejecutar(
+  { ...BASE, fase: 'cerrar', montaje: montaje(SHA1), revisiones: await marcar3([rev('sql'), rev('contenido'), rev('cumplimiento', 'aprobado_con_cambios', obligatorias)]) },
   { corregir: montaje(SHA2), comprobar: comp, ...extra });
 
 test('cerrar: si la corrección no cambia el SQL, basta la comprobación determinista (sin auditor)', async () => {
@@ -154,7 +157,7 @@ test('cerrar: lo que la comprobación determinista no deja pasar (y nunca se apr
   for (const [nombre, comp, obligatorias, motivo] of casos) {
     const recomendadas = obligatorias.length ? [] : ['una recomendada'];
     const { resultado, lanzados } = await ejecutar(
-      { ...BASE, fase: 'cerrar', montaje: montaje(SHA1), revisiones: [rev('sql'), rev('contenido'), rev('cumplimiento', 'aprobado_con_cambios', obligatorias, recomendadas)] },
+      { ...BASE, fase: 'cerrar', montaje: montaje(SHA1), revisiones: await marcar3([rev('sql'), rev('contenido'), rev('cumplimiento', 'aprobado_con_cambios', obligatorias, recomendadas)]) },
       { corregir: montaje(SHA2), comprobar: comp });
     assert.equal(resultado.estado, 'pendiente_de_verificacion', nombre);
     assert.ok(resultado.hallazgos.some(h => motivo.test(h)), `${nombre}: ${resultado.hallazgos.join(' | ')}`);
@@ -170,4 +173,29 @@ test('todo en un flujo: montar → tres revisores → corregir → comprobar', a
   assert.equal(resultado.estado, 'aprobada_con_correcciones');
   await assert.rejects(ejecutar({ ...BASE, fase: 'otra' }), /args\.fase/);
   await assert.rejects(ejecutar({ ...BASE, scratch: undefined }), /args\.scratch/);
+});
+
+test('cerrar: una revisión que no es la que devolvió su revisor (sin marca, o con una corrección perdida al copiarla) no se cierra', async () => {
+  const O = { id: 'O1', problema: 'p', correccion: 'c', cambiaSql: false };
+  const tres = await marcar3([rev('sql'), rev('contenido'), rev('cumplimiento', 'aprobado_con_cambios', [O])]);
+  const perdida = { ...tres[2], veredicto: 'aprobado', obligatorias: [] };
+  await assert.rejects(ejecutar({ ...BASE, fase: 'cerrar', montaje: montaje(SHA1), revisiones: [tres[0], tres[1], perdida] }), /no es la que devolvió su revisor/);
+  await assert.rejects(ejecutar({ ...BASE, fase: 'cerrar', montaje: montaje(SHA1), revisiones: [rev('sql'), rev('contenido'), rev('cumplimiento')] }), /sin marca/);
+  // Copiada con las claves en otro orden: vale.
+  const reordenada = Object.fromEntries(Object.entries(tres[0]).reverse());
+  const ok = await ejecutar({ ...BASE, fase: 'cerrar', montaje: montaje(SHA1), revisiones: [reordenada, tres[1], { ...tres[2] }] },
+    { corregir: montaje(SHA2), comprobar: comprobacion({ sha256Final: SHA2, obligatoriasSinSql: [{ id: 'O1', aplicada: true, evidencia: 'x' }] }) });
+  assert.equal(ok.resultado.estado, 'aprobada_con_correcciones');
+});
+
+test('sin motor (altas o retiradas) y con correcciones: verifica el auditor de siempre (max), no «motor.mjs auditar»', async () => {
+  const R1 = { id: 'R1', problema: 'cifra', correccion: 'otra cifra', cambiaSql: true };
+  const v = { veredicto: 'conforme', sha256Final: SHA2, revisionIdFinal: 'r-14', hallazgos: [] };
+  const { resultado, lanzados, de } = await ejecutar({ ...BASE, motor: false, modelo: 'rwadar-app/data/verificaciones/2026-11-05.2-v2' },
+    { montar: montaje(SHA1), ...REVISORES, 'revisar:sql': rev('sql', 'aprobado_con_cambios', [R1]), corregir: montaje(SHA2), auditar: v });
+  assert.deepEqual(lanzados.map(l => l.label), ['montar', 'revisar:sql', 'revisar:contenido', 'revisar:cumplimiento', 'corregir', 'auditar']);
+  assert.equal(de('auditar').effort, 'max');
+  assert.doesNotMatch(de('auditar').prompt, /motor\.mjs auditar/);
+  assert.match(de('auditar').prompt, /sql-revisado-2026-11-14\/aplicar-y-aprobar\.sql/);
+  assert.equal(resultado.estado, 'aprobada_con_correcciones');
 });

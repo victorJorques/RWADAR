@@ -251,9 +251,20 @@ adaptaba a mano: unos 25 minutos cada día. Ahora:
   `decisiones.json` y salieron idénticos byte a byte los 8 archivos (el SQL
   `d4d73024…`, el mismo que se aplicó) y `transparencia.json`. Lo que
   exporta su ensayo en PGlite coincide campo a campo con lo que se leyó en
-  producción después de aplicar ese día. Lo comprueba `npm test` en cada PR.
+  producción después de aplicar ese día. `npm test` comprueba en cada PR los
+  8 archivos y `transparencia.json`; el ensayo en PGlite va aparte
+  (`npm --prefix rwadar-app run test:motor-entrega`, obligatorio si se toca el
+  motor) y la comparación con lo leído en producción se hizo una vez, a mano.
+- **Tiempo:** la entrega pasa de unos 60–65 min a unos 30–40 si la corrección
+  no cambia el SQL, y a unos 35–50 si lo cambia (pasó el 12 y el 13/11),
+  porque entonces sigue el auditor. Es una estimación: anota el tiempo real
+  del primer ciclo con el motor.
 - **No monta altas ni retiradas.** Ese día se trabaja como antes, con los
-  guiones a mano (`motor: false` en el flujo).
+  guiones a mano (`motor: false` en el flujo); si hay correcciones, las
+  verifica el auditor de siempre (esfuerzo máximo), no `motor.mjs auditar`.
+- **Horas de hoy de verdad:** una prueba o una consulta con la fecha de hoy
+  pero con hora de antes de empezar el ciclo (la lectura pública) no vale:
+  es una hora copiada de otro día (pasó el 13/11 con las tres suizas).
 
 El flujo `entrega-catalogo` se lanza **por fases**. Cada flujo solo corre 2
 agentes a la vez en esta máquina (4 CPU), así que los tres revisores van en
@@ -285,6 +296,9 @@ Qué pasa después:
   sentencia cambiada, la frase de Hausera.
 - **Nunca aprueba** si hay hallazgos, si pedían cambiar el SQL y no cambió, o
   si una corrección sin SQL no está aplicada.
+- **Las revisiones se pasan tal cual** de «revisar» a «cerrar»: cada una
+  lleva una marca que pone el flujo (no es el sello de publicación). Si al
+  copiarlas se pierde o cambia algo, «cerrar» para.
 
 ## 4. Publicar y comprobar las imágenes antes de activar el SQL
 

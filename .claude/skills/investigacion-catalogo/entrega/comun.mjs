@@ -58,13 +58,17 @@ const URLS = /https:\/\/[^\s"'«»<>,]+/g;
 
 // Las direcciones que el expediente de hoy volvió a consultar: la misma dirección en un registro, documento,
 // afirmación o aviso que lleve la fecha o la hora de hoy (o en sus cambios respecto de lo publicado).
-export function consultasDeHoy(expediente, fecha) {
+// «inicio» (milisegundos, opcional): el comienzo del ciclo (la lectura pública). Una consulta con «consultadoUtc» de
+// antes no es de hoy aunque lleve la fecha de hoy: es una hora copiada de otro día (13/11: las tres suizas).
+export const inicioCiclo = D => Date.parse(String(D?.lecturaPublica?.hora || '').split(' – ')[0]);
+export function consultasDeHoy(expediente, fecha, inicio = NaN) {
   const FES = fechaLarga(fecha), CORTA = fechaCorta(fecha);
   const deHoy = new RegExp(`${escRx(fecha)}|${escRx(FES)}|\\b${escRx(CORTA)}(?!\\/\\d)`);
   const hoy = x => deHoy.test(JSON.stringify(x));
+  const copiada = x => Number.isFinite(inicio) && x && x.consultadoUtc != null && !(Date.parse(x.consultadoUtc) >= inicio);
   const m = new Map();
   const toma = (lista, campo, nombre, siempre = false) => (lista || []).forEach((x, i) => {
-    if (!siempre && !hoy(x)) return;
+    if ((!siempre && !hoy(x)) || copiada(x)) return;
     const v = String(x?.[campo] || '');
     const urls = /^https:\/\/\S+$/.test(v) ? [v] : (v.match(URLS) || []).map(u => u.replace(/[).;:]+$/, ''));
     for (const u of urls) { const n = normalUrl(u); if (n && !m.has(n)) m.set(n, `${nombre}[${i}]`); }
@@ -125,7 +129,7 @@ export function cargarDecisiones(ruta) {
   assert.ok(Array.isArray(D.cadena) && D.cadena.length >= 2 && D.cadena.at(-1) === D.desde, 'cadena: los lotes aplicados en producción, el último el de «desde»');
   assert.equal(new Set(D.cadena).size, D.cadena.length, 'cadena sin repetidos');
   // El pedido va a la cabecera del SQL y a la referencia de la aprobación: sin nombres de personas, con la fórmula de siempre.
-  assert.ok(typeof D.pedido === 'string' && /^[a-záéíóúñ]/.test(D.pedido) && /\bresponsable del proyecto\b/.test(D.pedido),
+  assert.ok(D.pedido === 'puesta al día pedida por el responsable del proyecto',
     'pedido: frase en minúscula que nombra al «responsable del proyecto» (p. ej. «puesta al día pedida por el responsable del proyecto»)');
   assert.ok(!D.orden || (typeof D.orden === 'string' && !/[«»]/.test(D.orden)), 'orden: la frase de la orden, sin comillas');
   assert.ok(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z – \d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/.test(D.lecturaPublica.hora) && D.lecturaPublica.hora.startsWith(D.fecha),
@@ -195,12 +199,18 @@ export function resolverPrueba(prueba, { D, DIR, FECHA, expediente, donde }) {
   }).flatMap(p => Array.isArray(p) ? p : [p]);
   assert.ok(lista.length, `${donde}: prueba vacía`);
   const resueltas = [];
+  // Ninguna prueba de hoy puede ser de antes de empezar el ciclo (la lectura pública): sería una hora copiada de otro día
+  // con la fecha de hoy (13/11: 79 «consultadoUtc» de las tres suizas con la hora del 12/11).
+  const inicio = inicioCiclo(D);
+  const despuesDelInicio = (hora, que) => assert.ok(!Number.isFinite(inicio) || Date.parse(hora) >= inicio,
+    `${donde}: ${que} lleva la hora ${hora}, de antes de empezar el ciclo (lectura pública ${new Date(inicio).toISOString()}): hora copiada de otro día`);
   for (const p of lista) {
     if (p.claim) {
       assert.ok(expediente, `${donde}: prueba de expediente sin expediente`);
       const c = expediente.claims.filter(x => x.campo === p.claim && (!p.url || x.fuentePrimaria === p.url));
       assert.equal(c.length, 1, `${donde}: afirmación «${p.claim}»${p.url ? ` de ${p.url}` : ''} del expediente: ${c.length} encontradas`);
       assert.ok(String(c[0].consultadoUtc || '').startsWith(FECHA), `${donde}: la afirmación «${p.claim}» no se consultó hoy (${c[0].consultadoUtc})`);
+      despuesDelInicio(c[0].consultadoUtc, `la afirmación «${p.claim}»`);
       assert.match(String(c[0].fuentePrimaria || ''), /https:\/\/\S+/, `${donde}: afirmación sin fuente primaria`);
       if (p.contiene) assert.ok(plano(`${c[0].literal || ''} ${c[0].dato || ''}`).includes(plano(p.contiene)), `${donde}: la afirmación «${p.claim}» no dice «${p.contiene}»`);
       resueltas.push({ url: c[0].fuentePrimaria, literal: c[0].literal || c[0].dato, hora: c[0].consultadoUtc, de: `expediente:${p.claim}` });
@@ -214,6 +224,7 @@ export function resolverPrueba(prueba, { D, DIR, FECHA, expediente, donde }) {
     } else {
       assert.match(String(p.url || ''), /^https:\/\/\S+$/, `${donde}: prueba sin dirección https`);
       assert.ok(String(p.hora || '').startsWith(FECHA) && /T\d{2}:\d{2}(?::\d{2})?Z$/.test(p.hora), `${donde}: la hora de la prueba no es de hoy en UTC («${p.hora}»)`);
+      despuesDelInicio(p.hora, 'la prueba');
       assert.ok(typeof p.literal === 'string' && p.literal.length >= 3 && p.literal.length <= 400, `${donde}: literal corto (3 a 400 caracteres)`);
       let viaCopia = false;
       if (p.copia) {
@@ -233,7 +244,7 @@ export function resolverPrueba(prueba, { D, DIR, FECHA, expediente, donde }) {
       // Sin copia, la dirección tiene que estar entre las consultas de hoy del expediente de esa oferta.
       if (!viaCopia) {
         assert.ok(expediente, `${donde}: prueba sin copia ni expediente`);
-        assert.ok(consultasDeHoy(expediente, FECHA).has(normalUrl(p.url)), `${donde}: ${p.url} no está entre las consultas de hoy del expediente; guarda una copia (copia.archivo y su SHA-256)`);
+        assert.ok(consultasDeHoy(expediente, FECHA, inicio).has(normalUrl(p.url)), `${donde}: ${p.url} no está entre las consultas de hoy del expediente; guarda una copia (copia.archivo y su SHA-256)`);
       }
       resueltas.push({ url: p.url, literal: p.literal, hora: p.hora, de: viaCopia ? `copia:${p.copia.archivo}` : 'expediente' });
     }
