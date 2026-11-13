@@ -6,6 +6,51 @@ herramienta sabe dónde está todo sin tener que adivinarlo.
 
 ---
 
+## 13 de noviembre de 2026 (19) · Claude · Radar de Inicio legible (parte web)
+
+- **Encargo (13/11):** «Arregla el radar de inicio que se ve mal». Esta
+  entrada es la parte de la **web**; la app va en su propia rama y las une el
+  integrador. **Sin publicar.**
+- **Qué pasaba:** en el móvil los nombres iban dentro del dibujo del radar;
+  al encogerlo crecían y se montaban sobre el aro y los puntos («Inmobiliario
+  3» encima del aro, «Materias primas» sobre puntos). Con pantalla baja (un
+  iPhone en Safari, 390 × 664) se escondían y quedaba una bolita de puntos.
+- **Qué se ve ahora:**
+  1. **Móvil (hasta 767 px):** a la izquierda, el radar redondo sin texto
+     (aro de unos 158 px; 113 px en pantallas bajas), con su barrido; a la
+     derecha, la leyenda en texto: punto de color, nombre corto y cifra de
+     plataformas, en el orden del radar. Misma altura que antes (176 / 120
+     px). Tocar el radar o la leyenda lleva a Plataformas, como antes.
+  2. **Sin cifras** (revisión vencida o sin comprobar): solo los nombres.
+     Una categoría con 0 plataformas se queda con su «0» atenuado.
+  3. **Tableta y escritorio:** el radar grande con los rótulos alrededor,
+     ahora en las esquinas y a 24 unidades del aro (medido: antes «Materias
+     primas» e «Infraestructura» tocaban el aro). La leyenda queda solo para
+     el lector de pantalla. Fuera la regla que escondía los rótulos en
+     tabletas de poca altura.
+  4. **320 × 568:** «Ver las ofertas» ya quedaba tapado por la barra de abajo
+     antes de este cambio. Arreglado: por debajo de 360 px la fecha de
+     revisión ya no sube a 22 px y el titular va en tres líneas.
+  5. **Inglés:** los nombres salen del diccionario de siempre (Property,
+     Credit, Treasury…). No se ha añadido ninguna clave.
+- **Dónde:** `rwadar-site/index.html` (la leyenda `#inicioRadarLista` va
+  dentro de `[data-inicio-radar]`), `assets/rwadar-20260820.js`
+  (`pintarRadarInicio`, `leyendaRadarInicio`, `radarInicioSvg(sin,rotulos)`;
+  el modo lo marca `html.escritorio-relato`), `assets/secciones-20261110.css`
+  y una línea menos en `assets/rwadar-20260820.css`.
+- **Commits:** `1369b1b` (web y pruebas) y este traspaso.
+- **Pruebas:** `npm run test:web` (probar-web 710/710, con tres pruebas
+  cambiadas y dos nuevas); prueba nueva en Chromium
+  `rwadar-acceso/radar-inicio-navegador.test.mjs` (7 medidas de móvil de 320
+  × 568 a 430 × 932 y 6 de tableta y escritorio, en castellano y en inglés;
+  sin cifras, categoría a cero, cambio de tamaño en vivo y toque);
+  `npm test` en la raíz y el guardián de OTA con salida 0. Ocho mutaciones
+  (quitar cada parte del arreglo): todas las detectan probar-web y Chromium.
+- **Pendiente:** publicar la web cuando lo ordene la dirección, junto con la
+  OTA de la app si va en el mismo ciclo.
+
+---
+
 ## 12 de noviembre de 2026 (18) · Claude · Novedades al abrir la app y la web
 
 - **Víctor:** «que salga al abrir la app y como las novedades, tipo un texto
